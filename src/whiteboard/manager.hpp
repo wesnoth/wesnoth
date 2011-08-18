@@ -71,7 +71,7 @@ public:
 	 * The on_* methods below inform the whiteboard of specific events
 	 */
 	void on_init_side();
-	void on_finish_side_turn();
+	void on_finish_side_turn(int side);
 	void on_mouseover_change(const map_location& hex);
 	void on_deselect_hex(){ erase_temp_move();}
 	void on_gamestate_change();
@@ -109,7 +109,7 @@ public:
 	/// Creates a temporary visual arrow, that follows the cursor, for move creation purposes
 	void create_temp_move();
 	/// Informs whether an arrow is being displayed for move creation purposes
-	bool has_temp_move() const { return route_ && fake_unit_ && move_arrow_; }
+	bool has_temp_move() const { return route_ && !fake_units_.empty() && !move_arrows_.empty(); }
 	/// Erase the temporary arrow
 	void erase_temp_move();
 	/// Creates a move action for the current side, and erases the temp move.
@@ -186,12 +186,12 @@ private:
 
 	boost::scoped_ptr<pathfind::marked_route> route_;
 
-	arrow_ptr move_arrow_;
-	fake_unit_ptr fake_unit_;
+	std::vector<arrow_ptr> move_arrows_;
+	std::vector<fake_unit_ptr> fake_units_;
 
 	boost::scoped_ptr<CKey> key_poller_;
 
-	map_location hidden_unit_hex_;
+	std::vector<map_location> hidden_unit_hexes_;
 
 	///net_buffer_[i] = whiteboard network data to be sent "from" teams[i].
 	std::vector<config> net_buffer_;

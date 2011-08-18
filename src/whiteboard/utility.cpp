@@ -105,6 +105,19 @@ unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
 		return NULL;
 }
 
+int path_cost(std::vector<map_location> const& path, unit const& u)
+{
+	assert(!path.empty());
+
+	int result = 0;
+	gamemap const& map = *resources::game_map;
+
+	foreach(map_location const& loc, std::make_pair(path.begin()+1,path.end()))
+		result += u.movement_cost(map[loc]);
+
+	return result;
+}
+
 temporary_unit_hider::temporary_unit_hider(unit& u)
 		: unit_(&u)
 	{unit_->set_hidden(true);}

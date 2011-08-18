@@ -704,7 +704,7 @@ config play_controller::to_config() const
 
 void play_controller::finish_side_turn(){
 
-	resources::whiteboard->on_finish_side_turn();
+	resources::whiteboard->on_finish_side_turn(player_number_);
 
 	for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
 		if (uit->side() == player_number_)

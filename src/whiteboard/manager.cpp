@@ -60,10 +60,10 @@ manager::manager():
 		mapbuilder_(),
 		highlighter_(),
 		route_(),
-		move_arrow_(),
-		fake_unit_(),
+		move_arrows_(),
+		fake_units_(),
 		key_poller_(new CKey),
-		hidden_unit_hex_(),
+		hidden_unit_hexes_(),
 		net_buffer_(resources::teams->size()),
 		team_plans_hidden_(resources::teams->size(),false)
 {
@@ -244,9 +244,11 @@ void manager::on_init_side()
 	}
 }
 
-void manager::on_finish_side_turn()
+void manager::on_finish_side_turn(int side)
 {
 	wait_for_side_init_ = true;
+	if(side == viewer_side())
+		viewer_actions()->synced_turn_shift();
 	highlighter_.reset();
 	erase_temp_move();
 	LOG_WB << "on_finish_side_turn()\n";
@@ -462,11 +464,9 @@ void manager::draw_hex(const map_location& hex)
 
 void manager::on_mouseover_change(const map_location& hex)
 {
-	if (hidden_unit_hex_.valid())
-	{
-		resources::screen->remove_exclusive_draw(hidden_unit_hex_);
-		hidden_unit_hex_ = map_location();
-	}
+	foreach(map_location const& hex, hidden_unit_hexes_)
+		resources::screen->remove_exclusive_draw(hex);
+	hidden_unit_hexes_.clear();
 
 	map_location selected_hex = resources::screen->selected_hex();
 	unit_map::iterator it;
@@ -539,6 +539,11 @@ void manager::create_temp_move()
 {
 	route_.reset();
 
+	/*
+	 * CHECK PRE-CONDITIONS
+	 * (This section has multiple return paths.)
+	 */
+
 	if(!active_
 			|| wait_for_side_init_
 			|| executing_actions_
@@ -547,11 +552,6 @@ void manager::create_temp_move()
 		return;
 
 	assert(!has_planned_unit_map());
-
-	/*
-	 * CHECK PRE-CONDITIONS
-	 * (This section has multiple return paths.)
-	 */
 
 	pathfind::marked_route const& route =
 			resources::controller->get_mouse_handler_base().get_current_route();
@@ -562,25 +562,6 @@ void manager::create_temp_move()
 	if (!selected_unit) return;
 	if (selected_unit->side() != resources::screen->viewing_side()) return;
 
-	//FIXME: Temporary: Don't draw move arrow if move goes beyond range.
-	bool cancel = false;
-	foreach (const map_location& hex, route.steps)
-	{
-		if (cancel)
-		{
-			erase_temp_move();
-			return;
-		}
-		pathfind::marked_route::mark_map::const_iterator w =
-				route.marks.find(hex);
-		//We only accept an end-of-first-turn or a capture mark if this is the move's last hex.
-		if (w != route.marks.end() && (w->second.turns == 1
-				|| w->second.capture))
-		{
-			cancel = true;
-		}
-	}
-
 	/*
 	 * DONE CHECKING PRE-CONDITIONS, CREATE THE TEMP MOVE
 	 * (This section has only one return path.)
@@ -590,70 +571,110 @@ void manager::create_temp_move()
 	//      wb::move object
 
 	route_.reset(new pathfind::marked_route(route));
-	//NOTE: route_.steps.back() = dst, and route_.steps.front() = src
+	//NOTE: route_->steps.back() = dst, and route_->steps.front() = src
 
-	if (!move_arrow_)
+	size_t turn = 0;
+	std::vector<map_location>::iterator prev_itor = route.steps.begin();
+	std::vector<map_location>::iterator curr_itor = prev_itor;
+	std::vector<map_location>::iterator end_itor  = route.steps.end();
+	for(; curr_itor!=end_itor; ++curr_itor)
 	{
-		// Create temp arrow
-		move_arrow_.reset(new arrow());
-		move_arrow_->set_color(team::get_side_color_index(
-				viewer_side()));
-		move_arrow_->set_style(arrow::STYLE_HIGHLIGHTED);
+		const map_location& hex = *curr_itor;
+
+		//search for end-of-turn marks
+		pathfind::marked_route::mark_map::const_iterator w =
+				route.marks.find(hex);
+		if(w != route.marks.end() && w->second.turns > 0)
+		{
+			turn = w->second.turns-1;
+
+			if(turn >= move_arrows_.size())
+				move_arrows_.resize(turn+1);
+			if(turn >= fake_units_.size())
+				fake_units_.resize(turn+1);
+
+			arrow_ptr& move_arrow = move_arrows_[turn];
+			fake_unit_ptr& fake_unit = fake_units_[turn];
+
+			if(!move_arrow)
+			{
+				// Create temp arrow
+				move_arrow.reset(new arrow());
+				move_arrow->set_color(team::get_side_color_index(
+						viewer_side()));
+				move_arrow->set_style(arrow::STYLE_HIGHLIGHTED);
+			}
+
+			arrow_path_t path(prev_itor,curr_itor+1);
+			move_arrow->set_path(path);
+
+			if(path.size() >= 2)
+			{
+				if(!fake_unit)
+				{
+					// Create temp ghost unit
+					fake_unit.reset(new unit(*selected_unit),
+							wb::fake_unit_deleter());
+					resources::screen->place_temporary_unit(fake_unit.get());
+					fake_unit->set_ghosted(false);
+				}
+
+				unit_display::move_unit(path, *fake_unit, *resources::teams,
+						false); //get facing right
+				fake_unit->set_location(*curr_itor);
+				fake_unit->set_ghosted(false);
+
+				//if destination is over another unit, temporarily hide it
+				resources::screen->add_exclusive_draw(fake_unit->get_location(), *fake_unit);
+				hidden_unit_hexes_.push_back(fake_unit->get_location());
+			}
+			else //zero-hex path -- don't bother drawing a fake unit
+				fake_unit.reset();
+
+			prev_itor = curr_itor;
+		}
 	}
-	if (!fake_unit_)
-	{
-		// Create temp ghost unit
-		fake_unit_.reset(new unit(*selected_unit),
-				wb::fake_unit_deleter());
-		resources::screen->place_temporary_unit(fake_unit_.get());
-		fake_unit_->set_ghosted(false);
-	}
-
-	move_arrow_->set_path(route_->steps);
-
-	unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams,
-			false); //get facing right
-	fake_unit_->set_location(route_->steps.back());
-	fake_unit_->set_ghosted(false);
-
-	//if destination is over another unit, temporarily hide it
-	resources::screen->add_exclusive_draw(fake_unit_->get_location(), *fake_unit_);
-	hidden_unit_hex_ = fake_unit_->get_location();
+	//toss out old arrows and fake units
+	move_arrows_.resize(turn+1);
+	fake_units_.resize(turn+1);
 }
 
 void manager::erase_temp_move()
 {
-	if (move_arrow_)
-	{
-		move_arrow_.reset(); //auto-removes itself from display
-	}
-	if (fake_unit_)
-	{
-		fake_unit_.reset(); //auto-removes itself from display thanks to custom deleter in the shared_ptr
-	}
-	if (route_)
-	{
-		route_.reset();
-	}
+	move_arrows_.clear();
+	fake_units_.clear();
+	route_.reset();
 }
 
 void manager::save_temp_move()
 {
 	if (has_temp_move() && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
-		arrow_ptr move_arrow;
-		fake_unit_ptr fake_unit;
+		side_actions& sa = *viewer_actions();
+		unit const *const u = future_visible_unit(route_->steps.front());
+		assert(u);
+		size_t first_turn = sa.get_turn_num_of(*u);
 
-		move_arrow = arrow_ptr(move_arrow_);
-		fake_unit = fake_unit_ptr(fake_unit_);
+		assert(move_arrows_.size() == fake_units_.size());
+		size_t size = move_arrows_.size();
+		for(size_t i=0; i<size; ++i)
+		{
+			arrow_ptr move_arrow = move_arrows_[i];
+			if(!arrow::valid_path(move_arrow->get_path()))
+				continue;
 
-		viewer_actions()->queue_move(*route_, move_arrow, fake_unit);
+			size_t turn = first_turn + i;
+			fake_unit_ptr fake_unit = fake_units_[i];
+			pathfind::marked_route route;
+			route.steps = move_arrow->get_path();
+			route.move_cost = path_cost(route.steps,*u);
+
+			sa.queue_move(turn,route,move_arrow,fake_unit);
+		}
 		erase_temp_move();
 
 		on_save_action();
-
 		LOG_WB << *viewer_actions() << "\n";
-
 		print_help_once();
 	}
 }
@@ -668,8 +689,10 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 		map_location source_hex;
 		if (route_ && !route_->steps.empty())
 		{
-			move_arrow = arrow_ptr(move_arrow_);
-			fake_unit = fake_unit_ptr(fake_unit_);
+			assert(move_arrows_.size() == 1);
+			assert(fake_units_.size() == 1);
+			move_arrow = move_arrows_.front();
+			fake_unit = fake_units_.front();
 
 			assert(route_->steps.back() == attack_from);
 			source_hex = route_->steps.front();
@@ -693,7 +716,8 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 
 		if (weapon_choice >= 0)
 		{
-			viewer_actions()->queue_attack(target_hex, weapon_choice, *route_, move_arrow, fake_unit);
+			side_actions& sa = *viewer_actions();
+			sa.queue_attack(sa.get_turn_num_of(*attacking_unit),target_hex,weapon_choice,*route_,move_arrow,fake_unit);
 
 			on_save_action();
 
@@ -718,7 +742,11 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 		}
 		else
 		{
-			viewer_actions()->queue_recruit(name, recruit_hex);
+			side_actions& sa = *viewer_actions();
+			size_t turn = sa.num_turns();
+			if(turn > 0)
+				--turn;
+			sa.queue_recruit(turn,name,recruit_hex);
 			created_planned_recruit = true;
 
 			on_save_action();
@@ -742,7 +770,11 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 		}
 		else
 		{
-			viewer_actions()->queue_recall(unit, recall_hex);
+			side_actions& sa = *viewer_actions();
+			size_t turn = sa.num_turns();
+			if(turn > 0)
+				--turn;
+			sa.queue_recall(turn,unit,recall_hex);
 			created_planned_recall = true;
 
 			on_save_action();
@@ -757,7 +789,8 @@ void manager::save_suppose_dead(unit& curr_unit, map_location const& loc)
 {
 	if(active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
-		viewer_actions()->queue_suppose_dead(curr_unit,loc);
+		side_actions& sa = *viewer_actions();
+		sa.queue_suppose_dead(sa.get_turn_num_of(curr_unit),curr_unit,loc);
 		on_save_action();
 	}
 }

@@ -124,7 +124,7 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 
 bool side_actions::execute_next()
 {
-	if (!actions_.empty())
+	if (!actions_.front().empty())
 	{
 		return execute(begin());
 	}
@@ -154,7 +154,7 @@ void side_actions::execute_all()
 	{
 		iterator position = begin();
 		bool finished = execute(position);
-		keep_executing = finished && !empty();
+		keep_executing = finished && !actions_.front().empty();
 	}
 }
 
@@ -165,7 +165,7 @@ bool side_actions::execute(side_actions::iterator position)
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
 
-	if (actions_.empty() || !validate_iterator(position))
+	if(actions_.empty() || !validate_iterator(position) || position.turn_num_ > 0)
 		return false;
 
 	LOG_WB << "Before execution, " << *this << "\n";
@@ -253,41 +253,41 @@ void side_actions::show()
 		act->show();
 }
 
-side_actions::iterator side_actions::queue_move(const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
+side_actions::iterator side_actions::queue_move(size_t turn, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	move_ptr new_move;
 	new_move.reset(new move(team_index(), hidden_, route, arrow, fake_unit));
-	return queue_action(new_move);
+	return queue_action(turn,new_move);
 }
 
-side_actions::iterator side_actions::queue_attack(const map_location& target_hex, int weapon_choice,
+side_actions::iterator side_actions::queue_attack(size_t turn, const map_location& target_hex, int weapon_choice,
 		const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	attack_ptr new_attack;
 	new_attack.reset(new attack(team_index(), hidden_, target_hex, weapon_choice, route, arrow, fake_unit));
-	return queue_action(new_attack);
+	return queue_action(turn,new_attack);
 }
 
-side_actions::iterator side_actions::queue_recruit(const std::string& unit_name, const map_location& recruit_hex)
+side_actions::iterator side_actions::queue_recruit(size_t turn, const std::string& unit_name, const map_location& recruit_hex)
 {
 	recruit_ptr new_recruit;
 	new_recruit.reset(new recruit(team_index(), hidden_, unit_name, recruit_hex));
-	return queue_action(new_recruit);
+	return queue_action(turn,new_recruit);
 }
 
-side_actions::iterator side_actions::queue_recall(const unit& unit, const map_location& recall_hex)
+side_actions::iterator side_actions::queue_recall(size_t turn, const unit& unit, const map_location& recall_hex)
 {
 	recall_ptr new_recall;
 	new_recall.reset(new recall(team_index(), hidden_, unit, recall_hex));
-	return queue_action(new_recall);
+	return queue_action(turn,new_recall);
 }
 
-side_actions::iterator side_actions::queue_suppose_dead(unit& curr_unit, map_location const& loc)
+side_actions::iterator side_actions::queue_suppose_dead(size_t turn, unit& curr_unit, map_location const& loc)
 {
 	suppose_dead_ptr new_suppose_dead;
 	new_suppose_dead.reset(new suppose_dead(team_index(),hidden_,curr_unit,loc));
-	return queue_action(new_suppose_dead);
+	return queue_action(turn,new_suppose_dead);
 }
 
 side_actions::iterator side_actions::insert_action(iterator position, action_ptr action)
@@ -303,11 +303,10 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 	return valid_position;
 }
 
-side_actions::iterator side_actions::queue_action(action_ptr action)
+side_actions::iterator side_actions::queue_action(size_t turn_num, action_ptr action)
 {
 	if(resources::whiteboard->has_planned_unit_map())
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
-	size_t turn_num = 0; //< this will need to change eventually
 	iterator result = synced_enqueue(turn_num, action);
 	LOG_WB << "Inserted into turn #" << (turn_num+1) << " at position #" << actions_[turn_num].size()
 			<< " : " << action <<"\n";
@@ -536,6 +535,14 @@ void side_actions::remove_invalid_of(unit const* u)
 			i = remove_action(i,false);
 		else ++i;
 	}
+}
+
+size_t side_actions::get_turn_num_of(unit const& u) const
+{
+	const_iterator itor = const_cast<side_actions*>(this)->find_last_action_of(&u);
+	if(itor == end())
+		return 0;
+	return itor.base_.turn_num_;
 }
 
 void side_actions::validate_actions()
@@ -839,5 +846,50 @@ side_actions::const_iterator side_actions::end() const
 	{ return const_iterator(const_cast<side_actions*>(this)->end()); }
 side_actions::const_reverse_iterator side_actions::rend() const
 	{ return const_reverse_iterator(const_cast<side_actions*>(this)->rend()); }
+
+void side_actions::raw_turn_shift()
+{
+	//optimization
+	if(actions_.size() < 2)
+		return;
+
+	//find units who still have plans for turn 0 (i.e. were too lazy to finish their jobs)
+	std::set<unit const*> lazy_units;
+	foreach(action_ptr const& act, iter_turn(0))
+	{
+		unit const* u = act->get_unit();
+		if(u)
+			lazy_units.insert(u);
+	}
+
+	//push their plans back one turn
+	std::set<unit const*>::iterator lazy_end = lazy_units.end();
+	iterator itor = end();
+	while(itor != begin())
+	{
+		--itor;
+		action_ptr act = *itor;
+
+		if(lazy_units.find(act->get_unit()) != lazy_end)
+		{
+			raw_enqueue(itor.turn_num_+1,act);
+			itor = raw_erase(itor);
+		}
+	}
+
+	//push any remaining first-turn plans into the second turn
+	foreach(action_ptr act, actions_.front())
+		actions_[1].push_front(act);
+	actions_.front().clear();
+
+	//shift everything forward one turn
+	actions_.pop_front();
+}
+
+void side_actions::synced_turn_shift()
+{
+	raw_turn_shift();
+	resources::whiteboard->queue_net_cmd(team_index(),make_net_cmd_refresh());
+}
 
 } //end namespace wb

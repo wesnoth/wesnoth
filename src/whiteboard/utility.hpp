@@ -20,6 +20,8 @@
 #ifndef WB_UTILITY_HPP_
 #define WB_UTILITY_HPP_
 
+#include <vector>
+
 #include "typedefs.hpp"
 
 class unit;
@@ -57,6 +59,9 @@ unit* future_visible_unit(map_location hex, int viewer_side = wb::viewer_side())
 /// @retval NULL if none is visible to the specified viewer side
 /// @param on_side Only search for units of this side.
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side = wb::viewer_side());
+
+/// Computes the MP cost for u to travel path
+int path_cost(std::vector<map_location> const& path, unit const& u);
 
 struct temporary_unit_hider {
 	temporary_unit_hider(unit& u);

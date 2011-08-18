@@ -34,6 +34,7 @@
 #include "side_actions.hpp"
 #include "typedefs.hpp"
 
+#include "foreach.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
@@ -79,37 +80,51 @@ private:
 	{
 		Derived* const new_this = static_cast<Derived*>(this);
 
+		//Determine how many turns' worth of plans there are
+		size_t max_turns = 0;
+		foreach(team& t, *resources::teams)
+			max_turns = std::max(max_turns,t.get_side_actions()->num_turns());
+
 		size_t const current_team = resources::controller->current_side() - 1;
 		size_t const num_teams = resources::teams->size();
-		for(size_t iteration = 0; iteration < num_teams; ++iteration)
+		//for each turn with any planned actions
+		for(size_t turn_iter=0; turn_iter<max_turns; ++turn_iter)
 		{
-			size_t const team_index
-					= (current_team+num_teams+(reverse? -1-iteration: iteration)) % num_teams;
-			team& t = resources::teams->at(team_index);
-			side_actions& sa = *t.get_side_actions();
-			if(!new_this->pre_visit_team(team_index,t,sa))
-				continue; //< Skip this team's actions
+			size_t const turn = (reverse? max_turns-1-turn_iter: turn_iter);
 
-			if(reverse)
+			//for each team
+			for(size_t team_iter = 0; team_iter < num_teams; ++team_iter)
 			{
-				side_actions::reverse_iterator itor = sa.rbegin();
-				side_actions::reverse_iterator end  = sa.rend();
-				while(itor!=end) {
-					++itor;
-					if(!new_this->visit(team_index,t,sa,side_actions::iterator(itor)))
-						return; //< Early abort
+				size_t const team_index
+						= (current_team+num_teams+(reverse? -1-team_iter: team_iter)) % num_teams;
+				team& t = resources::teams->at(team_index);
+				side_actions& sa = *t.get_side_actions();
+				if(!new_this->pre_visit_team(team_index,t,sa))
+					continue; //< Skip this team's actions
+
+				if(reverse)
+				{
+					side_actions::rrange_t acts = sa.riter_turn(turn);
+					side_actions::reverse_iterator itor = acts.first;
+					side_actions::reverse_iterator end  = acts.second;
+					while(itor!=end) {
+						++itor;
+						if(!new_this->visit(team_index,t,sa,itor.base()))
+							return; //< Early abort
+					}
 				}
+				else //forward
+				{
+					side_actions::range_t  acts = sa.iter_turn(turn);
+					side_actions::iterator itor = acts.first;
+					side_actions::iterator end  = acts.second;
+					for(; itor!=end; ++itor)
+						if(!new_this->visit(team_index,t,sa,itor))
+							return; //< Early abort
+				}
+				if(!new_this->post_visit_team(team_index,t,sa))
+					break; //< Early abort
 			}
-			else //forward
-			{
-				side_actions::iterator itor = sa.begin();
-				side_actions::iterator end  = sa.end();
-				for(; itor!=end; ++itor)
-					if(!new_this->visit(team_index,t,sa,itor))
-						return; //< Early abort
-			}
-			if(!new_this->post_visit_team(team_index,t,sa))
-				break; //< Early abort
 		}
 	}
 };

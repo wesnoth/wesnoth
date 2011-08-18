@@ -41,7 +41,7 @@ class side_actions: public boost::enable_shared_from_this<side_actions>
 	 *   actions_.empty() || !actions_.back().empty();
 	 */
 
-	typedef std::vector<action_queue> contents_t;
+	typedef std::deque<action_queue> contents_t;
 
 public:
 	class iterator;
@@ -144,33 +144,33 @@ public:
 	 * Queues a move to be executed last
 	 * @return The queued move's position
 	 */
-	iterator queue_move(const pathfind::marked_route& route,
+	iterator queue_move(size_t turn_num, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Queues an attack or attack-move to be executed last
 	 * @return The queued attack's position
 	 */
-	iterator queue_attack(const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+	iterator queue_attack(size_t turn_num, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Queues a recruit to be executed last
 	 * @return The queued recruit's position
 	 */
-	iterator queue_recruit(const std::string& unit_name, const map_location& recruit_hex);
+	iterator queue_recruit(size_t turn_num, const std::string& unit_name, const map_location& recruit_hex);
 
 	/**
 	 * Queues a recall to be executed last
 	 * @return The queued recall's position
 	 */
-	iterator queue_recall(const unit& unit, const map_location& recall_hex);
+	iterator queue_recall(size_t turn_num, const unit& unit, const map_location& recall_hex);
 
 	/**
 	 * Queues a suppose_dead to be executed last
 	 * @return The queued suppose_dead's position (an iterator to it)
 	 */
-	iterator queue_suppose_dead(unit& curr_unit, map_location const& loc);
+	iterator queue_suppose_dead(size_t turn_num, unit& curr_unit, map_location const& loc);
 
 	/**
 	 * Inserts an action at the specified position. The begin() and end() functions might prove useful here.
@@ -182,7 +182,7 @@ public:
 	 * Queues an action to be executed last
 	 * @return The queued action's position
 	 */
-	iterator queue_action(action_ptr action);
+	iterator queue_action(size_t turn_num, action_ptr action);
 
 	/**
 	 * Moves an action earlier in the execution order (i.e. at the front of the queue),
@@ -232,6 +232,9 @@ public:
 	///Removes all invalid actions "attached" to the unit
 	void remove_invalid_of(unit const*);
 
+	///Determines the appropriate turn number for the next action planned for this unit
+	size_t get_turn_num_of(unit const&) const;
+
 	///Validates all planned actions in the queue
 	void validate_actions();
 
@@ -239,6 +242,9 @@ public:
 	int get_gold_spent() const { return gold_spent_; }
 	///Used to track gold spending by recruits/recalls when building the future unit map
 	void change_gold_spent_by(int difference) { gold_spent_ += difference; assert(gold_spent_ >= 0);}
+
+	void side_actions::raw_turn_shift();
+	void side_actions::synced_turn_shift();
 
 	/**
 	 * Network code. A net_cmd object (a config in disguise) represents a modification
