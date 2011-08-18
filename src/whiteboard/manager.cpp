@@ -418,10 +418,7 @@ namespace
 		friend class enable_visit_all<draw_visitor>;
 
 	public:
-		draw_visitor(map_location const& hex, side_actions::numbers_t& numbers)
-				: hex_(hex)
-				, numbers_(numbers)
-			{}
+		draw_visitor(map_location const& hex): hex_(hex) {}
 
 		using enable_visit_all<draw_visitor>::visit_all;
 
@@ -430,11 +427,9 @@ namespace
 		bool visit(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
 			{ (*itor)->draw_hex(hex_);   return true; }
 		//using default pre_visit_team()
-		bool post_visit_team(size_t /*team_index*/, team&, side_actions& sa)
-			{ sa.get_numbers(hex_,numbers_);   return true; }
+		//using default post_visit_team()
 
 		map_location const& hex_;
-		side_actions::numbers_t& numbers_;
 	};
 }
 
@@ -442,11 +437,17 @@ void manager::draw_hex(const map_location& hex)
 {
 	if (!wait_for_side_init_)
 	{
+		//call draw() for all actions
+		draw_visitor(hex).visit_all();
+
 		//Info about the action numbers to be displayed on screen.
 		side_actions::numbers_t numbers;
-
-		draw_visitor(hex,numbers).visit_all();
-
+		foreach(team& t, *resources::teams)
+		{
+			side_actions& sa = *t.get_side_actions();
+			if(!sa.hidden())
+				sa.get_numbers(hex,numbers);
+		}
 		draw_numbers(hex,numbers); //< helper fcn
 	}
 
