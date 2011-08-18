@@ -88,9 +88,12 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	}
 
 	//Set the execution/deletion/bump targets.
-	side_actions::iterator itor = side_actions_->find_first_action_of(owner_unit_);
-	if(itor != side_actions_->end())
-		selected_action_ = *itor;
+	if(owner_unit_)
+	{
+		side_actions::iterator itor = side_actions_->find_first_action_of(owner_unit_);
+		if(itor != side_actions_->end())
+			selected_action_ = *itor;
+	}
 	//Overwrite the above selected_action_ if we find a better one
 	BOOST_REVERSE_FOREACH(action_ptr act, *side_actions_)
 	{
@@ -112,6 +115,7 @@ void highlight_visitor::clear()
 	main_highlight_.reset();
 	owner_unit_ = NULL;
 	secondary_highlights_.clear();
+	selected_action_.reset();
 }
 
 void highlight_visitor::highlight()
