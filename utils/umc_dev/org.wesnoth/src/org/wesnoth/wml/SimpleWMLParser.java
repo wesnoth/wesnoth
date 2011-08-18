@@ -72,6 +72,12 @@ public class SimpleWMLParser
 
     /**
      * Creates a new parser that can be called on files outside the workspace
+     * 
+     * @param file
+     *        The file to parse
+     * @param parser
+     *        The parser to use when parsing the file
+     * @throws FileNotFoundException
      */
     public SimpleWMLParser( File file, IParser parser )
         throws FileNotFoundException

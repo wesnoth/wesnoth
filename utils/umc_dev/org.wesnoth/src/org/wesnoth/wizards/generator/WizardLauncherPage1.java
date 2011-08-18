@@ -26,7 +26,9 @@ import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.wizards.WizardPageTemplate;
 
-
+/**
+ * The second page of the Wizard Launcher
+ */
 public class WizardLauncherPage1 extends WizardPageTemplate
 {
     private Map< String, String > list_;
@@ -34,6 +36,9 @@ public class WizardLauncherPage1 extends WizardPageTemplate
     private Combo                 cmbWizardName_;
     private Group                 grpCustomTag_;
 
+    /**
+     * Creates a new {@link WizardLauncherPage1}
+     */
     public WizardLauncherPage1( )
     {
         super( "wizardLauncherPage1" ); //$NON-NLS-1$
@@ -85,8 +90,8 @@ public class WizardLauncherPage1 extends WizardPageTemplate
 
         cmbWizardName_ = new Combo( container, SWT.READ_ONLY );
         cmbWizardName_.setBounds( 142, 83, 267, 23 );
-        String[] items = new String[0];
-        cmbWizardName_.setItems( list_.keySet( ).toArray( items ) );
+        cmbWizardName_.setItems( list_.keySet( ).toArray(
+            new String[list_.size( )] ) );
         if( cmbWizardName_.getItemCount( ) > 1 ) {
             cmbWizardName_.select( 1 );
         }
@@ -111,13 +116,18 @@ public class WizardLauncherPage1 extends WizardPageTemplate
         txtOtherTag_.setBounds( 12, 37, 245, 21 );
     }
 
+    /**
+     * @return The current tag name
+     */
     public String getTagName( )
     {
-        return cmbWizardName_.getText( ).equals(
-            Messages.WizardLauncherPage1_14 ) == true ? txtOtherTag_
+        return cmbWizardName_.getText( ).equals( "Other" ) == true ? txtOtherTag_
             .getText( ): list_.get( cmbWizardName_.getText( ) );
     }
 
+    /**
+     * @return the tag description
+     */
     public String getTagDescription( )
     {
         return cmbWizardName_.getText( );

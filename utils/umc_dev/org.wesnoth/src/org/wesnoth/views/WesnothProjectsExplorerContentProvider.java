@@ -10,6 +10,9 @@ package org.wesnoth.views;
 
 import org.eclipse.ui.model.WorkbenchContentProvider;
 
+/**
+ * Content provider for the WesnothProjectExplorer
+ */
 public class WesnothProjectsExplorerContentProvider extends
     WorkbenchContentProvider
 {

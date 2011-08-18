@@ -23,6 +23,9 @@ import org.eclipse.swt.widgets.Text;
 import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.wizards.WizardPageTemplate;
 
+/**
+ * The page of the Import Project Wizard
+ */
 public class ImportProjectPage extends WizardPageTemplate
 {
     private DirectoryFieldEditor projectPathField_;

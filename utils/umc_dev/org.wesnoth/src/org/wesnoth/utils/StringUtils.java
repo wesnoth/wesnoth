@@ -17,6 +17,9 @@ import java.util.regex.PatternSyntaxException;
 
 import org.wesnoth.Logger;
 
+/**
+ * Utilities class that handles Strings
+ */
 public class StringUtils
 {
     /**

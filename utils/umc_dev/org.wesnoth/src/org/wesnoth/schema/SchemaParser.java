@@ -358,7 +358,9 @@ public class SchemaParser
     }
 
     /**
-     * Gets the hasmap with parsed tags
+     * Gets the map with parsed tags
+     * 
+     * @return A new {@link Map} instance, with a (String, WMLTag) pair
      */
     public Map< String, WMLTag > getTags( )
     {

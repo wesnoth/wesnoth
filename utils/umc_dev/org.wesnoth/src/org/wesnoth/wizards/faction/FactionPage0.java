@@ -28,7 +28,9 @@ import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
 import org.wesnoth.wizards.WizardPageTemplate;
 
-
+/**
+ * The first page of the New Faction Wizard
+ */
 public class FactionPage0 extends WizardPageTemplate
 {
     private Text txtFileName_;
@@ -192,11 +194,11 @@ public class FactionPage0 extends WizardPageTemplate
     private void updatePageIsComplete( )
     {
         IResource container = ResourcesPlugin.getWorkspace( ).getRoot( )
-            .findMember( new Path( getDirectoryName( ) ) );
+            .findMember( new Path( getDirectory( ) ) );
         setPageComplete( false );
         String fileName = getFileName( );
 
-        if( getDirectoryName( ).isEmpty( ) ) {
+        if( getDirectory( ).isEmpty( ) ) {
             setErrorMessage( Messages.FactionPage0_13 );
             return;
         }
@@ -239,41 +241,65 @@ public class FactionPage0 extends WizardPageTemplate
         setPageComplete( true );
     }
 
-    public String getDirectoryName( )
-    {
-        return txtDirectory_.getText( );
-    }
-
-    public String getFactionId( )
-    {
-        return txtFactionId_.getText( );
-    }
-
-    public String getFactionName( )
-    {
-        return txtFactionName_.getText( );
-    }
-
+    /**
+     * @return The name of the file that contains the faction definition
+     */
     public String getFileName( )
     {
         return txtFileName_.getText( );
     }
 
+    /**
+     * @return The directory where to create the faction file
+     */
+    public String getDirectory( )
+    {
+        return txtDirectory_.getText( );
+    }
+
+    /**
+     * @return The ID of the new faction
+     */
+    public String getFactionId( )
+    {
+        return txtFactionId_.getText( );
+    }
+
+    /**
+     * @return The name of the new faction
+     */
+    public String getFactionName( )
+    {
+        return txtFactionName_.getText( );
+    }
+
+    /**
+     * @return The leader of the faction
+     */
     public String getLeader( )
     {
         return txtLeader_.getText( );
     }
 
+    /**
+     * @return The faction's favourite terrain
+     */
     public String getTerrainLiked( )
     {
         return txtTerrainLiked_.getText( );
     }
 
+    /**
+     * @return The random leader of the faction
+     */
     public String getRandomLeader( )
     {
         return txtRandomLeader_.getText( );
     }
 
+    /**
+     * @return The type of the faction
+     */
     public String getType( )
     {
         return txtType_.getText( );

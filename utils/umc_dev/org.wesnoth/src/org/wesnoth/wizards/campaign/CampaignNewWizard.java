@@ -23,12 +23,18 @@ import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.wizards.WizardProjectPageTemplate;
 import org.wesnoth.wizards.WizardTemplate;
 
+/**
+ * Wizard for creating a new campaign
+ */
 public class CampaignNewWizard extends WizardTemplate
 {
     protected WizardProjectPageTemplate page0_;
     protected CampaignPage1             page1_;
     protected CampaignPage2             page2_;
 
+    /**
+     * Creates a new {@link CampaignNewWizard}
+     */
     public CampaignNewWizard( )
     {
         setWindowTitle( Messages.CampaignNewWizard_0 );

@@ -40,7 +40,8 @@ public class NewConfigFilePage0 extends WizardPage
     /**
      * Constructor for SampleNewWizardPage.
      * 
-     * @param pageName
+     * @param selection
+     *        The current selection
      */
     public NewConfigFilePage0( ISelection selection )
     {
@@ -195,11 +196,17 @@ public class NewConfigFilePage0 extends WizardPage
         setPageComplete( message == null );
     }
 
+    /**
+     * @return The name of the container where the file is created
+     */
     public String getContainerName( )
     {
         return containerText.getText( );
     }
 
+    /**
+     * @return The name of the new file
+     */
     public String getFileName( )
     {
         return fileText.getText( );

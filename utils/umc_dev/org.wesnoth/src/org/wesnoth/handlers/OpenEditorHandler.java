@@ -13,7 +13,9 @@ import org.eclipse.core.commands.ExecutionEvent;
 
 import org.wesnoth.utils.GameUtils;
 
-
+/**
+ * Opens the Map Editor
+ */
 public class OpenEditorHandler extends AbstractHandler
 {
     @Override

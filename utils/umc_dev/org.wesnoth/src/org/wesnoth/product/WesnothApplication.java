@@ -16,6 +16,9 @@ import org.eclipse.ui.PlatformUI;
 
 import org.wesnoth.Logger;
 
+/**
+ * The main running point of the UMC IDE
+ */
 public class WesnothApplication implements IApplication
 {
     @Override

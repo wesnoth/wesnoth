@@ -20,7 +20,7 @@ import org.wesnoth.Logger;
 import org.wesnoth.utils.StringUtils;
 
 /**
- * This is a simple Lua parser that returns the found interesting tokens
+ * This is a simple Lua parser that returns the interesting tokens found
  * from lua code
  */
 public class SimpleLuaParser
@@ -33,6 +33,14 @@ public class SimpleLuaParser
     private final static String   ATTRIBUTE_REGEX       = "cfg\\.[a-zA-Z0-9_]*";
     private final static String   ATTRIBUTE_CHILD_REGEX = "get_child\\(cfg, *\"[^\"]+\"\\)";
 
+    /**
+     * Creates a new {@link SimpleLuaParser}
+     * 
+     * @param location
+     *        The path location of the Lua code
+     * @param contents
+     *        The Lua code to parse
+     */
     public SimpleLuaParser( String location, String contents )
     {
         tags_ = new HashMap< String, WMLTag >( );

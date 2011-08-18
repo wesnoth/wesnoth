@@ -22,6 +22,9 @@ import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
 import org.wesnoth.wizards.WizardPageTemplate;
 
+/**
+ * The first page in the New Empty Project wizard
+ */
 public class EmptyProjectPage1 extends WizardPageTemplate
 {
     private Text   txtTitle_;
@@ -35,7 +38,9 @@ public class EmptyProjectPage1 extends WizardPageTemplate
     private Text   txtType_;
     private Button chkGeneratePBL_;
 
-
+    /**
+     * Creates a new {@link EmptyProjectPage1}
+     */
     public EmptyProjectPage1( )
     {
         super( "emptyProjectPage1" ); //$NON-NLS-1$
@@ -250,11 +255,17 @@ public class EmptyProjectPage1 extends WizardPageTemplate
         return txtTranslationDir_.getText( );
     }
 
+    /**
+     * @return The type of the project
+     */
     public String getType( )
     {
         return txtType_.getText( );
     }
 
+    /**
+     * @return True to generate a .pbl file, false otherwise
+     */
     public boolean getGeneratePBLFile( )
     {
         return chkGeneratePBL_.getSelection( );

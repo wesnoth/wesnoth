@@ -10,14 +10,20 @@ import org.wesnoth.Logger;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.wizards.WizardTemplate;
 
+/**
+ * Wizard to import wesnoth projects into workspace
+ */
 public class ImportProjectWizard extends WizardTemplate implements
     IImportWizard
 {
     private ImportProjectPage page0_;
 
+    /**
+     * Creates a new {@link ImportProjectWizard}
+     */
     public ImportProjectWizard( )
     {
-
+        super( );
     }
 
     @Override

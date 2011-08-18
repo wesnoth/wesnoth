@@ -21,7 +21,9 @@ import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
 import org.wesnoth.wizards.WizardPageTemplate;
 
-
+/**
+ * Second page of the New Faction Wizard
+ */
 public class FactionPage1 extends WizardPageTemplate
 {
     private Text   txtChoices_;
@@ -38,11 +40,6 @@ public class FactionPage1 extends WizardPageTemplate
         setDescription( Messages.FactionPage1_2 );
     }
 
-    /**
-     * Create contents of the wizard.
-     * 
-     * @param parent
-     */
     @Override
     public void createControl( Composite parent )
     {
@@ -99,16 +96,25 @@ public class FactionPage1 extends WizardPageTemplate
         txtExcept_.setEnabled( state );
     }
 
+    /**
+     * @return True if the faction is random
+     */
     public boolean getIsRandomFaction( )
     {
         return chkRandomFaction_.getSelection( );
     }
 
+    /**
+     * @return The choices of the faction
+     */
     public String getChoices( )
     {
         return getIsRandomFaction( ) ? txtChoices_.getText( ): ""; //$NON-NLS-1$
     }
 
+    /**
+     * @return Except
+     */
     public String getExcept( )
     {
         return getIsRandomFaction( ) ? txtExcept_.getText( ): ""; //$NON-NLS-1$

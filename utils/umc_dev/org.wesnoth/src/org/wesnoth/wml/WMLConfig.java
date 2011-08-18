@@ -22,6 +22,9 @@ public class WMLConfig implements Serializable
 {
     private static final long     serialVersionUID = - 4722231494864404935L;
 
+    /**
+     * The parsed scenario ID, or null if the config doesn't define one
+     */
     public String                 ScenarioId;
     /**
      * True if there was a [scenario] tag present in the file.
@@ -30,6 +33,9 @@ public class WMLConfig implements Serializable
      */
     public boolean                IsScenario;
 
+    /**
+     * The parsed campaign ID, or null if the config doesn't define one
+     */
     public String                 CampaignId;
     /**
      * True if there was a [campaign] tag present in the file.
@@ -43,6 +49,12 @@ public class WMLConfig implements Serializable
     private Map< String, WMLTag > tags_;
     private Set< String >         events_;
 
+    /**
+     * Creates a new WMLConfig on the specified file
+     * 
+     * @param fileName
+     *        The name of the file
+     */
     public WMLConfig( String fileName )
     {
         fileName_ = fileName;
@@ -50,6 +62,9 @@ public class WMLConfig implements Serializable
         events_ = new HashSet< String >( );
     }
 
+    /**
+     * @return The associated file's name
+     */
     public String getFileName( )
     {
         return fileName_;

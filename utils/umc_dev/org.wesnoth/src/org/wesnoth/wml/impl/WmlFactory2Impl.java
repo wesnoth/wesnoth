@@ -13,6 +13,9 @@ import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WMLValue;
 import org.wesnoth.wml.WmlFactory2;
 
+/**
+ * Implementation of the {@link WmlFactory2}
+ */
 public class WmlFactory2Impl extends WmlFactoryImpl implements WmlFactory2
 {
     @Override

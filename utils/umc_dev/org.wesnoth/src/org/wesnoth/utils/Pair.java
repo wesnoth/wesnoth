@@ -8,11 +8,33 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
+/**
+ * Simple mutable tuple that holds 2 object
+ * 
+ * @param <T>
+ *        First object's Type
+ * @param <K>
+ *        Second object's Type
+ */
 public class Pair< T, K >
 {
+    /**
+     * The first stored object
+     */
     public T First;
+    /**
+     * The second stored object
+     */
     public K Second;
 
+    /**
+     * Creates a new pair
+     * 
+     * @param first
+     *        The first object
+     * @param second
+     *        The second object
+     */
     public Pair( T first, K second )
     {
         First = first;

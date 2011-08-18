@@ -19,6 +19,9 @@ import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 
+/**
+ * Utilities class that handles with Wesnoth Map Files (*.map)
+ */
 public class MapUtils
 {
     /**

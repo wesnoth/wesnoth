@@ -30,8 +30,14 @@ import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
+/**
+ * The default Wesnoth Preferences Page
+ */
 public class WesnothPreferencesPage extends AbstractPreferencePage
 {
+    /**
+     * Creates a grid-style {@link WesnothPreferencesPage}
+     */
     public WesnothPreferencesPage( )
     {
         super( GRID );

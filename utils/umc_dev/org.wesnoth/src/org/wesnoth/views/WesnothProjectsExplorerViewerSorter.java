@@ -14,12 +14,28 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 
+/**
+ * A viewer sorter that sorts the items in the Project Explorer in the following
+ * order:
+ * 1) Wesnoth Core Library
+ * 2) Containers
+ * 3) Files
+ */
 public class WesnothProjectsExplorerViewerSorter extends ViewerSorter
 {
+    /**
+     * Creates a new {@link WesnothProjectsExplorerViewerSorter}
+     */
     public WesnothProjectsExplorerViewerSorter( )
     {
     }
 
+    /**
+     * Creates a new {@link WesnothProjectsExplorerViewerSorter}
+     * 
+     * @param collator
+     *        A {@link Collator} instance
+     */
     public WesnothProjectsExplorerViewerSorter( Collator collator )
     {
         super( collator );

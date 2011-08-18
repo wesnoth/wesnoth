@@ -20,8 +20,14 @@ import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.jface.RegexStringFieldEditor;
 
-public class AddonUploadPreferencePage extends AbstractPreferencePage
+/**
+ * Handles Addon Manager preferences
+ */
+public class AddonManagerPreferencePage extends AbstractPreferencePage
 {
+    /**
+     * The id of this preference page
+     */
     public final static String                ID_ADDON_PREFERENCE_PAGE = "org.wesnoth.preferences.AddonPage"; //$NON-NLS-1$
 
     /**
@@ -40,12 +46,15 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
         ADDON_SERVER_PORTS.put( "15004", "trunk" ); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
-    public AddonUploadPreferencePage( )
+    /**
+     * Creates a new Grid-type preference page
+     */
+    public AddonManagerPreferencePage( )
     {
         super( GRID );
 
         setPreferenceStore( WesnothPlugin.getDefault( ).getPreferenceStore( ) );
-        setDescription( Messages.AddonUploadPreferencePage_10 );
+        setDescription( Messages.AddonManagerPreferencePage_10 );
     }
 
     @Override
@@ -53,20 +62,20 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
     {
         addField(
             new StringFieldEditor( Preferences.ADDON_MANAGER_PASSWORD,
-                Messages.AddonUploadPreferencePage_11,
+                Messages.AddonManagerPreferencePage_11,
                 getFieldEditorParent( ) ),
-            Messages.AddonUploadPreferencePage_12 );
+            Messages.AddonManagerPreferencePage_12 );
         addField( new BooleanFieldEditor( Preferences.ADDON_MANAGER_VERBOSE,
-            Messages.AddonUploadPreferencePage_13, 1,
+            Messages.AddonManagerPreferencePage_13, 1,
             getFieldEditorParent( ) ) );
 
         addField(
             new RegexStringFieldEditor( Preferences.ADDON_MANAGER_ADDRESS,
-                Messages.AddonUploadPreferencePage_14,
-                Messages.AddonUploadPreferencePage_15,
-                Messages.AddonUploadPreferencePage_16,
+                Messages.AddonManagerPreferencePage_14,
+                Messages.AddonManagerPreferencePage_15,
+                Messages.AddonManagerPreferencePage_16,
                 getFieldEditorParent( ) ),
-            Messages.AddonUploadPreferencePage_17 );
+            Messages.AddonManagerPreferencePage_17 );
 
         StringBuilder ports = new StringBuilder( );
         StringBuilder portsRegex = new StringBuilder( );
@@ -82,12 +91,12 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
         // System.out.println(portsRegex.toString());
         addField(
             new RegexStringFieldEditor( Preferences.ADDON_MANAGER_PORT,
-                Messages.AddonUploadPreferencePage_22,
+                Messages.AddonManagerPreferencePage_22,
                 portsRegex.toString( ),
-                Messages.AddonUploadPreferencePage_23,
+                Messages.AddonManagerPreferencePage_23,
                 getFieldEditorParent( ) ),
-            Messages.AddonUploadPreferencePage_24 );
-        addField( new LabelFieldEditor( Messages.AddonUploadPreferencePage_25
+            Messages.AddonManagerPreferencePage_24 );
+        addField( new LabelFieldEditor( Messages.AddonManagerPreferencePage_25
             + ports.toString( ), getFieldEditorParent( ) ) );
     }
 }

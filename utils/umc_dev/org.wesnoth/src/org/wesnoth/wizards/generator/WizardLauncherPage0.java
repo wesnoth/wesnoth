@@ -29,7 +29,9 @@ import org.wesnoth.Messages;
 import org.wesnoth.utils.EditorUtils;
 import org.wesnoth.wizards.WizardPageTemplate;
 
-
+/**
+ * First page of the Wizard Launcher
+ */
 public class WizardLauncherPage0 extends WizardPageTemplate
 {
     private Text   txtDirectory_;
@@ -40,6 +42,9 @@ public class WizardLauncherPage0 extends WizardPageTemplate
     private Button btnBrowse;
     private Label  lblFileName;
 
+    /**
+     * Creates a new {@link WizardLauncherPage0}
+     */
     public WizardLauncherPage0( )
     {
         super( "wizardLauncherPage0" ); //$NON-NLS-1$
@@ -231,7 +236,7 @@ public class WizardLauncherPage0 extends WizardPageTemplate
         setErrorMessage( null );
     }
 
-    public void updateEnabledStatus( )
+    private void updateEnabledStatus( )
     {
         // new file section
         btnBrowse.setEnabled( radioNewFile.getSelection( ) );
@@ -250,18 +255,30 @@ public class WizardLauncherPage0 extends WizardPageTemplate
         updatePageIsComplete( );
     }
 
+    /**
+     * @return The filename of the file to generate the WML Code into
+     */
     public String getFileName( )
     {
         return radioNewFile.getSelection( ) == true ? txtFileName_.getText( )
             : EditorUtils.getEditedFile( ).getEditorInput( ).getName( );
     }
 
+    /**
+     * @return The target directory where the new file should be created,
+     *         or empty string if the destination is the current file
+     */
     public String getDirectoryName( )
     {
         return radioNewFile.getSelection( ) == true ? txtDirectory_.getText( )
             : ""; //$NON-NLS-1$
     }
 
+    /**
+     * @return True if the target for the generated WML code should be a
+     *         new file, false otherwise ( the code will be pasted in current
+     *         edited file )
+     */
     public boolean getIsTargetNewFile( )
     {
         return radioNewFile.getSelection( );

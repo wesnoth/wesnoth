@@ -16,8 +16,14 @@ import org.eclipse.ui.console.IConsoleConstants;
 import org.wesnoth.views.AddonsView;
 import org.wesnoth.views.WesnothProjectsExplorer;
 
+/**
+ * The WML Perspective
+ */
 public class WMLPerspective implements IPerspectiveFactory
 {
+    /**
+     * The ID of the {@link WMLPerspective}
+     */
     public static final String ID_WMLPERSPECTIVE = "org.wesnoth.product.WMLPerspective";
 
     @Override

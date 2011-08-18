@@ -34,12 +34,17 @@ import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.wizards.WizardTemplate;
 
-
+/**
+ * Wizard for creating a new Faction
+ */
 public class FactionNewWizard extends WizardTemplate
 {
     FactionPage0 page0_;
     FactionPage1 page1_;
 
+    /**
+     * Creates a new {@link FactionNewWizard}
+     */
     public FactionNewWizard( )
     {
         setWindowTitle( Messages.FactionNewWizard_0 );
@@ -67,7 +72,7 @@ public class FactionNewWizard extends WizardTemplate
     @Override
     public boolean performFinish( )
     {
-        final String containerName = page0_.getDirectoryName( );
+        final String containerName = page0_.getDirectory( );
         final String fileName = page0_.getFileName( );
         IRunnableWithProgress op = new IRunnableWithProgress( ) {
             @Override

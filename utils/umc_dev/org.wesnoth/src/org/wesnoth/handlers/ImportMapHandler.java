@@ -19,7 +19,9 @@ import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.MapUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
-
+/**
+ * Imports a map in the selected folder
+ */
 public class ImportMapHandler extends AbstractHandler
 {
     @Override

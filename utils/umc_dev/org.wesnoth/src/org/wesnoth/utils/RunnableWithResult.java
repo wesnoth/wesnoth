@@ -8,15 +8,30 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
+/**
+ * A Runnable that contains a result of the Runnable
+ * 
+ * @param <T>
+ *        The type of the result
+ */
 public abstract class RunnableWithResult< T > implements Runnable
 {
     private T result_;
 
+    /**
+     * Sets the result of the runnable
+     * 
+     * @param result
+     *        The new result
+     */
     public void setResult( T result )
     {
         result_ = result;
     }
 
+    /**
+     * @return The result of the runnable
+     */
     public T getResult( )
     {
         return result_;

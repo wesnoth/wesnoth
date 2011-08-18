@@ -62,6 +62,9 @@ import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.StringUtils;
 
+/**
+ * Preference page that manages the Wesnoth installs
+ */
 public class WesnothInstallsPage extends AbstractPreferencePage
 {
     private Text                          txtInstallName_;
@@ -113,6 +116,9 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             .getProcessedTemplate( os + "_user", params ) ); //$NON-NLS-1$
     }
 
+    /**
+     * Creates a grid-style {@link WesnothInstallPage}
+     */
     public WesnothInstallsPage( )
     {
         super( GRID );

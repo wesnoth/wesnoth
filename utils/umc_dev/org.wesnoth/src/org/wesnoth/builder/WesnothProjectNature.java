@@ -15,13 +15,21 @@ import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.xtext.ui.XtextProjectHelper;
 
-
+/**
+ * The wesnoth nature
+ */
 public class WesnothProjectNature implements IProjectNature
 {
+    /**
+     * The ID of the Wesnoth nature
+     */
     public static final String ID_NATURE = "org.wesnoth.natures.wesnoth"; //$NON-NLS-1$
 
     private IProject           project_;
 
+    /**
+     * Creates a new {@link WesnothProjectNature}
+     */
     public WesnothProjectNature( )
     {
         project_ = null;

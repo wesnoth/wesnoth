@@ -38,7 +38,14 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
     private Combo cmbInstalls_;
 
     /**
-     * {@inheritDoc}
+     * Creates a new project creation wizard page
+     * 
+     * @param pageName
+     *        The name of the page
+     * @param title
+     *        The title of the page
+     * @param message
+     *        The message showed in the page
      */
     public WizardProjectPageTemplate( String pageName, String title,
         String message )

@@ -21,6 +21,9 @@ import org.eclipse.jface.action.IAction;
 import org.wesnoth.Logger;
 import org.wesnoth.action.ObjectActionDelegate;
 
+/**
+ * Toggles the Wesnoth nature on the selected project
+ */
 public class ToggleWesnothNatureAction extends ObjectActionDelegate
 {
     @Override

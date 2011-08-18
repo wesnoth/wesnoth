@@ -17,13 +17,22 @@ import org.eclipse.swt.widgets.Label;
 import org.wesnoth.Messages;
 import org.wesnoth.wizards.WizardPageTemplate;
 
-
-public class WizardGeneratorPage404 extends WizardPageTemplate
+/**
+ * A 404 Tag Not Found page
+ */
+public class WizardGenerator404Page extends WizardPageTemplate
 {
-    public WizardGeneratorPage404( String tag )
+    /**
+     * Creates a new {@link WizardGenerator404Page}
+     * 
+     * @param tagName
+     *        The tag name which doesn't exist
+     */
+    public WizardGenerator404Page( String tagName )
     {
         super( "wizardGeneratorPage404" ); //$NON-NLS-1$
-        setErrorMessage( String.format( Messages.WizardGeneratorPage404_1, tag ) );
+        setErrorMessage( String.format( Messages.WizardGeneratorPage404_1,
+            tagName ) );
         setTitle( Messages.WizardGeneratorPage404_3 );
         setDescription( Messages.WizardGeneratorPage404_4 );
     }

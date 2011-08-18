@@ -22,12 +22,6 @@ import org.eclipse.xtext.formatting.impl.FormattingConfig;
  */
 public class WMLFormatter extends AbstractDeclarativeFormatter
 {
-
-    public WMLFormatter( )
-    {
-        super( );
-    }
-
     @Override
     protected void configureFormatting( FormattingConfig c )
     {

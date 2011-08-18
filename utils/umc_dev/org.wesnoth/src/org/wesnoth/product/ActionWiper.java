@@ -20,6 +20,9 @@ import org.eclipse.ui.PlatformUI;
 
 import org.wesnoth.Messages;
 
+/**
+ * A class that wipes irrelevant action for the UMC IDE
+ */
 public class ActionWiper implements IStartup, IPerspectiveListener
 {
     private static final String[] ACTIONS_2_WIPE = new String[] {

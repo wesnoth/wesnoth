@@ -43,7 +43,7 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.part.ViewPart;
 
 import org.wesnoth.installs.SelectWesnothInstallDialog;
-import org.wesnoth.preferences.AddonUploadPreferencePage;
+import org.wesnoth.preferences.AddonManagerPreferencePage;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.projects.ProjectUtils;
@@ -53,8 +53,15 @@ import org.wesnoth.utils.RunnableWithResult;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLTools;
 
+
+/**
+ * A view that manages addons
+ */
 public class AddonsView extends ViewPart
 {
+    /**
+     * The id of this addons view
+     */
     public final static String ID_ADDONS_VIEW = "org.wesnoth.addonsView";
 
     private Combo              cmbAddonServer_;
@@ -67,6 +74,9 @@ public class AddonsView extends ViewPart
     private boolean            loading_;
     private Table              tableAddons_;
 
+    /**
+     * Creates a new {@link AddonsView}
+     */
     public AddonsView( )
     {
         ports_ = new ArrayList< String >( );
@@ -143,7 +153,7 @@ public class AddonsView extends ViewPart
             {
                 PreferencesUtil.createPreferenceDialogOn(
                     getViewSite( ).getShell( ),
-                    AddonUploadPreferencePage.ID_ADDON_PREFERENCE_PAGE,
+                    AddonManagerPreferencePage.ID_ADDON_PREFERENCE_PAGE,
                     null, null ).open( );
             }
         } );
@@ -159,7 +169,7 @@ public class AddonsView extends ViewPart
 
         ports_.clear( );
         // fill the addons
-        for( Entry< String, String > server: AddonUploadPreferencePage.ADDON_SERVER_PORTS
+        for( Entry< String, String > server: AddonManagerPreferencePage.ADDON_SERVER_PORTS
             .entrySet( ) ) {
 
             cmbAddonServer_.add( String.format( "%s ( port: %s )",

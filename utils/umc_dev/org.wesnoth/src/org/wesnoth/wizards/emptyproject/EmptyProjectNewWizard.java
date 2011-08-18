@@ -21,11 +21,17 @@ import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.wizards.WizardProjectPageTemplate;
 import org.wesnoth.wizards.WizardTemplate;
 
+/**
+ * Wizard for creating a new empty project
+ */
 public class EmptyProjectNewWizard extends WizardTemplate
 {
     protected WizardProjectPageTemplate page0_;
     protected EmptyProjectPage1         page1_;
 
+    /**
+     * Creates a new {@link EmptyProjectNewWizard}
+     */
     public EmptyProjectNewWizard( )
     {
         setWindowTitle( Messages.EmptyProjectNewWizard_0 );

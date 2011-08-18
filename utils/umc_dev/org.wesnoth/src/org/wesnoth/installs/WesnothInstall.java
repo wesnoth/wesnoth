@@ -8,27 +8,51 @@
  *******************************************************************************/
 package org.wesnoth.installs;
 
+/**
+ * This class represents a Wesnoth Install's data
+ */
 public class WesnothInstall
 {
     private String name_;
     private String version_;
 
+    /**
+     * Creates a new install with the specified name and version
+     * 
+     * @param name
+     *        The name of the wesnoth install
+     * @param version
+     *        The version of wesnoth
+     * 
+     */
     public WesnothInstall( String name, String version )
     {
         name_ = name;
         version_ = version;
     }
 
+    /**
+     * @return The name of the install given by the user
+     */
     public String getName( )
     {
         return name_;
     }
 
+    /**
+     * @return The Wesnoth version of the install
+     */
     public String getVersion( )
     {
         return version_;
     }
 
+    /**
+     * Sets this wesnoth install's version
+     * 
+     * @param newVersion
+     *        The new version String
+     */
     public void setVersion( String newVersion )
     {
         version_ = newVersion;

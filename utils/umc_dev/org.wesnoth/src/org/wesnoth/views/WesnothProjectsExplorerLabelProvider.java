@@ -7,6 +7,9 @@ import org.eclipse.swt.graphics.Image;
 
 import org.wesnoth.WesnothPlugin;
 
+/**
+ * Label provider for the WesnothProjectsExplorer
+ */
 public class WesnothProjectsExplorerLabelProvider extends LabelProvider
 {
     private static Image CORE_LIBRARY_IMAGE = null;

@@ -24,7 +24,9 @@ import org.wesnoth.Messages;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.wizards.WizardPageTemplate;
 
-
+/**
+ * Page 2 of the New Campaign Wizard
+ */
 public class CampaignPage2 extends WizardPageTemplate
 {
     private Text txtAbbrev_;
@@ -34,7 +36,7 @@ public class CampaignPage2 extends WizardPageTemplate
     private Text txtID_;
 
     /**
-     * Create the wizard.
+     * Create a new {@link CampaignPage2}
      */
     public CampaignPage2( )
     {
@@ -193,7 +195,7 @@ public class CampaignPage2 extends WizardPageTemplate
     }
 
     /**
-     * @return returns the abbreviation of the campaign
+     * @return the abbreviation of the campaign
      */
     public String getAbbrev( )
     {
@@ -201,7 +203,7 @@ public class CampaignPage2 extends WizardPageTemplate
     }
 
     /**
-     * @return returns the define of the campaign
+     * @return the define of the campaign
      */
     public String getDefine( )
     {
@@ -209,7 +211,7 @@ public class CampaignPage2 extends WizardPageTemplate
     }
 
     /**
-     * @return returns the difficulties of the campaign
+     * @return the difficulties of the campaign
      */
     public String getDifficulties( )
     {
@@ -217,13 +219,16 @@ public class CampaignPage2 extends WizardPageTemplate
     }
 
     /**
-     * @return returns the first scenario of the campaign
+     * @return the first scenario of the campaign
      */
     public String getFirstScenario( )
     {
         return txtFirstScenario_.getText( );
     }
 
+    /**
+     * @return the campaign id
+     */
     public String getCampaignId( )
     {
         return txtID_.getText( );

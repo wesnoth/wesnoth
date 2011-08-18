@@ -26,10 +26,26 @@ import org.wesnoth.wml.WMLRoot;
 import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WmlFactory2;
 
+/**
+ * Utilities class that handles with the WML Grammar
+ */
 public class WMLUtils
 {
+    /**
+     * The singleton instance of {@link EObjectAtOffsetHelper}
+     */
     public final static EObjectAtOffsetHelper EObjectUtils = new EObjectAtOffsetHelper( );
 
+    /**
+     * Returns the {@link EObject} found at the specified offset in the
+     * specified resource
+     * 
+     * @param resource
+     *        The resource to search into
+     * @param offset
+     *        The offset where to search
+     * @return An {@link EObject} instance of null if none found.
+     */
     public static EObject resolveElementAt( XtextResource resource, int offset )
     {
         try {
@@ -165,7 +181,7 @@ public class WMLUtils
     /**
      * Returns a WML string representation of the specified key
      * 
-     * @param tag
+     * @param key
      *        The key to get the WML String representation for
      * @return The string representation
      */

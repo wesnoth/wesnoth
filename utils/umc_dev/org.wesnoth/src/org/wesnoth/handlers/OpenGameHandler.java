@@ -13,7 +13,9 @@ import org.eclipse.core.commands.ExecutionEvent;
 
 import org.wesnoth.utils.GameUtils;
 
-
+/**
+ * Starts wesnoth
+ */
 public class OpenGameHandler extends AbstractHandler
 {
     @Override

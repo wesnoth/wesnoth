@@ -19,7 +19,9 @@ import org.eclipse.swt.widgets.Label;
 import org.wesnoth.Messages;
 import org.wesnoth.wizards.WizardPageTemplate;
 
-
+/**
+ * The third page of the New Scenario Page
+ */
 public class ScenarioPage2 extends WizardPageTemplate
 {
     Button chkIsMultiplayerScenario_;
@@ -76,12 +78,19 @@ public class ScenarioPage2 extends WizardPageTemplate
         chkAllowNewGame_.setEnabled( status );
     }
 
+    /**
+     * @return True if a new game is allowed, false otherwise
+     */
     public String getAllowNewGame( )
     {
         return isMultiplayerScenario( ) ? String.valueOf( chkAllowNewGame_
             .getSelection( ) ): ""; //$NON-NLS-1$
     }
 
+    /**
+     * @return True if this is a multiplayer scenario, false
+     *         otherwise
+     */
     public boolean isMultiplayerScenario( )
     {
         return chkIsMultiplayerScenario_.getSelection( );

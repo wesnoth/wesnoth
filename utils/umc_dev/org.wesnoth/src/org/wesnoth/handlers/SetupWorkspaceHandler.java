@@ -13,7 +13,9 @@ import org.eclipse.core.commands.ExecutionEvent;
 
 import org.wesnoth.utils.WorkspaceUtils;
 
-
+/**
+ * Triggers the setup workspace routine ( guided )
+ */
 public class SetupWorkspaceHandler extends AbstractHandler
 {
     @Override

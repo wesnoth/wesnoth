@@ -27,21 +27,33 @@ import org.wesnoth.wizards.WizardPageTemplate;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLKeyValue;
 
-
-public class WizardGeneratorPageKey extends WizardPageTemplate
+/**
+ * A page that generates keys for a tag
+ */
+public class WizardGeneratorKeysPage extends WizardPageTemplate
 {
     private List< WMLKey > keys_;
     private int            startIndex_, endIndex_;
     private Composite      container_;
     private int            indent_;
 
-    public WizardGeneratorPageKey( String tagName, List< WMLKey > keys,
+    /**
+     * @param tagName
+     *        The tag the keys are belonging to
+     * @param keys
+     *        The current keys list
+     * @param startIndex
+     *        The start index in the keys list
+     * @param endIndex
+     *        The end index in the keys list
+     * @param indent
+     *        The indent used when creating the WML output
+     */
+    public WizardGeneratorKeysPage( String tagName, List< WMLKey > keys,
         int startIndex, int endIndex, int indent )
     {
-        super( Messages.WizardGeneratorPageKey_0 + startIndex );
+        super( "wizardPageKey" + startIndex );
         setTitle( tagName + Messages.WizardGeneratorPageKey_1 );
-        // setDescription(String.format("page %d to %d out of %d", startIndex,
-        // endIndex, keys.size()));
 
         indent_ = indent;
 
@@ -154,6 +166,9 @@ public class WizardGeneratorPageKey extends WizardPageTemplate
         setErrorMessage( null );
     }
 
+    /**
+     * @return the generated WML Output
+     */
     public String getContent( )
     {
         StringBuilder result = new StringBuilder( );

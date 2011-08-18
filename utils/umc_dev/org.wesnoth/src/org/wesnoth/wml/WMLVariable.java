@@ -24,32 +24,48 @@ public class WMLVariable implements Serializable
 
     private List< Scope >     scopes_;
 
+    /**
+     * Creates a new {@link WMLVariable} with the specified name
+     * 
+     * @param name
+     *        The name of the variable
+     */
     public WMLVariable( String name )
     {
         name_ = name;
         scopes_ = new ArrayList< Scope >( );
     }
 
+    /**
+     * @return The name of this {@link WMLVariable}
+     */
     public String getName( )
     {
         return name_;
     }
 
-    public void setName( String name )
-    {
-        name_ = name;
-    }
-
+    /**
+     * @return True if the variable is an array, false otherwise
+     */
     public boolean isArray( )
     {
         return isArray_;
     }
 
+    /**
+     * Sets whether this variable is an array or not
+     * 
+     * @param isArray
+     *        True if the variable is an array, false otherwise
+     */
     public void setIsArray( boolean isArray )
     {
         isArray_ = isArray;
     }
 
+    /**
+     * @return A list of {@link Scope} where this variable is visible
+     */
     public List< Scope > getScopes( )
     {
         return scopes_;
@@ -97,6 +113,14 @@ public class WMLVariable implements Serializable
          */
         public int                EndOffset;
 
+        /**
+         * Creates a new scope
+         * 
+         * @param startIndex
+         *        The start index of the scope
+         * @param startOffset
+         *        The offset in the file represented by the index
+         */
         public Scope( int startIndex, int startOffset )
         {
             StartIndex = startIndex;

@@ -28,6 +28,9 @@ import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
 import org.wesnoth.wizards.WizardPageTemplate;
 
+/**
+ * The first page in the New Era Wizard
+ */
 public class EraPage0 extends WizardPageTemplate
 {
     private Text   txtDirectory_;
@@ -37,7 +40,7 @@ public class EraPage0 extends WizardPageTemplate
     private Button chkRequireEra_;
 
     /**
-     * Create the wizard.
+     * Create a new {@link EraPage0}
      */
     public EraPage0( )
     {

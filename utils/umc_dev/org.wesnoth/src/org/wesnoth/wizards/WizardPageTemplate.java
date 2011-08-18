@@ -14,6 +14,9 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 
+/**
+ * A template wizard page with some default functionality
+ */
 public class WizardPageTemplate extends WizardPage
 {
     protected WizardPageTemplate( String pageName )

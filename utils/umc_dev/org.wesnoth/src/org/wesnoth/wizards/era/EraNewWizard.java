@@ -34,11 +34,16 @@ import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.wizards.WizardTemplate;
 
-
+/**
+ * Wizard for creating a new Era
+ */
 public class EraNewWizard extends WizardTemplate
 {
-    EraPage0 page0_;
+    private EraPage0 page0_;
 
+    /**
+     * Creates a new {@link EraNewWizard}
+     */
     public EraNewWizard( )
     {
         setWindowTitle( Messages.EraNewWizard_0 );

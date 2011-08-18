@@ -29,6 +29,9 @@ import org.wesnoth.utils.ResourceUtils.WMLFilesComparator;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.views.WesnothProjectsExplorer;
 
+/**
+ * The builder that creates a dependency list for a project
+ */
 public class DependencyListBuilder implements Serializable
 {
     private static final long                 serialVersionUID = 6007509520015856611L;
@@ -54,6 +57,13 @@ public class DependencyListBuilder implements Serializable
     private List< String >                    directories_;
     private List< ListDirectoryEntry >        directoriesEntries_;
 
+    /**
+     * Creates a new {@link DependencyListBuilder} instance for the
+     * specified project
+     * 
+     * @param project
+     *        The project to create the list for
+     */
     public DependencyListBuilder( IProject project )
     {
         list_ = new HashMap< String, DependencyListNode >( );
@@ -655,6 +665,9 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Deserializes this object with the specified project
+     * 
+     * @param project
+     *        The project to whom this list belongs to
      */
     public void deserialize( IProject project )
     {

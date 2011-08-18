@@ -15,8 +15,14 @@ import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 
+/**
+ * Preference page that handles the WML Tools
+ */
 public class WMLToolsPreferencePage extends AbstractPreferencePage
 {
+    /**
+     * Creates a new grid-style {@link WMLToolsPreferencePage}
+     */
     public WMLToolsPreferencePage( )
     {
         super( GRID );

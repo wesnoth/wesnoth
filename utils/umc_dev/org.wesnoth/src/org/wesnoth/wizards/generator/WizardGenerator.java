@@ -18,16 +18,27 @@ import org.wesnoth.wizards.WizardTemplate;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLTag;
 
+/**
+ * Wizard that generates WML code for a specific tag
+ */
 public class WizardGenerator extends WizardTemplate
 {
-    public static final int WIZ_TextBoxHeight       = 21;
-    public static final int WIZ_MaxTextBoxesOnPage  = 10;
-    public static final int WIZ_MaxGroupsOnPage     = 4;
-    public static final int WIZ_MaxWizardPageHeight = 220;
+    private static final int WIZ_MaxTextBoxesOnPage = 10;
+    private static final int WIZ_MaxGroupsOnPage    = 4;
 
-    private String          tagName_;
-    private int             indent_;
+    private String           tagName_;
+    private int              indent_;
 
+    /**
+     * Creates a new {@link WizardGenerator}
+     * 
+     * @param title
+     *        The title of the wizard
+     * @param tagName
+     *        The name of the tag to generate WML code for
+     * @param indent
+     *        The indent used in the generated WML code
+     */
     public WizardGenerator( String title, String tagName, int indent )
     {
         SchemaParser.getInstance( null ).parseSchema( false );
@@ -38,16 +49,16 @@ public class WizardGenerator extends WizardTemplate
         tagName_ = tagName;
         indent_ = indent;
         if( tagContent == null ) {
-            addPage( new WizardGeneratorPage404( tagName ) );
+            addPage( new WizardGenerator404Page( tagName ) );
         }
         else {
             // keys section
             List< WMLKey > keys = tagContent.getWMLKeys( );
             int keysNr = keys.size( );
             int startKey = 0, pgsKey = ( keysNr / WIZ_MaxTextBoxesOnPage );
-            WizardGeneratorPageKey tempPageKey;
+            WizardGeneratorKeysPage tempPageKey;
             for( int i = 0; i < pgsKey; i++ ) {
-                tempPageKey = new WizardGeneratorPageKey( tagName, keys,
+                tempPageKey = new WizardGeneratorKeysPage( tagName, keys,
                     startKey, startKey + WIZ_MaxTextBoxesOnPage,
                     indent_ + 1 );
                 startKey += WIZ_MaxTextBoxesOnPage;
@@ -55,7 +66,7 @@ public class WizardGenerator extends WizardTemplate
             }
 
             if( keysNr - 1 > 0 ) {
-                tempPageKey = new WizardGeneratorPageKey( tagName, keys,
+                tempPageKey = new WizardGeneratorKeysPage( tagName, keys,
                     startKey, keysNr - 1, indent_ + 1 );
                 addPage( tempPageKey );
             }
@@ -64,26 +75,29 @@ public class WizardGenerator extends WizardTemplate
             List< WMLTag > tags = tagContent.getWMLTags( );
             int tagsNr = tags.size( );
             int startTag = 0, pgsTag = ( tagsNr / WIZ_MaxGroupsOnPage );
-            WizardGeneratorPageTag tempPageTag;
+            WizardGeneratorTagPage tempPageTag;
             for( int i = 0; i < pgsTag; i++ ) {
-                tempPageTag = new WizardGeneratorPageTag( tagName, tags,
+                tempPageTag = new WizardGeneratorTagPage( tagName, tags,
                     startTag, startTag + WIZ_MaxGroupsOnPage,
                     indent_ + 1 );
                 startTag += WIZ_MaxTextBoxesOnPage;
                 addPage( tempPageTag );
             }
             if( tagsNr - 1 > 0 ) {
-                tempPageTag = new WizardGeneratorPageTag( tagName, tags,
+                tempPageTag = new WizardGeneratorTagPage( tagName, tags,
                     startTag, tagsNr - 1, indent_ + 1 );
                 addPage( tempPageTag );
             }
 
             if( getPageCount( ) == 0 ) {
-                addPage( new WizardGeneratorPage404( tagName ) );
+                addPage( new WizardGenerator404Page( tagName ) );
             }
         }
     }
 
+    /**
+     * @return The indent of the WML Code
+     */
     public int getIndent( )
     {
         return indent_;
@@ -97,11 +111,11 @@ public class WizardGenerator extends WizardTemplate
         StringBuilder keys = new StringBuilder( );
         StringBuilder tags = new StringBuilder( );
         for( IWizardPage page: getPages( ) ) {
-            if( page instanceof WizardGeneratorPageKey ) {
-                keys.append( ( ( WizardGeneratorPageKey ) page ).getContent( ) );
+            if( page instanceof WizardGeneratorKeysPage ) {
+                keys.append( ( ( WizardGeneratorKeysPage ) page ).getContent( ) );
             }
-            else if( page instanceof WizardGeneratorPageTag ) {
-                tags.append( ( ( WizardGeneratorPageTag ) page ).getContent( ) );
+            else if( page instanceof WizardGeneratorTagPage ) {
+                tags.append( ( ( WizardGeneratorTagPage ) page ).getContent( ) );
             }
             else {
                 // skip 404 pages

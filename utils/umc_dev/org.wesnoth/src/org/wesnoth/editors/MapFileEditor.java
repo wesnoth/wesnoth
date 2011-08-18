@@ -5,6 +5,9 @@ import org.eclipse.ui.IEditorLauncher;
 
 import org.wesnoth.utils.GameUtils;
 
+/**
+ * Starts the Wesnoth Map Editor
+ */
 public class MapFileEditor implements IEditorLauncher
 {
     @Override

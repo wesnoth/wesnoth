@@ -13,14 +13,28 @@ import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
+/**
+ * An abstract class that implements some basic functionality for a
+ * preference page.
+ */
 public abstract class AbstractPreferencePage extends FieldEditorPreferencePage
     implements IWorkbenchPreferencePage
 {
+    /**
+     * Creates a new field editor preference page with the given style, an empty
+     * title, and no image.
+     * 
+     * @param style
+     *        either GRID or FLAT
+     */
     public AbstractPreferencePage( int style )
     {
         super( style );
     }
 
+    /**
+     * Creates a new {@link AbstractPreferencePage}
+     */
     public AbstractPreferencePage( )
     {
         super( );

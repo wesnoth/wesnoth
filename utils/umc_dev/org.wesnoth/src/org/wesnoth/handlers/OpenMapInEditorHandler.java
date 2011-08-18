@@ -17,7 +17,9 @@ import org.wesnoth.Messages;
 import org.wesnoth.utils.GameUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
-
+/**
+ * Opens the selected map in the Map Editor
+ */
 public class OpenMapInEditorHandler extends AbstractHandler
 {
     @Override

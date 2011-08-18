@@ -19,6 +19,9 @@ import org.eclipse.ui.IWorkbench;
 
 import org.wesnoth.WesnothPlugin;
 
+/**
+ * An abstract wizard template with some default functionality
+ */
 public abstract class WizardTemplate extends Wizard implements INewWizard
 {
     protected IStructuredSelection selection_;
@@ -28,6 +31,9 @@ public abstract class WizardTemplate extends Wizard implements INewWizard
     protected Object               data_       = null;
     protected String               objectName_ = "";   //$NON-NLS-1$
 
+    /**
+     * Creates a new {@link Wizard}
+     */
     public WizardTemplate( )
     {
         setNeedsProgressMonitor( true );

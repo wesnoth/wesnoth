@@ -13,8 +13,14 @@ import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.wesnoth.Messages;
 import org.wesnoth.WesnothPlugin;
 
+/**
+ * Handles advanced preferences
+ */
 public class AdvancedPreferencePage extends AbstractPreferencePage
 {
+    /**
+     * Creates a new grid-style preference page
+     */
     public AdvancedPreferencePage( )
     {
         super( GRID );

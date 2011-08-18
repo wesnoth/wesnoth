@@ -69,7 +69,10 @@ public class ScenarioPage0 extends WizardPageTemplate
     /**
      * Constructor for SampleNewWizardPage.
      * 
+     * @param container
+     *        The current selected container
      * @param pageName
+     *        The name of the page
      */
     public ScenarioPage0( IContainer container )
     {
@@ -351,11 +354,21 @@ public class ScenarioPage0 extends WizardPageTemplate
         return txtMapData_.getText( );
     }
 
+    /**
+     * Returns the path to the scenario's map
+     * 
+     * @return the path to the scenario's map
+     */
     public String getRawMapPath( )
     {
         return rawMapPath_;
     }
 
+    /**
+     * Returns true if the map should be embedded in the file
+     * 
+     * @return True if the map should be embedded in the file
+     */
     public boolean getIsMapEmbedded( )
     {
         return chkEmbeddedMap_.getSelection( );

@@ -25,6 +25,9 @@ import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
+/**
+ * Utilities class that handles Wesnoth installs
+ */
 public class WesnothInstallsUtils
 {
     /**

@@ -30,7 +30,9 @@ import org.wesnoth.Logger;
 import org.wesnoth.Messages;
 import org.wesnoth.wizards.WizardTemplate;
 
-
+/**
+ * Wizard for creating new config files
+ */
 public class NewConfigFileWizard extends WizardTemplate
 {
     private NewConfigFilePage0 page_;

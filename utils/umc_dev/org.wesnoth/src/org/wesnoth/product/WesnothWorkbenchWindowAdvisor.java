@@ -18,9 +18,17 @@ import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
 import org.wesnoth.Logger;
 
+/**
+ * Workbench advisor for the UMC IDE
+ */
 public class WesnothWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor
 {
-
+    /**
+     * Creates a new {@link WesnothWorkbenchAdvisor}
+     * 
+     * @param configurer
+     *        The configurer used to configure the workbench
+     */
     public WesnothWorkbenchWindowAdvisor( IWorkbenchWindowConfigurer configurer )
     {
         super( configurer );

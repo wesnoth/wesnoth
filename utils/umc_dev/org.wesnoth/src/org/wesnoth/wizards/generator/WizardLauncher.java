@@ -27,13 +27,18 @@ import org.wesnoth.utils.EditorUtils;
 import org.wesnoth.utils.WizardUtils;
 import org.wesnoth.wizards.WizardTemplate;
 
-
+/**
+ * A Wizard that launches a custom wizard for selected tag
+ */
 public class WizardLauncher extends WizardTemplate
 {
     WizardLauncherPage0 page0_;
     WizardLauncherPage1 page1_;
     WizardGenerator     wizard_;
 
+    /**
+     * Creates a new {@link WizardLauncher}
+     */
     public WizardLauncher( )
     {
         setWindowTitle( Messages.WizardLauncher_0 );

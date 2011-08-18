@@ -40,6 +40,10 @@ public class DependencyListNode implements Serializable
      */
     public static final int           INDEX_STEP       = 100000;
 
+    /**
+     * The {@link QualifiedName} that represents the Project Dependency List
+     * Index
+     */
     public static final QualifiedName PDL_INDEX        = new QualifiedName(
                                                            WesnothPlugin.ID_PLUGIN,
                                                            "pdl_index" );       //$NON-NLS-1$
@@ -53,6 +57,14 @@ public class DependencyListNode implements Serializable
 
     private int                       index_;
 
+    /**
+     * Creates a new List Node
+     * 
+     * @param file
+     *        The file contained in the node
+     * @param index
+     *        The index of the node
+     */
     public DependencyListNode( IFile file, int index )
     {
         previous_ = next_ = null;

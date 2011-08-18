@@ -57,6 +57,12 @@ public class ProjectCache implements Serializable
     private DependencyListBuilder           dependTree_;
     private Map< String, WMLVariable >      variables_;
 
+    /**
+     * Creates a new {@link ProjectCache}
+     * 
+     * @param project
+     *        The project the cache is created for
+     */
     public ProjectCache( IProject project )
     {
         project_ = project;
@@ -234,7 +240,7 @@ public class ProjectCache implements Serializable
     }
 
     /**
-     * The name of the install used in the project
+     * @return The name of the install used in the project
      */
     public String getInstallName( )
     {

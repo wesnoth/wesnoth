@@ -33,6 +33,16 @@ public class DoubleInputDialog extends Dialog
     private String resStr1 = "", resStr2 = ""; //$NON-NLS-1$ //$NON-NLS-2$
     private String val1String = "", val2String = ""; //$NON-NLS-1$ //$NON-NLS-2$
 
+    /**
+     * Creates a new {@link DoubleInputDialog}
+     * 
+     * @param parentShell
+     *        The shell where to create the dialog in
+     * @param value1String
+     *        The label for the first input box
+     * @param value2String
+     *        The label for the second input box
+     */
     public DoubleInputDialog( Shell parentShell, String value1String,
         String value2String )
     {
@@ -97,6 +107,8 @@ public class DoubleInputDialog extends Dialog
 
     /**
      * Gets the value in the first textbox
+     * 
+     * @return the value in the first textbox
      */
     public String getFirstValue( )
     {
@@ -105,6 +117,8 @@ public class DoubleInputDialog extends Dialog
 
     /**
      * Gets the value in the second textbox
+     * 
+     * @return the value in the second textbox
      */
     public String getSecondValue( )
     {

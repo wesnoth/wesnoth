@@ -22,12 +22,18 @@ import org.wesnoth.installs.WesnothInstallsUtils;
 import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.projects.ProjectUtils;
 
+/**
+ * A PropertyPage for Wesnoth Projects
+ */
 public class WesnothProjectPage extends PropertyPage
 {
     private Combo        cmbInstall_;
     private ProjectCache currentProjectCache_;
     private String       currentInstall_;
 
+    /**
+     * Creates a new {@link WesnothProjectPage}
+     */
     public WesnothProjectPage( )
     {
         currentProjectCache_ = null;

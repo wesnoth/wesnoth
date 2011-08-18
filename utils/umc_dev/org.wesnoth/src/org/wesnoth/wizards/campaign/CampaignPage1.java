@@ -21,7 +21,9 @@ import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Messages;
 import org.wesnoth.wizards.WizardPageTemplate;
 
-
+/**
+ * Page 1 for the New Campaign Wizard
+ */
 public class CampaignPage1 extends WizardPageTemplate
 {
     private Text   txtCampaignName_;
@@ -35,6 +37,9 @@ public class CampaignPage1 extends WizardPageTemplate
     private Button chkMultiCampaign_;
     private Button chkGeneratePBL_;
 
+    /**
+     * Creates a new {@link CampaignPage1}
+     */
     public CampaignPage1( )
     {
         super( "campaignPage1" ); //$NON-NLS-1$
@@ -250,6 +255,10 @@ public class CampaignPage1 extends WizardPageTemplate
         return chkMultiCampaign_.getSelection( );
     }
 
+    /**
+     * 
+     * @return true to create the pbl file
+     */
     public boolean needsPBLFile( )
     {
         return chkGeneratePBL_.getSelection( );

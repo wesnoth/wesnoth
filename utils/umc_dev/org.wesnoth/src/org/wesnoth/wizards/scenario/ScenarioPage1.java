@@ -23,11 +23,16 @@ import org.wesnoth.Messages;
 import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.wizards.WizardPageTemplate;
 
-
+/**
+ * The second page of New Scenario Wizard
+ */
 public class ScenarioPage1 extends WizardPageTemplate
 {
     private Composite container_;
 
+    /**
+     * Creates a new {@link ScenarioPage1}
+     */
     public ScenarioPage1( )
     {
         super( "scenarioPage1" ); //$NON-NLS-1$

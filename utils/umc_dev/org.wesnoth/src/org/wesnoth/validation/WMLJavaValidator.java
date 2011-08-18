@@ -68,6 +68,12 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
         return Preferences.getBool( Preferences.WML_VALIDATION );
     }
 
+    /**
+     * Checks if the tag's start and end name are equal.
+     * 
+     * @param tag
+     *        The {@link WMLTag} to check
+     */
     @Check( CheckType.FAST )
     public void checkFastTagName( WMLTag tag )
     {
@@ -81,6 +87,12 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
         }
     }
 
+    /**
+     * Checks if the tag name exists in the schema.
+     * 
+     * @param tag
+     *        The {@link WMLTag} to check
+     */
     @Check( CheckType.NORMAL )
     public void checkNormalTagName( WMLTag tag )
     {
@@ -179,6 +191,12 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
         }
     }
 
+    /**
+     * Checks the cardinality correctness of the WMLRoot
+     * 
+     * @param root
+     *        The {@link WMLRoot} to check
+     */
     @Check( CheckType.NORMAL )
     public void checkNormalWMLRootCardinality( WMLRoot root )
     {
@@ -190,6 +208,12 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
             Iterables.filter( root.getExpressions( ), WMLTag.class ) );
     }
 
+    /**
+     * Checks the cardinality correctness of the WMLTag
+     * 
+     * @param tag
+     *        The {@link WMLTag} to check
+     */
     @Check( CheckType.NORMAL )
     public void checkNormalWMLTagCardinality( WMLTag tag )
     {
@@ -205,6 +229,12 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
             Iterables.filter( tag.getExpressions( ), WMLKey.class ) );
     }
 
+    /**
+     * Checks if the specified macro exists
+     * 
+     * @param call
+     *        The {@link WMLMacroCall} to check
+     */
     @Check( CheckType.NORMAL )
     public void checkNormalWMLMacroExistance( WMLMacroCall call )
     {

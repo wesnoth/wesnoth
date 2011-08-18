@@ -20,13 +20,26 @@ import org.eclipse.ui.navigator.CommonNavigator;
 
 import org.wesnoth.Logger;
 
+/**
+ * The Wesnoth Projects Explorer
+ */
 public class WesnothProjectsExplorer extends CommonNavigator implements
     IPersistableElement, IElementFactory
 {
+    /**
+     * The ID of the Wesnoth Projects Explorer
+     */
     public static final String ID_PROJECTS_EXPLORER = "org.wesnoth.views.WesnothProjectsExplorer"; //$NON-NLS-1$
 
+    /**
+     * The default name of the Wesnoth Core Library directory that exists
+     * in each Wesnoth Project
+     */
     public static final String CORE_LIBRARY_NAME    = "Wesnoth Core Library";
 
+    /**
+     * Creates a new {@link WesnothProjectsExplorer}
+     */
     public WesnothProjectsExplorer( )
     {
         try {
