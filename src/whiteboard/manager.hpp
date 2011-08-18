@@ -159,10 +159,15 @@ public:
 	/// Updates shroud and clears the undo_stack and redo_stack.
 	void clear_undo();
 
+	/// Displays the whiteboard options dialog.
+	void options_dlg();
+
 private:
 	void validate_actions_if_needed();
 	/// Called by all of the save_***() methods after they have added their action to the queue
 	void on_save_action() const;
+	void update_plan_hiding(size_t viewing_team) const;
+	void update_plan_hiding() const; //same as above, but uses wb::viewer_team() as default argument
 
 	///Tracks whether the whiteboard is active.
 	bool active_;
@@ -190,6 +195,9 @@ private:
 
 	///net_buffer_[i] = whiteboard network data to be sent "from" teams[i].
 	std::vector<config> net_buffer_;
+
+	///team_plans_hidden_[i] = whether or not to hide actions from teams[i].
+	std::vector<bool> team_plans_hidden_;
 };
 
 /** Applies the planned unit map for the duration of the struct's life.

@@ -31,7 +31,10 @@
 #include "arrow.hpp"
 #include "chat_events.hpp"
 #include "foreach.hpp"
+#include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
+#include "gettext.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "key.hpp"
 #include "network.hpp"
 #include "pathfind/pathfind.hpp"
@@ -61,7 +64,8 @@ manager::manager():
 		fake_unit_(),
 		key_poller_(new CKey),
 		hidden_unit_hex_(),
-		net_buffer_(resources::teams->size())
+		net_buffer_(resources::teams->size()),
+		team_plans_hidden_(resources::teams->size(),false)
 {
 	LOG_WB << "Manager initialized.\n";
 }
@@ -229,7 +233,7 @@ bool manager::allow_leader_to_move(unit const& leader) const
 
 void manager::on_init_side()
 {
-	validate_viewer_actions();
+	update_plan_hiding(); //< validates actions
 	wait_for_side_init_ = false;
 	LOG_WB << "on_init_side()\n";
 
@@ -254,7 +258,8 @@ static void hide_all_plans()
 		t.get_side_actions()->hide();
 }
 
-void manager::on_viewer_change(size_t team_index)
+/* private */
+void manager::update_plan_hiding(size_t team_index) const
 {
 	//We don't control the "viewing" side ... we're probably an observer
 	if(!resources::teams->at(team_index).is_human())
@@ -263,13 +268,19 @@ void manager::on_viewer_change(size_t team_index)
 	{
 		foreach(team& t, *resources::teams)
 		{
-			if(t.is_enemy(team_index+1))
+			if(t.is_enemy(team_index+1) || team_plans_hidden_[t.side()-1])
 				t.get_side_actions()->hide();
 			else
 				t.get_side_actions()->show();
 		}
 	}
+	resources::teams->at(team_index).get_side_actions()->validate_actions();
 }
+void manager::update_plan_hiding() const
+	{update_plan_hiding(viewer_team());}
+
+void manager::on_viewer_change(size_t team_index)
+	{update_plan_hiding(team_index);}
 
 void manager::on_change_controller(int side, team& t)
 {
@@ -280,7 +291,7 @@ void manager::on_change_controller(int side, team& t)
 		resources::whiteboard->queue_net_cmd(sa.team_index(),sa.make_net_cmd_clear());
 		sa.clear();
 		//refresh the hidden_ attribute of every team's side_actions
-		on_viewer_change(viewer_team());
+		update_plan_hiding();
 	}
 	else if(t.is_ai() || t.is_network_ai()) //< no one owns this side anymore
 		sa.clear(); //< clear its plans away -- the ai doesn't plan ... yet
@@ -901,6 +912,67 @@ void manager::clear_undo()
 	apply_shroud_changes(*resources::undo_stack, viewer_side());
 	resources::undo_stack->clear();
 	resources::redo_stack->clear();
+}
+
+void manager::options_dlg()
+{
+	int v_side = viewer_side();
+
+	int selection = 0;
+
+	std::vector<team*> allies;
+	std::vector<std::string> options;
+	utils::string_map t_vars;
+
+	options.push_back(_("SHOW ALL allies' plans"));
+	options.push_back(_("HIDE ALL allies' plans"));
+
+	//populate list of networked allies
+	foreach(team &t, *resources::teams)
+	{
+		//Exclude enemies, AIs, and local players
+		if(t.is_enemy(v_side) || !t.is_network())
+			continue;
+
+		allies.push_back(&t);
+
+		t_vars["player"] = t.current_player();
+		size_t t_index = t.side()-1;
+		if(team_plans_hidden_[t_index])
+			options.push_back(vgettext("Show plans for $player", t_vars));
+		else
+			options.push_back(vgettext("Hide plans for $player", t_vars));
+	}
+
+	gui2::tsimple_item_selector dlg("", _("Whiteboard Options"), options);
+	dlg.show(resources::screen->video());
+	selection = dlg.selected_index();
+
+	if(selection == -1)
+		return;
+
+	switch(selection)
+	{
+	case 0:
+		preferences::set_hide_whiteboard(false);
+		foreach(team* t, allies)
+			team_plans_hidden_[t->side()-1]=false;
+		break;
+	case 1:
+		preferences::set_hide_whiteboard(true);
+		foreach(team* t, allies)
+			team_plans_hidden_[t->side()-1]=true;
+		break;
+	default:
+		if(selection > 1)
+		{
+			size_t t_index = allies[selection-2]->side()-1;
+			//toggle ...
+			bool hidden = team_plans_hidden_[t_index];
+			team_plans_hidden_[t_index] = !hidden;
+		}
+	}
+	update_plan_hiding();
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map():

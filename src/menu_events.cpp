@@ -2493,6 +2493,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_toggle_draw_coordinates();
 		void do_toggle_draw_terrain_codes();
 		void do_toggle_whiteboard();
+		void do_whiteboard_options();
 
 		std::string get_flags_description() const {
 			return _("(D) - debug only, (N) - network only, (A) - admin only");
@@ -2621,6 +2622,9 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("whiteboard", &console_handler::do_toggle_whiteboard,
 				_("Toggle planning mode."));
 			register_alias("whiteboard", "wb");
+			register_command("whiteboard_options", &console_handler::do_whiteboard_options,
+				_("Access whiteboard options dialog."));
+			register_alias("whiteboard_options", "wbo");
 
 			if (const config &alias_list = preferences::get_alias())
 			{
@@ -3621,6 +3625,11 @@ void console_handler::do_toggle_whiteboard() {
 	} else {
 		print(get_cmd(), _("Planning mode deactivated!"));
 	}
+}
+
+void console_handler::do_whiteboard_options()
+{
+	resources::whiteboard->options_dlg();
 }
 
 void menu_handler::do_ai_formula(const std::string& str,

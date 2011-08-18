@@ -1310,7 +1310,8 @@ void game_display::set_team(size_t teamindex, bool show_everything)
 		viewpoint_ = NULL;
 	}
 	labels().recalculate_labels();
-	resources::whiteboard->on_viewer_change(teamindex);
+	if(resources::whiteboard)
+		resources::whiteboard->on_viewer_change(teamindex);
 }
 
 void game_display::set_playing_team(size_t teamindex)

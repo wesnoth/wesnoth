@@ -407,6 +407,16 @@ void set_enable_whiteboard_mode_on_start(bool value)
 	preferences::set("enable_planning_mode_on_start", value);
 }
 
+bool hide_whiteboard()
+{
+	return preferences::get("hide_whiteboard", false);
+}
+
+void set_hide_whiteboard(bool value)
+{
+	preferences::set("hide_whiteboard", value);
+}
+
 bool show_combat()
 {
 	return preferences::get("show_combat", true);
