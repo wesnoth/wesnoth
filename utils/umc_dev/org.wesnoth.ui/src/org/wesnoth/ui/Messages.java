@@ -32,7 +32,6 @@ public class Messages extends NLS
     public static String        WMLHighlightingConfiguration_7;
     public static String        WMLHighlightingConfiguration_8;
     public static String        WMLHighlightingConfiguration_9;
-    public static String        WMLHyperlinkHelper_0;
     static {
         // initialize resource bundle
         NLS.initializeMessages( BUNDLE_NAME, Messages.class );
