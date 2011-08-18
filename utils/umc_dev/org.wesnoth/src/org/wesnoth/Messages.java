@@ -21,7 +21,6 @@ public class Messages extends NLS
     public static String        AddonManagerPreferencePage_12;
     public static String        AddonManagerPreferencePage_13;
     public static String        AddonManagerPreferencePage_14;
-    public static String        AddonManagerPreferencePage_15;
     public static String        AddonManagerPreferencePage_16;
     public static String        AddonManagerPreferencePage_17;
     public static String        AddonManagerPreferencePage_22;
@@ -32,7 +31,6 @@ public class Messages extends NLS
     public static String        AdvancedPreferencePage_1;
     public static String        AdvancedPreferencePage_2;
     public static String        CampaignNewWizard_0;
-    public static String        CampaignNewWizard_1;
     public static String        CampaignPage0_1;
     public static String        CampaignPage0_2;
     public static String        CampaignPage1_1;
@@ -53,8 +51,6 @@ public class Messages extends NLS
     public static String        CampaignPage1_5;
     public static String        CampaignPage1_6;
     public static String        CampaignPage1_7;
-    public static String        CampaignPage1_8;
-    public static String        CampaignPage1_9;
     public static String        CampaignPage2_1;
     public static String        CampaignPage2_12;
     public static String        CampaignPage2_13;
@@ -66,7 +62,6 @@ public class Messages extends NLS
     public static String        CampaignPage2_7;
     public static String        CampaignPage2_8;
     public static String        EmptyProjectNewWizard_0;
-    public static String        EmptyProjectNewWizard_1;
     public static String        EmptyProjectPage0_1;
     public static String        EmptyProjectPage0_2;
     public static String        EmptyProjectPage1_1;
@@ -81,7 +76,6 @@ public class Messages extends NLS
     public static String        EmptyProjectPage1_21;
     public static String        EmptyProjectPage1_22;
     public static String        EmptyProjectPage1_23;
-    public static String        EmptyProjectPage1_3;
     public static String        EmptyProjectPage1_32;
     public static String        EmptyProjectPage1_33;
     public static String        EmptyProjectPage1_35;
@@ -170,7 +164,6 @@ public class Messages extends NLS
     public static String        ProjectUtils_0;
     public static String        ProjectUtils_4;
     public static String        ProjectUtils_6;
-    public static String        ReloadFilesHandler_0;
     public static String        ResourceUtils_5;
     public static String        ScenarioNewWizard_0;
     public static String        ScenarioNewWizard_2;
@@ -238,7 +231,6 @@ public class Messages extends NLS
     public static String        WesnothProjectBuilder_22;
     public static String        WesnothProjectBuilder_3;
     public static String        WesnothProjectBuilder_6;
-    public static String        WesnothProjectBuilder_7;
     public static String        WesnothProjectBuilder_8;
     public static String        WesnothProjectPage_0;
     public static String        WesnothProjectPage_1;
@@ -249,7 +241,6 @@ public class Messages extends NLS
     public static String        WizardGeneratorPage404_3;
     public static String        WizardGeneratorPage404_4;
     public static String        WizardGeneratorPage404_5;
-    public static String        WizardGeneratorPageKey_0;
     public static String        WizardGeneratorPageKey_1;
     public static String        WizardGeneratorPageKey_22;
     public static String        WizardGeneratorPageTag_0;
@@ -284,12 +275,10 @@ public class Messages extends NLS
     public static String        WizardLauncherPage1_11;
     public static String        WizardLauncherPage1_12;
     public static String        WizardLauncherPage1_13;
-    public static String        WizardLauncherPage1_14;
     public static String        WizardLauncherPage1_2;
     public static String        WizardLauncherPage1_7;
     public static String        WMLJavaValidator_0;
     public static String        WMLJavaValidator_1;
-    public static String        WMLJavaValidator_2;
     public static String        WMLTools_28;
     public static String        WMLTools_29;
     public static String        WMLTools_42;
@@ -308,7 +297,6 @@ public class Messages extends NLS
     public static String        WMLToolsPreferencePage_9;
     public static String        WorkspaceUtils_13;
     public static String        WorkspaceUtils_18;
-    public static String        WorkspaceUtils_20;
     public static String        WorkspaceUtils_22;
     public static String        WorkspaceUtils_25;
     public static String        WorkspaceUtils_29;

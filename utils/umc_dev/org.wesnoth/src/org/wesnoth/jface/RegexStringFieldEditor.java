@@ -49,6 +49,7 @@ public class RegexStringFieldEditor extends StringFieldEditor
         if( regex_ == null ) {
             return true;
         }
+
         boolean matches = getTextControl( ).getText( ).matches( regex_ );
         setErrorMessage( matches == false ? errorMessage_: null );
         showErrorMessage( );

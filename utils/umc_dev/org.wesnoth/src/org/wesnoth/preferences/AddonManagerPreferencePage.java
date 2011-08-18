@@ -71,8 +71,7 @@ public class AddonManagerPreferencePage extends AbstractPreferencePage
 
         addField(
             new RegexStringFieldEditor( Preferences.ADDON_MANAGER_ADDRESS,
-                Messages.AddonManagerPreferencePage_14,
-                Messages.AddonManagerPreferencePage_15,
+                Messages.AddonManagerPreferencePage_14, "[^:]*",
                 Messages.AddonManagerPreferencePage_16,
                 getFieldEditorParent( ) ),
             Messages.AddonManagerPreferencePage_17 );
