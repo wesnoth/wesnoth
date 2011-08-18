@@ -50,24 +50,41 @@ public:
 	 * @param start_line  Line in file
 	 * @param file        Name of file
 	 */
-	virtual void open_tag(const std::string & name,int start_line,
-						   const std::string &file) = 0;
+	virtual void open_tag(const std::string & name,
+						  int start_line,
+						  const std::string &file,
+						  bool addittion = false) = 0;
 	/**
 	 * As far as parser is built on stack, some realizations can store stack
 	 * too. So they need to know if tag was closed.
 	 */
 	virtual void close_tag() = 0;
 	/**
-	 * Validates config
+	 * Validates config. Checks if all mandatory elements are present.
 	 * What exactly is validated depends on validator realization
 	 * @param cfg         Config to be validated.
 	 * @param name        Name of tag
 	 * @param start_line  Line in file
 	 * @param file        Name of file
 	 */
-	virtual bool validate(const config & cfg, const std::string & name,
-							   int start_line,
-							   const std::string &file) = 0;
+	virtual void validate(const config & cfg,
+						  const std::string & name,
+						  int start_line,
+						  const std::string &file) = 0;
+	/**
+	 * Checks if key is allowed and if its value is valid
+	 * What exactly is validated depends on validator realization
+	 * @param cfg         Config to be validated.
+	 * @param name        Name of tag
+	 * @param start_line  Line in file
+	 * @param file        Name of file
+	 */
+
+	virtual void validate_key(const config & cfg,
+							  const std::string & name,
+							  const std::string & value,
+							  int start_line,
+							  const std::string &file) = 0;
 	/**
 	 * @struct error
 	 * Used to manage with not initialized validators

@@ -156,13 +156,13 @@ void parser::parse_element()
 		elname = tok_->current_token().value;
 		if (tok_->next_token().type != ']')
 			error(_("Unterminated [element] tag"));
+		// Add the element
+		current_element = &(elements.top().cfg->add_child(elname));
+		elements.push(element(current_element, elname, tok_->get_start_line(), tok_->get_file()));
 		if (validator_){
 			validator_->open_tag(elname,tok_->get_start_line(),
 								  tok_->get_file());
 		}
-		// Add the element
-		current_element = &(elements.top().cfg->add_child(elname));
-		elements.push(element(current_element, elname, tok_->get_start_line(), tok_->get_file()));
 		break;
 
 	case '+': // [+element]
@@ -176,12 +176,16 @@ void parser::parse_element()
 		// element
 		if (config &c = elements.top().cfg->child(elname, -1)) {
 			current_element = &c;
+			if (validator_){
+				validator_->open_tag(elname,tok_->get_start_line(),
+									 tok_->get_file(),true);
+			}
 		} else {
-			current_element = &elements.top().cfg->add_child(elname);
-		}
-		if (validator_){
-			validator_->open_tag(elname,tok_->get_start_line(),
-								  tok_->get_file());
+			current_element = &elements.top().cfg->add_child(elname);	
+			if (validator_){
+				validator_->open_tag(elname,tok_->get_start_line(),
+									 tok_->get_file());
+			}
 		}
 		elements.push(element(current_element, elname, tok_->get_start_line(), tok_->get_file()));
 		break;
@@ -260,6 +264,11 @@ void parser::parse_variable()
 					cfg[*curvar] = t_string(buffer);
 				else
 					cfg[*curvar] = buffer.value();
+				if(validator_){
+					validator_->validate_key (cfg,*curvar,buffer.value(),
+											  tok_->get_start_line (),
+											  tok_->get_file ());
+				}
 				buffer = t_string_base();
 				++curvar;
 			} else {
@@ -316,6 +325,11 @@ void parser::parse_variable()
 		cfg[*curvar] = t_string(buffer);
 	else
 		cfg[*curvar] = buffer.value();
+	if(validator_){
+		validator_->validate_key (cfg,*curvar,buffer.value(),
+								  tok_->get_start_line (),
+								  tok_->get_file ());
+	}
 	while (++curvar != variables.end()) {
 		cfg[*curvar] = "";
 	}

@@ -177,8 +177,10 @@ bool schema_validator::read_config_file(const std::string &filename){
  * assume they all are on their place due to parser algorithm
  * and validation logic
  */
-void schema_validator::open_tag(const std::string & name,int start_line,
-							   const std::string &file){
+void schema_validator::open_tag(const std::string & name,
+								int start_line,
+								const std::string &file,
+								bool addittion){
 	if (! stack_.empty()){
 		const class_tag * tag = NULL;
 		if (stack_.top()){
@@ -187,8 +189,10 @@ void schema_validator::open_tag(const std::string & name,int start_line,
 				wrong_tag_error(file,start_line,name,stack_.top()->get_name(),
 								create_exceptions_);
 			}else{
-				counter & cnt = counter_.top()[name];
-				++ cnt.cnt;
+				if (! addittion){
+					counter & cnt = counter_.top()[name];
+					++ cnt.cnt;
+				}
 			}
 		}
 		stack_.push(tag);
@@ -205,10 +209,9 @@ void schema_validator::close_tag(){
 	//cache_ is cleared in another place.
 }
 
-bool schema_validator::validate(const config & cfg, const std::string & name,
+void schema_validator::validate(const config & cfg, const std::string & name,
 								int start_line,
 								const std::string &file){
-	bool retval = false;
 	//close previous errors and print them to output.
 	message_map::iterator cache_it = cache_.top().begin();
 	for (;cache_it != cache_.top().end();++cache_it){
@@ -224,35 +227,8 @@ bool schema_validator::validate(const config & cfg, const std::string & name,
 		cache_it->second.clear();
 	}
 	// Please note that validating unknown tag keys the result will be false
+	// Checking all elements counters.
 	if (!stack_.empty() && stack_.top() && config_read_){
-		retval = true;
-		// checking existing keys
-		foreach (const config::attribute & attr, cfg.attribute_range()){
-			const class_key * key =stack_.top()->find_key(attr.first);
-			if (key){
-				std::map<std::string,boost::regex>::iterator itt =
-						types_.find(key->get_type());
-				if (itt!= types_.end()){
-					boost::smatch sub;
-					bool res = boost::regex_match(attr.second.str(),
-												  sub,itt->second);
-					if (!res ) {
-						cache_.top()[&cfg].push_back(
-								message_info(WRONG_VALUE,file,start_line,0,
-										   stack_.top()->get_name(),
-										   key->get_name(),
-										   attr.second.str()));
-					}
-				}
-			}
-			else{
-				cache_.top()[&cfg].push_back(
-						message_info(EXTRA_KEY,file,start_line,0,name,
-									 attr.first));
-				retval = false;
-			}
-		}
-		// Checking all elements counters.
 		class_tag::all_const_tag_iterators p = stack_.top()->tags();
 		for (class_tag::const_tag_iterator tag = p.first;
 			 tag != p.second ; ++tag){
@@ -261,14 +237,14 @@ bool schema_validator::validate(const config & cfg, const std::string & name,
 				cache_.top()[&cfg].push_back(
 						message_info(MISSING_TAG,file,start_line,
 									 tag->second.get_min(),tag->first,"",
-									 stack_.top()->get_name()));
+									 name));
 				continue;
 			}
 			if (tag->second.get_max() < cnt){
 				cache_.top()[&cfg].push_back(
 						message_info(EXTRA_TAG,file,start_line,
 									 tag->second.get_max(),tag->first,"",
-									 stack_.top()->get_name()));
+									 name));
 			}
 		}
 		// Checking if all mandatory keys are present
@@ -279,12 +255,43 @@ bool schema_validator::validate(const config & cfg, const std::string & name,
 				if (cfg.get(key->first) == NULL){
 					cache_.top()[&cfg].push_back(
 							message_info(MISSING_KEY,file,start_line,0,
-									   stack_.top()->get_name(),key->first ));
+										 name,key->first ));
 				}
 			}
 		}
 	}
-	return retval;
+}
+
+
+void schema_validator::validate_key(const config & cfg,
+				  const std::string & name,
+				  const std::string & value,
+				  int start_line,
+				  const std::string &file){
+	if (!stack_.empty() && stack_.top() && config_read_){
+		// checking existing keys
+		const class_key * key =stack_.top()->find_key(name);
+		if (key){
+			std::map<std::string,boost::regex>::iterator itt =
+					types_.find(key->get_type());
+			if (itt != types_.end()){
+				boost::smatch sub;
+				bool res = boost::regex_match(value,sub,itt->second);
+				if (!res ) {
+					cache_.top()[&cfg].push_back(
+							message_info(WRONG_VALUE,file,start_line,0,
+										 stack_.top()->get_name(),
+										 name,value));
+				}
+			}
+		}
+		else{
+			cache_.top()[&cfg].push_back(
+					message_info(EXTRA_KEY,file,start_line,0,
+								 stack_.top()->get_name(),name));
+		}
+
+	}
 }
 
 void schema_validator::print(message_info & el){

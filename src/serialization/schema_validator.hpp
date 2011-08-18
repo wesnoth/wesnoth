@@ -38,16 +38,20 @@ public:
 		create_exceptions_ = value;
 	}
 
-	/**
-	 * Prints schema tree to stream
-	 * Usually used to testing, whether schema config was read and expanded
-	 */
-	virtual void open_tag(const std::string & name,int start_line=0,
-						   const std::string &file="");
+	virtual void open_tag(const std::string & name,
+						  int start_line=0,
+						  const std::string &file="",
+						  bool addittion = false);
 	virtual void close_tag();
-	virtual bool validate(const config & cfg, const std::string & name,
-							   int start_line, const std::string &file);
-
+	virtual void validate(const config & cfg,
+						  const std::string & name,
+						  int start_line,
+						  const std::string &file);
+	virtual void validate_key(const config & cfg,
+							  const std::string & name,
+							  const std::string & value,
+							  int start_line,
+							  const std::string &file);
 private:
 // types section
 	// Just some magic to ensure zero initialization.
