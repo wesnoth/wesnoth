@@ -654,10 +654,9 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 	{
 		size_t turn = cmd["turn"].to_int();
 		size_t pos = cmd["pos"].to_int();
-		action_ptr act;
-		try {
-			act = action::from_config(cmd.child("action"),hidden_);
-		} catch(action::ctor_err const&) {
+		action_ptr act = action::from_config(cmd.child("action"),hidden_);
+		if(!act)
+		{
 			ERR_WB << "side_actions::execute_network_command(): received invalid action data!\n";
 			return;
 		}

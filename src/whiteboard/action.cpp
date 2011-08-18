@@ -59,18 +59,20 @@ action_ptr action::from_config(config const& cfg, bool hidden)
 {
 	std::string type = cfg["type"];
 
-	if(type=="move")
-		return action_ptr(new move(cfg,hidden));
-	else if(type=="attack")
-		return action_ptr(new attack(cfg,hidden));
-	else if(type=="recruit")
-		return action_ptr(new recruit(cfg,hidden));
-	else if(type=="recall")
-		return action_ptr(new recall(cfg,hidden));
-	else if(type=="suppose_dead")
-		return action_ptr(new suppose_dead(cfg,hidden));
+	try {
+		if(type=="move")
+			return action_ptr(new move(cfg,hidden));
+		else if(type=="attack")
+			return action_ptr(new attack(cfg,hidden));
+		else if(type=="recruit")
+			return action_ptr(new recruit(cfg,hidden));
+		else if(type=="recall")
+			return action_ptr(new recall(cfg,hidden));
+		else if(type=="suppose_dead")
+			return action_ptr(new suppose_dead(cfg,hidden));
+	} catch(action::ctor_err const&) {}
 
-	throw ctor_err("action: Invalid type");
+	return action_ptr();
 }
 
 void action::hide()
