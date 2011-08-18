@@ -36,10 +36,7 @@ namespace wb
  */
 class validate_visitor
 	: private visitor
-	, private enable_visit_all<validate_visitor>
 {
-	friend class enable_visit_all<validate_visitor>;
-
 public:
 	explicit validate_visitor(unit_map& unit_map);
 	virtual ~validate_visitor();
@@ -57,19 +54,27 @@ private:
 
 	enum VALIDITY {VALID, OBSTRUCTED, WORTHLESS};
 	VALIDITY evaluate_move_validity(move_ptr);
+
 	bool no_previous_invalids(side_actions::iterator const&);
 
-	//"Inherited" from enable_visit_all
-	bool visit(size_t team_index, team& t, side_actions& sa, side_actions::iterator itor)
-		{ arg_itor_=itor;   return visitor::visit(team_index,t,sa,itor); }
+	struct helper: public mapbuilder_visitor
+	{
+		helper(unit_map& umap, validate_visitor& parent)
+				: mapbuilder_visitor(umap)
+				, parent_(parent)
+			{}
+		virtual void validate(side_actions::iterator const& itor);
+		validate_visitor& parent_;
+	};
+	friend struct helper;
 
-	mapbuilder_visitor builder_;
+	helper builder_;
 
 	side_actions& viewer_actions_;
 
 	std::set<action_ptr> actions_to_erase_;
 
-	//Parameter for the visit_***() fcns -- see validate_actions()
+	//Parameter for the visit_***() fcns -- see helper::validate()
 	side_actions::iterator arg_itor_;
 };
 

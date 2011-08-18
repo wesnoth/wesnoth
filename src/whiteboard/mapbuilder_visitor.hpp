@@ -36,40 +36,26 @@ namespace wb
  * and reverts all changes on destruction.
  */
 class mapbuilder_visitor
-	: private visitor
-	, private enable_visit_all<mapbuilder_visitor>
+	: private enable_visit_all<mapbuilder_visitor>
 {
 	friend class enable_visit_all<mapbuilder_visitor>;
-
-	friend class validate_visitor;
 
 public:
 	mapbuilder_visitor(unit_map& unit_map);
 	virtual ~mapbuilder_visitor();
 
-	/**
-	 * Calls the appropriate visit_* method on each of the actions contained in the
-	 * side_actions objects of every team whose turn comes earlier in the turn order,
-	 * including (and stopping at) the viewer's team.
-	 */
+	///builds every team's actions as far into the future as possible, in the correct order
 	void build_map();
 
 private:
-	virtual void visit_move(move_ptr move);
-	virtual void visit_attack(attack_ptr attack);
-	virtual void visit_recruit(recruit_ptr recruit);
-	virtual void visit_recall(recall_ptr recall);
-	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
-
 	//"Inherited" from enable_visit_all
 	bool visit(size_t team_index, team&, side_actions&, side_actions::iterator);
-	bool pre_visit_team(size_t team_index, team& t, side_actions& sa)
-		{return enable_visit_all<mapbuilder_visitor>::pre_visit_team(team_index,t,sa);}
-	bool post_visit_team(size_t team_index, team&, side_actions&)
-		{return team_index != viewer_team();} //< Stop after visiting viewer_team
+	bool post_visit_team(size_t team_index, team&, side_actions&);
 
-	//Helper fcn: Temporarily resets all units' moves to max EXCEPT for
-	//the ones controlled by the player whose turn it is currently.
+	//For validate_visitor to override
+	virtual void validate(side_actions::iterator const&) {};
+
+	//Helper fcn: Arranges for all units' MP to be restored upon destruction
 	void reset_moves();
 
 	void restore_normal_map();
@@ -78,15 +64,11 @@ private:
 
 	action_queue applied_actions_;
 
-	enum mapbuilder_mode {
-		BUILD_PLANNED_MAP,
-		RESTORE_NORMAL_MAP
-	};
-
-	mapbuilder_mode mode_;
-
 	//Used by reset_moves()
 	boost::ptr_vector<unit_movement_resetter> resetters_;
+
+	//Used by visit()
+	std::set<unit const*> acted_this_turn_;
 };
 
 }

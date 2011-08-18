@@ -38,7 +38,7 @@ namespace wb
 {
 
 validate_visitor::validate_visitor(unit_map& unit_map)
-	: builder_(unit_map)
+	: builder_(unit_map,*this)
 	, viewer_actions_(*viewer_actions())
 	, actions_to_erase_()
 	, arg_itor_()
@@ -52,10 +52,7 @@ validate_visitor::~validate_visitor()
 
 bool validate_visitor::validate_actions()
 {
-	//Temporarily reset all units' moves to full EXCEPT for the ones on viewer_side().
-	builder_.reset_moves();
-
-	visit_all();
+	builder_.build_map();
 
 	//FIXME: by reverse iterating this can be done in a more efficiant way
 	// by using the iterator returned by remove_action it could even be done in visit_all above
@@ -170,12 +167,12 @@ void validate_visitor::visit_move(move_ptr move)
 		// Now call the superclass to apply the result of this move to the unit map,
 		// so that further pathfinding takes it into account.
 		move->set_valid(true);
-		builder_.visit_move(move);
 		break;
 	case OBSTRUCTED:
 		move->set_valid(false);
 		break;
 	case WORTHLESS:
+		move->set_valid(false);
 		// Erase only if no previous invalid actions are planned for this unit -- otherwise, just mark it invalid.
 		// Otherwise, we wouldn't be able to keep invalid actions that depend on previous invalid actions.
 		if(viewer_team() == move->team_index() //< Don't mess with any other team's queue -- only our own
@@ -184,7 +181,6 @@ void validate_visitor::visit_move(move_ptr move)
 			LOG_WB << "Worthless invalid move detected, adding to actions_to_erase_.\n";
 			actions_to_erase_.insert(move);
 		}
-		else move->set_valid(false);
 		break;
 	}
 }
@@ -250,11 +246,7 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 		recruit->set_valid(false);
 	}
 
-	if (recruit->is_valid())
-	{
-		builder_.visit_recruit(recruit);
-	}
-	else
+	if(!recruit->is_valid())
 	{
 		if(viewer_team() == recruit->team_index()) //< Don't mess with any other team's queue -- only our own
 		{
@@ -297,11 +289,7 @@ void validate_visitor::visit_recall(recall_ptr recall)
 		recall->set_valid(false);
 	}
 
-	if (recall->is_valid())
-	{
-		builder_.visit_recall(recall);
-	}
-	else
+	if(!recall->is_valid())
 	{
 		if(viewer_team() == recall->team_index()) //< Don't mess with any other team's queue -- only our own
 		{
@@ -341,13 +329,7 @@ void validate_visitor::visit_suppose_dead(suppose_dead_ptr sup_d)
 		sup_d->unit_ = NULL;
 	}
 
-	if(sup_d->valid_)
-	{
-		// Now call the superclass to apply the result of this move to the unit map,
-		// so that further pathfinding takes it into account.
-		builder_.visit_suppose_dead(sup_d);
-	}
-	else
+	if(!sup_d->valid_)
 	{
 		if(viewer_team() == sup_d->team_index()) //< Don't mess with any other team's queue -- only our own
 		{
@@ -355,6 +337,12 @@ void validate_visitor::visit_suppose_dead(suppose_dead_ptr sup_d)
 			actions_to_erase_.insert(sup_d);
 		}
 	}
+}
+
+void validate_visitor::helper::validate(side_actions::iterator const& itor)
+{
+	parent_.arg_itor_ = itor;
+	(*itor)->accept(parent_);
 }
 
 }//end namespace wb

@@ -18,13 +18,9 @@
  */
 
 #include "mapbuilder_visitor.hpp"
+
 #include "action.hpp"
-#include "attack.hpp"
-#include "move.hpp"
-#include "recall.hpp"
-#include "recruit.hpp"
 #include "side_actions.hpp"
-#include "suppose_dead.hpp"
 #include "utility.hpp"
 
 #include "foreach.hpp"
@@ -37,11 +33,10 @@ namespace wb
 {
 
 mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map)
-	: visitor()
-	, unit_map_(unit_map)
+	: unit_map_(unit_map)
 	, applied_actions_()
-	, mode_(BUILD_PLANNED_MAP)
 	, resetters_()
+	, acted_this_turn_()
 {
 }
 
@@ -56,107 +51,48 @@ void mapbuilder_visitor::reset_moves()
 	int current_side = resources::controller->current_side();
 	foreach(unit& u, *resources::units)
 	{
-		if(u.side() != current_side)
-			resetters_.push_back(new unit_movement_resetter(u));
+		resetters_.push_back(new unit_movement_resetter(u,false));
+		//make sure current team's units are not reset to full moves on first turn
+		if(u.side() == current_side)
+			acted_this_turn_.insert(&u);
 	}
 }
 
 void mapbuilder_visitor::build_map()
 {
-	//Temporarily reset all units' moves to full EXCEPT for the ones on current_team.
 	reset_moves();
-
-	mode_ = BUILD_PLANNED_MAP;
 	visit_all();
 }
 
 bool mapbuilder_visitor::visit(size_t, team&, side_actions&, side_actions::iterator itor)
 {
-	if((*itor)->is_valid())
-		(*itor)->accept(*this);
+	action_ptr act = *itor;
+	unit* u = act->get_unit();
+
+	if(acted_this_turn_.find(u) == acted_this_turn_.end())
+	{
+		u->set_movement(u->total_movement());
+		acted_this_turn_.insert(u);
+	}
+	validate(itor);
+	if(act->is_valid())
+	{
+		act->apply_temp_modifier(unit_map_);
+		applied_actions_.push_back(act);
+	}
 	return true;
 }
 
-void mapbuilder_visitor::visit_move(move_ptr move)
-{
-	if(mode_ == BUILD_PLANNED_MAP)
-	{
-		move->apply_temp_modifier(unit_map_);
-		//remember which actions we applied, so we can unapply them later
-		applied_actions_.push_back(move);
-	}
-	else if (mode_ == RESTORE_NORMAL_MAP)
-	{
-		move->remove_temp_modifier(unit_map_);
-	}
-}
-
-void mapbuilder_visitor::visit_attack(attack_ptr attack)
-{
-	if(mode_ == BUILD_PLANNED_MAP)
-	{
-		attack->apply_temp_modifier(unit_map_);
-		//remember which actions we applied, so we can unapply them later
-		applied_actions_.push_back(attack);
-	}
-	else if (mode_ == RESTORE_NORMAL_MAP)
-	{
-		attack->remove_temp_modifier(unit_map_);
-	}
-}
-
-void mapbuilder_visitor::visit_recruit(recruit_ptr recruit)
-{
-	if(mode_ == BUILD_PLANNED_MAP)
-	{
-		recruit->apply_temp_modifier(unit_map_);
-		//remember which actions we applied, so we can unapply them later
-		applied_actions_.push_back(recruit);
-	}
-	else if (mode_ == RESTORE_NORMAL_MAP)
-	{
-		recruit->remove_temp_modifier(unit_map_);
-	}
-}
-
-void mapbuilder_visitor::visit_recall(recall_ptr recall)
-{
-	if(mode_ == BUILD_PLANNED_MAP)
-	{
-		recall->apply_temp_modifier(unit_map_);
-		//remember which actions we applied, so we can unapply them later
-		applied_actions_.push_back(recall);
-	}
-	else if (mode_ == RESTORE_NORMAL_MAP)
-	{
-		recall->remove_temp_modifier(unit_map_);
-	}
-}
-
-void mapbuilder_visitor::visit_suppose_dead(suppose_dead_ptr sup_d)
-{
-	if(mode_ == BUILD_PLANNED_MAP)
-	{
-		sup_d->apply_temp_modifier(unit_map_);
-		//remember which actions we applied, so we can unapply them later
-		applied_actions_.push_back(sup_d);
-	}
-	else if(mode_ == RESTORE_NORMAL_MAP)
-	{
-		sup_d->remove_temp_modifier(unit_map_);
-	}
-}
+bool mapbuilder_visitor::post_visit_team(size_t, team&, side_actions&)
+	{acted_this_turn_.clear();   return true;}
 
 void mapbuilder_visitor::restore_normal_map()
 {
-	mode_ = RESTORE_NORMAL_MAP;
-	action_queue::const_reverse_iterator rit;
-	action_queue::const_reverse_iterator end = applied_actions_.rend();
 	//applied_actions_ contain only the actions that we applied to the unit map
-	for (rit = applied_actions_.rbegin(); rit != end; ++rit)
+	BOOST_REVERSE_FOREACH(action_ptr act, applied_actions_)
 	{
-		assert((*rit)->is_valid());
-		(*rit)->accept(*this);
+		assert(act->is_valid());
+		act->remove_temp_modifier(unit_map_);
 	}
 }
 
