@@ -127,13 +127,12 @@ tr.levels th {
     border-bottom: 1px solid #cfcbc0;
 }
 table.unitinfo {
-    background-color: #efebd0;
-    margin: 2px;
-    border: 1px solid black;
-    float: left;
+    background-color: transparent;
+    border: none;
 }
 table.unitinfo th {
     text-align: left;
+    font-weight: normal;
 }
 td.grayed {
     color: gray;
@@ -205,4 +204,47 @@ div#footer p {
 }
 div#footer a {
     color: #111111;
+}
+
+td.num {
+    text-align: right;
+}
+
+td.val {
+    font-weight: bold;
+}
+
+div.unit-columns {
+    width: 51em;
+    float: left;
+    margin: 0 0 0 1em;
+}
+
+div.unit-columns i {
+    font-size: 140%;
+    font-style: normal;
+}
+
+div.unit-columns h1 {
+    text-shadow: 2px 2px 3px #998877;
+}
+
+div.unit-columns h2 {
+    border-bottom: 1px solid #000000;
+}
+
+div.unit-columns h2 > small {
+    font-weight: normal;
+    font-size: medium;
+}
+
+div.unit-column-left {
+    width: 30em;
+    float: left;
+}
+
+div.unit-column-right {
+    margin: 0 0 0 1em;
+    width: 20em;
+    float: right;
 }

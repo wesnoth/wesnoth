@@ -642,9 +642,9 @@ class HTMLOutput:
             if fname and fname != uname:
                 display_name += "<br/>" + fname
 
-        write('<div style="width: 60em; float: left">')
+        write('<div class="unit-columns">')
        
-        write('<div style="width: 40em; float: left">')
+        write('<div class="unit-column-left">')
         
         write("<h1>%s</h1>\n" % display_name)
 
@@ -675,10 +675,11 @@ class HTMLOutput:
         level = uval("level")
         alignment = uval("alignment")
 
+        write("<h2>Information</h2>\n")
         write("<table class=\"unitinfo\">\n")
         write("<tr>\n")
-        write("<th>%s" % _("Advances from: "))
-        write("</th><td>\n")
+        write("<td>%s" % _("Advances from: "))
+        write("</td><td>\n")
         for pid in self.forest.get_parents(uid):
             punit = self.wesnoth.unit_lookup[pid]
             if unit.campaign == "mainline" and punit.campaign != "mainline":
@@ -689,8 +690,8 @@ class HTMLOutput:
             write("\n<a href=\"%s\">%s</a>" % (link, name))
         write("</td>\n")
         write("</tr><tr>\n")
-        write("<th>%s" % _("Advances to: "))
-        write("</th><td>\n")
+        write("<td>%s" % _("Advances to: "))
+        write("</td><td>\n")
         for cid in self.forest.get_children(uid):
             link = "../%s/%s.html" % (self.isocode, cid)
             try:
@@ -716,26 +717,25 @@ class HTMLOutput:
             ("alignment", _("Alignment: ")),
             ("id", "ID")]:
             write("<tr>\n")
-            write("<th>%s</th>" % text)
+            write("<td>%s</td>" % text)
             x = uval(val)
             if val == "alignment": x = _(x)
-            write("<td>%s</td>" % x)
+            write("<td class=\"val\">%s</td>" % x)
             write("</tr>\n")
 
         # Write info about abilities.
         anames = self.get_abilities(unit)
 
         write("<tr>\n")
-        write("<th>%s</th>" % _("Abilities: "))
-        write("<td>" + (", ".join(anames)) + "</td>")
+        write("<td>%s</td>" % _("Abilities: "))
+        write("<td class=\"val\">" + (", ".join(anames)) + "</td>")
         write("</tr>\n")
 
         write("</table>\n")
 
         # Write info about attacks.
+        write("<h2>Attacks <small>(damage - count)</small></h2> \n")
         write("<table class=\"unitinfo\">\n")
-
-        write("<tr><td colspan=\"4\"><b>Attacks</b> (damage - count) </td></tr>\n")
 
         attacks = self.get_recursive_attacks(unit)
         for attack in attacks:
@@ -764,7 +764,7 @@ class HTMLOutput:
             n = attack.get_text_val("number")
             x = attack.get_text_val("damage")
             x = "%s - %s" % (x, n)
-            write("<td><b>%s</b>" % x)
+            write("<td><i>%s</i>" % x)
 
             r = T(attack, "range")
             write("<br/>%s</td>" % _(r))
@@ -796,15 +796,15 @@ class HTMLOutput:
             ("cold", "attacks/iceball.png"),
             ("arcane", "attacks/faerie-fire.png")]
 
+        write("<h2>%s</h2>\n" % _("Resistances: ").strip(" :"))
         write("<table class=\"unitinfo\">\n")
         write("<tr>\n")
-        write("<th colspan=\"3\">%s</th>\n" % _("Resistances: "))
 
         write("</tr>\n")
         for rid, ricon in resistances:
             special, r = find_attr("resistance", rid)
             if r == "-": r = 100
-            try: r = "%d%%" % (100 - int(r))
+            try: r = "<i>%d%%</i>" % (100 - int(r))
             except ValueError:
                 error_message("Warning: Invalid resistance %s for %s.\n" % (
                     r, uid))
@@ -814,17 +814,17 @@ class HTMLOutput:
             picname = image_collector.add_image("mainline", ricon,
                 no_tc = True)
             icon = os.path.join("../pics", picname)
-            write("<td><img src=\"%s\"/></td>\n" % (icon, ))
-            write("<th>%s</th><td>%s</td>\n" % (_(rid), r))
+            write("<td><img src=\"%s\" height=36px/></td>\n" % (icon, ))
+            write("<th>%s</th><td class=\"num\">%s</td>\n" % (_(rid), r))
             write("</tr>\n")
         write("</table>\n")
         
         # end left column
         write('</div>')
-        write('<div style="width: 20em; float:right">')
+        write('<div class="unit-column-right">')
         
         if portrait:
-            write('<div class="pic">')
+            write('<div class="portrait">')
             if female:
                 write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
                 write('<img width="200" src="%s" alt="(portrait)" />\n' % fportrait)
@@ -833,6 +833,7 @@ class HTMLOutput:
             write('</div>\n')
 
         # Write info about movement costs and terrain defense.
+        write("<h2>Defense and Movement</h2>\n")
         write("<table class=\"unitinfo\">\n")
         write("<tr>\n")
         write("<th colspan=2>%s</th><th>%s</th><th>%s</th>\n" % (
@@ -873,7 +874,7 @@ class HTMLOutput:
                 "terrain/" + ticon + ".png", no_tc = True)
             icon = os.path.join("../pics", picname)
             write("<td><img src=\"%s\" height=\"36px\" /></td>\n" % (icon, ))
-            write("<td>%s</td><%s>%s</td><%s>%s</td>\n" % (
+            write("<td>%s</td><%s><i>%s</i></td><%s class=\"num\"><i>%s</i></td>\n" % (
                 tname, ccell, c, dcell, d))
             write("</tr>\n")
         write("</table>\n")
