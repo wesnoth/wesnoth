@@ -30,18 +30,26 @@ namespace wb
 class move;
 
 /**
- * This internal whiteboard class holds the planned action queue for a team, and offers many
+ * This internal whiteboard class holds the planned action queues for a team, and offers many
  * utility methods to create and manipulate them. It maintains an internal data structure
  * but mostly hides it by providing its own iterators, begin() and end() methods, etc.
  */
 class side_actions: public boost::enable_shared_from_this<side_actions>
 {
-public:
+	/**
+	 * Class invariant:
+	 *   actions_.empty() || !actions_.back().empty();
+	 */
 
-	typedef action_queue::iterator iterator;
-	typedef action_queue::const_iterator const_iterator;
-	typedef action_queue::reverse_iterator reverse_iterator;
-	typedef action_queue::const_reverse_iterator const_reverse_iterator;
+	typedef std::vector<action_queue> contents_t;
+
+public:
+	class iterator;
+	class const_iterator;
+	friend class iterator;
+	friend class const_iterator;
+	typedef std::reverse_iterator<iterator> reverse_iterator;
+	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
 	side_actions();
 	virtual ~side_actions();
@@ -53,7 +61,7 @@ public:
 	size_t team_index() { assert(team_index_defined_); return team_index_; }
 
 	/// Get the underlying action container
-	const action_queue& actions() const { return actions_; }
+	contents_t const& actions() const { return actions_; }
 
 	struct numbers_t;
 	/** Gets called when display is drawing a hex to determine which numbers to draw on it */
@@ -80,22 +88,22 @@ public:
 	/**
 	 * Returns the iterator for the first (executed earlier) action within the actions queue.
 	 */
-	iterator begin() { return actions_.begin(); }
+	iterator begin();
 	/// reverse version of the above
-	reverse_iterator rbegin() { return actions_.rbegin(); }
+	reverse_iterator rbegin();
 	/// const versions of the above
-	const_iterator begin() const { return const_cast<action_queue const&>(actions_).begin(); }
-	const_reverse_iterator rbegin() const { return const_cast<action_queue const&>(actions_).rbegin(); }
+	const_iterator begin() const;
+	const_reverse_iterator rbegin() const;
 
 	/**
 	 * Returns the iterator for the position *after* the last executed action within the actions queue.
 	 */
-	iterator end() { return actions_.end(); }
+	iterator end();
 	/// reverse version of the above
-	reverse_iterator rend() { return actions_.rend(); }
+	reverse_iterator rend();
 	/// const versions of the above
-	const_iterator end() const { return const_cast<action_queue const&>(actions_).end(); }
-	const_reverse_iterator rend() const { return const_cast<action_queue const&>(actions_).rend(); }
+	const_iterator end() const;
+	const_reverse_iterator rend() const;
 
 	/**
 	 * Indicates whether the action queue is empty.
@@ -105,7 +113,22 @@ public:
 	/**
 	 * Returns the number of actions in the action queue.
 	 */
-	size_t size() const { return actions_.size(); }
+	size_t size() const;
+
+	///Returns the number of turns that have plans.
+	size_t num_turns() const {return actions_.size();}
+
+	///Returns an iterator to a specific turn queue.
+	iterator turn_begin(size_t turn_num);
+	iterator turn_end(size_t turn_num);
+	reverse_iterator turn_rbegin(size_t turn_num);
+	reverse_iterator turn_rend(size_t turn_num);
+
+	typedef std::pair<iterator,iterator> range_t;
+	typedef std::pair<reverse_iterator,reverse_iterator> rrange_t;
+	///Returns an iterator range corresponding to the requested turn.
+	range_t iter_turn(size_t turn_num);
+	rrange_t riter_turn(size_t turn_num);
 
 	/**
 	 * Empties the action queue.
@@ -225,20 +248,30 @@ public:
 	 */
 	typedef config net_cmd;
 	void execute_net_cmd(net_cmd const&);
-	net_cmd make_net_cmd_insert(const_iterator const& pos, action_ptr) const;
-	net_cmd make_net_cmd_replace(const_iterator const& pos, action_ptr) const; //< an optimized remove+insert
+	net_cmd make_net_cmd_insert(size_t turn_num, size_t pos, action_const_ptr) const;
+	net_cmd make_net_cmd_insert(const_iterator const& pos, action_const_ptr) const;
+	net_cmd make_net_cmd_replace(const_iterator const& pos, action_const_ptr) const; //< an optimized remove+insert
 	net_cmd make_net_cmd_remove(const_iterator const& pos) const;
 	net_cmd make_net_cmd_bump_later(const_iterator const& pos) const;
 	net_cmd make_net_cmd_clear() const;
 	net_cmd make_net_cmd_refresh() const;
 
 private:
+	bool validate_iterator(iterator position);
+	void update_size();
+	iterator raw_erase(iterator itor);
+	iterator raw_insert(iterator itor, action_ptr to_insert);
+	iterator raw_enqueue(size_t turn_num, action_ptr to_insert);
+	iterator safe_insert(size_t turn_num, size_t pos, action_ptr to_insert);
+	iterator synced_erase(iterator itor);
+	iterator synced_insert(iterator itor, action_ptr to_insert);
+	iterator synced_enqueue(size_t turn_num, action_ptr to_insert);
+	iterator safe_erase(iterator const& itor);
+	void safe_clear() { contents_t temp = actions_; return actions_.clear(); }
 
-	bool validate_iterator(iterator position) { return position >= begin() && position < end(); }
-	action_queue::iterator safe_erase(action_queue::iterator const& itor) { action_ptr action = *itor; return actions_.erase(itor); }
-	void safe_clear() { action_queue temp = actions_; return actions_.clear(); }
+	static iterator null;
 
-	action_queue actions_;
+	contents_t actions_;
 	size_t team_index_;
 	bool team_index_defined_;
 
@@ -250,6 +283,128 @@ private:
 
 /** Dumps side_actions on a stream, for debug purposes. */
 std::ostream &operator<<(std::ostream &s, wb::side_actions const& side_actions);
+
+class side_actions::iterator
+	: public std::iterator<std::bidirectional_iterator_tag, action_ptr>
+{
+	friend class side_actions;
+	typedef action_queue::iterator base_t;
+	typedef iterator this_t;
+
+public:
+	iterator()
+			: base_()
+			, turn_num_()
+			, contents_()
+		{}
+	explicit iterator(side_actions::reverse_iterator const& that)
+			: base_(that.base().base_)
+			, turn_num_(that.base().turn_num_)
+			, contents_(that.base().contents_)
+		{}
+
+	action_ptr& operator*() const {return *base_;}
+	action_ptr* operator->() const {return base_.operator->();}
+	this_t& operator++()
+	{
+		++base_;
+		init();
+		return *this;
+	}
+	this_t& operator--()
+	{
+		while(base_ == (*contents_)[turn_num_].begin())
+			base_ = (*contents_)[--turn_num_].end();
+		--base_;
+		return *this;
+	}
+	this_t operator+(int x) const
+	{
+		this_t result = *this;
+		if(x >= 0)
+			for(int i=0; i<x; ++i)
+				++result;
+		else
+			for(int i=0; i>x; --i)
+				--result;
+		return result;
+	}
+	this_t operator-(int x) const {return operator+(-x);}
+	size_t operator-(this_t x) const
+	{
+		int result = 0;
+		for(; x!=*this; ++x)
+			++result;
+		return result;
+	}
+	bool operator<(this_t const& that) const
+	{
+		assert(contents_ == that.contents_);
+		if(contents_==NULL)
+			return false;
+		return turn_num_<that.turn_num_ || (turn_num_==that.turn_num_ && base_<that.base_);
+	}
+	bool operator==(this_t const& that) const
+	{
+		assert(contents_ == that.contents_);
+		if(contents_==NULL)
+			return true;
+		return turn_num_==that.turn_num_ && base_==that.base_;
+	}
+	bool operator!=(this_t const& that) const {return !(*this==that);}
+
+private:
+	iterator(base_t const& base, size_t turn_num, side_actions& sa)
+			: base_(base), turn_num_(turn_num), contents_(&sa.actions_)
+		{init();}
+
+	iterator(base_t const& base, size_t turn_num, side_actions::contents_t* contents)
+			: base_(base), turn_num_(turn_num), contents_(contents)
+		{}
+
+	void init()
+	{
+		while(base_ == (*contents_)[turn_num_].end() //terminates thanks to invariant
+				&& turn_num_+1 < contents_->size())
+			base_ = (*contents_)[++turn_num_].begin();
+	}
+
+	base_t base_;
+	size_t turn_num_;
+	contents_t* contents_;
+};
+class side_actions::const_iterator
+	: public std::iterator<std::bidirectional_iterator_tag, action_ptr const>
+{
+	friend class side_actions;
+	typedef side_actions::iterator base_t;
+	typedef side_actions::const_iterator this_t;
+
+public:
+	const_iterator()
+			: std::iterator<std::bidirectional_iterator_tag, action_ptr const>()
+			, base_()
+		{}
+	//conversion from non-const to const
+	/*implicit*/ const_iterator(base_t const& base)
+			: std::iterator<std::bidirectional_iterator_tag, action_ptr const>()
+			, base_(base)
+		{}
+
+	action_ptr const& operator*() const {return *base_;}
+	action_ptr const* operator->() const {return base_.operator->();}
+	this_t& operator++() {++base_;   return *this;}
+	this_t& operator--() {--base_;   return *this;}
+	this_t operator+(int x) const {return base_ + x;}
+	this_t operator-(int x) const {return base_ - x;}
+	size_t operator-(this_t const& that) const {return base_-that.base_;}
+	bool operator==(this_t const& that) const {return base_ == that.base_;}
+	bool operator!=(this_t const& that) const {return base_ != that.base_;}
+	bool operator<(this_t const& that) const {return base_ < that.base_;}
+
+private:
+	base_t base_;
+};
 
 struct side_actions::numbers_t
 {
@@ -266,6 +421,6 @@ struct side_actions::numbers_t
 		{}
 };
 
-}
+} //end namespace wb
 
 #endif /* WB_SIDE_ACTIONS_HPP_ */

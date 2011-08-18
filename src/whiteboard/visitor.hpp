@@ -96,7 +96,7 @@ private:
 				side_actions::reverse_iterator end  = sa.rend();
 				while(itor!=end) {
 					++itor;
-					if(!new_this->visit(team_index,t,sa,itor.base()))
+					if(!new_this->visit(team_index,t,sa,side_actions::iterator(itor)))
 						return; //< Early abort
 				}
 			}

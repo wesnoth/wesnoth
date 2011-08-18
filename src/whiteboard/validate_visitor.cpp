@@ -61,13 +61,13 @@ bool validate_visitor::validate_actions()
 	// by using the iterator returned by remove_action it could even be done in visit_all above
 	if (!actions_to_erase_.empty())
 	{
-		int side_actions_size_before = viewer_actions_.actions().size();
+		int side_actions_size_before = viewer_actions_.size();
 		LOG_WB << "Erasing " << actions_to_erase_.size() << " invalid actions.\n";
 		foreach(action_ptr action, actions_to_erase_)
 		{
 			viewer_actions_.remove_action(viewer_actions_.get_position_of(action), false);
 		}
-		assert(side_actions_size_before - viewer_actions_.actions().size() == actions_to_erase_.size());
+		assert(side_actions_size_before - viewer_actions_.size() == actions_to_erase_.size());
 		actions_to_erase_.clear();
 		return false;
 	}
