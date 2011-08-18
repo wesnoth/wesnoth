@@ -14,6 +14,9 @@ import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 
+/**
+ * Comparator for content assist proposals
+ */
 public class WMLProposalComparator implements ICompletionProposalComparator,
     Serializable
 {
@@ -28,6 +31,7 @@ public class WMLProposalComparator implements ICompletionProposalComparator,
             ConfigurableCompletionProposal tmp1 = ( ConfigurableCompletionProposal ) arg1;
             return tmp0.compareTo( tmp1 );
         }
+
         return 0;
     }
 }

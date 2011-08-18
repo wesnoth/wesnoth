@@ -8,8 +8,6 @@
  *******************************************************************************/
 package org.wesnoth.ui.editor;
 
-import com.google.inject.Inject;
-
 import java.io.File;
 
 import org.apache.log4j.Level;
@@ -33,7 +31,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
@@ -57,18 +54,21 @@ import org.wesnoth.Logger;
 import org.wesnoth.WesnothPlugin;
 import org.wesnoth.ui.Messages;
 
+/**
+ * The main WML Editor
+ */
 public class WMLEditor extends XtextEditor
 {
-    private final static boolean      DEBUG                 = false;
+    private final static boolean  DEBUG                 = false;
 
-    protected static final String     AUTOLINK_PROJECT_NAME = "_AutoLinked_CFGExternalFiles_"; //$NON-NLS-1$
-    protected static final String     ENCODING_UTF8         = "utf-8";                        //$NON-NLS-1$
+    protected static final String AUTOLINK_PROJECT_NAME = "_AutoLinked_CFGExternalFiles_"; //$NON-NLS-1$
+    protected static final String ENCODING_UTF8         = "utf-8";                        //$NON-NLS-1$
 
-    @Inject
-    private IExtXtextEditorCustomizer editorCustomizer;
+    protected HighlightingHelper  highlightingHelper_;
 
-    protected HighlightingHelper      highlightingHelper_;
-
+    /**
+     * Creates a new WML Editor
+     */
     public WMLEditor( )
     {
         super( );
@@ -80,6 +80,9 @@ public class WMLEditor extends XtextEditor
         WesnothPlugin.getDefault( );
     }
 
+    /**
+     * @return Returns the current {@link HighlightingHelper} instance
+     */
     public HighlightingHelper getHighlightingHelper( )
     {
         return highlightingHelper_;
@@ -187,19 +190,6 @@ public class WMLEditor extends XtextEditor
             }
         }
         super.dispose( );
-    }
-
-    /**
-     * Overridden to allow customization of editor context menu via injected
-     * handler
-     * 
-     * @see org.eclipse.ui.editors.text.TextEditor#editorContextMenuAboutToShow(org.eclipse.jface.action.IMenuManager)
-     */
-    @Override
-    protected void editorContextMenuAboutToShow( IMenuManager menu )
-    {
-        super.editorContextMenuAboutToShow( menu );
-        editorCustomizer.customizeEditorContextMenu( menu );
     }
 
     private IFile getWorkspaceFile( IFileStore fileStore )

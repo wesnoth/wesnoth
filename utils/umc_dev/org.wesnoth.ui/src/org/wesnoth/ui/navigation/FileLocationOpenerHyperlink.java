@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,21 +46,39 @@ public class FileLocationOpenerHyperlink extends XtextHyperlink
         }
     }
 
+    /**
+     * Sets the line number
+     * 
+     * @param linenum
+     *        The new line number
+     */
     public void setLinenumber( int linenum )
     {
         linenum_ = linenum;
     }
 
+    /**
+     * @return The line number
+     */
     public int getLinenumber( )
     {
         return linenum_;
     }
 
+    /**
+     * Sets the file path to open
+     * 
+     * @param filePath
+     *        The new path
+     */
     public void setFilePath( String filePath )
     {
         filePath_ = filePath;
     }
 
+    /**
+     * @return The file path to open
+     */
     public String getFilePath( )
     {
         return filePath_;

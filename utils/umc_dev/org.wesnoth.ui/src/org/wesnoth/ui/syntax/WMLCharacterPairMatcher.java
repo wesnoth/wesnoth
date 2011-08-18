@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,12 +24,22 @@ import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLTag;
 
+/**
+ * The class uses the character pair matcher to implement the
+ * start/end tag matching
+ */
 public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
 {
     private WMLTag currentTag_;
 
     private int    matchCnt = 0;
 
+    /**
+     * Creates a new {@link WMLCharacterPairMatcher}
+     * 
+     * @param chars
+     *        The chars to match
+     */
     public WMLCharacterPairMatcher( char[] chars )
     {
         super( chars );
@@ -76,7 +86,7 @@ public class WMLCharacterPairMatcher extends DefaultCharacterPairMatcher
         return region;
     }
 
-    public synchronized void computeMatchingRegion( XtextResource state,
+    private synchronized void computeMatchingRegion( XtextResource state,
         int offset )
     {
         EObject object = WMLUtils.resolveElementAt( state, offset );

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,12 @@ import org.eclipse.ui.part.FileEditorInput;
  */
 public class LinkedFileEditorInput extends FileEditorInput
 {
+    /**
+     * Creates a new {@link LinkedFileEditorInput}
+     * 
+     * @param file
+     *        The file attached to this editor input
+     */
     public LinkedFileEditorInput( IFile file )
     {
         super( file );

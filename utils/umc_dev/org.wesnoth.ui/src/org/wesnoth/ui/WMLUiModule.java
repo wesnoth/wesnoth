@@ -20,7 +20,6 @@ import org.eclipse.xtext.resource.containers.IAllContainersState;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
-import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
@@ -31,7 +30,6 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
 import org.wesnoth.ui.autoedit.WMLAutoEditStrategy;
-import org.wesnoth.ui.contentassist.WMLContentAssistContext;
 import org.wesnoth.ui.contentassist.WMLProposalComparator;
 import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.ui.editor.WMLHighlightingHelper;
@@ -105,11 +103,6 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
     public Class< ? extends HyperlinkHelper > bindHyperlinkHelper( )
     {
         return WMLHyperlinkHelper.class;
-    }
-
-    public Class< ? extends ContentAssistContext > bindContentAssistContext( )
-    {
-        return WMLContentAssistContext.class;
     }
 
     public Class< ? extends ICompletionProposalComparator > bindICompletionProposalComparator( )

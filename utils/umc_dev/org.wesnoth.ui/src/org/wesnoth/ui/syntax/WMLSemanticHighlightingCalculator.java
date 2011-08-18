@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,9 @@ import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WMLTextdomain;
 import org.wesnoth.wml.WmlPackage;
 
+/**
+ * Highlights the WML code semantically
+ */
 public class WMLSemanticHighlightingCalculator implements
     ISemanticHighlightingCalculator
 {
@@ -130,7 +133,7 @@ public class WMLSemanticHighlightingCalculator implements
     /**
      * Copied from org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.
      * SemanticHighlightingCalculator
-     *
+     * 
      * @param node
      *        The node to highlight
      * @param id
@@ -160,7 +163,7 @@ public class WMLSemanticHighlightingCalculator implements
     /**
      * Copied from org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.
      * SemanticHighlightingCalculator
-     *
+     * 
      * @param semantic
      *        The object to search in
      * @param feature

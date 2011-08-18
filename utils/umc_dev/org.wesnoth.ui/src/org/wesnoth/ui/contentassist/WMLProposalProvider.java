@@ -47,6 +47,9 @@ import org.wesnoth.wml.WMLTag;
 import org.wesnoth.wml.WMLVariable;
 import org.wesnoth.wml.WMLVariable.Scope;
 
+/**
+ * Proposal provider for WML content assist
+ */
 public class WMLProposalProvider extends AbstractWMLProposalProvider
 {
     protected SchemaParser     schemaParser_;
@@ -432,7 +435,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             context.getPrefix( ), context );
     }
 
-    public ICompletionProposal createCompletionProposal( String proposal,
+    private ICompletionProposal createCompletionProposal( String proposal,
         String displayString, Image image,
         ContentAssistContext contentAssistContext, int priority )
     {

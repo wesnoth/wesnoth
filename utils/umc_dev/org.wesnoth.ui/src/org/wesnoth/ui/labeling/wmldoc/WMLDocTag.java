@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,16 @@ public class WMLDocTag implements IWMLDocProvider
 
     private boolean            docGenerated_;
 
+    /**
+     * Creates a new {@link WMLDocTag}
+     * 
+     * @param currentFile
+     *        The file where to create the doc on
+     * @param installName
+     *        The installname used when creating the doc
+     * @param name
+     *        The name of the tag to present
+     */
     public WMLDocTag( IFile currentFile, String installName, String name )
     {
         tag_ = SchemaParser.getInstance( installName ).getTags( ).get( name );
@@ -80,7 +90,7 @@ public class WMLDocTag implements IWMLDocProvider
 
     /**
      * Adds a style range to current list
-     *
+     * 
      * @param offset
      * @param length
      * @param style

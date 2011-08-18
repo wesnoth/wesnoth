@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,9 @@ import org.wesnoth.utils.WMLUtils;
 import org.wesnoth.wml.WMLKey;
 import org.wesnoth.wml.WMLMacroCall;
 
+/**
+ * Helper that creates hyperlinks at the offset if needed
+ */
 public class WMLHyperlinkHelper extends HyperlinkHelper
 {
     @Override
@@ -60,7 +63,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
     /**
      * Creates a hyperlink for opening the macro definition
-     *
+     * 
      * @param paths
      *        The paths variable for the current install
      * @param file
@@ -109,7 +112,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
     /**
      * Creates a hyperlink for opening the map ( if applying )
-     *
+     * 
      * @param paths
      *        The paths variable for the current install
      * @param object

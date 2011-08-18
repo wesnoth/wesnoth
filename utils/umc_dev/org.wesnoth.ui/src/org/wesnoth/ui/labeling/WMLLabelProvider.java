@@ -25,6 +25,12 @@ import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
  */
 public class WMLLabelProvider extends DefaultEObjectLabelProvider
 {
+    /**
+     * Creates a new {@link WMLLabelProvider}
+     * 
+     * @param delegate
+     *        An {@link AdapterFactoryLabelProvider} instance
+     */
     @Inject
     public WMLLabelProvider( AdapterFactoryLabelProvider delegate )
     {

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,17 +16,41 @@ import org.eclipse.xtext.ui.editor.utils.TextStyle;
 
 import org.wesnoth.ui.Messages;
 
+/**
+ * Configures part of the WML highlighting
+ */
 public class WMLHighlightingConfiguration extends
     DefaultHighlightingConfiguration
 {
+    /**
+     * Coloring for WML Tags
+     */
     public static final String RULE_WML_TAG          = "wmlTag";        //$NON-NLS-1$
+    /**
+     * Coloring for WML Keys
+     */
     public static final String RULE_WML_KEY          = "wmlKey";        //$NON-NLS-1$
+    /**
+     * Coloring for WML Macro Calls
+     */
     public static final String RULE_WML_MACRO_CALL   = "wmlMacroCall";  //$NON-NLS-1$
 
+    /**
+     * Coloring for WML Macro definitions
+     */
     public static final String RULE_WML_MACRO_DEFINE = "wmlMacroDefine"; //$NON-NLS-1$
+    /**
+     * Coloring for WML preprocessor if
+     */
     public static final String RULE_WML_IF           = "wmlIF";         //$NON-NLS-1$
+    /**
+     * Coloring for WML Textdomain definitions
+     */
     public static final String RULE_WML_TEXTDOMAIN   = "wmlTextdomain"; //$NON-NLS-1$
 
+    /**
+     * Coloring for start/end tag match
+     */
     public static final String RULE_MATCH_TAG        = "wmlMatchTag";   //$NON-NLS-1$
 
     @Override
@@ -52,7 +76,7 @@ public class WMLHighlightingConfiguration extends
             Messages.WMLHighlightingConfiguration_13, preprocTextStyle( ) );
     }
 
-    public TextStyle preprocTextStyle( )
+    private TextStyle preprocTextStyle( )
     {
         TextStyle textStyle = defaultTextStyle( ).copy( );
         textStyle.setColor( new RGB( 31, 209, 241 ) );
@@ -60,7 +84,7 @@ public class WMLHighlightingConfiguration extends
         return textStyle;
     }
 
-    public TextStyle macroTextStyle( )
+    private TextStyle macroTextStyle( )
     {
         TextStyle textStyle = defaultTextStyle( ).copy( );
         textStyle.setColor( new RGB( 197, 137, 23 ) );
@@ -68,7 +92,7 @@ public class WMLHighlightingConfiguration extends
         return textStyle;
     }
 
-    public TextStyle startEndTextStyle( )
+    private TextStyle startEndTextStyle( )
     {
         TextStyle textStyle = defaultTextStyle( ).copy( );
         textStyle.setColor( new RGB( 128, 128, 128 ) );
@@ -77,7 +101,7 @@ public class WMLHighlightingConfiguration extends
         return textStyle;
     }
 
-    public TextStyle tagTextStyle( )
+    private TextStyle tagTextStyle( )
     {
         TextStyle textStyle = defaultTextStyle( ).copy( );
         textStyle.setColor( new RGB( 128, 0, 0 ) );
@@ -85,7 +109,7 @@ public class WMLHighlightingConfiguration extends
         return textStyle;
     }
 
-    public TextStyle keyTextStyle( )
+    private TextStyle keyTextStyle( )
     {
         TextStyle textStyle = defaultTextStyle( ).copy( );
         textStyle.setColor( new RGB( 0, 128, 128 ) );

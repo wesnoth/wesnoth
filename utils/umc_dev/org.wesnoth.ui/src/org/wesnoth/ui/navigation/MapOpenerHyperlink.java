@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,16 +20,27 @@ import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.GameUtils;
 
-
+/**
+ * A link that opens map files in the Wesnoth Map Editor
+ */
 public class MapOpenerHyperlink extends XtextHyperlink
 {
     private String location_;
 
+    /**
+     * Sets the location of the map to open
+     * 
+     * @param location
+     *        The new location
+     */
     public void setLocation( String location )
     {
         location_ = location;
     }
 
+    /**
+     * @return The location of the map to open
+     */
     public String getLocation( )
     {
         return location_;

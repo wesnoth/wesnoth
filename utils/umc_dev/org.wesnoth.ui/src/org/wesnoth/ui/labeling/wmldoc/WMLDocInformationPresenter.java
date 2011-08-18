@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
+/**
+ * Presents WMLDoc to the user
+ */
 public class WMLDocInformationPresenter extends PopupDialog
 {
     private Point           bounds_;
@@ -26,6 +29,13 @@ public class WMLDocInformationPresenter extends PopupDialog
 
     /**
      * Creates a new WMLDocumentation information presenter
+     * 
+     * @param parent
+     *        The parent shell
+     * @param docProvider
+     *        The WMLDoc provider
+     * @param bounds
+     *        The bounds of the presented dialog
      */
     public WMLDocInformationPresenter( Shell parent,
         IWMLDocProvider docProvider, Point bounds )

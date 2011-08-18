@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Copyright (c) 2010 - 2011 by Timotei Dolean <timotei21@gmail.com>
- *
+ * 
  * This program and the accompanying materials are made available
  * under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@ package org.wesnoth.ui;
 
 import org.eclipse.osgi.util.NLS;
 
+@SuppressWarnings( "javadoc" )
 public class Messages extends NLS
 {
     private static final String BUNDLE_NAME = "org.wesnoth.ui.messages"; //$NON-NLS-1$
