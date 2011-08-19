@@ -306,7 +306,9 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 side_actions::iterator side_actions::queue_action(size_t turn_num, action_ptr action)
 {
 	if(resources::whiteboard->has_planned_unit_map())
+	{
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+	}
 	iterator result = synced_enqueue(turn_num, action);
 	LOG_WB << "Inserted into turn #" << (turn_num+1) << " at position #" << actions_[turn_num].size()
 			<< " : " << action <<"\n";

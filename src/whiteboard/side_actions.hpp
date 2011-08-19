@@ -243,8 +243,8 @@ public:
 	///Used to track gold spending by recruits/recalls when building the future unit map
 	void change_gold_spent_by(int difference) { gold_spent_ += difference; assert(gold_spent_ >= 0);}
 
-	void side_actions::raw_turn_shift();
-	void side_actions::synced_turn_shift();
+	void raw_turn_shift();
+	void synced_turn_shift();
 
 	/**
 	 * Network code. A net_cmd object (a config in disguise) represents a modification
