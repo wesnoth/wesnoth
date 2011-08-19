@@ -518,7 +518,7 @@ class HTMLOutput:
 
                         link = "../%s/%s.html" % (self.isocode, uid)
                         write("<div class=\"i\"><a href=\"%s\" title=\"id=%s\">%s</a>" % (
-                            link, uid, u"ℹ"))
+                            link, uid, u"i"))
                         write("</div>")
                         write("<div class=\"l\">L%s%s</div>" % (level, crown))
                         write("<a href=\"%s\">%s</a><br/>" % (link, name))
@@ -735,8 +735,8 @@ class HTMLOutput:
 
         # Write info about attacks.
         write("<h2>Attacks <small>(damage - count)</small></h2> \n")
-        write("<table class=\"unitinfo\">\n")
-
+        write("<table class=\"unitinfo attacks\">\n")
+        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
         attacks = self.get_recursive_attacks(unit)
         for attack in attacks:
             write("<tr>")
@@ -797,10 +797,12 @@ class HTMLOutput:
             ("arcane", "attacks/faerie-fire.png")]
 
         write("<h2>%s</h2>\n" % _("Resistances: ").strip(" :"))
-        write("<table class=\"unitinfo\">\n")
+        write("<table class=\"unitinfo resistances\">\n")
+        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /><col class="col5" /><col class="col6" /><col class="col7" /></colgroup>')
         write("<tr>\n")
 
         write("</tr>\n")
+        row = 0
         for rid, ricon in resistances:
             special, r = find_attr("resistance", rid)
             if r == "-": r = 100
@@ -810,13 +812,15 @@ class HTMLOutput:
                     r, uid))
             rcell = "td"
             if special: rcell += ' class="special"'
-            write("<tr>\n")
+            if row % 2 == 0: write("<tr>\n")
+            else: write("<td></td>")
             picname = image_collector.add_image("mainline", ricon,
                 no_tc = True)
             icon = os.path.join("../pics", picname)
-            write("<td><img src=\"%s\" height=36px/></td>\n" % (icon, ))
+            write("<td><img src=\"%s\" /></td>\n" % (icon, ))
             write("<th>%s</th><td class=\"num\">%s</td>\n" % (_(rid), r))
-            write("</tr>\n")
+            if row % 2 == 1 : write("</tr>\n")
+            row += 1
         write("</table>\n")
         
         # end left column
@@ -834,18 +838,23 @@ class HTMLOutput:
 
         # Write info about movement costs and terrain defense.
         write("<h2>Defense and Movement</h2>\n")
-        write("<table class=\"unitinfo\">\n")
-        write("<tr>\n")
-        write("<th colspan=2>%s</th><th>%s</th><th>%s</th>\n" % (
-            _("Terrain"), _("Movement Cost"), _("Defense") ))
-        write("</tr>\n")
+        write("<table class=\"unitinfo terrain\">\n")
+        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
+       
+        write("<tr><th colspan=2></th><th colspan=2>%s</th></tr>\n" % (
+            _("Movement Cost")))
+        write("<tr><th colspan=2>%s</th><th></th><th class=\"numheader\">%s</th></tr>\n" % (
+            _("Terrain"), _("Defense") ))
 
         terrains = self.wesnoth.terrain_lookup
         terrainlist = []
+        already = {}
         for tstring, t in terrains.items():
             tid = t.get_text_val("id")
             if tid in ["off_map", "off_map2", "fog", "shroud", "impassable", "void"]: continue
             if t.get_all(att = "aliasof"): continue
+            if tid in already: continue
+            already[tid] = 1
             name = T(t, "name")
             ticon = t.get_text_val("symbol_image")
             if tid == "flat": ticon = "grass/green-symbol"
@@ -873,7 +882,7 @@ class HTMLOutput:
             picname = image_collector.add_image("mainline",
                 "terrain/" + ticon + ".png", no_tc = True)
             icon = os.path.join("../pics", picname)
-            write("<td><img src=\"%s\" height=\"36px\" /></td>\n" % (icon, ))
+            write("<td><img src=\"%s\" /></td>\n" % (icon, ))
             write("<td>%s</td><%s><i>%s</i></td><%s class=\"num\"><i>%s</i></td>\n" % (
                 tname, ccell, c, dcell, d))
             write("</tr>\n")

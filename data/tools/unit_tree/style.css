@@ -108,6 +108,9 @@ ul.navbar li {
     margin: 0px;
     padding: 0px;
 }
+ul.navbar li:hover {
+    color: #804000;
+}
 ul.navbar a {
     color: #B48648;
     font-size: small;
@@ -134,33 +137,54 @@ table.unitinfo th {
     text-align: left;
     font-weight: normal;
 }
+table.attacks col.col1 {
+    width: 7em;
+}
+table.resistances col.col1 {
+    width: 5em;
+}
+table.resistances col.col5 {
+    width: 5em;
+}
+table.resistances col.col3 {
+    width: 4em;
+}
+table.resistances img {
+    height: 36px;
+}
+table.terrain img {
+    height: 36px;
+}
+table.terrain th.numheader {
+    text-align: right;
+}
 td.grayed {
     color: gray;
 }
 td.empty {
     background-color: #fffbf0;
     }
-col.col0 {
+table.units col.col0 {
     background-color: #efebe0;
     width: 16%;
 }
-col.col1 {
+table.units col.col1 {
     background-color: #f7ebd8;
     width: 16%;
 }
-col.col2 {
+table.units col.col2 {
     background-color: #f4ebdc;
     width: 16%;
 }
-col.col3 {
+table.units col.col3 {
     background-color: #efebe0;
     width: 16%;
 }
-col.col4 {
+table.units col.col4 {
     background-color: #f4ebdc;
     width: 16%;
 }
-col.col5 {
+table.units col.col5 {
     background-color: #f7ebd8;
     width: 16%;
 }
@@ -174,13 +198,13 @@ div.l {
     }
 div.i {
     padding: 4px;
-    font-weight: normal;
     font-size: small;
     border: 1px solid white;
     float: left;
     margin: 0px;
     }
 div.i a {
+    font-weight: 900;
     color: #8080ff;
     text-decoration: underline;
 }
