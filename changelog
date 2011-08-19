@@ -99,6 +99,8 @@ Version 1.9.8+svn:
      * Increased the swamp defense from 10% to 20%
      * Decreased the hill defense from 60% to 50%
  * WML engine:
+   * Added [event]id= support (to protect against duplicates)
+   * Added [event]delete=true support (to remove events that have an id set)
    * Implemented sub= and divide= for abilities and weapon specials
      (patch #2857)
    * new attribute replay_save= in [end_level]. Defaults to yes, allows

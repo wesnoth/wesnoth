@@ -123,7 +123,6 @@ namespace {
 	bool manager_running = false;
 	int floating_label = 0;
 
-	std::vector< game_events::event_handler > new_handlers;
 	typedef std::pair< std::string, config* > wmi_command_change;
 	std::vector< wmi_command_change > wmi_command_changes;
 
@@ -570,7 +569,92 @@ static map_location cfg_to_loc(const vconfig& cfg,int defaultx = 0, int defaulty
 
 namespace {
 
-	std::vector<game_events::event_handler> event_handlers;
+	class t_event_handlers : public std::vector<game_events::event_handler> {
+	private:
+		std::vector<game_events::event_handler> insert_buffer;
+		std::set<std::string> remove_buffer;
+		bool buffering;
+
+	public:
+		/**
+		 * Adds an event handler.  An event with a nonempty ID will not
+		 * be added if an event with that ID already exists.  This method
+		 * respects this class's buffering functionality.
+		 */
+		void add_event_handler(game_events::event_handler const & new_handler) {
+			if(buffering) {
+				insert_buffer.push_back(new_handler);
+			} else {
+				const config & cfg = new_handler.get_config();
+				std::string id = cfg["id"];
+				if(id != "") {
+					for(std::vector<game_events::event_handler>::iterator i = begin(); i < end(); i++) {
+						const config & temp_config = (*i).get_config();
+						if(id == temp_config["id"])
+							return;
+					}
+				}
+				this->push_back(new_handler);
+			}
+		}
+
+		/**
+		 * Removes an event handler, identified by its ID.  Events with
+		 * empty IDs cannot be removed.  This method respects this class's
+		 * buffering functionality.
+		 */
+		void remove_event_handler(std::string const & id) {
+			if(id == "")
+				return;
+
+			if(buffering)
+				remove_buffer.insert(id);
+
+			std::vector<game_events::event_handler> &temp = buffering ? insert_buffer : *this;
+
+			std::vector<game_events::event_handler>::iterator i = temp.begin();
+			while(i < temp.end()) {
+				const config & temp_config = (*i).get_config();
+				std::string event_id = temp_config["id"];
+				if(event_id != "" && event_id == id)
+					i = temp.erase(i);
+				else
+					i++;
+			}
+		}
+
+		/**
+		 * Starts buffering.  While buffering, any calls to add_event_handler
+		 * and remove_event_handler will not take effect until commit_buffer
+		 * is called.  This function is idempotent - starting a buffer
+		 * when already buffering will not start a second buffer.
+		 */
+		void start_buffer() {
+			buffering = true;
+		}
+
+		/**
+		 * Stops buffering and commits all changes.
+		 */
+		void commit_buffer() {
+			if(!buffering)
+				return;
+
+			buffering = false;
+
+			// Commit any event removals
+			for(std::set<std::string>::iterator i = remove_buffer.begin(); i != remove_buffer.end(); i++)
+				remove_event_handler(*i);
+			remove_buffer.clear();
+
+			// Commit any spawned events-within-events
+			for(std::vector<game_events::event_handler>::iterator i = insert_buffer.begin(); i != insert_buffer.end(); i++)
+				add_event_handler(*i);
+			insert_buffer.clear();
+		}
+	};
+
+	t_event_handlers event_handlers;
 
 } // end anonymous namespace (4)
 
@@ -2693,10 +2777,12 @@ WML_HANDLER_FUNCTION(disallow_end_turn, /*event_info*/, /*cfg*/)
 // Adding new events
 WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 {
-	if (!cfg["delayed_variable_substitution"].to_bool(true)) {
-		new_handlers.push_back(game_events::event_handler(cfg.get_parsed_config()));
+	if (cfg["remove"].to_bool(false)) {
+		event_handlers.remove_event_handler(cfg["id"]);
+	} else if (!cfg["delayed_variable_substitution"].to_bool(true)) {
+		event_handlers.add_event_handler(game_events::event_handler(cfg.get_parsed_config()));
 	} else {
-		new_handlers.push_back(game_events::event_handler(cfg.get_config()));
+		event_handlers.add_event_handler(game_events::event_handler(cfg.get_config()));
 	}
 }
 
@@ -2767,10 +2853,7 @@ WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 
 static void commit_new_handlers() {
 	// Commit any spawned events-within-events
-	while(new_handlers.size() > 0) {
-		event_handlers.push_back(new_handlers.back());
-		new_handlers.pop_back();
-	}
+	event_handlers.commit_buffer();
 }
 static void commit_wmi_commands() {
 	// Commit WML Menu Item command changes
@@ -2797,7 +2880,7 @@ static void commit_wmi_commands() {
 			}
 		} else if(!is_empty_command) {
 			LOG_NG << "setting command for " << mref->name << " to:\n" << *wcc.second;
-			event_handlers.push_back(game_events::event_handler(mref->command, true));
+			event_handlers.add_event_handler(game_events::event_handler(mref->command, true));
 		}
 
 		delete wcc.second;
@@ -3068,7 +3151,7 @@ namespace game_events {
 	{
 		assert(!manager_running);
 		foreach (const config &ev, cfg.child_range("event")) {
-			event_handlers.push_back(game_events::event_handler(ev));
+			event_handlers.add_event_handler(game_events::event_handler(ev));
 		}
 		foreach (const std::string &id, utils::split(cfg["unit_wml_ids"])) {
 			unit_wml_ids.insert(id);
@@ -3092,7 +3175,7 @@ namespace game_events {
 		typedef std::pair<std::string, wml_menu_item *> item;
 		foreach (const item &itor, resources::state_of_game->wml_menu_items) {
 			if (!itor.second->command.empty()) {
-				event_handlers.push_back(game_events::event_handler(itor.second->command, true));
+				event_handlers.add_event_handler(game_events::event_handler(itor.second->command, true));
 			}
 			++wmi_count;
 		}
@@ -3176,8 +3259,7 @@ namespace game_events {
 		if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),id) == unit_wml_ids.end()) {
 			unit_wml_ids.insert(id);
 			foreach (const config &new_ev, cfgs) {
-				std::vector<game_events::event_handler> &temp = (pump_manager::count()) ? new_handlers : event_handlers;
-				temp.push_back(game_events::event_handler(new_ev));
+				event_handlers.add_event_handler(game_events::event_handler(new_ev));
 			}
 		}
 	}
@@ -3207,6 +3289,8 @@ namespace game_events {
 				<< "recursion level would exceed maximum " << game_config::max_loop << '\n';
 			return false;
 		}
+
+		event_handlers.start_buffer();
 
 		bool result = false;
 		while(events_queue.empty() == false) {
