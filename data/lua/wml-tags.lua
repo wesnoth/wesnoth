@@ -698,7 +698,7 @@ function wml_actions.harm_unit(cfg)
 	local amount = tonumber(cfg.amount) or helper.wml_error("[harm_unit] has missing or wrong required amount= attribute")
 	local filter = helper.get_child(cfg, "filter") or helper.wml_error("[harm_unit] missing required [filter] tag")
 	local variable = cfg.variable
-	local animate = cfg.animate
+	local animate = cfg.animate -- attacker and defender are special values
 	local delay = cfg.delay or 500
 	local kill = cfg.kill
 	local fire_event = cfg.fire_event
@@ -706,6 +706,10 @@ function wml_actions.harm_unit(cfg)
 	-- #textdomain wesnoth
 	local primary_attack = helper.get_child(cfg, "primary_attack")
 	local secondary_attack = helper.get_child(cfg, "secondary_attack")
+	local harmer_filter = helper.get_child(cfg, "filter_second")
+	local harmer
+	local experience = cfg.experience
+	if harmer_filter then harmer = wesnoth.get_units(harmer_filter)[1] end
 
 	local private_unit = wesnoth.create_unit { type = "Fog Clearer", alignment = cfg.alignment or "neutral" }
 	wesnoth.add_modification(private_unit, "object", { { "effect",
@@ -715,6 +719,13 @@ function wml_actions.harm_unit(cfg)
 	for index, unit_to_harm in ipairs(wesnoth.get_units(filter)) do
 		if not fire_event or unit_to_harm.valid then
 			if animate then
+				if animate ~= "defender" and harmer and harmer.valid then
+					wesnoth.scroll_to_tile(harmer.x, harmer.y, true)
+					wml_actions.animate_unit( { flag = "attack", hits = true, { "filter", { id = harmer.id } },
+						{ "primary_attack", primary_attack },
+						{ "secondary_attack", secondary_attack }, with_bars = true,
+						{ "facing", { x = unit_to_harm.x, y = unit_to_harm.y } } } )
+				end
 				wesnoth.scroll_to_tile(unit_to_harm.x, unit_to_harm.y, true)
 			end
 
@@ -757,16 +768,41 @@ function wml_actions.harm_unit(cfg)
 				text = string.format("%s%s", "\t", text)
 			end
 
-			if animate then
-				wml_actions.animate_unit( { flag = "defend", hits = true, { "filter", { id = unit_to_harm.id } },
-					{ "primary_attack", primary_attack },
-					{ "secondary_attack", secondary_attack }, with_bars = true } )
+			if animate and animate ~= "attacker" then
+				if harmer and harmer.valid then
+					wml_actions.animate_unit( { flag = "defend", hits = true, { "filter", { id = unit_to_harm.id } },
+						{ "primary_attack", primary_attack },
+						{ "secondary_attack", secondary_attack }, with_bars = true },
+						{ "facing", { x = harmer.x, y = harmer.y } } )
+				else
+					wml_actions.animate_unit( { flag = "defend", hits = true, { "filter", { id = unit_to_harm.id } },
+						{ "primary_attack", primary_attack },
+						{ "secondary_attack", secondary_attack }, with_bars = true } )
+				end
 			end
 
-			wesnoth.float_label(unit_to_harm.x, unit_to_harm.y, string.format("<span foreground='red'>%s</span>", text))
+			wesnoth.float_label( unit_to_harm.x, unit_to_harm.y, string.format( "<span foreground='red'>%s</span>", text ) )
+
+			local function calc_xp( level ) -- to calculate the experience in case of kill
+				if level == 0 then return 4
+				else return level * 8 end
+			end
+
+			if experience ~= false and harmer and harmer.valid and wesnoth.is_enemy( unit_to_harm.side, harmer.side ) then -- no XP earned for harming friendly units
+				if kill ~= false and unit_to_harm.hitpoints <= 0 then
+					harmer.experience = harmer.experience + calc_xp( unit_to_harm.__cfg.level )
+				else
+					unit_to_harm.experience = unit_to_harm.experience + harmer.__cfg.level
+					harmer.experience = harmer.experience + unit_to_harm.__cfg.level
+				end
+			end
 
 			if kill ~= false and unit_to_harm.hitpoints <= 0 then
-				wml_actions.kill({ id = unit_to_harm.id, animate = animate, fire_event = fire_event })
+				local function bool( value ) -- support function for kill tag below
+					if value then return true
+					else return false end
+				end
+				wml_actions.kill({ id = unit_to_harm.id, animate = bool( animate ), fire_event = fire_event })
 			end
 
 			if animate then
@@ -777,8 +813,21 @@ function wml_actions.harm_unit(cfg)
 				wesnoth.set_variable(string.format("%s[%d]", variable, index - 1), { harm_amount = damage })
 			end
 
+			-- both may no longer be alive at this point, so double check
+			if experience ~= false and harmer and unit_to_harm.valid and unit_to_harm.experience >= unit_to_harm.max_experience then
+				wml_actions.store_unit { { "filter", { id = unit_to_harm.id } }, variable = "Lua_store_unit", kill = true }
+				wml_actions.unstore_unit { variable = "Lua_store_unit", find_vacant = false, advance = true }
+				wesnoth.set_variable ( "Lua_store_unit", nil )
+			end
+
 			wml_actions.redraw {}
 		end
+	end
+
+	if experience ~= false and harmer and harmer.valid and harmer.experience >= harmer.max_experience then
+		wml_actions.store_unit { { "filter", { id = harmer.id } }, variable = "Lua_store_unit", kill = true }
+		wml_actions.unstore_unit { variable = "Lua_store_unit", find_vacant = false, advance = true }
+		wesnoth.set_variable ( "Lua_store_unit", nil )
 	end
 end
 
