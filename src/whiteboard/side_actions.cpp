@@ -870,7 +870,7 @@ void side_actions::raw_turn_shift()
 
 		if(lazy_units.find(act->get_unit()) != lazy_end)
 		{
-			raw_enqueue(itor.turn_num_+1,act);
+			safe_insert(itor.turn_num_+1,0,act);
 			itor = raw_erase(itor);
 		}
 	}
