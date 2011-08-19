@@ -56,8 +56,8 @@ public:
 	 */
 	virtual map_location get_numbering_hex() const { return recall_hex_; }
 
-	/** For recall actions, always returns NULL. */
-	virtual unit* get_unit() const { return NULL; }
+	/** @return pointer to a copy of the recall unit. */
+	virtual unit* get_unit() const { return temp_unit_; }
 
 	map_location const get_recall_hex() const { return recall_hex_; }
 

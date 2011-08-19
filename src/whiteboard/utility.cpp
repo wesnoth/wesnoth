@@ -88,6 +88,24 @@ unit const* find_backup_leader(unit const& leader)
 	return NULL;
 }
 
+unit* find_recruiter(size_t team_index, map_location const& hex)
+{
+	gamemap& map = *resources::game_map;
+
+	if(!map.on_board(hex))
+		return NULL;
+
+	if(!map.is_castle(hex))
+		return NULL;
+
+	foreach(unit& u, *resources::units)
+		if(u.can_recruit()
+				&& u.side() == static_cast<int>(team_index+1)
+				&& can_recruit_on(map,u.get_location(),hex))
+			return &u;
+	return NULL;
+}
+
 unit* future_visible_unit(map_location hex, int viewer_side)
 {
 	scoped_planned_unit_map planned_unit_map;

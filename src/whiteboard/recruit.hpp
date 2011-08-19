@@ -60,8 +60,8 @@ public:
 	 */
 	virtual map_location get_numbering_hex() const { return recruit_hex_; }
 
-	/** For recruit actions, always returns NULL. */
-	virtual unit* get_unit() const { return NULL; }
+	/** @return pointer to a fake unit representing the one that will eventually be recruited. */
+	virtual unit* get_unit() const { return temp_unit_; }
 
 	map_location const get_recruit_hex() const { return recruit_hex_; }
 

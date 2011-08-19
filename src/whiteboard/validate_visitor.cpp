@@ -245,6 +245,12 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 		LOG_WB << "Recruit set as invalid, team doesn't have enough gold.\n";
 		recruit->set_valid(false);
 	}
+	//Check that there is a leader available to recruit this unit
+	if(recruit->is_valid() && !find_recruiter(recruit->team_index(),recruit->get_recruit_hex()))
+	{
+		LOG_WB << "Recruit set as invalid, no leader can recruit this unit.\n";
+		recruit->set_valid(false);
+	}
 
 	if(!recruit->is_valid())
 	{
@@ -288,6 +294,13 @@ void validate_visitor::visit_recall(recall_ptr recall)
 		LOG_WB << "Recall set as invalid, team doesn't have enough gold.\n";
 		recall->set_valid(false);
 	}
+	//Check that there is a leader available to recall this unit
+	if(recall->is_valid() && find_recruiter(recall->team_index(),recall->get_recall_hex()))
+	{
+		LOG_WB << "Recall set as invalid, no leader can recall this unit.\n";
+		recall->set_valid(false);
+	}
+
 
 	if(!recall->is_valid())
 	{

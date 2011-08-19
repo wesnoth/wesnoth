@@ -282,7 +282,10 @@ void manager::update_plan_hiding() const
 	{update_plan_hiding(viewer_team());}
 
 void manager::on_viewer_change(size_t team_index)
-	{update_plan_hiding(team_index);}
+{
+	if(!wait_for_side_init_)
+		update_plan_hiding(team_index);
+}
 
 void manager::on_change_controller(int side, team& t)
 {
@@ -743,9 +746,12 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 		else
 		{
 			side_actions& sa = *viewer_actions();
-			size_t turn = sa.num_turns();
-			if(turn > 0)
-				--turn;
+			unit* recruiter;
+			{ wb::scoped_planned_unit_map raii;
+				recruiter = find_recruiter(side_num-1,recruit_hex);
+			} // end planned unit map scope
+			assert(recruiter);
+			size_t turn = sa.get_turn_num_of(*recruiter);
 			sa.queue_recruit(turn,name,recruit_hex);
 			created_planned_recruit = true;
 

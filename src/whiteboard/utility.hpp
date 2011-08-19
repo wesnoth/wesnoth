@@ -51,6 +51,12 @@ side_actions_ptr current_side_actions();
  */
 unit const* find_backup_leader(unit const& leader);
 
+/**
+ * @return a leader from the specified team who can recruit on the specified hex
+ * @retval NULL if no such leader has been found
+ */
+unit* find_recruiter(size_t team_index, map_location const&);
+
 /// Applies the future unit map and @return a pointer to the unit at hex
 /// @retval NULL if none is visible to the specified viewer side
 unit* future_visible_unit(map_location hex, int viewer_side = wb::viewer_side());
