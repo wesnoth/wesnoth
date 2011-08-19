@@ -1349,9 +1349,9 @@ std::string attack::unit_info::dump()
 void attack_unit(const map_location &attacker, const map_location &defender,
 	int attack_with, int defend_with, bool update_display)
 {
+	resources::whiteboard->on_gamestate_change();
 	attack dummy(attacker, defender, attack_with, defend_with, update_display);
 	dummy.perform();
-	resources::whiteboard->on_gamestate_change();
 }
 
 attack::attack(const map_location &attacker, const map_location &defender,
