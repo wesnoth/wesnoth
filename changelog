@@ -11,23 +11,24 @@ Version 1.9.8+svn:
  * Campaigns:
    * Fixed remaining deprecation warnings about empty side=
    * Under the Burning Suns:
-     * Fixed Naga Sentinel gaining an AMLA after 32 XP instead of the usual 150.
-     * Gave to Desert Shydes and Desert Stars 30% defense on void terrain.
+     * Fixed Naga Sentinel gaining an AMLA after 32 XP instead of the usual 150
+     * Gave to Desert Shydes and Desert Stars 30% defense on void terrain
  * Engine:
    * Fixed bug #16151: Discover new units on recruit
    * Fixed bug #17780: Allow objects to 'increase' damage to 0
    * Fixed bug #18098: now recruits and recalls capture village if recruited or
-     recalled on village castle hex.
+     recalled on village castle hex
  * Graphics:
-    * Terrains:
-       * Added Gray Coastal Reef, Tropical Coastal Reef terrain
-       * Swamp no longer prevents embellishments from being drawn
-       * Fixed bug #15940: graphics glitch: pillared wall terrain covers great tree
+   * Terrains:
+     * Added Gray Coastal Reef, Tropical Coastal Reef terrain
+     * Swamp no longer prevents embellishments from being drawn
+     * Fixed bug #15940: graphics glitch: pillared wall terrain covers great
+       tree
  * Language and i18n:
-   * Updated translations: British English, Estonian, Galician, Indonesian,
-     Latin, Macedonian, Old English, Russian, Vietnamese
+   * Updated translations: British English, Estonian, Galician, Greek,
+     Indonesian, Latin, Macedonian, Old English, Russian, Vietnamese
  * Lua API:
-   * Added: function wesnoth.set_dialog_active (patch #2767).
+   * Added: function wesnoth.set_dialog_active (patch #2767)
  * Multiplayer:
    * Updated maps: Aethermaw, Hornshark Island, Sablestone Delta, Thousand
      Stings Garrison
@@ -38,9 +39,9 @@ Version 1.9.8+svn:
    * Added "chat_message_aging" advanced preference to allow setting the
      ingame chat message aging interval
  * Unit changes and balancing:
-   * Lowered swamp defense of Cuttlefish and Sea Serpent from 60% to 40%.
-   * Decreased cost of Giant Rat from 13 to 6.
-   * Various changes to the defense, movement and resistances of the Giant Rat.
+   * Lowered swamp defense of Cuttlefish and Sea Serpent from 60% to 40%
+   * Decreased cost of Giant Rat from 13 to 6
+   * Various changes to the defense, movement and resistances of the Giant Rat
    * Increased the XP requirements of the Arif from 40 to 47
    * Increased the cost of the Falcon from 10 to 12
    * Decreased the beak and claw attack of the Falcon by one each to 2-3 and 5-1
@@ -103,19 +104,19 @@ Version 1.9.8+svn:
    * new attribute replay_save= in [end_level]. Defaults to yes, allows
      WML authors to disable replay saving for a scenario. (bug #18026)
    * [harm_unit] always uses wesnoth.float_label to avoid that an incorrect
-     weapon filter may prevent floating the damage label.
+     weapon filter may prevent floating the damage label
    * new key heal_full=yes|no (def no) in [effect]apply_to=type
    * Added SLF support to [event][item] and [event][remove_item].
      If x = and y= aren't explicitely given no longer throw an error
-     but choose locations according to SLF behavior.
-   * Allowed [modify_turns]current= to change to an earlier current turn.
-   * Added [primary_attack] support to [harm_unit].
-   * Added wml tag [store_items].
+     but choose locations according to SLF behavior
+   * Allowed [modify_turns]current= to change to an earlier current turn
+   * Added [primary_attack] support to [harm_unit]
+   * Added wml tag [store_items]
  * Miscellaneous and bug fixes:
    * Teach wmllint to fix deprecated implicit side=1 in [store_gold], [gold]
      [remove_shroud], [place_shroud], [modify_side], [modify_ai] actions
    * Fixed bug #17150: fix naming confict with OpenBSD macro by renaming
-   * Added "-Wno-strict-aliasing" to the default compiler flags.
+   * Added "-Wno-strict-aliasing" to the default compiler flags
 
 Version 1.9.8:
  * Campaigns:
