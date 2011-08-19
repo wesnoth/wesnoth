@@ -124,14 +124,10 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 
 bool side_actions::execute_next()
 {
-	if (!actions_.front().empty())
-	{
+	if(!empty() && !actions_.front().empty())
 		return execute(begin());
-	}
-	else
-	{
+	else //nothing is executable right now
 		return false;
-	}
 }
 
 void side_actions::execute_all()
@@ -154,7 +150,7 @@ void side_actions::execute_all()
 	{
 		iterator position = begin();
 		bool finished = execute(position);
-		keep_executing = finished && !actions_.front().empty();
+		keep_executing = finished && !empty() && !actions_.front().empty();
 	}
 }
 
