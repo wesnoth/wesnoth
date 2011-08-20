@@ -213,6 +213,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			gui().clear_attack_indicator();
 		}
 
+		unit* un; //will later point to unit at mouseover_hex_
+
 		// the destination is the pointed hex or the adjacent hex
 		// used to attack it
 		map_location dest;
@@ -248,11 +250,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 					}
 				}
 			}
-		} // end planned unit map scope
 
-		unit* un;
-		{ // start planned unit map scope
-			wb::scoped_planned_unit_map planned_unit_map;
 			unit_map::iterator iter = mouseover_unit;
 			if (iter != units_.end())
 				un = &*iter;
