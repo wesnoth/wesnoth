@@ -94,11 +94,11 @@ public class DependencyListNode implements Serializable
      *        the newly parsed ones
      * @return A set with string paths for included directories
      */
-    public List< String > getIncludes( boolean refresh )
+    public List< String > getMacroIncludes( boolean refresh )
     {
         if( includes_ == null || refresh ) {
             includes_ = new ArrayList< String >(
-                ResourceUtils.getContainers( file_ ) );
+                ResourceUtils.getMacroIncludes( file_ ) );
         }
 
         return includes_;

@@ -666,14 +666,13 @@ public class ResourceUtils
     }
 
     /**
-     * Gets the set of included containers in this file
-     * as a macro call
+     * Gets the set of included files or folders from this file
      * 
      * @param file
      *        The file to get the containers from
      * @return A set of containers represented by their Path as string
      */
-    public static Set< String > getContainers( IFile file )
+    public static Set< String > getMacroIncludes( IFile file )
     {
         IProject project = file.getProject( );
         WMLRoot root = WMLUtils.getWMLRoot( file );
@@ -695,18 +694,16 @@ public class ResourceUtils
         }
 
         // now check what macros are really an inclusion macro
-        Set< String > containersToAdd = new LinkedHashSet< String >( );
+        Set< String > includesToAdd = new LinkedHashSet< String >( );
 
         for( WMLMacroCall macro: macroCalls ) {
             String text = WMLUtils.toString( macro );
             /**
-             * To include a folder the macro should be the following
+             * To include a folder/file the macro should be the following
              * forms:
              * - {campaigns/... }
              * - {~add-ons/... }
-             * 
              */
-            // TODO: check for including a specific config file?
             if( ! ( text.startsWith( "{campaigns" ) ) && //$NON-NLS-1$
                 ! ( text.equals( "{~add-ons" ) ) ) {
                 continue;
@@ -722,12 +719,12 @@ public class ResourceUtils
                 String subString = text.replace( "}", "" )
                     .replaceFirst( "\\{campaigns/", "" )
                     .replaceFirst( "\\{~add-ons/", "" );
-                containersToAdd.add( subString.substring( subString
+                includesToAdd.add( subString.substring( subString
                     .indexOf( '/' ) ) );
             }
         }
 
-        return containersToAdd;
+        return includesToAdd;
     }
 
     /**

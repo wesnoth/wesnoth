@@ -105,10 +105,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         }
         monitor.worked( 5 );
 
-        monitor.subTask( "Creating the project list ..." );
-        projectCache_.getDependencyList( ).createDependencyList( false );
-        monitor.worked( 10 );
-
         // create the temporary directory used by the plugin if not created
         monitor.subTask( Messages.WesnothProjectBuilder_6 );
         WorkspaceUtils.getTemporaryFolder( );
@@ -167,7 +163,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
         PreprocessorUtils.getInstance( ).clearTimestampsForPath(
             project_.getLocation( ).toOSString( ) );
 
+        // force creating the dependency list
         projectCache_.getDependencyList( ).createDependencyList( true );
+        System.out.println( projectCache_.getDependencyList( ) );
         boolean foundCfg = false;
 
         DependencyListNode node = null;
@@ -202,6 +200,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
     protected boolean incrementalBuild( IResourceDelta delta,
         IProgressMonitor monitor ) throws CoreException
     {
+        // Create the dependency list only if it's not created.
+        projectCache_.getDependencyList( ).createDependencyList( false );
+        monitor.worked( 10 );
+
         boolean foundCfg = false;
 
         // TODO: unprocessed files should be reprocessed on each build
@@ -319,7 +321,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
             monitor.subTask( Messages.WesnothProjectBuilder_8 );
             Map< String, String > properties = new HashMap< String, String >( );
             properties.put( "wesnoth.user.dir", paths.getUserDir( ) ); //$NON-NLS-1$
-            Logger.getInstance( ).log( "Ant result:" ); //$NON-NLS-1$
+            Logger.getInstance( ).logTool( "Ant result:" ); //$NON-NLS-1$
 
             String result = AntUtils.runAnt( buildXMLPath, properties, true );
             Logger.getInstance( ).logTool( result );

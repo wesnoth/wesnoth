@@ -51,10 +51,13 @@ public class DependencyListBuilder implements Serializable
 
     /**
      * Holds a list of directories that are parsed in the WML order
-     * (that is, they don't have a _main.cfg in them) and
-     * the value is the first node in that directory existing in the list
+     * (that is, they don't have a _main.cfg in them).
      */
     private List< String >                    directories_;
+    /**
+     * This list contains the first node of each directory in the
+     * {@link #directories_} list
+     */
     private List< ListDirectoryEntry >        directoriesEntries_;
 
     /**
@@ -67,8 +70,8 @@ public class DependencyListBuilder implements Serializable
     public DependencyListBuilder( IProject project )
     {
         list_ = new HashMap< String, DependencyListNode >( );
-        directories_ = new ArrayList< String >( );
 
+        directories_ = new ArrayList< String >( );
         directoriesEntries_ = new ArrayList< ListDirectoryEntry >( );
 
         previous_ = null;
@@ -89,7 +92,7 @@ public class DependencyListBuilder implements Serializable
     {
         if( isCreated_ && ! force ) {
             Logger.getInstance( )
-                .log( "Skipping depedency list for project "
+                .log( "Skipping dependency list for project "
                     + project_.getName( ) );
             return;
         }
@@ -173,7 +176,6 @@ public class DependencyListBuilder implements Serializable
                 }
             }
             else {
-
                 // previous_ should be the first non-null node in previous
                 // directories.
 
@@ -186,13 +188,13 @@ public class DependencyListBuilder implements Serializable
                 newNode = internal_addNode( file );
             }
 
-            // now, parse the file to check if we should include other dirs
-            internal_addContainers( newNode.getIncludes( true ) );
+            // now, parse the file to check if we should include other
+            // dirs/files
+            internal_addIncludes( newNode.getMacroIncludes( true ) );
         }
         else {
             // didn't found any place to put it. where shall we?
-            // the place should be dictated by other cfg,
-            // by getting the included directory
+            // the place should be dictated by other cfg via a macro include
         }
 
         // restore old previous
@@ -202,15 +204,21 @@ public class DependencyListBuilder implements Serializable
     }
 
     /**
-     * Adds the containers and their contents to the list
+     * Adds the includes to the list
      * 
      * @param containerList
      *        The list of container paths
      */
-    private void internal_addContainers( Collection< String > containerList )
+    private void internal_addIncludes( Collection< String > includesList )
     {
-        for( String container: containerList ) {
-            internal_addContainer( container );
+        for( String include: includesList ) {
+            IFile file = project_.getFile( include );
+            if( file.exists( ) ) {
+                internal_addNode( file );
+            }
+            else {
+                internal_addContainer( include );
+            }
         }
     }
 
@@ -241,8 +249,8 @@ public class DependencyListBuilder implements Serializable
             // add main.cfg to list
             DependencyListNode newNode = internal_addNode( ( IFile ) main_cfg );
 
-            // add any included containers
-            internal_addContainers( newNode.getIncludes( true ) );
+            // add any included files/folders
+            internal_addIncludes( newNode.getMacroIncludes( true ) );
         }
         else {
             // no main.cfg, just follow WML reading rules
@@ -338,6 +346,11 @@ public class DependencyListBuilder implements Serializable
      */
     private DependencyListNode internal_addNode( IFile file )
     {
+        // don't add a file more than 1 time
+        if( list_.containsKey( file.getProjectRelativePath( ).toString( ) ) ) {
+            return getNode( file );
+        }
+
         DependencyListNode newNode = new DependencyListNode( file, - 1 );
 
         if( previous_ != null ) {
@@ -423,10 +436,9 @@ public class DependencyListBuilder implements Serializable
             node.getNext( ).setPrevious( node.getPrevious( ) );
         }
 
-        String fileParentProjectPath = node.getFile( ).getParent( )
-            .getProjectRelativePath( ).toString( );
+        IFile file = node.getFile( );
 
-        list_.remove( node.getFile( ).getProjectRelativePath( ).toString( ) );
+        list_.remove( file.getProjectRelativePath( ).toString( ) );
 
         // if we're at last node, decrease currentIndex_ to make economy on
         // indexes
@@ -437,13 +449,14 @@ public class DependencyListBuilder implements Serializable
             }
         }
 
-        // removing a _main.cfg, add the parent container
+        // if removing a _main.cfg, we need to add the parent container
         // back to the list along with it's directories_ entry
-        if( node.getFile( ).getName( ).equals( "_main.cfg" ) ) {
+        if( file.getName( ).equals( "_main.cfg" ) ) {
             DependencyListNode backupPrevious = previous_;
 
             previous_ = node.getPrevious( );
-            internal_addContainer( fileParentProjectPath );
+            internal_addContainer( file.getParent( ).getProjectRelativePath( )
+                .toString( ) );
 
             previous_ = backupPrevious;
         }
@@ -498,10 +511,10 @@ public class DependencyListBuilder implements Serializable
     public void updateNode( DependencyListNode node )
     {
         // check the includes, to see if they changed
-        List< String > previousIncludes = node.getIncludes( false );
+        List< String > previousIncludes = node.getMacroIncludes( false );
         int prevLength = previousIncludes.size( );
 
-        List< String > newIncludes = node.getIncludes( true );
+        List< String > newIncludes = node.getMacroIncludes( true );
         int newLength = newIncludes.size( );
 
         List< String > processedIncludes = new ArrayList< String >( );
@@ -642,7 +655,7 @@ public class DependencyListBuilder implements Serializable
     /**
      * Returns the node specified by the key. The keys are
      * usually project-relative paths for project's files, or
-     * the {@link #ROOT_NODE_KEY}
+     * the {@link #ROOT_NODE_KEY} for the first list node
      * 
      * @param key
      *        The key to get the node by
@@ -658,7 +671,7 @@ public class DependencyListBuilder implements Serializable
      * 
      * @return A boolean value
      */
-    public boolean getIsCreated( )
+    public boolean isCreated( )
     {
         return isCreated_;
     }
