@@ -186,13 +186,21 @@ public:
 	public:
 		pointer operator->() const   {
 			assert(valid());
+			tank_->self_check();
 			return  i_->unit_; }
 		reference operator*() const {
+			tank_->self_check();
+			if(!valid()){
+				if(!tank_){std::cerr<<"tank is NULL"<<"\n";}
+				if(i_==the_end()){std::cerr<<"i_ is the end"<<"\n";}
+				if(i_->unit_==NULL){std::cerr<<"i_ unit is NULL with uid="<<i_->deleted_uid_<<"\n";}
+			}
 			assert(valid());
 			return *i_->unit_; }
 
 		iterator_base& operator++() {
 			assert( valid_entry() );
+			tank_->self_check();
 			iterator_type new_i(i_);
 			do{
 				++new_i;
@@ -212,6 +220,7 @@ public:
 
 		iterator_base& operator--() {
 			assert(  tank_ && i_ != the_list().begin() );
+			tank_->self_check();
 			iterator_type begin(the_list().begin());
 			dec();
 			do {
@@ -263,12 +272,14 @@ public:
 		void inc() { if(valid_ref_count()) { ++(i_->ref_count_); } }
 
 		///Decrement the reference counter
-		///Delete the list element if the unit is gone and the reference counter is zero
+		///Delete the list element and the dangling umap reference if the unit is gone and the reference counter is zero
 		///@note this deletion will advance i_ to the next list element.
 		void dec() {
 			if( valid_ref_count() ){
 				assert(i_->ref_count_ != 0);
 				if( (--(i_->ref_count_) == 0)  && (i_->unit_ == NULL) ){
+					if(tank_->umap_.erase(i_->deleted_uid_) != 1){
+						tank_->error_recovery_externally_changed_uid(i_); }
 					i_ = the_list().erase(i_);
 				} } }
 
@@ -301,8 +312,6 @@ public:
 	unit_map(const unit_map &that);
 	unit_map& operator=(const unit_map &that);
 
-	/** A unit map with a copy of a single unit in it. */
-	unit_map(const map_location &loc, const unit &u);
 	~unit_map();
 	void swap(unit_map& o);
 
@@ -399,6 +408,17 @@ public:
 	 */
 	unit *extract(const map_location &loc);
 
+	///Finds and deletes the umap_ item associated with @a lit when the underlying_id()
+	///has been changed externally after insertion and before extraction
+	void error_recovery_externally_changed_uid(t_ilist::iterator const & lit) const;
+
+	///Checks invariants.  For debugging purposes only.  Doesn't do anything in non-debug mode.
+	bool self_check() const
+#ifndef DEBUG 
+	{ return true; }
+#endif
+	;
+
 private:
 	///Creates and inserts a unit_pod called the_end_ as a sentinel in the ilist
 	void init_end(){
@@ -438,7 +458,7 @@ private:
 	 * underlying_id -> ilist::iterator. This requires that underlying_id be
 	 * unique (which is enforced in unit_map::insert).
 	 */
-	t_umap umap_;
+	mutable t_umap umap_;
 
 	/**
 	 * location -> ilist::iterator.

@@ -70,56 +70,71 @@ unit_map::~unit_map() {
 }
 
 unit_map::t_ilist::iterator unit_map::begin_core() const {
+	self_check();
 	t_ilist::iterator i = ilist_.begin();
 	while (i != the_end_ && (i->unit_ == NULL)) { ++i; }
 	return i;
 }
 
 std::pair<unit_map::unit_iterator, bool> unit_map::add(const map_location &l, const unit &u) {
+	self_check();
 	unit *p = new unit(u);
 	p->set_location(l);
 	return insert(p);
 }
 
 std::pair<unit_map::unit_iterator, bool> unit_map::move(const map_location &src, const map_location &dst) {
+	self_check();
 	DBG_NG << "Unit map: Moving unit from " << src << " to " << dst << "\n";
 
+	//Find the unit at the src location
 	t_lmap::iterator i = lmap_.find(src);
 	if(i == lmap_.end()) { return std::make_pair(make_unit_iterator(the_end_), false);}
 
-	if(src == dst){ return std::make_pair(make_unit_iterator(i->second),true);}
-
-	unit *p = i->second->unit_;
-	if(p == NULL){ return std::make_pair(make_unit_iterator(i->second), false);}
-
 	t_ilist::iterator lit(i->second);
+
+	if(src == dst){ return std::make_pair(make_unit_iterator(lit),true);}
+
+	//Fail if there is no unit to move
+	unit *p = lit->unit_;
+	if(p == NULL){ return std::make_pair(make_unit_iterator(lit), false);}
+
+	p->set_location(dst);
 
 	///@todo upgrade to quick_erase when boost 1.42 supported by wesnoth
 	lmap_.erase(i);
 
-	p->set_location(dst);
-
 	std::pair<t_lmap::iterator,bool> res = lmap_.insert(std::make_pair(dst, lit));
+	
+	//Fail and don't move if the destination is already occupied
 	if(res.second == false) {
 		p->set_location(src);
 		lmap_.insert(std::make_pair(src, lit));
 		return std::make_pair(make_unit_iterator(lit), false);
 	}
 
-	return std::make_pair(make_unit_iterator(res.first->second), true);
+	self_check();
+
+	return std::make_pair(make_unit_iterator(lit), true);
 }
 
 
 /** Inserts the unit pointed to by @a p into the unit_map.
 
-1. Inserts the unit into the ilist.
-2. Inserts the iterator from ilist into the lmap at the desired location.
-If it fails it remove the unit from ilist.
-3. Inserts the iterator to the ilist into the umap with a unique id,
-  creating a new one if necessary.
+It needs to succeed on the insertion to the umap and to the lmap 
+otherwise all operations are reverted.
+1. Insert a unit_pod into the list
+2. Try insertion into the umap and remove the list item on failure
+3. Try insertion in the lmap and remove the umap and the list item on failure
+
+The one oddity is that to facilitate non-invalidating iterators the list
+sometimes has NULL pointers which should be used when they correspond
+to uids previously used.
  */
-std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p)
-{
+std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p) {
+	self_check();
+	assert(p);
+
 	size_t unit_id = p->underlying_id();
 	const map_location &loc = p->get_location();
 
@@ -131,31 +146,24 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p)
 
 	unit_pod upod;
 	upod.unit_ = p;
-	upod.deleted_uid_ = 0;
+	upod.deleted_uid_ = unit_id;
 	ilist_.push_front(upod);
 	t_ilist::iterator lit(ilist_.begin());
 
 	DBG_NG << "Adding unit " << p->underlying_id() << " - " << p->id()
 		<< " to location: (" << loc << ")\n";
 
-	std::pair<t_lmap::iterator,bool> res = lmap_.insert(std::make_pair(loc, lit ));
+	std::pair<t_umap::iterator, bool> uinsert = umap_.insert(std::make_pair(unit_id, lit ));
 
-	if(!res.second){
-		ilist_.pop_front();
-		DBG_NG << "Trying to add " << p->name()
-			   << " - " << p->id() << " at location ("<<loc <<"); Occupied  by "
-			   <<(res.first->second)->unit_->name()<< " - " << res.first->second->unit_->id() <<"\n";
-		return std::make_pair(make_unit_iterator(the_end_), false);
-	}
-
-	std::pair<t_umap::iterator, bool> biter =
-		umap_.insert(std::make_pair(unit_id, lit ));
-
-	if (!biter.second) {
-		if (! biter.first->second->unit_) {
-			biter.first->second->unit_ = p;
+	if (! uinsert.second) {
+		//If the UID is empty reinsert the unit in the same list element
+		if ( uinsert.first->second->unit_ == NULL) {
+			ilist_.pop_front();
+			lit = uinsert.first->second;
+			lit->unit_ = p;
+			assert(lit->ref_count_ != 0);
 		} else {
-			unit *q = biter.first->second->unit_;
+			unit *q = uinsert.first->second->unit_;
 			ERR_NG << "Trying to add " << p->name()
 				   << " - " << p->id() << " - " << p->underlying_id()
 				   << " ("  << loc << ") over " << q->name()
@@ -166,16 +174,37 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p)
 				   << " to prevent duplicate id conflicts.\n";
 
 			p->clone(false);
-			biter = umap_.insert(std::make_pair(p->underlying_id(), lit ));
-			if (!biter.second) { bool never_happen(false); assert(never_happen); }
+			uinsert = umap_.insert(std::make_pair(p->underlying_id(), lit ));
+			if (!uinsert.second) { bool never_happen(false); assert(never_happen); }
 		}
 	}
 
+	std::pair<t_lmap::iterator,bool> linsert = lmap_.insert(std::make_pair(loc, lit ));
+
+	//Fail if the location is occupied
+	if(! linsert.second) {
+		if(lit->ref_count_ == 0) {
+			//Undo a virgin insertion
+			ilist_.pop_front();
+			///@todo replace with quick_erase(i) when wesnoth supports  boost 1.42 min version
+			umap_.erase(uinsert.first);
+		} else {
+			//undo a reinsertion
+			uinsert.first->second->unit_ = NULL;
+		}
+		DBG_NG << "Trying to add " << p->name()
+			   << " - " << p->id() << " at location ("<<loc <<"); Occupied  by "
+			   <<(linsert.first->second)->unit_->name()<< " - " << linsert.first->second->unit_->id() <<"\n";
+
+		return std::make_pair(make_unit_iterator(the_end_), false);
+	}
+
+	self_check();
 	return std::make_pair( make_unit_iterator( lit ), true);
 }
 
-std::pair<unit_map::unit_iterator, bool> unit_map::replace(const map_location &l, const unit &u)
-{
+std::pair<unit_map::unit_iterator, bool> unit_map::replace(const map_location &l, const unit &u) {
+	self_check();
 	//when 'l' is the reference to map_location that is part
 	//of that unit iterator which is to be deleted by erase,
 	// 'l' is invalidated by erase, too. Thus, 'add(l,u)' fails.
@@ -215,30 +244,74 @@ void unit_map::clear(bool force) {
 }
 
 unit *unit_map::extract(const map_location &loc) {
+	self_check();
 	t_lmap::iterator i = lmap_.find(loc);
-	if (i == lmap_.end()) {
-		return NULL; }
+	if (i == lmap_.end()) { return NULL; }
 
-	unit *res = i->second->unit_;
+	t_ilist::iterator lit(i->second);
 
-	DBG_NG << "Extract unit " << res->underlying_id() << " - " << res->id()
+	unit *u = lit->unit_;
+	size_t uid( u->underlying_id() );
+
+	DBG_NG << "Extract unit " << uid << " - " << u->id()
 			<< " from location: (" << loc << ")\n";
 
-	i->second->unit_ = NULL;
-	i->second->deleted_uid_ = res->underlying_id();
-	if(i->second->ref_count_ == 0){
-		assert(i->second != the_end_);
-		ilist_.erase( i->second );
+	if(lit->ref_count_ == 0){
+		assert(lit != the_end_);
+		if(umap_.erase(uid) != 1){
+			error_recovery_externally_changed_uid(lit); }
+		ilist_.erase( lit );
+	} else {
+		//Soft extraction keeps the old lit item if any iterators reference it
+		lit->unit_ = NULL;
+		lit->deleted_uid_ = uid;
+		assert( uid != 0);
 	}
 
-	///@todo replace with quick_erase(i) when wesnoth supports  boost 1.42 min version
-	umap_.erase(res->underlying_id());
 	lmap_.erase(i);
+	self_check();
 
-	return res;
+	return u;
 }
 
+/** error_recovery_externally_changed_uid is called when an attempt is made to 
+	delete a umap_ element, which fails because the underlying_id() has been changed externally.
+	It searches the entire umap_ to for a matching ilist_ element to erase.
+ */
+void unit_map::error_recovery_externally_changed_uid(t_ilist::iterator const & lit) const {
+	std::string name, id ;
+	size_t uid;
+	if(lit->unit_ != NULL){
+		unit const * u(lit->unit_);
+		name = u->name();
+		id = u->id();
+		uid = u->underlying_id();
+	} else {
+		name = "unknown";
+		id = "unknown";
+		uid = lit->deleted_uid_;
+	}
+	t_umap::iterator uit(umap_.begin());
+	for(; uit != umap_.end(); ++uit){
+		if(uit->second == lit){ break; }
+	}
+	std::stringstream oldidss;
+	if (uit != umap_.end()) { 
+		size_t olduid =  uit->first ;
+		umap_.erase(uit);
+		oldidss << olduid;
+	} else {
+		oldidss << "unknown";
+	}
+
+	ERR_NG << "Extracting " << name << " - " << id
+		   << " from unit map. Underlying ID changed from "<< oldidss.str()  << " to " << uid
+			<< " between insertion and extraction, requiring an exhaustive search of umap_.\n";
+}
+
+
 size_t unit_map::erase(const map_location &loc) {
+	self_check();
 	unit *u = extract(loc);
 	if (!u) return 0;
 	delete u;
@@ -246,9 +319,13 @@ size_t unit_map::erase(const map_location &loc) {
 }
 
 unit_map::unit_iterator unit_map::find(size_t id) {
-	return make_unit_iterator<t_umap::iterator>(umap_.find(id) ); }
+	self_check();
+	t_umap::iterator i(umap_.find(id));
+	if((i != umap_.end()) && i->second->unit_==NULL){ i = umap_.end() ;}
+	return make_unit_iterator<t_umap::iterator>( i ); }
 
 unit_map::unit_iterator unit_map::find(const map_location &loc) {
+	self_check();
 	return make_unit_iterator<t_lmap::iterator>(lmap_.find(loc) ); }
 
 unit_map::unit_iterator unit_map::find_leader(int side) {
@@ -290,4 +367,59 @@ std::vector<unit_map::const_unit_iterator> unit_map::find_leaders(int side)const
 	return const_leaders;
 }
 
+#ifdef DEBUG 
 
+bool unit_map::self_check() const {
+	bool found_the_end(false), good(true);
+	t_ilist::const_iterator lit(ilist_.begin());
+	for(; lit != ilist_.end(); ++lit){
+		if(lit == the_end_){ found_the_end = true; continue; }
+		if(lit->ref_count_ < 0){ 
+			good=false;
+			ERR_NG << "unit_map list element ref_count_ <0 is " << lit->ref_count_<<"\n"; }
+		if(lit->unit_ != NULL){
+			lit->unit_->id(); //crash if bad pointer
+		} else {
+			if(lit->ref_count_ <= 0){ 
+				good=false;
+				ERR_NG << "unit_map list element ref_count_ <=0 is " << lit->ref_count_<<", when unit deleted.\n"; }
+			if(lit->deleted_uid_ <= 0 ){ 
+				good=false;
+				ERR_NG << "unit_map list element deleted_uid_ <=0 is " << lit->deleted_uid_<<"\n"; }
+		}
+	}
+
+	if(!found_the_end){
+		good=false;
+		ERR_NG << "unit_map list the_end_ is missing. " <<"\n";}
+
+	t_umap::const_iterator uit(umap_.begin());
+	for(; uit != umap_.end(); ++uit){
+		if(uit->first <= 0){ 
+			good=false;
+			ERR_NG << "unit_map umap uid <=0 is " << uit->first <<"\n"; }
+		if(uit->second == the_end_ ){
+			good=false;
+			ERR_NG << "unit_map umap element == the_end_ "<<"\n"; }
+		if(uit->second->unit_ == NULL && uit->second->ref_count_ == 0 ){
+			good=false;
+			ERR_NG << "unit_map umap unit_==NULL when refcount == 0 uid="<<uit->second->deleted_uid_<<"\n"; 
+		}
+		if(uit->second->unit_ && uit->second->unit_->underlying_id() != uit->first){
+			good=false;
+			ERR_NG << "unit_map umap uid("<<uit->first<<") != underlying_id()["<< uit->second->unit_->underlying_id()<< "]\n"; }
+	}	
+	t_lmap::const_iterator locit(lmap_.begin());
+	for(; locit != lmap_.end(); ++locit){
+		if(locit->second == the_end_ ){
+			good=false;
+			ERR_NG << "unit_map lmap element == the_end_ "<<"\n"; }
+		if(locit->first != locit->second->unit_->get_location()){ 
+			good=false;
+			ERR_NG << "unit_map lmap location != unit->get_location() " <<"\n"; }
+	}		
+	//assert(good);
+	return good;
+}
+
+#endif
