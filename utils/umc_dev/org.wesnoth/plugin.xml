@@ -345,7 +345,8 @@
       </viewer>
       <viewerContentBinding
             viewerId="org.wesnoth.views.WesnothProjectsExplorer">
-         <includes>
+         <includes>   
+            <contentExtension pattern="org.eclipse.jdt.java.ui.javaContent" />
             <contentExtension
                   pattern="org.eclipse.ui.navigator.resourceContent">
             </contentExtension>
