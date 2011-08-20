@@ -216,6 +216,7 @@ void display::rebuild_all()
 
 void display::reload_map()
 {
+	redraw_background_ = true;
 	builder_->reload_map();
 }
 
