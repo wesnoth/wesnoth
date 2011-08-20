@@ -892,6 +892,7 @@
 		F444916613C5483F003B6442 /* network_asio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F44490B413C5483F003B6442 /* network_asio.cpp */; };
 		F444917713C5562C003B6442 /* folder_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F444917513C5562C003B6442 /* folder_create.cpp */; };
 		F444918813C55729003B6442 /* libpng12.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4448F3B13C547FF003B6442 /* libpng12.0.dylib */; };
+		F449349C13FF652800DF01D5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F449349913FF652800DF01D5 /* validator.cpp */; };
 		F46C5DCC13A5074C00DD0816 /* game_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DC513A5074C00DD0816 /* game_controller.cpp */; };
 		F46C5DCD13A5074C00DD0816 /* game_controller_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DC713A5074C00DD0816 /* game_controller_new.cpp */; };
 		F46C5DCE13A5074C00DD0816 /* game_controller_abstract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DC913A5074C00DD0816 /* game_controller_abstract.cpp */; };
@@ -1894,6 +1895,8 @@
 		F44490B513C5483F003B6442 /* network_asio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = network_asio.hpp; sourceTree = "<group>"; };
 		F444917513C5562C003B6442 /* folder_create.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = folder_create.cpp; sourceTree = "<group>"; };
 		F444917613C5562C003B6442 /* folder_create.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = folder_create.hpp; sourceTree = "<group>"; };
+		F449349913FF652800DF01D5 /* validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = validator.cpp; sourceTree = "<group>"; };
+		F449349A13FF652800DF01D5 /* validator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = validator.hpp; sourceTree = "<group>"; };
 		F46C5DC413A5074C00DD0816 /* game_controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_controller.hpp; sourceTree = "<group>"; };
 		F46C5DC513A5074C00DD0816 /* game_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_controller.cpp; sourceTree = "<group>"; };
 		F46C5DC613A5074C00DD0816 /* game_controller_new.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_controller_new.hpp; sourceTree = "<group>"; };
@@ -2733,6 +2736,8 @@
 		B55999A60EC62181008DD061 /* serialization */ = {
 			isa = PBXGroup;
 			children = (
+				F449349913FF652800DF01D5 /* validator.cpp */,
+				F449349A13FF652800DF01D5 /* validator.hpp */,
 				B55999A70EC62181008DD061 /* binary_or_text.cpp */,
 				B55999A80EC62181008DD061 /* binary_or_text.hpp */,
 				B55999AB0EC62181008DD061 /* parser.cpp */,
@@ -3804,6 +3809,7 @@
 				F444916613C5483F003B6442 /* network_asio.cpp in Sources */,
 				F444917713C5562C003B6442 /* folder_create.cpp in Sources */,
 				F4FE7FA613DCFF660054F220 /* network.cpp in Sources */,
+				F449349C13FF652800DF01D5 /* validator.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4390,7 +4396,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
-					/usr/local/i386/lib,
 				);
 				PRODUCT_NAME = Wesnoth;
 				SDKROOT = "";
@@ -4420,7 +4425,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
-					/usr/local/i386/lib,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Wesnoth;
@@ -4432,6 +4436,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_OPENMP_SUPPORT = YES;
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "LOCALEDIR=\\\"translations\\\"";
