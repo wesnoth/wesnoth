@@ -573,7 +573,7 @@ set(wesnoth-main_SRC
 	whiteboard/attack.cpp
 	whiteboard/highlight_visitor.cpp
 	whiteboard/manager.cpp
-	whiteboard/mapbuilder_visitor.cpp
+	whiteboard/mapbuilder.cpp
 	whiteboard/move.cpp
 	whiteboard/recall.cpp
 	whiteboard/recruit.cpp

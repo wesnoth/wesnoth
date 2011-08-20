@@ -20,7 +20,7 @@
 #ifndef WB_VALIDATE_VISITOR_HPP_
 #define WB_VALIDATE_VISITOR_HPP_
 
-#include "mapbuilder_visitor.hpp"
+#include "mapbuilder.hpp"
 #include "side_actions.hpp"
 
 #include <set>
@@ -29,7 +29,7 @@ namespace wb
 {
 
 /**
- * Works like mapbuilder_visitor, but with these differences:
+ * Works like mapbuilder, but with these differences:
  *   * Instead of stopping at viewer_team, it visits all actions of every team.
  *   * actions are evaluated for validity along the way.
  *   * Some invalid actions are deleted.
@@ -57,10 +57,10 @@ private:
 
 	bool no_previous_invalids(side_actions::iterator const&);
 
-	struct helper: public mapbuilder_visitor
+	struct helper: public mapbuilder
 	{
 		helper(unit_map& umap, validate_visitor& parent)
-				: mapbuilder_visitor(umap)
+				: mapbuilder(umap)
 				, parent_(parent)
 			{}
 		virtual void validate(side_actions::iterator const& itor);

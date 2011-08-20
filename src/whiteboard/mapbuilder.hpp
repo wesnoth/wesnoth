@@ -17,8 +17,8 @@
  * @file
  */
 
-#ifndef WB_MAPBUILDER_VISITOR_HPP_
-#define WB_MAPBUILDER_VISITOR_HPP_
+#ifndef WB_MAPBUILDER_HPP_
+#define WB_MAPBUILDER_HPP_
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
@@ -35,14 +35,14 @@ namespace wb
  * Visitor that collects and applies unit_map modifications from the actions it visits
  * and reverts all changes on destruction.
  */
-class mapbuilder_visitor
-	: private enable_visit_all<mapbuilder_visitor>
+class mapbuilder
+	: private enable_visit_all<mapbuilder>
 {
-	friend class enable_visit_all<mapbuilder_visitor>;
+	friend class enable_visit_all<mapbuilder>;
 
 public:
-	mapbuilder_visitor(unit_map& unit_map);
-	virtual ~mapbuilder_visitor();
+	mapbuilder(unit_map& unit_map);
+	virtual ~mapbuilder();
 
 	///builds every team's actions as far into the future as possible, in the correct order
 	void build_map();
@@ -73,4 +73,4 @@ private:
 
 }
 
-#endif /* WB_MAPBUILDER_VISITOR_HPP_ */
+#endif /* WB_MAPBUILDER_HPP_ */

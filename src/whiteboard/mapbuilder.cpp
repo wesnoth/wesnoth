@@ -17,7 +17,7 @@
  * @file
  */
 
-#include "mapbuilder_visitor.hpp"
+#include "mapbuilder.hpp"
 
 #include "action.hpp"
 #include "side_actions.hpp"
@@ -32,7 +32,7 @@
 namespace wb
 {
 
-mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map)
+mapbuilder::mapbuilder(unit_map& unit_map)
 	: unit_map_(unit_map)
 	, applied_actions_()
 	, resetters_()
@@ -40,13 +40,13 @@ mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map)
 {
 }
 
-mapbuilder_visitor::~mapbuilder_visitor()
+mapbuilder::~mapbuilder()
 {
 	restore_normal_map();
 	//Remember that the member variable resetters_ is destructed here
 }
 
-void mapbuilder_visitor::reset_moves()
+void mapbuilder::reset_moves()
 {
 	int current_side = resources::controller->current_side();
 	foreach(unit& u, *resources::units)
@@ -58,13 +58,13 @@ void mapbuilder_visitor::reset_moves()
 	}
 }
 
-void mapbuilder_visitor::build_map()
+void mapbuilder::build_map()
 {
 	reset_moves();
 	visit_all();
 }
 
-bool mapbuilder_visitor::visit(size_t, team&, side_actions&, side_actions::iterator itor)
+bool mapbuilder::visit(size_t, team&, side_actions&, side_actions::iterator itor)
 {
 	action_ptr act = *itor;
 	unit* u = act->get_unit();
@@ -83,10 +83,10 @@ bool mapbuilder_visitor::visit(size_t, team&, side_actions&, side_actions::itera
 	return true;
 }
 
-bool mapbuilder_visitor::post_visit_team(size_t, team&, side_actions&)
+bool mapbuilder::post_visit_team(size_t, team&, side_actions&)
 	{acted_this_turn_.clear();   return true;}
 
-void mapbuilder_visitor::restore_normal_map()
+void mapbuilder::restore_normal_map()
 {
 	//applied_actions_ contain only the actions that we applied to the unit map
 	BOOST_REVERSE_FOREACH(action_ptr act, applied_actions_)

@@ -38,7 +38,7 @@ namespace pathfind {
 
 namespace wb {
 
-class mapbuilder_visitor;
+class mapbuilder;
 class highlight_visitor;
 
 /**
@@ -181,7 +181,7 @@ private:
 	/** Track whether the gamestate changed and we need to validate actions. */
 	bool gamestate_mutated_;
 
-	boost::scoped_ptr<mapbuilder_visitor> mapbuilder_;
+	boost::scoped_ptr<mapbuilder> mapbuilder_;
 	boost::shared_ptr<highlight_visitor> highlighter_;
 
 	boost::scoped_ptr<pathfind::marked_route> route_;

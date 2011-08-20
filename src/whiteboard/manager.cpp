@@ -21,7 +21,7 @@
 
 #include "action.hpp"
 #include "highlight_visitor.hpp"
-#include "mapbuilder_visitor.hpp"
+#include "mapbuilder.hpp"
 #include "move.hpp"
 #include "recruit.hpp"
 #include "side_actions.hpp"
@@ -337,7 +337,7 @@ void manager::set_planned_unit_map()
 		{
 			validate_actions_if_needed();
 			log_scope2("whiteboard", "Building planned unit map");
-			mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
+			mapbuilder_.reset(new mapbuilder(*resources::units));
 			mapbuilder_->build_map();
 			planned_unit_map_active_ = true;
 		}

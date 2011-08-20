@@ -24,7 +24,7 @@
  *   mechanism for the double dispatch used in the Visitor Pattern:
  *       action.accept(visitor)   calls    visitor.visit_***(action)
  * Derived classes will usually derive from both of these.
- * Example usage is seen is highlight_visitor, mapbuilder_visitor, validate_visitor.
+ * Example usage is seen is highlight_visitor and mapbuilder.
  */
 
 #ifndef WB_VISITOR_HPP_
