@@ -98,6 +98,12 @@ Version 1.9.8+svn:
      * Increased the frozen defense from 10% to 30%
      * Increased the swamp defense from 10% to 20%
      * Decreased the hill defense from 60% to 50%
+ * User interface:
+   * Whiteboard planning system:
+     * Added support for planning multi-turn moves
+     * Added the option to hide allies' plans during a network game
+     * Made action numbers colored according to team color
+     * Made plan execution halt upon discovering hidden units
  * WML engine:
    * Added [event]id= support (to protect against duplicates)
    * Added [event]delete=true support (to remove events that have an id set)
@@ -120,6 +126,9 @@ Version 1.9.8+svn:
      [remove_shroud], [place_shroud], [modify_side], [modify_ai] actions
    * Fixed bug #17150: fix naming confict with OpenBSD macro by renaming
    * Added "-Wno-strict-aliasing" to the default compiler flags
+   * Whiteboard planning system:
+     * Made the whiteboard respond better to :droid, :give_control, etc.
+     * Removed chat notification upon activating the whiteboard
 
 Version 1.9.8:
  * Campaigns:
