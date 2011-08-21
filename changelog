@@ -114,9 +114,13 @@ Version 1.9.8+svn:
    * [harm_unit] always uses wesnoth.float_label to avoid that an incorrect
      weapon filter may prevent floating the damage label
    * new key heal_full=yes|no (def no) in [effect]apply_to=type
-   * Added SLF support to [event][item] and [event][remove_item].
-     If x = and y= aren't explicitely given no longer throw an error
-     but choose locations according to SLF behavior
+   * Added SLF support to [event][item] and [remove_item].
+     [remove_item]: IMPORTANT SYNTAX CHANGE: Default x,y=$x1,$y1
+     is no longer supported, but instead all locations on the map chosen if
+     no SLF keys are supplied. No wmllint rule in official release but patch
+     in bug #18522.
+     [event][item]: If x = and y= aren't explicitely given no longer throw an error
+     but choose locations according to SLF behavior.
    * Allowed [modify_turns]current= to change to an earlier current turn
    * Added [primary_attack] support to [harm_unit]
    * Added wml tag [store_items]
