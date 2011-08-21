@@ -88,11 +88,16 @@ function wml_actions.store_items(cfg)
 	variable = tostring(variable) or helper.wml_error("invalid variable= in [store_items]")
 	wesnoth.set_variable(variable)
 	local index = 0
-	for i,v in pairs(scenario_items) do
-		for j,w in ipairs(v) do
-			wesnoth.set_variable(string.format("%s[%u]", variable, index), w)
-			index = index + 1
-		end
+	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
+		--ugly workaround for the lack of the "continue" statement in lua
+		repeat
+			local items = scenario_items[loc[1] * 10000 + loc[2]]
+			if not items then break end
+			for j, item in ipairs(items) do
+				wesnoth.set_variable(string.format("%s[%u]", variable, index), item)
+				index = index + 1
+			end
+		until true
 	end
 end
 
