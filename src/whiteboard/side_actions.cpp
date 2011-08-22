@@ -409,7 +409,7 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 	if(position == end_itor)
 		return end_itor;
 	position = bump_earlier(position);
-	if(position == end_itor)
+	if(position == end())
 		return end_itor;
 	return position+1;
 }
