@@ -3145,6 +3145,26 @@ static int intf_get_sides(lua_State* L)
 }
 
 /**
+ * .Returns information about the global traits known to the engine.
+ * - Ret 1: Table with named fields holding wml tables describing the traits.
+ */
+static int intf_get_traits(lua_State* L)
+{
+	lua_newtable(L);
+	foreach(const config& trait, unit_types.traits()) {
+		const std::string& id = trait["id"];
+		//It seems the engine does nowhere check the id field for emptyness or duplicates
+		//(also not later on).
+		//However, the worst thing to happen is that the trait read later overwrites the older one,
+		//and this is not the right place for such checks.
+		lua_pushstring(L, id.c_str());
+		luaW_pushconfig(L, trait);
+		lua_rawset(L, -3);
+	}
+	return 1;
+}
+
+/**
  * Adds a modification to a unit.
  * - Arg 1: unit.
  * - Arg 2: string.
@@ -3367,6 +3387,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_terrain",              &intf_get_terrain              },
 		{ "get_terrain_info",         &intf_get_terrain_info         },
 		{ "get_time_of_day",          &intf_get_time_of_day          },
+		{ "get_traits",               &intf_get_traits               },
 		{ "get_unit",                 &intf_get_unit                 },
 		{ "get_units",                &intf_get_units                },
 		{ "get_variable",             &intf_get_variable             },
