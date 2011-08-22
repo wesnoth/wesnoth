@@ -48,6 +48,8 @@ public:
 	unsigned int num_traits() const;
 
 private:
+	const config cfg_;
+
 	std::string id_;
 	t_string name_[NUM_GENDERS];
 	t_string plural_name_;

@@ -138,6 +138,7 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes,
 }
 
 unit_race::unit_race() :
+		cfg_(),
 		id_(),
 		plural_name_(),
 		description_(),
@@ -152,6 +153,7 @@ unit_race::unit_race() :
 }
 
 unit_race::unit_race(const config& cfg) :
+		cfg_(cfg),
 		id_(cfg["id"]),
 		plural_name_(cfg["plural_name"].t_str()),
 		description_(cfg["description"].t_str()),
