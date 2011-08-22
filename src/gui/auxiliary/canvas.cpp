@@ -530,7 +530,7 @@ tline::tline(const config& cfg)
  * @allow{type}{name="f_int"}{value="^.*$"}
  * @allow{type}{name="bool"}{value="^true|false|yes|no$"}
  * @allow{type}{name="f_bool"}{value="^.*$"}
- * @allow{type}{name="string"}{value="^.+$"}
+ * @allow{type}{name="string"}{value="^.*$"}
  * @allow{type}{name="t_string"}{value="^_?.*$"}
  * @allow{type}{name="f_string"}{value="^.*$"}
  * @allow{type}{name="f_tstring"}{value="^_?.*$"}
@@ -541,7 +541,7 @@ tline::tline(const config& cfg)
  * @allow{type}{name="v_align"}{value="^top|bottom|center$"}
  * @allow{type}{name="h_align"}{value="^left|right|center$"}
  * @allow{type}{name="f_h_align"}{value="^.*$"}
- * @allow{type}{name="border"}{value="^top|bottom|left|right|all*$"}
+ * @allow{type}{name="border"}{value="^(top|bottom|left|right|all)?(,\s*(top|bottom|left|right|all))*$"}
  * @allow{type}{name="scrollbar_mode"}{value="^always|never|auto|initial_auto$"}
  * @allow{type}{name="resize_mode"}{value="^scale|stretch|tile$"}
  *

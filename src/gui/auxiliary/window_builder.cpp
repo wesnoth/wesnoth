@@ -443,6 +443,12 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  * @begin{parent}{name="gui/window/resolution/"}
  * = Cell =
  * @begin{tag}{name="grid"}{min="1"}{max="1"}
+ * @begin{table}{config}
+ *     id & string & "" &      A grid is a widget and can have an id. This isn't
+ *                                      used that often, but is allowed. $
+ *     linked_group & string & 0 &       $
+ * @end{table}
+ *
  * Every grid cell has some cell configuration values and one widget in the grid
  * cell. Here we describe the what is available more information about the usage
  * can be found here [[GUILayout]].

@@ -124,9 +124,7 @@ twidget* tbuilder_scrollbar_panel::build() const
  *                                     definition for 1 row of the list. $
  *
  * @end{table}
- * @begin{tag}{name="definition"}{min=0}{max=1}
- * @begin{tag}{name="row"}{min=1}{max=1}{super="gui/window/resolution/grid/row"}
- * @end{tag}{name="row"}
+ * @begin{tag}{name="definition"}{min=0}{max=1}{super="gui/window/resolution/grid"}
  * @end{tag}{name="definition"}
  * @end{tag}{name="scrollbar_panel"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}

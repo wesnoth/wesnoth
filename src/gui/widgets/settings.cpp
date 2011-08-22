@@ -482,20 +482,20 @@ void load_settings()
 	// Read file.
 	config cfg;
 	try {
-//		schema_validation::schema_validator
-//				validator (get_wml_location("gui/schema.cfg"));
+		schema_validation::schema_validator
+				validator (get_wml_location("gui/schema.cfg"));
 		preproc_map preproc(
 				game_config::config_cache::instance().get_preproc_map());
 		scoped_istream stream = preprocess_file(get_wml_location("gui/default.cfg"), &preproc);
 
-		read(cfg, *stream/*, &validator*/);
+		read(cfg, *stream, &validator);
 	} catch(config::error&) {
 		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
 	}
-//	catch(abstract_validator::error e){
-//			ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'.\n";
-//			ERR_GUI_P << e.message;
-//	}
+	catch(abstract_validator::error e){
+			ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'.\n";
+			ERR_GUI_P << e.message;
+	}
 	// Parse guis
 	foreach (const config &g, cfg.child_range("gui")) {
 		std::pair<std::string, tgui_definition> child;
