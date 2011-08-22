@@ -144,14 +144,14 @@ public:
 	 * Queues a move to be executed last
 	 * @return The queued move's position
 	 */
-	iterator queue_move(size_t turn_num, const pathfind::marked_route& route,
+	iterator queue_move(size_t turn_num, unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Queues an attack or attack-move to be executed last
 	 * @return The queued attack's position
 	 */
-	iterator queue_attack(size_t turn_num, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+	iterator queue_attack(size_t turn_num, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**

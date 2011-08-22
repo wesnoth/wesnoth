@@ -249,19 +249,19 @@ void side_actions::show()
 		act->show();
 }
 
-side_actions::iterator side_actions::queue_move(size_t turn, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
+side_actions::iterator side_actions::queue_move(size_t turn, unit& mover, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	move_ptr new_move;
-	new_move.reset(new move(team_index(), hidden_, route, arrow, fake_unit));
+	new_move.reset(new move(team_index(), hidden_, mover, route, arrow, fake_unit));
 	return queue_action(turn,new_move);
 }
 
-side_actions::iterator side_actions::queue_attack(size_t turn, const map_location& target_hex, int weapon_choice,
+side_actions::iterator side_actions::queue_attack(size_t turn, unit& mover, const map_location& target_hex, int weapon_choice,
 		const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	attack_ptr new_attack;
-	new_attack.reset(new attack(team_index(), hidden_, target_hex, weapon_choice, route, arrow, fake_unit));
+	new_attack.reset(new attack(team_index(), hidden_, mover, target_hex, weapon_choice, route, arrow, fake_unit));
 	return queue_action(turn,new_attack);
 }
 

@@ -655,7 +655,7 @@ void manager::save_temp_move()
 	if (has_temp_move() && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
 		side_actions& sa = *viewer_actions();
-		unit const *const u = future_visible_unit(route_->steps.front());
+		unit* u = future_visible_unit(route_->steps.front());
 		assert(u);
 		size_t first_turn = sa.get_turn_num_of(*u);
 
@@ -673,7 +673,7 @@ void manager::save_temp_move()
 			route.steps = move_arrow->get_path();
 			route.move_cost = path_cost(route.steps,*u);
 
-			sa.queue_move(turn,route,move_arrow,fake_unit);
+			sa.queue_move(turn,*u,route,move_arrow,fake_unit);
 		}
 		erase_temp_move();
 
@@ -712,7 +712,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 			route_->steps.push_back(attack_from);
 		}
 
-		unit const* attacking_unit = future_visible_unit(source_hex);
+		unit* attacking_unit = future_visible_unit(source_hex);
 		assert(attacking_unit);
 
 		int weapon_choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
@@ -721,7 +721,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 		if (weapon_choice >= 0)
 		{
 			side_actions& sa = *viewer_actions();
-			sa.queue_attack(sa.get_turn_num_of(*attacking_unit),target_hex,weapon_choice,*route_,move_arrow,fake_unit);
+			sa.queue_attack(sa.get_turn_num_of(*attacking_unit),*attacking_unit,target_hex,weapon_choice,*route_,move_arrow,fake_unit);
 
 			on_save_action();
 

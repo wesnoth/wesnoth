@@ -85,7 +85,7 @@ bool mapbuilder::visit(size_t, team&, side_actions&, side_actions::iterator itor
 	action_ptr act = *itor;
 	unit* u = act->get_unit();
 
-	if(acted_this_turn_.find(u) == acted_this_turn_.end())
+	if(acted_this_turn_.find(u) != acted_this_turn_.end())
 		visit_helper(itor,act);
 	else //gotta restore MP first
 	{

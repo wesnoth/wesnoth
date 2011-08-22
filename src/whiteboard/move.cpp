@@ -58,10 +58,10 @@ std::ostream& move::print(std::ostream &s) const
 	return s;
 }
 
-move::move(size_t team_index, bool hidden, const pathfind::marked_route& route,
+move::move(size_t team_index, bool hidden, unit& u, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 : action(team_index,hidden),
-  unit_(NULL),
+  unit_(&u),
   unit_id_(),
   route_(new pathfind::marked_route(route)),
   movement_cost_(0),
@@ -73,15 +73,10 @@ move::move(size_t team_index, bool hidden, const pathfind::marked_route& route,
   mover_(),
   fake_unit_hidden_(false)
 {
-	//Future unit map must be valid during construction, so that move can find its unit
-	scoped_planned_unit_map raii;
-
 	assert(!route_->steps.empty());
 
 	if(hidden)
 		fake_unit_->set_hidden(true);
-
-	unit_ = wb::future_visible_unit(get_source_hex());
 
 	this->init();
 }
