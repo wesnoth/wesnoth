@@ -52,8 +52,11 @@ private:
 	bool visit(size_t team_index, team&, side_actions&, side_actions::iterator);
 	bool post_visit_team(size_t team_index, team&, side_actions&);
 
+	//helper for visit(), above
+	bool visit_helper(side_actions::iterator const&, action_ptr const&);
+
 	//For validate_visitor to override
-	virtual void validate(side_actions::iterator const&) {};
+	virtual void validate(side_actions::iterator const&) {}
 
 	//Helper fcn: Arranges for all units' MP to be restored upon destruction
 	void reset_moves();

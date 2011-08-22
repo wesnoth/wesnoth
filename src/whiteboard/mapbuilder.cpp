@@ -66,21 +66,43 @@ void mapbuilder::build_map()
 	visit_all();
 }
 
+///@return whether act is invalid
+bool mapbuilder::visit_helper(side_actions::iterator const& itor, action_ptr const& act)
+{
+	validate(itor);
+	if(act->is_valid())
+	{
+		act->apply_temp_modifier(unit_map_);
+		applied_actions_.push_back(act);
+		return false;
+	}
+	else //invalid
+		return true;
+}
+
 bool mapbuilder::visit(size_t, team&, side_actions&, side_actions::iterator itor)
 {
 	action_ptr act = *itor;
 	unit* u = act->get_unit();
 
 	if(acted_this_turn_.find(u) == acted_this_turn_.end())
+		visit_helper(itor,act);
+	else //gotta restore MP first
 	{
+		int original_moves = u->movement_left();
+
+		//reset MP
 		u->set_movement(u->total_movement());
 		acted_this_turn_.insert(u);
-	}
-	validate(itor);
-	if(act->is_valid())
-	{
-		act->apply_temp_modifier(unit_map_);
-		applied_actions_.push_back(act);
+
+		bool revert = visit_helper(itor,act);
+
+		if(revert) //< the action was invalid
+		{
+			//didn't need to restore MP after all ... so let's change it back
+			acted_this_turn_.erase(u);
+			u->set_movement(original_moves);
+		}
 	}
 	return true;
 }
