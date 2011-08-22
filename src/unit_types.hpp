@@ -357,6 +357,7 @@ public:
 
 	const unit_type_map &types() const { return types_; }
 	const race_map &races() const { return races_; }
+	const config::const_child_itors traits() const { return unit_cfg_->child_range("trait"); }
 	void set_config(config &cfg);
 
 	const unit_type *find(const std::string &key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
