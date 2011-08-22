@@ -365,7 +365,10 @@ private:
 		{init();}
 
 	iterator(base_t const& base, size_t turn_num, side_actions::contents_t* contents)
-			: base_(base), turn_num_(turn_num), contents_(contents)
+			// If contents == NULL base is a singualar iterator
+			: base_(contents ? base : base_t())
+			, turn_num_(turn_num)
+			, contents_(contents)
 		{}
 
 	void init()
