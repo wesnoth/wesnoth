@@ -111,7 +111,7 @@ class GroupByFaction:
         faction = era.faction_lookup[group[1]]
         name = T(faction, "name")
         name = name[name.rfind("=") + 1:]
-        name = T(era, "name") + " / " + name
+        #name = T(era, "name") + " / " + name
         return name
 
 global_htmlout = None
@@ -256,12 +256,13 @@ class HTMLOutput:
                     abbrev += name[i]
             return abbrev
         
-        def add_menu(id, name):
+        def add_menu(id, name, class2 = ""):
             write("""<li class="popuptrigger"
                 onclick="toggle_menu(this, '""" + id + """', 2)"
                 onmouseover="toggle_menu(this, '""" + id + """', 1)"
-                onmouseout="toggle_menu(this, '""" + id + """', 0)">""" +
-                name + '<div class="popupmenu" id="' + id + '">')
+                onmouseout="toggle_menu(this, '""" + id + """', 0)">""")
+            write('<span class="' + class2 + '">' + name + "</span>")
+            write('<div class="popupmenu" id="' + id + '">')
 
         # Campaigns
         x = self.translate("addon_type^Campaign", "wesnoth")
@@ -325,36 +326,60 @@ class HTMLOutput:
         write("</div></li>\n")
 
         # Races / Factions
-        if report_type == "units_tree":
-            if self.campaign == "mainline":
-                x = self.translate("Race", "wesnoth-lib")
-                add_menu("races_menu", x)
+    
+        if self.campaign == "mainline" or self.campaign == "units":
+            x = self.translate("Race", "wesnoth-lib")
+            add_menu("races_menu", x)
 
-                write("<a href=\"mainline.html\">%s</a><br/>\n" % (
-                    self.translate("all", "wesnoth-editor")))
+            write("<a href=\"mainline.html\">%s</a><br/>\n" % (
+                self.translate("all", "wesnoth-editor")))
 
-                racenames = {}
-                for u in self.wesnoth.unit_lookup.values():
-                    if u.campaign != self.campaign: continue
-                    race = u.race
-                    racename = T(race, "plural_name")
-                    racenames[racename] = race.get_text_val("id")
-                racenames = racenames.items()
-                racenames.sort()
+            racenames = {}
+            for u in self.wesnoth.unit_lookup.values():
+                if u.campaign != self.campaign: continue
+                race = u.race
+                racename = T(race, "plural_name")
+                racenames[racename] = race.get_text_val("id")
+            racenames = racenames.items()
+            racenames.sort()
 
-                for racename, rid in racenames:
-                    write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
-                        racename, racename))
-            else:
-                x = self.translate("Factions", "wesnoth-help")
-                add_menu("races_menu", x)
-                for row in self.unitgrid:
-                    for column in range(6):
-                        hspan, vspan, un = row[column]
-                        if un and isinstance(un, helpers.GroupNode):
-                            write(" <a href=\"#%s\">%s</a><br/>" % (
-                                un.name, un.name))
-            write("</div></li>\n")
+            for racename, rid in racenames:
+                write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
+                    racename, racename))
+        else:
+            x = self.translate("Factions", "wesnoth-help")
+            add_menu("races_menu", x)
+            
+            for row in self.unitgrid:
+                for column in range(6):
+                    hspan, vspan, un = row[column]
+                    if not un: continue
+                    if isinstance(un, helpers.GroupNode):
+                        html = "../%s/%s.html" % (
+                            self.isocode, self.campaign)
+                        write(" <a href=\"%s#%s\">%s</a><br/>" % (
+                            html, un.name, un.name))
+            
+        if 1:
+            got_menu = False
+            menuid = 0
+            for row in self.unitgrid:
+                for column in range(6):
+                    hspan, vspan, un = row[column]
+                    if not un: continue
+                    if isinstance(un, helpers.GroupNode):
+                        if got_menu: write("</div></li>\n")
+                        add_menu("units_menu" + str(menuid), un.name, "unitmenu")
+                        menuid += 1
+                        got_menu = True
+                    else:
+                        uid = un.unit.get_text_val("id")
+                        link = "../%s/%s.html" % (self.isocode, uid)
+                        name = self.wesnoth.get_unit_value(un.unit,
+                            "name", translation = self.translation.translate)
+                        write("<a href=\"" + link + "\">" + name + "</a><br />")
+            if got_menu: write("</div></li>\n")
+        #write("</div></li>\n")
 
         # Languages
         x = self.translate("Language", "wesnoth")
@@ -453,7 +478,7 @@ class HTMLOutput:
 
     def write_units(self):
         def write(x): self.output.write(x)
-        def _(x): return self.translate(x, "wesnoth")
+        def _(x, c = "wesnoth"): return self.translate(x, c)
         rows = self.unitgrid
         write("<table class=\"units\">\n")
         write("<colgroup>")
@@ -537,7 +562,7 @@ class HTMLOutput:
 
                         write('</a>\n</div>\n')
                         write("<div class=\"attributes\">")
-                        write("%s%s<br />" % (_("Cost: "), cost))
+                        write("%s%s<br />" % (_("Cost: ", "wesnoth-help"), cost))
                         write("%s%s<br />" % (_("HP: "), hp))
                         write("%s%s<br />" % (_("MP: "), mp))
                         write("%s%s<br />" % (_("XP: "), xp))
@@ -602,7 +627,7 @@ class HTMLOutput:
 
     def write_unit_report(self, output, unit):
         def write(x): self.output.write(x)
-        def _(x): return self.translate(x, "wesnoth")
+        def _(x, c = "wesnoth"): return self.translate(x, c)
 
         def find_attr(what, key):
             if unit.movetype:
@@ -678,7 +703,7 @@ class HTMLOutput:
         write("<h2>Information</h2>\n")
         write("<table class=\"unitinfo\">\n")
         write("<tr>\n")
-        write("<td>%s" % _("Advances from: "))
+        write("<td>%s" % _("Advances from: ", "wesnoth-help"))
         write("</td><td>\n")
         for pid in self.forest.get_parents(uid):
             punit = self.wesnoth.unit_lookup[pid]
@@ -690,7 +715,7 @@ class HTMLOutput:
             write("\n<a href=\"%s\">%s</a>" % (link, name))
         write("</td>\n")
         write("</tr><tr>\n")
-        write("<td>%s" % _("Advances to: "))
+        write("<td>%s" % _("Advances to: ", "wesnoth-help"))
         write("</td><td>\n")
         for cid in self.forest.get_children(uid):
             link = "../%s/%s.html" % (self.isocode, cid)
@@ -709,9 +734,9 @@ class HTMLOutput:
         write("</tr>\n")
 
         for val, text in [
-            ("cost", _("Cost: ")),
+            ("cost", _("Cost: ", "wesnoth-help")),
             ("hitpoints", _("HP: ")),
-            ("movement", _("Movement") + ": "),
+            ("movement", _("Movement", "wesnoth-help") + ": "),
             ("experience", _("XP: ")),
             ("level", _("Level") + ": "),
             ("alignment", _("Alignment: ")),
@@ -727,14 +752,14 @@ class HTMLOutput:
         anames = self.get_abilities(unit)
 
         write("<tr>\n")
-        write("<td>%s</td>" % _("Abilities: "))
+        write("<td>%s</td>" % _("Abilities: ", "wesnoth-help"))
         write("<td class=\"val\">" + (", ".join(anames)) + "</td>")
         write("</tr>\n")
 
         write("</table>\n")
 
         # Write info about attacks.
-        write("<h2>Attacks <small>(damage - count)</small></h2> \n")
+        write("<h2>" + _("unit help^Attacks", "wesnoth-help") + " <small>(damage - count)</small></h2> \n")
         write("<table class=\"unitinfo attacks\">\n")
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
         attacks = self.get_recursive_attacks(unit)
@@ -758,16 +783,16 @@ class HTMLOutput:
 
             write("<td><b>%s</b>" % aname)
 
-            t = T(attack, "type")
-            write("<br/>%s</td>" % _(t))
+            r = T(attack, "range")
+            write("<br/>%s</td>" % _(r))
 
             n = attack.get_text_val("number")
             x = attack.get_text_val("damage")
             x = "%s - %s" % (x, n)
             write("<td><i>%s</i>" % x)
 
-            r = T(attack, "range")
-            write("<br/>%s</td>" % _(r))
+            t = T(attack, "type")
+            write("<br/>%s</td>" % _(t))
 
             s = []
             specials = attack.get_all(tag = "specials")
@@ -837,14 +862,14 @@ class HTMLOutput:
             write('</div>\n')
 
         # Write info about movement costs and terrain defense.
-        write("<h2>Defense and Movement</h2>\n")
+        write("<h2>" + _("Terrain", "wesnoth-help") + "</h2>\n")
         write("<table class=\"unitinfo terrain\">\n")
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
        
         write("<tr><th colspan=2></th><th colspan=2>%s</th></tr>\n" % (
-            _("Movement Cost")))
+            _("Movement Cost", "wesnoth-help")))
         write("<tr><th colspan=2>%s</th><th></th><th class=\"numheader\">%s</th></tr>\n" % (
-            _("Terrain"), _("Defense") ))
+            _("Terrain", "wesnoth-help"), _("Defense", "wesnoth-help") ))
 
         terrains = self.wesnoth.terrain_lookup
         terrainlist = []

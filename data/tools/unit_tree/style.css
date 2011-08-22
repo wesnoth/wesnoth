@@ -81,6 +81,11 @@ div.popupmenu
     background: white;
     border: 1px solid black;
 }
+span.unitmenu {
+    display: block;
+    margin-left: 1em;
+    font-size: small;
+}
 .popuptrigger div.popupmenu
 {
     display: none;
@@ -251,6 +256,7 @@ div.unit-columns i {
 
 div.unit-columns h1 {
     text-shadow: 2px 2px 3px #998877;
+    text-align: left;
 }
 
 div.unit-columns h2 {
