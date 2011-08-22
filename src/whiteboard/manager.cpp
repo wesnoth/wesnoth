@@ -318,7 +318,8 @@ void manager::on_change_controller(int side, team& t)
 
 bool manager::current_side_has_actions()
 {
-	return !current_side_actions()->empty();
+	side_actions::range_t range = current_side_actions()->iter_turn(0);
+	return range.first != range.second; //non-empty range
 }
 
 void manager::validate_viewer_actions()

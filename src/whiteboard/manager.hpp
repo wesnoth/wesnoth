@@ -85,7 +85,7 @@ public:
 	/// Adds a side_actions::net_cmd to net_buffer_[team_index], whereupon it will (later) be sent to all allies
 	void queue_net_cmd(size_t team_index, side_actions::net_cmd const&);
 
-	/// Whether the current side has actions in its planned actions queue
+	/// Whether the current side has actions in the first turn of its planned actions queue
 	static bool current_side_has_actions();
 
 	/// Validates all actions of the current viewing side
