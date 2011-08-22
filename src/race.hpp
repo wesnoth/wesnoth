@@ -34,6 +34,7 @@ public:
 	unit_race();
 	unit_race(const config& cfg);
 
+	const config& get_cfg() const { return cfg_; };
 	const std::string& id() const { return id_; };
 	const t_string& name(GENDER gender=MALE) const { return name_[gender]; };
 	const t_string& plural_name() const { return plural_name_; };
