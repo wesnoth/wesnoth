@@ -51,9 +51,11 @@ void mapbuilder::reset_moves()
 	int current_side = resources::controller->current_side();
 	foreach(unit& u, *resources::units)
 	{
-		resetters_.push_back(new unit_movement_resetter(u,false));
-		//make sure current team's units are not reset to full moves on first turn
-		if(u.side() == current_side)
+		bool on_current_side = (u.side() == current_side);
+		//restore movement points only to units not on the current side
+		resetters_.push_back(new unit_movement_resetter(u,!on_current_side));
+		//make sure current side's units are not reset to full moves on first turn
+		if(on_current_side)
 			acted_this_turn_.insert(&u);
 	}
 }
