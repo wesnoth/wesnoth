@@ -29,9 +29,11 @@ libwesnoth_core_sources = Split("""
     serialization/binary_or_text.cpp
     serialization/parser.cpp
     serialization/preprocessor.cpp
+    serialization/schema_validator.cpp
     serialization/string_utils.cpp
     serialization/tokenizer.cpp
     serialization/validator.cpp
+    tools/schema/tag.cpp
     """)
 if env["pool_alloc"]:
     libwesnoth_core_sources.extend(Split("""
@@ -521,7 +523,6 @@ schema_generator_sources = Split("""
     tools/schema/schema_generator.cpp
     tools/schema/sourceparser.cpp
     tools/schema/error_container.cpp
-    tools/schema/tag.cpp
     """)
 client_env.WesnothProgram("schema_generator", schema_generator_sources + [libwesnoth_core, libwesnothd], have_client_prereqs)
 
