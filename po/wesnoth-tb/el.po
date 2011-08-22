@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-08-10 11:40+0200\n"
-"PO-Revision-Date: 2008-01-21 11:31+0200\n"
-"Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
+"PO-Revision-Date: 2011-08-19 11:08+0200\n"
+"Last-Translator: nikos\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -14,12 +14,8 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
-#, fuzzy
 msgid "A Tale of Two Brothers"
-msgstr ""
-"Ένας σκοτεινός μάγος, απειλεί τις ζωές και την περιουσία μας. Τρομοκρατεί "
-"την περιοχή μας. Ήδη κάλεσα το χωριό στα όπλα και τώρα επαφίεται σε σένα να "
-"τους οδηγήσεις. Είναι βόρεια, δυο μέρες με το άλογο."
+msgstr "Τα Δυο Αδέρφια"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -29,7 +25,7 @@ msgstr "AToTB"
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
 msgid "(Beginner)"
-msgstr "(Αρχάριο)"
+msgstr "(Αρχάριος)"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
@@ -49,8 +45,9 @@ msgstr "Ιππότης"
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
 msgid "(Novice level, 4 scenarios.)"
-msgstr ""
+msgstr "(για αρχαρίους,  4 αποστολές)"
 
+# PLEASE MAKE SURE TO ACTUALLY FIX THIS STRING; YOU NEED THE SAME NUMBER OF \n AT THE BEGINNING/END OF THE STRING AS IN THE ORIGINAL VERSION!
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
 #, fuzzy
@@ -60,27 +57,27 @@ msgid ""
 "as planned. Can you help?\n"
 "\n"
 msgstr ""
-"Ένας Σκοτεινός Μάγος απειλεί το τοπικό χωριό και τους κατοίκους του. Όταν ο "
-"αρχηγός τους Μπζαρν στέλνει να ζητήσουν βοήθεια από τον αδερφό του Άρνε, "
-"νικάει, αλλά ο Μπτζαρν απαγάγεται. Μπορείς να τον διασώσεις;\n"
+"Ένας Σκοτεινός Μάγος απειλεί το μικρό χωριό Μάγκρε και τους κατοίκους του. Ο "
+"μάγος Μπάραν ζητά βοήθεια από τον μισθοφόρο αδερφό του, αλλά οι εξελίξεις "
+"δεν είναι σύμφωνα με το σχέδιο... Μπορείς να βοηθήσεις; \n"
 "\n"
-"(Αρχάριο επίπεδο, 4 σενάρια: Η \"Δύσκολη\" έκδοση θα προκαλέσει τους "
+"(για αρχάριους, 4 σενάρια: Η \"Δύσκολη\" έκδοση ίσως προκαλέσει πιο "
 "έμπειρους παίκτες.)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:28
 msgid "Campaign Design"
-msgstr "Σχεδίαση Εκστρατείας"
+msgstr "Σχεδίαση Campaign"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:37
 msgid "Prose and Story Edits"
-msgstr ""
+msgstr "Κείμενο και επεμβάσεις στην υπόθεση"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:46
 msgid "Campaign Maintenance"
-msgstr "Συντήρηση Εκστρατείας"
+msgstr "Συντήρηση Campaign"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:52
@@ -95,12 +92,12 @@ msgstr "Λοιπά"
 #. [entry]
 #: data/campaigns/Two_Brothers/_main.cfg:82
 msgid "And special thanks to everyone else who I forgot to mention."
-msgstr "Και ένα ξεχωριστό ευχαριστό για όλους αυτούς που δεν αναφέρθηκαν."
+msgstr "Και ένα ξεχωριστό ευχαριστώ σε όλους αυτούς που ξέχασα να αναφέρω."
 
 #. [scenario]: id=01_Rooting_Out_a_Mage
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:4
 msgid "Rooting Out a Mage"
-msgstr "Ξεκληρίζοντας Έναν Μάγο"
+msgstr "Ξεριζώνοντας Το Κακό"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:55
@@ -111,6 +108,11 @@ msgid ""
 "them not, until the day a dark mage settled in the region and began seeking "
 "sacrifices for his evil summonings."
 msgstr ""
+"Το φέουδο του Μάγκρε, στις δυτικές εσχατιές του βασιλείου του Γουέσνοθ, ήταν "
+"πάντα ένα ήσυχο μέρος, κι οι κάτοικοί του μακριά από όσα συνέβαιναν στον "
+"κόσμο γύρω τους. Πόλεμοι και καταστροφές δεν άγγιξαν ποτέ το απόμερο αυτό "
+"τιμάριο, μέχρι την ημέρα που ένας σκοτεινός μάγος εγκαταστάθηκε στην "
+"περιοχή, και άρχισε να  αναζητεί θύματα για τις βάρβαρες θυσίες του."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:59
@@ -122,6 +124,12 @@ msgid ""
 "more than a day’s ride distant, and messengers sent to seek his help did not "
 "return."
 msgstr ""
+"Ζωντανοί νεκροί σκότωσαν τις αγελάδες και κατέστρεψαν τα χωράφια. <i>“Φόβος "
+"και υπακοή!”</i>, έκρωζαν, <i>“Μόρντακ ο Μάγος!”</i>, με τις απαίσιες φωνές "
+"τους να αντηχούν στην κάποτε χαρούμενη ύπαιθρο. Άντρες και γυναίκες άρχισαν "
+"να φοβούνται την νύχτα, τα παιδιά τους ακόμα και στο φως της μέρας. Ο πιο "
+"κοντινός άρχοντας στην περιοχή ήταν πιο μακριά από μια μέρα με το άλογο, και "
+"όσοι μαντατοφόροι έφυγαν να ζητήσουν την βοήθειά του δεν επέστρεψαν ποτέ."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:63
@@ -134,6 +142,15 @@ msgid ""
 "them down and clean and oil them. He set the smiths of Maghre to making "
 "spearheads and ax-blades for the rest."
 msgstr ""
+"Υπήρχε όμως ένας άνδρας με το όνομα Μπάραν. Όταν ήταν ακόμα μικρός στην "
+"ηλικία είχε δείξει μια κλίση για τις μαγικές τέχνες, κατόπιν μαθήτευσε στην "
+"μεγάλη Ακαδημία στον ποταμό Άλντουιν, και επέστρεψε για να βοηθήσει τους "
+"ανθρώπους της πατρίδας του. Σε αυτή την δύσκολη ώρα, οι χωρικοί στράφηκαν "
+"στον Μπάραν για τους βοηθήσει και να τους οδηγήσει. Και το έκανε: βρήκε όπλα "
+"στα σπίτια τους, κειμήλια ξεχασμένα από την εποχή των παππούδων και των "
+"προπαππούδων τους, και τους έβαλε να τα τροχίσουν και να τα περιποιηθούν. "
+"Για όσους δεν βρήκαν τίποτα έβαλε τους σιδεράδες να φτιάξουν τσεκούρια και "
+"δόρατα."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:67
@@ -145,6 +162,13 @@ msgid ""
 "brother, with which they might call to each other when in dire need. Baran "
 "sent out that call."
 msgstr ""
+"Ο Μπάραν είχε και έναν αδερφό, Άρβιθ στο όνομα , που είχε αφήσει κι αυτός το "
+"Μάγκρε για να ψάξει την τύχη του. Με τον καιρό είχε γίνει αρχηγός μιας "
+"μικρής ομάδας από καβαλάρηδες, μισθοφόροι που προφύλαγαν καραβάνια από "
+"ληστές και θηρία. Και ήταν καλή τύχη για όλους ότι ο Μπάραν και ο αδερφός "
+"του είχαν ο καθένας ένα από δύο μαγικά φυλαχτά, που ο Μπάραν είχε φτιάξει "
+"όταν ήταν ακόμα μαθητευόμενος μάγος. Μέσω αυτού του φυλαχτού ο Μπάραν κάλεσε "
+"τον αδερφό του στην ώρα της μεγάλης του ανάγκης."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:76
@@ -161,6 +185,14 @@ msgid ""
 "spoken since that evil day at Toen Caric. If he will not come for me, "
 "perhaps he will return to aid our village in its hour of desperate need."
 msgstr ""
+"12 του πέμπτου μήνα, 363 μ.Γ.\n"
+"Απόσπασμα από το ημερολόγιο του Μπάραν του Μάγκρε\n"
+"\n"
+"Αν θα μπορούσα να δω αυτόν τον \"Μόρντακ\", πρόσωπο με πρόσωπο! Πιστεύω ότι "
+"η μαγεία μου είναι πιο δυνατή από την δική του, όμως κρύβεται στους λόφους. "
+"Οι υπηρέτες του τον προστατεύουν, και εγώ είμαι υποχρεωμένος να τον πολεμήσω "
+"με φοβισμένους χωριάτες, οπλισμένους με ξύλα και ξυράφια. Χρειάζομαι τον "
+"αδερφό μου - ήταν πάντα καλύτερος στις μάχες απ' ότι εγώ."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:80
@@ -168,11 +200,13 @@ msgid ""
 "Heeding the call of his amulet, Arvith gathered such men as he could and "
 "hurried to Maghre to help Baran."
 msgstr ""
+"Ο Άρβιθ άκουσε το κάλεσμα του φυλαχτού, και με όσους άντρες μπόρεσε να "
+"μαζέψει έτρεξε στο Μάγκρε."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:91
 msgid "Slay Mordak, the evil mage"
-msgstr "Σφάξε τον Μόρντακ, τον σκοτεινό μάγο"
+msgstr "Σκότωσε τον Μόρντακ, τον σκοτεινό μάγο"
 
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:95
@@ -184,10 +218,8 @@ msgstr "Σφάξε τον Μόρντακ, τον σκοτεινό μάγο"
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:824
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:60
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:255
-#, fuzzy
-#| msgid "Death of Arne"
 msgid "Death of Arvith"
-msgstr "Θάνατος του Άρνε."
+msgstr "Θάνατος του Άρβιθ."
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:117
@@ -196,13 +228,13 @@ msgstr "Θάνατος του Άρνε."
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:88
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:52
 msgid "Arvith"
-msgstr ""
+msgstr "Άρβιθ"
 
 #. [unit]: id=Baran, type=Red Mage
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:127
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:755
 msgid "Baran"
-msgstr ""
+msgstr "Μπάραν"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:147
@@ -222,7 +254,7 @@ msgstr "Κάμπελ"
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:150
 msgid "Dannen"
-msgstr "Ντάννεν"
+msgstr "Ντάνεν"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:151
@@ -232,22 +264,22 @@ msgstr "Έφραν"
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:152
 msgid "Faren"
-msgstr ""
+msgstr "Φάρεν"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:155
 msgid "Tarek"
-msgstr ""
+msgstr "Τάρεκ"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:156
 msgid "Hann"
-msgstr ""
+msgstr "Χαν"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:157
 msgid "Magrid"
-msgstr ""
+msgstr "Μάγκριντ"
 
 #. [side]: type=Knight, id=Arvith
 #. [side]: type=Longbowman, id=Reeve Hoban
@@ -257,7 +289,7 @@ msgstr ""
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:96
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:138
 msgid "Humans"
-msgstr ""
+msgstr "Άνθρωποι"
 
 #. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:174
@@ -273,27 +305,29 @@ msgstr "Μόρντακ"
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:156
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:125
 msgid "Enemies"
-msgstr ""
+msgstr "Εχθροί"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:207
 msgid "Greetings, brother, and welcome home."
-msgstr ""
+msgstr "Χαίρε, αδερφέ μου, και καλωσήρθες σπίτι."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:211
 msgid "Hail."
-msgstr ""
+msgstr "Χαίρε."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:215
 msgid "Is that all, Arvith? I understand, but..."
-msgstr ""
+msgstr "Αυτό είναι όλο, Άρβιθ; Καταλαβαίνω, αλλά..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:219
 msgid "You called, and I came; be content with that. What ails Maghre?"
 msgstr ""
+"Με κάλεσες και ήρθα. Και θα έπρεπε να σου είναι αρκετό. Ποιο είναι το "
+"πρόβλημα;"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:223
@@ -303,6 +337,9 @@ msgid ""
 "itself! The villagers of Maghre have taken up weapons but they are not "
 "trained fighters; but we need your men, and you to lead them."
 msgstr ""
+"Ένας σκοτεινός μάγος τρομοκρατεί το χωριό. Τα πλάσματά του τον καλούν "
+"Μόρντακ. Έχουν κάψει τις γύρω φάρμες, και φοβάμαι ότι σύντομα θα επιτεθούν "
+"και στο χωριό. "
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:227
@@ -310,13 +347,15 @@ msgid ""
 "I can feel Mordak’s foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days’ ride."
 msgstr ""
+"Αισθάνομαι το ακάθαρτο άγγιγμά του στην γη και τον αέρα. Κρύβεται κάπου "
+"βόρεια από εδώ, θα έλεγα γύρω στις δυο μέρες με το άλογο."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:231
 msgid ""
 "All right. I will do this for the village. Can you keep the mage off our "
 "backs?"
-msgstr ""
+msgstr "Πολύ ωραία. Αν κρατήσεις τον μάγο μακριά μας θα κάνουμε ό,τι μπορούμε."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:235
@@ -326,31 +365,34 @@ msgid ""
 "Mordak himself with magic at an unguarded moment. You shall be the right "
 "hand, I the left... aye, brother?"
 msgstr ""
+"Θα πάω βόρεια κρυφά, με τους καλύτερους ξυλοκόπους του χωριού και τους "
+"καλύτερους ανιχνευτές σου. Όσο εσύ θα προχωράς ανοιχτά εναντίον του και θα "
+"σκοτώνεις τα πλάσματά του, εγώ θα προσπαθήσω να τον αιφνιδιάσω και να τον "
+"νικήσω με μαγεία. Θα είσαι το δεξί χέρι, αδερφέ... κι εγώ το αριστερό."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:239
 msgid "... Aye. Just make sure you’re there when we need you."
-msgstr ""
+msgstr "...Ναι. Απλώς να είσαι εκεί όταν θα σε χρειαστούμε."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:250
-#, fuzzy
 msgid ""
 "Baran should be in position by now. Press them, distract the adept so Baran "
 "can spring his trap!"
 msgstr ""
-"Ο Μπτζάρν έπρεπε να είναι στη θέση του τώρα. Αναρωτιέμαι μήπως του συνέβη "
-"κάτι;"
+"Ο Μπάραν θα έπρεπε να είναι στη θέση του τώρα. Ήρθε η ώρα, πρέπει να τους "
+"απασχολήσουμε ώστε ο Μπάραν να μπορέσει να επιτεθεί!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:258
 msgid "Baran has not made his attack!"
-msgstr ""
+msgstr "Ο Μπάραν δεν επιτέθηκε ακόμα!!"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:262
 msgid "Could he have abandoned us?"
-msgstr ""
+msgstr "Μήπως μας παράτησε;"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:266
@@ -358,20 +400,21 @@ msgid ""
 "No... No. This is something else. I’m worried about him... but right now it "
 "means we have to deal with this Mordak ourselves."
 msgstr ""
+"Όχι... όχι. Αυτό είναι σίγουρα κάτι άλλο. Ανησυχώ γι αυτόν... αλλά αυτό "
+"απλώς σημαίνει ότι πρέπει να καθαρίσουμε με τον Μόρντακ μόνοι μας."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:277
 msgid "Argh!"
-msgstr "Ααχχχ!"
+msgstr "Ααργκ!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:281
 msgid "Good work, men! But what has become of my brother?"
-msgstr ""
+msgstr "Καλή δουλειά άντρες! Τι ν' απέγινε άραγε με τον αδερφό μου;"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:285
-#, fuzzy
 msgid "Worried about him, are you? E-he-he... hergh... gaargh..."
 msgstr "Ανησυχείς για αυτόν, ε; Χαχα...ωχχ...ααααχχ..."
 
@@ -381,6 +424,8 @@ msgid ""
 "There’s nothing more to be had from this one; we will have to search for "
 "Baran ourselves!"
 msgstr ""
+"Δεν θα βγάλουμε τίποτα παραπάνω από αυτόν εδώ - πρέπει να ψάξουμε για τον "
+"Μπάραν μόνοι μας!"
 
 #. [message]: role=Reporter
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:301
@@ -388,16 +433,19 @@ msgid ""
 "Sir, our scouts report that Baran was seen captured and carried away further "
 "north!"
 msgstr ""
+"Ο Μπάραν είναι πιο βόρεια! Οι ανιχνευτές μας τον είδαν να συλλαμβάνεται από "
+"αυτούς τους σκελετούς!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:305
 msgid "That they should dare this! We will give chase at once."
-msgstr ""
+msgstr "Ποιος τόλμησε;! Θα τους κυνηγήσουμε αμέσως."
 
 #. [message]: speaker=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:319
 msgid "Your brother’s plan to ambush me has failed. He is our prisoner now."
 msgstr ""
+"Το σχέδιο του αδερφού σου να με αιφνιδιάσει απέτυχε. Είναι αιχμάλωτός μας."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:323
@@ -405,18 +453,18 @@ msgid ""
 "My brother, kidnapped? I have failed you, Baran! And even now Mordak’s "
 "forces descend upon the village!"
 msgstr ""
+"Ο αδερφός μου αιχμάλωτος; Απέτυχα, Μπάραν! Συγχώρεσέ με! Οι στρατιώτες του "
+"Μόρντακ κατεβαίνουν στο χωριό!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:338
-#, fuzzy
 msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
 msgstr ""
-"Έχω ακούσει ότι αυτά τα πλάσματα είναι σχδόν άτρωτα από τα όπλα μας, ας το "
-"δούμε λοιπόν!"
+"Λένε ότι αυτά τα πλάσματα είναι σχεδόν άτρωτα στα όπλα μας, ας το δούμε "
+"λοιπόν!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:353
-#, fuzzy
 msgid "That was not so hard!"
 msgstr "Δεν ήταν τόσο δύσκολο!"
 
@@ -429,12 +477,14 @@ msgstr "Όλα χάθηκαν τώρα που πέθανα..."
 #. [scenario]: id=02_The_Chase
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:4
 msgid "The Chase"
-msgstr "Το κυνήγι"
+msgstr "Το Κυνήγι"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:30
 msgid "Arvith and his band rode north in search of his missing brother."
 msgstr ""
+"Ο Άρβιθ και οι στρατιώτες του κατευθύνθηκαν βόρεια, σε αναζήτηση του χαμένου "
+"του αδερφού."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:41
@@ -454,6 +504,21 @@ msgid ""
 "warning against it. Supposedly the place is haunted by lost souls who hunger "
 "for the living, and anyone who dies there is doomed to join them."
 msgstr ""
+"16 του πέμπτου μήνα, 363 μ.Γ.\n"
+"Απόσπασμα από το ημερολόγιο του Άρβιθ του Μάγκρε \n"
+"\n"
+"Ψάχνουμε τρεις μέρες για τον Μπάραν, και ακόμα δεν βρήκαμε τίποτα. Είχα το "
+"προαίσθημα ότι όσο πιο βόρεια πηγαίναμε, τόσο πιο πιθανό θα ήταν να βρούμε "
+"κάτι. Τα τσιράκια του νεκρομάντη θα μπορούσαν να κρυφτούν μόνο κοντά στα "
+"σύνορα, ως εδώ το μόνο που έχει είναι φάρμες. Είχα αρχίζει να απελπίζομαι, "
+"όταν βρήκαμε επιτέλους ίχνη, ίχνη από πόδια χωρίς κρέας και μύες.\n"
+"\n"
+"Πλέον είμαστε σίγουροι: αυτά τα ίχνη οδηγούν στο Γκρίζο Δάσος. Δεν υπάρχει "
+"κανένας στο Μάγκρε που να έχει μπει στο δάσος, ούτε θυμάται κανείς άλλους "
+"που το επισκέφθηκαν ποτέ. Το μόνο που ακόμα υπάρχει είναι όλες οι ιστορίες "
+"που προειδοποιούν τους ζωντανούς να μην μπουν ποτέ τους. Γιατί είναι "
+"στοιχειωμένο, και τα στοιχειά διψάν για ανθρώπινο αίμα, και κάθε νέο θύμα "
+"τους γίνεται ένα από αυτά."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:50
@@ -473,11 +538,23 @@ msgid ""
 "\n"
 "Besides... I want my brother back."
 msgstr ""
+"16 του πέμπτου μήνα, 363 μ.Γ \n"
+"Αλλά δεν πιστεύω πια σε τέτοιες προλήψεις. Έχω δει αρκετά σε αυτό τον κόσμο "
+"για να μπορώ να διακρίνω την αλήθεια πίσω από τέτοιες διηγήσεις. Το δάσος "
+"είναι το σπίτι ξωτικών, και πρέπει να είναι αφιλόξενα, αν οι ιστορίες έχουν "
+"έστω κι ελάχιστη βάση. Ανησυχώ για τους άντρες μου: τα άλογα δεν είναι "
+"χρήσιμα σε μάχες στα δάση, και τα ξωτικά είναι πολύ επικίνδυνα στο έδαφός "
+"τους. Ωστόσο υπάρχουν ερωτήματα που πρέπει να απαντήσω: δεν είνα η πρώτη "
+"φορά που ένας νεκρομάντης τρομοκρατεί ένα χωριουδάκι, αλλά γιατί δεν "
+"σκόρπισαν οι υπηρέτες του όταν πέθανε; Που πάνε τώρα; Και, κυρίως, γιατί "
+"απήγαγαν τον αδερφό μου;\n"
+"\n"
+"Και επίσης... θέλω πίσω τον αδερφό μου."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:86
 msgid "Fight your way through the woods before the kidnappers escape"
-msgstr "Άνοιξε δρόμο προς το δάσος πριν οι απαγωγείς το σκάσουν"
+msgstr "Άνοιξε δρόμο προς το δάσος πριν οι απαγωγείς ξεφύγουν"
 
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:143
@@ -487,13 +564,13 @@ msgstr "Νίλ-Γκάλιον"
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:150
 msgid "Elves"
-msgstr ""
+msgstr "Ξωτικά"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:240
 msgid ""
 "Come on, men. A stroll through such lovely green woods, what could be finer?"
-msgstr ""
+msgstr "Εμπρός παιδιά. Ένας υγιεινός περίπατος σε ένα πράσινο δάσος!"
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:244
@@ -502,7 +579,6 @@ msgstr "Εσύ εκεί! Σταμάτα και παρουσιάσου. "
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:248
-#, fuzzy
 msgid "We’re chasing after some men who kidnapped my brother!"
 msgstr "Κυνηγούμε κάποιους άνδρες που απήγαγαν τον αδερφό μου!"
 
@@ -512,13 +588,16 @@ msgid ""
 "Those men told me their prisoner had attempted to murder their master, and "
 "warned that evil men would follow him. Advance no further, or you will die."
 msgstr ""
+"Οι άντρες αυτοί μου είπαν ότι ο αιχμάλωτός τους προσπάθησε να δολοφονήσει "
+"τον άρχοντά τους, και μας προειδοποίησαν ότι πονηροί άνθρωποι τους "
+"ακολουθούσαν. Μην προχωρήσετε άλλο, αλλιώς θα πεθάνετε."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:256
 msgid ""
 "So much for those ghost stories. Mere elves will not stop me from freeing "
 "Baran!"
-msgstr ""
+msgstr "Δες που είχα δίκιο. Απλά Ξωτικά δεν θα με σταματήσουν τόσο εύκολα!"
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:260
@@ -527,6 +606,9 @@ msgid ""
 "will have us at a disadvantage; our horses will not maneuver well in the "
 "trees."
 msgstr ""
+"Είμαι χαρούμενος που δεν είμαστε υποχρεωμένοι να πολεμήσουμε φαντάσματα. "
+"Αλλά τα Ξωτικά έχουν το πλεονέκτημα: τα άλογά μας δεν μπορούν να κουνηθούν "
+"τόσο άνετα στα δέντρα."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:264
@@ -535,6 +617,9 @@ msgid ""
 "woods. We have faced and won through greater perils than those amateurs can "
 "offer."
 msgstr ""
+"Τέλος πάντων, το ιππικό απλώς να μείνει στο μονοπάτι. Οι τοξότες και οι "
+"λογχοφόροι μας θα πολεμήσουν μέσα στα δέντρα. Έχουμε περάσει πολύ πιο "
+"δύσκολα απ' ότι αυτοί οι ερασιτέχνες μπορούν να προσφέρουν."
 
 #. [unit]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:279
@@ -552,6 +637,8 @@ msgid ""
 "Curses! If they had been an hour slower our master’s reinforcements would "
 "already be here to meet us."
 msgstr ""
+"Κατάρα! Αν είχαν αργήσει έστω και μια ώρα ακόμα οι ενισχύσεις μας θα είχαν "
+"ήδη έρθει."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:336
@@ -560,9 +647,8 @@ msgstr "Σκότωσε τον Σκοτεινό Μύστη πριν έρθουν 
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:357
-#, fuzzy
 msgid "Come on, men, let’s catch those kidnappers!"
-msgstr "Άντε, άντρες, ας πιάσουμε αυτούς τους απαγωγείς!"
+msgstr "Εμπρός άντρες, ας πιάσουμε αυτούς τους απαγωγείς!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:368
@@ -571,6 +657,10 @@ msgid ""
 "precious brother the mage north with half my men a day since; he will be "
 "safely locked away in our master’s dungeons by now."
 msgstr ""
+"Χα! Με αιχμαλώτισες, αλλά αυτό δεν θα σου προσφέρει τίποτα. Έστειλα τον "
+"πολύτιμο αδερφό σου στα βόρεια με τους μισούς από τους στρατιώτες μου πριν "
+"από μια μέρα. Τέτοια ώρα θα είναι ήδη κλειδωμένος στα μπουντρούμια του "
+"αφέντη μας."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:372
@@ -578,6 +668,8 @@ msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
 msgstr ""
+"Το σπαθί μου είναι στον λαιμό σου, σε περίπτωση που δεν το νιώθεις. Οδήγησέ "
+"μας στον αδερφό μου, ειδάλλως θα ποτίσω τα δέντρα με το αίμα σου."
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:375
@@ -633,7 +725,7 @@ msgstr ""
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:393
 msgid "Bind him and take him with us. If he has played us false, he will die."
-msgstr ""
+msgstr "Δέστε τον και πάρτε τον μαζι μας. Αν μας κορόιδεψε πεθαίνει."
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:397
@@ -641,6 +733,8 @@ msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
 msgstr ""
+"Αρχηγέ, που πάμε τώρα; Νόμιζα ότι δεν ήθελες ούτε να γνωρίζεις τον Μπάραν "
+"μετά από το Τόεν Κάρικ."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:401
@@ -648,6 +742,9 @@ msgid ""
 "I’m no longer sure. What’s between us remains, but knowing someone else has "
 "lain hands on him changes things. Mount up, and let’s get moving."
 msgstr ""
+"Δεν είμαι πια σίγουρος. Αυτά που είναι μεταξύ μας μάς χωρίζουν ακόμα, αλλά "
+"το ότι κάποιος τον έχει συλλάβει αλλάζει τα πράματα. Ανεβείτε στ' άλογα, και "
+"πάμε να φύγουμε."
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:411
@@ -660,6 +757,9 @@ msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
 msgstr ""
+"Χαίρετε. Είμαι ο Μπρένα, περιπλανώμενος ιππότης. Σας είδα να καταδιώκετε και "
+"να πολεμάτε τους καταραμένους απέθαντους. Υπάρχουν κι άλλοι που πρέπει να "
+"καταστραφούν εδώ γύρω;"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:424
@@ -667,6 +767,8 @@ msgid ""
 "Aye. We think there’s a nest of them north-east of here. They’ve captured my "
 "brother."
 msgstr ""
+"Ναι. Υποθέτουμε ότι υπάρχει μια σφηκοφωλιά από δαύτους στα βορειοανατολικά. "
+"Έχουν αιχμαλωτίσει τον αδερφό μου."
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:428
@@ -674,6 +776,8 @@ msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
 msgstr ""
+"Τρέφω μεγάλο μίσος για το είδος τους. Θα σας ακολουθήσω και θα τους πολεμήσω "
+"μαζί σας, αν το επιτρέπετε."
 
 #. [message]: type=Horseman
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:432
@@ -682,20 +786,19 @@ msgstr "Το μόνο που θα έκανε θα ήταν να μας καθυ�
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:436
-#, fuzzy
 msgid "It is my place to decide this."
-msgstr "Εγώ είμαι αυτός που αποφασίζω. "
+msgstr "Εγώ είμαι αυτός που αποφασίζει."
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:438
 msgid "Oh, all right then. Come along with us."
-msgstr "Α, αντάξει τότε. Έλα μαζί μας. "
+msgstr "Α, εντάξει τότε. Έλα μαζί μας. "
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:442
 msgid "Thank you. My comrades and I will help you on your noble quest."
 msgstr ""
-"Ευχαριστώ. Οι σύντροφοί μου και εγώ θα σας βοηθήσουμε στην αξιότιμη αποστολή "
+"Ευχαριστώ. Οι σύντροφοί μου και εγώ θα σας βοηθήσουμε στην ευγενική αποστολή "
 "σας. "
 
 #. [option]: speaker=Arvith
@@ -710,12 +813,12 @@ msgid ""
 "you whenever you call for them."
 msgstr ""
 "Πάρτε αυτό, τότε, γιατί βλέπω ότι είστε σε μια αποστολή. Οι σύντροφοί μου θα "
-"σας βοηθήσουνόποτε τους καλέσετε. "
+"σας βοηθήσουν όποτε τους καλέσετε. "
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:473
 msgid "You receive 70 pieces of gold!"
-msgstr "Παίρνεις 70 κομμάτια χρυσού!"
+msgstr "Παίρνεις 70 χρυσά νομίσματα!"
 
 #. [message]: speaker=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:494
@@ -725,30 +828,28 @@ msgstr "Οι ενισχύσεις μου ήρθαν!"
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
 msgid "He escaped us..."
-msgstr "Μας το έσκασε..."
+msgstr "Μας ξέφυγε..."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:509
-#, fuzzy
 msgid ""
 "Foolish human, you have killed me but you will not catch the undead in time. "
 "I have fulfilled my contract, and will be reanimated soon to become a lord "
 "of their armies."
 msgstr ""
-"Εσύ ανόητε άνθρωπε, με σκότωσες αλλά δεν θα μπορέσεις να φτάσεις τον "
-"απέθαντο. Ολοκλήρωσα την συμφωνία και θα ξαναέρθω στη ζωή σύντομα για να "
-"γίνω ο Άρχοντας των στρατιών τους. "
+"Μπορεί να με σκότωσες, ανόητε άνθρωπε, αλλά δεν θα μπορέσεις να φτάσεις τους "
+"απέθαντους. Ολοκλήρωσα την συμφωνία και θα ξαναέρθω στη ζωή σύντομα για να "
+"γίνω ο αρχηγός των στρατιών τους. "
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:517
 msgid "Follow their back trail!"
-msgstr ""
+msgstr "Ακολουθήστε τους!"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:522
-#, fuzzy
 msgid "Catch the kidnappers"
-msgstr "Άντε, άντρες, ας πιάσουμε αυτούς τους απαγωγείς!"
+msgstr "Πιάσε τους απαγωγείς"
 
 #. [terrain_type]: id=magic_irongate
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:6
@@ -782,6 +883,25 @@ msgid ""
 "man rumored to be this mage’s brother. If that is true, he will stop at "
 "nothing, no more than would I if they held Mordak."
 msgstr ""
+"19 του πέμπτου μήνα, 363 μ.Γ.\n"
+"Απόσπασμα από το ημερολόγιο του Ρόθαρικ του Απόκληρου\n"
+"\n"
+"Οι τελευταίοι από τους υπηρέτες του Μόρντακ έφτασαν σήμερα το πρωί, "
+"φέρνοντας τα νέα του θανάτου του και ένα πακέτο τόσο καλά δεμένο που δεν "
+"φαινόταν πια για άνθρωπος. Ο Μόρντακ ήταν πάντα απρόσεκτος. Το απελπισμένο "
+"σχέδιο που ακολουθήσαμε ήταν δικό του, και υποθέτω ότι είναι υπεύθυνος για "
+"ότι συμφορά μας βρήκε, παρόλο που αυτό δεν έχει πια σημασία... Αυτός "
+"προκάλεσε και την οργή των Ορκ. Αλλά παρά ταύτα κατάφερε όλους του τους "
+"στόχους. Ακόμα δεν μπορώ να πιστέψω πόσο οριστική είναι η κατάσταση - μέχρι "
+"τώρα πάντα τα καταφέρναμε. \n"
+"\n"
+"Ελπίζαμε να παραδώσουμε τον μάγο στον Τάιραχ, σε αντάλλαγμα για τις ζωές "
+"μας. Δεν ξέρω τι δουλειά έχει αυτός ο πολεμιστής με τον άνθρωπό μας, αλλά η "
+"περιγραφή ταιριάζει. Υποθέτω ότι το σχέδιο του Μόρντακ θα είχε δουλέψει "
+"τέλεια αν δεν ήταν αυτοί οι καβαλάρηδες. Τώρα έρχονται προς τα εδώ, και τους "
+"οδηγεί ένας άντρας, λένε, που είναι αδερφός του μάγου. Αν αυτό είναι έτσι, "
+"δεν θα τον σταματήσει τίποτα: Ξέρω ότι εμένα τίποτα δεν θα με σταματούσε αν "
+"είχαν πιάσει τον Μόρντακ."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:62
@@ -799,6 +919,19 @@ msgid ""
 "be different, but we are broken... and these two men are whole. In each "
 "other, in the ties that bind them, they have strength."
 msgstr ""
+"19 του πέμπτου μήνα, 363 μ.Γ.\n"
+"Απόσπασμα από το ημερολόγιο του Ρόθαρικ του Απόκληρου \n"
+"\n"
+"Έκανα ότι μπορούσα για να διορθώσω το ερειπωμένο κάστρο. Τα Ορκ που ήρθαν "
+"μαζί μας θα φρουρήσουν τις πύλες, και εγώ μάζεψα όλους τους υπηρέτες μου σε "
+"αυτό το εσωτερικό ιερό. Η μοίρα όμως δεν είναι ευγενική μαζί μου. Ακόμα κι "
+"αν γλιτώσω από τους καβαλάρηδες, υπάρχουν και τα Ορκ, που χτενίζουν την "
+"ύπαιθρο του Βορρά ψάχνοντας για μένα. \n"
+"\n"
+"Αλλά για κάποιον λόγο φοβάμαι τα δυο αδέρφια πιο πολύ από τα Ορκ. Αν ο "
+"Μόρντακ ήταν εδώ τα πράματα θα ήταν διαφορετικά, αλλά εμείς είμαστε μισοί... "
+"κι αυτοί ολόκληροι. Ο δεσμός που τους ενώνει είναι η δύναμη που βρίσκει ο "
+"ένας στον άλλο."
 
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:97
@@ -840,10 +973,8 @@ msgstr "Φρουρός του Κάστρου"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:210
-#, fuzzy
-#| msgid "Rescue Bjarn"
 msgid "Rescue Baran"
-msgstr "Σώσε τον Μπτζάρν"
+msgstr "Σώσε τον Μπάραν"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:309
@@ -851,16 +982,19 @@ msgid ""
 "Arvith and his men halt outside of the castle, gazing for a moment at the "
 "hulking mass of stone looming in the fog. There is movement in the mist."
 msgstr ""
+"Ο Άρβιθ και οι άντρες του σταματάν έξω από το κάστρο, ατενίζοντας για μια "
+"στιγμή την ογκώδη μάζα πέτρας που αχνοφαινόταν στην ομίχλη. Κάποιος φαίνεται "
+"να κινείται."
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:313
 msgid "Halt! Friend or foe? Give the password."
-msgstr "Αλτ! Φίλος ή εχθρός; Δώσε το σύνθημα. "
+msgstr "Αλτ! Τις ει; Σύνθημα!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:318
 msgid "The password is"
-msgstr "Ο κωδικός είναι"
+msgstr "Το σύνθημα είναι"
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:320
@@ -893,11 +1027,13 @@ msgid ""
 "The adept didn’t lead us astray after all. I’ll keep my word, distasteful as "
 "it may be; cut him loose, and let’s be rid of him."
 msgstr ""
+"Ο μαθητευόμενος δεν μας είπε ψέματα τελικά. Θα κρατήσω τον λόγο μου, όσο κι "
+"αν δεν μου αρέσει. Κόψτε τα δεσμά του και αφήστε τον να φύγει."
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:380
 msgid "Wrong! Die!"
-msgstr "Λάθος! Πέθανε!"
+msgstr "Λάθος! Σκοτώστε τους!"
 
 #. [message]: speaker=Knago-Brek
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:394
@@ -905,59 +1041,56 @@ msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!!"
 msgstr ""
-"Χαχα! Έχουμε πολύ καιρό να σκοτώσουμε κάποιον. Το όπλο θέλει αίμα. Τώρα θα "
-"σκοτώσουμε ανθρώπους!!"
+"Χαχα! Έχει πολύ καιρό σκοτώσει ανθρώπους. Όπλα μας θέλει αίμα. Σκοτώσει "
+"ανθρώπους!!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:398
-#, fuzzy
 msgid ""
 "My sword-arm has a say in who will do the dying. Come on, men, let’s kill "
 "some orcs."
 msgstr ""
-"Το ήξερα ότι θα έπρεπε να πολεμήσουμε για να ελευθερώσουμε τον αδερφό μου! "
-"Άντε άντρες, ας σκοτώσουμε μερικά ορκ."
+"Όσο γι αυτό, νομίζω ότι το δεξί μου χέρι έχει κάποιες προτάσεις για το ποιος "
+"θα πεθάνει... Άντε άντρες, ας σκοτώσουμε μερικά Ορκ."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:409
 msgid "One less braggart orc in the world."
-msgstr ""
+msgstr "Ένα λιγότερο καυχησιάρικο Ορκ σε αυτόν τον κόσμο."
 
 #. [message]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:416
 msgid "Captain, what are <i>orcs</i> doing this far south?"
-msgstr ""
+msgstr "Αρχηγέ, τι δουλειά έχουν <i>Ορκ</i> τόσο νότια;"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:420
 msgid "Good question. Perhaps my brother will have found out."
-msgstr ""
+msgstr "Καλή ερώτηση. Ίσως ο αδερφός μου να μπορεί να μας απαντήσει."
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:471
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:587
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
-msgstr ""
-"Είσαι η ανακούφισή μας που έφτασε; Σημαίνει δηλαδή ότι φεύγουμε αμέσως τώρα;"
+msgstr "Είσαι η δεύτερη βάρδια; Μπορούμε να φύγουμε δηλαδή;"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:475
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:591
 msgid "Um, yes. Fine. You can go."
-msgstr "Εε, ναι. Εντάξει. Μπορείς να περάσεις"
+msgstr "Εε, ναι, ναι. Φυσικά. Μπορείτε να φύγετε."
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:479
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:595
-#, fuzzy
 msgid "Um, you’re supposed to give the password."
-msgstr "Εε, πρέπει να δώσεις κωδικό"
+msgstr "Εε, υποτίθεται ότι πρέπει να πεις το σύνθημα."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:483
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:599
 msgid "Oh, of course. I had nearly forgotten."
-msgstr "Μα φυσικά. Το είχα σχεδόν ξεχάσει"
+msgstr "Μα φυσικά. Το... είχα σχεδόν ξεχάσει."
 
 #. [option]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:485
@@ -986,16 +1119,14 @@ msgstr "$second_password_4|!"
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:518
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:634
-#, fuzzy
 msgid "Thanks! Irritating little formality, isn’t it?"
-msgstr "Ευχαριστώ! Ενοχλητική αυτή η ευγένεια ε;"
+msgstr "Ευχαριστώ! Ενοχλητικές τυπικότητες, ε;"
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:531
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:647
-#, fuzzy
 msgid "That’s the wrong password! These aren’t our relief! Get them!"
-msgstr "Αυτός είναι λάθος κωδικός! Δεν είστε η ανακούφισή μας! Πιάστε τους!"
+msgstr "Αυτό δεν είναι το σύνθημα! Δεν είστε η δεύτερη βάρδια! Πιάστε τους!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:537
@@ -1004,108 +1135,97 @@ msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
 msgstr ""
-"Νομίζω πως θα έπρεπε να υποστηρίξω τους άντρες μου στο μέτωπο για να "
-"διασφαλίσω την διάσωση του αδερφού μου."
+"Νομίζω πως θα έπρεπε να υποστηρίξω τους άντρες μου στην πρώτη γραμμή για να "
+"σιγουρέψω ότι θα σώσουμε τον αδερφό μου."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:666
 msgid "Your hand or Tairach’s, death is still death... (argh)"
 msgstr ""
+"Το χέρι το δικό σου ή του Τάιραχ, ο θάνατος είναι πάντα ο ίδιος... (ααργκ)"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:674
 msgid "‘Tairach’? Who or what is Tairach?"
-msgstr ""
+msgstr "\"Τάιραχ\"; Ποιος ή τι είναι το Τάιραχ;"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:678
 msgid "There’s a key in his robes."
-msgstr "Υπάρχει ένα κλειδί στην τήβεννό του"
+msgstr "Υπάρχει ένα κλειδί στο ράσο του."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:682
-#, fuzzy
 msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
 msgstr ""
-"Πρέπει να είναι το κλειδί για το κελλί που κρατάνε μέσα τον Bjarn! Θα πάρω "
-"το κλειδί. Περιμένω πως και πως να δω τον αδερφό μου. Άντε, ας τον "
-"ελευθερώσουμε. "
+"Πρέπει να είναι το κλειδί για το κελλί που κρατάνε μέσα τον Μπάραν! Ας το "
+"πάρω καλύτερα."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:688
-#, fuzzy
-#| msgid "Move Arne to the cell with his brother to free him"
 msgid "Move Arvith to the cell with his brother to free him"
-msgstr "Πήγαινε τον Άρνε στο κελλί με τον αδερφό του για να τον ελευθερώσεις "
+msgstr "Πήγαινε τον Άρβιθ στο κελλί με τον αδερφό του για να τον ελευθερώσεις "
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:721
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
-msgstr "Κοίτα τι βρήκα εδώ! Είναι τουλάχιστον εκατό κομμάτια χρυσού. "
+msgstr "Κοίτα τι βρήκα εδώ! Είναι τουλάχιστον εκατό χρυσά νομίσματα!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:734
 msgid "Look what I have found in here! I can count fifty pieces of gold."
-msgstr "Κοίτα τι βρήκα εδώ! Είναι τουλάχιστον πενήντα κομμάτια χρυσού. "
+msgstr "Κοίτα τι βρήκα εδώ! Είναι σίγουρα πενήντα χρυσά νομίσματα!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:783
-#, fuzzy
-#| msgid "I found Bjarn. He is in this cell."
 msgid "I found Baran. He is in this cell."
-msgstr "Βρήκα τον Μπτζαρν. Είναι σε αυτό το κελλί. "
+msgstr "Βρήκα τον Μπάραν. Είναι σε αυτό το κελλί. "
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:793
-#, fuzzy
 msgid "It’s good to see you, Arvith."
-msgstr "Χαίρομαι που σε βλέπω πάλι πίσω. "
+msgstr "Χαίρομαι που σε βλέπω πάλι, Άρβιθ."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:797
 msgid "And you too, brother."
-msgstr ""
+msgstr "Κι εσύ, αδερφέ."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:803
-#, fuzzy
 msgid ""
 "You must be one of Arvith’s men. Please help me get out of this dungeon."
 msgstr ""
-"Πρέπει να είσαι ένας από τους άνδρες του Arne. Σε παρακαλώ βοήθησε με να βγω "
-"από αυτό το μπουντρούμι. "
+"Πρέπει να είσαι ένας από τους άνδρες του Άρβιθ. Σε παρακαλώ βοήθησε με να "
+"βγω από αυτό το μπουντρούμι. "
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:809
-#, fuzzy
 msgid ""
 "The accursed dark sorcerer Rotharik has imprisoned me behind this magically "
 "enhanced iron gate. It can only be opened with the correct key. You must get "
 "it from him to free me."
 msgstr ""
-"Ο καταραμένος μάγος Ρόθαρικ με φυλάκισε πίσω από αυτήν την μαγική πύλη."
-"Μπορεί να ανοίξει μόνο με το σωστό κλειδί. Πρέπει να το πάρεις από αυτόν για "
-"να με ελευθερώσεις."
+"Ο καταραμένος μάγος Ρόθαρικ με φυλάκισε πίσω από αυτήν την μαγική πύλη. "
+"Μπορεί να ανοίξει μόνο με το σωστό κλειδί, και πρέπει να το πάρεις από τον "
+"ίδιο για να με ελευθερώσεις."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:820
-#, fuzzy
 msgid "Kill the dark sorcerer to get the cell key"
-msgstr "Σκότωσε τον σκοτεινό γητευτή για να πάρεις το κλειδί του κελιού"
+msgstr "Σκότωσε τον Σκοτεινό Μάγο για να πάρεις το κλειδί του κελιού"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:861
-#, fuzzy
 msgid "Thank you for saving me. I... was not certain you would come."
-msgstr ""
-"Ευχαριστώ που με έσωσες. Είχα σχεδόν χάσει την ελπίδα ότι θα με ελευθέρωνες. "
+msgstr "Ευχαριστώ που με έσωσες. Είχα χάσει... κάθε ελπίδα..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:865
 msgid "Have you no faith in your brother, Baran?"
-msgstr ""
+msgstr "Δεν έχεις εμπιστοσύνη στον αδερφό σου Μπάραν;"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:869
@@ -1113,6 +1233,7 @@ msgid ""
 "It’s not that. Perhaps I deserved to rot here. I failed you. I failed you "
 "again."
 msgstr ""
+"Δεν είναι αυτό. Ίσως μου αξίζει να σαπίσω εδώ. Απέτυχα. Σε πρόδωσα ξανά."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:873
@@ -1120,22 +1241,22 @@ msgid ""
 "That is as may be. But you are my brother still. And... I never doubted you "
 "would have come for me."
 msgstr ""
+"Μπορεί... Αλλά είσαι ο αδερφός μου. Και ποτέ δεν αμφέβαλλα ότι θα ερχόσουν "
+"να με βοηθήσεις."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:877
-#, fuzzy
 msgid ""
 "It was no great trial, after all. A few elves, one or two dark sorcerers, a "
 "gang of orcs and some undead. Really just a day’s work for the company."
 msgstr ""
-"Α δεν ήταν τίποτα, λίγα ξωτικά, ένας ή δυο σκοτεινοί γητευτές, ένα μάτσο ορκ "
-"και μερικοί απέθαντοι. Στ' αλήθεια καθημερινά πράγματα για εμάς τους "
-"μισθοφόρους. "
+"Α δεν ήταν τίποτα, λίγα ξωτικά, ένας ή δυο σκοτεινοί μάγοι, ένα μάτσο ορκ "
+"και μερικοί απέθαντοι. Πραγματικά, καθημερινότητα για μισθοφόρους σαν εμάς."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:881
 msgid "Thank you for coming to my aid. Let us return to the village."
-msgstr "Ευχαριστώ που ήρθες να με βοηθήσεις, Ας επιστρέψουμε στο χωριό. "
+msgstr "Ευχαριστώ που ήρθες να με βοηθήσεις. Ας επιστρέψουμε στο χωριό. "
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:907
@@ -1145,20 +1266,18 @@ msgstr "Όλα χάθηκαν τώρα που πέθανα..."
 
 #. [message]: speaker=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:919
-#, fuzzy
 msgid "You are too late! Your brother is already dead! Muahahaha...!"
 msgstr "Άργησες πολύ! Ο αδερφός σου είναι ήδη νεκρός! Μουαχαχαχαχα..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:923
-#, fuzzy
 msgid "Argh!!"
 msgstr "Αααχχ!!!"
 
 #. [scenario]: id=04_Return_to_the_Village
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:4
 msgid "Return to the Village"
-msgstr "Επέστρεψε στο Χωριό"
+msgstr "Επιστροφή στο Χωριό"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:37
@@ -1179,6 +1298,20 @@ msgid ""
 "way around it we traveled through some truly beautiful countryside. It has "
 "given us plenty of time to talk."
 msgstr ""
+"27 του πέμπτου μήνα, 363 μ.Γ. \n"
+"Απόσπασμα από το ημερολόγιο του Μπάραν του Μάγκρε \n"
+"\n"
+"Είμαστε σχεδόν σπίτι. Η τελευταία βδομάδα ήταν γεμάτη με μικτά συναισθήματα "
+"- κάποια ευχάριστα και κάποια δυσάρεστα. Ήταν υπέροχο όταν βγήκα από το "
+"μπουντρούμι και είδα τον ήλιο, χωρίς να ανησυχώ ότι θα ήταν η τελευταία φορά "
+"που θα σήκωνα τα μάτια μου στον ουρανό... αλλά όταν αυτό τελείωσε ήταν ώρα "
+"να συμφιλιωθώ με τον αδερφό μου, μια αποστολή εξίσου δύσκολη. \n"
+"\n"
+"Ο Άρβιθ με είχε ήδη συγχωρήσει την ώρα που άνοιγε την πόρτα του κελιού μου. "
+"Ακόμα κι έτσι, χρειαστήκαμε όλη την τελευταία βδομάδα για να ξαναβρούμε την "
+"άνεση που είχαμε στην σχέση μας. Ήταν για καλό που γυρίσαμε με την άνεσή "
+"μας, κάναμε ένα μεγάλο κύκλο γύρω από το Γκρίζο Δάσος και είδαμε πολύ όμορφα "
+"τοπία, και είχαμε χρόνο για να μιλήσουμε."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:47
@@ -1201,6 +1334,19 @@ msgid ""
 "merely a remnant of my time locked away in that dungeon, or is it a sign of "
 "something real?"
 msgstr ""
+"27 του πέμπτου μήνα, 363 μ.Γ. \n"
+"Απόσπασμα από το ημερολόγιο του Μπάραν του Μάγκρε \n"
+"\n"
+"Παρόλο που είμαι πιο ήρεμος τώρα, οι σκέψεις μου συχνά γυρνάνε στο Τόεν "
+"Κάρικ. Θα έπρεπε να είχαμε απωθήσει τα Ορκ χωρίς πολλές απώλειες - η "
+"διμέτωπη επίθεση που σχεδίασε ο Άρβιθ θα είχε σίγουρα σημάνει το τέλος για "
+"τα Ορκ, αλλά εγώ το χάλασα. Ήταν ριψοκίνδυνο να αφήσω πίσω τους άντρες μου - "
+"μπορεί να πλήγωσα τον πολέμαρχο, και να τον ανάγκασα να εγκαταλείψει το "
+"πεδίο της μάχης, αλλά το κόστος ήταν πολύ μεγάλο. Αυτοί που ήταν υπό τις "
+"διαταγές μου θα είχαν επιζήσει αν ήμουν μαζί τους.\n"
+"\n"
+"Δεν μπορώ να κατηγορήσω τον Άρβιθ που πικράθηκε από το γεγονός, και δεν θα "
+"μπορέσω ποτέ να "
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:56
@@ -1210,10 +1356,8 @@ msgstr "Μάθε τι συμβαίνει στο χωριό"
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:64
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:259
-#, fuzzy
-#| msgid "Death of Bjarn"
 msgid "Death of Baran"
-msgstr "Ο Θάνατος του Μπτζάρν"
+msgstr "Θάνατος του Μπάραν"
 
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:103
@@ -1224,21 +1368,19 @@ msgstr "Τάιραχ"
 #. [side]: type=Longbowman, id=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:132
 msgid "Reeve Hoban"
-msgstr ""
+msgstr "Σύμβουλος Χόμπαν"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:162
-#, fuzzy
 msgid ""
 "There. The village is just across those hills, and already I see men coming "
 "to greet us!"
 msgstr ""
 "Εκεί. Το χωριό σου είναι ακριβώς μετά τους λόφους, και ήδη βλέπω άνδρες να "
-"έρχονται να μας χαιρετήσουν!"
+"έρχονται να μας προϋπαντήσουν!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:166
-#, fuzzy
 msgid ""
 "No, they are fleeing from something. We must find out what is happening over "
 "there!"
@@ -1247,11 +1389,10 @@ msgstr "Όχι. Το σκάνε από κάτι. Πρέπει να βρούμε 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:170
 msgid "Men! Ready your arms!"
-msgstr ""
+msgstr "Άντρες! Ετοιμάστε τα όπλα σας!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:174
-#, fuzzy
 msgid "We should find Reeve Hoban. Maybe he knows what is going on here."
 msgstr ""
 "Θα έπρεπε να πάμε εκεί και να μιλήσουμε στον Σύμβουλο Χόμπαν. Ίσως ξέρει τι "
@@ -1260,48 +1401,48 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:185
 msgid "We’re almost there!"
-msgstr ""
+msgstr "Σχεδόν φτάσαμε!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:189
 msgid "That warlord! It’s..."
-msgstr ""
+msgstr "Ο πολέμαρχος! Είναι..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:193
 msgid "Yes, I’d know that face anywhere. Especially after what you did to it."
 msgstr ""
+"Ναι, θα αναγνώριζα αυτό το πρόσωπο παντού... Ειδικά μετά απ' ότι του έκανες."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:197
 msgid "The warlord from Toen Caric."
-msgstr ""
+msgstr "Ο πολέμαρχος από το Τόεν Κάρικ."
 
 #. [message]: speaker=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:201
 msgid "You! The mage who scarred me with fire! KILL THEM!"
-msgstr ""
+msgstr "Εσύ! Ο άνθρωπος που με σημάδεψε με τη φωτιά! ΣΚΟΤΩΣΤΕ ΤΟΥΣ!!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:205
 msgid "Let’s finish what we started, brother."
-msgstr ""
+msgstr "Ας τελειώσουμε αυτό που ξεκινήσαμε, αδερφέ."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:209
 msgid "Aye. I’ll be the right arm, and you’ll be the left. Let’s go!"
-msgstr ""
+msgstr "Ναι. Θα είμαι το δεξί χέρι, και εσύ το αριστερό. Πάμε!"
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:223
-#, fuzzy
 msgid "I am glad to see you returned."
 msgstr "Χαίρομαι που σε βλέπω πάλι πίσω. "
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:227
 msgid "No gladder than I am to be here. But what has happened to Maghre?"
-msgstr ""
+msgstr "Όχι λιγότερο από μένα. Αλλά τι συνέβη στο Μάγκρε;"
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:231
@@ -1309,33 +1450,32 @@ msgid ""
 "Soon after you departed we were beset by orcs. With half the men of Maghre "
 "gone, we could not stop them."
 msgstr ""
+"Με το που φύγατε μας επιτέθηκαν Ορκ. Οι μισοί από τους άντρες έλειπαν, και "
+"δεν μπορούσαμε να τους σταματήσουμε."
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:235
-#, fuzzy
 msgid ""
 "The orcish warlord aims to enslave us. We will not be able to hold out for "
 "much longer."
 msgstr ""
-"Ο ορκ Οπλαρχηγός θέλει να μας υποδουλώσει. Δεν θα μπορέσουμε να κρατήσουμε "
+"Ο αρχηγός των Ορκ θέλει να μας υποδουλώσει. Δεν θα μπορέσουμε να κρατήσουμε "
 "για πολύ. "
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:239
-#, fuzzy
 msgid ""
 "Have a care, his men are fell fighters and have killed many. Very few remain "
 "who can bear arms, but I will send them to aid you in battle."
 msgstr ""
-"Προσοχή, είναι υπαίτιος για τους θανάτους πολλών από μας. Πολύ λίγοι "
-"απομένουν που μπορούν να βαστάξουν όπλα, αλλά θα τους στείλω να σε βοηθήσουν "
-"στην μάχη. "
+"Προσοχή, είναι επικίνδυνος στη μάχη, αυτός και οι στρατιώτες του. Πολύ λίγοι "
+"από μας απομένουν που μπορούν να βαστάξουν όπλα, αλλά θα τους στείλω να σε "
+"βοηθήσουν στην μάχη. "
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:251
-#, fuzzy
 msgid "Slay the Orcish Warlord to free the village"
-msgstr "Σκότωσε τον ορκ Οπλαρχηγό για να ελευθερώσεις το χωριό"
+msgstr "Σκότωσε τον αρχηγό των Ορκ για να ελευθερώσεις το χωριό"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:271
@@ -1343,17 +1483,17 @@ msgid ""
 "It is finished. We’ve defeated him at last. It was good to have you at my "
 "side, Baran."
 msgstr ""
+"Τελείωσε. Τους νικήσαμε επιτέλους. Χάρηκα που σε είχα στο πλευρό μου, Μπάραν."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:275
-#, fuzzy
 msgid ""
 "So much has been destroyed. It will be difficult to repair all that the orcs "
 "and undead have wrecked. And they could come again."
 msgstr ""
-"Τόσα πολλά καταστράφηκαν. Θα περάσουμε δύσκολους καιρούς για να διορθώσουμε "
-"τη ζημιά που προκάλεσαν οι ορκ και οι απέθαντοιι. Ελπίζω αυτό να μην "
-"ξανασυμβεί. "
+"Τόσα πολλά καταστράφηκαν. Θα περάσουμε δύσκολους καιρούς μέχρι να "
+"διορθώσουμε τη ζημιά που προκάλεσαν τα Ορκ και οι απέθαντοι. Και θα "
+"ξανάρθουν..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:279
@@ -1361,15 +1501,17 @@ msgid ""
 "I must go back to earning my living. But we have our amulets, little "
 "brother. If you are beset again, I will come."
 msgstr ""
+"Πρέπει να επιστρέψω στην δουλειά μου, αδερφε, τα χρυσά νομίσματα δεν "
+"φυτρώνουν ούτε καν από το έδαφος του Μάγκρε. Αλλά έχουμε τα φυλαχτά μας. Αν "
+"χρειαστεί ξανά, κάλεσέ με, και θα έρθω."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:294
 msgid "It is over, I am vanquished."
-msgstr "Τελείωσε, συντρίφτηκα. "
+msgstr "Τελείωσε, καταστράφηκα..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:319
-#, fuzzy
 msgid "I don’t think we can rescue anyone from these villages. It is too late."
 msgstr ""
 "Δεν νομίζω ότι μπορούμε να σώσουμε κανέναν από αυτά τα χωριά. Είναι πολύ "
@@ -1377,7 +1519,6 @@ msgstr ""
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:323
-#, fuzzy
 msgid "I was too weak to protect these people. Oh, why did this happen to me?!"
 msgstr ""
 "Ήμουν πολύ αδύναμος για να προστατέψω αυτούς τους ανθρώπους. Μα γιατί συνέβη "
@@ -1385,12 +1526,8 @@ msgstr ""
 
 #. [scenario]: id=05_Epilogue
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:4
-#, fuzzy
 msgid "A Tale of Two Brothers — Epilogue"
-msgstr ""
-"Ένας σκοτεινός μάγος, απειλεί τις ζωές και την περιουσία μας. Τρομοκρατεί "
-"την περιοχή μας. Ήδη κάλεσα το χωριό στα όπλα και τώρα επαφίεται σε σένα να "
-"τους οδηγήσεις. Είναι βόρεια, δυο μέρες με το άλογο."
+msgstr "Η Ιστορία Των Δύο Αδερφών - Επίλογος"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:25
@@ -1408,6 +1545,19 @@ msgid ""
 "But as the company and I are passing through this part of the kingdom with a "
 "new patron, I have asked leave of him to visit my brother and he gave it."
 msgstr ""
+"22 του ένατου μήνα, 365 μ.Γ. \n"
+"Απόσπασμα από το ημερολόγιο του Άρβιθ του Μάγκρε\n"
+"\n"
+"Το Μάγκρε είναι σε πολύ καλύτερη κατάσταση από την τελευταία φορά που το "
+"είδα. Ο Μπάραν έκανε θαύματα τα τελευταία δυο χρόνια. Το χωριό ξαναχτίστηκε, "
+"και οι φάρμες γύρω από το χωριό κατοικούνται ξανά. Παρά τις ανησυχίες του "
+"αδερφού μου, κανένας κίνδυνος δεν εμφανίστηκε όλο αυτό τον καιρό.\n"
+"\n"
+"Μου ήταν πολύ δύσκολο που έμεινα μακριά τα τελευταία δυο χρόνια, αλλά το "
+"μονοπάτι που βαδίζω είναι διαφορετικό από αυτό του Μπάραν, και δεν είχα την "
+"ευκαιρία να τον συναντήσω ξανά. Αλλά ο νέος μας πελάτης μας οδήγησε προς "
+"αυτό το κομμάτι του βασιλείου, και μου έδωσε την άδεια να επισκεφτώ τον "
+"αδερφό μου."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:34
@@ -1422,6 +1572,16 @@ msgid ""
 "\n"
 "In the meantime, though, it’s good to relax and enjoy the peace."
 msgstr ""
+"22 του ένατου μήνα, 365 μ.Γ. \n"
+"Απόσπασμα από το ημερολόγιο του Άρβιθ του Μάγκρε\n"
+"\n"
+"Ο πελάτης μας είναι - ποιος θα το φανταζόταν - ένα ξωτικό. Ποτέ δεν πίστεψα "
+"ότι θα φερόμουν φιλικά σε κάποιο, αλλά είναι λιγότερο αλαζόνας από τα "
+"υπόλοιπα. Κάλενζ ονομάζει τον εαυτό του. Έχει δει πολλά πράματα - το "
+"διαβάζεις στα μάτια του. Νομίζω ότι σύντομα θα πρέπει να ματώσουμε για τα "
+"λεφτά που μας έδωσε.\n"
+"\n"
+"Στο μεταξύ όμως είναι καλή ιδέα να χαλαρώσουμε και να απολαύσουμε την ειρήνη."
 
 #~ msgid "Arne"
 #~ msgstr "Άρνε"
