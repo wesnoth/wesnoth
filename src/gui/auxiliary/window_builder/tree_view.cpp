@@ -135,7 +135,13 @@ tbuilder_tree_view::tnode::tnode(const config& cfg)
  *                                     documentation. $
  * @end{table}
  * @begin{tag}{name="node"}{min=0}{max=-1}
+ * @begin{table}{config}
+ *     id & string & "" &  $
+ * @end{table}
  * @begin{tag}{name="node_definition"}{min=0}{max=-1}{super="gui/window/resolution/grid"}
+ * @begin{table}{config}
+ *     return_value_id & string & "" &  $
+ * @end{table}
  * @end{tag}{name="node_definition"}
  * @end{tag}{name="node"}
  * @end{tag}{name="tree_view"}

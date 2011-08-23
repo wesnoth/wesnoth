@@ -206,6 +206,9 @@ twidget* tbuilder_listbox::build() const
  * @end{table}
  * @begin{tag}{name="column"}{min="0"}{max="-1"}{super="gui/window/resolution/grid/row/column"}
  * @begin{table}{config}
+ *     label & t_string & "" &  $
+ *     tooltip & t_string & "" &  $
+ *     icon & t_string & "" &  $
  * @end{table}
  * @allow{link}{name="gui/window/resolution/grid/row/column/toggle_button"}
  * @allow{link}{name="gui/window/resolution/grid/row/column/toggle_panel"}
