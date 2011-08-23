@@ -66,12 +66,12 @@
 			<Add library="fontconfig" />
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
-			<Add library="libboost_iostreams" />
-			<Add library="libz" />
-			<Add library="libboost_regex" />
-			<Add library="libboost_program_options" />
-			<Add library="pthread" />
-			<Add library="libboost_system" />
+			<Add library="libboost_iostreams-mgw45-mt-1_46_1" />
+			<Add library="libboost_program_options-mgw45-mt-1_46_1" />
+			<Add library="libboost_regex-mgw45-mt-1_46_1" />
+			<Add library="libboost_system-mgw45-mt-1_46_1" />
+			<Add library="libboost_thread-mgw45-mt-1_46_1" />
+			<Add library="libz.dll" />
 			<Add directory=".\" />
 		</Linker>
 		<Unit filename="..\..\packaging\windows\wesnoth.rc">

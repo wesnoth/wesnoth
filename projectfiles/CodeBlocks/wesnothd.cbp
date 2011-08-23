@@ -47,11 +47,12 @@
 			<Add library="mingwthrd" />
 			<Add library="SDLmain" />
 			<Add library="SDL" />
-			<Add library="boost_iostreams" />
 			<Add library="intl" />
 			<Add library="SDL_net" />
 			<Add library="ws2_32" />
 			<Add library="z" />
+			<Add library="libboost_iostreams-mgw45-mt-1_46_1" />
+			<Add library="libz.dll" />
 		</Linker>
 		<Unit filename="..\..\src\about.hpp" />
 		<Unit filename="..\..\src\color_range.cpp" />

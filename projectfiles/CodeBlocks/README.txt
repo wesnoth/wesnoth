@@ -3,6 +3,7 @@ README.txt
 Compiling wesnoth on windows using CodeBlocks 10.05
 (June 2011, development version 1.9.6+svn r49843,
 earlier source versions untested)
+updated: r50891, 2011-08-23
 
 (Whenever you enter directories or names, you should do it
 by using the "..." button to the right of the field.)
@@ -26,8 +27,8 @@ into which you did install tdm-gcc-4.5.2.
 Into the fields "c compiler", "c++ compiler" and "linker for dynamic libs"
 enter "g++.exe".
 Into the field "linker for static libs", enter "ar.exe".
-6. Download WesnothCodeBlocksWinSDK.zip from
-http://www.mediafire.com/?6falp2by3c5mxs4 and extract
+6. Download CodeBlocksWinSDK.zip from
+http://www.mediafire.com/?qbibb8p3stb08w7 and extract
 this archive so that you have directories codeblocks_root/include_tdm_gcc
 and codeblocks_root/lib_tdm_gcc
 7. In CodeBlocks, goto (menu bar)>settings>compiler and debugger
