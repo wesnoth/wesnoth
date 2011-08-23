@@ -27,7 +27,6 @@ namespace schema_validation{
  */
 class schema_validator : public abstract_validator{
 public:
-	schema_validator();
 	virtual ~schema_validator();
 	/**
 	 * Initializes validator from file.
@@ -53,6 +52,7 @@ public:
 							  int start_line,
 							  const std::string &file);
 private:
+		schema_validator();
 // types section
 	// Just some magic to ensure zero initialization.
 	struct counter{
