@@ -488,8 +488,7 @@ void load_settings()
 				game_config::config_cache::instance().get_preproc_map());
 		scoped_istream stream = preprocess_file(get_wml_location("gui/default.cfg"), &preproc);
 
-//		read(cfg, *stream, &validator);
-		read(cfg, *stream);
+		read(cfg, *stream, &validator);
 	} catch(config::error&) {
 		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
 	}
