@@ -119,6 +119,9 @@ twidget* tbuilder_multi_page::build() const
  *                                     initial data for the multi page. Every
  *                                     row must have the same number of columns
  *                                     as the 'page_definition'. $
+ *     horizontal_scrollbar_mode & scrollbar_mode & initial_auto &
+ *                                     Determines whether or not to show the
+ *                                     scrollbar.
  * @end{table}
  * @begin{tag}{name="page_definition"}{min=0}{max=1}{super="gui/window/resolution/grid"}
  * @end{tag}{name="page_definition"}
