@@ -104,6 +104,10 @@ static void wrong_value_error(const std::string & file, int line,
 	print_output (ss.str (),flag_exception);
 }
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable:4702)
+#endif
 schema_validator::schema_validator()
 	: config_read_(false)
 	, create_exceptions_(strict_validation_enabled)
@@ -116,6 +120,9 @@ schema_validator::schema_validator()
 	ERR_VL << "No schema file\n";
 	throw abstract_validator::error("No schema file\n");
 }
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 schema_validator::~schema_validator(){}
 
