@@ -52,7 +52,6 @@ public:
 							  int start_line,
 							  const std::string &file);
 private:
-		schema_validator();
 // types section
 	// Just some magic to ensure zero initialization.
 	struct counter{
