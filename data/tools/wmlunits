@@ -18,12 +18,15 @@ import unit_tree.helpers as helpers
 import unit_tree.animations as animations
 
 html_header = '''
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel=stylesheet href=\"%(path)sstyle.css\" type=\"text/css\">
-<script type="text/javascript" src="%(path)s/menu.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" href=\"%(path)sstyle.css\" type=\"text/css\"/>
+<script type="text/javascript" src="%(path)s/menu.js" />
+<title>%(title)s</title>
 </head>
 <body><div>'''.strip()
 
@@ -334,18 +337,23 @@ class HTMLOutput:
             write("<a href=\"mainline.html\">%s</a><br/>\n" % (
                 self.translate("all", "wesnoth-editor")))
 
-            racenames = {}
+            r = {}, {}
             for u in self.wesnoth.unit_lookup.values():
                 if u.campaign != self.campaign: continue
+                
                 race = u.race
                 racename = T(race, "plural_name")
-                racenames[racename] = race.get_text_val("id")
-            racenames = racenames.items()
-            racenames.sort()
+                m = 1
+                if not u or u.campaign in self.wesnoth.is_mainline_campaign:
+                    m = 0
+                r[m][racename] = race.get_text_val("id")
+            racenames = sorted(r[0].items()) + sorted(r[1].items())
 
             for racename, rid in racenames:
                 write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
                     racename, racename))
+                    
+            write("</div></li>\n")
         else:
             x = self.translate("Factions", "wesnoth-help")
             add_menu("races_menu", x)
@@ -359,6 +367,8 @@ class HTMLOutput:
                             self.isocode, self.campaign)
                         write(" <a href=\"%s#%s\">%s</a><br/>" % (
                             html, un.name, un.name))
+                            
+            write("</div></li>\n")
             
         if 1:
             got_menu = False
@@ -385,6 +395,7 @@ class HTMLOutput:
         x = self.translate("Language", "wesnoth")
         add_menu("languages_menu", x)
         col = 0
+        maxcol = len(langlist) - 1
         write("<table>")
         write("<tr>")
         for lang in langlist:
@@ -397,9 +408,9 @@ class HTMLOutput:
                 languages[lang], lang, self.target,
                     labb))
             write("</td>")
-            if col == 5:
-                write("</tr><tr>")
-                col = 0
+            if col % 5 == 0:
+                if col < maxcol: write("</tr><tr>")
+                
         write("</tr>")
         write("</table>")
         write("</div></li>\n")
@@ -499,9 +510,9 @@ class HTMLOutput:
                     if hspan == 1 and vspan == 1:
                         pass
                     elif hspan == 1:
-                        attributes += " rowspan=%d" % vspan
+                        attributes += " rowspan=\"%d\"" % vspan
                     elif vspan == 1:
-                        attributes += " colspan=%d" % hspan
+                        attributes += " colspan=\"%d\"" % hspan
 
                     if un and isinstance(un, helpers.GroupNode):
                         # Find the current multiplayer side so we can show the
@@ -608,7 +619,8 @@ class HTMLOutput:
         write("</table>\n")
 
     def write_units_tree(self, grouper, title):
-        self.output.write(html_header % {"path" : "../"})
+        self.output.write(html_header % {"path" : "../",
+            "title" : title})
 
         self.analyze_units(grouper)
         self.write_navbar("units_tree")
@@ -646,12 +658,6 @@ class HTMLOutput:
                 return False, mty
             return False, "-"
 
-        self.output = output
-        write(html_header % {"path" : "../"})
-        self.write_navbar("unit_report")
-        
-        self.output.write("<div class=\"main\">")
-
         def uval(name):
             return self.wesnoth.get_unit_value(unit, name,
                 translation = self.translation.translate)
@@ -660,6 +666,13 @@ class HTMLOutput:
         uid = unit.get_text_val("id")
         uname = uval("name")
         display_name = uname
+        
+        self.output = output
+        write(html_header % {"path" : "../",
+            "title" : display_name})
+        self.write_navbar("unit_report")
+        
+        self.output.write("<div class=\"main\">")
 
         female = unit.get_all(tag = "female")
         if female:
@@ -866,9 +879,9 @@ class HTMLOutput:
         write("<table class=\"unitinfo terrain\">\n")
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
        
-        write("<tr><th colspan=2></th><th colspan=2>%s</th></tr>\n" % (
+        write("<tr><th colspan=\"2\"></th><th colspan=\"2\">%s</th></tr>\n" % (
             _("Movement Cost", "wesnoth-help")))
-        write("<tr><th colspan=2>%s</th><th></th><th class=\"numheader\">%s</th></tr>\n" % (
+        write("<tr><th colspan=\"2\">%s</th><th></th><th class=\"numheader\">%s</th></tr>\n" % (
             _("Terrain", "wesnoth-help"), _("Defense", "wesnoth-help") ))
 
         terrains = self.wesnoth.terrain_lookup
