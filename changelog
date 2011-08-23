@@ -130,6 +130,8 @@ Version 1.9.8+svn:
    * Added wml tag [store_items]
    * [harm_unit] now supports an harmer unit and experience calculation.
    * Added support for 24 hour ToD.
+   * Added WML validation system based on schema validation.
+   * Enabled validation for GUI WML. 
  * Miscellaneous and bug fixes:
    * Teach wmllint to fix deprecated implicit side=1 in [store_gold], [gold]
      [remove_shroud], [place_shroud], [modify_side], [modify_ai] actions
