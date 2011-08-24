@@ -25,7 +25,7 @@ html_header = '''
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <link rel="stylesheet" href=\"%(path)sstyle.css\" type=\"text/css\"/>
-<script type="text/javascript" src="%(path)s/menu.js" />
+<script type="text/javascript" src="%(path)s/menu.js"></script>
 <title>%(title)s</title>
 </head>
 <body><div>'''.strip()
@@ -264,7 +264,7 @@ class HTMLOutput:
                 onclick="toggle_menu(this, '""" + id + """', 2)"
                 onmouseover="toggle_menu(this, '""" + id + """', 1)"
                 onmouseout="toggle_menu(this, '""" + id + """', 0)">""")
-            write('<span class="' + class2 + '">' + name + "</span>")
+            write('<a class="' + class2 + '">' + name + "</a>")
             write('<div class="popupmenu" id="' + id + '">')
 
         # Campaigns
@@ -344,14 +344,19 @@ class HTMLOutput:
                 race = u.race
                 racename = T(race, "plural_name")
                 m = 1
-                if not u or u.campaign in self.wesnoth.is_mainline_campaign:
+                if u and u.campaign in self.wesnoth.is_mainline_campaign:
                     m = 0
                 r[m][racename] = race.get_text_val("id")
-            racenames = sorted(r[0].items()) + sorted(r[1].items())
+            racenames = sorted(r[0].items())
+            if r[1].items():
+                racenames += [("-", "-")] + sorted(r[1].items())
 
             for racename, rid in racenames:
-                write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
-                    racename, racename))
+                if racename == "-":
+                    write(" -<br/>")
+                else:
+                    write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
+                        racename, racename))
                     
             write("</div></li>\n")
         else:
@@ -373,6 +378,8 @@ class HTMLOutput:
         if 1:
             got_menu = False
             menuid = 0
+            camp = self.campaign
+            if camp == "units": camp = "mainline"
             for row in self.unitgrid:
                 for column in range(6):
                     hspan, vspan, un = row[column]
@@ -382,7 +389,14 @@ class HTMLOutput:
                         add_menu("units_menu" + str(menuid), un.name, "unitmenu")
                         menuid += 1
                         got_menu = True
+                        
+                        html = "../%s/%s.html" % (
+                            self.isocode, camp)
+                        write("<a href=\"%s#%s\">%s</a><br/>" % (
+                            html, un.name, un.name))
                     else:
+                        
+                        if camp == "mainline" and un.unit.campaign != camp: continue
                         uid = un.unit.get_text_val("id")
                         link = "../%s/%s.html" % (self.isocode, uid)
                         name = self.wesnoth.get_unit_value(un.unit,
@@ -855,7 +869,7 @@ class HTMLOutput:
             picname = image_collector.add_image("mainline", ricon,
                 no_tc = True)
             icon = os.path.join("../pics", picname)
-            write("<td><img src=\"%s\" /></td>\n" % (icon, ))
+            write("<td><img src=\"%s\" alt=\"(icon)\" /></td>\n" % (icon, ))
             write("<th>%s</th><td class=\"num\">%s</td>\n" % (_(rid), r))
             if row % 2 == 1 : write("</tr>\n")
             row += 1
@@ -920,7 +934,7 @@ class HTMLOutput:
             picname = image_collector.add_image("mainline",
                 "terrain/" + ticon + ".png", no_tc = True)
             icon = os.path.join("../pics", picname)
-            write("<td><img src=\"%s\" /></td>\n" % (icon, ))
+            write("<td><img src=\"%s\"  alt=\"(icon)\" /></td>\n" % (icon, ))
             write("<td>%s</td><%s><i>%s</i></td><%s class=\"num\"><i>%s</i></td>\n" % (
                 tname, ccell, c, dcell, d))
             write("</tr>\n")

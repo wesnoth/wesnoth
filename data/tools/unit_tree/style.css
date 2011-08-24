@@ -70,18 +70,21 @@ td.unitcell a {
 }
 div.main {
     margin-top: 0;
-    margin-left: 7em;
+    margin-left: 9em;
     border-left: 1px solid black;
 }
 div.popupmenu
 {
     position: absolute;
-    margin-left: 6.5em;
+    margin-left: 8.5em;
     margin-top: -1em;
     background: white;
     border: 1px solid black;
 }
-span.unitmenu {
+div.popupmenu a {
+    text-decoration: none;
+}
+a.unitmenu {
     display: block;
     margin-left: 1em;
     font-size: small;
@@ -95,7 +98,7 @@ span.unitmenu {
    display: block;
 }
 div.navbar {
-    width: 7em;
+    width: 9em;
     float: left;
     overflow: hidden;
 }
@@ -105,7 +108,7 @@ ul.navbar {
     border-spacing: 0px;
     padding: 0px;
     border-right: 1px solid black;
-    width: 6.5em;
+    width: 8.5em;
 }
 ul.navbar li {
     color: black;
@@ -113,12 +116,12 @@ ul.navbar li {
     margin: 0px;
     padding: 0px;
 }
-ul.navbar li:hover {
+ul.navbar li a:hover {
     color: #804000;
 }
 ul.navbar a {
     color: #B48648;
-    font-size: small;
+    font-size: medium;
     font-weight: bold;
 }
 td.raceheader {
@@ -141,6 +144,7 @@ table.unitinfo {
 table.unitinfo th {
     text-align: left;
     font-weight: normal;
+    white-space: nowrap;
 }
 table.attacks col.col1 {
     width: 7em;
