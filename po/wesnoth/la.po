@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-08-10 11:40+0200\n"
-"PO-Revision-Date: 2011-07-18 13:17+0100\n"
+"PO-Revision-Date: 2011-08-10 20:47+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin\n"
 "Language: \n"
@@ -44,26 +44,25 @@ msgstr "Gyrum Muris"
 msgid "Middle-click Scrolling"
 msgstr "Gyrum Muris"
 
-# this pointless comment means I can test things!
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Moventem pergere ubi mus fenestram linquit"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
 msgid "Local time of day light"
-msgstr ""
+msgstr "Hora localis"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
 msgid "Local time of day light effect (use more memory)."
-msgstr ""
+msgstr "Effecti Horae localis (magis memoriae utitur)."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
 msgid "Show Titlescreen Animation"
-msgstr ""
+msgstr "Animationem Tituli Demonstrare"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
@@ -85,17 +84,17 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
 msgid "Accept whisper messages from friends only"
-msgstr ""
+msgstr "Accipere murmures ex amicis modo"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
+msgstr "Semper aperire in atrio fenestras"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Group players in lobby"
-msgstr ""
+msgstr "Lusores in atrio aggregare "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
@@ -105,17 +104,18 @@ msgstr "Strepiti atrii"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Disable notifications"
-msgstr ""
+msgstr "Non nuntia demonstrare"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Reverse Time Graphics"
-msgstr ""
+msgstr "Convertere Picturas Temporis"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:108
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
+"Eligere utrum sol ex sinistra ad dextram moveat an ex dextra ad sinistram"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
@@ -128,6 +128,7 @@ msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
 msgstr ""
+"Eligere utrum aspectus chartae ad quemdam actorem sequatur quando movet"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:132
@@ -683,6 +684,7 @@ msgstr "Automata"
 #: data/core/macros/ai.cfg:494
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
+"Rogare $ally_leader.name (princeps manus $ally_leader.side) ut huc moveat"
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
@@ -690,6 +692,8 @@ msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
 msgstr ""
+"In hoc scaenario, mandata manui socio potes dare in unum actorum dextro "
+"premendo."
 
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
@@ -4422,8 +4426,8 @@ msgstr "Ad spectatores modo mittere"
 #: src/menu_events.cpp:715
 msgid "unit^Gold"
 msgid_plural "Gold"
-msgstr[0] "Aurum"
-msgstr[1] "Aura"
+msgstr[0] "Auri"
+msgstr[1] "Auri"
 
 #: src/menu_events.cpp:722
 #, fuzzy

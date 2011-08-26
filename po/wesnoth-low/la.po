@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-08-10 11:40+0200\n"
-"PO-Revision-Date: 2011-07-25 19:54+0100\n"
+"PO-Revision-Date: 2011-08-10 20:07+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -323,7 +323,6 @@ msgstr "Eradicare"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:61
-#, fuzzy
 #| msgid ""
 #| "<i>The Legend of Wesmere</i>,\n"
 #| "Chapter One\n"
@@ -333,8 +332,7 @@ msgid ""
 "Chapter One"
 msgstr ""
 "<i>Heroica Fabella Vesmerei</i>,\n"
-"Liber I\n"
-"Fuga pugnaque"
+"Liber I"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:65
@@ -342,6 +340,8 @@ msgid ""
 "Chapter One,\n"
 "<i>Flight and fight</i>"
 msgstr ""
+"Liber I,\n"
+"<i>Fuga pugnaque</i>"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:74
@@ -1283,21 +1283,23 @@ msgstr "Thesaurus Dryadalium"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:52
-#, fuzzy
 #| msgid "The Legend of Wesmere, Chapter two"
 msgid ""
 "<i>The Legend of Wesmere</i>,\n"
 "Chapter Two"
-msgstr "Heroica Fabella Vesmerei, Liber II"
+msgstr ""
+"<i>Heroica Fabella Vesmerei</i>,\n"
+" Liber II"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/04_The_Elvish_Treasury.cfg:57
-#, fuzzy
 #| msgid "Chapter Two: The Treasury"
 msgid ""
 "Chapter Two,\n"
 "<i>The Treasury</i>"
-msgstr "Liber II: Thesaurus"
+msgstr ""
+"Liber II,\n"
+" <i>Thesaurus</i>"
 
 # obsidium is mostly ante-classical
 #. [part]
@@ -1873,7 +1875,6 @@ msgstr ""
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/07_Elves_Last_Stand.cfg:513
-#, fuzzy
 #| msgid ""
 #| "She is right. Don't let them lure you away from the Ka’lian, preparations "
 #| "for when more of them arrive return must be done."
@@ -2394,7 +2395,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/08_Council_of_Hard_Choices.cfg:80
-#, fuzzy
 #| msgid "And our home? How do we free Lintanir without bringing war to orcs?"
 msgid ""
 "And our home? How can we free Lintanir without taking the war to the orcs?"
@@ -2580,12 +2580,13 @@ msgstr "Captatores Praedae"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:49
-#, fuzzy
 #| msgid "The Legend of Wesmere, Chapter two"
 msgid ""
 "<i>The Legend of Wesmere</i>,\n"
 "Chapter Three"
-msgstr "Heroica Fabella Vesmerei, Liber II"
+msgstr ""
+"<i>Heroica Fabella Vesmerei</i>,\n"
+"Liber III"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:51
@@ -2598,12 +2599,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:57
-#, fuzzy
 #| msgid "Chapter two, Part one: The book of Crelanu"
 msgid ""
 "Chapter Three,\n"
 "<i>The Book of Crelanu</i>"
-msgstr "Liber II, Capitulum I: Liber Crelani"
+msgstr ""
+"Liber III,\n"
+" <i>Liber Crelani</i>"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:62
@@ -2695,7 +2697,7 @@ msgstr ""
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:447
 msgid "They are far too much to risk a confrontation, let's cross the river!"
-msgstr ""
+msgstr "Tot sunt ut manus conserere audere non possimus, pontem transeamus!"
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:452
@@ -2704,6 +2706,8 @@ msgid ""
 "crossing the river without a bridge? We dwarves know water is a very "
 "dangerous thing!"
 msgstr ""
+"In silva montibusque ultra ripam boream praeterire possumus, sed pontem "
+"transire sine ponte? Ipsi scimus aquam periculosissimam esse!"
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:456
@@ -2712,6 +2716,8 @@ msgid ""
 "it. May be they are but children’s tales... Still, be very careful when you "
 "cross it."
 msgstr ""
+"Vero credo hoc flumen Arkan-Thoria esse; sunt rumores formidulosos, fortasse "
+"modo fabulae aniles... sed praecavete cum transeatis."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:460
@@ -2740,7 +2746,7 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:492
 #: data/campaigns/Legend_of_Wesmere/scenarios/10_Cliffs_of_Thoria.cfg:140
 msgid "Creatures"
-msgstr ""
+msgstr "Animales"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/09_Bounty_Hunters.cfg:587
@@ -3551,22 +3557,24 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:125
-#, fuzzy
 #| msgid "The Legend of Wesmere, Chapter two"
 msgid ""
 "<i>The Legend of Wesmere</i>,\n"
 "Chapter Four"
-msgstr "Heroica Fabella Vesmerei, Liber II"
+msgstr ""
+"<i>Heroica Fabella Vesmerei</i>,\n"
+" Liber IV"
 
 # This should be a colon
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:130
-#, fuzzy
 #| msgid "Chapter two, Part two, The Alliance"
 msgid ""
 "Chapter Four,\n"
 "<i>The Alliance</i>"
-msgstr "Liber II, Capitulum II: Societas"
+msgstr ""
+"Liber IV,\n"
+"<i>Societas</i>"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/14_Human_Alliance.cfg:135
@@ -4503,7 +4511,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:50
-#, fuzzy
 #| msgid ""
 #| "<i>The Legend of Wesmere</i>,\n"
 #| "Chapter One\n"
@@ -4513,8 +4520,7 @@ msgid ""
 "Chapter Five"
 msgstr ""
 "<i>Heroica Fabella Vesmerei</i>,\n"
-"Liber I\n"
-"Fuga pugnaque"
+"Liber V"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:55
@@ -4522,6 +4528,8 @@ msgid ""
 "Chapter Five,\n"
 "<i>Civil War</i>"
 msgstr ""
+"Liber V,\n"
+"<i>Bellum Civile</i>"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/19_Costly_Revenge.cfg:59
@@ -5136,6 +5144,8 @@ msgid ""
 "the campaign. Your recall list is saved persistently and will be reloaded "
 "then."
 msgstr ""
+"Secundus Liber ab atrio pluribus lusoribus incipi potest ut militiam pergas. "
+"Tabula evocatorum constanter servata tum iterum arcessetur."
 
 #. [unit_type]: id=Elvish Horse Archer
 #: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:13

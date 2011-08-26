@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-08-10 11:40+0200\n"
-"PO-Revision-Date: 2011-07-18 12:54+0100\n"
+"PO-Revision-Date: 2011-08-10 19:52+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin\n"
 "Language: \n"
@@ -33,7 +33,7 @@ msgid ""
 "the land. Use map settings. Recommended starting gold=100."
 msgstr ""
 "Hoc scaenarium superandum te sinit ut aedifices et terram mutes. Utere "
-"electionibus chartae. Aura probata initio centum est."
+"electionibus chartae. Aurum probatum initio centum est."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:25
@@ -203,7 +203,7 @@ msgstr "Noli timere, spes etiam nobis est!"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:73
 msgid "The chest contains $oc_treasure gold."
-msgstr "Arca $oc_treasure aurorum continet."
+msgstr "Arca $oc_treasure auri continet."
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
@@ -354,7 +354,7 @@ msgstr "Perficere"
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
 msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
-msgstr "Hic XX aurorum thesauro $df_player_name|sis dono."
+msgstr "Hic XX auri thesauro $df_player_name|sis dono."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:59
@@ -386,7 +386,6 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:189
-#, fuzzy
 #| msgid ""
 #| "$player_name\n"
 #| "Share knowledge of agriculture"
@@ -394,12 +393,11 @@ msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Scientiam agri culturae communicare"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
-#, fuzzy
 #| msgid ""
 #| "$player_name\n"
 #| "Share knowledge of mining"
@@ -407,12 +405,11 @@ msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Scientiam fossiendi communicare"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:203
-#, fuzzy
 #| msgid ""
 #| "$player_name\n"
 #| "Share knowledge of warfare"
@@ -420,7 +417,7 @@ msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Scientiam belli communicare"
 
 #. [message]: speaker=unit
@@ -448,7 +445,7 @@ msgid ""
 "Give 20 gold to another player"
 msgstr ""
 "<span color='green'>Pecuniam Dare</span>\n"
-"XX aurorum lusori alio datur"
+"XX auri lusori alio datur"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
@@ -576,7 +573,6 @@ msgstr "Ut ante pergere"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:117
-#, fuzzy
 #| msgid ""
 #| "Agriculture\n"
 #| "Farmers produce +1 gold\n"
@@ -588,8 +584,8 @@ msgid ""
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
-"Agri cultura\n"
-"Agricolae +I aurorum faciunt\n"
+"<span color='green'>Agri Cultura</span>\n"
+"Agricolae +I auri faciunt\n"
 "In studiis profecerunt: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 
@@ -609,7 +605,7 @@ msgid ""
 "mining.target"
 msgstr ""
 "<span color='green'>Fodere</span>\n"
-"Fossores +I aurorum faciunt\n"
+"Fossores +I auri faciunt\n"
 "In studiis profecerunt: $player_$side_number|.mining.progress|/$player_"
 "$side_number|.mining.target"
 
@@ -642,7 +638,7 @@ msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
-"Fundi $player_$side_number|.name|sis iam $side_number|.farming.gold aurorum "
+"Fundi $player_$side_number|.name|sis iam $side_number|.farming.gold auri "
 "facit."
 
 #. [message]: speaker=narrator
@@ -651,7 +647,7 @@ msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
-"Metalla $player_$side_number|.name|sis iam $side_number|.mining.gold aurorum "
+"Metalla $player_$side_number|.name|sis iam $side_number|.mining.gold auri "
 "facit."
 
 #. [message]: speaker=narrator
