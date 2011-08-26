@@ -659,6 +659,8 @@ void manager::save_temp_move()
 		assert(u);
 		size_t first_turn = sa.get_turn_num_of(*u);
 
+		on_save_action(u);
+
 		assert(move_arrows_.size() == fake_units_.size());
 		size_t size = move_arrows_.size();
 		for(size_t i=0; i<size; ++i)
@@ -677,7 +679,6 @@ void manager::save_temp_move()
 		}
 		erase_temp_move();
 
-		on_save_action();
 		LOG_WB << *viewer_actions() << "\n";
 		print_help_once();
 	}
@@ -720,10 +721,10 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 
 		if (weapon_choice >= 0)
 		{
+			on_save_action(attacking_unit);
+
 			side_actions& sa = *viewer_actions();
 			sa.queue_attack(sa.get_turn_num_of(*attacking_unit),*attacking_unit,target_hex,weapon_choice,*route_,move_arrow,fake_unit);
-
-			on_save_action();
 
 			print_help_once();
 		}
@@ -746,6 +747,8 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 		}
 		else
 		{
+			on_save_action(NULL);
+
 			side_actions& sa = *viewer_actions();
 			unit* recruiter;
 			{ wb::scoped_planned_unit_map raii;
@@ -755,8 +758,6 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 			size_t turn = sa.get_turn_num_of(*recruiter);
 			sa.queue_recruit(turn,name,recruit_hex);
 			created_planned_recruit = true;
-
-			on_save_action();
 
 			print_help_once();
 		}
@@ -777,14 +778,14 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 		}
 		else
 		{
+			on_save_action(NULL);
+
 			side_actions& sa = *viewer_actions();
 			size_t turn = sa.num_turns();
 			if(turn > 0)
 				--turn;
 			sa.queue_recall(turn,unit,recall_hex);
 			created_planned_recall = true;
-
-			on_save_action();
 
 			print_help_once();
 		}
@@ -796,17 +797,16 @@ void manager::save_suppose_dead(unit& curr_unit, map_location const& loc)
 {
 	if(active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
+		on_save_action(&curr_unit);
 		side_actions& sa = *viewer_actions();
 		sa.queue_suppose_dead(sa.get_turn_num_of(curr_unit),curr_unit,loc);
-		on_save_action();
 	}
 }
 
-void manager::on_save_action() const
+void manager::on_save_action(unit const* u) const
 {
-	side_actions& sa = *viewer_actions();
-	action& act = **(sa.end()-1);
-	sa.remove_invalid_of(act.get_unit());
+	if(u)
+		viewer_actions()->remove_invalid_of(u);
 }
 
 void manager::contextual_execute()

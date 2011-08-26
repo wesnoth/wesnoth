@@ -165,7 +165,7 @@ public:
 private:
 	void validate_actions_if_needed();
 	/// Called by all of the save_***() methods after they have added their action to the queue
-	void on_save_action() const;
+	void on_save_action(unit const* unit_with_plan) const;
 	void update_plan_hiding(size_t viewing_team) const;
 	void update_plan_hiding() const; //same as above, but uses wb::viewer_team() as default argument
 
