@@ -535,9 +535,27 @@ void side_actions::remove_invalid_of(unit const* u)
 	}
 }
 
+static side_actions::const_iterator find_last_valid_of(unit const& u, side_actions const& sa_const)
+{
+	side_actions& sa = const_cast<side_actions&>(sa_const);
+	side_actions::iterator end = sa.end();
+
+	if(sa.empty())
+		return sa.end();
+
+	side_actions::iterator begin = sa.begin();
+	side_actions::iterator itor  = end;
+	do {
+		if(itor==begin && !(*itor)->is_valid())
+			return end; //this unit has no valid actions!
+		itor = sa.find_last_action_of(&u,itor - 1);
+	} while(itor!=end && !(*itor)->is_valid());
+
+	return itor;
+}
 size_t side_actions::get_turn_num_of(unit const& u) const
 {
-	const_iterator itor = const_cast<side_actions*>(this)->find_last_action_of(&u);
+	const_iterator itor = find_last_valid_of(u,*this); //helper fcn -- above
 	if(itor == end())
 		return 0;
 	return itor.base_.turn_num_;
