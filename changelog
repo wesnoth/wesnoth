@@ -14,11 +14,16 @@ Version 1.9.8+svn:
      * Fixed Naga Sentinel gaining an AMLA after 32 XP instead of the usual 150
      * Gave to Desert Shydes and Desert Stars 30% defense on void terrain
  * Engine:
+   * Fixed bug #16173: Using n or cl while a fake unit is moving causes the game to segfault
+   * Improved unit_map lookup from std::map to boost::unordered_map to decrease lookup times
    * Fixed bug #16151: Discover new units on recruit
    * Fixed bug #17780: Allow objects to 'increase' damage to 0
    * Fixed bug #18098: now recruits and recalls capture village if recruited or
      recalled on village castle hex
  * Graphics:
+   * Fixed bug #18524: [replace_map] doesn't force window repainting
+   * Fixed bugs #18504 #18493 and #18017: Time of Day and fading interact poorly
+   * Fixed bugs #18475 and #17292: Mage of Light and Sorceress Halo/animation glitches.
    * Terrains:
      * Added Gray Coastal Reef, Tropical Coastal Reef terrain
      * Swamp no longer prevents embellishments from being drawn
