@@ -571,17 +571,17 @@ namespace {
 
 	class t_event_handlers : public std::vector<game_events::event_handler> {
 	private:
-		std::vector<game_events::event_handler> insert_buffer;
-		std::set<std::string> remove_buffer;
-		bool buffering;
+		std::vector<game_events::event_handler> insert_buffer_;
+		std::set<std::string> remove_buffer_;
+		bool buffering_;
 
 	public:
 
 		t_event_handlers()
 			: std::vector<game_events::event_handler>()
-			, insert_buffer()
-			, remove_buffer()
-			, buffering(false)
+			, insert_buffer_()
+			, remove_buffer_()
+			, buffering_(false)
 		{
 		}
 
@@ -591,8 +591,8 @@ namespace {
 		 * respects this class's buffering functionality.
 		 */
 		void add_event_handler(game_events::event_handler const & new_handler) {
-			if(buffering) {
-				insert_buffer.push_back(new_handler);
+			if(buffering_) {
+				insert_buffer_.push_back(new_handler);
 			} else {
 				const config & cfg = new_handler.get_config();
 				std::string id = cfg["id"];
@@ -616,10 +616,10 @@ namespace {
 			if(id == "")
 				return;
 
-			if(buffering)
-				remove_buffer.insert(id);
+			if(buffering_)
+				remove_buffer_.insert(id);
 
-			std::vector<game_events::event_handler> &temp = buffering ? insert_buffer : *this;
+			std::vector<game_events::event_handler> &temp = buffering_ ? insert_buffer_ : *this;
 
 			std::vector<game_events::event_handler>::iterator i = temp.begin();
 			while(i < temp.end()) {
@@ -639,27 +639,27 @@ namespace {
 		 * when already buffering will not start a second buffer.
 		 */
 		void start_buffer() {
-			buffering = true;
+			buffering_ = true;
 		}
 
 		/**
-		 * Stops buffering and commits all changes.
+		 * Stops buffering_ and commits all changes.
 		 */
 		void commit_buffer() {
-			if(!buffering)
+			if(!buffering_)
 				return;
 
-			buffering = false;
+			buffering_ = false;
 
 			// Commit any event removals
-			for(std::set<std::string>::iterator i = remove_buffer.begin(); i != remove_buffer.end(); i++)
+			for(std::set<std::string>::iterator i = remove_buffer_.begin(); i != remove_buffer_.end(); i++)
 				remove_event_handler(*i);
-			remove_buffer.clear();
+			remove_buffer_.clear();
 
 			// Commit any spawned events-within-events
-			for(std::vector<game_events::event_handler>::iterator i = insert_buffer.begin(); i != insert_buffer.end(); i++)
+			for(std::vector<game_events::event_handler>::iterator i = insert_buffer_.begin(); i != insert_buffer_.end(); i++)
 				add_event_handler(*i);
-			insert_buffer.clear();
+			insert_buffer_.clear();
 		}
 	};
 
