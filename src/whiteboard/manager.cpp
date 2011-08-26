@@ -65,7 +65,7 @@ manager::manager():
 		key_poller_(new CKey),
 		hidden_unit_hexes_(),
 		net_buffer_(resources::teams->size()),
-		team_plans_hidden_(resources::teams->size(),false)
+		team_plans_hidden_(resources::teams->size(),preferences::hide_whiteboard())
 {
 	LOG_WB << "Manager initialized.\n";
 }
@@ -261,7 +261,7 @@ static void hide_all_plans()
 }
 
 /* private */
-void manager::update_plan_hiding(size_t team_index) const
+void manager::update_plan_hiding(size_t team_index)
 {
 	//We don't control the "viewing" side ... we're probably an observer
 	if(!resources::teams->at(team_index).is_human())
@@ -270,6 +270,10 @@ void manager::update_plan_hiding(size_t team_index) const
 	{
 		foreach(team& t, *resources::teams)
 		{
+			//make sure only appropriate teams are hidden
+			if(!t.is_network_human())
+				team_plans_hidden_[t.side()-1] = false;
+
 			if(t.is_enemy(team_index+1) || team_plans_hidden_[t.side()-1])
 				t.get_side_actions()->hide();
 			else
@@ -278,7 +282,7 @@ void manager::update_plan_hiding(size_t team_index) const
 	}
 	resources::teams->at(team_index).get_side_actions()->validate_actions();
 }
-void manager::update_plan_hiding() const
+void manager::update_plan_hiding()
 	{update_plan_hiding(viewer_team());}
 
 void manager::on_viewer_change(size_t team_index)
