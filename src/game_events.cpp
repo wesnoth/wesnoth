@@ -576,6 +576,15 @@ namespace {
 		bool buffering;
 
 	public:
+
+		t_event_handlers()
+			: std::vector<game_events::event_handler>()
+			, insert_buffer()
+			, remove_buffer()
+			, buffering(false)
+		{
+		}
+
 		/**
 		 * Adds an event handler.  An event with a nonempty ID will not
 		 * be added if an event with that ID already exists.  This method
