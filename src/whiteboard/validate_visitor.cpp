@@ -295,7 +295,7 @@ void validate_visitor::visit_recall(recall_ptr recall)
 		recall->set_valid(false);
 	}
 	//Check that there is a leader available to recall this unit
-	if(recall->is_valid() && find_recruiter(recall->team_index(),recall->get_recall_hex()))
+	if(recall->is_valid() && !find_recruiter(recall->team_index(),recall->get_recall_hex()))
 	{
 		LOG_WB << "Recall set as invalid, no leader can recall this unit.\n";
 		recall->set_valid(false);
