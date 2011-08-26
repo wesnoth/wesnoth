@@ -995,12 +995,10 @@ void manager::options_dlg()
 	switch(selection)
 	{
 	case 0:
-		preferences::set_hide_whiteboard(false);
 		foreach(team* t, allies)
 			team_plans_hidden_[t->side()-1]=false;
 		break;
 	case 1:
-		preferences::set_hide_whiteboard(true);
 		foreach(team* t, allies)
 			team_plans_hidden_[t->side()-1]=true;
 		break;
