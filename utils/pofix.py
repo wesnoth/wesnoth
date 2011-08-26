@@ -1106,7 +1106,6 @@ stringfixes = {
 # Fix apostrophes...
 ("while the foes'", "while the foes’"),
 ("Don't let them lure", "Don’t let them lure"),
-("Let's cross the", "Let’s cross the"),
 ),
 
 "wesnoth-multiplayer" : (
