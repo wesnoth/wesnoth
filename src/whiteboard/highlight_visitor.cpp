@@ -264,8 +264,7 @@ void highlight_visitor::visit_move(move_ptr move)
 			side_actions& sa = *resources::teams->at(move->team_index()).get_side_actions();
 			side_actions::iterator last_action = sa.find_last_action_of(move->get_unit());
 
-			assert(last_action != sa.end());
-			if(*last_action != move)
+			if(last_action != sa.end() && *last_action != move)
 			{
 				move->fake_unit_->set_disabled_ghosted(false);
 			}
