@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-10 11:40+0200\n"
+"POT-Creation-Date: 2011-08-27 10:14+0200\n"
 "PO-Revision-Date: 2011-08-10 11:13-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: none\n"
@@ -26,13 +26,13 @@ msgstr ""
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
-#: data/core/macros/abilities.cfg:625
+#: data/core/macros/abilities.cfg:582
 msgid "berserk"
 msgstr ""
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
-#: data/core/macros/abilities.cfg:627
+#: data/core/macros/abilities.cfg:584
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -41,13 +41,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
-#: data/core/macros/abilities.cfg:711
+#: data/core/macros/abilities.cfg:668
 msgid "magical"
 msgstr "drylic"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
-#: data/core/macros/abilities.cfg:713
+#: data/core/macros/abilities.cfg:670
 msgid ""
 "Magical:\n"
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -56,13 +56,13 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
-#: data/core/macros/abilities.cfg:760
+#: data/core/macros/abilities.cfg:717
 msgid "firststrike"
 msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
-#: data/core/macros/abilities.cfg:762
+#: data/core/macros/abilities.cfg:719
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -1426,8 +1426,10 @@ msgid ""
 msgstr ""
 
 #. [time]: id=dawn
+#. [time]: id=dawn_hour
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:271 data/core/macros/schedules.cfg:6
+#: data/core/macros/schedules.cfg:263
 msgid "Dawn"
 msgstr "Dagung"
 
@@ -1444,8 +1446,10 @@ msgid "Afternoon"
 msgstr "Middæg"
 
 #. [time]: id=dusk
+#. [time]: id=dusk_hour
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:274 data/core/macros/schedules.cfg:35
+#: data/core/macros/schedules.cfg:375
 msgid "Dusk"
 msgstr ""
 
@@ -2957,17 +2961,17 @@ msgid ""
 msgstr ""
 
 #. [unstore_unit]
-#: data/core/macros/abilities.cfg:576
+#: data/core/macros/abilities.cfg:552
 msgid "+1 max HP"
 msgstr ""
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:637
+#: data/core/macros/abilities.cfg:594
 msgid "backstab"
 msgstr ""
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:639
+#: data/core/macros/abilities.cfg:596
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
@@ -2977,12 +2981,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:651 data/core/macros/abilities.cfg:663
+#: data/core/macros/abilities.cfg:608 data/core/macros/abilities.cfg:620
 msgid "plague"
 msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:653
+#: data/core/macros/abilities.cfg:610
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
@@ -2991,7 +2995,7 @@ msgid ""
 msgstr ""
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:665
+#: data/core/macros/abilities.cfg:622
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -3000,12 +3004,12 @@ msgid ""
 msgstr ""
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:675
+#: data/core/macros/abilities.cfg:632
 msgid "slows"
 msgstr "aslæƿaþ"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:677
+#: data/core/macros/abilities.cfg:634
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -3015,12 +3019,12 @@ msgid ""
 msgstr ""
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:686
+#: data/core/macros/abilities.cfg:643
 msgid "petrifies"
 msgstr ""
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:688
+#: data/core/macros/abilities.cfg:645
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
@@ -3028,24 +3032,24 @@ msgid ""
 msgstr ""
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:697
+#: data/core/macros/abilities.cfg:654
 msgid "marksman"
 msgstr ""
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:699
+#: data/core/macros/abilities.cfg:656
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:724
+#: data/core/macros/abilities.cfg:681
 msgid "swarm"
 msgstr "sƿearm"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:726
+#: data/core/macros/abilities.cfg:683
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -3055,12 +3059,12 @@ msgid ""
 msgstr ""
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:735
+#: data/core/macros/abilities.cfg:692
 msgid "charge"
 msgstr ""
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:737
+#: data/core/macros/abilities.cfg:694
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
@@ -3068,12 +3072,12 @@ msgid ""
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:749
+#: data/core/macros/abilities.cfg:706
 msgid "drains"
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:751
+#: data/core/macros/abilities.cfg:708
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -3081,12 +3085,12 @@ msgid ""
 msgstr ""
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:771
+#: data/core/macros/abilities.cfg:728
 msgid "poison"
 msgstr "ator"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:773
+#: data/core/macros/abilities.cfg:730
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -3109,6 +3113,116 @@ msgstr ""
 #. [illuminated_time]: id=deep_underground_illum
 #: data/core/macros/schedules.cfg:102 data/core/macros/schedules.cfg:111
 msgid "Deep Underground"
+msgstr ""
+
+#. [time]: id=midnight_hour
+#: data/core/macros/schedules.cfg:179
+msgid "Midnight"
+msgstr ""
+
+#. [time]: id=second_watch_hour1
+#: data/core/macros/schedules.cfg:191
+msgid "Second Watch — First Hour"
+msgstr ""
+
+#. [time]: id=second_watch_hour2
+#: data/core/macros/schedules.cfg:203
+msgid "Second Watch — Second Hour"
+msgstr ""
+
+#. [time]: id=second_watch_hour3
+#: data/core/macros/schedules.cfg:215
+msgid "Second Watch — Third Hour"
+msgstr ""
+
+#. [time]: id=second_watch_hour4
+#: data/core/macros/schedules.cfg:227
+msgid "Second Watch — Fourth Hour"
+msgstr ""
+
+#. [time]: id=second_watch_hour5
+#: data/core/macros/schedules.cfg:239
+msgid "Second Watch — Fifth Hour"
+msgstr ""
+
+#. [time]: id=second_watch_hour6
+#: data/core/macros/schedules.cfg:251
+msgid "Second Watch — Sixth Hour"
+msgstr ""
+
+#. [time]: id=morning_hour1
+#: data/core/macros/schedules.cfg:274
+msgid "Morning — First Hour"
+msgstr ""
+
+#. [time]: id=morning_hour2
+#: data/core/macros/schedules.cfg:283
+msgid "Morning — Second Hour"
+msgstr ""
+
+#. [time]: id=morning_hour3
+#: data/core/macros/schedules.cfg:292
+msgid "Morning — Third Hour"
+msgstr ""
+
+#. [time]: id=morning_hour4
+#: data/core/macros/schedules.cfg:301
+msgid "Morning — Fourth Hour"
+msgstr ""
+
+#. [time]: id=midday_hour
+#: data/core/macros/schedules.cfg:310
+msgid "Midday"
+msgstr ""
+
+#. [time]: id=afternoon_hour1
+#: data/core/macros/schedules.cfg:319
+msgid "Afternoon — First Hour"
+msgstr ""
+
+#. [time]: id=afternoon_hour2
+#: data/core/macros/schedules.cfg:328
+msgid "Afternoon — Second Hour"
+msgstr ""
+
+#. [time]: id=afternoon_hour3
+#: data/core/macros/schedules.cfg:337
+msgid "Afternoon — Third Hour"
+msgstr ""
+
+#. [time]: id=afternoon_hour4
+#: data/core/macros/schedules.cfg:346
+msgid "Afternoon — Fourth Hour"
+msgstr ""
+
+#. [time]: id=afternoon_hour5
+#: data/core/macros/schedules.cfg:355
+msgid "Afternoon — Fifth Hour"
+msgstr ""
+
+#. [time]: id=afternoon_hour6
+#: data/core/macros/schedules.cfg:364
+msgid "Afternoon — Sixth Hour"
+msgstr ""
+
+#. [time]: id=first_watch_hour1
+#: data/core/macros/schedules.cfg:386
+msgid "First Watch — First Hour"
+msgstr ""
+
+#. [time]: id=first_watch_hour2
+#: data/core/macros/schedules.cfg:398
+msgid "First Watch — Second Hour"
+msgstr ""
+
+#. [time]: id=first_watch_hour3
+#: data/core/macros/schedules.cfg:410
+msgid "First Watch — Third Hour"
+msgstr ""
+
+#. [time]: id=first_watch_hour4
+#: data/core/macros/schedules.cfg:422
+msgid "First Watch — Fourth Hour"
 msgstr ""
 
 #: data/core/macros/special-notes.cfg:5

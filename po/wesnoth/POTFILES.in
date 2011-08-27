@@ -155,6 +155,7 @@ src/sdl_utils.cpp
 src/serialization/binary_or_text.cpp
 src/serialization/parser.cpp
 src/serialization/preprocessor.cpp
+src/serialization/schema_validator.cpp
 src/serialization/string_utils.cpp
 src/serialization/tokenizer.cpp
 src/serialization/validator.cpp
@@ -200,6 +201,7 @@ src/tools/schema/error_container.cpp
 src/tools/schema/schema_generator.cpp
 src/tools/schema/sourceparser.cpp
 src/tools/schema/tag.cpp
+src/tools/validator/validator_tool.cpp
 src/tooltips.cpp
 src/tstring.cpp
 src/unit_abilities.cpp
@@ -220,7 +222,7 @@ src/whiteboard/action.cpp
 src/whiteboard/attack.cpp
 src/whiteboard/highlight_visitor.cpp
 src/whiteboard/manager.cpp
-src/whiteboard/mapbuilder_visitor.cpp
+src/whiteboard/mapbuilder.cpp
 src/whiteboard/move.cpp
 src/whiteboard/recall.cpp
 src/whiteboard/recruit.cpp

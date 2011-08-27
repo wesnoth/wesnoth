@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-10 11:40+0200\n"
+"POT-Creation-Date: 2011-08-27 10:14+0200\n"
 "PO-Revision-Date: 2010-08-16 11:57+0700\n"
 "Last-Translator: Yuris <Yuris_Wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -24,17 +24,21 @@ msgid "4p — A New Land"
 msgstr "4p — Daerah yang baru"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:7
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
+#, fuzzy
+#| msgid ""
+#| "This 4p survival scenario allows you to construct buildings and terraform "
+#| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
-"the land. Use map settings. Recommended starting gold=100."
+"the land. Use map settings. The recommended starting gold is 100."
 msgstr ""
 "4P Skenario Survival ini mengijinkan kamu untuk membangun bangunan dan "
 "terraform pada daratan. Gunakan pengaturan peta. direkomendasikan mulai dari "
 "emas=100."
 
 #. [part]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:25
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
 msgid ""
 "In the aftermath of the great war the remnants of humanity fled to an "
 "obscure secluded glen. Though they knew they could not hide from the mighty "
@@ -49,34 +53,34 @@ msgstr ""
 "perang mereka."
 
 #. [objectives]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:33
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:32
 msgid "Right-click on your leader during your turn for help"
 msgstr "Klik Kanan pada pemimpin mu sewaktu giliran mu untuk bantuan"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:35
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
 msgid "You must survive until turn 25."
 msgstr "Anda harus bertahan hingga giliran ke 25"
 
 #. [side]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:52
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:67
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:82
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:97
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:51
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:66
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:81
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:96
 msgid "teamname^Team 1"
 msgstr "Team 1"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:115
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:142
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:169
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:196
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:114
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:141
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:168
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:195
 msgid "teamname^Team 2"
 msgstr "Team 2"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:400
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:407
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
@@ -84,7 +88,7 @@ msgstr ""
 "berkurang 10 sekarang."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:420
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:430
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
@@ -92,7 +96,7 @@ msgstr ""
 "berkurang 10 sekarang."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:440
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:453
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
@@ -100,7 +104,7 @@ msgstr ""
 "berkurang 10 sekarang."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:460
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:476
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
@@ -108,7 +112,7 @@ msgstr ""
 "berkurang 10 sekarang."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:552
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:585
 msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
@@ -117,7 +121,7 @@ msgstr ""
 "dan selatan."
 
 #. [message]: type=Peasant
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:558
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:591
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "them?"
@@ -126,7 +130,7 @@ msgstr ""
 "sarang laba-laba. Tidakkah lebih baik kita menolongnya? "
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:570
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:613
 msgid ""
 "Move any unit next to these captives and they will join your side. The "
 "spiders guarding each captive are currently wounded, the sooner you get "
@@ -138,7 +142,7 @@ msgstr ""
 "kesempatanmu untuk membunuh laba-laba itu."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:581
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:625
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
@@ -146,7 +150,7 @@ msgstr ""
 "berada di  timur dan barat."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:587
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:631
 msgid ""
 "It would seem the enemy has built some underground mushroom mines nearby — "
 "it must be where the mainstay of their resources are produced. If we could "
@@ -157,7 +161,7 @@ msgstr ""
 "kita bisa menghancurkan mereka kesempatan kita untuk menang semakin terbuka."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:599
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:653
 msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy’s income by 10."
@@ -166,12 +170,12 @@ msgstr ""
 "setiap tambang yang kamu hancurkan akan mengurangi 10 pendapatan musuh."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:611
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:666
 msgid "This battle is nearly at an end. Victory is close at hand!"
 msgstr "peperangan ini akan kita menangkan. Kemenangan sudah di depan mata!"
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:622
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:678
 msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
@@ -180,35 +184,35 @@ msgstr ""
 "berbalik, kemenangan milik kami sekarang!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:626
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:682
 msgid "You have won the game, but you may continue if you wish..."
 msgstr ""
 "Anda telah memenangkan permainan, tetapi anda dapat bermain lagi jika anda "
 "menginginkan ..."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:641
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:698
 msgid "I have fallen, but all is not lost!"
 msgstr "Aku telah kalah, tetapi ini bukanlah kekalahan total!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:653
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:711
 msgid "I am done for, but we have yet to lose this battle!"
 msgstr ""
 "Aku telah kalah, tetapi bukan berarti kami kalah dalam pertempuran ini!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:665
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:724
 msgid "Comrades, avenge me!"
 msgstr "Teman, balaskan dendam ku!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:677
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:737
 msgid "Do not fear, there is hope for us still!"
 msgstr "Jangan Takut, masih ada harapan bagi kita!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:73
+#: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:34
 msgid "The chest contains $oc_treasure gold."
 msgstr "Peti berisi $oc_treasure emas."
 
@@ -220,7 +224,7 @@ msgstr "Kembali ke menu"
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:114
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:125
 msgid "Peasants"
 msgstr "Para Petani"
 
@@ -238,7 +242,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:27
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:121
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:132
 msgid "Mages"
 msgstr "Para penyihir"
 
@@ -255,7 +259,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:37
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:128
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:139
 msgid "Farms"
 msgstr "Perkebunan"
 
@@ -272,7 +276,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:47
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:135
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:146
 msgid "Villages"
 msgstr "Pedesaan"
 
@@ -290,7 +294,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:57
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:142
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:153
 msgid "Mines"
 msgstr "Tambang-tambang"
 
@@ -306,7 +310,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:67
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:149
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:160
 msgid "Universities"
 msgstr "Universitas"
 
@@ -327,8 +331,8 @@ msgstr ""
 #. [option]: speaker=narrator
 #. [set_menu_item]: id=anl_diplomacy
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:77
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:156
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:135
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:167
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
 msgid "Diplomacy"
 msgstr "Diplomasi"
 
@@ -347,29 +351,29 @@ msgid "Help"
 msgstr "Bantuan"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:103
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:111
 msgid "A New Land — Help"
 msgstr "Daerah yang baru - Bantuan"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:104
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
 msgid "Select a topic."
 msgstr "Pilih Topik"
 
 #. [option]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:107
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:115
 msgid "Done"
 msgstr "Selesai"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:19
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:47
 msgid "I hereby donate 20 gold to the coffers of $df_player_name|."
 msgstr ""
 "Aku dengan ini mendermakan 20 emas kepada peti simpanan milik "
 "$df_player_name|."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:59
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:100
 msgid ""
 "$sf_player_name|, since our wisdom exceeds yours I have instructed my "
 "scholars to further your understanding of agriculture."
@@ -378,7 +382,7 @@ msgstr ""
 "ku untuk mendalami pemahaman tentang masalah pertanian."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:91
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:138
 msgid ""
 "$sm_player_name|, since the wisdom of my people exceeds yours I have "
 "instructed my scholars to aid you in your efforts to learn the science of "
@@ -388,7 +392,7 @@ msgstr ""
 "ku untuk membantu usaha mu untuk belajar ilmu pengetahuan menambang."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:123
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:183
 msgid ""
 "You know worryingly little about the arts of war, $sw_player_name|. I feel "
 "an obligation to instruct you in this vital matter."
@@ -398,7 +402,7 @@ msgstr ""
 "berperang."
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:189
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
 #, fuzzy
 #| msgid ""
 #| "$player_name\n"
@@ -411,7 +415,7 @@ msgstr ""
 "Mengajarkan pengetahuan tentang pertanian"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:196
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
 #, fuzzy
 #| msgid ""
 #| "$player_name\n"
@@ -424,7 +428,7 @@ msgstr ""
 "Mengajarkan pengetahuan tentang cara menambang"
 
 #. [set_variable]
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:203
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
 #, fuzzy
 #| msgid ""
 #| "$player_name\n"
@@ -437,25 +441,25 @@ msgstr ""
 "Mengajarkan cara berperang"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:220
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:246
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:279
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:293
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:330
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:374
 msgid "Diplomatic Options"
 msgstr "Pilihan Diplomasi"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:223
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:296
 msgid "What shall I do?"
 msgstr "Apa yang harus ku lakukan?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:229
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:47
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:302
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:54
 msgid "Nothing"
 msgstr "Tidak Ada"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:239
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:315
 #, fuzzy
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
@@ -465,18 +469,18 @@ msgstr ""
 "Memberikan 20 emas kepada pemain lainnya"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:249
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:333
 msgid "Who will you donate funds to?"
 msgstr "Kepada siapa kamu akan mendermakan danamu?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:252
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:285
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:336
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:380
 msgid "Back"
 msgstr "Kembali"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:272
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:359
 #, fuzzy
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
@@ -486,12 +490,12 @@ msgstr ""
 "Bantu mengembangkan penelitian Sekutu "
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:282
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:377
 msgid "Who will you share knowledge with?"
 msgstr "Kepada siapa kamu ingin membagi pengetahuanmu?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:319
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:417
 #, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
@@ -505,7 +509,7 @@ msgstr ""
 "$player_$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:345
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:472
 #, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
@@ -519,13 +523,13 @@ msgstr ""
 "$player_$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:378
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:402
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:538
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:570
 msgid "Negotiation Complete"
 msgstr "Negosiasi Selesai"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:381
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:541
 msgid ""
 "Our talks are complete — the Dwarves will gladly fight by your side. Which "
 "of our brethren do you want to recruit?"
@@ -534,7 +538,7 @@ msgstr ""
 "dipihak kita. Jenis Dwarf apakah yang ingin anda rekrut?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:405
+#: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:573
 msgid ""
 "Our talks are complete — the Elves shall aid you in this battle. Which our "
 "of kin do you wish to recruit?"
@@ -543,36 +547,36 @@ msgstr ""
 "Jenis Elf apakah yang ingin anda rekrut?"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:9
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:34
 msgid "Choose New Recruit"
 msgstr "Memilih untuk Merekrut yang baru"
 
 #. [message]: speaker=unit
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:33
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:214
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:231
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:247
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:62
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:245
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:277
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:304
 msgid "Study Complete"
 msgstr "Pelajaran Selesai"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:35
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:64
 msgid "Which type of unit would you like to be able to recruit?"
 msgstr "Unit jenis apakah yang ingin anda rekrut?"
 
 #. [set_menu_item]: id=anl_oversee_research
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:56
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:89
 msgid "Oversee Research"
 msgstr "Mengatur Riset"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:95
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:138
 msgid "Research"
 msgstr "Penelitian"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:101
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:144
 msgid ""
 "We are currently studying $player_$side_number|.research."
 "target_language_name|. To which end would you have our scholars devote their "
@@ -588,12 +592,12 @@ msgstr ""
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:105
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
 msgid "Continue as before"
 msgstr "Melanjutkan seperti sebelumnya"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:117
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:167
 #, fuzzy
 #| msgid ""
 #| "Agriculture\n"
@@ -613,13 +617,13 @@ msgstr ""
 
 #. [command]
 #. [research]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:120
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:84
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:169
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:102
 msgid "agriculture"
 msgstr "pertanian"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:132
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
 #, fuzzy
 msgid ""
 "<span color='green'>Mining</span>\n"
@@ -633,12 +637,12 @@ msgstr ""
 "$side_number|.mining.target"
 
 #. [command]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:135
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:180
 msgid "mining"
 msgstr "menambang"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:147
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:189
 #, fuzzy
 msgid ""
 "<span color='green'>Warfare</span>\n"
@@ -652,12 +656,12 @@ msgstr ""
 "$side_number|.warfare.target"
 
 #. [command]
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:172
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:198
 msgid "warfare"
 msgstr "peperangan"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:216
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:247
 msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
@@ -666,7 +670,7 @@ msgstr ""
 "farming.gold gold."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:233
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:279
 msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
@@ -675,7 +679,7 @@ msgstr ""
 "mining.gold gold."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:249
+#: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:306
 msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
@@ -685,12 +689,12 @@ msgstr ""
 "ingin direkrut."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:158
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:197
 msgid "Let’s cut you free!"
 msgstr "Mari kita memotong dengan cuma-cuma!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:162
+#: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:201
 msgid "You release the creature from the web and it agrees to help you."
 msgstr ""
 "Kamu melepaskan suatu makhluk dari web dan ia setuju untuk membantu kamu."
@@ -701,156 +705,156 @@ msgid "Get to Work!"
 msgstr "Dapatkan Pekerjaan!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:43
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:50
 msgid "What shall I do my liege?"
 msgstr "Apa yang  harus aku lakukan liege ku?"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:59
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
 msgid "Convert to Grassland"
 msgstr "Konversi ke Padang rumput"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:59
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:74
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:266
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:402
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:352
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:547
 msgid "Cost: 0g"
 msgstr "Harga: 0 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:74
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
 msgid "Plant Farm"
 msgstr " Kebun Tanaman"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:100
 msgid "Build Village"
 msgstr "Membangun Desa"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:86
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:100
 msgid "Cost: 15g"
 msgstr "Harga: 15 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:104
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:122
 msgid "Build Castle"
 msgstr "Membangun Istana"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:104
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:361
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:122
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:498
 msgid "Cost: 6g"
 msgstr "Harga: 6 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:121
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:143
 msgid "Cost: 4g"
 msgstr "Harga: 4 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:121
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:143
 msgid "Flood the Field"
 msgstr "Bidang Air"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:138
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:281
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:166
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:375
 msgid "Cost: 1g"
 msgstr "Harga: 1 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:138
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:166
 msgid "Plant Saplings"
 msgstr "Tanamlah Pohon-pohon muda"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:158
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:192
 msgid "Chop Down Forest"
 msgstr "Menebang Hutan"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:158
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:192
 msgid "Earns: 1g"
 msgstr "Dapat: 1 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:185
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:206
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:272
 msgid "Build Mine"
 msgstr "Membangun Tambang"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:185
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:206
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:247
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:272
 msgid "Cost: 25g"
 msgstr "Harga: 25 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:227
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:319
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:297
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:427
 msgid "Cost: 3g"
 msgstr "Harga: 3 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:227
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:297
 msgid "Make a Ford"
 msgstr "Mengarungi sungai"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:245
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:323
 msgid "Cost: 5g"
 msgstr "Harga: 5 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:245
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:281
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:323
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:375
 msgid "Landfill"
 msgstr "Daratan"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:266
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:352
 msgid "Destroy the Ford"
 msgstr "Hancurkan Arungan yang digunakan untuk menyebrangi sungai"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:302
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
 msgid "Cost: 2g"
 msgstr "Harga: 2 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:302
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:319
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:404
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:427
 msgid "Smash Cave Floor"
 msgstr "Mendobrak Lantai Gua"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:450
 msgid "Earns: 3g"
 msgstr "Dapat: 3 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:336
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:450
 msgid "Harvest Mushrooms"
 msgstr "Panenan Jamur"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:361
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:498
 msgid "Build a Keep"
 msgstr "Membangun Benteng"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:381
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:522
 msgid "Cost: 7g"
 msgstr "Harga: 7 Emas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:381
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:522
 msgid "Establish University"
 msgstr "Menetapkan Universitas"
 
 #. [option]: speaker=unit
-#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:402
+#: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:547
 msgid "Clear the Ground"
 msgstr "Membersihkan Daratan"
