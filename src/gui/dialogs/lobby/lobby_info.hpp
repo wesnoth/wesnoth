@@ -78,7 +78,6 @@ public:
 	const std::vector<game_info*>& games() const { return games_; }
 	const std::vector<bool>& games_visibility() const { return games_visibility_; }
 	const std::vector<game_info*>& games_filtered() const;
-	int games_shown_count() const;
 	const std::vector<user_info>& users() const { return users_; }
 	const std::vector<user_info*>& users_sorted() const;
 private:

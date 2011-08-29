@@ -280,11 +280,6 @@ const std::vector<game_info*>& lobby_info::games_filtered() const
 	return games_filtered_;
 }
 
-int lobby_info::games_shown_count() const
-{
-	return std::count(games_visibility_.begin(), games_visibility_.end(), true);
-}
-
 void lobby_info::add_game_filter(game_filter_base *f)
 {
 	game_filter_.append(f);
