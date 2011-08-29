@@ -181,7 +181,7 @@ void parser::parse_element()
 									 tok_->get_file(),true);
 			}
 		} else {
-			current_element = &elements.top().cfg->add_child(elname);	
+			current_element = &elements.top().cfg->add_child(elname);
 			if (validator_){
 				validator_->open_tag(elname,tok_->get_start_line(),
 									 tok_->get_file());

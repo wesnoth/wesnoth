@@ -414,7 +414,7 @@ public:
 
 	///Checks invariants.  For debugging purposes only.  Doesn't do anything in non-debug mode.
 	bool self_check() const
-#ifndef DEBUG 
+#ifndef DEBUG
 	{ return true; }
 #endif
 	;
