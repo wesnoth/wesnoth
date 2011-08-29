@@ -289,8 +289,8 @@ public:
 			return;
 		}
 
-		int i = 0;///@todo replace with precached data
 		if(resources::units) {
+			int i = 0;///@todo replace with precached data
 			for(unit_map::iterator u = resources::units->begin()
 					; u != resources::units->end()
 					; ++u) {
