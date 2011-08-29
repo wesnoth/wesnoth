@@ -110,7 +110,6 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 			m_aggression = ai_obj.get_leader_aggression();
 		}
 
-		int att_weapon = -1, def_weapon = -1;
 		bool from_cache = false;
 		battle_context *bc;
 
@@ -131,7 +130,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 			from_cache = true;
 			bc = new battle_context(usc->second.first, usc->second.second);
 		} else {
-			bc = new battle_context(units, m->second, target, att_weapon, def_weapon, m_aggression, prev_def);
+			bc = new battle_context(units, m->second, target, -1, -1, m_aggression, prev_def);
 		}
 		const combatant &att = bc->get_attacker_combatant(prev_def);
 		const combatant &def = bc->get_defender_combatant(prev_def);
