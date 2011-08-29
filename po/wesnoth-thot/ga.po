@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-08-27 10:14+0200\n"
-"PO-Revision-Date: 2011-06-06 17:28-0800\n"
+"PO-Revision-Date: 2011-08-22 18:44-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -23,12 +23,12 @@ msgstr ""
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
 msgid "The Hammer of Thursagan"
-msgstr "An Ord na Dhúrsagain"
+msgstr "An t-Ord Thúrsagain"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:12
 msgid "THoT"
-msgstr "AOnD"
+msgstr "AtOT"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:17
@@ -63,7 +63,7 @@ msgstr "Tiarna"
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:23
 msgid "(Intermediate level, 11 scenarios.)"
-msgstr "(Leibhéal Meánach, 10 misin.)"
+msgstr "(Leibhéal Meánach, 11 misin.)"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:23
@@ -82,9 +82,8 @@ msgstr "Údar"
 
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:32
-#, fuzzy
 msgid "Special Guest Designer"
-msgstr "Socraigh orduithe speisialta"
+msgstr "Dearthóir Aoi Speisialta"
 
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:38
@@ -94,12 +93,12 @@ msgstr "Ealaín"
 #. [about]
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:47
 msgid "Brainstorming, playtesting, and spousal support"
-msgstr ""
+msgstr "Ransú smaointe, tástáil, agus tacaíocht chéile"
 
 #. [scenario]: id=01_At_the_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:3
 msgid "At the East Gate"
-msgstr "Ag an Geata Oirthearach"
+msgstr "Ag an nGeata Oirthearach"
 
 #. [label]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:22
@@ -130,7 +129,7 @@ msgstr "Geata Oirthearach"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:34
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:35
 msgid "Alliance"
-msgstr "Cairdeas"
+msgstr "Comhaontas"
 
 #. [side]: type=Dwarvish Fighter, id=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:43
@@ -146,7 +145,7 @@ msgstr "Cairdeas"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:30
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:15
 msgid "Aiglondur"
-msgstr "Aglondur"
+msgstr "Aglondúr"
 
 #. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Malgar
@@ -168,7 +167,7 @@ msgstr "Oirc"
 #. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:67
 msgid "Bashnark"
-msgstr "Bashnark"
+msgstr "Baisnearc"
 
 #. [unit]: type=Gryphon Rider, id=Pelmathidrol
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:86
@@ -178,7 +177,7 @@ msgstr "Pealmaithidreol"
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:99
 msgid "Defeat Bashnark"
-msgstr "Buaigh ar Bashnark"
+msgstr "Buaigh ar Baisnearc"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:103
@@ -194,7 +193,7 @@ msgstr "Buaigh ar Bashnark"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:159
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:421
 msgid "Death of Aiglondur"
-msgstr "Bás ar Aglondur"
+msgstr "Bás Aglondúir"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:120
@@ -233,10 +232,11 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:153
+#, fuzzy
 msgid ""
 "What is this? Their vanquished leader wears a cloak-pin of dwarvish make. "
 "And it bears a loremaster’s emblem."
-msgstr ""
+msgstr "Cad é seo? Caitheann a gceannasaí cloíte "
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:157
@@ -246,7 +246,7 @@ msgstr ""
 #. [scenario]: id=02_Reclaiming_the_Past
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:3
 msgid "Reclaiming the Past"
-msgstr ""
+msgstr "An t-Am atá Caite á Mhíntíriú"
 
 #. [side]: type=Dwarvish Fighter, id=Aiglondur
 #. [side]: type=Dwarvish Lord, id=Hamel
@@ -305,7 +305,7 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:124
 msgid "The Hammer of Thursagan?"
-msgstr "An Ord na Dhúrsagain?"
+msgstr "An t-Ord Thúrsagain?"
 
 #. [message]: speaker=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:128
@@ -358,7 +358,7 @@ msgstr ""
 #. [message]: speaker=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:152
 msgid "And ye found something?"
-msgstr ""
+msgstr "An bhfuair sibh rud éigin?"
 
 #. [message]: speaker=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:156
@@ -419,7 +419,7 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:188
 msgid "Your great-nephew, my lord."
-msgstr ""
+msgstr "Is mise do gharnia, a thiarna."
 
 #. [message]: speaker=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:192
@@ -432,12 +432,12 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:196
 msgid "Aye, my Lord Hamel."
-msgstr "Sea, mo Thiarna Hámal."
+msgstr "Sea, a Thiarna Hámal."
 
 #. [message]: speaker=Angarthing_dummy
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:200
 msgid "The Order thanks you, Lord Hamel"
-msgstr ""
+msgstr "Tugann an t-Ord Rialta buíochas leat, a Thiarna Hámal."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:204
@@ -449,7 +449,7 @@ msgstr ""
 #. [scenario]: id=03_Strange_Allies
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:3
 msgid "Strange Allies"
-msgstr "Comhghuaillithe Aduain"
+msgstr "Comhghuaillithe Aisteacha"
 
 #. [side]: type=Orcish Warrior, id=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:44
@@ -477,8 +477,9 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:163
+#, fuzzy
 msgid "Help Marth-Tak defeat Gothras"
-msgstr ""
+msgstr "Cabhraigh le Marth-Tak buachan ar Gothras"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:171
@@ -503,7 +504,7 @@ msgstr "Bás Marth-Tac"
 #. [message]: speaker=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:192
 msgid "In the name of the Alliance, quit these lands now!"
-msgstr ""
+msgstr "In ainm Comhaontais, fág an tíortha seo anois!"
 
 #. [message]: speaker=Gothras
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:196
@@ -530,28 +531,27 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:208
 msgid "You, on the road! Are you of the Northern Alliance or not?"
 msgstr ""
+"Hóigh! Sibhse, ar an tsráid! An bhfuil sibh i leith Chomhaontas an Tuaiscirt?"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:212
-#, fuzzy
 msgid "We are."
-msgstr "E-sial"
+msgstr "Tá."
 
 #. [message]: speaker=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:216
 msgid "Well, then, honor the treaty as I have."
-msgstr ""
+msgstr "Bhuel, géilligí don chonradh, mar sin, mar a ghéill mise cheana."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:220
-#, fuzzy
 msgid "That is our duty."
-msgstr "Tá seo blaosc neamhchumasach!"
+msgstr "Is é sin ár ndualgas."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:224
 msgid "For the Alliance! Axes up!"
-msgstr "An son Cairdeas! Tuanna suas!"
+msgstr "Ar son an Chomhaontais! Tuanna suas!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:236
@@ -560,10 +560,11 @@ msgstr ""
 
 #. [message]: speaker=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:257
+#, fuzzy
 msgid ""
 "My thanks, dwarves. These bandits might have hacked a bloody swathe through "
 "the Alliance’s tribes if we had not killed them here."
-msgstr ""
+msgstr "Go raibh maith agaibh, a abhaic."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:262
@@ -576,6 +577,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:267
 msgid "East, eh? You won’t find many friends in that direction. Travel safely."
 msgstr ""
+"Soir? Ní gheobhaidh sibh cairde san treo sin. Go n-eirí an bóthar libh."
 
 #. [scenario]: id=04_Troll_Bridge
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:3
@@ -603,7 +605,7 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:99
 msgid "Hey! That troll was sitting on some treasure!"
-msgstr ""
+msgstr "Hórú! Bhí an troll seo ina sheasamh ar rionnt stóir!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:122
@@ -613,12 +615,12 @@ msgstr "Buaigh ar Gronk"
 #. [message]: speaker=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:149
 msgid "Dis a troll bridge. You pay toll. Er..."
-msgstr ""
+msgstr "Seo é droichead troill. Íoc dola. Er..."
 
 #. [message]: speaker=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:153
 msgid "Dat not right. Dis a toll bridge. You pay troll. Er..."
-msgstr ""
+msgstr "Níl ceart agam. Seo é droichead dola. Íoc troll. Er..."
 
 #. [message]: speaker=Gronk
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:157
@@ -648,7 +650,7 @@ msgstr "Ionróirí"
 #. [label]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:21
 msgid "Ruined Castle"
-msgstr "Caisléan ina Bhfothracha"
+msgstr "Caisléan ina Fhothrach"
 
 #. [part]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:27
@@ -675,7 +677,7 @@ msgstr "Tan-Uthkar"
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:275
 msgid "The villagers are attacking us!"
-msgstr "Tá na sráidéanaigh dár n-ionsaí!"
+msgstr "Tá na sráidéanaigh d'ár n-ionsaí!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:285
@@ -691,7 +693,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:343
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:215
 msgid "Defeat all enemies"
-msgstr "Buaigh ar na naimhde go leír"
+msgstr "Buaigh ar na naimhde go léir"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:368
@@ -729,7 +731,7 @@ msgstr ""
 #. [message]: speaker=Tan-Malgar
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:389
 msgid "Be silent. We are orc warriors; we do not flee foes."
-msgstr ""
+msgstr "Dún bhur mbéil! Is laochra orcacha sinn; ní theithimid roimh naimhde."
 
 #. [message]: speaker=Tan-Uthkar
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:393
@@ -739,7 +741,7 @@ msgstr ""
 #. [scenario]: id=06_High_Pass
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:3
 msgid "High Pass"
-msgstr "Ard Altán"
+msgstr "Bearnas Ard"
 
 #. [side]: type=Gryphon, id=Kaara
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:49
@@ -856,9 +858,8 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:344
-#, fuzzy
 msgid "We’re through the pass!"
-msgstr "Táimid beagnach ann!"
+msgstr "Táimid trasna an bearnas!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:349
@@ -877,12 +878,12 @@ msgstr ""
 #. [scenario]: id=07_Mages_and_Drakes
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:3
 msgid "Mages and Drakes"
-msgstr "Asarlaithe agus Dragain"
+msgstr "Asarlaithe agus Dragúinín"
 
 #. [side]: type=Great Mage, id=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:43
 msgid "Master Perrin"
-msgstr "Màistir Peirin"
+msgstr "Máistir Peirin"
 
 #. [side]: type=Drake Flameheart, id=Glashal
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:63
@@ -961,9 +962,8 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:186
-#, fuzzy
 msgid "What sort of thing?"
-msgstr "Hmm, cad é an rud seo?"
+msgstr "Cén sórt ruda?"
 
 #. [message]: speaker=Master Perrin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:191
@@ -1055,7 +1055,7 @@ msgstr "Eagla"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:211
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:224
 msgid "Masked Dwarf"
-msgstr "Masc-Abhaic"
+msgstr "Abhac Masctha"
 
 #. [side]: type=Dwarvish Rune Lord, id=Karrag
 #. [side]: type=Dwarvish Masked Steelclad, id=Dufon
@@ -1079,7 +1079,7 @@ msgstr "Olc"
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:120
 msgid "Find the inhabitants"
-msgstr "Faigh na daoine"
+msgstr "Faigh na háotritheoir"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:153
@@ -1121,7 +1121,7 @@ msgstr "Oillin"
 #. [message]: speaker=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:216
 msgid "Don’t kill me, masters! Please don’t kill me!"
-msgstr ""
+msgstr "Ná maraígí mé, a mháistrí! Ná maraígí mé!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:220
@@ -1131,18 +1131,18 @@ msgstr ""
 #. [message]: speaker=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:224
 msgid "You wear no mask. You... you’re not with them?"
-msgstr ""
+msgstr "Ní chaitheann tú masc. Nach... nach bhfuil sibh leo?"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:228
-#, fuzzy
 msgid "What are you talking about?"
-msgstr "Cé faoin spéir atá ann?"
+msgstr "Cad faoi a bhfuil tú ag caint?"
 
 #. [message]: speaker=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:232
 msgid "The masked dwarves. Killing, burning, kidnapping. Look..."
 msgstr ""
+"Na habhaic masctha. Maraíonn siad, dónn siad agus fuadaíonn siad. Féach..."
 
 #. [message]: speaker=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:253
@@ -1153,8 +1153,9 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:257
+#, fuzzy
 msgid "He is here. How has he wronged your master, that you seek his death?"
-msgstr ""
+msgstr "Tá sé anseo."
 
 #. [message]: speaker=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:261
@@ -1170,7 +1171,7 @@ msgid ""
 "What is your name, masked one? Will you stand behind your deed? I am a "
 "witness."
 msgstr ""
-"Cad is ainm duit, a dhuine faoi masc? Will you stand behind your deed? Is "
+"Cad is ainm duit, a thé masctha? Will you stand behind your deed? Is "
 "breitheamh mé."
 
 #. [message]: speaker=Masked Dwarf Leader
@@ -1208,7 +1209,7 @@ msgstr "Tuanna suas!"
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:293
 msgid "Defeat the Masked Dwarf"
-msgstr "Buaigh ar an Abhac faoi Masc"
+msgstr "Buaigh ar an Abhac Masctha"
 
 #. [message]: speaker=Ollin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:322
@@ -1217,9 +1218,8 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:330
-#, fuzzy
 msgid "They are defeated"
-msgstr "Tá siad dár n-ionsaí!"
+msgstr "Tá siad cloíte."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:334
@@ -1250,21 +1250,21 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:350
+#, fuzzy
 msgid ""
 "They were seeking captives. To what purpose, I cannot say. But I doubt it "
 "was any good one."
-msgstr ""
+msgstr "Bhí cimí a chuardach acu."
 
 #. [scenario]: id=09_Forbidden_Forest
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:3
-#, fuzzy
 msgid "Forbidden Forest"
-msgstr "Foraois Teocreasach"
+msgstr "Coill Chrosta"
 
 #. [side]: type=Elvish High Lord, id=Telcherion
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:122
 msgid "Telcherion"
-msgstr ""
+msgstr "Telcherion"
 
 #. [side]: type=Elvish High Lord, id=Telcherion
 #. [side]: type=Elvish Enchantress, id=Iluvarda
@@ -1278,7 +1278,7 @@ msgstr "Foraois"
 #. [side]: type=Elvish Enchantress, id=Iluvarda
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:147
 msgid "Iluvarda"
-msgstr ""
+msgstr "Iluvarda"
 
 #. [side]: type=Ancient Wose, id=Burumardir-Athelorand
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:170
@@ -1297,8 +1297,9 @@ msgstr "Ealúirin"
 
 #. [message]: speaker=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:264
+#, fuzzy
 msgid "Who disturbs our forest?"
-msgstr ""
+msgstr "Cé a"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:269
@@ -1318,12 +1319,12 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:279
 msgid "No. We have our duty. We must pass."
-msgstr ""
+msgstr "Ní bheimid. Tá ár ndualgas againn. Tá orainn scoitheadh."
 
 #. [message]: speaker=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:284
 msgid "You shall not pass here."
-msgstr ""
+msgstr "Ní bheidh sibh scoitheadh anseo."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:289
@@ -1352,9 +1353,8 @@ msgstr ""
 
 #. [scenario]: id=10_The_Siege_of_Kal_Kartha
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:3
-#, fuzzy
 msgid "The Siege of Kal Kartha"
-msgstr "4i — Caisleáin Léigir"
+msgstr "An Léigear Chal Cárta"
 
 #. [unit]: type=Dwarvish Steelclad, id=Dulcatulos
 #. [side]: type=Dwarvish Steelclad, id=Dulcatulos
@@ -1381,12 +1381,12 @@ msgstr "Tan-Vagran"
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:227
 msgid "Death of West Gate commander"
-msgstr ""
+msgstr "Bás ceannasaí Gheata Iartharach"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:246
 msgid "Behold! The West Gate of Kal Kartha!"
-msgstr ""
+msgstr "Féach! Geata Iartharach an Chal Cárta!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:250
@@ -1472,9 +1472,8 @@ msgstr ""
 
 #. [scenario]: id=11_The_Court_of_Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:3
-#, fuzzy
 msgid "The Court of Karrag"
-msgstr "Buaigh ar Carraig"
+msgstr "An Chúirt Charraig"
 
 #. [side]: type=Dwarvish Rune Lord, id=Karrag
 #. [unit]: type=Lich, id=Karrag
@@ -1482,20 +1481,20 @@ msgstr "Buaigh ar Carraig"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:264
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:47
 msgid "Karrag"
-msgstr "Carraig"
+msgstr "Carrag"
 
 #. [side]: type=Dwarvish Rune Lord, id=Karrag
 #. [side]
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:54
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:75
 msgid "Kal Karthans"
-msgstr ""
+msgstr "Cal Cártanaigh"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:155
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:417
 msgid "Defeat Karrag"
-msgstr "Buaigh ar Carraig"
+msgstr "Buaigh ar Carrag"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:184
@@ -1516,10 +1515,11 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:199
+#, fuzzy
 msgid ""
 "We are from Knalga; your clans are kin to ours of old. We but did our duty "
 "to kin."
-msgstr ""
+msgstr "Is as Knalga sinn; "
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:204
@@ -1649,7 +1649,7 @@ msgstr ""
 #. [scenario]: id=12_The_Underlevels
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:8
 msgid "The Underlevels"
-msgstr ""
+msgstr "An t-Íosclach Mór"
 
 #. [side]: type=Lich, id=Fleleen
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:136
@@ -1708,14 +1708,13 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:429
-#, fuzzy
 msgid "Death of Dulcatulos"
-msgstr "Bás Leaganot"
+msgstr "Bás Dhulcatulois"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:451
 msgid "This place smells of death."
-msgstr ""
+msgstr "Tá boladh báis uaidh anseo."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:456
@@ -1755,7 +1754,7 @@ msgstr ""
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:486
 msgid "Those are war-drums!"
-msgstr ""
+msgstr "Siúd iad drumaí cogaidh!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:491
@@ -1799,7 +1798,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:600
 msgid "There we go... faugh, what is that smell!"
-msgstr ""
+msgstr "Tá go maith... fó! Cad atá an drochbholadh sin?"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:637
@@ -1845,7 +1844,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:773
 msgid "150 gold pieces. This should help."
-msgstr ""
+msgstr "150 píosa óir atá ann."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:794
@@ -2039,7 +2038,7 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:142
 msgid "I am he. Speak your message."
-msgstr ""
+msgstr "Is mise é. Tabhair do theachtaireacht dom."
 
 #. [message]: speaker=Pelias
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/13_Epilogue.cfg:148
@@ -2107,7 +2106,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:42
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:44
 msgid "morningstar"
-msgstr ""
+msgstr "súiste iarainn"
 
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:116
@@ -2135,22 +2134,22 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Masked Dragonguard
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:7
 msgid "Dwarvish Masked Dragonguard"
-msgstr "Dragún Abhcach faoi Masc"
+msgstr "Dragún Abhcach Masctha"
 
 #. [unit_type]: id=Dwarvish Masked Fighter
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:7
 msgid "Dwarvish Masked Fighter"
-msgstr "Trodaí Abhcach faoi Masc"
+msgstr "Trodaí Abhcach Masctha"
 
 #. [unit_type]: id=Dwarvish Masked Guardsman
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardian.cfg:7
 msgid "Dwarvish Masked Guardsman"
-msgstr "Garda Abhcach faoi Masc"
+msgstr "Garda Abhcach Masctha"
 
 #. [unit_type]: id=Dwarvish Masked Lord
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:7
 msgid "Dwarvish Masked Lord"
-msgstr "Tiarna Abhcach faoi Masc"
+msgstr "Tiarna Abhcach Masctha"
 
 #. [unit_type]: id=Dwarvish Masked Lord
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:9
@@ -2167,40 +2166,43 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Masked Sentinel
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:7
 msgid "Dwarvish Masked Sentinel"
-msgstr "Fairtheoir Abhcach faoi Masc"
+msgstr "Fairtheoir Abhcach Masctha"
 
 #. [unit_type]: id=Dwarvish Masked Stalwart
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:7
 msgid "Dwarvish Masked Stalwart"
-msgstr "Abhac Urrúnta faoi Masc"
+msgstr "Abhac Urrúnta Masctha"
 
 #. [unit_type]: id=Dwarvish Masked Steelclad
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:7
 msgid "Dwarvish Masked Steelclad"
-msgstr "Abhac Cumhdach Cruach faoi Masc"
+msgstr "Abhac Cumhdach Cruach Masctha"
 
 #. [unit_type]: id=Dwarvish Masked Steelclad
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:11
+#, fuzzy
 msgid ""
 "More experienced Dwarvish fighters wear heavy chain mail and plate armor, "
 "for which they are rightly famous. In the dark dreams of dwarvenkind, some "
 "conceal their faces behind riveted masks."
 msgstr ""
+"Caitheann na hAbhaic faoi chumhdach cruach lúireach throm agus éide phláta, "
+"rud a bhfuil clú agus cáil orthu as. "
 
 #. [unit_type]: id=Dwarvish Masked Thunderer
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:7
 msgid "Dwarvish Masked Thunderer"
-msgstr "Fearraidhfil Abhcach faoi Masc"
+msgstr "Fearraidhfil Abhcach Masctha"
 
 #. [unit_type]: id=Dwarvish Masked Thunderguard
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:7
 msgid "Dwarvish Masked Thunderguard"
-msgstr "Muscaedóir Abhcach faoi Masc"
+msgstr "Muscaedóir Abhcach Masctha"
 
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:6
 msgid "Dwarvish Runemaster"
-msgstr "Rúnmáistir Abhcach"
+msgstr "Rúnmháistir Abhcach"
 
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
@@ -2283,9 +2285,8 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:9
-#, fuzzy
 msgid "I fall!"
-msgstr "Titim"
+msgstr "Titim!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:23
@@ -2311,9 +2312,8 @@ msgstr ""
 
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:71
-#, fuzzy
 msgid "Staff of Righteous Flame"
-msgstr "Tá an bachall sin aige..."
+msgstr "Bachall Bladhma Fhíréanta"
 
 #. [object]: id=sorf	# Prevent it from being picked up more than once.
 #: data/campaigns/The_Hammer_of_Thursagan/utils/macros.cfg:74
