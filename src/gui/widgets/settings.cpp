@@ -492,7 +492,7 @@ void load_settings()
 	} catch(config::error&) {
 		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
 	}
-	catch(abstract_validator::error e){
+	catch(const abstract_validator::error& e){
 			ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'.\n";
 			ERR_GUI_P << e.message;
 	}
