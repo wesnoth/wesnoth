@@ -250,7 +250,7 @@ public:
 	bool operator < ( const class_tag& t) const{
 		return name_ < t.name_;
 	}
-	bool operator == (const class_tag & other){
+	bool operator == (const class_tag & other) const {
 		return name_ == other.name_;
 	}
 	/**
