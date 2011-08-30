@@ -54,12 +54,8 @@ static preproc_map setup_test_preproc_map()
 class test_config_cache : public game_config::config_cache {
 	test_config_cache() : game_config::config_cache() {}
 
-	static test_config_cache cache_;
-
 	public:
-	static test_config_cache& instance() {
-		return cache_;
-	}
+	static test_config_cache& instance() ;
 
 	void set_force_invalid_cache(bool force)
 	{
@@ -67,12 +63,15 @@ class test_config_cache : public game_config::config_cache {
 	}
 };
 
+test_config_cache & test_config_cache::instance() {
+	static test_config_cache * cache_  = new test_config_cache;
+	return *cache_;
+}
+
 /**
  * Used to redirect defines settings to test cache
  **/
 typedef game_config::scoped_preproc_define_internal<test_config_cache> test_scoped_define;
-
-test_config_cache test_config_cache::cache_;
 
 struct config_cache_fixture {
 	config_cache_fixture() : cache(test_config_cache::instance()), old_locale(get_language()), test_def("TEST")

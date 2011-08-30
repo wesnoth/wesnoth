@@ -131,13 +131,16 @@ namespace {
 	typedef std::pair<unsigned, unsigned> tresolution;
 	typedef std::vector<std::pair<unsigned, unsigned> > tresolution_list;
 
-	CVideo video(CVideo::FAKE_TEST);
+CVideo & video() {
+	CVideo * v_ = new CVideo(CVideo::FAKE_TEST);
+	return *v_;
+}
 
 	template<class T>
 	void test_resolutions(const tresolution_list& resolutions)
 	{
 		foreach(const tresolution& resolution, resolutions) {
-			video.make_test_fake(resolution.first, resolution.second);
+			video().make_test_fake(resolution.first, resolution.second);
 
 			std::auto_ptr<gui2::tdialog> dlg(twrapper<T>::create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
@@ -146,7 +149,7 @@ namespace {
 
 			std::string exception;
 			try {
-				dlg->show(video, 1);
+				dlg->show(video(), 1);
 			} catch(gui2::tlayout_exception_width_modified&) {
 				exception = "gui2::tlayout_exception_width_modified";
 			} catch(gui2::tlayout_exception_width_resize_failed&) {
@@ -176,7 +179,7 @@ namespace {
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
 			foreach(const tresolution& resolution, resolutions) {
-				video.make_test_fake(resolution.first, resolution.second);
+				video().make_test_fake(resolution.first, resolution.second);
 
 				std::auto_ptr<gui2::tpopup> dlg(twrapper<T>::create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
@@ -185,7 +188,7 @@ namespace {
 
 				std::string exception;
 				try {
-					dlg->show(video, interact);
+					dlg->show(video(), interact);
 					gui2::twindow* window = gui2::unit_test_window((*dlg.get()));
 					BOOST_REQUIRE_NE(window, (void*)NULL);
 					window->draw();
@@ -219,7 +222,7 @@ namespace {
 			, const std::string& id)
 	{
 		foreach(const tresolution& resolution, resolutions) {
-			video.make_test_fake(resolution.first, resolution.second);
+			video().make_test_fake(resolution.first, resolution.second);
 
 			std::vector<std::string>& list =
 					gui2::unit_test_registered_window_list();
@@ -235,7 +238,7 @@ namespace {
  * compilers and try to find the cause.
  */
 #if 0
-				gui2::tip::show(video
+				gui2::tip::show(video()
 						, id
 						, "Test messsage for a tooltip."
 						, gui2::tpoint(0, 0));
@@ -413,11 +416,11 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 BOOST_AUTO_TEST_CASE(test_make_test_fake)
 {
-	video.make_test_fake(10, 10);
+	video().make_test_fake(10, 10);
 
 	try {
 		gui2::tmessage dlg("title", "message", true);
-		dlg.show(video, 1);
+		dlg.show(video(), 1);
 	} catch(twml_exception& e) {
 		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
 					"which doesn't fit on the screen."));
