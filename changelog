@@ -14,7 +14,7 @@ Version 1.9.8+svn:
      * Fixed Naga Sentinel gaining an AMLA after 32 XP instead of the usual 150
      * Gave to Desert Shydes and Desert Stars 30% defense on void terrain
  * Engine:
-   * Fixed bug #16173: Using n or cl while a fake unit is moving causes the game to segfault
+   * Fixed bug #16173: Using n or cl while a fake unit is moving causes the game to segfault by creating game_display::fake_unit as an exception safe interace to the fake_units
    * Improved unit_map lookup from std::map to boost::unordered_map to decrease lookup times
    * Fixed bug #16151: Discover new units on recruit
    * Fixed bug #17780: Allow objects to 'increase' damage to 0

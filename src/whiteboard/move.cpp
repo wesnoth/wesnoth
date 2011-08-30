@@ -125,10 +125,10 @@ move::move(config const& cfg, bool hidden)
 	arrow_->set_path(route_->steps);
 
 	// Construct fake_unit_
-	fake_unit_.reset(new unit(*unit_),wb::fake_unit_deleter());
+	fake_unit_.reset(new game_display::fake_unit(*unit_) );
 	if(hidden)
 		fake_unit_->set_hidden(true);
-	resources::screen->place_temporary_unit(fake_unit_.get());
+	fake_unit_->place_on_game_display(resources::screen);
 	fake_unit_->set_ghosted(false);
 	unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams, false); //get facing right
 	fake_unit_->set_location(route_->steps.back());

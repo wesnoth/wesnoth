@@ -168,37 +168,38 @@ public:
 	/** A temporary unit that can be placed on the map.
 		Temporary units can overlap units.
 		Adding the same unit twice isn't allowed.
-		The temp_unit owns its underlying unit and when
-		it goes out of scope it removes itself from the temp_units list.
+		The fake_unit owns its underlying unit and when
+		it goes out of scope it removes itself from the fake_units list.
 		The intent is to provide exception safety when the code
 		creating the temp unit is unexpectedly forced out of scope.
 	 */
-	class temp_unit : public unit {
+	class fake_unit : public unit {
 	public:
-		explicit temp_unit(unit const & u);
-		temp_unit(temp_unit const & u);
-		temp_unit & operator=(temp_unit const & u);
+		explicit fake_unit(unit const & u);
+		fake_unit(fake_unit const & u);
+		fake_unit & operator=(fake_unit const & u);
 		///If already in the queue, the copied unit will replace the one in the queue
-		temp_unit & operator=(unit const & u);
+		fake_unit & operator=(unit const & u);
 
-		///Removes from temp_units list if necessary
-		~temp_unit();
-		/**Place on the temp_units deque at the end of the deque
+		///Removes from fake_units list if necessary
+		~fake_unit();
+		/**Place on the fake_units deque at the end of the deque
 		 * drawn last over all other units.
 		 * Duplicate additions are not allowed.
 		 */
-		void place(game_display * d);
+		void place_on_game_display(game_display * d);
 		/** Removes any instances of this temporary unit from the temporary unit vector.
 		 *  Returns the number of temp units deleted (0 or 1, any other number indicates an error).
 		 */
-		int remove();
+		int remove_from_game_display();
 	private :
 		game_display * my_display_;
 	};
 
 	//Anticipate making place_temporary_unit and remove_temporary_unit private to force exception safety
-	friend class game_display::temp_unit;
+	friend class game_display::fake_unit;
 
+private:
 	/** Temporarily place a unit on map (moving: can overlap others).
 	 *  The temp unit is added at the end of the temporary unit deque,
 	 *  and therefore gets drawn last, over other units and temp units.
@@ -210,6 +211,7 @@ public:
 	 *  Returns the number of temp units deleted (0 or 1, any other number indicates an error).
 	 */
 	int remove_temporary_unit(unit *u);
+public:
 
 	/**
 	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
@@ -233,7 +235,7 @@ public:
 
 	/** Returns a reference to the temp units deque.
 	 */
-	const std::deque<unit*>& get_temp_units() { return temp_units_; }
+	//	const std::deque<unit*>& get_fake_units() { return fake_units_; }
 
 	/** Set the attack direction indicator. */
 	void set_attack_indicator(const map_location& src, const map_location& dst);
@@ -350,7 +352,7 @@ private:
 	unit_map& units_;
 
 	/// collection of units destined to be drawn but not put into the unit map
-	std::deque<unit*> temp_units_;
+	std::deque<unit*> fake_units_;
 
 	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
 	/// map of hexes where only one unit should be drawn, the one identified by the associated id string

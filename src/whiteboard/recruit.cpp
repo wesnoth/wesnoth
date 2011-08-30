@@ -58,7 +58,7 @@ recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, c
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()),
 		valid_(true),
-		fake_unit_(create_corresponding_unit(), wb::fake_unit_deleter()),
+		fake_unit_(create_corresponding_unit()), 
 		temp_cost_()
 {
 	this->init();
@@ -79,7 +79,7 @@ recruit::recruit(config const& cfg, bool hidden)
 
 	// Construct temp_unit_ and fake_unit_
 	temp_unit_ = create_corresponding_unit();
-	fake_unit_.reset(create_corresponding_unit(), wb::fake_unit_deleter());
+	fake_unit_.reset(create_corresponding_unit()), 
 
 	this->init();
 }
@@ -90,7 +90,7 @@ void recruit::init()
 	fake_unit_->set_movement(0);
 	fake_unit_->set_attacks(0);
 	fake_unit_->set_ghosted(false);
-	resources::screen->place_temporary_unit(fake_unit_.get());
+	fake_unit_->place_on_game_display(resources::screen);
 }
 
 recruit::~recruit()
@@ -162,14 +162,14 @@ void recruit::draw_hex(map_location const& hex)
 	}
 }
 
-unit* recruit::create_corresponding_unit()
+game_display::fake_unit* recruit::create_corresponding_unit()
 {
 	unit_type const* type = unit_types.find(unit_name_);
 	assert(type);
 	int side_num = team_index() + 1;
 	//real_unit = false needed to avoid generating random traits and causing OOS
 	bool real_unit = false;
-	unit* result = new unit(type, side_num, real_unit);
+	game_display::fake_unit* result = new game_display::fake_unit(unit(type, side_num, real_unit));
 	result->set_movement(0);
 	result->set_attacks(0);
 	return result;

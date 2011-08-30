@@ -61,7 +61,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		const config& theme_cfg, const config& level) :
 		display(video, &map, theme_cfg, level),
 		units_(units),
-		temp_units_(),
+		fake_units_(),
 		exclusive_unit_draw_requests_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
@@ -300,7 +300,7 @@ void game_display::draw_invalidated()
 	halo::unrender(invalidated_);
 	display::draw_invalidated();
 
-	foreach(unit* temp_unit, temp_units_) {
+	foreach(unit* temp_unit, fake_units_) {
 		const map_location& loc = temp_unit->get_location();
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()
@@ -895,14 +895,14 @@ void game_display::invalidate_animations()
 	foreach (unit& u, units_) {
 		u.refresh();
 	}
-	foreach(unit* temp_unit, temp_units_) {
+	foreach(unit* temp_unit, fake_units_) {
 		temp_unit->refresh();
 	}
 	std::vector<unit*> unit_list;
 	foreach (unit &u, units_) {
 		unit_list.push_back(&u);
 	}
-	foreach (unit *u, temp_units_) {
+	foreach (unit *u, fake_units_) {
 		unit_list.push_back(u);
 	}
 	bool new_inval;
@@ -923,31 +923,31 @@ int& game_display::debug_highlight(const map_location& loc)
 	return debugHighlights_[loc];
 }
 
-game_display::temp_unit::temp_unit(unit const & u) : unit(u), my_display_(NULL){ }
-game_display::temp_unit::temp_unit(temp_unit const & a) : unit(a), my_display_(NULL){ }
-game_display::temp_unit & game_display::temp_unit::operator=(temp_unit const & a) {
+game_display::fake_unit::fake_unit(unit const & u) : unit(u), my_display_(NULL){ }
+game_display::fake_unit::fake_unit(fake_unit const & a) : unit(a), my_display_(NULL){ }
+game_display::fake_unit & game_display::fake_unit::operator=(fake_unit const & a) {
 	if(this != &a){
 		this->unit::operator=(a);
 		my_display_= a.my_display_;
 	}
 	return *this;
 }
-game_display::temp_unit & game_display::temp_unit::operator=(unit const & a) {
+game_display::fake_unit & game_display::fake_unit::operator=(unit const & a) {
 	this->unit::operator=(a);
 	return *this;
 }
 
-game_display::temp_unit::~temp_unit() {
-	///The whole temp_unit exists for this one line to remove the temp unit from the
-	///temp_unit deque in the event of an exception
-	if(my_display_){remove();}
+game_display::fake_unit::~fake_unit() {
+	///The whole fake_unit exists for this one line to remove the temp unit from the
+	///fake_unit deque in the event of an exception
+	if(my_display_){remove_from_game_display();}
 }
-void game_display::temp_unit::place(game_display * display){
+void game_display::fake_unit::place_on_game_display(game_display * display){
 	assert(my_display_ == NULL); //Can only be placed on 1 game_display
 	my_display_=display;
 	my_display_->place_temporary_unit(this);
 }
-int game_display::temp_unit::remove(){
+int game_display::fake_unit::remove_from_game_display(){
 	int ret(0);
 	if(my_display_ != NULL){
 		ret = my_display_->remove_temporary_unit(this);
@@ -958,10 +958,10 @@ int game_display::temp_unit::remove(){
 
 void game_display::place_temporary_unit(unit *u)
 {
-	if(std::find(temp_units_.begin(),temp_units_.end(), u) != temp_units_.end()) {
+	if(std::find(fake_units_.begin(),fake_units_.end(), u) != fake_units_.end()) {
 		ERR_NG << "In game_display::place_temporary_unit: attempt to add duplicate fake unit." << std::endl;
 	} else {
-		temp_units_.push_back(u);
+		fake_units_.push_back(u);
 		invalidate(u->get_location());
 	}
 }
@@ -970,11 +970,11 @@ int game_display::remove_temporary_unit(unit *u)
 {
 	int removed = 0;
 	std::deque<unit*>::iterator it =
-			std::remove(temp_units_.begin(), temp_units_.end(), u);
-	if (it != temp_units_.end()) {
-		removed = std::distance(it, temp_units_.end());
+			std::remove(fake_units_.begin(), fake_units_.end(), u);
+	if (it != fake_units_.end()) {
+		removed = std::distance(it, fake_units_.end());
 		//std::remove doesn't remove anything without using erase afterwards.
-		temp_units_.erase(it, temp_units_.end());
+		fake_units_.erase(it, fake_units_.end());
 		invalidate(u->get_location());
 		// Redraw with no location to get rid of haloes
 		u->clear_haloes();

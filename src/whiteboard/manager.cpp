@@ -621,9 +621,8 @@ void manager::create_temp_move()
 				if(!fake_unit)
 				{
 					// Create temp ghost unit
-					fake_unit.reset(new unit(*selected_unit),
-							wb::fake_unit_deleter());
-					resources::screen->place_temporary_unit(fake_unit.get());
+					fake_unit.reset(new game_display::fake_unit(*selected_unit));
+					fake_unit->place_on_game_display( resources::screen);
 					fake_unit->set_ghosted(false);
 				}
 

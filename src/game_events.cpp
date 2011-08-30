@@ -1017,7 +1017,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 
 namespace {
 
-unit *create_fake_unit(const vconfig& cfg)
+game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 {
 	std::string type = cfg["type"];
 	std::string variation = cfg["variation"];
@@ -1029,7 +1029,7 @@ unit *create_fake_unit(const vconfig& cfg)
 	unit_race::GENDER gender = string_gender(cfg["gender"]);
 	const unit_type *ut = unit_types.find(type);
 	if (!ut) return NULL;
-	unit *fake_unit = new unit(ut, side_num + 1, false, gender);
+	game_display::fake_unit * fake_unit = new game_display::fake_unit(unit(ut, side_num + 1, false, gender));
 
 	if(!variation.empty()) {
 		config mod;
@@ -1137,8 +1137,8 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
 	size_t num_units = unit_cfgs.size();
-	boost::scoped_array<util::unique_ptr<unit> > units(
-		new util::unique_ptr<unit>[num_units]);
+	boost::scoped_array<util::unique_ptr<game_display::fake_unit> > units(
+		new util::unique_ptr<game_display::fake_unit>[num_units]);
 	std::vector<std::vector<map_location> > paths;
 	paths.reserve(num_units);
 	game_display* disp = game_display::get_singleton();
@@ -1151,7 +1151,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
 		int skip_steps = config["skip_steps"];
-		unit *u = create_fake_unit(config);
+		game_display::fake_unit *u = create_fake_unit(config);
 		units[paths.size()].reset(u);
 		paths.push_back(fake_unit_path(*u, xvals, yvals));
 		if(skip_steps > 0)
@@ -1160,7 +1160,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 		DBG_NG << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
 
 		u->set_location(paths.back().front());
-		disp->place_temporary_unit(u);
+		u->place_on_game_display(disp);
 	}
 
 	LOG_NG << "Units placed, longest path is " << longest_path << " long\n";
@@ -1184,7 +1184,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 	LOG_NG << "Units moved\n";
 
 	for(size_t un = 0; un < num_units; ++un) {
-		disp->remove_temporary_unit(units[un].get());
+		units[un]->remove_from_game_display();
 	}
 
 	LOG_NG << "Units removed\n";

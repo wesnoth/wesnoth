@@ -28,11 +28,6 @@ class unit;
 
 namespace wb {
 
-/// Utility struct used to automatize memory management for the whiteboard's fake/ghosted units
-struct fake_unit_deleter {
-	void operator() (unit*& ptr);
-};
-
 /// @return The current viewing team's index
 size_t viewer_team();
 

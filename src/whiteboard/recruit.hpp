@@ -75,7 +75,7 @@ public:
 	virtual config to_config() const;
 
 protected:
-	virtual unit* create_corresponding_unit();
+	virtual game_display::fake_unit * create_corresponding_unit();
 
 	std::string unit_name_;
 	map_location recruit_hex_;

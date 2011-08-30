@@ -215,4 +215,16 @@ void cache_mode(CACHE mode);
 
 }
 
+namespace {
+void function_to_hide_unused_variable_warning(){
+	(void) font::SIZE_TINY;
+	(void) font::SIZE_SMALL;
+
+	(void) font::SIZE_15;
+	(void) font::SIZE_PLUS;
+	(void) font::SIZE_LARGE;
+	(void) font::SIZE_XLARGE;
+}
+}
+
 #endif

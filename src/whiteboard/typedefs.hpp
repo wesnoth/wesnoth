@@ -36,6 +36,8 @@ static lg::log_domain log_whiteboard("whiteboard");
 #include <deque>
 #include <ostream> //used for << operators
 
+#include "game_display.hpp"
+
 class arrow;
 struct map_location; //not used in the typedefs, saves a few forward declarations
 class unit;
@@ -57,7 +59,7 @@ class suppose_dead;
 class side_actions;
 
 typedef boost::shared_ptr<arrow> arrow_ptr;
-typedef boost::shared_ptr<unit> fake_unit_ptr;
+typedef boost::shared_ptr<game_display::fake_unit> fake_unit_ptr;
 
 typedef boost::shared_ptr<action> action_ptr;
 typedef boost::shared_ptr<action const> action_const_ptr;
