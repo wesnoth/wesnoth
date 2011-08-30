@@ -86,6 +86,10 @@ void side_actions::set_team_index(size_t team_index)
 
 void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 {
+	if(empty()) {
+		return;
+	}
+
 	std::vector<int>& numbers_to_draw = result.numbers_to_draw;
 	std::vector<size_t>& team_numbers = result.team_numbers;
 	int& main_number = result.main_number;
