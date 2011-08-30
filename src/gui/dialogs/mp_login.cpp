@@ -64,13 +64,13 @@ REGISTER_DIALOG(mp_login)
 tmp_login::tmp_login(const std::string& label, const bool focus_password)
 {
 	register_label("login_label", false, label);
-	register_text2("user_name"
+	register_text("user_name"
 			, true
 			, &preferences::login
 			, &preferences::set_login
 			, !focus_password);
 
-	register_text2("password"
+	register_text("password"
 			, true
 			, &preferences::password
 			, NULL /* The password box returns '*' as value. */

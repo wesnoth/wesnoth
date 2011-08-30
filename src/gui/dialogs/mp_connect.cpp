@@ -158,7 +158,7 @@ static void show_server_list(
 }
 
 tmp_connect::tmp_connect()
-	: host_name_(register_text2("host_name"
+	: host_name_(register_text("host_name"
 			, true
 			, preferences::network_host
 			, preferences::set_network_host
