@@ -18,6 +18,7 @@
 
 #include "filesystem.hpp"
 #include "foreach.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/preprocessor.hpp"
 #include "wml_exception.hpp"
@@ -55,7 +56,7 @@ static void extra_tag_error(const std::string & file, int line,
 							const std::string & parent, bool flag_exception){
 	std::ostringstream ss;
 	ss 	 <<at(file,line) << ": extra tag [" << name << "]; there may only be "
-			<< n << " ["<< name <<"]s in [" << parent <<"]\n";
+			<< n << " ["<< sngettext (name.c_str (), std::string(name + "s").c_str() ,n)<<"] in [" << parent <<"]\n";
 	print_output (ss.str (),flag_exception);
 }
 
@@ -73,7 +74,7 @@ static void missing_tag_error(const std::string & file, int line,
 							  const std::string & parent, bool flag_exception){
 	std::ostringstream ss;
 	ss 	 <<at(file,line) << ": missing tag [" << name << "]; there must be "
-			<< n << " ["<< name <<"]s in [" << parent <<"]\n";
+			<< n << " ["<< sngettext (name.c_str (), std::string(name + "s").c_str() ,n) <<"]s in [" << parent <<"]\n";
 	print_output (ss.str (),flag_exception);
 }
 
