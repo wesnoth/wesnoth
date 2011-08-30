@@ -80,7 +80,9 @@ std::pair<unit_map::unit_iterator, bool> unit_map::add(const map_location &l, co
 	self_check();
 	unit *p = new unit(u);
 	p->set_location(l);
-	return insert(p);
+	std::pair<unit_map::unit_iterator, bool> res( insert(p) );
+	if(res.second == false) { delete p; }
+	return res;
 }
 
 std::pair<unit_map::unit_iterator, bool> unit_map::move(const map_location &src, const map_location &dst) {
@@ -175,7 +177,20 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p) {
 
 			p->clone(false);
 			uinsert = umap_.insert(std::make_pair(p->underlying_id(), lit ));
-			if (!uinsert.second) { bool never_happen(false); assert(never_happen); }
+			int guard(0);
+			while (!uinsert.second && (++guard < 1e6) ) {
+				if(guard % 10 == 9){
+					ERR_NG << "\n\nPlease Report this error to https://gna.org/bugs/index.php?18591 " 
+						"\nIn addition to the standard details of operating system and wesnoth version "
+						"and how it happened, please answer the following questions "
+						"\n 1. Were you playing mutli-player?"
+						"\n 2. Did you start/restart/reload the game/scenario?"
+						"\nThank you for your help in fixing this bug.\n";
+				}
+				p->clone(false);
+				uinsert = umap_.insert(std::make_pair(p->underlying_id(), lit )); }
+			if (!uinsert.second) { 
+				throw "One million collisions in unit_map"; }
 		}
 	}
 

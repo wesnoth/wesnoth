@@ -408,10 +408,6 @@ public:
 	 */
 	unit *extract(const map_location &loc);
 
-	///Finds and deletes the umap_ item associated with @a lit when the underlying_id()
-	///has been changed externally after insertion and before extraction
-	void error_recovery_externally_changed_uid(t_ilist::iterator const & lit) const;
-
 	///Checks invariants.  For debugging purposes only.  Doesn't do anything in non-debug mode.
 	bool self_check() const
 #ifndef DEBUG
@@ -453,6 +449,9 @@ private:
 		if (!is_found( i )) { return const_unit_iterator(the_end_, this); }
 		return const_unit_iterator(i , this); }
 
+	///Finds and deletes the umap_ item associated with @a lit when the underlying_id()
+	///has been changed externally after insertion and before extraction
+	void error_recovery_externally_changed_uid(t_ilist::iterator const & lit) const;
 
 	/**
 	 * underlying_id -> ilist::iterator. This requires that underlying_id be
