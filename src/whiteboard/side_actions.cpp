@@ -235,6 +235,10 @@ void side_actions::hide()
 
 	hidden_ = true;
 
+	if(empty()) {
+		return;
+	}
+
 	foreach(action_ptr act, *this)
 		act->hide();
 }
