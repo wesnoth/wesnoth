@@ -569,21 +569,22 @@ static map_location cfg_to_loc(const vconfig& cfg,int defaultx = 0, int defaulty
 
 namespace {
 
-	class t_event_handlers : public std::vector<game_events::event_handler> {
+	class t_event_handlers {
+		typedef std::vector<game_events::event_handler> t_active;
+	public:
+		typedef t_active::iterator iterator;
+		typedef t_active::const_iterator const_iterator;
 	private:
-		std::vector<game_events::event_handler> insert_buffer_;
-		std::set<std::string> remove_buffer_;
-		bool buffering_;
+
+		t_active active_; ///Active event handlers
+		t_active insert_buffer_; ///Event handlers added while pumping events
+		std::set<std::string> remove_buffer_; ///Event handlers removed while pumping events
+		bool buffering_; 
 
 	public:
 
 		t_event_handlers()
-			: std::vector<game_events::event_handler>()
-			, insert_buffer_()
-			, remove_buffer_()
-			, buffering_(false)
-		{
-		}
+			: active_() , insert_buffer_() , remove_buffer_() , buffering_(false) { }
 
 		/**
 		 * Adds an event handler.  An event with a nonempty ID will not
@@ -591,19 +592,18 @@ namespace {
 		 * respects this class's buffering functionality.
 		 */
 		void add_event_handler(game_events::event_handler const & new_handler) {
-			if(buffering_) {
-				insert_buffer_.push_back(new_handler);
-			} else {
+			if(buffering_) { insert_buffer_.push_back(new_handler); } 
+			
+			else {
 				const config & cfg = new_handler.get_config();
 				std::string id = cfg["id"];
 				if(id != "") {
-					for(std::vector<game_events::event_handler>::iterator i = begin(); i < end(); i++) {
-						const config & temp_config = (*i).get_config();
-						if(id == temp_config["id"])
-							return;
+					foreach( game_events::event_handler const & eh, active_) {
+						config const & temp_config( eh.get_config());
+						if(id == temp_config["id"]) { return; } 
 					}
 				}
-				this->push_back(new_handler);
+				active_.push_back(new_handler);
 			}
 		}
 
@@ -613,22 +613,20 @@ namespace {
 		 * buffering functionality.
 		 */
 		void remove_event_handler(std::string const & id) {
-			if(id == "")
-				return;
+			if(id == "") { return; }
 
-			if(buffering_)
-				remove_buffer_.insert(id);
+			if(buffering_) { remove_buffer_.insert(id); }
 
-			std::vector<game_events::event_handler> &temp = buffering_ ? insert_buffer_ : *this;
+			t_active &temp = buffering_ ? insert_buffer_ : active_;
 
-			std::vector<game_events::event_handler>::iterator i = temp.begin();
+			t_active::iterator i = temp.begin();
 			while(i < temp.end()) {
-				const config & temp_config = (*i).get_config();
+				config const & temp_config = (*i).get_config();
 				std::string event_id = temp_config["id"];
-				if(event_id != "" && event_id == id)
-					i = temp.erase(i);
-				else
-					i++;
+				if(event_id != "" && event_id == id) {
+					i = temp.erase(i); }
+				else {
+					++i; }
 			}
 		}
 
@@ -638,29 +636,38 @@ namespace {
 		 * is called.  This function is idempotent - starting a buffer
 		 * when already buffering will not start a second buffer.
 		 */
-		void start_buffer() {
-			buffering_ = true;
-		}
+		void start_buffering() { buffering_ = true; }
 
 		/**
 		 * Stops buffering_ and commits all changes.
 		 */
 		void commit_buffer() {
-			if(!buffering_)
-				return;
+			if(!buffering_) { return; }
 
 			buffering_ = false;
 
 			// Commit any event removals
-			for(std::set<std::string>::iterator i = remove_buffer_.begin(); i != remove_buffer_.end(); i++)
-				remove_event_handler(*i);
+			foreach(std::string const & i ,  remove_buffer_ ){
+				remove_event_handler( i ); }
 			remove_buffer_.clear();
 
 			// Commit any spawned events-within-events
-			for(std::vector<game_events::event_handler>::iterator i = insert_buffer_.begin(); i != insert_buffer_.end(); i++)
-				add_event_handler(*i);
+			foreach( game_events::event_handler const & i ,  insert_buffer_ ){
+				add_event_handler( i ); }
 			insert_buffer_.clear();
 		}
+
+		void clear(){
+			active_.clear();
+			insert_buffer_.clear();
+			remove_buffer_.clear(); }
+
+		iterator begin() { return active_.begin(); }
+		const_iterator begin() const { return active_.begin(); }
+
+		iterator end() { return active_.end(); }
+		const_iterator end() const { return active_.end(); }
+		
 	};
 
 	t_event_handlers event_handlers;
@@ -3299,7 +3306,7 @@ namespace game_events {
 			return false;
 		}
 
-		event_handlers.start_buffer();
+		event_handlers.start_buffering();
 
 		bool result = false;
 		while(events_queue.empty() == false) {
