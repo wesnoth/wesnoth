@@ -80,9 +80,9 @@ tmp_cmd_wrapper::tmp_cmd_wrapper(const t_string& user)
 	, reason_()
 	, time_()
 {
-	register_text2("message", false, message_, true);
-	register_text2("reason", false, reason_);
-	register_text2("time", false, time_);
+	register_text("message", false, message_, true);
+	register_text("reason", false, reason_);
+	register_text("time", false, time_);
 	register_label("user_label", false, user);
 
 	set_always_save_fields(true);

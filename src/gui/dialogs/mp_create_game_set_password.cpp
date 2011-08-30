@@ -43,7 +43,7 @@ REGISTER_DIALOG(mp_create_game_set_password)
 tmp_create_game_set_password::tmp_create_game_set_password(
 		std::string& password)
 {
-	register_text2("password", true, password, true);
+	register_text("password", true, password, true);
 }
 
 } // namespace gui2

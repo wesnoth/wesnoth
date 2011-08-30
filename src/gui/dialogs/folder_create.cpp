@@ -42,7 +42,7 @@ REGISTER_DIALOG(folder_create)
 
 tfolder_create::tfolder_create(std::string& folder_name)
 {
-	register_text2("name", true, folder_name, true);
+	register_text("name", true, folder_name, true);
 }
 
 }

@@ -49,7 +49,7 @@ REGISTER_DIALOG(game_save)
 
 tgame_save::tgame_save(std::string& filename, const std::string& title)
 {
-	register_text2("txtFilename", false, filename, true);
+	register_text("txtFilename", false, filename, true);
 	register_label("lblTitle", true, title);
 }
 

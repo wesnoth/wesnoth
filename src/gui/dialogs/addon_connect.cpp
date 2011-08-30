@@ -53,7 +53,7 @@ taddon_connect::taddon_connect(std::string& host_name
 	: allow_updates_(allow_updates)
 	, allow_remove_(allow_remove)
 {
-	register_text2("host_name", false, host_name, true);
+	register_text("host_name", false, host_name, true);
 }
 
 void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)

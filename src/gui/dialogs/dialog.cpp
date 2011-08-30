@@ -171,20 +171,6 @@ tfield_text* tdialog::register_text(const std::string& id
 	return field;
 }
 
-tfield_text* tdialog::register_text2(const std::string& id
-			, const bool mandatory
-			, std::string& linked_variable
-			, const bool capture_focus)
-{
-	assert(!capture_focus || focus_.empty());
-
-	if(capture_focus) {
-		focus_ = id;
-	}
-
-	return tdialog::register_text(id, mandatory, linked_variable);
-}
-
 tfield_label* tdialog::register_label(const std::string& id
 		, const bool mandatory
 		, const std::string& text

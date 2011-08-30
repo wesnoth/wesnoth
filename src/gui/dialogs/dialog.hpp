@@ -255,36 +255,6 @@ protected:
 			, const bool capture_focus = false);
 
 	/**
-	 * Creates a new text field.
-	 *
-	 * The field created is owned by tdialog, the returned pointer can be used
-	 * in the child classes as access to a field.
-	 *
-	 * @note This function uses @p mandatory instead of @p optional as in other
-	 * functions, the other functions need to be converted to use @p mandatory
-	 * as well.
-	 *
-	 * @todo Convert more functions to this new style once done drop the 2 from
-	 * the function name.
-	 *
-	 * @deprecated Use @ref register_text instead.
-	 *
-	 * @param id                  Id of the widget, same value as in WML.
-	 * @param mandatory           Is the widget mandatory or optional.
-	 * @param linked_variable     The variable the widget is linked to. See
-	 *                            @ref tfield::tfield for more information.
-	 * @param capture_focus       Does this widget need to capture the focus
-	 *                            when created? @warning Only one widget may
-	 *                            capture the focus.
-	 *
-	 * @returns                   Pointer to the created widget.
-	 */
-	tfield_text* register_text2(const std::string& id
-			, const bool mandatory
-			, std::string& linked_variable
-			, const bool capture_focus = false);
-
-	/**
 	 * Registers a new control as a label.
 	 *
 	 * The label is used for a control to set the 'label' since it calls the
