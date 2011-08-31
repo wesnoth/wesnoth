@@ -132,7 +132,7 @@ namespace {
 	typedef std::vector<std::pair<unsigned, unsigned> > tresolution_list;
 
 CVideo & video() {
-	CVideo * v_ = new CVideo(CVideo::FAKE_TEST);
+	static CVideo * v_ = new CVideo(CVideo::FAKE_TEST);
 	return *v_;
 }
 
