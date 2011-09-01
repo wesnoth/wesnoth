@@ -854,28 +854,21 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
-			if(*v < 0) {
-				ERR_NG << "multiplication by a negative number with multiply= in ability/weapon special " << effect_id << "\n";
-			}
-			else {
-				int multiply = int(v->to_double() * 100);
-				std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
-				if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
-					values_mul[effect_id].set(MUL,multiply,i->first,i->second);
-				}
+			int multiply = int(v->to_double() * 100);
+			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
+			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
+				values_mul[effect_id].set(MUL,multiply,i->first,i->second);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
-			if (*v <= 0) {
-				ERR_NG << "division by zero or negative number with divide= in ability/weapon special " << effect_id << "\n";
+			if (*v == 0) {
+				ERR_NG << "division by zero with division= in weapon special " << effect_id << "\n";
+				return;
 			}
-			else
-			{
-				int divide = int(v->to_double() * 100);
-				std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
-				if(div_effect == values_div.end() || divide > div_effect->second.value) {
-					values_div[effect_id].set(DIV,divide,i->first,i->second);
-				}
+			int divide = int(v->to_double() * 100);
+			std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
+			if(div_effect == values_div.end() || divide > div_effect->second.value) {
+				values_div[effect_id].set(DIV,divide,i->first,i->second);
 			}
 		}
 	}
