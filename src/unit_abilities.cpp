@@ -862,7 +862,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
 			if (*v == 0) {
-				ERR_NG << "division by zero with division= in weapon special " << effect_id << "\n";
+				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id << "\n";
 			}
 			else {
 				int divide = int(v->to_double() * 100);
