@@ -863,12 +863,13 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		if (const config::attribute_value *v = cfg.get("divide")) {
 			if (*v == 0) {
 				ERR_NG << "division by zero with division= in weapon special " << effect_id << "\n";
-				return;
 			}
-			int divide = int(v->to_double() * 100);
-			std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
-			if(div_effect == values_div.end() || divide > div_effect->second.value) {
-				values_div[effect_id].set(DIV,divide,i->first,i->second);
+			else {
+				int divide = int(v->to_double() * 100);
+				std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
+				if(div_effect == values_div.end() || divide > div_effect->second.value) {
+					values_div[effect_id].set(DIV,divide,i->first,i->second);
+				}
 			}
 		}
 	}
