@@ -37,6 +37,12 @@
     <ClCompile Include="..\..\src\tstring.cpp" />
     <ClCompile Include="..\..\src\util.cpp" />
     <ClCompile Include="..\..\src\version.cpp" />
+    <ClCompile Include="..\..\src\serialization\schema_validator.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\validator.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp">
@@ -70,5 +76,11 @@
     <ClInclude Include="..\..\src\util.hpp" />
     <ClInclude Include="..\..\src\version.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
+    <ClInclude Include="..\..\src\serialization\schema_validator.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\validator.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

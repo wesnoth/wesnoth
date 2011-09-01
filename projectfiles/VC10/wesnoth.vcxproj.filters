@@ -77,6 +77,12 @@
     <Filter Include="Whiteboard">
       <UniqueIdentifier>{e86f750d-6466-4226-a737-8ed73eee5bc8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{ebf53609-f1d2-4592-9713-082ebdd65dd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools\schema">
+      <UniqueIdentifier>{24fa9dff-1e37-435e-9c30-50571ff65b5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\packaging\windows\wesnoth.rc">
@@ -695,9 +701,6 @@
     <ClCompile Include="..\..\src\whiteboard\manager.cpp">
       <Filter>Whiteboard</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\whiteboard\mapbuilder_visitor.cpp">
-      <Filter>Whiteboard</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\whiteboard\move.cpp">
       <Filter>Whiteboard</Filter>
     </ClCompile>
@@ -717,9 +720,6 @@
       <Filter>Whiteboard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\whiteboard\validate_visitor.cpp">
-      <Filter>Whiteboard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\whiteboard\visitor.cpp">
       <Filter>Whiteboard</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\widgets\button.cpp">
@@ -895,6 +895,15 @@
     <ClCompile Include="..\..\src\wml_exception.cpp" />
     <ClCompile Include="..\..\src\joystick.cpp" />
     <ClCompile Include="..\..\src\network.cpp" />
+    <ClCompile Include="..\..\src\whiteboard\mapbuilder.cpp">
+      <Filter>Whiteboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tools\schema\tag.cpp">
+      <Filter>tools\schema</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\folder_create.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\manager.hpp">
@@ -1551,9 +1560,6 @@
     <ClInclude Include="..\..\src\whiteboard\manager.hpp">
       <Filter>Whiteboard</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\whiteboard\mapbuilder_visitor.hpp">
-      <Filter>Whiteboard</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\whiteboard\move.hpp">
       <Filter>Whiteboard</Filter>
     </ClInclude>
@@ -1576,9 +1582,6 @@
       <Filter>Whiteboard</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\whiteboard\validate_visitor.hpp">
-      <Filter>Whiteboard</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\whiteboard\visitor.hpp">
       <Filter>Whiteboard</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\widgets\combo.hpp">
@@ -1747,5 +1750,14 @@
     <ClInclude Include="..\..\src\wml_exception.hpp" />
     <ClInclude Include="..\..\src\wml_separators.hpp" />
     <ClInclude Include="..\..\src\joystick.hpp" />
+    <ClInclude Include="..\..\src\whiteboard\mapbuilder.hpp">
+      <Filter>Whiteboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tools\schema\tag.hpp">
+      <Filter>tools\schema</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\folder_create.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
