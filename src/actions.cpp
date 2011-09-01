@@ -1107,7 +1107,11 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 			num_blows = weapon->num_attacks();
 			unit_ability_list attacks_specials = weapon->get_specials("attacks");
 			unit_abilities::effect attacks_effect(attacks_specials,num_blows,backstab_pos);
-			num_blows = attacks_effect.get_composite_value();
+			const int num_blows_with_specials = attacks_effect.get_composite_value();
+			if(num_blows_with_specials >= 0) {
+				num_blows = num_blows_with_specials;
+			}
+			else { ERR_NG << "negative number of strikes after applying weapon specials\n"; }
 			swarm_min = num_blows;
 			swarm_max = num_blows;
 		}
