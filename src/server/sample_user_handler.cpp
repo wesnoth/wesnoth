@@ -222,7 +222,13 @@ std::string suh::user_info(const std::string& name) {
 	time_t ll_date = get_lastlogin(name);
 
 	std::string reg_string = ctime(&reg_date);
-	std::string ll_string = ctime(&ll_date);
+	std::string ll_string;
+
+	if(ll_date) {
+		ll_string = ctime(&ll_date);
+	} else {
+		ll_string = "Never";
+	}
 
 	std::stringstream info;
 	info << "Name: " << name << "\n"
