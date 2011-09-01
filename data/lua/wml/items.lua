@@ -72,12 +72,6 @@ end
 
 function wml_actions.remove_item(cfg)
 	local locs = wesnoth.get_locations(cfg)
-	if #locs == 0 then
-		local context = wesnoth.current.event_context
-		if context.x1 then
-			locs[1] = { context.x1, context.y1 }
-		end
-	end
 	for i, loc in ipairs(locs) do
 		remove_overlay(loc[1], loc[2], cfg.image)
 	end
