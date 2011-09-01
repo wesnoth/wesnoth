@@ -352,7 +352,7 @@ class WesnothList:
                             "non-existant unit id '%s'!\n") % (
                                 eid,
                                 fid,
-                                repr(uid)))
+                                str(uid)))
                         continue
                     if not eid in unit.eras:
                         unit.eras.append(eid)

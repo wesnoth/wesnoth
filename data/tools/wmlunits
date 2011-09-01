@@ -346,6 +346,8 @@ class HTMLOutput:
                 m = 1
                 if u and u.campaign in self.wesnoth.is_mainline_campaign:
                     m = 0
+                if u.campaign == "mainline":
+                    m = 0
                 r[m][racename] = race.get_text_val("id")
             racenames = sorted(r[0].items())
             if r[1].items():
@@ -374,36 +376,40 @@ class HTMLOutput:
                             html, un.name, un.name))
                             
             write("</div></li>\n")
-            
+
+        # Add entries for the races also to the navbar itself.
         if 1:
-            got_menu = False
-            menuid = 0
             camp = self.campaign
             if camp == "units": camp = "mainline"
-            for row in self.unitgrid:
-                for column in range(6):
-                    hspan, vspan, un = row[column]
-                    if not un: continue
-                    if isinstance(un, helpers.GroupNode):
-                        if got_menu: write("</div></li>\n")
-                        add_menu("units_menu" + str(menuid), un.name, "unitmenu")
-                        menuid += 1
-                        got_menu = True
-                        
-                        html = "../%s/%s.html" % (
-                            self.isocode, camp)
-                        write("<a href=\"%s#%s\">%s</a><br/>" % (
-                            html, un.name, un.name))
-                    else:
-                        
-                        if camp == "mainline" and un.unit.campaign != camp: continue
-                        uid = un.unit.get_text_val("id")
-                        link = "../%s/%s.html" % (self.isocode, uid)
-                        name = self.wesnoth.get_unit_value(un.unit,
-                            "name", translation = self.translation.translate)
-                        write("<a href=\"" + link + "\">" + name + "</a><br />")
+            class Entry: pass
+            races = {}
+            
+            for uid, u in self.wesnoth.unit_lookup.items():
+                if u.campaign != camp: continue
+                racename = T(u.race, "plural_name")
+                runits = races.get(racename, [])
+                runits.append(uid)
+                races[racename] = runits
+
+            racelist = sorted(races.keys())
+            got_menu = False
+            menuid = 0
+            for r in racelist:
+                if got_menu: write("</div></li>\n")
+                add_menu("units_menu" + str(menuid), r, "unitmenu")
+                menuid += 1
+                got_menu = True
+                link = "../%s/%s.html" % (self.isocode, camp)
+                write("<a href=\"%s#%s\">%s</a><br/>" % (
+                    link, r, r))
+                for uid in races[r]:
+                    un = self.wesnoth.unit_lookup[uid]
+                    link = "../%s/%s.html" % (self.isocode, uid)
+                    name = self.wesnoth.get_unit_value(un,
+                        "name", translation = self.translation.translate)
+                    write("<a href=\"" + link + "\">" + name + "</a><br />")
+                    
             if got_menu: write("</div></li>\n")
-        #write("</div></li>\n")
 
         # Languages
         x = self.translate("Language", "wesnoth")
