@@ -26,6 +26,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "../util.hpp"
+#include <boost/array.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_GENERAL LOG_STREAM(err, lg::general)
@@ -257,6 +258,82 @@ std::string signed_value(int val)
 	std::ostringstream oss;
 	oss << (val >= 0 ? "+" : unicode_minus) << abs(val);
 	return oss.str();
+}
+
+template <typename T>
+void si_string_impl_stream_write(std::stringstream &ss, T input) {
+#ifdef _MSC_VER
+	// Visual C++ makes 'precision' set the number of decimal places.
+	// Other platforms make it set the number of significant figures
+	ss.precision(1);
+	ss << std::fixed
+	   << input;
+#else
+	ss.precision(3);
+	ss << input;
+#endif
+}
+template <> void si_string_impl_stream_write(std::stringstream &ss, int input) {
+	ss << input;
+}
+template <> void si_string_impl_stream_write(std::stringstream &ss, long input) {
+	ss << input;
+}
+template <> void si_string_impl_stream_write(std::stringstream &ss, long long input) {
+	ss << input;
+}
+template <typename T>
+std::string si_string_impl(T input, bool base2, std::string unit) {
+	const int multiplier = base2 ? 1024 : 1000;
+	// (input == -input) can happen if we're at the minimum of the native signed integer type, so make sure we don't recurse infinitely
+	// It will still give bad output, but it won't overflow the stack
+	if (input < 0 && input != -input)
+		return unicode_minus + si_string(-input, base2, unit);
+
+	typedef boost::array<std::string, 9> strings9;
+
+	strings9 prefixes;
+	strings9::const_iterator prefix;
+	if (input < 1.0) {
+		strings9 tmp = { { "", "m", "μ", "n", "p", "f", "a", "z", "y" } };
+		prefixes = tmp;
+		prefix = prefixes.begin();
+		while (input < 1.0  && *prefix != prefixes.back()) {
+			input *= multiplier;
+			++prefix;
+		}
+	} else {
+		strings9 tmp = { { "", "k", "M", "G", "T", "P", "E", "Z", "Y" } };
+		prefixes = tmp;
+		prefix = prefixes.begin();
+		while (input > multiplier && *prefix != prefixes.back()) {
+			input /= multiplier;
+			++prefix;
+		}
+	}
+
+	std::stringstream ss;
+	si_string_impl_stream_write(ss, input);
+	ss << ' '
+	   << *prefix
+	   << (base2 ? "i" : "")
+	   << unit;
+	return ss.str();
+}
+std::string si_string(double input, bool base2, std::string unit) {
+	return si_string_impl(input, base2, unit);
+}
+std::string si_string(int input, bool base2, std::string unit) {
+	return si_string_impl(input, base2, unit);
+}
+std::string si_string(long input, bool base2, std::string unit) {
+	return si_string_impl(input, base2, unit);
+}
+std::string si_string(long long input, bool base2, std::string unit) {
+	return si_string_impl(input, base2, unit);
+}
+std::string si_string(long double input, bool base2, std::string unit) {
+	return si_string_impl(input, base2, unit);
 }
 
 static bool is_username_char(char c) {

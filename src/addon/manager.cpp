@@ -408,34 +408,8 @@ namespace {
 	 */
 	static std::string format_file_size(double size)
 	{
-		const double k = 1024;
 		if(size > 0.0) {
-			std::string size_postfix = _("B");	// bytes
-			if(size > k) {
-				size /= k;
-				size_postfix = _("KB");			// kilobytes
-				if(size > k) {
-					size /= k;
-					size_postfix = _("MB");		// megabytes
-					if(size > k) {
-						size /= k;
-						size_postfix = _("GB");	// gigabytes
-					}
-				}
-			}
-
-			std::ostringstream stream;
-#ifdef _MSC_VER
-			// Visual C++ makes 'precision' set the number of decimal places.
-			// Other platforms make it set the number of significant figures
-			stream.precision(1);
-			stream << std::fixed << size << size_postfix;
-#else
-			if (size < 100) stream.precision(3);
-			else size = trunc(size);
-			stream << size << size_postfix;
-#endif
-			return stream.str();
+			return utils::si_string(size);
 		} else {
 			return "";
 		}

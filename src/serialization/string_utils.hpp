@@ -138,6 +138,14 @@ std::string signed_value(int val);
 /** Convert into a percentage (using the Unicode "−" and +0% convention */
 inline std::string signed_percent(int val) {return signed_value(val) + "%";}
 
+/** Convert into a string with an SI-postfix */
+std::string si_string(double input, bool base2=true, std::string unit="B");
+std::string si_string(int input, bool base2=true, std::string unit="B");
+/* Some extra-long versions */
+std::string si_string(long input, bool base2=true, std::string unit="B");
+std::string si_string(long long input, bool base2=true, std::string unit="B");
+std::string si_string(long double input, bool base2=true, std::string unit="B");
+
 /**
  * Try to complete the last word of 'text' with the 'wordlist'.
  *
