@@ -671,11 +671,6 @@ public class DependencyListBuilder implements Serializable
                         if( tmpSwapNode != null ) {
                             tmpSwapNode.setPrevious( newNode );
                         }
-
-                        // update root if needed
-                        if( list_.get( ROOT_NODE_KEY ).equals( prevNode ) ) {
-                            list_.put( ROOT_NODE_KEY, newNode );
-                        }
                     }
                     else if( prevDirIndex != - 1 && newDirIndex != - 1 ) {
                         // directory <-> directory
@@ -684,56 +679,48 @@ public class DependencyListBuilder implements Serializable
                         DirectoryIncludeEntry newEntry = directoriesEntries_
                             .get( newDirIndex );
 
-                        // TODO: update root!
+                        // create a list for easier swap
+                        List< DependencyListNode > nodes = new ArrayList< DependencyListNode >( );
+                        nodes.add( prevEntry.FirstNode.getPrevious( ) );
+                        nodes.add( prevEntry.FirstNode );
+                        nodes.add( prevEntry.LastNode );
+                        if( prevEntry.LastNode.getNext( ) != newEntry.FirstNode ) {
+                            nodes.add( prevEntry.LastNode.getNext( ) );
+                            nodes.add( newEntry.FirstNode.getPrevious( ) );
+                        }
+                        nodes.add( newEntry.FirstNode );
+                        nodes.add( newEntry.LastNode );
+                        nodes.add( newEntry.LastNode.getNext( ) );
 
-                        if( prevEntry != null && newEntry != null
-                            && prevEntry.FirstNode != null
-                            && newEntry.FirstNode != null ) {
+                        int nodesSize = nodes.size( );
 
-                            // create a list for easier swap
-                            List< DependencyListNode > nodes = new ArrayList< DependencyListNode >( );
-                            nodes.add( prevEntry.FirstNode.getPrevious( ) );
-                            nodes.add( prevEntry.FirstNode );
-                            nodes.add( prevEntry.LastNode );
-                            if( prevEntry.LastNode.getNext( ) != newEntry.FirstNode ) {
-                                nodes.add( prevEntry.LastNode.getNext( ) );
-                                nodes.add( newEntry.FirstNode.getPrevious( ) );
+                        int swapIndex = ( nodesSize == 8 ? 5: 3 );
+
+                        // now swap the nodes
+                        DependencyListNode tmp = nodes.get( swapIndex );
+                        nodes.set( swapIndex, nodes.get( 1 ) );
+                        nodes.set( 1, tmp );
+
+                        swapIndex = ( nodesSize == 8 ? 6: 4 );
+
+                        tmp = nodes.get( swapIndex );
+                        nodes.set( swapIndex, nodes.get( 2 ) );
+                        nodes.set( 2, tmp );
+
+                        // update the links
+
+                        for( int i = 0; i < nodesSize - 1; i += 2 ) {
+                            DependencyListNode fst = nodes.get( i );
+                            DependencyListNode lst = nodes.get( i + 1 );
+
+                            if( fst != null ) {
+                                fst.setNext( lst );
                             }
-                            nodes.add( newEntry.FirstNode );
-                            nodes.add( newEntry.LastNode );
-                            nodes.add( newEntry.LastNode.getNext( ) );
 
-                            int nodesSize = nodes.size( );
-
-                            int swapIndex = ( nodesSize == 8 ? 5: 3 );
-
-                            // now swap the nodes
-                            DependencyListNode tmp = nodes.get( swapIndex );
-                            nodes.set( swapIndex, nodes.get( 1 ) );
-                            nodes.set( 1, tmp );
-
-                            swapIndex = ( nodesSize == 8 ? 6: 4 );
-
-                            tmp = nodes.get( swapIndex );
-                            nodes.set( swapIndex, nodes.get( 2 ) );
-                            nodes.set( 2, tmp );
-
-                            // update the links
-
-                            for( int i = 0; i < nodesSize - 1; i += 2 ) {
-                                DependencyListNode fst = nodes.get( i );
-                                DependencyListNode lst = nodes.get( i + 1 );
-
-                                if( fst != null ) {
-                                    fst.setNext( lst );
-                                }
-
-                                if( lst != null ) {
-                                    lst.setPrevious( fst );
-                                }
+                            if( lst != null ) {
+                                lst.setPrevious( fst );
                             }
                         }
-
                     }
                     else {
                         // TODO file <-> directory
