@@ -68,8 +68,7 @@ public class ProjectDependencyListTests extends PDETest
     {
         IProject project = createProject( "test" );
 
-        IFile maincfg = ResourceUtils.createFile( project, "_main.cfg", "",
-            true );
+        IFile maincfg = ResourceUtils.createFile( project, "_main.cfg", "" );
         project.build( IncrementalProjectBuilder.FULL_BUILD,
             new NullProgressMonitor( ) );
 
@@ -85,7 +84,7 @@ public class ProjectDependencyListTests extends PDETest
         cleanup( project );
     }
 
-    public void testFolderIncludesOrderChange( ) throws CoreException,
+    public void testFolderIncludes_OrderChanged( ) throws CoreException,
         IOException
     {
         IProject project = createProject( "test" );
@@ -96,8 +95,7 @@ public class ProjectDependencyListTests extends PDETest
         ResourceUtils.createFolder( project, "f2" );
 
         files[0] = ResourceUtils.createFile( project, "_main.cfg",
-            "{~add-ons/test/f1}\r\n" +
-                "{~add-ons/test/f2}\r\n", true );
+            "{~add-ons/test/f1}\r\n{~add-ons/test/f2}\r\n" );
         files[1] = ResourceUtils.createFile( project, "f1/f1_file1.cfg", "" );
         files[2] = ResourceUtils.createFile( project, "f1/f1_file2.cfg", "" );
         files[3] = ResourceUtils.createFile( project, "f2/f2_filea.cfg", "" );
@@ -116,8 +114,7 @@ public class ProjectDependencyListTests extends PDETest
         FileWriter writer = new FileWriter( files[0].getLocation( )
             .toOSString( ) );
 
-        writer.write( "{~add-ons/test/f2}\r\n" +
-            "{~add-ons/test/f1}\r\n" );
+        writer.write( "{~add-ons/test/f2}\r\n{~add-ons/test/f1}\r\n" );
         writer.close( );
         project.refreshLocal( IResource.DEPTH_INFINITE,
             new NullProgressMonitor( ) );
@@ -157,8 +154,7 @@ public class ProjectDependencyListTests extends PDETest
         IFile files[] = new IFile[3];
 
         files[0] = ResourceUtils.createFile( project, "_main.cfg",
-            "{~add-ons/test/f1.cfg}\r\n" +
-                "{~add-ons/test/f2.cfg}\r\n", true );
+            "{~add-ons/test/f1.cfg}\r\n{~add-ons/test/f2.cfg}\r\n" );
         files[1] = ResourceUtils.createFile( project, "f1.cfg", "" );
         files[2] = ResourceUtils.createFile( project, "f2.cfg", "" );
 
@@ -183,7 +179,7 @@ public class ProjectDependencyListTests extends PDETest
         cleanup( project );
     }
 
-    public void testFileIncludesOrderChange( ) throws CoreException,
+    public void testFileIncludes_OrderChanged( ) throws CoreException,
         IOException
     {
         IProject project = createProject( "test" );
@@ -191,8 +187,7 @@ public class ProjectDependencyListTests extends PDETest
         IFile files[] = new IFile[3];
 
         files[0] = ResourceUtils.createFile( project, "_main.cfg",
-            "{~add-ons/test/f1.cfg}\r\n" +
-                "{~add-ons/test/f2.cfg}\r\n", true );
+            "{~add-ons/test/f1.cfg}\r\n{~add-ons/test/f2.cfg}\r\n" );
         files[1] = ResourceUtils.createFile( project, "f1.cfg", "" );
         files[2] = ResourceUtils.createFile( project, "f2.cfg", "" );
 
@@ -208,8 +203,7 @@ public class ProjectDependencyListTests extends PDETest
         FileWriter writer = new FileWriter( files[0].getLocation( )
             .toOSString( ) );
 
-        writer.write( "{~add-ons/test/f2.cfg}\r\n" +
-            "{~add-ons/test/f1.cfg}\r\n" );
+        writer.write( "{~add-ons/test/f2.cfg}\r\n{~add-ons/test/f1.cfg}\r\n" );
         writer.close( );
         project.refreshLocal( IResource.DEPTH_INFINITE,
             new NullProgressMonitor( ) );
@@ -228,6 +222,212 @@ public class ProjectDependencyListTests extends PDETest
 
         node = node.getNext( );
         assertEquals( files[1], node.getFile( ) );
+
+        cleanup( project );
+    }
+
+    /**
+     * New include is added
+     * 
+     * @throws CoreException
+     * @throws IOException
+     */
+    public void testFileIncludes_IncludeAdded( ) throws CoreException,
+        IOException
+    {
+        IProject project = createProject( "test" );
+
+        IFile files[] = new IFile[3];
+
+        files[0] = ResourceUtils.createFile( project, "_main.cfg",
+            "{~add-ons/test/f1.cfg}\r\n" );
+        files[1] = ResourceUtils.createFile( project, "f1.cfg", "" );
+        files[2] = ResourceUtils.createFile( project, "f2.cfg", "" );
+
+        project.build( IncrementalProjectBuilder.FULL_BUILD,
+            new NullProgressMonitor( ) );
+        DependencyListBuilder list = ProjectUtils.getCacheForProject( project )
+            .getDependencyList( );
+
+        assertEquals( true, list.isCreated( ) );
+        assertEquals( 2, list.getNodesCount( ) );
+
+        // now add a new file include
+        FileWriter writer = new FileWriter( files[0].getLocation( )
+            .toOSString( ) );
+
+        writer.write( "{~add-ons/test/f1.cfg}\r\n{~add-ons/test/f2.cfg}\r\n" );
+        writer.close( );
+        project.refreshLocal( IResource.DEPTH_INFINITE,
+            new NullProgressMonitor( ) );
+
+        // re-build now
+        project.build( IncrementalProjectBuilder.INCREMENTAL_BUILD,
+            new NullProgressMonitor( ) );
+
+        // check the new list
+        assertEquals( 3, list.getNodesCount( ) );
+        DependencyListNode node = list
+            .getNode( DependencyListBuilder.ROOT_NODE_KEY );
+        assertEquals( files[0], node.getFile( ) );
+
+        node = node.getNext( );
+        assertEquals( files[1], node.getFile( ) );
+
+        node = node.getNext( );
+        assertEquals( files[2], node.getFile( ) );
+
+        cleanup( project );
+    }
+
+    /**
+     * A file include is removed
+     * 
+     * @throws CoreException
+     * @throws IOException
+     */
+    public void testFileIncludes_IncludeRemoved( ) throws CoreException,
+        IOException
+    {
+        IProject project = createProject( "test" );
+
+        IFile files[] = new IFile[3];
+
+        files[0] = ResourceUtils.createFile( project, "_main.cfg",
+            "{~add-ons/test/f1.cfg}\r\n{~add-ons/test/f2.cfg}\r\n" );
+        files[1] = ResourceUtils.createFile( project, "f1.cfg", "" );
+        files[2] = ResourceUtils.createFile( project, "f2.cfg", "" );
+
+        project.build( IncrementalProjectBuilder.FULL_BUILD,
+            new NullProgressMonitor( ) );
+        DependencyListBuilder list = ProjectUtils.getCacheForProject( project )
+            .getDependencyList( );
+
+        assertEquals( true, list.isCreated( ) );
+        assertEquals( 3, list.getNodesCount( ) );
+
+        // now remove a file include
+        FileWriter writer = new FileWriter( files[0].getLocation( )
+            .toOSString( ) );
+
+        writer.write( "{~add-ons/test/f1.cfg}\r\n" );
+        writer.close( );
+        project.refreshLocal( IResource.DEPTH_INFINITE,
+            new NullProgressMonitor( ) );
+
+        // re-build now
+        project.build( IncrementalProjectBuilder.INCREMENTAL_BUILD,
+            new NullProgressMonitor( ) );
+
+        // check the new list
+        assertEquals( 2, list.getNodesCount( ) );
+        DependencyListNode node = list
+            .getNode( DependencyListBuilder.ROOT_NODE_KEY );
+        assertEquals( files[0], node.getFile( ) );
+
+        node = node.getNext( );
+        assertEquals( files[1], node.getFile( ) );
+
+        cleanup( project );
+    }
+
+    // TODO test combined folder + file directory add/removal
+
+    public void testIncludesCollapse( )
+    {
+        // add _main.cfg to an included folder
+    }
+
+    public void testIncludesExpand( )
+    {
+        // remove a _main.cfg from an included folder
+    }
+
+    /**
+     * Test the removal of _main.cfg from the root of the project's directory
+     * 
+     * @throws CoreException
+     * @throws IOException
+     */
+    public void testMainCFGRemoved( ) throws CoreException
+    {
+        IProject project = createProject( "test" );
+
+        IFile files[] = new IFile[3];
+
+        files[0] = ResourceUtils.createFile( project, "_main.cfg", "" );
+        files[1] = ResourceUtils.createFile( project, "f1.cfg", "" );
+        files[2] = ResourceUtils.createFile( project, "f2.cfg", "" );
+
+        project.build( IncrementalProjectBuilder.FULL_BUILD,
+            new NullProgressMonitor( ) );
+        DependencyListBuilder list = ProjectUtils.getCacheForProject( project )
+            .getDependencyList( );
+
+        assertEquals( true, list.isCreated( ) );
+        assertEquals( 1, list.getNodesCount( ) );
+
+        // now remove the _main.cfg
+        files[0].delete( true, new NullProgressMonitor( ) );
+
+        project.refreshLocal( IResource.DEPTH_INFINITE,
+            new NullProgressMonitor( ) );
+
+        // re-build now
+        project.build( IncrementalProjectBuilder.INCREMENTAL_BUILD,
+            new NullProgressMonitor( ) );
+
+        // check the new list
+        assertEquals( 2, list.getNodesCount( ) );
+
+        DependencyListNode node = list
+            .getNode( DependencyListBuilder.ROOT_NODE_KEY );
+        assertEquals( files[1], node.getFile( ) );
+
+        node = node.getNext( );
+        assertEquals( files[2], node.getFile( ) );
+
+        cleanup( project );
+    }
+
+    /**
+     * Test the addition of _main.cfg to the project's root directory
+     * 
+     * @throws CoreException
+     */
+    public void testMainCFGAdded( ) throws CoreException
+    {
+        IProject project = createProject( "test" );
+
+        IFile files[] = new IFile[3];
+
+        files[0] = ResourceUtils.createFile( project, "f1.cfg", "" );
+        files[1] = ResourceUtils.createFile( project, "f2.cfg", "" );
+
+        project.build( IncrementalProjectBuilder.FULL_BUILD,
+            new NullProgressMonitor( ) );
+        DependencyListBuilder list = ProjectUtils.getCacheForProject( project )
+            .getDependencyList( );
+
+        assertEquals( true, list.isCreated( ) );
+        assertEquals( 2, list.getNodesCount( ) );
+
+        // now add the _main.cfg
+        files[2] = ResourceUtils.createFile( project, "_main.cfg", "" );
+
+        project.refreshLocal( IResource.DEPTH_INFINITE,
+            new NullProgressMonitor( ) );
+
+        // re-build now
+        project.build( IncrementalProjectBuilder.INCREMENTAL_BUILD,
+            new NullProgressMonitor( ) );
+
+        // check the new list
+        assertEquals( 1, list.getNodesCount( ) );
+
+        DependencyListNode node = list
+            .getNode( DependencyListBuilder.ROOT_NODE_KEY );
+        assertEquals( files[2], node.getFile( ) );
 
         cleanup( project );
     }
