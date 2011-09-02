@@ -8,6 +8,8 @@
  *******************************************************************************/
 package org.wesnoth;
 
+import com.google.inject.Injector;
+
 import org.wesnoth.schema.SchemaParser;
 
 /**
@@ -16,12 +18,47 @@ import org.wesnoth.schema.SchemaParser;
  */
 public class WMLStandaloneSetup extends WMLStandaloneSetupGenerated
 {
+    private static WMLStandaloneSetup instance_;
+    private static Injector           injector_;
+
+    /**
+     * Returns the instance of the WML standalone setup
+     * 
+     * @return Returns the instance of the WML standalone setup
+     */
+    public static WMLStandaloneSetup getInstance( )
+    {
+        if( instance_ == null ) {
+            doSetup( );
+        }
+
+        return instance_;
+    }
+
+    /**
+     * Returns the injector configured with the WML Module
+     * 
+     * @return Returns the injector configured with the WML Module
+     */
+    public static Injector getInjector( )
+    {
+        getInstance( );
+        return injector_;
+    }
+
     /**
      * Setups this setup
      */
     public static void doSetup( )
     {
-        new WMLStandaloneSetup( ).createInjectorAndDoEMFRegistration( );
+        try {
+            instance_ = WMLStandaloneSetup.class.newInstance( );
+        } catch( InstantiationException e ) {
+            Logger.getInstance( ).logException( e );
+        } catch( IllegalAccessException e ) {
+            Logger.getInstance( ).logException( e );
+        }
+        injector_ = instance_.createInjectorAndDoEMFRegistration( );
 
         SchemaParser.reloadSchemas( false );
     }

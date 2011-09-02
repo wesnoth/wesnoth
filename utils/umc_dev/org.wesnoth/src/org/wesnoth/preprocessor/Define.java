@@ -15,8 +15,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.xtext.parser.IParser;
+
 import org.wesnoth.Logger;
-import org.wesnoth.parser.antlr.WMLParser;
+import org.wesnoth.WMLStandaloneSetup;
 import org.wesnoth.wml.SimpleWMLParser;
 
 /**
@@ -160,7 +162,7 @@ public class Define
     {
         try {
             SimpleWMLParser parser = new SimpleWMLParser( new File( file ),
-                new WMLParser( ) );
+                WMLStandaloneSetup.getInjector( ).getInstance( IParser.class ) );
 
             parser.parse( );
             return parser.getDefines( );

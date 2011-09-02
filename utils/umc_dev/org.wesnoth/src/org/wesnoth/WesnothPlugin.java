@@ -60,6 +60,7 @@ public class WesnothPlugin extends AbstractUIPlugin
         super.start( context );
         plugin = this;
         Logger.getInstance( ).startLogger( );
+        WMLStandaloneSetup.doSetup( );
 
         if( PlatformUI.isWorkbenchRunning( ) ) {
             if( WorkspaceUtils.checkPathsAreSet( null, false ) == false ) {
