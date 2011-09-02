@@ -169,7 +169,8 @@ public class ProjectUtils
 
         // set the path only if the project's location is outside the workspace
         // root
-        if( ! location.equals( root.getLocation( ).toOSString( ) ) ) {
+        if( location != null
+            && ! location.equals( root.getLocation( ).toOSString( ) ) ) {
             description = ResourcesPlugin.getWorkspace( )
                 .newProjectDescription( name );
             description.setLocation( new Path( location ) );
@@ -251,11 +252,7 @@ public class ProjectUtils
             // add wesnoth nature
             IProjectDescription tmpDescription = handle.getDescription( );
             tmpDescription
-                .setNatureIds( new String[] {
-                    WesnothProjectNature.ID_NATURE /*
-                                                    * ,
-                                                    * Constants.NATURE_XTEXT
-                                                    */} );
+                .setNatureIds( new String[] { WesnothProjectNature.ID_NATURE } );
             handle.setDescription( tmpDescription, monitor );
             monitor.worked( 5 );
 
@@ -280,15 +277,15 @@ public class ProjectUtils
             }
             monitor.worked( 10 );
 
-            // create the Core library link
-            createCoreLibraryFolder( handle, IResource.NONE );
-            monitor.worked( 10 );
-
             // save the install name
             ProjectCache cache = new ProjectCache( handle );
             cache.setInstallName( installName );
             cache.loadCache( );
             projectCache_.put( handle, cache );
+
+            // create the Core library link
+            createCoreLibraryFolder( handle, IResource.NONE );
+            monitor.worked( 10 );
 
             handle.refreshLocal( IResource.DEPTH_ONE, monitor );
         } catch( CoreException e ) {
