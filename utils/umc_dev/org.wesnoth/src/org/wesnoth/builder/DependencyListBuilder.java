@@ -125,11 +125,13 @@ public class DependencyListBuilder implements Serializable
         DependencyListNode backupPrevious = previous_, newNode = null;
         String fileParentProjectPath = file.getParent( )
             .getProjectRelativePath( ).toString( );
+        if( ! fileParentProjectPath.isEmpty( ) ) {
+            fileParentProjectPath = "/" + fileParentProjectPath;
+        }
 
         // we add a file in an existing processed directory.
-        if( directories_.contains( fileParentProjectPath ) ) {
-
-            int dirEntryIndex = directories_.indexOf( fileParentProjectPath );
+        int dirEntryIndex = directories_.indexOf( fileParentProjectPath );
+        if( dirEntryIndex != - 1 ) {
 
             DirectoryIncludeEntry entry = directoriesEntries_
                 .get( dirEntryIndex );
