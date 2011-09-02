@@ -75,7 +75,7 @@ public class WMLDocTag implements IWMLDocProvider
 
         title_ = Messages.WMLDocTag_0 + tag_.getName( ) + "':"; //$NON-NLS-1$
 
-        contents_ = null;
+        contents_ = "No information";
 
         if( ! tag_.get_Description( ).isEmpty( ) ) {
             StringBuilder content = new StringBuilder( );
