@@ -102,6 +102,8 @@ public class SimpleWMLParser
         config_ = new WMLConfig( file.getAbsolutePath( ) );
 
         currentFileLocation_ = file.getAbsolutePath( );
+
+        defines_ = new HashMap< String, Define >( );
     }
 
     /**
