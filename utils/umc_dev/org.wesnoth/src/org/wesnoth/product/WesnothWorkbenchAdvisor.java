@@ -51,7 +51,8 @@ public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack
     @Override
     public void postStartup( )
     {
-        // if we are testing, don't setup workspace.
+        // if we are testing, don't setup workspace, because we are
+        // setting the paths via the test suite
         boolean isTesting = ! StringUtils.isNullOrEmpty( System
             .getProperty( "isTesting" ) );
 
