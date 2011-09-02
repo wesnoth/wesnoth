@@ -148,4 +148,87 @@ public class ProjectDependencyListTests extends PDETest
 
         cleanup( project );
     }
+
+    public void testFilesIncludes( ) throws CoreException,
+        IOException
+    {
+        IProject project = createProject( "test" );
+
+        IFile files[] = new IFile[3];
+
+        files[0] = ResourceUtils.createFile( project, "_main.cfg",
+            "{~add-ons/test/f1.cfg}\r\n" +
+                "{~add-ons/test/f2.cfg}\r\n", true );
+        files[1] = ResourceUtils.createFile( project, "f1.cfg", "" );
+        files[2] = ResourceUtils.createFile( project, "f2.cfg", "" );
+
+        project.build( IncrementalProjectBuilder.FULL_BUILD,
+            new NullProgressMonitor( ) );
+        DependencyListBuilder list = ProjectUtils.getCacheForProject( project )
+            .getDependencyList( );
+
+        assertEquals( true, list.isCreated( ) );
+        assertEquals( 3, list.getNodesCount( ) );
+
+        DependencyListNode node = list
+            .getNode( DependencyListBuilder.ROOT_NODE_KEY );
+        assertEquals( files[0], node.getFile( ) );
+
+        node = node.getNext( );
+        assertEquals( files[1], node.getFile( ) );
+
+        node = node.getNext( );
+        assertEquals( files[2], node.getFile( ) );
+
+        cleanup( project );
+    }
+
+    public void testFileIncludesOrderChange( ) throws CoreException,
+        IOException
+    {
+        IProject project = createProject( "test" );
+
+        IFile files[] = new IFile[3];
+
+        files[0] = ResourceUtils.createFile( project, "_main.cfg",
+            "{~add-ons/test/f1.cfg}\r\n" +
+                "{~add-ons/test/f2.cfg}\r\n", true );
+        files[1] = ResourceUtils.createFile( project, "f1.cfg", "" );
+        files[2] = ResourceUtils.createFile( project, "f2.cfg", "" );
+
+        project.build( IncrementalProjectBuilder.FULL_BUILD,
+            new NullProgressMonitor( ) );
+        DependencyListBuilder list = ProjectUtils.getCacheForProject( project )
+            .getDependencyList( );
+
+        assertEquals( true, list.isCreated( ) );
+        assertEquals( 3, list.getNodesCount( ) );
+
+        // now reverse the include order
+        FileWriter writer = new FileWriter( files[0].getLocation( )
+            .toOSString( ) );
+
+        writer.write( "{~add-ons/test/f2.cfg}\r\n" +
+            "{~add-ons/test/f1.cfg}\r\n" );
+        writer.close( );
+        project.refreshLocal( IResource.DEPTH_INFINITE,
+            new NullProgressMonitor( ) );
+
+        // re-build now
+        project.build( IncrementalProjectBuilder.INCREMENTAL_BUILD,
+            new NullProgressMonitor( ) );
+
+        // check the re-ordering
+        DependencyListNode node = list
+            .getNode( DependencyListBuilder.ROOT_NODE_KEY );
+        assertEquals( files[0], node.getFile( ) );
+
+        node = node.getNext( );
+        assertEquals( files[2], node.getFile( ) );
+
+        node = node.getNext( );
+        assertEquals( files[1], node.getFile( ) );
+
+        cleanup( project );
+    }
 }
