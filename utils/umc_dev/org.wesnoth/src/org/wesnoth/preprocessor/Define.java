@@ -8,13 +8,16 @@
  *******************************************************************************/
 package org.wesnoth.preprocessor;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.wesnoth.Logger;
-import org.wesnoth.utils.ResourceUtils;
+import org.wesnoth.parser.antlr.WMLParser;
+import org.wesnoth.wml.SimpleWMLParser;
 
 /**
  * This represents a WML preprocessor define:
@@ -149,26 +152,22 @@ public class Define
     /**
      * Reads the defines from the specified file
      * 
-     * @param installName
-     *        The install name used when reading the defines
-     * 
      * @param file
      *        The file to read the defines from
      * @return Returns a map of defines
      */
-    public static Map< String, Define > readDefines( String installName,
-        String file )
+    public static Map< String, Define > readDefines( String file )
     {
-        DefinesSAXHandler handler = ( DefinesSAXHandler ) ResourceUtils
-            .getWMLSAXHandlerFromResource( installName, file,
-                new DefinesSAXHandler( ) );
+        try {
+            SimpleWMLParser parser = new SimpleWMLParser( new File( file ),
+                new WMLParser( ) );
 
-        if( handler != null ) {
-            return handler.getDefines( );
+            parser.parse( );
+            return parser.getDefines( );
+
+        } catch( FileNotFoundException e ) {
+            Logger.getInstance( ).logException( e );
+            return new HashMap< String, Define >( 0 );
         }
-
-        Logger.getInstance( ).log(
-            "There was an error on creating the Defines SAX handler" ); //$NON-NLS-1$
-        return new HashMap< String, Define >( 0 );
     }
 }

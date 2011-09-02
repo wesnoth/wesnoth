@@ -13,6 +13,10 @@ import com.google.common.base.Preconditions;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -22,6 +26,7 @@ import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
 
 import org.wesnoth.Logger;
+import org.wesnoth.preprocessor.Define;
 import org.wesnoth.projects.ProjectCache;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WMLUtils;
@@ -32,11 +37,13 @@ import org.wesnoth.wml.WMLVariable.Scope;
  */
 public class SimpleWMLParser
 {
-    protected WMLConfig    config_;
-    protected WMLRoot      root_;
-    protected ProjectCache projectCache_;
-    protected int          dependencyIndex_;
-    private String         currentFileLocation_;
+    private WMLConfig             config_;
+    private WMLRoot               root_;
+    private ProjectCache          projectCache_;
+    private int                   dependencyIndex_;
+    private String                currentFileLocation_;
+
+    private Map< String, Define > defines_;
 
     /**
      * Creates a new parser for the specified file
@@ -71,6 +78,8 @@ public class SimpleWMLParser
         dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
 
         currentFileLocation_ = file.getLocation( ).toOSString( );
+
+        defines_ = new HashMap< String, Define >( );
     }
 
     /**
@@ -105,9 +114,10 @@ public class SimpleWMLParser
         WMLTag currentTag = null;
         String currentTagName = "";
 
-        // clear tags
+        // clear previous parsed info
         config_.getWMLTags( ).clear( );
         config_.getEvents( ).clear( );
+        defines_.clear( );
 
         // nothing to parse!
         if( ! itor.hasNext( ) ) {
@@ -126,6 +136,9 @@ public class SimpleWMLParser
                 }
                 else if( currentTagName.equals( "campaign" ) ) {
                     config_.IsCampaign = true;
+                }
+                else if( currentTagName.equals( "preproc_define" ) ) {
+                    addNewDefine( currentTag );
                 }
             }
             else if( object instanceof WMLKey ) {
@@ -189,7 +202,56 @@ public class SimpleWMLParser
         }
     }
 
-    protected String getVariableNameByContext( EObject context )
+    /**
+     * Creates a new define from the specified definition tag
+     * and adds it to the list of defines
+     * 
+     * @param currentTag
+     *        The tag that contains the define definition
+     */
+    private void addNewDefine( WMLTag currentTag )
+    {
+        String defineName = "";
+        String location = "";
+        int linenum = 0;
+        String textdomain = "";
+        String value = "";
+        List< String > args = new ArrayList< String >( );
+
+        // parse general define information
+        for( WMLKey key: currentTag.getWMLKeys( ) ) {
+            String keyName = key.getName( );
+            if( keyName.equals( "name" ) ) {
+                defineName = key.getValue( );
+            }
+            else if( keyName.equals( "value" ) ) {
+                value = key.getValue( );
+            }
+            else if( keyName.equals( "textdomain" ) ) {
+                textdomain = key.getValue( );
+            }
+            else if( keyName.equals( "linenum" ) ) {
+                linenum = Integer.valueOf( key.getValue( ) );
+            }
+            else if( keyName.equals( "location" ) ) {
+                location = key.getValue( );
+            }
+        }
+
+        // parse define arguments
+        for( WMLTag arg: currentTag.getWMLTags( ) ) {
+            for( WMLKey key: arg.getWMLKeys( ) ) {
+                if( key.getName( ).equals( "name" ) ) {
+                    args.add( key.getValue( ) );
+                }
+            }
+        }
+
+        defines_.put( defineName, new Define( defineName, value, textdomain,
+            linenum, location, args ) );
+    }
+
+    private String getVariableNameByContext( EObject context )
     {
         String variableName = null;
 
@@ -208,7 +270,7 @@ public class SimpleWMLParser
         return variableName;
     }
 
-    protected void handleSetVariable( EObject context )
+    private void handleSetVariable( EObject context )
     {
         if( projectCache_ == null ) {
             return;
@@ -239,7 +301,7 @@ public class SimpleWMLParser
         variable.getScopes( ).add( new Scope( dependencyIndex_, nodeOffset ) );
     }
 
-    protected void handleUnsetVariable( EObject context )
+    private void handleUnsetVariable( EObject context )
     {
         if( projectCache_ == null ) {
             return;
@@ -280,5 +342,15 @@ public class SimpleWMLParser
     public WMLConfig getParsedConfig( )
     {
         return config_;
+    }
+
+    /**
+     * Returns the parsed Defines
+     * 
+     * @return Returns the parsed Defines
+     */
+    public Map< String, Define > getDefines( )
+    {
+        return defines_;
     }
 }

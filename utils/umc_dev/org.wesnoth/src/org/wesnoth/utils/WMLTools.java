@@ -94,57 +94,6 @@ public class WMLTools
     }
 
     /**
-     * Runs a wmlparser on the target resource
-     * 
-     * @param installName
-     *        The name of the install to use when using the wmlparser2 script.
-     * @param resourcePath
-     *        The path of the resource to run the parser on.
-     * @return null if there were errors or an ExternalToolInvoker instance
-     */
-    public static ExternalToolInvoker runWMLParser2( String installName,
-        String resourcePath )
-    {
-        Paths paths = Preferences.getPaths( installName );
-
-        if( ! ResourceUtils.isValidFilePath( resourcePath )
-            || ! checkWMLTool( paths, "wesnoth/wmlparser2.py" ) ) {
-            return null;
-        }
-
-        File wmlparserFile = new File( paths.getWMLToolsDir( )
-            + "/wesnoth/wmlparser2.py" ); //$NON-NLS-1$
-
-        List< String > arguments = new ArrayList< String >( );
-
-        arguments.add( wmlparserFile.getAbsolutePath( ) );
-
-        // xml output
-        arguments.add( "-x" ); //$NON-NLS-1$
-
-        // no preprocess
-        arguments.add( "-n" ); //$NON-NLS-1$
-
-        // wesnoth executable's path
-        arguments.add( "-w" ); //$NON-NLS-1$
-        arguments.add( paths.getWesnothExecutablePath( ) );
-
-        // add user data directory
-        arguments.add( "-c" ); //$NON-NLS-1$
-        arguments.add( paths.getUserDir( ) );
-
-        // add the working data directory
-        arguments.add( "-a" ); //$NON-NLS-1$
-        arguments.add( paths.getWorkingDir( ) );
-
-        // input file
-        arguments.add( "-i" ); //$NON-NLS-1$
-        arguments.add( resourcePath );
-
-        return runPythonScript( arguments, null, false, false, null, null );
-    }
-
-    /**
      * Runs "wmllint" on the specified resource (directory/file)
      * 
      * @param installName
@@ -539,7 +488,8 @@ public class WMLTools
         }
 
         arguments.add( "-a" ); //$NON-NLS-1$
-        arguments.add( Preferences.getString( Preferences.ADDON_MANAGER_ADDRESS ) );
+        arguments.add( Preferences
+            .getString( Preferences.ADDON_MANAGER_ADDRESS ) );
 
         arguments.add( "-p" ); //$NON-NLS-1$
         arguments.add( port );

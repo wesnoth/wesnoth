@@ -257,8 +257,7 @@ public class ProjectCache implements Serializable
             return;
         }
 
-        defines_ = Define.readDefines( getInstallName( ),
-            definesFile_.getAbsolutePath( ) );
+        defines_ = Define.readDefines( definesFile_.getAbsolutePath( ) );
         definesTimestamp_ = definesFile_.lastModified( );
     }
 

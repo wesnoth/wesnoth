@@ -147,7 +147,6 @@ public class PreprocessorUtils
 
         filesTimeStamps_.put( filePath, new File( filePath ).lastModified( ) );
 
-
         Paths paths = Preferences
             .getPaths( ProjectUtils.getCacheForProject(
                 file.getProject( ) ).getInstallName( ) );

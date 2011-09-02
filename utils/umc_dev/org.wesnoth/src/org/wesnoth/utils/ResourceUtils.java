@@ -25,13 +25,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -562,46 +555,6 @@ public class ResourceUtils
         SimpleWMLParser parser = new SimpleWMLParser( file );
         parser.parse( );
         return parser.getParsedConfig( ).ScenarioId;
-    }
-
-    /**
-     * Returns the SaxHandler for the parsed specified wml resource
-     * 
-     * @param installName
-     *        The name of the install used by the SAX Handler
-     * 
-     * @param resourcePath
-     *        The resourcepath to parse
-     * @param saxHandler
-     *        The SAX Handler used to handle the parsed wml
-     * @return A {@link DefaultHandler} instance based on the specified
-     *         parameters
-     */
-    // TODO: remove the sax handler, and use the xtext parser instead
-    public static DefaultHandler getWMLSAXHandlerFromResource(
-        String installName, String resourcePath, DefaultHandler saxHandler )
-    {
-        ExternalToolInvoker parser = WMLTools.runWMLParser2( installName,
-            resourcePath );
-        if( parser == null ) {
-            return null;
-        }
-        try {
-            SAXParser saxparser;
-            saxparser = SAXParserFactory.newInstance( ).newSAXParser( );
-
-            saxparser
-                .parse( new InputSource( parser.getStdout( ) ), saxHandler );
-            return saxHandler;
-        } catch( SAXException e ) {
-            Logger.getInstance( ).logException( e );
-            Logger.getInstance( ).logError(
-                "Using output: " + parser.getOutputContent( ) ); //$NON-NLS-1$
-            return null;
-        } catch( Exception e ) {
-            Logger.getInstance( ).logException( e );
-            return null;
-        }
     }
 
     /**
