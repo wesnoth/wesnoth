@@ -1179,7 +1179,7 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			int size = disp.screenshot(filename, map_screenshot);
 			if (size > 0) {
 				std::stringstream res;
-				res << filename << " ( " << utils::si_string(size, true, "B") << " )";
+				res << filename << " ( " << utils::si_string(size, true, _("unit_byte^B")) << " )";
 				gui2::show_message(disp.video(), _("Screenshot done"), res.str());
 			} else
 				gui2::show_message(disp.video(), _("Screenshot done"), "");

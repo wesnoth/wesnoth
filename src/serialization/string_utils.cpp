@@ -25,7 +25,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#include "../util.hpp"
+#include "util.hpp"
 #include <boost/array.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -295,7 +295,17 @@ std::string si_string_impl(T input, bool base2, std::string unit) {
 	strings9 prefixes;
 	strings9::const_iterator prefix;
 	if (input < 1.0) {
-		strings9 tmp = { { "", "m", "μ", "n", "p", "f", "a", "z", "y" } };
+		strings9 tmp = { {
+			"",
+			_("prefix_milli^m"),
+			_("prefix_micro^μ"),
+			_("prefix_nano^n"),
+			_("prefix_pico^p"),
+			_("prefix_femto^f"),
+			_("prefix_atto^a"),
+			_("prefix_zepto^z"),
+			_("prefix_yocto^y")
+		} };
 		prefixes = tmp;
 		prefix = prefixes.begin();
 		while (input < 1.0  && *prefix != prefixes.back()) {
@@ -303,7 +313,20 @@ std::string si_string_impl(T input, bool base2, std::string unit) {
 			++prefix;
 		}
 	} else {
-		strings9 tmp = { { "", (base2 ? "K":"k"), "M", "G", "T", "P", "E", "Z", "Y" } };
+		strings9 tmp = { {
+			"",
+			(base2 ?
+				_("prefix_kibi^K") :
+				_("prefix_kilo^k")
+			),
+			_("prefix_mega^M"),
+			_("prefix_giga^G"),
+			_("prefix_tera^T"),
+			_("prefix_peta^P"),
+			_("prefix_exa^E"),
+			_("prefix_zetta^Z"),
+			_("prefix_yotta^Y")
+		} };
 		prefixes = tmp;
 		prefix = prefixes.begin();
 		while (input > multiplier && *prefix != prefixes.back()) {
@@ -316,7 +339,7 @@ std::string si_string_impl(T input, bool base2, std::string unit) {
 	si_string_impl_stream_write(ss, input);
 	ss << ' '
 	   << *prefix
-	   << (base2 ? "i" : "")
+	   << (base2 ? _("infix_binary^i") : "")
 	   << unit;
 	return ss.str();
 }

@@ -409,7 +409,7 @@ namespace {
 	static std::string format_file_size(double size)
 	{
 		if(size > 0.0) {
-			return utils::si_string(size);
+			return utils::si_string(size, true, _("unit_byte^B"));
 		} else {
 			return "";
 		}

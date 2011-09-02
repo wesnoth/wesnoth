@@ -138,7 +138,13 @@ std::string signed_value(int val);
 /** Convert into a percentage (using the Unicode "−" and +0% convention */
 inline std::string signed_percent(int val) {return signed_value(val) + "%";}
 
-/** Convert into a string with an SI-postfix */
+/**
+ * Convert into a string with an SI-postfix.
+ *
+ * If the unit is to be translatable,
+ * a t_string should be passed as the third argument.
+ * _("unit_byte^B") is suggested as standard.
+ */
 std::string si_string(double input, bool base2=true, std::string unit="B");
 std::string si_string(int input, bool base2=true, std::string unit="B");
 /* Some extra-long versions */
