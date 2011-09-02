@@ -29,13 +29,19 @@ public class WesnothProjectsExplorer extends CommonNavigator implements
     /**
      * The ID of the Wesnoth Projects Explorer
      */
-    public static final String ID_PROJECTS_EXPLORER = "org.wesnoth.views.WesnothProjectsExplorer"; //$NON-NLS-1$
+    public static final String ID_PROJECTS_EXPLORER      = "org.wesnoth.views.WesnothProjectsExplorer"; //$NON-NLS-1$
 
     /**
      * The default name of the Wesnoth Core Library directory that exists
      * in each Wesnoth Project
      */
-    public static final String CORE_LIBRARY_NAME    = "Wesnoth Core Library";
+    public static final String CORE_LIBRARY_NAME         = "Wesnoth Core Library";
+
+    /**
+     * The default name of the Wesnoth Core Library directory that exists
+     * in each Wesnoth Project encoded ( space = %20 )
+     */
+    public static final String CORE_LIBRARY_NAME_ENCODED = "Wesnoth%20Core%20Library";
 
     /**
      * Creates a new {@link WesnothProjectsExplorer}

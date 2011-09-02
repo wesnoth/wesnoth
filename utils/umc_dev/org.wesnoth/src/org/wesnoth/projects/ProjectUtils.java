@@ -126,6 +126,8 @@ public class ProjectUtils
                 coreLibrary
                     .createLink( paths.getCoreDirPath( ), updateFlags,
                         new NullProgressMonitor( ) );
+
+                coreLibrary.setDerived( true, new NullProgressMonitor( ) );
             } catch( CoreException e ) {
                 Logger.getInstance( ).logException( e );
                 return false;

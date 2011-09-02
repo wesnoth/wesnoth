@@ -8,11 +8,18 @@
  *******************************************************************************/
 package org.wesnoth;
 
+import org.eclipse.xtext.resource.IResourceServiceProvider;
+
+import org.wesnoth.builder.WMLResourceServiceProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the
  * Equinox extension registry.
  */
-public class WMLRuntimeModule extends org.wesnoth.AbstractWMLRuntimeModule
+public class WMLRuntimeModule extends AbstractWMLRuntimeModule
 {
+    public Class< ? extends IResourceServiceProvider > bindIResourceServiceProvider( )
+    {
+        return WMLResourceServiceProvider.class;
+    }
 }
