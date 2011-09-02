@@ -192,6 +192,19 @@ public class Preferences extends AbstractPreferenceInitializer
     }
 
     /**
+     * Sets the contents of the specified preference name
+     * 
+     * @param prefName
+     *        The preference's content to set
+     * @param newValue
+     *        The new value to set
+     */
+    public static void setString( String prefName, String newValue )
+    {
+        getPreferences( ).setValue( prefName, newValue );
+    }
+
+    /**
      * Returns the contents of the specified preference as an int
      * or zero (0) if there is no such preference set
      * 
@@ -384,6 +397,17 @@ public class Preferences extends AbstractPreferenceInitializer
         }
 
         /**
+         * Sets the user directory
+         * 
+         * @param userDir
+         *        The new user directory path
+         */
+        public void setUserDir( String userDir )
+        {
+            setString( installPrefix_ + Preferences.WESNOTH_USER_DIR, userDir );
+        }
+
+        /**
          * Returns the working directory that contains the
          * <b>data</b> folder
          * 
@@ -393,6 +417,19 @@ public class Preferences extends AbstractPreferenceInitializer
         {
             return getString( installPrefix_ + Preferences.WESNOTH_WORKING_DIR )
                 .replace( '\\', '/' ) + IPath.SEPARATOR;
+        }
+
+        /**
+         * Sets the working directory that contains the
+         * <b>data</b> folder
+         * 
+         * @param workingDir
+         *        The new directory
+         */
+        public void setWorkingDir( String workingDir )
+        {
+            setString( installPrefix_ + Preferences.WESNOTH_WORKING_DIR,
+                workingDir );
         }
 
         /**
@@ -409,6 +446,19 @@ public class Preferences extends AbstractPreferenceInitializer
         }
 
         /**
+         * Sets the directory that contains the wml tools
+         * ( wmlscope, wmllint, wmlindent, wesnoth_addons_manager, etc)
+         * 
+         * @param wmlToolsDir
+         *        The new directory
+         */
+        public void setWMLToolsDir( String wmlToolsDir )
+        {
+            setString( installPrefix_ + Preferences.WESNOTH_WMLTOOLS_DIR,
+                wmlToolsDir );
+        }
+
+        /**
          * Returns the path to the wesnoth executable
          * 
          * @return Returns the path to the wesnoth executable
@@ -417,6 +467,18 @@ public class Preferences extends AbstractPreferenceInitializer
         {
             return getString( installPrefix_ + Preferences.WESNOTH_EXEC_PATH )
                 .replace( '\\', '/' );
+        }
+
+        /**
+         * Sets the path to the wesnoth executable
+         * 
+         * @param executablePath
+         *        The new path
+         */
+        public void setWesnothExecutablePath( String executablePath )
+        {
+            setString( installPrefix_ + Preferences.WESNOTH_EXEC_PATH,
+                executablePath );
         }
     }
 }
