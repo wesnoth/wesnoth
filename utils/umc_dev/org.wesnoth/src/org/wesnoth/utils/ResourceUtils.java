@@ -165,7 +165,7 @@ public class ResourceUtils
     }
 
     /**
-     * Creates the desired resource
+     * Creates the desired resource only if doesn't exist
      * 
      * @param resource
      *        the resource to be created (IFile/IFolder)
@@ -257,6 +257,24 @@ public class ResourceUtils
     }
 
     /**
+     * Creates a file in the specified project with the specified details.
+     * If the file already exists it won't be modified.
+     * 
+     * @param project
+     *        the project in which the file will be created
+     * @param fileName
+     *        the filename of the file
+     * @param fileContentsString
+     *        the text which will be contained in the file
+     * @return The newly created {@link IFile} instance
+     */
+    public static IFile createFile( IProject project, String fileName,
+        String fileContentsString )
+    {
+        return createFile( project, fileName, fileContentsString, false );
+    }
+
+    /**
      * Creates a file in the specified project with the specified details
      * 
      * @param project
@@ -278,7 +296,11 @@ public class ResourceUtils
             Logger.getInstance( ).logWarn( "file contents are null" ); //$NON-NLS-1$
         }
 
-        if( file.exists( ) && overwrite ) {
+        if( file.exists( ) && ! overwrite ) {
+            return file;
+        }
+
+        if( file.exists( ) ) {
             try {
                 file.delete( true, null );
             } catch( CoreException e ) {
@@ -286,9 +308,8 @@ public class ResourceUtils
             }
         }
 
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(
-            fileContentsString.getBytes( ) );
-        createResource( file, project, fileName, inputStream );
+        createResource( file, project, fileName, new ByteArrayInputStream(
+            fileContentsString.getBytes( ) ) );
 
         return file;
     }
@@ -715,7 +736,6 @@ public class ResourceUtils
             // check if the macro includes directories local
             // to this project
             String projectPath = project.getLocation( ).toOSString( );
-
 
             if( projectPath.contains( WMLUtils.toString( macro.getParameters( )
                 .get( 1 ) ) ) ) {
