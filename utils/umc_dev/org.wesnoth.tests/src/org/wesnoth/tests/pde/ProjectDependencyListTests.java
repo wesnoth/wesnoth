@@ -105,18 +105,23 @@ public class ProjectDependencyListTests extends PDETest
     {
         IProject project = createProject( "test" );
 
-        IFile files[] = new IFile[6];
+        IFile files[] = new IFile[9];
 
         ResourceUtils.createFolder( project, "f1" );
         ResourceUtils.createFolder( project, "f2" );
+        ResourceUtils.createFolder( project, "f3" );
 
-        files[0] = ResourceUtils.createFile( project, "_main.cfg",
-            "{~add-ons/test/f1}\r\n{~add-ons/test/f2}\r\n" );
+        files[0] = ResourceUtils
+            .createFile( project, "_main.cfg",
+                "{~add-ons/test/f1}\r\n{~add-ons/test/f2}\r\n{~add-ons/test/f3}\r\n" );
         files[1] = ResourceUtils.createFile( project, "f1/f1_file1.cfg", "" );
         files[2] = ResourceUtils.createFile( project, "f1/f1_file2.cfg", "" );
-        files[3] = ResourceUtils.createFile( project, "f2/f2_filea.cfg", "" );
-        files[4] = ResourceUtils.createFile( project, "f2/f2_fileb.cfg", "" );
-        files[5] = ResourceUtils.createFile( project, "f2/f2_filec.cfg", "" );
+        files[3] = ResourceUtils.createFile( project, "f1/f1_file3.cfg", "" );
+        files[4] = ResourceUtils.createFile( project, "f2/f2_file4.cfg", "" );
+        files[5] = ResourceUtils.createFile( project, "f2/f2_file5.cfg", "" );
+        files[6] = ResourceUtils.createFile( project, "f3/f3_filea.cfg", "" );
+        files[7] = ResourceUtils.createFile( project, "f3/f3_fileb.cfg", "" );
+        files[8] = ResourceUtils.createFile( project, "f3/f3_filec.cfg", "" );
 
         project.build( IncrementalProjectBuilder.FULL_BUILD,
             new NullProgressMonitor( ) );
@@ -124,13 +129,14 @@ public class ProjectDependencyListTests extends PDETest
             .getDependencyList( );
 
         assertEquals( true, list.isCreated( ) );
-        assertEquals( 6, list.getNodesCount( ) );
+        assertEquals( 9, list.getNodesCount( ) );
 
         // now reverse the include order
         FileWriter writer = new FileWriter( files[0].getLocation( )
             .toOSString( ) );
 
-        writer.write( "{~add-ons/test/f2}\r\n{~add-ons/test/f1}\r\n" );
+        writer.write( "{~add-ons/test/f3}\r\n{~add-ons/test/f2}\r\n" +
+            "{~add-ons/test/f1}\r\n" );
         writer.close( );
         project.refreshLocal( IResource.DEPTH_INFINITE,
             new NullProgressMonitor( ) );
@@ -145,7 +151,13 @@ public class ProjectDependencyListTests extends PDETest
         assertEquals( files[0], node.getFile( ) );
 
         node = node.getNext( );
-        assertEquals( files[3], node.getFile( ) );
+        assertEquals( files[6], node.getFile( ) );
+
+        node = node.getNext( );
+        assertEquals( files[7], node.getFile( ) );
+
+        node = node.getNext( );
+        assertEquals( files[8], node.getFile( ) );
 
         node = node.getNext( );
         assertEquals( files[4], node.getFile( ) );
@@ -158,6 +170,9 @@ public class ProjectDependencyListTests extends PDETest
 
         node = node.getNext( );
         assertEquals( files[2], node.getFile( ) );
+
+        node = node.getNext( );
+        assertEquals( files[3], node.getFile( ) );
 
         cleanup( project );
     }

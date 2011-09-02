@@ -672,58 +672,151 @@ public class DependencyListBuilder implements Serializable
                             tmpSwapNode.setPrevious( newNode );
                         }
                     }
-                    else if( prevDirIndex != - 1 && newDirIndex != - 1 ) {
-                        // directory <-> directory
-                        DirectoryIncludeEntry prevEntry = directoriesEntries_
-                            .get( prevDirIndex );
-                        DirectoryIncludeEntry newEntry = directoriesEntries_
-                            .get( newDirIndex );
+                    else {
+                        // directory <-> directory and
+                        // directory <-> file
+                        // This is code is a bit ugly and weird, but for the
+                        // moment I haven't found any better solution
+                        // If you want to understand it, you'd better use
+                        // a pen and paper. That's what I did when writing it!
+                        DirectoryIncludeEntry prevEntry = null;
+                        DirectoryIncludeEntry newEntry = null;
+                        DependencyListNode prevNode = null;
+                        DependencyListNode newNode = null;
+                        DependencyListNode middleNode = null;
+
+                        boolean prevIsDir = false, newIsDir = false;
 
                         // create a list for easier swap
                         List< DependencyListNode > nodes = new ArrayList< DependencyListNode >( );
-                        nodes.add( prevEntry.FirstNode.getPrevious( ) );
-                        nodes.add( prevEntry.FirstNode );
-                        nodes.add( prevEntry.LastNode );
-                        if( prevEntry.LastNode.getNext( ) != newEntry.FirstNode ) {
-                            nodes.add( prevEntry.LastNode.getNext( ) );
-                            nodes.add( newEntry.FirstNode.getPrevious( ) );
+
+                        if( prevDirIndex != - 1 ) {
+                            prevIsDir = true;
+                            prevEntry = directoriesEntries_.get( prevDirIndex );
+
+                            nodes.add( prevEntry.FirstNode.getPrevious( ) );
+                            nodes.add( prevEntry.FirstNode );
+                            nodes.add( prevEntry.LastNode );
+
+                            middleNode = prevEntry.LastNode.getNext( );
                         }
-                        nodes.add( newEntry.FirstNode );
-                        nodes.add( newEntry.LastNode );
-                        nodes.add( newEntry.LastNode.getNext( ) );
+                        else {
+                            prevNode = fileIncludes_.get( prevInclude );
+
+                            nodes.add( prevNode.getPrevious( ) );
+                            nodes.add( prevNode );
+
+                            middleNode = prevNode.getNext( );
+                        }
+
+                        if( newDirIndex != - 1 ) {
+                            newIsDir = true;
+                            newEntry = directoriesEntries_.get( newDirIndex );
+
+                            if( middleNode != newEntry.FirstNode ) {
+                                nodes.add( middleNode );
+                                nodes.add( newEntry.FirstNode.getPrevious( ) );
+                            }
+
+                            nodes.add( newEntry.FirstNode );
+                            nodes.add( newEntry.LastNode );
+                            nodes.add( newEntry.LastNode.getNext( ) );
+                        }
+                        else {
+                            newNode = fileIncludes_.get( newInclude );
+
+                            if( middleNode != newNode ) {
+                                nodes.add( middleNode );
+                                nodes.add( newNode.getPrevious( ) );
+                            }
+
+                            nodes.add( newNode );
+                            nodes.add( newNode.getNext( ) );
+                        }
 
                         int nodesSize = nodes.size( );
 
-                        int swapIndex = ( nodesSize == 8 ? 5: 3 );
-
                         // now swap the nodes
-                        DependencyListNode tmp = nodes.get( swapIndex );
-                        nodes.set( swapIndex, nodes.get( 1 ) );
-                        nodes.set( 1, tmp );
 
-                        swapIndex = ( nodesSize == 8 ? 6: 4 );
+                        if( prevIsDir && newIsDir ) {
+                            // dir <-> dir
+                            int swapIndex = ( nodesSize == 8 ? 5: 3 );
 
-                        tmp = nodes.get( swapIndex );
-                        nodes.set( swapIndex, nodes.get( 2 ) );
-                        nodes.set( 2, tmp );
+                            DependencyListNode tmp = nodes.get( swapIndex );
+                            nodes.set( swapIndex, nodes.get( 1 ) );
+                            nodes.set( 1, tmp );
 
-                        // update the links
+                            swapIndex = ( nodesSize == 8 ? 6: 4 );
 
-                        for( int i = 0; i < nodesSize - 1; i += 2 ) {
-                            DependencyListNode fst = nodes.get( i );
-                            DependencyListNode lst = nodes.get( i + 1 );
+                            tmp = nodes.get( swapIndex );
+                            nodes.set( swapIndex, nodes.get( 2 ) );
+                            nodes.set( 2, tmp );
 
-                            if( fst != null ) {
-                                fst.setNext( lst );
-                            }
+                            // update the links
+                            for( int i = 0; i < nodesSize - 1; i += 2 ) {
+                                DependencyListNode fst = nodes.get( i );
+                                DependencyListNode lst = nodes.get( i + 1 );
 
-                            if( lst != null ) {
-                                lst.setPrevious( fst );
+                                if( fst != null ) {
+                                    fst.setNext( lst );
+                                }
+
+                                if( lst != null ) {
+                                    lst.setPrevious( fst );
+                                }
                             }
                         }
-                    }
-                    else {
-                        // TODO file <-> directory
+                        else {
+                            // transform the list in the oposite case
+                            if( prevIsDir ) {
+                                Collections.reverse( nodes );
+                            }
+
+                            List< DependencyListNode > tmpNodes =
+                                new ArrayList< DependencyListNode >( nodes );
+
+                            if( nodesSize == 7 ) {
+                                nodes.set( 1, tmpNodes.get( 4 ) );
+                                nodes.set( 2, tmpNodes.get( 5 ) );
+                                nodes.set( 3, tmpNodes.get( 2 ) );
+                                nodes.set( 4, tmpNodes.get( 3 ) );
+                                nodes.set( 5, tmpNodes.get( 1 ) );
+                            }
+                            else {
+                                nodes.set( 1, tmpNodes.get( 2 ) );
+                                nodes.set( 2, tmpNodes.get( 3 ) );
+                                nodes.set( 3, tmpNodes.get( 1 ) );
+                            }
+
+                            // reverse to the original order
+                            if( prevIsDir ) {
+                                Collections.reverse( nodes );
+                            }
+
+                            // update the links
+                            for( int i = 0; i < nodesSize - 1; ) {
+                                DependencyListNode fst = nodes.get( i );
+                                DependencyListNode lst = nodes.get( i + 1 );
+
+                                if( fst != null ) {
+                                    fst.setNext( lst );
+                                }
+
+                                if( lst != null ) {
+                                    lst.setPrevious( fst );
+                                }
+
+                                if( i == 0 && prevIsDir ) {
+                                    ++i;
+                                }
+                                else if( i == nodesSize - 3 && ! prevIsDir ) {
+                                    ++i;
+                                }
+                                else {
+                                    i += 2;
+                                }
+                            }
+                        }
                     }
                 }
 
