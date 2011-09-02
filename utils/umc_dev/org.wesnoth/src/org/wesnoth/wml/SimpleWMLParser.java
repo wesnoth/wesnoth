@@ -36,6 +36,7 @@ public class SimpleWMLParser
     protected WMLRoot      root_;
     protected ProjectCache projectCache_;
     protected int          dependencyIndex_;
+    private String         currentFileLocation_;
 
     /**
      * Creates a new parser for the specified file
@@ -68,6 +69,8 @@ public class SimpleWMLParser
         projectCache_ = projCache;
 
         dependencyIndex_ = ResourceUtils.getDependencyIndex( file );
+
+        currentFileLocation_ = file.getLocation( ).toOSString( );
     }
 
     /**
@@ -88,6 +91,8 @@ public class SimpleWMLParser
         root_ = ( WMLRoot ) result.getRootASTElement( );
 
         config_ = new WMLConfig( file.getAbsolutePath( ) );
+
+        currentFileLocation_ = file.getAbsolutePath( ).toString( );
     }
 
     /**
@@ -107,13 +112,6 @@ public class SimpleWMLParser
         // nothing to parse!
         if( ! itor.hasNext( ) ) {
             return;
-        }
-
-        String currentFileLocation = root_.eResource( ).getURI( )
-            .toFileString( );
-        if( currentFileLocation == null ) {
-            currentFileLocation = root_.eResource( ).getURI( )
-                .toPlatformString( true );
         }
 
         while( itor.hasNext( ) ) {
@@ -183,8 +181,7 @@ public class SimpleWMLParser
             }
             else if( object instanceof WMLLuaCode ) {
                 SimpleLuaParser luaParser = new SimpleLuaParser(
-                    currentFileLocation,
-                    ( ( WMLLuaCode ) object ).getValue( ) );
+                    currentFileLocation_, ( ( WMLLuaCode ) object ).getValue( ) );
                 luaParser.parse( );
 
                 config_.getWMLTags( ).putAll( luaParser.getTags( ) );
