@@ -13,6 +13,7 @@ import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 import org.eclipse.ui.ide.IDE;
 
+import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.views.WesnothProjectsExplorer;
 
@@ -50,7 +51,12 @@ public class WesnothWorkbenchAdvisor extends WorkbenchAdvisorHack
     @Override
     public void postStartup( )
     {
-        if( WorkspaceUtils.checkPathsAreSet( null, false ) == false ) {
+        // if we are testing, don't setup workspace.
+        boolean isTesting = ! StringUtils.isNullOrEmpty( System
+            .getProperty( "isTesting" ) );
+
+        if( ! isTesting
+            && WorkspaceUtils.checkPathsAreSet( null, false ) == false ) {
             WorkspaceUtils.setupWorkspace( true );
         }
     }
