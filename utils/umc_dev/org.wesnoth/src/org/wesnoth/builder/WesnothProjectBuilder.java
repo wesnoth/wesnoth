@@ -165,7 +165,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
         // force creating the dependency list
         projectCache_.getDependencyList( ).createDependencyList( true );
-        System.out.println( projectCache_.getDependencyList( ) );
         boolean foundCfg = false;
 
         DependencyListNode node = null;
@@ -183,6 +182,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                 node = node.getNext( );
             } while( node != null );
         }
+
+        // now (re-) preprocess the _main.cfg
+        checkResource( project_.getFile( "_main.cfg" ), monitor );
 
         return foundCfg;
     }
@@ -292,10 +294,14 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
             } );
 
         foundCfg = ( ! nodesToProcess.isEmpty( ) );
+
         // process nodes
         for( DependencyListNode node: nodesToProcess ) {
             checkResource( node.getFile( ), monitor );
         }
+
+        // now (re-) preprocess the _main.cfg
+        checkResource( project_.getFile( "_main.cfg" ), monitor );
 
         return foundCfg;
     }
@@ -356,19 +362,19 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
             Logger.getInstance( ).log( "Resource: " + filePath ); //$NON-NLS-1$
 
             try {
-                monitor.subTask( String.format(
-                    Messages.WesnothProjectBuilder_19, filePath ) );
 
-                List< String > defines = new ArrayList< String >( );
-                // parse the core only if we don't have any macros file
-                if( ! new File( macrosFilePath ).exists( ) ) {
-                    defines.add( "SKIP_CORE" ); //$NON-NLS-1$
+                // preprocess the file only if there's no _main.cfg to gather
+                // everything, so we preprocess individually each file
+                if( ! project_.getFile( "_main.cfg" ).exists( ) ||
+                    project_.getFile( "_main.cfg" ).equals( resource ) ) {
+                    monitor.subTask( String.format(
+                        Messages.WesnothProjectBuilder_19, filePath ) );
+
+                    // we use a single _MACROS_.cfg file for each project
+                    PreprocessorUtils.getInstance( ).preprocessFile( file,
+                        macrosFilePath, new ArrayList< String >( ) );
+                    monitor.worked( 5 );
                 }
-
-                // we use a single _MACROS_.cfg file for each project
-                PreprocessorUtils.getInstance( ).preprocessFile( file,
-                    macrosFilePath, defines );
-                monitor.worked( 5 );
 
                 // process the AST ( Abstract Syntax Tree ) to get info for the
                 // file
