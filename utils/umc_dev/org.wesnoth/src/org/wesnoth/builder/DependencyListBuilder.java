@@ -54,6 +54,7 @@ public class DependencyListBuilder implements Serializable
      * (that is, they don't have a _main.cfg in them).
      */
     private List< String >                    directories_;
+
     /**
      * This list contains the first node of each directory in the
      * {@link #directories_} list
@@ -503,7 +504,7 @@ public class DependencyListBuilder implements Serializable
     }
 
     /**
-     * Updates the current node in the list
+     * Updates the specified node in the list
      * 
      * @param node
      *        The node to update
@@ -535,7 +536,7 @@ public class DependencyListBuilder implements Serializable
             boolean prevDeleted = ! newIncludes.contains( prevIncl );
 
             if( newIsNew ) {
-                // add the new directory before the previous included dir (if
+                // add the new include before the previous included dir (if
                 // any)
 
                 DependencyListNode backupPrevious = previous_;
@@ -690,6 +691,19 @@ public class DependencyListBuilder implements Serializable
         for( DependencyListNode node: list_.values( ) ) {
             node.file_ = project_.getFile( node.fileName_ );
         }
+    }
+
+    /**
+     * @return The number of the nodes in the list
+     */
+    public int getNodesCount( )
+    {
+        if( list_.isEmpty( ) ) {
+            return 0;
+        }
+
+        // we subtract the root node which is a duplicate
+        return list_.size( ) - 1;
     }
 
     @Override
