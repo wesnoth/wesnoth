@@ -152,9 +152,11 @@ public class ProjectCache implements Serializable
         ResourceUtils
             .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
 
+        FileInputStream inputStream = null;
+        ObjectInputStream deserializer = null;
         try {
-            FileInputStream inputStream = new FileInputStream( wesnothFile_ );
-            ObjectInputStream deserializer = new ObjectInputStream(
+            inputStream = new FileInputStream( wesnothFile_ );
+            deserializer = new ObjectInputStream(
                 inputStream );
             ProjectCache cache = ( ProjectCache ) deserializer.readObject( );
 
@@ -164,6 +166,9 @@ public class ProjectCache implements Serializable
             variables_ = cache.variables_;
 
             dependTree_.deserialize( project_ );
+
+            deserializer.close( );
+            inputStream.close( );
         }
         // invalid file contents. just save this instance to it.
         catch( EOFException e ) {
@@ -176,6 +181,18 @@ public class ProjectCache implements Serializable
             saveCache( );
         } catch( IOException e ) {
             Logger.getInstance( ).logException( e );
+        } finally {
+            try {
+                if( deserializer != null ) {
+                    deserializer.close( );
+                }
+
+                if( inputStream != null ) {
+                    inputStream.close( );
+                }
+            } catch( IOException e ) {
+                Logger.getInstance( ).logException( e );
+            }
         }
 
         readDefines( true );
@@ -194,16 +211,32 @@ public class ProjectCache implements Serializable
         ResourceUtils
             .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
 
+        FileOutputStream outputStream = null;
+        ObjectOutputStream serializer = null;
         try {
-            FileOutputStream outputStream = new FileOutputStream( wesnothFile_ );
-            ObjectOutputStream serializer = new ObjectOutputStream(
-                outputStream );
+            outputStream = new FileOutputStream( wesnothFile_ );
+            serializer = new ObjectOutputStream( outputStream );
             serializer.writeObject( this );
 
+            serializer.close( );
+
+            outputStream.close( );
             return true;
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
             return false;
+        } finally {
+            try {
+                if( serializer != null ) {
+                    serializer.close( );
+                }
+
+                if( outputStream != null ) {
+                    outputStream.close( );
+                }
+            } catch( IOException e ) {
+                Logger.getInstance( ).logException( e );
+            }
         }
     }
 
