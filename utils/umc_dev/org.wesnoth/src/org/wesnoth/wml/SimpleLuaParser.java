@@ -28,6 +28,7 @@ public class SimpleLuaParser
     private Map< String, WMLTag > tags_;
     private Reader                reader_;
     private String                location_;
+    private int                   lineOffset_;
 
     private final static String   TAG_REGEX             = "wml_actions\\..+\\( *cfg *\\)";
     private final static String   ATTRIBUTE_REGEX       = "cfg\\.[a-zA-Z0-9_]*";
@@ -41,11 +42,13 @@ public class SimpleLuaParser
      * @param contents
      *        The Lua code to parse
      */
-    public SimpleLuaParser( String location, String contents )
+    public SimpleLuaParser( String location, int lineOffset, String contents )
     {
         tags_ = new HashMap< String, WMLTag >( );
         reader_ = new StringReader( contents == null ? "": contents );
+
         location_ = location;
+        lineOffset_ = lineOffset;
     }
 
     /**
@@ -56,8 +59,7 @@ public class SimpleLuaParser
         BufferedReader reader = new BufferedReader( reader_ );
         String line = null;
 
-        // TODO: the lineCount should start from the location's offset
-        int lineCount = 0;
+        int lineCount = lineOffset_;
 
         WMLTag currentTag = null;
 

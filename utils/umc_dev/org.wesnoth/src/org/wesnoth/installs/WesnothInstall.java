@@ -8,6 +8,9 @@
  *******************************************************************************/
 package org.wesnoth.installs;
 
+// TODO: for each install, when first used, we should get data from
+// that installation:
+// - lua wml tags
 /**
  * This class represents a Wesnoth Install's data
  */

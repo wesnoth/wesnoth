@@ -196,7 +196,9 @@ public class SimpleWMLParser
             }
             else if( object instanceof WMLLuaCode ) {
                 SimpleLuaParser luaParser = new SimpleLuaParser(
-                    currentFileLocation_, ( ( WMLLuaCode ) object ).getValue( ) );
+                    currentFileLocation_,
+                    NodeModelUtils.getNode( object ).getStartLine( ),
+                    ( ( WMLLuaCode ) object ).getValue( ) );
                 luaParser.parse( );
 
                 config_.getWMLTags( ).putAll( luaParser.getTags( ) );
