@@ -303,7 +303,7 @@ std::string si_string_impl(T input, bool base2, std::string unit) {
 			++prefix;
 		}
 	} else {
-		strings9 tmp = { { "", "k", "M", "G", "T", "P", "E", "Z", "Y" } };
+		strings9 tmp = { { "", (base2 ? "K":"k"), "M", "G", "T", "P", "E", "Z", "Y" } };
 		prefixes = tmp;
 		prefix = prefixes.begin();
 		while (input > multiplier && *prefix != prefixes.back()) {
