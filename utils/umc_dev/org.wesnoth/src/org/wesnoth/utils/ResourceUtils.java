@@ -729,7 +729,7 @@ public class ResourceUtils
              * - {~add-ons/... }
              */
             if( ! ( text.startsWith( "{campaigns" ) ) && //$NON-NLS-1$
-                ! ( text.equals( "{~add-ons" ) ) ) {
+                ! ( text.startsWith( "{~add-ons" ) ) ) {
                 continue;
             }
 
