@@ -267,8 +267,9 @@ public class ResourceUtils
      *        the text which will be contained in the file
      * @param overwrite
      *        true to overwrite the file if it already exists
+     * @return The newly created {@link IFile} instance
      */
-    public static void createFile( IProject project, String fileName,
+    public static IFile createFile( IProject project, String fileName,
         String fileContentsString, boolean overwrite )
     {
         IFile file = project.getFile( fileName );
@@ -288,6 +289,8 @@ public class ResourceUtils
         ByteArrayInputStream inputStream = new ByteArrayInputStream(
             fileContentsString.getBytes( ) );
         createResource( file, project, fileName, inputStream );
+
+        return file;
     }
 
     /**

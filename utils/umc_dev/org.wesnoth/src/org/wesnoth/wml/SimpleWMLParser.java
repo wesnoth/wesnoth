@@ -92,7 +92,7 @@ public class SimpleWMLParser
 
         config_ = new WMLConfig( file.getAbsolutePath( ) );
 
-        currentFileLocation_ = file.getAbsolutePath( ).toString( );
+        currentFileLocation_ = file.getAbsolutePath( );
     }
 
     /**

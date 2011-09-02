@@ -8,18 +8,20 @@
  *******************************************************************************/
 package org.wesnoth.tests.pde;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 
-import org.wesnoth.projects.ProjectCache;
+import org.wesnoth.builder.DependencyListBuilder;
 import org.wesnoth.projects.ProjectUtils;
+import org.wesnoth.utils.ResourceUtils;
 
 public class ProjectDependencyListTests extends PDETest
 {
-
     private IProject createProject( String name ) throws CoreException
     {
         IProject project = ResourcesPlugin.getWorkspace( ).getRoot( )
@@ -30,21 +32,54 @@ public class ProjectDependencyListTests extends PDETest
         }
 
         project = ProjectUtils.createWesnothProject( "testproject", null,
-            "default", new NullProgressMonitor( ) );
+            "default", true, new NullProgressMonitor( ) );
         return project;
     }
 
-    public void testEmptyDPL( ) throws CoreException
+    private void cleanup( IProject project ) throws CoreException
+    {
+        project.delete( true, true, new NullProgressMonitor( ) );
+
+        ProjectUtils.getProjectCaches( ).clear( );
+    }
+
+    public void testEmptyPDL( ) throws CoreException
     {
         IProject project = createProject( "test" );
-        // build the project
+        project.refreshLocal( IResource.DEPTH_INFINITE,
+            new NullProgressMonitor( ) );
         project.build( IncrementalProjectBuilder.FULL_BUILD,
             new NullProgressMonitor( ) );
-        ProjectCache cache = ProjectUtils.getCacheForProject( project );
 
-        assertEquals( true, cache.getDependencyList( ).isCreated( ) );
-        assertEquals( 0, cache.getDependencyList( ).getNodesCount( ) );
+        DependencyListBuilder list = ProjectUtils.getCacheForProject( project )
+            .getDependencyList( );
 
-        project.delete( true, true, new NullProgressMonitor( ) );
+        assertEquals( true, list.isCreated( ) );
+        assertEquals( 0, list.getNodesCount( ) );
+
+        cleanup( project );
+    }
+
+    public void testSingleFile( ) throws Throwable
+    {
+        IProject project = createProject( "test" );
+
+        IFile maincfg = ResourceUtils.createFile( project, "_main.cfg", "",
+            true );
+        project.refreshLocal( IResource.DEPTH_INFINITE,
+            new NullProgressMonitor( ) );
+        project.build( IncrementalProjectBuilder.FULL_BUILD,
+            new NullProgressMonitor( ) );
+
+        DependencyListBuilder list = ProjectUtils.getCacheForProject( project )
+            .getDependencyList( );
+
+        assertEquals( true, list.isCreated( ) );
+        assertEquals( 1, list.getNodesCount( ) );
+
+        assertEquals( maincfg,
+            list.getNode( DependencyListBuilder.ROOT_NODE_KEY ).getFile( ) );
+
+        cleanup( project );
     }
 }

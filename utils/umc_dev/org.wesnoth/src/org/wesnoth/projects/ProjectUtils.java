@@ -163,6 +163,31 @@ public class ProjectUtils
     public static IProject createWesnothProject( String name, String location,
         String installName, IProgressMonitor monitor )
     {
+        return createWesnothProject( name, location, installName, false,
+            monitor );
+    }
+
+    /**
+     * Creates a new wesnoth project with the specified name
+     * and on the specified location on disk
+     * 
+     * @param name
+     *        The name of the new project
+     * @param location
+     *        The location of the new project
+     * @param installName
+     *        The name of the install this project belongs to
+     * @param skipCreateBuildXML
+     *        True to skip creating a build xml even if needed
+     * @param monitor
+     *        The monitor to monitor the progress
+     * @return A project handle
+     * @throws CoreException
+     */
+    public static IProject createWesnothProject( String name, String location,
+        String installName, boolean skipCreateBuildXML,
+        IProgressMonitor monitor )
+    {
         IWorkspaceRoot root = ResourcesPlugin.getWorkspace( ).getRoot( );
         IProject newProject = root.getProject( name );
         IProjectDescription description = null;
@@ -176,7 +201,8 @@ public class ProjectUtils
             description.setLocation( new Path( location ) );
         }
 
-        createWesnothProject( newProject, description, installName, monitor );
+        createWesnothProject( newProject, description, installName,
+            skipCreateBuildXML, monitor );
 
         return newProject;
     }
@@ -192,6 +218,8 @@ public class ProjectUtils
      *        the default description used when the project is created
      * @param installName
      *        The name of the install this project belongs to
+     * @param skipCreateBuildXML
+     *        True to skip creating a build xml even if needed
      * @param monitor
      *        the monitor will do a 30 worked amount in the method
      * @return
@@ -203,7 +231,7 @@ public class ProjectUtils
      */
     public static int createWesnothProject( IProject handle,
         IProjectDescription description, String installName,
-        IProgressMonitor monitor )
+        boolean skipCreateBuildXML, IProgressMonitor monitor )
     {
         if( handle == null || handle.exists( ) ) {
             return - 1;
@@ -256,24 +284,27 @@ public class ProjectUtils
             handle.setDescription( tmpDescription, monitor );
             monitor.worked( 5 );
 
-            // add the build.xml file, but only if the project is not located
-            // into the data/campaigns or user's /addons directory
-            Paths paths = Preferences.getPaths( installName );
-            String normalizedPath = StringUtils.normalizePath( projectPath );
-            if( ! normalizedPath.contains( StringUtils.normalizePath( paths
-                .getCampaignDir( ) ) )
-                && ! normalizedPath.contains( StringUtils
-                    .normalizePath( paths.getAddonsDir( ) ) ) ) {
+            if( ! skipCreateBuildXML ) {
+                // add the build.xml file, but only if the project is not
+                // located
+                // into the data/campaigns or user's /addons directory
+                Paths paths = Preferences.getPaths( installName );
+                String normalizedPath = StringUtils.normalizePath( projectPath );
+                if( ! normalizedPath.contains( StringUtils.normalizePath( paths
+                    .getCampaignDir( ) ) )
+                    && ! normalizedPath.contains( StringUtils
+                        .normalizePath( paths.getAddonsDir( ) ) ) ) {
 
-                ArrayList< ReplaceableParameter > param = new ArrayList< ReplaceableParameter >( );
-                param.add( new ReplaceableParameter(
-                    "$$project_name", handle.getName( ) ) ); //$NON-NLS-1$
-                param.add( new ReplaceableParameter(
-                    "$$project_dir_name", handle.getName( ) ) ); //$NON-NLS-1$
-                ResourceUtils.createFile( handle,
-                    "build.xml", //$NON-NLS-1$
-                    TemplateProvider.getInstance( ).getProcessedTemplate(
-                        "build_xml", param ), true ); //$NON-NLS-1$
+                    ArrayList< ReplaceableParameter > param = new ArrayList< ReplaceableParameter >( );
+                    param.add( new ReplaceableParameter(
+                        "$$project_name", handle.getName( ) ) ); //$NON-NLS-1$
+                    param.add( new ReplaceableParameter(
+                        "$$project_dir_name", handle.getName( ) ) ); //$NON-NLS-1$
+                    ResourceUtils.createFile( handle,
+                        "build.xml", //$NON-NLS-1$
+                        TemplateProvider.getInstance( ).getProcessedTemplate(
+                            "build_xml", param ), true ); //$NON-NLS-1$
+                }
             }
             monitor.worked( 10 );
 
