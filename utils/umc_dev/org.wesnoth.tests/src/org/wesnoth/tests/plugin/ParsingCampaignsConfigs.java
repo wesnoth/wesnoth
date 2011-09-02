@@ -30,7 +30,7 @@ import org.wesnoth.wml.WMLConfig;
  * The class tests the parsed campaigns config files
  */
 @RunWith( value = Parameterized.class )
-public class WMLParsingCampaignsConfigs extends WMLTests
+public class ParsingCampaignsConfigs extends WMLTests
 {
     private String         campaignDir_;
     private String         campaignId;
@@ -39,14 +39,9 @@ public class WMLParsingCampaignsConfigs extends WMLTests
     private List< String > parsedCampaignIds_;
     private List< String > parsedScenarioIds_;
 
-    public WMLParsingCampaignsConfigs( String[] data )
+    public ParsingCampaignsConfigs( String[] data ) throws Exception
     {
-        try {
-            setUp( );
-        } catch( Exception e ) {
-            e.printStackTrace( );
-            assertTrue( false );
-        }
+        setUp( );
 
         campaignDir_ = data[0];
         campaignId = data[1];
@@ -65,30 +60,24 @@ public class WMLParsingCampaignsConfigs extends WMLTests
 
     @Override
     @Ignore
-    public void testFile( String path )
+    public void testFile( String path ) throws FileNotFoundException
     {
         // just config files
         if( ! path.endsWith( ".cfg" ) ) {
             return;
         }
 
-        try {
-            SimpleWMLParser wmlParser = new SimpleWMLParser( new File( path ),
-                getParser( ) );
-            wmlParser.parse( );
-            WMLConfig config = wmlParser.getParsedConfig( );
+        SimpleWMLParser wmlParser = new SimpleWMLParser( new File( path ),
+            getParser( ) );
+        wmlParser.parse( );
+        WMLConfig config = wmlParser.getParsedConfig( );
 
-            if( ! StringUtils.isNullOrEmpty( config.ScenarioId ) ) {
-                parsedScenarioIds_.add( config.ScenarioId );
-            }
+        if( ! StringUtils.isNullOrEmpty( config.ScenarioId ) ) {
+            parsedScenarioIds_.add( config.ScenarioId );
+        }
 
-            if( ! StringUtils.isNullOrEmpty( config.CampaignId ) ) {
-                parsedCampaignIds_.add( config.CampaignId );
-            }
-
-        } catch( FileNotFoundException e ) {
-            e.printStackTrace( );
-            assertTrue( false );
+        if( ! StringUtils.isNullOrEmpty( config.CampaignId ) ) {
+            parsedCampaignIds_.add( config.CampaignId );
         }
     }
 

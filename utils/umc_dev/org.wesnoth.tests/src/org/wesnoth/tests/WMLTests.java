@@ -1,6 +1,7 @@
 package org.wesnoth.tests;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.List;
@@ -65,11 +66,11 @@ public abstract class WMLTests extends AbstractXtextTests
         grammar_ = ( WMLGrammarAccess ) getGrammarAccess( );
 
         // get the wesnoth data path from the user
-        dataPath_ = System.getProperty( "wesnothDataDir" );
+        dataPath_ = System.getProperty( "wesnothWorkingDir" ) + "/data/";
         if( StringUtils.isNullOrEmpty( dataPath_ )
             || ! new File( dataPath_ ).exists( ) ) {
             System.out
-                .println( "Please set the wesnoth data dir before testing!." );
+                .println( "Please set the 'wesnothWorkingDir' argument before testing!." );
             assertTrue( false );
         }
     }
@@ -220,7 +221,7 @@ public abstract class WMLTests extends AbstractXtextTests
     }
 
     @Ignore
-    public void testPath( String path )
+    public void testPath( String path ) throws FileNotFoundException
     {
         File theFile = new File( path );
 
@@ -240,7 +241,7 @@ public abstract class WMLTests extends AbstractXtextTests
     }
 
     @Ignore
-    public void testFile( String path )
+    public void testFile( String path ) throws FileNotFoundException
     {
 
     }

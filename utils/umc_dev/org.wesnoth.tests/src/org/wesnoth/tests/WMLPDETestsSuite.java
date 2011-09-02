@@ -11,13 +11,11 @@ package org.wesnoth.tests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import org.wesnoth.tests.grammar.WMLFilesTests;
-import org.wesnoth.tests.grammar.WMLGrammarTokensTests;
-import org.wesnoth.tests.plugin.ParsingCampaignsConfigs;
+import org.wesnoth.tests.pde.ProjectDependencyListTests;
 
 @RunWith( Suite.class )
-@Suite.SuiteClasses( { WMLGrammarTokensTests.class, WMLFilesTests.class,
-    ParsingCampaignsConfigs.class } )
-public class WMLTestsSuite
+@Suite.SuiteClasses( { ProjectDependencyListTests.class } )
+public class WMLPDETestsSuite
 {
+
 }
