@@ -52,7 +52,7 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 				.set_percentage((completed*100)/total);
 
 			std::stringstream ss;
-			ss << utils::si_string(total, true, _("unit_byte^B"))
+			ss << utils::si_string(completed, true, _("unit_byte^B"))
 			   << "/"
 			   << utils::si_string(total, true, _("unit_byte^B"));
 
