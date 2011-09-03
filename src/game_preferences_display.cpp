@@ -183,7 +183,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_floating_labels_button_(disp.video(), _("Show Floating Labels"), gui::button::TYPE_CHECK),
 	  turn_dialog_button_(disp.video(), _("Turn Dialog"), gui::button::TYPE_CHECK),
 	  whiteboard_on_start_button_(disp.video(), _("Enable Planning Mode on Start"), gui::button::TYPE_CHECK),
-	  hide_whiteboard_button_(disp.video(), _("Hide Allies' Plans by Default"), gui::button::TYPE_CHECK),
+	  hide_whiteboard_button_(disp.video(), _("Hide Allies’ Plans by Default"), gui::button::TYPE_CHECK),
 	  turn_bell_button_(disp.video(), _("Turn Bell"), gui::button::TYPE_CHECK),
 	  show_team_colors_button_(disp.video(), _("Show Team Colors"), gui::button::TYPE_CHECK),
 	  show_color_cursors_button_(disp.video(), _("Show Color Cursors"), gui::button::TYPE_CHECK),

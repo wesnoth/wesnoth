@@ -3857,8 +3857,9 @@ stringfixes = {
 ("Grey Deep Water", "Gray Deep Water"),
 ("Clean Grey Cobbles", "Clean Gray Cobbles"),
 
-# Fix apostrophe
+# Fix apostrophes
 ("Hides allies'", "Hides allies’"),
+("Hide Allies' Plans by Default", "Hide Allies’ Plans by Default"),
 ),
 
 "wesnoth-manual" : (
