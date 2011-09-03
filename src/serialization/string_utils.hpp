@@ -150,7 +150,9 @@ std::string si_string(int input, bool base2=true, std::string unit="B");
 std::string si_string(unsigned input, bool base2=true, std::string unit="B");
 /* Some extra-long versions */
 std::string si_string(long input, bool base2=true, std::string unit="B");
+std::string si_string(unsigned long input, bool base2=true, std::string unit="B");
 std::string si_string(long long input, bool base2=true, std::string unit="B");
+std::string si_string(unsigned long long input, bool base2=true, std::string unit="B");
 std::string si_string(long double input, bool base2=true, std::string unit="B");
 
 /**

@@ -352,8 +352,14 @@ std::string si_string_impl(T input, bool base2, std::string unit) {
 
 	return si_string_impl2(input, base2, unit);
 }
-// Specialisation for unsigned as the template causes warnings otherwise
+// Specialisation for unsigned types as the template causes warnings otherwise
 template <> std::string si_string_impl(unsigned input, bool base2, std::string unit) {
+	return si_string_impl2(input, base2, unit);
+}
+template <> std::string si_string_impl(unsigned long input, bool base2, std::string unit) {
+	return si_string_impl2(input, base2, unit);
+}
+template <> std::string si_string_impl(unsigned long long input, bool base2, std::string unit) {
 	return si_string_impl2(input, base2, unit);
 }
 // Public functions
@@ -369,7 +375,13 @@ std::string si_string(unsigned input, bool base2, std::string unit) {
 std::string si_string(long input, bool base2, std::string unit) {
 	return si_string_impl(input, base2, unit);
 }
+std::string si_string(unsigned long input, bool base2, std::string unit) {
+	return si_string_impl(input, base2, unit);
+}
 std::string si_string(long long input, bool base2, std::string unit) {
+	return si_string_impl(input, base2, unit);
+}
+std::string si_string(unsigned long long input, bool base2, std::string unit) {
 	return si_string_impl(input, base2, unit);
 }
 std::string si_string(long double input, bool base2, std::string unit) {
