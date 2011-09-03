@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-08-27 10:14+0200\n"
-"PO-Revision-Date: 2011-07-09 05:44-0500\n"
+"PO-Revision-Date: 2011-09-03 16:32-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <en@li.org>\n"
 "Language: en_GB\n"
@@ -131,20 +131,16 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
 msgid "Chat message aging"
-msgstr ""
+msgstr "Chat message ageing"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:133
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Disable "
 "aging with 0."
 msgstr ""
-"Number of seconds to wait for a ping reply before we time out. Disable with "
-"0."
+"Number of minutes to wait before clearing an ingame chat message. Disable "
+"ageing with 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
@@ -5004,7 +5000,7 @@ msgstr "Toggle planning mode."
 
 #: src/menu_events.cpp:2626
 msgid "Access whiteboard options dialog."
-msgstr ""
+msgstr "Access whiteboard options dialog."
 
 #: src/menu_events.cpp:2669
 msgid "Unknown debug level: '$level'."
@@ -6472,28 +6468,26 @@ msgid "female^neutral"
 msgstr "neutral"
 
 #: src/whiteboard/manager.cpp:972
+#| msgid "SHOW ALL allies' plans"
 msgid "SHOW ALL allies’ plans"
-msgstr ""
+msgstr "SHOW ALL allies’ plans"
 
 #: src/whiteboard/manager.cpp:973
+#| msgid "HIDE ALL allies' plans"
 msgid "HIDE ALL allies’ plans"
-msgstr ""
+msgstr "HIDE ALL allies’ plans"
 
 #: src/whiteboard/manager.cpp:987
-#, fuzzy
-#| msgid "Show replay"
 msgid "Show plans for $player"
-msgstr "Show replay"
+msgstr "Show plans for $player"
 
 #: src/whiteboard/manager.cpp:989
-#, fuzzy
-#| msgid "Replace with $player"
 msgid "Hide plans for $player"
-msgstr "Replace with $player"
+msgstr "Hide plans for $player"
 
 #: src/whiteboard/manager.cpp:992
 msgid "Whiteboard Options"
-msgstr ""
+msgstr "Whiteboard Options"
 
 #~ msgid "Animate Map"
 #~ msgstr "Animate Map"
