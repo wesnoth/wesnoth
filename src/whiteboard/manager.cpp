@@ -968,8 +968,8 @@ void manager::options_dlg()
 	std::vector<std::string> options;
 	utils::string_map t_vars;
 
-	options.push_back(_("SHOW ALL allies' plans"));
-	options.push_back(_("HIDE ALL allies' plans"));
+	options.push_back(_("SHOW ALL allies’ plans"));
+	options.push_back(_("HIDE ALL allies’ plans"));
 
 	//populate list of networked allies
 	foreach(team &t, *resources::teams)

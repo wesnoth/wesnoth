@@ -165,6 +165,10 @@ stringfixes = {
 # add the font for Old English
 ("DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc", "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"),
 ("DejaVu Sans,Andagii,WenQuanYi Zen Hei", "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"),
+
+# Fix apostrophes
+("SHOW ALL allies'", "SHOW ALL allies’"),
+("HIDE ALL allies'", "HIDE ALL allies’"),
 ),
 
 "wesnoth-anl" : (
@@ -3852,6 +3856,9 @@ stringfixes = {
 # Use "Gray"
 ("Grey Deep Water", "Gray Deep Water"),
 ("Clean Grey Cobbles", "Clean Gray Cobbles"),
+
+# Fix apostrophe
+("Hides allies'", "Hides allies’"),
 ),
 
 "wesnoth-manual" : (

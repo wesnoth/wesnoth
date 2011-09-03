@@ -404,7 +404,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	whiteboard_on_start_button_.set_help_string(_("Activates Planning Mode on game start"));
 
 	hide_whiteboard_button_.set_check(hide_whiteboard());
-	hide_whiteboard_button_.set_help_string(_("Hides allies' Planning Mode plans in multiplayer games"));
+	hide_whiteboard_button_.set_help_string(_("Hides allies’ Planning Mode plans in multiplayer games"));
 
 	turn_bell_button_.set_check(turn_bell());
 	turn_bell_button_.set_help_string(_("Play a bell sound at the beginning of your turn"));
