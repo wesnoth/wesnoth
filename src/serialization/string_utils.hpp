@@ -147,6 +147,7 @@ inline std::string signed_percent(int val) {return signed_value(val) + "%";}
  */
 std::string si_string(double input, bool base2=true, std::string unit="B");
 std::string si_string(int input, bool base2=true, std::string unit="B");
+std::string si_string(unsigned input, bool base2=true, std::string unit="B");
 /* Some extra-long versions */
 std::string si_string(long input, bool base2=true, std::string unit="B");
 std::string si_string(long long input, bool base2=true, std::string unit="B");

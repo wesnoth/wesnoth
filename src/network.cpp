@@ -1016,9 +1016,9 @@ std::string get_bandwidth_stats(int hour)
 
 	ss << "Hour stat starting from " << hour << "\n " << std::left << std::setw(bandwidth_stats::type_width) <<  "Type of packet" << "| "
 		<< std::setw(bandwidth_stats::packet_width)<< "out #"  << "| "
-		<< std::setw(bandwidth_stats::bytes_width) << "out kb" << "| " /* Are these bytes or bits? base10 or base2? */
+		<< std::setw(bandwidth_stats::bytes_width) << "out KiB" << "| "
 		<< std::setw(bandwidth_stats::packet_width)<< "in #"  << "| "
-		<< std::setw(bandwidth_stats::bytes_width) << "in kb" << "\n";
+		<< std::setw(bandwidth_stats::bytes_width) << "in KiB" << "\n";
 
 	bandwidth_stats_output outputer(ss);
 	std::for_each(hour_stats[hour].begin(), hour_stats[hour].end(), outputer);

@@ -26,6 +26,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 
 namespace gui2 {
 
@@ -50,14 +51,13 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 			find_widget<tprogress_bar>(&(window_.get()), "progress", false)
 				.set_percentage((completed*100)/total);
 
-			string_map symbols;
-			symbols["total"] = str_cast(total/1024);
-			symbols["completed"] = str_cast(completed/1024);
+			std::stringstream ss;
+			ss << utils::si_string(total, true, _("unit_byte^B"))
+			   << "/"
+			   << utils::si_string(total, true, _("unit_byte^B"));
 
 			find_widget<tlabel>(&(window_.get()), "numeric_progress", false)
-					.set_label(vgettext(
-						  "$completed KiB/$total KiB"
-						, symbols));
+					.set_label(ss.str());
 			window_->invalidate_layout();
 		}
 	}

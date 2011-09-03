@@ -364,7 +364,7 @@ namespace {
 
 						config response;
 						response.add_child("campaigns",campaign_list);
-						std::cerr << " size: " << (network::send_data(response, sock)/1024) << "kb\n";
+						std::cerr << " size: " << (network::send_data(response, sock)/1024) << "KiB\n";
 					}
 					else if (const config &req = data.child("request_campaign"))
 					{
@@ -373,7 +373,7 @@ namespace {
 						if (!campaign) {
 							network::send_data(construct_error("Add-on '" + req["name"].str() + "'not found."), sock);
 						} else {
-							std::cerr << " size: " << (file_size(campaign["filename"])/1024) << "kb\n";
+							std::cerr << " size: " << (file_size(campaign["filename"])/1024) << "KiB\n";
 							network::send_file(campaign["filename"], sock);
 							int downloads = campaign["downloads"].to_int() + 1;
 							campaign["downloads"] = downloads;

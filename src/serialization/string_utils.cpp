@@ -276,6 +276,9 @@ void si_string_impl_stream_write(std::stringstream &ss, T input) {
 template <> void si_string_impl_stream_write(std::stringstream &ss, int input) {
 	ss << input;
 }
+template <> void si_string_impl_stream_write(std::stringstream &ss, unsigned input) {
+	ss << input;
+}
 template <> void si_string_impl_stream_write(std::stringstream &ss, long input) {
 	ss << input;
 }
@@ -284,6 +287,20 @@ template <> void si_string_impl_stream_write(std::stringstream &ss, long long in
 }
 template <typename T>
 std::string si_string_impl(T input, bool base2, std::string unit) {
+	// (input == -input) can happen if we're at the minimum of the native signed integer type, so make sure we don't recurse infinitely
+	// It will still give bad output, but it won't overflow the stack
+	if (input < 0 && input != -input)
+		return unicode_minus + si_string(-input, base2, unit);
+
+    return si_string_impl(input, base2, unit);
+}
+// Specialisation for unsigned as the template causes warnings otherwise
+template <> std::string si_string_impl(unsigned input, bool base2, std::string unit) {
+    return si_string_impl(input, base2, unit);
+}
+// A second layer of indirection, for the above specialisation
+template <typename T>
+std::string si_string_impl2(T input, bool base2, std::string unit) {
 	const int multiplier = base2 ? 1024 : 1000;
 	// (input == -input) can happen if we're at the minimum of the native signed integer type, so make sure we don't recurse infinitely
 	// It will still give bad output, but it won't overflow the stack
@@ -347,6 +364,9 @@ std::string si_string(double input, bool base2, std::string unit) {
 	return si_string_impl(input, base2, unit);
 }
 std::string si_string(int input, bool base2, std::string unit) {
+	return si_string_impl(input, base2, unit);
+}
+std::string si_string(unsigned input, bool base2, std::string unit) {
 	return si_string_impl(input, base2, unit);
 }
 std::string si_string(long input, bool base2, std::string unit) {
