@@ -254,7 +254,6 @@ void wait::join_game(bool observe)
 		//if the client is allowed to choose their team, instead of having
 		//it set by the server, do that here.
 		std::string leader_choice, gender_choice;
-		int faction_choice = 0;
 
 		if(allow_changes) {
 			events::event_context context;
@@ -316,11 +315,11 @@ void wait::join_game(bool observe)
 				set_result(QUIT);
 				return;
 			}
-			faction_choice = res;
+			const int faction_choice = res;
 			leader_choice = leader_selector.get_selected_leader();
 			gender_choice = leader_selector.get_selected_gender();
 
-			assert(unsigned(faction_choice) < leader_sides.size());
+			assert(static_cast<unsigned>(faction_choice) < leader_sides.size());
 
 			config faction;
 			config& change = faction.add_child("change_faction");
