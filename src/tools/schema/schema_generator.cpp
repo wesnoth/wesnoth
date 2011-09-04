@@ -83,8 +83,8 @@ int main(int argc, char *argv[]){
 					<< "Shows this usage message.\n"
 					<< " -s, --src-dir <input_dir>\t"
 					<<"Select the input directory.\n"
-					<< " -o, --output <output_dir>\t"
-					<<"Select the input directory.\n"
+					<< " -o, --output <output_file>\t"
+					<<"Select the output file.\n"
 					<< " -V, --version\t\t\t"
 					<< "Version of tool\n";
 			return 0;
