@@ -2,91 +2,99 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
-Version 1.9.8+svn:
+Version 1.9.9:
  * Campaigns:
    * Under the Burning Suns:
      * Fixed Naga Sentinel gaining an AMLA after 32 XP instead of the usual 150.
      * Gave to Desert Shydes and Desert Stars 30% defense on void terrain.
+
  * Graphics:
     * Terrains:
-      * Added Gray Coastal Reef and Tropical Coastal Reef
+      * Added Gray Coastal Reef and Tropical Coastal Reef.
+
  * Language and i18n:
    * Updated translations: British English, Estonian, French, Galician, Greek,
-     Indonesian, Irish, Latin, Macedonian, Old English, Russian, Vietnamese.
+     Hewbrew, Indonesian, Irish, Latin, Macedonian, Old English, Russian,
+     Vietnamese.
+
  * Multiplayer:
    * A New Land:
      * Fixed 'agriculture' not getting translated sometimes and research
-       for agriculture not getting counted if the research order wasn't changed
-       (bug #16477)
+       for agriculture not getting counted if the research order wasn't
+       changed. (bug #16477)
      * Options to share knowledge with those who have learned everything about
-       whatever are no longer shown (bug #14822).
+       whatever are no longer shown. (bug #14822)
+
  * Music and sound effects:
-   * New track "Battle Epic" by Doug Kaufman
+   * New track "Battle Epic" by Doug Kaufman.
+
  * Unit changes and balancing:
    * Decreased cost of Giant Rat from 13 to 6.
    * Various changes to the defense, movement and resistances of the Giant Rat.
-   * Increased the XP requirements of the Arif from 40 to 47
-   * Increased the cost of the Falcon from 10 to 12
-   * Decreased the beak and claw attack of the Falcon by one each to 2-3 and 5-1
-   * Decreased the HP of the Falcon from 19 to 18
-   * Increased the XP requirements of the Falcon from 20 to 24
-   * Increased the XP requirements of the Hakim from 33 to 39
-   * Decreased the HP of the Jundi from 36 to 32
-   * Increased the XP requirements of the Jundi from 35 to 44
-   * Increased the cost of the Khaiyal from 20 to 21
-   * Decreased the blade resistance of the Khaiyal from 30% to 20%
-   * Decreased the pierce resistance of the Khaiyal from 0% to -10%
-   * Decreased the impact resistance of the Khaiyal from 10% to 0%
-   * Increased the melee attack of the Mighwar from 7-5 to 8-5
-   * Decreased the HP of the Mighwar from 57 to 53
-   * Increased the melee attack of the Monawish from 6-4 to 7-4
-   * Decreased the HP of the Monawish from 45 to 41
-   * Decreased the HP of the Naffat from 32 to 28
-   * Increased the XP requirements of the Naffat from 38 to 44
-   * Increased the cost of the Naffat from 17 to 19
-   * Decreased the melee attack of the Qatif-al-nar to 10-2
-   * Decreased the ranged attack of the Qatif-al-nar to 8-3
-   * Increased the XP requirements of the Rasikh from 40 to 150
-   * Decreased the melee attack of the Tineen to 10-3
-   * Decreased the impact resistance of the Falcon line from 0% to -10%
-   * The Falcon line now gets 2 traits, one normal trait and the feral trait
-   * The Naffat line is no longer able to get the strong trait
+   * Increased the XP requirements of the Arif from 40 to 47.
+   * Increased the cost of the Falcon from 10 to 12.
+   * Decreased the beak and claw attack of the Falcon by one each to 2-3 and
+     5-1.
+   * Decreased the HP of the Falcon from 19 to 18.
+   * Increased the XP requirements of the Falcon from 20 to 24.
+   * Increased the XP requirements of the Hakim from 33 to 39.
+   * Decreased the HP of the Jundi from 36 to 32.
+   * Increased the XP requirements of the Jundi from 35 to 44.
+   * Increased the cost of the Khaiyal from 20 to 21.
+   * Decreased the blade resistance of the Khaiyal from 30% to 20%.
+   * Decreased the pierce resistance of the Khaiyal from 0% to -10%.
+   * Decreased the impact resistance of the Khaiyal from 10% to 0%.
+   * Increased the melee attack of the Mighwar from 7-5 to 8-5.
+   * Decreased the HP of the Mighwar from 57 to 53.
+   * Increased the melee attack of the Monawish from 6-4 to 7-4.
+   * Decreased the HP of the Monawish from 45 to 41.
+   * Decreased the HP of the Naffat from 32 to 28.
+   * Increased the XP requirements of the Naffat from 38 to 44.
+   * Increased the cost of the Naffat from 17 to 19.
+   * Decreased the melee attack of the Qatif-al-nar to 10-2.
+   * Decreased the ranged attack of the Qatif-al-nar to 8-3.
+   * Increased the XP requirements of the Rasikh from 40 to 150.
+   * Decreased the melee attack of the Tineen to 10-3.
+   * Decreased the impact resistance of the Falcon line from 0% to -10%.
+   * The Falcon line now gets 2 traits, one normal trait and the feral trait.
+   * The Naffat line is no longer able to get the strong trait.
    * Converted units with khalifatelightfoot to khalifatefoot movetype:
-     * Increased the fire resistance from -10% to 0% (Hakim only)
-     * Increased the impact resistance from -20% to -10%
-     * Increased the village defense from 50% to 60%
-     * Removed the khalifatelightfoot movetype
+     * Increased the fire resistance from -10% to 0% (Hakim only).
+     * Increased the impact resistance from -20% to -10%.
+     * Increased the village defense from 50% to 60%.
+     * Removed the khalifatelightfoot movetype.
    * Changes to khalifatefoot movetype:
-     * Increased the frozen defense from 20% to 30%
+     * Increased the frozen defense from 20% to 30%.
    * Changes to khalifatearmoredfoot movetype:
-     * Increased the shallow water and swamp mp from 2 to 3
-     * Decreased the mushroom grove defense from 50% to 40%
+     * Increased the shallow water and swamp mp from 2 to 3.
+     * Decreased the mushroom grove defense from 50% to 40%.
    * Changes to the khalifatehorse movetype:
      * Increased the shallow water, swamp, cave, and mushroom grove mp cost to
-       4 in all cases
-     * Increased the forest mp cost from 2 to 3
-     * Decreased the frozen mp cost from 4 to 2
-     * Decreased the swamp defense from 30% to 20%
-     * Decreased the cave defense from 40% to 20%
-     * Decreased the mushroom grove defense from 40% to 20%
-     * Increased the frozen defense from 10% to 30%
-     * Increased the impact resistance from -10% to 0%
+       4 in all cases.
+     * Increased the forest mp cost from 2 to 3.
+     * Decreased the frozen mp cost from 4 to 2.
+     * Decreased the swamp defense from 30% to 20%.
+     * Decreased the cave defense from 40% to 20%.
+     * Decreased the mushroom grove defense from 40% to 20%.
+     * Increased the frozen defense from 10% to 30%.
+     * Increased the impact resistance from -10% to 0%.
    * Changes to the khalifatearmoredhorse movetype:
      * Increased the shallow water, swamp, cave, and mushroom grove mp cost to
-       4 in all cases
-     * Increased the reef mp cost from 2 to 3
-     * Decreased the frozen mp cost from 4 to 2
-     * Decreased the cave defense from 40% to 20%
-     * Decreased the mushroom grove defense from 40% to 20%
-     * Increased the frozen defense from 10% to 30%
-     * Increased the swamp defense from 10% to 20%
-     * Decreased the hill defense from 60% to 50%
+       4 in all cases.
+     * Increased the reef mp cost from 2 to 3.
+     * Decreased the frozen mp cost from 4 to 2.
+     * Decreased the cave defense from 40% to 20%.
+     * Decreased the mushroom grove defense from 40% to 20%.
+     * Increased the frozen defense from 10% to 30%.
+     * Increased the swamp defense from 10% to 20%.
+     * Decreased the hill defense from 60% to 50%.
+
  * User interface:
    * Whiteboard planning system:
-     * Added support for planning multi-turn moves
-     * Added the option to hide allies' plans during a network game
-     * Made action numbers colored according to team color
-     * Made plan execution halt upon discovering hidden units
+     * Added support for planning multi-turn moves.
+     * Added the option to hide allies' plans during a network game.
+     * Made action numbers colored according to team color.
+     * Made plan execution halt upon discovering hidden units.
 
 
 Version 1.9.8:

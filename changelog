@@ -1,4 +1,4 @@
-Version 1.9.8+svn:
+Version 1.9.9:
  * AI:
    * Fixed bug #16117: added a way to supress E_NOT_REACHED_DESTINATION to lua
    * Fixed bug #16247: modify SoF 8 to let the dragon attack aggressively
@@ -14,8 +14,11 @@ Version 1.9.8+svn:
      * Fixed Naga Sentinel gaining an AMLA after 32 XP instead of the usual 150
      * Gave to Desert Shydes and Desert Stars 30% defense on void terrain
  * Engine:
-   * Fixed bug #16173: Using n or cl while a fake unit is moving causes the game to segfault by creating game_display::fake_unit as an exception safe interace to the fake_units
-   * Improved unit_map lookup from std::map to boost::unordered_map to decrease lookup times
+   * Fixed bug #16173: Using n or cl while a fake unit is moving causes the game
+     to segfault by creating game_display::fake_unit as an exception safe
+     interace to the fake_units
+   * Improved unit_map lookup from std::map to boost::unordered_map to decrease
+     lookup times
    * Fixed bug #16151: Discover new units on recruit
    * Fixed bug #17780: Allow objects to 'increase' damage to 0
    * Fixed bug #18098: now recruits and recalls capture village if recruited or
@@ -23,7 +26,8 @@ Version 1.9.8+svn:
  * Graphics:
    * Fixed bug #18524: [replace_map] doesn't force window repainting
    * Fixed bugs #18504 #18493 and #18017: Time of Day and fading interact poorly
-   * Fixed bugs #18475 and #17292: Mage of Light and Sorceress Halo/animation glitches.
+   * Fixed bugs #18475 and #17292: Mage of Light and Sorceress Halo/animation
+     glitches.
    * Terrains:
      * Added Gray Coastal Reef, Tropical Coastal Reef terrain
      * Swamp no longer prevents embellishments from being drawn
@@ -31,11 +35,12 @@ Version 1.9.8+svn:
        tree
  * Language and i18n:
    * Updated translations: British English, Estonian, French, Galician, Greek,
-     Hewbrew, Indonesian, Irish, Latin, Macedonian, Old English, Russian, Vietnamese
+     Hewbrew, Indonesian, Irish, Latin, Macedonian, Old English, Russian,
+     Vietnamese
  * Lua API:
    * Added: function wesnoth.set_dialog_active (patch #2767)
-   * Expanded wesnoth.races entries to return the wml object a race was constructed
-     from via the __cfg field.
+   * Expanded wesnoth.races entries to return the wml object a race was
+     constructed from via the __cfg field.
    * New function wesnoth.get_traits returning a table holding the global traits
      known to the engine.
  * Multiplayer:
@@ -133,8 +138,8 @@ Version 1.9.8+svn:
      is no longer supported, but instead all locations on the map chosen if
      no SLF keys are supplied. No wmllint rule in official release but patch
      in bug #18522.
-     [event][item]: If x = and y= aren't explicitely given no longer throw an error
-     but choose locations according to SLF behavior.
+     [event][item]: If x = and y= aren't explicitely given no longer throw an
+     error but choose locations according to SLF behavior.
    * Allowed [modify_turns]current= to change to an earlier current turn
    * Added [primary_attack] support to [harm_unit]
    * Added wml tag [store_items]
