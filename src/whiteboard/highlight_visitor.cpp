@@ -94,7 +94,11 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 		if(itor != side_actions_->end())
 			selected_action_ = *itor;
 	}
+
 	//Overwrite the above selected_action_ if we find a better one
+	if(side_actions_->empty()) {
+		return;
+	}
 	BOOST_REVERSE_FOREACH(action_ptr act, *side_actions_)
 	{
 		/**@todo "is_numbering_hex" is not the "correct" criterion by which to
