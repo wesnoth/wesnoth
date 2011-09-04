@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-27 10:14+0200\n"
+"POT-Creation-Date: 2011-09-04 11:42+0200\n"
 "PO-Revision-Date: 2008-10-25 11:30+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -3253,8 +3253,9 @@ msgstr ""
 msgid "Load Game..."
 msgstr "S'està carrega la partida..."
 
-#: src/gui/dialogs/network_transmission.cpp:59
-msgid "$completed KiB/$total KiB"
+#: src/gui/dialogs/network_transmission.cpp:55
+#: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1182
+msgid "unit_byte^B"
 msgstr ""
 
 #: src/gui/dialogs/title_screen.cpp:296
@@ -3292,7 +3293,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
 #: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:982
-#: src/tests/gui/test_gui2.cpp:422
+#: src/tests/gui/test_gui2.cpp:425
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 
