@@ -16,6 +16,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liblua", "liblua.vcproj", "{01AE7104-A4B1-428E-BA7C-460FE656AE5C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "schema_generator", "schema_generator.vcproj", "{9FDDFD0B-C23F-47DB-97F7-7BDCA3E754D9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4A16638B-127B-4AE8-8E0B-4B211B96F976} = {4A16638B-127B-4AE8-8E0B-4B211B96F976}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
