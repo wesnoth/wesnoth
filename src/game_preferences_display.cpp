@@ -1264,13 +1264,12 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 
 bool show_theme_dialog(display& disp)
 {
-	int action = 0;
 	std::vector<std::string> options = disp.get_theme().get_known_themes();
 	if(!options.empty()){
 		gui2::tsimple_item_selector dlg(_("Choose theme"), _("Saved preference:") + (" " + preferences::theme()), options);
 
 		dlg.show(disp.video());
-		action = dlg.selected_index();
+		const int action = dlg.selected_index();
 
 		if(action >= 0){
 		preferences::set_theme(options[action]);
