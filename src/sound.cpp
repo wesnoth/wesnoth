@@ -335,7 +335,7 @@ bool init_sound() {
 }
 
 void close_sound() {
-	int numtimesopened, frequency, channels;
+	int frequency, channels;
 	Uint16 format;
 
 	if(mix_ok) {
@@ -346,7 +346,7 @@ void close_sound() {
 		stop_music();
 		mix_ok = false;
 
-		numtimesopened = Mix_QuerySpec(&frequency, &format, &channels);
+		int numtimesopened = Mix_QuerySpec(&frequency, &format, &channels);
 		if(numtimesopened == 0) {
 			ERR_AUDIO << "Error closing audio device: " << Mix_GetError() << "\n";
 		}
