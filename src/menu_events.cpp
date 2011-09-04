@@ -409,7 +409,6 @@ void menu_handler::status_table(int selected)
 		const bool known = viewing_team.knows_about_team(n, network::nconnections() > 0);
 		const bool enemy = viewing_team.is_enemy(n+1);
 
-		bool fogged;
 		std::stringstream str;
 
 		const team_data data = calculate_team_data(teams_[n],n+1);
@@ -419,7 +418,7 @@ void menu_handler::status_table(int selected)
 		//output the number of the side first, and this will
 		//cause it to be displayed in the correct color
 		if(leader != units_.end()) {
-			fogged=viewing_team.fogged(leader->get_location());
+			const bool fogged = viewing_team.fogged(leader->get_location());
 			// Add leader image. If it's fogged
 			// show only a random leader image.
 			if (!fogged || known || game_config::debug) {
