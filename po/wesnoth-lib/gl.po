@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-09-04 11:42+0200\n"
-"PO-Revision-Date: 2011-07-25 03:29+0200\n"
+"PO-Revision-Date: 2011-09-05 01:58+0200\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -23,6 +23,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"com>\n"
 "com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.2\n"
@@ -86,17 +87,13 @@ msgstr "Arrecife costeiro"
 
 #. [terrain_type]: id=gray_reef
 #: data/core/terrain.cfg:93
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Gray Coastal Reef"
-msgstr "Arrecife costeiro"
+msgstr "Arrecife costeiro gris"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:113
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Tropical Coastal Reef"
-msgstr "Arrecife costeiro"
+msgstr "Arrecife costeiro tropical"
 
 #. [terrain_type]: id=swamp_water
 #. [terrain_type]: id=quagmire
@@ -795,10 +792,8 @@ msgstr "Cidade dos humanos"
 
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1380
-#, fuzzy
-#| msgid "Ruined Hill Stone Village"
 msgid "Windmill Village"
-msgstr "Vila de pedra elevada en ruínas"
+msgstr "Vila cun muíño de vento"
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1393
@@ -2545,7 +2540,7 @@ msgstr "Activar o modo de planificación ao comezar."
 
 #: src/game_preferences_display.cpp:186
 msgid "Hide Allies’ Plans by Default"
-msgstr ""
+msgstr "Agochar os plans dos aliados de maneira predeterminada."
 
 #: src/game_preferences_display.cpp:187
 msgid "Turn Bell"
@@ -2820,6 +2815,8 @@ msgstr "Activar o modo de planificación ao comezo de cada partida."
 #: src/game_preferences_display.cpp:407
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr ""
+"Agocha os plans dos aliados no modo de planificación nas partidas de varios "
+"xogadores."
 
 #: src/game_preferences_display.cpp:410
 msgid "Play a bell sound at the beginning of your turn"
@@ -3137,7 +3134,7 @@ msgstr "Cargar unha partida…"
 #: src/gui/dialogs/network_transmission.cpp:55
 #: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1182
 msgid "unit_byte^B"
-msgstr ""
+msgstr "B"
 
 #: src/gui/dialogs/title_screen.cpp:296
 msgid "Version "

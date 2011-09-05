@@ -11,15 +11,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-27 10:14+0200\n"
-"PO-Revision-Date: 2011-05-09 20:52+0200\n"
-"Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
+"POT-Creation-Date: 2011-09-04 11:42+0200\n"
+"PO-Revision-Date: 2011-09-05 04:34+0200\n"
+"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.2\n"
 
@@ -30,10 +31,6 @@ msgstr "4 xog. — Unha nova terra"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
@@ -399,41 +396,29 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of agriculture"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Compartir coñecementos de agricultura."
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of mining"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Compartir coñecementos de minería."
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of warfare"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Compartir coñecementos sobre a guerra."
 
 #. [message]: speaker=unit
@@ -592,12 +577,6 @@ msgstr "Seguir coma antes"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:167
-#, fuzzy
-#| msgid ""
-#| "Agriculture\n"
-#| "Farmers produce +1 gold\n"
-#| "Study Progress: $player_$side_number|.farming.progress|/$player_"
-#| "$side_number|.farming.target"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
