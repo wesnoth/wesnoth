@@ -132,7 +132,7 @@ public:
 	typedef shared_object<t_string_base> super;
 	typedef t_string_base base;
 	typedef t_string_base::walker walker;
-	typedef typename base::t_token t_token;
+	typedef base::t_token t_token;
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string();
