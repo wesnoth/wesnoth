@@ -239,6 +239,9 @@ void game_display::highlight_hex(map_location hex)
 
 void game_display::display_unit_hex(map_location hex)
 {
+	if (!hex.valid())
+		return;
+
 	wb::scoped_planned_unit_map future; //< Lasts for whole method.
 
 	const unit *u = get_visible_unit(hex, teams_[viewing_team()], !viewpoint_);

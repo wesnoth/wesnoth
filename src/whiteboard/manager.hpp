@@ -117,7 +117,7 @@ public:
 	void save_temp_move();
 
 	/// Creates an attack or attack-move action for the current side
-	void save_temp_attack(const map_location& attack_from, const map_location& target_hex);
+	void save_temp_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice);
 
 	/// Creates a recruit action for the current side
 	/// @return true if manager has saved a planned recruit

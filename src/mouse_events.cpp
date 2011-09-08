@@ -454,25 +454,19 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 	//see if we're trying to do a attack or move-and-attack
 	if(((!browse && !commands_disabled) || resources::whiteboard->is_active()) && attack_from.valid()) {
-		if (resources::whiteboard->is_active() && clicked_u.valid()) {
-			// Unselect the current hex, and create planned attack for whiteboard
-			selected_hex_ = map_location();
-			gui().select_hex(map_location());
-			gui().clear_attack_indicator();
-			gui().set_route(NULL);
-			show_partial_move_ = false;
-			gui().unhighlight_reach();
-			current_paths_ = pathfind::paths();
-			current_route_.steps.clear();
 
-			resources::whiteboard->save_temp_attack(attack_from, clicked_u->get_location());
-			return false;
-
-		} else if (u.valid() && clicked_u.valid() && u->side() == side_num_) {
+		if (((u.valid() && u->side() == side_num_) || resources::whiteboard->is_active()) && clicked_u.valid() ) {
 			if (attack_from == selected_hex_) { //no move needed
-				int choice = show_attack_dialog(attack_from, clicked_u->get_location());
+				int choice = -1;
+				{ wb::scoped_planned_unit_map planned_unit_map; //start planned unit map scope
+					choice = show_attack_dialog(attack_from, clicked_u->get_location());
+				} // end planned unit map scope
 				if (choice >=0 ) {
-					attack_enemy(u->get_location(), clicked_u->get_location(), choice);
+					if (resources::whiteboard->is_active()) {
+						save_whiteboard_attack(attack_from, clicked_u->get_location(), choice);
+					} else {
+						attack_enemy(u->get_location(), clicked_u->get_location(), choice);
+					}
 				}
 				return false;
 			}
@@ -494,7 +488,9 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				// block where we temporary move the unit
 				{
 					temporary_unit_mover temp_mover(units_, src, attack_from);
-					choice = show_attack_dialog(attack_from, clicked_u->get_location());
+					{ wb::scoped_planned_unit_map planned_unit_map; //start planned unit map scope
+						choice = show_attack_dialog(attack_from, clicked_u->get_location());
+					} // end planned unit map scope
 				}
 				// restore unit as before
 				u = units_.find(src);
@@ -506,25 +502,29 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 					return false;
 				}
 
-				// store side, since u may be invalidated later
-				int side = u->side();
-				//record visible enemies adjacent to destination
-				std::set<map_location> adj_enemies = get_adj_enemies(attack_from, side);
+				if (resources::whiteboard->is_active()) {
+					save_whiteboard_attack(attack_from, hex, choice);
+				} else {
+					// store side, since u may be invalidated later
+					int side = u->side();
+					//record visible enemies adjacent to destination
+					std::set<map_location> adj_enemies = get_adj_enemies(attack_from, side);
 
-				// move the unit without clearing fog (to avoid interruption)
-				//TODO: clear fog and interrupt+resume move
-				if(!move_unit_along_current_route(false)) {
-					// interrupted move
-					// we assume that move_unit() did the cleaning
-					// (update shroud/fog, clear undo if needed)
-					return false;
+					// move the unit without clearing fog (to avoid interruption)
+					//TODO: clear fog and interrupt+resume move
+					if(!move_unit_along_current_route(false)) {
+						// interrupted move
+						// we assume that move_unit() did the cleaning
+						// (update shroud/fog, clear undo if needed)
+						return false;
+					}
+
+					//check if new enemies are now visible
+					if(get_adj_enemies(attack_from, side) != adj_enemies)
+						return false; //ambush, interrupt attack
+
+					attack_enemy(attack_from, hex, choice); // Fight !!
 				}
-
-				//check if new enemies are now visible
-				if(get_adj_enemies(attack_from, side) != adj_enemies)
-					return false; //ambush, interrupt attack
-
-				attack_enemy(attack_from, hex, choice); // Fight !!
 				return false;
 			}
 		}
@@ -710,6 +710,37 @@ bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, m
 	}
 
 	return moves == steps.size();
+}
+
+void mouse_handler::save_whiteboard_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice)
+{
+
+	{
+		// @todo Fix flickering/reach highlight anomaly after the weapon choice dialog is closed
+		// This method should do the cleanup of highlights and selection but it doesn't work properly
+
+		// gui().highlight_hex(map_location());
+
+		gui().draw();
+		gui().unhighlight_reach();
+		gui().clear_attack_indicator();
+
+		// remove footsteps if any - useless for whiteboard as of now
+		gui().set_route(NULL);
+
+		// do not keep the hex that we started from highlighted
+		selected_hex_ = map_location();
+		gui().select_hex(map_location());
+		show_partial_move_ = false;
+
+		// invalid after saving the move
+		current_paths_ = pathfind::paths();
+		current_route_.steps.clear();
+	}
+
+	//create planned attack for whiteboard
+	resources::whiteboard->save_temp_attack(attacker_loc, defender_loc, weapon_choice);
+
 }
 
 int mouse_handler::fill_weapon_choices(std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender)

@@ -687,52 +687,53 @@ void manager::save_temp_move()
 	}
 }
 
-void manager::save_temp_attack(const map_location& attack_from, const map_location& target_hex)
+void manager::save_temp_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice)
 {
 	if (active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
+		assert(weapon_choice >= 0);
+
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
-
 		map_location source_hex;
+
 		if (route_ && !route_->steps.empty())
 		{
+			//attack-move
+
 			assert(move_arrows_.size() == 1);
 			assert(fake_units_.size() == 1);
 			move_arrow = move_arrows_.front();
 			fake_unit = fake_units_.front();
 
-			assert(route_->steps.back() == attack_from);
+			assert(route_->steps.back() == attacker_loc);
 			source_hex = route_->steps.front();
 
 			fake_unit->set_disabled_ghosted(false);
 		}
 		else
 		{
+			//simple attack
+
 			move_arrow.reset(new arrow);
-			source_hex = attack_from;
+			source_hex = attacker_loc;
 			route_.reset(new pathfind::marked_route);
 			// We'll pass as parameter a one-hex route with no marks.
-			route_->steps.push_back(attack_from);
+			route_->steps.push_back(attacker_loc);
 		}
 
 		unit* attacking_unit = future_visible_unit(source_hex);
 		assert(attacking_unit);
 
-		int weapon_choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
-					attacking_unit->get_location(), target_hex);
+		on_save_action(attacking_unit);
 
-		if (weapon_choice >= 0)
-		{
-			on_save_action(attacking_unit);
+		side_actions& sa = *viewer_actions();
+		sa.queue_attack(sa.get_turn_num_of(*attacking_unit),*attacking_unit,defender_loc,weapon_choice,*route_,move_arrow,fake_unit);
 
-			side_actions& sa = *viewer_actions();
-			sa.queue_attack(sa.get_turn_num_of(*attacking_unit),*attacking_unit,target_hex,weapon_choice,*route_,move_arrow,fake_unit);
+		print_help_once();
 
-			print_help_once();
-		}
-
-		resources::screen->invalidate(target_hex);
+		resources::screen->invalidate(defender_loc);
+		resources::screen->invalidate(attacker_loc);
 		erase_temp_move();
 		LOG_WB << *viewer_actions() << "\n";
 	}
@@ -1022,6 +1023,8 @@ scoped_planned_unit_map::scoped_planned_unit_map():
 {
 	if (!has_planned_unit_map_)
 		resources::whiteboard->set_planned_unit_map();
+	else
+		WRN_WB << "Using scoped planned unit map with future map already active, unit map will be reset when exiting.\n";
 }
 
 scoped_planned_unit_map::~scoped_planned_unit_map()

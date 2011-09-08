@@ -94,6 +94,8 @@ protected:
 	void select_hex(const map_location& hex, const bool browse);
 	bool move_unit_along_current_route(bool check_shroud);
 
+	void save_whiteboard_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice);
+
 	// fill weapon choices into bc_vector
 	// return the best weapon choice
 	int fill_weapon_choices(std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender);
