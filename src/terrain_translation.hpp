@@ -18,6 +18,7 @@
 #ifndef TERRAIN_TRANSLATION_H_INCLUDED
 #define TERRAIN_TRANSLATION_H_INCLUDED
 
+#include <boost/functional/hash.hpp>
 #include <SDL_types.h> //used for Uint32 definition
 #include <vector>
 #include <map>
@@ -51,7 +52,9 @@ namespace t_translation {
 
 		t_layer base;
 		t_layer overlay;
+
 	};
+
 	const t_terrain NONE_TERRAIN = t_terrain();
 
 	inline bool operator<(const t_terrain& a, const t_terrain& b)
@@ -68,6 +71,12 @@ namespace t_translation {
 
 	inline t_terrain operator|(const t_terrain& a, const t_terrain& b)
 		{ return t_terrain(a.base | b.base, a.overlay | b.overlay); }
+
+	inline std::size_t hash_value(t_terrain const& a) {
+        std::size_t seed = 0;
+        boost::hash_combine(seed, a.base);
+        boost::hash_combine(seed, a.overlay);
+        return seed; }
 
 	// operator<< is defined later
 

@@ -47,6 +47,7 @@ namespace{
 	static const config::t_token z_chance_to_hit("chance_to_hit", false);
 	static const config::t_token z_poison("poison", false);
 	static const config::t_token z_guardian("guardian", false);
+	static const config::t_token z_steadfast("steadfast", false);
 }
 
 namespace ai {
@@ -295,7 +296,7 @@ static int average_resistance_against(const unit_type& a, const unit_type& b)
    int sum = 0, weight_sum = 0;
 
    // calculation of the average damage taken
-   bool steadfast = a.has_ability_by_id("steadfast");
+   bool steadfast = a.has_ability_by_id(z_steadfast);
    bool living = !a.not_living();
    const std::vector<attack_type>& attacks = b.attacks();
    for (std::vector<attack_type>::const_iterator i = attacks.begin(),

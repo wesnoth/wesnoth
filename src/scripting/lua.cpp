@@ -809,6 +809,19 @@ static int impl_vconfig_collect(lua_State *L)
 		return 1; \
 	}
 
+#define return_vector_t_token_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+	const std::vector<config::t_token>& vector = accessor;	\
+		lua_createtable(L, vector.size(), 0); \
+		int i = 1; \
+		foreach (const config::t_token & s, vector) { \
+			lua_pushstring(L, s.c_str()); \
+			lua_rawseti(L, -2, i); \
+			++i; \
+		} \
+		return 1; \
+	}
+
 #define modify_tstring_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		t_string value = luaW_checktstring(L, 3); \
@@ -861,6 +874,22 @@ static int impl_vconfig_collect(lua_State *L)
 		accessor; \
 		return 0; \
 	}
+#define modify_vector_t_token_attrib(name, accessor) \
+	if (strcmp(m, name) == 0) { \
+	std::vector<config::t_token> vector;										\
+		char const* message = "table with unnamed indices holding strings expected"; \
+		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message); \
+		unsigned length = lua_objlen(L, 3); \
+		for (unsigned i = 1; i <= length; ++i) { \
+			lua_rawgeti(L, 3, i); \
+			char const* string = lua_tostring(L, 4); \
+			if(!string) return luaL_argerror(L, 2 + i, message); \
+			vector.push_back(config::t_token( string ));			 \
+			lua_pop(L, 1); \
+		} \
+		accessor; \
+		return 0; \
+	}
 
 /**
  * Gets some data on a unit type (__index metamethod).
@@ -899,7 +928,7 @@ static int impl_race_get(lua_State* L)
 	char const* m = luaL_checkstring(L, 2);
 	lua_pushstring(L, "id");
 	lua_rawget(L, 1);
-	const unit_race* raceptr = unit_types.find_race(lua_tostring(L, -1));
+	const unit_race* raceptr = unit_types.find_race(config::t_token( lua_tostring(L, -1) ));
 	if(!raceptr) return luaL_argerror(L, 1, "unknown race");
 	unit_race const &race = *raceptr;
 
@@ -972,8 +1001,8 @@ static int impl_unit_get(lua_State *L)
 	return_tstring_attrib("name", u.name());
 	return_bool_attrib("canrecruit", u.can_recruit());
 
-	return_vector_string_attrib("extra_recruit", u.recruits());
-	return_vector_string_attrib("advances_to", u.advances_to());
+	return_vector_t_token_attrib("extra_recruit", u.recruits());
+	return_vector_t_token_attrib("advances_to", u.advances_to());
 
 	if (strcmp(m, "status") == 0) {
 		lua_createtable(L, 1, 0);
@@ -1028,8 +1057,8 @@ static int impl_unit_set(lua_State *L)
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
 	modify_bool_attrib("hidden", u.set_hidden(value));
 
-	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
-	modify_vector_string_attrib("advances_to", u.set_advances_to(vector));
+	modify_vector_t_token_attrib("extra_recruit", u.set_recruits(vector));
+	modify_vector_t_token_attrib("advances_to", u.set_advances_to(vector));
 
 	if (!lu->on_map()) {
 		map_location loc = u.get_location();

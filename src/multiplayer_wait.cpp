@@ -99,7 +99,7 @@ void wait::leader_preview_pane::draw_contents()
 		const unit_type *ut = unit_types.find(leader);
 
 		if (ut) {
-			const unit_type &utg = ut->get_gender_unit_type(gender);
+			const unit_type &utg = ut->get_gender_unit_type(config::t_token(gender));
 
 			image = utg.image() + leaders_.get_RC_suffix(utg.flag_rgb());
 		}
@@ -475,7 +475,7 @@ void wait::generate_menu()
 		const unit_type *ut = unit_types.find(leader_type);
 
 		if (ut) {
-			const unit_type &utg = ut->get_gender_unit_type(gender_id);
+			const unit_type &utg = ut->get_gender_unit_type(config::t_token(gender_id));
 
 			leader_name = utg.type_name();
 #ifdef LOW_MEM

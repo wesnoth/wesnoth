@@ -279,10 +279,10 @@ static unit_race::GENDER generate_gender(const std::string &type_id, bool random
 
 static unit_race::GENDER generate_gender(const config &cfg, game_state *state)
 {
-	const std::string& gender = cfg[z_gender];
+	const config::t_token& gender = cfg[z_gender];
 	if(!gender.empty())
 		return string_gender(gender);
-	const std::string &type = cfg[z_type];
+	const config::t_token &type = cfg[z_type];
 	if (type.empty())
 		return unit_race::MALE;
 
@@ -523,7 +523,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	max_movement_ = std::max(0, cfg[z_max_moves].to_int(max_movement_));
 	max_experience_ = std::max(1, cfg[z_max_experience].to_int(max_experience_));
 
-	std::vector<std::string> temp_advances = utils::split(cfg[z_advances_to]);
+	std::vector<config::t_token> temp_advances = utils::split_token(cfg[z_advances_to]);
 	if(temp_advances.size() == 1 && temp_advances.front() == z_null) {
 		advances_to_.clear();
 	}else if(temp_advances.size() >= 1 && temp_advances.front() != z_empty) {
@@ -661,7 +661,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		cfg_[z_upkeep] = z_full;
 	}
 
-	set_recruits(utils::split(cfg[z_extra_recruit]));
+	set_recruits(utils::split_token(cfg[z_extra_recruit]));
 	cfg_.add_child(z_filter_recall, cfg.child_or_empty(z_filter_recall));
 
 	/** @todo Are these modified by read? if not they can be removed. */
@@ -1171,7 +1171,7 @@ SDL_Color unit::xp_color() const
 	return(color);
 }
 
-void unit::set_recruits(const std::vector<std::string>& recruits)
+void unit::set_recruits(const std::vector<config::t_token>& recruits)
 {
 	unit_types.check_types(recruits);
 	recruit_list_ = recruits;
@@ -1180,7 +1180,7 @@ void unit::set_recruits(const std::vector<std::string>& recruits)
 	//ai::manager::raise_recruit_list_changed();
 }
 
-void unit::set_advances_to(const std::vector<std::string>& advances_to)
+void unit::set_advances_to(const std::vector<config::t_token>& advances_to)
 {
 	unit_types.check_types(advances_to);
 	advances_to_ = advances_to;
@@ -2238,9 +2238,7 @@ bool unit::loyal() const
 
 int unit::movement_cost(const t_translation::t_terrain terrain, gamemap const & game_map) const
 {
-	//assert(resources::game_map != NULL);
-	const int res = movement_cost_internal(movement_costs_,
-			cfg_, NULL, game_map, terrain);
+	const int res = movement_cost_internal(movement_costs_, cfg_, NULL, game_map, terrain);
 
 	if (res == unit_movement_type::UNREACHABLE) {
 		return res;
@@ -2524,11 +2522,11 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 					bool first_attack = true;
 
 					std::string attack_names;
-					std::string desc;
+					std::pair<bool, config::t_token> affected;
 					for(std::vector<attack_type>::iterator a = attacks_.begin();
 						a != attacks_.end(); ++a) {
-						bool affected = a->apply_modification(effect, &desc);
-						if(affected && desc != z_empty) {
+						affected = a->apply_modification(effect);
+						if(affected.first && affected.second != z_empty) {
 							if(first_attack) {
 								first_attack = false;
 							} else {
@@ -2543,7 +2541,7 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 					if (attack_names.empty() == false) {
 						utils::string_map symbols;
 						symbols[z_attack_list] = attack_names;
-						symbols[z_effect_description] = desc;
+						symbols[z_effect_description] = affected.second;;
 						description += vgettext("$attack_list|: $effect_description", symbols);
 					}
 				} else if(apply_to == z_hitpoints) {
@@ -2724,9 +2722,9 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 
 				for(std::vector<attack_type>::iterator a = attacks_.begin();
 					a != attacks_.end(); ++a) {
-					std::string desc;
-					bool affected = a->describe_modification(effect, &desc);
-					if(affected && desc != z_empty) {
+					std::pair<bool, config::t_token> affected = a->describe_modification(effect);
+					if(affected.first && affected.second != z_empty) {
+						std::string const & desc = affected.second;
 						if(first_attack) {
 							first_attack = false;
 						} else {

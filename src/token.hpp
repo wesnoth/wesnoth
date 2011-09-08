@@ -43,6 +43,10 @@ namespace n_token {
    Hence use static tokens as replacements for constant string literals in the code, as follows:
    static const t_token z_some_string("some_string", false);
 
+   @note It is intentionally inconvenient to convert to std::string.  Allowing automatic conversion would allow
+   the compiler to create std::string temporaries and give up the benefits of the t_token.  Do not
+   make a std::string conversion operator.
+
  */
 
 class t_token : public  n_interned::t_interned_token<std::string> {

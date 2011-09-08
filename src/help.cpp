@@ -1180,13 +1180,13 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 			abil_vecs[0] = &type.abilities();
 			abil_vecs[1] = &type.adv_abilities();
 
-			std::vector<std::string> const* desc_vecs[2];
+			std::vector<config::t_token> const* desc_vecs[2];
 			desc_vecs[0] = &type.ability_tooltips();
 			desc_vecs[1] = &type.adv_ability_tooltips();
 
 			for(int i=0; i<2; ++i) {
 				std::vector<t_string> const& abil_vec = *abil_vecs[i];
-				std::vector<std::string> const& desc_vec = *desc_vecs[i];
+				std::vector<config::t_token> const& desc_vec = *desc_vecs[i];
 				for(size_t j=0; j < abil_vec.size(); ++j) {
 					t_string const& abil_name = abil_vec[j];
 					if (ability_description.find(abil_name) == ability_description.end()) {
@@ -1362,11 +1362,11 @@ public:
 		const bool first_reverse_value = true;
 		bool reverse = first_reverse_value;
 		do {
-			std::vector<std::string> adv_units =
+			std::vector<config::t_token> adv_units =
 				reverse ? type_.advances_from() : type_.advances_to();
 			bool first = true;
 
-			foreach (const std::string &adv, adv_units)
+			foreach (const config::t_token &adv, adv_units)
 			{
 				const unit_type *type = unit_types.find(adv);
 				if (!type || type->hide_help()) continue;
@@ -1397,7 +1397,7 @@ public:
 
 		// Print the race of the unit, cross-reference it to the
 		// respective topic.
-		const std::string race_id = type_.race();
+		const config::t_token race_id = type_.race();
 		std::string race_name;
 		if (const unit_race *r = unit_types.find_race(race_id)) {
 			race_name = r->plural_name();
@@ -1405,7 +1405,7 @@ public:
 			race_name = _ ("race^Miscellaneous");
 		}
 		ss << _("Race: ");
-		ss << "<ref>dst='" << escape("..race_"+race_id) << "' text='" << escape(race_name) << "'</ref>";
+		ss << "<ref>dst='" << escape("..race_" + static_cast<std::string const &>(race_id )) << "' text='" << escape(race_name) << "'</ref>";
 		ss << "\n";
 
 		// Print the abilities the units has, cross-reference them
@@ -1492,7 +1492,7 @@ public:
 				attack_ss << attack_it->damage() << utils::unicode_en_dash << attack_it->num_attacks() << " " << attack_it->accuracy_parry_description();
 				push_tab_pair(row, attack_ss.str());
 				attack_ss.str(clear_stringstream);
-				push_tab_pair(row, string_table["range_" + (*attack_it).range()]);
+				push_tab_pair(row, string_table["range_" + static_cast<std::string const &>( (*attack_it).range() )]);
 				// Show this attack's special, if it has any. Cross
 				// reference it to the section describing the
 				// special.
@@ -1715,7 +1715,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		section_cfg["id"] = hidden_symbol(hidden) + race_prefix + *it;
 
 		std::string title;
-		if (const unit_race *r = unit_types.find_race(*it)) {
+		if (const unit_race *r = unit_types.find_race(config::t_token(*it))) {
 			title = r->plural_name();
 		} else {
 			title = _ ("race^Miscellaneous");
@@ -1740,7 +1740,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	{
 		const unit_type &type = i.second;
 
-		if (type.race() != race)
+		if (type.race() != config::t_token(race))
 			continue;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 		if (desc_type != FULL_DESCRIPTION)
@@ -1764,7 +1764,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::string race_id = "..race_"+race;
 	std::string race_name;
 	std::string race_description;
-	if (const unit_race *r = unit_types.find_race(race)) {
+	if (const unit_race *r = unit_types.find_race(config::t_token(race))) {
 		race_name = r->plural_name();
 		race_description = r->description();
 		// if (description.empty()) description =  _("No description Available");

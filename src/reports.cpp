@@ -162,7 +162,7 @@ REPORT_GENERATOR(unit_race)
 	std::ostringstream str, tooltip;
 	str << span_color(font::race_color) << u->race()->name(u->gender()) << naps;
 	tooltip << _("Race: ") << "<b>" << u->race()->name(u->gender()) << "</b>";
-	return text_report(str.str(), tooltip.str(), "..race_" + u->race()->id());
+	return text_report(str.str(), tooltip.str(), "..race_" + static_cast<std::string const &>( u->race()->id()));
 }
 
 REPORT_GENERATOR(unit_side)
@@ -186,7 +186,7 @@ REPORT_GENERATOR(unit_level)
 	std::ostringstream str, tooltip;
 	str << u->level();
 	tooltip << _("Level: ") << "<b>" << u->level() << "</b>\n";
-	const std::vector<std::string> &adv_to = u->advances_to();
+	const std::vector<config::t_token> &adv_to = u->advances_to();
 	if (adv_to.empty())
 		tooltip << _("No advancement");
 	else
@@ -488,7 +488,7 @@ REPORT_GENERATOR(unit_weapons)
 
 		add_text(res, flush(str), flush(tooltip));
 
-		std::string range = string_table["range_" + at.range()];
+		std::string range = string_table["range_" + static_cast<std::string const &>( at.range())];
 		std::string lang_type = string_table["type_" + static_cast<std::string const &>( at.type() )];
 
 		str << span_color(font::weapon_details_color) << "  "

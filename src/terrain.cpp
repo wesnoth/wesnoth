@@ -66,7 +66,7 @@ terrain_type::terrain_type(const config& cfg) :
 		minimap_image_(cfg["symbol_image"]),
 		minimap_image_overlay_(),
 		editor_image_(cfg["editor_image"]),
-		id_(cfg["id"]),
+		id_(cfg["id"].token()),
 		name_(cfg["name"].t_str()),
 		editor_name_(cfg["editor_name"].t_str()),
 		description_(cfg["description"].t_str()),

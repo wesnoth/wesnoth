@@ -205,7 +205,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 			if (!leader_name) {
 				leader_name_pseudolist.push_back("-");
 			} else {
-				leader_name_pseudolist.push_back(leader_name->get_gender_unit_type(gender_).type_name());
+				leader_name_pseudolist.push_back(leader_name->get_gender_unit_type(config::t_token(gender_)).type_name());
 			}
 		}
 		combo_leader_.set_items(leader_name_pseudolist);

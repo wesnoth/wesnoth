@@ -26,6 +26,28 @@
 #include "random.hpp"
 #include "simple_rng.hpp"
 
+namespace {
+//Static tokens are replacements for string literals in code
+//They allow for fast comparison, copying and hashing operations.
+static const config::t_token z_trait("trait", false);
+static const config::t_token z_topic("topic", false);
+static const config::t_token z_empty("", false);
+static const config::t_token z_id("id", false);
+static const config::t_token z_plural_name("plural_name", false);
+static const config::t_token z_description("description", false);
+static const config::t_token z_num_traits("num_traits", false);
+static const config::t_token z_markov_chain_size("markov_chain_size", false);
+static const config::t_token z_ignore_global_traits("ignore_global_traits", false);
+static const config::t_token z_name("name", false);
+static const config::t_token z_male_name("male_name", false);
+static const config::t_token z_female_name("female_name", false);
+static const config::t_token z_male_names("male_names", false);
+static const config::t_token z_female_names("female_names", false);
+static const config::t_token z_female("female", false);
+static const config::t_token z_male("male", false);
+
+}
+
 static const config &empty_traits() {
 		static config cfg;
 		return cfg;
@@ -46,12 +68,12 @@ static void add_prefixes(const wide_string& str, size_t length, markov_prefix_ma
 	}
 }
 
-static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, size_t length)
+static markov_prefix_map markov_prefixes(const std::vector<config::t_token>& items, size_t length)
 {
 	markov_prefix_map res;
 
-	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		add_prefixes(utils::string_to_wstring(*i),length,res);
+	for(std::vector<config::t_token>::const_iterator i = items.begin(); i != items.end(); ++i) {
+		add_prefixes(utils::string_to_wstring( static_cast<std::string const &>(*i) ),length,res);
 	}
 
 	return res;
@@ -144,56 +166,55 @@ unit_race::unit_race() :
 		description_(),
 		ntraits_(0),
 		chain_size_(0),
-		traits_(empty_traits().child_range("trait")),
-		topics_(empty_topics().child_range("topic")),
+		traits_(empty_traits().child_range(z_trait)),
+		topics_(empty_topics().child_range(z_topic)),
 		global_traits_(true)
 {
-		name_[MALE] = "";
-		name_[FEMALE] = "";
+		name_[MALE] = z_empty;
+		name_[FEMALE] = z_empty;
 }
 
 unit_race::unit_race(const config& cfg) :
 		cfg_(cfg),
-		id_(cfg["id"]),
-		plural_name_(cfg["plural_name"].t_str()),
-		description_(cfg["description"].t_str()),
-		ntraits_(cfg["num_traits"]),
-		chain_size_(cfg["markov_chain_size"]),
-		traits_(cfg.child_range("trait")),
-		topics_(cfg.child_range("topic")),
-		global_traits_(!cfg["ignore_global_traits"].to_bool())
+		id_(cfg[z_id].token()),
+		plural_name_(cfg[z_plural_name].t_str()),
+		description_(cfg[z_description].t_str()),
+		ntraits_(cfg[z_num_traits]),
+		chain_size_(cfg[z_markov_chain_size]),
+		traits_(cfg.child_range(z_trait)),
+		topics_(cfg.child_range(z_topic)),
+		global_traits_(!cfg[z_ignore_global_traits].to_bool())
 
 {
 	if (id_.empty()) {
-		lg::wml_error << "[race] '" << cfg["name"] << "' is missing an id field.";
+		lg::wml_error << "[race] '" << cfg[z_name] << "' is missing an id field.";
 	}
 	if (plural_name_.empty()) {
-		lg::wml_error << "[race] '" << cfg["name"] << "' is missing a plural_name field.";
-		plural_name_ = (cfg["name"]);
+		lg::wml_error << "[race] '" << cfg[z_name] << "' is missing a plural_name field.";
+		plural_name_ = (cfg[z_name]);
 	}
-	// use "name" if "male_name" or "female_name" aren't available
-	name_[MALE] = cfg["male_name"];
+	// use z_name if z_male_name or z_female_name aren't available
+	name_[MALE] = cfg[z_male_name];
 	if(name_[MALE].empty()) {
-		name_[MALE] = (cfg["name"]);
+		name_[MALE] = (cfg[z_name]);
 	}
-	name_[FEMALE] = cfg["female_name"];
+	name_[FEMALE] = cfg[z_female_name];
 	if(name_[FEMALE].empty()) {
-		name_[FEMALE] = (cfg["name"]);
+		name_[FEMALE] = (cfg[z_name]);
 	}
 
 	if(chain_size_ <= 0)
 		chain_size_ = 2;
 
 	//std::vector<std::string> names = ;
-	next_[MALE] = markov_prefixes(utils::split(cfg["male_names"]), chain_size_);
-	next_[FEMALE] = markov_prefixes(utils::split(cfg["female_names"]), chain_size_);
+	next_[MALE] = markov_prefixes(utils::split_token(cfg[z_male_names]), chain_size_);
+	next_[FEMALE] = markov_prefixes(utils::split_token(cfg[z_female_names]), chain_size_);
 }
 
-std::string unit_race::generate_name(
+config::t_token unit_race::generate_name(
 		unit_race::GENDER gender, rand_rng::simple_rng* rng) const
 {
-	return utils::wstring_to_string(
-		markov_generate_name(next_[gender], chain_size_, 12, rng));
+	return config::t_token(utils::wstring_to_string(markov_generate_name(next_[gender], chain_size_, 12, rng)) );
 }
 
 bool unit_race::uses_global_traits() const
@@ -213,9 +234,9 @@ const config::const_child_itors &unit_race::additional_topics() const
 
 unsigned int unit_race::num_traits() const { return ntraits_; }
 
-std::string const& gender_string(unit_race::GENDER gender) {
-	static const std::string female_string = "female";
-	static const std::string male_string = "male";
+config::t_token const& gender_string(unit_race::GENDER gender) {
+	static const config::t_token female_string(z_female);
+	static const config::t_token male_string(z_male);
 	switch(gender) {
 	case unit_race::FEMALE:
 		return female_string;
@@ -225,7 +246,7 @@ std::string const& gender_string(unit_race::GENDER gender) {
 	}
 }
 
-unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
+unit_race::GENDER string_gender(const config::t_token& str, unit_race::GENDER def) {
 	if(str == gender_string(unit_race::MALE)) {
 		return unit_race::MALE;
 	} else if(str == gender_string(unit_race::FEMALE)) {

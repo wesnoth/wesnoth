@@ -88,8 +88,8 @@ public:
 	{
 		advance_to(cfg_, t, use_traits, state);
 	}
-	const std::vector<std::string>& advances_to() const { return advances_to_; }
-	void set_advances_to(const std::vector<std::string>& advances_to);
+	const std::vector<config::t_token>& advances_to() const { return advances_to_; }
+	void set_advances_to(const std::vector<config::t_token>& advances_to);
 
 	/** The type id of the unit */
 	const config::t_token& type_id() const { return type_; }
@@ -139,9 +139,9 @@ public:
 	fixed_t alpha() const { return alpha_; }
 
 	bool can_recruit() const { return canrecruit_; }
-	const std::vector<std::string>& recruits() const
+	const std::vector<config::t_token>& recruits() const
 		{ return recruit_list_; }
-	void set_recruits(const std::vector<std::string>& recruits);
+	void set_recruits(const std::vector<config::t_token>& recruits);
 	const config& recall_filter() const { return cfg_.child("filter_recall"); }
 
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
@@ -422,7 +422,7 @@ private:
 	config cfg_;
 	map_location loc_;
 
-	std::vector<std::string> advances_to_;
+	std::vector<config::t_token> advances_to_;
 	config::t_token type_;
 	const unit_race* race_;
 	config::t_token id_;
@@ -438,7 +438,7 @@ private:
 	int max_experience_;
 	int level_;
 	bool canrecruit_;
-	std::vector<std::string> recruit_list_;
+	std::vector<config::t_token> recruit_list_;
 	unit_type::ALIGNMENT alignment_;
 	config::t_token flag_rgb_;
 	std::string image_mods_;
@@ -456,7 +456,7 @@ private:
 
 	int movement_;
 	int max_movement_;
-	mutable std::map<t_translation::t_terrain, int> movement_costs_; // movement cost cache
+	mutable t_move_cost_cache movement_costs_; // movement cost cache
 	mutable defense_cache defense_mods_; // defense modifiers cache
 	bool hold_position_;
 	bool end_turn_;

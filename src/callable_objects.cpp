@@ -135,9 +135,9 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 		return static_cast<std::string const &>(att_.type()).compare(att_callable->att_.type());
 
 	if ( att_.range() != att_callable->att_.range() )
-		return att_.range().compare(att_callable->att_.range());
+		return static_cast<std::string const &>(att_.range()).compare(att_callable->att_.range());
 
-	return att_.weapon_specials().compare(att_callable->att_.weapon_specials());
+	return static_cast<std::string const &>(att_.weapon_specials()).compare(att_callable->att_.weapon_specials());
 }
 
 variant unit_callable::get_value(const std::string& key) const
@@ -287,13 +287,13 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "alignment") {
 		return variant(u_.alignment_id(u_.alignment()));
 	} else if(key == "abilities") {
-		std::vector<std::string> abilities = u_.get_ability_list();
+		std::vector<config::t_token> abilities = u_.get_ability_list();
 		std::vector<variant> res;
 
 		if (abilities.empty())
 			return variant( &res );
 
-		for (std::vector<std::string>::iterator it = abilities.begin(); it != abilities.end(); ++it)
+		for (std::vector<config::t_token>::iterator it = abilities.begin(); it != abilities.end(); ++it)
 		{
 			res.push_back( variant(*it) );
 		}

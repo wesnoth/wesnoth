@@ -71,6 +71,7 @@ static lg::log_domain log_config("config");
 namespace{
 	static const config::t_token z_advance("advance", false);
 	static const config::t_token z_post_advance("post_advance", false);
+	static const config::t_token z_leader("leader", false);
 }
 namespace dialogs
 {
@@ -79,12 +80,12 @@ int advance_unit_dialog(const map_location &loc)
 {
 	unit_map::iterator u = resources::units->find(loc);
 
-	const std::vector<std::string>& options = u->advances_to();
+	const std::vector<config::t_token>& options = u->advances_to();
 
 	std::vector<std::string> lang_options;
 
 	std::vector<unit> sample_units;
-	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
+	for(std::vector<config::t_token>::const_iterator op = options.begin(); op != options.end(); ++op) {
 		sample_units.push_back(::get_advanced_unit(*u, *op));
 		const unit& type = sample_units.back();
 
@@ -194,7 +195,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 		return false;
 	}
 
-	const std::vector<std::string>& options = u->advances_to();
+	const std::vector<config::t_token>& options = u->advances_to();
 	std::vector<config> mod_options = u->get_modification_advances();
 
 	if(choice >= options.size() + mod_options.size()) {
@@ -381,13 +382,14 @@ void save_preview_pane::draw_contents()
 
 	int ypos = area.y;
 
-	const unit_type *leader = unit_types.find(summary["leader"]);
+	const unit_type *leader = unit_types.find(summary[z_leader].token());
 	if (leader)
 	{
 #ifdef LOW_MEM
 		const surface image(image::get_image(leader->image()));
 #else
-		const surface image(image::get_image(leader->image() + "~RC(" + static_cast<std::string const &>(leader->flag_rgb()) + ">1)"));
+		const surface image(image::get_image(static_cast<std::string const &>(leader->image()) 
+											 + "~RC(" + static_cast<std::string const &>(leader->flag_rgb()) + ">1)"));
 #endif
 
 		if(image != NULL) {
@@ -851,7 +853,7 @@ void unit_preview_pane::draw_contents()
 				<< at_it->num_attacks()
 				<< " " << at_it->name() << "\n";
 			text << font::weapon_details
-				<< "  " << string_table["range_" + at_it->range()]
+				 << "  " << string_table["range_" + static_cast<std::string const &>(at_it->range())]
 				<< font::weapon_details_sep
 				 << string_table["type_" + static_cast<std::string const &>(at_it->type() )] << "\n";
 
@@ -988,7 +990,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	unit_types.find(t->id(), unit_type::WITHOUT_ANIMATIONS);
 
 	std::string mod = "~RC(" + static_cast<std::string const &>(t->flag_rgb()) + ">" + team::get_side_color_index(side_) + ")";
-	det.image = image::get_image(t->image()+mod);
+	det.image = image::get_image(static_cast<std::string const &>(t->image()) + mod);
 
 	det.name = "";
 	det.type_name = t->type_name();

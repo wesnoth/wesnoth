@@ -603,13 +603,13 @@ std::vector<t_string> attack_type::special_tooltips(bool force) const
 	}
 	return res;
 }
-std::string attack_type::weapon_specials(bool force) const
+config::t_token attack_type::weapon_specials(bool force) const
 {
 //	log_scope("weapon_specials");
-	std::string res;
 	const config &specials = cfg_.child(z_specials);
-	if (!specials) return res;
+	if (!specials) return z_empty;
 
+	std::string res;
 	foreach (const config::any_child &sp, specials.all_children_range())
 	{
 		config::t_token const *s = force || special_active(sp.cfg, true) ?
@@ -617,12 +617,12 @@ std::string attack_type::weapon_specials(bool force) const
 		config::t_token const &name = sp.cfg[*s];
 
 		if (!name.empty()) {
-			if (!res.empty()) res += ',';
-			res += name;
+			if (!res.empty()) { res +=  ',' ; }
+		res += static_cast<std::string const &>( name );
 		}
 	}
 
-	return res;
+return config::t_token( res );
 }
 
 
@@ -654,7 +654,7 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 
 	if(attacker_) {
 		{
-			std::string const &active = cfg[z_active_on];
+			config::t_token const &active = cfg[z_active_on];
 			if (!active.empty() && active != z_offense)
 				return false;
 		}
@@ -681,7 +681,7 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 		}
 	} else {
 		{
-			std::string const &active = cfg[z_active_on];
+			config::t_token const &active = cfg[z_active_on];
 			if (!active.empty() && active != z_defense)
 				return false;
 		}
@@ -750,7 +750,7 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 
 	foreach (const config &i, cfg.child_range(z_filter_adjacent))
 	{
-		foreach (const std::string &j, utils::split(i[z_adjacent]))
+		foreach (const config::t_token &j, utils::split_token(i[z_adjacent]))
 		{
 			map_location::DIRECTION index =
 				map_location::parse_direction(j);
@@ -765,7 +765,7 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 
 	foreach (const config &i, cfg.child_range(z_filter_adjacent_location))
 	{
-		foreach (const std::string &j, utils::split(i[z_adjacent]))
+		foreach (const config::t_token &j, utils::split_token(i[z_adjacent]))
 		{
 			map_location::DIRECTION index =
 				map_location::parse_direction(j);
@@ -787,7 +787,7 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 bool attack_type::special_affects_opponent(const config& cfg) const
 {
 //	log_scope("special_affects_opponent");
-	std::string const &apply_to = cfg[z_apply_to];
+	config::t_token const &apply_to = cfg[z_apply_to];
 	if (apply_to.empty())
 		return false;
 	if (apply_to == z_both)
@@ -808,7 +808,7 @@ bool attack_type::special_affects_opponent(const config& cfg) const
 bool attack_type::special_affects_self(const config& cfg) const
 {
 //	log_scope("special_affects_self");
-	std::string const &apply_to = cfg[z_apply_to];
+	config::t_token const &apply_to = cfg[z_apply_to];
 	if (apply_to.empty())
 		return true;
 	if (apply_to == z_both)
@@ -880,9 +880,9 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 
 	int value_set = def;
 	bool value_is_set = false;
-	std::map<std::string,individual_effect> values_add;
-	std::map<std::string,individual_effect> values_mul;
-	std::map<std::string,individual_effect> values_div;
+	std::map<std::string, individual_effect> values_add;
+	std::map<std::string, individual_effect> values_mul;
+	std::map<std::string, individual_effect> values_div;
 
 	individual_effect set_effect;
 
