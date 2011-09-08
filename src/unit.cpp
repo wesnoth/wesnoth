@@ -240,8 +240,7 @@ namespace{
      static const config::t_token z_object("object", false);
 	static const config::t_token z_extra_recruit("extra_recruit", false);
 	static const config::t_token z_filter_recall("filter_recall", false);
-	static const config::t_token z_liminal("liminal", false);
-	// static const config::t_token z_("", false);
+
 
     const config::t_token ModificationTypes[] = { z_advance, z_trait, z_object };
 	const size_t NumModificationTypes = sizeof(ModificationTypes)/
