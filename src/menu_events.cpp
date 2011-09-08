@@ -1148,7 +1148,6 @@ void menu_handler::undo(int side_num)
 
 		u = units_.find(route.back());
 		u->set_goto(map_location());
-		std::swap(u->waypoints(), action_copy.waypoints);
 		u->set_movement(starting_moves);
 		u->set_standing();
 
@@ -1289,7 +1288,6 @@ void menu_handler::redo(int side_num)
 
 		unit::clear_status_caches();
 		u->set_goto(action_copy.affected_unit.get_goto());
-		std::swap(u->waypoints(), action_copy.waypoints);
 		u->set_movement(starting_moves);
 		u->set_standing();
 
@@ -1694,7 +1692,7 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator &ui,
 {
 	assert(ui != units_.end());
 
-	pathfind::marked_route route = mousehandler.get_route(&*ui, target, ui->waypoints(), teams_[side_num - 1]);
+	pathfind::marked_route route = mousehandler.get_route(&*ui, target, teams_[side_num - 1]);
 
 	if(route.steps.empty())
 		return;
@@ -1739,7 +1737,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 			if(fully_moved.count(current_loc))
 				continue;
 
-			pathfind::marked_route route = mousehandler.get_route(&*ui, goto_loc, ui->waypoints(), teams_[side - 1]);
+			pathfind::marked_route route = mousehandler.get_route(&*ui, goto_loc, teams_[side - 1]);
 
 			if(route.steps.size() <= 1) { // invalid path
 				fully_moved.insert(current_loc);

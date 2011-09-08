@@ -220,8 +220,6 @@ public:
 
 	const map_location& get_goto() const { return goto_; }
 	void set_goto(const map_location& new_goto) { goto_ = new_goto; }
-	const std::vector<map_location>& waypoints() const { return waypoints_; }
-	std::vector<map_location>& waypoints() { return waypoints_; }
 
 	int upkeep() const;
 	bool loyal() const;
@@ -423,7 +421,6 @@ private:
 
 	int unit_value_;
 	map_location goto_, interrupted_move_;
-	std::vector<map_location> waypoints_;
 
 	bool flying_, is_fearless_, is_healthy_;
 

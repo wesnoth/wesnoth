@@ -368,8 +368,7 @@ pathfind::paths::paths(gamemap const &map, unit_map const &units,
 		see_all, ignore_units);
 }
 
-pathfind::marked_route pathfind::mark_route(const plain_route &rt,
-		const std::vector<map_location>& waypoints)
+pathfind::marked_route pathfind::mark_route(const plain_route &rt)
 {
 	marked_route res;
 
@@ -385,8 +384,7 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 	const team& unit_team = (*resources::teams)[u.side()-1];
 	bool zoc = false;
 
-	std::vector<map_location>::const_iterator i = rt.steps.begin(),
-			w = waypoints.begin();
+	std::vector<map_location>::const_iterator i = rt.steps.begin();
 
 	for (; i !=rt.steps.end(); ++i) {
 		bool last_step = (i+1 == rt.steps.end());
@@ -394,23 +392,10 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 		// move_cost of the next step is irrelevant for the last step
 		assert(last_step || resources::game_map->on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost((*resources::game_map)[*(i+1)]);
-		bool pass_here = false;
-		if (w != waypoints.end() && *i == *w) {
-			++w;
-			pass_here = true;
-		}
 
 		team const& viewing_team = (*resources::teams)[resources::screen->viewing_team()];
 
-		// check if there is a village that we could capture
-		// if it's an enemy unit and a fogged village, we assume it's free
-		// (if he already owns it, we can't know that)
-		// if it's not an enemy, we can always know if he owns the village
-		bool village = resources::game_map->is_village(*i) && ( !unit_team.owns_village(*i)
-				|| (viewing_team.is_enemy(u.side()) && viewing_team.fogged(*i)) );
-
-		// NOTE if there is a waypoint on a not owned village, then we will always stop there
-		if (last_step || zoc || move_cost > movement || (pass_here && village)) {
+		if (last_step || zoc || move_cost > movement) {
 			// check if we stop an a village and so maybe capture it
 			// if it's an enemy unit and a fogged village, we assume a capture
 			// (if he already owns it, we can't know that)
@@ -422,7 +407,7 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 
 			bool invisible = u.invisible(*i,false);
 
-			res.marks[*i] = marked_route::mark(turns, pass_here, zoc, capture, invisible);
+			res.marks[*i] = marked_route::mark(turns, zoc, capture, invisible);
 
 			if (last_step) break; // finished and we used dummy move_cost
 
@@ -430,9 +415,6 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 			if(move_cost > movement) {
 				return res; //we can't reach destination
 			}
-		} else if (pass_here) {
-			bool invisible = u.invisible(*i,false);
-			res.marks[*i] = marked_route::mark(0, pass_here, zoc, false, invisible);
 		}
 
 		zoc = enemy_zoc((*resources::teams), *(i + 1), viewing_team,u.side())

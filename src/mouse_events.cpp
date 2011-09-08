@@ -66,7 +66,6 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 	selected_hex_(),
 	next_unit_(),
 	current_route_(),
-	waypoints_(),
 	current_paths_(),
 	enemy_paths_(false),
 	path_turns_(0),
@@ -239,7 +238,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			{
 				if (selected_unit != units_.end() && !selected_unit->incapacitated()) {
 					// Show the route from selected unit to mouseover hex
-					current_route_ = get_route(&*selected_unit, dest, waypoints_, viewing_team());
+					current_route_ = get_route(&*selected_unit, dest, viewing_team());
 
 					{ wb::scoped_real_unit_map raii;
 						resources::whiteboard->create_temp_move();
@@ -283,7 +282,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 					pathfind::marked_route route;
 					{ // start planned unit map scope
 						wb::scoped_planned_unit_map raii;
-						route = get_route(un, go_to, un->waypoints(), current_team());
+						route = get_route(un, go_to, current_team());
 					} // end planned unit map scope
 					gui().set_route(&route);
 				}
@@ -386,21 +385,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 	return res;
 }
 
-void mouse_handler::add_waypoint(const map_location& loc) {
-	std::vector<map_location>::iterator w = std::find(waypoints_.begin(), waypoints_.end(), loc);
-	//toggle between add a new one and remove an old one
-	if(w != waypoints_.end()){
-		waypoints_.erase(w);
-	} else {
-		waypoints_.push_back(loc);
-	}
-
-	// we need to update the route, simulate a mouse move for the moment
-	// (browse is supposed false here, 0,0 are dummy values)
-	mouse_motion(0,0, false, true);
-}
-
-pathfind::marked_route mouse_handler::get_route(unit* un, map_location go_to, const std::vector<map_location>& waypoints, team &team)
+pathfind::marked_route mouse_handler::get_route(unit* un, map_location go_to, team &team)
 {
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const pathfind::shortest_path_calculator calc(*un, team, units_, teams_, map_);
@@ -409,40 +394,9 @@ pathfind::marked_route mouse_handler::get_route(unit* un, map_location go_to, co
 
 	pathfind::plain_route route;
 
-	if (waypoints.empty()) {
-		// standard shortest path
-		route = pathfind::a_star_search(un->get_location(), go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
-	} else {
-		// initialize the main route with the first step
-		route.steps.push_back(un->get_location());
-		route.move_cost = 0;
+	route = pathfind::a_star_search(un->get_location(), go_to, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
 
-		//copy waypoints and add first source and last destination
-		//TODO: don't copy but use vector index trick
-		std::vector<map_location> waypts;
-		waypts.push_back(un->get_location());
-		waypts.insert(waypts.end(), waypoints.begin(), waypoints.end());
-		waypts.push_back(go_to);
-
-		std::vector<map_location>::iterator src = waypts.begin(),
-			dst = ++waypts.begin();
-		for(; dst != waypts.end(); ++src,++dst){
-			if (*src == *dst) continue;
-			pathfind::plain_route inter_route = pathfind::a_star_search(*src, *dst, 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
-			if(inter_route.steps.size()>=1) {
-				// add to the main route but skip the head (already in)
-				route.steps.insert(route.steps.end(),
-					inter_route.steps.begin()+1,inter_route.steps.end());
-				route.move_cost+=inter_route.move_cost;
-			} else {
-				// we can't reach dst, stop the route at the last src
-				// as the normal case do
-				break;
-			}
-		}
-	}
-
-	return mark_route(route, waypoints);
+	return mark_route(route);
 }
 
 void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)
@@ -486,11 +440,9 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		u = find_unit(selected_hex_);
 
 		//if the unit is selected and then itself clicked on,
-		//any goto command and waypoints are cancelled
+		//any goto command is cancelled
 		if (u != units_.end() && !browse && selected_hex_ == hex && u->side() == side_num_) {
 			u->set_goto(map_location());
-			u->waypoints().clear();
-			waypoints_.clear();
 		}
 
 		clicked_u = find_unit(hex);
@@ -508,7 +460,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			gui().select_hex(map_location());
 			gui().clear_attack_indicator();
 			gui().set_route(NULL);
-			waypoints_.clear();
 			show_partial_move_ = false;
 			gui().unhighlight_reach();
 			current_paths_ = pathfind::paths();
@@ -555,9 +506,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 					return false;
 				}
 
-				//register the mouse-UI waypoints into the unit's waypoints
-				u->waypoints() = waypoints_;
-
 				// store side, since u may be invalidated later
 				int side = u->side();
 				//record visible enemies adjacent to destination
@@ -599,7 +547,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				gui().select_hex(map_location());
 				gui().clear_attack_indicator();
 				gui().set_route(NULL);
-				waypoints_.clear();
 				show_partial_move_ = false;
 				gui().unhighlight_reach();
 				current_paths_ = pathfind::paths();
@@ -614,9 +561,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			if (resources::whiteboard->unit_has_actions(&*u)) {
 				return false;
 			}
-
-			//register the mouse-UI waypoints into the unit's waypoints
-			u->waypoints() = waypoints_;
 
 			move_unit_along_current_route(current_team().auto_shroud_updates());
 			// during the move, we may have selected another unit
@@ -641,7 +585,6 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 	gui().select_hex(hex);
 	gui().clear_attack_indicator();
 	gui().set_route(NULL);
-	waypoints_.clear();
 	show_partial_move_ = false;
 
 	wb::scoped_planned_unit_map planned_unit_map; //lasts for whole method

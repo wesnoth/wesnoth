@@ -596,11 +596,6 @@ void game_display::draw_movement_info(const map_location& loc)
 					image::get_image("misc/capture.png", image::SCALED_TO_HEX));
 			}
 
-			if (w->second.pass_here) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
-					image::get_image("misc/waypoint.png", image::SCALED_TO_HEX));
-			}
-
 			//we display turn info only if different from a simple last "1"
 			if (w->second.turns > 1 || (w->second.turns == 1 && loc != route_.steps.back())) {
 				std::stringstream turns_text;

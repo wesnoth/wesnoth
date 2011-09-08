@@ -147,12 +147,11 @@ struct marked_route
 
 	struct mark
 	{
-		mark(int turns_number = 0, bool pass = false,  bool in_zoc = false,
+		mark(int turns_number = 0, bool in_zoc = false,
 				bool do_capture = false, bool is_invisible = false)
-			: turns(turns_number), pass_here(pass), zoc(in_zoc),
+			: turns(turns_number), zoc(in_zoc),
 			  capture(do_capture), invisible(is_invisible) {}
 		int turns;
-		bool pass_here;
 		bool zoc;
 		bool capture;
 		bool invisible;
@@ -176,8 +175,7 @@ plain_route a_star_search(map_location const &src, map_location const &dst,
  * Add marks on a route @a rt assuming that the unit located at the first hex of
  * rt travels along it.
  */
-marked_route mark_route(const plain_route &rt,
-		const std::vector<map_location>& waypoints);
+marked_route mark_route(const plain_route &rt);
 
 struct shortest_path_calculator : cost_calculator
 {

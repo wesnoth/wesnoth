@@ -184,11 +184,6 @@ void playsingle_controller::continue_move(){
 	menu_handler_.continue_move(mouse_handler_, player_number_);
 }
 
-void playsingle_controller::add_waypoint(){
-	if (!browse_)
-		mouse_handler_.add_waypoint(mouse_handler_.get_last_hex());
-}
-
 void playsingle_controller::unit_hold_position(){
 	if (!browse_)
 		menu_handler_.unit_hold_position(mouse_handler_, player_number_);
@@ -1011,7 +1006,6 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 {
 	bool res = true;
 	switch (command){
-		case hotkey::HOTKEY_ADD_WAYPOINT:
 		case hotkey::HOTKEY_UNIT_HOLD_POSITION:
 		case hotkey::HOTKEY_END_UNIT_TURN:
 			return !browse_ && !linger_ && !events::commands_disabled;

@@ -98,16 +98,15 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 	m.unit_ = &*unit_it;
 
 	//check that the path is good
-	if (m.get_source_hex() != m.get_dest_hex()) //allow for zero-hex, move, in which case we skip pathfinding
+	if (m.get_source_hex() != m.get_dest_hex()) //allow for zero-hex move, in which case we skip pathfinding
 	{
 		//verify that the destination hex is free
 		if (get_visible_unit(m.get_dest_hex(),resources::teams->at(viewer_team())) != NULL)
 			return OBSTRUCTED;
 
 		pathfind::marked_route new_route;
-		//@todo: use something else than empty vector for waypoints?
 		new_route = resources::controller->get_mouse_handler_base().get_route(m.get_unit(),m.get_dest_hex(),
-											std::vector<map_location>(), resources::teams->at(viewer_actions_.team_index()));
+											resources::teams->at(viewer_actions_.team_index()));
 
 		/**
 		 * @todo Is the comparison with getNoPathValue really necessary? An empty route (with cost = 0) is returned

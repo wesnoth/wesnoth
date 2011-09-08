@@ -55,9 +55,7 @@ public:
 
 	unit_map::iterator selected_unit();
 
-	void add_waypoint(const map_location& loc);
-
-	pathfind::marked_route get_route(unit* un, map_location go_to, const std::vector<map_location>& waypoints, team &team);
+	pathfind::marked_route get_route(unit* un, map_location go_to, team &team);
 
 	const pathfind::marked_route& get_current_route() { return current_route_; }
 
@@ -128,7 +126,6 @@ private:
 	map_location selected_hex_;
 	map_location next_unit_;
 	pathfind::marked_route current_route_;
-	std::vector<map_location> waypoints_;
 	pathfind::paths current_paths_;
 	bool enemy_paths_;
 	int path_turns_;

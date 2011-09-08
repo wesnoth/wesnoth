@@ -162,7 +162,6 @@ unit::unit(const unit& o):
            unit_value_(o.unit_value_),
            goto_(o.goto_),
            interrupted_move_(o.interrupted_move_),
-           waypoints_(o.waypoints_),
            flying_(o.flying_),
            is_fearless_(o.is_fearless_),
            is_healthy_(o.is_healthy_),
@@ -240,7 +239,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	unit_value_(),
 	goto_(),
 	interrupted_move_(),
-	waypoints_(),
 	flying_(false),
 	is_fearless_(false),
 	is_healthy_(false),
@@ -437,15 +435,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 
 	goto_.x = cfg["goto_x"].to_int() - 1;
 	goto_.y = cfg["goto_y"].to_int() - 1;
-	if (const config &waypoints = cfg.child("waypoints")) {
-		read_locations(waypoints, waypoints_);
-		if(waypoints_.empty()==false){
-			if(waypoints_.back() != goto_)
-				waypoints_.clear(); //goto has changed, ignore waypoints
-			else
-				waypoints_.pop_back(); //last one was only for goto check
-		}
-	}
 
 	if (const config::attribute_value *v = cfg.get("moves")) {
 		movement_ = *v;
@@ -587,7 +576,6 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	unit_value_(),
 	goto_(),
 	interrupted_move_(),
-	waypoints_(),
 	flying_(false),
 	is_fearless_(false),
 	is_healthy_(false),
@@ -793,7 +781,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 		}
 	}
 
-	//copy ínformation what this unit is able to recall
+	//copy ï¿½nformation what this unit is able to recall
 	new_cfg.add_child("filter_recall", old_cfg.child_or_empty("filter_recall"));
 
 	if(t->movement_type().get_parent()) {
@@ -1041,7 +1029,6 @@ void unit::new_scenario()
 
 	// Set the goto-command to be going to no-where
 	goto_ = map_location();
-	waypoints_.clear();
 
 	bool rebuild_from_type = false;
 
@@ -1628,16 +1615,6 @@ void unit::write(config& cfg) const
 
 	cfg["goto_x"] = goto_.x + 1;
 	cfg["goto_y"] = goto_.y + 1;
-
-	cfg.clear_children("waypoints");
-	if(waypoints_.empty() == false && goto_.valid()) {
-		config& waypoints_cfg = cfg.add_child("waypoints");
-		// append the goto for consistency checking
-		// (if goto changes, we will ignore waypoints)
-		std::vector<map_location> waypoints(waypoints_);
-		waypoints.push_back(goto_);
-		write_locations(waypoints, waypoints_cfg);
-	}
 
 	cfg["moves"] = movement_;
 	cfg["max_moves"] = max_movement_;

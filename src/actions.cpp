@@ -2402,7 +2402,6 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	// See how far along the given path we can move.
 	const int starting_moves = ui->movement_left();
 	int moves_left = starting_moves;
-	std::vector<map_location> starting_waypoints = ui->waypoints();
 	std::set<map_location> seen_units;
 	std::set<map_location> petrified_units;
 	bool discovered_unit = false;
@@ -2466,18 +2465,6 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		}
 
 		moves_left -= cost;
-
-		// remove passed waypoints
-		std::vector<map_location>& waypoints = ui->waypoints();
-		if(!waypoints.empty() && waypoints.front() == *step) {
-			waypoints.erase(waypoints.begin());
-			//if user placed waypoint on a enemy/free village
-			//assume that he wanted to capture it
-			if(map.is_village(*step) && !tm->owns_village(*step)) {
-				// this will stop the unit, and capture should do it anyway
-				moves_left = 0;
-			}
-		}
 
 		// If we use fog or shroud, see if we have sighted an enemy unit,
 		// in which case we should stop immediately.
@@ -2676,8 +2663,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		} else {
 			// MP_COUNTDOWN: added param
 			undo_stack->push_back(
-				undo_action(*maybe_ui, steps,
-						starting_waypoints, starting_moves,
+				undo_action(*maybe_ui, steps, starting_moves,
 						action_time_bonus, orig_village_owner, orig_dir));
 		}
 	}

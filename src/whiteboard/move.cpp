@@ -111,7 +111,7 @@ move::move(config const& cfg, bool hidden)
 	}
 	foreach(config const& mark_cfg, route_cfg.child_range("mark")) {
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"])]
-				= pathfind::marked_route::mark(mark_cfg["turns"],mark_cfg["pass_here"],mark_cfg["zoc"],mark_cfg["capture"],mark_cfg["invisible"]);
+				= pathfind::marked_route::mark(mark_cfg["turns"],mark_cfg["zoc"],mark_cfg["capture"],mark_cfg["invisible"]);
 	}
 
 	// Validate route_ some more
@@ -359,7 +359,7 @@ bool move::calculate_new_route(const map_location& source_hex, const map_locatio
 	new_plain_route = pathfind::a_star_search(source_hex,
 						dest_hex, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
 	if (new_plain_route.move_cost >= path_calc.getNoPathValue()) return false;
-	route_.reset(new pathfind::marked_route(pathfind::mark_route(new_plain_route, std::vector<map_location>())));
+	route_.reset(new pathfind::marked_route(pathfind::mark_route(new_plain_route)));
 	calculate_move_cost();
 	return true;
 }
@@ -486,7 +486,6 @@ config move::to_config() const
 		mark_cfg["x"]=item.first.x;
 		mark_cfg["y"]=item.first.y;
 		mark_cfg["turns"]=item.second.turns;
-		mark_cfg["pass_here"]=item.second.pass_here;
 		mark_cfg["zoc"]=item.second.zoc;
 		mark_cfg["capture"]=item.second.capture;
 		mark_cfg["invisible"]=item.second.invisible;

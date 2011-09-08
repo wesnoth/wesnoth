@@ -39,7 +39,7 @@ enum scope {
 
 enum HOTKEY_COMMAND {
 	HOTKEY_CYCLE_UNITS,HOTKEY_CYCLE_BACK_UNITS,
-	HOTKEY_ADD_WAYPOINT, HOTKEY_UNIT_HOLD_POSITION,
+	HOTKEY_UNIT_HOLD_POSITION,
 	HOTKEY_END_UNIT_TURN, HOTKEY_LEADER,
 	HOTKEY_UNDO, HOTKEY_REDO,
 	HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
@@ -285,7 +285,6 @@ public:
 	virtual void cycle_back_units() {}
 	virtual void end_turn() {}
 	virtual void goto_leader() {}
-	virtual void add_waypoint() {}
 	virtual void unit_hold_position() {}
 	virtual void end_unit_turn() {}
 	virtual void undo() {}
