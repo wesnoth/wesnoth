@@ -34,6 +34,37 @@ static lg::log_domain log_engine("engine");
 terrain_builder::building_ruleset terrain_builder::building_rules_;
 const config* terrain_builder::rules_cfg_ = NULL;
 
+namespace{
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison operations.
+static const config::t_token z_invalid_tod("invalid_tod", false);
+static const config::t_token z_image("image", false);
+static const config::t_token z_layer("layer", false);
+static const config::t_token z_base("base", false);
+static const config::t_token z_center("center", false);
+static const config::t_token z_variant("variant", false);
+static const config::t_token z_name("name", false);
+static const config::t_token z_variations("variations", false);
+static const config::t_token z_tod("tod", false);
+static const config::t_token z_random_start("random_start", false);
+static const config::t_token z_type("type", false);
+static const config::t_token z_has_flag("has_flag", false);
+static const config::t_token z_set_no_flag("set_no_flag", false);
+static const config::t_token z_x("x", false);
+static const config::t_token z_y("y", false);
+static const config::t_token z_probability("probability", false);
+static const config::t_token z_map("map", false);
+static const config::t_token z_tile("tile", false);
+static const config::t_token z_loc("loc", false);
+static const config::t_token z_pos("pos", false);
+static const config::t_token z_set_flag("set_flag", false);
+static const config::t_token z_no_flag("no_flag", false);
+static const config::t_token z_rotations("rotations", false);
+static const config::t_token z_precedence("precedence", false);
+static const config::t_token z_terrain_graphics("terrain_graphics", false);
+
+}
+
 terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image, int cx, int cy) :
 	layer(layer),
 	basex(x),
@@ -49,11 +80,11 @@ terrain_builder::tile::tile() :
 	images(),
 	images_foreground(),
 	images_background(),
-	last_tod("invalid_tod"),
+	last_tod(z_invalid_tod),
 	sorted_images(false)
 {}
 
-void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
+void terrain_builder::tile::rebuild_cache(const n_token::t_token& tod, logs* log)
 {
 	images_background.clear();
 	images_foreground.clear();
@@ -97,7 +128,7 @@ void terrain_builder::tile::clear()
 	sorted_images = false;
 	images_foreground.clear();
 	images_background.clear();
-	last_tod = "invalid_tod";
+	last_tod = z_invalid_tod;
 }
 
 static unsigned int get_noise(const map_location& loc, unsigned int index){
@@ -148,7 +179,7 @@ const terrain_builder::tile& terrain_builder::tilemap::operator[] (const map_loc
 }
 
 terrain_builder::terrain_builder(const config& level,
-		const gamemap* m, const std::string& offmap_image) :
+		const gamemap* m, const n_token::t_token& offmap_image) :
 	map_(m),
 	tile_map_(map().w(), map().h()),
 	terrain_by_type_()
@@ -206,7 +237,7 @@ void terrain_builder::change_map(const gamemap* m)
 }
 
 const terrain_builder::imagelist *terrain_builder::get_terrain_at(const map_location &loc,
-		const std::string &tod, const TERRAIN_TYPE terrain_type)
+		const n_token::t_token &tod, const TERRAIN_TYPE terrain_type)
 {
 	if(!tile_map_.on_map(loc))
 		return NULL;
@@ -285,11 +316,11 @@ void terrain_builder::rebuild_all()
 	build_terrains();
 }
 
-static bool image_exists(const std::string& name)
+static bool image_exists(const n_token::t_token& name)
 {
-	bool precached = name.find("..") == std::string::npos;
+	bool precached = (*name).find("..") == std::string::npos;
 
-	if(precached && image::precached_file_exists(n_token::t_token(name))) { //todo remove extra init
+	if(precached && image::precached_file_exists(name)) { 
 		return true;
 	} else if(image::exists(name)) {
 		return true;
@@ -298,28 +329,29 @@ static bool image_exists(const std::string& name)
 	return false;
 }
 
-static std::vector<std::string> get_variations(const std::string& base, const std::string& variations)
+static std::vector<n_token::t_token> get_variations(const n_token::t_token& base, const n_token::t_token& variations)
 {
 	/** @todo optimize this function */
-	std::vector<std::string> res;
+	std::vector<n_token::t_token> res;
 	if(variations.empty()){
 		res.push_back(base);
 		return res;
 	}
-	std::string::size_type pos = base.find("@V", 0);
+	std::string::size_type pos = (*base).find("@V", 0);
 	if(pos == std::string::npos) {
 		res.push_back(base);
 		return res;
 	}
-	std::vector<std::string> vars = utils::split(variations, ';', 0);
+	std::vector<n_token::t_token> vars = utils::split_token(variations, ';', 0);
 
-	foreach(const std::string& v, vars){
-		res.push_back(base);
+	foreach(const n_token::t_token& v, vars){
 		std::string::size_type pos = 0;
-		while ((pos = res.back().find("@V", pos)) != std::string::npos) {
-			res.back().replace(pos, 2, v);
-			pos += v.size();
+		std::string cbase(*base);
+		while ((pos = cbase.find("@V", pos)) != std::string::npos) {
+			cbase.replace(pos, 2, (*v));
+			pos += (*v).size();
 		}
+		res.push_back(n_token::t_token(cbase));		
 	}
 	return res;
 }
@@ -339,27 +371,27 @@ bool terrain_builder::load_images(building_rule &rule)
 			foreach(rule_image_variant& variant, ri.variants)
 			{
 
-				std::vector<std::string> var_strings = get_variations(variant.image_string, variant.variations);
-				foreach(const std::string& var, var_strings)
+				std::vector<n_token::t_token> var_strings = get_variations(variant.image_string, variant.variations);
+				foreach(const n_token::t_token& var, var_strings)
 				{
 					/** @todo improve this, 99% of terrains are not animated. */
-					std::vector<std::string> frames = utils::parenthetical_split(var,',');
+					std::vector<n_token::t_token> frames = utils::parenthetical_split_token(var,',');
 					animated<image::locator> res;
 
-					foreach(const std::string& frame, frames)
+					foreach(const n_token::t_token& frame, frames)
 					{
-						const std::vector<std::string> items = utils::split(frame, ':');
-						const std::string& str = items.front();
+						const std::vector<n_token::t_token> items = utils::split_token(frame, ':');
+						const n_token::t_token& str = items.front();
 
-						const size_t tilde = str.find('~');
+						const size_t tilde = (*str).find('~');
 						bool has_tilde = tilde != std::string::npos;
-						const std::string filename = "terrain/" + (has_tilde ? str.substr(0,tilde) : str);
+						const n_token::t_token filename = n_token::t_token("terrain/" + (has_tilde ? (*str).substr(0,tilde) : str)); 
 
 						if(!image_exists(filename)){
 							continue; // ignore missing frames
 						}
 
-						const std::string modif = (has_tilde ? str.substr(tilde+1) : "");
+						const n_token::t_token modif = (has_tilde ? n_token::t_token((*str).substr(tilde+1)) : z_empty);
 
 						int time = 100;
 						if(items.size() > 1) {
@@ -468,23 +500,25 @@ void terrain_builder::rotate(terrain_constraint &ret, int angle)
 	}
 }
 
-void terrain_builder::replace_rotate_tokens(std::string &s, int angle,
-	const std::vector<std::string> &replacement)
+void terrain_builder::replace_rotate_tokens(n_token::t_token &s, int angle,
+	const std::vector<n_token::t_token> &replacement)
 {
 	std::string::size_type pos = 0;
-	while ((pos = s.find("@R", pos)) != std::string::npos) {
-		if (pos + 2 >= s.size()) return;
-		unsigned i = s[pos + 2] - '0' + angle;
+	std::string scopy(*s);
+	while ((pos = scopy.find("@R", pos)) != std::string::npos) {
+		if (pos + 2 >= scopy.size()) { s = n_token::t_token(scopy); return; }
+		unsigned i = scopy[pos + 2] - '0' + angle;
 		if (i >= 6) i -= 6;
 		if (i >= 6) { pos += 2; continue; }
-		const std::string &r = replacement[i];
-		s.replace(pos, 3, r);
-		pos += r.size();
+		const n_token::t_token &r = replacement[i];
+		scopy.replace(pos, 3, r);
+		pos += r->size();
 	}
+	s = n_token::t_token(scopy);
 }
 
 void terrain_builder::replace_rotate_tokens(rule_image &image, int angle,
-	const std::vector<std::string> &replacement)
+	const std::vector<n_token::t_token> &replacement)
 {
 	foreach(rule_image_variant& variant, image.variants) {
 		replace_rotate_tokens(variant, angle, replacement);
@@ -492,7 +526,7 @@ void terrain_builder::replace_rotate_tokens(rule_image &image, int angle,
 }
 
 void terrain_builder::replace_rotate_tokens(rule_imagelist &list, int angle,
-	const std::vector<std::string> &replacement)
+	const std::vector<n_token::t_token> &replacement)
 {
 	foreach (rule_image &img, list) {
 		replace_rotate_tokens(img, angle, replacement);
@@ -500,18 +534,18 @@ void terrain_builder::replace_rotate_tokens(rule_imagelist &list, int angle,
 }
 
 void terrain_builder::replace_rotate_tokens(building_rule &rule, int angle,
-	const std::vector<std::string> &replacement)
+	const std::vector<n_token::t_token> &replacement)
 {
 	foreach (terrain_constraint &cons, rule.constraints)
 	{
 		// Transforms attributes
-		foreach (std::string &flag, cons.set_flag) {
+		foreach (n_token::t_token &flag, cons.set_flag) {
 			replace_rotate_tokens(flag, angle, replacement);
 		}
-		foreach (std::string &flag, cons.no_flag) {
+		foreach (n_token::t_token &flag, cons.no_flag) {
 			replace_rotate_tokens(flag, angle, replacement);
 		}
-		foreach (std::string &flag, cons.has_flag) {
+		foreach (n_token::t_token &flag, cons.has_flag) {
 			replace_rotate_tokens(flag, angle, replacement);
 		}
 		replace_rotate_tokens(cons.images, angle, replacement);
@@ -521,7 +555,7 @@ void terrain_builder::replace_rotate_tokens(building_rule &rule, int angle,
 }
 
 void terrain_builder::rotate_rule(building_rule &ret, int angle,
-	const std::vector<std::string> &rot)
+	const std::vector<n_token::t_token> &rot)
 {
 	if (rot.size() != 6) {
 		ERR_NG << "invalid rotations\n";
@@ -553,7 +587,7 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 	replace_rotate_tokens(ret, angle, rot);
 }
 
-terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, bool random_start) :
+terrain_builder::rule_image_variant::rule_image_variant(const n_token::t_token &image_string, const n_token::t_token& variations, const n_token::t_token& tod, bool random_start) :
 		image_string(image_string),
 		variations(variations),
 		images(),
@@ -561,20 +595,20 @@ terrain_builder::rule_image_variant::rule_image_variant(const std::string &image
 		random_start(random_start)
 {
 	if(!tod.empty()) {
-		const std::vector<std::string> tod_list = utils::split(tod);
+		const std::vector<n_token::t_token> tod_list = utils::split_token(tod);
 		tods.insert(tod_list.begin(), tod_list.end());
 	}
 }
 
 void terrain_builder::add_images_from_config(rule_imagelist& images, const config &cfg, bool global, int dx, int dy)
 {
-	foreach (const config &img, cfg.child_range("image"))
+	foreach (const config &img, cfg.child_range(z_image))
 	{
-		int layer = img["layer"];
+		int layer = img[z_layer];
 
 		int basex = TILEWIDTH / 2 + dx, basey = TILEWIDTH / 2 + dy;
-		if (const config::attribute_value *base_ = img.get("base")) {
-			std::vector<std::string> base = utils::split(*base_);
+		if (const config::attribute_value *base_ = img.get(z_base)) {
+			std::vector<n_token::t_token> base = utils::split_token(*base_);
 			if(base.size() >= 2) {
 				basex = atoi(base[0].c_str());
 				basey = atoi(base[1].c_str());
@@ -582,8 +616,8 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		}
 
 		int center_x = -1, center_y = -1;
-		if (const config::attribute_value *center_ = img.get("center")) {
-			std::vector<std::string> center = utils::split(*center_);
+		if (const config::attribute_value *center_ = img.get(z_center)) {
+			std::vector<n_token::t_token> center = utils::split_token(*center_);
 			if(center.size() >= 2) {
 				center_x = atoi(center[0].c_str());
 				center_y = atoi(center[1].c_str());
@@ -593,21 +627,21 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		images.push_back(rule_image(layer, basex - dx, basey - dy, global, center_x, center_y));
 
 		// Adds the other variants of the image
-		foreach (const config &variant, img.child_range("variant"))
+		foreach (const config &variant, img.child_range(z_variant))
 		{
-			const std::string &name = variant["name"];
-			const std::string &variations = img["variations"];
-			const std::string &tod = variant["tod"];
-			bool random_start = variant["random_start"].to_bool(true);
+			const n_token::t_token &name = variant[z_name];
+			const n_token::t_token &variations = img[z_variations];
+			const n_token::t_token &tod = variant[z_tod];
+			bool random_start = variant[z_random_start].to_bool(true);
 
 			images.back().variants.push_back(rule_image_variant(name, variations, tod, random_start));
 		}
 
 		// Adds the main (default) variant of the image at the end,
 		// (will be used only if previous variants don't match)
-		const std::string &name = img["name"];
-		const std::string &variations = img["variations"];
-		bool random_start = img["random_start"].to_bool(true);
+		const n_token::t_token &name = img[z_name];
+		const n_token::t_token &variations = img[z_variations];
+		bool random_start = img[z_random_start].to_bool(true);
 		images.back().variants.push_back(rule_image_variant(name, variations, random_start));
 	}
 }
@@ -647,22 +681,22 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 
 {
 	terrain_constraint& constraint = add_constraints(constraints, loc,
-		t_translation::t_match(cfg["type"], t_translation::WILDCARD), global_images);
+		t_translation::t_match(cfg[z_type], t_translation::WILDCARD), global_images);
 
 
-	std::vector<std::string> item_string = utils::split(cfg["set_flag"]);
+	std::vector<n_token::t_token> item_string = utils::split_token(cfg[z_set_flag]);
 	constraint.set_flag.insert(constraint.set_flag.end(),
 			item_string.begin(), item_string.end());
 
-	item_string = utils::split(cfg["has_flag"]);
+	item_string = utils::split_token(cfg[z_has_flag]);
 	constraint.has_flag.insert(constraint.has_flag.end(),
 			item_string.begin(), item_string.end());
 
-	item_string = utils::split(cfg["no_flag"]);
+	item_string = utils::split_token(cfg[z_no_flag]);
 	constraint.no_flag.insert(constraint.no_flag.end(),
 			item_string.begin(), item_string.end());
 
-	item_string = utils::split(cfg["set_no_flag"]);
+	item_string = utils::split_token(cfg[z_set_no_flag]);
 	constraint.set_flag.insert(constraint.set_flag.end(),
 			item_string.begin(), item_string.end());
 	constraint.no_flag.insert(constraint.no_flag.end(),
@@ -672,7 +706,7 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 	add_images_from_config(constraint.images, cfg, false);
 }
 
-void terrain_builder::parse_mapstring(const std::string &mapstring,
+void terrain_builder::parse_mapstring(const n_token::t_token &mapstring,
 		struct building_rule &br, anchormap& anchors,
 		const config& global_images)
 {
@@ -727,14 +761,14 @@ void terrain_builder::add_rule(building_ruleset &rules, building_rule &rule)
 }
 
 void terrain_builder::add_rotated_rules(building_ruleset &rules, building_rule &tpl,
-	const std::string &rotations)
+	const n_token::t_token &rotations)
 {
 	if(rotations.empty()) {
 		// Adds the parsed built terrain to the list
 
 		add_rule(rules, tpl);
 	} else {
-		const std::vector<std::string>& rot = utils::split(rotations, ',');
+		const std::vector<n_token::t_token>& rot = utils::split_token(rotations, ',');
 
 		for(size_t angle = 0; angle < rot.size(); ++angle) {
 			/* Only 5% of the rules have valid images, so most of
@@ -756,7 +790,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 	log_scope("terrain_builder::parse_config");
 
 	// Parses the list of building rules (BRs)
-	foreach (const config &br, cfg.child_range("terrain_graphics"))
+	foreach (const config &br, cfg.child_range(z_terrain_graphics))
 	{
 		building_rule pbr; // Parsed Building rule
 		pbr.local = local;
@@ -764,30 +798,30 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		// add_images_from_config(pbr.images, **br);
 
 		pbr.location_constraints =
-			map_location(br["x"].to_int() - 1, br["y"].to_int() - 1);
+			map_location(br[z_x].to_int() - 1, br[z_y].to_int() - 1);
 
-		pbr.probability = br["probability"].to_int(100);
+		pbr.probability = br[z_probability].to_int(100);
 
 		// Mapping anchor indices to anchor locations.
 		anchormap anchors;
 
 		// Parse the map= , if there is one (and fill the anchors list)
-		parse_mapstring(br["map"], pbr, anchors, br);
+		parse_mapstring(br[z_map], pbr, anchors, br);
 
 		// Parses the terrain constraints (TCs)
-		foreach (const config &tc, br.child_range("tile"))
+		foreach (const config &tc, br.child_range(z_tile))
 		{
 			// Adds the terrain constraint to the current built terrain's list
 			// of terrain constraints, if it does not exist.
 			map_location loc;
-			if (const config::attribute_value *v = tc.get("x")) {
+			if (const config::attribute_value *v = tc.get(z_x)) {
 				loc.x = *v;
 			}
-			if (const config::attribute_value *v = tc.get("y")) {
+			if (const config::attribute_value *v = tc.get(z_y)) {
 				loc.y = *v;
 			}
-			if (const config::attribute_value *v = tc.get("loc")) {
-				std::vector<std::string> sloc = utils::split(*v);
+			if (const config::attribute_value *v = tc.get(z_loc)) {
+				std::vector<n_token::t_token> sloc = utils::split_token(*v);
 				if(sloc.size() == 2) {
 					loc.x = atoi(sloc[0].c_str());
 					loc.y = atoi(sloc[1].c_str());
@@ -796,7 +830,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 			if(loc.valid()) {
 				add_constraints(pbr.constraints, loc, tc, br);
 			}
-			if (const config::attribute_value *v = tc.get("pos")) {
+			if (const config::attribute_value *v = tc.get(z_pos)) {
 				int pos = *v;
 				if(anchors.find(pos) == anchors.end()) {
 					WRN_NG << "Invalid anchor!\n";
@@ -813,10 +847,10 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 			}
 		}
 
-		const std::vector<std::string> global_set_flag = utils::split(br["set_flag"]);
-		const std::vector<std::string> global_no_flag = utils::split(br["no_flag"]);
-		const std::vector<std::string> global_has_flag = utils::split(br["has_flag"]);
-		const std::vector<std::string> global_set_no_flag = utils::split(br["set_no_flag"]);
+		const std::vector<n_token::t_token> global_set_flag = utils::split_token(br[z_set_flag]);
+		const std::vector<n_token::t_token> global_no_flag = utils::split_token(br[z_no_flag]);
+		const std::vector<n_token::t_token> global_has_flag = utils::split_token(br[z_has_flag]);
+		const std::vector<n_token::t_token> global_set_no_flag = utils::split_token(br[z_set_no_flag]);
 
 		foreach (terrain_constraint &constraint, pbr.constraints)
 		{
@@ -833,9 +867,9 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		}
 
 		// Handles rotations
-		const std::string &rotations = br["rotations"];
+		const n_token::t_token &rotations = br[z_rotations];
 
-		pbr.precedence = br["precedence"];
+		pbr.precedence = br[z_precedence];
 
 		add_rotated_rules(building_rules_, pbr, rotations);
 
@@ -858,7 +892,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 			std::cerr << ">>>> New constraint: location = (" << constraint->second.loc
 			          << "), terrain types = '" << t_translation::write_list(constraint->second.terrain_types_match.terrain) << "'\n";
 
-			std::vector<std::string>::const_iterator flag;
+			std::vector<n_token::t_token>::const_iterator flag;
 
 			for(flag  = constraint->second.set_flag.begin(); flag != constraint->second.set_flag.end(); ++flag) {
 				std::cerr << ">>>>>> Set_flag: " << *flag << "\n";
@@ -874,25 +908,25 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 
 }
 
-void terrain_builder::add_off_map_rule(const std::string& image)
+void terrain_builder::add_off_map_rule(const n_token::t_token& image)
 {
 	// Build a config object
 	config cfg;
 
-	config &item = cfg.add_child("terrain_graphics");
+	config &item = cfg.add_child(z_terrain_graphics);
 
-	config &tile = item.add_child("tile");
-	tile["x"] = 0;
-	tile["y"] = 0;
-	tile["type"] = t_translation::write_terrain_code(t_translation::OFF_MAP_USER);
+	config &tile = item.add_child(z_tile);
+	tile[z_x] = 0;
+	tile[z_y] = 0;
+	tile[z_type] = t_translation::write_terrain_code(t_translation::OFF_MAP_USER);
 
-	config &tile_image = tile.add_child("image");
-	tile_image["layer"] = -1000;
-	tile_image["name"] = image;
+	config &tile_image = tile.add_child(z_image);
+	tile_image[z_layer] = -1000;
+	tile_image[z_name] = image;
 
-	item["probability"] = 100;
-	item["no_flag"] = "base";
-	item["set_flag"] = "base";
+	item[z_probability] = 100;
+	item[z_no_flag] = z_base;
+	item[z_set_flag] = z_base;
 
 	// Parse the object
 	parse_global_config(cfg);
@@ -928,16 +962,16 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 			return false;
 		}
 
-		const std::set<std::string> &flags = tile_map_[tloc].flags;
+		const boost::unordered_set<n_token::t_token> &flags = tile_map_[tloc].flags;
 
-		foreach (const std::string &s, cons.no_flag) {
-			// If a flag listed in "no_flag" is present, the rule does not match
+		foreach (const n_token::t_token &s, cons.no_flag) {
+			// If a flag listed in z_no_flag is present, the rule does not match
 			if (flags.find(s) != flags.end()) {
 				return false;
 			}
 		}
-		foreach (const std::string &s, cons.has_flag) {
-			// If a flag listed in "has_flag" is not present, this rule does not match
+		foreach (const n_token::t_token &s, cons.has_flag) {
+			// If a flag listed in z_has_flag is not present, this rule does not match
 			if (flags.find(s) == flags.end()) {
 				return false;
 			}
@@ -965,7 +999,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 		}
 
 		// Sets flags
-		foreach (const std::string &flag, constraint.set_flag) {
+		foreach (const n_token::t_token &flag, constraint.set_flag) {
 			btile.flags.insert(flag);
 		}
 
@@ -975,10 +1009,10 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 // copied from text_surface::hash()
 // but keep it separated because the needs are different
 // and changing it will modify the map random variations
-static unsigned int hash_str(const std::string& str)
+static unsigned int hash_str(const n_token::t_token& str)
 {
 	unsigned int h = 0;
-	for(std::string::const_iterator it = str.begin(), it_end = str.end(); it != it_end; ++it)
+	for(std::string::const_iterator it = str->begin(), it_end = str->end(); it != it_end; ++it)
 		h = ((h << 9) | (h >> (sizeof(int) * 8 - 9))) ^ (*it);
 	return h;
 }

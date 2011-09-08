@@ -77,7 +77,7 @@ class theme
 		double size;
 
 		std::string background_image;
-		std::string tile_image;
+		n_token::t_token tile_image;
 
 		std::string corner_image_top_left;
 		std::string corner_image_bottom_left;
@@ -250,5 +250,5 @@ private:
 
 	tborder border_;
 };
-
+ 
 #endif

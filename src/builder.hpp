@@ -23,6 +23,7 @@
 
 #include "animated.hpp"
 #include "map_location.hpp"
+#include "token.hpp"
 #include "terrain_translation.hpp"
 
 class config;
@@ -87,7 +88,7 @@ public:
 	 *						and '.png' suffix
 	 */
 	terrain_builder(const config &level, const gamemap* map,
-			const std::string& offmap_image);
+			const n_token::t_token& offmap_image);
 
 	/**  Set the config where we will parse the global terrain rules.
 	 *   This also flushes the terrain rules cache.
@@ -123,7 +124,7 @@ public:
 	 *              to the parameters, or NULL if there is none.
 	 */
 	const imagelist *get_terrain_at(const map_location &loc,
-			const std::string &tod, TERRAIN_TYPE const terrain_type);
+			const n_token::t_token &tod, TERRAIN_TYPE const terrain_type);
 
 	/** Updates the animation at a given tile.
 	 * Returns true if something has changed, and must be redrawn.
@@ -156,7 +157,7 @@ public:
 	 */
 	struct rule_image_variant {
 		/** Constructor for the normal defaut case */
-		rule_image_variant(const std::string &image_string, const std::string& variations, bool random_start = true) :
+		rule_image_variant(const n_token::t_token &image_string, const n_token::t_token& variations, bool random_start = true) :
 			image_string(image_string),
 			variations(variations),
 			images(),
@@ -165,7 +166,7 @@ public:
 			{};
 
 		/** Constructor for true [variant] cases */
-		rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, bool random_start = true);
+		rule_image_variant(const n_token::t_token &image_string, const n_token::t_token& variations, const n_token::t_token& tod, bool random_start = true);
 
 		/** A string representing either the filename for an image, or
 		 *  a list of images, with an optional timing for each image.
@@ -184,12 +185,12 @@ public:
 		 *  in the animation.
 		 *@endverbatim
 		 */
-		std::string image_string;
+		n_token::t_token image_string;
 
 		/** A semi-solon separated list of string used to replace
 		 * @verbatim <code>@V</code> @endverbatim in image_string (if present)
 		 */
-		std::string variations;
+		n_token::t_token variations;
 
 		/** An animated image locator built according to the image string.
 		 * This will be the image locator which will actually
@@ -198,7 +199,7 @@ public:
 		std::vector< animated<image::locator> > images;
 
 		/** The Time of Day associated to this variant (if any)*/
-		std::set<std::string> tods;
+		boost::unordered_set<n_token::t_token> tods;
 
 		/** Indicate if the animation uses a random shift */
 		bool random_start;
@@ -269,9 +270,9 @@ public:
 
 		map_location loc;
 		t_translation::t_match terrain_types_match;
-		std::vector<std::string> set_flag;
-		std::vector<std::string> no_flag;
-		std::vector<std::string> has_flag;
+		std::vector<n_token::t_token> set_flag;
+		std::vector<n_token::t_token> no_flag;
+		std::vector<n_token::t_token> has_flag;
 		rule_imagelist images;
 	};
 
@@ -295,13 +296,13 @@ public:
 		 *
 		 * @param tod    The current time-of-day
 		 */
-		void rebuild_cache(const std::string &tod, logs* log = NULL);
+		void rebuild_cache(const n_token::t_token &tod, logs* log = NULL);
 
 		/** Clears all data in this tile, and resets the cache */
 		void clear();
 
 		/** The list of flags present in this tile */
-		std::set<std::string> flags;
+		boost::unordered_set<n_token::t_token> flags;
 
 		/** Represent a rule_image applied with a random seed.*/
 		struct rule_image_rand{
@@ -334,7 +335,7 @@ public:
 		/**
 		 * The time-of-day to which the image caches correspond.
 		 */
-		std::string last_tod;
+		n_token::t_token last_tod;
 
 		/** Indicates if 'images' is sorted */
 		bool sorted_images;
@@ -511,8 +512,8 @@ private:
 	 * @param angle        the angle for substituting the correct replacement.
 	 * @param replacement  the replacement strings.
 	 */
-	void replace_rotate_tokens(std::string &s, int angle,
-		const std::vector<std::string> &replacement);
+	void replace_rotate_tokens(n_token::t_token &s, int angle,
+		const std::vector<n_token::t_token> &replacement);
 
 	/**
 	 * Replaces, in a given rule_image, rotation tokens with their values.
@@ -523,7 +524,7 @@ private:
 	 * @param replacement  the replacement strings.
 	 */
 	void replace_rotate_tokens(rule_image &image, int angle,
-		const std::vector<std::string> &replacement);
+		const std::vector<n_token::t_token> &replacement);
 
 	/**
 	 * Replaces, in a given rule_variant_image, rotation tokens with their values.
@@ -535,7 +536,7 @@ private:
 	 * @param replacement  the replacement strings.
 	 */
 	void replace_rotate_tokens(rule_image_variant &variant, int angle,
-		const std::vector<std::string> &replacement)
+		const std::vector<n_token::t_token> &replacement)
 	{ replace_rotate_tokens(variant.image_string, angle, replacement); }
 
 	/**
@@ -548,7 +549,7 @@ private:
 	 * @param replacement  the replacement strings.
 	 */
 	void replace_rotate_tokens(rule_imagelist &list, int angle,
-		const std::vector<std::string> &replacement);
+		const std::vector<n_token::t_token> &replacement);
 
 	/**
 	 * Replaces, in a given building_rule, rotation tokens with their values.
@@ -562,7 +563,7 @@ private:
 	 * @param replacement  the replacement strings.
 	 */
 	void replace_rotate_tokens(building_rule &rule, int angle,
-		const std::vector<std::string> &replacement);
+		const std::vector<n_token::t_token> &replacement);
 
 	/**
 	 *  Rotates a template rule to a given angle.
@@ -601,7 +602,7 @@ private:
 	 *
 	 */
 	void rotate_rule(building_rule &rule, int angle,
-		const std::vector<std::string> &angle_name);
+		const std::vector<n_token::t_token> &angle_name);
 
 	/**
 	 * Parses a "config" object, which should contains [image] children,
@@ -665,7 +666,7 @@ private:
 	 * @param global_images A config object representing the images defined
 	 *                      as direct children of the [terrain_graphics] rule.
 	 */
-	void parse_mapstring(const std::string &mapstring, struct building_rule &br,
+	void parse_mapstring(const n_token::t_token &mapstring, struct building_rule &br,
 			     anchormap& anchors, const config& global_images);
 
 	/**
@@ -687,7 +688,7 @@ private:
 	 *                   template strings @verbatim (@Rn) @endverbatim
 	 */
 	void add_rotated_rules(building_ruleset& rules, building_rule& tpl,
-		const std::string &rotations);
+		const n_token::t_token &rotations);
 
 	/**
 	 * Parses a configuration object containing [terrain_graphics] rules,
@@ -706,7 +707,7 @@ private:
 	 *
 	 * @param image		The filename of the image
 	 */
-	void add_off_map_rule(const std::string& image);
+	void add_off_map_rule(const n_token::t_token& image);
 
 	void flush_local_rules();
 
@@ -780,7 +781,7 @@ private:
 	/**
 	 * Shorthand typedef for a map associating a list of locations to a terrain type.
 	 */
-	typedef std::map<t_translation::t_terrain, std::vector<map_location> > terrain_by_type_map;
+	typedef boost::unordered_map<t_translation::t_terrain, std::vector<map_location> > terrain_by_type_map;
 
 	/**
 	 * A map representing all locations whose terrain is of a given type.

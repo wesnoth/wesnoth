@@ -79,22 +79,43 @@ std::string &strip(std::string &str)
 namespace {
 
 static const uint CACHE_SIZE = 10000;
-typedef std::pair<n_token::t_token, std::pair<char, int > > t_triad;
+
 typedef std::vector<n_token::t_token > t_out;
+
+struct t_split_triad {
+	n_token::t_token const val; 
+	char c; 
+	int flags;
+	t_split_triad(n_token::t_token const &v, char cc, int f) : val(v), c(cc), flags(f) {}
+	bool operator==(t_split_triad const & a) const { 
+		return  val ==a.val && c==a.c && flags==a.flags;  }
+};
+
+size_t hash_value(t_split_triad const & a) {
+	size_t hash=0;
+	boost::hash_combine(hash, a.val);
+	boost::hash_combine(hash, a.c);
+	boost::hash_combine(hash, a.flags);
+	return hash;
+}
+
+///When a cache miss occurs calculate the split token
 struct t_calc_cache_item {
-	t_out const operator()(t_triad const & x){
-		std::vector<std::string> vstr(split(static_cast<std::string const &>(x.first), x.second.first, x.second.second));
+	t_out const operator()(t_split_triad const & x) {
+		std::vector<std::string> vstr(split(static_cast<std::string const &>(x.val), x.c, x.flags));
 		t_out const retval(vstr.begin(), vstr.end());
 		return retval;
 	}
 };
-typedef  n_lru_cache::t_lru_cache<t_triad, t_out, t_calc_cache_item> t_cache;
+
+typedef  n_lru_cache::t_lru_cache<t_split_triad, t_out, t_calc_cache_item> t_split_token_cache;
+
 }
 
 std::vector< n_token::t_token > split_token(n_token::t_token const &val, char c, int flags){
-	static t_cache my_cache(t_calc_cache_item(), CACHE_SIZE);
+	static t_split_token_cache my_cache(t_calc_cache_item(), CACHE_SIZE);
 
-	return my_cache.check(std::make_pair(val, std::make_pair(c,flags)));	
+	return my_cache.check(t_split_triad(val, c, flags));
 }
 
 std::vector< std::string > split(std::string const &val, char c, int flags)
@@ -130,6 +151,55 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 		res.push_back(new_val);
 
 	return res;
+}
+}
+
+namespace {
+static const uint PAREN_CACHE_SIZE = 1000;
+typedef std::vector<n_token::t_token > t_out;
+
+struct t_paren_split_inputs {
+	n_token::t_token const val;
+	const char separator; 
+	n_token::t_token const left;
+	n_token::t_token const right;
+	int flags;
+	t_paren_split_inputs(n_token::t_token const &val, const char separator, n_token::t_token const &left
+						, n_token::t_token const &right,int flags) 
+		: val(val), separator(separator), left(left), right(right), flags(flags){}
+	bool operator==(t_paren_split_inputs const & a) const {
+		return val ==a.val && separator==a.separator && left==a.left && right==a.right && flags==a.flags; }
+};
+
+size_t hash_value(t_paren_split_inputs const & a){
+	size_t hash=0;
+	boost::hash_combine(hash,a.val);
+	boost::hash_combine(hash,a.separator);
+	boost::hash_combine(hash,a.left);
+	boost::hash_combine(hash,a.right);
+	boost::hash_combine(hash,a.flags);
+	return hash;
+}
+
+///When a cache miss occurs calculate the split token
+struct t_calc_paren_cache_item {
+	t_out const operator()(t_paren_split_inputs const & x){
+		std::vector<std::string> vstr(utils::parenthetical_split((*x.val), x.separator, x.left, x.right, x.flags));
+		t_out const retval(vstr.begin(), vstr.end());
+		return retval;
+	}
+};
+typedef  n_lru_cache::t_lru_cache<t_paren_split_inputs, t_out, t_calc_paren_cache_item> t_paren_cache;
+}
+
+namespace utils{
+
+std::vector< n_token::t_token > parenthetical_split_token(n_token::t_token const &val,
+		const char separator, n_token::t_token const &left,
+		n_token::t_token const &right, int flags) {
+	static t_paren_cache my_cache(t_calc_paren_cache_item(), PAREN_CACHE_SIZE);
+
+	return my_cache.check( t_paren_split_inputs(val, separator, left, right, flags ) );	
 }
 
 std::vector< std::string > parenthetical_split(std::string const &val,

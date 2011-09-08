@@ -1387,7 +1387,7 @@ const unit_type *unit_type_data::find(const config::t_token& key, unit_type::BUI
 void unit_type_data::check_types(const std::vector<config::t_token>& types) const
 {
 	foreach(const config::t_token& type, types) {
-		if(!find(type)) throw game::game_error("unknown unit type: " + static_cast<std::string const &>(type));
+		if(!find(type)) { throw game::game_error("unknown unit type: " + type); }
 	}
 }
 

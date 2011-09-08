@@ -3226,7 +3226,7 @@ void console_handler::do_layers() {
 	terrain_builder& builder = disp.get_builder();
 	terrain_builder::tile* tile = builder.get_tile(loc);
 
-	const std::string& tod_id = disp.get_time_of_day(loc).id;
+	const n_token::t_token& tod_id = disp.get_time_of_day(loc).id;
 	terrain_builder::tile::logs tile_logs;
 	tile->rebuild_cache(tod_id, &tile_logs);
 
