@@ -348,6 +348,11 @@ size_t hash_value(const locator::value& val) {
 	return hash;
 }
 
+size_t hash_value(const locator& a) {
+	size_t hash = hash_value(a.val_);
+	boost::hash_combine(hash, a.index_);
+	return hash;
+}
 // Check if localized file is uptodate according to l10n track index.
 // Make sure only that the image is not explicitly recorded as fuzzy,
 // in order to be able to use non-tracked images (e.g. from UMC).

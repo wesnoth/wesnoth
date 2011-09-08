@@ -287,8 +287,8 @@ public:
 		STATE_FORGET,     /** animation will be automatically replaced by a standing anim when finished */
 		STATE_ANIM};      /** normal anims */
 	void start_animation(int start_time, const unit_animation *animation,
-		bool with_bars,  const std::string &text = "",
-		Uint32 text_color = 0, STATE state = STATE_ANIM);
+						 bool with_bars,  const n_token::t_token &text = z_empty,
+						 Uint32 text_color = 0, STATE state = STATE_ANIM);
 
 	/** The name of the file to game_display (used in menus). */
 	config::t_token const & absolute_image() const { return cfg_[z_image]; }
@@ -304,7 +304,7 @@ public:
 	const unit_race* race() const { return race_; }
 
 	const unit_animation* choose_animation(const game_display& disp,
-		       	const map_location& loc, const std::string& event,
+		       	const map_location& loc, const n_token::t_token& event,
 		       	const map_location& second_loc = map_location::null_location,
 			const int damage=0,
 			const unit_animation::hit_type hit_type = unit_animation::INVALID,

@@ -54,13 +54,13 @@ template <typename T, typename T_hasher = boost::hash<T> > class t_interned_toke
  */
 template <typename T, typename T_hasher >
 class t_interned_token {
-
-	///Private default constructor.  t_interned is always initialized to a T
-	t_interned_token(){};
-
 public:
 	inline ~t_interned_token();
 
+
+	///default constructor.
+	t_interned_token();
+	
 	///Create  token
 	///@param[in] is_ref_counted determines if all tokens of this value will be ref counted.  
 	///Static tokens should not be ref counted.
@@ -74,7 +74,14 @@ public:
 	inline bool valid() const;
 	inline bool empty() const {return !valid();}
 
+	///Cast to the constant member
 	operator T const &() const { return iter_->first; }
+
+	///Access to the constant member
+	T const & operator*() const  { return iter_->first; }
+
+	///Access constant members of T
+	T const * operator->() const  { return &iter_->first; }
 
 	///Fast equality operators
 	friend inline bool operator==(t_interned_token const &a, t_interned_token const &b) { return (a.iter_==b.iter_); }
@@ -134,6 +141,9 @@ private:
 	///Do not inline.  	
 	static t_stash & the_stash(); 
 
+	///Initialize first default constructed value.  The default value is only constructed once.
+	typename t_stash::value_type * first_default_constructed();
+
 	///Increment the reference count
 	inline void inc_ref();
 	///Decrement the reference count
@@ -153,6 +163,23 @@ typename t_interned_token<T, T_hasher>::t_stash & t_interned_token<T, T_hasher>:
 	/// @note Do not inline this function.  It forces an ordered static initialization of the_stash_ before static tokens
 	static t_stash * the_stash_ = new t_stash();
 	return *the_stash_;
+}
+
+
+template <typename T, typename T_hasher >
+typename t_interned_token<T, T_hasher>::t_stash::value_type * t_interned_token<T, T_hasher>::first_default_constructed() {
+	 t_stash & the_stash_ = the_stash();
+	 t_interned default_value_(0);
+	 T a = T();
+	
+	 std::pair<typename t_stash::iterator, bool> maybe_inserted = the_stash_.insert(std::make_pair(a, default_value_));
+
+	 return &*(maybe_inserted.first);
+}
+template <typename T, typename T_hasher >
+t_interned_token<T, T_hasher>::t_interned_token() : is_ref_counted_(false) {
+	static typename t_stash::value_type * default_iter = first_default_constructed();
+	iter_ = default_iter;
 }
 
 template <typename T, typename T_hasher >

@@ -208,8 +208,9 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 
 	if (!resources::screen->video().update_locked()) {
 		unit_animator animator;
-		bool with_bars = true;
-		animator.add_animation(&*u,"levelout", u->get_location(), map_location(), 0, with_bars);
+		bool with_bars = true;	
+		static const config::t_token z_levelout("levelout", false);
+		animator.add_animation(&*u, z_levelout, u->get_location(), map_location(), 0, with_bars);
 		animator.start_animations();
 		animator.wait_for_end();
 	}
@@ -245,7 +246,8 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 
 	if (u != resources::units->end() && !resources::screen->video().update_locked()) {
 		unit_animator animator;
-		animator.add_animation(&*u, "levelin", u->get_location(), map_location(), 0, true);
+		static const config::t_token z_levelin("levelin", false);
+		animator.add_animation(&*u, z_levelin, u->get_location(), map_location(), 0, true);
 		animator.start_animations();
 		animator.wait_for_end();
 		animator.set_all_standing();

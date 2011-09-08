@@ -1928,8 +1928,7 @@ void unit::set_selecting()
 }
 
 void unit::start_animation(int start_time, const unit_animation *animation,
-	bool with_bars,  const std::string &text, Uint32 text_color, STATE state)
-{
+	bool with_bars,  const n_token::t_token &text, Uint32 text_color, STATE state) {
 	const game_display * disp =  game_display::get_singleton();
 	state_ = state;
 	if (!animation) {
@@ -2832,7 +2831,7 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 	}
 }
 
-const unit_animation* unit::choose_animation(const game_display& disp, const map_location& loc,const std::string& event,
+const unit_animation* unit::choose_animation(const game_display& disp, const map_location& loc,const n_token::t_token& event,
 		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
 		const attack_type* attack, const attack_type* second_attack, int swing_num) const
 {

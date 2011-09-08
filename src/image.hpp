@@ -67,6 +67,7 @@ namespace image {
 		};
 
 		friend size_t hash_value(const value&);
+		friend size_t hash_value(const locator&);
 
 	public:
 
@@ -140,6 +141,7 @@ namespace image {
 	};
 
 	size_t hash_value(const locator::value&);
+	size_t hash_value(const locator& );
 
 
 	typedef cache_type<surface> image_cache;

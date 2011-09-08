@@ -19,6 +19,12 @@
 #include "config.hpp"
 #include "unit_frame.hpp"
 
+namespace {
+//Static tokens are replacements for string literals in code
+//They allow for fast comparison, copying and hashing operations.
+static const config::t_token z_frame("frame", false);
+}
+
 class attack_type;
 class game_display;
 class unit;
@@ -31,11 +37,11 @@ class unit_animation
 		typedef enum { MATCH_FAIL=-10 , DEFAULT_ANIM=-9} variation_type;
 		typedef enum { HIT, MISS, KILL, INVALID} hit_type;
 
-		static const std::vector<std::string>& all_tag_names();
+		static const std::vector<n_token::t_token>& all_tag_names();
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
 		static void add_anims( std::vector<unit_animation> & animations, const config & cfg);
 
-		int matches(const game_display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int value2 =0) const;
+		int matches(const game_display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const n_token::t_token & event=z_empty,const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int value2 =0) const;
 
 
 		const unit_frame& get_last_frame() const{ return unit_anim_.get_last_frame() ; };
@@ -54,7 +60,7 @@ class unit_animation
 		void start_animation(int start_time
 				, const map_location &src = map_location::null_location
 				, const map_location &dst = map_location::null_location
-				, const std::string& text = ""
+				, const n_token::t_token& text = z_empty
 				, const Uint32 text_color = 0
 				, const bool accelerate = true);
 		void update_parameters(const map_location &src, const map_location &dst);
@@ -67,7 +73,7 @@ class unit_animation
 
 	friend class unit;
 
-	explicit unit_animation(const config &cfg, const std::string &frame_string = "");
+	explicit unit_animation(const config &cfg, const n_token::t_token &frame_string = z_empty);
 
 	protected:
 	// reserved to class unit, for the special case of redrawing the unit base frame
@@ -75,23 +81,22 @@ class unit_animation
 	private:
 		explicit unit_animation(int start_time
 				, const unit_frame &frame
-				, const std::string& event = ""
+				, const n_token::t_token& event = z_empty
 				, const int variation=DEFAULT_ANIM
 				, const frame_builder & builder = frame_builder());
 
-		class particule:public animated<unit_frame>
-	{
+		class particule:public animated<unit_frame> {
 		public:
 			explicit particule(int start_time=0,const frame_builder &builder = frame_builder()) :
 				animated<unit_frame>(start_time),
 				accelerate(true),
-				parameters_(builder),
+				parameters_(frame_parsed_parameters(builder)),
 				halo_id_(0),
 				last_frame_begin_time_(0),
 				cycles_(false)
 				{};
 			explicit particule(const config& cfg
-					, const std::string& frame_string ="frame");
+					, const n_token::t_token& frame_string  = z_frame);
 
 			virtual ~particule();
 			bool need_update() const;
@@ -100,22 +105,25 @@ class unit_animation
 			void override(int start_time
 					, int duration
 					, const cycle_state cycles
-					, const std::string& highlight = ""
-					, const std::string& blend_ratio =""
+					, const n_token::t_token& highlight = z_empty
+					, const n_token::t_token& blend_ratio =z_empty
 					, Uint32 blend_color = 0
-					, const std::string& offset = ""
-					, const std::string& layer = ""
-					, const std::string& modifiers = "");
+					, const n_token::t_token& offset = z_empty
+					, const n_token::t_token& layer = z_empty
+					, const n_token::t_token& modifiers = z_empty);
 			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst);
 			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst);
 			void start_animation(int start_time);
-			const frame_parameters parameters(const frame_parameters & default_val) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val); };
+			const frame_parameters parameters(const frame_parameters & default_val) const { 
+				return get_current_frame().merge_parameters(get_current_frame_time(), (*parameters_).parameters(get_animation_time()-get_begin_time()),default_val); };
 			void clear_halo();
 			bool accelerate;
 		private:
 
+		typedef n_interned::t_interned_token<frame_parsed_parameters> t_frame_parameter_token;
+
 			//animation params that can be locally overridden by frames
-			frame_parsed_parameters parameters_;
+			t_frame_parameter_token parameters_;
 			int halo_id_;
 			int last_frame_begin_time_;
 			bool cycles_;
@@ -127,13 +135,13 @@ class unit_animation
 		std::vector<map_location::DIRECTION> directions_;
 		int frequency_;
 		int base_score_;
-		std::vector<std::string> event_;
+		std::vector<n_token::t_token> event_;
 		std::vector<int> value_;
 		std::vector<config> primary_attack_filter_;
 		std::vector<config> secondary_attack_filter_;
 		std::vector<hit_type> hits_;
 		std::vector<int> value2_;
-		std::map<std::string,particule> sub_anims_;
+		std::map<n_token::t_token,particule> sub_anims_;
 		particule unit_anim_;
 		/* these are drawing parameters, but for efficiancy reason they are in the anim and not in the particle */
 		map_location src_;
@@ -158,15 +166,15 @@ class unit_animator
 				, const unit_animation * animation
 				, const map_location &src = map_location::null_location
 				, bool with_bars = false
-				, const std::string& text = ""
+				, const n_token::t_token& text = z_empty
 				, const Uint32 text_color = 0);
 		void add_animation(unit* animated_unit
-				, const std::string& event
+				, const n_token::t_token& event
 				, const map_location &src = map_location::null_location
 				, const map_location &dst = map_location::null_location
 				, const int value = 0
 				, bool with_bars = false
-				, const std::string& text = ""
+				, const n_token::t_token& text = z_empty
 				, const Uint32 text_color = 0
 				, const unit_animation::hit_type hit_type =
 					unit_animation::INVALID
@@ -174,12 +182,12 @@ class unit_animator
 				, const attack_type* second_attack = NULL
 				, int value2 = 0);
 		void replace_anim_if_invalid(unit* animated_unit
-				, const std::string& event
+				, const n_token::t_token& event
 				, const map_location &src = map_location::null_location
 				, const map_location &dst = map_location::null_location
 				, const int value = 0
 				, bool with_bars = false
-				, const std::string& text = ""
+				, const n_token::t_token& text = z_empty
 				, const Uint32 text_color = 0
 				, const unit_animation::hit_type hit_type =
 					unit_animation::INVALID
@@ -213,7 +221,7 @@ class unit_animator
 
 			unit *my_unit;
 			const unit_animation * animation;
-			std::string text;
+			n_token::t_token text;
 			Uint32 text_color;
 			map_location src;
 			bool with_bars;

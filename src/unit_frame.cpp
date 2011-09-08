@@ -23,75 +23,121 @@
 #include "unit_frame.hpp"
 
 
-progressive_string::progressive_string(const std::string & data,int duration) :
-	data_(),
-	input_(data)
-{
-		const std::vector<std::string> first_pass = utils::split(data);
-		const int time_chunk = std::max<int>(duration / (first_pass.size()?first_pass.size():1),1);
+namespace {
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison, copying and hashing operations.
 
-		std::vector<std::string>::const_iterator tmp;
-		for(tmp=first_pass.begin();tmp != first_pass.end() ; ++tmp) {
-			std::vector<std::string> second_pass = utils::split(*tmp,':');
-			if(second_pass.size() > 1) {
-				data_.push_back(std::pair<std::string,int>(second_pass[0],atoi(second_pass[1].c_str())));
-			} else {
-				data_.push_back(std::pair<std::string,int>(second_pass[0],time_chunk));
-			}
+static const config::t_token z_image_diagonal("image_diagonal", false);
+static const config::t_token z_image_mod("image_mod", false);
+static const config::t_token z_halo_x("halo_x", false);
+static const config::t_token z_halo_y("halo_y", false);
+static const config::t_token z_halo_mod("halo_mod", false);
+static const config::t_token z_sound("sound", false);
+static const config::t_token z_text("text", false);
+static const config::t_token z_blend_ratio("blend_ratio", false);
+static const config::t_token z_alpha("alpha", false);
+static const config::t_token z_offset("offset", false);
+static const config::t_token z_submerge("submerge", false);
+static const config::t_token z_x("x", false);
+static const config::t_token z_y("y", false);
+static const config::t_token z_directional_x("directional_x", false);
+static const config::t_token z_directional_y("directional_y", false);
+static const config::t_token z_layer("layer", false);
+static const config::t_token z_auto_vflip("auto_vflip", false);
+static const config::t_token z_auto_hflip("auto_hflip", false);
+static const config::t_token z_primary("primary", false);
+static const config::t_token z_text_color("text_color", false);
+static const config::t_token z_duration("duration", false);
+static const config::t_token z_end("end", false);
+static const config::t_token z_begin("begin", false);
+static const config::t_token z_blend_color("blend_color", false);
+}
+
+
+
+template <class T>
+void progressive_discrete<T>::progressive_discrete_core(n_token::t_token const & data, int duration) {
+	const std::vector<n_token::t_token> first_pass = utils::split_token(data);
+	const int time_chunk = std::max<int>(duration / (first_pass.size() ? first_pass.size() : 1), 1);
+
+	std::vector<n_token::t_token>::const_iterator tmp;
+	for(tmp=first_pass.begin(); tmp != first_pass.end() ; ++tmp) {
+		std::vector<n_token::t_token> second_pass = utils::split_token(*tmp,':');
+		if(second_pass.size() > 1) {
+			data_.push_back(std::pair<n_token::t_token, int>(second_pass[0],atoi(second_pass[1].c_str())));
+		} else {
+			data_.push_back(std::pair<n_token::t_token, int>(second_pass[0],time_chunk));
 		}
-}
-int progressive_string::duration() const
-{
-	int total =0;
-	std::vector<std::pair<std::string,int> >::const_iterator cur_halo;
-	for(cur_halo = data_.begin() ; cur_halo != data_.end() ; ++cur_halo) {
-		total += cur_halo->second;
 	}
-	return total;
-
 }
 
-static const std::string empty_string;
+template <class T>
+progressive_discrete<T>::progressive_discrete(progressive_discrete<T> const & a) : data_(), input_(a.input_) {
+	typename t_data::const_iterator i=a.data_.begin(), iend=a.data_.end();
+	for(;i!= iend; ++i){ data_.push_back(*i); } }
 
-const std::string& progressive_string::get_current_element(int current_time)const
-{
+template <class T>
+int progressive_discrete<T>::duration() const {
+	int total =0;
+	std::vector<std::pair<n_token::t_token, int> >::const_iterator cur_halo;
+	for(cur_halo = data_.begin() ; cur_halo != data_.end() ; ++cur_halo) {
+		total += cur_halo->second; }
+	return total;
+}
+
+template <class T>
+const T& progressive_discrete<T>::get_current_element(int current_time)const {
 	int time = 0;
 	unsigned int sub_halo = 0;
-	if(data_.empty()) return empty_string;
+	if(data_.empty()) return z_empty;
 	while(time < current_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
-		++sub_halo;
-
-	}
+		++sub_halo; }
 	if(sub_halo) sub_halo--;
 	return data_[sub_halo].first;
 }
 
 template <class T>
-progressive_<T>::progressive_(const std::string &data, int duration) :
-	data_(),
-	input_(data)
-{
+bool progressive_discrete<T>::operator==(progressive_discrete const & b) const {
+	if (data_.size() != b.data_.size() ){ return false; }
+	return std::equal(data_.begin(), data_.end(), b.data_.begin());
+}
+
+template <typename T>
+size_t hash_value(progressive_discrete<T> const & a) {
+	return boost::hash_value(a.data_); }
+
+
+
+template <class T>
+T progressive_continuous<T>::default_default_value_ = T() ;
+
+template <class T>
+void progressive_continuous<T>::progressive_continuous_core(const config::t_token &data, int duration) {
 	int split_flag = utils::REMOVE_EMPTY; // useless to strip spaces
-	const std::vector<std::string> comma_split = utils::split(data,',',split_flag);
+	const std::vector<config::t_token> comma_split = utils::split_token(data,',',split_flag);
 	const int time_chunk = std::max<int>(1, duration / std::max<int>(comma_split.size(),1));
 
-	std::vector<std::string>::const_iterator com_it = comma_split.begin();
+	std::vector<config::t_token>::const_iterator com_it = comma_split.begin();
 	for(; com_it != comma_split.end(); ++com_it) {
-		std::vector<std::string> colon_split = utils::split(*com_it,':',split_flag);
+		std::vector<config::t_token> colon_split = utils::split_token(*com_it,':',split_flag);
 		int time = (colon_split.size() > 1) ? atoi(colon_split[1].c_str()) : time_chunk;
 
-		std::vector<std::string> range = utils::split(colon_split[0],'~',split_flag);
+		std::vector<config::t_token> range = utils::split_token(colon_split[0],'~',split_flag);
 		T range0 = lexical_cast<T>(range[0]);
 		T range1 = (range.size() > 1) ? lexical_cast<T>(range[1]) : range0;
-		typedef std::pair<T,T> range_pair;
-		data_.push_back(std::pair<range_pair,int>(range_pair(range0, range1), time));
+		data_.push_back(std::pair<range_pair, int>(range_pair(range0, range1), time));
 	}
 }
 
 template <class T>
-const T progressive_<T>::get_current_element(int current_time, T default_val) const
-{
+progressive_continuous<T>::progressive_continuous(progressive_continuous<T> const & a) : data_(), input_(a.input_) {
+	typename t_data::const_iterator i=a.data_.begin(), iend=a.data_.end();
+	for(;i!= iend; ++i){ data_.push_back(*i); }
+}
+
+template <class T>
+const T progressive_continuous<T>::get_current_element(int current_time, T const & default_val) const  {
 	int time = 0;
 	unsigned int sub_halo = 0;
 	int searched_time = current_time;
@@ -101,7 +147,6 @@ const T progressive_<T>::get_current_element(int current_time, T default_val) co
 	while(time < searched_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
 		++sub_halo;
-
 	}
 	if(sub_halo != 0) {
 		sub_halo--;
@@ -117,39 +162,48 @@ const T progressive_<T>::get_current_element(int current_time, T default_val) co
 }
 
 template<class T>
-int progressive_<T>::duration() const
-{
+int progressive_continuous<T>::duration() const {
 	int total = 0;
 	typename std::vector<std::pair<std::pair<T, T>, int> >::const_iterator cur_halo;
 	for(cur_halo = data_.begin() ; cur_halo != data_.end() ; ++cur_halo) {
 		total += cur_halo->second;
 	}
 	return total;
-
 }
 
 template <class T>
-bool progressive_<T>::does_not_change() const
-{
-return data_.empty() ||
-	( data_.size() == 1 && data_[0].first.first == data_[0].first.second);
+bool progressive_continuous<T>::does_not_change() const {
+	return data_.empty() || ( data_.size() == 1 && data_[0].first.first == data_[0].first.second);
 }
 
+template <class T>
+bool progressive_continuous<T>::operator==(progressive_continuous const & b) const {
+	if (data_.size() != b.data_.size()) { return false; }
+	return std::equal(data_.begin(), data_.end(), b.data_.begin());
+}
+
+template <typename T>
+size_t hash_value(progressive_continuous<T> const & a) {
+	return boost::hash_value(a.data_); }
+
+
 // Force compilation of the following template instantiations
-template class progressive_<int>;
-template class progressive_<double>;
+template class progressive_discrete<n_token::t_token>;
+template class progressive_discrete<std::string>;
+template class progressive_continuous<int>;
+template class progressive_continuous<double>;
 
 frame_parameters::frame_parameters() :
 	duration(0),
 	image(),
 	image_diagonal(),
-	image_mod(""),
-	halo(""),
+	image_mod(z_empty),
+	halo(z_empty),
 	halo_x(0),
 	halo_y(0),
-	halo_mod(""),
-	sound(""),
-	text(""),
+	halo_mod(z_empty),
+	sound(z_empty),
+	text(z_empty),
 	text_color(0),
 	blend_with(0),
 	blend_ratio(0.0),
@@ -170,119 +224,119 @@ frame_builder::frame_builder() :
 	duration_(1),
 	image_(),
 	image_diagonal_(),
-	image_mod_(""),
-	halo_(""),
-	halo_x_(""),
-	halo_y_(""),
-	halo_mod_(""),
-	sound_(""),
-	text_(""),
+	image_mod_(z_empty),
+	halo_(z_empty),
+	halo_x_(z_empty),
+	halo_y_(z_empty),
+	halo_mod_(z_empty),
+	sound_(z_empty),
+	text_(z_empty),
 	text_color_(0),
 	blend_with_(0),
-	blend_ratio_(""),
-	highlight_ratio_(""),
-	offset_(""),
-	submerge_(""),
-	x_(""),
-	y_(""),
-	directional_x_(""),
-	directional_y_(""),
+	blend_ratio_(z_empty),
+	highlight_ratio_(z_empty),
+	offset_(z_empty),
+	submerge_(z_empty),
+	x_(z_empty),
+	y_(z_empty),
+	directional_x_(z_empty),
+	directional_y_(z_empty),
 	auto_vflip_(t_unset),
 	auto_hflip_(t_unset),
 	primary_frame_(t_unset),
 	drawing_layer_(str_cast(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST))
 {}
 
-frame_builder::frame_builder(const config& cfg,const std::string& frame_string) :
+frame_builder::frame_builder(const config& cfg,const n_token::t_token& frame_string) :
 	duration_(1),
-	image_(cfg[frame_string + "image"].token()),
-	image_diagonal_(cfg[frame_string + "image_diagonal"].token()),
-	image_mod_(cfg[frame_string + "image_mod"]),
-	halo_(cfg[frame_string + "halo"]),
-	halo_x_(cfg[frame_string + "halo_x"]),
-	halo_y_(cfg[frame_string + "halo_y"]),
-	halo_mod_(cfg[frame_string + "halo_mod"]),
-	sound_(cfg[frame_string + "sound"]),
-	text_(cfg[frame_string + "text"]),
+	image_(cfg[frame_string + z_image].token()),
+	image_diagonal_(cfg[frame_string + z_image_diagonal].token()),
+	image_mod_(cfg[frame_string + z_image_mod].token()),
+	halo_(cfg[frame_string + z_halo].token()),
+	halo_x_(cfg[frame_string + z_halo_x].token()),
+	halo_y_(cfg[frame_string + z_halo_y].token()),
+	halo_mod_(cfg[frame_string + z_halo_mod].token()),
+	sound_(cfg[frame_string + z_sound].token()),
+	text_(cfg[frame_string + z_text].token()),
 	text_color_(0),
 	blend_with_(0),
-	blend_ratio_(cfg[frame_string + "blend_ratio"]),
-	highlight_ratio_(cfg[frame_string + "alpha"]),
-	offset_(cfg[frame_string + "offset"]),
-	submerge_(cfg[frame_string + "submerge"]),
-	x_(cfg[frame_string + "x"]),
-	y_(cfg[frame_string + "y"]),
-	directional_x_(cfg[frame_string + "directional_x"]),
-	directional_y_(cfg[frame_string + "directional_y"]),
+	blend_ratio_(cfg[frame_string + z_blend_ratio].token()),
+	highlight_ratio_(cfg[frame_string + z_alpha].token()),
+	offset_(cfg[frame_string + z_offset].token()),
+	submerge_(cfg[frame_string + z_submerge].token()),
+	x_(cfg[frame_string + z_x].token()),
+	y_(cfg[frame_string + z_y].token()),
+	directional_x_(cfg[frame_string + z_directional_x].token()),
+	directional_y_(cfg[frame_string + z_directional_y].token()),
 	auto_vflip_(t_unset),
 	auto_hflip_(t_unset),
 	primary_frame_(t_unset),
-	drawing_layer_(cfg[frame_string + "layer"])
+	drawing_layer_(cfg[frame_string + z_layer].token())
 {
-	if(!cfg.has_attribute(frame_string + "auto_vflip")) {
+	if(!cfg.has_attribute(frame_string + z_auto_vflip)) {
 		auto_vflip_ = t_unset;
-	} else if(cfg[frame_string + "auto_vflip"].to_bool()) {
+	} else if(cfg[frame_string + z_auto_vflip].to_bool()) {
 		auto_vflip_ = t_true;
 	} else {
 		auto_vflip_ = t_false;
 	}
-	if(!cfg.has_attribute(frame_string + "auto_hflip")) {
+	if(!cfg.has_attribute(frame_string + z_auto_hflip)) {
 		auto_hflip_ = t_unset;
-	} else if(cfg[frame_string + "auto_hflip"].to_bool()) {
+	} else if(cfg[frame_string + z_auto_hflip].to_bool()) {
 		auto_hflip_ = t_true;
 	} else {
 		auto_hflip_ = t_false;
 	}
-	if(!cfg.has_attribute(frame_string + "primary")) {
+	if(!cfg.has_attribute(frame_string + z_primary)) {
 		primary_frame_ = t_unset;
-	} else if(cfg[frame_string + "primary"].to_bool()) {
+	} else if(cfg[frame_string + z_primary].to_bool()) {
 		primary_frame_ = t_true;
 	} else {
 		primary_frame_ = t_false;
 	}
-	std::vector<std::string> color = utils::split(cfg[frame_string + "text_color"]);
+	std::vector<n_token::t_token> color = utils::split_token(cfg[frame_string + z_text_color]);
 	if (color.size() == 3) {
 		text_color_ = display::rgb(atoi(color[0].c_str()),
 			atoi(color[1].c_str()), atoi(color[2].c_str()));
 	}
 
-	if (const config::attribute_value *v = cfg.get(frame_string + "duration")) {
+	if (const config::attribute_value *v = cfg.get(frame_string + z_duration)) {
 		duration(*v);
 	} else {
-		duration(cfg[frame_string + "end"].to_int() - cfg[frame_string + "begin"].to_int());
+		duration(cfg[frame_string + z_end].to_int() - cfg[frame_string + z_begin].to_int());
 	}
 
-	color = utils::split(cfg[frame_string + "blend_color"]);
+	color = utils::split_token(cfg[frame_string + z_blend_color]);
 	if (color.size() == 3) {
 		blend_with_ = display::rgb(atoi(color[0].c_str()),
 			atoi(color[1].c_str()), atoi(color[2].c_str()));
 	}
 }
 
-frame_builder & frame_builder::image(const image::locator& image ,const std::string & image_mod)
+frame_builder & frame_builder::image(const image::locator& image ,const n_token::t_token & image_mod)
 {
 	image_ = image;
 	image_mod_ = image_mod;
 	return *this;
 }
-frame_builder & frame_builder::image_diagonal(const image::locator& image_diagonal,const std::string& image_mod)
+frame_builder & frame_builder::image_diagonal(const image::locator& image_diagonal,const n_token::t_token& image_mod)
 {
 	image_diagonal_ = image_diagonal;
 	image_mod_ = image_mod;
 	return *this;
 }
-frame_builder & frame_builder::sound(const std::string& sound)
+frame_builder & frame_builder::sound(const n_token::t_token& sound)
 {
 	sound_=sound;
 	return *this;
 }
-frame_builder & frame_builder::text(const std::string& text,const  Uint32 text_color)
+frame_builder & frame_builder::text(const n_token::t_token& text,const  Uint32 text_color)
 {
 	text_=text;
 	text_color_=text_color;
 	return *this;
 }
-frame_builder & frame_builder::halo(const std::string &halo, const std::string &halo_x, const std::string& halo_y,const std::string & halo_mod)
+frame_builder & frame_builder::halo(const n_token::t_token &halo, const n_token::t_token &halo_x, const n_token::t_token& halo_y,const n_token::t_token & halo_mod)
 {
 	halo_ = halo;
 	halo_x_ = halo_x;
@@ -295,43 +349,43 @@ frame_builder & frame_builder::duration(const int duration)
 	duration_= duration;
 	return *this;
 }
-frame_builder & frame_builder::blend(const std::string& blend_ratio,const Uint32 blend_color)
+frame_builder & frame_builder::blend(const n_token::t_token& blend_ratio,const Uint32 blend_color)
 {
 	blend_with_=blend_color;
 	blend_ratio_=blend_ratio;
 	return *this;
 }
-frame_builder & frame_builder::highlight(const std::string& highlight)
+frame_builder & frame_builder::highlight(const n_token::t_token& highlight)
 {
 	highlight_ratio_=highlight;
 	return *this;
 }
-frame_builder & frame_builder::offset(const std::string& offset)
+frame_builder & frame_builder::offset(const n_token::t_token& offset)
 {
 	offset_=offset;
 	return *this;
 }
-frame_builder & frame_builder::submerge(const std::string& submerge)
+frame_builder & frame_builder::submerge(const n_token::t_token& submerge)
 {
 	submerge_=submerge;
 	return *this;
 }
-frame_builder & frame_builder::x(const std::string& x)
+frame_builder & frame_builder::x(const n_token::t_token& x)
 {
 	x_=x;
 	return *this;
 }
-frame_builder & frame_builder::y(const std::string& y)
+frame_builder & frame_builder::y(const n_token::t_token& y)
 {
 	y_=y;
 	return *this;
 }
-frame_builder & frame_builder::directional_x(const std::string& directional_x)
+frame_builder & frame_builder::directional_x(const n_token::t_token& directional_x)
 {
 	directional_x_=directional_x;
 	return *this;
 }
-frame_builder & frame_builder::directional_y(const std::string& directional_y)
+frame_builder & frame_builder::directional_y(const n_token::t_token& directional_y)
 {
 	directional_y_=directional_y;
 	return *this;
@@ -354,7 +408,7 @@ frame_builder & frame_builder::primary_frame(const bool primary_frame)
 	else primary_frame_ = t_false;
 	return *this;
 }
-frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
+frame_builder & frame_builder::drawing_layer(const n_token::t_token& drawing_layer)
 {
 	drawing_layer_=drawing_layer;
 	return *this;
@@ -386,7 +440,71 @@ frame_parsed_parameters::frame_parsed_parameters(const frame_builder & builder, 
 	auto_hflip_(builder.auto_hflip_),
 	primary_frame_(builder.primary_frame_),
 	drawing_layer_(builder.drawing_layer_,duration_)
-{}
+{
+}
+
+bool frame_parsed_parameters::operator==(frame_parsed_parameters const & b) const {
+	return duration_ == b.duration_ 
+		&& image_ == b.image_
+		&& image_diagonal_ == b.image_diagonal_
+		&& image_mod_ == b.image_mod_
+		&& halo_ == b.halo_
+		&& halo_x_ == b.halo_x_
+		&& halo_y_ == b.halo_y_
+		&& halo_mod_ == b. halo_mod_
+
+		&& sound_ == b.sound_
+		&& text_ == b.text_
+		&& text_color_ == b.text_color_
+		&& blend_with_ == b.blend_with_
+		&& blend_ratio_ == b.blend_ratio_
+		&& highlight_ratio_ == b.highlight_ratio_
+		&& offset_ == b.offset_
+		&& submerge_ == b.submerge_
+
+		&& x_ == b.x_
+		&& y_ == b.y_
+		&& directional_x_ == b.directional_y_
+		&& directional_y_ == b.directional_x_
+		&& auto_vflip_ == b.auto_vflip_
+		&& auto_hflip_ == b.auto_hflip_
+		&& primary_frame_ == b.primary_frame_
+		&& drawing_layer_ == b.drawing_layer_
+		;
+}
+
+size_t hash_value(frame_parsed_parameters const & a) {
+	std::size_t hash = 0;
+	boost::hash_combine(hash, a.duration_);
+	boost::hash_combine(hash, a.image_);
+	boost::hash_combine(hash, a.image_diagonal_);
+	boost::hash_combine(hash, a.image_mod_);
+
+	boost::hash_combine(hash, a.halo_);
+	boost::hash_combine(hash, a.halo_mod_);
+	boost::hash_combine(hash, a.halo_x_);
+	boost::hash_combine(hash, a.halo_y_);
+
+	boost::hash_combine(hash, a.sound_);
+	boost::hash_combine(hash, a.text_);
+	boost::hash_combine(hash, a.text_color_);
+	boost::hash_combine(hash, a.blend_with_);
+	boost::hash_combine(hash, a.blend_ratio_);
+	boost::hash_combine(hash, a.highlight_ratio_);
+	boost::hash_combine(hash, a.offset_);
+	boost::hash_combine(hash, a.submerge_);
+
+	boost::hash_combine(hash, a.x_);
+	boost::hash_combine(hash, a.y_);
+	boost::hash_combine(hash, a.directional_x_);
+	boost::hash_combine(hash, a.directional_y_);
+	boost::hash_combine(hash, a.auto_vflip_);
+	boost::hash_combine(hash, a.auto_hflip_);
+	boost::hash_combine(hash, a.primary_frame_);
+	boost::hash_combine(hash, a.drawing_layer_);
+
+	return hash;
+}
 
 
 bool frame_parsed_parameters::does_not_change() const
@@ -454,18 +572,18 @@ const frame_parameters frame_parsed_parameters::parameters(int current_time) con
 }
 
 void frame_parsed_parameters::override( int duration
-		, const std::string& highlight
-		, const std::string& blend_ratio
+		, const n_token::t_token& highlight
+		, const n_token::t_token& blend_ratio
 		, Uint32 blend_color
-		, const std::string& offset
-		, const std::string& layer
-		, const std::string& modifiers)
+		, const n_token::t_token& offset
+		, const n_token::t_token& layer
+		, const n_token::t_token& modifiers)
 {
 
 	if(!highlight.empty()) {
 		highlight_ratio_ = progressive_double(highlight,duration);
 	} else if(duration != duration_){
-		highlight_ratio_=progressive_double(highlight_ratio_.get_original(),duration);
+		highlight_ratio_ = progressive_double(highlight_ratio_.get_original(),duration);
 	}
 	if(!offset.empty()) {
 		offset_= progressive_double(offset,duration);
@@ -484,11 +602,11 @@ void frame_parsed_parameters::override( int duration
 		drawing_layer_=progressive_int(drawing_layer_.get_original(),duration);
 	}
 	if(!modifiers.empty()) {
-		image_mod_+=modifiers;
+		image_mod_ = n_token::t_token( image_mod_ + modifiers );
 	}
 
 	if(duration != duration_) {
-		halo_ = progressive_string(halo_.get_original(),duration);
+		halo_ = progressive_token(halo_.get_original(),duration);
 		halo_x_ = progressive_int(halo_x_.get_original(),duration);
 		halo_y_ = progressive_int(halo_y_.get_original(),duration);
 		submerge_=progressive_double(submerge_.get_original(),duration);
@@ -533,12 +651,12 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
 		image_loc = image::locator(current_data.image_diagonal, n_token::t_token(current_data.image_mod)); //todo remove
 	}
-	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
+	if(image_loc.is_void() || image_loc.get_filename() == z_empty) { // invalid diag image, or not diagonal
 		image_loc = image::locator(current_data.image,n_token::t_token(current_data.image_mod)); //rmove extra contructor
 	}
 
 	surface image;
-	if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
+	if(!image_loc.is_void() && image_loc.get_filename() != z_empty) { // invalid diag image, or not diagonal
 		image=image::get_image(image_loc, image::SCALED_TO_ZOOM);
 	}
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
@@ -636,7 +754,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
 		image_loc = image::locator(current_data.image_diagonal, n_token::t_token(current_data.image_mod));
 	}
-	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
+	if(image_loc.is_void() || image_loc.get_filename() == z_empty) { // invalid diag image, or not diagonal
 		image_loc = image::locator(current_data.image, n_token::t_token(current_data.image_mod));
 	}
 
@@ -670,7 +788,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 #endif //_OPENMP
 		{
 			surface image;
-			if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
+			if(!image_loc.is_void() && image_loc.get_filename() != z_empty) { // invalid diag image, or not diagonal
 				image=image::get_image(image_loc,
 						image::SCALED_TO_ZOOM
 						);
@@ -737,7 +855,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	 *
 	 */
 	frame_parameters result;
-	const frame_parameters & current_val = builder_.parameters(current_time);
+	const frame_parameters & current_val = static_cast<frame_parsed_parameters const &>(builder_).parameters(current_time);
 
 	result.primary_frame = engine_val.primary_frame;
 	if(animation_val.primary_frame != t_unset) result.primary_frame = animation_val.primary_frame;
@@ -745,13 +863,13 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	const bool primary = result.primary_frame;
 
 	/** engine provides a default image to use for the unit when none is available */
-	result.image = current_val.image.is_void() || current_val.image.get_filename() == ""?animation_val.image:current_val.image;
+	result.image = current_val.image.is_void() || current_val.image.get_filename() == z_empty ?animation_val.image:current_val.image;
 	if(primary && ( result.image.is_void() || result.image.get_filename().empty())) {
 		result.image = engine_val.image;
 	}
 
 	/** engine provides a default image to use for the unit when none is available */
-	result.image_diagonal = current_val.image_diagonal.is_void() || current_val.image_diagonal.get_filename() == ""?animation_val.image_diagonal:current_val.image_diagonal;
+	result.image_diagonal = current_val.image_diagonal.is_void() || current_val.image_diagonal.get_filename() == z_empty ?animation_val.image_diagonal:current_val.image_diagonal;
 	if(primary && ( result.image_diagonal.is_void() || result.image_diagonal.get_filename().empty())) {
 		result.image_diagonal = engine_val.image_diagonal;
 	}
@@ -759,12 +877,12 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	/** engine provides a string for "petrified" and "team color" modifications
           note that image_mod is the complete modification and halo_mod is only the TC part
           see unit.cpp, we know that and use it*/
-		result.image_mod = current_val.image_mod +animation_val.image_mod;
+	result.image_mod = current_val.image_mod + animation_val.image_mod;
 	if(primary) {
-                result.image_mod += engine_val.image_mod;
-        } else {
-                result.image_mod += engine_val.halo_mod;
-        }
+		result.image_mod +=  engine_val.image_mod;
+	} else {
+		result.image_mod += engine_val.halo_mod;
+	}
 
 	assert(engine_val.halo.empty());
 	result.halo = current_val.halo.empty()?animation_val.halo:current_val.halo;
