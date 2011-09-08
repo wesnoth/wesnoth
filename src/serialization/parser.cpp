@@ -454,7 +454,7 @@ struct write_key_val_visitor : public config::attribute_value::default_visitor {
  *       That is the reason for not outputting the key beforehand and
  *       letting this function do it.
  */
-void write_key_val_tstring(std::ostream &out_, unsigned level_, std::string &textdomain_, 
+static void write_key_val_tstring(std::ostream &out_, unsigned level_, std::string &textdomain_, 
 						   const std::string &key_, t_string const &value) {
 	bool first = true;
 
