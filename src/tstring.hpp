@@ -19,6 +19,7 @@
 #include "shared_object.hpp"
 
 #include <string>
+#include "token.hpp"
 
 /**
  * Helper class for translatable strings.
@@ -27,6 +28,7 @@ class t_string;
 class t_string_base
 {
 public:
+	typedef n_token::t_token t_token;
 	class walker
 	{
 	public:
@@ -63,6 +65,7 @@ public:
 	~t_string_base();
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string_base(const t_string_base&);
+	t_string_base(const t_token& string);
 	t_string_base(const std::string& string);
 	t_string_base(const std::string& string, const std::string& textdomain);
 	t_string_base(const char* string);
@@ -72,35 +75,39 @@ public:
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string_base& operator=(const t_string_base&);
+	t_string_base& operator=(const t_token&);
 	t_string_base& operator=(const std::string&);
 	t_string_base& operator=(const char*);
 
 	t_string_base operator+(const t_string_base&) const;
+	t_string_base operator+(const t_token&) const;
 	t_string_base operator+(const std::string&) const;
 	t_string_base operator+(const char*) const;
 
 	t_string_base& operator+=(const t_string_base&);
+	t_string_base& operator+=(const t_token&);
 	t_string_base& operator+=(const std::string&);
 	t_string_base& operator+=(const char*);
 
 	bool operator==(const t_string_base &) const;
+	bool operator==(const t_token & that ) const {return !translatable_ && value_ == that;};
 	bool operator==(const std::string &) const;
 	bool operator==(const char* string) const;
 
-	bool operator!=(const t_string_base &that) const
-	{ return !operator==(that); }
-	bool operator!=(const std::string &that) const
-	{ return !operator==(that); }
-	bool operator!=(const char *that) const
-	{ return !operator==(that); }
+	bool operator!=(const t_string_base &that) const { return !operator==(that); }
+	bool operator!=(const t_token &that) const { return !operator==(that); }
+	bool operator!=(const std::string &that) const { return !operator==(that); }
+	bool operator!=(const char *that) const { return !operator==(that); }
 
 	bool operator<(const t_string_base& string) const;
 
 	bool empty() const                               { return value_.empty(); }
-	std::string::size_type size() const              { return str().size(); }
+	std::string::size_type size() const              { return static_cast<std::string const &>(token()).size(); }
 
+	operator const t_token&() const              { return token(); }
+	const t_token& token() const;
 	operator const std::string&() const              { return str(); }
-	const std::string& str() const;
+	const std::string& str() const { return static_cast<std::string const &>(token()); }
 	const char* c_str() const                        { return str().c_str(); }
 	bool translatable() const						 { return translatable_; }
 	// Warning: value() may contain platform dependant prefix bytes !
@@ -110,8 +117,8 @@ public:
 
 	size_t hash_value() const;
 private:
-	std::string value_;
-	mutable std::string translated_value_;
+	t_token value_;
+	mutable t_token translated_value_;
 	mutable unsigned translation_timestamp_;
 	bool translatable_, last_untranslatable_;
 };
@@ -125,6 +132,7 @@ public:
 	typedef shared_object<t_string_base> super;
 	typedef t_string_base base;
 	typedef t_string_base::walker walker;
+	typedef typename base::t_token t_token;
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string();
@@ -137,9 +145,18 @@ public:
 
 	t_string(const base &);
 	t_string(const char *);
+	explicit t_string(const t_token &);
 	t_string(const std::string &);
 	t_string(const std::string &str, const std::string &textdomain);
 
+	t_string &operator=(t_token const &);
+	///todo restore these 2 lines when config::attribute is castable to t_token
+	// template <typename X> t_string &operator=(X const  &o) { 
+	// 	operator=(static_cast<t_token const &>(o)); return *this; }
+	template <typename X> t_string &operator=(X const  &o) { 
+		operator=(n_token::t_token(o)); return *this; }
+
+	t_string &operator=(std::string const &);
 	t_string &operator=(const char *o);
 
 	static t_string from_serialized(const std::string& string) { return t_string(base::from_serialized(string)); }
@@ -148,18 +165,22 @@ public:
 	operator t_string_base() const { return get(); }
 
 	t_string operator+(const t_string& o) const { return get() + o.get(); }
+	t_string operator+(const t_token& o) const { return get() + o; }
 	t_string operator+(const std::string& o) const { return get() + o; }
 	t_string operator+(const char* o) const { return get() + o; }
 
 	t_string& operator+=(const t_string& o) { set(base(get()) += o.get()); return *this; }
+	t_string& operator+=(const t_token& o) { set(base(get()) += o); return *this; }
 	t_string& operator+=(const std::string& o) { set(base(get()) += o); return *this; }
 	t_string& operator+=(const char* o) { set(base(get()) += o); return *this; }
 
 	bool operator==(const t_string& o) const { return get() == o.get(); }
+	bool operator==(const t_token& o) const { return get() == o; }
 	bool operator==(const std::string& o) const { return get() == o; }
 	bool operator==(const char* o) const { return get() == o; }
 
 	bool operator!=(const t_string& o) const { return !operator==(o); }
+	bool operator!=(const t_token& o) const { return !operator==(o); }
 	bool operator!=(const std::string& o) const { return !operator==(o); }
 	bool operator!=(const char* o) const { return !operator==(o); }
 
@@ -168,6 +189,8 @@ public:
 	bool empty() const { return get().empty(); }
 	std::string::size_type size() const { return get().size(); }
 
+	//operator const t_token&() const { return get(); }
+	const t_token& token() const { return get().token(); }
 	operator const std::string&() const { return get(); }
 	const std::string& str() const { return get().str(); }
 	const char* c_str() const { return get().c_str(); }
@@ -181,10 +204,13 @@ public:
 	const t_string_base& get() const { return super::get(); }
 };
 inline std::ostream& operator<<(std::ostream& os, const t_string& str) { return os << str.get(); }
+inline bool operator==(const n_token::t_token &a, const t_string &b)    { return b == a; }
 inline bool operator==(const std::string &a, const t_string &b)    { return b == a; }
 inline bool operator==(const char *a, const t_string &b)           { return b == a; }
+inline bool operator!=(const n_token::t_token &a, const t_string &b)    { return b != a; }
 inline bool operator!=(const std::string &a, const t_string &b)    { return b != a; }
 inline bool operator!=(const char *a, const t_string &b)           { return b != a; }
+inline t_string operator+(const n_token::t_token &a, const t_string &b) { return t_string(a) + b; }
 inline t_string operator+(const std::string &a, const t_string &b) { return t_string(a) + b; }
 inline t_string operator+(const char *a, const t_string &b)        { return t_string(a) + b; }
 #endif
