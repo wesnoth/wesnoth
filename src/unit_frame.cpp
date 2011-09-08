@@ -531,10 +531,10 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 	}
 	image::locator image_loc;
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
-		image_loc = image::locator(current_data.image_diagonal,current_data.image_mod);
+		image_loc = image::locator(current_data.image_diagonal, n_token::t_token(current_data.image_mod)); //todo remove
 	}
 	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
-		image_loc = image::locator(current_data.image,current_data.image_mod);
+		image_loc = image::locator(current_data.image,n_token::t_token(current_data.image_mod)); //rmove extra contructor
 	}
 
 	surface image;
@@ -634,10 +634,10 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 
 	image::locator image_loc;
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
-		image_loc = image::locator(current_data.image_diagonal,current_data.image_mod);
+		image_loc = image::locator(current_data.image_diagonal, n_token::t_token(current_data.image_mod));
 	}
 	if(image_loc.is_void() || image_loc.get_filename() == "") { // invalid diag image, or not diagonal
-		image_loc = image::locator(current_data.image,current_data.image_mod);
+		image_loc = image::locator(current_data.image, n_token::t_token(current_data.image_mod));
 	}
 
 	// we always invalidate our own hex because we need to be called at redraw time even

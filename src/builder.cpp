@@ -153,7 +153,8 @@ terrain_builder::terrain_builder(const config& level,
 	tile_map_(map().w(), map().h()),
 	terrain_by_type_()
 {
-	image::precache_file_existence("terrain/");
+	static const config::t_token z_cterrain("terrain/", false);
+	image::precache_file_existence(z_cterrain);
 
 	if(building_rules_.empty() && rules_cfg_){
 		//off_map first to prevent some default rule seems to block it
@@ -288,7 +289,7 @@ static bool image_exists(const std::string& name)
 {
 	bool precached = name.find("..") == std::string::npos;
 
-	if(precached && image::precached_file_exists(name)) {
+	if(precached && image::precached_file_exists(n_token::t_token(name))) { //todo remove extra init
 		return true;
 	} else if(image::exists(name)) {
 		return true;

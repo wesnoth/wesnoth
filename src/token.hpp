@@ -74,6 +74,12 @@ public:
 		return out << static_cast<std::string const &>(a); }
 };
 
+
+inline std::string operator+(const n_token::t_token &a, const std::string &b) { return static_cast<std::string const &>(a) + b; }
+inline std::string operator+(const std::string &a, const n_token::t_token &b) { return a + static_cast<std::string const &>(b); }
+inline std::string operator+(const n_token::t_token &a, const n_token::t_token &b) { 
+	return static_cast<std::string const &>(a) + static_cast<std::string const &>(b); }
+
 }//end namepace
 
 #endif

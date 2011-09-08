@@ -2018,7 +2018,7 @@ void unit::redraw_unit()
 	params.image= static_cast<std::string const &>(absolute_image());
 
 
-	if(get_state(STATE_PETRIFIED)) params.image_mod +="~GS()";
+	if(get_state(STATE_PETRIFIED)) params.image_mod = config::t_token(params.image_mod + "~GS()" );
 	params.primary_frame = t_true;
 
 	const frame_parameters adjusted_params = anim_->get_current_params(params);
@@ -2106,7 +2106,7 @@ void unit::redraw_unit()
 		static const image::locator unmoved_orb(game_config::images::unmoved_orb);
 		static const image::locator partmoved_orb(game_config::images::partmoved_orb);
 
-		const std::string* energy_file = &game_config::images::energy;
+		const config::t_token* energy_file = &game_config::images::energy;
 
 		if(size_t(side()) != disp.viewing_team()+1) {
 			if(disp.team_valid() &&
@@ -3094,7 +3094,7 @@ temporary_unit_mover::~temporary_unit_mover()
 
 std::string unit::TC_image_mods() const{
 	std::stringstream modifier;
-	if(static_cast< std::string const &>(flag_rgb_).size()){
+	if(!flag_rgb_.empty()){
 		modifier << "~RC("<< flag_rgb_ << ">" << team::get_side_color_index(side()) << ")";
 	}
 	return modifier.str();

@@ -49,19 +49,19 @@ namespace image {
 		struct value {
 			value();
 			value(const value &a);
-			value(const char *filename);
-			value(const std::string& filename);
-			value(const std::string& filename, const std::string& modifications);
-			value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications);
-			value(const n_token::t_token& filename, const n_token::t_token& modifications, const map_location& loc, int center_x, int center_y);
+			explicit value(const n_token::t_token& filename);
+			// value(const n_token::t_token& filename, const n_token::t_token& modifications);
+			// value(const n_token::t_token& filename, const map_location& loc, int center_x, int center_y, const n_token::t_token& modifications);
+			value(const n_token::t_token& filename, const n_token::t_token& modifications
+				  , const map_location& loc = map_location::null_location, int center_x=0, int center_y=0);
 
 			bool operator==(const value& a) const;
 			bool operator<(const value& a) const;
 
 			type type_;
-			std::string filename_;
+			n_token::t_token filename_;
 			map_location loc_;
-			std::string modifications_;
+			n_token::t_token modifications_;
 			int center_x_;
 			int center_y_;
 		};
@@ -70,37 +70,37 @@ namespace image {
 
 	public:
 
-		/**
-		 * @todo replace this with std::unordered_map<value, int> or boost::unordered_map<value, int>
-		 *       boost::unordered_map can almost just be dropped in as boost::hash<T>(T val) will return hash_value(val), but it
-		 *       requires boost 1.35 (preferably 1.36 or later)
-		 *
-		 **/
-		typedef std::map<size_t, std::map<value, int> > locator_finder_t;
+		typedef boost::unordered_map<size_t, boost::unordered_map<value, int> > locator_finder_t;
 
 		// Constructing locators is somewhat slow, accessing image
 		// through locators is fast. The idea is that calling functions
 		// should store locators, and not strings to construct locators
 		// (the second will work, of course, but will be slower)
-	        locator();
-		locator(const locator &a, const std::string &mods ="");
+		locator();
+		locator(const locator &a, const n_token::t_token &mods = z_empty);
+
+		// locator(const locator &a, const std::string &mods ="");
+
+		locator(const n_token::t_token& filename);
+		locator(const n_token::t_token& filename, const n_token::t_token& modifications);
+		locator(const n_token::t_token& filename, const map_location& loc, int center_x, int center_y
+				, const n_token::t_token& modifications=z_empty);
+
 		locator(const char *filename);
 		locator(const std::string& filename);
 		locator(const std::string& filename, const std::string& modifications);
 		locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications="");
-		locator(const n_token::t_token& filename, const n_token::t_token& modifications = z_empty
-				, const map_location& loc = map_location::null_location, int center_x = 0 , int center_y =0 );
 
 		locator& operator=(const locator &a);
 		bool operator==(const locator &a) const { return index_ == a.index_; }
 		bool operator!=(const locator &a) const { return index_ != a.index_; }
 		bool operator<(const locator &a) const { return index_ < a.index_; }
 
-		const std::string &get_filename() const { return val_.filename_; }
+		const n_token::t_token &get_filename() const { return val_.filename_; }
 		const map_location& get_loc() const { return val_.loc_ ; }
 		int get_center_x() const { return val_.center_x_; }
 		int get_center_y() const { return val_.center_y_; }
-		const std::string& get_modifications() const {return val_.modifications_;}
+		const n_token::t_token& get_modifications() const {return val_.modifications_;}
 		type get_type() const { return val_.type_; };
 		// const int get_index() const { return index_; };
 
@@ -144,7 +144,7 @@ namespace image {
 
 	typedef cache_type<surface> image_cache;
 	typedef cache_type<bool> bool_cache;
-	typedef std::map<t_translation::t_terrain, surface> mini_terrain_cache_map;
+	typedef boost::unordered_map<t_translation::t_terrain, surface> mini_terrain_cache_map;
 	extern mini_terrain_cache_map mini_terrain_cache;
 	extern mini_terrain_cache_map mini_fogged_terrain_cache;
 
@@ -176,9 +176,9 @@ namespace image {
 	///set the team colors used by the TC image modification
 	///use a vector with one string for each team
 	///using NULL will reset to default TC
-	void set_team_colors(const std::vector<std::string>* colors = NULL);
+	void set_team_colors(const std::vector<n_token::t_token>* colors = NULL);
 
-	const std::vector<std::string>& get_team_colors();
+	const std::vector<n_token::t_token>& get_team_colors();
 
 	///sets the pixel format used by the images. Is called every time the
 	///video mode changes. Invalidates all images.
@@ -218,8 +218,8 @@ namespace image {
 	bool exists(const locator& i_locator);
 
 	/// precache the existence of files in the subdir (ex: "terrain/")
-	void precache_file_existence(const std::string& subdir = "");
-	bool precached_file_exists(const std::string& file);
+	void precache_file_existence(const n_token::t_token& subdir = z_empty);
+	bool precached_file_exists(const n_token::t_token& file);
 }
 
 #endif

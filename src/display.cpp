@@ -735,7 +735,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			surface surf;
 
 			if(!use_local_light) {
-				const bool off_map = (image.get_filename() == off_map_name);
+				const bool off_map = (image.get_filename() == n_token::t_token(off_map_name));
 				surf = image::get_image(image, off_map ? image::SCALED_TO_HEX : image_type);
 			} else if(color_mod.empty()) {
 				surf = image::get_image(image, image::SCALED_TO_HEX);

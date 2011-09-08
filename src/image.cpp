@@ -118,17 +118,17 @@ image::bool_cache in_hex_info_;
 
 // const int cache_version_ = 0;
 
-std::map<std::string,bool> image_existence_map;
+boost::unordered_map<n_token::t_token,bool> image_existence_map;
 
 // directories where we already cached file existence
-std::set<std::string> precached_dirs;
+boost::unordered_set<n_token::t_token> precached_dirs;
 
-std::map<surface, surface> reversed_images_;
+boost::unordered_map<surface, surface> reversed_images_;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
 /** List of colors used by the TC image modification */
-std::vector<std::string> team_colors;
+std::vector<n_token::t_token> team_colors;
 
 int zoom = image::tile_size;
 int cached_zoom = 0;
@@ -172,8 +172,8 @@ void flush_cache()
 
 void locator::init_index()
 {
-	std::map<value, int>& finder = locator_finder[hash_value(val_)];
-	std::map<value, int>::iterator i = finder.find(val_);
+	boost::unordered_map<value, int>& finder = locator_finder[hash_value(val_)];
+	boost::unordered_map<value, int>::iterator i = finder.find(val_);
 
 	if(i == finder.end()) {
 		index_ = last_index_++;
@@ -185,7 +185,7 @@ void locator::init_index()
 
 void locator::parse_arguments()
 {
-	std::string& fn = val_.filename_;
+	std::string const & fn = static_cast<std::string const &>(val_.filename_);
 	if(fn.empty()) {
 		return;
 	}
@@ -193,30 +193,24 @@ void locator::parse_arguments()
 
 	if(markup_field != std::string::npos) {
 		val_.type_ = SUB_FILE;
-		val_.modifications_ = fn.substr(markup_field, fn.size() - markup_field);
-		fn = fn.substr(0,markup_field);
+		val_.modifications_ = n_token::t_token(fn.substr(markup_field, fn.size() - markup_field));
+		val_.filename_ = n_token::t_token( fn.substr(0,markup_field) );
 	}
 }
 
-locator::locator() :
-	index_(-1),
-	val_()
-{
-}
+locator::locator() : index_(-1), val_() {}
 
-locator::locator(const locator &a, const std::string& mods):
-	index_(-1),
-	val_(a.val_)
-{
+locator::locator(const locator &a, const n_token::t_token& mods):
+	index_(-1), val_(a.val_) {
 	if(!mods.empty()){
-			val_.modifications_ += mods;
-			val_.type_=SUB_FILE;
-			init_index();
+		val_.modifications_ =  config::t_token( val_.modifications_ + mods );
+		val_.type_=SUB_FILE;
+		init_index();
 	}
-	else index_=a.index_;
+	else index_ = a.index_;
 }
 
-locator::locator(const char *filename) :
+locator::locator(const n_token::t_token &filename) :
 	index_(-1),
 	val_(filename)
 {
@@ -224,39 +218,50 @@ locator::locator(const char *filename) :
 	init_index();
 }
 
-locator::locator(const std::string &filename) :
-	index_(-1),
-	val_(filename)
-{
+locator::locator(const n_token::t_token &filename, const n_token::t_token& modifications) :
+	index_(-1), val_(filename, modifications) {
+	init_index();
+}
+
+locator::locator(const n_token::t_token &filename, const map_location &loc,
+		int center_x, int center_y, const n_token::t_token& modifications) :
+	index_(-1), val_(filename, modifications, loc, center_x, center_y) {
+	init_index();
+}
+
+locator::locator(const char *filename) :
+	index_(-1), val_(n_token::t_token( filename ))  {
+	parse_arguments();
+	init_index();
+}
+
+locator::locator(const std::string & filename) :
+	index_(-1), val_(n_token::t_token( filename ))  {
 	parse_arguments();
 	init_index();
 }
 
 locator::locator(const std::string &filename, const std::string& modifications) :
-	index_(-1),
-	val_(filename, modifications)
-{
+	index_(-1), val_(n_token::t_token( filename), n_token::t_token( modifications)) {
 	init_index();
 }
 
 locator::locator(const std::string &filename, const map_location &loc,
-		int center_x, int center_y, const std::string& modifications) :
-	index_(-1),
-	val_(filename, loc, center_x, center_y, modifications)
-{
+				 int center_x, int center_y, const std::string& modifications) :
+	index_(-1), val_(n_token::t_token( filename), n_token::t_token( modifications), loc, center_x, center_y) {
 	init_index();
 }
 
-locator::locator(const config::t_token &filename, const config::t_token& modifications, const map_location &loc,
-		int center_x, int center_y) :
-	index_(-1),
-	val_(filename, loc, center_x, center_y, modifications)
-{
-	init_index();
-}
+// locator::locator(const config::t_token &filename, const config::t_token& modifications, const map_location &loc,
+// 		int center_x, int center_y) :
+// 	index_(-1), val_(filename, modifications, loc, center_x, center_y) {
+// 	init_index();
+// }
 
-locator& locator::operator=(const locator &a)
-{
+
+
+
+locator& locator::operator=(const locator &a) {
 	index_ = a.index_;
 	val_ = a.val_;
 
@@ -264,48 +269,29 @@ locator& locator::operator=(const locator &a)
 }
 
 locator::value::value(const locator::value& a) :
-  type_(a.type_), filename_(a.filename_), loc_(a.loc_),
-  modifications_(a.modifications_),
-  center_x_(a.center_x_), center_y_(a.center_y_)
-{
-}
+  type_(a.type_), filename_(a.filename_), loc_(a.loc_), modifications_(a.modifications_)
+  , center_x_(a.center_x_), center_y_(a.center_y_) { }
 
 locator::value::value() :
-	type_(NONE), filename_(), loc_(), modifications_(),
-  center_x_(0), center_y_(0)
+	type_(NONE), filename_(), loc_(), modifications_(), center_x_(0), center_y_(0) { }
 
-{}
+locator::value::value(const n_token::t_token& filename) :
+  type_(FILE), filename_(filename),  loc_(), modifications_(), center_x_(0), center_y_(0) { }
 
-locator::value::value(const char *filename) :
-  type_(FILE), filename_(filename), loc_(), modifications_(),
-  center_x_(0), center_y_(0)
+// locator::value::value(const n_token::t_token& filename, const n_token::t_token& modifications) :
+//   type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications),
+//   center_x_(0), center_y_(0)
 
-{
-}
+// {
+// }
 
-locator::value::value(const std::string& filename) :
-  type_(FILE), filename_(filename),  loc_(), modifications_(),
-  center_x_(0), center_y_(0)
-
-{
-}
-
-locator::value::value(const std::string& filename, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications),
-  center_x_(0), center_y_(0)
-
-{
-}
-
-locator::value::value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications), center_x_(center_x), center_y_(center_y)
-{
-}
+// locator::value::value(const n_token::t_token& filename, const map_location& loc, int center_x, int center_y, const n_token::t_token& modifications) :
+//   type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications), center_x_(center_x), center_y_(center_y)
+// {
+// }
 
 locator::value::value(const config::t_token& filename, const config::t_token& modifications, const map_location& loc, int center_x, int center_y) :
-	type_(SUB_FILE), filename_(static_cast<std::string const &>(filename)), loc_(loc), modifications_(static_cast<std::string const &>(modifications)), center_x_(center_x), center_y_(center_y)
-{
-}
+	type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications), center_x_(center_x), center_y_(center_y) { }
 
 bool locator::value::operator==(const value& a) const
 {
@@ -473,7 +459,7 @@ surface locator::load_image_file() const
 	if (res.null() && !val_.filename_.empty()) {
 		ERR_DP << "could not open image '" << val_.filename_ << "'\n";
 		if (game_config::debug && val_.filename_ != game_config::images::missing)
-			return get_image(game_config::images::missing, UNSCALED);
+			return get_image(locator(game_config::images::missing), UNSCALED);
 	}
 
 	return res;
@@ -481,7 +467,7 @@ surface locator::load_image_file() const
 
 surface locator::load_image_sub_file() const
 {
-	surface surf = get_image(val_.filename_, UNSCALED);
+	surface surf = get_image(locator( val_.filename_ ) , UNSCALED);
 	if(surf == NULL)
 		return NULL;
 
@@ -586,7 +572,7 @@ void color_adjustment_resetter::reset()
 	set_color_adjustment(r_, g_, b_);
 }
 
-void set_team_colors(const std::vector<std::string>* colors)
+void set_team_colors(const std::vector<n_token::t_token>* colors)
 {
 	if (colors == NULL)
 		team_colors.clear();
@@ -595,7 +581,7 @@ void set_team_colors(const std::vector<std::string>* colors)
 	}
 }
 
-const std::vector<std::string>& get_team_colors()
+const std::vector<n_token::t_token>& get_team_colors()
 {
 	return team_colors;
 }
@@ -835,7 +821,7 @@ surface reverse_image(const surface& surf)
 		return surface(NULL);
 	}
 
-	const std::map<surface,surface>::iterator itor = reversed_images_.find(surf);
+	const boost::unordered_map<surface,surface>::iterator itor = reversed_images_.find(surf);
 	if(itor != reversed_images_.end()) {
 		// sdl_add_ref(itor->second);
 		return itor->second;
@@ -859,7 +845,7 @@ bool exists(const image::locator& i_locator)
 		return false;
 
 	// The insertion will fail if there is already an element in the cache
-	std::pair< std::map< std::string, bool >::iterator, bool >
+	std::pair< boost::unordered_map< n_token::t_token, bool >::iterator, bool >
 		it = image_existence_map.insert(std::make_pair(i_locator.get_filename(), false));
 	bool &cache = it.first->second;
 	if (it.second)
@@ -867,9 +853,9 @@ bool exists(const image::locator& i_locator)
 	return cache;
 }
 
-static void precache_file_existence_internal(const std::string& dir, const std::string& subdir)
+static void precache_file_existence_internal(const n_token::t_token& dir, const n_token::t_token& subdir)
 {
-	const std::string checked_dir = dir + "/" + subdir;
+	const n_token::t_token checked_dir =  n_token::t_token(static_cast<std::string const &>(dir) + "/" + static_cast<std::string const &>(subdir));
 	if (precached_dirs.find(checked_dir) != precached_dirs.end())
 		return;
 	precached_dirs.insert(checked_dir);
@@ -881,16 +867,16 @@ static void precache_file_existence_internal(const std::string& dir, const std::
 
 	for(std::vector<std::string>::const_iterator f = files_found.begin();
 			f != files_found.end(); ++f) {
-		image_existence_map[subdir + *f] = true;
+		image_existence_map[n_token::t_token(subdir + *f)] = true;
 	}
 
 	for(std::vector<std::string>::const_iterator d = dirs_found.begin();
 			d != dirs_found.end(); ++d) {
-		precache_file_existence_internal(dir, subdir + *d + "/");
+		precache_file_existence_internal(dir, n_token::t_token( subdir + *d + "/" ));
 	}
 }
 
-void precache_file_existence(const std::string& subdir)
+void precache_file_existence(const n_token::t_token& subdir)
 {
 	const std::vector<std::string>& paths = get_binary_paths("images");
 
@@ -898,13 +884,13 @@ void precache_file_existence(const std::string& subdir)
 			 p != paths.end(); ++p) {
 
 		const std::string dir = *p + "/" + subdir;
-		precache_file_existence_internal(*p, subdir);
+		precache_file_existence_internal(n_token::t_token( *p ), subdir);
 	}
 }
 
-bool precached_file_exists(const std::string& file)
+bool precached_file_exists(const n_token::t_token& file)
 {
-	std::map<std::string, bool>::const_iterator b =  image_existence_map.find(file);
+	boost::unordered_map<n_token::t_token, bool>::const_iterator b =  image_existence_map.find(file);
 	if (b != image_existence_map.end())
 		return b->second;
 	else

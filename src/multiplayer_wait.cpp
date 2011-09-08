@@ -270,7 +270,7 @@ void wait::join_game(bool observe)
 			}
 
 			int color = side_num;
-			const std::string color_str = (*side_choice)["color"];
+			const config::t_token color_str = (*side_choice)["color"];
 			if (!color_str.empty())
 				color = game_config::color_info(color_str).index() - 1;
 
@@ -485,7 +485,7 @@ void wait::generate_menu()
 
 			if (RCcolor.empty())
 				RCcolor = sd["side"].str();
-			leader_image = utg.image() + std::string("~RC(") + std::string(utg.flag_rgb() + ">" + RCcolor + ")");
+			leader_image = static_cast<std::string const &>(utg.image()) + "~RC(" + static_cast<std::string const &>(utg.flag_rgb()) + ">" + RCcolor + ")";
 #endif
 		} else {
 			leader_image = leader_list_manager::random_enemy_picture;
