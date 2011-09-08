@@ -80,13 +80,23 @@ public:
 		{
 		}
 
-		name_space(const std::string &ns, bool doParse = false)
+		name_space(std::string const &ns, bool doParse = false)
 			: namespace_(ns)
 			, root_()
 			, node_()
 			, lineage_()
 			, descendants_()
 			, valid_(false)
+		{ construct_core(doParse); }
+		name_space(config::t_token const &ns, bool doParse = false)
+			: namespace_(static_cast<std::string const &>(ns))
+			, root_()
+			, node_()
+			, lineage_()
+			, descendants_()
+			, valid_(false)
+		{ construct_core(doParse); }
+		void construct_core(bool doParse)
 		{
 			if (doParse)
 				parse();

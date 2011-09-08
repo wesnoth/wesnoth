@@ -446,7 +446,7 @@ namespace {
 	                           const std::string& id, bool just_peeking=false) {
 		foreach (const config::any_child &sp, parent.all_children_range())
 		{
-			if (sp.key == id || sp.cfg["id"] == id) {
+			if (sp.key == config::t_token(id) || sp.cfg["id"] == config::t_token(id)) {
 				if(just_peeking) {
 					return true; // peek succeeded, abort
 				} else {

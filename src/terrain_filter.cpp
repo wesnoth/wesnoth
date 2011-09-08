@@ -122,7 +122,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		//allow filtering by searching a stored variable of locations
 		if(cfg_.has_attribute("find_in")) {
 			variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
-			if(!vi.is_valid) return false;
+			if(!vi.is_valid()) return false;
 			if(vi.explicit_index) {
 				if(map_location(vi.as_container(),NULL) != loc) {
 					return false;
@@ -248,10 +248,9 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 
 	//allow filtering on owner (for villages)
-	const t_string& t_owner_side = cfg_["owner_side"];
-	const std::string& owner_side = t_owner_side;
+	const config::attribute_value& owner_side = cfg_["owner_side"];
 	if(!owner_side.empty()) {
-		const int side_index = lexical_cast_default<int>(owner_side,0) - 1;
+		const int side_index = owner_side.to_int(0) - 1;
 		if(village_owner(loc, *resources::teams) != side_index) {
 			return false;
 		}
@@ -346,7 +345,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	if(cfg_.has_attribute("find_in")) {
 		//remove any locations not found in the specified variable
 		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
-		if(!vi.is_valid) {
+		if(!vi.is_valid()) {
 			xy_set.clear();
 		} else if(vi.explicit_index) {
 			map_location test_loc(vi.as_container(),NULL);

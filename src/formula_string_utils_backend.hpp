@@ -290,22 +290,22 @@ class t_operation_interp : public t_operation {
 
 	///interpolates the attribute_value value into a token
 	///todo remove this once you can type x.token() where x is a config
-	struct do_interp_visitor  :  public boost::static_visitor<void> {
-		///todo put back thonsew 		
-		// : public config::attribute_value::default_visitor {
-		// using default_visitor::operator();
-		t_token & self_;
-		do_interp_visitor(t_token & t):self_(t) {}
-		void operator()() { self_ = z_empty; }
-		void operator()(bool const b) {self_ =  t_token(str_cast(b)); }
-		void operator()(int const i) {self_ =  t_token(str_cast(i)); }
-		void operator()(double const d) {self_ =  t_token( str_cast(d)); }
-		void operator()(n_token::t_token const & tok){self_ = tok; }
-		void operator()(const t_string &s){ self_=t_token(s);}
-		///todo remove 3 lines
-		void operator()(boost::blank const &){self_ = z_empty; }
-		void operator()(std::string const & s){self_=t_token(s);}
-	};
+	// struct do_interp_visitor  :  public boost::static_visitor<void> {
+	// 	///todo put back thonsew 		
+	// 	// : public config::attribute_value::default_visitor {
+	// 	// using default_visitor::operator();
+	// 	t_token & self_;
+	// 	do_interp_visitor(t_token & t):self_(t) {}
+	// 	void operator()() { self_ = z_empty; }
+	// 	void operator()(bool const b) {self_ =  t_token(str_cast(b)); }
+	// 	void operator()(int const i) {self_ =  t_token(str_cast(i)); }
+	// 	void operator()(double const d) {self_ =  t_token( str_cast(d)); }
+	// 	void operator()(n_token::t_token const & tok){self_ = tok; }
+	// 	void operator()(const t_string &s){ self_=t_token(s);}
+	// 	///todo remove 3 lines
+	// 	void operator()(boost::blank const &){self_ = z_empty; }
+	// 	void operator()(std::string const & s){self_=t_token(s);}
+	// };
 
 public :
 
@@ -317,14 +317,14 @@ public :
 		DEBUG_INTERP << string(var_name, stuffing) << "\n"; 
 
 		///todo replace next 4 lines with this->lhs_ = stuffing.token();	
-		t_token rhs;
-		do_interp_visitor visitor(rhs);
-		///todo swap next 2
-		//stuffing.apply_visitor(visitor);
-		boost::apply_visitor(visitor, stuffing.to_value());
+		// t_token rhs;
+		// do_interp_visitor visitor(rhs);
+		// ///todo swap next 2
+		// //stuffing.apply_visitor(visitor);
+		// boost::apply_visitor(visitor, stuffing.to_value());
 		
 		stack.pop_back();
-		t_operation_append append(rhs);		
+		t_operation_append append(stuffing.token());		
 		append(stack, variable_set);
 	}
 

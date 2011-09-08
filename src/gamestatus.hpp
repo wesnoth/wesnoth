@@ -29,6 +29,7 @@
 
 class scoped_wml_variable;
 class team;
+typedef  std::vector<team>  t_teams;
 class gamemap;
 namespace t_translation {
 	struct t_match;
@@ -101,6 +102,27 @@ public:
 	void write_config(config_writer& out, bool write_variables=true) const;
 
 	// Variable access
+	//Prefer using token or attribute value interface as it is faster	
+
+	config::attribute_value &get_variable(const config::t_token &varname);
+	virtual config::attribute_value get_variable_const(const config::t_token& varname) const;
+	config& get_variable_cfg(const config::t_token& varname);
+
+	void set_variable(const config::t_token& varname, const t_string& value);
+	config& add_variable_cfg(const config::t_token& varname, const config& value=config());
+
+	void clear_variable(const config::t_token& varname);
+	void clear_variable_cfg(const config::t_token& varname); // Clears only the config children
+
+	config::attribute_value &get_variable(const config::attribute_value &varname);
+	virtual config::attribute_value get_variable_const(const config::attribute_value& varname) const;
+	config& get_variable_cfg(const config::attribute_value& varname);
+
+	void set_variable(const config::attribute_value& varname, const t_string& value);
+	config& add_variable_cfg(const config::attribute_value& varname, const config& value=config());
+
+	void clear_variable(const config::attribute_value& varname);
+	void clear_variable_cfg(const config::attribute_value& varname); // Clears only the config children
 
 	config::attribute_value &get_variable(const std::string &varname);
 	virtual config::attribute_value get_variable_const(const std::string& varname) const;
@@ -127,7 +149,7 @@ public:
 
 	//create an object responsible for creating and populating a team from a config
 	team_builder_ptr create_team_builder(const config& side_cfg, std::string save_id
-			, std::vector<team>& teams, const config& level, gamemap& map
+			, t_teams& teams, const config& level, gamemap& map
 			, unit_map& units, bool snapshot);
 
 	//do first stage of team initialization (everything except unit placement)

@@ -209,10 +209,10 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 //	if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
 	foreach (const config::any_child &fr, cfg.all_children_range())
 	{
-		if (fr.key == frame_string) continue;
-		if (fr.key.find("_frame", fr.key.size() - 6) == std::string::npos) continue;
+		if (static_cast<std::string const &>(fr.key) == frame_string) continue;
+		if (static_cast<std::string const &>(fr.key).find("_frame", static_cast<std::string const &>(fr.key).size() - 6) == std::string::npos) continue;
 		if (sub_anims_.find(fr.key) != sub_anims_.end()) continue;
-		sub_anims_[fr.key] = particule(cfg, fr.key.substr(0, fr.key.size() - 5));
+		sub_anims_[fr.key] = particule(cfg, static_cast<std::string const &>(fr.key).substr(0, static_cast<std::string const &>(fr.key).size() - 5));
 	}
 	event_ =utils::split(cfg["apply_to"]);
 

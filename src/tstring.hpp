@@ -150,11 +150,8 @@ public:
 	t_string(const std::string &str, const std::string &textdomain);
 
 	t_string &operator=(t_token const &);
-	///todo restore these 2 lines when config::attribute is castable to t_token
-	// template <typename X> t_string &operator=(X const  &o) { 
-	// 	operator=(static_cast<t_token const &>(o)); return *this; }
 	template <typename X> t_string &operator=(X const  &o) { 
-		operator=(n_token::t_token(o)); return *this; }
+		operator=(static_cast<t_token const &>(o)); return *this; }
 
 	t_string &operator=(std::string const &);
 	t_string &operator=(const char *o);

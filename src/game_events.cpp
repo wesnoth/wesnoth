@@ -1440,7 +1440,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 	if(cfg.has_attribute("to_variable"))
 	{
 		variable_info tovar(cfg["to_variable"], false, variable_info::TYPE_CONTAINER);
-		if(tovar.is_valid) {
+		if(tovar.is_valid()) {
 			if(tovar.explicit_index) {
 				data.add_child(dest.key, tovar.as_container());
 			} else {

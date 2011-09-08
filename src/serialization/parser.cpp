@@ -406,8 +406,8 @@ static std::string escaped_string(const std::string &value)
 	return res;
 }
 
-struct write_key_val_visitor : boost::static_visitor<void>
-{
+struct write_key_val_visitor : public config::attribute_value::default_visitor {
+	//using default_visitor::operator();
 	std::ostream &out_;
 	unsigned level_;
 	std::string &textdomain_;
@@ -415,18 +415,22 @@ struct write_key_val_visitor : boost::static_visitor<void>
 
 	write_key_val_visitor(std::ostream &out, unsigned level,
 		std::string &textdomain, const std::string &key)
-		: out_(out), level_(level), textdomain_(textdomain), key_(key)
-	{}
+		: out_(out), level_(level), textdomain_(textdomain), key_(key) {
+}
 
-	void operator()(boost::blank const &) const
-	{ out_ << "\"\""; }
-	void operator()(bool b) const
-	{ out_ << (b ? "yes" : "no"); }
-	void operator()(double d) const
-	{ int i = d; if (d == i) out_ << i; else out_ << d; }
-	void operator()(std::string const &s) const
-	{ out_ << '"' << escaped_string(s) << '"'; }
-	void operator()(t_string const &s) const;
+	inline void write_start_not_tstring();
+
+	void operator()() 
+	{ write_start_not_tstring(); out_ << "\"\""; }
+	void operator()(bool b) 
+	{ write_start_not_tstring();  out_ << (b ? "yes" : "no"); }
+	void operator()(int i) 
+	{ write_start_not_tstring();  out_ << i; }
+	void operator()(double d) 
+	{ write_start_not_tstring(); int i = d; if (d == i) out_ << i; else out_ << d; }
+	void operator()(config::t_token const &s) 
+	{ write_start_not_tstring();  out_ << '"' << escaped_string(static_cast<std::string const &>(s)) << '"'; }
+	inline void operator()(t_string const &s) ;
 };
 
 /**
@@ -436,8 +440,8 @@ struct write_key_val_visitor : boost::static_visitor<void>
  *       That is the reason for not outputting the key beforehand and
  *       letting this function do it.
  */
-void write_key_val_visitor::operator()(t_string const &value) const
-{
+void write_key_val_tstring(std::ostream &out_, unsigned level_, std::string &textdomain_, 
+						   const std::string &key_, t_string const &value) {
 	bool first = true;
 
 	for (t_string::walker w(value); !w.eos(); w.next())
@@ -466,16 +470,19 @@ void write_key_val_visitor::operator()(t_string const &value) const
 		first = false;
 	}
 }
+void write_key_val_visitor::operator()(t_string const &value) {
+	write_key_val_tstring(out_,  level_, textdomain_, key_, value); }
+
+void write_key_val_visitor::write_start_not_tstring(){
+	for (unsigned i = 0; i < level_; ++i) out_ << '\t';
+	out_ << key_ << '=';}
 
 void write_key_val(std::ostream &out, const std::string &key,
 	const config::attribute_value &value, unsigned level,
 	std::string& textdomain)
 {
-	if (!boost::get<t_string const>(&value.value)) {
-		for (unsigned i = 0; i < level; ++i) out << '\t';
-		out << key << '=';
-	}
-	boost::apply_visitor(write_key_val_visitor(out, level, textdomain, key), value.value);
+	write_key_val_visitor visitor(out, level, textdomain, key);
+	value.apply_visitor(visitor);
 	out << '\n';
 }
 

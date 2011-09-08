@@ -42,6 +42,9 @@ static lg::log_domain log_lobby("lobby");
 #define SCOPE_LB log_scope2(log_lobby, __func__)
 
 
+namespace{
+	static const config::t_token z_diff_track_attribute_("diff_track_attribute_");
+}
 lobby_info::lobby_info(const config& game_config)
 	: game_config_(game_config)
 	, gamelist_()
@@ -88,7 +91,7 @@ std::string dump_games_config(const config& gamelist)
 {
 	std::stringstream ss;
 	foreach (const config& c, gamelist.child_range("game")) {
-		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[config::diff_track_attribute] << " ";
+		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[z_diff_track_attribute_] << " ";
 	}
 	ss << "\n";
 	return ss.str();
@@ -131,7 +134,7 @@ bool lobby_info::process_gamelist_diff(const config &data)
 	config::child_itors range = gamelist_.child("gamelist").child_range("game");
 	for (config::child_iterator i = range.first; i != range.second; ++i) {
 		config& c = *i;
-		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")\n";
+		DBG_LB << "data process: " << c["id"] << " (" << c[z_diff_track_attribute_] << ")\n";
 		int game_id = c["id"];
 		if (game_id == 0) {
 			ERR_LB << "game with id 0 in gamelist config\n";
@@ -139,7 +142,7 @@ bool lobby_info::process_gamelist_diff(const config &data)
 			return false;
 		}
 		game_info_map::iterator current_i = games_by_id_.find(game_id);
-		const std::string& diff_result = c[config::diff_track_attribute];
+		const std::string& diff_result = c[z_diff_track_attribute_];
 		if (diff_result == "new" || diff_result == "modified") {
 			if (current_i == games_by_id_.end()) {
 				games_by_id_.insert(std::make_pair(game_id, new game_info(c, game_config_)));

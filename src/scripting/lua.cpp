@@ -78,6 +78,9 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 
 static std::vector<config> preload_scripts;
 static config preload_config;
+namespace {
+static const config::t_token z_this_unit("this_unit");
+}
 
 void extract_preload_scripts(config const &game_config)
 {
@@ -158,17 +161,21 @@ static void luaW_pushtstring(lua_State *L, t_string const &v)
 	lua_setmetatable(L, -2);
 }
 
-struct luaW_pushscalar_visitor : boost::static_visitor<>
-{
+struct luaW_pushscalar_visitor : public config::attribute_value::default_visitor {
+	using default_visitor::operator();
 	lua_State *L;
 	luaW_pushscalar_visitor(lua_State *l): L(l) {}
-	void operator()(boost::blank const &) const
+	void operator()() 
 	{ lua_pushnil(L); }
-	void operator()(bool b) const
+	void operator()(bool const b) 
 	{ lua_pushboolean(L, b); }
-	void operator()(double d) const
+	void operator()(int const i) 
+	{ lua_pushnumber(L, i); } 
+	void operator()(double d) 
 	{ lua_pushnumber(L, d); }
-	void operator()(std::string const &s) const
+	void operator()(t_string const &s) 
+	{ luaW_pushtstring(L, s); }
+	void operator()(config::t_token const &s) 
 	{ lua_pushstring(L, s.c_str()); }
 	void operator()(t_string const &s) const
 	{ luaW_pushtstring(L, s); }
@@ -177,9 +184,9 @@ struct luaW_pushscalar_visitor : boost::static_visitor<>
 /**
  * Converts a string into a Lua object pushed at the top of the stack.
  */
-void luaW_pushscalar(lua_State *L, config::attribute_value const &v)
-{
-	boost::apply_visitor(luaW_pushscalar_visitor(L), v.value);
+void luaW_pushscalar(lua_State *L, config::attribute_value const &v) {
+	luaW_pushscalar_visitor visitor(L);
+	v.apply_visitor(visitor);
 }
 
 /**
@@ -1047,7 +1054,7 @@ static int impl_unit_status_get(lua_State *L)
 	unit const *u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
-	lua_pushboolean(L, u->get_state(m));
+	lua_pushboolean(L, u->get_state(config::t_token(std::string(m))));
 	return 1;
 }
 
@@ -1065,7 +1072,7 @@ static int impl_unit_status_set(lua_State *L)
 	unit *u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
-	u->set_state(m, lua_toboolean(L, 3));
+	u->set_state(config::t_token(std::string(m)), lua_toboolean(L, 3));
 	return 0;
 }
 
@@ -1336,12 +1343,12 @@ static int intf_get_variable(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
 	variable_info v(m, false, variable_info::TYPE_SCALAR);
-	if (v.is_valid) {
+	if (v.is_valid()) {
 		luaW_pushscalar(L, v.as_scalar());
 		return 1;
 	} else {
 		variable_info w(m, false, variable_info::TYPE_CONTAINER);
-		if (w.is_valid) {
+		if (w.is_valid()) {
 			lua_newtable(L);
 			if (lua_toboolean(L, 2))
 				luaW_filltable(L, w.as_container());
@@ -1490,7 +1497,7 @@ static int intf_is_enemy(lua_State *L)
 {
 	unsigned side_1 = luaL_checkint(L, 1) - 1;
 	unsigned side_2 = luaL_checkint(L, 2) - 1;
-	std::vector<team> &teams = *resources::teams;
+	t_teams &teams = *resources::teams;
 	if (side_1 >= teams.size() || side_2 >= teams.size()) return 0;
 	lua_pushboolean(L, teams[side_1].is_enemy(side_2 + 1));
 	return 1;
@@ -3179,7 +3186,7 @@ static int intf_add_modification(lua_State *L)
 		return luaL_argerror(L, 2, "unknown modification type");
 
 	config cfg = luaW_checkconfig(L, 3);
-	u->add_modification(sm, cfg);
+	u->add_modification(config::t_token(sm), cfg);
 	return 0;
 }
 
@@ -3764,7 +3771,7 @@ void LuaKernel::save_game(config &cfg)
 			 * are the core-lua-handled (currently [item] and [objectives])
 			 * and the extra UMC ones.
 			 */
-			const std::string m = "Tag is already used: [" + i->key + "]";
+			const std::string m = "Tag is already used: [" + static_cast<std::string const &>(i->key) + "]";
 			chat_message("Lua error", m);
 			ERR_LUA << m << '\n';
 			v.erase(i);

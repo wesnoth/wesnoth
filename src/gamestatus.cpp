@@ -59,6 +59,121 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 #define LOG_NG_TC LOG_STREAM(info, log_engine_tc)
 #define DBG_NG_TC LOG_STREAM(debug, log_engine_tc)
 
+namespace{
+	static const config::t_token z_NORMAL("NORMAL", false);
+	static const config::t_token z_label("label", false);
+	static const config::t_token z_parent("parent", false);
+	static const config::t_token z_version("version", false);
+	static const config::t_token z_campaign_type("campaign_type", false);
+	static const config::t_token z_scenario("scenario", false);
+	static const config::t_token z_campaign_define("campaign_define", false);
+	static const config::t_token z_campaign_extra_defines("campaign_extra_defines", false);
+	static const config::t_token z_campaign("campaign", false);
+	static const config::t_token z_history("history", false);
+	static const config::t_token z_abbrev("abbrev", false);
+	static const config::t_token z_next_scenario("next_scenario", false);
+	static const config::t_token z_completion("completion", false);
+	static const config::t_token z_end_text("end_text", false);
+	static const config::t_token z_end_text_duration("end_text_duration", false);
+	static const config::t_token z_difficulty("difficulty", false);
+	static const config::t_token z_player("player", false);
+	static const config::t_token z_side("side", false);
+	static const config::t_token z_save_id("save_id", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_gold("gold", false);
+	static const config::t_token z_gold_add("gold_add", false);
+	static const config::t_token z_previous_recruits("previous_recruits", false);
+	static const config::t_token z_can_recruit("can_recruit", false);
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_current_player("current_player", false);
+	static const config::t_token z_color("color", false);
+	static const config::t_token z_unit("unit", false);
+	static const config::t_token z_next_underlying_unit_id("next_underlying_unit_id", false);
+	static const config::t_token z_read_game("read_game", false);
+	static const config::t_token z_snapshot("snapshot", false);
+	static const config::t_token z_random_calls("random_calls", false);
+	static const config::t_token z_can_end_turn("can_end_turn", false);
+	static const config::t_token z_variables("variables", false);
+	static const config::t_token z_menu_item("menu_item", false);
+	static const config::t_token z_statistics("statistics", false);
+	static const config::t_token z_write_game("write_game", false);
+	static const config::t_token z_random_seed("random_seed", false);
+	static const config::t_token z_corrupt("corrupt", false);
+	static const config::t_token z_turn("turn", false);
+	static const config::t_token z_turn_at("turn_at", false);
+	static const config::t_token z_turns("turns", false);
+	static const config::t_token z_controller("controller", false);
+	static const config::t_token z_human("human", false);
+	static const config::t_token z_shroud("shroud", false);
+	static const config::t_token z_canrecruit("canrecruit", false);
+	static const config::t_token z_leader("leader", false);
+	static const config::t_token z_leader_image("leader_image", false);
+	static const config::t_token z_map_data("map_data", false);
+	static const config::t_token z_yes("yes", false);
+	static const config::t_token z_init("init", false);
+	static const config::t_token z_network("network", false);
+	static const config::t_token z_network_ai("network_ai", false);
+	static const config::t_token z_human_ai("human_ai", false);
+	static const config::t_token z_persistent("persistent", false);
+	static const config::t_token z_true("true", false);
+	static const config::t_token z_false("false", false);
+	static const config::t_token z_objectives("objectives", false);
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_placement("placement", false);
+	static const config::t_token z_x("x", false);
+	static const config::t_token z_y("y", false);
+	static const config::t_token z_leader_cfg("leader_cfg", false);
+	static const config::t_token z_no_leader("no_leader", false);
+	static const config::t_token z_null("null", false);
+	static const config::t_token z_player_cfg("player_cfg", false);
+	static const config::t_token z_side_cfg("side_cfg", false);
+	static const config::t_token z_income("income", false);
+	static const config::t_token z_team_name("team_name", false);
+	static const config::t_token z_user_team_name("user_team_name", false);
+	static const config::t_token z_countdown_time("countdown_time", false);
+	static const config::t_token z_action_bonus_count("action_bonus_count", false);
+	static const config::t_token z_flag("flag", false);
+	static const config::t_token z_flag_icon("flag_icon", false);
+	static const config::t_token z_objectives_changed("objectives_changed", false);
+	static const config::t_token z_disallow_observers("disallow_observers", false);
+	static const config::t_token z_allow_player("allow_player", false);
+	static const config::t_token z_hidden("hidden", false);
+	static const config::t_token z_music("music", false);
+	static const config::t_token z_colour("colour", false);
+	static const config::t_token z_ai_config("ai_config", false);
+	static const config::t_token z_start_gold("start_gold", false);
+	static const config::t_token z_team_rgb("team_rgb", false);
+	static const config::t_token z_village_gold("village_gold", false);
+	static const config::t_token z_recall_cost("recall_cost", false);
+	static const config::t_token z_share_view("share_view", false);
+	static const config::t_token z_share_maps("share_maps", false);
+	static const config::t_token z_recruit("recruit", false);
+	static const config::t_token z_fog("fog", false);
+	static const config::t_token z_shroud_data("shroud_data", false);
+	static const config::t_token z_income_lock("income_lock", false);
+	static const config::t_token z_gold_lock("gold_lock", false);
+	static const config::t_token z_team_lock("team_lock", false);
+	static const config::t_token z_random_leader("random_leader", false);
+	static const config::t_token z_terrain_liked("terrain_liked", false);
+	static const config::t_token z_allow_changes("allow_changes", false);
+	static const config::t_token z_faction_name("faction_name", false);
+	static const config::t_token z_user_description("user_description", false);
+	static const config::t_token z_100("100", false);
+	static const config::t_token z_multiplayer("multiplayer", false);
+	static const config::t_token z_no("no", false);
+	static const config::t_token z_replay("replay", false);
+	static const config::t_token z_replay_start("replay_start", false);
+	static const config::t_token z_needs_select("needs_select", false);
+	static const config::t_token z_show_if("show_if", false);
+	static const config::t_token z_filter_location("filter_location", false);
+	static const config::t_token z_command("command", false);
+	static const config::t_token z_scroll_to_leader("scroll_to_leader", false);
+	static const config::t_token z_color_lock("color_lock", false);
+	static const config::t_token z_faction("faction", false);
+	static const config::t_token z_image("image", false);
+	static const config::t_token z_description("description", false);
+}
+
 game_classification::game_classification():
 	savegame_config(),
 	label(),
@@ -75,26 +190,26 @@ game_classification::game_classification():
 	completion(),
 	end_text(),
 	end_text_duration(),
-	difficulty("NORMAL")
+	difficulty(z_NORMAL)
 	{}
 
 game_classification::game_classification(const config& cfg):
 	savegame_config(),
-	label(cfg["label"]),
-	parent(cfg["parent"]),
-	version(cfg["version"]),
-	campaign_type(cfg["campaign_type"].empty() ? "scenario" : cfg["campaign_type"].str()),
-	campaign_define(cfg["campaign_define"]),
-	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
-	campaign(cfg["campaign"]),
-	history(cfg["history"]),
-	abbrev(cfg["abbrev"]),
-	scenario(cfg["scenario"]),
-	next_scenario(cfg["next_scenario"]),
-	completion(cfg["completion"]),
-	end_text(cfg["end_text"]),
-	end_text_duration(cfg["end_text_duration"]),
-	difficulty(cfg["difficulty"].empty() ? "NORMAL" : cfg["difficulty"].str())
+	label(cfg[z_label]),
+	parent(cfg[z_parent]),
+	version(cfg[z_version]),
+	campaign_type(cfg[z_campaign_type].empty() ? z_scenario : cfg[z_campaign_type].str()),
+	campaign_define(cfg[z_campaign_define]),
+	campaign_xtra_defines(utils::split(cfg[z_campaign_extra_defines])),
+	campaign(cfg[z_campaign]),
+	history(cfg[z_history]),
+	abbrev(cfg[z_abbrev]),
+	scenario(cfg[z_scenario]),
+	next_scenario(cfg[z_next_scenario]),
+	completion(cfg[z_completion]),
+	end_text(cfg[z_end_text]),
+	end_text_duration(cfg[z_end_text_duration]),
+	difficulty(cfg[z_difficulty].empty() ? z_NORMAL : cfg[z_difficulty].str())
 	{}
 
 game_classification::game_classification(const game_classification& gc):
@@ -121,21 +236,21 @@ config game_classification::to_config() const
 {
 	config cfg;
 
-	cfg["label"] = label;
-	cfg["parent"] = parent;
-	cfg["version"] = game_config::version;
-	cfg["campaign_type"] = campaign_type;
-	cfg["campaign_define"] = campaign_define;
-	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
-	cfg["campaign"] = campaign;
-	cfg["history"] = history;
-	cfg["abbrev"] = abbrev;
-	cfg["scenario"] = scenario;
-	cfg["next_scenario"] = next_scenario;
-	cfg["completion"] = completion;
-	cfg["end_text"] = end_text;
-	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);
-	cfg["difficulty"] = difficulty;
+	cfg[z_label] = label;
+	cfg[z_parent] = parent;
+	cfg[z_version] = game_config::version;
+	cfg[z_campaign_type] = campaign_type;
+	cfg[z_campaign_define] = campaign_define;
+	cfg[z_campaign_extra_defines] = utils::join(campaign_xtra_defines);
+	cfg[z_campaign] = campaign;
+	cfg[z_history] = history;
+	cfg[z_abbrev] = abbrev;
+	cfg[z_scenario] = scenario;
+	cfg[z_next_scenario] = next_scenario;
+	cfg[z_completion] = completion;
+	cfg[z_end_text] = end_text;
+	cfg[z_end_text_duration] = str_cast<unsigned int>(end_text_duration);
+	cfg[z_difficulty] = difficulty;
 
 	return cfg;
 }
@@ -161,7 +276,7 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 {
 	// If there is already a player config available it means we are loading
 	// from a savegame. Don't do anything then, the information is already there
-	config::child_itors player_cfg = cfg.child_range("player");
+	config::child_itors player_cfg = cfg.child_range(z_player);
 	if (player_cfg.first != player_cfg.second)
 		return;
 
@@ -174,67 +289,67 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 
 	if (merge_side) {
 		//merge sides/players from starting pos with the scenario cfg
-		std::vector<std::string> tags;
-		tags.push_back("side");
-		tags.push_back("player"); //merge [player] tags for backwards compatibility of saves
+		std::vector<config::t_token> tags;
+		tags.push_back(z_side);
+		tags.push_back(z_player); //merge [player] tags for backwards compatibility of saves
 
-		foreach (const std::string& side_tag, tags)
+		foreach (const config::t_token& side_tag, tags)
 		{
 			foreach (config &carryover_side, source->child_range(side_tag))
 			{
 				config *scenario_side = NULL;
 
 				//TODO: use the player_id instead of the save_id for that
-				if (config& c = cfg.find_child("side", "save_id", carryover_side["save_id"])) {
+				if (config& c = cfg.find_child(z_side, z_save_id, carryover_side[z_save_id])) {
 					scenario_side = &c;
-				} else if (config& c = cfg.find_child("side", "id", carryover_side["save_id"])) {
+				} else if (config& c = cfg.find_child(z_side, z_id, carryover_side[z_save_id])) {
 					scenario_side = &c;
 				}
 
 				if (scenario_side == NULL) {
 					//no matching side in the current scenario, we add the persistent information in a [player] tag
-					cfg.add_child("player", carryover_side);
+					cfg.add_child(z_player, carryover_side);
 					continue;
 				}
 
 				//we have a matching side in the current scenario
 
 				//sort carryover gold
-				int ngold = (*scenario_side)["gold"].to_int(100);
-				int player_gold = carryover_side["gold"];
-				if (carryover_side["gold_add"].to_bool()) {
+				int ngold = (*scenario_side)[z_gold].to_int(100);
+				int player_gold = carryover_side[z_gold];
+				if (carryover_side[z_gold_add].to_bool()) {
 					ngold += player_gold;
 				} else if (player_gold >= ngold) {
 					ngold = player_gold;
 				}
-				carryover_side["gold"] = str_cast(ngold);
-				if (const config::attribute_value *v = scenario_side->get("gold_add")) {
-					carryover_side["gold_add"] = *v;
+				carryover_side[z_gold] = str_cast(ngold);
+				if (const config::attribute_value *v = scenario_side->get(z_gold_add)) {
+					carryover_side[z_gold_add] = *v;
 				}
 				//merge player information into the scenario cfg
-				(*scenario_side)["save_id"] = carryover_side["save_id"];
-				(*scenario_side)["gold"] = ngold;
-				(*scenario_side)["gold_add"] = carryover_side["gold_add"];
-				if (const config::attribute_value *v = carryover_side.get("previous_recruits")) {
-					(*scenario_side)["previous_recruits"] = *v;
+				(*scenario_side)[z_save_id] = carryover_side[z_save_id];
+				(*scenario_side)[z_gold] = ngold;
+				(*scenario_side)[z_gold_add] = carryover_side[z_gold_add];
+				if (const config::attribute_value *v = carryover_side.get(z_previous_recruits)) {
+					(*scenario_side)[z_previous_recruits] = *v;
 				} else {
-					(*scenario_side)["previous_recruits"] = carryover_side["can_recruit"];
+					(*scenario_side)[z_previous_recruits] = carryover_side[z_can_recruit];
 				}
-				(*scenario_side)["name"] = carryover_side["name"];
-				(*scenario_side)["current_player"] = carryover_side["current_player"];
+				(*scenario_side)[z_name] = carryover_side[z_name];
+				(*scenario_side)[z_current_player] = carryover_side[z_current_player];
 
-				(*scenario_side)["color"] = carryover_side["color"];
+				(*scenario_side)[z_color] = carryover_side[z_color];
 
 				//add recallable units
-				foreach (const config &u, carryover_side.child_range("unit")) {
-					scenario_side->add_child("unit", u);
+				foreach (const config &u, carryover_side.child_range(z_unit)) {
+					scenario_side->add_child(z_unit, u);
 				}
 			}
 		}
 	} else {
-		foreach(const config &snapshot_side, source->child_range("side")) {
+		foreach(const config &snapshot_side, source->child_range(z_side)) {
 			//take all side tags and add them as players (assuming they only contain carryover information)
-			cfg.add_child("player", snapshot_side);
+			cfg.add_child(z_player, snapshot_side);
 		}
 	}
 }
@@ -255,23 +370,23 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		phase_(INITIAL),
 		can_end_turn_(true)
 {
-	n_unit::id_manager::instance().set_save_id(cfg["next_underlying_unit_id"]);
-	log_scope("read_game");
+	n_unit::id_manager::instance().set_save_id(cfg[z_next_underlying_unit_id]);
+	log_scope(z_read_game);
 
-	const config &snapshot = cfg.child("snapshot");
-	const config &replay_start = cfg.child("replay_start");
+	const config &snapshot = cfg.child(z_snapshot);
+	const config &replay_start = cfg.child(z_replay_start);
 	// We're loading a snapshot if we have it and the user didn't request a replay.
 	bool load_snapshot = !show_replay && snapshot && !snapshot.empty();
 
 	if (load_snapshot) {
 		this->snapshot = snapshot;
 
-		rng_.seed_random(snapshot["random_calls"]);
+		rng_.seed_random(snapshot[z_random_calls]);
 	} else {
 		assert(replay_start);
 	}
 
-	can_end_turn_ = cfg["can_end_turn"].to_bool(true);
+	can_end_turn_ = cfg[z_can_end_turn].to_bool(true);
 
 	LOG_NG << "scenario: '" << classification_.scenario << "'\n";
 	LOG_NG << "next_scenario: '" << classification_.next_scenario << "'\n";
@@ -279,21 +394,21 @@ game_state::game_state(const config& cfg, bool show_replay) :
 	//priority of populating wml variables:
 	//snapshot -> replay_start -> root
 	if (load_snapshot) {
-		if (const config &vars = snapshot.child("variables")) {
+		if (const config &vars = snapshot.child(z_variables)) {
 			set_variables(vars);
-		} else if (const config &vars = cfg.child("variables")) {
+		} else if (const config &vars = cfg.child(z_variables)) {
 			set_variables(vars);
 		}
 	}
-	else if (const config &vars = replay_start.child("variables")) {
+	else if (const config &vars = replay_start.child(z_variables)) {
 		set_variables(vars);
 	}
-	else if (const config &vars = cfg.child("variables")) {
+	else if (const config &vars = cfg.child(z_variables)) {
 		set_variables(vars);
 	}
-	set_menu_items(cfg.child_range("menu_item"));
+	set_menu_items(cfg.child_range(z_menu_item));
 
-	if (const config &replay = cfg.child("replay")) {
+	if (const config &replay = cfg.child(z_replay)) {
 		replay_data = replay;
 	}
 
@@ -306,14 +421,14 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		//See also playcampaign::play_game, where after finishing the scenario the replay
 		//will be saved.
 		if(!starting_pos.empty()) {
-			foreach (const config &p, cfg.child_range("player")) {
-				config& cfg_player = starting_pos.add_child("player");
+			foreach (const config &p, cfg.child_range(z_player)) {
+				config& cfg_player = starting_pos.add_child(z_player);
 				cfg_player.merge_with(p);
 			}
 		}
 	}
 
-	if (const config &stats = cfg.child("statistics")) {
+	if (const config &stats = cfg.child(z_statistics)) {
 		statistics::fresh_stats();
 		statistics::read_stats(stats);
 	}
@@ -321,89 +436,89 @@ game_state::game_state(const config& cfg, bool show_replay) :
 
 void game_state::write_snapshot(config& cfg) const
 {
-	log_scope("write_game");
-	cfg["label"] = classification_.label;
-	cfg["history"] = classification_.history;
-	cfg["abbrev"] = classification_.abbrev;
-	cfg["version"] = game_config::version;
+	log_scope(z_write_game);
+	cfg[z_label] = classification_.label;
+	cfg[z_history] = classification_.history;
+	cfg[z_abbrev] = classification_.abbrev;
+	cfg[z_version] = game_config::version;
 
-	cfg["scenario"] = classification_.scenario;
-	cfg["next_scenario"] = classification_.next_scenario;
+	cfg[z_scenario] = classification_.scenario;
+	cfg[z_next_scenario] = classification_.next_scenario;
 
-	cfg["completion"] = classification_.completion;
+	cfg[z_completion] = classification_.completion;
 
-	cfg["campaign"] = classification_.campaign;
-	cfg["campaign_type"] = classification_.campaign_type;
-	cfg["difficulty"] = classification_.difficulty;
+	cfg[z_campaign] = classification_.campaign;
+	cfg[z_campaign_type] = classification_.campaign_type;
+	cfg[z_difficulty] = classification_.difficulty;
 
-	cfg["campaign_define"] = classification_.campaign_define;
-	cfg["campaign_extra_defines"] = utils::join(classification_.campaign_xtra_defines);
-	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
-	cfg["can_end_turn"] = can_end_turn_;
+	cfg[z_campaign_define] = classification_.campaign_define;
+	cfg[z_campaign_extra_defines] = utils::join(classification_.campaign_xtra_defines);
+	cfg[z_next_underlying_unit_id] = str_cast(n_unit::id_manager::instance().get_save_id());
+	cfg[z_can_end_turn] = can_end_turn_;
 
-	cfg["random_seed"] = rng_.get_random_seed();
-	cfg["random_calls"] = rng_.get_random_calls();
+	cfg[z_random_seed] = rng_.get_random_seed();
+	cfg[z_random_calls] = rng_.get_random_calls();
 
-	cfg["end_text"] = classification_.end_text;
-	cfg["end_text_duration"] = str_cast<unsigned int>(classification_.end_text_duration);
+	cfg[z_end_text] = classification_.end_text;
+	cfg[z_end_text_duration] = str_cast<unsigned int>(classification_.end_text_duration);
 
-	cfg.add_child("variables", variables_);
+	cfg.add_child(z_variables, variables_);
 
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=wml_menu_items.begin();
 	    j!=wml_menu_items.end(); ++j) {
 		config new_cfg;
-		new_cfg["id"]=j->first;
-		new_cfg["image"]=j->second->image;
-		new_cfg["description"]=j->second->description;
-		new_cfg["needs_select"] = j->second->needs_select;
+		new_cfg[z_id]=j->first;
+		new_cfg[z_image]=j->second->image;
+		new_cfg[z_description]=j->second->description;
+		new_cfg[z_needs_select] = j->second->needs_select;
 		if(!j->second->show_if.empty())
-			new_cfg.add_child("show_if", j->second->show_if);
+			new_cfg.add_child(z_show_if, j->second->show_if);
 		if(!j->second->filter_location.empty())
-			new_cfg.add_child("filter_location", j->second->filter_location);
+			new_cfg.add_child(z_filter_location, j->second->filter_location);
 		if(!j->second->command.empty())
-			new_cfg.add_child("command", j->second->command);
-		cfg.add_child("menu_item", new_cfg);
+			new_cfg.add_child(z_command, j->second->command);
+		cfg.add_child(z_menu_item, new_cfg);
 	}
 }
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 {
-	const config &cfg_snapshot = cfg_save.child("snapshot");
-	const config &cfg_replay_start = cfg_save.child("replay_start");
+	const config &cfg_snapshot = cfg_save.child(z_snapshot);
+	const config &cfg_replay_start = cfg_save.child(z_replay_start);
 
-	const config &cfg_replay = cfg_save.child("replay");
+	const config &cfg_replay = cfg_save.child(z_replay);
 	const bool has_replay = cfg_replay && !cfg_replay.empty();
-	const bool has_snapshot = cfg_snapshot && cfg_snapshot.child("side");
+	const bool has_snapshot = cfg_snapshot && cfg_snapshot.child(z_side);
 
-	cfg_summary["replay"] = has_replay;
-	cfg_summary["snapshot"] = has_snapshot;
+	cfg_summary[z_replay] = has_replay;
+	cfg_summary[z_snapshot] = has_snapshot;
 
-	cfg_summary["label"] = cfg_save["label"];
-	cfg_summary["parent"] = cfg_save["parent"];
-	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
-	cfg_summary["scenario"] = cfg_save["scenario"];
-	cfg_summary["campaign"] = cfg_save["campaign"];
-	cfg_summary["difficulty"] = cfg_save["difficulty"];
-	cfg_summary["version"] = cfg_save["version"];
-	cfg_summary["corrupt"] = "";
+	cfg_summary[z_label] = cfg_save[z_label];
+	cfg_summary[z_parent] = cfg_save[z_parent];
+	cfg_summary[z_campaign_type] = cfg_save[z_campaign_type];
+	cfg_summary[z_scenario] = cfg_save[z_scenario];
+	cfg_summary[z_campaign] = cfg_save[z_campaign];
+	cfg_summary[z_difficulty] = cfg_save[z_difficulty];
+	cfg_summary[z_version] = cfg_save[z_version];
+	cfg_summary[z_corrupt] = "";
 
 	if(has_snapshot) {
-		cfg_summary["turn"] = cfg_snapshot["turn_at"];
-		if (cfg_snapshot["turns"] != "-1") {
-			cfg_summary["turn"] = cfg_summary["turn"].str() + "/" + cfg_snapshot["turns"].str();
+		cfg_summary[z_turn] = cfg_snapshot[z_turn_at];
+		if (cfg_snapshot[z_turns] != "-1") {
+			cfg_summary[z_turn] = cfg_summary[z_turn].str() + "/" + cfg_snapshot[z_turns].str();
 		}
 	}
 
 	// Find the first human leader so we can display their icon in the load menu.
 
 	/** @todo Ideally we should grab all leaders if there's more than 1 human player? */
-	std::string leader;
-	std::string leader_image;
+	config::t_token leader;
+	config::t_token leader_image;
 
-	//foreach (const config &p, cfg_save.child_range("player"))
+	//foreach (const config &p, cfg_save.child_range(z_player))
 	//{
-	//	if (utils::string_bool(p["canrecruit"], false)) {
-	//		leader = p["save_id"];
+	//	if (utils::string_bool(p[z_canrecruit], false)) {
+	//		leader = p[z_save_id];
 	//	}
 	//}
 
@@ -413,28 +528,28 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	//{
 		if (const config &snapshot = *(has_snapshot ? &cfg_snapshot : &cfg_replay_start))
 		{
-			foreach (const config &side, snapshot.child_range("side"))
+			foreach (const config &side, snapshot.child_range(z_side))
 			{
-				if (side["controller"] != "human") {
+				if (side[z_controller] != z_human) {
 					continue;
 				}
 
-				if (side["shroud"].to_bool()) {
+				if (side[z_shroud].to_bool()) {
 					shrouded = true;
 				}
 
-				if (side["canrecruit"].to_bool())
+				if (side[z_canrecruit].to_bool())
 				{
-						leader = side["id"].str();
-						leader_image = side["image"].str();
+						leader = side[z_id];
+						leader_image = side[z_image];
 						break;
 				}
 
-				foreach (const config &u, side.child_range("unit"))
+				foreach (const config &u, side.child_range(z_unit))
 				{
-					if (u["canrecruit"].to_bool()) {
-						leader = u["id"].str();
-						leader_image = u["image"].str();
+					if (u[z_canrecruit].to_bool()) {
+						leader = u[z_id];
+						leader_image = u[z_image];
 						break;
 					}
 				}
@@ -442,35 +557,32 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 		}
 	//}
 
-	cfg_summary["leader"] = leader;
-	cfg_summary["leader_image"] = leader_image;
-	cfg_summary["map_data"] = "";
+	cfg_summary[z_leader] = leader;
+	cfg_summary[z_leader_image] = leader_image;
+	cfg_summary[z_map_data] = "";
 
 	if(!shrouded) {
 		if(has_snapshot) {
-			if (!cfg_snapshot.find_child("side", "shroud", "yes")) {
-				cfg_summary["map_data"] = cfg_snapshot["map_data"];
+			if (!cfg_snapshot.find_child(z_side, z_shroud, z_yes)) {
+				cfg_summary[z_map_data] = cfg_snapshot[z_map_data];
 			}
 		} else if(has_replay) {
-			if (!cfg_replay_start.find_child("side","shroud","yes")) {
-				cfg_summary["map_data"] = cfg_replay_start["map_data"];
+			if (!cfg_replay_start.find_child(z_side,z_shroud,z_yes)) {
+				cfg_summary[z_map_data] = cfg_replay_start[z_map_data];
 			}
 		}
 	}
 }
 
-config::attribute_value &game_state::get_variable(const std::string& key)
-{
-	return variable_info(key, true, variable_info::TYPE_SCALAR).as_scalar();
-}
+config::attribute_value &game_state::get_variable(const config::t_token& key) {
+	return variable_info(key, true, variable_info::TYPE_SCALAR).as_scalar(); }
 
-config::attribute_value game_state::get_variable_const(const std::string &key) const
-{
+config::attribute_value game_state::get_variable_const(const config::t_token &key) const {
 	variable_info to_get(key, false, variable_info::TYPE_SCALAR);
-	if (!to_get.is_valid)
-	{
+	if (!to_get.is_valid()) {
 		config::attribute_value &to_return = temporaries_[key];
-		if (key.size() > 7 && key.substr(key.size() - 7) == ".length") {
+		std::string const & skey(key);
+		if (skey.size() > 7 && skey.substr(skey.size() - 7) == ".length") {
 			// length is a special attribute, so guarantee its correctness
 			to_return = 0;
 		}
@@ -479,26 +591,22 @@ config::attribute_value game_state::get_variable_const(const std::string &key) c
 	return to_get.as_scalar();
 }
 
-config& game_state::get_variable_cfg(const std::string& key)
-{
+config& game_state::get_variable_cfg(const config::t_token& key) {
 	return variable_info(key, true, variable_info::TYPE_CONTAINER).as_container();
 }
 
-void game_state::set_variable(const std::string& key, const t_string& value)
-{
+void game_state::set_variable(const config::t_token& key, const t_string& value) {
 	get_variable(key) = value;
 }
 
-config& game_state::add_variable_cfg(const std::string& key, const config& value)
-{
+config& game_state::add_variable_cfg(const config::t_token& key, const config& value) {
 	variable_info to_add(key, true, variable_info::TYPE_ARRAY);
 	return to_add.vars->add_child(to_add.key, value);
 }
 
-void game_state::clear_variable_cfg(const std::string& varname)
-{
+void game_state::clear_variable_cfg(const config::t_token& varname) {
 	variable_info to_clear(varname, false, variable_info::TYPE_CONTAINER);
-	if(!to_clear.is_valid) return;
+	if(!to_clear.is_valid()) return;
 	if(to_clear.explicit_index) {
 		to_clear.vars->remove_child(to_clear.key, to_clear.index);
 	} else {
@@ -506,10 +614,9 @@ void game_state::clear_variable_cfg(const std::string& varname)
 	}
 }
 
-void game_state::clear_variable(const std::string& varname)
-{
+void game_state::clear_variable(const config::t_token& varname) {
 	variable_info to_clear(varname, false);
-	if(!to_clear.is_valid) return;
+	if(!to_clear.is_valid()) return;
 	if(to_clear.explicit_index) {
 		to_clear.vars->remove_child(to_clear.key, to_clear.index);
 	} else {
@@ -518,8 +625,40 @@ void game_state::clear_variable(const std::string& varname)
 	}
 }
 
-static void clear_wmi(std::map<std::string, wml_menu_item *> &gs_wmi)
-{
+
+config::attribute_value &game_state::get_variable(const config::attribute_value& key) {
+	return get_variable(key.token());}
+config::attribute_value game_state::get_variable_const(const config::attribute_value &key) const {
+	return get_variable_const(key.token());}
+config& game_state::get_variable_cfg(const config::attribute_value& key) {
+	return get_variable_cfg(key.token());}
+void game_state::set_variable(const config::attribute_value& key, const t_string& value) {
+	return set_variable(key.token(), value); }
+config& game_state::add_variable_cfg(const config::attribute_value& key, const config& value) {
+	return add_variable_cfg(key.token(), value); }
+void game_state::clear_variable_cfg(const config::attribute_value& varname) {
+	clear_variable_cfg(varname.token()); }
+void game_state::clear_variable(const config::attribute_value& varname) {
+	clear_variable(varname.token()); }
+
+
+config::attribute_value &game_state::get_variable(const std::string& key) {
+	return get_variable(config::t_token(key));}
+config::attribute_value game_state::get_variable_const(const std::string &key) const {
+	return get_variable_const(config::t_token(key));}
+config& game_state::get_variable_cfg(const std::string& key) {
+	return get_variable_cfg(config::t_token(key));}
+void game_state::set_variable(const std::string& key, const t_string& value) {
+	return set_variable(config::t_token(key), value); }
+config& game_state::add_variable_cfg(const std::string& key, const config& value) {
+	return add_variable_cfg(config::t_token(key), value); }
+void game_state::clear_variable_cfg(const std::string& varname) {
+	clear_variable_cfg(config::t_token(varname)); }
+void game_state::clear_variable(const std::string& varname) {
+	clear_variable(config::t_token(varname)); }
+
+
+static void clear_wmi(std::map<std::string, wml_menu_item *> &gs_wmi) {
 	for (std::map<std::string, wml_menu_item *>::iterator i = gs_wmi.begin(),
 	     i_end = gs_wmi.end(); i != i_end; ++i)
 	{
@@ -575,7 +714,7 @@ void game_state::set_variables(const config& vars) {
 class team_builder {
 public:
 	team_builder(const config& side_cfg,
-		     const std::string &save_id, std::vector<team>& teams,
+		     const std::string &save_id, t_teams& teams,
 		     const config& level, gamemap& map, unit_map& units,
 		     bool snapshot, const config &starting_pos)
 		: gold_info_ngold_(0)
@@ -652,7 +791,7 @@ protected:
 	bool snapshot_;
 	const config &starting_pos_;
 	team *t_;
-	std::vector<team> &teams_;
+	t_teams &teams_;
 	std::vector<const config*> unit_configs_;
 	unit_map &units_;
 
@@ -665,7 +804,7 @@ protected:
 
 	void init()
 	{
-		side_ = side_cfg_["side"].to_int(1);
+		side_ = side_cfg_[z_side].to_int(1);
 		if (unsigned(side_ - 1) >= teams_.size() || teams_[side_ - 1].side() != 0)
 			throw config::error("Invalid side number.");
 		t_ = &teams_[side_ - 1];
@@ -680,11 +819,11 @@ protected:
 			throw game::load_game_failed("Map not found");
 		}
 
-		if(side_cfg_["controller"] == "human" ||
-		   side_cfg_["controller"] == "network" ||
-		   side_cfg_["controller"] == "network_ai" ||
-		   side_cfg_["controller"] == "human_ai" ||
-			side_cfg_["persistent"].to_bool())
+		if(side_cfg_[z_controller] == z_human ||
+		   side_cfg_[z_controller] == z_network ||
+		   side_cfg_[z_controller] == z_network_ai ||
+		   side_cfg_[z_controller] == z_human_ai ||
+			side_cfg_[z_persistent].to_bool())
 		{
 			player_exists_ = true;
 
@@ -692,14 +831,14 @@ protected:
 			//else, we look for [side] or [player] (deprecated) tags in starting_pos
 			///@deprecated r37519 [player] instead of [side] in starting_pos
 			if (snapshot_) {
-				if (const config &c = level_.find_child("player","save_id",save_id_))  {
+				if (const config &c = level_.find_child(z_player,z_save_id,save_id_))  {
 					player_cfg_ = &c;
 				}
 			} else {
 				//at the start of scenario, get the persistence information from starting_pos
-				if (const config &c =  starting_pos_.find_child("player","save_id",save_id_))  {
+				if (const config &c =  starting_pos_.find_child(z_player,z_save_id,save_id_))  {
 					player_cfg_ = &c;
-				} else if (const config &c =  starting_pos_.find_child("side","save_id",save_id_))  {
+				} else if (const config &c =  starting_pos_.find_child(z_side,z_save_id,save_id_))  {
 					player_cfg_ = &c;
 					player_exists_ = false; //there is only a [side] tag for this save_id in starting_pos
 				} else {
@@ -710,9 +849,9 @@ protected:
 		}
 
 		DBG_NG_TC << "save id: "<< save_id_ <<std::endl;
-		DBG_NG_TC << "snapshot: "<< (player_exists_ ? "true" : "false") <<std::endl;
+		DBG_NG_TC << "snapshot: "<< (player_exists_ ? z_true : z_false) <<std::endl;
 		DBG_NG_TC << "player_cfg: "<< (player_cfg_==NULL ? "is null" : "is not null") <<std::endl;
-		DBG_NG_TC << "player_exists: "<< (player_exists_ ? "true" : "false") <<std::endl;
+		DBG_NG_TC << "player_exists: "<< (player_exists_ ? z_true : z_false) <<std::endl;
 
 		unit_configs_.clear();
 		seen_ids_.clear();
@@ -728,7 +867,7 @@ protected:
 	{
 		log_step("gold");
 
-		std::string gold = side_cfg_["gold"];
+		std::string gold = side_cfg_[z_gold];
 		if(gold.empty()) {
 			gold = default_gold_qty_;
 		}
@@ -744,16 +883,16 @@ protected:
 
 		//true  - carryover gold is added to the start_gold.
 		//false - the max of the two is taken as start_gold.
-		gold_info_add_ = side_cfg_["gold_add"].to_bool();
+		gold_info_add_ = side_cfg_[z_gold_add].to_bool();
 
 		if (use_player_cfg()) {
 			try {
-				int player_gold = (*player_cfg_)["gold"];
+				int player_gold = (*player_cfg_)[z_gold];
 				if (!player_exists_) {
 					//if we get the persistence information from [side], carryover gold is already sorted
 					gold_info_ngold_ = player_gold;
-					gold_info_add_ = (*player_cfg_)["gold_add"].to_bool();
-				} else if ((*player_cfg_)["gold_add"].to_bool()) {
+					gold_info_add_ = (*player_cfg_)[z_gold_add].to_bool();
+				} else if ((*player_cfg_)[z_gold_add].to_bool()) {
 					gold_info_ngold_ +=  player_gold;
 					gold_info_add_ = true;
 				} else if(player_gold >= gold_info_ngold_) {
@@ -781,9 +920,9 @@ protected:
 	{
 		log_step("objectives");
 		// If this team has no objectives, set its objectives
-		// to the level-global "objectives"
+		// to the level-global z_objectives
 		if (t_->objectives().empty())
-			t_->set_objectives(level_["objectives"], false);
+			t_->set_objectives(level_[z_objectives], false);
 	}
 
 
@@ -793,8 +932,8 @@ protected:
 		// If the game state specifies units that
 		// can be recruited for the player, add them.
 		if (!player_cfg_) return;
-		if (const config::attribute_value *v = player_cfg_->get("previous_recruits")) {
-			foreach (const std::string &rec, utils::split(*v)) {
+		if (const config::attribute_value *v = player_cfg_->get(z_previous_recruits)) {
+			foreach (const config::t_token &rec, utils::split_token(*v)) {
 				DBG_NG_TC << "adding previous recruit: " << rec << '\n';
 				t_->add_recruit(rec);
 			}
@@ -808,18 +947,18 @@ protected:
 	{
 		DBG_NG_TC
 			<< "unit from "<<origin
-			<< ": type=["<<u["type"]
-			<< "] id=["<<u["id"]
-			<< "] placement=["<<u["placement"]
-			<< "] x=["<<u["x"]
-			<< "] y=["<<u["y"]
+			<< ": type=["<<u[z_type]
+			<< "] id=["<<u[z_id]
+			<< "] placement=["<<u[z_placement]
+			<< "] x=["<<u[z_x]
+			<< "] y=["<<u[z_y]
 			<<"]"<< std::endl;
-		const std::string &id = u["id"];
+		const config::t_token &id = u[z_id];
 		if (!id.empty()) {
 			if ( seen_ids_.find(id)!=seen_ids_.end() ) {
 				//seen before
 				config u_tmp = u;
-				u_tmp["side"] = str_cast(side_);
+				u_tmp[z_side] = str_cast(side_);
 				unit new_unit(u_tmp, true);
 				t_->recall_list().push_back(new_unit);
 			} else {
@@ -837,10 +976,10 @@ protected:
 	{
 		leader_configs_.push_back(leader);
 
-		config::attribute_value &a1 = leader_configs_.back()["canrecruit"];
-		if (a1.blank()) a1 = true;
-		config::attribute_value &a2 = leader_configs_.back()["placement"];
-		if (a2.blank()) a2 = "map,leader";
+		config::attribute_value &a1 = leader_configs_.back()[z_canrecruit];
+		if (a1.empty()) a1 = true;
+		config::attribute_value &a2 = leader_configs_.back()[z_placement];
+		if (a2.empty()) a2 = "map,leader";
 
 		handle_unit(leader_configs_.back(), "leader_cfg");
 	}
@@ -854,10 +993,10 @@ protected:
 		// this hack shall be removed, since it messes up with 'multiple leaders'
 
 		// If this side tag describes the leader of the side
-		if (!side_cfg_["no_leader"].to_bool() && side_cfg_["controller"] != "null") {
+		if (!side_cfg_[z_no_leader].to_bool() && side_cfg_[z_controller] != z_null) {
 			handle_leader(side_cfg_);
 		}
-		foreach (const config &l, side_cfg_.child_range("leader")) {
+		foreach (const config &l, side_cfg_.child_range(z_leader)) {
 			handle_leader(l);
 		}
 	}
@@ -871,13 +1010,13 @@ protected:
 			//only relevant in start-of-scenario saves, that's why !shapshot
 			//units that are in '[scenario][side]' are 'first'
 			//for create-or-recall semantics to work: for each unit with non-empty id, unconditionally put OTHER, later, units with same id directly to recall list, not including them in unit_configs_
-			foreach(const config &u, (*player_cfg_).child_range("unit")) {
+			foreach(const config &u, (*player_cfg_).child_range(z_unit)) {
 				handle_unit(u,"player_cfg");
 			}
 
 		} else {
 			//units in [side]
-			foreach (const config &su, side_cfg_.child_range("unit")) {
+			foreach (const config &su, side_cfg_.child_range(z_unit)) {
 				handle_unit(su, "side_cfg");
 			}
 		}
@@ -886,20 +1025,20 @@ protected:
 
 	void place_units()
 	{
-		static char const *side_attrs[] = {
-			"income", "team_name", "user_team_name", "save_id",
-			"current_player", "countdown_time", "action_bonus_count",
-			"flag", "flag_icon", "objectives", "objectives_changed",
-			"disallow_observers", "allow_player", "no_leader",
-			"hidden", "music", "color", "colour", "ai_config", "gold",
-			"start_gold", "team_rgb", "village_gold", "recall_cost",
-			"controller", "persistent", "share_view",
-			"share_maps", "recruit", "fog", "shroud", "shroud_data",
-			"scroll_to_leader",
+		static n_token::t_token const side_attrs[] = {
+			z_income, z_team_name, z_user_team_name, z_save_id,
+			z_current_player, z_countdown_time, z_action_bonus_count,
+			z_flag, z_flag_icon, z_objectives, z_objectives_changed,
+			z_disallow_observers, z_allow_player, z_no_leader,
+			z_hidden, z_music, z_color, z_colour, z_ai_config, z_gold,
+			z_start_gold, z_team_rgb, z_village_gold, z_recall_cost,
+			z_controller, z_persistent, z_share_view,
+			z_share_maps, z_recruit, z_fog, z_shroud, z_shroud_data,
+			z_scroll_to_leader,
 			// Multiplayer attributes.
-			"income_lock", "gold_lock", "color_lock", "team_lock", "leader",
-			"random_leader", "terrain_liked",
-			"allow_changes", "faction_name", "user_description", "faction" };
+			z_income_lock, z_gold_lock, z_color_lock, z_team_lock, z_leader,
+			z_random_leader, z_terrain_liked,
+			z_allow_changes, z_faction_name, z_user_description, z_faction };
 
 		log_step("place units");
 		foreach (const config *u, unit_configs_) {
@@ -913,7 +1052,7 @@ protected:
 				.allow_show(false);
 
 			config cfg = *u;
-			foreach (const char *attr, side_attrs) {
+			foreach (const config::t_token & attr, side_attrs) {
 				cfg.remove_attribute(attr);
 			}
 			uc.add_unit(cfg);
@@ -923,17 +1062,17 @@ protected:
 		// Find the first leader and use its name as the player name.
 		unit_map::iterator u = resources::units->find_first_leader(t_->side());
 		if ((u != resources::units->end()) && t_->current_player().empty())
-			t_->set_current_player(u->name());
+			t_->set_current_player(u->name().token());
 
 	}
 
 };
 
-const std::string team_builder::default_gold_qty_ = "100";
+const std::string team_builder::default_gold_qty_ = z_100;
 
 
 team_builder_ptr game_state::create_team_builder(const config& side_cfg,
-					 std::string save_id, std::vector<team>& teams,
+					 std::string save_id, t_teams& teams,
 					 const config& level, gamemap& map, unit_map& units,
 					 bool snapshot)
 {
@@ -955,7 +1094,7 @@ void game_state::set_menu_items(const config::const_child_itors &menu_items)
 	clear_wmi(wml_menu_items);
 	foreach (const config &item, menu_items)
 	{
-		std::string id = item["id"];
+		std::string id = item[z_id];
 		wml_menu_item*& mref = wml_menu_items[id];
 		if(mref == NULL) {
 			mref = new wml_menu_item(id, &item);
@@ -968,35 +1107,35 @@ void game_state::set_menu_items(const config::const_child_itors &menu_items)
 void game_state::write_config(config_writer& out, bool write_variables) const
 {
 	out.write(classification_.to_config());
-	if (classification_.campaign_type == "multiplayer")
-		out.write_child("multiplayer", mp_settings_.to_config());
-	out.write_key_val("random_seed", lexical_cast<std::string>(rng_.get_random_seed()));
-	out.write_key_val("random_calls", lexical_cast<std::string>(rng_.get_random_calls()));
+	if (classification_.campaign_type == z_multiplayer)
+		out.write_child(z_multiplayer, mp_settings_.to_config());
+	out.write_key_val(z_random_seed, lexical_cast<std::string>(rng_.get_random_seed()));
+	out.write_key_val(z_random_calls, lexical_cast<std::string>(rng_.get_random_calls()));
 	if (write_variables) {
-		out.write_child("variables", variables_);
+		out.write_child(z_variables, variables_);
 	}
 
 	for(std::map<std::string, wml_menu_item *>::const_iterator j = wml_menu_items.begin();
 	    j != wml_menu_items.end(); ++j) {
-		out.open_child("menu_item");
-		out.write_key_val("id", j->first);
-		out.write_key_val("image", j->second->image);
-		out.write_key_val("description", j->second->description);
-		out.write_key_val("needs_select", (j->second->needs_select) ? "yes" : "no");
+		out.open_child(z_menu_item);
+		out.write_key_val(z_id, j->first);
+		out.write_key_val(z_image, j->second->image);
+		out.write_key_val(z_description, j->second->description);
+		out.write_key_val(z_needs_select, (j->second->needs_select) ? z_yes : z_no);
 		if(!j->second->show_if.empty())
-			out.write_child("show_if", j->second->show_if);
+			out.write_child(z_show_if, j->second->show_if);
 		if(!j->second->filter_location.empty())
-			out.write_child("filter_location", j->second->filter_location);
+			out.write_child(z_filter_location, j->second->filter_location);
 		if(!j->second->command.empty())
-			out.write_child("command", j->second->command);
-		out.close_child("menu_item");
+			out.write_child(z_command, j->second->command);
+		out.close_child(z_menu_item);
 	}
 
-	if (!replay_data.child("replay")) {
-		out.write_child("replay", replay_data);
+	if (!replay_data.child(z_replay)) {
+		out.write_child(z_replay, replay_data);
 	}
 
-	out.write_child("replay_start",starting_pos);
+	out.write_child(z_replay_start,starting_pos);
 }
 
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
@@ -1016,11 +1155,11 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 	}
 	name = temp.str();
 	if(cfg != NULL) {
-		image = (*cfg)["image"].str();
-		description = (*cfg)["description"];
-		needs_select = (*cfg)["needs_select"].to_bool();
-		if (const config &c = cfg->child("show_if")) show_if = c;
-		if (const config &c = cfg->child("filter_location")) filter_location = c;
-		if (const config &c = cfg->child("command")) command = c;
+		image = (*cfg)[z_image].str();
+		description = (*cfg)[z_description].t_str();
+		needs_select = (*cfg)[z_needs_select].to_bool();
+		if (const config &c = cfg->child(z_show_if)) show_if = c;
+		if (const config &c = cfg->child(z_filter_location)) filter_location = c;
+		if (const config &c = cfg->child(z_command)) command = c;
 	}
 }
