@@ -49,6 +49,15 @@ static lg::log_domain log_config("config");
 static const size_t max_recursion_levels = 1000;
 
 namespace {
+//static configuration tokens
+//static const config::t_token z_empty("", false);
+static const config::t_token z_tag("tag", false);
+static const config::t_token z_tag1("tag1", false);
+static const config::t_token z_tag2("tag2", false);
+static const config::t_token z_pos("pos", false);
+static const config::t_token z_error("error", false);
+static const config::t_token z_value("value", false);
+static const config::t_token z_previous_value("previous_value", false);
 class parser
 {
 	parser();
@@ -63,8 +72,7 @@ public:
 private:
 	void parse_element();
 	void parse_variable();
-	std::string lineno_string(utils::string_map &map, std::string const &lineno,
-		const char *error_string);
+	std::string lineno_string(utils::token_map &map, std::string const &lineno, const char *error_string);
 	void error(const std::string& message);
 
 	config& cfg_;
@@ -72,13 +80,12 @@ private:
 	abstract_validator *validator_;
 
 	struct element {
-		element(config *cfg, std::string const &name,
+		element(config *cfg, config::t_token const &name,
 			int start_line = 0, const std::string &file = "") :
-			cfg(cfg), name(name), start_line(start_line), file(file)
-		{}
+			cfg(cfg), name(name), start_line(start_line), file(file) {}
 
 		config* cfg;
-		std::string name;
+		config::t_token name;
 		int start_line;
 		std::string file;
 	};
@@ -95,15 +102,13 @@ parser::parser(config &cfg, std::istream &in, abstract_validator * validator)
 }
 
 
-parser::~parser()
-{
+parser::~parser() {
 	delete tok_;
 }
 
-void parser::operator()()
-{
+void parser::operator()() {
 	cfg_.clear();
-	elements.push(element(&cfg_, ""));
+	elements.push(element(&cfg_, z_empty));
 
 	do {
 		tok_->next_token();
@@ -118,9 +123,9 @@ void parser::operator()()
 			parse_variable();
 			break;
 		default:
-			if (static_cast<unsigned char>(tok_->current_token().value[0]) == 0xEF &&
-			    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBB &&
-			    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBF)
+			if (static_cast<unsigned char>(static_cast<std::string const &>(tok_->current_token().value())[0]) == 0xEF &&
+			    static_cast<unsigned char>(static_cast<std::string const &>(tok_->next_token().value())[0])    == 0xBB &&
+			    static_cast<unsigned char>(static_cast<std::string const &>(tok_->next_token().value())[0])    == 0xBF)
 			{
 				ERR_CF << "Skipping over a utf8 BOM\n";
 			} else {
@@ -137,8 +142,8 @@ void parser::operator()()
 	assert(!elements.empty());
 
 	if(elements.size() != 1) {
-		utils::string_map i18n_symbols;
-		i18n_symbols["tag"] = elements.top().name;
+		utils::token_map i18n_symbols;
+		i18n_symbols[z_tag] = elements.top().name;
 		std::stringstream ss;
 		ss << elements.top().start_line << " " << elements.top().file;
 		error(lineno_string(i18n_symbols, ss.str(),
@@ -146,14 +151,13 @@ void parser::operator()()
 	}
 }
 
-void parser::parse_element()
-{
+void parser::parse_element() {
 	tok_->next_token();
-	std::string elname;
+	config::t_token elname;
 	config* current_element = NULL;
 	switch(tok_->current_token().type) {
 	case token::STRING: // [element]
-		elname = tok_->current_token().value;
+		elname = tok_->current_token().value();
 		if (tok_->next_token().type != ']')
 			error(_("Unterminated [element] tag"));
 		// Add the element
@@ -168,7 +172,7 @@ void parser::parse_element()
 	case '+': // [+element]
 		if (tok_->next_token().type != token::STRING)
 			error(_("Invalid tag name"));
-		elname = tok_->current_token().value;
+		elname = tok_->current_token().value();
 		if (tok_->next_token().type != ']')
 			error(_("Unterminated [+element] tag"));
 
@@ -193,15 +197,15 @@ void parser::parse_element()
 	case '/': // [/element]
 		if(tok_->next_token().type != token::STRING)
 			error(_("Invalid closing tag name"));
-		elname = tok_->current_token().value;
+		elname = tok_->current_token().value();
 		if(tok_->next_token().type != ']')
 			error(_("Unterminated closing tag"));
 		if(elements.size() <= 1)
 			error(_("Unexpected closing tag"));
 		if(elname != elements.top().name) {
-			utils::string_map i18n_symbols;
-			i18n_symbols["tag1"] = elements.top().name;
-			i18n_symbols["tag2"] = elname;
+			utils::token_map i18n_symbols;
+			i18n_symbols[z_tag1] = elements.top().name;
+			i18n_symbols[z_tag2] = elname;
 			std::stringstream ss;
 			ss << elements.top().start_line << " " << elements.top().file;
 			error(lineno_string(i18n_symbols, ss.str(),
@@ -222,21 +226,31 @@ void parser::parse_element()
 void parser::parse_variable()
 {
 	config& cfg = *elements.top().cfg;
-	std::vector<std::string> variables;
-	variables.push_back("");
+	std::vector<config::t_token> variables;
+	variables.push_back(z_empty);
 
 	while (tok_->current_token().type != '=') {
 		switch(tok_->current_token().type) {
 		case token::STRING:
-			if(!variables.back().empty())
-				variables.back() += ' ';
-			variables.back() += tok_->current_token().value;
+			// if(!variables.back().empty()){
+			// 	variables.back() = config::t_token( static_cast<std::string const &>(variables.back()) 
+			// 										+ ' ' +static_cast<std::string const &>(tok_->current_token().value()));
+			// 	//variables.back() += ' ';
+			// } else {
+			// 	variables.back() = config::t_token( static_cast<std::string const &>(variables.back()) 
+			// 										+ static_cast<std::string const &>(tok_->current_token().value()));
+
+			// 	//				variables.back() += tok_->current_token().value();
+			// }
+			variables.back() = config::t_token( static_cast<std::string const &>(variables.back()) 
+												+ ((!variables.back().empty()) ? " " :"") 
+												+ static_cast<std::string const &>(tok_->current_token().value()));
 			break;
 		case ',':
 			if(variables.back().empty()) {
 				error(_("Empty variable name"));
 			} else {
-				variables.push_back("");
+				variables.push_back(z_empty);
 			}
 			break;
 		default:
@@ -250,7 +264,7 @@ void parser::parse_variable()
 
 	t_string_base buffer;
 
-	std::vector<std::string>::const_iterator curvar = variables.begin();
+	std::vector<config::t_token>::const_iterator curvar = variables.begin();
 
 	bool ignore_next_newlines = false, previous_string = false;
 	while(1) {
@@ -263,7 +277,7 @@ void parser::parse_variable()
 				if (buffer.translatable())
 					cfg[*curvar] = t_string(buffer);
 				else
-					cfg[*curvar] = buffer.value();
+					cfg[*curvar] = buffer.token();
 				if(validator_){
 					validator_->validate_key (cfg,*curvar,buffer.value(),
 											  tok_->get_start_line (),
@@ -282,11 +296,11 @@ void parser::parse_variable()
 				error(_("Unterminated quoted string"));
 				break;
 			case token::QSTRING:
-				buffer += t_string_base(tok_->current_token().value, tok_->textdomain());
+				buffer += t_string_base(tok_->current_token().value(), tok_->textdomain());
 				break;
 			default:
 				buffer += "_";
-				buffer += tok_->current_token().value;
+				buffer += tok_->current_token().value();
 				break;
 			case token::END:
 			case token::LF:
@@ -301,10 +315,10 @@ void parser::parse_variable()
 			if (previous_string) buffer += " ";
 			//nobreak
 		default:
-			buffer += tok_->current_token().value;
+			buffer += tok_->current_token().value();
 			break;
 		case token::QSTRING:
-			buffer += tok_->current_token().value;
+			buffer += tok_->current_token().value();
 			break;
 		case token::UNTERMINATED_QSTRING:
 			error(_("Unterminated quoted string"));
@@ -324,39 +338,39 @@ void parser::parse_variable()
 	if (buffer.translatable())
 		cfg[*curvar] = t_string(buffer);
 	else
-		cfg[*curvar] = buffer.value();
+		cfg[*curvar] = buffer.token();
 	if(validator_){
 		validator_->validate_key (cfg,*curvar,buffer.value(),
 								  tok_->get_start_line (),
 								  tok_->get_file ());
 	}
 	while (++curvar != variables.end()) {
-		cfg[*curvar] = "";
+		cfg[*curvar] = z_empty;
 	}
 }
 
 /**
  * This function is crap. Don't use it on a string_map with prefixes.
  */
-std::string parser::lineno_string(utils::string_map &i18n_symbols,
+std::string parser::lineno_string(utils::token_map &i18n_symbols,
 	std::string const &lineno, const char *error_string)
 {
-	i18n_symbols["pos"] = ::lineno_string(lineno);
+	i18n_symbols[z_pos] = ::lineno_string(lineno);
 	std::string result = _(error_string);
-	foreach(utils::string_map::value_type& var, i18n_symbols)
-		boost::algorithm::replace_all(result, std::string("$") + var.first, std::string(var.second));
+	foreach(utils::token_map::value_type& var, i18n_symbols)
+		boost::algorithm::replace_all(result, std::string("$") + static_cast<std::string const &>(var.first), std::string(var.second));
 	return result;
 }
 
 void parser::error(const std::string& error_type)
 {
-	utils::string_map i18n_symbols;
-	i18n_symbols["error"] = error_type;
-	i18n_symbols["value"] = tok_->current_token().value;
+	utils::token_map i18n_symbols;
+	i18n_symbols[z_error] = error_type;
+	i18n_symbols[z_value] = tok_->current_token().value();
 	std::stringstream ss;
 	ss << tok_->get_start_line() << " " << tok_->get_file();
 #ifdef DEBUG
-	i18n_symbols["previous_value"] = tok_->previous_token().value;
+	i18n_symbols[z_previous_value] = tok_->previous_token().value();
 	throw config::error(
 		lineno_string(i18n_symbols, ss.str(),
 		              N_("$error, value '$value', previous '$previous_value' at $pos")));

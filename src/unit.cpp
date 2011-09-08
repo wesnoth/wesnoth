@@ -682,7 +682,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		&z_max_hitpoints, &z_max_moves, &z_max_experience,
 		&z_advances_to, &z_hitpoints, &z_goto_x, &z_goto_y, &z_moves,
 		&z_experience, &z_resting, &z_unrenamable, &z_alignment,
-		&z_canrecruit, &z_x, &z_y, &z_placement,
+		&z_canrecruit, &z_extra_recruit, &z_x, &z_y, &z_placement,
 		// Useless attributes created when saving units to WML:
 		&z_flag_rgb, &z_language_name };
 	foreach (const  config::t_token * attr, internalized_attrs) {
