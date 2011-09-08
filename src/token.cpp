@@ -26,8 +26,8 @@ namespace n_token {
 
 /// Do not inline this enforces static initialization order
 t_token const & t_token::z_empty() {
-	static t_token z_empty("", false);
-	return z_empty;
+	static t_token *z_empty = new t_token("", false);
+	return *z_empty;
 }
 
 }//end namepace

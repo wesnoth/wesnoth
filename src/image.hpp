@@ -78,14 +78,18 @@ namespace image {
 		// should store locators, and not strings to construct locators
 		// (the second will work, of course, but will be slower)
 		locator();
-		locator(const locator &a, const n_token::t_token &mods = z_empty);
+
+		//temporary fix //todo move somewhere like inside t_token?
+		static n_token::t_token const & z_empty_default();
+
+		locator(const locator &a, const n_token::t_token &mods = n_token::t_token::z_empty());
 
 		// locator(const locator &a, const std::string &mods ="");
 
 		locator(const n_token::t_token& filename);
 		locator(const n_token::t_token& filename, const n_token::t_token& modifications);
 		locator(const n_token::t_token& filename, const map_location& loc, int center_x, int center_y
-				, const n_token::t_token& modifications=z_empty);
+				, const n_token::t_token& modifications=n_token::t_token::z_empty());
 
 		locator(const char *filename);
 		locator(const std::string& filename);
@@ -220,7 +224,7 @@ namespace image {
 	bool exists(const locator& i_locator);
 
 	/// precache the existence of files in the subdir (ex: "terrain/")
-	void precache_file_existence(const n_token::t_token& subdir = z_empty);
+void precache_file_existence(const n_token::t_token& subdir = n_token::t_token::z_empty()); 
 	bool precached_file_exists(const n_token::t_token& file);
 }
 
