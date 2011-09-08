@@ -361,6 +361,7 @@ set(wesnoth-main_SRC
 	formula_debugger_fwd.cpp
 	formula_function.cpp
 	formula_string_utils.cpp
+	formula_string_utils_backend.cpp
 	formula_tokenizer.cpp
 	game_controller.cpp
 	game_controller_abstract.cpp

@@ -202,6 +202,7 @@ public:
 		bool empty() const;
 		std::string str() const;
 		t_string t_str() const;
+		value_type const & to_value() const {return value;}
 
 		operator int() const { return to_int(); }
 		operator std::string() const { return str(); }
