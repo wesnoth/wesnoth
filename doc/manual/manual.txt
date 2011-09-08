@@ -609,31 +609,31 @@ and special abilities, that are described in more detail below.
 Alignment
 ^^^^^^^^^
 
-Every unit has an alignment: lawful, neutral, or chaotic. Alignment
+Every unit has an alignment: lawful, neutral, chaotic or liminal. Alignment
 affects how units perform at different times of day. Neutral units are
 unaffected by the time of day. Lawful units do more damage during the
 day and less at night. Chaotic units do more damage at night and less
-during the day.
+during the day. Liminal units do less damage during both night and daytime.
 
 The two "day" and "night" phases are differentiated as Morning, Afternoon
 and First Watch, Second Watch, by the positions of the sun and moon in
 the time of day graphic.
 
 The following table shows the effects of different times of the day on
-the damage dealt by lawful and chaotic units:
+the damage dealt by lawful, chaotic and liminal units:
 
 .Time of the day and damage
-`-------`----------------------------------------`---------------------`-------`------
-Turn    Image                                    Day-phase             Lawful  Chaotic
---------------------------------------------------------------------------------------
-1       image:images/schedule-dawn.png[]         Dawn                  --      --
-2       image:images/schedule-morning.png[]      Day (morning)         +25%    −25%
-3       image:images/schedule-afternoon.png[]    Day (afternoon)       +25%    −25%
-4       image:images/schedule-dusk.png[]         Dusk                  --      --
-5       image:images/schedule-firstwatch.png[]   Night (first watch)   −25%    +25%
-6       image:images/schedule-secondwatch.png[]  Night (second watch)  −25%    +25%
-Special image:images/schedule-underground.png[]  Underground           −25%    +25%
---------------------------------------------------------------------------------------
+`-------`----------------------------------------`---------------------`-------`-------`------
+Turn    Image                                    Day-phase             Lawful  Chaotic Liminal
+----------------------------------------------------------------------------------------------
+1       image:images/schedule-dawn.png[]         Dawn                  --      --      --
+2       image:images/schedule-morning.png[]      Day (morning)         +25%    −25%    −25%    
+3       image:images/schedule-afternoon.png[]    Day (afternoon)       +25%    −25%    −25%    
+4       image:images/schedule-dusk.png[]         Dusk                  --      --      --
+5       image:images/schedule-firstwatch.png[]   Night (first watch)   −25%    +25%    −25%    
+6       image:images/schedule-secondwatch.png[]  Night (second watch)  −25%    +25%    −25%    
+Special image:images/schedule-underground.png[]  Underground           −25%    +25%    −25%    
+----------------------------------------------------------------------------------------------
 
 Keep in mind that some scenarios take place underground, where it is
 perpetually night!
@@ -1254,8 +1254,9 @@ damage than necessary.
 Time of Day
 ^^^^^^^^^^^
 
-Remember that Lawful units like humans fight better at daytime and Chaotic
-units like orcs or undead fight better at night. Ideally you want to
+Remember that Lawful units like humans fight better at daytime, Chaotic
+units like orcs or undead fight better at night and Liminal units fight 
+best during the twilight. Ideally you want to
 first meet the enemy when you are strong and/or he is weak. When the
 enemy has its strong time, it often pays off to strengthen your lines
 and hold a favorable defensive position. When its weak time is about to
