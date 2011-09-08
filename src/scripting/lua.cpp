@@ -184,7 +184,7 @@ struct luaW_pushscalar_visitor : public config::attribute_value::default_visitor
 /**
  * Converts a string into a Lua object pushed at the top of the stack.
  */
-void luaW_pushscalar(lua_State *L, config::attribute_value const &v) {
+static void luaW_pushscalar(lua_State *L, config::attribute_value const &v) {
 	luaW_pushscalar_visitor visitor(L);
 	v.apply_visitor(visitor);
 }
