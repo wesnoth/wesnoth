@@ -110,7 +110,10 @@ size_t hash_value(progressive_discrete<T> const & a) {
 
 
 template <class T>
-T progressive_continuous<T>::default_default_value_ = T() ;
+T const & progressive_continuous<T>::default_default_value() { 
+	static T * defval= new T();
+	return *defval;
+}
 
 template <class T>
 void progressive_continuous<T>::progressive_continuous_core(const config::t_token &data, int duration) {

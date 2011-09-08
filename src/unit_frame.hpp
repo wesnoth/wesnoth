@@ -57,17 +57,16 @@ class progressive_continuous {
 	t_data data_;
 	n_token::t_token input_;
 
-	static T default_default_value_;
+	//Do not inline it fixes static initialization problems
+	static T const & default_default_value();
+	
 public:
 	progressive_continuous(const n_token::t_token& data = z_empty, int duration = 0) : data_(), input_(data) {
 		progressive_continuous_core(data, duration); }
-	// progressive_continuous(const std::string& data = z_empty, int duration = 0) : data_(), input_(data) {
-	// 	progressive_continuous_core(data, duration); }
 	void progressive_continuous_core(const n_token::t_token& data = z_empty, int duration = 0);
 	progressive_continuous(progressive_continuous const &);
-	static void set_default_default_value(T const & dv = T()) {default_default_value_ = dv;}
 	int duration() const;
-	const T get_current_element(int time,T const & default_val=progressive_continuous<T>::default_default_value_) const;
+	const T get_current_element(int time,T const & default_val=progressive_continuous<T>::default_default_value() ) const;
 	bool does_not_change() const;
 	n_token::t_token const & get_original() const { return input_; }
 
