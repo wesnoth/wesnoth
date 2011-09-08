@@ -1,0 +1,341 @@
+#This is a suppression file for wesnoth
+
+
+# Complains that eptr not initialized.
+# strtod doesn't require it to be in the following production in config::attribute_value::operator=
+# char *eptr;
+# double d = strtod(v.c_str(), &eptr);
+{
+   strtod_does_not_require_initilization_of_eptr
+   Memcheck:Value8
+   fun:__GI___strncasecmp_l
+   fun:____strtod_l_internal
+   fun:_ZN6config15attribute_valueaSERKSs
+}
+{
+   strtod_does_not_require_initilization_of_eptr
+   Memcheck:Addr8
+   fun:__GI___strncasecmp_l
+   fun:____strtod_l_internal
+   fun:_ZN6config15attribute_valueaSERKSs
+}
+{
+   strtod_does_not_require_initilization_of_eptr2
+   Memcheck:Cond
+   fun:__GI___strncasecmp_l
+   fun:____strtod_l_internal
+   fun:_ZN6config15attribute_valueaSERKSs
+}
+
+
+
+
+#SECTION: Static Pointers Initialized with new to force proper order of initialization
+
+#Using a new without a matching delete to initialize a static pointer.  
+#This is not a leak.  i.e.
+# static *thingy;
+# void function_to_intialize_static_thingy(){
+#   if(thingy == NULL){
+#     thingy = new thingy();
+#   }
+# }
+
+{
+   static_pointer_initialization_in_formula_function
+   Memcheck:Leak
+   fun:_Znwm
+   fun:_ZN10game_logic12_GLOBAL__N_117get_functions_mapEv
+   fun:_ZN10game_logic15create_functionERKSsRKSt6vectorIN5boost10shared_ptrINS_18formula_expressionEEESaIS6_EEPKNS_21function_symbol_tableE
+}
+
+{
+   static_pointer_initialization_in_log_domain
+   Memcheck:Leak
+   fun:_Znwm
+   fun:_ZNSs4_Rep9_S_createEmmRKSaIcE
+   fun:_ZNSs12_S_constructIPKcEEPcT_S3_RKSaIcESt20forward_iterator_tag
+   fun:_ZNSsC1EPKcRKSaIcE
+   fun:_ZN2lg10log_domainC1EPKc
+}
+
+{
+   static_pointer_initialization_in_log_domain
+   Memcheck:Leak
+   fun:_Znwm
+	...
+   fun:_ZNSt3map*
+   fun:_ZN2lg10log_domainC1EPKc
+}
+
+{
+   static_pointer_initialization_in_ai_registry
+   Memcheck:Leak
+   fun:_Znwm
+   fun:_ZNSs4_Rep9_S_createEmmRKSaIcE
+   fun:_ZNSs12_S_constructIPKcEEPcT_S3_RKSaIcESt20forward_iterator_tag
+   fun:_ZNSsC1EPKcRKSaIcE
+   fun:_Z41__static_initialization_and_destruction_0ii
+   fun:_GLOBAL__I__ZN2ai8registry4initEv
+}
+
+
+
+#SECTION: Errors within SDL
+
+{
+   leak_within_SDL
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:SDL_VideoInit
+}
+
+{
+   leak_within_SDL2
+   Memcheck:Leak
+   fun:malloc
+	...
+   fun:xcb_connect_to_display_with_auth_info
+   fun:_XConnectXCB
+   fun:XOpenDisplay
+}
+
+{
+   leak_within_SDL3
+   Memcheck:Cond
+	...
+   fun:SDL_PumpEvents
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:_XimOpenIM
+   obj:/usr/lib*/libSDL*
+}
+
+
+
+#SECTION: Errors within Pango
+{
+   leak_within_pango1
+   fun:*alloc
+	...
+   fun:g_type_init_with_debug_flags
+   fun:pango_cairo_font_map_new
+}
+
+{
+   leak_within_pango2
+   fun:*alloc
+	...
+   fun:pango_font_description_copy
+}
+
+{
+   leak_within_pango3
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:g_get_language_names
+   fun:g_thread_init_glib
+   fun:g_type_init_with_debug_flags
+   fun:pango_cairo_font_map_new
+}
+
+{
+   leak_within_pango5
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:g_type_register_fundamental
+	...
+   fun:g_type_init_with_debug_flags
+   fun:pango_cairo_font_map_new
+}
+
+{
+   leak_within_pango6
+   Memcheck:Leak
+   fun:malloc
+   fun:FcPatternCreate
+   fun:FcFontRenderPrepare
+   fun:FcFontMatch
+}
+
+{
+   leak_within_pango_cairo6
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:cairo_scaled_font_create
+}
+
+{
+   leak_within_pango7
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:pango_language_from_string
+}
+
+
+{
+   leak_within_pango8
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:pango_find_map
+}
+
+{
+   leak_within_pango9
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:g_type_init_with_debug_flags
+}
+
+{
+   leak_within_pango10
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:FT_Add_Module
+}
+
+{
+   leak_within_pango11
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:pango_itemize_with_base_dir
+}
+
+{
+   leak_within_pango12
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:pango_ot_ruleset_new
+}
+
+{
+   leak_within_pango13
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:pango_itemize_with_base_dir
+}
+
+
+{
+   leak_within_pango14
+   Memcheck:Leak
+   fun:malloc
+	...
+   fun:pango_layout_line_get_extents
+}
+
+
+{
+   leak_within_pango15
+   Memcheck:Leak
+   fun:memalign
+	...
+   fun:g_type_init_with_debug_flags
+   fun:pango_cairo_font_map_new
+}
+
+{
+   leak_within_pango16
+   Memcheck:Leak
+   fun:memalign
+	...
+   fun:pango_parse_markup
+}
+
+{
+   leak_within_pango17
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:FT_GlyphLoader_CheckPoints
+}
+{
+   leak_within_pango17
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:FT_Open_Face
+}
+{
+   leak_within_pango18
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:pango_cairo_font_map_get_default
+}
+
+{
+   leak_within_pango19
+   Memcheck:Leak
+   fun:*alloc
+	...
+   obj:/usr/lib*/libpango*
+}
+{
+   leak_within_pango20
+   Memcheck:Leak
+   fun:memalign
+	...
+   obj:/usr/lib*/libpango*
+}
+{
+   leak_within_pango21
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:FT_Load_Glyph
+}
+{
+   leak_within_pango22
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:cairo_show_glyphs
+}
+{
+   leak_within_pango23
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:FT_Render_Glyph_Internal
+}
+
+{
+   leak_within_pango24
+   Memcheck:Leak
+   fun:malloc
+	...
+   fun:pixman_image_create_bits
+}
+
+#SECTION: Errors with fontconfig
+{
+   leak_within_font_config
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:FcConfigParseAndLoad
+}
+{
+   leak_within_font_config2
+   Memcheck:Leak
+   fun:*alloc
+	...
+   fun:FcConfigSubstituteWithPat
+}
