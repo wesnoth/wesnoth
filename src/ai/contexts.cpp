@@ -849,7 +849,7 @@ void readonly_context_impl::invalidate_move_maps() const
 }
 
 
-const std::set<map_location>& readonly_context_impl::keeps() const
+const map_location::t_maploc_set & readonly_context_impl::keeps() const
 {
 	return keeps_.get();
 }
@@ -881,7 +881,7 @@ void keeps_cache::init(gamemap &map)
 	map_ = &map;
 }
 
-const std::set<map_location>& keeps_cache::get()
+const map_location::t_maploc_set & keeps_cache::get()
 {
 	if(keeps_.empty()) {
 		// Generate the list of keeps:
@@ -933,9 +933,9 @@ bool readonly_context_impl::leader_can_reach_keep() const
 
 const map_location& readonly_context_impl::nearest_keep(const map_location& loc) const
 {
-	std::set<map_location> avoided_locations;
+	map_location::t_maploc_set avoided_locations;
 	get_avoid().get_locations(avoided_locations);
-	const std::set<map_location>& keeps = this->keeps();
+	const map_location::t_maploc_set & keeps = this->keeps();
 	if(keeps.empty()) {
 		static const map_location dummy;
 		return dummy;
@@ -943,7 +943,7 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 
 	const map_location* res = NULL;
 	int closest = -1;
-	for(std::set<map_location>::const_iterator i = keeps.begin(); i != keeps.end(); ++i) {
+	for(map_location::t_maploc_set::const_iterator i = keeps.begin(); i != keeps.end(); ++i) {
 		if (avoided_locations.find(*i)!=avoided_locations.end()) {
 			continue;
 		}

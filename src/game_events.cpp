@@ -378,7 +378,7 @@ namespace game_events {
 		const vconfig::child_list& have_location = cond.get_children("have_location");
 		backwards_compat = backwards_compat && have_location.empty();
 		for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
-			std::set<map_location> res;
+			map_location::t_maploc_set res;
 			terrain_filter(*v, *resources::units).get_locations(res);
 
 			std::vector<std::pair<int,int> > counts = (*v).has_attribute("count")
@@ -683,7 +683,7 @@ static void toggle_shroud(const bool remove, const vconfig& cfg)
 	{
 		index = side_num - 1;
 		team &t = (*resources::teams)[index];
-		std::set<map_location> locs;
+		map_location::t_maploc_set locs;
 		terrain_filter filter(cfg, *resources::units);
 		filter.restrict_size(game_config::max_loop);
 		filter.get_locations(locs, true);
@@ -2758,7 +2758,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 		} else {
 			id = ids;
 		}
-		std::set<map_location> locs;
+		map_location::t_maploc_set locs;
 		terrain_filter filter(cfg, *resources::units);
 		filter.restrict_size(game_config::max_loop);
 		filter.get_locations(locs, true);

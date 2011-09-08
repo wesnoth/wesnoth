@@ -337,14 +337,14 @@ static int cfun_ai_get_attack_depth(lua_State *L)
 
 static int cfun_ai_get_avoid(lua_State *L)
 {
-	std::set<map_location> locs;
+	map_location::t_maploc_set locs;
 	terrain_filter avoid = get_readonly_context(L).get_avoid();
 	avoid.get_locations(locs, true); // is it true here?
 
 	int sz = locs.size();
 	lua_createtable(L, sz, 0); // create a table that we'll use as an array
 
-	std::set<map_location>::iterator it = locs.begin();
+	map_location::t_maploc_set::iterator it = locs.begin();
 	for (int i = 0; it != locs.end(); ++it, ++i)
 	{
 		lua_pushinteger(L, i + 1); // Index for the map location

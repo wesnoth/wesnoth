@@ -564,7 +564,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		map_location secondary_loc = map_location::null_location;
 		if(!t_filter.empty()) {
 			terrain_filter filter(t_filter, *resources::units);
-			std::set<map_location> locs;
+			map_location::t_maploc_set locs;
 			filter.get_locations(locs);
 			if (!locs.empty() && u->get_location() != *locs.begin()) {
 				map_location::DIRECTION dir =u->get_location().get_relative_dir(*locs.begin());

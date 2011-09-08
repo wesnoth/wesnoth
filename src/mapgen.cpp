@@ -535,11 +535,11 @@ static map_location place_village(const t_translation::t_map& map,
 	tcode_list_cache &adj_liked_cache)
 {
 	const map_location loc(x,y);
-	std::set<map_location> locs;
+	map_location::t_maploc_set locs;
 	get_tiles_radius(loc,radius,locs);
 	map_location best_loc;
 	int best_rating = 0;
-	for(std::set<map_location>::const_iterator i = locs.begin();
+	for(map_location::t_maploc_set::const_iterator i = locs.begin();
 			i != locs.end(); ++i) {
 
 		if(i->x < 0 || i->y < 0 || i->x >= static_cast<long>(map.size()) ||

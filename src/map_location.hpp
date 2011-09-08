@@ -24,6 +24,7 @@ class variable_set;
 #include <string>
 #include <vector>
 #include <set>
+#include <boost/unordered_set.hpp>
 #include <boost/unordered_map.hpp>
 
 #define MAX_MAP_AREA	65536
@@ -50,6 +51,7 @@ struct map_location {
 	static std::vector<DIRECTION> parse_directions(const std::string& str);
 	static std::string write_direction(DIRECTION dir);
 
+	typedef boost::unordered_set<map_location> t_maploc_set;
 	map_location() : x(-1000), y(-1000) {}
 	map_location(int x, int y) : x(x), y(y) {}
 	map_location(const config& cfg, const variable_set *variables);
@@ -127,7 +129,7 @@ std::vector<map_location> parse_location_range(const std::string& xvals,
  * Write a set of locations into a config using ranges,
  * adding keys x=x1,..,xn and y=y1a-y1b,..,yna-ynb
  */
-void write_location_range(const std::set<map_location>& locs, config& cfg);
+void write_location_range(const map_location::t_maploc_set& locs, config& cfg);
 
 /** Parse x,y keys of a config into a vector of locations */
 void read_locations(const config& cfg, std::vector<map_location>& locs);

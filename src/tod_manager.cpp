@@ -28,6 +28,23 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
+namespace{
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison operations.
+static const config::t_token z_turn_at("turn_at");
+static const config::t_token z_turns("turns");
+static const config::t_token z_current_tod("current_tod");
+static const config::t_token z_time("time");
+static const config::t_token z_time_area("time_area");
+static const config::t_token z_x("x");
+static const config::t_token z_y("y");
+static const config::t_token z_id("id");
+static const config::t_token z_random_start_time("random_start_time");
+static const config::t_token z_illuminates("illuminates");
+static const config::t_token z_max_value("max_value");
+static const config::t_token z_min_value("min_value");
+}
+
 tod_manager::tod_manager(const config& scenario_cfg, const int num_turns):
 	savegame_config(),
 	currentTime_(0),
@@ -156,7 +173,7 @@ void tod_manager::add_time_area(const config& cfg)
 	time_of_day::parse_times(cfg, area.times);
 }
 
-void tod_manager::add_time_area(const std::string& id, const std::set<map_location>& locs,
+void tod_manager::add_time_area(const std::string& id, const map_location::t_maploc_set& locs,
 		const config& time_cfg)
 {
 	areas_.push_back(area_time_of_day());
@@ -247,14 +264,13 @@ time_of_day tod_manager::get_time_of_day_with_areas_and_units(const map_location
 				illum_light = light + illum_effect.get_composite_value();
 				//max_value and min_value control the final result
 				//unless ToD + terrain effect is stronger
-				int max = std::max(light, illum.highest("max_value").first);
-				int min = std::min(light, illum.lowest("min_value").first);
+				int max = std::max(light, illum.highest(z_max_value).first);
+				int min = std::min(light, illum.lowest(z_min_value).first);
 				if(illum_light > max) {
 					illum_light = max;
 				} else if (illum_light < min) {
 					illum_light = min;
 				}
-
 			}
 		}
 	}

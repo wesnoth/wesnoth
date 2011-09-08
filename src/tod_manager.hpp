@@ -76,7 +76,7 @@ class tod_manager : public savegame::savegame_config
 		 * @param locs                Set of locations to be affected.
 		 * @param time_cfg            Config object containing [time] information.
 		 */
-		void add_time_area(const std::string& id, const std::set<map_location>& locs,
+	void add_time_area(const std::string& id, const map_location::t_maploc_set& locs,
 				const config& time_cfg);
 
 		/**
@@ -159,7 +159,7 @@ class tod_manager : public savegame::savegame_config
 			std::string xsrc, ysrc;
 			std::string id;
 			std::vector<time_of_day> times;
-			std::set<map_location> hexes;
+			map_location::t_maploc_set hexes;
 			int currentTime;
 		};
 

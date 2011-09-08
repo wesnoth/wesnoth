@@ -3035,7 +3035,7 @@ static int intf_get_locations(lua_State *L)
 {
 	vconfig filter = luaW_checkvconfig(L, 1);
 
-	std::set<map_location> res;
+	map_location::t_maploc_set res;
 	terrain_filter t_filter(filter, *resources::units);
 	t_filter.restrict_size(game_config::max_loop);
 	t_filter.get_locations(res, true);

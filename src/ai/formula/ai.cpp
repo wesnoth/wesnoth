@@ -573,7 +573,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "avoid")
 	{
-		std::set<map_location> av_locs;
+		map_location::t_maploc_set av_locs;
 		get_avoid().get_locations(av_locs);
 		return villages_from_set(av_locs);
 
