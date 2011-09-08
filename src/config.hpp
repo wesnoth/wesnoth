@@ -117,6 +117,9 @@ public:
 	//typedef std::map<t_token,child_list> child_map;
 	typedef boost::unordered_map<t_token,child_list> child_map;
 
+	typedef boost::unordered_map<config::t_token, config *> t_child_range_index;
+	typedef boost::unordered_map<config::t_token, config const *> t_const_child_range_index;
+
 	struct const_child_iterator;
 
 	struct child_iterator
@@ -298,6 +301,19 @@ public:
 	typedef std::pair<const_attribute_iterator,const_attribute_iterator> const_attr_itors;
 	child_itors child_range(const t_token& key);
 	const_child_itors child_range(const t_token& key) const;
+
+	/** Creates an index into the child range to allow for quick searches.
+		key is the key for the child range and name is the column to index.
+		i.e. if the list of save games is stored in a child called save with titles 
+		then to create a container indexed by titles do
+
+		child_range_index(z_save, z_title);
+		@Note the index is not stored in the config and is intended for 
+		repeated searches of large child ranges.
+	 */
+	t_child_range_index child_range_index(const t_token& key, config::t_token const & name);
+	t_const_child_range_index const_child_range_index(const t_token& key, config::t_token const & name) const;
+
 	unsigned child_count(const t_token &key) const;
 
 	child_itors child_range(const std::string& key);

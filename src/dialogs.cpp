@@ -578,14 +578,20 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 		return "";
 	}
 
+	config::t_child_range_index index = savegame::save_index::indexed_summaries();
+
 	std::vector<config*> summaries;
 	std::vector<savegame::save_info>::const_iterator i;
 	//FIXME: parent_to_child is not used yet
 	std::map<std::string,std::string> parent_to_child;
 	for(i = games.begin(); i != games.end(); ++i) {
-		config& cfg = savegame::save_index::save_summary(i->name);
-		parent_to_child[cfg["parent"]] = i->name;
-		summaries.push_back(&cfg);
+		config::t_token iname(i->name);
+		config::t_child_range_index::iterator xcfgi = index.find( iname);
+		if(xcfgi != index.end()){
+			config& cfg = *xcfgi->second;
+			parent_to_child[cfg["parent"]] = iname;
+			summaries.push_back(&cfg);
+		}
 	}
 
 	const events::event_context context;

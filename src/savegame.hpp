@@ -80,6 +80,8 @@ public:
 	static config& save_summary(std::string save);
 	/** Update the save_index file with changed savegame information. */
 	static void write_save_index();
+	/** Create an index to the save summaries. */
+	static config::t_child_range_index indexed_summaries();
 
 private:
 	/** Default-Constructor (don't instantiate this class) */

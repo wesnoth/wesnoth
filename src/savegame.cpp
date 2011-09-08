@@ -126,6 +126,13 @@ static lg::log_domain log_engine("engine");
 	}
 #endif /* _WIN32 */
 
+
+
+namespace {
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison, copying and hashing operations.
+	static const config::t_token z_save("save", false);
+}
 namespace savegame {
 
 const std::string save_info::format_time_local() const{
@@ -374,12 +381,16 @@ config& save_index::save_summary(std::string save)
 	}
 
 	config& cfg = load();
-	if (config &sv = cfg.find_child("save", "save", save))
+	if (config &sv = cfg.find_child(z_save, z_save, save))
 		return sv;
 
-	config &res = cfg.add_child("save");
-	res["save"] = save;
+	config &res = cfg.add_child(z_save);
+	res[z_save] = save;
 	return res;
+}
+
+config::t_child_range_index save_index::indexed_summaries(){
+	return load().child_range_index(z_save, z_save);
 }
 
 void save_index::write_save_index()

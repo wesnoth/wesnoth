@@ -422,8 +422,7 @@ void config::merge_children_by_attribute(const t_token& key, const t_token& attr
 void config::merge_children_by_attribute(const std::string& key, const std::string& attribute){
 	merge_children_by_attribute(t_token(key), t_token(attribute));}
 
-config::child_itors config::child_range(const t_token& key)
-{
+config::child_itors config::child_range(const t_token& key) {
 	check_valid();
 
 	child_map::iterator i = children.find(key);
@@ -437,8 +436,7 @@ config::child_itors config::child_range(const t_token& key)
 }
 config::child_itors config::child_range(const std::string& key){ return child_range( t_token(key) );}
 
-config::const_child_itors config::child_range(const t_token& key) const
-{
+config::const_child_itors config::child_range(const t_token& key) const {
 	check_valid();
 
 	child_map::const_iterator i = children.find(key);
@@ -452,8 +450,7 @@ config::const_child_itors config::child_range(const t_token& key) const
 }
 
 config::const_child_itors config::child_range(const std::string& key) const { return child_range(t_token(key));}  
-unsigned config::child_count(const t_token &key) const
-{
+unsigned config::child_count(const t_token &key) const {
 	check_valid();
 
 	child_map::const_iterator i = children.find(key);
@@ -462,6 +459,25 @@ unsigned config::child_count(const t_token &key) const
 	}
 	return 0;
 }
+
+config::t_child_range_index config::child_range_index(config::t_token const & key, config::t_token const & name) {
+	t_child_range_index index;
+
+	child_map::iterator irange = children.find(key);
+	if (irange != children.end()) {
+		foreach(config * c, irange->second) {
+			index.insert(std::make_pair((*c)[name].token(), c)); } }
+		return index; }
+
+config::t_const_child_range_index config::const_child_range_index(config::t_token const & key, config::t_token const & name) const {
+	t_const_child_range_index index;
+
+	child_map::const_iterator irange = children.find(key);
+	if (irange != children.end()) {
+		foreach(config const * c, irange->second){
+			index.insert(std::make_pair((*c)[name].token(), c)); } }
+		return index; }
+
 
 unsigned config::child_count(const std::string &key) const { return child_count(t_token(key)); }  
 config &config::child(const t_token& key, int n)
