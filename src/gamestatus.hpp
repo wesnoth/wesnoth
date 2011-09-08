@@ -69,7 +69,7 @@ public:
 struct wml_menu_item
 {
 	wml_menu_item(const std::string& id, const config* cfg=NULL);
-	std::string name;
+	config::t_token name;
 	std::string image;
 	t_string description;
 	bool needs_select;

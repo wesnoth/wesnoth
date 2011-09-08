@@ -55,6 +55,13 @@ static lg::log_domain log_random("random");
 #define ERR_RND LOG_STREAM(err, log_random)
 
 
+namespace{
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison, copying and hashing operations.
+	static const config::t_token z_sighted("sighted", false);
+}
+
+
 //functions to verify that the unit structure on both machines is identical
 
 static void verify(const unit_map& units, const config& cfg) {
@@ -1026,7 +1033,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			bool show_move = preferences::show_ai_moves() || !(current_team.is_ai() || current_team.is_network_ai());
 			::move_unit(NULL, steps, NULL, NULL, show_move, NULL, true, true, true);
 
-			//NOTE: The AI fire sighetd event whem moving in the FoV of team 1
+			//NOTE: The AI fire sighted event whem moving in the FoV of team 1
 			// (supposed to be the human player in SP)
 			// That's ugly but let's try to make the replay works like that too
 			if (side_num != 1 && resources::teams->front().fog_or_shroud() && !resources::teams->front().fogged(dst)
@@ -1034,7 +1041,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			{
 				// the second parameter is impossible to know
 				// and the AI doesn't use it too in the local version
-				game_events::fire("sighted",dst);
+				game_events::fire(z_sighted,dst);
 			}
 		}
 
@@ -1123,7 +1130,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			foreach (const config &v, child.child_range("set_variable")) {
 				resources::state_of_game->set_variable(v["name"], v["value"]);
 			}
-			const std::string &event = child["raise"];
+			const config::t_token &event = child["raise"];
 			if (const config &source = child.child("source")) {
 				game_events::fire(event, map_location(source, resources::state_of_game));
 			} else {

@@ -247,6 +247,14 @@ locator::locator(const std::string &filename, const map_location &loc,
 	init_index();
 }
 
+locator::locator(const config::t_token &filename, const config::t_token& modifications, const map_location &loc,
+		int center_x, int center_y) :
+	index_(-1),
+	val_(filename, loc, center_x, center_y, modifications)
+{
+	init_index();
+}
+
 locator& locator::operator=(const locator &a)
 {
 	index_ = a.index_;
@@ -291,6 +299,11 @@ locator::value::value(const std::string& filename, const std::string& modificati
 
 locator::value::value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications) :
   type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications), center_x_(center_x), center_y_(center_y)
+{
+}
+
+locator::value::value(const config::t_token& filename, const config::t_token& modifications, const map_location& loc, int center_x, int center_y) :
+	type_(SUB_FILE), filename_(static_cast<std::string const &>(filename)), loc_(loc), modifications_(static_cast<std::string const &>(modifications)), center_x_(center_x), center_y_(center_y)
 {
 }
 

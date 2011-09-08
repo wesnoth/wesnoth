@@ -55,89 +55,90 @@ static lg::log_domain log_ai_testing("ai/testing");
 namespace{
 	//Static tokens are replacements for string literals in code
 	//They allow for fast comparison operations.
-static const config::t_token z_id("id");
-static const config::t_token z_x("x");
-static const config::t_token z_y("y");
-static const config::t_token z_placement("placement");
-static const config::t_token z_map("map");
-static const config::t_token z_recall("recall");
-static const config::t_token z_leader_passable("leader_passable");
-static const config::t_token z_side("side");
-static const config::t_token z_player_id("player_id");
-static const config::t_token z_faction_from_recruit("faction_from_recruit");
-static const config::t_token z_animate("animate");
-static const config::t_token z_prerecall("prerecall");
-static const config::t_token z_prerecruit("prerecruit");
-static const config::t_token z_recruit("recruit");
-static const config::t_token z_checksum("checksum");
-static const config::t_token z_map_passable("map_passable");
-static const config::t_token z_leader("leader");
-static const config::t_token z_leadership("leadership");
-static const config::t_token z_value("value");
-static const config::t_token z_not_living("not_living");
-static const config::t_token z_slow("slow");
-static const config::t_token z_drains("drains");
-static const config::t_token z_petrifies("petrifies");
-static const config::t_token z_poison("poison");
-static const config::t_token z_berserk("berserk");
-static const config::t_token z_firststrike("firststrike");
-static const config::t_token z_plague("plague");
-static const config::t_token z_null("null");
-static const config::t_token z_empty("");
-static const config::t_token z_type("type");
-static const config::t_token z_chance_to_hit("chance_to_hit");
-static const config::t_token z_damage("damage");
-static const config::t_token z_swarm("swarm");
-static const config::t_token z_swarm_attacks_min("swarm_attacks_min");
-static const config::t_token z_swarm_attacks_max("swarm_attacks_max");
-static const config::t_token z_attacks("attacks");
-static const config::t_token z_first("first");
-static const config::t_token z_second("second");
-static const config::t_token z_name("name");
-static const config::t_token z_none("none");
-static const config::t_token z_female("female");
-static const config::t_token z_attack_end("attack_end");
-static const config::t_token z_damage_inflicted("damage_inflicted");
-static const config::t_token z_chance("chance");
-static const config::t_token z_hits("hits");
-static const config::t_token z_successful("successful");
-static const config::t_token z_unsuccessful("unsucessful");
-static const config::t_token z_poisoned("poisoned");
-static const config::t_token z_slowed("slowed");
-static const config::t_token z_petrified("petrified");
-static const config::t_token z_female_poisoned("female^poisoned");
-static const config::t_token z_female_slowed("female^slowed");
-static const config::t_token z_female_petrified("female^petrified");
-static const config::t_token z_dies("dies");
-static const config::t_token z_die("die");
-static const config::t_token z_unit_hit("unit_hit");
-static const config::t_token z_defender("defender");
-static const config::t_token z_attacker("attacker");
-static const config::t_token z_perished("perished");
-static const config::t_token z_survived("survived");
-static const config::t_token z_attacker_hits("attacker_hits");
-static const config::t_token z_attacker_misses("attacker_misses");
-static const config::t_token z_defender_hits("defender_hits");
-static const config::t_token z_defender_misses("defender_misses");
-static const config::t_token z_effect("effect");
-static const config::t_token z_apply_to("apply_to");
-static const config::t_token z_unhealable("unhealable");
-static const config::t_token z_heals("heals");
-static const config::t_token z_cured("cured");
-static const config::t_token z_regenerate("regnerate");
-static const config::t_token z_advance("advance");
-static const config::t_token z_post_advance("post_advance");
-static const config::t_token z_hides("hides");
-static const config::t_token z_alert("alert");
-static const config::t_token z_sighted("sighted");
-static const config::t_token z_moveto("moveto");
-static const config::t_token z_friends("friends");
-static const config::t_token z_enemies("enemies");
-static const config::t_token z_friendphrase("friendphrase");
-static const config::t_token z_enemyphrase("enemyphrase");
-static const config::t_token z_hotkey("hotkey");
-static const config::t_token z_variation("variation");
-static const config::t_token z_attack("attack");
+static const config::t_token z_id("id", false);
+static const config::t_token z_x("x", false);
+static const config::t_token z_y("y", false);
+static const config::t_token z_placement("placement", false);
+static const config::t_token z_map("map", false);
+static const config::t_token z_recall("recall", false);
+static const config::t_token z_leader_passable("leader_passable", false);
+static const config::t_token z_side("side", false);
+static const config::t_token z_player_id("player_id", false);
+static const config::t_token z_faction_from_recruit("faction_from_recruit", false);
+static const config::t_token z_animate("animate", false);
+static const config::t_token z_prerecall("prerecall", false);
+static const config::t_token z_prerecruit("prerecruit", false);
+static const config::t_token z_recruit("recruit", false);
+static const config::t_token z_checksum("checksum", false);
+static const config::t_token z_map_passable("map_passable", false);
+static const config::t_token z_leader("leader", false);
+static const config::t_token z_leadership("leadership", false);
+static const config::t_token z_value("value", false);
+static const config::t_token z_not_living("not_living", false);
+static const config::t_token z_slow("slow", false);
+static const config::t_token z_drains("drains", false);
+static const config::t_token z_petrifies("petrifies", false);
+static const config::t_token z_poison("poison", false);
+static const config::t_token z_berserk("berserk", false);
+static const config::t_token z_firststrike("firststrike", false);
+static const config::t_token z_plague("plague", false);
+static const config::t_token z_null("null", false);
+//static const config::t_token z_empty("", false);
+static const config::t_token z_type("type", false);
+static const config::t_token z_chance_to_hit("chance_to_hit", false);
+static const config::t_token z_damage("damage", false);
+static const config::t_token z_swarm("swarm", false);
+static const config::t_token z_swarm_attacks_min("swarm_attacks_min", false);
+static const config::t_token z_swarm_attacks_max("swarm_attacks_max", false);
+static const config::t_token z_attacks("attacks", false);
+static const config::t_token z_first("first", false);
+static const config::t_token z_second("second", false);
+static const config::t_token z_name("name", false);
+static const config::t_token z_none("none", false);
+static const config::t_token z_female("female", false);
+static const config::t_token z_attack_end("attack_end", false);
+static const config::t_token z_damage_inflicted("damage_inflicted", false);
+static const config::t_token z_chance("chance", false);
+static const config::t_token z_hits("hits", false);
+static const config::t_token z_successful("successful", false);
+static const config::t_token z_unsuccessful("unsucessful", false);
+static const config::t_token z_poisoned("poisoned", false);
+static const config::t_token z_slowed("slowed", false);
+static const config::t_token z_petrified("petrified", false);
+static const config::t_token z_female_poisoned("female^poisoned", false);
+static const config::t_token z_female_slowed("female^slowed", false);
+static const config::t_token z_female_petrified("female^petrified", false);
+static const config::t_token z_dies("dies", false);
+static const config::t_token z_die("die", false);
+static const config::t_token z_last_breath("last breath", false);
+static const config::t_token z_unit_hit("unit_hit", false);
+static const config::t_token z_defender("defender", false);
+static const config::t_token z_attacker("attacker", false);
+static const config::t_token z_perished("perished", false);
+static const config::t_token z_survived("survived", false);
+static const config::t_token z_attacker_hits("attacker_hits", false);
+static const config::t_token z_attacker_misses("attacker_misses", false);
+static const config::t_token z_defender_hits("defender_hits", false);
+static const config::t_token z_defender_misses("defender_misses", false);
+static const config::t_token z_effect("effect", false);
+static const config::t_token z_apply_to("apply_to", false);
+static const config::t_token z_unhealable("unhealable", false);
+static const config::t_token z_heals("heals", false);
+static const config::t_token z_cured("cured", false);
+static const config::t_token z_regenerate("regnerate", false);
+static const config::t_token z_advance("advance", false);
+static const config::t_token z_post_advance("post_advance", false);
+static const config::t_token z_hides("hides", false);
+static const config::t_token z_alert("alert", false);
+static const config::t_token z_sighted("sighted", false);
+static const config::t_token z_moveto("moveto", false);
+static const config::t_token z_friends("friends", false);
+static const config::t_token z_enemies("enemies", false);
+static const config::t_token z_friendphrase("friendphrase", false);
+static const config::t_token z_enemyphrase("enemyphrase", false);
+static const config::t_token z_hotkey("hotkey", false);
+static const config::t_token z_variation("variation", false);
+static const config::t_token z_attack("attack", false);
 
 }
 struct castle_cost_calculator : pathfind::cost_calculator
@@ -1256,7 +1257,7 @@ class attack
 	~attack();
 
 	class attack_end_exception {};
-	void fire_event(const std::string& n);
+	void fire_event(const config::t_token& n);
 	void refresh_bc();
 
 	/** Structure holding unit info used in the attack action. */
@@ -1295,7 +1296,7 @@ class attack
 	bool OOS_error_;
 };
 
-void attack::fire_event(const std::string& n)
+void attack::fire_event(const config::t_token& n)
 {
 	LOG_NG << "firing " << n << " event\n";
 	//prepare the event data for weapon filtering
@@ -1346,14 +1347,14 @@ namespace {
 			weap_index = -1;
 			return;
 		}
-		if(weap_index >= 0 && weap_index < static_cast<int>(attacks.size()) && attacks[weap_index].id() == weap_id) {
+		if(weap_index >= 0 && weap_index < static_cast<int>(attacks.size()) && attacks[weap_index].id() == config::t_token(weap_id)) {
 			//the currently selected attack fits
 			return;
 		}
 		if(!weap_id.empty()) {
 			//lookup the weapon by id
 			for(int i=0; i<static_cast<int>(attacks.size()); ++i) {
-				if(attacks[i].id() == weap_id) {
+				if(attacks[i].id() == config::t_token(weap_id)) {
 					weap_index = i;
 					return;
 				}
@@ -1661,7 +1662,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 		dat.add_child(z_first,  d_weapon_cfg);
 		dat.add_child(z_second, a_weapon_cfg);
 
-		game_events::fire("last breath", death_loc, attacker_loc, dat);
+		game_events::fire(z_last_breath, death_loc, attacker_loc, dat);
 		refresh_bc();
 
 		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
@@ -2220,7 +2221,7 @@ void advance_unit(map_location loc, const std::string &advance_to, const bool &f
 		return;
 	}
 	// original_type is not a reference, since the unit may disappear at any moment.
-	std::string original_type = u->type_id();
+	config::t_token const &original_type = u->type_id();
 
 	if(fire_event)
 	{
@@ -2501,7 +2502,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	std::vector<map_location>::const_iterator step;
 	std::string ambushed_string;
 
-	static const config::t_token z_skirmisher("skirmisher");
+	static const config::t_token z_skirmisher("skirmisher", false);
 	for(step = route.begin()+1; step != route.end(); ++step) {
 		const bool skirmisher = ui->get_ability_bool(z_skirmisher,*step);
 		const t_translation::t_terrain terrain = map[*step];
@@ -2717,7 +2718,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	if (teams[ui->side() - 1].uses_shroud() || teams[ui->side() - 1].uses_fog())
 	{
 		std::set<map_location>::iterator sight_it;
-		const std::string sighted_str(z_sighted);
+		const config::t_token  & sighted_str(z_sighted);
 		// Fire sighted event here
 		for (sight_it = seen_units.begin();
 				sight_it != seen_units.end(); ++sight_it)

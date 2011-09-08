@@ -144,7 +144,7 @@ namespace{
 	static const config::t_token z_strict_amla("strict_amla", false);
 	static const config::t_token z_require_amla("require_amla", false);
 	static const config::t_token z_times("times", false);
-	static const config::t_token z_empty("", false);
+	//	static const config::t_token z_empty("", false);
 	static const config::t_token z_modifications("modifications", false);
 	static const config::t_token z_level("level", false);
 	static const config::t_token z_attack("attack", false);
@@ -514,7 +514,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		cfg_[z_halo] = *v;
 	}
 	if (const config::attribute_value *v = cfg.get(z_profile)) {
-		std::string big = *v, small = cfg[z_small_profile];
+		config::t_token big = *v, small = cfg[z_small_profile];
 		adjust_profile(small, big, z_empty);
 		cfg_[z_profile] = big;
 		cfg_[z_small_profile] = small;
@@ -994,13 +994,13 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 
 	// If unit has specific profile, remember it and keep it after advancing
 	const unit_type *u_type = type();
-	std::string profile = old_cfg[z_profile].str();
+	config::t_token profile = old_cfg[z_profile].token();
 	if (!profile.empty() && (!u_type || profile != u_type->big_profile())) {
 		new_cfg[z_profile] = profile;
 	} else if (t) {
 		new_cfg[z_profile] = t->big_profile();
 	}
-	profile = old_cfg[z_small_profile].str();
+	profile = old_cfg[z_small_profile].token();
 	if (!profile.empty() && (!u_type || profile != u_type->small_profile())) {
 		new_cfg[z_small_profile] = profile;
 	} else if (t) {
@@ -1079,18 +1079,18 @@ const unit_type* unit::type() const
 	return &i.get_gender_unit_type(gender_).get_variation(variation_);
 }
 
-std::string unit::big_profile() const
+config::t_token const & unit::big_profile() const
 {
-	const std::string &prof = cfg_[z_profile];
+	const config::t_token &prof = cfg_[z_profile];
 	if (!prof.empty() && prof != z_unit_image) {
 		return prof;
 	}
 	return absolute_image();
 }
 
-std::string unit::small_profile() const
+config::t_token const & unit::small_profile() const
 {
-	const std::string &prof = cfg_[z_small_profile];
+	const config::t_token &prof = cfg_[z_small_profile];
 	if (!prof.empty() && prof != z_unit_image) {
 		return prof;
 	}
@@ -1234,7 +1234,7 @@ void unit::new_scenario()
 			const std::string& duration = mod[z_duration];
 			if (!duration.empty() && duration != z_forever) {
 				if (const config::attribute_value *v = mod.get(z_prev_type)) {
-					type_ = v->str();
+					type_ = v->token();
 				}
 				modifications_.remove_child(mod_name, j);
 				rebuild_from_type = true;
@@ -1540,7 +1540,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 
 	config::attribute_value cfg_has_weapon = cfg[z_has_weapon];
 	if (!cfg_has_weapon.empty()) {
-		std::string weapon = cfg_has_weapon;
+		config::t_token const & weapon = cfg_has_weapon;
 		bool has_weapon = false;
 		const std::vector<attack_type>& attacks = this->attacks();
 		for(std::vector<attack_type>::const_iterator i = attacks.begin();
@@ -1872,7 +1872,7 @@ const surface unit::still_image(bool scaled) const
 #else
 	std::string mods=image_mods();
 	if(!mods.empty()){
-		image_loc = image::locator(absolute_image(),mods);
+		image_loc = image::locator(absolute_image(), config::t_token(mods));
 	} else {
 		image_loc = image::locator(absolute_image());
 	}
@@ -2015,7 +2015,7 @@ void unit::redraw_unit()
 	// and halo_mod on secondary images and all haloes
 	params.image_mod = image_mods();
 	params.halo_mod = TC_image_mods();
-	params.image= absolute_image();
+	params.image= static_cast<std::string const &>(absolute_image());
 
 
 	if(get_state(STATE_PETRIFIED)) params.image_mod +="~GS()";
@@ -2502,7 +2502,8 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 					last_effect = effect;
 				} else if(apply_to == z_profile) {
 					if (const config::attribute_value *v = effect.get(z_portrait)) {
-						std::string big = *v, small = effect[z_small_portrait];
+						config::t_token big = *v;
+						config::t_token small = effect[z_small_portrait];
 						adjust_profile(small, big, z_empty);
 						cfg_[z_profile] = big;
 						cfg_[z_small_profile] = small;

@@ -39,6 +39,12 @@ static lg::log_domain log_engine_enemies("engine/enemies");
 #define WRN_NGE LOG_STREAM(warn, log_engine_enemies)
 
 
+namespace{
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison, copying and hashing operations.
+	static const config::t_token z_capture("capture", false);
+}
+
 static std::vector<team> *&teams = resources::teams;
 
 //static member initialization
@@ -355,7 +361,7 @@ void team::write(config& cfg) const
 bool team::get_village(const map_location& loc)
 {
 	villages_.insert(loc);
-	return game_events::fire("capture",loc);
+	return game_events::fire(z_capture,loc);
 }
 
 void team::lose_village(const map_location& loc)

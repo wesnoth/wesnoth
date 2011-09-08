@@ -272,7 +272,9 @@ void play_controller::init(CVideo& video){
 	init_managers();
 	// add era events for MP game
 	if (const config &era_cfg = level_.child("era")) {
-		game_events::add_events(era_cfg.child_range("event"), "era_events");
+		static const config::t_token z_era_events("era_events", false);
+
+		game_events::add_events(era_cfg.child_range("event"), z_era_events);
 	}
 
 	loadscreen::global_loadscreen->start_stage("start game");
@@ -507,14 +509,16 @@ void play_controller::fire_prestart(bool execute)
 	// Run initialization scripts, even if loading from a snapshot.
 	resources::state_of_game->set_phase(game_state::PRELOAD);
 	resources::lua_kernel->initialize();
-	game_events::fire("preload");
+	static const config::t_token z_preload("preload", false);
+	game_events::fire(z_preload);
 
 	// pre-start events must be executed before any GUI operation,
 	// as those may cause the display to be refreshed.
 	if (execute){
 		update_locker lock_display(gui_->video());
 		resources::state_of_game->set_phase(game_state::PRESTART);
-		game_events::fire("prestart");
+		static const config::t_token z_prestart("prestart", false);
+		game_events::fire(z_prestart);
 		check_end_level();
 		// prestart event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
@@ -524,7 +528,8 @@ void play_controller::fire_prestart(bool execute)
 void play_controller::fire_start(bool execute){
 	if(execute) {
 		resources::state_of_game->set_phase(game_state::START);
-		game_events::fire("start");
+		static const config::t_token z_start("start", false);
+		game_events::fire(z_start);
 		check_end_level();
 		// start event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
@@ -586,15 +591,17 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 	if (!loading_game_) {
 		if(it_is_a_new_turn_)
 		{
-			game_events::fire("turn " + turn_num);
-			game_events::fire("new turn");
+			static const config::t_token z_new_turn("new turn", false);
+			game_events::fire(config::t_token("turn " + turn_num));
+			game_events::fire(z_new_turn);
 			it_is_a_new_turn_ = false;
 		}
 
-		game_events::fire("side turn");
-		game_events::fire("side " + side_num + " turn");
-		game_events::fire("side turn " + turn_num);
-		game_events::fire("side " + side_num + " turn " + turn_num);
+		static const config::t_token z_side_turn("side turn", false);
+		game_events::fire(z_side_turn);
+		game_events::fire(config::t_token("side " + side_num + " turn"));
+		game_events::fire(config::t_token("side turn " + turn_num));
+		game_events::fire(config::t_token("side " + side_num + " turn " + turn_num));
 	}
 
 	if(current_team.is_human() && !is_replay) {
@@ -629,10 +636,12 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 	}
 
 	if (!loading_game_) {
-		game_events::fire("turn refresh");
-		game_events::fire("side " + side_num + " turn refresh");
-		game_events::fire("turn " + turn_num + " refresh");
-		game_events::fire("side " + side_num + " turn " + turn_num + " refresh");
+		static const config::t_token z_turn_refresh("turn refresh", false);
+
+		game_events::fire(z_turn_refresh);
+		game_events::fire(config::t_token( "side " + side_num + " turn refresh" ));
+		game_events::fire(config::t_token( "turn " + turn_num + " refresh"));
+		game_events::fire(config::t_token( "side " + side_num + " turn " + turn_num + " refresh"));
 	}
 
 	const time_of_day &tod = tod_manager_.get_time_of_day();
@@ -713,10 +722,11 @@ void play_controller::finish_side_turn(){
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
-	game_events::fire("side turn end");
-	game_events::fire("side "+ side_num + " turn end");
-	game_events::fire("side turn " + turn_num + " end");
-	game_events::fire("side " + side_num + " turn " + turn_num + " end");
+	static const config::t_token z_side_turn_end("side turn end", false);
+	game_events::fire(z_side_turn_end);
+	game_events::fire(config::t_token( "side "+ side_num + " turn end"));
+	game_events::fire(config::t_token( "side turn " + turn_num + " end"));
+	game_events::fire(config::t_token( "side " + side_num + " turn " + turn_num + " end"));
 
 	// This implements "delayed map sharing."
 	// It is meant as an alternative to shared vision.
@@ -734,8 +744,9 @@ void play_controller::finish_turn()
 {
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
-	game_events::fire("turn end");
-	game_events::fire("turn " + turn_num + " end");
+	static const config::t_token z_turn_end("turn end", false);
+	game_events::fire(z_turn_end);
+	game_events::fire(config::t_token( "turn " + turn_num + " end"));
 }
 
 bool play_controller::enemies_visible() const
@@ -1313,7 +1324,8 @@ void play_controller::check_victory()
 	}
 
 	if (found_player) {
-		game_events::fire("enemies defeated");
+		static const config::t_token z_enemies_defeated("enemies defeated", false);
+		game_events::fire(z_enemies_defeated);
 		check_end_level();
 	}
 

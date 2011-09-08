@@ -214,7 +214,7 @@ class fake_team
       {
          int counter = 0;
          foreach(unit &un, *resources::units){
-            if(un.side() == side() && un.type_id() == name) // @todo: is type_id good?
+			 if(un.side() == side() && un.type_id() == config::t_token(name)) // @todo: is type_id good? and upgrade std:string to t_token
             {
                counter++;
             }

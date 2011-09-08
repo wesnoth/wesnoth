@@ -734,7 +734,8 @@ void manager::play_turn( side_number side ){
 	/*hack. @todo 1.9 rework via extended event system*/
 	get_ai_info().recent_attacks.clear();
 	interface& ai_obj = get_active_ai_for_side(side);
-	game_events::fire("ai turn");
+	static const config::t_token z_ai_turn("ai turn", false);
+	game_events::fire(z_ai_turn);
 	raise_turn_started();
 	ai_obj.new_turn();
 	ai_obj.play_turn();

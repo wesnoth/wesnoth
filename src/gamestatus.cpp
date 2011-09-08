@@ -60,6 +60,8 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 #define DBG_NG_TC LOG_STREAM(debug, log_engine_tc)
 
 namespace{
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison, copying and hashing operations.
 	static const config::t_token z_NORMAL("NORMAL", false);
 	static const config::t_token z_label("label", false);
 	static const config::t_token z_parent("parent", false);
@@ -170,7 +172,6 @@ namespace{
 	static const config::t_token z_scroll_to_leader("scroll_to_leader", false);
 	static const config::t_token z_color_lock("color_lock", false);
 	static const config::t_token z_faction("faction", false);
-	static const config::t_token z_empty("", false);
 }
 
 game_classification::game_classification():
@@ -1153,7 +1154,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 	if(!id.empty()) {
 		temp << ' ' << id;
 	}
-	name = temp.str();
+	name = config::t_token(temp.str());
 	if(cfg != NULL) {
 		image = (*cfg)[z_image].str();
 		description = (*cfg)[z_description].t_str();

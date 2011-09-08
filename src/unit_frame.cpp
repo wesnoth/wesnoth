@@ -195,8 +195,8 @@ frame_builder::frame_builder() :
 
 frame_builder::frame_builder(const config& cfg,const std::string& frame_string) :
 	duration_(1),
-	image_(cfg[frame_string + "image"]),
-	image_diagonal_(cfg[frame_string + "image_diagonal"]),
+	image_(cfg[frame_string + "image"].token()),
+	image_diagonal_(cfg[frame_string + "image_diagonal"].token()),
 	image_mod_(cfg[frame_string + "image_mod"]),
 	halo_(cfg[frame_string + "halo"]),
 	halo_x_(cfg[frame_string + "halo_x"]),

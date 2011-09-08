@@ -79,7 +79,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 static std::vector<config> preload_scripts;
 static config preload_config;
 namespace {
-static const config::t_token z_this_unit("this_unit");
+static const config::t_token z_this_unit("this_unit", false);
 }
 
 void extract_preload_scripts(config const &game_config)
@@ -115,7 +115,7 @@ struct queued_event_context
 
 game_events::queued_event const *queued_event_context::current_qe = 0;
 game_events::queued_event queued_event_context::default_qe
-	("_from_lua", map_location(), map_location(), config());
+(config::t_token("_from_lua"), map_location(), map_location(), config());
 
 /* Dummy pointer for getting unique keys for Lua's registry. */
 static char const dlgclbkKey = 0;
@@ -1328,7 +1328,7 @@ static int intf_fire_event(lua_State *L)
 		data.add_child("second", luaW_checkconfig(L, pos));
 	}
 
-	bool b = game_events::fire(m, l1, l2, data);
+	bool b = game_events::fire(config::t_token(m), l1, l2, data);
 	lua_pushboolean(L, b);
 	return 1;
 }

@@ -69,7 +69,8 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
 namespace{
-	static const config::t_token z_advance("advance");
+	static const config::t_token z_advance("advance", false);
+	static const config::t_token z_post_advance("post_advance", false);
 }
 namespace dialogs
 {
@@ -90,7 +91,7 @@ int advance_unit_dialog(const map_location &loc)
 #ifdef LOW_MEM
 		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + type.type_name());
 #else
-		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->image_mods() + COLUMN_SEPARATOR + type.type_name());
+		lang_options.push_back(IMAGE_PREFIX + static_cast<std::string const &>(type.absolute_image()) + u->image_mods() + COLUMN_SEPARATOR + type.type_name());
 #endif
 		preferences::encountered_units().insert(*op);
 	}
@@ -108,7 +109,7 @@ int advance_unit_dialog(const map_location &loc)
 #ifdef LOW_MEM
 			lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + mod["description"].str());
 #else
-			lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->image_mods() + COLUMN_SEPARATOR + mod["description"].str());
+			lang_options.push_back(IMAGE_PREFIX + static_cast<std::string const &>(type.absolute_image()) + u->image_mods() + COLUMN_SEPARATOR + mod["description"].str());
 #endif
 		}
 	}
@@ -223,7 +224,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 		if(fire_event)
 		{
 			LOG_NG << "firing advance event (AMLA)\n";
-			game_events::fire("advance",loc);
+			game_events::fire(z_advance ,loc);
 		}
 
 		amla_unit.set_experience(amla_unit.experience() - amla_unit.max_experience());
@@ -233,7 +234,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 		if(fire_event)
 		{
 			LOG_NG << "firing post_advance event (AMLA)\n";
-			game_events::fire("post_advance",loc);
+			game_events::fire(z_post_advance, loc);
 		}
 
 	}
@@ -846,7 +847,7 @@ void unit_preview_pane::draw_contents()
 			text << font::weapon_details
 				<< "  " << string_table["range_" + at_it->range()]
 				<< font::weapon_details_sep
-				<< string_table["type_" + at_it->type()] << "\n";
+				 << string_table["type_" + static_cast<std::string const &>(at_it->type() )] << "\n";
 
 			std::string accuracy_parry = at_it->accuracy_parry_description();
 			if(accuracy_parry.empty() == false) {

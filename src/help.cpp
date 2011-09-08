@@ -1132,7 +1132,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 				if (!type.hide_help()) {
 					//add a link in the list of units having this special
 					std::string type_name = type.type_name();
-					std::string ref_id = unit_prefix + type.id();
+					std::string ref_id = unit_prefix + static_cast<std::string const &>( type.id() );
 					//we put the translated name at the beginning of the hyperlink,
 					//so the automatic alphabetic sorting of std::set can use it
 					std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
@@ -1208,7 +1208,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 					if (!type.hide_help()) {
 						//add a link in the list of units having this ability
 						std::string type_name = type.type_name();
-						std::string ref_id = unit_prefix +  type.id();
+						std::string ref_id = unit_prefix + static_cast<std::string const &>(  type.id() );
 						//we put the translated name at the beginning of the hyperlink,
 						//so the automatic alphabetic sorting of std::set can use it
 						std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
@@ -1383,7 +1383,7 @@ public:
 				std::string lang_unit = type->type_name();
 				std::string ref_id;
 				if (description_type(*type) == FULL_DESCRIPTION) {
-					ref_id = unit_prefix + type->id();
+					ref_id = unit_prefix + static_cast<std::string const &>( type->id() );
 				} else {
 					ref_id = unknown_unit_topic;
 					lang_unit += " (?)";
@@ -1480,7 +1480,7 @@ public:
 				 attack_end = attacks.end();
 				 attack_it != attack_end; ++attack_it) {
 				std::string lang_weapon = attack_it->name();
-				std::string lang_type = string_table["type_" + attack_it->type()];
+				std::string lang_type = string_table["type_" + static_cast<std::string const &>( attack_it->type() )];
 				std::vector<item> row;
 				std::stringstream attack_ss;
 				attack_ss << "<img>src='" << (*attack_it).icon() << "'</img>";
@@ -1662,7 +1662,7 @@ std::string make_unit_link(const std::string& type_id)
 		std::string name = type->type_name();
 		std::string ref_id;
 		if (description_type(*type) == FULL_DESCRIPTION) {
-			ref_id = unit_prefix + type->id();
+			ref_id = unit_prefix + static_cast<std::string const &>( type->id() );
 		} else {
 			ref_id = unknown_unit_topic;
 			name += " (?)";
@@ -1747,7 +1747,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 			continue;
 
 		const std::string type_name = type.type_name();
-		const std::string ref_id = hidden_symbol(type.hide_help()) + unit_prefix +  type.id();
+		const std::string ref_id = hidden_symbol(type.hide_help()) + unit_prefix +  static_cast<std::string const &>( type.id() );
 		topic unit_topic(type_name, ref_id, "");
 		unit_topic.text = new unit_topic_generator(type);
 		topics.push_back(unit_topic);

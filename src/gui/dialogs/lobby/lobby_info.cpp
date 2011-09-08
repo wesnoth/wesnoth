@@ -43,7 +43,7 @@ static lg::log_domain log_lobby("lobby");
 
 
 namespace{
-	static const config::t_token z_diff_track_attribute_("diff_track_attribute_");
+	static const config::t_token z_diff_track_attribute_("diff_track_attribute_", false);
 }
 lobby_info::lobby_info(const config& game_config)
 	: game_config_(game_config)

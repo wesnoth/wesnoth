@@ -359,7 +359,7 @@ int unit_animation::matches(const game_display &disp,const map_location& loc,con
 
 void unit_animation::fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg)
 {
-	const image::locator default_image = image::locator(cfg["image"]);
+	const image::locator default_image = image::locator(cfg["image"].token());
 	std::vector<unit_animation>  animation_base;
 	std::vector<unit_animation>::const_iterator itor;
 	add_anims(animations,cfg);

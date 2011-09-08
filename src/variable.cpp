@@ -74,15 +74,15 @@ t_config_hashes config_hashes;
 
 
 //Static tokens instantiated a single time as replacements for string literals
-static const config::t_token z_insert_tag("insert_tag");
-static const config::t_token z_name("name");
-static const config::t_token z_variable("variable");
-static const config::t_token z_x("x");
-static const config::t_token z_y("y");
-static const config::t_token z_recall("recall");
-static const config::t_token z_length("length");
-static const config::t_token z___array("__array");
-static const config::t_token z___value("__value");
+static const config::t_token z_insert_tag("insert_tag", false);
+static const config::t_token z_name("name", false);
+static const config::t_token z_variable("variable", false);
+static const config::t_token z_x("x", false);
+static const config::t_token z_y("y", false);
+static const config::t_token z_recall("recall", false);
+static const config::t_token z_length("length", false);
+static const config::t_token z___array("__array", false);
+static const config::t_token z___value("__value", false);
 
 
 config empty_config;
@@ -577,9 +577,9 @@ void scoped_recall_unit::activate()
 
 
 namespace {
-static const config::t_token z_dot(".");
-static const config::t_token z_lbracket("[");
-static const config::t_token z_rbracket("]");
+static const config::t_token z_dot(".", false);
+static const config::t_token z_lbracket("[", false);
+static const config::t_token z_rbracket("]", false);
 
 
 typedef config::t_token t_token;

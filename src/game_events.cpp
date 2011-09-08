@@ -79,194 +79,202 @@ static lg::log_domain log_wml("wml");
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-namespace{
-static const config::t_token z_id("id");
-static const config::t_token z_this_unit("this_unit");
-static const config::t_token z_variable("variable");
-static const config::t_token z_time_of_day("time_of_day");
-static const config::t_token z_x("x");
-static const config::t_token z_y("y");
-static const config::t_token z_x1("x1");
-static const config::t_token z_x2("x2");
-static const config::t_token z_y1("y1");
-static const config::t_token z_y2("y2");
-static const config::t_token z_have_unit("have_unit");
-static const config::t_token z_count("count");
-static const config::t_token z_search_recall_list("search_recall_list");
-static const config::t_token z_have_location("have_location");
-static const config::t_token z_name("name");
-static const config::t_token z_equals("equals");
-static const config::t_token z_not_equals("not_equals");
-static const config::t_token z_numerical_equals("numerical_equals");
-static const config::t_token z_numerical_not_equals("numerical_not_equals");
-static const config::t_token z_boolean_equals("boolean_equals");
-static const config::t_token z_boolean_not_equals("boolean_not_equals");
-static const config::t_token z_less_than("less_than");
-static const config::t_token z_greater_than("greater_than");
-static const config::t_token z_greater_than_equal_to("greater_than_equal_to");
-static const config::t_token z_less_than_equal_to("less_than_equal_to");
-static const config::t_token z_and("and");
-static const config::t_token z_or("or");
-static const config::t_token z_not("not");
-static const config::t_token z_contains("contains");
-static const config::t_token z_backwards_compat("backwards_compat");
-static const config::t_token z_logger("logger");
-static const config::t_token z_message("message");
-static const config::t_token z_side("side");
-static const config::t_token z_filter_side("filter_side");
-static const config::t_token z_remove("remove");
-static const config::t_token z_source("source");
-static const config::t_token z_target("target");
-static const config::t_token z_bidirectional("bidirectional");
-static const config::t_token z_check_passability("check_passability");
-static const config::t_token z_clear_shroud("clear_shroud");
-static const config::t_token z_animate("animate");
-static const config::t_token z_type("type");
-static const config::t_token z_filter("filter");
-static const config::t_token z_music("music");
-static const config::t_token z_sound("sound");
-static const config::t_token z_red("red");
-static const config::t_token z_green("green");
-static const config::t_token z_blue("blue");
-static const config::t_token z_turn("turn");
-static const config::t_token z_team_name("team_name");
-static const config::t_token z_user_team_name("user_team_name");
-static const config::t_token z_controller("controller");
-static const config::t_token z_recruit("recruit");
-static const config::t_token z_shroud_data("shroud_data");
-static const config::t_token z_ai("ai");
-static const config::t_token z_switch_ai("switch_ai");
-static const config::t_token z_income("income");
-static const config::t_token z_gold("gold");
-static const config::t_token z_shroud("shroud");
-static const config::t_token z_hidden("hidden");
-static const config::t_token z_fog("fog");
-static const config::t_token z_village_gold("village_gold");
-static const config::t_token z_value("value");
-static const config::t_token z_share_view("share_view");
-static const config::t_token z_add("add");
-static const config::t_token z_current("current");
-static const config::t_token z_turn_number("turn_number");
-static const config::t_token z_variation("variation");
-static const config::t_token z_image_mods("image_mods");
-static const config::t_token z_gender("gender");
-static const config::t_token z_effect("effect");
-static const config::t_token z_apply_to("apply_to");
-static const config::t_token z_fake_unit("fake_unit");
-static const config::t_token z_skip_steps("skip_steps");
-static const config::t_token z_literal("literal");
-static const config::t_token z_sub("sub");
-static const config::t_token z_multiply("multiply");
-static const config::t_token z_share_maps("share_maps");
-static const config::t_token z_image_mod("image_mod");
-static const config::t_token z_divide("divide");
-static const config::t_token z_modulo("modulo");
-static const config::t_token z_round("round");
-static const config::t_token z_ceil("ceil");
-static const config::t_token z_floor("floor");
-static const config::t_token z_ipart("ipart");
-static const config::t_token z_fpart("fpart");
-static const config::t_token z_string_length("string_length");
-static const config::t_token z_time("time");
-static const config::t_token z_stamp("stamp");
-static const config::t_token z_rand("rand");
-static const config::t_token z_join("join");
-static const config::t_token z_separator("separartor");
-static const config::t_token z_key("key");
-static const config::t_token z_to_variable("to_variable");
-static const config::t_token z_remove_empty("remove_empty");
-static const config::t_token z_mode("mode");
-static const config::t_token z_extend("extend");
-static const config::t_token z_append("append");
-static const config::t_token z_merge("merge");
-static const config::t_token z_insert("insert");
-static const config::t_token z_split("split");
-static const config::t_token z_replace("replace");
-static const config::t_token z_list("list");
-static const config::t_token z_role("role");
-static const config::t_token z_mask("mask");
-static const config::t_token z_border("border");
-static const config::t_token z_show("show");
-static const config::t_token z_fire_event("fire_event");
-static const config::t_token z_then("then");
-static const config::t_token z_object("object");
-static const config::t_token z_size("size");
-static const config::t_token z_text("text");
-static const config::t_token z_duration("duration");
-static const config::t_token z_secondary_unit("secondary_unit");
-static const config::t_token z_die("die");
-static const config::t_token z_needs_select("needs_select");
-static const config::t_token z_show_if("show_if");
-static const config::t_token z_filter_location("filter_location");
-static const config::t_token z_command("command");
-static const config::t_token z_find_vacant("find_vacant");
-static const config::t_token z_cannot_use_message("cannot_use_message");
-static const config::t_token z_recall("recall");
-static const config::t_token z_else("else");
-static const config::t_token z_silent("silent");
-//static const config::t_token z_("");
-static const config::t_token z_advance("advance");
-static const config::t_token z_choose("choose");
-static const config::t_token z_location("location");
-static const config::t_token z_owner_side("owner_side");
-static const config::t_token z_store_villages("store_villages");
-static const config::t_token z_next_scenario("next_scenario");
-static const config::t_token z_end_text("end_text");
-static const config::t_token z_end_text_duration("end_text_duration");
-static const config::t_token z_result("result");
-static const config::t_token z_victory("victory");
-static const config::t_token z_defeat("defeat");
-static const config::t_token z_carryover_report("carryover_report");
-static const config::t_token z_save("save");
-static const config::t_token z_linger_mode("linger_mode");
-static const config::t_token z_reveal_map("reveal_map");
-static const config::t_token z_bonus("bonus");
-static const config::t_token z_carryover_percentage("carryover_percentage");
-static const config::t_token z_carryover_add("carryover_add");
-static const config::t_token z_filter_second("filter_second");
-static const config::t_token z_heals("heals");
-static const config::t_token z_amount("amount");
-static const config::t_token z_moves("moves");
-static const config::t_token z_restore_attacks("restore_attacks");
-static const config::t_token z_restore_statuses("restore_statuses");
-static const config::t_token z_full("full");
-static const config::t_token z_heal_amount("heal_amount");
-static const config::t_token z_topic("topic");
-static const config::t_token z_speaker("speaker");
-static const config::t_token z_unit("unit");
-static const config::t_token z_second_unit("second_unit");
-static const config::t_token z_narrator("narrator");
-static const config::t_token z_caption("caption");
-static const config::t_token z_label("label");
-static const config::t_token z_option("option");
-static const config::t_token z_text_input("text_input");
-static const config::t_token z_max_length("max_length");
-static const config::t_token z_side_for("side_for");
-static const config::t_token z_scroll("scroll");
-static const config::t_token z_time_area("time_area");
-static const config::t_token z_input("input");
-static const config::t_token z_map("map");
-static const config::t_token z_delayed("delayed");
-static const config::t_token z_expand("expand");
-static const config::t_token z_shrink("shrink");
-static const config::t_token z_first_time_only("first_time_only");
-static const config::t_token z_allow_undo("allow_undo");
-static const config::t_token z_weapon("weapon");
-static const config::t_token z_first("first");
-static const config::t_token z_second("second");
-static const config::t_token z_second_weapon("second_weapon");
-static const config::t_token z_filter_condition("filter_condition");
-static const config::t_token z_filter_attack("filter_attack");
-static const config::t_token z_filter_second_attack("filter_second_attack");
-static const config::t_token z_handle_event_command("handle_event_command");
-static const config::t_token z_empty("empty");
-static const config::t_token z_event("event");
-static const config::t_token z_unit_wml_ids("unit_wml_ids");
-static const config::t_token z_used_items("used_items");
-static const config::t_token z_select("select");
-static const config::t_token z_delayed_variable_substitution("delayed_variable_substitution");
-// static const config::t_token z_("");
-// static const config::t_token z_("");
+namespace {
+//Static tokens are replacements for string literals in code
+//They allow for fast comparison, copying and hashing operations.
+static const config::t_token z_id("id", false);
+static const config::t_token z_this_unit("this_unit", false);
+static const config::t_token z_variable("variable", false);
+static const config::t_token z_time_of_day("time_of_day", false);
+static const config::t_token z_x("x", false);
+static const config::t_token z_y("y", false);
+static const config::t_token z_x1("x1", false);
+static const config::t_token z_x2("x2", false);
+static const config::t_token z_y1("y1", false);
+static const config::t_token z_y2("y2", false);
+static const config::t_token z_have_unit("have_unit", false);
+static const config::t_token z_count("count", false);
+static const config::t_token z_search_recall_list("search_recall_list", false);
+static const config::t_token z_have_location("have_location", false);
+static const config::t_token z_name("name", false);
+static const config::t_token z_equals("equals", false);
+static const config::t_token z_not_equals("not_equals", false);
+static const config::t_token z_numerical_equals("numerical_equals", false);
+static const config::t_token z_numerical_not_equals("numerical_not_equals", false);
+static const config::t_token z_boolean_equals("boolean_equals", false);
+static const config::t_token z_boolean_not_equals("boolean_not_equals", false);
+static const config::t_token z_less_than("less_than", false);
+static const config::t_token z_greater_than("greater_than", false);
+static const config::t_token z_greater_than_equal_to("greater_than_equal_to", false);
+static const config::t_token z_less_than_equal_to("less_than_equal_to", false);
+static const config::t_token z_and("and", false);
+static const config::t_token z_or("or", false);
+static const config::t_token z_not("not", false);
+static const config::t_token z_contains("contains", false);
+static const config::t_token z_backwards_compat("backwards_compat", false);
+static const config::t_token z_logger("logger", false);
+static const config::t_token z_message("message", false);
+static const config::t_token z_side("side", false);
+static const config::t_token z_filter_side("filter_side", false);
+static const config::t_token z_remove("remove", false);
+static const config::t_token z_source("source", false);
+static const config::t_token z_target("target", false);
+static const config::t_token z_bidirectional("bidirectional", false);
+static const config::t_token z_check_passability("check_passability", false);
+static const config::t_token z_clear_shroud("clear_shroud", false);
+static const config::t_token z_animate("animate", false);
+static const config::t_token z_type("type", false);
+static const config::t_token z_filter("filter", false);
+static const config::t_token z_music("music", false);
+static const config::t_token z_sound("sound", false);
+static const config::t_token z_red("red", false);
+static const config::t_token z_green("green", false);
+static const config::t_token z_blue("blue", false);
+static const config::t_token z_turn("turn", false);
+static const config::t_token z_team_name("team_name", false);
+static const config::t_token z_user_team_name("user_team_name", false);
+static const config::t_token z_controller("controller", false);
+static const config::t_token z_recruit("recruit", false);
+static const config::t_token z_shroud_data("shroud_data", false);
+static const config::t_token z_ai("ai", false);
+static const config::t_token z_switch_ai("switch_ai", false);
+static const config::t_token z_income("income", false);
+static const config::t_token z_gold("gold", false);
+static const config::t_token z_shroud("shroud", false);
+static const config::t_token z_hidden("hidden", false);
+static const config::t_token z_fog("fog", false);
+static const config::t_token z_village_gold("village_gold", false);
+static const config::t_token z_value("value", false);
+static const config::t_token z_share_view("share_view", false);
+static const config::t_token z_add("add", false);
+static const config::t_token z_current("current", false);
+static const config::t_token z_turn_number("turn_number", false);
+static const config::t_token z_variation("variation", false);
+static const config::t_token z_image_mods("image_mods", false);
+static const config::t_token z_gender("gender", false);
+static const config::t_token z_effect("effect", false);
+static const config::t_token z_apply_to("apply_to", false);
+static const config::t_token z_fake_unit("fake_unit", false);
+static const config::t_token z_skip_steps("skip_steps", false);
+static const config::t_token z_literal("literal", false);
+static const config::t_token z_sub("sub", false);
+static const config::t_token z_multiply("multiply", false);
+static const config::t_token z_share_maps("share_maps", false);
+static const config::t_token z_image_mod("image_mod", false);
+static const config::t_token z_divide("divide", false);
+static const config::t_token z_modulo("modulo", false);
+static const config::t_token z_round("round", false);
+static const config::t_token z_ceil("ceil", false);
+static const config::t_token z_floor("floor", false);
+static const config::t_token z_ipart("ipart", false);
+static const config::t_token z_fpart("fpart", false);
+static const config::t_token z_string_length("string_length", false);
+static const config::t_token z_time("time", false);
+static const config::t_token z_stamp("stamp", false);
+static const config::t_token z_rand("rand", false);
+static const config::t_token z_join("join", false);
+static const config::t_token z_separator("separartor", false);
+static const config::t_token z_key("key", false);
+static const config::t_token z_to_variable("to_variable", false);
+static const config::t_token z_remove_empty("remove_empty", false);
+static const config::t_token z_mode("mode", false);
+static const config::t_token z_extend("extend", false);
+static const config::t_token z_append("append", false);
+static const config::t_token z_merge("merge", false);
+static const config::t_token z_insert("insert", false);
+static const config::t_token z_split("split", false);
+static const config::t_token z_replace("replace", false);
+static const config::t_token z_list("list", false);
+static const config::t_token z_role("role", false);
+static const config::t_token z_mask("mask", false);
+static const config::t_token z_border("border", false);
+static const config::t_token z_show("show", false);
+static const config::t_token z_fire_event("fire_event", false);
+static const config::t_token z_then("then", false);
+static const config::t_token z_object("object", false);
+static const config::t_token z_size("size", false);
+static const config::t_token z_text("text", false);
+static const config::t_token z_duration("duration", false);
+static const config::t_token z_secondary_unit("secondary_unit", false);
+static const config::t_token z_die("die", false);
+static const config::t_token z_last_breath("last breath", false);
+static const config::t_token z_needs_select("needs_select", false);
+static const config::t_token z_show_if("show_if", false);
+static const config::t_token z_filter_location("filter_location", false);
+static const config::t_token z_command("command", false);
+static const config::t_token z_find_vacant("find_vacant", false);
+static const config::t_token z_cannot_use_message("cannot_use_message", false);
+static const config::t_token z_recall("recall", false);
+static const config::t_token z_else("else", false);
+static const config::t_token z_silent("silent", false);
+static const config::t_token z_replay_save("replay_save", false);
+static const config::t_token z_advance("advance", false);
+static const config::t_token z_choose("choose", false);
+static const config::t_token z_location("location", false);
+static const config::t_token z_owner_side("owner_side", false);
+static const config::t_token z_store_villages("store_villages", false);
+static const config::t_token z_next_scenario("next_scenario", false);
+static const config::t_token z_end_text("end_text", false);
+static const config::t_token z_end_text_duration("end_text_duration", false);
+static const config::t_token z_result("result", false);
+static const config::t_token z_victory("victory", false);
+static const config::t_token z_defeat("defeat", false);
+static const config::t_token z_carryover_report("carryover_report", false);
+static const config::t_token z_save("save", false);
+static const config::t_token z_linger_mode("linger_mode", false);
+static const config::t_token z_reveal_map("reveal_map", false);
+static const config::t_token z_bonus("bonus", false);
+static const config::t_token z_carryover_percentage("carryover_percentage", false);
+static const config::t_token z_carryover_add("carryover_add", false);
+static const config::t_token z_filter_second("filter_second", false);
+static const config::t_token z_heals("heals", false);
+static const config::t_token z_amount("amount", false);
+static const config::t_token z_moves("moves", false);
+static const config::t_token z_restore_attacks("restore_attacks", false);
+static const config::t_token z_restore_statuses("restore_statuses", false);
+static const config::t_token z_full("full", false);
+static const config::t_token z_heal_amount("heal_amount", false);
+static const config::t_token z_topic("topic", false);
+static const config::t_token z_speaker("speaker", false);
+static const config::t_token z_unit("unit", false);
+static const config::t_token z_second_unit("second_unit", false);
+static const config::t_token z_narrator("narrator", false);
+static const config::t_token z_caption("caption", false);
+static const config::t_token z_label("label", false);
+static const config::t_token z_option("option", false);
+static const config::t_token z_text_input("text_input", false);
+static const config::t_token z_max_length("max_length", false);
+static const config::t_token z_side_for("side_for", false);
+static const config::t_token z_scroll("scroll", false);
+static const config::t_token z_time_area("time_area", false);
+static const config::t_token z_input("input", false);
+static const config::t_token z_map("map", false);
+static const config::t_token z_delayed("delayed", false);
+static const config::t_token z_expand("expand", false);
+static const config::t_token z_shrink("shrink", false);
+static const config::t_token z_first_time_only("first_time_only", false);
+static const config::t_token z_allow_undo("allow_undo", false);
+static const config::t_token z_weapon("weapon", false);
+static const config::t_token z_first("first", false);
+static const config::t_token z_second("second", false);
+static const config::t_token z_second_weapon("second_weapon", false);
+static const config::t_token z_filter_condition("filter_condition", false);
+static const config::t_token z_filter_attack("filter_attack", false);
+static const config::t_token z_filter_second_attack("filter_second_attack", false);
+static const config::t_token z_handle_event_command("handle_event_command", false);
+//static const config::t_token z_empty("empty", false);
+static const config::t_token z_event("event", false);
+static const config::t_token z_unit_wml_ids("unit_wml_ids", false);
+static const config::t_token z_used_items("used_items", false);
+static const config::t_token z_select("select", false);
+static const config::t_token z_delayed_variable_substitution("delayed_variable_substitution", false);
+static const config::t_token z_err("err", false);
+static const config::t_token z_error("error", false);
+static const config::t_token z_warn("warn", false);
+static const config::t_token z_wrn("wrn", false);
+static const config::t_token z_warning("warning", false);
+static const config::t_token z_debug("debug", false);
+static const config::t_token z_dbg("dbg", false);
 
 
 
@@ -327,18 +335,18 @@ namespace {
 	class pump_manager {
 		public:
 		pump_manager() :
-			x1_(resources::state_of_game->get_variable("x1")),
-			x2_(resources::state_of_game->get_variable("x2")),
-			y1_(resources::state_of_game->get_variable("y1")),
-			y2_(resources::state_of_game->get_variable("y2"))
+			x1_(resources::state_of_game->get_variable(z_x1)),
+			x2_(resources::state_of_game->get_variable(z_x2)),
+			y1_(resources::state_of_game->get_variable(z_y1)),
+			y2_(resources::state_of_game->get_variable(z_y2))
 		{
 			++instance_count;
 		}
 		~pump_manager() {
-			resources::state_of_game->get_variable("x1") = x1_;
-			resources::state_of_game->get_variable("x2") = x2_;
-			resources::state_of_game->get_variable("y1") = y1_;
-			resources::state_of_game->get_variable("y2") = y2_;
+			resources::state_of_game->get_variable(z_x1) = x1_;
+			resources::state_of_game->get_variable(z_x2) = x2_;
+			resources::state_of_game->get_variable(z_y1) = y1_;
+			resources::state_of_game->get_variable(z_y2) = y2_;
 			--instance_count;
 		}
 		static unsigned count() {
@@ -366,15 +374,15 @@ namespace {
  * Helper function which determines whether a wml_message text can
  * really be pushed into the wml_messages_stream, and does it.
  */
-static void put_wml_message(const std::string& logger, const std::string& message)
+static void put_wml_message(const n_token::t_token& logger, const std::string& message)
 {
-	if (logger == "err" || logger == "error") {
+	if (logger == z_err || logger == z_error) {
 		ERR_WML << message << "\n";
 		wml_messages_stream << _("Error: ") << message << "\n";
-	} else if (logger == "warn" || logger == "wrn" || logger == "warning") {
+	} else if (logger == z_warn || logger == z_wrn || logger == z_warning) {
 		WRN_WML << message << "\n";
 		wml_messages_stream << _("Warning: ") << message << "\n";
-	} else if ((logger == "debug" || logger == "dbg") && !lg::debug.dont_log(log_wml)) {
+	} else if ((logger == z_debug || logger == z_dbg) && !lg::debug.dont_log(log_wml)) {
 		DBG_WML << message << "\n";
 		wml_messages_stream << _("Debug: ") << message << "\n";
 	} else if (!lg::info.dont_log(log_wml)) {
@@ -397,7 +405,7 @@ static void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stri
 			break;
 		}
 
-		if(msg == "") {
+		if(msg == z_empty) {
 			continue;
 		}
 
@@ -525,13 +533,13 @@ namespace game_events {
 
 		// If the if statement requires we have a certain unit,
 		// then check for that.
-		const vconfig::child_list& have_unit = cond.get_children("have_unit");
+		const vconfig::child_list& have_unit = cond.get_children(z_have_unit);
 		backwards_compat = backwards_compat && have_unit.empty();
 		for(vconfig::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
 			if(resources::units == NULL)
 				return false;
-			std::vector<std::pair<int,int> > counts = (*u).has_attribute("count")
-				? utils::parse_ranges((*u)["count"]) : default_counts;
+			std::vector<std::pair<int,int> > counts = (*u).has_attribute(z_count)
+				? utils::parse_ranges((*u)[z_count]) : default_counts;
 			int match_count = 0;
 			foreach (const unit &i, *resources::units)
 			{
@@ -543,7 +551,7 @@ namespace game_events {
 					}
 				}
 			}
-			if ((*u)["search_recall_list"].to_bool())
+			if ((*u)[z_search_recall_list].to_bool())
 			{
 				for(std::vector<team>::iterator team = resources::teams->begin();
 						team!=resources::teams->end(); ++team)
@@ -556,7 +564,7 @@ namespace game_events {
 						if(counts == default_counts && match_count) {
 							break;
 						}
-						scoped_recall_unit auto_store("this_unit", team->save_id(), unit - avail_units.begin());
+						scoped_recall_unit auto_store(z_this_unit, team->save_id(), unit - avail_units.begin());
 						if (unit_matches_filter(*unit, *u)) {
 							++match_count;
 						}
@@ -570,14 +578,14 @@ namespace game_events {
 
 		// If the if statement requires we have a certain location,
 		// then check for that.
-		const vconfig::child_list& have_location = cond.get_children("have_location");
+		const vconfig::child_list& have_location = cond.get_children(z_have_location);
 		backwards_compat = backwards_compat && have_location.empty();
 		for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 			map_location::t_maploc_set res;
 			terrain_filter(*v, *resources::units).get_locations(res);
 
-			std::vector<std::pair<int,int> > counts = (*v).has_attribute("count")
-				? utils::parse_ranges((*v)["count"]) : default_counts;
+			std::vector<std::pair<int,int> > counts = (*v).has_attribute(z_count)
+				? utils::parse_ranges((*v)[z_count]) : default_counts;
 			if(!in_ranges<int>(res.size(), counts)) {
 				return false;
 			}
@@ -585,19 +593,19 @@ namespace game_events {
 
 		// Check against each variable statement,
 		// to see if the variable matches the conditions or not.
-		const vconfig::child_list& variables = cond.get_children("variable");
+		const vconfig::child_list& variables = cond.get_children(z_variable);
 		backwards_compat = backwards_compat && variables.empty();
 
 		foreach (const vconfig &values, variables)
 		{
-			const std::string name = values["name"];
+			const n_token::t_token & name = values[z_name];
 			config::attribute_value value = resources::state_of_game->get_variable_const(name);
-			std::string str_value = value.str();
+			n_token::t_token const & tk_value = value.token();
 			double num_value = value.to_double();
 
 #define TEST_ATTR(name, test) do { \
 			if (values.has_attribute(name)) { \
-				config::attribute_value attr = values[name]; \
+				config::attribute_value const & attr = values[name]; \
 				if (!(test)) return false; \
 			} \
 			} while (0)
@@ -609,6 +617,13 @@ namespace game_events {
 			} \
 			} while (0)
 
+#define TEST_TOKEN_ATTR(name, test) do { \
+			if (values.has_attribute(name)) { \
+				n_token::t_token const & attr_tk = values[name];	\
+				if (!(test)) return false; \
+			} \
+			} while (0)
+
 #define TEST_NUM_ATTR(name, test) do { \
 			if (values.has_attribute(name)) { \
 				double attr_num = values[name].to_double(); \
@@ -616,20 +631,21 @@ namespace game_events {
 			} \
 			} while (0)
 
-			TEST_STR_ATTR("equals",                str_value == attr_str);
-			TEST_STR_ATTR("not_equals",            str_value != attr_str);
-			TEST_NUM_ATTR("numerical_equals",      num_value == attr_num);
-			TEST_NUM_ATTR("numerical_not_equals",  num_value != attr_num);
-			TEST_NUM_ATTR("greater_than",          num_value >  attr_num);
-			TEST_NUM_ATTR("less_than",             num_value <  attr_num);
-			TEST_NUM_ATTR("greater_than_equal_to", num_value >= attr_num);
-			TEST_NUM_ATTR("less_than_equal_to",    num_value <= attr_num);
-			TEST_ATTR("boolean_equals",     value.to_bool() == attr.to_bool());
-			TEST_ATTR("boolean_not_equals", value.to_bool() != attr.to_bool());
-			TEST_STR_ATTR("contains", value.str().find(attr_str) != std::string::npos);
+			TEST_TOKEN_ATTR(z_equals,                tk_value == attr_tk);
+			TEST_TOKEN_ATTR(z_not_equals,            tk_value != attr_tk);
+			TEST_NUM_ATTR(z_numerical_equals,      num_value == attr_num);
+			TEST_NUM_ATTR(z_numerical_not_equals,  num_value != attr_num);
+			TEST_NUM_ATTR(z_greater_than,          num_value >  attr_num);
+			TEST_NUM_ATTR(z_less_than,             num_value <  attr_num);
+			TEST_NUM_ATTR(z_greater_than_equal_to, num_value >= attr_num);
+			TEST_NUM_ATTR(z_less_than_equal_to,    num_value <= attr_num);
+			TEST_ATTR(z_boolean_equals,     value.to_bool() == attr.to_bool());
+			TEST_ATTR(z_boolean_not_equals, value.to_bool() != attr.to_bool());
+			TEST_STR_ATTR(z_contains, value.str().find(attr_str) != std::string::npos);
 
 #undef TEST_ATTR
 #undef TEST_STR_ATTR
+#undef TEST_TOKEN_ATTR
 #undef TEST_NUM_ATTR
 		}
 		return true;
@@ -638,7 +654,7 @@ namespace game_events {
 	bool conditional_passed(const vconfig& cond, bool backwards_compat)
 	{
 		bool allow_backwards_compat = backwards_compat = backwards_compat &&
-			cond["backwards_compat"].to_bool(true);
+			cond[z_backwards_compat].to_bool(true);
 		bool matches = internal_conditional_passed(cond, allow_backwards_compat);
 
 		// Handle [and], [or], and [not] with in-order precedence
@@ -647,23 +663,23 @@ namespace game_events {
 		vconfig::all_children_iterator cond_end = cond.ordered_end();
 		while(cond_i != cond_end)
 		{
-			const std::string& cond_name = cond_i.get_key();
+			const config::t_token& cond_name = cond_i.get_key();
 			const vconfig& cond_filter = cond_i.get_child();
 
 			// Handle [and]
-			if(cond_name == "and")
+			if(cond_name == z_and)
 			{
 				matches = matches && conditional_passed(cond_filter, backwards_compat);
 				backwards_compat = false;
 			}
 			// Handle [or]
-			else if(cond_name == "or")
+			else if(cond_name == z_or)
 			{
 				matches = matches || conditional_passed(cond_filter, backwards_compat);
 				++or_count;
 			}
 			// Handle [not]
-			else if(cond_name == "not")
+			else if(cond_name == z_not)
 			{
 				matches = matches && !conditional_passed(cond_filter, backwards_compat);
 				backwards_compat = false;
@@ -680,7 +696,7 @@ namespace game_events {
 			 * rules, but this should be later to prevent re-interpretation
 			 * errors.
 			 */
-			const vconfig::child_list& orcfgs = cond.get_children("or");
+			const vconfig::child_list& orcfgs = cond.get_children(z_or);
 			for(unsigned int i=0; i < orcfgs.size(); ++i) {
 				if(conditional_passed(orcfgs[i])) {
 					return true;
@@ -693,8 +709,8 @@ namespace game_events {
 
 	void handle_wml_log_message(const config& cfg)
 	{
-		const std::string& logger = cfg["logger"];
-		const std::string& msg = cfg["message"];
+		const config::attribute_value& logger = cfg[z_logger];
+		const config::attribute_value& msg = cfg[z_message];
 
 		put_wml_message(logger,msg);
 	}
@@ -702,8 +718,8 @@ namespace game_events {
 	void handle_deprecated_message(const config& cfg)
 	{
 		// Note: no need to translate the string, since only used for deprecated things.
-		const std::string& message = cfg["message"];
-		lg::wml_error << message << '\n';
+		const config::attribute_value& message = cfg[z_message];
+		lg::wml_error << message.token() << '\n';
 	}
 
 	std::set<int> get_sides_set(const vconfig& cfg, const bool only_ssf, const bool only_side)
@@ -713,8 +729,8 @@ namespace game_events {
 			return filter.get_teams();
 		}
 
-		const config::attribute_value sides = cfg["side"];
-		const vconfig &ssf = cfg.child("filter_side");
+		const config::attribute_value sides = cfg[z_side];
+		const vconfig &ssf = cfg.child(z_filter_side);
 
 		if (!ssf.null() && !only_side) {
 			if(!sides.empty()) { WRN_NG << "ignoring duplicate side filter information (inline side=)\n"; }
@@ -723,16 +739,16 @@ namespace game_events {
 		}
 
 		if (sides.blank()) {
-			if(only_side) put_wml_message("error", "empty side= is deprecated, use side=1");
+			if(only_side) put_wml_message(z_error, "empty side= is deprecated, use side=1");
 			//To deprecate the current default (side=1), require one of the currently two ways
 			//of specifying a side - putting inline side= or [filter_side].
-			else put_wml_message("error", "empty side= and no [filter_side] is deprecated, use either side=1 or [filter_side]");
+			else put_wml_message(z_error, "empty side= and no [filter_side] is deprecated, use either side=1 or [filter_side]");
 			std::set<int> result;
 			result.insert(1); // we make sure the set is not empty and the current default is maintained
 			return result;
 		}
 		// uncomment if the decision will be made to make [filter_side] the only & final syntax for specifying sides
-		// put_wml_message("error","specifying side via inline side= is deprecated, use [filter_side] ");
+		// put_wml_message(z_error,"specifying side via inline side= is deprecated, use [filter_side] ");
 		side_filter filter(sides.str());
 		return filter.get_teams();
 	}
@@ -741,7 +757,7 @@ namespace game_events {
 
 namespace {
 
-	std::set<std::string> used_items;
+	std::set<config::t_token> used_items;
 
 } // end anonymous namespace (2)
 
@@ -756,8 +772,8 @@ namespace {
 
 static map_location cfg_to_loc(const vconfig& cfg,int defaultx = 0, int defaulty = 0)
 {
-	int x = cfg["x"].to_int(defaultx) - 1;
-	int y = cfg["y"].to_int(defaulty) - 1;
+	int x = cfg[z_x].to_int(defaultx) - 1;
+	int y = cfg[z_y].to_int(defaulty) - 1;
 
 	return map_location(x, y);
 }
@@ -773,7 +789,7 @@ namespace {
 
 		t_active active_; ///Active event handlers
 		t_active insert_buffer_; ///Event handlers added while pumping events
-		std::set<std::string> remove_buffer_; ///Event handlers removed while pumping events
+		std::set<config::t_token> remove_buffer_; ///Event handlers removed while pumping events
 		bool buffering_; 
 
 	public:
@@ -791,11 +807,11 @@ namespace {
 			
 			else {
 				const config & cfg = new_handler.get_config();
-				std::string id = cfg["id"];
-				if(id != "") {
+				config::t_token const & id = cfg[z_id];
+				if(id != z_empty) {
 					foreach( game_events::event_handler const & eh, active_) {
 						config const & temp_config( eh.get_config());
-						if(id == temp_config["id"]) { return; } 
+						if(id == temp_config[z_id]) { return; } 
 					}
 				}
 				active_.push_back(new_handler);
@@ -807,8 +823,8 @@ namespace {
 		 * empty IDs cannot be removed.  This method respects this class's
 		 * buffering functionality.
 		 */
-		void remove_event_handler(std::string const & id) {
-			if(id == "") { return; }
+		void remove_event_handler(config::t_token const & id) {
+			if(id == z_empty) { return; }
 
 			if(buffering_) { remove_buffer_.insert(id); }
 
@@ -817,8 +833,8 @@ namespace {
 			t_active::iterator i = temp.begin();
 			while(i < temp.end()) {
 				config const & temp_config = (*i).get_config();
-				std::string event_id = temp_config["id"];
-				if(event_id != "" && event_id == id) {
+				config::t_token const &event_id = temp_config[z_id];
+				if(event_id != z_empty && event_id == id) {
 					i = temp.erase(i); }
 				else {
 					++i; }
@@ -842,7 +858,7 @@ namespace {
 			buffering_ = false;
 
 			// Commit any event removals
-			foreach(std::string const & i ,  remove_buffer_ ){
+			foreach(config::t_token const & i ,  remove_buffer_ ){
 				remove_event_handler( i ); }
 			remove_buffer_.clear();
 
@@ -910,22 +926,22 @@ WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
 
 WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
 {
-	const bool remove = utils::string_bool(cfg["remove"], false);
+	const bool remove = utils::string_bool(cfg[z_remove], false);
 	if (remove) {
-		const std::vector<std::string> ids = utils::split(cfg["id"]);
-		foreach(const std::string &id, ids) {
+		const std::vector<config::t_token> ids = utils::split_token(cfg[z_id]);
+		foreach(const config::t_token &id, ids) {
 			resources::tunnels->remove(id);
 		}
-	} else if (cfg.get_children("source").empty() ||
-		cfg.get_children("target").empty() ||
-		cfg.get_children("filter").empty()) {
+	} else if (cfg.get_children(z_source).empty() ||
+		cfg.get_children(z_target).empty() ||
+		cfg.get_children(z_filter).empty()) {
 		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
 			 << cfg.get_config().debug();
 	} else {
 		pathfind::teleport_group tunnel(cfg, false);
 		resources::tunnels->add(tunnel);
 
-		if (utils::string_bool(cfg["bidirectional"], true)) {
+		if (utils::string_bool(cfg[z_bidirectional], true)) {
 			tunnel = pathfind::teleport_group(cfg, true);
 			resources::tunnels->add(tunnel);
 		}
@@ -937,7 +953,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	unit_map::iterator u = resources::units->find(event_info.loc1);
 
 	// Search for a valid unit filter, and if we have one, look for the matching unit
-	const vconfig filter = cfg.child("filter");
+	const vconfig filter = cfg.child(z_filter);
 	if(!filter.null()) {
 		for (u = resources::units->begin(); u != resources::units->end(); ++u){
 			if(game_events::unit_matches_filter(*u, filter))
@@ -952,13 +968,13 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	if (dst == u->get_location() || !resources::game_map->on_board(dst)) return;
 
 	const unit* pass_check = NULL;
-	if (cfg["check_passability"].to_bool(true))
+	if (cfg[z_check_passability].to_bool(true))
 		pass_check = &*u;
 	const map_location vacant_dst = find_vacant_tile(*resources::game_map, *resources::units, dst, pathfind::VACANT_ANY, pass_check);
 	if (!resources::game_map->on_board(vacant_dst)) return;
 
 	int side = u->side();
-	if (cfg["clear_shroud"].to_bool(true)) {
+	if (cfg[z_clear_shroud].to_bool(true)) {
 		clear_shroud(side);
 	}
 
@@ -967,7 +983,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	std::vector<map_location> teleport_path;
 	teleport_path.push_back(src_loc);
 	teleport_path.push_back(vacant_dst);
-	bool animate = cfg["animate"].to_bool();
+	bool animate = cfg[z_animate].to_bool();
 	unit_display::move_unit(teleport_path, *u, *resources::teams, animate);
 
 	resources::units->move(src_loc, vacant_dst);
@@ -990,8 +1006,8 @@ WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 
 	int vol;
 	float rel;
-	std::string music = cfg["music"];
-	std::string sound = cfg["sound"];
+	config::t_token const & music = cfg[z_music];
+	config::t_token const & sound = cfg[z_sound];
 
 	if(!music.empty()) {
 		vol = preferences::music_volume();
@@ -1015,7 +1031,7 @@ WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 
 static void color_adjust(const vconfig& cfg) {
 	game_display &screen = *resources::screen;
-	screen.adjust_color_overlay(cfg["red"], cfg["green"], cfg["blue"]);
+	screen.adjust_color_overlay(cfg[z_red], cfg[z_green], cfg[z_blue]);
 	screen.invalidate_all();
 	screen.draw(true,true);
 }
@@ -1035,7 +1051,7 @@ WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
-	screen.scroll(cfg["x"], cfg["y"]);
+	screen.scroll(cfg[z_x], cfg[z_y]);
 	screen.draw(true,true);
 }
 
@@ -1045,13 +1061,13 @@ WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 {
 	const map_location loc = cfg_to_loc(cfg, -999, -999);
-	int turn = cfg["turn"];
+	int turn = cfg[z_turn];
 	// using 0 will use the current turn
 	const time_of_day& tod = resources::tod_manager->get_time_of_day_with_areas(loc,turn);
 
-	std::string variable = cfg["variable"];
+	config::t_token variable = cfg[z_variable];
 	if(variable.empty()) {
-		variable = "time_of_day";
+		variable = z_time_of_day;
 	}
 
 	variable_info store(variable, true, variable_info::TYPE_CONTAINER);
@@ -1081,18 +1097,18 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 {
 	std::vector<team> &teams = *resources::teams;
 
-	std::string team_name = cfg["team_name"];
-	std::string user_team_name = cfg["user_team_name"];
-	std::string controller = cfg["controller"];
-	std::string recruit_str = cfg["recruit"];
-	std::string shroud_data = cfg["shroud_data"];
+	t_string const & team_name = cfg[z_team_name];
+	t_string const & user_team_name = cfg[z_user_team_name];
+	config::t_token const & controller = cfg[z_controller];
+	config::t_token const & recruit_str = cfg[z_recruit];
+	config::t_token const & shroud_data = cfg[z_shroud_data];
 	const config& parsed = cfg.get_parsed_config();
-	const config::const_child_itors &ai = parsed.child_range("ai");
+	const config::const_child_itors &ai = parsed.child_range(z_ai);
 	/**
 	 * @todo also allow client to modify a side's color if it is possible
 	 * to change it on the fly without causing visual glitches
 	 */
-	std::string switch_ai = cfg["switch_ai"];
+	config::t_token const & switch_ai = cfg[z_switch_ai];
 
 	std::set<int> sides = game_events::get_sides_set(cfg);
 	size_t team_index;
@@ -1103,28 +1119,26 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		LOG_NG << "modifying side: " << side_num << "\n";
 		if(!team_name.empty()) {
 			LOG_NG << "change side's team to team_name '" << team_name << "'\n";
-			teams[team_index].change_team(team_name,
-					user_team_name);
+			teams[team_index].change_team(team_name, user_team_name);
 		} else if(!user_team_name.empty()) {
 			LOG_NG << "change side's user_team_name to '" << user_team_name << "'\n";
-			teams[team_index].change_team(teams[team_index].team_name(),
-					user_team_name);
+			teams[team_index].change_team(teams[team_index].team_name(), user_team_name);
 		}
 		// Modify recruit list (override)
 		if (!recruit_str.empty()) {
-			std::vector<std::string> recruit = utils::split(recruit_str);
-			if (recruit.size() == 1 && recruit.back() == "")
+			std::vector<config::t_token> recruit = utils::split_token(recruit_str);
+			if (recruit.size() == 1 && recruit.back() == z_empty)
 				recruit.clear();
 
 			teams[team_index].set_recruits(std::set<std::string>(recruit.begin(),recruit.end()));
 		}
 		// Modify income
-		config::attribute_value income = cfg["income"];
+		config::attribute_value income = cfg[z_income];
 		if (!income.empty()) {
 			teams[team_index].set_base_income(income.to_int() + game_config::base_income);
 		}
 		// Modify total gold
-		config::attribute_value gold = cfg["gold"];
+		config::attribute_value gold = cfg[z_gold];
 		if (!gold.empty()) {
 			teams[team_index].set_gold(gold);
 		}
@@ -1133,7 +1147,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			teams[team_index].change_controller(controller);
 		}
 		// Set shroud
-		config::attribute_value shroud = cfg["shroud"];
+		config::attribute_value shroud = cfg[z_shroud];
 		if (!shroud.empty()) {
 			teams[team_index].set_shroud(shroud.to_bool(true));
 		}
@@ -1142,17 +1156,17 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			teams[team_index].merge_shroud_map_data(shroud_data);
 		}
 		// Set whether team is hidden in status table
-		config::attribute_value hidden = cfg["hidden"];
+		config::attribute_value hidden = cfg[z_hidden];
 		if (!hidden.empty()) {
 			teams[team_index].set_hidden(hidden.to_bool(true));
 		}
 		// Set fog
-		config::attribute_value fog = cfg["fog"];
+		config::attribute_value fog = cfg[z_fog];
 		if (!fog.empty()) {
 			teams[team_index].set_fog(fog.to_bool(true));
 		}
 		// Set income per village
-		config::attribute_value village_gold = cfg["village_gold"];
+		config::attribute_value village_gold = cfg[z_village_gold];
 		if (!village_gold.empty()) {
 			teams[team_index].set_village_gold(village_gold);
 		}
@@ -1165,7 +1179,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			ai::manager::modify_active_ai_config_old_for_side(side_num,ai);
 		}
 		// Add shared view to current team
-		config::attribute_value share_view = cfg["share_view"];
+		config::attribute_value share_view = cfg[z_share_view];
 		if (!share_view.empty()){
 			teams[team_index].set_share_view(share_view.to_bool(true));
 			team::clear_caches();
@@ -1174,7 +1188,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		}
 		// Add shared maps to current team
 		// IMPORTANT: this MUST happen *after* share_view is changed
-		config::attribute_value share_maps = cfg["share_maps"];
+		config::attribute_value share_maps = cfg[z_share_maps];
 		if (!share_maps.empty()){
 			teams[team_index].set_share_maps(share_maps.to_bool(true));
 			team::clear_caches();
@@ -1187,9 +1201,9 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 {
-	config::attribute_value value = cfg["value"];
-	std::string add = cfg["add"];
-	config::attribute_value current = cfg["current"];
+	config::attribute_value const & value = cfg[z_value];
+	config::t_token const & add = cfg[z_add];
+	config::attribute_value const & current = cfg[z_current];
 	tod_manager& tod_man = *resources::tod_manager;
 	if(!add.empty()) {
 		tod_man.modify_turns(add);
@@ -1214,38 +1228,38 @@ namespace {
 
 game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 {
-	std::string type = cfg["type"];
-	std::string variation = cfg["variation"];
-	std::string img_mods = cfg["image_mods"];
+	config::t_token const & type = cfg[z_type];
+	config::t_token const & variation = cfg[z_variation];
+	config::t_token const & img_mods = cfg[z_image_mods];
 
-	size_t side_num = cfg["side"].to_int(1) - 1;
+	size_t side_num = cfg[z_side].to_int(1) - 1;
 	if (side_num >= resources::teams->size()) side_num = 0;
 
-	unit_race::GENDER gender = string_gender(cfg["gender"]);
+	unit_race::GENDER gender = string_gender(cfg[z_gender]);
 	const unit_type *ut = unit_types.find(type);
 	if (!ut) return NULL;
 	game_display::fake_unit * fake_unit = new game_display::fake_unit(unit(ut, side_num + 1, false, gender));
 
 	if(!variation.empty()) {
 		config mod;
-		config &effect = mod.add_child("effect");
-		effect["apply_to"] = "variation";
-		effect["name"] = variation;
+		config &effect = mod.add_child(z_effect);
+		effect[z_apply_to] = z_variation;
+		effect[z_name] = variation;
 		fake_unit->add_modification(z_variation,mod);
 	}
 
 	if(!img_mods.empty()) {
 		config mod;
-		config &effect = mod.add_child("effect");
-		effect["apply_to"] = "image_mod";
-		effect["add"] = img_mods;
+		config &effect = mod.add_child(z_effect);
+		effect[z_apply_to] = z_image_mod;
+		effect[z_add] = img_mods;
 		fake_unit->add_modification(z_image_mod,mod);
 	}
 
 	return fake_unit;
 }
 
-std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vector<std::string>& xvals, const std::vector<std::string>& yvals)
+std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vector<config::t_token>& xvals, const std::vector<config::t_token>& yvals)
 {
 	gamemap *game_map = resources::game_map;
 	std::vector<map_location> path;
@@ -1315,11 +1329,11 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 	if(!dummy_unit.get())
 		return;
 
-	const std::string x = cfg["x"];
-	const std::string y = cfg["y"];
+	const config::t_token & x = cfg[z_x];
+	const config::t_token & y = cfg[z_y];
 
-	const std::vector<std::string> xvals = utils::split(x);
-	const std::vector<std::string> yvals = utils::split(y);
+	const std::vector<config::t_token> xvals = utils::split_token(x);
+	const std::vector<config::t_token> yvals = utils::split_token(y);
 
 	const std::vector<map_location>& path = fake_unit_path(*dummy_unit, xvals, yvals);
 	if (!path.empty())
@@ -1330,7 +1344,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 {
 	LOG_NG << "Processing [move_units_fake]\n";
 
-	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
+	const vconfig::child_list unit_cfgs = cfg.get_children(z_fake_unit);
 	size_t num_units = unit_cfgs.size();
 	boost::scoped_array<util::unique_ptr<game_display::fake_unit> > units(
 		new util::unique_ptr<game_display::fake_unit>[num_units]);
@@ -1343,9 +1357,9 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 	size_t longest_path = 0;
 
 	foreach(const vconfig& config, unit_cfgs) {
-		const std::vector<std::string> xvals = utils::split(config["x"]);
-		const std::vector<std::string> yvals = utils::split(config["y"]);
-		int skip_steps = config["skip_steps"];
+		const std::vector<config::t_token> xvals = utils::split_token(config[z_x]);
+		const std::vector<config::t_token> yvals = utils::split_token(config[z_y]);
+		int skip_steps = config[z_skip_steps];
 		game_display::fake_unit *u = create_fake_unit(config);
 		units[paths.size()].reset(u);
 		paths.push_back(fake_unit_path(*u, xvals, yvals));
@@ -1389,40 +1403,40 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 {
 	game_state *state_of_game = resources::state_of_game;
 
-	const std::string name = cfg["name"];
+	const config::t_token & name = cfg[z_name];
 	config::attribute_value &var = state_of_game->get_variable(name);
 
-	config::attribute_value literal = cfg.get_config()["literal"]; // no $var substitution
+	config::attribute_value const & literal = cfg.get_config()[z_literal]; // no $var substitution
 	if (!literal.blank()) {
 		var = literal;
 	}
 
-	config::attribute_value value = cfg["value"];
+	config::attribute_value const &value = cfg[z_value];
 	if (!value.blank()) {
 		var = value;
 	}
 
-	const std::string to_variable = cfg["to_variable"];
+	const config::t_token & to_variable = cfg[z_to_variable];
 	if(to_variable.empty() == false) {
 		var = state_of_game->get_variable(to_variable);
 	}
 
-	config::attribute_value add = cfg["add"];
+	config::attribute_value add = cfg[z_add];
 	if (!add.empty()) {
 		var = var.to_double() + add.to_double();
 	}
 
-	config::attribute_value sub = cfg["sub"];
+	config::attribute_value sub = cfg[z_sub];
 	if (!sub.empty()) {
 		var = var.to_double() - sub.to_double();
 	}
 
-	config::attribute_value multiply = cfg["multiply"];
+	config::attribute_value multiply = cfg[z_multiply];
 	if (!multiply.empty()) {
 		var = var.to_double() * multiply.to_double();
 	}
 
-	config::attribute_value divide = cfg["divide"];
+	config::attribute_value divide = cfg[z_divide];
 	if (!divide.empty()) {
 		if (divide.to_double() == 0) {
 			ERR_NG << "division by zero on variable " << name << "\n";
@@ -1431,7 +1445,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		var = var.to_double() / divide.to_double();
 	}
 
-	config::attribute_value modulo = cfg["modulo"];
+	config::attribute_value modulo = cfg[z_modulo];
 	if (!modulo.empty()) {
 		if (modulo.to_double() == 0) {
 			ERR_NG << "division by zero on variable " << name << "\n";
@@ -1440,12 +1454,12 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		var = std::fmod(var.to_double(), modulo.to_double());
 	}
 
-	config::attribute_value round_val = cfg["round"];
+	config::attribute_value round_val = cfg[z_round];
 	if (!round_val.empty()) {
 		double value = var.to_double();
-		if (round_val == "ceil") {
+		if (round_val == z_ceil) {
 			var = int(std::ceil(value));
-		} else if (round_val == "floor") {
+		} else if (round_val == z_floor) {
 			var = int(std::floor(value));
 		} else {
 			// We assume the value is an integer.
@@ -1459,28 +1473,28 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		}
 	}
 
-	config::attribute_value ipart = cfg["ipart"];
+	config::attribute_value ipart = cfg[z_ipart];
 	if (!ipart.empty()) {
 		double result;
 		std::modf(ipart.to_double(), &result);
 		var = int(result);
 	}
 
-	config::attribute_value fpart = cfg["fpart"];
+	config::attribute_value fpart = cfg[z_fpart];
 	if (!fpart.empty()) {
 		double ignore;
 		var = std::modf(fpart.to_double(), &ignore);
 	}
 
-	config::attribute_value string_length_target = cfg["string_length"];
+	config::attribute_value string_length_target = cfg[z_string_length];
 	if (!string_length_target.blank()) {
 		var = int(string_length_target.str().size());
 	}
 
 	// Note: maybe we add more options later, eg. strftime formatting.
 	// For now make the stamp mandatory.
-	const std::string time = cfg["time"];
-	if(time == "stamp") {
+	const config::t_token & time = cfg[z_time];
+	if(time == z_stamp) {
 		var = int(SDL_GetTicks());
 	}
 
@@ -1489,7 +1503,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	// Each element in the list will be considered a separate choice,
 	// unless it contains "..". In this case, it must be a numerical
 	// range (i.e. -1..-10, 0..100, -10..10, etc).
-	const std::string rand = cfg["rand"];
+	const std::string & rand = cfg[z_rand].str();
 
 	// The new random generator, the logic is a copy paste of the old random.
 	if(rand.empty() == false) {
@@ -1567,21 +1581,21 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	}
 
 
-	const vconfig::child_list join_elements = cfg.get_children("join");
+	const vconfig::child_list join_elements = cfg.get_children(z_join);
 	if(!join_elements.empty())
 	{
 		const vconfig join_element=join_elements.front();
 
-		std::string array_name=join_element["variable"];
-		std::string separator=join_element["separator"];
-		std::string key_name=join_element["key"];
+		config::t_token const & array_name=join_element[z_variable];
+		config::t_token const & separator=join_element[z_separator];
+		config::t_token  key_name=join_element[z_key];
 
 		if(key_name.empty())
 		{
-			key_name="value";
+			key_name=z_value;
 		}
 
-		bool remove_empty = join_element["remove_empty"].to_bool();
+		bool remove_empty = join_element[z_remove_empty].to_bool();
 
 		std::string joined_string;
 
@@ -1589,11 +1603,11 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		bool first = true;
 		foreach (const config &cfg, vi.as_array())
 		{
-			std::string current_string = cfg[key_name];
+			config::t_token const & current_string = cfg[key_name];
 			if (remove_empty && current_string.empty()) continue;
 			if (first) first = false;
-			else joined_string += separator;
-			joined_string += current_string;
+			else joined_string += static_cast<std::string const &>(separator);
+			joined_string += static_cast<std::string const &>(current_string);
 		}
 
 		var=joined_string;
@@ -1604,14 +1618,14 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 {	
-	const config::attribute_value & name = cfg["name"];
+	const config::attribute_value & name = cfg[z_name];
 	variable_info dest(name, true, variable_info::TYPE_CONTAINER);
 
-	std::string mode = cfg["mode"]; // replace, append, merge, or insert
-	if(mode == "extend") {
-		mode = "append";
-	} else if(mode != "append" && mode != "merge") {
-		if(mode == "insert") {
+	config::t_token mode = cfg[z_mode]; // replace, append, merge, or insert
+	if(mode == z_extend) {
+		mode = z_append;
+	} else if(mode != z_append && mode != z_merge) {
+		if(mode == z_insert) {
 			size_t child_count = dest.vars->child_count(dest.key);
 			if(dest.index >= child_count) {
 				while(dest.index >= ++child_count) {
@@ -1619,22 +1633,22 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 					dest.vars->append(config(dest.key));
 				}
 				//inserting at the end is handled by an append
-				mode = "append";
+				mode = z_append;
 			}
 		} else {
-			mode = "replace";
+			mode = z_replace;
 		}
 	}
 
-	const vconfig::child_list values = cfg.get_children("value");
-	const vconfig::child_list literals = cfg.get_children("literal");
-	const vconfig::child_list split_elements = cfg.get_children("split");
+	const vconfig::child_list values = cfg.get_children(z_value);
+	const vconfig::child_list literals = cfg.get_children(z_literal);
+	const vconfig::child_list split_elements = cfg.get_children(z_split);
 
 	config data;
 
-	if(cfg.has_attribute("to_variable"))
+	if(cfg.has_attribute(z_to_variable))
 	{
-		variable_info tovar(cfg["to_variable"], false, variable_info::TYPE_CONTAINER);
+		variable_info tovar(cfg[z_to_variable], false, variable_info::TYPE_CONTAINER);
 		if(tovar.is_valid()) {
 			if(tovar.is_explicit_index()) {
 				data.add_child(dest.key, tovar.as_container());
@@ -1659,38 +1673,39 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 	} else if(!split_elements.empty()) {
 		const vconfig split_element=split_elements.front();
 
-		std::string split_string=split_element["list"];
-		std::string separator_string=split_element["separator"];
-		std::string key_name=split_element["key"];
+		config::t_token const & split_string=split_element[z_list];
+		config::t_token const & separator_string=split_element[z_separator];
+		config::t_token key_name=split_element[z_key];
 		if(key_name.empty())
 		{
-			key_name="value";
+			key_name = z_value;
 		}
 
-		bool remove_empty = split_element["remove_empty"].to_bool();
+		bool remove_empty = split_element[z_remove_empty].to_bool();
 
-		char* separator = separator_string.empty() ? NULL : &separator_string[0];
+		char const * separator = separator_string.empty() ? NULL : &static_cast<std::string const &>(separator_string)[0];
 
-		std::vector<std::string> split_vector;
+		std::vector<config::t_token> split_vector;
 
 		//if no separator is specified, explode the string
 		if(separator == NULL)
 		{
-			for(std::string::iterator i=split_string.begin(); i!=split_string.end(); ++i)
+			for(std::string::const_iterator i=static_cast<std::string const &>(split_string).begin(); 
+				i!=static_cast<std::string const &>(split_string).end(); ++i)
 			{
-				split_vector.push_back(std::string(1, *i));
+				split_vector.push_back(config::t_token(std::string(1, *i)));
 			}
 		}
 		else {
-			split_vector=utils::split(split_string, *separator, remove_empty ? utils::REMOVE_EMPTY | utils::STRIP_SPACES : utils::STRIP_SPACES);
+			split_vector=utils::split_token(split_string, *separator, remove_empty ? utils::REMOVE_EMPTY | utils::STRIP_SPACES : utils::STRIP_SPACES);
 		}
 
-		for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
+		for(std::vector<config::t_token>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
 		{
 			data.add_child(dest.key)[key_name]=*i;
 		}
 	}
-	if(mode == "replace")
+	if(mode == z_replace)
 	{
 		if(dest.is_explicit_index()) {
 			dest.vars->remove_child(dest.key, dest.index);
@@ -1700,7 +1715,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 	}
 	if(!data.empty())
 	{
-		if(mode == "merge")
+		if(mode == z_merge)
 		{
 			if(dest.is_explicit_index()) {
 				// merging multiple children into a single explicit index
@@ -1710,7 +1725,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 			} else {
 				dest.vars->merge_with(data);
 			}
-		} else if(mode == "insert" || dest.is_explicit_index()) {
+		} else if(mode == z_insert || dest.is_explicit_index()) {
 			foreach (const config &child, data.child_range(dest.key))
 			{
 				dest.vars->add_child_at(dest.key, child, dest.index++);
@@ -1727,18 +1742,18 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 
 	// role= represents the instruction, so we can't filter on it
 	config item = cfg.get_config();
-	item.remove_attribute("role");
+	item.remove_attribute(z_role);
 	vconfig filter(item);
 
 	// try to match units on the gamemap before the recall lists
-	std::vector<std::string> types = utils::split(filter["type"]);
+	std::vector<config::t_token> types = utils::split_token(filter[z_type]);
 	const bool has_any_types = !types.empty();
-	std::vector<std::string>::iterator ti = types.begin(),
+	std::vector<config::t_token>::iterator ti = types.begin(),
 		ti_end = types.end();
 	// loop to give precendence based on type order
 	do {
 		if (has_any_types) {
-			item["type"] = *ti;
+			item[z_type] = *ti;
 		}
 		unit_map::iterator itor;
 		foreach (unit &u, *resources::units) {
@@ -1751,26 +1766,26 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 	} while(!found && has_any_types && ++ti != ti_end);
 	if(!found) {
 		// next try to match units on the recall lists
-		std::set<std::string> player_ids;
-		std::vector<std::string> sides = utils::split(cfg["side"]);
+		std::set<config::t_token> player_ids;
+		std::vector<config::t_token> sides = utils::split_token(cfg[z_side]);
 		const bool has_any_sides = !sides.empty();
-		foreach(std::string const& side_str, sides) {
+		foreach(config::t_token const& side_str, sides) {
 			size_t side_num = lexical_cast_default<size_t>(side_str,0);
 			if(side_num > 0 && side_num <= resources::teams->size()) {
-				player_ids.insert((resources::teams->begin() + (side_num - 1))->save_id());
+				player_ids.insert(config::t_token((resources::teams->begin() + (side_num - 1))->save_id()));
 			}
 		}
 		// loop to give precendence based on type order
-		std::vector<std::string>::iterator ti = types.begin();
+		std::vector<config::t_token>::iterator ti = types.begin();
 		do {
 			if (has_any_types) {
-				item["type"] = *ti;
+				item[z_type] = *ti;
 			}
 			std::vector<team>::iterator pi,
 				pi_end = resources::teams->end();
 			for (pi = resources::teams->begin(); pi != pi_end; ++pi)
 			{
-				std::string const& player_id = pi->save_id();
+				config::t_token const& player_id = config::t_token(pi->save_id());
 				// Verify the filter's side= includes this player
 				if(has_any_sides && !player_ids.count(player_id)) {
 					continue;
@@ -1778,7 +1793,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 				// Iterate over the player's recall list to find a match
 				for(size_t i=0; i < pi->recall_list().size(); ++i) {
 					unit& u = pi->recall_list()[i];
-					scoped_recall_unit auto_store("this_unit", player_id, i);
+					scoped_recall_unit auto_store(z_this_unit, player_id, i);
 					if (u.matches_filter(filter, map_location())) {
 						u.set_role(cfg[z_role].token());
 						found=true;
@@ -1798,7 +1813,7 @@ WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(remove_sound_source, /*event_info*/, cfg)
 {
-	resources::soundsources->remove(cfg["id"]);
+	resources::soundsources->remove(cfg[z_id]);
 }
 
 void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
@@ -1834,7 +1849,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 	gamemap mask(*resources::game_map);
 
 	try {
-		mask.read(cfg["mask"]);
+		mask.read(cfg[z_mask]);
 	} catch(incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
 		return;
@@ -1842,7 +1857,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 		e.show(*resources::screen);
 		return;
 	}
-	bool border = cfg["border"].to_bool();
+	bool border = cfg[z_border].to_bool();
 	resources::game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y, border);
 	screen_needs_rebuild = true;
 }
@@ -1864,20 +1879,20 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 {
 	config parsed_cfg = cfg.get_parsed_config();
 
-	config::attribute_value to_variable = cfg["to_variable"];
+	config::attribute_value to_variable = cfg[z_to_variable];
 	if (!to_variable.blank())
 	{
-		parsed_cfg.remove_attribute("to_variable");
+		parsed_cfg.remove_attribute(z_to_variable);
 		unit new_unit(parsed_cfg, true, resources::state_of_game);
 		config &var = resources::state_of_game->get_variable_cfg(to_variable);
 		var.clear();
 		new_unit.write(var);
-		if (const config::attribute_value *v = parsed_cfg.get("x")) var["x"] = *v;
-		if (const config::attribute_value *v = parsed_cfg.get("y")) var["y"] = *v;
+		if (const config::attribute_value *v = parsed_cfg.get(z_x)) var[z_x] = *v;
+		if (const config::attribute_value *v = parsed_cfg.get(z_y)) var[z_y] = *v;
 		return;
 	}
 
-	int side = parsed_cfg["side"].to_int(1);
+	int side = parsed_cfg[z_side].to_int(1);
 
 
 	if ((side<1)||(side > static_cast<int>(resources::teams->size()))) {
@@ -1914,12 +1929,12 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 	 * collisions; filters should be named consistently and always have a
 	 * distinct scope.
 	 */
-	temp_config["x"] = "recall";
-	temp_config["y"] = "recall";
+	temp_config[z_x] = z_recall;
+	temp_config[z_y] = z_recall;
 	vconfig unit_filter(temp_config);
 	for(int index = 0; !unit_recalled && index < int(resources::teams->size()); ++index) {
 		LOG_NG << "for side " << index + 1 << "...\n";
-		const std::string player_id = (*resources::teams)[index].save_id();
+		const config::t_token player_id = config::t_token((*resources::teams)[index].save_id());
 
 		if((*resources::teams)[index].recall_list().size() < 1) {
 			DBG_NG << "recall list is empty when trying to recall!\n"
@@ -1931,12 +1946,12 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 
 		for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			DBG_NG << "checking unit against filter...\n";
-			scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
+			scoped_recall_unit auto_store(z_this_unit, player_id, u - avail.begin());
 			if (u->matches_filter(unit_filter, map_location())) {
 				const unit to_recruit(*u);
 				avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 				const unit* pass_check = &to_recruit;
-				if(!cfg["check_passability"].to_bool(true)) pass_check = NULL;
+				if(!cfg[z_check_passability].to_bool(true)) pass_check = NULL;
 				map_location loc = cfg_to_loc(cfg);
 				if(!resources::game_map->on_board(loc))
 				{
@@ -1947,7 +1962,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 					loc = pathfind::find_vacant_tile(*resources::game_map, *resources::units, loc, pathfind::VACANT_ANY, pass_check);
 				}
 				if(!resources::game_map->on_board(loc)) { ERR_NG << "Trying to recall on invalid location!\n"; }
-				place_recruit(to_recruit, loc, true, cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false), true, true);
+				place_recruit(to_recruit, loc, true, cfg[z_show].to_bool(true), cfg[z_fire_event].to_bool(false), true, true);
 				unit_recalled = true;
 				break;
 			}
@@ -1957,17 +1972,17 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(object, event_info, cfg)
 {
-	const vconfig filter = cfg.child("filter");
+	const vconfig filter = cfg.child(z_filter);
 
-	std::string id = cfg["id"];
+	config::t_token const &id = cfg[z_id];
 
 	// If this item has already been used
-	if(id != "" && used_items.count(id))
+	if(id != z_empty && used_items.count(id))
 		return;
 
-	std::string image = cfg["image"];
-	std::string caption = cfg["name"];
-	std::string text;
+	config::t_token const & image = cfg[z_image];
+	config::t_token const & caption = cfg[z_name];
+	config::t_token text;
 
 	map_location loc;
 	if(!filter.null()) {
@@ -1985,11 +2000,11 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	const unit_map::iterator u = resources::units->find(loc);
 
-	std::string command_type = "then";
+	config::t_token command_type = z_then;
 
 	if (u != resources::units->end() && (filter.null() || game_events::unit_matches_filter(*u, filter)))
 	{
-		text = cfg["description"].str();
+		text = cfg[z_description];
 
 		u->add_modification(z_object, cfg.get_parsed_config());
 
@@ -1999,11 +2014,11 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 		// Mark this item as used up.
 		used_items.insert(id);
 	} else {
-		text = cfg["cannot_use_message"].str();
-		command_type = "else";
+		text = cfg[z_cannot_use_message];
+		command_type = z_else;
 	}
 
-	if (!cfg["silent"].to_bool())
+	if (!cfg[z_silent].to_bool())
 	{
 		// Redraw the unit, with its new stats
 		resources::screen->draw();
@@ -2027,13 +2042,13 @@ WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 		font::remove_floating_label(floating_label);
 
 	// Display a message on-screen
-	std::string text = cfg["text"];
+	t_string const & text = cfg[z_text];
 	if(text.empty())
 		return;
 
-	int size = cfg["size"].to_int(font::SIZE_SMALL);
-	int lifetime = cfg["duration"].to_int(50);
-	SDL_Color color = create_color(cfg["red"], cfg["green"], cfg["blue"]);
+	int size = cfg[z_size].to_int(font::SIZE_SMALL);
+	int lifetime = cfg[z_duration].to_int(50);
+	SDL_Color color = create_color(cfg[z_red], cfg[z_green], cfg[z_blue]);
 
 	const SDL_Rect& rect = resources::screen->map_outside_area();
 
@@ -2095,14 +2110,14 @@ typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
 
 WML_HANDLER_FUNCTION(kill, event_info, cfg)
 {
-	bool secondary_unit = cfg.has_child("secondary_unit");
+	bool secondary_unit = cfg.has_child(z_secondary_unit);
 	game_events::entity_location killer_loc(map_location(0, 0));
-	if(cfg["fire_event"].to_bool() && secondary_unit)
+	if(cfg[z_fire_event].to_bool() && secondary_unit)
 	{
 		secondary_unit = false;
 		for(unit_map::const_unit_iterator unit = resources::units->begin();
 			unit != resources::units->end(); ++unit) {
-				if(game_events::unit_matches_filter(*unit, cfg.child("secondary_unit")))
+				if(game_events::unit_matches_filter(*unit, cfg.child(z_secondary_unit)))
 				{
 					killer_loc = game_events::entity_location(*unit);
 					secondary_unit = true;
@@ -2131,13 +2146,13 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		if(!secondary_unit) {
 			killer_loc = game_events::entity_location(*un);
 		}
-		if (cfg["fire_event"].to_bool())
+		if (cfg[z_fire_event].to_bool())
 			{
 				// Prevent infinite recursion of 'die' events
 				fire_event = true;
 				recursion_preventer_ptr recursion_prevent;
 
-				if (event_info.loc1 == death_loc && (event_info.name == "die" || event_info.name == "last breath"))
+				if (event_info.loc1 == death_loc && (event_info.name == z_die || event_info.name == z_last_breath))
 					{
 						recursion_prevent.reset(new recursion_preventer(death_loc));
 
@@ -2150,9 +2165,9 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 					}
 			}
 		if (fire_event) {
-			game_events::fire("last breath", death_loc, killer_loc);
+			game_events::fire(z_last_breath, death_loc, killer_loc);
 		}
-		if (cfg["animate"].to_bool()) {
+		if (cfg[z_animate].to_bool()) {
 			resources::screen->scroll_to_tile(loc);
 			unit_map::iterator iun = resources::units->find(loc);
 			if (iun != resources::units->end() && iun.valid()) {
@@ -2160,7 +2175,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			}
 		}
 		if (fire_event) {
-			game_events::fire("die", death_loc, killer_loc);
+			game_events::fire(z_die, death_loc, killer_loc);
 			unit_map::iterator iun = resources::units->find(death_loc);
 			if (iun != resources::units->end() && death_loc.matches_unit(*iun)) {
 				resources::units->erase(iun);
@@ -2172,10 +2187,10 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 
 	// If the filter doesn't contain positional information,
 	// then it may match units on all recall lists.
-	t_string const& cfg_x = cfg["x"];
-	t_string const& cfg_y = cfg["y"];
-	if((cfg_x.empty() || cfg_x == "recall")
-	&& (cfg_y.empty() || cfg_y == "recall"))
+	t_string const& cfg_x = cfg[z_x];
+	t_string const& cfg_y = cfg[z_y];
+	if((cfg_x.empty() || cfg_x == z_recall)
+	&& (cfg_y.empty() || cfg_y == z_recall))
 	{
 		//remove the unit from the corresponding team's recall list
 		for(std::vector<team>::iterator pi = resources::teams->begin();
@@ -2183,7 +2198,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		{
 			std::vector<unit>& avail_units = pi->recall_list();
 			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
+				scoped_recall_unit auto_store(z_this_unit, pi->save_id(), j - avail_units.begin());
 				if (j->matches_filter(cfg, map_location())) {
 					j = avail_units.erase(j);
 				} else {
@@ -2216,28 +2231,28 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	   [/command]
 	   [/set_menu_item]
 	   */
-	std::string id = cfg["id"];
+	config::t_token const & id = cfg[z_id];
 	wml_menu_item*& mref = resources::state_of_game->wml_menu_items[id];
 	if(mref == NULL) {
 		mref = new wml_menu_item(id);
 	}
-	if(cfg.has_attribute("image")) {
-		mref->image = cfg["image"].str();
+	if(cfg.has_attribute(z_image)) {
+		mref->image = cfg[z_image].str();
 	}
-	if(cfg.has_attribute("description")) {
-		mref->description = cfg["description"];
+	if(cfg.has_attribute(z_description)) {
+		mref->description = cfg[z_description];
 	}
-	if(cfg.has_attribute("needs_select")) {
-		mref->needs_select = cfg["needs_select"].to_bool();
+	if(cfg.has_attribute(z_needs_select)) {
+		mref->needs_select = cfg[z_needs_select].to_bool();
 	}
-	if(cfg.has_child("show_if")) {
-		mref->show_if = cfg.child("show_if").get_config();
+	if(cfg.has_child(z_show_if)) {
+		mref->show_if = cfg.child(z_show_if).get_config();
 	}
-	if(cfg.has_child("filter_location")) {
-		mref->filter_location = cfg.child("filter_location").get_config();
+	if(cfg.has_child(z_filter_location)) {
+		mref->filter_location = cfg.child(z_filter_location).get_config();
 	}
-	if(cfg.has_child("command")) {
-		config* new_command = new config(cfg.child("command").get_config());
+	if(cfg.has_child(z_command)) {
+		config* new_command = new config(cfg.child(z_command).get_config());
 		wmi_command_changes.push_back(wmi_command_change(id, new_command));
 	}
 }
@@ -2263,14 +2278,14 @@ struct unstore_unit_advance_choice: mp_sync::user_choice
 			selected = rand() % nb_options;
 		}
 		config cfg;
-		cfg["value"] = selected;
+		cfg[z_value] = selected;
 		return cfg;
 	}
 
 	virtual config random_choice(rand_rng::simple_rng &rng) const
 	{
 		config cfg;
-		cfg["value"] = rng.get_next_random() % nb_options;
+		cfg[z_value] = rng.get_next_random() % nb_options;
 		return cfg;
 	}
 };
@@ -2278,7 +2293,7 @@ struct unstore_unit_advance_choice: mp_sync::user_choice
 // Unit serialization to variables
 WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 {
-	const config &var = resources::state_of_game->get_variable_cfg(cfg["variable"]);
+	const config &var = resources::state_of_game->get_variable_cfg(cfg[z_variable]);
 
 	try {
 		config tmp_cfg(var);
@@ -2286,12 +2301,12 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 		preferences::encountered_units().insert(u.type_id());
 		map_location loc = cfg_to_loc(
-			(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
-		const bool advance = cfg["advance"].to_bool(true);
+			(cfg.has_attribute(z_x) && cfg.has_attribute(z_y)) ? cfg : vconfig(var));
+		const bool advance = cfg[z_advance].to_bool(true);
 		if(resources::game_map->on_board(loc)) {
-			if (cfg["find_vacant"].to_bool()) {
+			if (cfg[z_find_vacant].to_bool()) {
 				const unit* pass_check = NULL;
-				if (cfg["check_passability"].to_bool(true)) pass_check = &u;
+				if (cfg[z_check_passability].to_bool(true)) pass_check = &u;
 				loc = pathfind::find_vacant_tile(
 						*resources::game_map,
 						*resources::units,
@@ -2303,12 +2318,12 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			resources::units->erase(loc);
 			resources::units->add(loc, u);
 
-			std::string text = cfg["text"];
+			config::t_token const &text = cfg[z_text];
 			play_controller *controller = resources::controller;
 			if(!text.empty() && !controller->is_skipping_replay())
 			{
 				// Print floating label
-				resources::screen->float_label(loc, text, cfg["red"], cfg["green"], cfg["blue"]);
+				resources::screen->float_label(loc, text, cfg[z_red], cfg[z_green], cfg[z_blue]);
 			}
 
 			const int side = controller->current_side();
@@ -2318,9 +2333,9 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				int total_opt = unit_helper::number_of_possible_advances(u);
 				bool use_dialog = side == u.side() &&
 					(*resources::teams)[side - 1].is_human();
-				config selected = mp_sync::get_user_choice("choose",
+				config selected = mp_sync::get_user_choice(z_choose,
 					unstore_unit_advance_choice(total_opt, loc, use_dialog));
-				dialogs::animate_unit_advancement(loc, selected["value"], cfg["fire_event"].to_bool(false));
+				dialogs::animate_unit_advancement(loc, selected[z_value], cfg[z_fire_event].to_bool(false));
 			}
 		} else {
 			if(advance && u.advances()) {
@@ -2393,11 +2408,11 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
 {
-	std::string variable = cfg["variable"];
+	config::t_token variable = cfg[z_variable];
 	if (variable.empty()) {
-		variable="location";
+		variable=z_location;
 	}
-	int side_num = cfg["side"].to_int(1);
+	int side_num = cfg[z_side].to_int(1);
 
 	const map_location& loc = resources::game_map->starting_position(side_num);
 	config &loc_store = resources::state_of_game->get_variable_cfg(variable);
@@ -2406,7 +2421,7 @@ WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
 	resources::game_map->write_terrain(loc, loc_store);
 	if (resources::game_map->is_village(loc)) {
 		int side = village_owner(loc, *resources::teams) + 1;
-		loc_store["owner_side"] = side;
+		loc_store[z_owner_side] = side;
 	}
 }
 
@@ -2418,10 +2433,10 @@ WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
  */
 WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 {
-	log_scope("store_villages");
-	std::string variable = cfg["variable"];
+	log_scope(z_store_villages);
+	config::t_token variable = cfg[z_variable];
 	if (variable.empty()) {
-		variable="location";
+		variable=z_location;
 	}
 	config to_store;
 	variable_info varinfo(variable, true, variable_info::TYPE_ARRAY);
@@ -2435,7 +2450,7 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 			j->write(loc_store);
 			resources::game_map->write_terrain(*j, loc_store);
 			int side = village_owner(*j, *resources::teams) + 1;
-			loc_store["owner_side"] = side;
+			loc_store[z_owner_side] = side;
 		}
 	}
 	varinfo.vars->clear_children(varinfo.key);
@@ -2465,17 +2480,17 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 		}
 	}
 
-	std::string next_scenario = cfg["next_scenario"];
+	config::t_token const & next_scenario = cfg[z_next_scenario];
 	if (!next_scenario.empty()) {
 		state_of_game->classification().next_scenario = next_scenario;
 	}
 
-	std::string end_of_campaign_text = cfg["end_text"];
+	config::t_token const & end_of_campaign_text = cfg[z_end_text];
 	if (!end_of_campaign_text.empty()) {
 		state_of_game->classification().end_text = end_of_campaign_text;
 	}
 
-	config::attribute_value end_of_campaign_text_delay = cfg["end_text_duration"];
+	config::attribute_value end_of_campaign_text_delay = cfg[z_end_text_duration];
 	if (!end_of_campaign_text_delay.empty()) {
 		state_of_game->classification().end_text_duration =
 			end_of_campaign_text_delay.to_int(state_of_game->classification().end_text_duration);
@@ -2483,23 +2498,23 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 
 	end_level_data &data = resources::controller->get_end_level_data();
 
-	std::string result = cfg["result"];
+	config::t_token const & result = cfg[z_result];
 	VALIDATE_WITH_DEV_MESSAGE(
-			  result.empty() || result == "victory" || result == "defeat"
+			  result.empty() || result == z_victory || result == z_defeat
 			, _("Invalid value in the result key for [end_level]")
-			, "result = '"  + result + "'.");
-	data.custom_endlevel_music = cfg["music"].str();
-	data.carryover_report = cfg["carryover_report"].to_bool(true);
-	data.prescenario_save = cfg["save"].to_bool(true);
-	data.replay_save = cfg["replay_save"].to_bool(true);
-	data.linger_mode = cfg["linger_mode"].to_bool(true)
+			  , "result = '"  + static_cast<std::string const &>(result) + "'.");
+	data.custom_endlevel_music = cfg[z_music].str();
+	data.carryover_report = cfg[z_carryover_report].to_bool(true);
+	data.prescenario_save = cfg[z_save].to_bool(true);
+	data.replay_save = cfg[z_replay_save].to_bool(true);
+	data.linger_mode = cfg[z_linger_mode].to_bool(true)
 		&& !resources::teams->empty();
-	data.reveal_map = cfg["reveal_map"].to_bool(true);
-	data.gold_bonus = cfg["bonus"].to_bool(true);
-	data.carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
-	data.carryover_add = cfg["carryover_add"].to_bool();
+	data.reveal_map = cfg[z_reveal_map].to_bool(true);
+	data.gold_bonus = cfg[z_bonus].to_bool(true);
+	data.carryover_percentage = cfg[z_carryover_percentage].to_int(game_config::gold_carryover_percentage);
+	data.carryover_add = cfg[z_carryover_add].to_bool();
 
-	if(result == "defeat") {
+	if(result == z_defeat) {
 		data.carryover_add = false;
 		resources::controller->force_end_level(DEFEAT);
 	} else {
@@ -2511,7 +2526,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
 
-	config::attribute_value side = cfg["side"];
+	config::attribute_value side = cfg[z_side];
 	if (!side.empty()) {
 		clear_shroud(side);
 		screen.recalculate_minimap();
@@ -2545,23 +2560,23 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 {
 	unit_map* units = resources::units;
 
-	const vconfig healers_filter = cfg.child("filter_second");
+	const vconfig healers_filter = cfg.child(z_filter_second);
 	std::vector<unit*> healers;
 	if (!healers_filter.null()) {
 		foreach (unit& u, *units) {
-			if (game_events::unit_matches_filter(u, healers_filter) && u.has_ability_type("heals")) {
+			if (game_events::unit_matches_filter(u, healers_filter) && u.has_ability_type(z_heals)) {
 				healers.push_back(&u);
 			}
 		}
 	}
 
-	const config::attribute_value amount = cfg["amount"];
-	const config::attribute_value moves = cfg["moves"];
-	const bool restore_attacks = cfg["restore_attacks"].to_bool(false);
-	const bool restore_statuses = cfg["restore_statuses"].to_bool(true);
-	const bool animate = cfg["animate"].to_bool(false);
+	const config::attribute_value amount = cfg[z_amount];
+	const config::attribute_value moves = cfg[z_moves];
+	const bool restore_attacks = cfg[z_restore_attacks].to_bool(false);
+	const bool restore_statuses = cfg[z_restore_statuses].to_bool(true);
+	const bool animate = cfg[z_animate].to_bool(false);
 
-	const vconfig healed_filter = cfg.child("filter");
+	const vconfig healed_filter = cfg.child(z_filter);
 	unit_map::unit_iterator u;
 	bool only_unit_at_loc1 = healed_filter.null();
 	bool heal_amount_to_set = true;
@@ -2574,7 +2589,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 		else if (!game_events::unit_matches_filter(*u, healed_filter)) continue;
 
 		int heal_amount = u->max_hitpoints() - u->hitpoints();
-		if(amount.blank() || amount == "full") u->set_hitpoints(u->max_hitpoints());
+		if(amount.blank() || amount == z_full) u->set_hitpoints(u->max_hitpoints());
 		else {
 			heal_amount = lexical_cast_default<int, config::attribute_value> (amount, heal_amount);
 			const int& new_hitpoints = std::max(1, std::min(u->max_hitpoints(), u->hitpoints() + heal_amount));
@@ -2583,7 +2598,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 		}
 
 		if(!moves.blank()) {
-			if(moves == "full") u->set_movement(u->total_movement());
+			if(moves == z_full) u->set_movement(u->total_movement());
 			else {
 				// set_movement doesn't set below 0
 				u->set_movement(std::min<int>(
@@ -2606,7 +2621,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 		if (heal_amount_to_set)
 		{
 			heal_amount_to_set = false;
-			resources::state_of_game->get_variable("heal_amount") = heal_amount;
+			resources::state_of_game->get_variable(z_heal_amount) = heal_amount;
 		}
 
 		if(animate) unit_display::unit_healing(*u, u->get_location(), healers, heal_amount);
@@ -2623,7 +2638,7 @@ WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
 WML_HANDLER_FUNCTION(open_help,  /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
-	t_string topic_id = cfg["topic"];
+	t_string topic_id = cfg[z_topic];
 	help::show_help(screen, topic_id.to_serialized());
 }
 // Helper namespace to do some subparts for message function
@@ -2646,13 +2661,13 @@ unit_map::iterator handle_speaker(
 	game_display &screen = *resources::screen;
 
 	unit_map::iterator speaker = units->end();
-	const std::string speaker_str = cfg["speaker"];
+	config::t_token const & speaker_str = cfg[z_speaker];
 
-	if(speaker_str == "unit") {
+	if(speaker_str == z_unit) {
 		speaker = units->find(event_info.loc1);
-	} else if(speaker_str == "second_unit") {
+	} else if(speaker_str == z_second_unit) {
 		speaker = units->find(event_info.loc2);
-	} else if(speaker_str != "narrator") {
+	} else if(speaker_str != z_narrator) {
 		for(speaker = units->begin(); speaker != units->end(); ++speaker){
 			if (game_events::unit_matches_filter(*speaker, cfg))
 				break;
@@ -2668,7 +2683,7 @@ unit_map::iterator handle_speaker(
 			screen.scroll_to_tile(map_location(spl.x, offset_from_center));
 		}
 		screen.highlight_hex(spl);
-	} else if(speaker_str == "narrator") {
+	} else if(speaker_str == z_narrator) {
 		LOG_NG << "no speaker\n";
 		screen.highlight_hex(map_location::null_location);
 	} else {
@@ -2688,15 +2703,15 @@ unit_map::iterator handle_speaker(
  *
  * @returns                       The image to show.
  */
-std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
+config::t_token get_image(const vconfig& cfg, unit_map::iterator speaker)
 {
-	std::string image = cfg["image"];
+	config::t_token image = cfg[z_image];
 	if (image.empty() && speaker != resources::units->end())
 	{
 		image = speaker->big_profile();
 #ifndef LOW_MEM
 		if(image == speaker->absolute_image()) {
-			image += speaker->image_mods();
+			image = config::t_token(static_cast<std::string const &>(image) + static_cast<std::string const &>(speaker->image_mods()));
 		}
 #endif
 	}
@@ -2711,13 +2726,13 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
  *
  * @returns                       The caption to show.
  */
-std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
+config::t_token get_caption(const vconfig& cfg, unit_map::iterator speaker)
 {
-	std::string caption = cfg["caption"];
+	config::t_token caption = cfg[z_caption];
 	if (caption.empty() && speaker != resources::units->end()) {
-		caption = speaker->name();
+		caption = speaker->name().token();
 		if(caption.empty()) {
-			caption = speaker->type_name();
+			caption = speaker->type_name().token();
 		}
 	}
 	return caption;
@@ -2731,18 +2746,18 @@ struct message_user_choice : mp_sync::user_choice
 	unit_map::iterator speaker;
 	vconfig text_input_element;
 	bool has_text_input;
-	const std::vector<std::string> &options;
+	const std::vector<config::t_token> &options;
 
 	message_user_choice(const vconfig &c, const unit_map::iterator &s,
-		const vconfig &t, bool ht, const std::vector<std::string> &o)
+						const vconfig &t, bool ht, const std::vector<config::t_token> &o)
 		: cfg(c), speaker(s), text_input_element(t)
 		, has_text_input(ht), options(o)
 	{}
 
 	virtual config query_user() const
 	{
-		std::string image = get_image(cfg, speaker);
-		std::string caption = get_caption(cfg, speaker);
+		std::string image = static_cast<std::string const &>(get_image(cfg, speaker));
+		config::t_token const & caption = get_caption(cfg, speaker);
 
 		size_t right_offset = image.find("~RIGHT()");
 		bool left_side = right_offset == std::string::npos;
@@ -2751,20 +2766,26 @@ struct message_user_choice : mp_sync::user_choice
 		}
 
 		// Parse input text, if not available all fields are empty
-		std::string text_input_label = text_input_element["label"];
-		std::string text_input_content = text_input_element["text"];
-		unsigned input_max_size = text_input_element["max_length"].to_int(256);
+		config::t_token const & text_input_label = text_input_element[z_label];
+		//gui2 saves a pointer to this string? odd
+		std::string text_input_content = text_input_element[z_text];
+		unsigned input_max_size = text_input_element[z_max_length].to_int(256);
 		if (input_max_size > 1024 || input_max_size < 1) {
 			lg::wml_error << "invalid maximum size for input "
 				<< input_max_size << '\n';
 			input_max_size = 256;
 		}
 
+		//todo update wml_message to use t_token and remove this copy
+		std::vector<std::string> coptions;
+		foreach(config::t_token const & i, options){
+			coptions.push_back(i); }
+
 		int option_chosen;
 		int dlg_result = gui2::show_wml_message(left_side,
-			resources::screen->video(), caption, cfg["message"],
+			resources::screen->video(), caption, cfg[z_message],
 			image, false, has_text_input, text_input_label,
-			&text_input_content, input_max_size, options,
+			&text_input_content, input_max_size, coptions,
 			&option_chosen);
 
 		/* Since gui2::show_wml_message needs to do undrawing the
@@ -2779,8 +2800,8 @@ struct message_user_choice : mp_sync::user_choice
 		}
 
 		config cfg;
-		if (!options.empty()) cfg["value"] = option_chosen;
-		if (has_text_input) cfg["text"] = text_input_content;
+		if (!options.empty()) cfg[z_value] = option_chosen;
+		if (has_text_input) cfg[z_text] = text_input_content;
 		return cfg;
 	}
 
@@ -2794,9 +2815,9 @@ struct message_user_choice : mp_sync::user_choice
 WML_HANDLER_FUNCTION(message, event_info, cfg)
 {
 	// Check if there is any input to be made, if not the message may be skipped
-	const vconfig::child_list menu_items = cfg.get_children("option");
+	const vconfig::child_list menu_items = cfg.get_children(z_option);
 
-	const vconfig::child_list text_input_elements = cfg.get_children("text_input");
+	const vconfig::child_list text_input_elements = cfg.get_children(z_text_input);
 	const bool has_text_input = (text_input_elements.size() == 1);
 
 	bool has_input= (has_text_input || !menu_items.empty() );
@@ -2812,19 +2833,19 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 
 	// Check if this message is for this side
-	std::string side_for_raw = cfg["side_for"];
+	config::t_token const & side_for_raw = cfg[z_side_for];
 	if (!side_for_raw.empty())
 	{
 		/* Always ignore side_for when the message has some input
 		   boxes, but display the error message only if side_for is
 		   used for an inactive side. */
 		bool side_for_show = has_input;
-		if (has_input && side_for_raw != str_cast(resources::controller->current_side()))
+		if (has_input && static_cast<std::string const &>(side_for_raw) != str_cast(resources::controller->current_side()))
 			lg::wml_error << "[message]side_for= cannot query any user input out of turn.\n";
 
-		std::vector<std::string> side_for =
-			utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-		std::vector<std::string>::iterator itSide;
+		std::vector<config::t_token> side_for =
+			utils::split_token(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
+		std::vector<config::t_token>::iterator itSide;
 		size_t side;
 
 		// Check if any of side numbers are human controlled
@@ -2847,25 +2868,25 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		}
 	}
 
-	unit_map::iterator speaker = handle_speaker(event_info, cfg, cfg["scroll"].to_bool(true));
-	if (speaker == resources::units->end() && cfg["speaker"] != "narrator") {
+	unit_map::iterator speaker = handle_speaker(event_info, cfg, cfg[z_scroll].to_bool(true));
+	if (speaker == resources::units->end() && cfg[z_speaker] != z_narrator) {
 		// No matching unit found, so the dialog can't come up.
 		// Continue onto the next message.
 		WRN_NG << "cannot show message\n";
 		return;
 	}
 
-	std::vector<std::string> options;
+	std::vector<config::t_token> options;
 	std::vector<vconfig::child_list> option_events;
 
 	for(vconfig::child_list::const_iterator mi = menu_items.begin();
 			mi != menu_items.end(); ++mi) {
-		std::string msg_str = (*mi)["message"];
-		if (!mi->has_child("show_if")
-			|| game_events::conditional_passed(mi->child("show_if")))
+		config::t_token const & msg_str = (*mi)[z_message];
+		if (!mi->has_child(z_show_if)
+			|| game_events::conditional_passed(mi->child(z_show_if)))
 		{
 			options.push_back(msg_str);
-			option_events.push_back((*mi).get_children("command"));
+			option_events.push_back((*mi).get_children(z_command));
 		}
 	}
 
@@ -2875,8 +2896,8 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		return;
 	}
 
-	if (cfg.has_attribute("sound")) {
-		sound::play_sound(cfg["sound"]);
+	if (cfg.has_attribute(z_sound)) {
+		sound::play_sound(cfg[z_sound]);
 	}
 
 	if(text_input_elements.size()>1) {
@@ -2887,12 +2908,11 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		text_input_elements.front() : vconfig::empty_vconfig();
 
 	int option_chosen = 0;
-	std::string text_input_result;
+	config::t_token  text_input_result;
 
 	DBG_DP << "showing dialog...\n";
 
-	message_user_choice msg(cfg, speaker, text_input_element, has_text_input,
-		options);
+	message_user_choice msg(cfg, speaker, text_input_element, has_text_input, options);
 	if (!has_input)
 	{
 		/* Always show the dialog if it has no input, whether we are
@@ -2901,9 +2921,9 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 	else
 	{
-		config choice = mp_sync::get_user_choice("input", msg, 0, true);
-		option_chosen = choice["value"];
-		text_input_result = choice["text"].str();
+		config choice = mp_sync::get_user_choice(z_input, msg, 0, true);
+		option_chosen = choice[z_value];
+		text_input_result = choice[z_text].token();
 	}
 
 	// Implement the consequences of the choice
@@ -2922,37 +2942,38 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		}
 	}
 	if(has_text_input) {
-		std::string variable_name=text_input_element["variable"];
+		config::t_token variable_name=text_input_element[z_variable];
 		if(variable_name.empty())
-			variable_name="input";
-		resources::state_of_game->set_variable(variable_name, text_input_result);
+			variable_name=z_input;
+		resources::state_of_game->set_variable(variable_name, t_string(text_input_result));
 	}
 }
 
 // Adding/removing new time_areas dynamically with Standard Location Filters.
 WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 {
-	log_scope("time_area");
+	log_scope(z_time_area);
 
-	bool remove = cfg["remove"].to_bool();
-	std::string ids = cfg["id"];
+	bool remove = cfg[z_remove].to_bool();
+	config::t_token const & ids = cfg[z_id];
 
 	if(remove) {
-		const std::vector<std::string> id_list =
-			utils::split(ids, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-		foreach(const std::string& id, id_list) {
+		const std::vector<config::t_token> id_list =
+			utils::split_token(ids, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
+		foreach(const config::t_token& id, id_list) {
 			resources::tod_manager->remove_time_area(id);
 			LOG_NG << "event WML removed time_area '" << id << "'\n";
 		}
 	}
 	else {
-		std::string id;
-		if(ids.find(',') != std::string::npos) {
-			id = utils::split(ids,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
-			ERR_NG << "multiple ids for inserting a new time_area; will use only the first\n";
-		} else {
-			id = ids;
-		}
+		config::t_token id;
+		id = utils::split_token(ids,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
+		// if(ids.find(',') != std::string::npos) {
+		// 	id = utils::split_token(ids,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
+		// 	ERR_NG << "multiple ids for inserting a new time_area; will use only the first\n";
+		// } else {
+		// 	id = ids;
+		// }
 		map_location::t_maploc_set locs;
 		terrain_filter filter(cfg, *resources::units);
 		filter.restrict_size(game_config::max_loop);
@@ -2966,7 +2987,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 //Replacing the current time of day schedule
 WML_HANDLER_FUNCTION(replace_schedule, /*event_info*/, cfg)
 {
-	if(cfg.get_children("time").empty()) {
+	if(cfg.get_children(z_time).empty()) {
 		ERR_NG << "attempted to to replace ToD schedule with empty schedule\n";
 	} else {
 		resources::tod_manager->replace_schedule(cfg.get_parsed_config());
@@ -2988,9 +3009,9 @@ WML_HANDLER_FUNCTION(disallow_end_turn, /*event_info*/, /*cfg*/)
 // Adding new events
 WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 {
-	if (cfg["remove"].to_bool(false)) {
-		event_handlers.remove_event_handler(cfg["id"]);
-	} else if (!cfg["delayed_variable_substitution"].to_bool(true)) {
+	if (cfg[z_remove].to_bool(false)) {
+		event_handlers.remove_event_handler(cfg[z_id]);
+	} else if (!cfg[z_delayed_variable_substitution].to_bool(true)) {
 		event_handlers.add_event_handler(game_events::event_handler(cfg.get_parsed_config()));
 	} else {
 		event_handlers.add_event_handler(game_events::event_handler(cfg.get_config()));
@@ -3004,9 +3025,9 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 
 	gamemap map(*game_map);
 	try {
-		map.read(cfg["map"]);
+		map.read(cfg[z_map]);
 	} catch(incorrect_map_format_error&) {
-		lg::wml_error << "replace_map: Unable to load map " << cfg["map"] << "\n";
+		lg::wml_error << "replace_map: Unable to load map " << cfg[z_map] << "\n";
 		return;
 	} catch(twml_exception& e) {
 		e.show(*resources::screen);
@@ -3014,14 +3035,14 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	}
 	if (map.total_width() > game_map->total_width()
 	|| map.total_height() > game_map->total_height()) {
-		if (!cfg["expand"].to_bool()) {
+		if (!cfg[z_expand].to_bool()) {
 			lg::wml_error << "replace_map: Map dimension(s) increase but expand is not set\n";
 			return;
 		}
 	}
 	if (map.total_width() < game_map->total_width()
 	|| map.total_height() < game_map->total_height()) {
-		if (!cfg["shrink"].to_bool()) {
+		if (!cfg[z_shrink].to_bool()) {
 			lg::wml_error << "replace_map: Map dimension(s) decrease but shrink is not set\n";
 			return;
 		}
@@ -3076,15 +3097,15 @@ static void commit_wmi_commands() {
 		const bool has_current_handler = !mref->command.empty();
 
 		mref->command = *(wcc.second);
-		mref->command["name"] = mref->name;
-		mref->command["first_time_only"] = false;
+		mref->command[z_name] = mref->name;
+		mref->command[z_first_time_only] = false;
 
 		if(has_current_handler) {
 			if(is_empty_command) {
-				mref->command.add_child("allow_undo");
+				mref->command.add_child(z_allow_undo);
 			}
 			foreach(game_events::event_handler& hand, event_handlers) {
-				if(hand.is_menu_item() && hand.matches_name(mref->name)) {
+				if(hand.is_menu_item() && hand.matches_name(n_token::t_token(mref->name))) {
 					LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
 					hand = game_events::event_handler(mref->command, true);
 				}
@@ -3108,21 +3129,21 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	unit_map::iterator unit1 = units->find(ev.loc1);
 	unit_map::iterator unit2 = units->find(ev.loc2);
 	bool filtered_unit1 = false, filtered_unit2 = false;
-	scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
-	scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
-	scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
-	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
+	scoped_xy_unit first_unit(z_unit, ev.loc1.x, ev.loc1.y, *units);
+	scoped_xy_unit second_unit(z_second_unit, ev.loc2.x, ev.loc2.y, *units);
+	scoped_weapon_info first_weapon(z_weapon, ev.data.child(z_first));
+	scoped_weapon_info second_weapon(z_second_weapon, ev.data.child(z_second));
 	vconfig filters(handler.get_config());
 
 
-	foreach (const vconfig &condition, filters.get_children("filter_condition"))
+	foreach (const vconfig &condition, filters.get_children(z_filter_condition))
 	{
 		if (!game_events::conditional_passed(condition)) {
 			return false;
 		}
 	}
 
-	foreach (const vconfig &f, filters.get_children("filter"))
+	foreach (const vconfig &f, filters.get_children(z_filter))
 	{
 		if (unit1 == units->end() || !game_events::unit_matches_filter(*unit1, f)) {
 			return false;
@@ -3132,18 +3153,18 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		}
 	}
 
-	foreach (const vconfig &f, filters.get_children("filter_side"))
+	foreach (const vconfig &f, filters.get_children(z_filter_side))
 	{
 		side_filter ssf(f);
 		const int current_side = resources::controller->current_side();
 		if(!ssf.match(current_side)) return false;
 	}
 
-	vconfig::child_list special_filters = filters.get_children("filter_attack");
+	vconfig::child_list special_filters = filters.get_children(z_filter_attack);
 	bool special_matches = special_filters.empty();
 	foreach (const vconfig &f, special_filters)
 	{
-		if (unit1 != units->end() && game_events::matches_special_filter(ev.data.child("first"), f)) {
+		if (unit1 != units->end() && game_events::matches_special_filter(ev.data.child(z_first), f)) {
 			special_matches = true;
 		}
 		if (!f.empty()) {
@@ -3154,7 +3175,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		return false;
 	}
 
-	foreach (const vconfig &f, filters.get_children("filter_second"))
+	foreach (const vconfig &f, filters.get_children(z_filter_second))
 	{
 		if (unit2 == units->end() || !game_events::unit_matches_filter(*unit2, f)) {
 			return false;
@@ -3164,11 +3185,11 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		}
 	}
 
-	special_filters = filters.get_children("filter_second_attack");
+	special_filters = filters.get_children(z_filter_second_attack);
 	special_matches = special_filters.empty();
 	foreach (const vconfig &f, special_filters)
 	{
-		if (unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"), f)) {
+		if (unit2 != units->end() && game_events::matches_special_filter(ev.data.child(z_second), f)) {
 			special_matches = true;
 		}
 		if (!f.empty()) {
@@ -3193,7 +3214,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	scoped_context evc;
 	handler.handle_event(ev);
 
-	if(ev.name == "select") {
+	if(ev.name == z_select) {
 		resources::state_of_game->last_selected = ev.loc1;
 	}
 
@@ -3212,7 +3233,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 namespace game_events {
 
 	event_handler::event_handler(const config &cfg, bool imi) :
-		first_time_only_(cfg["first_time_only"].to_bool(true)),
+		first_time_only_(cfg[z_first_time_only].to_bool(true)),
 		disabled_(false), is_menu_item_(imi), cfg_(cfg)
 	{}
 
@@ -3224,7 +3245,7 @@ namespace game_events {
 		}
 
 		if (is_menu_item_) {
-			DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_;
+			DBG_NG << cfg_[z_name] << " will now invoke the following command(s):\n" << cfg_;
 		}
 
 		handle_event_commands(event_info, vconfig(cfg_));
@@ -3232,10 +3253,10 @@ namespace game_events {
 
 	void handle_event_commands(const game_events::queued_event& event_info, const vconfig &cfg)
 	{
-		resources::lua_kernel->run_wml_action("command", cfg, event_info);
+		resources::lua_kernel->run_wml_action(z_command, cfg, event_info);
 	}
 
-	void handle_event_command(const std::string &cmd,
+	void handle_event_command(const config::t_token &cmd,
 		const game_events::queued_event &event_info, const vconfig &cfg)
 	{
 		log_scope2(log_engine, "handle_event_command");
@@ -3252,9 +3273,10 @@ namespace game_events {
 		DBG_NG << "done handling command...\n";
 	}
 
-	bool event_handler::matches_name(const std::string &name) const
+	bool event_handler::matches_name(const config::t_token &tname) const
 	{
-		const t_string& t_my_names = cfg_["name"];
+		std::string const & name(tname);
+		const t_string& t_my_names = cfg_[z_name];
 		const std::string& my_names = t_my_names;
 		std::string::const_iterator itor,
 			it_begin = my_names.begin(),
@@ -3327,21 +3349,21 @@ namespace game_events {
 		vconfig::all_children_iterator cond_end = filter.ordered_end();
 		while(cond_i != cond_end)
 		{
-			const std::string& cond_name = cond_i.get_key();
+			const config::t_token& cond_name = cond_i.get_key();
 			const vconfig& cond_filter = cond_i.get_child();
 
 			// Handle [and]
-			if(cond_name == "and")
+			if(cond_name == z_and)
 			{
 				matches = matches && matches_special_filter(cfg, cond_filter);
 			}
 			// Handle [or]
-			else if(cond_name == "or")
+			else if(cond_name == z_or)
 			{
 				matches = matches || matches_special_filter(cfg, cond_filter);
 			}
 			// Handle [not]
-			else if(cond_name == "not")
+			else if(cond_name == z_not)
 			{
 				matches = matches && !matches_special_filter(cfg, cond_filter);
 			}
@@ -3355,16 +3377,16 @@ namespace game_events {
 		return u.matches_filter(filter, u.get_location());
 	}
 
-	static std::set<std::string> unit_wml_ids;
+	static std::set<config::t_token> unit_wml_ids;
 
 	manager::manager(const config& cfg)
 		: variable_manager()
 	{
 		assert(!manager_running);
-		foreach (const config &ev, cfg.child_range("event")) {
+		foreach (const config &ev, cfg.child_range(z_event)) {
 			event_handlers.add_event_handler(game_events::event_handler(ev));
 		}
-		foreach (const std::string &id, utils::split(cfg["unit_wml_ids"])) {
+		foreach (const config::t_token &id, utils::split_token(cfg[z_unit_wml_ids])) {
 			unit_wml_ids.insert(id);
 		}
 
@@ -3375,15 +3397,15 @@ namespace game_events {
 			resources::lua_kernel->set_wml_action(action.first, action.second);
 		}
 
-		const std::string used = cfg["used_items"];
+		config::t_token const & used = cfg[z_used_items];
 		if(!used.empty()) {
-			const std::vector<std::string>& v = utils::split(used);
-			for(std::vector<std::string>::const_iterator i = v.begin(); i != v.end(); ++i) {
+			const std::vector<config::t_token>& v = utils::split_token(used);
+			for(std::vector<config::t_token>::const_iterator i = v.begin(); i != v.end(); ++i) {
 				used_items.insert(*i);
 			}
 		}
 		int wmi_count = 0;
-		typedef std::pair<std::string, wml_menu_item *> item;
+		typedef std::pair<config::t_token, wml_menu_item *> item;
 		foreach (const item &itor, resources::state_of_game->wml_menu_items) {
 			if (!itor.second->command.empty()) {
 				event_handlers.add_event_handler(game_events::event_handler(itor.second->command, true));
@@ -3400,11 +3422,11 @@ namespace game_events {
 		assert(manager_running);
 		foreach (const game_events::event_handler &eh, event_handlers) {
 			if (eh.disabled() || eh.is_menu_item()) continue;
-			cfg.add_child("event", eh.get_config());
+			cfg.add_child(z_event, eh.get_config());
 		}
 
 		std::stringstream used;
-		std::set<std::string>::const_iterator u;
+		std::set<config::t_token>::const_iterator u;
 		for(u = used_items.begin(); u != used_items.end(); ++u) {
 			if(u != used_items.begin())
 				used << ",";
@@ -3412,7 +3434,7 @@ namespace game_events {
 			used << *u;
 		}
 
-		cfg["used_items"] = used.str();
+		cfg[z_used_items] = used.str();
 		std::stringstream ids;
 		for(u = unit_wml_ids.begin(); u != unit_wml_ids.end(); ++u) {
 			if(u != unit_wml_ids.begin())
@@ -3421,7 +3443,7 @@ namespace game_events {
 			ids << *u;
 		}
 
-		cfg["unit_wml_ids"] = ids.str();
+		cfg[z_unit_wml_ids] = ids.str();
 
 		if (resources::soundsources)
 			resources::soundsources->write_sourcespecs(cfg);
@@ -3441,7 +3463,7 @@ namespace game_events {
 		used_items.clear();
 	}
 
-	void raise(const std::string& event,
+void raise(const n_token::t_token& event,
 			const entity_location& loc1,
 			const entity_location& loc2,
 			const config& data)
@@ -3455,7 +3477,7 @@ namespace game_events {
 		events_queue.push_back(game_events::queued_event(event,loc1,loc2,data));
 	}
 
-	bool fire(const std::string& event,
+bool fire(const n_token::t_token& event,
 			const entity_location& loc1,
 			const entity_location& loc2,
 			const config& data)
@@ -3465,7 +3487,7 @@ namespace game_events {
 		return pump();
 	}
 
-	void add_events(const config::const_child_itors &cfgs, const std::string &id)
+	void add_events(const config::const_child_itors &cfgs, const config::t_token &id)
 	{
 		if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),id) == unit_wml_ids.end()) {
 			unit_wml_ids.insert(id);
@@ -3507,7 +3529,7 @@ namespace game_events {
 		while(events_queue.empty() == false) {
 			game_events::queued_event ev = events_queue.front();
 			events_queue.pop_front();	// pop now for exception safety
-			const std::string& event_name = ev.name;
+			const n_token::t_token& event_name = ev.name;
 
 			// Clear the unit cache, since the best clearing time is hard to figure out
 			// due to status changes by WML. Every event will flush the cache.
@@ -3525,10 +3547,10 @@ namespace game_events {
 					continue;
 				// Set the variables for the event
 				if (init_event_vars) {
-					resources::state_of_game->get_variable("x1") = ev.loc1.x + 1;
-					resources::state_of_game->get_variable("y1") = ev.loc1.y + 1;
-					resources::state_of_game->get_variable("x2") = ev.loc2.x + 1;
-					resources::state_of_game->get_variable("y2") = ev.loc2.y + 1;
+					resources::state_of_game->get_variable(z_x1) = ev.loc1.x + 1;
+					resources::state_of_game->get_variable(z_y1) = ev.loc1.y + 1;
+					resources::state_of_game->get_variable(z_x2) = ev.loc2.x + 1;
+					resources::state_of_game->get_variable(z_y2) = ev.loc2.y + 1;
 					init_event_vars = false;
 				}
 

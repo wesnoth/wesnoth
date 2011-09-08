@@ -92,11 +92,11 @@ public:
 	void set_advances_to(const std::vector<std::string>& advances_to);
 
 	/** The type id of the unit */
-	const std::string& type_id() const { return type_; }
+	const config::t_token& type_id() const { return type_; }
 	const unit_type* type() const;
 
 	/** id assigned by wml */
-	const std::string& id() const { if (id_.empty()){ return type_name();} else return id_; }
+	const config::t_token& id() const { if (id_.empty()){ return type_name_.token();} else return id_; }
 	/** The unique internal ID of the unit */
 	size_t underlying_id() const { return underlying_id_; }
 
@@ -110,8 +110,8 @@ public:
 	void rename(const std::string& name) {if (!unrenamable_) name_= t_string(name);}
 
 	/** The unit's profile */
-	std::string small_profile() const;
-	std::string big_profile() const;
+	config::t_token const & small_profile() const;
+	config::t_token const & big_profile() const;
 	/** Information about the unit -- a detailed description of it */
 	t_string unit_description() const { return cfg_[z_description]; }
 
@@ -291,10 +291,10 @@ public:
 		Uint32 text_color = 0, STATE state = STATE_ANIM);
 
 	/** The name of the file to game_display (used in menus). */
-	std::string absolute_image() const { return cfg_[z_image]; }
-	config::t_token image_halo() const { return cfg_[z_halo]; }
+	config::t_token const & absolute_image() const { return cfg_[z_image]; }
+	config::t_token const & image_halo() const { return cfg_[z_halo]; }
 
-	config::t_token image_ellipse() const { return cfg_[z_ellipse]; }
+	config::t_token const & image_ellipse() const { return cfg_[z_ellipse]; }
 
 	config &variables() { return variables_; }
 	const config &variables() const { return variables_; }
@@ -423,7 +423,7 @@ private:
 	map_location loc_;
 
 	std::vector<std::string> advances_to_;
-	std::string type_;
+	config::t_token type_;
 	const unit_race* race_;
 	config::t_token id_;
 	t_string name_;

@@ -31,18 +31,18 @@ static lg::log_domain log_engine("engine");
 namespace{
 	//Static tokens are replacements for string literals in code
 	//They allow for fast comparison operations.
-static const config::t_token z_turn_at("turn_at");
-static const config::t_token z_turns("turns");
-static const config::t_token z_current_tod("current_tod");
-static const config::t_token z_time("time");
-static const config::t_token z_time_area("time_area");
-static const config::t_token z_x("x");
-static const config::t_token z_y("y");
-static const config::t_token z_id("id");
-static const config::t_token z_random_start_time("random_start_time");
-static const config::t_token z_illuminates("illuminates");
-static const config::t_token z_max_value("max_value");
-static const config::t_token z_min_value("min_value");
+static const config::t_token z_turn_at("turn_at", false);
+static const config::t_token z_turns("turns", false);
+static const config::t_token z_current_tod("current_tod", false);
+static const config::t_token z_time("time", false);
+static const config::t_token z_time_area("time_area", false);
+static const config::t_token z_x("x", false);
+static const config::t_token z_y("y", false);
+static const config::t_token z_id("id", false);
+static const config::t_token z_random_start_time("random_start_time", false);
+static const config::t_token z_illuminates("illuminates", false);
+static const config::t_token z_max_value("max_value", false);
+static const config::t_token z_min_value("min_value", false);
 }
 
 tod_manager::tod_manager(const config& scenario_cfg, const int num_turns):

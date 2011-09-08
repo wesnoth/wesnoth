@@ -16,10 +16,17 @@
 #ifndef IMAGE_HPP_INCLUDED
 #define IMAGE_HPP_INCLUDED
 
+#include "token.hpp"
 #include "map_location.hpp"
 #include "sdl_utils.hpp"
 #include "terrain_translation.hpp"
 
+
+namespace {
+//Static tokens are replacements for string literals in code
+//They allow for fast comparison, copying and hashing operations.
+static const n_token::t_token z_empty("", false);
+}
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.
 //
@@ -46,6 +53,7 @@ namespace image {
 			value(const std::string& filename);
 			value(const std::string& filename, const std::string& modifications);
 			value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications);
+			value(const n_token::t_token& filename, const n_token::t_token& modifications, const map_location& loc, int center_x, int center_y);
 
 			bool operator==(const value& a) const;
 			bool operator<(const value& a) const;
@@ -80,6 +88,8 @@ namespace image {
 		locator(const std::string& filename);
 		locator(const std::string& filename, const std::string& modifications);
 		locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications="");
+		locator(const n_token::t_token& filename, const n_token::t_token& modifications = z_empty
+				, const map_location& loc = map_location::null_location, int center_x = 0 , int center_y =0 );
 
 		locator& operator=(const locator &a);
 		bool operator==(const locator &a) const { return index_ == a.index_; }

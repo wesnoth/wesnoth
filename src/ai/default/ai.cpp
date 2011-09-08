@@ -107,7 +107,8 @@ int idle_ai::get_recursion_count() const
 
 void idle_ai::play_turn()
 {
-	game_events::fire("ai turn");
+	static const config::t_token z_ai_turn("ai turn", false);
+	game_events::fire(z_ai_turn);
 }
 
 
@@ -226,7 +227,7 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 			if (imc != maximum_counts_.end()) {
 				int count_active = 0;
 				for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
-					if (u->side() == get_side() && !u->incapacitated() && u->type_id() == name) {
+					if (u->side() == get_side() && !u->incapacitated() && u->type_id() == config::t_token(name)) {
 						++count_active;
 					}
 				}

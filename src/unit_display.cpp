@@ -29,6 +29,15 @@
 
 #define LOG_DP LOG_STREAM(info, display)
 
+namespace {
+//Static tokens are replacements for string literals in code
+//They allow for fast comparison, copying and hashing operations.
+static const config::t_token z_red("red", false);
+static const config::t_token z_green("green", false);
+static const config::t_token z_blue("blue", false);
+
+}
+
 static void teleport_unit_between( const map_location& a, const map_location& b, unit& temp_unit)
 {
 	game_display* disp = game_display::get_singleton();
@@ -554,10 +563,10 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		if( cfg["hits"] == "kill" ) {
 			hits = unit_animation::KILL;
 		}
-		if(cfg["red"].empty() && cfg["green"].empty() && cfg["blue"].empty()) {
+		if(cfg[z_red].empty() && cfg[z_green].empty() && cfg[z_blue].empty()) {
 			text_color = display::rgb(0xff,0xff,0xff);
 		} else {
-			text_color = display::rgb(cfg["red"], cfg["green"], cfg["blue"]);
+			text_color = display::rgb(cfg[z_red], cfg[z_green], cfg[z_blue]);
 		}
 		resources::screen->scroll_to_tile(u->get_location(), game_display::ONSCREEN, true, false);
 		vconfig t_filter = cfg.child("facing");

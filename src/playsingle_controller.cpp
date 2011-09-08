@@ -52,6 +52,14 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
+namespace{
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison, copying and hashing operations.
+	static const config::t_token z_defeat("defeat", false);
+	static const config::t_token z_victory("victory", false);
+	static const config::t_token z_time_over("time over", false);
+}
+
 playsingle_controller::playsingle_controller(const config& level,
 		game_state& state_of_game, const int ticks, const int num_turns,
 		const config& game_config, CVideo& video, bool skip_replay) :
@@ -461,7 +469,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		else if (end_level_result == DEFEAT)
 		{
 			gamestate_.classification().completion = "defeat";
-			game_events::fire("defeat");
+			game_events::fire(z_defeat);
 
 			if (!obs) {
 				const std::string& defeat_music = select_defeat_music();
@@ -477,7 +485,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		{
 			gamestate_.classification().completion =
 				!end_level.linger_mode ? "running" : "victory";
-			game_events::fire("victory");
+			game_events::fire(z_victory);
 
 			//
 			// Play victory music once all victory events
@@ -868,7 +876,7 @@ void playsingle_controller::check_time_over(){
 	if(!b) {
 
 		LOG_NG << "firing time over event...\n";
-		game_events::fire("time over");
+		game_events::fire(z_time_over);
 		LOG_NG << "done firing time over event...\n";
 		//if turns are added while handling 'time over' event
 		if (tod_manager_.is_time_left()) {

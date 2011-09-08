@@ -51,7 +51,7 @@ const config::t_token config::z_empty("",false)
 
 namespace {
 	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
+	//They allow for fast comparison, copying and hashing operations.
 	static const config::t_token z_x("x", false);
 	static const config::t_token z_y("y", false);
 	static const config::t_token z_insert_child("insert_child", false);
@@ -129,11 +129,15 @@ config::attribute_value &config::attribute_value::operator=(const t_token &v)  {
 	if (v == z_yes || v == z_true) return *this = true;
 	if (v == z_no || v == z_false) return *this = false;
 
-	char *eptr;
-	int i = strtol(static_cast<std::string const &>(v).c_str(), &eptr, 0);
-	if (*eptr == '\0') { *this = i; is_token_=true; token_value_ = v; return *this; }
-	double d = strtod(static_cast<std::string const &>(v).c_str(), &eptr);
-	if (*eptr == '\0') { *this = d; is_token_=true; token_value_ = v; return *this; }
+	std::istringstream is(static_cast<std::string const &>(v));
+	int i;
+	char extra_char;
+	if( (is >> i) && ! is.get(extra_char) ) { *this = i; is_token_=true; token_value_ = v; return *this; }
+
+	is.clear();
+	is.str(static_cast<std::string const &>(v));
+	double d;
+	if( (is >> d) && ! is.get(extra_char) ) { *this = d; is_token_=true; token_value_ = v; return *this; }
 
 	type_ = TOKEN;
 	is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =true; 
@@ -145,11 +149,16 @@ config::attribute_value &config::attribute_value::operator=(const std::string &v
 	if (v.empty()) { return *this = z_empty;}
 	if (v == "yes" || v == "true") return *this = true;
 	if (v == "no" || v == "false") return *this = false;
-	char *eptr;
-	int i = strtol(v.c_str(), &eptr, 0);
-	if (*eptr == '\0') return *this = i;
-	double d = strtod(v.c_str(), &eptr);
-	if (*eptr == '\0') return *this = d;
+
+	std::istringstream is( v );
+	int i;
+	char extra_char;
+	if( (is >> i) && ! is.get(extra_char) ) { *this = i; return *this; }
+	
+	is.clear();
+	is.str( v );
+	double d;
+	if( (is >> d) && ! is.get(extra_char) ) { *this = d; return *this; }
 	type_ = TOKEN;
 	is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =true; 
 	token_value_ = t_token(v);

@@ -42,8 +42,8 @@ public:
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~attack_type();
 	const t_string& name() const { return description_; }
-	const std::string& id() const { return id_; }
-	const std::string& type() const { return type_; }
+	const config::t_token& id() const { return id_; }
+	const config::t_token& type() const { return type_; }
 	const std::string& icon() const { return icon_; }
 	const std::string& range() const { return range_; }
 	std::string accuracy_parry_description() const;
@@ -94,8 +94,8 @@ public:
 private:
 	config cfg_;
 	t_string description_;
-	std::string id_;
-	std::string type_;
+	config::t_token id_;
+	config::t_token type_;
 	std::string icon_;
 	std::string range_;
 	int damage_;
@@ -231,7 +231,7 @@ public:
 	/** The name of the unit in the current language setting. */
 	const t_string& type_name() const { return type_name_; }
 
-	const std::string& id() const { return id_; }
+	const config::t_token& id() const { return id_; }
 	// NOTE: this used to be a const object reference, but it messed up with the
 	// translation engine upon changing the language in the same session.
 	const t_string unit_description() const;
@@ -242,8 +242,8 @@ public:
 	int cost() const { return cost_; }
 	const std::string& usage() const { return usage_; }
 	const std::string& image() const { return image_; }
-	const std::string &small_profile() const { return small_profile_; }
-	const std::string &big_profile() const { return big_profile_; }
+	const config::t_token &small_profile() const { return small_profile_; }
+	const config::t_token &big_profile() const { return big_profile_; }
 
 	const std::vector<unit_animation>& animations() const;
 
@@ -308,7 +308,7 @@ private:
 
 	config &cfg_;
 
-	std::string id_;
+	config::t_token id_;
     t_string type_name_;
     t_string description_;
     int hitpoints_;
@@ -319,9 +319,9 @@ private:
     std::string usage_;
 	config::t_token undead_variation_;
 
-	std::string image_;
-	std::string small_profile_;
-	std::string big_profile_;
+	config::t_token image_;
+	config::t_token small_profile_;
+	config::t_token big_profile_;
 	config::t_token flag_rgb_;
 
     unsigned int num_traits_;
@@ -415,6 +415,6 @@ private:
 
 extern unit_type_data unit_types;
 
-void adjust_profile(std::string &small, std::string &big, std::string const &def);
+void adjust_profile(config::t_token &small, config::t_token &big, config::t_token const &def);
 
 #endif

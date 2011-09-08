@@ -182,10 +182,13 @@ std::string menu_handler::get_title_suffix(int side_num)
 
 void menu_handler::objectives(int side_num)
 {
+	static const config::t_token z__from_interface("_from_interface", false);
+	static const config::t_token z_show_objectives("show_objectives", false);
+
 	config cfg;
 	cfg["side"] = str_cast(side_num);
-	game_events::handle_event_command("show_objectives",
-		game_events::queued_event("_from_interface", map_location(),
+	game_events::handle_event_command(z_show_objectives,
+		game_events::queued_event(z__from_interface, map_location(),
 			map_location(), config()), vconfig(cfg));
 	team &current_team = teams_[side_num - 1];
 	dialogs::show_objectives(level_, current_team.objectives());
@@ -3602,7 +3605,7 @@ void console_handler::do_gold() {
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_event() {
-	game_events::fire(get_data());
+	game_events::fire(config::t_token(get_data()));
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_toggle_draw_coordinates() {

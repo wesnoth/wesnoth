@@ -130,7 +130,7 @@ namespace{
 	static const config::t_token z_strict_amla("strict_amla", false);
 	static const config::t_token z_require_amla("require_amla", false);
 	static const config::t_token z_times("times", false);
-	static const config::t_token z_empty("", false);
+	//	static const config::t_token z_empty("", false);
 	static const config::t_token z_modifications("modifications", false);
 	static const config::t_token z_level("level", false);
 	static const config::t_token z_attack("attack", false);
@@ -250,13 +250,6 @@ namespace{
 	static const config::t_token z_mode("mode", false);
 	static const config::t_token z_append("append", false);
 	static const config::t_token z_advancefrom("advancefrom", false);
-	// static const config::t_token z_("", false);
-	// static const config::t_token z_("", false);
-	// static const config::t_token z_("", false);
-	// static const config::t_token z_("", false);
-	// static const config::t_token z_("", false);
-
-
 
 }
 attack_type::attack_type(const config& cfg) :
@@ -267,8 +260,8 @@ attack_type::attack_type(const config& cfg) :
 	other_attack_(NULL),
 	cfg_(cfg),
 	description_(cfg[z_description].t_str()),
-	id_(cfg[z_name]),
-	type_(cfg[z_type]),
+	id_(cfg[z_name].token()),
+	type_(cfg[z_type].token()),
 	icon_(cfg[z_icon]),
 	range_(cfg[z_range]),
 	damage_(cfg[z_damage]),
@@ -284,7 +277,7 @@ attack_type::attack_type(const config& cfg) :
 
 	if(icon_.empty()){
 		if (id() != z_empty)
-			icon_ = "attacks/" + id() + ".png";
+			icon_ = "attacks/" + static_cast<std::string const &>(id()) + ".png";
 		else
 			icon_ = "attacks/blank-attack.png";
 	}
@@ -342,9 +335,9 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	if(!matches_filter(cfg,0))
 		return false;
 
-	const std::string& set_name = cfg[z_set_name];
+	const config::t_token& set_name = cfg[z_set_name];
 	const t_string& set_desc = cfg[z_set_description];
-	const std::string& set_type = cfg[z_set_type];
+	const config::t_token& set_type = cfg[z_set_type];
 	const std::string& del_specials = cfg[z_remove_specials];
 	const config &set_specials = cfg.child(z_set_specials);
 	const std::string& increase_damage = cfg[z_increase_damage];
@@ -823,7 +816,7 @@ unit_type::unit_type(const unit_type& o) :
 
 unit_type::unit_type(config &cfg) :
 	cfg_(cfg),
-	id_(cfg[z_id]),
+	id_(cfg[z_id].token()),
 	type_name_(),
 	description_(),
 	hitpoints_(0),
@@ -992,9 +985,9 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	cost_ = cfg[z_cost].to_int(1);
 	usage_ = cfg_[z_usage].str();
 	undead_variation_ = cfg_[z_undead_variation].token();
-	image_ = cfg_[z_image].str();
-	small_profile_ = cfg_[z_small_profile].str();
-	big_profile_ = cfg_[z_profile].str();
+	image_ = cfg_[z_image].token();
+	small_profile_ = cfg_[z_small_profile].token();
+	big_profile_ = cfg_[z_profile].token();
 	adjust_profile(small_profile_, big_profile_, image_);
 
 	for (int i = 0; i < 2; ++i) {
@@ -1616,7 +1609,7 @@ bool unit_type::has_random_traits() const
 
 unit_type_data unit_types;
 
-void adjust_profile(std::string &small, std::string &big, std::string const &def)
+void adjust_profile(config::t_token &small, config::t_token &big, config::t_token const &def)
 {
 	if (big.empty())
 	{
@@ -1629,14 +1622,18 @@ void adjust_profile(std::string &small, std::string &big, std::string const &def
 		// No small profile; use the current profile for it and
 		// try to infer the big one.
 		small = big;
-		std::string::size_type offset = big.find('~');
-		offset = big.find_last_of('/', offset);
+		std::string sbig = static_cast<std::string const &>(big);
+		std::string::size_type offset = sbig.find('~');
+		offset = sbig.find_last_of('/', offset);
 		if (offset != std::string::npos) {
-			big.insert(offset, "/transparent");
+			sbig.insert(offset, "/transparent");
 		} else {
-			big = "transparent/" + big;
+			sbig = "transparent/" + sbig;
 		}
-		if (!image::locator(big).file_exists())
-			big = small;
+		if (!image::locator(sbig).file_exists()){
+			big = small; }
+		else {
+			big = config::t_token(sbig);
+		}
 	}
 }

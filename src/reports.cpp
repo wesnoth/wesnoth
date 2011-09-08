@@ -152,7 +152,7 @@ REPORT_GENERATOR(unit_type)
 	str << span_color(font::unit_type_color) << u->type_name() << naps;
 	tooltip << _("Type: ") << "<b>" << u->type_name() << "</b>\n"
 		<< u->unit_description();
-	return text_report(str.str(), tooltip.str(), "unit_" + u->type_id());
+	return text_report(str.str(), tooltip.str(), "unit_" + static_cast<std::string const &>( u->type_id()));
 }
 
 REPORT_GENERATOR(unit_race)
@@ -489,7 +489,7 @@ REPORT_GENERATOR(unit_weapons)
 		add_text(res, flush(str), flush(tooltip));
 
 		std::string range = string_table["range_" + at.range()];
-		std::string lang_type = string_table["type_" + at.type()];
+		std::string lang_type = string_table["type_" + static_cast<std::string const &>( at.type() )];
 
 		str << span_color(font::weapon_details_color) << "  "
 			<< range << font::weapon_details_sep

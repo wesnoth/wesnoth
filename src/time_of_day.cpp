@@ -21,13 +21,33 @@
 #include "foreach.hpp"
 #include "time_of_day.hpp"
 
+namespace{
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison, copying and hashing operations.
+
+	static const config::t_token z_lawful_bonus("lawful_bonus", false);
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_time("time", false);
+	static const config::t_token z_image("image", false);
+	static const config::t_token z_mask("mask", false);
+	static const config::t_token z_red("red", false);
+	static const config::t_token z_green("green", false);
+	static const config::t_token z_blue("blue", false);
+	static const config::t_token z_sound("sound", false);
+	static const config::t_token z_NULL_TOD("NULL_TOD", false);
+	static const config::t_token z_nulltod("nulltod", false);
+ 
+}
+ 
+
 time_of_day::time_of_day(const config& cfg):
-	lawful_bonus(cfg["lawful_bonus"]),
+	lawful_bonus(cfg[z_lawful_bonus]),
 	bonus_modified(0),
-	image(cfg["image"]), name(cfg["name"].t_str()), id(cfg["id"]),
-	image_mask(cfg["mask"]),
-	red(cfg["red"]), green(cfg["green"]), blue(cfg["blue"]),
-	sounds(cfg["sound"])
+	image(cfg[z_image].token()), name(cfg[z_name].t_str()), id(cfg[z_id].token()),
+	image_mask(cfg[z_mask].token()),
+	red(cfg[z_red]), green(cfg[z_green]), blue(cfg[z_blue]),
+	sounds(cfg[z_sound].token())
 {
 }
 
@@ -35,8 +55,8 @@ time_of_day::time_of_day()
 : lawful_bonus(0)
 , bonus_modified(0)
 , image()
-, name("NULL_TOD")
-, id("nulltod")
+, name(z_NULL_TOD)
+, id(z_nulltod)
 , image_mask()
 , red(0)
 , green(0)
@@ -47,19 +67,19 @@ time_of_day::time_of_day()
 
 void time_of_day::write(config& cfg) const
 {
-	cfg["lawful_bonus"] = lawful_bonus;
-	cfg["red"] = red;
-	cfg["green"] = green;
-	cfg["blue"] = blue;
-	cfg["image"] = image;
-	cfg["name"] = name;
-	cfg["id"] = id;
-	cfg["mask"] = image_mask;
+	cfg[z_lawful_bonus] = lawful_bonus;
+	cfg[z_red] = red;
+	cfg[z_green] = green;
+	cfg[z_blue] = blue;
+	cfg[z_image] = image;
+	cfg[z_name] = name;
+	cfg[z_id] = id;
+	cfg[z_mask] = image_mask;
 }
 
 void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 {
-	foreach (const config &t, cfg.child_range("time")) {
+	foreach (const config &t, cfg.child_range(z_time)) {
 		normal_times.push_back(time_of_day(t));
 	}
 
