@@ -427,10 +427,13 @@ config::child_itors config::child_range(const t_token& key)
 	check_valid();
 
 	child_map::iterator i = children.find(key);
+	if (i != children.end()) {
+		return child_itors(child_iterator(i->second.begin()), child_iterator(i->second.end()));	
+	}
 	static child_list dummy;
-	child_list *p = &dummy;
-	if (i != children.end()) p = &i->second;
-	return child_itors(child_iterator(p->begin()), child_iterator(p->end()));
+	dummy.clear();
+	static child_itors dummy_iters(child_iterator(dummy.begin()), child_iterator(dummy.end()));
+	return dummy_iters;
 }
 config::child_itors config::child_range(const std::string& key){ return child_range( t_token(key) );}
 
@@ -439,10 +442,13 @@ config::const_child_itors config::child_range(const t_token& key) const
 	check_valid();
 
 	child_map::const_iterator i = children.find(key);
-	static child_list dummy;
-	const child_list *p = &dummy;
-	if (i != children.end()) p = &i->second;
-	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
+	if (i != children.end()) {
+		return const_child_itors(const_child_iterator(i->second.begin()), const_child_iterator(i->second.end())); }
+
+	static const child_list dummy;
+	//Use begin() and begin() in case someone violates the const contract
+	static const_child_itors dummy_iters(const_child_iterator(dummy.begin()), const_child_iterator(dummy.begin()));
+	return dummy_iters;
 }
 
 config::const_child_itors config::child_range(const std::string& key) const { return child_range(t_token(key));}  

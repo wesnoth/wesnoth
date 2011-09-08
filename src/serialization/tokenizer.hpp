@@ -70,7 +70,6 @@ struct token {
 			}
 
 			is_parsed_ = true;
-			//std::cerr<<"TOK \""<<t_token_<<"\" value_="<<value_<< " \n";
 		}
 		return t_token_;
 	}
@@ -81,12 +80,10 @@ struct token {
 	}
 
 	void set_start() {
-		//value_.clear();
 		buffer_.clear();
 		is_parsed_ = false;
 	}
 	void add_char(char const c) {
-		//value_+=c;
 		buffer_.push_back(c);
 		is_parsed_ = false;
 	} 
