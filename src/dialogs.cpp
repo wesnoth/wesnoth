@@ -68,6 +68,9 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
+namespace{
+	static const config::t_token z_advance("advance");
+}
 namespace dialogs
 {
 
@@ -97,7 +100,7 @@ int advance_unit_dialog(const map_location &loc)
 	{
 		if (mod["always_display"].to_bool()) always_display = true;
 		sample_units.push_back(::get_advanced_unit(*u, u->type_id()));
-		sample_units.back().add_modification("advance", mod);
+		sample_units.back().add_modification(z_advance, mod);
 		const unit& type = sample_units.back();
 		if (!mod["image"].empty()) {
 			lang_options.push_back(IMAGE_PREFIX + mod["image"].str() + COLUMN_SEPARATOR + mod["description"].str());
@@ -224,7 +227,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 		}
 
 		amla_unit.set_experience(amla_unit.experience() - amla_unit.max_experience());
-		amla_unit.add_modification("advance",mod_option);
+		amla_unit.add_modification(z_advance,mod_option);
 		resources::units->replace(loc, amla_unit);
 
 		if(fire_event)
@@ -383,7 +386,7 @@ void save_preview_pane::draw_contents()
 #ifdef LOW_MEM
 		const surface image(image::get_image(leader->image()));
 #else
-		const surface image(image::get_image(leader->image() + "~RC(" + leader->flag_rgb() + ">1)"));
+		const surface image(image::get_image(leader->image() + "~RC(" + static_cast<std::string const &>(leader->flag_rgb()) + ">1)"));
 #endif
 
 		if(image != NULL) {
@@ -977,7 +980,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
     //FIXME: There should be a better way to deal with this
 	unit_types.find(t->id(), unit_type::WITHOUT_ANIMATIONS);
 
-	std::string mod = "~RC(" + t->flag_rgb() + ">" + team::get_side_color_index(side_) + ")";
+	std::string mod = "~RC(" + static_cast<std::string const &>(t->flag_rgb()) + ">" + team::get_side_color_index(side_) + ")";
 	det.image = image::get_image(t->image()+mod);
 
 	det.name = "";

@@ -229,6 +229,7 @@ public:
 	            TYPE_UNSPECIFIED };
 
 	variable_info(const config::t_token& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED);
+	variable_info(const t_string& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED);
 	variable_info(const std::string& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED);
 	variable_info(const config::attribute_value& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED);
 
@@ -240,17 +241,17 @@ public:
 	config& as_container();
 	array_range as_array(); //range may be empty
 	bool is_valid() const {return is_valid_;}
-	bool is_explicit_index() const {return explicit_index;}
+	bool is_explicit_index() const {return explicit_index_;}
 
 private:
 	void init(const config::t_token& varname, bool force_valid=true);
-public: ///todo make these private
 	TYPE vartype; ///default is TYPE_UNSPECIFIED
 	bool is_valid_;
-	config::t_token key; ///the name of the internal attribute or child
-	bool explicit_index; ///true if query ended in [...] specifier 
-	size_t index; //'the index of the child
-	config *vars; ///the containing node in game_state::variables
+	bool explicit_index_; ///true if query ended in [...] specifier 
+public: ///todo make these private
+	config::t_token key; /// the name of the internal attribute or child
+	size_t index; /// the index of the child
+	config *vars; /// the containing node in game_state::variables
 };
 
 #endif

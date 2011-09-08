@@ -371,7 +371,7 @@ void terrain_filter::get_locations(t_maploc_set& locs, bool with_border, gamemap
 		variable_info vi(cfg_[z_find_in].token(), false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid()) {
 			xy_set.clear();
-		} else if(vi.explicit_index) {
+		} else if(vi.is_explicit_index()) {
 			map_location test_loc(vi.as_container(),NULL);
 			if(xy_set.count(test_loc)) {
 				xy_set.clear();

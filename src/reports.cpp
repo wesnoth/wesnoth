@@ -34,6 +34,14 @@
 #include <cassert>
 #include <ctime>
 
+namespace {
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison operations.
+	static const config::t_token z_swarm("swarm", false);
+	static const config::t_token z_swarm_attacks_min("swarm_attacks_min", false);
+	static const config::t_token z_swarm_attacks_max("swarm_attacks_max", false);
+}
+
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")
 {
@@ -432,11 +440,11 @@ REPORT_GENERATOR(unit_weapons)
 
 		int base_nattacks = at.num_attacks();
 		int nattacks = base_nattacks;
-		unit_ability_list swarm = at.get_specials("swarm");
+		unit_ability_list swarm = at.get_specials(z_swarm);
 		if (!swarm.empty())
 		{
-			int swarm_max_attacks = swarm.highest("swarm_attacks_max", nattacks).first;
-			int swarm_min_attacks = swarm.highest("swarm_attacks_min").first;
+			int swarm_max_attacks = swarm.highest(z_swarm_attacks_max, nattacks).first;
+			int swarm_min_attacks = swarm.highest(z_swarm_attacks_min).first;
 			int hitp = u->hitpoints();
 			int mhitp = u->max_hitpoints();
 			nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;

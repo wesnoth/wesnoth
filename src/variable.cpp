@@ -625,7 +625,7 @@ public:
 					assert(false);
 					break;
 				case ']':				
-					std::string index_str(skey.substr(i_start_of_token, i ));
+					std::string index_str(skey.substr(i_start_of_token, i - i_start_of_token ));
 					std::istringstream is(index_str);
 					size_t index;
 					is >> index;
@@ -647,11 +647,11 @@ public:
 			} else {
 				switch(c){
 				case '.' :
-					parsed_tokens.push_back(t_parsed(t_token(skey.substr(i_start_of_token, i ))));
+					parsed_tokens.push_back(t_parsed(t_token(skey.substr(i_start_of_token, i - i_start_of_token ))));
 					i_start_of_token = i + 1;
 					break;
 				case '[':
-					parsed_tokens.push_back(t_parsed(t_token(skey.substr(i_start_of_token, i ))));
+					parsed_tokens.push_back(t_parsed(t_token(skey.substr(i_start_of_token, i - i_start_of_token  ))));
 					i_start_of_token = i + 1;
 					is_lbrack=true;
 					break;
@@ -662,7 +662,7 @@ public:
 			++i;
 		}
 		if(i_start_of_token != i){
-			parsed_tokens.push_back(t_token(skey.substr(i_start_of_token, i )));	
+			parsed_tokens.push_back(t_token(skey.substr(i_start_of_token, i - i_start_of_token )));	
 		}
 
 		return parsed_tokens;
@@ -670,7 +670,7 @@ public:
 };
 
 //	typedef boost::unordered_map<config::t_token, t_parsed_tokens> t_all_parsed;
-static const uint CACHE_SIZE = 1000;
+static const uint CACHE_SIZE = 10000;
 typedef  n_lru_cache::t_lru_cache<config::t_token, t_parsed_tokens, t_parse_token> t_all_parsed;
 
 
@@ -712,7 +712,7 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 
 	t_parsed_tokens tokens(cache.check(varname));
 
-	if(tokens.empty()){return;}
+	if(tokens.empty()){ return; }
 
 	activate_scope_variable(tokens);
 	vars = &repos->variables_;
@@ -724,8 +724,10 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 	while (i <  last_token){
 		int inner_index = 0;
 		int size = vars->child_count( i->token);
+
 		if(i->index != t_parsed::NO_INDEX){
 			inner_index = i->index;
+
 			if(size <= inner_index) {
 				bool last_key_is_not_length ((i == second_last_token) && (last_token->token != z_length));
 				if(force_valid) {
@@ -772,6 +774,7 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 
 	key = i->token;
 	if(i->index != t_parsed::NO_INDEX){
+		explicit_index_ = true;
 		size_t size = vars->child_count(key);
 		index = i->index;
 		if(size <= index) {
@@ -804,7 +807,7 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 			WRN_NG << "variable_info: using explicitly indexed "
 				"container as wrong WML type, " << varname << '\n';
 		}
-		explicit_index = false;
+		explicit_index_ = false;
 		index = 0;
 	} else {
 		// Final variable is not an explicit index [...]
@@ -825,15 +828,19 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 }
 
 variable_info::variable_info(const config::t_token& varname, bool force_valid, TYPE validation_type) 
-	: vartype(validation_type), is_valid_(false), key(varname), explicit_index(false), index(0), vars(NULL) {
+	: vartype(validation_type), is_valid_(false), explicit_index_(false), key(varname),  index(0), vars(NULL) {
 	init( varname,  force_valid) ;}
 
+variable_info::variable_info(const t_string& varname, bool force_valid, TYPE validation_type)
+	: vartype(validation_type), is_valid_(false), explicit_index_(false),key(varname.token()),  index(0), vars(NULL) {
+	init(varname.token(), force_valid);}
+
 variable_info::variable_info(const std::string& varname, bool force_valid, TYPE validation_type)
-	: vartype(validation_type), is_valid_(false), key(varname), explicit_index(false), index(0), vars(NULL) {
+	: vartype(validation_type), is_valid_(false), explicit_index_(false), key(varname), index(0), vars(NULL) {
 	init(config::t_token(varname), force_valid);}
 
 variable_info::variable_info(const config::attribute_value& varname, bool force_valid, TYPE validation_type)
-	: vartype(validation_type), is_valid_(false), key(varname.token()), explicit_index(false), index(0), vars(NULL) {
+	: vartype(validation_type), is_valid_(false), explicit_index_(false), key(varname.token()), index(0), vars(NULL) {
 	init(varname.token(), force_valid);}
 
 
@@ -845,7 +852,7 @@ config::attribute_value &variable_info::as_scalar() {
 
 config& variable_info::as_container() {
 	assert(is_valid_);
-	if(explicit_index) {
+	if(explicit_index_) {
 		// Empty data for explicit index was already created if it was needed
 		return vars->child(key, index);
 	}

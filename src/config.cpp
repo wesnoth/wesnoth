@@ -664,8 +664,8 @@ void config::remove_child(const t_token &key, unsigned index)
 
 void config::remove_child(const std::string &key, unsigned index) {return remove_child(t_token( key ), index);}
 
-#ifdef DEBUG
 //#define COUNT_THE_NUMBER_OF_STRING_TO_TOKEN_CONVERSIONS
+#ifdef COUNT_THE_NUMBER_OF_STRING_TO_TOKEN_CONVERSIONS
 namespace{
 	static n_count_logger::t_count_logger<std::string> count_btok1("config index as std::string (BAD)",11);
 }
@@ -697,7 +697,7 @@ config::attribute_value &config::operator[](const attribute_value &key){
 	return operator[](key.token());}
 
 config::attribute_value &config::operator[](const std::string &key){
-#ifdef DEBUG
+#ifdef COUNT_THE_NUMBER_OF_STRING_TO_TOKEN_CONVERSIONS
 	count_btok1.inc(key); //debug
 #endif
 	return operator[](t_token(key));}

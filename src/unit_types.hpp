@@ -18,6 +18,7 @@
 #include "unit_animation.hpp"
 #include "portrait.hpp"
 #include "race.hpp"
+#include "resources.hpp"
 
 class gamemap;
 class unit;
@@ -26,6 +27,12 @@ class unit_map;
 class unit_type_data;
 
 
+namespace{
+static const config::t_token z_movement_used("movement_used", false);
+static const config::t_token z_advancement("advancement", false);
+static const config::t_token z_trait("trait", false);
+//static const config::t_token z_("", false);
+}
 //and how much damage it does.
 class attack_type
 {
@@ -47,8 +54,8 @@ public:
 	double attack_weight() const { return attack_weight_; }
 	double defense_weight() const { return defense_weight_; }
 
-	bool get_special_bool(const std::string& special,bool force=false) const;
-	unit_ability_list get_specials(const std::string& special) const;
+	bool get_special_bool(const config::t_token& special,bool force=false) const;
+	unit_ability_list get_specials(const config::t_token& special) const;
 	std::vector<t_string> special_tooltips(bool force=false) const;
 	std::string weapon_specials(bool force=false) const;
 	void set_specials_context(const map_location& aloc,const map_location& dloc,
@@ -59,7 +66,7 @@ public:
 	bool apply_modification(const config& cfg,std::string* description);
 	bool describe_modification(const config& cfg,std::string* description);
 
-	int movement_used() const { return cfg_["movement_used"].to_int(100000); }
+	int movement_used() const { return cfg_[z_movement_used].to_int(100000); }
 
 	config& get_cfg() { return cfg_; }
 	const config& get_cfg() const { return cfg_; }
@@ -70,7 +77,13 @@ public:
 	/*
 	 * cfg: a weapon special WML structure
 	 */
-	bool special_active(const config& cfg, bool self) const;
+	bool special_active(gamemap const & game_map, unit_map const & units, 
+						  t_teams const & teams, LuaKernel & lua_kernel, 
+						  tod_manager const & tod_manager,
+						const config& cfg, bool self) const;
+	inline bool special_active(const config& cfg, bool self) const {
+		return special_active(*resources::game_map, *resources::units,*resources::teams,
+							  *resources::lua_kernel, *resources::tod_manager, cfg, self);}
 	bool special_affects_opponent(const config& cfg) const;
 	bool special_affects_self(const config& cfg) const;
 
@@ -204,13 +217,14 @@ public:
 	const std::vector<std::string> advances_from() const;
 
 	config::const_child_itors modification_advancements() const
-	{ return cfg_.child_range("advancement"); }
+	{ return cfg_.child_range(z_advancement); }
 
+	const unit_type& get_gender_unit_type(config::t_token gender) const;
 	const unit_type& get_gender_unit_type(std::string gender) const;
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
 	const unit_type& get_variation(const std::string& name) const;
 	/** Info on the type of unit that the unit reanimates as. */
-	const std::string& undead_variation() const { return undead_variation_; }
+	const config::t_token& undead_variation() const { return undead_variation_; }
 
 	unsigned int num_traits() const { return num_traits_; }
 
@@ -233,7 +247,7 @@ public:
 
 	const std::vector<unit_animation>& animations() const;
 
-	const std::string& flag_rgb() const { return flag_rgb_; }
+	const config::t_token& flag_rgb() const { return flag_rgb_; }
 
 	std::vector<attack_type> attacks() const;
 	const unit_movement_type& movement_type() const { return movementType_; }
@@ -273,7 +287,7 @@ public:
 	std::vector<std::string> get_ability_list() const;
 
 	config::const_child_itors possible_traits() const
-	{ return possibleTraits_.child_range("trait"); }
+	{ return possibleTraits_.child_range(z_trait); }
 	bool has_random_traits() const;
 
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
@@ -303,12 +317,12 @@ private:
     int max_attacks_;
     int cost_;
     std::string usage_;
-    std::string undead_variation_;
+	config::t_token undead_variation_;
 
 	std::string image_;
 	std::string small_profile_;
 	std::string big_profile_;
-	std::string flag_rgb_;
+	config::t_token flag_rgb_;
 
     unsigned int num_traits_;
 

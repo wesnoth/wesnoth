@@ -32,6 +32,12 @@
 
 #include <deque>
 
+namespace{
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison operations.
+	static const config::t_token z_guardian("guardian", false);
+}
+
 namespace ai {
 
 namespace testing_ai_default {
@@ -292,7 +298,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 	}
 
 	//guardian units stay put
-	if (u->get_state("guardian")) {
+	if (u->get_state(z_guardian)) {
 		LOG_AI << u->type_id() << " is guardian, staying still\n";
 		return std::make_pair(u->get_location(), u->get_location());
 	}
@@ -386,7 +392,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
 			if (u->side() != get_side() || u->can_recruit() ||
-			    u->movement_left() <= 0 || u->get_state("guardian") ||
+			    u->movement_left() <= 0 || u->get_state(z_guardian) ||
 			    u->incapacitated())
 			{
 				continue;

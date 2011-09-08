@@ -170,8 +170,7 @@ namespace{
 	static const config::t_token z_scroll_to_leader("scroll_to_leader", false);
 	static const config::t_token z_color_lock("color_lock", false);
 	static const config::t_token z_faction("faction", false);
-	static const config::t_token z_image("image", false);
-	static const config::t_token z_description("description", false);
+	static const config::t_token z_empty("", false);
 }
 
 game_classification::game_classification():
@@ -500,7 +499,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary[z_campaign] = cfg_save[z_campaign];
 	cfg_summary[z_difficulty] = cfg_save[z_difficulty];
 	cfg_summary[z_version] = cfg_save[z_version];
-	cfg_summary[z_corrupt] = "";
+	cfg_summary[z_corrupt] = z_empty;
 
 	if(has_snapshot) {
 		cfg_summary[z_turn] = cfg_snapshot[z_turn_at];
@@ -559,7 +558,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	cfg_summary[z_leader] = leader;
 	cfg_summary[z_leader_image] = leader_image;
-	cfg_summary[z_map_data] = "";
+	cfg_summary[z_map_data] = z_empty;
 
 	if(!shrouded) {
 		if(has_snapshot) {
@@ -578,6 +577,7 @@ config::attribute_value &game_state::get_variable(const config::t_token& key) {
 	return variable_info(key, true, variable_info::TYPE_SCALAR).as_scalar(); }
 
 config::attribute_value game_state::get_variable_const(const config::t_token &key) const {
+
 	variable_info to_get(key, false, variable_info::TYPE_SCALAR);
 	if (!to_get.is_valid()) {
 		config::attribute_value &to_return = temporaries_[key];
@@ -607,7 +607,7 @@ config& game_state::add_variable_cfg(const config::t_token& key, const config& v
 void game_state::clear_variable_cfg(const config::t_token& varname) {
 	variable_info to_clear(varname, false, variable_info::TYPE_CONTAINER);
 	if(!to_clear.is_valid()) return;
-	if(to_clear.explicit_index) {
+	if(to_clear.is_explicit_index()) {
 		to_clear.vars->remove_child(to_clear.key, to_clear.index);
 	} else {
 		to_clear.vars->clear_children(to_clear.key);
@@ -617,7 +617,7 @@ void game_state::clear_variable_cfg(const config::t_token& varname) {
 void game_state::clear_variable(const config::t_token& varname) {
 	variable_info to_clear(varname, false);
 	if(!to_clear.is_valid()) return;
-	if(to_clear.explicit_index) {
+	if(to_clear.is_explicit_index()) {
 		to_clear.vars->remove_child(to_clear.key, to_clear.index);
 	} else {
 		to_clear.vars->clear_children(to_clear.key);

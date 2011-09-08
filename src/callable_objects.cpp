@@ -171,7 +171,8 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "leader") {
 		return variant(u_.can_recruit());
 	} else if(key == "undead") {
-		return variant(u_.get_state("not_living") ? 1 : 0);
+		static const config::t_token z_not_living("not_living");
+		return variant(u_.get_state(z_not_living) ? 1 : 0);
 	} else if(key == "attacks") {
 		const std::vector<attack_type>& att = u_.attacks();
 		std::vector<variant> res;
@@ -208,19 +209,19 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "attacks_left") {
 		return variant(u_.attacks_left());
 	} else if(key == "traits") {
-		const std::vector<std::string> traits = u_.get_traits_list();
+		const std::vector<config::t_token> traits = u_.get_traits_list();
 		std::vector<variant> res;
 
 		if(traits.empty())
 			return variant( &res );
 
-		for (std::vector<std::string>::const_iterator it = traits.begin(); it != traits.end(); ++it)
+		for (std::vector<config::t_token>::const_iterator it = traits.begin(); it != traits.end(); ++it)
 		{
 			res.push_back( variant(*it) );
 		}
 		return variant( &res );
 	} else if(key == "states") {
-		const std::map<std::string, std::string>& states_map = u_.get_states();
+		const std::map<config::t_token, config::t_token>& states_map = u_.get_states();
 
 		return convert_map( states_map );
 	} else if(key == "side") {

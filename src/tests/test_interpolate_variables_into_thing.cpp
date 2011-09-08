@@ -42,7 +42,7 @@ namespace{
 
 BOOST_AUTO_TEST_CASE( test_1 ) {
 #ifdef DEBUG
-	lg::set_log_domain_severity("interpolate", 0); //4 is debug comments
+	//	lg::set_log_domain_severity("interpolate", 0); //4 is debug comments
 #endif
 	utils::string_map symbols;
 	std::string nothing = "no change";

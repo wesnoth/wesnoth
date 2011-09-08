@@ -24,6 +24,12 @@
 #include "resources.hpp"
 #include "unit_abilities.hpp"
 
+namespace {
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison operations.
+	static const config::t_token z_damage("damage", false);
+}
+
 // Conversion routine for both unscathed and damage change percentage.
 static void format_prob(char str_buf[10], double prob)
 {
@@ -158,7 +164,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		weapon->set_specials_context(u_loc, opp_loc, *resources::units, stats.is_attacker, opp_weapon);
 
 		// Get damage modifiers.
-		unit_ability_list dmg_specials = weapon->get_specials("damage");
+		unit_ability_list dmg_specials = weapon->get_specials(z_damage);
 		unit_abilities::effect dmg_effect(dmg_specials, weapon->damage(), stats.backstab_pos);
 
 		// Get the SET damage modifier, if any.

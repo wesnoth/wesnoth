@@ -79,6 +79,201 @@ static lg::log_domain log_wml("wml");
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
+namespace{
+static const config::t_token z_id("id");
+static const config::t_token z_this_unit("this_unit");
+static const config::t_token z_variable("variable");
+static const config::t_token z_time_of_day("time_of_day");
+static const config::t_token z_x("x");
+static const config::t_token z_y("y");
+static const config::t_token z_x1("x1");
+static const config::t_token z_x2("x2");
+static const config::t_token z_y1("y1");
+static const config::t_token z_y2("y2");
+static const config::t_token z_have_unit("have_unit");
+static const config::t_token z_count("count");
+static const config::t_token z_search_recall_list("search_recall_list");
+static const config::t_token z_have_location("have_location");
+static const config::t_token z_name("name");
+static const config::t_token z_equals("equals");
+static const config::t_token z_not_equals("not_equals");
+static const config::t_token z_numerical_equals("numerical_equals");
+static const config::t_token z_numerical_not_equals("numerical_not_equals");
+static const config::t_token z_boolean_equals("boolean_equals");
+static const config::t_token z_boolean_not_equals("boolean_not_equals");
+static const config::t_token z_less_than("less_than");
+static const config::t_token z_greater_than("greater_than");
+static const config::t_token z_greater_than_equal_to("greater_than_equal_to");
+static const config::t_token z_less_than_equal_to("less_than_equal_to");
+static const config::t_token z_and("and");
+static const config::t_token z_or("or");
+static const config::t_token z_not("not");
+static const config::t_token z_contains("contains");
+static const config::t_token z_backwards_compat("backwards_compat");
+static const config::t_token z_logger("logger");
+static const config::t_token z_message("message");
+static const config::t_token z_side("side");
+static const config::t_token z_filter_side("filter_side");
+static const config::t_token z_remove("remove");
+static const config::t_token z_source("source");
+static const config::t_token z_target("target");
+static const config::t_token z_bidirectional("bidirectional");
+static const config::t_token z_check_passability("check_passability");
+static const config::t_token z_clear_shroud("clear_shroud");
+static const config::t_token z_animate("animate");
+static const config::t_token z_type("type");
+static const config::t_token z_filter("filter");
+static const config::t_token z_music("music");
+static const config::t_token z_sound("sound");
+static const config::t_token z_red("red");
+static const config::t_token z_green("green");
+static const config::t_token z_blue("blue");
+static const config::t_token z_turn("turn");
+static const config::t_token z_team_name("team_name");
+static const config::t_token z_user_team_name("user_team_name");
+static const config::t_token z_controller("controller");
+static const config::t_token z_recruit("recruit");
+static const config::t_token z_shroud_data("shroud_data");
+static const config::t_token z_ai("ai");
+static const config::t_token z_switch_ai("switch_ai");
+static const config::t_token z_income("income");
+static const config::t_token z_gold("gold");
+static const config::t_token z_shroud("shroud");
+static const config::t_token z_hidden("hidden");
+static const config::t_token z_fog("fog");
+static const config::t_token z_village_gold("village_gold");
+static const config::t_token z_value("value");
+static const config::t_token z_share_view("share_view");
+static const config::t_token z_add("add");
+static const config::t_token z_current("current");
+static const config::t_token z_turn_number("turn_number");
+static const config::t_token z_variation("variation");
+static const config::t_token z_image_mods("image_mods");
+static const config::t_token z_gender("gender");
+static const config::t_token z_effect("effect");
+static const config::t_token z_apply_to("apply_to");
+static const config::t_token z_fake_unit("fake_unit");
+static const config::t_token z_skip_steps("skip_steps");
+static const config::t_token z_literal("literal");
+static const config::t_token z_sub("sub");
+static const config::t_token z_multiply("multiply");
+static const config::t_token z_share_maps("share_maps");
+static const config::t_token z_image_mod("image_mod");
+static const config::t_token z_divide("divide");
+static const config::t_token z_modulo("modulo");
+static const config::t_token z_round("round");
+static const config::t_token z_ceil("ceil");
+static const config::t_token z_floor("floor");
+static const config::t_token z_ipart("ipart");
+static const config::t_token z_fpart("fpart");
+static const config::t_token z_string_length("string_length");
+static const config::t_token z_time("time");
+static const config::t_token z_stamp("stamp");
+static const config::t_token z_rand("rand");
+static const config::t_token z_join("join");
+static const config::t_token z_separator("separartor");
+static const config::t_token z_key("key");
+static const config::t_token z_to_variable("to_variable");
+static const config::t_token z_remove_empty("remove_empty");
+static const config::t_token z_mode("mode");
+static const config::t_token z_extend("extend");
+static const config::t_token z_append("append");
+static const config::t_token z_merge("merge");
+static const config::t_token z_insert("insert");
+static const config::t_token z_split("split");
+static const config::t_token z_replace("replace");
+static const config::t_token z_list("list");
+static const config::t_token z_role("role");
+static const config::t_token z_mask("mask");
+static const config::t_token z_border("border");
+static const config::t_token z_show("show");
+static const config::t_token z_fire_event("fire_event");
+static const config::t_token z_then("then");
+static const config::t_token z_object("object");
+static const config::t_token z_size("size");
+static const config::t_token z_text("text");
+static const config::t_token z_duration("duration");
+static const config::t_token z_secondary_unit("secondary_unit");
+static const config::t_token z_die("die");
+static const config::t_token z_needs_select("needs_select");
+static const config::t_token z_show_if("show_if");
+static const config::t_token z_filter_location("filter_location");
+static const config::t_token z_command("command");
+static const config::t_token z_find_vacant("find_vacant");
+static const config::t_token z_cannot_use_message("cannot_use_message");
+static const config::t_token z_recall("recall");
+static const config::t_token z_else("else");
+static const config::t_token z_silent("silent");
+//static const config::t_token z_("");
+static const config::t_token z_advance("advance");
+static const config::t_token z_choose("choose");
+static const config::t_token z_location("location");
+static const config::t_token z_owner_side("owner_side");
+static const config::t_token z_store_villages("store_villages");
+static const config::t_token z_next_scenario("next_scenario");
+static const config::t_token z_end_text("end_text");
+static const config::t_token z_end_text_duration("end_text_duration");
+static const config::t_token z_result("result");
+static const config::t_token z_victory("victory");
+static const config::t_token z_defeat("defeat");
+static const config::t_token z_carryover_report("carryover_report");
+static const config::t_token z_save("save");
+static const config::t_token z_linger_mode("linger_mode");
+static const config::t_token z_reveal_map("reveal_map");
+static const config::t_token z_bonus("bonus");
+static const config::t_token z_carryover_percentage("carryover_percentage");
+static const config::t_token z_carryover_add("carryover_add");
+static const config::t_token z_filter_second("filter_second");
+static const config::t_token z_heals("heals");
+static const config::t_token z_amount("amount");
+static const config::t_token z_moves("moves");
+static const config::t_token z_restore_attacks("restore_attacks");
+static const config::t_token z_restore_statuses("restore_statuses");
+static const config::t_token z_full("full");
+static const config::t_token z_heal_amount("heal_amount");
+static const config::t_token z_topic("topic");
+static const config::t_token z_speaker("speaker");
+static const config::t_token z_unit("unit");
+static const config::t_token z_second_unit("second_unit");
+static const config::t_token z_narrator("narrator");
+static const config::t_token z_caption("caption");
+static const config::t_token z_label("label");
+static const config::t_token z_option("option");
+static const config::t_token z_text_input("text_input");
+static const config::t_token z_max_length("max_length");
+static const config::t_token z_side_for("side_for");
+static const config::t_token z_scroll("scroll");
+static const config::t_token z_time_area("time_area");
+static const config::t_token z_input("input");
+static const config::t_token z_map("map");
+static const config::t_token z_delayed("delayed");
+static const config::t_token z_expand("expand");
+static const config::t_token z_shrink("shrink");
+static const config::t_token z_first_time_only("first_time_only");
+static const config::t_token z_allow_undo("allow_undo");
+static const config::t_token z_weapon("weapon");
+static const config::t_token z_first("first");
+static const config::t_token z_second("second");
+static const config::t_token z_second_weapon("second_weapon");
+static const config::t_token z_filter_condition("filter_condition");
+static const config::t_token z_filter_attack("filter_attack");
+static const config::t_token z_filter_second_attack("filter_second_attack");
+static const config::t_token z_handle_event_command("handle_event_command");
+static const config::t_token z_empty("empty");
+static const config::t_token z_event("event");
+static const config::t_token z_unit_wml_ids("unit_wml_ids");
+static const config::t_token z_used_items("used_items");
+static const config::t_token z_select("select");
+static const config::t_token z_delayed_variable_substitution("delayed_variable_substitution");
+// static const config::t_token z_("");
+// static const config::t_token z_("");
+
+
+
+
+
+
+}
 /**
  * State when processing a flight of events or commands.
  */
@@ -1036,7 +1231,7 @@ game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 		config &effect = mod.add_child("effect");
 		effect["apply_to"] = "variation";
 		effect["name"] = variation;
-		fake_unit->add_modification("variation",mod);
+		fake_unit->add_modification(z_variation,mod);
 	}
 
 	if(!img_mods.empty()) {
@@ -1044,7 +1239,7 @@ game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 		config &effect = mod.add_child("effect");
 		effect["apply_to"] = "image_mod";
 		effect["add"] = img_mods;
-		fake_unit->add_modification("image_mod",mod);
+		fake_unit->add_modification(z_image_mod,mod);
 	}
 
 	return fake_unit;
@@ -1408,8 +1603,8 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 
 WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
-{
-	const t_string& name = cfg["name"];
+{	
+	const config::attribute_value & name = cfg["name"];
 	variable_info dest(name, true, variable_info::TYPE_CONTAINER);
 
 	std::string mode = cfg["mode"]; // replace, append, merge, or insert
@@ -1441,7 +1636,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 	{
 		variable_info tovar(cfg["to_variable"], false, variable_info::TYPE_CONTAINER);
 		if(tovar.is_valid()) {
-			if(tovar.explicit_index) {
+			if(tovar.is_explicit_index()) {
 				data.add_child(dest.key, tovar.as_container());
 			} else {
 				variable_info::array_range range = tovar.as_array();
@@ -1497,7 +1692,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 	}
 	if(mode == "replace")
 	{
-		if(dest.explicit_index) {
+		if(dest.is_explicit_index()) {
 			dest.vars->remove_child(dest.key, dest.index);
 		} else {
 			dest.vars->clear_children(dest.key);
@@ -1507,7 +1702,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 	{
 		if(mode == "merge")
 		{
-			if(dest.explicit_index) {
+			if(dest.is_explicit_index()) {
 				// merging multiple children into a single explicit index
 				// requires that they first be merged with each other
 				data.merge_children(dest.key);
@@ -1515,7 +1710,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 			} else {
 				dest.vars->merge_with(data);
 			}
-		} else if(mode == "insert" || dest.explicit_index) {
+		} else if(mode == "insert" || dest.is_explicit_index()) {
 			foreach (const config &child, data.child_range(dest.key))
 			{
 				dest.vars->add_child_at(dest.key, child, dest.index++);
@@ -1548,7 +1743,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 		unit_map::iterator itor;
 		foreach (unit &u, *resources::units) {
 			if (game_events::unit_matches_filter(u, filter)) {
-				u.set_role(cfg["role"]);
+				u.set_role(cfg[z_role].token());
 				found = true;
 				break;
 			}
@@ -1585,7 +1780,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 					unit& u = pi->recall_list()[i];
 					scoped_recall_unit auto_store("this_unit", player_id, i);
 					if (u.matches_filter(filter, map_location())) {
-						u.set_role(cfg["role"]);
+						u.set_role(cfg[z_role].token());
 						found=true;
 						break;
 					}
@@ -1796,7 +1991,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	{
 		text = cfg["description"].str();
 
-		u->add_modification("object", cfg.get_parsed_config());
+		u->add_modification(z_object, cfg.get_parsed_config());
 
 		resources::screen->select_hex(event_info.loc1);
 		resources::screen->invalidate_unit();

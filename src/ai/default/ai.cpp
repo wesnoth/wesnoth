@@ -57,6 +57,13 @@ static lg::log_domain log_ai("ai/general");
 #pragma warning(disable:4250)
 #endif
 
+namespace{
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison operations.
+	static const config::t_token z_chance_to_hit("chance_to_hit", false);
+	static const config::t_token z_poison("poison", false);
+}
+
 namespace ai {
 
 typedef util::array<map_location,6> adjacent_tiles_array;
@@ -370,10 +377,10 @@ int ai_default_recruitment_stage::average_resistance_against(const unit_type& a,
 		if (steadfast && resistance < 100)
 			resistance = std::max<int>(resistance * 2 - 100, 50);
 		// Do not look for filters or values, simply assume 70% if CTH is customized.
-		int cth = i->get_special_bool("chance_to_hit", true) ? 70 : defense;
+		int cth = i->get_special_bool(z_chance_to_hit, true) ? 70 : defense;
 		int weight = i->damage() * i->num_attacks();
 		// if cth == 0 the division will do 0/0 so don't execute this part
-		if (living && cth != 0 && i->get_special_bool("poison", true)) {
+		if (living && cth != 0 && i->get_special_bool(z_poison, true)) {
 			// Compute the probability of not poisoning the unit.
 			int prob = 100;
 			for (int j = 0; j < i->num_attacks(); ++j)

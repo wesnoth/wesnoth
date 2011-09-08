@@ -40,6 +40,15 @@ static lg::log_domain log_ai_testing_aspect_attacks("ai/aspect/attacks");
 #define LOG_AI LOG_STREAM(info, log_ai_testing_aspect_attacks)
 #define ERR_AI LOG_STREAM(err, log_ai_testing_aspect_attacks)
 
+
+namespace{
+	//Static tokens are replacements for string literals in code
+	//They allow for fast comparison operations.
+	static const config::t_token z_backstab("backstab", false);
+	static const config::t_token z_slow("slow", false);
+	static const config::t_token z_value("value", false);
+}
+
 aspect_attacks::aspect_attacks(readonly_context &context, const config &cfg, const std::string &id)
 	: typesafe_aspect<attacks_vector>(context,cfg,id)
 	, filter_own_()
@@ -165,11 +174,11 @@ void aspect_attacks::do_attack_analysis(
 		std::vector<attack_type>& attacks = unit_itor->attacks();
 		for(std::vector<attack_type>::iterator a = attacks.begin(); a != attacks.end(); ++a) {
 			a->set_specials_context(map_location(), map_location(), units_, true, NULL);
-			if(a->get_special_bool("backstab")) {
+			if(a->get_special_bool(z_backstab)) {
 				backstab = true;
 			}
 
-			if(a->get_special_bool("slow")) {
+			if(a->get_special_bool(z_slow)) {
 				slow = true;
 			}
 		}
@@ -255,7 +264,7 @@ void aspect_attacks::do_attack_analysis(
 			}
 
 			unit_ability_list abil = unit_itor->get_abilities("leadership",tiles[j]);
-			int best_leadership_bonus = abil.highest("value").first;
+			int best_leadership_bonus = abil.highest(z_value).first;
 			double leadership_bonus = static_cast<double>(best_leadership_bonus+100)/100.0;
 			if (leadership_bonus > 1.1) {
 				LOG_AI << unit_itor->name() << " is getting leadership " << leadership_bonus << "\n";
