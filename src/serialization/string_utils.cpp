@@ -25,7 +25,8 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
+#include "../util.hpp"
+#include "utils/lru_cache.hpp"
 #include <boost/array.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -74,6 +75,26 @@ std::string &strip(std::string &str)
 	str.erase(std::find_if(str.rbegin(), str.rend(), notspace).base(), str.end());
 
 	return str;
+}
+namespace {
+
+static const uint CACHE_SIZE = 10000;
+typedef std::pair<n_token::t_token, std::pair<char, int > > t_triad;
+typedef std::vector<n_token::t_token > t_out;
+struct t_calc_cache_item {
+	t_out const operator()(t_triad const & x){
+		std::vector<std::string> vstr(split(static_cast<std::string const &>(x.first), x.second.first, x.second.second));
+		t_out const retval(vstr.begin(), vstr.end());
+		return retval;
+	}
+};
+typedef  n_lru_cache::t_lru_cache<t_triad, t_out, t_calc_cache_item> t_cache;
+}
+
+std::vector< n_token::t_token > split_token(n_token::t_token const &val, char c, int flags){
+	static t_cache my_cache(t_calc_cache_item(), CACHE_SIZE);
+
+	return my_cache.check(std::make_pair(val, std::make_pair(c,flags)));	
 }
 
 std::vector< std::string > split(std::string const &val, char c, int flags)

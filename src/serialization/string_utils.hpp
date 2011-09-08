@@ -25,6 +25,7 @@
 #include <boost/next_prior.hpp>
 
 #include "SDL_types.h"
+#include "token.hpp"
 
 /** The type we use to represent Unicode strings. */
 typedef std::vector<wchar_t> wide_string;
@@ -52,6 +53,7 @@ enum { REMOVE_EMPTY = 0x01,	/**< REMOVE_EMPTY : remove empty elements. */
 	  STRIP_SPACES  = 0x02	/**< STRIP_SPACES : strips leading and trailing blank spaces. */
 };
 
+std::vector< n_token::t_token > split_token(n_token::t_token const &val, char c = ',', int flags = REMOVE_EMPTY | STRIP_SPACES);
 std::vector< std::string > split(std::string const &val, char c = ',', int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
@@ -192,6 +194,7 @@ bool isvalid_username(const std::string &login);
 bool isvalid_wildcard(const std::string &login);
 
 typedef std::map< std::string, t_string > string_map;
+typedef boost::unordered_map< n_token::t_token, t_string > token_map;
 
 /**
  * Functions for converting Unicode wide-char strings to UTF-8 encoded strings,
