@@ -1,4 +1,4 @@
-/* $Id: tstring.hpp 48153 2011-01-01 15:57:50Z mordante $ */
+/* $Id$ */
 /*
    Copyright (C) 2004 - 2011 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org

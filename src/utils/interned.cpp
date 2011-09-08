@@ -1,4 +1,4 @@
-/* $Id: tstring.cpp 48153 2011-01-01 15:57:50Z mordante $ */
+/* $Id$ */
 /*
    Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
    Copyright (C) 2005 - 2011 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
