@@ -26,8 +26,8 @@
 BOOST_AUTO_TEST_SUITE( lru_cache_suite )
 
 namespace{
-static const uint CACHE_SIZE = 10;
-static const uint STEP_SIZE = 1000;
+static const unsigned int CACHE_SIZE = 10;
+static const unsigned int STEP_SIZE = 1000;
 	
 
 struct t_gen_cache_item {

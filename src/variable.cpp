@@ -670,7 +670,7 @@ public:
 };
 
 //	typedef boost::unordered_map<config::t_token, t_parsed_tokens> t_all_parsed;
-static const uint CACHE_SIZE = 10000;
+static const unsigned int CACHE_SIZE = 10000;
 typedef  n_lru_cache::t_lru_cache<config::t_token, t_parsed_tokens, t_parse_token> t_all_parsed;
 
 

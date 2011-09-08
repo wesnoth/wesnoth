@@ -78,7 +78,7 @@ std::string &strip(std::string &str)
 }
 namespace {
 
-static const uint CACHE_SIZE = 10000;
+static const unsigned int CACHE_SIZE = 10000;
 
 typedef std::vector<n_token::t_token > t_out;
 
@@ -155,7 +155,7 @@ std::vector< std::string > split(std::string const &val, char c, int flags)
 }
 
 namespace {
-static const uint PAREN_CACHE_SIZE = 1000;
+static const unsigned int PAREN_CACHE_SIZE = 1000;
 typedef std::vector<n_token::t_token > t_out;
 
 struct t_paren_split_inputs {
