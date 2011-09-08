@@ -146,6 +146,9 @@ struct t_operation_interp;
 struct t_operation_formula;
 
 struct t_operation {
+
+	virtual ~t_operation() {}
+
 	virtual void operator()(t_tokens & /*stack*/,  variable_set const & /*variable_set*/) const = 0;
 
 	virtual std::string const string() const = 0;
