@@ -206,6 +206,7 @@ set(libwesnoth-core_STAT_SRC
 	map_location.cpp
 	md5.cpp
 	thread.cpp
+	token.cpp
 	tstring.cpp
 	util.cpp
 	version.cpp
