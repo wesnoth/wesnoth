@@ -2183,6 +2183,9 @@ int combat_modifier(const map_location &loc,
 		case unit_type::CHAOTIC:
 			bonus = -lawful_bonus;
 			break;
+		case unit_type::LIMINAL:
+			bonus = -(abs(lawful_bonus));
+			break;
 		default:
 			bonus = 0;
 	}

@@ -598,7 +598,8 @@ REPORT_GENERATOR(time_of_day)
 	tooltip << tod.name << '\n'
 		<< _("Lawful units: ") << utils::signed_percent(b) << '\n'
 		<< _("Neutral units: ") << utils::signed_percent(0) << '\n'
-		<< _("Chaotic units: ") << utils::signed_percent(-b) << '\n';
+		<< _("Chaotic units: ") << utils::signed_percent(-b) << '\n'
+		<< _("Liminal units: ") << utils::signed_percent(-(abs(b)));
 
 	std::string tod_image = tod.image;
 	if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";

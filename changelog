@@ -8,6 +8,9 @@ Version 1.9.9+svn:
    * Updated translations: British English, Dutch, Galician
  * User interface
    * Removed waypoints UI feature
+ * WML engine:
+   * Readded the liminal alignment
+
 
 Version 1.9.9:
  * AI:
@@ -157,7 +160,7 @@ Version 1.9.9:
    * [harm_unit] now supports a harmer unit and experience calculation.
    * Added support for 24 hour ToD.
    * Added WML validation system based on schema validation.
-   * Enabled validation for GUI WML. 
+   * Enabled validation for GUI WML.
  * Miscellaneous and bug fixes:
    * Teach wmllint to fix deprecated implicit side=1 in [store_gold], [gold]
      [remove_shroud], [place_shroud], [modify_side], [modify_ai] actions
