@@ -135,7 +135,7 @@ hash_memory_manager hash_memory;
 
 static const std::string* get_hash_of(const config* cp) {
 	//first see if the memory of a constant config hash exists
-	typename t_config_hashes::iterator ch_it = config_hashes.find(cp);
+	t_config_hashes::iterator ch_it = config_hashes.find(cp);
 	if(ch_it != config_hashes.end()) {
 		return ch_it->second;
 	}
