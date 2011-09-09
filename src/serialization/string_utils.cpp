@@ -22,6 +22,7 @@
 
 #include "global.hpp"
 
+#include "foreach.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -103,7 +104,9 @@ size_t hash_value(t_split_triad const & a) {
 struct t_calc_cache_item {
 	t_out const operator()(t_split_triad const & x) {
 		std::vector<std::string> vstr(split(static_cast<std::string const &>(x.val), x.c, x.flags));
-		t_out const retval(vstr.begin(), vstr.end());
+		t_out retval;
+		foreach(std::string const & s, vstr){
+			retval.push_back(n_token::t_token(s)); }
 		return retval;
 	}
 };
