@@ -58,6 +58,8 @@ class recruit;
 class suppose_dead;
 class side_actions;
 
+typedef boost::shared_ptr<bool> whiteboard_lock;
+
 typedef boost::shared_ptr<arrow> arrow_ptr;
 typedef boost::shared_ptr<game_display::fake_unit> fake_unit_ptr;
 

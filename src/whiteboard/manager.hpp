@@ -59,6 +59,8 @@ public:
 	void set_active(bool active);
 	///Called by the key that temporarily toggles the activated state when held
 	void set_invert_behavior(bool invert);
+	/// Prevents the whiteboard from changing its activation state, as long as the returned reference is held
+	whiteboard_lock get_activation_state_lock() { return activation_state_lock_; }
 
 	///Used to ask the whiteboard if its general purpose hotkeys can be called now
 	bool can_execute_hotkey() const;
@@ -180,6 +182,9 @@ private:
 	bool executing_actions_;
 	/** Track whether the gamestate changed and we need to validate actions. */
 	bool gamestate_mutated_;
+
+	/** Reference counted "lock" to allow preventing whiteboard activation state changes */
+	whiteboard_lock activation_state_lock_;
 
 	boost::scoped_ptr<mapbuilder> mapbuilder_;
 	boost::shared_ptr<highlight_visitor> highlighter_;

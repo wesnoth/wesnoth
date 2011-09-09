@@ -57,6 +57,7 @@ manager::manager():
 		planned_unit_map_active_(false),
 		executing_actions_(false),
 		gamestate_mutated_(false),
+		activation_state_lock_(new bool),
 		mapbuilder_(),
 		highlighter_(),
 		route_(),
@@ -126,6 +127,10 @@ void manager::print_help_once()
 
 void manager::set_active(bool active)
 {
+	//any more than one reference means a lock on whiteboard state was requested
+	if(!activation_state_lock_.unique())
+		return;
+
 	if(wait_for_side_init_
 				|| executing_actions_
 				|| is_observer()
@@ -154,6 +159,10 @@ void manager::set_active(bool active)
 
 void manager::set_invert_behavior(bool invert)
 {
+	//any more than one reference means a lock on whiteboard state was requested
+	if(!activation_state_lock_.unique())
+		return;
+
 	bool block_whiteboard_activation = false;
 	if(wait_for_side_init_
 			|| executing_actions_
