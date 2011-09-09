@@ -79,13 +79,6 @@ private:
 	std::vector<cache_item<T> > content_;
 };
 
-	//static initialization fiasco fix don't inline
-n_token::t_token const & locator::z_empty_default() {
-	static const n_token::t_token * x = new n_token::t_token(z_empty);
-	return *x;
-}
-
-
 template <typename T>
 bool locator::in_cache(cache_type<T> &cache) const
 {

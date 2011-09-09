@@ -198,7 +198,6 @@ std::vector< n_token::t_token > parenthetical_split_token(n_token::t_token const
 		const char separator, n_token::t_token const &left,
 		n_token::t_token const &right, int flags) {
 	static t_paren_cache my_cache(t_calc_paren_cache_item(), PAREN_CACHE_SIZE);
-
 	return my_cache.check( t_paren_split_inputs(val, separator, left, right, flags ) );	
 }
 

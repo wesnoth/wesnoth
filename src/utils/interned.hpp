@@ -57,7 +57,6 @@ class t_interned_token {
 public:
 	inline ~t_interned_token();
 
-
 	///default constructor.
 	t_interned_token();
 	
@@ -164,7 +163,6 @@ typename t_interned_token<T, T_hasher>::t_stash & t_interned_token<T, T_hasher>:
 	static t_stash * the_stash_ = new t_stash();
 	return *the_stash_;
 }
-
 
 template <typename T, typename T_hasher >
 typename t_interned_token<T, T_hasher>::t_stash::value_type * t_interned_token<T, T_hasher>::first_default_constructed() {

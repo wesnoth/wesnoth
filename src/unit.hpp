@@ -287,7 +287,7 @@ public:
 		STATE_FORGET,     /** animation will be automatically replaced by a standing anim when finished */
 		STATE_ANIM};      /** normal anims */
 	void start_animation(int start_time, const unit_animation *animation,
-						 bool with_bars,  const n_token::t_token &text = z_empty,
+						 bool with_bars,  const n_token::t_token &text = n_token::t_token::z_empty(),
 						 Uint32 text_color = 0, STATE state = STATE_ANIM);
 
 	/** The name of the file to game_display (used in menus). */

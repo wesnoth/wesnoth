@@ -57,8 +57,12 @@ public:
 	explicit t_token(std::string const & a , bool is_ref_counted = true) : t_base(a, is_ref_counted) {}
 	t_token(t_token const & a) : t_base(a) {}
 	t_token  & operator=(t_token const & a) { this->t_base::operator=(a); return *this;}
-	
+
+	///Empty string token in a form suitable for use as a default value safe from static initialization errors
 	static const t_token & z_empty();
+	///Return a default interned object suitable as a default value which won't cause a static initialization error
+	template <char T_defchar>
+	static t_token const & default_value();
 		
 	inline bool empty() const {return *this == z_empty() ;}
 
@@ -74,6 +78,12 @@ public:
 		return out << static_cast<std::string const &>(a); }
 };
 
+/// Do not inline this enforces static initialization order
+template <char T_defval>
+t_token const & t_token::default_value() {
+	static t_token *z_defval = new t_token(std::string(1, T_defval), false);
+	return *z_defval;
+}
 
 inline std::string operator+(const n_token::t_token &a, const std::string &b) { return static_cast<std::string const &>(a) + b; }
 inline std::string operator+(const std::string &a, const n_token::t_token &b) { return a + static_cast<std::string const &>(b); }

@@ -79,9 +79,6 @@ namespace image {
 		// (the second will work, of course, but will be slower)
 		locator();
 
-		//temporary fix //todo move somewhere like inside t_token?
-		static n_token::t_token const & z_empty_default();
-
 		locator(const locator &a, const n_token::t_token &mods = n_token::t_token::z_empty());
 
 		// locator(const locator &a, const std::string &mods ="");

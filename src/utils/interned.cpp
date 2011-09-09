@@ -22,7 +22,6 @@
 
 namespace n_interned {
 
-
 }//end namepace
 
 

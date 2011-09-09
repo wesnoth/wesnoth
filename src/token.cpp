@@ -29,7 +29,6 @@ t_token const & t_token::z_empty() {
 	static t_token *z_empty = new t_token("", false);
 	return *z_empty;
 }
-
 }//end namepace
 
 

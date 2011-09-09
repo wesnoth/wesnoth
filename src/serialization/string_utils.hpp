@@ -37,14 +37,6 @@ typedef std::string utf8_string;
 
 class t_string;
 
-
-namespace {
-//Static tokens are replacements for string literals in code
-//They allow for fast comparison, copying and hashing operations.
-static const n_token::t_token z_lparen("(", false);
-static const n_token::t_token z_rparen(")", false);
-}
-
 namespace utils {
 
 extern const std::string unicode_minus;
@@ -89,9 +81,9 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 	std::string const &right=")",int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 
-std::vector< n_token::t_token > parenthetical_split_token(n_token::t_token const &val,
-	const char separator = 0 , n_token::t_token const &left=z_lparen,
-	n_token::t_token const &right=z_rparen,int flags = REMOVE_EMPTY | STRIP_SPACES);
+std::vector< n_token::t_token > parenthetical_split_token(n_token::t_token const &val
+	, const char separator = 0, n_token::t_token const &left=n_token::t_token::default_value<'('>()
+	, n_token::t_token const &right = n_token::t_token::default_value<')'>(), int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 template <typename T>
 std::string join(T const &v, const std::string& s = ",")

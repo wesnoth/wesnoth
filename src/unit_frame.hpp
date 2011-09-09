@@ -29,11 +29,9 @@ class config;
 template <class T>
 class progressive_discrete {
 public:
-	progressive_discrete(const n_token::t_token& data = z_empty, int duration = 0) : data_(), input_(data) {
+	progressive_discrete(const n_token::t_token& data = n_token::t_token::z_empty(), int duration = 0) : data_(), input_(data) {
 		progressive_discrete_core(data, duration); }
-	// progressive_discrete(const std::string& data = z_empty, int duration = 0): data_(), input_(data) {
-	// 	progressive_discrete_core(n_token::t_token(data), duration); }
-	void progressive_discrete_core(const n_token::t_token& data = z_empty, int duration = 0);
+	void progressive_discrete_core(const n_token::t_token& data = n_token::t_token::z_empty(), int duration = 0);
 	progressive_discrete(progressive_discrete const & );
 	int duration() const;
 	const T & get_current_element(int time) const;
@@ -61,9 +59,9 @@ class progressive_continuous {
 	static T const & default_default_value();
 	
 public:
-	progressive_continuous(const n_token::t_token& data = z_empty, int duration = 0) : data_(), input_(data) {
+	progressive_continuous(const n_token::t_token& data = n_token::t_token::z_empty(), int duration = 0) : data_(), input_(data) {
 		progressive_continuous_core(data, duration); }
-	void progressive_continuous_core(const n_token::t_token& data = z_empty, int duration = 0);
+	void progressive_continuous_core(const n_token::t_token& data = n_token::t_token::z_empty(), int duration = 0);
 	progressive_continuous(progressive_continuous const &);
 	int duration() const;
 	const T get_current_element(int time,T const & default_val=progressive_continuous<T>::default_default_value() ) const;
@@ -117,11 +115,11 @@ class frame_parsed_parameters;
 class frame_builder {
 	public:
 		frame_builder();
-		frame_builder(const config& cfg,const n_token::t_token &frame_string = z_empty);
+		frame_builder(const config& cfg,const n_token::t_token &frame_string = n_token::t_token::z_empty());
 		/** allow easy chained modifications will raised assert if used after initialization */
 		frame_builder & duration(const int duration);
-		frame_builder & image(const image::locator& image ,const n_token::t_token & image_mod=z_empty);
-		frame_builder & image_diagonal(const image::locator& image_diagonal,const n_token::t_token & image_mod=z_empty);
+		frame_builder & image(const image::locator& image ,const n_token::t_token & image_mod= n_token::t_token::z_empty());
+		frame_builder & image_diagonal(const image::locator& image_diagonal,const n_token::t_token & image_mod= n_token::t_token::z_empty());
 		frame_builder & sound(const n_token::t_token& sound);
 		frame_builder & text(const n_token::t_token& text,const  Uint32 text_color);
 		frame_builder & halo(const n_token::t_token &halo, const n_token::t_token &halo_x, const n_token::t_token& halo_y,const n_token::t_token& halo_mod);
@@ -175,12 +173,12 @@ class frame_parsed_parameters {
 		frame_parsed_parameters(const frame_builder& builder=frame_builder(),int override_duration = 0);
 		/** allow easy chained modifications will raised assert if used after initialization */
 		void override( int duration
-				, const n_token::t_token& highlight = z_empty
-				, const n_token::t_token& blend_ratio =z_empty
+				, const n_token::t_token& highlight = n_token::t_token::z_empty()
+				, const n_token::t_token& blend_ratio = n_token::t_token::z_empty()
 				, Uint32 blend_color = 0
-				, const n_token::t_token& offset = z_empty
-				, const n_token::t_token& layer = z_empty
-				, const n_token::t_token& modifiers = z_empty);
+				, const n_token::t_token& offset = n_token::t_token::z_empty()
+				, const n_token::t_token& layer = n_token::t_token::z_empty()
+				, const n_token::t_token& modifiers = n_token::t_token::z_empty());
 		/** getters for the different parameters */
 		const frame_parameters parameters(int current_time) const ;
 

@@ -41,7 +41,7 @@ class unit_animation
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
 		static void add_anims( std::vector<unit_animation> & animations, const config & cfg);
 
-		int matches(const game_display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const n_token::t_token & event=z_empty,const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int value2 =0) const;
+		int matches(const game_display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const n_token::t_token & event= n_token::t_token::z_empty(),const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int value2 =0) const;
 
 
 		const unit_frame& get_last_frame() const{ return unit_anim_.get_last_frame() ; };
@@ -60,7 +60,7 @@ class unit_animation
 		void start_animation(int start_time
 				, const map_location &src = map_location::null_location
 				, const map_location &dst = map_location::null_location
-				, const n_token::t_token& text = z_empty
+				, const n_token::t_token& text = n_token::t_token::z_empty()
 				, const Uint32 text_color = 0
 				, const bool accelerate = true);
 		void update_parameters(const map_location &src, const map_location &dst);
@@ -73,7 +73,7 @@ class unit_animation
 
 	friend class unit;
 
-	explicit unit_animation(const config &cfg, const n_token::t_token &frame_string = z_empty);
+	explicit unit_animation(const config &cfg, const n_token::t_token &frame_string = n_token::t_token::z_empty());
 
 	protected:
 	// reserved to class unit, for the special case of redrawing the unit base frame
@@ -81,7 +81,7 @@ class unit_animation
 	private:
 		explicit unit_animation(int start_time
 				, const unit_frame &frame
-				, const n_token::t_token& event = z_empty
+				, const n_token::t_token& event = n_token::t_token::z_empty()
 				, const int variation=DEFAULT_ANIM
 				, const frame_builder & builder = frame_builder());
 
@@ -105,12 +105,12 @@ class unit_animation
 			void override(int start_time
 					, int duration
 					, const cycle_state cycles
-					, const n_token::t_token& highlight = z_empty
-					, const n_token::t_token& blend_ratio =z_empty
+					, const n_token::t_token& highlight = n_token::t_token::z_empty()
+					, const n_token::t_token& blend_ratio = n_token::t_token::z_empty()
 					, Uint32 blend_color = 0
-					, const n_token::t_token& offset = z_empty
-					, const n_token::t_token& layer = z_empty
-					, const n_token::t_token& modifiers = z_empty);
+					, const n_token::t_token& offset = n_token::t_token::z_empty()
+					, const n_token::t_token& layer = n_token::t_token::z_empty()
+					, const n_token::t_token& modifiers = n_token::t_token::z_empty());
 			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst);
 			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst);
 			void start_animation(int start_time);
@@ -166,7 +166,7 @@ class unit_animator
 				, const unit_animation * animation
 				, const map_location &src = map_location::null_location
 				, bool with_bars = false
-				, const n_token::t_token& text = z_empty
+				, const n_token::t_token& text = n_token::t_token::z_empty()
 				, const Uint32 text_color = 0);
 		void add_animation(unit* animated_unit
 				, const n_token::t_token& event
@@ -174,7 +174,7 @@ class unit_animator
 				, const map_location &dst = map_location::null_location
 				, const int value = 0
 				, bool with_bars = false
-				, const n_token::t_token& text = z_empty
+				, const n_token::t_token& text = n_token::t_token::z_empty()
 				, const Uint32 text_color = 0
 				, const unit_animation::hit_type hit_type =
 					unit_animation::INVALID
@@ -187,10 +187,9 @@ class unit_animator
 				, const map_location &dst = map_location::null_location
 				, const int value = 0
 				, bool with_bars = false
-				, const n_token::t_token& text = z_empty
+				, const n_token::t_token& text = n_token::t_token::z_empty()
 				, const Uint32 text_color = 0
-				, const unit_animation::hit_type hit_type =
-					unit_animation::INVALID
+				, const unit_animation::hit_type hit_type = unit_animation::INVALID
 				, const attack_type* attack = NULL
 				, const attack_type* second_attack = NULL
 				, int value2 = 0);
