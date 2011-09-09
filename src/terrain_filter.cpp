@@ -255,7 +255,8 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			if(std::find(vals.begin(),vals.end(),z_lawful) == vals.end()) {
 				return false;
 			}
-		} else if(std::find(vals.begin(),vals.end(),z_neutral) == vals.end()) {
+		} else if(std::find(vals.begin(),vals.end(),z_neutral) == vals.end() 
+			  && std::find(vals.begin(),vals.end(),z_liminal) == vals.end() ) {
 			return false;
 		}
 	}
