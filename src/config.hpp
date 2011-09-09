@@ -195,7 +195,7 @@ public:
 		mutable t_string t_string_value_;
 		mutable t_token token_value_;
 		
-		attribute_type type_ : 3;
+		attribute_type type_;
 		mutable bool bool_value_ : 1;
 		mutable bool is_bool_ : 1, is_int_ : 1, is_double_ : 1, is_t_string_ : 1, is_token_ : 1;
 

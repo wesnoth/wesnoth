@@ -182,6 +182,7 @@ bool config::attribute_value::operator==(const config::attribute_value &other) c
 		case(DOUBLE) :  retval &= double_value_ == other.double_value_; break;
 		case(TSTRING) :  retval &= t_string_value_ == other.t_string_value_; break;
 		case(TOKEN) :  retval &= token_value_ == other.token_value_; break;
+		case(EMPTY) : break;
 		}
 	}
 	return retval;
@@ -211,6 +212,7 @@ bool config::attribute_value::empty() const {
 	switch(type_){
 	case(TSTRING) :  return t_string_value_.empty();
 	case(TOKEN) :  return token_value_.empty();
+	default : break;
 	}
 	return false;
 }
@@ -246,6 +248,7 @@ t_token const & config::attribute_value::token() const {
 		return token_value_;
 	case(TSTRING) :  
 		return t_string_value_.token();
+	default : break;
 	}
 	assert(false);
 	return token_value_;
@@ -270,6 +273,7 @@ t_string const & config::attribute_value::t_str() const {
 		is_t_string_ = true;
 		t_string_value_ = t_string(token());
 		return t_string_value_;
+	default : break;
 	}
 	assert(false);
 	return t_string_value_;
