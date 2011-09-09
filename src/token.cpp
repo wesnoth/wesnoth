@@ -24,10 +24,15 @@
 
 namespace n_token {
 
-/// Do not inline this enforces static initialization order
+/// Do not inline this enforces static initialization order and static de-initialization order
 const t_token & t_token::z_empty() {
-	static t_token z_empty("", false);
-	return z_empty;
+	//This is NOTa memory leak
+	//It is static so it is only allocated once and not de-allocated until the program terminates.
+	///If changed to a static reference it may cause a static de-initialization 
+	//core dump when the destructor for z_empty is called here before its last use in another file.
+	//Do not remove the = new t_token("", false);
+	static t_token *z_empty = new t_token("", false);
+	return *z_empty;
 }
 }//end namepace
 
