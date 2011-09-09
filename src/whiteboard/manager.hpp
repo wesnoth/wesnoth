@@ -79,6 +79,7 @@ public:
 	void on_gamestate_change();
 	void on_viewer_change(size_t team_index);
 	void on_change_controller(int side, team& t);
+	void on_key_event(/*const SDL_KeyboardEvent& event*/);
 
 	/// Called by replay_network_sender to add whiteboard data to the outgoing network packets
 	void send_network_data();

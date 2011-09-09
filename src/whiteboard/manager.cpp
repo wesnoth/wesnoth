@@ -329,6 +329,16 @@ void manager::on_change_controller(int side, team& t)
 	}
 }
 
+void manager::on_key_event(/*const SDL_KeyboardEvent& event*/)
+{
+	//Little hack to make the TAB key work properly: check at every draw if it's pressed,
+	//to compensate for faulty detection of the "up"/released key event
+	if(!(*key_poller_)[SDLK_TAB])
+	{
+		set_invert_behavior(false);
+	}
+}
+
 bool manager::current_side_has_actions()
 {
 	side_actions::range_t range = current_side_actions()->iter_turn(0);
@@ -454,6 +464,12 @@ namespace
 
 void manager::draw_hex(const map_location& hex)
 {
+	/**
+	 * IMPORTANT: none of the code in this method can call anything which would
+	 * cause a hex to be invalidated (i.e. by calling in turn any variant of display::invalidate()).
+	 * Doing so messes up the iterator currently going over the list of invalidated hexes to draw.
+	 */
+
 	if (!wait_for_side_init_)
 	{
 		//call draw() for all actions
@@ -468,13 +484,6 @@ void manager::draw_hex(const map_location& hex)
 				sa.get_numbers(hex,numbers);
 		}
 		draw_numbers(hex,numbers); //< helper fcn
-	}
-
-	//Little hack to make the TAB key work properly: check at every draw if it's pressed,
-	//to compensate for faulty detection of the "up" key event
-	if(!(*key_poller_)[SDLK_TAB])
-	{
-		set_invert_behavior(false);
 	}
 
 }
