@@ -717,8 +717,10 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 	activate_scope_variable(tokens);
 	vars = &repos->variables_;
 
-	t_parsed_tokens::iterator i(tokens.begin()), last_token(tokens.end() - 1)
-		, second_last_token(tokens.end() - 2), i_array_name, i_maybe_tail(i);
+	t_parsed_tokens::iterator i(tokens.begin()), last_token(tokens.end())
+		, second_last_token(tokens.end()), i_array_name, i_maybe_tail(i);
+	if(!tokens.empty()) { --last_token; }
+	if(tokens.size() > 1) { second_last_token-=2; }
 
 	//process subvars
 	while (i <  last_token){
