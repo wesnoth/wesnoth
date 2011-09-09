@@ -427,8 +427,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	if (mouse_handler_base::left_click(x, y, browse)) return false;
 
 	// Lock whiteboard activation state to avoid problems due to
-	// its changing while the weapon choice dialog is displayed
-	// or an attack animation takes place, etc.
+	// its changing while an animation takes place.
 	wb::whiteboard_lock wb_lock = resources::whiteboard->get_activation_state_lock();
 
 	//we use the last registered highlighted hex
