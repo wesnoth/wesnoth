@@ -607,7 +607,7 @@ config::t_token attack_type::weapon_specials(bool force) const
 {
 //	log_scope("weapon_specials");
 	const config &specials = cfg_.child(z_specials);
-	if (!specials) return z_empty;
+	if (!specials) return n_token::t_token::z_empty();
 
 	std::string res;
 	foreach (const config::any_child &sp, specials.all_children_range())

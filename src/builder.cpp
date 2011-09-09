@@ -391,7 +391,7 @@ bool terrain_builder::load_images(building_rule &rule)
 							continue; // ignore missing frames
 						}
 
-						const n_token::t_token modif = (has_tilde ? n_token::t_token((*str).substr(tilde+1)) : z_empty);
+						const n_token::t_token modif = (has_tilde ? n_token::t_token((*str).substr(tilde+1)) : n_token::t_token::z_empty());
 
 						int time = 100;
 						if(items.size() > 1) {

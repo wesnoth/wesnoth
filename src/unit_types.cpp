@@ -276,7 +276,7 @@ attack_type::attack_type(const config& cfg) :
 		description_ = egettext(id().c_str());
 
 	if(icon_.empty()){
-		if (id() != z_empty)
+		if (id() != n_token::t_token::z_empty())
 			icon_ = config::t_token("attacks/" + static_cast<std::string const &>(id()) + ".png");
 		else {
 			static const config::t_token default_icon("attacks/blank-attack.png", false);			
@@ -292,7 +292,7 @@ attack_type::~attack_type()
 config::t_token attack_type::accuracy_parry_description() const
 {
 	if(accuracy_ == 0 && parry_ == 0) {
-		return z_empty; }
+		return n_token::t_token::z_empty(); }
 
 	std::ostringstream s;
 	s << utils::signed_percent(accuracy_);
@@ -334,7 +334,7 @@ bool attack_type::matches_filter(const config& cfg,bool self) const
 std::pair<bool, config::t_token> attack_type::apply_modification(const config& cfg)
 {
 	if(!matches_filter(cfg,0)) {
-		return std::make_pair(false, z_empty); }
+		return std::make_pair(false, n_token::t_token::z_empty()); }
 
 	const config::t_token& set_name = cfg[z_set_name];
 	const t_string& set_desc = cfg[z_set_description];
@@ -450,7 +450,7 @@ std::pair<bool, config::t_token> attack_type::apply_modification(const config& c
 std::pair<bool, config::t_token>  attack_type::describe_modification(const config& cfg)
 {
 	if(!matches_filter(cfg,0)) {
-		return std::make_pair(false, z_empty); }
+		return std::make_pair(false, n_token::t_token::z_empty()); }
 
 	const config::t_token& increase_damage = cfg[z_increase_damage];
 	const config::t_token& increase_attacks = cfg[z_increase_attacks];
@@ -1066,7 +1066,7 @@ void unit_type::build_created(const movement_type_map &mv_types,
 	}
 
     const config::t_token& advances_to_val = cfg[z_advances_to];
-    if(advances_to_val != z_null && advances_to_val != z_empty)
+    if(advances_to_val != z_null && advances_to_val != n_token::t_token::z_empty())
         advances_to_ = utils::split_token(advances_to_val);
     DBG_UT << "unit_type '" << id() << "' advances to : " << advances_to_val << "\n";
 

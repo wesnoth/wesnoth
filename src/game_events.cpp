@@ -405,7 +405,7 @@ static void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stri
 			break;
 		}
 
-		if(msg == z_empty) {
+		if(msg == n_token::t_token::z_empty()) {
 			continue;
 		}
 
@@ -808,7 +808,7 @@ namespace {
 			else {
 				const config & cfg = new_handler.get_config();
 				config::t_token const & id = cfg[z_id];
-				if(id != z_empty) {
+				if(id != n_token::t_token::z_empty()) {
 					foreach( game_events::event_handler const & eh, active_) {
 						config const & temp_config( eh.get_config());
 						if(id == temp_config[z_id]) { return; } 
@@ -824,7 +824,7 @@ namespace {
 		 * buffering functionality.
 		 */
 		void remove_event_handler(config::t_token const & id) {
-			if(id == z_empty) { return; }
+			if(id == n_token::t_token::z_empty()) { return; }
 
 			if(buffering_) { remove_buffer_.insert(id); }
 
@@ -834,7 +834,7 @@ namespace {
 			while(i < temp.end()) {
 				config const & temp_config = (*i).get_config();
 				config::t_token const &event_id = temp_config[z_id];
-				if(event_id != z_empty && event_id == id) {
+				if(event_id != n_token::t_token::z_empty() && event_id == id) {
 					i = temp.erase(i); }
 				else {
 					++i; }
@@ -1127,7 +1127,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		// Modify recruit list (override)
 		if (!recruit_str.empty()) {
 			std::vector<config::t_token> recruit = utils::split_token(recruit_str);
-			if (recruit.size() == 1 && recruit.back() == z_empty)
+			if (recruit.size() == 1 && recruit.back() == n_token::t_token::z_empty())
 				recruit.clear();
 
 			teams[team_index].set_recruits(std::set<std::string>(recruit.begin(),recruit.end()));
@@ -1977,7 +1977,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	config::t_token const &id = cfg[z_id];
 
 	// If this item has already been used
-	if(id != z_empty && used_items.count(id))
+	if(id != n_token::t_token::z_empty() && used_items.count(id))
 		return;
 
 	config::t_token const & image = cfg[z_image];

@@ -500,7 +500,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary[z_campaign] = cfg_save[z_campaign];
 	cfg_summary[z_difficulty] = cfg_save[z_difficulty];
 	cfg_summary[z_version] = cfg_save[z_version];
-	cfg_summary[z_corrupt] = z_empty;
+	cfg_summary[z_corrupt] = n_token::t_token::z_empty();
 
 	if(has_snapshot) {
 		cfg_summary[z_turn] = cfg_snapshot[z_turn_at];
@@ -559,7 +559,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	cfg_summary[z_leader] = leader;
 	cfg_summary[z_leader_image] = leader_image;
-	cfg_summary[z_map_data] = z_empty;
+	cfg_summary[z_map_data] = n_token::t_token::z_empty();
 
 	if(!shrouded) {
 		if(has_snapshot) {

@@ -1138,7 +1138,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials(z_plague);
 		plagues = !not_living && !plague_specials.empty() &&
-			(opp.undead_variation() != z_empty) && !resources::game_map->is_village(opp_loc);
+			(opp.undead_variation() != n_token::t_token::z_empty()) && !resources::game_map->is_village(opp_loc);
 
 		if (plagues) {
 			plague_type = (*plague_specials.cfgs.front().first)[z_type].str();
@@ -1557,7 +1557,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 
 		unit_display::unit_attack(attacker.loc_, defender.loc_, damage,
 			*attacker_stats->weapon, defender_stats->weapon,
-			abs_n, float_text.str(), attacker_stats->drains, z_empty);
+			abs_n, float_text.str(), attacker_stats->drains, n_token::t_token::z_empty());
 	}
 
 	int drains_damage = 0;
@@ -2122,7 +2122,7 @@ void calculate_healing(int side, bool update_display)
 			}
 		}
 
-		if (curing == z_empty && healing==0) {
+		if (curing == n_token::t_token::z_empty() && healing==0) {
 			continue;
 		}
 

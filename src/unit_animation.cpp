@@ -473,7 +473,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 	}
 
 	if( animation_base.empty() )
-		animation_base.push_back(unit_animation(0,frame_builder().image(default_image).duration(1),z_empty,unit_animation::DEFAULT_ANIM));
+		animation_base.push_back(unit_animation(0,frame_builder().image(default_image).duration(1),n_token::t_token::z_empty(),unit_animation::DEFAULT_ANIM));
 
 	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1),z__disabled_,0));
 	{
@@ -495,17 +495,17 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split_token(z_ghosted);
 
 		static const config::t_token z_local_0p9("0.9", false);
-		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::UNSET,z_local_0p9,z_empty,0,z_empty,z_empty, z_GS);
+		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::UNSET,z_local_0p9,n_token::t_token::z_empty(),0,n_token::t_token::z_empty(),n_token::t_token::z_empty(), z_GS);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_disabled_ghosted);
 		static const config::t_token z_local_0p4("0.4", false);
-		animations.back().unit_anim_.override(0,1,particule::UNSET,z_local_0p4 ,z_empty,0,z_empty,z_empty,z_GS);
+		animations.back().unit_anim_.override(0,1,particule::UNSET,z_local_0p4 ,n_token::t_token::z_empty(),0,n_token::t_token::z_empty(),n_token::t_token::z_empty(),z_GS);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_selected);
 		static const config::t_token z_local_t1("0.0~0.3:100,0.3~0.0:200", false);
-		animations.back().unit_anim_.override(0,300,particule::UNSET,z_empty,z_local_t1,display::rgb(255,255,255));
+		animations.back().unit_anim_.override(0,300,particule::UNSET,n_token::t_token::z_empty(),z_local_t1,display::rgb(255,255,255));
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_recruited);
@@ -514,12 +514,12 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_levelin);
-		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,z_empty,z_local_0_1_600,display::rgb(255,255,255));
+		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,n_token::t_token::z_empty(),z_local_0_1_600,display::rgb(255,255,255));
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_levelout);
 		static const config::t_token z_local_0_1_600_1("0~1:600,1", false);
-		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,z_empty, z_local_0_1_600_1,display::rgb(255,255,255));
+		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,n_token::t_token::z_empty(), z_local_0_1_600_1,display::rgb(255,255,255));
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_pre_movement);
@@ -531,12 +531,12 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split_token(z_movement);
 		static const config::t_token z_local_try_and_parse_me("0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,", false);
 		static const n_token::t_token z_local_move_layer(lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST), false);
-		animations.back().unit_anim_.override(0,6800,particule::NO_CYCLE,z_empty,z_empty,0,z_local_try_and_parse_me , z_local_move_layer);
+		animations.back().unit_anim_.override(0,6800,particule::NO_CYCLE,n_token::t_token::z_empty(),n_token::t_token::z_empty(),0,z_local_try_and_parse_me , z_local_move_layer);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_defend);
 		static const config::t_token z_local_t2("0.0,0.5:75,0.0:75,0.5:75,0.0", false);
-		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::NO_CYCLE,z_empty, z_local_t2,game_display::rgb(255,0,0));
+		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::NO_CYCLE,n_token::t_token::z_empty(), z_local_t2,game_display::rgb(255,0,0));
 		animations.back().hits_.push_back(HIT);
 		animations.back().hits_.push_back(KILL);
 
@@ -546,7 +546,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_attack);
 		static const config::t_token z_local_t4("0~0.6:150,0.6~0:150", false);
-		animations.back().unit_anim_.override(-150,300,particule::NO_CYCLE,z_empty,z_empty,0, z_local_t4,z_local_move_layer);
+		animations.back().unit_anim_.override(-150,300,particule::NO_CYCLE,n_token::t_token::z_empty(),n_token::t_token::z_empty(),0, z_local_t4,z_local_move_layer);
 		animations.back().primary_attack_filter_.push_back(config());
 		animations.back().primary_attack_filter_.back()[z_range] = z_melee;
 
@@ -580,7 +580,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_healed);
 		static const config::t_token z_local_healed("0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", false);
-		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,z_empty,z_local_healed,display::rgb(255,255,255));
+		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,n_token::t_token::z_empty(),z_local_healed,display::rgb(255,255,255));
 		animations.back().sub_anims_[z__healed_sound] = particule();
 		animations.back().sub_anims_[z__healed_sound].add_frame(1,frame_builder());
 		animations.back().sub_anims_[z__healed_sound].add_frame(1,frame_builder().sound(z_local_heal_wav),true);
@@ -588,7 +588,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_poisoned);
 		static const config::t_token z_local_pois("0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", false);
-		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,z_empty, z_local_pois,display::rgb(0,255,0));
+		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,n_token::t_token::z_empty(), z_local_pois,display::rgb(0,255,0));
 		animations.back().sub_anims_[z__poison_sound] = particule();
 		animations.back().sub_anims_[z__poison_sound].add_frame(1,frame_builder());
 		animations.back().sub_anims_[z__poison_sound].add_frame(1,frame_builder().sound(z_local_pois_sound),true);

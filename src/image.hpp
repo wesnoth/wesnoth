@@ -22,11 +22,6 @@
 #include "terrain_translation.hpp"
 
 
-namespace {
-//Static tokens are replacements for string literals in code
-//They allow for fast comparison, copying and hashing operations.
-static const n_token::t_token z_empty("", false);
-}
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.
 //

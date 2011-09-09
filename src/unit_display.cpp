@@ -120,7 +120,7 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	temp_unit.set_facing(a.get_relative_dir(b));
 	unit_animator animator;
 	animator.replace_anim_if_invalid(&temp_unit,z_movement,a,b,step_num,
-			false,z_empty,0,unit_animation::INVALID,NULL,NULL,step_left);
+			false,n_token::t_token::z_empty(),0,unit_animation::INVALID,NULL,NULL,step_left);
 	animator.start_animations();
         animator.pause_animation();
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
@@ -281,8 +281,8 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 		return;
 	}
 	unit_animator animator;
-	animator.add_animation(&attacker,z_draw_weapon,loc,defender_loc,0,false,z_empty,0,unit_animation::HIT,attack,secondary_attack,0);
-	animator.add_animation(defender,z_draw_weapon,defender_loc,loc,0,false,z_empty,0,unit_animation::MISS,secondary_attack,attack,0);
+	animator.add_animation(&attacker,z_draw_weapon,loc,defender_loc,0,false,n_token::t_token::z_empty(),0,unit_animation::HIT,attack,secondary_attack,0);
+	animator.add_animation(defender,z_draw_weapon,defender_loc,loc,0,false,n_token::t_token::z_empty(),0,unit_animation::MISS,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
 
@@ -298,10 +298,10 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 	}
 	unit_animator animator;
 	if(primary_unit) {
-		animator.add_animation(primary_unit,z_sheath_weapon,primary_loc,secondary_loc,0,false,z_empty,0,unit_animation::INVALID,primary_attack,secondary_attack,0);
+		animator.add_animation(primary_unit,z_sheath_weapon,primary_loc,secondary_loc,0,false,n_token::t_token::z_empty(),0,unit_animation::INVALID,primary_attack,secondary_attack,0);
 	}
 	if(secondary_unit) {
-		animator.add_animation(secondary_unit,z_sheath_weapon,secondary_loc,primary_loc,0,false,z_empty,0,unit_animation::INVALID,secondary_attack,primary_attack,0);
+		animator.add_animation(secondary_unit,z_sheath_weapon,secondary_loc,primary_loc,0,false,n_token::t_token::z_empty(),0,unit_animation::INVALID,secondary_attack,primary_attack,0);
 	}
 
 	if(primary_unit || secondary_unit) {
@@ -328,9 +328,9 @@ void unit_die(const map_location& loc, unit& loser,
 	}
 	unit_animator animator;
 	// hide the hp/xp bars of the loser (useless and prevent bars around an erased unit)
-	animator.add_animation(&loser,z_death,loc,winner_loc,0,false,z_empty,0,unit_animation::KILL,attack,secondary_attack,0);
+	animator.add_animation(&loser,z_death,loc,winner_loc,0,false,n_token::t_token::z_empty(),0,unit_animation::KILL,attack,secondary_attack,0);
 	// but show the bars of the winner (avoid blinking and show its xp gain)
-	animator.add_animation(winner,z_victory,winner_loc,loc,0,true,z_empty,0,
+	animator.add_animation(winner,z_victory,winner_loc,loc,0,true,n_token::t_token::z_empty(),0,
 			unit_animation::KILL,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
@@ -420,7 +420,7 @@ void unit_attack(
 		assert(leader != units.end());
 		leader->set_facing(itor->second.get_relative_dir(a));
 		animator.add_animation(&*leader, z_leading, itor->second,
-			att->get_location(), damage, true,  z_empty, 0,
+			att->get_location(), damage, true,  n_token::t_token::z_empty(), 0,
 			hit_type, &attack, secondary_attack, swing);
 	}
 	for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); ++itor) {
@@ -430,7 +430,7 @@ void unit_attack(
 		assert(helper != units.end());
 		helper->set_facing(itor->second.get_relative_dir(b));
 		animator.add_animation(&*helper, z_resistance, itor->second,
-			def->get_location(), damage, true,  z_empty, 0,
+			def->get_location(), damage, true,  n_token::t_token::z_empty(), 0,
 			hit_type, &attack, secondary_attack, swing);
 	}
 

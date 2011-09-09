@@ -89,7 +89,7 @@ template <class T>
 const T& progressive_discrete<T>::get_current_element(int current_time)const {
 	int time = 0;
 	unsigned int sub_halo = 0;
-	if(data_.empty()) return z_empty;
+	if(data_.empty()) return n_token::t_token::z_empty();
 	while(time < current_time&& sub_halo < data_.size()) {
 		time += data_[sub_halo].second;
 		++sub_halo; }
@@ -200,13 +200,13 @@ frame_parameters::frame_parameters() :
 	duration(0),
 	image(),
 	image_diagonal(),
-	image_mod(z_empty),
-	halo(z_empty),
+	image_mod(n_token::t_token::z_empty()),
+	halo(n_token::t_token::z_empty()),
 	halo_x(0),
 	halo_y(0),
-	halo_mod(z_empty),
-	sound(z_empty),
-	text(z_empty),
+	halo_mod(n_token::t_token::z_empty()),
+	sound(n_token::t_token::z_empty()),
+	text(n_token::t_token::z_empty()),
 	text_color(0),
 	blend_with(0),
 	blend_ratio(0.0),
@@ -227,23 +227,23 @@ frame_builder::frame_builder() :
 	duration_(1),
 	image_(),
 	image_diagonal_(),
-	image_mod_(z_empty),
-	halo_(z_empty),
-	halo_x_(z_empty),
-	halo_y_(z_empty),
-	halo_mod_(z_empty),
-	sound_(z_empty),
-	text_(z_empty),
+	image_mod_(n_token::t_token::z_empty()),
+	halo_(n_token::t_token::z_empty()),
+	halo_x_(n_token::t_token::z_empty()),
+	halo_y_(n_token::t_token::z_empty()),
+	halo_mod_(n_token::t_token::z_empty()),
+	sound_(n_token::t_token::z_empty()),
+	text_(n_token::t_token::z_empty()),
 	text_color_(0),
 	blend_with_(0),
-	blend_ratio_(z_empty),
-	highlight_ratio_(z_empty),
-	offset_(z_empty),
-	submerge_(z_empty),
-	x_(z_empty),
-	y_(z_empty),
-	directional_x_(z_empty),
-	directional_y_(z_empty),
+	blend_ratio_(n_token::t_token::z_empty()),
+	highlight_ratio_(n_token::t_token::z_empty()),
+	offset_(n_token::t_token::z_empty()),
+	submerge_(n_token::t_token::z_empty()),
+	x_(n_token::t_token::z_empty()),
+	y_(n_token::t_token::z_empty()),
+	directional_x_(n_token::t_token::z_empty()),
+	directional_y_(n_token::t_token::z_empty()),
 	auto_vflip_(t_unset),
 	auto_hflip_(t_unset),
 	primary_frame_(t_unset),
@@ -654,12 +654,12 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
 		image_loc = image::locator(current_data.image_diagonal, n_token::t_token(current_data.image_mod)); //todo remove
 	}
-	if(image_loc.is_void() || image_loc.get_filename() == z_empty) { // invalid diag image, or not diagonal
+	if(image_loc.is_void() || image_loc.get_filename() == n_token::t_token::z_empty()) { // invalid diag image, or not diagonal
 		image_loc = image::locator(current_data.image,n_token::t_token(current_data.image_mod)); //rmove extra contructor
 	}
 
 	surface image;
-	if(!image_loc.is_void() && image_loc.get_filename() != z_empty) { // invalid diag image, or not diagonal
+	if(!image_loc.is_void() && image_loc.get_filename() != n_token::t_token::z_empty()) { // invalid diag image, or not diagonal
 		image=image::get_image(image_loc, image::SCALED_TO_ZOOM);
 	}
 	const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc) + d2;
@@ -757,7 +757,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
 		image_loc = image::locator(current_data.image_diagonal, n_token::t_token(current_data.image_mod));
 	}
-	if(image_loc.is_void() || image_loc.get_filename() == z_empty) { // invalid diag image, or not diagonal
+	if(image_loc.is_void() || image_loc.get_filename() == n_token::t_token::z_empty()) { // invalid diag image, or not diagonal
 		image_loc = image::locator(current_data.image, n_token::t_token(current_data.image_mod));
 	}
 
@@ -791,7 +791,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 #endif //_OPENMP
 		{
 			surface image;
-			if(!image_loc.is_void() && image_loc.get_filename() != z_empty) { // invalid diag image, or not diagonal
+			if(!image_loc.is_void() && image_loc.get_filename() != n_token::t_token::z_empty()) { // invalid diag image, or not diagonal
 				image=image::get_image(image_loc,
 						image::SCALED_TO_ZOOM
 						);
@@ -866,13 +866,13 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	const bool primary = result.primary_frame;
 
 	/** engine provides a default image to use for the unit when none is available */
-	result.image = current_val.image.is_void() || current_val.image.get_filename() == z_empty ?animation_val.image:current_val.image;
+	result.image = current_val.image.is_void() || current_val.image.get_filename() == n_token::t_token::z_empty() ?animation_val.image:current_val.image;
 	if(primary && ( result.image.is_void() || result.image.get_filename().empty())) {
 		result.image = engine_val.image;
 	}
 
 	/** engine provides a default image to use for the unit when none is available */
-	result.image_diagonal = current_val.image_diagonal.is_void() || current_val.image_diagonal.get_filename() == z_empty ?animation_val.image_diagonal:current_val.image_diagonal;
+	result.image_diagonal = current_val.image_diagonal.is_void() || current_val.image_diagonal.get_filename() == n_token::t_token::z_empty() ?animation_val.image_diagonal:current_val.image_diagonal;
 	if(primary && ( result.image_diagonal.is_void() || result.image_diagonal.get_filename().empty())) {
 		result.image_diagonal = engine_val.image_diagonal;
 	}
