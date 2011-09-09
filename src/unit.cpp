@@ -144,7 +144,6 @@ namespace{
 	static const config::t_token z_strict_amla("strict_amla", false);
 	static const config::t_token z_require_amla("require_amla", false);
 	static const config::t_token z_times("times", false);
-	//	static const config::t_token z_empty("", false);
 	static const config::t_token z_modifications("modifications", false);
 	static const config::t_token z_level("level", false);
 	static const config::t_token z_attack("attack", false);
@@ -446,6 +445,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	modifications_(),
 	invisibility_cache_()
 {
+	static const config::t_token z_empty("", false);
 	if (type_.empty()) {
 		throw game::game_error("creating unit with an empty type field");
 	}
@@ -461,7 +461,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	set_underlying_id();
 
 	overlays_ = utils::parenthetical_split(cfg[z_overlays], ',');
-	if(overlays_.size() == 1 && overlays_.front() == n_token::t_token::z_empty()) {
+	if(overlays_.size() == 1 && overlays_.front() == z_empty) {
 		overlays_.clear();
 	}
 	if (const config &variables = cfg.child(z_variables)) {
@@ -514,7 +514,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 	if (const config::attribute_value *v = cfg.get(z_profile)) {
 		config::t_token big = *v, small = cfg[z_small_profile];
-		adjust_profile(small, big, n_token::t_token::z_empty());
+		adjust_profile(small, big, z_empty);
 		cfg_[z_profile] = big;
 		cfg_[z_small_profile] = small;
 	}
@@ -525,7 +525,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	std::vector<config::t_token> temp_advances = utils::split_token(cfg[z_advances_to]);
 	if(temp_advances.size() == 1 && temp_advances.front() == z_null) {
 		advances_to_.clear();
-	}else if(temp_advances.size() >= 1 && temp_advances.front() != n_token::t_token::z_empty()) {
+	}else if(temp_advances.size() >= 1 && temp_advances.front() !=  z_empty ) {
 		advances_to_ = temp_advances;
 	}
 
@@ -1218,7 +1218,8 @@ void unit::end_turn()
 }
 void unit::new_scenario()
 {
-	ai_special_ = n_token::t_token::z_empty();
+	static const config::t_token z_empty("", false);
+	ai_special_ = z_empty;
 
 	// Set the goto-command to be going to no-where
 	goto_ = map_location();
@@ -1881,15 +1882,16 @@ const surface unit::still_image(bool scaled) const
 	return unit_image;
 }
 
-void unit::set_standing(bool with_bars)
-{
+void unit::set_standing(bool with_bars) {
+	static const config::t_token z_empty("", false);
+
 	game_display *disp = game_display::get_singleton();
 	if (preferences::show_standing_animations()&& !incapacitated()) {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, z_standing),
-			with_bars,  n_token::t_token::z_empty(), 0, STATE_STANDING);
+			with_bars,  z_empty, 0, STATE_STANDING);
 	} else {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, z__disabled_),
-			with_bars,  n_token::t_token::z_empty(), 0, STATE_STANDING);
+			with_bars,  z_empty, 0, STATE_STANDING);
 	}
 }
 
@@ -1909,20 +1911,22 @@ void unit::set_disabled_ghosted(bool with_bars)
 
 void unit::set_idling()
 {
+	static const config::t_token z_empty("", false);
 	game_display *disp = game_display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, z_idling),
-		true, n_token::t_token::z_empty(), 0, STATE_FORGET);
+		true, z_empty, 0, STATE_FORGET);
 }
 
 void unit::set_selecting()
 {
+	static const config::t_token z_empty("", false);
 	const game_display *disp =  game_display::get_singleton();
 	if (preferences::show_standing_animations() && !get_state(STATE_PETRIFIED)) {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, z_selected),
-			true, n_token::t_token::z_empty(), 0, STATE_FORGET);
+			true, z_empty, 0, STATE_FORGET);
 	} else {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, z__disabled_selected_),
-			true, n_token::t_token::z_empty(), 0, STATE_FORGET);
+			true, z_empty, 0, STATE_FORGET);
 	}
 }
 
@@ -2264,7 +2268,8 @@ int unit::defense_modifier(t_translation::t_terrain terrain, gamemap const & gam
 
 bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const
 {
-	if(!(cfg[z_active_on]==n_token::t_token::z_empty() || (attacker && cfg[z_active_on]==z_offense) || (!attacker && cfg[z_active_on]==z_defense))) {
+	static const config::t_token z_empty("", false);
+	if(!(cfg[z_active_on]==z_empty || (attacker && cfg[z_active_on]==z_offense) || (!attacker && cfg[z_active_on]==z_defense))) {
 		return false;
 	}
 	const std::string& apply_to = cfg[z_apply_to];
@@ -2445,6 +2450,9 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 							t_teams const & teams, LuaKernel & lua_kernel, 
 							tod_manager const & tod_manager)
 {
+
+	static const config::t_token z_empty("", false);
+
 	//some trait activate specific flags
 	if(type == z_trait) {
 		const config::t_token& id = mod[z_id];
@@ -2500,7 +2508,7 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 					if (const config::attribute_value *v = effect.get(z_portrait)) {
 						config::t_token big = *v;
 						config::t_token small = effect[z_small_portrait];
-						adjust_profile(small, big, n_token::t_token::z_empty());
+						adjust_profile(small, big, z_empty);
 						cfg_[z_profile] = big;
 						cfg_[z_small_profile] = small;
 					}
@@ -2524,7 +2532,7 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 					for(std::vector<attack_type>::iterator a = attacks_.begin();
 						a != attacks_.end(); ++a) {
 						affected = a->apply_modification(effect);
-						if(affected.first && affected.second != n_token::t_token::z_empty()) {
+						if(affected.first && affected.second != z_empty) {
 							if(first_attack) {
 								first_attack = false;
 							} else {
@@ -2721,7 +2729,7 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 				for(std::vector<attack_type>::iterator a = attacks_.begin();
 					a != attacks_.end(); ++a) {
 					std::pair<bool, config::t_token> affected = a->describe_modification(effect);
-					if(affected.first && affected.second != n_token::t_token::z_empty()) {
+					if(affected.first && affected.second != z_empty) {
 						std::string const & desc = affected.second;
 						if(first_attack) {
 							first_attack = false;
@@ -2942,7 +2950,8 @@ unit& unit::clone(bool is_temporary)
 		   && static_cast< std::string const &>(id_).find_first_not_of("0123456789", pos+1) == std::string::npos) {
 			// this appears to be a duplicate of a generic unit, so give it a new id
 			WRN_UT << "assigning new id to clone of generic unit " << id_ << "\n";
-			id_ = n_token::t_token::z_empty();
+			static const config::t_token z_empty("", false);
+			id_ = z_empty;
 			set_underlying_id();
 		}
 	}
@@ -3151,47 +3160,45 @@ std::string get_checksum(const unit& u) {
 	config unit_config;
 	config wcfg;
 	u.write(unit_config);
-	const std::string main_keys[] =
-		{ z_advances_to,
-		z_alignment,
-		z_cost,
-		z_experience,
-		z_gender,
-		z_hitpoints,
-		z_ignore_race_traits,
-		z_ignore_global_traits,
-		z_level,
-		z_max_attacks,
-		z_max_experience,
-		z_max_hitpoints,
-		z_max_moves,
-		z_movement,
-		z_movement_type,
-		z_race,
-		z_random_traits,
-		z_resting,
-		z_undead_variation,
-		z_upkeep,
-		z_zoc,
-		n_token::t_token::z_empty()};
+	static const config::t_token z_empty("", false);
 
-	for (int i = 0; !main_keys[i].empty(); ++i)
-	{
-		wcfg[main_keys[i]] = unit_config[main_keys[i]];
+	static const n_token::t_token main_keys[] =
+		{ z_advances_to,
+		  z_alignment,
+		  z_cost,
+		  z_experience,
+		  z_gender,
+		  z_hitpoints,
+		  z_ignore_race_traits,
+		  z_ignore_global_traits,
+		  z_level,
+		  z_max_attacks,
+		  z_max_experience,
+		  z_max_hitpoints,
+		  z_max_moves,
+		  z_movement,
+		  z_movement_type,
+		  z_race,
+		  z_random_traits,
+		  z_resting,
+		  z_undead_variation,
+		  z_upkeep,
+		  z_zoc };
+
+	foreach(n_token::t_token const & k, main_keys) {
+		wcfg[k ] = unit_config[ k ];
 	}
 	const config::t_token attack_keys[] =
 		{ z_name,
-	        z_type,
-        	z_range,
-	        z_damage,
-        	z_number,
-		n_token::t_token::z_empty()};
+		  z_type,
+		  z_range,
+		  z_damage,
+		  z_number };
 
-	foreach (const config &att, unit_config.child_range(z_attack))
-	{
+	foreach (const config &att, unit_config.child_range(z_attack)) {
 		config& child = wcfg.add_child(z_attack);
-		for (int i = 0; !attack_keys[i].empty(); ++i) {
-			child[attack_keys[i]] = att[attack_keys[i]];
+		foreach (n_token::t_token const & k, attack_keys){
+			child[k] = att[k];
 		}
 		foreach (const config &spec, att.child_range(z_specials)) {
 			config& child_spec = child.add_child(z_specials, spec);
@@ -3200,8 +3207,7 @@ std::string get_checksum(const unit& u) {
 
 	}
 
-	foreach (const config &abi, unit_config.child_range(z_abilities))
-	{
+	foreach (const config &abi, unit_config.child_range(z_abilities)) {
 		config& child = wcfg.add_child(z_abilities, abi);
 		child.recursive_clear_value(z_description);
 		child.recursive_clear_value(z_description_inactive);
@@ -3209,8 +3215,7 @@ std::string get_checksum(const unit& u) {
 		child.recursive_clear_value(z_name_inactive);
 	}
 
-	foreach (const config &trait, unit_config.child_range(z_trait))
-	{
+	foreach (const config &trait, unit_config.child_range(z_trait)) {
 		config& child = wcfg.add_child(z_trait, trait);
 		child.recursive_clear_value(z_description);
 		child.recursive_clear_value(z_male_name);
@@ -3218,14 +3223,13 @@ std::string get_checksum(const unit& u) {
 		child.recursive_clear_value(z_name);
 	}
 
-	const std::string child_keys[] = {z_advance_from, z_defense, z_movement_costs, z_resistance, n_token::t_token::z_empty()};
+	static const n_token::t_token child_keys[] = {z_advance_from, z_defense, z_movement_costs, z_resistance };
 
-	for (int i = 0; !child_keys[i].empty(); ++i)
-	{
-		foreach (const config &c, unit_config.child_range(child_keys[i])) {
-			wcfg.add_child(child_keys[i], c);
+	foreach (n_token::t_token const & k, child_keys) {
+		foreach (const config &c, unit_config.child_range( k )) {
+			wcfg.add_child(k, c);
 		}
-	}
+	} 
 	DBG_UT << wcfg;
 
 	return wcfg.hash();
