@@ -195,7 +195,6 @@ public:
 	void write(config& cfg) const;
 
 	void set_role(const config::t_token& role) { role_ = role; }
-	void set_role(const std::string& role) { set_role(role);}
 	const config::t_token &get_role() const { return role_; }
 
 	void assign_ai_special(const config::t_token& s) { ai_special_ = s;}
