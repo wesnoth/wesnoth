@@ -367,12 +367,16 @@ void manager::set_planned_unit_map()
 		}
 		else
 		{
-			LOG_WB << "Attempt to set planned unit map when it was already set.\n";
+			WRN_WB << "Attempt to set planned unit map when it was already set.\n";
 		}
 	}
 	else if (executing_actions_)
 	{
 		DBG_WB << "Attempt to set planned_unit_map during action execution.\n";
+	}
+	else if (wait_for_side_init_)
+	{
+		DBG_WB << "Attempt to set planned_unit_map while waiting for side init.\n";
 	}
 }
 
