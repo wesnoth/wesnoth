@@ -80,9 +80,9 @@ public:
 
 /// Do not inline this enforces static initialization order
 template <char T_defval>
-t_token const & t_token::default_value() {
-	static t_token *z_defval = new t_token(std::string(1, T_defval), false);
-	return *z_defval;
+const t_token& t_token::default_value() {
+	static t_token z_defval(std::string(1, T_defval), false);
+	return z_defval;
 }
 
 inline std::string operator+(const n_token::t_token &a, const std::string &b) { return static_cast<std::string const &>(a) + b; }
