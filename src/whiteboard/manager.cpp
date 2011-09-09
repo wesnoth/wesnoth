@@ -353,57 +353,6 @@ void manager::validate_viewer_actions()
 	viewer_actions()->validate_actions();
 }
 
-void manager::set_planned_unit_map()
-{
-	if (!executing_actions_ && !wait_for_side_init_)
-	{
-		if (!planned_unit_map_active_)
-		{
-			validate_actions_if_needed();
-			log_scope2("whiteboard", "Building planned unit map");
-			mapbuilder_.reset(new mapbuilder(*resources::units));
-			mapbuilder_->build_map();
-			planned_unit_map_active_ = true;
-		}
-		else
-		{
-			WRN_WB << "Attempt to set planned unit map when it was already set.\n";
-		}
-	}
-	else if (executing_actions_)
-	{
-		DBG_WB << "Attempt to set planned_unit_map during action execution.\n";
-	}
-	else if (wait_for_side_init_)
-	{
-		DBG_WB << "Attempt to set planned_unit_map while waiting for side init.\n";
-	}
-}
-
-void manager::set_real_unit_map()
-{
-	if (!executing_actions_)
-	{
-		if (planned_unit_map_active_)
-		{
-			if (mapbuilder_)
-			{
-				log_scope2("whiteboard", "Restoring regular unit map.");
-				mapbuilder_.reset();
-			}
-			planned_unit_map_active_ = false;
-		}
-		else if (!wait_for_side_init_)
-		{
-			LOG_WB << "Attempt to disable the planned unit map, when it was already disabled.\n";
-		}
-	}
-	else //executing_actions_
-	{
-		DBG_WB << "Attempt to set planned_unit_map during action execution.\n";
-	}
-}
-
 //helper fcn
 static void draw_numbers(map_location const& hex, side_actions::numbers_t numbers)
 {
@@ -965,15 +914,6 @@ int manager::get_spent_gold_for(int side)
 	return resources::teams->at(side - 1).get_side_actions()->get_gold_spent();
 }
 
-void manager::validate_actions_if_needed()
-{
-	if (gamestate_mutated_)
-	{
-		LOG_WB << "'gamestate_mutated_' flag dirty, validating actions.\n";
-		validate_viewer_actions(); //sets gamestate_mutated_ to false
-	}
-}
-
 void manager::clear_undo()
 {
 	apply_shroud_changes(*resources::undo_stack, viewer_side());
@@ -1038,6 +978,66 @@ void manager::options_dlg()
 		}
 	}
 	update_plan_hiding();
+}
+
+void manager::set_planned_unit_map()
+{
+	if (!executing_actions_ && !wait_for_side_init_)
+	{
+		if (!planned_unit_map_active_)
+		{
+			validate_actions_if_needed();
+			log_scope2("whiteboard", "Building planned unit map");
+			mapbuilder_.reset(new mapbuilder(*resources::units));
+			mapbuilder_->build_map();
+			planned_unit_map_active_ = true;
+		}
+		else
+		{
+			WRN_WB << "Attempt to set planned unit map when it was already set.\n";
+		}
+	}
+	else if (executing_actions_)
+	{
+		DBG_WB << "Attempt to set planned_unit_map during action execution.\n";
+	}
+	else if (wait_for_side_init_)
+	{
+		DBG_WB << "Attempt to set planned_unit_map while waiting for side init.\n";
+	}
+}
+
+void manager::set_real_unit_map()
+{
+	if (!executing_actions_)
+	{
+		if (planned_unit_map_active_)
+		{
+			if (mapbuilder_)
+			{
+				log_scope2("whiteboard", "Restoring regular unit map.");
+				mapbuilder_.reset();
+			}
+			planned_unit_map_active_ = false;
+		}
+		else if (!wait_for_side_init_)
+		{
+			LOG_WB << "Attempt to disable the planned unit map, when it was already disabled.\n";
+		}
+	}
+	else //executing_actions_
+	{
+		DBG_WB << "Attempt to set planned_unit_map during action execution.\n";
+	}
+}
+
+void manager::validate_actions_if_needed()
+{
+	if (gamestate_mutated_)
+	{
+		LOG_WB << "'gamestate_mutated_' flag dirty, validating actions.\n";
+		validate_viewer_actions(); //sets gamestate_mutated_ to false
+	}
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map():

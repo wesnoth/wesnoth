@@ -46,6 +46,8 @@ class highlight_visitor;
  */
 class manager : private boost::noncopyable
 {
+	friend struct scoped_planned_unit_map;
+	friend struct scoped_real_unit_map;
 public:
 
 	manager();
@@ -94,12 +96,7 @@ public:
 	/// Validates all actions of the current viewing side
 	void validate_viewer_actions();
 
-	/// Transforms the unit map so that it now reflects the future state of things,
-	/// i.e. when all planned actions will have been executed
-	void set_planned_unit_map();
-	/// Restore the regular unit map
-	void set_real_unit_map();
-	/// Whether the planned unit map is currently applied
+		/// Whether the planned unit map is currently applied
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
 
 	/**
@@ -166,6 +163,12 @@ public:
 	void options_dlg();
 
 private:
+	/// Transforms the unit map so that it now reflects the future state of things,
+	/// i.e. when all planned actions will have been executed
+	void set_planned_unit_map();
+	/// Restore the regular unit map
+	void set_real_unit_map();
+
 	void validate_actions_if_needed();
 	/// Called by all of the save_***() methods after they have added their action to the queue
 	void on_save_action(unit const* unit_with_plan) const;
