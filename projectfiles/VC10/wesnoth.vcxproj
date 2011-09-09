@@ -416,6 +416,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Editor\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Editor\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\formula_string_utils_backend.cpp" />
     <ClCompile Include="..\..\src\gui\dialogs\folder_create.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug (fast)|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -1129,7 +1130,9 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Storyscreen\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Storyscreen\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\token.cpp" />
     <ClCompile Include="..\..\src\tools\schema\tag.cpp" />
+    <ClCompile Include="..\..\src\utils\interned.cpp" />
     <ClCompile Include="..\..\src\whiteboard\action.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug (fast)|Win32'">$(IntDir)Whiteboard\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Whiteboard\</ObjectFileName>
@@ -1442,6 +1445,7 @@
     <ClInclude Include="..\..\src\editor\map_context.hpp" />
     <ClInclude Include="..\..\src\editor\map_fragment.hpp" />
     <ClInclude Include="..\..\src\editor\mouse_action.hpp" />
+    <ClInclude Include="..\..\src\formula_string_utils_backend.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\folder_create.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\button.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\container.hpp" />
@@ -1603,7 +1607,12 @@
     <ClInclude Include="..\..\src\storyscreen\interface.hpp" />
     <ClInclude Include="..\..\src\storyscreen\part.hpp" />
     <ClInclude Include="..\..\src\storyscreen\render.hpp" />
+    <ClInclude Include="..\..\src\token.hpp" />
     <ClInclude Include="..\..\src\tools\schema\tag.hpp" />
+    <ClInclude Include="..\..\src\utils\count_logger.hpp" />
+    <ClInclude Include="..\..\src\utils\interned.hpp" />
+    <ClInclude Include="..\..\src\utils\lru_cache.hpp" />
+    <ClInclude Include="..\..\src\utils\reference_counter.hpp" />
     <ClInclude Include="..\..\src\whiteboard\action.hpp" />
     <ClInclude Include="..\..\src\whiteboard\attack.hpp" />
     <ClInclude Include="..\..\src\whiteboard\highlight_visitor.hpp" />
