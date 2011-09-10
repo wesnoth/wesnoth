@@ -90,7 +90,9 @@ int advance_unit_dialog(const map_location &loc)
 		const unit& type = sample_units.back();
 
 #ifdef LOW_MEM
-		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + type.type_name());
+		lang_options.push_back(IMAGE_PREFIX
+				+ static_cast<std::string const &>(type.absolute_image())
+				+ COLUMN_SEPARATOR + type.type_name());
 #else
 		lang_options.push_back(IMAGE_PREFIX + static_cast<std::string const &>(type.absolute_image()) + u->image_mods() + COLUMN_SEPARATOR + type.type_name());
 #endif
@@ -108,7 +110,9 @@ int advance_unit_dialog(const map_location &loc)
 			lang_options.push_back(IMAGE_PREFIX + mod["image"].str() + COLUMN_SEPARATOR + mod["description"].str());
 		} else {
 #ifdef LOW_MEM
-			lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + COLUMN_SEPARATOR + mod["description"].str());
+			lang_options.push_back(IMAGE_PREFIX
+					+ static_cast<std::string const &>(type.absolute_image())
+					+ COLUMN_SEPARATOR + mod["description"].str());
 #else
 			lang_options.push_back(IMAGE_PREFIX + static_cast<std::string const &>(type.absolute_image()) + u->image_mods() + COLUMN_SEPARATOR + mod["description"].str());
 #endif
