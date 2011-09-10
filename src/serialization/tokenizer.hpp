@@ -40,7 +40,14 @@ struct token {
 	{
 	}
 
-	token(token const & a) : type(a.type), t_token_(a.t_token_) , is_parsed_(a.is_parsed_){}
+	token(token const & a)
+		: type(a.type)
+		, value_()
+		, t_token_(a.t_token_)
+		, is_parsed_(a.is_parsed_)
+		, buffer_()
+	{
+	}
 
 	enum token_type
 	{
