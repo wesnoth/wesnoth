@@ -253,7 +253,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		debug_dot_domain = vm["debug-dot-domain"].as<std::string>();
 	}
 	if (vm.count("debug-dot-level")) {
-		debug_dot_domain = vm["debug-dot-level"].as<std::string>();
+		debug_dot_level = vm["debug-dot-level"].as<std::string>();
 	}
 #endif
 	if (vm.count("editor"))
