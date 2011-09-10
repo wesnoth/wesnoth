@@ -330,6 +330,12 @@ private:
 class t_instructions {
 	t_operations ops_; /// the operations
 public:
+
+	t_instructions()
+		: ops_()
+	{
+	}
+
 	///Optimize the instructions by trying to pairwise reduce the instruction set.
 	void optimize(t_token const & unparsed) ;
 
