@@ -35,6 +35,7 @@
 #include "foreach.hpp"
 
 #include <stack>
+#include <algorithm>
 
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
@@ -527,10 +528,48 @@ static void write_internal(config const &cfg, std::ostream &out, std::string& te
 	}
 }
 
+/** The servers simple wml expects attributes to be ordered
+	The client bears the cost of the simple_wml ordering expectations every time it sends data.
+	@note This is a quick fix to allow the clients to ungrade their configs to unordered saving the log(n) lookup times, while 
+	not breaking wesnothd
+	@todo a better solution would be to change the simple_table in server to an unordered_map/set and then
+	both sides of the transaction are O(1)
+	@todo an even better solution would be to have the server provide the clients with an integral alias to the string.
+	This would 1. reduce network traffic and 2. be a direct bounds checked index into the servers vector LUT
+ */
+static void write_ordered_internal(config const &cfg, std::ostream &out, std::string& textdomain, size_t tab = 0)
+{
+	if (tab > max_recursion_levels)
+		throw config::error("Too many recursion levels in config write");
+	
+	std::map<config::t_token, config::attribute_value> sorted;
+	foreach (const config::attribute &i, cfg.attribute_range()) {
+		sorted.insert( i ); }
+	foreach (const config::attribute &i, sorted) {
+		write_key_val(out, i.first, i.second, tab, textdomain);
+	}
+
+	foreach (const config::any_child &item, cfg.all_children_range())
+	{
+		write_open_child(out, item.key, tab);
+		write_ordered_internal(item.cfg, out, textdomain, tab + 1);
+		write_close_child(out, item.key, tab);
+	}
+}
+
+
 void write(std::ostream &out, config const &cfg, unsigned int level)
 {
 	std::string textdomain = PACKAGE;
-	write_internal(cfg, out, textdomain, level);
+	///@todo remove _internal ASAP Sep10 2011.  I only did this to get multiplater wokring without finding all the place that call this
+	//write_internal(cfg, out, textdomain, level);
+	write_ordered_internal(cfg, out, textdomain, level);
+}
+
+void write_ordered(std::ostream &out, config const &cfg, unsigned int level)
+{
+	std::string textdomain = PACKAGE;
+	write_ordered_internal(cfg, out, textdomain, level);
 }
 
 void write_gz(std::ostream &out, config const &cfg)

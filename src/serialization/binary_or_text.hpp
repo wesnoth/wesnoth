@@ -34,6 +34,9 @@ public:
 	~config_writer();
 
 	void write(const config &cfg);
+	
+	/** Ordered write to support simple_wml in server*/
+	void write_ordered(const config &cfg);
 
 	void write_child(const std::string &key, const config &cfg);
 	void write_key_val(const std::string &key, const std::string &value);
