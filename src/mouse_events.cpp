@@ -1021,6 +1021,9 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 
 void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 {
+	if (u->attacks_left() == 0)
+	      return;
+
 	map_location adj[6];
 	get_adjacent_tiles(u->get_location(), adj);
 	foreach (const map_location &loc, adj)
