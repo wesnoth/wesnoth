@@ -416,6 +416,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Editor\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Editor\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\exceptions.cpp" />
     <ClCompile Include="..\..\src\formula_string_utils_backend.cpp" />
     <ClCompile Include="..\..\src\gui\dialogs\folder_create.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
