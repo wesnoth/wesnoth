@@ -599,7 +599,6 @@ static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 		return SOCKET_ERRORED;
 	}
 
-	#undef SDLNet_Read32
 	const int len = SDLNet_Read32(reinterpret_cast<void*>(num_buf));
 
 	if(len < 1 || len > 100000000) {
