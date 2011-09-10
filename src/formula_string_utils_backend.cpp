@@ -241,7 +241,11 @@ t_parse::t_parse(n_token::t_token const & unparsed)
 	, complete_parse_() {}
 
 t_parse::t_parse(t_parse const & a )
-	: token_(a.token_), complete_parse_(a.complete_parse_) {}
+	: token_(a.token_)
+	, tokens_(a.tokens_)
+	, complete_parse_(a.complete_parse_)
+{
+}
 
 t_parse & t_parse::operator=(t_parse const & a) {
 	token_ = (a.token_); 
