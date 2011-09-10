@@ -2187,8 +2187,8 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 
 	// If the filter doesn't contain positional information,
 	// then it may match units on all recall lists.
-	t_string const& cfg_x = cfg[z_x];
-	t_string const& cfg_y = cfg[z_y];
+	t_string const cfg_x = cfg[z_x];
+	t_string const cfg_y = cfg[z_y];
 	if((cfg_x.empty() || cfg_x == z_recall)
 	&& (cfg_y.empty() || cfg_y == z_recall))
 	{
