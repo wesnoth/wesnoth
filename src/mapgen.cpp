@@ -593,7 +593,7 @@ static std::string generate_name(const unit_race& name_generator, const std::str
 	if(options.empty() == false) {
 		const size_t choice = rand()%options.size();
 		LOG_NG << "calling name generator...\n";
-		const std::string& name = name_generator.generate_name(unit_race::MALE);
+		const std::string name = name_generator.generate_name(unit_race::MALE);
 		LOG_NG << "name generator returned '" << name << "'\n";
 		if(base_name != NULL) {
 			*base_name = name;
@@ -829,7 +829,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				if(river.empty() == false && labels != NULL) {
 					std::string base_name;
 					LOG_NG << "generating name for river...\n";
-					const std::string& name = generate_name(name_generator,"river_name",&base_name);
+					const std::string name = generate_name(name_generator,"river_name",&base_name);
 					LOG_NG << "named river '" << name << "'\n";
 					size_t name_frequency = 20;
 					for(std::vector<location>::const_iterator r = river.begin(); r != river.end(); ++r) {
