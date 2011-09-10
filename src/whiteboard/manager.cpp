@@ -329,23 +329,6 @@ void manager::on_change_controller(int side, team& t)
 	}
 }
 
-void manager::on_key_event(/*const SDL_KeyboardEvent& event*/)
-{
-	//Little hack to make the TAB key work properly: check at every draw if it's pressed,
-	//to compensate for faulty detection of the "up"/released key event
-
-	if (!key_poller_)
-	{
-		LOG_WB << "In manager::on_key_event, null key poller detected.\n";
-		return;
-	}
-
-	if(!(*key_poller_)[SDLK_TAB])
-	{
-		set_invert_behavior(false);
-	}
-}
-
 bool manager::current_side_has_actions()
 {
 	side_actions::range_t range = current_side_actions()->iter_turn(0);
