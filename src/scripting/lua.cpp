@@ -796,19 +796,6 @@ static int impl_vconfig_collect(lua_State *L)
 		return 1; \
 	}
 
-#define return_vector_string_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
-		const std::vector<std::string>& vector = accessor; \
-		lua_createtable(L, vector.size(), 0); \
-		int i = 1; \
-		foreach (const std::string& s, vector) { \
-			lua_pushstring(L, s.c_str()); \
-			lua_rawseti(L, -2, i); \
-			++i; \
-		} \
-		return 1; \
-	}
-
 #define return_vector_t_token_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 	const std::vector<config::t_token>& vector = accessor;	\
@@ -858,22 +845,6 @@ static int impl_vconfig_collect(lua_State *L)
 		return 0; \
 	}
 
-#define modify_vector_string_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
-		std::vector<std::string> vector; \
-		char const* message = "table with unnamed indices holding strings expected"; \
-		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message); \
-		unsigned length = lua_objlen(L, 3); \
-		for (unsigned i = 1; i <= length; ++i) { \
-			lua_rawgeti(L, 3, i); \
-			char const* string = lua_tostring(L, 4); \
-			if(!string) return luaL_argerror(L, 2 + i, message); \
-			vector.push_back(string); \
-			lua_pop(L, 1); \
-		} \
-		accessor; \
-		return 0; \
-	}
 #define modify_vector_t_token_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 	std::vector<config::t_token> vector;										\
