@@ -175,7 +175,10 @@ typename t_interned_token<T, T_hasher>::t_stash::value_type * t_interned_token<T
 	 return &*(maybe_inserted.first);
 }
 template <typename T, typename T_hasher >
-t_interned_token<T, T_hasher>::t_interned_token() : is_ref_counted_(false) {
+t_interned_token<T, T_hasher>::t_interned_token()
+	: iter_(NULL)
+	, is_ref_counted_(false)
+{
 	static typename t_stash::value_type * default_iter = first_default_constructed();
 	iter_ = default_iter;
 }
