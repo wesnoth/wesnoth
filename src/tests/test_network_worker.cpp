@@ -25,10 +25,9 @@
 #include "thread.hpp"
 #include "filesystem.hpp"
 
+#include "config.hpp"
 #include "game_config.hpp"
 
-/** @todo Convert to ANA. */
-#if 0
 /**
  * Test networking to prevent bugs there.
  * Try to create all kind of unlikely error conditions
@@ -299,4 +298,3 @@ BOOST_AUTO_TEST_CASE( test_shutdown )
 
 BOOST_AUTO_TEST_SUITE_END()
 /* vim: set ts=4 sw=4: */
-#endif
