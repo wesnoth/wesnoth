@@ -102,7 +102,7 @@ public:
 	void write_config(config_writer& out, bool write_variables=true) const;
 
 	// Variable access
-	//Prefer using token or attribute value interface as it is faster	
+	//Prefer using token or attribute value interface as it is faster
 
 	config::attribute_value &get_variable(const config::t_token &varname);
 	virtual config::attribute_value get_variable_const(const config::t_token& varname) const;

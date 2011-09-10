@@ -234,7 +234,7 @@ protected:
 private:
 	const std::string &get_available_for_recruiting(
 		const team& my_team);
-	const unit_type *get_unit_type_known( 
+	const unit_type *get_unit_type_known(
 		const std::string &recruit);
 	bool test_enough_gold(
 		const team& my_team,

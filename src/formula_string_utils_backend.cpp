@@ -34,9 +34,9 @@ static const t_token z_sharp("#", false);
 
 
 template <typename T>
-t_tokenizer::t_tokenizer(T const & in) 
+t_tokenizer::t_tokenizer(T const & in)
 	: tokens_(), is_done_(false), is_valid_varname_(false), input_string_(static_cast<std::string const &>(in))
-	, curr_pos_(0), end_(input_string_.size()) 
+	, curr_pos_(0), end_(input_string_.size())
 	, varname_start_(input_string_.npos){}
 
 template <typename T>
@@ -52,7 +52,7 @@ t_tokens const & t_tokenizer::tokenize() {
 		end_=input_string_.size();
 		if(end_ == 0) {
 			tokens_.push_back(z_empty);
-			is_done_ = true; } 
+			is_done_ = true; }
 		else {
 			varname_start_=input_string_.npos;
 			int guard(0);
@@ -71,7 +71,7 @@ t_tokens const & t_tokenizer::tokenize() {
 }
 
 void t_tokenizer::grab_name(){
-	if(varname_start_ != input_string_.npos){ 
+	if(varname_start_ != input_string_.npos){
 		t_token next_token(input_string_.substr(varname_start_, curr_pos_- varname_start_));
 		tokens_.push_back(next_token);
 		varname_start_=input_string_.npos;
@@ -80,7 +80,7 @@ void t_tokenizer::grab_name(){
 
 void t_tokenizer::process_char(){
 	if(curr_pos_ == end_){ grab_name(); is_done_=true; return; }
-		
+
 	//if the char at curr_pos is a control character then it is its own token
 	//otherwise it is the start of a multicharacter token
 
@@ -115,7 +115,7 @@ void t_tokenizer::process_char(){
    t_operation is a functor that does 2 things
    1. When provided with a token stack and a variable set it performs an operation like interpolation.
    2. When given a token stack an t_operation stack it performs its operation if it can do so without the
-   variable set, otherwise it puts an operation on the instruction stack.  This function can be called when the expression 
+   variable set, otherwise it puts an operation on the instruction stack.  This function can be called when the expression
    is parsed in order to reduce the operations to their smallest set.
  */
 
@@ -147,14 +147,14 @@ void t_operation_formula::operator()(t_tokens & stack,  variable_set const & var
 	try {
 		const game_logic::formula form(static_cast<std::string const &>(var_name) );
 		t_token rhs(form.evaluate().string_cast());
-		t_operation_append append(rhs);		
+		t_operation_append append(rhs);
 		append(stack, variable_set);
-		DEBUG_INTERP << string(var_name, static_cast<std::string const  &>(rhs) ) << "\n"; 
+		DEBUG_INTERP << string(var_name, static_cast<std::string const  &>(rhs) ) << "\n";
 	} catch(game_logic::formula_error& e) {
 		ERR_INTERP << "Formula in WML string cannot be evaluated due to: "
 			   << e.type << "\n\t--> \""
 			   << e.formula << "\"\n";
-		t_operation_append append(var_name);		
+		t_operation_append append(var_name);
 		append(stack, variable_set);
 	}
 }
@@ -174,12 +174,12 @@ void t_instructions::optimize(t_token const & unparsed) {
 			t_operation_ptr const & first_op = (last_instruction_optimized == true) ? optimized.back() : *(i_not-1);
 
 			t_operation::t_reduce_result reduced =first_op->reduce(*i_not);
-					
+
 			if(reduced.second){
 				DEBUG_INTERP <<"Reducing "<< *first_op << " + " << (**i_not) << " to "<< *reduced.first<<"\n";
 				if(last_instruction_optimized){ optimized.pop_back(); }
 				last_instruction_optimized = true;
-				optimized.push_back(reduced.first); } 
+				optimized.push_back(reduced.first); }
 			else{
 				DEBUG_INTERP <<"Not reducing "<< *first_op << " + " << (**i_not) << " \n";
 				if(last_instruction_optimized){ }
@@ -189,7 +189,7 @@ void t_instructions::optimize(t_token const & unparsed) {
 			++i_not;
 		}
 
-		if(! last_instruction_optimized){ optimized.push_back( ops_.back() ); } 
+		if(! last_instruction_optimized){ optimized.push_back( ops_.back() ); }
 
 		ops_.swap(optimized);
 	}
@@ -197,7 +197,7 @@ void t_instructions::optimize(t_token const & unparsed) {
 	if(ops_.size() == 1){
 		t_operation_push op_push_unparsed(unparsed);
 		if(op_push_unparsed == ops_[0]){ ops_.clear(); }
-			
+
 	}
 	DEBUG_INTERP << "Optimized instructions : \n" << *this <<"\n";
 }
@@ -222,7 +222,7 @@ std::ostream & operator<<(std::ostream &out, t_instructions const & a){
 		out <<(**i) <<"\n";
 	}
 	return out; }
-	
+
 
 
 std::ostream & operator<<(std::ostream &out, t_parse const & a){
@@ -234,8 +234,8 @@ std::ostream & operator<<(std::ostream &out, t_parse const & a){
 	for(; i != ops.end(); ++i){ out << *i ;}
 	return out<<" /OPS \n";
 }
-		
-t_parse::t_parse(n_token::t_token const & unparsed) 
+
+t_parse::t_parse(n_token::t_token const & unparsed)
 	: token_(unparsed)
 	, tokens_()
 	, complete_parse_() {}
@@ -248,7 +248,7 @@ t_parse::t_parse(t_parse const & a )
 }
 
 t_parse & t_parse::operator=(t_parse const & a) {
-	token_ = (a.token_); 
+	token_ = (a.token_);
 	complete_parse_ = a.complete_parse_;
 	return *this; }
 
@@ -277,29 +277,29 @@ t_tokens::iterator t_parse::do_parse_plain(t_tokens::iterator const & start_pos 
 			//$| inserts just a $
 			if( peek_next(curr_pos) == z_bar){
 				static const t_operation_ptr op(new t_operation_append(z_dollar));
-				complete_parse_.ops().push_back(op); 
+				complete_parse_.ops().push_back(op);
 				curr_pos+=2; }
-				
+
 			//A interpolation / formula
-			else { 
+			else {
 				size_t good_size = complete_parse_.ops().size();
 				try {
-					curr_pos = do_parse_interp(++curr_pos); } 
+					curr_pos = do_parse_interp(++curr_pos); }
 				catch (game::wml_syntax_error & e) {
 					ERR_INTERP << e.what()<<"\n";
-					if(complete_parse_.ops().size() > good_size){ 
+					if(complete_parse_.ops().size() > good_size){
 						complete_parse_.ops().resize(good_size); } } } }
-					
+
 		//text variable name component
 		else {
 			t_operation_ptr op(new t_operation_append(*curr_pos));
-			complete_parse_.ops().push_back(op); 
-			++curr_pos; } 
-	}			
+			complete_parse_.ops().push_back(op);
+			++curr_pos; }
+	}
 	return curr_pos;
 }
 
-t_tokens::iterator t_parse::do_parse_interp(t_tokens::iterator const & start_pos ){			
+t_tokens::iterator t_parse::do_parse_interp(t_tokens::iterator const & start_pos ){
 	bool found_part_of_name(false);
 	t_tokens::iterator curr_pos = start_pos + 1;
 
@@ -313,7 +313,7 @@ t_tokens::iterator t_parse::do_parse_interp(t_tokens::iterator const & start_pos
 	if (is_good_for_varname(*start_pos)){
 		found_part_of_name = true;
 		t_operation_ptr op(new t_operation_push(*start_pos));
-		complete_parse_.ops().push_back(op); }			
+		complete_parse_.ops().push_back(op); }
 
 	else if(*start_pos == z_dollar){
 		// $| Creates a $ to allow for $ in the string
@@ -322,27 +322,27 @@ t_tokens::iterator t_parse::do_parse_interp(t_tokens::iterator const & start_pos
 
 		//A Nested interpolation / formula
 		else {
-			curr_pos = do_parse_interp(start_pos + 1); 
+			curr_pos = do_parse_interp(start_pos + 1);
 			//todo this is a small lie if the interpolated result contains a control character
 			found_part_of_name = true; } }
 
-	// $( ... ) Creates a WML formula 
-	else if (*start_pos == z_lparen){  
+	// $( ... ) Creates a WML formula
+	else if (*start_pos == z_lparen){
 		return do_parse_formula(start_pos); }
 
 	// Everything else is an error
 	else { throw game::wml_syntax_error(tokens_, start_pos - tokens_.begin(), "missing variable name right after $"); }
-			
+
 	// Grab and append tokens until we reach the end of the variable name
 	int bracket_nesting_level = 0;
 
-	while(curr_pos != tokens_.end()){ 
+	while(curr_pos != tokens_.end()){
 
 		//text variable name component
 		if (is_good_for_varname(*curr_pos)){
 			found_part_of_name = true;
 			t_operation_ptr op(new t_operation_append(*curr_pos));
-			complete_parse_.ops().push_back(op); 
+			complete_parse_.ops().push_back(op);
 			++curr_pos; }
 
 		else if(*curr_pos == z_dollar){
@@ -359,21 +359,21 @@ t_tokens::iterator t_parse::do_parse_interp(t_tokens::iterator const & start_pos
 		else if(*curr_pos == z_lbracket){
 			static const t_operation_ptr op(new t_operation_append(z_lbracket));
 			complete_parse_.ops().push_back(op);
-			++bracket_nesting_level; 
+			++bracket_nesting_level;
 			++curr_pos; }
 		else if(*curr_pos == z_rbracket){
-			if((--bracket_nesting_level) < 0) { break; } 
+			if((--bracket_nesting_level) < 0) { break; }
 			static const t_operation_ptr op(new t_operation_append(z_rbracket));
-			complete_parse_.ops().push_back(op); 
+			complete_parse_.ops().push_back(op);
 			++curr_pos; }
 
 		//Dots
 		//two dots terminates variable expansion
 		// That matters for random=, e.g. $x..$y
 		else if(*curr_pos == z_dot){
-			if(peek_next(curr_pos) == z_dot){ break; } 
+			if(peek_next(curr_pos) == z_dot){ break; }
 			static const t_operation_ptr op(new t_operation_append(z_dot));
-			complete_parse_.ops().push_back(op); 
+			complete_parse_.ops().push_back(op);
 			++curr_pos; }
 
 		//A | terminates the variable name
@@ -387,11 +387,11 @@ t_tokens::iterator t_parse::do_parse_interp(t_tokens::iterator const & start_pos
 		//Invalid variable name component
 		else if (!is_good_for_varname(*curr_pos)){
 			break; }
-				
+
 		//Never happen
 		else { assert(false); }
 	}
-			
+
 	// If the last character is '.', then it can't be a sub-variable.
 	// It's probably meant to be a period instead. Don't include it.
 	// Would need to do it repetitively if there are multiple '.'s at the end,
@@ -414,7 +414,7 @@ t_tokens::iterator t_parse::do_parse_interp(t_tokens::iterator const & start_pos
 	if(! found_part_of_name) {
 		throw game::wml_syntax_error(tokens_, start_pos - tokens_.begin()
 							   , "missing variable name after $ (valid characters are a-zA-Z0-9_)"); }
-			
+
 	//FInally an interpolation
 	t_operation_ptr op(new t_operation_interp());
 	complete_parse_.ops().push_back(op);
@@ -424,7 +424,7 @@ t_tokens::iterator t_parse::do_parse_interp(t_tokens::iterator const & start_pos
 /** do_parse forumal parses a formula invoked by $ (...) syntax
  */
 t_tokens::iterator t_parse::do_parse_formula(t_tokens::iterator const & start_pos ){
-			
+
 	//Deal with the first token in the iterpolated variable
 	if(start_pos == tokens_.end()){
 		throw game::wml_syntax_error(tokens_, start_pos - tokens_.begin(), "formula hitting end of line"); }
@@ -451,7 +451,7 @@ t_tokens::iterator t_parse::do_parse_formula(t_tokens::iterator const & start_po
 		else if(*curr_pos == z_rparen){
 			if(!in_string && !in_comment) {
 				--paren_nesting_level; }
-			if( paren_nesting_level  <= 0) { break; } 
+			if( paren_nesting_level  <= 0) { break; }
 			static const t_operation_ptr op(new t_operation_append(z_rparen));
 			complete_parse_.ops().push_back(op); }
 
@@ -481,7 +481,7 @@ t_tokens::iterator t_parse::do_parse_formula(t_tokens::iterator const & start_po
 			t_operation_ptr op(new t_operation_append(*curr_pos));
 			complete_parse_.ops().push_back(op); }
 	}
-			
+
 	if(paren_nesting_level > 0) {
 		throw game::wml_syntax_error(tokens_, curr_pos - tokens_.begin(), "formula in WML string cannot be evaluated due to "
 							   "missing closing paren"); }
@@ -489,11 +489,11 @@ t_tokens::iterator t_parse::do_parse_formula(t_tokens::iterator const & start_po
 	t_operation_ptr op(new t_operation_formula());
 	complete_parse_.ops().push_back(op);
 	return ++curr_pos; //skip the closing right paren
-		
+
 }
 
 
-t_parse_and_interpolator::t_parse_and_interpolator (t_parse_and_interpolator const & a) 
+t_parse_and_interpolator::t_parse_and_interpolator (t_parse_and_interpolator const & a)
 	: maybe_parsed_(a.maybe_parsed_), complete_parse_(a.complete_parse_), is_done_(a.is_done_){}
 
 t_parse_and_interpolator & t_parse_and_interpolator::operator=(t_parse_and_interpolator const & a) {
@@ -505,6 +505,6 @@ std::ostream & operator<<(std::ostream &out, t_parse_and_interpolator const & a)
 
 //static member
 t_parse_and_interpolator::t_all_parsed t_parse_and_interpolator::all_parsed_(t_parse_and_interpolator::t_parser(), CACHE_SIZE);
-	
+
 }
 

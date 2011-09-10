@@ -255,7 +255,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			if(std::find(vals.begin(),vals.end(),z_lawful) == vals.end()) {
 				return false;
 			}
-		} else if(std::find(vals.begin(),vals.end(),z_neutral) == vals.end() 
+		} else if(std::find(vals.begin(),vals.end(),z_neutral) == vals.end()
 			  && std::find(vals.begin(),vals.end(),z_liminal) == vals.end() ) {
 			return false;
 		}
@@ -453,7 +453,7 @@ void terrain_filter::get_locations(t_maploc_set& locs, bool with_border, gamemap
 			t_maploc_set union_hexes;
 			terrain_filter(cond_cfg, *this).get_locations(union_hexes, with_border);
 			//doesn't compile on MSVC
-			//xy_set.insert(union_hexes.begin(), union_hexes.end()); 
+			//xy_set.insert(union_hexes.begin(), union_hexes.end());
 			t_maploc_set::iterator insert_itor = union_hexes.begin();
 			while(insert_itor != union_hexes.end()) {
 				xy_set.insert(*insert_itor++);

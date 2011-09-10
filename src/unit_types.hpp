@@ -79,8 +79,8 @@ public:
 	/*
 	 * cfg: a weapon special WML structure
 	 */
-	bool special_active(gamemap const & game_map, unit_map const & units, 
-						  t_teams const & teams, LuaKernel & lua_kernel, 
+	bool special_active(gamemap const & game_map, unit_map const & units,
+						  t_teams const & teams, LuaKernel & lua_kernel,
 						  tod_manager const & tod_manager,
 						const config& cfg, bool self) const;
 	inline bool special_active(const config& cfg, bool self) const {

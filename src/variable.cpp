@@ -383,7 +383,7 @@ struct vconfig_expand_visitor : public config::attribute_value::default_visitor 
 	void operator()(config::t_token const & token){
 		config::t_token cp(token);
 		utils::interpolate_variables_into_token(cp, *repos);
-		val = cp;		
+		val = cp;
 	}
 	void operator()(const t_string &s){
 		val = utils::interpolate_variables_into_tstring(s, *repos);
@@ -583,17 +583,17 @@ static const config::t_token z_rbracket("]", false);
 
 
 typedef config::t_token t_token;
-struct t_parsed { 
+struct t_parsed {
 	enum {NO_INDEX = -1};
 	t_parsed(t_token const & a, int i = NO_INDEX):token(a),index(i){}
 	t_parsed(t_parsed const & a):token(a.token), index(a.index){}
-	t_token token;  
+	t_token token;
 	int index; };
 
 typedef std::vector<t_parsed> t_parsed_tokens;
 
 class t_parse_token {
-public: 
+public:
 	t_parsed_tokens	operator()(config::t_token const & key) const {
 		//an example varname is  "unit_store.modifications.trait[0]"
 
@@ -611,16 +611,16 @@ public:
 				case '.' :
 				case '[':
 				case ']':
-					throw game::wml_syntax_error(skey, i, "the first character of identifier is one of these,  .[] invalid characters" ); 
+					throw game::wml_syntax_error(skey, i, "the first character of identifier is one of these,  .[] invalid characters" );
 				}
 			}
 			if(is_lbrack){
 				switch(c){
 				case '.' :
-				case '[': 
-					throw game::wml_syntax_error(skey, i, "a dot . or left bracket [ after left bracket [ starting the variable name"); 
+				case '[':
+					throw game::wml_syntax_error(skey, i, "a dot . or left bracket [ after left bracket [ starting the variable name");
 					break;
-				case ']':				
+				case ']':
 					std::string index_str(skey.substr(i_start_of_token, i - i_start_of_token ));
 					std::istringstream is(index_str);
 					size_t index;
@@ -630,7 +630,7 @@ public:
 						index = game_config::max_loop;
 					}
 					parsed_tokens.back().index = index;
-					
+
 					//adjust for dot after lbrack  as  in "unit_store.modifications.trait[0].y"
 					if (i < (iend-1) ) {
 						char next_c = skey[i+1] ;
@@ -658,7 +658,7 @@ public:
 			++i;
 		}
 		if(i_start_of_token != i){
-			parsed_tokens.push_back(t_token(skey.substr(i_start_of_token, i - i_start_of_token )));	
+			parsed_tokens.push_back(t_token(skey.substr(i_start_of_token, i - i_start_of_token )));
 		}
 
 		return parsed_tokens;
@@ -679,7 +679,7 @@ void activate_scope_variable(t_parsed_tokens const & tokens)
 	if(recursive_activation){ return; }
 
 	if(! tokens.empty()){
-	
+
 		config::t_token const & first((tokens.begin()->token));
 
 		std::vector<scoped_wml_variable*>::reverse_iterator rit;
@@ -765,9 +765,9 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 					return;
 				}
 			}
-			vars = &vars->child(i->token, inner_index);		
+			vars = &vars->child(i->token, inner_index);
 			++i;
-		}	
+		}
 
 		//Process the last token
 
@@ -830,7 +830,7 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 	}
 }
 
-variable_info::variable_info(const config::t_token& varname, bool force_valid, TYPE validation_type) 
+variable_info::variable_info(const config::t_token& varname, bool force_valid, TYPE validation_type)
 	: vartype(validation_type), is_valid_(false), explicit_index_(false), key(varname),  index(0), vars(NULL) {
 	init( varname,  force_valid) ;}
 

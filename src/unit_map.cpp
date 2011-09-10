@@ -180,7 +180,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p) {
 			int guard(0);
 			while (!uinsert.second && (++guard < 1e6) ) {
 				if(guard % 10 == 9){
-					ERR_NG << "\n\nPlease Report this error to https://gna.org/bugs/index.php?18591 " 
+					ERR_NG << "\n\nPlease Report this error to https://gna.org/bugs/index.php?18591 "
 						"\nIn addition to the standard details of operating system and wesnoth version "
 						"and how it happened, please answer the following questions "
 						"\n 1. Were you playing mutli-player?"
@@ -189,7 +189,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit *p) {
 				}
 				p->clone(false);
 				uinsert = umap_.insert(std::make_pair(p->underlying_id(), lit )); }
-			if (!uinsert.second) { 
+			if (!uinsert.second) {
 				throw "One million collisions in unit_map"; }
 		}
 	}

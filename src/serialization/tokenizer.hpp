@@ -69,7 +69,7 @@ struct token {
 
 	token_type type;
 	mutable std::string value_;
-	
+
 	mutable n_token::t_token t_token_;
 	mutable bool is_parsed_;
 
@@ -88,7 +88,7 @@ struct token {
 		}
 		return t_token_;
 	}
-	
+
 	void set_token(n_token::t_token const & t){
 		t_token_ = t;
 		is_parsed_=true;
@@ -101,7 +101,7 @@ struct token {
 	void add_char(char const c) {
 		buffer_.push_back(c);
 		is_parsed_ = false;
-	} 
+	}
 };
 
 /** Abstract baseclass for the tokenizer. */

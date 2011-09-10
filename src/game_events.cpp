@@ -790,7 +790,7 @@ namespace {
 		t_active active_; ///Active event handlers
 		t_active insert_buffer_; ///Event handlers added while pumping events
 		std::set<config::t_token> remove_buffer_; ///Event handlers removed while pumping events
-		bool buffering_; 
+		bool buffering_;
 
 	public:
 
@@ -803,15 +803,15 @@ namespace {
 		 * respects this class's buffering functionality.
 		 */
 		void add_event_handler(game_events::event_handler const & new_handler) {
-			if(buffering_) { insert_buffer_.push_back(new_handler); } 
-			
+			if(buffering_) { insert_buffer_.push_back(new_handler); }
+
 			else {
 				const config & cfg = new_handler.get_config();
 				config::t_token const & id = cfg[z_id];
 				if(id != n_token::t_token::z_empty()) {
 					foreach( game_events::event_handler const & eh, active_) {
 						config const & temp_config( eh.get_config());
-						if(id == temp_config[z_id]) { return; } 
+						if(id == temp_config[z_id]) { return; }
 					}
 				}
 				active_.push_back(new_handler);
@@ -878,7 +878,7 @@ namespace {
 
 		iterator end() { return active_.end(); }
 		const_iterator end() const { return active_.end(); }
-		
+
 	};
 
 	t_event_handlers event_handlers;
@@ -1617,7 +1617,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 
 WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
-{	
+{
 	const config::attribute_value & name = cfg[z_name];
 	variable_info dest(name, true, variable_info::TYPE_CONTAINER);
 
@@ -1690,7 +1690,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 		//if no separator is specified, explode the string
 		if(separator == NULL)
 		{
-			for(std::string::const_iterator i=static_cast<std::string const &>(split_string).begin(); 
+			for(std::string::const_iterator i=static_cast<std::string const &>(split_string).begin();
 				i!=static_cast<std::string const &>(split_string).end(); ++i)
 			{
 				split_vector.push_back(config::t_token(std::string(1, *i)));

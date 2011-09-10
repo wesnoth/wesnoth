@@ -216,7 +216,7 @@ namespace image {
 	bool exists(const locator& i_locator);
 
 	/// precache the existence of files in the subdir (ex: "terrain/")
-void precache_file_existence(const n_token::t_token& subdir = n_token::t_token::z_empty()); 
+void precache_file_existence(const n_token::t_token& subdir = n_token::t_token::z_empty());
 	bool precached_file_exists(const n_token::t_token& file);
 }
 

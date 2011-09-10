@@ -84,11 +84,11 @@ static const unsigned int CACHE_SIZE = 10000;
 typedef std::vector<n_token::t_token > t_out;
 
 struct t_split_triad {
-	n_token::t_token const val; 
-	char c; 
+	n_token::t_token const val;
+	char c;
 	int flags;
 	t_split_triad(n_token::t_token const &v, char cc, int f) : val(v), c(cc), flags(f) {}
-	bool operator==(t_split_triad const & a) const { 
+	bool operator==(t_split_triad const & a) const {
 		return  val ==a.val && c==a.c && flags==a.flags;  }
 };
 
@@ -106,7 +106,7 @@ struct t_calc_cache_item {
 		std::vector<std::string> vstr(split(static_cast<std::string const &>(x.val), x.c, x.flags));
 		t_out retval;
 		foreach(std::string const & s, vstr){
-			retval.push_back(n_token::t_token(s)); 
+			retval.push_back(n_token::t_token(s));
 		}
 		return retval;
 	}
@@ -164,12 +164,12 @@ typedef std::vector<n_token::t_token > t_out;
 
 struct t_paren_split_inputs {
 	n_token::t_token const val;
-	const char separator; 
+	const char separator;
 	n_token::t_token const left;
 	n_token::t_token const right;
 	int flags;
 	t_paren_split_inputs(n_token::t_token const &val, const char separator, n_token::t_token const &left
-						, n_token::t_token const &right,int flags) 
+						, n_token::t_token const &right,int flags)
 		: val(val), separator(separator), left(left), right(right), flags(flags){}
 	bool operator==(t_paren_split_inputs const & a) const {
 		return val ==a.val && separator==a.separator && left==a.left && right==a.right && flags==a.flags; }
@@ -191,7 +191,7 @@ struct t_calc_paren_cache_item {
 		std::vector<std::string> vstr(utils::parenthetical_split((*x.val), x.separator, x.left, x.right, x.flags));
 		t_out retval;
 		foreach(std::string const & s, vstr){
-			retval.push_back(n_token::t_token(s)); 
+			retval.push_back(n_token::t_token(s));
 		}
 		return retval;
 	}
@@ -205,7 +205,7 @@ std::vector< n_token::t_token > parenthetical_split_token(n_token::t_token const
 		const char separator, n_token::t_token const &left,
 		n_token::t_token const &right, int flags) {
 	static t_paren_cache my_cache(t_calc_paren_cache_item(), PAREN_CACHE_SIZE);
-	return my_cache.check( t_paren_split_inputs(val, separator, left, right, flags ) );	
+	return my_cache.check( t_paren_split_inputs(val, separator, left, right, flags ) );
 }
 
 std::vector< std::string > parenthetical_split(std::string const &val,

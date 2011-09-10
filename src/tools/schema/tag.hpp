@@ -291,8 +291,8 @@ public:
 
 #ifdef _MSC_VER
 	// MSVC throws an error if this method is private.
-	// so, define it as public to prevent that. The error is: 
-	// error C2248: 'schema_validation::class_tag::find_tag' : cannot 
+	// so, define it as public to prevent that. The error is:
+	// error C2248: 'schema_validation::class_tag::find_tag' : cannot
 	// access private member declared in class 'schema_validation::class_tag'
 
 	class_tag * find_tag(const std::string & fullpath,

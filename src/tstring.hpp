@@ -150,7 +150,7 @@ public:
 	t_string(const std::string &str, const std::string &textdomain);
 
 	t_string &operator=(t_token const &);
-	template <typename X> t_string &operator=(X const  &o) { 
+	template <typename X> t_string &operator=(X const  &o) {
 		operator=(static_cast<t_token const &>(o)); return *this; }
 
 	t_string &operator=(std::string const &);

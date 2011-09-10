@@ -93,7 +93,7 @@ public:
 	/// Define a token that compares faster than a string once created.
 	/// It is preferable to use t_token as indices over strings
 	typedef n_token::t_token t_token;
-	
+
 	static const t_token z_empty, z_yes, z_no, z_true, z_false, z_index;
 
 	/**
@@ -194,7 +194,7 @@ public:
 		mutable double double_value_;
 		mutable t_string t_string_value_;
 		mutable t_token token_value_;
-		
+
 		attribute_type type_;
 		mutable bool bool_value_ : 1;
 		mutable bool is_bool_ : 1, is_int_ : 1, is_double_ : 1, is_t_string_ : 1, is_token_ : 1;
@@ -304,11 +304,11 @@ public:
 
 	/** Creates an index into the child range to allow for quick searches.
 		key is the key for the child range and name is the column to index.
-		i.e. if the list of save games is stored in a child called save with titles 
+		i.e. if the list of save games is stored in a child called save with titles
 		then to create a container indexed by titles do
 
 		child_range_index(z_save, z_title);
-		@Note the index is not stored in the config and is intended for 
+		@Note the index is not stored in the config and is intended for
 		repeated searches of large child ranges.
 	 */
 	t_child_range_index child_range_index(const t_token& key, config::t_token const & name);
@@ -600,7 +600,7 @@ template <typename X> void config::attribute_value::apply_visitor(X & visitor) c
 	switch(type_){
 	case (EMPTY) : return visitor();
 	case(BOOL) :   return visitor(bool_value_);
-	case(INT) :       return visitor(int_value_);  
+	case(INT) :       return visitor(int_value_);
 	case(DOUBLE) :  return visitor(double_value_);
 	case(TOKEN) :   return visitor(token_value_);
 	case(TSTRING) :  return visitor(t_string_value_);

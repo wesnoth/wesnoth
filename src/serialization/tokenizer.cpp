@@ -97,7 +97,7 @@ const token &tokenizer::next_token()
 		skip_comment();
 
 	startlineno_ = lineno_;
-	
+
 	token_.set_start();
 	//	std::cerr<<"cc="<<current_<<" ";
 
@@ -152,23 +152,23 @@ const token &tokenizer::next_token()
 		}
 		break;
 
-	case '[': 
+	case '[':
 		token_.type = token::token_type(current_);
 		token_.set_token(z_LBRACKET);
 		break;
-	case ']': 
+	case ']':
 		token_.type = token::token_type(current_);
 		token_.set_token(z_RBRACKET);
 		break;
-	case '/': 
+	case '/':
 		token_.type = token::token_type(current_);
 		token_.set_token(z_SLASH);
 		break;
-	case '\n': 
+	case '\n':
 		token_.type = token::token_type(current_);
 		token_.set_token(z_LF);
 		break;
-	case '=': 
+	case '=':
 		token_.type = token::token_type(current_);
 		token_.set_token(z_EQUALS);
 		break;

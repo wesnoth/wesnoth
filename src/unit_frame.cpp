@@ -110,7 +110,7 @@ size_t hash_value(progressive_discrete<T> const & a) {
 
 
 template <class T>
-T const & progressive_continuous<T>::default_default_value() { 
+T const & progressive_continuous<T>::default_default_value() {
 	static T * defval= new T();
 	return *defval;
 }
@@ -447,7 +447,7 @@ frame_parsed_parameters::frame_parsed_parameters(const frame_builder & builder, 
 }
 
 bool frame_parsed_parameters::operator==(frame_parsed_parameters const & b) const {
-	return duration_ == b.duration_ 
+	return duration_ == b.duration_
 		&& image_ == b.image_
 		&& image_diagonal_ == b.image_diagonal_
 		&& image_mod_ == b.image_mod_

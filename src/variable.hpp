@@ -247,7 +247,7 @@ private:
 	void init(const config::t_token& varname, bool force_valid=true);
 	TYPE vartype; ///default is TYPE_UNSPECIFIED
 	bool is_valid_;
-	bool explicit_index_; ///true if query ended in [...] specifier 
+	bool explicit_index_; ///true if query ended in [...] specifier
 public: ///todo make these private
 	config::t_token key; /// the name of the internal attribute or child
 	size_t index; /// the index of the child

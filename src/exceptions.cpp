@@ -18,7 +18,7 @@
 
 namespace game {
 
-wml_syntax_error::wml_syntax_error(std::string const & reason) 
+wml_syntax_error::wml_syntax_error(std::string const & reason)
   : output_("WML Syntax error:: Variable in WML string cannot be evaluated due to " + reason) {}
 
 ///Tries to parse the error message so that an arror <-- points to the location of the error
@@ -34,7 +34,7 @@ wml_syntax_error::wml_syntax_error(std::string const & str, size_t const & pos, 
 			ss << "-->\"";
 			ss << str.substr(pos) << "\"";
 		}
-	} 
+	}
 	else { ss << "\"<--"; }
 
 	output_ = ss.str();
@@ -55,10 +55,10 @@ wml_syntax_error::wml_syntax_error(t_tokens const & tokens, size_t const & p, st
 		if((++i) != tokens.end()){
 			ss << "\"";
 			for(; i != tokens.end(); ++i){
-				ss << *i; } 
+				ss << *i; }
 			ss << "\"";
 		}
-	} 
+	}
 	else { ss << "\"<--"; }
 
 	output_ = ss.str();

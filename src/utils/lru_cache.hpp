@@ -75,7 +75,7 @@ public:
 	///@param[in] max_size the maximum size of the cache before items are discarded
 	///@param[in] dummy_value a dummy value used internally to insert fake values into the cache
 	t_lru_cache(t_comp const & c, size_t max_size, t_value const & dummy_value = t_value())
-		: key_to_valpos_(), lru_list_(), comp_(c), max_size_(max_size), dummy_item_(dummy_value) 
+		: key_to_valpos_(), lru_list_(), comp_(c), max_size_(max_size), dummy_item_(dummy_value)
 		, stat_hit_(0), stat_miss_(0), stat_erased_(0){}
 	t_lru_cache(t_lru_cache const & a)
 		: key_to_valpos_(a.key_to_valpos_), lru_list_(a.lru_list_), comp_(a.comp_)
@@ -106,7 +106,7 @@ public:
 		if(found){
 			//++stat_hit_;
 			mark_used(kv_it);
-			return kv_it->second.first;			
+			return kv_it->second.first;
 		}
 
 		//cache miss
@@ -129,14 +129,14 @@ public:
 	}
 	void invalidate(t_key const & k){
 		kv_iterator found (key_to_valpos_.find(k));
-		if(found != key_to_valpos_.end()){ //Cache hit	
+		if(found != key_to_valpos_.end()){ //Cache hit
 			lru_list_.erase(found->second.second);
 			///todo Change to quick_erase when wesnoth supports boost 1.4?6
 			key_to_valpos_.erase(found);
 		}
 	}
 
-	///For debugging only.  Check for a cache hit. 
+	///For debugging only.  Check for a cache hit.
 	///@note Don't use this in real code, just call check.  It is faster
 	bool debugging_test_cache(t_key const & k) const {
 		typename t_key_to_value::const_iterator found (key_to_valpos_.find(k));

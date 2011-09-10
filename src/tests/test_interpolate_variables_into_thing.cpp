@@ -53,7 +53,7 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	std::string checkR = "check";
 	check_equal_interpolation(checkL, checkR, symbols);
 
-	//Nesting 
+	//Nesting
 	std::string	nestingL = "ne$second$third|to|dolls";
 	symbols["second"] = "BBB";
 	symbols["secondTTTto"] = "sting_";
@@ -123,7 +123,7 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	std::string	stop_embedded_ctrlL = "stop$embed*star";
 	symbols["embed*dollar"] = "_noway";
 	symbols["embed"] = "_parse_at_embedded_";
-	std::string	stop_embedded_ctrlR = "stop_parse_at_embedded_*star"; 
+	std::string	stop_embedded_ctrlR = "stop_parse_at_embedded_*star";
 	check_equal_interpolation(stop_embedded_ctrlL, stop_embedded_ctrlR, symbols);
 
 	std::string	stop_recursive_embedded_ctrlL = "stop$fly$embed|star";
@@ -176,7 +176,7 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	check_equal_interpolation(mismatch_string_in_formulaL, mismatch_string_in_formulaR, symbols);
 
 
-} 
+}
 
 /* vim: set ts=4 sw=4: */
 BOOST_AUTO_TEST_SUITE_END()

@@ -76,9 +76,9 @@ inline bool  is_good_for_varname (t_token const & a){
 
 ///Break string/token into relevant tokens
 /** @class t_tokenizer breaks strings/tokens into vectors of tokens.
-	Tokens are either a part of a variable name (alnum or _), 
+	Tokens are either a part of a variable name (alnum or _),
 	a valid control character $|.[]()'#
-	or everything else. 
+	or everything else.
  */
 class t_tokenizer {
 	t_tokens tokens_;  /// tokens for output
@@ -89,7 +89,7 @@ public:
 	/** Initialize the tokenizer with a std::string or a t_token
 	@param[in] in a string/token static_castible to a string
 	*/
-	template <typename T> t_tokenizer(T const & in); 
+	template <typename T> t_tokenizer(T const & in);
 
 	/**Binds to a new string and tokenizes the string
 	@param[in] in a string/token static_castible to a string
@@ -116,7 +116,7 @@ private:
 
 /**@class
    Each t_operation is a functor that does 2 things
-   1. When provided with a token stack and a variable set it performs an operation : 
+   1. When provided with a token stack and a variable set it performs an operation :
    push, append, interpolate (variable) or formula (interpolation).
    2. When provided with 2 operations, it returns a single operation that in the same as
    the two operations it possible.
@@ -169,7 +169,7 @@ struct t_operation {
 	virtual bool operator==(t_operation_append const & /*first_op*/) const { return false; }
 	virtual bool operator==(t_operation_interp const & /*first_op*/) const { return false; }
 	virtual bool operator==(t_operation_formula const & /*first_op*/) const { return false; }
-	
+
 private:
 	static const t_operation_ptr void_op_; ///Operation ptr returned on failure, deferencing will cause a crash
 };
@@ -194,7 +194,7 @@ class t_operation_push : public t_operation {
 	t_token x_;
 public:
 	t_operation_push(t_token const & a) : x_(a){}
-	
+
 	virtual void operator()(t_tokens & stack,  variable_set const & /*variable_set*/) const {
 		stack.push_back(x_);
 		DEBUG_INTERP << string() << "\n"; }
@@ -234,11 +234,11 @@ public:
 	///Checks the cache for the append result and replaces the top token on the stack with the result
 	virtual void operator()(t_tokens & stack,  variable_set const & /*variable_set*/) const {
 		if(!stack.empty()){
-			t_token const &res = cache_.check(std::make_pair(stack.back(), x_)); 
+			t_token const &res = cache_.check(std::make_pair(stack.back(), x_));
 			if(res != stack.back()){
 				DEBUG_INTERP << string(res) << "\n";
 				stack.pop_back();
-				stack.push_back(res); } } 
+				stack.push_back(res); } }
 
 		else {
 			stack.push_back(x_); }
@@ -249,15 +249,15 @@ public:
 	virtual t_reduce_result reduce(t_operation_ptr const & second_op) const {
 		return second_op->reduce_flipped(*this); }
 
-	/// push->append is reduces to a push operation 
+	/// push->append is reduces to a push operation
 	virtual t_reduce_result reduce_flipped(t_operation_push const & first_op) const {
-		t_operation_ptr op(new t_operation_push(t_token(static_cast<std::string const &>(first_op.x()) 
+		t_operation_ptr op(new t_operation_push(t_token(static_cast<std::string const &>(first_op.x())
 														+  static_cast<std::string const &>(x()))));
 		return std::make_pair(op, true); }
 
-	/// append->append is reduces to an append operation 
+	/// append->append is reduces to an append operation
 	virtual t_reduce_result reduce_flipped(t_operation_append const & first_op) const {
-		t_operation_ptr op(new t_operation_append(t_token(static_cast<std::string const &>(first_op.x()) 
+		t_operation_ptr op(new t_operation_append(t_token(static_cast<std::string const &>(first_op.x())
 														+  static_cast<std::string const &>(x()))));
 		return std::make_pair(op, true); }
 
@@ -274,7 +274,7 @@ private:
 };
 
 /**@class t_operation_interp looksup the top token on the stack in the variable_set
-   @param[in] variable_set	
+   @param[in] variable_set
  */
 class t_operation_interp : public t_operation {
 
@@ -285,10 +285,10 @@ public :
 
 		t_token var_name(stack.back());
 		config::attribute_value stuffing(variable_set.get_variable_const(var_name ));
-		DEBUG_INTERP << string(var_name, stuffing) << "\n"; 
-		
+		DEBUG_INTERP << string(var_name, stuffing) << "\n";
+
 		stack.pop_back();
-		t_operation_append append(stuffing.token());		
+		t_operation_append append(stuffing.token());
 		append(stack, variable_set);
 	}
 
@@ -341,7 +341,7 @@ public:
 
 	///runs the instructions and places the results in @param[out] x
 	void run(t_token & x, variable_set const & set) const {
-		if ( ops_.empty() ) { 
+		if ( ops_.empty() ) {
 			//DEBUG_INTERP << "Nothing to interpolate in "<<x<<"\n";
 			return; }
 		run_core(x, set);
@@ -360,24 +360,24 @@ public:
 /** @class t_parse parses tokens into instructions to perform the interpolation
  */
 struct t_parse {
-		
+
 	n_token::t_token token_; ///The input token
 	t_tokens tokens_; ///Its tokens
 
 	t_instructions complete_parse_;
 
 	friend std::ostream & operator<<(std::ostream &out, t_parse const & a);
-		
+
 	t_parse(n_token::t_token const & unparsed) ;
 	t_parse(t_parse const & a );
 	t_parse & operator=(t_parse const & a) ;
 
-	///Calculate a parse	
+	///Calculate a parse
 	t_instructions & parse();
 
 	///Peeks at the next token
 	t_token const & peek_next(t_tokens::iterator const & curr_pos );
-	
+
 	///Keep concatenating components until you see a $ which indicates some kind of interpolation
 	t_tokens::iterator do_parse_plain(t_tokens::iterator const & start_pos );
 
@@ -393,13 +393,13 @@ struct t_parse {
 /**  @class Parses and possibly stores variables for subsequent interpolation */
 class t_parse_and_interpolator {
 
-	/// @class Generate a parse for an  uncached token	
+	/// @class Generate a parse for an  uncached token
 	struct t_parser {
 		t_instructions operator()(n_token::t_token const & unparsed){
 			t_parse aparse(unparsed);
 			t_instructions  instructions(aparse.parse());
 			instructions.optimize(unparsed);
-			return instructions;			
+			return instructions;
 		}
 	};
 
@@ -411,9 +411,9 @@ class t_parse_and_interpolator {
 	n_token::t_token maybe_parsed_; ///input token and result
 	t_instructions const * complete_parse_; ///instructions to interpolate this token
 	bool is_done_;
-	
+
 public:
-	t_parse_and_interpolator (n_token::t_token const & unparsed) 
+	t_parse_and_interpolator (n_token::t_token const & unparsed)
 		: maybe_parsed_(unparsed), complete_parse_(NULL), is_done_(false){}
 
 	t_parse_and_interpolator (t_parse_and_interpolator const & a);
@@ -432,14 +432,14 @@ public:
 	n_token::t_token const & parse_and_interpolate(const variable_set& set) {
 		parse();
 		return interpolate(set); }
-	
+
 	///Fetch the parsed instructions from the cache
 	t_parse_and_interpolator & parse(){
 		complete_parse_ = & all_parsed_.check(maybe_parsed_);
 		is_done_ = false;
 		return *this; }
 
-	///Run the parsed instructions to do the interpolation.  
+	///Run the parsed instructions to do the interpolation.
 	t_token const & interpolate(const variable_set& set){
 		assert(complete_parse_);
 		if(!is_done_){
@@ -447,7 +447,7 @@ public:
 		return maybe_parsed_; }
 
 };
-	
+
 }
 
 

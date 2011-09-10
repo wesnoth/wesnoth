@@ -43,12 +43,12 @@ template <typename T, typename T_hasher = boost::hash<T> > class t_interned_toke
 
 /**
    @class t_interned_token
-   @brief t_interned_token stores unique copies of an object of type T and returns a reference to an object of type T 
+   @brief t_interned_token stores unique copies of an object of type T and returns a reference to an object of type T
    that allows fast O(1) equality comparison, copying and hashing.
    A unique copy of the T is available as a const reference.
    It is typically reference counted unless explicitly requested otherwise upon construction (i.e for static T)
 
-   The copying of interned_tokens is faster than the creation of interned_tokens, because a reference object isn't created.  
+   The copying of interned_tokens is faster than the creation of interned_tokens, because a reference object isn't created.
    Hence use static interned_tokens as replacements for constants in the code, as follows:
    static const t_interned_token<T> z_some_T_thing(reference_T_thing, false);
  */
@@ -59,9 +59,9 @@ public:
 
 	///default constructor.
 	t_interned_token();
-	
+
 	///Create  token
-	///@param[in] is_ref_counted determines if all tokens of this value will be ref counted.  
+	///@param[in] is_ref_counted determines if all tokens of this value will be ref counted.
 	///Static tokens should not be ref counted.
 	explicit t_interned_token(T const & a, bool is_ref_counted = true);
 
@@ -113,7 +113,7 @@ public:
 	///For debugging purposes count the number of identical tokens created by
 	///redundant construction of objects.
 	///If the numbers are large enough that construction and hashing of the reference objects is creating a slowdown
-	///then these should then be changed to static objects/copies of tokens to avoid the 
+	///then these should then be changed to static objects/copies of tokens to avoid the
 	///repeated cost of constructing the objects.
 	static const unsigned int is_collect_num_stats_ = 0;
 
@@ -135,10 +135,10 @@ public:
 private:
 	typedef n_ref_counter::t_ref_counter<signed long> t_interned;
 	typedef boost::unordered_map<T, t_interned, T_hasher > t_stash;
-	///The token table 
-	///This forces correct static initialization order.	
-	///Do not inline.  	
-	static t_stash & the_stash(); 
+	///The token table
+	///This forces correct static initialization order.
+	///Do not inline.
+	static t_stash & the_stash();
 
 	///Initialize first default constructed value.  The default value is only constructed once.
 	typename t_stash::value_type * first_default_constructed();
@@ -169,7 +169,7 @@ typename t_interned_token<T, T_hasher>::t_stash::value_type * t_interned_token<T
 	 t_stash & the_stash_ = the_stash();
 	 t_interned default_value_(0);
 	 T a = T();
-	
+
 	 std::pair<typename t_stash::iterator, bool> maybe_inserted = the_stash_.insert(std::make_pair(a, default_value_));
 
 	 return &*(maybe_inserted.first);
@@ -191,15 +191,15 @@ t_interned_token<T, T_hasher>::t_interned_token(T const & a , bool is_ref_counte
 
 	static t_stash & the_stash_ = the_stash();
 	static t_interned default_value_(0);
-	
+
 	std::pair<typename t_stash::iterator, bool> maybe_inserted = the_stash_.insert(std::make_pair(a, default_value_));
 	assert( maybe_inserted.first != the_stash_.end() );
 
 	iter_ = &*(maybe_inserted.first);
-	if(!is_ref_counted_){ 
+	if(!is_ref_counted_){
 		//Mark this token as no longer ref counted
 		iter_->second.disable_count();
-	} 
+	}
 	inc_ref();
 
 #ifdef DEBUG
@@ -223,7 +223,7 @@ t_interned_token<T, T_hasher>::t_interned_token(T const & a , bool is_ref_counte
 }
 
 template <typename T, typename T_hasher >
-t_interned_token<T, T_hasher>::t_interned_token(t_interned_token<T, T_hasher> const & a) 
+t_interned_token<T, T_hasher>::t_interned_token(t_interned_token<T, T_hasher> const & a)
 	: iter_(a.iter_), is_ref_counted_(a.is_ref_counted_) {
 	inc_ref();
 }
@@ -236,7 +236,7 @@ t_interned_token<T, T_hasher> & t_interned_token<T, T_hasher>::operator=(t_inter
 
 	iter_ = a.iter_;
 	is_ref_counted_ = a.is_ref_counted_;
-	
+
 	inc_ref();
 
 	return *this;
@@ -250,12 +250,12 @@ t_interned_token<T, T_hasher>::~t_interned_token() {
 
 template <typename T, typename T_hasher >
 void t_interned_token<T, T_hasher>::inc_ref() {
-	if(is_ref_counted_ && valid() && (++(iter_->second) < 0 )) {  
-		is_ref_counted_ = false; } 
+	if(is_ref_counted_ && valid() && (++(iter_->second) < 0 )) {
+		is_ref_counted_ = false; }
 }
 template <typename T, typename T_hasher >
 void t_interned_token<T, T_hasher>::dec_ref() {
-	if(is_ref_counted_ && valid() && ( (--(iter_->second)) == 0)) { 
+	if(is_ref_counted_ && valid() && ( (--(iter_->second)) == 0)) {
 		static t_stash & the_stash_ = the_stash();
 		///@todo upgrade to quick_erase when boost 1.42 is supported
 		the_stash_.erase(iter_->first);  }

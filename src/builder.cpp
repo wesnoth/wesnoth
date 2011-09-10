@@ -320,7 +320,7 @@ static bool image_exists(const n_token::t_token& name)
 {
 	bool precached = (*name).find("..") == std::string::npos;
 
-	if(precached && image::precached_file_exists(name)) { 
+	if(precached && image::precached_file_exists(name)) {
 		return true;
 	} else if(image::exists(name)) {
 		return true;
@@ -351,7 +351,7 @@ static std::vector<n_token::t_token> get_variations(const n_token::t_token& base
 			cbase.replace(pos, 2, (*v));
 			pos += (*v).size();
 		}
-		res.push_back(n_token::t_token(cbase));		
+		res.push_back(n_token::t_token(cbase));
 	}
 	return res;
 }
@@ -385,7 +385,7 @@ bool terrain_builder::load_images(building_rule &rule)
 
 						const size_t tilde = (*str).find('~');
 						bool has_tilde = tilde != std::string::npos;
-						const n_token::t_token filename = n_token::t_token("terrain/" + (has_tilde ? (*str).substr(0,tilde) : str)); 
+						const n_token::t_token filename = n_token::t_token("terrain/" + (has_tilde ? (*str).substr(0,tilde) : str));
 
 						if(!image_exists(filename)){
 							continue; // ignore missing frames

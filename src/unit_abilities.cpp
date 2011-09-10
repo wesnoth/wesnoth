@@ -185,7 +185,7 @@ bool unit::get_ability_bool(const config::t_token& ability, const map_location& 
 	if (const config &abilities = cfg_.child(z_abilities))
 	{
 		foreach (const config &i, abilities.child_range(ability)) {
-			if (ability_active(ability, i, loc, game_map, units, teams, lua_kernel, tod_manager) 
+			if (ability_active(ability, i, loc, game_map, units, teams, lua_kernel, tod_manager)
 				&& ability_affects_self(ability, i, loc))
 				return true;
 		}
@@ -364,8 +364,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
  *
  */
 bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,
-									const map_location& loc, 
-									gamemap const & game_map, unit_map const & units, 
+									const map_location& loc,
+									gamemap const & game_map, unit_map const & units,
 									t_teams const & teams, LuaKernel & lua_kernel,
 									tod_manager const & tod_manager
 									) const
@@ -402,7 +402,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	const config &filter = cfg.child(z_filter_self);
 	bool affect_self = cfg[z_affect_self].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
-	return matches_filter(vconfig(filter), 
+	return matches_filter(vconfig(filter),
 						  loc, cache_illuminates(illuminates, ability),game_map, units, teams, lua_kernel, tod_manager);
 }
 
@@ -632,7 +632,7 @@ return config::t_token( res );
  * cfg: a weapon special WML structure
  *
  */
-bool attack_type::special_active(gamemap const & game_map, unit_map const & units, 
+bool attack_type::special_active(gamemap const & game_map, unit_map const & units,
 								 t_teams const & teams, LuaKernel & lua_kernel,
 								 tod_manager const & tod_manager,
 								 const config& cfg, bool self) const

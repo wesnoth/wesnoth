@@ -57,7 +57,7 @@ class progressive_continuous {
 
 	//Do not inline it fixes static initialization problems
 	static T const & default_default_value();
-	
+
 public:
 	progressive_continuous(const n_token::t_token& data = n_token::t_token::z_empty(), int duration = 0) : data_(), input_(data) {
 		progressive_continuous_core(data, duration); }
@@ -220,7 +220,7 @@ class frame_parsed_parameters {
 
 /// A token to a frame builder which are 10:1 redundant
 
-///todo a second index to the frame_parameter_token via the builder so that the toke can be 
+///todo a second index to the frame_parameter_token via the builder so that the toke can be
 ///created without constructing the frame parameters
 typedef n_interned::t_interned_token<frame_parsed_parameters> t_frame_parameter_token;
 

@@ -37,9 +37,9 @@ namespace{
 	static const config::t_token z_sound("sound", false);
 	static const config::t_token z_NULL_TOD("NULL_TOD", false);
 	static const config::t_token z_nulltod("nulltod", false);
- 
+
 }
- 
+
 
 time_of_day::time_of_day(const config& cfg):
 	lawful_bonus(cfg[z_lawful_bonus]),

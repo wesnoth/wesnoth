@@ -202,7 +202,7 @@ public:
 	const std::vector<attack_type>& attacks() const { return attacks_; }
 	std::vector<attack_type>& attacks() { return attacks_; }
 
-	int damage_from(const attack_type& attack,bool attacker,const map_location& loc) const { 
+	int damage_from(const attack_type& attack,bool attacker,const map_location& loc) const {
 		return resistance_against(attack,attacker,loc); }
 
 	/** A SDL surface, ready for display for place where we need a still-image of the unit. */
@@ -310,18 +310,18 @@ public:
 			const attack_type* attack=NULL,const attack_type* second_attack = NULL,
 			int swing_num =0) const;
 
-	bool get_ability_bool(const config::t_token& ability, const map_location& loc 
+	bool get_ability_bool(const config::t_token& ability, const map_location& loc
 						  , gamemap const & game_map = *resources::game_map
 						  , unit_map const & units =*resources::units
 						  , t_teams const & teams = *resources::teams
 						  , LuaKernel & lua_kernel = *resources::lua_kernel
 						  , tod_manager const & tod_manager = *resources::tod_manager) const;
-	bool get_ability_bool(const config::t_token& ability 
+	bool get_ability_bool(const config::t_token& ability
 						  , gamemap const & game_map = *resources::game_map
 						  , unit_map const & units =*resources::units
 						  , t_teams const & teams = *resources::teams
 						  , LuaKernel & lua_kernel = *resources::lua_kernel
-						  , tod_manager const & tod_manager = *resources::tod_manager) const { 
+						  , tod_manager const & tod_manager = *resources::tod_manager) const {
 		return get_ability_bool(ability, loc_, game_map, units, teams, lua_kernel, tod_manager);}
 	inline bool get_ability_bool(const std::string& ability, const map_location& loc ) const {
 		return get_ability_bool(config::t_token(ability), loc); }

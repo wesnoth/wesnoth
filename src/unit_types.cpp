@@ -279,7 +279,7 @@ attack_type::attack_type(const config& cfg) :
 		if (id() != n_token::t_token::z_empty())
 			icon_ = config::t_token("attacks/" + static_cast<std::string const &>(id()) + ".png");
 		else {
-			static const config::t_token default_icon("attacks/blank-attack.png", false);			
+			static const config::t_token default_icon("attacks/blank-attack.png", false);
 			icon_ = default_icon;
 		}
 	}

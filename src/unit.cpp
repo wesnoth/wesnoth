@@ -1367,8 +1367,8 @@ void unit::remove_ability_by_id(const std::string &ability)
 }
 
 bool unit::matches_filter(const vconfig& cfg, const map_location& loc, bool use_flat_tod
-						  , gamemap const & game_map, unit_map const & units, 
-						  t_teams const & teams, LuaKernel & lua_kernel, 
+						  , gamemap const & game_map, unit_map const & units,
+						  t_teams const & teams, LuaKernel & lua_kernel,
 						  tod_manager const & tod_manager) const
 {
 	bool matches = true;
@@ -1412,8 +1412,8 @@ bool unit::matches_filter(const vconfig& cfg, const map_location& loc, bool use_
 }
 
 bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, bool use_flat_tod
-								   , gamemap const & game_map, unit_map const & units, 
-								   t_teams const & teams, LuaKernel & lua_kernel, 
+								   , gamemap const & game_map, unit_map const & units,
+								   t_teams const & teams, LuaKernel & lua_kernel,
 								   tod_manager const & tod_manager) const
 {
 	config::attribute_value cfg_name = cfg[z_name];
@@ -2446,8 +2446,8 @@ static void mod_mdr_merge(config& dst, const config& mod, bool delta)
 }
 
 void unit::add_modification(const config::t_token& type, const config& mod, bool no_add
-							, gamemap const & game_map, unit_map const & units, 
-							t_teams const & teams, LuaKernel & lua_kernel, 
+							, gamemap const & game_map, unit_map const & units,
+							t_teams const & teams, LuaKernel & lua_kernel,
 							tod_manager const & tod_manager)
 {
 
@@ -3229,7 +3229,7 @@ std::string get_checksum(const unit& u) {
 		foreach (const config &c, unit_config.child_range( k )) {
 			wcfg.add_child(k, c);
 		}
-	} 
+	}
 	DBG_UT << wcfg;
 
 	return wcfg.hash();

@@ -316,7 +316,7 @@ bool class_source_parser::parse_source(){
 		// Item with  will be at the end of error list.
 		return false;
 	}
-	
+
 	f_.open(input_.c_str(),std::ios::in);
 	if (f_.fail()){
 		errors_.add_simple_error("File "+input_ + " can not be opened\n");
@@ -344,8 +344,8 @@ bool class_source_parser::parse_source(){
 	}
 
 	f_.close();
-	
-	// Clear all flags ( eg the eof flag ) after closing the file. 
+
+	// Clear all flags ( eg the eof flag ) after closing the file.
 	// This will let us reuse the same fstream variable for different files.
 	f_.clear();
 

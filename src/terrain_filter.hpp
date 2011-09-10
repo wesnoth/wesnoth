@@ -52,7 +52,7 @@ public:
 	//match: returns true if and only if the given location matches this filter
 	bool match(const map_location& loc
 			   , gamemap const & game_map = *resources::game_map
-			   , t_teams const & teams = *resources::teams 
+			   , t_teams const & teams = *resources::teams
 			   , tod_manager const & tod_manager =  *resources::tod_manager) const;
 	virtual bool operator()(const map_location& loc) { return this->match(loc); }
 
@@ -74,7 +74,7 @@ public:
 	config to_config() const;
 private:
 	bool match_internal(const map_location& loc, const bool ignore_xy
-						, gamemap const & game_map = *resources::game_map 
+						, gamemap const & game_map = *resources::game_map
 						, t_teams const & teams =  *resources::teams
 						, tod_manager const & tod_manager=  *resources::tod_manager ) const ;
 

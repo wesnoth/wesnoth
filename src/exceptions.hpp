@@ -42,7 +42,7 @@ struct error : std::exception
 
 /**
 ///WML syntax error exception
-When parsing wml from a vector of tokens when the location of the error is known an exact 
+When parsing wml from a vector of tokens when the location of the error is known an exact
 error message can be thrown.
 */
 class wml_syntax_error : public std::exception {
@@ -55,7 +55,7 @@ class wml_syntax_error : public std::exception {
 	wml_syntax_error(t_tokens const & tokens, size_t const & pos, std::string const & reason = "unknown reason");
 	///Construct a wml syntax error with the unparsed string the position of the error and a reason for the error.
 	wml_syntax_error(std::string const & tokens, size_t const & pos, std::string const & reason = "unknown reason");
-	
+
 	wml_syntax_error(std::string const & reason = "unknown reason");
 	///Tries to parse the error message so that an arror <-- points to the location of the error
 	virtual const char * what() const throw() ;

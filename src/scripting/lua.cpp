@@ -165,17 +165,17 @@ struct luaW_pushscalar_visitor : public config::attribute_value::default_visitor
 	using default_visitor::operator();
 	lua_State *L;
 	luaW_pushscalar_visitor(lua_State *l): L(l) {}
-	void operator()() 
+	void operator()()
 	{ lua_pushnil(L); }
-	void operator()(bool const b) 
+	void operator()(bool const b)
 	{ lua_pushboolean(L, b); }
-	void operator()(int const i) 
-	{ lua_pushnumber(L, i); } 
-	void operator()(double d) 
+	void operator()(int const i)
+	{ lua_pushnumber(L, i); }
+	void operator()(double d)
 	{ lua_pushnumber(L, d); }
-	void operator()(t_string const &s) 
+	void operator()(t_string const &s)
 	{ luaW_pushtstring(L, s); }
-	void operator()(config::t_token const &s) 
+	void operator()(config::t_token const &s)
 	{ lua_pushstring(L, s.c_str()); }
 	void operator()(t_string const &s) const
 	{ luaW_pushtstring(L, s); }

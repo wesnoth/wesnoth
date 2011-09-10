@@ -114,7 +114,7 @@ class unit_animation
 			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst);
 			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst);
 			void start_animation(int start_time);
-			const frame_parameters parameters(const frame_parameters & default_val) const { 
+			const frame_parameters parameters(const frame_parameters & default_val) const {
 				return get_current_frame().merge_parameters(get_current_frame_time(), (*parameters_).parameters(get_animation_time()-get_begin_time()),default_val); };
 			void clear_halo();
 			bool accelerate;

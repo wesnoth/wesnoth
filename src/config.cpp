@@ -55,7 +55,7 @@ namespace {
 	static const config::t_token z_x("x", false);
 	static const config::t_token z_y("y", false);
 	static const config::t_token z_insert_child("insert_child", false);
-	static const config::t_token z_delete_child("delete_child", false); 
+	static const config::t_token z_delete_child("delete_child", false);
 	static const config::t_token z_change_child("change_child", false);
 	static const config::t_token z_modified("modified", false);
 	static const config::t_token z_insert("insert", false);
@@ -75,13 +75,13 @@ namespace{
 
 
 
-config::attribute_value::attribute_value() 
+config::attribute_value::attribute_value()
   : int_value_(),double_value_() , t_string_value_() , token_value_() , type_(EMPTY) , bool_value_()
 	, is_bool_(false), is_int_(false), is_double_(false) ,is_t_string_(false), is_token_(false)  { }
 
 config::attribute_value::~attribute_value() {}
 
-config::attribute_value::attribute_value(const config::attribute_value &that) 
+config::attribute_value::attribute_value(const config::attribute_value &that)
 	: int_value_ (that.int_value_),double_value_(that.double_value_)
 	, t_string_value_(that.t_string_value_)
 	, token_value_(that.token_value_), type_(that.type_) , bool_value_(that.bool_value_)
@@ -89,11 +89,11 @@ config::attribute_value::attribute_value(const config::attribute_value &that)
 	,is_t_string_(that.is_t_string_), is_token_(that.is_token_)  { }
 
 config::attribute_value &config::attribute_value::operator=(const config::attribute_value &that) {
-	bool_value_ = that.bool_value_; int_value_ = that.int_value_; 
+	bool_value_ = that.bool_value_; int_value_ = that.int_value_;
 	double_value_ = that.double_value_; t_string_value_ = that.t_string_value_;
-	token_value_ = that.token_value_; type_ = that.type_; 
-	is_bool_ = that.is_bool_; is_int_ = that.is_int_; is_double_ = that.is_double_; 
-	is_t_string_ = that.is_t_string_; is_token_ = that.is_token_; 
+	token_value_ = that.token_value_; type_ = that.type_;
+	is_bool_ = that.is_bool_; is_int_ = that.is_int_; is_double_ = that.is_double_;
+	is_t_string_ = that.is_t_string_; is_token_ = that.is_token_;
 	return *this;
 }
 
@@ -101,7 +101,7 @@ config::attribute_value &config::attribute_value::operator=(bool v)
 {
 	type_ = BOOL;
 	bool_value_ = v;
-	is_bool_ = true; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =false; 
+	is_bool_ = true; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =false;
 	return *this;
 }
 
@@ -109,7 +109,7 @@ config::attribute_value &config::attribute_value::operator=(int v)
 {
 	type_ = INT;
 	int_value_ = v;
-	is_bool_ = false; is_int_ = true; is_double_ = false; is_t_string_ = false; is_token_ =false; 
+	is_bool_ = false; is_int_ = true; is_double_ = false; is_t_string_ = false; is_token_ =false;
 	return *this;
 }
 
@@ -117,14 +117,14 @@ config::attribute_value &config::attribute_value::operator=(double v)
 {
 	type_ = DOUBLE;
 	double_value_ = v;
-	is_bool_ = false; is_int_ = false; is_double_ = true; is_t_string_ = false; is_token_ =false; 
+	is_bool_ = false; is_int_ = false; is_double_ = true; is_t_string_ = false; is_token_ =false;
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(const t_token &v)  {
-	if (v == z_empty) { 
+	if (v == z_empty) {
 		type_ = EMPTY;
-		is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =false; 
+		is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =false;
 		token_value_ = v; return *this; }
 	if (v == z_yes || v == z_true) return *this = true;
 	if (v == z_no || v == z_false) return *this = false;
@@ -140,7 +140,7 @@ config::attribute_value &config::attribute_value::operator=(const t_token &v)  {
 	if( (is >> d) && ! is.get(extra_char) ) { *this = d; is_token_=true; token_value_ = v; return *this; }
 
 	type_ = TOKEN;
-	is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =true; 
+	is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =true;
 	token_value_ = v;
 	return *this;
 }
@@ -154,13 +154,13 @@ config::attribute_value &config::attribute_value::operator=(const std::string &v
 	int i;
 	char extra_char;
 	if( (is >> i) && ! is.get(extra_char) ) { *this = i; return *this; }
-	
+
 	is.clear();
 	is.str( v );
 	double d;
 	if( (is >> d) && ! is.get(extra_char) ) { *this = d; return *this; }
 	type_ = TOKEN;
-	is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =true; 
+	is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =true;
 	token_value_ = t_token(v);
 	return *this;
 }
@@ -168,7 +168,7 @@ config::attribute_value &config::attribute_value::operator=(const std::string &v
 config::attribute_value &config::attribute_value::operator=(const t_string &v) {
 	if (!v.translatable()) { return *this = v.token(); }
 	type_ = TSTRING;
-	is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = true; is_token_ =false; 
+	is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = true; is_token_ =false;
 	t_string_value_ = v;
 	return *this;
 }
@@ -191,13 +191,13 @@ bool config::attribute_value::operator==(const config::attribute_value &other) c
 bool operator==(const config::attribute_value &a, config::t_token const & b) {
 	//	if(a.type_ == a.EMPTY){return false;}
 	//note: having 4 different acceptable boolean string values has a cost
-	if ((a.type_ == a.BOOL) || ( a.is_bool_)){ 
+	if ((a.type_ == a.BOOL) || ( a.is_bool_)){
 		return (a.bool_value_ ?(b==config::z_true || b == config::z_yes) : (b == config::z_false || b == config::z_no)); }
 	return a.token() ==  b;
 }
-bool operator==(const config::attribute_value &a, t_string const & b) { 
+bool operator==(const config::attribute_value &a, t_string const & b) {
 	//	if(a.type_ == a.EMPTY){return false;}
-	if ((a.type_ == a.BOOL) || ( a.is_bool_)){ 
+	if ((a.type_ == a.BOOL) || ( a.is_bool_)){
 		return (a.bool_value_ ? (b==tstring_true || b == tstring_yes) : (b == tstring_false || b == tstring_no)); }
 	return a.t_str() == b; }
 
@@ -238,15 +238,15 @@ t_token const & config::attribute_value::token() const {
 	switch(type_){
 	case (EMPTY) : return z_empty;
 	case(BOOL) :  return bool_value_ ? z_yes : z_no;
-	case(INT) :   
+	case(INT) :
 		is_token_ = true;
 		token_value_ = t_token(str_cast(int_value_));
 		return token_value_;
-	case(DOUBLE) :  
+	case(DOUBLE) :
 		is_token_ = true;
 		token_value_ = t_token(str_cast(double_value_));
 		return token_value_;
-	case(TSTRING) :  
+	case(TSTRING) :
 		return t_string_value_.token();
 	default : break;
 	}
@@ -260,16 +260,16 @@ std::string const & config::attribute_value::str() const {
 
 
 t_string const & config::attribute_value::t_str() const {
-	if ((type_ == TSTRING) || ( is_t_string_)){ 
+	if ((type_ == TSTRING) || ( is_t_string_)){
 		return t_string_value_; }
 	switch(type_){
-	case (EMPTY) : 
+	case (EMPTY) :
 		return tstring_empty;
-	case(BOOL) :  
+	case(BOOL) :
 		return bool_value_ ? tstring_yes : tstring_no;
-	case(INT) :   
-	case(DOUBLE) :  
-	case(TOKEN) :  
+	case(INT) :
+	case(DOUBLE) :
+	case(TOKEN) :
 		is_t_string_ = true;
 		t_string_value_ = t_string(token());
 		return t_string_value_;
@@ -356,7 +356,7 @@ bool config::has_old_attribute(const t_token &key, const t_token &old_key, const
 	}
 	return false;
 }
-bool config::has_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg) const  { 
+bool config::has_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg) const  {
 	return has_old_attribute(t_token(key), t_token(old_key), msg );}
 
 
@@ -431,7 +431,7 @@ config::child_itors config::child_range(const t_token& key) {
 
 	child_map::iterator i = children.find(key);
 	if (i != children.end()) {
-		return child_itors(child_iterator(i->second.begin()), child_iterator(i->second.end()));	
+		return child_itors(child_iterator(i->second.begin()), child_iterator(i->second.end()));
 	}
 	static child_list dummy;
 	dummy.clear();
@@ -453,7 +453,7 @@ config::const_child_itors config::child_range(const t_token& key) const {
 	return dummy_iters;
 }
 
-config::const_child_itors config::child_range(const std::string& key) const { return child_range(t_token(key));}  
+config::const_child_itors config::child_range(const std::string& key) const { return child_range(t_token(key));}
 unsigned config::child_count(const t_token &key) const {
 	check_valid();
 
@@ -483,7 +483,7 @@ config::t_const_child_range_index config::const_child_range_index(config::t_toke
 		return index; }
 
 
-unsigned config::child_count(const std::string &key) const { return child_count(t_token(key)); }  
+unsigned config::child_count(const std::string &key) const { return child_count(t_token(key)); }
 config &config::child(const t_token& key, int n)
 {
 	check_valid();
@@ -794,7 +794,7 @@ struct config_has_value {
 	config_has_value(const t_token& name, const t_token& value)
 		: name_(name), value_(value) {}
 
-	bool operator()(const config* cfg) const { 
+	bool operator()(const config* cfg) const {
 		return (*cfg)[name_] == value_; }
 
 private:

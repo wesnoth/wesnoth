@@ -28,7 +28,7 @@ BOOST_AUTO_TEST_SUITE( lru_cache_suite )
 namespace{
 static const unsigned int CACHE_SIZE = 10;
 static const unsigned int STEP_SIZE = 1000;
-	
+
 
 struct t_gen_cache_item {
 	int operator()(int const & in) const {
@@ -80,23 +80,23 @@ static t_cache cache( t_gen_cache_item(), CACHE_SIZE);
 
 	 int hit_me(cache.check( 1 ));
 	 check_newest(1, cache);
-	 
+
 	 check_oldest(
 				  (i<2) ? i :
-				  (i<=CACHE_SIZE + 1) ?  2 : 
-				  ( i<=CACHE_SIZE + 2) ? (i - CACHE_SIZE + 1) : (i - CACHE_SIZE + 2) 
+				  (i<=CACHE_SIZE + 1) ?  2 :
+				  ( i<=CACHE_SIZE + 2) ? (i - CACHE_SIZE + 1) : (i - CACHE_SIZE + 2)
 				  , cache);
-	
+
 	 cache.invalidate(4);
 	 check_not_present(4, cache);
-	 
+
 	 check_equal(1, hit_me);
 	 check_equal(i, from_cache);
  }
  cache.invalidate();
  check_empty(cache);
- 
-} 
+
+}
 
 /* vim: set ts=4 sw=4: */
 BOOST_AUTO_TEST_SUITE_END()

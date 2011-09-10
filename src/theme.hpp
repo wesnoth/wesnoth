@@ -250,5 +250,5 @@ private:
 
 	tborder border_;
 };
- 
+
 #endif

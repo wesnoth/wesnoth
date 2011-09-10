@@ -212,7 +212,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 
 	if (!resources::screen->video().update_locked()) {
 		unit_animator animator;
-		bool with_bars = true;	
+		bool with_bars = true;
 		static const config::t_token z_levelout("levelout", false);
 		animator.add_animation(&*u, z_levelout, u->get_location(), map_location(), 0, with_bars);
 		animator.start_animations();
@@ -394,7 +394,7 @@ void save_preview_pane::draw_contents()
 #ifdef LOW_MEM
 		const surface image(image::get_image(leader->image()));
 #else
-		const surface image(image::get_image(static_cast<std::string const &>(leader->image()) 
+		const surface image(image::get_image(static_cast<std::string const &>(leader->image())
 											 + "~RC(" + static_cast<std::string const &>(leader->flag_rgb()) + ">1)"));
 #endif
 

@@ -233,17 +233,17 @@ void parser::parse_variable()
 		switch(tok_->current_token().type) {
 		case token::STRING:
 			// if(!variables.back().empty()){
-			// 	variables.back() = config::t_token( static_cast<std::string const &>(variables.back()) 
+			// 	variables.back() = config::t_token( static_cast<std::string const &>(variables.back())
 			// 										+ ' ' +static_cast<std::string const &>(tok_->current_token().value()));
 			// 	//variables.back() += ' ';
 			// } else {
-			// 	variables.back() = config::t_token( static_cast<std::string const &>(variables.back()) 
+			// 	variables.back() = config::t_token( static_cast<std::string const &>(variables.back())
 			// 										+ static_cast<std::string const &>(tok_->current_token().value()));
 
 			// 	//				variables.back() += tok_->current_token().value();
 			// }
-			variables.back() = config::t_token( static_cast<std::string const &>(variables.back()) 
-												+ ((!variables.back().empty()) ? " " :"") 
+			variables.back() = config::t_token( static_cast<std::string const &>(variables.back())
+												+ ((!variables.back().empty()) ? " " :"")
 												+ static_cast<std::string const &>(tok_->current_token().value()));
 			break;
 		case ',':
@@ -434,15 +434,15 @@ struct write_key_val_visitor : public config::attribute_value::default_visitor {
 
 	inline void write_start_not_tstring();
 
-	void operator()() 
+	void operator()()
 	{ write_start_not_tstring(); out_ << "\"\""; }
-	void operator()(bool b) 
+	void operator()(bool b)
 	{ write_start_not_tstring();  out_ << (b ? "yes" : "no"); }
-	void operator()(int i) 
+	void operator()(int i)
 	{ write_start_not_tstring();  out_ << i; }
-	void operator()(double d) 
+	void operator()(double d)
 	{ write_start_not_tstring(); int i = d; if (d == i) out_ << i; else out_ << d; }
-	void operator()(config::t_token const &s) 
+	void operator()(config::t_token const &s)
 	{ write_start_not_tstring();  out_ << '"' << escaped_string(static_cast<std::string const &>(s)) << '"'; }
 	inline void operator()(t_string const &s) ;
 };
@@ -454,7 +454,7 @@ struct write_key_val_visitor : public config::attribute_value::default_visitor {
  *       That is the reason for not outputting the key beforehand and
  *       letting this function do it.
  */
-static void write_key_val_tstring(std::ostream &out_, unsigned level_, std::string &textdomain_, 
+static void write_key_val_tstring(std::ostream &out_, unsigned level_, std::string &textdomain_,
 						   const std::string &key_, t_string const &value) {
 	bool first = true;
 

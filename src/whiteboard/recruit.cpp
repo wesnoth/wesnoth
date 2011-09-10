@@ -58,7 +58,7 @@ recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, c
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()),
 		valid_(true),
-		fake_unit_(create_corresponding_unit()), 
+		fake_unit_(create_corresponding_unit()),
 		temp_cost_()
 {
 	this->init();
@@ -79,7 +79,7 @@ recruit::recruit(config const& cfg, bool hidden)
 
 	// Construct temp_unit_ and fake_unit_
 	temp_unit_ = create_corresponding_unit();
-	fake_unit_.reset(create_corresponding_unit()), 
+	fake_unit_.reset(create_corresponding_unit()),
 
 	this->init();
 }
