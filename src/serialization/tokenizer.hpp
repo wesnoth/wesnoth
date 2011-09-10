@@ -31,7 +31,15 @@ static const n_token::t_token z_empty("", false);
 }
 
 struct token {
-	token()  : type(END), is_parsed_(false) {}
+	token()
+		: type(END)
+		, value_()
+		, t_token_()
+		, is_parsed_(false)
+		, buffer_()
+	{
+	}
+
 	token(token const & a) : type(a.type), t_token_(a.t_token_) , is_parsed_(a.is_parsed_){}
 
 	enum token_type
