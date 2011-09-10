@@ -236,7 +236,9 @@ std::ostream & operator<<(std::ostream &out, t_parse const & a){
 }
 		
 t_parse::t_parse(n_token::t_token const & unparsed) 
-	: token_(unparsed), complete_parse_() {}
+	: token_(unparsed)
+	, tokens_()
+	, complete_parse_() {}
 
 t_parse::t_parse(t_parse const & a )
 	: token_(a.token_), complete_parse_(a.complete_parse_) {}
