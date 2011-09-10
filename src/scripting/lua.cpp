@@ -798,7 +798,7 @@ static int impl_vconfig_collect(lua_State *L)
 
 #define return_vector_t_token_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-	const std::vector<config::t_token>& vector = accessor;	\
+		const std::vector<config::t_token>& vector = accessor; \
 		lua_createtable(L, vector.size(), 0); \
 		int i = 1; \
 		foreach (const config::t_token & s, vector) { \
@@ -847,7 +847,7 @@ static int impl_vconfig_collect(lua_State *L)
 
 #define modify_vector_t_token_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-	std::vector<config::t_token> vector;										\
+		std::vector<config::t_token> vector; \
 		char const* message = "table with unnamed indices holding strings expected"; \
 		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message); \
 		unsigned length = lua_objlen(L, 3); \
@@ -855,7 +855,7 @@ static int impl_vconfig_collect(lua_State *L)
 			lua_rawgeti(L, 3, i); \
 			char const* string = lua_tostring(L, 4); \
 			if(!string) return luaL_argerror(L, 2 + i, message); \
-			vector.push_back(config::t_token( string ));			 \
+			vector.push_back(config::t_token( string )); \
 			lua_pop(L, 1); \
 		} \
 		accessor; \
