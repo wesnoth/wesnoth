@@ -434,8 +434,7 @@ config::child_itors config::child_range(const t_token& key) {
 		return child_itors(child_iterator(i->second.begin()), child_iterator(i->second.end()));
 	}
 	static child_list dummy;
-	dummy.clear();
-	static child_itors dummy_iters(child_iterator(dummy.begin()), child_iterator(dummy.end()));
+	static const child_itors dummy_iters(child_iterator(dummy.begin()), child_iterator(dummy.end()));
 	return dummy_iters;
 }
 config::child_itors config::child_range(const std::string& key){ return child_range( t_token(key) );}
