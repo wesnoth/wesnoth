@@ -17,6 +17,7 @@
 
 #include <exception>
 #include <string>
+#include "token.hpp"
 
 namespace game {
 
@@ -38,6 +39,28 @@ struct error : std::exception
 		return message.c_str();
 	}
 };
+
+/**
+///WML syntax error exception
+When parsing wml from a vector of tokens when the location of the error is known an exact 
+error message can be thrown.
+*/
+class wml_syntax_error : public std::exception {
+	typedef n_token::t_token t_token;
+	typedef std::vector<t_token> t_tokens;
+	std::string output_; ///the parsed what string
+ public:
+	~wml_syntax_error() throw() {}
+	///Construct a wml syntax error with the vectors of parsed tokens, the position of the error and a reason for the error.
+	wml_syntax_error(t_tokens const & tokens, size_t const & pos, std::string const & reason = "unknown reason");
+	///Construct a wml syntax error with the unparsed string the position of the error and a reason for the error.
+	wml_syntax_error(std::string const & tokens, size_t const & pos, std::string const & reason = "unknown reason");
+	
+	wml_syntax_error(std::string const & reason = "unknown reason");
+	///Tries to parse the error message so that an arror <-- points to the location of the error
+	virtual const char * what() const throw() ;
+};
+
 
 }
 

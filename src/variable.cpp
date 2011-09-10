@@ -611,18 +611,14 @@ public:
 				case '.' :
 				case '[':
 				case ']':
-					ERR_NG << "variable_info: first character of identifier at "<<i<<" is '" << c
-						   << "' a separator is "<<skey<<"\n";
-					assert(false);
+					throw game::wml_syntax_error(skey, i, "the first character of identifier is one of these,  .[] invalid characters" ); 
 				}
 			}
 			if(is_lbrack){
 				switch(c){
 				case '.' :
-				case '[':
-					ERR_NG << "variable_info: dot or [ after [ start of index at "<<i<<" is '" << c
-						   << "' in "<<skey<<"\n";
-					assert(false);
+				case '[': 
+					throw game::wml_syntax_error(skey, i, "a dot . or left bracket [ after left bracket [ starting the variable name"); 
 					break;
 				case ']':				
 					std::string index_str(skey.substr(i_start_of_token, i - i_start_of_token ));
@@ -703,129 +699,134 @@ void activate_scope_variable(t_parsed_tokens const & tokens)
 
 
 void variable_info::init(const config::t_token& varname, bool force_valid) {
+	try {
 
-	//an example varname is  "unit_store.modifications.trait[0]"
+		//an example varname is  "unit_store.modifications.trait[0]"
 
-	assert(repos != NULL);
+		assert(repos != NULL);
 
-	static t_all_parsed cache( t_parse_token(), CACHE_SIZE);
+		static t_all_parsed cache( t_parse_token(), CACHE_SIZE);
 
-	t_parsed_tokens tokens(cache.check(varname));
+		t_parsed_tokens tokens(cache.check(varname));
 
-	if(tokens.empty()){ return; }
+		if(tokens.empty()){ return; }
 
-	activate_scope_variable(tokens);
-	vars = &repos->variables_;
+		activate_scope_variable(tokens);
+		vars = &repos->variables_;
 
-	t_parsed_tokens::iterator i(tokens.begin()), last_token(tokens.end())
-		, second_last_token(tokens.end()), i_array_name, i_maybe_tail(i);
-	if(!tokens.empty()) { --last_token; }
-	if(tokens.size() > 1) { second_last_token-=2; }
+		t_parsed_tokens::iterator i(tokens.begin()), last_token(tokens.end())
+			, second_last_token(tokens.end()), i_array_name, i_maybe_tail(i);
+		if(!tokens.empty()) { --last_token; }
+		if(tokens.size() > 1) { second_last_token-=2; }
 
-	//process subvars
-	while (i <  last_token){
-		int inner_index = 0;
-		int size = vars->child_count( i->token);
+		//process subvars
+		while (i <  last_token){
+			int inner_index = 0;
+			int size = vars->child_count( i->token);
 
-		if(i->index != t_parsed::NO_INDEX){
-			inner_index = i->index;
+			if(i->index != t_parsed::NO_INDEX){
+				inner_index = i->index;
 
-			if(size <= inner_index) {
-				bool last_key_is_not_length ((i == second_last_token) && (last_token->token != z_length));
-				if(force_valid) {
-					// Add elements to the array until the requested size is attained
-					if( (inner_index > 0) ||  last_key_is_not_length) {
-						for(; size <= inner_index; ++size) {
-							vars->add_child(i->token);
+				if(size <= inner_index) {
+					bool last_key_is_not_length ((i == second_last_token) && (last_token->token != z_length));
+					if(force_valid) {
+						// Add elements to the array until the requested size is attained
+						if( (inner_index > 0) ||  last_key_is_not_length) {
+							for(; size <= inner_index; ++size) {
+								vars->add_child(i->token);
+							}
 						}
+					} else if(inner_index != 0) {
+						WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
+						return;
+					} else if( last_key_is_not_length ) {
+						WRN_NG << "variable_info: retrieving member of non-existent WML container, " << varname << std::endl;
+						return;
+					} //else return length 0 for non-existent WML array (handled below)
+				}
+			} else {
+				if( (i == second_last_token) && (last_token->token == z_length) ) {
+					switch(vartype) {
+					case variable_info::TYPE_ARRAY:
+					case variable_info::TYPE_CONTAINER:
+						WRN_NG << "variable_info: using reserved WML variable as wrong type, "
+							   << varname << std::endl;
+						is_valid_ = force_valid || repos->temporaries_.child(varname);
+						break;
+					case variable_info::TYPE_SCALAR:
+					default:
+						// Store the length of the array as a temporary variable
+						repos->temporaries_[varname] = int(size);
+						is_valid_ = true;
+						break;
 					}
-				} else if(inner_index != 0) {
+					key = varname;
+					vars = &repos->temporaries_;
+					return;
+				}
+			}
+			vars = &vars->child(i->token, inner_index);		
+			++i;
+		}	
+
+		//Process the last token
+
+		key = i->token;
+		if(i->index != t_parsed::NO_INDEX){
+			explicit_index_ = true;
+			size_t size = vars->child_count(key);
+			index = i->index;
+			if(size <= index) {
+				if(!force_valid) {
 					WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
 					return;
-				} else if( last_key_is_not_length ) {
-					WRN_NG << "variable_info: retrieving member of non-existent WML container, " << varname << std::endl;
-					return;
-				} //else return length 0 for non-existent WML array (handled below)
-			}
-		} else {
-			if( (i == second_last_token) && (last_token->token == z_length) ) {
-				switch(vartype) {
-				case variable_info::TYPE_ARRAY:
-				case variable_info::TYPE_CONTAINER:
-					WRN_NG << "variable_info: using reserved WML variable as wrong type, "
-						   << varname << std::endl;
-					is_valid_ = force_valid || repos->temporaries_.child(varname);
-					break;
-				case variable_info::TYPE_SCALAR:
-				default:
-					// Store the length of the array as a temporary variable
-					repos->temporaries_[varname] = int(size);
-					is_valid_ = true;
-					break;
 				}
-				key = varname;
-				vars = &repos->temporaries_;
+				for(; size <= index; ++size) {
+					vars->add_child(key);
+				}
+			}
+			switch(vartype) {
+			case variable_info::TYPE_ARRAY:
+				vars = &vars->child(key, index);
+				key = z___array;
+				is_valid_ = force_valid || vars->child(key);
+				break;
+			case variable_info::TYPE_SCALAR:
+				vars = &vars->child(key, index);
+				key = z___value;
+				is_valid_ = force_valid || vars->has_attribute(key);
+				break;
+			case variable_info::TYPE_CONTAINER:
+			case variable_info::TYPE_UNSPECIFIED:
+			default:
+				is_valid_ = true;
 				return;
 			}
-		}
-		vars = &vars->child(i->token, inner_index);		
-		++i;
-	}	
-
-	//Process the last token
-
-	key = i->token;
-	if(i->index != t_parsed::NO_INDEX){
-		explicit_index_ = true;
-		size_t size = vars->child_count(key);
-		index = i->index;
-		if(size <= index) {
-			if(!force_valid) {
-				WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
-				return;
+			if (force_valid) {
+				WRN_NG << "variable_info: using explicitly indexed "
+					"container as wrong WML type, " << varname << '\n';
 			}
-			for(; size <= index; ++size) {
-				vars->add_child(key);
+			explicit_index_ = false;
+			index = 0;
+		} else {
+			// Final variable is not an explicit index [...]
+			switch(vartype) {
+			case variable_info::TYPE_ARRAY:
+			case variable_info::TYPE_CONTAINER:
+				is_valid_ = force_valid || vars->child(key);
+				break;
+			case variable_info::TYPE_SCALAR:
+				is_valid_ = force_valid || vars->has_attribute(key);
+				break;
+			case variable_info::TYPE_UNSPECIFIED:
+			default:
+				is_valid_ = true;
+				break;
 			}
 		}
-		switch(vartype) {
-		case variable_info::TYPE_ARRAY:
-			vars = &vars->child(key, index);
-			key = z___array;
-			is_valid_ = force_valid || vars->child(key);
-			break;
-		case variable_info::TYPE_SCALAR:
-			vars = &vars->child(key, index);
-			key = z___value;
-			is_valid_ = force_valid || vars->has_attribute(key);
-			break;
-		case variable_info::TYPE_CONTAINER:
-		case variable_info::TYPE_UNSPECIFIED:
-		default:
-			is_valid_ = true;
-			return;
-		}
-		if (force_valid) {
-			WRN_NG << "variable_info: using explicitly indexed "
-				"container as wrong WML type, " << varname << '\n';
-		}
-		explicit_index_ = false;
-		index = 0;
-	} else {
-		// Final variable is not an explicit index [...]
-		switch(vartype) {
-		case variable_info::TYPE_ARRAY:
-		case variable_info::TYPE_CONTAINER:
-			is_valid_ = force_valid || vars->child(key);
-			break;
-		case variable_info::TYPE_SCALAR:
-			is_valid_ = force_valid || vars->has_attribute(key);
-			break;
-		case variable_info::TYPE_UNSPECIFIED:
-		default:
-			is_valid_ = true;
-			break;
-		}
+	} catch (game::wml_syntax_error & e) {
+		ERR_NG << e.what()<<"\n";
+		is_valid_ = false;
 	}
 }
 

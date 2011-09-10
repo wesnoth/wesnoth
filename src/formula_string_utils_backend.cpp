@@ -32,32 +32,6 @@ static const t_token z_rparen(")", false);
 static const t_token z_single_quote("'", false);
 static const t_token z_sharp("#", false);
 
-//static const unsigned int CACHE_SIZE = 10000;
-
-const char * wml_syntax_error::what() const throw() {
-	std::stringstream ss;
-	ss << "WML Syntax error:: Variable in WML string cannot be evaluated due to " << reason_<< " in \n\"";
-	t_tokens::const_iterator i = tokens_.begin();
-	for(; i!=tokens_.end(); ++i){
-		ss << *i; }
-	ss << "\" at \n\"";
-	for(i = tokens_.begin(); (i!= tokens_.end() && i != pos_) ; ++i){
-		ss << *i; }
-	if(i != tokens_.end()){
-		ss << "\"  -->\"" << *i << "\"<-- ";
-		if((++i) != tokens_.end()){
-			ss << "\"";
-			for(; i != tokens_.end(); ++i){
-				ss << *i; } 
-			ss << "\"";
-		}
-	} 
-	else { ss << "\"<--"; }
-
-	output_ = ss.str();
-	return output_.c_str();
-}
-
 
 template <typename T>
 t_tokenizer::t_tokenizer(T const & in) 
@@ -305,7 +279,7 @@ t_tokens::iterator t_parse::do_parse_plain(t_tokens::iterator const & start_pos 
 				size_t good_size = complete_parse_.ops().size();
 				try {
 					curr_pos = do_parse_interp(++curr_pos); } 
-				catch (wml_syntax_error & e) {
+				catch (game::wml_syntax_error & e) {
 					ERR_INTERP << e.what()<<"\n";
 					if(complete_parse_.ops().size() > good_size){ 
 						complete_parse_.ops().resize(good_size); } } } }
@@ -338,7 +312,7 @@ t_tokens::iterator t_parse::do_parse_interp(t_tokens::iterator const & start_pos
 	else if(*start_pos == z_dollar){
 		// $| Creates a $ to allow for $ in the string
 		if( peek_next(start_pos) == z_bar){
-			throw wml_syntax_error(tokens_, start_pos - tokens_.begin(), " $$| creates an illegal variable name"); }
+			throw game::wml_syntax_error(tokens_, start_pos - tokens_.begin(), " $$| creates an illegal variable name"); }
 
 		//A Nested interpolation / formula
 		else {
@@ -351,7 +325,7 @@ t_tokens::iterator t_parse::do_parse_interp(t_tokens::iterator const & start_pos
 		return do_parse_formula(start_pos); }
 
 	// Everything else is an error
-	else { throw wml_syntax_error(tokens_, start_pos - tokens_.begin(), "missing variable name right after $"); }
+	else { throw game::wml_syntax_error(tokens_, start_pos - tokens_.begin(), "missing variable name right after $"); }
 			
 	// Grab and append tokens until we reach the end of the variable name
 	int bracket_nesting_level = 0;
@@ -428,11 +402,11 @@ t_tokens::iterator t_parse::do_parse_interp(t_tokens::iterator const & start_pos
 			complete_parse_.ops().pop_back();
 			--curr_pos; }
 		else {
-			throw wml_syntax_error(tokens_, curr_pos - tokens_.begin()
+			throw game::wml_syntax_error(tokens_, curr_pos - tokens_.begin()
 								   , "missing field name after ]. (correct usage: $array[$i].fieldname)"); } }
 
 	if(! found_part_of_name) {
-		throw wml_syntax_error(tokens_, start_pos - tokens_.begin()
+		throw game::wml_syntax_error(tokens_, start_pos - tokens_.begin()
 							   , "missing variable name after $ (valid characters are a-zA-Z0-9_)"); }
 			
 	//FInally an interpolation
@@ -447,10 +421,10 @@ t_tokens::iterator t_parse::do_parse_formula(t_tokens::iterator const & start_po
 			
 	//Deal with the first token in the iterpolated variable
 	if(start_pos == tokens_.end()){
-		throw wml_syntax_error(tokens_, start_pos - tokens_.begin(), "formula hitting end of line"); }
+		throw game::wml_syntax_error(tokens_, start_pos - tokens_.begin(), "formula hitting end of line"); }
 
 	if(*start_pos != z_lparen){
-		throw wml_syntax_error(tokens_, start_pos - tokens_.begin(), "missing paren in formula should be $( ...)"); }
+		throw game::wml_syntax_error(tokens_, start_pos - tokens_.begin(), "missing paren in formula should be $( ...)"); }
 
 	// Grab and append tokens until we reach the end of the variable name
 	t_tokens::iterator curr_pos = start_pos + 1; // +1 is skipping the left paren
@@ -503,7 +477,7 @@ t_tokens::iterator t_parse::do_parse_formula(t_tokens::iterator const & start_po
 	}
 			
 	if(paren_nesting_level > 0) {
-		throw wml_syntax_error(tokens_, curr_pos - tokens_.begin(), "formula in WML string cannot be evaluated due to "
+		throw game::wml_syntax_error(tokens_, curr_pos - tokens_.begin(), "formula in WML string cannot be evaluated due to "
 							   "missing closing paren"); }
 
 	t_operation_ptr op(new t_operation_formula());

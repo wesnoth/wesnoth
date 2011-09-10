@@ -17,7 +17,7 @@
 #ifndef FORMULA_STRING_UTILS_BACKEND_HPP_INCLUDED
 #define FORMULA_STRING_UTILS_BACKEND_HPP_INCLUDED
 
-#include <exception>
+#include "exceptions.hpp"
 
 #include "formula_string_utils.hpp"
 
@@ -72,19 +72,6 @@ inline bool  is_alnum_or_underscore (char c){
 inline bool  is_good_for_varname (t_token const & a){
 	return is_alnum_or_underscore(static_cast<std::string const &>(a)[0] ) ;}
 
-
-///WML syntax error exception
-class wml_syntax_error : public std::exception {
-	t_tokens tokens_;
-	t_tokens::const_iterator pos_;
-	std::string reason_;
-	mutable std::string output_;
- public:
-	~wml_syntax_error() throw() {}
-	wml_syntax_error(t_tokens const & ts, size_t const & pos, std::string const & r = "unknown reason") 
-		: tokens_(ts), pos_(tokens_.begin() + pos), reason_(r), output_() {}
-	virtual const char * what() const throw() ;
-};
 
 
 ///Break string/token into relevant tokens
