@@ -333,6 +333,13 @@ void manager::on_key_event(/*const SDL_KeyboardEvent& event*/)
 {
 	//Little hack to make the TAB key work properly: check at every draw if it's pressed,
 	//to compensate for faulty detection of the "up"/released key event
+
+	if (!key_poller_)
+	{
+		LOG_WB << "In manager::on_key_event, null key poller detected.\n";
+		return;
+	}
+
 	if(!(*key_poller_)[SDLK_TAB])
 	{
 		set_invert_behavior(false);
