@@ -592,14 +592,17 @@ static SOCKET_STATE send_file(buffer* buf)
 
 static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 {
-	char num_buf[4] ALIGN_4;
-	bool res = receive_with_timeout(sock,num_buf,4,false);
+	union {
+	char buf[4] ALIGN_4;
+	Uint32 num;
+	} num_buf;
+	bool res = receive_with_timeout(sock,num_buf.buf,4,false);
 
 	if(!res) {
 		return SOCKET_ERRORED;
 	}
 
-	const int len = SDLNet_Read32(reinterpret_cast<void*>(num_buf));
+	const int len = SDLNet_Read32(&num_buf);
 
 	if(len < 1 || len > 100000000) {
 		return SOCKET_ERRORED;
