@@ -32,7 +32,6 @@
 #include "preferences_display.hpp"
 #include "wesconfig.h"
 #include "wml_separators.hpp"
-#include "whiteboard/manager.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_G LOG_STREAM(err, lg::general)
@@ -923,8 +922,6 @@ void hat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_exec
 
 void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_executor* executor)
 {
-	resources::whiteboard->on_key_event(/*event*/);
-
 	const hotkey_item* hk = &get_hotkey(event);
 
 #if 0
