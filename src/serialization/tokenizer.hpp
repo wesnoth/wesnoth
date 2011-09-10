@@ -42,10 +42,10 @@ struct token {
 
 	token(token const & a)
 		: type(a.type)
-		, value_()
+		, value_(a.value_)
 		, t_token_(a.t_token_)
 		, is_parsed_(a.is_parsed_)
-		, buffer_()
+		, buffer_(a.buffer_)
 	{
 	}
 
