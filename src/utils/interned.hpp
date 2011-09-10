@@ -184,7 +184,10 @@ t_interned_token<T, T_hasher>::t_interned_token()
 }
 
 template <typename T, typename T_hasher >
-t_interned_token<T, T_hasher>::t_interned_token(T const & a , bool is_ref_counted) : is_ref_counted_(is_ref_counted){
+t_interned_token<T, T_hasher>::t_interned_token(T const & a , bool is_ref_counted)
+	: iter_(NULL)
+	, is_ref_counted_(is_ref_counted)
+{
 
 	static t_stash & the_stash_ = the_stash();
 	static t_interned default_value_(0);
