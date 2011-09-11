@@ -457,7 +457,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	} // end planned unit map scope
 
 	//see if we're trying to do a attack or move-and-attack
-	if(((!browse && !commands_disabled) || resources::whiteboard->is_active()) && attack_from.valid()) {
+	if((!browse || resources::whiteboard->is_active()) && !commands_disabled && attack_from.valid()) {
 
 		if (((u.valid() && u->side() == side_num_) || resources::whiteboard->is_active()) && clicked_u.valid() ) {
 			if (attack_from == selected_hex_) { //no move needed
@@ -534,7 +534,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		}
 	}
 	//otherwise we're trying to move to a hex
-	else if(((!commands_disabled && !browse) || resources::whiteboard->is_active()) &&
+	else if((!browse || resources::whiteboard->is_active()) && !commands_disabled &&
 			selected_hex_.valid() && selected_hex_ != hex &&
 	         u != units_.end() && u.valid() &&
 	         (u->side() == side_num_ || resources::whiteboard->is_active()) &&
@@ -611,7 +611,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		gui().set_route(NULL);
 
 		// selection have impact only if we are not observing and it's our unit
-		if ((!commands_disabled || resources::whiteboard->is_active()) && u->side() == gui().viewing_side()) {
+		if (!commands_disabled && u->side() == gui().viewing_side()) {
 			if (!(browse || resources::whiteboard->unit_has_actions(&*u)))
 			{
 				sound::play_UI_sound("select-unit.wav");
