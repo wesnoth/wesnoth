@@ -3085,6 +3085,18 @@ temporary_unit_placer::~temporary_unit_placer()
 	}
 }
 
+temporary_unit_remover::temporary_unit_remover(unit_map& m, const map_location& loc)
+	: m_(m), loc_(loc), temp_(m.extract(loc))
+{
+}
+
+temporary_unit_remover::~temporary_unit_remover()
+{
+	if(temp_) {
+		m_.insert(temp_);
+	}
+}
+
 temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,  const map_location& dst)
 	: m_(m), src_(src), dst_(dst), temp_(m.extract(dst))
 {

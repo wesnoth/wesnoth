@@ -580,6 +580,24 @@ private:
 };
 
 /**
+ * This object is used to temporary remove a unit from the unit map.
+ * On destruction, it restores the unit map to its original.
+ * unit_map iterators to this unit must not be accessed while the unit is temporarily
+ * removed, otherwise a collision will happen when trying to reinsert the unit.
+ */
+struct temporary_unit_remover
+{
+	temporary_unit_remover(unit_map& m, const map_location& loc);
+	virtual  ~temporary_unit_remover();
+
+private:
+	unit_map& m_;
+	const map_location loc_;
+	unit *temp_;
+};
+
+
+/**
  * This object is used to temporary move a unit in the unit map, swapping out
  * any unit that is already there.  On destruction, it restores the unit map to
  * its original.
