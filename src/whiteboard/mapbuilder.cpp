@@ -36,6 +36,7 @@ mapbuilder::mapbuilder(unit_map& unit_map)
 	: unit_map_(unit_map)
 	, applied_actions_()
 	, resetters_()
+	, removers_()
 	, acted_this_turn_()
 {
 }
@@ -46,12 +47,26 @@ mapbuilder::~mapbuilder()
 	//Remember that the member variable resetters_ is destructed here
 }
 
-void mapbuilder::reset_moves()
+void mapbuilder::pre_build()
 {
 	int current_side = resources::controller->current_side();
 	foreach(unit& u, *resources::units)
 	{
 		bool on_current_side = (u.side() == current_side);
+
+		//Remove any unit the current side cannot see to avoid their detection by planning
+		//Units will be restored to the unit map by destruction of removers_
+
+		if (!on_current_side && !u.is_visible_to_team((*resources::teams)[viewer_team()], false))
+		{
+			removers_.push_back(new temporary_unit_remover(*resources::units, u.get_location()));
+
+			//Don't do anything else to the removed unit!
+			continue;
+		}
+
+		//Reset movement points, to be restored by destruction of resetters_
+
 		//restore movement points only to units not on the current side
 		resetters_.push_back(new unit_movement_resetter(u,!on_current_side));
 		//make sure current side's units are not reset to full moves on first turn
@@ -62,7 +77,7 @@ void mapbuilder::reset_moves()
 
 void mapbuilder::build_map()
 {
-	reset_moves();
+	pre_build();
 	visit_all();
 }
 

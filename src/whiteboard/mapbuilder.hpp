@@ -58,8 +58,8 @@ private:
 	//For validate_visitor to override
 	virtual void validate(side_actions::iterator const&) {}
 
-	//Helper fcn: Arranges for all units' MP to be restored upon destruction
-	void reset_moves();
+	//Does various preliminary actions on the unit map such as resetting moves for some units
+	void pre_build();
 
 	void restore_normal_map();
 
@@ -67,8 +67,9 @@ private:
 
 	action_queue applied_actions_;
 
-	//Used by reset_moves()
+	//Used by pre_build()
 	boost::ptr_vector<unit_movement_resetter> resetters_;
+	boost::ptr_vector<temporary_unit_remover> removers_;
 
 	//Used by visit()
 	std::set<unit const*> acted_this_turn_;
