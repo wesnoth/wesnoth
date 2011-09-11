@@ -108,7 +108,10 @@ bool mapbuilder::visit(size_t, team&, side_actions&, side_actions::iterator itor
 }
 
 bool mapbuilder::post_visit_team(size_t, team&, side_actions&)
-	{acted_this_turn_.clear();   return true;}
+{
+	acted_this_turn_.clear();
+	return true;
+}
 
 void mapbuilder::restore_normal_map()
 {
