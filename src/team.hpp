@@ -115,7 +115,7 @@ public:
 	static const int default_team_gold;
 
 	team();
-	~team();
+	virtual ~team();
 
 	void build(const config &cfg, const gamemap &map, int gold = default_team_gold);
 
