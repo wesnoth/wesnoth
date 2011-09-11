@@ -57,18 +57,18 @@ public:
 
 	///Determine whether the whiteboard is activated.
 	bool is_active() const { return active_; }
-	///Activates/Deactivates the whiteboard
+	/** Activates/Deactivates the whiteboard*/
 	void set_active(bool active);
-	///Called by the key that temporarily toggles the activated state when held
+	/** Called by the key that temporarily toggles the activated state when held */
 	void set_invert_behavior(bool invert);
-	/// Prevents the whiteboard from changing its activation state, as long as the returned reference is held
+	/** Prevents the whiteboard from changing its activation state, as long as the returned reference is held */
 	whiteboard_lock get_activation_state_lock() { return activation_state_lock_; }
 
-	///Used to ask the whiteboard if its general purpose hotkeys can be called now
+	/** Used to ask the whiteboard if its general purpose hotkeys can be called now */
 	bool can_execute_hotkey() const;
-	///Used to ask the whiteboard if its action reordering hotkeys can be called now
+	/** Used to ask the whiteboard if its action reordering hotkeys can be called now */
 	bool can_reorder_action() const;
-	///Used to ask permission to the wb to move a leader, to avoid invalidating planned recruits
+	/** Used to ask permission to the wb to move a leader, to avoid invalidating planned recruits */
 	bool allow_leader_to_move(unit const& leader) const;
 
 	/**
@@ -82,20 +82,20 @@ public:
 	void on_viewer_change(size_t team_index);
 	void on_change_controller(int side, team& t);
 
-	/// Called by replay_network_sender to add whiteboard data to the outgoing network packets
+	/** Called by replay_network_sender to add whiteboard data to the outgoing network packets */
 	void send_network_data();
-	/// Called by turn_info::process_network_data() when network data needs to be processed
+	/** Called by turn_info::process_network_data() when network data needs to be processed */
 	void process_network_data(config const&);
-	/// Adds a side_actions::net_cmd to net_buffer_[team_index], whereupon it will (later) be sent to all allies
+	/** Adds a side_actions::net_cmd to net_buffer_[team_index], whereupon it will (later) be sent to all allies */
 	void queue_net_cmd(size_t team_index, side_actions::net_cmd const&);
 
-	/// Whether the current side has actions in the first turn of its planned actions queue
+	/** Whether the current side has actions in the first turn of its planned actions queue */
 	static bool current_side_has_actions();
 
-	/// Validates all actions of the current viewing side
+	/** Validates all actions of the current viewing side */
 	void validate_viewer_actions();
 
-		/// Whether the planned unit map is currently applied
+	/** Whether the planned unit map is currently applied */
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
 
 	/**
@@ -105,28 +105,28 @@ public:
 	 */
 	void draw_hex(const map_location& hex);
 
-	/// Creates a temporary visual arrow, that follows the cursor, for move creation purposes
+	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
 	void create_temp_move();
-	/// Informs whether an arrow is being displayed for move creation purposes
+	/** Informs whether an arrow is being displayed for move creation purposes */
 	bool has_temp_move() const { return route_ && !fake_units_.empty() && !move_arrows_.empty(); }
-	/// Erase the temporary arrow
+	/** Erase the temporary arrow */
 	void erase_temp_move();
-	/// Creates a move action for the current side, and erases the temp move.
-	/// The move action is inserted at the end of the queue, to be executed last.
+	/** Creates a move action for the current side, and erases the temp move.
+	 *  The move action is inserted at the end of the queue, to be executed last. */
 	void save_temp_move();
 
-	/// Creates an attack or attack-move action for the current side
+	/** Creates an attack or attack-move action for the current side */
 	void save_temp_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice);
 
-	/// Creates a recruit action for the current side
-	/// @return true if manager has saved a planned recruit
+	/** Creates a recruit action for the current side
+	 *  @return true if manager has saved a planned recruit */
 	bool save_recruit(const std::string& name, int side_num, const map_location& recruit_hex);
 
-	/// Creates a recall action for the current side
-	/// @return true if manager has saved a planned recall
+	/** Creates a recall action for the current side
+	 *  @return true if manager has saved a planned recall */
 	bool save_recall(const unit& unit, int side_num, const map_location& recall_hex);
 
-	/// Creates a suppose-dead action for the current side
+	/** Creates a suppose-dead action for the current side */
 	void save_suppose_dead(unit& curr_unit, map_location const& loc);
 
 	/** Executes first action in the queue for current side */
@@ -142,39 +142,39 @@ public:
 	/** Deletes all planned actions for all teams */
 	void erase_all_actions();
 
-	/// Get the highlight visitor instance in use by the manager
+	/** Get the highlight visitor instance in use by the manager */
 	boost::weak_ptr<highlight_visitor> get_highlighter() { return highlighter_; }
 
 	/** Checks whether the specified unit has at least one planned action */
 	bool unit_has_actions(unit const* unit) const;
 
-	/// Used to track gold spending per-side when building the planned unit map
-	/// Is referenced by the top bar gold display
+	/** Used to track gold spending per-side when building the planned unit map
+	 *  Is referenced by the top bar gold display */
 	int get_spent_gold_for(int side);
 
-	/// Determines whether or not the undo_stack should be cleared.
-	///@todo Only when there are networked allies and we have set a preferences option
+	/** Determines whether or not the undo_stack should be cleared.
+	 *  @todo Only when there are networked allies and we have set a preferences option */
 	bool should_clear_undo() const {return true;}
-	/// Updates shroud and clears the undo_stack and redo_stack.
+	/** Updates shroud and clears the undo_stack and redo_stack. */
 	void clear_undo();
 
-	/// Displays the whiteboard options dialog.
+	/** Displays the whiteboard options dialog. */
 	void options_dlg();
 
 private:
-	/// Transforms the unit map so that it now reflects the future state of things,
-	/// i.e. when all planned actions will have been executed
+	/** Transforms the unit map so that it now reflects the future state of things,
+	 *  i.e. when all planned actions will have been executed */
 	void set_planned_unit_map();
-	/// Restore the regular unit map
+	/** Restore the regular unit map */
 	void set_real_unit_map();
 
 	void validate_actions_if_needed();
-	/// Called by all of the save_***() methods after they have added their action to the queue
+	/** Called by all of the save_***() methods after they have added their action to the queue */
 	void on_save_action(unit const* unit_with_plan) const;
 	void update_plan_hiding(size_t viewing_team);
 	void update_plan_hiding(); //same as above, but uses wb::viewer_team() as default argument
 
-	///Tracks whether the whiteboard is active.
+	/** Tracks whether the whiteboard is active. */
 	bool active_;
 	bool inverted_behavior_;
 	bool self_activate_once_;
