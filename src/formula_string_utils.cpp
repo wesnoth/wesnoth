@@ -55,7 +55,7 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
 	n_token::t_token token(str);
 	wml_interpolation::t_parse_and_interpolator interpolator(token);
 	token = interpolator.parse_and_interpolate(variables);
-	return static_cast<std::string const &>(token);
+	return (*token);
 }
 
 void interpolate_variables_into_token(n_token::t_token &token, const variable_set& variables) {
@@ -69,7 +69,7 @@ t_string interpolate_variables_into_tstring(const t_string &tstr, const variable
 		wml_interpolation::t_parse_and_interpolator interpolator(token);
 		token = interpolator.parse_and_interpolate(variables);
 		if(tstr.str() != token) {
-			return t_string( static_cast<std::string const &>(token) );
+			return t_string( (*token) );
 		}
 	}
 	return tstr;

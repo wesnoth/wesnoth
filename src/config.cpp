@@ -42,39 +42,6 @@ static lg::log_domain log_config("config");
 
 typedef config::t_token t_token;
 
-
-//Static Members
-const config::t_token config::z_empty("",false)
-	, config::z_yes("yes",false) , config::z_no("no",false)
-	, config::z_true("true",false), config::z_false("false",false)
-	,config::z_index("index",false);
-
-namespace {
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison, copying and hashing operations.
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
-	static const config::t_token z_insert_child("insert_child", false);
-	static const config::t_token z_delete_child("delete_child", false);
-	static const config::t_token z_change_child("change_child", false);
-	static const config::t_token z_modified("modified", false);
-	static const config::t_token z_insert("insert", false);
-	static const config::t_token z_delete("delete", false);
-	static const config::t_token z_deleted("deleted", false);
-	static const config::t_token z_new("new", false);
-	static const config::t_token z_not("not", false);
-	static const config::t_token z_diff_track_attribute_("diff_track_attribute_", false);
-	static const config::t_token z___diff_track("__diff_track", false);
-}
-
-namespace{
-	static const t_string tstring_empty(config::z_empty)
-		, tstring_true(config::z_true), tstring_false(config::z_false)
-		, tstring_yes(config::z_yes), tstring_no(config::z_no);
-}
-
-
-
 config::attribute_value::attribute_value()
   : int_value_(),double_value_() , t_string_value_() , token_value_() , type_(EMPTY) , bool_value_()
 	, is_bool_(false), is_int_(false), is_double_(false) ,is_t_string_(false), is_token_(false)  { }
@@ -122,6 +89,11 @@ config::attribute_value &config::attribute_value::operator=(double v)
 }
 
 config::attribute_value &config::attribute_value::operator=(const t_token &v)  {
+	static const config::t_token z_empty("", false);
+	static const config::t_token z_yes("yes", false);
+	static const config::t_token z_true("true", false);
+	static const config::t_token z_no("no", false);
+	static const config::t_token z_false("false", false);
 	if (v == z_empty) {
 		type_ = EMPTY;
 		is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =false;
@@ -146,6 +118,7 @@ config::attribute_value &config::attribute_value::operator=(const t_token &v)  {
 }
 
 config::attribute_value &config::attribute_value::operator=(const std::string &v) {
+	static const config::t_token z_empty("", false);
 	if (v.empty()) { return *this = z_empty;}
 	if (v == "yes" || v == "true") return *this = true;
 	if (v == "no" || v == "false") return *this = false;
@@ -189,14 +162,27 @@ bool config::attribute_value::operator==(const config::attribute_value &other) c
 }
 
 bool operator==(const config::attribute_value &a, config::t_token const & b) {
+	static const config::t_token z_yes("yes", false);
+	static const config::t_token z_true("true", false);
+	static const config::t_token z_no("no", false);
+	static const config::t_token z_false("false", false);
 	//	if(a.type_ == a.EMPTY){return false;}
 	//note: having 4 different acceptable boolean string values has a cost
 	if ((a.type_ == a.BOOL) || ( a.is_bool_)){
-		return (a.bool_value_ ?(b==config::z_true || b == config::z_yes) : (b == config::z_false || b == config::z_no)); }
+		return (a.bool_value_ ?(b==z_true || b == z_yes) : (b == z_false || b == z_no)); }
 	return a.token() ==  b;
 }
+
 bool operator==(const config::attribute_value &a, t_string const & b) {
 	//	if(a.type_ == a.EMPTY){return false;}
+	static const config::t_token z_empty("", false);
+	static const config::t_token z_yes("yes", false);
+	static const config::t_token z_true("true", false);
+	static const config::t_token z_no("no", false);
+	static const config::t_token z_false("false", false);
+	static const t_string tstring_empty(z_empty)
+		, tstring_true(z_true), tstring_false(z_false)
+		, tstring_yes(z_yes), tstring_no(z_no);
 	if ((a.type_ == a.BOOL) || ( a.is_bool_)){
 		return (a.bool_value_ ? (b==tstring_true || b == tstring_yes) : (b == tstring_false || b == tstring_no)); }
 	return a.t_str() == b; }
@@ -234,6 +220,12 @@ double config::attribute_value::to_double(double def) const {
 }
 
 t_token const & config::attribute_value::token() const {
+	static const config::t_token z_empty("", false);
+	static const config::t_token z_yes("yes", false);
+	static const config::t_token z_true("true", false);
+	static const config::t_token z_no("no", false);
+	static const config::t_token z_false("false", false);
+
 	if ((type_ == TOKEN) || ( is_token_)){ return token_value_; }
 	switch(type_){
 	case (EMPTY) : return z_empty;
@@ -260,6 +252,12 @@ std::string const & config::attribute_value::str() const {
 
 
 t_string const & config::attribute_value::t_str() const {
+	static const config::t_token z_empty("", false);
+	static const config::t_token z_yes("yes", false);
+	static const config::t_token z_no("no", false);
+	static const t_string tstring_empty(z_empty)
+		, tstring_yes(z_yes), tstring_no(z_no);
+
 	if ((type_ == TSTRING) || ( is_t_string_)){
 		return t_string_value_; }
 	switch(type_){
@@ -930,8 +928,16 @@ config config::get_diff(const config& c) const
 	return res;
 }
 
-void config::get_diff(const config& c, config& res) const
-{
+void config::get_diff(const config& c, config& res) const {
+	static const config::t_token z_empty("", false);
+	static const config::t_token z_index("index", false);
+	static const t_token z_insert_child("insert_child", false);
+	static const t_token z_delete_child("delete_child", false);
+	static const t_token z_change_child("change_child", false);
+	static const t_token z_insert("insert", false);
+	static const t_token z_delete("delete", false);
+	static const t_token z_x("x", false);
+
 	check_valid(c);
 	check_valid(res);
 
@@ -1039,6 +1045,17 @@ void config::get_diff(const config& c, config& res) const
 
 void config::apply_diff(const config& diff, bool track /* = false */)
 {
+	static const config::t_token z_index("index", false);
+	static const t_token z_diff_track_attribute_("diff_track_attribute_", false);
+	static const t_token z_modified("modified", false);
+	static const t_token z_insert("insert", false);
+	static const t_token z_delete("delete", false);
+	static const t_token z_insert_child("insert_child", false);
+	static const t_token z_delete_child("delete_child", false);
+	static const t_token z_change_child("change_child", false);
+	static const t_token z_deleted("deleted", false);
+	static const t_token z_new("new", false);
+
 	check_valid(diff);
 
 	if (track) values[z_diff_track_attribute_] = z_modified;
@@ -1101,6 +1118,12 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 
 void config::clear_diff_track(const config& diff)
 {
+	static const t_token z_diff_track_attribute_("diff_track_attribute_", false);
+	static const t_token z_delete("delete", false);
+	static const t_token z_index("index", false);
+	static const t_token z_delete_child("delete_child", false);
+	static const t_token z_change_child("change_child", false);
+
 	remove_attribute(z_diff_track_attribute_);
 	foreach (const config &i, diff.child_range(z_delete_child))
 	{
@@ -1166,6 +1189,8 @@ void config::merge_with(const config& c)
 
 bool config::matches(const config &filter) const
 {
+	static const t_token z_not("not", false);
+
 	check_valid(filter);
 
 	foreach (const attribute &i, filter.attribute_range())

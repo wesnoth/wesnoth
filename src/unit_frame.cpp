@@ -23,37 +23,6 @@
 #include "unit_frame.hpp"
 
 
-namespace {
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison, copying and hashing operations.
-
-static const config::t_token z_image_diagonal("image_diagonal", false);
-static const config::t_token z_image_mod("image_mod", false);
-static const config::t_token z_halo_x("halo_x", false);
-static const config::t_token z_halo_y("halo_y", false);
-static const config::t_token z_halo_mod("halo_mod", false);
-static const config::t_token z_sound("sound", false);
-static const config::t_token z_text("text", false);
-static const config::t_token z_blend_ratio("blend_ratio", false);
-static const config::t_token z_alpha("alpha", false);
-static const config::t_token z_offset("offset", false);
-static const config::t_token z_submerge("submerge", false);
-static const config::t_token z_x("x", false);
-static const config::t_token z_y("y", false);
-static const config::t_token z_directional_x("directional_x", false);
-static const config::t_token z_directional_y("directional_y", false);
-static const config::t_token z_layer("layer", false);
-static const config::t_token z_auto_vflip("auto_vflip", false);
-static const config::t_token z_auto_hflip("auto_hflip", false);
-static const config::t_token z_primary("primary", false);
-static const config::t_token z_text_color("text_color", false);
-static const config::t_token z_duration("duration", false);
-static const config::t_token z_end("end", false);
-static const config::t_token z_begin("begin", false);
-static const config::t_token z_blend_color("blend_color", false);
-}
-
-
 
 template <class T>
 void progressive_discrete<T>::progressive_discrete_core(n_token::t_token const & data, int duration) {
@@ -250,32 +219,68 @@ frame_builder::frame_builder() :
 	drawing_layer_(str_cast(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST))
 {}
 
+namespace{
+	DEFAULT_TOKEN_BODY(z_image_default, "image")
+	DEFAULT_TOKEN_BODY(z_image_diagonal_default, "image_diagonal")
+	DEFAULT_TOKEN_BODY(z_image_mod_default, "image_mod")
+	DEFAULT_TOKEN_BODY(z_halo_default, "halo")
+	DEFAULT_TOKEN_BODY(z_halo_x_default, "halo_x")
+	DEFAULT_TOKEN_BODY(z_halo_y_default, "halo_y")
+	DEFAULT_TOKEN_BODY(z_halo_mod_default, "halo_mod")
+	DEFAULT_TOKEN_BODY(z_sound_default, "sound")
+	DEFAULT_TOKEN_BODY(z_text_default, "text")
+	DEFAULT_TOKEN_BODY(z_blend_ratio_default, "blend_ratio")
+	DEFAULT_TOKEN_BODY(z_alpha_default, "alpha")
+	DEFAULT_TOKEN_BODY(z_offset_default, "offset")
+	DEFAULT_TOKEN_BODY(z_submerge_default, "submerge")
+	DEFAULT_TOKEN_BODY(z_x_default, "x")
+	DEFAULT_TOKEN_BODY(z_y_default, "y")
+	DEFAULT_TOKEN_BODY(z_directional_x_default, "directional_x")
+	DEFAULT_TOKEN_BODY(z_directional_y_default, "directional_y")
+	DEFAULT_TOKEN_BODY(z_layer_default, "layer")
+	DEFAULT_TOKEN_BODY(z_auto_vflip_default, "auto_vflip")
+	DEFAULT_TOKEN_BODY(z_auto_hflip_default, "auto_hflip")
+	DEFAULT_TOKEN_BODY(z_primary_default, "primary")
+	DEFAULT_TOKEN_BODY(z_text_color_default, "text_color")
+	DEFAULT_TOKEN_BODY(z_duration_default, "duration")
+	DEFAULT_TOKEN_BODY(z_end_default, "end")
+	DEFAULT_TOKEN_BODY(z_begin_default, "begin")
+	DEFAULT_TOKEN_BODY(z_blend_color_default, "blend_color")
+}
 frame_builder::frame_builder(const config& cfg,const n_token::t_token& frame_string) :
 	duration_(1),
-	image_(cfg[frame_string + z_image].token()),
-	image_diagonal_(cfg[frame_string + z_image_diagonal].token()),
-	image_mod_(cfg[frame_string + z_image_mod].token()),
-	halo_(cfg[frame_string + z_halo].token()),
-	halo_x_(cfg[frame_string + z_halo_x].token()),
-	halo_y_(cfg[frame_string + z_halo_y].token()),
-	halo_mod_(cfg[frame_string + z_halo_mod].token()),
-	sound_(cfg[frame_string + z_sound].token()),
-	text_(cfg[frame_string + z_text].token()),
+	image_(cfg[frame_string + z_image_default()].token()),
+	image_diagonal_(cfg[frame_string + z_image_diagonal_default()].token()),
+	image_mod_(cfg[frame_string + z_image_mod_default()].token()),
+	halo_(cfg[frame_string + z_halo_default()].token()),
+	halo_x_(cfg[frame_string + z_halo_x_default()].token()),
+	halo_y_(cfg[frame_string + z_halo_y_default()].token()),
+	halo_mod_(cfg[frame_string + z_halo_mod_default()].token()),
+	sound_(cfg[frame_string + z_sound_default()].token()),
+	text_(cfg[frame_string + z_text_default()].token()),
 	text_color_(0),
 	blend_with_(0),
-	blend_ratio_(cfg[frame_string + z_blend_ratio].token()),
-	highlight_ratio_(cfg[frame_string + z_alpha].token()),
-	offset_(cfg[frame_string + z_offset].token()),
-	submerge_(cfg[frame_string + z_submerge].token()),
-	x_(cfg[frame_string + z_x].token()),
-	y_(cfg[frame_string + z_y].token()),
-	directional_x_(cfg[frame_string + z_directional_x].token()),
-	directional_y_(cfg[frame_string + z_directional_y].token()),
+	blend_ratio_(cfg[frame_string + z_blend_ratio_default()].token()),
+	highlight_ratio_(cfg[frame_string + z_alpha_default()].token()),
+	offset_(cfg[frame_string + z_offset_default()].token()),
+	submerge_(cfg[frame_string + z_submerge_default()].token()),
+	x_(cfg[frame_string + z_x_default()].token()),
+	y_(cfg[frame_string + z_y_default()].token()),
+	directional_x_(cfg[frame_string + z_directional_x_default()].token()),
+	directional_y_(cfg[frame_string + z_directional_y_default()].token()),
 	auto_vflip_(t_unset),
 	auto_hflip_(t_unset),
 	primary_frame_(t_unset),
-	drawing_layer_(cfg[frame_string + z_layer].token())
+	drawing_layer_(cfg[frame_string + z_layer_default()].token())
 {
+	static const config::t_token z_auto_vflip("auto_vflip", false);
+	static const config::t_token z_auto_hflip("auto_hflip", false);
+	static const config::t_token z_primary("primary", false);
+	static const config::t_token z_text_color("text_color", false);
+	static const config::t_token z_duration("duration", false);
+	static const config::t_token z_end("end", false);
+	static const config::t_token z_begin("begin", false);
+	static const config::t_token z_blend_color("blend_color", false);
 	if(!cfg.has_attribute(frame_string + z_auto_vflip)) {
 		auto_vflip_ = t_unset;
 	} else if(cfg[frame_string + z_auto_vflip].to_bool()) {

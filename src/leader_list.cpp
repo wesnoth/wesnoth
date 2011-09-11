@@ -144,11 +144,11 @@ void leader_list_manager::update_gender_list(const std::string& leader)
 			// Make the internationalized titles for each gender, along with the WML ids
 			if (*i == unit_race::FEMALE) {
 				gender_ids_.push_back("female");
-				genders_.push_back(IMAGE_PREFIX + static_cast<std::string const &>( utg.image() ) + get_RC_suffix(utg.flag_rgb()) +
+				genders_.push_back(IMAGE_PREFIX + (* utg.image() ) + get_RC_suffix(utg.flag_rgb()) +
 						COLUMN_SEPARATOR + _("Female ♀"));
 			} else {
 				gender_ids_.push_back("male");
-				genders_.push_back(IMAGE_PREFIX + static_cast<std::string const &>( utg.image() ) + get_RC_suffix(utg.flag_rgb()) +
+				genders_.push_back(IMAGE_PREFIX + (* utg.image() ) + get_RC_suffix(utg.flag_rgb()) +
 						COLUMN_SEPARATOR + _("Male ♂"));
 			}
 		}
@@ -181,7 +181,7 @@ void leader_list_manager::populate_leader_combo(int selected_index) {
 				gender = gender_ids_[gender_combo_->selected()];
 			}
 			const unit_type& ut = utp->get_gender_unit_type(config::t_token(gender));
-			leader_strings.push_back(IMAGE_PREFIX + static_cast<std::string const &>(ut.image()) + get_RC_suffix(ut.flag_rgb()) + COLUMN_SEPARATOR + ut.type_name());
+			leader_strings.push_back(IMAGE_PREFIX + (*ut.image()) + get_RC_suffix(ut.flag_rgb()) + COLUMN_SEPARATOR + ut.type_name());
 
 		} else {
 			if(*itor == "random") {

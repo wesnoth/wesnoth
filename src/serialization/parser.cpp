@@ -50,15 +50,7 @@ static lg::log_domain log_config("config");
 static const size_t max_recursion_levels = 1000;
 
 namespace {
-//static configuration tokens
-//static const config::t_token z_empty("", false);
-static const config::t_token z_tag("tag", false);
-static const config::t_token z_tag1("tag1", false);
-static const config::t_token z_tag2("tag2", false);
-static const config::t_token z_pos("pos", false);
-static const config::t_token z_error("error", false);
-static const config::t_token z_value("value", false);
-static const config::t_token z_previous_value("previous_value", false);
+
 class parser
 {
 	parser();
@@ -108,6 +100,9 @@ parser::~parser() {
 }
 
 void parser::operator()() {
+	static const config::t_token z_empty("", false);
+	static const config::t_token z_tag("tag", false);
+
 	cfg_.clear();
 	elements.push(element(&cfg_, z_empty));
 
@@ -124,9 +119,9 @@ void parser::operator()() {
 			parse_variable();
 			break;
 		default:
-			if (static_cast<unsigned char>(static_cast<std::string const &>(tok_->current_token().value())[0]) == 0xEF &&
-			    static_cast<unsigned char>(static_cast<std::string const &>(tok_->next_token().value())[0])    == 0xBB &&
-			    static_cast<unsigned char>(static_cast<std::string const &>(tok_->next_token().value())[0])    == 0xBF)
+			if (static_cast<unsigned char>((*tok_->current_token().value())[0]) == 0xEF &&
+			    static_cast<unsigned char>((*tok_->next_token().value())[0])    == 0xBB &&
+			    static_cast<unsigned char>((*tok_->next_token().value())[0])    == 0xBF)
 			{
 				ERR_CF << "Skipping over a utf8 BOM\n";
 			} else {
@@ -204,6 +199,8 @@ void parser::parse_element() {
 		if(elements.size() <= 1)
 			error(_("Unexpected closing tag"));
 		if(elname != elements.top().name) {
+			static const config::t_token z_tag1("tag1", false);
+			static const config::t_token z_tag2("tag2", false);
 			utils::token_map i18n_symbols;
 			i18n_symbols[z_tag1] = elements.top().name;
 			i18n_symbols[z_tag2] = elname;
@@ -226,6 +223,8 @@ void parser::parse_element() {
 
 void parser::parse_variable()
 {
+	static const config::t_token z_empty("", false);
+
 	config& cfg = *elements.top().cfg;
 	std::vector<config::t_token> variables;
 	variables.push_back(z_empty);
@@ -233,19 +232,9 @@ void parser::parse_variable()
 	while (tok_->current_token().type != '=') {
 		switch(tok_->current_token().type) {
 		case token::STRING:
-			// if(!variables.back().empty()){
-			// 	variables.back() = config::t_token( static_cast<std::string const &>(variables.back())
-			// 										+ ' ' +static_cast<std::string const &>(tok_->current_token().value()));
-			// 	//variables.back() += ' ';
-			// } else {
-			// 	variables.back() = config::t_token( static_cast<std::string const &>(variables.back())
-			// 										+ static_cast<std::string const &>(tok_->current_token().value()));
-
-			// 	//				variables.back() += tok_->current_token().value();
-			// }
-			variables.back() = config::t_token( static_cast<std::string const &>(variables.back())
+			variables.back() = config::t_token( (*variables.back())
 												+ ((!variables.back().empty()) ? " " :"")
-												+ static_cast<std::string const &>(tok_->current_token().value()));
+												+ (*tok_->current_token().value()));
 			break;
 		case ',':
 			if(variables.back().empty()) {
@@ -354,17 +343,21 @@ void parser::parse_variable()
  * This function is crap. Don't use it on a string_map with prefixes.
  */
 std::string parser::lineno_string(utils::token_map &i18n_symbols,
-	std::string const &lineno, const char *error_string)
-{
+	std::string const &lineno, const char *error_string) {
+	static const config::t_token z_pos("pos", false);
+
 	i18n_symbols[z_pos] = ::lineno_string(lineno);
 	std::string result = _(error_string);
 	foreach(utils::token_map::value_type& var, i18n_symbols)
-		boost::algorithm::replace_all(result, std::string("$") + static_cast<std::string const &>(var.first), std::string(var.second));
+		boost::algorithm::replace_all(result, std::string("$") + (*var.first), std::string(var.second));
 	return result;
 }
 
 void parser::error(const std::string& error_type)
 {
+	static const config::t_token z_error("error", false);
+	static const config::t_token z_value("value", false);
+	static const config::t_token z_previous_value("previous_value", false);
 	utils::token_map i18n_symbols;
 	i18n_symbols[z_error] = error_type;
 	i18n_symbols[z_value] = tok_->current_token().value();
@@ -444,7 +437,7 @@ struct write_key_val_visitor : public config::attribute_value::default_visitor {
 	void operator()(double d)
 	{ write_start_not_tstring(); int i = d; if (d == i) out_ << i; else out_ << d; }
 	void operator()(config::t_token const &s)
-	{ write_start_not_tstring();  out_ << '"' << escaped_string(static_cast<std::string const &>(s)) << '"'; }
+	{ write_start_not_tstring();  out_ << '"' << escaped_string(*s) << '"'; }
 	inline void operator()(t_string const &s) ;
 };
 

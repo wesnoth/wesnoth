@@ -194,7 +194,7 @@ public:
 		}
 
 		foreach( const config::any_child &c, vars.all_children_range()) {
-			model_.add_row_to_stuff_list("[" + static_cast<std::string const &>(c.key)+"]","["+ static_cast<std::string const &>(c.key)+"]");
+			model_.add_row_to_stuff_list("[" + (*c.key)+"]","["+ (*c.key)+"]");
 		}
 
 		model_.set_inspect_window_text("");

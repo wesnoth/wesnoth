@@ -89,7 +89,7 @@ public:
 			, valid_(false)
 		{ construct_core(doParse); }
 		name_space(config::t_token const &ns, bool doParse = false)
-			: namespace_(static_cast<std::string const &>(ns))
+			: namespace_((*ns))
 			, root_()
 			, node_()
 			, lineage_()

@@ -25,11 +25,6 @@
 
 class config;
 
-namespace {
-//static configuration tokens
-static const n_token::t_token z_empty("", false);
-}
-
 struct token {
 	token()
 		: type(END)
@@ -76,6 +71,7 @@ struct token {
 	std::vector<char> buffer_;
 
 	n_token::t_token const & value() const {
+		static const n_token::t_token z_empty("", false);
 		if(!is_parsed_){
 			if(!buffer_.empty()){
 				value_.assign(buffer_.begin(), buffer_.end());

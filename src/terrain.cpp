@@ -175,7 +175,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	minimap_image_(base.minimap_image_),
 	minimap_image_overlay_(overlay.minimap_image_),
 	editor_image_(overlay.editor_image_),
-	id_(static_cast<std::string const &>(base.id_)+"^"+static_cast<std::string const &>(overlay.id_) ),
+	id_((*base.id_)+"^"+(*overlay.id_) ),
 	name_(overlay.name_),
 	editor_name_(overlay.editor_name_),
 	description_(overlay.description_),

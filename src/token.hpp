@@ -80,27 +80,29 @@ public:
 	t_token(t_token const & a) : t_base(a) {}
 	t_token  & operator=(t_token const & a) { this->t_base::operator=(a); return *this;}
 
-	///Empty string token in a form suitable for use as a default value safe from static initialization errors
+	/** Empty string token in a form suitable for use as a default value safe from static initialization errors */
 	static const t_token & z_empty();
-	///Return a default interned object suitable as a default value which won't cause a static initialization error
+	/**Return a default interned object suitable as a default value which won't cause a static initialization error */
 	template <char T_defchar>
 	static t_token const & default_value();
 
 	inline bool empty() const {return *this == z_empty() ;}
 
-	char const * c_str() const {return static_cast<std::string const &>(*this).c_str();}   /// todo remove this kluge for lua.cpp
+	std::string const & str() const {return **this;}
 
-	///These are slow comparison functions.  Prefer t_token == t_token which is fast
-	friend inline bool operator==(t_token const &a, char const *b){ return static_cast<std::string const &>(a) == b;}
-	friend inline bool operator==(char const *b, t_token const &a){ return b == static_cast<std::string const &>(a);}
+	char const * c_str() const {return (**this).c_str();}   /// todo remove this kluge for lua.cpp
+
+	/**These are slow comparison functions.  Prefer t_token == t_token which is fast */
+	friend inline bool operator==(t_token const &a, char const *b){ return (*a) == b;}
+	friend inline bool operator==(char const *b, t_token const &a){ return b == (*a);}
 	friend inline bool operator!=(t_token const &a, char const *b){ return !(a == b); }
 	friend inline bool operator!=(char const *b, t_token const &a){ return !(b == a); }
 
 	friend std::ostream & operator<<(std::ostream &out, t_token const & a){
-		return out << static_cast<std::string const &>(a); }
+		return out << (*a); }
 };
 
-/// Do not inline this enforces static initialization order
+/** Do not inline this enforces static initialization order */
 template <char T_defval>
 t_token const & t_token::default_value() {
 	//This is NOTa memory leak
@@ -112,12 +114,34 @@ t_token const & t_token::default_value() {
 	return *z_defval;
 }
 
-inline std::string operator+(const n_token::t_token &a, const std::string &b) { return static_cast<std::string const &>(a) + b; }
-inline std::string operator+(const std::string &a, const n_token::t_token &b) { return a + static_cast<std::string const &>(b); }
-inline std::string operator+(const n_token::t_token &a, const char *b) { return static_cast<std::string const &>(a) + b; }
-inline std::string operator+(const char *a, const n_token::t_token &b) { return a + static_cast<std::string const &>(b); }
-inline std::string operator+(const n_token::t_token &a, const n_token::t_token &b) {
-	return static_cast<std::string const &>(a) + static_cast<std::string const &>(b); }
+inline std::string operator+(const n_token::t_token &a, const std::string &b) { return (*a) + b; }
+inline std::string operator+(const std::string &a, const n_token::t_token &b) { return a + (*b); }
+inline std::string operator+(const n_token::t_token &a, const char *b) { return (*a) + b; }
+inline std::string operator+(const char *a, const n_token::t_token &b) { return a + (*b); }
+inline std::string operator+(const n_token::t_token &a, const n_token::t_token &b) { return (*a) + (*b); }
+
+/** These 2 macros create a default parameter value for functions that is static initialization and de-initialization safe
+	There is no other way as templates don't allow string literals
+	For DEFAULT_TOKEN_HEADER(blah, blah_value)
+	The function declaration will be
+	const t_token & blah();
+ */
+#define DEFAULT_TOKEN_HEADER(name, value) \
+	n_token::t_token const & name();
+
+#define DEFAULT_TOKEN_BODY(name, value) \
+	n_token::t_token const & name() {									\
+	/*This is NOTa memory leak											\
+	It is static so it is only allocated once and not de-allocated until the program terminates. \
+	If changed to a static reference it may cause a static de-initialization \
+	core dump when the destructor for z_empty is called here before its last use in another file. \
+	Do not remove the = new t_token(std::string(1, T_defval), false); part  */ \
+		static n_token::t_token *z_defval = new n_token::t_token(value, false);	\
+		return *z_defval;												\
+}
+
+
+
 
 }//end namepace
 

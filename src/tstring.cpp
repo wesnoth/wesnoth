@@ -256,9 +256,9 @@ t_string_base::t_string_base(const std::string& string, const std::string& textd
 		id = idi->second;
 	}
 
-	value_ = t_token(static_cast<std::string const &>(value_) + char(id & 0xff));
-	value_  = t_token(static_cast<std::string const &>(value_) +  char(id >> 8));
-	value_ =  t_token(static_cast<std::string const &>(value_) + string );
+	value_ = t_token((*value_) + char(id & 0xff));
+	value_  = t_token((*value_) +  char(id >> 8));
+	value_ =  t_token((*value_) + string );
 }
 
 t_string_base::t_string_base(const char* string) :
@@ -400,27 +400,27 @@ t_string_base& t_string_base::operator+=(const t_string_base& string)
 
 	if(translatable_ || string.translatable_) {
 		if(!translatable_) {
-			value_ = t_token(UNTRANSLATABLE_PART + static_cast<std::string const &>(value_));
+			value_ = t_token(UNTRANSLATABLE_PART + (*value_));
 			translatable_ = true;
 			last_untranslatable_ = true;
 		} else {
 			translated_value_ = z_empty;
 		}
 		if(string.translatable_) {
-			if (last_untranslatable_ && (static_cast<std::string const &>(string.value_))[0] == UNTRANSLATABLE_PART)
-				value_= t_token(static_cast<std::string const &>(value_) + std::string(static_cast<std::string const &>(string.value_).begin() + 1, static_cast<std::string const &>(string.value_).end()) );
+			if (last_untranslatable_ && ((*string.value_))[0] == UNTRANSLATABLE_PART)
+				value_= t_token((*value_) + std::string((*string.value_).begin() + 1, (*string.value_).end()) );
 			else
-				value_ =  t_token(static_cast<std::string const &>(value_) + static_cast<std::string const &>(string.value_));
+				value_ =  t_token((*value_) + (*string.value_));
 			last_untranslatable_ = string.last_untranslatable_;
 		} else {
 			if (!last_untranslatable_) {
-				value_ =  t_token(static_cast<std::string const &>(value_) + UNTRANSLATABLE_PART);
+				value_ =  t_token((*value_) + UNTRANSLATABLE_PART);
 				last_untranslatable_ = true;
 			}
-			value_ =  t_token(static_cast<std::string const &>(value_) + static_cast<std::string const &>(string.value_));
+			value_ =  t_token((*value_) + (*string.value_));
 		}
 	} else {
-		value_ =  t_token(static_cast<std::string const &>(value_) + static_cast<std::string const &>(string.value_));
+		value_ =  t_token((*value_) + (*string.value_));
 	}
 
 	return *this;
@@ -437,13 +437,13 @@ t_string_base& t_string_base::operator+=(const t_token& string)
 
 	if(translatable_) {
 		if (!last_untranslatable_) {
-			value_ = t_token(static_cast<std::string const &>(value_) +  UNTRANSLATABLE_PART);
+			value_ = t_token((*value_) +  UNTRANSLATABLE_PART);
 			last_untranslatable_ = true;
 		}
-		value_ = t_token( static_cast<std::string const &>( value_) +  static_cast<std::string const &>( string));
+		value_ = t_token( (* value_) +  (* string));
 		translated_value_ = z_empty;
 	} else {
-		value_  = t_token( static_cast<std::string const &>( value_ )+  static_cast<std::string const &>( string));
+		value_  = t_token( (* value_ )+  (* string));
 	}
 
 	return *this;
@@ -461,13 +461,13 @@ t_string_base& t_string_base::operator+=(const char* string)
 
 	if(translatable_) {
 		if (!last_untranslatable_) {
-			value_ =  t_token(static_cast<std::string const &>(value_) + UNTRANSLATABLE_PART );
+			value_ =  t_token((*value_) + UNTRANSLATABLE_PART );
 			last_untranslatable_ = true;
 		}
-		value_ =  t_token(static_cast<std::string const &>(value_ ) + string);
+		value_ =  t_token((*value_ ) + string);
 		translated_value_ = z_empty;
 	} else {
-		value_ = t_token(static_cast<std::string const &>(value_ ) +  string);
+		value_ = t_token((*value_ ) +  string);
 	}
 
 	return *this;
@@ -507,9 +507,9 @@ const t_string_base::t_token& t_string_base::token() const
 		std::string part(w.begin(), w.end());
 
 		if(w.translatable()) {
-			translated_value_ = t_token(static_cast<std::string const &>(translated_value_ ) +  dsgettext(w.textdomain().c_str(), part.c_str()));
+			translated_value_ = t_token((*translated_value_ ) +  dsgettext(w.textdomain().c_str(), part.c_str()));
 		} else {
-			translated_value_  = t_token(static_cast<std::string const &>(translated_value_ ) +  part);
+			translated_value_  = t_token((*translated_value_ ) +  part);
 		}
 	}
 

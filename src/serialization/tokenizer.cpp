@@ -21,18 +21,6 @@
 #include "wesconfig.h"
 #include "serialization/tokenizer.hpp"
 
-
-namespace {
-//static configuration tokens
-static const n_token::t_token z_LBRACKET("[", false);
-static const n_token::t_token z_RBRACKET("]", false);
-static const n_token::t_token z_SLASH("/", false);
-static const n_token::t_token z_LF("\n", false);
-static const n_token::t_token z_EQUALS("=", false);
-static const n_token::t_token z_COMMA(",", false);
-static const n_token::t_token z_PLUS("+", false);
-static const n_token::t_token z_UNDERSCORE("_", false);
-}
 tokenizer::tokenizer(std::istream& in) :
 	current_(EOF),
 	lineno_(1),
@@ -75,6 +63,16 @@ tokenizer::~tokenizer()
 
 const token &tokenizer::next_token()
 {
+static const n_token::t_token z_LBRACKET("[", false);
+static const n_token::t_token z_RBRACKET("]", false);
+static const n_token::t_token z_SLASH("/", false);
+static const n_token::t_token z_LF("\n", false);
+static const n_token::t_token z_EQUALS("=", false);
+static const n_token::t_token z_COMMA(",", false);
+static const n_token::t_token z_PLUS("+", false);
+static const n_token::t_token z_UNDERSCORE("_", false);
+
+
 #if DEBUG
 	previous_token_ = token_;
 #endif

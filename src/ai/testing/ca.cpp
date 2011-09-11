@@ -492,7 +492,7 @@ void recruitment_phase::analyze_potential_recruit_combat()
 
 			unit const &un = *j;
 			const unit_type *enemy_info = unit_types.find(un.type_id());
-			VALIDATE(enemy_info, "Unknown unit type : " + static_cast<std::string const &>(un.type_id()) + " while scoring units.");
+			VALIDATE(enemy_info, "Unknown unit type : " + (*un.type_id()) + " while scoring units.");
 
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;

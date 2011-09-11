@@ -29,108 +29,37 @@
 #include <algorithm>
 
 
-namespace {
-//Static tokens are replacements for string literals in code
-//They allow for fast comparison, copying and hashing operations.
-static const config::t_token z_animation("animation", false);
-static const config::t_token z_attack_anim("attack_anim", false);
-static const config::t_token z_death("death", false);
-static const config::t_token z_defend("defend", false);
-static const config::t_token z_extra_anim("extra_anim", false);
-static const config::t_token z_healed_anim("healed_anim", false);
-static const config::t_token z_healing_anim("healing_anim", false);
-static const config::t_token z_idle_anim("idle_anim", false);
-static const config::t_token z_leading_anim("leading_anim", false);
-static const config::t_token z_resistance_anim("resistance_anim", false);
-static const config::t_token z_levelin_anim("levelin_anim", false);
-static const config::t_token z_levelout_anim("levelout_anim", false);
-static const config::t_token z_movement_anim("movement_anim", false);
-static const config::t_token z_poison_anim("poison_anim", false);
-static const config::t_token z_recruit_anim("recruit_anim", false);
-static const config::t_token z_recruiting_anim("recruiting_anim", false);
-static const config::t_token z_standing_anim("standing_anim", false);
-static const config::t_token z_teleport_anim("teleport_anim", false);
-static const config::t_token z_pre_movement_anim("pre_movement_anim", false);
-static const config::t_token z_post_movement_anim("post_movement_anim", false);
-static const config::t_token z_draw_weapon("draw_weapon", false);
-static const config::t_token z_draw_weapon_anim("draw_weapon_anim", false);
-static const config::t_token z_sheath_weapon_anim("sheath_weapon_anim", false);
-static const config::t_token z_victory_anim("victory_anim", false);
-static const config::t_token z__transparent("_transparent", false);
-static const config::t_token z_if("if", false);
-static const config::t_token z_else("else", false);
-static const config::t_token z_terrain_type("terrain_type", false);
-static const config::t_token z_frequency("frequency", false);
-static const config::t_token z_base_score("base_score", false);
-static const config::t_token z_apply_to("apply_to", false);
-static const config::t_token z_direction("direction", false);
-static const config::t_token z_filter("filter", false);
-static const config::t_token z_filter_second("filter_second", false);
-static const config::t_token z_value("value", false);
-static const config::t_token z_hits("hits", false);
-static const config::t_token z_yes("yes", false);
-static const config::t_token z_hit("hit", false);
-static const config::t_token z_no("no", false);
-static const config::t_token z_miss("miss", false);
-static const config::t_token z_kill("kill", false);
-static const config::t_token z_value_second("value_second", false);
-static const config::t_token z_filter_attack("filter_attack", false);
-static const config::t_token z_filter_second_attack("filter_second_attack", false);
-static const config::t_token z_offscreen("offscreen", false);
-static const config::t_token z_default("default", false);
-static const config::t_token z__disabled_("_disabled_", false);
-static const config::t_token z__disabled_selected_("_disabled_selected_", false);
-static const config::t_token z_standing("standing", false);
-static const config::t_token z_ghosted("ghosted", false);
-static const config::t_token z_disabled_ghosted("disabled_ghosted", false);
-static const config::t_token z_selected("selected", false);
-static const config::t_token z_recruited("recruited", false);
-static const config::t_token z_levelin("levelin", false);
-static const config::t_token z_levelout("levelout", false);
-static const config::t_token z_pre_movement("pre_movement", false);
-static const config::t_token z_post_movement("post_movement", false);
-static const config::t_token z_movement("movement", false);
-static const config::t_token z_attack("attack", false);
-static const config::t_token z_range("range", false);
-static const config::t_token z_melee("melee", false);
-static const config::t_token z_ranged("ranged", false);
-static const config::t_token z__death_sound("_death_sound", false);
-static const config::t_token z_die_sound("die_sound", false);
-static const config::t_token z_victory("victory", false);
-static const config::t_token z_pre_teleport("pre_teleport", false);
-static const config::t_token z_healed("healed", false);
-static const config::t_token z__healed_sound("_healed_sound", false);
-static const config::t_token z_poisoned("poisoned", false);
-static const config::t_token z__poison_sound("_poison_sound", false);
-static const config::t_token z_layer("layer", false);
-static const config::t_token z_resistance("resistance", false);
-static const config::t_token z_leading("leading", false);
-static const config::t_token z_recruiting("recruiting", false);
-static const config::t_token z_idling("idling", false);
-static const config::t_token z_standing_c_default("standing,default", false);
-static const config::t_token z_cycles("cycles", false);
-static const config::t_token z_true("true", false);
-static const config::t_token z_healing("healing", false);
-static const config::t_token z_damage("damage", false);
-static const config::t_token z_offset("offset", false);
-static const config::t_token z_sheath_weapon("sheath_weapon", false);
-static const config::t_token z_missile_frame("missile_frame", false);
-static const config::t_token z_missile_offset("missile_offset", false);
-static const config::t_token z_missile_layer("missile_layer", false);
-static const config::t_token z_duration("duration", false);
-static const config::t_token z_flag("flag", false);
-static const config::t_token z_post_teleport("post_teleport", false);
-static const config::t_token z_start_time("start_time", false);
-static const config::t_token z_begin("begin", false);
-static const config::t_token z__add_text("_add_text", false);
-
-static const config::t_token z_GS("~GS()", false);
-static const config::t_token z_local_heal_wav("heal.wav", false);
-static const config::t_token z_local_pois_sound("poison.ogg", false);
+namespace n_unit_animation {
+DEFAULT_TOKEN_BODY(z_default_frame, "frame")
 }
 
 struct tag_name_manager {
 	tag_name_manager() : names() {
+	static const config::t_token z_animation("animation", false);
+	static const config::t_token z_attack_anim("attack_anim", false);
+	static const config::t_token z_death("death", false);
+	static const config::t_token z_defend("defend", false);
+	static const config::t_token z_extra_anim("extra_anim", false);
+	static const config::t_token z_healed_anim("healed_anim", false);
+	static const config::t_token z_healing_anim("healing_anim", false);
+	static const config::t_token z_idle_anim("idle_anim", false);
+	static const config::t_token z_leading_anim("leading_anim", false);
+	static const config::t_token z_resistance_anim("resistance_anim", false);
+	static const config::t_token z_levelin_anim("levelin_anim", false);
+	static const config::t_token z_levelout_anim("levelout_anim", false);
+	static const config::t_token z_movement_anim("movement_anim", false);
+	static const config::t_token z_poison_anim("poison_anim", false);
+	static const config::t_token z_recruit_anim("recruit_anim", false);
+	static const config::t_token z_recruiting_anim("recruiting_anim", false);
+	static const config::t_token z_standing_anim("standing_anim", false);
+	static const config::t_token z_teleport_anim("teleport_anim", false);
+	static const config::t_token z_pre_movement_anim("pre_movement_anim", false);
+	static const config::t_token z_post_movement_anim("post_movement_anim", false);
+	static const config::t_token z_draw_weapon_anim("draw_weapon_anim", false);
+	static const config::t_token z_sheath_weapon_anim("sheath_weapon_anim", false);
+	static const config::t_token z_victory_anim("victory_anim", false);
+	static const config::t_token z__transparent("_transparent", false);
+
 		names.push_back(z_animation);
 		names.push_back(z_attack_anim);
 		names.push_back(z_death);
@@ -207,6 +136,9 @@ struct animation_cursor
 
 static void prepare_single_animation(const config &anim_cfg, animation_branches &expanded_anims)
 {
+	static const config::t_token z_if("if", false);
+	static const config::t_token z_else("else", false);
+
 	std::list<animation_cursor> anim_cursors;
 	anim_cursors.push_back(animation_cursor(anim_cfg));
 	while (!anim_cursors.empty())
@@ -285,14 +217,18 @@ unit_animation::unit_animation(int start_time,
 {
 	add_frame(frame.duration(),frame,!frame.does_not_change());
 }
-
+namespace{
+	DEFAULT_TOKEN_BODY(z_terrain_type_default, "terrain_type")
+	DEFAULT_TOKEN_BODY(z_frequency_default, "frequency")
+	DEFAULT_TOKEN_BODY(z_base_score_default, "base_score")
+}
 unit_animation::unit_animation(const config& cfg,const n_token::t_token& frame_string ) :
-	terrain_types_(t_translation::read_list(cfg[z_terrain_type])),
+	terrain_types_(t_translation::read_list(cfg[z_terrain_type_default()])),
 	unit_filter_(),
 	secondary_unit_filter_(),
 	directions_(),
-	frequency_(cfg[z_frequency]),
-	base_score_(cfg[z_base_score]),
+	frequency_(cfg[z_frequency_default()]),
+	base_score_(cfg[z_base_score_default()]),
 	event_(),
 	value_(),
 	primary_attack_filter_(),
@@ -307,6 +243,22 @@ unit_animation::unit_animation(const config& cfg,const n_token::t_token& frame_s
 	play_offscreen_(true),
 	overlaped_hex_()
 {
+	static const config::t_token z_apply_to("apply_to", false);
+	static const config::t_token z_direction("direction", false);
+	static const config::t_token z_filter("filter", false);
+	static const config::t_token z_filter_second("filter_second", false);
+	static const config::t_token z_value("value", false);
+	static const config::t_token z_hits("hits", false);
+	static const config::t_token z_yes("yes", false);
+	static const config::t_token z_hit("hit", false);
+	static const config::t_token z_no("no", false);
+	static const config::t_token z_miss("miss", false);
+	static const config::t_token z_kill("kill", false);
+	static const config::t_token z_value_second("value_second", false);
+	static const config::t_token z_filter_attack("filter_attack", false);
+	static const config::t_token z_filter_second_attack("filter_second_attack", false);
+	static const config::t_token z_offscreen("offscreen", false);
+
 //	if(!cfg[z_debug].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
 	foreach (const config::any_child &fr, cfg.all_children_range())
 	{
@@ -460,6 +412,39 @@ int unit_animation::matches(const game_display &disp,const map_location& loc,con
 
 void unit_animation::fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg)
 {
+static const config::t_token z_GS("~GS()", false);
+static const config::t_token z_local_heal_wav("heal.wav", false);
+static const config::t_token z_local_pois_sound("poison.ogg", false);
+	static const config::t_token z_image("image", false);
+	static const config::t_token z_default("default", false);
+	static const config::t_token z__disabled_("_disabled_", false);
+	static const config::t_token z__disabled_selected_("_disabled_selected_", false);
+	static const config::t_token z_standing("standing", false);
+	static const config::t_token z_ghosted("ghosted", false);
+	static const config::t_token z_disabled_ghosted("disabled_ghosted", false);
+	static const config::t_token z_selected("selected", false);
+	static const config::t_token z_recruited("recruited", false);
+	static const config::t_token z_levelin("levelin", false);
+	static const config::t_token z_levelout("levelout", false);
+	static const config::t_token z_pre_movement("pre_movement", false);
+	static const config::t_token z_post_movement("post_movement", false);
+	static const config::t_token z_movement("movement", false);
+	static const config::t_token z_defend("defend", false);
+	static const config::t_token z_attack("attack", false);
+	static const config::t_token z_range("range", false);
+	static const config::t_token z_melee("melee", false);
+	static const config::t_token z_ranged("ranged", false);
+	static const config::t_token z_death("death", false);
+	static const config::t_token z__death_sound("_death_sound", false);
+	static const config::t_token z_die_sound("die_sound", false);
+	static const config::t_token z_victory("victory", false);
+	static const config::t_token z_pre_teleport("pre_teleport", false);
+	static const config::t_token z_post_teleport("post_teleport", false);
+	static const config::t_token z_healed("healed", false);
+	static const config::t_token z__healed_sound("_healed_sound", false);
+	static const config::t_token z_poisoned("poisoned", false);
+	static const config::t_token z__poison_sound("_poison_sound", false);
+
 	const image::locator default_image = image::locator(cfg[z_image].token());
 	std::vector<unit_animation>  animation_base;
 	std::vector<unit_animation>::const_iterator itor;
@@ -601,6 +586,10 @@ static void add_simple_anim(std::vector<unit_animation> &animations, const confi
 	display::tdrawing_layer layer = display::LAYER_UNIT_DEFAULT,
 	bool offscreen = true)
 {
+	static const config::t_token z_apply_to("apply_to", false);
+	static const config::t_token z_offscreen("offscreen", false);
+	static const config::t_token z_layer("layer", false);
+
 	foreach (const animation_branch &ab, prepare_animation(cfg, tag_name))
 	{
 		config anim = ab.merge();
@@ -616,6 +605,73 @@ static void add_simple_anim(std::vector<unit_animation> &animations, const confi
 }
 
 void unit_animation::add_anims( std::vector<unit_animation> & animations, const config & cfg) {
+	static const config::t_token z_animation("animation", false);
+	static const config::t_token z_resistance_anim("resistance_anim", false);
+	static const config::t_token z_resistance("resistance", false);
+	static const config::t_token z_leading_anim("leading_anim", false);
+	static const config::t_token z_leading("leading", false);
+	static const config::t_token z_recruit_anim("recruit_anim", false);
+	static const config::t_token z_recruited("recruited", false);
+	static const config::t_token z_recruiting_anim("recruiting_anim", false);
+	static const config::t_token z_recruiting("recruiting", false);
+	static const config::t_token z_idle_anim("idle_anim", false);
+	static const config::t_token z_idling("idling", false);
+	static const config::t_token z_levelin_anim("levelin_anim", false);
+	static const config::t_token z_levelin("levelin", false);
+	static const config::t_token z_levelout_anim("levelout_anim", false);
+	static const config::t_token z_levelout("levelout", false);
+	static const config::t_token z_standing_anim("standing_anim", false);
+	static const config::t_token z_apply_to("apply_to", false);
+	static const config::t_token z_standing_c_default("standing,default", false);
+	static const config::t_token z_cycles("cycles", false);
+	static const config::t_token z_true("true", false);
+	static const config::t_token z_layer("layer", false);
+	static const config::t_token z_offscreen("offscreen", false);
+	static const config::t_token z_healing_anim("healing_anim", false);
+	static const config::t_token z_healing("healing", false);
+	static const config::t_token z_value("value", false);
+	static const config::t_token z_healed_anim("healed_anim", false);
+	static const config::t_token z_healed("healed", false);
+	static const config::t_token z__healed_sound("_healed_sound", false);
+	static const config::t_token z_local_heal_wav("local_heal_wav", false);
+	static const config::t_token z_poison_anim("poison_anim", false);
+	static const config::t_token z_poisoned("poisoned", false);
+	static const config::t_token z_damage("damage", false);
+	static const config::t_token z__poison_sound("_poison_sound", false);
+	static const config::t_token z_local_pois_sound("local_pois_sound", false);
+	static const config::t_token z_pre_movement_anim("pre_movement_anim", false);
+	static const config::t_token z_pre_movement("pre_movement", false);
+	static const config::t_token z_movement_anim("movement_anim", false);
+	static const config::t_token z_offset("offset", false);
+	static const config::t_token z_movement("movement", false);
+	static const config::t_token z_post_movement_anim("post_movement_anim", false);
+	static const config::t_token z_post_movement("post_movement", false);
+	static const config::t_token z_defend("defend", false);
+	static const config::t_token z_hits("hits", false);
+	static const config::t_token z_yes("yes", false);
+	static const config::t_token z_hit("hit", false);
+	static const config::t_token z_kill("kill", false);
+	static const config::t_token z_draw_weapon_anim("draw_weapon_anim", false);
+	static const config::t_token z_draw_weapon("draw_weapon", false);
+	static const config::t_token z_sheath_weapon_anim("sheath_weapon_anim", false);
+	static const config::t_token z_sheath_weapon("sheath_weapon", false);
+	static const config::t_token z_attack_anim("attack_anim", false);
+	static const config::t_token z_attack("attack", false);
+	static const config::t_token z_missile_frame("missile_frame", false);
+	static const config::t_token z_missile_offset("missile_offset", false);
+	static const config::t_token z_missile_layer("missile_layer", false);
+	static const config::t_token z_duration("duration", false);
+	static const config::t_token z_death("death", false);
+	static const config::t_token z_die_sound("die_sound", false);
+	static const config::t_token z__death_sound("_death_sound", false);
+	static const config::t_token z_victory_anim("victory_anim", false);
+	static const config::t_token z_victory("victory", false);
+	static const config::t_token z_extra_anim("extra_anim", false);
+	static const config::t_token z_flag("flag", false);
+	static const config::t_token z_teleport_anim("teleport_anim", false);
+	static const config::t_token z_pre_teleport("pre_teleport", false);
+	static const config::t_token z_post_teleport("post_teleport", false);
+
 	foreach (const animation_branch &ab, prepare_animation(cfg, z_animation)) {
 		animations.push_back(unit_animation(ab.merge())); }
 
@@ -850,6 +906,12 @@ unit_animation::particule::particule(
 		last_frame_begin_time_(0),
 		cycles_(false)
 {
+	static const config::t_token z_frame("frame", false);
+	static const config::t_token z_start_time("start_time", false);
+	static const config::t_token z_begin("begin", false);
+	static const config::t_token z_cycles("cycles", false);
+
+
 	config::const_child_itors range = cfg.child_range(frame_string+z_frame);
 	starting_frame_time_=INT_MAX;
 	if(cfg[frame_string + z_start_time].empty() &&range.first != range.second) {
@@ -957,6 +1019,8 @@ void unit_animation::start_animation(int start_time
 	dst_ = dst;
 	unit_anim_.start_animation(start_time);
 	if(!text.empty()) {
+	static const config::t_token z__add_text("_add_text", false);
+
 		particule crude_build;
 		crude_build.add_frame(1,frame_builder());
 		crude_build.add_frame(1,frame_builder().text(text,text_color),true);

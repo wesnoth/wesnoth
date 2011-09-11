@@ -59,120 +59,22 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 #define LOG_NG_TC LOG_STREAM(info, log_engine_tc)
 #define DBG_NG_TC LOG_STREAM(debug, log_engine_tc)
 
-namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison, copying and hashing operations.
-	static const config::t_token z_NORMAL("NORMAL", false);
-	static const config::t_token z_label("label", false);
-	static const config::t_token z_parent("parent", false);
-	static const config::t_token z_version("version", false);
-	static const config::t_token z_campaign_type("campaign_type", false);
-	static const config::t_token z_scenario("scenario", false);
-	static const config::t_token z_campaign_define("campaign_define", false);
-	static const config::t_token z_campaign_extra_defines("campaign_extra_defines", false);
-	static const config::t_token z_campaign("campaign", false);
-	static const config::t_token z_history("history", false);
-	static const config::t_token z_abbrev("abbrev", false);
-	static const config::t_token z_next_scenario("next_scenario", false);
-	static const config::t_token z_completion("completion", false);
-	static const config::t_token z_end_text("end_text", false);
-	static const config::t_token z_end_text_duration("end_text_duration", false);
-	static const config::t_token z_difficulty("difficulty", false);
-	static const config::t_token z_player("player", false);
-	static const config::t_token z_side("side", false);
-	static const config::t_token z_save_id("save_id", false);
-	static const config::t_token z_id("id", false);
-	static const config::t_token z_gold("gold", false);
-	static const config::t_token z_gold_add("gold_add", false);
-	static const config::t_token z_previous_recruits("previous_recruits", false);
-	static const config::t_token z_can_recruit("can_recruit", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_current_player("current_player", false);
-	static const config::t_token z_color("color", false);
-	static const config::t_token z_unit("unit", false);
-	static const config::t_token z_next_underlying_unit_id("next_underlying_unit_id", false);
-	static const config::t_token z_read_game("read_game", false);
-	static const config::t_token z_snapshot("snapshot", false);
-	static const config::t_token z_random_calls("random_calls", false);
-	static const config::t_token z_can_end_turn("can_end_turn", false);
-	static const config::t_token z_variables("variables", false);
-	static const config::t_token z_menu_item("menu_item", false);
-	static const config::t_token z_statistics("statistics", false);
-	static const config::t_token z_write_game("write_game", false);
-	static const config::t_token z_random_seed("random_seed", false);
-	static const config::t_token z_corrupt("corrupt", false);
-	static const config::t_token z_turn("turn", false);
-	static const config::t_token z_turn_at("turn_at", false);
-	static const config::t_token z_turns("turns", false);
-	static const config::t_token z_controller("controller", false);
-	static const config::t_token z_human("human", false);
-	static const config::t_token z_shroud("shroud", false);
-	static const config::t_token z_canrecruit("canrecruit", false);
-	static const config::t_token z_leader("leader", false);
-	static const config::t_token z_leader_image("leader_image", false);
-	static const config::t_token z_map_data("map_data", false);
-	static const config::t_token z_yes("yes", false);
-	static const config::t_token z_init("init", false);
-	static const config::t_token z_network("network", false);
-	static const config::t_token z_network_ai("network_ai", false);
-	static const config::t_token z_human_ai("human_ai", false);
-	static const config::t_token z_persistent("persistent", false);
-	static const config::t_token z_true("true", false);
-	static const config::t_token z_false("false", false);
-	static const config::t_token z_objectives("objectives", false);
-	static const config::t_token z_type("type", false);
-	static const config::t_token z_placement("placement", false);
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
-	static const config::t_token z_leader_cfg("leader_cfg", false);
-	static const config::t_token z_no_leader("no_leader", false);
-	static const config::t_token z_null("null", false);
-	static const config::t_token z_player_cfg("player_cfg", false);
-	static const config::t_token z_side_cfg("side_cfg", false);
-	static const config::t_token z_income("income", false);
-	static const config::t_token z_team_name("team_name", false);
-	static const config::t_token z_user_team_name("user_team_name", false);
-	static const config::t_token z_countdown_time("countdown_time", false);
-	static const config::t_token z_action_bonus_count("action_bonus_count", false);
-	static const config::t_token z_flag("flag", false);
-	static const config::t_token z_flag_icon("flag_icon", false);
-	static const config::t_token z_objectives_changed("objectives_changed", false);
-	static const config::t_token z_disallow_observers("disallow_observers", false);
-	static const config::t_token z_allow_player("allow_player", false);
-	static const config::t_token z_hidden("hidden", false);
-	static const config::t_token z_music("music", false);
-	static const config::t_token z_colour("colour", false);
-	static const config::t_token z_ai_config("ai_config", false);
-	static const config::t_token z_start_gold("start_gold", false);
-	static const config::t_token z_team_rgb("team_rgb", false);
-	static const config::t_token z_village_gold("village_gold", false);
-	static const config::t_token z_recall_cost("recall_cost", false);
-	static const config::t_token z_share_view("share_view", false);
-	static const config::t_token z_share_maps("share_maps", false);
-	static const config::t_token z_recruit("recruit", false);
-	static const config::t_token z_fog("fog", false);
-	static const config::t_token z_shroud_data("shroud_data", false);
-	static const config::t_token z_income_lock("income_lock", false);
-	static const config::t_token z_gold_lock("gold_lock", false);
-	static const config::t_token z_team_lock("team_lock", false);
-	static const config::t_token z_random_leader("random_leader", false);
-	static const config::t_token z_terrain_liked("terrain_liked", false);
-	static const config::t_token z_allow_changes("allow_changes", false);
-	static const config::t_token z_faction_name("faction_name", false);
-	static const config::t_token z_user_description("user_description", false);
-	static const config::t_token z_100("100", false);
-	static const config::t_token z_multiplayer("multiplayer", false);
-	static const config::t_token z_no("no", false);
-	static const config::t_token z_replay("replay", false);
-	static const config::t_token z_replay_start("replay_start", false);
-	static const config::t_token z_needs_select("needs_select", false);
-	static const config::t_token z_show_if("show_if", false);
-	static const config::t_token z_filter_location("filter_location", false);
-	static const config::t_token z_command("command", false);
-	static const config::t_token z_scroll_to_leader("scroll_to_leader", false);
-	static const config::t_token z_color_lock("color_lock", false);
-	static const config::t_token z_faction("faction", false);
-}
+DEFAULT_TOKEN_BODY(z_NORMAL_default, "NORMAL");
+DEFAULT_TOKEN_BODY(z_label_default, "label")
+DEFAULT_TOKEN_BODY(z_parent_default, "parent")
+DEFAULT_TOKEN_BODY(z_version_default, "version")
+DEFAULT_TOKEN_BODY(z_campaign_type_default, "campaign_type")
+DEFAULT_TOKEN_BODY(z_scenario_default, "scenario")
+DEFAULT_TOKEN_BODY(z_campaign_define_default, "campaign_define")
+DEFAULT_TOKEN_BODY(z_campaign_extra_defines_default, "campaign_extra_defines")
+DEFAULT_TOKEN_BODY(z_campaign_default, "campaign")
+DEFAULT_TOKEN_BODY(z_history_default, "history")
+DEFAULT_TOKEN_BODY(z_abbrev_default, "abbrev")
+DEFAULT_TOKEN_BODY(z_next_scenario_default, "next_scenario")
+DEFAULT_TOKEN_BODY(z_completion_default, "completion")
+DEFAULT_TOKEN_BODY(z_end_text_default, "end_text")
+DEFAULT_TOKEN_BODY(z_end_text_duration_default, "end_text_duration")
+DEFAULT_TOKEN_BODY(z_difficulty_default, "difficulty")
 
 game_classification::game_classification():
 	savegame_config(),
@@ -190,26 +92,26 @@ game_classification::game_classification():
 	completion(),
 	end_text(),
 	end_text_duration(),
-	difficulty(z_NORMAL)
+	difficulty(z_NORMAL_default())
 	{}
 
 game_classification::game_classification(const config& cfg):
 	savegame_config(),
-	label(cfg[z_label]),
-	parent(cfg[z_parent]),
-	version(cfg[z_version]),
-	campaign_type(cfg[z_campaign_type].empty() ? z_scenario : cfg[z_campaign_type].str()),
-	campaign_define(cfg[z_campaign_define]),
-	campaign_xtra_defines(utils::split(cfg[z_campaign_extra_defines])),
-	campaign(cfg[z_campaign]),
-	history(cfg[z_history]),
-	abbrev(cfg[z_abbrev]),
-	scenario(cfg[z_scenario]),
-	next_scenario(cfg[z_next_scenario]),
-	completion(cfg[z_completion]),
-	end_text(cfg[z_end_text]),
-	end_text_duration(cfg[z_end_text_duration]),
-	difficulty(cfg[z_difficulty].empty() ? z_NORMAL : cfg[z_difficulty].str())
+	label(cfg[z_label_default()]),
+	parent(cfg[z_parent_default()]),
+	version(cfg[z_version_default()]),
+	campaign_type(cfg[z_campaign_type_default()].empty() ? z_scenario_default() : cfg[z_campaign_type_default()].str()),
+	campaign_define(cfg[z_campaign_define_default()]),
+	campaign_xtra_defines(utils::split(cfg[z_campaign_extra_defines_default()])),
+	campaign(cfg[z_campaign_default()]),
+	history(cfg[z_history_default()]),
+	abbrev(cfg[z_abbrev_default()]),
+	scenario(cfg[z_scenario_default()]),
+	next_scenario(cfg[z_next_scenario_default()]),
+	completion(cfg[z_completion_default()]),
+	end_text(cfg[z_end_text_default()]),
+	end_text_duration(cfg[z_end_text_duration_default()]),
+	difficulty(cfg[z_difficulty_default()].empty() ? z_NORMAL_default() : cfg[z_difficulty_default()].str())
 	{}
 
 game_classification::game_classification(const game_classification& gc):
@@ -234,6 +136,22 @@ game_classification::game_classification(const game_classification& gc):
 
 config game_classification::to_config() const
 {
+	static const config::t_token z_label("label", false);
+	static const config::t_token z_parent("parent", false);
+	static const config::t_token z_version("version", false);
+	static const config::t_token z_campaign_type("campaign_type", false);
+	static const config::t_token z_campaign_define("campaign_define", false);
+	static const config::t_token z_campaign_extra_defines("campaign_extra_defines", false);
+	static const config::t_token z_campaign("campaign", false);
+	static const config::t_token z_history("history", false);
+	static const config::t_token z_abbrev("abbrev", false);
+	static const config::t_token z_scenario("scenario", false);
+	static const config::t_token z_next_scenario("next_scenario", false);
+	static const config::t_token z_completion("completion", false);
+	static const config::t_token z_end_text("end_text", false);
+	static const config::t_token z_end_text_duration("end_text_duration", false);
+	static const config::t_token z_difficulty("difficulty", false);
+
 	config cfg;
 
 	cfg[z_label] = label;
@@ -274,6 +192,19 @@ game_state::game_state()  :
 
 void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, const bool merge_side)
 {
+	static const config::t_token z_player("player", false);
+	static const config::t_token z_side("side", false);
+	static const config::t_token z_save_id("save_id", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_gold("gold", false);
+	static const config::t_token z_gold_add("gold_add", false);
+	static const config::t_token z_previous_recruits("previous_recruits", false);
+	static const config::t_token z_can_recruit("can_recruit", false);
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_current_player("current_player", false);
+	static const config::t_token z_color("color", false);
+	static const config::t_token z_unit("unit", false);
+
 	// If there is already a player config available it means we are loading
 	// from a savegame. Don't do anything then, the information is already there
 	config::child_itors player_cfg = cfg.child_range(z_player);
@@ -370,6 +301,18 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		phase_(INITIAL),
 		can_end_turn_(true)
 {
+	static const config::t_token z_next_underlying_unit_id("next_underlying_unit_id", false);
+	static const config::t_token z_read_game("read_game", false);
+	static const config::t_token z_snapshot("snapshot", false);
+	static const config::t_token z_replay_start("replay_start", false);
+	static const config::t_token z_random_calls("random_calls", false);
+	static const config::t_token z_can_end_turn("can_end_turn", false);
+	static const config::t_token z_variables("variables", false);
+	static const config::t_token z_menu_item("menu_item", false);
+	static const config::t_token z_replay("replay", false);
+	static const config::t_token z_player("player", false);
+	static const config::t_token z_statistics("statistics", false);
+
 	n_unit::id_manager::instance().set_save_id(cfg[z_next_underlying_unit_id]);
 	log_scope(z_read_game);
 
@@ -436,6 +379,35 @@ game_state::game_state(const config& cfg, bool show_replay) :
 
 void game_state::write_snapshot(config& cfg) const
 {
+	static const config::t_token z_write_game("write_game", false);
+	static const config::t_token z_label("label", false);
+	static const config::t_token z_history("history", false);
+	static const config::t_token z_abbrev("abbrev", false);
+	static const config::t_token z_version("version", false);
+	static const config::t_token z_scenario("scenario", false);
+	static const config::t_token z_next_scenario("next_scenario", false);
+	static const config::t_token z_completion("completion", false);
+	static const config::t_token z_campaign("campaign", false);
+	static const config::t_token z_campaign_type("campaign_type", false);
+	static const config::t_token z_difficulty("difficulty", false);
+	static const config::t_token z_campaign_define("campaign_define", false);
+	static const config::t_token z_campaign_extra_defines("campaign_extra_defines", false);
+	static const config::t_token z_next_underlying_unit_id("next_underlying_unit_id", false);
+	static const config::t_token z_can_end_turn("can_end_turn", false);
+	static const config::t_token z_random_seed("random_seed", false);
+	static const config::t_token z_random_calls("random_calls", false);
+	static const config::t_token z_end_text("end_text", false);
+	static const config::t_token z_end_text_duration("end_text_duration", false);
+	static const config::t_token z_variables("variables", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_image("image", false);
+	static const config::t_token z_description("description", false);
+	static const config::t_token z_needs_select("needs_select", false);
+	static const config::t_token z_show_if("show_if", false);
+	static const config::t_token z_filter_location("filter_location", false);
+	static const config::t_token z_command("command", false);
+	static const config::t_token z_menu_item("menu_item", false);
+
 	log_scope(z_write_game);
 	cfg[z_label] = classification_.label;
 	cfg[z_history] = classification_.history;
@@ -483,6 +455,33 @@ void game_state::write_snapshot(config& cfg) const
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 {
+	static const config::t_token z_snapshot("snapshot", false);
+	static const config::t_token z_replay_start("replay_start", false);
+	static const config::t_token z_replay("replay", false);
+	static const config::t_token z_side("side", false);
+	static const config::t_token z_label("label", false);
+	static const config::t_token z_parent("parent", false);
+	static const config::t_token z_campaign_type("campaign_type", false);
+	static const config::t_token z_scenario("scenario", false);
+	static const config::t_token z_campaign("campaign", false);
+	static const config::t_token z_difficulty("difficulty", false);
+	static const config::t_token z_version("version", false);
+	static const config::t_token z_corrupt("corrupt", false);
+	static const config::t_token z_turn("turn", false);
+	static const config::t_token z_turn_at("turn_at", false);
+	static const config::t_token z_turns("turns", false);
+	static const config::t_token z_controller("controller", false);
+	static const config::t_token z_human("human", false);
+	static const config::t_token z_shroud("shroud", false);
+	static const config::t_token z_canrecruit("canrecruit", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_image("image", false);
+	static const config::t_token z_unit("unit", false);
+	static const config::t_token z_leader("leader", false);
+	static const config::t_token z_leader_image("leader_image", false);
+	static const config::t_token z_map_data("map_data", false);
+	static const config::t_token z_yes("yes", false);
+
 	const config &cfg_snapshot = cfg_save.child(z_snapshot);
 	const config &cfg_replay_start = cfg_save.child(z_replay_start);
 
@@ -776,8 +775,6 @@ public:
 
 protected:
 
-	static const std::string default_gold_qty_;
-
 	int gold_info_ngold_;
 	bool gold_info_add_;
 	std::deque<config> leader_configs_;
@@ -805,6 +802,19 @@ protected:
 
 	void init()
 	{
+
+	static const config::t_token z_side("side", false);
+	static const config::t_token z_controller("controller", false);
+	static const config::t_token z_human("human", false);
+	static const config::t_token z_network("network", false);
+	static const config::t_token z_network_ai("network_ai", false);
+	static const config::t_token z_human_ai("human_ai", false);
+	static const config::t_token z_persistent("persistent", false);
+	static const config::t_token z_player("player", false);
+	static const config::t_token z_save_id("save_id", false);
+	static const config::t_token z_true("true", false);
+	static const config::t_token z_false("false", false);
+
 		side_ = side_cfg_[z_side].to_int(1);
 		if (unsigned(side_ - 1) >= teams_.size() || teams_[side_ - 1].side() != 0)
 			throw config::error("Invalid side number.");
@@ -866,16 +876,21 @@ protected:
 
 	void gold()
 	{
+	static const config::t_token z_gold("gold", false);
+	static const config::t_token z_gold_add("gold_add", false);
+	static const config::t_token z_100("100", false);
+	static const config::t_token z_default_gold_qty(z_100, false);
+
 		log_step("gold");
 
-		std::string gold = side_cfg_[z_gold];
+		n_token::t_token gold = side_cfg_[z_gold];
 		if(gold.empty()) {
-			gold = default_gold_qty_;
+			gold = z_default_gold_qty;
 		}
 
-		DBG_NG_TC << "found gold: '" << gold << "'\n";
+		DBG_NG_TC << "found gold: '" << *gold << "'\n";
 
-		gold_info_ngold_ = lexical_cast_default<int>(gold);
+		gold_info_ngold_ = lexical_cast_default<int>(*gold);
 
 		/* This is the gold carry-over mechanism for subsequent campaign
 		   scenarios. Snapshots and replays are loaded from savegames and
@@ -919,6 +934,8 @@ protected:
 
 	void objectives()
 	{
+	static const config::t_token z_objectives("objectives", false);
+
 		log_step("objectives");
 		// If this team has no objectives, set its objectives
 		// to the level-global z_objectives
@@ -929,6 +946,8 @@ protected:
 
 	void previous_recruits()
 	{
+	static const config::t_token z_previous_recruits("previous_recruits", false);
+
 		log_step("previous recruits");
 		// If the game state specifies units that
 		// can be recruited for the player, add them.
@@ -946,6 +965,13 @@ protected:
 
 	void handle_unit(const config &u, const char *origin)
 	{
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_placement("placement", false);
+	static const config::t_token z_x("x", false);
+	static const config::t_token z_y("y", false);
+	static const config::t_token z_side("side", false);
+
 		DBG_NG_TC
 			<< "unit from "<<origin
 			<< ": type=["<<u[z_type]
@@ -975,6 +1001,9 @@ protected:
 
 	void handle_leader(const config &leader)
 	{
+	static const config::t_token z_canrecruit("canrecruit", false);
+	static const config::t_token z_placement("placement", false);
+
 		leader_configs_.push_back(leader);
 
 		config::attribute_value &a1 = leader_configs_.back()[z_canrecruit];
@@ -987,6 +1016,11 @@ protected:
 
 	void leader()
 	{
+	static const config::t_token z_no_leader("no_leader", false);
+	static const config::t_token z_controller("controller", false);
+	static const config::t_token z_null("null", false);
+	static const config::t_token z_leader("leader", false);
+
 		log_step("leader");
 		// If this side tag describes the leader of the side, we can simply add it to front of unit queue
 		// there was a hack: if this side tag describes the leader of the side,
@@ -1005,6 +1039,8 @@ protected:
 
 	void prepare_units()
 	{
+	static const config::t_token z_unit("unit", false);
+
 		log_step("prepare units");
 		if (use_player_cfg()) {
 			//units in [replay_start][side] merged with [side]
@@ -1026,6 +1062,51 @@ protected:
 
 	void place_units()
 	{
+	static const config::t_token z_income("income", false);
+	static const config::t_token z_team_name("team_name", false);
+	static const config::t_token z_user_team_name("user_team_name", false);
+	static const config::t_token z_save_id("save_id", false);
+	static const config::t_token z_current_player("current_player", false);
+	static const config::t_token z_countdown_time("countdown_time", false);
+	static const config::t_token z_action_bonus_count("action_bonus_count", false);
+	static const config::t_token z_flag("flag", false);
+	static const config::t_token z_flag_icon("flag_icon", false);
+	static const config::t_token z_objectives("objectives", false);
+	static const config::t_token z_objectives_changed("objectives_changed", false);
+	static const config::t_token z_disallow_observers("disallow_observers", false);
+	static const config::t_token z_allow_player("allow_player", false);
+	static const config::t_token z_no_leader("no_leader", false);
+	static const config::t_token z_hidden("hidden", false);
+	static const config::t_token z_music("music", false);
+	static const config::t_token z_color("color", false);
+	static const config::t_token z_colour("colour", false);
+	static const config::t_token z_ai_config("ai_config", false);
+	static const config::t_token z_gold("gold", false);
+	static const config::t_token z_start_gold("start_gold", false);
+	static const config::t_token z_team_rgb("team_rgb", false);
+	static const config::t_token z_village_gold("village_gold", false);
+	static const config::t_token z_recall_cost("recall_cost", false);
+	static const config::t_token z_controller("controller", false);
+	static const config::t_token z_persistent("persistent", false);
+	static const config::t_token z_share_view("share_view", false);
+	static const config::t_token z_share_maps("share_maps", false);
+	static const config::t_token z_recruit("recruit", false);
+	static const config::t_token z_fog("fog", false);
+	static const config::t_token z_shroud("shroud", false);
+	static const config::t_token z_shroud_data("shroud_data", false);
+	static const config::t_token z_scroll_to_leader("scroll_to_leader", false);
+	static const config::t_token z_income_lock("income_lock", false);
+	static const config::t_token z_gold_lock("gold_lock", false);
+	static const config::t_token z_color_lock("color_lock", false);
+	static const config::t_token z_team_lock("team_lock", false);
+	static const config::t_token z_leader("leader", false);
+	static const config::t_token z_random_leader("random_leader", false);
+	static const config::t_token z_terrain_liked("terrain_liked", false);
+	static const config::t_token z_allow_changes("allow_changes", false);
+	static const config::t_token z_faction_name("faction_name", false);
+	static const config::t_token z_user_description("user_description", false);
+	static const config::t_token z_faction("faction", false);
+
 		static n_token::t_token const side_attrs[] = {
 			z_income, z_team_name, z_user_team_name, z_save_id,
 			z_current_player, z_countdown_time, z_action_bonus_count,
@@ -1069,8 +1150,6 @@ protected:
 
 };
 
-const std::string team_builder::default_gold_qty_ = z_100;
-
 
 team_builder_ptr game_state::create_team_builder(const config& side_cfg,
 					 std::string save_id, t_teams& teams,
@@ -1092,6 +1171,8 @@ void game_state::build_team_stage_two(team_builder_ptr tb_ptr)
 
 void game_state::set_menu_items(const config::const_child_itors &menu_items)
 {
+	static const config::t_token z_id("id", false);
+
 	clear_wmi(wml_menu_items);
 	foreach (const config &item, menu_items)
 	{
@@ -1107,6 +1188,23 @@ void game_state::set_menu_items(const config::const_child_itors &menu_items)
 
 void game_state::write_config(config_writer& out, bool write_variables) const
 {
+	static const config::t_token z_multiplayer("multiplayer", false);
+	static const config::t_token z_random_seed("random_seed", false);
+	static const config::t_token z_random_calls("random_calls", false);
+	static const config::t_token z_variables("variables", false);
+	static const config::t_token z_menu_item("menu_item", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_image("image", false);
+	static const config::t_token z_description("description", false);
+	static const config::t_token z_needs_select("needs_select", false);
+	static const config::t_token z_yes("yes", false);
+	static const config::t_token z_no("no", false);
+	static const config::t_token z_show_if("show_if", false);
+	static const config::t_token z_filter_location("filter_location", false);
+	static const config::t_token z_command("command", false);
+	static const config::t_token z_replay("replay", false);
+	static const config::t_token z_replay_start("replay_start", false);
+
 	out.write(classification_.to_config());
 	if (classification_.campaign_type == z_multiplayer)
 		out.write_child(z_multiplayer, mp_settings_.to_config());
@@ -1155,6 +1253,13 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		temp << ' ' << id;
 	}
 	name = config::t_token(temp.str());
+	static const config::t_token z_image("image", false);
+	static const config::t_token z_description("description", false);
+	static const config::t_token z_needs_select("needs_select", false);
+	static const config::t_token z_show_if("show_if", false);
+	static const config::t_token z_filter_location("filter_location", false);
+	static const config::t_token z_command("command", false);
+
 	if(cfg != NULL) {
 		image = (*cfg)[z_image].str();
 		description = (*cfg)[z_description].t_str();

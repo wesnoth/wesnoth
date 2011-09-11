@@ -186,7 +186,7 @@ void locator::init_index()
 
 void locator::parse_arguments()
 {
-	std::string const & fn = static_cast<std::string const &>(val_.filename_);
+	std::string const & fn = (*val_.filename_);
 	if(fn.empty()) {
 		return;
 	}
@@ -861,7 +861,7 @@ bool exists(const image::locator& i_locator)
 
 static void precache_file_existence_internal(const n_token::t_token& dir, const n_token::t_token& subdir)
 {
-	const n_token::t_token checked_dir =  n_token::t_token(static_cast<std::string const &>(dir) + "/" + static_cast<std::string const &>(subdir));
+	const n_token::t_token checked_dir =  n_token::t_token((*dir) + "/" + (*subdir));
 	if (precached_dirs.find(checked_dir) != precached_dirs.end())
 		return;
 	precached_dirs.insert(checked_dir);

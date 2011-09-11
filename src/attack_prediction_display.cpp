@@ -245,7 +245,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 			else str << _("Attacker");
 			if(resistance_modifier < 100) str << _(" resistance vs ");
 			else str << _(" vulnerability vs ");
-			str << string_table["type_" + static_cast<std::string const &>(weapon->type() )];
+			str << string_table["type_" + (*weapon->type() )];
 			left_strings.push_back(str.str());
 			str.str("");
 			str << "* " << (resistance_modifier / 100) << "." << ((resistance_modifier % 100) / 10);

@@ -28,16 +28,6 @@ class vconfig;
 class team;
 typedef  std::vector<team>  t_teams;
 
-namespace{
-	static const config::t_token z_description("description", false);
-	//	static const config::t_token z_advancement("advancement", false);
-	static const config::t_token z_ellipse("ellipse", false);
-	static const config::t_token z_image("image", false);
-	static const config::t_token z_halo("halo", false);
-	static const config::t_token z_usage("usage", false);
-	//static const config::t_token z_("", false);
-}
-
 class unit_ability_list
 {
 public:
@@ -113,7 +103,9 @@ public:
 	config::t_token const & small_profile() const;
 	config::t_token const & big_profile() const;
 	/** Information about the unit -- a detailed description of it */
-	t_string unit_description() const { return cfg_[z_description]; }
+	t_string unit_description() const { 
+		static const config::t_token z_description("description", false);
+		return cfg_[z_description]; }
 
 	int hitpoints() const { return hit_points_; }
 	int max_hitpoints() const { return max_hit_points_; }
@@ -264,8 +256,9 @@ public:
     std::vector<std::pair<std::string,std::string> > amla_icons() const;
 
 	std::vector<config> get_modification_advances() const;
-	config::const_child_itors modification_advancements() const
-	{ return cfg_.child_range(z_advancement); }
+	config::const_child_itors modification_advancements() const { 
+		static const config::t_token z_advancement("advancement", false);
+		return cfg_.child_range(z_advancement); }
 
 	size_t modification_count(const config::t_token& type, const std::string& id) const;
 
@@ -290,15 +283,23 @@ public:
 						 Uint32 text_color = 0, STATE state = STATE_ANIM);
 
 	/** The name of the file to game_display (used in menus). */
-	config::t_token const & absolute_image() const { return cfg_[z_image]; }
-	config::t_token const & image_halo() const { return cfg_[z_halo]; }
+	config::t_token const & absolute_image() const { 
+		static const config::t_token z_image("image", false);
+		return cfg_[z_image]; }
+	config::t_token const & image_halo() const { 
+		static const config::t_token z_halo("halo", false);
+		return cfg_[z_halo]; }
 
-	config::t_token const & image_ellipse() const { return cfg_[z_ellipse]; }
+	config::t_token const & image_ellipse() const { 
+		static const config::t_token z_ellipse("ellipse", false);
+		return cfg_[z_ellipse]; }
 
 	config &variables() { return variables_; }
 	const config &variables() const { return variables_; }
 
-	config::t_token usage() const { return cfg_[z_usage]; }
+	config::t_token usage() const { 
+		static const config::t_token z_usage("usage", false);
+		return cfg_[z_usage]; }
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
 	const unit_race* race() const { return race_; }
 

@@ -73,7 +73,7 @@ static markov_prefix_map markov_prefixes(const std::vector<config::t_token>& ite
 	markov_prefix_map res;
 
 	for(std::vector<config::t_token>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		add_prefixes(utils::string_to_wstring( static_cast<std::string const &>(*i) ),length,res);
+		add_prefixes(utils::string_to_wstring( (**i) ),length,res);
 	}
 
 	return res;

@@ -102,12 +102,12 @@ public:
 	bool operator<(const t_string_base& string) const;
 
 	bool empty() const                               { return value_.empty(); }
-	std::string::size_type size() const              { return static_cast<std::string const &>(token()).size(); }
+	std::string::size_type size() const              { return (*token()).size(); }
 
 	operator const t_token&() const              { return token(); }
 	const t_token& token() const;
 	operator const std::string&() const              { return str(); }
-	const std::string& str() const { return static_cast<std::string const &>(token()); }
+	const std::string& str() const { return (*token()); }
 	const char* c_str() const                        { return str().c_str(); }
 	bool translatable() const						 { return translatable_; }
 	// Warning: value() may contain platform dependant prefix bytes !

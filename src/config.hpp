@@ -94,8 +94,6 @@ public:
 	/// It is preferable to use t_token as indices over strings
 	typedef n_token::t_token t_token;
 
-	static const t_token z_empty, z_yes, z_no, z_true, z_false, z_index;
-
 	/**
 	 * Creates a config object with an empty child of name @a child.
 	 */

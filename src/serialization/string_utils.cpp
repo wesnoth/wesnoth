@@ -103,7 +103,7 @@ size_t hash_value(t_split_triad const & a) {
 ///When a cache miss occurs calculate the split token
 struct t_calc_cache_item {
 	t_out const operator()(t_split_triad const & x) {
-		std::vector<std::string> vstr(split(static_cast<std::string const &>(x.val), x.c, x.flags));
+		std::vector<std::string> vstr(split((*x.val), x.c, x.flags));
 		t_out retval;
 		foreach(std::string const & s, vstr){
 			retval.push_back(n_token::t_token(s));

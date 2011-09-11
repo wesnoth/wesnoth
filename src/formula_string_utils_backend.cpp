@@ -35,17 +35,19 @@ static const t_token z_sharp("#", false);
 
 template <typename T>
 t_tokenizer::t_tokenizer(T const & in)
-	: tokens_(), is_done_(false), is_valid_varname_(false), input_string_(static_cast<std::string const &>(in))
+	: tokens_(), is_done_(false), is_valid_varname_(false), input_string_((*in))
 	, curr_pos_(0), end_(input_string_.size())
 	, varname_start_(input_string_.npos){}
 
 template <typename T>
 t_tokens const & t_tokenizer::tokenize(T const & in) {
-	input_string_ = (static_cast<std::string const &>(in));
+	input_string_ = ((*in));
 	is_done_=false;
 	return tokenize(); }
 
 t_tokens const & t_tokenizer::tokenize() {
+	static const t_token z_empty("", false);
+
 	if(!is_done_){
 		tokens_.clear();
 		curr_pos_=0;
@@ -145,11 +147,11 @@ void t_operation_formula::operator()(t_tokens & stack,  variable_set const & var
 	t_token var_name(stack.back());
 	stack.pop_back();
 	try {
-		const game_logic::formula form(static_cast<std::string const &>(var_name) );
+		const game_logic::formula form(*var_name);
 		t_token rhs(form.evaluate().string_cast());
 		t_operation_append append(rhs);
 		append(stack, variable_set);
-		DEBUG_INTERP << string(var_name, static_cast<std::string const  &>(rhs) ) << "\n";
+		DEBUG_INTERP << string(var_name, (*rhs) ) << "\n";
 	} catch(game_logic::formula_error& e) {
 		ERR_INTERP << "Formula in WML string cannot be evaluated due to: "
 			   << e.type << "\n\t--> \""
@@ -264,6 +266,7 @@ t_instructions & t_parse::parse(){
 }
 
 t_token const & t_parse::peek_next(t_tokens::iterator const & curr_pos ){
+	static const t_token z_empty("", false);
 	t_tokens::iterator next(curr_pos + 1);
 	return (next != tokens_.end() ) ? (*next) : z_empty; }
 
@@ -437,6 +440,7 @@ t_tokens::iterator t_parse::do_parse_formula(t_tokens::iterator const & start_po
 	int paren_nesting_level = 1;
 	bool in_string = false, in_comment = false;
 
+	static const t_token z_empty("", false);
 	static const t_operation_ptr op_empty(new t_operation_push(z_empty));
 	complete_parse_.ops().push_back(op_empty);
 

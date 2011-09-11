@@ -56,10 +56,6 @@ namespace wml_interpolation {
 typedef n_token::t_token t_token;
 typedef std::vector<t_token> t_tokens;
 
-
-/// Control tokens for parsing
-static const t_token z_empty("", false);
-
 static const unsigned int CACHE_SIZE = 10000;
 
 inline bool  is_alnum_or_underscore (char c){
@@ -70,7 +66,7 @@ inline bool  is_alnum_or_underscore (char c){
 ///assumes that the whole token is characterized by the first character, which is true of
 ///parsed tokens but might not be true of returned by interpolation tokens
 inline bool  is_good_for_varname (t_token const & a){
-	return is_alnum_or_underscore(static_cast<std::string const &>(a)[0] ) ;}
+	return is_alnum_or_underscore((*a)[0] ) ;}
 
 
 
@@ -221,7 +217,7 @@ class t_operation_append : public t_operation {
 	///@class this functor generates the result to cache in the event of a cache miss
 	struct t_make_append_result {
 		t_token operator()(std::pair<t_token, t_token> const & x) const {
-			return t_token(static_cast<std::string const &>(x.first) +  static_cast<std::string const &>(x.second)); }
+			return t_token((*x.first) +  (*x.second)); }
 	};
 
 	///LRU cache of append operations
@@ -251,14 +247,14 @@ public:
 
 	/// push->append is reduces to a push operation
 	virtual t_reduce_result reduce_flipped(t_operation_push const & first_op) const {
-		t_operation_ptr op(new t_operation_push(t_token(static_cast<std::string const &>(first_op.x())
-														+  static_cast<std::string const &>(x()))));
+		t_operation_ptr op(new t_operation_push(t_token((*first_op.x())
+														+  (*x()))));
 		return std::make_pair(op, true); }
 
 	/// append->append is reduces to an append operation
 	virtual t_reduce_result reduce_flipped(t_operation_append const & first_op) const {
-		t_operation_ptr op(new t_operation_append(t_token(static_cast<std::string const &>(first_op.x())
-														+  static_cast<std::string const &>(x()))));
+		t_operation_ptr op(new t_operation_append(t_token((*first_op.x())
+														+  (*x()))));
 		return std::make_pair(op, true); }
 
 	virtual bool operator==(t_operation_ptr const & second_op) const {

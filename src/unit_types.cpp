@@ -40,218 +40,19 @@ static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 
 namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
-	static const config::t_token z_gender("gender", false);
-	static const config::t_token z_type("type", false);
-	static const config::t_token z_id("id", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_random_gender("random_gender", false);
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
-	static const config::t_token z_variation("variation", false);
-	static const config::t_token z_canrecruit("canrecruit", false);
-	static const config::t_token z_role("role", false);
-	static const config::t_token z_ai_special("ai_special", false);
-	static const config::t_token z_side("side", false);
-	static const config::t_token z_underlying_id("underlying_id", false);
-	static const config::t_token z_overlays("overlays", false);
-	static const config::t_token z_variables("variables", false);
-	static const config::t_token z_facing("facing", false);
-	static const config::t_token z_flying("flying", false);
-	static const config::t_token z_modification("modifications", false);
-	static const config::t_token z_race("race", false);
-	static const config::t_token z_undead_variation("undead_variation", false);
-	static const config::t_token z_max_attacks("max_attacks", false);
-	static const config::t_token z_attacks_left("attacks_left", false);
-	static const config::t_token z_alpha("alpha", false);
-	static const config::t_token z_zoc("zoc", false);
-	static const config::t_token z_description("description", false);
-	static const config::t_token z_cost("cost", false);
-	static const config::t_token z_profile("profile", false);
-	static const config::t_token z_small_profile("small_profile", false);
-	static const config::t_token z_max_hitpoints("max_hitpoints", false);
-	static const config::t_token z_max_moves("max_moves", false);
-	static const config::t_token z_max_experience("max_experience", false);
-	static const config::t_token z_advances_to("advances_to", false);
-	static const config::t_token z_null("null", false);
-	static const config::t_token z_ai("ai", false);
-	static const config::t_token z_formula("formula", false);
-	static const config::t_token z_loop_formula("loop_formula", false);
-	static const config::t_token z_priority("priority", false);
-	static const config::t_token z_vars("vars", false);
-	static const config::t_token z_guardian("guardian", false);
-	static const config::t_token z_hitpoints("hitpoints", false);
-	static const config::t_token z_goto_x("goto_x", false);
-	static const config::t_token z_goto_y("goto_y", false);
-	static const config::t_token z_experience("experience", false);
-	static const config::t_token z_resting("resting", false);
-	static const config::t_token z_unrenamable("unrenamable", false);
-	static const config::t_token z_lawful("lawful", false);
-	static const config::t_token z_neutral("neutral", false);
-	static const config::t_token z_chaotic("chaotic", false);
-	static const config::t_token z_liminal("liminal", false);
-	static const config::t_token z_upkeep("upkeep", false);
-	static const config::t_token z_full("full", false);
-	static const config::t_token z_flag_rgb("flag_rgb", false);
-	static const config::t_token z_language_name("language_name", false);
-	//	static const config::t_token z_halo("halo", false);
-	//	static const config::t_token z_ellipse("ellipse", false);
-	//	static const config::t_token z_usage("usage", false);
-	static const config::t_token z_generate_name("generate_name", false);
-	static const config::t_token z_availability("availability", false);
-	static const config::t_token z_musthave("musthave", false);
-	//	static const config::t_token z_trait("trait", false);
-	static const config::t_token z_random_traits("random_traits", false);
-	static const config::t_token z_male("male", false);
-	static const config::t_token z_female("female", false);
-	static const config::t_token z_unit_image("unit_image", false);
-	static const config::t_token z_duration("duration", false);
-	static const config::t_token z_prev_type("prev_type", false);
-	static const config::t_token z_forever("forever", false);
-	static const config::t_token z_abilities("abilities", false);
-	static const config::t_token z_speaker("speaker", false);
-	static const config::t_token z_has_weapon("has_weapon", false);
-	static const config::t_token z_defense("defense", false);
-	static const config::t_token z_visible("visible", false);
-	static const config::t_token z_viewing_side("viewing_side", false);
-	static const config::t_token z_filter_vision("filter_vision", false);
-	static const config::t_token z_adjacent("adjacent", false);
-	static const config::t_token z_is_enemy("is_enemy", false);
-	static const config::t_token z_count("count", false);
-	static const config::t_token z_find_in("find_in", false);
-	static const config::t_token z_lua_function("lua_function", false);
-	static const config::t_token z_status("status", false);
-	static const config::t_token z_loyal("loyal", false);
-	static const config::t_token z_free("free", false);
-	static const config::t_token z_active_on("active_on", false);
-	static const config::t_token z_apply_to("apply_to", false);
-	static const config::t_token z_icon("icon", false);
-	static const config::t_token z_strict_amla("strict_amla", false);
-	static const config::t_token z_require_amla("require_amla", false);
-	static const config::t_token z_times("times", false);
-	//	static const config::t_token z_empty("", false);
-	static const config::t_token z_modifications("modifications", false);
-	static const config::t_token z_level("level", false);
-	static const config::t_token z_attack("attack", false);
-	static const config::t_token z_resistance("resistance", false);
-	static const config::t_token z_healable("healable", false);
-	static const config::t_token z_unhealable("unhealable", false);
-	static const config::t_token z_waypoints("waypoints", false);
-	static const config::t_token z_moves("moves", false);
-	static const config::t_token z_alignment("alignment", false);
-	static const config::t_token z_placement("placement", false);
-	static const config::t_token z_do_not_list("do_not_list", false);
-	static const config::t_token z_event("event", false);
-	static const config::t_token z_any("any", false);
-	static const config::t_token z_die("die", false);
-	static const config::t_token z_flies("flies", false);
-	static const config::t_token z_inherit("inherit", false);
-	static const config::t_token z_variation_name("variation_name", false);
-	static const config::t_token z_ignore_race_traits("ignore_race_traits", false);
-	static const config::t_token z_hide_help("hide_help", false);
-	static const config::t_token z_yes("yes", false);
-	static const config::t_token z_no("no", false);
-	static const config::t_token z_slowed("slowed", false);
-	static const config::t_token z_poisoned("poisoned", false);
-	static const config::t_token z_petrified("petrified", false);
-	static const config::t_token z_uncovered("uncovered", false);
-	static const config::t_token z_not_moved("not_moved", false);
-	static const config::t_token z_this_unit("this_unit", false);
-	static const config::t_token z_and("and", false);
-	static const config::t_token z_or("or", false);
-	static const config::t_token z_not("not", false);
-	static const config::t_token z_filter("filter", false);
-	static const config::t_token z_recall("recall", false);
-	static const config::t_token z_ability("ability", false);
-	static const config::t_token z_movement_cost("movement_cost", false);
-	static const config::t_token z_movement_costs("movement_costs", false);
-	static const config::t_token z_filter_wml("filter_wml", false);
-	static const config::t_token z_filter_adjacent("filter_adjacent", false);
-	static const config::t_token z_standing("standing", false);
-	static const config::t_token z_ghosted("ghosted", false);
-	static const config::t_token z_disabled_ghosted("disabled_ghosted", false);
-	static const config::t_token z_image("image", false);
-	static const config::t_token z_movement("movement", false);
-	static const config::t_token z_die_sound("die_sound", false);
-	static const config::t_token z_movement_type("movement_type", false);
-	static const config::t_token z_filter_location("filter_location", false);
-	static const config::t_token z__disabled_("_disabled_", false);
-	static const config::t_token z_idling("idling", false);
-	static const config::t_token z_selected("selected", false);
-	static const config::t_token z__disabled_selected_("_disabled_selected_", false);
-	static const config::t_token z_offense("offense", false);
-	static const config::t_token z_max_value("max_value", false);
-	static const config::t_token z_advance("advance", false);
-	static const config::t_token z_max_times("max_times", false);
-	static const config::t_token z_fearless("fearless", false);
-	static const config::t_token z_healthy("healthy", false);
-	static const config::t_token z_effect("effect", false);
-	static const config::t_token z_unit_type("unit_type", false);
-	static const config::t_token z_unit_gender("unit_gender", false);
-	static const config::t_token z_portrait("portriat", false);
-	static const config::t_token z_small_portrait("small_portriat", false);
-	static const config::t_token z_new_attack("new_attack", false);
-	static const config::t_token z_remove_attacks("remove_attacks", false);
-	static const config::t_token z_wesnoth("wesnoth", false);
-	static const config::t_token z_attack_list("attack_list", false);
-	static const config::t_token z_effect_description("effect_description", false);
-	static const config::t_token z_increase("increase", false);
-	static const config::t_token z_increase_total("increase_total", false);
-	static const config::t_token z_set("set", false);
-	static const config::t_token z_set_total("set_total", false);
-	static const config::t_token z_violate_maximum("violate_maximum", false);
-	static const config::t_token z_HP("HP", false);
-	static const config::t_token z_remove("remove", false);
-	static const config::t_token z_replace("replace", false);
-	static const config::t_token z_heal_full("heal_full", false);
-	static const config::t_token z_add("add", false);
-	static const config::t_token z_value("value", false);
-	static const config::t_token z_new_ability("new_ability", false);
-	static const config::t_token z_remove_ability("remove_ability", false);
-	static const config::t_token z_image_mod("image_mod", false);
-	static const config::t_token z_new_animation("new_animation", false);
-	static const config::t_token z_female_name("female_name", false);
-	static const config::t_token z_male_name("male_name", false);
-	static const config::t_token z_ignore_global_traits("ignore_global_traits", false);
-	static const config::t_token z_range("range", false);
-	static const config::t_token z_damage("damage", false);
-	static const config::t_token z_number("number", false);
-	static const config::t_token z_specials("specials", false);
-	static const config::t_token z_description_inactive("description_inactive", false);
-	static const config::t_token z_name_inactive("name_inactive", false);
-	static const config::t_token z_advance_from("advance_from", false);
-	static const config::t_token z_hides("hides", false);
-	static const config::t_token z_Unit("Unit", false);
-	static const config::t_token z_attack_weight("attack_weight", false);
-	static const config::t_token z_defense_weight("defense_weight", false);
-	static const config::t_token z_accuracy("accuracy", false);
-	static const config::t_token z_parry("parry", false);
-	static const config::t_token z_special("special", false);
-	static const config::t_token z_set_name("set_name", false);
-	static const config::t_token z_set_description("set_description", false);
-	static const config::t_token z_set_type("set_type", false);
-	static const config::t_token z_remove_specials("remove_specials", false);
-	static const config::t_token z_set_specials("set_specials", false);
-	static const config::t_token z_increase_damage("increase_damage", false);
-	static const config::t_token z_increase_attacks("increase_attacks", false);
-	static const config::t_token z_attacks("attacks", false);
-	static const config::t_token z_usage("usage", false);
-	static const config::t_token z_num_traits("num_traits", false);
-	static const config::t_token z_movetype("movetype", false);
-	static const config::t_token z_base_unit("base_unit", false);
-	static const config::t_token z_all("all", false);
-	static const config::t_token z_random("random", false);
-	static const config::t_token z_type_adv_tree("type_adv_tree", false);
-	static const config::t_token z_unit("unit", false);
-	static const config::t_token z_not_living("not_living", false);
-	static const config::t_token z_increase_parry("increase_parry", false);
-	static const config::t_token z_increase_accuracy("increase_accuracy", false);
-	static const config::t_token z_mode("mode", false);
-	static const config::t_token z_append("append", false);
-	static const config::t_token z_advancefrom("advancefrom", false);
-
+	DEFAULT_TOKEN_BODY(z_description_default, "description")
+	DEFAULT_TOKEN_BODY(z_name_default, "name")
+	DEFAULT_TOKEN_BODY(z_type_default, "type")
+	DEFAULT_TOKEN_BODY(z_icon_default, "icon")
+	DEFAULT_TOKEN_BODY(z_range_default, "range")
+	DEFAULT_TOKEN_BODY(z_damage_default, "damage")
+	DEFAULT_TOKEN_BODY(z_number_default, "number")
+	DEFAULT_TOKEN_BODY(z_attack_weight_default, "attack_weight")
+	DEFAULT_TOKEN_BODY(z_defense_weight_default, "defense_weight")
+	DEFAULT_TOKEN_BODY(z_accuracy_default, "accuracy")
+	DEFAULT_TOKEN_BODY(z_parry_default, "parry")
 }
+
 attack_type::attack_type(const config& cfg) :
 	aloc_(),
 	dloc_(),
@@ -259,25 +60,24 @@ attack_type::attack_type(const config& cfg) :
 	unitmap_(NULL),
 	other_attack_(NULL),
 	cfg_(cfg),
-	description_(cfg[z_description].t_str()),
-	id_(cfg[z_name].token()),
-	type_(cfg[z_type].token()),
-	icon_(cfg[z_icon].token()),
-	range_(cfg[z_range].token()),
-	damage_(cfg[z_damage]),
-	num_attacks_(cfg[z_number]),
-	attack_weight_(cfg[z_attack_weight].to_double(1.0)),
-	defense_weight_(cfg[z_defense_weight].to_double(1.0)),
-	accuracy_(cfg[z_accuracy]),
-	parry_(cfg[z_parry])
-
+	description_(cfg[z_description_default()].t_str()),
+	id_(cfg[z_name_default()].token()),
+	type_(cfg[z_type_default()].token()),
+	icon_(cfg[z_icon_default()].token()),
+	range_(cfg[z_range_default()].token()),
+	damage_(cfg[z_damage_default()]),
+	num_attacks_(cfg[z_number_default()]),
+	attack_weight_(cfg[z_attack_weight_default()].to_double(1.0)),
+	defense_weight_(cfg[z_defense_weight_default()].to_double(1.0)),
+	accuracy_(cfg[z_accuracy_default()]),
+	parry_(cfg[z_parry_default()])
 {
 	if (description_.empty())
 		description_ = egettext(id().c_str());
 
 	if(icon_.empty()){
 		if (id() != n_token::t_token::z_empty())
-			icon_ = config::t_token("attacks/" + static_cast<std::string const &>(id()) + ".png");
+			icon_ = config::t_token("attacks/" + (*id()) + ".png");
 		else {
 			static const config::t_token default_icon("attacks/blank-attack.png", false);
 			icon_ = default_icon;
@@ -306,6 +106,11 @@ config::t_token attack_type::accuracy_parry_description() const
 
 bool attack_type::matches_filter(const config& cfg,bool self) const
 {
+	static const config::t_token z_range("range", false);
+	static const config::t_token z_damage("damage", false);
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_special("special", false);
 	const std::vector<config::t_token>& filter_range = utils::split_token(cfg[z_range]);
 	const config::t_token& filter_damage = cfg[z_damage];
 	const std::vector<config::t_token> filter_name = utils::split_token(cfg[z_name]);
@@ -333,6 +138,29 @@ bool attack_type::matches_filter(const config& cfg,bool self) const
 
 std::pair<bool, config::t_token> attack_type::apply_modification(const config& cfg)
 {
+	static const config::t_token z_set_name("set_name", false);
+	static const config::t_token z_set_description("set_description", false);
+	static const config::t_token z_set_type("set_type", false);
+	static const config::t_token z_remove_specials("remove_specials", false);
+	static const config::t_token z_set_specials("set_specials", false);
+	static const config::t_token z_increase_damage("increase_damage", false);
+	static const config::t_token z_increase_attacks("increase_attacks", false);
+	static const config::t_token z_attack_weight("attack_weight", false);
+	static const config::t_token z_defense_weight("defense_weight", false);
+	static const config::t_token z_increase_accuracy("increase_accuracy", false);
+	static const config::t_token z_increase_parry("increase_parry", false);
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_description("description", false);
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_specials("specials", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_mode("mode", false);
+	static const config::t_token z_append("append", false);
+	static const config::t_token z_damage("damage", false);
+	static const config::t_token z_number("number", false);
+	static const config::t_token z_accuracy("accuracy", false);
+	static const config::t_token z_parry("parry", false);
+
 	if(!matches_filter(cfg,0)) {
 		return std::make_pair(false, n_token::t_token::z_empty()); }
 
@@ -449,6 +277,9 @@ std::pair<bool, config::t_token> attack_type::apply_modification(const config& c
 // Same as above, except only update the descriptions
 std::pair<bool, config::t_token>  attack_type::describe_modification(const config& cfg)
 {
+	static const config::t_token z_increase_damage("increase_damage", false);
+	static const config::t_token z_increase_attacks("increase_attacks", false);
+
 	if(!matches_filter(cfg,0)) {
 		return std::make_pair(false, n_token::t_token::z_empty()); }
 
@@ -482,6 +313,12 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 	//so we filter to keep only keys related to movement_type
 	//FIXME: This helps but it's still not clean, both cfg use a "name" key
 
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_flies("flies", false);
+	static const config::t_token z_movement_costs("movement_costs", false);
+	static const config::t_token z_defense("defense", false);
+	static const config::t_token z_resistance("resistance", false);
+
 	const t_string& name = cfg[z_name];
 	if (!name.empty())
 		cfg_[z_name]= cfg[z_name];
@@ -505,6 +342,8 @@ unit_movement_type::unit_movement_type(): moveCosts_(), defenseMods_(), parent_(
 
 config::t_token unit_movement_type::name() const
 {
+	static const config::t_token z_name("name", false);
+
 	if (!cfg_.has_attribute(z_name) && parent_)
 		return parent_->name();
 	else
@@ -513,6 +352,8 @@ config::t_token unit_movement_type::name() const
 
 int unit_movement_type::resistance_against(const attack_type& attack) const
 {
+	static const config::t_token z_resistance("resistance", false);
+
 	bool result_found = false;
 	int res = 100;
 
@@ -533,6 +374,8 @@ int unit_movement_type::resistance_against(const attack_type& attack) const
 
 utils::string_map unit_movement_type::damage_table() const
 {
+	static const config::t_token z_resistance("resistance", false);
+
 	utils::string_map res;
 	if(parent_ != NULL)
 		res = parent_->damage_table();
@@ -549,6 +392,8 @@ utils::string_map unit_movement_type::damage_table() const
 
 bool unit_movement_type::is_flying() const
 {
+	static const config::t_token z_flies("flies", false);
+
 	if (!cfg_.has_attribute(z_flies) && parent_)
 		return parent_->is_flying();
 
@@ -606,6 +451,8 @@ int movement_cost_internal(t_move_cost_cache& move_costs,
 
 	bool result_found = false;
 	int res = impassable;
+
+	static const config::t_token z_movement_costs("movement_costs", false);
 
 	if (const config& movement_costs = cfg.child(z_movement_costs))	{
 		if (underlying.size() != 1) {
@@ -693,6 +540,7 @@ const defense_range &defense_range_modifier_internal(defense_cache &defense_mods
 		goto check;
 	}
 
+	static const config::t_token z_defense("defense", false);
 	if (const config& defense = cfg.child(z_defense))
 	{
 		const config::t_token& id = map.get_terrain_info(underlying.front()).idt();
@@ -794,10 +642,12 @@ unit_type::unit_type(const unit_type& o) :
 	}
 }
 
-
+namespace{
+	DEFAULT_TOKEN_BODY(z_id_default, "id")
+}
 unit_type::unit_type(config &cfg) :
 	cfg_(cfg),
-	id_(cfg[z_id].token()),
+	id_(cfg[z_id_default()].token()),
 	type_name_(),
 	description_(),
 	hitpoints_(0),
@@ -850,6 +700,23 @@ unit_type::~unit_type()
 void unit_type::build_full(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
+	static const config::t_token z_trait("trait", false);
+	static const config::t_token z_variation("variation", false);
+	static const config::t_token z_inherit("inherit", false);
+	static const config::t_token z_variation_name("variation_name", false);
+	static const config::t_token z_alignment("alignment", false);
+	static const config::t_token z_lawful("lawful", false);
+	static const config::t_token z_chaotic("chaotic", false);
+	static const config::t_token z_neutral("neutral", false);
+	static const config::t_token z_ignore_race_traits("ignore_race_traits", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_fearless("fearless", false);
+	static const config::t_token z_zoc("zoc", false);
+	static const config::t_token z_alpha("alpha", false);
+	static const config::t_token z_movement_type("movement_type", false);
+	static const config::t_token z_flag_rgb("flag_rgb", false);
+	static const config::t_token z_portrait("portrait", false);
+
 	if (build_status_ == NOT_BUILT || build_status_ == CREATED)
 		build_help_index(mv_types, races, traits);
 
@@ -952,6 +819,28 @@ void unit_type::build_full(const movement_type_map &mv_types,
 void unit_type::build_help_index(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_description("description", false);
+	static const config::t_token z_hitpoints("hitpoints", false);
+	static const config::t_token z_level("level", false);
+	static const config::t_token z_movement("movement", false);
+	static const config::t_token z_attacks("attacks", false);
+	static const config::t_token z_cost("cost", false);
+	static const config::t_token z_usage("usage", false);
+	static const config::t_token z_undead_variation("undead_variation", false);
+	static const config::t_token z_image("image", false);
+	static const config::t_token z_small_profile("small_profile", false);
+	static const config::t_token z_profile("profile", false);
+	static const config::t_token z_race("race", false);
+	static const config::t_token z_num_traits("num_traits", false);
+	static const config::t_token z_gender("gender", false);
+	static const config::t_token z_abilities("abilities", false);
+	static const config::t_token z_advancement("advancement", false);
+	static const config::t_token z_effect("effect", false);
+	static const config::t_token z_apply_to("apply_to", false);
+	static const config::t_token z_new_ability("new_ability", false);
+	static const config::t_token z_hide_help("hide_help", false);
+
 	if (build_status_ == NOT_BUILT)
 		build_created(mv_types, races, traits);
 
@@ -1031,6 +920,13 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 void unit_type::build_created(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
+	static const config::t_token z_male("male", false);
+	static const config::t_token z_inherit("inherit", false);
+	static const config::t_token z_female("female", false);
+	static const config::t_token z_advances_to("advances_to", false);
+	static const config::t_token z_null("null", false);
+	static const config::t_token z_experience("experience", false);
+
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
 
@@ -1077,6 +973,9 @@ void unit_type::build_created(const movement_type_map &mv_types,
 
 const unit_type& unit_type::get_gender_unit_type(config::t_token const & gender) const
 {
+	static const config::t_token z_female("female", false);
+	static const config::t_token z_male("male", false);
+
 	if (gender == z_female) return get_gender_unit_type(unit_race::FEMALE);
 	else if (gender == z_male) return get_gender_unit_type(unit_race::MALE);
 	else return *this;
@@ -1128,6 +1027,8 @@ const std::vector<unit_animation>& unit_type::animations() const {
 
 std::vector<attack_type> unit_type::attacks() const
 {
+	static const config::t_token z_attack("attack", false);
+
 	std::vector<attack_type> res;
 	foreach (const config &att, cfg_.child_range(z_attack)) {
 		res.push_back(attack_type(att));
@@ -1183,6 +1084,9 @@ const char* unit_type::alignment_id(unit_type::ALIGNMENT align)
 
 bool unit_type::has_ability_by_id(const config::t_token& ability) const
 {
+	static const config::t_token z_abilities("abilities", false);
+	static const config::t_token z_id("id", false);
+
 	if (const config &abil = cfg_.child(z_abilities))
 	{
 		foreach (const config::any_child &ab, abil.all_children_range()) {
@@ -1195,6 +1099,9 @@ bool unit_type::has_ability_by_id(const config::t_token& ability) const
 
 std::vector<config::t_token> unit_type::get_ability_list() const
 {
+	static const config::t_token z_abilities("abilities", false);
+	static const config::t_token z_id("id", false);
+
 	std::vector<config::t_token> res;
 
 	const config &abilities = cfg_.child(z_abilities);
@@ -1215,6 +1122,8 @@ bool unit_type::hide_help() const {
 
 void unit_type::add_advancement(const unit_type &to_unit,int xp)
 {
+	static const config::t_token z_id("id", false);
+
 	const config::t_token &to_id =  to_unit.cfg_[z_id];
 	const config::t_token &from_id =  cfg_[z_id];
 
@@ -1317,6 +1226,15 @@ unit_type_data::unit_type_data() :
 
 void unit_type_data::set_config(config &cfg)
 {
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_movetype("movetype", false);
+	static const config::t_token z_race("race", false);
+	static const config::t_token z_unit_type("unit_type", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_base_unit("base_unit", false);
+	static const config::t_token z_hide_help("hide_help", false);
+	static const config::t_token z_all("all", false);
+
     DBG_UT << "unit_type_data::set_config, name: " << cfg[z_name] << "\n";
 
     clear();
@@ -1364,6 +1282,8 @@ void unit_type_data::set_config(config &cfg)
 
 const unit_type *unit_type_data::find(const config::t_token& key, unit_type::BUILD_STATUS status) const
 {
+	static const config::t_token z_random("random", false);
+
 	if (key.empty() || key == z_random) return NULL;
 
 	DBG_CF << "trying to find " << key  << " in unit_type list (unit_type_data.unit_types)\n";
@@ -1393,6 +1313,9 @@ void unit_type_data::check_types(const std::vector<config::t_token>& types) cons
 
 const config& unit_type_data::find_config(const config::t_token& key) const
 {
+	static const config::t_token z_unit_type("unit_type", false);
+	static const config::t_token z_id("id", false);
+
 	const config &cfg = unit_cfg_->find_child(z_unit_type, z_id, key);
 
 	if (cfg)
@@ -1401,7 +1324,7 @@ const config& unit_type_data::find_config(const config::t_token& key) const
     ERR_CF << "unit type not found: " << key << "\n";
     ERR_CF << *unit_cfg_ << "\n";
 
-    throw config::error("unit type not found: "+ static_cast<std::string const &>(key));
+    throw config::error("unit type not found: "+ (*key));
 }
 
 void unit_type_data::clear()
@@ -1434,6 +1357,8 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 
 unit_type &unit_type_data::build_unit_type(const unit_type_map::iterator &ut, unit_type::BUILD_STATUS status) const
 {
+	static const config::t_token z_trait("trait", false);
+
 	DBG_UT << "Building unit type " << ut->first << ", level " << status << '\n';
 
 	if (int(status) <= int(ut->second.build_status()))
@@ -1456,6 +1381,11 @@ unit_type &unit_type_data::build_unit_type(const unit_type_map::iterator &ut, un
 
 void unit_type_data::read_hide_help(const config& cfg)
 {
+	static const config::t_token z_race("race", false);
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_type_adv_tree("type_adv_tree", false);
+	static const config::t_token z_not("not", false);
+
 	if (!cfg)
 		return;
 
@@ -1499,6 +1429,10 @@ bool unit_type_data::hide_help(const config::t_token& type, const config::t_toke
 
 void unit_type_data::add_advancement(unit_type& to_unit) const
 {
+	static const config::t_token z_advancefrom("advancefrom", false);
+	static const config::t_token z_unit("unit", false);
+	static const config::t_token z_experience("experience", false);
+
     const config& cfg = to_unit.get_cfg();
 
     foreach (const config &af, cfg.child_range(z_advancefrom))
@@ -1533,6 +1467,16 @@ const unit_race *unit_type_data::find_race(const config::t_token &key) const
 // a particular unit is living or not, use get_state("not_living") for that.
 bool unit_type::not_living() const
 {
+	static const config::t_token z_availability("availability", false);
+	static const config::t_token z_musthave("musthave", false);
+	static const config::t_token z_effect("effect", false);
+	static const config::t_token z_unit_type("unit_type", false);
+	static const config::t_token z_apply_to("apply_to", false);
+	static const config::t_token z_status("status", false);
+	static const config::t_token z_add("add", false);
+	static const config::t_token z_not_living("not_living", false);
+	static const config::t_token z_remove("remove", false);
+
 	// If a unit hasn't been modified it starts out as living.
 	bool not_living = false;
 
@@ -1603,7 +1547,7 @@ void adjust_profile(config::t_token &small, config::t_token &big, config::t_toke
 		// No small profile; use the current profile for it and
 		// try to infer the big one.
 		small = big;
-		std::string sbig = static_cast<std::string const &>(big);
+		std::string sbig = (*big);
 		std::string::size_type offset = sbig.find('~');
 		offset = sbig.find_last_of('/', offset);
 		if (offset != std::string::npos) {

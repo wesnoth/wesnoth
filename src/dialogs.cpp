@@ -91,10 +91,10 @@ int advance_unit_dialog(const map_location &loc)
 
 #ifdef LOW_MEM
 		lang_options.push_back(IMAGE_PREFIX
-				+ static_cast<std::string const &>(type.absolute_image())
+				+ (*type.absolute_image())
 				+ COLUMN_SEPARATOR + type.type_name());
 #else
-		lang_options.push_back(IMAGE_PREFIX + static_cast<std::string const &>(type.absolute_image()) + u->image_mods() + COLUMN_SEPARATOR + type.type_name());
+		lang_options.push_back(IMAGE_PREFIX + (*type.absolute_image()) + u->image_mods() + COLUMN_SEPARATOR + type.type_name());
 #endif
 		preferences::encountered_units().insert(*op);
 	}
@@ -111,10 +111,10 @@ int advance_unit_dialog(const map_location &loc)
 		} else {
 #ifdef LOW_MEM
 			lang_options.push_back(IMAGE_PREFIX
-					+ static_cast<std::string const &>(type.absolute_image())
+					+ (*type.absolute_image())
 					+ COLUMN_SEPARATOR + mod["description"].str());
 #else
-			lang_options.push_back(IMAGE_PREFIX + static_cast<std::string const &>(type.absolute_image()) + u->image_mods() + COLUMN_SEPARATOR + mod["description"].str());
+			lang_options.push_back(IMAGE_PREFIX + (*type.absolute_image()) + u->image_mods() + COLUMN_SEPARATOR + mod["description"].str());
 #endif
 		}
 	}
@@ -394,8 +394,8 @@ void save_preview_pane::draw_contents()
 #ifdef LOW_MEM
 		const surface image(image::get_image(leader->image()));
 #else
-		const surface image(image::get_image(static_cast<std::string const &>(leader->image())
-											 + "~RC(" + static_cast<std::string const &>(leader->flag_rgb()) + ">1)"));
+		const surface image(image::get_image((*leader->image())
+											 + "~RC(" + (*leader->flag_rgb()) + ">1)"));
 #endif
 
 		if(image != NULL) {
@@ -859,9 +859,9 @@ void unit_preview_pane::draw_contents()
 				<< at_it->num_attacks()
 				<< " " << at_it->name() << "\n";
 			text << font::weapon_details
-				 << "  " << string_table["range_" + static_cast<std::string const &>(at_it->range())]
+				 << "  " << string_table["range_" + (*at_it->range())]
 				<< font::weapon_details_sep
-				 << string_table["type_" + static_cast<std::string const &>(at_it->type() )] << "\n";
+				 << string_table["type_" + (*at_it->type() )] << "\n";
 
 			std::string accuracy_parry = at_it->accuracy_parry_description();
 			if(accuracy_parry.empty() == false) {
@@ -995,8 +995,8 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
     //FIXME: There should be a better way to deal with this
 	unit_types.find(t->id(), unit_type::WITHOUT_ANIMATIONS);
 
-	std::string mod = "~RC(" + static_cast<std::string const &>(t->flag_rgb()) + ">" + team::get_side_color_index(side_) + ")";
-	det.image = image::get_image(static_cast<std::string const &>(t->image()) + mod);
+	std::string mod = "~RC(" + (*t->flag_rgb()) + ">" + team::get_side_color_index(side_) + ")";
+	det.image = image::get_image((*t->image()) + mod);
 
 	det.name = "";
 	det.type_name = t->type_name();

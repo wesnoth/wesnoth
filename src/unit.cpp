@@ -1,16 +1,16 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2011 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+  Copyright (C) 2003 - 2011 by David White <dave@whitevine.net>
+  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+  See the COPYING file for more details.
 */
 
 /**
@@ -53,197 +53,12 @@ static lg::log_domain log_config("config");
 
 
 namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
-	static const config::t_token z_gender("gender", false);
-	static const config::t_token z_type("type", false);
-	static const config::t_token z_id("id", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_random_gender("random_gender", false);
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
-	static const config::t_token z_variation("variation", false);
-	static const config::t_token z_canrecruit("canrecruit", false);
-	static const config::t_token z_role("role", false);
-	static const config::t_token z_ai_special("ai_special", false);
-	static const config::t_token z_side("side", false);
-	static const config::t_token z_underlying_id("underlying_id", false);
-	static const config::t_token z_overlays("overlays", false);
-	static const config::t_token z_variables("variables", false);
-	static const config::t_token z_facing("facing", false);
-	static const config::t_token z_flying("flying", false);
-	static const config::t_token z_modification("modifications", false);
-	static const config::t_token z_race("race", false);
-	static const config::t_token z_undead_variation("undead_variation", false);
-	static const config::t_token z_max_attacks("max_attacks", false);
-	static const config::t_token z_attacks_left("attacks_left", false);
-	static const config::t_token z_alpha("alpha", false);
-	static const config::t_token z_zoc("zoc", false);
-	//	static const config::t_token z_description("description", false);
-	static const config::t_token z_cost("cost", false);
-	//	static const config::t_token z_halo("halo", false);
-	static const config::t_token z_profile("profile", false);
-	static const config::t_token z_small_profile("small_profile", false);
-	static const config::t_token z_max_hitpoints("max_hitpoints", false);
-	static const config::t_token z_max_moves("max_moves", false);
-	static const config::t_token z_max_experience("max_experience", false);
-	static const config::t_token z_advances_to("advances_to", false);
-	static const config::t_token z_null("null", false);
-	static const config::t_token z_ai("ai", false);
-	static const config::t_token z_formula("formula", false);
-	static const config::t_token z_loop_formula("loop_formula", false);
-	static const config::t_token z_priority("priority", false);
-	static const config::t_token z_vars("vars", false);
-	static const config::t_token z_guardian("guardian", false);
-	static const config::t_token z_hitpoints("hitpoints", false);
-	static const config::t_token z_goto_x("goto_x", false);
-	static const config::t_token z_goto_y("goto_y", false);
-	static const config::t_token z_experience("experience", false);
-	static const config::t_token z_resting("resting", false);
-	static const config::t_token z_unrenamable("unrenamable", false);
-	static const config::t_token z_lawful("lawful", false);
-	static const config::t_token z_neutral("neutral", false);
-	static const config::t_token z_chaotic("chaotic", false);
-	static const config::t_token z_liminal("liminal", false);
-	static const config::t_token z_upkeep("upkeep", false);
-	static const config::t_token z_full("full", false);
-	static const config::t_token z_flag_rgb("flag_rgb", false);
-	static const config::t_token z_language_name("language_name", false);
-	//	static const config::t_token z_ellipse("ellipse", false);
-	//	static const config::t_token z_usage("usage", false);
-	static const config::t_token z_generate_name("generate_name", false);
-	static const config::t_token z_availability("availability", false);
-	static const config::t_token z_musthave("musthave", false);
-	//	static const config::t_token z_trait("trait", false);
-	static const config::t_token z_random_traits("random_traits", false);
-	//	static const config::t_token z_description("description", false);
-	static const config::t_token z_male("male", false);
-	static const config::t_token z_female("female", false);
-	static const config::t_token z_unit_image("unit_image", false);
-	static const config::t_token z_duration("duration", false);
-	static const config::t_token z_prev_type("prev_type", false);
-	static const config::t_token z_forever("forever", false);
-	static const config::t_token z_abilities("abilities", false);
-	static const config::t_token z_speaker("speaker", false);
-	static const config::t_token z_has_weapon("has_weapon", false);
-	static const config::t_token z_defense("defense", false);
-	static const config::t_token z_visible("visible", false);
-	static const config::t_token z_viewing_side("viewing_side", false);
-	static const config::t_token z_filter_vision("filter_vision", false);
-	static const config::t_token z_adjacent("adjacent", false);
-	static const config::t_token z_is_enemy("is_enemy", false);
-	static const config::t_token z_count("count", false);
-	static const config::t_token z_find_in("find_in", false);
-	static const config::t_token z_lua_function("lua_function", false);
-	static const config::t_token z_status("status", false);
-	static const config::t_token z_loyal("loyal", false);
-	static const config::t_token z_free("free", false);
-	static const config::t_token z_active_on("active_on", false);
-	static const config::t_token z_apply_to("apply_to", false);
-	static const config::t_token z_icon("icon", false);
-	static const config::t_token z_strict_amla("strict_amla", false);
-	static const config::t_token z_require_amla("require_amla", false);
-	static const config::t_token z_times("times", false);
-	static const config::t_token z_modifications("modifications", false);
-	static const config::t_token z_level("level", false);
-	static const config::t_token z_attack("attack", false);
-	static const config::t_token z_resistance("resistance", false);
-	static const config::t_token z_healable("healable", false);
-	static const config::t_token z_unhealable("unhealable", false);
-	static const config::t_token z_waypoints("waypoints", false);
-	static const config::t_token z_moves("moves", false);
-	static const config::t_token z_alignment("alignment", false);
-	static const config::t_token z_placement("placement", false);
-	static const config::t_token z_do_not_list("do_not_list", false);
-	static const config::t_token z_event("event", false);
-	static const config::t_token z_any("any", false);
-	static const config::t_token z_die("die", false);
-	static const config::t_token z_flies("flies", false);
-	static const config::t_token z_inherit("inherit", false);
-	static const config::t_token z_variation_name("variation_name", false);
-	static const config::t_token z_ignore_race_traits("ignore_race_traits", false);
-	static const config::t_token z_hide_help("hide_help", false);
-	static const config::t_token z_yes("yes", false);
-	static const config::t_token z_no("no", false);
-	static const config::t_token z_slowed("slowed", false);
-	static const config::t_token z_poisoned("poisoned", false);
-	static const config::t_token z_petrified("petrified", false);
-	static const config::t_token z_uncovered("uncovered", false);
-	static const config::t_token z_not_moved("not_moved", false);
-	static const config::t_token z_this_unit("this_unit", false);
-	static const config::t_token z_and("and", false);
-	static const config::t_token z_or("or", false);
-	static const config::t_token z_not("not", false);
-	static const config::t_token z_filter("filter", false);
-	static const config::t_token z_recall("recall", false);
-	static const config::t_token z_ability("ability", false);
-	static const config::t_token z_movement_cost("movement_cost", false);
-	static const config::t_token z_movement_costs("movement_costs", false);
-	static const config::t_token z_filter_wml("filter_wml", false);
-	static const config::t_token z_filter_adjacent("filter_adjacent", false);
-	static const config::t_token z_standing("standing", false);
-	static const config::t_token z_ghosted("ghosted", false);
-	static const config::t_token z_disabled_ghosted("disabled_ghosted", false);
-	//	static const config::t_token z_image("image", false);
-	static const config::t_token z_movement("movement", false);
-	static const config::t_token z_die_sound("die_sound", false);
-	static const config::t_token z_movement_type("movement_type", false);
-	static const config::t_token z_filter_location("filter_location", false);
-	static const config::t_token z__disabled_("_disabled_", false);
-	static const config::t_token z_idling("idling", false);
-	static const config::t_token z_selected("selected", false);
-	static const config::t_token z__disabled_selected_("_disabled_selected_", false);
-	static const config::t_token z_offense("offense", false);
-	static const config::t_token z_max_value("max_value", false);
 	static const config::t_token z_advance("advance", false);
-	static const config::t_token z_max_times("max_times", false);
-	static const config::t_token z_fearless("fearless", false);
-	static const config::t_token z_healthy("healthy", false);
-	static const config::t_token z_effect("effect", false);
-	static const config::t_token z_unit_type("unit_type", false);
-	static const config::t_token z_unit_gender("unit_gender", false);
-	static const config::t_token z_portrait("portriat", false);
-	static const config::t_token z_small_portrait("small_portriat", false);
-	static const config::t_token z_new_attack("new_attack", false);
-	static const config::t_token z_remove_attacks("remove_attacks", false);
-	static const config::t_token z_wesnoth("wesnoth", false);
-	static const config::t_token z_attack_list("attack_list", false);
-	static const config::t_token z_effect_description("effect_description", false);
-	static const config::t_token z_increase("increase", false);
-	static const config::t_token z_increase_total("increase_total", false);
-	static const config::t_token z_set("set", false);
-	static const config::t_token z_set_total("set_total", false);
-	static const config::t_token z_violate_maximum("violate_maximum", false);
-	static const config::t_token z_HP("HP", false);
-	static const config::t_token z_remove("remove", false);
-	static const config::t_token z_replace("replace", false);
-	static const config::t_token z_heal_full("heal_full", false);
-	static const config::t_token z_add("add", false);
-	static const config::t_token z_value("value", false);
-	static const config::t_token z_new_ability("new_ability", false);
-	static const config::t_token z_remove_ability("remove_ability", false);
-	static const config::t_token z_image_mod("image_mod", false);
-	static const config::t_token z_new_animation("new_animation", false);
-	static const config::t_token z_female_name("female_name", false);
-	static const config::t_token z_male_name("male_name", false);
-	static const config::t_token z_ignore_global_traits("ignore_global_traits", false);
-	static const config::t_token z_range("range", false);
-	static const config::t_token z_damage("damage", false);
-	static const config::t_token z_number("number", false);
-	static const config::t_token z_specials("specials", false);
-	static const config::t_token z_description_inactive("description_inactive", false);
-	static const config::t_token z_name_inactive("name_inactive", false);
-	static const config::t_token z_advance_from("advance_from", false);
-	static const config::t_token z_hides("hides", false);
-	static const config::t_token z_Unit("Unit", false);
-     static const config::t_token z_object("object", false);
-	static const config::t_token z_extra_recruit("extra_recruit", false);
-	static const config::t_token z_filter_recall("filter_recall", false);
-
-
-    const config::t_token ModificationTypes[] = { z_advance, z_trait, z_object };
-	const size_t NumModificationTypes = sizeof(ModificationTypes)/
-										sizeof(*ModificationTypes);
+	static const config::t_token z_trait("trait", false);
+	static const config::t_token z_object("object", false);
+    static const config::t_token ModificationTypes[] = { z_advance, z_trait, z_object };
+	static const size_t NumModificationTypes = sizeof(ModificationTypes)/
+		sizeof(*ModificationTypes);
 
 	/**
 	 * Pointers to units which have data in their internal caches. The
@@ -275,8 +90,10 @@ static unit_race::GENDER generate_gender(const std::string &type_id, bool random
 	}
 }
 
-static unit_race::GENDER generate_gender(const config &cfg, game_state *state)
-{
+static unit_race::GENDER generate_gender(const config &cfg, game_state *state) {
+	static const config::t_token z_gender("gender", false);
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_random_gender("random_gender", false);
 	const config::t_token& gender = cfg[z_gender];
 	if(!gender.empty())
 		return string_gender(gender);
@@ -290,109 +107,121 @@ static unit_race::GENDER generate_gender(const config &cfg, game_state *state)
 
 // Copy constructor
 unit::unit(const unit& o):
-           cfg_(o.cfg_),
-           loc_(o.loc_),
-           advances_to_(o.advances_to_),
-           type_(o.type_),
-           race_(o.race_),
-           id_(o.id_),
-           name_(o.name_),
-           underlying_id_(o.underlying_id_),
-           type_name_(o.type_name_),
-           undead_variation_(o.undead_variation_),
-           variation_(o.variation_),
+	cfg_(o.cfg_),
+	loc_(o.loc_),
+	advances_to_(o.advances_to_),
+	type_(o.type_),
+	race_(o.race_),
+	id_(o.id_),
+	name_(o.name_),
+	underlying_id_(o.underlying_id_),
+	type_name_(o.type_name_),
+	undead_variation_(o.undead_variation_),
+	variation_(o.variation_),
 
-           hit_points_(o.hit_points_),
-           max_hit_points_(o.max_hit_points_),
-           experience_(o.experience_),
-           max_experience_(o.max_experience_),
-           level_(o.level_),
-           canrecruit_(o.canrecruit_),
-           recruit_list_(o.recruit_list_),
-           alignment_(o.alignment_),
-           flag_rgb_(o.flag_rgb_),
-           image_mods_(o.image_mods_),
+	hit_points_(o.hit_points_),
+	max_hit_points_(o.max_hit_points_),
+	experience_(o.experience_),
+	max_experience_(o.max_experience_),
+	level_(o.level_),
+	canrecruit_(o.canrecruit_),
+	recruit_list_(o.recruit_list_),
+	alignment_(o.alignment_),
+	flag_rgb_(o.flag_rgb_),
+	image_mods_(o.image_mods_),
 
-           unrenamable_(o.unrenamable_),
-           side_(o.side_),
-           gender_(o.gender_),
+	unrenamable_(o.unrenamable_),
+	side_(o.side_),
+	gender_(o.gender_),
 
-           alpha_(o.alpha_),
+	alpha_(o.alpha_),
 
-           unit_formula_(o.unit_formula_),
-           unit_loop_formula_(o.unit_loop_formula_),
-           unit_priority_formula_(o.unit_priority_formula_),
-           formula_vars_(o.formula_vars_ ? new game_logic::map_formula_callable(*o.formula_vars_) : o.formula_vars_),
+	unit_formula_(o.unit_formula_),
+	unit_loop_formula_(o.unit_loop_formula_),
+	unit_priority_formula_(o.unit_priority_formula_),
+	formula_vars_(o.formula_vars_ ? new game_logic::map_formula_callable(*o.formula_vars_) : o.formula_vars_),
 
-           movement_(o.movement_),
-           max_movement_(o.max_movement_),
-           movement_costs_(o.movement_costs_),
-           defense_mods_(o.defense_mods_),
-           hold_position_(o.hold_position_),
-           end_turn_(o.end_turn_),
-           resting_(o.resting_),
-           attacks_left_(o.attacks_left_),
-           max_attacks_(o.max_attacks_),
+	movement_(o.movement_),
+	max_movement_(o.max_movement_),
+	movement_costs_(o.movement_costs_),
+	defense_mods_(o.defense_mods_),
+	hold_position_(o.hold_position_),
+	end_turn_(o.end_turn_),
+	resting_(o.resting_),
+	attacks_left_(o.attacks_left_),
+	max_attacks_(o.max_attacks_),
 
-           states_(o.states_),
-           known_boolean_states_(o.known_boolean_states_),
-           variables_(o.variables_),
-           emit_zoc_(o.emit_zoc_),
-           state_(o.state_),
+	states_(o.states_),
+	known_boolean_states_(o.known_boolean_states_),
+	variables_(o.variables_),
+	emit_zoc_(o.emit_zoc_),
+	state_(o.state_),
 
-           overlays_(o.overlays_),
+	overlays_(o.overlays_),
 
-           role_(o.role_),
-           ai_special_(o.ai_special_),
-           attacks_(o.attacks_),
-           facing_(o.facing_),
+	role_(o.role_),
+	ai_special_(o.ai_special_),
+	attacks_(o.attacks_),
+	facing_(o.facing_),
 
-           trait_names_(o.trait_names_),
-           trait_descriptions_(o.trait_descriptions_),
-           unit_value_(o.unit_value_),
-           goto_(o.goto_),
-           interrupted_move_(o.interrupted_move_),
-           flying_(o.flying_),
-           is_fearless_(o.is_fearless_),
-           is_healthy_(o.is_healthy_),
+	trait_names_(o.trait_names_),
+	trait_descriptions_(o.trait_descriptions_),
+	unit_value_(o.unit_value_),
+	goto_(o.goto_),
+	interrupted_move_(o.interrupted_move_),
+	flying_(o.flying_),
+	is_fearless_(o.is_fearless_),
+	is_healthy_(o.is_healthy_),
 
-           modification_descriptions_(o.modification_descriptions_),
+	modification_descriptions_(o.modification_descriptions_),
 
-           animations_(o.animations_),
+	animations_(o.animations_),
 
-           anim_(NULL),
-		   next_idling_(0),
+	anim_(NULL),
+	next_idling_(0),
 
-           frame_begin_time_(o.frame_begin_time_),
-           unit_halo_(halo::NO_HALO),
-           getsHit_(o.getsHit_),
-           refreshing_(o.refreshing_),
-           hidden_(o.hidden_),
-           draw_bars_(o.draw_bars_),
+	frame_begin_time_(o.frame_begin_time_),
+	unit_halo_(halo::NO_HALO),
+	getsHit_(o.getsHit_),
+	refreshing_(o.refreshing_),
+	hidden_(o.hidden_),
+	draw_bars_(o.draw_bars_),
 
-           modifications_(o.modifications_),
-		   invisibility_cache_()
+	modifications_(o.modifications_),
+	invisibility_cache_()
 {
 }
 
+namespace {
+DEFAULT_TOKEN_BODY(z_default_x, "x")
+DEFAULT_TOKEN_BODY(z_default_y, "y")
+DEFAULT_TOKEN_BODY(z_default_type, "type")
+DEFAULT_TOKEN_BODY(z_default_id, "id")
+DEFAULT_TOKEN_BODY(z_default_name, "name")
+DEFAULT_TOKEN_BODY(z_default_variation, "variation")
+DEFAULT_TOKEN_BODY(z_default_role, "role")
+DEFAULT_TOKEN_BODY(z_default_ai_special, "ai_special")
+DEFAULT_TOKEN_BODY(z_default_canrecruit, "canrecruit")
+DEFAULT_TOKEN_BODY(z_default_recruit, "recruit")
+}
 unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	cfg_(),
-	loc_(cfg[z_x] - 1, cfg[z_y] - 1),
+	loc_(cfg[z_default_x()] - 1, cfg[z_default_y()] - 1),
 	advances_to_(),
-	type_(cfg[z_type].token()),
+	type_(cfg[z_default_type()].token()),
 	race_(NULL),
-	id_(cfg[z_id].token()),
-	name_(cfg[z_name].t_str()),
+	id_(cfg[z_default_id()].token()),
+	name_(cfg[z_default_name()].t_str()),
 	underlying_id_(0),
 	type_name_(),
 	undead_variation_(),
-	variation_(cfg[z_variation].token()),
+	variation_(cfg[z_default_variation()].token()),
 	hit_points_(1),
 	max_hit_points_(0),
 	experience_(0),
 	max_experience_(0),
 	level_(0),
-	canrecruit_(cfg[z_canrecruit].to_bool()),
+	canrecruit_(cfg[z_default_canrecruit()].to_bool()),
 	recruit_list_(),
 	alignment_(),
 	flag_rgb_(),
@@ -420,8 +249,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	emit_zoc_(0),
 	state_(STATE_STANDING),
 	overlays_(),
-	role_(cfg[z_role].token()),
-	ai_special_(cfg[z_ai_special].token()),
+	role_(cfg[z_default_role()].token()),
+	ai_special_(cfg[z_default_ai_special()].token()),
 	attacks_(),
 	facing_(map_location::NDIRECTIONS),
 	trait_names_(),
@@ -446,6 +275,81 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	invisibility_cache_()
 {
 	static const config::t_token z_empty("", false);
+	static const config::t_token z_x("x", false);
+	static const config::t_token z_y("y", false);
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_variation("variation", false);
+	static const config::t_token z_canrecruit("canrecruit", false);
+	static const config::t_token z_role("role", false);
+	static const config::t_token z_ai_special("ai_special", false);
+	static const config::t_token z_side("side", false);
+	static const config::t_token z_underlying_id("underlying_id", false);
+	static const config::t_token z_overlays("overlays", false);
+	static const config::t_token z_variables("variables", false);
+	static const config::t_token z_facing("facing", false);
+	static const config::t_token z_modifications("modifications", false);
+	static const config::t_token z_race("race", false);
+	static const config::t_token z_level("level", false);
+	static const config::t_token z_undead_variation("undead_variation", false);
+	static const config::t_token z_max_attacks("max_attacks", false);
+	static const config::t_token z_attacks_left("attacks_left", false);
+	static const config::t_token z_alpha("alpha", false);
+	static const config::t_token z_zoc("zoc", false);
+	static const config::t_token z_flying("flying", false);
+	static const config::t_token z_description("description", false);
+	static const config::t_token z_cost("cost", false);
+	static const config::t_token z_halo("halo", false);
+	static const config::t_token z_profile("profile", false);
+	static const config::t_token z_small_profile("small_profile", false);
+	static const config::t_token z_max_hitpoints("max_hitpoints", false);
+	static const config::t_token z_max_moves("max_moves", false);
+	static const config::t_token z_max_experience("max_experience", false);
+	static const config::t_token z_advances_to("advances_to", false);
+	static const config::t_token z_null("null", false);
+	static const config::t_token z_ai("ai", false);
+	static const config::t_token z_formula("formula", false);
+	static const config::t_token z_loop_formula("loop_formula", false);
+	static const config::t_token z_priority("priority", false);
+	static const config::t_token z_vars("vars", false);
+	static const config::t_token z_attack("attack", false);
+	static const config::t_token z_abilities("abilities", false);
+	static const config::t_token z_defense("defense", false);
+	static const config::t_token z_movement_costs("movement_costs", false);
+	static const config::t_token z_resistance("resistance", false);
+	static const config::t_token z_status("status", false);
+	static const config::t_token z_healable("healable", false);
+	static const config::t_token z_unhealable("unhealable", false);
+	static const config::t_token z_guardian("guardian", false);
+	static const config::t_token z_hitpoints("hitpoints", false);
+	static const config::t_token z_goto_x("goto_x", false);
+	static const config::t_token z_goto_y("goto_y", false);
+	static const config::t_token z_moves("moves", false);
+	static const config::t_token z_experience("experience", false);
+	static const config::t_token z_resting("resting", false);
+	static const config::t_token z_unrenamable("unrenamable", false);
+	static const config::t_token z_alignment("alignment", false);
+	static const config::t_token z_lawful("lawful", false);
+	static const config::t_token z_neutral("neutral", false);
+	static const config::t_token z_chaotic("chaotic", false);
+	static const config::t_token z_liminal("liminal", false);
+	static const config::t_token z_upkeep("upkeep", false);
+	static const config::t_token z_full("full", false);
+	static const config::t_token z_extra_recruit("extra_recruit", false);
+	static const config::t_token z_filter_recall("filter_recall", false);
+	static const config::t_token z_gender("gender", false);
+	static const config::t_token z_random_gender("random_gender", false);
+	static const config::t_token z_placement("placement", false);
+	static const config::t_token z_flag_rgb("flag_rgb", false);
+	static const config::t_token z_language_name("language_name", false);
+	static const config::t_token z_usage("usage", false);
+	static const config::t_token z_ellipse("ellipse", false);
+	static const config::t_token z_image("image", false);
+	static const config::t_token z_random_traits("random_traits", false);
+	static const config::t_token z_generate_name("generate_name", false);
+	static const config::t_token z_do_not_list("do_not_list", false);
+
 	if (type_.empty()) {
 		throw game::game_error("creating unit with an empty type field");
 	}
@@ -530,24 +434,24 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 
 	if (const config &ai = cfg.child(z_ai))
-	{
-		unit_formula_ = ai[z_formula].str();
-		unit_loop_formula_ = ai[z_loop_formula].str();
-		unit_priority_formula_ = ai[z_priority].str();
-
-		if (const config &ai_vars = ai.child(z_vars))
 		{
-			formula_vars_ = new game_logic::map_formula_callable;
+			unit_formula_ = ai[z_formula].str();
+			unit_loop_formula_ = ai[z_loop_formula].str();
+			unit_priority_formula_ = ai[z_priority].str();
 
-			variant var;
-			foreach (const config::attribute &i, ai_vars.attribute_range()) {
-				var.serialize_from_string(i.second);
-				formula_vars_->add(i.first, var);
+			if (const config &ai_vars = ai.child(z_vars))
+				{
+					formula_vars_ = new game_logic::map_formula_callable;
+
+					variant var;
+					foreach (const config::attribute &i, ai_vars.attribute_range()) {
+						var.serialize_from_string(i.second);
+						formula_vars_->add(i.first, var);
+					}
+				} else {
+				formula_vars_ = game_logic::map_formula_callable_ptr();
 			}
-		} else {
-			formula_vars_ = game_logic::map_formula_callable_ptr();
 		}
-	}
 
 	//don't use the unit_type's attacks if this config has its own defined
 	config::const_child_itors cfg_range = cfg.child_range(z_attack);
@@ -596,19 +500,19 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 
 	if (const config &status_flags = cfg.child(z_status))
-	{
-		foreach (const config::attribute &st, status_flags.attribute_range()) {
-			if (st.first == z_healable) {
-				///@deprecated 1.9.2 'healable' instead of 'unhealable'
-				ERR_UT << "Usage of 'healable' is deprecated, use 'unhealable' instead, "
-					"support will be removed in 1.9.2.\n";
-				if (!st.second.to_bool(true))
-					set_state(z_unhealable, true);
-			} else if (st.second.to_bool()) {
-				set_state(st.first, true);
+		{
+			foreach (const config::attribute &st, status_flags.attribute_range()) {
+				if (st.first == z_healable) {
+					///@deprecated 1.9.2 'healable' instead of 'unhealable'
+					ERR_UT << "Usage of 'healable' is deprecated, use 'unhealable' instead, "
+						"support will be removed in 1.9.2.\n";
+					if (!st.second.to_bool(true))
+						set_state(z_unhealable, true);
+				} else if (st.second.to_bool()) {
+					set_state(st.first, true);
+				}
 			}
 		}
-	}
 	if(cfg[z_ai_special] == z_guardian) {
 		set_state(z_guardian, true);
 	}
@@ -674,24 +578,24 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	input_cfg.merge_attributes(cfg);
 
 	static config::t_token const * internalized_attrs[] = { &z_type, &z_id, &z_name,
-		&z_gender, &z_random_gender, &z_variation, &z_role, &z_ai_special,
-		&z_side, &z_underlying_id, &z_overlays, &z_facing, &z_race,
-		&z_level, &z_undead_variation, &z_max_attacks,
-		&z_attacks_left, &z_alpha, &z_zoc, &z_flying, &z_cost,
-		&z_max_hitpoints, &z_max_moves, &z_max_experience,
-		&z_advances_to, &z_hitpoints, &z_goto_x, &z_goto_y, &z_moves,
-		&z_experience, &z_resting, &z_unrenamable, &z_alignment,
-		&z_canrecruit, &z_extra_recruit, &z_x, &z_y, &z_placement,
-		// Useless attributes created when saving units to WML:
-		&z_flag_rgb, &z_language_name };
+															&z_gender, &z_random_gender, &z_variation, &z_role, &z_ai_special,
+															&z_side, &z_underlying_id, &z_overlays, &z_facing, &z_race,
+															&z_level, &z_undead_variation, &z_max_attacks,
+															&z_attacks_left, &z_alpha, &z_zoc, &z_flying, &z_cost,
+															&z_max_hitpoints, &z_max_moves, &z_max_experience,
+															&z_advances_to, &z_hitpoints, &z_goto_x, &z_goto_y, &z_moves,
+															&z_experience, &z_resting, &z_unrenamable, &z_alignment,
+															&z_canrecruit, &z_extra_recruit, &z_x, &z_y, &z_placement,
+															// Useless attributes created when saving units to WML:
+															&z_flag_rgb, &z_language_name };
 	foreach (const  config::t_token * attr, internalized_attrs) {
 		input_cfg.remove_attribute(*attr);
 		cfg_.remove_attribute(*attr);
 	}
 
 	static config::t_token const * raw_attrs[] = { &z_description, &z_halo,
-		&z_profile, &z_small_profile, &z_upkeep, &z_usage, &z_ellipse,
-		&z_image, &z_random_traits, &z_generate_name };
+												   &z_profile, &z_small_profile, &z_upkeep, &z_usage, &z_ellipse,
+												   &z_image, &z_random_traits, &z_generate_name };
 	foreach (const  config::t_token * attr, raw_attrs) {
 		input_cfg.remove_attribute(*attr);
 	}
@@ -706,7 +610,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 void unit::clear_status_caches()
 {
 	for(std::vector<const unit *>::const_iterator itor = units_with_cache.begin();
-			itor != units_with_cache.end(); ++itor) {
+		itor != units_with_cache.end(); ++itor) {
 		(*itor)->clear_visibility_cache();
 	}
 
@@ -714,7 +618,7 @@ void unit::clear_status_caches()
 }
 
 unit::unit(const unit_type *t, int side, bool real_unit,
-	unit_race::GENDER gender) :
+		   unit_race::GENDER gender) :
 	cfg_(),
 	loc_(),
 	advances_to_(),
@@ -739,7 +643,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	unrenamable_(false),
 	side_(side),
 	gender_(gender != unit_race::NUM_GENDERS ?
-		gender : generate_gender(t->id(), real_unit, NULL)),
+			gender : generate_gender(t->id(), real_unit, NULL)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -785,6 +689,8 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	modifications_(),
 	invisibility_cache_()
 {
+	static const config::t_token z_upkeep("upkeep", false);
+	static const config::t_token z_full("full", false);
 
 	cfg_[z_upkeep]=z_full;
 	advance_to(t, real_unit);
@@ -822,7 +728,7 @@ unit::~unit()
 
 	// Remove us from the status cache
 	std::vector<const unit *>::iterator itor =
-	std::find(units_with_cache.begin(), units_with_cache.end(), this);
+		std::find(units_with_cache.begin(), units_with_cache.end(), this);
 
 	if(itor != units_with_cache.end()) {
 		units_with_cache.erase(itor);
@@ -844,6 +750,8 @@ unit& unit::operator=(const unit& u)
 
 void unit::set_game_context()
 {
+	static const config::t_token z_event("event", false);
+
 	// In case the unit carries EventWML, apply it now
 	game_events::add_events(cfg_.child_range(z_event), type_);
 	cfg_.clear_children(z_event);
@@ -851,6 +759,8 @@ void unit::set_game_context()
 
 void unit::generate_name(rand_rng::simple_rng* rng)
 {
+	static const config::t_token z_generate_name("generate_name", false);
+
 	if (!name_.empty() || !cfg_[z_generate_name].to_bool(true)) return;
 
 	name_ = race_->generate_name(gender_, rng);
@@ -871,6 +781,14 @@ void unit::generate_name(rand_rng::simple_rng* rng)
 
 void unit::generate_traits(bool musthaveonly, game_state* state)
 {
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_trait("trait", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_availability("availability", false);
+	static const config::t_token z_musthave("musthave", false);
+	static const config::t_token z_any("any", false);
+	static const config::t_token z_random_traits("random_traits", false);
+
 	LOG_UT << "Generating a trait for unit type " << type_id() << " with musthaveonly " << musthaveonly << "\n";
 	const unit_type *type = unit_types.find(type_id());
 	// Calculate the unit's traits
@@ -887,33 +805,33 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 	std::vector<config> candidate_traits;
 
 	foreach (const config &t, type->possible_traits())
-	{
-		// Skip the trait if the unit already has it.
-		const std::string &tid = t[z_id];
-		bool already = false;
-		foreach (const config &mod, current_traits)
 		{
-			if (mod[z_id] == tid) {
-				already = true;
-				break;
-			}
-		}
-		if (already) continue;
+			// Skip the trait if the unit already has it.
+			const std::string &tid = t[z_id];
+			bool already = false;
+			foreach (const config &mod, current_traits)
+				{
+					if (mod[z_id] == tid) {
+						already = true;
+						break;
+					}
+				}
+			if (already) continue;
 
-		// Add the trait if it is mandatory.
-		const std::string &avl = t[z_availability];
-		if (avl == z_musthave)
-		{
-			modifications_.add_child(z_trait, t);
-			current_traits = modifications_.child_range(z_trait);
-			continue;
-		}
+			// Add the trait if it is mandatory.
+			const std::string &avl = t[z_availability];
+			if (avl == z_musthave)
+				{
+					modifications_.add_child(z_trait, t);
+					current_traits = modifications_.child_range(z_trait);
+					continue;
+				}
 
-		// The trait is still available, mark it as a candidate for randomizing.
-		// For leaders, only traits with availability "any" are considered.
-		if (!musthaveonly && (!can_recruit() || avl == z_any))
-			candidate_traits.push_back(t);
-	}
+			// The trait is still available, mark it as a candidate for randomizing.
+			// For leaders, only traits with availability "any" are considered.
+			if (!musthaveonly && (!can_recruit() || avl == z_any))
+				candidate_traits.push_back(t);
+		}
 
 	if (musthaveonly) return;
 
@@ -922,12 +840,12 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 	int nb_traits = std::distance(current_traits.first, current_traits.second);
 	int max_traits = type->num_traits();
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
-	{
-		int num = (state ? state->rng().get_next_random() : get_random_nocheck())
-		          % candidate_traits.size();
-		modifications_.add_child(z_trait, candidate_traits[num]);
-		candidate_traits.erase(candidate_traits.begin() + num);
-	}
+		{
+			int num = (state ? state->rng().get_next_random() : get_random_nocheck())
+				% candidate_traits.size();
+			modifications_.add_child(z_trait, candidate_traits[num]);
+			candidate_traits.erase(candidate_traits.begin() + num);
+		}
 
 	// Once random traits are added, don't do it again.
 	// Such as when restoring a saved character.
@@ -936,26 +854,29 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 
 std::vector<config::t_token> unit::get_traits_list() const
 {
+	static const config::t_token z_trait("trait", false);
+	static const config::t_token z_id("id", false);
+
 	std::vector<config::t_token> res;
 
 	foreach (const config &mod, modifications_.child_range(z_trait))
-	{
+		{
 			config::t_token const &id = mod[z_id];
 			if (!id.empty())
 				res.push_back(id);
-	}
+		}
 	return res;
 }
 
 void unit::advance_to(const config &old_cfg, const unit_type *t,
-	bool use_traits, game_state *state)
+					  bool use_traits, game_state *state)
 {
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 
 	// Reset the scalar values first
 	trait_names_.clear();
 	trait_descriptions_.clear(),
-	is_fearless_ = false;
+		is_fearless_ = false;
 	is_healthy_ = false;
 
 	// Clear modification-related caches
@@ -966,8 +887,28 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	// Clear the stored config and replace it with the one from the unit type,
 	// except for a few attributes.
 	config new_cfg;
+	static const config::t_token z_upkeep("upkeep", false);
+	static const config::t_token z_ellipse("ellipse", false);
+	static const config::t_token z_image("image", false);
+	static const config::t_token z_usage("usage", false);
+	static const config::t_token z_random_traits("random_traits", false);
+	static const config::t_token z_generate_name("generate_name", false);
+	static const config::t_token z_movement("movement", false);
+	static const config::t_token z_movement_type("movement_type", false);
+	static const config::t_token z_die_sound("die_sound", false);
+	static const config::t_token z_flies("flies", false);
+	static const config::t_token z_inherit("inherit", false);
+	static const config::t_token z_variation_name("variation_name", false);
+	static const config::t_token z_ignore_race_traits("ignore_race_traits", false);
+	static const config::t_token z_hide_help("hide_help", false);
+	static const config::t_token z_profile("profile", false);
+	static const config::t_token z_small_profile("small_profile", false);
+	static const config::t_token z_male("male", false);
+	static const config::t_token z_female("female", false);
+	static const config::t_token z_description("description", false);
+
 	static config::t_token const *persistent_attrs[] = { &z_upkeep, &z_ellipse,
-		&z_image, &z_usage, &z_random_traits, &z_generate_name };
+														 &z_image, &z_usage, &z_random_traits, &z_generate_name };
 	foreach (const config::t_token *attr, persistent_attrs) {
 		if (const config::attribute_value *v = old_cfg.get(*attr)) {
 			new_cfg[*attr] = *v;
@@ -985,8 +926,8 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 
 	// Remove pure unit_type attributes.
 	static config::t_token const *unit_type_attrs[] = { &z_movement, &z_movement_type,
-		&z_die_sound, &z_flies, &z_inherit, &z_variation_name,
-		&z_ignore_race_traits, &z_hide_help };
+														&z_die_sound, &z_flies, &z_inherit, &z_variation_name,
+														&z_ignore_race_traits, &z_hide_help };
 	foreach (const config::t_token *attr, unit_type_attrs) {
 		new_cfg.remove_attribute(*attr);
 	}
@@ -1080,6 +1021,9 @@ const unit_type* unit::type() const
 
 config::t_token const & unit::big_profile() const
 {
+	static const config::t_token z_profile("profile", false);
+	static const config::t_token z_unit_image("unit_image", false);
+
 	const config::t_token &prof = cfg_[z_profile];
 	if (!prof.empty() && prof != z_unit_image) {
 		return prof;
@@ -1089,6 +1033,9 @@ config::t_token const & unit::big_profile() const
 
 config::t_token const & unit::small_profile() const
 {
+
+	static const config::t_token z_small_profile("small_profile", false);
+	static const config::t_token z_unit_image("unit_image", false);
 	const config::t_token &prof = cfg_[z_small_profile];
 	if (!prof.empty() && prof != z_unit_image) {
 		return prof;
@@ -1219,6 +1166,11 @@ void unit::end_turn()
 void unit::new_scenario()
 {
 	static const config::t_token z_empty("", false);
+
+	static const config::t_token z_duration("duration", false);
+	static const config::t_token z_forever("forever", false);
+	static const config::t_token z_prev_type("prev_type", false);
+
 	ai_special_ = z_empty;
 
 	// Set the goto-command to be going to no-where
@@ -1229,17 +1181,17 @@ void unit::new_scenario()
 	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
 		const std::string& mod_name = ModificationTypes[i];
 		for (int j = modifications_.child_count(mod_name) - 1; j >= 0; --j)
-		{
-			const config &mod = modifications_.child(mod_name, j);
-			const std::string& duration = mod[z_duration];
-			if (!duration.empty() && duration != z_forever) {
-				if (const config::attribute_value *v = mod.get(z_prev_type)) {
-					type_ = v->token();
+			{
+				const config &mod = modifications_.child(mod_name, j);
+				const std::string& duration = mod[z_duration];
+				if (!duration.empty() && duration != z_forever) {
+					if (const config::attribute_value *v = mod.get(z_prev_type)) {
+						type_ = v->token();
+					}
+					modifications_.remove_child(mod_name, j);
+					rebuild_from_type = true;
 				}
-				modifications_.remove_child(mod_name, j);
-				rebuild_from_type = true;
 			}
-		}
 	}
 	if(rebuild_from_type) {
 		advance_to(type());
@@ -1267,18 +1219,20 @@ void unit::heal(int amount)
 
 const std::map<config::t_token,config::t_token> unit::get_states() const
 {
+
+	static const config::t_token z_yes("yes", false);
 	std::map<config::t_token, config::t_token> all_states;
 	foreach (config::t_token const &s, states_) {
 		all_states[s] = z_yes;
 	}
 	for (std::map<config::t_token, state_t>::const_iterator i = known_boolean_state_names_.begin(),
-	     i_end = known_boolean_state_names_.end(); i != i_end; ++i)
-	{
-		if (get_state(i->second)) {
-			all_states.insert(std::make_pair(i->first, z_yes));
-		}
+			 i_end = known_boolean_state_names_.end(); i != i_end; ++i)
+		{
+			if (get_state(i->second)) {
+				all_states.insert(std::make_pair(i->first, z_yes));
+			}
 
-	}
+		}
 	return all_states;
 }
 
@@ -1313,6 +1267,13 @@ std::map<config::t_token, unit::state_t> unit::known_boolean_state_names_ = get_
 
 std::map<config::t_token, unit::state_t> unit::get_known_boolean_state_names()
 {
+	static const config::t_token z_slowed("slowed", false);
+	static const config::t_token z_poisoned("poisoned", false);
+	static const config::t_token z_petrified("petrified", false);
+	static const config::t_token z_uncovered("uncovered", false);
+	static const config::t_token z_not_moved("not_moved", false);
+	static const config::t_token z_unhealable("unhealable", false);
+
 	std::map<config::t_token, state_t> known_boolean_state_names_map;
 	known_boolean_state_names_map.insert(std::make_pair(z_slowed,STATE_SLOWED));
 	known_boolean_state_names_map.insert(std::make_pair(z_poisoned,STATE_POISONED));
@@ -1341,29 +1302,35 @@ void unit::set_state(const config::t_token &state, bool value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
+	static const config::t_token z_abilities("abilities", false);
+	static const config::t_token z_id("id", false);
+
 	if (const config &abil = cfg_.child(z_abilities))
-	{
-		foreach (const config::any_child &ab, abil.all_children_range()) {
-			if (ab.cfg[z_id] == ability)
-				return true;
+		{
+			foreach (const config::any_child &ab, abil.all_children_range()) {
+				if (ab.cfg[z_id] == ability)
+					return true;
+			}
 		}
-	}
 	return false;
 }
 
 void unit::remove_ability_by_id(const std::string &ability)
 {
+	static const config::t_token z_abilities("abilities", false);
+	static const config::t_token z_id("id", false);
+
 	if (config &abil = cfg_.child(z_abilities))
-	{
-		config::all_children_iterator i = abil.ordered_begin();
-		while (i != abil.ordered_end()) {
-			if (i->cfg[z_id] == ability) {
-				i = abil.erase(i);
-			} else {
-				++i;
+		{
+			config::all_children_iterator i = abil.ordered_begin();
+			while (i != abil.ordered_end()) {
+				if (i->cfg[z_id] == ability) {
+					i = abil.erase(i);
+				} else {
+					++i;
+				}
 			}
 		}
-	}
 }
 
 bool unit::matches_filter(const vconfig& cfg, const map_location& loc, bool use_flat_tod
@@ -1371,6 +1338,11 @@ bool unit::matches_filter(const vconfig& cfg, const map_location& loc, bool use_
 						  t_teams const & teams, LuaKernel & lua_kernel,
 						  tod_manager const & tod_manager) const
 {
+	static const config::t_token z_this_unit("this_unit", false);
+	static const config::t_token z_and("and", false);
+	static const config::t_token z_or("or", false);
+	static const config::t_token z_not("not", false);
+
 	bool matches = true;
 
 	if(loc.valid()) {
@@ -1388,26 +1360,26 @@ bool unit::matches_filter(const vconfig& cfg, const map_location& loc, bool use_
 	vconfig::all_children_iterator cond = cfg.ordered_begin();
 	vconfig::all_children_iterator cond_end = cfg.ordered_end();
 	while(cond != cond_end)
-	{
+		{
 
-		const std::string& cond_name = cond.get_key();
-		const vconfig& cond_filter = cond.get_child();
+			const std::string& cond_name = cond.get_key();
+			const vconfig& cond_filter = cond.get_child();
 
-		// Handle [and]
-		if(cond_name == z_and) {
-			matches = matches && matches_filter(cond_filter,loc,use_flat_tod, game_map, units, teams, lua_kernel, tod_manager);
-		}
-		// Handle [or]
-		else if(cond_name == z_or) {
-			matches = matches || matches_filter(cond_filter,loc,use_flat_tod, game_map, units, teams, lua_kernel, tod_manager);
-		}
-		// Handle [not]
-		else if(cond_name == z_not) {
-			matches = matches && !matches_filter(cond_filter,loc,use_flat_tod,game_map, units, teams, lua_kernel, tod_manager);
-		}
+			// Handle [and]
+			if(cond_name == z_and) {
+				matches = matches && matches_filter(cond_filter,loc,use_flat_tod, game_map, units, teams, lua_kernel, tod_manager);
+			}
+			// Handle [or]
+			else if(cond_name == z_or) {
+				matches = matches || matches_filter(cond_filter,loc,use_flat_tod, game_map, units, teams, lua_kernel, tod_manager);
+			}
+			// Handle [not]
+			else if(cond_name == z_not) {
+				matches = matches && !matches_filter(cond_filter,loc,use_flat_tod,game_map, units, teams, lua_kernel, tod_manager);
+			}
 
-		++cond;
-	}
+			++cond;
+		}
 	return matches;
 }
 
@@ -1416,6 +1388,38 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 								   t_teams const & teams, LuaKernel & lua_kernel,
 								   tod_manager const & tod_manager) const
 {
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_speaker("speaker", false);
+	static const config::t_token z_filter_location("filter_location", false);
+	static const config::t_token z_x("x", false);
+	static const config::t_token z_y("y", false);
+	static const config::t_token z_recall("recall", false);
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_ability("ability", false);
+	static const config::t_token z_race("race", false);
+	static const config::t_token z_gender("gender", false);
+	static const config::t_token z_side("side", false);
+	static const config::t_token z_has_weapon("has_weapon", false);
+	static const config::t_token z_role("role", false);
+	static const config::t_token z_ai_special("ai_special", false);
+	static const config::t_token z_canrecruit("canrecruit", false);
+	static const config::t_token z_level("level", false);
+	static const config::t_token z_defense("defense", false);
+	static const config::t_token z_movement_cost("movement_cost", false);
+	static const config::t_token z_filter_wml("filter_wml", false);
+	static const config::t_token z_variables("variables", false);
+	static const config::t_token z_filter_vision("filter_vision", false);
+	static const config::t_token z_visible("visible", false);
+	static const config::t_token z_viewing_side("viewing_side", false);
+	static const config::t_token z_filter_adjacent("filter_adjacent", false);
+	static const config::t_token z_adjacent("adjacent", false);
+	static const config::t_token z_is_enemy("is_enemy", false);
+	static const config::t_token z_count("count", false);
+	static const config::t_token z_find_in("find_in", false);
+	static const config::t_token z_formula("formula", false);
+	static const config::t_token z_lua_function("lua_function", false);
+
 	config::attribute_value cfg_name = cfg[z_name];
 	if (!cfg_name.empty() && cfg_name.str() != name_) {
 		return false;
@@ -1471,50 +1475,50 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	// The type could be a comma separated list of types
 	config::attribute_value cfg_type = cfg[z_type];
 	if (!cfg_type.empty())
-	{
-		std::string type = cfg_type;
-		const std::string& this_type = type_id();
+		{
+			std::string type = cfg_type;
+			const std::string& this_type = type_id();
 
-		// We only do the full CSV search if we find a comma in there,
-		// and if the subsequence is found within the main sequence.
-		// This is because doing the full CSV split is expensive.
-		if(type == this_type) {
-			// pass
-		} else if(std::find(type.begin(),type.end(),',') != type.end() &&
-		   std::search(type.begin(),type.end(),this_type.begin(),
-					   this_type.end()) != type.end()) {
-			const std::vector<std::string>& vals = utils::split(type);
+			// We only do the full CSV search if we find a comma in there,
+			// and if the subsequence is found within the main sequence.
+			// This is because doing the full CSV split is expensive.
+			if(type == this_type) {
+				// pass
+			} else if(std::find(type.begin(),type.end(),',') != type.end() &&
+					  std::search(type.begin(),type.end(),this_type.begin(),
+								  this_type.end()) != type.end()) {
+				const std::vector<std::string>& vals = utils::split(type);
 
-			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
+				if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
+					return false;
+				}
+			} else {
 				return false;
 			}
-		} else {
-			return false;
 		}
-	}
 
 	config::attribute_value cfg_ability = cfg[z_ability];
 	if (!cfg_ability.empty())
-	{
-		std::string ability = cfg_ability;
-		if(has_ability_by_id(ability)) {
-			// pass
-		} else if(std::find(ability.begin(),ability.end(),',') != ability.end()) {
-			const std::vector<std::string>& vals = utils::split(ability);
-			bool has_ability = false;
-			for(std::vector<std::string>::const_iterator this_ability = vals.begin(); this_ability != vals.end(); ++this_ability) {
-				if(has_ability_by_id(*this_ability)) {
-					has_ability = true;
-					break;
+		{
+			std::string ability = cfg_ability;
+			if(has_ability_by_id(ability)) {
+				// pass
+			} else if(std::find(ability.begin(),ability.end(),',') != ability.end()) {
+				const std::vector<std::string>& vals = utils::split(ability);
+				bool has_ability = false;
+				for(std::vector<std::string>::const_iterator this_ability = vals.begin(); this_ability != vals.end(); ++this_ability) {
+					if(has_ability_by_id(*this_ability)) {
+						has_ability = true;
+						break;
+					}
 				}
-			}
-			if(!has_ability) {
+				if(!has_ability) {
+					return false;
+				}
+			} else {
 				return false;
 			}
-		} else {
-			return false;
 		}
-	}
 
 	config::attribute_value cfg_race = cfg[z_race];
 	if (!cfg_race.empty() && cfg_race.str() != race_->id()) {
@@ -1593,24 +1597,24 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	if (!wmlcfgs.empty()) {
 		config unit_cfg;
 		for (unsigned i = 0; i < wmlcfgs.size(); ++i)
-		{
-			config fwml = wmlcfgs[i].get_parsed_config();
-			/* Check if the filter only cares about variables.
-			   If so, no need to serialize the whole unit. */
-			config::const_attr_itors ai = fwml.attribute_range();
-			config::all_children_itors ci = fwml.all_children_range();
-			if (std::distance(ai.first, ai.second) == 0 &&
-			    std::distance(ci.first, ci.second) == 1 &&
-			    ci.first->key == z_variables) {
-				if (!variables_.matches(ci.first->cfg))
-					return false;
-			} else {
-				if (unit_cfg.empty())
-					write(unit_cfg);
-				if (!unit_cfg.matches(fwml))
-					return false;
+			{
+				config fwml = wmlcfgs[i].get_parsed_config();
+				/* Check if the filter only cares about variables.
+				   If so, no need to serialize the whole unit. */
+				config::const_attr_itors ai = fwml.attribute_range();
+				config::all_children_itors ci = fwml.all_children_range();
+				if (std::distance(ai.first, ai.second) == 0 &&
+					std::distance(ci.first, ci.second) == 1 &&
+					ci.first->key == z_variables) {
+					if (!variables_.matches(ci.first->cfg))
+						return false;
+				} else {
+					if (unit_cfg.empty())
+						write(unit_cfg);
+					if (!unit_cfg.matches(fwml))
+						return false;
+				}
 			}
-		}
 	}
 
 	if (cfg.has_child(z_filter_vision)) {
@@ -1724,6 +1728,56 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 
 void unit::write(config& cfg) const
 {
+	static const config::t_token z_description("description", false);
+	static const config::t_token z_hitpoints("hitpoints", false);
+	static const config::t_token z_max_hitpoints("max_hitpoints", false);
+	static const config::t_token z_experience("experience", false);
+	static const config::t_token z_max_experience("max_experience", false);
+	static const config::t_token z_side("side", false);
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_ai("ai", false);
+	static const config::t_token z_formula("formula", false);
+	static const config::t_token z_loop_formula("loop_formula", false);
+	static const config::t_token z_priority("priority", false);
+	static const config::t_token z_vars("vars", false);
+	static const config::t_token z_gender("gender", false);
+	static const config::t_token z_variation("variation", false);
+	static const config::t_token z_role("role", false);
+	static const config::t_token z_ai_special("ai_special", false);
+	static const config::t_token z_flying("flying", false);
+	static const config::t_token z_variables("variables", false);
+	static const config::t_token z_status("status", false);
+	static const config::t_token z_overlays("overlays", false);
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_underlying_id("underlying_id", false);
+	static const config::t_token z_canrecruit("canrecruit", false);
+	static const config::t_token z_extra_recruit("extra_recruit", false);
+	static const config::t_token z_facing("facing", false);
+	static const config::t_token z_goto_x("goto_x", false);
+	static const config::t_token z_goto_y("goto_y", false);
+	static const config::t_token z_moves("moves", false);
+	static const config::t_token z_max_moves("max_moves", false);
+	static const config::t_token z_resting("resting", false);
+	static const config::t_token z_advances_to("advances_to", false);
+	static const config::t_token z_race("race", false);
+	static const config::t_token z_language_name("language_name", false);
+	static const config::t_token z_undead_variation("undead_variation", false);
+	static const config::t_token z_level("level", false);
+	static const config::t_token z_alignment("alignment", false);
+	static const config::t_token z_lawful("lawful", false);
+	static const config::t_token z_neutral("neutral", false);
+	static const config::t_token z_chaotic("chaotic", false);
+	static const config::t_token z_flag_rgb("flag_rgb", false);
+	static const config::t_token z_unrenamable("unrenamable", false);
+	static const config::t_token z_alpha("alpha", false);
+	static const config::t_token z_attacks_left("attacks_left", false);
+	static const config::t_token z_max_attacks("max_attacks", false);
+	static const config::t_token z_zoc("zoc", false);
+	static const config::t_token z_attack("attack", false);
+	static const config::t_token z_cost("cost", false);
+	static const config::t_token z_modifications("modifications", false);
+
 	cfg.append(cfg_);
 	const unit_type *ut = unit_types.find(type_id());
 	if (ut) {
@@ -1745,7 +1799,7 @@ void unit::write(config& cfg) const
 
 	//support for unit formulas in [ai] and unit-specific variables in [ai] [vars]
 
-        if ( has_formula() || has_loop_formula() || (formula_vars_ && formula_vars_->empty() == false) ) {
+	if ( has_formula() || has_loop_formula() || (formula_vars_ && formula_vars_->empty() == false) ) {
 
 		config &ai = cfg.add_child(z_ai);
 
@@ -1760,21 +1814,21 @@ void unit::write(config& cfg) const
 
 
 		if (formula_vars_ && formula_vars_->empty() == false)
-		{
-			config &ai_vars = ai.add_child(z_vars);
+			{
+				config &ai_vars = ai.add_child(z_vars);
 
-                    std::string str;
-                    for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
+				std::string str;
+				for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
                     {
-                            i->second.serialize_to_string(str);
-                            if (!str.empty())
+						i->second.serialize_to_string(str);
+						if (!str.empty())
                             {
-					ai_vars[i->first] = str;
-                                    str.clear();
+								ai_vars[i->first] = str;
+								str.clear();
                             }
                     }
             }
-        }
+	}
 
 	cfg[z_gender] = gender_string(gender_);
 
@@ -1826,20 +1880,20 @@ void unit::write(config& cfg) const
 	cfg[z_variation] = variation_;
 	cfg[z_level] = level_;
 	switch(alignment_) {
-		case unit_type::LAWFUL:
-			cfg[z_alignment] = z_lawful;
-			break;
-		case unit_type::NEUTRAL:
-			cfg[z_alignment] = z_neutral;
-			break;
-		case unit_type::CHAOTIC:
-			cfg[z_alignment] = z_chaotic;
-			break;
-		case unit_type::LIMINAL:
-			cfg["alignment"] = "liminal";
-			break;
-		default:
-			cfg[z_alignment] = z_neutral;
+	case unit_type::LAWFUL:
+		cfg[z_alignment] = z_lawful;
+		break;
+	case unit_type::NEUTRAL:
+		cfg[z_alignment] = z_neutral;
+		break;
+	case unit_type::CHAOTIC:
+		cfg[z_alignment] = z_chaotic;
+		break;
+	case unit_type::LIMINAL:
+		cfg["alignment"] = "liminal";
+		break;
+	default:
+		cfg[z_alignment] = z_neutral;
 	}
 	cfg[z_flag_rgb] = flag_rgb_;
 	cfg[z_unrenamable] = unrenamable_;
@@ -1884,54 +1938,66 @@ const surface unit::still_image(bool scaled) const
 
 void unit::set_standing(bool with_bars) {
 	static const config::t_token z_empty("", false);
+	static const config::t_token z_standing("standing", false);
+	static const config::t_token z__disabled_("_disabled_", false);
+
 
 	game_display *disp = game_display::get_singleton();
 	if (preferences::show_standing_animations()&& !incapacitated()) {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, z_standing),
-			with_bars,  z_empty, 0, STATE_STANDING);
+						with_bars,  z_empty, 0, STATE_STANDING);
 	} else {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, z__disabled_),
-			with_bars,  z_empty, 0, STATE_STANDING);
+						with_bars,  z_empty, 0, STATE_STANDING);
 	}
 }
 
 void unit::set_ghosted(bool with_bars)
 {
+	static const config::t_token z_ghosted("ghosted", false);
+
 	game_display *disp = game_display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, z_ghosted),
-			with_bars);
+					with_bars);
 }
 
 void unit::set_disabled_ghosted(bool with_bars)
 {
+	static const config::t_token z_disabled_ghosted("disabled_ghosted", false);
+
 	game_display *disp = game_display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, z_disabled_ghosted),
-			with_bars);
+					with_bars);
 }
 
 void unit::set_idling()
 {
 	static const config::t_token z_empty("", false);
+	static const config::t_token z_idling("idling", false);
+
 	game_display *disp = game_display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, z_idling),
-		true, z_empty, 0, STATE_FORGET);
+					true, z_empty, 0, STATE_FORGET);
 }
 
 void unit::set_selecting()
 {
 	static const config::t_token z_empty("", false);
+	static const config::t_token z_selected("selected", false);
+	static const config::t_token z__disabled_selected_("_disabled_selected_", false);
+
 	const game_display *disp =  game_display::get_singleton();
 	if (preferences::show_standing_animations() && !get_state(STATE_PETRIFIED)) {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, z_selected),
-			true, z_empty, 0, STATE_FORGET);
+						true, z_empty, 0, STATE_FORGET);
 	} else {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, z__disabled_selected_),
-			true, z_empty, 0, STATE_FORGET);
+						true, z_empty, 0, STATE_FORGET);
 	}
 }
 
 void unit::start_animation(int start_time, const unit_animation *animation,
-	bool with_bars,  const n_token::t_token &text, Uint32 text_color, STATE state) {
+						   bool with_bars,  const n_token::t_token &text, Uint32 text_color, STATE state) {
 	const game_display * disp =  game_display::get_singleton();
 	state_ = state;
 	if (!animation) {
@@ -1946,7 +2012,7 @@ void unit::start_animation(int start_time, const unit_animation *animation,
 	anim_ = new unit_animation(*animation);
 	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
 	anim_->start_animation(real_start_time, loc_, loc_.get_direction(facing_),
-		 text, text_color, accelerate);
+						   text, text_color, accelerate);
 	frame_begin_time_ = anim_->get_begin_time() -1;
 	if (disp->idle_anim()) {
 		next_idling_ = get_current_animation_tick()
@@ -1970,14 +2036,14 @@ void unit::redraw_unit()
 	const gamemap &map = disp.get_map();
 	if (!loc_.valid() || hidden_ || disp.fogged(loc_) ||
 	    (invisible(loc_)
-	&& disp.get_teams()[disp.viewing_team()].is_enemy(side())))
-	{
-		clear_haloes();
-		if(anim_) {
-			anim_->update_last_draw_time();
+		 && disp.get_teams()[disp.viewing_team()].is_enemy(side())))
+		{
+			clear_haloes();
+			if(anim_) {
+				anim_->update_last_draw_time();
+			}
+			return;
 		}
-		return;
-	}
 
 	if (!anim_) {
 		set_standing();
@@ -1996,7 +2062,7 @@ void unit::redraw_unit()
 	params.submerge= is_flying() ? -1.0 : terrain_info.unit_submerge();
 
 	if (invisible(loc_) &&
-			params.highlight_ratio > 0.5) {
+		params.highlight_ratio > 0.5) {
 		params.highlight_ratio = 0.5;
 	}
 	if (loc_ == disp.selected_hex() && params.highlight_ratio == 1.0) {
@@ -2017,7 +2083,7 @@ void unit::redraw_unit()
 	// and halo_mod on secondary images and all haloes
 	params.image_mod = image_mods();
 	params.halo_mod = TC_image_mods();
-	params.image= static_cast<std::string const &>(absolute_image());
+	params.image= (*absolute_image());
 
 
 	if(get_state(STATE_PETRIFIED)) params.image_mod = config::t_token(params.image_mod + "~GS()" );
@@ -2092,13 +2158,13 @@ void unit::redraw_unit()
 	if (ellipse_back != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc_,
-			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back);
+								xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back);
 	}
 
 	if (ellipse_front != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, loc,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc_,
-			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
+								xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
 	}
 	if(draw_bars) {
 		const image::locator* orb_img = NULL;
@@ -2131,7 +2197,7 @@ void unit::redraw_unit()
 		surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
 		if (orb != NULL) {
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-				loc_, xsrc, ysrc +adjusted_params.y, orb);
+									loc_, xsrc, ysrc +adjusted_params.y, orb);
 		}
 
 		double unit_energy = 0.0;
@@ -2144,7 +2210,7 @@ void unit::redraw_unit()
 		const fixed_t bar_alpha = (loc_ == disp.mouseover_hex() || loc_ == disp.selected_hex()) ? ftofxp(1.0): ftofxp(0.8);
 
 		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc +adjusted_params.y,
-			loc_, hp_bar_height, unit_energy,hp_color(), bar_alpha);
+					  loc_, hp_bar_height, unit_energy,hp_color(), bar_alpha);
 
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
@@ -2153,7 +2219,7 @@ void unit::redraw_unit()
 
 			SDL_Color color=xp_color();
 			disp.draw_bar(*energy_file, xsrc, ysrc +adjusted_params.y,
-				loc_, xp_bar_height, filled, color, bar_alpha);
+						  loc_, xp_bar_height, filled, color, bar_alpha);
 		}
 
 		if (can_recruit()) {
@@ -2163,7 +2229,7 @@ void unit::redraw_unit()
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc_, xsrc, ysrc +adjusted_params.y, crown);
+										loc_, xsrc, ysrc +adjusted_params.y, crown);
 			}
 		}
 
@@ -2171,7 +2237,7 @@ void unit::redraw_unit()
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
 			if(ov_img != NULL) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc_, xsrc, ysrc +adjusted_params.y, ov_img);
+										loc_, xsrc, ysrc +adjusted_params.y, ov_img);
 			}
 		}
 	}
@@ -2217,6 +2283,11 @@ bool unit::invalidate(const map_location &loc)
 
 int unit::upkeep() const
 {
+	static const config::t_token z_upkeep("upkeep", false);
+	static const config::t_token z_full("full", false);
+	static const config::t_token z_loyal("loyal", false);
+	static const config::t_token z_free("free", false);
+
 	// Leaders do not incur upkeep.
 	if(can_recruit()) {
 		return 0;
@@ -2235,6 +2306,10 @@ int unit::upkeep() const
 
 bool unit::loyal() const
 {
+	static const config::t_token z_upkeep("upkeep", false);
+	static const config::t_token z_loyal("loyal", false);
+	static const config::t_token z_free("free", false);
+
 	return cfg_[z_upkeep] == z_loyal || cfg_[z_upkeep] == z_free;
 }
 
@@ -2268,6 +2343,11 @@ int unit::defense_modifier(t_translation::t_terrain terrain, gamemap const & gam
 
 bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const
 {
+	static const config::t_token z_active_on("active_on", false);
+	static const config::t_token z_offense("offense", false);
+	static const config::t_token z_defense("defense", false);
+	static const config::t_token z_apply_to("apply_to", false);
+
 	static const config::t_token z_empty("", false);
 	if(!(cfg[z_active_on]==z_empty || (attacker && cfg[z_active_on]==z_offense) || (!attacker && cfg[z_active_on]==z_defense))) {
 		return false;
@@ -2276,8 +2356,8 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
 			if(std::find(apply_to.begin(),apply_to.end(),',') != apply_to.end() &&
-				std::search(apply_to.begin(),apply_to.end(),
-				damage_name.begin(),damage_name.end()) != apply_to.end()) {
+			   std::search(apply_to.begin(),apply_to.end(),
+						   damage_name.begin(),damage_name.end()) != apply_to.end()) {
 				const std::vector<std::string>& vals = utils::split(apply_to);
 				if(std::find(vals.begin(),vals.end(),damage_name) == vals.end()) {
 					return false;
@@ -2294,6 +2374,9 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 
 int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc) const
 {
+	static const config::t_token z_resistance("resistance", false);
+	static const config::t_token z_max_value("max_value", false);
+
 	int res = 0;
 
 	if (const config &resistance = cfg_.child(z_resistance)) {
@@ -2318,14 +2401,16 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 
 utils::string_map unit::get_base_resistances() const
 {
+	static const config::t_token z_resistance("resistance", false);
+
 	if (const config &resistance = cfg_.child(z_resistance))
-	{
-		utils::string_map res;
-		foreach (const config::attribute &i, resistance.attribute_range()) {
-			res[i.first] = i.second;
+		{
+			utils::string_map res;
+			foreach (const config::attribute &i, resistance.attribute_range()) {
+				res[i.first] = i.second;
+			}
+			return res;
 		}
-		return res;
-	}
 	return utils::string_map();
 }
 
@@ -2343,88 +2428,104 @@ std::map<std::string,std::string> unit::advancement_icons() const
 		return temp;
 
 	if (!advances_to_.empty())
-	{
-		std::ostringstream tooltip;
-		const std::string &image = game_config::images::level;
-		foreach (const std::string &s, advances_to())
 		{
-			if (!s.empty())
-				tooltip << s << '\n';
+			std::ostringstream tooltip;
+			const std::string &image = game_config::images::level;
+			foreach (const std::string &s, advances_to())
+				{
+					if (!s.empty())
+						tooltip << s << '\n';
+				}
+			temp[image] = tooltip.str();
 		}
-		temp[image] = tooltip.str();
-	}
 
 	foreach (const config &adv, get_modification_advances())
-	{
-		const std::string &image = adv[z_image];
-		if (image.empty()) continue;
-		std::ostringstream tooltip;
-		tooltip << temp[image];
-		const std::string &tt = adv[z_description];
-		if (!tt.empty())
-			tooltip << tt << '\n';
-		temp[image] = tooltip.str();
-	}
+		{
+			static const config::t_token z_image("image", false);
+			static const config::t_token z_description("description", false);
+
+			const std::string &image = adv[z_image];
+			if (image.empty()) continue;
+			std::ostringstream tooltip;
+			tooltip << temp[image];
+			const std::string &tt = adv[z_description];
+			if (!tt.empty())
+				tooltip << tt << '\n';
+			temp[image] = tooltip.str();
+		}
 	return(temp);
 }
 std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 {
+	static const config::t_token z_icon("icon", false);
+	static const config::t_token z_description("description", false);
+	static const config::t_token z_advance("advance", false);
+	static const config::t_token z_id("id", false);
 	std::vector<std::pair<std::string,std::string> > temp;
 	std::pair<std::string,std::string> icon; //<image,tooltip>
 
 	foreach (const config &adv, get_modification_advances())
-	{
-		icon.first = adv[z_icon].str();
-		icon.second = adv[z_description].str();
-
-		for (unsigned j = 0, j_count = modification_count(z_advance, adv[z_id]);
-		     j < j_count; ++j)
 		{
-			temp.push_back(icon);
+
+			icon.first = adv[z_icon].str();
+			icon.second = adv[z_description].str();
+
+			for (unsigned j = 0, j_count = modification_count(z_advance, adv[z_id]);
+				 j < j_count; ++j)
+				{
+					temp.push_back(icon);
+				}
 		}
-	}
 	return(temp);
 }
 
 std::vector<config> unit::get_modification_advances() const
 {
+	static const config::t_token z_strict_amla("strict_amla", false);
+	static const config::t_token z_advance("advance", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_max_times("max_times", false);
+	static const config::t_token z_require_amla("require_amla", false);
+
 	std::vector<config> res;
 	foreach (const config &adv, modification_advancements())
-	{
-		if (adv[z_strict_amla].to_bool() && !advances_to_.empty())
-			continue;
-		if (modification_count(z_advance, adv[z_id]) >= unsigned(adv[z_max_times].to_int(1)))
-			continue;
-
-		std::vector<std::string> temp = utils::split(adv[z_require_amla]);
-		if (temp.empty()) {
-			res.push_back(adv);
-			continue;
-		}
-
-		std::sort(temp.begin(), temp.end());
-		std::vector<std::string> uniq;
-		std::unique_copy(temp.begin(), temp.end(), std::back_inserter(uniq));
-
-		bool requirements_done = true;
-		foreach (const std::string &s, uniq)
 		{
-			int required_num = std::count(temp.begin(), temp.end(), s);
-			int mod_num = modification_count(z_advance, s);
-			if (required_num > mod_num) {
-				requirements_done = false;
-				break;
+			if (adv[z_strict_amla].to_bool() && !advances_to_.empty())
+				continue;
+			if (modification_count(z_advance, adv[z_id]) >= unsigned(adv[z_max_times].to_int(1)))
+				continue;
+
+			std::vector<std::string> temp = utils::split(adv[z_require_amla]);
+			if (temp.empty()) {
+				res.push_back(adv);
+				continue;
 			}
+
+			std::sort(temp.begin(), temp.end());
+			std::vector<std::string> uniq;
+			std::unique_copy(temp.begin(), temp.end(), std::back_inserter(uniq));
+
+			bool requirements_done = true;
+			foreach (const std::string &s, uniq)
+				{
+					int required_num = std::count(temp.begin(), temp.end(), s);
+					int mod_num = modification_count(z_advance, s);
+					if (required_num > mod_num) {
+						requirements_done = false;
+						break;
+					}
+				}
+			if (requirements_done)
+				res.push_back(adv);
 		}
-		if (requirements_done)
-			res.push_back(adv);
-	}
 
 	return res;
 }
 
 size_t unit::modification_count(const config::t_token& type, const std::string& id) const
 {
+	static const config::t_token z_id("id", false);
+
 	size_t res = 0;
 	foreach (const config &item, modifications_.child_range(type)) {
 		if (item[z_id] == config::t_token(id)) {
@@ -2452,6 +2553,58 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 {
 
 	static const config::t_token z_empty("", false);
+	static const config::t_token z_trait("trait", false);
+	static const config::t_token z_id("id", false);
+	static const config::t_token z_fearless("fearless", false);
+	static const config::t_token z_healthy("healthy", false);
+	static const config::t_token z_effect("effect", false);
+	static const config::t_token z_unit_type("unit_type", false);
+	static const config::t_token z_unit_gender("unit_gender", false);
+	static const config::t_token z_filter("filter", false);
+	static const config::t_token z_apply_to("apply_to", false);
+	static const config::t_token z_times("times", false);
+	static const config::t_token z_variation("variation", false);
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_profile("profile", false);
+	static const config::t_token z_portrait("portrait", false);
+	static const config::t_token z_small_portrait("small_portrait", false);
+	static const config::t_token z_small_profile("small_profile", false);
+	static const config::t_token z_description("description", false);
+	static const config::t_token z_new_attack("new_attack", false);
+	static const config::t_token z_remove_attacks("remove_attacks", false);
+	static const config::t_token z_attack("attack", false);
+	static const config::t_token z_attack_list("attack_list", false);
+	static const config::t_token z_effect_description("effect_description", false);
+	static const config::t_token z_hitpoints("hitpoints", false);
+	static const config::t_token z_increase_total("increase_total", false);
+	static const config::t_token z_set("set", false);
+	static const config::t_token z_set_total("set_total", false);
+	static const config::t_token z_violate_maximum("violate_maximum", false);
+	static const config::t_token z_HP("HP", false);
+	static const config::t_token z_heal_full("heal_full", false);
+	static const config::t_token z_movement("movement", false);
+	static const config::t_token z_increase("increase", false);
+	static const config::t_token z_moves("moves", false);
+	static const config::t_token z_wesnoth("wesnoth", false);
+	static const config::t_token z_max_experience("max_experience", false);
+	static const config::t_token z_loyal("loyal", false);
+	static const config::t_token z_upkeep("upkeep", false);
+	static const config::t_token z_status("status", false);
+	static const config::t_token z_add("add", false);
+	static const config::t_token z_remove("remove", false);
+	static const config::t_token z_movement_costs("movement_costs", false);
+	static const config::t_token z_replace("replace", false);
+	static const config::t_token z_defense("defense", false);
+	static const config::t_token z_resistance("resistance", false);
+	static const config::t_token z_zoc("zoc", false);
+	static const config::t_token z_value("value", false);
+	static const config::t_token z_new_ability("new_ability", false);
+	static const config::t_token z_abilities("abilities", false);
+	static const config::t_token z_remove_ability("remove_ability", false);
+	static const config::t_token z_image_mod("image_mod", false);
+	static const config::t_token z_new_animation("new_animation", false);
+	static const config::t_token z_ellipse("ellipse", false);
+	static const config::t_token z_name("name", false);
 
 	//some trait activate specific flags
 	if(type == z_trait) {
@@ -2467,311 +2620,311 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 	config last_effect;
 	std::vector<t_string> effects_description;
 	foreach (const config &effect, mod.child_range(z_effect))
-	{
-		// See if the effect only applies to certain unit types
-		const std::string &type_filter = effect[z_unit_type];
-		if(type_filter.empty() == false) {
-			const std::vector<std::string>& types = utils::split(type_filter);
-			if(std::find(types.begin(),types.end(),type_id()) == types.end()) {
-				continue;
+		{
+			// See if the effect only applies to certain unit types
+			const std::string &type_filter = effect[z_unit_type];
+			if(type_filter.empty() == false) {
+				const std::vector<std::string>& types = utils::split(type_filter);
+				if(std::find(types.begin(),types.end(),type_id()) == types.end()) {
+					continue;
+				}
 			}
-		}
-		// See if the effect only applies to certain genders
-		const config::t_token &gender_filter = effect[z_unit_gender];
-		if(gender_filter.empty() == false) {
-			const std::string& gender = gender_string(gender_);
-			const std::vector<std::string>& genders = utils::split(gender_filter);
-			if(std::find(genders.begin(),genders.end(),gender) == genders.end()) {
-				continue;
+			// See if the effect only applies to certain genders
+			const config::t_token &gender_filter = effect[z_unit_gender];
+			if(gender_filter.empty() == false) {
+				const std::string& gender = gender_string(gender_);
+				const std::vector<std::string>& genders = utils::split(gender_filter);
+				if(std::find(genders.begin(),genders.end(),gender) == genders.end()) {
+					continue;
+				}
 			}
-		}
-		/** @todo The above two filters can be removed in 1.7 they're covered by the SUF. */
-		// Apply SUF. (Filtering on location is probably a bad idea though.)
-		if (const config &afilter = effect.child(z_filter))
-		    if (!matches_filter(vconfig(afilter), map_location(cfg_, NULL), false ,game_map, units, teams, lua_kernel, tod_manager)) continue;
+			/** @todo The above two filters can be removed in 1.7 they're covered by the SUF. */
+			// Apply SUF. (Filtering on location is probably a bad idea though.)
+			if (const config &afilter = effect.child(z_filter))
+				if (!matches_filter(vconfig(afilter), map_location(cfg_, NULL), false ,game_map, units, teams, lua_kernel, tod_manager)) continue;
 
-		const config::t_token &apply_to = effect[z_apply_to];
-		const std::string &apply_times = effect[z_times];
-		int times = 1;
-		t_string description;
+			const config::t_token &apply_to = effect[z_apply_to];
+			const std::string &apply_times = effect[z_times];
+			int times = 1;
+			t_string description;
 
-		if (apply_times == "per level")
-			times = level_;
-		if (times) {
-			while (times > 0) {
-				times --;
+			if (apply_times == "per level")
+				times = level_;
+			if (times) {
+				while (times > 0) {
+					times --;
 
-				// Apply unit type/variation changes last to avoid double applying effects on advance.
-				if ((apply_to == z_variation || apply_to == z_type) && no_add == false) {
-					last_effect = effect;
-				} else if(apply_to == z_profile) {
-					if (const config::attribute_value *v = effect.get(z_portrait)) {
-						config::t_token big = *v;
-						config::t_token small = effect[z_small_portrait];
-						adjust_profile(small, big, z_empty);
-						cfg_[z_profile] = big;
-						cfg_[z_small_profile] = small;
-					}
-					if (const config::attribute_value *v = effect.get(z_description))
-						cfg_[z_description] = *v;
-					//help::unit_topic_generator(*this, (**i.first)[z_help_topic]);
-				} else if(apply_to == z_new_attack) {
-					attacks_.push_back(attack_type(effect));
-				} else if(apply_to == z_remove_attacks) {
-					for(std::vector<attack_type>::iterator a = attacks_.begin(); a != attacks_.end(); ++a) {
-						if (a->matches_filter(effect, false)) {
-							attacks_.erase(a--);
+					// Apply unit type/variation changes last to avoid double applying effects on advance.
+					if ((apply_to == z_variation || apply_to == z_type) && no_add == false) {
+						last_effect = effect;
+					} else if(apply_to == z_profile) {
+						if (const config::attribute_value *v = effect.get(z_portrait)) {
+							config::t_token big = *v;
+							config::t_token small = effect[z_small_portrait];
+							adjust_profile(small, big, z_empty);
+							cfg_[z_profile] = big;
+							cfg_[z_small_profile] = small;
 						}
+						if (const config::attribute_value *v = effect.get(z_description))
+							cfg_[z_description] = *v;
+						//help::unit_topic_generator(*this, (**i.first)[z_help_topic]);
+					} else if(apply_to == z_new_attack) {
+						attacks_.push_back(attack_type(effect));
+					} else if(apply_to == z_remove_attacks) {
+						for(std::vector<attack_type>::iterator a = attacks_.begin(); a != attacks_.end(); ++a) {
+							if (a->matches_filter(effect, false)) {
+								attacks_.erase(a--);
+							}
+						}
+					} else if(apply_to == z_attack) {
+
+						bool first_attack = true;
+
+						std::string attack_names;
+						std::pair<bool, config::t_token> affected;
+						for(std::vector<attack_type>::iterator a = attacks_.begin();
+							a != attacks_.end(); ++a) {
+							affected = a->apply_modification(effect);
+							if(affected.first && affected.second != z_empty) {
+								if(first_attack) {
+									first_attack = false;
+								} else {
+									if (!times)
+										attack_names += t_string(N_(" and "), z_wesnoth);
+								}
+
+								if (!times)
+									attack_names += t_string(a->name(), z_wesnoth);
+							}
+						}
+						if (attack_names.empty() == false) {
+							utils::string_map symbols;
+							symbols[z_attack_list] = attack_names;
+							symbols[z_effect_description] = affected.second;;
+							description += vgettext("$attack_list|: $effect_description", symbols);
+						}
+					} else if(apply_to == z_hitpoints) {
+						LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
+						const std::string &increase_hp = effect[z_increase];
+						const std::string &increase_total = effect[z_increase_total];
+						const std::string &set_hp = effect[z_set];
+						const std::string &set_total = effect[z_set_total];
+
+						// If the hitpoints are allowed to end up greater than max hitpoints
+						const bool violate_max = effect[z_violate_maximum].to_bool();
+
+						if(set_hp.empty() == false) {
+							if(set_hp[set_hp.size()-1] == '%') {
+								hit_points_ = lexical_cast_default<int>(set_hp)*max_hit_points_/100;
+							} else {
+								hit_points_ = lexical_cast_default<int>(set_hp);
+							}
+						}
+						if(set_total.empty() == false) {
+							if(set_total[set_total.size()-1] == '%') {
+								max_hit_points_ = lexical_cast_default<int>(set_total)*max_hit_points_/100;
+							} else {
+								max_hit_points_ = lexical_cast_default<int>(set_total);
+							}
+						}
+
+						if(increase_total.empty() == false) {
+							if (!times)
+								description += utils::print_modifier(increase_total) + " " +
+									t_string(N_(z_HP), z_wesnoth);
+
+							// A percentage on the end means increase by that many percent
+							max_hit_points_ = utils::apply_modifier(max_hit_points_, increase_total);
+						}
+
+						if(max_hit_points_ < 1)
+							max_hit_points_ = 1;
+
+						if (effect[z_heal_full].to_bool()) {
+							heal_all();
+						}
+
+						if(increase_hp.empty() == false) {
+							hit_points_ = utils::apply_modifier(hit_points_, increase_hp);
+						}
+
+						LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << "\n";
+						if(hit_points_ > max_hit_points_ && !violate_max) {
+							LOG_UT << "resetting hp to max\n";
+							hit_points_ = max_hit_points_;
+						}
+
+						if(hit_points_ < 1)
+							hit_points_ = 1;
+					} else if(apply_to == z_movement) {
+						const std::string &increase = effect[z_increase];
+
+						if(increase.empty() == false) {
+							if (!times)
+								description += utils::print_modifier(increase) + " " +
+									t_string(N_(z_moves), z_wesnoth);
+
+							max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
+						}
+
+						max_movement_ = effect[z_set].to_int(max_movement_);
+
+						if(movement_ > max_movement_)
+							movement_ = max_movement_;
+					} else if(apply_to == z_max_experience) {
+						const std::string &increase = effect[z_increase];
+
+						if(increase.empty() == false) {
+							if (!times)
+								description += utils::print_modifier(increase) + " " +
+									t_string(N_("XP to advance"), z_wesnoth);
+
+							max_experience_ = utils::apply_modifier(max_experience_, increase, 1);
+						}
+
+					} else if(apply_to == z_loyal) {
+						cfg_[z_upkeep] = z_loyal;
+					} else if(apply_to == z_status) {
+						const config::t_token &add = effect[z_add];
+						const config::t_token &remove = effect[z_remove];
+
+						if(add.empty() == false) {
+							set_state(add, true);
+						}
+
+						if(remove.empty() == false) {
+							set_state(remove, false);
+						}
+					} else if (apply_to == z_movement_costs) {
+						config &mv = cfg_.child_or_add(z_movement_costs);
+						if (const config &ap = effect.child(z_movement_costs)) {
+							mod_mdr_merge(mv, ap, !effect[z_replace].to_bool());
+						}
+						movement_costs_.clear();
+					} else if (apply_to == z_defense) {
+						config &def = cfg_.child_or_add(z_defense);
+						if (const config &ap = effect.child(z_defense)) {
+							bool replace = effect[z_replace].to_bool();
+							foreach (const config::attribute &i, ap.attribute_range()) {
+								int v = i.second.to_int();
+								config::attribute_value &dst = def[i.first];
+								if (!replace) {
+									int w = dst.to_int(100);
+									v += w;
+									if ((w >= 0 && v < 0) || (w < 0 && v > 0)) v = 0;
+									else if (v < -100) v = -100;
+									else if (v > 100) v = 100;
+								}
+								dst = v;
+							}
+						}
+						defense_mods_.clear();
+					} else if (apply_to == z_resistance) {
+						config &mv = cfg_.child_or_add(z_resistance);
+						if (const config &ap = effect.child(z_resistance)) {
+							mod_mdr_merge(mv, ap, !effect[z_replace].to_bool());
+						}
+					} else if (apply_to == z_zoc) {
+						if (const config::attribute_value *v = effect.get(z_value)) {
+							emit_zoc_ = v->to_bool();
+						}
+					} else if (apply_to == z_new_ability) {
+						config &ab = cfg_.child_or_add(z_abilities);
+						if (const config &ab_effect = effect.child(z_abilities)) {
+							config to_append;
+							foreach (const config::any_child &ab, ab_effect.all_children_range()) {
+								if(!has_ability_by_id(ab.cfg[z_id])) {
+									to_append.add_child(ab.key, ab.cfg);
+								}
+							}
+							ab.append(to_append);
+						}
+					} else if (apply_to == z_remove_ability) {
+						if (const config &ab_effect = effect.child(z_abilities)) {
+							foreach (const config::any_child &ab, ab_effect.all_children_range()) {
+								remove_ability_by_id(ab.cfg[z_id]);
+							}
+						}
+					} else if (apply_to == z_image_mod) {
+						LOG_UT << "applying image_mod \n";
+						std::string mod = effect[z_replace];
+						if (!mod.empty()){
+							image_mods_ = mod;
+						}
+						LOG_UT << "applying image_mod \n";
+						mod = effect[z_add].str();
+						if (!mod.empty()){
+							image_mods_ += mod;
+						}
+
+						game_config::add_color_info(effect);
+						LOG_UT << "applying image_mod \n";
+					} else if (apply_to == z_new_animation) {
+						if(effect[z_id].empty()) {
+							unit_animation::add_anims(animations_, effect);
+						} else {
+							std::vector<unit_animation> &built = resources::controller->animation_cache[effect[z_id]];
+							if(built.empty()) {
+								unit_animation::add_anims(built, effect);
+							}
+							animations_.insert(animations_.end(),built.begin(),built.end());
+						}
+
+					} else if (apply_to == z_ellipse) {
+						cfg_[z_ellipse] = effect[z_ellipse];
 					}
-				} else if(apply_to == z_attack) {
+				} // end while
+			} else { // for times = per level & level = 0 we still need to rebuild the descriptions
+				if(apply_to == z_attack) {
 
 					bool first_attack = true;
 
-					std::string attack_names;
-					std::pair<bool, config::t_token> affected;
 					for(std::vector<attack_type>::iterator a = attacks_.begin();
 						a != attacks_.end(); ++a) {
-						affected = a->apply_modification(effect);
+						std::pair<bool, config::t_token> affected = a->describe_modification(effect);
 						if(affected.first && affected.second != z_empty) {
+							std::string const & desc = affected.second;
 							if(first_attack) {
 								first_attack = false;
 							} else {
-								if (!times)
-									attack_names += t_string(N_(" and "), z_wesnoth);
+								description += t_string(N_(" and "), z_wesnoth);
 							}
 
-							if (!times)
-								attack_names += t_string(a->name(), z_wesnoth);
+							description += t_string(a->name(), z_wesnoth) + ": " + desc;
 						}
-					}
-					if (attack_names.empty() == false) {
-						utils::string_map symbols;
-						symbols[z_attack_list] = attack_names;
-						symbols[z_effect_description] = affected.second;;
-						description += vgettext("$attack_list|: $effect_description", symbols);
 					}
 				} else if(apply_to == z_hitpoints) {
-					LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
-					const std::string &increase_hp = effect[z_increase];
 					const std::string &increase_total = effect[z_increase_total];
-					const std::string &set_hp = effect[z_set];
-					const std::string &set_total = effect[z_set_total];
-
-					// If the hitpoints are allowed to end up greater than max hitpoints
-					const bool violate_max = effect[z_violate_maximum].to_bool();
-
-					if(set_hp.empty() == false) {
-						if(set_hp[set_hp.size()-1] == '%') {
-							hit_points_ = lexical_cast_default<int>(set_hp)*max_hit_points_/100;
-						} else {
-							hit_points_ = lexical_cast_default<int>(set_hp);
-						}
-					}
-					if(set_total.empty() == false) {
-						if(set_total[set_total.size()-1] == '%') {
-							max_hit_points_ = lexical_cast_default<int>(set_total)*max_hit_points_/100;
-						} else {
-							max_hit_points_ = lexical_cast_default<int>(set_total);
-						}
-					}
 
 					if(increase_total.empty() == false) {
-						if (!times)
-							description += utils::print_modifier(increase_total) + " " +
-								t_string(N_(z_HP), z_wesnoth);
-
-						// A percentage on the end means increase by that many percent
-						max_hit_points_ = utils::apply_modifier(max_hit_points_, increase_total);
+						description += utils::print_modifier(increase_total) + " " +
+							t_string(N_(z_HP), z_wesnoth);
 					}
-
-					if(max_hit_points_ < 1)
-						max_hit_points_ = 1;
-
-					if (effect[z_heal_full].to_bool()) {
-						heal_all();
-					}
-
-					if(increase_hp.empty() == false) {
-						hit_points_ = utils::apply_modifier(hit_points_, increase_hp);
-					}
-
-					LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << "\n";
-					if(hit_points_ > max_hit_points_ && !violate_max) {
-						LOG_UT << "resetting hp to max\n";
-						hit_points_ = max_hit_points_;
-					}
-
-					if(hit_points_ < 1)
-						hit_points_ = 1;
 				} else if(apply_to == z_movement) {
 					const std::string &increase = effect[z_increase];
 
 					if(increase.empty() == false) {
-						if (!times)
-							description += utils::print_modifier(increase) + " " +
-								t_string(N_(z_moves), z_wesnoth);
-
-						max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
+						description += utils::print_modifier(increase) + t_string(N_(" move"), z_wesnoth);
 					}
-
-					max_movement_ = effect[z_set].to_int(max_movement_);
-
-					if(movement_ > max_movement_)
-						movement_ = max_movement_;
 				} else if(apply_to == z_max_experience) {
 					const std::string &increase = effect[z_increase];
 
 					if(increase.empty() == false) {
-						if (!times)
-							description += utils::print_modifier(increase) + " " +
-								t_string(N_("XP to advance"), z_wesnoth);
-
-						max_experience_ = utils::apply_modifier(max_experience_, increase, 1);
+						description += utils::print_modifier(increase) + " " +
+							t_string(N_("XP to advance"), z_wesnoth);
 					}
-
-				} else if(apply_to == z_loyal) {
-					cfg_[z_upkeep] = z_loyal;
-				} else if(apply_to == z_status) {
-					const config::t_token &add = effect[z_add];
-					const config::t_token &remove = effect[z_remove];
-
-					if(add.empty() == false) {
-						set_state(add, true);
-					}
-
-					if(remove.empty() == false) {
-						set_state(remove, false);
-					}
-				} else if (apply_to == z_movement_costs) {
-					config &mv = cfg_.child_or_add(z_movement_costs);
-					if (const config &ap = effect.child(z_movement_costs)) {
-						mod_mdr_merge(mv, ap, !effect[z_replace].to_bool());
-					}
-					movement_costs_.clear();
-				} else if (apply_to == z_defense) {
-					config &def = cfg_.child_or_add(z_defense);
-					if (const config &ap = effect.child(z_defense)) {
-						bool replace = effect[z_replace].to_bool();
-						foreach (const config::attribute &i, ap.attribute_range()) {
-							int v = i.second.to_int();
-							config::attribute_value &dst = def[i.first];
-							if (!replace) {
-								int w = dst.to_int(100);
-								v += w;
-								if ((w >= 0 && v < 0) || (w < 0 && v > 0)) v = 0;
-								else if (v < -100) v = -100;
-								else if (v > 100) v = 100;
-							}
-							dst = v;
-						}
-					}
-					defense_mods_.clear();
-				} else if (apply_to == z_resistance) {
-					config &mv = cfg_.child_or_add(z_resistance);
-					if (const config &ap = effect.child(z_resistance)) {
-						mod_mdr_merge(mv, ap, !effect[z_replace].to_bool());
-					}
-				} else if (apply_to == z_zoc) {
-					if (const config::attribute_value *v = effect.get(z_value)) {
-						emit_zoc_ = v->to_bool();
-					}
-				} else if (apply_to == z_new_ability) {
-					config &ab = cfg_.child_or_add(z_abilities);
-					if (const config &ab_effect = effect.child(z_abilities)) {
-						config to_append;
-						foreach (const config::any_child &ab, ab_effect.all_children_range()) {
-							if(!has_ability_by_id(ab.cfg[z_id])) {
-								to_append.add_child(ab.key, ab.cfg);
-							}
-						}
-						ab.append(to_append);
-					}
-				} else if (apply_to == z_remove_ability) {
-					if (const config &ab_effect = effect.child(z_abilities)) {
-						foreach (const config::any_child &ab, ab_effect.all_children_range()) {
-							remove_ability_by_id(ab.cfg[z_id]);
-						}
-					}
-				} else if (apply_to == z_image_mod) {
-					LOG_UT << "applying image_mod \n";
-					std::string mod = effect[z_replace];
-					if (!mod.empty()){
-						image_mods_ = mod;
-					}
-					LOG_UT << "applying image_mod \n";
-					mod = effect[z_add].str();
-					if (!mod.empty()){
-						image_mods_ += mod;
-					}
-
-					game_config::add_color_info(effect);
-					LOG_UT << "applying image_mod \n";
-				} else if (apply_to == z_new_animation) {
-					if(effect[z_id].empty()) {
-						unit_animation::add_anims(animations_, effect);
-					} else {
-						std::vector<unit_animation> &built = resources::controller->animation_cache[effect[z_id]];
-						if(built.empty()) {
-							unit_animation::add_anims(built, effect);
-						}
-						animations_.insert(animations_.end(),built.begin(),built.end());
-					}
-
-				} else if (apply_to == z_ellipse) {
-					cfg_[z_ellipse] = effect[z_ellipse];
-				}
-			} // end while
-		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
-			if(apply_to == z_attack) {
-
-				bool first_attack = true;
-
-				for(std::vector<attack_type>::iterator a = attacks_.begin();
-					a != attacks_.end(); ++a) {
-					std::pair<bool, config::t_token> affected = a->describe_modification(effect);
-					if(affected.first && affected.second != z_empty) {
-						std::string const & desc = affected.second;
-						if(first_attack) {
-							first_attack = false;
-						} else {
-							description += t_string(N_(" and "), z_wesnoth);
-						}
-
-						description += t_string(a->name(), z_wesnoth) + ": " + desc;
-					}
-				}
-			} else if(apply_to == z_hitpoints) {
-				const std::string &increase_total = effect[z_increase_total];
-
-				if(increase_total.empty() == false) {
-					description += utils::print_modifier(increase_total) + " " +
-						t_string(N_(z_HP), z_wesnoth);
-				}
-			} else if(apply_to == z_movement) {
-				const std::string &increase = effect[z_increase];
-
-				if(increase.empty() == false) {
-					description += utils::print_modifier(increase) + t_string(N_(" move"), z_wesnoth);
-				}
-			} else if(apply_to == z_max_experience) {
-				const std::string &increase = effect[z_increase];
-
-				if(increase.empty() == false) {
-					description += utils::print_modifier(increase) + " " +
-						t_string(N_("XP to advance"), z_wesnoth);
 				}
 			}
-		}
 
-		if (apply_times == "per level" && !times) {
-			utils::string_map symbols;
-			symbols[z_effect_description] = description;
-			description = vgettext("$effect_description per level", symbols);
-		}
-		if(!description.empty())
-			effects_description.push_back(description);
+			if (apply_times == "per level" && !times) {
+				utils::string_map symbols;
+				symbols[z_effect_description] = description;
+				description = vgettext("$effect_description per level", symbols);
+			}
+			if(!description.empty())
+				effects_description.push_back(description);
 
-	}
+		}
 	// Apply variations -- only apply if we are adding this for the first time.
 	if (!last_effect.empty() && no_add == false) {
 		if ((last_effect)[z_apply_to] == z_variation) {
@@ -2807,7 +2960,7 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 	// (However, there maybe is a better way to do it)
 	if(effects_description.empty() == false) {
 		for(std::vector<t_string>::const_iterator i = effects_description.begin();
-				i != effects_description.end(); ++i) {
+			i != effects_description.end(); ++i) {
 			description += *i;
 			if(i+1 != effects_description.end())
 				description += t_string(N_(" and "), z_wesnoth);
@@ -2824,13 +2977,17 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 
 void unit::add_trait_description(const config& trait, const t_string& description)
 {
+	static const config::t_token z_female_name("female_name", false);
+	static const config::t_token z_male_name("male_name", false);
+	static const config::t_token z_name("name", false);
+
 	const std::string& gender_string = gender_ == unit_race::FEMALE ? z_female_name : z_male_name;
 	t_string const &gender_specific_name = trait[gender_string];
 
 	// if this is a t_string& instead of a t_string, msvc9 compiled windows binaries
 	// choke on the case where both gender_specific_name and trait[z_name] are empty.
 	const t_string& name = gender_specific_name.empty() ?
-		 trait[z_name] : gender_specific_name;
+		trait[z_name] : gender_specific_name;
 
 	if(!name.empty()) {
 		trait_names_.push_back(name);
@@ -2839,8 +2996,8 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 }
 
 const unit_animation* unit::choose_animation(const game_display& disp, const map_location& loc,const n_token::t_token& event,
-		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
-		const attack_type* attack, const attack_type* second_attack, int swing_num) const
+											 const map_location& second_loc,const int value,const unit_animation::hit_type hit,
+											 const attack_type* attack, const attack_type* second_attack, int swing_num) const
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
@@ -2895,26 +3052,26 @@ bool unit::invisible(const map_location& loc, bool see_all, unit_map const & uni
 	}
 
 	// Test hidden status
-	static const config::t_token hides(z_hides);
-	bool is_inv = !get_state(STATE_UNCOVERED) && get_ability_bool(hides,loc);
+	static const config::t_token z_hides("hides", false);
+	bool is_inv = !get_state(STATE_UNCOVERED) && get_ability_bool(z_hides,loc);
 	if(is_inv){
 		foreach (const unit &u, units)
-		{
-			const map_location &u_loc = u.get_location();
-			if (teams[side_-1].is_enemy(u.side()) && tiles_adjacent(loc, u_loc)) {
-				// Enemy spotted in adjacent tiles, check if we can see him.
-				// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
-				if(see_all) {
-					is_inv = false;
-					break;
-				} else if (!teams[side_-1].fogged(u_loc)
-						   //&& !u.invisible(u_loc, true)) {
-						   && !u.invisible(u_loc, true,units,teams)) {
-					is_inv = false;
-					break;
+			{
+				const map_location &u_loc = u.get_location();
+				if (teams[side_-1].is_enemy(u.side()) && tiles_adjacent(loc, u_loc)) {
+					// Enemy spotted in adjacent tiles, check if we can see him.
+					// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
+					if(see_all) {
+						is_inv = false;
+						break;
+					} else if (!teams[side_-1].fogged(u_loc)
+							   //&& !u.invisible(u_loc, true)) {
+							   && !u.invisible(u_loc, true,units,teams)) {
+						is_inv = false;
+						break;
+					}
 				}
 			}
-		}
 	}
 
 	if(see_all) {
@@ -2937,13 +3094,15 @@ bool unit::is_visible_to_team(team const& team, bool const see_all, gamemap cons
 	if (see_all)
 		return true;
 	if (team.fogged(loc)
-			|| (team.is_enemy(side()) && invisible(loc)))
+		|| (team.is_enemy(side()) && invisible(loc)))
 		return false;
 
 	return true;
 }
 
 void unit::set_underlying_id() {
+	static const config::t_token z_Unit("Unit", false);
+
 	if(underlying_id_ == 0){
 		underlying_id_ = n_unit::id_manager::instance().next_id();
 	}
@@ -3044,26 +3203,26 @@ unit *get_visible_unit(const map_location &loc, const team &current_team, bool c
 void unit::refresh()
 {
 	if (state_ == STATE_FORGET && anim_ && anim_->animation_finished_potential())
-	{
-		set_standing();
-		return;
-	}
+		{
+			set_standing();
+			return;
+		}
 	game_display &disp = *game_display::get_singleton();
 	if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_ ||
 	    !disp.tile_nearly_on_screen(loc_) || incapacitated())
-	{
-		return;
-	}
-	if (get_current_animation_tick() > next_idling_ + 1000)
-	{
-		// prevent all units animating at the same time
-		if (disp.idle_anim()) {
-			next_idling_ = get_current_animation_tick()
-				+ static_cast<int>((20000 + rand() % 20000) * disp.idle_anim_rate());
-		} else {
-			next_idling_ = INT_MAX;
+		{
+			return;
 		}
-	} else {
+	if (get_current_animation_tick() > next_idling_ + 1000)
+		{
+			// prevent all units animating at the same time
+			if (disp.idle_anim()) {
+				next_idling_ = get_current_animation_tick()
+					+ static_cast<int>((20000 + rand() % 20000) * disp.idle_anim_rate());
+			} else {
+				next_idling_ = INT_MAX;
+			}
+		} else {
 		set_idling();
 	}
 }
@@ -3139,11 +3298,11 @@ std::string unit::image_mods() const{
 }
 
 const tportrait* unit::portrait(
-		const unsigned size, const tportrait::tside side) const
+								const unsigned size, const tportrait::tside side) const
 {
 	foreach(const tportrait& portrait, (type()->portraits())) {
 		if(portrait.size == size
-				&& (side ==  portrait.side || portrait.side == tportrait::BOTH)) {
+		   && (side ==  portrait.side || portrait.side == tportrait::BOTH)) {
 
 			return &portrait;
 		}
@@ -3184,6 +3343,45 @@ std::string get_checksum(const unit& u) {
 	config wcfg;
 	u.write(unit_config);
 	static const config::t_token z_empty("", false);
+	static const config::t_token z_advances_to("advances_to", false);
+	static const config::t_token z_alignment("alignment", false);
+	static const config::t_token z_cost("cost", false);
+	static const config::t_token z_experience("experience", false);
+	static const config::t_token z_gender("gender", false);
+	static const config::t_token z_hitpoints("hitpoints", false);
+	static const config::t_token z_ignore_race_traits("ignore_race_traits", false);
+	static const config::t_token z_ignore_global_traits("ignore_global_traits", false);
+	static const config::t_token z_level("level", false);
+	static const config::t_token z_max_attacks("max_attacks", false);
+	static const config::t_token z_max_experience("max_experience", false);
+	static const config::t_token z_max_hitpoints("max_hitpoints", false);
+	static const config::t_token z_max_moves("max_moves", false);
+	static const config::t_token z_movement("movement", false);
+	static const config::t_token z_movement_type("movement_type", false);
+	static const config::t_token z_race("race", false);
+	static const config::t_token z_random_traits("random_traits", false);
+	static const config::t_token z_resting("resting", false);
+	static const config::t_token z_undead_variation("undead_variation", false);
+	static const config::t_token z_upkeep("upkeep", false);
+	static const config::t_token z_zoc("zoc", false);
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_type("type", false);
+	static const config::t_token z_range("range", false);
+	static const config::t_token z_damage("damage", false);
+	static const config::t_token z_number("number", false);
+	static const config::t_token z_attack("attack", false);
+	static const config::t_token z_specials("specials", false);
+	static const config::t_token z_description("description", false);
+	static const config::t_token z_abilities("abilities", false);
+	static const config::t_token z_description_inactive("description_inactive", false);
+	static const config::t_token z_name_inactive("name_inactive", false);
+	static const config::t_token z_trait("trait", false);
+	static const config::t_token z_male_name("male_name", false);
+	static const config::t_token z_female_name("female_name", false);
+	static const config::t_token z_advance_from("advance_from", false);
+	static const config::t_token z_defense("defense", false);
+	static const config::t_token z_movement_costs("movement_costs", false);
+	static const config::t_token z_resistance("resistance", false);
 
 	static const n_token::t_token main_keys[] =
 		{ z_advances_to,
