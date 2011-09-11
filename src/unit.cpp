@@ -2928,6 +2928,21 @@ bool unit::invisible(const map_location& loc, bool see_all, unit_map const & uni
 	return is_inv;
 }
 
+
+bool unit::is_visible_to_team(team const& team, bool const see_all, gamemap const& map) const
+{
+	map_location const& loc = get_location();
+	if (!map.on_board(loc))
+		return false;
+	if (see_all)
+		return true;
+	if (team.fogged(loc)
+			|| (team.is_enemy(side()) && invisible(loc)))
+		return false;
+
+	return true;
+}
+
 void unit::set_underlying_id() {
 	if(underlying_id_ == 0){
 		underlying_id_ = n_unit::id_manager::instance().next_id();
@@ -3001,24 +3016,20 @@ int side_upkeep(int side, unit_map const & units)
 
 unit_map::const_iterator find_visible_unit( unit_map const& units, const map_location &loc, const team& current_team, bool const see_all, gamemap const & map)
 {
-	if (!map.on_board(loc)) return units.end();
+	if (!map.on_board(loc))
+		return units.end();
 	unit_map::const_iterator u = units.find(loc);
-	if (see_all) return u;
-	if (!u.valid() || current_team.fogged(loc) ||
-	    (current_team.is_enemy(u->side()) &&
-	     u->invisible(loc)))
+	if (!u.valid() || !u->is_visible_to_team(current_team, see_all, map))
 		return units.end();
 	return u;
 }
 
 unit_map::iterator find_visible_unit(unit_map & units, const map_location &loc, const team& current_team, bool const see_all, gamemap const & map)
 {
-	if (!map.on_board(loc)) return units.end();
+	if (!map.on_board(loc))
+		return units.end();
 	unit_map::iterator u = units.find(loc);
-	if (see_all) return u;
-	if (!u.valid() || current_team.fogged(loc) ||
-	    (current_team.is_enemy(u->side()) &&
-	     u->invisible(loc)))
+	if (!u.valid() || !u->is_visible_to_team(current_team, see_all, map))
 		return units.end();
 	return u;
 }

@@ -354,6 +354,8 @@ public:
 	// Only see_all=true use caching
 	bool invisible(const map_location& loc, bool see_all=true,unit_map const & units = *resources::units, t_teams const & teams = *resources::teams) const;
 
+	bool is_visible_to_team(team const& team, bool const see_all = true, gamemap const& map = *resources::game_map) const;
+
 	/** Mark this unit as clone so it can be inserted to unit_map
 	 * @returns                   self (for convenience)
 	 **/
