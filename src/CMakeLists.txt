@@ -557,6 +557,7 @@ set(wesnoth-main_SRC
 	storyscreen/part.cpp
 	storyscreen/render.cpp
 	team.cpp
+	team_builder.cpp
 	terrain_filter.cpp
 	tod_manager.cpp
 	tooltips.cpp
