@@ -97,25 +97,34 @@ void extract_preload_scripts(config const &game_config)
 struct queued_event_context
 {
 	typedef game_events::queued_event qe;
-	static qe default_qe;
 	static qe const *current_qe;
-	static qe const &get()
-	{ return *(current_qe ? current_qe : &default_qe); }
+	static qe const &get();	
+	static bool initialize_current_qe();
 	qe const *previous_qe;
 
-	queued_event_context(qe const *new_qe)
-		: previous_qe(current_qe)
-	{
-		current_qe = new_qe;
-	}
+	queued_event_context(qe const *new_qe) : previous_qe(current_qe) {
+		current_qe = new_qe; }
 
-	~queued_event_context()
-	{ current_qe = previous_qe; }
+	~queued_event_context() { 
+		current_qe = previous_qe; }
 };
 
-game_events::queued_event const *queued_event_context::current_qe = 0;
-game_events::queued_event queued_event_context::default_qe
-(config::t_token("_from_lua"), map_location(), map_location(), config());
+game_events::queued_event const *queued_event_context::current_qe = NULL;
+
+bool queued_event_context::initialize_current_qe(){
+	current_qe=NULL;
+	return true; }
+
+/** Force correct static initialization since flow of control must initialize current_qe and then default_qe 
+ */
+game_events::queued_event const & queued_event_context::get() { 
+	static const bool is_init = initialize_current_qe();
+	(void) is_init; //Hide unused variable warning;
+	//Do not change this pointer to a static reference
+	static qe * default_qe = new qe(config::t_token("_from_lua"), map_location(), map_location(), config());
+	return *(current_qe ? current_qe : default_qe); }
+
+
 
 /* Dummy pointer for getting unique keys for Lua's registry. */
 static char const dlgclbkKey = 0;
@@ -3772,7 +3781,7 @@ void LuaKernel::save_game(config &cfg)
 			 * are the core-lua-handled (currently [item] and [objectives])
 			 * and the extra UMC ones.
 			 */
-			const std::string m = "Tag is already used: [" + static_cast<std::string const &>(i->key) + "]";
+			const std::string m = "Tag is already used: [" + (*i->key) + "]";
 			chat_message("Lua error", m);
 			ERR_LUA << m << '\n';
 			v.erase(i);
