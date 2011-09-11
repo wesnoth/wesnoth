@@ -611,14 +611,11 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		gui().set_route(NULL);
 
 		// selection have impact only if we are not observing and it's our unit
-		if (!commands_disabled && u->side() == gui().viewing_side()) {
-			if (!(browse || resources::whiteboard->unit_has_actions(&*u)))
-			{
-				sound::play_UI_sound("select-unit.wav");
-				u->set_selecting();
-				static const config::t_token z_select("select", false);
-				game_events::fire(z_select, hex);
-			}
+		if (!browse && !commands_disabled && u->side() == gui().viewing_side()) {
+			sound::play_UI_sound("select-unit.wav");
+			u->set_selecting();
+			static const config::t_token z_select("select", false);
+			game_events::fire(z_select, hex);
 		}
 
 	} else {
