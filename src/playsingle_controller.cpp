@@ -1066,11 +1066,12 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			return true;
 		case hotkey::HOTKEY_WB_EXECUTE_ACTION:
 		case hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS:
+			return resources::whiteboard->can_enable_execution_hotkeys();
 		case hotkey::HOTKEY_WB_DELETE_ACTION:
-			return resources::whiteboard->can_execute_hotkey();
+			return resources::whiteboard->can_enable_modifier_hotkeys();
 		case hotkey::HOTKEY_WB_BUMP_UP_ACTION:
 		case hotkey::HOTKEY_WB_BUMP_DOWN_ACTION:
-			return resources::whiteboard->can_reorder_action();
+			return resources::whiteboard->can_enable_reorder_hotkeys();
 		case hotkey::HOTKEY_WB_SUPPOSE_DEAD:
 		{
 			if(!resources::whiteboard->is_active())

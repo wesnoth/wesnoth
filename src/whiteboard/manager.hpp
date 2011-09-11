@@ -55,7 +55,9 @@ public:
 
 	void print_help_once();
 
-	///Determine whether the whiteboard is activated.
+	/** Determine whether the whiteboard can be activated safely */
+	bool can_activate() const;
+	/** Determine whether the whiteboard is activated. */
 	bool is_active() const { return active_; }
 	/** Activates/Deactivates the whiteboard*/
 	void set_active(bool active);
@@ -64,10 +66,12 @@ public:
 	/** Prevents the whiteboard from changing its activation state, as long as the returned reference is held */
 	whiteboard_lock get_activation_state_lock() { return activation_state_lock_; }
 
-	/** Used to ask the whiteboard if its general purpose hotkeys can be called now */
-	bool can_execute_hotkey() const;
-	/** Used to ask the whiteboard if its action reordering hotkeys can be called now */
-	bool can_reorder_action() const;
+	/** Used to ask the whiteboard if its action execution hotkeys should be available to the user */
+	bool can_enable_execution_hotkeys() const;
+	/** Used to ask the whiteboard if hotkeys affecting the action queue should be available to the user */
+	bool can_enable_modifier_hotkeys() const;
+	/** Used to ask the whiteboard if its action reordering hotkeys should be available to the user */
+	bool can_enable_reorder_hotkeys() const;
 	/** Used to ask permission to the wb to move a leader, to avoid invalidating planned recruits */
 	bool allow_leader_to_move(unit const& leader) const;
 

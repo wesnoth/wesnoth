@@ -125,16 +125,26 @@ void manager::print_help_once()
 #endif
 }
 
-void manager::set_active(bool active)
+bool manager::can_activate() const
 {
 	//any more than one reference means a lock on whiteboard state was requested
 	if(!activation_state_lock_.unique())
-		return;
+		return false;
 
 	if(wait_for_side_init_
 				|| executing_actions_
 				|| is_observer()
 				|| resources::controller->is_linger_mode())
+	{
+		return false;
+	}
+
+	return true;
+}
+
+void manager::set_active(bool active)
+{
+	if(!can_activate())
 	{
 		active_ = false;
 		LOG_WB << "Whiteboard can't be activated now.\n";
@@ -164,10 +174,7 @@ void manager::set_invert_behavior(bool invert)
 		return;
 
 	bool block_whiteboard_activation = false;
-	if(wait_for_side_init_
-			|| executing_actions_
-			|| is_observer()
-			|| resources::controller->is_linger_mode())
+	if(!can_activate())
 	{
 		 block_whiteboard_activation = true;
 	}
@@ -210,14 +217,19 @@ void manager::set_invert_behavior(bool invert)
 	}
 }
 
-bool manager::can_execute_hotkey() const
+bool manager::can_enable_execution_hotkeys() const
 {
-	return !resources::controller->is_linger_mode() && !viewer_actions()->empty();
+	return can_enable_modifier_hotkeys() && viewer_side() == resources::controller->current_side();
 }
 
-bool manager::can_reorder_action() const
+bool manager::can_enable_modifier_hotkeys() const
 {
-	return can_execute_hotkey() && highlighter_ && highlighter_->get_bump_target();
+	return can_activate() && !viewer_actions()->empty();
+}
+
+bool manager::can_enable_reorder_hotkeys() const
+{
+	return can_enable_modifier_hotkeys() && highlighter_ && highlighter_->get_bump_target();
 }
 
 bool manager::allow_leader_to_move(unit const& leader) const
@@ -776,8 +788,9 @@ void manager::on_save_action(unit const* u) const
 
 void manager::contextual_execute()
 {
-	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
-			&& resources::controller->current_side() == resources::screen->viewing_side())
+//	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
+//			&& resources::controller->current_side() == resources::screen->viewing_side())
+	if (can_enable_execution_hotkeys())
 	{
 		erase_temp_move();
 		validate_viewer_actions();
@@ -810,8 +823,9 @@ void manager::contextual_execute()
 
 void manager::execute_all_actions()
 {
-	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
-			&& resources::controller->current_side() == resources::screen->viewing_side())
+//	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
+//			&& resources::controller->current_side() == resources::screen->viewing_side())
+	if(can_enable_execution_hotkeys())
 	{
 		erase_temp_move();
 		validate_viewer_actions();
@@ -823,7 +837,8 @@ void manager::execute_all_actions()
 
 void manager::contextual_delete()
 {
-	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode()))
+//	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode()))
+	if (can_enable_modifier_hotkeys())
 	{
 		erase_temp_move();
 		validate_viewer_actions();
@@ -858,8 +873,9 @@ void manager::contextual_delete()
 
 void manager::contextual_bump_up_action()
 {
-	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
-			&& highlighter_)
+//	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
+//			&& highlighter_)
+	if(can_enable_reorder_hotkeys())
 	{
 		validate_viewer_actions();
 		action_ptr action = highlighter_->get_bump_target();
@@ -872,8 +888,9 @@ void manager::contextual_bump_up_action()
 
 void manager::contextual_bump_down_action()
 {
-	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
-			&& highlighter_)
+//	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
+//			&& highlighter_)
+	if(can_enable_reorder_hotkeys())
 	{
 		validate_viewer_actions();
 		action_ptr action = highlighter_->get_bump_target();
