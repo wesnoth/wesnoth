@@ -1231,6 +1231,7 @@ std::ostream& operator << (std::ostream& outstream, const config& cfg)
 	static int i = 0;
 	i++;
 	foreach (const config::attribute &val, cfg.attribute_range()) {
+		std::cerr<<"\nO STREAMING\n\n";
 		for (int j = 0; j < i-1; j++){ outstream << char(9); }
 		outstream << val.first << " = " << val.second << '\n';
 	}
@@ -1250,6 +1251,8 @@ std::string config::hash() const
 {
 	check_valid();
 
+	//@todo change these to a standard machine independent string hash function
+
 	static const unsigned int hash_length = 128;
 	static const char hash_string[] =
 		"+-,.<>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -1266,14 +1269,13 @@ std::string config::hash() const
 	foreach (const attribute &val, values)
 	{
 		std::string key_str(val.first);
-		for (c = key_str.begin(); c != key_str.end(); ++c) {
-			hash_str[i] ^= *c;
-			if (++i == hash_length) i = 0;
-		}
 		std::string base_str = val.second.t_str().base_str();
-		for (c = base_str.begin(); c != base_str.end(); ++c) {
-			hash_str[i] ^= *c;
-			if (++i == hash_length) i = 0;
+		std::string long_string = key_str + base_str;
+		
+		size_t j =0, jend = long_string.size();
+		for (; j != jend; ++j) {
+			char c = long_string[j];
+			hash_str[(j + c + jend) % hash_length] ^= c;
 		}
 	}
 

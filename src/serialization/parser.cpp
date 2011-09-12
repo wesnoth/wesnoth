@@ -554,7 +554,7 @@ static void write_ordered_internal(config const &cfg, std::ostream &out, std::st
 void write(std::ostream &out, config const &cfg, unsigned int level)
 {
 	std::string textdomain = PACKAGE;
-	///@todo remove _internal ASAP Sep10 2011.  I only did this to get multiplater wokring without finding all the place that call this
+	///@todo remove _internal ASAP Sep10 2011.  I only did this to get multiplayer working without finding all the places that call this
 	//write_internal(cfg, out, textdomain, level);
 	write_ordered_internal(cfg, out, textdomain, level);
 }
