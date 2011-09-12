@@ -1131,6 +1131,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Storyscreen\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Storyscreen\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\team_builder.cpp" />
     <ClCompile Include="..\..\src\token.cpp" />
     <ClCompile Include="..\..\src\tools\schema\tag.cpp" />
     <ClCompile Include="..\..\src\utils\interned.cpp" />
@@ -1608,6 +1609,7 @@
     <ClInclude Include="..\..\src\storyscreen\interface.hpp" />
     <ClInclude Include="..\..\src\storyscreen\part.hpp" />
     <ClInclude Include="..\..\src\storyscreen\render.hpp" />
+    <ClInclude Include="..\..\src\team_builder.hpp" />
     <ClInclude Include="..\..\src\token.hpp" />
     <ClInclude Include="..\..\src\tools\schema\tag.hpp" />
     <ClInclude Include="..\..\src\utils\count_logger.hpp" />

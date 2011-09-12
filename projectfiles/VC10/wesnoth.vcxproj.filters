@@ -913,6 +913,7 @@
       <Filter>utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\exceptions.cpp" />
+    <ClCompile Include="..\..\src\team_builder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\manager.hpp">
@@ -1782,5 +1783,6 @@
     <ClInclude Include="..\..\src\utils\lru_cache.hpp">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\team_builder.hpp" />
   </ItemGroup>
 </Project>
