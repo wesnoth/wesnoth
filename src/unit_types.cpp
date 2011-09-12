@@ -499,6 +499,7 @@ const defense_range &defense_range_modifier_internal(defense_cache &defense_mods
 	const t_translation::t_list& underlying = map.underlying_def_terrain(terrain);
 	assert(!underlying.empty());
 
+	static const config::t_token z_defense("defense", false);
 	if (underlying.size() != 1 || underlying.front() != terrain) {
 		bool revert = underlying.front() == t_translation::MINUS;
 		if(recurse_count >= 90) {
@@ -540,7 +541,6 @@ const defense_range &defense_range_modifier_internal(defense_cache &defense_mods
 		goto check;
 	}
 
-	static const config::t_token z_defense("defense", false);
 	if (const config& defense = cfg.child(z_defense))
 	{
 		const config::t_token& id = map.get_terrain_info(underlying.front()).idt();
