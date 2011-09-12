@@ -2701,7 +2701,7 @@ void server::update_game_in_lobby(const wesnothd::game* g, network::connection e
 
 int main(int argc, char** argv) {
 	int port = 15000;
-	size_t min_threads = 5;
+	size_t min_threads = 1;
 	size_t max_threads = 0;
 
 	srand(static_cast<unsigned>(time(NULL)));
