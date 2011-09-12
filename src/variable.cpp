@@ -21,6 +21,7 @@
  */
 
 #include "global.hpp"
+#include "gettext.hpp"
 
 #include "variable.hpp"
 
@@ -32,6 +33,7 @@
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "team.hpp"
+#include "game_display.hpp" //for add_chat_message
 
 #include <boost/variant.hpp>
 #include <boost/unordered_set.hpp>
@@ -611,14 +613,14 @@ public:
 				case '.' :
 				case '[':
 				case ']':
-					throw game::wml_syntax_error(skey, i, "the first character of identifier is one of these,  .[] invalid characters" );
+					throw game::wml_syntax_error(skey, i, _("the first character of the identifier is an invalid character, one of  . , [, or ]. ") );
 				}
 			}
 			if(is_lbrack){
 				switch(c){
 				case '.' :
 				case '[':
-					throw game::wml_syntax_error(skey, i, "a dot . or left bracket [ after left bracket [ starting the variable name");
+					throw game::wml_syntax_error(skey, i, _("there is a dot . or left bracket [ after a left bracket [ starting the variable name"));
 					break;
 				case ']':
 					std::string index_str(skey.substr(i_start_of_token, i - i_start_of_token ));
@@ -826,6 +828,10 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 		}
 	} catch (game::wml_syntax_error & e) {
 		ERR_NG << e.what()<<"\n";
+		static const config::t_token z_caption(_("Invalid WML found"), false);
+		if(resources::screen){ 
+			resources::screen->add_chat_message(time(NULL), z_caption, 0, e.what(),
+												events::chat_handler::MESSAGE_PUBLIC, false); }
 		is_valid_ = false;
 	}
 }

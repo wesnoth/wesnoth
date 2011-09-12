@@ -14,18 +14,19 @@
 */
 
 #include "exceptions.hpp"
+#include "gettext.hpp"
 #include <sstream>
 
 namespace game {
 
 wml_syntax_error::wml_syntax_error(std::string const & reason)
-  : output_("WML Syntax error:: Variable in WML string cannot be evaluated due to " + reason) {}
+	: output_( _("WML Syntax error:: Variable in WML string cannot be evaluated because, ") + reason) {}
 
-///Tries to parse the error message so that an arror <-- points to the location of the error
+/**Tries to parse the error message so that an arror <-- points to the location of the error */
 wml_syntax_error::wml_syntax_error(std::string const & str, size_t const & pos, std::string const & reason)
 	: output_() {
 	std::stringstream ss;
-	ss << "WML Syntax error:: Variable in WML string cannot be evaluated due to " << reason<< " in \n\"";
+	ss << _("WML Syntax error:: Variable in WML string cannot be evaluated because, ") << reason<< _(" in \n\"");
 	ss << str << "\" at \n\"";
 	ss << str.substr(0, pos);
 	if(pos != str.size()){
@@ -43,7 +44,7 @@ wml_syntax_error::wml_syntax_error(std::string const & str, size_t const & pos, 
 wml_syntax_error::wml_syntax_error(t_tokens const & tokens, size_t const & p, std::string const & reason)
 	: output_() {
 	std::stringstream ss;
-	ss << "WML Syntax error:: Variable in WML string cannot be evaluated due to " << reason<< " in \n\"";
+	ss << _("WML Syntax error:: Variable in WML string cannot be evaluated because, ") << reason<< _(" in \n\"");
 	t_tokens::const_iterator i = tokens.begin(), pos(tokens.begin() + p);
 	for(; i!=tokens.end(); ++i){
 		ss << *i; }
