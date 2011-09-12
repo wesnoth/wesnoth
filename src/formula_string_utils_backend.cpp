@@ -15,7 +15,7 @@
 */
 
 #include "formula_string_utils_backend.hpp"
-#include "game_display.cpp" //for add_chat_message for the error message
+#include "game_display.hpp" //for add_chat_message for the error message
 
 namespace wml_interpolation {
 
