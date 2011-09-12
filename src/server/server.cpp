@@ -2701,6 +2701,10 @@ void server::update_game_in_lobby(const wesnothd::game* g, network::connection e
 
 int main(int argc, char** argv) {
 	int port = 15000;
+	/** @todo Change min_threads back to 5 after fixing threading.
+		min_threads was changed from 5 to 1 because wesnothd was exhibiting memory corruption when run with 
+		more than 1 thread	 
+		@see https://gna.org/bugs/index.php?18654 	*/
 	size_t min_threads = 1;
 	size_t max_threads = 0;
 
