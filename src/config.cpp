@@ -1231,7 +1231,6 @@ std::ostream& operator << (std::ostream& outstream, const config& cfg)
 	static int i = 0;
 	i++;
 	foreach (const config::attribute &val, cfg.attribute_range()) {
-		std::cerr<<"\nO STREAMING\n\n";
 		for (int j = 0; j < i-1; j++){ outstream << char(9); }
 		outstream << val.first << " = " << val.second << '\n';
 	}
