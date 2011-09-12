@@ -28,6 +28,8 @@
 #include "util.hpp"    // for str_cast
 #include "foreach.hpp"
 
+#include <time.h>
+
 ///todo remove next 1 line
 #include <boost/variant.hpp>
 
