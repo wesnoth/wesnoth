@@ -49,7 +49,7 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 		}
 		if(total) {
 			find_widget<tprogress_bar>(&(window_.get()), "progress", false)
-				.set_percentage((completed*100)/total);
+				.set_percentage((completed*100.)/total);
 
 			std::stringstream ss;
 			ss << utils::si_string(completed, true, _("unit_byte^B"))
