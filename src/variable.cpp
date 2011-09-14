@@ -761,9 +761,9 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 					case variable_info::TYPE_ARRAY:
 					case variable_info::TYPE_CONTAINER:
 						WRN_NG << _("variable_info: using reserved WML variable as wrong type, ") << varname << std::endl;
+						is_valid_ = force_valid || repos->temporaries_.child(varname);
 						throw game::wml_syntax_error(tokens, i - tokens.begin()
 													 , _("attempt to get length of a non array/container.") );
-						is_valid_ = force_valid || repos->temporaries_.child(varname);
 						break;
 					case variable_info::TYPE_SCALAR:
 					default:
