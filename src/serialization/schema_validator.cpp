@@ -56,7 +56,7 @@ static void extra_tag_error(const std::string & file, int line,
 							const std::string & parent, bool flag_exception){
 	std::ostringstream ss;
 	ss 	 <<at(file,line) << ": extra tag [" << name << "]; there may only be "
-			<< n << " ["<< sngettext (name.c_str (), std::string(name + "s").c_str() ,n)<<"] in [" << parent <<"]\n";
+			<< n << " ["<< name <<"] in [" << parent <<"]\n";
 	print_output (ss.str (),flag_exception);
 }
 
@@ -74,7 +74,7 @@ static void missing_tag_error(const std::string & file, int line,
 							  const std::string & parent, bool flag_exception){
 	std::ostringstream ss;
 	ss 	 <<at(file,line) << ": missing tag [" << name << "]; there must be "
-			<< n << " ["<< sngettext (name.c_str (), std::string(name + "s").c_str() ,n) <<"]s in [" << parent <<"]\n";
+			<< n << " ["<<  name  <<"]s in [" << parent <<"]\n";
 	print_output (ss.str (),flag_exception);
 }
 
