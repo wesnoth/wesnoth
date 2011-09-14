@@ -279,28 +279,41 @@ t_string const & config::attribute_value::t_str() const {
 
 
 
-config config::invalid;
-
-
-config::config() : values(), children(), ordered_children()
-{
+config * config::invalid;
+bool config::initialize_invalid() {
+	//Run initialization once
+	static bool ran_once = false;
+	if (!ran_once ) {
+		ran_once = true;
+		invalid = NULL; }
+	return true;
 }
 
-config::config(const config& cfg) : values(cfg.values), children(), ordered_children()
-{
+
+config::config() : values(), children(), ordered_children() {
+	//Run initialization once
+	static bool invalid_initialized(initialize_invalid());
+	(void) invalid_initialized; //quiet unused variable warning
+}
+
+config::config(const config& cfg) : values(cfg.values), children(), ordered_children() {
+	static bool invalid_initialized(initialize_invalid());
+	(void) invalid_initialized; //quiet unused variable warning
 	append_children(cfg);
 }
 
 config::config(const t_token& child) : values(), children(), ordered_children() {
+	static bool invalid_initialized(initialize_invalid());
+	(void) invalid_initialized; //quiet unused variable warning
 	add_child(child);
 }
-config::config(const std::string& child) : values(), children(), ordered_children()
-{
+config::config(const std::string& child) : values(), children(), ordered_children() {
+	static bool invalid_initialized(initialize_invalid());
+	(void) invalid_initialized; //quiet unused variable warning
 	add_child(t_token(child));
 }
 
-config::~config()
-{
+config::~config() {
 	clear();
 }
 
@@ -451,6 +464,7 @@ config::const_child_itors config::child_range(const t_token& key) const {
 }
 
 config::const_child_itors config::child_range(const std::string& key) const { return child_range(t_token(key));}
+
 unsigned config::child_count(const t_token &key) const {
 	check_valid();
 
@@ -460,6 +474,7 @@ unsigned config::child_count(const t_token &key) const {
 	}
 	return 0;
 }
+unsigned config::child_count(const std::string &key) const { return child_count(t_token(key)); }
 
 config::t_child_range_index config::child_range_index(config::t_token const & key, config::t_token const & name) {
 	t_child_range_index index;
@@ -479,16 +494,14 @@ config::t_const_child_range_index config::const_child_range_index(config::t_toke
 			index.insert(std::make_pair((*c)[name].token(), c)); } }
 		return index; }
 
-
-unsigned config::child_count(const std::string &key) const { return child_count(t_token(key)); }
 config &config::child(const t_token& key, int n)
 {
 	check_valid();
 
 	const child_map::const_iterator i = children.find(key);
-	if (i == children.end()) return invalid;
+	if (i == children.end()) return *invalid;
 	if (n < 0) n = i->second.size() + n;
-	return  size_t(n) < i->second.size() ? *i->second[n] : invalid;
+	return  size_t(n) < i->second.size() ? *i->second[n] : *invalid;
 }
 config &config::child(const std::string& key, int n){ return child(t_token( key ), n); }
 
@@ -805,17 +818,13 @@ config &config::find_child(const t_token &key, const t_token &name, const t_toke
 	check_valid();
 
 	const child_map::iterator i = children.find(key);
-	if(i == children.end())
-		return invalid;
+	if(i == children.end()) { return *invalid; }
 
 	const child_list::iterator j = std::find_if(i->second.begin(),
 	                                            i->second.end(),
 	                                            config_has_value(name,value));
-	if(j != i->second.end()) {
-		return **j;
-	} else {
-		return invalid;
-	}
+
+	return (j != i->second.end()) ? **j :  *invalid;
 }
 config &config::find_child(const std::string &key, const std::string &name, const std::string &value){
 	return find_child(t_token( key ), t_token(name), t_token(value));

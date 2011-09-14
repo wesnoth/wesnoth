@@ -57,12 +57,16 @@ class config
 {
 	friend bool operator==(const config& a, const config& b);
 
-	static config invalid;
+	static config * invalid;
+	static bool initialize_invalid();
 
 	/**
 	 * Raises an exception if @a this is not valid.
 	 */
-	void check_valid() const {	if (!*this){ throw error("Mandatory WML child missing yet untested for. Please report."); }}
+	void check_valid() const {	
+		if (!*this){ 
+			throw error("Mandatory WML child missing yet untested for. Please report."); }
+	}
 
 	/**
 	 * Raises an exception if @a this or @a cfg is not valid.
@@ -105,10 +109,10 @@ public:
 
 #ifdef HAVE_CXX0X
 	explicit operator bool() const
-	{ return this != &invalid; }
+	{ return this != invalid; }
 #else
 	operator safe_bool() const
-	{ return this != &invalid ? &safe_bool_impl::nonnull : 0; }
+	{ return this != invalid ? &safe_bool_impl::nonnull : 0; }
 #endif
 
 	typedef std::vector<config*> child_list;
