@@ -1351,12 +1351,13 @@ static int intf_fire_event(lua_State *L)
 static int intf_get_variable(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	variable_info v(config::t_token(m), false, variable_info::TYPE_SCALAR);
+	config::t_token const tm(m);
+	variable_info v(tm, false, variable_info::TYPE_SCALAR);
 	if (v.is_valid()) {
 		luaW_pushscalar(L, v.as_scalar());
 		return 1;
 	} else {
-		variable_info w(config::t_token(m), false, variable_info::TYPE_CONTAINER);
+		variable_info w(tm, false, variable_info::TYPE_CONTAINER);
 		if (w.is_valid()) {
 			lua_newtable(L);
 			if (lua_toboolean(L, 2))
@@ -1409,6 +1410,7 @@ static int intf_set_variable(lua_State *L)
 		default:
 			return luaL_typerror(L, 2, "WML table or scalar");
 	}
+
 	return 0;
 }
 

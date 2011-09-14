@@ -586,13 +586,22 @@ static const config::t_token z_rbracket("]", false);
 
 typedef config::t_token t_token;
 struct t_parsed {
-	enum {NO_INDEX = -1};
+	static const int NO_INDEX = INT_MAX;
 	t_parsed(t_token const & a, int i = NO_INDEX):token(a),index(i){}
 	t_parsed(t_parsed const & a):token(a.token), index(a.index){}
+	operator t_token const () const {
+		if(index == NO_INDEX){
+			return token; }
+		else {
+			std::stringstream ss;
+			ss << token << '[' <<index << "].";
+			return t_token(ss.str()); }
+	}
 	t_token token;
 	int index; };
 
 typedef std::vector<t_parsed> t_parsed_tokens;
+typedef std::vector<t_token> t_tokens;
 
 class t_parse_token {
 public:
@@ -704,7 +713,6 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 	try {
 
 		//an example varname is  "unit_store.modifications.trait[0]"
-
 		assert(repos != NULL);
 
 		static t_all_parsed cache( t_parse_token(), CACHE_SIZE);
@@ -730,29 +738,31 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 				inner_index = i->index;
 
 				if(size <= inner_index) {
-					bool last_key_is_not_length ((i == second_last_token) && (last_token->token != z_length));
+					bool last_key_is_not_length ((i != second_last_token) || (last_token->token != z_length));
 					if(force_valid) {
 						// Add elements to the array until the requested size is attained
-						if( (inner_index > 0) ||  last_key_is_not_length) {
+						if( last_key_is_not_length) {
 							for(; size <= inner_index; ++size) {
 								vars->add_child(i->token);
 							}
 						}
 					} else if(inner_index != 0) {
 						WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
-						return;
+						throw game::wml_syntax_error(tokens, i - tokens.begin(), 
+													 _("the WML array index is larger than the largest array element.") );
 					} else if( last_key_is_not_length ) {
 						WRN_NG << "variable_info: retrieving member of non-existent WML container, " << varname << std::endl;
-						return;
+						throw game::wml_syntax_error(tokens, i - tokens.begin() , _("the WML array index is invalid.  Use varname[0].length to check for the existence of an array element.") );
 					} //else return length 0 for non-existent WML array (handled below)
 				}
 			} else {
-				if( (i == second_last_token) && (last_token->token == z_length) ) {
+				if( i == second_last_token && last_token->token == z_length){
 					switch(vartype) {
 					case variable_info::TYPE_ARRAY:
 					case variable_info::TYPE_CONTAINER:
-						WRN_NG << "variable_info: using reserved WML variable as wrong type, "
-							   << varname << std::endl;
+						WRN_NG << _("variable_info: using reserved WML variable as wrong type, ") << varname << std::endl;
+						throw game::wml_syntax_error(tokens, i - tokens.begin()
+													 , _("attempt to get length of a non array/container.") );
 						is_valid_ = force_valid || repos->temporaries_.child(varname);
 						break;
 					case variable_info::TYPE_SCALAR:
@@ -768,6 +778,11 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 				}
 			}
 			vars = &vars->child(i->token, inner_index);
+
+			//todo fix the config operator bool and change (vars == NULL)to !vars
+			if(!force_valid && vars == NULL){ 
+				is_valid_ = false;
+				return; } 
 			++i;
 		}
 
@@ -781,7 +796,8 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 			if(size <= index) {
 				if(!force_valid) {
 					WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
-					return;
+					throw game::wml_syntax_error(tokens, i - tokens.begin(), 
+												 _("the WML array index is larger than the largest array element.") );
 				}
 				for(; size <= index; ++size) {
 					vars->add_child(key);
