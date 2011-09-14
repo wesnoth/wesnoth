@@ -41,29 +41,6 @@ wml_syntax_error::wml_syntax_error(std::string const & str, size_t const & pos, 
 	output_ = ss.str();
 }
 
-wml_syntax_error::wml_syntax_error(t_tokens const & tokens, size_t const & p, std::string const & reason)
-	: output_() {
-	std::stringstream ss;
-	ss << _("WML Syntax error:: Variable in WML string cannot be evaluated because, ") << reason<< _(" in \n\"");
-	t_tokens::const_iterator i = tokens.begin(), pos(tokens.begin() + p);
-	for(; i!=tokens.end(); ++i){
-		ss << *i; }
-	ss << "\" at \n\"";
-	for(i = tokens.begin(); (i!= tokens.end() && i != pos) ; ++i){
-		ss << *i; }
-	if(i != tokens.end()){
-		ss << "\"  -->\"" << *i << "\"<-- ";
-		if((++i) != tokens.end()){
-			ss << "\"";
-			for(; i != tokens.end(); ++i){
-				ss << *i; }
-			ss << "\"";
-		}
-	}
-	else { ss << "\"<--"; }
-
-	output_ = ss.str();
-}
 
 const char * wml_syntax_error::what() const throw() {
 	return output_.c_str();
