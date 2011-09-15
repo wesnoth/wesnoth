@@ -755,11 +755,14 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 						throw game::wml_syntax_error(tokens, i - tokens.begin() , _("the WML array index is invalid.  Use varname[0].length to check for the existence of an array element.") );
 					} //else return length 0 for non-existent WML array (handled below)
 				}
+				vars = &vars->child(i->token, inner_index);
+
 			} else {
 				if( i == second_last_token && last_token->token == z_length){
 					switch(vartype) {
 					case variable_info::TYPE_ARRAY:
 					case variable_info::TYPE_CONTAINER:
+						is_valid_ = force_valid || repos->temporaries_.child(varname);
 						WRN_NG << _("variable_info: using reserved WML variable as wrong type, ") << varname << std::endl;
 						is_valid_ = force_valid || repos->temporaries_.child(varname);
 						throw game::wml_syntax_error(tokens, i - tokens.begin()
@@ -776,13 +779,19 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 					vars = &repos->temporaries_;
 					return;
 				}
-			}
-			vars = &vars->child(i->token, inner_index);
+				
+				config *ovars(vars);
+				vars = &vars->child(i->token, inner_index);
 
-			//todo fix the config operator bool and change (vars == NULL)to !vars
-			if(!force_valid && vars == NULL){ 
-				is_valid_ = false;
-				return; } 
+				//todo fix the config operator bool and change (vars == NULL)to !vars
+				if(vars == NULL){
+					if(force_valid) {
+						vars = &ovars->add_child(i->token); } 
+					else {
+						is_valid_ = false;
+						return; } } 					
+			}
+
 			++i;
 		}
 

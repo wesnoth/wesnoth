@@ -1317,6 +1317,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 {
+	static const config::t_token z_empty("", false);
 	static const config::t_token z_name("name", false);
 	static const config::t_token z_literal("literal", false);
 	static const config::t_token z_value("value", false);
@@ -1344,6 +1345,9 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	game_state *state_of_game = resources::state_of_game;
 
 	const config::t_token & name = cfg[z_name];
+	if(name == z_empty){
+		throw config::error("Mandatory WML variable name is empty \"\"."); }
+	
 	config::attribute_value &var = state_of_game->get_variable(name);
 
 	config::attribute_value const & literal = cfg.get_config()[z_literal]; // no $var substitution
