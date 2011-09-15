@@ -13,6 +13,8 @@ Version 1.9.9+svn:
    * Readded the liminal alignment
    * Added four-difficulty versions of certain macros: QUANTITY4,
      ON_DIFFICULTY4, TURNS4, GOLD4, INCOME4, and ATTACK_DEPTH4.
+   * added support for SSF to SUF via a [filter_side] subtag
+   * added support for [enemy_of]<SSF> to SSF
  * Miscellaneous and bug fixes:
    * Fixed compilation on all Debian architectures (Debian bug #636193)
    * Fixed handling of #ifver and #ifnver preprocessor directives in wmllint
