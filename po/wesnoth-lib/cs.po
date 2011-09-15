@@ -87,14 +87,12 @@ msgstr "Pobřežní útes"
 #. [terrain_type]: id=gray_reef
 #: data/core/terrain.cfg:93
 #, fuzzy
-#| msgid "Coastal Reef"
 msgid "Gray Coastal Reef"
 msgstr "Pobřežní útes"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:113
 #, fuzzy
-#| msgid "Coastal Reef"
 msgid "Tropical Coastal Reef"
 msgstr "Pobřežní útes"
 
@@ -116,7 +114,6 @@ msgstr "Blata"
 #: data/core/terrain.cfg:152 data/core/terrain.cfg:163
 #: data/core/terrain.cfg:174 data/core/terrain.cfg:184
 #, fuzzy
-#| msgid "Island"
 msgid "Grassland"
 msgstr "Ostrov"
 
@@ -146,7 +143,6 @@ msgstr ""
 #: data/core/terrain.cfg:196 data/core/terrain.cfg:206
 #: data/core/terrain.cfg:216
 #, fuzzy
-#| msgid "Dry Dirt"
 msgid "Dirt"
 msgstr "Hlína, suchá"
 
@@ -173,8 +169,9 @@ msgstr "Hlína, suchá"
 #: data/core/terrain.cfg:226 data/core/terrain.cfg:236
 #: data/core/terrain.cfg:246 data/core/terrain.cfg:945
 #: data/core/terrain.cfg:955
+#, fuzzy
 msgid "Road"
-msgstr ""
+msgstr "Načíst hru"
 
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:227
@@ -204,9 +201,8 @@ msgstr "Sníh"
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:282
 #, fuzzy
-#| msgid "Desert Keep"
 msgid "Desert"
-msgstr "Tvrz, pouštní"
+msgstr "Resetovat"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:283
@@ -309,7 +305,6 @@ msgstr "Velký strom"
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:462
 #, fuzzy
-#| msgid "Great Tree"
 msgid "Dead Great Tree"
 msgstr "Velký strom"
 
@@ -525,7 +520,6 @@ msgstr "Kopce, zasněžené smíšeně zalesněné"
 #. [terrain_type]
 #: data/core/terrain.cfg:900
 #, fuzzy
-#| msgid "Basic Wooden Floor"
 msgid "Wooden Floor"
 msgstr "Základní dřevěná podlaha"
 
@@ -604,7 +598,6 @@ msgstr "Důlní železnice"
 #: data/core/terrain.cfg:1039 data/core/terrain.cfg:1050
 #: data/core/terrain.cfg:1061 data/core/terrain.cfg:1072
 #, fuzzy
-#| msgid "Lava Chasm"
 msgid "Chasm"
 msgstr "Rokle, lávová"
 
@@ -660,9 +653,8 @@ msgstr "Hory, neschůdné zasněžené"
 #: data/core/terrain.cfg:1139 data/core/terrain.cfg:1150
 #: data/core/terrain.cfg:1161 data/core/terrain.cfg:1172
 #, fuzzy
-#| msgid "Cave Path"
 msgid "Cave Wall"
-msgstr "Jeskynní stezka"
+msgstr "Vesnice, jeskynní"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1140
@@ -814,7 +806,6 @@ msgstr "Město, lidské "
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1380
 #, fuzzy
-#| msgid "Ruined Hill Stone Village"
 msgid "Windmill Village"
 msgstr "Vesnice, v kopcích rozbořená"
 
@@ -972,7 +963,6 @@ msgstr "Hrad, trpasličí"
 #: data/core/terrain.cfg:1728 data/core/terrain.cfg:1740
 #: data/core/terrain.cfg:1753 data/core/terrain.cfg:1778
 #, fuzzy
-#| msgid "Ruined Human Castle"
 msgid "Ruined Castle"
 msgstr "Hrad, zřícený lidský"
 
@@ -1073,7 +1063,6 @@ msgstr "Tvrz, trpasličí"
 #: data/core/terrain.cfg:1910 data/core/terrain.cfg:1923
 #: data/core/terrain.cfg:1936 data/core/terrain.cfg:1962
 #, fuzzy
-#| msgid "Ruined Desert Keep"
 msgid "Ruined Keep"
 msgstr "Tvrz, zřícená pouštní"
 
@@ -1126,7 +1115,6 @@ msgstr ""
 #: data/core/terrain.cfg:2082 data/core/terrain.cfg:2093
 #: data/core/terrain.cfg:2105
 #, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Bridge"
 msgstr "Most, dřevěný"
 
@@ -1971,28 +1959,24 @@ msgstr "Informace o hráči - "
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:70
 #, fuzzy
-#| msgid "Send private message"
 msgid "Send Private Message"
 msgstr "Pošli soukromou zprávu"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:99
 #, fuzzy
-#| msgid "Add As Friend"
 msgid "Add to Friends"
 msgstr "Přidej jako přítele"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:108
 #, fuzzy
-#| msgid "Add As Ignore"
 msgid "Add to Ignores"
 msgstr "Přidej jako otrapu"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:117
 #, fuzzy
-#| msgid "Remove from list"
 msgid "Remove from List"
 msgstr "Odstraň ze seznamu"
 
@@ -2030,19 +2014,18 @@ msgstr "Vyhodit/zakázat"
 #. [label]: id=side_title
 #: data/gui/default/window/mp_change_control.cfg:21
 #, fuzzy
-#| msgid "Next Side"
 msgid "Side"
-msgstr "Další strana"
+msgstr "Velikost:"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
+#, fuzzy
 msgid "Nick"
-msgstr ""
+msgstr "Vyhodit"
 
 #. [label]
 #: data/gui/default/window/mp_change_control.cfg:194
 #, fuzzy
-#| msgid "Change Hotkey"
 msgid "Change Control"
 msgstr "Změň klávesovou zkratku"
 
@@ -2069,14 +2052,12 @@ msgstr "Seznam přátel a otrapů"
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:170
 #, fuzzy
-#| msgid "Add As Friend"
 msgid "Add as Friend"
 msgstr "Přidej jako přítele"
 
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
 #, fuzzy
-#| msgid "Add As Ignore"
 msgid "Add as Ignore"
 msgstr "Přidej jako otrapu"
 
@@ -2245,13 +2226,6 @@ msgstr "Hra více hráčů"
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:90
 #, fuzzy
-#| msgid ""
-#| "You may login to the official multiplayer server with your forum username "
-#| "and password.\n"
-#| "Note that registration is not required to join the server: you need to "
-#| "supply a password only if you wish to use a registered username.\n"
-#| "\n"
-#| "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgid ""
 "You may login to the official multiplayer server with your forum username "
 "and password.\n"
@@ -2643,7 +2617,6 @@ msgstr "Zobrazuj náhodné animace jednotek"
 
 #: src/game_preferences_display.cpp:206
 #, fuzzy
-#| msgid "Show Unit Idle Animations"
 msgid "Show Unit Standing Animations"
 msgstr "Zobrazuj náhodné animace jednotek"
 
@@ -2654,7 +2627,6 @@ msgstr "Animovat mapu"
 #: src/game_preferences_display.cpp:209 src/game_preferences_display.cpp:210
 #: src/game_preferences_display.cpp:211 src/game_preferences_display.cpp:212
 #, fuzzy
-#| msgid "SFX Volume:"
 msgid "Volume:"
 msgstr "Hlasitost zvuků:"
 
@@ -3895,6 +3867,9 @@ msgstr ""
 #~ msgid "Send a private message"
 #~ msgstr "Pošli soukromou zprávu"
 
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
 #~ msgid "Name: "
 #~ msgstr "Jméno: "
 
@@ -3924,9 +3899,6 @@ msgstr ""
 #~ msgid "Choose whether the sun moves left-to-right or right-to-left"
 #~ msgstr ""
 #~ "Zvol, zda-li se má slunce pohybovat zleva doprava, nebo zprava doleva"
-
-#~ msgid "Profile"
-#~ msgstr "Profil"
 
 #~ msgid "Select unit:"
 #~ msgstr "Vyber jednotku:"

@@ -140,12 +140,12 @@ msgstr ""
 msgid "Chat message aging"
 msgstr ""
 
+# | msgid ""
+# | "Number of seconds to wait for a ping reply before we time out. Disable "
+# | "with 0."
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:133
 #, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Disable "
 "aging with 0."
@@ -284,10 +284,10 @@ msgstr ""
 msgid "Test campaign used to check if new campaign syntax is working."
 msgstr ""
 
+# | msgid "Easy"
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:46
 #, fuzzy
-#| msgid "Easy"
 msgid "(Easy)"
 msgstr "Jednoduchá"
 
@@ -296,10 +296,10 @@ msgstr "Jednoduchá"
 msgid "Soldier"
 msgstr ""
 
+# | msgid "Normal"
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:47
 #, fuzzy
-#| msgid "Normal"
 msgid "(Normal)"
 msgstr "Normální"
 
@@ -308,10 +308,10 @@ msgstr "Normální"
 msgid "Lord"
 msgstr ""
 
+# | msgid "Hard"
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:48
 #, fuzzy
-#| msgid "Hard"
 msgid "(Hard)"
 msgstr "Těžká"
 
@@ -330,19 +330,19 @@ msgstr ""
 msgid "Test campaign - first scenario (grass)"
 msgstr ""
 
+# | msgid "Players: "
 #. [side]: id=Alpha, type=Elvish Fighter
 #. [side]: id=Bravo, type=Elvish Archer
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:24
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:41
 #, fuzzy
-#| msgid "Players: "
 msgid "Players"
 msgstr "Počet hráčů: "
 
+# | msgid "Enemy village"
 #. [side]: id=Charlie, type=Orcish Grunt
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:53
 #, fuzzy
-#| msgid "Enemy village"
 msgid "Enemies"
 msgstr "Nepřátelská vesnice"
 
@@ -356,52 +356,52 @@ msgstr ""
 msgid "Failed test color"
 msgstr ""
 
+# | msgid "Difficulty: "
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
 #, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Easy"
 msgstr "Obtížnost: "
 
+# | msgid "Difficulty: "
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:90
 #, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Normal"
 msgstr "Obtížnost: "
 
+# | msgid "Difficulty: "
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:93
 #, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Hard"
 msgstr "Obtížnost: "
 
+# | msgid "Campaign: $campaign_name"
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:100
 #, fuzzy
-#| msgid "Campaign: $campaign_name"
 msgid "Main campaign define"
 msgstr "Tažení: $campaign_name"
 
+# | msgid "Campaign Design"
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:111
 #, fuzzy
-#| msgid "Campaign Design"
 msgid "Extra campaign define"
 msgstr "Návrh tažení"
 
+# | msgid "Multiplayer"
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:122
 #, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer define"
 msgstr "Hra více hráčů"
 
+# | msgid "Defeat enemy leader(s)"
 #. [objective]: condition=win
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
 #, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat enemy leader"
 msgstr "Znič nepřátelské(ho) vůdce"
 
@@ -3370,27 +3370,27 @@ msgstr "Přeskočit animaci"
 msgid "Close"
 msgstr "Zavřít"
 
+# | msgid "You don’t have a leader to recruit with."
 #: src/actions.cpp:470
 #, fuzzy
-#| msgid "You don’t have a leader to recruit with."
 msgid "You don’t have a leader to recall with."
 msgstr "Nemáš vůdce, který by verboval či přivolával."
 
+# | msgid "You must have your leader on a keep to recruit or recall units."
 #: src/actions.cpp:475
 #, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders is able to recall that unit."
 msgstr "Musíš mít hrdinu v tvrzi, abys mohl někoho naverbovat nebo přivolat."
 
+# | msgid "You must have your leader on a keep to recruit or recall units."
 #: src/actions.cpp:480
 #, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr "Musíš mít hrdinu v tvrzi, abys mohl někoho naverbovat nebo přivolat."
 
+# | msgid "There are no vacant castle tiles in which to recruit a unit."
 #: src/actions.cpp:485
 #, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "Nejsou žádné volné hrady, ve kterých by se daly verbovat jednotky."
 
@@ -3398,15 +3398,15 @@ msgstr "Nejsou žádné volné hrady, ve kterých by se daly verbovat jednotky."
 msgid "You don’t have a leader to recruit with."
 msgstr "Nemáš vůdce, který by verboval či přivolával."
 
+# | msgid "You must have your leader on a keep to recruit or recall units."
 #: src/actions.cpp:555
 #, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr "Musíš mít hrdinu v tvrzi, abys mohl někoho naverbovat nebo přivolat."
 
+# | msgid "There are no vacant castle tiles in which to recruit a unit."
 #: src/actions.cpp:560
 #, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Nejsou žádné volné hrady, ve kterých by se daly verbovat jednotky."
 
@@ -3506,9 +3506,9 @@ msgstr "Jiný"
 msgid "addon_type^(unknown)"
 msgstr "(neznámý)"
 
+# | msgid "Requesting list of add-ons"
 #: src/addon/manager.cpp:457
 #, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting terms"
 msgstr "Stahuji seznam rozšíření"
 
@@ -3533,9 +3533,9 @@ msgstr "Server odpověděl chybou: \""
 msgid "Response"
 msgstr "Odpověď"
 
+# | msgid "Requesting list of add-ons"
 #: src/addon/manager.cpp:530
 #, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting the addon to be deleted"
 msgstr "Stahuji seznam rozšíření"
 
@@ -3714,9 +3714,9 @@ msgstr ""
 msgid "Confirm"
 msgstr "Potvrdit"
 
+# | msgid "Connecting to Server..."
 #: src/addon/manager.cpp:1104
 #, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting..."
 msgstr "Připojuji se na server...."
 
@@ -5260,15 +5260,15 @@ msgid ""
 "you activate your account via email or ask an administrator to do it for you."
 msgstr ""
 
+# | msgid "Do you want to save your game?"
 #: src/multiplayer.cpp:248
 #, fuzzy
-#| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
 msgstr "Přeješ si uložit hru?"
 
+# | msgid "Warning: "
 #: src/multiplayer.cpp:250
 #, fuzzy
-#| msgid "Warning: "
 msgid "Warning"
 msgstr "Varování: "
 
@@ -6623,15 +6623,15 @@ msgstr ""
 msgid "HIDE ALL allies’ plans"
 msgstr ""
 
+# | msgid "Show replay"
 #: src/whiteboard/manager.cpp:986
 #, fuzzy
-#| msgid "Show replay"
 msgid "Show plans for $player"
 msgstr "Ukaž záznamy"
 
+# | msgid "Replace with $player"
 #: src/whiteboard/manager.cpp:988
 #, fuzzy
-#| msgid "Replace with $player"
 msgid "Hide plans for $player"
 msgstr "Nahraď hráčem $player"
 
