@@ -35,6 +35,7 @@
 #include "terrain_filter.hpp"
 #include "formula_string_utils.hpp"
 #include "scripting/lua.hpp"
+#include "side_filter.hpp"
 #include "play_controller.hpp"
 
 static lg::log_domain log_unit("unit");
@@ -1419,6 +1420,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	static const config::t_token z_find_in("find_in", false);
 	static const config::t_token z_formula("formula", false);
 	static const config::t_token z_lua_function("lua_function", false);
+	static const config::t_token z_filter_side("filter_side", false);
 
 	config::attribute_value cfg_name = cfg[z_name];
 	if (!cfg_name.empty() && cfg_name.str() != name_) {
@@ -1456,6 +1458,14 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			return false;
 		}
 	}
+
+	const vconfig& filter_side = cfg.child(z_filter_side);
+	if(!filter_side.null()) {
+		side_filter s_filter(filter_side);
+		if(!s_filter.match(this->side()))
+			return false;
+	}
+
 	// Also allow filtering on location ranges outside of the location filter
 	config::attribute_value cfg_x = cfg[z_x];
 	config::attribute_value cfg_y = cfg[z_y];
