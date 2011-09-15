@@ -147,6 +147,15 @@ bool side_filter::match_internal(const team &t) const
 		}
 	}
 
+	const vconfig& enemy_of = cfg_.child("enemy_of");
+	if(!enemy_of.null()) {
+		side_filter s_filter(enemy_of);
+		foreach(const int side, s_filter.get_teams()) {
+			if(!(*resources::teams)[side - 1].is_enemy(t.side()))
+				return false;
+		}
+	}
+
 	return true;
 }
 
