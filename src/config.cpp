@@ -30,7 +30,6 @@
 #include <cstdlib>
 #include <cstring>
 #include <deque>
-#include <boost/variant.hpp>
 
 #ifdef DEBUG
 #include "utils/count_logger.hpp"
@@ -289,6 +288,8 @@ bool config::initialize_invalid() {
 	return true;
 }
 
+void config::throw_missing_child_exception() const {
+	throw error("Mandatory WML child missing yet untested for. Please report."); }
 
 config::config() : values(), children(), ordered_children() {
 	//Run initialization once

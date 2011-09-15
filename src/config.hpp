@@ -35,7 +35,6 @@
 #include <iosfwd>
 #include <vector>
 #include <utility> //for relops
-#include <boost/variant/variant.hpp>
 #include <boost/unordered_map.hpp>
 
 #include "game_errors.hpp"
@@ -61,17 +60,24 @@ class config
 	static bool initialize_invalid();
 
 	/**
+	 * Raises a most cryptic exception if @a this is not valid.
+	 */
+	//Place the call to the exception in the object file.
+	void throw_missing_child_exception() const ;
+
+	/**
 	 * Raises an exception if @a this is not valid.
 	 */
 	void check_valid() const {	
 		if (!*this){ 
-			throw error("Mandatory WML child missing yet untested for. Please report."); }
-	}
+			throw_missing_child_exception(); }}
 
 	/**
 	 * Raises an exception if @a this or @a cfg is not valid.
 	 */
-	void check_valid(const config &cfg) const {check_valid(); cfg.check_valid();}
+	void check_valid(const config &cfg) const {
+		check_valid(); 
+		cfg.check_valid();}
 
 #ifndef HAVE_CXX0X
 	struct safe_bool_impl { void nonnull() {} };
