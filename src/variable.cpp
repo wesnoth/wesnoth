@@ -46,6 +46,12 @@ static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
+static lg::log_domain log_wml("wml");
+#define LOG_WML LOG_STREAM(info, log_wml)
+#define WRN_WML LOG_STREAM(warn, log_wml)
+#define ERR_WML LOG_STREAM(err, log_wml)
+
+
 namespace
 {
 /**
@@ -747,11 +753,9 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 							}
 						}
 					} else if(inner_index != 0) {
-						WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
 						throw game::wml_syntax_error(tokens, i - tokens.begin(), 
 													 _("the WML array index is larger than the largest array element.") );
 					} else if( last_key_is_not_length ) {
-						WRN_NG << "variable_info: retrieving member of non-existent WML container, " << varname << std::endl;
 						throw game::wml_syntax_error(tokens, i - tokens.begin() , _("the WML array index is invalid.  Use varname[0].length to check for the existence of an array element.") );
 					} //else return length 0 for non-existent WML array (handled below)
 				}
@@ -762,12 +766,8 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 					switch(vartype) {
 					case variable_info::TYPE_ARRAY:
 					case variable_info::TYPE_CONTAINER:
-						is_valid_ = force_valid || repos->temporaries_.child(varname);
-						WRN_NG << _("variable_info: using reserved WML variable as wrong type, ") << varname << std::endl;
-						is_valid_ = force_valid || repos->temporaries_.child(varname);
 						throw game::wml_syntax_error(tokens, i - tokens.begin()
 													 , _("attempt to get length of a non array/container.") );
-						break;
 					case variable_info::TYPE_SCALAR:
 					default:
 						// Store the length of the array as a temporary variable
@@ -804,7 +804,6 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 			index = i->index;
 			if(size <= index) {
 				if(!force_valid) {
-					WRN_NG << "variable_info: invalid WML array index, " << varname << std::endl;
 					throw game::wml_syntax_error(tokens, i - tokens.begin(), 
 												 _("the WML array index is larger than the largest array element.") );
 				}
@@ -831,8 +830,7 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 			}
 			if (force_valid) {
 				WRN_NG << "variable_info: using explicitly indexed "
-					"container as wrong WML type, " << varname << '\n';
-			}
+					"container as wrong WML type, " << varname << '\n'; }
 			explicit_index_ = false;
 			index = 0;
 		} else {
@@ -852,11 +850,7 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 			}
 		}
 	} catch (game::wml_syntax_error & e) {
-		ERR_NG << e.what()<<"\n";
-		static const config::t_token z_caption(_("Invalid WML found"), false);
-		if(resources::screen){ 
-			resources::screen->add_chat_message(time(NULL), z_caption, 0, e.what(),
-												events::chat_handler::MESSAGE_PUBLIC, false); }
+		WRN_NG << e.what()<<"\n";
 		is_valid_ = false;
 	}
 }
