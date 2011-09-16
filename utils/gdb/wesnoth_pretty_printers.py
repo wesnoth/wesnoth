@@ -7,6 +7,44 @@ import itertools
 
 from wesnoth_type_tools import strip_type
 
+
+class RecursionManager(object):
+    """Keeps track of the levels of recrusion and whether expansion should happen or not """
+    default=1
+    curr=0
+
+    # @classmethod
+    # def __init__(cls, val):
+    #     cls.default = val
+    #     cls.curr=0;
+
+    @classmethod
+    def get_level(cls):
+        return cls.default
+        
+    @classmethod
+    def set_level(cls, val):
+        if val >= 0 :
+            cls.curr=0;
+            cls.default = val
+        return cls.default
+
+    @classmethod
+    def should_display(cls) : 
+        return cls.curr <= cls.default
+
+    @classmethod
+    def inc(cls):
+        cls.curr = cls.curr + 1
+        return cls.should_display()
+
+    @classmethod
+    def dec(cls):
+        if cls.curr > 0 :
+            cls.curr = cls.curr - 1
+        return cls.should_display()
+
+
 #Printer for n_interned::t_interned 
 class T_InternedPrinter(object) :
     """Print a t_interned_token<T>"""
@@ -72,15 +110,16 @@ class AttributeValuePrinter(object) :
     def __init__(self, val) :
         self.val = val
 
-    def to_string(self) :
-        # Get the type.
-        type = self.val.type
-    
-        # Get the type name.    
-        type = strip_type(self.val)
+        # Get the type.    
+        self.type = strip_type(self.val)
        
-        attr = self.val.cast(type)
-        attr_type = attr['type_']
+        self.attr = self.val.cast(self.type)
+        self.attr_type = self.attr['type_']
+
+    def to_string(self) :
+        # return "attribute_value"
+        attr=self.attr
+        attr_type = self.attr_type
        
         if attr_type == 0:
             return ""
@@ -96,7 +135,24 @@ class AttributeValuePrinter(object) :
             return 't_string ' + ('%s' % attr['t_string_value_'])
         
         return "attribute pretty printer found an unknown type"
-    
+
+    # def children(self):
+    #     attr=self.attr
+    #     attr_type = self.attr_type
+    #     if attr_type == 0:
+    #         raise StopIteration
+    #     elif attr_type == 1 :
+    #         yield 'bool', attr['bool_value_']
+    #     elif attr_type == 2 :
+    #         yield 'int' , attr['int_value_']
+    #     elif attr_type == 3 :
+    #         yield 'double' , attr['double_value_']
+    #     elif attr_type == 4 :
+    #         yield 'token' ,attr['token_value_']
+    #     else :
+    #         yield 't_string' , attr['t_string_value_']
+    #     raise StopIteration
+ 
     def display_hint(self) :
         #one of 'string' 'array' 'map'
         return 'string'
@@ -125,7 +181,7 @@ class BoostUnorderedMapPrinter(object) :
             return self
 
         def next(self):
-            if self.buckets == 0 :
+            if self.buckets == 0 or not RecursionManager.should_display() :
                 raise StopIteration
             while not self.node:
                 self.current_bucket = self.current_bucket + 1
@@ -141,8 +197,15 @@ class BoostUnorderedMapPrinter(object) :
     def __init__(self, val):
         self.val = val
         self.buckets = val['table_']['buckets_']
+        self.descended = False;
+
+    def __del__(self) :
+        if self.descended :
+            RecursionManager.dec() 
 
     def children(self):
+        self.descended = True;
+        RecursionManager.inc() 
         return self._iterator(self.val)
 
     def to_string(self):
@@ -174,7 +237,8 @@ class BoostUnorderedMapIteratorPrinter(object):
 
     def display_hint(self):
         return 'string'
-    
+
+
 
 class ConfigPrinter(object) :
     """Print a config"""
@@ -183,16 +247,26 @@ class ConfigPrinter(object) :
 
     def to_string(self) :
         return "config"
+            
     def children(self) :
-        #yield "invalid",  self.val['invalid']
-        yield "values", self.val['values']
-        yield "children", self.val['children']
-        yield "ordered_children", self.val['ordered_children']
+        if RecursionManager.should_display() :
+            #yield "invalid",  self.val['invalid']
+            yield "values", self.val['values']
+            yield "children", self.val['children']
+            RecursionManager.inc() 
+            yield "ordered_children", self.val['ordered_children']
+            RecursionManager.dec() 
+
+        else :
+            pass
+            # yield "values" ,  '...'    #('%s' % self.val['values'].type) 
+            # yield "children" , '...'    #('%s' % self.val['children'].type) 
+            # yield "ordered_children" , '...'  #"std::vector<config::child_pos>"
+
            
     def display_hint(self) :
         #one of 'string' 'array' 'map'
         return 'string'
-
 
 
 # register the pretty-printers
