@@ -2044,7 +2044,7 @@ WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 		font::remove_floating_label(floating_label);
 
 	// Display a message on-screen
-	t_string const & text = cfg[z_text];
+	config::attribute_value const & text = cfg[z_text];
 	if(text.empty())
 		return;
 
