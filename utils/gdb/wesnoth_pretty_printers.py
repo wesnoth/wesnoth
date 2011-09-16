@@ -5,20 +5,7 @@ import gdb
 import re
 import itertools
 
-def strip_type(val):
-    "Strip the typename of all qualifiers and typedefs"
-    # Get the type.
-    type = val.type
-    
-    # If it points to a reference, get the reference.
-    if (type.code == gdb.TYPE_CODE_REF) or (type.code == gdb.TYPE_CODE_PTR):
-        try: type = type.target ()
-        except TypeError: type = val.type
- 
-    # Get the unqualified type, stripped of typedefs.
-    type = type.unqualified().strip_typedefs()
-    
-    return type
+from wesnoth_type_tools import strip_type
 
 #Printer for n_interned::t_interned 
 class T_InternedPrinter(object) :
@@ -122,16 +109,17 @@ class BoostUnorderedMapPrinter(object) :
 
     class _iterator:
         def __init__ (self, val):
-            t_key = val.type.template_argument(0)
-            t_val = val.type.template_argument(1)
             self.buckets = val['table_']['buckets_']
-            self.bucket_count = val['table_']['bucket_count_']
-            self.current_bucket = 0
-            pair = "std::pair<%s const, %s>" % (t_key, t_val)
-            self.pair_pointer = gdb.lookup_type(pair).pointer()
-            self.base_pointer = gdb.lookup_type("boost::unordered_detail::value_base< %s >" % pair).pointer()
-            self.node_pointer = gdb.lookup_type("boost::unordered_detail::hash_node<std::allocator< %s >, boost::unordered_detail::ungrouped>" % pair).pointer()
-            self.node = self.buckets[self.current_bucket]['next_']
+            if self.buckets != 0:
+                t_key = val.type.template_argument(0)
+                t_val = val.type.template_argument(1)
+                self.bucket_count = val['table_']['bucket_count_']
+                self.current_bucket = 0
+                pair = "std::pair<%s const, %s>" % (t_key, t_val)
+                self.pair_pointer = gdb.lookup_type(pair).pointer()
+                self.base_pointer = gdb.lookup_type("boost::unordered_detail::value_base< %s >" % pair).pointer()
+                self.node_pointer = gdb.lookup_type("boost::unordered_detail::hash_node<std::allocator< %s >, boost::unordered_detail::ungrouped>" % pair).pointer()
+                self.node = self.buckets[self.current_bucket]['next_']
 
         def __iter__(self):
             return self

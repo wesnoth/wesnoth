@@ -6,6 +6,7 @@ Usage:
 1. Add these lines line into your .gdbinit that you use for wesnoth file:
 
 #Load the wesnoth pretty-printers
+python import os
 python sys.path.append(os.path.abspath('utils/gdb/'))
 python import wesnoth_gdb
 

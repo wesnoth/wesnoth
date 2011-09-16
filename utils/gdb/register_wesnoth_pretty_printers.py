@@ -10,21 +10,7 @@ Usage:
 import gdb
 import re
 import itertools
-
-def strip_type(val):
-    "Strip the typename of all qualifiers and typedefs"
-    # Get the type.
-    type = val.type
-    
-    # If it points to a reference, get the reference.
-    if (type.code == gdb.TYPE_CODE_REF) or (type.code == gdb.TYPE_CODE_PTR):
-        try: type = type.target ()
-        except TypeError: type = val.type
- 
-    # Get the unqualified type, stripped of typedefs.
-    type = type.unqualified().strip_typedefs()
-    
-    return type
+from wesnoth_type_tools import strip_type
 
 
 class NullPointerPrinter(object) :
