@@ -347,26 +347,26 @@ void manager::delete_game(const std::string& name)
 	remove((get_saves_dir() + "/" + modified_name).c_str());
 }
 
-bool save_index::save_index_loaded = false;
-config save_index::save_index_cfg;
 
-config& save_index::load()
-{
+config& save_index::load() {
+	static bool save_index_loaded = false;
+	//Intentionally not paired with a delete for static initialization purposes
+	static config * save_index_cfg = new config;
+
 	if(save_index_loaded == false) {
 		try {
 			scoped_istream stream = istream_file(get_save_index_file());
-			read(save_index_cfg, *stream);
+			read(*save_index_cfg, *stream);
+			save_index_loaded = true;
 		} catch(io_exception& e) {
 			ERR_SAVE << "error reading save index: '" << e.what() << "'\n";
 		} catch(config::error&) {
 			ERR_SAVE << "error parsing save index config file\n";
-			save_index_cfg.clear();
+			save_index_cfg->clear();
 		}
-
-		save_index_loaded = true;
 	}
 
-	return save_index_cfg;
+	return *save_index_cfg;
 }
 
 config& save_index::save_summary(std::string save)
@@ -389,7 +389,7 @@ config& save_index::save_summary(std::string save)
 	return res;
 }
 
-config::t_child_range_index save_index::indexed_summaries(){
+config::t_child_range_index const save_index::indexed_summaries(){
 	return load().child_range_index(z_save, z_save);
 }
 

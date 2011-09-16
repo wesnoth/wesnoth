@@ -275,17 +275,26 @@ void show_objectives(const config &level, const std::string &objectives)
 
 namespace {
 
+
+struct save_with_summary{
+	save_with_summary(savegame::save_info const & sv, config & cfg):save_(&sv), summary_(&cfg){}
+	savegame::save_info const * save_;
+	config * summary_;
+};
+
+typedef std::vector<save_with_summary> t_saves_with_summaries;
+
 /** Class to handle deleting a saved game. */
 class delete_save : public gui::dialog_button_action
 {
 public:
-	delete_save(display& disp, gui::filter_textbox& filter, std::vector<savegame::save_info>& saves, std::vector<config*>& save_summaries) : disp_(disp), saves_(saves), summaries_(save_summaries), filter_(filter) {}
+	delete_save(display& disp, gui::filter_textbox& filter, t_saves_with_summaries * saves) 
+		: disp_(disp), saves_(*saves), filter_(filter) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
-	std::vector<savegame::save_info>& saves_;
-	std::vector<config*>& summaries_;
+	t_saves_with_summaries saves_;
 	gui::filter_textbox& filter_;
 };
 
@@ -305,14 +314,10 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 		filter_.delete_item(menu_selection);
 
 		// Delete the file
-		savegame::manager::delete_game(saves_[index].name);
+		savegame::manager::delete_game(saves_[index].save_->name);
 
 		// Remove it from the list of saves
 		saves_.erase(saves_.begin() + index);
-
-		if(index < summaries_.size()) {
-			summaries_.erase(summaries_.begin() + index);
-		}
 
 		return gui::DELETE_ITEM;
 	} else {
@@ -325,14 +330,12 @@ static const int save_preview_border = 10;
 class save_preview_pane : public gui::preview_pane
 {
 public:
-	save_preview_pane(CVideo &video, const config& game_config, gamemap* map,
-			const std::vector<savegame::save_info>& info,
-			const std::vector<config*>& summaries,
-			const gui::filter_textbox& textbox) :
+	save_preview_pane(CVideo &video, const config& game_config, gamemap* map
+					  , t_saves_with_summaries * saves
+					  , const gui::filter_textbox& textbox) :
 		gui::preview_pane(video),
 		game_config_(&game_config),
-		map_(map), info_(&info),
-		summaries_(summaries),
+		map_(map), saves_(*saves), 
 		index_(0),
 		map_cache_(),
 		textbox_(textbox)
@@ -352,8 +355,7 @@ public:
 private:
 	const config* game_config_;
 	gamemap* map_;
-	const std::vector<savegame::save_info>* info_;
-	const std::vector<config*>& summaries_;
+	t_saves_with_summaries saves_;
 	int index_;
 	std::map<std::string,surface> map_cache_;
 	const gui::filter_textbox& textbox_;
@@ -361,18 +363,17 @@ private:
 
 void save_preview_pane::draw_contents()
 {
-	if (size_t(index_) >= summaries_.size() || info_->size() != summaries_.size()) {
-		return;
-	}
+	if (size_t(index_) >= saves_.size() ){
+		return; }
 
 	std::string dummy;
-	const config &summary = *summaries_[index_];
+	const config &summary = *saves_[index_].summary_;
 	if (summary["label"].empty())
 	{
 		try {
-			savegame::manager::load_summary((*info_)[index_].name, *summaries_[index_], &dummy);
+			savegame::manager::load_summary(saves_[index_].save_->name, *saves_[index_].summary_, &dummy);
 		} catch(game::load_game_failed&) {
-			(*summaries_[index_])["corrupt"] = true;
+			(*saves_[index_].summary_)["corrupt"] = true;
 		}
 	}
 
@@ -455,7 +456,7 @@ void save_preview_pane::draw_contents()
 	}
 
 	char time_buf[256] = {0};
-	const savegame::save_info& save = (*info_)[index_];
+	const savegame::save_info& save = *saves_[index_].save_;
 	tm* tm_l = localtime(&save.time_modified);
 	if (tm_l) {
 		const size_t res = strftime(time_buf,sizeof(time_buf),_("%a %b %d %H:%M %Y"),tm_l);
@@ -469,7 +470,7 @@ void save_preview_pane::draw_contents()
 	std::stringstream str;
 
 	str << font::BOLD_TEXT << font::NULL_MARKUP
-		<< (*info_)[index_].name << '\n' << time_buf;
+		<< saves_[index_].save_->name << '\n' << time_buf;
 
 	const std::string& campaign_type = summary["campaign_type"];
 	if (summary["corrupt"].to_bool()) {
@@ -571,6 +572,7 @@ std::string format_time_summary(time_t t)
 
 } // end anon namespace
 
+
 std::string load_game_dialog(display& disp, const config& game_config, bool* show_replay, bool* cancel_orders)
 {
 	std::vector<savegame::save_info> games;
@@ -581,25 +583,25 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 
 	if(games.empty()) {
 		gui2::show_transient_message(disp.video(),
-		                 _("No Saved Games"),
-				 _("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)"));
+				_("No Saved Games"),
+				_("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)"));
 		return "";
 	}
 
 	config::t_child_range_index index = savegame::save_index::indexed_summaries();
 
-	std::vector<config*> summaries;
-	std::vector<savegame::save_info>::const_iterator i;
+	t_saves_with_summaries saves_and_summaries;
 	//FIXME: parent_to_child is not used yet
 	std::map<std::string,std::string> parent_to_child;
+	std::vector<savegame::save_info>::const_iterator i;
 	for(i = games.begin(); i != games.end(); ++i) {
 		config::t_token iname(i->name);
 		config::t_child_range_index::iterator xcfgi = index.find( iname);
 		if(xcfgi != index.end()){
 			config& cfg = *xcfgi->second;
 			parent_to_child[cfg["parent"]] = iname;
-			summaries.push_back(&cfg);
-		}
+			saves_and_summaries.push_back(save_with_summary(*i, cfg));
+		} 
 	}
 
 	const events::event_context context;
@@ -609,8 +611,9 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	heading << HEADING_PREFIX << _("Name") << COLUMN_SEPARATOR << _("Date");
 	items.push_back(heading.str());
 
-	for(i = games.begin(); i != games.end(); ++i) {
-		std::string name = i->name;
+	t_saves_with_summaries::const_iterator j=saves_and_summaries.begin();
+	for(; j != saves_and_summaries.end(); ++j) {
+		std::string name = j->save_->name;
 		utils::truncate_as_wstring(name, std::min<size_t>(name.size(), 40));
 
 		std::ostringstream str;
@@ -634,7 +637,8 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	gui::filter_textbox* filter = new gui::filter_textbox(disp.video(), _("Filter: "), items, items, 1, lmenu);
 	lmenu.set_textbox(filter);
 
-	save_preview_pane save_preview(disp.video(),game_config,&map_obj,games,summaries,*filter);
+	save_preview_pane save_preview(disp.video(),game_config,&map_obj, &saves_and_summaries,*filter);
+
 	lmenu.add_pane(&save_preview);
 	// create an option for whether the replay should be shown or not
 	if(show_replay != NULL) {
@@ -652,7 +656,9 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("OK"),0,false), gui::dialog::BUTTON_STANDARD);
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("Cancel"),1,true), gui::dialog::BUTTON_STANDARD);
 
-	delete_save save_deleter(disp,*filter,games,summaries);
+	delete_save save_deleter(disp,*filter, &saves_and_summaries);
+
+
 	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
 
 	lmenu.add_button(delete_button,
@@ -664,15 +670,14 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 
 	savegame::save_index::write_save_index();
 
-	if(res == -1)
-		return "";
-
 	res = filter->get_index(res);
+	if(res == -1){ return ""; }
+
 	int option_index = 0;
 	if(show_replay != NULL) {
 	  *show_replay = lmenu.option_checked(option_index++);
 
-		const config& summary = *summaries[res];
+		const config& summary = *saves_and_summaries[res].summary_;
 		if (summary["replay"].to_bool() && !summary["snapshot"].to_bool(true)) {
 			*show_replay = true;
 		}
@@ -681,7 +686,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 		*cancel_orders = lmenu.option_checked(option_index++);
 	}
 
-	return games[res].name;
+	return saves_and_summaries[res].save_->name;
 }
 
 namespace {

@@ -81,7 +81,7 @@ public:
 	/** Update the save_index file with changed savegame information. */
 	static void write_save_index();
 	/** Create an index to the save summaries. */
-	static config::t_child_range_index indexed_summaries();
+	static config::t_child_range_index const indexed_summaries();
 
 private:
 	/** Default-Constructor (don't instantiate this class) */
@@ -89,9 +89,6 @@ private:
 
 	/** Read the complete config information out of the save_index file. */
 	static config& load();
-
-	static bool save_index_loaded; /** Tells, if the save_index config has been already loaded. */
-	static config save_index_cfg; /** save_index config (who would have guessed that ;-). */
 };
 
 /** The class for loading a savefile. */
