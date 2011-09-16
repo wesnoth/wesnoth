@@ -277,7 +277,7 @@ namespace {
 
 
 struct save_with_summary{
-	save_with_summary(savegame::save_info const & sv, config & cfg):save_(&sv), summary_(&cfg){}
+	save_with_summary(savegame::save_info const & sv, config * cfg):save_(&sv), summary_(cfg){}
 	savegame::save_info const * save_;
 	config * summary_;
 };
@@ -597,11 +597,15 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	for(i = games.begin(); i != games.end(); ++i) {
 		config::t_token iname(i->name);
 		config::t_child_range_index::iterator xcfgi = index.find( iname);
+		config* cfg;
+		static config cempty;
 		if(xcfgi != index.end()){
-			config& cfg = *xcfgi->second;
-			parent_to_child[cfg["parent"]] = iname;
-			saves_and_summaries.push_back(save_with_summary(*i, cfg));
-		} 
+			cfg = &*xcfgi->second;
+			parent_to_child[(*cfg)["parent"]] = iname;
+		} else {
+			cfg = &cempty;
+		}
+		saves_and_summaries.push_back(save_with_summary(*i, cfg));
 	}
 
 	const events::event_context context;
