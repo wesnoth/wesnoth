@@ -238,14 +238,6 @@ namespace{
 	DEFAULT_TOKEN_BODY(z_directional_x_default, "directional_x")
 	DEFAULT_TOKEN_BODY(z_directional_y_default, "directional_y")
 	DEFAULT_TOKEN_BODY(z_layer_default, "layer")
-	DEFAULT_TOKEN_BODY(z_auto_vflip_default, "auto_vflip")
-	DEFAULT_TOKEN_BODY(z_auto_hflip_default, "auto_hflip")
-	DEFAULT_TOKEN_BODY(z_primary_default, "primary")
-	DEFAULT_TOKEN_BODY(z_text_color_default, "text_color")
-	DEFAULT_TOKEN_BODY(z_duration_default, "duration")
-	DEFAULT_TOKEN_BODY(z_end_default, "end")
-	DEFAULT_TOKEN_BODY(z_begin_default, "begin")
-	DEFAULT_TOKEN_BODY(z_blend_color_default, "blend_color")
 }
 frame_builder::frame_builder(const config& cfg,const n_token::t_token& frame_string) :
 	duration_(1),
