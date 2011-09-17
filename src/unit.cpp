@@ -203,7 +203,6 @@ DEFAULT_TOKEN_BODY(z_default_variation, "variation")
 DEFAULT_TOKEN_BODY(z_default_role, "role")
 DEFAULT_TOKEN_BODY(z_default_ai_special, "ai_special")
 DEFAULT_TOKEN_BODY(z_default_canrecruit, "canrecruit")
-DEFAULT_TOKEN_BODY(z_default_recruit, "recruit")
 }
 unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	cfg_(),
