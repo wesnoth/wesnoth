@@ -130,7 +130,7 @@ inline std::string operator+(const n_token::t_token &a, const n_token::t_token &
 	n_token::t_token const & name();
 
 #define DEFAULT_TOKEN_BODY(name, value) \
-	n_token::t_token const & name() {									\
+	static n_token::t_token const & name() {									\
 	/*This is NOTa memory leak											\
 	It is static so it is only allocated once and not de-allocated until the program terminates. \
 	If changed to a static reference it may cause a static de-initialization \
