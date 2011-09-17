@@ -28,11 +28,6 @@
 
 #include <algorithm>
 
-
-namespace n_unit_animation {
-DEFAULT_TOKEN_BODY(z_default_frame, "frame")
-}
-
 struct tag_name_manager {
 	tag_name_manager() : names() {
 	static const config::t_token z_animation("animation", false);

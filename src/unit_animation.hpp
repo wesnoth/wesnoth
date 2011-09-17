@@ -23,10 +23,6 @@ class attack_type;
 class game_display;
 class unit;
 
-namespace n_unit_animation {
-DEFAULT_TOKEN_HEADER(z_default_frame, "frame")
-}
-
 class unit_animation
 {
 		/** Shouldn't be used so only declared. */
@@ -93,7 +89,7 @@ class unit_animation
 				last_frame_begin_time_(0),
 				cycles_(false)
 				{};
-			explicit particule(const config& cfg , const n_token::t_token& frame_string  = n_unit_animation::z_default_frame());
+			explicit particule(const config& cfg , const n_token::t_token& frame_string);
 
 			virtual ~particule();
 			bool need_update() const;
