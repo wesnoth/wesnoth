@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-09-04 11:42+0200\n"
-"PO-Revision-Date: 2011-08-05 09:45-0500\n"
+"PO-Revision-Date: 2011-09-11 07:02-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
@@ -1818,11 +1818,13 @@ msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
 msgstr ""
+"$river|brycg,$river|brycg,$river|brycg,$name|ham,$name|brycg,$bridge|ham,"
+"$bridge|tun"
 
 #. [language]
 #: data/english.cfg:30
 msgid "$name|ham,$name|ton,$name|field"
-msgstr ""
+msgstr "$name|ham,$name|tun,$name|feld"
 
 #. [language]
 #: data/english.cfg:31
@@ -1833,19 +1835,22 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:32
+#, fuzzy
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr ""
+msgstr "$name|ham,$name|burh,$name|tun,$name|hyll,"
 
 #. [language]
 #: data/english.cfg:33
+#, fuzzy
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr ""
+msgstr " ,$mountain|clif,$mountain|burh,$mountain|ham"
 
 #. [language]
 #: data/english.cfg:34
+#, fuzzy
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
-msgstr ""
+msgstr "$name|ham,$name|burh,$name|tun, , , ,$name|clif,$name|clif"
 
 #. [language]
 #: data/english.cfg:35
@@ -1856,7 +1861,7 @@ msgstr ""
 #. [language]
 #: data/english.cfg:36
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
-msgstr ""
+msgstr "$name|burh,$name|ham,$name|tun,$swamp|burh,$swamp|ham,$swamp|tun"
 
 #. [language]
 #: data/english.cfg:39
@@ -3863,7 +3868,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1849
 msgid "Search"
-msgstr ""
+msgstr "Secan"
 
 #: src/menu_events.cpp:2026
 msgid "This command is currently unavailable."
