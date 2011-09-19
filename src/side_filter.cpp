@@ -158,6 +158,17 @@ bool side_filter::match_internal(const team &t) const
 		}
 	}
 
+	const vconfig& allied_with = cfg_.child("allied_with");
+	if(!allied_with.null()) {
+		side_filter s_filter(allied_with);
+		const std::set<int>& teams = s_filter.get_teams();
+		if(teams.empty()) return false;
+		foreach(const int side, teams) {
+			if((*resources::teams)[side - 1].is_enemy(t.side()))
+				return false;
+		}
+	}
+
 	return true;
 }
 
