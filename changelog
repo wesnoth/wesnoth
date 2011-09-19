@@ -15,6 +15,7 @@ Version 1.9.9+svn:
      ON_DIFFICULTY4, TURNS4, GOLD4, INCOME4, and ATTACK_DEPTH4.
    * added support for SSF to SUF via a [filter_side] subtag
    * added support for [enemy_of]<SSF> to SSF
+   * added support for [allied_with]<SSF> to SSF
  * Miscellaneous and bug fixes:
    * Fixed compilation on all Debian architectures (Debian bug #636193)
    * Fixed handling of #ifver and #ifnver preprocessor directives in wmllint
