@@ -27,7 +27,6 @@ namespace {
 	DEFAULT_TOKEN_BODY(zf_lawful_bonus, "lawful_bonus");
 	DEFAULT_TOKEN_BODY(zf_name, "name");
 	DEFAULT_TOKEN_BODY(zf_id, "id");
-	DEFAULT_TOKEN_BODY(zf_time, "time");
 	DEFAULT_TOKEN_BODY(zf_image, "image");
 	DEFAULT_TOKEN_BODY(zf_mask, "mask");
 	DEFAULT_TOKEN_BODY(zf_red, "red");

@@ -347,7 +347,9 @@ void parser::error(const std::string& error_type)
 {
 	static const config::t_token & z_error( generate_safe_static_const_t_interned(n_token::t_token("error")) );
 	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
+#ifdef DEBUG
 	static const config::t_token & z_previous_value( generate_safe_static_const_t_interned(n_token::t_token("previous_value")) );
+#endif
 	utils::token_map i18n_symbols;
 	i18n_symbols[z_error] = error_type;
 	i18n_symbols[z_value] = tok_->current_token().value();
