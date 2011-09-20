@@ -487,7 +487,7 @@ void save_preview_pane::draw_contents()
 			}
 			utils::string_map symbols;
 			if (campaign != NULL) {
-				symbols["campaign_name"] = (*campaign)["name"];
+				symbols["campaign_name"] = (*campaign)["name"].token();
 			} else {
 				// Fallback to nontranslatable campaign id.
 				symbols["campaign_name"] = "(" + campaign_id + ")";
@@ -595,17 +595,17 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	std::map<std::string,std::string> parent_to_child;
 	std::vector<savegame::save_info>::const_iterator i;
 	for(i = games.begin(); i != games.end(); ++i) {
-		config::t_token iname(i->name);
+		std::string sname(i->name);
+		if(sname.length() < 3 || sname.substr(sname.length() - 3) != ".gz") {
+			sname += ".gz"; }
+		config::t_token iname(sname);
 		config::t_child_range_index::iterator xcfgi = index.find( iname);
 		config* cfg;
-		static config cempty;
 		if(xcfgi != index.end()){
 			cfg = &*xcfgi->second;
 			parent_to_child[(*cfg)["parent"]] = iname;
-		} else {
-			cfg = &cempty;
-		}
-		saves_and_summaries.push_back(save_with_summary(*i, cfg));
+			saves_and_summaries.push_back(save_with_summary(*i, cfg));
+		} 
 	}
 
 	const events::event_context context;
@@ -615,13 +615,13 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	heading << HEADING_PREFIX << _("Name") << COLUMN_SEPARATOR << _("Date");
 	items.push_back(heading.str());
 
-	t_saves_with_summaries::const_iterator j=saves_and_summaries.begin();
+	t_saves_with_summaries::const_iterator j = saves_and_summaries.begin();
 	for(; j != saves_and_summaries.end(); ++j) {
 		std::string name = j->save_->name;
 		utils::truncate_as_wstring(name, std::min<size_t>(name.size(), 40));
 
 		std::ostringstream str;
-		str << name << COLUMN_SEPARATOR << format_time_summary(i->time_modified);
+		str << name << COLUMN_SEPARATOR << format_time_summary(j->save_->time_modified);
 
 		items.push_back(str.str());
 	}
@@ -1022,7 +1022,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	{
 		if (tr["availability"] != "musthave") continue;
 		std::string gender_string = (!t->genders().empty() && t->genders().front()== unit_race::FEMALE) ? "female_name" : "male_name";
-		t_string name = tr[gender_string];
+		config::attribute_value name = tr[gender_string];
 		if (name.empty()) {
 			name = tr["name"];
 		}
@@ -1030,7 +1030,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 			if (!det.traits.empty()) {
 				det.traits += ", ";
 			}
-			det.traits += name;
+			det.traits += name.str();
 		}
 	}
 
