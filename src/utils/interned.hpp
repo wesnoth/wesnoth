@@ -51,6 +51,8 @@ template <typename T, typename T_hasher = boost::hash<T> > class t_interned_toke
    The copying of interned_tokens is faster than the creation of interned_tokens, because a reference object isn't created.
    Hence use static interned_tokens as replacements for constants in the code, as follows:
    static const t_interned_token<T> z_some_T_thing(reference_T_thing, false);
+
+   or use generate_safe_static_const_t_interned.  @see below
  */
 template <typename T, typename T_hasher >
 class t_interned_token {
@@ -72,6 +74,11 @@ public:
 
 	inline bool valid() const;
 	inline bool empty() const {return !valid();}
+
+	void disable_count() {		
+		is_ref_counted_ = false;
+		iter_->second.disable_count(); }
+
 
 	///Cast to the constant member
 	operator T const &() const { return iter_->first; }
@@ -154,6 +161,24 @@ private:
 };
 
 
+/**
+   @function generate_safe_static_const_t_interned
+   @brief generate_safe_static_const<T> produces const reference to a T object that
+   will never be destrotyed.  The created object is both static initialization and static de-initialization safe
+
+   @note usage inside a function body type and zzz with be a safe copy of yyy
+   static const T & zzz = generate_safe_static_const_t_interned.get( yyy )
+
+   @note Do not use this to create objects that are not static
+
+ */
+
+template <typename T>
+//don't inline
+T const & generate_safe_static_const_t_interned(T const & x);
+
+
+
 //Static member initialization
 
 
@@ -167,7 +192,7 @@ typename t_interned_token<T, T_hasher>::t_stash & t_interned_token<T, T_hasher>:
 template <typename T, typename T_hasher >
 typename t_interned_token<T, T_hasher>::t_stash::value_type * t_interned_token<T, T_hasher>::first_default_constructed() {
 	 t_stash & the_stash_ = the_stash();
-	 t_interned default_value_(0);
+	 t_interned default_value_(t_interned::NOT_COUNTED);
 	 T a = T();
 
 	 std::pair<typename t_stash::iterator, bool> maybe_inserted = the_stash_.insert(std::make_pair(a, default_value_));
@@ -265,6 +290,20 @@ template <typename T, typename T_hasher >
 bool t_interned_token<T, T_hasher>::valid() const { return true; }
 	// static t_stash & the_stash_ = the_stash();
 	// return iter_ != the_stash_.end(); }
+
+
+
+template <typename T>
+T const & generate_safe_static_const_t_interned(T const & x) {
+	//This pointer should never be deleted.
+	//This is intentional and not a memory leak 
+	//It prevents both static initialization and de-initialization crashes
+	T * never_delete = new T(x);
+	never_delete->disable_count();
+	return *never_delete;
+}
+
+
 
 
 }//end namepace
