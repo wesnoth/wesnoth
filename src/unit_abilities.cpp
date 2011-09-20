@@ -109,8 +109,8 @@ namespace unit_abilities {
 
 static bool affects_side(const config& cfg, const t_teams& teams, size_t side, size_t other_side)
 {
-	static const config::t_token z_affect_allies("affect_allies", false);
-	static const config::t_token z_affect_enemies("affect_enemies", false);
+	static const config::t_token & z_affect_allies( generate_safe_static_const_t_interned(n_token::t_token("affect_allies")) );
+	static const config::t_token & z_affect_enemies( generate_safe_static_const_t_interned(n_token::t_token("affect_enemies")) );
 
 	if (side == other_side)
 		return cfg[z_affect_allies].to_bool(true);
@@ -125,7 +125,7 @@ static bool affects_side(const config& cfg, const t_teams& teams, size_t side, s
 
 bool unit::get_ability_bool(const config::t_token& ability, const map_location& loc, gamemap const & game_map, unit_map const & units, t_teams const & teams, LuaKernel & lua_kernel, tod_manager const & tod_manager) const
 {
-	static const config::t_token z_abilities("abilities", false);
+	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
 
 	if (const config &abilities = cfg_.child(z_abilities))
 	{
@@ -159,7 +159,7 @@ bool unit::get_ability_bool(const config::t_token& ability, const map_location& 
 }
 unit_ability_list unit::get_abilities(const config::t_token& ability, const map_location& loc) const
 {
-	static const config::t_token z_abilities("abilities", false);
+	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
 
 	unit_ability_list res;
 
@@ -196,8 +196,8 @@ unit_ability_list unit::get_abilities(const config::t_token& ability, const map_
 
 std::vector<std::string> unit::get_ability_list() const
 {
-	static const config::t_token z_abilities("abilities", false);
-	static const config::t_token z_id("id", false);
+	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
 
 	std::vector<std::string> res;
 
@@ -213,13 +213,13 @@ std::vector<std::string> unit::get_ability_list() const
 
 std::vector<std::string> unit::ability_tooltips(bool force_active) const
 {
-	static const config::t_token z_abilities("abilities", false);
-	static const config::t_token z_female_name("female_name", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_description("description", false);
-	static const config::t_token z_female_name_inactive("female_name_inactive", false);
-	static const config::t_token z_name_inactive("name_inactive", false);
-	static const config::t_token z_description_inactive("description_inactive", false);
+	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
+	static const config::t_token & z_female_name( generate_safe_static_const_t_interned(n_token::t_token("female_name")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_description( generate_safe_static_const_t_interned(n_token::t_token("description")) );
+	static const config::t_token & z_female_name_inactive( generate_safe_static_const_t_interned(n_token::t_token("female_name_inactive")) );
+	static const config::t_token & z_name_inactive( generate_safe_static_const_t_interned(n_token::t_token("name_inactive")) );
+	static const config::t_token & z_description_inactive( generate_safe_static_const_t_interned(n_token::t_token("description_inactive")) );
 
 	std::vector<std::string> res;
 
@@ -261,7 +261,7 @@ std::vector<std::string> unit::ability_tooltips(bool force_active) const
  */
 static bool cache_illuminates(int &cache, std::string const &ability)
 {
-	static const config::t_token z_illuminates("illuminates", false);
+	static const config::t_token & z_illuminates( generate_safe_static_const_t_interned(n_token::t_token("illuminates")) );
 
 	if (cache < 0)
 		cache = (ability == z_illuminates);
@@ -273,10 +273,10 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 						  , t_teams const & teams, LuaKernel & lua_kernel
 						  , tod_manager const & tod_manager) const
 {
-	static const config::t_token z_filter("filter", false);
-	static const config::t_token z_filter_adjacent("filter_adjacent", false);
-	static const config::t_token z_adjacent("adjacent", false);
-	static const config::t_token z_filter_adjacent_location("filter_adjacent_location", false);
+	static const config::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
+	static const config::t_token & z_filter_adjacent( generate_safe_static_const_t_interned(n_token::t_token("filter_adjacent")) );
+	static const config::t_token & z_adjacent( generate_safe_static_const_t_interned(n_token::t_token("adjacent")) );
+	static const config::t_token & z_filter_adjacent_location( generate_safe_static_const_t_interned(n_token::t_token("filter_adjacent_location")) );
 
 	int illuminates = -1;
 	//assert(resources::units && resources::game_map && resources::teams && resources::tod_manager);
@@ -335,15 +335,15 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 									tod_manager const & tod_manager
 									) const
 {
-	static const config::t_token z_n("n", false);
-	static const config::t_token z_ne("ne", false);
-	static const config::t_token z_se("se", false);
-	static const config::t_token z_s("s", false);
-	static const config::t_token z_sw("sw", false);
-	static const config::t_token z_nw("nw", false);
-	static const config::t_token z_affect_adjacent("affect_adjacent", false);
-	static const config::t_token z_adjacent("adjacent", false);
-	static const config::t_token z_filter("filter", false);
+	static const config::t_token & z_n( generate_safe_static_const_t_interned(n_token::t_token("n")) );
+	static const config::t_token & z_ne( generate_safe_static_const_t_interned(n_token::t_token("ne")) );
+	static const config::t_token & z_se( generate_safe_static_const_t_interned(n_token::t_token("se")) );
+	static const config::t_token & z_s( generate_safe_static_const_t_interned(n_token::t_token("s")) );
+	static const config::t_token & z_sw( generate_safe_static_const_t_interned(n_token::t_token("sw")) );
+	static const config::t_token & z_nw( generate_safe_static_const_t_interned(n_token::t_token("nw")) );
+	static const config::t_token & z_affect_adjacent( generate_safe_static_const_t_interned(n_token::t_token("affect_adjacent")) );
+	static const config::t_token & z_adjacent( generate_safe_static_const_t_interned(n_token::t_token("adjacent")) );
+	static const config::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
 
 	int illuminates = -1;
 
@@ -373,8 +373,8 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 								, t_teams const & teams, LuaKernel & lua_kernel
 								, tod_manager const & tod_manager
 								) const {
-	static const config::t_token z_filter_self("filter_self", false);
-	static const config::t_token z_affect_self("affect_self", false);
+	static const config::t_token & z_filter_self( generate_safe_static_const_t_interned(n_token::t_token("filter_self")) );
+	static const config::t_token & z_affect_self( generate_safe_static_const_t_interned(n_token::t_token("affect_self")) );
 
 	int illuminates = -1;
 	const config &filter = cfg.child(z_filter_self);
@@ -386,7 +386,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 
 bool unit::has_ability_type(const config::t_token& ability) const
 {
-	static const config::t_token z_abilities("abilities", false);
+	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
 
 	if (const config &list = cfg_.child(z_abilities)) {
 		config::const_child_itors itors = list.child_range(ability);
@@ -402,7 +402,7 @@ bool unit_ability_list::empty() const
 }
 
 std::pair<int,map_location> unit_ability_list::highest(const config::t_token& key, int def) const {
-	static const config::t_token z_cumulative("cumulative", false);
+	static const config::t_token & z_cumulative( generate_safe_static_const_t_interned(n_token::t_token("cumulative")) );
 	if (cfgs.empty()) {
 		return std::make_pair(def, map_location());
 	}
@@ -435,7 +435,7 @@ std::pair<int,map_location> unit_ability_list::highest(const config::t_token& ke
 
 std::pair<int,map_location> unit_ability_list::lowest(const config::t_token& key, int def) const
 {
-	static const config::t_token z_cumulative("cumulative", false);
+	static const config::t_token & z_cumulative( generate_safe_static_const_t_interned(n_token::t_token("cumulative")) );
 
 	if (cfgs.empty()) {
 		return std::make_pair(def, map_location());
@@ -498,7 +498,7 @@ std::pair<int,map_location> unit_ability_list::lowest(const config::t_token& key
 namespace {
 	bool get_special_children(std::vector<const config*>& result, const config& parent,
 	                           const config::t_token& id, bool just_peeking=false) {
-	static const config::t_token z_id("id", false);
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
 
 		foreach (const config::any_child &sp, parent.all_children_range())
 		{
@@ -516,7 +516,7 @@ namespace {
 
 bool attack_type::get_special_bool(const config::t_token& special,bool force) const
 {
-	static const config::t_token z_specials("specials", false);
+	static const config::t_token & z_specials( generate_safe_static_const_t_interned(n_token::t_token("specials")) );
 
 //	log_scope("get_special_bool");
 	if (const config &specials = cfg_.child(z_specials))
@@ -544,7 +544,7 @@ bool attack_type::get_special_bool(const config::t_token& special,bool force) co
 }
 
 unit_ability_list attack_type::get_specials(const config::t_token& special) const {
-	static const config::t_token z_specials("specials", false);
+	static const config::t_token & z_specials( generate_safe_static_const_t_interned(n_token::t_token("specials")) );
 
 //	log_scope("get_specials");
 	unit_ability_list res;
@@ -569,11 +569,11 @@ unit_ability_list attack_type::get_specials(const config::t_token& special) cons
 }
 std::vector<t_string> attack_type::special_tooltips(bool force) const
 {
-	static const config::t_token z_specials("specials", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_description("description", false);
-	static const config::t_token z_name_inactive("name_inactive", false);
-	static const config::t_token z_description_inactive("description_inactive", false);
+	static const config::t_token & z_specials( generate_safe_static_const_t_interned(n_token::t_token("specials")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_description( generate_safe_static_const_t_interned(n_token::t_token("description")) );
+	static const config::t_token & z_name_inactive( generate_safe_static_const_t_interned(n_token::t_token("name_inactive")) );
+	static const config::t_token & z_description_inactive( generate_safe_static_const_t_interned(n_token::t_token("description_inactive")) );
 
 //	log_scope("special_tooltips");
 	std::vector<t_string> res;
@@ -600,10 +600,10 @@ std::vector<t_string> attack_type::special_tooltips(bool force) const
 }
 config::t_token attack_type::weapon_specials(bool force) const
 {
-	static const config::t_token z_specials("specials", false);
-	static const config::t_token z_empty("", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_name_inactive("name_inactive", false);
+	static const config::t_token & z_specials( generate_safe_static_const_t_interned(n_token::t_token("specials")) );
+	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_name_inactive( generate_safe_static_const_t_interned(n_token::t_token("name_inactive")) );
 
 //	log_scope("weapon_specials");
 	const config &specials = cfg_.child(z_specials);
@@ -637,17 +637,17 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 								 tod_manager const & tod_manager,
 								 const config& cfg, bool self) const
 {
-	static const config::t_token z_active_on("active_on", false);
-	static const config::t_token z_offense("offense", false);
-	static const config::t_token z_filter_self("filter_self", false);
-	static const config::t_token z_filter_weapon("filter_weapon", false);
-	static const config::t_token z_filter_opponent("filter_opponent", false);
-	static const config::t_token z_defense("defense", false);
-	static const config::t_token z_filter_attacker("filter_attacker", false);
-	static const config::t_token z_filter_defender("filter_defender", false);
-	static const config::t_token z_filter_adjacent("filter_adjacent", false);
-	static const config::t_token z_adjacent("adjacent", false);
-	static const config::t_token z_filter_adjacent_location("filter_adjacent_location", false);
+	static const config::t_token & z_active_on( generate_safe_static_const_t_interned(n_token::t_token("active_on")) );
+	static const config::t_token & z_offense( generate_safe_static_const_t_interned(n_token::t_token("offense")) );
+	static const config::t_token & z_filter_self( generate_safe_static_const_t_interned(n_token::t_token("filter_self")) );
+	static const config::t_token & z_filter_weapon( generate_safe_static_const_t_interned(n_token::t_token("filter_weapon")) );
+	static const config::t_token & z_filter_opponent( generate_safe_static_const_t_interned(n_token::t_token("filter_opponent")) );
+	static const config::t_token & z_defense( generate_safe_static_const_t_interned(n_token::t_token("defense")) );
+	static const config::t_token & z_filter_attacker( generate_safe_static_const_t_interned(n_token::t_token("filter_attacker")) );
+	static const config::t_token & z_filter_defender( generate_safe_static_const_t_interned(n_token::t_token("filter_defender")) );
+	static const config::t_token & z_filter_adjacent( generate_safe_static_const_t_interned(n_token::t_token("filter_adjacent")) );
+	static const config::t_token & z_adjacent( generate_safe_static_const_t_interned(n_token::t_token("adjacent")) );
+	static const config::t_token & z_filter_adjacent_location( generate_safe_static_const_t_interned(n_token::t_token("filter_adjacent_location")) );
 
 //	log_scope("special_active");
 	assert(unitmap_ != NULL);
@@ -798,11 +798,11 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
  */
 bool attack_type::special_affects_opponent(const config& cfg) const
 {
-	static const config::t_token z_apply_to("apply_to", false);
-	static const config::t_token z_both("both", false);
-	static const config::t_token z_opponent("opponent", false);
-	static const config::t_token z_defender("defender", false);
-	static const config::t_token z_attacker("attacker", false);
+	static const config::t_token & z_apply_to( generate_safe_static_const_t_interned(n_token::t_token("apply_to")) );
+	static const config::t_token & z_both( generate_safe_static_const_t_interned(n_token::t_token("both")) );
+	static const config::t_token & z_opponent( generate_safe_static_const_t_interned(n_token::t_token("opponent")) );
+	static const config::t_token & z_defender( generate_safe_static_const_t_interned(n_token::t_token("defender")) );
+	static const config::t_token & z_attacker( generate_safe_static_const_t_interned(n_token::t_token("attacker")) );
 
 //	log_scope("special_affects_opponent");
 	config::attribute_value const &apply_to = cfg[z_apply_to];
@@ -825,11 +825,11 @@ bool attack_type::special_affects_opponent(const config& cfg) const
  */
 bool attack_type::special_affects_self(const config& cfg) const
 {
-	static const config::t_token z_apply_to("apply_to", false);
-	static const config::t_token z_both("both", false);
-	static const config::t_token z_self("self", false);
-	static const config::t_token z_attacker("attacker", false);
-	static const config::t_token z_defender("defender", false);
+	static const config::t_token & z_apply_to( generate_safe_static_const_t_interned(n_token::t_token("apply_to")) );
+	static const config::t_token & z_both( generate_safe_static_const_t_interned(n_token::t_token("both")) );
+	static const config::t_token & z_self( generate_safe_static_const_t_interned(n_token::t_token("self")) );
+	static const config::t_token & z_attacker( generate_safe_static_const_t_interned(n_token::t_token("attacker")) );
+	static const config::t_token & z_defender( generate_safe_static_const_t_interned(n_token::t_token("defender")) );
 
 //	log_scope("special_affects_self");
 	config::attribute_value const &apply_to = cfg[z_apply_to];
@@ -880,13 +880,13 @@ void individual_effect::set(value_modifier t, int val, const config *abil, const
 
 bool filter_base_matches(const config& cfg, int def)
 {
-	static const config::t_token z_filter_base_value("filter_base_value", false);
-	static const config::t_token z_equals("equals", false);
-	static const config::t_token z_not_equals("not_equals", false);
-	static const config::t_token z_less_than("less_than", false);
-	static const config::t_token z_greater_than("greater_than", false);
-	static const config::t_token z_greater_than_equal_to("greater_than_equal_to", false);
-	static const config::t_token z_less_than_equal_to("less_than_equal_to", false);
+	static const config::t_token & z_filter_base_value( generate_safe_static_const_t_interned(n_token::t_token("filter_base_value")) );
+	static const config::t_token & z_equals( generate_safe_static_const_t_interned(n_token::t_token("equals")) );
+	static const config::t_token & z_not_equals( generate_safe_static_const_t_interned(n_token::t_token("not_equals")) );
+	static const config::t_token & z_less_than( generate_safe_static_const_t_interned(n_token::t_token("less_than")) );
+	static const config::t_token & z_greater_than( generate_safe_static_const_t_interned(n_token::t_token("greater_than")) );
+	static const config::t_token & z_greater_than_equal_to( generate_safe_static_const_t_interned(n_token::t_token("greater_than_equal_to")) );
+	static const config::t_token & z_less_than_equal_to( generate_safe_static_const_t_interned(n_token::t_token("less_than_equal_to")) );
 
 	if (const config &apply_filter = cfg.child(z_filter_base_value)) {
 		config::attribute_value cond_eq = apply_filter[z_equals];
@@ -909,15 +909,15 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	effect_list_(),
 	composite_value_(0)
 {
-	static const config::t_token z_id("id", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_backstab("backstab", false);
-	static const config::t_token z_value("value", false);
-	static const config::t_token z_cumulative("cumulative", false);
-	static const config::t_token z_add("add", false);
-	static const config::t_token z_sub("sub", false);
-	static const config::t_token z_multiply("multiply", false);
-	static const config::t_token z_divide("divide", false);
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_backstab( generate_safe_static_const_t_interned(n_token::t_token("backstab")) );
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
+	static const config::t_token & z_cumulative( generate_safe_static_const_t_interned(n_token::t_token("cumulative")) );
+	static const config::t_token & z_add( generate_safe_static_const_t_interned(n_token::t_token("add")) );
+	static const config::t_token & z_sub( generate_safe_static_const_t_interned(n_token::t_token("sub")) );
+	static const config::t_token & z_multiply( generate_safe_static_const_t_interned(n_token::t_token("multiply")) );
+	static const config::t_token & z_divide( generate_safe_static_const_t_interned(n_token::t_token("divide")) );
 
 
 	int value_set = def;

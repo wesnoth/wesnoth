@@ -27,24 +27,15 @@
 #include "simple_rng.hpp"
 
 namespace {
-//Static tokens are replacements for string literals in code
-//They allow for fast comparison, copying and hashing operations.
-static const config::t_token z_trait("trait", false);
-static const config::t_token z_topic("topic", false);
-static const config::t_token z_empty("", false);
-static const config::t_token z_id("id", false);
-static const config::t_token z_plural_name("plural_name", false);
-static const config::t_token z_description("description", false);
-static const config::t_token z_num_traits("num_traits", false);
-static const config::t_token z_markov_chain_size("markov_chain_size", false);
-static const config::t_token z_ignore_global_traits("ignore_global_traits", false);
-static const config::t_token z_name("name", false);
-static const config::t_token z_male_name("male_name", false);
-static const config::t_token z_female_name("female_name", false);
-static const config::t_token z_male_names("male_names", false);
-static const config::t_token z_female_names("female_names", false);
-static const config::t_token z_female("female", false);
-static const config::t_token z_male("male", false);
+DEFAULT_TOKEN_BODY(zf_trait, "trait");
+DEFAULT_TOKEN_BODY(zf_topic, "topic");
+DEFAULT_TOKEN_BODY(z_empty, "");
+DEFAULT_TOKEN_BODY(zf_id, "id");
+DEFAULT_TOKEN_BODY(zf_plural_name, "plural_name");
+DEFAULT_TOKEN_BODY(zf_description, "description");
+DEFAULT_TOKEN_BODY(zf_num_traits, "num_traits");
+DEFAULT_TOKEN_BODY(zf_markov_chain_size, "markov_chain_size");
+DEFAULT_TOKEN_BODY(zf_ignore_global_traits, "ignore_global_traits");
 
 }
 
@@ -166,26 +157,35 @@ unit_race::unit_race() :
 		description_(),
 		ntraits_(0),
 		chain_size_(0),
-		traits_(empty_traits().child_range(z_trait)),
-		topics_(empty_topics().child_range(z_topic)),
+		traits_(empty_traits().child_range(zf_trait())),
+		topics_(empty_topics().child_range(zf_topic())),
 		global_traits_(true)
 {
-		name_[MALE] = z_empty;
-		name_[FEMALE] = z_empty;
+	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("empty")) );
+
+	name_[MALE] = z_empty;
+	name_[FEMALE] = z_empty;
 }
 
 unit_race::unit_race(const config& cfg) :
 		cfg_(cfg),
-		id_(cfg[z_id].token()),
-		plural_name_(cfg[z_plural_name].t_str()),
-		description_(cfg[z_description].t_str()),
-		ntraits_(cfg[z_num_traits]),
-		chain_size_(cfg[z_markov_chain_size]),
-		traits_(cfg.child_range(z_trait)),
-		topics_(cfg.child_range(z_topic)),
-		global_traits_(!cfg[z_ignore_global_traits].to_bool())
+		id_(cfg[zf_id()].token()),
+		plural_name_(cfg[zf_plural_name()].t_str()),
+		description_(cfg[zf_description()].t_str()),
+		ntraits_(cfg[zf_num_traits()]),
+		chain_size_(cfg[zf_markov_chain_size()]),
+		traits_(cfg.child_range(zf_trait())),
+		topics_(cfg.child_range(zf_topic())),
+		global_traits_(!cfg[zf_ignore_global_traits()].to_bool())
 
 {
+
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_male_name( generate_safe_static_const_t_interned(n_token::t_token("male_name")) );
+	static const config::t_token & z_female_name( generate_safe_static_const_t_interned(n_token::t_token("female_name")) );
+	static const config::t_token & z_male_names( generate_safe_static_const_t_interned(n_token::t_token("male_names")) );
+	static const config::t_token & z_female_names( generate_safe_static_const_t_interned(n_token::t_token("female_names")) );
+
 	config::attribute_value const &  a_name= cfg[z_name];
 	config::attribute_value const &  a_male_name= cfg[z_male_name];
 	config::attribute_value const &  a_female_name= cfg[z_female_name];
@@ -239,14 +239,15 @@ const config::const_child_itors &unit_race::additional_topics() const
 unsigned int unit_race::num_traits() const { return ntraits_; }
 
 config::t_token const& gender_string(unit_race::GENDER gender) {
-	static const config::t_token female_string(z_female);
-	static const config::t_token male_string(z_male);
+	static const config::t_token & z_female_string( generate_safe_static_const_t_interned(n_token::t_token("female")) );
+	static const config::t_token & z_male_string( generate_safe_static_const_t_interned(n_token::t_token("male")) );
+
 	switch(gender) {
 	case unit_race::FEMALE:
-		return female_string;
+		return z_female_string;
 	default:
 	case unit_race::MALE:
-		return male_string;
+		return z_male_string;
 	}
 }
 

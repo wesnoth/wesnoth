@@ -250,9 +250,9 @@ vconfig& vconfig::operator=(const vconfig& cfg)
 }
 
 const config vconfig::get_parsed_config() const {
-	static const config::t_token z_insert_tag("insert_tag", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_variable("variable", false);
+	static const config::t_token & z_insert_tag( generate_safe_static_const_t_interned(n_token::t_token("insert_tag")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
 
 	config res;
 	foreach (const config::attribute &i, cfg_->attribute_range()) {
@@ -302,9 +302,9 @@ const config vconfig::get_parsed_config() const {
 }
 
 vconfig::child_list vconfig::get_children(const config::t_token& key) const {
-	static const config::t_token z_insert_tag("insert_tag", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_variable("variable", false);
+	static const config::t_token & z_insert_tag( generate_safe_static_const_t_interned(n_token::t_token("insert_tag")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
 
 	vconfig::child_list res;
 
@@ -343,9 +343,9 @@ vconfig::child_list vconfig::get_children(const std::string& key) const {return 
 
 vconfig vconfig::child(const config::t_token& key) const
 {
-	static const config::t_token z_insert_tag("insert_tag", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_variable("variable", false);
+	static const config::t_token & z_insert_tag( generate_safe_static_const_t_interned(n_token::t_token("insert_tag")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
 
 	if (const config &natural = cfg_->child(key)) {
 		return vconfig(&natural, cache_key_);
@@ -368,8 +368,8 @@ vconfig vconfig::child(const std::string& key) const {return child(t_token(key))
 
 bool vconfig::has_child(const config::t_token& key) const
 {
-	static const config::t_token z_insert_tag("insert_tag", false);
-	static const config::t_token z_name("name", false);
+	static const config::t_token & z_insert_tag( generate_safe_static_const_t_interned(n_token::t_token("insert_tag")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
 
 	if (cfg_->child(key)) {
 		return true;
@@ -415,8 +415,8 @@ vconfig::all_children_iterator::all_children_iterator(const Itor &i, const confi
 }
 
 vconfig::all_children_iterator& vconfig::all_children_iterator::operator++() {
-	static const config::t_token z_insert_tag("insert_tag", false);
-	static const config::t_token z_variable("variable", false);
+	static const config::t_token & z_insert_tag( generate_safe_static_const_t_interned(n_token::t_token("insert_tag")) );
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
 
 	if (inner_index_ >= 0 && i_->key == z_insert_tag)
 		{
@@ -454,8 +454,8 @@ vconfig::all_children_iterator::pointer vconfig::all_children_iterator::operator
 
 config::t_token vconfig::all_children_iterator::get_key() const
 {
-	static const config::t_token z_insert_tag("insert_tag", false);
-	static const config::t_token z_name("name", false);
+	static const config::t_token & z_insert_tag( generate_safe_static_const_t_interned(n_token::t_token("insert_tag")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
 
 	const config::t_token &key = i_->key;
 	if (inner_index_ >= 0 && key == z_insert_tag) {
@@ -467,8 +467,8 @@ config::t_token vconfig::all_children_iterator::get_key() const
 
 vconfig vconfig::all_children_iterator::get_child() const
 {
-	static const config::t_token z_insert_tag("insert_tag", false);
-	static const config::t_token z_variable("variable", false);
+	static const config::t_token & z_insert_tag( generate_safe_static_const_t_interned(n_token::t_token("insert_tag")) );
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
 
 	if (inner_index_ >= 0 && i_->key == z_insert_tag)
 		{
@@ -547,8 +547,8 @@ scoped_wml_variable::~scoped_wml_variable()
 
 void scoped_xy_unit::activate()
 {
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
 
 	map_location loc = map_location(x_, y_);
 	unit_map::const_iterator itor = umap_.find(loc);
@@ -572,9 +572,9 @@ void scoped_weapon_info::activate()
 
 void scoped_recall_unit::activate()
 {
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
-	static const config::t_token z_recall("recall", false);
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+	static const config::t_token & z_recall( generate_safe_static_const_t_interned(n_token::t_token("recall")) );
 
 	const t_teams& teams = teams_manager::get_teams();
 	t_teams::const_iterator team_it;
@@ -603,10 +603,6 @@ void scoped_recall_unit::activate()
 
 
 namespace {
-static const config::t_token z_dot(".", false);
-static const config::t_token z_lbracket("[", false);
-static const config::t_token z_rbracket("]", false);
-
 
 typedef config::t_token t_token;
 struct t_parsed {
@@ -734,9 +730,9 @@ void activate_scope_variable(t_parsed_tokens const & tokens)
 
 
 void variable_info::init(const config::t_token& varname, bool force_valid) {
-	static const config::t_token z_length("length", false);
-	static const config::t_token z___array("__array", false);
-	static const config::t_token z___value("__value", false);
+	static const config::t_token & z_length( generate_safe_static_const_t_interned(n_token::t_token("length")) );
+	static const config::t_token & z___array( generate_safe_static_const_t_interned(n_token::t_token("__array")) );
+	static const config::t_token & z___value( generate_safe_static_const_t_interned(n_token::t_token("__value")) );
 	try {
 
 		//an example varname is  "unit_store.modifications.trait[0]"

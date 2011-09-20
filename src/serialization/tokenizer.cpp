@@ -63,14 +63,14 @@ tokenizer::~tokenizer()
 
 const token &tokenizer::next_token()
 {
-static const n_token::t_token z_LBRACKET("[", false);
-static const n_token::t_token z_RBRACKET("]", false);
-static const n_token::t_token z_SLASH("/", false);
-static const n_token::t_token z_LF("\n", false);
-static const n_token::t_token z_EQUALS("=", false);
-static const n_token::t_token z_COMMA(",", false);
-static const n_token::t_token z_PLUS("+", false);
-static const n_token::t_token z_UNDERSCORE("_", false);
+static const n_token::t_token & z_LBRACKET( generate_safe_static_const_t_interned(n_token::t_token("[")) );
+static const n_token::t_token & z_RBRACKET( generate_safe_static_const_t_interned(n_token::t_token("]")) );
+static const n_token::t_token & z_SLASH( generate_safe_static_const_t_interned(n_token::t_token("/")) );
+static const n_token::t_token & z_LF( generate_safe_static_const_t_interned(n_token::t_token("\n")) );
+static const n_token::t_token & z_EQUALS( generate_safe_static_const_t_interned(n_token::t_token("=")) );
+static const n_token::t_token & z_COMMA( generate_safe_static_const_t_interned(n_token::t_token(",")) );
+static const n_token::t_token & z_PLUS( generate_safe_static_const_t_interned(n_token::t_token("+")) );
+static const n_token::t_token & z_UNDERSCORE( generate_safe_static_const_t_interned(n_token::t_token("_")) );
 
 
 #if DEBUG

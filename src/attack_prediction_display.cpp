@@ -24,12 +24,6 @@
 #include "resources.hpp"
 #include "unit_abilities.hpp"
 
-namespace {
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
-	static const config::t_token z_damage("damage", false);
-}
-
 // Conversion routine for both unscathed and damage change percentage.
 static void format_prob(char str_buf[10], double prob)
 {
@@ -155,6 +149,8 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 {
 	std::stringstream str;
 	char str_buf[10];
+
+	static const config::t_token & z_damage( generate_safe_static_const_t_interned(n_token::t_token("damage")) );
 
 	// With a weapon.
 	if(stats.weapon != NULL) {

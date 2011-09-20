@@ -41,7 +41,7 @@ namespace n_token {
 
    The copying of tokens is faster than the creation of tokens, because a reference object isn't created.
    Hence use static tokens as replacements for constant string literals in the code in a local scope, as follows:
-   static const t_token z_some_string("some_string", false);
+   static const n_token::t_token & z_label( generate_safe_static_const_t_interned(n_token::t_token("some text")) );
    @see below on caveats in Static Initialization
 
    @note It is intentionally inconvenient to convert to std::string.  Allowing automatic conversion would allow

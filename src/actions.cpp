@@ -52,95 +52,6 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_ai_testing("ai/testing");
 #define LOG_AI_TESTING LOG_STREAM(info, log_ai_testing)
 
-namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
-static const config::t_token z_id("id", false);
-static const config::t_token z_x("x", false);
-static const config::t_token z_y("y", false);
-static const config::t_token z_placement("placement", false);
-static const config::t_token z_map("map", false);
-static const config::t_token z_recall("recall", false);
-static const config::t_token z_leader_passable("leader_passable", false);
-static const config::t_token z_side("side", false);
-static const config::t_token z_player_id("player_id", false);
-static const config::t_token z_faction_from_recruit("faction_from_recruit", false);
-static const config::t_token z_animate("animate", false);
-static const config::t_token z_prerecall("prerecall", false);
-static const config::t_token z_prerecruit("prerecruit", false);
-static const config::t_token z_recruit("recruit", false);
-static const config::t_token z_checksum("checksum", false);
-static const config::t_token z_map_passable("map_passable", false);
-static const config::t_token z_leader("leader", false);
-static const config::t_token z_leadership("leadership", false);
-static const config::t_token z_value("value", false);
-static const config::t_token z_not_living("not_living", false);
-static const config::t_token z_slow("slow", false);
-static const config::t_token z_drains("drains", false);
-static const config::t_token z_petrifies("petrifies", false);
-static const config::t_token z_poison("poison", false);
-static const config::t_token z_berserk("berserk", false);
-static const config::t_token z_firststrike("firststrike", false);
-static const config::t_token z_plague("plague", false);
-static const config::t_token z_null("null", false);
-//static const config::t_token z_empty("", false);
-static const config::t_token z_type("type", false);
-static const config::t_token z_chance_to_hit("chance_to_hit", false);
-static const config::t_token z_damage("damage", false);
-static const config::t_token z_swarm("swarm", false);
-static const config::t_token z_swarm_attacks_min("swarm_attacks_min", false);
-static const config::t_token z_swarm_attacks_max("swarm_attacks_max", false);
-static const config::t_token z_attacks("attacks", false);
-static const config::t_token z_first("first", false);
-static const config::t_token z_second("second", false);
-static const config::t_token z_name("name", false);
-static const config::t_token z_none("none", false);
-static const config::t_token z_female("female", false);
-static const config::t_token z_attack_end("attack_end", false);
-static const config::t_token z_damage_inflicted("damage_inflicted", false);
-static const config::t_token z_chance("chance", false);
-static const config::t_token z_hits("hits", false);
-static const config::t_token z_successful("successful", false);
-static const config::t_token z_unsuccessful("unsucessful", false);
-static const config::t_token z_poisoned("poisoned", false);
-static const config::t_token z_slowed("slowed", false);
-static const config::t_token z_petrified("petrified", false);
-static const config::t_token z_female_poisoned("female^poisoned", false);
-static const config::t_token z_female_slowed("female^slowed", false);
-static const config::t_token z_female_petrified("female^petrified", false);
-static const config::t_token z_dies("dies", false);
-static const config::t_token z_die("die", false);
-static const config::t_token z_last_breath("last breath", false);
-static const config::t_token z_unit_hit("unit_hit", false);
-static const config::t_token z_defender("defender", false);
-static const config::t_token z_attacker("attacker", false);
-static const config::t_token z_perished("perished", false);
-static const config::t_token z_survived("survived", false);
-static const config::t_token z_attacker_hits("attacker_hits", false);
-static const config::t_token z_attacker_misses("attacker_misses", false);
-static const config::t_token z_defender_hits("defender_hits", false);
-static const config::t_token z_defender_misses("defender_misses", false);
-static const config::t_token z_effect("effect", false);
-static const config::t_token z_apply_to("apply_to", false);
-static const config::t_token z_unhealable("unhealable", false);
-static const config::t_token z_heals("heals", false);
-static const config::t_token z_cured("cured", false);
-static const config::t_token z_regenerate("regnerate", false);
-static const config::t_token z_advance("advance", false);
-static const config::t_token z_post_advance("post_advance", false);
-static const config::t_token z_hides("hides", false);
-static const config::t_token z_alert("alert", false);
-static const config::t_token z_sighted("sighted", false);
-static const config::t_token z_moveto("moveto", false);
-static const config::t_token z_friends("friends", false);
-static const config::t_token z_enemies("enemies", false);
-static const config::t_token z_friendphrase("friendphrase", false);
-static const config::t_token z_enemyphrase("enemyphrase", false);
-static const config::t_token z_hotkey("hotkey", false);
-static const config::t_token z_variation("variation", false);
-static const config::t_token z_attack("attack", false);
-
-}
 struct castle_cost_calculator : pathfind::cost_calculator
 {
 	castle_cost_calculator(const gamemap& map) : map_(map)
@@ -287,15 +198,24 @@ unit_creator& unit_creator::allow_add_to_recall(bool b)
 
 map_location unit_creator::find_location(const config &cfg, const unit* pass_check)
 {
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+	static const config::t_token & z_placement( generate_safe_static_const_t_interned(n_token::t_token("placement")) );
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+	static const config::t_token & z_map( generate_safe_static_const_t_interned(n_token::t_token("map")) );
+	static const config::t_token & z_recall( generate_safe_static_const_t_interned(n_token::t_token("recall")) );
+	static const config::t_token & z_leader_passable( generate_safe_static_const_t_interned(n_token::t_token("leader_passable")) );
+	static const config::t_token & z_map_passable( generate_safe_static_const_t_interned(n_token::t_token("map_passable")) );
+	static const config::t_token & z_leader( generate_safe_static_const_t_interned(n_token::t_token("leader")) );
 
 	DBG_NG << "finding location for unit with id=["<<cfg[z_id]<<"] placement=["<<cfg[z_placement]<<"] x=["<<cfg[z_x]<<"] y=["<<cfg[z_y]<<"] for side " << team_.side() << "\n";
 
-	std::vector< std::string > placements = utils::split(cfg[z_placement]);
+	std::vector< config::t_token > placements = utils::split_attr(cfg[z_placement]);
 
 	placements.push_back(z_map);
 	placements.push_back(z_recall);
 
-	foreach(std::string place, placements) {
+	foreach(config::t_token place, placements) {
 		map_location loc;
 		bool pass((place == z_leader_passable) || (place == z_map_passable));
 
@@ -336,12 +256,19 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 
 void unit_creator::add_unit(const config &cfg)
 {
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
+	static const config::t_token & z_player_id( generate_safe_static_const_t_interned(n_token::t_token("player_id")) );
+	static const config::t_token & z_faction_from_recruit( generate_safe_static_const_t_interned(n_token::t_token("faction_from_recruit")) );
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+	static const config::t_token & z_animate( generate_safe_static_const_t_interned(n_token::t_token("animate")) );
+
 	config temp_cfg(cfg);
 	temp_cfg[z_side] = team_.side();
 	temp_cfg.remove_attribute(z_player_id);
 	temp_cfg.remove_attribute(z_faction_from_recruit);
 
-	const std::string& id =(cfg)[z_id];
+	const config::attribute_value& aid =(cfg)[z_id];
+	const config::t_token& id = aid.token();
 	bool animate = temp_cfg[z_animate].to_bool();
 	temp_cfg.remove_attribute(z_animate);
 
@@ -659,6 +586,12 @@ void place_recruit(const unit &u, const map_location &recruit_location,
     bool is_recall, bool show, bool fire_event, bool full_movement,
     bool wml_triggered)
 {
+	static const config::t_token & z_prerecall( generate_safe_static_const_t_interned(n_token::t_token("prerecall")) );
+	static const config::t_token & z_prerecruit( generate_safe_static_const_t_interned(n_token::t_token("prerecruit")) );
+	static const config::t_token & z_recall( generate_safe_static_const_t_interned(n_token::t_token("recall")) );
+	static const config::t_token & z_recruit( generate_safe_static_const_t_interned(n_token::t_token("recruit")) );
+	static const config::t_token & z_checksum( generate_safe_static_const_t_interned(n_token::t_token("checksum")) );
+
 	LOG_NG << "placing new unit on location " << recruit_location << "\n";
 
 	assert(resources::units->count(recruit_location) == 0);
@@ -758,6 +691,8 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 map_location under_leadership(const unit_map& units,
 		const map_location& loc, int* bonus)
 {
+	static const config::t_token & z_leadership( generate_safe_static_const_t_interned(n_token::t_token("leadership")) );
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
 
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
@@ -1097,6 +1032,23 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 	swarm_max(0),
 	plague_type()
 {
+	static const config::t_token & z_not_living( generate_safe_static_const_t_interned(n_token::t_token("not_living")) );
+	static const config::t_token & z_slow( generate_safe_static_const_t_interned(n_token::t_token("slow")) );
+	static const config::t_token & z_drains( generate_safe_static_const_t_interned(n_token::t_token("drains")) );
+	static const config::t_token & z_petrifies( generate_safe_static_const_t_interned(n_token::t_token("petrifies")) );
+	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
+	static const config::t_token & z_berserk( generate_safe_static_const_t_interned(n_token::t_token("berserk")) );
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
+	static const config::t_token & z_firststrike( generate_safe_static_const_t_interned(n_token::t_token("firststrike")) );
+	static const config::t_token & z_plague( generate_safe_static_const_t_interned(n_token::t_token("plague")) );
+	static const config::t_token & z_type( generate_safe_static_const_t_interned(n_token::t_token("type")) );
+	static const config::t_token & z_chance_to_hit( generate_safe_static_const_t_interned(n_token::t_token("chance_to_hit")) );
+	static const config::t_token & z_damage( generate_safe_static_const_t_interned(n_token::t_token("damage")) );
+	static const config::t_token & z_swarm( generate_safe_static_const_t_interned(n_token::t_token("swarm")) );
+	static const config::t_token & z_swarm_attacks_min( generate_safe_static_const_t_interned(n_token::t_token("swarm_attacks_min")) );
+	static const config::t_token & z_swarm_attacks_max( generate_safe_static_const_t_interned(n_token::t_token("swarm_attacks_max")) );
+	static const config::t_token & z_attacks( generate_safe_static_const_t_interned(n_token::t_token("attacks")) );
+
 	// Get the current state of the unit.
 	if (attack_num >= 0) {
 		weapon = &u.attacks()[attack_num];
@@ -1298,6 +1250,12 @@ class attack
 
 void attack::fire_event(const config::t_token& n)
 {
+	static const config::t_token & z_first( generate_safe_static_const_t_interned(n_token::t_token("first")) );
+	static const config::t_token & z_second( generate_safe_static_const_t_interned(n_token::t_token("second")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_none( generate_safe_static_const_t_interned(n_token::t_token("none")) );
+	static const config::t_token & z_attack_end( generate_safe_static_const_t_interned(n_token::t_token("attack_end")) );
+
 	LOG_NG << "firing " << n << " event\n";
 	//prepare the event data for weapon filtering
 	config ev_data;
@@ -1470,6 +1428,35 @@ attack::attack(const map_location &attacker, const map_location &defender,
 
 bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 {
+	static const config::t_token & z_damage_inflicted( generate_safe_static_const_t_interned(n_token::t_token("damage_inflicted")) );
+	static const config::t_token & z_chance( generate_safe_static_const_t_interned(n_token::t_token("chance")) );
+	static const config::t_token & z_hits( generate_safe_static_const_t_interned(n_token::t_token("hits")) );
+	static const config::t_token & z_damage( generate_safe_static_const_t_interned(n_token::t_token("damage")) );
+	static const config::t_token & z_successful( generate_safe_static_const_t_interned(n_token::t_token("successful")) );
+	static const config::t_token & z_unsuccessful( generate_safe_static_const_t_interned(n_token::t_token("unsuccessful")) );
+	static const config::t_token & z_dies( generate_safe_static_const_t_interned(n_token::t_token("dies")) );
+	static const config::t_token & z_unit_hit( generate_safe_static_const_t_interned(n_token::t_token("unit_hit")) );
+	static const config::t_token & z_defender( generate_safe_static_const_t_interned(n_token::t_token("defender")) );
+	static const config::t_token & z_attacker( generate_safe_static_const_t_interned(n_token::t_token("attacker")) );
+	static const config::t_token & z_perished( generate_safe_static_const_t_interned(n_token::t_token("perished")) );
+	static const config::t_token & z_survived( generate_safe_static_const_t_interned(n_token::t_token("survived")) );
+	static const config::t_token & z_attacker_hits( generate_safe_static_const_t_interned(n_token::t_token("attacker_hits")) );
+	static const config::t_token & z_defender_hits( generate_safe_static_const_t_interned(n_token::t_token("defender_hits")) );
+	static const config::t_token & z_attacker_misses( generate_safe_static_const_t_interned(n_token::t_token("attacker_misses")) );
+	static const config::t_token & z_defender_misses( generate_safe_static_const_t_interned(n_token::t_token("defender_misses")) );
+	static const config::t_token & z_attack_end( generate_safe_static_const_t_interned(n_token::t_token("attack_end")) );
+	static const config::t_token & z_first( generate_safe_static_const_t_interned(n_token::t_token("first")) );
+	static const config::t_token & z_second( generate_safe_static_const_t_interned(n_token::t_token("second")) );
+	static const config::t_token & z_last_breath( generate_safe_static_const_t_interned(n_token::t_token("last_breath")) );
+	static const config::t_token & z_die( generate_safe_static_const_t_interned(n_token::t_token("die")) );
+	static const config::t_token & z_null( generate_safe_static_const_t_interned(n_token::t_token("null")) );
+	static const config::t_token & z_effect( generate_safe_static_const_t_interned(n_token::t_token("effect")) );
+	static const config::t_token & z_apply_to( generate_safe_static_const_t_interned(n_token::t_token("apply_to")) );
+	static const config::t_token & z_variation( generate_safe_static_const_t_interned(n_token::t_token("variation")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_petrified( generate_safe_static_const_t_interned(n_token::t_token("petrified")) );
+	static const config::t_token & z_none( generate_safe_static_const_t_interned(n_token::t_token("none")) );
+
 	unit_info
 		&attacker = *(attacker_turn ? &a_ : &d_),
 		&defender = *(attacker_turn ? &d_ : &a_);
@@ -1761,6 +1748,9 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 
 void attack::perform()
 {
+	static const config::t_token & z_attack( generate_safe_static_const_t_interned(n_token::t_token("attack")) );
+	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
+
 	// Stop the user from issuing any commands while the units are fighting
 	const events::command_disabler disable_commands;
 
@@ -1863,6 +1853,7 @@ void attack::perform()
 			defender_strikes_first = (d_stats_->firststrike && ! a_stats_->firststrike);
 		}
 
+		static const config::t_token & z_attack_end( generate_safe_static_const_t_interned(n_token::t_token("attack_end")) );
 		if (a_.n_attacks_ <= 0 && d_.n_attacks_ <= 0) {
 			fire_event(z_attack_end);
 			refresh_bc();
@@ -1988,6 +1979,13 @@ struct unit_healing_struct {
 
 void calculate_healing(int side, bool update_display)
 {
+	static const config::t_token & z_unhealable( generate_safe_static_const_t_interned(n_token::t_token("unhealable")) );
+	static const config::t_token & z_heals( generate_safe_static_const_t_interned(n_token::t_token("heals")) );
+	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
+	static const config::t_token & z_cured( generate_safe_static_const_t_interned(n_token::t_token("cured")) );
+	static const config::t_token & z_slowed( generate_safe_static_const_t_interned(n_token::t_token("slowed")) );
+	static const config::t_token & z_regenerate( generate_safe_static_const_t_interned(n_token::t_token("regenerate")) );
+
 	DBG_NG << "beginning of healing calculations\n";
 	unit_map &units = *resources::units;
 
@@ -2216,6 +2214,9 @@ unit get_advanced_unit(const unit &u, const std::string& advance_to)
 
 void advance_unit(map_location loc, const std::string &advance_to, const bool &fire_event)
 {
+	static const config::t_token & z_advance( generate_safe_static_const_t_interned(n_token::t_token("advance")) );
+	static const config::t_token & z_post_advance( generate_safe_static_const_t_interned(n_token::t_token("post_advance")) );
+
 	unit_map::unit_iterator u = resources::units->find(loc);
 	if(!u.valid()) {
 		return;
@@ -2453,6 +2454,17 @@ size_t move_unit(move_unit_spectator *move_spectator,
 {
 	assert(route.empty() == false);
 
+	static const config::t_token & z_hides( generate_safe_static_const_t_interned(n_token::t_token("hides")) );
+	static const config::t_token & z_alert( generate_safe_static_const_t_interned(n_token::t_token("alert")) );
+	static const config::t_token & z_sighted( generate_safe_static_const_t_interned(n_token::t_token("sighted")) );
+	static const config::t_token & z_moveto( generate_safe_static_const_t_interned(n_token::t_token("moveto")) );
+	static const config::t_token & z_friends( generate_safe_static_const_t_interned(n_token::t_token("friends")) );
+	static const config::t_token & z_enemies( generate_safe_static_const_t_interned(n_token::t_token("enemies")) );
+	static const config::t_token & z_friendphrase( generate_safe_static_const_t_interned(n_token::t_token("friendphrase")) );
+	static const config::t_token & z_enemyphrase( generate_safe_static_const_t_interned(n_token::t_token("enemyphrase")) );
+	static const config::t_token & z_hotkey( generate_safe_static_const_t_interned(n_token::t_token("hotkey")) );
+
+
 	if (route.size() <= 2 && route.front() == route.back()) {
 		DBG_NG << "Ignore an unit trying to jump on its hex at " << route.front() << "\n";
 	}
@@ -2502,7 +2514,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	std::vector<map_location>::const_iterator step;
 	std::string ambushed_string;
 
-	static const config::t_token z_skirmisher("skirmisher", false);
+	static const config::t_token & z_skirmisher(generate_safe_static_const_t_interned(n_token::t_token("skirmisher")) );
 	for(step = route.begin()+1; step != route.end(); ++step) {
 		const bool skirmisher = ui->get_ability_bool(z_skirmisher,*step);
 		const t_translation::t_terrain terrain = map[*step];
@@ -2889,6 +2901,7 @@ bool unit_can_move(const unit &u)
 
 void apply_shroud_changes(undo_list &undos, int side)
 {
+	static const config::t_token & z_sighted( generate_safe_static_const_t_interned(n_token::t_token("sighted")) );
 	team &tm = (*resources::teams)[side - 1];
 	// No need to do this if the team isn't using fog or shroud.
 	if (!tm.uses_shroud() && !tm.uses_fog())

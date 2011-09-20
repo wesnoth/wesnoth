@@ -21,33 +21,32 @@
 #include "foreach.hpp"
 #include "time_of_day.hpp"
 
-namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison, copying and hashing operations.
 
-	static const config::t_token z_lawful_bonus("lawful_bonus", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_id("id", false);
-	static const config::t_token z_time("time", false);
-	static const config::t_token z_image("image", false);
-	static const config::t_token z_mask("mask", false);
-	static const config::t_token z_red("red", false);
-	static const config::t_token z_green("green", false);
-	static const config::t_token z_blue("blue", false);
-	static const config::t_token z_sound("sound", false);
-	static const config::t_token z_NULL_TOD("NULL_TOD", false);
-	static const config::t_token z_nulltod("nulltod", false);
+namespace {
+	//Create default value functions
+	DEFAULT_TOKEN_BODY(zf_lawful_bonus, "lawful_bonus");
+	DEFAULT_TOKEN_BODY(zf_name, "name");
+	DEFAULT_TOKEN_BODY(zf_id, "id");
+	DEFAULT_TOKEN_BODY(zf_time, "time");
+	DEFAULT_TOKEN_BODY(zf_image, "image");
+	DEFAULT_TOKEN_BODY(zf_mask, "mask");
+	DEFAULT_TOKEN_BODY(zf_red, "red");
+	DEFAULT_TOKEN_BODY(zf_green, "green");
+	DEFAULT_TOKEN_BODY(zf_blue, "blue");
+	DEFAULT_TOKEN_BODY(zf_sound, "sound");
+	DEFAULT_TOKEN_BODY(zf_NULL_TOD, "NULL_TOD");
+	DEFAULT_TOKEN_BODY(zf_nulltod, "nulltod");
 
 }
 
 
 time_of_day::time_of_day(const config& cfg):
-	lawful_bonus(cfg[z_lawful_bonus]),
+	lawful_bonus(cfg[zf_lawful_bonus()]),
 	bonus_modified(0),
-	image(cfg[z_image].token()), name(cfg[z_name].t_str()), id(cfg[z_id].token()),
-	image_mask(cfg[z_mask].token()),
-	red(cfg[z_red]), green(cfg[z_green]), blue(cfg[z_blue]),
-	sounds(cfg[z_sound].token())
+	image(cfg[zf_image()].token()), name(cfg[zf_name()].t_str()), id(cfg[zf_id()].token()),
+	image_mask(cfg[zf_mask()].token()),
+	red(cfg[zf_red()]), green(cfg[zf_green()]), blue(cfg[zf_blue()]),
+	sounds(cfg[zf_sound()].token())
 {
 }
 
@@ -55,8 +54,8 @@ time_of_day::time_of_day()
 : lawful_bonus(0)
 , bonus_modified(0)
 , image()
-, name(z_NULL_TOD)
-, id(z_nulltod)
+, name(zf_NULL_TOD())
+, id(zf_nulltod())
 , image_mask()
 , red(0)
 , green(0)
@@ -67,6 +66,16 @@ time_of_day::time_of_day()
 
 void time_of_day::write(config& cfg) const
 {
+
+	static const n_token::t_token & z_lawful_bonus( generate_safe_static_const_t_interned(n_token::t_token("lawful_bonus")) );
+	static const n_token::t_token & z_red( generate_safe_static_const_t_interned(n_token::t_token("red")) );
+	static const n_token::t_token & z_green( generate_safe_static_const_t_interned(n_token::t_token("green")) );
+	static const n_token::t_token & z_blue( generate_safe_static_const_t_interned(n_token::t_token("blue")) );
+	static const n_token::t_token & z_image( generate_safe_static_const_t_interned(n_token::t_token("image")) );
+	static const n_token::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const n_token::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+	static const n_token::t_token & z_mask( generate_safe_static_const_t_interned(n_token::t_token("mask")) );
+
 	cfg[z_lawful_bonus] = lawful_bonus;
 	cfg[z_red] = red;
 	cfg[z_green] = green;
@@ -79,6 +88,8 @@ void time_of_day::write(config& cfg) const
 
 void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 {
+	static const n_token::t_token & z_time( generate_safe_static_const_t_interned(n_token::t_token("time")) );
+
 	foreach (const config &t, cfg.child_range(z_time)) {
 		normal_times.push_back(time_of_day(t));
 	}

@@ -239,7 +239,7 @@ t_string_base::t_string_base(const std::string& string, const std::string& textd
 	last_untranslatable_(false)
 {
 	if (string.empty()) {
-		static const n_token::t_token z_empty("");
+		static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 		value_ = z_empty;
 		translatable_ = false;
 		return;
@@ -342,7 +342,7 @@ t_string_base& t_string_base::operator=(const t_string_base& string)
 t_string_base& t_string_base::operator=(const t_token& string)
 {
 	value_ = string;
-	static const n_token::t_token z_empty("");
+	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	translated_value_ = z_empty;
 	translation_timestamp_ = 0;
 	translatable_ = false;
@@ -355,7 +355,7 @@ t_string_base& t_string_base::operator=(const std::string& string){ return opera
 t_string_base& t_string_base::operator=(const char* string)
 {
 	value_ = t_token(string);
-	static const n_token::t_token z_empty("");
+	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	translated_value_ = z_empty;
 	translation_timestamp_ = 0;
 	translatable_ = false;
@@ -393,7 +393,7 @@ t_string_base t_string_base::operator+(const char* string) const
 
 t_string_base& t_string_base::operator+=(const t_string_base& string)
 {
-	static const n_token::t_token z_empty("");
+	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	if (string.value_.empty())
 		return *this;
 	if (value_.empty()) {
@@ -431,7 +431,7 @@ t_string_base& t_string_base::operator+=(const t_string_base& string)
 
 t_string_base& t_string_base::operator+=(const t_token& string)
 {
-	static const n_token::t_token z_empty("");
+	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	if (string.empty())
 		return *this;
 	if (value_.empty()) {
@@ -456,7 +456,7 @@ t_string_base& t_string_base::operator+=(const std::string& string) {return oper
 
 t_string_base& t_string_base::operator+=(const char* string)
 {
-	static const n_token::t_token z_empty("");
+	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	if (string[0] == 0)
 		return *this;
 	if (value_.empty()) {
@@ -500,7 +500,7 @@ bool t_string_base::operator<(const t_string_base &that) const
 
 const t_string_base::t_token& t_string_base::token() const
 {
-	static const n_token::t_token z_empty("");
+	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	if(!translatable_)
 		return value_;
 

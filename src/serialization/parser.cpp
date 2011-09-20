@@ -100,8 +100,8 @@ parser::~parser() {
 }
 
 void parser::operator()() {
-	static const config::t_token z_empty("", false);
-	static const config::t_token z_tag("tag", false);
+	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
+	static const config::t_token & z_tag( generate_safe_static_const_t_interned(n_token::t_token("tag")) );
 
 	cfg_.clear();
 	elements_.push(element(&cfg_, z_empty));
@@ -193,8 +193,8 @@ void parser::parse_element() {
 		if(elements_.size() <= 1)
 			error(_("Unexpected closing tag"));
 		if(elname != elements_.top().name) {
-			static const config::t_token z_tag1("tag1", false);
-			static const config::t_token z_tag2("tag2", false);
+			static const config::t_token & z_tag1( generate_safe_static_const_t_interned(n_token::t_token("tag1")) );
+			static const config::t_token & z_tag2( generate_safe_static_const_t_interned(n_token::t_token("tag2")) );
 			utils::token_map i18n_symbols;
 			i18n_symbols[z_tag1] = elements_.top().name;
 			i18n_symbols[z_tag2] = elname;
@@ -217,7 +217,7 @@ void parser::parse_element() {
 
 void parser::parse_variable()
 {
-	static const config::t_token z_empty("", false);
+	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 
 	assert(!elements_.empty());
 	assert(elements_.top().cfg);
@@ -334,7 +334,7 @@ void parser::parse_variable()
  */
 std::string parser::lineno_string(utils::token_map &i18n_symbols,
 	std::string const &lineno, const char *error_string) {
-	static const config::t_token z_pos("pos", false);
+	static const config::t_token & z_pos( generate_safe_static_const_t_interned(n_token::t_token("pos")) );
 
 	i18n_symbols[z_pos] = ::lineno_string(lineno);
 	std::string result = _(error_string);
@@ -345,9 +345,9 @@ std::string parser::lineno_string(utils::token_map &i18n_symbols,
 
 void parser::error(const std::string& error_type)
 {
-	static const config::t_token z_error("error", false);
-	static const config::t_token z_value("value", false);
-	static const config::t_token z_previous_value("previous_value", false);
+	static const config::t_token & z_error( generate_safe_static_const_t_interned(n_token::t_token("error")) );
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
+	static const config::t_token & z_previous_value( generate_safe_static_const_t_interned(n_token::t_token("previous_value")) );
 	utils::token_map i18n_symbols;
 	i18n_symbols[z_error] = error_type;
 	i18n_symbols[z_value] = tok_->current_token().value();

@@ -55,12 +55,6 @@ static lg::log_domain log_random("random");
 #define ERR_RND LOG_STREAM(err, log_random)
 
 
-namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison, copying and hashing operations.
-	static const config::t_token z_sighted("sighted", false);
-}
-
 
 //functions to verify that the unit structure on both machines is identical
 
@@ -756,11 +750,12 @@ bool do_replay(int side_num, replay *obj)
 
 bool do_replay_handle(int side_num, const std::string &do_untill)
 {
+	static const config::t_token & z_sighted( generate_safe_static_const_t_interned(n_token::t_token("sighted")) );
+
 	//a list of units that have promoted from the last attack
 	std::deque<map_location> advancing_units;
 
 	team &current_team = (*resources::teams)[side_num - 1];
-
 
 	for(;;) {
 		const config *cfg = get_replay_source().get_next_action();

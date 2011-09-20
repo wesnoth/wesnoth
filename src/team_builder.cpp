@@ -129,17 +129,17 @@ void team_builder::log_step(const char *s) const
 void team_builder::init()
 {
 
-	static const config::t_token z_side("side", false);
-	static const config::t_token z_controller("controller", false);
-	static const config::t_token z_human("human", false);
-	static const config::t_token z_network("network", false);
-	static const config::t_token z_network_ai("network_ai", false);
-	static const config::t_token z_human_ai("human_ai", false);
-	static const config::t_token z_persistent("persistent", false);
-	static const config::t_token z_player("player", false);
-	static const config::t_token z_save_id("save_id", false);
-	static const config::t_token z_true("true", false);
-	static const config::t_token z_false("false", false);
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
+	static const config::t_token & z_controller( generate_safe_static_const_t_interned(n_token::t_token("controller")) );
+	static const config::t_token & z_human( generate_safe_static_const_t_interned(n_token::t_token("human")) );
+	static const config::t_token & z_network( generate_safe_static_const_t_interned(n_token::t_token("network")) );
+	static const config::t_token & z_network_ai( generate_safe_static_const_t_interned(n_token::t_token("network_ai")) );
+	static const config::t_token & z_human_ai( generate_safe_static_const_t_interned(n_token::t_token("human_ai")) );
+	static const config::t_token & z_persistent( generate_safe_static_const_t_interned(n_token::t_token("persistent")) );
+	static const config::t_token & z_player( generate_safe_static_const_t_interned(n_token::t_token("player")) );
+	static const config::t_token & z_save_id( generate_safe_static_const_t_interned(n_token::t_token("save_id")) );
+	static const config::t_token & z_true( generate_safe_static_const_t_interned(n_token::t_token("true")) );
+	static const config::t_token & z_false( generate_safe_static_const_t_interned(n_token::t_token("false")) );
 
 	side_ = side_cfg_[z_side].to_int(1);
 	if (unsigned(side_ - 1) >= teams_.size() || teams_[side_ - 1].side() != 0)
@@ -202,10 +202,9 @@ bool team_builder::use_player_cfg() const
 
 void team_builder::gold()
 {
-	static const config::t_token z_gold("gold", false);
-	static const config::t_token z_gold_add("gold_add", false);
-	static const config::t_token z_100("100", false);
-	static const config::t_token z_default_gold_qty(z_100, false);
+	static const config::t_token & z_gold( generate_safe_static_const_t_interned(n_token::t_token("gold")) );
+	static const config::t_token & z_gold_add( generate_safe_static_const_t_interned(n_token::t_token("gold_add")) );
+	static const config::t_token & z_default_gold_qty( generate_safe_static_const_t_interned(n_token::t_token("100")) );
 
 	log_step("gold");
 
@@ -260,7 +259,7 @@ void team_builder::new_team()
 
 void team_builder::objectives()
 {
-	static const config::t_token z_objectives("objectives", false);
+	static const config::t_token & z_objectives( generate_safe_static_const_t_interned(n_token::t_token("objectives")) );
 
 	log_step("objectives");
 	// If this team has no objectives, set its objectives
@@ -272,7 +271,7 @@ void team_builder::objectives()
 
 void team_builder::previous_recruits()
 {
-	static const config::t_token z_previous_recruits("previous_recruits", false);
+	static const config::t_token & z_previous_recruits( generate_safe_static_const_t_interned(n_token::t_token("previous_recruits")) );
 
 	log_step("previous recruits");
 	// If the game state specifies units that
@@ -291,12 +290,12 @@ void team_builder::previous_recruits()
 
 void team_builder::handle_unit(const config &u, const char *origin)
 {
-	static const config::t_token z_type("type", false);
-	static const config::t_token z_id("id", false);
-	static const config::t_token z_placement("placement", false);
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
-	static const config::t_token z_side("side", false);
+	static const config::t_token & z_type( generate_safe_static_const_t_interned(n_token::t_token("type")) );
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+	static const config::t_token & z_placement( generate_safe_static_const_t_interned(n_token::t_token("placement")) );
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
 
 	DBG_NG_TC
 		<< "unit from "<<origin
@@ -327,8 +326,8 @@ void team_builder::handle_unit(const config &u, const char *origin)
 
 void team_builder::handle_leader(const config &leader)
 {
-	static const config::t_token z_canrecruit("canrecruit", false);
-	static const config::t_token z_placement("placement", false);
+	static const config::t_token & z_canrecruit( generate_safe_static_const_t_interned(n_token::t_token("canrecruit")) );
+	static const config::t_token & z_placement( generate_safe_static_const_t_interned(n_token::t_token("placement")) );
 
 	leader_configs_.push_back(leader);
 
@@ -342,10 +341,10 @@ void team_builder::handle_leader(const config &leader)
 
 void team_builder::leader()
 {
-	static const config::t_token z_no_leader("no_leader", false);
-	static const config::t_token z_controller("controller", false);
-	static const config::t_token z_null("null", false);
-	static const config::t_token z_leader("leader", false);
+	static const config::t_token & z_no_leader( generate_safe_static_const_t_interned(n_token::t_token("no_leader")) );
+	static const config::t_token & z_controller( generate_safe_static_const_t_interned(n_token::t_token("controller")) );
+	static const config::t_token & z_null( generate_safe_static_const_t_interned(n_token::t_token("null")) );
+	static const config::t_token & z_leader( generate_safe_static_const_t_interned(n_token::t_token("leader")) );
 
 	log_step("leader");
 	// If this side tag describes the leader of the side, we can simply add it to front of unit queue
@@ -365,7 +364,7 @@ void team_builder::leader()
 
 void team_builder::prepare_units()
 {
-	static const config::t_token z_unit("unit", false);
+	static const config::t_token & z_unit( generate_safe_static_const_t_interned(n_token::t_token("unit")) );
 
 	log_step("prepare units");
 	if (use_player_cfg()) {
@@ -388,50 +387,50 @@ void team_builder::prepare_units()
 
 void team_builder::place_units()
 {
-	static const config::t_token z_income("income", false);
-	static const config::t_token z_team_name("team_name", false);
-	static const config::t_token z_user_team_name("user_team_name", false);
-	static const config::t_token z_save_id("save_id", false);
-	static const config::t_token z_current_player("current_player", false);
-	static const config::t_token z_countdown_time("countdown_time", false);
-	static const config::t_token z_action_bonus_count("action_bonus_count", false);
-	static const config::t_token z_flag("flag", false);
-	static const config::t_token z_flag_icon("flag_icon", false);
-	static const config::t_token z_objectives("objectives", false);
-	static const config::t_token z_objectives_changed("objectives_changed", false);
-	static const config::t_token z_disallow_observers("disallow_observers", false);
-	static const config::t_token z_allow_player("allow_player", false);
-	static const config::t_token z_no_leader("no_leader", false);
-	static const config::t_token z_hidden("hidden", false);
-	static const config::t_token z_music("music", false);
-	static const config::t_token z_color("color", false);
-	static const config::t_token z_colour("colour", false);
-	static const config::t_token z_ai_config("ai_config", false);
-	static const config::t_token z_gold("gold", false);
-	static const config::t_token z_start_gold("start_gold", false);
-	static const config::t_token z_team_rgb("team_rgb", false);
-	static const config::t_token z_village_gold("village_gold", false);
-	static const config::t_token z_recall_cost("recall_cost", false);
-	static const config::t_token z_controller("controller", false);
-	static const config::t_token z_persistent("persistent", false);
-	static const config::t_token z_share_view("share_view", false);
-	static const config::t_token z_share_maps("share_maps", false);
-	static const config::t_token z_recruit("recruit", false);
-	static const config::t_token z_fog("fog", false);
-	static const config::t_token z_shroud("shroud", false);
-	static const config::t_token z_shroud_data("shroud_data", false);
-	static const config::t_token z_scroll_to_leader("scroll_to_leader", false);
-	static const config::t_token z_income_lock("income_lock", false);
-	static const config::t_token z_gold_lock("gold_lock", false);
-	static const config::t_token z_color_lock("color_lock", false);
-	static const config::t_token z_team_lock("team_lock", false);
-	static const config::t_token z_leader("leader", false);
-	static const config::t_token z_random_leader("random_leader", false);
-	static const config::t_token z_terrain_liked("terrain_liked", false);
-	static const config::t_token z_allow_changes("allow_changes", false);
-	static const config::t_token z_faction_name("faction_name", false);
-	static const config::t_token z_user_description("user_description", false);
-	static const config::t_token z_faction("faction", false);
+	static const config::t_token & z_income( generate_safe_static_const_t_interned(n_token::t_token("income")) );
+	static const config::t_token & z_team_name( generate_safe_static_const_t_interned(n_token::t_token("team_name")) );
+	static const config::t_token & z_user_team_name( generate_safe_static_const_t_interned(n_token::t_token("user_team_name")) );
+	static const config::t_token & z_save_id( generate_safe_static_const_t_interned(n_token::t_token("save_id")) );
+	static const config::t_token & z_current_player( generate_safe_static_const_t_interned(n_token::t_token("current_player")) );
+	static const config::t_token & z_countdown_time( generate_safe_static_const_t_interned(n_token::t_token("countdown_time")) );
+	static const config::t_token & z_action_bonus_count( generate_safe_static_const_t_interned(n_token::t_token("action_bonus_count")) );
+	static const config::t_token & z_flag( generate_safe_static_const_t_interned(n_token::t_token("flag")) );
+	static const config::t_token & z_flag_icon( generate_safe_static_const_t_interned(n_token::t_token("flag_icon")) );
+	static const config::t_token & z_objectives( generate_safe_static_const_t_interned(n_token::t_token("objectives")) );
+	static const config::t_token & z_objectives_changed( generate_safe_static_const_t_interned(n_token::t_token("objectives_changed")) );
+	static const config::t_token & z_disallow_observers( generate_safe_static_const_t_interned(n_token::t_token("disallow_observers")) );
+	static const config::t_token & z_allow_player( generate_safe_static_const_t_interned(n_token::t_token("allow_player")) );
+	static const config::t_token & z_no_leader( generate_safe_static_const_t_interned(n_token::t_token("no_leader")) );
+	static const config::t_token & z_hidden( generate_safe_static_const_t_interned(n_token::t_token("hidden")) );
+	static const config::t_token & z_music( generate_safe_static_const_t_interned(n_token::t_token("music")) );
+	static const config::t_token & z_color( generate_safe_static_const_t_interned(n_token::t_token("color")) );
+	static const config::t_token & z_colour( generate_safe_static_const_t_interned(n_token::t_token("colour")) );
+	static const config::t_token & z_ai_config( generate_safe_static_const_t_interned(n_token::t_token("ai_config")) );
+	static const config::t_token & z_gold( generate_safe_static_const_t_interned(n_token::t_token("gold")) );
+	static const config::t_token & z_start_gold( generate_safe_static_const_t_interned(n_token::t_token("start_gold")) );
+	static const config::t_token & z_team_rgb( generate_safe_static_const_t_interned(n_token::t_token("team_rgb")) );
+	static const config::t_token & z_village_gold( generate_safe_static_const_t_interned(n_token::t_token("village_gold")) );
+	static const config::t_token & z_recall_cost( generate_safe_static_const_t_interned(n_token::t_token("recall_cost")) );
+	static const config::t_token & z_controller( generate_safe_static_const_t_interned(n_token::t_token("controller")) );
+	static const config::t_token & z_persistent( generate_safe_static_const_t_interned(n_token::t_token("persistent")) );
+	static const config::t_token & z_share_view( generate_safe_static_const_t_interned(n_token::t_token("share_view")) );
+	static const config::t_token & z_share_maps( generate_safe_static_const_t_interned(n_token::t_token("share_maps")) );
+	static const config::t_token & z_recruit( generate_safe_static_const_t_interned(n_token::t_token("recruit")) );
+	static const config::t_token & z_fog( generate_safe_static_const_t_interned(n_token::t_token("fog")) );
+	static const config::t_token & z_shroud( generate_safe_static_const_t_interned(n_token::t_token("shroud")) );
+	static const config::t_token & z_shroud_data( generate_safe_static_const_t_interned(n_token::t_token("shroud_data")) );
+	static const config::t_token & z_scroll_to_leader( generate_safe_static_const_t_interned(n_token::t_token("scroll_to_leader")) );
+	static const config::t_token & z_income_lock( generate_safe_static_const_t_interned(n_token::t_token("income_lock")) );
+	static const config::t_token & z_gold_lock( generate_safe_static_const_t_interned(n_token::t_token("gold_lock")) );
+	static const config::t_token & z_color_lock( generate_safe_static_const_t_interned(n_token::t_token("color_lock")) );
+	static const config::t_token & z_team_lock( generate_safe_static_const_t_interned(n_token::t_token("team_lock")) );
+	static const config::t_token & z_leader( generate_safe_static_const_t_interned(n_token::t_token("leader")) );
+	static const config::t_token & z_random_leader( generate_safe_static_const_t_interned(n_token::t_token("random_leader")) );
+	static const config::t_token & z_terrain_liked( generate_safe_static_const_t_interned(n_token::t_token("terrain_liked")) );
+	static const config::t_token & z_allow_changes( generate_safe_static_const_t_interned(n_token::t_token("allow_changes")) );
+	static const config::t_token & z_faction_name( generate_safe_static_const_t_interned(n_token::t_token("faction_name")) );
+	static const config::t_token & z_user_description( generate_safe_static_const_t_interned(n_token::t_token("user_description")) );
+	static const config::t_token & z_faction( generate_safe_static_const_t_interned(n_token::t_token("faction")) );
 
 	static n_token::t_token const side_attrs[] = {
 		z_income, z_team_name, z_user_team_name, z_save_id,

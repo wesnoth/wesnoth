@@ -265,14 +265,14 @@ frame_builder::frame_builder(const config& cfg,const n_token::t_token& frame_str
 	primary_frame_(t_unset),
 	drawing_layer_(cfg[frame_string + z_layer_default()].token())
 {
-	static const config::t_token z_auto_vflip("auto_vflip", false);
-	static const config::t_token z_auto_hflip("auto_hflip", false);
-	static const config::t_token z_primary("primary", false);
-	static const config::t_token z_text_color("text_color", false);
-	static const config::t_token z_duration("duration", false);
-	static const config::t_token z_end("end", false);
-	static const config::t_token z_begin("begin", false);
-	static const config::t_token z_blend_color("blend_color", false);
+	static const config::t_token & z_auto_vflip( generate_safe_static_const_t_interned(n_token::t_token("auto_vflip")) );
+	static const config::t_token & z_auto_hflip( generate_safe_static_const_t_interned(n_token::t_token("auto_hflip")) );
+	static const config::t_token & z_primary( generate_safe_static_const_t_interned(n_token::t_token("primary")) );
+	static const config::t_token & z_text_color( generate_safe_static_const_t_interned(n_token::t_token("text_color")) );
+	static const config::t_token & z_duration( generate_safe_static_const_t_interned(n_token::t_token("duration")) );
+	static const config::t_token & z_end( generate_safe_static_const_t_interned(n_token::t_token("end")) );
+	static const config::t_token & z_begin( generate_safe_static_const_t_interned(n_token::t_token("begin")) );
+	static const config::t_token & z_blend_color( generate_safe_static_const_t_interned(n_token::t_token("blend_color")) );
 	if(!cfg.has_attribute(frame_string + z_auto_vflip)) {
 		auto_vflip_ = t_unset;
 	} else if(cfg[frame_string + z_auto_vflip].to_bool()) {

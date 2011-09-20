@@ -30,33 +30,6 @@
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-namespace {
-//Constant literal tokens
-static const config::t_token z_x("x", false);
-static const config::t_token z_y("y", false);
-static const config::t_token z_or("or", false);
-static const config::t_token z_and("and", false);
-static const config::t_token z_not("not", false);
-static const config::t_token z_terrain("terrain", false);
-static const config::t_token z_filter("filter", false);
-static const config::t_token z_filter_adjacent_location("filter_adjacent_location", false);
-static const config::t_token z_adjacent("adjacent", false);
-static const config::t_token z_count("count", false);
-static const config::t_token z_time_of_day("time_of_day", false);
-static const config::t_token z_time_of_day_id("time_of_day_id", false);
-static const config::t_token z_chaotic("chaotic", false);
-static const config::t_token z_lawful("lawful", false);
-static const config::t_token z_neutral("neutral", false);
-static const config::t_token z_liminal("liminal", false);
-static const config::t_token z_owner_side("owner_side", false);
-static const config::t_token z_recall("recall", false);
-static const config::t_token z_radius("radius", false);
-static const config::t_token z_filter_radius("filter_radius", false);
-static const config::t_token z_find_in("find_in", false);
-//static const config::t_token z_("", false);
-
-
-}
 terrain_filter::~terrain_filter()
 {
 }
@@ -122,6 +95,7 @@ terrain_filter& terrain_filter::operator=(const terrain_filter& other)
 namespace {
 	struct cfg_isor {
 		bool operator() (std::pair<const config::t_token, const vconfig> val) {
+			static const n_token::t_token & z_or( generate_safe_static_const_t_interned(n_token::t_token("or")) );
 			return val.first == z_or;
 		}
 	};
@@ -129,6 +103,22 @@ namespace {
 
 bool terrain_filter::match_internal(const map_location& loc, const bool ignore_xy,gamemap const & game_map, t_teams const & teams, tod_manager const & tod_manager) const
 {
+static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+static const config::t_token & z_terrain( generate_safe_static_const_t_interned(n_token::t_token("terrain")) );
+static const config::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
+static const config::t_token & z_filter_adjacent_location( generate_safe_static_const_t_interned(n_token::t_token("filter_adjacent_location")) );
+static const config::t_token & z_adjacent( generate_safe_static_const_t_interned(n_token::t_token("adjacent")) );
+static const config::t_token & z_count( generate_safe_static_const_t_interned(n_token::t_token("count")) );
+static const config::t_token & z_time_of_day( generate_safe_static_const_t_interned(n_token::t_token("time_of_day")) );
+static const config::t_token & z_time_of_day_id( generate_safe_static_const_t_interned(n_token::t_token("time_of_day_id")) );
+static const config::t_token & z_chaotic( generate_safe_static_const_t_interned(n_token::t_token("chaotic")) );
+static const config::t_token & z_lawful( generate_safe_static_const_t_interned(n_token::t_token("lawful")) );
+static const config::t_token & z_neutral( generate_safe_static_const_t_interned(n_token::t_token("neutral")) );
+static const config::t_token & z_liminal( generate_safe_static_const_t_interned(n_token::t_token("liminal")) );
+static const config::t_token & z_owner_side( generate_safe_static_const_t_interned(n_token::t_token("owner_side")) );
+static const config::t_token & z_find_in( generate_safe_static_const_t_interned(n_token::t_token("find_in")) );
+
 	if(cfg_.has_attribute(z_terrain)) {
 		if(cache_.parsed_terrain == NULL) {
 			cache_.parsed_terrain = new t_translation::t_match(cfg_[z_terrain]);
@@ -284,6 +274,15 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 
 bool terrain_filter::match(const map_location& loc, gamemap const & game_map, t_teams const & teams, tod_manager const & tod_manager) const
 {
+static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+static const config::t_token & z_or( generate_safe_static_const_t_interned(n_token::t_token("or")) );
+static const config::t_token & z_and( generate_safe_static_const_t_interned(n_token::t_token("and")) );
+static const config::t_token & z_not( generate_safe_static_const_t_interned(n_token::t_token("not")) );
+static const config::t_token & z_recall( generate_safe_static_const_t_interned(n_token::t_token("recall")) );
+static const config::t_token & z_radius( generate_safe_static_const_t_interned(n_token::t_token("radius")) );
+static const config::t_token & z_filter_radius( generate_safe_static_const_t_interned(n_token::t_token("filter_radius")) );
+
 	if(cfg_[z_x] == z_recall && cfg_[z_y] == z_recall) {
 		return !game_map.on_board(loc);
 	}
@@ -353,6 +352,16 @@ bool terrain_filter::match(const map_location& loc, gamemap const & game_map, t_
 
 void terrain_filter::get_locations(t_maploc_set& locs, bool with_border, gamemap const & game_map, t_teams const & teams, tod_manager const & tod_manager) const
 {
+static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+static const config::t_token & z_or( generate_safe_static_const_t_interned(n_token::t_token("or")) );
+static const config::t_token & z_and( generate_safe_static_const_t_interned(n_token::t_token("and")) );
+static const config::t_token & z_not( generate_safe_static_const_t_interned(n_token::t_token("not")) );
+static const config::t_token & z_filter_adjacent_location( generate_safe_static_const_t_interned(n_token::t_token("filter_adjacent_location")) );
+static const config::t_token & z_radius( generate_safe_static_const_t_interned(n_token::t_token("radius")) );
+static const config::t_token & z_filter_radius( generate_safe_static_const_t_interned(n_token::t_token("filter_radius")) );
+static const config::t_token & z_find_in( generate_safe_static_const_t_interned(n_token::t_token("find_in")) );
+
 	std::vector<map_location> xy_vector =
 		parse_location_range(cfg_[z_x], cfg_[z_y], with_border);
 	t_maploc_set xy_set(xy_vector.begin(), xy_vector.end());

@@ -614,7 +614,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		if (!browse && !commands_disabled && u->side() == gui().viewing_side()) {
 			sound::play_UI_sound("select-unit.wav");
 			u->set_selecting();
-			static const config::t_token z_select("select", false);
+			static const config::t_token & z_select( generate_safe_static_const_t_interned(n_token::t_token("select")) );
 			game_events::fire(z_select, hex);
 		}
 

@@ -62,7 +62,7 @@ public:
 	std::pair<bool, config::t_token> describe_modification(const config& cfg);
 
 	int movement_used() const { 
-		static const config::t_token z_movement_used("movement_used", false);
+		static const config::t_token & z_movement_used( generate_safe_static_const_t_interned(n_token::t_token("movement_used")) );
 		return cfg_[z_movement_used].to_int(100000); }
 
 	config& get_cfg() { return cfg_; }
@@ -215,7 +215,7 @@ public:
 	const std::vector<config::t_token> advances_from() const;
 
 	config::const_child_itors modification_advancements() const { 
-		static const config::t_token z_advancement("advancement", false);
+		static const config::t_token & z_advancement( generate_safe_static_const_t_interned(n_token::t_token("advancement")) );
 		return cfg_.child_range(z_advancement); }
 
 	const unit_type& get_gender_unit_type(config::t_token const & gender) const;
@@ -286,7 +286,7 @@ public:
 	std::vector<config::t_token> get_ability_list() const;
 
 	config::const_child_itors possible_traits() const { 
-		static const config::t_token z_trait("trait", false);
+		static const config::t_token & z_trait( generate_safe_static_const_t_interned(n_token::t_token("trait")) );
 		return possibleTraits_.child_range(z_trait); }
 	bool has_random_traits() const;
 

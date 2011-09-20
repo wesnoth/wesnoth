@@ -41,14 +41,6 @@ static lg::log_domain log_ai_testing_aspect_attacks("ai/aspect/attacks");
 #define ERR_AI LOG_STREAM(err, log_ai_testing_aspect_attacks)
 
 
-namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
-	static const config::t_token z_backstab("backstab", false);
-	static const config::t_token z_slow("slow", false);
-	static const config::t_token z_value("value", false);
-}
-
 aspect_attacks::aspect_attacks(readonly_context &context, const config &cfg, const std::string &id)
 	: typesafe_aspect<attacks_vector>(context,cfg,id)
 	, filter_own_()
@@ -164,6 +156,10 @@ void aspect_attacks::do_attack_analysis(
 
 		unit_map::iterator unit_itor = units_.find(current_unit);
 		assert(unit_itor != units_.end());
+
+		static const config::t_token & z_backstab( generate_safe_static_const_t_interned(n_token::t_token("backstab")) );
+		static const config::t_token & z_slow( generate_safe_static_const_t_interned(n_token::t_token("slow")) );
+		static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
 
 		// See if the unit has the backstab ability.
 		// Units with backstab will want to try to have a

@@ -142,6 +142,8 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 
 variant unit_callable::get_value(const std::string& key) const
 {
+	static const config::t_token & z_not_living( generate_safe_static_const_t_interned(n_token::t_token("not_living")) );
+
 	if(key == "x") {
 		if (loc_==map_location::null_location) {
 			return variant();
@@ -171,7 +173,6 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "leader") {
 		return variant(u_.can_recruit());
 	} else if(key == "undead") {
-		static const config::t_token z_not_living("not_living");
 		return variant(u_.get_state(z_not_living) ? 1 : 0);
 	} else if(key == "attacks") {
 		const std::vector<attack_type>& att = u_.attacks();

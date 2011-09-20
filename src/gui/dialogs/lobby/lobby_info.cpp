@@ -42,9 +42,6 @@ static lg::log_domain log_lobby("lobby");
 #define SCOPE_LB log_scope2(log_lobby, __func__)
 
 
-namespace{
-	static const config::t_token z_diff_track_attribute_("diff_track_attribute_", false);
-}
 lobby_info::lobby_info(const config& game_config)
 	: game_config_(game_config)
 	, gamelist_()
@@ -89,6 +86,7 @@ std::string dump_games_map(const lobby_info::game_info_map& games)
 
 std::string dump_games_config(const config& gamelist)
 {
+	static const config::t_token & z_diff_track_attribute_( generate_safe_static_const_t_interned(n_token::t_token("diff_track_attribute_")) );
 	std::stringstream ss;
 	foreach (const config& c, gamelist.child_range("game")) {
 		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[z_diff_track_attribute_] << " ";
@@ -118,6 +116,7 @@ void lobby_info::process_gamelist(const config &data)
 
 bool lobby_info::process_gamelist_diff(const config &data)
 {
+	static const config::t_token & z_diff_track_attribute_( generate_safe_static_const_t_interned(n_token::t_token("diff_track_attribute_")) );
 	SCOPE_LB;
 	if (!gamelist_initialized_) return false;
 	DBG_LB << "prediff " << dump_games_config(gamelist_.child("gamelist"));

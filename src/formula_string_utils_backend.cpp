@@ -22,16 +22,15 @@ namespace wml_interpolation {
 typedef n_token::t_token t_token;
 typedef std::vector<t_token> t_tokens;
 
-//static const t_token z_empty("", false);
-static const t_token z_dollar("$", false);
-static const t_token z_bar("|", false);
-static const t_token z_dot(".", false);
-static const t_token z_lbracket("[", false);
-static const t_token z_rbracket("]", false);
-static const t_token z_lparen("(", false);
-static const t_token z_rparen(")", false);
-static const t_token z_single_quote("'", false);
-static const t_token z_sharp("#", false);
+static const t_token & z_dollar( generate_safe_static_const_t_interned(n_token::t_token("$")) );
+static const t_token & z_bar( generate_safe_static_const_t_interned(n_token::t_token("|")) );
+static const t_token & z_dot( generate_safe_static_const_t_interned(n_token::t_token(".")) );
+static const t_token & z_lbracket( generate_safe_static_const_t_interned(n_token::t_token("[")) );
+static const t_token & z_rbracket( generate_safe_static_const_t_interned(n_token::t_token("]")) );
+static const t_token & z_lparen( generate_safe_static_const_t_interned(n_token::t_token("(")) );
+static const t_token & z_rparen( generate_safe_static_const_t_interned(n_token::t_token(")")) );
+static const t_token & z_single_quote( generate_safe_static_const_t_interned(n_token::t_token("'")) );
+static const t_token & z_sharp( generate_safe_static_const_t_interned(n_token::t_token("#")) );
 
 
 template <typename T>
@@ -47,7 +46,7 @@ t_tokens const & t_tokenizer::tokenize(T const & in) {
 	return tokenize(); }
 
 t_tokens const & t_tokenizer::tokenize() {
-	static const t_token z_empty("", false);
+	static const t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 
 	if(!is_done_){
 		tokens_.clear();
@@ -267,7 +266,7 @@ t_instructions & t_parse::parse(){
 }
 
 t_token const & t_parse::peek_next(t_tokens::iterator const & curr_pos ){
-	static const t_token z_empty("", false);
+	static const t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	t_tokens::iterator next(curr_pos + 1);
 	return (next != tokens_.end() ) ? (*next) : z_empty; }
 
@@ -291,7 +290,7 @@ t_tokens::iterator t_parse::do_parse_plain(t_tokens::iterator const & start_pos 
 					curr_pos = do_parse_interp(++curr_pos); }
 				catch (game::wml_syntax_error & e) {
 					ERR_INTERP << e.what()<<"\n";
-					static const config::t_token z_caption(_("Invalid WML found"), false);
+					static const config::t_token & z_caption( generate_safe_static_const_t_interned(n_token::t_token(_("Invalid WML found"))) );
 					if(resources::screen) { 
 						resources::screen->add_chat_message(time(NULL), z_caption, 0, e.what(),
 															events::chat_handler::MESSAGE_PUBLIC, false); }
@@ -445,7 +444,7 @@ t_tokens::iterator t_parse::do_parse_formula(t_tokens::iterator const & start_po
 	int paren_nesting_level = 1;
 	bool in_string = false, in_comment = false;
 
-	static const t_token z_empty("", false);
+	static const t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	static const t_operation_ptr op_empty(new t_operation_push(z_empty));
 	complete_parse_.ops().push_back(op_empty);
 

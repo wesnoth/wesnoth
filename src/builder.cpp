@@ -34,36 +34,6 @@ static lg::log_domain log_engine("engine");
 terrain_builder::building_ruleset terrain_builder::building_rules_;
 const config* terrain_builder::rules_cfg_ = NULL;
 
-namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
-static const config::t_token z_invalid_tod("invalid_tod", false);
-static const config::t_token z_image("image", false);
-static const config::t_token z_layer("layer", false);
-static const config::t_token z_base("base", false);
-static const config::t_token z_center("center", false);
-static const config::t_token z_variant("variant", false);
-static const config::t_token z_name("name", false);
-static const config::t_token z_variations("variations", false);
-static const config::t_token z_tod("tod", false);
-static const config::t_token z_random_start("random_start", false);
-static const config::t_token z_type("type", false);
-static const config::t_token z_has_flag("has_flag", false);
-static const config::t_token z_set_no_flag("set_no_flag", false);
-static const config::t_token z_x("x", false);
-static const config::t_token z_y("y", false);
-static const config::t_token z_probability("probability", false);
-static const config::t_token z_map("map", false);
-static const config::t_token z_tile("tile", false);
-static const config::t_token z_loc("loc", false);
-static const config::t_token z_pos("pos", false);
-static const config::t_token z_set_flag("set_flag", false);
-static const config::t_token z_no_flag("no_flag", false);
-static const config::t_token z_rotations("rotations", false);
-static const config::t_token z_precedence("precedence", false);
-static const config::t_token z_terrain_graphics("terrain_graphics", false);
-
-}
 
 terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image, int cx, int cy) :
 	layer(layer),
@@ -80,9 +50,12 @@ terrain_builder::tile::tile() :
 	images(),
 	images_foreground(),
 	images_background(),
-	last_tod(z_invalid_tod),
+	last_tod(),
 	sorted_images(false)
-{}
+{
+	static const n_token::t_token & z_invalid_tod( generate_safe_static_const_t_interned(n_token::t_token("invalid_tod")) );
+	last_tod = z_invalid_tod;
+}
 
 void terrain_builder::tile::rebuild_cache(const n_token::t_token& tod, logs* log)
 {
@@ -123,6 +96,7 @@ void terrain_builder::tile::rebuild_cache(const n_token::t_token& tod, logs* log
 
 void terrain_builder::tile::clear()
 {
+	static const config::t_token & z_invalid_tod( generate_safe_static_const_t_interned(n_token::t_token("invalid_tod")) );
 	flags.clear();
 	images.clear();
 	sorted_images = false;
@@ -184,7 +158,7 @@ terrain_builder::terrain_builder(const config& level,
 	tile_map_(map().w(), map().h()),
 	terrain_by_type_()
 {
-	static const config::t_token z_cterrain("terrain/", false);
+	static const config::t_token & z_cterrain( generate_safe_static_const_t_interned(n_token::t_token("terrain/")) );
 	image::precache_file_existence(z_cterrain);
 
 	if(building_rules_.empty() && rules_cfg_){
@@ -602,6 +576,16 @@ terrain_builder::rule_image_variant::rule_image_variant(const n_token::t_token &
 
 void terrain_builder::add_images_from_config(rule_imagelist& images, const config &cfg, bool global, int dx, int dy)
 {
+	static const config::t_token & z_image( generate_safe_static_const_t_interned(n_token::t_token("image")) );
+	static const config::t_token & z_layer( generate_safe_static_const_t_interned(n_token::t_token("layer")) );
+	static const config::t_token & z_base( generate_safe_static_const_t_interned(n_token::t_token("base")) );
+	static const config::t_token & z_center( generate_safe_static_const_t_interned(n_token::t_token("center")) );
+	static const config::t_token & z_variant( generate_safe_static_const_t_interned(n_token::t_token("variant")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_variations( generate_safe_static_const_t_interned(n_token::t_token("variations")) );
+	static const config::t_token & z_tod( generate_safe_static_const_t_interned(n_token::t_token("tod")) );
+	static const config::t_token & z_random_start( generate_safe_static_const_t_interned(n_token::t_token("random_start")) );
+
 	foreach (const config &img, cfg.child_range(z_image))
 	{
 		int layer = img[z_layer];
@@ -680,6 +664,12 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 		const map_location& loc, const config& cfg, const config& global_images)
 
 {
+	static const config::t_token & z_type( generate_safe_static_const_t_interned(n_token::t_token("type")) );
+	static const config::t_token & z_set_flag( generate_safe_static_const_t_interned(n_token::t_token("set_flag")) );
+	static const config::t_token & z_has_flag( generate_safe_static_const_t_interned(n_token::t_token("has_flag")) );
+	static const config::t_token & z_no_flag( generate_safe_static_const_t_interned(n_token::t_token("no_flag")) );
+	static const config::t_token & z_set_no_flag( generate_safe_static_const_t_interned(n_token::t_token("set_no_flag")) );
+
 	terrain_constraint& constraint = add_constraints(constraints, loc,
 		t_translation::t_match(cfg[z_type], t_translation::WILDCARD), global_images);
 
@@ -787,6 +777,20 @@ void terrain_builder::add_rotated_rules(building_ruleset &rules, building_rule &
 
 void terrain_builder::parse_config(const config &cfg, bool local)
 {
+	static const config::t_token & z_terrain_graphics( generate_safe_static_const_t_interned(n_token::t_token("terrain_graphics")) );
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+	static const config::t_token & z_probability( generate_safe_static_const_t_interned(n_token::t_token("probability")) );
+	static const config::t_token & z_map( generate_safe_static_const_t_interned(n_token::t_token("map")) );
+	static const config::t_token & z_tile( generate_safe_static_const_t_interned(n_token::t_token("tile")) );
+	static const config::t_token & z_loc( generate_safe_static_const_t_interned(n_token::t_token("loc")) );
+	static const config::t_token & z_pos( generate_safe_static_const_t_interned(n_token::t_token("pos")) );
+	static const config::t_token & z_set_flag( generate_safe_static_const_t_interned(n_token::t_token("set_flag")) );
+	static const config::t_token & z_no_flag( generate_safe_static_const_t_interned(n_token::t_token("no_flag")) );
+	static const config::t_token & z_has_flag( generate_safe_static_const_t_interned(n_token::t_token("has_flag")) );
+	static const config::t_token & z_set_no_flag( generate_safe_static_const_t_interned(n_token::t_token("set_no_flag")) );
+	static const config::t_token & z_rotations( generate_safe_static_const_t_interned(n_token::t_token("rotations")) );
+	static const config::t_token & z_precedence( generate_safe_static_const_t_interned(n_token::t_token("precedence")) );
 	log_scope("terrain_builder::parse_config");
 
 	// Parses the list of building rules (BRs)
@@ -910,6 +914,18 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 
 void terrain_builder::add_off_map_rule(const n_token::t_token& image)
 {
+	static const config::t_token & z_terrain_graphics( generate_safe_static_const_t_interned(n_token::t_token("terrain_graphics")) );
+	static const config::t_token & z_tile( generate_safe_static_const_t_interned(n_token::t_token("tile")) );
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+	static const config::t_token & z_type( generate_safe_static_const_t_interned(n_token::t_token("type")) );
+	static const config::t_token & z_image( generate_safe_static_const_t_interned(n_token::t_token("image")) );
+	static const config::t_token & z_layer( generate_safe_static_const_t_interned(n_token::t_token("layer")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_probability( generate_safe_static_const_t_interned(n_token::t_token("probability")) );
+	static const config::t_token & z_no_flag( generate_safe_static_const_t_interned(n_token::t_token("no_flag")) );
+	static const config::t_token & z_base( generate_safe_static_const_t_interned(n_token::t_token("base")) );
+	static const config::t_token & z_set_flag( generate_safe_static_const_t_interned(n_token::t_token("set_flag")) );
 	// Build a config object
 	config cfg;
 

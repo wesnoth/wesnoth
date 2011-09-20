@@ -179,13 +179,13 @@ namespace {
  */
 static void put_wml_message(const n_token::t_token& logger, const std::string& message)
 {
-	static const config::t_token z_err("err", false);
-	static const config::t_token z_error("error", false);
-	static const config::t_token z_warn("warn", false);
-	static const config::t_token z_wrn("wrn", false);
-	static const config::t_token z_warning("warning", false);
-	static const config::t_token z_debug("debug", false);
-	static const config::t_token z_dbg("dbg", false);
+	static const config::t_token & z_err( generate_safe_static_const_t_interned(n_token::t_token("err")) );
+	static const config::t_token & z_error( generate_safe_static_const_t_interned(n_token::t_token("error")) );
+	static const config::t_token & z_warn( generate_safe_static_const_t_interned(n_token::t_token("warn")) );
+	static const config::t_token & z_wrn( generate_safe_static_const_t_interned(n_token::t_token("wrn")) );
+	static const config::t_token & z_warning( generate_safe_static_const_t_interned(n_token::t_token("warning")) );
+	static const config::t_token & z_debug( generate_safe_static_const_t_interned(n_token::t_token("debug")) );
+	static const config::t_token & z_dbg( generate_safe_static_const_t_interned(n_token::t_token("dbg")) );
 
 	if (logger == z_err || logger == z_error) {
 		ERR_WML << message << "\n";
@@ -330,7 +330,7 @@ static static_wml_action_map static_wml_actions;
 	{																	\
 		wml_func_register_##pname()										\
 			{															\
-				static const n_token::t_token z_##pname( #pname , false); \
+				static const config::t_token & z_##pname( generate_safe_static_const_t_interned(n_token::t_token( #pname )) ); \
 				static_wml_actions[z_##pname] = &wml_func_##pname; }	\
 	};																	\
 	static wml_func_register_##pname wml_func_register_##pname##_aux;  \
@@ -342,24 +342,24 @@ namespace game_events {
 
 	static bool internal_conditional_passed(const vconfig& cond, bool& backwards_compat)
 	{
-	static const config::t_token z_have_unit("have_unit", false);
-	static const config::t_token z_count("count", false);
-	static const config::t_token z_search_recall_list("search_recall_list", false);
-	static const config::t_token z_this_unit("this_unit", false);
-	static const config::t_token z_have_location("have_location", false);
-	static const config::t_token z_variable("variable", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_equals("equals", false);
-	static const config::t_token z_not_equals("not_equals", false);
-	static const config::t_token z_numerical_equals("numerical_equals", false);
-	static const config::t_token z_numerical_not_equals("numerical_not_equals", false);
-	static const config::t_token z_greater_than("greater_than", false);
-	static const config::t_token z_less_than("less_than", false);
-	static const config::t_token z_greater_than_equal_to("greater_than_equal_to", false);
-	static const config::t_token z_less_than_equal_to("less_than_equal_to", false);
-	static const config::t_token z_boolean_equals("boolean_equals", false);
-	static const config::t_token z_boolean_not_equals("boolean_not_equals", false);
-	static const config::t_token z_contains("contains", false);
+	static const config::t_token & z_have_unit( generate_safe_static_const_t_interned(n_token::t_token("have_unit")) );
+	static const config::t_token & z_count( generate_safe_static_const_t_interned(n_token::t_token("count")) );
+	static const config::t_token & z_search_recall_list( generate_safe_static_const_t_interned(n_token::t_token("search_recall_list")) );
+	static const config::t_token & z_this_unit( generate_safe_static_const_t_interned(n_token::t_token("this_unit")) );
+	static const config::t_token & z_have_location( generate_safe_static_const_t_interned(n_token::t_token("have_location")) );
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_equals( generate_safe_static_const_t_interned(n_token::t_token("equals")) );
+	static const config::t_token & z_not_equals( generate_safe_static_const_t_interned(n_token::t_token("not_equals")) );
+	static const config::t_token & z_numerical_equals( generate_safe_static_const_t_interned(n_token::t_token("numerical_equals")) );
+	static const config::t_token & z_numerical_not_equals( generate_safe_static_const_t_interned(n_token::t_token("numerical_not_equals")) );
+	static const config::t_token & z_greater_than( generate_safe_static_const_t_interned(n_token::t_token("greater_than")) );
+	static const config::t_token & z_less_than( generate_safe_static_const_t_interned(n_token::t_token("less_than")) );
+	static const config::t_token & z_greater_than_equal_to( generate_safe_static_const_t_interned(n_token::t_token("greater_than_equal_to")) );
+	static const config::t_token & z_less_than_equal_to( generate_safe_static_const_t_interned(n_token::t_token("less_than_equal_to")) );
+	static const config::t_token & z_boolean_equals( generate_safe_static_const_t_interned(n_token::t_token("boolean_equals")) );
+	static const config::t_token & z_boolean_not_equals( generate_safe_static_const_t_interned(n_token::t_token("boolean_not_equals")) );
+	static const config::t_token & z_contains( generate_safe_static_const_t_interned(n_token::t_token("contains")) );
 
 		static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-99999");
 
@@ -485,10 +485,10 @@ namespace game_events {
 
 	bool conditional_passed(const vconfig& cond, bool backwards_compat)
 	{
-	static const config::t_token z_backwards_compat("backwards_compat", false);
-	static const config::t_token z_and("and", false);
-	static const config::t_token z_or("or", false);
-	static const config::t_token z_not("not", false);
+	static const config::t_token & z_backwards_compat( generate_safe_static_const_t_interned(n_token::t_token("backwards_compat")) );
+	static const config::t_token & z_and( generate_safe_static_const_t_interned(n_token::t_token("and")) );
+	static const config::t_token & z_or( generate_safe_static_const_t_interned(n_token::t_token("or")) );
+	static const config::t_token & z_not( generate_safe_static_const_t_interned(n_token::t_token("not")) );
 
 		bool allow_backwards_compat = backwards_compat = backwards_compat &&
 			cond[z_backwards_compat].to_bool(true);
@@ -546,8 +546,8 @@ namespace game_events {
 
 	void handle_wml_log_message(const config& cfg)
 	{
-	static const config::t_token z_logger("logger", false);
-	static const config::t_token z_message("message", false);
+	static const config::t_token & z_logger( generate_safe_static_const_t_interned(n_token::t_token("logger")) );
+	static const config::t_token & z_message( generate_safe_static_const_t_interned(n_token::t_token("message")) );
 
 		const config::attribute_value& logger = cfg[z_logger];
 		const config::attribute_value& msg = cfg[z_message];
@@ -557,7 +557,7 @@ namespace game_events {
 
 	void handle_deprecated_message(const config& cfg)
 	{
-	static const config::t_token z_message("message", false);
+	static const config::t_token & z_message( generate_safe_static_const_t_interned(n_token::t_token("message")) );
 
 		// Note: no need to translate the string, since only used for deprecated things.
 		const config::attribute_value& message = cfg[z_message];
@@ -566,9 +566,9 @@ namespace game_events {
 
 	std::set<int> get_sides_set(const vconfig& cfg, const bool only_ssf, const bool only_side)
 	{
-	static const config::t_token z_side("side", false);
-	static const config::t_token z_filter_side("filter_side", false);
-	static const config::t_token z_error("error", false);
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
+	static const config::t_token & z_filter_side( generate_safe_static_const_t_interned(n_token::t_token("filter_side")) );
+	static const config::t_token & z_error( generate_safe_static_const_t_interned(n_token::t_token("error")) );
 
 		if(only_ssf) {
 			side_filter filter(cfg);
@@ -618,8 +618,8 @@ namespace {
 
 static map_location cfg_to_loc(const vconfig& cfg,int defaultx = 0, int defaulty = 0)
 {
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
 
 	int x = cfg[z_x].to_int(defaultx) - 1;
 	int y = cfg[z_y].to_int(defaulty) - 1;
@@ -652,7 +652,7 @@ namespace {
 		 * respects this class's buffering functionality.
 		 */
 		void add_event_handler(game_events::event_handler const & new_handler) {
-			static const config::t_token z_id("id", false);
+			static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
 
 			if(buffering_) { insert_buffer_.push_back(new_handler); }
 
@@ -675,8 +675,8 @@ namespace {
 		 * buffering functionality.
 		 */
 		void remove_event_handler(config::t_token const & id) {
-			static const config::t_token z_id("id", false);
-			static const config::t_token z_empty("", false);
+			static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+			static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 			if(id == z_empty) { return; }
 
 			if(buffering_) { remove_buffer_.insert(id); }
@@ -779,12 +779,12 @@ WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
 
 WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
 {
-	static const config::t_token z_remove("remove", false);
-	static const config::t_token z_id("id", false);
-	static const config::t_token z_source("source", false);
-	static const config::t_token z_target("target", false);
-	static const config::t_token z_filter("filter", false);
-	static const config::t_token z_bidirectional("bidirectional", false);
+	static const config::t_token & z_remove( generate_safe_static_const_t_interned(n_token::t_token("remove")) );
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+	static const config::t_token & z_source( generate_safe_static_const_t_interned(n_token::t_token("source")) );
+	static const config::t_token & z_target( generate_safe_static_const_t_interned(n_token::t_token("target")) );
+	static const config::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
+	static const config::t_token & z_bidirectional( generate_safe_static_const_t_interned(n_token::t_token("bidirectional")) );
 
 	const bool remove = utils::string_bool(cfg[z_remove], false);
 	if (remove) {
@@ -810,10 +810,10 @@ WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 {
-	static const config::t_token z_filter("filter", false);
-	static const config::t_token z_check_passability("check_passability", false);
-	static const config::t_token z_clear_shroud("clear_shroud", false);
-	static const config::t_token z_animate("animate", false);
+	static const config::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
+	static const config::t_token & z_check_passability( generate_safe_static_const_t_interned(n_token::t_token("check_passability")) );
+	static const config::t_token & z_clear_shroud( generate_safe_static_const_t_interned(n_token::t_token("clear_shroud")) );
+	static const config::t_token & z_animate( generate_safe_static_const_t_interned(n_token::t_token("animate")) );
 
 	unit_map::iterator u = resources::units->find(event_info.loc1);
 
@@ -869,8 +869,8 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 {
 
-	static const config::t_token z_music("music", false);
-	static const config::t_token z_sound("sound", false);
+	static const config::t_token & z_music( generate_safe_static_const_t_interned(n_token::t_token("music")) );
+	static const config::t_token & z_sound( generate_safe_static_const_t_interned(n_token::t_token("sound")) );
 
 	int vol;
 	float rel;
@@ -898,9 +898,9 @@ WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 }
 
 static void color_adjust(const vconfig& cfg) {
-	static const config::t_token z_red("red", false);
-	static const config::t_token z_green("green", false);
-	static const config::t_token z_blue("blue", false);
+	static const config::t_token & z_red( generate_safe_static_const_t_interned(n_token::t_token("red")) );
+	static const config::t_token & z_green( generate_safe_static_const_t_interned(n_token::t_token("green")) );
+	static const config::t_token & z_blue( generate_safe_static_const_t_interned(n_token::t_token("blue")) );
 
 	game_display &screen = *resources::screen;
 	screen.adjust_color_overlay(cfg[z_red], cfg[z_green], cfg[z_blue]);
@@ -922,8 +922,8 @@ WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 {
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
 
 	game_display &screen = *resources::screen;
 	screen.scroll(cfg[z_x], cfg[z_y]);
@@ -935,9 +935,9 @@ WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 // or if the turn / time-of-day sequence mutates in a scenario.
 WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 {
-	static const config::t_token z_turn("turn", false);
-	static const config::t_token z_variable("variable", false);
-	static const config::t_token z_time_of_day("time_of_day", false);
+	static const config::t_token & z_turn( generate_safe_static_const_t_interned(n_token::t_token("turn")) );
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
+	static const config::t_token & z_time_of_day( generate_safe_static_const_t_interned(n_token::t_token("time_of_day")) );
 
 	const map_location loc = cfg_to_loc(cfg, -999, -999);
 	int turn = cfg[z_turn];
@@ -974,21 +974,21 @@ WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 {
-	static const config::t_token z_team_name("team_name", false);
-	static const config::t_token z_user_team_name("user_team_name", false);
-	static const config::t_token z_controller("controller", false);
-	static const config::t_token z_recruit("recruit", false);
-	static const config::t_token z_shroud_data("shroud_data", false);
-	static const config::t_token z_ai("ai", false);
-	static const config::t_token z_switch_ai("switch_ai", false);
-	static const config::t_token z_income("income", false);
-	static const config::t_token z_gold("gold", false);
-	static const config::t_token z_shroud("shroud", false);
-	static const config::t_token z_hidden("hidden", false);
-	static const config::t_token z_fog("fog", false);
-	static const config::t_token z_village_gold("village_gold", false);
-	static const config::t_token z_share_view("share_view", false);
-	static const config::t_token z_share_maps("share_maps", false);
+	static const config::t_token & z_team_name( generate_safe_static_const_t_interned(n_token::t_token("team_name")) );
+	static const config::t_token & z_user_team_name( generate_safe_static_const_t_interned(n_token::t_token("user_team_name")) );
+	static const config::t_token & z_controller( generate_safe_static_const_t_interned(n_token::t_token("controller")) );
+	static const config::t_token & z_recruit( generate_safe_static_const_t_interned(n_token::t_token("recruit")) );
+	static const config::t_token & z_shroud_data( generate_safe_static_const_t_interned(n_token::t_token("shroud_data")) );
+	static const config::t_token & z_ai( generate_safe_static_const_t_interned(n_token::t_token("ai")) );
+	static const config::t_token & z_switch_ai( generate_safe_static_const_t_interned(n_token::t_token("switch_ai")) );
+	static const config::t_token & z_income( generate_safe_static_const_t_interned(n_token::t_token("income")) );
+	static const config::t_token & z_gold( generate_safe_static_const_t_interned(n_token::t_token("gold")) );
+	static const config::t_token & z_shroud( generate_safe_static_const_t_interned(n_token::t_token("shroud")) );
+	static const config::t_token & z_hidden( generate_safe_static_const_t_interned(n_token::t_token("hidden")) );
+	static const config::t_token & z_fog( generate_safe_static_const_t_interned(n_token::t_token("fog")) );
+	static const config::t_token & z_village_gold( generate_safe_static_const_t_interned(n_token::t_token("village_gold")) );
+	static const config::t_token & z_share_view( generate_safe_static_const_t_interned(n_token::t_token("share_view")) );
+	static const config::t_token & z_share_maps( generate_safe_static_const_t_interned(n_token::t_token("share_maps")) );
 
 	std::vector<team> &teams = *resources::teams;
 
@@ -1096,9 +1096,9 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 {
-	static const config::t_token z_value("value", false);
-	static const config::t_token z_add("add", false);
-	static const config::t_token z_current("current", false);
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
+	static const config::t_token & z_add( generate_safe_static_const_t_interned(n_token::t_token("add")) );
+	static const config::t_token & z_current( generate_safe_static_const_t_interned(n_token::t_token("current")) );
 
 	config::attribute_value const & value = cfg[z_value];
 	config::attribute_value const & add = cfg[z_add];
@@ -1127,16 +1127,16 @@ namespace {
 
 game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 {
-	static const config::t_token z_type("type", false);
-	static const config::t_token z_variation("variation", false);
-	static const config::t_token z_image_mods("image_mods", false);
-	static const config::t_token z_side("side", false);
-	static const config::t_token z_gender("gender", false);
-	static const config::t_token z_effect("effect", false);
-	static const config::t_token z_apply_to("apply_to", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_image_mod("image_mod", false);
-	static const config::t_token z_add("add", false);
+	static const config::t_token & z_type( generate_safe_static_const_t_interned(n_token::t_token("type")) );
+	static const config::t_token & z_variation( generate_safe_static_const_t_interned(n_token::t_token("variation")) );
+	static const config::t_token & z_image_mods( generate_safe_static_const_t_interned(n_token::t_token("image_mods")) );
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
+	static const config::t_token & z_gender( generate_safe_static_const_t_interned(n_token::t_token("gender")) );
+	static const config::t_token & z_effect( generate_safe_static_const_t_interned(n_token::t_token("effect")) );
+	static const config::t_token & z_apply_to( generate_safe_static_const_t_interned(n_token::t_token("apply_to")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_image_mod( generate_safe_static_const_t_interned(n_token::t_token("image_mod")) );
+	static const config::t_token & z_add( generate_safe_static_const_t_interned(n_token::t_token("add")) );
 
 	config::attribute_value const & type = cfg[z_type];
 	config::attribute_value const & variation = cfg[z_variation];
@@ -1235,8 +1235,8 @@ std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vecto
 // that is just moving for the visual effect
 WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 {
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
 
 	util::unique_ptr<unit> dummy_unit(create_fake_unit(cfg));
 	if(!dummy_unit.get())
@@ -1255,10 +1255,10 @@ WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 {
-	static const config::t_token z_fake_unit("fake_unit", false);
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
-	static const config::t_token z_skip_steps("skip_steps", false);
+	static const config::t_token & z_fake_unit( generate_safe_static_const_t_interned(n_token::t_token("fake_unit")) );
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+	static const config::t_token & z_skip_steps( generate_safe_static_const_t_interned(n_token::t_token("skip_steps")) );
 
 	LOG_NG << "Processing [move_units_fake]\n";
 
@@ -1319,30 +1319,30 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 {
-	static const config::t_token z_empty("", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_literal("literal", false);
-	static const config::t_token z_value("value", false);
-	static const config::t_token z_to_variable("to_variable", false);
-	static const config::t_token z_add("add", false);
-	static const config::t_token z_sub("sub", false);
-	static const config::t_token z_multiply("multiply", false);
-	static const config::t_token z_divide("divide", false);
-	static const config::t_token z_modulo("modulo", false);
-	static const config::t_token z_round("round", false);
-	static const config::t_token z_ceil("ceil", false);
-	static const config::t_token z_floor("floor", false);
-	static const config::t_token z_ipart("ipart", false);
-	static const config::t_token z_fpart("fpart", false);
-	static const config::t_token z_string_length("string_length", false);
-	static const config::t_token z_time("time", false);
-	static const config::t_token z_stamp("stamp", false);
-	static const config::t_token z_rand("rand", false);
-	static const config::t_token z_join("join", false);
-	static const config::t_token z_variable("variable", false);
-	static const config::t_token z_separator("separator", false);
-	static const config::t_token z_key("key", false);
-	static const config::t_token z_remove_empty("remove_empty", false);
+	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_literal( generate_safe_static_const_t_interned(n_token::t_token("literal")) );
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
+	static const config::t_token & z_to_variable( generate_safe_static_const_t_interned(n_token::t_token("to_variable")) );
+	static const config::t_token & z_add( generate_safe_static_const_t_interned(n_token::t_token("add")) );
+	static const config::t_token & z_sub( generate_safe_static_const_t_interned(n_token::t_token("sub")) );
+	static const config::t_token & z_multiply( generate_safe_static_const_t_interned(n_token::t_token("multiply")) );
+	static const config::t_token & z_divide( generate_safe_static_const_t_interned(n_token::t_token("divide")) );
+	static const config::t_token & z_modulo( generate_safe_static_const_t_interned(n_token::t_token("modulo")) );
+	static const config::t_token & z_round( generate_safe_static_const_t_interned(n_token::t_token("round")) );
+	static const config::t_token & z_ceil( generate_safe_static_const_t_interned(n_token::t_token("ceil")) );
+	static const config::t_token & z_floor( generate_safe_static_const_t_interned(n_token::t_token("floor")) );
+	static const config::t_token & z_ipart( generate_safe_static_const_t_interned(n_token::t_token("ipart")) );
+	static const config::t_token & z_fpart( generate_safe_static_const_t_interned(n_token::t_token("fpart")) );
+	static const config::t_token & z_string_length( generate_safe_static_const_t_interned(n_token::t_token("string_length")) );
+	static const config::t_token & z_time( generate_safe_static_const_t_interned(n_token::t_token("time")) );
+	static const config::t_token & z_stamp( generate_safe_static_const_t_interned(n_token::t_token("stamp")) );
+	static const config::t_token & z_rand( generate_safe_static_const_t_interned(n_token::t_token("rand")) );
+	static const config::t_token & z_join( generate_safe_static_const_t_interned(n_token::t_token("join")) );
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
+	static const config::t_token & z_separator( generate_safe_static_const_t_interned(n_token::t_token("separator")) );
+	static const config::t_token & z_key( generate_safe_static_const_t_interned(n_token::t_token("key")) );
+	static const config::t_token & z_remove_empty( generate_safe_static_const_t_interned(n_token::t_token("remove_empty")) );
 
 	game_state *state_of_game = resources::state_of_game;
 
@@ -1564,21 +1564,21 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 {
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_mode("mode", false);
-	static const config::t_token z_extend("extend", false);
-	static const config::t_token z_append("append", false);
-	static const config::t_token z_merge("merge", false);
-	static const config::t_token z_insert("insert", false);
-	static const config::t_token z_value("value", false);
-	static const config::t_token z_literal("literal", false);
-	static const config::t_token z_split("split", false);
-	static const config::t_token z_to_variable("to_variable", false);
-	static const config::t_token z_list("list", false);
-	static const config::t_token z_separator("separator", false);
-	static const config::t_token z_key("key", false);
-	static const config::t_token z_remove_empty("remove_empty", false);
-	static const config::t_token z_replace("replace", false);
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_mode( generate_safe_static_const_t_interned(n_token::t_token("mode")) );
+	static const config::t_token & z_extend( generate_safe_static_const_t_interned(n_token::t_token("extend")) );
+	static const config::t_token & z_append( generate_safe_static_const_t_interned(n_token::t_token("append")) );
+	static const config::t_token & z_merge( generate_safe_static_const_t_interned(n_token::t_token("merge")) );
+	static const config::t_token & z_insert( generate_safe_static_const_t_interned(n_token::t_token("insert")) );
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
+	static const config::t_token & z_literal( generate_safe_static_const_t_interned(n_token::t_token("literal")) );
+	static const config::t_token & z_split( generate_safe_static_const_t_interned(n_token::t_token("split")) );
+	static const config::t_token & z_to_variable( generate_safe_static_const_t_interned(n_token::t_token("to_variable")) );
+	static const config::t_token & z_list( generate_safe_static_const_t_interned(n_token::t_token("list")) );
+	static const config::t_token & z_separator( generate_safe_static_const_t_interned(n_token::t_token("separator")) );
+	static const config::t_token & z_key( generate_safe_static_const_t_interned(n_token::t_token("key")) );
+	static const config::t_token & z_remove_empty( generate_safe_static_const_t_interned(n_token::t_token("remove_empty")) );
+	static const config::t_token & z_replace( generate_safe_static_const_t_interned(n_token::t_token("replace")) );
 
 	const config::attribute_value & name = cfg[z_name];
 	variable_info dest(name, true, variable_info::TYPE_CONTAINER);
@@ -1701,10 +1701,10 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 {
-	static const config::t_token z_role("role", false);
-	static const config::t_token z_type("type", false);
-	static const config::t_token z_side("side", false);
-	static const config::t_token z_this_unit("this_unit", false);
+	static const config::t_token & z_role( generate_safe_static_const_t_interned(n_token::t_token("role")) );
+	static const config::t_token & z_type( generate_safe_static_const_t_interned(n_token::t_token("type")) );
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
+	static const config::t_token & z_this_unit( generate_safe_static_const_t_interned(n_token::t_token("this_unit")) );
 
 	bool found = false;
 
@@ -1781,7 +1781,7 @@ WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(remove_sound_source, /*event_info*/, cfg)
 {
-	static const config::t_token z_id("id", false);
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
 
 	resources::soundsources->remove(cfg[z_id]);
 }
@@ -1814,8 +1814,8 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 // Creating a mask of the terrain
 WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 {
-	static const config::t_token z_mask("mask", false);
-	static const config::t_token z_border("border", false);
+	static const config::t_token & z_mask( generate_safe_static_const_t_interned(n_token::t_token("mask")) );
+	static const config::t_token & z_border( generate_safe_static_const_t_interned(n_token::t_token("border")) );
 
 	map_location loc = cfg_to_loc(cfg, 1, 1);
 
@@ -1850,10 +1850,10 @@ static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 // If we should spawn a new unit on the map somewhere
 WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 {
-	static const config::t_token z_to_variable("to_variable", false);
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
-	static const config::t_token z_side("side", false);
+	static const config::t_token & z_to_variable( generate_safe_static_const_t_interned(n_token::t_token("to_variable")) );
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
 
 	config parsed_cfg = cfg.get_parsed_config();
 
@@ -1897,13 +1897,13 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 // If we should recall units that match a certain description
 WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 {
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_recall("recall", false);
-	static const config::t_token z_y("y", false);
-	static const config::t_token z_this_unit("this_unit", false);
-	static const config::t_token z_check_passability("check_passability", false);
-	static const config::t_token z_show("show", false);
-	static const config::t_token z_fire_event("fire_event", false);
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_recall( generate_safe_static_const_t_interned(n_token::t_token("recall")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+	static const config::t_token & z_this_unit( generate_safe_static_const_t_interned(n_token::t_token("this_unit")) );
+	static const config::t_token & z_check_passability( generate_safe_static_const_t_interned(n_token::t_token("check_passability")) );
+	static const config::t_token & z_show( generate_safe_static_const_t_interned(n_token::t_token("show")) );
+	static const config::t_token & z_fire_event( generate_safe_static_const_t_interned(n_token::t_token("fire_event")) );
 
 	LOG_NG << "recalling unit...\n";
 	bool unit_recalled = false;
@@ -1958,16 +1958,16 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(object, event_info, cfg)
 {
-	static const config::t_token z_image("image", false);
-	static const config::t_token z_description("description", false);
-	static const config::t_token z_filter("filter", false);
-	static const config::t_token z_id("id", false);
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_then("then", false);
-	static const config::t_token z_object("object", false);
-	static const config::t_token z_cannot_use_message("cannot_use_message", false);
-	static const config::t_token z_else("else", false);
-	static const config::t_token z_silent("silent", false);
+	static const config::t_token & z_image( generate_safe_static_const_t_interned(n_token::t_token("image")) );
+	static const config::t_token & z_description( generate_safe_static_const_t_interned(n_token::t_token("description")) );
+	static const config::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_then( generate_safe_static_const_t_interned(n_token::t_token("then")) );
+	static const config::t_token & z_object( generate_safe_static_const_t_interned(n_token::t_token("object")) );
+	static const config::t_token & z_cannot_use_message( generate_safe_static_const_t_interned(n_token::t_token("cannot_use_message")) );
+	static const config::t_token & z_else( generate_safe_static_const_t_interned(n_token::t_token("else")) );
+	static const config::t_token & z_silent( generate_safe_static_const_t_interned(n_token::t_token("silent")) );
 
 
 	const vconfig filter = cfg.child(z_filter);
@@ -2035,12 +2035,12 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 {
-	static const config::t_token z_text("text", false);
-	static const config::t_token z_size("size", false);
-	static const config::t_token z_duration("duration", false);
-	static const config::t_token z_red("red", false);
-	static const config::t_token z_green("green", false);
-	static const config::t_token z_blue("blue", false);
+	static const config::t_token & z_text( generate_safe_static_const_t_interned(n_token::t_token("text")) );
+	static const config::t_token & z_size( generate_safe_static_const_t_interned(n_token::t_token("size")) );
+	static const config::t_token & z_duration( generate_safe_static_const_t_interned(n_token::t_token("duration")) );
+	static const config::t_token & z_red( generate_safe_static_const_t_interned(n_token::t_token("red")) );
+	static const config::t_token & z_green( generate_safe_static_const_t_interned(n_token::t_token("green")) );
+	static const config::t_token & z_blue( generate_safe_static_const_t_interned(n_token::t_token("blue")) );
 
 	// Remove any old message.
 	if (floating_label)
@@ -2115,15 +2115,15 @@ typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
 
 WML_HANDLER_FUNCTION(kill, event_info, cfg)
 {
-	static const config::t_token z_secondary_unit("secondary_unit", false);
-	static const config::t_token z_fire_event("fire_event", false);
-	static const config::t_token z_die("die", false);
-	static const config::t_token z_last_breath("last breath", false);
-	static const config::t_token z_animate("animate", false);
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
-	static const config::t_token z_recall("recall", false);
-	static const config::t_token z_this_unit("this_unit", false);
+	static const config::t_token & z_secondary_unit( generate_safe_static_const_t_interned(n_token::t_token("secondary_unit")) );
+	static const config::t_token & z_fire_event( generate_safe_static_const_t_interned(n_token::t_token("fire_event")) );
+	static const config::t_token & z_die( generate_safe_static_const_t_interned(n_token::t_token("die")) );
+	static const config::t_token & z_last_breath( generate_safe_static_const_t_interned(n_token::t_token("last breath")) );
+	static const config::t_token & z_animate( generate_safe_static_const_t_interned(n_token::t_token("animate")) );
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+	static const config::t_token & z_recall( generate_safe_static_const_t_interned(n_token::t_token("recall")) );
+	static const config::t_token & z_this_unit( generate_safe_static_const_t_interned(n_token::t_token("this_unit")) );
 
 	bool secondary_unit = cfg.has_child(z_secondary_unit);
 	game_events::entity_location killer_loc(map_location(0, 0));
@@ -2246,13 +2246,13 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	   [/command]
 	   [/set_menu_item]
 	   */
-	static const config::t_token z_id("id", false);
-	static const config::t_token z_image("image", false);
-	static const config::t_token z_description("description", false);
-	static const config::t_token z_needs_select("needs_select", false);
-	static const config::t_token z_show_if("show_if", false);
-	static const config::t_token z_filter_location("filter_location", false);
-	static const config::t_token z_command("command", false);
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+	static const config::t_token & z_image( generate_safe_static_const_t_interned(n_token::t_token("image")) );
+	static const config::t_token & z_description( generate_safe_static_const_t_interned(n_token::t_token("description")) );
+	static const config::t_token & z_needs_select( generate_safe_static_const_t_interned(n_token::t_token("needs_select")) );
+	static const config::t_token & z_show_if( generate_safe_static_const_t_interned(n_token::t_token("show_if")) );
+	static const config::t_token & z_filter_location( generate_safe_static_const_t_interned(n_token::t_token("filter_location")) );
+	static const config::t_token & z_command( generate_safe_static_const_t_interned(n_token::t_token("command")) );
 
 	config::attribute_value const & id = cfg[z_id];
 	wml_menu_item*& mref = resources::state_of_game->wml_menu_items[id];
@@ -2292,7 +2292,7 @@ struct unstore_unit_advance_choice: mp_sync::user_choice
 
 	virtual config query_user() const
 	{
-	static const config::t_token z_value("value", false);
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
 
 		int selected;
 		if (use_dialog) {
@@ -2309,7 +2309,7 @@ struct unstore_unit_advance_choice: mp_sync::user_choice
 
 	virtual config random_choice(rand_rng::simple_rng &rng) const
 	{
-	static const config::t_token z_value("value", false);
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
 
 		config cfg;
 		cfg[z_value] = rng.get_next_random() % nb_options;
@@ -2320,19 +2320,19 @@ struct unstore_unit_advance_choice: mp_sync::user_choice
 // Unit serialization to variables
 WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 {
-	static const config::t_token z_variable("variable", false);
-	static const config::t_token z_x("x", false);
-	static const config::t_token z_y("y", false);
-	static const config::t_token z_advance("advance", false);
-	static const config::t_token z_find_vacant("find_vacant", false);
-	static const config::t_token z_check_passability("check_passability", false);
-	static const config::t_token z_text("text", false);
-	static const config::t_token z_red("red", false);
-	static const config::t_token z_green("green", false);
-	static const config::t_token z_blue("blue", false);
-	static const config::t_token z_choose("choose", false);
-	static const config::t_token z_value("value", false);
-	static const config::t_token z_fire_event("fire_event", false);
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+	static const config::t_token & z_advance( generate_safe_static_const_t_interned(n_token::t_token("advance")) );
+	static const config::t_token & z_find_vacant( generate_safe_static_const_t_interned(n_token::t_token("find_vacant")) );
+	static const config::t_token & z_check_passability( generate_safe_static_const_t_interned(n_token::t_token("check_passability")) );
+	static const config::t_token & z_text( generate_safe_static_const_t_interned(n_token::t_token("text")) );
+	static const config::t_token & z_red( generate_safe_static_const_t_interned(n_token::t_token("red")) );
+	static const config::t_token & z_green( generate_safe_static_const_t_interned(n_token::t_token("green")) );
+	static const config::t_token & z_blue( generate_safe_static_const_t_interned(n_token::t_token("blue")) );
+	static const config::t_token & z_choose( generate_safe_static_const_t_interned(n_token::t_token("choose")) );
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
+	static const config::t_token & z_fire_event( generate_safe_static_const_t_interned(n_token::t_token("fire_event")) );
 
 	const config &var = resources::state_of_game->get_variable_cfg(cfg[z_variable]);
 
@@ -2449,10 +2449,10 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
 {
-	static const config::t_token z_variable("variable", false);
-	static const config::t_token z_location("location", false);
-	static const config::t_token z_side("side", false);
-	static const config::t_token z_owner_side("owner_side", false);
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
+	static const config::t_token & z_location( generate_safe_static_const_t_interned(n_token::t_token("location")) );
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
+	static const config::t_token & z_owner_side( generate_safe_static_const_t_interned(n_token::t_token("owner_side")) );
 
 	config::attribute_value variable = cfg[z_variable];
 	if (variable.empty()) {
@@ -2479,10 +2479,10 @@ WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
  */
 WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 {
-	static const config::t_token z_store_villages("store_villages", false);
-	static const config::t_token z_variable("variable", false);
-	static const config::t_token z_location("location", false);
-	static const config::t_token z_owner_side("owner_side", false);
+	static const config::t_token & z_store_villages( generate_safe_static_const_t_interned(n_token::t_token("store_villages")) );
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
+	static const config::t_token & z_location( generate_safe_static_const_t_interned(n_token::t_token("location")) );
+	static const config::t_token & z_owner_side( generate_safe_static_const_t_interned(n_token::t_token("owner_side")) );
 
 	log_scope(z_store_villages);
 	config::attribute_value variable = cfg[z_variable];
@@ -2515,21 +2515,21 @@ WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
 
 WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 {
-	static const config::t_token z_next_scenario("next_scenario", false);
-	static const config::t_token z_end_text("end_text", false);
-	static const config::t_token z_end_text_duration("end_text_duration", false);
-	static const config::t_token z_result("result", false);
-	static const config::t_token z_victory("victory", false);
-	static const config::t_token z_defeat("defeat", false);
-	static const config::t_token z_music("music", false);
-	static const config::t_token z_carryover_report("carryover_report", false);
-	static const config::t_token z_save("save", false);
-	static const config::t_token z_replay_save("replay_save", false);
-	static const config::t_token z_linger_mode("linger_mode", false);
-	static const config::t_token z_reveal_map("reveal_map", false);
-	static const config::t_token z_bonus("bonus", false);
-	static const config::t_token z_carryover_percentage("carryover_percentage", false);
-	static const config::t_token z_carryover_add("carryover_add", false);
+	static const config::t_token & z_next_scenario( generate_safe_static_const_t_interned(n_token::t_token("next_scenario")) );
+	static const config::t_token & z_end_text( generate_safe_static_const_t_interned(n_token::t_token("end_text")) );
+	static const config::t_token & z_end_text_duration( generate_safe_static_const_t_interned(n_token::t_token("end_text_duration")) );
+	static const config::t_token & z_result( generate_safe_static_const_t_interned(n_token::t_token("result")) );
+	static const config::t_token & z_victory( generate_safe_static_const_t_interned(n_token::t_token("victory")) );
+	static const config::t_token & z_defeat( generate_safe_static_const_t_interned(n_token::t_token("defeat")) );
+	static const config::t_token & z_music( generate_safe_static_const_t_interned(n_token::t_token("music")) );
+	static const config::t_token & z_carryover_report( generate_safe_static_const_t_interned(n_token::t_token("carryover_report")) );
+	static const config::t_token & z_save( generate_safe_static_const_t_interned(n_token::t_token("save")) );
+	static const config::t_token & z_replay_save( generate_safe_static_const_t_interned(n_token::t_token("replay_save")) );
+	static const config::t_token & z_linger_mode( generate_safe_static_const_t_interned(n_token::t_token("linger_mode")) );
+	static const config::t_token & z_reveal_map( generate_safe_static_const_t_interned(n_token::t_token("reveal_map")) );
+	static const config::t_token & z_bonus( generate_safe_static_const_t_interned(n_token::t_token("bonus")) );
+	static const config::t_token & z_carryover_percentage( generate_safe_static_const_t_interned(n_token::t_token("carryover_percentage")) );
+	static const config::t_token & z_carryover_add( generate_safe_static_const_t_interned(n_token::t_token("carryover_add")) );
 
 	game_state *state_of_game = resources::state_of_game;
 	unit_map *units = resources::units;
@@ -2591,7 +2591,7 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 {
-	static const config::t_token z_side("side", false);
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
 
 	game_display &screen = *resources::screen;
 
@@ -2627,16 +2627,16 @@ WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 {
-	static const config::t_token z_filter_second("filter_second", false);
-	static const config::t_token z_heals("heals", false);
-	static const config::t_token z_amount("amount", false);
-	static const config::t_token z_moves("moves", false);
-	static const config::t_token z_restore_attacks("restore_attacks", false);
-	static const config::t_token z_restore_statuses("restore_statuses", false);
-	static const config::t_token z_animate("animate", false);
-	static const config::t_token z_filter("filter", false);
-	static const config::t_token z_full("full", false);
-	static const config::t_token z_heal_amount("heal_amount", false);
+	static const config::t_token & z_filter_second( generate_safe_static_const_t_interned(n_token::t_token("filter_second")) );
+	static const config::t_token & z_heals( generate_safe_static_const_t_interned(n_token::t_token("heals")) );
+	static const config::t_token & z_amount( generate_safe_static_const_t_interned(n_token::t_token("amount")) );
+	static const config::t_token & z_moves( generate_safe_static_const_t_interned(n_token::t_token("moves")) );
+	static const config::t_token & z_restore_attacks( generate_safe_static_const_t_interned(n_token::t_token("restore_attacks")) );
+	static const config::t_token & z_restore_statuses( generate_safe_static_const_t_interned(n_token::t_token("restore_statuses")) );
+	static const config::t_token & z_animate( generate_safe_static_const_t_interned(n_token::t_token("animate")) );
+	static const config::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
+	static const config::t_token & z_full( generate_safe_static_const_t_interned(n_token::t_token("full")) );
+	static const config::t_token & z_heal_amount( generate_safe_static_const_t_interned(n_token::t_token("heal_amount")) );
 
 	unit_map* units = resources::units;
 
@@ -2717,7 +2717,7 @@ WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
 
 WML_HANDLER_FUNCTION(open_help,  /*event_info*/, cfg)
 {
-	static const config::t_token z_topic("topic", false);
+	static const config::t_token & z_topic( generate_safe_static_const_t_interned(n_token::t_token("topic")) );
 
 	game_display &screen = *resources::screen;
 	config::attribute_value topic_id = cfg[z_topic];
@@ -2739,10 +2739,10 @@ unit_map::iterator handle_speaker(
 		const vconfig& cfg,
 		bool scroll)
 {
-	static const config::t_token z_speaker("speaker", false);
-	static const config::t_token z_unit("unit", false);
-	static const config::t_token z_second_unit("second_unit", false);
-	static const config::t_token z_narrator("narrator", false);
+	static const config::t_token & z_speaker( generate_safe_static_const_t_interned(n_token::t_token("speaker")) );
+	static const config::t_token & z_unit( generate_safe_static_const_t_interned(n_token::t_token("unit")) );
+	static const config::t_token & z_second_unit( generate_safe_static_const_t_interned(n_token::t_token("second_unit")) );
+	static const config::t_token & z_narrator( generate_safe_static_const_t_interned(n_token::t_token("narrator")) );
 
 	unit_map *units = resources::units;
 	game_display &screen = *resources::screen;
@@ -2792,7 +2792,7 @@ unit_map::iterator handle_speaker(
  */
 config::t_token get_image(const vconfig& cfg, unit_map::iterator speaker)
 {
-	static const config::t_token z_image("image", false);
+	static const config::t_token & z_image( generate_safe_static_const_t_interned(n_token::t_token("image")) );
 
 	config::attribute_value image = cfg[z_image];
 	if (image.empty() && speaker != resources::units->end())
@@ -2817,7 +2817,7 @@ config::t_token get_image(const vconfig& cfg, unit_map::iterator speaker)
  */
 config::t_token get_caption(const vconfig& cfg, unit_map::iterator speaker)
 {
-	static const config::t_token z_caption("caption", false);
+	static const config::t_token & z_caption( generate_safe_static_const_t_interned(n_token::t_token("caption")) );
 
 	config::attribute_value caption = cfg[z_caption];
 	if (caption.empty() && speaker != resources::units->end()) {
@@ -2847,11 +2847,11 @@ struct message_user_choice : mp_sync::user_choice
 
 	virtual config query_user() const
 	{
-	static const config::t_token z_label("label", false);
-	static const config::t_token z_text("text", false);
-	static const config::t_token z_max_length("max_length", false);
-	static const config::t_token z_message("message", false);
-	static const config::t_token z_value("value", false);
+	static const config::t_token & z_label( generate_safe_static_const_t_interned(n_token::t_token("label")) );
+	static const config::t_token & z_text( generate_safe_static_const_t_interned(n_token::t_token("text")) );
+	static const config::t_token & z_max_length( generate_safe_static_const_t_interned(n_token::t_token("max_length")) );
+	static const config::t_token & z_message( generate_safe_static_const_t_interned(n_token::t_token("message")) );
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
 
 		std::string image = (*get_image(cfg, speaker));
 		config::t_token const & caption = get_caption(cfg, speaker);
@@ -2911,20 +2911,20 @@ struct message_user_choice : mp_sync::user_choice
 // Display a message dialog
 WML_HANDLER_FUNCTION(message, event_info, cfg)
 {
-	static const config::t_token z_option("option", false);
-	static const config::t_token z_text_input("text_input", false);
-	static const config::t_token z_side_for("side_for", false);
-	static const config::t_token z_scroll("scroll", false);
-	static const config::t_token z_speaker("speaker", false);
-	static const config::t_token z_narrator("narrator", false);
-	static const config::t_token z_message("message", false);
-	static const config::t_token z_show_if("show_if", false);
-	static const config::t_token z_command("command", false);
-	static const config::t_token z_sound("sound", false);
-	static const config::t_token z_input("input", false);
-	static const config::t_token z_value("value", false);
-	static const config::t_token z_text("text", false);
-	static const config::t_token z_variable("variable", false);
+	static const config::t_token & z_option( generate_safe_static_const_t_interned(n_token::t_token("option")) );
+	static const config::t_token & z_text_input( generate_safe_static_const_t_interned(n_token::t_token("text_input")) );
+	static const config::t_token & z_side_for( generate_safe_static_const_t_interned(n_token::t_token("side_for")) );
+	static const config::t_token & z_scroll( generate_safe_static_const_t_interned(n_token::t_token("scroll")) );
+	static const config::t_token & z_speaker( generate_safe_static_const_t_interned(n_token::t_token("speaker")) );
+	static const config::t_token & z_narrator( generate_safe_static_const_t_interned(n_token::t_token("narrator")) );
+	static const config::t_token & z_message( generate_safe_static_const_t_interned(n_token::t_token("message")) );
+	static const config::t_token & z_show_if( generate_safe_static_const_t_interned(n_token::t_token("show_if")) );
+	static const config::t_token & z_command( generate_safe_static_const_t_interned(n_token::t_token("command")) );
+	static const config::t_token & z_sound( generate_safe_static_const_t_interned(n_token::t_token("sound")) );
+	static const config::t_token & z_input( generate_safe_static_const_t_interned(n_token::t_token("input")) );
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
+	static const config::t_token & z_text( generate_safe_static_const_t_interned(n_token::t_token("text")) );
+	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
 
 	// Check if there is any input to be made, if not the message may be skipped
 	const vconfig::child_list menu_items = cfg.get_children(z_option);
@@ -3064,9 +3064,9 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 // Adding/removing new time_areas dynamically with Standard Location Filters.
 WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 {
-	static const config::t_token z_time_area("time_area", false);
-	static const config::t_token z_remove("remove", false);
-	static const config::t_token z_id("id", false);
+	static const config::t_token & z_time_area( generate_safe_static_const_t_interned(n_token::t_token("time_area")) );
+	static const config::t_token & z_remove( generate_safe_static_const_t_interned(n_token::t_token("remove")) );
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
 
 	log_scope(z_time_area);
 
@@ -3103,7 +3103,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 //Replacing the current time of day schedule
 WML_HANDLER_FUNCTION(replace_schedule, /*event_info*/, cfg)
 {
-	static const config::t_token z_time("time", false);
+	static const config::t_token & z_time( generate_safe_static_const_t_interned(n_token::t_token("time")) );
 
 	if(cfg.get_children(z_time).empty()) {
 		ERR_NG << "attempted to to replace ToD schedule with empty schedule\n";
@@ -3127,9 +3127,9 @@ WML_HANDLER_FUNCTION(disallow_end_turn, /*event_info*/, /*cfg*/)
 // Adding new events
 WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 {
-	static const config::t_token z_remove("remove", false);
-	static const config::t_token z_id("id", false);
-	static const config::t_token z_delayed_variable_substitution("delayed_variable_substitution", false);
+	static const config::t_token & z_remove( generate_safe_static_const_t_interned(n_token::t_token("remove")) );
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+	static const config::t_token & z_delayed_variable_substitution( generate_safe_static_const_t_interned(n_token::t_token("delayed_variable_substitution")) );
 
 	if (cfg[z_remove].to_bool(false)) {
 		event_handlers.remove_event_handler(cfg[z_id].token());
@@ -3143,9 +3143,9 @@ WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 // Experimental map replace
 WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 {
-	static const config::t_token z_map("map", false);
-	static const config::t_token z_expand("expand", false);
-	static const config::t_token z_shrink("shrink", false);
+	static const config::t_token & z_map( generate_safe_static_const_t_interned(n_token::t_token("map")) );
+	static const config::t_token & z_expand( generate_safe_static_const_t_interned(n_token::t_token("expand")) );
+	static const config::t_token & z_shrink( generate_safe_static_const_t_interned(n_token::t_token("shrink")) );
 	gamemap *game_map = resources::game_map;
 
 	gamemap map(*game_map);
@@ -3213,9 +3213,9 @@ static void commit_new_handlers() {
 	event_handlers.commit_buffer();
 }
 static void commit_wmi_commands() {
-	static const config::t_token z_name("name", false);
-	static const config::t_token z_first_time_only("first_time_only", false);
-	static const config::t_token z_allow_undo("allow_undo", false);
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_first_time_only( generate_safe_static_const_t_interned(n_token::t_token("first_time_only")) );
+	static const config::t_token & z_allow_undo( generate_safe_static_const_t_interned(n_token::t_token("allow_undo")) );
 
 	// Commit WML Menu Item command changes
 	while(wmi_command_changes.size() > 0) {
@@ -3251,19 +3251,19 @@ static void commit_wmi_commands() {
 
 static bool process_event(game_events::event_handler& handler, const game_events::queued_event& ev)
 {
-	static const config::t_token z_unit("unit", false);
-	static const config::t_token z_second_unit("second_unit", false);
-	static const config::t_token z_weapon("weapon", false);
-	static const config::t_token z_first("first", false);
-	static const config::t_token z_second_weapon("second_weapon", false);
-	static const config::t_token z_second("second", false);
-	static const config::t_token z_filter_condition("filter_condition", false);
-	static const config::t_token z_filter("filter", false);
-	static const config::t_token z_filter_side("filter_side", false);
-	static const config::t_token z_filter_attack("filter_attack", false);
-	static const config::t_token z_filter_second("filter_second", false);
-	static const config::t_token z_filter_second_attack("filter_second_attack", false);
-	static const config::t_token z_select("select", false);
+	static const config::t_token & z_unit( generate_safe_static_const_t_interned(n_token::t_token("unit")) );
+	static const config::t_token & z_second_unit( generate_safe_static_const_t_interned(n_token::t_token("second_unit")) );
+	static const config::t_token & z_weapon( generate_safe_static_const_t_interned(n_token::t_token("weapon")) );
+	static const config::t_token & z_first( generate_safe_static_const_t_interned(n_token::t_token("first")) );
+	static const config::t_token & z_second_weapon( generate_safe_static_const_t_interned(n_token::t_token("second_weapon")) );
+	static const config::t_token & z_second( generate_safe_static_const_t_interned(n_token::t_token("second")) );
+	static const config::t_token & z_filter_condition( generate_safe_static_const_t_interned(n_token::t_token("filter_condition")) );
+	static const config::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
+	static const config::t_token & z_filter_side( generate_safe_static_const_t_interned(n_token::t_token("filter_side")) );
+	static const config::t_token & z_filter_attack( generate_safe_static_const_t_interned(n_token::t_token("filter_attack")) );
+	static const config::t_token & z_filter_second( generate_safe_static_const_t_interned(n_token::t_token("filter_second")) );
+	static const config::t_token & z_filter_second_attack( generate_safe_static_const_t_interned(n_token::t_token("filter_second_attack")) );
+	static const config::t_token & z_select( generate_safe_static_const_t_interned(n_token::t_token("select")) );
 
 	if(handler.disabled())
 		return false;
@@ -3383,7 +3383,7 @@ namespace game_events {
 
 	void event_handler::handle_event(const game_events::queued_event& event_info)
 	{
-	static const config::t_token z_name("name", false);
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
 
 		if (first_time_only_)
 		{
@@ -3398,7 +3398,7 @@ namespace game_events {
 	}
 
 	void handle_event_commands(const game_events::queued_event& event_info, const vconfig &cfg) {
-		static const config::t_token z_command("command", false);
+		static const config::t_token & z_command( generate_safe_static_const_t_interned(n_token::t_token("command")) );
 		resources::lua_kernel->run_wml_action(z_command, cfg, event_info);
 	}
 
@@ -3420,7 +3420,7 @@ namespace game_events {
 
 	bool event_handler::matches_name(const config::t_token &tname) const
 	{
-	static const config::t_token z_name("name", false);
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
 
 		std::string const & name(tname);
 		const config::attribute_value& t_my_names = cfg_[z_name];
@@ -3483,9 +3483,9 @@ namespace game_events {
 
 	bool matches_special_filter(const config &cfg, const vconfig& filter)
 	{
-	static const config::t_token z_and("and", false);
-	static const config::t_token z_or("or", false);
-	static const config::t_token z_not("not", false);
+	static const config::t_token & z_and( generate_safe_static_const_t_interned(n_token::t_token("and")) );
+	static const config::t_token & z_or( generate_safe_static_const_t_interned(n_token::t_token("or")) );
+	static const config::t_token & z_not( generate_safe_static_const_t_interned(n_token::t_token("not")) );
 
 		if (!cfg) {
 			WRN_NG << "attempt to filter attack for an event with no attack data.\n";
@@ -3533,9 +3533,9 @@ namespace game_events {
 	manager::manager(const config& cfg)
 		: variable_manager()
 	{
-	static const config::t_token z_event("event", false);
-	static const config::t_token z_unit_wml_ids("unit_wml_ids", false);
-	static const config::t_token z_used_items("used_items", false);
+	static const config::t_token & z_event( generate_safe_static_const_t_interned(n_token::t_token("event")) );
+	static const config::t_token & z_unit_wml_ids( generate_safe_static_const_t_interned(n_token::t_token("unit_wml_ids")) );
+	static const config::t_token & z_used_items( generate_safe_static_const_t_interned(n_token::t_token("used_items")) );
 
 		assert(!manager_running);
 		foreach (const config &ev, cfg.child_range(z_event)) {
@@ -3574,9 +3574,9 @@ namespace game_events {
 
 	void write_events(config& cfg)
 	{
-	static const config::t_token z_event("event", false);
-	static const config::t_token z_used_items("used_items", false);
-	static const config::t_token z_unit_wml_ids("unit_wml_ids", false);
+	static const config::t_token & z_event( generate_safe_static_const_t_interned(n_token::t_token("event")) );
+	static const config::t_token & z_used_items( generate_safe_static_const_t_interned(n_token::t_token("used_items")) );
+	static const config::t_token & z_unit_wml_ids( generate_safe_static_const_t_interned(n_token::t_token("unit_wml_ids")) );
 
 		assert(manager_running);
 		foreach (const game_events::event_handler &eh, event_handlers) {
@@ -3671,10 +3671,10 @@ bool fire(const n_token::t_token& event,
 
 	bool pump()
 	{
-	static const config::t_token z_x1("x1", false);
-	static const config::t_token z_y1("y1", false);
-	static const config::t_token z_x2("x2", false);
-	static const config::t_token z_y2("y2", false);
+	static const config::t_token & z_x1( generate_safe_static_const_t_interned(n_token::t_token("x1")) );
+	static const config::t_token & z_y1( generate_safe_static_const_t_interned(n_token::t_token("y1")) );
+	static const config::t_token & z_x2( generate_safe_static_const_t_interned(n_token::t_token("x2")) );
+	static const config::t_token & z_y2( generate_safe_static_const_t_interned(n_token::t_token("y2")) );
 
 		assert(manager_running);
 		if(!events_init())

@@ -272,7 +272,7 @@ void play_controller::init(CVideo& video){
 	init_managers();
 	// add era events for MP game
 	if (const config &era_cfg = level_.child("era")) {
-		static const config::t_token z_era_events("era_events", false);
+		static const config::t_token & z_era_events( generate_safe_static_const_t_interned(n_token::t_token("era_events")) );
 
 		game_events::add_events(era_cfg.child_range("event"), z_era_events);
 	}
@@ -509,7 +509,7 @@ void play_controller::fire_prestart(bool execute)
 	// Run initialization scripts, even if loading from a snapshot.
 	resources::state_of_game->set_phase(game_state::PRELOAD);
 	resources::lua_kernel->initialize();
-	static const config::t_token z_preload("preload", false);
+	static const config::t_token & z_preload( generate_safe_static_const_t_interned(n_token::t_token("preload")) );
 	game_events::fire(z_preload);
 
 	// pre-start events must be executed before any GUI operation,
@@ -517,7 +517,7 @@ void play_controller::fire_prestart(bool execute)
 	if (execute){
 		update_locker lock_display(gui_->video());
 		resources::state_of_game->set_phase(game_state::PRESTART);
-		static const config::t_token z_prestart("prestart", false);
+		static const config::t_token & z_prestart( generate_safe_static_const_t_interned(n_token::t_token("prestart")) );
 		game_events::fire(z_prestart);
 		check_end_level();
 		// prestart event may modify start turn with WML, reflect any changes.
@@ -528,7 +528,7 @@ void play_controller::fire_prestart(bool execute)
 void play_controller::fire_start(bool execute){
 	if(execute) {
 		resources::state_of_game->set_phase(game_state::START);
-		static const config::t_token z_start("start", false);
+		static const config::t_token & z_start( generate_safe_static_const_t_interned(n_token::t_token("start")) );
 		game_events::fire(z_start);
 		check_end_level();
 		// start event may modify start turn with WML, reflect any changes.
@@ -591,13 +591,13 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 	if (!loading_game_) {
 		if(it_is_a_new_turn_)
 		{
-			static const config::t_token z_new_turn("new turn", false);
+			static const config::t_token & z_new_turn( generate_safe_static_const_t_interned(n_token::t_token("new turn")) );
 			game_events::fire(config::t_token("turn " + turn_num));
 			game_events::fire(z_new_turn);
 			it_is_a_new_turn_ = false;
 		}
 
-		static const config::t_token z_side_turn("side turn", false);
+		static const config::t_token & z_side_turn( generate_safe_static_const_t_interned(n_token::t_token("side turn")) );
 		game_events::fire(z_side_turn);
 		game_events::fire(config::t_token("side " + side_num + " turn"));
 		game_events::fire(config::t_token("side turn " + turn_num));
@@ -636,7 +636,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 	}
 
 	if (!loading_game_) {
-		static const config::t_token z_turn_refresh("turn refresh", false);
+		static const config::t_token & z_turn_refresh( generate_safe_static_const_t_interned(n_token::t_token("turn refresh")) );
 
 		game_events::fire(z_turn_refresh);
 		game_events::fire(config::t_token( "side " + side_num + " turn refresh" ));
@@ -722,7 +722,7 @@ void play_controller::finish_side_turn(){
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
-	static const config::t_token z_side_turn_end("side turn end", false);
+	static const config::t_token & z_side_turn_end( generate_safe_static_const_t_interned(n_token::t_token("side turn end")) );
 	game_events::fire(z_side_turn_end);
 	game_events::fire(config::t_token( "side "+ side_num + " turn end"));
 	game_events::fire(config::t_token( "side turn " + turn_num + " end"));
@@ -744,7 +744,7 @@ void play_controller::finish_turn()
 {
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
-	static const config::t_token z_turn_end("turn end", false);
+	static const config::t_token & z_turn_end( generate_safe_static_const_t_interned(n_token::t_token("turn end")) );
 	game_events::fire(z_turn_end);
 	game_events::fire(config::t_token( "turn " + turn_num + " end"));
 }
@@ -1324,7 +1324,7 @@ void play_controller::check_victory()
 	}
 
 	if (found_player) {
-		static const config::t_token z_enemies_defeated("enemies defeated", false);
+		static const config::t_token & z_enemies_defeated( generate_safe_static_const_t_interned(n_token::t_token("enemies defeated")) );
 		game_events::fire(z_enemies_defeated);
 		check_end_level();
 	}

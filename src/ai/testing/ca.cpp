@@ -43,16 +43,6 @@ static lg::log_domain log_ai_testing_ai_default("ai/ca/testing_ai_default");
 #define ERR_AI_TESTING_AI_DEFAULT LOG_STREAM(err, log_ai_testing_ai_default)
 
 
-namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
-	static const config::t_token z_chance_to_hit("chance_to_hit", false);
-	static const config::t_token z_poison("poison", false);
-	static const config::t_token z_guardian("guardian", false);
-	static const config::t_token z_steadfast("steadfast", false);
-}
-
-
 namespace ai {
 
 namespace testing_ai_default {
@@ -411,6 +401,10 @@ int recruitment_phase::average_resistance_against(const unit_type& a, const unit
 	LOG_AI_TESTING_AI_DEFAULT << "average defense of '" << a.id() << "': " << defense << "\n";
 
 	int sum = 0, weight_sum = 0;
+
+	static const config::t_token & z_chance_to_hit( generate_safe_static_const_t_interned(n_token::t_token("chance_to_hit")) );
+	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
+	static const config::t_token & z_steadfast( generate_safe_static_const_t_interned(n_token::t_token("steadfast")) );
 
 	// calculation of the average damage taken
 	bool steadfast = a.has_ability_by_id(z_steadfast);
@@ -1037,6 +1031,8 @@ void get_villages_phase::find_villages(
 			threat = power_projection(current_loc,enemy_dstsrc);
 			vulnerability.insert(std::pair<map_location,double>(current_loc,threat));
 		}
+
+		static const config::t_token & z_guardian( generate_safe_static_const_t_interned(n_token::t_token("guardian")) );
 
 		const unit_map::const_iterator u = resources::units->find(j->second);
 		if (u == resources::units->end() || u->get_state(z_guardian)) {

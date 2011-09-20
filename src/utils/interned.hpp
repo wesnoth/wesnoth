@@ -169,7 +169,7 @@ private:
    @note usage inside a function body type and zzz with be a safe copy of yyy
    static const T & zzz = generate_safe_static_const_t_interned.get( yyy )
 
-   @note Do not use this to create objects that are not static
+   @note Do not use this to create objects that are not static, that will be a memory leak
 
  */
 
@@ -288,9 +288,6 @@ void t_interned_token<T, T_hasher>::dec_ref() {
 
 template <typename T, typename T_hasher >
 bool t_interned_token<T, T_hasher>::valid() const { return true; }
-	// static t_stash & the_stash_ = the_stash();
-	// return iter_ != the_stash_.end(); }
-
 
 
 template <typename T>

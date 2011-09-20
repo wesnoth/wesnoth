@@ -52,14 +52,6 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison, copying and hashing operations.
-	static const config::t_token z_defeat("defeat", false);
-	static const config::t_token z_victory("victory", false);
-	static const config::t_token z_time_over("time over", false);
-}
-
 playsingle_controller::playsingle_controller(const config& level,
 		game_state& state_of_game, const int ticks, const int num_turns,
 		const config& game_config, CVideo& video, bool skip_replay) :
@@ -462,6 +454,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				return OBSERVER_END;
 			}
 		}
+
+		static const config::t_token & z_defeat( generate_safe_static_const_t_interned(n_token::t_token("defeat")) );
+		static const config::t_token & z_victory( generate_safe_static_const_t_interned(n_token::t_token("victory")) );
 
 		if (end_level_result == QUIT) {
 			return QUIT;
@@ -871,6 +866,7 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 }
 
 void playsingle_controller::check_time_over(){
+	static const config::t_token & z_time_over( generate_safe_static_const_t_interned(n_token::t_token("time over")) );
 	bool b = tod_manager_.next_turn();
 	it_is_a_new_turn_ = true;
 	if(!b) {

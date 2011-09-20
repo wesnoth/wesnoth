@@ -182,8 +182,8 @@ std::string menu_handler::get_title_suffix(int side_num)
 
 void menu_handler::objectives(int side_num)
 {
-	static const config::t_token z__from_interface("_from_interface", false);
-	static const config::t_token z_show_objectives("show_objectives", false);
+	static const config::t_token & z__from_interface( generate_safe_static_const_t_interned(n_token::t_token("_from_interface")) );
+	static const config::t_token & z_show_objectives( generate_safe_static_const_t_interned(n_token::t_token("show_objectives")) );
 
 	config cfg;
 	cfg["side"] = str_cast(side_num);

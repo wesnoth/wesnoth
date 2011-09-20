@@ -68,16 +68,14 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-namespace{
-	static const config::t_token z_advance("advance", false);
-	static const config::t_token z_post_advance("post_advance", false);
-	static const config::t_token z_leader("leader", false);
-}
+
 namespace dialogs
 {
 
 int advance_unit_dialog(const map_location &loc)
 {
+
+	static const n_token::t_token & z_advance( generate_safe_static_const_t_interned(n_token::t_token("advance")) );
 	unit_map::iterator u = resources::units->find(loc);
 
 	const std::vector<config::t_token>& options = u->advances_to();
@@ -213,12 +211,14 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 	if (!resources::screen->video().update_locked()) {
 		unit_animator animator;
 		bool with_bars = true;
-		static const config::t_token z_levelout("levelout", false);
+		static const config::t_token & z_levelout( generate_safe_static_const_t_interned(n_token::t_token("levelout")) );
 		animator.add_animation(&*u, z_levelout, u->get_location(), map_location(), 0, with_bars);
 		animator.start_animations();
 		animator.wait_for_end();
 	}
 
+	static const n_token::t_token & z_advance( generate_safe_static_const_t_interned(n_token::t_token("advance")) );
+	static const n_token::t_token & z_post_advance( generate_safe_static_const_t_interned(n_token::t_token("post_advance")) );
 	if(choice < options.size()) {
 		// chosen_unit is not a reference, since the unit may disappear at any moment.
 		std::string chosen_unit = options[choice];
@@ -250,7 +250,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 
 	if (u != resources::units->end() && !resources::screen->video().update_locked()) {
 		unit_animator animator;
-		static const config::t_token z_levelin("levelin", false);
+		static const config::t_token & z_levelin( generate_safe_static_const_t_interned(n_token::t_token("levelin")) );
 		animator.add_animation(&*u, z_levelin, u->get_location(), map_location(), 0, true);
 		animator.start_animations();
 		animator.wait_for_end();
@@ -363,6 +363,8 @@ private:
 
 void save_preview_pane::draw_contents()
 {
+	static const n_token::t_token & z_leader( generate_safe_static_const_t_interned(n_token::t_token("leader")) );
+
 	if (size_t(index_) >= saves_.size() ){
 		return; }
 

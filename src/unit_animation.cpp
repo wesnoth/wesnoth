@@ -30,30 +30,30 @@
 
 struct tag_name_manager {
 	tag_name_manager() : names() {
-	static const config::t_token z_animation("animation", false);
-	static const config::t_token z_attack_anim("attack_anim", false);
-	static const config::t_token z_death("death", false);
-	static const config::t_token z_defend("defend", false);
-	static const config::t_token z_extra_anim("extra_anim", false);
-	static const config::t_token z_healed_anim("healed_anim", false);
-	static const config::t_token z_healing_anim("healing_anim", false);
-	static const config::t_token z_idle_anim("idle_anim", false);
-	static const config::t_token z_leading_anim("leading_anim", false);
-	static const config::t_token z_resistance_anim("resistance_anim", false);
-	static const config::t_token z_levelin_anim("levelin_anim", false);
-	static const config::t_token z_levelout_anim("levelout_anim", false);
-	static const config::t_token z_movement_anim("movement_anim", false);
-	static const config::t_token z_poison_anim("poison_anim", false);
-	static const config::t_token z_recruit_anim("recruit_anim", false);
-	static const config::t_token z_recruiting_anim("recruiting_anim", false);
-	static const config::t_token z_standing_anim("standing_anim", false);
-	static const config::t_token z_teleport_anim("teleport_anim", false);
-	static const config::t_token z_pre_movement_anim("pre_movement_anim", false);
-	static const config::t_token z_post_movement_anim("post_movement_anim", false);
-	static const config::t_token z_draw_weapon_anim("draw_weapon_anim", false);
-	static const config::t_token z_sheath_weapon_anim("sheath_weapon_anim", false);
-	static const config::t_token z_victory_anim("victory_anim", false);
-	static const config::t_token z__transparent("_transparent", false);
+	static const config::t_token & z_animation( generate_safe_static_const_t_interned(n_token::t_token("animation")) );
+	static const config::t_token & z_attack_anim( generate_safe_static_const_t_interned(n_token::t_token("attack_anim")) );
+	static const config::t_token & z_death( generate_safe_static_const_t_interned(n_token::t_token("death")) );
+	static const config::t_token & z_defend( generate_safe_static_const_t_interned(n_token::t_token("defend")) );
+	static const config::t_token & z_extra_anim( generate_safe_static_const_t_interned(n_token::t_token("extra_anim")) );
+	static const config::t_token & z_healed_anim( generate_safe_static_const_t_interned(n_token::t_token("healed_anim")) );
+	static const config::t_token & z_healing_anim( generate_safe_static_const_t_interned(n_token::t_token("healing_anim")) );
+	static const config::t_token & z_idle_anim( generate_safe_static_const_t_interned(n_token::t_token("idle_anim")) );
+	static const config::t_token & z_leading_anim( generate_safe_static_const_t_interned(n_token::t_token("leading_anim")) );
+	static const config::t_token & z_resistance_anim( generate_safe_static_const_t_interned(n_token::t_token("resistance_anim")) );
+	static const config::t_token & z_levelin_anim( generate_safe_static_const_t_interned(n_token::t_token("levelin_anim")) );
+	static const config::t_token & z_levelout_anim( generate_safe_static_const_t_interned(n_token::t_token("levelout_anim")) );
+	static const config::t_token & z_movement_anim( generate_safe_static_const_t_interned(n_token::t_token("movement_anim")) );
+	static const config::t_token & z_poison_anim( generate_safe_static_const_t_interned(n_token::t_token("poison_anim")) );
+	static const config::t_token & z_recruit_anim( generate_safe_static_const_t_interned(n_token::t_token("recruit_anim")) );
+	static const config::t_token & z_recruiting_anim( generate_safe_static_const_t_interned(n_token::t_token("recruiting_anim")) );
+	static const config::t_token & z_standing_anim( generate_safe_static_const_t_interned(n_token::t_token("standing_anim")) );
+	static const config::t_token & z_teleport_anim( generate_safe_static_const_t_interned(n_token::t_token("teleport_anim")) );
+	static const config::t_token & z_pre_movement_anim( generate_safe_static_const_t_interned(n_token::t_token("pre_movement_anim")) );
+	static const config::t_token & z_post_movement_anim( generate_safe_static_const_t_interned(n_token::t_token("post_movement_anim")) );
+	static const config::t_token & z_draw_weapon_anim( generate_safe_static_const_t_interned(n_token::t_token("draw_weapon_anim")) );
+	static const config::t_token & z_sheath_weapon_anim( generate_safe_static_const_t_interned(n_token::t_token("sheath_weapon_anim")) );
+	static const config::t_token & z_victory_anim( generate_safe_static_const_t_interned(n_token::t_token("victory_anim")) );
+	static const config::t_token & z__transparent( generate_safe_static_const_t_interned(n_token::t_token("_transparent")) );
 
 		names.push_back(z_animation);
 		names.push_back(z_attack_anim);
@@ -131,8 +131,8 @@ struct animation_cursor
 
 static void prepare_single_animation(const config &anim_cfg, animation_branches &expanded_anims)
 {
-	static const config::t_token z_if("if", false);
-	static const config::t_token z_else("else", false);
+	static const config::t_token & z_if( generate_safe_static_const_t_interned(n_token::t_token("if")) );
+	static const config::t_token & z_else( generate_safe_static_const_t_interned(n_token::t_token("else")) );
 
 	std::list<animation_cursor> anim_cursors;
 	anim_cursors.push_back(animation_cursor(anim_cfg));
@@ -238,21 +238,21 @@ unit_animation::unit_animation(const config& cfg,const n_token::t_token& frame_s
 	play_offscreen_(true),
 	overlaped_hex_()
 {
-	static const config::t_token z_apply_to("apply_to", false);
-	static const config::t_token z_direction("direction", false);
-	static const config::t_token z_filter("filter", false);
-	static const config::t_token z_filter_second("filter_second", false);
-	static const config::t_token z_value("value", false);
-	static const config::t_token z_hits("hits", false);
-	static const config::t_token z_yes("yes", false);
-	static const config::t_token z_hit("hit", false);
-	static const config::t_token z_no("no", false);
-	static const config::t_token z_miss("miss", false);
-	static const config::t_token z_kill("kill", false);
-	static const config::t_token z_value_second("value_second", false);
-	static const config::t_token z_filter_attack("filter_attack", false);
-	static const config::t_token z_filter_second_attack("filter_second_attack", false);
-	static const config::t_token z_offscreen("offscreen", false);
+	static const config::t_token & z_apply_to( generate_safe_static_const_t_interned(n_token::t_token("apply_to")) );
+	static const config::t_token & z_direction( generate_safe_static_const_t_interned(n_token::t_token("direction")) );
+	static const config::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
+	static const config::t_token & z_filter_second( generate_safe_static_const_t_interned(n_token::t_token("filter_second")) );
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
+	static const config::t_token & z_hits( generate_safe_static_const_t_interned(n_token::t_token("hits")) );
+	static const config::t_token & z_yes( generate_safe_static_const_t_interned(n_token::t_token("yes")) );
+	static const config::t_token & z_hit( generate_safe_static_const_t_interned(n_token::t_token("hit")) );
+	static const config::t_token & z_no( generate_safe_static_const_t_interned(n_token::t_token("no")) );
+	static const config::t_token & z_miss( generate_safe_static_const_t_interned(n_token::t_token("miss")) );
+	static const config::t_token & z_kill( generate_safe_static_const_t_interned(n_token::t_token("kill")) );
+	static const config::t_token & z_value_second( generate_safe_static_const_t_interned(n_token::t_token("value_second")) );
+	static const config::t_token & z_filter_attack( generate_safe_static_const_t_interned(n_token::t_token("filter_attack")) );
+	static const config::t_token & z_filter_second_attack( generate_safe_static_const_t_interned(n_token::t_token("filter_second_attack")) );
+	static const config::t_token & z_offscreen( generate_safe_static_const_t_interned(n_token::t_token("offscreen")) );
 
 //	if(!cfg[z_debug].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
 	foreach (const config::any_child &fr, cfg.all_children_range())
@@ -407,38 +407,38 @@ int unit_animation::matches(const game_display &disp,const map_location& loc,con
 
 void unit_animation::fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg)
 {
-static const config::t_token z_GS("~GS()", false);
-static const config::t_token z_local_heal_wav("heal.wav", false);
-static const config::t_token z_local_pois_sound("poison.ogg", false);
-	static const config::t_token z_image("image", false);
-	static const config::t_token z_default("default", false);
-	static const config::t_token z__disabled_("_disabled_", false);
-	static const config::t_token z__disabled_selected_("_disabled_selected_", false);
-	static const config::t_token z_standing("standing", false);
-	static const config::t_token z_ghosted("ghosted", false);
-	static const config::t_token z_disabled_ghosted("disabled_ghosted", false);
-	static const config::t_token z_selected("selected", false);
-	static const config::t_token z_recruited("recruited", false);
-	static const config::t_token z_levelin("levelin", false);
-	static const config::t_token z_levelout("levelout", false);
-	static const config::t_token z_pre_movement("pre_movement", false);
-	static const config::t_token z_post_movement("post_movement", false);
-	static const config::t_token z_movement("movement", false);
-	static const config::t_token z_defend("defend", false);
-	static const config::t_token z_attack("attack", false);
-	static const config::t_token z_range("range", false);
-	static const config::t_token z_melee("melee", false);
-	static const config::t_token z_ranged("ranged", false);
-	static const config::t_token z_death("death", false);
-	static const config::t_token z__death_sound("_death_sound", false);
-	static const config::t_token z_die_sound("die_sound", false);
-	static const config::t_token z_victory("victory", false);
-	static const config::t_token z_pre_teleport("pre_teleport", false);
-	static const config::t_token z_post_teleport("post_teleport", false);
-	static const config::t_token z_healed("healed", false);
-	static const config::t_token z__healed_sound("_healed_sound", false);
-	static const config::t_token z_poisoned("poisoned", false);
-	static const config::t_token z__poison_sound("_poison_sound", false);
+static const config::t_token & z_GS( generate_safe_static_const_t_interned(n_token::t_token("~GS()")) );
+static const config::t_token & z_local_heal_wav( generate_safe_static_const_t_interned(n_token::t_token("heal.wav")) );
+static const config::t_token & z_local_pois_sound( generate_safe_static_const_t_interned(n_token::t_token("poison.ogg")) );
+	static const config::t_token & z_image( generate_safe_static_const_t_interned(n_token::t_token("image")) );
+	static const config::t_token & z_default( generate_safe_static_const_t_interned(n_token::t_token("default")) );
+	static const config::t_token & z__disabled_( generate_safe_static_const_t_interned(n_token::t_token("_disabled_")) );
+	static const config::t_token & z__disabled_selected_( generate_safe_static_const_t_interned(n_token::t_token("_disabled_selected_")) );
+	static const config::t_token & z_standing( generate_safe_static_const_t_interned(n_token::t_token("standing")) );
+	static const config::t_token & z_ghosted( generate_safe_static_const_t_interned(n_token::t_token("ghosted")) );
+	static const config::t_token & z_disabled_ghosted( generate_safe_static_const_t_interned(n_token::t_token("disabled_ghosted")) );
+	static const config::t_token & z_selected( generate_safe_static_const_t_interned(n_token::t_token("selected")) );
+	static const config::t_token & z_recruited( generate_safe_static_const_t_interned(n_token::t_token("recruited")) );
+	static const config::t_token & z_levelin( generate_safe_static_const_t_interned(n_token::t_token("levelin")) );
+	static const config::t_token & z_levelout( generate_safe_static_const_t_interned(n_token::t_token("levelout")) );
+	static const config::t_token & z_pre_movement( generate_safe_static_const_t_interned(n_token::t_token("pre_movement")) );
+	static const config::t_token & z_post_movement( generate_safe_static_const_t_interned(n_token::t_token("post_movement")) );
+	static const config::t_token & z_movement( generate_safe_static_const_t_interned(n_token::t_token("movement")) );
+	static const config::t_token & z_defend( generate_safe_static_const_t_interned(n_token::t_token("defend")) );
+	static const config::t_token & z_attack( generate_safe_static_const_t_interned(n_token::t_token("attack")) );
+	static const config::t_token & z_range( generate_safe_static_const_t_interned(n_token::t_token("range")) );
+	static const config::t_token & z_melee( generate_safe_static_const_t_interned(n_token::t_token("melee")) );
+	static const config::t_token & z_ranged( generate_safe_static_const_t_interned(n_token::t_token("ranged")) );
+	static const config::t_token & z_death( generate_safe_static_const_t_interned(n_token::t_token("death")) );
+	static const config::t_token & z__death_sound( generate_safe_static_const_t_interned(n_token::t_token("_death_sound")) );
+	static const config::t_token & z_die_sound( generate_safe_static_const_t_interned(n_token::t_token("die_sound")) );
+	static const config::t_token & z_victory( generate_safe_static_const_t_interned(n_token::t_token("victory")) );
+	static const config::t_token & z_pre_teleport( generate_safe_static_const_t_interned(n_token::t_token("pre_teleport")) );
+	static const config::t_token & z_post_teleport( generate_safe_static_const_t_interned(n_token::t_token("post_teleport")) );
+	static const config::t_token & z_healed( generate_safe_static_const_t_interned(n_token::t_token("healed")) );
+	static const config::t_token & z__healed_sound( generate_safe_static_const_t_interned(n_token::t_token("_healed_sound")) );
+	static const config::t_token & z_poisoned( generate_safe_static_const_t_interned(n_token::t_token("poisoned")) );
+	static const config::t_token & z__poison_sound( generate_safe_static_const_t_interned(n_token::t_token("_poison_sound")) );
 
 	const image::locator default_image = image::locator(cfg[z_image].token());
 	std::vector<unit_animation>  animation_base;
@@ -457,7 +457,7 @@ static const config::t_token z_local_pois_sound("poison.ogg", false);
 
 	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1),z__disabled_,0));
 	{
-		static const config::t_token z_local_blend("0.0~0.3:100,0.3~0.0:200", false);
+		static const config::t_token & z_local_blend( generate_safe_static_const_t_interned(n_token::t_token("0.0~0.3:100,0.3~0.0:200")) );
 		animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(300).
 											blend(z_local_blend,display::rgb(255,255,255)),z__disabled_selected_,0));
 	}
@@ -474,22 +474,22 @@ static const config::t_token z_local_pois_sound("poison.ogg", false);
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_ghosted);
 
-		static const config::t_token z_local_0p9("0.9", false);
+		static const config::t_token & z_local_0p9( generate_safe_static_const_t_interned(n_token::t_token("0.9")) );
 		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::UNSET,z_local_0p9,n_token::t_token::z_empty(),0,n_token::t_token::z_empty(),n_token::t_token::z_empty(), z_GS);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_disabled_ghosted);
-		static const config::t_token z_local_0p4("0.4", false);
+		static const config::t_token & z_local_0p4( generate_safe_static_const_t_interned(n_token::t_token("0.4")) );
 		animations.back().unit_anim_.override(0,1,particule::UNSET,z_local_0p4 ,n_token::t_token::z_empty(),0,n_token::t_token::z_empty(),n_token::t_token::z_empty(),z_GS);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_selected);
-		static const config::t_token z_local_t1("0.0~0.3:100,0.3~0.0:200", false);
+		static const config::t_token & z_local_t1( generate_safe_static_const_t_interned(n_token::t_token("0.0~0.3:100,0.3~0.0:200")) );
 		animations.back().unit_anim_.override(0,300,particule::UNSET,n_token::t_token::z_empty(),z_local_t1,display::rgb(255,255,255));
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_recruited);
-		static const config::t_token z_local_0_1_600("0~1:600", false);
+		static const config::t_token & z_local_0_1_600( generate_safe_static_const_t_interned(n_token::t_token("0~1:600")) );
 		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE, z_local_0_1_600);
 
 		animations.push_back(*itor);
@@ -498,7 +498,7 @@ static const config::t_token z_local_pois_sound("poison.ogg", false);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_levelout);
-		static const config::t_token z_local_0_1_600_1("0~1:600,1", false);
+		static const config::t_token & z_local_0_1_600_1( generate_safe_static_const_t_interned(n_token::t_token("0~1:600,1")) );
 		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,n_token::t_token::z_empty(), z_local_0_1_600_1,display::rgb(255,255,255));
 
 		animations.push_back(*itor);
@@ -509,13 +509,13 @@ static const config::t_token z_local_pois_sound("poison.ogg", false);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_movement);
-		static const config::t_token z_local_try_and_parse_me("0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,", false);
-		static const n_token::t_token z_local_move_layer(lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST), false);
+		static const config::t_token & z_local_try_and_parse_me( generate_safe_static_const_t_interned(n_token::t_token("0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,")) );
+		static const n_token::t_token & z_local_move_layer( generate_safe_static_const_t_interned(n_token::t_token(lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST)) ) );
 		animations.back().unit_anim_.override(0,6800,particule::NO_CYCLE,n_token::t_token::z_empty(),n_token::t_token::z_empty(),0,z_local_try_and_parse_me , z_local_move_layer);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_defend);
-		static const config::t_token z_local_t2("0.0,0.5:75,0.0:75,0.5:75,0.0", false);
+		static const config::t_token & z_local_t2( generate_safe_static_const_t_interned(n_token::t_token("0.0,0.5:75,0.0:75,0.5:75,0.0")) );
 		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::NO_CYCLE,n_token::t_token::z_empty(), z_local_t2,game_display::rgb(255,0,0));
 		animations.back().hits_.push_back(HIT);
 		animations.back().hits_.push_back(KILL);
@@ -525,7 +525,7 @@ static const config::t_token z_local_pois_sound("poison.ogg", false);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_attack);
-		static const config::t_token z_local_t4("0~0.6:150,0.6~0:150", false);
+		static const config::t_token & z_local_t4( generate_safe_static_const_t_interned(n_token::t_token("0~0.6:150,0.6~0:150")) );
 		animations.back().unit_anim_.override(-150,300,particule::NO_CYCLE,n_token::t_token::z_empty(),n_token::t_token::z_empty(),0, z_local_t4,z_local_move_layer);
 		animations.back().primary_attack_filter_.push_back(config());
 		animations.back().primary_attack_filter_.back()[z_range] = z_melee;
@@ -538,7 +538,7 @@ static const config::t_token z_local_pois_sound("poison.ogg", false);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_death);
-		static const config::t_token z_local_1_0_600("1~0:600", false);
+		static const config::t_token & z_local_1_0_600( generate_safe_static_const_t_interned(n_token::t_token("1~0:600")) );
 		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE, z_local_1_0_600);
 		animations.back().sub_anims_[z__death_sound] = particule();
 		animations.back().sub_anims_[z__death_sound].add_frame(1,frame_builder());
@@ -548,18 +548,18 @@ static const config::t_token z_local_pois_sound("poison.ogg", false);
 		animations.back().event_ = utils::split_token(z_victory);
 
 		animations.push_back(*itor);
-		static const config::t_token z_local_pretele("1~0:150", false);
+		static const config::t_token & z_local_pretele( generate_safe_static_const_t_interned(n_token::t_token("1~0:150")) );
 		animations.back().unit_anim_.override(0,150,particule::NO_CYCLE,z_local_pretele);
 		animations.back().event_ = utils::split_token(z_pre_teleport);
 
 		animations.push_back(*itor);
-		static const config::t_token z_local_posttele("0~1:150,1", false);
+		static const config::t_token & z_local_posttele( generate_safe_static_const_t_interned(n_token::t_token("0~1:150,1")) );
 		animations.back().unit_anim_.override(0,150,particule::NO_CYCLE, z_local_posttele);
 		animations.back().event_ = utils::split_token(z_post_teleport);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_healed);
-		static const config::t_token z_local_healed("0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", false);
+		static const config::t_token & z_local_healed( generate_safe_static_const_t_interned(n_token::t_token("0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30")) );
 		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,n_token::t_token::z_empty(),z_local_healed,display::rgb(255,255,255));
 		animations.back().sub_anims_[z__healed_sound] = particule();
 		animations.back().sub_anims_[z__healed_sound].add_frame(1,frame_builder());
@@ -567,7 +567,7 @@ static const config::t_token z_local_pois_sound("poison.ogg", false);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_poisoned);
-		static const config::t_token z_local_pois("0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", false);
+		static const config::t_token & z_local_pois( generate_safe_static_const_t_interned(n_token::t_token("0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30")) );
 		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,n_token::t_token::z_empty(), z_local_pois,display::rgb(0,255,0));
 		animations.back().sub_anims_[z__poison_sound] = particule();
 		animations.back().sub_anims_[z__poison_sound].add_frame(1,frame_builder());
@@ -581,9 +581,9 @@ static void add_simple_anim(std::vector<unit_animation> &animations, const confi
 	display::tdrawing_layer layer = display::LAYER_UNIT_DEFAULT,
 	bool offscreen = true)
 {
-	static const config::t_token z_apply_to("apply_to", false);
-	static const config::t_token z_offscreen("offscreen", false);
-	static const config::t_token z_layer("layer", false);
+	static const config::t_token & z_apply_to( generate_safe_static_const_t_interned(n_token::t_token("apply_to")) );
+	static const config::t_token & z_offscreen( generate_safe_static_const_t_interned(n_token::t_token("offscreen")) );
+	static const config::t_token & z_layer( generate_safe_static_const_t_interned(n_token::t_token("layer")) );
 
 	foreach (const animation_branch &ab, prepare_animation(cfg, tag_name))
 	{
@@ -600,72 +600,72 @@ static void add_simple_anim(std::vector<unit_animation> &animations, const confi
 }
 
 void unit_animation::add_anims( std::vector<unit_animation> & animations, const config & cfg) {
-	static const config::t_token z_animation("animation", false);
-	static const config::t_token z_resistance_anim("resistance_anim", false);
-	static const config::t_token z_resistance("resistance", false);
-	static const config::t_token z_leading_anim("leading_anim", false);
-	static const config::t_token z_leading("leading", false);
-	static const config::t_token z_recruit_anim("recruit_anim", false);
-	static const config::t_token z_recruited("recruited", false);
-	static const config::t_token z_recruiting_anim("recruiting_anim", false);
-	static const config::t_token z_recruiting("recruiting", false);
-	static const config::t_token z_idle_anim("idle_anim", false);
-	static const config::t_token z_idling("idling", false);
-	static const config::t_token z_levelin_anim("levelin_anim", false);
-	static const config::t_token z_levelin("levelin", false);
-	static const config::t_token z_levelout_anim("levelout_anim", false);
-	static const config::t_token z_levelout("levelout", false);
-	static const config::t_token z_standing_anim("standing_anim", false);
-	static const config::t_token z_apply_to("apply_to", false);
-	static const config::t_token z_standing_c_default("standing,default", false);
-	static const config::t_token z_cycles("cycles", false);
-	static const config::t_token z_true("true", false);
-	static const config::t_token z_layer("layer", false);
-	static const config::t_token z_offscreen("offscreen", false);
-	static const config::t_token z_healing_anim("healing_anim", false);
-	static const config::t_token z_healing("healing", false);
-	static const config::t_token z_value("value", false);
-	static const config::t_token z_healed_anim("healed_anim", false);
-	static const config::t_token z_healed("healed", false);
-	static const config::t_token z__healed_sound("_healed_sound", false);
-	static const config::t_token z_local_heal_wav("local_heal_wav", false);
-	static const config::t_token z_poison_anim("poison_anim", false);
-	static const config::t_token z_poisoned("poisoned", false);
-	static const config::t_token z_damage("damage", false);
-	static const config::t_token z__poison_sound("_poison_sound", false);
-	static const config::t_token z_local_pois_sound("local_pois_sound", false);
-	static const config::t_token z_pre_movement_anim("pre_movement_anim", false);
-	static const config::t_token z_pre_movement("pre_movement", false);
-	static const config::t_token z_movement_anim("movement_anim", false);
-	static const config::t_token z_offset("offset", false);
-	static const config::t_token z_movement("movement", false);
-	static const config::t_token z_post_movement_anim("post_movement_anim", false);
-	static const config::t_token z_post_movement("post_movement", false);
-	static const config::t_token z_defend("defend", false);
-	static const config::t_token z_hits("hits", false);
-	static const config::t_token z_yes("yes", false);
-	static const config::t_token z_hit("hit", false);
-	static const config::t_token z_kill("kill", false);
-	static const config::t_token z_draw_weapon_anim("draw_weapon_anim", false);
-	static const config::t_token z_draw_weapon("draw_weapon", false);
-	static const config::t_token z_sheath_weapon_anim("sheath_weapon_anim", false);
-	static const config::t_token z_sheath_weapon("sheath_weapon", false);
-	static const config::t_token z_attack_anim("attack_anim", false);
-	static const config::t_token z_attack("attack", false);
-	static const config::t_token z_missile_frame("missile_frame", false);
-	static const config::t_token z_missile_offset("missile_offset", false);
-	static const config::t_token z_missile_layer("missile_layer", false);
-	static const config::t_token z_duration("duration", false);
-	static const config::t_token z_death("death", false);
-	static const config::t_token z_die_sound("die_sound", false);
-	static const config::t_token z__death_sound("_death_sound", false);
-	static const config::t_token z_victory_anim("victory_anim", false);
-	static const config::t_token z_victory("victory", false);
-	static const config::t_token z_extra_anim("extra_anim", false);
-	static const config::t_token z_flag("flag", false);
-	static const config::t_token z_teleport_anim("teleport_anim", false);
-	static const config::t_token z_pre_teleport("pre_teleport", false);
-	static const config::t_token z_post_teleport("post_teleport", false);
+	static const config::t_token & z_animation( generate_safe_static_const_t_interned(n_token::t_token("animation")) );
+	static const config::t_token & z_resistance_anim( generate_safe_static_const_t_interned(n_token::t_token("resistance_anim")) );
+	static const config::t_token & z_resistance( generate_safe_static_const_t_interned(n_token::t_token("resistance")) );
+	static const config::t_token & z_leading_anim( generate_safe_static_const_t_interned(n_token::t_token("leading_anim")) );
+	static const config::t_token & z_leading( generate_safe_static_const_t_interned(n_token::t_token("leading")) );
+	static const config::t_token & z_recruit_anim( generate_safe_static_const_t_interned(n_token::t_token("recruit_anim")) );
+	static const config::t_token & z_recruited( generate_safe_static_const_t_interned(n_token::t_token("recruited")) );
+	static const config::t_token & z_recruiting_anim( generate_safe_static_const_t_interned(n_token::t_token("recruiting_anim")) );
+	static const config::t_token & z_recruiting( generate_safe_static_const_t_interned(n_token::t_token("recruiting")) );
+	static const config::t_token & z_idle_anim( generate_safe_static_const_t_interned(n_token::t_token("idle_anim")) );
+	static const config::t_token & z_idling( generate_safe_static_const_t_interned(n_token::t_token("idling")) );
+	static const config::t_token & z_levelin_anim( generate_safe_static_const_t_interned(n_token::t_token("levelin_anim")) );
+	static const config::t_token & z_levelin( generate_safe_static_const_t_interned(n_token::t_token("levelin")) );
+	static const config::t_token & z_levelout_anim( generate_safe_static_const_t_interned(n_token::t_token("levelout_anim")) );
+	static const config::t_token & z_levelout( generate_safe_static_const_t_interned(n_token::t_token("levelout")) );
+	static const config::t_token & z_standing_anim( generate_safe_static_const_t_interned(n_token::t_token("standing_anim")) );
+	static const config::t_token & z_apply_to( generate_safe_static_const_t_interned(n_token::t_token("apply_to")) );
+	static const config::t_token & z_standing_c_default( generate_safe_static_const_t_interned(n_token::t_token("standing,default")) );
+	static const config::t_token & z_cycles( generate_safe_static_const_t_interned(n_token::t_token("cycles")) );
+	static const config::t_token & z_true( generate_safe_static_const_t_interned(n_token::t_token("true")) );
+	static const config::t_token & z_layer( generate_safe_static_const_t_interned(n_token::t_token("layer")) );
+	static const config::t_token & z_offscreen( generate_safe_static_const_t_interned(n_token::t_token("offscreen")) );
+	static const config::t_token & z_healing_anim( generate_safe_static_const_t_interned(n_token::t_token("healing_anim")) );
+	static const config::t_token & z_healing( generate_safe_static_const_t_interned(n_token::t_token("healing")) );
+	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
+	static const config::t_token & z_healed_anim( generate_safe_static_const_t_interned(n_token::t_token("healed_anim")) );
+	static const config::t_token & z_healed( generate_safe_static_const_t_interned(n_token::t_token("healed")) );
+	static const config::t_token & z__healed_sound( generate_safe_static_const_t_interned(n_token::t_token("_healed_sound")) );
+	static const config::t_token & z_local_heal_wav( generate_safe_static_const_t_interned(n_token::t_token("local_heal_wav")) );
+	static const config::t_token & z_poison_anim( generate_safe_static_const_t_interned(n_token::t_token("poison_anim")) );
+	static const config::t_token & z_poisoned( generate_safe_static_const_t_interned(n_token::t_token("poisoned")) );
+	static const config::t_token & z_damage( generate_safe_static_const_t_interned(n_token::t_token("damage")) );
+	static const config::t_token & z__poison_sound( generate_safe_static_const_t_interned(n_token::t_token("_poison_sound")) );
+	static const config::t_token & z_local_pois_sound( generate_safe_static_const_t_interned(n_token::t_token("local_pois_sound")) );
+	static const config::t_token & z_pre_movement_anim( generate_safe_static_const_t_interned(n_token::t_token("pre_movement_anim")) );
+	static const config::t_token & z_pre_movement( generate_safe_static_const_t_interned(n_token::t_token("pre_movement")) );
+	static const config::t_token & z_movement_anim( generate_safe_static_const_t_interned(n_token::t_token("movement_anim")) );
+	static const config::t_token & z_offset( generate_safe_static_const_t_interned(n_token::t_token("offset")) );
+	static const config::t_token & z_movement( generate_safe_static_const_t_interned(n_token::t_token("movement")) );
+	static const config::t_token & z_post_movement_anim( generate_safe_static_const_t_interned(n_token::t_token("post_movement_anim")) );
+	static const config::t_token & z_post_movement( generate_safe_static_const_t_interned(n_token::t_token("post_movement")) );
+	static const config::t_token & z_defend( generate_safe_static_const_t_interned(n_token::t_token("defend")) );
+	static const config::t_token & z_hits( generate_safe_static_const_t_interned(n_token::t_token("hits")) );
+	static const config::t_token & z_yes( generate_safe_static_const_t_interned(n_token::t_token("yes")) );
+	static const config::t_token & z_hit( generate_safe_static_const_t_interned(n_token::t_token("hit")) );
+	static const config::t_token & z_kill( generate_safe_static_const_t_interned(n_token::t_token("kill")) );
+	static const config::t_token & z_draw_weapon_anim( generate_safe_static_const_t_interned(n_token::t_token("draw_weapon_anim")) );
+	static const config::t_token & z_draw_weapon( generate_safe_static_const_t_interned(n_token::t_token("draw_weapon")) );
+	static const config::t_token & z_sheath_weapon_anim( generate_safe_static_const_t_interned(n_token::t_token("sheath_weapon_anim")) );
+	static const config::t_token & z_sheath_weapon( generate_safe_static_const_t_interned(n_token::t_token("sheath_weapon")) );
+	static const config::t_token & z_attack_anim( generate_safe_static_const_t_interned(n_token::t_token("attack_anim")) );
+	static const config::t_token & z_attack( generate_safe_static_const_t_interned(n_token::t_token("attack")) );
+	static const config::t_token & z_missile_frame( generate_safe_static_const_t_interned(n_token::t_token("missile_frame")) );
+	static const config::t_token & z_missile_offset( generate_safe_static_const_t_interned(n_token::t_token("missile_offset")) );
+	static const config::t_token & z_missile_layer( generate_safe_static_const_t_interned(n_token::t_token("missile_layer")) );
+	static const config::t_token & z_duration( generate_safe_static_const_t_interned(n_token::t_token("duration")) );
+	static const config::t_token & z_death( generate_safe_static_const_t_interned(n_token::t_token("death")) );
+	static const config::t_token & z_die_sound( generate_safe_static_const_t_interned(n_token::t_token("die_sound")) );
+	static const config::t_token & z__death_sound( generate_safe_static_const_t_interned(n_token::t_token("_death_sound")) );
+	static const config::t_token & z_victory_anim( generate_safe_static_const_t_interned(n_token::t_token("victory_anim")) );
+	static const config::t_token & z_victory( generate_safe_static_const_t_interned(n_token::t_token("victory")) );
+	static const config::t_token & z_extra_anim( generate_safe_static_const_t_interned(n_token::t_token("extra_anim")) );
+	static const config::t_token & z_flag( generate_safe_static_const_t_interned(n_token::t_token("flag")) );
+	static const config::t_token & z_teleport_anim( generate_safe_static_const_t_interned(n_token::t_token("teleport_anim")) );
+	static const config::t_token & z_pre_teleport( generate_safe_static_const_t_interned(n_token::t_token("pre_teleport")) );
+	static const config::t_token & z_post_teleport( generate_safe_static_const_t_interned(n_token::t_token("post_teleport")) );
 
 	foreach (const animation_branch &ab, prepare_animation(cfg, z_animation)) {
 		animations.push_back(unit_animation(ab.merge())); }
@@ -753,7 +753,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			animations.push_back(unit_animation(anim));
 			anim[z_hits] = true;
 			animations.push_back(unit_animation(anim));
-			static const config::t_token z_local_blend("0.0,0.5:75,0.0:75,0.5:75,0.0", false);
+			static const config::t_token & z_local_blend( generate_safe_static_const_t_interned(n_token::t_token("0.0,0.5:75,0.0:75,0.5:75,0.0")) );
 			animations.back().add_frame(225,frame_builder()
 					.image(animations.back().get_last_frame().parameters(0).image)
 					.duration(225)
@@ -768,7 +768,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 				tmp[z_hits] = hit_type;
 				animations.push_back(unit_animation(tmp));
 				if(hit_type == z_yes || hit_type == z_hit || hit_type==z_kill) {
-					static const config::t_token z_local_blend("0.0,0.5:75,0.0:75,0.5:75,0.0", false);
+					static const config::t_token & z_local_blend( generate_safe_static_const_t_interned(n_token::t_token("0.0,0.5:75,0.0:75,0.5:75,0.0")) );
 					animations.back().add_frame(225,frame_builder()
 							.image(animations.back().get_last_frame().parameters(0).image)
 							.duration(225)
@@ -787,12 +787,12 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim[z_apply_to] = z_attack;
 		if (anim[z_layer].empty()) anim[z_layer] = move_layer;
 		config::const_child_itors missile_fs = anim.child_range(z_missile_frame);
-		static const config::t_token z_local_missile_t1("0~0.6,0.6~0", false);
+		static const config::t_token & z_local_missile_t1( generate_safe_static_const_t_interned(n_token::t_token("0~0.6,0.6~0")) );
 		if (anim[z_offset].empty() && missile_fs.first == missile_fs.second) {
 			anim[z_offset] = z_local_missile_t1;
 		}
 		if (missile_fs.first != missile_fs.second) {
-			static const config::t_token z_local_missile_t2("0~0.8", false);
+			static const config::t_token & z_local_missile_t2( generate_safe_static_const_t_interned(n_token::t_token("0~0.8")) );
 			if (anim[z_missile_offset].empty()) anim[z_missile_offset] = z_local_missile_t2;
 			if (anim[z_missile_layer].empty()) anim[z_missile_layer] = missile_layer;
 			config tmp;
@@ -811,7 +811,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim[z_layer].empty()) anim[z_layer] = default_layer;
 		animations.push_back(unit_animation(anim));
 		image::locator image_loc = animations.back().get_last_frame().parameters(0).image;
-		static const config::t_token z_local_1_0_600("1~0:600", false);
+		static const config::t_token & z_local_1_0_600( generate_safe_static_const_t_interned(n_token::t_token("1~0:600")) );
 		animations.back().add_frame(600,frame_builder().image(image_loc).duration(600).highlight(z_local_1_0_600));
 		if(!cfg[z_die_sound].empty()) {
 			animations.back().sub_anims_[z__death_sound] = particule();
@@ -901,10 +901,10 @@ unit_animation::particule::particule(
 		last_frame_begin_time_(0),
 		cycles_(false)
 {
-	static const config::t_token z_frame("frame", false);
-	static const config::t_token z_start_time("start_time", false);
-	static const config::t_token z_begin("begin", false);
-	static const config::t_token z_cycles("cycles", false);
+	static const config::t_token & z_frame( generate_safe_static_const_t_interned(n_token::t_token("frame")) );
+	static const config::t_token & z_start_time( generate_safe_static_const_t_interned(n_token::t_token("start_time")) );
+	static const config::t_token & z_begin( generate_safe_static_const_t_interned(n_token::t_token("begin")) );
+	static const config::t_token & z_cycles( generate_safe_static_const_t_interned(n_token::t_token("cycles")) );
 
 
 	config::const_child_itors range = cfg.child_range(frame_string+z_frame);
@@ -1014,7 +1014,7 @@ void unit_animation::start_animation(int start_time
 	dst_ = dst;
 	unit_anim_.start_animation(start_time);
 	if(!text.empty()) {
-	static const config::t_token z__add_text("_add_text", false);
+	static const config::t_token & z__add_text( generate_safe_static_const_t_interned(n_token::t_token("_add_text")) );
 
 		particule crude_build;
 		crude_build.add_frame(1,frame_builder());

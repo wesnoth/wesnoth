@@ -71,7 +71,7 @@ struct token {
 	std::vector<char> buffer_;
 
 	n_token::t_token const & value() const {
-		static const n_token::t_token z_empty("", false);
+		static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 		if(!is_parsed_){
 			if(!buffer_.empty()){
 				value_.assign(buffer_.begin(), buffer_.end());

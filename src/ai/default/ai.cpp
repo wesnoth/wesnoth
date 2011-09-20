@@ -57,14 +57,6 @@ static lg::log_domain log_ai("ai/general");
 #pragma warning(disable:4250)
 #endif
 
-namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
-	static const config::t_token z_chance_to_hit("chance_to_hit", false);
-	static const config::t_token z_poison("poison", false);
-	static const config::t_token z_steadfast("steadfast", false);
-}
-
 namespace ai {
 
 typedef util::array<map_location,6> adjacent_tiles_array;
@@ -108,7 +100,7 @@ int idle_ai::get_recursion_count() const
 
 void idle_ai::play_turn()
 {
-	static const config::t_token z_ai_turn("ai turn", false);
+	static const config::t_token & z_ai_turn( generate_safe_static_const_t_interned(n_token::t_token("ai turn")) );
 	game_events::fire(z_ai_turn);
 }
 
@@ -366,6 +358,9 @@ int ai_default_recruitment_stage::average_resistance_against(const unit_type& a,
 	LOG_AI << "average defense of '" << a.id() << "': " << defense << "\n";
 
 	int sum = 0, weight_sum = 0;
+	static const config::t_token & z_chance_to_hit( generate_safe_static_const_t_interned(n_token::t_token("chance_to_hit")) );
+	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
+	static const config::t_token & z_steadfast( generate_safe_static_const_t_interned(n_token::t_token("steadfast")) );
 
 	// calculation of the average damage taken
 	bool steadfast = a.has_ability_by_id(z_steadfast);

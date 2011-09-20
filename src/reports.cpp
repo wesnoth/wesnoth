@@ -34,13 +34,6 @@
 #include <cassert>
 #include <ctime>
 
-namespace {
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
-	static const config::t_token z_swarm("swarm", false);
-	static const config::t_token z_swarm_attacks_min("swarm_attacks_min", false);
-	static const config::t_token z_swarm_attacks_max("swarm_attacks_max", false);
-}
 
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")
@@ -420,6 +413,10 @@ REPORT_GENERATOR(unit_weapons)
 	std::ostringstream str, tooltip;
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
 	config res;
+
+	static const config::t_token & z_swarm( generate_safe_static_const_t_interned(n_token::t_token("swarm")) );
+	static const config::t_token & z_swarm_attacks_min( generate_safe_static_const_t_interned(n_token::t_token("swarm_attacks_min")) );
+	static const config::t_token & z_swarm_attacks_max( generate_safe_static_const_t_interned(n_token::t_token("swarm_attacks_max")) );
 
 	foreach (const attack_type &at, u->attacks())
 	{

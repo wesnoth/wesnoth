@@ -41,14 +41,7 @@
 #include <iostream>
 #include <map>
 
-namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
-	static const config::t_token z_chance_to_hit("chance_to_hit", false);
-	static const config::t_token z_poison("poison", false);
-	static const config::t_token z_guardian("guardian", false);
-	static const config::t_token z_steadfast("steadfast", false);
-}
+
 
 namespace ai {
 
@@ -292,6 +285,9 @@ static int average_resistance_against(const unit_type& a, const unit_type& b)
    }
 
    //LOG_AI << "average defense of '" << a.id() << "': " << defense << "\n";
+	static const config::t_token & z_chance_to_hit( generate_safe_static_const_t_interned(n_token::t_token("chance_to_hit")) );
+	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
+	static const config::t_token & z_steadfast( generate_safe_static_const_t_interned(n_token::t_token("steadfast")) );
 
    int sum = 0, weight_sum = 0;
 
