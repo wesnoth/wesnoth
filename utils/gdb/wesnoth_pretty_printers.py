@@ -30,6 +30,11 @@ class RecursionManager(object):
         return cls.default
 
     @classmethod
+    def reset(cls):
+        cls.curr=0;
+        return cls.default
+
+    @classmethod
     def should_display(cls) : 
         return cls.curr <= cls.default
 
@@ -53,7 +58,7 @@ class T_InternedPrinter(object) :
 
     def to_string(self) :
         #Returns either a string or an other convertible to string
-        return self.val['iter_']['first']
+        return self.val['iter_']['first']['_M_dataplus']['_M_p']
     
     def display_hint(self) :
         #one of 'string' 'array' 'map'
@@ -120,21 +125,29 @@ class AttributeValuePrinter(object) :
         # return "attribute_value"
         attr=self.attr
         attr_type = self.attr_type
+
+        class Atype:
+            EMPTY = 0 
+            BOOL = 1
+            INT = 2
+            DOUBLE=3
+            TSTRING =4
+            TOKEN =5
        
-        if attr_type == 0:
+        if attr_type == Atype.EMPTY:
             return ""
-        elif attr_type == 1 :
+        elif attr_type == Atype.BOOL:
             return 'true' if attr['bool_value_'] else 'false'
-        elif attr_type == 2 :
+        elif attr_type == Atype.INT :
             return 'int ' + ('%s' % attr['int_value_'])
-        elif attr_type == 3 :
+        elif attr_type == Atype.DOUBLE :
             return 'double ' + ('%s' % attr['double_value_'])
-        elif attr_type == 4 :
+        elif attr_type == Atype.TOKEN :
             return 'token ' + ('%s' % attr['token_value_'])
-        else :
+        elif attr_type == Atype.TSTRING :
             return 't_string ' + ('%s' % attr['t_string_value_'])
-        
-        return "attribute pretty printer found an unknown type"
+        else :
+            return "attribute pretty printer found an unknown type"
 
     # def children(self):
     #     attr=self.attr
@@ -254,8 +267,12 @@ class ConfigPrinter(object) :
             yield "values", self.val['values']
             yield "children", self.val['children']
             RecursionManager.inc() 
-            yield "ordered_children", self.val['ordered_children']
-            RecursionManager.dec() 
+            try:
+                yield "ordered_children", self.val['ordered_children']
+            except RuntimeError:
+                RecursionManager.dec() 
+            else:
+                RecursionManager.dec() 
 
         else :
             pass
