@@ -186,29 +186,33 @@ unit_race::unit_race(const config& cfg) :
 		global_traits_(!cfg[z_ignore_global_traits].to_bool())
 
 {
+	config::attribute_value const &  a_name= cfg[z_name];
+	config::attribute_value const &  a_male_name= cfg[z_male_name];
+	config::attribute_value const &  a_female_name= cfg[z_female_name];
+
 	if (id_.empty()) {
-		lg::wml_error << "[race] '" << cfg[z_name] << "' is missing an id field.";
+		lg::wml_error << "[race] '" << a_name << "' is missing an id field.";
 	}
 	if (plural_name_.empty()) {
-		lg::wml_error << "[race] '" << cfg[z_name] << "' is missing a plural_name field.";
-		plural_name_ = (cfg[z_name]);
+		lg::wml_error << "[race] '" << a_name << "' is missing a plural_name field.";
+		plural_name_ = (a_name.token());
 	}
 	// use z_name if z_male_name or z_female_name aren't available
-	name_[MALE] = cfg[z_male_name];
+	name_[MALE] = a_male_name.token();
 	if(name_[MALE].empty()) {
-		name_[MALE] = (cfg[z_name]);
+		name_[MALE] = (a_male_name.token());
 	}
-	name_[FEMALE] = cfg[z_female_name];
+	name_[FEMALE] = a_female_name.token();
 	if(name_[FEMALE].empty()) {
-		name_[FEMALE] = (cfg[z_name]);
+		name_[FEMALE] = (a_female_name.token());
 	}
 
 	if(chain_size_ <= 0)
 		chain_size_ = 2;
 
 	//std::vector<std::string> names = ;
-	next_[MALE] = markov_prefixes(utils::split_token(cfg[z_male_names]), chain_size_);
-	next_[FEMALE] = markov_prefixes(utils::split_token(cfg[z_female_names]), chain_size_);
+	next_[MALE] = markov_prefixes(utils::split_attr(cfg[z_male_names]), chain_size_);
+	next_[FEMALE] = markov_prefixes(utils::split_attr(cfg[z_female_names]), chain_size_);
 }
 
 config::t_token unit_race::generate_name(

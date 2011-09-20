@@ -59,7 +59,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 	if (cfg) {
 		size_t arrsize = cfg.child_count(global);
 		if (arrsize == 0) {
-			resources::state_of_game->set_variable(local,cfg[global]);
+			resources::state_of_game->set_variable(local,cfg[global].t_str());
 		} else {
 			resources::state_of_game->clear_variable(local);
 			for (size_t i = 0; i < arrsize; i++)
@@ -87,7 +87,7 @@ static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 		const config &vars = resources::state_of_game->get_variables();
 		size_t arraylen = vars.child_count(local);
 		if (arraylen == 0) {
-			val = pack_scalar(global,resources::state_of_game->get_variable(local));
+			val = pack_scalar(global,resources::state_of_game->get_variable(local).t_str());
 		} else {
 			for (size_t i = 0; i < arraylen; i++)
 				val.add_child(global,vars.child(local,i));

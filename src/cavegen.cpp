@@ -154,8 +154,8 @@ void cave_map_generator::generate_chambers()
 			continue;
 		}
 
-		const std::string &xpos = ch["x"];
-		const std::string &ypos = ch["y"];
+		const std::string xpos = ch["x"];
+		const std::string ypos = ch["y"];
 
 		size_t min_xpos = 0, min_ypos = 0, max_xpos = width_, max_ypos = height_;
 
@@ -188,7 +188,7 @@ void cave_map_generator::generate_chambers()
 		const config &items = ch.child("items");
 		new_chamber.items = items ? &items : NULL;
 
-		const std::string &id = ch["id"];
+		const std::string id = ch["id"];
 		if (!id.empty()) {
 			chamber_ids_[id] = chambers_.size();
 		}
@@ -197,7 +197,7 @@ void cave_map_generator::generate_chambers()
 
 		foreach (const config &p, ch.child_range("passage"))
 		{
-			const std::string &dst = p["destination"];
+			const std::string dst = p["destination"];
 
 			// Find the destination of this passage
 			const std::map<std::string,size_t>::const_iterator itor = chamber_ids_.find(dst);

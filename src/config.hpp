@@ -237,9 +237,9 @@ public:
 		t_token const & token() const;
 
 		operator int() const { return to_int(); }
-		operator std::string const &() const { return str(); } ///This is probably ill advised, due to spurious constructions
-		operator t_string const &() const { return t_str(); }
-		operator t_token const &() const {return token();}
+		operator std::string const () const { return str(); } ///This is probably ill advised, due to spurious constructions
+		//operator t_string const &() const { return t_str(); }
+		//operator t_token const &() const {return token();}
 
 		bool operator==(const attribute_value &other) const;
 		bool operator!=(const attribute_value &other) const { return !operator==(other); }

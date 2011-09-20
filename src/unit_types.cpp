@@ -111,11 +111,11 @@ bool attack_type::matches_filter(const config& cfg,bool self) const
 	static const config::t_token z_name("name", false);
 	static const config::t_token z_type("type", false);
 	static const config::t_token z_special("special", false);
-	const std::vector<config::t_token>& filter_range = utils::split_token(cfg[z_range]);
-	const config::t_token& filter_damage = cfg[z_damage];
-	const std::vector<config::t_token> filter_name = utils::split_token(cfg[z_name]);
-	const std::vector<config::t_token> filter_type = utils::split_token(cfg[z_type]);
-	const config::t_token filter_special = cfg[z_special];
+	const std::vector<config::t_token>& filter_range = utils::split_attr(cfg[z_range]);
+	const config::attribute_value& filter_damage = cfg[z_damage];
+	const std::vector<config::t_token> filter_name = utils::split_attr(cfg[z_name]);
+	const std::vector<config::t_token> filter_type = utils::split_attr(cfg[z_type]);
+	const config::attribute_value filter_special = cfg[z_special];
 
 	if(filter_range.empty() == false && std::find(filter_range.begin(),filter_range.end(),range()) == filter_range.end())
 			return false;
@@ -130,7 +130,7 @@ bool attack_type::matches_filter(const config& cfg,bool self) const
 	if(filter_type.empty() == false && std::find(filter_type.begin(),filter_type.end(),type()) == filter_type.end())
 		return false;
 
-	if(!self && filter_special.empty() == false && !get_special_bool(filter_special,true))
+	if(!self && filter_special.empty() == false && !get_special_bool(filter_special.token(),true))
 		return false;
 
 	return true;
@@ -164,37 +164,37 @@ std::pair<bool, config::t_token> attack_type::apply_modification(const config& c
 	if(!matches_filter(cfg,0)) {
 		return std::make_pair(false, n_token::t_token::z_empty()); }
 
-	const config::t_token& set_name = cfg[z_set_name];
-	const t_string& set_desc = cfg[z_set_description];
-	const config::t_token& set_type = cfg[z_set_type];
-	const config::t_token& del_specials = cfg[z_remove_specials];
+	const config::attribute_value& set_name = cfg[z_set_name];
+	const config::attribute_value& set_desc = cfg[z_set_description];
+	const config::attribute_value& set_type = cfg[z_set_type];
+	const config::attribute_value& del_specials = cfg[z_remove_specials];
 	const config &set_specials = cfg.child(z_set_specials);
-	const config::t_token& increase_damage = cfg[z_increase_damage];
-	const config::t_token& increase_attacks = cfg[z_increase_attacks];
-	const config::t_token& set_attack_weight = cfg[z_attack_weight];
-	const config::t_token& set_defense_weight = cfg[z_defense_weight];
-	const config::t_token& increase_accuracy = cfg[z_increase_accuracy];
-	const config::t_token& increase_parry = cfg[z_increase_parry];
+	const config::attribute_value& increase_damage = cfg[z_increase_damage];
+	const config::attribute_value& increase_attacks = cfg[z_increase_attacks];
+	const config::attribute_value& set_attack_weight = cfg[z_attack_weight];
+	const config::attribute_value& set_defense_weight = cfg[z_defense_weight];
+	const config::attribute_value& increase_accuracy = cfg[z_increase_accuracy];
+	const config::attribute_value& increase_parry = cfg[z_increase_parry];
 
 	std::stringstream desc;
 
 	if(set_name.empty() == false) {
-		id_ = set_name;
+		id_ = set_name.token();
 		cfg_[z_name] = id();
 	}
 
 	if(set_desc.empty() == false) {
-		description_ = set_desc;
+		description_ = set_desc.token();
 		cfg_[z_description] = description_;
 	}
 
 	if(set_type.empty() == false) {
-		type_ = set_type;
+		type_ = set_type.token();
 		cfg_[z_type] = type_;
 	}
 
 	if(del_specials.empty() == false) {
-		const std::vector<config::t_token>& dsl = utils::split_token(del_specials);
+		const std::vector<config::t_token>& dsl = utils::split_attr(del_specials);
 		if (config &specials = cfg_.child(z_specials))
 		{
 			config new_specials;
@@ -211,7 +211,7 @@ std::pair<bool, config::t_token> attack_type::apply_modification(const config& c
 	}
 
 	if (set_specials) {
-		const config::t_token &mode = set_specials[z_mode];
+		const config::attribute_value &mode = set_specials[z_mode];
 		if (mode != z_append) {
 			cfg_.clear_children(z_specials);
 		}
@@ -283,8 +283,8 @@ std::pair<bool, config::t_token>  attack_type::describe_modification(const confi
 	if(!matches_filter(cfg,0)) {
 		return std::make_pair(false, n_token::t_token::z_empty()); }
 
-	const config::t_token& increase_damage = cfg[z_increase_damage];
-	const config::t_token& increase_attacks = cfg[z_increase_attacks];
+	const config::attribute_value& increase_damage = cfg[z_increase_damage];
+	const config::attribute_value& increase_attacks = cfg[z_increase_attacks];
 
 	std::stringstream desc;
 
@@ -319,11 +319,11 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 	static const config::t_token z_defense("defense", false);
 	static const config::t_token z_resistance("resistance", false);
 
-	const t_string& name = cfg[z_name];
+	const config::attribute_value& name = cfg[z_name];
 	if (!name.empty())
 		cfg_[z_name]= cfg[z_name];
 
-	const t_string& flies = cfg[z_flies];
+	const config::attribute_value& flies = cfg[z_flies];
 	if (!flies.empty())
 		cfg_[z_flies]= cfg[z_flies];
 
@@ -346,8 +346,10 @@ config::t_token unit_movement_type::name() const
 
 	if (!cfg_.has_attribute(z_name) && parent_)
 		return parent_->name();
-	else
-		return cfg_[z_name];
+	else {
+		config::attribute_value const & nname = cfg_[z_name];
+		return nname.token();
+	}
 }
 
 int unit_movement_type::resistance_against(const attack_type& attack) const
@@ -383,7 +385,7 @@ utils::string_map unit_movement_type::damage_table() const
 	if (const config &resistance = cfg_.child(z_resistance))
 	{
 		foreach (const config::attribute &i, resistance.attribute_range()) {
-			res[i.first] = i.second;
+			res[i.first] = i.second.token();
 		}
 	}
 
@@ -786,14 +788,14 @@ void unit_type::build_full(const movement_type_map &mv_types,
 
 	zoc_ = cfg[z_zoc].to_bool(level_ > 0);
 
-	const config::t_token& alpha_blend = cfg[z_alpha];
+	const config::attribute_value& alpha_blend = cfg[z_alpha];
 	if(alpha_blend.empty() == false) {
-		alpha_ = ftofxp(atof(alpha_blend.c_str()));
+		alpha_ = ftofxp(atof(alpha_blend.token().c_str()));
 	}
 
-	const config::t_token& move_type = cfg[z_movement_type];
+	const config::attribute_value& move_type = cfg[z_movement_type];
 
-	const movement_type_map::const_iterator it = mv_types.find(move_type);
+	const movement_type_map::const_iterator it = mv_types.find(move_type.token());
 
 	if(it != mv_types.end()) {
 	    DBG_UT << "setting parent for movement_type " << move_type << "\n";
@@ -819,6 +821,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 void unit_type::build_help_index(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
+	static const config::t_token z_empty("", false);
 	static const config::t_token z_name("name", false);
 	static const config::t_token z_description("description", false);
 	static const config::t_token z_hitpoints("hitpoints", false);
@@ -846,8 +849,8 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 
 	const config &cfg = cfg_;
 
-	type_name_ = cfg_[z_name];
-	description_ = cfg_[z_description];
+	type_name_ = cfg_[z_name].token();
+	description_ = cfg_[z_description].token();
 	hitpoints_ = cfg[z_hitpoints].to_int(1);
 	level_ = cfg[z_level];
 	movement_ = cfg[z_movement].to_int(1);
@@ -858,14 +861,18 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	image_ = cfg_[z_image].token();
 	small_profile_ = cfg_[z_small_profile].token();
 	big_profile_ = cfg_[z_profile].token();
-	adjust_profile(small_profile_, big_profile_, image_);
+	std::pair<config::t_token, config::t_token> new_profiles = adjust_profile(small_profile_, big_profile_, z_empty);
+	cfg_[z_small_profile] = new_profiles.first;
+	cfg_[z_profile] = new_profiles.second;
+
 
 	for (int i = 0; i < 2; ++i) {
 		if (gender_types_[i])
 			gender_types_[i]->build_help_index(mv_types, races, traits);
 	}
 
-	const race_map::const_iterator race_it = races.find(cfg[z_race]);
+	config::attribute_value const & rrace = cfg[z_race];
+	const race_map::const_iterator race_it = races.find(rrace.token());
 	if(race_it != races.end()) {
 		race_ = &race_it->second;
 	} else {
@@ -875,7 +882,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	// if num_traits is not defined, we use the num_traits from race
 	num_traits_ = cfg[z_num_traits].to_int(race_->num_traits());
 
-	const std::vector<config::t_token> genders = utils::split_token(cfg[z_gender]);
+	const std::vector<config::t_token> genders = utils::split_attr(cfg[z_gender]);
 	for(std::vector<config::t_token>::const_iterator g = genders.begin(); g != genders.end(); ++g) {
 		genders_.push_back(string_gender(*g));
 	}
@@ -886,10 +893,10 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	if (const config &abil_cfg = cfg.child(z_abilities))
 	{
 		foreach (const config::any_child &ab, abil_cfg.all_children_range()) {
-			const t_string &name = ab.cfg[z_name];
+			const config::attribute_value &name = ab.cfg[z_name];
 			if (!name.empty()) {
-				abilities_.push_back(name);
-				ability_tooltips_.push_back(ab.cfg[z_description]);
+				abilities_.push_back(name.t_str());
+				ability_tooltips_.push_back(ab.cfg[z_description].token());
 			}
 		}
 	}
@@ -903,10 +910,10 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 				continue;
 			}
 			foreach (const config::any_child &ab, abil_cfg.all_children_range()) {
-				const t_string &name = ab.cfg[z_name];
+				const config::attribute_value &name = ab.cfg[z_name];
 				if (!name.empty()) {
-					adv_abilities_.push_back(name);
-					adv_ability_tooltips_.push_back(ab.cfg[z_description]);
+					adv_abilities_.push_back(name.t_str());
+					adv_ability_tooltips_.push_back(ab.cfg[z_description].token());
 				}
 			}
 		}
@@ -961,9 +968,9 @@ void unit_type::build_created(const movement_type_map &mv_types,
 			gender_types_[i]->build_created(mv_types, races, traits);}
 	}
 
-    const config::t_token& advances_to_val = cfg[z_advances_to];
+    const config::attribute_value& advances_to_val = cfg[z_advances_to];
     if(advances_to_val != z_null && advances_to_val != n_token::t_token::z_empty())
-        advances_to_ = utils::split_token(advances_to_val);
+        advances_to_ = utils::split_attr(advances_to_val);
     DBG_UT << "unit_type '" << id() << "' advances to : " << advances_to_val << "\n";
 
 	experience_needed_ = cfg[z_experience].to_int(500);
@@ -1108,9 +1115,9 @@ std::vector<config::t_token> unit_type::get_ability_list() const
 	if (!abilities) return res;
 
 	foreach (const config::any_child &ab, abilities.all_children_range()) {
-		const config::t_token &id = ab.cfg[z_id];
+		const config::attribute_value &id = ab.cfg[z_id];
 		if (!id.empty())
-			res.push_back(id);
+			res.push_back(id.token());
 	}
 
 	return res;
@@ -1124,13 +1131,13 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 {
 	static const config::t_token z_id("id", false);
 
-	const config::t_token &to_id =  to_unit.cfg_[z_id];
-	const config::t_token &from_id =  cfg_[z_id];
+	const config::attribute_value &to_id =  to_unit.cfg_[z_id];
+	const config::attribute_value &from_id =  cfg_[z_id];
 
 	// Add extra advancement path to this unit type
 	LOG_CONFIG << "adding advancement from " << from_id << " to " << to_id << "\n";
 	if(std::find(advances_to_.begin(), advances_to_.end(), to_id) == advances_to_.end()) {
-		advances_to_.push_back(to_id);
+		advances_to_.push_back(to_id.token());
 	} else {
 		LOG_CONFIG << "advancement from " << from_id
 		           << " to " << to_id << " already known, ignoring.\n";
@@ -1257,11 +1264,12 @@ void unit_type_data::set_config(config &cfg)
 
 	foreach (config &ut, cfg.child_range(z_unit_type))
 	{
-		config::t_token id = ut[z_id];
+		config::attribute_value id = ut[z_id];
 		if (const config &bu = ut.child(z_base_unit))
 		{
+			config::attribute_value buid = bu[z_id];
 			// Derive a new unit type from an existing base unit id
-			config merge_cfg = find_config(bu[z_id]);
+			config merge_cfg = find_config(buid.token());
 			ut.clear_children(z_base_unit);
 			merge_cfg.merge_with(ut);
 			ut.swap(merge_cfg);
@@ -1392,13 +1400,13 @@ void unit_type_data::read_hide_help(const config& cfg)
 	hide_help_race_.push_back(boost::unordered_set<config::t_token>());
 	hide_help_type_.push_back(boost::unordered_set<config::t_token>());
 
-	std::vector<config::t_token> races = utils::split_token(cfg[z_race]);
+	std::vector<config::t_token> races = utils::split_attr(cfg[z_race]);
 	hide_help_race_.back().insert(races.begin(), races.end());
 
-	std::vector<config::t_token> types = utils::split_token(cfg[z_type]);
+	std::vector<config::t_token> types = utils::split_attr(cfg[z_type]);
 	hide_help_type_.back().insert(types.begin(), types.end());
 
-	std::vector<config::t_token> trees = utils::split_token(cfg[z_type_adv_tree]);
+	std::vector<config::t_token> trees = utils::split_attr(cfg[z_type_adv_tree]);
 	hide_help_type_.back().insert(trees.begin(), trees.end());
 	foreach(const config::t_token& t_id, trees) {
 		unit_type_map::iterator ut = types_.find(t_id);
@@ -1437,10 +1445,10 @@ void unit_type_data::add_advancement(unit_type& to_unit) const
 
     foreach (const config &af, cfg.child_range(z_advancefrom))
     {
-        const config::t_token &from = af[z_unit];
+        const config::attribute_value &from = af[z_unit];
         int xp = af[z_experience];
 
-        unit_type_data::unit_type_map::iterator from_unit = types_.find(from);
+        unit_type_data::unit_type_map::iterator from_unit = types_.find(from.token());
 
 		if (from_unit == types_.end()) {
 			std::ostringstream msg;
@@ -1496,9 +1504,9 @@ bool unit_type::not_living() const
 			// about gender checks, since we don't
 			// know what the gender of the
 			// hypothetical recruit is.
-			const config::t_token &ut = effect[z_unit_type];
+			const config::attribute_value &ut = effect[z_unit_type];
 			if (!ut.empty()) {
-				const std::vector<config::t_token> &types = utils::split_token(ut);
+				const std::vector<config::t_token> &types = utils::split_attr(ut);
 				if(std::find(types.begin(), types.end(), id()) == types.end())
 					continue;
 			}
@@ -1534,20 +1542,18 @@ bool unit_type::has_random_traits() const
 
 unit_type_data unit_types;
 
-void adjust_profile(config::t_token &small, config::t_token &big, config::t_token const &def)
-{
-	if (big.empty())
-	{
+std::pair<config::t_token, config::t_token> adjust_profile(config::t_token const &ismall, config::t_token const &ibig, config::t_token const &def) {
+	config::t_token big(ibig), small(ismall);
+	if (ibig.empty() || ibig == n_token::t_token::z_empty()) {
 		// No profile data; use the default image.
 		small = def;
 		big = def;
 	}
-	else if (small.empty())
-	{
+	else if (ismall.empty() || ismall == n_token::t_token::z_empty()) {
 		// No small profile; use the current profile for it and
 		// try to infer the big one.
-		small = big;
-		std::string sbig = (*big);
+		small = ibig;
+		std::string sbig = (*ibig);
 		std::string::size_type offset = sbig.find('~');
 		offset = sbig.find_last_of('/', offset);
 		if (offset != std::string::npos) {
@@ -1561,4 +1567,5 @@ void adjust_profile(config::t_token &small, config::t_token &big, config::t_toke
 			big = config::t_token(sbig);
 		}
 	}
+	return std::make_pair(small, big);
 }

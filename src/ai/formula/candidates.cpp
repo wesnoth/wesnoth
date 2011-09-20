@@ -46,9 +46,9 @@ void candidate_action_manager::load_config(const config& cfg, ai::formula_ai* ai
 candidate_action_ptr candidate_action_manager::load_candidate_action_from_config(const config& rc_action, ai::formula_ai* ai, function_symbol_table* function_table)
 {
 	candidate_action_ptr new_ca;
-	const t_string &name = rc_action["name"];
+	const config::attribute_value &name = rc_action["name"];
 	try {
-		const t_string &type = rc_action["type"];
+		const config::attribute_value &type = rc_action["type"];
 
 		if( type == "movement") {
 			new_ca = candidate_action_ptr(new move_candidate_action(name, type, rc_action, function_table ));
@@ -58,7 +58,7 @@ candidate_action_ptr candidate_action_manager::load_candidate_action_from_config
 			ERR_AI << "Unknown candidate action type: " << type << "\n";
 		}
 	} catch(formula_error& e) {
-		ai->handle_exception(e, "Error while registering candidate action '" + name + "'");
+		ai->handle_exception(e, "Error while registering candidate action '" + name.str() + "'");
 	}
 	return new_ca;
 }

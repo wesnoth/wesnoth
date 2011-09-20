@@ -166,9 +166,9 @@ void tod_manager::add_time_area(const config& cfg)
 {
 	areas_.push_back(area_time_of_day());
 	area_time_of_day &area = areas_.back();
-	area.id = cfg[z_id];
-	area.xsrc = cfg[z_x];
-	area.ysrc = cfg[z_y];
+	area.id = cfg[z_id].token();
+	area.xsrc = cfg[z_x].token();
+	area.ysrc = cfg[z_y].token();
 	area.currentTime = cfg[z_current_time].to_int(0);
 	std::vector<map_location> const& locs = parse_location_range(area.xsrc, area.ysrc, true);
 	std::copy(locs.begin(), locs.end(), std::inserter(area.hexes, area.hexes.end()));
@@ -214,7 +214,7 @@ int tod_manager::get_start_ToD(const config &level) const
 
 	const config::attribute_value& cfg_random_start_time = level[z_random_start_time];
 	if(!cfg_random_start_time.blank()) {
-		const config::t_token& random_start_time = cfg_random_start_time;
+		const config::t_token& random_start_time = cfg_random_start_time.token();
 		//TODO:
 		//Here there is danger of OOS (bug #15948)
 		//But this randomization is needed on the other hand to make the "random start time" option

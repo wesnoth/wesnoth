@@ -608,7 +608,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 
 		int basex = TILEWIDTH / 2 + dx, basey = TILEWIDTH / 2 + dy;
 		if (const config::attribute_value *base_ = img.get(z_base)) {
-			std::vector<n_token::t_token> base = utils::split_token(*base_);
+			std::vector<n_token::t_token> base = utils::split_attr(*base_);
 			if(base.size() >= 2) {
 				basex = atoi(base[0].c_str());
 				basey = atoi(base[1].c_str());
@@ -617,7 +617,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 
 		int center_x = -1, center_y = -1;
 		if (const config::attribute_value *center_ = img.get(z_center)) {
-			std::vector<n_token::t_token> center = utils::split_token(*center_);
+			std::vector<n_token::t_token> center = utils::split_attr(*center_);
 			if(center.size() >= 2) {
 				center_x = atoi(center[0].c_str());
 				center_y = atoi(center[1].c_str());
@@ -629,20 +629,20 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		// Adds the other variants of the image
 		foreach (const config &variant, img.child_range(z_variant))
 		{
-			const n_token::t_token &name = variant[z_name];
-			const n_token::t_token &variations = img[z_variations];
-			const n_token::t_token &tod = variant[z_tod];
+			const config::attribute_value &name = variant[z_name];
+			const config::attribute_value &variations = img[z_variations];
+			const config::attribute_value &tod = variant[z_tod];
 			bool random_start = variant[z_random_start].to_bool(true);
 
-			images.back().variants.push_back(rule_image_variant(name, variations, tod, random_start));
+			images.back().variants.push_back(rule_image_variant(name.token(), variations.token(), tod.token(), random_start));
 		}
 
 		// Adds the main (default) variant of the image at the end,
 		// (will be used only if previous variants don't match)
-		const n_token::t_token &name = img[z_name];
-		const n_token::t_token &variations = img[z_variations];
+		const config::attribute_value &name = img[z_name];
+		const config::attribute_value &variations = img[z_variations];
 		bool random_start = img[z_random_start].to_bool(true);
-		images.back().variants.push_back(rule_image_variant(name, variations, random_start));
+		images.back().variants.push_back(rule_image_variant(name.token(), variations.token(), random_start));
 	}
 }
 
@@ -684,19 +684,19 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 		t_translation::t_match(cfg[z_type], t_translation::WILDCARD), global_images);
 
 
-	std::vector<n_token::t_token> item_string = utils::split_token(cfg[z_set_flag]);
+	std::vector<n_token::t_token> item_string = utils::split_attr(cfg[z_set_flag]);
 	constraint.set_flag.insert(constraint.set_flag.end(),
 			item_string.begin(), item_string.end());
 
-	item_string = utils::split_token(cfg[z_has_flag]);
+	item_string = utils::split_attr(cfg[z_has_flag]);
 	constraint.has_flag.insert(constraint.has_flag.end(),
 			item_string.begin(), item_string.end());
 
-	item_string = utils::split_token(cfg[z_no_flag]);
+	item_string = utils::split_attr(cfg[z_no_flag]);
 	constraint.no_flag.insert(constraint.no_flag.end(),
 			item_string.begin(), item_string.end());
 
-	item_string = utils::split_token(cfg[z_set_no_flag]);
+	item_string = utils::split_attr(cfg[z_set_no_flag]);
 	constraint.set_flag.insert(constraint.set_flag.end(),
 			item_string.begin(), item_string.end());
 	constraint.no_flag.insert(constraint.no_flag.end(),
@@ -806,7 +806,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		anchormap anchors;
 
 		// Parse the map= , if there is one (and fill the anchors list)
-		parse_mapstring(br[z_map], pbr, anchors, br);
+		parse_mapstring(br[z_map].token(), pbr, anchors, br);
 
 		// Parses the terrain constraints (TCs)
 		foreach (const config &tc, br.child_range(z_tile))
@@ -821,7 +821,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 				loc.y = *v;
 			}
 			if (const config::attribute_value *v = tc.get(z_loc)) {
-				std::vector<n_token::t_token> sloc = utils::split_token(*v);
+				std::vector<n_token::t_token> sloc = utils::split_attr(*v);
 				if(sloc.size() == 2) {
 					loc.x = atoi(sloc[0].c_str());
 					loc.y = atoi(sloc[1].c_str());
@@ -847,10 +847,10 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 			}
 		}
 
-		const std::vector<n_token::t_token> global_set_flag = utils::split_token(br[z_set_flag]);
-		const std::vector<n_token::t_token> global_no_flag = utils::split_token(br[z_no_flag]);
-		const std::vector<n_token::t_token> global_has_flag = utils::split_token(br[z_has_flag]);
-		const std::vector<n_token::t_token> global_set_no_flag = utils::split_token(br[z_set_no_flag]);
+		const std::vector<n_token::t_token> global_set_flag = utils::split_attr(br[z_set_flag]);
+		const std::vector<n_token::t_token> global_no_flag = utils::split_attr(br[z_no_flag]);
+		const std::vector<n_token::t_token> global_has_flag = utils::split_attr(br[z_has_flag]);
+		const std::vector<n_token::t_token> global_set_no_flag = utils::split_attr(br[z_set_no_flag]);
 
 		foreach (terrain_constraint &constraint, pbr.constraints)
 		{
@@ -867,11 +867,11 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		}
 
 		// Handles rotations
-		const n_token::t_token &rotations = br[z_rotations];
+		const config::attribute_value &rotations = br[z_rotations];
 
 		pbr.precedence = br[z_precedence];
 
-		add_rotated_rules(building_rules_, pbr, rotations);
+		add_rotated_rules(building_rules_, pbr, rotations.token());
 
 		loadscreen::increment_progress();
 	}

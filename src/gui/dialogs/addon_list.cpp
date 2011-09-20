@@ -74,7 +74,7 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = c["icon"];
+		item["label"] = c["icon"].token();
 		data.insert(std::make_pair("icon", item));
 
 		std::string tmp = c["name"];
@@ -92,10 +92,10 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 		item["label"] = tmp;
 		data.insert(std::make_pair("author", item));
 
-		item["label"] = c["downloads"];
+		item["label"] = c["downloads"].token();
 		data.insert(std::make_pair("downloads", item));
 
-		item["label"] = c["size"];
+		item["label"] = c["size"].token();
 		data.insert(std::make_pair("size", item));
 
 		list.add_row(data);

@@ -193,7 +193,7 @@ game_info::game_info(const config& game, const config& game_config)
 	{
 		const config &era_cfg = game_config.find_child("era", "id", game["mp_era"]);
 		utils::string_map symbols;
-		symbols["era_id"] = game["mp_era"];
+		symbols["era_id"] = game["mp_era"].token();
 		if (era_cfg) {
 			era = era_cfg["name"].str();
 			era_short = era_cfg["short_name"].str();
@@ -270,7 +270,7 @@ game_info::game_info(const config& game, const config& game_config)
 			}
 		} else {
 			utils::string_map symbols;
-			symbols["scenario_id"] = game["mp_scenario"];
+			symbols["scenario_id"] = game["mp_scenario"].token();
 			scenario = vgettext("Unknown scenario: $scenario_id", symbols);
 			map_info += scenario;
 			verified = false;
@@ -298,7 +298,7 @@ game_info::game_info(const config& game, const config& game_config)
 		started = false;
 		if (vacant_slots > 0) {
 			status = std::string(_n("Vacant Slot:", "Vacant Slots:",
-					vacant_slots)) + " " + game["slots"];
+									vacant_slots)) + " " + game["slots"].str();
 		}
 	}
 

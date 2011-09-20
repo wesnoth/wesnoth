@@ -100,13 +100,13 @@ config::attribute_value &config::attribute_value::operator=(const t_token &v)  {
 	if (v == z_yes || v == z_true) return *this = true;
 	if (v == z_no || v == z_false) return *this = false;
 
-	std::istringstream is(static_cast<std::string const &>(v));
+	std::istringstream is(*v);
 	int i;
 	char extra_char;
 	if( (is >> i) && ! is.get(extra_char) ) { *this = i; is_token_=true; token_value_ = v; return *this; }
 
 	is.clear();
-	is.str(static_cast<std::string const &>(v));
+	is.str(*v);
 	double d;
 	if( (is >> d) && ! is.get(extra_char) ) { *this = d; is_token_=true; token_value_ = v; return *this; }
 
@@ -421,12 +421,12 @@ void config::merge_children_by_attribute(const t_token& key, const t_token& attr
 	typedef std::map<t_token, config> config_map;
 	config_map merged_children_map;
 	foreach (const config &cfg, child_range(key)) {
-		const t_token &value = cfg[attribute];
-		config_map::iterator m = merged_children_map.find(value);
+		const attribute_value &value = cfg[attribute];
+		config_map::iterator m = merged_children_map.find(value.token());
 		if ( m!=merged_children_map.end() ) {
 			m->second.append(cfg);
 		} else {
-			merged_children_map.insert(std::make_pair(value, cfg));
+			merged_children_map.insert(std::make_pair(value.token(), cfg));
 		}
 	}
 

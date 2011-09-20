@@ -95,10 +95,10 @@ static unit_race::GENDER generate_gender(const config &cfg, game_state *state) {
 	static const config::t_token z_gender("gender", false);
 	static const config::t_token z_type("type", false);
 	static const config::t_token z_random_gender("random_gender", false);
-	const config::t_token& gender = cfg[z_gender];
+	const config::attribute_value& gender = cfg[z_gender];
 	if(!gender.empty())
-		return string_gender(gender);
-	const config::t_token &type = cfg[z_type];
+		return string_gender(gender.token());
+	const config::attribute_value &type = cfg[z_type];
 	if (type.empty())
 		return unit_race::MALE;
 
@@ -381,7 +381,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 
 	advance_to(cfg, type(), use_traits, state);
 	if (const config::attribute_value *v = cfg.get(z_race)) {
-		if (const unit_race *r = unit_types.find_race(*v)) {
+		if (const unit_race *r = unit_types.find_race(v->token())) {
 			race_ = r;
 		} else {
 			static const unit_race dummy_race;
@@ -417,16 +417,22 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		cfg_[z_halo] = *v;
 	}
 	if (const config::attribute_value *v = cfg.get(z_profile)) {
-		config::t_token big = *v, small = cfg[z_small_profile];
-		adjust_profile(small, big, z_empty);
-		cfg_[z_profile] = big;
-		cfg_[z_small_profile] = small;
+		config::t_token const & big = v->token();
+		config::attribute_value const & small = cfg[z_small_profile];
+		std::pair<config::t_token, config::t_token> new_profiles = adjust_profile(small.token(), big, z_empty);
+		cfg_[z_small_profile] = new_profiles.first;
+		cfg_[z_profile] = new_profiles.second;
+		//This replicates old code ///todo find a const correct way
+		if(new_profiles.second != big){
+			config::t_token & big_writable= const_cast<config::t_token &>( big);
+			big_writable = new_profiles.second;
+		}
 	}
 	max_hit_points_ = std::max(1, cfg[z_max_hitpoints].to_int(max_hit_points_));
 	max_movement_ = std::max(0, cfg[z_max_moves].to_int(max_movement_));
 	max_experience_ = std::max(1, cfg[z_max_experience].to_int(max_experience_));
 
-	std::vector<config::t_token> temp_advances = utils::split_token(cfg[z_advances_to]);
+	std::vector<config::t_token> temp_advances = utils::split_attr(cfg[z_advances_to]);
 	if(temp_advances.size() == 1 && temp_advances.front() == z_null) {
 		advances_to_.clear();
 	}else if(temp_advances.size() >= 1 && temp_advances.front() !=  z_empty ) {
@@ -564,7 +570,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		cfg_[z_upkeep] = z_full;
 	}
 
-	set_recruits(utils::split_token(cfg[z_extra_recruit]));
+	set_recruits(utils::split_attr(cfg[z_extra_recruit]));
 	cfg_.add_child(z_filter_recall, cfg.child_or_empty(z_filter_recall));
 
 	/** @todo Are these modified by read? if not they can be removed. */
@@ -807,7 +813,8 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 	foreach (const config &t, type->possible_traits())
 		{
 			// Skip the trait if the unit already has it.
-			const std::string &tid = t[z_id];
+			const config::attribute_value & atid = t[z_id];
+			const config::t_token & tid = atid.token();
 			bool already = false;
 			foreach (const config &mod, current_traits)
 				{
@@ -819,7 +826,8 @@ void unit::generate_traits(bool musthaveonly, game_state* state)
 			if (already) continue;
 
 			// Add the trait if it is mandatory.
-			const std::string &avl = t[z_availability];
+			const config::attribute_value &aavl = t[z_availability];
+			const config::t_token &avl = aavl.token();
 			if (avl == z_musthave)
 				{
 					modifications_.add_child(z_trait, t);
@@ -861,9 +869,9 @@ std::vector<config::t_token> unit::get_traits_list() const
 
 	foreach (const config &mod, modifications_.child_range(z_trait))
 		{
-			config::t_token const &id = mod[z_id];
+			config::attribute_value const &id = mod[z_id];
 			if (!id.empty())
-				res.push_back(id);
+				res.push_back(id.token());
 		}
 	return res;
 }
@@ -1024,9 +1032,9 @@ config::t_token const & unit::big_profile() const
 	static const config::t_token z_profile("profile", false);
 	static const config::t_token z_unit_image("unit_image", false);
 
-	const config::t_token &prof = cfg_[z_profile];
+	const config::attribute_value &prof = cfg_[z_profile];
 	if (!prof.empty() && prof != z_unit_image) {
-		return prof;
+		return prof.token();
 	}
 	return absolute_image();
 }
@@ -1036,9 +1044,9 @@ config::t_token const & unit::small_profile() const
 
 	static const config::t_token z_small_profile("small_profile", false);
 	static const config::t_token z_unit_image("unit_image", false);
-	const config::t_token &prof = cfg_[z_small_profile];
+	const config::attribute_value &prof = cfg_[z_small_profile];
 	if (!prof.empty() && prof != z_unit_image) {
-		return prof;
+		return prof.token();
 	}
 	return absolute_image();
 }
@@ -1535,7 +1543,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	config::attribute_value cfg_gender = cfg[z_gender];
-	if (!cfg_gender.empty() && string_gender(cfg_gender) != gender()) {
+	if (!cfg_gender.empty() && string_gender(cfg_gender.token()) != gender()) {
 		return false;
 	}
 
@@ -1553,7 +1561,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 
 	config::attribute_value cfg_has_weapon = cfg[z_has_weapon];
 	if (!cfg_has_weapon.empty()) {
-		config::t_token const & weapon = cfg_has_weapon;
+		config::t_token const & weapon = cfg_has_weapon.token();
 		bool has_weapon = false;
 		const std::vector<attack_type>& attacks = this->attacks();
 		for(std::vector<attack_type>::const_iterator i = attacks.begin();
@@ -2416,7 +2424,7 @@ utils::string_map unit::get_base_resistances() const
 		{
 			utils::string_map res;
 			foreach (const config::attribute &i, resistance.attribute_range()) {
-				res[i.first] = i.second;
+				res[i.first] = i.second.token();
 			}
 			return res;
 		}
@@ -2453,11 +2461,13 @@ std::map<std::string,std::string> unit::advancement_icons() const
 			static const config::t_token z_image("image", false);
 			static const config::t_token z_description("description", false);
 
-			const std::string &image = adv[z_image];
+			config::attribute_value const & aimage = adv[z_image];
+			const config::t_token & image = aimage.token();
 			if (image.empty()) continue;
 			std::ostringstream tooltip;
 			tooltip << temp[image];
-			const std::string &tt = adv[z_description];
+			config::attribute_value const & att = adv[z_description];
+			const config::t_token & tt = att.token();
 			if (!tt.empty())
 				tooltip << tt << '\n';
 			temp[image] = tooltip.str();
@@ -2614,10 +2624,11 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 	static const config::t_token z_new_animation("new_animation", false);
 	static const config::t_token z_ellipse("ellipse", false);
 	static const config::t_token z_name("name", false);
+	static const config::t_token z_per_level("per level", false);
 
 	//some trait activate specific flags
 	if(type == z_trait) {
-		const config::t_token& id = mod[z_id];
+		const config::attribute_value& id = mod[z_id];
 		is_fearless_ = is_fearless_ || id == z_fearless;
 		is_healthy_ = is_healthy_ || id == z_healthy;
 	}
@@ -2631,7 +2642,7 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 	foreach (const config &effect, mod.child_range(z_effect))
 		{
 			// See if the effect only applies to certain unit types
-			const std::string &type_filter = effect[z_unit_type];
+			const std::string type_filter = effect[z_unit_type];
 			if(type_filter.empty() == false) {
 				const std::vector<std::string>& types = utils::split(type_filter);
 				if(std::find(types.begin(),types.end(),type_id()) == types.end()) {
@@ -2639,7 +2650,7 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 				}
 			}
 			// See if the effect only applies to certain genders
-			const config::t_token &gender_filter = effect[z_unit_gender];
+			const config::attribute_value &gender_filter = effect[z_unit_gender];
 			if(gender_filter.empty() == false) {
 				const std::string& gender = gender_string(gender_);
 				const std::vector<std::string>& genders = utils::split(gender_filter);
@@ -2652,12 +2663,13 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 			if (const config &afilter = effect.child(z_filter))
 				if (!matches_filter(vconfig(afilter), map_location(cfg_, NULL), false ,game_map, units, teams, lua_kernel, tod_manager)) continue;
 
-			const config::t_token &apply_to = effect[z_apply_to];
-			const std::string &apply_times = effect[z_times];
+			const config::attribute_value &apply_to = effect[z_apply_to];
+			config::attribute_value const & aapply_times = effect[z_times];
+			const config::t_token & apply_times = aapply_times.token();
 			int times = 1;
 			t_string description;
 
-			if (apply_times == "per level")
+			if (apply_times == z_per_level)
 				times = level_;
 			if (times) {
 				while (times > 0) {
@@ -2668,11 +2680,16 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 						last_effect = effect;
 					} else if(apply_to == z_profile) {
 						if (const config::attribute_value *v = effect.get(z_portrait)) {
-							config::t_token big = *v;
-							config::t_token small = effect[z_small_portrait];
-							adjust_profile(small, big, z_empty);
-							cfg_[z_profile] = big;
-							cfg_[z_small_profile] = small;
+							config::t_token const & big = v->token();
+							config::attribute_value const &small = effect[z_small_portrait];
+							std::pair<config::t_token, config::t_token> new_profiles = adjust_profile(small.token(), big, z_empty);
+							cfg_[z_small_profile] = new_profiles.first;
+							cfg_[z_profile] = new_profiles.second;
+							//This replicates old code ///todo find a const correct way
+							if(new_profiles.second != big){
+								config::t_token & big_writable= const_cast<config::t_token &>( big );
+								big_writable = new_profiles.second;
+							}
 						}
 						if (const config::attribute_value *v = effect.get(z_description))
 							cfg_[z_description] = *v;
@@ -2714,26 +2731,31 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 						}
 					} else if(apply_to == z_hitpoints) {
 						LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
-						const std::string &increase_hp = effect[z_increase];
-						const std::string &increase_total = effect[z_increase_total];
-						const std::string &set_hp = effect[z_set];
-						const std::string &set_total = effect[z_set_total];
+						config::attribute_value const & aincrease_hp = effect[z_increase];
+						config::attribute_value const & aincrease_total = effect[z_increase_total];
+						config::attribute_value const & aset_hp = effect[z_set];
+						config::attribute_value const & aset_total = effect[z_set_total];
+
+						const config::t_token &increase_hp = aincrease_hp.token();
+						const config::t_token &increase_total = aincrease_total.token();
+						const config::t_token &set_hp = aset_hp.token();
+						const config::t_token &set_total = aset_total.token();
 
 						// If the hitpoints are allowed to end up greater than max hitpoints
 						const bool violate_max = effect[z_violate_maximum].to_bool();
 
 						if(set_hp.empty() == false) {
-							if(set_hp[set_hp.size()-1] == '%') {
-								hit_points_ = lexical_cast_default<int>(set_hp)*max_hit_points_/100;
+							if((*set_hp)[(*set_hp).size()-1] == '%') {
+								hit_points_ = lexical_cast_default<int>(*set_hp)*max_hit_points_/100;
 							} else {
-								hit_points_ = lexical_cast_default<int>(set_hp);
+								hit_points_ = lexical_cast_default<int>(*set_hp);
 							}
 						}
 						if(set_total.empty() == false) {
-							if(set_total[set_total.size()-1] == '%') {
-								max_hit_points_ = lexical_cast_default<int>(set_total)*max_hit_points_/100;
+							if((*set_total)[(*set_total).size()-1] == '%') {
+								max_hit_points_ = lexical_cast_default<int>(*set_total)*max_hit_points_/100;
 							} else {
-								max_hit_points_ = lexical_cast_default<int>(set_total);
+								max_hit_points_ = lexical_cast_default<int>(*set_total);
 							}
 						}
 
@@ -2766,7 +2788,8 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 						if(hit_points_ < 1)
 							hit_points_ = 1;
 					} else if(apply_to == z_movement) {
-						const std::string &increase = effect[z_increase];
+						config::attribute_value const & aincrease = effect[z_increase];
+						const config::t_token & increase = aincrease.token();
 
 						if(increase.empty() == false) {
 							if (!times)
@@ -2781,7 +2804,8 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 						if(movement_ > max_movement_)
 							movement_ = max_movement_;
 					} else if(apply_to == z_max_experience) {
-						const std::string &increase = effect[z_increase];
+						config::attribute_value const & aiincrease = effect[z_increase];
+						const config::t_token & increase = aiincrease.token();
 
 						if(increase.empty() == false) {
 							if (!times)
@@ -2794,15 +2818,15 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 					} else if(apply_to == z_loyal) {
 						cfg_[z_upkeep] = z_loyal;
 					} else if(apply_to == z_status) {
-						const config::t_token &add = effect[z_add];
-						const config::t_token &remove = effect[z_remove];
+						const config::attribute_value &add = effect[z_add];
+						const config::attribute_value &remove = effect[z_remove];
 
 						if(add.empty() == false) {
-							set_state(add, true);
+							set_state(state_t(add.to_int()), true);
 						}
 
 						if(remove.empty() == false) {
-							set_state(remove, false);
+							set_state(state_t(remove.to_int()), false);
 						}
 					} else if (apply_to == z_movement_costs) {
 						config &mv = cfg_.child_or_add(z_movement_costs);
@@ -2903,20 +2927,23 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 						}
 					}
 				} else if(apply_to == z_hitpoints) {
-					const std::string &increase_total = effect[z_increase_total];
+					config::attribute_value const & aincrease_total = effect[z_increase_total];
+					const config::t_token &increase_total = aincrease_total.token();
 
 					if(increase_total.empty() == false) {
 						description += utils::print_modifier(increase_total) + " " +
 							t_string(N_(z_HP), z_wesnoth);
 					}
 				} else if(apply_to == z_movement) {
-					const std::string &increase = effect[z_increase];
+					config::attribute_value const & aincrease = effect[z_increase];
+					const config::t_token & increase = aincrease.token();
 
 					if(increase.empty() == false) {
 						description += utils::print_modifier(increase) + t_string(N_(" move"), z_wesnoth);
 					}
 				} else if(apply_to == z_max_experience) {
-					const std::string &increase = effect[z_increase];
+					config::attribute_value const & aincrease = effect[z_increase];
+					const config::t_token & increase = aincrease.token();
 
 					if(increase.empty() == false) {
 						description += utils::print_modifier(increase) + " " +
@@ -2942,7 +2969,8 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 		} else if ((last_effect)["apply_to"] == "type") {
 			config::attribute_value &prev_type = (*new_child)["prev_type"];
 			if (prev_type.blank()) prev_type = type_id();
-			const std::string& type_id = last_effect["name"];
+			config::attribute_value const & atype_id = last_effect["name"];
+			const config::t_token &type_id = atype_id.token();
 			const unit_type* type = unit_types.find(type_id);
 			if(type) {
 				const bool heal_full = last_effect["heal_full"].to_bool(false);
@@ -2960,7 +2988,7 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 
 	t_string description;
 
-	const t_string& mod_description = mod[z_description];
+	const config::attribute_value& mod_description = mod[z_description];
 	if (!mod_description.empty()) {
 		description = mod_description + " ";
 	}
@@ -2990,16 +3018,16 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 	static const config::t_token z_male_name("male_name", false);
 	static const config::t_token z_name("name", false);
 
-	const std::string& gender_string = gender_ == unit_race::FEMALE ? z_female_name : z_male_name;
-	t_string const &gender_specific_name = trait[gender_string];
+	const config::t_token& gender_string = gender_ == unit_race::FEMALE ? z_female_name : z_male_name;
+	config::attribute_value const &gender_specific_name = trait[gender_string];
 
 	// if this is a t_string& instead of a t_string, msvc9 compiled windows binaries
 	// choke on the case where both gender_specific_name and trait[z_name] are empty.
-	const t_string& name = gender_specific_name.empty() ?
+	const config::attribute_value& name = gender_specific_name.empty() ?
 		trait[z_name] : gender_specific_name;
 
 	if(!name.empty()) {
-		trait_names_.push_back(name);
+		trait_names_.push_back(name.t_str());
 		trait_descriptions_.push_back(description);
 	}
 }
@@ -3034,7 +3062,7 @@ void unit::apply_modifications()
 	log_scope("apply mods");
 
 	for(size_t i = 0; i != NumModificationTypes; ++i) {
-		const std::string& mod = ModificationTypes[i];
+		const config::t_token& mod = ModificationTypes[i];
 		foreach (const config &m, modifications_.child_range(mod)) {
 			log_scope("add mod");
 			add_modification(ModificationTypes[i], m, true);

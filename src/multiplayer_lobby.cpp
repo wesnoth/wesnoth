@@ -435,7 +435,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		{
 			const config &era_cfg = game_config.find_child("era", "id", game["mp_era"]);
 			utils::string_map symbols;
-			symbols["era_id"] = game["mp_era"];
+			symbols["era_id"] = game["mp_era"].token();
 			if (era_cfg) {
 				games_.back().map_info = era_cfg["name"].str();
 			} else {
@@ -516,7 +516,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				}
 			} else {
 				utils::string_map symbols;
-				symbols["scenario_id"] = game["mp_scenario"];
+				symbols["scenario_id"] = game["mp_scenario"].token();
 				games_.back().map_info += vgettext("Unknown scenario: $scenario_id", symbols);
 				verified = false;
 			}

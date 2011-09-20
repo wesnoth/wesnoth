@@ -98,7 +98,7 @@ void team::team_info::read(const config &cfg)
 	gold = cfg["gold"];
 	income = cfg["income"];
 	team_name = cfg["team_name"].str();
-	user_team_name = cfg["user_team_name"];
+	user_team_name = cfg["user_team_name"].token();
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
@@ -107,7 +107,7 @@ void team::team_info::read(const config &cfg)
 	flag_icon = cfg["flag_icon"].str();
 	description = cfg["id"].str();
 	scroll_to_leader = cfg["scroll_to_leader"].to_bool(true);
-	objectives = cfg["objectives"];
+	objectives = cfg["objectives"].token();
 	objectives_changed = cfg["objectives_changed"].to_bool();
 	disallow_observers = cfg["disallow_observers"].to_bool();
 	allow_player = cfg["allow_player"].to_bool(true);
@@ -158,7 +158,7 @@ void team::team_info::read(const config &cfg)
 	}
 
 	const std::string temp_rgb_str = cfg["team_rgb"];
-	game_config::t_team_rgb_range::const_iterator global_rgb = game_config::team_rgb_range.find(cfg["side"]);
+	game_config::t_team_rgb_range::const_iterator global_rgb = game_config::team_rgb_range.find(cfg["side"].token());
 
 	if(!temp_rgb_str.empty()){
 		std::vector<Uint32> temp_rgb = string2rgb(temp_rgb_str);

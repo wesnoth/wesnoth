@@ -417,6 +417,6 @@ private:
 
 extern unit_type_data unit_types;
 
-void adjust_profile(config::t_token &small, config::t_token &big, config::t_token const &def);
+std::pair<config::t_token, config::t_token> adjust_profile(config::t_token const &small, config::t_token const &big, config::t_token const &def);
 
 #endif

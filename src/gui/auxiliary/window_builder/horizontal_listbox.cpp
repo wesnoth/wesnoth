@@ -59,7 +59,7 @@ tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 		foreach(const config &c, row.child_range("column")) {
 			list_data.push_back(string_map());
 			foreach (const config::attribute &i, c.attribute_range()) {
-				list_data.back()[i.first] = i.second;
+				list_data.back()[i.first] = i.second.t_str();
 			}
 			++col;
 		}

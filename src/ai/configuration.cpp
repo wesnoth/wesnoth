@@ -94,7 +94,7 @@ void configuration::init(const config &game_config)
 
 
 	foreach (const config &ai_configuration, ais.child_range("ai")) {
-		const std::string &id = ai_configuration["id"];
+		const std::string id = ai_configuration["id"];
 		if (id.empty()){
 
 			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration << std::endl;
@@ -119,7 +119,7 @@ void configuration::add_era_ai_from_config(const config &era)
 {
 	era_ai_configurations_.clear();
 	foreach (const config &ai_configuration, era.child_range("ai")) {
-		const std::string &id = ai_configuration["id"];
+		const std::string id = ai_configuration["id"];
 		if (id.empty()){
 
 			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration << std::endl;

@@ -826,9 +826,9 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 		else if (const config &child = cfg->child("speak"))
 		{
-			const std::string &team_name = child["team_name"];
-			const std::string &speaker_name = child["id"];
-			const std::string &message = child["message"];
+			const std::string team_name = child["team_name"];
+			const std::string speaker_name = child["id"];
+			const std::string message = child["message"];
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
 			get_replay_source().add_chat_message_location();
@@ -856,7 +856,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		else if (const config &child = cfg->child("rename"))
 		{
 			const map_location loc(child, resources::state_of_game);
-			const std::string &name = child["name"];
+			const std::string name = child["name"];
 
 			unit_map::iterator u = resources::units->find(loc);
 			if (u.valid()) {
@@ -1128,13 +1128,13 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		else if (const config &child = cfg->child("fire_event"))
 		{
 			foreach (const config &v, child.child_range("set_variable")) {
-				resources::state_of_game->set_variable(v["name"], v["value"]);
+				resources::state_of_game->set_variable(v["name"], v["value"].t_str());
 			}
-			const config::t_token &event = child["raise"];
+			const config::attribute_value &event = child["raise"];
 			if (const config &source = child.child("source")) {
-				game_events::fire(event, map_location(source, resources::state_of_game));
+				game_events::fire(event.token(), map_location(source, resources::state_of_game));
 			} else {
-				game_events::fire(event);
+				game_events::fire(event.token());
 			}
 
 		}

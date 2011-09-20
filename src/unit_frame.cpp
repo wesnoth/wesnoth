@@ -294,7 +294,7 @@ frame_builder::frame_builder(const config& cfg,const n_token::t_token& frame_str
 	} else {
 		primary_frame_ = t_false;
 	}
-	std::vector<n_token::t_token> color = utils::split_token(cfg[frame_string + z_text_color]);
+	std::vector<n_token::t_token> color = utils::split_attr(cfg[frame_string + z_text_color]);
 	if (color.size() == 3) {
 		text_color_ = display::rgb(atoi(color[0].c_str()),
 			atoi(color[1].c_str()), atoi(color[2].c_str()));
@@ -306,7 +306,7 @@ frame_builder::frame_builder(const config& cfg,const n_token::t_token& frame_str
 		duration(cfg[frame_string + z_end].to_int() - cfg[frame_string + z_begin].to_int());
 	}
 
-	color = utils::split_token(cfg[frame_string + z_blend_color]);
+	color = utils::split_attr(cfg[frame_string + z_blend_color]);
 	if (color.size() == 3) {
 		blend_with_ = display::rgb(atoi(color[0].c_str()),
 			atoi(color[1].c_str()), atoi(color[2].c_str()));

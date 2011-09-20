@@ -3318,7 +3318,7 @@ void console_handler::do_choose_level() {
 	int next = 0, nb = 0;
 	foreach (const config &sc, menu_handler_.game_config_.child_range("scenario"))
 	{
-		const std::string &id = sc["id"];
+		const std::string id = sc["id"];
 		options.push_back(id);
 		if (id == menu_handler_.gamestate_.classification().next_scenario)
 			next = nb;
@@ -3331,7 +3331,7 @@ void console_handler::do_choose_level() {
 	{
 		if (mp["id"] == scenario)
 		{
-			const std::string &id = mp["id"];
+			const std::string id = mp["id"];
 			options.push_back(id);
 			if (id == menu_handler_.gamestate_.classification().next_scenario)
 				next = nb;

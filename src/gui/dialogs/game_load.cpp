@@ -248,7 +248,7 @@ void tgame_load::display_savegame(twindow& window)
 		}
 
 		find_widget<timage>(&window, "imgLeader", false).
-				set_label(cfg_summary["leader_image"]);
+				set_label(cfg_summary["leader_image"].t_str());
 
 		find_widget<tminimap>(&window, "minimap", false).
 				set_map_data(cfg_summary["map_data"]);
@@ -286,7 +286,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str
 			}
 			utils::string_map symbols;
 			if (campaign != NULL) {
-				symbols["campaign_name"] = (*campaign)["name"];
+				symbols["campaign_name"] = (*campaign)["name"].token();
 			} else {
 				// Fallback to nontranslatable campaign id.
 				symbols["campaign_name"] = "(" + campaign_id + ")";

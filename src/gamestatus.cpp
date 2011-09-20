@@ -541,16 +541,16 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 				if (side[z_canrecruit].to_bool())
 				{
-						leader = side[z_id];
-						leader_image = side[z_image];
-						break;
+					leader = side[z_id].token();
+					leader_image = side[z_image].token();
+					break;
 				}
 
 				foreach (const config &u, side.child_range(z_unit))
 				{
 					if (u[z_canrecruit].to_bool()) {
-						leader = u[z_id];
-						leader_image = u[z_image];
+						leader = u[z_id].token();
+						leader_image = u[z_image].token();
 						break;
 					}
 				}

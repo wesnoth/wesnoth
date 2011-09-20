@@ -234,8 +234,8 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 
 	// const t_string& t_tod_type = cfg_[z_time_of_day];
 	// const t_string& t_tod_id = cfg_[z_time_of_day_id];
-	const config::t_token& tod_type = cfg_[z_time_of_day];
-	const config::t_token& tod_id = cfg_[z_time_of_day_id];
+	const config::attribute_value& tod_type = cfg_[z_time_of_day];
+	const config::attribute_value& tod_id = cfg_[z_time_of_day_id];
 	static config const dummy_cfg;
 	time_of_day tod(dummy_cfg);
 	if(!tod_type.empty() || !tod_id.empty()) {
@@ -246,7 +246,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		}
 	}
 	if(!tod_type.empty()) {
-		const std::vector<config::t_token>& vals = utils::split_token(tod_type);
+		const std::vector<config::t_token>& vals = utils::split_attr(tod_type);
 		if(tod.lawful_bonus<0) {
 			if(std::find(vals.begin(),vals.end(), z_chaotic) == vals.end()) {
 				return false;
@@ -262,8 +262,8 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 
 	if(!tod_id.empty()) {
-		if(tod_id != config::t_token(tod.id)) {
-			const std::vector<config::t_token>& vals = utils::split_token(tod_id);
+		if(tod_id != tod.id) {
+			const std::vector<config::t_token>& vals = utils::split_attr(tod_id);
 			if(std::find(vals.begin(),vals.end(),tod.id) == vals.end()) {
 				return false;
 			}

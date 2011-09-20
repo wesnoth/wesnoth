@@ -81,18 +81,6 @@ typedef boost::unordered_map<config const *, std::string const *> t_config_hashe
 t_config_hashes config_hashes;
 
 
-//Static tokens instantiated a single time as replacements for string literals
-static const config::t_token z_insert_tag("insert_tag", false);
-static const config::t_token z_name("name", false);
-static const config::t_token z_variable("variable", false);
-static const config::t_token z_x("x", false);
-static const config::t_token z_y("y", false);
-static const config::t_token z_recall("recall", false);
-static const config::t_token z_length("length", false);
-static const config::t_token z___array("__array", false);
-static const config::t_token z___value("__value", false);
-
-
 config empty_config;
 
 struct compare_str_ptr {
@@ -261,8 +249,11 @@ vconfig& vconfig::operator=(const vconfig& cfg)
 	return *this;
 }
 
-const config vconfig::get_parsed_config() const
-{
+const config vconfig::get_parsed_config() const {
+	static const config::t_token z_insert_tag("insert_tag", false);
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_variable("variable", false);
+
 	config res;
 	foreach (const config::attribute &i, cfg_->attribute_range()) {
 		res[i.first] = expand(i.first);
@@ -272,24 +263,24 @@ const config vconfig::get_parsed_config() const
 		{
 			if (child.key == z_insert_tag) {
 				vconfig insert_cfg(child.cfg);
-				const t_string& name = insert_cfg[z_name];
-				const t_string& vname = insert_cfg[z_variable];
+				const config::attribute_value& name = insert_cfg[z_name];
+				const config::attribute_value& vname = insert_cfg[z_variable];
 				if(!vconfig_recursion.insert(vname).second) {
 					throw recursion_error("vconfig::get_parsed_config() infinite recursion detected, aborting");
 				}
 				try {
 					variable_info vinfo(vname.token(), false, variable_info::TYPE_CONTAINER);
 					if(!vinfo.is_valid()) {
-						res.add_child(name); //add empty tag
+						res.add_child(name.token()); //add empty tag
 					} else if(vinfo.is_explicit_index()) {
-						res.add_child(name, vconfig(vinfo.as_container()).get_parsed_config());
+						res.add_child(name.token(), vconfig(vinfo.as_container()).get_parsed_config());
 					} else {
 						variable_info::array_range range = vinfo.as_array();
 						if(range.first == range.second) {
-							res.add_child(name); //add empty tag
+							res.add_child(name.token()); //add empty tag
 						}
 						while(range.first != range.second) {
-							res.add_child(name, vconfig(*range.first++).get_parsed_config());
+							res.add_child(name.token(), vconfig(*range.first++).get_parsed_config());
 						}
 					}
 					vconfig_recursion.erase(vname);
@@ -310,8 +301,11 @@ const config vconfig::get_parsed_config() const
 	return res;
 }
 
-vconfig::child_list vconfig::get_children(const config::t_token& key) const
-{
+vconfig::child_list vconfig::get_children(const config::t_token& key) const {
+	static const config::t_token z_insert_tag("insert_tag", false);
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_variable("variable", false);
+
 	vconfig::child_list res;
 
 	foreach (const config::any_child &child, cfg_->all_children_range())
@@ -349,6 +343,10 @@ vconfig::child_list vconfig::get_children(const std::string& key) const {return 
 
 vconfig vconfig::child(const config::t_token& key) const
 {
+	static const config::t_token z_insert_tag("insert_tag", false);
+	static const config::t_token z_name("name", false);
+	static const config::t_token z_variable("variable", false);
+
 	if (const config &natural = cfg_->child(key)) {
 		return vconfig(&natural, cache_key_);
 	}
@@ -370,6 +368,9 @@ vconfig vconfig::child(const std::string& key) const {return child(t_token(key))
 
 bool vconfig::has_child(const config::t_token& key) const
 {
+	static const config::t_token z_insert_tag("insert_tag", false);
+	static const config::t_token z_name("name", false);
+
 	if (cfg_->child(key)) {
 		return true;
 	}
@@ -414,6 +415,9 @@ vconfig::all_children_iterator::all_children_iterator(const Itor &i, const confi
 }
 
 vconfig::all_children_iterator& vconfig::all_children_iterator::operator++() {
+	static const config::t_token z_insert_tag("insert_tag", false);
+	static const config::t_token z_variable("variable", false);
+
 	if (inner_index_ >= 0 && i_->key == z_insert_tag)
 		{
 			variable_info vinfo(vconfig(i_->cfg)[z_variable].token(), false, variable_info::TYPE_CONTAINER);
@@ -450,15 +454,22 @@ vconfig::all_children_iterator::pointer vconfig::all_children_iterator::operator
 
 config::t_token vconfig::all_children_iterator::get_key() const
 {
+	static const config::t_token z_insert_tag("insert_tag", false);
+	static const config::t_token z_name("name", false);
+
 	const config::t_token &key = i_->key;
 	if (inner_index_ >= 0 && key == z_insert_tag) {
-		return vconfig(i_->cfg)[z_name];
+		config::attribute_value const & xx= vconfig(i_->cfg)[z_name];
+		return xx.token();
 	}
 	return key;
 }
 
 vconfig vconfig::all_children_iterator::get_child() const
 {
+	static const config::t_token z_insert_tag("insert_tag", false);
+	static const config::t_token z_variable("variable", false);
+
 	if (inner_index_ >= 0 && i_->key == z_insert_tag)
 		{
 			config * cp;
@@ -536,6 +547,9 @@ scoped_wml_variable::~scoped_wml_variable()
 
 void scoped_xy_unit::activate()
 {
+	static const config::t_token z_x("x", false);
+	static const config::t_token z_y("y", false);
+
 	map_location loc = map_location(x_, y_);
 	unit_map::const_iterator itor = umap_.find(loc);
 	if(itor != umap_.end()) {
@@ -558,6 +572,10 @@ void scoped_weapon_info::activate()
 
 void scoped_recall_unit::activate()
 {
+	static const config::t_token z_x("x", false);
+	static const config::t_token z_y("y", false);
+	static const config::t_token z_recall("recall", false);
+
 	const t_teams& teams = teams_manager::get_teams();
 	t_teams::const_iterator team_it;
 	for (team_it = teams.begin(); team_it != teams.end(); ++team_it) {
@@ -716,6 +734,9 @@ void activate_scope_variable(t_parsed_tokens const & tokens)
 
 
 void variable_info::init(const config::t_token& varname, bool force_valid) {
+	static const config::t_token z_length("length", false);
+	static const config::t_token z___array("__array", false);
+	static const config::t_token z___value("__value", false);
 	try {
 
 		//an example varname is  "unit_store.modifications.trait[0]"
@@ -798,7 +819,7 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 		//Process the last token
 
 		key = i->token;
-		if(i->index != t_parsed::NO_INDEX){
+		if(i->index != t_parsed::NO_INDEX && i->index != 0){
 			explicit_index_ = true;
 			size_t size = vars->child_count(key);
 			index = i->index;

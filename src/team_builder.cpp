@@ -209,7 +209,7 @@ void team_builder::gold()
 
 	log_step("gold");
 
-	n_token::t_token gold = side_cfg_[z_gold];
+	n_token::t_token gold = side_cfg_[z_gold].token();
 	if(gold.empty()) {
 		gold = z_default_gold_qty;
 	}
@@ -266,7 +266,7 @@ void team_builder::objectives()
 	// If this team has no objectives, set its objectives
 	// to the level-global z_objectives
 	if (t_->objectives().empty())
-		t_->set_objectives(level_[z_objectives], false);
+		t_->set_objectives(level_[z_objectives].t_str(), false);
 }
 
 
@@ -279,7 +279,7 @@ void team_builder::previous_recruits()
 	// can be recruited for the player, add them.
 	if (!player_cfg_) return;
 	if (const config::attribute_value *v = player_cfg_->get(z_previous_recruits)) {
-		foreach (const config::t_token &rec, utils::split_token(*v)) {
+		foreach (const config::t_token &rec, utils::split_token(v->token())) {
 			DBG_NG_TC << "adding previous recruit: " << rec << '\n';
 			t_->add_recruit(rec);
 		}
@@ -306,7 +306,7 @@ void team_builder::handle_unit(const config &u, const char *origin)
 		<< "] x=["<<u[z_x]
 		<< "] y=["<<u[z_y]
 		<<"]"<< std::endl;
-	const config::t_token &id = u[z_id];
+	const config::attribute_value &id = u[z_id];
 	if (!id.empty()) {
 		if ( seen_ids_.find(id)!=seen_ids_.end() ) {
 			//seen before

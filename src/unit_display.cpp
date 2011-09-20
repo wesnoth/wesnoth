@@ -617,10 +617,14 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 				secondary_loc = u->get_location().get_direction(dir);
 			}
 		}
-		animator.add_animation(&*u, cfg[z_flag], u->get_location(),
-			secondary_loc, cfg[z_value], cfg[z_with_bars].to_bool(),
-			cfg[z_text], text_color, hits, primary, secondary,
-			cfg[z_value_second]);
+		config::attribute_value const &  a_value_second= cfg[z_value_second];
+		config::attribute_value const &  a_flag= cfg[z_flag];
+		config::attribute_value const &  a_value= cfg[z_value];
+		config::attribute_value const &  a_text= cfg[z_text];
+		animator.add_animation(&*u, a_flag.token(), u->get_location(),
+		   secondary_loc, a_value, cfg[z_with_bars].to_bool(),
+			a_text.token(), text_color, hits, primary, secondary, a_value_second.to_int()
+			);
 	}
 	const vconfig::child_list sub_anims = cfg.get_children(z_animate);
 	vconfig::child_list::const_iterator anim_itor;

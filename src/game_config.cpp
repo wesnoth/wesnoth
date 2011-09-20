@@ -251,12 +251,12 @@ namespace game_config
 				*a2 = teamC.get("rgb");
 			if (!a1 || !a2) continue;
 			std::string const & id = *a1;
-			config::t_token const & idt = *a1;
+			config::attribute_value const & idt = *a1;
 			std::vector<Uint32> temp = string2rgb(*a2);
 			team_rgb_range.insert(std::make_pair(id,color_range(temp)));
-			team_rgb_name[id] = teamC["name"];
+			team_rgb_name[id] = teamC["name"].token();
 			//generate palette of same name;
-			std::vector<Uint32> tp = palette(team_rgb_range[idt]);
+			std::vector<Uint32> tp = palette(team_rgb_range[idt.token()]);
 			if (tp.empty()) continue;
 			team_rgb_colors.insert(std::make_pair(id,tp));
 			//if this is being used, output log of palette for artists use.

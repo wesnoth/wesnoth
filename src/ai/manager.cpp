@@ -164,7 +164,7 @@ void holder::modify_ai(const config &cfg)
 		// if not initialized, initialize now.
 		get_ai_ref();
 	}
-	const std::string &act = cfg["action"];
+	const std::string act = cfg["action"];
 	LOG_AI_MOD << "side "<< side_ << "        [modify_ai] "<<act<<" \""<<cfg["path"]<<"\""<<std::endl;
 	DBG_AI_MOD << std::endl << cfg << std::endl;
 	DBG_AI_MOD << "side "<< side_ << " before [modify_ai]"<<std::endl << to_config() << std::endl;
@@ -226,7 +226,7 @@ const std::string holder::describe_ai()
 	if (this->ai_!=NULL) {
 		return this->ai_->describe_self()+std::string(" for side ")+sidestr+std::string(" : ");
 	} else {
-		return std::string("not initialized ai with id=[")+cfg_["id"]+std::string("] for side ")+sidestr+std::string(" : ");
+		return std::string("not initialized ai with id=[")+cfg_["id"].str()+std::string("] for side ")+sidestr+std::string(" : ");
 	}
 }
 

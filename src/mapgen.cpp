@@ -1101,7 +1101,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				// '\' will be used if the road is going south east-north west
 				// The terrain will be left unchanged otherwise
 				// (if there is no clear direction).
-				const std::string &convert_to_bridge = child["convert_to_bridge"];
+				const std::string convert_to_bridge = child["convert_to_bridge"];
 				if(convert_to_bridge.empty() == false) {
 					if(step == rt.steps.begin() || step+1 == rt.steps.end())
 						continue;
@@ -1152,7 +1152,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				}
 
 				// Just a plain terrain substitution for a road
-				const std::string &convert_to = child["convert_to"];
+				const std::string convert_to = child["convert_to"];
 				if(convert_to.empty() == false) {
 					const t_translation::t_terrain letter =
 						t_translation::read_terrain_code(convert_to);
@@ -1305,7 +1305,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						t_translation::write_terrain_code(terrain[res.x][res.y]);
 					if (const config &child = cfg.find_child("village", "terrain", str))
 					{
-						const std::string &convert_to = child["convert_to"];
+						const std::string convert_to = child["convert_to"];
 						if(convert_to != "") {
 							terrain[res.x][res.y] =
 								t_translation::read_terrain_code(convert_to);

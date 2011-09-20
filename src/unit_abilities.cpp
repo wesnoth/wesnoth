@@ -291,10 +291,10 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	foreach (const config &i, cfg.child_range(z_filter_adjacent))
 	{
-		foreach (const std::string &j, utils::split(i[z_adjacent]))
+		foreach (const config::t_token j, utils::split_attr(i[z_adjacent]))
 		{
 			map_location::DIRECTION index =
-				map_location::parse_direction(j);
+				map_location::parse_direction(*j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
 			unit_map::const_iterator unit = units.find(adjacent[index]);
@@ -308,9 +308,9 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	foreach (const config &i, cfg.child_range(z_filter_adjacent_location))
 	{
-		foreach (const std::string &j, utils::split(i[z_adjacent]))
+		foreach (const config::t_token j, utils::split_attr(i[z_adjacent]))
 		{
-			map_location::DIRECTION index = map_location::parse_direction(j);
+			map_location::DIRECTION index = map_location::parse_direction(*j);
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
@@ -583,16 +583,16 @@ std::vector<t_string> attack_type::special_tooltips(bool force) const
 	foreach (const config::any_child &sp, specials.all_children_range())
 	{
 		if (force || special_active(sp.cfg, true)) {
-			const t_string &name = sp.cfg[z_name];
+			const config::attribute_value &name = sp.cfg[z_name];
 			if (!name.empty()) {
-				res.push_back(name);
-				res.push_back(sp.cfg[z_description]);
+				res.push_back(name.t_str());
+				res.push_back(sp.cfg[z_description].t_str());
 			}
 		} else {
-			t_string const &name = sp.cfg[z_name_inactive];
+			config::attribute_value const &name = sp.cfg[z_name_inactive];
 			if (!name.empty()) {
-				res.push_back(name);
-				res.push_back(sp.cfg[z_description_inactive]);
+				res.push_back(name.t_str());
+				res.push_back(sp.cfg[z_description_inactive].t_str());
 			}
 		}
 	}
@@ -614,11 +614,11 @@ config::t_token attack_type::weapon_specials(bool force) const
 	{
 		config::t_token const *s = force || special_active(sp.cfg, true) ?
 			&z_name : &z_name_inactive;
-		config::t_token const &name = sp.cfg[*s];
+		config::attribute_value const &name = sp.cfg[*s];
 
 		if (!name.empty()) {
 			if (!res.empty()) { res +=  ',' ; }
-		res += (* name );
+		res += (* name.token() );
 		}
 	}
 
@@ -666,7 +666,7 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 
 	if(attacker_) {
 		{
-			config::t_token const &active = cfg[z_active_on];
+			config::attribute_value const &active = cfg[z_active_on];
 			if (!active.empty() && active != z_offense)
 				return false;
 		}
@@ -693,7 +693,7 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 		}
 	} else {
 		{
-			config::t_token const &active = cfg[z_active_on];
+			config::attribute_value const &active = cfg[z_active_on];
 			if (!active.empty() && active != z_defense)
 				return false;
 		}
@@ -762,7 +762,7 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 
 	foreach (const config &i, cfg.child_range(z_filter_adjacent))
 	{
-		foreach (const config::t_token &j, utils::split_token(i[z_adjacent]))
+		foreach (const config::t_token &j, utils::split_attr(i[z_adjacent]))
 		{
 			map_location::DIRECTION index =
 				map_location::parse_direction(j);
@@ -777,7 +777,7 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 
 	foreach (const config &i, cfg.child_range(z_filter_adjacent_location))
 	{
-		foreach (const config::t_token &j, utils::split_token(i[z_adjacent]))
+		foreach (const config::t_token &j, utils::split_attr( (i[z_adjacent]) ))
 		{
 			map_location::DIRECTION index =
 				map_location::parse_direction(j);
@@ -805,7 +805,7 @@ bool attack_type::special_affects_opponent(const config& cfg) const
 	static const config::t_token z_attacker("attacker", false);
 
 //	log_scope("special_affects_opponent");
-	config::t_token const &apply_to = cfg[z_apply_to];
+	config::attribute_value const &apply_to = cfg[z_apply_to];
 	if (apply_to.empty())
 		return false;
 	if (apply_to == z_both)
@@ -832,7 +832,7 @@ bool attack_type::special_affects_self(const config& cfg) const
 	static const config::t_token z_defender("defender", false);
 
 //	log_scope("special_affects_self");
-	config::t_token const &apply_to = cfg[z_apply_to];
+	config::attribute_value const &apply_to = cfg[z_apply_to];
 	if (apply_to.empty())
 		return true;
 	if (apply_to == z_both)

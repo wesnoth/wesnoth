@@ -549,7 +549,7 @@ void server::load_config() {
 
 	redirected_versions_.clear();
 	foreach (const config &redirect, cfg_.child_range("redirect")) {
-		foreach (const std::string &version, utils::split(redirect["version"])) {
+		foreach (const std::string version, utils::split(redirect["version"])) {
 			redirected_versions_[version] = redirect;
 		}
 	}

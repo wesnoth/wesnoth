@@ -262,9 +262,9 @@ unit_animation::unit_animation(const config& cfg,const n_token::t_token& frame_s
 		if (sub_anims_.find(fr.key) != sub_anims_.end()) continue;
 		sub_anims_[fr.key] = particule(cfg, n_token::t_token((*fr.key).substr(0, (*fr.key).size() - 5)));
 	}
-	event_ =utils::split_token(cfg[z_apply_to]);
+	event_ =utils::split_attr(cfg[z_apply_to]);
 
-	const std::vector<n_token::t_token>& my_directions = utils::split_token(cfg[z_direction]);
+	const std::vector<n_token::t_token>& my_directions = utils::split_attr(cfg[z_direction]);
 	for(std::vector<n_token::t_token>::const_iterator i = my_directions.begin(); i != my_directions.end(); ++i) {
 		const map_location::DIRECTION d = map_location::parse_direction(*i);
 		directions_.push_back(d);
@@ -277,13 +277,13 @@ unit_animation::unit_animation(const config& cfg,const n_token::t_token& frame_s
 		secondary_unit_filter_.push_back(filter);
 	}
 
-	std::vector<n_token::t_token> value_str = utils::split_token(cfg[z_value]);
+	std::vector<n_token::t_token> value_str = utils::split_attr(cfg[z_value]);
 	std::vector<n_token::t_token>::iterator value;
 	for(value=value_str.begin() ; value != value_str.end() ; ++value) {
 		value_.push_back(atoi(value->c_str()));
 	}
 
-	std::vector<n_token::t_token> hits_str = utils::split_token(cfg[z_hits]);
+	std::vector<n_token::t_token> hits_str = utils::split_attr(cfg[z_hits]);
 	std::vector<n_token::t_token>::iterator hit;
 	for(hit=hits_str.begin() ; hit != hits_str.end() ; ++hit) {
 		if(*hit == z_yes || *hit == z_hit) {
@@ -296,7 +296,7 @@ unit_animation::unit_animation(const config& cfg,const n_token::t_token& frame_s
 			hits_.push_back(KILL);
 		}
 	}
-	std::vector<n_token::t_token> value2_str = utils::split_token(cfg[z_value_second]);
+	std::vector<n_token::t_token> value2_str = utils::split_attr(cfg[z_value_second]);
 	std::vector<n_token::t_token>::iterator value2;
 	for(value2=value2_str.begin() ; value2 != value2_str.end() ; ++value2) {
 		value2_.push_back(atoi(value2->c_str()));
@@ -542,7 +542,7 @@ static const config::t_token z_local_pois_sound("poison.ogg", false);
 		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE, z_local_1_0_600);
 		animations.back().sub_anims_[z__death_sound] = particule();
 		animations.back().sub_anims_[z__death_sound].add_frame(1,frame_builder());
-		animations.back().sub_anims_[z__death_sound].add_frame(1,frame_builder().sound(cfg[z_die_sound]),true);
+		animations.back().sub_anims_[z__death_sound].add_frame(1,frame_builder().sound(cfg[z_die_sound].token()),true);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split_token(z_victory);
@@ -761,7 +761,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 		else
 		{
-			std::vector<n_token::t_token> v = utils::split_token(anim[z_hits]);
+			std::vector<n_token::t_token> v = utils::split_attr(anim[z_hits]);
 			foreach (const n_token::t_token &hit_type, v)
 			{
 				config tmp = anim;
@@ -816,7 +816,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if(!cfg[z_die_sound].empty()) {
 			animations.back().sub_anims_[z__death_sound] = particule();
 			animations.back().sub_anims_[z__death_sound].add_frame(1,frame_builder());
-			animations.back().sub_anims_[z__death_sound].add_frame(1,frame_builder().sound(cfg[z_die_sound]),true);
+			animations.back().sub_anims_[z__death_sound].add_frame(1,frame_builder().sound(cfg[z_die_sound].token()),true);
 		}
 	}
 

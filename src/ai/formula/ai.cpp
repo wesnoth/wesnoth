@@ -926,9 +926,9 @@ void formula_ai::on_create(){
 
 	foreach (const config &func, cfg_.child_range("function"))
 	{
-		const t_string &name = func["name"];
-		const t_string &inputs = func["inputs"];
-		const t_string &formula_str = func["formula"];
+		const config::attribute_value &name = func["name"];
+		const config::attribute_value &inputs = func["inputs"];
+		const config::attribute_value &formula_str = func["formula"];
 
 		std::vector<std::string> args = utils::split(inputs);
 		try {
@@ -938,7 +938,7 @@ void formula_ai::on_create(){
 					     args);
 		}
 		catch(game_logic::formula_error& e) {
-			handle_exception(e, "Error while registering function '" + name + "'");
+			handle_exception(e, "Error while registering function '" + name.str() + "'");
 		}
 	}
 

@@ -168,7 +168,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		team_ = itor - parent_->team_names_.begin();
 	}
 	if (cfg.has_attribute("color")) {
-		color_ = game_config::color_info(cfg["color"]).index() - 1;
+		color_ = game_config::color_info(cfg["color"].token()).index() - 1;
 	}
 	llm_.set_color(color_);
 
@@ -641,7 +641,7 @@ config connect::side::get_config() const
 				if (allow_player_) {
 					const config &ai_cfg = ai::configuration::get_ai_config_for(ai_algorithm_);
 					res.add_child("ai",ai_cfg);
-					symbols["playername"] = ai_cfg["description"];
+					symbols["playername"] = ai_cfg["description"].token();
 				} else { // do not import default ai cfg here - all is set by scenario config
 					symbols["playername"] = _("Computer Player");
 				}
@@ -668,9 +668,9 @@ config connect::side::get_config() const
 		}
 		res["user_description"] = t_string(description, "wesnoth");
 	} else {
-		res["player_id"] = player_id_ + res["side"];
+		res["player_id"] = player_id_ + res["side"].str();
 		if (enabled_ && !cfg_.has_attribute("save_id")) {
-			res["save_id"] = player_id_ + res["side"];
+			res["save_id"] = player_id_ + res["side"].str();
 		}
 
 		res["user_description"] = player_id_;
@@ -963,7 +963,7 @@ void connect::side::resolve_random()
 				leader_ = types[lchoice];
 			} else {
 				utils::string_map i18n_symbols;
-				i18n_symbols["faction"] = fact["name"];
+				i18n_symbols["faction"] = fact["name"].token();
 				throw config::error(vgettext("Unable to find a leader type for faction $faction", i18n_symbols));
 			}
 		}
@@ -1373,7 +1373,7 @@ void connect::process_network_data(const config& data, const network::connection
 
 	if (const config &c = data.child("observer"))
 	{
-		const t_string &observer_name = c["name"];
+		const config::attribute_value &observer_name = c["name"];
 		if(!observer_name.empty()) {
 			connected_user_list::iterator player = find_player(observer_name);
 			if(player == users_.end()) {
@@ -1386,7 +1386,7 @@ void connect::process_network_data(const config& data, const network::connection
 	}
 	if (const config &c = data.child("observer_quit"))
 	{
-		const t_string &observer_name = c["name"];
+		const config::attribute_value &observer_name = c["name"];
 		if(!observer_name.empty()) {
 			connected_user_list::iterator player = find_player(observer_name);
 			if(player != users_.end() && find_player_side(observer_name) == -1) {
@@ -1641,7 +1641,7 @@ void connect::load_game()
 
 		if (params_.random_start_time)
 		{
-			if (!tod_manager::is_start_ToD(level_["random_start_time"]))
+			if (!tod_manager::is_start_ToD(level_["random_start_time"].token()))
 			{
 				level_["random_start_time"] = true;
 			}

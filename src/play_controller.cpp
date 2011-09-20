@@ -196,7 +196,7 @@ void play_controller::init(CVideo& video){
 		std::string save_id = get_unique_saveid(side, seen_save_ids);
 		seen_save_ids.insert(save_id);
 		if (first_human_team_ == -1) {
-			const std::string &controller = side["controller"];
+			const std::string controller = side["controller"];
 			if (controller == preferences::client_type() &&
 			    side["id"] == preferences::login()) {
 				first_human_team_ = team_num;

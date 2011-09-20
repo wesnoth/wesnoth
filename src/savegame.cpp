@@ -1001,7 +1001,7 @@ void autosave_savegame::create_filename()
 	if (gamestate().classification().label.empty())
 		filename = _("Auto-Save");
 	else
-		filename = gamestate().classification().label + "-" + _("Auto-Save") + snapshot()["turn_at"];
+		filename = gamestate().classification().label + "-" + _("Auto-Save") + snapshot()["turn_at"].str();
 
 	set_filename(filename);
 }
