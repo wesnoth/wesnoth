@@ -2,6 +2,16 @@
 
 local helper = {}
 
+--! Checks if a value equals another value or the string of the value equals the string og the other value
+function helper.check_equal(a, b)
+	return  a == b or tostring(a) == tostring(b)
+end
+
+--! Checks if a value equals another value or the string of the value equals the string og the other value
+function helper.check_not_equal(a, b)
+	return   not (a == b or tostring(a) == tostring(b))
+end
+
 --! Returns an iterator over all the sides matching a given filter that can be used in a for-in loop.
 function helper.get_sides(cfg)
 	local function f(s)
@@ -19,7 +29,7 @@ end
 
 --! Interrupts the current execution and displays a chat message that looks like a WML error.
 function helper.wml_error(m)
-	error("~wml:" .. m, 0)
+	error("~wml:" .. tostring(m), 0)
 end
 
 --! Returns an iterator over teams that can be used in a for-in loop.
@@ -40,9 +50,9 @@ function helper.get_child(cfg, name, id)
 	-- ipairs cannot be used on a vconfig object
 	for i = 1, #cfg do
 		local v = cfg[i]
-		if v[1] == name then
+		if helper.check_equal( v[1], name) then
 			local w = v[2]
-			if not id or w.id == id then return w, i end
+			if not id or helper.check_equal( w.id, id) then return w, i end
 		end
 	end
 end
@@ -56,7 +66,7 @@ function helper.child_range(cfg, tag)
 			c = cfg[i]
 			if not c then return end
 			s.i = i + 1
-		until c[1] == tag
+		until helper.check_equal( c[1] , tag) 
 		return c[2]
 	end
 	return f, { i = 1 }
@@ -71,10 +81,10 @@ function helper.modify_unit(filter, vars)
 		variable = "LUA_modify_unit",
 		kill = true
 	})
-	for i = 0, wesnoth.get_variable("LUA_modify_unit.length") - 1 do
+	for i = 0, tonumber(wesnoth.get_variable("LUA_modify_unit.length")) - 1 do
 		local u = "LUA_modify_unit[" .. i .. "]"
 		for k, v in pairs(vars) do
-			wesnoth.set_variable(u .. '.' .. k, v)
+			wesnoth.set_variable(u .. '.' .. tostring(k), v)
 		end
 		wesnoth.fire("unstore_unit", {
 			variable = u,
@@ -117,8 +127,8 @@ function helper.move_unit_fake(filter, to_x, to_y)
 		gender    = "$LUA_move_unit.gender",
 		variation = "$LUA_move_unit.variation",
 		side      = "$LUA_move_unit.side",
-		x         = from_x .. ',' .. to_x,
-		y         = from_y .. ',' .. to_y
+		x         = tostring(from_x) .. ',' .. tostring(to_x),
+		y         = tostring(from_y) .. ',' .. tostring(to_y)
 	})
 
 	wesnoth.fire("unstore_unit", { variable="LUA_move_unit", find_vacant=true })
@@ -146,9 +156,9 @@ end
 function variable_mt.__index(t, k)
 	local i = tonumber(k)
 	if i then
-		k = t.__varname .. '[' .. i .. ']'
+		k = tostring(t.__varname) .. '[' .. i .. ']'
 	else
-		k = t.__varname .. '.' .. k
+		k = tostring(t.__varname) .. '.' .. tostring(k)
 	end
 	return get_variable_proxy(k)
 end
@@ -156,9 +166,9 @@ end
 function variable_mt.__newindex(t, k, v)
 	local i = tonumber(k)
 	if i then
-		k = t.__varname .. '[' .. i .. ']'
+		k = tostring(t.__varname) .. '[' .. i .. ']'
 	else
-		k = t.__varname .. '.' .. k
+		k = tostring(t.__varname) .. '.' .. tostring(k)
 	end
 	set_variable_proxy(k, v)
 end
@@ -222,8 +232,8 @@ end
 --! @returns a table containing all the variables (starting at index 1).
 function helper.get_variable_array(var)
 	local result = {}
-	for i = 1, wesnoth.get_variable(var .. ".length") do
-		result[i] = wesnoth.get_variable(string.format("%s[%d]", var, i - 1))
+	for i = 1, wesnoth.get_variable(tostring(var) .. ".length") do
+		result[i] = wesnoth.get_variable(string.format("%s[%d]", tostring(var), i - 1))
 	end
 	return result
 end
@@ -232,7 +242,7 @@ end
 function helper.set_variable_array(var, t)
 	wesnoth.set_variable(var)
 	for i, v in ipairs(t) do
-		wesnoth.set_variable(string.format("%s[%d]", var, i - 1), v)
+		wesnoth.set_variable(string.format("%s[%d]", tostring(var), i - 1), v)
 	end
 end
 
@@ -242,8 +252,8 @@ end
 --! @returns a table containing all the variable proxies (starting at index 1).
 function helper.get_variable_proxy_array(var)
 	local result = {}
-	for i = 1, wesnoth.get_variable(var .. ".length") do
-		result[i] = get_variable_proxy(string.format("%s[%d]", var, i - 1))
+	for i = 1, wesnoth.get_variable(tostring(var) .. ".length") do
+		result[i] = get_variable_proxy(string.format("%s[%d]", tostring(var), i - 1))
 	end
 	return result
 end

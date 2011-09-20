@@ -26,7 +26,7 @@ class unit;
 bool luaW_pcall(lua_State *L , int nArgs, int nRets, bool allow_wml_error = false);
 unit *luaW_tounit(lua_State *L, int index, bool only_on_map = false);
 void luaW_pushconfig(lua_State *L, config const &cfg);
-bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta = 0);
+bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta = 0, int t_token_meta = 0);
 bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg);
 
 /**

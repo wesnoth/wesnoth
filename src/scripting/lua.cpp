@@ -79,16 +79,20 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 static std::vector<config> preload_scripts;
 static config preload_config;
 namespace {
-static const config::t_token z_this_unit("this_unit", false);
+typedef n_token::t_token t_token;
+
 }
 
 void extract_preload_scripts(config const &game_config)
 {
+	static const config::t_token & z_lua( generate_safe_static_const_t_interned(n_token::t_token("lua")) );
+	static const config::t_token & z_game_config( generate_safe_static_const_t_interned(n_token::t_token("game_config")) );
+
 	preload_scripts.clear();
-	foreach (config const &cfg, game_config.child_range("lua")) {
+	foreach (config const &cfg, game_config.child_range(z_lua)) {
 		preload_scripts.push_back(cfg);
 	}
-	preload_config = game_config.child("game_config");
+	preload_config = game_config.child(z_game_config);
 }
 
 /**
@@ -100,6 +104,7 @@ struct queued_event_context
 	static qe const *current_qe;
 	static qe const &get();	
 	static bool initialize_current_qe();
+
 	qe const *previous_qe;
 
 	queued_event_context(qe const *new_qe) : previous_qe(current_qe) {
@@ -118,10 +123,18 @@ bool queued_event_context::initialize_current_qe(){
 /** Force correct static initialization since flow of control must initialize current_qe and then default_qe 
  */
 game_events::queued_event const & queued_event_context::get() { 
+	static const config::t_token & z__from_lua( generate_safe_static_const_t_interned(n_token::t_token("_from_lua")) );
+
+	//This code is make certain that current_qe and default_qe are initialized even if this file is linked in after the
+	//code htat is calling queued_event_context::get()
+	//Both of the static lines are one once during static initialization and then never again
+
 	static const bool is_init = initialize_current_qe();
-	(void) is_init; //Hide unused variable warning;
 	//Do not change this pointer to a static reference
-	static qe * default_qe = new qe(config::t_token("_from_lua"), map_location(), map_location(), config());
+	static qe * default_qe = new qe(config::t_token(z__from_lua), map_location(), map_location(), config());
+
+	(void) is_init; //Hide unused variable warning;
+
 	return *(current_qe ? current_qe : default_qe); }
 
 
@@ -135,6 +148,7 @@ static char const gettypeKey = 0;
 static char const getraceKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
+static char const t_tokenKey = 0;
 static char const unitvarKey = 0;
 static char const ustatusKey = 0;
 static char const vconfigKey = 0;
@@ -170,6 +184,17 @@ static void luaW_pushtstring(lua_State *L, t_string const &v)
 	lua_setmetatable(L, -2);
 }
 
+/**
+ * Pushes a t_token on the top of the stack.
+ */
+static void luaW_push_t_token(lua_State *L, n_token::t_token const &v)
+{
+	new(lua_newuserdata(L, sizeof(n_token::t_token))) n_token::t_token(v);
+	lua_pushlightuserdata(L, (void *)&t_tokenKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+}
+
 struct luaW_pushscalar_visitor : public config::attribute_value::default_visitor {
 	using default_visitor::operator();
 	lua_State *L;
@@ -185,13 +210,11 @@ struct luaW_pushscalar_visitor : public config::attribute_value::default_visitor
 	void operator()(t_string const &s)
 	{ luaW_pushtstring(L, s); }
 	void operator()(config::t_token const &s)
-	{ lua_pushstring(L, s.c_str()); }
-	void operator()(t_string const &s) const
-	{ luaW_pushtstring(L, s); }
+	{ luaW_push_t_token(L, s ); }
 };
 
 /**
- * Converts a string into a Lua object pushed at the top of the stack.
+ * Converts aa attribute_value into a Lua object pushed at the top of the stack.
  */
 static void luaW_pushscalar(lua_State *L, config::attribute_value const &v) {
 	luaW_pushscalar_visitor visitor(L);
@@ -219,9 +242,12 @@ static bool luaW_hasmetatable(lua_State *L
  */
 static bool luaW_totstring(lua_State *L, int index, t_string &str)
 {
+	static const config::t_token & z_yes( generate_safe_static_const_t_interned(n_token::t_token("yes")) );
+	static const config::t_token & z_no( generate_safe_static_const_t_interned(n_token::t_token("no")) );
+
 	switch (lua_type(L, index)) {
 		case LUA_TBOOLEAN:
-			str = lua_toboolean(L, index) ? "yes" : "no";
+			str = lua_toboolean(L, index) ? z_yes : z_no;
 			break;
 		case LUA_TNUMBER:
 		case LUA_TSTRING:
@@ -229,8 +255,12 @@ static bool luaW_totstring(lua_State *L, int index, t_string &str)
 			break;
 		case LUA_TUSERDATA:
 		{
-			if (!luaW_hasmetatable(L, index, tstringKey)) return false;
-			str = *static_cast<t_string *>(lua_touserdata(L, index));
+			if (luaW_hasmetatable(L, index, t_tokenKey)) {
+				str = t_string(*static_cast<t_token *>(lua_touserdata(L, index))); }
+			else if (luaW_hasmetatable(L, index, tstringKey)) {
+				str = *static_cast<t_string *>(lua_touserdata(L, index)); } 
+			else {
+				return false;}
 			break;
 		}
 		default:
@@ -251,6 +281,48 @@ static t_string luaW_checktstring(lua_State *L, int index)
 }
 
 /**
+ * Converts a scalar to a t_token
+ */
+static bool luaW_to_t_token(lua_State *L, int index, t_token &str) {
+
+	static const config::t_token & z_yes( generate_safe_static_const_t_interned(n_token::t_token("yes")) );
+	static const config::t_token & z_no( generate_safe_static_const_t_interned(n_token::t_token("no")) );
+	switch (lua_type(L, index)) {
+		case LUA_TBOOLEAN:
+			str = lua_toboolean(L, index) ? z_yes : z_no;
+			break;
+		case LUA_TNUMBER:
+		case LUA_TSTRING:
+			str = t_token(std::string(lua_tostring(L, index)));
+			break;
+		case LUA_TUSERDATA:
+		{
+			if (luaW_hasmetatable(L, index, t_tokenKey)) {
+				str = *static_cast<t_token *>(lua_touserdata(L, index)); }
+			else if (luaW_hasmetatable(L, index, tstringKey)) {
+				str = static_cast<t_string *>(lua_touserdata(L, index))->token(); } 
+			else {
+				return false;}
+			break;
+		}
+		default:
+			return false;
+	}
+	return true;
+}
+
+/**
+ * Converts a scalar to a t_token
+ */
+static t_token luaW_check_t_token(lua_State *L, int index)
+{
+	t_token result;
+	if (!luaW_to_t_token(L, index, result))
+		luaL_typerror(L, index, "t_token string");
+	return result;
+}
+
+/**
  * Converts a config object to a Lua table.
  * The destination table should be at the top of the stack on entry. It is
  * still at the top on exit.
@@ -264,7 +336,7 @@ static void luaW_filltable(lua_State *L, config const &cfg)
 	foreach (const config::any_child &ch, cfg.all_children_range())
 	{
 		lua_createtable(L, 2, 0);
-		lua_pushstring(L, ch.key.c_str());
+		luaW_push_t_token(L, ch.key );
 		lua_rawseti(L, -2, 1);
 		lua_newtable(L);
 		luaW_filltable(L, ch.cfg);
@@ -293,11 +365,12 @@ void luaW_pushconfig(lua_State *L, config const &cfg)
 /**
  * Converts an optional table or vconfig to a config object.
  * @param tstring_meta absolute stack position of t_string's metatable, or 0 if none.
+ * @param t_token_meta absolute stack position of t_token's metatable, or 0 if none.
  * @return false if some attributes had not the proper type.
  * @note If the table has holes in the integer keys or floating-point keys,
  *       some keys will be ignored and the error will go undetected.
  */
-bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
+bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta, int t_token_meta)
 {
 	if (!lua_checkstack(L, LUA_MINSTACK))
 		return false;
@@ -320,7 +393,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 		}
 		case LUA_TNONE:
 		case LUA_TNIL:
-			return true;
+			//return true;
 		default:
 			return false;
 	}
@@ -332,16 +405,23 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 		tstring_meta = initial_top + 1;
 	}
 
+	// Get t_token's metatable, so that it can be used later to detect t_token object.
+	if (!t_token_meta) {
+		lua_pushlightuserdata(L, (void *)&t_tokenKey);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		t_token_meta = initial_top + 2;
+	}
+
 	// First convert the children (integer indices).
 	for (int i = 1, i_end = lua_objlen(L, index); i <= i_end; ++i)
 	{
 		lua_rawgeti(L, index, i);
 		if (!lua_istable(L, -1)) return_misformed();
 		lua_rawgeti(L, -1, 1);
-		char const *m = lua_tostring(L, -1);
-		if (!m) return_misformed();
+		//char const *m = lua_tostring(L, -1);
+		t_token m = luaW_check_t_token(L, -1);
 		lua_rawgeti(L, -2, 2);
-		if (!luaW_toconfig(L, -1, cfg.add_child(m), tstring_meta))
+		if (!luaW_toconfig(L, -1, cfg.add_child(m), tstring_meta, t_token_meta))
 			return_misformed();
 		lua_pop(L, 3);
 	}
@@ -350,8 +430,8 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 	for (lua_pushnil(L); lua_next(L, index); lua_pop(L, 1))
 	{
 		if (lua_isnumber(L, -2)) continue;
-		if (!lua_isstring(L, -2)) return_misformed();
-		config::attribute_value &v = cfg[lua_tostring(L, -2)];
+		t_token key = luaW_check_t_token(L, -2);
+		config::attribute_value &v = cfg[key]; 
 		switch (lua_type(L, -1)) {
 			case LUA_TBOOLEAN:
 				v = bool(lua_toboolean(L, -1));
@@ -360,15 +440,22 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 				v = lua_tonumber(L, -1);
 				break;
 			case LUA_TSTRING:
-				v = lua_tostring(L, -1);
+				v = t_token(std::string(lua_tostring(L, -1)));
 				break;
 			case LUA_TUSERDATA:
 			{
 				if (!lua_getmetatable(L, -1)) return_misformed();
 				bool tstr = lua_rawequal(L, -1, tstring_meta) != 0;
+				bool is_token = lua_rawequal(L, -1, t_token_meta) != 0;
 				lua_pop(L, 1);
-				if (!tstr) return_misformed();
-				v = *static_cast<t_string *>(lua_touserdata(L, -1));
+				if (tstr){ 
+					v = *static_cast<t_string *>(lua_touserdata(L, -1));
+				}
+				else if (is_token){ 
+					v = *static_cast<t_token *>(lua_touserdata(L, -1)); 
+				}
+				else {
+					return_misformed();}
 				break;
 			}
 			default:
@@ -416,7 +503,7 @@ bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 			break;
 		case LUA_TNONE:
 		case LUA_TNIL:
-			break;
+			//break;
 		default:
 			return false;
 	}
@@ -465,27 +552,23 @@ bool luaW_pcall(lua_State *L
 		 * When an exception is thrown which doesn't derive from
 		 * std::exception m will be NULL pointer.
 		 */
-		char const *m = lua_tostring(L, -1);
-		if(m) {
-			if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
-				m += 5;
-				char const *e = strstr(m, "stack traceback");
-				lg::wml_error << std::string(m, e ? e - m : strlen(m));
-			} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
-				m += 5;
-				char const *e = NULL, *em = m;
-				while (em[0] && ((em = strstr(em + 1, "stack traceback"))))
+		char const *m = lua_tostring(L, -1);	
+		if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
+			m += 5;
+			char const *e = strstr(m, "stack traceback");
+			lg::wml_error << std::string(m, e ? e - m : strlen(m));
+		} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
+			m += 5;
+			char const *e = NULL, *em = m;
+			while (em[0] && ((em = strstr(em + 1, "stack traceback"))))
 #ifdef _MSC_VER
 #pragma warning (pop)
 #endif
-					e = em;
-				chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
-			} else {
-				ERR_LUA << m << '\n';
-				chat_message("Lua error", m);
-			}
+				e = em;
+			chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
 		} else {
-			chat_message("Lua caught unknown exception", "");
+			ERR_LUA << m << '\n';
+			chat_message("Lua error", m);
 		}
 		lua_pop(L, 2);
 		return false;
@@ -667,12 +750,129 @@ static int impl_tstring_tostring(lua_State *L)
 }
 
 /**
+ * Converts a Lua value at position @a src and appends it to @a dst.
+ * @note This function is private to lua_t_token_concat. It expects two things.
+ *       First, the t_token metatable is at the top of the stack on entry. (It
+ *       is still there on exit.) Second, the caller hasn't any valuable object
+ *       with dynamic lifetime, since they would be leaked on error.
+ */
+static void t_token_concat_aux(lua_State *L, t_token &dst, int src)
+{
+	switch (lua_type(L, src)) {
+		case LUA_TNUMBER:
+		case LUA_TSTRING:
+			dst = t_token(*dst + lua_tostring(L, src));
+			break;
+		case LUA_TUSERDATA:
+			// Compare its metatable with t_token's metatable.
+			if (!lua_getmetatable(L, src) || !lua_rawequal(L, -1, -2))
+				luaL_typerror(L, src, "string");
+			dst = t_token( dst + *static_cast<t_token *>(lua_touserdata(L, src)) );
+			lua_pop(L, 1);
+			break;
+		default:
+			luaL_typerror(L, src, "string");
+	}
+}
+
+/**
+ * Appends a scalar to a t_token object (__concat metamethod).
+ */
+static int impl_t_token_concat(lua_State *L)
+{
+	// Create a new t_token.
+	t_token *t = new(lua_newuserdata(L, sizeof(t_token))) t_token;
+
+	lua_pushlightuserdata(L, (void *)&t_tokenKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+
+	// Append both arguments to t.
+	t_token_concat_aux(L, *t, 1);
+	t_token_concat_aux(L, *t, 2);
+
+	lua_setmetatable(L, -2);
+	return 1;
+}
+
+/**
+ * Destroys a t_token object before it is collected (__gc metamethod).
+ */
+static int impl_t_token_collect(lua_State *L)
+{
+	t_token *t = static_cast<t_token *>(lua_touserdata(L, 1));
+	t->t_token::~t_token();
+	return 0;
+}
+
+/**
+ * Converts a t_token object to a string (__tostring metamethod);
+ * that is, performs a translation.
+ */
+static int impl_t_token_tostring(lua_State *L)
+{
+	t_token *t = static_cast<t_token *>(lua_touserdata(L, 1));
+	lua_pushstring(L, t->c_str());
+	return 1;
+}
+
+/**
+ * Converts a t_token object to a numer (__tostring metamethod);
+ * that is, performs a translation.
+ */
+static int impl_t_token_tonumber(lua_State *L)
+{
+	t_token *t = static_cast<t_token *>(lua_touserdata(L, 1));
+
+	std::istringstream is(*t);
+	int i;
+	char extra_char;
+	if( (is >> i) && ! is.get(extra_char) ) { 
+		lua_pushnumber(L, i); 
+	} else {
+		is.clear();
+		is.str(*t);
+		double d;
+		if( (is >> d) && ! is.get(extra_char) ) { 
+			lua_pushnumber(L, d); 
+		} else { 
+			lua_pushnil(L); }
+	}
+	return 1;
+}
+/**
+ * Compares  t_token objects 
+ */
+static int impl_t_token_eq(lua_State *L)
+{
+	t_token *left = static_cast<t_token *>(lua_touserdata(L, 1));
+	t_token *right = static_cast<t_token *>(lua_touserdata(L, 2));
+	lua_pushboolean(L, *left == *right );
+	return 1;
+}
+
+/**
+ * Debugging function to check for unexpected access to token
+ */
+static int impl_t_token_index(lua_State *L)
+{
+	t_token *tk = static_cast<t_token *>(lua_touserdata(L, 1));
+	t_token m = luaW_check_t_token(L, 2);
+	std::cerr<<"Token __index for "<<tk<<" asking for "<<m<<"\n";
+	return 0;
+}
+
+/**
  * Gets the parsed field of a vconfig object (_index metamethod).
  * Special fields __literal, __shallow_literal, __parsed, and
  * __shallow_parsed, return Lua tables.
  */
 static int impl_vconfig_get(lua_State *L)
 {
+	static const config::t_token & z___literal( generate_safe_static_const_t_interned(n_token::t_token("__literal")) );
+	static const config::t_token & z___parsed( generate_safe_static_const_t_interned(n_token::t_token("__parsed")) );
+	static const config::t_token & z___shallow_literal( generate_safe_static_const_t_interned(n_token::t_token("__shallow_literal")) );
+	static const config::t_token & z___shallow_parsed( generate_safe_static_const_t_interned(n_token::t_token("__shallow_parsed")) );
+
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
 
 	if (lua_isnumber(L, 2))
@@ -683,7 +883,7 @@ static int impl_vconfig_get(lua_State *L)
 		if (pos >= len) return 0;
 		std::advance(i, pos);
 		lua_createtable(L, 2, 0);
-		lua_pushstring(L, i.get_key().c_str());
+		luaW_push_t_token(L, i.get_key() );
 		lua_rawseti(L, -2, 1);
 		new(lua_newuserdata(L, sizeof(vconfig))) vconfig(i.get_child());
 		lua_pushlightuserdata(L, (void *)&vconfigKey);
@@ -693,18 +893,19 @@ static int impl_vconfig_get(lua_State *L)
 		return 1;
 	}
 
-	char const *m = luaL_checkstring(L, 2);
-	if (strcmp(m, "__literal") == 0) {
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
+	if (m == z___literal) {
 		luaW_pushconfig(L, v->get_config());
 		return 1;
 	}
-	if (strcmp(m, "__parsed") == 0) {
+	if (m == z___parsed) {
 		luaW_pushconfig(L, v->get_parsed_config());
 		return 1;
 	}
 
-	bool shallow_literal = strcmp(m, "__shallow_literal") == 0;
-	if (shallow_literal || strcmp(m, "__shallow_parsed") == 0)
+	bool shallow_literal = m == z___shallow_literal;
+	if (shallow_literal || m == z___shallow_parsed)
 	{
 		lua_newtable(L);
 		foreach (const config::attribute &a, v->get_config().attribute_range()) {
@@ -723,7 +924,7 @@ static int impl_vconfig_get(lua_State *L)
 		for (int j = 1; i != i_end; ++i, ++j)
 		{
 			lua_createtable(L, 2, 0);
-			lua_pushstring(L, i.get_key().c_str());
+			luaW_push_t_token(L, i.get_key());
 			lua_rawseti(L, -2, 1);
 			luaW_pushvconfig(L, i.get_child());
 			lua_rawseti(L, -2, 2);
@@ -732,7 +933,7 @@ static int impl_vconfig_get(lua_State *L)
 		return 1;
 	}
 
-	if (v->null() || !v->has_attribute(m)) return 0;
+	if (v->null() || !v->has_attribute(m)) { return 0; }
 	luaW_pushscalar(L, (*v)[m]);
 	return 1;
 }
@@ -758,41 +959,48 @@ static int impl_vconfig_collect(lua_State *L)
 	return 0;
 }
 
-#define return_tstring_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
-		luaW_pushtstring(L, accessor); \
+
+#define return_tstring_attrib(name, accessor)	\
+	if (m == name) {							\
+		luaW_pushtstring(L, (accessor));		\
+		return 1;								\
+	}
+
+#define return_t_token_attrib(name, accessor) \
+	if (m == name) { \
+		luaW_pusht_token(L, (accessor)); \
 		return 1; \
 	}
 
 #define return_cstring_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
-		lua_pushstring(L, accessor); \
+	if (m == name) { \
+		lua_pushstring(L, (accessor)); \
 		return 1; \
 	}
 
 #define return_string_attrib(name, accessor) \
-	return_cstring_attrib(name, accessor.c_str())
+	return_cstring_attrib(name, (accessor).c_str())
 
 #define return_int_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
-		lua_pushinteger(L, accessor); \
+	if (m == name) { \
+		lua_pushinteger(L, (accessor)); \
 		return 1; \
 	}
 
 #define return_float_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
-		lua_pushnumber(L, accessor); \
+	if (m == name) { \
+		lua_pushnumber(L, (accessor)); \
 		return 1; \
 	}
 
 #define return_bool_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
-		lua_pushboolean(L, accessor); \
+	if (m == name) { \
+		lua_pushboolean(L, (accessor)); \
 		return 1; \
 	}
 
 #define return_cfg_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
+	if (m == name) { \
 		config cfg; \
 		accessor; \
 		luaW_pushconfig(L, cfg); \
@@ -800,76 +1008,90 @@ static int impl_vconfig_collect(lua_State *L)
 	}
 
 #define return_cfgref_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
-		luaW_pushconfig(L, accessor); \
+	if (m == name) { \
+		luaW_pushconfig(L, (accessor)); \
 		return 1; \
 	}
 
 #define return_vector_t_token_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
-		const std::vector<config::t_token>& vector = accessor; \
+	if (m == name) { \
+		const std::vector<config::t_token>& vector = (accessor); \
 		lua_createtable(L, vector.size(), 0); \
 		int i = 1; \
 		foreach (const config::t_token & s, vector) { \
-			lua_pushstring(L, s.c_str()); \
+			luaW_push_t_token(L, s); \
 			lua_rawseti(L, -2, i); \
 			++i; \
 		} \
 		return 1; \
 	}
 
+
 #define modify_tstring_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
+	if (m == name) { \
 		t_string value = luaW_checktstring(L, 3); \
-		accessor; \
+		(accessor); \
+		return 0; \
+	}
+
+#define modify_t_token_attrib(name, accessor) \
+	if (m == name) { \
+		t_token value = luaW_check_t_token(L, 3); \
+		(accessor); \
 		return 0; \
 	}
 
 #define modify_string_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
+	if (m == name) { \
 		const char *value = luaL_checkstring(L, 3); \
-		accessor; \
+		(accessor); \
 		return 0; \
 	}
 
 #define modify_int_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
+	if (m == (name)) {						 \
 		int value = luaL_checkinteger(L, 3); \
 		accessor; \
 		return 0; \
 	}
 
 #define modify_int_attrib_check_range(name, accessor, allowed_min, allowed_max) \
-	if (strcmp(m, name) == 0) { \
+	if (m == name) { \
 		int value = luaL_checkinteger(L, 3); \
 		if (value < allowed_min || allowed_max < value) return luaL_argerror(L, 3, "out of bounds"); \
-		accessor; \
+		(accessor); \
 		return 0; \
 	}
 
 #define modify_bool_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
+	if (m == name) { \
 		bool value = lua_toboolean(L, 3); \
-		accessor; \
+		(accessor); \
 		return 0; \
 	}
 
 #define modify_vector_t_token_attrib(name, accessor) \
-	if (strcmp(m, name) == 0) { \
+	if (m == name) { \
 		std::vector<config::t_token> vector; \
-		char const* message = "table with unnamed indices holding strings expected"; \
+		char const* message = "table with unnamed indices holding t_tokens expected"; \
 		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message); \
 		unsigned length = lua_objlen(L, 3); \
 		for (unsigned i = 1; i <= length; ++i) { \
 			lua_rawgeti(L, 3, i); \
-			char const* string = lua_tostring(L, 4); \
-			if(!string) return luaL_argerror(L, 2 + i, message); \
-			vector.push_back(config::t_token( string )); \
+			t_token tk; \
+			bool is_good = luaW_to_t_token(L, 4, tk);			 \
+			if(! is_good) return luaL_argerror(L, 2 + i, message); \
+			vector.push_back( tk ); \
 			lua_pop(L, 1); \
 		} \
-		accessor; \
+		(accessor); \
 		return 0; \
 	}
+
+
+
+
+
 
 /**
  * Gets some data on a unit type (__index metamethod).
@@ -879,21 +1101,31 @@ static int impl_vconfig_collect(lua_State *L)
  */
 static int impl_unit_type_get(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 2);
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_max_hitpoints( generate_safe_static_const_t_interned(n_token::t_token("max_hitpoints")) );
+	static const config::t_token & z_max_moves( generate_safe_static_const_t_interned(n_token::t_token("max_moves")) );
+	static const config::t_token & z_max_experience( generate_safe_static_const_t_interned(n_token::t_token("max_experience")) );
+	static const config::t_token & z_cost( generate_safe_static_const_t_interned(n_token::t_token("cost")) );
+	static const config::t_token & z_level( generate_safe_static_const_t_interned(n_token::t_token("level")) );
+	static const config::t_token & z___cfg( generate_safe_static_const_t_interned(n_token::t_token("__cfg")) );
+
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	lua_pushstring(L, "id");
 	lua_rawget(L, 1);
-	const unit_type *utp = unit_types.find(lua_tostring(L, -1));
+	t_token type_id = luaW_check_t_token(L, -1);
+	const unit_type *utp = unit_types.find(type_id);
 	if (!utp) return luaL_argerror(L, 1, "unknown unit type");
 	unit_type const &ut = *utp;
 
 	// Find the corresponding attribute.
-	return_tstring_attrib("name", ut.type_name());
-	return_int_attrib("max_hitpoints", ut.hitpoints());
-	return_int_attrib("max_moves", ut.movement());
-	return_int_attrib("max_experience", ut.experience_needed());
-	return_int_attrib("cost", ut.cost());
-	return_int_attrib("level", ut.level());
-	return_cfgref_attrib("__cfg", ut.get_cfg());
+	return_tstring_attrib(z_name, ut.type_name());
+	return_int_attrib(z_max_hitpoints, ut.hitpoints());
+	return_int_attrib(z_max_moves, ut.movement());
+	return_int_attrib(z_max_experience, ut.experience_needed());
+	return_int_attrib(z_cost, ut.cost());
+	return_int_attrib(z_level, ut.level());
+	return_cfgref_attrib(z___cfg, ut.get_cfg());
 	return 0;
 }
 
@@ -905,19 +1137,28 @@ static int impl_unit_type_get(lua_State *L)
  */
 static int impl_race_get(lua_State* L)
 {
-	char const* m = luaL_checkstring(L, 2);
+	static const config::t_token & z_description( generate_safe_static_const_t_interned(n_token::t_token("description")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_num_traits( generate_safe_static_const_t_interned(n_token::t_token("num_traits")) );
+	static const config::t_token & z_plural_name( generate_safe_static_const_t_interned(n_token::t_token("plural_name")) );
+	static const config::t_token & z_ignore_global_traits( generate_safe_static_const_t_interned(n_token::t_token("ignore_global_traits")) );
+	static const config::t_token & z___cfg( generate_safe_static_const_t_interned(n_token::t_token("__cfg")) );
+
+	//char const* m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	lua_pushstring(L, "id");
 	lua_rawget(L, 1);
-	const unit_race* raceptr = unit_types.find_race(config::t_token( lua_tostring(L, -1) ));
+	t_token tk = luaW_check_t_token(L, -1);
+	const unit_race* raceptr = unit_types.find_race( tk );
 	if(!raceptr) return luaL_argerror(L, 1, "unknown race");
 	unit_race const &race = *raceptr;
 
-	return_tstring_attrib("description", race.description());
-	return_tstring_attrib("name", race.name());
-	return_int_attrib("num_traits", race.num_traits());
-	return_tstring_attrib("plural_name", race.plural_name());
-	return_bool_attrib("ignore_global_traits", !race.uses_global_traits());
-	return_cfgref_attrib("__cfg", race.get_cfg());
+	return_tstring_attrib(z_description, race.description());
+	return_tstring_attrib(z_name, race.name());
+	return_int_attrib(z_num_traits, race.num_traits());
+	return_tstring_attrib(z_plural_name, race.plural_name());
+	return_bool_attrib(z_ignore_global_traits, !race.uses_global_traits());
+	return_cfgref_attrib(z___cfg, race.get_cfg());
 
 	return 0;
 }
@@ -940,11 +1181,40 @@ static int impl_unit_collect(lua_State *L)
  */
 static int impl_unit_get(lua_State *L)
 {
+
+	static const config::t_token & z_valid( generate_safe_static_const_t_interned(n_token::t_token("valid")) );
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+	static const config::t_token & z_loc( generate_safe_static_const_t_interned(n_token::t_token("loc")) );
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+	static const config::t_token & z_type( generate_safe_static_const_t_interned(n_token::t_token("type")) );
+	static const config::t_token & z_hitpoints( generate_safe_static_const_t_interned(n_token::t_token("hitpoints")) );
+	static const config::t_token & z_max_hitpoints( generate_safe_static_const_t_interned(n_token::t_token("max_hitpoints")) );
+	static const config::t_token & z_experience( generate_safe_static_const_t_interned(n_token::t_token("experience")) );
+	static const config::t_token & z_max_experience( generate_safe_static_const_t_interned(n_token::t_token("max_experience")) );
+	static const config::t_token & z_moves( generate_safe_static_const_t_interned(n_token::t_token("moves")) );
+	static const config::t_token & z_max_moves( generate_safe_static_const_t_interned(n_token::t_token("max_moves")) );
+	static const config::t_token & z_max_attacks( generate_safe_static_const_t_interned(n_token::t_token("max_attacks")) );
+	static const config::t_token & z_attacks_left( generate_safe_static_const_t_interned(n_token::t_token("attacks_left")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_canrecruit( generate_safe_static_const_t_interned(n_token::t_token("canrecruit")) );
+	static const config::t_token & z_extra_recruit( generate_safe_static_const_t_interned(n_token::t_token("extra_recruit")) );
+	static const config::t_token & z_advances_to( generate_safe_static_const_t_interned(n_token::t_token("advances_to")) );
+	static const config::t_token & z_status( generate_safe_static_const_t_interned(n_token::t_token("status")) );
+	static const config::t_token & z_variables( generate_safe_static_const_t_interned(n_token::t_token("variables")) );
+	static const config::t_token & z_hidden( generate_safe_static_const_t_interned(n_token::t_token("hidden")) );
+	static const config::t_token & z_petrified( generate_safe_static_const_t_interned(n_token::t_token("petrified")) );
+	static const config::t_token & z_resting( generate_safe_static_const_t_interned(n_token::t_token("resting")) );
+	static const config::t_token & z_role( generate_safe_static_const_t_interned(n_token::t_token("role")) );
+	static const config::t_token & z_facing( generate_safe_static_const_t_interned(n_token::t_token("facing")) );
+	static const config::t_token & z___cfg( generate_safe_static_const_t_interned(n_token::t_token("__cfg")) );
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
-	char const *m = luaL_checkstring(L, 2);
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	unit const *pu = lu->get();
 
-	if (strcmp(m, "valid") == 0)
+	if (m == z_valid)
 	{
 		if (!pu) return 0;
 		if (lu->on_map())
@@ -960,31 +1230,31 @@ static int impl_unit_get(lua_State *L)
 	unit const &u = *pu;
 
 	// Find the corresponding attribute.
-	return_int_attrib("x", u.get_location().x + 1);
-	return_int_attrib("y", u.get_location().y + 1);
-	if (strcmp(m, "loc") == 0) {
+	return_int_attrib(z_x, u.get_location().x + 1);
+	return_int_attrib(z_y, u.get_location().y + 1);
+	if (m == z_loc) {
 		lua_pushinteger(L, u.get_location().x + 1);
 		lua_pushinteger(L, u.get_location().y + 1);
 		return 2;
 	}
-	return_int_attrib("side", u.side());
-	return_string_attrib("id", u.id());
-	return_string_attrib("type", u.type_id());
-	return_int_attrib("hitpoints", u.hitpoints());
-	return_int_attrib("max_hitpoints", u.max_hitpoints());
-	return_int_attrib("experience", u.experience());
-	return_int_attrib("max_experience", u.max_experience());
-	return_int_attrib("moves", u.movement_left());
-	return_int_attrib("max_moves", u.total_movement());
-	return_int_attrib("max_attacks", u.max_attacks());
-	return_int_attrib("attacks_left", u.attacks_left());
-	return_tstring_attrib("name", u.name());
-	return_bool_attrib("canrecruit", u.can_recruit());
+	return_int_attrib(z_side, u.side());
+	return_string_attrib(z_id, u.id());
+	return_string_attrib(z_type, u.type_id());
+	return_int_attrib(z_hitpoints, u.hitpoints());
+	return_int_attrib(z_max_hitpoints, u.max_hitpoints());
+	return_int_attrib(z_experience, u.experience());
+	return_int_attrib(z_max_experience, u.max_experience());
+	return_int_attrib(z_moves, u.movement_left());
+	return_int_attrib(z_max_moves, u.total_movement());
+	return_int_attrib(z_max_attacks, u.max_attacks());
+	return_int_attrib(z_attacks_left, u.attacks_left());
+	return_tstring_attrib(z_name, u.name());
+	return_bool_attrib(z_canrecruit, u.can_recruit());
 
-	return_vector_t_token_attrib("extra_recruit", u.recruits());
-	return_vector_t_token_attrib("advances_to", u.advances_to());
+	return_vector_t_token_attrib(z_extra_recruit, u.recruits());
+	return_vector_t_token_attrib(z_advances_to, u.advances_to());
 
-	if (strcmp(m, "status") == 0) {
+	if (m == z_status) {
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, 1);
 		lua_rawseti(L, -2, 1);
@@ -993,7 +1263,7 @@ static int impl_unit_get(lua_State *L)
 		lua_setmetatable(L, -2);
 		return 1;
 	}
-	if (strcmp(m, "variables") == 0) {
+	if (m == z_variables) {
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, 1);
 		lua_rawseti(L, -2, 1);
@@ -1002,12 +1272,12 @@ static int impl_unit_get(lua_State *L)
 		lua_setmetatable(L, -2);
 		return 1;
 	}
-	return_bool_attrib("hidden", u.get_hidden());
-	return_bool_attrib("petrified", u.incapacitated());
-	return_bool_attrib("resting", u.resting());
-	return_string_attrib("role", u.get_role());
-	return_string_attrib("facing", map_location::write_direction(u.facing()));
-	return_cfg_attrib("__cfg", u.write(cfg); u.get_location().write(cfg));
+	return_bool_attrib(z_hidden, u.get_hidden());
+	return_bool_attrib(z_petrified, u.incapacitated());
+	return_bool_attrib(z_resting, u.resting());
+	return_string_attrib(z_role, u.get_role());
+	return_string_attrib(z_facing, map_location::write_direction(u.facing()));
+	return_cfg_attrib(z___cfg , u.write(cfg); u.get_location().write(cfg));
 	return 0;
 }
 
@@ -1019,31 +1289,48 @@ static int impl_unit_get(lua_State *L)
  */
 static int impl_unit_set(lua_State *L)
 {
+
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
+	static const config::t_token & z_moves( generate_safe_static_const_t_interned(n_token::t_token("moves")) );
+	static const config::t_token & z_hitpoints( generate_safe_static_const_t_interned(n_token::t_token("hitpoints")) );
+	static const config::t_token & z_experience( generate_safe_static_const_t_interned(n_token::t_token("experience")) );
+	static const config::t_token & z_attacks_left( generate_safe_static_const_t_interned(n_token::t_token("attacks_left")) );
+	static const config::t_token & z_resting( generate_safe_static_const_t_interned(n_token::t_token("resting")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_role( generate_safe_static_const_t_interned(n_token::t_token("role")) );
+	static const config::t_token & z_facing( generate_safe_static_const_t_interned(n_token::t_token("facing")) );
+	static const config::t_token & z_hidden( generate_safe_static_const_t_interned(n_token::t_token("hidden")) );
+	static const config::t_token & z_extra_recruit( generate_safe_static_const_t_interned(n_token::t_token("extra_recruit")) );
+	static const config::t_token & z_advances_to( generate_safe_static_const_t_interned(n_token::t_token("advances_to")) );
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
+
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
-	char const *m = luaL_checkstring(L, 2);
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	unit *pu = lu->get();
 	if (!pu) return luaL_argerror(L, 1, "unknown unit");
 	unit &u = *pu;
 
 	// Find the corresponding attribute.
-	modify_int_attrib_check_range("side", u.set_side(value), 1, static_cast<int>(resources::teams->size()));
-	modify_int_attrib("moves", u.set_movement(value));
-	modify_int_attrib("hitpoints", u.set_hitpoints(value));
-	modify_int_attrib("experience", u.set_experience(value));
-	modify_int_attrib("attacks_left", u.set_attacks(value));
-	modify_bool_attrib("resting", u.set_resting(value));
-	modify_tstring_attrib("name", u.set_name(value));
-	modify_string_attrib("role", u.set_role(config::t_token(value)));
-	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
-	modify_bool_attrib("hidden", u.set_hidden(value));
+	modify_int_attrib_check_range(z_side, u.set_side(value), 1, static_cast<int>(resources::teams->size()));
+	modify_int_attrib(z_moves, u.set_movement(value));
+	modify_int_attrib(z_hitpoints, u.set_hitpoints(value));
+	modify_int_attrib(z_experience, u.set_experience(value));
+	modify_int_attrib(z_attacks_left, u.set_attacks(value));
+	modify_bool_attrib(z_resting, u.set_resting(value));
+	modify_tstring_attrib(z_name, u.set_name(value));
+	modify_t_token_attrib(z_role, u.set_role(value));
+	modify_t_token_attrib(z_facing, u.set_facing(map_location::parse_direction(*value)));
+	modify_bool_attrib(z_hidden, u.set_hidden(value));
 
-	modify_vector_t_token_attrib("extra_recruit", u.set_recruits(vector));
-	modify_vector_t_token_attrib("advances_to", u.set_advances_to(vector));
+	modify_vector_t_token_attrib(z_extra_recruit, u.set_recruits(vector));
+	modify_vector_t_token_attrib(z_advances_to, u.set_advances_to(vector));
 
 	if (!lu->on_map()) {
 		map_location loc = u.get_location();
-		modify_int_attrib("x", loc.x = value - 1; u.set_location(loc));
-		modify_int_attrib("y", loc.y = value - 1; u.set_location(loc));
+		modify_int_attrib(z_x, loc.x = value - 1; u.set_location(loc) );
+		modify_int_attrib(z_y, loc.y = value - 1; u.set_location(loc) );
 	}
 
 	return luaL_argerror(L, 2, "unknown modifiable property");
@@ -1062,7 +1349,8 @@ static int impl_unit_status_get(lua_State *L)
 	lua_rawgeti(L, 1, 1);
 	unit const *u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
-	char const *m = luaL_checkstring(L, 2);
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	lua_pushboolean(L, u->get_state(config::t_token(std::string(m))));
 	return 1;
 }
@@ -1080,7 +1368,8 @@ static int impl_unit_status_set(lua_State *L)
 	lua_rawgeti(L, 1, 1);
 	unit *u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
-	char const *m = luaL_checkstring(L, 2);
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	u->set_state(config::t_token(std::string(m)), lua_toboolean(L, 3));
 	return 0;
 }
@@ -1093,13 +1382,15 @@ static int impl_unit_status_set(lua_State *L)
  */
 static int impl_unit_variables_get(lua_State *L)
 {
+	static const config::t_token & z___cfg( generate_safe_static_const_t_interned(n_token::t_token("__cfg")) );
 	if (!lua_istable(L, 1))
 		return luaL_typerror(L, 1, "unit variables");
 	lua_rawgeti(L, 1, 1);
 	unit const *u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
-	char const *m = luaL_checkstring(L, 2);
-	return_cfgref_attrib("__cfg", u->variables());
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
+	return_cfgref_attrib(z___cfg, u->variables());
 	luaW_pushscalar(L, u->variables()[m]);
 	return 1;
 }
@@ -1112,13 +1403,15 @@ static int impl_unit_variables_get(lua_State *L)
  */
 static int impl_unit_variables_set(lua_State *L)
 {
+	static const config::t_token & z___cfg( generate_safe_static_const_t_interned(n_token::t_token("__cfg")) );
 	if (!lua_istable(L, 1))
 		return luaL_typerror(L, 1, "unit variables");
 	lua_rawgeti(L, 1, 1);
 	unit *u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
-	char const *m = luaL_checkstring(L, 2);
-	if (strcmp(m, "__cfg") == 0) {
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
+	if (m == z___cfg) {
 		u->variables() = luaW_checkconfig(L, 3);
 		return 0;
 	}
@@ -1134,13 +1427,15 @@ static int impl_unit_variables_set(lua_State *L)
 			v = lua_tonumber(L, 3);
 			break;
 		case LUA_TSTRING:
-			v = lua_tostring(L, 3);
+			v = t_token(std::string(lua_tostring(L, 3)));
 			break;
 		case LUA_TUSERDATA:
 			if (luaW_hasmetatable(L, 3, tstringKey)) {
 				v = *static_cast<t_string *>(lua_touserdata(L, 3));
-				break;
-			}
+				break;}
+			if (luaW_hasmetatable(L, 3, t_tokenKey)) {
+				v = *static_cast<t_token *>(lua_touserdata(L, 3));
+				break;}
 			// no break
 		default:
 			return luaL_typerror(L, 3, "WML scalar");
@@ -1252,9 +1547,10 @@ static int intf_match_unit(lua_State *L)
 		return 1;
 	}
 
+	static const config::t_token & z_this_unit( generate_safe_static_const_t_interned(n_token::t_token("this_unit")) );
 	if (int side = lu->on_recall_list()) {
 		team &t = (*resources::teams)[side - 1];
-		scoped_recall_unit auto_store("this_unit",
+		scoped_recall_unit auto_store(z_this_unit,
 			t.save_id(), u - &t.recall_list()[0]);
 		lua_pushboolean(L, u->matches_filter(filter, map_location()));
 		return 1;
@@ -1281,12 +1577,13 @@ static int intf_get_recall_units(lua_State *L)
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1, s = 1;
+	static const config::t_token & z_this_unit( generate_safe_static_const_t_interned(n_token::t_token("this_unit")) );
 	foreach (team &t, *resources::teams)
 	{
 		foreach (unit &u, t.recall_list())
 		{
 			if (!filter.null()) {
-				scoped_recall_unit auto_store("this_unit",
+				scoped_recall_unit auto_store(z_this_unit,
 					t.save_id(), &u - &t.recall_list()[0]);
 				if (!u.matches_filter(filter, map_location()))
 					continue;
@@ -1313,7 +1610,8 @@ static int intf_get_recall_units(lua_State *L)
  */
 static int intf_fire_event(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
+	//char const *m = luaL_checkstring(L, 1);
+	t_token m = luaW_check_t_token(L, 1);
 
 	int pos = 2;
 	map_location l1, l2;
@@ -1329,12 +1627,14 @@ static int intf_fire_event(lua_State *L)
 		} else pos = 4;
 	}
 
+	static const config::t_token & z_first( generate_safe_static_const_t_interned(n_token::t_token("first")) );
+	static const config::t_token & z_second( generate_safe_static_const_t_interned(n_token::t_token("second")) );
 	if (!lua_isnoneornil(L, pos)) {
-		data.add_child("first", luaW_checkconfig(L, pos));
+		data.add_child(z_first, luaW_checkconfig(L, pos));
 	}
 	++pos;
 	if (!lua_isnoneornil(L, pos)) {
-		data.add_child("second", luaW_checkconfig(L, pos));
+		data.add_child(z_second, luaW_checkconfig(L, pos));
 	}
 
 	bool b = game_events::fire(config::t_token(m), l1, l2, data);
@@ -1350,14 +1650,14 @@ static int intf_fire_event(lua_State *L)
  */
 static int intf_get_variable(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
-	config::t_token const tm(m);
-	variable_info v(tm, false, variable_info::TYPE_SCALAR);
+	t_token m = luaW_check_t_token(L, 1);
+
+	variable_info v(m, false, variable_info::TYPE_SCALAR);
 	if (v.is_valid()) {
 		luaW_pushscalar(L, v.as_scalar());
 		return 1;
 	} else {
-		variable_info w(tm, false, variable_info::TYPE_CONTAINER);
+		variable_info w(m, false, variable_info::TYPE_CONTAINER);
 		if (w.is_valid()) {
 			lua_newtable(L);
 			if (lua_toboolean(L, 2))
@@ -1375,14 +1675,13 @@ static int intf_get_variable(lua_State *L)
  */
 static int intf_set_variable(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
+	t_token m = luaW_check_t_token(L, 1);
 	if (lua_isnoneornil(L, 2)) {
 		resources::state_of_game->clear_variable(m);
 		return 0;
 	}
 
-	config::t_token mm(m);
-	variable_info v(mm);
+	variable_info v(m);
 	switch (lua_type(L, 2)) {
 		case LUA_TBOOLEAN:
 			v.as_scalar() = bool(lua_toboolean(L, 2));
@@ -1396,8 +1695,10 @@ static int intf_set_variable(lua_State *L)
 		case LUA_TUSERDATA:
 			if (luaW_hasmetatable(L, 2, tstringKey)) {
 				v.as_scalar() = *static_cast<t_string *>(lua_touserdata(L, 2));
-				break;
-			}
+				break; }
+			if (luaW_hasmetatable(L, 2, t_tokenKey)) {
+				v.as_scalar() = *static_cast<t_token *>(lua_touserdata(L, 2));
+				break; }
 			// no break
 		case LUA_TTABLE:
 		{
@@ -1410,7 +1711,6 @@ static int intf_set_variable(lua_State *L)
 		default:
 			return luaL_typerror(L, 2, "WML table or scalar");
 	}
-
 	return 0;
 }
 
@@ -1421,7 +1721,8 @@ static int intf_set_variable(lua_State *L)
  */
 static int intf_dofile(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
+	//char const *m = luaL_checkstring(L, 1);
+	t_token m = luaW_check_t_token(L, 1);
 	std::string p = get_wml_location(m);
 	if (p.empty())
 		return luaL_argerror(L, 1, "file not found");
@@ -1442,7 +1743,8 @@ static int intf_dofile(lua_State *L)
  */
 static int intf_require(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
+	//char const *m = luaL_checkstring(L, 1);
+	t_token m = luaW_check_t_token(L, 1);
 
 	// Check if there is already an entry.
 	lua_pushstring(L, "wesnoth");
@@ -1462,7 +1764,8 @@ static int intf_require(lua_State *L)
 	int res = luaL_loadfile(L, p.c_str());
 	if (res)
 	{
-		char const *m = lua_tostring(L, -1);
+		//char const *m = lua_tostring(L, -1);
+		t_token m = luaW_check_t_token(L, -1);
 		chat_message("Lua error", m);
 		ERR_LUA << m << '\n';
 		return 0;
@@ -1484,6 +1787,7 @@ static int intf_require(lua_State *L)
  */
 static int intf_highlight_hex(lua_State *L)
 {
+	static const config::t_token & z_teleport( generate_safe_static_const_t_interned(n_token::t_token("teleport")) );
 	int x = luaL_checkinteger(L, 1) - 1;
 	int y = luaL_checkinteger(L, 2) - 1;
 	const map_location loc(x, y);
@@ -1494,7 +1798,7 @@ static int intf_highlight_hex(lua_State *L)
 	if(i != resources::units->end()) {
 		resources::screen->highlight_reach(pathfind::paths(
 			*resources::game_map, *resources::units, loc, *resources::teams, false,
-			(*i).get_ability_bool("teleport"), resources::teams->front()));
+			(*i).get_ability_bool(z_teleport), resources::teams->front()));
 	}
 
 	return 0;
@@ -1523,28 +1827,46 @@ static int intf_is_enemy(lua_State *L)
  */
 static int impl_side_get(lua_State *L)
 {
+	static const config::t_token & z_gold( generate_safe_static_const_t_interned(n_token::t_token("gold")) );
+	static const config::t_token & z_objectives( generate_safe_static_const_t_interned(n_token::t_token("objectives")) );
+	static const config::t_token & z_village_gold( generate_safe_static_const_t_interned(n_token::t_token("village_gold")) );
+	static const config::t_token & z_recall_cost( generate_safe_static_const_t_interned(n_token::t_token("recall_cost")) );
+	static const config::t_token & z_base_income( generate_safe_static_const_t_interned(n_token::t_token("base_income")) );
+	static const config::t_token & z_total_income( generate_safe_static_const_t_interned(n_token::t_token("total_income")) );
+	static const config::t_token & z_objectives_changed( generate_safe_static_const_t_interned(n_token::t_token("objectives_changed")) );
+	static const config::t_token & z_fog( generate_safe_static_const_t_interned(n_token::t_token("fog")) );
+	static const config::t_token & z_shroud( generate_safe_static_const_t_interned(n_token::t_token("shroud")) );
+	static const config::t_token & z_hidden( generate_safe_static_const_t_interned(n_token::t_token("hidden")) );
+	static const config::t_token & z_user_team_name( generate_safe_static_const_t_interned(n_token::t_token("user_team_name")) );
+	static const config::t_token & z_team_name( generate_safe_static_const_t_interned(n_token::t_token("team_name")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_color( generate_safe_static_const_t_interned(n_token::t_token("color")) );
+	static const config::t_token & z_controller( generate_safe_static_const_t_interned(n_token::t_token("controller")) );
+	static const config::t_token & z_recruit( generate_safe_static_const_t_interned(n_token::t_token("recruit")) );
+	static const config::t_token & z___cfg( generate_safe_static_const_t_interned(n_token::t_token("__cfg")) );
 	// Hidden metamethod, so arg1 has to be a pointer to a team.
 	team &t = **static_cast<team **>(lua_touserdata(L, 1));
-	char const *m = luaL_checkstring(L, 2);
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 
 	// Find the corresponding attribute.
-	return_int_attrib("gold", t.gold());
-	return_tstring_attrib("objectives", t.objectives());
-	return_int_attrib("village_gold", t.village_gold());
-	return_int_attrib("recall_cost", t.recall_cost());
-	return_int_attrib("base_income", t.base_income());
-	return_int_attrib("total_income", t.total_income());
-	return_bool_attrib("objectives_changed", t.objectives_changed());
-	return_bool_attrib("fog", t.uses_fog());
-	return_bool_attrib("shroud", t.uses_shroud());
-	return_bool_attrib("hidden", t.hidden());
-	return_tstring_attrib("user_team_name", t.user_team_name());
-	return_string_attrib("team_name", t.team_name());
-	return_string_attrib("name", t.name());
-	return_string_attrib("color", t.map_color_to());
-	return_cstring_attrib("controller", t.controller_string());
+	return_int_attrib(z_gold, t.gold());
+	return_tstring_attrib(z_objectives, t.objectives());
+	return_int_attrib(z_village_gold, t.village_gold());
+	return_int_attrib(z_recall_cost, t.recall_cost());
+	return_int_attrib(z_base_income, t.base_income());
+	return_int_attrib(z_total_income, t.total_income());
+	return_bool_attrib(z_objectives_changed, t.objectives_changed());
+	return_bool_attrib(z_fog, t.uses_fog());
+	return_bool_attrib(z_shroud, t.uses_shroud());
+	return_bool_attrib(z_hidden, t.hidden());
+	return_tstring_attrib(z_user_team_name, t.user_team_name());
+	return_string_attrib(z_team_name, t.team_name());
+	return_string_attrib(z_name, t.name());
+	return_string_attrib(z_color, t.map_color_to());
+	return_cstring_attrib(z_controller, t.controller_string());
 
-	if (strcmp(m, "recruit") == 0) {
+	if (m == z_recruit) {
 		std::set<std::string> const &recruits = t.recruits();
 		lua_createtable(L, recruits.size(), 0);
 		int i = 1;
@@ -1555,7 +1877,7 @@ static int impl_side_get(lua_State *L)
 		return 1;
 	}
 
-	return_cfg_attrib("__cfg", t.write(cfg));
+	return_cfg_attrib(z___cfg, t.write(cfg));
 	return 0;
 }
 
@@ -1567,28 +1889,40 @@ static int impl_side_get(lua_State *L)
  */
 static int impl_side_set(lua_State *L)
 {
+	static const config::t_token & z_gold( generate_safe_static_const_t_interned(n_token::t_token("gold")) );
+	static const config::t_token & z_objectives( generate_safe_static_const_t_interned(n_token::t_token("objectives")) );
+	static const config::t_token & z_village_gold( generate_safe_static_const_t_interned(n_token::t_token("village_gold")) );
+	static const config::t_token & z_recall_cost( generate_safe_static_const_t_interned(n_token::t_token("recall_cost")) );
+	static const config::t_token & z_base_income( generate_safe_static_const_t_interned(n_token::t_token("base_income")) );
+	static const config::t_token & z_objectives_changed( generate_safe_static_const_t_interned(n_token::t_token("objectives_changed")) );
+	static const config::t_token & z_user_team_name( generate_safe_static_const_t_interned(n_token::t_token("user_team_name")) );
+	static const config::t_token & z_team_name( generate_safe_static_const_t_interned(n_token::t_token("team_name")) );
+	static const config::t_token & z_controller( generate_safe_static_const_t_interned(n_token::t_token("controller")) );
+	static const config::t_token & z_recruit( generate_safe_static_const_t_interned(n_token::t_token("recruit")) );
 	// Hidden metamethod, so arg1 has to be a pointer to a team.
 	team &t = **static_cast<team **>(lua_touserdata(L, 1));
-	char const *m = luaL_checkstring(L, 2);
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 
 	// Find the corresponding attribute.
-	modify_int_attrib("gold", t.set_gold(value));
-	modify_tstring_attrib("objectives", t.set_objectives(value, true));
-	modify_int_attrib("village_gold", t.set_village_gold(value));
-	modify_int_attrib("recall_cost", t.set_recall_cost(value));
-	modify_int_attrib("base_income", t.set_base_income(value));
-	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
-	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
-	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
-	modify_string_attrib("controller", t.change_controller(value));
+	modify_int_attrib(z_gold, t.set_gold(value));
+	modify_tstring_attrib(z_objectives, t.set_objectives(value, true));
+	modify_int_attrib(z_village_gold, t.set_village_gold(value));
+	modify_int_attrib(z_recall_cost, t.set_recall_cost(value));
+	modify_int_attrib(z_base_income, t.set_base_income(value));
+	modify_bool_attrib(z_objectives_changed, t.set_objectives_changed(value));
+	modify_tstring_attrib(z_user_team_name, t.change_team(t.team_name(), value));
+	modify_t_token_attrib(z_team_name, t.change_team(value, t.user_team_name()));
+	modify_t_token_attrib(z_controller, t.change_controller(value));
 
-	if (strcmp(m, "recruit") == 0) {
+	if (m == z_recruit) {
 		t.set_recruits(std::set<std::string>());
 		if (!lua_istable(L, 3)) return 0;
 		for (int i = 1;; ++i) {
 			lua_rawgeti(L, 3, i);
 			if (lua_isnil(L, -1)) break;
-			t.add_recruit(lua_tostring(L, -1));
+			t_token recruit_id = luaW_check_t_token(L, -1);
+			t.add_recruit(recruit_id);
 			lua_pop(L, 1);
 		}
 		return 0;
@@ -1622,18 +1956,22 @@ static int intf_get_terrain(lua_State *L)
  */
 static int intf_set_terrain(lua_State *L)
 {
+	static const config::t_token & z_base( generate_safe_static_const_t_interned(n_token::t_token("base")) );
+	static const config::t_token & z_overlay( generate_safe_static_const_t_interned(n_token::t_token("overlay")) );
 	int x = luaL_checkint(L, 1);
 	int y = luaL_checkint(L, 2);
-	t_translation::t_terrain terrain = t_translation::read_terrain_code(luaL_checkstring(L, 3));
+	t_token terrain_code = luaW_check_t_token(L, 3);
+	t_translation::t_terrain terrain = t_translation::read_terrain_code(terrain_code);
 	if (terrain == t_translation::NONE_TERRAIN) return 0;
 
 	gamemap::tmerge_mode mode = gamemap::BOTH;
 	bool replace_if_failed = false;
 	if (!lua_isnone(L, 4)) {
 		if (!lua_isnil(L, 4)) {
-			const char* const layer = luaL_checkstring(L, 4);
-			if (strcmp(layer, "base") == 0) mode = gamemap::BASE;
-			else if (strcmp(layer, "overlay") == 0) mode = gamemap::OVERLAY;
+			//const char* const layer = luaL_checkstring(L, 4);
+			t_token layer = luaW_check_t_token(L, 4);
+			if (layer == z_base) mode = gamemap::BASE;
+			else if (layer == z_overlay) mode = gamemap::OVERLAY;
 		}
 
 		if(!lua_isnoneornil(L, 5)) {
@@ -1652,7 +1990,8 @@ static int intf_set_terrain(lua_State *L)
  */
 static int intf_get_terrain_info(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
+	//char const *m = luaL_checkstring(L, 1);
+	t_token m = luaW_check_t_token(L, 1);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	if (t == t_translation::NONE_TERRAIN) return 0;
 	terrain_type const &info = resources::game_map->get_terrain_info(t);
@@ -1834,18 +2173,28 @@ static int intf_get_selected_tile(lua_State *L)
  */
 static int impl_game_config_get(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 2);
+	static const config::t_token & z_base_income( generate_safe_static_const_t_interned(n_token::t_token("base_income")) );
+	static const config::t_token & z_village_income( generate_safe_static_const_t_interned(n_token::t_token("village_income")) );
+	static const config::t_token & z_poison_amount( generate_safe_static_const_t_interned(n_token::t_token("poison_amount")) );
+	static const config::t_token & z_rest_heal_amount( generate_safe_static_const_t_interned(n_token::t_token("rest_heal_amount")) );
+	static const config::t_token & z_recall_cost( generate_safe_static_const_t_interned(n_token::t_token("recall_cost")) );
+	static const config::t_token & z_kill_experience( generate_safe_static_const_t_interned(n_token::t_token("kill_experience")) );
+	static const config::t_token & z_last_turn( generate_safe_static_const_t_interned(n_token::t_token("last_turn")) );
+	static const config::t_token & z_version( generate_safe_static_const_t_interned(n_token::t_token("version")) );
+	static const config::t_token & z_debug( generate_safe_static_const_t_interned(n_token::t_token("debug")) );
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 
 	// Find the corresponding attribute.
-	return_int_attrib("base_income", game_config::base_income);
-	return_int_attrib("village_income", game_config::village_income);
-	return_int_attrib("poison_amount", game_config::poison_amount);
-	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
-	return_int_attrib("recall_cost", game_config::recall_cost);
-	return_int_attrib("kill_experience", game_config::kill_experience);
-	return_int_attrib("last_turn", resources::tod_manager->number_of_turns());
-	return_string_attrib("version", game_config::version);
-	return_bool_attrib("debug", game_config::debug);
+	return_int_attrib(z_base_income, game_config::base_income);
+	return_int_attrib(z_village_income, game_config::village_income);
+	return_int_attrib(z_poison_amount, game_config::poison_amount);
+	return_int_attrib(z_rest_heal_amount, game_config::rest_heal_amount);
+	return_int_attrib(z_recall_cost, game_config::recall_cost);
+	return_int_attrib(z_kill_experience, game_config::kill_experience);
+	return_int_attrib(z_last_turn, resources::tod_manager->number_of_turns());
+	return_string_attrib(z_version, game_config::version);
+	return_bool_attrib(z_debug, game_config::debug);
 	return 0;
 }
 
@@ -1857,16 +2206,24 @@ static int impl_game_config_get(lua_State *L)
  */
 static int impl_game_config_set(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 2);
+	static const config::t_token & z_base_income( generate_safe_static_const_t_interned(n_token::t_token("base_income")) );
+	static const config::t_token & z_village_income( generate_safe_static_const_t_interned(n_token::t_token("village_income")) );
+	static const config::t_token & z_poison_amount( generate_safe_static_const_t_interned(n_token::t_token("poison_amount")) );
+	static const config::t_token & z_rest_heal_amount( generate_safe_static_const_t_interned(n_token::t_token("rest_heal_amount")) );
+	static const config::t_token & z_recall_cost( generate_safe_static_const_t_interned(n_token::t_token("recall_cost")) );
+	static const config::t_token & z_kill_experience( generate_safe_static_const_t_interned(n_token::t_token("kill_experience")) );
+	static const config::t_token & z_last_turn( generate_safe_static_const_t_interned(n_token::t_token("last_turn")) );
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 
 	// Find the corresponding attribute.
-	modify_int_attrib("base_income", game_config::base_income = value);
-	modify_int_attrib("village_income", game_config::village_income = value);
-	modify_int_attrib("poison_amount", game_config::poison_amount = value);
-	modify_int_attrib("rest_heal_amount", game_config::rest_heal_amount = value);
-	modify_int_attrib("recall_cost", game_config::recall_cost = value);
-	modify_int_attrib("kill_experience", game_config::kill_experience = value);
-	modify_int_attrib("last_turn", resources::tod_manager->set_number_of_turns(value));
+	modify_int_attrib(z_base_income, game_config::base_income = value);
+	modify_int_attrib(z_village_income, game_config::village_income = value);
+	modify_int_attrib(z_poison_amount, game_config::poison_amount = value);
+	modify_int_attrib(z_rest_heal_amount, game_config::rest_heal_amount = value);
+	modify_int_attrib(z_recall_cost, game_config::recall_cost = value);
+	modify_int_attrib(z_kill_experience, game_config::kill_experience = value);
+	modify_int_attrib(z_last_turn, resources::tod_manager->set_number_of_turns(value));
 	return luaL_argerror(L, 2, "unknown modifiable property");
 }
 
@@ -1878,30 +2235,43 @@ static int impl_game_config_set(lua_State *L)
  */
 static int impl_current_get(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 2);
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
+	static const config::t_token & z_turn( generate_safe_static_const_t_interned(n_token::t_token("turn")) );
+	static const config::t_token & z_event_context( generate_safe_static_const_t_interned(n_token::t_token("event_context")) );
+	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
+	static const config::t_token & z_first( generate_safe_static_const_t_interned(n_token::t_token("first")) );
+	static const config::t_token & z_weapon( generate_safe_static_const_t_interned(n_token::t_token("weapon")) );
+	static const config::t_token & z_second( generate_safe_static_const_t_interned(n_token::t_token("second")) );
+	static const config::t_token & z_second_weapon( generate_safe_static_const_t_interned(n_token::t_token("second_weapon")) );
+	static const config::t_token & z_x1( generate_safe_static_const_t_interned(n_token::t_token("x1")) );
+	static const config::t_token & z_y1( generate_safe_static_const_t_interned(n_token::t_token("y1")) );
+	static const config::t_token & z_x2( generate_safe_static_const_t_interned(n_token::t_token("x2")) );
+	static const config::t_token & z_y2( generate_safe_static_const_t_interned(n_token::t_token("y2")) );
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 
 	// Find the corresponding attribute.
-	return_int_attrib("side", resources::controller->current_side());
-	return_int_attrib("turn", resources::controller->turn());
+	return_int_attrib(z_side, resources::controller->current_side());
+	return_int_attrib(z_turn, resources::controller->turn());
 
-	if (strcmp(m, "event_context") == 0)
+	if (m == z_event_context)
 	{
 		const game_events::queued_event &ev = queued_event_context::get();
 		config cfg;
-		cfg["name"] = ev.name;
-		if (const config &weapon = ev.data.child("first")) {
-			cfg.add_child("weapon", weapon);
+		cfg[z_name] = ev.name;
+		if (const config &weapon = ev.data.child(z_first)) {
+			cfg.add_child(z_weapon, weapon);
 		}
-		if (const config &weapon = ev.data.child("second")) {
-			cfg.add_child("second_weapon", weapon);
+		if (const config &weapon = ev.data.child(z_second)) {
+			cfg.add_child(z_second_weapon, weapon);
 		}
 		if (ev.loc1.valid()) {
-			cfg["x1"] = ev.loc1.x + 1;
-			cfg["y1"] = ev.loc1.y + 1;
+			cfg[z_x1] = ev.loc1.x + 1;
+			cfg[z_y1] = ev.loc1.y + 1;
 		}
 		if (ev.loc2.valid()) {
-			cfg["x2"] = ev.loc2.x + 1;
-			cfg["y2"] = ev.loc2.y + 1;
+			cfg[z_x2] = ev.loc2.x + 1;
+			cfg[z_y2] = ev.loc2.y + 1;
 		}
 		luaW_pushconfig(L, cfg);
 		return 1;
@@ -1917,12 +2287,14 @@ static int impl_current_get(lua_State *L)
  */
 static int intf_message(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
-	char const *h = m;
+	//char const *m = luaL_checkstring(L, 1);
+	t_token m = luaW_check_t_token(L, 1);
+	char const *h = m.c_str();
 	if (lua_isnone(L, 2)) {
 		h = "Lua";
 	} else {
-		m = luaL_checkstring(L, 2);
+		//m = luaL_checkstring(L, 2);
+		m = luaW_check_t_token(L, 2);
 	}
 	chat_message(h, m);
 	LOG_LUA << "Script says: \"" << m << "\"\n";
@@ -2134,25 +2506,29 @@ static int intf_find_reach(lua_State *L)
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	int additional_turns = 0;
 
+	static const config::t_token & z_ignore_units( generate_safe_static_const_t_interned(n_token::t_token("ignore_units")) );
+	static const config::t_token & z_ignore_teleport( generate_safe_static_const_t_interned(n_token::t_token("ignore_teleport")) );
+	static const config::t_token & z_additional_turns( generate_safe_static_const_t_interned(n_token::t_token("additional_turns")) );
+	static const config::t_token & z_viewing_side( generate_safe_static_const_t_interned(n_token::t_token("viewing_side")) );
 	if (lua_istable(L, arg))
 	{
-		lua_pushstring(L, "ignore_units");
-		lua_rawget(L, arg);
+		luaW_push_t_token(L, z_ignore_units);
+		//lua_rawget(L, arg);
 		ignore_units = lua_toboolean(L, -1);
 		lua_pop(L, 1);
 
-		lua_pushstring(L, "ignore_teleport");
-		lua_rawget(L, arg);
+		luaW_push_t_token(L, z_ignore_teleport);
+		//lua_rawget(L, arg);
 		ignore_teleport = lua_toboolean(L, -1);
 		lua_pop(L, 1);
 
-		lua_pushstring(L, "additional_turns");
-		lua_rawget(L, arg);
+		luaW_push_t_token(L, z_additional_turns);
+		//lua_rawget(L, arg);
 		additional_turns = lua_tointeger(L, -1);
 		lua_pop(L, 1);
 
-		lua_pushstring(L, "viewing_side");
-		lua_rawget(L, arg);
+		luaW_push_t_token(L, z_viewing_side);
+		//	lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
 			if (i >= 1 && i <= int(teams.size())) viewing_side = i;
@@ -2228,10 +2604,13 @@ static int intf_put_unit(lua_State *L)
 	}
 	else if (!lua_isnoneornil(L, unit_arg))
 	{
+
+	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
+	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
 		config cfg = luaW_checkconfig(L, unit_arg);
 		if (unit_arg == 1) {
-			loc.x = cfg["x"] - 1;
-			loc.y = cfg["y"] - 1;
+			loc.x = cfg[z_x] - 1;
+			loc.y = cfg[z_y] - 1;
 			if (!resources::game_map->on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
 		}
@@ -2427,7 +2806,8 @@ static int intf_copy_unit(lua_State *L)
 static int intf_unit_resistance(lua_State *L)
 {
 	unit const *u = luaW_checkunit(L, 1);
-	char const *m = luaL_checkstring(L, 2);
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	bool a = lua_toboolean(L, 3);
 
 	map_location loc = u->get_location();
@@ -2449,7 +2829,8 @@ static int intf_unit_resistance(lua_State *L)
 static int intf_unit_movement_cost(lua_State *L)
 {
 	unit const *u = luaW_checkunit(L, 1);
-	char const *m = luaL_checkstring(L, 2);
+	//	char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u->movement_cost(t));
 	return 1;
@@ -2464,7 +2845,8 @@ static int intf_unit_movement_cost(lua_State *L)
 static int intf_unit_defense(lua_State *L)
 {
 	unit const *u = luaW_checkunit(L, 1);
-	char const *m = luaL_checkstring(L, 2);
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u->defense_modifier(t));
 	return 1;
@@ -2479,7 +2861,8 @@ static int intf_unit_defense(lua_State *L)
 static int intf_unit_ability(lua_State *L)
 {
 	unit const *u = luaW_checkunit(L, 1);
-	char const *m = luaL_checkstring(L, 2);
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	lua_pushboolean(L, u->get_ability_bool(m));
 	return 1;
 }
@@ -2492,7 +2875,8 @@ static int intf_unit_ability(lua_State *L)
 static int intf_transform_unit(lua_State *L)
 {
 	unit *u = luaW_checkunit(L, 1);
-	char const *m = luaL_checkstring(L, 2);
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	const unit_type *utp = unit_types.find(m);
 	if (!utp) return luaL_argerror(L, 2, "unknown unit type");
 	u->advance_to(utp);
@@ -2594,7 +2978,8 @@ static int intf_set_music(lua_State *L)
  */
 static int intf_play_sound(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
+	//char const *m = luaL_checkstring(L, 1);
+	t_token m = luaW_check_t_token(L, 1);
 	if (resources::controller->is_skipping_replay()) return 0;
 	int repeats = lua_tointeger(L, 2);
 	sound::play_sound(m, sound::SOUND_FX, repeats);
@@ -2683,7 +3068,8 @@ struct lua_synchronize : mp_sync::user_choice
  */
 static int intf_synchronize_choice(lua_State *L)
 {
-	config cfg = mp_sync::get_user_choice("input", lua_synchronize(L));
+	static const config::t_token & z_input( generate_safe_static_const_t_interned(n_token::t_token("input")) );
+	config cfg = mp_sync::get_user_choice(z_input, lua_synchronize(L));
 	luaW_pushconfig(L, cfg);
 	return 1;
 }
@@ -2781,8 +3167,10 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 		}
 		else
 		{
-			char const *m = lua_tostring(L, i);
-			if (!m) goto error_call_destructors_2;
+			//char const *m = lua_tostring(L, i);
+			t_token m;
+			if (!luaW_to_t_token(L, i, m))
+				goto error_call_destructors_2;
 			w = w->find(m, false);
 		}
 		if (!w) goto error_call_destructors_3;
@@ -3169,9 +3557,10 @@ static int intf_get_sides(lua_State* L)
  */
 static int intf_get_traits(lua_State* L)
 {
+	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
 	lua_newtable(L);
 	foreach(const config& trait, unit_types.traits()) {
-		const std::string& id = trait["id"];
+		const std::string& id = trait[z_id];
 		//It seems the engine does nowhere check the id field for emptyness or duplicates
 		//(also not later on).
 		//However, the worst thing to happen is that the trait read later overwrites the older one,
@@ -3191,14 +3580,17 @@ static int intf_get_traits(lua_State* L)
  */
 static int intf_add_modification(lua_State *L)
 {
+	static const config::t_token & z_advance( generate_safe_static_const_t_interned(n_token::t_token("advance")) );
+	static const config::t_token & z_object( generate_safe_static_const_t_interned(n_token::t_token("object")) );
+	static const config::t_token & z_trait( generate_safe_static_const_t_interned(n_token::t_token("trait")) );
 	unit *u = luaW_checkunit(L, 1);
-	char const *m = luaL_checkstring(L, 2);
-	std::string sm = m;
-	if (sm != "advance" && sm != "object" && sm != "trait")
+	//	char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
+	if (m != z_advance && m != z_object && m != z_trait)
 		return luaL_argerror(L, 2, "unknown modification type");
 
 	config cfg = luaW_checkconfig(L, 3);
-	u->add_modification(config::t_token(sm), cfg);
+	u->add_modification(m, cfg);
 	return 0;
 }
 
@@ -3208,7 +3600,8 @@ static int intf_add_modification(lua_State *L)
  */
 static int intf_add_known_unit(lua_State *L)
 {
-	char const *ty = luaL_checkstring(L, 1);
+	//char const *ty = luaL_checkstring(L, 1);
+	t_token ty = luaW_check_t_token(L, 1);
 	if(!unit_types.find(ty)) return luaL_argerror(L, 1, "unknown unit type");
 	preferences::encountered_units().insert(ty);
 	return 0;
@@ -3225,8 +3618,12 @@ static int intf_add_tile_overlay(lua_State *L)
 	int y = luaL_checkinteger(L, 2) - 1;
 	config cfg = luaW_checkconfig(L, 3);
 
-	resources::screen->add_overlay(map_location(x, y), cfg["image"], cfg["halo"],
-		cfg["team_name"], cfg["visible_in_fog"].to_bool(true));
+	static const config::t_token & z_halo( generate_safe_static_const_t_interned(n_token::t_token("halo")) );
+	static const config::t_token & z_visible_in_fog( generate_safe_static_const_t_interned(n_token::t_token("visible_in_fog")) );
+	static const config::t_token & z_image( generate_safe_static_const_t_interned(n_token::t_token("image")) );
+	static const config::t_token & z_team_name( generate_safe_static_const_t_interned(n_token::t_token("team_name")) );
+	resources::screen->add_overlay(map_location(x, y), cfg[z_image], cfg[z_halo],
+		cfg[z_team_name], cfg[z_visible_in_fog].to_bool(true));
 	return 0;
 }
 
@@ -3239,9 +3636,9 @@ static int intf_remove_tile_overlay(lua_State *L)
 {
 	int x = luaL_checkinteger(L, 1) - 1;
 	int y = luaL_checkinteger(L, 2) - 1;
-	char const *m = lua_tostring(L, 3);
-
-	if (m) {
+	//char const *m = lua_tostring(L, 3);
+	t_token m;
+	if (!luaW_to_t_token(L, 3, m)){
 		resources::screen->remove_single_overlay(map_location(x, y), m);
 	} else {
 		resources::screen->remove_overlay(map_location(x, y));
@@ -3271,7 +3668,8 @@ static int intf_delay(lua_State *L)
  */
 static int intf_get_image_size(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
+	//char const *m = luaL_checkstring(L, 1);
+	t_token m = luaW_check_t_token(L, 1);
 	image::locator img(m);
 	if (!img.file_exists()) return 0;
 	surface s = get_image(img);
@@ -3286,9 +3684,10 @@ static int intf_get_image_size(lua_State *L)
  */
 static int intf_modify_ai(lua_State *L)
 {
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
 	config cfg;
 	luaW_toconfig(L, 1, cfg);
-	int side = cfg["side"];
+	int side = cfg[z_side];
 	ai::manager::modify_active_ai_for_side(side, cfg);
 	return 0;
 }
@@ -3319,8 +3718,9 @@ config lua_report_generator::generate()
  */
 static int cfun_theme_item(lua_State *L)
 {
-	const char *m = lua_tostring(L, lua_upvalueindex(1));
-	luaW_pushconfig(L, reports::generate_report(m, true));
+	//const char *m = lua_tostring(L, lua_upvalueindex(1));
+	t_token m = luaW_check_t_token(L,  lua_upvalueindex(1));
+	luaW_pushconfig(L, reports::generate_report(m.str(), true));
 	return 1;
 }
 
@@ -3329,7 +3729,8 @@ static int cfun_theme_item(lua_State *L)
  */
 static int impl_theme_items_get(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 2);
+	//	char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	lua_pushvalue(L, 2);
 	lua_pushcclosure(L, cfun_theme_item, 1);
 	lua_pushvalue(L, 2);
@@ -3344,7 +3745,8 @@ static int impl_theme_items_get(lua_State *L)
  */
 static int impl_theme_items_set(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 2);
+	//char const *m = luaL_checkstring(L, 2);
+	t_token m = luaW_check_t_token(L, 2);
 	lua_pushvalue(L, 2);
 	lua_pushvalue(L, 3);
 	lua_rawset(L, 1);
@@ -3511,6 +3913,26 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
+	// Create the t_token metatable.
+	///todo Allow Lua to create t_tokens so that it can use the same trick with static string
+	lua_pushlightuserdata(L, (void *)&t_tokenKey);
+	lua_createtable(L, 0, 7);
+	lua_pushcfunction(L, impl_t_token_concat);
+	lua_setfield(L, -2, "__concat");
+	lua_pushcfunction(L, impl_t_token_collect);
+	lua_setfield(L, -2, "__gc");
+	lua_pushcfunction(L, impl_t_token_tostring);
+	lua_setfield(L, -2, "__tostring");
+	lua_pushcfunction(L, impl_t_token_tonumber);
+	lua_setfield(L, -2, "__tonumber");
+	lua_pushcfunction(L, impl_t_token_eq);
+	lua_setfield(L, -2, "__eq");
+	lua_pushcfunction(L, impl_t_token_index);
+	lua_setfield(L, -2, "__index");
+	lua_pushstring(L, "t_token string");
+	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
 	// Create the unit status metatable.
 	lua_pushlightuserdata(L, (void *)&ustatusKey);
 	lua_createtable(L, 0, 3);
@@ -3621,15 +4043,22 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setglobal(L, "debug");
 
 	// Disable functions from os which we don't want.
+
+	static const config::t_token & z_time( generate_safe_static_const_t_interned(n_token::t_token("time")) );
+	static const config::t_token & z_clock( generate_safe_static_const_t_interned(n_token::t_token("clock")) );
+	static const config::t_token & z_date( generate_safe_static_const_t_interned(n_token::t_token("date")) );
+	static const config::t_token & z_difftime( generate_safe_static_const_t_interned(n_token::t_token("difftime")) );
+
 	lua_getglobal(L, "os");
 	lua_pushnil(L);
 	while(lua_next(L, -2) != 0) {
 		lua_pop(L, 1);
-		char const* function = lua_tostring(L, -1);
-		if(strcmp(function, "clock") == 0 || strcmp(function, "date") == 0
-			|| strcmp(function, "time") == 0 || strcmp(function, "difftime") == 0) continue;
+		//char const* function = lua_tostring(L, -1);
+		t_token function = luaW_check_t_token(L, -1);
+		if(function == z_clock || function == z_date
+			|| function == z_time || function == z_difftime) continue;
 		lua_pushnil(L);
-		lua_setfield(L, -3, function);
+		lua_setfield(L, -3, function.c_str());
 	}
 	lua_pop(L, 1);
 
@@ -3697,27 +4126,50 @@ void LuaKernel::initialize()
 	lua_setfield(L, -3, "races");
 	lua_pop(L, 2);
 
+	static const config::t_token & z_lua( generate_safe_static_const_t_interned(n_token::t_token("lua")) );
+	static const config::t_token & z_code( generate_safe_static_const_t_interned(n_token::t_token("code")) );
+
 	// Execute the preload scripts.
 	game_config::load_config(preload_config);
 	foreach (const config &cfg, preload_scripts) {
-		execute(cfg["code"].str().c_str(), 0, 0);
+		execute(cfg[z_code].str().c_str(), 0, 0);
 	}
-	foreach (const config &cfg, level_.child_range("lua")) {
-		execute(cfg["code"].str().c_str(), 0, 0);
+	foreach (const config &cfg, level_.child_range(z_lua)) {
+		execute(cfg[z_code].str().c_str(), 0, 0);
 	}
 
 	load_game();
 }
 
-static char const *handled_file_tags[] = {
-	"color_palette", "color_range", "era", "event", "generator", "illuminated_time",
-	"label", "lua", "menu_item", "music", "side", "sound_source", "story",
-	"terrain_graphics", "time", "time_area", "tunnel", "variables"
-};
 
-static bool is_handled_file_tag(const std::string &s)
+
+static bool is_handled_file_tag(const n_token::t_token &s)
 {
-	foreach (char const *t, handled_file_tags) {
+
+	static const config::t_token & z_color_palette( generate_safe_static_const_t_interned(n_token::t_token("color_palette")) );
+	static const config::t_token & z_color_range( generate_safe_static_const_t_interned(n_token::t_token("color_range")) );
+	static const config::t_token & z_era( generate_safe_static_const_t_interned(n_token::t_token("era")) );
+	static const config::t_token & z_event( generate_safe_static_const_t_interned(n_token::t_token("event")) );
+	static const config::t_token & z_generator( generate_safe_static_const_t_interned(n_token::t_token("generator")) );
+	static const config::t_token & z_illuminated_time( generate_safe_static_const_t_interned(n_token::t_token("illuminated_time")) );
+	static const config::t_token & z_label( generate_safe_static_const_t_interned(n_token::t_token("label")) );
+	static const config::t_token & z_lua( generate_safe_static_const_t_interned(n_token::t_token("lua")) );
+	static const config::t_token & z_menu_item( generate_safe_static_const_t_interned(n_token::t_token("menu_item")) );
+	static const config::t_token & z_music( generate_safe_static_const_t_interned(n_token::t_token("music")) );
+	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
+	static const config::t_token & z_sound_source( generate_safe_static_const_t_interned(n_token::t_token("sound_source")) );
+	static const config::t_token & z_story( generate_safe_static_const_t_interned(n_token::t_token("story")) );
+	static const config::t_token & z_terrain_graphics( generate_safe_static_const_t_interned(n_token::t_token("terrain_graphics")) );
+	static const config::t_token & z_time( generate_safe_static_const_t_interned(n_token::t_token("time")) );
+	static const config::t_token & z_time_area( generate_safe_static_const_t_interned(n_token::t_token("time_area")) );
+	static const config::t_token & z_tunnel( generate_safe_static_const_t_interned(n_token::t_token("tunnel")) );
+	static const config::t_token & z_variables( generate_safe_static_const_t_interned(n_token::t_token("variables")) );
+	static t_token const handled_file_tags[] = {
+		z_color_palette, z_color_range, z_era, z_event, z_generator, z_illuminated_time,
+		z_label, z_lua, z_menu_item, z_music, z_side, z_sound_source, z_story,
+		z_terrain_graphics, z_time, z_time_area, z_tunnel, z_variables
+	};
+	foreach (t_token const &t, handled_file_tags) {
 		if (s == t) return true;
 	}
 	return false;
@@ -3756,8 +4208,10 @@ void LuaKernel::load_game()
  */
 void LuaKernel::save_game(config &cfg)
 {
-	foreach (const config &v, level_.child_range("lua")) {
-		cfg.add_child("lua", v);
+
+	static const config::t_token & z_lua( generate_safe_static_const_t_interned(n_token::t_token("lua")) );
+	foreach (const config &v, level_.child_range(z_lua)) {
+		cfg.add_child(z_lua, v);
 	}
 
 	lua_State *L = mState;
@@ -3831,7 +4285,7 @@ static int cfun_wml_action(lua_State *L)
 /**
  * Registers a function for use as an action handler.
  */
-void LuaKernel::set_wml_action(std::string const &cmd, game_events::action_handler h)
+void LuaKernel::set_wml_action(t_token const &cmd, game_events::action_handler h)
 {
 	lua_State *L = mState;
 
@@ -3851,7 +4305,7 @@ void LuaKernel::set_wml_action(std::string const &cmd, game_events::action_handl
  * @note @a cfg should be either volatile or long-lived since the Lua
  *       code may grab it for an arbitrary long time.
  */
-bool LuaKernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
+bool LuaKernel::run_wml_action(t_token const &cmd, vconfig const &cfg,
 	game_events::queued_event const &ev)
 {
 	lua_State *L = mState;
@@ -3906,7 +4360,8 @@ bool LuaKernel::execute(char const *prog, int nArgs, int nRets)
 	int res = luaL_loadstring(L, prog);
 	if (res)
 	{
-		char const *m = lua_tostring(L, -1);
+		//char const *m = lua_tostring(L, -1);
+		t_token m = luaW_check_t_token(L, -1);
 		chat_message("Lua error", m);
 		ERR_LUA << m << '\n';
 		lua_pop(L, 2);

@@ -21,7 +21,7 @@ local function remove_overlay(x, y, name)
 	if name then
 		for i = #items,1,-1 do
 			local item = items[i]
-			if item.image == name or item.halo == name then
+			if helper.check_equal( item.image, name ) or helper.check_equal( item.halo, name ) then
 				table.remove(items, i)
 			end
 		end
@@ -47,7 +47,7 @@ function game_events.on_load(cfg)
 	local i = 1
 	while i <= #cfg do
 		local v = cfg[i]
-		if v[1] == "item" then
+		if helper.check_equal( v[1], "item" ) then
 			local v2 = v[2]
 			add_overlay(v2.x, v2.y, v2)
 			table.remove(cfg, i)
@@ -90,7 +90,7 @@ function wml_actions.store_items(cfg)
 			local items = scenario_items[loc[1] * 10000 + loc[2]]
 			if not items then break end
 			for j, item in ipairs(items) do
-				wesnoth.set_variable(string.format("%s[%u]", variable, index), item)
+				wesnoth.set_variable(string.format("%s[%u]", tostring(variable), index), item)
 				index = index + 1
 			end
 		until true
