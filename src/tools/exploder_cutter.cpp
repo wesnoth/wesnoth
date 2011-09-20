@@ -51,7 +51,7 @@ void cutter::load_masks(const config& conf)
 	foreach (const config &m, conf.child_range("mask"))
 	{
 		const std::string name = m["name"];
-		const std::string image = get_mask_dir() + "/" + m["image"];
+		const std::string image = get_mask_dir() + "/" + std::string(m["image"]);
 
 		if(verbose_) {
 			std::cerr << "Adding mask " << name << "\n";
