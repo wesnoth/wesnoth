@@ -29,7 +29,6 @@
 namespace {
 DEFAULT_TOKEN_BODY(zf_trait, "trait");
 DEFAULT_TOKEN_BODY(zf_topic, "topic");
-DEFAULT_TOKEN_BODY(z_empty, "");
 DEFAULT_TOKEN_BODY(zf_id, "id");
 DEFAULT_TOKEN_BODY(zf_plural_name, "plural_name");
 DEFAULT_TOKEN_BODY(zf_description, "description");
