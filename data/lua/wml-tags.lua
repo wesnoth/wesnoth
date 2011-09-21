@@ -228,8 +228,7 @@ function wml_actions.wml_action(cfg)
 	-- The new tag's name
 	local name = cfg.name or
 		helper.wml_error "[wml_action] missing required name= attribute."
-	local code = cfg.lua_function or
-		helper.wml_error "[wml_action] missing required lua_function= attribute."
+	local code = tostring(cfg.lua_function or helper.wml_error "[wml_action] missing required lua_function= attribute.")
 	local bytecode, message = loadstring(code)
 	if not bytecode then
 		helper.wml_error("[wml_action] failed to compile Lua code: " .. tostring(message))
@@ -237,14 +236,18 @@ function wml_actions.wml_action(cfg)
 	-- The lua function that is executed when the tag is called
 	local lua_function = bytecode() or
 		helper.wml_error "[wml_action] expects a Lua code returning a function."
+   -- Store it as a t_token and a string  
 	wml_actions[name] = lua_function
+	wml_actions[tostring(name)] = lua_function
 end
 
 function wml_actions.lua(cfg)
 	local cfg = helper.shallow_literal(cfg)
-	local bytecode, message = loadstring(cfg.code or "")
+
+	local bytecode, message = loadstring(tostring(cfg.code or ""))
 	if not bytecode then error("~lua:" .. tostring(message), 0) end
-	bytecode(helper.get_child(cfg, "args"))
+	local ww, ii = helper.get_child(cfg, "args")
+	bytecode(ww)
 end
 
 function wml_actions.music(cfg)
@@ -424,7 +427,7 @@ function wml_actions.store_unit(cfg)
 		end
 	end
 
-	if (not tostring(filter.x) or helper.check_equal( filter.x , "recall")) and (not tostring(filter.y) or helper.check_equal( filter.y , "recall")) then
+	if (not filter.x or helper.check_equal( filter.x , "recall")) and (not filter.y or helper.check_equal( filter.y , "recall")) then
 		for i,u in ipairs(wesnoth.get_recall_units(filter)) do
 			local ucfg = u.__cfg
 			ucfg.x = "recall"

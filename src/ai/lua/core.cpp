@@ -90,7 +90,7 @@ void lua_ai_context::set_persistent_data(const config &cfg)
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num_);
 
-	luaW_pushconfig(L, cfg);
+	luaW_pushconfig(L, cfg, false);
 	lua_setfield(L, -2, "data");
 
 	lua_settop(L, top);
@@ -388,7 +388,7 @@ static int cfun_ai_get_leader_aggression(lua_State *L)
 static int cfun_ai_get_leader_goal(lua_State *L)
 {
 	config goal = get_readonly_context(L).get_leader_goal();
-	luaW_pushconfig(L, goal);
+	luaW_pushconfig(L, goal, false);
 	return 1;
 }
 
@@ -696,7 +696,7 @@ void lua_ai_action_handler::handle(config &cfg, bool configOut, lua_object_ptr l
 
 	if (!configOut)
 	{
-		luaW_pushconfig(L, cfg);
+		luaW_pushconfig(L, cfg, false);
 		luaW_pcall(L, 2, 0, true);
 	}
 	else if (luaW_pcall(L, 1, 5, true)) // @note for Crab: how much nrets should we actually have here

@@ -187,18 +187,23 @@ static void luaW_pushtstring(lua_State *L, t_string const &v)
 /**
  * Pushes a t_token on the top of the stack.
  */
-static void luaW_push_t_token(lua_State *L, n_token::t_token const &v)
+static void luaW_push_t_token(lua_State *L, n_token::t_token const &v, bool return_tokens)
 {
-	new(lua_newuserdata(L, sizeof(n_token::t_token))) n_token::t_token(v);
-	lua_pushlightuserdata(L, (void *)&t_tokenKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
+	if(return_tokens){
+		new(lua_newuserdata(L, sizeof(n_token::t_token))) n_token::t_token(v);
+		lua_pushlightuserdata(L, (void *)&t_tokenKey);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_setmetatable(L, -2);
+	} else {
+		lua_pushstring(L, v->c_str());
+	}
 }
 
 struct luaW_pushscalar_visitor : public config::attribute_value::default_visitor {
 	using default_visitor::operator();
 	lua_State *L;
-	luaW_pushscalar_visitor(lua_State *l): L(l) {}
+	bool return_tokens_; //convert tokens to strings
+	luaW_pushscalar_visitor(lua_State *l, bool return_tokens): L(l), return_tokens_(return_tokens) {}
 	void operator()()
 	{ lua_pushnil(L); }
 	void operator()(bool const b)
@@ -209,15 +214,15 @@ struct luaW_pushscalar_visitor : public config::attribute_value::default_visitor
 	{ lua_pushnumber(L, d); }
 	void operator()(t_string const &s)
 	{ luaW_pushtstring(L, s); }
-	void operator()(config::t_token const &s)
-	{ luaW_push_t_token(L, s ); }
+	void operator()(config::t_token const &s) 
+	{ luaW_push_t_token(L, s , return_tokens_); }
 };
 
 /**
  * Converts aa attribute_value into a Lua object pushed at the top of the stack.
  */
-static void luaW_pushscalar(lua_State *L, config::attribute_value const &v) {
-	luaW_pushscalar_visitor visitor(L);
+static void luaW_pushscalar(lua_State *L, config::attribute_value const &v, bool return_tokens) {
+	luaW_pushscalar_visitor visitor(L, return_tokens);
 	v.apply_visitor(visitor);
 }
 
@@ -327,7 +332,7 @@ static t_token luaW_check_t_token(lua_State *L, int index)
  * The destination table should be at the top of the stack on entry. It is
  * still at the top on exit.
  */
-static void luaW_filltable(lua_State *L, config const &cfg)
+static void luaW_filltable(lua_State *L, config const &cfg, bool return_tokens)
 {
 	if (!lua_checkstack(L, LUA_MINSTACK))
 		return;
@@ -336,16 +341,16 @@ static void luaW_filltable(lua_State *L, config const &cfg)
 	foreach (const config::any_child &ch, cfg.all_children_range())
 	{
 		lua_createtable(L, 2, 0);
-		luaW_push_t_token(L, ch.key );
+		luaW_push_t_token(L, ch.key, return_tokens );
 		lua_rawseti(L, -2, 1);
 		lua_newtable(L);
-		luaW_filltable(L, ch.cfg);
+		luaW_filltable(L, ch.cfg, return_tokens);
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, k++);
 	}
 	foreach (const config::attribute &attr, cfg.attribute_range())
 	{
-		luaW_pushscalar(L, attr.second);
+		luaW_pushscalar(L, attr.second, return_tokens);
 		lua_setfield(L, -2, attr.first.c_str());
 	}
 }
@@ -353,10 +358,10 @@ static void luaW_filltable(lua_State *L, config const &cfg)
 /**
  * Converts a config object to a Lua table pushed at the top of the stack.
  */
-void luaW_pushconfig(lua_State *L, config const &cfg)
+void luaW_pushconfig(lua_State *L, config const &cfg, bool return_tokens)
 {
 	lua_newtable(L);
-	luaW_filltable(L, cfg);
+	luaW_filltable(L, cfg, return_tokens);
 }
 
 #define return_misformed() \
@@ -776,6 +781,24 @@ static void t_token_concat_aux(lua_State *L, t_token &dst, int src)
 }
 
 /**
+ * Creates a t_token object to be used for fast indexing of vconfig metables
+ It can be passed either a string or another t_token metatable
+ */
+static int impl_t_token_create(lua_State *L)
+{
+	t_token m = luaW_check_t_token(L, 1);
+
+	// Create a new t_token.
+	new(lua_newuserdata(L, sizeof(t_token))) t_token(m);
+
+	lua_pushlightuserdata(L, (void *)&t_tokenKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+
+	lua_setmetatable(L, -2);
+	return 1;
+}
+
+/**
  * Appends a scalar to a t_token object (__concat metamethod).
  */
 static int impl_t_token_concat(lua_State *L)
@@ -857,7 +880,7 @@ static int impl_t_token_index(lua_State *L)
 {
 	t_token *tk = static_cast<t_token *>(lua_touserdata(L, 1));
 	t_token m = luaW_check_t_token(L, 2);
-	std::cerr<<"Token __index for "<<tk<<" asking for "<<m<<"\n";
+	std::cerr<<"Unexpected Token __index for "<<tk<<" asking for "<<m<<"\n";
 	return 0;
 }
 
@@ -865,6 +888,9 @@ static int impl_t_token_index(lua_State *L)
  * Gets the parsed field of a vconfig object (_index metamethod).
  * Special fields __literal, __shallow_literal, __parsed, and
  * __shallow_parsed, return Lua tables.
+ If the key is t_token then all t_token values are returned as t_token.  This is the fastest usage model.
+If the key is a string then all t_token values are returned as strings.  This is the syntactivally simplest model 
+and allows for lua code like string_operation( cfg.keyname ), without wrapping in tostring()
  */
 static int impl_vconfig_get(lua_State *L)
 {
@@ -883,7 +909,7 @@ static int impl_vconfig_get(lua_State *L)
 		if (pos >= len) return 0;
 		std::advance(i, pos);
 		lua_createtable(L, 2, 0);
-		luaW_push_t_token(L, i.get_key() );
+		luaW_push_t_token(L, i.get_key() ,false);
 		lua_rawseti(L, -2, 1);
 		new(lua_newuserdata(L, sizeof(vconfig))) vconfig(i.get_child());
 		lua_pushlightuserdata(L, (void *)&vconfigKey);
@@ -895,12 +921,13 @@ static int impl_vconfig_get(lua_State *L)
 
 	//char const *m = luaL_checkstring(L, 2);
 	t_token m = luaW_check_t_token(L, 2);
+	bool return_tokens = ! lua_isstring(L, 2);  
 	if (m == z___literal) {
-		luaW_pushconfig(L, v->get_config());
+		luaW_pushconfig(L, v->get_config(), return_tokens);
 		return 1;
 	}
 	if (m == z___parsed) {
-		luaW_pushconfig(L, v->get_parsed_config());
+		luaW_pushconfig(L, v->get_parsed_config(), return_tokens);
 		return 1;
 	}
 
@@ -910,9 +937,9 @@ static int impl_vconfig_get(lua_State *L)
 		lua_newtable(L);
 		foreach (const config::attribute &a, v->get_config().attribute_range()) {
 			if (shallow_literal)
-				luaW_pushscalar(L, a.second);
+				luaW_pushscalar(L, a.second, return_tokens);
 			else
-				luaW_pushscalar(L, v->expand(a.first));
+				luaW_pushscalar(L, v->expand(a.first), return_tokens);
 			lua_setfield(L, -2, a.first.c_str());
 		}
 		vconfig::all_children_iterator i = v->ordered_begin(),
@@ -924,7 +951,7 @@ static int impl_vconfig_get(lua_State *L)
 		for (int j = 1; i != i_end; ++i, ++j)
 		{
 			lua_createtable(L, 2, 0);
-			luaW_push_t_token(L, i.get_key());
+			luaW_push_t_token(L, i.get_key(), return_tokens);
 			lua_rawseti(L, -2, 1);
 			luaW_pushvconfig(L, i.get_child());
 			lua_rawseti(L, -2, 2);
@@ -934,7 +961,7 @@ static int impl_vconfig_get(lua_State *L)
 	}
 
 	if (v->null() || !v->has_attribute(m)) { return 0; }
-	luaW_pushscalar(L, (*v)[m]);
+	luaW_pushscalar(L, (*v)[m], return_tokens);
 	return 1;
 }
 
@@ -1003,13 +1030,13 @@ static int impl_vconfig_collect(lua_State *L)
 	if (m == name) { \
 		config cfg; \
 		accessor; \
-		luaW_pushconfig(L, cfg); \
+		luaW_pushconfig(L, cfg, return_tokens);				\
 		return 1; \
 	}
 
 #define return_cfgref_attrib(name, accessor) \
 	if (m == name) { \
-		luaW_pushconfig(L, (accessor)); \
+		luaW_pushconfig(L, (accessor), return_tokens); \
 		return 1; \
 	}
 
@@ -1019,7 +1046,7 @@ static int impl_vconfig_collect(lua_State *L)
 		lua_createtable(L, vector.size(), 0); \
 		int i = 1; \
 		foreach (const config::t_token & s, vector) { \
-			luaW_push_t_token(L, s); \
+			luaW_push_t_token(L, s, return_tokens);				  \
 			lua_rawseti(L, -2, i); \
 			++i; \
 		} \
@@ -1111,6 +1138,8 @@ static int impl_unit_type_get(lua_State *L)
 
 	//char const *m = luaL_checkstring(L, 2);
 	t_token m = luaW_check_t_token(L, 2);
+	bool return_tokens = ! lua_isstring(L, 2);  
+
 	lua_pushstring(L, "id");
 	lua_rawget(L, 1);
 	t_token type_id = luaW_check_t_token(L, -1);
@@ -1146,6 +1175,8 @@ static int impl_race_get(lua_State* L)
 
 	//char const* m = luaL_checkstring(L, 2);
 	t_token m = luaW_check_t_token(L, 2);
+	bool return_tokens = ! lua_isstring(L, 2);  
+
 	lua_pushstring(L, "id");
 	lua_rawget(L, 1);
 	t_token tk = luaW_check_t_token(L, -1);
@@ -1212,6 +1243,8 @@ static int impl_unit_get(lua_State *L)
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 	//char const *m = luaL_checkstring(L, 2);
 	t_token m = luaW_check_t_token(L, 2);
+	bool return_tokens = ! lua_isstring(L, 2);  
+
 	unit const *pu = lu->get();
 
 	if (m == z_valid)
@@ -1389,9 +1422,12 @@ static int impl_unit_variables_get(lua_State *L)
 	unit const *u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	//char const *m = luaL_checkstring(L, 2);
+
 	t_token m = luaW_check_t_token(L, 2);
+	bool return_tokens = ! lua_isstring(L, 2);  
+
 	return_cfgref_attrib(z___cfg, u->variables());
-	luaW_pushscalar(L, u->variables()[m]);
+	luaW_pushscalar(L, u->variables()[m], return_tokens);
 	return 1;
 }
 
@@ -1501,7 +1537,8 @@ static int intf_get_displayed_unit(lua_State *L)
  */
 static int intf_get_units(lua_State *L)
 {
-	vconfig filter = luaW_checkvconfig(L, 1, true);
+	vconfig filter = vconfig::unconstructed_vconfig();
+	luaW_tovconfig(L, 1, filter);
 
 	// Go through all the units while keeping the following stack:
 	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
@@ -1568,7 +1605,8 @@ static int intf_match_unit(lua_State *L)
  */
 static int intf_get_recall_units(lua_State *L)
 {
-	vconfig filter = luaW_checkvconfig(L, 1, true);
+	vconfig filter = vconfig::unconstructed_vconfig();
+	luaW_tovconfig(L, 1, filter);
 
 	// Go through all the units while keeping the following stack:
 	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
@@ -1651,17 +1689,18 @@ static int intf_fire_event(lua_State *L)
 static int intf_get_variable(lua_State *L)
 {
 	t_token m = luaW_check_t_token(L, 1);
+	bool return_tokens = ! lua_isstring(L, 1);  
 
 	variable_info v(m, false, variable_info::TYPE_SCALAR);
 	if (v.is_valid()) {
-		luaW_pushscalar(L, v.as_scalar());
+		luaW_pushscalar(L, v.as_scalar(), return_tokens);
 		return 1;
 	} else {
 		variable_info w(m, false, variable_info::TYPE_CONTAINER);
 		if (w.is_valid()) {
 			lua_newtable(L);
 			if (lua_toboolean(L, 2))
-				luaW_filltable(L, w.as_container());
+				luaW_filltable(L, w.as_container(), return_tokens);
 			return 1;
 		}
 	}
@@ -1848,6 +1887,7 @@ static int impl_side_get(lua_State *L)
 	team &t = **static_cast<team **>(lua_touserdata(L, 1));
 	//char const *m = luaL_checkstring(L, 2);
 	t_token m = luaW_check_t_token(L, 2);
+	bool return_tokens = ! lua_isstring(L, 2);  
 
 	// Find the corresponding attribute.
 	return_int_attrib(z_gold, t.gold());
@@ -2249,6 +2289,7 @@ static int impl_current_get(lua_State *L)
 	static const config::t_token & z_y2( generate_safe_static_const_t_interned(n_token::t_token("y2")) );
 	//char const *m = luaL_checkstring(L, 2);
 	t_token m = luaW_check_t_token(L, 2);
+	bool return_tokens = ! lua_isstring(L, 2);  
 
 	// Find the corresponding attribute.
 	return_int_attrib(z_side, resources::controller->current_side());
@@ -2273,7 +2314,7 @@ static int impl_current_get(lua_State *L)
 			cfg[z_x2] = ev.loc2.x + 1;
 			cfg[z_y2] = ev.loc2.y + 1;
 		}
-		luaW_pushconfig(L, cfg);
+		luaW_pushconfig(L, cfg, return_tokens);
 		return 1;
 	}
 
@@ -2287,8 +2328,12 @@ static int impl_current_get(lua_State *L)
  */
 static int intf_message(lua_State *L)
 {
+	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
+
+	t_token m(z_empty);
+	luaW_to_t_token(L, 1, m);
 	//char const *m = luaL_checkstring(L, 1);
-	t_token m = luaW_check_t_token(L, 1);
+
 	char const *h = m.c_str();
 	if (lua_isnone(L, 2)) {
 		h = "Lua";
@@ -2512,22 +2557,22 @@ static int intf_find_reach(lua_State *L)
 	static const config::t_token & z_viewing_side( generate_safe_static_const_t_interned(n_token::t_token("viewing_side")) );
 	if (lua_istable(L, arg))
 	{
-		luaW_push_t_token(L, z_ignore_units);
+		luaW_push_t_token(L, z_ignore_units, false);
 		//lua_rawget(L, arg);
 		ignore_units = lua_toboolean(L, -1);
 		lua_pop(L, 1);
 
-		luaW_push_t_token(L, z_ignore_teleport);
+		luaW_push_t_token(L, z_ignore_teleport, false);
 		//lua_rawget(L, arg);
 		ignore_teleport = lua_toboolean(L, -1);
 		lua_pop(L, 1);
 
-		luaW_push_t_token(L, z_additional_turns);
+		luaW_push_t_token(L, z_additional_turns, false);
 		//lua_rawget(L, arg);
 		additional_turns = lua_tointeger(L, -1);
 		lua_pop(L, 1);
 
-		luaW_push_t_token(L, z_viewing_side);
+		luaW_push_t_token(L, z_viewing_side, false);
 		//	lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
@@ -3070,7 +3115,8 @@ static int intf_synchronize_choice(lua_State *L)
 {
 	static const config::t_token & z_input( generate_safe_static_const_t_interned(n_token::t_token("input")) );
 	config cfg = mp_sync::get_user_choice(z_input, lua_synchronize(L));
-	luaW_pushconfig(L, cfg);
+	///todo update mp to correctly use tokens
+	luaW_pushconfig(L, cfg, false);
 	return 1;
 }
 
@@ -3566,7 +3612,8 @@ static int intf_get_traits(lua_State* L)
 		//However, the worst thing to happen is that the trait read later overwrites the older one,
 		//and this is not the right place for such checks.
 		lua_pushstring(L, id.c_str());
-		luaW_pushconfig(L, trait);
+		bool return_tokens = false;
+		luaW_pushconfig(L, trait, return_tokens);
 		lua_rawset(L, -3);
 	}
 	return 1;
@@ -3720,7 +3767,8 @@ static int cfun_theme_item(lua_State *L)
 {
 	//const char *m = lua_tostring(L, lua_upvalueindex(1));
 	t_token m = luaW_check_t_token(L,  lua_upvalueindex(1));
-	luaW_pushconfig(L, reports::generate_report(m.str(), true));
+	bool return_tokens = ! lua_isstring(L, lua_upvalueindex(1));  
+	luaW_pushconfig(L, reports::generate_report(m.str(), true), return_tokens);
 	return 1;
 }
 
@@ -3845,6 +3893,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
 		{ "unit_resistance",          &intf_unit_resistance          },
+		{ "create_t_token",          &impl_t_token_create        },
 		{ NULL, NULL }
 	};
 	luaL_register(L, "wesnoth", callbacks);
@@ -4194,7 +4243,8 @@ void LuaKernel::load_game()
 		lua_createtable(L, 2, 0);
 		lua_pushstring(L, v.key.c_str());
 		lua_rawseti(L, -2, 1);
-		luaW_pushconfig(L, v.cfg);
+		bool return_tokens = false;
+		luaW_pushconfig(L, v.cfg, return_tokens);
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, k++);
 	}

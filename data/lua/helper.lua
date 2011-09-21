@@ -1,15 +1,19 @@
 --! #textdomain wesnoth
 
+--! Create the t_tokens that helper will use for fast access to vconfig objects
+--! Allows the use of cfg[tk] which is faster than cfg["tk"] which is semantically the same as cfg.tk
+--for example local id_token = wesnoth.create_t_token("id") 
+
 local helper = {}
 
 --! Checks if a value equals another value or the string of the value equals the string og the other value
 function helper.check_equal(a, b)
-	return  a == b or tostring(a) == tostring(b)
+	return  (a == b) or (tostring(a) == tostring(b))
 end
 
 --! Checks if a value equals another value or the string of the value equals the string og the other value
 function helper.check_not_equal(a, b)
-	return   not (a == b or tostring(a) == tostring(b))
+	return   not ((a == b) or (tostring(a) == tostring(b)))
 end
 
 --! Returns an iterator over all the sides matching a given filter that can be used in a for-in loop.
