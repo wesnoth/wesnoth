@@ -60,6 +60,6 @@ register_wesnoth_pretty_printers.register(pretty_printers_dict)
 def get_levels_of_recursion():
     return wesnoth_pretty_printers.RecursionManager.get_level()
 def set_levels_of_recursion(num):
-    wesnoth_pretty_printers.RecursionManager.set_level(num)
-    return wesnoth_pretty_printers.RecursionManager.get_level()
+    return wesnoth_pretty_printers.RecursionManager.set_level(num)
+
 

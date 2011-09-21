@@ -24,8 +24,8 @@ class RecursionManager(object):
         
     @classmethod
     def set_level(cls, val):
+        cls.curr=0;
         if val >= 0 :
-            cls.curr=0;
             cls.default = val
         return cls.default
 
