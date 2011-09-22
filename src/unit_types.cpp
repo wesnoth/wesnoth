@@ -821,7 +821,6 @@ void unit_type::build_full(const movement_type_map &mv_types,
 void unit_type::build_help_index(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
-	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
 	static const config::t_token & z_description( generate_safe_static_const_t_interned(n_token::t_token("description")) );
 	static const config::t_token & z_hitpoints( generate_safe_static_const_t_interned(n_token::t_token("hitpoints")) );
@@ -861,9 +860,9 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	image_ = cfg_[z_image].token();
 	small_profile_ = cfg_[z_small_profile].token();
 	big_profile_ = cfg_[z_profile].token();
-	std::pair<config::t_token, config::t_token> new_profiles = adjust_profile(small_profile_, big_profile_, z_empty);
-	cfg_[z_small_profile] = new_profiles.first;
-	cfg_[z_profile] = new_profiles.second;
+	std::pair<config::t_token, config::t_token> new_profiles = adjust_profile(small_profile_, big_profile_, image_);
+	small_profile_ = new_profiles.first;
+	big_profile_ = new_profiles.second;
 
 
 	for (int i = 0; i < 2; ++i) {
@@ -1544,12 +1543,12 @@ unit_type_data unit_types;
 
 std::pair<config::t_token, config::t_token> adjust_profile(config::t_token const &ismall, config::t_token const &ibig, config::t_token const &def) {
 	config::t_token big(ibig), small(ismall);
-	if (ibig.empty() || ibig == n_token::t_token::z_empty()) {
+	if (ibig.empty() ){//|| ibig == n_token::t_token::z_empty()) {
 		// No profile data; use the default image.
 		small = def;
 		big = def;
 	}
-	else if (ismall.empty() || ismall == n_token::t_token::z_empty()) {
+	else if (ismall.empty() ){//|| ismall == n_token::t_token::z_empty()) {
 		// No small profile; use the current profile for it and
 		// try to infer the big one.
 		small = ibig;
@@ -1561,11 +1560,9 @@ std::pair<config::t_token, config::t_token> adjust_profile(config::t_token const
 		} else {
 			sbig = "transparent/" + sbig;
 		}
-		if (!image::locator(sbig).file_exists()){
+		big = config::t_token(sbig);
+		if (!image::locator(big).file_exists()){
 			big = small; }
-		else {
-			big = config::t_token(sbig);
-		}
 	}
 	return std::make_pair(small, big);
 }
