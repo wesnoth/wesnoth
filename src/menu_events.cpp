@@ -2628,7 +2628,10 @@ class console_handler : public map_command_handler<console_handler>, private cha
 
 			if (const config &alias_list = preferences::get_alias())
 			{
-				foreach (const config::attribute &a, alias_list.attribute_range()) {
+				std::map<config::t_token, config::attribute_value> sorted;
+				foreach (const config::attribute &ipresorted, alias_list.attribute_range()) {
+					sorted.insert( ipresorted ); }
+				foreach (const config::attribute &a, sorted) {
 					register_alias(a.second, a.first);
 				}
 			}

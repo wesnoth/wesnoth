@@ -254,7 +254,10 @@ game_info::game_info(const config& game, const config& game_config)
 				if (const config& hashes = game_config.child("multiplayer_hashes")) {
 					std::string hash = game["hash"];
 					bool hash_found = false;
-					foreach (const config::attribute &i, hashes.attribute_range()) {
+					std::map<config::t_token, config::attribute_value> sorted;
+					foreach (const config::attribute &ipresorted, hashes.attribute_range()) {
+						sorted.insert( ipresorted ); }
+					foreach (const config::attribute &i, sorted) {
 						if (i.first == game["mp_scenario"] && i.second == hash) {
 							hash_found = true;
 							break;

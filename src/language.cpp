@@ -228,7 +228,10 @@ bool load_strings(bool complain)
 	}
 	foreach (const config &lang, languages_) {
 		DBG_G << "[language]\n";
-		foreach (const config::attribute &j, lang.attribute_range()) {
+		std::map<config::t_token, config::attribute_value> sorted;
+		foreach (const config::attribute &ipresorted, lang.attribute_range()) {
+			sorted.insert( ipresorted ); }
+		foreach (const config::attribute &j, sorted) {
 			DBG_G << j.first << "=\"" << j.second << "\"\n";
 			strings_[j.first] = j.second.token();
 		}

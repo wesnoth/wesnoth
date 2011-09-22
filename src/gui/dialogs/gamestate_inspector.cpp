@@ -189,7 +189,10 @@ public:
 				? resources::state_of_game->get_variables()
 				: config();
 
-		foreach( const config::attribute &a, vars.attribute_range()) {
+		std::map<config::t_token, config::attribute_value> sorted;
+		foreach (const config::attribute &i, vars.attribute_range()) {
+			sorted.insert( i ); }		
+		foreach( const config::attribute &a, sorted) {
 			model_.add_row_to_stuff_list(a.first,a.first);
 		}
 
@@ -214,7 +217,10 @@ public:
 				? resources::state_of_game->get_variables()
 				: config();
 
-		foreach( const config::attribute &a, vars.attribute_range()) {
+		std::map<config::t_token, config::attribute_value> sorted;
+		foreach (const config::attribute &i, vars.attribute_range()) {
+			sorted.insert( i ); }
+		foreach( const config::attribute &a, sorted) {
 			if (selected==i) {
 				model_.set_inspect_window_text(a.second);
 				return;

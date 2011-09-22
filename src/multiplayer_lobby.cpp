@@ -502,7 +502,10 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				if (map_hashes_ && !games_.back().reloaded) {
 					std::string hash = game["hash"];
 					bool hash_found = false;
-					foreach (const config::attribute &i, map_hashes_.attribute_range()) {
+					std::map<config::t_token, config::attribute_value> sorted;
+					foreach (const config::attribute &ipresorted, map_hashes_.attribute_range()) {
+						sorted.insert( ipresorted ); }
+					foreach (const config::attribute &i, sorted) {
 						if (i.first == game["mp_scenario"] && i.second == hash) {
 							hash_found = true;
 							break;
