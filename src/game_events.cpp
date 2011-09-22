@@ -3083,13 +3083,9 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 	}
 	else {
 		config::t_token id;
-		id = utils::split_attr(ids,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
-		// if(ids.find(',') != std::string::npos) {
-		// 	id = utils::split_token(ids,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
-		// 	ERR_NG << "multiple ids for inserting a new time_area; will use only the first\n";
-		// } else {
-		// 	id = ids;
-		// }
+		std::vector<config::t_token> idsv = utils::split_attr(ids,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY);
+		id = (idsv.empty()) ? ids.token() : idsv.front();
+
 		map_location::t_maploc_set locs;
 		terrain_filter filter(cfg, *resources::units);
 		filter.restrict_size(game_config::max_loop);
