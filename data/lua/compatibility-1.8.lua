@@ -4,7 +4,7 @@
 -- from the engine between 1.8 and 1.10.
 
 function wesnoth.get_side(i)
-	return  wesnoth.sides[tonumber(i)]
+	return wesnoth.sides[i]
 end
 
 function wesnoth.get_side_count()

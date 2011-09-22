@@ -40,8 +40,8 @@ public:
 	void save_game(config &);
 	void load_game();
 	bool run_event(game_events::queued_event const &);
-	void set_wml_action(config::t_token const &, game_events::action_handler);
-	bool run_wml_action(config::t_token const &, vconfig const &,
+	void set_wml_action(std::string const &, game_events::action_handler);
+	bool run_wml_action(std::string const &, vconfig const &,
 		game_events::queued_event const &);
 	bool run_filter(char const *name, unit const &u);
 	/** Runs a plain script. */
