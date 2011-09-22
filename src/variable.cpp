@@ -729,10 +729,14 @@ void activate_scope_variable(t_parsed_tokens const & tokens)
 } //end namespace
 
 
-void variable_info::init(const config::t_token& varname, bool force_valid) {
+void variable_info::init(const config::t_token& varname, bool force_valid, bool is_conditional_test) {
+
 	static const config::t_token & z_length( generate_safe_static_const_t_interned(n_token::t_token("length")) );
 	static const config::t_token & z___array( generate_safe_static_const_t_interned(n_token::t_token("__array")) );
 	static const config::t_token & z___value( generate_safe_static_const_t_interned(n_token::t_token("__value")) );
+
+	/**todo Use is_conditional_test to not report WML errors on non-existent vars if a conditional test of the variable is running*/
+	(void) is_conditional_test;
 	try {
 
 		//an example varname is  "unit_store.modifications.trait[0]"
@@ -756,12 +760,13 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 		while (i <  last_token){
 			int inner_index = 0;
 			int size = vars->child_count( i->token);
+			bool get_length_of_this_token  = ((i == second_last_token) && (last_token->token == z_length));
+			bool last_key_is_not_length(last_token->token != z_length);
 
 			if(i->index != t_parsed::NO_INDEX){
 				inner_index = i->index;
 
 				if(size <= inner_index) {
-					bool last_key_is_not_length ((i != second_last_token) || (last_token->token != z_length));
 					if(force_valid) {
 						// Add elements to the array until the requested size is attained
 						if( last_key_is_not_length) {
@@ -769,46 +774,55 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 								vars->add_child(i->token);
 							}
 						}
-					} else if(inner_index != 0) {
+					} else if ((inner_index != 0) && !get_length_of_this_token) {
 						throw game::wml_syntax_error(tokens, i - tokens.begin(), 
 													 _("the WML array index is larger than the largest array element.") );
 					} else if( last_key_is_not_length ) {
 						throw game::wml_syntax_error(tokens, i - tokens.begin() , _("the WML array index is invalid.  Use varname[0].length to check for the existence of an array element.") );
-					} //else return length 0 for non-existent WML array (handled below)
-				}
-				vars = &vars->child(i->token, inner_index);
-
-			} else {
-				if( i == second_last_token && last_token->token == z_length){
-					switch(vartype) {
-					case variable_info::TYPE_ARRAY:
-					case variable_info::TYPE_CONTAINER:
-						throw game::wml_syntax_error(tokens, i - tokens.begin()
-													 , _("attempt to get length of a non array/container.") );
-					case variable_info::TYPE_SCALAR:
-					default:
-						// Store the length of the array as a temporary variable
-						repos->temporaries_[varname] = int(size);
-						is_valid_ = true;
-						break;
+					} else {//else return length 0 for non-existent WML array (handled below)
+						get_length_of_this_token =true;
 					}
-					key = varname;
-					vars = &repos->temporaries_;
-					return;
 				}
-				
-				config *ovars(vars);
-				vars = &vars->child(i->token, inner_index);
+			} 
+
+			config * nvars(NULL);
+			if(!get_length_of_this_token){
+				nvars = &vars->child(i->token, inner_index);
 
 				//todo fix the config operator bool and change (vars == NULL)to !vars
-				if(vars == NULL){
+				if(nvars == NULL){
 					if(force_valid) {
-						vars = &ovars->add_child(i->token); } 
-					else {
+						//Note force valid for inner indices !=0 is covered above.
+						nvars = &vars->add_child(i->token); } 
+					else if(last_key_is_not_length) {
 						is_valid_ = false;
-						return; } } 					
+						return; } 
+					else { //Container does not exist
+						get_length_of_this_token = true;
+						size = 0;
+					}
+				} 
 			}
 
+			if( get_length_of_this_token) {
+				switch(vartype) {
+				case variable_info::TYPE_ARRAY:
+				case variable_info::TYPE_CONTAINER:
+					throw game::wml_syntax_error(tokens, i - tokens.begin()
+												 , _("attempt to get length of a non array/container.") );
+				case variable_info::TYPE_SCALAR:
+				default:
+					// Store the length of the array as a temporary variable
+					repos->temporaries_[varname] = int(size);
+					is_valid_ = true;
+					break;
+				}
+				key = varname;
+				vars = &repos->temporaries_;
+				return;
+			}
+									
+			vars = nvars;
 			++i;
 		}
 
@@ -872,21 +886,21 @@ void variable_info::init(const config::t_token& varname, bool force_valid) {
 	}
 }
 
-variable_info::variable_info(const config::t_token& varname, bool force_valid, TYPE validation_type)
+variable_info::variable_info(const config::t_token& varname, bool force_valid, TYPE validation_type, bool is_conditional_test)
 	: vartype(validation_type), is_valid_(false), explicit_index_(false), key(varname),  index(0), vars(NULL) {
-	init( varname,  force_valid) ;}
+	init( varname,  force_valid, is_conditional_test) ;}
 
-variable_info::variable_info(const t_string& varname, bool force_valid, TYPE validation_type)
+variable_info::variable_info(const t_string& varname, bool force_valid, TYPE validation_type, bool is_conditional_test)
 	: vartype(validation_type), is_valid_(false), explicit_index_(false),key(varname.token()),  index(0), vars(NULL) {
-	init(varname.token(), force_valid);}
+	init(varname.token(), force_valid, is_conditional_test);}
 
-variable_info::variable_info(const std::string& varname, bool force_valid, TYPE validation_type)
+variable_info::variable_info(const std::string& varname, bool force_valid, TYPE validation_type, bool is_conditional_test)
 	: vartype(validation_type), is_valid_(false), explicit_index_(false), key(varname), index(0), vars(NULL) {
-	init(config::t_token(varname), force_valid);}
+	init(config::t_token(varname), force_valid, is_conditional_test);}
 
-variable_info::variable_info(const config::attribute_value& varname, bool force_valid, TYPE validation_type)
+variable_info::variable_info(const config::attribute_value& varname, bool force_valid, TYPE validation_type, bool is_conditional_test)
 	: vartype(validation_type), is_valid_(false), explicit_index_(false), key(varname.token()), index(0), vars(NULL) {
-	init(varname.token(), force_valid);}
+	init(varname.token(), force_valid, is_conditional_test);}
 
 
 

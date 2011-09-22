@@ -228,10 +228,17 @@ public:
 	            TYPE_CONTAINER, //a Container is a specific index of an Array (contains Scalars)
 	            TYPE_UNSPECIFIED };
 
-	variable_info(const config::t_token& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED);
-	variable_info(const t_string& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED);
-	variable_info(const std::string& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED);
-	variable_info(const config::attribute_value& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED);
+
+	/** variable_info creates, evaluates or tests the WML variable varname.
+		@param[in] varname The WML variable
+		@param[in] force_valid forces creation of the variable and the entire chain of variables in its scope
+		@param[in] validation_type Type of the variable
+		@param[in] is_conditional_test when true indicates that the variable is being test in a conditional expression so is_valid is set to false without warning as if the condition evaluated to false.
+	 */
+	variable_info(const config::t_token& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED, bool is_conditional_test=false);
+	variable_info(const t_string& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED, bool is_conditional_test=false);
+	variable_info(const std::string& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED, bool is_conditional_test=false);
+	variable_info(const config::attribute_value& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED, bool is_conditional_test=false);
 
 	/**
 	 * Results: after deciding the desired type, these methods can retrieve the result
@@ -244,7 +251,7 @@ public:
 	bool is_explicit_index() const {return explicit_index_;}
 
 private:
-	void init(const config::t_token& varname, bool force_valid=true);
+	void init(const config::t_token& varname, bool force_valid=true, bool is_conditional_test=false);
 	TYPE vartype; ///default is TYPE_UNSPECIFIED
 	bool is_valid_;
 	bool explicit_index_; ///true if query ended in [...] specifier
