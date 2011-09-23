@@ -720,7 +720,6 @@ REPORT_GENERATOR(unit_image)
 	if (!u) return report();
 	return image_report(u->absolute_image() + u->image_mods());
 }
-
 REPORT_GENERATOR(selected_unit_image)
 {
 	unit *u = get_selected_unit();
@@ -735,7 +734,6 @@ REPORT_GENERATOR(selected_unit_profile)
 	if (!u) return report();
 	return image_report(u->small_profile());
 }
-
 REPORT_GENERATOR(unit_profile)
 {
 	unit *u = get_visible_unit();
@@ -743,12 +741,11 @@ REPORT_GENERATOR(unit_profile)
 	return image_report(u->small_profile());
 }
 
-REPORT_GENERATOR(time_of_day)
+static config time_of_day_at(map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
 	time_of_day tod;
 	const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
-	map_location mouseover_hex = resources::screen->mouseover_hex();
 	if (viewing_team.shrouded(mouseover_hex)) {
 		// Don't show time on shrouded tiles.
 		tod = resources::tod_manager->get_time_of_day();
@@ -773,6 +770,16 @@ REPORT_GENERATOR(time_of_day)
 	if (preferences::flip_time()) tod_image += "~FL(horiz)";
 
 	return image_report(tod_image, tooltip.str(), "time_of_day");
+}
+REPORT_GENERATOR(time_of_day)
+{
+	map_location mouseover_hex = resources::screen->mouseover_hex();
+	return time_of_day_at(mouseover_hex);
+}
+REPORT_GENERATOR(selected_time_of_day)
+{
+	map_location selected_hex = resources::screen->selected_hex();
+	return time_of_day_at(selected_hex);
 }
 
 REPORT_GENERATOR(turn)
