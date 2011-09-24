@@ -2814,11 +2814,11 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 						const config::attribute_value &remove = effect[z_remove];
 
 						if(add.empty() == false) {
-							set_state(state_t(add.to_int()), true);
+							set_state(add.token(), true);
 						}
 
 						if(remove.empty() == false) {
-							set_state(state_t(remove.to_int()), false);
+							set_state(remove.token(), false);
 						}
 					} else if (apply_to == z_movement_costs) {
 						config &mv = cfg_.child_or_add(z_movement_costs);
