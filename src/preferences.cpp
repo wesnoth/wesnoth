@@ -731,5 +731,10 @@ void save_sample_rate(const unsigned int rate)
 	sound::reset_sound();
 }
 
+bool confirm_load_save_from_different_version()
+{
+	return get("confirm_load_save_from_different_version", true);
+}
+
 } // end namespace preferences
 

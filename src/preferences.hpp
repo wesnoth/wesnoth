@@ -182,6 +182,9 @@ namespace preferences {
 
 	bool grid();
 	void _set_grid(bool ison);
+
+	bool confirm_load_save_from_different_version();
+
 } // end namespace preferences
 
 #endif

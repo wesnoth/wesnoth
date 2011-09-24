@@ -514,8 +514,11 @@ void loadgame::check_version_compatibility()
 		throw load_game_cancelled_exception();
 	}
 
-	const int res = gui2::show_message(gui_.video(), "", _("This save is from a different version of the game. Do you want to try to load it?"),
-		gui2::tmessage::yes_no_buttons);
+	int res = gui2::twindow::OK;
+	if(preferences::confirm_load_save_from_different_version()) {
+		res = gui2::show_message(gui_.video(), "", _("This save is from a different version of the game. Do you want to try to load it?"),
+			gui2::tmessage::yes_no_buttons);
+	}
 
 	if(res == gui2::twindow::CANCEL) {
 		throw load_game_cancelled_exception();
