@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-09-04 11:42+0200\n"
-"PO-Revision-Date: 2011-09-11 07:02-0500\n"
+"PO-Revision-Date: 2011-09-18 22:55-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
@@ -1587,10 +1587,11 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:77
+#, fuzzy
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
-msgstr ""
+msgstr ", ,Corn, ,Eorl, ,Fox, Ƿæter,Ƿæt,Eoforƿic"
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
@@ -1678,6 +1679,7 @@ msgstr "Blaƿ"
 msgid "Green"
 msgstr "Grene"
 
+# TODO: try to find an English word for this...
 #. [color_range]: id=purple
 #. [color_range]: id=4
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
@@ -1708,11 +1710,12 @@ msgstr "Geoluhread"
 msgid "White"
 msgstr "Hƿit"
 
+# I guess we can call it 'blue-green'...
 #. [color_range]: id=teal
 #. [color_range]: id=9
 #: data/core/team-colors.cfg:74 data/core/team-colors.cfg:131
 msgid "Teal"
-msgstr ""
+msgstr "Blaƿgrene"
 
 #. [language]
 #: data/english.cfg:3
@@ -5040,8 +5043,9 @@ msgstr ""
 #: src/multiplayer_wait.cpp:519
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gold"
+msgstr[1] "Gold"
+msgstr[2] "Gold"
 
 #: src/network.cpp:109
 msgid "invalid network handle"
