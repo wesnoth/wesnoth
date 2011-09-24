@@ -1032,6 +1032,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 	swarm_max(0),
 	plague_type()
 {
+	static const config::t_token & z_null( generate_safe_static_const_t_interned(n_token::t_token("null")) );
 	static const config::t_token & z_not_living( generate_safe_static_const_t_interned(n_token::t_token("not_living")) );
 	static const config::t_token & z_slow( generate_safe_static_const_t_interned(n_token::t_token("slow")) );
 	static const config::t_token & z_drains( generate_safe_static_const_t_interned(n_token::t_token("drains")) );
@@ -1090,10 +1091,10 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials(z_plague);
 		plagues = !not_living && !plague_specials.empty() &&
-			(opp.undead_variation() != n_token::t_token::z_empty()) && !resources::game_map->is_village(opp_loc);
+			(opp.undead_variation() != z_null) && !resources::game_map->is_village(opp_loc);
 
 		if (plagues) {
-			plague_type = (*plague_specials.cfgs.front().first)[z_type].str();
+			plague_type = (*plague_specials.cfgs.front().first)[z_type].token();
 			if (plague_type.empty())
 				plague_type = u.type_id();
 		}
@@ -1632,7 +1633,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 
 		game_events::entity_location death_loc(defender.loc_, defender.id_);
 		game_events::entity_location attacker_loc(attacker.loc_, attacker.id_);
-		std::string undead_variation = defender.get_unit().undead_variation();
+		n_token::t_token undead_variation = defender.get_unit().undead_variation();
 		fire_event(z_attack_end);
 		refresh_bc();
 
@@ -1749,7 +1750,6 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 void attack::perform()
 {
 	static const config::t_token & z_attack( generate_safe_static_const_t_interned(n_token::t_token("attack")) );
-	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
 
 	// Stop the user from issuing any commands while the units are fighting
 	const events::command_disabler disable_commands;
@@ -1819,8 +1819,6 @@ void attack::perform()
 	unsigned int rounds = std::max<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;
 	const int attacker_side = a_.get_unit().side();
 	const int defender_side = d_.get_unit().side();
-
-	static const std::string poison_string(z_poison);
 
 	LOG_NG << "Fight: (" << a_.loc_ << ") vs (" << d_.loc_ << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
 
