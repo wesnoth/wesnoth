@@ -351,13 +351,14 @@ config& save_index::load() {
 		try {
 			scoped_istream stream = istream_file(get_save_index_file());
 			read(*save_index_cfg, *stream);
-			save_index_loaded = true;
 		} catch(io_exception& e) {
 			ERR_SAVE << "error reading save index: '" << e.what() << "'\n";
 		} catch(config::error&) {
 			ERR_SAVE << "error parsing save index config file\n";
 			save_index_cfg->clear();
 		}
+		//Only try once
+		save_index_loaded = true;
 	}
 
 	return *save_index_cfg;
@@ -388,6 +389,34 @@ config& save_index::save_summary(std::string save)
 config::t_child_range_index const save_index::indexed_summaries(){
 	static const config::t_token & z_save( generate_safe_static_const_t_interned(n_token::t_token("save")) );
 	return load().child_range_index(z_save, z_save);
+}
+
+n_token::t_token save_index::gz_corrected_filename(n_token::t_token const & name) {
+	/*
+	 * All saves are .gz files now so make sure we use that name when opening
+	 * a file. If not some parts of the code use the name with and some parts
+	 * without the .gz suffix.
+	 */
+	std::string sname(name);
+	if(sname.length() < 3 || sname.substr(sname.length() - 3) != ".gz") {
+		sname += ".gz"; }
+	return config::t_token(sname);
+}
+
+config & save_index::find_or_create_summary(config::t_child_range_index & index, n_token::t_token const & name) {
+	static const config::t_token & z_save( generate_safe_static_const_t_interned(n_token::t_token("save")) );
+
+	config::t_token iname(gz_corrected_filename(name));
+	config::t_child_range_index::iterator xcfgi = index.find( iname);	
+
+	if(xcfgi != index.end()){
+		return *xcfgi->second; }
+
+	//Fallback create an empty summary
+	config & cfg = load();
+	config &res = cfg.add_child(z_save);
+	res[z_save] = iname;
+	return res;
 }
 
 void save_index::write_save_index()

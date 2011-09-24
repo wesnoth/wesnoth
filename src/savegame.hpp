@@ -80,8 +80,12 @@ public:
 	static config& save_summary(std::string save);
 	/** Update the save_index file with changed savegame information. */
 	static void write_save_index();
+	/** Correct the filename to include the .gz suffix */
+	static n_token::t_token gz_corrected_filename(n_token::t_token const & name);
 	/** Create an index to the save summaries. */
 	static config::t_child_range_index const indexed_summaries();
+	/** Use the index to find an existing or create a new save summary and a corrected filename. */
+	static config & find_or_create_summary(config::t_child_range_index & index, n_token::t_token const &name);
 
 private:
 	/** Default-Constructor (don't instantiate this class) */

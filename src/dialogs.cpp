@@ -597,17 +597,11 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	std::map<std::string,std::string> parent_to_child;
 	std::vector<savegame::save_info>::const_iterator i;
 	for(i = games.begin(); i != games.end(); ++i) {
-		std::string sname(i->name);
-		if(sname.length() < 3 || sname.substr(sname.length() - 3) != ".gz") {
-			sname += ".gz"; }
-		config::t_token iname(sname);
-		config::t_child_range_index::iterator xcfgi = index.find( iname);
-		config* cfg;
-		if(xcfgi != index.end()){
-			cfg = &*xcfgi->second;
-			parent_to_child[(*cfg)["parent"]] = iname;
-			saves_and_summaries.push_back(save_with_summary(*i, cfg));
-		} 
+		n_token::t_token tname(i->name);
+		config * cfg = &savegame::save_index::find_or_create_summary(index, tname);
+		n_token::t_token gname = savegame::save_index::gz_corrected_filename(tname);
+		parent_to_child[(*cfg)["parent"]] = gname;
+		saves_and_summaries.push_back(save_with_summary(*i, cfg));
 	}
 
 	const events::event_context context;
