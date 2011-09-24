@@ -194,16 +194,16 @@ unit_race::unit_race(const config& cfg) :
 	}
 	if (plural_name_.empty()) {
 		lg::wml_error << "[race] '" << a_name << "' is missing a plural_name field.";
-		plural_name_ = (a_name.token());
+		plural_name_ = (a_name.t_str());
 	}
 	// use z_name if z_male_name or z_female_name aren't available
-	name_[MALE] = a_male_name.token();
+	name_[MALE] = a_male_name;
 	if(name_[MALE].empty()) {
-		name_[MALE] = (a_male_name.token());
+		name_[MALE] = a_male_name;
 	}
-	name_[FEMALE] = a_female_name.token();
+	name_[FEMALE] = a_female_name;
 	if(name_[FEMALE].empty()) {
-		name_[FEMALE] = (a_female_name.token());
+		name_[FEMALE] = a_female_name;
 	}
 
 	if(chain_size_ <= 0)

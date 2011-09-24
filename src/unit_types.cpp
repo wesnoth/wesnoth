@@ -986,12 +986,6 @@ const unit_type& unit_type::get_gender_unit_type(config::t_token const & gender)
 	else if (gender == z_male) return get_gender_unit_type(unit_race::MALE);
 	else return *this;
 }
-// const unit_type& unit_type::get_gender_unit_type(std::string gender) const
-// {
-// 	if (gender == "female") return get_gender_unit_type(unit_race::FEMALE);
-// 	else if (gender == "male") return get_gender_unit_type(unit_race::MALE);
-// 	else return *this;
-// }
 
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
 {
