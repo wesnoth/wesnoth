@@ -1228,6 +1228,8 @@ void game_controller::load_game_cfg(const bool force)
 
 		::init_strings(game_config());
 
+		theme::set_known_themes(&game_config());
+
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n";
 		gui2::show_error_message(disp().video(), _("Error loading game configuration files: '") +

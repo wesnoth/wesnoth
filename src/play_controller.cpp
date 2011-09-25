@@ -245,7 +245,6 @@ void play_controller::init(CVideo& video){
 	mouse_handler_.set_gui(gui_.get());
 	menu_handler_.set_gui(gui_.get());
 	resources::screen = gui_.get();
-	theme::set_known_themes(&game_config_);
 
 	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
 
