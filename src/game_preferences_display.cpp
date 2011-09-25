@@ -1266,7 +1266,13 @@ bool show_theme_dialog(display& disp)
 {
 	std::vector<std::string> options = disp.get_theme().get_known_themes();
 	if(!options.empty()){
-		gui2::tsimple_item_selector dlg(_("Choose theme"), _("Saved preference:") + (" " + preferences::theme()), options);
+		gui2::tsimple_item_selector dlg(_("Choose theme"), "", options);
+
+		for(size_t k = 0; k < options.size(); ++k) {
+			if(options[k] == preferences::theme()) {
+				dlg.set_selected_index(static_cast<int>(k));
+			}
+		}
 
 		dlg.show(disp.video());
 		const int action = dlg.selected_index();
