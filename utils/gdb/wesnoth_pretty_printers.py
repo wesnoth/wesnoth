@@ -10,7 +10,7 @@ from wesnoth_type_tools import strip_type
 
 class RecursionManager(object):
     """Keeps track of the levels of recrusion and whether expansion should happen or not """
-    default=1
+    default=2
     curr=0
 
     # @classmethod
@@ -118,7 +118,7 @@ class AttributeValuePrinter(object) :
         # Get the type.    
         self.type = strip_type(self.val)
        
-        self.attr = self.val.cast(self.type)
+        self.attr = val # self.val.cast(self.type)
         self.attr_type = self.attr['type_']
 
     def to_string(self) :
@@ -147,7 +147,7 @@ class AttributeValuePrinter(object) :
         elif attr_type == Atype.TSTRING :
             return 't_string ' + ('%s' % attr['t_string_value_'])
         else :
-            return "attribute pretty printer found an unknown type"
+            return "attribute pretty printer found an unknown type code = " +('%d' % attr_type) 
 
     # def children(self):
     #     attr=self.attr
