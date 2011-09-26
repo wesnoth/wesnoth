@@ -79,6 +79,9 @@ static lg::log_domain log_wml("wml");
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
+static lg::log_domain log_event_handler("event_handler");
+#define DBG_EH LOG_STREAM(debug, log_event_handler)
+
 
 /**
  * State when processing a flight of events or commands.
@@ -641,6 +644,26 @@ namespace {
 		std::set<config::t_token> remove_buffer_; ///Event handlers removed while pumping events
 		bool buffering_;
 
+		void log_handlers() {
+			if(lg::debug.dont_log("event_handler")) return;
+
+			#define LOG_HANDLERS(handlers, msg) \
+				foreach(const game_events::event_handler& h, handlers){ \
+					const config& cfg = h.get_config(); \
+					ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; "; \
+				} \
+				DBG_EH << msg << " handlers are now " << ss.str() << "\n"; \
+				ss.str(std::string());
+
+			std::stringstream ss;
+			LOG_HANDLERS(active_, "active");
+			LOG_HANDLERS(insert_buffer_, "insert buffered");
+			foreach(const config::t_token& h, remove_buffer_){
+				ss << "id=" << h << "; ";
+			}
+			DBG_EH << "remove buffered handlers are now " << ss.str() << "\n";
+		}
+
 	public:
 
 		t_event_handlers()
@@ -656,7 +679,10 @@ namespace {
 			static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
 
 			if(buffering_) {
+				DBG_EH << "buffering event handler for name=" << new_handler.get_config()["name"] <<
+					" with id " << new_handler.get_config()["id"] << "\n";
 				insert_buffer_.push_back(new_handler);
+				log_handlers();
 			}
 
 			else {
@@ -665,11 +691,17 @@ namespace {
 				if(id != n_token::t_token::z_empty()) {
 					foreach( game_events::event_handler const & eh, active_) {
 						config const & temp_config( eh.get_config());
-						if(id == temp_config[z_id])
+						if(id == temp_config[z_id]) {
+							DBG_EH << "ignoring event handler for name=" << cfg["name"] <<
+								" with id " << id << "\n";
 							return;
+						}
 					}
 				}
+				DBG_EH << "inserting event handler for name=" << cfg["name"] <<
+					" with id=" << id << "\n";
 				active_.push_back(new_handler);
+				log_handlers();
 			}
 		}
 
@@ -683,6 +715,8 @@ namespace {
 			static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 			if(id == z_empty)
 				return;
+
+			DBG_EH << "removing event handler with id " << id << "\n";
 
 			if(buffering_)
 				remove_buffer_.insert(id);
@@ -698,6 +732,7 @@ namespace {
 				else {
 					++i; }
 			}
+			log_handlers();
 		}
 
 		/**
@@ -707,6 +742,7 @@ namespace {
 		 * when already buffering will not start a second buffer.
 		 */
 		void start_buffering() {
+			DBG_EH << "starting buffering...\n";
 			buffering_ = true;
 		}
 
@@ -714,6 +750,7 @@ namespace {
 		 * Stops buffering_ and commits all changes.
 		 */
 		void commit_buffer() {
+			DBG_EH << "committing buffered event handlers, buffering: " << buffering_ << "\n";
 			if(!buffering_)
 				return;
 
@@ -728,6 +765,8 @@ namespace {
 			foreach( game_events::event_handler const & i ,  insert_buffer_ ){
 				add_event_handler( i ); }
 			insert_buffer_.clear();
+
+			log_handlers();
 		}
 
 		void clear(){
@@ -1367,7 +1406,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	const config::attribute_value & name = cfg[z_name];
 	if(name == z_empty){
 		throw config::error("Mandatory WML variable name is empty \"\"."); }
-	
+
 	config::attribute_value &var = state_of_game->get_variable(name);
 
 	config::attribute_value const & literal = cfg.get_config()[z_literal]; // no $var substitution
@@ -3645,7 +3684,7 @@ void raise(const n_token::t_token& event,
 		if(!events_init())
 			return;
 
-		LOG_NG << "fire event: " << event << "\n";
+		DBG_EH << "raising event: " << event << "\n";
 
 		events_queue.push_back(game_events::queued_event(event,loc1,loc2,data));
 	}
@@ -3672,6 +3711,8 @@ bool fire(const n_token::t_token& event,
 
 	void commit()
 	{
+		DBG_EH << "committing new event handlers, number of pump_instances: " <<
+			pump_manager::count() << "\n";
 		if(pump_manager::count() == 1) {
 			commit_wmi_commands();
 			commit_new_handlers();
@@ -3703,6 +3744,14 @@ bool fire(const n_token::t_token& event,
 
 		event_handlers.start_buffering();
 
+		if(!lg::debug.dont_log("event_handler")) {
+			std::stringstream ss;
+			foreach(const game_events::queued_event& ev, events_queue) {
+				ss << "name=" << ev.name << "; ";
+			}
+			DBG_EH << "processing queued events: " << ss.str() << "\n";
+		}
+
 		bool result = false;
 		while(events_queue.empty() == false) {
 			game_events::queued_event ev = events_queue.front();
@@ -3732,7 +3781,8 @@ bool fire(const n_token::t_token& event,
 					init_event_vars = false;
 				}
 
-				LOG_NG << "processing event '" << event_name << "'\n";
+				DBG_EH << "processing event " << event_name << " with id="<<
+					handler.get_config()["id"] << "\n";
 				if(process_event(handler, ev))
 				{
 					resources::whiteboard->on_gamestate_change();
