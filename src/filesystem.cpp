@@ -678,11 +678,11 @@ const std::string &get_cache_dir()
 			cache_dir += "/.cache";
 		} else cache_dir = xdg_cache;
 		cache_dir += "/wesnoth";
-		create_directory_if_missing_recursive(cache_dir);
 #else
 		cache_dir = get_dir(get_user_data_dir() + "/cache");
 #endif
 	}
+	create_directory_if_missing_recursive(cache_dir);
 	return cache_dir;
 }
 
