@@ -775,6 +775,7 @@ namespace {
 			active_.clear();
 			insert_buffer_.clear();
 			remove_buffer_.clear();
+			buffering_ = false;
 		}
 
 		iterator begin() {
