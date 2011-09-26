@@ -1268,7 +1268,7 @@ void unit_type_data::set_config(config &cfg)
 			ut.swap(merge_cfg);
 		}
 		// We insert an empty unit_type and build it after the copy (for performance).
-		insert(std::make_pair(id, unit_type(ut)));
+		insert(std::make_pair(n_token::t_token(id), unit_type(ut)));
 		LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 		loadscreen::increment_progress();
 	}
