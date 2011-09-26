@@ -746,15 +746,17 @@ namespace {
 			buffering_ = true;
 		}
 
+		void stop_buffering() {
+			DBG_EH << "stopping buffering...\n";
+			buffering_ = false;
+		}
+
 		/**
-		 * Stops buffering_ and commits all changes.
+		 * Commits all buffered events.
 		 */
 		void commit_buffer() {
 			DBG_EH << "committing buffered event handlers, buffering: " << buffering_ << "\n";
-			if(!buffering_)
-				return;
-
-			buffering_ = false;
+			if(buffering_) return;
 
 			// Commit any event removals
 			foreach(config::t_token const & i ,  remove_buffer_ ){
@@ -3713,10 +3715,8 @@ bool fire(const n_token::t_token& event,
 	{
 		DBG_EH << "committing new event handlers, number of pump_instances: " <<
 			pump_manager::count() << "\n";
-		if(pump_manager::count() == 1) {
-			commit_wmi_commands();
-			commit_new_handlers();
-		}
+		commit_wmi_commands();
+		commit_new_handlers();
 		// Dialogs can only be shown if the display is not locked
 		if (!resources::screen->video().update_locked()) {
 			show_wml_errors();
@@ -3742,8 +3742,6 @@ bool fire(const n_token::t_token& event,
 			return false;
 		}
 
-		event_handlers.start_buffering();
-
 		if(!lg::debug.dont_log("event_handler")) {
 			std::stringstream ss;
 			foreach(const game_events::queued_event& ev, events_queue) {
@@ -3754,6 +3752,8 @@ bool fire(const n_token::t_token& event,
 
 		bool result = false;
 		while(events_queue.empty() == false) {
+			if(pump_manager::count() <= 1)
+				event_handlers.start_buffering();
 			game_events::queued_event ev = events_queue.front();
 			events_queue.pop_front();	// pop now for exception safety
 			const n_token::t_token& event_name = ev.name;
@@ -3790,6 +3790,8 @@ bool fire(const n_token::t_token& event,
 				}
 			}
 
+			if(pump_manager::count() <= 1)
+				event_handlers.stop_buffering();
 			// Only commit new handlers when finished iterating over event_handlers.
 			commit();
 		}
