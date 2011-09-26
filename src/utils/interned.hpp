@@ -75,7 +75,7 @@ public:
 	inline bool valid() const;
 	inline bool empty() const {return !valid();}
 
-	void disable_count() {		
+	void disable_count() {
 		is_ref_counted_ = false;
 		iter_->second.disable_count(); }
 
@@ -293,7 +293,7 @@ bool t_interned_token<T, T_hasher>::valid() const { return true; }
 template <typename T>
 T const & generate_safe_static_const_t_interned(T const & x) {
 	//This pointer should never be deleted.
-	//This is intentional and not a memory leak 
+	//This is intentional and not a memory leak
 	//It prevents both static initialization and de-initialization crashes
 	T * never_delete = new T(x);
 	never_delete->disable_count();

@@ -98,14 +98,14 @@ struct queued_event_context
 {
 	typedef game_events::queued_event qe;
 	static qe const *current_qe;
-	static qe const &get();	
+	static qe const &get();
 	static bool initialize_current_qe();
 	qe const *previous_qe;
 
 	queued_event_context(qe const *new_qe) : previous_qe(current_qe) {
 		current_qe = new_qe; }
 
-	~queued_event_context() { 
+	~queued_event_context() {
 		current_qe = previous_qe; }
 };
 
@@ -115,9 +115,9 @@ bool queued_event_context::initialize_current_qe(){
 	current_qe=NULL;
 	return true; }
 
-/** Force correct static initialization since flow of control must initialize current_qe and then default_qe 
+/** Force correct static initialization since flow of control must initialize current_qe and then default_qe
  */
-game_events::queued_event const & queued_event_context::get() { 
+game_events::queued_event const & queued_event_context::get() {
 	static const bool is_init = initialize_current_qe();
 	(void) is_init; //Hide unused variable warning;
 	//Do not change this pointer to a static reference

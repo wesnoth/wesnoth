@@ -55,7 +55,7 @@ enum { REMOVE_EMPTY = 0x01,	/**< REMOVE_EMPTY : remove empty elements. */
 };
 
 std::vector< n_token::t_token > split_token(n_token::t_token const &val, char c = ',', int flags = REMOVE_EMPTY | STRIP_SPACES);
-inline std::vector< n_token::t_token > split_attr(config::attribute_value const &val, char c = ',', int flags = REMOVE_EMPTY | STRIP_SPACES){ 
+inline std::vector< n_token::t_token > split_attr(config::attribute_value const &val, char c = ',', int flags = REMOVE_EMPTY | STRIP_SPACES){
 	return split_token(val.token(), c, flags); }
 std::vector< std::string > split(std::string const &val, char c = ',', int flags = REMOVE_EMPTY | STRIP_SPACES);
 

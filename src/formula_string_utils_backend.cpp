@@ -291,7 +291,7 @@ t_tokens::iterator t_parse::do_parse_plain(t_tokens::iterator const & start_pos 
 				catch (game::wml_syntax_error & e) {
 					ERR_INTERP << e.what()<<"\n";
 					static const config::t_token & z_caption( generate_safe_static_const_t_interned(n_token::t_token(_("Invalid WML found"))) );
-					if(resources::screen) { 
+					if(resources::screen) {
 						resources::screen->add_chat_message(time(NULL), z_caption, 0, e.what(),
 															events::chat_handler::MESSAGE_PUBLIC, false); }
 					if(complete_parse_.ops().size() > good_size){

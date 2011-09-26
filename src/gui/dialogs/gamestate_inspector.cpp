@@ -191,7 +191,7 @@ public:
 
 		std::map<config::t_token, config::attribute_value> sorted;
 		foreach (const config::attribute &i, vars.attribute_range()) {
-			sorted.insert( i ); }		
+			sorted.insert( i ); }
 		foreach( const config::attribute &a, sorted) {
 			model_.add_row_to_stuff_list(a.first,a.first);
 		}

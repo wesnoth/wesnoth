@@ -778,7 +778,7 @@ void variable_info::init(const config::t_token& varname, bool force_valid, bool 
 							}
 						}
 					} else if ((inner_index != 0) && !get_length_of_this_token) {
-						throw game::wml_syntax_error(tokens, i - tokens.begin(), 
+						throw game::wml_syntax_error(tokens, i - tokens.begin(),
 													 _("the WML array index is larger than the largest array element.") );
 					} else if( last_key_is_not_length ) {
 						throw game::wml_syntax_error(tokens, i - tokens.begin() , _("the WML array index is invalid.  Use varname[0].length to check for the existence of an array element.") );
@@ -786,7 +786,7 @@ void variable_info::init(const config::t_token& varname, bool force_valid, bool 
 						get_length_of_this_token =true;
 					}
 				}
-			} 
+			}
 
 			config * nvars(NULL);
 			if(!get_length_of_this_token){
@@ -796,15 +796,15 @@ void variable_info::init(const config::t_token& varname, bool force_valid, bool 
 				if(nvars == NULL){
 					if(force_valid) {
 						//Note force valid for inner indices !=0 is covered above.
-						nvars = &vars->add_child(i->token); } 
+						nvars = &vars->add_child(i->token); }
 					else if(last_key_is_not_length) {
 						is_valid_ = false;
-						return; } 
+						return; }
 					else { //Container does not exist
 						get_length_of_this_token = true;
 						size = 0;
 					}
-				} 
+				}
 			}
 
 			if( get_length_of_this_token) {
@@ -824,7 +824,7 @@ void variable_info::init(const config::t_token& varname, bool force_valid, bool 
 				vars = &repos->temporaries_;
 				return;
 			}
-									
+
 			vars = nvars;
 			++i;
 		}
@@ -838,7 +838,7 @@ void variable_info::init(const config::t_token& varname, bool force_valid, bool 
 			index = i->index;
 			if(size <= index) {
 				if(!force_valid) {
-					throw game::wml_syntax_error(tokens, i - tokens.begin(), 
+					throw game::wml_syntax_error(tokens, i - tokens.begin(),
 												 _("the WML array index is larger than the largest array element.") );
 				}
 				for(; size <= index; ++size) {

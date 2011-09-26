@@ -72,7 +72,7 @@ wml_syntax_error::wml_syntax_error(std::vector<T_castable_to_token> const & itok
 	: output_() {
 
 	t_tokens tokens;
-	typedef std::vector<T_castable_to_token> t_input_tokens; 
+	typedef std::vector<T_castable_to_token> t_input_tokens;
 	typename t_input_tokens::const_iterator it(itokens.begin()), itend(itokens.end());
 	for(; it != itend; ++it) {
 		tokens.push_back(static_cast<t_token const &>(*it)); }

@@ -1277,7 +1277,7 @@ std::string config::hash() const
 		std::string key_str(val.first);
 		std::string base_str = val.second.t_str().base_str();
 		std::string long_string = key_str + base_str;
-		
+
 		size_t j =0, jend = long_string.size();
 		for (; j != jend; ++j) {
 			char c = long_string[j];

@@ -103,7 +103,7 @@ public:
 	config::t_token const & small_profile() const;
 	config::t_token const & big_profile() const;
 	/** Information about the unit -- a detailed description of it */
-	t_string unit_description() const { 
+	t_string unit_description() const {
 		static const config::t_token & z_description( generate_safe_static_const_t_interned(n_token::t_token("description")) );
 		return cfg_[z_description].t_str(); }
 
@@ -256,7 +256,7 @@ public:
     std::vector<std::pair<std::string,std::string> > amla_icons() const;
 
 	std::vector<config> get_modification_advances() const;
-	config::const_child_itors modification_advancements() const { 
+	config::const_child_itors modification_advancements() const {
 		static const config::t_token & z_advancement( generate_safe_static_const_t_interned(n_token::t_token("advancement")) );
 		return cfg_.child_range(z_advancement); }
 
@@ -283,21 +283,21 @@ public:
 						 Uint32 text_color = 0, STATE state = STATE_ANIM);
 
 	/** The name of the file to game_display (used in menus). */
-	config::t_token const & absolute_image() const { 
+	config::t_token const & absolute_image() const {
 		static const config::t_token & z_image( generate_safe_static_const_t_interned(n_token::t_token("image")) );
 		return cfg_[z_image].token(); }
-	config::t_token const & image_halo() const { 
+	config::t_token const & image_halo() const {
 		static const config::t_token & z_halo( generate_safe_static_const_t_interned(n_token::t_token("halo")) );
 		return cfg_[z_halo].token(); }
 
-	config::t_token const & image_ellipse() const { 
+	config::t_token const & image_ellipse() const {
 		static const config::t_token & z_ellipse( generate_safe_static_const_t_interned(n_token::t_token("ellipse")) );
 		return cfg_[z_ellipse].token(); }
 
 	config &variables() { return variables_; }
 	const config &variables() const { return variables_; }
 
-	config::t_token usage() const { 
+	config::t_token usage() const {
 		static const config::t_token & z_usage( generate_safe_static_const_t_interned(n_token::t_token("usage")) );
 		return cfg_[z_usage].token(); }
 	unit_type::ALIGNMENT alignment() const { return alignment_; }

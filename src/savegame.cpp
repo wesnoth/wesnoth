@@ -407,7 +407,7 @@ config & save_index::find_or_create_summary(config::t_child_range_index & index,
 	static const config::t_token & z_save( generate_safe_static_const_t_interned(n_token::t_token("save")) );
 
 	config::t_token iname(gz_corrected_filename(name));
-	config::t_child_range_index::iterator xcfgi = index.find( iname);	
+	config::t_child_range_index::iterator xcfgi = index.find( iname);
 
 	if(xcfgi != index.end()){
 		return *xcfgi->second; }

@@ -288,7 +288,7 @@ typedef std::vector<save_with_summary> t_saves_with_summaries;
 class delete_save : public gui::dialog_button_action
 {
 public:
-	delete_save(display& disp, gui::filter_textbox& filter, t_saves_with_summaries * saves) 
+	delete_save(display& disp, gui::filter_textbox& filter, t_saves_with_summaries * saves)
 		: disp_(disp), saves_(*saves), filter_(filter) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
@@ -335,7 +335,7 @@ public:
 					  , const gui::filter_textbox& textbox) :
 		gui::preview_pane(video),
 		game_config_(&game_config),
-		map_(map), saves_(*saves), 
+		map_(map), saves_(*saves),
 		index_(0),
 		map_cache_(),
 		textbox_(textbox)

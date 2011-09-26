@@ -3053,7 +3053,7 @@ std::vector<config::t_token> const & unit::modification_types() const {
 	static const config::t_token & z_advance( generate_safe_static_const_t_interned(n_token::t_token("advance")) );
 	static const config::t_token & z_trait( generate_safe_static_const_t_interned(n_token::t_token("trait")) );
 	static const config::t_token & z_object( generate_safe_static_const_t_interned(n_token::t_token("object")) );
- 
+
 	static const config::t_token ModificationTypes[] = { z_advance, z_trait, z_object };
 	static const std::vector<config::t_token> ModificationTypesV(ModificationTypes,  ModificationTypes +  sizeof(ModificationTypes) / sizeof(config::t_token));
 	return ModificationTypesV;

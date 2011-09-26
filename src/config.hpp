@@ -68,15 +68,15 @@ class config
 	/**
 	 * Raises an exception if @a this is not valid.
 	 */
-	void check_valid() const {	
-		if (!*this){ 
+	void check_valid() const {
+		if (!*this){
 			throw_missing_child_exception(); }}
 
 	/**
 	 * Raises an exception if @a this or @a cfg is not valid.
 	 */
 	void check_valid(const config &cfg) const {
-		check_valid(); 
+		check_valid();
 		cfg.check_valid();}
 
 #ifndef HAVE_CXX0X
