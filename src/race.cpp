@@ -199,11 +199,11 @@ unit_race::unit_race(const config& cfg) :
 	// use z_name if z_male_name or z_female_name aren't available
 	name_[MALE] = a_male_name;
 	if(name_[MALE].empty()) {
-		name_[MALE] = a_male_name;
+		name_[MALE] = a_name;
 	}
 	name_[FEMALE] = a_female_name;
 	if(name_[FEMALE].empty()) {
-		name_[FEMALE] = a_female_name;
+		name_[FEMALE] = a_name;
 	}
 
 	if(chain_size_ <= 0)
