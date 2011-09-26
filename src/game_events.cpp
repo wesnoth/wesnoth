@@ -3612,7 +3612,7 @@ namespace game_events {
 			}
 		}
 		int wmi_count = 0;
-		typedef std::pair<config::t_token, wml_menu_item *> item;
+		typedef std::pair<std::string, wml_menu_item *> item;
 		foreach (const item &itor, resources::state_of_game->wml_menu_items) {
 			if (!itor.second->command.empty()) {
 				event_handlers.add_event_handler(game_events::event_handler(itor.second->command, true));
