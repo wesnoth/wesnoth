@@ -346,8 +346,9 @@ void cave_map_generator::place_castle(int starting_position, const map_location 
 	if (starting_position != -1) {
 		set_terrain(loc, keep_);
 
-		t_translation::coordinate coord =
-			{ loc.x + gamemap::default_border, loc.y + gamemap::default_border };
+		t_translation::coordinate coord(
+				  loc.x + gamemap::default_border
+				, loc.y + gamemap::default_border);
 		starting_positions_[starting_position] = coord;
 	}
 

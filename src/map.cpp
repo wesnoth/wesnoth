@@ -292,8 +292,9 @@ std::string gamemap::write() const
 	for (int i = 0; i < MAX_PLAYERS + 1; ++i)
 	{
 		if (!on_board(startingPositions_[i])) continue;
-		t_translation::coordinate position =
-			{ startingPositions_[i].x + border_size_, startingPositions_[i].y + border_size_ };
+		t_translation::coordinate position(
+				  startingPositions_[i].x + border_size_
+				, startingPositions_[i].y + border_size_);
 		starting_positions[i] = position;
 	}
 

@@ -198,6 +198,18 @@ t_match::t_match(const t_terrain& tcode):
 	}
 }
 
+coordinate::coordinate()
+	: x(0)
+	, y(0)
+{
+}
+
+coordinate::coordinate(const size_t x_, const size_t y_)
+	: x(x_)
+	, y(y_)
+{
+}
+
 t_terrain read_terrain_code(const std::string& str, const t_layer filler)
 {
 	return string_to_number_(str, filler);
@@ -296,7 +308,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 				starting_positions[starting_position].y = y;
 			} else {
 				// Add new position
-				const struct coordinate coord = {x, y};
+				const struct coordinate coord(x, y);
 				starting_positions.insert(std::pair<int, coordinate>(starting_position, coord));
 			}
 		}

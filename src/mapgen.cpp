@@ -1181,7 +1181,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		const int x = c->x;
 		const int y = c->y;
 		const int player = c - castles.begin() + 1;
-		const struct t_translation::coordinate coord = {x, y};
+		const struct t_translation::coordinate coord(x, y);
 		starting_positions.insert(std::pair<int, t_translation::coordinate>(player, coord));
 		terrain[x][y] = t_translation::HUMAN_KEEP;
 
