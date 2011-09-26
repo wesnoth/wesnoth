@@ -641,7 +641,6 @@ public:
 				switch(c){
 				case '.' :
 				case '[':
-				case ']':
 					throw game::wml_syntax_error(skey, i, _("the first character of the identifier is an invalid character, one of  . , [, or ]. ") );
 				}
 			}
@@ -652,14 +651,18 @@ public:
 					throw game::wml_syntax_error(skey, i, _("there is a dot . or left bracket [ after a left bracket [ starting the variable name"));
 					break;
 				case ']':
-					std::string index_str(skey.substr(i_start_of_token, i - i_start_of_token ));
-					std::istringstream is(index_str);
+					//Empty index equals zero
 					size_t index;
-					is >> index;
-					if(index > game_config::max_loop) {
-						ERR_NG << "variable_info: index greater than " << game_config::max_loop << ", truncated\n";
-						index = game_config::max_loop;
-					}
+					if((i - i_start_of_token) == 0 ){
+						index =0; }
+					else {
+						std::string index_str(skey.substr(i_start_of_token, i - i_start_of_token ));
+						std::istringstream is(index_str);
+						is >> index;
+						if(index > game_config::max_loop) {
+							ERR_NG << "variable_info: index greater than " << game_config::max_loop << ", truncated\n";
+							index = game_config::max_loop; } }
+
 					parsed_tokens.back().index = index;
 
 					//adjust for dot after lbrack  as  in "unit_store.modifications.trait[0].y"
