@@ -3,6 +3,10 @@
 
 #include <boost/foreach.hpp>
 
-#define foreach BOOST_FOREACH
+#ifdef __CDT_PARSER__
+     #define foreach(a, b) for(a : b)
+#else
+     #define foreach BOOST_FOREACH
+#endif
 
 #endif
