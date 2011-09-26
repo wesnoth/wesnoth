@@ -253,7 +253,7 @@ namespace game_config
 			std::string const & id = *a1;
 			config::attribute_value const & idt = *a1;
 			std::vector<Uint32> temp = string2rgb(*a2);
-			team_rgb_range.insert(std::make_pair(id,color_range(temp)));
+			team_rgb_range.insert(std::make_pair(n_token::t_token(id), color_range(temp)));
 			team_rgb_name[id] = teamC["name"].token();
 			//generate palette of same name;
 			std::vector<Uint32> tp = palette(team_rgb_range[idt.token()]);
