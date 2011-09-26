@@ -3263,10 +3263,6 @@ WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 
 /** Handles all the different types of actions that can be triggered by an event. */
 
-static void commit_new_handlers() {
-	// Commit any spawned events-within-events
-	event_handlers.commit_buffer();
-}
 static void commit_wmi_commands() {
 	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
 	static const config::t_token & z_first_time_only( generate_safe_static_const_t_interned(n_token::t_token("first_time_only")) );
@@ -3716,7 +3712,7 @@ bool fire(const n_token::t_token& event,
 		DBG_EH << "committing new event handlers, number of pump_instances: " <<
 			pump_manager::count() << "\n";
 		commit_wmi_commands();
-		commit_new_handlers();
+		event_handlers.commit_buffer();
 		// Dialogs can only be shown if the display is not locked
 		if (!resources::screen->video().update_locked()) {
 			show_wml_errors();
