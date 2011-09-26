@@ -152,7 +152,8 @@ Version 1.9.9:
      * Made plan execution halt upon discovering hidden units
  * WML engine:
    * Added [event]id= support (to protect against duplicates)
-   * Added [event]delete=true support (to remove events that have an id set)
+   * Added [event]remove=yes|no support
+     (to remove events that have an id set)
    * Implemented sub= and divide= for abilities and weapon specials
      (patch #2857)
    * new attribute replay_save= in [end_level]. Defaults to yes, allows
