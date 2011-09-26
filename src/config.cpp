@@ -94,9 +94,10 @@ config::attribute_value &config::attribute_value::operator=(const t_token &v)  {
 	static const config::t_token & z_no( generate_safe_static_const_t_interned(n_token::t_token("no")) );
 	static const config::t_token & z_false( generate_safe_static_const_t_interned(n_token::t_token("false")) );
 	if (v == z_empty) {
-		type_ = EMPTY;
-		is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =false;
-		token_value_ = v; return *this; }
+		type_ = TOKEN;
+		is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =true;
+		token_value_ = v;
+		return *this; }
 	if (v == z_yes || v == z_true) return *this = true;
 	if (v == z_no || v == z_false) return *this = false;
 
@@ -165,7 +166,6 @@ bool operator==(const config::attribute_value &a, config::t_token const & b) {
 	static const config::t_token & z_true( generate_safe_static_const_t_interned(n_token::t_token("true")) );
 	static const config::t_token & z_no( generate_safe_static_const_t_interned(n_token::t_token("no")) );
 	static const config::t_token & z_false( generate_safe_static_const_t_interned(n_token::t_token("false")) );
-	//	if(a.type_ == a.EMPTY){return false;}
 	//note: having 4 different acceptable boolean string values has a cost
 	if ((a.type_ == a.BOOL) || ( a.is_bool_)){
 		return (a.bool_value_ ?(b==z_true || b == z_yes) : (b == z_false || b == z_no)); }
@@ -173,7 +173,6 @@ bool operator==(const config::attribute_value &a, config::t_token const & b) {
 }
 
 bool operator==(const config::attribute_value &a, t_string const & b) {
-	//	if(a.type_ == a.EMPTY){return false;}
 	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	static const config::t_token & z_yes( generate_safe_static_const_t_interned(n_token::t_token("yes")) );
 	static const config::t_token & z_true( generate_safe_static_const_t_interned(n_token::t_token("true")) );
@@ -189,8 +188,6 @@ bool operator==(const config::attribute_value &a, t_string const & b) {
 
 std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)  {
 	return os << v.str(); }
-
-// bool config::attribute_value::blank() const { return (type_ == EMPTY); }
 
 bool config::attribute_value::empty() const {
 	if (type_ == EMPTY){ return true; }
