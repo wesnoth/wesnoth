@@ -644,7 +644,8 @@ namespace {
 	public:
 
 		t_event_handlers()
-			: active_() , insert_buffer_() , remove_buffer_() , buffering_(false) { }
+			: active_() , insert_buffer_() , remove_buffer_() , buffering_(false) {
+			}
 
 		/**
 		 * Adds an event handler.  An event with a nonempty ID will not
@@ -654,7 +655,9 @@ namespace {
 		void add_event_handler(game_events::event_handler const & new_handler) {
 			static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
 
-			if(buffering_) { insert_buffer_.push_back(new_handler); }
+			if(buffering_) {
+				insert_buffer_.push_back(new_handler);
+			}
 
 			else {
 				const config & cfg = new_handler.get_config();
@@ -662,7 +665,8 @@ namespace {
 				if(id != n_token::t_token::z_empty()) {
 					foreach( game_events::event_handler const & eh, active_) {
 						config const & temp_config( eh.get_config());
-						if(id == temp_config[z_id]) { return; }
+						if(id == temp_config[z_id])
+							return;
 					}
 				}
 				active_.push_back(new_handler);
@@ -677,9 +681,11 @@ namespace {
 		void remove_event_handler(config::t_token const & id) {
 			static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
 			static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-			if(id == z_empty) { return; }
+			if(id == z_empty)
+				return;
 
-			if(buffering_) { remove_buffer_.insert(id); }
+			if(buffering_)
+				remove_buffer_.insert(id);
 
 			t_active &temp = buffering_ ? insert_buffer_ : active_;
 
@@ -700,13 +706,16 @@ namespace {
 		 * is called.  This function is idempotent - starting a buffer
 		 * when already buffering will not start a second buffer.
 		 */
-		void start_buffering() { buffering_ = true; }
+		void start_buffering() {
+			buffering_ = true;
+		}
 
 		/**
 		 * Stops buffering_ and commits all changes.
 		 */
 		void commit_buffer() {
-			if(!buffering_) { return; }
+			if(!buffering_)
+				return;
 
 			buffering_ = false;
 
@@ -724,13 +733,22 @@ namespace {
 		void clear(){
 			active_.clear();
 			insert_buffer_.clear();
-			remove_buffer_.clear(); }
+			remove_buffer_.clear();
+		}
 
-		iterator begin() { return active_.begin(); }
-		const_iterator begin() const { return active_.begin(); }
+		iterator begin() {
+			return active_.begin();
+		}
+		const_iterator begin() const {
+			return active_.begin();
+		}
 
-		iterator end() { return active_.end(); }
-		const_iterator end() const { return active_.end(); }
+		iterator end() {
+			return active_.end();
+		}
+		const_iterator end() const {
+			return active_.end();
+		}
 
 	};
 
