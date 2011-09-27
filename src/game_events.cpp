@@ -644,20 +644,24 @@ namespace {
 		std::set<config::t_token> remove_buffer_; ///Event handlers removed while pumping events
 		bool buffering_;
 
+		void log_handler(std::stringstream& ss,
+			const std::vector<game_events::event_handler>& handlers,
+			const std::string& msg) {
+
+				foreach(const game_events::event_handler& h, handlers){
+					const config& cfg = h.get_config();
+					ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; ";
+				}
+				DBG_EH << msg << " handlers are now " << ss.str() << "\n";
+				ss.str(std::string());
+		}
+
 		void log_handlers() {
 			if(lg::debug.dont_log("event_handler")) return;
 
-			#define LOG_HANDLERS(handlers, msg) \
-				foreach(const game_events::event_handler& h, handlers){ \
-					const config& cfg = h.get_config(); \
-					ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; "; \
-				} \
-				DBG_EH << msg << " handlers are now " << ss.str() << "\n"; \
-				ss.str(std::string());
-
 			std::stringstream ss;
-			LOG_HANDLERS(active_, "active");
-			LOG_HANDLERS(insert_buffer_, "insert buffered");
+			log_handler(ss, active_, "active");
+			log_handler(ss, insert_buffer_, "insert buffered");
 			foreach(const config::t_token& h, remove_buffer_){
 				ss << "id=" << h << "; ";
 			}
