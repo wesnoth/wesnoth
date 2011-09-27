@@ -888,6 +888,8 @@ function wml_actions.store_side(cfg)
 	-- deprecated starting with 1.9.0
 	-- added message starting with 1.9.7
 	-- assuming that a wml author will usually be in debug mode and a player will not...
+	-- Since there is no way to forsee (or to detect later) whether the wml author uses the .colour field,
+	-- emit a warning anyway since a false positive should be less problematic than no warning at all.
 	if wesnoth.game_config.debug then
 		wesnoth.message("warning", string.format("$%s.colour is deprecated, use $%s.color (if needed)", variable, variable))
 	end
