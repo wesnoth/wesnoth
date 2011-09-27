@@ -78,9 +78,6 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 
 static std::vector<config> preload_scripts;
 static config preload_config;
-namespace {
-static const config::t_token z_this_unit("this_unit", false);
-}
 
 void extract_preload_scripts(config const &game_config)
 {
