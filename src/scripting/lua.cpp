@@ -183,8 +183,6 @@ struct luaW_pushscalar_visitor : public config::attribute_value::default_visitor
 	{ luaW_pushtstring(L, s); }
 	void operator()(config::t_token const &s)
 	{ lua_pushstring(L, s.c_str()); }
-	void operator()(t_string const &s) const
-	{ luaW_pushtstring(L, s); }
 };
 
 /**
