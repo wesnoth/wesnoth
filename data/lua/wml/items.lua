@@ -61,10 +61,8 @@ end
 function wml_actions.item(cfg)
 	local locs = wesnoth.get_locations(cfg)
 	cfg = helper.parsed(cfg)
-
 	if not cfg.image and not cfg.halo then
-		--Nothing to do
-		return
+		helper.wml_error "[item] missing required image= and halo= attributes."
 	end
 	for i, loc in ipairs(locs) do
 		add_overlay(loc[1], loc[2], cfg)
