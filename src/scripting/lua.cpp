@@ -1504,7 +1504,7 @@ static int intf_is_enemy(lua_State *L)
 {
 	unsigned side_1 = luaL_checkint(L, 1) - 1;
 	unsigned side_2 = luaL_checkint(L, 2) - 1;
-	t_teams &teams = *resources::teams;
+	std::vector<team> &teams = *resources::teams;
 	if (side_1 >= teams.size() || side_2 >= teams.size()) return 0;
 	lua_pushboolean(L, teams[side_1].is_enemy(side_2 + 1));
 	return 1;
