@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-27 10:14+0200\n"
-"PO-Revision-Date: 2011-06-16 17:16+0900\n"
+"POT-Creation-Date: 2011-09-04 11:42+0200\n"
+"PO-Revision-Date: 2011-09-28 16:11+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -24,10 +24,8 @@ msgstr "Wesmere 전설"
 
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:90
-#, fuzzy
-#| msgid "(Intermediate level, 17 playable scenarios.)"
 msgid "(Intermediate level, 18 scenarios.)"
-msgstr "(중급자 레벨, 17 시나리오(대화 제외))"
+msgstr "(중급자 레벨, 18 시나리오)"
 
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:90
@@ -149,17 +147,13 @@ msgstr "북쪽 탑"
 
 #. [event]
 #: data/campaigns/Legend_of_Wesmere/maps/Kalian_map.cfg:32
-#, fuzzy
-#| msgid "North Tower"
 msgid "West Tower"
-msgstr "북쪽 탑"
+msgstr "서쪽 탑"
 
 #. [event]
 #: data/campaigns/Legend_of_Wesmere/maps/Kalian_map.cfg:33
-#, fuzzy
-#| msgid "North Tower"
 msgid "East Tower"
-msgstr "북쪽 탑"
+msgstr "동쪽 탑"
 
 #. [event]
 #: data/campaigns/Legend_of_Wesmere/maps/Kalian_map.cfg:35
@@ -258,13 +252,14 @@ msgstr "Erethean"
 
 #. [multiplayer]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:4
-#, fuzzy
-#| msgid "Legend of Wesmere"
 msgid ""
 "<i>The Legend of Wesmere</i>\n"
 "Multiplayer Campaign\n"
 "Chapter one"
-msgstr "Wesmere 전설"
+msgstr ""
+"<i>Wesmere 전설</i>\n"
+"멀티플레이 캠페인\n"
+"제 1장"
 
 #. [part]
 #. [scenario]: id=01_The_Uprooting
@@ -275,12 +270,12 @@ msgstr "뿌리뽑기"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:44
-#, fuzzy
-#| msgid "Legend of Wesmere"
 msgid ""
 "<i>The Legend of Wesmere</i>,\n"
 "Chapter One"
-msgstr "Wesmere 전설"
+msgstr ""
+"<i>Wesmere 전설</i>,\n"
+"제 1장"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:48
@@ -288,6 +283,8 @@ msgid ""
 "Chapter One,\n"
 "<i>Flight and fight</i>"
 msgstr ""
+"제 1장,\n"
+"<i>도주와 전투</i>"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:57
@@ -295,26 +292,20 @@ msgid ""
 "The great elven heroes Kalenz and Landar were born in a quiet green wood in "
 "Lintanir on the fringes of the Great Northern Forest."
 msgstr ""
+"엘프족의 대영웅 Kalenz와 Landar는 북방 대삼림의 변두리에 있는 조용한 푸른 숲 "
+"Lintanir에서 태어났다."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:60
-#, fuzzy
-#| msgid ""
-#| "The great elvish hero Kalenz was born in a quiet green wood in Lintanir "
-#| "on the fringes of the Great Northern Forest. Though not of noble birth, "
-#| "he showed early promise in the arts of his people. His quick intelligence "
-#| "gained him more than usual respect among elders normally inclined to pay "
-#| "little heed to anyone younger than a century old."
 msgid ""
 "Though not of noble birth, Kalenz showed early promise in the arts of his "
 "people. His quick intelligence gained him more than usual respect among "
 "elders normally inclined to pay little heed to anyone younger than a century "
 "old."
 msgstr ""
-"엘프의 대영웅 Kalenz는 북부 대삼림의 변두리 Lintanir의 조용한 푸른 숲에서 태"
-"어났다. 고귀한 혈통은 아니었지만 그는 어려서부터 재능을 보였다. 그의 빠른 영"
-"민함은 100살 미만의 어린이들에게 별로 신경쓰지 않기 마련인 나이 든 이들 사이"
-"에서도 상당한 관심을 끌었다."
+"고귀한 혈통은 아니었지만 그는 어려서부터 엘프로서의 기술들에 재능을 보였다. "
+"이른 시기에 나타난 그의 영민함은 100살 미만의 어린이들에게는 별로 신경쓰지 않"
+"기 마련인 나이 든 이들 사이에서도 상당한 관심을 끌었다."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:66
@@ -324,6 +315,10 @@ msgid ""
 "But there was no real harm in the boy, and his jokes made him popular among "
 "the younger elves."
 msgstr ""
+"Landar는 Kalen와 어릴적부터 친구였다. 그도 또한 어른들의 관심을 끌었는데, 그"
+"의 경우는 갖가지 장난질과 농담에 대한 재능 때문이었다. 하지만 그것은 어린아이"
+"의 악의없는 것들이었고, 그는 그의 우스개 덕에 젊은 엘프들 사이에서 인기가 있"
+"었다."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:72
@@ -335,40 +330,23 @@ msgid ""
 msgstr ""
 "아마도 원로들은 변화하는 시대에 좀더 융통성 있는 생각이 필요함을 느꼈는지도 "
 "모른다. 초록섬의 인간들이 큰 강 남쪽에 자신들의 왕국을 세우기 시작한 시대였"
-"고, 천년 동안 알아왔던 세상이 점점 빨리 변화하던 시절이었다."
+"고, 천년 동안 알고 지내온 세상이 점점 빨리 변화하던 시절이었다."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:76
-#, fuzzy
-#| msgid ""
-#| "Some changes were good. The Elves, awakened as from a long dream, began "
-#| "to increase in population. But some were very bad, and the worst of those "
-#| "was the coming of the orcs, the wreckers, the tree-killers. The years of "
-#| "Kalenz’s long childhood were a golden age, and the last time of "
-#| "untroubled peace."
 msgid ""
 "Some changes were good. The Elves, awakened as from a long dream, began to "
 "increase in population. But some were very bad, and the worst of those was "
 "the coming of the orcs, the wreckers, the tree-killers. The years of their "
 "long childhoods were a golden age, and the last time of untroubled peace."
 msgstr ""
-"몇몇 변화는 좋은 것이었다. 오랜 꿈에서 깨어난 엘프들은 인구를 늘려가기 시작했"
-"다. 하지만 몇몇은 아주 나빴고, 그중 최악은 파괴자, 나무 훼손자인 오크들의 도"
-"래였다. Kalenz의 기나긴 어린 시절은 아무 문제 없던 평화로운 황금기의 마지막 "
-"시대였다."
+"몇몇 변화는 좋은 것이었다. 오랜 꿈에서 깨어난 엘프는 그 인구를 늘려가기 시작"
+"했다. 하지만 몇몇 변화는 아주 나쁜 것으로, 그중 최악은 파괴자, 나무 훼손자인 "
+"오크들의 도래였다. 그들의 기나긴 어린 시절은 아무 문제도 없던 평화로운 황금기"
+"의 마지막 시대였다."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:82
-#, fuzzy
-#| msgid ""
-#| "The elves had never been a martial people, and they were not prepared for "
-#| "the inevitable war with the orcs. Kalenz came of age in the very year "
-#| "that Erlornas of Wesmere fought the first orcish raiders. Within the next "
-#| "decade orcish raids greatly increased, and their shadow loomed ever "
-#| "greater over the elves.\n"
-#| "\n"
-#| "This is the story of Kalenz, and of the Elves in the days of the humans "
-#| "in Wesnoth."
 msgid ""
 "The elves had never been a martial people, and they were not prepared for "
 "the inevitable war with the orcs. The friends came of age in the very year "
@@ -380,11 +358,12 @@ msgid ""
 "the humans in Wesnoth."
 msgstr ""
 "엘프는 전쟁 민족과는 거리가 멀었고, 오크와의 피할 수 없는 전쟁에 아무 준비가 "
-"되어 있지 않았다. Kalenz는 저 Wesmere의 Erlornas가 첫번째 오크의 습격에 맞서 "
-"싸우던 그해에 성인이 되었다. 다음의 10년간 오크의 습격은 매우 증가했고, 그들"
-"의 그림자는 엘프들에게 점점 더 큰 암운을 안겨주었다.\n"
+"되어 있지 않았다. 두 친구는 저 Wesmere의 Erlornas가 첫번째 오크 습격자들에게 "
+"맞서 싸웠던 바로 그해에 성인이 되었다. 다음의 10년간 오크의 습격은 매우 증가"
+"했고, 그들의 그림자는 엘프들에게 점점 더 큰 암운을 안겨주었다.\n"
 "\n"
-"이것은 Kalenz의 이야기이자, Wesnoth 인간들의 시대에 살던 엘프들의 이야기이다."
+"이것은 Kalenz와 Landar의 이야기이자, Wesnoth 인간들의 시대 초기에 살던 엘프들"
+"의 이야기이다."
 
 #. [side]
 #. [side]: id=Velon, type=Elvish Captain
@@ -557,12 +536,12 @@ msgstr "Graur-Tan"
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:390
 msgid "Kill any of the orc leaders"
-msgstr ""
+msgstr "오크 지도자 중 아무나 죽일 것"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:395
 msgid "Keep Velon alive"
-msgstr ""
+msgstr "Velon의 생존"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:399
@@ -5707,15 +5686,11 @@ msgstr "잘 있게, Kalenz!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:56
-#, fuzzy
-#| msgid "Noooo! We cannot continue without Landar!"
 msgid "Nooo! We cannot continue without Landar!"
 msgstr "안돼애애애! 우린 Landar 없이는 더 나아갈 수 없어!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:74
-#, fuzzy
-#| msgid "I’m sorry I failed you, Kalenz...my beloved..."
 msgid "I’m sorry I failed you, Kalenz... my beloved..."
 msgstr "실망시켜서 미안해요, Kalenz... 내 사랑..."
 
@@ -5783,108 +5758,3 @@ msgstr "$amount_gold 개의 금화를 회수했습니다."
 #~ msgstr ""
 #~ "엘프족은 절대로 저런 더러운 야수들에게 항복하지 않습니다! 누가 나와 함께 "
 #~ "싸우겠는가?"
-
-#, fuzzy
-#~| msgid ""
-#~| "We will follow you, Kalenz — but where can we go? We are surrounded!"
-#~ msgid "We will follow you, Kalenz — but where can we go?"
-#~ msgstr "우리가 함께하지, Kalenz. 하지만 어디로 가야하지? 우린 포위됐네!"
-
-#, fuzzy
-#~| msgid ""
-#~| "We must reach the elvish council in Ka’lian and enlist their help to "
-#~| "recapture our home. Let's storm the orcs’ southern outpost before more "
-#~| "enemies arrive!"
-#~ msgid ""
-#~ "We must reach the elvish council in Ka’lian and enlist their help to "
-#~ "recapture our home."
-#~ msgstr ""
-#~ "엘프 의회 Ka'lian에 가서 우리 고향을 되찾는데 도움을 달라고 요청해야 하"
-#~ "네. 더 많은 적들이 오기 전에 오크의 남쪽 기지를 급습하세!"
-
-#, fuzzy
-#~| msgid "We surrender!"
-#~ msgid "We are surrounded!"
-#~ msgstr "항복하겠소!"
-
-#~ msgid "Very well, Kalenz — lead us!"
-#~ msgstr "좋네, Kalenz. 우릴 지휘해주게!"
-
-#~ msgid "El'Isomithir"
-#~ msgstr "El'Isomithir"
-
-#~ msgid "South Tower"
-#~ msgstr "남쪽 탑"
-
-#~ msgid "Great Tree"
-#~ msgstr "거목"
-
-#~ msgid "Turns run out"
-#~ msgstr "턴 오버"
-
-#~ msgid "Early finish bonus: Defeat Wrulf"
-#~ msgstr "조기 종료 보너스: Wrulf 격파"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Defeat Grugl</span>"
-#~ msgstr ""
-#~ "<span color='white'>대체조건:</span>\n"
-#~ "<span color='green'>Grugl을 격파한다</span>"
-
-#~ msgid "<span color='gold'>Bonus objective: Defeat Urudin </span>"
-#~ msgstr "<span color='gold'>보너스 목표: Urudin을 격파한다</span>"
-
-#~ msgid ""
-#~ "We got to the treasury. It was much easier than we thought...What's this?"
-#~ msgstr "보고에 도착했다. 생각했던 것보단 훨씬 쉽군...이건 뭐지?"
-
-#~ msgid "Swirh"
-#~ msgstr "Swirh"
-
-#~ msgid "Cfir"
-#~ msgstr "Cfir"
-
-#~ msgid "Kfir"
-#~ msgstr "Kfir"
-
-#~ msgid "Hrish"
-#~ msgstr "Hrish"
-
-#~ msgid ""
-#~ "Sssstupid elves thought the treasury would be unguarded! Guards, slay "
-#~ "these intruders!"
-#~ msgstr ""
-#~ "머어엉청한 엘프들이 보고에 경비가 있는줄도 모르는구나! 경비병, 침입자들을 "
-#~ "제거해라!"
-
-#~ msgid "I told ye I'd be here."
-#~ msgstr "내가 여기 올거라고 했었지."
-
-#~ msgid "Uripur"
-#~ msgstr "Uripur"
-
-#~ msgid ""
-#~ "I, too, feel we are in great danger. We should stay close together and "
-#~ "move very carefully."
-#~ msgstr ""
-#~ "저 또한, 우리가 큰 위험에 처해 있다는 느낌이 와요. 서로 가까이 붙어서 매"
-#~ "우 조심해서 움직여야 해요."
-
-#~ msgid "Kalenz has arrived!"
-#~ msgstr "Kalenz가 와 있다!"
-
-#~ msgid "cold"
-#~ msgstr "얼음"
-
-#~ msgid "magical"
-#~ msgstr "마법"
-
-#~ msgid "ambush"
-#~ msgstr "매복"
-
-#~ msgid "leadership"
-#~ msgstr "리더쉽"
-
-#~ msgid "Elvish Scout"
-#~ msgstr "엘프 스카웃"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-27 10:14+0200\n"
-"PO-Revision-Date: 2010-11-24 01:32+0900\n"
+"POT-Creation-Date: 2011-09-04 11:42+0200\n"
+"PO-Revision-Date: 2011-09-28 12:41+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -25,10 +25,6 @@ msgstr "4p — 신천지"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
@@ -383,41 +379,29 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of agriculture"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "농업에 관한 지식을 공유"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of mining"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "광업에 관한 지식을 공유"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of warfare"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "전쟁에 관한 지식을 공유"
 
 #. [message]: speaker=unit
@@ -440,12 +424,11 @@ msgstr "아무것도 안한다"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:315
-#, fuzzy
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
 "Give 20 gold to another player"
 msgstr ""
-"자금 지원\n"
+"<span color='green'>자금 지원</span>\n"
 "다른 플레이어에게 20원을 준다"
 
 #. [message]: speaker=unit
@@ -461,12 +444,11 @@ msgstr "뒤로"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:359
-#, fuzzy
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
 "Help an ally with their research"
 msgstr ""
-"지식을 공유\n"
+"<span color='green'>지식 공유</span>\n"
 "동맹의 연구를 지원한다"
 
 #. [message]: speaker=unit
@@ -476,28 +458,26 @@ msgstr "누구와 지식을 공유하겠습니까?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:417
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
 "Lets you recruit a Dwarvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
-"드워프와 협상\n"
+"<span color='green'>드워프와 협상하기</span>\n"
 "드워프 유닛을 소집할 수 있게 해준다\n"
 "협상 성과: $player_$side_number|.leader_option_1.progress|/$player_"
 "$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:472
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
 "Lets you recruit an Elvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
-"엘프와 협상\n"
+"<span color='green'>엘프와 협상하기</span>\n"
 "엘프 유닛을 소집할 수 있게 해준다\n"
 "협상 성과: $player_$side_number|.leader_option_2.progress|/$player_"
 "$side_number|.leader_option_2.target"
@@ -578,19 +558,13 @@ msgstr "하던 연구를 계속"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:167
-#, fuzzy
-#| msgid ""
-#| "Agriculture\n"
-#| "Farmers produce +1 gold\n"
-#| "Study Progress: $player_$side_number|.farming.progress|/$player_"
-#| "$side_number|.farming.target"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
-"농업\n"
+"<span color='green'>농업</span>\n"
 "농부들의 생산량이 1원 증가\n"
 "연구 진척도: $player_$side_number|.farming.progress|/$player_$side_number|."
 "farming.target"
@@ -604,14 +578,13 @@ msgstr "농업"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
-#, fuzzy
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
-"광업\n"
+"<span color='green'>광업</span>\n"
 "광부들의 생산량이 1원 증가\n"
 "연구 진척도: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
@@ -623,14 +596,13 @@ msgstr "광업"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:189
-#, fuzzy
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
-"전쟁\n"
+"<span color='green'>전쟁</span>\n"
 "새로운 종류의 유닛을 소집할 수 있게 함\n"
 "연구 진척도: $player_$side_number|.warfare.progress|/$player_$side_number|."
 "warfare.target"
