@@ -347,7 +347,7 @@ const map_location display::pixel_position_to_hex(int x, int y) const
 	return map_location(x_base + x_modifier - offset, y_base + y_modifier - offset);
 }
 
-void display::rect_of_hexes::iterator::operator++()
+display::rect_of_hexes::iterator& display::rect_of_hexes::iterator::operator++()
 {
 	if (loc_.y < rect_.bottom[loc_.x & 1])
 		++loc_.y;
@@ -355,6 +355,8 @@ void display::rect_of_hexes::iterator::operator++()
 		++loc_.x;
 		loc_.y = rect_.top[loc_.x & 1];
 	}
+
+	return *this;
 }
 
 // begin is top left, and end is after bottom right

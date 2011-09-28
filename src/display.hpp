@@ -207,7 +207,7 @@ public:
 				: loc_(loc), rect_(rect){};
 
 			/** increment y first, then when reaching bottom, increment x */
-			void operator++();
+			iterator& operator++();
 			bool operator==(const iterator &that) const { return that.loc_ == loc_; }
 			bool operator!=(const iterator &that) const { return that.loc_ != loc_; }
 			const map_location& operator*() const {return loc_;};
