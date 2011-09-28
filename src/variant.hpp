@@ -206,7 +206,7 @@ public:
 	variant_iterator(const variant_iterator&);
 
 	variant operator*() const;
-	variant_iterator operator++();
+	variant_iterator& operator++();
 	variant_iterator operator++(int);
 	variant_iterator& operator=(const variant_iterator& that);
 	bool operator==(const variant_iterator& that) const;

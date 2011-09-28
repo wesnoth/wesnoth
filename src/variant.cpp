@@ -138,7 +138,7 @@ variant variant_iterator::operator*() const
 		return variant();
 }
 
-variant_iterator variant_iterator::operator++()
+variant_iterator& variant_iterator::operator++()
 {
 	if (type_ == TYPE_LIST)
 	{
