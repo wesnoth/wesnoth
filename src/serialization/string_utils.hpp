@@ -154,16 +154,10 @@ inline std::string signed_percent(int val) {return signed_value(val) + "%";}
  * If the unit is to be translatable,
  * a t_string should be passed as the third argument.
  * _("unit_byte^B") is suggested as standard.
+ *
+ * There are no default values because they would not be translatable.
  */
-std::string si_string(double input, bool base2=true, std::string unit="B");
-std::string si_string(int input, bool base2=true, std::string unit="B");
-std::string si_string(unsigned input, bool base2=true, std::string unit="B");
-/* Some extra-long versions */
-std::string si_string(long input, bool base2=true, std::string unit="B");
-std::string si_string(unsigned long input, bool base2=true, std::string unit="B");
-std::string si_string(long long input, bool base2=true, std::string unit="B");
-std::string si_string(unsigned long long input, bool base2=true, std::string unit="B");
-std::string si_string(long double input, bool base2=true, std::string unit="B");
+std::string si_string(double input, bool base2, std::string unit);
 
 /**
  * Try to complete the last word of 'text' with the 'wordlist'.

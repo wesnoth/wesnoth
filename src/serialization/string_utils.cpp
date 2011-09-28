@@ -357,8 +357,7 @@ std::string signed_value(int val)
 	return oss.str();
 }
 
-template <typename T>
-void si_string_impl_stream_write(std::stringstream &ss, T input) {
+void si_string_impl_stream_write(std::stringstream &ss, double input) {
 #ifdef _MSC_VER
 	// Visual C++ makes 'precision' set the number of decimal places.
 	// Other platforms make it set the number of significant figures
@@ -370,21 +369,9 @@ void si_string_impl_stream_write(std::stringstream &ss, T input) {
 	ss << input;
 #endif
 }
-template <> void si_string_impl_stream_write(std::stringstream &ss, int input) {
-	ss << input;
-}
-template <> void si_string_impl_stream_write(std::stringstream &ss, unsigned input) {
-	ss << input;
-}
-template <> void si_string_impl_stream_write(std::stringstream &ss, long input) {
-	ss << input;
-}
-template <> void si_string_impl_stream_write(std::stringstream &ss, long long input) {
-	ss << input;
-}
-template <typename T>
-std::string si_string_impl2(T input, bool base2, std::string unit) {
-	const T multiplier = base2 ? 1024 : 1000;
+
+std::string si_string(double input, bool base2, std::string unit) {
+	const double multiplier = base2 ? 1024 : 1000;
 
 	typedef boost::array<std::string, 9> strings9;
 
@@ -438,51 +425,6 @@ std::string si_string_impl2(T input, bool base2, std::string unit) {
 	   << (base2 ? _("infix_binary^i") : "")
 	   << unit;
 	return ss.str();
-}
-// Two layers of indirection, for the specialisation below
-template <typename T>
-std::string si_string_impl(T input, bool base2, std::string unit) {
-	// (input == -input) can happen if we're at the minimum of the native signed integer type, so make sure we don't recurse infinitely
-	// It will still give bad output, but it won't overflow the stack
-	if (input < 0 && input != -input)
-		return unicode_minus + si_string(-input, base2, unit);
-
-	return si_string_impl2(input, base2, unit);
-}
-// Specialisation for unsigned types as the template causes warnings otherwise
-template <> std::string si_string_impl(unsigned input, bool base2, std::string unit) {
-	return si_string_impl2(input, base2, unit);
-}
-template <> std::string si_string_impl(unsigned long input, bool base2, std::string unit) {
-	return si_string_impl2(input, base2, unit);
-}
-template <> std::string si_string_impl(unsigned long long input, bool base2, std::string unit) {
-	return si_string_impl2(input, base2, unit);
-}
-// Public functions
-std::string si_string(double input, bool base2, std::string unit) {
-	return si_string_impl(input, base2, unit);
-}
-std::string si_string(int input, bool base2, std::string unit) {
-	return si_string_impl(input, base2, unit);
-}
-std::string si_string(unsigned input, bool base2, std::string unit) {
-	return si_string_impl(input, base2, unit);
-}
-std::string si_string(long input, bool base2, std::string unit) {
-	return si_string_impl(input, base2, unit);
-}
-std::string si_string(unsigned long input, bool base2, std::string unit) {
-	return si_string_impl(input, base2, unit);
-}
-std::string si_string(long long input, bool base2, std::string unit) {
-	return si_string_impl(input, base2, unit);
-}
-std::string si_string(unsigned long long input, bool base2, std::string unit) {
-	return si_string_impl(input, base2, unit);
-}
-std::string si_string(long double input, bool base2, std::string unit) {
-	return si_string_impl(input, base2, unit);
 }
 
 static bool is_username_char(char c) {
