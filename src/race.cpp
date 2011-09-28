@@ -27,14 +27,14 @@
 #include "simple_rng.hpp"
 
 namespace {
-DEFAULT_TOKEN_BODY(zf_trait, "trait");
-DEFAULT_TOKEN_BODY(zf_topic, "topic");
-DEFAULT_TOKEN_BODY(zf_id, "id");
-DEFAULT_TOKEN_BODY(zf_plural_name, "plural_name");
-DEFAULT_TOKEN_BODY(zf_description, "description");
-DEFAULT_TOKEN_BODY(zf_num_traits, "num_traits");
-DEFAULT_TOKEN_BODY(zf_markov_chain_size, "markov_chain_size");
-DEFAULT_TOKEN_BODY(zf_ignore_global_traits, "ignore_global_traits");
+DEFAULT_TOKEN_BODY(zf_trait, "trait")
+DEFAULT_TOKEN_BODY(zf_topic, "topic")
+DEFAULT_TOKEN_BODY(zf_id, "id")
+DEFAULT_TOKEN_BODY(zf_plural_name, "plural_name")
+DEFAULT_TOKEN_BODY(zf_description, "description")
+DEFAULT_TOKEN_BODY(zf_num_traits, "num_traits")
+DEFAULT_TOKEN_BODY(zf_markov_chain_size, "markov_chain_size")
+DEFAULT_TOKEN_BODY(zf_ignore_global_traits, "ignore_global_traits")
 
 }
 

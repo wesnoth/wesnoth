@@ -35,7 +35,7 @@ static lg::log_domain log_display("display");
 namespace{
 	//Static tokens are replacements for string literals in code
 	//They allow for fast comparison operations.
-	DEFAULT_TOKEN_BODY( zf_tile_image, "tile_image" );
+	DEFAULT_TOKEN_BODY( zf_tile_image, "tile_image" )
 }
 
 namespace {

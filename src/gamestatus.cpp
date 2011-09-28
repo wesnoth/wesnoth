@@ -62,7 +62,7 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 #define DBG_NG_TC LOG_STREAM(debug, log_engine_tc)
 
 namespace {
-DEFAULT_TOKEN_BODY(z_NORMAL_default, "NORMAL");
+DEFAULT_TOKEN_BODY(z_NORMAL_default, "NORMAL")
 DEFAULT_TOKEN_BODY(z_label_default, "label")
 DEFAULT_TOKEN_BODY(z_parent_default, "parent")
 DEFAULT_TOKEN_BODY(z_version_default, "version")

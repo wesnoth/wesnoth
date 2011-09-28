@@ -24,17 +24,17 @@
 
 namespace {
 	//Create default value functions
-	DEFAULT_TOKEN_BODY(zf_lawful_bonus, "lawful_bonus");
-	DEFAULT_TOKEN_BODY(zf_name, "name");
-	DEFAULT_TOKEN_BODY(zf_id, "id");
-	DEFAULT_TOKEN_BODY(zf_image, "image");
-	DEFAULT_TOKEN_BODY(zf_mask, "mask");
-	DEFAULT_TOKEN_BODY(zf_red, "red");
-	DEFAULT_TOKEN_BODY(zf_green, "green");
-	DEFAULT_TOKEN_BODY(zf_blue, "blue");
-	DEFAULT_TOKEN_BODY(zf_sound, "sound");
-	DEFAULT_TOKEN_BODY(zf_NULL_TOD, "NULL_TOD");
-	DEFAULT_TOKEN_BODY(zf_nulltod, "nulltod");
+	DEFAULT_TOKEN_BODY(zf_lawful_bonus, "lawful_bonus")
+	DEFAULT_TOKEN_BODY(zf_name, "name")
+	DEFAULT_TOKEN_BODY(zf_id, "id")
+	DEFAULT_TOKEN_BODY(zf_image, "image")
+	DEFAULT_TOKEN_BODY(zf_mask, "mask")
+	DEFAULT_TOKEN_BODY(zf_red, "red")
+	DEFAULT_TOKEN_BODY(zf_green, "green")
+	DEFAULT_TOKEN_BODY(zf_blue, "blue")
+	DEFAULT_TOKEN_BODY(zf_sound, "sound")
+	DEFAULT_TOKEN_BODY(zf_NULL_TOD, "NULL_TOD")
+	DEFAULT_TOKEN_BODY(zf_nulltod, "nulltod")
 
 }
 
