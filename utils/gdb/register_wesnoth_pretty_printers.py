@@ -10,7 +10,10 @@ Usage:
 import gdb
 import re
 import itertools
-from wesnoth_type_tools import strip_type
+
+import wesnoth_type_tools
+reload (wesnoth_type_tools)
+from wesnoth_type_tools import strip_all_type
 
 
 class NullPointerPrinter(object) :
@@ -34,7 +37,7 @@ def create_wesnoth_lookup_function(pretty_printers_dict) :
             return NullPointerPrinter(val)
 
         # Get the type name.    
-        type = strip_type(val)
+        type = strip_all_type(val)
     
         # Get the type name.    
         typename = type.tag

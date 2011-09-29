@@ -5,7 +5,10 @@ import gdb
 import re
 import itertools
 
-from wesnoth_type_tools import strip_type
+
+import wesnoth_type_tools
+reload (wesnoth_type_tools)
+from wesnoth_type_tools import strip_all_type, dereference_if_possible
 
 
 class RecursionManager(object):
@@ -75,7 +78,7 @@ class T_TokenPrinter(object) :
         type = self.val.type
     
         # Get the type name.    
-        type = strip_type(self.val)
+        type = strip_all_type(self.val)
 
         #Return the underlying base class
         baseclass = type.fields()[0].type
@@ -92,19 +95,25 @@ class TstringPrinter(object) :
         self.val = val
 
     def to_string(self) :
-        # Get the type.
-        type = self.val.type
-    
         # Get the type name.    
-        type = strip_type(self.val)
+        type = strip_all_type(self.val)
+
+        #Dereference pointers
+        lval = dereference_if_possible(self.val)
 
         #Return the underlying base class
         baseclass = type.fields()[0].type
        
-        shared = self.val.cast(baseclass)['val_']
+        shared = lval.cast(baseclass)['val_']
         if shared == 0 :
             return 'NULL'
-        return shared.dereference()['val']['value_']
+
+        #Print the untranslated string or an error
+        try :
+            ret = shared.dereference()['val']['value_']['iter_']['first']
+        except RuntimeError, e:
+            return "wesnoth_gdb error invalid tstring"
+        return ret
     
     def display_hint(self) :
         #one of 'string' 'array' 'map'
@@ -115,57 +124,46 @@ class AttributeValuePrinter(object) :
     def __init__(self, val) :
         self.val = val
 
-        # Get the type.    
-        self.type = strip_type(self.val)
-       
-        self.attr = val # self.val.cast(self.type)
-        self.attr_type = self.attr['type_']
-
     def to_string(self) :
-        # return "attribute_value"
-        attr=self.attr
-        attr_type = self.attr_type
+        return 'attribute_value'
 
-        class Atype:
-            EMPTY = 0 
-            BOOL = 1
-            INT = 2
-            DOUBLE=3
-            TSTRING =4
-            TOKEN =5
-       
-        if attr_type == Atype.EMPTY:
-            return ""
-        elif attr_type == Atype.BOOL:
-            return 'true' if attr['bool_value_'] else 'false'
-        elif attr_type == Atype.INT :
-            return 'int ' + ('%s' % attr['int_value_'])
-        elif attr_type == Atype.DOUBLE :
-            return 'double ' + ('%s' % attr['double_value_'])
-        elif attr_type == Atype.TOKEN :
-            return 'token ' + ('%s' % attr['token_value_'])
-        elif attr_type == Atype.TSTRING :
-            return 't_string ' + ('%s' % attr['t_string_value_'])
-        else :
-            return "attribute pretty printer found an unknown type code = " +('%d' % attr_type) 
+    def children(self):
+        # Get the type.    
+        self.type = strip_all_type(self.val)
 
-    # def children(self):
-    #     attr=self.attr
-    #     attr_type = self.attr_type
-    #     if attr_type == 0:
-    #         raise StopIteration
-    #     elif attr_type == 1 :
-    #         yield 'bool', attr['bool_value_']
-    #     elif attr_type == 2 :
-    #         yield 'int' , attr['int_value_']
-    #     elif attr_type == 3 :
-    #         yield 'double' , attr['double_value_']
-    #     elif attr_type == 4 :
-    #         yield 'token' ,attr['token_value_']
-    #     else :
-    #         yield 't_string' , attr['t_string_value_']
-    #     raise StopIteration
- 
+        try:
+            #Dereference pointers
+            lval = dereference_if_possible(self.val)
+            
+            attr = lval 
+            attr_type = attr['type_']
+
+            class Atype:
+                EMPTY = 0 
+                BOOL = 1
+                INT = 2
+                DOUBLE = 3
+                TSTRING = 4
+                TOKEN = 5
+            
+            if attr_type == Atype.EMPTY:
+                yield "EMPTY",""
+            elif attr_type == Atype.BOOL:
+                yield 'bool', 'true' if attr['bool_value_'] else 'false'
+            elif attr_type == Atype.INT :
+                yield 'int','int ' + ('%s' % attr['int_value_'])
+            elif attr_type == Atype.DOUBLE :
+                yield 'double','double ' + ('%s' % attr['double_value_'])
+            elif attr_type == Atype.TOKEN :
+                yield 'token','token ' + ('%s' % attr['token_value_'])
+            elif attr_type == Atype.TSTRING :
+                yield 't_string','t_string ' + ('%s' % attr['t_string_value_'])
+            else :
+                yield 'unknown',"unknown type code = " +('%d' % attr_type) 
+
+        except RuntimeError, e:
+            yield 'error',"wesnoth_gdb error invalid %s" % self.val.type
+
     def display_hint(self) :
         #one of 'string' 'array' 'map'
         return 'string'
@@ -258,28 +256,30 @@ class ConfigPrinter(object) :
     def __init__(self, val) :
         self.val = val
 
+        # Get the type name.    
+        self.type = strip_all_type(self.val)
+
+        #Dereference pointers
+        self.lval = dereference_if_possible(self.val)
+
     def to_string(self) :
         return "config"
             
     def children(self) :
         if RecursionManager.should_display() :
             #yield "invalid",  self.val['invalid']
-            yield "values", self.val['values']
-            yield "children", self.val['children']
+            yield "values", self.lval['values']
+            yield "children", self.lval['children']
             RecursionManager.inc() 
             try:
-                yield "ordered_children", self.val['ordered_children']
-            except RuntimeError:
+                yield "ordered_children", self.lval['ordered_children']
+            except RuntimeError, e:
                 RecursionManager.dec() 
             else:
                 RecursionManager.dec() 
 
         else :
             pass
-            # yield "values" ,  '...'    #('%s' % self.val['values'].type) 
-            # yield "children" , '...'    #('%s' % self.val['children'].type) 
-            # yield "ordered_children" , '...'  #"std::vector<config::child_pos>"
-
            
     def display_hint(self) :
         #one of 'string' 'array' 'map'
