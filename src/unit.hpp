@@ -117,8 +117,17 @@ public:
 	void remove_movement_ai();
 	void remove_attacks_ai();
 
-	/** Colors for the unit's hitpoints. */
+	/** Colors for the unit's *current* hitpoints.
+	 * @returns a color between green and red representing
+	 * how wounded the unit is.
+	 * The maximum_hitpoints are considered as base.
+	 */
 	SDL_Color hp_color() const;
+	/** Colors for the unit's hitpoints.
+	 * @param hitpoints the amount of hitpoints the color represents.
+	 * @returns the color considering the current hitpoints as base.
+	 */
+	SDL_Color hp_color(int hitpoints) const;
 	/** Colors for the unit's XP. */
 	SDL_Color xp_color() const;
 	/** Set to true for some scenario-specific units which should not be renamed */

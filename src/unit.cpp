@@ -1044,13 +1044,13 @@ config::t_token const & unit::small_profile() const
 	return absolute_image();
 }
 
-SDL_Color unit::hp_color() const
+static SDL_Color hp_color_(int hitpoints, int max_hitpoints)
 {
 	double unit_energy = 0.0;
 	SDL_Color energy_color = {0,0,0,0};
 
-	if(max_hitpoints() > 0) {
-		unit_energy = double(hitpoints())/double(max_hitpoints());
+	if(max_hitpoints > 0) {
+		unit_energy = double(hitpoints)/double(max_hitpoints);
 	}
 
 	if(1.0 == unit_energy){
@@ -1079,6 +1079,16 @@ SDL_Color unit::hp_color() const
 		energy_color.b = 0;
 	}
 	return energy_color;
+}
+
+SDL_Color unit::hp_color() const
+{
+	return hp_color_(hitpoints(), max_hitpoints());
+}
+
+SDL_Color unit::hp_color(int new_hitpoints) const
+{
+	return hp_color_(new_hitpoints, hitpoints());
 }
 
 SDL_Color unit::xp_color() const
