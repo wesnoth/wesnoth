@@ -103,6 +103,9 @@ namespace game_config
 	std::vector<Uint32> red_green_scale;
 	std::vector<Uint32> red_green_scale_text;
 
+	std::vector<Uint32> blue_white_scale;
+	std::vector<Uint32> blue_white_scale_text;
+
 	double hp_bar_scaling = 0.666;
 	double xp_bar_scaling = 0.5;
 
@@ -234,6 +237,15 @@ namespace game_config
 			red_green_scale_text.push_back(0x00FFFF00);
 		}
 
+		blue_white_scale = string2rgb(v["blue_white_scale"]);
+		if (blue_white_scale.empty()) {
+			blue_white_scale.push_back(0x00FFFFFF);
+		}
+		blue_white_scale_text = string2rgb(v["blue_white_scale_text"]);
+		if (blue_white_scale_text.empty()) {
+			blue_white_scale_text.push_back(0x00FFFFFF);
+		}
+
 		server_list.clear();
 		foreach (const config &server, v.child_range("server"))
 		{
@@ -325,6 +337,14 @@ namespace game_config
 	Uint32 red_to_green(int val, bool for_text){
 		const std::vector<Uint32>& color_scale =
 				for_text ? red_green_scale_text : red_green_scale;
+		val = std::max<int>(0, std::min<int>(val, 100));
+		int lvl = (color_scale.size()-1) * val / 100;
+		return color_scale[lvl];
+	}
+
+	Uint32 blue_to_white(int val, bool for_text){
+		const std::vector<Uint32>& color_scale =
+				for_text ? blue_white_scale_text : blue_white_scale;
 		val = std::max<int>(0, std::min<int>(val, 100));
 		int lvl = (color_scale.size()-1) * val / 100;
 		return color_scale[lvl];

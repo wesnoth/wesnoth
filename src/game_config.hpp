@@ -153,6 +153,7 @@ namespace game_config
 	 */
 
 	Uint32 red_to_green(int val, bool for_text = true);
+	Uint32 blue_to_white(int val, bool for_text = true);
 
 	extern const version_info wesnoth_version;
 	extern const version_info min_savegame_version;
