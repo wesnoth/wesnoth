@@ -344,16 +344,16 @@ static config unit_abilities(unit* u)
 {
 	if (!u) return report();
 	config res;
-	const std::vector<std::string> &abilities = u->ability_tooltips();
-	for (std::vector<std::string>::const_iterator i = abilities.begin(),
+	const std::vector<t_string> &abilities = u->ability_tooltips();
+	for (std::vector<t_string>::const_iterator i = abilities.begin(),
 	     i_end = abilities.end(); i != i_end; ++i)
 	{
 		std::ostringstream str, tooltip;
-		const std::string &name = *i;
-		str << gettext(name.c_str());
+		const std::string &name = i->base_str();
+		str << i->str();
 		if (i + 2 != i_end) str << ", ";
 		++i;
-		tooltip << _("Ability: ") << *i;
+		tooltip << _("Ability: ") << i->str();
 		add_text(res, str.str(), tooltip.str(), "ability_" + name);
 	}
 	return res;

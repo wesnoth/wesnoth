@@ -194,24 +194,24 @@ unit_ability_list unit::get_abilities(const config::t_token& ability, const map_
 	return res;
 }
 
-std::vector<std::string> unit::get_ability_list() const
+std::vector<config::t_token> unit::get_ability_list() const
 {
 	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
 	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
 
-	std::vector<std::string> res;
+	std::vector<config::t_token> res;
 
 	const config &abilities = cfg_.child(z_abilities);
 	if (!abilities) return res;
 	foreach (const config::any_child &ab, abilities.all_children_range()) {
-		std::string const &id = ab.cfg[z_id];
+		config::attribute_value const &id = ab.cfg[z_id];
 		if (!id.empty())
-			res.push_back(id);
+			res.push_back(id.token());
 	}
 	return res;
 }
 
-std::vector<std::string> unit::ability_tooltips(bool force_active) const
+std::vector<t_string> unit::ability_tooltips(bool force_active) const
 {
 	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
 	static const config::t_token & z_female_name( generate_safe_static_const_t_interned(n_token::t_token("female_name")) );
@@ -221,7 +221,7 @@ std::vector<std::string> unit::ability_tooltips(bool force_active) const
 	static const config::t_token & z_name_inactive( generate_safe_static_const_t_interned(n_token::t_token("name_inactive")) );
 	static const config::t_token & z_description_inactive( generate_safe_static_const_t_interned(n_token::t_token("description_inactive")) );
 
-	std::vector<std::string> res;
+	std::vector<t_string> res;
 
 	const config &abilities = cfg_.child(z_abilities);
 	if (!abilities) return res;
@@ -230,24 +230,24 @@ std::vector<std::string> unit::ability_tooltips(bool force_active) const
 	{
 		if (force_active || ability_active(ab.key, ab.cfg, loc_))
 		{
-			std::string const &name =
+			t_string const name =
 				gender_ == unit_race::MALE || ab.cfg[z_female_name].empty() ?
-				ab.cfg[z_name] : ab.cfg[z_female_name];
+				ab.cfg[z_name].t_str() : ab.cfg[z_female_name].t_str();
 
 			if (!name.empty()) {
 				res.push_back(name);
-				res.push_back(ab.cfg[z_description]);
+				res.push_back(ab.cfg[z_description].t_str());
 			}
 		}
 		else
 		{
-			std::string const &name =
+			t_string const name =
 				gender_ == unit_race::MALE || ab.cfg[z_female_name_inactive].empty() ?
-				ab.cfg[z_name_inactive] : ab.cfg[z_female_name_inactive];
+				ab.cfg[z_name_inactive].t_str() : ab.cfg[z_female_name_inactive].t_str();
 
 			if (!name.empty()) {
 				res.push_back(name);
-				res.push_back(ab.cfg[z_description_inactive]);
+				res.push_back( ab.cfg[z_description_inactive].t_str() );
 			}
 		}
 	}
@@ -931,7 +931,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	for (std::vector< std::pair<const config *, map_location> >::const_iterator
 	     i = list.cfgs.begin(), i_end = list.cfgs.end(); i != i_end; ++i) {
 		const config& cfg = (*i->first);
-		std::string const &effect_id = cfg[cfg[z_id].empty() ? z_name : z_id];
+		config::t_token const &effect_id = cfg[cfg[z_id].empty() ? z_name : z_id].token();
 
 		if (!backstab && cfg[z_backstab].to_bool())
 			continue;

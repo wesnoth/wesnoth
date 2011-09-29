@@ -895,7 +895,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 			const config::attribute_value &name = ab.cfg[z_name];
 			if (!name.empty()) {
 				abilities_.push_back(name.t_str());
-				ability_tooltips_.push_back(ab.cfg[z_description].token());
+				ability_tooltips_.push_back( ab.cfg[z_description].t_str() );
 			}
 		}
 	}
@@ -912,7 +912,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 				const config::attribute_value &name = ab.cfg[z_name];
 				if (!name.empty()) {
 					adv_abilities_.push_back(name.t_str());
-					adv_ability_tooltips_.push_back(ab.cfg[z_description].token());
+					adv_ability_tooltips_.push_back( ab.cfg[z_description].t_str() );
 				}
 			}
 		}

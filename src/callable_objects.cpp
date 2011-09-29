@@ -182,13 +182,13 @@ variant unit_callable::get_value(const std::string& key) const
 			res.push_back(variant(new attack_type_callable(*i)));
 		return variant(&res);
 	} else if(key == "abilities") {
-		std::vector<std::string> abilities = u_.get_ability_list();
+		std::vector<config::t_token> abilities = u_.get_ability_list();
 		std::vector<variant> res;
 
 		if (abilities.empty())
 			return variant( &res );
 
-		for (std::vector<std::string>::iterator it = abilities.begin(); it != abilities.end(); ++it)
+		for (std::vector<config::t_token>::iterator it = abilities.begin(); it != abilities.end(); ++it)
 		{
 			res.push_back( variant(*it) );
 		}

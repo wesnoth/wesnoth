@@ -2212,6 +2212,7 @@ void display::refresh_report(std::string const &report_name, const config &_repo
 	SDL_Rect &rect = reportRects_[report_name];
 	const SDL_Rect &new_rect = item->location(screen_area());
 	surface &surf = reportSurfaces_[report_name];
+	/// @todo check to see if reports_ is ever updated
 	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.
@@ -2375,10 +2376,10 @@ void display::refresh_report(std::string const &report_name, const config &_repo
 		}
 
 		skip_element:
-		t = (*elements.first)["tooltip"].str();
+		t = (*elements.first)["tooltip"].t_str().base_str();
 		if (!t.empty()) {
 			if (!used_ellipsis) {
-				tooltips::add_tooltip(area, t, (*elements.first)["help"]);
+				tooltips::add_tooltip(area, t, (*elements.first)["help"].t_str().base_str());
 			} else {
 				// Collect all tooltips for the ellipsis.
 				// TODO: need a better separator

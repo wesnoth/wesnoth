@@ -333,8 +333,8 @@ public:
 	unit_ability_list get_abilities(const std::string &ability, const map_location& loc) const {
 		return get_abilities(config::t_token(ability), loc);}
 	unit_ability_list get_abilities(const std::string &ability) const {return get_abilities(config::t_token(ability), loc_); }
-	std::vector<std::string> ability_tooltips(bool force_active = false) const;
-	std::vector<std::string> get_ability_list() const;
+	std::vector<t_string> ability_tooltips(bool force_active = false) const;
+	std::vector<config::t_token> get_ability_list() const;
 	bool has_ability_type(const config::t_token& ability) const;
 	bool has_ability_type(const std::string& ability) const {return has_ability_type(config::t_token(ability));}
 
