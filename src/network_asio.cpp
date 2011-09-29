@@ -17,9 +17,15 @@
 #include <boost/ref.hpp>
 #include <boost/cstdint.hpp>
 #include <boost/version.hpp>
-#include <iostream>
+#include "log.hpp"
 #include "network_asio.hpp"
 #include "serialization/parser.hpp"
+
+static lg::log_domain log_network("network");
+#define DBG_NW LOG_STREAM(debug, log_network)
+#define LOG_NW LOG_STREAM(info, log_network)
+#define WRN_NW LOG_STREAM(warn, log_network)
+#define ERR_NW LOG_STREAM(err, log_network)
 
 namespace network_asio {
 
@@ -42,6 +48,7 @@ connection::connection(const std::string& host, const std::string& service)
 		boost::asio::ip::tcp::resolver::query(host, service),
 		boost::bind(&connection::handle_resolve, this, _1, _2)
 		);
+	LOG_NW << "Resolving hostname: " << host << '\n';
 }
 
 void connection::handle_resolve(
@@ -52,7 +59,6 @@ void connection::handle_resolve(
 	if(ec)
 		throw system_error(ec);
 
-	std::cout << iterator->endpoint().address() << '\n';
 	connect(iterator);
 }
 
@@ -61,6 +67,7 @@ void connection::connect(resolver::iterator iterator)
 	socket_.async_connect(*iterator, boost::bind(
 		&connection::handle_connect, this, _1, iterator)
 		);
+	LOG_NW << "Connecting to " << iterator->endpoint().address() << '\n';
 }
 
 void connection::handle_connect(
@@ -69,13 +76,17 @@ void connection::handle_connect(
 		)
 {
 	if(ec) {
+		WRN_NW << "Failed to connect to " <<
+			iterator->endpoint().address() << ": " <<
+			ec.message() << '\n';
 		socket_.close();
-		if(++iterator == resolver::iterator())
+		if(++iterator == resolver::iterator()) {
+			ERR_NW << "Tried all IPs. Giving up\n";
 			throw system_error(ec);
-		else
+		} else
 			connect(iterator);
 	} else {
-		std::cout << "Connected!\n";
+		LOG_NW << "Connected to " << iterator->endpoint().address() << '\n';
 		handshake();
 	}
 }
@@ -143,7 +154,7 @@ void connection::handle_write(
 	std::size_t bytes_transferred
 	)
 {
-	std::cout << "Written " << bytes_transferred << " bytes.\n";
+	DBG_NW << "Written " << bytes_transferred << " bytes.\n";
 	if(ec)
 		throw system_error(ec);
 }
@@ -179,7 +190,7 @@ void connection::handle_read(
 	config& response
 	)
 {
-	std::cout << "Read " << bytes_transferred << " bytes.\n";
+	DBG_NW << "Read " << bytes_transferred << " bytes.\n";
 	bytes_to_read_ = 0;
 	bytes_to_write_ = 0;
 	done_ = true;
