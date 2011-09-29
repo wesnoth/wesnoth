@@ -2982,7 +2982,7 @@ void unit::add_modification(const config::t_token& type, const config& mod, bool
 
 	const config::attribute_value& mod_description = mod[z_description];
 	if (!mod_description.empty()) {
-		description = mod_description + " ";
+		description = mod_description.t_str() + " ";
 	}
 
 	// Punctuation should be translatable: not all languages use Latin punctuation.
