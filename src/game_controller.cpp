@@ -131,10 +131,6 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	if (cmdline_opts_.debug) {
 		game_config::debug = true;
 		game_config::mp_debug = true;
-		//set the wml log domain to level "debug"
-		std::string s = "wml";
-		int severity = 3;
-		lg::set_log_domain_severity(s, severity);
 	}
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if (cmdline_opts_.debug_dot_domain)
