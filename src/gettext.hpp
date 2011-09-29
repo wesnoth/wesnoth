@@ -49,6 +49,11 @@ const char* dsgettext(const char * domainname, const char *msgid);
 const char* sngettext(const char *singular, const char *plural, int n);
 const char* dsngettext(const char * domainname, const char *singular, const char *plural, int n);
 
+//A Hack to make the eclipse-cdt parser happy.
+#ifdef __CDT_PARSER__
+#define GETTEXT_DOMAIN ""
+#endif
+
 #ifdef GETTEXT_DOMAIN
 # define _(String) dsgettext(GETTEXT_DOMAIN,String)
 # define _n(String1,String2,Int) dsngettext(String1,String2,Int)
