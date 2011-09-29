@@ -357,7 +357,7 @@ std::string signed_value(int val)
 	return oss.str();
 }
 
-void si_string_impl_stream_write(std::stringstream &ss, double input) {
+static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 #ifdef _MSC_VER
 	// Visual C++ makes 'precision' set the number of decimal places.
 	// Other platforms make it set the number of significant figures
