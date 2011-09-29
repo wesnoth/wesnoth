@@ -102,8 +102,6 @@ battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
 	hp_distribs_height_ = std::max<int>(attacker_hp_distrib_height_, defender_hp_distrib_height_);
 
 	// Build the strings and compute the layout.
-	std::stringstream str;
-
 	attacker_label_ = _("Attacker");
 	defender_label_ = _("Defender");
 	attacker_label_width_ = font::line_width(attacker_label_, font::SIZE_PLUS, TTF_STYLE_BOLD);
@@ -272,7 +270,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 	right_strings.push_back(str_buf);
 
 #if 0 // might not be en English!
-	// Fix capitalisation of left strings.
+	// Fix capitalization of left strings.
 	for(int i = 0; i < (int) left_strings.size(); i++)
 		if(left_strings[i].size() > 0) left_strings[i][0] = toupper(left_strings[i][0]);
 #endif
