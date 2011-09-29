@@ -832,8 +832,8 @@ void variable_info::init(const config::t_token& varname, bool force_valid, bool 
 		//Process the last token
 
 		key = i->token;
-		if(i->index != t_parsed::NO_INDEX && i->index != 0){
-			explicit_index_ = true;
+		explicit_index_ = (i->index != t_parsed::NO_INDEX);
+		if(explicit_index_){
 			size_t size = vars->child_count(key);
 			index = i->index;
 			if(size <= index) {
