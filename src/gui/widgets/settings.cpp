@@ -267,7 +267,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * @end{parent}{name="/"}
  */
 	id = cfg["id"].str();
-	description = cfg["description"].token();
+	description = cfg["description"].t_str();
 
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
 	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
@@ -394,7 +394,7 @@ const std::string& tgui_definition::read(const config& cfg)
 	sound_toggle_panel_click_ = settings["sound_toggle_panel_click"].str();
 	sound_slider_adjust_ = settings["sound_slider_adjust"].str();
 
-	has_helptip_message_ = settings["has_helptip_message"].token();
+	has_helptip_message_ = settings["has_helptip_message"].t_str();
 
 	VALIDATE(!has_helptip_message_.empty(),
 			missing_mandatory_wml_key("[settings]", "has_helptip_message"));
