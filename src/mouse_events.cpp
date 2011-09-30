@@ -316,7 +316,7 @@ unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 	return find_visible_unit(hex, viewing_team());
 }
 
-map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
+map_location mouse_handler::current_unit_attacks_from(const map_location& loc) const
 {
 	if(loc == selected_hex_)
 		return map_location();

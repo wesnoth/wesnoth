@@ -39,6 +39,11 @@ public:
 
 	int get_path_turns() const { return path_turns_; }
 
+	/**
+	 * @param loc the location occupied by the enemy
+	 * @returns the location from which the selected unit can attack the enemy
+	 */
+	map_location current_unit_attacks_from(const map_location& loc) const;
 	const pathfind::paths& current_paths() const { return current_paths_; }
 
 	const map_location& get_last_hex() const { return last_hex_; }
@@ -59,7 +64,7 @@ public:
 
 	const pathfind::marked_route& get_current_route() { return current_route_; }
 
-	//get visible ajacent enemies of 1-based side around location loc
+	//get visible adjacent enemies of 1-based side around location loc
 	std::set<map_location> get_adj_enemies(const map_location& loc, int side) const;
 
 	// show the attack dialog and return the choice made
@@ -110,7 +115,6 @@ protected:
 		int attacker_weapon, int defender_weapon, int seed);
 
 	void show_attack_options(const unit_map::const_iterator &u);
-	map_location current_unit_attacks_from(const map_location& loc);
 	unit_map::const_iterator find_unit(const map_location& hex) const;
 	unit_map::iterator find_unit(const map_location& hex);
 	bool unit_in_cycle(unit_map::const_iterator it);
