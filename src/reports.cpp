@@ -16,6 +16,7 @@
 #include "global.hpp"
 
 #include "actions.hpp"
+#include "attack_prediction.hpp"
 #include "font.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
@@ -24,12 +25,14 @@
 #include "language.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
+#include "play_controller.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
 #include "unit.hpp"
 #include "whiteboard/manager.hpp"
+
 
 #include <cassert>
 #include <ctime>
@@ -461,7 +464,7 @@ REPORT_GENERATOR(selected_unit_advancement_options)
 	return unit_advancement_options(u);
 }
 
-static config unit_defense(unit* u)
+static config unit_defense(unit* u, const map_location& displayed_unit_hex)
 {
 	if(!u) {
 		return report();
@@ -469,7 +472,6 @@ static config unit_defense(unit* u)
 
 	std::ostringstream str, tooltip;
 	const gamemap &map = *resources::game_map;
-	const map_location& displayed_unit_hex = resources::screen->displayed_unit_hex();
 	if(!resources::game_map->on_board(displayed_unit_hex)) {
 		return report();
 	}
@@ -501,18 +503,20 @@ static config unit_defense(unit* u)
 		}
 	}
 
-	tooltip << "<b>" << _("Defense: ") << span_color(color)  << def << "%</span></b>";
+    	tooltip << "<b>" << _("Defense: ") << span_color(color)  << def << "%</span></b>";
 	return text_report(str.str(), tooltip.str());
 }
 REPORT_GENERATOR(unit_defense)
 {
 	unit *u = get_visible_unit();
-	return unit_defense(u);
+	const map_location& displayed_unit_hex = resources::screen->displayed_unit_hex();
+	return unit_defense(u, displayed_unit_hex);
 }
 REPORT_GENERATOR(selected_unit_defense)
 {
 	unit *u = get_selected_unit();
-	return unit_defense(u);
+	const map_location& selected_hex = resources::screen->selected_hex();
+	return unit_defense(u, selected_hex);
 }
 
 static config unit_moves(unit* u)
@@ -542,176 +546,371 @@ REPORT_GENERATOR(selected_unit_moves)
 	return unit_moves(u);
 }
 
-static config unit_weapons(unit *u)
+static void attack_info(const attack_type &at, config &res, unit *u, const map_location &displayed_unit_hex)
 {
-
-	if (!u) return report();
-	std::ostringstream str, tooltip;
-	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
-	config res;
-
 	static const config::t_token & z_swarm( generate_safe_static_const_t_interned(n_token::t_token("swarm")) );
 	static const config::t_token & z_swarm_attacks_min( generate_safe_static_const_t_interned(n_token::t_token("swarm_attacks_min")) );
 	static const config::t_token & z_swarm_attacks_max( generate_safe_static_const_t_interned(n_token::t_token("swarm_attacks_max")) );
 
-	foreach (const attack_type &at, u->attacks())
+	std::ostringstream str, tooltip;
+
+	at.set_specials_context(displayed_unit_hex, map_location(), *u);
+	int base_damage = at.damage();
+	int damage_multiplier = 100;
+	int tod_bonus = combat_modifier(displayed_unit_hex, u->alignment(), u->is_fearless());
+	damage_multiplier += tod_bonus;
+	int leader_bonus = 0;
+	if (under_leadership(*resources::units, displayed_unit_hex, &leader_bonus).valid())
+		damage_multiplier += leader_bonus;
+
+	// Assume no specific resistance.
+	damage_multiplier *= 100;
+	bool slowed = u->get_state(unit::STATE_SLOWED);
+	int damage_divisor = slowed ? 20000 : 10000;
+	int damage = round_damage(base_damage, damage_multiplier, damage_divisor);
+
+	int base_nattacks = at.num_attacks();
+	int nattacks = base_nattacks;
+	unit_ability_list swarm = at.get_specials(z_swarm);
+	if (!swarm.empty())
 	{
-		at.set_specials_context(displayed_unit_hex, map_location(), *u);
-		int base_damage = at.damage();
-		int damage_multiplier = 100;
-		int tod_bonus = combat_modifier(displayed_unit_hex, u->alignment(), u->is_fearless());
-		damage_multiplier += tod_bonus;
-		int leader_bonus = 0;
-		if (under_leadership(*resources::units, displayed_unit_hex, &leader_bonus).valid())
-			damage_multiplier += leader_bonus;
+		int swarm_max_attacks = swarm.highest(z_swarm_attacks_max, nattacks).first;
+		int swarm_min_attacks = swarm.highest(z_swarm_attacks_min).first;
+		int hitp = u->hitpoints();
+		int mhitp = u->max_hitpoints();
+		nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
+	}
 
-		// Assume no specific resistance.
-		damage_multiplier *= 100;
-		bool slowed = u->get_state(unit::STATE_SLOWED);
-		int damage_divisor = slowed ? 20000 : 10000;
-		int damage = round_damage(base_damage, damage_multiplier, damage_divisor);
+	SDL_Color dmg_color = font::weapon_color;
+	double dmg_bonus = double(damage) / base_damage;
+	if (dmg_bonus > 1.0)
+		dmg_color = font::good_dmg_color;
+	else if (dmg_bonus < 1.0)
+		dmg_color = font::bad_dmg_color;
 
-		int base_nattacks = at.num_attacks();
-		int nattacks = base_nattacks;
-		unit_ability_list swarm = at.get_specials(z_swarm);
-		if (!swarm.empty())
-		{
-			int swarm_max_attacks = swarm.highest(z_swarm_attacks_max, nattacks).first;
-			int swarm_min_attacks = swarm.highest(z_swarm_attacks_min).first;
-			int hitp = u->hitpoints();
-			int mhitp = u->max_hitpoints();
-			nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
+	str << span_color(dmg_color) << damage << naps << span_color(font::weapon_color)
+		<< font::weapon_numbers_sep << nattacks << ' ' << at.name()
+		<< "</span>\n";
+	tooltip << _("Weapon: ") << "<b>" << at.name() << "</b>\n"
+		<< _("Damage: ") << "<b>" << damage << "</b>\n";
+
+	if (tod_bonus || leader_bonus || slowed)
+	{
+		tooltip << '\t' << _("Base damage: ") << base_damage << '\n';
+		if (tod_bonus) {
+			tooltip << '\t' << _("Time of day: ")
+				<< utils::signed_percent(tod_bonus) << '\n';
 		}
-
-		SDL_Color dmg_color = font::weapon_color;
-		double dmg_bonus = double(damage) / base_damage;
-		if (dmg_bonus > 1.0)
-			dmg_color = font::good_dmg_color;
-		else if (dmg_bonus < 1.0)
-			dmg_color = font::bad_dmg_color;
-
-		str << span_color(dmg_color) << damage << naps << span_color(font::weapon_color)
-			<< font::weapon_numbers_sep << nattacks << ' ' << at.name()
-			<< "</span>\n";
-		tooltip << _("Weapon: ") << "<b>" << at.name() << "</b>\n"
-			<< _("Damage: ") << "<b>" << damage << "</b>\n";
-
-		if (tod_bonus || leader_bonus || slowed)
-		{
-			tooltip << '\t' << _("Base damage: ") << base_damage << '\n';
-			if (tod_bonus) {
-				tooltip << '\t' << _("Time of day: ")
-					<< utils::signed_percent(tod_bonus) << '\n';
-			}
-			if (leader_bonus) {
-				tooltip << '\t' << _("Leadership: ")
-					<< utils::signed_percent(leader_bonus) << '\n';
-			}
-			if (slowed) {
-				tooltip << '\t' << _("Slowed: ") << "/ 2" << '\n';
-			}
+		if (leader_bonus) {
+			tooltip << '\t' << _("Leadership: ")
+				<< utils::signed_percent(leader_bonus) << '\n';
 		}
-
-		tooltip << _("Attacks: ") << "<b>" << nattacks << "</b>\n";
-		if (nattacks != base_nattacks){
-			tooltip << '\t' << _("Base attacks: ") << base_nattacks << '\n';
-			int hp_ratio = u->hitpoints() * 100 / u->max_hitpoints();
-			tooltip << '\t' << _("Swarm: ") << "* "<< hp_ratio << "%\n";
+		if (slowed) {
+			tooltip << '\t' << _("Slowed: ") << "/ 2" << '\n';
 		}
+	}
 
+	tooltip << _("Attacks: ") << "<b>" << nattacks << "</b>\n";
+	if (nattacks != base_nattacks){
+		tooltip << '\t' << _("Base attacks: ") << base_nattacks << '\n';
+		int hp_ratio = u->hitpoints() * 100 / u->max_hitpoints();
+		tooltip << '\t' << _("Swarm: ") << "* "<< hp_ratio << "%\n";
+	}
+
+	add_text(res, flush(str), flush(tooltip));
+
+	std::string range = string_table["range_" + (* at.range())];
+	std::string lang_type = string_table["type_" + (* at.type() )];
+
+	str << span_color(font::weapon_details_color) << "  "
+		<< range << font::weapon_details_sep
+		<< lang_type << "</span>\n";
+
+	tooltip << _("Weapon range: ") << "<b>" << range << "</b>\n"
+		<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n"
+		<< _("Damage versus: ") << '\n';
+
+	// Show this weapon damage and resistance against all the different units.
+	// We want weak resistances (= good damage) first.
+	std::map<int, std::set<std::string>, std::greater<int> > resistances;
+	std::set<std::string> seen_types;
+	const team &unit_team = (*resources::teams)[u->side() - 1];
+	const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
+	foreach(const unit &enemy, *resources::units)
+	{
+		if (!unit_team.is_enemy(enemy.side()))
+			continue;
+		const map_location &loc = enemy.get_location();
+		if (viewing_team.fogged(loc) ||
+		    (viewing_team.is_enemy(enemy.side()) && enemy.invisible(loc)))
+			continue;
+		bool new_type = seen_types.insert(enemy.type_id()).second;
+		if (new_type) {
+			int resistance = enemy.resistance_against(at, false, loc);
+			resistances[resistance].insert(enemy.type_name());
+		}
+	}
+
+	// Get global ToD.
+	damage_multiplier = 100;
+	tod_bonus = combat_modifier(map_location::null_location, u->alignment(), u->is_fearless());
+	damage_multiplier += tod_bonus;
+
+	typedef std::pair<int, std::set<std::string> > resist_units;
+	foreach (const resist_units &resist, resistances) {
+		int damage = round_damage(base_damage, damage_multiplier * resist.first, damage_divisor);
+		tooltip << "<b>" << damage << "</b>  "
+			<< "<i>(" << utils::signed_percent(resist.first-100) << ")</i> : "
+			<< utils::join(resist.second, ", ") << '\n';
+	}
+	add_text(res, flush(str), flush(tooltip));
+
+	const std::string &accuracy_parry = at.accuracy_parry_description();
+	if (!accuracy_parry.empty())
+	{
+		str << span_color(font::weapon_details_color)
+			<< "  " << accuracy_parry << "</span>\n";
+		int accuracy = at.accuracy();
+		if (accuracy) {
+			tooltip << _("Accuracy:") << "<b>"
+				<< utils::signed_percent(accuracy) << "</b>\n";
+		}
+		int parry = at.parry();
+		if (parry) {
+			tooltip << _("Parry:") << "<b>"
+				<< utils::signed_percent(parry) << "</b>\n";
+			}
 		add_text(res, flush(str), flush(tooltip));
+	}
 
-		std::string range = string_table["range_" + (* at.range())];
-		std::string lang_type = string_table["type_" + (* at.type() )];
-
-		str << span_color(font::weapon_details_color) << "  "
-			<< range << font::weapon_details_sep
-			<< lang_type << "</span>\n";
-
-		tooltip << _("Weapon range: ") << "<b>" << range << "</b>\n"
-			<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n"
-			<< _("Damage versus: ") << '\n';
-
-		// Show this weapon damage and resistance against all the different units.
-		// We want weak resistances (= good damage) first.
-		std::map<int, std::set<std::string>, std::greater<int> > resistances;
-		std::set<std::string> seen_types;
-		const team &unit_team = (*resources::teams)[u->side() - 1];
-		const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
-		foreach(const unit &enemy, *resources::units)
-		{
-			if (!unit_team.is_enemy(enemy.side()))
-				continue;
-			const map_location &loc = enemy.get_location();
-			if (viewing_team.fogged(loc) ||
-			    (viewing_team.is_enemy(enemy.side()) && enemy.invisible(loc)))
-				continue;
-			bool new_type = seen_types.insert(enemy.type_id()).second;
-			if (new_type) {
-				int resistance = enemy.resistance_against(at, false, loc);
-				resistances[resistance].insert(enemy.type_name());
-			}
-		}
-
-		// Get global ToD.
-		damage_multiplier = 100;
-		tod_bonus = combat_modifier(map_location::null_location, u->alignment(), u->is_fearless());
-		damage_multiplier += tod_bonus;
-
-		typedef std::pair<int, std::set<std::string> > resist_units;
-		foreach (const resist_units &resist, resistances) {
-			int damage = round_damage(base_damage, damage_multiplier * resist.first, damage_divisor);
-			tooltip << "<b>" << damage << "</b>  "
-				<< "<i>(" << utils::signed_percent(resist.first-100) << ")</i> : "
-				<< utils::join(resist.second, ", ") << '\n';
-		}
-		add_text(res, flush(str), flush(tooltip));
-
-		const std::string &accuracy_parry = at.accuracy_parry_description();
-		if (!accuracy_parry.empty())
+	const std::vector<t_string> &specials = at.special_tooltips();
+	if (!specials.empty())
+	{
+		for (std::vector<t_string>::const_iterator sp_it = specials.begin(),
+		     sp_end = specials.end(); sp_it != sp_end; ++sp_it)
 		{
 			str << span_color(font::weapon_details_color)
-				<< "  " << accuracy_parry << "</span>\n";
-			int accuracy = at.accuracy();
-			if (accuracy) {
-				tooltip << _("Accuracy:") << "<b>"
-					<< utils::signed_percent(accuracy) << "</b>\n";
-			}
-			int parry = at.parry();
-			if (parry) {
-				tooltip << _("Parry:") << "<b>"
-					<< utils::signed_percent(parry) << "</b>\n";
-				}
-			add_text(res, flush(str), flush(tooltip));
+				<< "  " << *sp_it << "</span>\n";
+			std::string help_page = "weaponspecial_" + sp_it->base_str();
+			++sp_it;
+			//FIXME pull out special's name from description
+			tooltip << _("Weapon special: ") << *sp_it << '\n';
+			add_text(res, flush(str), flush(tooltip), help_page);
+		}
+	}
+}
+
+// Conversion routine for both unscathed and damage change percentage.
+static void format_prob(char str_buf[10], double prob)
+{
+
+	if(prob > 0.9995) {
+		snprintf(str_buf, 10, "100 %%");
+	} else if(prob >= 0.1) {
+		snprintf(str_buf, 10, "%4.1f %%", 100.0 * prob);
+	} else {
+		snprintf(str_buf, 10, " %3.1f %%", 100.0 * prob);
+	}
+
+	str_buf[9] = '\0';  //prevents _snprintf error
+}
+
+static config unit_weapons(unit *attacker, const map_location &attacker_pos, unit *defender, bool show_attacker)
+{
+	if (!attacker || !defender) return report();
+
+	std::ostringstream str, tooltip;
+
+	//TODO this is wrong
+	map_location displayed_unit_hex = resources::screen->selected_hex();
+	config res;
+
+	std::vector<battle_context> weapons;
+
+	unit* u = show_attacker ? attacker : defender;
+
+	for (unsigned int i = 0; i < attacker->attacks().size(); i++) {
+		// skip weapons with attack_weight=0
+		if (attacker->attacks()[i].attack_weight() > 0) {
+			//TODO enable again
+			//battle_context weapon(*resources::units, attacker_pos, defender->get_location(), i);
+			battle_context weapon(*resources::units, displayed_unit_hex, defender->get_location(), i);
+			weapons.push_back(weapon);
+		}
+	}
+
+	foreach(const battle_context& weapon, weapons) {
+
+		//TODO clean up
+		//const attack_type& attacker_weapon = attack_type(*attacker.weapon);
+		//const attack_type& defender_weapon = attack_type(
+		//		defender.weapon ? *defender.weapon : no_weapon);
+
+		// Predict the battle outcome.
+		combatant attacker_combatant(weapon.get_attacker_stats());
+		combatant defender_combatant(weapon.get_defender_stats());
+		attacker_combatant.fight(defender_combatant);
+
+		const battle_context_unit_stats& context_unit_stats =
+				show_attacker ? weapon.get_attacker_stats() : weapon.get_defender_stats();
+
+		int damage = 0;
+		int base_damage = 0;
+		int num_blows = 0;
+		int chance_to_hit = 0;
+		t_string weapon_name = _("None");
+
+		SDL_Color dmg_color = font::weapon_color;
+		if (context_unit_stats.weapon) {
+			attack_info(*context_unit_stats.weapon, res, attacker, attacker_pos);
+			damage = context_unit_stats.damage;
+			base_damage = (context_unit_stats.weapon)->damage();
+			num_blows = context_unit_stats.num_blows;
+			chance_to_hit = context_unit_stats.chance_to_hit;
+			weapon_name = context_unit_stats.weapon->name();
+
+			double dmg_bonus = double(damage) / base_damage;
+			if (dmg_bonus > 1.0)
+				dmg_color = font::good_dmg_color;
+			else if (dmg_bonus < 1.0)
+				dmg_color = font::bad_dmg_color;
+		} else {
+			str << span_color(font::bad_dmg_color) << "0" << naps << span_color(font::weapon_color)
+				<< font::weapon_numbers_sep << "0" << ' ' << weapon_name << naps << "\n";
+			tooltip << _("Weapon: ") << "<b>" << weapon_name << "</b>\n"
+				<< _("Damage: ") << "<b>" << "0" << "</b>\n";
 		}
 
-		const std::vector<t_string> &specials = at.special_tooltips();
-		if (!specials.empty())
-		{
-			for (std::vector<t_string>::const_iterator sp_it = specials.begin(),
-			     sp_end = specials.end(); sp_it != sp_end; ++sp_it)
-			{
-				str << span_color(font::weapon_details_color)
-					<< "  " << *sp_it << "</span>\n";
-				std::string help_page = "weaponspecial_" + sp_it->base_str();
-				++sp_it;
-				//FIXME pull out special's name from description
-				tooltip << _("Weapon special: ") << *sp_it << '\n';
-				add_text(res, flush(str), flush(tooltip), help_page);
-			}
+		SDL_Color chance_color = int_to_color(game_config::red_to_green(chance_to_hit));
+
+		// Total damage.
+		str << "  " << span_color(dmg_color) << damage << naps << span_color(font::weapon_color)
+												<< utils::unicode_en_dash << num_blows
+												<< " (" << span_color(chance_color) << chance_to_hit << "%" << naps << ")"
+												<< naps << "\n";
+
+		tooltip << _("Weapon: ") << "<b>" << weapon_name << "</b>\n"
+				<< _("Total damage") << "<b>" << damage << "</b>\n";
+
+		// Create the hitpoints distribution graphics.
+		std::vector<std::pair<int, double> > hp_prob_vector;
+
+		// First, we sort the probabilities in ascending order.
+		std::vector<std::pair<double, int> > prob_hp_vector;
+		int i;
+
+		combatant* c = show_attacker ? &attacker_combatant : &defender_combatant;
+
+		for(i = 0; i < static_cast<int>(c->hp_dist.size()); i++) {
+			double prob = c->hp_dist[i];
+
+			// We keep only values above 0.1%.
+			if(prob > 0.001)
+				prob_hp_vector.push_back(std::pair<double, int>(prob, i));
 		}
+
+		std::sort(prob_hp_vector.begin(), prob_hp_vector.end());
+
+		//TODO fendrin -- make that dynamically
+		int max_hp_distrib_rows_ = 10;
+
+		// We store a few of the highest probability hitpoint values.
+		int nb_elem = std::min<int>(max_hp_distrib_rows_, prob_hp_vector.size());
+
+		for(i = prob_hp_vector.size() - nb_elem;
+				i < static_cast<int>(prob_hp_vector.size()); i++) {
+
+			hp_prob_vector.push_back(std::pair<int, double>
+			(prob_hp_vector[i].second, prob_hp_vector[i].first));
+		}
+
+		// Then, we sort the hitpoint values in ascending order.
+		std::sort(hp_prob_vector.begin(), hp_prob_vector.end());
+		// And reverse the order. Might be doable in a better manor.
+		std::reverse(hp_prob_vector.begin(), hp_prob_vector.end());
+
+		for(i = 0;
+				i < static_cast<int>(hp_prob_vector.size()); i++) {
+
+			int hp = hp_prob_vector[i].first;
+			double prob = hp_prob_vector[i].second;
+
+			std::stringstream formated_prob;
+			char str_buf[10];
+			format_prob(str_buf, prob);
+
+			SDL_Color prob_color = int_to_color(game_config::blue_to_white(prob * 100.0, true));
+
+			str		<< span_color(font::weapon_details_color) << "  " << "  "
+					<< span_color(u->hp_color(hp)) << hp << naps
+					<< " " << font::weapon_numbers_sep << " "
+					<< span_color(prob_color) << str_buf << naps
+					<< naps << "\n";
+		}
+
+		add_text(res, flush(str), flush(tooltip));
+
+	}
+	return res;
+}
+
+static config unit_weapons(unit *u)
+{
+	if (!u) return report();
+	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
+	config res;
+
+	foreach (const attack_type &at, u->attacks())
+	{
+		attack_info(at, res, u, displayed_unit_hex);
 	}
 	return res;
 }
 REPORT_GENERATOR(unit_weapons)
 {
 	unit *u = get_visible_unit();
+	if (!u) return config();
+
 	return unit_weapons(u);
+}
+REPORT_GENERATOR(highlighted_unit_weapons)
+{
+	unit *u = get_selected_unit();
+	unit *sec_u = get_visible_unit();
+
+	if (!u) return config();
+	if (!sec_u || u == sec_u) return unit_weapons(sec_u);
+
+	map_location highlighted_hex = resources::screen->displayed_unit_hex();
+	map_location selected_hex = resources::screen->selected_hex();
+
+	map_location attack_loc =
+			resources::controller->get_mouse_handler_base().current_unit_attacks_from(highlighted_hex);
+
+	if (!attack_loc.valid())
+		return unit_weapons(sec_u);
+
+	return unit_weapons(u, attack_loc, sec_u, false);
+
 }
 REPORT_GENERATOR(selected_unit_weapons)
 {
 	unit *u = get_selected_unit();
-	return unit_weapons(u);
+	unit *sec_u = get_visible_unit();
+
+	if (!u) return config();
+	if (!sec_u || u == sec_u) return unit_weapons(u);
+
+	map_location highlighted_hex = resources::screen->displayed_unit_hex();
+	map_location selected_hex = resources::screen->selected_hex();
+
+	map_location attack_loc =
+			resources::controller->get_mouse_handler_base().current_unit_attacks_from(highlighted_hex);
+
+	if (!attack_loc.valid())
+		return unit_weapons(u);
+
+	return unit_weapons(u, attack_loc, sec_u, true);
 }
 
 REPORT_GENERATOR(unit_image)
@@ -726,7 +925,6 @@ REPORT_GENERATOR(selected_unit_image)
 	if (!u) return report();
 	return image_report(u->absolute_image() + u->image_mods());
 }
-
 
 REPORT_GENERATOR(selected_unit_profile)
 {
