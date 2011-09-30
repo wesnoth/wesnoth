@@ -365,7 +365,11 @@ static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 	ss << std::fixed
 	   << input;
 #else
-	ss.precision(3);
+	// Workaround to display 1023 KiB instead of 1.02e3 KiB
+	if (input >= 1000)
+		ss.precision(4);
+	else
+		ss.precision(3);
 	ss << input;
 #endif
 }
