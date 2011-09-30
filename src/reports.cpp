@@ -882,7 +882,7 @@ REPORT_GENERATOR(highlighted_unit_weapons)
 	if (!sec_u || u == sec_u) return unit_weapons(sec_u);
 
 	map_location highlighted_hex = resources::screen->displayed_unit_hex();
-	map_location selected_hex = resources::screen->selected_hex();
+	// Unused: map_location selected_hex = resources::screen->selected_hex();
 
 	map_location attack_loc =
 			resources::controller->get_mouse_handler_base().current_unit_attacks_from(highlighted_hex);
@@ -902,7 +902,7 @@ REPORT_GENERATOR(selected_unit_weapons)
 	if (!sec_u || u == sec_u) return unit_weapons(u);
 
 	map_location highlighted_hex = resources::screen->displayed_unit_hex();
-	map_location selected_hex = resources::screen->selected_hex();
+	// Unused: map_location selected_hex = resources::screen->selected_hex();
 
 	map_location attack_loc =
 			resources::controller->get_mouse_handler_base().current_unit_attacks_from(highlighted_hex);
