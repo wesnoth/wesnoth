@@ -617,9 +617,11 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	static const config::t_token & z_levelout( generate_safe_static_const_t_interned(n_token::t_token("levelout")) );
 	static const config::t_token & z_standing_anim( generate_safe_static_const_t_interned(n_token::t_token("standing_anim")) );
 	static const config::t_token & z_apply_to( generate_safe_static_const_t_interned(n_token::t_token("apply_to")) );
-	static const config::t_token & z_standing_c_default( generate_safe_static_const_t_interned(n_token::t_token("standing,default")) );
+	static const config::t_token & z_standing( generate_safe_static_const_t_interned(n_token::t_token("standing")) );
+	static const config::t_token & z_default( generate_safe_static_const_t_interned(n_token::t_token("default")) );
 	static const config::t_token & z_cycles( generate_safe_static_const_t_interned(n_token::t_token("cycles")) );
 	static const config::t_token & z_true( generate_safe_static_const_t_interned(n_token::t_token("true")) );
+	static const config::t_token & z_false( generate_safe_static_const_t_interned(n_token::t_token("false")) );
 	static const config::t_token & z_layer( generate_safe_static_const_t_interned(n_token::t_token("layer")) );
 	static const config::t_token & z_offscreen( generate_safe_static_const_t_interned(n_token::t_token("offscreen")) );
 	static const config::t_token & z_healing_anim( generate_safe_static_const_t_interned(n_token::t_token("healing_anim")) );
@@ -685,8 +687,17 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	foreach (const animation_branch &ab, prepare_animation(cfg, z_standing_anim))
 	{
 		config anim = ab.merge();
-		anim[z_apply_to] = z_standing_c_default;
+		anim[z_apply_to] = z_standing;
 		anim[z_cycles] = z_true;
+		if (anim[z_layer].empty()) anim[z_layer] = default_layer;
+		if (anim[z_offscreen].empty()) anim[z_offscreen] = false;
+		animations.push_back(unit_animation(anim));
+	}
+	foreach (const animation_branch &ab, prepare_animation(cfg, z_standing_anim))
+	{
+		config anim = ab.merge();
+		anim[z_apply_to] = z_default;
+		anim[z_cycles] = z_false;
 		if (anim[z_layer].empty()) anim[z_layer] = default_layer;
 		if (anim[z_offscreen].empty()) anim[z_offscreen] = false;
 		animations.push_back(unit_animation(anim));
