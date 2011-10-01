@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-09-04 11:42+0200\n"
-"PO-Revision-Date: 2010-11-30 22:55+0900\n"
+"PO-Revision-Date: 2011-09-30 20:23+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -630,9 +630,8 @@ msgstr "노르웨이어 번역 담당"
 
 #. [about]
 #: data/core/about.cfg:2315
-#, fuzzy
 msgid "Old English Translation"
-msgstr "영어 (영국) 번역 담당"
+msgstr "옛 영어 번역 담당"
 
 #. [about]
 #: data/core/about.cfg:2324
@@ -728,7 +727,7 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:19 data/core/macros/ai_controller.cfg:26
 #: data/core/macros/ai_controller.cfg:33
 msgid "Instruct ally"
-msgstr ""
+msgstr "동맹군에 지령을 내린다"
 
 #. [overview_message_has_instructions]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:27
@@ -736,6 +735,7 @@ msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
+"$ally_leader.name (side $ally_side|) 는 다음의 지령을 수행하고 있습니다:"
 
 #. [overview_message_no_instructions]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:34
@@ -743,6 +743,8 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
+"$ally_leader.name ($ally_side| 진영) 에게 내려진 지령이 없어 일반적으로 행동"
+"하고 있습니다."
 
 #. [aggression]
 #: data/core/macros/ai_controller.cfg:41
@@ -771,11 +773,12 @@ msgstr "격파에 집중한다..."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:72
-#, fuzzy
 msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
-msgstr "$this_enemy_description| 진영을 격파하는데 주력."
+msgstr ""
+"$ai_controller.side_$ally_side|_current_settings.focus_on_enemy."
+"side_description| 격파에 주력한다."
 
 #. [then]
 #. [else]
@@ -813,11 +816,12 @@ msgstr "호위에 집중한다..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:202
-#, fuzzy
 msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
-msgstr "$this_ally_description| 진영을 호위하는데 집중한다."
+msgstr ""
+"$ai_controller.side_$ally_side|_current_settings.protect.side_description| 호"
+"위에 주력한다."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:352
@@ -873,6 +877,10 @@ msgid ""
 "Behavior: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behavior_description"
 msgstr ""
+"목표: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"행동: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behavior_description"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:652
@@ -1623,57 +1631,60 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
-#, fuzzy
 msgid "Turns run out"
-msgstr "턴 수:"
+msgstr "턴 오버"
 
 #: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:102
 msgid "Early finish bonus."
-msgstr ""
+msgstr "조기 종료 보너스 있음."
 
 #: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:104
 msgid "No early finish bonus."
-msgstr ""
+msgstr "조기 종료 보너스 없음."
 
 #: data/core/macros/objective-utils.cfg:21
 msgid "<small>(early finish bonus)</small>"
-msgstr ""
+msgstr "<small>(조기 종료 보너스)</small>"
 
 #: data/core/macros/objective-utils.cfg:25
-#, fuzzy
 msgid "(early finish bonus)"
-msgstr "조기 종료 보너스:"
+msgstr "(조기 종료 보너스)"
 
 #: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:112
 msgid "No gold carried over to the next scenario."
-msgstr ""
+msgstr "자금은 다음 시나리오로 이월되지 않습니다."
 
 #: data/core/macros/objective-utils.cfg:33
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"모든 보유 자금이 다음 시나리오로 이월됩니다."
 
 #: data/core/macros/objective-utils.cfg:37
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"보유 자금의 40%가 다음 시나리오로 이월됩니다."
 
 #: data/core/macros/objective-utils.cfg:41
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"보유 자금의 20%가 다음 시나리오로 이월됩니다."
 
 #: data/core/macros/objective-utils.cfg:48
 msgid "Alternative objective:"
-msgstr ""
+msgstr "대체 조건: "
 
 #: data/core/macros/objective-utils.cfg:52
-#, fuzzy
 msgid "Bonus objective:"
-msgstr "목표 설정..."
+msgstr "보너스 목표:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -1681,6 +1692,8 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
+"이 시나리오에서는 AI 플레이어가 $side_number 진영을 제대로 플레이하지 못할 것"
+"입니다. $side_number 진영은 사람에게 맡기는 편이 좋습니다."
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -1971,9 +1984,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:137
-#, fuzzy
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "- 대마법사 Delfador, Wesnoth력 516년"
+msgstr "<i>― 대마법사 Delfador, Wesnoth력 516년</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:8
@@ -2006,9 +2018,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:197 data/hardwired/tips.cfg:205
 #: data/hardwired/tips.cfg:225 data/hardwired/tips.cfg:234
 #: data/hardwired/tips.cfg:238
-#, fuzzy
 msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "- Wesnoth 전략 가이드"
+msgstr "<i>― Wesnoth 전략 가이드</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
@@ -2023,9 +2034,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:13
-#, fuzzy
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "- Konrad 왕, Wesnoth력 536년"
+msgstr "<i>― Konrad 왕, Wesnoth력 536년</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
@@ -2042,9 +2052,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:129
-#, fuzzy
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "- Gweddry의 회고록, Wesnoth력 627년"
+msgstr "<i>― Gweddry의 회고록, Wesnoth력 627년</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:20
@@ -2102,19 +2111,17 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:41
-#, fuzzy
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "- Wesnoth 커뮤니티"
+msgstr "<i>― Wesnoth 커뮤니티</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day."
 msgstr ""
-"질서 계열의 유닛은 주간에 전투력이 향상되며, 혼돈 유닛은 야간에 더 강합니다. "
-"중립 유닛은 시간대의 영향을 받지 않습니다."
+"<i>주행성</i> 유닛은 주간에 전투력이 향상되며, <i>야행성</i> 유닛은 야간에 "
+"더 강합니다. <i>시간대 중성</i> 유닛은 시간대의 영향을 받지 않습니다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
@@ -2132,9 +2139,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:73
 #: data/hardwired/tips.cfg:125 data/hardwired/tips.cfg:133
 #: data/hardwired/tips.cfg:213
-#, fuzzy
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "- 전략 분석 편람 제 1 권 - Haldric 2세, Wesnoth력 42년"
+msgstr "<i>― 전략 분석 편람 제 1 권 - Haldric 2세, Wesnoth력 42년</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
@@ -2209,9 +2215,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "- 전략 분석 편람 제 1 권 - Haldric 2세, Wesnoth력 42년"
+msgstr "<i>― 전략 분석 편람 제 1 권 - Haldric 2세, Wesnoth력 42년</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
@@ -2247,9 +2252,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:173
-#, fuzzy
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "- Kaylan 경, Wesnoth력 498년"
+msgstr "<i>― Kaylan 경, Wesnoth력 498년</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:96
@@ -2261,9 +2265,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:97
-#, fuzzy
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "- Kaylan 경, Wesnoth력 502년"
+msgstr "<i>― Kaylan 경, Wesnoth력 502년</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:100
@@ -2308,9 +2311,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:117
-#, fuzzy
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "- Meneldur, Wesnoth력 123년"
+msgstr "<i>― Meneldur, Wesnoth력 123년</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:120
@@ -2363,9 +2365,8 @@ msgstr "유닛으로 전선을 펴서 부상자가 회복할 수 있게 차단�
 
 #. [tip]
 #: data/hardwired/tips.cfg:141
-#, fuzzy
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "- Li'sar 왕녀, Wesnoth력 515년"
+msgstr "<i>― Li'sar 왕녀, Wesnoth력 515년</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:144
@@ -2407,15 +2408,13 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
-#, fuzzy
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "신령 공격은 언데드에 대해 매우 강력한 위력을 발휘한다."
+msgstr "<i>신령</i> 공격은 언데드에 대해 매우 강력한 위력을 발휘한다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
-#, fuzzy
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "- 대현자 Dacyn, Wesnoth력 626년"
+msgstr "<i>― 대현자 Dacyn, Wesnoth력 626년</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:168
@@ -2611,7 +2610,7 @@ msgstr "패배조건:"
 
 #: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
-msgstr ""
+msgstr "자금 이월:"
 
 #: data/lua/wml/objectives.lua:53
 msgid "Notes:"
@@ -2619,15 +2618,15 @@ msgstr ""
 
 #: data/lua/wml/objectives.lua:70
 msgid "(%d turns left)"
-msgstr ""
+msgstr "(%d 턴 남음)"
 
 #: data/lua/wml/objectives.lua:72
 msgid "(this turn left)"
-msgstr ""
+msgstr "(마지막 턴)"
 
 #: data/lua/wml/objectives.lua:114
 msgid "%d%% of gold carried over to the next scenario."
-msgstr ""
+msgstr "총 자금의 %d%% 가 다음 시나리오로 이월됩니다."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
@@ -2817,7 +2816,7 @@ msgstr "애니메이션 생략"
 #: src/about.cpp:196 src/menu_events.cpp:324 src/menu_events.cpp:351
 #: src/statistics_dialog.cpp:114
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: src/actions.cpp:470
 #, fuzzy
@@ -2982,7 +2981,7 @@ msgstr "추가 기능 다운중: $addon_title|..."
 
 #: src/addon/manager.cpp:562 src/addon/manager.cpp:1111
 msgid "Downloading..."
-msgstr ""
+msgstr "다운로드 중..."
 
 #: src/addon/manager.cpp:574
 msgid ""
@@ -2995,7 +2994,7 @@ msgstr "추가 기능 '$addon_title|' 이 무사히 설치되었습니다."
 
 #: src/addon/manager.cpp:624
 msgid "Add-on Installed"
-msgstr ""
+msgstr "추가 기능 설치 완료"
 
 #: src/addon/manager.cpp:724 src/addon/manager.cpp:910
 #: src/addon/manager.cpp:1139 src/dialogs.cpp:591 src/menu_events.cpp:212
@@ -3020,7 +3019,7 @@ msgstr "용량"
 #: src/addon/manager.cpp:725 src/addon/manager.cpp:1140
 #: src/menu_events.cpp:211 src/menu_events.cpp:874 src/menu_events.cpp:1532
 msgid "Type"
-msgstr ""
+msgstr "유형"
 
 #: src/addon/manager.cpp:774
 #, fuzzy
@@ -3070,11 +3069,11 @@ msgstr[0] ""
 
 #: src/addon/manager.cpp:897
 msgid "No add-ons to update"
-msgstr ""
+msgstr "업데이트 할 추가 기능 없음"
 
 #: src/addon/manager.cpp:898
 msgid "Could not find any updated add-ons on this server."
-msgstr ""
+msgstr "이 서버에서 업데이트된 추가 기능을 찾을 수 없습니다."
 
 #: src/addon/manager.cpp:910
 msgid "New version"
@@ -3134,7 +3133,7 @@ msgstr ""
 #: src/addon/manager.cpp:1077 src/addon/manager.cpp:1381
 #: src/multiplayer.cpp:264
 msgid "Confirm"
-msgstr ""
+msgstr "확인"
 
 #: src/addon/manager.cpp:1104
 #, fuzzy
@@ -3144,7 +3143,7 @@ msgstr "설정..."
 
 #: src/addon/manager.cpp:1104
 msgid "Requesting list of add-ons"
-msgstr ""
+msgstr "추가 기능 목록 받는중"
 
 #: src/addon/manager.cpp:1123
 msgid "An error occurred while communicating with the server."
@@ -3152,7 +3151,7 @@ msgstr ""
 
 #: src/addon/manager.cpp:1140
 msgid "Downloads"
-msgstr ""
+msgstr "다운 받은 수"
 
 #: src/addon/manager.cpp:1235
 msgid "Publish add-on: "
@@ -3168,19 +3167,19 @@ msgstr ""
 
 #: src/addon/manager.cpp:1260
 msgid "Get add-ons"
-msgstr ""
+msgstr "추가 기능 받기"
 
 #: src/addon/manager.cpp:1261
 msgid "Choose the add-on to download."
-msgstr ""
+msgstr "다운 받을 추가 기능을 선택하세요."
 
 #: src/addon/manager.cpp:1262
 msgid "Download"
-msgstr ""
+msgstr "내려받기"
 
 #: src/addon/manager.cpp:1263
 msgid "Done"
-msgstr ""
+msgstr "완료"
 
 #: src/addon/manager.cpp:1275 src/dialogs.cpp:616 src/menu_events.cpp:945
 #: src/menu_events.cpp:1568
@@ -3211,31 +3210,31 @@ msgstr ""
 
 #: src/addon/manager.cpp:1366
 msgid "Choose the add-on to remove."
-msgstr ""
+msgstr "삭제할 추가 기능을 선택하세요."
 
 #: src/addon/manager.cpp:1366
 msgid "Uninstall add-ons"
-msgstr ""
+msgstr "추가 기능 삭제"
 
 #: src/addon/manager.cpp:1368
 msgid "Remove"
-msgstr ""
+msgstr "지우기"
 
 #: src/addon/manager.cpp:1375
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr ""
+msgstr "추가 기능 '$addon|'을 정말로 삭제하시겠습니까?"
 
 #: src/addon/manager.cpp:1394
 msgid "Add-on '$addon|' deleted."
-msgstr ""
+msgstr "추가 기능 '$addon|'이 삭제되었습니다."
 
 #: src/addon/manager.cpp:1399
 msgid "Add-on deleted"
-msgstr ""
+msgstr "추가 기능 삭제 완료"
 
 #: src/addon/manager.cpp:1407
 msgid "Add-on could not be deleted properly:"
-msgstr ""
+msgstr "추가 기능이 제대로 삭제되지 않았습니다:"
 
 #: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:239
 msgid "Attacker"
@@ -3255,7 +3254,7 @@ msgstr "시간대"
 
 #: src/attack_prediction_display.cpp:227
 msgid "Leadership"
-msgstr "지휘"
+msgstr "통솔"
 
 #: src/attack_prediction_display.cpp:240
 msgid " resistance vs "
@@ -3632,38 +3631,35 @@ msgstr "???"
 
 #: src/loadscreen.cpp:222
 msgid "Initializing user interface"
-msgstr ""
+msgstr "유저 인터페이스 초기화"
 
 #: src/loadscreen.cpp:223
 msgid "Loading game configuration"
-msgstr ""
+msgstr "게임 설정 불러오기"
 
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
-#, fuzzy
 msgid "Verifying cache"
-msgstr "캐시 확인중..."
+msgstr "캐시 확인"
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
-#, fuzzy
 msgid "Reading files and creating cache"
-msgstr "파일 읽어오면서 캐시를 생성중..."
+msgstr "파일 읽기 및 캐시 생성"
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
-#, fuzzy
 msgid "Reading unit files"
-msgstr "유닛 파일 읽는중..."
+msgstr "유닛 파일 불러오기"
 
 #: src/loadscreen.cpp:227
 msgid "Reinitialize fonts for the current language"
-msgstr ""
+msgstr "현재 언어에 맞게 폰트 재초기화"
 
 #: src/loadscreen.cpp:228
 msgid "Searching for installed add-ons"
-msgstr ""
+msgstr "설치된 추가 기능 검색"
 
 #: src/loadscreen.cpp:229
 msgid "Loading title screen"
-msgstr ""
+msgstr "타이틀 화면 불러오기"
 
 #: src/loadscreen.cpp:230
 msgid "Loading data files"
@@ -3950,11 +3946,11 @@ msgstr ""
 
 #: src/menu_events.cpp:1451
 msgid "Rename Unit"
-msgstr ""
+msgstr "이름 붙이기"
 
 #: src/menu_events.cpp:1531
 msgid "Race"
-msgstr ""
+msgstr "종족"
 
 #: src/menu_events.cpp:1555
 msgid "Create Unit (Debug!)"
@@ -3962,7 +3958,7 @@ msgstr "유닛 창조 (Debug!)"
 
 #: src/menu_events.cpp:1558 src/multiplayer_wait.cpp:131
 msgid "Gender: "
-msgstr ""
+msgstr "성별: "
 
 #: src/menu_events.cpp:1849
 msgid "Search"
@@ -3970,19 +3966,23 @@ msgstr ""
 
 #: src/menu_events.cpp:2026
 msgid "This command is currently unavailable."
-msgstr ""
+msgstr "이 명령어는 지금 사용할 수 없습니다."
 
 #: src/menu_events.cpp:2032
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"'$command'는 없는 명령어입니다. $help_command 로 가능한 명령어 목록을 열어보"
+"세요."
 
 #: src/menu_events.cpp:2050
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"사용 가능한 명령어 목록 혹은 특정 명령어에 대한 도움말을 보여줍니다. 현재 사"
+"용할 수 없는 명령어까지 포함해서 보려면 \"help all\" 을 쓰세요."
 
 #: src/menu_events.cpp:2052
 msgid "do not translate the 'all'^[all|<command>]"
@@ -4001,6 +4001,8 @@ msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"사용 가능한 명령어들 $flags_description:\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2150 src/menu_events.cpp:2151 src/menu_events.cpp:2174
 msgid "help"
@@ -4016,7 +4018,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2167
 msgid "Usage:"
-msgstr ""
+msgstr "용법:"
 
 #: src/menu_events.cpp:2172
 msgid "aliases:"
@@ -4597,11 +4599,11 @@ msgstr ""
 
 #: src/multiplayer.cpp:149 src/multiplayer.cpp:186
 msgid "Connecting to Server..."
-msgstr ""
+msgstr "서버에 연결하는중..."
 
 #: src/multiplayer.cpp:159
 msgid "Reading from Server..."
-msgstr ""
+msgstr "서버에서 정보를 받아오는중..."
 
 #: src/multiplayer.cpp:169
 msgid ""
@@ -4640,11 +4642,11 @@ msgstr ""
 
 #: src/multiplayer.cpp:335
 msgid "You must login first."
-msgstr ""
+msgstr "아이디를 입력하세요."
 
 #: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "'$nick' 아이디로 접속한 사람이 이미 있습니다."
 
 #: src/multiplayer.cpp:339
 msgid ""
@@ -4654,23 +4656,23 @@ msgstr ""
 
 #: src/multiplayer.cpp:343
 msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
-msgstr ""
+msgstr "'$nick' 아이디는 너무 깁니다. 아이디는 20자 이하만 가능합니다."
 
 #: src/multiplayer.cpp:346
 msgid "The nick '$nick' is reserved and cannot be used by players."
-msgstr ""
+msgstr "'$nick' 아이디는 제한되어 있어 일반 사용자가 사용할 수 없습니다."
 
 #: src/multiplayer.cpp:348
 msgid "The nick '$nick' is not registered on this server."
-msgstr ""
+msgstr "'$nick' 아이디는 이 서버에 등록되어 있지 않습니다."
 
 #: src/multiplayer.cpp:349
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr " 이 서버는 미등록 아이디를 허용하지 않습니다."
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:353
 msgid "The nick '$nick' is registered on this server."
-msgstr ""
+msgstr "'$nick' 아이디는 이 서버에 등록되어 있습니다."
 
 #: src/multiplayer.cpp:354
 msgid ""
@@ -4737,7 +4739,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:762
 msgid "--give--"
-msgstr ""
+msgstr "--아래 사람에게 준다--"
 
 #: src/multiplayer_connect.cpp:943
 msgid "Only random sides in the current era."
@@ -4753,7 +4755,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:1026
 msgid "Player/Type"
-msgstr ""
+msgstr "플레이어/타입"
 
 #: src/multiplayer_connect.cpp:1027
 msgid "Faction"
@@ -4761,7 +4763,7 @@ msgstr "당파"
 
 #: src/multiplayer_connect.cpp:1028
 msgid "Team/Gender"
-msgstr ""
+msgstr "팀/성별"
 
 #: src/multiplayer_connect.cpp:1029
 msgid "Color"
@@ -4790,7 +4792,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:1117 src/reports.cpp:135 src/savegame.cpp:707
 msgid "Name: "
-msgstr ""
+msgstr "이름: "
 
 #: src/multiplayer_connect.cpp:1518
 msgid "Network Player"
@@ -4814,7 +4816,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:1806
 msgid "Waiting for players to join..."
-msgstr ""
+msgstr "사람이 들어오기를 기다리고 있습니다..."
 
 #: src/multiplayer_connect.cpp:1807
 #, fuzzy
@@ -4859,7 +4861,7 @@ msgstr "관전 허용"
 
 #: src/multiplayer_create.cpp:92
 msgid "Shuffle sides"
-msgstr ""
+msgstr "진영 뒤섞기"
 
 #: src/multiplayer_create.cpp:95
 msgid "Regenerate"
@@ -4931,7 +4933,7 @@ msgstr "플레이어가 아닌 사람들이 게임을 구경할 수 있게 허�
 
 #: src/multiplayer_create.cpp:208
 msgid "Assign sides to players at random"
-msgstr ""
+msgstr "플레이어마다 진영을 무작위로 배정합니다"
 
 #: src/multiplayer_create.cpp:212
 msgid "Share View"
@@ -4971,7 +4973,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:372
 msgid "Turns: "
-msgstr "턴 수:"
+msgstr "턴 수: "
 
 #: src/multiplayer_create.cpp:374
 msgid "Unlimited Turns"
@@ -4979,39 +4981,39 @@ msgstr "턴 무제한"
 
 #: src/multiplayer_create.cpp:402
 msgid "Init. Limit: "
-msgstr "최초 제한시간:"
+msgstr "최초 제한시간: "
 
 #: src/multiplayer_create.cpp:407
 msgid "Turn Bonus: "
-msgstr "턴당 시간 보너스:"
+msgstr "턴당 시간 보너스: "
 
 #: src/multiplayer_create.cpp:411
 msgid "Reservoir: "
-msgstr "최대 제한시간:"
+msgstr "최대 제한시간: "
 
 #: src/multiplayer_create.cpp:416
 msgid "Action Bonus: "
-msgstr "행동 시간 보너스:"
+msgstr "행동 시간 보너스: "
 
 #: src/multiplayer_create.cpp:423
 msgid "Village Gold: "
-msgstr "마을당 금:"
+msgstr "마을당 금: "
 
 #: src/multiplayer_create.cpp:429 src/reports.cpp:329
 msgid "Experience Modifier: "
-msgstr "경험치 수정:"
+msgstr "경험치 수정: "
 
 #: src/multiplayer_create.cpp:557
 msgid "Players: "
-msgstr "플레이어 수:"
+msgstr "플레이어 수: "
 
 #: src/multiplayer_create.cpp:558
 msgid "Size: "
-msgstr ""
+msgstr "맵 크기:"
 
 #: src/multiplayer_lobby.cpp:125
 msgid "--no games open--"
-msgstr ""
+msgstr "--열려 있는 방이 없음--"
 
 #: src/multiplayer_lobby.cpp:159
 msgid " (Unknown Era)"
@@ -5039,7 +5041,7 @@ msgstr "리플레이 빨리보기"
 
 #: src/multiplayer_lobby.cpp:744
 msgid "Preferences"
-msgstr ""
+msgstr "설정"
 
 #: src/multiplayer_lobby.cpp:745
 msgid "Quit"
@@ -5047,11 +5049,11 @@ msgstr "나가기"
 
 #: src/multiplayer_lobby.cpp:746
 msgid "Apply Filter"
-msgstr ""
+msgstr "필터 적용"
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Invert"
-msgstr ""
+msgstr "역적용"
 
 #: src/multiplayer_lobby.cpp:748
 msgid "Vacant Slots"
@@ -5059,44 +5061,48 @@ msgstr "빈 슬롯"
 
 #: src/multiplayer_lobby.cpp:749
 msgid "Friends in Game"
-msgstr ""
+msgstr "친구가 있는 방"
 
 #: src/multiplayer_lobby.cpp:750
 msgid "Search:"
-msgstr ""
+msgstr "검색어:"
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Skip quickly to the active turn when observing"
-msgstr ""
+msgstr "관전시에 진행중인 턴까지 빨리 넘깁니다"
 
 #: src/multiplayer_lobby.cpp:761
 msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
+"방 제목 필터를 적용합니다. 체크가 해제되면 필터에 상관없이 모든 게임이 보여집"
+"니다."
 
 #: src/multiplayer_lobby.cpp:764
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
+"필터에 맞지 *않는* 모든 게임을 보여줍니다. 별로 좋아하지 않는 게임들을 숨기는"
+"데 유용합니다."
 
 #: src/multiplayer_lobby.cpp:768
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "빈칸이 최소 하나 있는 방만을 보여줍니다"
 
 #: src/multiplayer_lobby.cpp:772
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
-msgstr ""
+msgstr "당신의 친구가 최소 한명 이상 플레이중이거나 관전중인 방만을 보여줍니다"
 
 #: src/multiplayer_lobby.cpp:778
 msgid "Only show games whose title or description contain the entered text"
-msgstr ""
+msgstr "제목이나 설명이 주어진 내용을 포함한 방만을 보여줍니다"
 
 #: src/multiplayer_lobby.cpp:892
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "이 방에 들어가려면 암호를 입력해야 합니다."
 
 #: src/multiplayer_lobby.cpp:893
 msgid "Password: "
@@ -5176,15 +5182,15 @@ msgstr "서버 주소"
 
 #: src/pathfind/pathfind.cpp:473
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "필요 이동력이 1보다 작은 지형이 나타났습니다."
 
 #: src/play_controller.cpp:239
 msgid "time left for current turn"
-msgstr ""
+msgstr "이번 턴에 남은 시간"
 
 #: src/play_controller.cpp:241 src/replay_controller.cpp:132
 msgid "current local time"
-msgstr ""
+msgstr "현재 시간"
 
 #: src/play_controller.cpp:1090 src/savegame.cpp:308 src/savegame.cpp:320
 #: src/savegame.cpp:991 src/savegame.cpp:993
@@ -5193,7 +5199,7 @@ msgstr "자동 저장"
 
 #: src/play_controller.cpp:1097
 msgid "Back to turn "
-msgstr ""
+msgstr "되돌리기 - 턴"
 
 #: src/play_controller.cpp:1345
 msgid ""
@@ -5261,11 +5267,11 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:262
 msgid "Remaining gold: "
-msgstr "남은 금:"
+msgstr "남은 금: "
 
 #: src/playsingle_controller.cpp:266
 msgid "Early finish bonus: "
-msgstr "조기 종료 보너스:"
+msgstr "조기 종료 보너스: "
 
 #: src/playsingle_controller.cpp:268
 msgid "per turn"
@@ -5273,27 +5279,27 @@ msgstr "턴당"
 
 #: src/playsingle_controller.cpp:269
 msgid "Turns finished early: "
-msgstr "남아 있는 턴 수:"
+msgstr "남아 있는 턴 수: "
 
 #: src/playsingle_controller.cpp:271
 msgid "Bonus: "
-msgstr "보너스:"
+msgstr "보너스: "
 
 #: src/playsingle_controller.cpp:274
 msgid "Gold: "
-msgstr "합계 금:"
+msgstr "합계 금: "
 
 #: src/playsingle_controller.cpp:278
 msgid "Carry over percentage: "
-msgstr "이월 비율:"
+msgstr "이월 비율: "
 
 #: src/playsingle_controller.cpp:281
 msgid "Bonus Gold: "
-msgstr "보너스 금:"
+msgstr "보너스 금: "
 
 #: src/playsingle_controller.cpp:283
 msgid "Retained Gold: "
-msgstr ""
+msgstr "보유한 금: "
 
 #: src/playsingle_controller.cpp:296
 msgid ""
@@ -5303,13 +5309,14 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
+"당신은 다음 시나리오의 최소 시작 금액에 $gold 원을 더 가지고 시작하게 됩니다."
 
 #: src/playsingle_controller.cpp:304
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
+msgstr[0] "당신은 규정된 최소 시작 금액으로 다음 시나리오로 넘어갑니다."
 
 #: src/playsingle_controller.cpp:312
 msgid ""
@@ -5319,6 +5326,8 @@ msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
 msgstr[0] ""
+"당신은 $gold 원이나 규정된 최소 시작 금액중 높은 쪽을 가지고 다음 시나리오로 "
+"넘어갑니다."
 
 #: src/playsingle_controller.cpp:458
 msgid "The game is over."
@@ -5374,31 +5383,27 @@ msgstr ""
 
 #: src/reports.cpp:145
 msgid "Type: "
-msgstr ""
+msgstr "유형: "
 
 #: src/reports.cpp:156
 msgid "Race: "
-msgstr "종족:"
+msgstr "종족: "
 
 #: src/reports.cpp:180
-#, fuzzy
 msgid "Level: "
-msgstr "레벨"
+msgstr "레벨: "
 
 #: src/reports.cpp:183
-#, fuzzy
 msgid "No advancement"
-msgstr "승급"
+msgstr "승급 불가능"
 
 #: src/reports.cpp:185
-#, fuzzy
 msgid "Advances to:"
-msgstr "해당 유닛으로 승급:"
+msgstr "승급가능 유닛: "
 
 #: src/reports.cpp:215
-#, fuzzy
 msgid "Trait: "
-msgstr "특성"
+msgstr "특성: "
 
 #: src/reports.cpp:229
 msgid "invisible: "
@@ -5448,25 +5453,23 @@ msgstr "이 유닛은 석화되었습니다. 움직이거나 공격할 수 없�
 
 #: src/reports.cpp:256
 msgid "Alignment: "
-msgstr "선호시간대:"
+msgstr "선호시간대: "
 
 #: src/reports.cpp:275
-#, fuzzy
 msgid "Ability: "
-msgstr "능력:"
+msgstr "능력: "
 
 #: src/reports.cpp:310
 msgid "Resistances: "
-msgstr "저항력:"
+msgstr "저항력: "
 
 #: src/reports.cpp:312
 msgid "(Att / Def)"
 msgstr "(공격 / 방어)"
 
 #: src/reports.cpp:363
-#, fuzzy
 msgid "Terrain: "
-msgstr "지형"
+msgstr "지형: "
 
 #: src/reports.cpp:381
 msgid "maximum^max."
@@ -5477,44 +5480,36 @@ msgid "minimum^min."
 msgstr ""
 
 #: src/reports.cpp:386
-#, fuzzy
 msgid "Defense: "
-msgstr "방어도"
+msgstr "방어도: "
 
 #: src/reports.cpp:455
-#, fuzzy
 msgid "Weapon: "
-msgstr "공격 범위:"
+msgstr "무기 이름: "
 
 #: src/reports.cpp:456
-#, fuzzy
 msgid "Damage: "
-msgstr "입은 데미지"
+msgstr "무기 위력: "
 
 #: src/reports.cpp:460
-#, fuzzy
 msgid "Base damage: "
-msgstr "총 데미지"
+msgstr "기본 위력: "
 
 #: src/reports.cpp:462
-#, fuzzy
 msgid "Time of day: "
-msgstr "시간대"
+msgstr "시간대: "
 
 #: src/reports.cpp:466
-#, fuzzy
 msgid "Leadership: "
-msgstr "지휘"
+msgstr "통솔력 영향: "
 
 #: src/reports.cpp:470
-#, fuzzy
 msgid "Slowed: "
-msgstr "둔화:"
+msgstr "둔화: "
 
 #: src/reports.cpp:474
-#, fuzzy
 msgid "Attacks: "
-msgstr "공격자"
+msgstr "공격 회수: "
 
 #: src/reports.cpp:476
 msgid "Base attacks: "
@@ -5525,19 +5520,16 @@ msgid "Swarm: "
 msgstr ""
 
 #: src/reports.cpp:490
-#, fuzzy
 msgid "Weapon range: "
-msgstr "공격 범위:"
+msgstr "공격 범위: "
 
 #: src/reports.cpp:491
-#, fuzzy
 msgid "Damage type: "
-msgstr "피해 유형:"
+msgstr "공격 속성: "
 
 #: src/reports.cpp:492
-#, fuzzy
 msgid "Damage versus: "
-msgstr "피해 유형:"
+msgstr "대상별 피해량: "
 
 #: src/reports.cpp:536
 msgid "Accuracy:"
@@ -5548,21 +5540,20 @@ msgid "Parry:"
 msgstr ""
 
 #: src/reports.cpp:558
-#, fuzzy
 msgid "Weapon special: "
-msgstr "특수 무기"
+msgstr "무기 능력: "
 
 #: src/reports.cpp:599
 msgid "Lawful units: "
-msgstr "주행성 유닛:"
+msgstr "주행성 유닛: "
 
 #: src/reports.cpp:600
 msgid "Neutral units: "
-msgstr "시간대 중립:"
+msgstr "시간대 중립: "
 
 #: src/reports.cpp:601
 msgid "Chaotic units: "
-msgstr "야행성 유닛:"
+msgstr "야행성 유닛: "
 
 #: src/reports.cpp:789
 msgid "Observers:"
@@ -5608,11 +5599,11 @@ msgstr ""
 
 #: src/savegame.cpp:784
 msgid "Saved"
-msgstr ""
+msgstr "저장됨"
 
 #: src/savegame.cpp:784
 msgid "The game has been saved"
-msgstr ""
+msgstr "게임이 저장되었습니다"
 
 #: src/savegame.cpp:818 src/savegame.cpp:843
 msgid "Could not write to file"
@@ -5804,7 +5795,7 @@ msgstr "받은 총 데미지"
 
 #: src/storyscreen/controller.cpp:135
 msgid "Skip"
-msgstr ""
+msgstr "생략"
 
 #: src/terrain.cpp:154
 msgid "Village"

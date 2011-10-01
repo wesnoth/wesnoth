@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-27 10:14+0200\n"
-"PO-Revision-Date: 2010-11-25 22:51+0900\n"
+"POT-Creation-Date: 2011-09-04 11:42+0200\n"
+"PO-Revision-Date: 2011-09-30 18:07+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -147,18 +147,17 @@ msgstr ""
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
 msgid "Encyclopedia"
-msgstr ""
+msgstr "백과사전"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
-msgstr ""
+msgstr "<ref>dst='..geography' text='지리'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
-#, fuzzy
 msgid "Caste"
-msgstr "성채"
+msgstr ""
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:8
@@ -183,9 +182,8 @@ msgstr ""
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
-#, fuzzy
 msgid "Breeding Pen"
-msgstr "식귀"
+msgstr ""
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
@@ -330,9 +328,8 @@ msgstr ""
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
-#, fuzzy
 msgid "Hatchling"
-msgstr "회복"
+msgstr ""
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
@@ -344,9 +341,8 @@ msgstr ""
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
-#, fuzzy
 msgid "Fledgling"
-msgstr "회복"
+msgstr ""
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
@@ -424,9 +420,8 @@ msgstr ""
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
-#, fuzzy
 msgid "Intendant"
-msgstr "영리한"
+msgstr ""
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:134
@@ -551,7 +546,7 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:11
 #: data/core/encyclopedia/geography.cfg:18
 msgid "Geography"
-msgstr ""
+msgstr "지리"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:25
@@ -645,9 +640,8 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
-#, fuzzy
 msgid "Kingdom of Wesnoth"
-msgstr "-- Wesnoth의 책"
+msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:95
@@ -804,9 +798,8 @@ msgstr ""
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:146
-#, fuzzy
 msgid "Heart Mountains"
-msgstr "산"
+msgstr ""
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:147
@@ -958,7 +951,6 @@ msgstr "개요"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:120
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -971,11 +963,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Battle for Wesnoth는 턴 기반의 판타지 전략 게임으로 현대 전략 게임으로서는 약"
-"간 특이합니다. 다른 게임들이 복잡함을 위해 애쓰는 반면, Battle for Wesnoth는 "
-"룰과 플레이 면에서 단순성을 추구합니다. 하지만 이것이 게임 자체를 단순하게 만"
-"드는건 아닙니다 - 이 간단한 룰들이 전략의 풍부함을 가져오고, 배우기 쉽지만 마"
-"스터하기는 어렵게 만듭니다."
+"<italic>text='Battle for Wesnoth'</italic>는 턴 기반의 판타지 전략 게임으로 "
+"현대 전략 게임으로서는 약간 특이합니다. 다른 게임들이 복잡함을 위해 애쓰는 반"
+"면, <italic>text='Battle for Wesnoth'</italic>는 룰과 플레이 면에서 단순성을 "
+"추구합니다. 하지만 이것이 게임 자체를 단순하게 만드는건 아닙니다 - 이 간단한 "
+"룰들이 전략의 풍부함을 가져오고, 배우기는 쉬워도 통달하기는 어렵게 만듭니다."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:132
@@ -984,7 +976,6 @@ msgstr "게임의 핵심요소"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:133
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play <italic>text='Battle for "
 "Wesnoth'</italic>. They cover how to play and the basic mechanics behind the "
@@ -992,15 +983,14 @@ msgid ""
 "come across new aspects of the game. For more detailed information on "
 "special situations and exceptions, please follow the links included."
 msgstr ""
-"이 도움말은 당신이 Battle for Wesnoth를 플레이하기 위해 알아야 할 모든 것을 "
-"요약하고 있으며, 그 내용은 플레이 방법에서부터 게임의 기본 동작구조까지 포괄"
-"하고 있습니다. 당신이 게임을 하면서 새로운 것을 발견해낼 때마다 그것에 대한 "
-"새로운 정보가 이 페이지들 사이에 추가됩니다. 특수한 상황과 예외들에 관해 더 "
-"자세한 정보를 얻고 싶다면, 포함된 링크를 따라가세요."
+"이 도움말은 당신이 <italic>text='Battle for Wesnoth'</italic>를 플레이하기 위"
+"해 알아야 할 모든 것을 요약하고 있으며, 그 내용은 플레이 방법에서부터 게임의 "
+"기본 동작구조까지 포괄하고 있습니다. 당신이 게임을 하면서 새로운 것을 발견해"
+"낼 때마다 그것에 대한 새로운 정보가 이 페이지들 사이에 추가됩니다. 특수한 상"
+"황과 예외들에 관해 더 자세한 정보를 얻고 싶다면, 포함된 링크를 따라가세요."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:135
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1013,12 +1003,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"본격적인 게임에 들어가기 전에 메인 메뉴의 <italic>text=연습 게임</italic> 버"
-"튼을 클릭하십시오. 연습 게임은 대화식으로 구성되어 당신에게 Wesnoth의 기본지"
-"식을 알려줄 길라잡이가 되어줍니다. 연습 게임을 마치셨다면, <italic>text=캠페"
-"인</italic> 버튼을 누르고 <italic>text='왕좌의 후계자'</italic>를 선택해서 왕"
-"좌의 후계자 캠페인을 먼저 하시는 편을 추천합니다. Battle for Wesnoth가 어렵다"
-"고 느껴진다면 <italic>text=쉬운 모드</italic>로 시작하실 수 있습니다."
+"본격적인 게임에 들어가기 전에 메인 메뉴의 <bold>text='연습 게임'</bold> 버튼"
+"을 클릭하십시오. 연습 게임은 대화식으로 구성되어 당신에게 Wesnoth의 기본지식"
+"을 알려줄 길라잡이가 되어줍니다. 연습 게임을 마치셨다면, <bold>text='캠페"
+"인'</bold> 버튼을 누르고 <italic>text='왕좌의 후계자'</italic>를 선택해서 왕"
+"좌의 후계자 캠페인을 먼저 하시는 편을 추천합니다. <italic>text='Battle for "
+"Wesnoth'</italic>는 꽤 어려울 수 있으므로 쉬운 것부터 하는 편이 좋습니다."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:138
@@ -1041,7 +1031,6 @@ msgstr "본 게임에 대해서"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:144
-#, fuzzy
 msgid ""
 "The game takes place over a series of battles, called "
 "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
@@ -1051,17 +1040,16 @@ msgid ""
 "other people connected to that network. If your computer has a connection to "
 "the Internet, you can play against other people across the Internet."
 msgstr ""
-"이 게임은 시나리오라고 불리는 일련의 전투들을 그 무대로 합니다. 각각의 시나리"
-"오는 여러분의 부대를 하나 혹은 더 많은 적수들의 부대와 겨루게 합니다. 당신은 "
-"컴퓨터와 게임을 즐기거나 친구들과 같은 컴퓨터 앞에 앉아서 턴을 주고받으며(핫"
-"시트 플레이) 게임을 즐길 수 있습니다. 당신의 컴퓨터가 네트워크에 연결되어 있"
-"다면, 그 네트워크에 연결된 다른 사람들과도 게임을 할 수 있습니다. 당신의 컴퓨"
-"터가 인터넷과 이어져 있다면, 인터넷 너머의 다른 사람들과도 게임을 할 수 있습"
-"니다."
+"이 게임은 <italic>text='시나리오'</italic>라고 불리는 일련의 전투들을 그 무대"
+"로 합니다. 각각의 시나리오는 여러분의 부대를 하나 혹은 더 많은 적수들의 부대"
+"와 겨루게 합니다. 당신은 컴퓨터와 게임을 즐기거나 친구들과 같은 컴퓨터 앞에 "
+"앉아서 턴을 주고받으며(핫시트 플레이) 게임을 즐길 수 있습니다. 당신의 컴퓨터"
+"가 네트워크에 연결되어 있다면, 그 네트워크에 연결된 다른 사람들과도 게임을 "
+"할 수 있습니다. 당신의 컴퓨터가 인터넷과 이어져 있다면, 인터넷 너머의 다른 사"
+"람들과도 게임을 할 수 있습니다."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:146
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1072,9 +1060,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"캠페인들은 하나의 스토리로 이어진 다수의 시나리오를 갖고 있습니다. 캠페인에서"
-"는 당신이 지난 시나리오에서 썼던 최고의 병력들을 이후 시나리오에서 다시 쓸 "
-"수 있으므로 그들을 보호하기 위해 좀 더 주의해서 플레이해야 합니다."
+"<italic>text='캠페인'</italic>들은 하나의 스토리로 이어진 다수의 시나리오를 "
+"갖고 있습니다. 캠페인에서는 당신이 지난 시나리오에서 썼던 최고의 병력들을 이"
+"후 시나리오에서 다시 쓸 수 있으므로 그들을 보호하기 위해 좀 더 주의해서 플레"
+"이해야 합니다."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:152
@@ -1083,7 +1072,6 @@ msgstr "승리와 패배"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:153
-#, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. Usually you will achieve victory by killing "
@@ -1092,15 +1080,14 @@ msgid ""
 "designated point, say, or rescuing someone, or solving a puzzle, or holding "
 "out against a siege until a certain number of turns have elapsed."
 msgstr ""
-"시나리오 시작시 뜨는 승리조건을 유의해서 보십시오. 보통은 모든 적 대장을 격파"
-"하면 승리할 수 있고, 당신의 대장이 죽으면 패배합니다. 하지만 시나리오에 다른 "
-"승리조건 - 예를 들면 당신의 대장을 특정 지점에 두는 것, 누군가와 대화 혹은 구"
-"출, 퍼즐 풀기 또는 일정 턴수가 지날 때까지 적의 포위망 속에서 견뎌내기 같은 "
-"것 - 이 붙어 있을 수도 있습니다."
+"시나리오 시작시 뜨는 <bold>text='승리조건'</bold> 팝업을 유의해서 보십시오. "
+"보통은 모든 적 대장을 격파하면 승리할 수 있고, 당신의 대장이 죽으면 패배합니"
+"다. 하지만 시나리오에 다른 승리조건 - 예를 들면 당신의 대장을 특정 지점에 두"
+"는 것, 누군가와 대화 혹은 구출, 퍼즐 풀기 또는 일정 턴수가 지날 때까지 적의 "
+"포위망 속에서 견뎌내기 같은 것 - 이 붙어 있을 수도 있습니다."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1111,9 +1098,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"시나리오에서 승리하면, 맵이 회색으로 칠해지면서 '턴 넘기기' 버튼이 '시나리오 "
-"넘기기' 버튼으로 바뀝니다. 당신은 그 버튼을 누르기 전에 세이브 옵션을 바꾸거"
-"나 다른 플레이어와 채팅을 할 수 있습니다.(멀티플레이시)"
+"시나리오에서 승리하면, 맵이 회색으로 칠해지면서 <bold>text='턴 넘기기'</"
+"bold> 버튼이 <bold>text='시나리오 넘기기'</bold> 버튼으로 바뀝니다. 당신은 "
+"그 버튼을 누르기 전에 세이브 옵션을 바꾸거나 다른 플레이어와 채팅을 할 수 있"
+"습니다.(멀티플레이시)"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:162
@@ -1122,7 +1110,6 @@ msgstr "소집과 재소집"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1138,12 +1125,13 @@ msgstr ""
 "각 팀은 그들의 본성과 그곳에 있는 대장 한명을 갖고 게임을 시작합니다. 어떤 전"
 "투든 처음 시작할때와 전투가 이어지는 동안 당신은 당신의 군단에 <ref>dst='.."
 "units' text='유닛'</ref>들을 소집해 넣어야 합니다. 소집을 하려면 당신의 대장"
-"이 (예를 들면, 왕좌의 후계자 캠페인에서의 Konrad) <ref>dst='terrain_castle' "
-"text='성채'</ref>에 있는 본성 칸에 들어간 상태여야 합니다. 그러면 당신은 메뉴"
-"에서 소집을 선택하거나 칸을 오른쪽 클릭하여 <italic>text=소집</italic>을 선택"
-"함으로써 소집을 실행할 수 있습니다. 그렇게 하면 소집 메뉴가 등장하여 소집가능"
-"한 유닛의 목록과 함께 소집 비용을 보여줍니다. 목록의 유닛을 클릭해서 그 능력"
-"치를 보고, 소집 버튼을 눌러서 소집을 합니다."
+"이 (예를 들면, <italic>text='왕좌의 후계자'</italic> 캠페인에서의 Konrad) "
+"<ref>dst='terrain_castle' text='성채'</ref>에 있는 본성 칸에 들어간 상태여야 "
+"합니다. 그러면 당신은 메뉴에서 <bold>text='소집'</bold>을 선택하거나 칸을 오"
+"른쪽 클릭하여 <bold>text='소집'</bold>을 선택함으로써 소집을 실행할 수 있습니"
+"다. 그렇게 하면 소집 메뉴가 등장하여 소집가능한 유닛의 목록과 함께 소집 비용"
+"을 보여줍니다. 목록의 유닛을 클릭해서 그 능력치를 보고, 소집 버튼을 눌러서 소"
+"집을 합니다."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
@@ -1164,7 +1152,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1174,7 +1161,7 @@ msgstr ""
 "\n"
 "\n"
 "소집된 유닛은 무작위로 두 개의 <ref>dst='..traits_section' text='특성'</ref>"
-"을 받는데, 각 유닛은 기본 능력치에서 그 특성에 의해 변화된 능력치를 가집니다."
+"을 받는데, 이것은 기본 능력치에 변화를 줍니다."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
@@ -1193,7 +1180,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1223,15 +1209,13 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
-#, fuzzy
 msgid " green if it hasn’t moved this turn,"
-msgstr "이번 턴에 움직이지 않았으면 초록색입니다."
+msgstr " 이번 턴에 움직이지 않았으면 초록색입니다."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:181
-#, fuzzy
 msgid " yellow if it has moved, but could still move further or attack, or"
-msgstr "움직였지만 더 갈 수 있거나 공격할 수 있으면 노란색이고,"
+msgstr " 움직였지만 더 갈 수 있거나 공격할 수 있으면 노란색이고,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:182
@@ -1241,15 +1225,13 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
-#, fuzzy
 msgid " blue if the unit is an ally you do not control."
-msgstr "만약 구슬이 파란색이면 당신이 조작할 수 없는 동맹 유닛입니다."
+msgstr " 만약 구슬이 파란색이면 당신이 조작할 수 없는 동맹 유닛입니다."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:184
-#, fuzzy
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr "적 유닛에게는 체력 바 위에 구슬이 없습니다."
+msgstr " 적 유닛에게는 체력 바 위에 구슬이 없습니다."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:191
@@ -1258,7 +1240,6 @@ msgstr "체력과 경험치"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:192
-#, fuzzy
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1266,10 +1247,10 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
-"모든 유닛은 각자의 HP(체력 포인트)를 가지고 있습니다. 유닛의 HP가 1 미만으로 "
-"떨어지면 그 유닛은 죽게 됩니다. 모든 유닛은 또한 각자의 XP(경험 포인트)도 가"
-"지고 있습니다. 갓 소집된 유닛은 0 XP로 시작하고, 적과 싸우면서 경험을 쌓아갑"
-"니다."
+"모든 유닛은 각자의 <italic>text='체력 포인트'</italic> (HP) 를 가지고 있습니"
+"다. 유닛의 HP가 1 미만으로 떨어지면 그 유닛은 죽게 됩니다. 모든 유닛은 또한 "
+"각자의 <italic>text='경험 포인트'</italic> (XP) 도 가지고 있습니다. 갓 소집"
+"된 유닛은 0 XP로 시작하고, 적과 싸우면서 경험을 쌓아갑니다."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:196
@@ -1301,7 +1282,6 @@ msgstr "이동"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:205
-#, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1316,17 +1296,17 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"Battle for wesnoth에서 이동하는 법은 간단합니다. 움직이고 싶은 유닛을 클릭해"
-"서 선택하고, 당신이 가고 싶은 칸을 선택합니다. 유닛이 선택되면 이번 턴에 그것"
-"이 움직일 수 있는 모든 칸이 밝게 표시되고, 맵의 모든 다른 칸들은 흐릿하게 나"
-"옵니다. 밝게 표시된 칸 위로 마우스를 올리면 그 유닛이 목표 칸으로 이동했을때"
-"의 방어율이 그 칸에 보여집니다. 커서가 흐릿한 칸 위에 있으면 추가로 그 칸에 "
-"도달하기까지 몇 턴이 걸리는지 표시되고, 클릭하면 그 유닛은 이번 턴 및 이어지"
-"는 턴 동안 그 칸까지의 최단 거리로 이동합니다. 만약 당신이 유닛을 이동시키고 "
-"나서 그 유닛의 이동력이 남아 있다면, 그 유닛은 더 이동할 수 있습니다. 이 점"
-"은 두 유닛간의 위치를 바꿀때 유용합니다. 공격은 공격자 유닛의 이동력을 전부 "
-"소모합니다. 점령하지 못한 마을에서 이동을 완료하는 것(마을 점령) 또한 이동력"
-"을 다 소모해버리지만, 공격은 할 수 있습니다."
+"<italic>text='Battle for Wesnoth'</italic>에서 이동하는 법은 간단합니다. 움직"
+"이고 싶은 유닛을 클릭해서 선택하고, 당신이 가고 싶은 칸을 선택합니다. 유닛이 "
+"선택되면 이번 턴에 그것이 움직일 수 있는 모든 칸이 밝게 표시되고, 맵의 모든 "
+"다른 칸들은 흐릿하게 나옵니다. 밝게 표시된 칸 위로 마우스를 올리면 그 유닛이 "
+"목표 칸으로 이동했을때의 방어율이 그 칸에 보여집니다. 커서가 흐릿한 칸 위에 "
+"있으면 추가로 그 칸에 도달하기까지 몇 턴이 걸리는지 표시되고, 클릭하면 그 유"
+"닛은 이번 턴 및 이어지는 턴 동안 그 칸까지의 최단 거리로 이동합니다. 만약 당"
+"신이 유닛을 이동시키고 나서 그 유닛의 이동력이 남아 있다면, 그 유닛은 더 이동"
+"할 수 있습니다. 이 점은 두 유닛간의 위치를 바꿀때 유용합니다. 공격은 공격자 "
+"유닛의 이동력을 전부 소모합니다. 점령하지 못한 마을에서 이동을 완료하는 것(마"
+"을 점령) 또한 이동력을 다 소모해버리지만, 공격은 할 수 있습니다."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
@@ -1468,7 +1448,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:231
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1503,7 +1482,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:235
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2266,18 +2244,17 @@ msgstr "심복"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:406
-#, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
 "units do not incur this cost."
 msgstr ""
-"심복 유닛은 유지비를 요구하지 않습니다. 대부분의 유닛은 턴이 끝날때마다 그들"
-"의 레벨만큼의 유지비용이 들어갑니다. 심복 유닛은 이 비용이 들지 않습니다."
+"<italic>text='심복'</italic> 유닛은 유지비를 요구하지 않습니다. 대부분의 유닛"
+"은 턴이 끝날때마다 그들의 레벨만큼의 유지비용이 들어갑니다. 심복 유닛은 이 비"
+"용이 들지 않습니다."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:408
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2290,12 +2267,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"캠페인을 하는 동안 특정 유닛이 플레이어의 군단에 자유 의지로 합류하기로 하는 "
-"경우가 있습니다. 이 유닛들에는 심복 특성이 붙습니다. 비록 그들은 재소집시에 "
-"비용이 들지만, 그 어떤 유지비도 요구하지 않습니다. 이때문에 긴 캠페인동안 자"
-"금의 공급이 딸리는 시점에 이들은 매우 귀중해집니다. 이 특성은 소집된 유닛에게"
+"캠페인을 하는 동안 특정 유닛이 플레이어의 군단에 자유 의지로 합류해 오는 경우"
+"가 있습니다. 이런 유닛들에는 심복 특성이 붙습니다. 비록 재소집시에는 비용이 "
+"들지만, 이들은 유지비를 전혀 요구하지 않습니다. 이것 때문에 이들은 긴 캠페인"
+"에서 자금의 공급이 딸리는 시점에 매우 소중합니다. 이 특성은 소집된 유닛에게"
 "는 절대 주어지지 않기 때문에, 이런 유닛들을 버리거나 허무한 죽음으로 내모는 "
-"것은 현명한 처사가 못됩니다."
+"것은 현명하지 못한 행동입니다."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:413
@@ -2304,11 +2281,11 @@ msgstr "언데드"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:414
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
-"언데드 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효과가 먹히지 않습니다."
+"<italic>text='언데드'</italic> 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효"
+"과가 먹히지 않습니다."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:416
@@ -2328,12 +2305,12 @@ msgstr "기계"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:422
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"기계 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효과가 먹히지 않습니다."
+"<italic>text='기계'</italic> 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효과"
+"가 먹히지 않습니다."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:424
@@ -2476,10 +2453,8 @@ msgstr "약한 특성을 가진 유닛은 체력과 근접 데미지가 각각 1
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:475
-#, fuzzy
-#| msgid "trait^Undead"
 msgid "trait^Aged"
-msgstr "언데드"
+msgstr "늙은"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
@@ -3471,7 +3446,7 @@ msgid ""
 "unit."
 msgstr ""
 "식귀:\n"
-"이 유닛은 살아있는 유닛을 죽여서 최대 HP를 1 늘릴 수 있습니다."
+"이 유닛은 살아있는 유닛을 죽인 경우 최대 HP를 1 늘릴 수 있습니다."
 
 #. [unstore_unit]
 #: data/core/macros/abilities.cfg:552
@@ -3662,45 +3637,33 @@ msgstr ""
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:191
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "삼경"
+msgstr ""
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:203
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "삼경"
+msgstr ""
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:215
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "삼경"
+msgstr ""
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:227
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "삼경"
+msgstr ""
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:239
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "삼경"
+msgstr ""
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:251
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "삼경"
+msgstr ""
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:274
@@ -4947,23 +4910,23 @@ msgstr "이거 어디 나옴?:"
 
 #: src/help.cpp:1447
 msgid "HP: "
-msgstr ""
+msgstr "체력: "
 
 #: src/help.cpp:1448
 msgid "Moves: "
-msgstr ""
+msgstr "이동력: "
 
 #: src/help.cpp:1449
 msgid "Cost: "
-msgstr "소집비용:"
+msgstr "소집비용: "
 
 #: src/help.cpp:1450
 msgid "Alignment: "
-msgstr "선호시간대:"
+msgstr "선호시간대: "
 
 #: src/help.cpp:1456
 msgid "Required XP: "
-msgstr "필요 경험치:"
+msgstr "필요 경험치: "
 
 #: src/help.cpp:1465
 msgid "unit help^Attacks"
@@ -4975,7 +4938,7 @@ msgstr "이름"
 
 #: src/help.cpp:1473
 msgid "Type"
-msgstr ""
+msgstr "속성"
 
 #: src/help.cpp:1474
 msgid "Strikes"
@@ -5039,7 +5002,7 @@ msgstr ""
 
 #: src/help.cpp:3157
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: src/help.cpp:3160
 msgid "The Battle for Wesnoth Help"
