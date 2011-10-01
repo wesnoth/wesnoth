@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-09-04 11:42+0200\n"
-"PO-Revision-Date: 2011-09-30 18:07+0900\n"
+"PO-Revision-Date: 2011-10-01 17:48+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -1222,6 +1222,8 @@ msgstr " 움직였지만 더 갈 수 있거나 공격할 수 있으면 노란색
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
+" 더 이상 움직이거나 공격할 수 없을 경우, 혹은 유저가 턴을 마친 경우는 붉은색"
+"입니다."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
@@ -1310,7 +1312,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1330,13 +1331,13 @@ msgstr ""
 "동력을 소모하는데, 그 소모량은 유닛마다 다릅니다. 예를 들어, 초지로 이동하는 "
 "것은 거의 항상 이동력 1을 소모합니다. 칸에 들어갈 때 얼마나 많은 이동력을 쓰"
 "느냐는 유닛의 종류에 달려있습니다 - 숲에서 이동시에 엘프 유닛들이 쓰는 이동력"
-"은 1이지만, 기마병은 3을 씁니다. 당신은 유닛을 오른쪽 클릭하여 유닛 설명을 선"
-"택하고, 그 내용 중 지형별 이동력 수정 항목을 보면서 유닛이 특정 지형에 들어"
-"갈 때 얼마나 많은 이동력을 소모하는지를 알 수 있습니다."
+"은 1이지만, 대부분의 인간과 오크 유닛들은 2를 쓰며, 기마병은 3을 씁니다. 당신"
+"은 유닛을 오른쪽 클릭하여 <bold>text='유닛 설명'</bold>을 선택하고, 그 내용 "
+"중 <bold>text='지형 수정'</bold> 항목을 보면서 유닛이 특정 지형에 들어갈 때 "
+"얼마나 많은 이동력을 소모하는지를 알 수 있습니다."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1350,10 +1351,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"또 한가지 주의할 점은 지배 영역(ZOC)입니다. 각 유닛은 그 바로 주변 칸들에 지"
-"배 권역을 형성하여 그 칸에 들어오는 모든 적 유닛의 이동을 즉시 종료하게 합니"
-"다. 오직 척후 능력을 가진 유닛들만이 ZOC를 무시할 수 있기 때문에, 어떻게 하"
-"면 ZOC를 유리하게 쓸 수 있을지 알아내는 것은 Wesnoth에서 중요한 부분입니다.."
+"또 한가지 주의할 점은 <italic>text='지배 영역'</italic> (ZOC)입니다. 각 유닛"
+"은 그 바로 주변 칸들에 지배 권역을 형성하여 그 칸에 들어오는 모든 적 유닛의 "
+"이동을 즉시 종료하게 합니다. 오직 <ref>dst='ability_skirmisher' text='척후'</"
+"ref> 능력을 가진 유닛들만이 ZOC를 무시할 수 있기 때문에, 어떻게 ZOC를 유리하"
+"게 쓸 수 있을까를 알아내는 것은 Wesnoth에서 중요한 부분입니다.."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
@@ -1661,7 +1663,6 @@ msgstr "시간대"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:268
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1675,7 +1676,6 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:271
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1766,10 +1766,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"각 유닛은 승급을 위한 일정량의 필요 경험치를 갖습니다(똑똑함(Intelligent) 특"
-"성을 갖는 유닛은 이것이 20% 더 적습니다). 유닛이 이 분량을 채우면 그 즉시 다"
-"음 레벨로 승급하여, 그 과정에서 완전히 회복됩니다. 어떤 경우에는 승급 선택지"
-"가 나타나기도 합니다."
+"각 유닛은 승급을 위한 일정량의 필요 경험치를 갖습니다(영리한 유닛은 이것이 "
+"20% 더 적습니다). 유닛이 이 분량을 채우면 그 즉시 다음 레벨로 승급하여, 그 과"
+"정에서 완전히 회복됩니다. 어떤 경우에는 승급 선택지가 나타나기도 합니다."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:290
@@ -2032,21 +2031,19 @@ msgstr "라이선스"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:349
-#, fuzzy
 msgid ""
 "Most units have two traits. However, undead units are assigned the single "
 "trait <italic>text='undead'</italic>, and woses do not receive any traits. "
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited."
 msgstr ""
-"대부분의 유닛들은 두 가지 특성을 갖습니다. 하지만 언데드 유닛들은 단순히 '언"
-"데드' 라는 하나의 특성을 가지며 엔트들은 아무 특성도 부여받지 않습니다. 특성"
-"은 유닛의 속성을 약간 변화시키는 수정요소입니다. 특성은 보통 유닛이 소집될때 "
-"무작위로 배정됩니다."
+"대부분의 유닛들은 두 가지 특성을 갖습니다. 하지만 언데드 유닛들은 오직 "
+"<italic>text='언데드'</italic> 특성 하나만을 가지며 나모들은 아무 특성도 부여"
+"받지 않습니다. 특성은 유닛의 속성을 약간 변화시키는 수정요소입니다. 특성은 보"
+"통 유닛이 소집될때 무작위로 배정됩니다."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:351
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2064,7 +2061,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:355
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2092,7 +2088,6 @@ msgstr "영리한 유닛은 승급하는데 필요한 경험치가 원래의 경
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:364
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2105,11 +2100,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"영리한 유닛은 더 빨리 높은 레벨로 승급할 수 있어서 캠페인의 초기에 매우 유용"
-"합니다. 캠페인의 후반으로 가면 영리함은 그렇게 유용하진 않은데, 그 이유는 최"
-"고레벨 이후 승급 (AMLA)이 레벨을 올리는 것 만큼 큰 변화를 가져오진 않기 때문"
-"입니다. 당신이 많은 '최고 레벨' 유닛을 가지고 있다면 당신은 좀더 좋은 특성을 "
-"가진 유닛들을 재소집하는 편을 선호하게 될 것입니다."
+"<italic>text='영리한'</italic> 유닛은 더 빨리 높은 레벨로 승급할 수 있어서 캠"
+"페인의 초기에 매우 유용합니다. 하지만 캠페인의 후반으로 가면 영리함은 그렇게 "
+"좋은 특성은 아닌데, 그 이유는 <italic>text='최고레벨 이후 승급'</italic> "
+"(AMLA)이 주는 변화가 레벨을 올리는 것만큼 크지 않기 때문입니다. 당신이 다수"
+"의 '최고 레벨' 유닛을 가지고 있다면 좀더 좋은 특성을 가진 유닛들을 재소집하"
+"는 것을 더 선호하게 될 것입니다."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:369
@@ -2118,17 +2114,15 @@ msgstr "신속한"
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:370
-#, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "HP than usual."
 msgstr ""
-"신속한 유닛은 이동력 점수를 1 추가로 갖지만, 원래의 경우보다 5% 적은 HP를 갖"
-"게 됩니다."
+"<italic>text='신속한'</italic> 유닛은 1의 추가 이동력을 갖지만, 보통보다 5% "
+"적은 HP를 갖게 됩니다."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:372
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2143,9 +2137,9 @@ msgstr ""
 "\n"
 "신속함은 가장 눈에 띄는 특성으로, 이것은 특히 트롤이나 중보병같은 느린 유닛에"
 "서 두드러집니다. 신속한 특성을 가진 유닛은 종종 거친 지형에서 매우 증진된 기"
-"동력을 갖게되며, 이 점은 당신이 병력을 배치할때 중요하게 고려될 수 있습니다. "
-"또한, 신속한 유닛은 이 특성을 갖지 않은 유닛에 비해 그리 튼튼하지 못하므로 접"
-"전 지역에 배치하기에는 별로 좋지 않습니다."
+"동력을 갖게되며, 이 점은 당신이 병력을 배치할때 중요하게 고려할 사항입니다. "
+"신속한 유닛은 이 특성을 갖지 않은 유닛에 비해 조금 허약하므로 접전 지역에 배"
+"치하기에는 별로 좋지 않습니다."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:377
@@ -2154,13 +2148,12 @@ msgstr "튼튼한"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:378
-#, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
 "than usual."
 msgstr ""
-"튼튼한 유닛은 다른 유닛보다 HP 4가 더 많고 레벨당 1의 HP를 추가로 더 받습니"
-"다."
+"<italic>text='튼튼한'</italic> 유닛은 다른 유닛보다 HP 4가 더 많고 레벨당 1"
+"의 HP를 추가로 더 받습니다."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:380
@@ -2187,17 +2180,15 @@ msgstr "강인한"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:386
-#, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 more HP."
 msgstr ""
-"강인한 유닛은 근접 공격의 성공시에 주는 데미지가 1 더 많고, HP 1을 더 받습니"
-"다."
+"<italic>text='강인한'</italic> 유닛은 근접 공격의 성공시에 주는 데미지가 1 "
+"더 많고, HP 1을 더 받습니다."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:388
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2208,9 +2199,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"강함은 모든 근접 공격 유닛에게 유용하지만, 엘프 전사와 같이 높은 횟수의 타격"
-"을 가진 유닛에게 가장 유용합니다. 힘센 유닛은 명중한 타격을 치명타로 만들기 "
-"위해 아주 작은 추가 데미지가 필요할 경우에 매우 유용합니다."
+"강인함은 모든 근접 공격 유닛에게 유용하지만, 엘프 전사와 같이 높은 횟수의 타"
+"격을 가진 유닛에게 가장 유용합니다. 강인한 유닛은 명중한 타격을 치명타로 만들"
+"기 위해 아주 작은 추가 데미지가 필요할 경우에 매우 유용합니다."
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:393
@@ -2324,18 +2315,17 @@ msgstr ""
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:429
-#, fuzzy
 msgid "trait^Elemental"
-msgstr "은폐"
+msgstr "원소계"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"기계 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효과가 먹히지 않습니다."
+"<italic>text='원소계'</italic> 유닛은 독, 흡수, 역병에 면역되어 있어 해당 효"
+"과가 먹히지 않습니다."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:432
@@ -2354,13 +2344,10 @@ msgstr ""
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
-#, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
-msgstr ""
-"강인한 유닛은 근접 공격의 성공시에 주는 데미지가 1 더 많고, HP 1을 더 받습니"
-"다."
+msgstr "<italic>text='Dextrous'</italic> 유닛은 원격 데미지가 1 많습니다."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:440
@@ -2398,7 +2385,7 @@ msgstr ""
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:453
 msgid "Dim"
-msgstr ""
+msgstr "돌머리"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:454
@@ -2406,6 +2393,7 @@ msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
+"<italic>text='돌머리'</italic> 유닛은 승급에 필요한 경험치가 20% 더 듭니다."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:456
@@ -2415,18 +2403,23 @@ msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
+"\n"
+"\n"
+"돌머리는 고블린이나 기타 하등한 종족에서 매우 흔히 보이는 특성입니다. 이들 종"
+"족이 하등한 데는 다 이유가 있는데, 이것도 그 중 하나입니다."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:461
 msgid "Slow"
-msgstr "둔화"
+msgstr "둔한"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:462
-#, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
-msgstr "둔한 유닛은 이동력이 1 적으나 5%의 체력 보너스를 갖습니다."
+msgstr ""
+"<italic>text='둔한'</italic> 유닛은 이동력이 1 적으나 5%의 체력 보너스를 갖습"
+"니다."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:464
@@ -2437,6 +2430,10 @@ msgid ""
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
+"\n"
+"\n"
+"고블린이나 다른 종족 중에서 두툼한 몸뚱이에 투박한 개체들은 이동 능력에 제한"
+"을 받지만 그 대신에 저항력이 약간 더 좋습니다."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:469
@@ -2445,11 +2442,11 @@ msgstr "약한"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:470
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
 "hitpoints and melee damage."
-msgstr "약한 특성을 가진 유닛은 체력과 근접 데미지가 각각 1 적습니다."
+msgstr ""
+"<italic>text='약한'</italic> 유닛은 체력과 근접 데미지가 각각 1 적습니다."
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:475
@@ -2458,11 +2455,12 @@ msgstr "늙은"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
-msgstr "약한 특성을 가진 유닛은 체력과 근접 데미지가 각각 1 적습니다."
+msgstr ""
+"<italic>text='늙은'</italic> 유닛은 체력이 8 적으며 이동력과 근접 데미지가 각"
+"각 1 적습니다."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:484
@@ -2899,7 +2897,7 @@ msgstr ""
 #. [topic]: id=general_commands
 #: data/core/help.cfg:789
 msgid "General commands"
-msgstr ""
+msgstr "일반 명령어들"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:794
@@ -2989,7 +2987,7 @@ msgstr ""
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:828
 msgid "Multiplayer commands"
-msgstr ""
+msgstr "멀티플레이 명령어들"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:834
@@ -3071,7 +3069,7 @@ msgstr ""
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:860
 msgid "Debug mode commands"
-msgstr ""
+msgstr "디버그 모드 명령어들"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:864
@@ -3959,15 +3957,13 @@ msgstr "기계"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "elemental"
-msgstr "은폐"
+msgstr "원소계"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:53
-#, fuzzy
 msgid "female^elemental"
-msgstr "은폐"
+msgstr "원소계"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:66
@@ -4027,27 +4023,27 @@ msgstr "건강한"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:147
 msgid "female^healthy"
-msgstr ""
+msgstr "건강한"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:148
 msgid "Always rest heals"
-msgstr ""
+msgstr "항상 휴식 회복을 받는다"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:165 data/core/macros/traits.cfg:178
 msgid "fearless"
-msgstr "용기"
+msgstr "용맹한"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:166 data/core/macros/traits.cfg:179
 msgid "female^fearless"
-msgstr ""
+msgstr "용맹한"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:167 data/core/macros/traits.cfg:180
 msgid "Fights normally during unfavorable times of day/night"
-msgstr ""
+msgstr "낮/밤 중 좋지 않은 시간대에도 평소처럼 싸울 수 있다"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
@@ -4079,22 +4075,22 @@ msgstr "약한"
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:226
 msgid "slow"
-msgstr "느린"
+msgstr "둔한"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:227
 msgid "female^slow"
-msgstr "느린"
+msgstr "둔한"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:243
 msgid "dim"
-msgstr "머리나쁜"
+msgstr "돌머리"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:244
 msgid "female^dim"
-msgstr "머리나쁜"
+msgstr "돌머리"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:256
@@ -4134,17 +4130,17 @@ msgstr ""
 #. [race]: id=drake
 #: data/core/units.cfg:54
 msgid "race^Drake"
-msgstr "반룡"
+msgstr ""
 
 #. [race]: id=drake
 #: data/core/units.cfg:55
 msgid "race+female^Drake"
-msgstr "반룡"
+msgstr ""
 
 #. [race]: id=drake
 #: data/core/units.cfg:56
 msgid "race^Drakes"
-msgstr "반룡족"
+msgstr ""
 
 #. [race]: id=drake
 #: data/core/units.cfg:69
@@ -4514,10 +4510,8 @@ msgstr "괴물"
 
 #. [race]: id=monster
 #: data/core/units.cfg:215
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
-msgstr "괴물"
+msgstr "몬스터들"
 
 #. [race]: id=monster
 #: data/core/units.cfg:216
@@ -4539,10 +4533,8 @@ msgstr "나가 ♂"
 
 #. [race]: id=naga
 #: data/core/units.cfg:225
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
-msgstr "나가"
+msgstr "나가 ♀"
 
 #. [race]: id=naga
 #: data/core/units.cfg:226
@@ -4781,10 +4773,8 @@ msgstr "늑대"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:303
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
-msgstr "엘프"
+msgstr "늑대과"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:304
@@ -4794,12 +4784,12 @@ msgstr "늑대과"
 #. [race]: id=wose, description=
 #: data/core/units.cfg:313
 msgid "race^Wose"
-msgstr "엔트"
+msgstr "나모"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:314
 msgid "race^Woses"
-msgstr "엔트족"
+msgstr "나모족"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:324
@@ -4825,7 +4815,7 @@ msgstr "기계"
 #. [race]: id=khalifate
 #: data/core/units.cfg:327
 msgid "This race does not have a description yet."
-msgstr ""
+msgstr "이 종족에 대한 설명은 아직 존재하지 않습니다."
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:336
@@ -4906,7 +4896,7 @@ msgstr "능력:"
 
 #: src/help.cpp:1431
 msgid "Ability Upgrades: "
-msgstr "이거 어디 나옴?:"
+msgstr "추가 능력:"
 
 #: src/help.cpp:1447
 msgid "HP: "
@@ -4994,7 +4984,7 @@ msgstr "앞으로 >"
 
 #: src/help.cpp:2810
 msgid "Reference to unknown topic: "
-msgstr ""
+msgstr "없는 항목으로 이어져 있습니다: "
 
 #: src/help.cpp:3066
 msgid "corrupted original file"

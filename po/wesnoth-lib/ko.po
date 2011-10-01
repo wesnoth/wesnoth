@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-09-04 11:42+0200\n"
-"PO-Revision-Date: 2011-09-30 20:04+0900\n"
+"PO-Revision-Date: 2011-10-01 23:27+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -761,7 +761,7 @@ msgstr "엘프식 마을"
 #. [terrain_type]: id=human_village
 #: data/core/terrain.cfg:1328
 msgid "Cottage"
-msgstr ""
+msgstr "오두막"
 
 #. [terrain_type]: id=snow_village
 #: data/core/terrain.cfg:1341
@@ -851,7 +851,7 @@ msgstr ""
 #. [terrain_type]: id=igloo
 #: data/core/terrain.cfg:1564
 msgid "Igloo"
-msgstr ""
+msgstr "이글루"
 
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1579
@@ -1509,7 +1509,7 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/default/window/folder_create.cfg:43 src/filechooser.cpp:82
 msgid "New Folder"
-msgstr ""
+msgstr "새 폴더"
 
 #. [label]
 #: data/gui/default/window/folder_create.cfg:72
@@ -2389,7 +2389,7 @@ msgstr ""
 
 #: src/filechooser.cpp:77
 msgid "File: "
-msgstr ""
+msgstr "파일명: "
 
 #: src/filechooser.cpp:80
 msgid "Delete File"
@@ -3099,11 +3099,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:53
 msgid "Left Mouse Click"
-msgstr ""
+msgstr "마우스 왼쪽클릭"
 
 #: src/hotkeys.cpp:54
 msgid "Right Mouse Click"
-msgstr ""
+msgstr "마우스 오른클릭"
 
 #: src/hotkeys.cpp:56
 msgid "Next Unit"
@@ -3279,15 +3279,15 @@ msgstr "다음 진영"
 
 #: src/hotkeys.cpp:107
 msgid "Full map"
-msgstr "전체 맵"
+msgstr "모든 맵 밝히기"
 
 #: src/hotkeys.cpp:109
 msgid "Each team"
-msgstr "각 팀"
+msgstr "각 팀 시야로 보기"
 
 #: src/hotkeys.cpp:111
 msgid "Team 1"
-msgstr "팀 1"
+msgstr "팀 1 시야로 보기"
 
 #: src/hotkeys.cpp:112
 msgid "Skip animation"
@@ -3544,24 +3544,23 @@ msgstr ""
 
 #: src/hotkeys.cpp:221
 msgid "Next tip of the day"
-msgstr ""
+msgstr "오늘의 팁 다음으로 넘기기"
 
 #: src/hotkeys.cpp:228
-#, fuzzy
 msgid "Previous tip of the day"
-msgstr "이전 유닛"
+msgstr "오늘의 팁 이전으로 넘기기"
 
 #: src/hotkeys.cpp:235
 msgid "Start tutorial"
-msgstr ""
+msgstr "연습 게임 시작하기"
 
 #: src/hotkeys.cpp:242
 msgid "Start a campaign"
-msgstr ""
+msgstr "캠페인 시작하기"
 
 #: src/hotkeys.cpp:249
 msgid "Start a multiplayer game"
-msgstr ""
+msgstr "멀티플레이 시작하기"
 
 #: src/hotkeys.cpp:256
 msgid "Manage addons"
@@ -3569,7 +3568,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:263
 msgid "Start the editor"
-msgstr ""
+msgstr "맵 에디터 열기"
 
 #: src/hotkeys.cpp:270
 msgid "Show the credits"
@@ -3682,7 +3681,7 @@ msgstr "행동"
 
 #: src/preferences_display.cpp:301
 msgid "Binding"
-msgstr ""
+msgstr "단축키"
 
 #: src/preferences_display.cpp:313
 msgid "Change Hotkey"
@@ -3701,6 +3700,7 @@ msgstr "이 단축키는 이미 사용되고 있습니다."
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
+"주의: 스크린샷 단축키가 컨트롤, 알트 및 메타 키와 이어져 있지 않습니다."
 
 #: src/preferences_display.cpp:530
 msgid "There are no alternative video modes available"

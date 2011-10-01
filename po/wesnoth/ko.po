@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-09-04 11:42+0200\n"
-"PO-Revision-Date: 2011-09-30 20:23+0900\n"
+"PO-Revision-Date: 2011-10-01 23:27+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -131,15 +131,11 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:133
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Disable "
 "aging with 0."
 msgstr ""
-"시간초과에 소요되는 ping 응답 대기시간(초단위)입니다. 해제하면 0이 됩니다."
+"채팅 메세지를 삭제하기까지 기다리는 시간(분단위)입니다. 해제하면 0이 됩니다."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
@@ -386,11 +382,8 @@ msgstr "멀티 플레이"
 
 #. [objective]: condition=win
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
-#, fuzzy
 msgid "Defeat enemy leader"
-msgstr ""
-"승리 조건\n"
-"@적의 리더(들)을 물리치십시오"
+msgstr "적 지휘관 격파"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -579,9 +572,8 @@ msgstr "인도네시아어 번역 담당"
 
 #. [about]
 #: data/core/about.cfg:2096
-#, fuzzy
 msgid "Irish Translation"
-msgstr "터키어 번역 담당"
+msgstr "아일랜드어 번역 담당"
 
 #. [about]
 #: data/core/about.cfg:2103
@@ -1959,7 +1951,7 @@ msgstr "공식 Wesnoth 서버"
 #. [server]
 #: data/game_config.cfg:8 data/game_config.cfg:12
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "Wesnoth 대체 서버"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
@@ -2669,7 +2661,7 @@ msgstr "메뉴"
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:150
 #: data/themes/experimental.cfg:112
 msgid "Actions"
-msgstr ""
+msgstr "행동 메뉴"
 
 #. [menu]: id=button-endturn
 #: data/themes/default.cfg:153 data/themes/dfool.cfg:165
@@ -2819,44 +2811,32 @@ msgid "Close"
 msgstr "닫기"
 
 #: src/actions.cpp:470
-#, fuzzy
-#| msgid "You don’t have a leader to recruit with."
 msgid "You don’t have a leader to recall with."
-msgstr "소집할 대장이 없습니다."
+msgstr "재소집을 수행할 지휘관이 없습니다."
 
 #: src/actions.cpp:475
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders is able to recall that unit."
-msgstr "소집이나 재소집을 하려면 반드시 대장을 본성에 두어야 합니다."
+msgstr "해당 유닛을 재소집할 수 있는 지휘관이 없습니다."
 
 #: src/actions.cpp:480
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr "소집이나 재소집을 하려면 반드시 대장을 본성에 두어야 합니다."
+msgstr "해당 유닛을 재소집할 수 있는 지휘관을 본성에 두어야 합니다."
 
 #: src/actions.cpp:485
-#, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recall the unit."
-msgstr "소집할 수 있는 빈 성채 칸이 없습니다."
+msgstr "성에 재소집을 수행할 공간이 없습니다."
 
 #: src/actions.cpp:550
 msgid "You don’t have a leader to recruit with."
 msgstr "소집할 대장이 없습니다."
 
 #: src/actions.cpp:555
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recruit the unit."
-msgstr "소집이나 재소집을 하려면 반드시 대장을 본성에 두어야 합니다."
+msgstr "해당 유닛을 소집할 수 있는 지휘관을 본성에 두어야 합니다."
 
 #: src/actions.cpp:560
-#, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recruit the unit."
-msgstr "소집할 수 있는 빈 성채 칸이 없습니다."
+msgstr "성에 소집을 수행할 공간이 없습니다."
 
 #: src/actions.cpp:711 src/actions.cpp:770 src/actions.cpp:1691
 msgid "An invalid attacker weapon got selected."
@@ -3136,10 +3116,8 @@ msgid "Confirm"
 msgstr "확인"
 
 #: src/addon/manager.cpp:1104
-#, fuzzy
-#| msgid "Settings..."
 msgid "Connecting..."
-msgstr "설정..."
+msgstr "연결하는 중..."
 
 #: src/addon/manager.cpp:1104
 msgid "Requesting list of add-ons"
@@ -3462,7 +3440,7 @@ msgstr ""
 #: src/game_controller.cpp:1044 src/playcampaign.cpp:108
 #: src/playcampaign.cpp:373
 msgid "The game could not be loaded: "
-msgstr ""
+msgstr "로드가 안됩니다: "
 
 #: src/game_controller.cpp:1046 src/playcampaign.cpp:110
 #: src/playcampaign.cpp:376
@@ -4416,11 +4394,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2758
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "$receiver 에게 하는 귓속말"
 
 #: src/menu_events.cpp:2765 src/multiplayer_ui.cpp:542
 msgid "whisper: $sender"
-msgstr ""
+msgstr "$sender 의 귓속말"
 
 #: src/menu_events.cpp:2861 src/menu_events.cpp:2880
 #: src/multiplayer_connect.cpp:665
@@ -4515,19 +4493,19 @@ msgstr "플레이어 수:"
 
 #: src/menu_events.cpp:3345
 msgid "Choose Scenario (Debug!)"
-msgstr ""
+msgstr "시나리오 선택 (디버그!)"
 
 #: src/menu_events.cpp:3391
 msgid "Debug mode activated!"
-msgstr ""
+msgstr "디버그 모드가 켜졌습니다!"
 
 #: src/menu_events.cpp:3394
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "네트워크 게임에서는 디버그 모드를 쓸 수 없습니다"
 
 #: src/menu_events.cpp:3399
 msgid "Debug mode deactivated!"
-msgstr ""
+msgstr "디버그 모드가 꺼졌습니다!"
 
 #: src/menu_events.cpp:3410
 msgid "Unsafe Lua scripts."
@@ -4591,11 +4569,11 @@ msgstr "소집이나 재소집을 하려면 반드시 대장을 본성에 두어
 
 #: src/mouse_events.cpp:825 src/mouse_events.cpp:905
 msgid "Attack Enemy"
-msgstr ""
+msgstr "적을 공격"
 
 #: src/mouse_events.cpp:906
 msgid "Choose weapon:"
-msgstr ""
+msgstr "무기 선택:"
 
 #: src/multiplayer.cpp:149 src/multiplayer.cpp:186
 msgid "Connecting to Server..."
@@ -4819,9 +4797,8 @@ msgid "Waiting for players to join..."
 msgstr "사람이 들어오기를 기다리고 있습니다..."
 
 #: src/multiplayer_connect.cpp:1807
-#, fuzzy
 msgid "Waiting for players to choose factions..."
-msgstr "게임이 시작하길 기다립니다..."
+msgstr "다른 유저가 당파를 설정하길 기다립니다..."
 
 #: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:742
 msgid "Create Game"
@@ -5118,11 +5095,11 @@ msgstr ""
 
 #: src/multiplayer_wait.cpp:129
 msgid "Leader: "
-msgstr ""
+msgstr "대장 유닛:"
 
 #: src/multiplayer_wait.cpp:133
 msgid "Recruits: "
-msgstr ""
+msgstr "소집가능 유닛:"
 
 #: src/multiplayer_wait.cpp:180
 msgid "Waiting for game to start..."
@@ -5337,7 +5314,7 @@ msgstr "게임이 끝났습니다."
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
-msgstr ""
+msgstr "연결이 끊어져서 게임을 더 이상 진행할 수 없습니다. 저장하시겠습니까?"
 
 #: src/playsingle_controller.cpp:699
 msgid "It is now $name|’s turn"
@@ -5373,7 +5350,7 @@ msgstr "$player 로 교체"
 
 #: src/playturn.cpp:252
 msgid "$player has left the game. What do you want to do?"
-msgstr ""
+msgstr "$player 가 방을 나갔습니다. 어떻게 하시겠습니까? "
 
 #: src/replay_controller.cpp:303
 msgid ""
@@ -5569,13 +5546,13 @@ msgstr "경고: 로드하려는 파일이 손상되어 있습니다. 로드는 �
 
 #: src/savegame.cpp:505
 msgid "This save is from a version too old to be loaded."
-msgstr ""
+msgstr "이 세이브 파일의 버전이 너무 오래되어 불러올 수 없습니다."
 
 #: src/savegame.cpp:509
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
-msgstr ""
+msgstr "이 세이브 파일은 다른 버전의 파일입니다. 그래도 불러오시겠습니까?"
 
 #: src/savegame.cpp:556
 msgid "This is not a multiplayer save"
@@ -5583,7 +5560,7 @@ msgstr ""
 
 #: src/savegame.cpp:622
 msgid "The game could not be saved: "
-msgstr ""
+msgstr "저장이 안됩니다: "
 
 #: src/savegame.cpp:707
 msgid "Save already exists. Do you want to overwrite it?"
@@ -5595,7 +5572,7 @@ msgstr "덮어씌우시겠습니까?"
 
 #: src/savegame.cpp:718
 msgid "Save names should not end on '.gz'. Please choose a different name."
-msgstr ""
+msgstr "파일명이 '.gz'로 끝나면 안됩니다. 다른 이름을 쓰세요."
 
 #: src/savegame.cpp:784
 msgid "Saved"
@@ -5615,7 +5592,7 @@ msgstr "리플레이 저장"
 
 #: src/savegame.cpp:974
 msgid "Could not auto save the game. Please save the game manually."
-msgstr ""
+msgstr "게임 자동 저장을 실행할 수 없습니다. 직접 저장해 주세요."
 
 #: src/savegame.cpp:1023
 msgid "Save Game"
