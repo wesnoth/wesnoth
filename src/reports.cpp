@@ -741,11 +741,6 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 
 	foreach(const battle_context& weapon, weapons) {
 
-		//TODO clean up
-		//const attack_type& attacker_weapon = attack_type(*attacker.weapon);
-		//const attack_type& defender_weapon = attack_type(
-		//		defender.weapon ? *defender.weapon : no_weapon);
-
 		// Predict the battle outcome.
 		combatant attacker_combatant(weapon.get_attacker_stats());
 		combatant defender_combatant(weapon.get_defender_stats());
@@ -775,8 +770,7 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 			else if (dmg_bonus < 1.0)
 				dmg_color = font::bad_dmg_color;
 		} else {
-			str << span_color(font::bad_dmg_color) << "0" << naps << span_color(font::weapon_color)
-				<< font::weapon_numbers_sep << "0" << ' ' << weapon_name << naps << "\n";
+			str << span_color(font::weapon_color) << weapon_name << naps << "\n";
 			tooltip << _("Weapon: ") << "<b>" << weapon_name << "</b>\n"
 				<< _("Damage: ") << "<b>" << "0" << "</b>\n";
 		}
@@ -785,9 +779,9 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 
 		// Total damage.
 		str << "  " << span_color(dmg_color) << damage << naps << span_color(font::weapon_color)
-												<< utils::unicode_en_dash << num_blows
-												<< " (" << span_color(chance_color) << chance_to_hit << "%" << naps << ")"
-												<< naps << "\n";
+			<< utils::unicode_en_dash << num_blows
+			<< " (" << span_color(chance_color) << chance_to_hit << "%" << naps << ")"
+			<< naps << "\n";
 
 		tooltip << _("Weapon: ") << "<b>" << weapon_name << "</b>\n"
 				<< _("Total damage") << "<b>" << damage << "</b>\n";
@@ -882,8 +876,6 @@ REPORT_GENERATOR(highlighted_unit_weapons)
 	if (!sec_u || u == sec_u) return unit_weapons(sec_u);
 
 	map_location highlighted_hex = resources::screen->displayed_unit_hex();
-	// Unused: map_location selected_hex = resources::screen->selected_hex();
-
 	map_location attack_loc =
 			resources::controller->get_mouse_handler_base().current_unit_attacks_from(highlighted_hex);
 
@@ -902,8 +894,6 @@ REPORT_GENERATOR(selected_unit_weapons)
 	if (!sec_u || u == sec_u) return unit_weapons(u);
 
 	map_location highlighted_hex = resources::screen->displayed_unit_hex();
-	// Unused: map_location selected_hex = resources::screen->selected_hex();
-
 	map_location attack_loc =
 			resources::controller->get_mouse_handler_base().current_unit_attacks_from(highlighted_hex);
 
