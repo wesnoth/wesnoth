@@ -546,7 +546,7 @@ REPORT_GENERATOR(selected_unit_moves)
 	return unit_moves(u);
 }
 
-static void attack_info(const attack_type &at, config &res, unit *u, const map_location &displayed_unit_hex)
+static int attack_info(const attack_type &at, config &res, unit *u, const map_location &displayed_unit_hex)
 {
 	static const config::t_token & z_swarm( generate_safe_static_const_t_interned(n_token::t_token("swarm")) );
 	static const config::t_token & z_swarm_attacks_min( generate_safe_static_const_t_interned(n_token::t_token("swarm_attacks_min")) );
@@ -698,6 +698,7 @@ static void attack_info(const attack_type &at, config &res, unit *u, const map_l
 			add_text(res, flush(str), flush(tooltip), help_page);
 		}
 	}
+	return damage;
 }
 
 // Conversion routine for both unscathed and damage change percentage.
@@ -757,9 +758,8 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 
 		SDL_Color dmg_color = font::weapon_color;
 		if (context_unit_stats.weapon) {
-			attack_info(*context_unit_stats.weapon, res, attacker, attacker_pos);
+			base_damage = attack_info(*context_unit_stats.weapon, res, attacker, attacker_pos);
 			damage = context_unit_stats.damage;
-			base_damage = (context_unit_stats.weapon)->damage();
 			num_blows = context_unit_stats.num_blows;
 			chance_to_hit = context_unit_stats.chance_to_hit;
 			weapon_name = context_unit_stats.weapon->name();
@@ -883,7 +883,6 @@ REPORT_GENERATOR(highlighted_unit_weapons)
 		return unit_weapons(sec_u);
 
 	return unit_weapons(u, attack_loc, sec_u, false);
-
 }
 REPORT_GENERATOR(selected_unit_weapons)
 {
