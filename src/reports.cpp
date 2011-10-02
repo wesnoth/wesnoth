@@ -720,22 +720,15 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 {
 	if (!attacker || !defender) return report();
 
-	std::ostringstream str, tooltip;
-
-	//TODO this is wrong
-	map_location displayed_unit_hex = resources::screen->selected_hex();
-	config res;
-
-	std::vector<battle_context> weapons;
-
 	unit* u = show_attacker ? attacker : defender;
+	std::vector<battle_context> weapons;
+	std::ostringstream str, tooltip;
+	config res;
 
 	for (unsigned int i = 0; i < attacker->attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->attacks()[i].attack_weight() > 0) {
-			//TODO enable again
-			//battle_context weapon(*resources::units, attacker_pos, defender->get_location(), i);
-			battle_context weapon(*resources::units, displayed_unit_hex, defender->get_location(), i);
+			battle_context weapon(*resources::units, attacker_pos, defender->get_location(), i, -1, 0.0, NULL, attacker);
 			weapons.push_back(weapon);
 		}
 	}
@@ -786,7 +779,7 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 		tooltip << _("Weapon: ") << "<b>" << weapon_name << "</b>\n"
 				<< _("Total damage") << "<b>" << damage << "</b>\n";
 
-		// Create the hitpoints distribution graphics.
+		// Create the hitpoints distribution.
 		std::vector<std::pair<int, double> > hp_prob_vector;
 
 		// First, we sort the probabilities in ascending order.
@@ -843,7 +836,6 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 		}
 
 		add_text(res, flush(str), flush(tooltip));
-
 	}
 	return res;
 }
