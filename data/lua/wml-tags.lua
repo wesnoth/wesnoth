@@ -953,10 +953,21 @@ function wml_actions.find_path(cfg)
 	local filter_unit = (helper.get_child(cfg, "traveler")) or helper.wml_error("[find_path] missing required [traveler] tag")
 	local filter_location = (helper.get_child(cfg, "destination")) or helper.wml_error("[find_path] missing required [destination] tag")
 	local variable = cfg.variable or "path"
-	local ignore_units = cfg.ignore_units
-	local ignore_teleport = cfg.ignore_teleport
+	local ignore_units = false
+	local ignore_teleport = false
+
+	if cfg.check_zoc == false then --if we do not want to check the ZoCs, we must ignore units
+		ignore_units = true
+	end
+	if cfg.check_teleport == false then --if we do not want to check teleport, we must ignore it
+		ignore_teleport = true
+	end
+
 	local allow_multiple_turns = cfg.allow_multiple_turns
-	if cfg.ignore_visibility ~= false then local viewing_side = 0 end --default yes
+	local viewing_side
+
+	if not cfg.check_visibility then viewing_side = 0 end -- if check_visiblity then shroud is taken in account
+	
 	-- only the first unit matching
 	local unit = wesnoth.get_units(filter_unit)[1] or helper.wml_error("[find_path]'s filter didn't match any unit")
 	local locations = wesnoth.get_locations(filter_location) -- only the location with the lowest distance and lowest movement cost will match. If there will still be more than 1, only the 1st maching one.
