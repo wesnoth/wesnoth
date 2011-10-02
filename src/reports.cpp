@@ -716,6 +716,21 @@ static void format_prob(char str_buf[10], double prob)
 	str_buf[9] = '\0';  //prevents _snprintf error
 }
 
+static void format_hp(char str_buf[10], int hp)
+{
+	if(hp < 10) {
+		snprintf(str_buf, 10, "   %i", hp);
+	} else if(hp < 99) {
+		snprintf(str_buf, 10, "  %i", hp);
+	} else if(hp < 999) {
+		snprintf(str_buf, 10, " %i", hp);
+	} else {
+		snprintf(str_buf, 10, " %i", hp);
+	}
+
+	str_buf[9] = '\0';  //prevents _snprintf error
+}
+
 static config unit_weapons(unit *attacker, const map_location &attacker_pos, unit *defender, bool show_attacker)
 {
 	if (!attacker || !defender) return report();
@@ -822,16 +837,17 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 			int hp = hp_prob_vector[i].first;
 			double prob = hp_prob_vector[i].second;
 
-			std::stringstream formated_prob;
-			char str_buf[10];
-			format_prob(str_buf, prob);
+			char prob_buf[10];
+			format_prob(prob_buf, prob);
+			char hp_buf[10];
+			format_hp(hp_buf, hp);
 
 			SDL_Color prob_color = int_to_color(game_config::blue_to_white(prob * 100.0, true));
 
 			str		<< span_color(font::weapon_details_color) << "  " << "  "
-					<< span_color(u->hp_color(hp)) << hp << naps
+					<< span_color(u->hp_color(hp)) << hp_buf << naps
 					<< " " << font::weapon_numbers_sep << " "
-					<< span_color(prob_color) << str_buf << naps
+					<< span_color(prob_color) << prob_buf << naps
 					<< naps << "\n";
 		}
 
