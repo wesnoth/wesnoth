@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-09-04 11:42+0200\n"
-"PO-Revision-Date: 2011-01-02 05:44+0900\n"
+"PO-Revision-Date: 2011-05-16 22:43+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
 "Language: Japanese\n"
@@ -137,9 +137,6 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:133
 #, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Disable "
 "aging with 0."
@@ -268,8 +265,9 @@ msgstr "遅くなった"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:43
+#, fuzzy
 msgid "TestCamp"
-msgstr ""
+msgstr "チーム"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:45
@@ -279,7 +277,6 @@ msgstr ""
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:46
 #, fuzzy
-#| msgid "Easy"
 msgid "(Easy)"
 msgstr "易しい"
 
@@ -291,7 +288,6 @@ msgstr ""
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:47
 #, fuzzy
-#| msgid "Normal"
 msgid "(Normal)"
 msgstr "ノーマル"
 
@@ -303,7 +299,6 @@ msgstr ""
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:48
 #, fuzzy
-#| msgid "Hard"
 msgid "(Hard)"
 msgstr "難しい"
 
@@ -327,14 +322,12 @@ msgstr ""
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:24
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:41
 #, fuzzy
-#| msgid "Players: "
 msgid "Players"
 msgstr "プレイヤー数: "
 
 #. [side]: id=Charlie, type=Orcish Grunt
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:53
 #, fuzzy
-#| msgid "Enemy village"
 msgid "Enemies"
 msgstr "敵所有の村"
 
@@ -351,49 +344,42 @@ msgstr ""
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
 #, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Easy"
 msgstr "難易度: "
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:90
 #, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Normal"
 msgstr "難易度: "
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:93
 #, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Hard"
 msgstr "難易度: "
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:100
 #, fuzzy
-#| msgid "Campaign: $campaign_name"
 msgid "Main campaign define"
 msgstr "キャンペーン: $campaign_name"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:111
 #, fuzzy
-#| msgid "Campaign Design"
 msgid "Extra campaign define"
 msgstr "キャンペーンデザイン"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:122
 #, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer define"
 msgstr "マルチプレイヤー"
 
 #. [objective]: condition=win
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
 #, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat enemy leader"
 msgstr "敵のリーダー（達）を倒す"
 
@@ -2518,10 +2504,6 @@ msgstr "<i>― Wesnoth コミュニティー</i>"
 #. [tip]
 #: data/hardwired/tips.cfg:44
 #, fuzzy
-#| msgid ""
-#| "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-#| "better at night. <i>Neutral</i> units are unaffected by the time of day. "
-#| "The rare <i>Liminal</i> unit type fights best during the twilight hours."
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day."
@@ -2829,16 +2811,13 @@ msgid ""
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
-"未占拠の村の隣に移動することは避けた方がよい。敵ユニットがその村に移動してあ"
-"なたを攻撃してくるかもしれない。その村での防御力と回復効果を享受しながら。"
+"未占拠の村の隣に移動することは避けた方がよい。敵ユニットがその村に移動し、村"
+"の防御力と回復効果を享受しながらあなたを攻撃してくるかもしれないからだ。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:140
-#, fuzzy
 msgid "Use lines of troops to screen your injured units while they recover."
-msgstr ""
-"負傷したユニットを回復のためにふるい分けるには、ユニットのラインを使うとよ"
-"い。"
+msgstr "負傷したユニットの回復を待つ間は軍団のラインを使えばいいわ。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:141
@@ -3333,13 +3312,11 @@ msgstr "閉じる"
 
 #: src/actions.cpp:470
 #, fuzzy
-#| msgid "You don’t have a leader to recruit with."
 msgid "You don’t have a leader to recall with."
 msgstr "雇用するためのリーダーがいません。"
 
 #: src/actions.cpp:475
 #, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders is able to recall that unit."
 msgstr ""
 "ユニットを雇用したり召還したりするためには、リーダーが主塔にいなければなりま"
@@ -3347,7 +3324,6 @@ msgstr ""
 
 #: src/actions.cpp:480
 #, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr ""
 "ユニットを雇用したり召還したりするためには、リーダーが主塔にいなければなりま"
@@ -3355,7 +3331,6 @@ msgstr ""
 
 #: src/actions.cpp:485
 #, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "ユニットを雇用するための城タイルの空きがありません。"
 
@@ -3365,7 +3340,6 @@ msgstr "雇用するためのリーダーがいません。"
 
 #: src/actions.cpp:555
 #, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr ""
 "ユニットを雇用したり召還したりするためには、リーダーが主塔にいなければなりま"
@@ -3373,7 +3347,6 @@ msgstr ""
 
 #: src/actions.cpp:560
 #, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "ユニットを雇用するための城タイルの空きがありません。"
 
@@ -3467,7 +3440,6 @@ msgstr "（不明）"
 
 #: src/addon/manager.cpp:457
 #, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting terms"
 msgstr "アドオンの一覧を要求中"
 
@@ -3494,7 +3466,6 @@ msgstr "応答"
 
 #: src/addon/manager.cpp:530
 #, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting the addon to be deleted"
 msgstr "アドオンの一覧を要求中"
 
@@ -3504,7 +3475,6 @@ msgstr "アドオン「 $addon_title| 」のダウンロード中……"
 
 #: src/addon/manager.cpp:562 src/addon/manager.cpp:1111
 #, fuzzy
-#| msgid "Download"
 msgid "Downloading..."
 msgstr "ダウンロード"
 
@@ -3666,7 +3636,6 @@ msgstr "確認"
 
 #: src/addon/manager.cpp:1104
 #, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting..."
 msgstr "サーバーに接続中……"
 
@@ -5184,13 +5153,11 @@ msgstr ""
 
 #: src/multiplayer.cpp:248
 #, fuzzy
-#| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
 msgstr "このゲームを本当に保存しますか？"
 
 #: src/multiplayer.cpp:250
 #, fuzzy
-#| msgid "Warning: "
 msgid "Warning"
 msgstr "警告: "
 
@@ -6496,13 +6463,11 @@ msgstr ""
 
 #: src/whiteboard/manager.cpp:986
 #, fuzzy
-#| msgid "Show replay"
 msgid "Show plans for $player"
 msgstr "リプレイを見る"
 
 #: src/whiteboard/manager.cpp:988
 #, fuzzy
-#| msgid "Replace with $player"
 msgid "Hide plans for $player"
 msgstr "$player と交代する"
 
