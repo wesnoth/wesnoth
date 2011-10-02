@@ -736,10 +736,12 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 	if (!attacker || !defender) return report();
 
 	unit* u = show_attacker ? attacker : defender;
-	std::vector<battle_context> weapons;
+	const map_location unit_loc = show_attacker ? attacker_pos : defender->get_location();
+
 	std::ostringstream str, tooltip;
 	config res;
 
+	std::vector<battle_context> weapons;
 	for (unsigned int i = 0; i < attacker->attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->attacks()[i].attack_weight() > 0) {
@@ -758,7 +760,7 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 		const battle_context_unit_stats& context_unit_stats =
 				show_attacker ? weapon.get_attacker_stats() : weapon.get_defender_stats();
 
-		int damage = 0;
+		int total_damage = 0;
 		int base_damage = 0;
 		int num_blows = 0;
 		int chance_to_hit = 0;
@@ -766,13 +768,13 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 
 		SDL_Color dmg_color = font::weapon_color;
 		if (context_unit_stats.weapon) {
-			base_damage = attack_info(*context_unit_stats.weapon, res, attacker, attacker_pos);
-			damage = context_unit_stats.damage;
+			base_damage = attack_info(*context_unit_stats.weapon, res, u, unit_loc);
+			total_damage = context_unit_stats.damage;
 			num_blows = context_unit_stats.num_blows;
 			chance_to_hit = context_unit_stats.chance_to_hit;
 			weapon_name = context_unit_stats.weapon->name();
 
-			double dmg_bonus = double(damage) / base_damage;
+			double dmg_bonus = double(total_damage) / base_damage;
 			if (dmg_bonus > 1.0)
 				dmg_color = font::good_dmg_color;
 			else if (dmg_bonus < 1.0)
@@ -786,13 +788,13 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 		SDL_Color chance_color = int_to_color(game_config::red_to_green(chance_to_hit));
 
 		// Total damage.
-		str << "  " << span_color(dmg_color) << damage << naps << span_color(font::weapon_color)
+		str << "  " << span_color(dmg_color) << total_damage << naps << span_color(font::weapon_color)
 			<< utils::unicode_en_dash << num_blows
 			<< " (" << span_color(chance_color) << chance_to_hit << "%" << naps << ")"
 			<< naps << "\n";
 
 		tooltip << _("Weapon: ") << "<b>" << weapon_name << "</b>\n"
-				<< _("Total damage") << "<b>" << damage << "</b>\n";
+				<< _("Total damage") << "<b>" << total_damage << "</b>\n";
 
 		// Create the hitpoints distribution.
 		std::vector<std::pair<int, double> > hp_prob_vector;
