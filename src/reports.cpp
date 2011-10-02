@@ -1056,12 +1056,17 @@ REPORT_GENERATOR(income)
 	const team &viewing_team = (*resources::teams)[viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, viewing_side);
 	char const *end = naps;
-	if (viewing_side != resources::screen->playing_side())
+	if (viewing_side != resources::screen->playing_side()) {
 		str << span_color(font::GRAY_COLOR);
-	else if (td.net_income < 0)
+	}
+	else if (td.net_income < 0) {
+		td.net_income = - td.net_income;
 		str << span_color(font::BAD_COLOR);
-	else
+		str << utils::unicode_minus;
+	}
+	else {
 		end = "";
+	}
 	str << td.net_income << end;
 	return text_report(str.str());
 }
