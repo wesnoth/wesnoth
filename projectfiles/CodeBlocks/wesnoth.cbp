@@ -24,6 +24,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-DDEBUG_LUA" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -733,6 +734,8 @@
 		<Unit filename="..\..\src\savegame_config.cpp" />
 		<Unit filename="..\..\src\savegame_config.hpp" />
 		<Unit filename="..\..\src\scoped_resource.hpp" />
+		<Unit filename="..\..\src\scripting\debug_lua.cpp" />
+		<Unit filename="..\..\src\scripting\debug_lua.hpp" />
 		<Unit filename="..\..\src\scripting\lua.cpp" />
 		<Unit filename="..\..\src\scripting\lua.hpp" />
 		<Unit filename="..\..\src\scripting\lua_api.hpp" />
