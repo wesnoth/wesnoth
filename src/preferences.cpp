@@ -736,5 +736,15 @@ bool confirm_load_save_from_different_version()
 	return get("confirm_load_save_from_different_version", true);
 }
 
+bool use_twelve_hour_clock_format()
+{
+	return get("use_twelve_hour_clock_format", false);
+}
+
+void set_twelve_hour_clock_format(bool value)
+{
+	set("twelve_hour_clock_format", value);
+}
+
 } // end namespace preferences
 

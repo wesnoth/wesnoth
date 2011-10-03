@@ -461,7 +461,9 @@ void save_preview_pane::draw_contents()
 	const savegame::save_info& save = *saves_[index_].save_;
 	tm* tm_l = localtime(&save.time_modified);
 	if (tm_l) {
-		const size_t res = strftime(time_buf,sizeof(time_buf),_("%a %b %d %H:%M %Y"),tm_l);
+		const size_t res = strftime(time_buf,sizeof(time_buf),
+			(preferences::use_twelve_hour_clock_format() ? _("%a %b %d %I:%M %p %Y") : _("%a %b %d %H:%M %Y")),
+			tm_l);
 		if(res == 0) {
 			time_buf[0] = 0;
 		}
@@ -550,10 +552,20 @@ std::string format_time_summary(time_t t)
 		const int days_apart = current_time.tm_yday - save_time.tm_yday;
 		if(days_apart == 0) {
 			// save is from today
-			format_string = _("%H:%M");
+			if(preferences::use_twelve_hour_clock_format() == false) {
+				format_string = _("%H:%M");
+			}
+			else {
+				format_string = _("%I:%M %p");
+			}
 		} else if(days_apart > 0 && days_apart <= current_time.tm_wday) {
 			// save is from this week
-			format_string = _("%A, %H:%M");
+			if(preferences::use_twelve_hour_clock_format() == false) {
+				format_string = _("%A, %H:%M");
+			}
+			else {
+				format_string = _("%A, %I:%M %p");
+			}
 		} else {
 			// save is from current year
 			format_string = _("%b %d");

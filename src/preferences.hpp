@@ -185,6 +185,9 @@ namespace preferences {
 
 	bool confirm_load_save_from_different_version();
 
+	bool use_twelve_hour_clock_format();
+	void set_use_twelve_hour_clock_format(bool value);
+
 } // end namespace preferences
 
 #endif

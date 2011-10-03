@@ -698,15 +698,6 @@ std::string client_type()
 	return preferences::get("client_type") == "ai" ? "ai" : "human";
 }
 
-std::string clock_format()
-{
-	if(preferences::get("clock_format").size())
-		return preferences::get("clock_format");
-	else
-		preferences::set("clock_format", "%H:%M");
-	return "%H:%M";
-}
-
 std::string theme()
 {
 	if(non_interactive()) {
@@ -782,7 +773,12 @@ bool startup_effect()
 
 std::string get_chat_timestamp(const time_t& t) {
 	if (chat_timestamping()) {
-		return lg::get_timestamp(t, clock_format()) + " ";
+		if(preferences::use_twelve_hour_clock_format() == false) {
+			return lg::get_timestamp(t, _("%H:%M")) + " ";
+		}
+		else {
+			return lg::get_timestamp(t, _("%I:%M %p")) + " ";
+		}
 	}
 	return "";
 }

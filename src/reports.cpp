@@ -1219,9 +1219,11 @@ REPORT_GENERATOR(report_clock)
 	struct tm *lt = std::localtime(&t);
 	if (!lt) return report();
 	char temp[10];
-	size_t s = std::strftime(temp, 10, preferences::clock_format().c_str(), lt);
-	if (!s) return report();
-	return text_report(temp);
+	size_t s = std::strftime(temp, 10,
+		(preferences::use_twelve_hour_clock_format() ? _("%I:%M %p") : _("%H:%M")),
+		lt);
+	return s ? text_report(temp) : report();
+
 }
 
 REPORT_GENERATOR(report_countdown)
