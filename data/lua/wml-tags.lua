@@ -967,7 +967,7 @@ function wml_actions.find_path(cfg)
 	local viewing_side
 
 	if not cfg.check_visibility then viewing_side = 0 end -- if check_visiblity then shroud is taken in account
-	
+
 	-- only the first unit matching
 	local unit = wesnoth.get_units(filter_unit)[1] or helper.wml_error("[find_path]'s filter didn't match any unit")
 	local locations = wesnoth.get_locations(filter_location) -- only the location with the lowest distance and lowest movement cost will match. If there will still be more than 1, only the 1st maching one.
@@ -1025,6 +1025,25 @@ function wml_actions.find_path(cfg)
 			end
 
 			wesnoth.set_variable ( string.format( "%s.step[%d]", variable, index - 1 ), { x = path_loc[1], y = path_loc[2], terrain = wesnoth.get_terrain( path_loc[1], path_loc[2] ), movement_cost = sub_cost, required_turns = sub_turns } ) -- this structure takes less space in the inspection window
+		end
+	end
+end
+
+function wml_actions.store_starting_location(cfg)
+	local variable = cfg.variable or "location"
+	wesnoth.set_variable(variable)
+	local index = 0
+	for possibly_wrong_index, side in ipairs(wesnoth.get_sides(cfg)) do
+		local loc = wesnoth.get_starting_location(side.side)
+		if loc then
+			local terrain = wesnoth.get_terrain(loc[1], loc[2])
+			local result = { x = loc[1], y = loc[2], terrain = terrain }
+			local village = wesnoth.get_terrain_info(terrain).village
+			if wesnoth.get_terrain_info(terrain).village then
+				result.owner_side = wesnoth.get_village_owner(loc[1], loc[2]) or 0
+			end
+			wesnoth.set_variable(string.format("%s[%u]", variable, index), result)
+			index = index + 1
 		end
 	end
 end

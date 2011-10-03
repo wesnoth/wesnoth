@@ -2518,30 +2518,6 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
-{
-	static const config::t_token & z_variable( generate_safe_static_const_t_interned(n_token::t_token("variable")) );
-	static const config::t_token & z_location( generate_safe_static_const_t_interned(n_token::t_token("location")) );
-	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
-	static const config::t_token & z_owner_side( generate_safe_static_const_t_interned(n_token::t_token("owner_side")) );
-
-	config::attribute_value variable = cfg[z_variable];
-	if (variable.empty()) {
-		variable=z_location;
-	}
-	int side_num = cfg[z_side].to_int(1);
-
-	const map_location& loc = resources::game_map->starting_position(side_num);
-	config &loc_store = resources::state_of_game->get_variable_cfg(variable);
-	loc_store.clear();
-	loc.write(loc_store);
-	resources::game_map->write_terrain(loc, loc_store);
-	if (resources::game_map->is_village(loc)) {
-		int side = village_owner(loc, *resources::teams) + 1;
-		loc_store[z_owner_side] = side;
-	}
-}
-
 /* [store_villages] : store villages into an array
  * Keys:
  * - variable (mandatory): variable to store in
