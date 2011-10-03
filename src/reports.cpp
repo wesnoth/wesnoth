@@ -996,12 +996,24 @@ REPORT_GENERATOR(gold)
 	int fake_gold = (*resources::teams)[viewing_side - 1].gold() -
 		resources::whiteboard->get_spent_gold_for(viewing_side);
 	char const *end = naps;
-	if (viewing_side != resources::screen->playing_side())
-		str << span_color(font::GRAY_COLOR);
-	else if (fake_gold < 0)
+	if (viewing_side != resources::screen->playing_side()) {
+		if(fake_gold < 0) {
+			fake_gold = - fake_gold;
+			str << span_color(font::GRAY_COLOR);
+			str << utils::unicode_minus;
+		}
+		else {
+			str << span_color(font::GRAY_COLOR);
+		}
+	}
+	else if (fake_gold < 0) {
+		fake_gold = - fake_gold;
 		str << span_color(font::BAD_COLOR);
-	else
+		str << utils::unicode_minus;
+	}
+	else {
 		end = "";
+	}
 	str << fake_gold << end;
 	return text_report(str.str());
 }
