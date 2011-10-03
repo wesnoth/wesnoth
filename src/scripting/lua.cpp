@@ -1826,6 +1826,28 @@ static int intf_get_selected_tile(lua_State *L)
 }
 
 /**
+ * Returns the starting position of a side.
+ * Arg 1: side number
+ * Ret 1: table with unnamed indices holding wml coordinates x and y
+*/
+static int intf_get_starting_location(lua_State* L)
+{
+	const int side = luaL_checkint(L, 1);
+	if(side < 1 || static_cast<int>(resources::teams->size()) < side)
+		return luaL_argerror(L, 1, "out of bounds");
+	const map_location& starting_pos = resources::game_map->starting_position(side);
+	if(!resources::game_map->on_board(starting_pos)) return 0;
+
+	lua_createtable(L, 2, 0);
+	lua_pushinteger(L, starting_pos.x + 1);
+	lua_rawseti(L, -2, 1);
+	lua_pushinteger(L, starting_pos.y + 1);
+	lua_rawseti(L, -2, 2);
+
+	return 1;
+}
+
+/**
  * Gets some game_config data (__index metamethod).
  * - Arg 1: userdata (ignored).
  * - Arg 2: string containing the name of the property.
@@ -3402,6 +3424,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_recall_units",         &intf_get_recall_units         },
 		{ "get_selected_tile",        &intf_get_selected_tile        },
 		{ "get_sides",                &intf_get_sides                },
+		{ "get_starting_location",    &intf_get_starting_location    },
 		{ "get_terrain",              &intf_get_terrain              },
 		{ "get_terrain_info",         &intf_get_terrain_info         },
 		{ "get_time_of_day",          &intf_get_time_of_day          },
