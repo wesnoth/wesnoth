@@ -43,7 +43,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -6496,6 +6496,14 @@
 		<Filter
 			Name="Scripting"
 			>
+			<File
+				RelativePath="..\..\src\scripting\debug_lua.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\scripting\debug_lua.hpp"
+				>
+			</File>
 			<File
 				RelativePath="..\..\src\scripting\lua.cpp"
 				>
