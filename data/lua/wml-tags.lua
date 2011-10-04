@@ -1040,7 +1040,6 @@ function wml_actions.store_starting_location(cfg)
 		if loc then
 			local terrain = wesnoth.get_terrain(loc[1], loc[2])
 			local result = { x = loc[1], y = loc[2], terrain = terrain }
-			local village = wesnoth.get_terrain_info(terrain).village
 			if wesnoth.get_terrain_info(terrain).village then
 				result.owner_side = wesnoth.get_village_owner(loc[1], loc[2]) or 0
 			end
