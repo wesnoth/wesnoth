@@ -9,54 +9,55 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-05-12 12:14+0200\n"
-"PO-Revision-Date: 2009-12-04 16:34-0300\n"
-"Last-Translator: Gatts_Berserk <gatts_games@hotmail.com>\n"
+"PO-Revision-Date: 2011-10-03 22:37-0300\n"
+"Last-Translator: Filipe Borges <fqborges@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-Bookmarks: 609,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
 msgid "Compressed Saves"
-msgstr "Jogo Salvo Comprimido"
+msgstr "Comprimir Jogos Salvo"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr "Confirmar eliminação do jogo salvo"
+msgstr "Confirmar ao apagar algum jogo salvo"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
 msgid "Mouse Scrolling"
-msgstr "Scrolling pelo Mouse"
+msgstr "Rolagem com Mouse"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
 msgid "Middle-click Scrolling"
-msgstr "Middle-click Scrolling"
+msgstr "Rolagem com Clique do Botão do Meio"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Keep scrolling when mouse leaves window"
-msgstr "Continue rolando quando o mouse sair da janela"
+msgstr "Continuar rolagem quando o mouse sair da janela"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
 msgid "Animate Map"
-msgstr "Animar Mapa"
+msgstr "Animar o Mapa"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
 msgid "Show Titlescreen Animation"
-msgstr "Ver Animação da Tela Principal"
+msgstr "Ver Animação da Tela Inicial"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
 msgid "Unit Standing Animations"
-msgstr "Animações de Unidade Parada"
+msgstr "Animações de Unidade em Espera"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:61
@@ -66,7 +67,7 @@ msgstr "Mostrar Combate"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:68
 msgid "Ping Timeout"
-msgstr "Ping com Tempo Esgotado"
+msgstr "Tempo Limite de Ping"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:69
@@ -74,48 +75,43 @@ msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr ""
-"Número de segundos para aguardar a resposta do ping antes de esgotar o "
-"tempo. 0 para Desabilitado."
+"Número de segundos aguardando a resposta de um ping antes de acabar o tempo. "
+"0 para Desabilitado."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr "Aceitar whisper (sussuro) somente de amigos"
+msgstr "Aceitar mensagens sussurradas somente de amigos"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
-#, fuzzy
 msgid "Auto-open whisper windows in lobby"
-msgstr "abrir automaticamente janelas de sussuros no 'lobby'"
+msgstr "Abrir automaticamente janelas de sussuros na sala de espera"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#, fuzzy
 msgid "Group players in lobby"
-msgstr "Agrupar jogadores no 'lobby'"
+msgstr "Agrupar jogadores na sala de espera"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Lobby sounds"
-msgstr "Sons da Sala"
+msgstr "Sons na sala de espera"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Desabilitar salvamento automático."
+msgstr "Desabilitar notificações."
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
-#, fuzzy
 msgid "Multiplayer_AI^Default AI"
-msgstr "Multijogador"
+msgstr "IA Padrão"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
-#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
-msgstr "Multijogador"
+msgstr "RCA AI"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -223,13 +219,16 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Heals +4:\n"
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"Medicar +4:\n"
+"Permite à unidade curar unidades aliadas adjacentes no início do nosso "
+"turno.\n"
 "\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+".Uma unidade tratada por alguém com esta habilidade pode curar até 4 pontos "
+"de vida (HP) por turno, ou não sofrer os efeitos do envenenamento durante "
+"neste turno.\n"
+"Uma unidade envenenada não terá o veneno removido por alguém com esta "
+"habilidade. Ela precisa procurar uma vila, ou uma unidade com a habilidade "
+"'curar'."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
@@ -257,9 +256,9 @@ msgid ""
 "care of a village or a unit that can cure."
 msgstr ""
 "Medicar +8:\n"
-"Esta unidade se utiliza de ervas medicinais aliadas com um pouco de magia, "
-"para curar unidades mais rapidadmente do que normalmente possível no campo "
-"de batalha.\n"
+"Esta unidade se utiliza de ervas medicinais aliadas à magia para curar "
+"unidades mais rapidamente do que o normalmente possível no campo de "
+"batalha.\n"
 "\n"
 "Uma unidade tratada por alguém com esta habilidade pode curar até 8 pontos "
 "de vida (HP) por turno, ou não sofrer os efeitos do envenenamento durante "
@@ -688,10 +687,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Battle for Wesnoth (Luta por Wesnoth) é um jogo de estratégia e fantasia um "
-"pouco diferente de outros jogos modernos da mesma categoria. Enquanto os "
-"outros jogos competem pela complexidade, tanto das regras quanto dos "
-"elementos de jogo, Battle for Wesnoth procura a simplicidade nesses "
+"Battle for Wesnoth (A Batalha por Wesnoth) é um jogo de estratégia e "
+"fantasia um pouco diferente de outros jogos modernos da mesma categoria. "
+"Enquanto os outros jogos competem pela complexidade, tanto das regras quanto "
+"dos elementos de jogo, Battle for Wesnoth procura a simplicidade nesses "
 "elementos. Isso, porém, não deixa o jogo em si simples - pois dessas simples "
 "regras surgem várias estratégias, fazendo do jogo algo fácil de se aprender, "
 "mas um desafio para dominar."
@@ -819,7 +818,6 @@ msgstr ""
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -830,11 +828,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Quando você vence num cenário, o mapa vai ficar todo cinza e o botão "
-"'Terminar Turno' vai mudar para 'Terminar o Cenário'. Neste momento você "
-"pode fazer coisas como mudar suas opções de gravar ou (se estiver num jogo "
-"multijogador) conversar com outros jogadores antes de pressionar o botão "
-"para avançar."
+"Quando você vence em um cenário, o mapa é escurecido e o botão 'Terminar "
+"Turno' muda para 'Terminar o Cenário'. Neste momento você pode fazer coisas "
+"como mudar suas opções de salvamento ou (se estiver em um jogo multijogador) "
+"conversar com outros jogadores antes de pressionar o botão para prosseguir."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -2149,7 +2146,6 @@ msgstr ""
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:458
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2159,9 +2155,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Thick-bodied and clumsy, slow individuals of goblins e outras espécies tem "
-"uma penalidade de movimento mas são compensados com um suave acréscimo "
-"na'endurance'."
+"Com corpos largos e trapalhões, indivíduos lentos dos goblins e de outras "
+"espécies tem uma penalidade de movimento, mas são compensados com um pequeno "
+"acréscimo na sua resistência."
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:463
@@ -2614,9 +2610,9 @@ msgid ""
 msgstr ""
 "Vilas representam qualquer grupo de construções, humanas ou não. Quase todas "
 "as unidades, até mesmo as montadas, têm fácil locomoção nas aldeias, e "
-"muitas delas ganham um bônus de defesa. Vilas também têm os recursos "
-"necessários para limpar e cuidar de unidades, o que permite que unidades "
-"paradas nelas curem  8 pontos de vida (HP) por turno ou removam "
+"muitas delas ganham um bônus de defesa. Vilas também provém às unidades os "
+"recursos necessários para limpar e cuidar de suas feridas, o que permite que "
+"unidades paradas nelas curem 8 pontos de vida (HP) por turno ou removam "
 "envenenamento.\n"
 "\n"
 "A maioria das unidades têm de 50 a 60% de defesa, unidades montadas recebem "
@@ -2653,7 +2649,7 @@ msgstr ""
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:697
 msgid "Unwalkable"
-msgstr "Impassível"
+msgstr "Intransitável"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:700
@@ -2663,10 +2659,10 @@ msgid ""
 "would take days to traverse. As far as gameplay is concerned, only units "
 "capable of flying can cross this terrain."
 msgstr ""
-"Um desfiladeiro é uma rachadura no solo, que chega a profundidades "
-"desconhecidas. Desfiladeiros são conhecidos por suas paredes recortadas que "
-"tomam dias para serem atravessadas. No jogo, somente unidades que podem voar "
-"sobre desfiladeiros podem atravessar este terreno. "
+"Terreno intransitável cobre desfiladeiros e abismos e, como o nome indica, "
+"não pode ser cruzado simplesmente caminhando. Desfiladeiros são conhecidos "
+"por suas paredes íngremes que podem tomar dias para serem atravessadas. No "
+"jogo, somente unidades capazes de voar podem atravessar esses terrenos. "
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:707
@@ -2718,7 +2714,6 @@ msgstr "Recife Costeiro"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:732
-#, fuzzy
 msgid ""
 "Coastal reefs are shallows formed by stone, coral and sand. This provides "
 "most land units with a more steady footing and defensive positions than "
@@ -2727,11 +2722,12 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"Os recifes costeiros são espaços formados por pedra, coral e areia. Provê "
-"para a maior parte das unidades um apoio mais firme e uma melhor defesa do "
-"que vadear em águas rasas e também concede uma defesa excepcionalmente alta "
-"para raças aquáticas.\n"
+"Os recifes costeiros são espaços formados por pedra, coral e areia. Provêm "
+"para a maior parte das unidades melhor sustentação e defesa do que caminhar "
+"por águas rasas e também concede uma defesa excepcionalmente alta para raças "
+"aquáticas.\n"
 "\n"
+"Sereios and nagas, ambos recebem 70% de defesa nos recifes costeiros."
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:739
@@ -2996,16 +2992,14 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:826
-#, fuzzy
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
 "\n"
-"Remove o Silencio de um observador específico. Se não for dado nenhum nome, "
-"os nomes já silenciados são exibidos.\n"
-"\n"
+"Remove Silencio de um observador específico. Se não for dado nenhum nome, a "
+"lista de observadores silenciados será limpa."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:833
@@ -3117,7 +3111,6 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:862
-#, fuzzy
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3142,7 +3135,7 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Cura:\n"
+"Curar:\n"
 "Um curandeiro pode remover o envenenamento de uma unidade, porém essa "
 "unidade não recuperará pontos de vida no turno em que o veneno for removido."
 
@@ -3743,9 +3736,8 @@ msgstr "Execute as ordens"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:642
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "Cancelar"
+msgstr "Cancelar ordens de comportamento"
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:664
@@ -3783,13 +3775,11 @@ msgstr ""
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:839
-#, fuzzy
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
-"$ally_leader.name (lado $ally_side|) está 'carrying out' as seguintes "
-"instruções:"
+"$ally_leader.name (time $ally_side|) está executando as seguintes instruções:"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:854
@@ -3798,9 +3788,8 @@ msgstr "Setar Objetivo..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:894
-#, fuzzy
 msgid "Set behavior..."
-msgstr "Setar Funcionamento..."
+msgstr "Definir comportamento..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:934
@@ -5274,15 +5263,13 @@ msgstr "ineficaz"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:221
-#, fuzzy
 msgid "aged"
-msgstr "velho"
+msgstr "idoso"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "ineficaz"
+msgstr "idosa"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5380,7 +5367,6 @@ msgstr "Draconianos"
 
 #. [race]: id=drake
 #: data/core/units.cfg:67
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5445,68 +5431,73 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
-"Draconianos são criaturas grandes e aladas que cospem fogo, ramanescentes "
-"dos verdadeiros dragões. On average, an adult drake stands around three "
-"meters tall and easily weighs more than a man and a horse combined. Their "
-"skin is made up of hard scales, resistant to most physical strikes except "
-"piercing and cold damage. Most drakes are capable of true flight and can "
-"travel long distances quickly. However, their sheer weight and bulk limits "
-"their flight ability somewhat, making them ungainly in the air. Where "
-"possible, they make use of terrain features such as hills, mountains and "
-"trees as launch points in order to gain greater height and speed. "
-"Fortunately for their enemies, they are still quite clumsy creatures and "
-"surprisingly slow in combat. This, combined with their large size, renders "
-"them easy targets for those who dare attack them.\n"
+"Draconianos são criaturas grandes e aladas que cospem fogo, remanescentes "
+"dos verdadeiros dragões. Em média, um draconiano adulto mede em torno de "
+"três metros de altura, e pode facilmente pesar mais que a combinação de um "
+"homem e um cavalo. Sua pele é formada de duras escalas resistentes à maioria "
+"das agressões físicos, exceto ataques perfurantes e dano por frio. A maior "
+"parte dos draconianos são capazes de voar e podem rapidamente percorrer "
+"longas distancias. Apesar disto, seu enorme peso e volume limitam "
+"ligeiramente sua habilidade de voo, tornando-os desajeitados no ar. Quando "
+"possível, eles usam características do terreno como colinas, montanhas e "
+"árvores como ponto de lançamento, de forma a obter maior altura e "
+"velocidade. Para sorte de seus inimigos, os draconianos são por outro lado "
+"criaturas desajeitadas e surpreendentemente lentas em combate. Isto "
+"combinado com seu grande tamanho, tornam-os alvos fáceis para aqueles que "
+"atrevem-se a atacá-los.\n"
 "\n"
-"Drakes are inherently magical creatures, with a mysterious internal fire "
-"fueling their very lives. This can easily be witnessed when one of their "
-"kind perishes in combat; its internal fire is released, burning their "
-"remains in to ashes. Their internal fire is also their greatest weakness; it "
-"makes them extremely vulnerable to cold attacks. Despite their magical "
-"nature, drakes are incapable of channeling magic in a controlled manner. "
-"While the magic imbued within a drake's body enables it to spit fire and "
-"gives it life, they have no willful control over its functions of this "
-"magic.\n"
+"Draconianos são inerentemente criaturas mágicas, com um misterioso fogo "
+"interno alimentando suas próprias vidas. Isso pode facilmente ser "
+"testemunhado quando um de sua espécie morre em combate: o seu fogo interno é "
+"liberado, queimando seus restos mortais e reduzindo-os a cinzas. Seu fogo "
+"interno é também a sua maior fraqueza, o que os torna extremamente "
+"vulneráveis à dano por frio. Apesar de sua natureza mágica, draconianos são "
+"incapazes de canalizar magia de forma controlada. Apesar da magia que existe "
+"dentro de seu corpo permitir que cuspam fogo e lhes dê vida, draconianos não "
+"tem nenhum controle sobre o funcionamento dessa magia.\n"
 "\n"
-"<header>text='Society'</header>\n"
-"Drakes are a relatively warlike race and their societies can be best "
-"described as cultured martial societies. The core of a drake tribe is a "
-"small group of veteran warriors headed by a mutually respected - or simply "
-"feared - leader who rules the society with an iron fist. Every drake is "
-"expected to earn their place in the strict hierarchy, to obey their "
-"superiors and command their inferiors. Entry to the ruling elite is only "
-"possible through challenging and defeating a superior in single combat, "
-"which is the way the hierarchy within the elite itself is established. The "
-"use of deception of any kind towards any fellow drake is, without exception, "
-"seen as cowardly and unacceptable.\n"
+"<header>text='Sociedade'</header>\n"
+"Draconianos são, relativamnte, uma raça reguerreira e suas sociedades pode "
+"ser melhor descritas como sociedades de cultura marcial. O núcleo de uma "
+"tribo draconiana é um pequeno grupo de guerreiros veteranos chefiada por um "
+"líder respeitado por todos - ou simplesmente temido - que governa a "
+"sociedade com mão de ferro. A cada draconiano é esperado que obtenha seu "
+"lugar na rígida hierarquia, que obedeca seus superiores e comande seus "
+"inferiores. A entrada na elite dominante só é possível desafiando e "
+"derrotando um superior em um combate, que é a forma como a própria "
+"hierarquia dentro da elite é estabelecida. O uso de qualquer tipo de fraude "
+"em relação a qualquer companhaeiro dracroniano é, sem exceção, visto como "
+"covardia e inaceitável.\n"
 "\n"
-"While their warlike nature and sense of territory drives them to defend "
-"their territories savagely, drakes rarely invade or trespass on areas "
-"already occupied by the other major races. Instead, they settle in "
-"unpopulated areas to establish their own territory there. They primarily "
-"feed on large game they hunt in the lowlands around their homes, but "
-"hatchlings and lower caste drakes are known to feed also on certain of moss "
-"and fungi they cultivate deep in their caverns. The only technology drakes "
-"value is armor- and weapon-smithing, and neither know or need other science "
-"and culture besides this. However the few implements they do fashion are "
-"almost unrivaled in quality, only matched by those produced in the finest "
-"Dwarvish foundries.\n"
+"Enquanto sua natureza guerreira e seu senso territorial os leva a defender "
+"brutalmente seus territórios, draconianos raramente invadem ou violam áreas "
+"ocupadas pelas outras principais raças. Em vez disso, eles se instalam em "
+"áreas despovoadas para estabelecer seu próprio território. Eles se alimentam "
+"pricipalmente de grandes animais caçados nas planícies em torno de sua "
+"moradia, mas filhotes e draconianos de baixa casta são conhecidos por "
+"alimentar-se também de musgos e fungos cultivados no fundo de suas cavernas. "
+"A única tecnologia valorizada pelos draconianos é a fundição de armas e "
+"armaduras, e tanto não conhecem quanto não necessitam de outra ciência ou "
+"cultura além desta. No entanto os poucos utensílios que produzem somente são "
+"igualáveis aos produzidos nas mais finas forjas dos anões.\n"
 "\n"
-"Drakes are hatched from eggs and usually live naturally between 20 to 30 "
-"years. Death in battle is the most preferred way for a drake to leave this "
-"world. Unlike the elder members of other races, drakes naturally grow more "
-"aggressive and reckless towards the ends of their natural lives, perhaps to "
-"help ensure their place in the heroic legends of their kind.\n"
+"Draconianos são nascidos de ovos e geralmente vivem entre 20 a 30 anos. "
+"Morte em combate é a forma mais desejável para uma draconiano deixar este "
+"mundo. Ao contrário dos membros mais velhos de outras raças, draconianos "
+"tornan-se naturalmente mais agressivos e imprudentes próximos do fim de suas "
+"vidas, talvez para ajudar a garantir seu lugar nas lendas heróicas de sua "
+"espécie.\n"
 "\n"
-"<header>text='Geography'</header>\n"
-"Drakes originated from a chain of volcanic islands in the Great Ocean. A "
-"combination of population pressure and the subsidence of many of their home "
-"islands has caused colonies of drakes to spread to the Great Continent. "
-"Drakes tend to make their homes in mountain caverns near volcanoes to "
-"protect their eggs, hatchings and forges. While drakes naturally prefer "
-"warmth, their internal fire is more than capable of sustaining them even in "
-"a relatively cold climate, a feature which has allowed them to populate even "
-"some of the mountains of the far north of the Great Continent."
+"<header>text='Geografia'</header>\n"
+"Os draconianos são originados de uma cadeia de ilhas vulcânicas no Grande "
+"Oceano. Uma combinação de explosão demográfica e o afundamento de muitas de "
+"suas ilhas natais fez com que colônias de draconianos se disseminassem para "
+"o Grande Continente. Draconianos tendem a fazer suas casas em cavernas de "
+"montanhas perto de vulcões para proteger seus ovos, filhotes e forjas. "
+"Enquanto os draconianos naturalmente preferem o calor, o seu fogo interno é "
+"mais do que capaz de sustentá-los, mesmo em um clima relativamente frio, uma "
+"característica que lhes permitiu popular até mesmo algumas das montanhas do "
+"extremo norte do Grande Continente."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:87
@@ -5525,7 +5516,6 @@ msgstr "Anões"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:94
-#, fuzzy
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5585,38 +5575,39 @@ msgstr ""
 "raças entraram, desde então, em três longas guerras, interrompidas por "
 "algumas décadas de paz. Durante estas guerras os anões não podiam desalojar "
 "os elfos das florestas profundas no sul, mas cuidaram de consolidar sua "
-"posição nos morros e montanhas no norte do continente, conhecido agora como "
-"as Terras do Norte. Desde então eles contruíram fortificações fantásticas e "
-"povoações nas profundezas das montanhas e nos penhascos de seu território.\n"
+"posição nas colinas e montanhas no norte do continente, conhecido agora como "
+"as Terras Norte. Desde então eles contruíram fortificações e colônias "
+"fantásticas nas profundezas das montanhas e nos penhascos de seu "
+"território.\n"
 "\n"
-"Possibly due to their isolation, the dwarves are generally distrustful or "
-"hostile towards most other races, particularly the elves. The single "
-"exception to this temperament is towards humans. This could be traced back "
-"to the era of Haldric I and the arrival of humans and orcs to the continent. "
-"At this point the dwarves began allowing some humans, mostly dissidents and "
-"outlaws from the Kingdom of Wesnoth, to settle in certain areas of the "
-"Northlands. Their motivation was unsurprising. The plight of these "
-"individuals reminded the dwarves of their early history of persecution, "
-"eliciting a sense of solidarity. The dwarves also had much to gain in "
-"forming a bond with these outcasts. They would settle in areas where dwarves "
-"disliked living themselves; plains, forests, and swamps, freeing them from "
-"defending these areas.\n"
+"Possivelmente devido ao seu isolamento, os anões são geralmente desconfiados "
+"ou hostis em relação a maioria das outras raças, principalmente em relação "
+"os elfos. A única exceção a esse temperamento são humanos, o que poderia ser "
+"rastreado até a era de Haldric I e a chegada de humanos e orcs ao "
+"continente. Neste momento os anões começar a permitir que alguns seres "
+"humanos, em sua maioria dissidentes e bandidos do Reino de Wesnoth, se "
+"estabelecessem em certas áreas da Terras Norte. Sua motivação pouco "
+"surpreende. O sofrimento desses indivíduos lembrou os anões de sua precoce "
+"história de perseguição, revertendo em um sentimento de solidariedade. Os "
+"anões também tinham muito a ganhar em formar um vínculo com esses marginais. "
+"Eles se instalam em áreas onde os anões não gostava de viver - planícies, "
+"florestas e pântanos - libertando-os de defender essas áreas.\n"
 "\n"
-"Dwarves are of small stature by human measure, but they are by no means "
-"fragile. Their warriors, tough and powerful are both feared and respected "
-"throughout the continent for their prowess in battle. In addition, dwarves "
-"are known for their calculating intellects and superb craftsmanship. Dwarven "
-"smiths are renowned for their deadly weapons and heavy armor. These "
-"accouterments are unrivaled in quality, possibly only matched by those "
-"produced by drake armorers. Their intelligence and natural inquisitiveness "
-"has also made them the most technically advanced race on the continent. One "
-"of their most famous, and feared, discoveries was a mysterious powder that "
-"produces an immense explosion when exposed to fire or sparks. Certain dwarf "
-"warriors use this powder to hurl small objects at tremendous speeds. Given "
-"their technological inclinations, many dwarves tend to distrust magic users. "
-"However some practice a form of magic based on the engraving of runes. "
-"Called runesmiths, they use these carvings to enchant items in order to "
-"augment certain aspects of their natures."
+"Anões são de baixa estatura para os padrões humanos, mas eles não são de "
+"forma alguma frágeis. Seus guerreiros, fortes e poderosos, são temidos e "
+"respeitados em todo o continente por suas proezas em batalha. Além disso, os "
+"anões são conhecidos por sua inteligência com cálculo e soberba habilidade. "
+"Ferreiros anões são famosos por suas armas letais e armaduras pesadas. Estas "
+"peças são inigualáveis em qualidade, só equiparada aquelas produzidos por "
+"armeiros draconianos. Sua inteligência e curiosidade natural também os fez a "
+"raça mais tecnologicamente avançada do continente. Uma de suas descobertas "
+"mais famosas e temidas é um pó misterioso, que produz uma imensa explosão "
+"quando exposto ao fogo ou faíscas. Certos guerreiros anões usam este pó para "
+"disparar pequenos objetos a velocidades extraordinárias. Dada a sua "
+"inclinação tecnológica, muitos anões tendem a não confiar em usuários de "
+"magia. No entanto, alguns praticam uma forma de magia baseada na inscrição "
+"de runas. Chamados mestres das runas, eles usam essas inscrições para "
+"encantar itens, a fim de aumentar certos aspectos de sua natureza."
 
 #. [race]: id=elf
 #: data/core/units.cfg:106
@@ -5672,6 +5663,44 @@ msgid ""
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
 "having existed for over a millennium."
 msgstr ""
+"Comparado com humanos, elfos são um pouco mais altos, mais ágeis, mas menos "
+"resistentes. Eles têm orelhas ligeiramente pontudas, pele pálida e cabelos "
+"geralmente loiros. Poucas diferenças entre humanos e elfos são mais "
+"acentuadas do que a vida excepcionalmente longa dos Elfos - a maioria, a não "
+"ser que reivindicado por doença, acidente ou guerra, vivem uns bons dois "
+"séculos e meio. Enquanto alguns elfos que possuem uma alta aptidão mágica "
+"são conhecidos por a viverem um século completo a mais, a maioria dos elfos "
+"começam a tornar-se fisicamente frágil em algum ponto entre 250 e 300 anos "
+"de idade e morrem (geralmente dentro de um ano ou dois) depois disso.\n"
+"\n"
+"Elfos são naturalmente imbuídos com magia em um pequeno grau. Embora a "
+"maioria não seja capaz de canalizá-la diretamente, a sua presença latente "
+"lhes dá sentidos aguçados e vida longa. Muitos elfos tem talentos orientados "
+"à magia, como pontaria ou camuflagem, permitindo-lhes realizar tarefas que a "
+"maioria dos seres normais jamais poderiam imaginar. O elfo que aprender a "
+"exercer esse poder de forma geral pode se tornar formidável em seu uso. "
+"Muitos elfos escolhem usar seu dom para curar os outros.\n"
+"\n"
+"Uns poucos elfos, aventurando-se profundamente no caminho da magia e do "
+"misticismo, tornam-se sensíveis à presença de ferro frio e podem até ser "
+"queimados por ele. Dizem as lendas éficas que isso foi mais comum em um "
+"passado distante.\n"
+"\n"
+"Elfos passam grande parte do seu tempo aprimorando seus talentos e "
+"habilidades. Aqueles que não são adepto às artes mágicas em geral dedicam o "
+"seu tempo aprimorando suas habilidades físicas. Como resultado, os elfos são "
+"excelência em arqueirismo, que é, talvez, o seu principal método de guerra. "
+"A maioria das tropas dos elfos carregam um arco, e nenhuma outra raça pode "
+"rivalizar com os seus arqueiros em velocidade e precisão. Todos os elfos "
+"também compartilham uma forte afeição por natureza preservada. "
+"Frequentemente se sentem desconfortáveis em espaços abertos sem vegetação. "
+"Eles vivem principalmente nas florestas do Grande Continente, o Aethenwood "
+"no sudoeste, Wesmere no noroeste, e as grandes florestas do norte das quais "
+"a Floresta Lintanir é a borda sul. \n"
+"\n"
+"Elfos são a raça mais antiga do contiente, com a possível exceção dos trolls."
+"Muitos de seus assentamentos não podem ser  datados com segurança, sem "
+"dúvida, tendo existido por mais de um milênio."
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:128
@@ -5759,6 +5788,46 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
+"A raça dos homens é extremamente diversificada. Embora vindos originalmente "
+"do Velho Continente, os homens espalharam-se por todo o mundo e dividiram-se "
+"em muitas culturas e raças diferentes. Apesar de não serem portadores "
+"naturais de magia como outras criaturas, humanos podem aprender a manejá-la "
+"e podem aprender mais tipos de magia que a maior parte dos outros. Humanos "
+"não têm habilidades extras especiais ou aptidões, exceto sua versatilidade e "
+"energia. Embora muitas vezes em desacordo com outras raças, eles podem, "
+"ocasionalmente, formar alianças com as raças menos agressivas, como os elfos "
+"e anões. Também, os menos escrupulosos entre os humanos não hesitam em "
+"contratar mercenários orcs. Os homens não tem inimigos naturais, embora a "
+"sua maioria, como a maioria das pessoas de todas as raças, tem uma aversão "
+"instintiva aos mortos-vivos. Os homens são mais baixos do que os elfos, mas "
+"ainda assim mais altos do que os anões. Sua cor de pele pode variar, desde o "
+"branco claro até o negro..\n"
+"\n"
+"<header>text='Assuntos da Coroa'</header>\n"
+"Há muitos grupos diferentes de homens, mas no Grande Continente a maioria "
+"deles vive sob a regência da Coroa de Wesnoth. Os primeiros humanos "
+"apareceram no Grande Continente vindos de uma terra além do oceano a Oeste, "
+"a Ilha Verde, e logo estabeleceram sua capital na cidade de Weldyn, no "
+"interior. Ao longo dos séculos seguintes, eles construíram numerosas cidades "
+"em todo o continente. Os soldados da Coroa de Wesnoth protegem o país, "
+"formando a força militar mais organizada no mundo conhecido. Seus guerreiros "
+"vêm das principais províncias, onde todos os homens são recrutados numa "
+"idade precoce.\n"
+"\n"
+"<header>text='Homens dos Clãs'</header>\n"
+"As províncias orientais de Wesnoth, conhecidas como o Terras Natais dos "
+"Clãs, tem uma geografia composta por mais planícies abertas e colinas do que "
+"as províncias ocidentais, mais civilizadas. Elas são o lar dos Clãs dos "
+"Cavalos, que são aliados da Coroa de Wesnoth, mas operam de forma "
+"independente e mantém sua própria identidade. Alguns consideram que eles "
+"sejam um estado tributário, que envia alimentos e soldados à Coroa em troca "
+"de proteção. Outros dizem que eles estão em pé de igualdade com a metade "
+"ocidental de Wesnoth. De qualquer forma, as províncias orientais não têm um "
+"exército alistado da maneira como Wesnoth Ocidental faz. O treinamento para "
+"o combate é parte do estilo de vida dos Clãs: os pais ensinam as crianças a "
+"montar cavalos, lutar e disparar um arco desde cedo. Em geral, os guerreiros "
+"dos Clãs são menos organizados do que os combatentes civilizados e os pontos "
+"fortes e fracos destes grupos se complementam."
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:177
@@ -5914,6 +5983,68 @@ msgid ""
 "individuals tend to specialize in other skills, like archery or "
 "assassination."
 msgstr ""
+"Na aparência orcs são um misto de homem e besta, são mais altos, mais "
+"robustos e mais fortes que os humanos. Eles são bélicos, selvagens e cruéis "
+"por natureza. O seu sangue é mais escuro e mais grosso que o dos humanos e "
+"eles têm pouco cuidado com a sua higiene ou aparência pessoal. Apesar de "
+"Orcs serem violentos mesmo entre seus semelhantes, são criaturas coletivas: "
+"um orc nunca faz viagens distantes ou firma moradia em grupos menores do que "
+"um meia dúzia.\n"
+"\n"
+"<header>text='Sociedade'</header>\n"
+"Praticamente todos o orc é um membro de uma tribo ou um clã. Relações entre "
+"tribos vizinhas normalmente são violentas, exceto nos casos em que um "
+"inimigo comum ameaça a suas vidas ou que perspectivas de uma grande pilhagem "
+"tornam-se mais importantes que a animosidade mútua. De vez em quando um "
+"único capitão forte pode aparecer para liderar múltiplas tribos, geralmente "
+"através da intimidação dos seus seguidores. Em tempos de paz, uma tribo orc "
+"tende a concentrar-se quase que exclusivamente em fortalecer-se em "
+"preparação para um próximo conflito armado. Orcs são conhecidos por possuir "
+"um sistema de primitivo da escrita - habitualmente em sangue - embora seu "
+"uso mais comum seja para a troca de insultos ou ameaças entre os líderes "
+"tribais.\n"
+"\n"
+"Sociedades de orcs são baseadas em quase nada além de força: a lei é a lei "
+"do mais forte, e um líder lidera e sobrevive apenas enquanto ninguém "
+"conseguir arrancar o seu título. A constante luta pelo poder ferve entre os "
+"potenciais chefes tribais. Um líder dos orcs raramente vive mais de um "
+"punhado de anos desfrutando de sua autoridade absoluta antes de ser morto "
+"por sua posição - embora a história conheça algumas notáveis exceções. Orcs "
+"não detêm código de honra específico e  embora a força bruta inquestionável "
+"seja geralmente o método preferido de exibir poder, assassinato, "
+"envenenamento e traição são meios completamente viáveis para atingir os "
+"próprios objetivos.\n"
+"\n"
+"Em sua maioria, orcs vivem em áreas rurais, frequentemente em encostas ou "
+"regiões montanhosas e algumas vezes em cavernas. Eles não tem agricultura ou "
+"pecuária, mas são caçadores competentes graças ao seu tamanho e brutalidade. "
+"Pelo fato de serem numerosos, eles são capazes de caçar em uma área "
+"praticamente limpando-a de qualquer coisa maior do que roedores em período "
+"relativamente curto de tempo. Devido a isso e à sua liderança instável, "
+"tribos orcs tendem a levar um estilo de vida semi-nômade, nunca se "
+"estabelecendo em uma região por muito tempo. As tribos maiores podem "
+"estabelecer-se firmemente em uma área por anos ou mesmo décadas e construir "
+"grandes acampamentos que se assemelham a cidades, mas mesmo estes são "
+"facilmente desmontados e abandonados se houver uma necessidade de mudar o "
+"local da horda.\n"
+"\n"
+"Os orcs mais velhos que se conhece tem cerca de 50 a 60 anos de idade, mas "
+"muito poucas indivíduos viveram para ver mais de duas ou três décadas até "
+"encontrar o seu fim seja na guerra ou pela mão de um dos seus semelhantes. "
+"Muitas vezes, os orcs mais velhos são xamãs, que talvez os únicos de sua "
+"espécie vistos como sendo confiáveis e neutros. As origens deste costume são "
+"desconhecidos, já que os xamãs contribuem diretamente em muito para as "
+"sociedades orcs, apenas atuando como acessores - coisa que orcs não tendem a "
+"tolerar de outra forma. Xamãs são, em muitos aspectos, o oposto da maioria "
+"dos outros orcs: eles são frequentemente fisicamente debilitados e frágeis "
+"em comparação e carecem de habilidade na batalha. Apesar de sua dependência "
+"de força bruta, nem todos os orcs são destinados a desenvolver-se para "
+"possuí-la. Muitos orcs nascem menores e mais fracos do que o resto, e "
+"praticamente ainda recém-nascidos já são postos em seu lugar por seus irmãos "
+"mais fortes. Os mais fortes, rotineiramente, pegam a maior parte dos "
+"alimentos e, assim, crescem ainda mais fortes, enquanto seus irmãos mais "
+"fracos não o fazem. Muitos destes indivíduos tendem a se especializar em "
+"outras habilidades, como o arqueirismo ou assassinato."
 
 #. [race]: id=troll
 #: data/core/units.cfg:258
@@ -5968,6 +6099,43 @@ msgid ""
 "dwarves who migrated there. Trolls are a common sight on the mountain ranges "
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
+"Trolls são criaturas ancestrais, são uma das mais antigas dentre as raças "
+"conhecidas que habitam o Grande Continente. Eles são grandes, lentos e "
+"ingênuos, e vivem uma vida extremamente longa dentro de cavernas profundas "
+"ou no topo de altas montanhas. A mais distinta característica dos trolls é a "
+"energia interior que os mantém vivos e os cura a partir de seu interior. "
+"Como resultado, eles vivem uma vida muito diferente de praticamente qualquer "
+"outra criatura. Trolls têm poucas necessidades: eles necessitam pouca comida "
+"ou água e, portanto, têm pouco incentivo para buscar algo além de proteção "
+"contra os que são hostis para com eles. Isso significa que eles raramente "
+"têm com o que se preocupar e podem gastar grande parte do seu tempo dormindo "
+"ou refletindo. Trolls têm uma curiosa afinidade com a natureza. Eles não se "
+"identificam com as coisas vivas, como fazem os elfos, mas com terra e pedra. "
+"Eles também são ligeiramente curiosos sobre seus arredores e muitos filhotes "
+"mais jovens chegam a gostam de viajar e ver o mundo. Conforme envelhecem, os "
+"trolls tendem a se tornar cada vez mais passivos, gradualmente perdendo o "
+"interesse em seu ambiente e gastando mais tempo dormindo em um canto "
+"sossegado e familiar de sua caverna. E assim permanecem até o dia em que "
+"finalmente se vão, pois seus corpos lentamente transformam-se em estátuas de "
+"pedra sem vida.\n"
+"\n"
+"Trolls são vistos por muitos como sendo praticamente nada além de uma outra "
+"raça de monstros selvagens. Este equívoco comum é, em parte, perpetuado "
+"pelos orcs para persuadir trolls a se juntar aos seus exércitos. Como eles "
+"são bastante simplórios, não compreendem os costumes de outras raças, e por "
+"vezes até as discriminam, geralmente é fácil para uma bando de orcs "
+"convencer um grupo de trolls que, ao juntar-se a eles conseguirão vingar-se "
+"daqueles já os caçaram. Estes novos recrutas são então levados a atacar quem "
+"quer que os orcs estejam em conflito, seja este um inimigo dos trolls ou "
+"não, acumulando assim ainda mais inimigos para os iludidos trolls. O inimigo "
+"mais comum de trolls são os anões, e a animosidade entre essas duas raças é "
+"muito antiga.\n"
+"\n"
+"<header>text='Geografia'</header>\n"
+"Trolls têm habitado as montanhas do Grande Continente a mais tempo do que os "
+"anões que para lá migraram. Eles são uma presença comum sobre as cadeias de "
+"montanhas ao norte e leste de Wesnoth, ou por onde quer que as hordas orcs "
+"viajem."
 
 #. [race]: id=undead
 #: data/core/units.cfg:280
@@ -6012,6 +6180,32 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
+"Mortos-vivos não são uma raça única de criaturas, embora muitas vezes sejam "
+"tratados como tal. Praticamente qualquer criatura morta pode, por via de um "
+"necromante suficientemente qualificado, ser reanimada e ressuscitar como um "
+"morto-vivo. Mortos-vivos são em sua maioria obras sobrenaturais porém sem "
+"inteligência, obedecendo a quem os criou sem questionamento nem reflexão. O "
+"maior mistério da necromancia está na forma como as criações são mantidas "
+"sem esforço contínuo do necromante. Uma criatura morta-viva não requer a "
+"atenção constante do necromante comandando e amparando, mas pode funcionar "
+"de forma autónoma de acordo com os comandos de seu mestre. Só raramente, "
+"possivelmente uma vez a cada poucos meses, é necessário ao necromante "
+"preservar sua criação.\n"
+"\n"
+"Necromancia é quase exclusivamente limitada aos seres humanos. Mesmo as "
+"lendas de raças magicamente aptas como elfos e tritões falam de muitos "
+"poucos de sua espécie que já mergulharam nas artes das trevas. Supõe-se que "
+"a magia necromântica requeira grande capacidade de adaptação e uma mente "
+"flexível, extremos daquilo que é mais frequentemente encontrados em seres "
+"humanos. O objetivo final da maioria dos necromantes é usar a mesma arte de "
+"conservar e embutir a vida sobre si mesmos, para modificar-se custe o que "
+"custar, de forma a finalmente escapar da morte, preservando a sua própria "
+"mente e espírito.\n"
+"\n"
+"<header>text='Geografia'</header>\n"
+"Embora os senhores mortos-vivos chegaram ao Grande Continente em números "
+"consideráveis apenas no aparecer de Haldric I, eles não eram totalmente "
+"desconhecidos por elfos e anões antes disso."
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:296
@@ -6101,12 +6295,12 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:19
 msgid "$name's Bridge,$name's Crossing"
-msgstr "Ponte de $name, Encruzilhada de $name"
+msgstr "Ponte de $name, Travessia de $name"
 
 #. [language]
 #: data/hardwired/english.cfg:20
 msgid "$name's Highway,$name's Pass,Path of $name"
-msgstr "Estrada de $name's,Passagem de $name's Pass,Caminho de $name"
+msgstr "Estrada $name's,Passo de $name's Pass,Caminho de $name"
 
 #. [language]
 #: data/hardwired/english.cfg:21
@@ -6116,7 +6310,7 @@ msgstr "Rio de $name, Rio $name"
 #. [language]
 #: data/hardwired/english.cfg:22
 msgid "$name Forest,$name's Forest"
-msgstr "Floresta de $name, Floresta $name"
+msgstr "Floresta $name, Floresta de $name"
 
 #. [language]
 #: data/hardwired/english.cfg:23
@@ -6126,83 +6320,81 @@ msgstr "Lago $name"
 #. [language]
 #: data/hardwired/english.cfg:24
 msgid "$name's Peak,Mount $name"
-msgstr ""
+msgstr "Pico de $name,Monte $name"
 
 #. [language]
 #: data/hardwired/english.cfg:25
-#, fuzzy
 msgid "$name's Swamp,$name|marsh,$name|fen"
-msgstr "$name|ópolis,$name|lândia,$name|ville"
+msgstr "Pântano de $name,Brejo $name,Charco $name"
 
 #. [language]
 #: data/hardwired/english.cfg:26
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "$name|burgo,$name|ópolis,$name|lândia"
+msgstr "$name|burgo,$name|ham,$name|tom,$name|burgo"
 
 #. [language]
 #: data/hardwired/english.cfg:27
-#, fuzzy
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "Porto $name, Baía de $name"
+msgstr "Porto $name, Enseada $name, Porto de $lake, Enseada de $lake"
 
 #. [language]
 #: data/hardwired/english.cfg:28
-#, fuzzy
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
-msgstr ",$name|ópolis,$name|lândia,$name|í,$river|íuna,$river|í"
+msgstr ""
+"$name|ham,$name|forde,$name|cross,$river|forde,$river|cross,$name do rio"
 
 #. [language]
 #: data/hardwired/english.cfg:29
-#, fuzzy
 msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
-msgstr "$river|bridge,$river|bridge,$river|bridge,$name|ópolis,$name|bridge"
+msgstr ""
+"Ponte $river,Ponte $river,Ponte $river,$name|ham,Ponte $name,$bridge|ham,"
+"$bridge|tom"
 
 #. [language]
 #: data/hardwired/english.cfg:30
 msgid "$name|ham,$name|ton,$name|field"
-msgstr "$name|ópolis,$name|lândia,$name|ville"
+msgstr "$name|ham,$name|tom,$name,$name|filde"
 
 #. [language]
 #: data/hardwired/english.cfg:31
-#, fuzzy
 msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
-msgstr "$name|ópolis,$name|lândia,$name|na,$name da Floresta"
+msgstr ""
+"$name|ham,$name|tom,$name|wood,Bosque $name,$forest|wood,$forest|ham,$forest|"
+"tom"
 
 #. [language]
 #: data/hardwired/english.cfg:32
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name|ópolis, $name|burgo,$name|lândia,$name|lina,Monte $name"
+msgstr "$name|ham,$name|burgo,$name|tom,$name|hill,$name|creste"
 
 #. [language]
 #: data/hardwired/english.cfg:33
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr ""
+msgstr "$mountain|monte,$mountain|clife,$mountain|burgo,$mountain|ham"
 
 #. [language]
 #: data/hardwired/english.cfg:34
-#, fuzzy
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
 msgstr ""
-"$name|ópolis,$name|burgo,$name|lândia,$name|monte,Quedas de $name,Quedas de "
-"$name"
+"$name|ham,$name|burgo,$name|tom,$name|monte,$name|monte,$name|clife,$name|"
+"clife"
 
 #. [language]
 #: data/hardwired/english.cfg:35
 msgid "$road's Rest,$road's Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr ""
+"Pouso de $road,Parada de $road,$road|burgo,$road|ham,$name|burgo,$name|ham"
 
 #. [language]
 #: data/hardwired/english.cfg:36
-#, fuzzy
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
-msgstr "$name|burgo,$name|ópolis,$name|lândia"
+msgstr "$name|burgo,$name|ham,$name|tom,$swamp|burgo,$swamp|ham,$swamp|tom,"
 
 #. [language]
 #: data/hardwired/english.cfg:39
@@ -6261,6 +6453,9 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
+"Não negligencie obter experiência para seu líder! Você precisa mantê-lo "
+"seguro, mas se você protegê-lo demais, ele poderá estar em um nível muito "
+"baixo para sobreviver batalhas futuras."
 
 #. [tip]
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
@@ -6275,6 +6470,11 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
+"No menu 'Ações', você pode selecionar 'Mostrar Movimentos do Inimigo' para "
+"destacar todos os hexágonos possíveis para seu adversário movimentar-se "
+"(assumindo que suas unidades ficam onde estão). Use isso para garantir que o "
+"inimigo não pode atingir suas unidades fracass ou feridass em seu próximo "
+"turno."
 
 #. [tip]
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:20
@@ -6302,6 +6502,10 @@ msgid ""
 "Early in a campaign, try to give killing blows to these units so you can get "
 "some high-level troops sooner."
 msgstr ""
+"Unidades com a característica 'inteligente' precisam menos pontos de "
+"experiência para subir de nível. No início de uma campanha, tente dar golpes "
+"fatais com essas unidades para que você possa obter logo algumas tropas de "
+"alto nível"
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
@@ -6315,6 +6519,9 @@ msgid ""
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction."
 msgstr ""
+"A tática de cerco é muito poderosa, principalmente contra adversários "
+"velozes. Colocando duas unidades em lados opostos de um inimigo, suas zonas "
+"de controle irão limitá-lo um hexágono de movimento em qualquer direção."
 
 #. [tip]
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
@@ -6328,6 +6535,10 @@ msgid ""
 "castle tile. That will let you choose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
+"Você pode acessar os comandos de 'Recrutar' e 'Convocar' com clique do botão "
+"direito do mouse em um hexágono de castelo. Isso permitirá que você escolha "
+"qual hexágono você irá colocar uma nova unidade. Ás vezes, colocar "
+"sabiamente as unidades pode permitir chegar mais cedo a uma aldeia próxima."
 
 #. [tip]
 #: data/hardwired/tips.cfg:23
@@ -6336,6 +6547,9 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
+"Há algumas telas de informações úteis no menu principal: por exemplo, a "
+"'Tabela de Estatus' permite você saber como seus inimigos estão se saindo, e "
+"como você está se saindo na comparação."
 
 #. [tip]
 #: data/hardwired/tips.cfg:27
@@ -6344,6 +6558,10 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
+"Unidades com a característica \"veloz\" movem-se um hexágono extra por "
+"turno. Isto pode ser muito importante ao se deslocar por terrenos difíceis, "
+"tais como água ou cavernas. Isso pode fazer a diferença entre ser capaz de "
+"mover um hexágono ou dois."
 
 #. [tip]
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
@@ -6356,6 +6574,9 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
+"Depois de ter jogado alguns cenários, leia com atenção a seção 'Regras' na "
+"tela de ajuda. Detalhes tornam-se importantes conforme os cenários ficam "
+"mais difíceis!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:35
@@ -6364,6 +6585,9 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
+"Geralmente é melhor para começar o próximo cenário de uma campanha com "
+"unidades de nível inferior que estão prestes a subir de nível do que com "
+"aquelas mesmas unidades de nivel mais alto."
 
 #. [tip]
 #: data/hardwired/tips.cfg:39
@@ -6371,6 +6595,8 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
+"Em www.wesnoth.org você pode encontrar guias de estratégia, suporte técnico, "
+"a história de Wesnoth, e muito mais."
 
 #. [tip]
 #: data/hardwired/tips.cfg:40
@@ -6396,6 +6622,8 @@ msgstr "- Compêndio Real de Terminologia de Batalha - Volume II, 212AW"
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
+"Um plano que de outra maneira seria sólido, pode falhar se você atacar na "
+"hora errada do dia."
 
 #. [tip]
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
@@ -6411,6 +6639,11 @@ msgid ""
 "cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units see as far as they can move in one turn."
 msgstr ""
+"Se você estiver jogando com 'Escuridão' ou 'Neblina de Guerra' ligados, você "
+"não sabe o que está enfrentando. Neste caso, unidades de reconhecimento de "
+"longo alcance são dignos de seu custo. Tente escolher batedores que podem "
+"facilmente passar por todo o terreno vizinho, porque as unidades veem tanto "
+"quanto eles podem se mover em um turno."
 
 #. [tip]
 #: data/hardwired/tips.cfg:55
@@ -6447,6 +6680,12 @@ msgid ""
 "not be removed unless the unit regenerates, or begins a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
+"Unidades envenenadas perdem oito pontos de vida a cada turno até que estejam "
+"a um ponto da morte. Eles vão permanecer à beira da morte até que o veneno "
+"seja removido. Curandeiros podem impedir uma unidade envenenada de perder "
+"vida, mas o veneno não será removido a menos que a unidade se regenere, ou "
+"inicie um turno em uma aldeia ou próximo a uma unidade com habilidade de "
+"'Curar'."
 
 #. [tip]
 #: data/hardwired/tips.cfg:67
@@ -6749,10 +6988,10 @@ msgid ""
 "your lower-level units instead."
 msgstr ""
 "Unidades podem ganhar um Avanço Além do Nível Máximo (em inglês, AMLA), que "
-"normalmente recupera e aumenta o número de pontos de vida máximos da unidade "
-"em 3. Ganhar mais um AMLA vai se tornando cada vez mais difícil, para cada "
-"AMLA que a unidade receba. Desse modo, normalmente é mais útil tentar "
-"avançar suas unidades de nível mais baixo."
+"normalmente aumenta o número de pontos de vida máximos da unidade em 3 e os "
+"recupera completamente. Ganhar mais um AMLA vai se tornando cada vez mais "
+"difícil, para cada AMLA que a unidade receba. Desse modo, normalmente é mais "
+"útil tentar avançar suas unidades de nível mais baixo."
 
 #. [tip]
 #: data/hardwired/tips.cfg:175
@@ -6823,6 +7062,8 @@ msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
+"Se um inimigo beneficia-se mais de um tipo raro de terreno do que você, "
+"ocupar esse terreno vai privá-lo de seus benefícios."
 
 #. [tip]
 #: data/hardwired/tips.cfg:201
@@ -6831,6 +7072,9 @@ msgid ""
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
 "a similar manner, and dwarves can do the same with mountains."
 msgstr ""
+"Poucas unidades têm boa defesa na água, uma linha de atacantes ao longo da "
+"margem de um rio pode causar muitas baixas. Elfos pode usar a beira de uma "
+"floresta de uma forma similar, e anões podem fazer o mesmo com as montanhas."
 
 #. [tip]
 #: data/hardwired/tips.cfg:206
@@ -6838,6 +7082,9 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
+"Em muitos cenários das campanhas, você pode passar instruções simples aos "
+"seus aliados controlados por computador usando o menu de contexto do botão "
+"direito do mouse."
 
 #: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1611
 msgid "Victory:"
@@ -6859,6 +7106,8 @@ msgstr "Salvar minha resposta e não perguntar mais"
 msgid ""
 "To change the setting later on, click on the envelope icon in the main menu."
 msgstr ""
+"Para mudar a configuração mais tarde clique no ícone de envelope no menu "
+"principal."
 
 #: data/temp-file_send_data_strings.cfg:15
 msgid "Send"
@@ -6870,7 +7119,7 @@ msgstr "Não enviar"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
-msgstr ""
+msgstr "Não perguntar toda vez que for enviar dados"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:120 data/themes/dfool.cfg:139
@@ -7199,6 +7448,8 @@ msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
+"Você ainda deseja fazer o download $addon_title|? (Você terá que instalar "
+"todas as dependências para poder jogar.)"
 
 #: src/addon_management.cpp:539 src/addon_management.cpp:613
 #: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:81
@@ -7234,6 +7485,8 @@ msgstr "Baixando o extra: $addon_title|..."
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr ""
+"Este extra tem nome de arquivo ou diretório inválido e não pode ser "
+"instalado."
 
 #: src/addon_management.cpp:709
 msgid "The add-on '$addon_title|' has been successfully installed."
@@ -7255,7 +7508,11 @@ msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
 msgstr[0] ""
+"Um extra local desatualizado tem informação de publicação anexa. Ele não "
+"será oferecido para atualização."
 msgstr[1] ""
+"Alguns extras locais desatualizados tem informações de publicação anexas. "
+"Eles não serão oferecidos para atualização."
 
 #: src/addon_management.cpp:807
 msgid "No add-ons to update"
@@ -7263,7 +7520,7 @@ msgstr "Sem extras para atualizar"
 
 #: src/addon_management.cpp:808
 msgid "Could not find any updated add-ons on this server."
-msgstr ""
+msgstr "Não foi possível encontrar nenhum extra atualizado neste servidor."
 
 #: src/addon_management.cpp:820 src/addon_management.cpp:1018
 #: src/dialogs.cpp:571 src/menu_events.cpp:207 src/menu_events.cpp:849
@@ -7656,6 +7913,8 @@ msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
+"O servidor será executado em segundo plano até que todos os usuários tenham "
+"desconectado."
 
 #: src/game.cpp:1184
 msgid "Don't show again"
@@ -7737,7 +7996,7 @@ msgstr "Info: "
 
 #: src/game_events.cpp:3266
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr ""
+msgstr "filtro de [unit_worth] não encontrou nenhuma unidade!"
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -7913,7 +8172,7 @@ msgstr "(jogando)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:72
 msgid "In lobby"
-msgstr "Na sala"
+msgstr "Na sala de espera"
 
 #: src/gui/dialogs/lobby_player_info.cpp:96
 msgid "On friends list"
@@ -7925,7 +8184,7 @@ msgstr "Adicionados à lista de ignorados"
 
 #: src/gui/dialogs/lobby_player_info.cpp:106
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "Nem amigo nem ignorado"
 
 #: src/gui/dialogs/lobby_player_info.cpp:111
 msgid "You"
@@ -8124,11 +8383,11 @@ msgstr "Lendo os arquivos e criando o cache..."
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
-msgstr ""
+msgstr "Um mapa sem cabeçalho não é suportado"
 
 #: src/mapgen.cpp:740
 msgid "Random maps with an odd width aren't supported."
-msgstr ""
+msgstr "Mapas aleatórios com largura ímpar não são suportados."
 
 #: src/menu_events.cpp:92 src/menu_events.cpp:95 src/menu_events.cpp:99
 msgid "Do you really want to dismiss him?"
@@ -8396,84 +8655,90 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"Comando '$command' desconhecido, tente $help_command para uma lista de "
+"comandos disponíveis."
 
 #: src/menu_events.cpp:1957
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
 msgstr ""
+"Lista de comandos disponíveis e ajuda específica por comando. Use \"help all"
+"\" para incluir comandos não disponíveis no momento."
 
 #: src/menu_events.cpp:1959
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "Não traduza 'all'^[all|<command>]"
 
 #: src/menu_events.cpp:2003
-#, fuzzy
 msgid "Error:"
 msgstr "Erro:"
 
 #: src/menu_events.cpp:2009
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "Argumento faltante $arg_id"
 
 #: src/menu_events.cpp:2057
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"Comandos disponíveis $flags_description:\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2057 src/menu_events.cpp:2058 src/menu_events.cpp:2081
-#, fuzzy
 msgid "help"
-msgstr "Ajuda"
+msgstr "ajuda"
 
 #: src/menu_events.cpp:2058
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "Tecle $help_command <comando> para mais infomações."
 
 #: src/menu_events.cpp:2069
 msgid " No help available."
 msgstr " Nenhuma ajuda disponível."
 
 #: src/menu_events.cpp:2074
-#, fuzzy
 msgid "Usage:"
-msgstr "Mensagem:"
+msgstr "Uso:"
 
 #: src/menu_events.cpp:2079
 msgid "aliases:"
-msgstr ""
+msgstr "atalhos:"
 
 #: src/menu_events.cpp:2205
 msgid "(A) - admin command"
-msgstr ""
+msgstr "(A) - comando de admin"
 
 #: src/menu_events.cpp:2212 src/menu_events.cpp:2411
-#, fuzzy
 msgid "(admin only)"
-msgstr "Somente time"
+msgstr "Somente admin"
 
 #: src/menu_events.cpp:2232
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
+"Envia um comando para o servidor. Sem o uso de argumentos o servidor deve "
+"informar os comandos disponíveis."
 
 #: src/menu_events.cpp:2236
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
+"Banir e chutar um jogador ou observador. Se ele não estiver no jogo, mas "
+"somente no servidor ele só vai ser banido."
 
 #: src/menu_events.cpp:2237 src/menu_events.cpp:2240 src/menu_events.cpp:2242
 #: src/menu_events.cpp:2244 src/menu_events.cpp:2246 src/menu_events.cpp:2271
 #: src/menu_events.cpp:2273 src/menu_events.cpp:2275 src/menu_events.cpp:2289
 msgid "<nick>"
-msgstr ""
+msgstr "<nick>"
 
 #: src/menu_events.cpp:2239
 msgid "Unban a user. He does not have to be in the game but on the server."
-msgstr ""
+msgstr "Desbanir um usuário. Ele não precisa estar no jogo, mas no servidor."
 
 #: src/menu_events.cpp:2242
 msgid "Kick a player or observer."
@@ -8482,23 +8747,26 @@ msgstr "Chutar um jogador ou observador."
 #: src/menu_events.cpp:2244
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
+"Silencia um observador. Sem argumentos apresenta o estado de silenciado."
 
 #: src/menu_events.cpp:2246
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
+"Remover silencio de um observador. Sem argumentos remove silencio de todos."
 
 #: src/menu_events.cpp:2248
 msgid "Mute/Unmute all observers. (toggles)"
-msgstr ""
+msgstr "Silenciar/Remover em todos observadores. (alternar)"
 
 #: src/menu_events.cpp:2258
 msgid "Send a message to the server admins currently online"
 msgstr ""
+"Envia uma mensagem para os administradores do servidor que estão online no "
+"momento."
 
 #: src/menu_events.cpp:2260
-#, fuzzy
 msgid "<message>"
-msgstr "Mensagem:"
+msgstr "<mensagem>"
 
 #: src/menu_events.cpp:2260
 msgid "Send an emotion or personal action in chat."
@@ -8510,19 +8778,19 @@ msgid ""
 "control a side in a running game you are in."
 msgstr ""
 "Envia uma mensagem privada. Você não pode enviar mensagens para jogadores "
-"que controlem quaisquer times em jogo. Uso: /whisper [nome] [mensagem]"
+"que controlem quaisquer times em jogo."
 
 #: src/menu_events.cpp:2265
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<nome> <mensagem>"
 
 #: src/menu_events.cpp:2269
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<nível> <domínio>"
 
 #: src/menu_events.cpp:2269
 msgid "Change the log level of a log domain."
-msgstr ""
+msgstr "Muda o nível de log de um domínio de log."
 
 #: src/menu_events.cpp:2271
 msgid "Add a nick to your ignores list."
@@ -8549,7 +8817,7 @@ msgstr "Mostra informação da versão."
 
 #: src/menu_events.cpp:2282
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<password> <email (opcional)>"
 
 #: src/menu_events.cpp:2282
 msgid "Register your nick"
@@ -8557,16 +8825,15 @@ msgstr "Registre seu nick"
 
 #: src/menu_events.cpp:2284
 msgid "Drop your nick."
-msgstr ""
+msgstr "Descartar o seu nick."
 
 #: src/menu_events.cpp:2286
-#, fuzzy
 msgid "Update details for your nick. For possible details see '/details'."
 msgstr "Atualiza detalhes de seu nick. Para visualizar veja '/details'."
 
 #: src/menu_events.cpp:2287
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<detalhe> <valor>"
 
 #: src/menu_events.cpp:2289
 msgid "Request information about a nick."
@@ -8574,11 +8841,11 @@ msgstr "Requisitar informação sobre o nick."
 
 #: src/menu_events.cpp:2291
 msgid "Request a list of details you can set for your registered nick."
-msgstr ""
+msgstr "Solicita a lista de detalhes que você pode definir para o seu nick."
 
 #: src/menu_events.cpp:2293 src/menu_events.cpp:2296 src/menu_events.cpp:2298
 msgid "<room>"
-msgstr ""
+msgstr "<sala>"
 
 #: src/menu_events.cpp:2293
 msgid "Join a room."
@@ -8586,7 +8853,7 @@ msgstr "Entrar na sala."
 
 #: src/menu_events.cpp:2296
 msgid "Part a room."
-msgstr ""
+msgstr "Partir de uma sala."
 
 #: src/menu_events.cpp:2298
 msgid "List room members."
@@ -8598,53 +8865,52 @@ msgstr "Lista de salas disponíveis."
 
 #: src/menu_events.cpp:2302
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<sala> <mensagem>"
 
 #: src/menu_events.cpp:2302
 msgid "Room message."
-msgstr ""
+msgstr "Mensagem para a sala."
 
 #: src/menu_events.cpp:2304
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "<sala> <tipo> [valor]"
 
 #: src/menu_events.cpp:2304
 msgid "Room query."
-msgstr ""
+msgstr "Comando de sala."
 
 #: src/menu_events.cpp:2403
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
-msgstr ""
+msgstr "(D) - somente em debug, (N) - somente em rede, (A) - somente admin"
 
 #: src/menu_events.cpp:2409
-#, fuzzy
 msgid "(debug command)"
-msgstr "Comandos do modo de Debug"
+msgstr "(comandos de debug)"
 
 #: src/menu_events.cpp:2410
-#, fuzzy
 msgid "(network only)"
-msgstr "Jogador Remoto"
+msgstr "(somente em rede)"
 
 #: src/menu_events.cpp:2435
 msgid "Refresh gui."
-msgstr ""
+msgstr "Atualizar interface gráfica."
 
 #: src/menu_events.cpp:2437
 msgid "Switch a side to/from AI control."
-msgstr ""
+msgstr "Mudar um lado de/para controle por IA."
 
 #: src/menu_events.cpp:2437
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "do not translate the on/off^[<time> [on/off]]"
 
 #: src/menu_events.cpp:2440
 msgid "<side> <nick>"
-msgstr ""
+msgstr "<time> <nick>"
 
 #: src/menu_events.cpp:2440
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
+"Atribuir o controle de um lado para um jogador diferente ou um observador."
 
 #: src/menu_events.cpp:2442
 msgid "Clear chat history."
@@ -8652,12 +8918,11 @@ msgstr "Limpa o histórico das mensagens."
 
 #: src/menu_events.cpp:2444
 msgid "Visualize the screen refresh procedure."
-msgstr ""
+msgstr "Visualiza o procedimento de atualização da tela."
 
 #: src/menu_events.cpp:2445
-#, fuzzy
 msgid "Show fps."
-msgstr "Mostrar o replay"
+msgstr "Mostrar fps (frames por segundo)"
 
 #: src/menu_events.cpp:2447
 msgid "Save game."
@@ -8681,7 +8946,7 @@ msgstr "Desabilitar salvamento automático."
 
 #: src/menu_events.cpp:2460
 msgid "<id>"
-msgstr ""
+msgstr "<id>"
 
 #: src/menu_events.cpp:2460
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -8697,47 +8962,48 @@ msgstr "Comandos do modo de Debug"
 
 #: src/menu_events.cpp:2468
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Desativar modo de depuração (debug)."
 
 #: src/menu_events.cpp:2470 src/menu_events.cpp:2474
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<comando>[;<comando>...]"
 
 #: src/menu_events.cpp:2470
 msgid "Execute a Lua statement."
-msgstr ""
+msgstr "Executar um comando lua."
 
 #: src/menu_events.cpp:2472
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Concede altos privilegios aos scripts Lua."
 
 #: src/menu_events.cpp:2474
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
+"Estabelece o comando usado pela tecla de atalho de comando personalizado."
 
 #: src/menu_events.cpp:2476
 msgid "Launch the gamestate inspector"
-msgstr ""
+msgstr "Inicia o inspetor de estado do jogo."
 
 #: src/menu_events.cpp:2478
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<nome>[=<comando>]"
 
 #: src/menu_events.cpp:2478
 msgid "Set or show alias to a command"
-msgstr ""
+msgstr "Define ou exibe um atalho para um comando."
 
 #: src/menu_events.cpp:2480
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<var>=<valor>"
 
 #: src/menu_events.cpp:2480
 msgid "Set a scenario variable."
-msgstr "Mostra uma variável do cenário."
+msgstr "Define uma variável do cenário."
 
 #: src/menu_events.cpp:2482
 msgid "<var>"
-msgstr ""
+msgstr "<var>"
 
 #: src/menu_events.cpp:2482
 msgid "Show a scenario variable."
@@ -8746,10 +9012,12 @@ msgstr "Mostra uma variável do cenário."
 #: src/menu_events.cpp:2484
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
+"Modifica uma variável de unidade. (Somente chaves de primeiro nível são "
+"suportadas.)"
 
 #: src/menu_events.cpp:2491
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Descobre todas unidades na ajuda."
 
 #: src/menu_events.cpp:2496
 msgid "Create a unit."
@@ -8769,19 +9037,19 @@ msgstr "Entregar ouro para o jogador atual."
 
 #: src/menu_events.cpp:2504
 msgid "Fire a game event."
-msgstr ""
+msgstr "Dispara um evento de jogo."
 
 #: src/menu_events.cpp:2507
 msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr ""
+msgstr "Liga/desliga exibição das coordenadas x,y sobre os hexágonos."
 
 #: src/menu_events.cpp:2510
 msgid "Toggle overlaying of terrain codes on hexes."
-msgstr ""
+msgstr "Liga/desliga a exibição dos códigos de terreno nos hexágonos."
 
 #: src/menu_events.cpp:2554
 msgid "Unknown debug level: '$level'."
-msgstr ""
+msgstr "Nível de debug desconhecido: '$level'."
 
 #: src/menu_events.cpp:2556 src/menu_events.cpp:2565
 msgid "error"
@@ -8789,19 +9057,19 @@ msgstr "erro"
 
 #: src/menu_events.cpp:2563
 msgid "Unknown debug domain: '$domain'."
-msgstr ""
+msgstr "Domínio de debug desconhecido."
 
 #: src/menu_events.cpp:2572
 msgid "Switched domain: '$domain' to level: '$level'."
-msgstr ""
+msgstr "Domínio modificado: '$domain' para nível: '$level'."
 
 #: src/menu_events.cpp:2643
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "Sussurrar para $receiver"
 
 #: src/menu_events.cpp:2650 src/multiplayer_ui.cpp:552
 msgid "whisper: $sender"
-msgstr ""
+msgstr "sussurro:  $sender"
 
 #: src/menu_events.cpp:2746 src/menu_events.cpp:2765
 #: src/multiplayer_connect.cpp:698
@@ -8809,74 +9077,65 @@ msgid "(empty)"
 msgstr "(vazio)"
 
 #: src/menu_events.cpp:2746 src/menu_events.cpp:2752 src/menu_events.cpp:2802
-#, fuzzy
 msgid "ignores list"
-msgstr "Adicionados à lista de ignorados"
+msgstr "lista de ignorados"
 
 #: src/menu_events.cpp:2752
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Adicionados à lista de ignorados: "
+msgstr "Adicionados à lista de ignorados: $nick"
 
 #: src/menu_events.cpp:2755 src/menu_events.cpp:2774
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Nome de usuário inválido:"
+msgstr "Nome de usuário inválido: $nick"
 
 #: src/menu_events.cpp:2765 src/menu_events.cpp:2772 src/menu_events.cpp:2798
-#, fuzzy
 msgid "friends list"
-msgstr "Adicionados à lista de amigos"
+msgstr "lista de amigos"
 
 #: src/menu_events.cpp:2772
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Adicionados à lista de amigos: "
+msgstr "Adicionados à lista de amigos: $nick"
 
 #: src/menu_events.cpp:2788
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Removidos da lista: "
+msgstr "Removidos da lista: $nick"
 
 #: src/menu_events.cpp:2788 src/menu_events.cpp:2806
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "Adicionados à lista de ignorados"
+msgstr "lista de ignorados e amigos"
 
 #: src/menu_events.cpp:2806
 msgid "There are no players on your friends or ignore list."
 msgstr "Não há jogadores em sua lista de amigos ou de ignorar."
 
 #: src/menu_events.cpp:2811
-#, fuzzy
 msgid "version"
-msgstr "Versão"
+msgstr "versão"
 
 #: src/menu_events.cpp:2827
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "registrando com password *** e sem endereço de email"
 
 #: src/menu_events.cpp:2831
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "registrando com password *** e endereço de email $email"
 
 #: src/menu_events.cpp:2834 src/menu_events.cpp:2845 src/menu_events.cpp:2863
 #: src/menu_events.cpp:2877
 msgid "nick registration"
-msgstr ""
+msgstr "registro de nick"
 
 #: src/menu_events.cpp:2845
 msgid "dropping your username"
-msgstr ""
+msgstr "descartando seu nome de usuário"
 
 #: src/menu_events.cpp:2863
 msgid "setting $var to $value"
-msgstr ""
+msgstr "definindo $var igual a $value"
 
 #: src/menu_events.cpp:2877
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Requisitar informação sobre o nick."
+msgstr "Requisitar informação sobre o usuário $nick"
 
 #: src/menu_events.cpp:2989
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -8884,19 +9143,19 @@ msgstr "Não pude encontrar nome ou unidade contendo '$search'."
 
 #: src/menu_events.cpp:3018
 msgid "Can't droid invalid side: '$side'."
-msgstr ""
+msgstr "Não é possível 'droid' no time inválido: '$side'."
 
 #: src/menu_events.cpp:3023
 msgid "Can't droid networked side: '$side'."
-msgstr ""
+msgstr "Não é possível 'droid' no time de rede: '$side'."
 
 #: src/menu_events.cpp:3060
 msgid "Can't change control of invalid side: '$side'."
-msgstr ""
+msgstr "Não é possível alterar o controle do time inválido: '$side'."
 
 #: src/menu_events.cpp:3066
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr ""
+msgstr "Não é possível alterar o controle do time fora dos limites: '$side'."
 
 #: src/menu_events.cpp:3157
 msgid "Choose Scenario (Debug!)"
@@ -8908,7 +9167,7 @@ msgstr "Modo debug ativado!"
 
 #: src/menu_events.cpp:3181
 msgid "Debug mode not available in network games"
-msgstr ""
+msgstr "Modo 'debug' não disponível para jogos em rede"
 
 #: src/menu_events.cpp:3186
 msgid "Debug mode deactivated!"
@@ -8916,7 +9175,7 @@ msgstr "Modo debug desativado!"
 
 #: src/menu_events.cpp:3197
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Scripts Lua não-seguros."
 
 #: src/menu_events.cpp:3198
 msgid ""
@@ -8924,30 +9183,33 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Você está prestes a abrir uma brecha de segurança no Wesnoth. Tem certeza "
+"que quer continuar? Se você baixou extras, NÃO clique 'ok'! Eles podem "
+"instantâneamente tomar o controle de seu computador. Você está sendo avisado."
 
 #: src/menu_events.cpp:3201
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Modo não-seguro habilitado!"
 
 #: src/menu_events.cpp:3244
 msgid "Variable not found"
-msgstr ""
+msgstr "Variável não encontrada"
 
 #: src/menu_events.cpp:3282
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
+"Alinhamento inválido: '$alignment', deve ser um dentre 'lawful', 'neutral' "
+"or 'chaotic'."
 
 #: src/menu_events.cpp:3339
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Nome de tag inválido"
+msgstr "Nome de unidade inválido"
 
 #: src/menu_events.cpp:3352
-#, fuzzy
 msgid "Invalid location"
-msgstr "Cor inválida"
+msgstr "Local inválido"
 
 #: src/menu_events.cpp:3388
 msgid "ai"
@@ -8990,7 +9252,7 @@ msgstr "Redirecionamento em loop do servidor"
 
 #: src/multiplayer.cpp:256
 msgid "Bad data received from server"
-msgstr ""
+msgstr "Dados corrompidos recebido do servidor"
 
 #: src/multiplayer.cpp:297
 msgid "You must login first."
@@ -8998,18 +9260,20 @@ msgstr "Você deve fazer o login primeiro."
 
 #: src/multiplayer.cpp:299
 msgid "The nick '$nick' is already taken."
-msgstr ""
+msgstr "O nick '$nick' já está sendo usado."
 
 #: src/multiplayer.cpp:301
 msgid ""
 "The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
 "underscores and hyphens are allowed."
 msgstr ""
+"O nick '$nick' contém caracteres inválidos. Somente são permitidos "
+"caracteres alfanuméricos, sublinhados e hífens."
 
 #: src/multiplayer.cpp:305
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
 msgstr ""
-"O nick '$nick' é muito grando. Nicks devem conter 18 ou menos caracteres."
+"O nick '$nick' é muito grande. Nicks devem conter 18 ou menos caracteres."
 
 #: src/multiplayer.cpp:308
 msgid "The nick '$nick' is reserved and cannot be used by players."
@@ -9021,7 +9285,7 @@ msgstr "O nick '$nick' não está registrado neste servidor."
 
 #: src/multiplayer.cpp:311
 msgid " This server disallows unregistered nicks."
-msgstr ""
+msgstr " Este servidor não permite uso de nicks não registrados."
 
 #: src/multiplayer.cpp:313 src/multiplayer.cpp:315
 msgid "The nick '$nick' is registered on this server."
@@ -9032,15 +9296,19 @@ msgid ""
 "WARNING: There is already a client using this nick, logging in will cause "
 "that client to be kicked!"
 msgstr ""
+"ATENÇÃO: Já existe um cliente usando este nick, entrar causará que este "
+"cliente seja chutado!"
 
 #: src/multiplayer.cpp:319
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
+"Erro no procedimento de login (o servidor não tem uma 'seed' para sua "
+"conexão)."
 
 #: src/multiplayer.cpp:322
 msgid "The password you provided was incorrect."
-msgstr ""
+msgstr "Você forneceu um password incorreto."
 
 #: src/multiplayer_connect.cpp:95 src/multiplayer_connect.cpp:484
 #: src/multiplayer_connect.cpp:628
@@ -9092,7 +9360,7 @@ msgstr "Reservado"
 
 #: src/multiplayer_connect.cpp:806
 msgid "--give--"
-msgstr ""
+msgstr "--ceder--"
 
 #: src/multiplayer_connect.cpp:941
 msgid "Only random sides in the current era."
@@ -9104,7 +9372,7 @@ msgstr "Não encontro um líder para a facção $faction"
 
 #: src/multiplayer_connect.cpp:1002
 msgid "Game Lobby: "
-msgstr "Sala de espera:"
+msgstr "Sala de Espera:"
 
 #: src/multiplayer_connect.cpp:1023
 msgid "Player/Type"
@@ -9289,9 +9557,8 @@ msgid "Invalid era selected"
 msgstr "Era inválida selecionada"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "O jogo terminou."
+msgstr "O mapa é inválido."
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
@@ -9364,7 +9631,7 @@ msgstr "Senha Requerida"
 
 #: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
 msgid "Game Lobby"
-msgstr "Sala de espera"
+msgstr "Sala de Espera"
 
 #: src/multiplayer_lobby.cpp:725
 msgid "Observe Game"
@@ -9403,7 +9670,6 @@ msgid "Friends in Game"
 msgstr "Amigos em Jogo"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Filter:"
 msgstr "Filtro:"
 
@@ -9416,29 +9682,36 @@ msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
+"Habilita o filtro de jogos. Quando desmarcado todos jogos são apresentados, "
+"independentemente de qualquer filtro."
 
 #: src/multiplayer_lobby.cpp:754
 msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
+"Mostra todos jogos que *NÃO* passam no filtro. Útil para esconder jogos que "
+"em que não se está interessado."
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Only show games that have at least one vacant slot"
-msgstr ""
+msgstr "Somente exibir jogos que tem ao menos um espaço vago."
 
 #: src/multiplayer_lobby.cpp:762
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
+"Somente exibir jogos que são jogados ou observados por pelo menos um de seus "
+"amigos."
 
 #: src/multiplayer_lobby.cpp:768
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
+"Somente exibir jogos cujo título ou descrição contém o texto informado."
 
 #: src/multiplayer_lobby.cpp:903
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Conectar a este jogo requer um password."
 
 #: src/multiplayer_ui.cpp:196
 msgid "Invalid Color"
@@ -9504,7 +9777,7 @@ msgstr "Não pode enviar mensagem inicial"
 
 #: src/pathfind/pathfind.cpp:473
 msgid "Terrain with a movement cost less than 1 encountered."
-msgstr ""
+msgstr "Terreno com um custo de movimento menor que 1 encontrado."
 
 #: src/play_controller.cpp:143
 msgid "Loading level"
@@ -9655,17 +9928,14 @@ msgstr[1] ""
 "inicial."
 
 #: src/playsingle_controller.cpp:262
-#, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
 msgstr[0] ""
-"Você começará o próximo cenário com $gold além da quantidade mínima de ouro "
-"inicial."
+"Você começará o próximo cenário com a quantidade mínima de ouro inicial."
 msgstr[1] ""
-"Você começará o próximo cenário com $gold além da quantidade mínima de ouro "
-"inicial."
+"Você começará o próximo cenário com a quantidade mínima de ouro inicial."
 
 #: src/playsingle_controller.cpp:270
 msgid ""
@@ -9903,11 +10173,11 @@ msgstr "Este Turno"
 
 #: src/statistics_dialog.cpp:181
 msgid "Inflicted"
-msgstr "Dano Causado"
+msgstr "Causado"
 
 #: src/statistics_dialog.cpp:186
 msgid "Taken"
-msgstr ""
+msgstr "Recebido"
 
 #: src/storyscreen/controller.cpp:130
 msgid "Next"
@@ -10030,9 +10300,8 @@ msgid "Quit the game"
 msgstr "Sair do jogo"
 
 #: src/titlescreen.cpp:450
-#, fuzzy
 msgid "Show previous tip of the day"
-msgstr "Mostrar a próxima dica do dia"
+msgstr "Mostrar a dica do dia anterior"
 
 #: src/titlescreen.cpp:451
 msgid "Show next tip of the day"
