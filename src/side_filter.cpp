@@ -57,13 +57,13 @@ side_filter::side_filter(const std::string &side_string, bool flat_tod)
 {
 }
 
-std::set<int> side_filter::get_teams() const
+std::vector<int> side_filter::get_teams() const
 {
 	//@todo: replace with better implementation
-	std::set<int> result;
+	std::vector<int> result;
 	foreach (const team &t, *resources::teams) {
 		if (match(t)) {
-			result.insert(t.side());
+			result.push_back(t.side());
 		}
 	}
 	return result;
@@ -150,7 +150,7 @@ bool side_filter::match_internal(const team &t) const
 	const vconfig& enemy_of = cfg_.child("enemy_of");
 	if(!enemy_of.null()) {
 		side_filter s_filter(enemy_of);
-		const std::set<int>& teams = s_filter.get_teams();
+		const std::vector<int>& teams = s_filter.get_teams();
 		if(teams.empty()) return false;
 		foreach(const int side, teams) {
 			if(!(*resources::teams)[side - 1].is_enemy(t.side()))
@@ -161,7 +161,7 @@ bool side_filter::match_internal(const team &t) const
 	const vconfig& allied_with = cfg_.child("allied_with");
 	if(!allied_with.null()) {
 		side_filter s_filter(allied_with);
-		const std::set<int>& teams = s_filter.get_teams();
+		const std::vector<int>& teams = s_filter.get_teams();
 		if(teams.empty()) return false;
 		foreach(const int side, teams) {
 			if((*resources::teams)[side - 1].is_enemy(t.side()))

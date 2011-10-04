@@ -42,7 +42,7 @@ public:
 	//match: returns true if and only if the given team matches this filter
 	bool match(const team& t) const;
 	bool match(const int side) const;
-	std::set<int> get_teams() const;
+	std::vector<int> get_teams() const;
 
 private:
 	side_filter(const side_filter &other);

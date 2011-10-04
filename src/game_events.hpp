@@ -123,13 +123,13 @@ namespace game_events
 	/** Used for [deprecated_message]. */
 	void handle_deprecated_message(const config& cfg);
 
-	/** Gets a set of sides from side= attribute in a given config node.
-     * Promotes consistent behaviour and returns always non-empty set with valid teams.
+	/** Gets a vector of sides from side= attribute in a given config node.
+     * Promotes consistent behaviour.
      * Default side, when in doubt is currently side 1.
 	 * only_ssf == true to specify cfg contains only an inline SSF (without [filter_side] tag)
 	 * only_side == true to specify cfg contains only a single side= key
 	*/
-	std::set<int> get_sides_set(const vconfig& cfg, const bool only_ssf = false, const bool only_side = false);
+	std::vector<int> get_sides_vector(const vconfig& cfg, const bool only_ssf = false, const bool only_side = false);
 
 	/**
 	 * Function to fire an event.

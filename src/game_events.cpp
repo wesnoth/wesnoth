@@ -567,7 +567,7 @@ namespace game_events {
 		lg::wml_error << message.token() << '\n';
 	}
 
-	std::set<int> get_sides_set(const vconfig& cfg, const bool only_ssf, const bool only_side)
+	std::vector<int> get_sides_vector(const vconfig& cfg, const bool only_ssf, const bool only_side)
 	{
 	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
 	static const config::t_token & z_filter_side( generate_safe_static_const_t_interned(n_token::t_token("filter_side")) );
@@ -592,8 +592,8 @@ namespace game_events {
 			//To deprecate the current default (side=1), require one of the currently two ways
 			//of specifying a side - putting inline side= or [filter_side].
 			else put_wml_message(z_error, "empty side= and no [filter_side] is deprecated, use either side=1 or [filter_side]");
-			std::set<int> result;
-			result.insert(1); // we make sure the set is not empty and the current default is maintained
+			std::vector<int> result;
+			result.push_back(1); // we make sure the current default is maintained
 			return result;
 		}
 		// uncomment if the decision will be made to make [filter_side] the only & final syntax for specifying sides
@@ -804,7 +804,7 @@ namespace {
 
 static void toggle_shroud(const bool remove, const vconfig& cfg)
 {
-	std::set<int> sides = game_events::get_sides_set(cfg);
+	std::vector<int> sides = game_events::get_sides_vector(cfg);
 	size_t index;
 
 	foreach (const int &side_num, sides)
@@ -1036,7 +1036,7 @@ WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 {
-	std::set<int> sides = game_events::get_sides_set(cfg);
+	std::vector<int> sides = game_events::get_sides_vector(cfg);
 	foreach (const int &side_num, sides)
 	{
 		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
@@ -1076,7 +1076,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	 */
 	config::attribute_value const & switch_ai = cfg[z_switch_ai];
 
-	std::set<int> sides = game_events::get_sides_set(cfg);
+	std::vector<int> sides = game_events::get_sides_vector(cfg);
 	size_t team_index;
 
 	foreach (const int &side_num, sides)
