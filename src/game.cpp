@@ -33,6 +33,7 @@
 #include "statistics.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/validator.hpp"
+#include "version.hpp"
 
 #include <cerrno>
 #include <clocale>
@@ -261,6 +262,9 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 				}
 			}
 		}
+
+		// add the WESNOTH_VERSION define
+		defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
 
 		std::cerr << "added " << defines_map.size() << " defines.\n";
 
