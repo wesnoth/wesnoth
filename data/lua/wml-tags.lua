@@ -642,7 +642,13 @@ end
 
 function wml_actions.capture_village(cfg)
 	local side = cfg.side
+	local filter_side = helper.get_child(cfg, "filter_side")
 	if side then side = tonumber(side) or helper.wml_error("invalid side in [capture_village]") end
+	if filter_side then
+		if side then helper.wml_error("duplicate side information in [capture_village]") end
+		side = wesnoth.get_sides(filter_side)[1]
+		if side then side = side.side end
+	end
 	local locs = wesnoth.get_locations(cfg)
 
 	for i, loc in ipairs(locs) do
