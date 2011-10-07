@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2011-09-04 16:25-0500\n"
+"PO-Revision-Date: 2011-10-07 17:25-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -146,12 +146,12 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
 msgid "Use 12-hour clock format"
-msgstr ""
+msgstr "Use 12-hour clock format"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:150
 msgid "Confirm loading of saves from a different version"
-msgstr ""
+msgstr "Confirm loading of saves from a different version"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
@@ -2230,7 +2230,6 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:20
-#, fuzzy
 #| msgid ""
 #| "Lawful units fight better during the day, and worse at night.\n"
 #| "\n"
@@ -2242,9 +2241,9 @@ msgid ""
 "Day: −25% Damage\n"
 "Night: −25% Damage"
 msgstr ""
-"Lawful units fight better during the day, and worse at night.\n"
+"Liminal units only reach their full strength during twilight.\n"
 "\n"
-"Day: +25% Damage\n"
+"Day: −25% Damage\n"
 "Night: −25% Damage"
 
 #. [language]
@@ -2571,7 +2570,6 @@ msgstr "<i>― The Wesnoth Community</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
 #| msgid ""
 #| "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 #| "better at night. <i>Neutral</i> units are unaffected by the time of day."
@@ -2581,7 +2579,8 @@ msgid ""
 "rare <i>liminal</i> units fight best during twilight."
 msgstr ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-"better at night. <i>Neutral</i> units are unaffected by the time of day."
+"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
+"rare <i>liminal</i> units fight best during twilight."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
@@ -3916,10 +3915,9 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:465 src/savegame.cpp:137
-#, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %b %d %I:%M %p %Y"
 
 #: src/dialogs.cpp:481
 msgid "#(Invalid)"
@@ -3968,17 +3966,16 @@ msgstr "%H:%M"
 
 #: src/dialogs.cpp:559 src/reports.cpp:1223 src/savegame.cpp:177
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/dialogs.cpp:564 src/savegame.cpp:182
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:567 src/savegame.cpp:185
-#, fuzzy
 #| msgid "%A, %H:%M"
 msgid "%A, %I:%M %p"
-msgstr "%A, %H:%M"
+msgstr "%A, %I:%M %p"
 
 #: src/dialogs.cpp:571 src/savegame.cpp:189
 msgid "%b %d"
@@ -4049,50 +4046,52 @@ msgstr "KB"
 #: src/exceptions.cpp:23 src/exceptions.cpp:29
 msgid "WML Syntax error:: Variable in WML string cannot be evaluated because, "
 msgstr ""
+"WML Syntax error:: Variable in WML string cannot be evaluated because, "
 
 #: src/exceptions.cpp:29
 msgid ""
 " in \n"
 "\""
 msgstr ""
+" in \n"
+"\""
 
 #: src/formula_string_utils_backend.cpp:156
 msgid "Formula in WML string cannot be evaluated because, "
-msgstr ""
+msgstr "Formula in WML string cannot be evaluated because, "
 
 #: src/formula_string_utils_backend.cpp:293
-#, fuzzy
 #| msgid "Invalid location"
 msgid "Invalid WML found"
-msgstr "Invalid location"
+msgstr "Invalid WML found"
 
 #: src/formula_string_utils_backend.cpp:328
 msgid " $$| creates an illegal variable name"
-msgstr ""
+msgstr " $$| creates an illegal variable name"
 
 #: src/formula_string_utils_backend.cpp:341
 msgid "missing variable name immediately after $"
-msgstr ""
+msgstr "missing variable name immediately after $"
 
 #: src/formula_string_utils_backend.cpp:419
 msgid "missing field name after ]. (correct usage: $array[$i].fieldname)"
-msgstr ""
+msgstr "missing field name after ]. (correct usage: $array[$i].fieldname)"
 
 #: src/formula_string_utils_backend.cpp:423
 msgid "missing variable name after $ (valid characters are a-zA-Z0-9_)"
-msgstr ""
+msgstr "missing variable name after $ (valid characters are a-zA-Z0-9_)"
 
 #: src/formula_string_utils_backend.cpp:437
 msgid "formula is incomplete at the end of the line"
-msgstr ""
+msgstr "formula is incomplete at the end of the line"
 
 #: src/formula_string_utils_backend.cpp:440
 msgid "of missing paren in the formula should be $( ...)"
-msgstr ""
+msgstr "of missing parenthesis in the formula should be $( ...)"
 
 #: src/formula_string_utils_backend.cpp:494
 msgid " of missing closing paren"
-msgstr ""
+msgstr " of missing closing parenthesis"
 
 #: src/game_config.cpp:314
 msgid "Invalid color range: "
@@ -6279,7 +6278,7 @@ msgstr "Weapon special: "
 
 #: src/reports.cpp:767
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #: src/reports.cpp:959
 msgid "Lawful units: "
@@ -6294,10 +6293,9 @@ msgid "Chaotic units: "
 msgstr "Chaotic units: "
 
 #: src/reports.cpp:962
-#, fuzzy
 #| msgid "Lawful units: "
 msgid "Liminal units: "
-msgstr "Lawful units: "
+msgstr "Liminal units: "
 
 #: src/reports.cpp:1184
 msgid "Observers:"
@@ -6627,7 +6625,7 @@ msgstr "lawful"
 
 #: src/unit_types.cpp:1072
 msgid "liminal"
-msgstr ""
+msgstr "liminal"
 
 #: src/unit_types.cpp:1072
 msgid "neutral"
@@ -6642,10 +6640,9 @@ msgid "female^lawful"
 msgstr "lawful"
 
 #: src/unit_types.cpp:1073
-#, fuzzy
 #| msgid "female^lawful"
 msgid "female^liminal"
-msgstr "lawful"
+msgstr "liminal"
 
 #: src/unit_types.cpp:1073
 msgid "female^neutral"
@@ -6656,26 +6653,32 @@ msgid ""
 "the first character of the identifier is an invalid character, one of  . , "
 "[, or ]. "
 msgstr ""
+"the first character of the identifier is an invalid character, one of  . , "
+"[, or ]. "
 
 #: src/variable.cpp:651
 msgid ""
 "there is a dot . or left bracket [ after a left bracket [ starting the "
 "variable name"
 msgstr ""
+"there is a dot . or left bracket [ after a left bracket [ starting the "
+"variable name"
 
 #: src/variable.cpp:782 src/variable.cpp:842
 msgid "the WML array index is larger than the largest array element."
-msgstr ""
+msgstr "the WML array index is larger than the largest array element."
 
 #: src/variable.cpp:784
 msgid ""
 "the WML array index is invalid.  Use varname[0].length to check for the "
 "existence of an array element."
 msgstr ""
+"the WML array index is invalid.  Use varname[0].length to check for the "
+"existence of an array element."
 
 #: src/variable.cpp:815
 msgid "attempt to get length of a non array/container."
-msgstr ""
+msgstr "attempt to get length of a non-array/container."
 
 #: src/whiteboard/manager.cpp:941
 msgid "SHOW ALL allies’ plans"

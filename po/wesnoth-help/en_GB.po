@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2011-09-14 10:01-0500\n"
+"PO-Revision-Date: 2011-10-07 17:16-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1943,7 +1943,6 @@ msgstr "Time of Day"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
 #| msgid ""
 #| "The time of day affects the damage of certain units as follows:\n"
 #| " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1959,7 +1958,8 @@ msgstr ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
 " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-" Neutral units are unaffected by the time of day."
+" Neutral units are unaffected by the time of day.\n"
+" Liminal units get −25% damage during both night and daytime."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
