@@ -1218,8 +1218,8 @@ REPORT_GENERATOR(report_clock)
 	time_t t = std::time(NULL);
 	struct tm *lt = std::localtime(&t);
 	if (!lt) return report();
-	char temp[10];
-	size_t s = std::strftime(temp, 10,
+	char temp[15];
+	size_t s = std::strftime(temp, 15,
 		(preferences::use_twelve_hour_clock_format() ? _("%I:%M %p") : _("%H:%M")),
 		lt);
 	return s ? text_report(temp) : report();
