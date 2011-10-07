@@ -18,10 +18,10 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2011 wesnoth "Berjuang demi Wesnoth"
+.TH WESNOTH 6 2011 wesnoth "Pertempuran demi Wesnoth"
 .
 .SH NAMA
-wesnoth \- Berjuang demi Wesnoth, Suatu game khayalan  strategi
+wesnoth \- Pertempuran demi Wesnoth, Suatu game strategi khayalan
 .
 .SH SINOPSIS
 .
@@ -48,24 +48,25 @@ kustommu sendiri, skenario atau kampanye, dan sebarkanlah pada orang lain.
 set nilai BitsPerPixel. Contoh: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
-goes directly to the campaign based on the parameters.  The difficulty is a
-number between 1 and current campaign's difficulties number.  The default
-difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.  \fBNote: When
-using this switch please ensure that you specify the data directory path as
-the final argument\fP aswell, otherwise the game will take the
-campaign/scenario id as the data dir.
+pergi langsung ke kampanye berdasarkan parameter\-parameter. Kesulitan adalah
+nomor antara 1 dan nomor kesulitan kampanye saat ini. Kesulitan standar
+adalah 1. Skenario harus menjadi salah satu dari skenario\-skenario anak
+kampanye. Skenario standar adalah skenario pertama kampanye. \fBNote: Bila
+menggunakan tombol ini pastikan bahwa anda menentukan path direktori data
+sebagai argument akhir\fP juga, jika tidak permainan akan mengambil id
+kampanye/skenario sebagai data dir.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games"
+Menentukan konfigurasi direktori pengguna ke \fInama\fP dalam $HOME atau "My
+Documents\eMy Games" untuk windows. Anda juga dapat menentukan suatu lokasi
+sesungguhnya untuk direktori konfigurasi diluar $HOME atau "My Documents\eMy
+Games"
 .TP 
 \fB\-\-config\-path\fP
 mencetak alur direktori konfigurasi pengguna dan keluar.
 .TP 
-\fB\-\-data\-dir <directory>\fP
-overrides the data directory with the one specified
+\fB\-\-data\-dir <directori>\fP
+menggantikan direktori data dengan yang ditetapkan
 .TP 
 \fB\-d, \-\-debug\fP
 memungkinkan opsi perintah tambahan dalam game mode (lihat halaman wiki di
@@ -73,8 +74,8 @@ http://www.wesnoth.org/wiki/CommandMode untuk informasi lebih lanjut tentang
 perintah tambahan).
 .TP 
 \fB\-e,\ \-\-editor\fP\fI\ file\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-l \-\-load\fP
+mulai editor peta dalam game secara langsung. Jika \fIfile\fP ditetapkan,
+setara dengan \fB\-l \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 menampilkan jumlah frame per detik permainan berjalan pada saat ini, di
@@ -104,9 +105,9 @@ akan mulai dengan memuat peta dialog terbuka di sana.
 menentukan tingkat keparahan dari domain log. \fBall\fP dapat digunakan untuk
 menyesuaikan dengan semua domain log. Tersedia tingkatan: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Secara default tingkat \fBerror\fP digunakan.
 .TP 
-\fB\-\-logdomains\ [filter]\fP
-lists defined log domains (only the ones containing \fBfilter\fP if used) and
-exits
+\fB\-\-logdomains\ [saringan]\fP
+daftar log domain ditetapkan (hanya yang berisi \fBfilter\fP jika digunakan)
+dan keluar
 .TP 
 \fB\-\-max\-fps\fP
 jumlah frame per detik permainan dapat menunjukkan, nilai tersebut harus
@@ -118,7 +119,7 @@ bersama dengan \fB\-\-multiplayer\fP  seperti yang dijelaskan di bawah ini. Hany
 ini pilihan tambahan dapat mengikuti \fB\-\-multiplayer\fP.
 .TP 
 \fB\-\-new\-syntax\fP
-enables the new campaign syntax parsing.
+memungkinkan penguraian kampanye sintaksis baru.
 .TP 
 \fB\-\-no\-delay\fP
 menjalankan permainan tanpa penundaan untuk pembandingan grafis. Ini akan
@@ -136,27 +137,28 @@ jalankan permainan tanpa suara latar dan musik.
 \fB\-\-path\fP
 mencetak nama direktori data game dan keluar.
 .TP 
-\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
-preprocesses a specified file/folder. The file(s) will be written in
-specified target directory: a plain cfg file and a processed cfg file. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the data/core/macros will be
-preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
-extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  If 'SKIP_CORE' is in the define
-list the data/core won't be preprocessed.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result\fP or
+\fB\-\-preprocess, \-p[=<menetapkan1>,<menetapkan2>,...] <file/folder> <direktori target>\fP
+preprocesses file/folder tertentu. File (file\-file) akan ditulis dalam
+direktori target tertentu: sebuah file cfg biasa dan sebuah file cfg
+terproses. Jika folder tersebut ditentukan, maka akan dipreprocess secara
+berulang berdasarkan kebiasaan\-kebiasaan preprocessor yang
+dikenal. Macros\-macros umum dari data/core/macros akan dipreprocess sebelum
+sumber\-sumber ditentukan. \fBdefine1,define2,...\fP \- penetapan tambahan akan
+ditambahkan sebelum memproses file\-file. Jika anda ingin menambahkannya anda
+harus menambahkan karakter '=' sebelumnya. Jika 'SKIP_CORE' berada dalam
+daftar penetapan data/core tidak akan dipreprocess. Contoh: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result\fP atau
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
 .TP 
-\fB\-\-preprocess\-input\-macros <source file>\fP
-used only by the '\-\-preprocess' command.  Specifies a file that contains
-[preproc_define]s to be included before preprocessing.
+\fB\-\-preprocess\-input\-macros <file sumber>\fP
+hanya digunakan oleh perintah '\-\-preprocess'. Menentukan file yang berisi
+[preproc_define]s untuk dimasukkan sebelum preprocessing.
 .TP 
-\fB\-\-preprocess\-output\-macros [<target file>]\fP
-used only by the '\-\-preprocess' command.  Will output all preprocessed
-macros in the target file. If the file is not specified the output will be
-file '_MACROS_.cfg' in the target directory of preprocess's command.  This
-switch should be typed before the \-\-preprocess command.
+\fB\-\-preprocess\-output\-macros [<file target>]\fP
+hanya digunakan oleh perintah '\-\-preprocess' . Akan menampilkan semua macro
+preproses dalam file target. Jika file tidak ditentukan output akan menjadi
+file '_MACROS_.cfg' dalam direktori target dari perintah
+preprocess. Penggantian ini harus diketik sebelum perintah \-\-preprocess.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 mengatur resolusi layar. Contoh: \fB\-r 800x600\fP
@@ -252,7 +254,7 @@ Kunjungi halaman resmi kami di: http://www.wesnoth.org/
 .
 .SH "HAK CIPTA"
 .
-Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+Hak Cipta \(co 2003\-2011 David White <davidnwhite@verizon.net>
 .br
 Ini adalah perangkat lunak gratis, perangkat lunak ini berlisensi di bawah
 GPL versi 2, seperti dipublikasikan oleh Free Software Foundation. TIDAK ADA

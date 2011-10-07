@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-05-30 20:47+0200\n"
+"POT-Creation-Date: 2011-10-07 22:09+0200\n"
 "PO-Revision-Date: 2009-03-22 18:03+1000\n"
 "Last-Translator: luojie <lililjlj@gmail.com>\n"
 "Language-Team: none\n"
@@ -332,7 +332,7 @@ msgstr ""
 #: data/campaigns/Northern_Rebirth/scenarios/12a_Get_the_Gold.cfg:125
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:42
 #: data/campaigns/Northern_Rebirth/scenarios/14a_Epilogue.cfg:21
-#: data/campaigns/Northern_Rebirth/utils/utils.cfg:75
+#: data/campaigns/Northern_Rebirth/utils/utils.cfg:38
 msgid "Tallin"
 msgstr "Tallin"
 
@@ -720,7 +720,7 @@ msgstr "Krog"
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:95
 #: data/campaigns/Northern_Rebirth/scenarios/03_To_the_Mines.cfg:142
 #: data/campaigns/Northern_Rebirth/scenarios/13a_Showdown.cfg:246
-#: data/campaigns/Northern_Rebirth/utils/utils.cfg:71
+#: data/campaigns/Northern_Rebirth/utils/utils.cfg:34
 msgid "Hamel"
 msgstr "Hamel"
 
@@ -732,7 +732,7 @@ msgstr "Hamel"
 #. [side]: type=Death Knight
 #. [side]: type=Death Knight, id=Hettel
 #. [side]: type=Death Knight, id=Thor
-#. [side]: type=Death Knight, id=Trevor
+#. [side]: type=Death Knight, id=Tervor
 #. [side]: type=Death Knight, id=Author
 #. [side]: type=Death Knight, id=Samlan
 #. [side]: type=Death Knight, id=Boblin
@@ -1538,7 +1538,7 @@ msgstr "联盟"
 #. [unit]: type=Ancient Lich, id=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:34
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:40
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2853
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2863
 #: data/campaigns/Northern_Rebirth/scenarios/06b_Slave_of_the_Undead.cfg:360
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:108
 msgid "Malifor"
@@ -1900,10 +1900,10 @@ msgstr "赶尽杀绝"
 msgid "Hettel"
 msgstr "Hettel"
 
-#. [side]: type=Death Knight, id=Trevor
+#. [side]: type=Death Knight, id=Tervor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:103
-msgid "Trevor"
-msgstr "Trevor"
+msgid "Tervor"
+msgstr ""
 
 #. [side]: type=Death Knight, id=Author
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:127
@@ -2003,7 +2003,7 @@ msgstr "找到 Malifor 并消灭他"
 msgid "The Dungeon"
 msgstr "地牢"
 
-#. [message]: speaker=Trevor
+#. [message]: speaker=Tervor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:497
 msgid "They are trying to free the prisoners! Stop them!"
 msgstr "他们正试图解救那些囚犯!拦住他们!"
@@ -2019,7 +2019,7 @@ msgstr "祝你好运,朋友们."
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:407
 #: data/campaigns/Northern_Rebirth/scenarios/07b_Protecting_the_Master.cfg:615
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:670
-#: data/campaigns/Northern_Rebirth/utils/utils.cfg:83
+#: data/campaigns/Northern_Rebirth/utils/utils.cfg:46
 #, fuzzy
 msgid "Father Morvin"
 msgstr " 父亲Marcus"
@@ -3058,13 +3058,13 @@ msgstr "打断一下,现在是哪一年?"
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2176
 #, fuzzy
-msgid "Uh... 534YW..."
+msgid "Uh... 534..."
 msgstr "恩...公元534年..."
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2180
 #, fuzzy
-msgid "Huh?! Can’t be, the last year I remember it was 14,318AD!"
+msgid "Huh?! Can’t be, the last year I remember it was 14,318!"
 msgstr "啊?!不可能,我记得去年是公元前14,318年!"
 
 #. [message]: speaker=Tallin
@@ -3435,129 +3435,129 @@ msgid ""
 msgstr "现在我们回到矮人那里看看他们准备的武器好了吗."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2877
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2968
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2889
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2984
 #, fuzzy
 msgid "HAHAHA, FOOLS, YOU THINK YOU CAN KILL ME?"
 msgstr "哈哈哈. 傻瓜们. 你们能杀死我吗？"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2882
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2973
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2895
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2990
 #, fuzzy
 msgid "HAHAHAHA!"
 msgstr "哈哈哈哈!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2886
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2899
 msgid "What the...!"
 msgstr "甚麽....!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2890
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2903
 msgid "How can it be?! Our axes and hammers are failing."
 msgstr "怎么会？！我们的武器不奏效!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2894
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2981
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2907
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2998
 msgid "Blast it! Now where did he go? Let’s find him and try something else!"
 msgstr "攻击它!现在他去哪里了?让我们找到他试试别的!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2901
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2914
 #, fuzzy
 msgid "HAHAHAHA, DEATH HAS NO EFFECT ON ME YOU FOOLS!"
 msgstr "哈哈阿豪哈啊哈, 你们这些笨蛋, 死亡对我不起作用！"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2906
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2920
 #, fuzzy
 msgid "HAHAHA, I CAN NEVER BE DESTROYED!"
 msgstr "阿豪哈阿豪哈啊, 我永身不灭！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2910
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2924
 msgid "Oh yes you will! But... how?"
 msgstr "噢, 是的你会！但. . . 怎么做？"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2914
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2928
 msgid "Well, it sure isn’t gonna be done with a blade."
 msgstr "呵,显然不会用刀子解决."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2918
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2932
 msgid "And look, he’s gone. Now we gotta find him all over again!"
 msgstr "看,他消失了.我们又要再次找到他."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2925
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2939
 #, fuzzy
 msgid "HAHAHAHA, YOUR IDIOCY AMUSES ME GREATLY!"
 msgstr "哈哈哈哈哈,我永远不朽!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2930
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2945
 msgid "COME AND GET ME!"
 msgstr "快来抓我！"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2934
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2949
 msgid "Geez, how are we going to kill him?"
 msgstr "Geez, 我们怎么去杀他？"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2938
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2953
 msgid "Well, obviously clubs and arrows won’t work."
 msgstr "显然木棒和弓箭不奏效. "
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2942
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2957
 msgid "Oh darn, he disappeared. Let’s find him and try a different weapon."
 msgstr "看,他又消失了.快点找到他,用别的武器消灭他."
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2949
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2964
 #, fuzzy
 msgid "HAHAHAHA, I AM IMMORTAL!"
 msgstr "哈哈哈哈哈,我是不死族,我永远不朽!"
 
 #. [message]: speaker=Malifor
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2954
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2970
 msgid "YOU PUNY MORTALS SHALL SOON BE SERVING ME!"
 msgstr "你们这些小家伙将很快来服侍我!"
 
 #. [message]: speaker=Camerin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2958
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2974
 msgid "That blasted skeleton! Even fire has no affect on him!"
 msgstr "这该死的骷髅!火焰对他来说根本没用!"
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2962
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2978
 msgid ""
 "Look, he disappeared again. Let’s find him and try using a different weapon "
 "on him."
 msgstr "看,他又消失了.快点找到他,用别的武器消灭他."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2977
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2994
 #, fuzzy
 msgid "What the—"
 msgstr "甚麽....!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2995
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3012
 msgid "I see now. It is impossible to destroy him by ordinary means."
 msgstr "我知道了.使用普通武器很难消灭他."
 
 #. [message]: speaker=Tallin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2999
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3016
 msgid "Then how are we going to destroy him? Surely there must be a way."
 msgstr "那我们怎样消灭他?我们必须找到一个方法."
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3003
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3020
 #, fuzzy
 msgid ""
 "Yes, I think there is, but only myself or Thera have the means to do it. "
@@ -3566,17 +3566,17 @@ msgstr ""
 "是的,有办法了.但是只有我和Theta可以做到.来吧,Theta,让我们消灭这个老骷髅. "
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3007
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3024
 msgid "Yeah, I can’t wait to get my hands on that bastard!"
 msgstr "好,我已经急不可待了!"
 
 #. [message]: speaker=Father Morvin
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3011
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3028
 msgid "That was very unladylike of you."
 msgstr "你真没有淑女风范."
 
 #. [message]: speaker=Sister Thera
-#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3015
+#: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:3032
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:516
 #, fuzzy
 msgid "(<i>Giggle</i>) Sorry."
@@ -4735,7 +4735,7 @@ msgstr "于是Tallin和他的部队出发去寻找法师的帮助."
 #. [side]: type=Dwarvish Lord, id=Stalrag
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:215
 #: data/campaigns/Northern_Rebirth/scenarios/08a_Elvish_Princess.cfg:227
-#: data/campaigns/Northern_Rebirth/utils/utils.cfg:87
+#: data/campaigns/Northern_Rebirth/utils/utils.cfg:50
 msgid "Stalrag"
 msgstr "Stalrag"
 
@@ -10046,10 +10046,13 @@ msgstr "哇...这怎么可能?"
 msgid "He was stark raving mad, but I am sure going to miss him."
 msgstr "他真是个疯子,但是我一定会想他的."
 
-#: data/campaigns/Northern_Rebirth/utils/utils.cfg:79
+#: data/campaigns/Northern_Rebirth/utils/utils.cfg:42
 #, fuzzy
 msgid "Arthian"
 msgstr "Ro’Arthian"
+
+#~ msgid "Trevor"
+#~ msgstr "Trevor"
 
 #~ msgid "Tallin, are you OK?!"
 #~ msgstr "Tallin,你想好了吗?!"
