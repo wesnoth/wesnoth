@@ -42,6 +42,8 @@ Version 1.9.9+svn:
    * Add support for [capture_village][filter_side]<SSF>
    * Added FACING, which adds facing= to a previous [unit] codeblock
    * Added VARIATION, which adds variation= to a previous [unit] codeblock
+   * Deprecated the Add-on.cfg style in favor of Add-on/_main.cfg, except for
+     the case of a single-file add-on
  * Miscellaneous and bug fixes:
    * Fixed compilation on all Debian architectures (Debian bug #636193)
    * Fixed handling of #ifver and #ifnver preprocessor directives in wmllint

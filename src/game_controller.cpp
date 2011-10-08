@@ -1154,8 +1154,13 @@ void game_controller::load_game_cfg(const bool force)
 		// Append the $user_campaign_dir/*.cfg files to addons_to_load.
 		for(std::vector<std::string>::const_iterator uc = user_files.begin(); uc != user_files.end(); ++uc) {
 			const std::string file = *uc;
-			if(file.substr(file.size() - 4, file.size()) == ".cfg")
+			if(file.substr(file.size() - 4, file.size()) == ".cfg") {
+				// Allowing it if the dir doesn't exist, for the single-file add-on.
+				// Turn this into an error later, possibly in 1.11.0
+				if(file_exists(file.substr(0, file.size() - 4)))
+					lg::wml_error << '\'' << file << "' is deprecated, use '" << file.substr(0, file.size()) << "/_main.cfg' instead.\n";
 				addons_to_load.push_back(file);
+			}
 		}
 
 		// Append the $user_campaign_dir/*/_main.cfg files to addons_to_load.
