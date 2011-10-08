@@ -5,7 +5,8 @@ Version 1.9.9+svn:
    * Son of the Black Eye:
      * To the Harbor of Tirigaz: used 24 hour ToD
    * Under the Burning Suns
-     * Subterranean Struggle: no longer possible to win by allowing allies to die
+     * Subterranean Struggle: no longer possible to win by allowing allies to
+       die
  * Graphics:
    * New Animations:
      * Goblin spearman run se
@@ -21,26 +22,26 @@ Version 1.9.9+svn:
  * Lua API:
    * add function wesnoth.get_starting_location
    * The side metatable provides also the side number
-     (like wesnoth.sides[i].side, which would be i).
+     (like wesnoth.sides[i].side, which would be i)
  * User interface
    * Removed waypoints UI feature
    * Added an option to disable the "loading save from a different version"
-     confirmation dialog.
+     confirmation dialog
    * Line-wrap author names in the add-on description dialog (bug #18691)
    * Added option in advanced preferences that allows the twelve-hour clock
-      format to be used.
+      format to be used
  * WML engine:
    * Readded the liminal alignment
    * Added four-difficulty versions of certain macros: QUANTITY4,
-     ON_DIFFICULTY4, TURNS4, GOLD4, INCOME4, and ATTACK_DEPTH4.
+     ON_DIFFICULTY4, TURNS4, GOLD4, INCOME4, and ATTACK_DEPTH4
    * added support for SSF to SUF via a [filter_side] subtag
    * added support for [enemy_of]<SSF> to SSF
    * added support for [allied_with]<SSF> to SSF
-   * New [find_path] tag, a WML interface to the pathfinder.
-   * Add inline SSF support to [store_starting_location].
-   * Add support for [capture_village][filter_side]<SSF>.
-   * Added FACING, which adds facing= to a previous [unit] codeblock.
-   * Added VARIATION, which adds variation= to a previous [unit] codeblock.
+   * New [find_path] tag, a WML interface to the pathfinder
+   * Add inline SSF support to [store_starting_location]
+   * Add support for [capture_village][filter_side]<SSF>
+   * Added FACING, which adds facing= to a previous [unit] codeblock
+   * Added VARIATION, which adds variation= to a previous [unit] codeblock
  * Miscellaneous and bug fixes:
    * Fixed compilation on all Debian architectures (Debian bug #636193)
    * Fixed handling of #ifver and #ifnver preprocessor directives in wmllint
@@ -49,7 +50,7 @@ Version 1.9.9+svn:
    * Fixed bug #18715 where deleting of .cache directory and then regenerating
      the cache F5 in a running instance of wesnoth caused a crash
    * Fixed bug #18777: #ifver/#ifnver directives with the --preprocess command
-     don't throw anymore "undefined macro" errors.
+     don't throw anymore "undefined macro" errors
 
 Version 1.9.9:
  * AI:
