@@ -2197,25 +2197,6 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
-{
-	std::string variable = cfg["variable"];
-	if (variable.empty()) {
-		variable="location";
-	}
-	int side_num = cfg["side"].to_int(1);
-
-	const map_location& loc = resources::game_map->starting_position(side_num);
-	config &loc_store = resources::state_of_game->get_variable_cfg(variable);
-	loc_store.clear();
-	loc.write(loc_store);
-	resources::game_map->write_terrain(loc, loc_store);
-	if (resources::game_map->is_village(loc)) {
-		int side = village_owner(loc, *resources::teams) + 1;
-		loc_store["owner_side"] = side;
-	}
-}
-
 /* [store_villages] : store villages into an array
  * Keys:
  * - variable (mandatory): variable to store in
