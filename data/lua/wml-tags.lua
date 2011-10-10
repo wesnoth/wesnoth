@@ -767,7 +767,9 @@ function wml_actions.harm_unit(cfg)
 				end
 			end
 
-			set_status("poisoned", _"poisoned", _"female^poisoned", "poison.ogg")
+			if not unit_to_harm.status.not_living then
+				set_status("poisoned", _"poisoned", _"female^poisoned", "poison.ogg")
+			end
 			set_status("slowed", _"slowed", _"female^slowed", "slowed.wav")
 			set_status("petrified", _"petrified", _"female^petrified", "petrified.ogg")
 			set_status("unhealable", _"unhealable", _"female^unhealable")
