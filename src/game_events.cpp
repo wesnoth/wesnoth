@@ -758,7 +758,14 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	if (dst == u->get_location() || !resources::game_map->on_board(dst)) return;
 
 	const unit* pass_check = NULL;
-	if (cfg["check_passability"].to_bool(true))
+	//@deprecated ignore_passability 1.9.10
+	const config::attribute_value& ignore_passability = cfg["ignore_passability"];
+	if (!ignore_passability.blank()) {
+		WRN_NG << "[teleport]ignore_passability= is deprecated, use check_passability=\n";
+			if (!ignore_passability.to_bool(false))
+				pass_check = &*u;
+	}
+	else if (cfg["check_passability"].to_bool(true))
 		pass_check = &*u;
 	const map_location vacant_dst = find_vacant_tile(*resources::game_map, *resources::units, dst, pathfind::VACANT_ANY, pass_check);
 	if (!resources::game_map->on_board(vacant_dst)) return;
