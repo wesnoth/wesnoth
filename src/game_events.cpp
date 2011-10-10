@@ -684,14 +684,18 @@ namespace {
 			DBG_EH << "starting buffering...\n";
 		}
 
+		void stop_buffering() {
+			DBG_EH << "stopping buffering...\n";
+			buffering_ = false;
+		}
+
 		/**
-		 * Stops buffering and commits all changes.
+		 * Commits all buffered events
 		 */
 		void commit_buffer() {
 			DBG_EH << "committing buffered event handlers, buffering: " << buffering_ << "\n";
-			if(!buffering_) { return; }
-
-			buffering_ = false;
+			if(buffering_)
+				return;
 
 			// Commit any event removals
 			foreach(std::string const & i ,  remove_buffer_ ){
@@ -709,7 +713,9 @@ namespace {
 		void clear(){
 			active_.clear();
 			insert_buffer_.clear();
-			remove_buffer_.clear(); }
+			remove_buffer_.clear();
+			buffering_ = false;
+		}
 
 
 		iterator begin() { return active_.begin(); }
@@ -3318,10 +3324,8 @@ namespace game_events {
 	{
 		DBG_EH << "committing new event handlers, number of pump_instances: " <<
 			pump_manager::count() << "\n";
-		if(pump_manager::count() == 1) {
-			commit_wmi_commands();
-			event_handlers.commit_buffer();
-		}
+		commit_wmi_commands();
+		event_handlers.commit_buffer();
 		// Dialogs can only be shown if the display is not locked
 		if (!resources::screen->video().update_locked()) {
 			show_wml_errors();
@@ -3342,8 +3346,6 @@ namespace game_events {
 			return false;
 		}
 
-		event_handlers.start_buffering();
-
 		if(!lg::debug.dont_log("event_handler")) {
 			std::stringstream ss;
 			foreach(const game_events::queued_event& ev, events_queue) {
@@ -3354,6 +3356,8 @@ namespace game_events {
 
 		bool result = false;
 		while(events_queue.empty() == false) {
+			if(pump_manager::count() <= 1)
+				event_handlers.start_buffering();
 			game_events::queued_event ev = events_queue.front();
 			events_queue.pop_front();	// pop now for exception safety
 			const std::string& event_name = ev.name;
@@ -3390,6 +3394,8 @@ namespace game_events {
 				}
 			}
 
+			if(pump_manager::count() <= 1)
+				event_handlers.stop_buffering();
 			// Only commit new handlers when finished iterating over event_handlers.
 			commit();
 		}
