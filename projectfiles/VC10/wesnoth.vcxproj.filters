@@ -83,9 +83,6 @@
     <Filter Include="tools\schema">
       <UniqueIdentifier>{24fa9dff-1e37-435e-9c30-50571ff65b5e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="utils">
-      <UniqueIdentifier>{1c6b6530-2d8a-47a2-b3f2-ab9d2f84d0a8}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\packaging\windows\wesnoth.rc">
@@ -907,13 +904,6 @@
     <ClCompile Include="..\..\src\gui\dialogs\folder_create.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\formula_string_utils_backend.cpp" />
-    <ClCompile Include="..\..\src\token.cpp" />
-    <ClCompile Include="..\..\src\utils\interned.cpp">
-      <Filter>utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\exceptions.cpp" />
-    <ClCompile Include="..\..\src\team_builder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\manager.hpp">
@@ -1769,20 +1759,5 @@
     <ClInclude Include="..\..\src\gui\dialogs\folder_create.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\formula_string_utils_backend.hpp" />
-    <ClInclude Include="..\..\src\token.hpp" />
-    <ClInclude Include="..\..\src\utils\reference_counter.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\count_logger.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\interned.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\lru_cache.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\team_builder.hpp" />
   </ItemGroup>
 </Project>
