@@ -176,7 +176,7 @@ private:
 	config variables_;
 	mutable config temporaries_; // lengths of arrays, etc.
 	const rand_rng::set_random_generator generator_setter_; /**< Make sure that rng is initialized first */
-	friend class variable_info;
+	friend struct variable_info;
 	game_classification classification_;
 	mp_game_settings mp_settings_;
 	PHASE phase_;
