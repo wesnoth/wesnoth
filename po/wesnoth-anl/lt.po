@@ -23,10 +23,6 @@ msgstr "4ž — Nauja šalis"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
@@ -117,14 +113,11 @@ msgstr "Vienas iš valstiečių pastebėjo vorų lizdus šiaurėje ir pietuose."
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:591
-#, fuzzy
-#| msgid ""
-#| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
-#| "rescue them?"
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
-msgstr "Prisiekiu, mačiau kažką įpainiotą voratinklyje. Gal reiktų išgelbėti?"
+msgstr ""
+"Prisiekiu, mačiau kažką įsipainiojusį voratinklyje. Gal reiktų išgelbėti? "
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:613
@@ -390,41 +383,29 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of agriculture"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Dalintis žemdirbystės žiniomis"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of mining"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Dalintis kalnakasybos žiniomis"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of warfare"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Dalintis karinėmis žiniomis"
 
 #. [message]: speaker=unit
@@ -568,7 +549,7 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
-"Šiuo metu tyrinėjame $player_$side_number|.research.target_language_name|. "
+"Šiuo metu tyrinėjame $player_$side_number|.research.target_language_name|.. "
 "Kur pasiūlytumėte mūsų mokslininkams nukreipti savo protus?\n"
 "\n"
 "Mūsų fermos gamina $player_$side_number|.farming.gold|a\n"
@@ -581,20 +562,14 @@ msgstr "Tęsti kaip anksčiau"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:167
-#, fuzzy
-#| msgid ""
-#| "Agriculture\n"
-#| "Farmers produce +1 gold\n"
-#| "Study Progress: $player_$side_number|.farming.progress|/$player_"
-#| "$side_number|.farming.target"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
-"Žemdirbystė\n"
-"Fermos pagamins +1 aukso\n"
+"<span color='green'>Žemdirbystė</span>\n"
+"Žemdirbiai pagamins +1 aukso\n"
 "Studijos pasistūmėjo: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 

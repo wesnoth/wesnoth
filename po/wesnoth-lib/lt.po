@@ -76,14 +76,12 @@ msgstr "Pakrantės uolynai"
 #. [terrain_type]: id=gray_reef
 #: data/core/terrain.cfg:93
 #, fuzzy
-#| msgid "Coastal Reef"
 msgid "Gray Coastal Reef"
 msgstr "Pakrantės uolynai"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:113
 #, fuzzy
-#| msgid "Coastal Reef"
 msgid "Tropical Coastal Reef"
 msgstr "Pakrantės uolynai"
 
@@ -105,7 +103,6 @@ msgstr ""
 #: data/core/terrain.cfg:152 data/core/terrain.cfg:163
 #: data/core/terrain.cfg:174 data/core/terrain.cfg:184
 #, fuzzy
-#| msgid "Island"
 msgid "Grassland"
 msgstr "Sala"
 
@@ -135,7 +132,6 @@ msgstr ""
 #: data/core/terrain.cfg:196 data/core/terrain.cfg:206
 #: data/core/terrain.cfg:216
 #, fuzzy
-#| msgid "Dry Dirt"
 msgid "Dirt"
 msgstr "Sausas purvas"
 
@@ -193,10 +189,8 @@ msgstr "Sniegas"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:282
-#, fuzzy
-#| msgid "Desert Keep"
 msgid "Desert"
-msgstr "Dykumos bokštas"
+msgstr "Dykuma"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:283
@@ -515,7 +509,6 @@ msgstr "Apsnigtos mišrių miškų kalvos"
 #. [terrain_type]
 #: data/core/terrain.cfg:912
 #, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Floor"
 msgstr "Medinis tiltas"
 
@@ -801,7 +794,6 @@ msgstr "Žmonių miestas"
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1392
 #, fuzzy
-#| msgid "Windmill"
 msgid "Windmill Village"
 msgstr "Vėjo malūnas"
 
@@ -963,7 +955,6 @@ msgstr "Dvarfų pilis"
 #: data/core/terrain.cfg:1740 data/core/terrain.cfg:1752
 #: data/core/terrain.cfg:1765 data/core/terrain.cfg:1790
 #, fuzzy
-#| msgid "Ruined Human Castle"
 msgid "Ruined Castle"
 msgstr "Sugriuvusi žmonių pilis"
 
@@ -1116,10 +1107,8 @@ msgstr ""
 #: data/core/terrain.cfg:2068 data/core/terrain.cfg:2080
 #: data/core/terrain.cfg:2094 data/core/terrain.cfg:2105
 #: data/core/terrain.cfg:2117
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Bridge"
-msgstr "Medinis tiltas"
+msgstr "Tiltas"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -1955,28 +1944,24 @@ msgstr "Apie žaidėją – "
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:70
 #, fuzzy
-#| msgid "Send private message"
 msgid "Send Private Message"
 msgstr "Siųsti asmeninę žinutę"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:99
 #, fuzzy
-#| msgid "Add As Friend"
 msgid "Add to Friends"
 msgstr "Pridėti kaip draugą"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:108
 #, fuzzy
-#| msgid "Add As Ignore"
 msgid "Add to Ignores"
 msgstr "Pridėti kaip ignoruojamą"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:117
 #, fuzzy
-#| msgid "Remove from list"
 msgid "Remove from List"
 msgstr "Pašalinti iš sąrašo"
 
@@ -2051,14 +2036,12 @@ msgstr "Draugų/Ignoruojamų sąrašas"
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:170
 #, fuzzy
-#| msgid "Add As Friend"
 msgid "Add as Friend"
 msgstr "Pridėti kaip draugą"
 
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
 #, fuzzy
-#| msgid "Add As Ignore"
 msgid "Add as Ignore"
 msgstr "Pridėti kaip ignoruojamą"
 
@@ -2610,7 +2593,6 @@ msgstr "Rodyti dalinių neveiklumo animacijas"
 
 #: src/game_preferences_display.cpp:206
 #, fuzzy
-#| msgid "Show Unit Idle Animations"
 msgid "Show Unit Standing Animations"
 msgstr "Rodyti dalinių neveiklumo animacijas"
 
@@ -2620,10 +2602,8 @@ msgstr "Animuoti žemėlapį"
 
 #: src/game_preferences_display.cpp:209 src/game_preferences_display.cpp:210
 #: src/game_preferences_display.cpp:211 src/game_preferences_display.cpp:212
-#, fuzzy
-#| msgid "SFX Volume:"
 msgid "Volume:"
-msgstr "Garso efektų garsumas:"
+msgstr "Garsumas:"
 
 #: src/game_preferences_display.cpp:214
 msgid "Scroll Speed:"
@@ -3113,7 +3093,7 @@ msgstr "Įkelti žaidimą..."
 #: src/gui/dialogs/network_transmission.cpp:55
 #: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1178
 msgid "unit_byte^B"
-msgstr ""
+msgstr "B"
 
 #: src/gui/dialogs/title_screen.cpp:296
 msgid "Version "
@@ -3811,46 +3791,3 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-
-#, fuzzy
-#~ msgid "Saved preference:"
-#~ msgstr "Nustatymai"
-
-#~ msgid "Aquatic Village"
-#~ msgstr "Vandens kaimas"
-
-#~ msgid "Sunken Keep"
-#~ msgstr "Apsemtas bokštas"
-
-#~ msgid "Swamp Keep"
-#~ msgstr "Pelkių bokštas"
-
-#~ msgid "Add to friends list"
-#~ msgstr "Pridėti prie jūsų draugų sąrašo"
-
-#~ msgid "Add to ignores list"
-#~ msgstr "Pridėti prie jūsų ignoruojamų sąrašo"
-
-#~ msgid "Send a private message"
-#~ msgstr "Siųsti privačią žinutę"
-
-#~ msgid "Name: "
-#~ msgstr "Pavadinimas: "
-
-#~ msgid "Reverse Time Graphics"
-#~ msgstr "Apsukti laiko grafiką"
-
-#~ msgid "Music Volume:"
-#~ msgstr "Muzikos garsumas:"
-
-#~ msgid "UI Sound Volume:"
-#~ msgstr "Sąsajos garsumas:"
-
-#~ msgid "Bell Volume:"
-#~ msgstr "Skambučio garsumas:"
-
-#~ msgid "Show unit idle animations"
-#~ msgstr "Rodyti dalinių neveiklumo animacijas"
-
-#~ msgid "Choose whether the sun moves left-to-right or right-to-left"
-#~ msgstr "Pasirinkite ar saulė juda iš kairės į dešinę ar iš dešinės į kairę"
