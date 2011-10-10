@@ -164,7 +164,7 @@ void holder::modify_ai(const config &cfg)
 		// if not initialized, initialize now.
 		get_ai_ref();
 	}
-	const std::string act = cfg["action"];
+	const std::string &act = cfg["action"];
 	LOG_AI_MOD << "side "<< side_ << "        [modify_ai] "<<act<<" \""<<cfg["path"]<<"\""<<std::endl;
 	DBG_AI_MOD << std::endl << cfg << std::endl;
 	DBG_AI_MOD << "side "<< side_ << " before [modify_ai]"<<std::endl << to_config() << std::endl;
@@ -226,7 +226,7 @@ const std::string holder::describe_ai()
 	if (this->ai_!=NULL) {
 		return this->ai_->describe_self()+std::string(" for side ")+sidestr+std::string(" : ");
 	} else {
-		return std::string("not initialized ai with id=[")+cfg_["id"].str()+std::string("] for side ")+sidestr+std::string(" : ");
+		return std::string("not initialized ai with id=[")+cfg_["id"]+std::string("] for side ")+sidestr+std::string(" : ");
 	}
 }
 
@@ -734,8 +734,7 @@ void manager::play_turn( side_number side ){
 	/*hack. @todo 1.9 rework via extended event system*/
 	get_ai_info().recent_attacks.clear();
 	interface& ai_obj = get_active_ai_for_side(side);
-	static const config::t_token & z_ai_turn( generate_safe_static_const_t_interned(n_token::t_token("ai turn")) );
-	game_events::fire(z_ai_turn);
+	game_events::fire("ai turn");
 	raise_turn_started();
 	ai_obj.new_turn();
 	ai_obj.play_turn();

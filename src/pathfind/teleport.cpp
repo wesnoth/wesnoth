@@ -125,7 +125,7 @@ pathfind::teleport_map::teleport_map(
 		}
 		std::string teleport_id = group.get_teleport_id();
 
-		map_location::t_maploc_set::iterator source_it = locations.first.begin();
+		std::set<map_location>::iterator source_it = locations.first.begin();
 		for (; source_it != locations.first.end(); ++source_it ) {
 			if(teleport_map_.count(*source_it) == 0) {
 				std::set<std::string> id_set;
@@ -140,7 +140,7 @@ pathfind::teleport_map::teleport_map(
 	}
 }
 
-void pathfind::teleport_map::get_adjacents(map_location::t_maploc_set& adjacents, map_location loc) const {
+void pathfind::teleport_map::get_adjacents(std::set<map_location>& adjacents, map_location loc) const {
 
 	if (teleport_map_.count(loc) == 0) {
 		return;
@@ -148,23 +148,23 @@ void pathfind::teleport_map::get_adjacents(map_location::t_maploc_set& adjacents
 		const std::set<std::string>& keyset = (teleport_map_.find(loc)->second);
 		for(std::set<std::string>::const_iterator it = keyset.begin(); it != keyset.end(); ++it) {
 
-			const map_location::t_maploc_set& target = targets_.find(*it)->second;
+			const std::set<map_location>& target = targets_.find(*it)->second;
 			adjacents.insert(target.begin(), target.end());
 		}
 	}
 }
 
-void pathfind::teleport_map::get_sources(map_location::t_maploc_set& sources) const {
+void pathfind::teleport_map::get_sources(std::set<map_location>& sources) const {
 
-	std::map<std::string, map_location::t_maploc_set >::const_iterator it;
+	std::map<std::string, std::set<map_location> >::const_iterator it;
 	for(it = sources_.begin(); it != sources_.end(); ++it) {
 		sources.insert(it->second.begin(), it->second.end());
 	}
 }
 
-void pathfind::teleport_map::get_targets(map_location::t_maploc_set& targets) const {
+void pathfind::teleport_map::get_targets(std::set<map_location>& targets) const {
 
-	std::map<std::string, map_location::t_maploc_set >::const_iterator it;
+	std::map<std::string, std::set<map_location> >::const_iterator it;
 	for(it = targets_.begin(); it != targets_.end(); ++it) {
 		targets.insert(it->second.begin(), it->second.end());
 	}

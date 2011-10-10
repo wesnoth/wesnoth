@@ -71,10 +71,10 @@ private:
 	 */
 	void set_up_team_colors()
 	{
-		std::vector<config::t_token> tc;
+		std::vector<std::string> tc;
 
-		tc.push_back(config::t_token("red"));
-		tc.push_back(config::t_token("blue"));
+		tc.push_back("red");
+		tc.push_back("blue");
 
 		image::set_team_colors(&tc);
 	}
@@ -179,7 +179,7 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 
 	const std::vector<Uint32>& old_color = game_config::tc_info("blue");
 	// The first team color is red
-	const color_range& new_color = game_config::color_info(config::t_token("red"));
+	const color_range& new_color = game_config::color_info("red");
 	std::map<Uint32, Uint32> expected = recolor_range(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
@@ -212,7 +212,7 @@ BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 	BOOST_REQUIRE(mod != NULL);
 
 	const std::vector<Uint32>& old_color = game_config::tc_info("red");
-	const color_range& new_color = game_config::color_info(config::t_token("blue"));
+	const color_range& new_color = game_config::color_info("blue");
 	std::map<Uint32, Uint32> expected = recolor_range(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());

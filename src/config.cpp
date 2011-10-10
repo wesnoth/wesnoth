@@ -30,286 +30,170 @@
 #include <cstdlib>
 #include <cstring>
 #include <deque>
-
-#ifdef DEBUG
-#include "utils/count_logger.hpp"
-#endif
+#include <boost/variant.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-
-typedef config::t_token t_token;
-
 config::attribute_value::attribute_value()
-  : int_value_(),double_value_() , t_string_value_() , token_value_() , type_(EMPTY) , bool_value_()
-	, is_bool_(false), is_int_(false), is_double_(false) ,is_t_string_(false), is_token_(false)  { }
+	: value()
+{
+}
 
-config::attribute_value::~attribute_value() {}
+config::attribute_value::~attribute_value()
+{
+}
+
+config::attribute_value &config::attribute_value::operator=(const config::attribute_value &that)
+{
+	value = that.value;
+	return *this;
+}
 
 config::attribute_value::attribute_value(const config::attribute_value &that)
-	: int_value_ (that.int_value_),double_value_(that.double_value_)
-	, t_string_value_(that.t_string_value_)
-	, token_value_(that.token_value_), type_(that.type_) , bool_value_(that.bool_value_)
-	, is_bool_(that.is_bool_), is_int_(that.is_int_), is_double_(that.is_double_)
-	,is_t_string_(that.is_t_string_), is_token_(that.is_token_)  { }
-
-config::attribute_value &config::attribute_value::operator=(const config::attribute_value &that) {
-	bool_value_ = that.bool_value_; int_value_ = that.int_value_;
-	double_value_ = that.double_value_; t_string_value_ = that.t_string_value_;
-	token_value_ = that.token_value_; type_ = that.type_;
-	is_bool_ = that.is_bool_; is_int_ = that.is_int_; is_double_ = that.is_double_;
-	is_t_string_ = that.is_t_string_; is_token_ = that.is_token_;
-	return *this;
+	: value(that.value)
+{
 }
 
 config::attribute_value &config::attribute_value::operator=(bool v)
 {
-	type_ = BOOL;
-	bool_value_ = v;
-	is_bool_ = true; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =false;
+	value = v;
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(int v)
 {
-	type_ = INT;
-	int_value_ = v;
-	is_bool_ = false; is_int_ = true; is_double_ = false; is_t_string_ = false; is_token_ =false;
+	value = double(v);
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(double v)
 {
-	type_ = DOUBLE;
-	double_value_ = v;
-	is_bool_ = false; is_int_ = false; is_double_ = true; is_t_string_ = false; is_token_ =false;
+	value = v;
 	return *this;
 }
 
-config::attribute_value &config::attribute_value::operator=(const t_token &v)  {
-	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-	static const config::t_token & z_yes( generate_safe_static_const_t_interned(n_token::t_token("yes")) );
-	static const config::t_token & z_true( generate_safe_static_const_t_interned(n_token::t_token("true")) );
-	static const config::t_token & z_no( generate_safe_static_const_t_interned(n_token::t_token("no")) );
-	static const config::t_token & z_false( generate_safe_static_const_t_interned(n_token::t_token("false")) );
-	if (v == z_empty) {
-		type_ = TOKEN;
-		is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =true;
-		token_value_ = v;
-		return *this; }
-	if (v == z_yes || v == z_true) return *this = true;
-	if (v == z_no || v == z_false) return *this = false;
-
-	std::istringstream is(*v);
-	int i;
-	char extra_char;
-	if( (is >> i) && ! is.get(extra_char) ) { *this = i; is_token_=true; token_value_ = v; return *this; }
-
-	is.clear();
-	is.str(*v);
-	double d;
-	if( (is >> d) && ! is.get(extra_char) ) { *this = d; is_token_=true; token_value_ = v; return *this; }
-
-	type_ = TOKEN;
-	is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =true;
-	token_value_ = v;
-	return *this;
+bool config::attribute_value::operator==(const config::attribute_value &other) const
+{
+	return value == other.value;
 }
 
-config::attribute_value &config::attribute_value::operator=(const std::string &v) {
-	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-	if (v.empty()) { return *this = z_empty;}
-	if (v == "yes" || v == "true") return *this = true;
-	if (v == "no" || v == "false") return *this = false;
-
-	std::istringstream is( v );
-	int i;
-	char extra_char;
-	if( (is >> i) && ! is.get(extra_char) ) { *this = i; return *this; }
-
-	is.clear();
-	is.str( v );
-	double d;
-	if( (is >> d) && ! is.get(extra_char) ) { *this = d; return *this; }
-	type_ = TOKEN;
-	is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = false; is_token_ =true;
-	token_value_ = t_token(v);
-	return *this;
+std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)
+{
+	return os << v.str();
 }
 
-config::attribute_value &config::attribute_value::operator=(const t_string &v) {
-	if (!v.translatable()) { return *this = v.token(); }
-	type_ = TSTRING;
-	is_bool_ = false; is_int_ = false; is_double_ = false; is_t_string_ = true; is_token_ =false;
-	t_string_value_ = v;
-	return *this;
+bool config::attribute_value::blank() const
+{
+	return boost::get<const boost::blank>(&value);
 }
 
-bool config::attribute_value::operator==(const config::attribute_value &other) const {
-	bool retval = type_ == other.type_;
-	if(retval){
-		switch(type_){
-		case(BOOL) :  retval &= bool_value_ == other.bool_value_; break;
-		case(INT) :  retval &= int_value_ == other.int_value_; break;
-		case(DOUBLE) :  retval &= double_value_ == other.double_value_; break;
-		case(TSTRING) :  retval &= t_string_value_ == other.t_string_value_; break;
-		case(TOKEN) :  retval &= token_value_ == other.token_value_; break;
-		case(EMPTY) : break;
-		}
-	}
-	return retval;
-}
-
-bool operator==(const config::attribute_value &a, config::t_token const & b) {
-	static const config::t_token & z_yes( generate_safe_static_const_t_interned(n_token::t_token("yes")) );
-	static const config::t_token & z_true( generate_safe_static_const_t_interned(n_token::t_token("true")) );
-	static const config::t_token & z_no( generate_safe_static_const_t_interned(n_token::t_token("no")) );
-	static const config::t_token & z_false( generate_safe_static_const_t_interned(n_token::t_token("false")) );
-	//note: having 4 different acceptable boolean string values has a cost
-	if ((a.type_ == a.BOOL) || ( a.is_bool_)){
-		return (a.bool_value_ ?(b==z_true || b == z_yes) : (b == z_false || b == z_no)); }
-	return a.token() ==  b;
-}
-
-bool operator==(const config::attribute_value &a, t_string const & b) {
-	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-	static const config::t_token & z_yes( generate_safe_static_const_t_interned(n_token::t_token("yes")) );
-	static const config::t_token & z_true( generate_safe_static_const_t_interned(n_token::t_token("true")) );
-	static const config::t_token & z_no( generate_safe_static_const_t_interned(n_token::t_token("no")) );
-	static const config::t_token & z_false( generate_safe_static_const_t_interned(n_token::t_token("false")) );
-	static const t_string tstring_empty(z_empty)
-		, tstring_true(z_true), tstring_false(z_false)
-		, tstring_yes(z_yes), tstring_no(z_no);
-	if ((a.type_ == a.BOOL) || ( a.is_bool_)){
-		return (a.bool_value_ ? (b==tstring_true || b == tstring_yes) : (b == tstring_false || b == tstring_no)); }
-	return a.t_str() == b; }
-
-
-std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)  {
-	return os << v.str(); }
-
-bool config::attribute_value::empty() const {
-	if (type_ == EMPTY){ return true; }
-	switch(type_){
-	case(TSTRING) :  return t_string_value_.empty();
-	case(TOKEN) :  return token_value_.empty();
-	default : break;
-	}
+bool config::attribute_value::empty() const
+{
+	if (boost::get<const boost::blank>(&value)) return true;
+	if (const std::string *p = boost::get<const std::string>(&value)) return p->empty();
 	return false;
 }
 
-bool config::attribute_value::to_bool(bool def) const {
-	if ((type_ == BOOL) || ( is_bool_)){ return bool_value_; }
+bool config::attribute_value::to_bool(bool def) const
+{
+	if (const bool *p = boost::get<const bool>(&value)) return *p;
 	return def;
 }
 
-int config::attribute_value::to_int(int def) const {
-	if ((type_ == INT) || ( is_int_)){ return int_value_; }
-	if ((type_ == DOUBLE) || ( is_double_)){ is_int_=true; int_value_ = int(double_value_); return int_value_;}
-	return def;}
-
-double config::attribute_value::to_double(double def) const {
-	if ((type_ == DOUBLE) || ( is_double_)){ return double_value_; }
-	if ((type_ == INT) || ( is_int_)){  is_double_ = true; double_value_= double(int_value_); return double_value_; }
+int config::attribute_value::to_int(int def) const
+{
+	if (const double *p = boost::get<const double>(&value)) return int(*p);
 	return def;
 }
 
-t_token const & config::attribute_value::token() const {
-	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-	static const config::t_token & z_yes( generate_safe_static_const_t_interned(n_token::t_token("yes")) );
-	static const config::t_token & z_no( generate_safe_static_const_t_interned(n_token::t_token("no")) );
+double config::attribute_value::to_double(double def) const
+{
+	if (const double *p = boost::get<const double>(&value)) return *p;
+	return def;
+}
 
-	if ((type_ == TOKEN) || ( is_token_)){ return token_value_; }
-	switch(type_){
-	case (EMPTY) : return z_empty;
-	case(BOOL) :  return bool_value_ ? z_yes : z_no;
-	case(INT) :
-		is_token_ = true;
-		token_value_ = t_token(str_cast(int_value_));
-		return token_value_;
-	case(DOUBLE) :
-		is_token_ = true;
-		token_value_ = t_token(str_cast(double_value_));
-		return token_value_;
-	case(TSTRING) :
-		return t_string_value_.token();
-	default : break;
+struct config_attribute_str_visitor : boost::static_visitor<std::string>
+{
+	std::string operator()(boost::blank const &) const
+	{ return std::string(); }
+	std::string operator()(bool b) const
+	{
+		static std::string s_yes("yes"), s_no("no");
+		return b ? s_yes : s_no;
 	}
-	assert(false);
-	return token_value_;
+	std::string operator()(double d) const
+	{ return str_cast(d); }
+	std::string operator()(std::string const &s) const
+	{ return s; }
+	std::string operator()(t_string const &s) const
+	{ return s.str(); }
+};
+
+std::string config::attribute_value::str() const
+{
+	return boost::apply_visitor(config_attribute_str_visitor(), value);
 }
 
-std::string const & config::attribute_value::str() const {
-	return static_cast<std::string const &>(token());
+t_string config::attribute_value::t_str() const
+{
+	if (const t_string *p = boost::get<const t_string>(&value)) return *p;
+	return str();
 }
 
-
-t_string const & config::attribute_value::t_str() const {
-	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-	static const config::t_token & z_yes( generate_safe_static_const_t_interned(n_token::t_token("yes")) );
-	static const config::t_token & z_no( generate_safe_static_const_t_interned(n_token::t_token("no")) );
-	static const t_string tstring_empty(z_empty)
-		, tstring_yes(z_yes), tstring_no(z_no);
-
-	if ((type_ == TSTRING) || ( is_t_string_)){
-		return t_string_value_; }
-	switch(type_){
-	case (EMPTY) :
-		return tstring_empty;
-	case(BOOL) :
-		return bool_value_ ? tstring_yes : tstring_no;
-	case(INT) :
-	case(DOUBLE) :
-	case(TOKEN) :
-		is_t_string_ = true;
-		t_string_value_ = t_string(token());
-		return t_string_value_;
-	default : break;
-	}
-	assert(false);
-	return t_string_value_;
+config::attribute_value &config::attribute_value::operator=(const std::string &v)
+{
+	if (v.empty()) { value = v; return *this; }
+	if (v == "yes" || v == "true") return *this = true;
+	if (v == "no" || v == "false") return *this = false;
+	char *eptr;
+	int i = strtol(v.c_str(), &eptr, 0);
+	if (*eptr == '\0') return *this = i;
+	double d = strtod(v.c_str(), &eptr);
+	if (*eptr == '\0') return *this = d;
+	value = v;
+	return *this;
 }
 
-
-
-config * config::invalid;
-bool config::initialize_invalid() {
-	//Run initialization once
-	static bool ran_once = false;
-	if (!ran_once ) {
-		ran_once = true;
-		invalid = NULL; }
-	return true;
+config::attribute_value &config::attribute_value::operator=(const t_string &v)
+{
+	if (!v.translatable()) return *this = v.str();
+	value = v;
+	return *this;
 }
 
-void config::throw_missing_child_exception() const {
-	throw error("Mandatory WML child missing yet untested for. Please report."); }
+config config::invalid;
 
-config::config() : values(), children(), ordered_children() {
-	//Run initialization once
-	static bool invalid_initialized(initialize_invalid());
-	(void) invalid_initialized; //quiet unused variable warning
+const char* config::diff_track_attribute = "__diff_track";
+
+void config::check_valid() const
+{
+	if (!*this)
+		throw error("Mandatory WML child missing yet untested for. Please report.");
 }
 
-config::config(const config& cfg) : values(cfg.values), children(), ordered_children() {
-	static bool invalid_initialized(initialize_invalid());
-	(void) invalid_initialized; //quiet unused variable warning
+void config::check_valid(const config &cfg) const
+{
+	if (!*this || !cfg)
+		throw error("Mandatory WML child missing yet untested for. Please report.");
+}
+
+config::config() : values(), children(), ordered_children()
+{
+}
+
+config::config(const config& cfg) : values(cfg.values), children(), ordered_children()
+{
 	append_children(cfg);
 }
 
-config::config(const t_token& child) : values(), children(), ordered_children() {
-	static bool invalid_initialized(initialize_invalid());
-	(void) invalid_initialized; //quiet unused variable warning
+config::config(const std::string& child) : values(), children(), ordered_children()
+{
 	add_child(child);
 }
-config::config(const std::string& child) : values(), children(), ordered_children() {
-	static bool invalid_initialized(initialize_invalid());
-	(void) invalid_initialized; //quiet unused variable warning
-	add_child(t_token(child));
-}
 
-config::~config() {
+config::~config()
+{
 	clear();
 }
 
@@ -341,17 +225,13 @@ config &config::operator=(config &&cfg)
 }
 #endif
 
-bool config::has_attribute(const t_token &key) const
+bool config::has_attribute(const std::string &key) const
 {
 	check_valid();
 	return values.find(key) != values.end();
 }
 
-bool config::has_attribute(const std::string &key) const  {
-	return has_attribute(t_token(key)); }
-
-
-bool config::has_old_attribute(const t_token &key, const t_token &old_key, const std::string& msg) const
+bool config::has_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg) const
 {
 	check_valid();
 	if (values.find(key) != values.end()) {
@@ -363,16 +243,13 @@ bool config::has_old_attribute(const t_token &key, const t_token &old_key, const
 	}
 	return false;
 }
-bool config::has_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg) const  {
-	return has_old_attribute(t_token(key), t_token(old_key), msg );}
 
 
-void config::remove_attribute(const t_token &key)
+void config::remove_attribute(const std::string &key)
 {
 	check_valid();
 	values.erase(key);
 }
-void config::remove_attribute(const std::string &key) { remove_attribute(t_token(key));}
 
 void config::append_children(const config &cfg)
 {
@@ -391,7 +268,7 @@ void config::append(const config &cfg)
 	}
 }
 
-void config::merge_children(const t_token& key)
+void config::merge_children(const std::string& key)
 {
 	check_valid();
 
@@ -405,23 +282,22 @@ void config::merge_children(const t_token& key)
 	clear_children(key);
 	add_child(key,merged_children);
 }
-void config::merge_children(const std::string& key) {merge_children(t_token(key));}
 
-void config::merge_children_by_attribute(const t_token& key, const t_token& attribute)
+void config::merge_children_by_attribute(const std::string& key, const std::string& attribute)
 {
 	check_valid();
 
 	if (child_count(key) < 2) return;
 
-	typedef std::map<t_token, config> config_map;
+	typedef std::map<std::string, config> config_map;
 	config_map merged_children_map;
 	foreach (const config &cfg, child_range(key)) {
-		const attribute_value &value = cfg[attribute];
-		config_map::iterator m = merged_children_map.find(value.token());
+		const std::string &value = cfg[attribute];
+		config_map::iterator m = merged_children_map.find(value);
 		if ( m!=merged_children_map.end() ) {
 			m->second.append(cfg);
 		} else {
-			merged_children_map.insert(std::make_pair(value.token(), cfg));
+			merged_children_map.insert(make_pair(value, cfg));
 		}
 	}
 
@@ -430,38 +306,31 @@ void config::merge_children_by_attribute(const t_token& key, const t_token& attr
 		add_child(key,i.second);
 	}
 }
-void config::merge_children_by_attribute(const std::string& key, const std::string& attribute){
-	merge_children_by_attribute(t_token(key), t_token(attribute));}
 
-config::child_itors config::child_range(const t_token& key) {
+config::child_itors config::child_range(const std::string& key)
+{
 	check_valid();
 
 	child_map::iterator i = children.find(key);
-	if (i != children.end()) {
-		return child_itors(child_iterator(i->second.begin()), child_iterator(i->second.end()));
-	}
 	static child_list dummy;
-	static const child_itors dummy_iters(child_iterator(dummy.begin()), child_iterator(dummy.end()));
-	return dummy_iters;
+	child_list *p = &dummy;
+	if (i != children.end()) p = &i->second;
+	return child_itors(child_iterator(p->begin()), child_iterator(p->end()));
 }
-config::child_itors config::child_range(const std::string& key){ return child_range( t_token(key) );}
 
-config::const_child_itors config::child_range(const t_token& key) const {
+config::const_child_itors config::child_range(const std::string& key) const
+{
 	check_valid();
 
 	child_map::const_iterator i = children.find(key);
-	if (i != children.end()) {
-		return const_child_itors(const_child_iterator(i->second.begin()), const_child_iterator(i->second.end())); }
-
-	static const child_list dummy;
-	//Use begin() and begin() in case someone violates the const contract
-	static const_child_itors dummy_iters(const_child_iterator(dummy.begin()), const_child_iterator(dummy.begin()));
-	return dummy_iters;
+	static child_list dummy;
+	const child_list *p = &dummy;
+	if (i != children.end()) p = &i->second;
+	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
-config::const_child_itors config::child_range(const std::string& key) const { return child_range(t_token(key));}
-
-unsigned config::child_count(const t_token &key) const {
+unsigned config::child_count(const std::string &key) const
+{
 	check_valid();
 
 	child_map::const_iterator i = children.find(key);
@@ -470,38 +339,18 @@ unsigned config::child_count(const t_token &key) const {
 	}
 	return 0;
 }
-unsigned config::child_count(const std::string &key) const { return child_count(t_token(key)); }
 
-config::t_child_range_index config::child_range_index(config::t_token const & key, config::t_token const & name) {
-	t_child_range_index index;
-
-	child_map::iterator irange = children.find(key);
-	if (irange != children.end()) {
-		foreach(config * c, irange->second) {
-			index.insert(std::make_pair((*c)[name].token(), c)); } }
-		return index; }
-
-config::t_const_child_range_index config::const_child_range_index(config::t_token const & key, config::t_token const & name) const {
-	t_const_child_range_index index;
-
-	child_map::const_iterator irange = children.find(key);
-	if (irange != children.end()) {
-		foreach(config const * c, irange->second){
-			index.insert(std::make_pair((*c)[name].token(), c)); } }
-		return index; }
-
-config &config::child(const t_token& key, int n)
+config &config::child(const std::string& key, int n)
 {
 	check_valid();
 
 	const child_map::const_iterator i = children.find(key);
-	if (i == children.end()) return *invalid;
+	if (i == children.end()) return invalid;
 	if (n < 0) n = i->second.size() + n;
-	return  size_t(n) < i->second.size() ? *i->second[n] : *invalid;
+	return  size_t(n) < i->second.size() ? *i->second[n] : invalid;
 }
-config &config::child(const std::string& key, int n){ return child(t_token( key ), n); }
 
-config config::child_or_empty(const t_token& key) const
+config config::child_or_empty(const std::string& key) const
 {
 	check_valid();
 
@@ -511,9 +360,8 @@ config config::child_or_empty(const t_token& key) const
 
 	return config();
 }
-config config::child_or_empty(const std::string& key) const { return child_or_empty(t_token( key )); }
 
-config &config::child_or_add(const t_token &key)
+config &config::child_or_add(const std::string &key)
 {
 	child_map::const_iterator i = children.find(key);
 	if (i != children.end() && !i->second.empty())
@@ -521,20 +369,18 @@ config &config::child_or_add(const t_token &key)
 
 	return add_child(key);
 }
-config &config::child_or_add(const std::string &key) {
-	return child_or_add(t_token( key )) ;}
 
-config& config::add_child(const t_token& key) {
+config& config::add_child(const std::string& key)
+{
 	check_valid();
 
 	child_list& v = children[key];
 	v.push_back(new config());
-	ordered_children.push_back(child_pos(children.find(key),v.size()-1)); //note doing find twice
+	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
 	return *v.back();
 }
-config& config::add_child(const std::string& key) { return add_child(t_token( key ));}
 
-config& config::add_child(const t_token& key, const config& val)
+config& config::add_child(const std::string& key, const config& val)
 {
 	check_valid(val);
 
@@ -543,10 +389,9 @@ config& config::add_child(const t_token& key, const config& val)
 	ordered_children.push_back(child_pos(children.find(key),v.size()-1));
 	return *v.back();
 }
-config& config::add_child(const std::string& key, const config& val) {return add_child(t_token(key), val);}
 
 #ifdef HAVE_CXX0X
-config &config::add_child(const t_token &key, config &&val)
+config &config::add_child(const std::string &key, config &&val)
 {
 	check_valid(val);
 
@@ -555,10 +400,9 @@ config &config::add_child(const t_token &key, config &&val)
 	ordered_children.push_back(child_pos(children.find(key), v.size() - 1));
 	return *v.back();
 }
-config &config::add_child(const std::string &key, config &&val) {return add_child(t_token( key ), val);}
 #endif
 
-config &config::add_child_at(const t_token &key, const config &val, unsigned index)
+config &config::add_child_at(const std::string &key, const config &val, unsigned index)
 {
 	check_valid(val);
 
@@ -590,8 +434,6 @@ config &config::add_child_at(const t_token &key, const config &val, unsigned ind
 
 	return *v[index];
 }
-config &config::add_child_at(const std::string &key, const config &val, unsigned index) {
-	return add_child_at(t_token( key ), val, index); }
 
 namespace {
 
@@ -607,7 +449,7 @@ private:
 
 }
 
-void config::clear_children(const t_token& key)
+void config::clear_children(const std::string& key)
 {
 	check_valid();
 
@@ -623,9 +465,8 @@ void config::clear_children(const t_token& key)
 
 	children.erase(i);
 }
-void config::clear_children(const std::string& key) {return clear_children(t_token( key ));}
 
-void config::splice_children(config &src, const t_token &key)
+void config::splice_children(config &src, const std::string &key)
 {
 	check_valid(src);
 
@@ -647,9 +488,8 @@ void config::splice_children(config &src, const t_token &key)
 		ordered_children.push_back(child_pos(i_dst, j));
 	}
 }
-void config::splice_children(config &src, const std::string &key) {return splice_children(src, t_token( key ));}
 
-void config::recursive_clear_value(const t_token& key)
+void config::recursive_clear_value(const std::string& key)
 {
 	check_valid();
 
@@ -659,7 +499,6 @@ void config::recursive_clear_value(const t_token& key)
 		const_cast<config *>(&value.cfg)->recursive_clear_value(key);
 	}
 }
-void config::recursive_clear_value(const std::string& key) {recursive_clear_value(t_token( key ));}
 
 std::vector<config::child_pos>::iterator config::remove_child(
 	const child_map::iterator &pos, unsigned index)
@@ -689,7 +528,7 @@ config::all_children_iterator config::erase(const config::all_children_iterator&
 	return all_children_iterator(remove_child(i.i_->pos, i.i_->index));
 }
 
-void config::remove_child(const t_token &key, unsigned index)
+void config::remove_child(const std::string &key, unsigned index)
 {
 	check_valid();
 
@@ -703,58 +542,30 @@ void config::remove_child(const t_token &key, unsigned index)
 	remove_child(i, index);
 }
 
-void config::remove_child(const std::string &key, unsigned index) {return remove_child(t_token( key ), index);}
-
-//#define COUNT_THE_NUMBER_OF_STRING_TO_TOKEN_CONVERSIONS
-#ifdef COUNT_THE_NUMBER_OF_STRING_TO_TOKEN_CONVERSIONS
-namespace{
-	static n_count_logger::t_count_logger<std::string> count_btok1("config index as std::string (BAD)",11);
-}
-#endif
-
-const config::attribute_value &config::operator[](const t_token &key) const {
+const config::attribute_value &config::operator[](const std::string &key) const
+{
 	check_valid();
 
 	const attribute_map::const_iterator i = values.find(key);
-	if (i != values.end()){ return i->second; }
+	if (i != values.end()) return i->second;
 	static const attribute_value empty_attribute;
 	return empty_attribute;
 }
 
-const config::attribute_value &config::operator[](const attribute_value &key) const {
-	return operator[](key.token()); }
-
-const config::attribute_value &config::operator[](const std::string &key) const{
-#ifdef COUNT_THE_NUMBER_OF_STRING_TO_TOKEN_CONVERSIONS
-	count_btok1.inc(key); //debug
-#endif
-	return operator[](t_token( key )); }
-
-config::attribute_value &config::operator[](const t_token &key) {
-	check_valid();
-	return values[key];
-}
-config::attribute_value &config::operator[](const attribute_value &key){
-	return operator[](key.token());}
-
-config::attribute_value &config::operator[](const std::string &key){
-#ifdef COUNT_THE_NUMBER_OF_STRING_TO_TOKEN_CONVERSIONS
-	count_btok1.inc(key); //debug
-#endif
-	return operator[](t_token(key));}
-
-const config::attribute_value *config::get(const t_token &key) const {
+const config::attribute_value *config::get(const std::string &key) const
+{
 	check_valid();
 	attribute_map::const_iterator i = values.find(key);
 	return i != values.end() ? &i->second : NULL;
 }
-const config::attribute_value *config::get(const std::string &key) const{
-#ifdef COUNT_THE_NUMBER_OF_STRING_TO_TOKEN_CONVERSIONS
-	count_btok1.inc(key); //debug
-#endif
-	return get(t_token( key )); }
 
-const config::attribute_value &config::get_old_attribute(const t_token &key, const t_token &old_key, const std::string &msg) const
+config::attribute_value &config::operator[](const std::string &key)
+{
+	check_valid();
+	return values[key];
+}
+
+const config::attribute_value &config::get_old_attribute(const std::string &key, const std::string &old_key, const std::string &msg) const
 {
 	check_valid();
 
@@ -772,8 +583,6 @@ const config::attribute_value &config::get_old_attribute(const t_token &key, con
 	static const attribute_value empty_attribute;
 	return empty_attribute;
 }
-const config::attribute_value &config::get_old_attribute(const std::string &key, const std::string &old_key, const std::string &msg) const{
-	return get_old_attribute(t_token( key ), t_token(old_key ), msg);}
 
 
 void config::merge_attributes(const config &cfg)
@@ -797,33 +606,37 @@ config::const_attr_itors config::attribute_range() const
 namespace {
 
 struct config_has_value {
-	config_has_value(const t_token& name, const t_token& value)
-		: name_(name), value_(value) {}
+	config_has_value(const std::string& name, const std::string& value)
+		: name_(name), value_()
+	{
+		value_ = value;
+	}
 
-	bool operator()(const config* cfg) const {
-		return (*cfg)[name_] == value_; }
+	bool operator()(const config* cfg) const { return (*cfg)[name_] == value_; }
 
 private:
-	t_token const &name_;
-	t_token const &value_;
+	std::string name_;
+	config::attribute_value value_;
 };
 
 } // end namespace
 
-config &config::find_child(const t_token &key, const t_token &name, const t_token &value) {
+config &config::find_child(const std::string &key, const std::string &name,
+	const std::string &value)
+{
 	check_valid();
 
 	const child_map::iterator i = children.find(key);
-	if(i == children.end()) { return *invalid; }
+	if(i == children.end())
+		return invalid;
 
 	const child_list::iterator j = std::find_if(i->second.begin(),
 	                                            i->second.end(),
 	                                            config_has_value(name,value));
-
-	return (j != i->second.end()) ? **j :  *invalid;
-}
-config &config::find_child(const std::string &key, const std::string &name, const std::string &value){
-	return find_child(t_token( key ), t_token(name), t_token(value));
+	if(j != i->second.end())
+		return **j;
+	else
+		return invalid;
 }
 
 namespace {
@@ -933,16 +746,8 @@ config config::get_diff(const config& c) const
 	return res;
 }
 
-void config::get_diff(const config& c, config& res) const {
-	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-	static const config::t_token & z_index( generate_safe_static_const_t_interned(n_token::t_token("index")) );
-	static const t_token & z_insert_child( generate_safe_static_const_t_interned(n_token::t_token("insert_child")) );
-	static const t_token & z_delete_child( generate_safe_static_const_t_interned(n_token::t_token("delete_child")) );
-	static const t_token & z_change_child( generate_safe_static_const_t_interned(n_token::t_token("change_child")) );
-	static const t_token & z_insert( generate_safe_static_const_t_interned(n_token::t_token("insert")) );
-	static const t_token & z_delete( generate_safe_static_const_t_interned(n_token::t_token("delete")) );
-	static const t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
-
+void config::get_diff(const config& c, config& res) const
+{
 	check_valid(c);
 	check_valid(res);
 
@@ -951,9 +756,9 @@ void config::get_diff(const config& c, config& res) const {
 	attribute_map::const_iterator i;
 	for(i = values.begin(); i != values.end(); ++i) {
 		const attribute_map::const_iterator j = c.values.find(i->first);
-		if(j == c.values.end() || (i->second != j->second && i->second != z_empty)) {
+		if(j == c.values.end() || (i->second != j->second && i->second != "")) {
 			if(inserts == NULL) {
-				inserts = &res.add_child(z_insert);
+				inserts = &res.add_child("insert");
 			}
 
 			(*inserts)[i->first] = i->second;
@@ -964,16 +769,16 @@ void config::get_diff(const config& c, config& res) const {
 
 	for(i = c.values.begin(); i != c.values.end(); ++i) {
 		const attribute_map::const_iterator itor = values.find(i->first);
-		if(itor == values.end() || itor->second == z_empty) {
+		if(itor == values.end() || itor->second == "") {
 			if(deletes == NULL) {
-				deletes = &res.add_child(z_delete);
+				deletes = &res.add_child("delete");
 			}
 
-			(*deletes)[i->first] = z_x;
+			(*deletes)[i->first] = "x";
 		}
 	}
 
-	std::vector<t_token> entities;
+	std::vector<std::string> entities;
 
 	child_map::const_iterator ci;
 	for(ci = children.begin(); ci != children.end(); ++ci) {
@@ -986,7 +791,7 @@ void config::get_diff(const config& c, config& res) const {
 		}
 	}
 
-	for(std::vector<t_token>::const_iterator itor = entities.begin(); itor != entities.end(); ++itor) {
+	for(std::vector<std::string>::const_iterator itor = entities.begin(); itor != entities.end(); ++itor) {
 
 		const child_map::const_iterator itor_a = children.find(*itor);
 		const child_map::const_iterator itor_b = c.children.find(*itor);
@@ -1012,9 +817,9 @@ void config::get_diff(const config& c, config& res) const {
 				// If b has more elements than a, then we assume this element
 				// is an element that needs deleting.
 				if(b.size() - bi > a.size() - ai) {
-					config& new_delete = res.add_child(z_delete_child);
+					config& new_delete = res.add_child("delete_child");
 					buf << bi - ndeletes;
-					new_delete.values[z_index] = buf.str();
+					new_delete.values["index"] = buf.str();
 					new_delete.add_child(*itor);
 
 					++ndeletes;
@@ -1024,9 +829,9 @@ void config::get_diff(const config& c, config& res) const {
 				// If b has less elements than a, then we assume this element
 				// is an element that needs inserting.
 				else if(b.size() - bi < a.size() - ai) {
-					config& new_insert = res.add_child(z_insert_child);
+					config& new_insert = res.add_child("insert_child");
 					buf << ai;
-					new_insert.values[z_index] = buf.str();
+					new_insert.values["index"] = buf.str();
 					new_insert.add_child(*itor,*a[ai]);
 
 					++ai;
@@ -1035,9 +840,9 @@ void config::get_diff(const config& c, config& res) const {
 				// Otherwise, they have the same number of elements,
 				// so try just changing this element to match.
 				else {
-					config& new_change = res.add_child(z_change_child);
+					config& new_change = res.add_child("change_child");
 					buf << bi;
-					new_change.values[z_index] = buf.str();
+					new_change.values["index"] = buf.str();
 					new_change.add_child(*itor,a[ai]->get_diff(*b[bi]));
 
 					++ai;
@@ -1050,36 +855,25 @@ void config::get_diff(const config& c, config& res) const {
 
 void config::apply_diff(const config& diff, bool track /* = false */)
 {
-	static const config::t_token & z_index( generate_safe_static_const_t_interned(n_token::t_token("index")) );
-	static const t_token & z_diff_track_attribute_( generate_safe_static_const_t_interned(n_token::t_token("diff_track_attribute_")) );
-	static const t_token & z_modified( generate_safe_static_const_t_interned(n_token::t_token("modified")) );
-	static const t_token & z_insert( generate_safe_static_const_t_interned(n_token::t_token("insert")) );
-	static const t_token & z_delete( generate_safe_static_const_t_interned(n_token::t_token("delete")) );
-	static const t_token & z_insert_child( generate_safe_static_const_t_interned(n_token::t_token("insert_child")) );
-	static const t_token & z_delete_child( generate_safe_static_const_t_interned(n_token::t_token("delete_child")) );
-	static const t_token & z_change_child( generate_safe_static_const_t_interned(n_token::t_token("change_child")) );
-	static const t_token & z_deleted( generate_safe_static_const_t_interned(n_token::t_token("deleted")) );
-	static const t_token & z_new( generate_safe_static_const_t_interned(n_token::t_token("new")) );
-
 	check_valid(diff);
 
-	if (track) values[z_diff_track_attribute_] = z_modified;
+	if (track) values[diff_track_attribute] = "modified";
 
-	if (const config &inserts = diff.child(z_insert)) {
+	if (const config &inserts = diff.child("insert")) {
 		foreach (const attribute &v, inserts.attribute_range()) {
 			values[v.first] = v.second;
 		}
 	}
 
-	if (const config &deletes = diff.child(z_delete)) {
+	if (const config &deletes = diff.child("delete")) {
 		foreach (const attribute &v, deletes.attribute_range()) {
 			values.erase(v.first);
 		}
 	}
 
-	foreach (const config &i, diff.child_range(z_change_child))
+	foreach (const config &i, diff.child_range("change_child"))
 	{
-		const size_t index = lexical_cast<size_t>(i[z_index].str());
+		const size_t index = lexical_cast<size_t>(i["index"].str());
 		foreach (const any_child &item, i.all_children_range())
 		{
 			if (item.key.empty()) {
@@ -1088,34 +882,34 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 
 			const child_map::iterator itor = children.find(item.key);
 			if(itor == children.end() || index >= itor->second.size()) {
-				throw error("error in diff: could not find element '" + std::string(item.key) + "'");
+				throw error("error in diff: could not find element '" + item.key + "'");
 			}
 
 			itor->second[index]->apply_diff(item.cfg, track);
 		}
 	}
 
-	foreach (const config &i, diff.child_range(z_insert_child))
+	foreach (const config &i, diff.child_range("insert_child"))
 	{
-		const size_t index = lexical_cast<size_t>(i[z_index].str());
+		const size_t index = lexical_cast<size_t>(i["index"].str());
 		foreach (const any_child &item, i.all_children_range()) {
 			config& inserted = add_child_at(item.key, item.cfg, index);
-			if (track) inserted[z_diff_track_attribute_] = z_new;
+			if (track) inserted[diff_track_attribute] = "new";
 		}
 	}
 
-	foreach (const config &i, diff.child_range(z_delete_child))
+	foreach (const config &i, diff.child_range("delete_child"))
 	{
-		const size_t index = lexical_cast<size_t>(i[z_index].str());
+		const size_t index = lexical_cast<size_t>(i["index"].str());
 		foreach (const any_child &item, i.all_children_range()) {
 			if (!track) {
 				remove_child(item.key, index);
 			} else {
 				const child_map::iterator itor = children.find(item.key);
 				if(itor == children.end() || index >= itor->second.size()) {
-					throw error("error in diff: could not find element '" + std::string(item.key) + "'");
+					throw error("error in diff: could not find element '" + item.key + "'");
 				}
-				itor->second[index]->values[z_diff_track_attribute_] = z_deleted;
+				itor->second[index]->values[diff_track_attribute] = "deleted";
 			}
 		}
 	}
@@ -1123,23 +917,18 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 
 void config::clear_diff_track(const config& diff)
 {
-	static const t_token & z_diff_track_attribute_( generate_safe_static_const_t_interned(n_token::t_token("diff_track_attribute_")) );
-	static const t_token & z_index( generate_safe_static_const_t_interned(n_token::t_token("index")) );
-	static const t_token & z_delete_child( generate_safe_static_const_t_interned(n_token::t_token("delete_child")) );
-	static const t_token & z_change_child( generate_safe_static_const_t_interned(n_token::t_token("change_child")) );
-
-	remove_attribute(z_diff_track_attribute_);
-	foreach (const config &i, diff.child_range(z_delete_child))
+	remove_attribute(diff_track_attribute);
+	foreach (const config &i, diff.child_range("delete_child"))
 	{
-		const size_t index = lexical_cast<size_t>(i[z_index].str());
+		const size_t index = lexical_cast<size_t>(i["index"].str());
 		foreach (const any_child &item, i.all_children_range()) {
 			remove_child(item.key, index);
 		}
 	}
 
-	foreach (const config &i, diff.child_range(z_change_child))
+	foreach (const config &i, diff.child_range("change_child"))
 	{
-		const size_t index = lexical_cast<size_t>(i[z_index].str());
+		const size_t index = lexical_cast<size_t>(i["index"].str());
 		foreach (const any_child &item, i.all_children_range())
 		{
 			if (item.key.empty()) {
@@ -1148,14 +937,14 @@ void config::clear_diff_track(const config& diff)
 
 			const child_map::iterator itor = children.find(item.key);
 			if(itor == children.end() || index >= itor->second.size()) {
-				throw error("error in diff: could not find element '" + std::string(item.key) + "'");
+				throw error("error in diff: could not find element '" + item.key + "'");
 			}
 
 			itor->second[index]->clear_diff_track(item.cfg);
 		}
 	}
 	foreach (const any_child &value, all_children_range()) {
-		const_cast<config *>(&value.cfg)->remove_attribute(z_diff_track_attribute_);
+		const_cast<config *>(&value.cfg)->remove_attribute(diff_track_attribute);
 	}
 }
 
@@ -1163,7 +952,7 @@ void config::merge_with(const config& c)
 {
 	check_valid(c);
 
-	std::map<t_token, unsigned> visitations;
+	std::map<std::string, unsigned> visitations;
 
 	// Merge attributes first
 	merge_attributes(c);
@@ -1171,7 +960,7 @@ void config::merge_with(const config& c)
 	// Now merge shared tags
 	all_children_iterator::Itor i, i_end = ordered_children.end();
 	for(i = ordered_children.begin(); i != i_end; ++i) {
-		const t_token& tag = i->pos->first;
+		const std::string& tag = i->pos->first;
 		child_map::const_iterator j = c.children.find(tag);
 		if (j != c.children.end()) {
 			unsigned &visits = visitations[tag];
@@ -1183,7 +972,7 @@ void config::merge_with(const config& c)
 
 	// Now add any unvisited tags
 	for(child_map::const_iterator j = c.children.begin(); j != c.children.end(); ++j) {
-		const t_token& tag = j->first;
+		const std::string& tag = j->first;
 		unsigned &visits = visitations[tag];
 		while(visits < j->second.size()) {
 			add_child(tag, *j->second[visits++]);
@@ -1193,8 +982,6 @@ void config::merge_with(const config& c)
 
 bool config::matches(const config &filter) const
 {
-	static const t_token & z_not( generate_safe_static_const_t_interned(n_token::t_token("not")) );
-
 	check_valid(filter);
 
 	foreach (const attribute &i, filter.attribute_range())
@@ -1205,7 +992,7 @@ bool config::matches(const config &filter) const
 
 	foreach (const any_child &i, filter.all_children_range())
 	{
-		if (i.key == z_not) {
+		if (i.key == "not") {
 			if (matches(i.cfg)) return false;
 			continue;
 		}
@@ -1234,10 +1021,7 @@ std::ostream& operator << (std::ostream& outstream, const config& cfg)
 {
 	static int i = 0;
 	i++;
-	std::map<config::t_token, config::attribute_value> sorted;
-	foreach (const config::attribute &ipresorted, cfg.attribute_range()) {
-		sorted.insert( ipresorted ); }
-	foreach (const config::attribute &val, sorted) {
+	foreach (const config::attribute &val, cfg.attribute_range()) {
 		for (int j = 0; j < i-1; j++){ outstream << char(9); }
 		outstream << val.first << " = " << val.second << '\n';
 	}
@@ -1257,8 +1041,6 @@ std::string config::hash() const
 {
 	check_valid();
 
-	//@todo change these to a standard machine independent string hash function
-
 	static const unsigned int hash_length = 128;
 	static const char hash_string[] =
 		"+-,.<>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -1274,14 +1056,14 @@ std::string config::hash() const
 	i = 0;
 	foreach (const attribute &val, values)
 	{
-		std::string key_str(val.first);
+		for (c = val.first.begin(); c != val.first.end(); ++c) {
+			hash_str[i] ^= *c;
+			if (++i == hash_length) i = 0;
+		}
 		std::string base_str = val.second.t_str().base_str();
-		std::string long_string = key_str + base_str;
-
-		size_t j =0, jend = long_string.size();
-		for (; j != jend; ++j) {
-			char c = long_string[j];
-			hash_str[(j + c + jend) % hash_length] ^= c;
+		for (c = base_str.begin(); c != base_str.end(); ++c) {
+			hash_str[i] ^= *c;
+			if (++i == hash_length) i = 0;
 		}
 	}
 

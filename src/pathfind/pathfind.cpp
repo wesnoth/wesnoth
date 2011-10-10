@@ -206,7 +206,7 @@ static void find_routes(const gamemap& map, const unit_map& /*units*/,
 		pq.pop_back();
 		n.in = search_counter;
 
-		map_location::t_maploc_set allowed_teleports;
+		std::set<map_location> allowed_teleports;
 		teleports.get_adjacents(allowed_teleports, n.curr);
 		std::vector<map_location> locs(6 + allowed_teleports.size());
 		std::copy(allowed_teleports.begin(), allowed_teleports.end(), locs.begin() + 6);

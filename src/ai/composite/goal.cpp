@@ -171,7 +171,7 @@ void target_location_goal::add_targets(std::back_insert_iterator< std::vector< t
 
 	if (!filter_ptr_) return;
 
-	map_location::t_maploc_set items;
+	std::set<map_location> items;
 	filter_ptr_->get_locations(items);
 	foreach (const map_location &loc, items)
 	{
@@ -250,7 +250,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 
 	unit_map &units = *resources::units;
 
-	map_location::t_maploc_set items;
+	std::set<map_location> items;
 	if (protect_unit_) {
 		foreach (const unit &u, units)
 		{

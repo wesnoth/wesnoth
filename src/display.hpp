@@ -538,7 +538,7 @@ protected:
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
 
 	std::vector<surface> get_terrain_images(const map_location &loc,
-					const n_token::t_token& timeid,
+					const std::string& timeid,
 					image::TYPE type,
 					TERRAIN_TYPE terrain_type);
 

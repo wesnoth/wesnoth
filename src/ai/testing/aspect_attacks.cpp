@@ -40,7 +40,6 @@ static lg::log_domain log_ai_testing_aspect_attacks("ai/aspect/attacks");
 #define LOG_AI LOG_STREAM(info, log_ai_testing_aspect_attacks)
 #define ERR_AI LOG_STREAM(err, log_ai_testing_aspect_attacks)
 
-
 aspect_attacks::aspect_attacks(readonly_context &context, const config &cfg, const std::string &id)
 	: typesafe_aspect<attacks_vector>(context,cfg,id)
 	, filter_own_()
@@ -157,10 +156,6 @@ void aspect_attacks::do_attack_analysis(
 		unit_map::iterator unit_itor = units_.find(current_unit);
 		assert(unit_itor != units_.end());
 
-		static const config::t_token & z_backstab( generate_safe_static_const_t_interned(n_token::t_token("backstab")) );
-		static const config::t_token & z_slow( generate_safe_static_const_t_interned(n_token::t_token("slow")) );
-		static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
-
 		// See if the unit has the backstab ability.
 		// Units with backstab will want to try to have a
 		// friendly unit opposite the position they move to.
@@ -170,11 +165,11 @@ void aspect_attacks::do_attack_analysis(
 		std::vector<attack_type>& attacks = unit_itor->attacks();
 		for(std::vector<attack_type>::iterator a = attacks.begin(); a != attacks.end(); ++a) {
 			a->set_specials_context(map_location(), map_location(), units_, true, NULL);
-			if(a->get_special_bool(z_backstab)) {
+			if(a->get_special_bool("backstab")) {
 				backstab = true;
 			}
 
-			if(a->get_special_bool(z_slow)) {
+			if(a->get_special_bool("slow")) {
 				slow = true;
 			}
 		}
@@ -260,7 +255,7 @@ void aspect_attacks::do_attack_analysis(
 			}
 
 			unit_ability_list abil = unit_itor->get_abilities("leadership",tiles[j]);
-			int best_leadership_bonus = abil.highest(z_value).first;
+			int best_leadership_bonus = abil.highest("value").first;
 			double leadership_bonus = static_cast<double>(best_leadership_bonus+100)/100.0;
 			if (leadership_bonus > 1.1) {
 				LOG_AI << unit_itor->name() << " is getting leadership " << leadership_bonus << "\n";

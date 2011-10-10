@@ -143,10 +143,10 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		foreach(const config &campaign, campaigns_) {
 
 			/*** Add tree item ***/
-			tree_group_field["label"] = campaign["icon"].token();
+			tree_group_field["label"] = campaign["icon"];
 			tree_group_item["icon"] = tree_group_field;
 
-			tree_group_field["label"] = campaign["name"].token();
+			tree_group_field["label"] = campaign["name"];
 			tree_group_item["name"] = tree_group_field;
 
 			if (campaign["completed"].to_bool()) {
@@ -161,11 +161,11 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			string_map detail_item;
 			std::map<std::string, string_map> detail_page;
 
-			detail_item["label"] = campaign["description"].token();
+			detail_item["label"] = campaign["description"];
 			detail_item["use_markup"] = "true";
 			detail_page.insert(std::make_pair("description", detail_item));
 
-			detail_item["label"] = campaign["image"].token();
+			detail_item["label"] = campaign["image"];
 			detail_page.insert(std::make_pair("image", detail_item));
 
 			multi_page.add_page(detail_page);
@@ -212,10 +212,10 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			string_map list_item;
 			std::map<std::string, string_map> list_item_item;
 
-			list_item["label"] = c["icon"].token();
+			list_item["label"] = c["icon"];
 			list_item_item.insert(std::make_pair("icon", list_item));
 
-			list_item["label"] = c["name"].token();
+			list_item["label"] = c["name"];
 			list_item_item.insert(std::make_pair("name", list_item));
 
 			list.add_row(list_item_item);
@@ -232,11 +232,11 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			string_map detail_item;
 			std::map<std::string, string_map> detail_page;
 
-			detail_item["label"] = c["description"].token();
+			detail_item["label"] = c["description"];
 			detail_item["use_markup"] = "true";
 			detail_page.insert(std::make_pair("description", detail_item));
 
-			detail_item["label"] = c["image"].token();
+			detail_item["label"] = c["image"];
 			detail_page.insert(std::make_pair("image", detail_item));
 
 			multi_page.add_page(detail_page);

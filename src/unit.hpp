@@ -19,6 +19,7 @@
 #define UNIT_H_INCLUDED
 
 #include "formula_callable.hpp"
+#include "resources.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
 
@@ -26,7 +27,6 @@ class game_display;
 class game_state;
 class vconfig;
 class team;
-typedef  std::vector<team>  t_teams;
 
 class unit_ability_list
 {
@@ -38,8 +38,8 @@ public:
 
 	bool empty() const;
 
-	std::pair<int,map_location> highest(const config::t_token& key, int def=0) const;
-	std::pair<int,map_location> lowest(const config::t_token& key, int def=0) const;
+	std::pair<int,map_location> highest(const std::string& key, int def=0) const;
+	std::pair<int,map_location> lowest(const std::string& key, int def=0) const;
 
 	std::vector<std::pair<const config *, map_location> > cfgs;
 };
@@ -78,34 +78,32 @@ public:
 	{
 		advance_to(cfg_, t, use_traits, state);
 	}
-	const std::vector<config::t_token>& advances_to() const { return advances_to_; }
-	void set_advances_to(const std::vector<config::t_token>& advances_to);
+	const std::vector<std::string>& advances_to() const { return advances_to_; }
+	void set_advances_to(const std::vector<std::string>& advances_to);
 
 	/** The type id of the unit */
-	const config::t_token& type_id() const { return type_; }
+	const std::string& type_id() const { return type_; }
 	const unit_type* type() const;
 
 	/** id assigned by wml */
-	const config::t_token& id() const { if (id_.empty()){ return type_name_.token();} else return id_; }
+	const std::string& id() const { if (id_.empty()) return type_name(); else return id_; }
 	/** The unique internal ID of the unit */
 	size_t underlying_id() const { return underlying_id_; }
 
 	/** The unit type name */
 	const t_string& type_name() const {return type_name_;}
-	const config::t_token& undead_variation() const {return undead_variation_;}
+	const std::string& undead_variation() const {return undead_variation_;}
 
 	/** The unit name for display */
 	const t_string &name() const { return name_; }
 	void set_name(const t_string &name) { name_ = name; }
-	void rename(const std::string& name) {if (!unrenamable_) name_= t_string(name);}
+	void rename(const std::string& name) {if (!unrenamable_) name_= name;}
 
 	/** The unit's profile */
-	config::t_token const & small_profile() const;
-	config::t_token const & big_profile() const;
+	std::string small_profile() const;
+	std::string big_profile() const;
 	/** Information about the unit -- a detailed description of it */
-	t_string unit_description() const {
-		static const config::t_token & z_description( generate_safe_static_const_t_interned(n_token::t_token("description")) );
-		return cfg_[z_description].t_str(); }
+	t_string unit_description() const { return cfg_["description"]; }
 
 	int hitpoints() const { return hit_points_; }
 	int max_hitpoints() const { return max_hit_points_; }
@@ -134,15 +132,15 @@ public:
 	bool unrenamable() const { return unrenamable_; }
 	int side() const { return side_; }
 	std::string side_id() const;
-	const config::t_token& team_color() const { return flag_rgb_; }
+	const std::string& team_color() const { return flag_rgb_; }
 	unit_race::GENDER gender() const { return gender_; }
 	void set_side(unsigned int new_side) { side_ = new_side; }
 	fixed_t alpha() const { return alpha_; }
 
 	bool can_recruit() const { return canrecruit_; }
-	const std::vector<config::t_token>& recruits() const
+	const std::vector<std::string>& recruits() const
 		{ return recruit_list_; }
-	void set_recruits(const std::vector<config::t_token>& recruits);
+	void set_recruits(const std::vector<std::string>& recruits);
 	const config& recall_filter() const { return cfg_.child("filter_recall"); }
 
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
@@ -169,42 +167,35 @@ public:
 	bool resting() const { return resting_; }
 	void set_resting(bool rest) { resting_ = rest; }
 
-	const std::map<config::t_token,config::t_token> get_states() const;
-	bool get_state(const config::t_token& state) const;
-	void set_state(const config::t_token &state, bool value);
+	const std::map<std::string,std::string> get_states() const;
+	bool get_state(const std::string& state) const;
+	void set_state(const std::string &state, bool value);
 	enum state_t { STATE_SLOWED = 0, STATE_POISONED, STATE_PETRIFIED,
 		STATE_UNCOVERED, STATE_NOT_MOVED, STATE_UNHEALABLE, STATE_UNKNOWN = -1 };
 	void set_state(state_t state, bool value);
 	bool get_state(state_t state) const;
-	static state_t get_known_boolean_state_id(const config::t_token &state);
-	static std::map<config::t_token, state_t> get_known_boolean_state_names();
+	static state_t get_known_boolean_state_id(const std::string &state);
+	static std::map<std::string, state_t> get_known_boolean_state_names();
 
 	bool has_moved() const { return movement_left() != total_movement(); }
 	bool has_goto() const { return get_goto().valid(); }
 	bool emits_zoc() const { return emit_zoc_ && !incapacitated();}
-	bool matches_idt(const config::t_token& unit_id) const{	return id_ == unit_id; }
-	bool matches_id(const std::string& unit_id) const {return matches_idt(config::t_token(unit_id));}
+	bool matches_id(const std::string& unit_id) const;
 	/* cfg: standard unit filter */
-	bool matches_filter(const vconfig& cfg,const map_location& loc,bool use_flat_tod=false
-						, gamemap const & game_map = *resources::game_map
-						, unit_map const & units =*resources::units
-						, t_teams const & teams = *resources::teams
-						, LuaKernel & lua_kernel = *resources::lua_kernel
-						, tod_manager const & tod_manager = *resources::tod_manager) const;
+	bool matches_filter(const vconfig& cfg,const map_location& loc,bool use_flat_tod=false) const;
 	const std::vector<std::string>& overlays() const { return overlays_; }
 
 	void write(config& cfg) const;
 
-	void set_role(const config::t_token& role) { role_ = role; }
-	const config::t_token &get_role() const { return role_; }
+	void set_role(const std::string& role) { role_ = role; }
+	const std::string &get_role() const { return role_; }
 
-	void assign_ai_special(const config::t_token& s) { ai_special_ = s;}
-            config::t_token get_ai_special() const { return(ai_special_); }
+	void assign_ai_special(const std::string& s) { ai_special_ = s;}
+            std::string get_ai_special() const { return(ai_special_); }
 	const std::vector<attack_type>& attacks() const { return attacks_; }
 	std::vector<attack_type>& attacks() { return attacks_; }
 
-	int damage_from(const attack_type& attack,bool attacker,const map_location& loc) const {
-		return resistance_against(attack,attacker,loc); }
+	int damage_from(const attack_type& attack,bool attacker,const map_location& loc) const { return resistance_against(attack,attacker,loc); }
 
 	/** A SDL surface, ready for display for place where we need a still-image of the unit. */
 	const surface still_image(bool scaled = false) const;
@@ -229,7 +220,7 @@ public:
 	bool invalidate(const map_location &loc);
 	const std::vector<t_string>& trait_names() const { return trait_names_; }
 	const std::vector<t_string>& trait_descriptions() const { return trait_descriptions_; }
-	std::vector<config::t_token> get_traits_list() const;
+	std::vector<std::string> get_traits_list() const;
 
 	int cost () const { return unit_value_; }
 
@@ -248,11 +239,11 @@ public:
 	bool is_flying() const { return flying_; }
 	bool is_fearless() const { return is_fearless_; }
 	bool is_healthy() const { return is_healthy_; }
-	int movement_cost(const t_translation::t_terrain terrain, gamemap const & game_map = *resources::game_map) const;
-	int defense_modifier(t_translation::t_terrain terrain, gamemap const & game_map = *resources::game_map ) const;
+	int movement_cost(const t_translation::t_terrain terrain) const;
+	int defense_modifier(t_translation::t_terrain terrain) const;
 	int resistance_against(const std::string& damage_name,bool attacker,const map_location& loc) const;
-	int resistance_against(const attack_type& damage_type,bool attacker,const map_location& loc) const {
-		return resistance_against(damage_type.type(), attacker, loc);};
+	int resistance_against(const attack_type& damage_type,bool attacker,const map_location& loc) const
+		{return resistance_against(damage_type.type(), attacker, loc);};
 
 	//return resistances without any abilities applied
 	utils::string_map get_base_resistances() const;
@@ -265,18 +256,13 @@ public:
     std::vector<std::pair<std::string,std::string> > amla_icons() const;
 
 	std::vector<config> get_modification_advances() const;
-	config::const_child_itors modification_advancements() const {
-		static const config::t_token & z_advancement( generate_safe_static_const_t_interned(n_token::t_token("advancement")) );
-		return cfg_.child_range(z_advancement); }
+	config::const_child_itors modification_advancements() const
+	{ return cfg_.child_range("advancement"); }
 
-	size_t modification_count(const config::t_token& type, const std::string& id) const;
+	size_t modification_count(const std::string& type, const std::string& id) const;
 
-	void add_modification(const config::t_token& type, const config& mod, bool no_add=false
-						  , gamemap const & game_map = *resources::game_map
-						  , unit_map const & units =*resources::units
-						  , t_teams const & teams = *resources::teams
-						  , LuaKernel & lua_kernel = *resources::lua_kernel
-						  , tod_manager const & tod_manager = *resources::tod_manager);
+	void add_modification(const std::string& type, const config& modification,
+	                  bool no_add=false);
 
 	bool move_interrupted() const { return movement_left() > 0 && interrupted_move_.x >= 0 && interrupted_move_.y >= 0; }
 	const map_location& get_interrupted_move() const { return interrupted_move_; }
@@ -288,64 +274,39 @@ public:
 		STATE_FORGET,     /** animation will be automatically replaced by a standing anim when finished */
 		STATE_ANIM};      /** normal anims */
 	void start_animation(int start_time, const unit_animation *animation,
-						 bool with_bars,  const n_token::t_token &text = n_token::t_token::z_empty(),
-						 Uint32 text_color = 0, STATE state = STATE_ANIM);
+		bool with_bars,  const std::string &text = "",
+		Uint32 text_color = 0, STATE state = STATE_ANIM);
 
 	/** The name of the file to game_display (used in menus). */
-	config::t_token const & absolute_image() const {
-		static const config::t_token & z_image( generate_safe_static_const_t_interned(n_token::t_token("image")) );
-		return cfg_[z_image].token(); }
-	config::t_token const & image_halo() const {
-		static const config::t_token & z_halo( generate_safe_static_const_t_interned(n_token::t_token("halo")) );
-		return cfg_[z_halo].token(); }
+	std::string absolute_image() const { return cfg_["image"]; }
+	std::string image_halo() const { return cfg_["halo"]; }
 
-	config::t_token const & image_ellipse() const {
-		static const config::t_token & z_ellipse( generate_safe_static_const_t_interned(n_token::t_token("ellipse")) );
-		return cfg_[z_ellipse].token(); }
+	std::string image_ellipse() const { return cfg_["ellipse"]; }
 
 	config &variables() { return variables_; }
 	const config &variables() const { return variables_; }
 
-	config::t_token usage() const {
-		static const config::t_token & z_usage( generate_safe_static_const_t_interned(n_token::t_token("usage")) );
-		return cfg_[z_usage].token(); }
+	std::string usage() const { return cfg_["usage"]; }
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
 	const unit_race* race() const { return race_; }
 
 	const unit_animation* choose_animation(const game_display& disp,
-		       	const map_location& loc, const n_token::t_token& event,
+		       	const map_location& loc, const std::string& event,
 		       	const map_location& second_loc = map_location::null_location,
 			const int damage=0,
 			const unit_animation::hit_type hit_type = unit_animation::INVALID,
 			const attack_type* attack=NULL,const attack_type* second_attack = NULL,
 			int swing_num =0) const;
 
-	bool get_ability_bool(const config::t_token& ability, const map_location& loc
-						  , gamemap const & game_map = *resources::game_map
-						  , unit_map const & units =*resources::units
-						  , t_teams const & teams = *resources::teams
-						  , LuaKernel & lua_kernel = *resources::lua_kernel
-						  , tod_manager const & tod_manager = *resources::tod_manager) const;
-	bool get_ability_bool(const config::t_token& ability
-						  , gamemap const & game_map = *resources::game_map
-						  , unit_map const & units =*resources::units
-						  , t_teams const & teams = *resources::teams
-						  , LuaKernel & lua_kernel = *resources::lua_kernel
-						  , tod_manager const & tod_manager = *resources::tod_manager) const {
-		return get_ability_bool(ability, loc_, game_map, units, teams, lua_kernel, tod_manager);}
-	inline bool get_ability_bool(const std::string& ability, const map_location& loc ) const {
-		return get_ability_bool(config::t_token(ability), loc); }
-	inline bool get_ability_bool(const std::string& ability) const {
-		return get_ability_bool(config::t_token(ability), loc_); }
-	unit_ability_list get_abilities(const config::t_token &ability, const map_location& loc) const;
-	unit_ability_list get_abilities(const config::t_token &ability) const {return get_abilities(ability, loc_); }
-	unit_ability_list get_abilities(const std::string &ability, const map_location& loc) const {
-		return get_abilities(config::t_token(ability), loc);}
-	unit_ability_list get_abilities(const std::string &ability) const {return get_abilities(config::t_token(ability), loc_); }
-	std::vector<t_string> ability_tooltips(bool force_active = false) const;
-	std::vector<config::t_token> get_ability_list() const;
-	bool has_ability_type(const config::t_token& ability) const;
-	bool has_ability_type(const std::string& ability) const {return has_ability_type(config::t_token(ability));}
+	bool get_ability_bool(const std::string& ability, const map_location& loc) const;
+	bool get_ability_bool(const std::string &ability) const
+	{ return get_ability_bool(ability, loc_); }
+	unit_ability_list get_abilities(const std::string &ability, const map_location& loc) const;
+	unit_ability_list get_abilities(const std::string &ability) const
+	{ return get_abilities(ability, loc_); }
+	std::vector<std::string> ability_tooltips(bool force_active = false) const;
+	std::vector<std::string> get_ability_list() const;
+	bool has_ability_type(const std::string& ability) const;
 
 	const game_logic::map_formula_callable_ptr& formula_vars() const { return formula_vars_; }
 	void add_formula_var(std::string str, variant var);
@@ -357,15 +318,12 @@ public:
 	const std::string& get_priority_formula() const { return unit_priority_formula_; }
 
 	void backup_state();
-private:
-	std::vector<config::t_token> const & modification_types() const;
-public:
 	void apply_modifications();
 	void generate_traits(bool musthaveonly=false, game_state* state = 0);
 	void generate_name(rand_rng::simple_rng *rng = 0);
 
 	// Only see_all=true use caching
-	bool invisible(const map_location& loc, bool see_all=true,unit_map const & units = *resources::units, t_teams const & teams = *resources::teams) const;
+	bool invisible(const map_location& loc, bool see_all=true) const;
 
 	bool is_visible_to_team(team const& team, bool const see_all = true, gamemap const& map = *resources::game_map) const;
 
@@ -392,37 +350,15 @@ public:
 private:
 	void advance_to(const config &old_cfg, const unit_type *t,
 		bool use_traits, game_state *state);
-	bool internal_matches_filter(const vconfig& cfg, const map_location& loc, bool use_flat_tod
-						  , gamemap const & game_map = *resources::game_map
-						  , unit_map const & units =*resources::units
-						  , t_teams const & teams = *resources::teams
-						  , LuaKernel & lua_kernel = *resources::lua_kernel
-						  , tod_manager const & tod_manager = *resources::tod_manager) const;
 
 	bool internal_matches_filter(const vconfig& cfg,const map_location& loc,
 		bool use_flat_tod) const;
 	/*
 	 * cfg: an ability WML structure
 	 */
-	bool ability_active(const std::string& ability,const config& cfg,const map_location& loc
-						  , gamemap const & game_map = *resources::game_map
-						  , unit_map const & units =*resources::units
-						  , t_teams const & teams = *resources::teams
-						  , LuaKernel & lua_kernel = *resources::lua_kernel
-						  , tod_manager const & tod_manager = *resources::tod_manager) const;
-
-	bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const map_location& loc
-								  , gamemap const & game_map = *resources::game_map
-								  , unit_map const & units =*resources::units
-								  , t_teams const & teams = *resources::teams
-								  , LuaKernel & lua_kernel = *resources::lua_kernel
-								  , tod_manager const & tod_manager = *resources::tod_manager) const;
-	bool ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc
-								  , gamemap const & game_map = *resources::game_map
-								  , unit_map const & units =*resources::units
-								  , t_teams const & teams = *resources::teams
-								  , LuaKernel & lua_kernel = *resources::lua_kernel
-								  , tod_manager const & tod_manager = *resources::tod_manager) const;
+	bool ability_active(const std::string& ability,const config& cfg,const map_location& loc) const;
+	bool ability_affects_adjacent(const std::string& ability,const config& cfg,int dir,const map_location& loc) const;
+	bool ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const;
 	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
 
 	bool has_ability_by_id(const std::string& ability) const;
@@ -436,15 +372,15 @@ private:
 	config cfg_;
 	map_location loc_;
 
-	std::vector<config::t_token> advances_to_;
-	config::t_token type_;
+	std::vector<std::string> advances_to_;
+	std::string type_;
 	const unit_race* race_;
-	config::t_token id_;
+	std::string id_;
 	t_string name_;
 	size_t underlying_id_;
 	t_string type_name_;
-	config::t_token undead_variation_;
-	config::t_token variation_;
+	std::string undead_variation_;
+	std::string variation_;
 
 	int hit_points_;
 	int max_hit_points_;
@@ -452,9 +388,9 @@ private:
 	int max_experience_;
 	int level_;
 	bool canrecruit_;
-	std::vector<config::t_token> recruit_list_;
+	std::vector<std::string> recruit_list_;
 	unit_type::ALIGNMENT alignment_;
-	config::t_token flag_rgb_;
+	std::string flag_rgb_;
 	std::string image_mods_;
 
 	bool unrenamable_;
@@ -470,7 +406,7 @@ private:
 
 	int movement_;
 	int max_movement_;
-	mutable t_move_cost_cache movement_costs_; // movement cost cache
+	mutable std::map<t_translation::t_terrain, int> movement_costs_; // movement cost cache
 	mutable defense_cache defense_mods_; // defense modifiers cache
 	bool hold_position_;
 	bool end_turn_;
@@ -478,17 +414,17 @@ private:
 	int attacks_left_;
 	int max_attacks_;
 
-	std::set<config::t_token> states_;
+	std::set<std::string> states_;
 	std::vector<bool> known_boolean_states_;
-	static std::map<config::t_token, state_t> known_boolean_state_names_;
+	static std::map<std::string, state_t> known_boolean_state_names_;
 	config variables_;
 	bool emit_zoc_;
 	STATE state_;
 
 	std::vector<std::string> overlays_;
 
-	config::t_token role_;
-	config::t_token ai_special_;
+	std::string role_;
+	std::string ai_special_;
 	std::vector<attack_type> attacks_;
 	map_location::DIRECTION facing_;
 
@@ -520,7 +456,7 @@ private:
 	friend void attack_type::set_specials_context(const map_location& loc, const map_location&, const unit& un, bool) const;
 
 	/** Hold the visibility status cache for a unit, mutable since it's a cache. */
-	mutable boost::unordered_map<map_location, bool> invisibility_cache_;
+	mutable std::map<map_location, bool> invisibility_cache_;
 
 	/**
 	 * Clears the cache.
@@ -543,21 +479,18 @@ private:
 };
 
 /** Returns the number of units of the side @a side_num. */
-int side_units(int side_num, unit_map const & units = *resources::units) ;
+int side_units(int side_num);
 
 /** Returns the total cost of units of side @a side_num. */
-int side_units_cost(int side_num, unit_map const & units = *resources::units);
+int side_units_cost(int side_num);
 
-int side_upkeep(int side_num, unit_map const & units = *resources::units);
+int side_upkeep(int side_num);
 
-//The ackward orderding here allows the linker to disambiguate the return type using the passed in unit_map
-unit_map::const_iterator find_visible_unit(unit_map const & units, const map_location &loc, const team &current_team, bool const see_all = false, gamemap const & map = *resources::game_map);
-unit_map::iterator find_visible_unit(unit_map & units, const map_location &loc, const team &current_team, bool const see_all = false, gamemap const & map = *resources::game_map);
+unit_map::iterator find_visible_unit(const map_location &loc,
+	const team &current_team, bool see_all = false);
 
-inline unit_map::iterator find_visible_unit(const map_location &loc, const team &current_team, bool const see_all = false) {
-	return find_visible_unit( *resources::units, loc, current_team, see_all, *resources::game_map); }
-
-unit *get_visible_unit(const map_location &loc, const team &current_team, bool const see_all = false, gamemap const & map = *resources::game_map, unit_map & units = *resources::units);
+unit *get_visible_unit(const map_location &loc,
+	const team &current_team, bool see_all = false);
 
 struct team_data
 {

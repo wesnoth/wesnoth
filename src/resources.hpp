@@ -24,7 +24,6 @@ class game_state;
 class LuaKernel;
 class play_controller;
 class team;
-typedef  std::vector<team>  t_teams;
 class tod_manager;
 class unit_map;
 class persist_manager;

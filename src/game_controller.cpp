@@ -510,7 +510,7 @@ bool game_controller::play_multiplayer_mode()
 			foreach (const config &faction, era_cfg.child_range("multiplayer_side"))
 			{
 				if (faction["random_faction"].to_bool()) continue;
-				const std::string faction_id = faction["id"];
+				const std::string &faction_id = faction["id"];
 				if (!faction_choices.empty() &&
 				    std::find(faction_choices.begin(), faction_choices.end(), faction_id) == faction_choices.end())
 					continue;

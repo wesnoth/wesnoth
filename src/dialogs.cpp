@@ -68,31 +68,28 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-
 namespace dialogs
 {
 
 int advance_unit_dialog(const map_location &loc)
 {
-
-	static const n_token::t_token & z_advance( generate_safe_static_const_t_interned(n_token::t_token("advance")) );
 	unit_map::iterator u = resources::units->find(loc);
 
-	const std::vector<config::t_token>& options = u->advances_to();
+	const std::vector<std::string>& options = u->advances_to();
 
 	std::vector<std::string> lang_options;
 
 	std::vector<unit> sample_units;
-	for(std::vector<config::t_token>::const_iterator op = options.begin(); op != options.end(); ++op) {
+	for(std::vector<std::string>::const_iterator op = options.begin(); op != options.end(); ++op) {
 		sample_units.push_back(::get_advanced_unit(*u, *op));
 		const unit& type = sample_units.back();
 
 #ifdef LOW_MEM
 		lang_options.push_back(IMAGE_PREFIX
-				+ (*type.absolute_image())
+				+ static_cast<std::string const &>(type.absolute_image())
 				+ COLUMN_SEPARATOR + type.type_name());
 #else
-		lang_options.push_back(IMAGE_PREFIX + (*type.absolute_image()) + u->image_mods() + COLUMN_SEPARATOR + type.type_name());
+		lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->image_mods() + COLUMN_SEPARATOR + type.type_name());
 #endif
 		preferences::encountered_units().insert(*op);
 	}
@@ -102,17 +99,17 @@ int advance_unit_dialog(const map_location &loc)
 	{
 		if (mod["always_display"].to_bool()) always_display = true;
 		sample_units.push_back(::get_advanced_unit(*u, u->type_id()));
-		sample_units.back().add_modification(z_advance, mod);
+		sample_units.back().add_modification("advance", mod);
 		const unit& type = sample_units.back();
 		if (!mod["image"].empty()) {
 			lang_options.push_back(IMAGE_PREFIX + mod["image"].str() + COLUMN_SEPARATOR + mod["description"].str());
 		} else {
 #ifdef LOW_MEM
 			lang_options.push_back(IMAGE_PREFIX
-					+ (*type.absolute_image())
+					+ static_cast<std::string const &>(type.absolute_image())
 					+ COLUMN_SEPARATOR + mod["description"].str());
 #else
-			lang_options.push_back(IMAGE_PREFIX + (*type.absolute_image()) + u->image_mods() + COLUMN_SEPARATOR + mod["description"].str());
+			lang_options.push_back(IMAGE_PREFIX + type.absolute_image() + u->image_mods() + COLUMN_SEPARATOR + mod["description"].str());
 #endif
 		}
 	}
@@ -197,7 +194,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 		return false;
 	}
 
-	const std::vector<config::t_token>& options = u->advances_to();
+	const std::vector<std::string>& options = u->advances_to();
 	std::vector<config> mod_options = u->get_modification_advances();
 
 	if(choice >= options.size() + mod_options.size()) {
@@ -211,14 +208,11 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 	if (!resources::screen->video().update_locked()) {
 		unit_animator animator;
 		bool with_bars = true;
-		static const config::t_token & z_levelout( generate_safe_static_const_t_interned(n_token::t_token("levelout")) );
-		animator.add_animation(&*u, z_levelout, u->get_location(), map_location(), 0, with_bars);
+		animator.add_animation(&*u,"levelout", u->get_location(), map_location(), 0, with_bars);
 		animator.start_animations();
 		animator.wait_for_end();
 	}
 
-	static const n_token::t_token & z_advance( generate_safe_static_const_t_interned(n_token::t_token("advance")) );
-	static const n_token::t_token & z_post_advance( generate_safe_static_const_t_interned(n_token::t_token("post_advance")) );
 	if(choice < options.size()) {
 		// chosen_unit is not a reference, since the unit may disappear at any moment.
 		std::string chosen_unit = options[choice];
@@ -230,17 +224,17 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 		if(fire_event)
 		{
 			LOG_NG << "firing advance event (AMLA)\n";
-			game_events::fire(z_advance ,loc);
+			game_events::fire("advance",loc);
 		}
 
 		amla_unit.set_experience(amla_unit.experience() - amla_unit.max_experience());
-		amla_unit.add_modification(z_advance,mod_option);
+		amla_unit.add_modification("advance",mod_option);
 		resources::units->replace(loc, amla_unit);
 
 		if(fire_event)
 		{
 			LOG_NG << "firing post_advance event (AMLA)\n";
-			game_events::fire(z_post_advance, loc);
+			game_events::fire("post_advance",loc);
 		}
 
 	}
@@ -250,8 +244,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 
 	if (u != resources::units->end() && !resources::screen->video().update_locked()) {
 		unit_animator animator;
-		static const config::t_token & z_levelin( generate_safe_static_const_t_interned(n_token::t_token("levelin")) );
-		animator.add_animation(&*u, z_levelin, u->get_location(), map_location(), 0, true);
+		animator.add_animation(&*u, "levelin", u->get_location(), map_location(), 0, true);
 		animator.start_animations();
 		animator.wait_for_end();
 		animator.set_all_standing();
@@ -275,26 +268,17 @@ void show_objectives(const config &level, const std::string &objectives)
 
 namespace {
 
-
-struct save_with_summary{
-	save_with_summary(savegame::save_info const & sv, config * cfg):save_(&sv), summary_(cfg){}
-	savegame::save_info const * save_;
-	config * summary_;
-};
-
-typedef std::vector<save_with_summary> t_saves_with_summaries;
-
 /** Class to handle deleting a saved game. */
 class delete_save : public gui::dialog_button_action
 {
 public:
-	delete_save(display& disp, gui::filter_textbox& filter, t_saves_with_summaries * saves)
-		: disp_(disp), saves_(*saves), filter_(filter) {}
+	delete_save(display& disp, gui::filter_textbox& filter, std::vector<savegame::save_info>& saves, std::vector<config*>& save_summaries) : disp_(disp), saves_(saves), summaries_(save_summaries), filter_(filter) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
-	t_saves_with_summaries saves_;
+	std::vector<savegame::save_info>& saves_;
+	std::vector<config*>& summaries_;
 	gui::filter_textbox& filter_;
 };
 
@@ -314,10 +298,14 @@ gui::dialog_button_action::RESULT delete_save::button_pressed(int menu_selection
 		filter_.delete_item(menu_selection);
 
 		// Delete the file
-		savegame::manager::delete_game(saves_[index].save_->name);
+		savegame::manager::delete_game(saves_[index].name);
 
 		// Remove it from the list of saves
 		saves_.erase(saves_.begin() + index);
+
+		if(index < summaries_.size()) {
+			summaries_.erase(summaries_.begin() + index);
+		}
 
 		return gui::DELETE_ITEM;
 	} else {
@@ -330,12 +318,14 @@ static const int save_preview_border = 10;
 class save_preview_pane : public gui::preview_pane
 {
 public:
-	save_preview_pane(CVideo &video, const config& game_config, gamemap* map
-					  , t_saves_with_summaries * saves
-					  , const gui::filter_textbox& textbox) :
+	save_preview_pane(CVideo &video, const config& game_config, gamemap* map,
+			const std::vector<savegame::save_info>& info,
+			const std::vector<config*>& summaries,
+			const gui::filter_textbox& textbox) :
 		gui::preview_pane(video),
 		game_config_(&game_config),
-		map_(map), saves_(*saves),
+		map_(map), info_(&info),
+		summaries_(summaries),
 		index_(0),
 		map_cache_(),
 		textbox_(textbox)
@@ -355,7 +345,8 @@ public:
 private:
 	const config* game_config_;
 	gamemap* map_;
-	t_saves_with_summaries saves_;
+	const std::vector<savegame::save_info>* info_;
+	const std::vector<config*>& summaries_;
 	int index_;
 	std::map<std::string,surface> map_cache_;
 	const gui::filter_textbox& textbox_;
@@ -363,19 +354,18 @@ private:
 
 void save_preview_pane::draw_contents()
 {
-	static const n_token::t_token & z_leader( generate_safe_static_const_t_interned(n_token::t_token("leader")) );
-
-	if (size_t(index_) >= saves_.size() ){
-		return; }
+	if (size_t(index_) >= summaries_.size() || info_->size() != summaries_.size()) {
+		return;
+	}
 
 	std::string dummy;
-	const config &summary = *saves_[index_].summary_;
+	const config &summary = *summaries_[index_];
 	if (summary["label"].empty())
 	{
 		try {
-			savegame::manager::load_summary(saves_[index_].save_->name, *saves_[index_].summary_, &dummy);
+			savegame::manager::load_summary((*info_)[index_].name, *summaries_[index_], &dummy);
 		} catch(game::load_game_failed&) {
-			(*saves_[index_].summary_)["corrupt"] = true;
+			(*summaries_[index_])["corrupt"] = true;
 		}
 	}
 
@@ -391,14 +381,13 @@ void save_preview_pane::draw_contents()
 
 	int ypos = area.y;
 
-	const unit_type *leader = unit_types.find(summary[z_leader].token());
+	const unit_type *leader = unit_types.find(summary["leader"]);
 	if (leader)
 	{
 #ifdef LOW_MEM
 		const surface image(image::get_image(leader->image()));
 #else
-		const surface image(image::get_image((*leader->image())
-											 + "~RC(" + (*leader->flag_rgb()) + ">1)"));
+		const surface image(image::get_image(leader->image() + "~RC(" + leader->flag_rgb() + ">1)"));
 #endif
 
 		if(image != NULL) {
@@ -458,7 +447,7 @@ void save_preview_pane::draw_contents()
 	}
 
 	char time_buf[256] = {0};
-	const savegame::save_info& save = *saves_[index_].save_;
+	const savegame::save_info& save = (*info_)[index_];
 	tm* tm_l = localtime(&save.time_modified);
 	if (tm_l) {
 		const size_t res = strftime(time_buf,sizeof(time_buf),
@@ -474,7 +463,7 @@ void save_preview_pane::draw_contents()
 	std::stringstream str;
 
 	str << font::BOLD_TEXT << font::NULL_MARKUP
-		<< saves_[index_].save_->name << '\n' << time_buf;
+		<< (*info_)[index_].name << '\n' << time_buf;
 
 	const std::string& campaign_type = summary["campaign_type"];
 	if (summary["corrupt"].to_bool()) {
@@ -491,7 +480,7 @@ void save_preview_pane::draw_contents()
 			}
 			utils::string_map symbols;
 			if (campaign != NULL) {
-				symbols["campaign_name"] = (*campaign)["name"].token();
+				symbols["campaign_name"] = (*campaign)["name"];
 			} else {
 				// Fallback to nontranslatable campaign id.
 				symbols["campaign_name"] = "(" + campaign_id + ")";
@@ -586,7 +575,6 @@ std::string format_time_summary(time_t t)
 
 } // end anon namespace
 
-
 std::string load_game_dialog(display& disp, const config& game_config, bool* show_replay, bool* cancel_orders)
 {
 	std::vector<savegame::save_info> games;
@@ -597,23 +585,19 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 
 	if(games.empty()) {
 		gui2::show_transient_message(disp.video(),
-				_("No Saved Games"),
-				_("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)"));
+		                 _("No Saved Games"),
+				 _("There are no saved games to load.\n\n(Games are saved automatically when you complete a scenario)"));
 		return "";
 	}
 
-	config::t_child_range_index index = savegame::save_index::indexed_summaries();
-
-	t_saves_with_summaries saves_and_summaries;
+	std::vector<config*> summaries;
+	std::vector<savegame::save_info>::const_iterator i;
 	//FIXME: parent_to_child is not used yet
 	std::map<std::string,std::string> parent_to_child;
-	std::vector<savegame::save_info>::const_iterator i;
 	for(i = games.begin(); i != games.end(); ++i) {
-		n_token::t_token tname(i->name);
-		config * cfg = &savegame::save_index::find_or_create_summary(index, tname);
-		n_token::t_token gname = savegame::save_index::gz_corrected_filename(tname);
-		parent_to_child[(*cfg)["parent"]] = gname;
-		saves_and_summaries.push_back(save_with_summary(*i, cfg));
+		config& cfg = savegame::save_index::save_summary(i->name);
+		parent_to_child[cfg["parent"]] = i->name;
+		summaries.push_back(&cfg);
 	}
 
 	const events::event_context context;
@@ -623,13 +607,12 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	heading << HEADING_PREFIX << _("Name") << COLUMN_SEPARATOR << _("Date");
 	items.push_back(heading.str());
 
-	t_saves_with_summaries::const_iterator j = saves_and_summaries.begin();
-	for(; j != saves_and_summaries.end(); ++j) {
-		std::string name = j->save_->name;
+	for(i = games.begin(); i != games.end(); ++i) {
+		std::string name = i->name;
 		utils::truncate_as_wstring(name, std::min<size_t>(name.size(), 40));
 
 		std::ostringstream str;
-		str << name << COLUMN_SEPARATOR << format_time_summary(j->save_->time_modified);
+		str << name << COLUMN_SEPARATOR << format_time_summary(i->time_modified);
 
 		items.push_back(str.str());
 	}
@@ -649,8 +632,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	gui::filter_textbox* filter = new gui::filter_textbox(disp.video(), _("Filter: "), items, items, 1, lmenu);
 	lmenu.set_textbox(filter);
 
-	save_preview_pane save_preview(disp.video(),game_config,&map_obj, &saves_and_summaries,*filter);
-
+	save_preview_pane save_preview(disp.video(),game_config,&map_obj,games,summaries,*filter);
 	lmenu.add_pane(&save_preview);
 	// create an option for whether the replay should be shown or not
 	if(show_replay != NULL) {
@@ -668,9 +650,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("OK"),0,false), gui::dialog::BUTTON_STANDARD);
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("Cancel"),1,true), gui::dialog::BUTTON_STANDARD);
 
-	delete_save save_deleter(disp,*filter, &saves_and_summaries);
-
-
+	delete_save save_deleter(disp,*filter,games,summaries);
 	gui::dialog_button_info delete_button(&save_deleter,_("Delete Save"));
 
 	lmenu.add_button(delete_button,
@@ -682,14 +662,15 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 
 	savegame::save_index::write_save_index();
 
-	res = filter->get_index(res);
-	if(res == -1){ return ""; }
+	if(res == -1)
+		return "";
 
+	res = filter->get_index(res);
 	int option_index = 0;
 	if(show_replay != NULL) {
 	  *show_replay = lmenu.option_checked(option_index++);
 
-		const config& summary = *saves_and_summaries[res].summary_;
+		const config& summary = *summaries[res];
 		if (summary["replay"].to_bool() && !summary["snapshot"].to_bool(true)) {
 			*show_replay = true;
 		}
@@ -698,7 +679,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 		*cancel_orders = lmenu.option_checked(option_index++);
 	}
 
-	return saves_and_summaries[res].save_->name;
+	return games[res].name;
 }
 
 namespace {
@@ -876,9 +857,9 @@ void unit_preview_pane::draw_contents()
 				<< at_it->num_attacks()
 				<< " " << at_it->name() << "\n";
 			text << font::weapon_details
-				 << "  " << string_table["range_" + (*at_it->range())]
+				<< "  " << string_table["range_" + at_it->range()]
 				<< font::weapon_details_sep
-				 << string_table["type_" + (*at_it->type() )] << "\n";
+				<< string_table["type_" + at_it->type()] << "\n";
 
 			std::string accuracy_parry = at_it->accuracy_parry_description();
 			if(accuracy_parry.empty() == false) {
@@ -961,8 +942,8 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	det.traits = utils::join(u.trait_names(), ", ");
 
 	//we filter to remove the tooltips (increment by 2)
-	const std::vector<t_string> &abilities = u.ability_tooltips(true);
-	for(std::vector<t_string>::const_iterator a = abilities.begin();
+	const std::vector<std::string> &abilities = u.ability_tooltips(true);
+	for(std::vector<std::string>::const_iterator a = abilities.begin();
 		 a != abilities.end(); a+=2) {
 		det.abilities.push_back(*a);
 	}
@@ -1012,8 +993,8 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
     //FIXME: There should be a better way to deal with this
 	unit_types.find(t->id(), unit_type::WITHOUT_ANIMATIONS);
 
-	std::string mod = "~RC(" + (*t->flag_rgb()) + ">" + team::get_side_color_index(side_) + ")";
-	det.image = image::get_image((*t->image()) + mod);
+	std::string mod = "~RC(" + t->flag_rgb() + ">" + team::get_side_color_index(side_) + ")";
+	det.image = image::get_image(t->image()+mod);
 
 	det.name = "";
 	det.type_name = t->type_name();
@@ -1030,7 +1011,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 	{
 		if (tr["availability"] != "musthave") continue;
 		std::string gender_string = (!t->genders().empty() && t->genders().front()== unit_race::FEMALE) ? "female_name" : "male_name";
-		config::attribute_value name = tr[gender_string];
+		t_string name = tr[gender_string];
 		if (name.empty()) {
 			name = tr["name"];
 		}
@@ -1038,7 +1019,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
 			if (!det.traits.empty()) {
 				det.traits += ", ";
 			}
-			det.traits += name.str();
+			det.traits += name;
 		}
 	}
 

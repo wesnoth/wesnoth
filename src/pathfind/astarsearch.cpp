@@ -86,10 +86,10 @@ struct node {
 		if (teleports && !teleports->empty()) {
 
 			double new_srch = 1.0;
-			map_location::t_maploc_set sources;
+			std::set<map_location> sources;
 			teleports->get_sources(sources);
 
-			map_location::t_maploc_set::const_iterator it = sources.begin();
+			std::set<map_location>::const_iterator it = sources.begin();
 			for(; it != sources.end(); ++it) {
 				const double tmp_srch = heuristic(c, *it);
 				if (tmp_srch < new_srch) { new_srch = tmp_srch; }
@@ -97,7 +97,7 @@ struct node {
 
 
 			double new_dsth = 1.0;
-			map_location::t_maploc_set targets;
+			std::set<map_location> targets;
 			teleports->get_targets(targets);
 
 			for(it = targets.begin(); it != targets.end(); ++it) {
@@ -192,7 +192,7 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 		int i;
 		if (teleports && !teleports->empty()) {
 
-			map_location::t_maploc_set allowed_teleports;
+			std::set<map_location> allowed_teleports;
 			teleports->get_adjacents(allowed_teleports, n.curr);
 
 			i = allowed_teleports.size() +6;

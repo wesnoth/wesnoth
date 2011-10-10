@@ -29,11 +29,8 @@
 
 #define LOG_DP LOG_STREAM(info, display)
 
-
 static void teleport_unit_between( const map_location& a, const map_location& b, unit& temp_unit)
 {
-	static const n_token::t_token & z_pre_teleport( generate_safe_static_const_t_interned(n_token::t_token("pre_teleport")) );
-	static const n_token::t_token & z_post_teleport( generate_safe_static_const_t_interned(n_token::t_token("post_teleport")) );
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->video().faked() || (disp->fogged(a) && disp->fogged(b))) {
 		return;
@@ -45,7 +42,7 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 		disp->invalidate(temp_unit.get_location());
 		temp_unit.set_facing(a.get_relative_dir(b));
 		unit_animator animator;
-		animator.add_animation(&temp_unit,z_pre_teleport,a);
+		animator.add_animation(&temp_unit,"pre_teleport",a);
 		animator.start_animations();
 		animator.wait_for_end();
 	}
@@ -56,7 +53,7 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 		temp_unit.set_facing(a.get_relative_dir(b));
 		disp->scroll_to_tiles(b,a,game_display::ONSCREEN,true,0.0,false);
 		unit_animator animator;
-		animator.add_animation(&temp_unit,z_post_teleport,b);
+		animator.add_animation(&temp_unit,"post_teleport",b);
 		animator.start_animations();
 		animator.wait_for_end();
 	}
@@ -68,7 +65,6 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 
 static void move_unit_between(const map_location& a, const map_location& b, unit& temp_unit,unsigned int step_num,unsigned int step_left)
 {
-	static const n_token::t_token & z_movement( generate_safe_static_const_t_interned(n_token::t_token("movement")) );
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->video().faked() || (disp->fogged(a) && disp->fogged(b))) {
 		return;
@@ -78,8 +74,8 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 	disp->invalidate(temp_unit.get_location());
 	temp_unit.set_facing(a.get_relative_dir(b));
 	unit_animator animator;
-	animator.replace_anim_if_invalid(&temp_unit,z_movement,a,b,step_num,
-			false,n_token::t_token::z_empty(),0,unit_animation::INVALID,NULL,NULL,step_left);
+	animator.replace_anim_if_invalid(&temp_unit,"movement",a,b,step_num,
+			false,"",0,unit_animation::INVALID,NULL,NULL,step_left);
 	animator.start_animations();
         animator.pause_animation();
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.0,false);
@@ -171,17 +167,14 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 	disp->draw(true);
 
 	// extra immobile mvt anim for take-off
-
-	static const n_token::t_token & z_pre_movement( generate_safe_static_const_t_interned(n_token::t_token("pre_movement")) );
 	temp_unit.set_location(path[0]);
 	disp->invalidate(temp_unit.get_location());
 	temp_unit.set_facing(path[0].get_relative_dir(path[1]));
 	unit_animator animator;
-	animator.add_animation(&temp_unit,z_pre_movement,path[0],path[1]);
+	animator.add_animation(&temp_unit,"pre_movement",path[0],path[1]);
 	animator.start_animations();
 	animator.wait_for_end();
 
-	static const n_token::t_token & z_post_movement( generate_safe_static_const_t_interned(n_token::t_token("post_movement")) );
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 
 		invisible = teams[temp_unit.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
@@ -216,7 +209,7 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 	temp_unit.set_location(path[path.size() - 1]);
 	temp_unit.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
 	animator.clear();
-	animator.add_animation(&temp_unit,z_post_movement,path[path.size()-1],map_location::null_location);
+	animator.add_animation(&temp_unit,"post_movement",path[path.size()-1],map_location::null_location);
 	animator.start_animations();
 	animator.wait_for_end();
 	temp_unit.remove_from_game_display();
@@ -238,14 +231,13 @@ void reset_helpers(const unit *attacker,const unit *defender);
 void unit_draw_weapon(const map_location& loc, unit& attacker,
 		const attack_type* attack,const attack_type* secondary_attack, const map_location& defender_loc,unit* defender)
 {
-	static const n_token::t_token & z_draw_weapon( generate_safe_static_const_t_interned(n_token::t_token("draw_weapon")) );
 	game_display* disp = game_display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
 		return;
 	}
 	unit_animator animator;
-	animator.add_animation(&attacker,z_draw_weapon,loc,defender_loc,0,false,n_token::t_token::z_empty(),0,unit_animation::HIT,attack,secondary_attack,0);
-	animator.add_animation(defender,z_draw_weapon,defender_loc,loc,0,false,n_token::t_token::z_empty(),0,unit_animation::MISS,secondary_attack,attack,0);
+	animator.add_animation(&attacker,"draw_weapon",loc,defender_loc,0,false,"",0,unit_animation::HIT,attack,secondary_attack,0);
+	animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,false,"",0,unit_animation::MISS,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
 
@@ -255,17 +247,16 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 		const attack_type* primary_attack,const attack_type* secondary_attack, const map_location& secondary_loc,unit* secondary_unit)
 {
-	static const n_token::t_token & z_sheath_weapon( generate_safe_static_const_t_interned(n_token::t_token("sheath_weapon")) );
 	game_display* disp = game_display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(primary_loc) || preferences::show_combat() == false) {
 		return;
 	}
 	unit_animator animator;
 	if(primary_unit) {
-		animator.add_animation(primary_unit,z_sheath_weapon,primary_loc,secondary_loc,0,false,n_token::t_token::z_empty(),0,unit_animation::INVALID,primary_attack,secondary_attack,0);
+		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,false,"",0,unit_animation::INVALID,primary_attack,secondary_attack,0);
 	}
 	if(secondary_unit) {
-		animator.add_animation(secondary_unit,z_sheath_weapon,secondary_loc,primary_loc,0,false,n_token::t_token::z_empty(),0,unit_animation::INVALID,secondary_attack,primary_attack,0);
+		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,false,"",0,unit_animation::INVALID,secondary_attack,primary_attack,0);
 	}
 
 	if(primary_unit || secondary_unit) {
@@ -286,17 +277,15 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 void unit_die(const map_location& loc, unit& loser,
 		const attack_type* attack,const attack_type* secondary_attack, const map_location& winner_loc,unit* winner)
 {
-	static const n_token::t_token & z_death( generate_safe_static_const_t_interned(n_token::t_token("death")) );
-	static const n_token::t_token & z_victory( generate_safe_static_const_t_interned(n_token::t_token("victory")) );
 	game_display* disp = game_display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
 		return;
 	}
 	unit_animator animator;
 	// hide the hp/xp bars of the loser (useless and prevent bars around an erased unit)
-	animator.add_animation(&loser,z_death,loc,winner_loc,0,false,n_token::t_token::z_empty(),0,unit_animation::KILL,attack,secondary_attack,0);
+	animator.add_animation(&loser,"death",loc,winner_loc,0,false,"",0,unit_animation::KILL,attack,secondary_attack,0);
 	// but show the bars of the winner (avoid blinking and show its xp gain)
-	animator.add_animation(winner,z_victory,winner_loc,loc,0,true,n_token::t_token::z_empty(),0,
+	animator.add_animation(winner,"victory",winner_loc,loc,0,true,"",0,
 			unit_animation::KILL,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
@@ -314,12 +303,6 @@ void unit_attack(
                  const attack_type& attack, const attack_type* secondary_attack,
 		  int swing,std::string hit_text,bool drain,std::string att_text)
 {
-	static const n_token::t_token & z_unit_attack( generate_safe_static_const_t_interned(n_token::t_token("unit_attack")) );
-	static const n_token::t_token & z_leadership( generate_safe_static_const_t_interned(n_token::t_token("leadership")) );
-	static const n_token::t_token & z_resistance( generate_safe_static_const_t_interned(n_token::t_token("resistance")) );
-	static const n_token::t_token & z_attack( generate_safe_static_const_t_interned(n_token::t_token("attack")) );
-	static const n_token::t_token & z_defend( generate_safe_static_const_t_interned(n_token::t_token("defend")) );
-	static const n_token::t_token & z_leading( generate_safe_static_const_t_interned(n_token::t_token("leading")) );
 	game_display* disp = game_display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() ||
 			(disp->fogged(a) && disp->fogged(b)) || preferences::show_combat() == false) {
@@ -331,7 +314,7 @@ void unit_attack(
 	// scroll such that there is at least half a hex spacing around fighters
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.5,false);
 
-	log_scope(z_unit_attack);
+	log_scope("unit_attack");
 
 	const unit_map::iterator att = units.find(a);
 	assert(att != units.end());
@@ -348,8 +331,8 @@ void unit_attack(
 
 
 	unit_animator animator;
-	unit_ability_list leaders = attacker.get_abilities(z_leadership);
-	unit_ability_list helpers = defender.get_abilities(z_resistance);
+	unit_ability_list leaders = attacker.get_abilities("leadership");
+	unit_ability_list helpers = defender.get_abilities("resistance");
 
 	std::string text ;
 	if(damage) text = lexical_cast<std::string>(damage);
@@ -373,17 +356,17 @@ void unit_attack(
 	}else {
 		hit_type = unit_animation::MISS;
 	}
-	animator.add_animation(&attacker, z_attack, att->get_location(),
-						   def->get_location(), damage, true,  n_token::t_token(text_2),
-						   display::rgb(0, 255, 0), hit_type, &attack, secondary_attack,
-						   swing);
+	animator.add_animation(&attacker, "attack", att->get_location(),
+		def->get_location(), damage, true,  text_2,
+		display::rgb(0, 255, 0), hit_type, &attack, secondary_attack,
+		swing);
 
 	// note that we take an anim from the real unit, we'll use it later
 	const unit_animation *defender_anim = def->choose_animation(*disp,
-		def->get_location(), z_defend, att->get_location(), damage,
+		def->get_location(), "defend", att->get_location(), damage,
 		hit_type, &attack, secondary_attack, swing);
 	animator.add_animation(&defender, defender_anim, def->get_location(),
-						   true,  n_token::t_token(text) , display::rgb(255, 0, 0));
+		true,  text , display::rgb(255, 0, 0));
 
 	for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); ++itor) {
 		if(itor->second == a) continue;
@@ -391,8 +374,8 @@ void unit_attack(
 		unit_map::iterator leader = units.find(itor->second);
 		assert(leader != units.end());
 		leader->set_facing(itor->second.get_relative_dir(a));
-		animator.add_animation(&*leader, z_leading, itor->second,
-			att->get_location(), damage, true,  n_token::t_token::z_empty(), 0,
+		animator.add_animation(&*leader, "leading", itor->second,
+			att->get_location(), damage, true,  "", 0,
 			hit_type, &attack, secondary_attack, swing);
 	}
 	for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); ++itor) {
@@ -401,8 +384,8 @@ void unit_attack(
 		unit_map::iterator helper = units.find(itor->second);
 		assert(helper != units.end());
 		helper->set_facing(itor->second.get_relative_dir(b));
-		animator.add_animation(&*helper, z_resistance, itor->second,
-			def->get_location(), damage, true,  n_token::t_token::z_empty(), 0,
+		animator.add_animation(&*helper, "resistance", itor->second,
+			def->get_location(), damage, true,  "", 0,
 			hit_type, &attack, secondary_attack, swing);
 	}
 
@@ -429,12 +412,10 @@ void unit_attack(
 // private helper function, set all helpers to default position
 void reset_helpers(const unit *attacker,const unit *defender)
 {
-	static const n_token::t_token & z_leadership( generate_safe_static_const_t_interned(n_token::t_token("leadership")) );
-	static const n_token::t_token & z_resistance( generate_safe_static_const_t_interned(n_token::t_token("resistance")) );
 	game_display* disp = game_display::get_singleton();
 	unit_map& units = disp->get_units();
 	if(attacker) {
-		unit_ability_list leaders = attacker->get_abilities(z_leadership);
+		unit_ability_list leaders = attacker->get_abilities("leadership");
 		for (std::vector<std::pair<const config *, map_location> >::iterator itor = leaders.cfgs.begin(); itor != leaders.cfgs.end(); ++itor) {
 			unit_map::iterator leader = units.find(itor->second);
 			assert(leader != units.end());
@@ -443,7 +424,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	}
 
 	if(defender) {
-		unit_ability_list helpers = defender->get_abilities(z_resistance);
+		unit_ability_list helpers = defender->get_abilities("resistance");
 		for (std::vector<std::pair<const config *, map_location> >::iterator itor = helpers.cfgs.begin(); itor != helpers.cfgs.end(); ++itor) {
 			unit_map::iterator helper = units.find(itor->second);
 			assert(helper != units.end());
@@ -454,8 +435,6 @@ void reset_helpers(const unit *attacker,const unit *defender)
 
 void unit_recruited(const map_location& loc,const map_location& leader_loc)
 {
-	static const n_token::t_token & z_recruiting( generate_safe_static_const_t_interned(n_token::t_token("recruiting")) );
-	static const n_token::t_token & z_recruited( generate_safe_static_const_t_interned(n_token::t_token("recruited")) );
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->video().faked() ||disp->fogged(loc)) return;
 	unit_map::iterator u = disp->get_units().find(loc);
@@ -468,14 +447,14 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 		if(leader == disp->get_units().end()) return;
 		disp->scroll_to_tiles(loc,leader_loc,game_display::ONSCREEN,true,0.0,false);
 		leader->set_facing(leader_loc.get_relative_dir(loc));
-		animator.add_animation(&*leader, z_recruiting, leader_loc, loc, 0, true);
+		animator.add_animation(&*leader, "recruiting", leader_loc, loc, 0, true);
 	} else {
 		disp->scroll_to_tile(loc,game_display::ONSCREEN,true,false);
 	}
 
 	disp->draw();
 	u->set_hidden(false);
-	animator.add_animation(&*u, z_recruited, loc, leader_loc);
+	animator.add_animation(&*u, "recruited", loc, leader_loc);
 	animator.start_animations();
 	animator.wait_for_end();
 	animator.set_all_standing();
@@ -485,9 +464,6 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 void unit_healing(unit &healed, const map_location &healed_loc,
 	const std::vector<unit *> &healers, int healing)
 {
-	static const n_token::t_token & z_healing( generate_safe_static_const_t_interned(n_token::t_token("healing")) );
-	static const n_token::t_token & z_poisoned( generate_safe_static_const_t_interned(n_token::t_token("poisoned")) );
-	static const n_token::t_token & z_healed( generate_safe_static_const_t_interned(n_token::t_token("healed")) );
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->video().faked() || disp->fogged(healed_loc)) return;
 	if(healing==0) return;
@@ -498,13 +474,13 @@ void unit_healing(unit &healed, const map_location &healed_loc,
 
 	foreach (unit *h, healers) {
 		h->set_facing(h->get_location().get_relative_dir(healed_loc));
-		animator.add_animation(h, z_healing, h->get_location(),
+		animator.add_animation(h, "healing", h->get_location(),
 			healed_loc, healing);
 	}
 	if (healing < 0) {
-		animator.add_animation(&healed,z_poisoned,healed_loc,map_location::null_location,-healing,false,n_token::t_token(lexical_cast<std::string>(-healing)), display::rgb(255,0,0));
+		animator.add_animation(&healed,"poisoned",healed_loc,map_location::null_location,-healing,false,lexical_cast<std::string>(-healing), display::rgb(255,0,0));
 	} else {
-		animator.add_animation(&healed,z_healed,healed_loc,map_location::null_location,healing,false, n_token::t_token(lexical_cast<std::string>(healing)), display::rgb(0,255,0));
+		animator.add_animation(&healed,"healed",healed_loc,map_location::null_location,healing,false,lexical_cast<std::string>(healing), display::rgb(0,255,0));
 	}
 	animator.start_animations();
 	animator.wait_for_end();
@@ -527,30 +503,11 @@ void wml_animation(const vconfig &cfg, const map_location &default_location)
 
 void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location)
 {
-	static const n_token::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
-	static const n_token::t_token & z_primary_attack( generate_safe_static_const_t_interned(n_token::t_token("primary_attack")) );
-	static const n_token::t_token & z_secondary_attack( generate_safe_static_const_t_interned(n_token::t_token("secondary_attack")) );
-	static const n_token::t_token & z_hits( generate_safe_static_const_t_interned(n_token::t_token("hits")) );
-	static const n_token::t_token & z_yes( generate_safe_static_const_t_interned(n_token::t_token("yes")) );
-	static const n_token::t_token & z_hit( generate_safe_static_const_t_interned(n_token::t_token("hit")) );
-	static const n_token::t_token & z_no( generate_safe_static_const_t_interned(n_token::t_token("no")) );
-	static const n_token::t_token & z_miss( generate_safe_static_const_t_interned(n_token::t_token("miss")) );
-	static const n_token::t_token & z_kill( generate_safe_static_const_t_interned(n_token::t_token("kill")) );
-	static const n_token::t_token & z_red( generate_safe_static_const_t_interned(n_token::t_token("red")) );
-	static const n_token::t_token & z_green( generate_safe_static_const_t_interned(n_token::t_token("green")) );
-	static const n_token::t_token & z_blue( generate_safe_static_const_t_interned(n_token::t_token("blue")) );
-	static const n_token::t_token & z_facing( generate_safe_static_const_t_interned(n_token::t_token("facing")) );
-	static const n_token::t_token & z_value_second( generate_safe_static_const_t_interned(n_token::t_token("value_second")) );
-	static const n_token::t_token & z_flag( generate_safe_static_const_t_interned(n_token::t_token("flag")) );
-	static const n_token::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
-	static const n_token::t_token & z_text( generate_safe_static_const_t_interned(n_token::t_token("text")) );
-	static const n_token::t_token & z_with_bars( generate_safe_static_const_t_interned(n_token::t_token("with_bars")) );
-	static const n_token::t_token & z_animate( generate_safe_static_const_t_interned(n_token::t_token("animate")) );
 	unit_map::iterator u = resources::units->find(default_location);
 
 	// Search for a valid unit filter,
 	// and if we have one, look for the matching unit
-	vconfig filter = cfg.child(z_filter);
+	vconfig filter = cfg.child("filter");
 	if(!filter.null()) {
 		for (u = resources::units->begin(); u != resources::units->end(); ++u) {
 			if (game_events::unit_matches_filter(*u, filter))
@@ -568,7 +525,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		std::vector<attack_type> attacks = u->attacks();
 		std::vector<attack_type>::iterator itor;
 
-		filter = cfg.child(z_primary_attack);
+		filter = cfg.child("primary_attack");
 		if(!filter.null()) {
 			for(itor = attacks.begin(); itor != attacks.end(); ++itor){
 				if(itor->matches_filter(filter.get_parsed_config())) {
@@ -578,7 +535,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 			}
 		}
 
-		filter = cfg.child(z_secondary_attack);
+		filter = cfg.child("secondary_attack");
 		if(!filter.null()) {
 			for(itor = attacks.begin(); itor != attacks.end(); ++itor){
 				if(itor->matches_filter(filter.get_parsed_config())) {
@@ -588,26 +545,26 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 			}
 		}
 
-		if(cfg[z_hits] == z_yes || cfg[z_hits] == z_hit) {
+		if(cfg["hits"] == "yes" || cfg["hits"] == "hit") {
 			hits = unit_animation::HIT;
 		}
-		if(cfg[z_hits] == z_no || cfg[z_hits] == z_miss) {
+		if(cfg["hits"] == "no" || cfg["hits"] == "miss") {
 			hits = unit_animation::MISS;
 		}
-		if( cfg[z_hits] == z_kill ) {
+		if( cfg["hits"] == "kill" ) {
 			hits = unit_animation::KILL;
 		}
-		if(cfg[z_red].empty() && cfg[z_green].empty() && cfg[z_blue].empty()) {
+		if(cfg["red"].empty() && cfg["green"].empty() && cfg["blue"].empty()) {
 			text_color = display::rgb(0xff,0xff,0xff);
 		} else {
-			text_color = display::rgb(cfg[z_red], cfg[z_green], cfg[z_blue]);
+			text_color = display::rgb(cfg["red"], cfg["green"], cfg["blue"]);
 		}
 		resources::screen->scroll_to_tile(u->get_location(), game_display::ONSCREEN, true, false);
-		vconfig t_filter = cfg.child(z_facing);
+		vconfig t_filter = cfg.child("facing");
 		map_location secondary_loc = map_location::null_location;
 		if(!t_filter.empty()) {
 			terrain_filter filter(t_filter, *resources::units);
-			map_location::t_maploc_set locs;
+			std::set<map_location> locs;
 			filter.get_locations(locs);
 			if (!locs.empty() && u->get_location() != *locs.begin()) {
 				map_location::DIRECTION dir =u->get_location().get_relative_dir(*locs.begin());
@@ -615,16 +572,12 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 				secondary_loc = u->get_location().get_direction(dir);
 			}
 		}
-		config::attribute_value const &  a_value_second= cfg[z_value_second];
-		config::attribute_value const &  a_flag= cfg[z_flag];
-		config::attribute_value const &  a_value= cfg[z_value];
-		config::attribute_value const &  a_text= cfg[z_text];
-		animator.add_animation(&*u, a_flag.token(), u->get_location(),
-		   secondary_loc, a_value, cfg[z_with_bars].to_bool(),
-			a_text.token(), text_color, hits, primary, secondary, a_value_second.to_int()
-			);
+		animator.add_animation(&*u, cfg["flag"], u->get_location(),
+			secondary_loc, cfg["value"], cfg["with_bars"].to_bool(),
+			cfg["text"], text_color, hits, primary, secondary,
+			cfg["value_second"]);
 	}
-	const vconfig::child_list sub_anims = cfg.get_children(z_animate);
+	const vconfig::child_list sub_anims = cfg.get_children("animate");
 	vconfig::child_list::const_iterator anim_itor;
 	for(anim_itor = sub_anims.begin(); anim_itor != sub_anims.end();++anim_itor) {
 		wml_animation_internal(animator, *anim_itor);

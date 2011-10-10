@@ -104,7 +104,7 @@ void engine_fai::do_parse_stage_from_config( ai_context &context, const config &
 	if (!cfg) {
 		return;
 	}
-	const std::string name = cfg["name"];
+	const std::string &name = cfg["name"];
 	stage_ptr st_ptr;
 
 	//dropped from 1.8, as it's not ready

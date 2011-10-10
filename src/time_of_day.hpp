@@ -48,15 +48,15 @@ struct time_of_day
 	int bonus_modified;
 
 	/** The image to be displayed in the game status. */
-	n_token::t_token image;
+	std::string image;
 	t_string name;
-	n_token::t_token id;
+	std::string id;
 
 	/**
 	 * The image that is to be laid over all images
 	 * while this time of day lasts.
 	 */
-	n_token::t_token image_mask;
+	std::string image_mask;
 
 	/**
 	 * The color modifications that should be made
@@ -68,7 +68,7 @@ struct time_of_day
 	 * List of "ambient" sounds associated with this time_of_day,
 	 * Played at the beginning of turn.
 	 */
-	n_token::t_token sounds;
+	std::string sounds;
 
 	/**
 	 * Parse config and add time of day entries into passed vector

@@ -385,7 +385,6 @@ std::vector<unit_map::const_unit_iterator> unit_map::find_leaders(int side)const
 #ifdef DEBUG
 
 bool unit_map::self_check() const {
-	return true;
 	bool found_the_end(false), good(true);
 	t_ilist::const_iterator lit(ilist_.begin());
 	for(; lit != ilist_.end(); ++lit){

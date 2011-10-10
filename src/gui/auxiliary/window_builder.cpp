@@ -229,7 +229,7 @@ const std::string& twindow_builder::read(const config& cfg)
  */
 
 	id_ = cfg["id"].str();
-	description_ = cfg["description"].t_str();
+	description_ = cfg["description"].str();
 
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("window", "id"));
 	VALIDATE(!description_.empty(), missing_mandatory_wml_key("window", "description"));

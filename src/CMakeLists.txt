@@ -355,7 +355,6 @@ set(wesnoth-main_SRC
 	editor/map_context.cpp
 	editor/map_fragment.cpp
 	editor/mouse_action.cpp
-	exceptions.cpp
 	filechooser.cpp
 	floating_textbox.cpp
 	formula.cpp
@@ -363,7 +362,6 @@ set(wesnoth-main_SRC
 	formula_debugger_fwd.cpp
 	formula_function.cpp
 	formula_string_utils.cpp
-	formula_string_utils_backend.cpp
 	formula_tokenizer.cpp
 	game_controller.cpp
 	game_controller_abstract.cpp
@@ -557,7 +555,6 @@ set(wesnoth-main_SRC
 	storyscreen/part.cpp
 	storyscreen/render.cpp
 	team.cpp
-	team_builder.cpp
 	terrain_filter.cpp
 	tod_manager.cpp
 	tooltips.cpp

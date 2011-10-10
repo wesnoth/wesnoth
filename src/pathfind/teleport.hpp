@@ -26,7 +26,7 @@
 
 namespace pathfind {
 
-typedef std::pair<map_location::t_maploc_set, map_location::t_maploc_set >
+typedef std::pair<std::set<map_location>, std::set<map_location> >
 		teleport_pair;
 
 /*
@@ -108,15 +108,15 @@ public:
 	 * @param adjacents		used to return the adjacent hexes
 	 * @param loc			the map location for which we want to know the adjacent hexes
 	 */
-	void get_adjacents(map_location::t_maploc_set& adjacents, map_location loc) const;
+	void get_adjacents(std::set<map_location>& adjacents, map_location loc) const;
 	/*
 	 * @param sources	used to return the locations that are an entrance of the tunnel
 	 */
-	void get_sources(map_location::t_maploc_set& sources) const;
+	void get_sources(std::set<map_location>& sources) const;
 	/*
 	 * @param targets	used to return the locations that are an exit of the tunnel
 	 */
-	void get_targets(map_location::t_maploc_set& targets) const;
+	void get_targets(std::set<map_location>& targets) const;
 
 	/*
 	 * @returns whether the teleport_map does contain any defined tunnel
@@ -127,8 +127,8 @@ public:
 
 private:
 	std::map<map_location, std::set<std::string> > teleport_map_;
-	std::map<std::string, map_location::t_maploc_set > sources_;
-	std::map<std::string, map_location::t_maploc_set > targets_;
+	std::map<std::string, std::set<map_location> > sources_;
+	std::map<std::string, std::set<map_location> > targets_;
 };
 
 /*

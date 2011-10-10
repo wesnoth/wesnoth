@@ -214,14 +214,6 @@ t_string_base::t_string_base(const t_string_base& string) :
 {
 }
 
-t_string_base::t_string_base(const t_token& string) :
-	value_(string),
-	translated_value_(),
-	translation_timestamp_(0),
-	translatable_(false),
-	last_untranslatable_(false)
-{
-}
 t_string_base::t_string_base(const std::string& string) :
 	value_(string),
 	translated_value_(),
@@ -232,15 +224,14 @@ t_string_base::t_string_base(const std::string& string) :
 }
 
 t_string_base::t_string_base(const std::string& string, const std::string& textdomain) :
-	value_(std::string(1, ID_TRANSLATABLE_PART)),
+	value_(1, ID_TRANSLATABLE_PART),
 	translated_value_(),
 	translation_timestamp_(0),
 	translatable_(true),
 	last_untranslatable_(false)
 {
 	if (string.empty()) {
-		static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-		value_ = z_empty;
+		value_.clear();
 		translatable_ = false;
 		return;
 	}
@@ -256,9 +247,9 @@ t_string_base::t_string_base(const std::string& string, const std::string& textd
 		id = idi->second;
 	}
 
-	value_ = t_token((*value_) + char(id & 0xff));
-	value_  = t_token((*value_) +  char(id >> 8));
-	value_ =  t_token((*value_) + string );
+	value_ += char(id & 0xff);
+	value_ += char(id >> 8);
+	value_ += string;
 }
 
 t_string_base::t_string_base(const char* string) :
@@ -315,11 +306,11 @@ std::string t_string_base::to_serialized() const
 		if(w.translatable()) {
 			chunk.translatable_ = true;
 			chunk.last_untranslatable_ = false;
-			chunk.value_ = t_token( TRANSLATABLE_PART + w.textdomain() +
-									TEXTDOMAIN_SEPARATOR + substr );
+			chunk.value_ = TRANSLATABLE_PART + w.textdomain() +
+				TEXTDOMAIN_SEPARATOR + substr;
 		} else {
 			chunk.translatable_ = false;
-			chunk.value_ = t_token(substr);
+			chunk.value_ = substr;
 		}
 
 		res += chunk;
@@ -339,24 +330,21 @@ t_string_base& t_string_base::operator=(const t_string_base& string)
 	return *this;
 }
 
-t_string_base& t_string_base::operator=(const t_token& string)
+t_string_base& t_string_base::operator=(const std::string& string)
 {
 	value_ = string;
-	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-	translated_value_ = z_empty;
+	translated_value_ = "";
 	translation_timestamp_ = 0;
 	translatable_ = false;
 	last_untranslatable_ = false;
 
 	return *this;
 }
-t_string_base& t_string_base::operator=(const std::string& string){ return operator=(t_token(string));}
 
 t_string_base& t_string_base::operator=(const char* string)
 {
-	value_ = t_token(string);
-	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-	translated_value_ = z_empty;
+	value_ = string;
+	translated_value_ = "";
 	translation_timestamp_ = 0;
 	translatable_ = false;
 	last_untranslatable_ = false;
@@ -371,14 +359,8 @@ t_string_base t_string_base::operator+(const t_string_base& string) const
 	return res;
 }
 
-t_string_base t_string_base::operator+(const t_token& string) const
+t_string_base t_string_base::operator+(const std::string& string) const
 {
-	t_string_base res(*this);
-	res += string;
-	return res;
-}
-
-t_string_base t_string_base::operator+(const std::string& string) const{
 	t_string_base res(*this);
 	res += string;
 	return res;
@@ -393,7 +375,6 @@ t_string_base t_string_base::operator+(const char* string) const
 
 t_string_base& t_string_base::operator+=(const t_string_base& string)
 {
-	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	if (string.value_.empty())
 		return *this;
 	if (value_.empty()) {
@@ -403,35 +384,33 @@ t_string_base& t_string_base::operator+=(const t_string_base& string)
 
 	if(translatable_ || string.translatable_) {
 		if(!translatable_) {
-			value_ = t_token(UNTRANSLATABLE_PART + (*value_));
+			value_ = UNTRANSLATABLE_PART + value_;
 			translatable_ = true;
 			last_untranslatable_ = true;
-		} else {
-			translated_value_ = z_empty;
-		}
+		} else
+			translated_value_ = "";
 		if(string.translatable_) {
-			if (last_untranslatable_ && ((*string.value_))[0] == UNTRANSLATABLE_PART)
-				value_= t_token((*value_) + std::string((*string.value_).begin() + 1, (*string.value_).end()) );
+			if (last_untranslatable_ && string.value_[0] == UNTRANSLATABLE_PART)
+				value_.append(string.value_.begin() + 1, string.value_.end());
 			else
-				value_ =  t_token((*value_) + (*string.value_));
+				value_ += string.value_;
 			last_untranslatable_ = string.last_untranslatable_;
 		} else {
 			if (!last_untranslatable_) {
-				value_ =  t_token((*value_) + UNTRANSLATABLE_PART);
+				value_ += UNTRANSLATABLE_PART;
 				last_untranslatable_ = true;
 			}
-			value_ =  t_token((*value_) + (*string.value_));
+			value_ += string.value_;
 		}
 	} else {
-		value_ =  t_token((*value_) + (*string.value_));
+		value_ += string.value_;
 	}
 
 	return *this;
 }
 
-t_string_base& t_string_base::operator+=(const t_token& string)
+t_string_base& t_string_base::operator+=(const std::string& string)
 {
-	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	if (string.empty())
 		return *this;
 	if (value_.empty()) {
@@ -441,22 +420,20 @@ t_string_base& t_string_base::operator+=(const t_token& string)
 
 	if(translatable_) {
 		if (!last_untranslatable_) {
-			value_ = t_token((*value_) +  UNTRANSLATABLE_PART);
+			value_ += UNTRANSLATABLE_PART;
 			last_untranslatable_ = true;
 		}
-		value_ = t_token( (* value_) +  (* string));
-		translated_value_ = z_empty;
+		value_ += string;
+		translated_value_ = "";
 	} else {
-		value_  = t_token( (* value_ )+  (* string));
+		value_ += string;
 	}
 
 	return *this;
 }
-t_string_base& t_string_base::operator+=(const std::string& string) {return operator+=(t_token(string));}
 
 t_string_base& t_string_base::operator+=(const char* string)
 {
-	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	if (string[0] == 0)
 		return *this;
 	if (value_.empty()) {
@@ -466,13 +443,13 @@ t_string_base& t_string_base::operator+=(const char* string)
 
 	if(translatable_) {
 		if (!last_untranslatable_) {
-			value_ =  t_token((*value_) + UNTRANSLATABLE_PART );
+			value_ += UNTRANSLATABLE_PART;
 			last_untranslatable_ = true;
 		}
-		value_ =  t_token((*value_ ) + string);
-		translated_value_ = z_empty;
+		value_ += string;
+		translated_value_ = "";
 	} else {
-		value_ = t_token((*value_ ) +  string);
+		value_ += string;
 	}
 
 	return *this;
@@ -485,12 +462,12 @@ bool t_string_base::operator==(const t_string_base &that) const
 
 bool t_string_base::operator==(const std::string &that) const
 {
-	return !translatable_ && value_ == t_token(that);
+	return !translatable_ && value_ == that;
 }
 
 bool t_string_base::operator==(const char *that) const
 {
-	return !translatable_ && value_ == t_token(std::string(that));
+	return !translatable_ && value_ == that;
 }
 
 bool t_string_base::operator<(const t_string_base &that) const
@@ -498,24 +475,23 @@ bool t_string_base::operator<(const t_string_base &that) const
 	return value_ < that.value_;
 }
 
-const t_string_base::t_token& t_string_base::token() const
+const std::string& t_string_base::str() const
 {
-	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
 	if(!translatable_)
 		return value_;
 
 	if (translatable_ && !translated_value_.empty() && translation_timestamp_ == language_counter)
 		return translated_value_;
 
-	translated_value_=z_empty;
+	translated_value_.clear();
 
 	for(walker w(*this); !w.eos(); w.next()) {
 		std::string part(w.begin(), w.end());
 
 		if(w.translatable()) {
-			translated_value_ = t_token((*translated_value_ ) +  dsgettext(w.textdomain().c_str(), part.c_str()));
+			translated_value_ += dsgettext(w.textdomain().c_str(), part.c_str());
 		} else {
-			translated_value_  = t_token((*translated_value_ ) +  part);
+			translated_value_ += part;
 		}
 	}
 
@@ -543,9 +519,6 @@ t_string::t_string(const char *o) : super(base(o))
 {
 }
 
-t_string::t_string(const t_token &o) : super(base(o))
-{
-}
 t_string::t_string(const std::string &o) : super(base(o))
 {
 }
@@ -553,8 +526,6 @@ t_string::t_string(const std::string &o) : super(base(o))
 t_string::t_string(const std::string &o, const std::string &textdomain) : super(base(o, textdomain))
 {
 }
-t_string &t_string::operator=(t_token const &o) { super::operator=(base(o)); return *this; }
-t_string &t_string::operator=(std::string const &o) { super::operator=(base(o)); return *this; }
 
 t_string &t_string::operator=(const t_string &o)
 {

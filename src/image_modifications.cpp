@@ -401,7 +401,7 @@ REGISTER_MOD_PARSER(TC, args)
 	std::map<Uint32, Uint32> rc_map;
 	try {
 		color_range const& new_color =
-			game_config::color_info(n_token::t_token(team_color));
+			game_config::color_info(team_color);
 		std::vector<Uint32> const& old_color =
 			game_config::tc_info(params[1]);
 
@@ -422,7 +422,7 @@ REGISTER_MOD_PARSER(TC, args)
 // Team-color-based color range selection and recoloring
 REGISTER_MOD_PARSER(RC, args)
 {
-	const std::vector<config::t_token> recolor_params = utils::split_token(n_token::t_token(args), '>');
+	const std::vector<std::string> recolor_params = utils::split(args,'>');
 
 	if(recolor_params.size()>1){
 		//

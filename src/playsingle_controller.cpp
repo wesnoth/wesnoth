@@ -455,16 +455,13 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			}
 		}
 
-		static const config::t_token & z_defeat( generate_safe_static_const_t_interned(n_token::t_token("defeat")) );
-		static const config::t_token & z_victory( generate_safe_static_const_t_interned(n_token::t_token("victory")) );
-
 		if (end_level_result == QUIT) {
 			return QUIT;
 		}
 		else if (end_level_result == DEFEAT)
 		{
 			gamestate_.classification().completion = "defeat";
-			game_events::fire(z_defeat);
+			game_events::fire("defeat");
 
 			if (!obs) {
 				const std::string& defeat_music = select_defeat_music();
@@ -480,7 +477,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		{
 			gamestate_.classification().completion =
 				!end_level.linger_mode ? "running" : "victory";
-			game_events::fire(z_victory);
+			game_events::fire("victory");
 
 			//
 			// Play victory music once all victory events
@@ -866,13 +863,12 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 }
 
 void playsingle_controller::check_time_over(){
-	static const config::t_token & z_time_over( generate_safe_static_const_t_interned(n_token::t_token("time over")) );
 	bool b = tod_manager_.next_turn();
 	it_is_a_new_turn_ = true;
 	if(!b) {
 
 		LOG_NG << "firing time over event...\n";
-		game_events::fire(z_time_over);
+		game_events::fire("time over");
 		LOG_NG << "done firing time over event...\n";
 		//if turns are added while handling 'time over' event
 		if (tod_manager_.is_time_left()) {

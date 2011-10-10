@@ -642,7 +642,7 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 }
 
 std::vector<surface> display::get_terrain_images(const map_location &loc,
-						     const n_token::t_token& timeid,
+						     const std::string& timeid,
 		image::TYPE image_type,
 		TERRAIN_TYPE terrain_type)
 {
@@ -737,7 +737,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			surface surf;
 
 			if(!use_local_light) {
-				const bool off_map = (image.get_filename() == n_token::t_token(off_map_name));
+				const bool off_map = (image.get_filename() == off_map_name);
 				surf = image::get_image(image, off_map ? image::SCALED_TO_HEX : image_type);
 			} else if(color_mod.empty()) {
 				surf = image::get_image(image, image::SCALED_TO_HEX);
@@ -2212,7 +2212,6 @@ void display::refresh_report(std::string const &report_name, const config &_repo
 	SDL_Rect &rect = reportRects_[report_name];
 	const SDL_Rect &new_rect = item->location(screen_area());
 	surface &surf = reportSurfaces_[report_name];
-	/// @todo check to see if reports_ is ever updated
 	config &report = reports_[report_name];
 
 	// Report and its location is unchanged since last time. Do nothing.
@@ -2376,10 +2375,10 @@ void display::refresh_report(std::string const &report_name, const config &_repo
 		}
 
 		skip_element:
-		t = (*elements.first)["tooltip"].t_str().base_str();
+		t = (*elements.first)["tooltip"].str();
 		if (!t.empty()) {
 			if (!used_ellipsis) {
-				tooltips::add_tooltip(area, t, (*elements.first)["help"].t_str().base_str());
+				tooltips::add_tooltip(area, t, (*elements.first)["help"]);
 			} else {
 				// Collect all tooltips for the ellipsis.
 				// TODO: need a better separator

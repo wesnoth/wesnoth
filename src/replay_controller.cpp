@@ -253,7 +253,7 @@ void replay_controller::reset_replay(){
 
 	// Add era events for MP game.
 	if (const config &era_cfg = level_.child("era")) {
-		game_events::add_events(era_cfg.child_range("event"), config::t_token("era_events"));
+		game_events::add_events(era_cfg.child_range("event"), "era_events");
 	}
 
 	fire_prestart(true);

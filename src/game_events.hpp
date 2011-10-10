@@ -71,12 +71,12 @@ namespace game_events
 
 
 	struct queued_event {
-		queued_event(const config::t_token& name, const game_events::entity_location& loc1,
+		queued_event(const std::string& name, const game_events::entity_location& loc1,
 				const game_events::entity_location& loc2,
 				const config& data)
 			: name(name), loc1(loc1), loc2(loc2),data(data) {}
 
-		config::t_token name;
+		std::string name;
 		game_events::entity_location loc1;
 		game_events::entity_location loc2;
 		config data;
@@ -87,7 +87,7 @@ namespace game_events
 		public:
 			event_handler(const config &cfg, bool is_menu_item = false);
 
-			bool matches_name(const config::t_token& name) const;
+			bool matches_name(const std::string& name) const;
 
 			bool disabled() const { return disabled_; }
 			bool is_menu_item() const { return is_menu_item_; }
@@ -110,11 +110,11 @@ namespace game_events
 	/**
 	 * Runs the action handler associated to @a cmd with parameters @a cfg.
 	 */
-	void handle_event_command(const config::t_token &cmd,
+	void handle_event_command(const std::string &cmd,
 		const queued_event &event_info, const vconfig &cfg);
 
 	void write_events(config& cfg);
-	void add_events(const config::const_child_itors &cfgs,const config::t_token& id);
+	void add_events(const config::const_child_itors &cfgs,const std::string& id);
 
 	bool unit_matches_filter(const unit &, const vconfig& filter);
 
@@ -136,12 +136,12 @@ namespace game_events
 	 *
 	 * Events may have up to two arguments, both of which must be locations.
 	 */
-	bool fire(const config::t_token& event,
+	bool fire(const std::string& event,
 			const entity_location& loc1=map_location::null_location,
 			const entity_location& loc2=map_location::null_location,
 			const config& data=config());
 
-	void raise(const config::t_token& event,
+	void raise(const std::string& event,
 			const entity_location& loc1=map_location::null_location,
 			const entity_location& loc2=map_location::null_location,
 			const config& data=config());

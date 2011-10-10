@@ -148,8 +148,6 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 	std::stringstream str;
 	char str_buf[10];
 
-	static const config::t_token & z_damage( generate_safe_static_const_t_interned(n_token::t_token("damage")) );
-
 	// With a weapon.
 	if(stats.weapon != NULL) {
 
@@ -158,7 +156,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		weapon->set_specials_context(u_loc, opp_loc, *resources::units, stats.is_attacker, opp_weapon);
 
 		// Get damage modifiers.
-		unit_ability_list dmg_specials = weapon->get_specials(z_damage);
+		unit_ability_list dmg_specials = weapon->get_specials("damage");
 		unit_abilities::effect dmg_effect(dmg_specials, weapon->damage(), stats.backstab_pos);
 
 		// Get the SET damage modifier, if any.
@@ -239,7 +237,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 			else str << _("Attacker");
 			if(resistance_modifier < 100) str << _(" resistance vs ");
 			else str << _(" vulnerability vs ");
-			str << string_table["type_" + (*weapon->type() )];
+			str << string_table["type_" + weapon->type()];
 			left_strings.push_back(str.str());
 			str.str("");
 			str << "* " << (resistance_modifier / 100) << "." << ((resistance_modifier % 100) / 10);

@@ -61,11 +61,6 @@ void config_writer::write(const config &cfg)
 	::write(out_, cfg, level_);
 }
 
-void config_writer::write_ordered(const config &cfg)
-{
-	::write_ordered(out_, cfg, level_);
-}
-
 void config_writer::write_child(const std::string &key, const config &cfg)
 {
 	open_child(key);

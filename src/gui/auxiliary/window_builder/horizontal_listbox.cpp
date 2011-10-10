@@ -58,11 +58,8 @@ tbuilder_horizontal_listbox::tbuilder_horizontal_listbox(const config& cfg)
 
 		foreach(const config &c, row.child_range("column")) {
 			list_data.push_back(string_map());
-			std::map<config::t_token, config::attribute_value> sorted;
-			foreach (const config::attribute &ipresorted, c.attribute_range()) {
-				sorted.insert( ipresorted ); }
-			foreach (const config::attribute &i, sorted ) {
-				list_data.back()[i.first] = i.second.t_str();
+			foreach (const config::attribute &i, c.attribute_range()) {
+				list_data.back()[i.first] = i.second;
 			}
 			++col;
 		}

@@ -37,11 +37,12 @@ protected:
 };
 
 /** Function which, given a location, will find all tiles within 'radius' of that tile */
-void get_tiles_radius(const map_location& a, size_t radius, map_location::t_maploc_set& res);
+void get_tiles_radius(const map_location& a, size_t radius,
+					  std::set<map_location>& res);
 
 /** Function which, given a set of locations, will find all tiles within 'radius' of those tiles */
 void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs, size_t radius,
-					  map_location::t_maploc_set& res, xy_pred *pred=NULL);
+					  std::set<map_location>& res, xy_pred *pred=NULL);
 
 /**
  * Function which, given a location, will place all locations in the radius of r in res

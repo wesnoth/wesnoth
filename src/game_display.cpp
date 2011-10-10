@@ -90,11 +90,11 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 	// Inits the flag list and the team colors used by ~TC
 	flags_.reserve(teams_.size());
 
-	std::vector<config::t_token> side_colors;
+	std::vector<std::string> side_colors;
 	side_colors.reserve(teams_.size());
 
 	for(size_t i = 0; i != teams_.size(); ++i) {
-		config::t_token side_color = team::get_side_color_index(i+1);
+		std::string side_color = team::get_side_color_index(i+1);
 		side_colors.push_back(side_color);
 		std::string flag = teams_[i].flag();
 		std::string old_rgb = game_config::flag_rgb;

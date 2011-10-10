@@ -193,7 +193,7 @@ game_info::game_info(const config& game, const config& game_config)
 	{
 		const config &era_cfg = game_config.find_child("era", "id", game["mp_era"]);
 		utils::string_map symbols;
-		symbols["era_id"] = game["mp_era"].token();
+		symbols["era_id"] = game["mp_era"];
 		if (era_cfg) {
 			era = era_cfg["name"].str();
 			era_short = era_cfg["short_name"].str();
@@ -254,10 +254,7 @@ game_info::game_info(const config& game, const config& game_config)
 				if (const config& hashes = game_config.child("multiplayer_hashes")) {
 					std::string hash = game["hash"];
 					bool hash_found = false;
-					std::map<config::t_token, config::attribute_value> sorted;
-					foreach (const config::attribute &ipresorted, hashes.attribute_range()) {
-						sorted.insert( ipresorted ); }
-					foreach (const config::attribute &i, sorted) {
+					foreach (const config::attribute &i, hashes.attribute_range()) {
 						if (i.first == game["mp_scenario"] && i.second == hash) {
 							hash_found = true;
 							break;
@@ -273,7 +270,7 @@ game_info::game_info(const config& game, const config& game_config)
 			}
 		} else {
 			utils::string_map symbols;
-			symbols["scenario_id"] = game["mp_scenario"].token();
+			symbols["scenario_id"] = game["mp_scenario"];
 			scenario = vgettext("Unknown scenario: $scenario_id", symbols);
 			map_info += scenario;
 			verified = false;
@@ -301,7 +298,7 @@ game_info::game_info(const config& game, const config& game_config)
 		started = false;
 		if (vacant_slots > 0) {
 			status = std::string(_n("Vacant Slot:", "Vacant Slots:",
-									vacant_slots)) + " " + game["slots"].str();
+					vacant_slots)) + " " + game["slots"];
 		}
 	}
 

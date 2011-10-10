@@ -435,7 +435,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		{
 			const config &era_cfg = game_config.find_child("era", "id", game["mp_era"]);
 			utils::string_map symbols;
-			symbols["era_id"] = game["mp_era"].token();
+			symbols["era_id"] = game["mp_era"];
 			if (era_cfg) {
 				games_.back().map_info = era_cfg["name"].str();
 			} else {
@@ -502,10 +502,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				if (map_hashes_ && !games_.back().reloaded) {
 					std::string hash = game["hash"];
 					bool hash_found = false;
-					std::map<config::t_token, config::attribute_value> sorted;
-					foreach (const config::attribute &ipresorted, map_hashes_.attribute_range()) {
-						sorted.insert( ipresorted ); }
-					foreach (const config::attribute &i, sorted) {
+					foreach (const config::attribute &i, map_hashes_.attribute_range()) {
 						if (i.first == game["mp_scenario"] && i.second == hash) {
 							hash_found = true;
 							break;
@@ -519,7 +516,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				}
 			} else {
 				utils::string_map symbols;
-				symbols["scenario_id"] = game["mp_scenario"].token();
+				symbols["scenario_id"] = game["mp_scenario"];
 				games_.back().map_info += vgettext("Unknown scenario: $scenario_id", symbols);
 				verified = false;
 			}

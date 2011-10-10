@@ -17,7 +17,6 @@
 #ifndef FORMULA_STRING_UTILS_HPP_INCLUDED
 #define FORMULA_STRING_UTILS_HPP_INCLUDED
 
-#include "token.hpp"
 #include "serialization/string_utils.hpp"
 
 class variable_set;
@@ -31,7 +30,6 @@ namespace utils {
  */
 std::string interpolate_variables_into_string(const std::string &str, const string_map * const symbols);
 std::string interpolate_variables_into_string(const std::string &str, const variable_set& variables);
-void interpolate_variables_into_token(n_token::t_token &str, const variable_set& variables);
 
 /**
  * Function that does the same as the above, for t_stringS.

@@ -37,7 +37,6 @@
 #include <cassert>
 #include <ctime>
 
-
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")
 {
@@ -163,7 +162,7 @@ static config unit_type(unit* u)
 	str << span_color(font::unit_type_color) << u->type_name() << naps;
 	tooltip << _("Type: ") << "<b>" << u->type_name() << "</b>\n"
 		<< u->unit_description();
-	return text_report(str.str(), tooltip.str(), "unit_" + (* u->type_id()));
+	return text_report(str.str(), tooltip.str(), "unit_" + u->type_id());
 }
 REPORT_GENERATOR(unit_type)
 {
@@ -182,7 +181,7 @@ static config unit_race(unit* u)
 	std::ostringstream str, tooltip;
 	str << span_color(font::race_color) << u->race()->name(u->gender()) << naps;
 	tooltip << _("Race: ") << "<b>" << u->race()->name(u->gender()) << "</b>";
-	return text_report(str.str(), tooltip.str(), "..race_" + (* u->race()->id()));
+	return text_report(str.str(), tooltip.str(), "..race_" + u->race()->id());
 }
 REPORT_GENERATOR(unit_race)
 {
@@ -224,7 +223,7 @@ static config unit_level(unit* u)
 	std::ostringstream str, tooltip;
 	str << u->level();
 	tooltip << _("Level: ") << "<b>" << u->level() << "</b>\n";
-	const std::vector<config::t_token> &adv_to = u->advances_to();
+	const std::vector<std::string> &adv_to = u->advances_to();
 	if (adv_to.empty())
 		tooltip << _("No advancement");
 	else
@@ -347,16 +346,16 @@ static config unit_abilities(unit* u)
 {
 	if (!u) return report();
 	config res;
-	const std::vector<t_string> &abilities = u->ability_tooltips();
-	for (std::vector<t_string>::const_iterator i = abilities.begin(),
+	const std::vector<std::string> &abilities = u->ability_tooltips();
+	for (std::vector<std::string>::const_iterator i = abilities.begin(),
 	     i_end = abilities.end(); i != i_end; ++i)
 	{
 		std::ostringstream str, tooltip;
-		const std::string &name = i->base_str();
-		str << i->str();
+		const std::string &name = *i;
+		str << gettext(name.c_str());
 		if (i + 2 != i_end) str << ", ";
 		++i;
-		tooltip << _("Ability: ") << i->str();
+		tooltip << _("Ability: ") << *i;
 		add_text(res, str.str(), tooltip.str(), "ability_" + name);
 	}
 	return res;
@@ -548,10 +547,6 @@ REPORT_GENERATOR(selected_unit_moves)
 
 static int attack_info(const attack_type &at, config &res, unit *u, const map_location &displayed_unit_hex)
 {
-	static const config::t_token & z_swarm( generate_safe_static_const_t_interned(n_token::t_token("swarm")) );
-	static const config::t_token & z_swarm_attacks_min( generate_safe_static_const_t_interned(n_token::t_token("swarm_attacks_min")) );
-	static const config::t_token & z_swarm_attacks_max( generate_safe_static_const_t_interned(n_token::t_token("swarm_attacks_max")) );
-
 	std::ostringstream str, tooltip;
 
 	at.set_specials_context(displayed_unit_hex, map_location(), *u);
@@ -571,16 +566,15 @@ static int attack_info(const attack_type &at, config &res, unit *u, const map_lo
 
 	int base_nattacks = at.num_attacks();
 	int nattacks = base_nattacks;
-	unit_ability_list swarm = at.get_specials(z_swarm);
+	unit_ability_list swarm = at.get_specials("swarm");
 	if (!swarm.empty())
 	{
-		int swarm_max_attacks = swarm.highest(z_swarm_attacks_max, nattacks).first;
-		int swarm_min_attacks = swarm.highest(z_swarm_attacks_min).first;
+		int swarm_max_attacks = swarm.highest("swarm_attacks_max", nattacks).first;
+		int swarm_min_attacks = swarm.highest("swarm_attacks_min").first;
 		int hitp = u->hitpoints();
 		int mhitp = u->max_hitpoints();
 		nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
 	}
-
 	SDL_Color dmg_color = font::weapon_color;
 	double dmg_bonus = double(damage) / base_damage;
 	if (dmg_bonus > 1.0)
@@ -619,8 +613,8 @@ static int attack_info(const attack_type &at, config &res, unit *u, const map_lo
 
 	add_text(res, flush(str), flush(tooltip));
 
-	std::string range = string_table["range_" + (* at.range())];
-	std::string lang_type = string_table["type_" + (* at.type() )];
+	std::string range = string_table["range_" + at.range()];
+	std::string lang_type = string_table["type_" + at.type()];
 
 	str << span_color(font::weapon_details_color) << "  "
 		<< range << font::weapon_details_sep

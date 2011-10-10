@@ -311,7 +311,7 @@ bool recruitment_phase::recruit_usage(const std::string& usage)
 		const unit_type *ut = unit_types.find(name);
 		if (!ut) continue;
 		// If usage is empty consider any unit.
-		if (usage.empty() || ut->usage() == config::t_token(usage)) { ///todo remove when upgrade to t_token
+		if (usage.empty() || ut->usage() == usage) {
 			LOG_AI_TESTING_AI_DEFAULT << name << " considered for " << usage << " recruitment\n";
 			found = true;
 
@@ -402,12 +402,8 @@ int recruitment_phase::average_resistance_against(const unit_type& a, const unit
 
 	int sum = 0, weight_sum = 0;
 
-	static const config::t_token & z_chance_to_hit( generate_safe_static_const_t_interned(n_token::t_token("chance_to_hit")) );
-	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
-	static const config::t_token & z_steadfast( generate_safe_static_const_t_interned(n_token::t_token("steadfast")) );
-
 	// calculation of the average damage taken
-	bool steadfast = a.has_ability_by_id(z_steadfast);
+	bool steadfast = a.has_ability_by_id("steadfast");
 	bool living = !a.not_living();
 	const std::vector<attack_type>& attacks = b.attacks();
 	for (std::vector<attack_type>::const_iterator i = attacks.begin(),
@@ -418,10 +414,10 @@ int recruitment_phase::average_resistance_against(const unit_type& a, const unit
 		if (steadfast && resistance < 100)
 			resistance = std::max<int>(resistance * 2 - 100, 50);
 		// Do not look for filters or values, simply assume 70% if CTH is customized.
-		int cth = i->get_special_bool(z_chance_to_hit, true) ? 70 : defense;
+		int cth = i->get_special_bool("chance_to_hit", true) ? 70 : defense;
 		int weight = i->damage() * i->num_attacks();
 		// if cth == 0 the division will do 0/0 so don't execute this part
-		if (living && cth != 0 && i->get_special_bool(z_poison, true)) {
+		if (living && cth != 0 && i->get_special_bool("poison", true)) {
 			// Compute the probability of not poisoning the unit.
 			int prob = 100;
 			for (int j = 0; j < i->num_attacks(); ++j)
@@ -486,7 +482,7 @@ void recruitment_phase::analyze_potential_recruit_combat()
 
 			unit const &un = *j;
 			const unit_type *enemy_info = unit_types.find(un.type_id());
-			VALIDATE(enemy_info, "Unknown unit type : " + (*un.type_id()) + " while scoring units.");
+			VALIDATE(enemy_info, "Unknown unit type : " + un.type_id() + " while scoring units.");
 
 			int weight = un.cost() * un.hitpoints() / un.max_hitpoints();
 			weighting += weight;
@@ -1032,10 +1028,8 @@ void get_villages_phase::find_villages(
 			vulnerability.insert(std::pair<map_location,double>(current_loc,threat));
 		}
 
-		static const config::t_token & z_guardian( generate_safe_static_const_t_interned(n_token::t_token("guardian")) );
-
 		const unit_map::const_iterator u = resources::units->find(j->second);
-		if (u == resources::units->end() || u->get_state(z_guardian)) {
+		if (u == resources::units->end() || u->get_state("guardian")) {
 			continue;
 		}
 

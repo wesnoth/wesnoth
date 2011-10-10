@@ -46,7 +46,6 @@ private:
 	vconfig();
 	vconfig(const config* cfg, const config* cache_key);
 public:
-	typedef config::t_token t_token;
 	vconfig(const vconfig& v);
 	explicit vconfig(const config &cfg, bool is_volatile=false);
 	~vconfig();
@@ -65,36 +64,30 @@ public:
 	child_list get_children(const std::string& key) const;
 	vconfig child(const std::string& key) const;
 	bool has_child(const std::string& key) const;
-	child_list get_children(const t_token& key) const;
-	vconfig child(const t_token& key) const;
-	bool has_child(const t_token& key) const;
 
 	/**
 	 * Note: vconfig::operator[] returns const, and this should not be changed
 	 * because vconfig is often used as a drop-in replacement for config, and
 	 * this const will properly warn you if you try to assign vcfg["key"]=val;
 	 *
-	 * Note: The following construction is unsafe:
+	 * Note: The following construction is unsave:
 	 * const std::string& temp = vcfg["foo"];
 	 * This bind temp to a member of a temporary t_string. The lifetime of the
 	 * temporary is not extended by this reference binding and the temporary's
 	 * lifetime ends which causes UB. Instead use:
 	 * const std::string temp = vcfg["foo"];
 	 */
-	const config::attribute_value operator[](const t_token &key) const { return expand(key); }
-	config::attribute_value expand(const t_token&) const; /** < Synonym for operator[] */
-	bool has_attribute(const t_token& key) const { return cfg_->has_attribute(key); }
-	bool empty() const { return (null() || cfg_->empty()); }
-
-	const config::attribute_value operator[](const std::string &key) const { return expand(key); }
+	const config::attribute_value operator[](const std::string &key) const
+	{ return expand(key); }
 	config::attribute_value expand(const std::string&) const; /** < Synonym for operator[] */
 	bool has_attribute(const std::string& key) const { return cfg_->has_attribute(key); }
+	bool empty() const { return (null() || cfg_->empty()); }
 
 	struct all_children_iterator
 	{
 		struct pointer_proxy;
 
-		typedef std::pair<t_token, vconfig> value_type;
+		typedef std::pair<std::string, vconfig> value_type;
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef const pointer_proxy pointer;
@@ -108,7 +101,7 @@ public:
 		reference operator*() const;
 		pointer operator->() const;
 
-		t_token get_key() const;
+		std::string get_key() const;
 		vconfig get_child() const;
 		void disable_insertion() { inner_index_ = -1; }
 
@@ -160,24 +153,21 @@ public:
 class scoped_wml_variable
 {
 public:
-	scoped_wml_variable(const config::t_token& var_name);
 	scoped_wml_variable(const std::string& var_name);
 	virtual ~scoped_wml_variable();
-	const config::t_token& name() const { return var_name_; }
+	const std::string& name() const { return var_name_; }
 	virtual void activate() = 0;
 	config &store(const config &var_value = config());
 	bool activated() const { return activated_; }
 private:
 	config previous_val_;
-	const config::t_token var_name_;
+	const std::string var_name_;
 	bool activated_;
 };
 
 class scoped_weapon_info : public scoped_wml_variable
 {
 public:
-	scoped_weapon_info(const config::t_token& var_name, const config &data)
-		: scoped_wml_variable(var_name), data_(data) {}
 	scoped_weapon_info(const std::string& var_name, const config &data)
 		: scoped_wml_variable(var_name), data_(data) {}
 	void activate();
@@ -188,8 +178,6 @@ private:
 class scoped_xy_unit : public scoped_wml_variable
 {
 public:
-	scoped_xy_unit(const config::t_token& var_name, const int x, const int y, const unit_map& umap)
-		: scoped_wml_variable(var_name), x_(x), y_(y), umap_(umap) {}
 	scoped_xy_unit(const std::string& var_name, const int x, const int y, const unit_map& umap)
 		: scoped_wml_variable(var_name), x_(x), y_(y), umap_(umap) {}
 	void activate();
@@ -201,22 +189,18 @@ private:
 class scoped_recall_unit : public scoped_wml_variable
 {
 public:
-	scoped_recall_unit(const config::t_token& var_name, const config::t_token& player,
-		unsigned int recall_index) : scoped_wml_variable(var_name), player_(player),
-		recall_index_(recall_index) {}
 	scoped_recall_unit(const std::string& var_name, const std::string& player,
 		unsigned int recall_index) : scoped_wml_variable(var_name), player_(player),
 		recall_index_(recall_index) {}
 	void activate();
 private:
-	const config::t_token player_;
+	const std::string player_;
 	unsigned int recall_index_;
 };
 
 /** Information on a WML variable. */
-class variable_info
+struct variable_info
 {
-public:
 	typedef config::child_itors array_range;
 
 	/**
@@ -228,17 +212,15 @@ public:
 	            TYPE_CONTAINER, //a Container is a specific index of an Array (contains Scalars)
 	            TYPE_UNSPECIFIED };
 
+	variable_info(const std::string& varname, bool force_valid=true,
+		TYPE validation_type=TYPE_UNSPECIFIED);
 
-	/** variable_info creates, evaluates or tests the WML variable varname.
-		@param[in] varname The WML variable
-		@param[in] force_valid forces creation of the variable and the entire chain of variables in its scope
-		@param[in] validation_type Type of the variable
-		@param[in] is_conditional_test when true indicates that the variable is being test in a conditional expression so is_valid is set to false without warning as if the condition evaluated to false.
-	 */
-	variable_info(const config::t_token& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED, bool is_conditional_test=false);
-	variable_info(const t_string& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED, bool is_conditional_test=false);
-	variable_info(const std::string& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED, bool is_conditional_test=false);
-	variable_info(const config::attribute_value& varname, bool force_valid=true, TYPE validation_type=TYPE_UNSPECIFIED, bool is_conditional_test=false);
+	TYPE vartype; //default is TYPE_UNSPECIFIED
+	bool is_valid;
+	std::string key; //the name of the internal attribute or child
+	bool explicit_index; //true if query ended in [...] specifier
+	size_t index; //the index of the child
+	config *vars; //the containing node in game_state::variables
 
 	/**
 	 * Results: after deciding the desired type, these methods can retrieve the result
@@ -247,18 +229,6 @@ public:
 	config::attribute_value &as_scalar();
 	config& as_container();
 	array_range as_array(); //range may be empty
-	bool is_valid() const {return is_valid_;}
-	bool is_explicit_index() const {return explicit_index_;}
-
-private:
-	void init(const config::t_token& varname, bool force_valid=true, bool is_conditional_test=false);
-	TYPE vartype; ///default is TYPE_UNSPECIFIED
-	bool is_valid_;
-	bool explicit_index_; ///true if query ended in [...] specifier
-public: ///todo make these private
-	config::t_token key; /// the name of the internal attribute or child
-	size_t index; /// the index of the child
-	config *vars; /// the containing node in game_state::variables
 };
 
 #endif

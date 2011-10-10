@@ -70,7 +70,7 @@ namespace game_config
 			default_defeat_music;
 
 	namespace images {
-	extern n_token::t_token game_title,
+	extern std::string game_title,
 			// orbs and hp/xp bar
 			moved_orb,
 			unmoved_orb,
@@ -116,8 +116,7 @@ namespace game_config
 	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
 
-	typedef boost::unordered_map<n_token::t_token, color_range> t_team_rgb_range;
-	extern t_team_rgb_range team_rgb_range;
+	extern std::map<std::string, color_range> team_rgb_range;
 	extern std::map<std::string, t_string> team_rgb_name;
 	extern std::map<std::string, std::vector<Uint32> > team_rgb_colors;
 
@@ -143,7 +142,7 @@ namespace game_config
 
 	void add_color_info(const config& v);
 	const std::vector<Uint32>& tc_info(const std::string& name);
-	const color_range& color_info(const n_token::t_token& name);
+	const color_range& color_info(const std::string& name);
 
 	/**
 	 * Return a color corresponding to the value val

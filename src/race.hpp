@@ -35,23 +35,23 @@ public:
 	unit_race(const config& cfg);
 
 	const config& get_cfg() const { return cfg_; };
-	const config::t_token& id() const { return id_; };
+	const std::string& id() const { return id_; };
 	const t_string& name(GENDER gender=MALE) const { return name_[gender]; };
 	const t_string& plural_name() const { return plural_name_; };
 	const t_string& description() const { return description_; };
 
-	config::t_token generate_name(GENDER gender, rand_rng::simple_rng* rng = 0) const;
+	std::string generate_name(GENDER gender, rand_rng::simple_rng* rng = 0) const;
 
 	bool uses_global_traits() const;
 
 	const config::const_child_itors &additional_traits() const;
-	const config::const_child_itors &additional_topics() const;
+  const config::const_child_itors &additional_topics() const;
 	unsigned int num_traits() const;
 
 private:
 	const config cfg_;
 
-	config::t_token id_;
+	std::string id_;
 	t_string name_[NUM_GENDERS];
 	t_string plural_name_;
 	t_string description_;
@@ -60,13 +60,13 @@ private:
 	int chain_size_;
 
 	config::const_child_itors traits_;
-	config::const_child_itors topics_;
+  config::const_child_itors topics_;
 	bool global_traits_;
 };
 
-unit_race::GENDER string_gender(const config::t_token& str,unit_race::GENDER def=unit_race::MALE);
-config::t_token const& gender_string(unit_race::GENDER gender);
+unit_race::GENDER string_gender(const std::string& str,unit_race::GENDER def=unit_race::MALE);
+std::string const& gender_string(unit_race::GENDER gender);
 
-typedef boost::unordered_map<config::t_token,unit_race> race_map;
+typedef std::map<std::string,unit_race> race_map;
 
 #endif

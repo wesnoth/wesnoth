@@ -40,9 +40,9 @@ std::vector<ttip> load(const config& cfg)
 	std::vector<ttip> result;
 
 	foreach(const config &tip, cfg.child_range("tip")) {
-		result.push_back(ttip(tip["text"].t_str()
-				, tip["source"].t_str()
-				, tip["encountered_units"].t_str()));
+		result.push_back(ttip(tip["text"]
+				, tip["source"]
+				, tip["encountered_units"]));
 	}
 
 	return result;

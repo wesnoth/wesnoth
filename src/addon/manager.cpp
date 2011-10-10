@@ -1490,7 +1490,7 @@ void refresh_addon_version_info_cache()
 			if (!info_cfg) {
 				continue;
 			}
-			std::string const version = info_cfg["version"];
+			std::string const& version = info_cfg["version"];
 			LOG_CFG << "caching add-on version info: " << addon << " [" << version << "]\n";
 			version_info_cache.insert(std::make_pair(addon, version_info(version)));
 		}

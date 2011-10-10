@@ -104,8 +104,8 @@ bool load_language_list()
 	foreach (const config &lang, cfg.child_range("locale"))
 	{
 		known_languages.push_back(
-								  language_def(lang["locale"].str(), lang["name"].t_str(), lang["dir"].str(),
-											   lang["alternates"].str(), lang["sort_name"].str()));
+			language_def(lang["locale"], lang["name"], lang["dir"],
+			             lang["alternates"], lang["sort_name"]));
 	}
 
 	return true;
@@ -228,12 +228,9 @@ bool load_strings(bool complain)
 	}
 	foreach (const config &lang, languages_) {
 		DBG_G << "[language]\n";
-		std::map<config::t_token, config::attribute_value> sorted;
-		foreach (const config::attribute &ipresorted, lang.attribute_range()) {
-			sorted.insert( ipresorted ); }
-		foreach (const config::attribute &j, sorted) {
+		foreach (const config::attribute &j, lang.attribute_range()) {
 			DBG_G << j.first << "=\"" << j.second << "\"\n";
-			strings_[j.first] = j.second.token();
+			strings_[j.first] = j.second;
 		}
 		DBG_G << "[/language]\n";
 	}
@@ -288,8 +285,8 @@ void init_textdomains(const config& cfg)
 {
 	foreach (const config &t, cfg.child_range("textdomain"))
 	{
-		const std::string name = t["name"];
-		const std::string path = t["path"];
+		const std::string &name = t["name"];
+		const std::string &path = t["path"];
 
 		if(path.empty()) {
 			t_string::add_textdomain(name, get_intl_dir());

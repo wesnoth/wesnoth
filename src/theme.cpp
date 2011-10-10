@@ -32,12 +32,6 @@ static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define ERR_DP LOG_STREAM(err, log_display)
 
-namespace{
-	//Static tokens are replacements for string literals in code
-	//They allow for fast comparison operations.
-	DEFAULT_TOKEN_BODY( zf_tile_image, "tile_image" )
-}
-
 namespace {
 	const int XDim = 1024;
 	const int YDim = 768;
@@ -297,7 +291,7 @@ theme::tborder::tborder(const config& cfg) :
 	size(cfg["border_size"].to_double()),
 
 	background_image(cfg["background_image"]),
-	tile_image(cfg[zf_tile_image()].token()),
+	tile_image(cfg["tile_image"]),
 
 	corner_image_top_left(cfg["corner_image_top_left"]),
 	corner_image_bottom_left(cfg["corner_image_bottom_left"]),

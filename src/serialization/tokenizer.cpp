@@ -21,6 +21,7 @@
 #include "wesconfig.h"
 #include "serialization/tokenizer.hpp"
 
+
 tokenizer::tokenizer(std::istream& in) :
 	current_(EOF),
 	lineno_(1),
@@ -30,16 +31,6 @@ tokenizer::tokenizer(std::istream& in) :
 	token_(),
 	in_(in)
 {
-	static bool dummy_force_run_once = fill_char_types();
-	(void) dummy_force_run_once;
-
-	in_.exceptions(std::ios_base::badbit);
-	next_char_fast();
-}
-
-
-char tokenizer::char_types_[128];
-bool tokenizer::fill_char_types(){
 	for (int c = 0; c < 128; ++c)
 	{
 		int t = 0;
@@ -52,7 +43,8 @@ bool tokenizer::fill_char_types(){
 		}
 		char_types_[c] = t;
 	}
-	return true;
+	in_.exceptions(std::ios_base::badbit);
+	next_char_fast();
 }
 
 tokenizer::~tokenizer()
@@ -63,20 +55,10 @@ tokenizer::~tokenizer()
 
 const token &tokenizer::next_token()
 {
-static const n_token::t_token & z_LBRACKET( generate_safe_static_const_t_interned(n_token::t_token("[")) );
-static const n_token::t_token & z_RBRACKET( generate_safe_static_const_t_interned(n_token::t_token("]")) );
-static const n_token::t_token & z_SLASH( generate_safe_static_const_t_interned(n_token::t_token("/")) );
-static const n_token::t_token & z_LF( generate_safe_static_const_t_interned(n_token::t_token("\n")) );
-static const n_token::t_token & z_EQUALS( generate_safe_static_const_t_interned(n_token::t_token("=")) );
-static const n_token::t_token & z_COMMA( generate_safe_static_const_t_interned(n_token::t_token(",")) );
-static const n_token::t_token & z_PLUS( generate_safe_static_const_t_interned(n_token::t_token("+")) );
-static const n_token::t_token & z_UNDERSCORE( generate_safe_static_const_t_interned(n_token::t_token("_")) );
-
-
 #if DEBUG
 	previous_token_ = token_;
 #endif
-	//	token_.value.clear();
+	token_.value.clear();
 
 	// Dump spaces and inlined comments
 	for(;;)
@@ -96,9 +78,6 @@ static const n_token::t_token & z_UNDERSCORE( generate_safe_static_const_t_inter
 
 	startlineno_ = lineno_;
 
-	token_.set_start();
-	//	std::cerr<<"cc="<<current_<<" ";
-
 	switch(current_) {
 	case EOF:
 		token_.type = token::END;
@@ -107,8 +86,7 @@ static const n_token::t_token & z_UNDERSCORE( generate_safe_static_const_t_inter
 	case '<':
 		if (peek_char() != '<') {
 			token_.type = token::MISC;
-			//token_.value += current_;
-			token_.add_char(current_);
+			token_.value += current_;
 			break;
 		}
 		token_.type = token::QSTRING;
@@ -123,8 +101,7 @@ static const n_token::t_token & z_UNDERSCORE( generate_safe_static_const_t_inter
 				next_char_fast();
 				break;
 			}
-			token_.add_char(current_);
-			// token_.value += current_;
+			token_.value += current_;
 		}
 		break;
 
@@ -145,51 +122,19 @@ static const n_token::t_token & z_UNDERSCORE( generate_safe_static_const_t_inter
 				--lineno_;
 				continue;
 			}
-			// token_.value += current_;
-			token_.add_char(current_);
+			token_.value += current_;
 		}
 		break;
 
-	case '[':
+	case '[': case ']': case '/': case '\n': case '=': case ',': case '+':
 		token_.type = token::token_type(current_);
-		token_.set_token(z_LBRACKET);
-		break;
-	case ']':
-		token_.type = token::token_type(current_);
-		token_.set_token(z_RBRACKET);
-		break;
-	case '/':
-		token_.type = token::token_type(current_);
-		token_.set_token(z_SLASH);
-		break;
-	case '\n':
-		token_.type = token::token_type(current_);
-		token_.set_token(z_LF);
-		break;
-	case '=':
-		token_.type = token::token_type(current_);
-		token_.set_token(z_EQUALS);
-		break;
-	case ',':
-		token_.type = token::token_type(current_);
-		token_.set_token(z_COMMA);
-		break;
-	case '+':
-		//		token_.value = current_;
-		// token_.set_start();
-		// token_.add_char(current_);
-		token_.type = token::token_type(current_);
-		token_.set_token(z_PLUS);
+		token_.value = current_;
 		break;
 
 	case '_':
 		if (!is_alnum(peek_char())) {
 			token_.type = token::token_type(current_);
-			// token_.value = current_;
-			// token_.set_start();
-			// token_.add_char(current_);
-			token_.type = token::token_type(current_);
-			token_.set_token(z_UNDERSCORE);
+			token_.value = current_;
 			break;
 		}
 		// no break
@@ -198,8 +143,7 @@ static const n_token::t_token & z_UNDERSCORE( generate_safe_static_const_t_inter
 		if (is_alnum(current_)) {
 			token_.type = token::STRING;
 			do {
-				// token_.value += current_;
-				token_.add_char(current_);
+				token_.value += current_;
 				next_char_fast();
 				while (current_ == 254) {
 					skip_comment();
@@ -208,8 +152,7 @@ static const n_token::t_token & z_UNDERSCORE( generate_safe_static_const_t_inter
 			} while (is_alnum(current_));
 		} else {
 			token_.type = token::MISC;
-			//token_.value += current_;
-			token_.add_char(current_);
+			token_.value += current_;
 			next_char();
 		}
 		return token_;

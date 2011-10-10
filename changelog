@@ -49,10 +49,6 @@ Version 1.9.9+svn:
    * Fixed handling of #ifver and #ifnver preprocessor directives in wmllint
    * Made it possible to switch themes from Preferences in the main menu
      (bug #10969)
-   * Fixed bug #18715 where deleting of .cache directory and then regenerating
-     the cache F5 in a running instance of wesnoth caused a crash
-   * Fixed bug #18777: #ifver/#ifnver directives with the --preprocess command
-     don't throw anymore "undefined macro" errors
 
 Version 1.9.9:
  * AI:

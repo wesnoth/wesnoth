@@ -107,43 +107,38 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
 
 namespace unit_abilities {
 
-static bool affects_side(const config& cfg, const t_teams& teams, size_t side, size_t other_side)
+static bool affects_side(const config& cfg, const std::vector<team>& teams, size_t side, size_t other_side)
 {
-	static const config::t_token & z_affect_allies( generate_safe_static_const_t_interned(n_token::t_token("affect_allies")) );
-	static const config::t_token & z_affect_enemies( generate_safe_static_const_t_interned(n_token::t_token("affect_enemies")) );
-
 	if (side == other_side)
-		return cfg[z_affect_allies].to_bool(true);
+		return cfg["affect_allies"].to_bool(true);
 	if (teams[side - 1].is_enemy(other_side))
-		return cfg[z_affect_enemies].to_bool();
+		return cfg["affect_enemies"].to_bool();
 	else
-		return cfg[z_affect_allies].to_bool();
+		return cfg["affect_allies"].to_bool();
 }
 
 }
 
 
-bool unit::get_ability_bool(const config::t_token& ability, const map_location& loc, gamemap const & game_map, unit_map const & units, t_teams const & teams, LuaKernel & lua_kernel, tod_manager const & tod_manager) const
+bool unit::get_ability_bool(const std::string& ability, const map_location& loc) const
 {
-	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
-
-	if (const config &abilities = cfg_.child(z_abilities))
+	if (const config &abilities = cfg_.child("abilities"))
 	{
 		foreach (const config &i, abilities.child_range(ability)) {
-			if (ability_active(ability, i, loc, game_map, units, teams, lua_kernel, tod_manager)
-				&& ability_affects_self(ability, i, loc))
+			if (ability_active(ability, i, loc) &&
+			    ability_affects_self(ability, i, loc))
 				return true;
 		}
 	}
 
-	//const unit_map& units = *resources::units;
+	const unit_map& units = *resources::units;
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if (it == units.end() || it->incapacitated())
 			continue;
-		const config &adj_abilities = it->cfg_.child(z_abilities);
+		const config &adj_abilities = it->cfg_.child("abilities");
 		if (!adj_abilities)
 			continue;
 		foreach (const config &j, adj_abilities.child_range(ability)) {
@@ -157,13 +152,11 @@ bool unit::get_ability_bool(const config::t_token& ability, const map_location& 
 
 	return false;
 }
-unit_ability_list unit::get_abilities(const config::t_token& ability, const map_location& loc) const
+unit_ability_list unit::get_abilities(const std::string& ability, const map_location& loc) const
 {
-	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
-
 	unit_ability_list res;
 
-	if (const config &abilities = cfg_.child(z_abilities))
+	if (const config &abilities = cfg_.child("abilities"))
 	{
 		foreach (const config &i, abilities.child_range(ability)) {
 			if (ability_active(ability, i, loc) &&
@@ -179,7 +172,7 @@ unit_ability_list unit::get_abilities(const config::t_token& ability, const map_
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if (it == units.end() || it->incapacitated())
 			continue;
-		const config &adj_abilities = it->cfg_.child(z_abilities);
+		const config &adj_abilities = it->cfg_.child("abilities");
 		if (!adj_abilities)
 			continue;
 		foreach (const config &j, adj_abilities.child_range(ability)) {
@@ -194,60 +187,49 @@ unit_ability_list unit::get_abilities(const config::t_token& ability, const map_
 	return res;
 }
 
-std::vector<config::t_token> unit::get_ability_list() const
+std::vector<std::string> unit::get_ability_list() const
 {
-	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
-	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
+	std::vector<std::string> res;
 
-	std::vector<config::t_token> res;
-
-	const config &abilities = cfg_.child(z_abilities);
+	const config &abilities = cfg_.child("abilities");
 	if (!abilities) return res;
 	foreach (const config::any_child &ab, abilities.all_children_range()) {
-		config::attribute_value const &id = ab.cfg[z_id];
+		std::string const &id = ab.cfg["id"];
 		if (!id.empty())
-			res.push_back(id.token());
+			res.push_back(id);
 	}
 	return res;
 }
 
-std::vector<t_string> unit::ability_tooltips(bool force_active) const
+std::vector<std::string> unit::ability_tooltips(bool force_active) const
 {
-	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
-	static const config::t_token & z_female_name( generate_safe_static_const_t_interned(n_token::t_token("female_name")) );
-	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
-	static const config::t_token & z_description( generate_safe_static_const_t_interned(n_token::t_token("description")) );
-	static const config::t_token & z_female_name_inactive( generate_safe_static_const_t_interned(n_token::t_token("female_name_inactive")) );
-	static const config::t_token & z_name_inactive( generate_safe_static_const_t_interned(n_token::t_token("name_inactive")) );
-	static const config::t_token & z_description_inactive( generate_safe_static_const_t_interned(n_token::t_token("description_inactive")) );
+	std::vector<std::string> res;
 
-	std::vector<t_string> res;
-
-	const config &abilities = cfg_.child(z_abilities);
+	const config &abilities = cfg_.child("abilities");
 	if (!abilities) return res;
 
 	foreach (const config::any_child &ab, abilities.all_children_range())
 	{
 		if (force_active || ability_active(ab.key, ab.cfg, loc_))
 		{
-			t_string const name =
-				gender_ == unit_race::MALE || ab.cfg[z_female_name].empty() ?
-				ab.cfg[z_name].t_str() : ab.cfg[z_female_name].t_str();
+			std::string const &name =
+				gender_ == unit_race::MALE || ab.cfg["female_name"].empty() ?
+				ab.cfg["name"] : ab.cfg["female_name"];
 
 			if (!name.empty()) {
 				res.push_back(name);
-				res.push_back(ab.cfg[z_description].t_str());
+				res.push_back(ab.cfg["description"]);
 			}
 		}
 		else
 		{
-			t_string const name =
-				gender_ == unit_race::MALE || ab.cfg[z_female_name_inactive].empty() ?
-				ab.cfg[z_name_inactive].t_str() : ab.cfg[z_female_name_inactive].t_str();
+			std::string const &name =
+				gender_ == unit_race::MALE || ab.cfg["female_name_inactive"].empty() ?
+				ab.cfg["name_inactive"] : ab.cfg["female_name_inactive"];
 
 			if (!name.empty()) {
 				res.push_back(name);
-				res.push_back( ab.cfg[z_description_inactive].t_str() );
+				res.push_back(ab.cfg["description_inactive"]);
 			}
 		}
 	}
@@ -261,56 +243,46 @@ std::vector<t_string> unit::ability_tooltips(bool force_active) const
  */
 static bool cache_illuminates(int &cache, std::string const &ability)
 {
-	static const config::t_token & z_illuminates( generate_safe_static_const_t_interned(n_token::t_token("illuminates")) );
-
 	if (cache < 0)
-		cache = (ability == z_illuminates);
+		cache = (ability == "illuminates");
 	return (cache != 0);
 }
 
-bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc
-						  , gamemap const & game_map, unit_map const & units
-						  , t_teams const & teams, LuaKernel & lua_kernel
-						  , tod_manager const & tod_manager) const
+bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
-	static const config::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
-	static const config::t_token & z_filter_adjacent( generate_safe_static_const_t_interned(n_token::t_token("filter_adjacent")) );
-	static const config::t_token & z_adjacent( generate_safe_static_const_t_interned(n_token::t_token("adjacent")) );
-	static const config::t_token & z_filter_adjacent_location( generate_safe_static_const_t_interned(n_token::t_token("filter_adjacent_location")) );
-
 	int illuminates = -1;
-	//assert(resources::units && resources::game_map && resources::teams && resources::tod_manager);
+	assert(resources::units && resources::game_map && resources::teams && resources::tod_manager);
 
-	if (const config &afilter = cfg.child(z_filter))
-		if (!matches_filter(vconfig(afilter), loc, cache_illuminates(illuminates, ability),game_map, units, teams, lua_kernel, tod_manager))
+	if (const config &afilter = cfg.child("filter"))
+		if (!matches_filter(vconfig(afilter), loc, cache_illuminates(illuminates, ability)))
 			return false;
 
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
-	//const unit_map& units = *resources::units;
+	const unit_map& units = *resources::units;
 
-	foreach (const config &i, cfg.child_range(z_filter_adjacent))
+	foreach (const config &i, cfg.child_range("filter_adjacent"))
 	{
-		foreach (const config::t_token j, utils::split_attr(i[z_adjacent]))
+		foreach (const std::string &j, utils::split(i["adjacent"]))
 		{
 			map_location::DIRECTION index =
-				map_location::parse_direction(*j);
+				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
 			unit_map::const_iterator unit = units.find(adjacent[index]);
 			if (unit == units.end())
 				return false;
 			if (!unit->matches_filter(vconfig(i), unit->get_location(),
-									  cache_illuminates(illuminates, ability), game_map, units, teams, lua_kernel, tod_manager))
+				cache_illuminates(illuminates, ability)))
 				return false;
 		}
 	}
 
-	foreach (const config &i, cfg.child_range(z_filter_adjacent_location))
+	foreach (const config &i, cfg.child_range("filter_adjacent_location"))
 	{
-		foreach (const config::t_token j, utils::split_attr(i[z_adjacent]))
+		foreach (const std::string &j, utils::split(i["adjacent"]))
 		{
-			map_location::DIRECTION index = map_location::parse_direction(*j);
+			map_location::DIRECTION index = map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
@@ -328,34 +300,19 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
  * cfg: an ability WML structure
  *
  */
-bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,
-									const map_location& loc,
-									gamemap const & game_map, unit_map const & units,
-									t_teams const & teams, LuaKernel & lua_kernel,
-									tod_manager const & tod_manager
-									) const
+bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc) const
 {
-	static const config::t_token & z_n( generate_safe_static_const_t_interned(n_token::t_token("n")) );
-	static const config::t_token & z_ne( generate_safe_static_const_t_interned(n_token::t_token("ne")) );
-	static const config::t_token & z_se( generate_safe_static_const_t_interned(n_token::t_token("se")) );
-	static const config::t_token & z_s( generate_safe_static_const_t_interned(n_token::t_token("s")) );
-	static const config::t_token & z_sw( generate_safe_static_const_t_interned(n_token::t_token("sw")) );
-	static const config::t_token & z_nw( generate_safe_static_const_t_interned(n_token::t_token("nw")) );
-	static const config::t_token & z_affect_adjacent( generate_safe_static_const_t_interned(n_token::t_token("affect_adjacent")) );
-	static const config::t_token & z_adjacent( generate_safe_static_const_t_interned(n_token::t_token("adjacent")) );
-	static const config::t_token & z_filter( generate_safe_static_const_t_interned(n_token::t_token("filter")) );
-
 	int illuminates = -1;
 
 	assert(dir >=0 && dir <= 5);
-	static const std::string adjacent_names[6] = {z_n,z_ne,z_se,z_s,z_sw,z_nw};
-	foreach (const config &i, cfg.child_range(z_affect_adjacent))
+	static const std::string adjacent_names[6] = {"n","ne","se","s","sw","nw"};
+	foreach (const config &i, cfg.child_range("affect_adjacent"))
 	{
-		std::vector<std::string> dirs = utils::split(i[z_adjacent]);
+		std::vector<std::string> dirs = utils::split(i["adjacent"]);
 		if(std::find(dirs.begin(),dirs.end(),adjacent_names[dir]) != dirs.end()) {
-			if (const config &filter = i.child(z_filter)) {
+			if (const config &filter = i.child("filter")) {
 				if (matches_filter(vconfig(filter), loc,
-								   cache_illuminates(illuminates, ability), game_map, units, teams, lua_kernel, tod_manager))
+					cache_illuminates(illuminates, ability)))
 					return true;
 			} else
 				return true;
@@ -368,27 +325,18 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
  * cfg: an ability WML structure
  *
  */
-bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc
-								, gamemap const & game_map, unit_map const & units
-								, t_teams const & teams, LuaKernel & lua_kernel
-								, tod_manager const & tod_manager
-								) const {
-	static const config::t_token & z_filter_self( generate_safe_static_const_t_interned(n_token::t_token("filter_self")) );
-	static const config::t_token & z_affect_self( generate_safe_static_const_t_interned(n_token::t_token("affect_self")) );
-
+bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
+{
 	int illuminates = -1;
-	const config &filter = cfg.child(z_filter_self);
-	bool affect_self = cfg[z_affect_self].to_bool(true);
+	const config &filter = cfg.child("filter_self");
+	bool affect_self = cfg["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
-	return matches_filter(vconfig(filter),
-						  loc, cache_illuminates(illuminates, ability),game_map, units, teams, lua_kernel, tod_manager);
+	return matches_filter(vconfig(filter), loc,cache_illuminates(illuminates, ability));
 }
 
-bool unit::has_ability_type(const config::t_token& ability) const
+bool unit::has_ability_type(const std::string& ability) const
 {
-	static const config::t_token & z_abilities( generate_safe_static_const_t_interned(n_token::t_token("abilities")) );
-
-	if (const config &list = cfg_.child(z_abilities)) {
+	if (const config &list = cfg_.child("abilities")) {
 		config::const_child_itors itors = list.child_range(ability);
 		return itors.first != itors.second;
 	}
@@ -401,8 +349,8 @@ bool unit_ability_list::empty() const
 	return cfgs.empty();
 }
 
-std::pair<int,map_location> unit_ability_list::highest(const config::t_token& key, int def) const {
-	static const config::t_token & z_cumulative( generate_safe_static_const_t_interned(n_token::t_token("cumulative")) );
+std::pair<int,map_location> unit_ability_list::highest(const std::string& key, int def) const
+{
 	if (cfgs.empty()) {
 		return std::make_pair(def, map_location());
 	}
@@ -417,7 +365,7 @@ std::pair<int,map_location> unit_ability_list::highest(const config::t_token& ke
 	foreach (pt const &p, cfgs)
 	{
 		int value = (*p.first)[key].to_int(def);
-		if ((*p.first)[z_cumulative].to_bool()) {
+		if ((*p.first)["cumulative"].to_bool()) {
 			stack += value;
 			if (value < 0) value = -value;
 			if (only_cumulative && value >= abs_max) {
@@ -433,10 +381,8 @@ std::pair<int,map_location> unit_ability_list::highest(const config::t_token& ke
 	return std::make_pair(flat + stack, best_loc);
 }
 
-std::pair<int,map_location> unit_ability_list::lowest(const config::t_token& key, int def) const
+std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, int def) const
 {
-	static const config::t_token & z_cumulative( generate_safe_static_const_t_interned(n_token::t_token("cumulative")) );
-
 	if (cfgs.empty()) {
 		return std::make_pair(def, map_location());
 	}
@@ -451,7 +397,7 @@ std::pair<int,map_location> unit_ability_list::lowest(const config::t_token& key
 	foreach (pt const &p, cfgs)
 	{
 		int value = (*p.first)[key].to_int(def);
-		if ((*p.first)[z_cumulative].to_bool()) {
+		if ((*p.first)["cumulative"].to_bool()) {
 			stack += value;
 			if (value < 0) value = -value;
 			if (only_cumulative && value <= abs_max) {
@@ -497,12 +443,10 @@ std::pair<int,map_location> unit_ability_list::lowest(const config::t_token& key
 
 namespace {
 	bool get_special_children(std::vector<const config*>& result, const config& parent,
-	                           const config::t_token& id, bool just_peeking=false) {
-	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
-
+	                           const std::string& id, bool just_peeking=false) {
 		foreach (const config::any_child &sp, parent.all_children_range())
 		{
-			if (sp.key == id || sp.cfg[z_id] == id) {
+			if (sp.key == id || sp.cfg["id"] == id) {
 				if(just_peeking) {
 					return true; // peek succeeded, abort
 				} else {
@@ -514,12 +458,10 @@ namespace {
 	}
 }
 
-bool attack_type::get_special_bool(const config::t_token& special,bool force) const
+bool attack_type::get_special_bool(const std::string& special,bool force) const
 {
-	static const config::t_token & z_specials( generate_safe_static_const_t_interned(n_token::t_token("specials")) );
-
 //	log_scope("get_special_bool");
-	if (const config &specials = cfg_.child(z_specials))
+	if (const config &specials = cfg_.child("specials"))
 	{
 		std::vector<const config*> list;
 		if (get_special_children(list, specials, special, force)) return true;
@@ -530,7 +472,7 @@ bool attack_type::get_special_bool(const config::t_token& special,bool force) co
 		}
 	}
 	if (force || !other_attack_) return false;
-	if (const config &specials = other_attack_->cfg_.child(z_specials))
+	if (const config &specials = other_attack_->cfg_.child("specials"))
 	{
 		std::vector<const config*> list;
 		get_special_children(list, specials, special);
@@ -543,12 +485,11 @@ bool attack_type::get_special_bool(const config::t_token& special,bool force) co
 	return false;
 }
 
-unit_ability_list attack_type::get_specials(const config::t_token& special) const {
-	static const config::t_token & z_specials( generate_safe_static_const_t_interned(n_token::t_token("specials")) );
-
+unit_ability_list attack_type::get_specials(const std::string& special) const
+{
 //	log_scope("get_specials");
 	unit_ability_list res;
-	if (const config &specials = cfg_.child(z_specials))
+	if (const config &specials = cfg_.child("specials"))
 	{
 		foreach (const config &i, specials.child_range(special)) {
 			if (special_active(i, true))
@@ -557,7 +498,7 @@ unit_ability_list attack_type::get_specials(const config::t_token& special) cons
 		}
 	}
 	if (!other_attack_) return res;
-	if (const config &specials = other_attack_->cfg_.child(z_specials))
+	if (const config &specials = other_attack_->cfg_.child("specials"))
 	{
 		foreach (const config &i, specials.child_range(special)) {
 			if (other_attack_->special_active(i, false))
@@ -569,60 +510,49 @@ unit_ability_list attack_type::get_specials(const config::t_token& special) cons
 }
 std::vector<t_string> attack_type::special_tooltips(bool force) const
 {
-	static const config::t_token & z_specials( generate_safe_static_const_t_interned(n_token::t_token("specials")) );
-	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
-	static const config::t_token & z_description( generate_safe_static_const_t_interned(n_token::t_token("description")) );
-	static const config::t_token & z_name_inactive( generate_safe_static_const_t_interned(n_token::t_token("name_inactive")) );
-	static const config::t_token & z_description_inactive( generate_safe_static_const_t_interned(n_token::t_token("description_inactive")) );
-
 //	log_scope("special_tooltips");
 	std::vector<t_string> res;
-	const config &specials = cfg_.child(z_specials);
+	const config &specials = cfg_.child("specials");
 	if (!specials) return res;
 
 	foreach (const config::any_child &sp, specials.all_children_range())
 	{
 		if (force || special_active(sp.cfg, true)) {
-			const config::attribute_value &name = sp.cfg[z_name];
+			const t_string &name = sp.cfg["name"];
 			if (!name.empty()) {
-				res.push_back(name.t_str());
-				res.push_back(sp.cfg[z_description].t_str());
+				res.push_back(name);
+				res.push_back(sp.cfg["description"]);
 			}
 		} else {
-			config::attribute_value const &name = sp.cfg[z_name_inactive];
+			t_string const &name = sp.cfg["name_inactive"];
 			if (!name.empty()) {
-				res.push_back(name.t_str());
-				res.push_back(sp.cfg[z_description_inactive].t_str());
+				res.push_back(name);
+				res.push_back(sp.cfg["description_inactive"]);
 			}
 		}
 	}
 	return res;
 }
-config::t_token attack_type::weapon_specials(bool force) const
+std::string attack_type::weapon_specials(bool force) const
 {
-	static const config::t_token & z_specials( generate_safe_static_const_t_interned(n_token::t_token("specials")) );
-	static const config::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
-	static const config::t_token & z_name_inactive( generate_safe_static_const_t_interned(n_token::t_token("name_inactive")) );
-
 //	log_scope("weapon_specials");
-	const config &specials = cfg_.child(z_specials);
-	if (!specials) return z_empty;
-
 	std::string res;
+	const config &specials = cfg_.child("specials");
+	if (!specials) return res;
+
 	foreach (const config::any_child &sp, specials.all_children_range())
 	{
-		config::t_token const *s = force || special_active(sp.cfg, true) ?
-			&z_name : &z_name_inactive;
-		config::attribute_value const &name = sp.cfg[*s];
+		char const *s = force || special_active(sp.cfg, true) ?
+			"name" : "name_inactive";
+		std::string const &name = sp.cfg[s];
 
 		if (!name.empty()) {
-			if (!res.empty()) { res +=  ',' ; }
-		res += (* name.token() );
+			if (!res.empty()) res += ',';
+			res += name;
 		}
 	}
 
-return config::t_token( res );
+	return res;
 }
 
 
@@ -632,23 +562,8 @@ return config::t_token( res );
  * cfg: a weapon special WML structure
  *
  */
-bool attack_type::special_active(gamemap const & game_map, unit_map const & units,
-								 t_teams const & teams, LuaKernel & lua_kernel,
-								 tod_manager const & tod_manager,
-								 const config& cfg, bool self) const
+bool attack_type::special_active(const config& cfg, bool self) const
 {
-	static const config::t_token & z_active_on( generate_safe_static_const_t_interned(n_token::t_token("active_on")) );
-	static const config::t_token & z_offense( generate_safe_static_const_t_interned(n_token::t_token("offense")) );
-	static const config::t_token & z_filter_self( generate_safe_static_const_t_interned(n_token::t_token("filter_self")) );
-	static const config::t_token & z_filter_weapon( generate_safe_static_const_t_interned(n_token::t_token("filter_weapon")) );
-	static const config::t_token & z_filter_opponent( generate_safe_static_const_t_interned(n_token::t_token("filter_opponent")) );
-	static const config::t_token & z_defense( generate_safe_static_const_t_interned(n_token::t_token("defense")) );
-	static const config::t_token & z_filter_attacker( generate_safe_static_const_t_interned(n_token::t_token("filter_attacker")) );
-	static const config::t_token & z_filter_defender( generate_safe_static_const_t_interned(n_token::t_token("filter_defender")) );
-	static const config::t_token & z_filter_adjacent( generate_safe_static_const_t_interned(n_token::t_token("filter_adjacent")) );
-	static const config::t_token & z_adjacent( generate_safe_static_const_t_interned(n_token::t_token("adjacent")) );
-	static const config::t_token & z_filter_adjacent_location( generate_safe_static_const_t_interned(n_token::t_token("filter_adjacent_location")) );
-
 //	log_scope("special_active");
 	assert(unitmap_ != NULL);
 	unit_map::const_iterator att = unitmap_->find(aloc_);
@@ -666,85 +581,85 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 
 	if(attacker_) {
 		{
-			config::attribute_value const &active = cfg[z_active_on];
-			if (!active.empty() && active != z_offense)
+			std::string const &active = cfg["active_on"];
+			if (!active.empty() && active != "offense")
 				return false;
 		}
-		if (const config &filter_self = cfg.child(z_filter_self))
+		if (const config &filter_self = cfg.child("filter_self"))
 		{
 			if (att == unitmap_->end() ||
-			    !att->matches_filter(vconfig(filter_self), aloc_, false, game_map, units, teams, lua_kernel, tod_manager))
+			    !att->matches_filter(vconfig(filter_self), aloc_))
 				return false;
-			if (const config &filter_weapon = filter_self.child(z_filter_weapon)) {
+			if (const config &filter_weapon = filter_self.child("filter_weapon")) {
 				if (!matches_filter(filter_weapon, true))
 					return false;
 			}
 		}
-		if (const config &filter_opponent = cfg.child(z_filter_opponent))
+		if (const config &filter_opponent = cfg.child("filter_opponent"))
 		{
 			if (def == unitmap_->end() ||
-			    !def->matches_filter(vconfig(filter_opponent), dloc_,false, game_map, units, teams, lua_kernel, tod_manager))
+			    !def->matches_filter(vconfig(filter_opponent), dloc_))
 				return false;
-			if (const config &filter_weapon = filter_opponent.child(z_filter_weapon)) {
+			if (const config &filter_weapon = filter_opponent.child("filter_weapon")) {
 				if (!other_attack_ ||
-				    !other_attack_->matches_filter( filter_weapon, true))
+				    !other_attack_->matches_filter(filter_weapon, true))
 					return false;
 			}
 		}
 	} else {
 		{
-			config::attribute_value const &active = cfg[z_active_on];
-			if (!active.empty() && active != z_defense)
+			std::string const &active = cfg["active_on"];
+			if (!active.empty() && active != "defense")
 				return false;
 		}
-		if (const config &filter_self = cfg.child(z_filter_self))
+		if (const config &filter_self = cfg.child("filter_self"))
 		{
 			if (def == unitmap_->end() ||
-			    !def->matches_filter(vconfig(filter_self), dloc_, false, game_map, units, teams, lua_kernel, tod_manager))
+			    !def->matches_filter(vconfig(filter_self), dloc_))
 				return false;
-			if (const config &filter_weapon = filter_self.child(z_filter_weapon)) {
-				if (!matches_filter( filter_weapon, true))
+			if (const config &filter_weapon = filter_self.child("filter_weapon")) {
+				if (!matches_filter(filter_weapon, true))
 					return false;
 			}
 		}
-		if (const config &filter_opponent = cfg.child(z_filter_opponent))
+		if (const config &filter_opponent = cfg.child("filter_opponent"))
 		{
 			if (att == unitmap_->end() ||
-			    !att->matches_filter(vconfig(filter_opponent), aloc_, false, game_map, units, teams, lua_kernel, tod_manager))
+			    !att->matches_filter(vconfig(filter_opponent), aloc_))
 				return false;
-			if (const config &filter_weapon = filter_opponent.child(z_filter_weapon)) {
+			if (const config &filter_weapon = filter_opponent.child("filter_weapon")) {
 				if (!other_attack_ ||
-				    !other_attack_->matches_filter( filter_weapon, true))
+				    !other_attack_->matches_filter(filter_weapon, true))
 					return false;
 			}
 		}
 	}
-	if (const config &filter_attacker = cfg.child(z_filter_attacker))
+	if (const config &filter_attacker = cfg.child("filter_attacker"))
 	{
 		if (att == unitmap_->end() ||
-		    !att->matches_filter(vconfig(filter_attacker), aloc_, false, game_map, units, teams, lua_kernel, tod_manager))
+		    !att->matches_filter(vconfig(filter_attacker), aloc_))
 			return false;
-		if (const config &filter_weapon = filter_attacker.child(z_filter_weapon))
+		if (const config &filter_weapon = filter_attacker.child("filter_weapon"))
 		{
 			if (attacker_) {
 				if (!matches_filter(filter_weapon, true))
 					return false;
 			} else {
 				if (!other_attack_ ||
-				    !other_attack_->matches_filter( filter_weapon, true))
+				    !other_attack_->matches_filter(filter_weapon, true))
 					return false;
 			}
 		}
 	}
-	if (const config &filter_defender = cfg.child(z_filter_defender))
+	if (const config &filter_defender = cfg.child("filter_defender"))
 	{
 		if (def == unitmap_->end() ||
-		    !def->matches_filter(vconfig(filter_defender), dloc_, false, game_map, units, teams, lua_kernel, tod_manager))
+		    !def->matches_filter(vconfig(filter_defender), dloc_))
 			return false;
-		if (const config &filter_weapon = filter_defender.child(z_filter_weapon))
+		if (const config &filter_weapon = filter_defender.child("filter_weapon"))
 		{
 			if (!attacker_) {
-				if(!matches_filter( filter_weapon, true))
+				if(!matches_filter(filter_weapon, true))
 					return false;
 			} else {
 				if (!other_attack_ ||
@@ -760,9 +675,9 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 		get_adjacent_tiles(dloc_,adjacent);
 	}
 
-	foreach (const config &i, cfg.child_range(z_filter_adjacent))
+	foreach (const config &i, cfg.child_range("filter_adjacent"))
 	{
-		foreach (const config::t_token &j, utils::split_attr(i[z_adjacent]))
+		foreach (const std::string &j, utils::split(i["adjacent"]))
 		{
 			map_location::DIRECTION index =
 				map_location::parse_direction(j);
@@ -770,14 +685,14 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
 				continue;
 			unit_map::const_iterator unit = unitmap_->find(adjacent[index]);
 			if (unit == unitmap_->end() ||
-			    !unit->matches_filter(vconfig(i), unit->get_location(), false, game_map, units, teams, lua_kernel, tod_manager))
+			    !unit->matches_filter(vconfig(i), unit->get_location()))
 				return false;
 		}
 	}
 
-	foreach (const config &i, cfg.child_range(z_filter_adjacent_location))
+	foreach (const config &i, cfg.child_range("filter_adjacent_location"))
 	{
-		foreach (const config::t_token &j, utils::split_attr( (i[z_adjacent]) ))
+		foreach (const std::string &j, utils::split(i["adjacent"]))
 		{
 			map_location::DIRECTION index =
 				map_location::parse_direction(j);
@@ -798,23 +713,17 @@ bool attack_type::special_active(gamemap const & game_map, unit_map const & unit
  */
 bool attack_type::special_affects_opponent(const config& cfg) const
 {
-	static const config::t_token & z_apply_to( generate_safe_static_const_t_interned(n_token::t_token("apply_to")) );
-	static const config::t_token & z_both( generate_safe_static_const_t_interned(n_token::t_token("both")) );
-	static const config::t_token & z_opponent( generate_safe_static_const_t_interned(n_token::t_token("opponent")) );
-	static const config::t_token & z_defender( generate_safe_static_const_t_interned(n_token::t_token("defender")) );
-	static const config::t_token & z_attacker( generate_safe_static_const_t_interned(n_token::t_token("attacker")) );
-
 //	log_scope("special_affects_opponent");
-	config::attribute_value const &apply_to = cfg[z_apply_to];
+	std::string const &apply_to = cfg["apply_to"];
 	if (apply_to.empty())
 		return false;
-	if (apply_to == z_both)
+	if (apply_to == "both")
 		return true;
-	if (apply_to == z_opponent)
+	if (apply_to == "opponent")
 		return true;
-	if (attacker_ && apply_to == z_defender)
+	if (attacker_ && apply_to == "defender")
 		return true;
-	if (!attacker_ && apply_to == z_attacker)
+	if (!attacker_ && apply_to == "attacker")
 		return true;
 	return false;
 }
@@ -825,23 +734,17 @@ bool attack_type::special_affects_opponent(const config& cfg) const
  */
 bool attack_type::special_affects_self(const config& cfg) const
 {
-	static const config::t_token & z_apply_to( generate_safe_static_const_t_interned(n_token::t_token("apply_to")) );
-	static const config::t_token & z_both( generate_safe_static_const_t_interned(n_token::t_token("both")) );
-	static const config::t_token & z_self( generate_safe_static_const_t_interned(n_token::t_token("self")) );
-	static const config::t_token & z_attacker( generate_safe_static_const_t_interned(n_token::t_token("attacker")) );
-	static const config::t_token & z_defender( generate_safe_static_const_t_interned(n_token::t_token("defender")) );
-
 //	log_scope("special_affects_self");
-	config::attribute_value const &apply_to = cfg[z_apply_to];
+	std::string const &apply_to = cfg["apply_to"];
 	if (apply_to.empty())
 		return true;
-	if (apply_to == z_both)
+	if (apply_to == "both")
 		return true;
-	if (apply_to == z_self)
+	if (apply_to == "self")
 		return true;
-	if (attacker_ && apply_to == z_attacker)
+	if (attacker_ && apply_to == "attacker")
 		return true;
-	if (!attacker_ && apply_to == z_defender)
+	if (!attacker_ && apply_to == "defender")
 		return true;
 	return false;
 }
@@ -880,21 +783,13 @@ void individual_effect::set(value_modifier t, int val, const config *abil, const
 
 bool filter_base_matches(const config& cfg, int def)
 {
-	static const config::t_token & z_filter_base_value( generate_safe_static_const_t_interned(n_token::t_token("filter_base_value")) );
-	static const config::t_token & z_equals( generate_safe_static_const_t_interned(n_token::t_token("equals")) );
-	static const config::t_token & z_not_equals( generate_safe_static_const_t_interned(n_token::t_token("not_equals")) );
-	static const config::t_token & z_less_than( generate_safe_static_const_t_interned(n_token::t_token("less_than")) );
-	static const config::t_token & z_greater_than( generate_safe_static_const_t_interned(n_token::t_token("greater_than")) );
-	static const config::t_token & z_greater_than_equal_to( generate_safe_static_const_t_interned(n_token::t_token("greater_than_equal_to")) );
-	static const config::t_token & z_less_than_equal_to( generate_safe_static_const_t_interned(n_token::t_token("less_than_equal_to")) );
-
-	if (const config &apply_filter = cfg.child(z_filter_base_value)) {
-		config::attribute_value cond_eq = apply_filter[z_equals];
-		config::attribute_value cond_ne = apply_filter[z_not_equals];
-		config::attribute_value cond_lt = apply_filter[z_less_than];
-		config::attribute_value cond_gt = apply_filter[z_greater_than];
-		config::attribute_value cond_ge = apply_filter[z_greater_than_equal_to];
-		config::attribute_value cond_le = apply_filter[z_less_than_equal_to];
+	if (const config &apply_filter = cfg.child("filter_base_value")) {
+		config::attribute_value cond_eq = apply_filter["equals"];
+		config::attribute_value cond_ne = apply_filter["not_equals"];
+		config::attribute_value cond_lt = apply_filter["less_than"];
+		config::attribute_value cond_gt = apply_filter["greater_than"];
+		config::attribute_value cond_ge = apply_filter["greater_than_equal_to"];
+		config::attribute_value cond_le = apply_filter["less_than_equal_to"];
 		return  (cond_eq.empty() || def == cond_eq.to_int()) &&
 			(cond_ne.empty() || def != cond_ne.to_int()) &&
 			(cond_lt.empty() || def <  cond_lt.to_int()) &&
@@ -909,38 +804,28 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	effect_list_(),
 	composite_value_(0)
 {
-	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
-	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
-	static const config::t_token & z_backstab( generate_safe_static_const_t_interned(n_token::t_token("backstab")) );
-	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
-	static const config::t_token & z_cumulative( generate_safe_static_const_t_interned(n_token::t_token("cumulative")) );
-	static const config::t_token & z_add( generate_safe_static_const_t_interned(n_token::t_token("add")) );
-	static const config::t_token & z_sub( generate_safe_static_const_t_interned(n_token::t_token("sub")) );
-	static const config::t_token & z_multiply( generate_safe_static_const_t_interned(n_token::t_token("multiply")) );
-	static const config::t_token & z_divide( generate_safe_static_const_t_interned(n_token::t_token("divide")) );
-
 
 	int value_set = def;
 	bool value_is_set = false;
-	std::map<std::string, individual_effect> values_add;
-	std::map<std::string, individual_effect> values_mul;
-	std::map<std::string, individual_effect> values_div;
+	std::map<std::string,individual_effect> values_add;
+	std::map<std::string,individual_effect> values_mul;
+	std::map<std::string,individual_effect> values_div;
 
 	individual_effect set_effect;
 
 	for (std::vector< std::pair<const config *, map_location> >::const_iterator
 	     i = list.cfgs.begin(), i_end = list.cfgs.end(); i != i_end; ++i) {
 		const config& cfg = (*i->first);
-		config::t_token const &effect_id = cfg[cfg[z_id].empty() ? z_name : z_id].token();
+		std::string const &effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
-		if (!backstab && cfg[z_backstab].to_bool())
+		if (!backstab && cfg["backstab"].to_bool())
 			continue;
 		if (!filter_base_matches(cfg, def))
 			continue;
 
-		if (const config::attribute_value *v = cfg.get(z_value)) {
+		if (const config::attribute_value *v = cfg.get("value")) {
 			int value = *v;
-			bool cumulative = cfg[z_cumulative].to_bool();
+			bool cumulative = cfg["cumulative"].to_bool();
 			if (!value_is_set && !cumulative) {
 				value_set = value;
 				set_effect.set(SET, value, i->first, i->second);
@@ -954,29 +839,29 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			value_is_set = true;
 		}
 
-		if (const config::attribute_value *v = cfg.get(z_add)) {
+		if (const config::attribute_value *v = cfg.get("add")) {
 			int add = *v;
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
 				values_add[effect_id].set(ADD,add,i->first,i->second);
 			}
 		}
-		if (const config::attribute_value *v = cfg.get(z_sub)) {
+		if (const config::attribute_value *v = cfg.get("sub")) {
 			int sub = - *v;
 			std::map<std::string,individual_effect>::iterator sub_effect = values_add.find(effect_id);
 			if(sub_effect == values_add.end() || sub > sub_effect->second.value) {
 				values_add[effect_id].set(ADD,sub,i->first,i->second);
 			}
 		}
-		if (const config::attribute_value *v = cfg.get(z_multiply)) {
+		if (const config::attribute_value *v = cfg.get("multiply")) {
 			int multiply = int(v->to_double() * 100);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
 				values_mul[effect_id].set(MUL,multiply,i->first,i->second);
 			}
 		}
-		if (const config::attribute_value *v = cfg.get(z_divide)) {
-			if (v->to_int() == 0) {
+		if (const config::attribute_value *v = cfg.get("divide")) {
+			if (*v == 0) {
 				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id << "\n";
 			}
 			else {

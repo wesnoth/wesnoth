@@ -23,7 +23,6 @@
 #include "pathutils.hpp"
 
 #include "map.hpp"
-#include <boost/unordered_map.hpp>
 
 void get_tile_ring(const map_location& a, const int r, std::vector<map_location>& res)
 {
@@ -50,7 +49,7 @@ void get_tiles_in_radius(const map_location& a, const int r, std::vector<map_loc
 }
 
 static void get_tiles_radius_internal(const map_location& a, size_t radius,
-	map_location::t_maploc_set& res, boost::unordered_map<map_location,int>& visited)
+	std::set<map_location>& res, std::map<map_location,int>& visited)
 {
 	visited[a] = radius;
 	res.insert(a);
@@ -69,16 +68,16 @@ static void get_tiles_radius_internal(const map_location& a, size_t radius,
 }
 
 void get_tiles_radius(const map_location& a, size_t radius,
-					  map_location::t_maploc_set& res)
+					  std::set<map_location>& res)
 {
-	boost::unordered_map<map_location,int> visited;
+	std::map<map_location,int> visited;
 	get_tiles_radius_internal(a,radius,res,visited);
 }
 
 void get_tiles_radius(gamemap const &map, std::vector<map_location> const &locs,
-                      size_t radius, map_location::t_maploc_set &res, xy_pred *pred)
+                      size_t radius, std::set<map_location> &res, xy_pred *pred)
 {
-	typedef map_location::t_maploc_set location_set;
+	typedef std::set<map_location> location_set;
 	location_set not_visited(locs.begin(), locs.end()), must_visit, filtered_out;
 	++radius;
 

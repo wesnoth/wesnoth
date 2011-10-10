@@ -189,15 +189,12 @@ public:
 				? resources::state_of_game->get_variables()
 				: config();
 
-		std::map<config::t_token, config::attribute_value> sorted;
-		foreach (const config::attribute &i, vars.attribute_range()) {
-			sorted.insert( i ); }
-		foreach( const config::attribute &a, sorted) {
+		foreach( const config::attribute &a, vars.attribute_range()) {
 			model_.add_row_to_stuff_list(a.first,a.first);
 		}
 
 		foreach( const config::any_child &c, vars.all_children_range()) {
-			model_.add_row_to_stuff_list("[" + (*c.key)+"]","["+ (*c.key)+"]");
+			model_.add_row_to_stuff_list("["+c.key+"]","["+c.key+"]");
 		}
 
 		model_.set_inspect_window_text("");
@@ -217,10 +214,7 @@ public:
 				? resources::state_of_game->get_variables()
 				: config();
 
-		std::map<config::t_token, config::attribute_value> sorted;
-		foreach (const config::attribute &i, vars.attribute_range()) {
-			sorted.insert( i ); }
-		foreach( const config::attribute &a, sorted) {
+		foreach( const config::attribute &a, vars.attribute_range()) {
 			if (selected==i) {
 				model_.set_inspect_window_text(a.second);
 				return;

@@ -51,7 +51,7 @@ class tod_manager : public savegame::savegame_config
 		 */
 		const time_of_day& get_time_of_day_with_areas(const map_location& loc, int n_turn = 0) const;
 
-		static bool is_start_ToD(const config::t_token&);
+		static bool is_start_ToD(const std::string&);
 
 		/**
 		 * Replace the time of day schedule
@@ -76,7 +76,7 @@ class tod_manager : public savegame::savegame_config
 		 * @param locs                Set of locations to be affected.
 		 * @param time_cfg            Config object containing [time] information.
 		 */
-	void add_time_area(const config::t_token& id, const map_location::t_maploc_set& locs,
+		void add_time_area(const std::string& id, const std::set<map_location>& locs,
 				const config& time_cfg);
 
 		/**
@@ -86,7 +86,7 @@ class tod_manager : public savegame::savegame_config
 		 * @param id                  Identifier of time_area to remove. Supply an
 		 *                            empty one to remove all local time areas.
 		 */
-		void remove_time_area(const config::t_token& id);
+		void remove_time_area(const std::string& id);
 
 		bool has_time_area() const {return !areas_.empty();};
 
@@ -95,7 +95,7 @@ class tod_manager : public savegame::savegame_config
 		//turn functions
 		int turn() const { return turn_; }
 		int number_of_turns() const {return num_turns_;}
-		void modify_turns(const config::t_token& mod);
+		void modify_turns(const std::string& mod);
 		void set_number_of_turns(int num);
 
 		/** Dynamically change the current turn number. */
@@ -156,10 +156,10 @@ class tod_manager : public savegame::savegame_config
 				currentTime(0)
 			{}
 
-			config::t_token xsrc, ysrc;
-			config::t_token id;
+			std::string xsrc, ysrc;
+			std::string id;
 			std::vector<time_of_day> times;
-			map_location::t_maploc_set hexes;
+			std::set<map_location> hexes;
 			int currentTime;
 		};
 

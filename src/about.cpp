@@ -100,7 +100,7 @@ void set_about(const config &cfg)
 	foreach (const config &about, cfg.child_range("about"))
 	{
 		about_list.add_child("about", about);
-		const std::string im = about["images"];
+		const std::string &im = about["images"];
 		if (!images.empty())
 		{
 			if (images_default.empty())
@@ -117,14 +117,14 @@ void set_about(const config &cfg)
 
 		config temp;
 		std::ostringstream text;
-		const std::string id = campaign["id"];
+		const std::string &id = campaign["id"];
 		temp["title"] = campaign["name"];
 		temp["id"] = id;
 		std::string campaign_images;
 
 		foreach (const config &about, abouts)
 		{
-			const std::string subtitle = about["title"];
+			const std::string &subtitle = about["title"];
 			if (!subtitle.empty())
 			{
 				text << '+';
@@ -145,7 +145,7 @@ void set_about(const config &cfg)
 				text << "    " << entry["name"] << '\n';
 			}
 
-			const std::string im = about["images"];
+			const std::string &im = about["images"];
 			if (!im.empty())
 			{
 				if (campaign_images.empty())

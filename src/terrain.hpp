@@ -33,7 +33,6 @@ public:
 	const t_string& editor_name() const { return editor_name_.empty() ? description() : editor_name_; }
 	const t_string& description() const { return description_.empty() ? name_ : description_; }
 	const std::string& id() const { return id_; }
-	const n_token::t_token& idt() const { return id_; }
 
 	bool hide_in_editor() const { return hide_in_editor_; }
 
@@ -84,7 +83,7 @@ private:
 	 *  initialized with the value of minimap_image_
 	 */
 	std::string editor_image_;
-	n_token::t_token id_;
+	std::string id_;
 	t_string name_;
 	t_string editor_name_;
 	t_string description_;

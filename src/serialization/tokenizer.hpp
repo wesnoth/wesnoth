@@ -18,31 +18,18 @@
 #define TOKENIZER_H_INCLUDED
 
 #include "util.hpp"
-#include "token.hpp"
 
 #include <istream>
 #include <string>
 
 class config;
 
-struct token {
-	token()
-		: type(END)
-		, value_()
-		, t_token_()
-		, is_parsed_(false)
-		, buffer_()
-	{
-	}
-
-	token(token const & a)
-		: type(a.type)
-		, value_(a.value_)
-		, t_token_(a.t_token_)
-		, is_parsed_(a.is_parsed_)
-		, buffer_(a.buffer_)
-	{
-	}
+struct token
+{
+	token() :
+		type(END),
+		value()
+	{}
 
 	enum token_type
 	{
@@ -63,41 +50,7 @@ struct token {
 	};
 
 	token_type type;
-	mutable std::string value_;
-
-	mutable n_token::t_token t_token_;
-	mutable bool is_parsed_;
-
-	std::vector<char> buffer_;
-
-	n_token::t_token const & value() const {
-		static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("")) );
-		if(!is_parsed_){
-			if(!buffer_.empty()){
-				value_.assign(buffer_.begin(), buffer_.end());
-				t_token_ = n_token::t_token(value_);
-			}else {
-				t_token_ = z_empty;
-			}
-
-			is_parsed_ = true;
-		}
-		return t_token_;
-	}
-
-	void set_token(n_token::t_token const & t){
-		t_token_ = t;
-		is_parsed_=true;
-	}
-
-	void set_start() {
-		buffer_.clear();
-		is_parsed_ = false;
-	}
-	void add_char(char const c) {
-		buffer_.push_back(c);
-		is_parsed_ = false;
-	}
+	std::string value;
 };
 
 /** Abstract baseclass for the tokenizer. */
@@ -217,7 +170,6 @@ private:
 	 * followed by a space. Skips all the matching characters.
 	 */
 	bool skip_command(char const *cmd);
-	bool fill_char_types();
 
 	std::string textdomain_;
 	std::string file_;
@@ -226,7 +178,7 @@ private:
 	token previous_token_;
 #endif
 	std::istream &in_;
-	static char char_types_[128];
+	char char_types_[128];
 };
 
 #endif

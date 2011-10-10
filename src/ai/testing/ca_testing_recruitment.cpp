@@ -42,7 +42,6 @@
 #include <map>
 
 
-
 namespace ai {
 
 namespace testing_ai_default {
@@ -208,7 +207,7 @@ class fake_team
       {
          int counter = 0;
          foreach(unit &un, *resources::units){
-			 if(un.side() == side() && un.type_id() == config::t_token(name)) // @todo: is type_id good? and upgrade std:string to t_token
+            if(un.side() == side() && un.type_id() == name) // @todo: is type_id good?
             {
                counter++;
             }
@@ -285,14 +284,11 @@ static int average_resistance_against(const unit_type& a, const unit_type& b)
    }
 
    //LOG_AI << "average defense of '" << a.id() << "': " << defense << "\n";
-	static const config::t_token & z_chance_to_hit( generate_safe_static_const_t_interned(n_token::t_token("chance_to_hit")) );
-	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
-	static const config::t_token & z_steadfast( generate_safe_static_const_t_interned(n_token::t_token("steadfast")) );
 
    int sum = 0, weight_sum = 0;
 
    // calculation of the average damage taken
-   bool steadfast = a.has_ability_by_id(z_steadfast);
+   bool steadfast = a.has_ability_by_id("steadfast");
    bool living = !a.not_living();
    const std::vector<attack_type>& attacks = b.attacks();
    for (std::vector<attack_type>::const_iterator i = attacks.begin(),
@@ -303,10 +299,10 @@ static int average_resistance_against(const unit_type& a, const unit_type& b)
       if (steadfast && resistance < 100)
          resistance = std::max<int>(resistance * 2 - 100, 50);
       // Do not look for filters or values, simply assume 70% if CTH is customized.
-      int cth = i->get_special_bool(z_chance_to_hit, true) ? 70 : defense;
+      int cth = i->get_special_bool("chance_to_hit", true) ? 70 : defense;
       int weight = i->damage() * i->num_attacks();
       // if cth == 0 the division will do 0/0 so don't execute this part
-      if (living && cth != 0 && i->get_special_bool(z_poison, true)) {
+      if (living && cth != 0 && i->get_special_bool("poison", true)) {
          // Compute the probability of not poisoning the unit.
          int prob = 100;
          for (int j = 0; j < i->num_attacks(); ++j)

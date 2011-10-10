@@ -100,8 +100,7 @@ int idle_ai::get_recursion_count() const
 
 void idle_ai::play_turn()
 {
-	static const config::t_token & z_ai_turn( generate_safe_static_const_t_interned(n_token::t_token("ai turn")) );
-	game_events::fire(z_ai_turn);
+	game_events::fire("ai turn");
 }
 
 
@@ -199,7 +198,7 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 		const unit_type *ut = unit_types.find(name);
 		if (!ut) continue;
 		// If usage is empty consider any unit.
-		if (usage.empty() || ut->usage() == config::t_token(usage)) {
+		if (usage.empty() || ut->usage() == usage) {
 			LOG_AI << name << " considered for " << usage << " recruitment\n";
 			found = true;
 
@@ -220,7 +219,7 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 			if (imc != maximum_counts_.end()) {
 				int count_active = 0;
 				for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
-					if (u->side() == get_side() && !u->incapacitated() && u->type_id() == config::t_token(name)) {
+					if (u->side() == get_side() && !u->incapacitated() && u->type_id() == name) {
 						++count_active;
 					}
 				}
@@ -358,12 +357,9 @@ int ai_default_recruitment_stage::average_resistance_against(const unit_type& a,
 	LOG_AI << "average defense of '" << a.id() << "': " << defense << "\n";
 
 	int sum = 0, weight_sum = 0;
-	static const config::t_token & z_chance_to_hit( generate_safe_static_const_t_interned(n_token::t_token("chance_to_hit")) );
-	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
-	static const config::t_token & z_steadfast( generate_safe_static_const_t_interned(n_token::t_token("steadfast")) );
 
 	// calculation of the average damage taken
-	bool steadfast = a.has_ability_by_id(z_steadfast);
+	bool steadfast = a.has_ability_by_id("steadfast");
 	bool living = !a.not_living();
 	const std::vector<attack_type>& attacks = b.attacks();
 	for (std::vector<attack_type>::const_iterator i = attacks.begin(),
@@ -374,10 +370,10 @@ int ai_default_recruitment_stage::average_resistance_against(const unit_type& a,
 		if (steadfast && resistance < 100)
 			resistance = std::max<int>(resistance * 2 - 100, 50);
 		// Do not look for filters or values, simply assume 70% if CTH is customized.
-		int cth = i->get_special_bool(z_chance_to_hit, true) ? 70 : defense;
+		int cth = i->get_special_bool("chance_to_hit", true) ? 70 : defense;
 		int weight = i->damage() * i->num_attacks();
 		// if cth == 0 the division will do 0/0 so don't execute this part
-		if (living && cth != 0 && i->get_special_bool(z_poison, true)) {
+		if (living && cth != 0 && i->get_special_bool("poison", true)) {
 			// Compute the probability of not poisoning the unit.
 			int prob = 100;
 			for (int j = 0; j < i->num_attacks(); ++j)

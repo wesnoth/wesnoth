@@ -51,11 +51,8 @@ tbuilder_multi_page::tbuilder_multi_page(const config& cfg)
 
 		foreach(const config &column, row.child_range("column")) {
 			data.push_back(string_map());
-			std::map<config::t_token, config::attribute_value> sorted;
-			foreach (const config::attribute &ipresorted, column.attribute_range()) {
-				sorted.insert( ipresorted ); }
-			foreach(const config::attribute &i, sorted) {
-				data.back()[i.first] = i.second.token();
+			foreach(const config::attribute &i, column.attribute_range()) {
+				data.back()[i.first] = i.second;
 			}
 			++col;
 		}

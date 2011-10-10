@@ -55,7 +55,6 @@ static lg::log_domain log_random("random");
 #define ERR_RND LOG_STREAM(err, log_random)
 
 
-
 //functions to verify that the unit structure on both machines is identical
 
 static void verify(const unit_map& units, const config& cfg) {
@@ -750,12 +749,11 @@ bool do_replay(int side_num, replay *obj)
 
 bool do_replay_handle(int side_num, const std::string &do_untill)
 {
-	static const config::t_token & z_sighted( generate_safe_static_const_t_interned(n_token::t_token("sighted")) );
-
 	//a list of units that have promoted from the last attack
 	std::deque<map_location> advancing_units;
 
 	team &current_team = (*resources::teams)[side_num - 1];
+
 
 	for(;;) {
 		const config *cfg = get_replay_source().get_next_action();
@@ -821,9 +819,9 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 		else if (const config &child = cfg->child("speak"))
 		{
-			const std::string team_name = child["team_name"];
-			const std::string speaker_name = child["id"];
-			const std::string message = child["message"];
+			const std::string &team_name = child["team_name"];
+			const std::string &speaker_name = child["id"];
+			const std::string &message = child["message"];
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
 			get_replay_source().add_chat_message_location();
@@ -851,7 +849,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		else if (const config &child = cfg->child("rename"))
 		{
 			const map_location loc(child, resources::state_of_game);
-			const std::string name = child["name"];
+			const std::string &name = child["name"];
 
 			unit_map::iterator u = resources::units->find(loc);
 			if (u.valid()) {
@@ -1028,7 +1026,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			bool show_move = preferences::show_ai_moves() || !(current_team.is_ai() || current_team.is_network_ai());
 			::move_unit(NULL, steps, NULL, NULL, show_move, NULL, true, true, true);
 
-			//NOTE: The AI fire sighted event whem moving in the FoV of team 1
+			//NOTE: The AI fire sighetd event whem moving in the FoV of team 1
 			// (supposed to be the human player in SP)
 			// That's ugly but let's try to make the replay works like that too
 			if (side_num != 1 && resources::teams->front().fog_or_shroud() && !resources::teams->front().fogged(dst)
@@ -1036,7 +1034,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			{
 				// the second parameter is impossible to know
 				// and the AI doesn't use it too in the local version
-				game_events::fire(z_sighted,dst);
+				game_events::fire("sighted",dst);
 			}
 		}
 
@@ -1123,13 +1121,13 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		else if (const config &child = cfg->child("fire_event"))
 		{
 			foreach (const config &v, child.child_range("set_variable")) {
-				resources::state_of_game->set_variable(v["name"], v["value"].t_str());
+				resources::state_of_game->set_variable(v["name"], v["value"]);
 			}
-			const config::attribute_value &event = child["raise"];
+			const std::string &event = child["raise"];
 			if (const config &source = child.child("source")) {
-				game_events::fire(event.token(), map_location(source, resources::state_of_game));
+				game_events::fire(event, map_location(source, resources::state_of_game));
 			} else {
-				game_events::fire(event.token());
+				game_events::fire(event);
 			}
 
 		}

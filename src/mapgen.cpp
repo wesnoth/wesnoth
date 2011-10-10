@@ -535,11 +535,11 @@ static map_location place_village(const t_translation::t_map& map,
 	tcode_list_cache &adj_liked_cache)
 {
 	const map_location loc(x,y);
-	map_location::t_maploc_set locs;
+	std::set<map_location> locs;
 	get_tiles_radius(loc,radius,locs);
 	map_location best_loc;
 	int best_rating = 0;
-	for(map_location::t_maploc_set::const_iterator i = locs.begin();
+	for(std::set<map_location>::const_iterator i = locs.begin();
 			i != locs.end(); ++i) {
 
 		if(i->x < 0 || i->y < 0 || i->x >= static_cast<long>(map.size()) ||
@@ -593,7 +593,7 @@ static std::string generate_name(const unit_race& name_generator, const std::str
 	if(options.empty() == false) {
 		const size_t choice = rand()%options.size();
 		LOG_NG << "calling name generator...\n";
-		const std::string name = name_generator.generate_name(unit_race::MALE);
+		const std::string& name = name_generator.generate_name(unit_race::MALE);
 		LOG_NG << "name generator returned '" << name << "'\n";
 		if(base_name != NULL) {
 			*base_name = name;
@@ -829,7 +829,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				if(river.empty() == false && labels != NULL) {
 					std::string base_name;
 					LOG_NG << "generating name for river...\n";
-					const std::string name = generate_name(name_generator,"river_name",&base_name);
+					const std::string& name = generate_name(name_generator,"river_name",&base_name);
 					LOG_NG << "named river '" << name << "'\n";
 					size_t name_frequency = 20;
 					for(std::vector<location>::const_iterator r = river.begin(); r != river.end(); ++r) {
@@ -1101,7 +1101,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				// '\' will be used if the road is going south east-north west
 				// The terrain will be left unchanged otherwise
 				// (if there is no clear direction).
-				const std::string convert_to_bridge = child["convert_to_bridge"];
+				const std::string &convert_to_bridge = child["convert_to_bridge"];
 				if(convert_to_bridge.empty() == false) {
 					if(step == rt.steps.begin() || step+1 == rt.steps.end())
 						continue;
@@ -1152,7 +1152,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 				}
 
 				// Just a plain terrain substitution for a road
-				const std::string convert_to = child["convert_to"];
+				const std::string &convert_to = child["convert_to"];
 				if(convert_to.empty() == false) {
 					const t_translation::t_terrain letter =
 						t_translation::read_terrain_code(convert_to);
@@ -1305,7 +1305,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 						t_translation::write_terrain_code(terrain[res.x][res.y]);
 					if (const config &child = cfg.find_child("village", "terrain", str))
 					{
-						const std::string convert_to = child["convert_to"];
+						const std::string &convert_to = child["convert_to"];
 						if(convert_to != "") {
 							terrain[res.x][res.y] =
 								t_translation::read_terrain_code(convert_to);

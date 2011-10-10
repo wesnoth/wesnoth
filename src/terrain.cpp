@@ -66,7 +66,7 @@ terrain_type::terrain_type(const config& cfg) :
 		minimap_image_(cfg["symbol_image"]),
 		minimap_image_overlay_(),
 		editor_image_(cfg["editor_image"]),
-		id_(cfg["id"].token()),
+		id_(cfg["id"]),
 		name_(cfg["name"].t_str()),
 		editor_name_(cfg["editor_name"].t_str()),
 		description_(cfg["description"].t_str()),
@@ -149,22 +149,22 @@ terrain_type::terrain_type(const config& cfg) :
 
 	//mouse over message are only shown on villages
 	if(village_) {
-		income_description_ = cfg["income_description"].token();
+		income_description_ = cfg["income_description"];
 		if(income_description_ == "") {
 			income_description_ = _("Village");
 		}
 
-		income_description_ally_ = cfg["income_description_ally"].token();
+		income_description_ally_ = cfg["income_description_ally"];
 		if(income_description_ally_ == "") {
 			income_description_ally_ = _("Allied village");
 		}
 
-		income_description_enemy_ = cfg["income_description_enemy"].token();
+		income_description_enemy_ = cfg["income_description_enemy"];
 		if(income_description_enemy_ == "") {
 			income_description_enemy_ = _("Enemy village");
 		}
 
-		income_description_own_ = cfg["income_description_own"].token();
+		income_description_own_ = cfg["income_description_own"];
 		if(income_description_own_ == "") {
 			income_description_own_ = _("Owned village");
 		}
@@ -175,7 +175,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	minimap_image_(base.minimap_image_),
 	minimap_image_overlay_(overlay.minimap_image_),
 	editor_image_(overlay.editor_image_),
-	id_((*base.id_)+"^"+(*overlay.id_) ),
+	id_(base.id_+"^"+overlay.id_),
 	name_(overlay.name_),
 	editor_name_(overlay.editor_name_),
 	description_(overlay.description_),

@@ -198,32 +198,23 @@ unit_creator& unit_creator::allow_add_to_recall(bool b)
 
 map_location unit_creator::find_location(const config &cfg, const unit* pass_check)
 {
-	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
-	static const config::t_token & z_placement( generate_safe_static_const_t_interned(n_token::t_token("placement")) );
-	static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
-	static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
-	static const config::t_token & z_map( generate_safe_static_const_t_interned(n_token::t_token("map")) );
-	static const config::t_token & z_recall( generate_safe_static_const_t_interned(n_token::t_token("recall")) );
-	static const config::t_token & z_leader_passable( generate_safe_static_const_t_interned(n_token::t_token("leader_passable")) );
-	static const config::t_token & z_map_passable( generate_safe_static_const_t_interned(n_token::t_token("map_passable")) );
-	static const config::t_token & z_leader( generate_safe_static_const_t_interned(n_token::t_token("leader")) );
 
-	DBG_NG << "finding location for unit with id=["<<cfg[z_id]<<"] placement=["<<cfg[z_placement]<<"] x=["<<cfg[z_x]<<"] y=["<<cfg[z_y]<<"] for side " << team_.side() << "\n";
+	DBG_NG << "finding location for unit with id=["<<cfg["id"]<<"] placement=["<<cfg["placement"]<<"] x=["<<cfg["x"]<<"] y=["<<cfg["y"]<<"] for side " << team_.side() << "\n";
 
-	std::vector< config::t_token > placements = utils::split_attr(cfg[z_placement]);
+	std::vector< std::string > placements = utils::split(cfg["placement"]);
 
-	placements.push_back(z_map);
-	placements.push_back(z_recall);
+	placements.push_back("map");
+	placements.push_back("recall");
 
-	foreach(config::t_token place, placements) {
+	foreach(std::string place, placements) {
 		map_location loc;
-		bool pass((place == z_leader_passable) || (place == z_map_passable));
+		bool pass((place == "leader_passable") || (place == "map_passable"));
 
-		if (place == z_recall ) {
+		if (place == "recall" ) {
 			return map_location::null_location;
 		}
 
-		if (place == z_leader || place == z_leader_passable) {
+		if (place == "leader" || place == "leader_passable") {
 			unit_map::const_iterator leader = resources::units->find_leader(team_.side());
 			//todo: take 'leader in recall list' possibility into account
 			if (leader.valid()) {
@@ -233,7 +224,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 			}
 		}
 
-		if (place==z_map || place == z_map_passable) {
+		if (place=="map" || place == "map_passable") {
 			loc = map_location(cfg,resources::state_of_game);
 		}
 
@@ -256,21 +247,14 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 
 void unit_creator::add_unit(const config &cfg)
 {
-	static const config::t_token & z_side( generate_safe_static_const_t_interned(n_token::t_token("side")) );
-	static const config::t_token & z_player_id( generate_safe_static_const_t_interned(n_token::t_token("player_id")) );
-	static const config::t_token & z_faction_from_recruit( generate_safe_static_const_t_interned(n_token::t_token("faction_from_recruit")) );
-	static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
-	static const config::t_token & z_animate( generate_safe_static_const_t_interned(n_token::t_token("animate")) );
-
 	config temp_cfg(cfg);
-	temp_cfg[z_side] = team_.side();
-	temp_cfg.remove_attribute(z_player_id);
-	temp_cfg.remove_attribute(z_faction_from_recruit);
+	temp_cfg["side"] = team_.side();
+	temp_cfg.remove_attribute("player_id");
+	temp_cfg.remove_attribute("faction_from_recruit");
 
-	const config::attribute_value& aid =(cfg)[z_id];
-	const config::t_token& id = aid.token();
-	bool animate = temp_cfg[z_animate].to_bool();
-	temp_cfg.remove_attribute(z_animate);
+	const std::string& id =(cfg)["id"];
+	bool animate = temp_cfg["animate"].to_bool();
+	temp_cfg.remove_attribute("animate");
 
 	std::vector<unit>::iterator recall_list_element = std::find_if(team_.recall_list().begin(), team_.recall_list().end(), boost::bind(&unit::matches_id, _1, id));
 
@@ -298,7 +282,7 @@ void unit_creator::add_unit(const config &cfg)
 		//get unit from recall list
 		map_location loc = find_location(temp_cfg, &(*recall_list_element));
 		if(!loc.valid()) {
-			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)[z_side] << "already contains id=" <<id<<"\n";
+			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id=" <<id<<"\n";
 			return;
 		} else {
 			resources::units->add(loc, *recall_list_element);
@@ -586,12 +570,6 @@ void place_recruit(const unit &u, const map_location &recruit_location,
     bool is_recall, bool show, bool fire_event, bool full_movement,
     bool wml_triggered)
 {
-	static const config::t_token & z_prerecall( generate_safe_static_const_t_interned(n_token::t_token("prerecall")) );
-	static const config::t_token & z_prerecruit( generate_safe_static_const_t_interned(n_token::t_token("prerecruit")) );
-	static const config::t_token & z_recall( generate_safe_static_const_t_interned(n_token::t_token("recall")) );
-	static const config::t_token & z_recruit( generate_safe_static_const_t_interned(n_token::t_token("recruit")) );
-	static const config::t_token & z_checksum( generate_safe_static_const_t_interned(n_token::t_token("checksum")) );
-
 	LOG_NG << "placing new unit on location " << recruit_location << "\n";
 
 	assert(resources::units->count(recruit_location) == 0);
@@ -612,13 +590,13 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 	{
 		if (fire_event) {
 			LOG_NG << "firing prerecall event\n";
-			game_events::fire(z_prerecall,recruit_location);
+			game_events::fire("prerecall",recruit_location);
 		}
 	}
 	else
 	{
 		LOG_NG << "firing prerecruit event\n";
-		game_events::fire(z_prerecruit,recruit_location);
+		game_events::fire("prerecruit",recruit_location);
 	}
 	const unit_map::iterator new_unit_itor = resources::units->find(recruit_location);
 	if (new_unit_itor.valid()) {
@@ -648,13 +626,13 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 	{
 		if (fire_event) {
 			LOG_NG << "firing recall event\n";
-			game_events::fire(z_recall,recruit_location);
+			game_events::fire("recall",recruit_location);
 		}
 	}
 	else
 	{
 		LOG_NG << "firing recruit event\n";
-		game_events::fire(z_recruit,recruit_location);
+		game_events::fire("recruit",recruit_location);
 	}
 
 	const std::string checksum = get_checksum(new_unit);
@@ -664,7 +642,7 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 		// When recalling from WML there should be no random results, if we use
 		// random we might get the replay out of sync.
 		assert(!wml_triggered);
-		const std::string rc = (*ran_results)[z_checksum];
+		const std::string rc = (*ran_results)["checksum"];
 		if(rc != checksum) {
 			std::stringstream error_msg;
 			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
@@ -681,7 +659,7 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 
 	} else if(wml_triggered == false) {
 		config cfg;
-		cfg[z_checksum] = checksum;
+		cfg["checksum"] = checksum;
 		set_random_results(cfg);
 	}
 
@@ -691,18 +669,16 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 map_location under_leadership(const unit_map& units,
 		const map_location& loc, int* bonus)
 {
-	static const config::t_token & z_leadership( generate_safe_static_const_t_interned(n_token::t_token("leadership")) );
-	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
 
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
 		return map_location::null_location;
 	}
-	unit_ability_list abil = un->get_abilities(z_leadership);
+	unit_ability_list abil = un->get_abilities("leadership");
 	if(bonus) {
-		*bonus = abil.highest(z_value).first;
+		*bonus = abil.highest("value").first;
 	}
-	return abil.highest(z_value).second;
+	return abil.highest("value").second;
 }
 
 battle_context::battle_context(const unit_map& units,
@@ -1032,24 +1008,6 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 	swarm_max(0),
 	plague_type()
 {
-	static const config::t_token & z_null( generate_safe_static_const_t_interned(n_token::t_token("null")) );
-	static const config::t_token & z_not_living( generate_safe_static_const_t_interned(n_token::t_token("not_living")) );
-	static const config::t_token & z_slow( generate_safe_static_const_t_interned(n_token::t_token("slow")) );
-	static const config::t_token & z_drains( generate_safe_static_const_t_interned(n_token::t_token("drains")) );
-	static const config::t_token & z_petrifies( generate_safe_static_const_t_interned(n_token::t_token("petrifies")) );
-	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
-	static const config::t_token & z_berserk( generate_safe_static_const_t_interned(n_token::t_token("berserk")) );
-	static const config::t_token & z_value( generate_safe_static_const_t_interned(n_token::t_token("value")) );
-	static const config::t_token & z_firststrike( generate_safe_static_const_t_interned(n_token::t_token("firststrike")) );
-	static const config::t_token & z_plague( generate_safe_static_const_t_interned(n_token::t_token("plague")) );
-	static const config::t_token & z_type( generate_safe_static_const_t_interned(n_token::t_token("type")) );
-	static const config::t_token & z_chance_to_hit( generate_safe_static_const_t_interned(n_token::t_token("chance_to_hit")) );
-	static const config::t_token & z_damage( generate_safe_static_const_t_interned(n_token::t_token("damage")) );
-	static const config::t_token & z_swarm( generate_safe_static_const_t_interned(n_token::t_token("swarm")) );
-	static const config::t_token & z_swarm_attacks_min( generate_safe_static_const_t_interned(n_token::t_token("swarm_attacks_min")) );
-	static const config::t_token & z_swarm_attacks_max( generate_safe_static_const_t_interned(n_token::t_token("swarm_attacks_max")) );
-	static const config::t_token & z_attacks( generate_safe_static_const_t_interned(n_token::t_token("attacks")) );
-
 	// Get the current state of the unit.
 	if (attack_num >= 0) {
 		weapon = &u.attacks()[attack_num];
@@ -1079,22 +1037,22 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 		weapon->set_specials_context(*aloc, *dloc, units, attacking, opp_weapon);
 		if (opp_weapon)
 			opp_weapon->set_specials_context(*aloc, *dloc, units, !attacking, weapon);
-		bool not_living = opp.get_state(z_not_living);
-		slows = weapon->get_special_bool(z_slow);
-		drains = !not_living && weapon->get_special_bool(z_drains);
-		petrifies = weapon->get_special_bool(z_petrifies);
-		poisons = !not_living && weapon->get_special_bool(z_poison) && !opp.get_state(unit::STATE_POISONED);
+		bool not_living = opp.get_state("not_living");
+		slows = weapon->get_special_bool("slow");
+		drains = !not_living && weapon->get_special_bool("drains");
+		petrifies = weapon->get_special_bool("petrifies");
+		poisons = !not_living && weapon->get_special_bool("poison") && !opp.get_state(unit::STATE_POISONED);
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, *resources::teams);
-		rounds = weapon->get_specials(z_berserk).highest(z_value, 1).first;
-		firststrike = weapon->get_special_bool(z_firststrike);
+		rounds = weapon->get_specials("berserk").highest("value", 1).first;
+		firststrike = weapon->get_special_bool("firststrike");
 
 		// Handle plague.
-		unit_ability_list plague_specials = weapon->get_specials(z_plague);
+		unit_ability_list plague_specials = weapon->get_specials("plague");
 		plagues = !not_living && !plague_specials.empty() &&
-			(opp.undead_variation() != z_null) && !resources::game_map->is_village(opp_loc);
+			strcmp(opp.undead_variation().c_str(), "null") && !resources::game_map->is_village(opp_loc);
 
 		if (plagues) {
-			plague_type = (*plague_specials.cfgs.front().first)[z_type].token();
+			plague_type = (*plague_specials.cfgs.front().first)["type"].str();
 			if (plague_type.empty())
 				plague_type = u.type_id();
 		}
@@ -1105,13 +1063,13 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 			chance_to_hit = 100;
 		}
 
-		unit_ability_list cth_specials = weapon->get_specials(z_chance_to_hit);
+		unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
 		unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
 		chance_to_hit = cth_effects.get_composite_value();
 
 		// Compute base damage done with the weapon.
 		int base_damage = weapon->damage();
-		unit_ability_list dmg_specials = weapon->get_specials(z_damage);
+		unit_ability_list dmg_specials = weapon->get_specials("damage");
 		unit_abilities::effect dmg_effect(dmg_specials, base_damage, backstab_pos);
 		base_damage = dmg_effect.get_composite_value();
 
@@ -1137,17 +1095,17 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 			damage = slow_damage;
 
 		// Compute the number of blows and handle swarm.
-		unit_ability_list swarm_specials = weapon->get_specials(z_swarm);
+		unit_ability_list swarm_specials = weapon->get_specials("swarm");
 
 		if (!swarm_specials.empty()) {
 			swarm = true;
-			swarm_min = swarm_specials.highest(z_swarm_attacks_min).first;
-			swarm_max = swarm_specials.highest(z_swarm_attacks_max, weapon->num_attacks()).first;
+			swarm_min = swarm_specials.highest("swarm_attacks_min").first;
+			swarm_max = swarm_specials.highest("swarm_attacks_max", weapon->num_attacks()).first;
 			num_blows = swarm_min + (swarm_max - swarm_min) * hp / max_hp;
 		} else {
 			swarm = false;
 			num_blows = weapon->num_attacks();
-			unit_ability_list attacks_specials = weapon->get_specials(z_attacks);
+			unit_ability_list attacks_specials = weapon->get_specials("attacks");
 			unit_abilities::effect attacks_effect(attacks_specials,num_blows,backstab_pos);
 			const int num_blows_with_specials = attacks_effect.get_composite_value();
 			if(num_blows_with_specials >= 0) {
@@ -1210,7 +1168,7 @@ class attack
 	~attack();
 
 	class attack_end_exception {};
-	void fire_event(const config::t_token& n);
+	void fire_event(const std::string& n);
 	void refresh_bc();
 
 	/** Structure holding unit info used in the attack action. */
@@ -1249,32 +1207,26 @@ class attack
 	bool OOS_error_;
 };
 
-void attack::fire_event(const config::t_token& n)
+void attack::fire_event(const std::string& n)
 {
-	static const config::t_token & z_first( generate_safe_static_const_t_interned(n_token::t_token("first")) );
-	static const config::t_token & z_second( generate_safe_static_const_t_interned(n_token::t_token("second")) );
-	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
-	static const config::t_token & z_none( generate_safe_static_const_t_interned(n_token::t_token("none")) );
-	static const config::t_token & z_attack_end( generate_safe_static_const_t_interned(n_token::t_token("attack_end")) );
-
 	LOG_NG << "firing " << n << " event\n";
 	//prepare the event data for weapon filtering
 	config ev_data;
-	config& a_weapon_cfg = ev_data.add_child(z_first);
-	config& d_weapon_cfg = ev_data.add_child(z_second);
+	config& a_weapon_cfg = ev_data.add_child("first");
+	config& d_weapon_cfg = ev_data.add_child("second");
 	if(a_stats_->weapon != NULL && a_.valid()) {
 		a_weapon_cfg = a_stats_->weapon->get_cfg();
 	}
 	if(d_stats_->weapon != NULL && d_.valid()) {
 		d_weapon_cfg = d_stats_->weapon->get_cfg();
 	}
-	if(a_weapon_cfg[z_name].empty()) {
-		a_weapon_cfg[z_name] = z_none;
+	if(a_weapon_cfg["name"].empty()) {
+		a_weapon_cfg["name"] = "none";
 	}
-	if(d_weapon_cfg[z_name].empty()) {
-		d_weapon_cfg[z_name] = z_none;
+	if(d_weapon_cfg["name"].empty()) {
+		d_weapon_cfg["name"] = "none";
 	}
-	if(n == z_attack_end) {
+	if(n == "attack_end") {
 		// We want to fire attack_end event in any case! Even if one of units was removed by WML
 		game_events::fire(n, a_.loc_, d_.loc_, ev_data);
 		return;
@@ -1294,7 +1246,7 @@ void attack::fire_event(const config::t_token& n)
 			resources::screen->recalculate_minimap();
 			resources::screen->draw(true, true);
 		}
-		fire_event(z_attack_end);
+		fire_event("attack_end");
 		throw attack_end_exception();
 	}
 }
@@ -1306,14 +1258,14 @@ namespace {
 			weap_index = -1;
 			return;
 		}
-		if(weap_index >= 0 && weap_index < static_cast<int>(attacks.size()) && attacks[weap_index].id() == config::t_token(weap_id)) {
+		if(weap_index >= 0 && weap_index < static_cast<int>(attacks.size()) && attacks[weap_index].id() == weap_id) {
 			//the currently selected attack fits
 			return;
 		}
 		if(!weap_id.empty()) {
 			//lookup the weapon by id
 			for(int i=0; i<static_cast<int>(attacks.size()); ++i) {
-				if(attacks[i].id() == config::t_token(weap_id)) {
+				if(attacks[i].id() == weap_id) {
 					weap_index = i;
 					return;
 				}
@@ -1429,35 +1381,6 @@ attack::attack(const map_location &attacker, const map_location &defender,
 
 bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 {
-	static const config::t_token & z_damage_inflicted( generate_safe_static_const_t_interned(n_token::t_token("damage_inflicted")) );
-	static const config::t_token & z_chance( generate_safe_static_const_t_interned(n_token::t_token("chance")) );
-	static const config::t_token & z_hits( generate_safe_static_const_t_interned(n_token::t_token("hits")) );
-	static const config::t_token & z_damage( generate_safe_static_const_t_interned(n_token::t_token("damage")) );
-	static const config::t_token & z_successful( generate_safe_static_const_t_interned(n_token::t_token("successful")) );
-	static const config::t_token & z_unsuccessful( generate_safe_static_const_t_interned(n_token::t_token("unsuccessful")) );
-	static const config::t_token & z_dies( generate_safe_static_const_t_interned(n_token::t_token("dies")) );
-	static const config::t_token & z_unit_hit( generate_safe_static_const_t_interned(n_token::t_token("unit_hit")) );
-	static const config::t_token & z_defender( generate_safe_static_const_t_interned(n_token::t_token("defender")) );
-	static const config::t_token & z_attacker( generate_safe_static_const_t_interned(n_token::t_token("attacker")) );
-	static const config::t_token & z_perished( generate_safe_static_const_t_interned(n_token::t_token("perished")) );
-	static const config::t_token & z_survived( generate_safe_static_const_t_interned(n_token::t_token("survived")) );
-	static const config::t_token & z_attacker_hits( generate_safe_static_const_t_interned(n_token::t_token("attacker_hits")) );
-	static const config::t_token & z_defender_hits( generate_safe_static_const_t_interned(n_token::t_token("defender_hits")) );
-	static const config::t_token & z_attacker_misses( generate_safe_static_const_t_interned(n_token::t_token("attacker_misses")) );
-	static const config::t_token & z_defender_misses( generate_safe_static_const_t_interned(n_token::t_token("defender_misses")) );
-	static const config::t_token & z_attack_end( generate_safe_static_const_t_interned(n_token::t_token("attack_end")) );
-	static const config::t_token & z_first( generate_safe_static_const_t_interned(n_token::t_token("first")) );
-	static const config::t_token & z_second( generate_safe_static_const_t_interned(n_token::t_token("second")) );
-	static const config::t_token & z_last_breath( generate_safe_static_const_t_interned(n_token::t_token("last_breath")) );
-	static const config::t_token & z_die( generate_safe_static_const_t_interned(n_token::t_token("die")) );
-	static const config::t_token & z_null( generate_safe_static_const_t_interned(n_token::t_token("null")) );
-	static const config::t_token & z_effect( generate_safe_static_const_t_interned(n_token::t_token("effect")) );
-	static const config::t_token & z_apply_to( generate_safe_static_const_t_interned(n_token::t_token("apply_to")) );
-	static const config::t_token & z_variation( generate_safe_static_const_t_interned(n_token::t_token("variation")) );
-	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
-	static const config::t_token & z_petrified( generate_safe_static_const_t_interned(n_token::t_token("petrified")) );
-	static const config::t_token & z_none( generate_safe_static_const_t_interned(n_token::t_token("none")) );
-
 	unit_info
 		&attacker = *(attacker_turn ? &a_ : &d_),
 		&defender = *(attacker_turn ? &d_ : &a_);
@@ -1473,7 +1396,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	int damage = 0;
 	if (hits) {
 		damage = attacker.damage_;
-		resources::state_of_game->get_variable(z_damage_inflicted) = damage;
+		resources::state_of_game->get_variable("damage_inflicted") = damage;
 	}
 
 	// Make sure that if we're serializing a game here,
@@ -1481,9 +1404,9 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	const config *ran_results = get_random_results();
 	if (ran_results)
 	{
-		int results_chance = (*ran_results)[z_chance];
-		bool results_hits = (*ran_results)[z_hits].to_bool();
-		int results_damage = (*ran_results)[z_damage];
+		int results_chance = (*ran_results)["chance"];
+		bool results_hits = (*ran_results)["hits"].to_bool();
+		int results_damage = (*ran_results)["damage"];
 
 		if (results_chance != attacker.cth_)
 		{
@@ -1499,9 +1422,9 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 		{
 			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
 				<< ": the data source says the hit was "
-				<< (results_hits ? z_successful : z_unsuccessful)
+				<< (results_hits ? "successful" : "unsuccessful")
 				<< ", while in-game calculations say the hit was "
-				<< (hits ? z_successful : z_unsuccessful)
+				<< (hits ? "successful" : "unsuccessful")
 				<< " random number: " << ran_num << " = "
 				<< (ran_num % 100) << "/" << results_chance
 				<< " (over-riding game calculations with data source results)\n";
@@ -1529,23 +1452,23 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 			const unit &defender_unit = defender.get_unit();
 			if (attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)) {
 				float_text << (defender_unit.gender() == unit_race::FEMALE ?
-							   _("female^poisoned") : _("poisoned")) << '\n';
+					_("female^poisoned") : _("poisoned")) << '\n';
 			}
 
 			if (attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)) {
 				float_text << (defender_unit.gender() == unit_race::FEMALE ?
-							   _("female^slowed") : _("slowed")) << '\n';
+					_("female^slowed") : _("slowed")) << '\n';
 			}
 
 			if (attacker_stats->petrifies) {
 				float_text << (defender_unit.gender() == unit_race::FEMALE ?
-							   _("female^petrified") : _("petrified")) << '\n';
+					_("female^petrified") : _("petrified")) << '\n';
 			}
 		}
 
 		unit_display::unit_attack(attacker.loc_, defender.loc_, damage,
 			*attacker_stats->weapon, defender_stats->weapon,
-			abs_n, float_text.str(), attacker_stats->drains, n_token::t_token::z_empty());
+			abs_n, float_text.str(), attacker_stats->drains, "");
 	}
 
 	int drains_damage = 0;
@@ -1573,25 +1496,25 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	{
 		log_scope2(log_engine, "setting random results");
 		config cfg;
-		cfg[z_hits] = hits;
-		cfg[z_dies] = dies;
-		cfg[z_unit_hit] = z_defender;
-		cfg[z_damage] = damage;
-		cfg[z_chance] = attacker.cth_;
+		cfg["hits"] = hits;
+		cfg["dies"] = dies;
+		cfg["unit_hit"] = "defender";
+		cfg["damage"] = damage;
+		cfg["chance"] = attacker.cth_;
 
 		set_random_results(cfg);
 	}
 	else
 	{
-		bool results_dies = (*ran_results)[z_dies].to_bool();
+		bool results_dies = (*ran_results)["dies"].to_bool();
 		if (results_dies != dies)
 		{
 			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
 				<< ": the data source says the "
-				<< (attacker_turn ? z_defender : z_attacker) << ' '
-				<< (results_dies ? z_perished : z_survived)
+				<< (attacker_turn ? "defender" : "attacker") << ' '
+				<< (results_dies ? "perished" : "survived")
 				<< " while in-game calculations show it "
-				<< (dies ? z_perished : z_survived)
+				<< (dies ? "perished" : "survived")
 				<< " (over-riding game calculations with data source results)\n";
 			dies = results_dies;
 			// Set hitpoints to 0 so later checks don't invalidate the death.
@@ -1604,7 +1527,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	if (hits)
 	{
 		try {
-			fire_event(attacker_turn ? z_attacker_hits : z_defender_hits);
+			fire_event(attacker_turn ? "attacker_hits" : "defender_hits");
 		} catch (attack_end_exception) {
 			refresh_bc();
 			return false;
@@ -1613,7 +1536,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	else
 	{
 		try {
-			fire_event(attacker_turn ? z_attacker_misses : z_defender_misses);
+			fire_event(attacker_turn ? "attacker_misses" : "defender_misses");
 		} catch (attack_end_exception) {
 			refresh_bc();
 			return false;
@@ -1633,8 +1556,8 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 
 		game_events::entity_location death_loc(defender.loc_, defender.id_);
 		game_events::entity_location attacker_loc(attacker.loc_, attacker.id_);
-		n_token::t_token undead_variation = defender.get_unit().undead_variation();
-		fire_event(z_attack_end);
+		std::string undead_variation = defender.get_unit().undead_variation();
+		fire_event("attack_end");
 		refresh_bc();
 
 		// get weapon info for last_breath and die events
@@ -1643,14 +1566,14 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 			attacker_stats->weapon->get_cfg() : config();
 		config d_weapon_cfg = defender_stats->weapon && defender.valid() ?
 			defender_stats->weapon->get_cfg() : config();
-		if (a_weapon_cfg[z_name].empty())
-			a_weapon_cfg[z_name] = z_none;
-		if (d_weapon_cfg[z_name].empty())
-			d_weapon_cfg[z_name] = z_none;
-		dat.add_child(z_first,  d_weapon_cfg);
-		dat.add_child(z_second, a_weapon_cfg);
+		if (a_weapon_cfg["name"].empty())
+			a_weapon_cfg["name"] = "none";
+		if (d_weapon_cfg["name"].empty())
+			d_weapon_cfg["name"] = "none";
+		dat.add_child("first",  d_weapon_cfg);
+		dat.add_child("second", a_weapon_cfg);
 
-		game_events::fire(z_last_breath, death_loc, attacker_loc, dat);
+		game_events::fire("last breath", death_loc, attacker_loc, dat);
 		refresh_bc();
 
 		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
@@ -1667,7 +1590,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 				attacker.loc_, &attacker.get_unit());
 		}
 
-		game_events::fire(z_die, death_loc, attacker_loc, dat);
+		game_events::fire("die", death_loc, attacker_loc, dat);
 		refresh_bc();
 
 		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
@@ -1691,13 +1614,13 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 				newunit.set_attacks(0);
 				newunit.set_movement(0);
 				// Apply variation
-				if (undead_variation != z_null)
+				if (undead_variation != "null")
 				{
 					config mod;
-					config &variation = mod.add_child(z_effect);
-					variation[z_apply_to] = z_variation;
-					variation[z_name] = undead_variation;
-					newunit.add_modification(z_variation,mod);
+					config &variation = mod.add_child("effect");
+					variation["apply_to"] = "variation";
+					variation["name"] = undead_variation;
+					newunit.add_modification("variation",mod);
 					newunit.heal_all();
 				}
 				units_.add(death_loc, newunit);
@@ -1738,7 +1661,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 			update_fog = true;
 			attacker.n_attacks_ = 0;
 			defender.n_attacks_ = -1; // Petrified.
-			game_events::fire(z_petrified, defender.loc_, attacker.loc_);
+			game_events::fire("petrified", defender.loc_, attacker.loc_);
 			refresh_bc();
 		}
 	}
@@ -1749,8 +1672,6 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 
 void attack::perform()
 {
-	static const config::t_token & z_attack( generate_safe_static_const_t_interned(n_token::t_token("attack")) );
-
 	// Stop the user from issuing any commands while the units are fighting
 	const events::command_disabler disable_commands;
 
@@ -1788,7 +1709,7 @@ void attack::perform()
 	}
 
 	try {
-		fire_event(z_attack);
+		fire_event("attack");
 	} catch (attack_end_exception) {
 		return;
 	}
@@ -1819,6 +1740,8 @@ void attack::perform()
 	unsigned int rounds = std::max<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;
 	const int attacker_side = a_.get_unit().side();
 	const int defender_side = d_.get_unit().side();
+
+	static const std::string poison_string("poison");
 
 	LOG_NG << "Fight: (" << a_.loc_ << ") vs (" << d_.loc_ << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
 
@@ -1851,9 +1774,8 @@ void attack::perform()
 			defender_strikes_first = (d_stats_->firststrike && ! a_stats_->firststrike);
 		}
 
-		static const config::t_token & z_attack_end( generate_safe_static_const_t_interned(n_token::t_token("attack_end")) );
 		if (a_.n_attacks_ <= 0 && d_.n_attacks_ <= 0) {
-			fire_event(z_attack_end);
+			fire_event("attack_end");
 			refresh_bc();
 			break;
 		}
@@ -1909,7 +1831,7 @@ void attack::perform()
 }
 
 
-int village_owner(const map_location& loc, const t_teams& teams)
+int village_owner(const map_location& loc, const std::vector<team>& teams)
 {
 	for(size_t i = 0; i != teams.size(); ++i) {
 		if(teams[i].owns_village(loc))
@@ -1921,7 +1843,7 @@ int village_owner(const map_location& loc, const t_teams& teams)
 
 bool get_village(const map_location& loc, int side, int *action_timebonus)
 {
-	t_teams &teams = *resources::teams;
+	std::vector<team> &teams = *resources::teams;
 	team *t = unsigned(side - 1) < teams.size() ? &teams[side - 1] : NULL;
 	if (t && t->owns_village(loc)) {
 		return false;
@@ -1932,7 +1854,7 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 
 	// We strip the village off all other sides, unless it is held by an ally
 	// and we don't have a leader (and thus can't occupy it)
-	for(t_teams::iterator i = teams.begin(); i != teams.end(); ++i) {
+	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
 		int i_side = i - teams.begin() + 1;
 		if (!t || has_leader || t->is_enemy(i_side)) {
 			i->lose_village(loc);
@@ -1977,13 +1899,6 @@ struct unit_healing_struct {
 
 void calculate_healing(int side, bool update_display)
 {
-	static const config::t_token & z_unhealable( generate_safe_static_const_t_interned(n_token::t_token("unhealable")) );
-	static const config::t_token & z_heals( generate_safe_static_const_t_interned(n_token::t_token("heals")) );
-	static const config::t_token & z_poison( generate_safe_static_const_t_interned(n_token::t_token("poison")) );
-	static const config::t_token & z_cured( generate_safe_static_const_t_interned(n_token::t_token("cured")) );
-	static const config::t_token & z_slowed( generate_safe_static_const_t_interned(n_token::t_token("slowed")) );
-	static const config::t_token & z_regenerate( generate_safe_static_const_t_interned(n_token::t_token("regenerate")) );
-
 	DBG_NG << "beginning of healing calculations\n";
 	unit_map &units = *resources::units;
 
@@ -1992,7 +1907,7 @@ void calculate_healing(int side, bool update_display)
 	// We look for all allied units, then we see if our healer is near them.
 	foreach (unit &u, units) {
 
-		if (u.get_state(z_unhealable) || u.incapacitated())
+		if (u.get_state("unhealable") || u.incapacitated())
 			continue;
 
 		DBG_NG << "found healable unit at (" << u.get_location() << ")\n";
@@ -2005,7 +1920,7 @@ void calculate_healing(int side, bool update_display)
 
 		std::string curing;
 
-		unit_ability_list heal = u.get_abilities(z_heals);
+		unit_ability_list heal = u.get_abilities("heals");
 
 		const bool is_poisoned = u.get_state(unit::STATE_POISONED);
 		if(is_poisoned) {
@@ -2025,17 +1940,17 @@ void calculate_healing(int side, bool update_display)
 			for (std::vector<std::pair<const config *, map_location> >::const_iterator
 					heal_it = heal.cfgs.begin(); heal_it != heal.cfgs.end(); ++heal_it) {
 
-				if((*heal_it->first)[z_poison] == z_cured) {
+				if((*heal_it->first)["poison"] == "cured") {
 					curer = units.find(heal_it->second);
 					// Full curing only occurs on the healer turn (may be changed)
 					if(curer->side() == side) {
-						curing = z_cured;
-					} else if(curing != z_cured) {
-						curing = z_slowed;
+						curing = "cured";
+					} else if(curing != "cured") {
+						curing = "slowed";
 					}
-				} else if(curing != z_cured && (*heal_it->first)[z_poison] == z_slowed) {
+				} else if(curing != "cured" && (*heal_it->first)["poison"] == "slowed") {
 					curer = units.find(heal_it->second);
-					curing = z_slowed;
+					curing = "slowed";
 				}
 			}
 		}
@@ -2066,7 +1981,7 @@ void calculate_healing(int side, bool update_display)
 		}
 
 		if (u.side() == side) {
-			unit_ability_list regen = u.get_abilities(z_regenerate);
+			unit_ability_list regen = u.get_abilities("regenerate");
 			unit_abilities::effect regen_effect(regen,0,false);
 			if(regen_effect.get_composite_value() > healing) {
 				healing = regen_effect.get_composite_value();
@@ -2074,12 +1989,12 @@ void calculate_healing(int side, bool update_display)
 			}
 			if(!regen.cfgs.empty()) {
 				for (std::vector<std::pair<const config *, map_location> >::const_iterator regen_it = regen.cfgs.begin(); regen_it != regen.cfgs.end(); ++regen_it) {
-					if((*regen_it->first)[z_poison] == z_cured) {
+					if((*regen_it->first)["poison"] == "cured") {
 						curer = units.end();
-						curing = z_cured;
-					} else if(curing != z_cured && (*regen_it->first)[z_poison] == z_slowed) {
+						curing = "cured";
+					} else if(curing != "cured" && (*regen_it->first)["poison"] == "slowed") {
 						curer = units.end();
-						curing = z_slowed;
+						curing = "slowed";
 					}
 				}
 			}
@@ -2089,7 +2004,7 @@ void calculate_healing(int side, bool update_display)
 					healers.clear();
 				}
 				/** @todo FIXME */
-				curing = z_cured;
+				curing = "cured";
 				curer = units.end();
 			}
 			if (u.resting() || u.is_healthy()) {
@@ -2098,13 +2013,13 @@ void calculate_healing(int side, bool update_display)
 			}
 		}
 		if(is_poisoned) {
-			if(curing == z_cured) {
+			if(curing == "cured") {
 				u.set_state(unit::STATE_POISONED, false);
 				healing = rest_healing;
 				healers.clear();
 				if (curer != units.end())
 					healers.push_back(&*curer);
-			} else if(curing == z_slowed) {
+			} else if(curing == "slowed") {
 				healing = rest_healing;
 				healers.clear();
 				if (curer != units.end())
@@ -2118,7 +2033,7 @@ void calculate_healing(int side, bool update_display)
 			}
 		}
 
-		if (curing == n_token::t_token::z_empty() && healing==0) {
+		if (curing == "" && healing==0) {
 			continue;
 		}
 
@@ -2212,20 +2127,17 @@ unit get_advanced_unit(const unit &u, const std::string& advance_to)
 
 void advance_unit(map_location loc, const std::string &advance_to, const bool &fire_event)
 {
-	static const config::t_token & z_advance( generate_safe_static_const_t_interned(n_token::t_token("advance")) );
-	static const config::t_token & z_post_advance( generate_safe_static_const_t_interned(n_token::t_token("post_advance")) );
-
 	unit_map::unit_iterator u = resources::units->find(loc);
 	if(!u.valid()) {
 		return;
 	}
 	// original_type is not a reference, since the unit may disappear at any moment.
-	config::t_token const &original_type = u->type_id();
+	std::string original_type = u->type_id();
 
 	if(fire_event)
 	{
 		LOG_NG << "firing advance event at " << loc <<"\n";
-		game_events::fire(z_advance,loc);
+		game_events::fire("advance",loc);
 
 		if (!u.valid() || u->experience() < u->max_experience() ||
 			u->type_id() != original_type)
@@ -2247,7 +2159,7 @@ void advance_unit(map_location loc, const std::string &advance_to, const bool &f
 	if(fire_event)
 	{
 		LOG_NG << "firing post_advance event at " << loc << "\n";
-		game_events::fire(z_post_advance,loc);
+		game_events::fire("post_advance",loc);
 	}
 
 	resources::whiteboard->on_gamestate_change();
@@ -2452,17 +2364,6 @@ size_t move_unit(move_unit_spectator *move_spectator,
 {
 	assert(route.empty() == false);
 
-	static const config::t_token & z_hides( generate_safe_static_const_t_interned(n_token::t_token("hides")) );
-	static const config::t_token & z_alert( generate_safe_static_const_t_interned(n_token::t_token("alert")) );
-	static const config::t_token & z_sighted( generate_safe_static_const_t_interned(n_token::t_token("sighted")) );
-	static const config::t_token & z_moveto( generate_safe_static_const_t_interned(n_token::t_token("moveto")) );
-	static const config::t_token & z_friends( generate_safe_static_const_t_interned(n_token::t_token("friends")) );
-	static const config::t_token & z_enemies( generate_safe_static_const_t_interned(n_token::t_token("enemies")) );
-	static const config::t_token & z_friendphrase( generate_safe_static_const_t_interned(n_token::t_token("friendphrase")) );
-	static const config::t_token & z_enemyphrase( generate_safe_static_const_t_interned(n_token::t_token("enemyphrase")) );
-	static const config::t_token & z_hotkey( generate_safe_static_const_t_interned(n_token::t_token("hotkey")) );
-
-
 	if (route.size() <= 2 && route.front() == route.back()) {
 		DBG_NG << "Ignore an unit trying to jump on its hex at " << route.front() << "\n";
 	}
@@ -2472,7 +2373,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 	gamemap &map = *resources::game_map;
 	unit_map &units = *resources::units;
-	t_teams &teams = *resources::teams;
+	std::vector<team> &teams = *resources::teams;
 	game_display &disp = *resources::screen;
 
 	unit_map::iterator ui = units.find(route.front());
@@ -2512,9 +2413,8 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	std::vector<map_location>::const_iterator step;
 	std::string ambushed_string;
 
-	static const config::t_token & z_skirmisher(generate_safe_static_const_t_interned(n_token::t_token("skirmisher")) );
 	for(step = route.begin()+1; step != route.end(); ++step) {
-		const bool skirmisher = ui->get_ability_bool(z_skirmisher,*step);
+		const bool skirmisher = ui->get_ability_bool("skirmisher",*step);
 		const t_translation::t_terrain terrain = map[*step];
 
 		const int cost = ui->movement_cost(terrain);
@@ -2627,12 +2527,12 @@ size_t move_unit(move_unit_spectator *move_spectator,
 					move_spectator->set_ambusher(it);
 				}
 
-				unit_ability_list hides = it->get_abilities(z_hides);
+				unit_ability_list hides = it->get_abilities("hides");
 
 				std::vector<std::pair<const config *, map_location> >::const_iterator hide_it = hides.cfgs.begin();
 				// we only use the first valid alert message
 				for(;hide_it != hides.cfgs.end() && ambushed_string.empty(); ++hide_it) {
-					ambushed_string = (*hide_it->first)[z_alert].str();
+					ambushed_string = (*hide_it->first)["alert"].str();
 				}
 			}
 		}
@@ -2728,7 +2628,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	if (teams[ui->side() - 1].uses_shroud() || teams[ui->side() - 1].uses_fog())
 	{
 		std::set<map_location>::iterator sight_it;
-		const config::t_token  & sighted_str(z_sighted);
+		const std::string sighted_str("sighted");
 		// Fire sighted event here
 		for (sight_it = seen_units.begin();
 				sight_it != seen_units.end(); ++sight_it)
@@ -2743,7 +2643,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		}
 	}
 
-	game_events::raise(z_moveto,steps.back(),steps.front());
+	game_events::raise("moveto",steps.back(),steps.front());
 
 	event_mutated |= game_events::pump();
 
@@ -2822,8 +2722,8 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		// whether the units sighted were enemies or friends,
 		// and their respective number.
 		utils::string_map symbols;
-		symbols[z_friends] = lexical_cast<std::string>(nfriends);
-		symbols[z_enemies] = lexical_cast<std::string>(nenemies);
+		symbols["friends"] = lexical_cast<std::string>(nfriends);
+		symbols["enemies"] = lexical_cast<std::string>(nenemies);
 		std::string message;
 		SDL_Color msg_color;
 		if(nfriends == 0 || nenemies == 0) {
@@ -2836,8 +2736,8 @@ size_t move_unit(move_unit_spectator *move_spectator,
 			}
 		}
 		else {
-			symbols[z_friendphrase] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
-			symbols[z_enemyphrase] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
+			symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
+			symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
 			message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
 			msg_color = font::NORMAL_COLOR;
 		}
@@ -2846,7 +2746,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 			// See if the "Continue Move" action has an associated hotkey
 			const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
 			if(!hk.null()) {
-				symbols[z_hotkey] = hk.get_name();
+				symbols["hotkey"] = hk.get_name();
 				message += "\n" + vgettext("(press $hotkey to keep moving)", symbols);
 			}
 		}
@@ -2899,7 +2799,6 @@ bool unit_can_move(const unit &u)
 
 void apply_shroud_changes(undo_list &undos, int side)
 {
-	static const config::t_token & z_sighted( generate_safe_static_const_t_interned(n_token::t_token("sighted")) );
 	team &tm = (*resources::teams)[side - 1];
 	// No need to do this if the team isn't using fog or shroud.
 	if (!tm.uses_shroud() && !tm.uses_fog())
@@ -2982,7 +2881,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 				assert(new_unit != units.end());
 				tm.see(new_unit->side() - 1);
 
-				game_events::raise(z_sighted, *sight_it, actual_location);
+				game_events::raise("sighted", *sight_it, actual_location);
 				sighted_event = true;
 			}
 			for (std::set<map_location>::iterator sight_it = petrified_units.begin();
@@ -2992,7 +2891,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 				assert(new_unit != units.end());
 				tm.see(new_unit->side() - 1);
 
-				game_events::raise(z_sighted, *sight_it, actual_location);
+				game_events::raise("sighted", *sight_it, actual_location);
 				sighted_event = true;
 			}
 		}
@@ -3022,7 +2921,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 
 bool backstab_check(const map_location& attacker_loc,
 		const map_location& defender_loc,
-		const unit_map& units, const t_teams& teams)
+		const unit_map& units, const std::vector<team>& teams)
 {
 	const unit_map::const_iterator defender =
 		units.find(defender_loc);

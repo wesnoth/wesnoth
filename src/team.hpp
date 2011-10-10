@@ -105,7 +105,7 @@ public:
 
 		std::string music;
 
-		config::t_token color;
+		std::string color;
 
 		int side;
 		bool persistent;
@@ -251,7 +251,7 @@ public:
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
 	bool get_disallow_observers() const {return info_.disallow_observers; };
-	config::t_token map_color_to() const { return info_.color; };
+	std::string map_color_to() const { return info_.color; };
 	bool no_leader() const { return info_.no_leader; }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
@@ -267,7 +267,7 @@ public:
 	static Uint32 get_side_rgb_min(int side) { return(get_side_color_range(side).min()); }
 	static SDL_Color get_side_color(int side);
 	static SDL_Color get_minimap_color(int side);
-	static config::t_token get_side_color_index(int side);
+	static std::string get_side_color_index(int side);
 	static std::string get_side_highlight(int side);
 
 	void log_recruitable();

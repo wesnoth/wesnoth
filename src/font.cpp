@@ -1265,7 +1265,7 @@ bool load_font_config()
 		known_fonts.insert(font["name"]);
 	}
 
-	family_order = fonts_config["family_order"].t_str();
+	family_order = fonts_config["family_order"];
 	const std::vector<std::string> font_order = utils::split(fonts_config["order"]);
 	std::vector<font::subset_descriptor> fontlist;
 	std::vector<std::string>::const_iterator font;

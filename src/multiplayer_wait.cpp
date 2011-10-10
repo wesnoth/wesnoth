@@ -99,7 +99,7 @@ void wait::leader_preview_pane::draw_contents()
 		const unit_type *ut = unit_types.find(leader);
 
 		if (ut) {
-			const unit_type &utg = ut->get_gender_unit_type(config::t_token(gender));
+			const unit_type &utg = ut->get_gender_unit_type(gender);
 
 			image = utg.image() + leaders_.get_RC_suffix(utg.flag_rgb());
 		}
@@ -270,9 +270,9 @@ void wait::join_game(bool observe)
 			}
 
 			int color = side_num;
-			const config::attribute_value color_str = (*side_choice)["color"];
+			const std::string color_str = (*side_choice)["color"];
 			if (!color_str.empty())
-				color = game_config::color_info(color_str.token()).index() - 1;
+				color = game_config::color_info(color_str).index() - 1;
 
 			std::vector<const config *> leader_sides;
 			foreach (const config &side, possible_sides) {
@@ -290,8 +290,8 @@ void wait::join_game(bool observe)
 			foreach (const config *s, leader_sides)
 			{
 				const config &side = *s;
-				const std::string name = side["name"];
-				const std::string icon = side["image"];
+				const std::string &name = side["name"];
+				const std::string &icon = side["image"];
 
 				if (!icon.empty()) {
 					std::string rgb = side["flag_rgb"];
@@ -451,7 +451,7 @@ void wait::generate_menu()
 		std::string description = sd["user_description"];
 		const std::string faction_id = sd["player_id"];
 
-		config::attribute_value side_name = sd["faction_name"];
+		t_string side_name = sd["faction_name"];
 		std::string leader_type = sd["type"];
 		std::string gender_id = sd["gender"];
 
@@ -475,7 +475,7 @@ void wait::generate_menu()
 		const unit_type *ut = unit_types.find(leader_type);
 
 		if (ut) {
-			const unit_type &utg = ut->get_gender_unit_type(config::t_token(gender_id));
+			const unit_type &utg = ut->get_gender_unit_type(gender_id);
 
 			leader_name = utg.type_name();
 #ifdef LOW_MEM
@@ -485,7 +485,7 @@ void wait::generate_menu()
 
 			if (RCcolor.empty())
 				RCcolor = sd["side"].str();
-			leader_image = (*utg.image()) + "~RC(" + (*utg.flag_rgb()) + ">" + RCcolor + ")";
+			leader_image = utg.image() + std::string("~RC(") + std::string(utg.flag_rgb() + ">" + RCcolor + ")");
 #endif
 		} else {
 			leader_image = leader_list_manager::random_enemy_picture;
@@ -496,7 +496,7 @@ void wait::generate_menu()
 			if(side_name.str()[0] == font::IMAGE) {
 				std::string::size_type p =
 					side_name.str().find_first_of(COLUMN_SEPARATOR);
-				if(p != std::string::npos && p < side_name.str().size()) {
+				if(p != std::string::npos && p < side_name.size()) {
 					side_name = IMAGE_PREFIX + leader_image + COLUMN_SEPARATOR + side_name.str().substr(p+1);
 				}
 			} else {
@@ -530,7 +530,7 @@ void wait::generate_menu()
 		int disp_color = sd["color"];
 		if(!sd["color"].empty()) {
 			try {
-				disp_color = game_config::color_info(sd["color"].token()).index();
+				disp_color = game_config::color_info(sd["color"]).index();
 			} catch(config::error&) {
 				//ignore
 			}

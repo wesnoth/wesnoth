@@ -17,10 +17,14 @@
 #include "formula_string_utils.hpp"
 
 #include "config.hpp"
+#include "log.hpp"
+#include "formula.hpp"
 #include "gettext.hpp"
 
-#include "formula_string_utils_backend.hpp"
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
 
+static bool two_dots(char a, char b) { return a == '.' && b == '.'; }
 
 namespace utils {
 
@@ -29,47 +33,182 @@ class string_map_variable_set : public variable_set
 public:
 	string_map_variable_set(const string_map& map) : map_(map) {};
 
-	virtual config::attribute_value get_variable_const(const n_token::t_token &key) const {
+	virtual config::attribute_value get_variable_const(const std::string &key) const
+	{
 		config::attribute_value val;
 		const string_map::const_iterator itor = map_.find(key);
 		if (itor != map_.end())
 			val = itor->second;
 		return val;
 	}
-	virtual config::attribute_value get_variable_const(const std::string &key) const{
-		return get_variable_const(n_token::t_token(key));}
 private:
 	const string_map& map_;
 
 };
 }
 
+static std::string do_interpolation(const std::string &str, const variable_set& set)
+{
+	std::string res = str;
+	// This needs to be able to store negative numbers to check for the while's condition
+	// (which is only false when the previous '$' was at index 0)
+	int rfind_dollars_sign_from = res.size();
+	while(rfind_dollars_sign_from >= 0) {
+		// Going in a backwards order allows nested variable-retrieval, e.g. in arrays.
+		// For example, "I am $creatures[$i].user_description!"
+		const std::string::size_type var_begin_loc = res.rfind('$', rfind_dollars_sign_from);
+
+		// If there are no '$' left then we're done.
+		if(var_begin_loc == std::string::npos) {
+			break;
+		}
+
+		// For the next iteration of the loop, search for more '$'
+		// (not from the same place because sometimes the '$' is not replaced)
+		rfind_dollars_sign_from = int(var_begin_loc) - 1;
+
+
+		const std::string::iterator var_begin = res.begin() + var_begin_loc;
+
+		// The '$' is not part of the variable name.
+		const std::string::iterator var_name_begin = var_begin + 1;
+		std::string::iterator var_end = var_name_begin;
+
+		if(var_name_begin == res.end()) {
+			// Any '$' at the end of a string is just a '$'
+			continue;
+		} else if(*var_name_begin == '(') {
+			// The $( ... ) syntax invokes a formula
+			int paren_nesting_level = 0;
+			bool in_string = false,
+				in_comment = false;
+			do {
+				switch(*var_end) {
+				case '(':
+					if(!in_string && !in_comment) {
+						++paren_nesting_level;
+					}
+					break;
+				case ')':
+					if(!in_string && !in_comment) {
+						--paren_nesting_level;
+					}
+					break;
+				case '#':
+					if(!in_string) {
+						in_comment = !in_comment;
+					}
+					break;
+				case '\'':
+					if(!in_comment) {
+						in_string = !in_string;
+					}
+					break;
+				// TODO: support escape sequences when/if they are allowed in FormulaAI strings
+				}
+			} while(++var_end != res.end() && paren_nesting_level > 0);
+			if(paren_nesting_level > 0) {
+				ERR_NG << "Formula in WML string cannot be evaluated due to "
+					<< "missing closing paren:\n\t--> \""
+					<< std::string(var_begin, var_end) << "\"\n";
+				res.replace(var_begin, var_end, "");
+				continue;
+			}
+			try {
+				const game_logic::formula form(std::string(var_begin+2, var_end-1));
+				res.replace(var_begin, var_end, form.evaluate().string_cast());
+			} catch(game_logic::formula_error& e) {
+				ERR_NG << "Formula in WML string cannot be evaluated due to "
+					<< e.type << "\n\t--> \""
+					<< e.formula << "\"\n";
+				res.replace(var_begin, var_end, "");
+			}
+			continue;
+		}
+
+		// Find the maximum extent of the variable name (it may be shortened later).
+		for(int bracket_nesting_level = 0; var_end != res.end(); ++var_end) {
+			const char c = *var_end;
+			if(c == '[') {
+				++bracket_nesting_level;
+			}
+			else if(c == ']') {
+				if(--bracket_nesting_level < 0) {
+					break;
+				}
+			}
+			// isascii() breaks on mingw with -std=c++0x
+			else if (!(((c) & ~0x7f) == 0)/*isascii(c)*/ || (!isalnum(c) && c != '.' && c != '_')) {
+				break;
+			}
+		}
+
+		// Two dots in a row cannot be part of a valid variable name.
+		// That matters for random=, e.g. $x..$y
+		var_end = std::adjacent_find(var_name_begin, var_end, two_dots);
+
+		// If the last character is '.', then it can't be a sub-variable.
+		// It's probably meant to be a period instead. Don't include it.
+		// Would need to do it repetitively if there are multiple '.'s at the end,
+		// but don't actually need to do so because the previous check for adjacent '.'s would catch that.
+		// For example, "My score is $score." or "My score is $score..."
+		if(*(var_end-1) == '.'
+		// However, "$array[$i]" by itself does not name a variable,
+		// so if "$array[$i]." is encountered, then best to include the '.',
+		// so that it more closely follows the syntax of a variable (if only to get rid of all of it).
+		// (If it's the script writer's error, they'll have to fix it in either case.)
+		// For example in "$array[$i].$field_name", if field_name does not exist as a variable,
+		// then the result of the expansion should be "", not "." (which it would be if this exception did not exist).
+		&& *(var_end-2) != ']') {
+			--var_end;
+		}
+
+		const std::string var_name(var_name_begin, var_end);
+
+		if(var_end != res.end() && *var_end == '|') {
+			// It's been used to end this variable name; now it has no more effect.
+			// This can allow use of things like "$$composite_var_name|.x"
+			// (Yes, that's a WML 'pointer' of sorts. They are sometimes useful.)
+			// If there should still be a '|' there afterwards to affect other variable names (unlikely),
+			// just put another '|' there, one matching each '$', e.g. "$$var_containing_var_name||blah"
+			++var_end;
+		}
+
+
+		if (var_name == "") {
+			// Allow for a way to have $s in a string.
+			// $| will be replaced by $.
+			res.replace(var_begin, var_end, "$");
+		}
+		else {
+			// The variable is replaced with its value.
+			res.replace(var_begin, var_end,
+			    set.get_variable_const(var_name));
+		}
+	}
+
+	return res;
+}
+
 namespace utils {
 
-std::string interpolate_variables_into_string(const std::string &str, const string_map * const symbols) {
+std::string interpolate_variables_into_string(const std::string &str, const string_map * const symbols)
+{
 	string_map_variable_set set(*symbols);
-	return interpolate_variables_into_string(str, set);
+	return do_interpolation(str, set);
 }
 
-std::string interpolate_variables_into_string(const std::string &str, const variable_set& variables) {
-	n_token::t_token token(str);
-	wml_interpolation::t_parse_and_interpolator interpolator(token);
-	token = interpolator.parse_and_interpolate(variables);
-	return (*token);
+std::string interpolate_variables_into_string(const std::string &str, const variable_set& variables)
+{
+	return do_interpolation(str, variables);
 }
 
-void interpolate_variables_into_token(n_token::t_token &token, const variable_set& variables) {
-	wml_interpolation::t_parse_and_interpolator interpolator(token);
-	token = interpolator.parse_and_interpolate(variables);
-}
-
-t_string interpolate_variables_into_tstring(const t_string &tstr, const variable_set& variables) {
+t_string interpolate_variables_into_tstring(const t_string &tstr, const variable_set& variables)
+{
 	if(!tstr.str().empty()) {
-		n_token::t_token token(tstr);
-		wml_interpolation::t_parse_and_interpolator interpolator(token);
-		token = interpolator.parse_and_interpolate(variables);
-		if(tstr.str() != token) {
-			return t_string( (*token) );
+		std::string interp = utils::interpolate_variables_into_string(tstr.str(), variables);
+		if(tstr.str() != interp) {
+			return t_string(interp);
 		}
 	}
 	return tstr;

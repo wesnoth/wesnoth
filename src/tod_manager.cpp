@@ -28,7 +28,6 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-
 tod_manager::tod_manager(const config& scenario_cfg, const int num_turns):
 	savegame_config(),
 	currentTime_(0),
@@ -37,10 +36,7 @@ tod_manager::tod_manager(const config& scenario_cfg, const int num_turns):
 	turn_(1),
 	num_turns_(num_turns)
 {
-static const config::t_token & z_turn_at( generate_safe_static_const_t_interned(n_token::t_token("turn_at")) );
-static const config::t_token & z_current_tod( generate_safe_static_const_t_interned(n_token::t_token("current_tod")) );
-
-	const config::attribute_value& turn_at = scenario_cfg[z_turn_at];
+	const config::attribute_value& turn_at = scenario_cfg["turn_at"];
 	if(!turn_at.blank()) {
 		turn_ = turn_at.to_int(1);
 	}
@@ -52,7 +48,7 @@ static const config::t_token & z_current_tod( generate_safe_static_const_t_inter
 	//Very bad, since we're pretending to not modify the cfg. Needed to transfer the result
 	//to the network clients in a mp game, otherwise we have OOS.
 	config& non_const_config = const_cast<config&>(scenario_cfg);
-	non_const_config[z_current_tod] = currentTime_;
+	non_const_config["current_tod"] = currentTime_;
 }
 
 tod_manager& tod_manager::operator=(const tod_manager& manager)
@@ -73,37 +69,28 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 
 config tod_manager::to_config() const
 {
-static const config::t_token & z_turn_at( generate_safe_static_const_t_interned(n_token::t_token("turn_at")) );
-static const config::t_token & z_turns( generate_safe_static_const_t_interned(n_token::t_token("turns")) );
-static const config::t_token & z_current_tod( generate_safe_static_const_t_interned(n_token::t_token("current_tod")) );
-static const config::t_token & z_current_time( generate_safe_static_const_t_interned(n_token::t_token("current_time")) );
-static const config::t_token & z_time( generate_safe_static_const_t_interned(n_token::t_token("time")) );
-static const config::t_token & z_time_area( generate_safe_static_const_t_interned(n_token::t_token("time_area")) );
-static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
-static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
-
 	config cfg;
-	cfg[z_turn_at] = turn_;
-	cfg[z_turns] = num_turns_;
-	cfg[z_current_tod] = currentTime_;
+	cfg["turn_at"] = turn_;
+	cfg["turns"] = num_turns_;
+	cfg["current_tod"] = currentTime_;
 
 	std::vector<time_of_day>::const_iterator t;
 	for(t = times_.begin(); t != times_.end(); ++t) {
-		t->write(cfg.add_child(z_time));
+		t->write(cfg.add_child("time"));
 	}
 	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
-		config& area = cfg.add_child(z_time_area);
+		config& area = cfg.add_child("time_area");
 		// if no ranges, then use hexes to generate ranges
 		if(i->xsrc.empty() && i->ysrc.empty()) {
 			write_location_range(i->hexes, area);
 		} else {
-			area[z_x] = i->xsrc;
-			area[z_y] = i->ysrc;
+			area["x"] = i->xsrc;
+			area["y"] = i->ysrc;
 		}
 		for(t = i->times.begin(); t != i->times.end(); ++t) {
-			t->write(area.add_child(z_time));
+			t->write(area.add_child("time"));
 		}
-		area[z_current_time] = i->currentTime;
+		area["current_time"] = i->currentTime;
 	}
 	return cfg;
 }
@@ -143,7 +130,7 @@ const time_of_day& tod_manager::get_time_of_day_with_areas(const map_location& l
 	return get_time_of_day_turn(times_, n_turn, currentTime_);
 }
 
-bool tod_manager::is_start_ToD(const config::t_token& random_start_time)
+bool tod_manager::is_start_ToD(const std::string& random_start_time)
 {
 	return !random_start_time.empty()
 		&& utils::string_bool(random_start_time, true);
@@ -158,23 +145,18 @@ void tod_manager::replace_schedule(const config& time_cfg)
 
 void tod_manager::add_time_area(const config& cfg)
 {
-static const config::t_token & z_current_time( generate_safe_static_const_t_interned(n_token::t_token("current_time")) );
-static const config::t_token & z_x( generate_safe_static_const_t_interned(n_token::t_token("x")) );
-static const config::t_token & z_y( generate_safe_static_const_t_interned(n_token::t_token("y")) );
-static const config::t_token & z_id( generate_safe_static_const_t_interned(n_token::t_token("id")) );
-
 	areas_.push_back(area_time_of_day());
 	area_time_of_day &area = areas_.back();
-	area.id = cfg[z_id].token();
-	area.xsrc = cfg[z_x].token();
-	area.ysrc = cfg[z_y].token();
-	area.currentTime = cfg[z_current_time].to_int(0);
+	area.id = cfg["id"].str();
+	area.xsrc = cfg["x"].str();
+	area.ysrc = cfg["y"].str();
+	area.currentTime = cfg["current_time"].to_int(0);
 	std::vector<map_location> const& locs = parse_location_range(area.xsrc, area.ysrc, true);
 	std::copy(locs.begin(), locs.end(), std::inserter(area.hexes, area.hexes.end()));
 	time_of_day::parse_times(cfg, area.times);
 }
 
-void tod_manager::add_time_area(const config::t_token& id, const map_location::t_maploc_set& locs,
+void tod_manager::add_time_area(const std::string& id, const std::set<map_location>& locs,
 		const config& time_cfg)
 {
 	areas_.push_back(area_time_of_day());
@@ -184,7 +166,7 @@ void tod_manager::add_time_area(const config::t_token& id, const map_location::t
 	time_of_day::parse_times(time_cfg, area.times);
 }
 
-void tod_manager::remove_time_area(const config::t_token& area_id)
+void tod_manager::remove_time_area(const std::string& area_id)
 {
 	if(area_id.empty()) {
 		areas_.clear();
@@ -203,10 +185,7 @@ void tod_manager::remove_time_area(const config::t_token& area_id)
 
 int tod_manager::get_start_ToD(const config &level) const
 {
-static const config::t_token & z_current_tod( generate_safe_static_const_t_interned(n_token::t_token("current_tod")) );
-static const config::t_token & z_random_start_time( generate_safe_static_const_t_interned(n_token::t_token("random_start_time")) );
-
-	const config::attribute_value& current_tod = level[z_current_tod];
+	const config::attribute_value& current_tod = level["current_tod"];
 	if (!current_tod.blank())
 	{
 		return calculate_current_time(times_.size(), turn_, current_tod.to_int(0), true);
@@ -214,9 +193,9 @@ static const config::t_token & z_random_start_time( generate_safe_static_const_t
 
 	const int default_result = calculate_current_time(times_.size(), turn_, currentTime_);
 
-	const config::attribute_value& cfg_random_start_time = level[z_random_start_time];
+	const config::attribute_value& cfg_random_start_time = level["random_start_time"];
 	if(!cfg_random_start_time.blank()) {
-		const config::t_token& random_start_time = cfg_random_start_time.token();
+		const std::string& random_start_time = cfg_random_start_time.str();
 		//TODO:
 		//Here there is danger of OOS (bug #15948)
 		//But this randomization is needed on the other hand to make the "random start time" option
@@ -224,9 +203,9 @@ static const config::t_token & z_random_start_time( generate_safe_static_const_t
 
 		//process the random_start_time string, which can be boolean yes/no true/false or a
 		//comma-separated string of integers >= 1 referring to the times_ array indices
-		const std::vector<config::t_token>& random_start_time_strings = utils::split_token(random_start_time);
+		const std::vector<std::string>& random_start_time_strings = utils::split(random_start_time);
 		const int random_index = calculate_current_time(random_start_time_strings.size(), turn_, rand(), true);
-		const int given_current_time = lexical_cast_default<int, config::t_token>(random_start_time_strings[random_index], 0) - 1;
+		const int given_current_time = lexical_cast_default<int, std::string>(random_start_time_strings[random_index], 0) - 1;
 		if(given_current_time >= 0) return calculate_current_time(times_.size(), turn_, given_current_time, true);
 		if(cfg_random_start_time.to_bool(false)) return calculate_current_time(times_.size(), turn_, rand(), true);
 	}
@@ -242,10 +221,6 @@ const time_of_day& tod_manager::get_time_of_day_turn(const std::vector<time_of_d
 
 time_of_day tod_manager::get_time_of_day_with_areas_and_units(const map_location& loc, const int for_turn) const
 {
-	static const n_token::t_token & z_illuminates( generate_safe_static_const_t_interned(n_token::t_token("illuminates")) );
-	static const n_token::t_token & z_max_value( generate_safe_static_const_t_interned(n_token::t_token("max_value")) );
-	static const n_token::t_token & z_min_value( generate_safe_static_const_t_interned(n_token::t_token("min_value")) );
-
 	const gamemap& map = *resources::game_map;
 	const unit_map& units = *resources::units;
 	int light_modif =  map.get_terrain_info(map.get_terrain(loc)).light_modification();
@@ -263,22 +238,23 @@ time_of_day tod_manager::get_time_of_day_with_areas_and_units(const map_location
 		for(int i = 0; i != 7; ++i) {
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if(itor != units.end() &&
-			    itor->get_ability_bool(z_illuminates) &&
+			    itor->get_ability_bool("illuminates") &&
 			    !itor->incapacitated())
 			{
-				unit_ability_list illum = itor->get_abilities(z_illuminates);
+				unit_ability_list illum = itor->get_abilities("illuminates");
 				unit_abilities::effect illum_effect(illum, light, false);
 
 				illum_light = light + illum_effect.get_composite_value();
 				//max_value and min_value control the final result
 				//unless ToD + terrain effect is stronger
-				int max = std::max(light, illum.highest(z_max_value).first);
-				int min = std::min(light, illum.lowest(z_min_value).first);
+				int max = std::max(light, illum.highest("max_value").first);
+				int min = std::min(light, illum.lowest("min_value").first);
 				if(illum_light > max) {
 					illum_light = max;
 				} else if (illum_light < min) {
 					illum_light = min;
 				}
+
 			}
 		}
 	}
@@ -289,7 +265,7 @@ time_of_day tod_manager::get_time_of_day_with_areas_and_units(const map_location
 	return tod;
 }
 
-void tod_manager::modify_turns(const config::t_token& mod)
+void tod_manager::modify_turns(const std::string& mod)
 {
 	num_turns_ = std::max<int>(utils::apply_modifier(num_turns_,mod,0),-1);
 }
@@ -300,7 +276,6 @@ void tod_manager::set_number_of_turns(int num)
 
 void tod_manager::set_turn(const int num, const bool increase_limit_if_needed)
 {
-	static const n_token::t_token & z_turn_number( generate_safe_static_const_t_interned(n_token::t_token("turn_number")) );
 	const int new_turn = std::max<int>(num, 1);
 	LOG_NG << "changing current turn number from " << turn_ << " to " << new_turn << '\n';
 	// Correct ToD
@@ -310,7 +285,7 @@ void tod_manager::set_turn(const int num, const bool increase_limit_if_needed)
 		set_number_of_turns(new_turn);
 	}
 	turn_ = new_turn;
-	resources::state_of_game->get_variable(z_turn_number) = new_turn;
+	resources::state_of_game->get_variable("turn_number") = new_turn;
 }
 
 void tod_manager::set_new_current_times(const int new_current_turn_number)

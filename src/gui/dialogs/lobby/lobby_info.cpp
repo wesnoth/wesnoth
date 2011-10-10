@@ -86,10 +86,9 @@ std::string dump_games_map(const lobby_info::game_info_map& games)
 
 std::string dump_games_config(const config& gamelist)
 {
-	static const config::t_token & z_diff_track_attribute_( generate_safe_static_const_t_interned(n_token::t_token("diff_track_attribute_")) );
 	std::stringstream ss;
 	foreach (const config& c, gamelist.child_range("game")) {
-		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[z_diff_track_attribute_] << " ";
+		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[config::diff_track_attribute] << " ";
 	}
 	ss << "\n";
 	return ss.str();
@@ -116,7 +115,6 @@ void lobby_info::process_gamelist(const config &data)
 
 bool lobby_info::process_gamelist_diff(const config &data)
 {
-	static const config::t_token & z_diff_track_attribute_( generate_safe_static_const_t_interned(n_token::t_token("diff_track_attribute_")) );
 	SCOPE_LB;
 	if (!gamelist_initialized_) return false;
 	DBG_LB << "prediff " << dump_games_config(gamelist_.child("gamelist"));
@@ -133,7 +131,7 @@ bool lobby_info::process_gamelist_diff(const config &data)
 	config::child_itors range = gamelist_.child("gamelist").child_range("game");
 	for (config::child_iterator i = range.first; i != range.second; ++i) {
 		config& c = *i;
-		DBG_LB << "data process: " << c["id"] << " (" << c[z_diff_track_attribute_] << ")\n";
+		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")\n";
 		int game_id = c["id"];
 		if (game_id == 0) {
 			ERR_LB << "game with id 0 in gamelist config\n";
@@ -141,7 +139,7 @@ bool lobby_info::process_gamelist_diff(const config &data)
 			return false;
 		}
 		game_info_map::iterator current_i = games_by_id_.find(game_id);
-		const std::string& diff_result = c[z_diff_track_attribute_];
+		const std::string& diff_result = c[config::diff_track_attribute];
 		if (diff_result == "new" || diff_result == "modified") {
 			if (current_i == games_by_id_.end()) {
 				games_by_id_.insert(std::make_pair(game_id, new game_info(c, game_config_)));

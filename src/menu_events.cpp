@@ -182,13 +182,10 @@ std::string menu_handler::get_title_suffix(int side_num)
 
 void menu_handler::objectives(int side_num)
 {
-	static const config::t_token & z__from_interface( generate_safe_static_const_t_interned(n_token::t_token("_from_interface")) );
-	static const config::t_token & z_show_objectives( generate_safe_static_const_t_interned(n_token::t_token("show_objectives")) );
-
 	config cfg;
 	cfg["side"] = str_cast(side_num);
-	game_events::handle_event_command(z_show_objectives,
-		game_events::queued_event(z__from_interface, map_location(),
+	game_events::handle_event_command("show_objectives",
+		game_events::queued_event("_from_interface", map_location(),
 			map_location(), config()), vconfig(cfg));
 	team &current_team = teams_[side_num - 1];
 	dialogs::show_objectives(level_, current_team.objectives());
@@ -2628,10 +2625,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 
 			if (const config &alias_list = preferences::get_alias())
 			{
-				std::map<config::t_token, config::attribute_value> sorted;
-				foreach (const config::attribute &ipresorted, alias_list.attribute_range()) {
-					sorted.insert( ipresorted ); }
-				foreach (const config::attribute &a, sorted) {
+				foreach (const config::attribute &a, alias_list.attribute_range()) {
 					register_alias(a.second, a.first);
 				}
 			}
@@ -3229,7 +3223,7 @@ void console_handler::do_layers() {
 	terrain_builder& builder = disp.get_builder();
 	terrain_builder::tile* tile = builder.get_tile(loc);
 
-	const n_token::t_token& tod_id = disp.get_time_of_day(loc).id;
+	const std::string& tod_id = disp.get_time_of_day(loc).id;
 	terrain_builder::tile::logs tile_logs;
 	tile->rebuild_cache(tod_id, &tile_logs);
 
@@ -3321,7 +3315,7 @@ void console_handler::do_choose_level() {
 	int next = 0, nb = 0;
 	foreach (const config &sc, menu_handler_.game_config_.child_range("scenario"))
 	{
-		const std::string id = sc["id"];
+		const std::string &id = sc["id"];
 		options.push_back(id);
 		if (id == menu_handler_.gamestate_.classification().next_scenario)
 			next = nb;
@@ -3334,7 +3328,7 @@ void console_handler::do_choose_level() {
 	{
 		if (mp["id"] == scenario)
 		{
-			const std::string id = mp["id"];
+			const std::string &id = mp["id"];
 			options.push_back(id);
 			if (id == menu_handler_.gamestate_.classification().next_scenario)
 				next = nb;
@@ -3608,7 +3602,7 @@ void console_handler::do_gold() {
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_event() {
-	game_events::fire(config::t_token(get_data()));
+	game_events::fire(get_data());
 	menu_handler_.gui_->redraw_everything();
 }
 void console_handler::do_toggle_draw_coordinates() {

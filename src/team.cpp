@@ -92,7 +92,7 @@ void team::team_info::read(const config &cfg)
 	gold = cfg["gold"];
 	income = cfg["income"];
 	team_name = cfg["team_name"].str();
-	user_team_name = cfg["user_team_name"].token();
+	user_team_name = cfg["user_team_name"];
 	save_id = cfg["save_id"].str();
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
@@ -101,7 +101,7 @@ void team::team_info::read(const config &cfg)
 	flag_icon = cfg["flag_icon"].str();
 	description = cfg["id"].str();
 	scroll_to_leader = cfg["scroll_to_leader"].to_bool(true);
-	objectives = cfg["objectives"].token();
+	objectives = cfg["objectives"];
 	objectives_changed = cfg["objectives_changed"].to_bool();
 	disallow_observers = cfg["disallow_observers"].to_bool();
 	allow_player = cfg["allow_player"].to_bool(true);
@@ -111,9 +111,9 @@ void team::team_info::read(const config &cfg)
 	side = cfg["side"].to_int(1);
 
 	if(cfg.has_attribute("color")) {
-		color = cfg["color"].token();
+		color = cfg["color"].str();
 	} else {
-		color = cfg["side"].token();
+		color = cfg["side"].str();
 	}
 
 	// If arel starting new scenario overide settings from [ai] tags
@@ -152,7 +152,7 @@ void team::team_info::read(const config &cfg)
 	}
 
 	const std::string temp_rgb_str = cfg["team_rgb"];
-	game_config::t_team_rgb_range::const_iterator global_rgb = game_config::team_rgb_range.find(cfg["side"].token());
+	std::map<std::string, color_range>::iterator global_rgb = game_config::team_rgb_range.find(cfg["side"]);
 
 	if(!temp_rgb_str.empty()){
 		std::vector<Uint32> temp_rgb = string2rgb(temp_rgb_str);
@@ -354,9 +354,8 @@ void team::write(config& cfg) const
 
 bool team::get_village(const map_location& loc)
 {
-	static const config::t_token & z_capture( generate_safe_static_const_t_interned(n_token::t_token("capture")) );
 	villages_.insert(loc);
-	return game_events::fire(z_capture,loc);
+	return game_events::fire("capture",loc);
 }
 
 void team::lose_village(const map_location& loc)
@@ -760,8 +759,8 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 std::map<int, color_range> team::team_color_range_;
 
 const color_range team::get_side_color_range(int side){
-  config::t_token index = get_side_color_index(side);
-  game_config::t_team_rgb_range::const_iterator gp=game_config::team_rgb_range.find(index);
+  std::string index = get_side_color_index(side);
+  std::map<std::string, color_range>::iterator gp=game_config::team_rgb_range.find(index);
 
   if(gp != game_config::team_rgb_range.end()){
     return(gp->second);
@@ -782,17 +781,17 @@ SDL_Color team::get_minimap_color(int side)
 	return int_to_color(get_side_color_range(side).rep());
 }
 
-config::t_token team::get_side_color_index(int side)
+std::string team::get_side_color_index(int side)
 {
 	size_t index = size_t(side-1);
 
 	if(teams != NULL && index < teams->size()) {
-		const config::t_token &side_map = (*teams)[index].map_color_to();
+		const std::string side_map = (*teams)[index].map_color_to();
 		if(!side_map.empty()) {
 			return side_map;
 		}
 	}
-	return config::t_token(str_cast(side));
+	return str_cast(side);
 }
 
 std::string team::get_side_highlight(int side)

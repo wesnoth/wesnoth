@@ -126,7 +126,6 @@ static lg::log_domain log_engine("engine");
 	}
 #endif /* _WIN32 */
 
-
 namespace savegame {
 
 const std::string save_info::format_time_local() const{
@@ -353,27 +352,26 @@ void manager::delete_game(const std::string& name)
 	remove((get_saves_dir() + "/" + modified_name).c_str());
 }
 
+bool save_index::save_index_loaded = false;
+config save_index::save_index_cfg;
 
-config& save_index::load() {
-	static bool save_index_loaded = false;
-	//Intentionally not paired with a delete for static initialization purposes
-	static config * save_index_cfg = new config;
-
+config& save_index::load()
+{
 	if(save_index_loaded == false) {
 		try {
 			scoped_istream stream = istream_file(get_save_index_file());
-			read(*save_index_cfg, *stream);
+			read(save_index_cfg, *stream);
 		} catch(io_exception& e) {
 			ERR_SAVE << "error reading save index: '" << e.what() << "'\n";
 		} catch(config::error&) {
 			ERR_SAVE << "error parsing save index config file\n";
-			save_index_cfg->clear();
+			save_index_cfg.clear();
 		}
-		//Only try once
+
 		save_index_loaded = true;
 	}
 
-	return *save_index_cfg;
+	return save_index_cfg;
 }
 
 config& save_index::save_summary(std::string save)
@@ -383,51 +381,16 @@ config& save_index::save_summary(std::string save)
 	 * a file. If not some parts of the code use the name with and some parts
 	 * without the .gz suffix.
 	 */
-	static const config::t_token & z_save( generate_safe_static_const_t_interned(n_token::t_token("save")) );
-
 	if(save.length() < 3 || save.substr(save.length() - 3) != ".gz") {
 		save += ".gz";
 	}
 
 	config& cfg = load();
-	if (config &sv = cfg.find_child(z_save, z_save, save))
+	if (config &sv = cfg.find_child("save", "save", save))
 		return sv;
 
-	config &res = cfg.add_child(z_save);
-	res[z_save] = save;
-	return res;
-}
-
-config::t_child_range_index const save_index::indexed_summaries(){
-	static const config::t_token & z_save( generate_safe_static_const_t_interned(n_token::t_token("save")) );
-	return load().child_range_index(z_save, z_save);
-}
-
-n_token::t_token save_index::gz_corrected_filename(n_token::t_token const & name) {
-	/*
-	 * All saves are .gz files now so make sure we use that name when opening
-	 * a file. If not some parts of the code use the name with and some parts
-	 * without the .gz suffix.
-	 */
-	std::string sname(name);
-	if(sname.length() < 3 || sname.substr(sname.length() - 3) != ".gz") {
-		sname += ".gz"; }
-	return config::t_token(sname);
-}
-
-config & save_index::find_or_create_summary(config::t_child_range_index & index, n_token::t_token const & name) {
-	static const config::t_token & z_save( generate_safe_static_const_t_interned(n_token::t_token("save")) );
-
-	config::t_token iname(gz_corrected_filename(name));
-	config::t_child_range_index::iterator xcfgi = index.find( iname);
-
-	if(xcfgi != index.end()){
-		return *xcfgi->second; }
-
-	//Fallback create an empty summary
-	config & cfg = load();
-	config &res = cfg.add_child(z_save);
-	res[z_save] = iname;
+	config &res = cfg.add_child("save");
+	res["save"] = save;
 	return res;
 }
 
@@ -1042,7 +1005,7 @@ void autosave_savegame::create_filename()
 	if (gamestate().classification().label.empty())
 		filename = _("Auto-Save");
 	else
-		filename = gamestate().classification().label + "-" + _("Auto-Save") + snapshot()["turn_at"].str();
+		filename = gamestate().classification().label + "-" + _("Auto-Save") + snapshot()["turn_at"];
 
 	set_filename(filename);
 }

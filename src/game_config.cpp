@@ -64,7 +64,7 @@ namespace game_config
 			default_defeat_music;
 
 	namespace images {
-	n_token::t_token game_title,
+	std::string game_title,
 			// orbs and hp/xp bar
 			moved_orb,
 			unmoved_orb,
@@ -89,9 +89,9 @@ namespace game_config
 			tod_bright,
 			tod_dark,
 			///@todo de-hardcode this
-			checked_menu = n_token::t_token( "buttons/checkbox-pressed.png"),
-			unchecked_menu = n_token::t_token( "buttons/checkbox.png"),
-			wml_menu = n_token::t_token( "buttons/WML-custom.png"),
+			checked_menu = "buttons/checkbox-pressed.png",
+			unchecked_menu = "buttons/checkbox.png",
+			wml_menu = "buttons/WML-custom.png",
 			level,
 			ellipsis,
 			missing;
@@ -116,7 +116,7 @@ namespace game_config
 	std::string foot_teleport_enter;
 	std::string foot_teleport_exit;
 
-	t_team_rgb_range team_rgb_range;
+	std::map<std::string, color_range > team_rgb_range;
 	std::map<std::string, t_string > team_rgb_name;
 
 	std::map<std::string, std::vector<Uint32> > team_rgb_colors;
@@ -182,33 +182,33 @@ namespace game_config
 
 		if(const config &i = v.child("images")){
 			using namespace game_config::images;
-			game_title = i["game_title"].token();
+			game_title = i["game_title"].str();
 
-			moved_orb = i["moved_orb"].token();
-			unmoved_orb = i["unmoved_orb"].token();
-			partmoved_orb = i["partmoved_orb"].token();
-			enemy_orb = i["enemy_orb"].token();
-			ally_orb = i["ally_orb"].token();
-			energy = i["energy"].token();
+			moved_orb = i["moved_orb"].str();
+			unmoved_orb = i["unmoved_orb"].str();
+			partmoved_orb = i["partmoved_orb"].str();
+			enemy_orb = i["enemy_orb"].str();
+			ally_orb = i["ally_orb"].str();
+			energy = i["energy"].str();
 
-			flag = i["flag"].token();
-			flag_icon = i["flag_icon"].token();
+			flag = i["flag"].str();
+			flag_icon = i["flag_icon"].str();
 
-			terrain_mask = i["terrain_mask"].token();
-			grid_top = i["grid_top"].token();
-			grid_bottom = i["grid_bottom"].token();
-			mouseover = i["mouseover"].token();
-			selected = i["selected"].token();
-			editor_brush = i["editor_brush"].token();
-			unreachable = i["unreachable"].token();
-			linger = i["linger"].token();
+			terrain_mask = i["terrain_mask"].str();
+			grid_top = i["grid_top"].str();
+			grid_bottom = i["grid_bottom"].str();
+			mouseover = i["mouseover"].str();
+			selected = i["selected"].str();
+			editor_brush = i["editor_brush"].str();
+			unreachable = i["unreachable"].str();
+			linger = i["linger"].str();
 
-			observer = i["observer"].token();
-			tod_bright = i["tod_bright"].token();
-			tod_dark = i["tod_dark"].token();
-			level = i["level"].token();
-			ellipsis = i["ellipsis"].token();
-			missing = i["missing"].token();
+			observer = i["observer"].str();
+			tod_bright = i["tod_bright"].str();
+			tod_dark = i["tod_dark"].str();
+			level = i["level"].str();
+			ellipsis = i["ellipsis"].str();
+			missing = i["missing"].str();
 		} // images
 
 		hp_bar_scaling = v["hp_bar_scaling"].to_double(0.666);
@@ -258,17 +258,17 @@ namespace game_config
 
 	void add_color_info(const config &v)
 	{
-		foreach (const config &teamC, v.child_range("color_range")) {
+		foreach (const config &teamC, v.child_range("color_range"))
+		{
 			const config::attribute_value *a1 = teamC.get("id"),
 				*a2 = teamC.get("rgb");
 			if (!a1 || !a2) continue;
-			std::string const & id = *a1;
-			config::attribute_value const & idt = *a1;
+			std::string id = *a1;
 			std::vector<Uint32> temp = string2rgb(*a2);
-			team_rgb_range.insert(std::make_pair(n_token::t_token(id), color_range(temp)));
-			team_rgb_name[id] = teamC["name"].token();
+			team_rgb_range.insert(std::make_pair(id,color_range(temp)));
+			team_rgb_name[id] = teamC["name"];
 			//generate palette of same name;
-			std::vector<Uint32> tp = palette(team_rgb_range[idt.token()]);
+			std::vector<Uint32> tp = palette(team_rgb_range[id]);
 			if (tp.empty()) continue;
 			team_rgb_colors.insert(std::make_pair(id,tp));
 			//if this is being used, output log of palette for artists use.
@@ -301,9 +301,9 @@ namespace game_config
 		}
 	}
 
-	const color_range& color_info(const n_token::t_token& name)
+	const color_range& color_info(const std::string& name)
 	{
-		t_team_rgb_range::const_iterator i = team_rgb_range.find(name);
+		std::map<std::string, color_range>::const_iterator i = team_rgb_range.find(name);
 		if(i == team_rgb_range.end()) {
 			try {
 				team_rgb_range.insert(std::make_pair(name,color_range(string2rgb(name))));

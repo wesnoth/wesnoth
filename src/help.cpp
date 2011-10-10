@@ -1132,7 +1132,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 				if (!type.hide_help()) {
 					//add a link in the list of units having this special
 					std::string type_name = type.type_name();
-					std::string ref_id = unit_prefix + (* type.id() );
+					std::string ref_id = unit_prefix + type.id();
 					//we put the translated name at the beginning of the hyperlink,
 					//so the automatic alphabetic sorting of std::set can use it
 					std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
@@ -1180,13 +1180,13 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 			abil_vecs[0] = &type.abilities();
 			abil_vecs[1] = &type.adv_abilities();
 
-			std::vector<t_string> const* desc_vecs[2];
+			std::vector<std::string> const* desc_vecs[2];
 			desc_vecs[0] = &type.ability_tooltips();
 			desc_vecs[1] = &type.adv_ability_tooltips();
 
 			for(int i=0; i<2; ++i) {
 				std::vector<t_string> const& abil_vec = *abil_vecs[i];
-				std::vector<t_string> const& desc_vec = *desc_vecs[i];
+				std::vector<std::string> const& desc_vec = *desc_vecs[i];
 				for(size_t j=0; j < abil_vec.size(); ++j) {
 					t_string const& abil_name = abil_vec[j];
 					if (ability_description.find(abil_name) == ability_description.end()) {
@@ -1208,7 +1208,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 					if (!type.hide_help()) {
 						//add a link in the list of units having this ability
 						std::string type_name = type.type_name();
-						std::string ref_id = unit_prefix + (*  type.id() );
+						std::string ref_id = unit_prefix +  type.id();
 						//we put the translated name at the beginning of the hyperlink,
 						//so the automatic alphabetic sorting of std::set can use it
 						std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
@@ -1251,9 +1251,9 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 
 			std::stringstream text;
 
-			const config::attribute_value& description = f["description"];
+			const std::string& description = f["description"];
 			if (!description.empty()) {
-				text << description.t_str() << "\n";
+				text << description << "\n";
 				text << "\n";
 			}
 
@@ -1282,9 +1282,9 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 		std::stringstream text;
 		text << "<header>text='" << _("Era:") << " " << era["name"] << "'</header>" << "\n";
 		text << "\n";
-		const config::attribute_value& description = era["description"];
+		const std::string& description = era["description"];
 		if (!description.empty()) {
-			text << description.t_str() << "\n";
+			text << description << "\n";
 			text << "\n";
 		}
 
@@ -1362,11 +1362,11 @@ public:
 		const bool first_reverse_value = true;
 		bool reverse = first_reverse_value;
 		do {
-			std::vector<config::t_token> adv_units =
+			std::vector<std::string> adv_units =
 				reverse ? type_.advances_from() : type_.advances_to();
 			bool first = true;
 
-			foreach (const config::t_token &adv, adv_units)
+			foreach (const std::string &adv, adv_units)
 			{
 				const unit_type *type = unit_types.find(adv);
 				if (!type || type->hide_help()) continue;
@@ -1383,7 +1383,7 @@ public:
 				std::string lang_unit = type->type_name();
 				std::string ref_id;
 				if (description_type(*type) == FULL_DESCRIPTION) {
-					ref_id = unit_prefix + (* type->id() );
+					ref_id = unit_prefix + type->id();
 				} else {
 					ref_id = unknown_unit_topic;
 					lang_unit += " (?)";
@@ -1397,7 +1397,7 @@ public:
 
 		// Print the race of the unit, cross-reference it to the
 		// respective topic.
-		const config::t_token race_id = type_.race();
+		const std::string race_id = type_.race();
 		std::string race_name;
 		if (const unit_race *r = unit_types.find_race(race_id)) {
 			race_name = r->plural_name();
@@ -1405,7 +1405,7 @@ public:
 			race_name = _ ("race^Miscellaneous");
 		}
 		ss << _("Race: ");
-		ss << "<ref>dst='" << escape("..race_" + (*race_id )) << "' text='" << escape(race_name) << "'</ref>";
+		ss << "<ref>dst='" << escape("..race_"+race_id) << "' text='" << escape(race_name) << "'</ref>";
 		ss << "\n";
 
 		// Print the abilities the units has, cross-reference them
@@ -1480,7 +1480,7 @@ public:
 				 attack_end = attacks.end();
 				 attack_it != attack_end; ++attack_it) {
 				std::string lang_weapon = attack_it->name();
-				std::string lang_type = string_table["type_" + (* attack_it->type() )];
+				std::string lang_type = string_table["type_" + attack_it->type()];
 				std::vector<item> row;
 				std::stringstream attack_ss;
 				attack_ss << "<img>src='" << (*attack_it).icon() << "'</img>";
@@ -1492,7 +1492,7 @@ public:
 				attack_ss << attack_it->damage() << utils::unicode_en_dash << attack_it->num_attacks() << " " << attack_it->accuracy_parry_description();
 				push_tab_pair(row, attack_ss.str());
 				attack_ss.str(clear_stringstream);
-				push_tab_pair(row, string_table["range_" + (* (*attack_it).range() )]);
+				push_tab_pair(row, string_table["range_" + (*attack_it).range()]);
 				// Show this attack's special, if it has any. Cross
 				// reference it to the section describing the
 				// special.
@@ -1662,7 +1662,7 @@ std::string make_unit_link(const std::string& type_id)
 		std::string name = type->type_name();
 		std::string ref_id;
 		if (description_type(*type) == FULL_DESCRIPTION) {
-			ref_id = unit_prefix + (* type->id() );
+			ref_id = unit_prefix + type->id();
 		} else {
 			ref_id = unknown_unit_topic;
 			name += " (?)";
@@ -1715,7 +1715,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		section_cfg["id"] = hidden_symbol(hidden) + race_prefix + *it;
 
 		std::string title;
-		if (const unit_race *r = unit_types.find_race(config::t_token(*it))) {
+		if (const unit_race *r = unit_types.find_race(*it)) {
 			title = r->plural_name();
 		} else {
 			title = _ ("race^Miscellaneous");
@@ -1740,14 +1740,14 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	{
 		const unit_type &type = i.second;
 
-		if (type.race() != config::t_token(race))
+		if (type.race() != race)
 			continue;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 		if (desc_type != FULL_DESCRIPTION)
 			continue;
 
 		const std::string type_name = type.type_name();
-		const std::string ref_id = hidden_symbol(type.hide_help()) + unit_prefix +  (* type.id() );
+		const std::string ref_id = hidden_symbol(type.hide_help()) + unit_prefix +  type.id();
 		topic unit_topic(type_name, ref_id, "");
 		unit_topic.text = new unit_topic_generator(type);
 		topics.push_back(unit_topic);
@@ -1764,7 +1764,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::string race_id = "..race_"+race;
 	std::string race_name;
 	std::string race_description;
-	if (const unit_race *r = unit_types.find_race(config::t_token(race))) {
+	if (const unit_race *r = unit_types.find_race(race)) {
 		race_name = r->plural_name();
 		race_description = r->description();
 		// if (description.empty()) description =  _("No description Available");

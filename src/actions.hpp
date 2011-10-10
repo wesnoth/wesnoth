@@ -158,7 +158,7 @@ struct battle_context_unit_stats
 	unsigned int swarm_min;	/**< Minimum number of blows with swarm (equal to num_blows if swarm isn't used). */
 	unsigned int swarm_max;	/**< Maximum number of blows with swarm (equal to num_blows if swarm isn't used). */
 
-	n_token::t_token plague_type; /**< The plague type used by the attack, if any. */
+	std::string plague_type; /**< The plague type used by the attack, if any. */
 
 	battle_context_unit_stats(const unit &u, const map_location& u_loc,
 		   int u_attack_num, bool attacking,

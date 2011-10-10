@@ -34,15 +34,12 @@
 #include <map>
 #include <iosfwd>
 #include <vector>
-#include <utility> //for relops
-#include <boost/unordered_map.hpp>
+#include <boost/variant/variant.hpp>
 
 #include "game_errors.hpp"
 #include "tstring.hpp"
 #include "wesconfig.h"
 
-//debug
-#include <iostream>
 class config;
 class vconfig;
 struct lua_State;
@@ -56,28 +53,17 @@ class config
 {
 	friend bool operator==(const config& a, const config& b);
 
-	static config * invalid;
-	static bool initialize_invalid();
-
-	/**
-	 * Raises a most cryptic exception if @a this is not valid.
-	 */
-	//Place the call to the exception in the object file.
-	void throw_missing_child_exception() const ;
+	static config invalid;
 
 	/**
 	 * Raises an exception if @a this is not valid.
 	 */
-	void check_valid() const {
-		if (!*this){
-			throw_missing_child_exception(); }}
+	void check_valid() const;
 
 	/**
 	 * Raises an exception if @a this or @a cfg is not valid.
 	 */
-	void check_valid(const config &cfg) const {
-		check_valid();
-		cfg.check_valid();}
+	void check_valid(const config &cfg) const;
 
 #ifndef HAVE_CXX0X
 	struct safe_bool_impl { void nonnull() {} };
@@ -100,33 +86,25 @@ public:
 	config(config &&);
 	config &operator=(config &&);
 #endif
-	/// Define a token that compares faster than a string once created.
-	/// It is preferable to use t_token as indices over strings
-	typedef n_token::t_token t_token;
 
 	/**
 	 * Creates a config object with an empty child of name @a child.
 	 */
 	explicit config(const std::string &child);
-	explicit config(const t_token &child);
 
 	~config();
 
 
 #ifdef HAVE_CXX0X
 	explicit operator bool() const
-	{ return this != invalid; }
+	{ return this != &invalid; }
 #else
 	operator safe_bool() const
-	{ return this != invalid ? &safe_bool_impl::nonnull : 0; }
+	{ return this != &invalid ? &safe_bool_impl::nonnull : 0; }
 #endif
 
 	typedef std::vector<config*> child_list;
-	//typedef std::map<t_token,child_list> child_map;
-	typedef boost::unordered_map<t_token,child_list> child_map;
-
-	typedef boost::unordered_map<config::t_token, config *> t_child_range_index;
-	typedef boost::unordered_map<config::t_token, config const *> t_const_child_range_index;
+	typedef std::map<std::string,child_list> child_map;
 
 	struct const_child_iterator;
 
@@ -189,23 +167,13 @@ public:
 	 * Variant for storing WML attributes.
 	 * The most efficient type is used when assigning a value. For instance,
 	 * strings "yes", "no", "true", "false" will be detected and stored as boolean.
-	 * References are returned as results.  Once a value is constructed it is stored so that
-	 * future (likely) references will be fast.
-	 * Try not to stuff int into double or elimnate the ghost copies as that prevent excess copying elsewhere.
+	 * @note The blank variant is only used when querying missing attributes.
+	 *       It is not stored in config objects.
 	 */
 	class attribute_value
 	{
-	public:
-		enum attribute_type {EMPTY, BOOL, INT, DOUBLE, TSTRING, TOKEN};
-	private:
-		mutable int int_value_;
-		mutable double double_value_;
-		mutable t_string t_string_value_;
-		mutable t_token token_value_;
-
-		attribute_type type_;
-		mutable bool bool_value_ : 1;
-		mutable bool is_bool_ : 1, is_int_ : 1, is_double_ : 1, is_t_string_ : 1, is_token_ : 1;
+		typedef boost::variant<boost::blank, bool, double, std::string, t_string> value_type;
+		value_type value;
 
 	public:
 		/** Default implementation, but defined out-of-line for efficiency reasons. */
@@ -221,66 +189,35 @@ public:
 		attribute_value &operator=(int v);
 		attribute_value &operator=(double v);
 
-		attribute_value &operator=(const char *v) { return operator=(std::string(v)); }
+		attribute_value &operator=(const char *v)
+		{ return operator=(std::string(v)); }
 		attribute_value &operator=(const std::string &v);
 		attribute_value &operator=(const t_string &v);
-		attribute_value &operator=(const t_token &v);
 
 		bool to_bool(bool def = false) const;
 		int to_int(int def = 0) const;
 		double to_double(double def = 0.) const;
 
+		bool blank() const;
 		bool empty() const;
-		bool blank() const {return empty();}; ///todo remove and use the standard empty()
-		std::string const & str() const;
-		t_string const & t_str() const;
-		t_token const & token() const;
+		std::string str() const;
+		t_string t_str() const;
 
 		operator int() const { return to_int(); }
-		operator std::string const () const { return str(); } ///This is probably ill advised, due to spurious constructions
-		//operator t_string const &() const { return t_str(); }
-		//operator t_token const &() const {return token();}
+		operator std::string() const { return str(); }
+		operator t_string() const { return t_str(); }
 
 		bool operator==(const attribute_value &other) const;
-		bool operator!=(const attribute_value &other) const { return !operator==(other); }
-
-		friend bool operator==(const attribute_value &a, t_token const & b) ;
-		friend bool operator==(t_token const & b, const attribute_value &a) { return a == b;}
-		friend bool operator!=(const attribute_value &a, t_token const & b) { return !(a == b);}
-		friend bool operator!=(t_token const & b, const attribute_value &a) { return a != b;}
-
-		friend bool operator==(const attribute_value &a, t_string const & b) ;
-		friend bool operator==(t_string const & b, const attribute_value &a) { return a == b;}
-		friend bool operator!=(const attribute_value &a, t_string const & b) { return !(a== b);}
-		friend bool operator!=(t_string const & b, const attribute_value &a) { return a != b;}
-
-		friend bool operator==(const attribute_value &a, std::string const & b) {return a == t_token(b);}
-		friend bool operator==(std::string const & b, const attribute_value &a) { return a == b;}
-		friend bool operator!=(const attribute_value &a, std::string const & b) { return !(a == b);}
-		friend bool operator!=(std::string const & b, const attribute_value &a) { return a != b;}
-
-		friend bool operator==(const attribute_value &a, char const * b) {return a == std::string(b);}
-		friend bool operator==(char const * b, const attribute_value &a) { return a == b;}
-		friend bool operator!=(const attribute_value &a, char const * b) { return !(a == b);}
-		friend bool operator!=(char const * b, const attribute_value &a) { return a != b;}
+		bool operator!=(const attribute_value &other) const
+		{ return !operator==(other); }
 
 		friend std::ostream& operator<<(std::ostream &os, const attribute_value &v);
-		struct default_visitor{
-			void operator()() {}
-			void operator()(bool const) {}
-			void operator()(int const) {}
-			void operator()(double const) {}
-			void operator()(config::t_token const & ) {}
-			void operator()(const t_string & ) {}
-		};
-
-		template <typename X> void apply_visitor(X & visitor) const;
+		friend void luaW_pushscalar(lua_State *, const attribute_value &);
+		friend void write_key_val(std::ostream &, const std::string &, const attribute_value &, unsigned, std::string &);
 		friend class vconfig;
 	};
 
-	//Note:: the unordered_map is smaller and the same speed
-	//typedef std::map<t_token, attribute_value> attribute_map;
-	typedef boost::unordered_map<t_token, attribute_value> attribute_map;
+	typedef std::map<std::string, attribute_value> attribute_map;
 	typedef attribute_map::value_type attribute;
 
 	struct const_attribute_iterator
@@ -307,22 +244,6 @@ public:
 	};
 
 	typedef std::pair<const_attribute_iterator,const_attribute_iterator> const_attr_itors;
-	child_itors child_range(const t_token& key);
-	const_child_itors child_range(const t_token& key) const;
-
-	/** Creates an index into the child range to allow for quick searches.
-		key is the key for the child range and name is the column to index.
-		i.e. if the list of save games is stored in a child called save with titles
-		then to create a container indexed by titles do
-
-		child_range_index(z_save, z_title);
-		@Note the index is not stored in the config and is intended for
-		repeated searches of large child ranges.
-	 */
-	t_child_range_index child_range_index(const t_token& key, config::t_token const & name);
-	t_const_child_range_index const_child_range_index(const t_token& key, config::t_token const & name) const;
-
-	unsigned child_count(const t_token &key) const;
 
 	child_itors child_range(const std::string& key);
 	const_child_itors child_range(const std::string& key) const;
@@ -331,7 +252,6 @@ public:
 	/**
 	 * Copies the first child with the given @a key, or an empty config if there is none.
 	 */
-	config child_or_empty(const t_token &key) const;
 	config child_or_empty(const std::string &key) const;
 
 	/**
@@ -340,7 +260,6 @@ public:
 	 * @note A negative @a n accesses from the end of the object.
 	 *       For instance, -1 is the index of the last child.
 	 */
-	config &child(const t_token& key, int n = 0);
 	config &child(const std::string& key, int n = 0);
 
 	/**
@@ -349,12 +268,9 @@ public:
 	 * @note A negative @a n accesses from the end of the object.
 	 *       For instance, -1 is the index of the last child.
 	 */
-	const config &child(const t_token& key, int n = 0) const { return const_cast<config *>(this)->child(key, n); }
-	const config &child(const std::string& key, int n = 0) const { return const_cast<config *>(this)->child(key, n); }
+	const config &child(const std::string& key, int n = 0) const
+	{ return const_cast<config *>(this)->child(key, n); }
 
-	config& add_child(const t_token& key);
-	config& add_child(const t_token& key, const config& val);
-	config& add_child_at(const t_token &key, const config &val, unsigned index);
 	config& add_child(const std::string& key);
 	config& add_child(const std::string& key, const config& val);
 	config& add_child_at(const std::string &key, const config &val, unsigned index);
@@ -365,25 +281,20 @@ public:
 
 	/**
 	 * Returns a reference to the attribute with the given @a key.
-	 * Creates it if it does not exist.  The variant using t_token is faster.
+	 * Creates it if it does not exist.
 	 */
-	attribute_value &operator[](const t_token &key);
-	attribute_value &operator[](const attribute_value &key);
 	attribute_value &operator[](const std::string &key);
 
 	/**
 	 * Returns a reference to the attribute with the given @a key
 	 * or to a dummy empty attribute if it does not exist.
 	 */
-	const attribute_value &operator[](const t_token &key) const;
-	const attribute_value &operator[](const attribute_value &key) const;
 	const attribute_value &operator[](const std::string &key) const;
 
 	/**
 	 * Returns a pointer to the attribute with the given @a key
 	 * or NULL if it does not exist.
 	 */
-	const attribute_value *get(const t_token &key) const;
 	const attribute_value *get(const std::string &key) const;
 
 	/**
@@ -391,26 +302,21 @@ public:
 	 * Get the value of key and if missing try old_key
 	 * and log msg as a WML error (if not empty)
 	*/
-	const attribute_value &get_old_attribute(const t_token &key, const t_token &old_key, const std::string& msg = "") const;
 	const attribute_value &get_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg = "") const;
 	/**
 	 * Returns a reference to the first child with the given @a key.
 	 * Creates the child if it does not yet exist.
 	 */
-	config &child_or_add(const t_token &key);
 	config &child_or_add(const std::string &key);
 
-	bool has_attribute(const t_token &key) const;
 	bool has_attribute(const std::string &key) const;
 	/**
 	 * Function to handle backward compatibility
 	 * Check if has key or old_key
 	 * and log msg as a WML error (if not empty)
 	*/
-	bool has_old_attribute(const t_token &key, const t_token &old_key, const std::string& msg = "") const;
 	bool has_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg = "") const;
 
-	void remove_attribute(const t_token &key);
 	void remove_attribute(const std::string &key);
 	void merge_attributes(const config &);
 
@@ -420,25 +326,20 @@ public:
 	 * Returns the first child of tag @a key with a @a name attribute
 	 * containing @a value.
 	 */
-	config &find_child(const t_token &key, const t_token &name, const t_token &value);
-	config &find_child(const std::string &key, const std::string &name, const std::string &value);
+	config &find_child(const std::string &key, const std::string &name,
+		const std::string &value);
 
-	const config &find_child(const t_token &key, const t_token &name, const t_token &value) const
-	{ return const_cast<config *>(this)->find_child(key, name, value); }
-	const config &find_child(const std::string &key, const std::string &name, const std::string &value) const
+	const config &find_child(const std::string &key, const std::string &name,
+		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
-	void clear_children(const t_token& key);
 	void clear_children(const std::string& key);
 
 	/**
 	 * Moves all the children with tag @a key from @a src to this.
 	 */
-	void splice_children(config &src, const t_token &key);
 	void splice_children(config &src, const std::string &key);
 
-	void remove_child(const t_token &key, unsigned index);
-	void recursive_clear_value(const t_token& key);
 	void remove_child(const std::string &key, unsigned index);
 	void recursive_clear_value(const std::string& key);
 
@@ -568,7 +469,6 @@ public:
 	 * All children with the given key will be merged
 	 * into the first element with that key.
 	 */
-	void merge_children(const t_token& key);
 	void merge_children(const std::string& key);
 
 	/**
@@ -576,7 +476,6 @@ public:
 	 * of the specified attribute will be merged into the
 	 * element with that key and that value of the attribute
 	 */
-	void merge_children_by_attribute(const t_token& key, const t_token& attribute);
 	void merge_children_by_attribute(const std::string& key, const std::string& attribute);
 
 	//this is a cheap O(1) operation
@@ -601,19 +500,7 @@ class variable_set
 {
 public:
 	virtual ~variable_set() {}
-	virtual config::attribute_value get_variable_const(const config::t_token &id) const = 0;
 	virtual config::attribute_value get_variable_const(const std::string &id) const = 0;
 };
-template <typename X> void config::attribute_value::apply_visitor(X & visitor) const {
-	switch(type_){
-	case (EMPTY) : return visitor();
-	case(BOOL) :   return visitor(bool_value_);
-	case(INT) :       return visitor(int_value_);
-	case(DOUBLE) :  return visitor(double_value_);
-	case(TOKEN) :   return visitor(token_value_);
-	case(TSTRING) :  return visitor(t_string_value_);
-	default : assert(false);
-	}
-}
 
 #endif

@@ -32,7 +32,6 @@
 
 #include <deque>
 
-
 namespace ai {
 
 namespace testing_ai_default {
@@ -292,10 +291,8 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 		return std::pair<map_location,map_location>();
 	}
 
-	static const config::t_token & z_guardian( generate_safe_static_const_t_interned(n_token::t_token("guardian")) );
-
 	//guardian units stay put
-	if (u->get_state(z_guardian)) {
+	if (u->get_state("guardian")) {
 		LOG_AI << u->type_id() << " is guardian, staying still\n";
 		return std::make_pair(u->get_location(), u->get_location());
 	}
@@ -389,7 +386,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 		//now see if any other unit can put a better bid forward
 		for(++u; u != units_.end(); ++u) {
 			if (u->side() != get_side() || u->can_recruit() ||
-			    u->movement_left() <= 0 || u->get_state(z_guardian) ||
+			    u->movement_left() <= 0 || u->get_state("guardian") ||
 			    u->incapacitated())
 			{
 				continue;

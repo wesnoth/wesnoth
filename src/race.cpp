@@ -26,18 +26,6 @@
 #include "random.hpp"
 #include "simple_rng.hpp"
 
-namespace {
-DEFAULT_TOKEN_BODY(zf_trait, "trait")
-DEFAULT_TOKEN_BODY(zf_topic, "topic")
-DEFAULT_TOKEN_BODY(zf_id, "id")
-DEFAULT_TOKEN_BODY(zf_plural_name, "plural_name")
-DEFAULT_TOKEN_BODY(zf_description, "description")
-DEFAULT_TOKEN_BODY(zf_num_traits, "num_traits")
-DEFAULT_TOKEN_BODY(zf_markov_chain_size, "markov_chain_size")
-DEFAULT_TOKEN_BODY(zf_ignore_global_traits, "ignore_global_traits")
-
-}
-
 static const config &empty_traits() {
 		static config cfg;
 		return cfg;
@@ -58,12 +46,12 @@ static void add_prefixes(const wide_string& str, size_t length, markov_prefix_ma
 	}
 }
 
-static markov_prefix_map markov_prefixes(const std::vector<config::t_token>& items, size_t length)
+static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, size_t length)
 {
 	markov_prefix_map res;
 
-	for(std::vector<config::t_token>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		add_prefixes(utils::string_to_wstring( (**i) ),length,res);
+	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
+		add_prefixes(utils::string_to_wstring(*i),length,res);
 	}
 
 	return res;
@@ -156,68 +144,56 @@ unit_race::unit_race() :
 		description_(),
 		ntraits_(0),
 		chain_size_(0),
-		traits_(empty_traits().child_range(zf_trait())),
-		topics_(empty_topics().child_range(zf_topic())),
+		traits_(empty_traits().child_range("trait")),
+		topics_(empty_topics().child_range("topic")),
 		global_traits_(true)
 {
-	static const n_token::t_token & z_empty( generate_safe_static_const_t_interned(n_token::t_token("empty")) );
-
-	name_[MALE] = z_empty;
-	name_[FEMALE] = z_empty;
+		name_[MALE] = "";
+		name_[FEMALE] = "";
 }
 
 unit_race::unit_race(const config& cfg) :
 		cfg_(cfg),
-		id_(cfg[zf_id()].token()),
-		plural_name_(cfg[zf_plural_name()].t_str()),
-		description_(cfg[zf_description()].t_str()),
-		ntraits_(cfg[zf_num_traits()]),
-		chain_size_(cfg[zf_markov_chain_size()]),
-		traits_(cfg.child_range(zf_trait())),
-		topics_(cfg.child_range(zf_topic())),
-		global_traits_(!cfg[zf_ignore_global_traits()].to_bool())
+		id_(cfg["id"]),
+		plural_name_(cfg["plural_name"].t_str()),
+		description_(cfg["description"].t_str()),
+		ntraits_(cfg["num_traits"]),
+		chain_size_(cfg["markov_chain_size"]),
+		traits_(cfg.child_range("trait")),
+		topics_(cfg.child_range("topic")),
+		global_traits_(!cfg["ignore_global_traits"].to_bool())
 
 {
-
-	static const config::t_token & z_name( generate_safe_static_const_t_interned(n_token::t_token("name")) );
-	static const config::t_token & z_male_name( generate_safe_static_const_t_interned(n_token::t_token("male_name")) );
-	static const config::t_token & z_female_name( generate_safe_static_const_t_interned(n_token::t_token("female_name")) );
-	static const config::t_token & z_male_names( generate_safe_static_const_t_interned(n_token::t_token("male_names")) );
-	static const config::t_token & z_female_names( generate_safe_static_const_t_interned(n_token::t_token("female_names")) );
-
-	config::attribute_value const &  a_name= cfg[z_name];
-	config::attribute_value const &  a_male_name= cfg[z_male_name];
-	config::attribute_value const &  a_female_name= cfg[z_female_name];
-
 	if (id_.empty()) {
-		lg::wml_error << "[race] '" << a_name << "' is missing an id field.";
+		lg::wml_error << "[race] '" << cfg["name"] << "' is missing an id field.";
 	}
 	if (plural_name_.empty()) {
-		lg::wml_error << "[race] '" << a_name << "' is missing a plural_name field.";
-		plural_name_ = (a_name.t_str());
+		lg::wml_error << "[race] '" << cfg["name"] << "' is missing a plural_name field.";
+		plural_name_ = (cfg["name"]);
 	}
-	// use z_name if z_male_name or z_female_name aren't available
-	name_[MALE] = a_male_name;
+	// use "name" if "male_name" or "female_name" aren't available
+	name_[MALE] = cfg["male_name"];
 	if(name_[MALE].empty()) {
-		name_[MALE] = a_name;
+		name_[MALE] = (cfg["name"]);
 	}
-	name_[FEMALE] = a_female_name;
+	name_[FEMALE] = cfg["female_name"];
 	if(name_[FEMALE].empty()) {
-		name_[FEMALE] = a_name;
+		name_[FEMALE] = (cfg["name"]);
 	}
 
 	if(chain_size_ <= 0)
 		chain_size_ = 2;
 
 	//std::vector<std::string> names = ;
-	next_[MALE] = markov_prefixes(utils::split_attr(cfg[z_male_names]), chain_size_);
-	next_[FEMALE] = markov_prefixes(utils::split_attr(cfg[z_female_names]), chain_size_);
+	next_[MALE] = markov_prefixes(utils::split(cfg["male_names"]), chain_size_);
+	next_[FEMALE] = markov_prefixes(utils::split(cfg["female_names"]), chain_size_);
 }
 
-config::t_token unit_race::generate_name(
+std::string unit_race::generate_name(
 		unit_race::GENDER gender, rand_rng::simple_rng* rng) const
 {
-	return config::t_token(utils::wstring_to_string(markov_generate_name(next_[gender], chain_size_, 12, rng)) );
+	return utils::wstring_to_string(
+		markov_generate_name(next_[gender], chain_size_, 12, rng));
 }
 
 bool unit_race::uses_global_traits() const
@@ -237,20 +213,19 @@ const config::const_child_itors &unit_race::additional_topics() const
 
 unsigned int unit_race::num_traits() const { return ntraits_; }
 
-config::t_token const& gender_string(unit_race::GENDER gender) {
-	static const config::t_token & z_female_string( generate_safe_static_const_t_interned(n_token::t_token("female")) );
-	static const config::t_token & z_male_string( generate_safe_static_const_t_interned(n_token::t_token("male")) );
-
+std::string const& gender_string(unit_race::GENDER gender) {
+	static const std::string female_string = "female";
+	static const std::string male_string = "male";
 	switch(gender) {
 	case unit_race::FEMALE:
-		return z_female_string;
+		return female_string;
 	default:
 	case unit_race::MALE:
-		return z_male_string;
+		return male_string;
 	}
 }
 
-unit_race::GENDER string_gender(const config::t_token& str, unit_race::GENDER def) {
+unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
 	if(str == gender_string(unit_race::MALE)) {
 		return unit_race::MALE;
 	} else if(str == gender_string(unit_race::FEMALE)) {

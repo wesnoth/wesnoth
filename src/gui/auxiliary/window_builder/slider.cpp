@@ -45,7 +45,7 @@ tbuilder_slider::tbuilder_slider(const config& cfg)
 	}
 
 	foreach(const config& label, labels.child_range("value")) {
-		value_labels_.push_back(label["label"].t_str());
+		value_labels_.push_back(label["label"]);
 	}
 }
 

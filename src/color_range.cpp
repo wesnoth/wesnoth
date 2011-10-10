@@ -161,7 +161,7 @@ std::string rgb2highlight(Uint32 rgb)
 int color_range::index() const
 {
 	for(int i = 1; i <= gamemap::MAX_PLAYERS; ++i) {
-		if(*this==(game_config::color_info(n_token::t_token(lexical_cast<std::string>(i))))) {
+		if(*this==(game_config::color_info(lexical_cast<std::string>(i)))) {
 			return i;
 		}
 	}

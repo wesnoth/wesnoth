@@ -129,21 +129,19 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 		return att_.num_attacks() - att_callable->att_.num_attacks();
 
 	if ( att_.id() != att_callable->att_.id() )
-		return (*att_.id()).compare(att_callable->att_.id());
+		return att_.id().compare(att_callable->att_.id());
 
 	if ( att_.type() != att_callable->att_.type() )
-		return (*att_.type()).compare(att_callable->att_.type());
+		return att_.type().compare(att_callable->att_.type());
 
 	if ( att_.range() != att_callable->att_.range() )
-		return (*att_.range()).compare(att_callable->att_.range());
+		return att_.range().compare(att_callable->att_.range());
 
-	return (*att_.weapon_specials()).compare(att_callable->att_.weapon_specials());
+	return att_.weapon_specials().compare(att_callable->att_.weapon_specials());
 }
 
 variant unit_callable::get_value(const std::string& key) const
 {
-	static const config::t_token & z_not_living( generate_safe_static_const_t_interned(n_token::t_token("not_living")) );
-
 	if(key == "x") {
 		if (loc_==map_location::null_location) {
 			return variant();
@@ -173,7 +171,7 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "leader") {
 		return variant(u_.can_recruit());
 	} else if(key == "undead") {
-		return variant(u_.get_state(z_not_living) ? 1 : 0);
+		return variant(u_.get_state("not_living") ? 1 : 0);
 	} else if(key == "attacks") {
 		const std::vector<attack_type>& att = u_.attacks();
 		std::vector<variant> res;
@@ -182,13 +180,13 @@ variant unit_callable::get_value(const std::string& key) const
 			res.push_back(variant(new attack_type_callable(*i)));
 		return variant(&res);
 	} else if(key == "abilities") {
-		std::vector<config::t_token> abilities = u_.get_ability_list();
+		std::vector<std::string> abilities = u_.get_ability_list();
 		std::vector<variant> res;
 
 		if (abilities.empty())
 			return variant( &res );
 
-		for (std::vector<config::t_token>::iterator it = abilities.begin(); it != abilities.end(); ++it)
+		for (std::vector<std::string>::iterator it = abilities.begin(); it != abilities.end(); ++it)
 		{
 			res.push_back( variant(*it) );
 		}
@@ -210,19 +208,19 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "attacks_left") {
 		return variant(u_.attacks_left());
 	} else if(key == "traits") {
-		const std::vector<config::t_token> traits = u_.get_traits_list();
+		const std::vector<std::string> traits = u_.get_traits_list();
 		std::vector<variant> res;
 
 		if(traits.empty())
 			return variant( &res );
 
-		for (std::vector<config::t_token>::const_iterator it = traits.begin(); it != traits.end(); ++it)
+		for (std::vector<std::string>::const_iterator it = traits.begin(); it != traits.end(); ++it)
 		{
 			res.push_back( variant(*it) );
 		}
 		return variant( &res );
 	} else if(key == "states") {
-		const std::map<config::t_token, config::t_token>& states_map = u_.get_states();
+		const std::map<std::string, std::string>& states_map = u_.get_states();
 
 		return convert_map( states_map );
 	} else if(key == "side") {
@@ -288,13 +286,13 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "alignment") {
 		return variant(u_.alignment_id(u_.alignment()));
 	} else if(key == "abilities") {
-		std::vector<config::t_token> abilities = u_.get_ability_list();
+		std::vector<std::string> abilities = u_.get_ability_list();
 		std::vector<variant> res;
 
 		if (abilities.empty())
 			return variant( &res );
 
-		for (std::vector<config::t_token>::iterator it = abilities.begin(); it != abilities.end(); ++it)
+		for (std::vector<std::string>::iterator it = abilities.begin(); it != abilities.end(); ++it)
 		{
 			res.push_back( variant(*it) );
 		}
@@ -349,7 +347,7 @@ int unit_type_callable::do_compare(const formula_callable* callable) const
 		return formula_callable::do_compare(callable);
 	}
 
-	return (*u_.id()).compare(u_callable->u_.id());
+	return u_.id().compare(u_callable->u_.id());
 }
 
 variant terrain_callable::get_value(const std::string& key) const

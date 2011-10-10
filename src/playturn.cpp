@@ -147,8 +147,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const int side = lexical_cast<int>(change["side"]);
 		const size_t index = static_cast<size_t>(side-1);
 
-		const std::string controller = change["controller"];
-		const std::string player = change["player"];
+		const std::string &controller = change["controller"];
+		const std::string &player = change["player"];
 
 		if(index < resources::teams->size()) {
 			team &tm = (*resources::teams)[index];

@@ -270,7 +270,7 @@ void move::execute(bool& success, bool& complete)
 	}
 	else if (final_location.valid() &&
 			(unit_it = resources::units->find(final_location)) != resources::units->end()
-			 && unit_it->id() == config::t_token(unit_id_))
+			&& unit_it->id() == unit_id_)
 	{
 		if (steps_finished && route_->steps.back() == final_location) //reached destination
 		{
