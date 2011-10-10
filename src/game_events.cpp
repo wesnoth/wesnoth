@@ -79,6 +79,9 @@ static lg::log_domain log_wml("wml");
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
+static lg::log_domain log_event_handler("event_handler");
+#define DBG_EH LOG_STREAM(debug, log_event_handler)
+
 /**
  * State when processing a flight of events or commands.
  */
@@ -581,6 +584,31 @@ namespace {
 		std::set<std::string> remove_buffer_; ///Event handlers removed while pumping events
 		bool buffering_; 
 
+
+		void log_handler(std::stringstream& ss,
+			const std::vector<game_events::event_handler>& handlers,
+			const std::string& msg) {
+
+			foreach(const game_events::event_handler& h, handlers){
+				const config& cfg = h.get_config();
+				ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; ";
+			}
+			DBG_EH << msg << " handlers are now " << ss.str() << "\n";
+			ss.str(std::string());
+		}
+
+		void log_handlers() {
+			if(lg::debug.dont_log("event_handler")) return;
+
+			std::stringstream ss;
+			log_handler(ss, active_, "active");
+			log_handler(ss, insert_buffer_, "insert buffered");
+			foreach(const std::string& h, remove_buffer_){
+				ss << "id=" << h << "; ";
+			}
+			DBG_EH << "remove buffered handlers are now " << ss.str() << "\n";
+		}
+
 	public:
 
 		t_event_handlers()
@@ -592,7 +620,12 @@ namespace {
 		 * respects this class's buffering functionality.
 		 */
 		void add_event_handler(game_events::event_handler const & new_handler) {
-			if(buffering_) { insert_buffer_.push_back(new_handler); }
+			if(buffering_) {
+				DBG_EH << "buffering event handler for name=" << new_handler.get_config()["name"] <<
+				" with id " << new_handler.get_config()["id"] << "\n";
+				insert_buffer_.push_back(new_handler);
+				log_handlers();
+			}
 
 			else {
 				const config & cfg = new_handler.get_config();
@@ -600,10 +633,17 @@ namespace {
 				if(id != "") {
 					foreach( game_events::event_handler const & eh, active_) {
 						config const & temp_config( eh.get_config());
-						if(id == temp_config["id"]) { return; } 
+						if(id == temp_config["id"]) {
+							DBG_EH << "ignoring event handler for name=" << cfg["name"] <<
+								" with id " << id << "\n";
+							return;
+						}
 					}
 				}
+				DBG_EH << "inserting event handler for name=" << cfg["name"] <<
+					" with id=" << id << "\n";
 				active_.push_back(new_handler);
+				log_handlers();
 			}
 		}
 
@@ -614,6 +654,8 @@ namespace {
 		 */
 		void remove_event_handler(std::string const & id) {
 			if(id == "") { return; }
+
+			DBG_EH << "removing event handler with id " << id << "\n";
 
 			if(buffering_) { remove_buffer_.insert(id); }
 
@@ -628,6 +670,7 @@ namespace {
 				else {
 					++i; }
 			}
+			log_handlers();
 		}
 
 		/**
@@ -636,12 +679,16 @@ namespace {
 		 * is called.  This function is idempotent - starting a buffer
 		 * when already buffering will not start a second buffer.
 		 */
-		void start_buffering() { buffering_ = true; }
+		void start_buffering() {
+			buffering_ = true;
+			DBG_EH << "starting buffering...\n";
+		}
 
 		/**
 		 * Stops buffering and commits all changes.
 		 */
 		void commit_buffer() {
+			DBG_EH << "committing buffered event handlers, buffering: " << buffering_ << "\n";
 			if(!buffering_) { return; }
 
 			buffering_ = false;
@@ -655,6 +702,8 @@ namespace {
 			foreach( game_events::event_handler const & i ,  insert_buffer_ ){
 				add_event_handler( i ); }
 			insert_buffer_.clear();
+
+			log_handlers();
 		}
 
 		void clear(){
@@ -3240,7 +3289,7 @@ namespace game_events {
 		if(!events_init())
 			return;
 
-		LOG_NG << "fire event: " << event << "\n";
+		DBG_EH << "raising event: " << event << "\n";
 
 		events_queue.push_back(game_events::queued_event(event,loc1,loc2,data));
 	}
@@ -3267,6 +3316,8 @@ namespace game_events {
 
 	void commit()
 	{
+		DBG_EH << "committing new event handlers, number of pump_instances: " <<
+			pump_manager::count() << "\n";
 		if(pump_manager::count() == 1) {
 			commit_wmi_commands();
 			event_handlers.commit_buffer();
@@ -3292,6 +3343,14 @@ namespace game_events {
 		}
 
 		event_handlers.start_buffering();
+
+		if(!lg::debug.dont_log("event_handler")) {
+			std::stringstream ss;
+			foreach(const game_events::queued_event& ev, events_queue) {
+				ss << "name=" << ev.name << "; ";
+			}
+			DBG_EH << "processing queued events: " << ss.str() << "\n";
+		}
 
 		bool result = false;
 		while(events_queue.empty() == false) {
@@ -3322,7 +3381,8 @@ namespace game_events {
 					init_event_vars = false;
 				}
 
-				LOG_NG << "processing event '" << event_name << "'\n";
+				DBG_EH << "processing event " << event_name << " with id="<<
+					handler.get_config()["id"] << "\n";
 				if(process_event(handler, ev))
 				{
 					resources::whiteboard->on_gamestate_change();
