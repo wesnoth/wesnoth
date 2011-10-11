@@ -288,7 +288,7 @@ std::string si_string(double input, bool base2, std::string unit) {
 		strings9 tmp = { {
 			"",
 			_("prefix_milli^m"),
-			_("prefix_micro^μ"),
+			_("prefix_micro^µ"),
 			_("prefix_nano^n"),
 			_("prefix_pico^p"),
 			_("prefix_femto^f"),
