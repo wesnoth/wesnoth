@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2011-07-19 11:24+0300\n"
-"Last-Translator: Ushkin N\n"
+"PO-Revision-Date: 2011-09-29 20:44+0200\n"
+"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: ZumZoom\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -88,17 +88,13 @@ msgstr "Береговой риф"
 
 #. [terrain_type]: id=gray_reef
 #: data/core/terrain.cfg:93
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Gray Coastal Reef"
-msgstr "Береговой риф"
+msgstr "Серый береговой риф"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:113
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Tropical Coastal Reef"
-msgstr "Береговой риф"
+msgstr "Тропический береговой риф"
 
 #. [terrain_type]: id=swamp_water
 #. [terrain_type]: id=quagmire
@@ -796,10 +792,8 @@ msgstr "Город людей"
 
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1392
-#, fuzzy
-#| msgid "Ruined Hill Stone Village"
 msgid "Windmill Village"
-msgstr "Разрушенная каменная деревня на холме"
+msgstr "Деревня с мельницей"
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1405
@@ -2521,7 +2515,7 @@ msgstr "Включить режим планирования в начале и�
 
 #: src/game_preferences_display.cpp:186
 msgid "Hide Allies’ Plans by Default"
-msgstr ""
+msgstr "По умолчанию не показывать планы союзников"
 
 #: src/game_preferences_display.cpp:187
 msgid "Turn Bell"
@@ -2784,7 +2778,7 @@ msgstr "Активирует режим планирования при стар
 
 #: src/game_preferences_display.cpp:407
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
-msgstr ""
+msgstr "Не показывать планы союзников в мультиплеере"
 
 #: src/game_preferences_display.cpp:410
 msgid "Play a bell sound at the beginning of your turn"
@@ -3086,7 +3080,7 @@ msgstr "Загрузить игру..."
 #: src/gui/dialogs/network_transmission.cpp:55
 #: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1178
 msgid "unit_byte^B"
-msgstr ""
+msgstr "b"
 
 #: src/gui/dialogs/title_screen.cpp:296
 msgid "Version "

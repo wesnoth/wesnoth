@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2011-07-25 18:46+0200\n"
+"PO-Revision-Date: 2011-10-12 17:01+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: ZumZoom\n"
 "Language: ru\n"
@@ -86,12 +86,12 @@ msgstr "Время ожидания ответа от сервера в секу
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
 msgid "Accept whisper messages from friends only"
-msgstr "Получать шёпоты только от друзей"
+msgstr "Получать личные сообщения только от друзей"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Auto-open whisper windows in lobby"
-msgstr "Автоматически открывать окна шёпотов в холле"
+msgstr "Автоматически открывать окна личных сообщений в холле"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
@@ -122,30 +122,27 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
 msgid "Follow Unit Actions"
-msgstr "Следить за бойцом"
+msgstr "Следить за действиями бойца"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:116
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
-msgstr "Будет ли карта скроллироваться за бойцом, когда он выполняет свой ход"
+msgstr "Будет ли камера следовать за бойцом, когда он выполняет свой ход"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
 msgid "Chat message aging"
-msgstr ""
+msgstr "Устарение сообщений в чате"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:133
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Disable "
 "aging with 0."
-msgstr "Время ожидания ответа от сервера в секундах. 0 — отключить."
+msgstr ""
+"Время ожидания до очистки игрового чата в минутах. 0 — отключить очистку."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
@@ -414,7 +411,7 @@ msgstr "Программные сборки"
 #. [about]
 #: data/core/about.cfg:878
 msgid "Miscellaneous Contributors"
-msgstr "При участии"
+msgstr "Прочие участники"
 
 #. [about]
 #: data/core/about.cfg:1198
@@ -624,7 +621,7 @@ msgstr "Португальский перевод"
 #. [about]
 #: data/core/about.cfg:2367
 msgid "Portuguese (Brazil) Translation"
-msgstr "Португальский бразильский перевод"
+msgstr "Португальский (бразильский) перевод"
 
 #. [about]
 #: data/core/about.cfg:2409
@@ -714,7 +711,7 @@ msgstr "Команда союзнику"
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr "$ally_leader.name (фракция $ally_side|) выполняет такие инструкции:"
+msgstr "$ally_leader.name (фракция $ally_side|) выполняет такие команды:"
 
 #. [overview_message_no_instructions]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:34
@@ -722,7 +719,7 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
-"$ally_leader.name (фракция $ally_side|) не получил инструкций и действует на "
+"$ally_leader.name (фракция $ally_side|) не получил команд  и действует на "
 "своё усмотрение."
 
 #. [aggression]
@@ -791,7 +788,7 @@ msgstr "Назад"
 #. [protect]
 #: data/core/macros/ai_controller.cfg:201
 msgid "Focus on protecting..."
-msgstr "Защищай..."
+msgstr "Сосредоточься на обороне..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:202
@@ -805,37 +802,37 @@ msgstr ""
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:352
 msgid "Defend a location..."
-msgstr "Защищай место..."
+msgstr "Обороняй место..."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:368
 msgid "Right-click to select a location to defend"
-msgstr "Кликните правой кнопкой в месте, которое надо защитить"
+msgstr "Кликните правой кнопкой в месте, которое надо оборонять"
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:375
 msgid "Defend this location"
-msgstr "Защищай это место"
+msgstr "Обороняй  это место"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:392
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr "Защищай область вокруг $x1|,$y1|."
+msgstr "Сосредоточься на обороне области вокруг $x1|,$y1|."
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:434
 msgid "Location selection canceled"
-msgstr "Место не выбрано"
+msgstr "Выбор места отменен"
 
 #. [revoke_objective_orders]
 #: data/core/macros/ai_controller.cfg:449
 msgid "Clear objective orders"
-msgstr "Отменить приказы целей"
+msgstr "Отменить указания  целей"
 
 #. [revoke_behavior_orders]
 #: data/core/macros/ai_controller.cfg:461
 msgid "Clear behavior orders"
-msgstr "Отменить приказы поведения"
+msgstr "Отменить указания поведения"
 
 #. [revoke_all_orders]
 #: data/core/macros/ai_controller.cfg:474
@@ -2783,9 +2780,9 @@ msgid ""
 "remaining. You will usually earn more gold this way than through capturing "
 "villages and waiting for the turns to run out."
 msgstr ""
-"В большинстве кампаний вы получаете золотом бонус за досрочное выполнение "
+"В большинстве кампаний Вы получаете золото в награду за досрочное выполнение "
 "задания. Размер бонуса зависит от количества захваченных деревень и числа "
-"сэкономленных ходов. Закончив игру раньше, вы получите больше золота, чем "
+"сэкономленных ходов. Закончив игру раньше, Вы получите больше золота, чем "
 "захватив все деревни, но дождавшись окончания ходов."
 
 #. [tip]
@@ -2818,9 +2815,9 @@ msgid ""
 "the same side fight better. You can move these units slowly along your "
 "battle lines and give bonuses to large numbers of lower-level troops."
 msgstr ""
-"Бойцы со способностью «лидерства» помогают сражаться соседним бойцам низших "
-"уровней. Вы можете перемещать лидеров по полю боя, чтобы как можно больше "
-"слабых бойцов получили бонусы."
+"Бойцы со способностью <i>лидерства</i> помогают сражаться соседним бойцам "
+"низших уровней. Вы можете перемещать лидеров по полю боя, чтобы как можно "
+"больше слабых бойцов получили бонусы."
 
 #. [tip]
 #: data/hardwired/tips.cfg:136
@@ -3757,7 +3754,7 @@ msgstr "Загрузить"
 
 #: src/addon/manager.cpp:1263
 msgid "Done"
-msgstr "Выполнено"
+msgstr "Закончить"
 
 #: src/addon/manager.cpp:1275 src/dialogs.cpp:649 src/menu_events.cpp:947
 #: src/menu_events.cpp:1568
@@ -5071,7 +5068,7 @@ msgstr "Переключить режим планирования."
 
 #: src/menu_events.cpp:2626
 msgid "Access whiteboard options dialog."
-msgstr ""
+msgstr "Открыть настройки планировщика"
 
 #: src/menu_events.cpp:2672
 msgid "Unknown debug level: '$level'."
@@ -5307,6 +5304,8 @@ msgid ""
 msgstr ""
 "Ник '$nick' неактивен. Вы не можете запрашивать этот ник, пока не "
 "активируете свой аккаунт по email или не попросите администратора "
+"активировать Вас.Ник '$nick' неактивен. Вы не можете запрашивать этот ник, "
+"пока не активируете свой аккаунт по email или не попросите администратора "
 "активировать Вас."
 
 #: src/multiplayer.cpp:248
@@ -6654,27 +6653,23 @@ msgstr ""
 
 #: src/whiteboard/manager.cpp:941
 msgid "SHOW ALL allies’ plans"
-msgstr ""
+msgstr "Показать планы всех союзников"
 
 #: src/whiteboard/manager.cpp:942
 msgid "HIDE ALL allies’ plans"
-msgstr ""
+msgstr "Скрыть планы всех союзников"
 
 #: src/whiteboard/manager.cpp:956
-#, fuzzy
-#| msgid "Show replay"
 msgid "Show plans for $player"
-msgstr "Показать повтор"
+msgstr "Показать план $player"
 
 #: src/whiteboard/manager.cpp:958
-#, fuzzy
-#| msgid "Replace with $player"
 msgid "Hide plans for $player"
-msgstr "Заменить игроком $player"
+msgstr "Скрыть план $player"
 
 #: src/whiteboard/manager.cpp:961
 msgid "Whiteboard Options"
-msgstr ""
+msgstr "Настройки планировщика"
 
 #~ msgid "moves"
 #~ msgstr "ходы"

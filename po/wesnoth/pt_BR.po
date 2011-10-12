@@ -9,15 +9,14 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2011-10-10 00:54-0300\n"
+"PO-Revision-Date: 2011-10-10 22:59-0300\n"
 "Last-Translator: Filipe Borges <fqborges@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
-"Language: \n"
+"Language: Portuguese (Brazil)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Poedit-Basepath: D:\\Dev\\wesnoth\\trunk\\\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -147,12 +146,12 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
 msgid "Use 12-hour clock format"
-msgstr ""
+msgstr "Usar formato horário de 12 horas"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:150
 msgid "Confirm loading of saves from a different version"
-msgstr ""
+msgstr "Confirmar ao carregar jogos salvos de outra versão"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
@@ -2237,22 +2236,17 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units only reach their full strength during twilight.\n"
 "\n"
 "Day: −25% Damage\n"
 "Night: −25% Damage"
 msgstr ""
-"Unidades ordeiras lutam melhor de dia, e pior de noite.\n"
+"Unidades de liminar só atingem sua força total durante períodos de "
+"penumbra.\n"
 "\n"
-"Dia: +25% do dano\n"
-"Noite: −25% do dano"
+"Dia: −25% Dano\n"
+"Noite: −25% Dano"
 
 #. [language]
 #: data/english.cfg:23
@@ -2584,10 +2578,6 @@ msgstr "<i>― A Comunidade de Wesnoth</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
-#| msgid ""
-#| "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-#| "better at night. <i>Neutral</i> units are unaffected by the time of day."
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
@@ -2595,7 +2585,8 @@ msgid ""
 msgstr ""
 "Unidades <i>ordeiras</i> lutam melhor de dia, e unidades <i>caóticas</i> "
 "lutam melhor à noite. Unidades <i>neutras</i> não são afetadas pelo período "
-"do dia."
+"do dia. As raras unidades <i>liminares</i> lutam melhor nos períodos de "
+"penumbra — amanhecer e anoitecer."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
@@ -3947,10 +3938,8 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:465 src/savegame.cpp:137
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %b %d %I:%M %p %Y"
 
 #: src/dialogs.cpp:481
 msgid "#(Invalid)"
@@ -3999,17 +3988,15 @@ msgstr "%H:%M"
 
 #: src/dialogs.cpp:559 src/reports.cpp:1223 src/savegame.cpp:177
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/dialogs.cpp:564 src/savegame.cpp:182
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:567 src/savegame.cpp:185
-#, fuzzy
-#| msgid "%A, %H:%M"
 msgid "%A, %I:%M %p"
-msgstr "%A, %H:%M"
+msgstr "%A, %I:%M %p"
 
 #: src/dialogs.cpp:571 src/savegame.cpp:189
 msgid "%b %d"
@@ -4092,30 +4079,28 @@ msgid "Formula in WML string cannot be evaluated because, "
 msgstr ""
 
 #: src/formula_string_utils_backend.cpp:293
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Invalid WML found"
-msgstr "Local inválido"
+msgstr "Encontrado WML inválido"
 
 #: src/formula_string_utils_backend.cpp:328
 msgid " $$| creates an illegal variable name"
-msgstr ""
+msgstr " $$| cria um nome de variável ilegal"
 
 #: src/formula_string_utils_backend.cpp:341
 msgid "missing variable name immediately after $"
-msgstr ""
+msgstr "faltando nome de variável imediatamente após $"
 
 #: src/formula_string_utils_backend.cpp:419
 msgid "missing field name after ]. (correct usage: $array[$i].fieldname)"
-msgstr ""
+msgstr "faltando nome de campo antes de ]. (uso correto: $array[$i].fieldname)"
 
 #: src/formula_string_utils_backend.cpp:423
 msgid "missing variable name after $ (valid characters are a-zA-Z0-9_)"
-msgstr ""
+msgstr "faltando nome de variável após $ (caracteres válidos são a-zA-Z0-9_)"
 
 #: src/formula_string_utils_backend.cpp:437
 msgid "formula is incomplete at the end of the line"
-msgstr ""
+msgstr "fórmula é incompleta no término da linha"
 
 #: src/formula_string_utils_backend.cpp:440
 msgid "of missing paren in the formula should be $( ...)"
@@ -6330,7 +6315,7 @@ msgstr "Efeitos das Armas:"
 
 #: src/reports.cpp:767
 msgid "None"
-msgstr ""
+msgstr "Nenhuma"
 
 #: src/reports.cpp:959
 msgid "Lawful units: "
@@ -6345,10 +6330,8 @@ msgid "Chaotic units: "
 msgstr "Unidades Caóticas: "
 
 #: src/reports.cpp:962
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Liminal units: "
-msgstr "Unidades Ordeiras: "
+msgstr "Unidades Liminares: "
 
 #: src/reports.cpp:1184
 msgid "Observers:"
@@ -6686,7 +6669,7 @@ msgstr "ordeiro"
 
 #: src/unit_types.cpp:1072
 msgid "liminal"
-msgstr ""
+msgstr "liminar"
 
 #: src/unit_types.cpp:1072
 msgid "neutral"
@@ -6701,10 +6684,8 @@ msgid "female^lawful"
 msgstr "ordeira"
 
 #: src/unit_types.cpp:1073
-#, fuzzy
-#| msgid "female^lawful"
 msgid "female^liminal"
-msgstr "ordeira"
+msgstr "Liminar"
 
 #: src/unit_types.cpp:1073
 msgid "female^neutral"
@@ -6715,6 +6696,8 @@ msgid ""
 "the first character of the identifier is an invalid character, one of  . , "
 "[, or ]. "
 msgstr ""
+"o primeiro caractere do identificador é um caractere inválido, um de . , "
+"[ ou ]."
 
 #: src/variable.cpp:651
 msgid ""
@@ -6734,7 +6717,7 @@ msgstr ""
 
 #: src/variable.cpp:815
 msgid "attempt to get length of a non array/container."
-msgstr ""
+msgstr "tentativa de obter o comprimento de algo não array ou conteiner"
 
 #: src/whiteboard/manager.cpp:941
 msgid "SHOW ALL allies’ plans"
@@ -6755,6 +6738,3 @@ msgstr "Esconder planos de $player"
 #: src/whiteboard/manager.cpp:961
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
-
-#~ msgid "moves"
-#~ msgstr "move"
