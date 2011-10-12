@@ -903,11 +903,6 @@
 		F480CD4C14035038007175D6 /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3E14035038007175D6 /* tag.cpp */; };
 		F4E4E0B11367241E001C7528 /* suppose_dead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */; };
 		F4E4E0B41367244F001C7528 /* image_modifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0B21367244F001C7528 /* image_modifications.cpp */; };
-		F4EC8FDE141CE236007B2411 /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4EC8FDD141CE236007B2411 /* token.cpp */; };
-		F4EC8FE5141CE279007B2411 /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4EC8FDD141CE236007B2411 /* token.cpp */; };
-		F4EC8FF6141CED90007B2411 /* formula_string_utils_backend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4EC8FF5141CED90007B2411 /* formula_string_utils_backend.cpp */; };
-		F4EC8FFA141CEFB4007B2411 /* exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4EC8FF9141CEFB4007B2411 /* exceptions.cpp */; };
-		F4EEBA7E141EE13D004FB7C8 /* team_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4EEBA7C141EE13D004FB7C8 /* team_builder.cpp */; };
 		F4EF0D4C13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D4B13AD4D53003C701D /* libboost_iostreamsw.dylib */; };
 		F4EF0D4D13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D4B13AD4D53003C701D /* libboost_iostreamsw.dylib */; };
 		F4EF0D5513AD4E35003C701D /* libboost_program_optionsw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5213AD4E35003C701D /* libboost_program_optionsw.dylib */; };
@@ -1927,12 +1922,6 @@
 		F4E4E0B01367241E001C7528 /* suppose_dead.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = suppose_dead.hpp; sourceTree = "<group>"; };
 		F4E4E0B21367244F001C7528 /* image_modifications.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = image_modifications.cpp; sourceTree = "<group>"; };
 		F4E4E0B31367244F001C7528 /* image_modifications.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = image_modifications.hpp; sourceTree = "<group>"; };
-		F4EC8FDD141CE236007B2411 /* token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = token.cpp; sourceTree = "<group>"; };
-		F4EC8FF0141CE605007B2411 /* formula_string_utils_backend.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = formula_string_utils_backend.hpp; sourceTree = "<group>"; };
-		F4EC8FF5141CED90007B2411 /* formula_string_utils_backend.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = formula_string_utils_backend.cpp; sourceTree = "<group>"; };
-		F4EC8FF9141CEFB4007B2411 /* exceptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = exceptions.cpp; sourceTree = "<group>"; };
-		F4EEBA7C141EE13D004FB7C8 /* team_builder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = team_builder.cpp; sourceTree = "<group>"; };
-		F4EEBA7D141EE13D004FB7C8 /* team_builder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = team_builder.hpp; sourceTree = "<group>"; };
 		F4EF0D4B13AD4D53003C701D /* libboost_iostreamsw.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_iostreamsw.dylib; path = lib/libboost_iostreamsw.dylib; sourceTree = "<group>"; };
 		F4EF0D5213AD4E35003C701D /* libboost_program_optionsw.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_program_optionsw.dylib; path = lib/libboost_program_optionsw.dylib; sourceTree = "<group>"; };
 		F4EF0D5313AD4E35003C701D /* libboost_regexw.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_regexw.dylib; path = lib/libboost_regexw.dylib; sourceTree = "<group>"; };
@@ -2088,12 +2077,6 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
-				F4EEBA7C141EE13D004FB7C8 /* team_builder.cpp */,
-				F4EEBA7D141EE13D004FB7C8 /* team_builder.hpp */,
-				F4EC8FF9141CEFB4007B2411 /* exceptions.cpp */,
-				F4EC8FF5141CED90007B2411 /* formula_string_utils_backend.cpp */,
-				F4EC8FF0141CE605007B2411 /* formula_string_utils_backend.hpp */,
-				F4EC8FDD141CE236007B2411 /* token.cpp */,
 				F480CD2D14035038007175D6 /* tools */,
 				F4448F4113C5483D003B6442 /* game_instance.cpp */,
 				F4448F4213C5483D003B6442 /* game_instance.hpp */,
@@ -3866,10 +3849,6 @@
 				F480CD4914035038007175D6 /* error_container.cpp in Sources */,
 				F480CD4B14035038007175D6 /* sourceparser.cpp in Sources */,
 				F480CD4C14035038007175D6 /* tag.cpp in Sources */,
-				F4EC8FDE141CE236007B2411 /* token.cpp in Sources */,
-				F4EC8FF6141CED90007B2411 /* formula_string_utils_backend.cpp in Sources */,
-				F4EC8FFA141CEFB4007B2411 /* exceptions.cpp in Sources */,
-				F4EEBA7E141EE13D004FB7C8 /* team_builder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4279,7 +4258,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4EC8FE5141CE279007B2411 /* token.cpp in Sources */,
 				B5BB6B7D0F893E7500444FBF /* game.cpp in Sources */,
 				B5BB6B7E0F893E7500444FBF /* input_stream.cpp in Sources */,
 				B5BB6B820F893E7500444FBF /* simple_wml.cpp in Sources */,
