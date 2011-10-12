@@ -1938,6 +1938,19 @@ static int intf_message(lua_State *L)
 }
 
 /**
+ * Dumps a wml table or userdata wml object into a pretty string.
+ * - Arg 1: wml table or vconfig userdata
+ * - Ret 1: string
+ */
+static int intf_debug(lua_State* L)
+{
+	const config& arg = luaW_checkconfig(L, 1);
+	const std::string& result = arg.debug();
+	lua_pushstring(L, result.c_str());
+	return 1;
+}
+
+/**
  * Removes all messages from the chat window.
  */
 static int intf_clear_messages(lua_State*)
@@ -3393,6 +3406,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "compare_versions",         &intf_compare_versions         },
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
+		{ "debug",                    &intf_debug                    },
 		{ "delay",                    &intf_delay                    },
 		{ "dofile",                   &intf_dofile                   },
 		{ "eval_conditional",         &intf_eval_conditional         },
