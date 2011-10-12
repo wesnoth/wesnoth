@@ -201,9 +201,9 @@ std::vector<std::string> unit::get_ability_list() const
 	return res;
 }
 
-std::vector<std::string> unit::ability_tooltips(bool force_active) const
+std::vector<t_string> unit::ability_tooltips(bool force_active) const
 {
-	std::vector<std::string> res;
+	std::vector<t_string> res;
 
 	const config &abilities = cfg_.child("abilities");
 	if (!abilities) return res;
@@ -212,24 +212,24 @@ std::vector<std::string> unit::ability_tooltips(bool force_active) const
 	{
 		if (force_active || ability_active(ab.key, ab.cfg, loc_))
 		{
-			std::string const &name =
+			t_string const &name =
 				gender_ == unit_race::MALE || ab.cfg["female_name"].empty() ?
-				ab.cfg["name"] : ab.cfg["female_name"];
+				ab.cfg["name"].t_str() : ab.cfg["female_name"].t_str();
 
 			if (!name.empty()) {
 				res.push_back(name);
-				res.push_back(ab.cfg["description"]);
+				res.push_back(ab.cfg["description"].t_str());
 			}
 		}
 		else
 		{
-			std::string const &name =
+			t_string const &name =
 				gender_ == unit_race::MALE || ab.cfg["female_name_inactive"].empty() ?
-				ab.cfg["name_inactive"] : ab.cfg["female_name_inactive"];
+				ab.cfg["name_inactive"].t_str() : ab.cfg["female_name_inactive"].t_str();
 
 			if (!name.empty()) {
 				res.push_back(name);
-				res.push_back(ab.cfg["description_inactive"]);
+				res.push_back(ab.cfg["description_inactive"].t_str());
 			}
 		}
 	}

@@ -802,10 +802,10 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	if (const config &abil_cfg = cfg.child("abilities"))
 	{
 		foreach (const config::any_child &ab, abil_cfg.all_children_range()) {
-			const std::string &name = ab.cfg["name"];
+			const config::attribute_value &name = ab.cfg["name"];
 			if (!name.empty()) {
-				abilities_.push_back(name);
-				ability_tooltips_.push_back(ab.cfg["description"]);
+				abilities_.push_back(name.t_str());
+				ability_tooltips_.push_back( ab.cfg["description"].t_str() );
 			}
 		}
 	}
@@ -819,10 +819,10 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 				continue;
 			}
 			foreach (const config::any_child &ab, abil_cfg.all_children_range()) {
-				const std::string &name = ab.cfg["name"];
+				const config::attribute_value &name = ab.cfg["name"];
 				if (!name.empty()) {
-					adv_abilities_.push_back(name);
-					adv_ability_tooltips_.push_back(ab.cfg["description"]);
+					adv_abilities_.push_back(name.t_str());
+					adv_ability_tooltips_.push_back( ab.cfg["description"].t_str() );
 				}
 			}
 		}

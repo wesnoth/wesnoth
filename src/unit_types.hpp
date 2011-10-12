@@ -257,11 +257,11 @@ public:
 	fixed_t alpha() const { return alpha_; }
 
 	const std::vector<t_string>& abilities() const { return abilities_; }
-	const std::vector<std::string>& ability_tooltips() const { return ability_tooltips_; }
+	const std::vector<t_string>& ability_tooltips() const { return ability_tooltips_; }
 
 	// some extra abilities may be gained through AMLA advancements
 	const std::vector<t_string>& adv_abilities() const { return adv_abilities_; }
-	const std::vector<std::string>& adv_ability_tooltips() const { return adv_ability_tooltips_; }
+	const std::vector<t_string>& adv_ability_tooltips() const { return adv_ability_tooltips_; }
 
 	bool can_advance() const { return !advances_to_.empty(); }
 
@@ -322,7 +322,7 @@ private:
 	fixed_t alpha_;
 
 	std::vector<t_string> abilities_, adv_abilities_;
-	std::vector<std::string> ability_tooltips_, adv_ability_tooltips_;
+	std::vector<t_string> ability_tooltips_, adv_ability_tooltips_;
 
 	bool zoc_, hide_help_;
 

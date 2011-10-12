@@ -1180,13 +1180,13 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 			abil_vecs[0] = &type.abilities();
 			abil_vecs[1] = &type.adv_abilities();
 
-			std::vector<std::string> const* desc_vecs[2];
+			std::vector<t_string> const* desc_vecs[2];
 			desc_vecs[0] = &type.ability_tooltips();
 			desc_vecs[1] = &type.adv_ability_tooltips();
 
 			for(int i=0; i<2; ++i) {
 				std::vector<t_string> const& abil_vec = *abil_vecs[i];
-				std::vector<std::string> const& desc_vec = *desc_vecs[i];
+				std::vector<t_string> const& desc_vec = *desc_vecs[i];
 				for(size_t j=0; j < abil_vec.size(); ++j) {
 					t_string const& abil_name = abil_vec[j];
 					if (ability_description.find(abil_name) == ability_description.end()) {
@@ -1251,9 +1251,9 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 
 			std::stringstream text;
 
-			const std::string& description = f["description"];
+			const config::attribute_value& description = f["description"];
 			if (!description.empty()) {
-				text << description << "\n";
+				text << description.t_str() << "\n";
 				text << "\n";
 			}
 
@@ -1282,9 +1282,9 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 		std::stringstream text;
 		text << "<header>text='" << _("Era:") << " " << era["name"] << "'</header>" << "\n";
 		text << "\n";
-		const std::string& description = era["description"];
+		const config::attribute_value& description = era["description"];
 		if (!description.empty()) {
-			text << description << "\n";
+			text << description.t_str() << "\n";
 			text << "\n";
 		}
 
