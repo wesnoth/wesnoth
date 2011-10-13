@@ -15,6 +15,7 @@
 
 #include "game_controller_abstract.hpp"
 
+#include "foreach.hpp"
 #include "game_display.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
@@ -76,7 +77,23 @@ bool game_controller_abstract::init_language()
 	if(!::load_language_list())
 		return false;
 
-	::set_language(get_locale());
+	language_def locale;
+	if(cmdline_opts_.language) {
+		std::vector<language_def> langs = get_languages();
+		foreach(const language_def & def, langs) {
+			if(def.localename == *cmdline_opts_.language) {
+				locale = def;
+				break;
+			}
+		}
+		if(locale.localename.empty()) {
+			std::cerr << "Language symbol '" << *cmdline_opts_.language << "' not found.\n";
+			return false;
+		}
+	} else {
+		locale = get_locale();
+	}
+	::set_language(locale);
 
 	if(!cmdline_opts_.nogui) {
 		std::string wm_title_string = _("The Battle for Wesnoth");

@@ -61,6 +61,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	gunzip(),
 	gzip(),
 	help(),
+	language(),
 	log(),
 	load(),
 	logdomains(),
@@ -132,6 +133,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("gunzip", po::value<std::string>(), "decompresses a file (<arg>.gz) in gzip format and stores it without the .gz suffix. <arg>.gz will be removed.")
 		("gzip", po::value<std::string>(), "compresses a file (<arg>) in gzip format, stores it as <arg>.gz and removes <arg>.")
 		("help,h", "prints this message and exits.")
+		("language,L", po::value<std::string>(), "uses language <arg> (symbol) this session. Example: --language ang_GB@latin")
 		("load,l", po::value<std::string>(), "loads the save <arg> from the standard save game directory. When launching the map editor via -e, the map <arg> is loaded, relative to the current directory. If it is a directory, the editor will start with a load map dialog opened there.")
 		("new-syntax", "enables the new campaign syntax parsing.")
 		("nocache", "disables caching of game data.")
@@ -274,6 +276,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		help = true;
 	if (vm.count("label"))
 		multiplayer_label = vm["label"].as<std::string>();
+	if (vm.count("language"))
+		language = vm["language"].as<std::string>();
 	if (vm.count("load"))
 		load = vm["load"].as<std::string>();
 	if (vm.count("log-error"))

@@ -67,6 +67,8 @@ public:
 	boost::optional<std::string> gzip;
 	/// True if --help was given on the command line. Prints help and exits.
 	bool help;
+	/// Non-empty if --lang was given on the command line. Sets the language for this session.
+	boost::optional<std::string> language;
 	/// Contains parsed arguments of --log-* (e.g. --log-debug).
 	/// Vector of pairs (severity, log domain).
 	boost::optional<std::vector<boost::tuple<int, std::string> > > log;
