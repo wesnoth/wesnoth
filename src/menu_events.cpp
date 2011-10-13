@@ -1586,9 +1586,11 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 		last_selection = choice;
 		random_gender  = random_gender_choice;
 
-		const unit_race::GENDER gender = random_gender ? unit_race::NUM_GENDERS : unit_race::MALE;
+		const unit_type* type = unit_choices[choice];
+		const unit_race::GENDER gender = random_gender ? unit_race::NUM_GENDERS :
+			type->genders().empty() ? unit_race::MALE : type->genders().front();
 
-		unit chosen(unit_choices[choice], 1, true, gender);
+		unit chosen(type, 1, true, gender);
 		chosen.new_turn();
 
 		const map_location& loc = mousehandler.get_last_hex();
