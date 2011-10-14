@@ -299,7 +299,7 @@ bool is_cjk_char(const wchar_t c)
 		(ch >= 0xac00 && ch < 0xd7af) ||
 		(ch >= 0x1100 && ch <= 0x11ff) ||
 		(ch >= 0xa960 && ch <= 0xa97c) ||
-		(ch >= 0xD7B0 && ch <= 0xd7fb) ||
+		(ch >= 0xd7b0 && ch <= 0xd7fb) ||
 
 		//CJK Symbols and Punctuation
 		(ch >= 0x3000 && ch < 0x303f) ||
