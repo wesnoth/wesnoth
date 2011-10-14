@@ -394,6 +394,12 @@ inline bool no_break_before(const wchar_t ch)
 		ch == 0xff01 || ch == 0xff09 || ch == 0xff0c || ch == 0xff0e || ch == 0xff1a ||
 		ch == 0xff1b || ch == 0xff1f || ch == 0xff3d || ch == 0xff5d ||
 
+		// Small katakana used in Ainu:
+		ch == 0x31f0 || ch == 0x31f1 || ch == 0x31f2 || ch == 0x31f3 || ch == 0x31f4 ||
+		ch == 0x31f5 || ch == 0x31f6 || ch == 0x31f7 || ch == 0x31f8 || ch == 0x31f9 ||
+		ch == 0x31fa || ch == 0x31fb || ch == 0x31fc || ch == 0x31fd || ch == 0x31fe ||
+		ch == 0x31ff ||
+
 		/**
 		 * FIXME don't break before these Korean characters
 		 */
