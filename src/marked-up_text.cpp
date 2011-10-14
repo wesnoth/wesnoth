@@ -291,6 +291,10 @@ bool is_cjk_char(const wchar_t c)
 		(ch >= 0x3104 && ch < 0x312e) ||
 		(ch >= 0x31a0 && ch < 0x31bb) ||
 
+		//Yi-specific: Yi Radicals, Yi Syllables
+		(ch >= 0xa490 && ch < 0xa4c7) ||
+		(ch >= 0xa000 && ch < 0xa48d) ||
+
 		//Japanese-specific: Hiragana, Katakana
 		(ch >= 0x3040 && ch <= 0x309f) ||
 		(ch >= 0x30a0 && ch <= 0x30ff) ||
