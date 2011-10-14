@@ -38,7 +38,7 @@ private:
  * missing default constructor for vconfig. Not entirely sure whether it's a
  * bug in gcc or not. For now make the code conditional.
  */
-#if __GNUC__ == 4 && (__GNUC_MINOR__ == 6 || __GNUC_MINOR__ == 7) && defined(__GXX_EXPERIMENTAL_CXX0X__)
+#if __GNUC__ == 4 && __GNUC_MINOR__ == 6 && defined(__GXX_EXPERIMENTAL_CXX0X__)
 	template<class T1, class T2>
 	friend class std::pair;
 #endif
