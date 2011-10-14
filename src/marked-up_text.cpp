@@ -295,6 +295,9 @@ bool is_cjk_char(const wchar_t c)
 		(ch >= 0x3040 && ch <= 0x309f) ||
 		(ch >= 0x30a0 && ch <= 0x30ff) ||
 
+		//Ainu-specific: Katakana Phonetic Extensions
+		(ch >= 0x31f0 && ch <= 0x31ff) ||
+
 		//Korean-specific: Hangul Syllables, Hangul Jamo, Hangul Jamo Extended-A, Hangul Jamo Extended-B
 		(ch >= 0xac00 && ch < 0xd7af) ||
 		(ch >= 0x1100 && ch <= 0x11ff) ||
