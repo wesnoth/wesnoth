@@ -287,18 +287,24 @@ bool is_cjk_char(const wchar_t c)
 		(ch >= 0x2f00 && ch < 0x2fdf) ||
 		(ch >= 0x31c0 && ch < 0x31ef) ||
 
-		//Chinese-specific: Bopomofo
-		(ch >= 0x3000 && ch < 0x303f) ||
-
-		//Japanese-specific: Halfwidth Katakana
-		(ch >= 0xff00 && ch < 0xffef) ||
+		//Chinese-specific: Bopomofo and Bopomofo Extended
+		(ch >= 0x3104 && ch < 0x312e) ||
+		(ch >= 0x31a0 && ch < 0x31bb) ||
 
 		//Japanese-specific: Hiragana, Katakana
 		(ch >= 0x3040 && ch <= 0x309f) ||
 		(ch >= 0x30a0 && ch <= 0x30ff) ||
 
-		//Korean-specific: Hangul Syllables, Halfwidth Jamo
+		//Korean-specific: Hangul Syllables, Hangul Jamo, Hangul Jamo Extended-A, Hangul Jamo Extended-B
 		(ch >= 0xac00 && ch < 0xd7af) ||
+		(ch >= 0x1100 && ch <= 0x11ff) ||
+		(ch >= 0xa960 && ch <= 0xa97c) ||
+		(ch >= 0xD7B0 && ch <= 0xd7fb) ||
+
+		//CJK Symbols and Punctuation
+		(ch >= 0x3000 && ch < 0x303f) ||
+
+		//Halfwidth and Fullwidth Forms
 		(ch >= 0xff00 && ch < 0xffef);
 }
 static void cut_word(std::string& line, std::string& word, int font_size, int style, int max_width)
