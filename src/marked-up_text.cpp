@@ -295,9 +295,10 @@ bool is_cjk_char(const wchar_t c)
 		(ch >= 0xa490 && ch < 0xa4c7) ||
 		(ch >= 0xa000 && ch < 0xa48d) ||
 
-		//Japanese-specific: Hiragana, Katakana
+		//Japanese-specific: Hiragana, Katakana, Kana Supplement
 		(ch >= 0x3040 && ch <= 0x309f) ||
 		(ch >= 0x30a0 && ch <= 0x30ff) ||
+		(ch >= 0x1b000 && ch <= 0x1b001) ||
 
 		//Ainu-specific: Katakana Phonetic Extensions
 		(ch >= 0x31f0 && ch <= 0x31ff) ||
