@@ -814,7 +814,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 
 	const unit* pass_check = NULL;
 	//@deprecated ignore_passability 1.9.10
-	const config::attribute_value& ignore_passability = cfg["ignore_passability"];
+	const config::attribute_value ignore_passability = cfg["ignore_passability"];
 	if (!ignore_passability.blank()) {
 		WRN_NG << "[teleport]ignore_passability= is deprecated, use check_passability=\n";
 			if (!ignore_passability.to_bool(false))
