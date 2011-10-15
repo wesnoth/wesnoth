@@ -2801,12 +2801,13 @@ unit_movement_resetter::~unit_movement_resetter()
 {
 	assert(resources::units);
 
-	/*
-	 * This assert should be safe, but not 100% sure so if it fails need
-	 * some extra validation code in this function.
-	 */
-	assert(resources::units->has_unit(&u_));
-
+	if(!resources::units->has_unit(&u_)) {
+		/*
+		 * It might be valid that the unit is not in the unit map.
+		 * It might also mean a not longer valid unit will be assigned to.
+		 */
+		DBG_UT << "The unit to be removed is not in the unit map.\n";
+	}
 	u_.movement_ = moves_;
 }
 
