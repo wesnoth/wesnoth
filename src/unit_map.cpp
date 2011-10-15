@@ -17,6 +17,7 @@
 /** @file */
 
 #include "unit_id.hpp"
+#include "foreach.hpp"
 #include "log.hpp"
 #include "unit.hpp"
 
@@ -438,3 +439,15 @@ bool unit_map::self_check() const {
 }
 
 #endif
+
+bool unit_map::has_unit(const unit * const u)
+{
+	assert(u);
+
+	foreach(const unit_pod& item, ilist_) {
+		if(item.unit_ == u) {
+			return true;
+		}
+	}
+	return false;
+}

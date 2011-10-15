@@ -415,6 +415,17 @@ public:
 #endif
 	;
 
+	/**
+	 * Is the unit in the map?
+	 *
+	 * @pre                       @p u != @c NULL
+	 *
+	 * @param u                   Pointer to the unit to find.
+	 *
+	 * @returns                   True if found, false otherwise.
+	 */
+	bool has_unit(const unit * const u);
+
 private:
 	///Creates and inserts a unit_pod called the_end_ as a sentinel in the ilist
 	void init_end(){
