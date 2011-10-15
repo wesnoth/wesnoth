@@ -31,7 +31,7 @@ static lg::log_domain log_arrows("arrows");
 #define LOG_ARR LOG_STREAM(info, log_arrows)
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
-#define SCREEN ((display*)resources::screen)
+#define SCREEN (static_cast<display*>(resources::screen))
 
 arrow::arrow(bool hidden)
 	: layer_(display::LAYER_ARROWS)
