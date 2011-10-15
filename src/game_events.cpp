@@ -582,7 +582,7 @@ namespace {
 		t_active active_; ///Active event handlers
 		t_active insert_buffer_; ///Event handlers added while pumping events
 		std::set<std::string> remove_buffer_; ///Event handlers removed while pumping events
-		bool buffering_; 
+		bool buffering_;
 
 
 		void log_handler(std::stringstream& ss,
