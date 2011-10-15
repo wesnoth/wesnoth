@@ -92,19 +92,19 @@ class unit_map {
 	struct unit_pod {
 
 		unit_pod()
-			: unit_(NULL)
-			, ref_count_()
-			, deleted_uid_(0)
+			: unit(NULL)
+			, ref_count()
+			, deleted_uid(0)
 		{
 		}
 
-		unit * unit_;
-		mutable n_ref_counter::t_ref_counter<signed int> ref_count_;
+		class unit * unit;
+		mutable n_ref_counter::t_ref_counter<signed int> ref_count;
 
-		unsigned deleted_uid_;  ///UID of the deleted, moved, added, or otherwise invalidated iterator to facilitate a new lookup.
+		unsigned deleted_uid;  ///UID of the deleted, moved, added, or otherwise invalidated iterator to facilitate a new lookup.
 	};
 
-	/// A list pointing to unit and their reference counters.  Dead units have a unit_ pointer equal to NULL.
+	/// A list pointing to unit and their reference counters.  Dead units have a unit pointer equal to NULL.
 	/// The list element is remove iff the reference counter equals zero and there are no more
 	///iterators pointing to this unit.
 	typedef std::list<unit_pod> t_ilist;
@@ -187,16 +187,16 @@ public:
 		pointer operator->() const   {
 			assert(valid());
 			tank_->self_check();
-			return  i_->unit_; }
+			return  i_->unit; }
 		reference operator*() const {
 			tank_->self_check();
 			if(!valid()){
 				if(!tank_){std::cerr<<"tank is NULL"<<"\n";}
 				if(i_==the_end()){std::cerr<<"i_ is the end"<<"\n";}
-				if(i_->unit_==NULL){std::cerr<<"i_ unit is NULL with uid="<<i_->deleted_uid_<<"\n";}
+				if(i_->unit==NULL){std::cerr<<"i_ unit is NULL with uid="<<i_->deleted_uid<<"\n";}
 			}
 			assert(valid());
-			return *i_->unit_; }
+			return *i_->unit; }
 
 		iterator_base& operator++() {
 			assert( valid_entry() );
@@ -204,7 +204,7 @@ public:
 			iterator_type new_i(i_);
 			do{
 				++new_i;
-			}while ((new_i->unit_ == NULL) && (new_i != the_end() )) ;
+			}while ((new_i->unit == NULL) && (new_i != the_end() )) ;
 			dec();
 			i_ = new_i;
 			inc();
@@ -225,7 +225,7 @@ public:
 			dec();
 			do {
 				--i_ ;
-			}while(i_ != begin && (i_->unit_ ==  NULL));
+			}while(i_ != begin && (i_->unit ==  NULL));
 			inc();
 
 			valid_exit();
@@ -240,9 +240,9 @@ public:
 
 		bool valid() const {
 			if(valid_for_dereference()) {
-				if(i_->unit_ == NULL){
+				if(i_->unit == NULL){
 					recover_unit_iterator(); }
-				return  i_->unit_ != NULL;
+				return  i_->unit != NULL;
 			}
 			return false; }
 
@@ -261,24 +261,24 @@ public:
 				assert(!the_list().empty());
 				assert(i_ != the_list().end());
 				if(i_ != the_end()){
-					assert(i_->ref_count_ > 0);
+					assert(i_->ref_count > 0);
 				} else {
-					assert(i_->ref_count_ == 1);
+					assert(i_->ref_count == 1);
 				}
 			}}
 		bool valid_ref_count() const { return (tank_ != NULL) && (i_ != the_end()) ; }
 
 		///Increment the reference counter
-		void inc() { if(valid_ref_count()) { ++(i_->ref_count_); } }
+		void inc() { if(valid_ref_count()) { ++(i_->ref_count); } }
 
 		///Decrement the reference counter
 		///Delete the list element and the dangling umap reference if the unit is gone and the reference counter is zero
 		///@note this deletion will advance i_ to the next list element.
 		void dec() {
 			if( valid_ref_count() ){
-				assert(i_->ref_count_ != 0);
-				if( (--(i_->ref_count_) == 0)  && (i_->unit_ == NULL) ){
-					if(tank_->umap_.erase(i_->deleted_uid_) != 1){
+				assert(i_->ref_count != 0);
+				if( (--(i_->ref_count) == 0)  && (i_->unit == NULL) ){
+					if(tank_->umap_.erase(i_->deleted_uid) != 1){
 						tank_->error_recovery_externally_changed_uid(i_); }
 					i_ = the_list().erase(i_);
 				} } }
@@ -294,8 +294,8 @@ public:
 	 * @pre deleted_uid != 0
 	 */
 		void recover_unit_iterator() const {
-			assert(i_->deleted_uid_ != 0);
-			iterator_base new_this( tank_->find( i_->deleted_uid_ ));
+			assert(i_->deleted_uid != 0);
+			iterator_base new_this( tank_->find( i_->deleted_uid ));
 			const_cast<iterator_base *>(this)->operator=( new_this );
 		}
 		friend class unit_map;
@@ -431,9 +431,9 @@ private:
 	void init_end(){
 		assert(ilist_.empty());
 		unit_pod upod;
-		upod.unit_ = NULL;
-		upod.deleted_uid_ = 0;
-		++upod.ref_count_; //dummy count
+		upod.unit = NULL;
+		upod.deleted_uid = 0;
+		++upod.ref_count; //dummy count
 		ilist_.push_front(upod);
 		the_end_ = ilist_.begin();
 	};
@@ -441,11 +441,11 @@ private:
 	t_ilist::iterator begin_core() const ;
 
 	bool is_valid(const t_ilist::const_iterator &i) const {
-		return i != the_end_  && is_found(i) && (i->unit_ !=  NULL); }
+		return i != the_end_  && is_found(i) && (i->unit !=  NULL); }
 	bool is_valid(const t_umap::const_iterator &i) const {
-		return is_found(i) && (i->second->unit_ != NULL); }
+		return is_found(i) && (i->second->unit != NULL); }
 	bool is_valid(const t_lmap::const_iterator &i) const {
-		return is_found(i) && (i->second->unit_ != NULL); }
+		return is_found(i) && (i->second->unit != NULL); }
 
 	bool is_found(const t_ilist::const_iterator &i) const { return i != ilist_.end(); }
 	bool is_found(const t_umap::const_iterator &i) const { return i != umap_.end() ; }
