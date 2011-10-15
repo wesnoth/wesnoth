@@ -319,6 +319,7 @@ public:
 	}
 	this_t& operator--()
 	{
+		assert(contents_);
 		while(base_ == (*contents_)[turn_num_].begin())
 			base_ = (*contents_)[--turn_num_].end();
 		--base_;
@@ -373,6 +374,7 @@ private:
 
 	void init()
 	{
+		assert(contents_);
 		while(base_ == (*contents_)[turn_num_].end() //terminates thanks to invariant
 				&& turn_num_+1 < contents_->size())
 			base_ = (*contents_)[++turn_num_].begin();
