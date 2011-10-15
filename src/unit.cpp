@@ -958,7 +958,7 @@ SDL_Color unit::xp_color() const
 	const SDL_Color near_advance_color = {255,255,255,0};
 	const SDL_Color mid_advance_color  = {150,255,255,0};
 	const SDL_Color far_advance_color  = {0,205,205,0};
-	const SDL_Color normal_color 	  = {0,160,225,0};
+	const SDL_Color normal_color	  = {0,160,225,0};
 	const SDL_Color near_amla_color	  = {225,0,255,0};
 	const SDL_Color mid_amla_color	  = {169,30,255,0};
 	const SDL_Color far_amla_color	  = {139,0,237,0};
