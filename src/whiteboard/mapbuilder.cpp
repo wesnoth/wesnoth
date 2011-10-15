@@ -67,8 +67,16 @@ void mapbuilder::pre_build()
 
 		//Reset movement points, to be restored by destruction of resetters_
 
+		/**
+		 * @todo Fix this code.
+		 *
+		 * It has been disabled since the destructor of this class restored the
+		 * movement, also of deleted units causing bug #18534, as work-around
+		 * this code is disabled.
+		 */
 		//restore movement points only to units not on the current side
-		resetters_.push_back(new unit_movement_resetter(u,!on_current_side));
+		//resetters_.push_back(new unit_movement_resetter(u,!on_current_side));
+
 		//make sure current side's units are not reset to full moves on first turn
 		if(on_current_side)
 			acted_this_turn_.insert(&u);
