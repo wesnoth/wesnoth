@@ -467,8 +467,16 @@ private:
 	void clear_visibility_cache() const { invisibility_cache_.clear(); }
 };
 
-/** Object which temporarily resets a unit's movement */
+/**
+ * Object which temporarily resets a unit's movement.
+ *
+ * @warning
+ * The unit whose movement is reset may not be deleted while a
+ * @ref unit_movement_resetter object 'holds'. So best use it only in a small
+ * scope.
+ */
 struct unit_movement_resetter
+	: private boost::noncopyable
 {
 	unit_movement_resetter(unit& u, bool operate=true);
 	~unit_movement_resetter();

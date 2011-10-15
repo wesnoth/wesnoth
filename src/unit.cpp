@@ -2799,6 +2799,14 @@ unit_movement_resetter::unit_movement_resetter(unit &u, bool operate) :
 
 unit_movement_resetter::~unit_movement_resetter()
 {
+	assert(resources::units);
+
+	/*
+	 * This assert should be safe, but not 100% sure so if it fails need
+	 * some extra validation code in this function.
+	 */
+	assert(resources::units->has_unit(&u_));
+
 	u_.movement_ = moves_;
 }
 
