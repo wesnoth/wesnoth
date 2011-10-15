@@ -190,7 +190,7 @@ CVideo & video() {
 				try {
 					dlg->show(video(), interact);
 					gui2::twindow* window = gui2::unit_test_window((*dlg.get()));
-					BOOST_REQUIRE_NE(window, (void*)NULL);
+					BOOST_REQUIRE_NE(window, static_cast<void*>(NULL));
 					window->draw();
 				} catch(gui2::tlayout_exception_width_modified&) {
 					exception = "gui2::tlayout_exception_width_modified";
