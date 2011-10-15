@@ -575,11 +575,21 @@ function wml_actions.modify_unit(cfg)
 	wml_actions.store_unit { {"filter", filter}, variable = unit_variable, kill = true }
 	local max_index = wesnoth.get_variable(unit_variable .. ".length") - 1
 
+	local this_unit = helper.get_variable_array("this_unit") --containers and arrays
+	if #this_unit == 0 then this_unit = wesnoth.get_variable("this_unit") end --scalars (and nil/empty)
+
+	wesnoth.set_variable("this_unit")
 	for current_unit = 0, max_index do
 		handle_unit(current_unit)
 	end
-
 	wesnoth.set_variable("this_unit")
+
+	if type(this_unit) == "table" then
+		helper.set_variable_array("this_unit", this_unit)
+	else
+		wesnoth.set_variable("this_unit", this_unit)
+	end
+
 	wesnoth.set_variable(unit_variable)
 end
 
