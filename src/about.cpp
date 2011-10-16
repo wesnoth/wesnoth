@@ -183,12 +183,20 @@ void show_about(display &disp, const std::string &campaign)
 
 	std::vector<std::string> image_list;
 	if(campaign.size() && !images[campaign].empty()){
-		image_list=utils::parenthetical_split(images[campaign], ',', "(", ")");
-	}else{
-		image_list=utils::parenthetical_split(images_default, ',', "(", ")", utils::STRIP_SPACES);
+		image_list = utils::parenthetical_split(images[campaign], ',');
+	} else{
+		image_list = utils::parenthetical_split(images_default, ',');
 	}
-	surface map_image(scale_surface(image::get_image(image_list[0]), screen->w, screen->h));
-	if(! map_image){
+
+	surface map_image;
+
+	if(!image_list.empty()) {
+		map_image = scale_surface(image::get_image(image_list[0]), screen->w, screen->h);
+	} else {
+		image_list.push_back("");
+	}
+
+	if(!map_image){
 		image_list[0]=game_config::images::game_title;
 		map_image=surface(scale_surface(image::get_image(image_list[0]), screen->w, screen->h));
 	}
