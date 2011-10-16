@@ -566,6 +566,9 @@ stringfixes = {
 
 # Convert straight apostrophe
 ("I'll join you right now!", "I’ll join you right now!"),
+
+# Add missing diaeresis
+("Teeloa returned to his home", "Teelöa returned to his home"),
 ),
 
 "wesnoth-ei" : (
