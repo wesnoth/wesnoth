@@ -16,14 +16,15 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2011-09-05 04:39+0200\n"
-"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"PO-Revision-Date: 2011-10-16 00:24+0200\n"
+"Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"com>\n"
 "com>\n"
 "com>\n"
 "com>\n"
@@ -158,12 +159,12 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
 msgid "Use 12-hour clock format"
-msgstr ""
+msgstr "Empregar o formato de 12 horas para o reloxo."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:150
 msgid "Confirm loading of saves from a different version"
-msgstr ""
+msgstr "Pedir confirmación ao cargar partidas de versións distintas do xogo."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
@@ -2219,21 +2220,15 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units only reach their full strength during twilight.\n"
 "\n"
 "Day: −25% Damage\n"
 "Night: −25% Damage"
 msgstr ""
-"As unidades legais loitan mellor polo día e peor pola noite.\n"
+"As unidades crepusculares loitan mellor durante o crepúsculo.\n"
 "\n"
-"Un cuarto máis de dano polo día.\n"
+"Un cuarto menos de dano polo día.\n"
 "Un cuarto menos de dano pola noite."
 
 # Véxase o ficheiro de «Topónimos».
@@ -2688,10 +2683,6 @@ msgstr "<i>— A comunidade do Wesnoth</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
-#| msgid ""
-#| "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-#| "better at night. <i>Neutral</i> units are unaffected by the time of day."
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
@@ -2699,7 +2690,8 @@ msgid ""
 msgstr ""
 "As unidades <i>legais</i> loitan mellor polo día, e as unidades <i>caóticas</"
 "i> loitan mellor pola noite. Ás unidades <i>neutrais</i> non lles afecta o "
-"momento do día."
+"momento do día. As unidades <i>crepusculares</i>, rara vez avistadas, loitan "
+"mellor durante o crepúsculo."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
@@ -4071,10 +4063,8 @@ msgstr "%d/%m/%Y ás %H:%M"
 
 # Aparece ao cargar partidas.
 #: src/dialogs.cpp:465 src/savegame.cpp:137
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%d/%m/%Y ás %H:%M"
+msgstr "%d/%m/%Y ás %I:%M %p"
 
 #: src/dialogs.cpp:481
 msgid "#(Invalid)"
@@ -4125,17 +4115,15 @@ msgstr "%H:%M"
 
 #: src/dialogs.cpp:559 src/reports.cpp:1223 src/savegame.cpp:177
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/dialogs.cpp:564 src/savegame.cpp:182
 msgid "%A, %H:%M"
 msgstr "%A ás %H:%M"
 
 #: src/dialogs.cpp:567 src/savegame.cpp:185
-#, fuzzy
-#| msgid "%A, %H:%M"
 msgid "%A, %I:%M %p"
-msgstr "%A ás %H:%M"
+msgstr "%A ás %I:%M %p"
 
 # Para datas no ano actual. De momento, mentres non haxa unha forma de poñer o nome do mes en minúsculas, queda igual que a data para anos anteriores ao actual.
 #: src/dialogs.cpp:571 src/savegame.cpp:189
@@ -4208,50 +4196,56 @@ msgstr "KiB"
 #: src/exceptions.cpp:23 src/exceptions.cpp:29
 msgid "WML Syntax error:: Variable in WML string cannot be evaluated because, "
 msgstr ""
+"Erro de sintaxe WML: unha variábel dunha cadea WML non pode interpretarse "
+"porque, "
 
 #: src/exceptions.cpp:29
 msgid ""
 " in \n"
 "\""
 msgstr ""
+" en \n"
+"\""
 
 #: src/formula_string_utils_backend.cpp:156
 msgid "Formula in WML string cannot be evaluated because, "
-msgstr ""
+msgstr "Unha fórmula dunha cadea WML non pode interpretarse porque, "
 
 #: src/formula_string_utils_backend.cpp:293
-#, fuzzy
-#| msgid "Invalid location"
 msgid "Invalid WML found"
-msgstr "Lugar incorrecto."
+msgstr "Atopouse unha incorrección de WML"
 
 #: src/formula_string_utils_backend.cpp:328
 msgid " $$| creates an illegal variable name"
-msgstr ""
+msgstr " $$| dá lugar a un nome de variábel incorrecto"
 
 #: src/formula_string_utils_backend.cpp:341
 msgid "missing variable name immediately after $"
-msgstr ""
+msgstr "falta un nome de variábel xusto despois de $"
 
 #: src/formula_string_utils_backend.cpp:419
 msgid "missing field name after ]. (correct usage: $array[$i].fieldname)"
 msgstr ""
+"falta un nome de campo despois de ]. (o uso correcto é o seguinte: $matriz"
+"[$i].campo)"
 
 #: src/formula_string_utils_backend.cpp:423
 msgid "missing variable name after $ (valid characters are a-zA-Z0-9_)"
 msgstr ""
+"falta un nome de variábel despois de $ (admítense letras inglesas, cifras e "
+"guións baixos)"
 
 #: src/formula_string_utils_backend.cpp:437
 msgid "formula is incomplete at the end of the line"
-msgstr ""
+msgstr "a fórmula está incompleta cara o final"
 
 #: src/formula_string_utils_backend.cpp:440
 msgid "of missing paren in the formula should be $( ...)"
-msgstr ""
+msgstr "do paréntese que falta na fórmula debería ser $(…)"
 
 #: src/formula_string_utils_backend.cpp:494
 msgid " of missing closing paren"
-msgstr ""
+msgstr " do paréntese de peche"
 
 #: src/game_config.cpp:314
 msgid "Invalid color range: "
@@ -6501,7 +6495,7 @@ msgstr "Especial da arma: "
 
 #: src/reports.cpp:767
 msgid "None"
-msgstr ""
+msgstr "ningún"
 
 #: src/reports.cpp:959
 msgid "Lawful units: "
@@ -6883,26 +6877,33 @@ msgid ""
 "the first character of the identifier is an invalid character, one of  . , "
 "[, or ]. "
 msgstr ""
+"o primeiro carácter do identificador non é correcto, é «.», «[» ou «]». "
 
 #: src/variable.cpp:651
 msgid ""
 "there is a dot . or left bracket [ after a left bracket [ starting the "
 "variable name"
 msgstr ""
+"hai un punto («.») ou un corchete inicial («[») despois do corchete inicial "
+"co que comeza o nome da variábel"
 
 #: src/variable.cpp:782 src/variable.cpp:842
 msgid "the WML array index is larger than the largest array element."
-msgstr ""
+msgstr "o índice da matriz WML é maior que o último elemento da matriz."
 
 #: src/variable.cpp:784
 msgid ""
 "the WML array index is invalid.  Use varname[0].length to check for the "
 "existence of an array element."
 msgstr ""
+"o índice da matriz WML é incorrecto. Emprega «variabel[0].length» antes para "
+"comprobar se o elemento ao que vas acceder existe."
 
 #: src/variable.cpp:815
 msgid "attempt to get length of a non array/container."
 msgstr ""
+"intento de obter a lonxitude dun elemento que non era nin unha matriz nin un "
+"contedor."
 
 #: src/whiteboard/manager.cpp:941
 msgid "SHOW ALL allies’ plans"
