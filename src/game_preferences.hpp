@@ -198,6 +198,9 @@ namespace preferences {
 	int chat_message_aging();
 	void set_chat_message_aging(const int aging);
 
+	bool show_all_units_in_help();
+	void set_show_all_units_in_help(bool value);
+
 	bool compress_saves();
 
 	bool startup_effect();

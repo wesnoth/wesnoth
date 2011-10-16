@@ -811,6 +811,14 @@ int chat_message_aging()
 	return lexical_cast_default<int>(preferences::get("chat_message_aging"), 20);
 }
 
+bool show_all_units_in_help() {
+	return preferences::get("show_all_units_in_help", false);
+}
+
+void set_show_all_units_in_help(bool value) {
+	preferences::set("show_all_units_in_help", value);
+}
+
 std::set<std::string> &encountered_units() {
 	return encountered_units_set;
 }
