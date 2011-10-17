@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-17 23:28+0200\n"
-"PO-Revision-Date: 2011-10-07 17:25-0500\n"
+"PO-Revision-Date: 2011-10-17 17:48-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -28,10 +28,9 @@ msgstr "Compressed Saves"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
-#, fuzzy
 #| msgid "Confirm deleting saves"
 msgid "Confirm Deleting Saves"
-msgstr "Confirm deleting saves"
+msgstr "Confirm Deleting Saves"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:18
@@ -45,24 +44,21 @@ msgstr "Middle-click Scrolling"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#, fuzzy
 #| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep Scrolling when Mouse Leaves Window"
-msgstr "Keep scrolling when mouse leaves window"
+msgstr "Keep Scrolling when Mouse Leaves Window"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
-#, fuzzy
 #| msgid "Local time of day light"
 msgid "Local Time of Day Area Lighting"
-msgstr "Local time of day light"
+msgstr "Local Time of Day Area Lighting"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
-#, fuzzy
 #| msgid "Local time of day light effect (use more memory)."
 msgid "Custom lighting for local time of day areas (uses more memory)"
-msgstr "Local time of day light effect (use more memory)."
+msgstr "Custom lighting for local time of day areas (uses more memory)"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
@@ -81,7 +77,6 @@ msgstr "Ping Timeout"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
-#, fuzzy
 #| msgid ""
 #| "Number of seconds to wait for a ping reply before we time out. Disable "
 #| "with 0."
@@ -89,43 +84,38 @@ msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
 msgstr ""
-"Number of seconds to wait for a ping reply before we time out. Disable with "
-"0."
+"Number of seconds to wait for a ping reply before timing out. Set to 0 to "
+"disable"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
-#, fuzzy
 #| msgid "Accept whisper messages from friends only"
 msgid "Accept Whispers from Friends Only"
-msgstr "Accept whisper messages from friends only"
+msgstr "Accept Whispers from Friends Only"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
-#, fuzzy
 #| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open Whisper Windows in Lobby"
-msgstr "Auto-open whisper windows in lobby"
+msgstr "Auto-open Whisper Windows in Lobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
-#, fuzzy
 #| msgid "Group players in lobby"
 msgid "Group Players in Lobby"
-msgstr "Group players in lobby"
+msgstr "Group Players in Lobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#, fuzzy
 #| msgid "Lobby sounds"
 msgid "Lobby Sounds"
-msgstr "Lobby sounds"
+msgstr "Lobby Sounds"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
-#, fuzzy
 #| msgid "Disable notifications"
 msgid "Disable Notifications"
-msgstr "Disable notifications"
+msgstr "Disable Notifications"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
@@ -153,14 +143,12 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
-#, fuzzy
 #| msgid "Chat message aging"
 msgid "Chat Message Aging"
-msgstr "Chat message ageing"
+msgstr "Chat Message Ageing"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:133
-#, fuzzy
 #| msgid ""
 #| "Number of minutes to wait before clearing an ingame chat message. Disable "
 #| "aging with 0."
@@ -168,27 +156,25 @@ msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
 msgstr ""
-"Number of minutes to wait before clearing an ingame chat message. Disable "
-"ageing with 0."
+"Number of minutes to wait before clearing an in-game chat message. Set to 0 "
+"to disable"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
-#, fuzzy
 #| msgid "Use 12-hour clock format"
 msgid "Use 12-hour Clock Format"
-msgstr "Use 12-hour clock format"
+msgstr "Use 12-hour Clock Format"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:150
-#, fuzzy
 #| msgid "Confirm loading of saves from a different version"
 msgid "Confirm Loading of Saves from a Different Version"
-msgstr "Confirm loading of saves from a different version"
+msgstr "Confirm Loading of Saves from a Different Version"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
 msgid "Show All Unit Types in Help"
-msgstr ""
+msgstr "Show All Unit Types in Help"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:158
@@ -196,6 +182,8 @@ msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
+"Show all unit types in the help (requires restart). This does not alter the "
+"list of encountered units"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:165
@@ -5235,7 +5223,6 @@ msgid "Variable not found"
 msgstr "Variable not found"
 
 #: src/menu_events.cpp:3507
-#, fuzzy
 #| msgid ""
 #| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, or "
 #| "chaotic."
@@ -5243,8 +5230,8 @@ msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
-"Invalid alignment: '$alignment', needs to be one of lawful, neutral, or "
-"chaotic."
+"Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
+"chaotic, or liminal."
 
 #: src/menu_events.cpp:3563
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -6414,10 +6401,9 @@ msgid "prefix_milli^m"
 msgstr "m"
 
 #: src/serialization/string_utils.cpp:291
-#, fuzzy
 #| msgid "prefix_micro^μ"
 msgid "prefix_micro^µ"
-msgstr "μ"
+msgstr "µ"
 
 #: src/serialization/string_utils.cpp:292
 msgid "prefix_nano^n"
@@ -6675,55 +6661,3 @@ msgstr "Whiteboard Options"
 
 #~ msgid "Formula in WML string cannot be evaluated because, "
 #~ msgstr "Formula in WML string cannot be evaluated because, "
-
-#~| msgid "Invalid location"
-#~ msgid "Invalid WML found"
-#~ msgstr "Invalid WML found"
-
-#~ msgid " $$| creates an illegal variable name"
-#~ msgstr " $$| creates an illegal variable name"
-
-#~ msgid "missing variable name immediately after $"
-#~ msgstr "missing variable name immediately after $"
-
-#~ msgid "missing field name after ]. (correct usage: $array[$i].fieldname)"
-#~ msgstr "missing field name after ]. (correct usage: $array[$i].fieldname)"
-
-#~ msgid "missing variable name after $ (valid characters are a-zA-Z0-9_)"
-#~ msgstr "missing variable name after $ (valid characters are a-zA-Z0-9_)"
-
-#~ msgid "formula is incomplete at the end of the line"
-#~ msgstr "formula is incomplete at the end of the line"
-
-#~ msgid "of missing paren in the formula should be $( ...)"
-#~ msgstr "of missing parenthesis in the formula should be $( ...)"
-
-#~ msgid " of missing closing paren"
-#~ msgstr " of missing closing parenthesis"
-
-#~ msgid ""
-#~ "the first character of the identifier is an invalid character, one "
-#~ "of  . , [, or ]. "
-#~ msgstr ""
-#~ "the first character of the identifier is an invalid character, one "
-#~ "of  . , [, or ]. "
-
-#~ msgid ""
-#~ "there is a dot . or left bracket [ after a left bracket [ starting the "
-#~ "variable name"
-#~ msgstr ""
-#~ "there is a dot . or left bracket [ after a left bracket [ starting the "
-#~ "variable name"
-
-#~ msgid "the WML array index is larger than the largest array element."
-#~ msgstr "the WML array index is larger than the largest array element."
-
-#~ msgid ""
-#~ "the WML array index is invalid.  Use varname[0].length to check for the "
-#~ "existence of an array element."
-#~ msgstr ""
-#~ "the WML array index is invalid.  Use varname[0].length to check for the "
-#~ "existence of an array element."
-
-#~ msgid "attempt to get length of a non array/container."
-#~ msgstr "attempt to get length of a non-array/container."
