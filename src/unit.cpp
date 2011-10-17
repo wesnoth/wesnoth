@@ -148,6 +148,7 @@ unit::unit(const unit& o):
            states_(o.states_),
            known_boolean_states_(o.known_boolean_states_),
            variables_(o.variables_),
+           events_(o.events_),
            emit_zoc_(o.emit_zoc_),
            state_(o.state_),
 
@@ -228,6 +229,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	states_(),
 	known_boolean_states_(known_boolean_state_names_.size(),false),
 	variables_(),
+	events_(),
 	emit_zoc_(0),
 	state_(STATE_STANDING),
 	overlays_(),
@@ -276,6 +278,11 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 	if (const config &variables = cfg.child("variables")) {
 		variables_ = variables;
+	}
+	const config::const_child_itors& unit_events = cfg.child_range("event");
+	game_events::add_events(unit_events);
+	foreach(const config& unit_event, unit_events) {
+		events_.add_child("event", unit_event);
 	}
 
 	facing_ = map_location::parse_direction(cfg["facing"]);
@@ -567,6 +574,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	states_(),
 	known_boolean_states_(known_boolean_state_names_.size(),false),
 	variables_(),
+	events_(),
 	emit_zoc_(0),
 	state_(STATE_STANDING),
 	overlays_(),
@@ -1618,6 +1626,8 @@ void unit::write(config& cfg) const
 
 	cfg.clear_children("variables");
 	cfg.add_child("variables",variables_);
+	cfg.clear_children("events");
+	cfg.append(events_);
 	cfg.clear_children("status");
 	cfg.add_child("status",status_flags);
 

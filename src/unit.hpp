@@ -418,6 +418,7 @@ private:
 	std::vector<bool> known_boolean_states_;
 	static std::map<std::string, state_t> known_boolean_state_names_;
 	config variables_;
+	config events_;
 	bool emit_zoc_;
 	STATE state_;
 
