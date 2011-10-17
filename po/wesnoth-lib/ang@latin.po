@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2011-10-12 22:40-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
@@ -676,8 +676,8 @@ msgstr ""
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:1227 data/core/terrain.cfg:2134
-#: data/core/terrain.cfg:2144
+#: data/core/terrain.cfg:1227 data/core/terrain.cfg:2122
+#: data/core/terrain.cfg:2132
 msgid "Void"
 msgstr ""
 
@@ -705,8 +705,7 @@ msgstr ""
 #. [terrain_type]: id=logcabin_snow_village
 #. [terrain_type]: id=igloo
 #. [terrain_type]: id=swamp_village
-#. [terrain_type]: id=mermen_village
-#. [terrain_type]: id=swamp_merfolk-village
+#. [terrain_type]: id=mermen-village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:1242 data/core/terrain.cfg:1255
@@ -722,8 +721,8 @@ msgstr ""
 #: data/core/terrain.cfg:1523 data/core/terrain.cfg:1536
 #: data/core/terrain.cfg:1549 data/core/terrain.cfg:1562
 #: data/core/terrain.cfg:1575 data/core/terrain.cfg:1590
-#: data/core/terrain.cfg:1603 data/core/terrain.cfg:1616
-#: data/core/terrain.cfg:1630 data/core/terrain.cfg:2246
+#: data/core/terrain.cfg:1603 data/core/terrain.cfg:1618
+#: data/core/terrain.cfg:2234
 msgid "Village"
 msgstr "Þorp"
 
@@ -866,30 +865,27 @@ msgstr "Snaƿhus"
 msgid "Swamp Village"
 msgstr ""
 
-#. [terrain_type]: id=mermen_village
+#. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1604
-msgid "Shallow Merfolk Village"
-msgstr ""
-
-#. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:1617
-msgid "Swamp Merfolk Village"
-msgstr ""
+#, fuzzy
+#| msgid "Village"
+msgid "Merfolk Village"
+msgstr "Þorp"
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:1631
+#: data/core/terrain.cfg:1619
 msgid "Village Overlay"
 msgstr ""
 
 #. [terrain_type]: id=encampment
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1646 data/core/terrain.cfg:1647
-#: data/core/terrain.cfg:1658
+#: data/core/terrain.cfg:1634 data/core/terrain.cfg:1635
+#: data/core/terrain.cfg:1646
 msgid "Encampment"
 msgstr ""
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1659
+#: data/core/terrain.cfg:1647
 msgid "Snowy Encampment"
 msgstr ""
 
@@ -901,40 +897,40 @@ msgstr ""
 #. [terrain_type]: id=dwarven_castle
 #. [terrain_type]: id=sand_castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1670 data/core/terrain.cfg:1682
-#: data/core/terrain.cfg:1694 data/core/terrain.cfg:1705
-#: data/core/terrain.cfg:1716 data/core/terrain.cfg:1728
-#: data/core/terrain.cfg:1778 data/core/terrain.cfg:1988
+#: data/core/terrain.cfg:1658 data/core/terrain.cfg:1670
+#: data/core/terrain.cfg:1682 data/core/terrain.cfg:1693
+#: data/core/terrain.cfg:1704 data/core/terrain.cfg:1716
+#: data/core/terrain.cfg:1766 data/core/terrain.cfg:1976
 msgid "Castle"
 msgstr ""
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1671
+#: data/core/terrain.cfg:1659
 msgid "Orcish Castle"
 msgstr ""
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1683
+#: data/core/terrain.cfg:1671
 msgid "Snowy Orcish Castle"
 msgstr ""
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:1695
+#: data/core/terrain.cfg:1683
 msgid "Human Castle"
 msgstr ""
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1706
+#: data/core/terrain.cfg:1694
 msgid "Snowy Human Castle"
 msgstr ""
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:1717
+#: data/core/terrain.cfg:1705
 msgid "Elvish Castle"
 msgstr ""
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:1729
+#: data/core/terrain.cfg:1717
 msgid "Dwarven Castle"
 msgstr ""
 
@@ -942,51 +938,51 @@ msgstr ""
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:1740 data/core/terrain.cfg:1752
-#: data/core/terrain.cfg:1765 data/core/terrain.cfg:1790
+#: data/core/terrain.cfg:1728 data/core/terrain.cfg:1740
+#: data/core/terrain.cfg:1753 data/core/terrain.cfg:1778
 msgid "Ruined Castle"
 msgstr ""
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1741
+#: data/core/terrain.cfg:1729
 msgid "Ruined Human Castle"
 msgstr ""
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1753
+#: data/core/terrain.cfg:1741
 msgid "Sunken Human Ruin"
 msgstr ""
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1766
+#: data/core/terrain.cfg:1754
 msgid "Swamp Human Ruin"
 msgstr ""
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1779
+#: data/core/terrain.cfg:1767
 msgid "Desert Castle"
 msgstr ""
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:1791
+#: data/core/terrain.cfg:1779
 msgid "Ruined Desert Castle"
 msgstr ""
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1806 data/core/terrain.cfg:1818
-#: data/core/terrain.cfg:1831
+#: data/core/terrain.cfg:1794 data/core/terrain.cfg:1806
+#: data/core/terrain.cfg:1819
 msgid "Encampment Keep"
 msgstr ""
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:1819
+#: data/core/terrain.cfg:1807
 msgid "Tall Encampment Keep"
 msgstr ""
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1832
+#: data/core/terrain.cfg:1820
 msgid "Snowy Encampment Keep"
 msgstr ""
 
@@ -998,40 +994,40 @@ msgstr ""
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1844 data/core/terrain.cfg:1857
-#: data/core/terrain.cfg:1870 data/core/terrain.cfg:1883
-#: data/core/terrain.cfg:1896 data/core/terrain.cfg:1909
-#: data/core/terrain.cfg:1961 data/core/terrain.cfg:2000
+#: data/core/terrain.cfg:1832 data/core/terrain.cfg:1845
+#: data/core/terrain.cfg:1858 data/core/terrain.cfg:1871
+#: data/core/terrain.cfg:1884 data/core/terrain.cfg:1897
+#: data/core/terrain.cfg:1949 data/core/terrain.cfg:1988
 msgid "Keep"
 msgstr ""
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1845
+#: data/core/terrain.cfg:1833
 msgid "Orcish Keep"
 msgstr ""
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1858
+#: data/core/terrain.cfg:1846
 msgid "Snowy Orcish Keep"
 msgstr ""
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:1871
+#: data/core/terrain.cfg:1859
 msgid "Human Castle Keep"
 msgstr ""
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:1884
+#: data/core/terrain.cfg:1872
 msgid "Snowy Human Castle Keep"
 msgstr ""
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1897
+#: data/core/terrain.cfg:1885
 msgid "Elven Castle Keep"
 msgstr ""
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:1910
+#: data/core/terrain.cfg:1898
 msgid "Dwarven Castle Keep"
 msgstr ""
 
@@ -1039,43 +1035,43 @@ msgstr ""
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:1922 data/core/terrain.cfg:1935
-#: data/core/terrain.cfg:1948 data/core/terrain.cfg:1974
+#: data/core/terrain.cfg:1910 data/core/terrain.cfg:1923
+#: data/core/terrain.cfg:1936 data/core/terrain.cfg:1962
 msgid "Ruined Keep"
 msgstr ""
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1923
+#: data/core/terrain.cfg:1911
 msgid "Ruined Human Castle Keep"
 msgstr ""
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1936
+#: data/core/terrain.cfg:1924
 msgid "Sunken Human Castle Keep"
 msgstr ""
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1949
+#: data/core/terrain.cfg:1937
 msgid "Swamp Human Castle Keep"
 msgstr ""
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1962
+#: data/core/terrain.cfg:1950
 msgid "Desert Keep"
 msgstr ""
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:1975
+#: data/core/terrain.cfg:1963
 msgid "Ruined Desert Keep"
 msgstr ""
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1989
+#: data/core/terrain.cfg:1977
 msgid "Castle Overlay"
 msgstr ""
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2001
+#: data/core/terrain.cfg:1989
 msgid "Keep Overlay"
 msgstr ""
 
@@ -1086,74 +1082,74 @@ msgstr ""
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2018 data/core/terrain.cfg:2030
-#: data/core/terrain.cfg:2042 data/core/terrain.cfg:2056
-#: data/core/terrain.cfg:2068 data/core/terrain.cfg:2080
-#: data/core/terrain.cfg:2094 data/core/terrain.cfg:2105
-#: data/core/terrain.cfg:2117
+#: data/core/terrain.cfg:2006 data/core/terrain.cfg:2018
+#: data/core/terrain.cfg:2030 data/core/terrain.cfg:2044
+#: data/core/terrain.cfg:2056 data/core/terrain.cfg:2068
+#: data/core/terrain.cfg:2082 data/core/terrain.cfg:2093
+#: data/core/terrain.cfg:2105
 msgid "Bridge"
 msgstr "Brycg"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:2019 data/core/terrain.cfg:2031
-#: data/core/terrain.cfg:2043
+#: data/core/terrain.cfg:2007 data/core/terrain.cfg:2019
+#: data/core/terrain.cfg:2031
 msgid "Wooden Bridge"
 msgstr ""
 
 #. [terrain_type]: id=stone_bridge
-#: data/core/terrain.cfg:2057 data/core/terrain.cfg:2069
-#: data/core/terrain.cfg:2081
+#: data/core/terrain.cfg:2045 data/core/terrain.cfg:2057
+#: data/core/terrain.cfg:2069
 msgid "Basic Stone Bridge"
 msgstr ""
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2095 data/core/terrain.cfg:2106
-#: data/core/terrain.cfg:2118
+#: data/core/terrain.cfg:2083 data/core/terrain.cfg:2094
+#: data/core/terrain.cfg:2106
 msgid "Cave Chasm Bridge"
 msgstr ""
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:2135
+#: data/core/terrain.cfg:2123
 msgid "Off Map"
 msgstr ""
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:2145
+#: data/core/terrain.cfg:2133
 msgid "Experimental Fake Map Edge"
 msgstr ""
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:2154 data/gui/default/window/mp_create_game.cfg:479
+#: data/core/terrain.cfg:2142 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr ""
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:2163
+#: data/core/terrain.cfg:2151
 msgid "Fog"
 msgstr "Mist"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2232
+#: data/core/terrain.cfg:2220
 msgid "Flat"
 msgstr ""
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2239
+#: data/core/terrain.cfg:2227
 msgid "Frozen"
 msgstr "Gefroren"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2253
+#: data/core/terrain.cfg:2241
 msgid "Impassable"
 msgstr ""
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2260
+#: data/core/terrain.cfg:2248
 msgid "Unwalkable"
 msgstr ""
 
@@ -2165,10 +2161,8 @@ msgstr ""
 msgid "Login:"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:200
-#: src/game_preferences_display.cpp:176
 msgid "Save password to preferences (clear text)"
 msgstr ""
 
@@ -2434,7 +2428,7 @@ msgid "Skip AI Moves"
 msgstr ""
 
 #: src/game_preferences_display.cpp:166
-msgid "Interrupt move when an ally is sighted"
+msgid "Interrupt Move when an Ally is Sighted"
 msgstr ""
 
 #: src/game_preferences_display.cpp:167
@@ -2461,7 +2455,7 @@ msgstr ""
 msgid "Show All Lobby Joins"
 msgstr ""
 
-#: src/game_preferences_display.cpp:173 src/game_preferences_display.cpp:382
+#: src/game_preferences_display.cpp:173
 msgid "Use new lobby interface"
 msgstr ""
 
@@ -2473,8 +2467,12 @@ msgstr ""
 msgid "Iconize Lobby List"
 msgstr ""
 
+#: src/game_preferences_display.cpp:176
+msgid "Save Password to Preferences (Plain Text)"
+msgstr ""
+
 #: src/game_preferences_display.cpp:177
-msgid "Set path to wesnothd"
+msgid "Set Path to wesnothd"
 msgstr ""
 
 #: src/game_preferences_display.cpp:178
@@ -2718,6 +2716,10 @@ msgstr ""
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
 
+#: src/game_preferences_display.cpp:382
+msgid "Use New Lobby Interface"
+msgstr ""
+
 #: src/game_preferences_display.cpp:384
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
@@ -2942,9 +2944,9 @@ msgstr ""
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:70
-#: src/gui/auxiliary/window_builder/listbox.cpp:84
-#: src/gui/auxiliary/window_builder/multi_page.cpp:64
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:67
+#: src/gui/auxiliary/window_builder/listbox.cpp:81
+#: src/gui/auxiliary/window_builder/multi_page.cpp:61
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
@@ -3601,7 +3603,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:411
+#: src/image.cpp:406
 msgid "language code for localized resources^en_US"
 msgstr "ang@latin"
 
@@ -3657,7 +3659,7 @@ msgstr ""
 msgid "Island"
 msgstr "Iegland"
 
-#: src/marked-up_text.cpp:422
+#: src/marked-up_text.cpp:442
 msgid "The maximum text width is less than 1."
 msgstr ""
 

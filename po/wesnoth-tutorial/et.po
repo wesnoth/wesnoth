@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2009-12-26 14:50+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -32,8 +32,8 @@ msgstr "Wesnothi mänguõpetus, 2. osa"
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:84
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:181
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:183
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:173
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:175
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:356
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:357
 msgid "Konrad"
@@ -72,29 +72,29 @@ msgid "Get yourself killed"
 msgstr "Saad ise surma"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:179
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:171
 msgid "Who would you like to play?"
 msgstr "Kellena sa soovid mängida?"
 
 #. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:188
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:190
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:180
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:182
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:195
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:430
 msgid "Li’sar"
 msgstr "Li’sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:224
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:210
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:216
 #, fuzzy
 msgid "Welcome to Wesnoth!"
 msgstr "<big>Tere tulemast Wesnothi!</big>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:220
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:212
 #, fuzzy
 msgid ""
 "For this tutorial, you are playing Konrad.\n"
@@ -103,7 +103,7 @@ msgid ""
 msgstr "Sa seisad oma lossis ning sinu õpetaja Delfador asub jõe idakaldal."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:226
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
 #, fuzzy
 msgid ""
 "For this tutorial, you are playing Li’sar.\n"
@@ -114,23 +114,23 @@ msgstr "Sa seisad oma lossis ning sinu õpetaja Delfador asub jõe idakaldal."
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:230
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:416
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:538
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:222
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:408
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:530
 msgid "Left click on Konrad"
 msgstr "Tee vasakklõps Konradil"
 
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:231
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:417
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:539
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:223
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:409
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:531
 msgid "Left click on Li’sar"
 msgstr "Tee vasakklõps Li'saril"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:242
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
@@ -139,7 +139,7 @@ msgstr ""
 "Kohad, kuhu ta saab liikuda, on kaardil heledamad."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:257
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:249
 msgid ""
 "<big>You have selected Li’sar.</big>\n"
 "The places she can move to are highlighted."
@@ -148,12 +148,12 @@ msgstr ""
 "Kohad, kuhu ta saab liikuda, on kaardil heledamad."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:254
 msgid "Here"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:268
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:260
 #, fuzzy
 msgid ""
 "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
@@ -161,7 +161,7 @@ msgstr ""
 "Vii Konrad Delfadori juurde, klõpsates kaardil sinna, kus on kiri 'SIIA'."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:272
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:264
 #, fuzzy
 msgid ""
 "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
@@ -169,18 +169,18 @@ msgstr ""
 "Vii Li'sar Delfadori juurde, klõpsates kaardil sinna, kus on kiri 'SIIA'."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:277
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:269
 #, fuzzy
 msgid "Left click on tile labeled <b>Here</b>"
 msgstr "Tee vasakklõps väljal SIIA"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:302
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:294
 msgid "Oops!"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:304
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:296
 #, fuzzy
 msgid ""
 "You moved to the wrong place! After this message, you can press <b>u</b> to "
@@ -191,52 +191,52 @@ msgstr ""
 "ja proovida uuesti."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Tere hommikust, Delfador! Kas on aeg kedagi rünnata?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:330
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
 msgid "Um, well..."
 msgstr "Eekhmmm..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:334
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Kas leidsid mulle vastaseks orki? Või trolli?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:338
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:330
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Kuss! Ma tekitan sulle kohe vastase..."
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:358
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Puuslik"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:370
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:362
 msgid "... this quintain!"
 msgstr "... selle puusliku!"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:374
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
 #, fuzzy
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "Puuslik? Kas sinu arust pean ma selle kolakaga võitlemist mängima?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:381
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:373
 #, fuzzy
 msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
 msgstr ""
 "Laps, sul on 32 elupunkti ja mõõk. Ma olen üsna kindel, et suudad võita."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:386
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:378
 #, fuzzy
 msgid ""
 "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
@@ -245,13 +245,13 @@ msgstr ""
 "Laps, sul on 32 elupunkti ja mõõk. Ma olen üsna kindel, et suudad võita."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:400
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:386
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:392
 msgid "Attacking"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:396
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:388
 #, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
@@ -263,7 +263,7 @@ msgstr ""
 "Konrad rünnakut."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:401
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
 #, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar) then the target "
@@ -275,39 +275,39 @@ msgstr ""
 "Li'sar rünnakut."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:412
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:404
 msgid "Click on the quintain to attack it"
 msgstr "Puusliku ründamiseks klõpsa sellele"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:448
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:440
 msgid "Hey! This quintain fights back!"
 msgstr "Ohoh! Puuslik lööb vastu?!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:452
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:444
 #, fuzzy
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "Hmm, ehk oleksime pidanud alustama nukuga."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:456
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:448
 msgid "Should I retreat?"
 msgstr "Kas ma peaks taanduma?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:452
 msgid "Good idea!"
 msgstr "Hea mõte!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:469
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:457
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:461
 msgid "Crowns"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:466
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 #, fuzzy
 msgid ""
 "Note: The tiny metal crown above Delfador means you will lose the game if he "
@@ -317,7 +317,7 @@ msgstr ""
 "mängu. Kaotad ka juhul, kui sinu pealik (Konrad) surma saab."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:470
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:462
 #, fuzzy
 msgid ""
 "Note: The tiny metal crown above Delfador means you will lose the game if he "
@@ -327,7 +327,7 @@ msgstr ""
 "mängu. Kaotad ka juhul, kui sinu pealik (Li'sar) surma saab."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:482
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:474
 #, fuzzy
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
@@ -335,7 +335,7 @@ msgid ""
 msgstr "Kahjuks oled oma käigu ära kulutanud. Nüüd on puusliku kord."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:487
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:479
 #, fuzzy
 msgid ""
 "female^Unfortunately, you’ve used up your turn attacking the quintain. The "
@@ -343,13 +343,13 @@ msgid ""
 msgstr "Kahjuks oled oma käigu ära kulutanud. Nüüd on puusliku kord."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:485
 #, fuzzy
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "See KOLAKAS teeb käigu...?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:499
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:491
 msgid ""
 "Yes. It’s a magical quintain.\n"
 "Now, this quintain gets 5 chances to hit you for 3 damage each. If it hits "
@@ -362,25 +362,25 @@ msgstr ""
 "elupunktist alles vaid $future_hp punkti, nii et vaata ette!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:502
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:494
 #, fuzzy
 msgid "Click on the <b>End Turn</b> button in the bottom right of the screen"
 msgstr "Klõpsa nuppu 'Lõpeta käik' ekraani paremas alanurgas."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:523
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:515
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Aii, mul on vaja paraneda! Ainult $student_hp elupunkti jäi järele!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:525
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:517
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:509
 msgid "Village"
 msgstr "Küla"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:530
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:522
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
@@ -389,7 +389,7 @@ msgstr ""
 "külas ravib sind. Mine sinna!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:535
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:527
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -398,23 +398,23 @@ msgstr ""
 "külas ravib sind. Mine sinna!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:548
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:540
 msgid "Click on the village to move Konrad"
 msgstr "Konradi liigutamiseks klõpsa külale"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:549
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:541
 msgid "Click on the village to move Li’sar"
 msgstr "LI'sari liigutamiseks klõpsa külale"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:559
 #, fuzzy
 msgid "Villages"
 msgstr "Küla"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:561
 #, fuzzy
 msgid ""
 "You have captured a village! It now flies your flag and has been added to "
@@ -431,17 +431,17 @@ msgstr ""
 #. [event]
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:705
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:738
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:878
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:930
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:565
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:697
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:730
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:870
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:922
 #, fuzzy
 msgid "Click on the <b>End Turn</b> button"
 msgstr "Klõpsa nupule 'Lõpeta käik'."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:609
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:601
 #, fuzzy
 msgid ""
 "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
@@ -451,7 +451,7 @@ msgstr ""
 "puusliku vastu on sul veidi abi tarvis."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:614
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:606
 #, fuzzy
 msgid ""
 "female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
@@ -461,19 +461,19 @@ msgstr ""
 "puusliku vastu on sul veidi abi tarvis."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:620
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
 msgid "I’ll recruit some elves!"
 msgstr "Ma värban mõned haldjad!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:622
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:614
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1039
 msgid "Keep"
 msgstr "Pesa"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:627
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:619
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
 "have plenty of gold for that."
@@ -482,7 +482,7 @@ msgstr ""
 "selleks piisavalt."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:632
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:624
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -491,22 +491,22 @@ msgstr ""
 "selleks piisavalt."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:638
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:630
 msgid "Move Konrad to the keep"
 msgstr "Vii Konrad lossi värbamisväljale"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:639
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:631
 msgid "Move Li’sar to the keep"
 msgstr "Vii Li'sar lossi värbamisväljale"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:656
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:648
 msgid "Recruiting"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:658
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
 #, fuzzy
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
@@ -518,20 +518,20 @@ msgstr ""
 "vaid üks liik üksusi: haldjate võitlejad."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:662
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:654
 #, fuzzy
 msgid "Right click on a castle tile and select <b>Recruit</b>"
 msgstr "Tee paremklõps mõnel lossiväljal ja vali Värba."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:696
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:729
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:688
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:721
 msgid "New Recruits"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:691
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:724
 #, fuzzy
 msgid ""
 "New units cannot act in the turn they appear; you will gain control of them "
@@ -545,14 +545,14 @@ msgstr ""
 "selle kirjeldust paremal külgpaanil."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:710
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:743
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:702
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:735
 #, fuzzy
 msgid "Right click on the other castle tile and recruit another unit"
 msgstr "Tee paremklõps teisel lossivälja ja värba veel teinegi üksus"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:765
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:757
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
@@ -560,14 +560,14 @@ msgstr ""
 "ründama!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:769
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:761
 #, fuzzy
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Jah, kui üksus käigu jooksul midagi ei tee, siis paraneb ta pikkamööda."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:775
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:767
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
@@ -576,7 +576,7 @@ msgstr ""
 "elupunkti. Kui üksus käigu jooksul midagi ei tee, siis paraneb ta pikkamööda."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:781
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
@@ -585,12 +585,12 @@ msgstr ""
 "kaht liiki rünnakuid..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:793
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:785
 msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "Ma käsin neil kasutada seda, mis teeb suuremat kahju!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:797
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
 msgid ""
 "And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
 "find out..."
@@ -599,17 +599,17 @@ msgstr ""
 "välja..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:799
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:791
 msgid "Left click on an Elvish Fighter"
 msgstr "Tee vasakklõps haldjasõdalasel"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:800
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 msgid "End your turn and attack again."
 msgstr "Lõpeta käik ja ründa siis uuesti."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:819
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:811
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you?\n"
@@ -619,21 +619,21 @@ msgstr ""
 "Kasuta oma värvatuid võitlejaid, neist on suur abi."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:830
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:822
 #, fuzzy
 msgid "Left click on the quintain to attack it."
 msgstr "Puusliku ründamiseks tee selle peal vasakklõps."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:874
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
 msgid " The ranged attack would have been safer."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:874
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:886
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:878
 #, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
@@ -644,8 +644,8 @@ msgstr ""
 "ohutum."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:927
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:919
 #, fuzzy
 msgid ""
 "\n"
@@ -653,23 +653,23 @@ msgid ""
 msgstr "Lõpeta käik ja ründa siis uuesti."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:879
 msgid ""
 "\n"
 "You should tell the other elf to use the bow."
 msgstr ""
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:890
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:939
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:882
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:931
 #, fuzzy
 msgid "Attack with the other elf"
 msgstr "Ründa teise haldjaga"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:919
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:937
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:911
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:918
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:929
 #, fuzzy
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
@@ -681,22 +681,22 @@ msgstr ""
 "saanud ta end kaitsta."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:958
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:950
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Jätka mõlema haldjaga ründamist, kuni puuslik on võidetud!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:972
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:964
 msgid "Maybe you should recruit another elf?"
 msgstr "Äkki peaks värbama veel ühe haldja?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:976
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:968
 msgid "Unit Descriptions"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:978
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:970
 #, fuzzy
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
@@ -705,12 +705,12 @@ msgstr ""
 "Üksuse detailset kirjeldust näed paremklõpsuga üksuse peal."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:999
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:991
 msgid "Protect Your Troops"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:993
 #, fuzzy
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
@@ -723,12 +723,12 @@ msgstr ""
 "(KP) kogunud ja võivad varsti uuele tasemele jõuda."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1018
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1010
 msgid "Support"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1020
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1012
 #, fuzzy
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
@@ -739,12 +739,12 @@ msgstr ""
 "igaüks ühe kuldraha käigu jooksul."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1035
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1027
 msgid "Advancement"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1037
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1029
 #, fuzzy
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
@@ -760,13 +760,13 @@ msgstr ""
 "esimese taseme omad."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1052
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1044
 #, fuzzy
 msgid "Defenses"
 msgstr "Kaitse siin"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1055
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1047
 #, fuzzy
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
@@ -784,13 +784,13 @@ msgstr ""
 "maastikust sõltumata."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1080
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1072
 #, fuzzy
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "Puuslik on võidetud ja mina sain kogemust juurde!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1086
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1078
 #, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
@@ -802,7 +802,7 @@ msgstr ""
 "kogemust ja sa saad tugevamaks."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1090
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1082
 #, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
@@ -814,12 +814,12 @@ msgstr ""
 "kogemust ja sa saad tugevamaks."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1127
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1119
 msgid "Note"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1129
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1121
 #, fuzzy
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
@@ -830,27 +830,27 @@ msgstr ""
 "Hoolikalt liikudes võid nad ükshaaval alistada."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1138
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1130
 msgid "Do you want to keep practicing?"
 msgstr "Kas soovid harjutamist jätkata?"
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1140
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1132
 msgid "Yes, I’m still figuring it out."
 msgstr "Jah, ma õpin ikka veel."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1143
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1135
 msgid "No, I think I’ve got it."
 msgstr "Ei, ma arvan, et sain asja selgeks."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1184
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1176
 msgid "Victory"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1185
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1177
 #, fuzzy
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "

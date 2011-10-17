@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2010-05-04 12:09+0100\n"
 "Last-Translator: Kelemen Zoltán <kelemen_zoltan@freemail.hu>\n"
 "Language-Team: none\n"
@@ -346,22 +346,22 @@ msgstr ""
 "amely eltűnt a hegyek alatt."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:613
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:615
 msgid "He is raising the dead from every village!"
 msgstr ""
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:617
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:619
 msgid "This will be a dark day, but we <i>will</i> prevail."
 msgstr ""
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:639
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:641
 msgid "Hey, I did it!"
 msgstr "Héjj! Megcsináltam!"
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:643
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:645
 msgid "Good work Kai, if I may say so."
 msgstr "Szép munka volt, Kai, ha mondhatok ilyet."
 
@@ -1805,7 +1805,7 @@ msgstr ""
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:209
 msgid ""
-"When your grandfather married Indress, he he did not know that Tyegëa had "
+"When your grandfather married Indress, he did not know that Tyegëa had "
 "already born him a son. When she delivered your father to Jotha, your "
 "grandmother Indress agreed to keep it secret and raise the infant as her own."
 msgstr ""
@@ -2978,8 +2978,15 @@ msgstr "ököl"
 msgid "tail"
 msgstr "farok"
 
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:192
+#. [set_variable]
+#: data/campaigns/Dead_Water/units/Brawler.cfg:198
+#, fuzzy
+#| msgid "stunned"
+msgid "female^stunned"
+msgstr "összezavarva"
+
+#. [set_variable]
+#: data/campaigns/Dead_Water/units/Brawler.cfg:205
 msgid "stunned"
 msgstr "összezavarva"
 
@@ -3225,7 +3232,11 @@ msgstr ""
 "jönni."
 
 #: data/campaigns/Dead_Water/utils/specials.cfg:4
-msgid " This unit is able stun its enemies, disrupting their zones of control."
+#, fuzzy
+#| msgid ""
+#| " This unit is able stun its enemies, disrupting their zones of control."
+msgid ""
+" This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
 "Ez az egység képes megszédíteni az ellenfelét, így az elveszti a kontrollt a "
 "védelmi zónája felett."
@@ -3237,9 +3248,13 @@ msgstr "összezavarás"
 
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:10
+#, fuzzy
+#| msgid ""
+#| "This attack hits so hard that the defender is dazed and can no longer "
+#| "enforce a zone of control. The effect wears off on the defenders next turn"
 msgid ""
 "This attack hits so hard that the defender is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the defenders next turn"
+"enforce a zone of control. The effect wears off on the defender’s next turn."
 msgstr ""
 "Ez a támadás olyan kemény, hogy a védőt összezavarja, s nem képes a védelmi "
 "zónáját ellenőrizni. A hatás a kör végéig tart."

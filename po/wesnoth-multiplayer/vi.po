@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-27 10:14+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2011-06-27 15:16+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -694,13 +694,22 @@ msgstr "2nc - Tương lai mờ mịt (Sống sót)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
+#, fuzzy
+#| msgid ""
+#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
+#| "based play against randomly AI spawned units. Victory is achieved by "
+#| "surviving all enemy waves. During the course of play, the terrain will "
+#| "change based on random weather effects.\n"
+#| "\n"
+#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
-"play against randomly AI spawned units. Victory is achieved by surviving all "
-"enemy waves. During the course of play, the terrain will change based on "
-"random weather effects.\n"
+"play against randomly-spawned AI units. Victory is achieved by surviving and "
+"defeating all enemy waves. During the course of play, the terrain will "
+"change based on random weather effects.\n"
 "\n"
-"Note: You need to use map settings for the scenario to work right."
+"Note: You need to use the default map settings for the scenario to work "
+"right."
 msgstr ""
 "Tương lai mờ mịt là một màn chơi sống sót để chơi một mình hoặc theo đội hai "
 "người chơi chống lại các đơn vị máy tính được sinh ra một cách ngẫu nhiên. "
@@ -771,60 +780,91 @@ msgstr "Con người"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-msgid "Single player mode — uses the reduced strength spawns."
-msgstr "Chế độ một người chơi - sử dụng nguồn phát sinh có giảm bớt sức mạnh."
+#, fuzzy
+#| msgid "Death of your team leaders"
+msgid "Death of your leader"
+msgstr "Những người chỉ huy đội của bạn chết"
+
+#. [then]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
+msgid ""
+"Since your team has only one leader, the enemy waves will not be at full "
+"strength."
+msgstr ""
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1389
-msgid "Two player mode — uses the full strength spawns."
-msgstr "Chế độ hai người chơi - sử dụng nguồn phát sinh có đầy đủ sức mạnh."
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
+#, fuzzy
+#| msgid "Death of your team leaders"
+msgid "Death of both of your team’s leaders"
+msgstr "Những người chỉ huy đội của bạn chết"
 
-#. [objectives]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1409
-msgid "Survive and defeat the waves of opposition."
-msgstr "Sống sót và đánh bại các cuộc tấn công của phe đối lập."
+#. [else]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
+msgid ""
+"Since your team has two leaders, the enemy waves will be at full strength."
+msgstr ""
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1411
-msgid "Defeat all waves"
-msgstr "Đánh bại tất cả các cuộc tấn công"
-
-#. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1415
-msgid "Lose all your team’s leaders"
-msgstr "Mất toàn bộ những người chỉ huy đội của bạn"
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
+#, fuzzy
+#| msgid "Survive all enemy attacks"
+msgid "Survive and defeat all enemy waves"
+msgstr "Sống sót qua tất cả các cuộc tấn công của kẻ thù"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1426
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1431
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Tương lai mờ mịt - màn chơi sống sót ngẫu nhiên"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1451
+#, fuzzy
+#| msgid ""
+#| "Your aim is to survive the spawning waves and defeat the final arch-"
+#| "enemies.\n"
+#| "\n"
+#| "The spawning waves are generated randomly and will different each time "
+#| "Dark Forecast is played.\n"
+#| "\n"
+#| "\n"
+#| "They appear along the north, south and west map edges — though they are "
+#| "most likely to spawn on the west edge. The spawn waves appear at somewhat "
+#| "regular intervals.\n"
+#| "\n"
+#| "\n"
+#| "The weather will also change randomly, affecting the layout of the map.\n"
+#| "\n"
+#| "\n"
+#| "\n"
+#| "<span color='red'>Dark Forecast was made by:</span>\n"
+#| "\n"
+#| "<span color='green'>jb</span>\n"
+#| "— map design, spawn groups and scenario concept\n"
+#| "\n"
+#| "<span color='green'>Rhuvaen</span>\n"
+#| "— WML implementation"
 msgid ""
-"Your aim is to survive the spawning waves and defeat the final arch-"
-"enemies.\n"
+"Your aim is to survive the spawning waves of units and defeat the final "
+"archenemies.\n"
 "\n"
-"The spawning waves are generated randomly and will different each time Dark "
-"Forecast is played.\n"
+"The spawning waves are randomly generated and will be different each time "
+"Dark Forecast is played.\n"
 "\n"
-"\n"
-"They appear along the north, south and west map edges — though they are most "
-"likely to spawn on the west edge. The spawn waves appear at somewhat regular "
+"They appear along the north, south, and west map edges — though they are "
+"most likely to spawn on the west edge. The waves appear at somewhat regular "
 "intervals.\n"
-"\n"
 "\n"
 "The weather will also change randomly, affecting the layout of the map.\n"
 "\n"
 "\n"
+"<b>Dark Forecast was made by:</b>\n"
 "\n"
-"<span color='red'>Dark Forecast was made by:</span>\n"
+"<span color='green'>jb:</span>\n"
+"• Map design, spawn groups, and scenario concept\n"
 "\n"
-"<span color='green'>jb</span>\n"
-"— map design, spawn groups and scenario concept\n"
-"\n"
-"<span color='green'>Rhuvaen</span>\n"
-"— WML implementation"
+"<span color='green'>Rhuvaen:</span>\n"
+"• WML implementation"
 msgstr ""
 "Nhiệm vụ của bạn là sống sót qua các cuộc tấn công và đánh bại kẻ thù cuối "
 "cùng.\n"
@@ -851,13 +891,13 @@ msgstr ""
 "— bổ sung mã WML"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1456
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr ""
 "Vậy đây là thung lũng đáng nguyền rủa — chúng ta phải chiếm vùng đất này."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1458
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1460
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -868,7 +908,7 @@ msgstr ""
 "trước những điều bất ngờ trên vùng đất này."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1462
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1464
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -877,7 +917,7 @@ msgstr ""
 "đừng chống lại yêu sách của chúng ta."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1499
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1501
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -886,7 +926,7 @@ msgstr ""
 "bỏ rơi ta..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1513
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1515
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -896,7 +936,7 @@ msgstr ""
 "ngươi bằng lòng căm thù."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1535
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1537
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -2077,6 +2117,22 @@ msgid ""
 msgstr ""
 "Kiểm nghiệm wesnoth, sử dụng --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Single player mode — uses the reduced strength spawns."
+#~ msgstr ""
+#~ "Chế độ một người chơi - sử dụng nguồn phát sinh có giảm bớt sức mạnh."
+
+#~ msgid "Two player mode — uses the full strength spawns."
+#~ msgstr "Chế độ hai người chơi - sử dụng nguồn phát sinh có đầy đủ sức mạnh."
+
+#~ msgid "Survive and defeat the waves of opposition."
+#~ msgstr "Sống sót và đánh bại các cuộc tấn công của phe đối lập."
+
+#~ msgid "Defeat all waves"
+#~ msgstr "Đánh bại tất cả các cuộc tấn công"
+
+#~ msgid "Lose all your team’s leaders"
+#~ msgstr "Mất toàn bộ những người chỉ huy đội của bạn"
 
 #~ msgid ""
 #~ "Arcanclave Citadel is the central stronghold of the Arcanclave region. It "

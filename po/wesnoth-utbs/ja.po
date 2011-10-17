@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2011-05-04 21:26+0900\n"
 "Last-Translator: 瀟湘夜雨\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -1950,12 +1950,12 @@ msgstr ""
 "だ、向こう側までたどり着くことなんてできっこない。"
 
 #. [else]: (role=LostSoul, (role=LostSoul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2101
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2100
 msgid "Lost Soul"
 msgstr "迷える魂"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2123
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2122
 msgid ""
 "The sands are haunted with the spirits of tortured souls long since dead. At "
 "dusk they rise again, and during the Long Dark they can be particularly "
@@ -1967,7 +1967,7 @@ msgstr ""
 "姿を消すが、夜の恐怖とくらべれば日中の灼熱の方が個人的にはましだと思う。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2128
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2127
 msgid ""
 "The combination of the heat of the day and the rising undead make dusk a "
 "particularly dangerous time of day."
@@ -1976,12 +1976,12 @@ msgstr ""
 "帯となります。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2142
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2141
 msgid "You come and rise again, spirits? Have we not defeated you before?"
 msgstr "亡霊ども、また出てきたのか？ もう倒したんじゃないのか？"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2147
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2146
 msgid ""
 "These lost souls cannot hold onto anything but memories of lives long gone. "
 "They will rise to plague us again, night after night."
@@ -1990,12 +1990,12 @@ msgstr ""
 "にもないのです。夜が来るたびに現れては我々を苦しめるでしょう。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2209
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2208
 msgid "What happened? The undead spirits all just disappeared."
 msgstr "何が起こったんだ？ アンデッドの亡霊が全て消えてしまった。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2214
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2213
 msgid ""
 "These spirits are weak. They seek to prey on the helpless, but when they "
 "encounter strong resistance they flee."
@@ -2004,7 +2004,7 @@ msgstr ""
 "と逃げてしまう。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2221
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2220
 msgid "Flee, you craven spirits, and leave us in peace!"
 msgstr "立ち去れ、臆病な亡霊ども、我々の邪魔をするな！"
 
@@ -16271,8 +16271,15 @@ msgstr "脱水症状"
 msgid "refreshed"
 msgstr "リフレッシュ"
 
-#. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:30
+#. [set_variable]
+#: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:36
+#, fuzzy
+#| msgid "female^Desert Hunter"
+msgid "female^stunned"
+msgstr "砂漠の女ハンター"
+
+#. [set_variable]
+#: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:43
 msgid "stunned"
 msgstr "スタン"
 

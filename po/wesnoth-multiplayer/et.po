@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-27 10:14+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2010-08-16 09:09+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -684,13 +684,22 @@ msgstr "2 mängijat: Tume ennustus (Ellujäämine)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
+#, fuzzy
+#| msgid ""
+#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
+#| "based play against randomly AI spawned units. Victory is achieved by "
+#| "surviving all enemy waves. During the course of play, the terrain will "
+#| "change based on random weather effects.\n"
+#| "\n"
+#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
-"play against randomly AI spawned units. Victory is achieved by surviving all "
-"enemy waves. During the course of play, the terrain will change based on "
-"random weather effects.\n"
+"play against randomly-spawned AI units. Victory is achieved by surviving and "
+"defeating all enemy waves. During the course of play, the terrain will "
+"change based on random weather effects.\n"
 "\n"
-"Note: You need to use map settings for the scenario to work right."
+"Note: You need to use the default map settings for the scenario to work "
+"right."
 msgstr ""
 "'Tume ennustus' on ellujäämisstsenaarium ühele või kahele koostöös mängijale "
 "juhuslikult paigutatud arvuti juhitud üksuste vastu. Võidu saab kõigi "
@@ -758,61 +767,64 @@ msgstr "Inimesed"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-msgid "Single player mode — uses the reduced strength spawns."
-msgstr "Ühe mängija režiim - vastased on nõrgemad."
+#, fuzzy
+msgid "Death of your leader"
+msgstr "Sinu meeskonna pealikute surm."
+
+#. [then]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
+msgid ""
+"Since your team has only one leader, the enemy waves will not be at full "
+"strength."
+msgstr ""
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1389
-msgid "Two player mode — uses the full strength spawns."
-msgstr "Kahe mängija režiim - vastased on täisjõus."
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
+#, fuzzy
+msgid "Death of both of your team’s leaders"
+msgstr "Sinu meeskonna pealikute surm."
 
-#. [objectives]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1409
-msgid "Survive and defeat the waves of opposition."
-msgstr "Pea vastu ja alista ründajate lained."
+#. [else]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
+msgid ""
+"Since your team has two leaders, the enemy waves will be at full strength."
+msgstr ""
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1411
-msgid "Defeat all waves"
-msgstr "Alista kõik rünnakulained"
-
-#. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1415
-msgid "Lose all your team’s leaders"
-msgstr "Kaotad kõik oma meeskonna pealikud"
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
+#, fuzzy
+msgid "Survive and defeat all enemy waves"
+msgstr "Pea vastu kõigile vastase rünnakutele."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1426
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1431
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Tume ennustus - juhuslik ellujäämisstsenaarium"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1451
 #, fuzzy
 msgid ""
-"Your aim is to survive the spawning waves and defeat the final arch-"
-"enemies.\n"
+"Your aim is to survive the spawning waves of units and defeat the final "
+"archenemies.\n"
 "\n"
-"The spawning waves are generated randomly and will different each time Dark "
-"Forecast is played.\n"
+"The spawning waves are randomly generated and will be different each time "
+"Dark Forecast is played.\n"
 "\n"
-"\n"
-"They appear along the north, south and west map edges — though they are most "
-"likely to spawn on the west edge. The spawn waves appear at somewhat regular "
+"They appear along the north, south, and west map edges — though they are "
+"most likely to spawn on the west edge. The waves appear at somewhat regular "
 "intervals.\n"
-"\n"
 "\n"
 "The weather will also change randomly, affecting the layout of the map.\n"
 "\n"
 "\n"
+"<b>Dark Forecast was made by:</b>\n"
 "\n"
-"<span color='red'>Dark Forecast was made by:</span>\n"
+"<span color='green'>jb:</span>\n"
+"• Map design, spawn groups, and scenario concept\n"
 "\n"
-"<span color='green'>jb</span>\n"
-"— map design, spawn groups and scenario concept\n"
-"\n"
-"<span color='green'>Rhuvaen</span>\n"
-"— WML implementation"
+"<span color='green'>Rhuvaen:</span>\n"
+"• WML implementation"
 msgstr ""
 "Sinu ülesandeks on elada üle rünnakulained ja viimaks alistada "
 "peavaenlased.\n"
@@ -837,13 +849,13 @@ msgstr ""
 "- WML realisatsioon"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1456
 #, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Nii et see ongi see neetud org, mille peame endale saama."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1458
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1460
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -853,14 +865,14 @@ msgstr ""
 "hakatakse kindlasti vastu. Peame olema selle maa üllatusteks valmis."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1462
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1464
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr "Siis uurime, mis siin ootab, ja õpetame neid mitte meile vastu seisma."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1499
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1501
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -869,7 +881,7 @@ msgstr ""
 "jumalad on mu maha jätnud..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1513
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1515
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -878,7 +890,7 @@ msgstr ""
 "täidab su viimased hetked puhta vihkamisega."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1535
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1537
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -2049,6 +2061,21 @@ msgid ""
 msgstr ""
 "Kasutatavad käivitusvõtmed --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Single player mode — uses the reduced strength spawns."
+#~ msgstr "Ühe mängija režiim - vastased on nõrgemad."
+
+#~ msgid "Two player mode — uses the full strength spawns."
+#~ msgstr "Kahe mängija režiim - vastased on täisjõus."
+
+#~ msgid "Survive and defeat the waves of opposition."
+#~ msgstr "Pea vastu ja alista ründajate lained."
+
+#~ msgid "Defeat all waves"
+#~ msgstr "Alista kõik rünnakulained"
+
+#~ msgid "Lose all your team’s leaders"
+#~ msgstr "Kaotad kõik oma meeskonna pealikud"
 
 #~ msgid ""
 #~ "Players must navigate the dispersive terrain of this small but "

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2008-10-17 22:30+0200\n"
 "Last-Translator: Jose Gordillo <kilder@hotmail.com>\n"
 "Language-Team: Catalan <wesnoth-ca@list.etting.org>\n"
@@ -40,8 +40,8 @@ msgstr "Tutorial: Segona Part"
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:84
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:181
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:183
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:173
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:175
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:356
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:357
 msgid "Konrad"
@@ -80,29 +80,29 @@ msgid "Get yourself killed"
 msgstr "Mateu-vos"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:179
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:171
 msgid "Who would you like to play?"
 msgstr "Amb qui us agradaria jugar?"
 
 #. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:188
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:190
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:180
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:182
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:195
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:430
 msgid "Li’sar"
 msgstr "Li’sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:224
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:210
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:216
 #, fuzzy
 msgid "Welcome to Wesnoth!"
 msgstr "*Benvingut a Wesnoth!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:220
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:212
 #, fuzzy
 msgid ""
 "For this tutorial, you are playing Konrad.\n"
@@ -112,7 +112,7 @@ msgstr ""
 "Esteu a la torre i el vostre mestre Delfador està al costat est del riu."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:226
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
 #, fuzzy
 msgid ""
 "For this tutorial, you are playing Li’sar.\n"
@@ -124,23 +124,23 @@ msgstr ""
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:230
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:416
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:538
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:222
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:408
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:530
 msgid "Left click on Konrad"
 msgstr "Feu clic esquerre sobre Konrad"
 
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:231
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:417
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:539
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:223
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:409
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:531
 msgid "Left click on Li’sar"
 msgstr "Feu clic esquerre sobre Li'sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:242
 #, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
@@ -150,7 +150,7 @@ msgstr ""
 "Els llocs on es pot moure estan il·luminats."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:257
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:249
 #, fuzzy
 msgid ""
 "<big>You have selected Li’sar.</big>\n"
@@ -160,37 +160,37 @@ msgstr ""
 "Els llocs on es pot moure estan il·luminats."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:254
 msgid "Here"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:268
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:260
 #, fuzzy
 msgid ""
 "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr "Mou en Konrad al costat de Delfador tot i fent clic on diu «AQUÍ»."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:272
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:264
 #, fuzzy
 msgid ""
 "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr "Mou Li'sar al costat de Delfador tot i fent clic on diu «AQUÍ»."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:277
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:269
 #, fuzzy
 msgid "Left click on tile labeled <b>Here</b>"
 msgstr "Feu clic esquerre a la casella amb l'etiqueta «AQUÍ»"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:302
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:294
 msgid "Oops!"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:304
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:296
 #, fuzzy
 msgid ""
 "You moved to the wrong place! After this message, you can press <b>u</b> to "
@@ -202,46 +202,46 @@ msgstr ""
 "*Premeu el botó esquerre o qualsevol tecla per continuar..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
 #, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Bon dia, Delfador! És hora d'atacar?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:330
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
 msgid "Um, well..."
 msgstr "Mmm, bé..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:334
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Heu trobat cap orc amb el que jo pugui lluitar, eh? Un trol, potser?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:338
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:330
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Tranquil! Invocaré un enemic per a tu..."
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:358
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Caramot"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:370
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:362
 msgid "... this quintain!"
 msgstr "... aquest camarot!"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:374
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
 #, fuzzy
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "Un caramot? Voleu que lluiti contra un ninot??"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:381
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:373
 #, fuzzy
 msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
 msgstr ""
@@ -249,7 +249,7 @@ msgstr ""
 "guanyaràs."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:386
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:378
 #, fuzzy
 msgid ""
 "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
@@ -259,13 +259,13 @@ msgstr ""
 "guanyaràs."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:400
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:386
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:392
 msgid "Attacking"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:396
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:388
 #, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
@@ -277,7 +277,7 @@ msgstr ""
 "Quan cliqueu «D'acord», Konrad atacarà."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:401
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
 #, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar) then the target "
@@ -289,39 +289,39 @@ msgstr ""
 "Quan cliqueu «D'acord», Li'sar atacarà."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:412
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:404
 msgid "Click on the quintain to attack it"
 msgstr "Feu clic en el caramot per atacar-lo"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:448
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:440
 msgid "Hey! This quintain fights back!"
 msgstr "Ei! Aquest caramot es torna contra mi!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:452
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:444
 #, fuzzy
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "Hmmm, potser hauríem d'haver començat per una nina."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:456
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:448
 msgid "Should I retreat?"
 msgstr "Hauria d'abandonar?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:452
 msgid "Good idea!"
 msgstr "Ben pensat!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:469
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:457
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:461
 msgid "Crowns"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:466
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 #, fuzzy
 msgid ""
 "Note: The tiny metal crown above Delfador means you will lose the game if he "
@@ -332,7 +332,7 @@ msgstr ""
 "mor."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:470
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:462
 #, fuzzy
 msgid ""
 "Note: The tiny metal crown above Delfador means you will lose the game if he "
@@ -343,7 +343,7 @@ msgstr ""
 "mor."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:482
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:474
 #, fuzzy
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
@@ -353,7 +353,7 @@ msgstr ""
 "del caramot."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:487
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:479
 #, fuzzy
 msgid ""
 "female^Unfortunately, you’ve used up your turn attacking the quintain. The "
@@ -363,13 +363,13 @@ msgstr ""
 "del caramot."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:485
 #, fuzzy
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "Aquest NINOT també té un torn?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:499
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:491
 #, fuzzy
 msgid ""
 "Yes. It’s a magical quintain.\n"
@@ -385,13 +385,13 @@ msgstr ""
 "$future_hp punts de vida. Prepareu-vos!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:502
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:494
 #, fuzzy
 msgid "Click on the <b>End Turn</b> button in the bottom right of the screen"
 msgstr "Feu clic en el botó 'Fi del Torn', a baix a la dreta."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:523
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:515
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr ""
@@ -399,13 +399,13 @@ msgstr ""
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:525
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:517
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:509
 msgid "Village"
 msgstr "Llogaret"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:530
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:522
 #, fuzzy
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
@@ -416,7 +416,7 @@ msgstr ""
 "retirar-vos allà."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:535
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:527
 #, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
@@ -427,23 +427,23 @@ msgstr ""
 "retirar-vos allà."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:548
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:540
 msgid "Click on the village to move Konrad"
 msgstr "Feu clic en el llogaret per a moure en Konrad"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:549
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:541
 msgid "Click on the village to move Li’sar"
 msgstr "Feu clic en el llogaret per a moure la Li'sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:559
 #, fuzzy
 msgid "Villages"
 msgstr "Llogaret"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:561
 #, fuzzy
 msgid ""
 "You have captured a village! It now flies your flag and has been added to "
@@ -461,17 +461,17 @@ msgstr ""
 #. [event]
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:705
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:738
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:878
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:930
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:565
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:697
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:730
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:870
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:922
 #, fuzzy
 msgid "Click on the <b>End Turn</b> button"
 msgstr "Feu clic al botó «Fi del torn»"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:609
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:601
 #, fuzzy
 msgid ""
 "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
@@ -481,7 +481,7 @@ msgstr ""
 "ajuda amb aquest caramot."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:614
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:606
 #, fuzzy
 msgid ""
 "female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
@@ -491,19 +491,19 @@ msgstr ""
 "ajuda amb aquest caramot."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:620
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
 msgid "I’ll recruit some elves!"
 msgstr "Reclutaré alguns elfs!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:622
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:614
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1039
 msgid "Keep"
 msgstr "Torre"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:627
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:619
 #, fuzzy
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
@@ -513,7 +513,7 @@ msgstr ""
 "unitats. Teniu prou or. "
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:632
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:624
 #, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
@@ -523,22 +523,22 @@ msgstr ""
 "unitats. Teniu prou or. "
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:638
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:630
 msgid "Move Konrad to the keep"
 msgstr "Mogueu en Konrad cap a la torre"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:639
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:631
 msgid "Move Li’sar to the keep"
 msgstr "Mogueu la Li'sar cap a la torre"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:656
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:648
 msgid "Recruiting"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:658
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
 #, fuzzy
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
@@ -551,20 +551,20 @@ msgstr ""
 "*Feu clic esquerre o qualsevol tecla per continuar..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:662
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:654
 #, fuzzy
 msgid "Right click on a castle tile and select <b>Recruit</b>"
 msgstr "Feu clic dret a la casella del castell i seleccioneu «Recluta»"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:696
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:729
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:688
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:721
 msgid "New Recruits"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:691
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:724
 #, fuzzy
 msgid ""
 "New units cannot act in the turn they appear; you will gain control of them "
@@ -579,34 +579,34 @@ msgstr ""
 "*Feu clic esquerre o qualsevol tecla per continuar..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:710
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:743
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:702
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:735
 #, fuzzy
 msgid "Right click on the other castle tile and recruit another unit"
 msgstr ""
 "Feu clic dret a l'altra casella del castell i recluteu una altra unitat"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:765
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:757
 #, fuzzy
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr "Ei, el caramot ha recuperat dos punts d'impacte! L'hauria d'atacar!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:769
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:761
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:775
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:767
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:781
 #, fuzzy
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
@@ -617,13 +617,13 @@ msgstr ""
 "que tenen dos tipus d'atacs..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:793
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:785
 #, fuzzy
 msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "Els ordenaré que usin l'atac que més fereixi!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:797
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
 #, fuzzy
 msgid ""
 "And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
@@ -632,18 +632,18 @@ msgstr ""
 "I quin seria? L'espasa (5-4) o l'arc (3-3)? Suposo que ho esbrinareu..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:799
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:791
 msgid "Left click on an Elvish Fighter"
 msgstr "Feu clic esquerre en un lluitador elf"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:800
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 #, fuzzy
 msgid "End your turn and attack again."
 msgstr "Finalitzeu el vostre torn i ataqueu de nou."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:819
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:811
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you?\n"
@@ -651,21 +651,21 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:830
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:822
 #, fuzzy
 msgid "Left click on the quintain to attack it."
 msgstr "Feu clic esquerre en el caramot per atacar-lo."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:874
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
 msgid " The ranged attack would have been safer."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:874
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:886
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:878
 #, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
@@ -676,8 +676,8 @@ msgstr ""
 "L'atac a distància era més segur."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:927
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:919
 #, fuzzy
 msgid ""
 "\n"
@@ -685,23 +685,23 @@ msgid ""
 msgstr "Finalitzeu el vostre torn i ataqueu de nou."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:879
 msgid ""
 "\n"
 "You should tell the other elf to use the bow."
 msgstr ""
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:890
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:939
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:882
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:931
 #, fuzzy
 msgid "Attack with the other elf"
 msgstr "Ataca amb l'altre elf"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:919
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:937
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:911
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:918
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:929
 #, fuzzy
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
@@ -713,23 +713,23 @@ msgstr ""
 "que no ha pogut defensar-se."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:958
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:950
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Seguiu atacant amb els dos elfs fins que eliminin el caramot!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:972
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:964
 msgid "Maybe you should recruit another elf?"
 msgstr "Pot ser hauries de reclutar un altre elf?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:976
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:968
 msgid "Unit Descriptions"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:978
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:970
 #, fuzzy
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
@@ -739,12 +739,12 @@ msgstr ""
 "unitat."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:999
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:991
 msgid "Protect Your Troops"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:993
 #, fuzzy
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
@@ -756,12 +756,12 @@ msgstr ""
 "Tingueu especial cura amb les unitats amb més punts d'experiència (XP)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1018
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1010
 msgid "Support"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1020
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1012
 #, fuzzy
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
@@ -772,12 +772,12 @@ msgstr ""
 "unitat us costarà una moneda d'or per torn."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1035
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1027
 msgid "Advancement"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1037
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1029
 #, fuzzy
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
@@ -793,13 +793,13 @@ msgstr ""
 "tenen el doble de gast de manteniment que les de nivell 1."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1052
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1044
 #, fuzzy
 msgid "Defenses"
 msgstr "Defenseu aquí"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1055
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1047
 #, fuzzy
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
@@ -817,13 +817,13 @@ msgstr ""
 "sigueu on sigueu."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1080
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1072
 #, fuzzy
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "El caramot és mort, senyors, i he guanyat més experiència!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1086
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1078
 #, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
@@ -835,7 +835,7 @@ msgstr ""
 "rival: i si guanyeu prou experiència, us fareu més poderós."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1090
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1082
 #, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
@@ -847,12 +847,12 @@ msgstr ""
 "rival: i si guanyeu prou experiència, us fareu més poderós."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1127
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1119
 msgid "Note"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1129
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1121
 #, fuzzy
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
@@ -863,27 +863,27 @@ msgstr ""
 "cautela, deuríeu poder matar-los un a un."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1138
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1130
 msgid "Do you want to keep practicing?"
 msgstr "Voleu continuar practicant?"
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1140
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1132
 msgid "Yes, I’m still figuring it out."
 msgstr "Sí, encara necessito més pràctica."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1143
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1135
 msgid "No, I think I’ve got it."
 msgstr "No, crec que ja capto la idea."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1184
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1176
 msgid "Victory"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1185
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1177
 #, fuzzy
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "

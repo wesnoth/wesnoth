@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-utbs_1.4_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2010-09-14 14:43+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -1951,12 +1951,12 @@ msgstr ""
 "vagyunk már a sivatagban, sosem érünk át a túloldalra..."
 
 #. [else]: (role=LostSoul, (role=LostSoul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2101
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2100
 msgid "Lost Soul"
 msgstr "Elveszett lélek"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2123
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2122
 msgid ""
 "The sands are haunted with the spirits of tortured souls long since dead. At "
 "dusk they rise again, and during the Long Dark they can be particularly "
@@ -1969,7 +1969,7 @@ msgstr ""
 "mint a rémületes éjszakákat."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2128
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2127
 msgid ""
 "The combination of the heat of the day and the rising undead make dusk a "
 "particularly dangerous time of day."
@@ -1977,12 +1977,12 @@ msgstr ""
 "A forró nappal és az éjszaka gyülekező élőholtak nem túl jó kombináció."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2142
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2141
 msgid "You come and rise again, spirits? Have we not defeated you before?"
 msgstr "Újra feltámadtatok szellemek? Nem győztünk még le titeket?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2147
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2146
 msgid ""
 "These lost souls cannot hold onto anything but memories of lives long gone. "
 "They will rise to plague us again, night after night."
@@ -1991,12 +1991,12 @@ msgstr ""
 "Éjszakáról éjszakára újra és újra zaklatni fognak."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2209
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2208
 msgid "What happened? The undead spirits all just disappeared."
 msgstr "Mi történt? A szellemek egyszerre eltűntek!"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2214
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2213
 msgid ""
 "These spirits are weak. They seek to prey on the helpless, but when they "
 "encounter strong resistance they flee."
@@ -2005,7 +2005,7 @@ msgstr ""
 "ütköznek, elmenekülnek."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2221
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2220
 msgid "Flee, you craven spirits, and leave us in peace!"
 msgstr "Fuss, te gyáva lélek, és hagyj minket végre békén!"
 
@@ -16510,8 +16510,15 @@ msgstr "szomjúság"
 msgid "refreshed"
 msgstr "felfrissülés"
 
-#. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:30
+#. [set_variable]
+#: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:36
+#, fuzzy
+#| msgid "female^Desert Hunter"
+msgid "female^stunned"
+msgstr "Homoki vadásznő"
+
+#. [set_variable]
+#: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:43
 msgid "stunned"
 msgstr "megbénítva"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2011-10-07 17:20-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -1950,12 +1950,12 @@ msgstr ""
 "long crossing the desert, I fear we shall never reach the other side."
 
 #. [else]: (role=LostSoul, (role=LostSoul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2101
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2100
 msgid "Lost Soul"
 msgstr "Lost Soul"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2123
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2122
 msgid ""
 "The sands are haunted with the spirits of tortured souls long since dead. At "
 "dusk they rise again, and during the Long Dark they can be particularly "
@@ -1968,7 +1968,7 @@ msgstr ""
 "day to the horrors of the night."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2128
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2127
 msgid ""
 "The combination of the heat of the day and the rising undead make dusk a "
 "particularly dangerous time of day."
@@ -1977,12 +1977,12 @@ msgstr ""
 "particularly dangerous time of day."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2142
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2141
 msgid "You come and rise again, spirits? Have we not defeated you before?"
 msgstr "You come and rise again, spirits? Have we not defeated you before?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2147
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2146
 msgid ""
 "These lost souls cannot hold onto anything but memories of lives long gone. "
 "They will rise to plague us again, night after night."
@@ -1991,12 +1991,12 @@ msgstr ""
 "They will rise to plague us again, night after night."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2209
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2208
 msgid "What happened? The undead spirits all just disappeared."
 msgstr "What happened? The undead spirits all just disappeared."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2214
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2213
 msgid ""
 "These spirits are weak. They seek to prey on the helpless, but when they "
 "encounter strong resistance they flee."
@@ -2005,7 +2005,7 @@ msgstr ""
 "encounter strong resistance they flee."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2221
+#: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:2220
 msgid "Flee, you craven spirits, and leave us in peace!"
 msgstr "Flee, you craven spirits, and leave us in peace!"
 
@@ -4409,19 +4409,16 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1719
-#| msgid "Defeat Troll Leaders"
 msgid "Defeat troll leaders"
 msgstr "Defeat troll leaders"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1735
-#| msgid "Death of Zhul"
 msgid "Death of Fundin"
 msgstr "Death of Fundin"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1739
-#| msgid "Death of Nog"
 msgid "Death of Nori"
 msgstr "Death of Nori"
 
@@ -4441,19 +4438,16 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1784
-#| msgid "Defeat Dwarf Leaders"
 msgid "Defeat dwarf leaders"
 msgstr "Defeat dwarf leaders"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1800
-#| msgid "Death of Zhul"
 msgid "Death of Thungar"
 msgstr "Death of Thungar"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1804
-#| msgid "Death of Jarl"
 msgid "Death of Gnarl"
 msgstr "Death of Gnarl"
 
@@ -16310,8 +16304,15 @@ msgstr "thirst"
 msgid "refreshed"
 msgstr "refreshed"
 
-#. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:30
+#. [set_variable]
+#: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:36
+#, fuzzy
+#| msgid "female^Desert Hunter"
+msgid "female^stunned"
+msgstr "Desert Hunter"
+
+#. [set_variable]
+#: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:43
 msgid "stunned"
 msgstr "stunned"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-27 10:14+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2009-10-09 19:50-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -704,13 +704,22 @@ msgstr "2p — 𐑛𐑸𐑒 𐑓𐑹𐑒𐑭𐑕𐑑 (𐑕𐑻𐑝𐑲𐑝𐑩�
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
+#, fuzzy
+#| msgid ""
+#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
+#| "based play against randomly AI spawned units. Victory is achieved by "
+#| "surviving all enemy waves. During the course of play, the terrain will "
+#| "change based on random weather effects.\n"
+#| "\n"
+#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
-"play against randomly AI spawned units. Victory is achieved by surviving all "
-"enemy waves. During the course of play, the terrain will change based on "
-"random weather effects.\n"
+"play against randomly-spawned AI units. Victory is achieved by surviving and "
+"defeating all enemy waves. During the course of play, the terrain will "
+"change based on random weather effects.\n"
 "\n"
-"Note: You need to use map settings for the scenario to work right."
+"Note: You need to use the default map settings for the scenario to work "
+"right."
 msgstr ""
 "𐑛𐑸𐑒 𐑓𐑹𐑒𐑭𐑕𐑑 𐑦𐑟 𐑩 𐑕𐑻𐑝𐑲𐑝𐑩𐑤 𐑕𐑦𐑯𐑺𐑰𐑴 𐑓𐑹 𐑕𐑭𐑤𐑩𐑑𐑺 𐑹 𐑑𐑵-𐑐𐑤𐑱𐑻 𐑑𐑰𐑥-𐑚𐑱𐑕𐑑 𐑐𐑤𐑱 𐑩𐑜𐑱𐑯𐑕𐑑 "
 "𐑮𐑨𐑯𐑛𐑩𐑥𐑤𐑦 AI 𐑕𐑐𐑪𐑯𐑛 𐑿𐑯𐑦𐑑𐑕. 𐑝𐑦𐑒𐑑𐑼𐑦 𐑦𐑟 𐑩𐑗𐑰𐑝𐑛 𐑚𐑲 𐑕𐑻𐑝𐑲𐑝𐑦𐑙 𐑷𐑤 𐑧𐑯𐑩𐑥𐑦 𐑢𐑱𐑝𐑟. 𐑛𐑘𐑫𐑼𐑦𐑙 𐑞 "
@@ -777,61 +786,64 @@ msgstr "𐑣𐑿𐑥𐑩𐑯"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-msgid "Single player mode — uses the reduced strength spawns."
-msgstr "𐑕𐑦𐑙𐑜𐑩𐑤 𐑐𐑤𐑱𐑻 𐑥𐑴𐑛 - 𐑿𐑟𐑩𐑟 𐑞 𐑮𐑦𐑛𐑿𐑕𐑑 𐑕𐑑𐑮𐑧𐑙𐑔 𐑕𐑐𐑭𐑯𐑟."
+#, fuzzy
+msgid "Death of your leader"
+msgstr "𐑛𐑧𐑔 𐑝 𐑿𐑼 𐑑𐑰𐑥 𐑤𐑰𐑛𐑼𐑟."
+
+#. [then]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
+msgid ""
+"Since your team has only one leader, the enemy waves will not be at full "
+"strength."
+msgstr ""
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1389
-msgid "Two player mode — uses the full strength spawns."
-msgstr "𐑑𐑵 𐑐𐑤𐑱𐑻 𐑥𐑴𐑛 - 𐑿𐑟𐑩𐑟 𐑞 𐑓𐑫𐑤 𐑕𐑑𐑮𐑧𐑙𐑔 𐑕𐑐𐑭𐑯𐑟."
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
+#, fuzzy
+msgid "Death of both of your team’s leaders"
+msgstr "𐑛𐑧𐑔 𐑝 𐑿𐑼 𐑑𐑰𐑥 𐑤𐑰𐑛𐑼𐑟."
 
-#. [objectives]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1409
-msgid "Survive and defeat the waves of opposition."
-msgstr "𐑕𐑻𐑝𐑲𐑝 𐑯 𐑛𐑦𐑓𐑰𐑑 𐑞 𐑢𐑱𐑝𐑟 𐑝 𐑪𐑐𐑩𐑟𐑦𐑖𐑩𐑯."
+#. [else]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
+msgid ""
+"Since your team has two leaders, the enemy waves will be at full strength."
+msgstr ""
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1411
-msgid "Defeat all waves"
-msgstr "𐑛𐑦𐑓𐑰𐑑 𐑷𐑤 𐑢𐑱𐑝𐑟"
-
-#. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1415
-msgid "Lose all your team’s leaders"
-msgstr "𐑤𐑵𐑟 𐑷𐑤 𐑿𐑼 𐑑𐑰𐑥𐑟 𐑤𐑰𐑛𐑼𐑟"
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
+#, fuzzy
+msgid "Survive and defeat all enemy waves"
+msgstr "𐑕𐑻𐑝𐑲𐑝 𐑷𐑤 𐑧𐑯𐑩𐑥𐑦 𐑩𐑑𐑨𐑒𐑕."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1426
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1431
 msgid "Dark Forecast — a random survival scenario"
 msgstr "𐑛𐑸𐑒 𐑓𐑹𐑒𐑭𐑕𐑑 - 𐑩 𐑮𐑨𐑯𐑛𐑩𐑥 𐑕𐑻𐑝𐑲𐑝𐑩𐑤 𐑕𐑦𐑯𐑺𐑰𐑴"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1451
 #, fuzzy
 msgid ""
-"Your aim is to survive the spawning waves and defeat the final arch-"
-"enemies.\n"
+"Your aim is to survive the spawning waves of units and defeat the final "
+"archenemies.\n"
 "\n"
-"The spawning waves are generated randomly and will different each time Dark "
-"Forecast is played.\n"
+"The spawning waves are randomly generated and will be different each time "
+"Dark Forecast is played.\n"
 "\n"
-"\n"
-"They appear along the north, south and west map edges — though they are most "
-"likely to spawn on the west edge. The spawn waves appear at somewhat regular "
+"They appear along the north, south, and west map edges — though they are "
+"most likely to spawn on the west edge. The waves appear at somewhat regular "
 "intervals.\n"
-"\n"
 "\n"
 "The weather will also change randomly, affecting the layout of the map.\n"
 "\n"
 "\n"
+"<b>Dark Forecast was made by:</b>\n"
 "\n"
-"<span color='red'>Dark Forecast was made by:</span>\n"
+"<span color='green'>jb:</span>\n"
+"• Map design, spawn groups, and scenario concept\n"
 "\n"
-"<span color='green'>jb</span>\n"
-"— map design, spawn groups and scenario concept\n"
-"\n"
-"<span color='green'>Rhuvaen</span>\n"
-"— WML implementation"
+"<span color='green'>Rhuvaen:</span>\n"
+"• WML implementation"
 msgstr ""
 "𐑿𐑼 𐑱𐑥 𐑦𐑟 𐑑 𐑕𐑻𐑝𐑲𐑝 𐑞 𐑕𐑐𐑭𐑯𐑦𐑙 𐑢𐑱𐑝𐑟 𐑯 𐑛𐑦𐑓𐑰𐑑 𐑞 𐑓𐑲𐑯𐑩𐑤 𐑸𐑗-𐑧𐑯𐑦𐑥𐑦𐑟.\n"
 "\n"
@@ -855,13 +867,13 @@ msgstr ""
 "- WML 𐑦𐑥𐑐𐑤𐑩𐑥𐑧𐑯𐑑𐑱𐑖𐑩𐑯"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1456
 #, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "𐑕𐑴 𐑞𐑦𐑕 𐑦𐑟 𐑞 𐑩𐑒𐑻𐑕𐑑 𐑝𐑨𐑤𐑰 - 𐑩 𐑤𐑨𐑯𐑛 𐑬𐑼𐑟 𐑓𐑹 𐑞 𐑑𐑱𐑒𐑦𐑙."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1458
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1460
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -871,21 +883,21 @@ msgstr ""
 "𐑜𐑴𐑦𐑙 𐑑 𐑚𐑰 𐑩𐑯𐑩𐑐𐑴𐑟𐑛. 𐑢𐑰 𐑥𐑳𐑕𐑑 𐑚𐑰 𐑐𐑮𐑦𐑐𐑺𐑛 𐑓𐑹 𐑞 𐑕𐑻𐑐𐑮𐑲𐑟𐑦𐑟 𐑝 𐑞𐑦𐑕 𐑤𐑨𐑯𐑛."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1462
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1464
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr "𐑞𐑧𐑯 𐑤𐑧𐑑 𐑳𐑕 𐑛𐑦𐑕𐑒𐑳𐑝𐑼 𐑢𐑪𐑑 𐑤𐑲𐑟 𐑦𐑯 𐑢𐑱𐑑𐑦𐑙 𐑯 𐑑𐑰𐑡 𐑞𐑧𐑥 𐑯𐑪𐑑 𐑑 𐑩𐑐𐑴𐑟 𐑬𐑼 𐑒𐑤𐑱𐑥."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1499
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1501
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr "𐑳𐑜! 𐑣𐑬 𐑒𐑨𐑯 𐑞𐑦𐑕 𐑚𐑰? 𐑛𐑦𐑓𐑰𐑑𐑩𐑛 𐑚𐑲 𐑥𐑽 𐑚𐑸𐑚𐑺𐑦𐑩𐑯𐑟! 𐑥𐑲 𐑜𐑪𐑛𐑟 𐑣𐑨𐑝 𐑓𐑹𐑕𐑱𐑒𐑩𐑯 𐑥𐑰..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1513
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1515
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -894,7 +906,7 @@ msgstr ""
 "𐑥𐑴𐑥𐑩𐑯𐑑𐑕 𐑢𐑦𐑞 𐑐𐑘𐑫𐑼 𐑣𐑱𐑑."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1535
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1537
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -2091,6 +2103,21 @@ msgid ""
 msgstr ""
 "𐑩 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑚𐑧𐑯𐑗𐑥𐑸𐑒, 𐑿𐑟 --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Single player mode — uses the reduced strength spawns."
+#~ msgstr "𐑕𐑦𐑙𐑜𐑩𐑤 𐑐𐑤𐑱𐑻 𐑥𐑴𐑛 - 𐑿𐑟𐑩𐑟 𐑞 𐑮𐑦𐑛𐑿𐑕𐑑 𐑕𐑑𐑮𐑧𐑙𐑔 𐑕𐑐𐑭𐑯𐑟."
+
+#~ msgid "Two player mode — uses the full strength spawns."
+#~ msgstr "𐑑𐑵 𐑐𐑤𐑱𐑻 𐑥𐑴𐑛 - 𐑿𐑟𐑩𐑟 𐑞 𐑓𐑫𐑤 𐑕𐑑𐑮𐑧𐑙𐑔 𐑕𐑐𐑭𐑯𐑟."
+
+#~ msgid "Survive and defeat the waves of opposition."
+#~ msgstr "𐑕𐑻𐑝𐑲𐑝 𐑯 𐑛𐑦𐑓𐑰𐑑 𐑞 𐑢𐑱𐑝𐑟 𐑝 𐑪𐑐𐑩𐑟𐑦𐑖𐑩𐑯."
+
+#~ msgid "Defeat all waves"
+#~ msgstr "𐑛𐑦𐑓𐑰𐑑 𐑷𐑤 𐑢𐑱𐑝𐑟"
+
+#~ msgid "Lose all your team’s leaders"
+#~ msgstr "𐑤𐑵𐑟 𐑷𐑤 𐑿𐑼 𐑑𐑰𐑥𐑟 𐑤𐑰𐑛𐑼𐑟"
 
 #~ msgid ""
 #~ "Players must navigate the dispersive terrain of this small but "

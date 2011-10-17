@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2011-01-16 11:28+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: none\n"
@@ -340,22 +340,22 @@ msgstr ""
 "scomparire dietro le montagne."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:613
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:615
 msgid "He is raising the dead from every village!"
 msgstr ""
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:617
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:619
 msgid "This will be a dark day, but we <i>will</i> prevail."
 msgstr ""
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:639
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:641
 msgid "Hey, I did it!"
 msgstr "Ehi!, ce l’ho fatta!"
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:643
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:645
 msgid "Good work Kai, if I may say so."
 msgstr "Bel lavoro Kai, se così si può dire."
 
@@ -1783,7 +1783,7 @@ msgstr ""
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:209
 msgid ""
-"When your grandfather married Indress, he he did not know that Tyegëa had "
+"When your grandfather married Indress, he did not know that Tyegëa had "
 "already born him a son. When she delivered your father to Jotha, your "
 "grandmother Indress agreed to keep it secret and raise the infant as her own."
 msgstr ""
@@ -2969,8 +2969,15 @@ msgstr "pugno"
 msgid "tail"
 msgstr "coda"
 
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:192
+#. [set_variable]
+#: data/campaigns/Dead_Water/units/Brawler.cfg:198
+#, fuzzy
+#| msgid "stunned"
+msgid "female^stunned"
+msgstr "stordito"
+
+#. [set_variable]
+#: data/campaigns/Dead_Water/units/Brawler.cfg:205
 msgid "stunned"
 msgstr "stordito"
 
@@ -3219,7 +3226,11 @@ msgid "I agree. I hate to leave our home, but we will return."
 msgstr "Concordo. Odio lasciare la nostra casa, ma torneremo."
 
 #: data/campaigns/Dead_Water/utils/specials.cfg:4
-msgid " This unit is able stun its enemies, disrupting their zones of control."
+#, fuzzy
+#| msgid ""
+#| " This unit is able stun its enemies, disrupting their zones of control."
+msgid ""
+" This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
 "Questa unità è capace di stordire il nemico, facendogli perdere la sua zona "
 "di controllo."
@@ -3231,9 +3242,13 @@ msgstr "stordimento"
 
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:10
+#, fuzzy
+#| msgid ""
+#| "This attack hits so hard that the defender is dazed and can no longer "
+#| "enforce a zone of control. The effect wears off on the defenders next turn"
 msgid ""
 "This attack hits so hard that the defender is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the defenders next turn"
+"enforce a zone of control. The effect wears off on the defender’s next turn."
 msgstr ""
 "Questo attacco colpisce così forte che chi lo subisce è stordito e non non "
 "può più far rispettare la sua zona di controllo. L’effetto svanisce il turno "

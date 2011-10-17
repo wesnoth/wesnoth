@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -683,8 +683,8 @@ msgstr "Nepereinama"
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:1227 data/core/terrain.cfg:2134
-#: data/core/terrain.cfg:2144
+#: data/core/terrain.cfg:1227 data/core/terrain.cfg:2122
+#: data/core/terrain.cfg:2132
 msgid "Void"
 msgstr ""
 
@@ -712,8 +712,7 @@ msgstr ""
 #. [terrain_type]: id=logcabin_snow_village
 #. [terrain_type]: id=igloo
 #. [terrain_type]: id=swamp_village
-#. [terrain_type]: id=mermen_village
-#. [terrain_type]: id=swamp_merfolk-village
+#. [terrain_type]: id=mermen-village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:1242 data/core/terrain.cfg:1255
@@ -729,8 +728,8 @@ msgstr ""
 #: data/core/terrain.cfg:1523 data/core/terrain.cfg:1536
 #: data/core/terrain.cfg:1549 data/core/terrain.cfg:1562
 #: data/core/terrain.cfg:1575 data/core/terrain.cfg:1590
-#: data/core/terrain.cfg:1603 data/core/terrain.cfg:1616
-#: data/core/terrain.cfg:1630 data/core/terrain.cfg:2246
+#: data/core/terrain.cfg:1603 data/core/terrain.cfg:1618
+#: data/core/terrain.cfg:2234
 msgid "Village"
 msgstr "Kaimas"
 
@@ -875,31 +874,28 @@ msgstr ""
 msgid "Swamp Village"
 msgstr "Pelkės kaimas"
 
-#. [terrain_type]: id=mermen_village
+#. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1604
-msgid "Shallow Merfolk Village"
-msgstr "Seklus vandenių kaimas"
-
-#. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:1617
-msgid "Swamp Merfolk Village"
+#, fuzzy
+#| msgid "Swamp Merfolk Village"
+msgid "Merfolk Village"
 msgstr "Pelkėtas vandenių kaimas"
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:1631
+#: data/core/terrain.cfg:1619
 #, fuzzy
 msgid "Village Overlay"
 msgstr "Pilies dydis:"
 
 #. [terrain_type]: id=encampment
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1646 data/core/terrain.cfg:1647
-#: data/core/terrain.cfg:1658
+#: data/core/terrain.cfg:1634 data/core/terrain.cfg:1635
+#: data/core/terrain.cfg:1646
 msgid "Encampment"
 msgstr "Stovykla"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1659
+#: data/core/terrain.cfg:1647
 msgid "Snowy Encampment"
 msgstr "Apsnigta stovykla"
 
@@ -911,40 +907,40 @@ msgstr "Apsnigta stovykla"
 #. [terrain_type]: id=dwarven_castle
 #. [terrain_type]: id=sand_castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1670 data/core/terrain.cfg:1682
-#: data/core/terrain.cfg:1694 data/core/terrain.cfg:1705
-#: data/core/terrain.cfg:1716 data/core/terrain.cfg:1728
-#: data/core/terrain.cfg:1778 data/core/terrain.cfg:1988
+#: data/core/terrain.cfg:1658 data/core/terrain.cfg:1670
+#: data/core/terrain.cfg:1682 data/core/terrain.cfg:1693
+#: data/core/terrain.cfg:1704 data/core/terrain.cfg:1716
+#: data/core/terrain.cfg:1766 data/core/terrain.cfg:1976
 msgid "Castle"
 msgstr "Pilis"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1671
+#: data/core/terrain.cfg:1659
 msgid "Orcish Castle"
 msgstr "Orkų pilis"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1683
+#: data/core/terrain.cfg:1671
 msgid "Snowy Orcish Castle"
 msgstr "Apsnigta orkų pilis"
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:1695
+#: data/core/terrain.cfg:1683
 msgid "Human Castle"
 msgstr "Žmonių pilis"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1706
+#: data/core/terrain.cfg:1694
 msgid "Snowy Human Castle"
 msgstr "Apsnigta žmonių pilis"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:1717
+#: data/core/terrain.cfg:1705
 msgid "Elvish Castle"
 msgstr "Elfų pilis"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:1729
+#: data/core/terrain.cfg:1717
 msgid "Dwarven Castle"
 msgstr "Dvarfų pilis"
 
@@ -952,34 +948,34 @@ msgstr "Dvarfų pilis"
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:1740 data/core/terrain.cfg:1752
-#: data/core/terrain.cfg:1765 data/core/terrain.cfg:1790
+#: data/core/terrain.cfg:1728 data/core/terrain.cfg:1740
+#: data/core/terrain.cfg:1753 data/core/terrain.cfg:1778
 #, fuzzy
 msgid "Ruined Castle"
 msgstr "Sugriuvusi žmonių pilis"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1741
+#: data/core/terrain.cfg:1729
 msgid "Ruined Human Castle"
 msgstr "Sugriuvusi žmonių pilis"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1753
+#: data/core/terrain.cfg:1741
 msgid "Sunken Human Ruin"
 msgstr "Apsemti žmonių griuvėsiai"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1766
+#: data/core/terrain.cfg:1754
 msgid "Swamp Human Ruin"
 msgstr "Užpelkėję žmonių griuvėsiai"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1779
+#: data/core/terrain.cfg:1767
 msgid "Desert Castle"
 msgstr "Dykumos pilis"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:1791
+#: data/core/terrain.cfg:1779
 #, fuzzy
 msgid "Ruined Desert Castle"
 msgstr "Dykumos pilis"
@@ -987,19 +983,19 @@ msgstr "Dykumos pilis"
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1806 data/core/terrain.cfg:1818
-#: data/core/terrain.cfg:1831
+#: data/core/terrain.cfg:1794 data/core/terrain.cfg:1806
+#: data/core/terrain.cfg:1819
 msgid "Encampment Keep"
 msgstr "Stovyklos bokštas"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:1819
+#: data/core/terrain.cfg:1807
 #, fuzzy
 msgid "Tall Encampment Keep"
 msgstr "Stovyklos bokštas"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1832
+#: data/core/terrain.cfg:1820
 msgid "Snowy Encampment Keep"
 msgstr "Apsnigtos stovyklos bokštas"
 
@@ -1011,40 +1007,40 @@ msgstr "Apsnigtos stovyklos bokštas"
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1844 data/core/terrain.cfg:1857
-#: data/core/terrain.cfg:1870 data/core/terrain.cfg:1883
-#: data/core/terrain.cfg:1896 data/core/terrain.cfg:1909
-#: data/core/terrain.cfg:1961 data/core/terrain.cfg:2000
+#: data/core/terrain.cfg:1832 data/core/terrain.cfg:1845
+#: data/core/terrain.cfg:1858 data/core/terrain.cfg:1871
+#: data/core/terrain.cfg:1884 data/core/terrain.cfg:1897
+#: data/core/terrain.cfg:1949 data/core/terrain.cfg:1988
 msgid "Keep"
 msgstr "Bokštas"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1845
+#: data/core/terrain.cfg:1833
 msgid "Orcish Keep"
 msgstr "Orkų bokštas"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1858
+#: data/core/terrain.cfg:1846
 msgid "Snowy Orcish Keep"
 msgstr "Apsnigtas orkų bokštas"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:1871
+#: data/core/terrain.cfg:1859
 msgid "Human Castle Keep"
 msgstr "Žmonių pilies bokštas"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:1884
+#: data/core/terrain.cfg:1872
 msgid "Snowy Human Castle Keep"
 msgstr "Apsnigtos žmonių pilies bokštas"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1897
+#: data/core/terrain.cfg:1885
 msgid "Elven Castle Keep"
 msgstr "Elfų pilies bokštas"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:1910
+#: data/core/terrain.cfg:1898
 msgid "Dwarven Castle Keep"
 msgstr "Dvarfų pilies bokštas"
 
@@ -1052,46 +1048,46 @@ msgstr "Dvarfų pilies bokštas"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:1922 data/core/terrain.cfg:1935
-#: data/core/terrain.cfg:1948 data/core/terrain.cfg:1974
+#: data/core/terrain.cfg:1910 data/core/terrain.cfg:1923
+#: data/core/terrain.cfg:1936 data/core/terrain.cfg:1962
 #, fuzzy
 msgid "Ruined Keep"
 msgstr "Dykumos bokštas"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1923
+#: data/core/terrain.cfg:1911
 msgid "Ruined Human Castle Keep"
 msgstr "Sugriuvusios žmonių pilies bokštas"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1936
+#: data/core/terrain.cfg:1924
 msgid "Sunken Human Castle Keep"
 msgstr "Apsemtas žmonių pilies bokštas"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1949
+#: data/core/terrain.cfg:1937
 msgid "Swamp Human Castle Keep"
 msgstr "Užpelkėjusios žmonių pilies bokštas"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1962
+#: data/core/terrain.cfg:1950
 msgid "Desert Keep"
 msgstr "Dykumos bokštas"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:1975
+#: data/core/terrain.cfg:1963
 #, fuzzy
 msgid "Ruined Desert Keep"
 msgstr "Dykumos bokštas"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1989
+#: data/core/terrain.cfg:1977
 #, fuzzy
 msgid "Castle Overlay"
 msgstr "Pilies dydis:"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2001
+#: data/core/terrain.cfg:1989
 msgid "Keep Overlay"
 msgstr ""
 
@@ -1102,75 +1098,75 @@ msgstr ""
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2018 data/core/terrain.cfg:2030
-#: data/core/terrain.cfg:2042 data/core/terrain.cfg:2056
-#: data/core/terrain.cfg:2068 data/core/terrain.cfg:2080
-#: data/core/terrain.cfg:2094 data/core/terrain.cfg:2105
-#: data/core/terrain.cfg:2117
+#: data/core/terrain.cfg:2006 data/core/terrain.cfg:2018
+#: data/core/terrain.cfg:2030 data/core/terrain.cfg:2044
+#: data/core/terrain.cfg:2056 data/core/terrain.cfg:2068
+#: data/core/terrain.cfg:2082 data/core/terrain.cfg:2093
+#: data/core/terrain.cfg:2105
 msgid "Bridge"
 msgstr "Tiltas"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:2019 data/core/terrain.cfg:2031
-#: data/core/terrain.cfg:2043
+#: data/core/terrain.cfg:2007 data/core/terrain.cfg:2019
+#: data/core/terrain.cfg:2031
 msgid "Wooden Bridge"
 msgstr "Medinis tiltas"
 
 #. [terrain_type]: id=stone_bridge
-#: data/core/terrain.cfg:2057 data/core/terrain.cfg:2069
-#: data/core/terrain.cfg:2081
+#: data/core/terrain.cfg:2045 data/core/terrain.cfg:2057
+#: data/core/terrain.cfg:2069
 msgid "Basic Stone Bridge"
 msgstr ""
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2095 data/core/terrain.cfg:2106
-#: data/core/terrain.cfg:2118
+#: data/core/terrain.cfg:2083 data/core/terrain.cfg:2094
+#: data/core/terrain.cfg:2106
 #, fuzzy
 msgid "Cave Chasm Bridge"
 msgstr "Tiltas"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:2135
+#: data/core/terrain.cfg:2123
 msgid "Off Map"
 msgstr ""
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:2145
+#: data/core/terrain.cfg:2133
 msgid "Experimental Fake Map Edge"
 msgstr ""
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:2154 data/gui/default/window/mp_create_game.cfg:479
+#: data/core/terrain.cfg:2142 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr "Uždanga"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:2163
+#: data/core/terrain.cfg:2151
 msgid "Fog"
 msgstr "Rūkas"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2232
+#: data/core/terrain.cfg:2220
 msgid "Flat"
 msgstr "Plokščia"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2239
+#: data/core/terrain.cfg:2227
 msgid "Frozen"
 msgstr "Užšalusi"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2253
+#: data/core/terrain.cfg:2241
 msgid "Impassable"
 msgstr "Nepereinama"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2260
+#: data/core/terrain.cfg:2248
 msgid "Unwalkable"
 msgstr "Nevaikštoma"
 
@@ -2185,10 +2181,8 @@ msgstr "Jungimasis"
 msgid "Login:"
 msgstr "Naudotojo vardas:"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:200
-#: src/game_preferences_display.cpp:176
 msgid "Save password to preferences (clear text)"
 msgstr "Išsaugoti slaptažodį į nustatymus (paprastu tekstu)"
 
@@ -2456,7 +2450,7 @@ msgid "Skip AI Moves"
 msgstr "Praleisti DI ėjimus"
 
 #: src/game_preferences_display.cpp:166
-msgid "Interrupt move when an ally is sighted"
+msgid "Interrupt Move when an Ally is Sighted"
 msgstr ""
 
 #: src/game_preferences_display.cpp:167
@@ -2483,7 +2477,7 @@ msgstr "Rodyti tik draugų prisijungimus prie vestibiulio"
 msgid "Show All Lobby Joins"
 msgstr "Rodyti visus prisijungimus prie vestibiulio"
 
-#: src/game_preferences_display.cpp:173 src/game_preferences_display.cpp:382
+#: src/game_preferences_display.cpp:173
 msgid "Use new lobby interface"
 msgstr ""
 
@@ -2495,8 +2489,16 @@ msgstr "Rikiuoti vestibiulio sąrašą"
 msgid "Iconize Lobby List"
 msgstr "Ikonizuoti vestibiulio sąrašą"
 
+#: src/game_preferences_display.cpp:176
+#, fuzzy
+#| msgid "Save password to preferences (clear text)"
+msgid "Save Password to Preferences (Plain Text)"
+msgstr "Išsaugoti slaptažodį į nustatymus (paprastu tekstu)"
+
 #: src/game_preferences_display.cpp:177
-msgid "Set path to wesnothd"
+#, fuzzy
+#| msgid "Set path to wesnothd"
+msgid "Set Path to wesnothd"
 msgstr "Nustatyti kelią iki wesnothd"
 
 #: src/game_preferences_display.cpp:178
@@ -2747,6 +2749,10 @@ msgstr ""
 "Rodyti pranešimus apie visų žaidėjų prisijungimą prie daugelio žaidėjų "
 "vestibiulio"
 
+#: src/game_preferences_display.cpp:382
+msgid "Use New Lobby Interface"
+msgstr ""
+
 #: src/game_preferences_display.cpp:384
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
@@ -2973,9 +2979,9 @@ msgstr "Neapibrėžtas joks sąrašas."
 msgid "A 'list_definition' should contain one row."
 msgstr ""
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:70
-#: src/gui/auxiliary/window_builder/listbox.cpp:84
-#: src/gui/auxiliary/window_builder/multi_page.cpp:64
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:67
+#: src/gui/auxiliary/window_builder/listbox.cpp:81
+#: src/gui/auxiliary/window_builder/multi_page.cpp:61
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
@@ -3632,7 +3638,7 @@ msgstr "Ekranvaizdis padarytas"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:411
+#: src/image.cpp:406
 msgid "language code for localized resources^en_US"
 msgstr "lt"
 
@@ -3688,7 +3694,7 @@ msgstr "Toli nuo jūros"
 msgid "Island"
 msgstr "Sala"
 
-#: src/marked-up_text.cpp:422
+#: src/marked-up_text.cpp:442
 msgid "The maximum text width is less than 1."
 msgstr "Maksimalus teksto plotis mažesnis už 1."
 
@@ -3791,3 +3797,6 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#~ msgid "Shallow Merfolk Village"
+#~ msgstr "Seklus vandenių kaimas"

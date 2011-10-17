@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2011-09-28 15:16+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -30,8 +30,8 @@ msgstr "Wesnoth 연습 게임 1편"
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:84
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:181
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:183
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:173
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:175
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:356
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:357
 msgid "Konrad"
@@ -70,28 +70,28 @@ msgid "Get yourself killed"
 msgstr "자살한다"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:179
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:171
 msgid "Who would you like to play?"
 msgstr "주인공을 누구로 할까요?"
 
 #. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:188
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:190
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:180
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:182
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:195
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:430
 msgid "Li’sar"
 msgstr "Li’sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:224
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:210
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:216
 msgid "Welcome to Wesnoth!"
 msgstr "Wesnoth 세계에 오신걸 환영합니다!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:220
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:212
 msgid ""
 "For this tutorial, you are playing Konrad.\n"
 "You are standing in the keep, and your mentor Delfador is on the east side "
@@ -101,7 +101,7 @@ msgstr ""
 "당신은 본성에 서 있으며, 당신의 멘토 Delfador가 강의 동쪽에 있습니다."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:226
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
 msgid ""
 "For this tutorial, you are playing Li’sar.\n"
 "You are standing in the keep, and your mentor Delfador is on the east side "
@@ -113,23 +113,23 @@ msgstr ""
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:230
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:416
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:538
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:222
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:408
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:530
 msgid "Left click on Konrad"
 msgstr "Konrad를 클릭"
 
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:231
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:417
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:539
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:223
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:409
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:531
 msgid "Left click on Li’sar"
 msgstr "Li'sar를 클릭"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:242
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
@@ -138,7 +138,7 @@ msgstr ""
 "그가 움직일 수 있는 부분이 밝게 표시됩니다."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:257
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:249
 msgid ""
 "<big>You have selected Li’sar.</big>\n"
 "The places she can move to are highlighted."
@@ -147,36 +147,36 @@ msgstr ""
 "그녀가 움직일 수 있는 부분이 밝게 표시됩니다."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:254
 msgid "Here"
 msgstr "여기"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:268
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:260
 msgid ""
 "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr ""
 "<b>여기</b>로 표시된 타일을 클릭해서 Konrad를 Delfador 옆으로 움직이세요."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:272
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:264
 msgid ""
 "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr ""
 "<b>여기</b>로 표시된 타일을 클릭해서 Li'sar를 Delfador 옆으로 움직이세요."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:277
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:269
 msgid "Left click on tile labeled <b>Here</b>"
 msgstr "<b>여기</b>라고 씌어진 타일을 클릭"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:302
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:294
 msgid "Oops!"
 msgstr "이런!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:304
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:296
 msgid ""
 "You moved to the wrong place! After this message, you can press <b>u</b> to "
 "undo, then try again."
@@ -185,62 +185,62 @@ msgstr ""
 "서 행동을 취소하고 다시 시도할 수 있습니다."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "좋은 아침이에요, Delfador! 이제 뭔가 전투를 해 볼 수 있나요?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:330
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
 msgid "Um, well..."
 msgstr "흐음, 글쎄..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:334
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "제가 싸워 볼 오크는 찾으셨나요, 네? 아님 트롤?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:338
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:330
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "가만 있게! 자네의 적수를 소환해주지..."
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:358
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "인간형 과녁"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:370
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:362
 msgid "... this quintain!"
 msgstr "... 이 과녁이라네!"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:374
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "과녁이요? 모형이랑 다투는 척이라도 하라구요?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:381
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:373
 msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
 msgstr "자네의 HP는 32에 검이 있으니, 확실히 이길 수 있겠지."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:386
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:378
 msgid ""
 "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
 "win."
 msgstr "자네의 HP는 32에 검이 있으니, 확실히 이길 수 있겠지."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:400
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:386
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:392
 msgid "Attacking"
 msgstr "공격"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:396
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:388
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -251,7 +251,7 @@ msgstr ""
 "Konrad가 공격합니다."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:401
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -262,38 +262,38 @@ msgstr ""
 "Li'sar가 공격합니다."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:412
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:404
 msgid "Click on the quintain to attack it"
 msgstr "인간형 과녁을 클릭해서 공격하세요"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:448
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:440
 msgid "Hey! This quintain fights back!"
 msgstr "이봐요! 이 모형 반격하잖아요!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:452
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:444
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "흐음, 그냥 인형으로 시작하는 편이 나았을지도 모르겠군."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:456
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:448
 msgid "Should I retreat?"
 msgstr "물러날까요?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:452
 msgid "Good idea!"
 msgstr "좋은 생각이네!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:469
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:457
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:461
 msgid "Crowns"
 msgstr "왕관 표시"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:466
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 msgid ""
 "Note: The tiny metal crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Konrad) is killed."
@@ -302,7 +302,7 @@ msgstr ""
 "미합니다. 또한 당신의 지도자 (Konrad)가 죽어도 패배합니다."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:470
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:462
 msgid ""
 "Note: The tiny metal crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Li’sar) is killed."
@@ -311,7 +311,7 @@ msgstr ""
 "미합니다. 또한 당신의 지도자 (Li'sar)가 죽어도 패배합니다."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:482
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:474
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
@@ -319,7 +319,7 @@ msgstr ""
 "안됐네만 자네는 과녁을 공격하는데 턴을 이미 써 버렸네. 이제 과녁의 차례네."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:487
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:479
 msgid ""
 "female^Unfortunately, you’ve used up your turn attacking the quintain. The "
 "quintain now gets to attack."
@@ -327,12 +327,12 @@ msgstr ""
 "안됐네만 자네는 과녁을 공격하는데 턴을 이미 써 버렸네. 이제 과녁의 차례네."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:493
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:485
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "<i>모형</i> 주제에 턴을 갖는다고요?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:499
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:491
 msgid ""
 "Yes. It’s a magical quintain.\n"
 "Now, this quintain gets 5 chances to hit you for 3 damage each. If it hits "
@@ -344,24 +344,24 @@ msgstr ""
 "자네의 HP는 $student_hp 에서 $future_hp 로 떨어지겠지. 잘 버텨보게!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:502
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:494
 msgid "Click on the <b>End Turn</b> button in the bottom right of the screen"
 msgstr "오른쪽 밑에 있는 <b>턴 종료</b> 버튼을 클릭"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:523
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:515
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "으악! 회복이 필요해요! HP가 $student_hp 뿐이야!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:525
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:517
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:509
 msgid "Village"
 msgstr "마을"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:530
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:522
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
@@ -370,7 +370,7 @@ msgstr ""
 "을 마치면 회복이 된다네. 마을로 가게!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:535
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:527
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -379,22 +379,22 @@ msgstr ""
 "을 마치면 회복이 된다네. 마을로 가게!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:548
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:540
 msgid "Click on the village to move Konrad"
 msgstr "마을을 클릭해서 Konrad를 이동시키세요"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:549
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:541
 msgid "Click on the village to move Li’sar"
 msgstr "마을을 클릭해서 Li'sar를 이동시키세요"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:567
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:559
 msgid "Villages"
 msgstr "마을"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:561
 msgid ""
 "You have captured a village! It now flies your flag and has been added to "
 "your total village count. (The house icon at the top of the screen shows how "
@@ -410,16 +410,16 @@ msgstr ""
 #. [event]
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:705
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:738
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:878
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:930
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:565
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:697
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:730
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:870
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:922
 msgid "Click on the <b>End Turn</b> button"
 msgstr "<b>턴 종료</b> 버튼을 클릭"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:609
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:601
 msgid ""
 "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
 "summon some help against that quintain."
@@ -428,7 +428,7 @@ msgstr ""
 "이 좀 필요할 것 같군."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:614
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:606
 msgid ""
 "female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
 "to summon some help against that quintain."
@@ -437,19 +437,19 @@ msgstr ""
 "이 좀 필요할 것 같군."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:620
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
 msgid "I’ll recruit some elves!"
 msgstr "엘프를 좀 소집해야겠어요!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:622
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:614
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1039
 msgid "Keep"
 msgstr "본성"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:627
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:619
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
 "have plenty of gold for that."
@@ -457,7 +457,7 @@ msgstr ""
 "멋진 생각이네. 본성에 돌아가면 유닛 둘을 소집할 수 있을걸세. 돈은 충분하다네."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:632
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:624
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -465,22 +465,22 @@ msgstr ""
 "멋진 생각이네. 본성에 돌아가면 유닛 둘을 소집할 수 있을걸세. 돈은 충분하다네."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:638
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:630
 msgid "Move Konrad to the keep"
 msgstr "Konrad를 본성으로 이동"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:639
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:631
 msgid "Move Li’sar to the keep"
 msgstr "Li'sar를 본성으로 이동"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:656
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:648
 msgid "Recruiting"
 msgstr "소집하기"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:658
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
@@ -491,19 +491,19 @@ msgstr ""
 "할 수 있는 유닛 종류는 엘프 전사 하나뿐입니다."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:662
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:654
 msgid "Right click on a castle tile and select <b>Recruit</b>"
 msgstr "성채 타일 하나를 오른쪽 클릭해서 <b>소집</b>을 선택"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:696
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:729
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:688
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:721
 msgid "New Recruits"
 msgstr "새 병력"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:699
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:691
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:724
 msgid ""
 "New units cannot act in the turn they appear; you will gain control of them "
 "next turn.\n"
@@ -516,24 +516,24 @@ msgstr ""
 "닛 설명을 볼 수 있습니다."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:710
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:743
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:702
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:735
 msgid "Right click on the other castle tile and recruit another unit"
 msgstr "나머지 성채 타일을 오른쪽 클릭해서 또다른 유닛을 소집"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:765
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:757
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr "이봐요, 과녁이 방금 HP 2를 회복했어요! 어서 공격해야겠어요!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:769
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:761
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr "그래, 한 턴동안 아무것도 하지 않은 유닛은 느린 속도로 회복하게 된다네."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:775
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:767
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
@@ -544,7 +544,7 @@ msgstr ""
 "http://cafe.naver.com/wesnothko or drier22@gmail.com"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:781
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
@@ -553,12 +553,12 @@ msgstr ""
 "고 있다는 걸 알아야 하네..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:793
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:785
 msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "제일 큰 데미지를 주는 걸로 공격시키겠어요!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:797
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
 msgid ""
 "And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
 "find out..."
@@ -566,17 +566,17 @@ msgstr ""
 "그럼 어느 것이 나을까? 검 (5-4) 일까 활 (3-3) 일까? 자넨 알아낼 거라 믿네..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:799
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:791
 msgid "Left click on an Elvish Fighter"
 msgstr "엘프 전사를 클릭"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:800
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
 msgid "End your turn and attack again."
 msgstr "턴을 종료하고 다시 공격하세요."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:819
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:811
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you?\n"
@@ -586,20 +586,20 @@ msgstr ""
 "고용한 전사들을 이용하게. 그들은 큰 도움이 될거야."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:830
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:822
 msgid "Left click on the quintain to attack it."
 msgstr "인간형 과녁을 클릭해서 공격하세요."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:874
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
 msgid " The ranged attack would have been safer."
 msgstr " 원격 공격이라면 더 안전했겠지."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:874
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:886
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:878
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
 "attack. The quintain defended with its melee attack (3–5)."
@@ -608,8 +608,8 @@ msgstr ""
 "자기의 근접 공격 (3-5)으로 방어했네."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:927
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:919
 msgid ""
 "\n"
 "End your turn, then attack again."
@@ -618,7 +618,7 @@ msgstr ""
 "턴을 종료하고 다시 공격하세요."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:879
 msgid ""
 "\n"
 "You should tell the other elf to use the bow."
@@ -627,15 +627,15 @@ msgstr ""
 "다른 엘프에게 활을 쓰도록 명령해봐."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:890
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:939
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:882
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:931
 msgid "Attack with the other elf"
 msgstr "다른 엘프로 공격"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:919
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:937
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:911
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:918
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:929
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
 "attacks). The quintain has no ranged attack, only a melee attack, so it "
@@ -646,34 +646,34 @@ msgstr ""
 "네."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:958
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:950
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "과녁을 끝장낼때까지 두 엘프들로 계속 공격하게!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:972
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:964
 msgid "Maybe you should recruit another elf?"
 msgstr "아마 엘프를 더 소환해야 할지도?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:976
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:968
 msgid "Unit Descriptions"
 msgstr "유닛 설명"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:978
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:970
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
 "당신은 유닛을 오른쪽 클릭해서 자세한 <b>유닛 설명</b>을 볼 수 있습니다."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:999
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:991
 msgid "Protect Your Troops"
 msgstr "당신의 군단을 보호하세요"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:993
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points (XP)"
@@ -684,12 +684,12 @@ msgstr ""
 "오!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1018
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1010
 msgid "Support"
 msgstr "지원"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1020
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1012
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -698,12 +698,12 @@ msgstr ""
 "다. 유닛이 더 많아지면, 각 유닛은 당신에게 턴당 금 1을 요구합니다."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1035
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1027
 msgid "Advancement"
 msgstr "승급"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1037
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1029
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
 "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will go up "
@@ -717,12 +717,12 @@ msgstr ""
 "두 배가 든다는 점을 참고하십시오."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1052
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1044
 msgid "Defenses"
 msgstr "방어도"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1055
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1047
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -738,12 +738,12 @@ msgstr ""
 "그 목표물이 어떤 지형에 있든지 간에 70%의 명중률을 갖습니다."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1080
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1072
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "과녁이 부서지고, 내게 더 많은 경험치가 쌓였어요!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1086
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1078
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
@@ -755,7 +755,7 @@ msgstr ""
 "자 Konrad, 연습할 모형들을 더 두고 가겠네! 다음번엔 실전이 될거네..."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1090
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1082
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
@@ -767,12 +767,12 @@ msgstr ""
 "자 Konrad, 연습할 모형들을 더 두고 가겠네! 다음번엔 실전이 될거네..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1127
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1119
 msgid "Note"
 msgstr "참고"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1129
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1121
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -781,27 +781,27 @@ msgstr ""
 "은 그들을 각개격파할 수 있습니다."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1138
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1130
 msgid "Do you want to keep practicing?"
 msgstr "연습을 더 하기 바라십니까?"
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1140
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1132
 msgid "Yes, I’m still figuring it out."
 msgstr "그래, 난 아직 더 감을 잡아야 겠어."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1143
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1135
 msgid "No, I think I’ve got it."
 msgstr "아니, 이제 할 수 있어."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1184
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1176
 msgid "Victory"
 msgstr "승리"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1185
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1177
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over, but you will still be able to examine the final positions "

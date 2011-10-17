@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2011-03-12 20:16+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -347,22 +347,22 @@ msgstr ""
 "zmizel pod horami."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:613
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:615
 msgid "He is raising the dead from every village!"
 msgstr "Vyvolává mrtvé z každé vesnice!"
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:617
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:619
 msgid "This will be a dark day, but we <i>will</i> prevail."
 msgstr "Bude to temný den, ale <i>MY</i> v něm obstojíme."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:639
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:641
 msgid "Hey, I did it!"
 msgstr "Hej, já to zvládnul!"
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:643
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:645
 msgid "Good work Kai, if I may say so."
 msgstr "Dobrá práce Kai, pokud ti tak můžu říct."
 
@@ -1790,8 +1790,14 @@ msgstr "Cože? Jak je to možné?"
 # doplnění jména v druhé větě pro lepší srozumitelnost.
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:209
+#, fuzzy
+#| msgid ""
+#| "When your grandfather married Indress, he he did not know that Tyegëa had "
+#| "already born him a son. When she delivered your father to Jotha, your "
+#| "grandmother Indress agreed to keep it secret and raise the infant as her "
+#| "own."
 msgid ""
-"When your grandfather married Indress, he he did not know that Tyegëa had "
+"When your grandfather married Indress, he did not know that Tyegëa had "
 "already born him a son. When she delivered your father to Jotha, your "
 "grandmother Indress agreed to keep it secret and raise the infant as her own."
 msgstr ""
@@ -2953,8 +2959,15 @@ msgstr "pěst"
 msgid "tail"
 msgstr "ocas"
 
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:192
+#. [set_variable]
+#: data/campaigns/Dead_Water/units/Brawler.cfg:198
+#, fuzzy
+#| msgid "stunned"
+msgid "female^stunned"
+msgstr "v omráčení"
+
+#. [set_variable]
+#: data/campaigns/Dead_Water/units/Brawler.cfg:205
 msgid "stunned"
 msgstr "v omráčení"
 
@@ -3197,7 +3210,11 @@ msgid "I agree. I hate to leave our home, but we will return."
 msgstr "Souhlasím. Jsem strašně nerad, že opouštíme náš domov, ale vrátíme se."
 
 #: data/campaigns/Dead_Water/utils/specials.cfg:4
-msgid " This unit is able stun its enemies, disrupting their zones of control."
+#, fuzzy
+#| msgid ""
+#| " This unit is able stun its enemies, disrupting their zones of control."
+msgid ""
+" This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
 " Tato jednotka je schopna omráčit své nepřátele a rušit tak jejich zóny "
 "kontroly."
@@ -3209,9 +3226,13 @@ msgstr "omráčení"
 
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:10
+#, fuzzy
+#| msgid ""
+#| "This attack hits so hard that the defender is dazed and can no longer "
+#| "enforce a zone of control. The effect wears off on the defenders next turn"
 msgid ""
 "This attack hits so hard that the defender is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the defenders next turn"
+"enforce a zone of control. The effect wears off on the defender’s next turn."
 msgstr ""
 "Tento útok má tak drtivý dopad, že zasažená jednotka je omráčena a není "
 "schopna dále zajištovat svou zónu kontroly. Tento efekt pomine na začátku "

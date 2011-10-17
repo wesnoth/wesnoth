@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-27 10:14+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2010-05-26 21:31+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -676,13 +676,22 @@ msgstr "6p — 黑暗预想（生存）"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
+#, fuzzy
+#| msgid ""
+#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
+#| "based play against randomly AI spawned units. Victory is achieved by "
+#| "surviving all enemy waves. During the course of play, the terrain will "
+#| "change based on random weather effects.\n"
+#| "\n"
+#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
-"play against randomly AI spawned units. Victory is achieved by surviving all "
-"enemy waves. During the course of play, the terrain will change based on "
-"random weather effects.\n"
+"play against randomly-spawned AI units. Victory is achieved by surviving and "
+"defeating all enemy waves. During the course of play, the terrain will "
+"change based on random weather effects.\n"
 "\n"
-"Note: You need to use map settings for the scenario to work right."
+"Note: You need to use the default map settings for the scenario to work "
+"right."
 msgstr ""
 "“黑暗预想”是生存场景，供自残或双人组队娱乐，对抗随机生成的AI单位。获胜的方法"
 "是挺过对手的所有进攻波次。在游戏过程中，地形会随着随机的天气效果而变化。\n"
@@ -747,61 +756,64 @@ msgstr "人类"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-msgid "Single player mode — uses the reduced strength spawns."
-msgstr "单人模式——生成较弱敌军。"
+#, fuzzy
+msgid "Death of your leader"
+msgstr "团队领袖全部阵亡。"
+
+#. [then]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
+msgid ""
+"Since your team has only one leader, the enemy waves will not be at full "
+"strength."
+msgstr ""
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1389
-msgid "Two player mode — uses the full strength spawns."
-msgstr "双人模式——全力生成敌军。"
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
+#, fuzzy
+msgid "Death of both of your team’s leaders"
+msgstr "团队领袖全部阵亡。"
 
-#. [objectives]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1409
-msgid "Survive and defeat the waves of opposition."
-msgstr "存活并击败所有波次的敌军。"
+#. [else]
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
+msgid ""
+"Since your team has two leaders, the enemy waves will be at full strength."
+msgstr ""
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1411
-msgid "Defeat all waves"
-msgstr "击败所有波次"
-
-#. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1415
-msgid "Lose all your team’s leaders"
-msgstr "团队领袖全部阵亡"
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
+#, fuzzy
+msgid "Survive and defeat all enemy waves"
+msgstr "撑过敌军所有的攻击。"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1426
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1431
 msgid "Dark Forecast — a random survival scenario"
 msgstr "黑暗预想——随机的生存场景"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1449
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1451
 #, fuzzy
 msgid ""
-"Your aim is to survive the spawning waves and defeat the final arch-"
-"enemies.\n"
+"Your aim is to survive the spawning waves of units and defeat the final "
+"archenemies.\n"
 "\n"
-"The spawning waves are generated randomly and will different each time Dark "
-"Forecast is played.\n"
+"The spawning waves are randomly generated and will be different each time "
+"Dark Forecast is played.\n"
 "\n"
-"\n"
-"They appear along the north, south and west map edges — though they are most "
-"likely to spawn on the west edge. The spawn waves appear at somewhat regular "
+"They appear along the north, south, and west map edges — though they are "
+"most likely to spawn on the west edge. The waves appear at somewhat regular "
 "intervals.\n"
-"\n"
 "\n"
 "The weather will also change randomly, affecting the layout of the map.\n"
 "\n"
 "\n"
+"<b>Dark Forecast was made by:</b>\n"
 "\n"
-"<span color='red'>Dark Forecast was made by:</span>\n"
+"<span color='green'>jb:</span>\n"
+"• Map design, spawn groups, and scenario concept\n"
 "\n"
-"<span color='green'>jb</span>\n"
-"— map design, spawn groups and scenario concept\n"
-"\n"
-"<span color='green'>Rhuvaen</span>\n"
-"— WML implementation"
+"<span color='green'>Rhuvaen:</span>\n"
+"• WML implementation"
 msgstr ""
 "您的目标是挺过敌人一波又一波的攻击，并打败最终的老怪。\n"
 "     \n"
@@ -825,13 +837,13 @@ msgstr ""
 "- WML实现"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1454
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1456
 #, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "所以说这是被诅咒的山谷——我们要征服的土地。"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1458
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1460
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -841,21 +853,21 @@ msgstr ""
 "们必须为这片土地所能带来的惊讶而做好准备。"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1462
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1464
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr "那就让我们看看是谁在等待我们，还有教会他们不要反对我们的主张。"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1499
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1501
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr "哦呃！怎么会这样？败给微不足道的野蛮人！神哪，你抛弃了我……"
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1513
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1515
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -864,7 +876,7 @@ msgstr ""
 "粹的憎恨。"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1535
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1537
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -2002,6 +2014,21 @@ msgid ""
 msgstr ""
 "这是一幅韦诺基准测试图，命令行参数为：--no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end。"
+
+#~ msgid "Single player mode — uses the reduced strength spawns."
+#~ msgstr "单人模式——生成较弱敌军。"
+
+#~ msgid "Two player mode — uses the full strength spawns."
+#~ msgstr "双人模式——全力生成敌军。"
+
+#~ msgid "Survive and defeat the waves of opposition."
+#~ msgstr "存活并击败所有波次的敌军。"
+
+#~ msgid "Defeat all waves"
+#~ msgstr "击败所有波次"
+
+#~ msgid "Lose all your team’s leaders"
+#~ msgstr "团队领袖全部阵亡"
 
 #~ msgid ""
 #~ "Players must navigate the dispersive terrain of this small but "

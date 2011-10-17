@@ -95,6 +95,9 @@ By default the \fBerror\fP level is used and the \fBinfo\fP level for the
 \fBallow_remote_shutdown\fP
 Если установлено в \fBno\fP (по умолчанию), shut_down и restart запросы будут
 проигнорированы, только если они не пришли из fifo. Установите в \fByes\fP
+чтобы разрешить удалённое выключение через /query администратором.Если
+установлено в \fBno\fP (по умолчанию), shut_down и restart запросы будут
+проигнорированы, только если они не пришли из fifo. Установите в \fByes\fP
 чтобы разрешить удалённое выключение через /query администратором.
 .TP 
 \fBban_save_file\fP
@@ -135,7 +138,12 @@ The path to the fifo you can echo server commands into (same as /query
 Определяет, кто может создавать новые комнаты на сервере. Доступные значения
 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP и \fBnobody\fP, они дают дают разрешение
 соответственно всем, зарегистрированным пользователям, администраторам или
-запрещает создание новых комнат. Стандартное значение \fBeveryone\fP.
+запрещает создание новых комнат. Стандартное значение
+\fBeveryone\fP.Определяет, кто может создавать новые комнаты на
+сервере. Доступные значения \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP и
+\fBnobody\fP, они дают дают разрешение соответственно всем, зарегистрированным
+пользователям, администраторам или запрещает создание новых
+комнат. Стандартное значение \fBeveryone\fP.
 .TP 
 \fBpasswd\fP
 Пароль доступа администра. (через \fB/query admin \fP\fIпароль\fP) По умолчанию
@@ -143,7 +151,10 @@ The path to the fifo you can echo server commands into (same as /query
 .TP 
 \fBreplay_save_path\fP
 Директория, где сервер хранит повторы игр. (не забудьте завершающую косую
-черту /!) По умолчанию `'что означает директорию, где wesnothd был запущен.
+черту /!) По умолчанию `'что означает директорию, где wesnothd был
+запущен.Директория, где сервер хранит повторы игр. (не забудьте завершающую
+косую черту /!) По умолчанию `'что означает директорию, где wesnothd был
+запущен.
 .TP 
 \fBrestart_command\fP
 The command that the server uses to start a new server process via the
@@ -201,6 +212,10 @@ The name used to reference the ban time.
 (секунды), m (минуты), h (часы), D (дни), M (месяцы) or Y (годы) и %d это
 число. Если формат не указан, предполагается что время указано в минутах
 (m). Пример: \fBtime="1D12h30m"\fP приводит к бану на 1 день, 12 часов и 30
+минут.Определение длительности времени. Формат: %d[%s[%d%s[...]]] где %s
+(секунды), m (минуты), h (часы), D (дни), M (месяцы) or Y (годы) и %d это
+число. Если формат не указан, предполагается что время указано в минутах
+(m). Пример: \fBtime="1D12h30m"\fP приводит к бану на 1 день, 12 часов и 30
 минут.
 .RE
 .P
@@ -222,7 +237,8 @@ run without any nick registration service.
 (for user_handler=forum) Имя базы данных.
 .TP  
 \fBdb_user\fP
-(for user_handler=forum) Имя пользователя с которым войти в базу данных
+(for user_handler=forum) Имя пользователя с которым войти в базу данных(for
+user_handler=forum) Имя пользователя с которым войти в базу данных
 .TP  
 \fBdb_password\fP
 (for user_handler=forum) Пароль этого пользователя
@@ -230,18 +246,26 @@ run without any nick registration service.
 \fBdb_users_table\fP
 (for user_handler=forum) Название таблицы где ваш phpbb форум хранит данные
 о пользователях. Скорее всего это <префикс\-таблицы>_users
-(т.е. phpbb3_users).
+(т.е. phpbb3_users).(for user_handler=forum) Название таблицы где ваш phpbb
+форум хранит данные о пользователях. Скорее всего это
+<префикс\-таблицы>_users (т.е. phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
 (for user_handler=forum) Имя таблицы в которой wesnothd будет сохранять
 собственную информацию о пользователях. Вы должны создать эту таблицу
 вручную, напримет: \fBCREATE TABLE <имя\-таблицы>(username
 VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
-user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
+user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP(for user_handler=forum)
+Имя таблицы в которой wesnothd будет сохранять собственную информацию о
+пользователях. Вы должны создать эту таблицу вручную, напримет: \fBCREATE
+TABLE <имя\-таблицы>(username VARCHAR(255) PRIMARY KEY,
+user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
+NOT NULL DEFAULT 0);\fP
 .TP  
 \fBuser_expiration\fP
 (for user_handler=sample) Время, после которого зарегистрированный ник
-истекает (в днях).
+истекает (в днях).(for user_handler=sample) Время, после которого
+зарегистрированный ник истекает (в днях).
 .RE
 .P
 \fB[mail]\fP Configures an SMTP server through which the user handler can send

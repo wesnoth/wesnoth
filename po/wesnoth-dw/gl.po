@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
 "PO-Revision-Date: 2011-10-16 01:40+0200\n"
 "Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -352,23 +352,23 @@ msgstr ""
 "vida do nigromante e desaparecía no horizonte."
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:613
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:615
 msgid "He is raising the dead from every village!"
 msgstr "En cada vila que conquistan erguen máis mortos!"
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:617
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:619
 msgid "This will be a dark day, but we <i>will</i> prevail."
 msgstr ""
 "Este promete ser un día para esquecer, pero <i>viviremos</i> para lembralo!"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:639
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:641
 msgid "Hey, I did it!"
 msgstr "Acabei con el!"
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:643
+#: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:645
 msgid "Good work Kai, if I may say so."
 msgstr "E se mo permite, maxestade, deulle ben dado."
 
@@ -1799,8 +1799,14 @@ msgstr "O que? Non pode ser."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:209
+#, fuzzy
+#| msgid ""
+#| "When your grandfather married Indress, he he did not know that Tyegëa had "
+#| "already born him a son. When she delivered your father to Jotha, your "
+#| "grandmother Indress agreed to keep it secret and raise the infant as her "
+#| "own."
 msgid ""
-"When your grandfather married Indress, he he did not know that Tyegëa had "
+"When your grandfather married Indress, he did not know that Tyegëa had "
 "already born him a son. When she delivered your father to Jotha, your "
 "grandmother Indress agreed to keep it secret and raise the infant as her own."
 msgstr ""
@@ -2973,8 +2979,15 @@ msgstr "puñada"
 msgid "tail"
 msgstr "cola"
 
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:192
+#. [set_variable]
+#: data/campaigns/Dead_Water/units/Brawler.cfg:198
+#, fuzzy
+#| msgid "stunned"
+msgid "female^stunned"
+msgstr "atordado"
+
+#. [set_variable]
+#: data/campaigns/Dead_Water/units/Brawler.cfg:205
 msgid "stunned"
 msgstr "atordado"
 
@@ -3222,7 +3235,11 @@ msgstr ""
 "regresaremos."
 
 #: data/campaigns/Dead_Water/utils/specials.cfg:4
-msgid " This unit is able stun its enemies, disrupting their zones of control."
+#, fuzzy
+#| msgid ""
+#| " This unit is able stun its enemies, disrupting their zones of control."
+msgid ""
+" This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
 " Esta unidade pode deixar atordados aos seus inimigos, suprimindo a súa zona "
 "de control."
@@ -3234,9 +3251,13 @@ msgstr "atorda"
 
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:10
+#, fuzzy
+#| msgid ""
+#| "This attack hits so hard that the defender is dazed and can no longer "
+#| "enforce a zone of control. The effect wears off on the defenders next turn"
 msgid ""
 "This attack hits so hard that the defender is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the defenders next turn"
+"enforce a zone of control. The effect wears off on the defender’s next turn."
 msgstr ""
 "Este ataque é tan forte que o defensor perde a consciencia e no pode manter "
 "a súa zona de control. O efecto pásase na seguinte quenda do defensor."
