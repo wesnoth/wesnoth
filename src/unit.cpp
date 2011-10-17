@@ -660,13 +660,6 @@ unit& unit::operator=(const unit& u)
 }
 
 
-void unit::set_game_context()
-{
-	// In case the unit carries EventWML, apply it now
-	game_events::add_events(cfg_.child_range("event"), type_);
-	cfg_.clear_children("event");
-}
-
 void unit::generate_name(rand_rng::simple_rng* rng)
 {
 	if (!name_.empty() || !cfg_["generate_name"].to_bool(true)) return;
@@ -882,7 +875,9 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 		heal_all();
 	}
 
-	set_game_context();
+	// In case the unit carries EventWML, apply it now
+	game_events::add_events(cfg_.child_range("event"), type_);
+	cfg_.clear_children("event");
 
 	refreshing_ = false;
 	delete anim_;
