@@ -163,7 +163,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  fullscreen_button_(disp.video(), _("Full Screen"), gui::button::TYPE_CHECK),
 	  turbo_button_(disp.video(), _("Accelerated Speed"), gui::button::TYPE_CHECK),
 	  show_ai_moves_button_(disp.video(), _("Skip AI Moves"), gui::button::TYPE_CHECK),
-	  interrupt_when_ally_sighted_button_(disp.video(), _("Interrupt move when an ally is sighted"), gui::button::TYPE_CHECK),
+	  interrupt_when_ally_sighted_button_(disp.video(), _("Interrupt Move when an Ally is Sighted"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show Grid"), gui::button::TYPE_CHECK),
 	  save_replays_button_(disp.video(), _("Save Replay on SP/MP Victory or MP Defeat"), gui::button::TYPE_CHECK),
 	  delete_saves_button_(disp.video(), _("Delete Auto-Saves on SP/MP Victory or MP Defeat"), gui::button::TYPE_CHECK),
@@ -173,8 +173,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  new_lobby_button_(disp.video(), _("Use new lobby interface"), gui::button::TYPE_CHECK),
 	  sort_list_by_group_button_(disp.video(), _("Sort Lobby List"), gui::button::TYPE_CHECK),
 	  iconize_list_button_(disp.video(), _("Iconize Lobby List"), gui::button::TYPE_CHECK),
-	  remember_pw_button_(disp.video(), _("Save password to preferences (clear text)"), gui::button::TYPE_CHECK),
-	  mp_server_search_button_(disp.video(), _("Set path to wesnothd")),
+	  remember_pw_button_(disp.video(), _("Save Password to Preferences (Plain Text)"), gui::button::TYPE_CHECK),
+	  mp_server_search_button_(disp.video(), _("Set Path to wesnothd")),
 	  friends_list_button_(disp.video(), _("Friends List")),
 	  friends_back_button_(disp.video(), _("Multiplayer Options")),
 	  friends_add_friend_button_(disp.video(), _("Add As Friend")),
@@ -379,7 +379,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_lobby_joins_button3_.set_help_string(_("Show messages about all players joining the multiplayer lobby"));
 
 	new_lobby_button_.set_check(new_lobby());
-	new_lobby_button_.set_help_string(_("Use new lobby interface"));
+	new_lobby_button_.set_help_string(_("Use New Lobby Interface"));
 
 	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host LAN games."));
 	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
