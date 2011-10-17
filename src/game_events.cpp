@@ -630,7 +630,7 @@ namespace {
 			else {
 				const config & cfg = new_handler.get_config();
 				std::string id = cfg["id"];
-				if(id != "") {
+				if(!id.empty()) {
 					foreach( game_events::event_handler const & eh, active_) {
 						config const & temp_config( eh.get_config());
 						if(id == temp_config["id"]) {
