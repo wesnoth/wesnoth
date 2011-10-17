@@ -722,13 +722,6 @@ msgstr "2p — Dark Forecast (Survival)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly-spawned AI units. Victory is achieved by surviving and "
@@ -805,7 +798,6 @@ msgstr "Human"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-#| msgid "Death of your team leaders"
 msgid "Death of your leader"
 msgstr "Death of your leader"
 
@@ -820,7 +812,6 @@ msgstr ""
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
-#| msgid "Death of your team leaders"
 msgid "Death of both of your team’s leaders"
 msgstr "Death of both of your team’s leaders"
 
@@ -833,7 +824,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
-#| msgid "Survive all enemy attacks"
 msgid "Survive and defeat all enemy waves"
 msgstr "Survive and defeat all enemy waves"
 
@@ -844,30 +834,6 @@ msgstr "Dark Forecast — a random survival scenario"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1451
-#| msgid ""
-#| "Your aim is to survive the spawning waves and defeat the final arch-"
-#| "enemies.\n"
-#| "\n"
-#| "The spawning waves are generated randomly and will different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "\n"
-#| "They appear along the north, south and west map edges — though they are "
-#| "most likely to spawn on the west edge. The spawn waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "\n"
-#| "<span color='red'>Dark Forecast was made by:</span>\n"
-#| "\n"
-#| "<span color='green'>jb</span>\n"
-#| "— map design, spawn groups and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen</span>\n"
-#| "— WML implementation"
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -2123,18 +2089,3 @@ msgid ""
 msgstr ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "Single player mode — uses the reduced strength spawns."
-#~ msgstr "Single player mode — uses the reduced strength spawns."
-
-#~ msgid "Two player mode — uses the full strength spawns."
-#~ msgstr "Two player mode — uses the full strength spawns."
-
-#~ msgid "Survive and defeat the waves of opposition."
-#~ msgstr "Survive and defeat the waves of opposition."
-
-#~ msgid "Defeat all waves"
-#~ msgstr "Defeat all waves"
-
-#~ msgid "Lose all your team’s leaders"
-#~ msgstr "Lose all your team’s leaders"

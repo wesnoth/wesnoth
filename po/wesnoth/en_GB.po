@@ -28,7 +28,6 @@ msgstr "Compressed Saves"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
-#| msgid "Confirm deleting saves"
 msgid "Confirm Deleting Saves"
 msgstr "Confirm Deleting Saves"
 
@@ -44,19 +43,16 @@ msgstr "Middle-click Scrolling"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep Scrolling when Mouse Leaves Window"
 msgstr "Keep Scrolling when Mouse Leaves Window"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
-#| msgid "Local time of day light"
 msgid "Local Time of Day Area Lighting"
 msgstr "Local Time of Day Area Lighting"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
-#| msgid "Local time of day light effect (use more memory)."
 msgid "Custom lighting for local time of day areas (uses more memory)"
 msgstr "Custom lighting for local time of day areas (uses more memory)"
 
@@ -77,9 +73,6 @@ msgstr "Ping Timeout"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
@@ -89,31 +82,26 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
-#| msgid "Accept whisper messages from friends only"
 msgid "Accept Whispers from Friends Only"
 msgstr "Accept Whispers from Friends Only"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
-#| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open Whisper Windows in Lobby"
 msgstr "Auto-open Whisper Windows in Lobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
-#| msgid "Group players in lobby"
 msgid "Group Players in Lobby"
 msgstr "Group Players in Lobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#| msgid "Lobby sounds"
 msgid "Lobby Sounds"
 msgstr "Lobby Sounds"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
-#| msgid "Disable notifications"
 msgid "Disable Notifications"
 msgstr "Disable Notifications"
 
@@ -143,15 +131,11 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
-#| msgid "Chat message aging"
 msgid "Chat Message Aging"
 msgstr "Chat Message Ageing"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:133
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Disable "
-#| "aging with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
@@ -161,13 +145,11 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
-#| msgid "Use 12-hour clock format"
 msgid "Use 12-hour Clock Format"
 msgstr "Use 12-hour Clock Format"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:150
-#| msgid "Confirm loading of saves from a different version"
 msgid "Confirm Loading of Saves from a Different Version"
 msgstr "Confirm Loading of Saves from a Different Version"
 
@@ -5223,9 +5205,6 @@ msgid "Variable not found"
 msgstr "Variable not found"
 
 #: src/menu_events.cpp:3507
-#| msgid ""
-#| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, or "
-#| "chaotic."
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -6401,7 +6380,6 @@ msgid "prefix_milli^m"
 msgstr "m"
 
 #: src/serialization/string_utils.cpp:291
-#| msgid "prefix_micro^μ"
 msgid "prefix_micro^µ"
 msgstr "µ"
 
@@ -6646,18 +6624,3 @@ msgstr "Hide plans for $player"
 #: src/whiteboard/manager.cpp:961
 msgid "Whiteboard Options"
 msgstr "Whiteboard Options"
-
-#~ msgid ""
-#~ "WML Syntax error:: Variable in WML string cannot be evaluated because, "
-#~ msgstr ""
-#~ "WML Syntax error:: Variable in WML string cannot be evaluated because, "
-
-#~ msgid ""
-#~ " in \n"
-#~ "\""
-#~ msgstr ""
-#~ " in \n"
-#~ "\""
-
-#~ msgid "Formula in WML string cannot be evaluated because, "
-#~ msgstr "Formula in WML string cannot be evaluated because, "
