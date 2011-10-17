@@ -3310,13 +3310,19 @@ namespace game_events {
 		return pump();
 	}
 
-	void add_events(const config::const_child_itors &cfgs, const std::string &id)
+	void add_events(const config::const_child_itors &cfgs, const std::string& type)
 	{
-		if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),id) == unit_wml_ids.end()) {
-			unit_wml_ids.insert(id);
-			foreach (const config &new_ev, cfgs) {
-				event_handlers.add_event_handler(game_events::event_handler(new_ev));
+		if(!type.empty()) {
+			if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),type) != unit_wml_ids.end()) return;
+			unit_wml_ids.insert(type);
+		}
+		foreach (const config &new_ev, cfgs) {
+			if(type.empty() && new_ev["id"].empty())
+			{
+				WRN_NG << "attempt to add an [event] with empty id=, ignoring \n";
+				continue;
 			}
+			event_handlers.add_event_handler(game_events::event_handler(new_ev));
 		}
 	}
 

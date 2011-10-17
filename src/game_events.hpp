@@ -114,7 +114,9 @@ namespace game_events
 		const queued_event &event_info, const vconfig &cfg);
 
 	void write_events(config& cfg);
-	void add_events(const config::const_child_itors &cfgs,const std::string& id);
+	void add_events(
+		const config::const_child_itors &cfgs,
+		const std::string& type = std::string());
 
 	bool unit_matches_filter(const unit &, const vconfig& filter);
 
