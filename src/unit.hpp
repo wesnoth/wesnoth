@@ -139,7 +139,7 @@ public:
 	const std::vector<std::string>& recruits() const
 		{ return recruit_list_; }
 	void set_recruits(const std::vector<std::string>& recruits);
-	const config& recall_filter() const { return cfg_.child("filter_recall"); }
+	const config& recall_filter() const { return filter_recall_; }
 
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
 	int total_movement() const { return max_movement_; }
@@ -417,6 +417,7 @@ private:
 	static std::map<std::string, state_t> known_boolean_state_names_;
 	config variables_;
 	config events_;
+	config filter_recall_;
 	bool emit_zoc_;
 	STATE state_;
 

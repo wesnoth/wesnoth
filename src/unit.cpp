@@ -149,6 +149,7 @@ unit::unit(const unit& o):
            known_boolean_states_(o.known_boolean_states_),
            variables_(o.variables_),
            events_(o.events_),
+           filter_recall_(o.filter_recall_),
            emit_zoc_(o.emit_zoc_),
            state_(o.state_),
 
@@ -230,6 +231,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	known_boolean_states_(known_boolean_state_names_.size(),false),
 	variables_(),
 	events_(),
+	filter_recall_(),
 	emit_zoc_(0),
 	state_(STATE_STANDING),
 	overlays_(),
@@ -281,11 +283,9 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	}
 
 	if(vcfg) {
-		config cfilter_recall;
-		const vconfig& vfilter_recall = vcfg->child("filter_recall");
-		if(!vfilter_recall.null())
-			cfilter_recall = vfilter_recall.get_config();
-		cfg_.add_child("filter_recall", cfilter_recall);
+		const vconfig& filter_recall = vcfg->child("filter_recall");
+		if(!filter_recall.null())
+			filter_recall_ = filter_recall.get_config();
 
 		const vconfig::child_list& events = vcfg->get_children("event");
 		foreach(const vconfig& e, events) {
@@ -294,7 +294,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	}
 	else
 	{
-		cfg_.add_child("filter_recall", cfg.child_or_empty("filter_recall"));
+		filter_recall_ = cfg.child_or_empty("filter_recall");
 
 		foreach(const config& unit_event, cfg.child_range("event")) {
 			events_.add_child("event", unit_event);
@@ -592,6 +592,7 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	known_boolean_states_(known_boolean_state_names_.size(),false),
 	variables_(),
 	events_(),
+	filter_recall_(),
 	emit_zoc_(0),
 	state_(STATE_STANDING),
 	overlays_(),
@@ -801,9 +802,6 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 			new_cfg[attr] = *v;
 		}
 	}
-
-	//copy �nformation what this unit is able to recall
-	new_cfg.add_child("filter_recall", old_cfg.child_or_empty("filter_recall"));
 
 	if(t->movement_type().get_parent()) {
 		new_cfg.merge_with(t->movement_type().get_parent()->get_cfg());
@@ -1640,6 +1638,8 @@ void unit::write(config& cfg) const
 	cfg.add_child("variables",variables_);
 	cfg.clear_children("events");
 	cfg.append(events_);
+	cfg.clear_children("filter_recall");
+	cfg.add_child("filter_recall", filter_recall_);
 	cfg.clear_children("status");
 	cfg.add_child("status",status_flags);
 
