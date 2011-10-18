@@ -537,7 +537,6 @@ void scoped_recall_unit::activate()
 			tmp_cfg["y"] = "recall";
 			LOG_NG << "auto-storing $" << name() << " for player: " << player_
 				<< " at recall index: " << recall_index_ << '\n';
-			store(tmp_cfg);
 		} else {
 			ERR_NG << "failed to auto-store $" << name() << " for player: " << player_
 				<< " at recall index: " << recall_index_ << '\n';
