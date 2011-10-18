@@ -380,7 +380,8 @@ const std::set<std::string> get_recruits_for_location(int side, const map_locati
 const std::vector<const unit*> get_recalls_for_location(int side, const map_location &recall_loc) {
 	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc << "\n";
 
-	const std::vector<unit>& recall_list = (*resources::teams)[side -1].recall_list();
+	const team& t = (*resources::teams)[side-1];
+	const std::vector<unit>& recall_list = t.recall_list();
 	std::set<size_t> valid_local_recalls;
 	std::vector<const unit*> local_result;
 
@@ -393,6 +394,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 
 		foreach (const unit& recall_unit, recall_list)
 		{
+			scoped_recall_unit this_unit("this_unit", t.save_id(), &recall_unit - &recall_list[0]);
 			if (!(recall_unit.matches_filter(vconfig(u->recall_filter()), map_location::null_location)))
 				continue;
 
@@ -437,6 +439,10 @@ std::string find_recall_location(const int side, map_location &recall_loc, const
 		leader = u;
 
 		//quit if the leader is not able to recall the @recall_unit
+		const team& t = (*resources::teams)[side-1];
+		scoped_recall_unit this_unit("this_unit",
+			t.save_id(),
+			&recall_unit - &t.recall_list()[0]);
 		if (!(recall_unit.matches_filter(vconfig(leader->recall_filter()), map_location::null_location)))
 			continue;
 		leader_able = leader;
