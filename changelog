@@ -51,8 +51,11 @@ Version 1.9.9+svn:
    * [illuminated_time], which has been obsolete for a long time, is no longer
      valid. Using it will cause errors to be thrown
    * Reintroduced support for [unit][event]s (was until 1.7.10, bug #16259)
+     Such events are no longer forcefully variable substituted before inserting
+     into the scenario wml
    * Fixed "error parsing image modifications" message caused by subsequent image
      mod additions using the add attribute in [effect] apply_to=image_mod
+   * Made $this_unit in filter_recall work
  * Miscellaneous and bug fixes:
    * Fixed compilation on all Debian architectures (Debian bug #636193)
    * Fixed handling of #ifver and #ifnver preprocessor directives in wmllint
