@@ -1765,7 +1765,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 		.allow_rename_side(true)
 		.allow_show(true);
 
-	uc.add_unit(parsed_cfg);
+	uc.add_unit(parsed_cfg, &cfg);
 
 }
 

@@ -245,7 +245,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 }
 
 
-void unit_creator::add_unit(const config &cfg)
+void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 {
 	config temp_cfg(cfg);
 	temp_cfg["side"] = team_.side();
@@ -260,7 +260,7 @@ void unit_creator::add_unit(const config &cfg)
 
 	if(recall_list_element==team_.recall_list().end()) {
 		//make a temporary unit
-		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, resources::state_of_game));
+		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, resources::state_of_game, vcfg));
 		map_location loc = find_location(temp_cfg, temp_unit.get());
 		if(!loc.valid()) {
 			if(add_to_recall_) {

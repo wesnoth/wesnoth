@@ -51,7 +51,7 @@ public:
 	/**
 	 * adds a unit on map without firing any events (so, usable during team construction in gamestatus)
 	 */
-	void add_unit(const config &cfg);
+	void add_unit(const config &cfg, const vconfig* vcfg = NULL);
 
 private:
 	void post_create(const map_location &loc, const unit &new_unit, bool anim);

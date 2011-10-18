@@ -187,7 +187,7 @@ unit::unit(const unit& o):
 {
 }
 
-unit::unit(const config &cfg, bool use_traits, game_state* state) :
+unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig* vcfg) :
 	cfg_(),
 	loc_(cfg["x"] - 1, cfg["y"] - 1),
 	advances_to_(),
@@ -279,11 +279,29 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	if (const config &variables = cfg.child("variables")) {
 		variables_ = variables;
 	}
-	const config::const_child_itors& unit_events = cfg.child_range("event");
-	game_events::add_events(unit_events);
-	foreach(const config& unit_event, unit_events) {
-		events_.add_child("event", unit_event);
+
+	if(vcfg) {
+		config cfilter_recall;
+		const vconfig& vfilter_recall = vcfg->child("filter_recall");
+		if(!vfilter_recall.null())
+			cfilter_recall = vfilter_recall.get_config();
+		cfg_.add_child("filter_recall", cfilter_recall);
+
+		const vconfig::child_list& events = vcfg->get_children("event");
+		foreach(const vconfig& e, events) {
+			events_.add_child("event", e.get_config());
+		}
 	}
+	else
+	{
+		cfg_.add_child("filter_recall", cfg.child_or_empty("filter_recall"));
+
+		foreach(const config& unit_event, cfg.child_range("event")) {
+			events_.add_child("event", unit_event);
+		}
+	}
+	game_events::add_events(events_.child_range("event"));
+
 
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS);
@@ -478,7 +496,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 
 	set_recruits(utils::split(cfg["extra_recruit"]));
-	cfg_.add_child("filter_recall", cfg.child_or_empty("filter_recall"));
 
 	/** @todo Are these modified by read? if not they can be removed. */
 	getsHit_=0;
