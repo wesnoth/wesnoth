@@ -301,6 +301,8 @@ void tgame_load::evaluate_summary_string(std::stringstream& str
 			str << _("Multiplayer");
 		} else if(campaign_type == "tutorial") {
 			str << _("Tutorial");
+		} else if(campaign_type == "test") {
+			str << _("Test scenario");
 		} else {
 			str << campaign_type;
 		}
