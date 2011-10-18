@@ -308,7 +308,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str
 		str << "\n";
 
 		if (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true)) {
-			str << _("replay");
+			str << _("Replay");
 		} else if (!cfg_summary["turn"].empty()) {
 			str << _("Turn") << " " << cfg_summary["turn"];
 		} else {

@@ -502,7 +502,7 @@ void save_preview_pane::draw_contents()
 		str << "\n";
 
 		if (summary["replay"].to_bool() && !summary["snapshot"].to_bool(true)) {
-			str << _("replay");
+			str << _("Replay");
 		} else if (!summary["turn"].empty()) {
 			str << _("Turn") << " " << summary["turn"];
 		} else {
