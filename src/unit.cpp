@@ -2522,6 +2522,10 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					LOG_UT << "applying image_mod \n";
 					mod = effect["add"].str();
 					if (!mod.empty()){
+						if(!image_mods_.empty()) {
+							image_mods_ += '~';
+						}
+
 						image_mods_ += mod;
 					}
 
