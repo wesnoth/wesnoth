@@ -29,6 +29,12 @@ Version 1.9.9+svn:
      Italian, Japanese, Korean, Latin, Lithuanian, Old English,
      Portuguese (Brazil), Russian, Slovak, Swedish.
 
+ * Unit changes and Balancing
+   * All mounted units now have forest defense capped at 30%. This reduces their
+     defense on forested hills from 40% to 30%
+   * Forests now give best defense and worst movement on all terrain,
+     not just hills - fixes bug #18216.
+
  * User interface:
    * Removed waypoints UI feature ('w' key) since the whiteboard provides
      similar functionality.
