@@ -751,6 +751,9 @@ function wml_actions.harm_unit(cfg)
 			local att_stats, def_stats = wesnoth.simulate_combat(private_unit, 1, unit_to_harm)
 			local temp_new_hitpoints = def_stats.average_hp
 
+			--FIXME: the line below needs to be removed when bug #18795 is fixed; this is just a workaround
+			if tostring( temp_new_hitpoints ) == "-nan" then temp_new_hitpoints = 0 end
+
 			if kill == false and temp_new_hitpoints <= 0 then
 				temp_new_hitpoints = 1
 			end
