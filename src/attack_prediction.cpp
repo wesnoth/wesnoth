@@ -23,6 +23,8 @@
  * Simulate combat to calculate attacks. Standalone program, benchmark.
  */
 
+#include <cfloat>
+
 #include "attack_prediction.hpp"
 
 #include "actions.hpp"
@@ -658,7 +660,9 @@ static void conditional_levelup(std::vector<double> &hp_dist, double kill_prob)
 	/* If we kill, we will level up. So then the damage we had becomes
 	   less probable since it's now conditional on us not levelling up.
 	   This doesn't apply to the probability of us dying, of course. */
-	double scalefactor = 1 - kill_prob / (1 - hp_dist.front());
+	double scalefactor = 0;
+	const double chance_to_survive = 1 - hp_dist.front();
+	if(chance_to_survive > DBL_MIN) scalefactor = 1 - kill_prob / chance_to_survive;
 	std::vector<double>::iterator i = hp_dist.begin();
 	++i; // Skip to the second value.
 	for (; i != hp_dist.end(); ++i) *i *= scalefactor;
