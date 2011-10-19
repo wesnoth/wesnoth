@@ -414,9 +414,11 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("pre_movement");
+		animations.back().unit_anim_.override(0,1,particule::NO_CYCLE);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("post_movement");
+		animations.back().unit_anim_.override(0,1,particule::NO_CYCLE);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("movement");
@@ -519,7 +521,16 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	foreach (const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
 	{
 		config anim = ab.merge();
-		anim["apply_to"] = "standing,default";
+		anim["apply_to"] = "default";
+		anim["cycles"] = "false";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		if (anim["offscreen"].empty()) anim["offscreen"] = false;
+		animations.push_back(unit_animation(anim));
+	}
+	foreach (const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
+	{
+		config anim = ab.merge();
+		anim["apply_to"] = "standing";
 		anim["cycles"] = "true";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		if (anim["offscreen"].empty()) anim["offscreen"] = false;
