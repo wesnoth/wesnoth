@@ -56,6 +56,7 @@ Version 1.9.9+svn:
    * Fixed "error parsing image modifications" message caused by subsequent image
      mod additions using the add attribute in [effect] apply_to=image_mod
    * Made $this_unit in filter_recall work
+   * Added IS_EXPENDABLE_LEADER, which gives a unit the expendable leader icon
  * Miscellaneous and bug fixes:
    * Fixed compilation on all Debian architectures (Debian bug #636193)
    * Fixed handling of #ifver and #ifnver preprocessor directives in wmllint
