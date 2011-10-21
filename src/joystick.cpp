@@ -129,7 +129,9 @@ std::pair<double, double> joystick_manager::get_mouse_axis_pair() {
 	//const int range_y = values.second - ((1.0 - relation) * deadzone);
 	//double x_value = ((double)(values.first - deadzone) / (double)(32768 - deadzone)) *
 
-	return std::make_pair( (((double)values.first) / 32768.0) * multiplier, (((double)values.second) / 32768.0) * multiplier );
+	return std::make_pair(
+			  ((static_cast<double>(values.first)) / 32768.0) * multiplier
+			, ((static_cast<double>(values.second)) / 32768.0) * multiplier );
 
 }
 
@@ -157,7 +159,9 @@ std::pair<double, double> joystick_manager::get_scroll_axis_pair() {
 	if (deadzone > radius)
 		return std::make_pair(0.0, 0.0);
 
-	return std::make_pair( (((double)values.first) / 32768.0) * multiplier, (((double)values.second) / 32768.0) * multiplier );
+	return std::make_pair(
+			  ((static_cast<double>(values.first)) / 32768.0) * multiplier
+			, ((static_cast<double>(values.second)) / 32768.0) * multiplier );
 }
 
 double joystick_manager::get_thrusta_axis() {
@@ -169,7 +173,7 @@ double joystick_manager::get_thrusta_axis() {
 
 	const int value = get_axis(thrust_joystick_x, thrust_axis_x) + 32768;
 	if (value < thrust_deadzone) return 0.0;
-	return (double)value / 65536;
+	return static_cast<double>(value) / 65536.0;
 }
 
 double joystick_manager::get_thrustb_axis() {
@@ -181,7 +185,7 @@ double joystick_manager::get_thrustb_axis() {
 
 	const int value = get_axis(thrustb_joystick, thrustb_axis) + 32768;
 	if (value < thrustb_deadzone) return 0.0;
-	return (double)value / 65536;
+	return static_cast<double>(value) / 65536.0;
 }
 
 std::pair<double, double> joystick_manager::get_cursor_polar_coordinates() {
@@ -198,7 +202,9 @@ std::pair<double, double> joystick_manager::get_polar_coordinates(int joystick_x
 
 	const std::pair<int, int> values = get_axis_pair(joystick_xaxis, xaxis, joystick_yaxis, yaxis);
 	const double radius = (sqrt(pow(values.first, 2.0f) + pow(values.second, 2.0f))) / 32768.0;
-	const double angle = (atan2((double)values.second, (double)values.first)) * 180.0 / PI;
+	const double angle = (atan2(
+			  static_cast<double>(values.second)
+			, static_cast<double>(values.first))) * 180.0 / PI;
 
 	return std::make_pair(radius, angle);
 }
@@ -355,7 +361,9 @@ double joystick_manager::get_angle() {
 	const int x_axis = values.first;
 	const int y_axis = values.second;
 
-	const double angle = (atan2((double)y_axis, (double)x_axis)) * 180.0 / PI;
+	const double angle = (atan2(
+				  static_cast<double>(y_axis)
+				, static_cast<double>(x_axis))) * 180.0 / PI;
 
 	return angle;
 }
@@ -367,7 +375,9 @@ const map_location joystick_manager::get_next_hex(int x_axis, int y_axis, map_lo
 
 	if (x_axis == 0) return (y_axis > 0) ? get_direction(loc, SOUTH) : get_direction(loc, NORTH);
 	if (y_axis == 0) return (x_axis > 0) ? get_direction(loc, EAST) : get_direction(loc, WEST);
-	const double angle = (atan2((double)y_axis, (double)x_axis)) * 180.0 / PI;
+	const double angle = (atan2(
+			  static_cast<double>(y_axis)
+			, static_cast<double>(x_axis))) * 180.0 / PI;
 
 	if (angle < -112.5 && angle > -157.5)
 		new_loc = get_direction(loc, NORTH_WEST);
