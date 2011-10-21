@@ -21,7 +21,7 @@ set print static-members off
 
 """
 
-__doc__="""
+__doc__ = """
 python reload(wesnoth_gdb)              #Interactively reload wesnoth_gdb
 python wesnoth.gdb.help()               #Help message
 python print wesnoth_gdb.__doc__        #Help message
@@ -37,9 +37,9 @@ import sys, gdb
 def help():
     print __doc__
 
-#Force a reload, which is handy if you are interactively editting 
+#Force a reload, which is handy if you are interactively editting
 if 'register_wesnoth_pretty_printers' in sys.modules:
-    reload (register_wesnoth_pretty_printers)
+    reload(register_wesnoth_pretty_printers)
 else:
     import register_wesnoth_pretty_printers
 
@@ -53,7 +53,7 @@ pretty_printers_dict = {}
 pretty_printers_dict = wesnoth_pretty_printers.add_printers(pretty_printers_dict)
 register_wesnoth_pretty_printers.register(pretty_printers_dict)
 
- 
+
 #options
 
 #get/set the default
@@ -61,5 +61,3 @@ def get_levels_of_recursion():
     return wesnoth_pretty_printers.RecursionManager.get_level()
 def set_levels_of_recursion(num):
     return wesnoth_pretty_printers.RecursionManager.set_level(num)
-
-

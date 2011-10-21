@@ -109,9 +109,9 @@ if __name__ == "__main__":
 
         # strip
         data = re.sub(" \*(?: |)", "", data)
-        
+
         #annotation
-        data = re.sub(r'@(?:begin|end|allow|remove)\{(?:parent|tag|link|global|type|key)\}(?:\{.*\})',"",data)
+        data = re.sub(r'@(?:begin|end|allow|remove)\{(?:parent|tag|link|global|type|key)\}(?:\{.*\})', "", data)
         return data
 
     def get_value(data, key):
@@ -268,7 +268,7 @@ if __name__ == "__main__":
 
     def create_widget_overview_table(data):
         """Creates a table for all available widgets."""
-  
+
         regex  = re_record_start
         regex += re_variable           # widget type
         regex += re_field_separator
@@ -369,7 +369,7 @@ if __name__ == "__main__":
         result += "|}"
 
         return result
-    
+
     def validate_table(table):
         """Validates a table.
 
@@ -392,7 +392,7 @@ if __name__ == "__main__":
             result += "in:\n%s\n\n" % (table)
             return result
         else:
-            return None 
+            return None
 
     def create_table(table):
         """Wrapper for creating tables."""
@@ -465,7 +465,7 @@ if __name__ == "__main__":
                 nest_level += 1
                 i = i.lstrip("@begin{description}{")
                 type += [i[:i.find("}")]]
-                i = i.strip(type[nest_level-1] + "}")
+                i = i.strip(type[nest_level - 1] + "}")
 
             # We also handle end of blocks.
             elif i.startswith("@end") and i != "@end{description}":
