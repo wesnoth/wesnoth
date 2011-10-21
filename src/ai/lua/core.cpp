@@ -63,7 +63,7 @@ static void push_map_location(lua_State *L, const map_location& ml);
 void lua_ai_context::init(lua_State *L)
 {
 	// Create the ai elements table.
-	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_newtable(L);
 	lua_rawset(L, LUA_REGISTRYINDEX);
 }
@@ -72,7 +72,7 @@ void lua_ai_context::get_persistent_data(config &cfg) const
 {
 	int top = lua_gettop(L);
 
-	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num_);
 
@@ -86,7 +86,7 @@ void lua_ai_context::set_persistent_data(const config &cfg)
 {
 	int top = lua_gettop(L);
 
-	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, num_);
 
@@ -97,7 +97,8 @@ void lua_ai_context::set_persistent_data(const config &cfg)
 }
 static ai::engine_lua &get_engine(lua_State *L)
 {
-	return *((ai::engine_lua*)lua_touserdata(L, lua_upvalueindex(1)));
+	return *(static_cast<ai::engine_lua*>(
+			lua_touserdata(L, lua_upvalueindex(1))));
 }
 
 static ai::readonly_context &get_readonly_context(lua_State *L)
@@ -628,7 +629,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 	}
 
 	// Retrieve the ai elements table from the registry.
-	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);   //stack size is now 2  [-1: ais_table -2: f]
 	// Push the function in the table so that it is not collected.
 	size_t length_ai = lua_objlen(L, -1);//length of ais_table
@@ -651,7 +652,7 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 
 
 	// Retrieve the ai elements table from the registry.
-	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);   //stack size is now 2  [-1: ais_table -2: f]
 	// Push the function in the table so that it is not collected.
 	size_t length = lua_objlen(L, -1);//length of ais_table
@@ -666,7 +667,7 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 
 void lua_ai_context::load()
 {
-	lua_pushlightuserdata(L, (void *)&aisKey);//stack size is now 1 [-1: ais_table key]
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));//stack size is now 1 [-1: ais_table key]
 	lua_rawget(L, LUA_REGISTRYINDEX);//stack size is still 1 [-1: ais_table]
 	lua_rawgeti(L, -1, num_);//stack size is 2 [-1: ai_context -2: ais_table]
 	lua_remove(L,-2);
@@ -675,7 +676,7 @@ void lua_ai_context::load()
 lua_ai_context::~lua_ai_context()
 {
 	// Remove the ai context from the registry, so that it can be collected.
-	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_pushnil(L);
 	lua_rawseti(L, -2, num_);
@@ -687,7 +688,7 @@ void lua_ai_action_handler::handle(config &cfg, bool configOut, lua_object_ptr l
 	int initial_top = lua_gettop(L);//get the old stack size
 
 	// Load the user function from the registry.
-	lua_pushlightuserdata(L, (void *)&aisKey);//stack size is now 1 [-1: ais_table key]
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));//stack size is now 1 [-1: ais_table key]
 	lua_rawget(L, LUA_REGISTRYINDEX);//stack size is still 1 [-1: ais_table]
 	lua_rawgeti(L, -1, num_);//stack size is 2 [-1: ai_action  -2: ais_table]
 	lua_remove(L, -2);//stack size is 1 [-1: ai_action]
@@ -710,7 +711,7 @@ void lua_ai_action_handler::handle(config &cfg, bool configOut, lua_object_ptr l
 lua_ai_action_handler::~lua_ai_action_handler()
 {
 	// Remove the function from the registry, so that it can be collected.
-	lua_pushlightuserdata(L, (void *)&aisKey);
+	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_pushnil(L);
 	lua_rawseti(L, -2, num_);
