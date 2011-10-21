@@ -283,6 +283,24 @@ endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 add_library(wesnoth-lua STATIC EXCLUDE_FROM_ALL ${libwesnoth-lua_STAT_SRC})
 
 
+########### Old style cast flags ###############
+
+# Disable the setting of -Wold-style-cast on some targets.
+# old style casts are not wanted by our coding style but some C based code
+# uses it. Force the flag off for these files. (We don't enable it in our
+# generic compiler flags, but allows people to do it.)
+if(CMAKE_COMPILER_IS_GNUCXX)
+	set_target_properties(wesnoth-lua PROPERTIES COMPILE_FLAGS "-Wno-old-style-cast")
+	set_source_files_properties(
+		clipboard.cpp
+		network.cpp
+		network_worker.cpp
+		text.cpp
+		PROPERTIES
+			COMPILE_FLAGS "-Wno-old-style-cast")
+endif(CMAKE_COMPILER_IS_GNUCXX)
+
+
 ########### Wesnoth main source files ###############
 
 # Depending on whether the game or the game and the tests are build the main
