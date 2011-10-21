@@ -269,7 +269,8 @@ void lobby_info::open_room(const std::string &name)
 void lobby_info::close_room(const std::string &name)
 {
 	room_info* r = get_room(name);
-	DBG_LB << "lobby info: closing room " << name << " " << (void*)r << "\n";
+	DBG_LB << "lobby info: closing room " << name
+			<< " " << static_cast<void*>(r) << "\n";
 	if (r) {
 		rooms_.erase(rooms_.begin() + (r - &rooms_[0]));
 	}
