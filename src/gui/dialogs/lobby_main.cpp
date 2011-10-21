@@ -1404,7 +1404,8 @@ void tlobby_main::process_room_join(const config &data)
 	const std::string& room = data["room"];
 	const std::string& player = data["player"];
 	room_info* r = lobby_info_.get_room(room);
-	DBG_LB << "room join: " << room << " " << player << " " << (void*)r << "\n";
+	DBG_LB << "room join: " << room << " " << player << " "
+			<< static_cast<void*>(r) << "\n";
 
 	if (r) {
 		if (player == preferences::login()) {
