@@ -403,7 +403,11 @@ struct potential_recruit_sorter
    }
    bool operator()(const potential_recruit *a, const potential_recruit *b)
    {
-      return (a->quality() * quality_factor - a->cost() * (1.0 - quality_factor) * max_quality / (double)max_cost) > (b->quality() * quality_factor - b->cost() * (1.0 - quality_factor) * max_quality / (double)max_cost);
+      return (a->quality() * quality_factor - a->cost()
+			* (1.0 - quality_factor) * max_quality
+			/ static_cast<double>(max_cost))
+		> (b->quality() * quality_factor - b->cost() * (1.0 - quality_factor)
+			* max_quality / static_cast<double>(max_cost));
    }
 
    int max_cost;
@@ -457,7 +461,7 @@ static std::vector<potential_recruit> ai_choose_best_recruits(fake_team &t, int 
    {
       if(recruited < max_units_to_recruit)
       {
-         int possible_amount = (int)(gold / i->cost());
+         int possible_amount = static_cast<int>(gold / i->cost());
          if(possible_amount > max_units_to_recruit - recruited)
          {
             possible_amount = max_units_to_recruit - recruited;
@@ -552,7 +556,9 @@ static void get_recruit_qualities(std::vector<potential_recruit> &recruit_list, 
    unit_map enemies;
    foreach(unit &un, *resources::units){
 	   if(t.is_enemy(un.side()) && !un.can_recruit()){
-		   enemies[un.type()].push_back((double)un.hitpoints() / (double)un.max_hitpoints());
+		   enemies[un.type()].push_back(
+			  static_cast<double>(un.hitpoints())
+			/ static_cast<double>(un.max_hitpoints()));
 	   }
    }
    DBG_AI << "before extra_units of fake_teams: enemies.size() = " << enemies.size() << std::endl;
@@ -1014,7 +1020,9 @@ void testing_recruitment_phase::do_recruit(int max_units_to_recruit, double qual
    std::vector<fake_team> fake_teams;
    std::copy(resources::teams->begin(), resources::teams->end(), std::back_inserter(tmp_fake_teams));
    fake_team *ai_t = 0;
-   for(int i = get_side() - 1; (unsigned int)i < tmp_fake_teams.size(); i++)
+   for(int i = get_side() - 1
+		   ; static_cast<unsigned int>(i) < tmp_fake_teams.size()
+		   ; i++)
    {
       fake_teams.push_back(tmp_fake_teams[i]);
 
