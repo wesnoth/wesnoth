@@ -221,7 +221,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 #endif
 			{
 #ifdef USE_POLL
-				struct pollfd fd = { ((_TCPsocket*)s)->channel, POLLIN, 0 };
+				struct pollfd fd = { reinterpret_cast<_TCPsocket*>(s)->channel, POLLIN, 0 };
 				int poll_res;
 
 				//we timeout of the poll every 100ms. This lets us check to
