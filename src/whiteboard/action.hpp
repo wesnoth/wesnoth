@@ -72,7 +72,10 @@ public:
 	/** Returns the index of the team that owns this action */
 	size_t team_index() const { return team_index_; }
 	/** Returns the number of the side that owns this action, i.e. the team index + 1. */
-	int side_number() const { return (int) team_index_ + 1; }
+	int side_number() const
+	{
+		return static_cast<int>(team_index_) + 1;
+	}
 
 	/**
 	 * Indicates to an action whether its status is invalid, and whether it should change its
