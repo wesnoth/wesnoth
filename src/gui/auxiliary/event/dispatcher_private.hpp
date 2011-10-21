@@ -222,8 +222,11 @@ struct find<false>
 			return functor.template oper<item>(event);
 		} else {
 			typedef typename boost::mpl::next<itor>::type titor;
-			return find<boost::is_same<titor, end>::value>
-				::execute((titor*)0, (end*)0, event, functor);
+			return find<boost::is_same<titor, end>::value>::execute(
+					  static_cast<titor*>(NULL)
+					, static_cast<end*>(NULL)
+					, event
+					, functor);
 		}
 	}
 };
@@ -260,8 +263,11 @@ inline bool find(E event, F functor)
 	typedef typename boost::mpl::begin<sequence>::type begin;
 	typedef typename boost::mpl::end<sequence>::type end;
 
-	return implementation::find<boost::is_same<begin, end>::value>
-		::execute((begin*)0, (end*)0, event, functor);
+	return implementation::find<boost::is_same<begin, end>::value>::execute(
+			  static_cast<begin*>(NULL)
+			, static_cast<end*>(NULL)
+			, event
+			, functor);
 }
 
 namespace implementation {
