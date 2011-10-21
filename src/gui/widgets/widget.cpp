@@ -42,12 +42,12 @@ twidget::twidget()
 	, last_best_size_(tpoint(0,0))
 #endif
 {
-	DBG_GUI_LF << "widget create: " << (void*)this << "\n";
+	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
 }
 
 twidget::~twidget()
 {
-	DBG_GUI_LF << "widget destroy: " << (void*)this
+	DBG_GUI_LF << "widget destroy: " << static_cast<void*>(this)
 		<< " (id: " << id_ << ", definition: " << definition_ << ")\n";
 
 	twidget* p = parent();
@@ -65,7 +65,8 @@ twidget::~twidget()
 
 void twidget::set_id(const std::string& id)
 {
-	DBG_GUI_LF << "set id of " << (void*)this << " to '" << id << "' "
+	DBG_GUI_LF << "set id of " << static_cast<void*>(this)
+		<< " to '" << id << "' "
 		<< "(was '" << id_ << "'). Widget type: " <<
 		(dynamic_cast<tcontrol*>(this) ?
 			dynamic_cast<tcontrol*>(this)->get_control_type()
