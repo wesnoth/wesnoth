@@ -749,7 +749,7 @@ def pangostrip(message):
     "Strip Pango margup out of a string."
     # This is all known Pango convenience tags
     for tag in ("b", "big", "i", "s", "sub", "sup", "small", "tt", "u"):
-        message = message.replace("<"+tag+">", "").replace("</"+tag+">", "")
+        message = message.replace("<%s>" % tag, "").replace("</%s>" % tag, "")
     # Now remove general span tags
     message = re.sub("</?span[^>]*>", "", message)
     # And Pango specials;
@@ -769,7 +769,7 @@ def pangoize(message, filename, line):
         if oldstyle not in message:
             continue
         where = message.find(oldstyle)
-        if message[where-1] != '"':	# Start of string only
+        if message[where - 1] != '"':	# Start of string only
             continue
         if message.strip()[-1] != '"':
             print '"%s", line %d: %s highlight at start of multiline string requires manual fix.' % (filename, line, oldstyle)
@@ -778,7 +778,7 @@ def pangoize(message, filename, line):
             print '"%s", line %d: %s highlight in composite string requires manual fix.' % (filename, line, oldstyle)
             continue
         # This is the common, simple case we can fix automatically
-        message = message[:where] + newstart + message[where+1:]
+        message = message[:where] + newstart + message[where + 1:]
         endq = message.rfind('"')
         message = message[:endq] + newend + message[endq:]
     # Check for unescaped < and >
@@ -879,14 +879,14 @@ def global_sanity_check(filename, lines):
             traits = []
             notes = []
             has_special_notes = False
-            in_unit_type = nav.lineno+1
+            in_unit_type = nav.lineno + 1
             hitpoints_specified = False
             continue
         elif nav.element == "[/unit_type]":
             #print '"%s", %d: unit has traits %s and notes %s' \
             #      % (filename, in_unit_type, traits, notes)
             if unit_id and base_unit:
-                derived_units.append((filename, nav.lineno+1, unit_id, base_unit))
+                derived_units.append((filename, nav.lineno + 1, unit_id, base_unit))
             if unit_id and not base_unit:
                 missing_notes = []
                 for trait in traits:
@@ -943,17 +943,17 @@ def global_sanity_check(filename, lines):
                 elif key == "movement_type":
                     if '{' not in value:
                         assert(unit_id)
-                        unit_movetypes.append((unit_id, filename, nav.lineno+1, value))
+                        unit_movetypes.append((unit_id, filename, nav.lineno + 1, value))
                 elif key == "race":
                     if '{' not in value:
                         assert(unit_id or base_unit)
                         unit_race = value
-                        unit_races.append((unit_id, filename, nav.lineno+1, unit_race))
+                        unit_races.append((unit_id, filename, nav.lineno + 1, unit_race))
                 elif key == "advances_to":
                     assert(unit_id or base_unit)
                     advancements = value
                     if advancements.strip() != "null":
-                        advances.append((unit_id, filename, nav.lineno+1, advancements))
+                        advances.append((unit_id, filename, nav.lineno + 1, advancements))
             except TypeError:
                 pass
             precomment = nav.text

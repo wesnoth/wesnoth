@@ -119,11 +119,10 @@ class GroupByFaction:
 
 global_htmlout = None
 def T(tag, att):
-    return tag.get_text_val(att, translation =
-        global_htmlout.translate)
+    return tag.get_text_val(att, translation=global_htmlout.translate)
 
 class HTMLOutput:
-    def __init__(self, isocode, output, campaign, wesnoth, verbose = False):
+    def __init__(self, isocode, output, campaign, wesnoth, verbose=False):
         global global_htmlout
         self.output = output
         self.campaign = campaign
@@ -245,7 +244,7 @@ class HTMLOutput:
         <div class="topnav">
         <a href="../index.html">Wesnoth Units database</a>
         </div>
-        
+
         <div class="navbar">
         """)
 
@@ -258,8 +257,8 @@ class HTMLOutput:
                 if name[i] in ["+", "(", ")"] or name[i - 1] in word_seperators and name[i] not in word_seperators:
                     abbrev += name[i]
             return abbrev
-        
-        def add_menu(id, name, class2 = ""):
+
+        def add_menu(id, name, class2=""):
             write("""<li class="popuptrigger"
                 onclick="toggle_menu(this, '""" + id + """', 2)"
                 onmouseover="toggle_menu(this, '""" + id + """', 1)"
@@ -329,7 +328,7 @@ class HTMLOutput:
         write("</div></li>\n")
 
         # Races / Factions
-    
+
         if self.campaign == "mainline" or self.campaign == "units":
             x = self.translate("Race", "wesnoth-lib")
             add_menu("races_menu", x)
@@ -340,7 +339,7 @@ class HTMLOutput:
             r = {}, {}
             for u in self.wesnoth.unit_lookup.values():
                 if u.campaign != self.campaign: continue
-                
+
                 race = u.race
                 racename = T(race, "plural_name")
                 m = 1
@@ -359,12 +358,12 @@ class HTMLOutput:
                 else:
                     write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
                         racename, racename))
-                    
+
             write("</div></li>\n")
         else:
             x = self.translate("Factions", "wesnoth-help")
             add_menu("races_menu", x)
-            
+
             for row in self.unitgrid:
                 for column in range(6):
                     hspan, vspan, un = row[column]
@@ -374,7 +373,7 @@ class HTMLOutput:
                             self.isocode, self.campaign)
                         write(" <a href=\"%s#%s\">%s</a><br/>" % (
                             html, un.name, un.name))
-                            
+
             write("</div></li>\n")
 
         # Add entries for the races also to the navbar itself.
@@ -383,7 +382,7 @@ class HTMLOutput:
             if camp == "units": camp = "mainline"
             class Entry: pass
             races = {}
-            
+
             for uid, u in self.wesnoth.unit_lookup.items():
                 if u.campaign != camp: continue
                 racename = T(u.race, "plural_name")
@@ -406,9 +405,9 @@ class HTMLOutput:
                     un = self.wesnoth.unit_lookup[uid]
                     link = "../%s/%s.html" % (self.isocode, uid)
                     name = self.wesnoth.get_unit_value(un,
-                        "name", translation = self.translation.translate)
+                        "name", translation=self.translation.translate)
                     write("<a href=\"" + link + "\">" + name + "</a><br />")
-                    
+
             if got_menu: write("</div></li>\n")
 
         # Languages
@@ -430,7 +429,7 @@ class HTMLOutput:
             write("</td>")
             if col % 5 == 0:
                 if col < maxcol: write("</tr><tr>")
-                
+
         write("</tr>")
         write("</table>")
         write("</div></li>\n")
@@ -441,18 +440,18 @@ class HTMLOutput:
 
     def pic(self, u, x):
         image = self.wesnoth.get_unit_value(x, "image")
-        portrait = x.get_all(tag = "portrait")
+        portrait = x.get_all(tag="portrait")
         if not portrait:
             bu = self.wesnoth.get_base_unit(u)
             if bu:
-                portrait = bu.get_all(tag = "portrait")
+                portrait = bu.get_all(tag="portrait")
         if portrait:
             portrait = portrait[0].get_text_val("image")
         if not image:
             if x.name == "female":
                 baseunit = self.wesnoth.get_base_unit(u)
                 if baseunit:
-                    female = baseunit.get_all(tag = "female")
+                    female = baseunit.get_all(tag="female")
                     return self.pic(u, female[0])
                 else:
                     return self.pic(u, u)
@@ -464,14 +463,14 @@ class HTMLOutput:
         image = os.path.join("../pics", picname)
         if portrait:
             picname = image_collector.add_image(u.campaign, portrait,
-                no_tc = True)
+                no_tc=True)
             portrait = os.path.join("../pics", picname)
         return image, portrait
 
     def get_abilities(self, u):
         anames = []
         already = {}
-        for abilities in u.get_all(tag = "abilities"):
+        for abilities in u.get_all(tag="abilities"):
             try: c = abilities.get_all()
             except AttributeError: c = []
             for ability in c:
@@ -498,7 +497,7 @@ class HTMLOutput:
             attacks = copy.deepcopy(self.get_recursive_attacks(base_unit))
 
         base_attacks_count = len(attacks)
-        for i, attack in enumerate(this_unit.get_all(tag = "attack")):
+        for i, attack in enumerate(this_unit.get_all(tag="attack")):
             # Attack merging is order based.
             if i < base_attacks_count:
                 copy_attributes(attack, attacks[i])
@@ -509,7 +508,7 @@ class HTMLOutput:
 
     def write_units(self):
         def write(x): self.output.write(x)
-        def _(x, c = "wesnoth"): return self.translate(x, c)
+        def _(x, c="wesnoth"): return self.translate(x, c)
         rows = self.unitgrid
         write("<table class=\"units\">\n")
         write("<colgroup>")
@@ -518,7 +517,7 @@ class HTMLOutput:
         write("</colgroup>")
 
         pic = image_collector.add_image("mainline",
-            "../../../images/misc/leader-crown.png", no_tc = True)
+            "../../../images/misc/leader-crown.png", no_tc=True)
         crownimage = os.path.join("../pics", pic)
         ms = None
         for row in range(len(rows)):
@@ -557,7 +556,7 @@ class HTMLOutput:
                         uid = u.get_text_val("id")
                         def uval(name):
                             return self.wesnoth.get_unit_value(u, name,
-                                translation = self.translation.translate)
+                                translation=self.translation.translate)
                         name = uval("name")
                         cost = uval("cost")
                         hp = uval("hitpoints")
@@ -620,9 +619,9 @@ class HTMLOutput:
                             write("%s (%s)" % (_(r), _(t)))
 
                             s = []
-                            specials = attack.get_all(tag = "specials")
+                            specials = attack.get_all(tag="specials")
                             if specials:
-                                for special in specials[0].get_all(tag = ""):
+                                for special in specials[0].get_all(tag=""):
                                     sname = T(special, "name")
                                     if sname:
                                         s.append(sname)
@@ -639,12 +638,12 @@ class HTMLOutput:
         write("</table>\n")
 
     def write_units_tree(self, grouper, title):
-        self.output.write(html_header % {"path" : "../",
-            "title" : title})
+        self.output.write(html_header % {"path": "../",
+            "title": title})
 
         self.analyze_units(grouper)
         self.write_navbar("units_tree")
-        
+
         self.output.write("<div class=\"main\">")
 
         self.output.write("<h1>%s</h1>" % title)
@@ -655,23 +654,23 @@ class HTMLOutput:
         self.output.write("</div>")
 
         self.output.write(html_footer % {
-            "generation_note" : "generated on " + time.ctime()})
+            "generation_note": "generated on " + time.ctime()})
 
     def write_unit_report(self, output, unit):
         def write(x): self.output.write(x)
-        def _(x, c = "wesnoth"): return self.translate(x, c)
+        def _(x, c="wesnoth"): return self.translate(x, c)
 
         def find_attr(what, key):
             if unit.movetype:
-                mtx = unit.movetype.get_all(tag = what)
+                mtx = unit.movetype.get_all(tag=what)
                 mty = None
                 if mtx:
                     mty = mtx[0].get_text_val(key)
-            x = unit.get_all(tag = what)
+            x = unit.get_all(tag=what)
             y = None
             if x:
                 y = x[0].get_text_val(key,
-                translation = self.translation.translate)
+                translation=self.translation.translate)
             if y:
                 return True, y
             if unit.movetype and mty != None:
@@ -680,30 +679,30 @@ class HTMLOutput:
 
         def uval(name):
             return self.wesnoth.get_unit_value(unit, name,
-                translation = self.translation.translate)
+                translation=self.translation.translate)
 
         # Write unit name, picture and description.
         uid = unit.get_text_val("id")
         uname = uval("name")
         display_name = uname
-        
+
         self.output = output
-        write(html_header % {"path" : "../",
-            "title" : display_name})
+        write(html_header % {"path": "../",
+            "title": display_name})
         self.write_navbar("unit_report")
-        
+
         self.output.write("<div class=\"main\">")
 
-        female = unit.get_all(tag = "female")
+        female = unit.get_all(tag="female")
         if female:
             fname = T(female[0], "name")
             if fname and fname != uname:
                 display_name += "<br/>" + fname
 
         write('<div class="unit-columns">')
-       
+
         write('<div class="unit-column-left">')
-        
+
         write("<h1>%s</h1>\n" % display_name)
 
         write('<div class="pic">')
@@ -724,7 +723,7 @@ class HTMLOutput:
         # TODO: what is unit_description?
         if not description: description = uval("unit_description")
         if not description: description = "-"
-        write("<p>%s</p>\n" % re.sub("\n","\n<br />", description) )
+        write("<p>%s</p>\n" % re.sub("\n", "\n<br />", description))
 
         # Base info.
         hp = uval("hitpoints")
@@ -744,7 +743,7 @@ class HTMLOutput:
                 continue
             link = "../%s/%s.html" % (self.isocode, pid)
             name = self.wesnoth.get_unit_value(punit, "name",
-                translation = self.translation.translate)
+                translation=self.translation.translate)
             write("\n<a href=\"%s\">%s</a>" % (link, name))
         write("</td>\n")
         write("</tr><tr>\n")
@@ -757,7 +756,7 @@ class HTMLOutput:
                 if unit.campaign == "mainline" and cunit.campaign != "mainline":
                     continue
                 name = self.wesnoth.get_unit_value(cunit, "name",
-                    translation = self.translation.translate)
+                    translation=self.translation.translate)
             except KeyError:
                 error_message("Warning: Unit %s not found.\n" % cid)
                 name = cid
@@ -807,7 +806,7 @@ class HTMLOutput:
                 icon = "attacks/%s.png" % aid
 
             picname, error = image_collector.add_image_check(
-                unit.campaign, icon, no_tc = True)
+                unit.campaign, icon, no_tc=True)
             if error:
                 error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                     icon, uid))
@@ -828,9 +827,9 @@ class HTMLOutput:
             write("<br/>%s</td>" % _(t))
 
             s = []
-            specials = attack.get_all(tag = "specials")
+            specials = attack.get_all(tag="specials")
             if specials:
-                for special in specials[0].get_all(tag = ""):
+                for special in specials[0].get_all(tag=""):
                     sname = T(special, "name")
                     if sname:
                         s.append(sname)
@@ -873,18 +872,18 @@ class HTMLOutput:
             if row % 2 == 0: write("<tr>\n")
             else: write("<td></td>")
             picname = image_collector.add_image("mainline", ricon,
-                no_tc = True)
+                no_tc=True)
             icon = os.path.join("../pics", picname)
             write("<td><img src=\"%s\" alt=\"(icon)\" /></td>\n" % (icon, ))
             write("<th>%s</th><td class=\"num\">%s</td>\n" % (_(rid), r))
-            if row % 2 == 1 : write("</tr>\n")
+            if row % 2 == 1: write("</tr>\n")
             row += 1
         write("</table>\n")
-        
+
         # end left column
         write('</div>')
         write('<div class="unit-column-right">')
-        
+
         if portrait:
             write('<div class="portrait">')
             if female:
@@ -898,11 +897,11 @@ class HTMLOutput:
         write("<h2>" + _("Terrain", "wesnoth-help") + "</h2>\n")
         write("<table class=\"unitinfo terrain\">\n")
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
-       
+
         write("<tr><th colspan=\"2\"></th><th colspan=\"2\">%s</th></tr>\n" % (
             _("Movement Cost", "wesnoth-help")))
         write("<tr><th colspan=\"2\">%s</th><th></th><th class=\"numheader\">%s</th></tr>\n" % (
-            _("Terrain", "wesnoth-help"), _("Defense", "wesnoth-help") ))
+            _("Terrain", "wesnoth-help"), _("Defense", "wesnoth-help")))
 
         terrains = self.wesnoth.terrain_lookup
         terrainlist = []
@@ -910,7 +909,7 @@ class HTMLOutput:
         for tstring, t in terrains.items():
             tid = t.get_text_val("id")
             if tid in ["off_map", "off_map2", "fog", "shroud", "impassable", "void"]: continue
-            if t.get_all(att = "aliasof"): continue
+            if t.get_all(att="aliasof"): continue
             if tid in already: continue
             already[tid] = 1
             name = T(t, "name")
@@ -938,23 +937,23 @@ class HTMLOutput:
 
             write("<tr>\n")
             picname = image_collector.add_image("mainline",
-                "terrain/" + ticon + ".png", no_tc = True)
+                "terrain/" + ticon + ".png", no_tc=True)
             icon = os.path.join("../pics", picname)
             write("<td><img src=\"%s\"  alt=\"(icon)\" /></td>\n" % (icon, ))
             write("<td>%s</td><%s><i>%s</i></td><%s class=\"num\"><i>%s</i></td>\n" % (
                 tname, ccell, c, dcell, d))
             write("</tr>\n")
         write("</table>\n")
-        
+
         write('</div>') # right column
-        
+
         write('</div>') # columns parent
 
         self.output.write('<div id="clear" style="clear:both;"></div>')
         write('</div>') # main
 
         self.output.write(html_footer % {
-            "generation_note" : "generated on " + time.ctime()})
+            "generation_note": "generated on " + time.ctime()})
 
 languages_found = {}
 def find_languages():
@@ -964,10 +963,10 @@ def find_languages():
     global languages
     if languages_found: return languages_found
     parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
-        options.data_dir, no_preprocess = False)
+        options.data_dir, no_preprocess=False)
     parser.parse_text("{languages}")
 
-    for locale in parser.get_all(tag = "locale"):
+    for locale in parser.get_all(tag="locale"):
         isocode = locale.get_text_val("locale")
         name = locale.get_text_val("name")
         if isocode == "ang_GB":
@@ -988,7 +987,7 @@ class MyFile:
         self.f.close()
 
 def generate_campaign_report(out_path, isocode, campaign, wesnoth):
-    path = os.path.join(out_path, isocode )
+    path=os.path.join(out_path, isocode)
     if not os.path.isdir(path): os.mkdir(path)
     output = MyFile(os.path.join(path, "%s.html" % campaign), "w")
     html = HTMLOutput(isocode, output, campaign, wesnoth)
@@ -999,7 +998,7 @@ def generate_campaign_report(out_path, isocode, campaign, wesnoth):
         title = html.translate("Units", "wesnoth-help")
     else:
         title = wesnoth.campaign_lookup[campaign].get_text_val("name",
-            translation = html.translate)
+            translation=html.translate)
         if not title:
             title = campaign
 
@@ -1014,7 +1013,7 @@ def generate_era_report(out_path, isocode, eid, wesnoth):
     html.target = "%s.html" % eid
     grouper = GroupByFaction(wesnoth, eid)
     era = wesnoth.era_lookup[eid]
-    ename = era.get_text_val("name", translation = html.translate)
+    ename = era.get_text_val("name", translation=html.translate)
     html.write_units_tree(grouper, ename)
 
 def generate_single_unit_reports(out_path, isocode, wesnoth):
@@ -1139,7 +1138,7 @@ def generate_report(stuff, isocode):
     * Each addon era's units sorted by faction
     * Each addon campaign's units sorted by race
     """
-    
+
     if not isocode: return
 
     print "Generating report for %s." % (isocode)
@@ -1180,26 +1179,26 @@ if __name__ == '__main__':
 
     op = optparse.OptionParser()
     op.add_option("-C", "--config-dir",
-        help = "Specify the user configuration dir (wesnoth --config-path).")
+        help="Specify the user configuration dir (wesnoth --config-path).")
     op.add_option("-D", "--data-dir",
-        help = "Specify the wesnoth data dir (wesnoth --path).")
-    op.add_option("-l", "--language", default = "all",
-        help = "Specify a language to use. Else outputs is produced for all languages.")
+        help="Specify the wesnoth data dir (wesnoth --path).")
+    op.add_option("-l", "--language", default="all",
+        help="Specify a language to use. Else outputs is produced for all languages.")
     op.add_option("-o", "--output",
-        help = "Specify the output directory.")
-    op.add_option("-n", "--nocopy", action = "store_true",
-        help = "No copying of files. By default all images are copied to the output dir.")
+        help="Specify the output directory.")
+    op.add_option("-n", "--nocopy", action="store_true",
+        help="No copying of files. By default all images are copied to the output dir.")
     op.add_option("-w", "--wesnoth",
-        help = "Specify the wesnoth executable to use. Whatever data " +
+        help="Specify the wesnoth executable to use. Whatever data " +
         "and config paths that executable is configured for will be " +
         "used to find game files and addons.")
     op.add_option("-t", "--transdir",
-        help = "Specify the directory with gettext message catalogues. " +
-        "Defaults to ./translations.", default = "translations")
-    op.add_option("-c", "--campaigns", action = "store_true",
-        help = "Include units from mainline campaigns.")
-    op.add_option("-a", "--addons", action = "store_true",
-        help = "Include also addon units (from all installed eras and campaigns). " +
+        help="Specify the directory with gettext message catalogues. " +
+        "Defaults to ./translations.", default="translations")
+    op.add_option("-c", "--campaigns", action="store_true",
+        help="Include units from mainline campaigns.")
+    op.add_option("-a", "--addons", action="store_true",
+        help="Include also addon units (from all installed eras and campaigns). " +
         "Note that some add-ons may try to modify stock units but such changes are " +
         "not reflected in this version of wmlunits.")
     options, args = op.parse_args()
@@ -1226,7 +1225,7 @@ if __name__ == '__main__':
         options.config_dir, options.data_dir)
 
     wesnoth = parse_game()
-    
+
     # Generate output dir.
     if not os.path.isdir(options.output):
         os.mkdir(options.output)

@@ -82,8 +82,8 @@ def closer(str):
         return True
     else:
         for prefix in closer_prefixes:
-           if str.startswith(prefix):
-               return True
+            if str.startswith(prefix):
+                return True
     return False
 
 def opener(str):
@@ -100,8 +100,8 @@ def opener(str):
         return True
     else:
         for prefix in opener_prefixes:
-           if str.startswith(prefix):
-               return True
+            if str.startswith(prefix):
+                return True
     return False
 
 class bailout:
@@ -206,11 +206,11 @@ def reindent(name, infp, outfp):
             eligible = transformed.split("#")[0]
         else:
             eligible = transformed
-        if dostrip and "<<" in eligible and not ">>" in eligible.split("<<",1)[1]:
+        if dostrip and "<<" in eligible and not ">>" in eligible.split("<<", 1)[1]:
             dostrip = False
             in_lua = True
         elif in_lua:
-            if ">>" in eligible and not "<<" in eligible.split(">>",1)[1]:
+            if ">>" in eligible and not "<<" in eligible.split(">>", 1)[1]:
                 dostrip = True
                 in_lua = False
         elif eligible.count('"') % 2:

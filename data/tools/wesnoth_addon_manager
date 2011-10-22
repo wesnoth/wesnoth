@@ -26,69 +26,69 @@ if __name__ == "__main__":
         pass
 
     optionparser = optparse.OptionParser()
-    optionparser.add_option("-a", "--address", help = "specify server address",
-        default = "add-ons.wesnoth.org")
+    optionparser.add_option("-a", "--address", help="specify server address",
+        default="add-ons.wesnoth.org")
     optionparser.add_option("--html",
-        help = "Output a HTML overview into the given directory.",)
+        help="Output a HTML overview into the given directory.",)
     optionparser.add_option("-p", "--port",
-        help = "specify server port or BfW version (%s)" % " or ".join(
+        help="specify server port or BfW version (%s)" % " or ".join(
         map(lambda x: x[1], CampaignClient.portmap)),
-        default = CampaignClient.portmap[0][0])
-    optionparser.add_option("-l", "--list", help = "list available add-ons",
-        action = "store_true",)
+        default=CampaignClient.portmap[0][0])
+    optionparser.add_option("-l", "--list", help="list available add-ons",
+        action="store_true",)
     optionparser.add_option("-w", "--wml",
-        help = "when listing add-ons, list the raw wml",
-        action = "store_true",)
+        help="when listing add-ons, list the raw wml",
+        action="store_true",)
     optionparser.add_option("-C", "--color",
-        help = "use colored WML output",
-        action = "store_true",)
+        help="use colored WML output",
+        action="store_true",)
     optionparser.add_option("-c", "--campaigns-dir",
-        help = "directory where add-ons are stored",
-        default = ".")
+        help="directory where add-ons are stored",
+        default=".")
     optionparser.add_option("-P", "--password",
-        help = "password to use")
+        help="password to use")
     optionparser.add_option("-d", "--download",
-        help = "download the named add-on; " +
+        help="download the named add-on; " +
         "name may be a Python regexp matched against all add-on names " +
         "(specify the path where to put it with -c, " +
         "current directory will be used by default)")
     optionparser.add_option("-T", "--type",
-        help = "Type of addons to download, e.g. 'era' or 'campaign'.")
+        help="Type of addons to download, e.g. 'era' or 'campaign'.")
     optionparser.add_option("-t", "--tar",
-        help = "When used together with --download, create tarballs of any " +
+        help="When used together with --download, create tarballs of any " +
         "downloaded addons and put into the specified directory.")
-    optionparser.add_option("--pbl", help = "override standard PBL location")
+    optionparser.add_option("--pbl", help="override standard PBL location")
     optionparser.add_option("-u", "--upload",
-        help = "Upload an add-on. " +
+        help="Upload an add-on. " +
         "UPLOAD should be either the name of an add-on subdirectory," +
         "(in which case the client looks for _server.pbl beneath it) " +
         "or a path to the .pbl file (in which case the name of the " +
         "add-on subdirectory is the name of the path with .pbl removed)")
     optionparser.add_option("-s", "--status",
-        help = "Display the status of addons installed in the given " +
+        help="Display the status of addons installed in the given " +
         "directory.")
     optionparser.add_option("-f", "--update",
-        help = "Update all installed add-ons in the given directory. " +
+        help="Update all installed add-ons in the given directory. " +
         "This works by comparing the _info.cfg file in each addon directory " +
         "with the version on the server.")
     optionparser.add_option("-V", "--verbose",
-        help = "be even more verbose for everything",
-        action = "store_true",)
+        help="be even more verbose for everything",
+        action="store_true",)
     optionparser.add_option("-r", "--remove",
-        help = "remove the named add-on from the server, " +
+        help="remove the named add-on from the server, " +
         "set the password -P")
     optionparser.add_option("-R", "--raw-download",
-        action = "store_true",
-        help = "download as a binary WML packet")
-    optionparser.add_option("--url", help = "When used with --html, " +
+        action="store_true",
+        help="download as a binary WML packet")
+    optionparser.add_option("--url", help="When used with --html, " +
         "a download link will be added for each campaign, with the given " +
         "base URL.")
     optionparser.add_option("-U", "--unpack",
-        help = "unpack the file UNPACK as a binary WML packet " +
+        help="unpack the file UNPACK as a binary WML packet " +
         "(specify the add-on path with -c)")
-    optionparser.add_option("--change-passphrase", nargs = 3,
-        metavar = "ADD-ON OLD NEW",
-        help = "Change the passphrase for ADD-ON from OLD to NEW")
+    optionparser.add_option("--change-passphrase", nargs=3,
+        metavar="ADD-ON OLD NEW",
+        help="Change the passphrase for ADD-ON from OLD to NEW")
     options, args = optionparser.parse_args()
 
     port = options.port
@@ -128,7 +128,7 @@ if __name__ == "__main__":
             except OSError: pass
 
             print "Unpacking %s..." % name
-            cs.unpackdir(decoded, cdir, verbose = options.verbose)
+            cs.unpackdir(decoded, cdir, verbose=options.verbose)
 
 
             info = os.path.join(dirname, "_info.cfg")
@@ -184,8 +184,8 @@ if __name__ == "__main__":
             campaigns = data.get_or_create_sub("campaigns")
             if options.wml:
                 for campaign in campaigns.get_all("campaign"):
-                    campaign.debug(show_contents = True,
-                        use_color = options.color)
+                    campaign.debug(show_contents=True,
+                        use_color=options.color)
             else:
                 column_sizes = [10, 5, 10, 7, 8, 8, 10, 5, 10, 13]
                 columns = [["type", "name", "title", "author",
@@ -255,7 +255,7 @@ if __name__ == "__main__":
         data = file(options.unpack).read()
         decoded = cs.decode(data)
         print "Unpacking %s..." % options.unpack
-        cs.unpackdir(decoded, options.campaigns_dir,  verbose = True)
+        cs.unpackdir(decoded, options.campaigns_dir,  verbose=True)
     elif options.remove:
         cs = CampaignClient(address)
         data = cs.delete_campaign(options.remove, options.password)
@@ -288,7 +288,7 @@ if __name__ == "__main__":
             wmldir = os.path.join(os.path.dirname(options.upload), name)
             cfgfile = options.upload.replace(".pbl", ".cfg")
             ignfile = options.upload.replace(".pbl", ".ign")
-        
+
         if options.pbl:
             pblfile = options.pbl
 

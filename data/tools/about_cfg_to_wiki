@@ -23,12 +23,12 @@ if __name__ == "__main__":
 
     option_parser = optparse.OptionParser()
     option_parser.add_option("-w", "--wesnoth",
-        help = "Specify the wesnoth executable to use.")
+        help="Specify the wesnoth executable to use.")
     options, args = option_parser.parse_args()
 
     files = ["data/core/about.cfg"]
     files.extend(glob.glob("data/campaigns/*/_main.cfg"))
-    
+
     if not options.wesnoth:
         options.wesnoth = "./wesnoth"
 
@@ -41,17 +41,17 @@ if __name__ == "__main__":
         wml_parser = wmldata.Parser(options.wesnoth, None, None, False)
         wml_parser.parse_file(arg)
         wml = wml_parser
-        if not wml.get_all(tag = "about"):
-            wml = wml.get_all(tag = "campaign")
-            if not wml or not wml[0].get_all(tag = "about"):
+        if not wml.get_all(tag="about"):
+            wml = wml.get_all(tag="campaign")
+            if not wml or not wml[0].get_all(tag="about"):
                 sys.stderr.write("No about section found in %s\n" % arg)
                 continue
             wml = wml[0]
-        for about in wml.get_all(tag = "about"):
+        for about in wml.get_all(tag="about"):
             section = Section()
             section.title = about.get_text_val("title")
             section.lines = []
-            for entry in about.get_all(tag = "entry"):
+            for entry in about.get_all(tag="entry"):
                 name = entry.get_text_val("name")
                 comment = entry.get_text_val("comment", "")
                 wikiuser = entry.get_text_val("wikiuser", "")
