@@ -2974,10 +2974,10 @@ std::string unit::TC_image_mods() const{
 }
 std::string unit::image_mods() const{
 	std::stringstream modifier;
-	modifier << TC_image_mods();
 	if(!image_mods_.empty()){
 		modifier << "~" << image_mods_;
 	}
+	modifier << TC_image_mods();
 	return modifier.str();
 }
 
