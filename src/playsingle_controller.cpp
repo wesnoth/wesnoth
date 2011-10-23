@@ -376,10 +376,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		// if we loaded a save file in linger mode, skip to it.
 		if (linger_) {
 			//determine the bonus gold handling for this scenario
-			const config end_cfg = level_.child_or_empty("endlevel");
-			end_level.carryover_percentage = level_["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
-			end_level.carryover_add = level_["carryover_add"].to_bool();
-			end_level.gold_bonus = end_cfg["bonus"].to_bool(true);
+			end_level.read(level_.child_or_empty("endlevel"));
 			end_level.carryover_report = false;
 			throw end_level_exception(SKIP_TO_LINGER);
 		}

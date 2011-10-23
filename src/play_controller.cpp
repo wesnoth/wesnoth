@@ -689,6 +689,12 @@ config play_controller::to_config() const
 
 	cfg.merge_with(tod_manager_.to_config());
 
+	if(linger_) {
+		config endlevel;
+		end_level_data_.write(endlevel);
+		cfg.add_child("endlevel", endlevel);
+	}
+
 	// Write terrain_graphics data in snapshot, too
 	foreach (const config &tg, level_.child_range("terrain_graphics")) {
 		cfg.add_child("terrain_graphics", tg);

@@ -26,6 +26,9 @@
 #include "lua_jailbreak_exception.hpp"
 #include <string>
 
+#include "config.hpp"
+#include "game_config.hpp"
+
 enum LEVEL_RESULT {
 	NONE,
 	VICTORY,
@@ -89,7 +92,7 @@ struct end_level_data
 		, replay_save(true)
 		, linger_mode(true)
 		, gold_bonus(true)
-		, carryover_percentage(80)
+		, carryover_percentage(game_config::gold_carryover_percentage)
 		, carryover_add(false)
 		, custom_endlevel_music()
 		, reveal_map(true)
@@ -104,6 +107,23 @@ struct end_level_data
 	bool carryover_add;                /**< Add or replace next scenario's minimum starting gold. */
 	std::string custom_endlevel_music; /**< Custom short music played at the end. */
 	bool reveal_map;                   /**< Should we reveal map when game is ended? (Multiplayer only) */
+
+	void write(config& cfg) const {
+		cfg["prescenario_save"] = prescenario_save;
+		cfg["replay_save"] = replay_save;
+		cfg["bonus"] = gold_bonus;
+		cfg["carryover_percentage"] = carryover_percentage;
+		cfg["carryover_add"] = carryover_add;
+	}
+
+	void read(const config& cfg) {
+		prescenario_save = cfg["prescenario_save"].to_bool(true);
+		replay_save = cfg["replay_save"].to_bool(true);
+		gold_bonus = cfg["bonus"].to_bool(true);
+		carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
+		carryover_add = cfg["carryover_add"].to_bool(false);
+	}
+
 };
 
 #endif /* ! GAME_END_EXCEPTIONS_HPP_INCLUDED */
