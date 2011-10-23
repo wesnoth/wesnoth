@@ -113,8 +113,12 @@ public:
 
 	void set_victory_when_enemies_defeated(bool e)
 	{ victory_when_enemies_defeated_ = e; }
-	end_level_data &get_end_level_data()
-	{ return end_level_data_; }
+	end_level_data& get_end_level_data() {
+		return end_level_data_;
+	}
+	const end_level_data& get_end_level_data_const() const {
+		return end_level_data_;
+	}
 
 	/**
 	 * Checks to see if a side has won, and throws an end_level_exception.

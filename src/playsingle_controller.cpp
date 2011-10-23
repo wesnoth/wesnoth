@@ -253,7 +253,7 @@ void playsingle_controller::report_victory(
 	std::ostringstream &report, int player_gold, int remaining_gold,
 	int finishing_bonus_per_turn, int turns_left, int finishing_bonus)
 {
-	end_level_data &end_level = get_end_level_data();
+	const end_level_data &end_level = get_end_level_data_const();
 	report << _("Remaining gold: ")
 		   << remaining_gold << "\n";
 	if(end_level.gold_bonus) {
@@ -940,7 +940,7 @@ void playsingle_controller::store_gold(bool obs)
 		if (t.persistent()) ++persistent_teams;
 	}
 
-	end_level_data &end_level = get_end_level_data();
+	const end_level_data &end_level = get_end_level_data_const();
 
 	if (persistent_teams > 0 && (has_next_scenario ||
 		gamestate_.classification().campaign_type == "test"))

@@ -333,7 +333,7 @@ void playmp_controller::linger()
 
 	set_end_scenario_button();
 
-	if ( get_end_level_data().reveal_map ) {
+	if ( get_end_level_data_const().reveal_map ) {
 		// switch to observer viewpoint
 		gui_->set_team(0,true);
 		gui_->recalculate_minimap();
