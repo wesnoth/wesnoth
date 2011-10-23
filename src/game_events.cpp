@@ -2298,6 +2298,13 @@ WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
 
 WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 {
+	end_level_data &data = resources::controller->get_end_level_data();
+	if(data.disabled) {
+		WRN_NG << "repeated [endlevel] execution, ignoring\n";
+		return;
+	}
+	data.disabled = true;
+
 	game_state *state_of_game = resources::state_of_game;
 	unit_map *units = resources::units;
 
@@ -2330,7 +2337,6 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 			end_of_campaign_text_delay.to_int(state_of_game->classification().end_text_duration);
 	}
 
-	end_level_data &data = resources::controller->get_end_level_data();
 
 	std::string result = cfg["result"];
 	VALIDATE_WITH_DEV_MESSAGE(

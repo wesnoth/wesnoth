@@ -378,6 +378,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			//determine the bonus gold handling for this scenario
 			end_level.read(level_.child_or_empty("endlevel"));
 			end_level.carryover_report = false;
+			end_level.disabled = true;
 			throw end_level_exception(SKIP_TO_LINGER);
 		}
 
