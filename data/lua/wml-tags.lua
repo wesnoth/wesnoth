@@ -410,7 +410,7 @@ function wml_actions.store_unit(cfg)
 	local var = cfg.variable or "unit"
 	local idx = 0
 	if mode == "append" then
-		idx = wesnoth.get_variable(var .. ".length") or 0
+		idx = wesnoth.get_variable(var .. ".length")
 	elseif mode ~= "replace" then
 		wesnoth.set_variable(var)
 	end
