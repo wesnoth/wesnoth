@@ -65,7 +65,7 @@ def parse_terrain(data):
 | %s
 """ % (
 content['editor_name'][4:-1] if 'editor_name' in content else content['name'][4:-1],
-content['string'].lstrip(" # wmllint: ignore"),
+content['string'].replace("# wmllint: ignore", ""),
 content['aliasof'] if 'aliasof' in content else "",
 content['editor_group'])
 
