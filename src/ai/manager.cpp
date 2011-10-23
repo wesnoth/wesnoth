@@ -246,8 +246,8 @@ const std::string holder::get_ai_overview()
 	s << "number_of_possible_recruits_to_force_recruit:  " << this->ai_->get_number_of_possible_recruits_to_force_recruit() << std::endl;
 	s << "passive_leader:  " << this->ai_->get_passive_leader() << std::endl;
 	s << "passive_leader_shares_keep:  " << this->ai_->get_passive_leader_shares_keep() << std::endl;
-	s << "recruitment_ignore_bad_combat:  " << this->ai_->get_recruitment_ignore_bad_movement() << std::endl;
-	s << "recruitment_ignore_bad_movement:  " << this->ai_->get_recruitment_ignore_bad_combat() << std::endl;
+	s << "recruitment_ignore_bad_combat:  " << this->ai_->get_recruitment_ignore_bad_combat() << std::endl;
+	s << "recruitment_ignore_bad_movement:  " << this->ai_->get_recruitment_ignore_bad_movement() << std::endl;
 //	s << "recruitment_pattern:  ";
 //	for(std::vector<std::string>::const_iterator i =  this->ai_->get_recruitment_pattern().begin(); i !=  this->ai_->get_recruitment_pattern().end(); ++i) {
 //		if(i != this->ai_->get_recruitment_pattern().begin())
