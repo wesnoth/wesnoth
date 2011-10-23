@@ -33,6 +33,19 @@ namespace gui2 {
 
 namespace font {
 
+/**
+ * Escapses the markup characters in a text.
+ *
+ * The markups escaped are the ones used in the pango markup. The special
+ * characters are @code <>'"&@endcode. They escaping is the same as for HTML.
+ *
+ * @param text                    The text to escape.
+ *
+ * @returns                       The escaped text.
+ */
+std::string escape_text(const std::string& text);
+
+
 // add background color and also font markup.
 
 /**

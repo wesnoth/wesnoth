@@ -24,6 +24,8 @@
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
 
+#include <boost/foreach.hpp>
+
 #include <cassert>
 #include <cstring>
 
@@ -65,6 +67,22 @@ const unsigned ttext::STYLE_NORMAL = TTF_STYLE_NORMAL;
 const unsigned ttext::STYLE_BOLD = TTF_STYLE_BOLD;
 const unsigned ttext::STYLE_ITALIC = TTF_STYLE_ITALIC;
 const unsigned ttext::STYLE_UNDERLINE = TTF_STYLE_UNDERLINE;
+
+std::string escape_text(const std::string& text)
+{
+	std::string result;
+	BOOST_FOREACH(const char c, text) {
+		switch(c) {
+			case '&':  result += "&amp;";  break;
+			case '<':  result += "&lt;";   break;
+			case '>':  result += "&gt;";   break;
+			case '\'': result += "&apos;"; break;
+			case '"':  result += "&quot;"; break;
+			default:   result += c;
+		}
+	}
+	return result;
+}
 
 ttext::ttext() :
 #if PANGO_VERSION_CHECK(1,22,0)

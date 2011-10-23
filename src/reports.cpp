@@ -29,6 +29,7 @@
 #include "reports.hpp"
 #include "resources.hpp"
 #include "team.hpp"
+#include "text.hpp"
 #include "tod_manager.hpp"
 #include "unit.hpp"
 #include "whiteboard/manager.hpp"
@@ -138,12 +139,21 @@ static config gray_inactive(const std::string &str)
 
 static config unit_name(unit *u)
 {
-	if (!u) return report();
+	if (!u) {
+		return report();
+	}
+
+	/*
+	 * The name needs to be escaped, it might be set by the user and using
+	 * markup. Also names often contain a forbidden single quote.
+	 */
+	const std::string& name = font::escape_text(u->name());
 	std::ostringstream str, tooltip;
-	str << "<b>" << u->name() << "</b>";
-	tooltip << _("Name: ") << "<b>" << u->name() << "</b>";
+	str << "<b>" << name << "</b>";
+	tooltip << _("Name: ") << "<b>" << name << "</b>";
 	return text_report(str.str(), tooltip.str());
 }
+
 REPORT_GENERATOR(unit_name)
 {
 	unit *u = get_visible_unit();
