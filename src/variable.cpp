@@ -588,6 +588,8 @@ variable_info::variable_info(const std::string& varname,
 	key = varname;
 	std::string::const_iterator itor = std::find(key.begin(),key.end(),'.');
 	int dot_index = key.find('.');
+	// Return length if the last part of the key is length (include '.' to avoid keys with the same suffix)
+	bool is_length = key.length() >= 7 && key.substr(key.length()-7) == ".length";
 	// example varname = "unit_store.modifications.trait[0]"
 	while(itor != key.end()) { // subvar access
 		std::string element=key.substr(0,dot_index);
@@ -612,7 +614,7 @@ variable_info::variable_info(const std::string& varname,
 		if(size <= inner_index) {
 			if(force_valid) {
 				// Add elements to the array until the requested size is attained
-				if(inner_explicit_index || key != "length") {
+				if(inner_explicit_index || !is_length) {
 					for(; size <= inner_index; ++size) {
 						vars->add_child(element);
 					}
@@ -621,13 +623,13 @@ variable_info::variable_info(const std::string& varname,
 				WRN_NG << "variable_info: invalid WML array index, "
 					<< varname << std::endl;
 				return;
-			} else if(key != "length") {
+			} else if(!is_length) {
 				WRN_NG << "variable_info: retrieving member of non-existent WML container, "
 					<< varname << std::endl;
 				return;
 			} //else return length 0 for non-existent WML array (handled below)
 		}
-		if(!inner_explicit_index && key == "length") {
+		if(!inner_explicit_index && is_length) {
 			switch(vartype) {
 			case variable_info::TYPE_ARRAY:
 			case variable_info::TYPE_CONTAINER:
