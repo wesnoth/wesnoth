@@ -240,6 +240,10 @@ bool manager::allow_leader_to_move(unit const& leader) const
 			return true;
 	} // end planned unit map scope
 
+	if(viewer_actions()->empty()) {
+		return true;
+	}
+
 	//Look for planned recruits that depend on this leader
 	foreach(action_const_ptr action, *viewer_actions())
 	{
@@ -268,8 +272,9 @@ void manager::on_init_side()
 void manager::on_finish_side_turn(int side)
 {
 	wait_for_side_init_ = true;
-	if(side == viewer_side())
+	if(side == viewer_side() && !viewer_actions()->empty()) {
 		viewer_actions()->synced_turn_shift();
+	}
 	highlighter_.reset();
 	erase_temp_move();
 	LOG_WB << "on_finish_side_turn()\n";
@@ -343,6 +348,10 @@ void manager::on_change_controller(int side, team& t)
 
 bool manager::current_side_has_actions()
 {
+	if(current_side_actions()->empty()) {
+		return false;
+	}
+
 	side_actions::range_t range = current_side_actions()->iter_turn(0);
 	return range.first != range.second; //non-empty range
 }
