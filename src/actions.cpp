@@ -412,19 +412,12 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 		}
 	}
 
-	if (local_result.empty()) {
-		foreach (const unit &recall, recall_list)
-		{
-			local_result.push_back(&recall);
-		}
-	}
-
 	return local_result;
 }
 
 std::string find_recall_location(const int side, map_location &recall_loc, const unit &recall_unit)
 {
-	LOG_NG << "finding recall location for side " << side << "\n";
+	LOG_NG << "finding recall location for side " << side << " and unit " << recall_unit.id() << "\n";
 
 	unit_map::const_iterator u = resources::units->begin(),
 		u_end = resources::units->end(), leader = u_end, leader_keep = u_end, leader_fit = u_end,
