@@ -385,7 +385,10 @@ class HTMLOutput:
 
             for uid, u in self.wesnoth.unit_lookup.items():
                 if u.campaign != camp: continue
-                racename = T(u.race, "plural_name")
+                if u.race:
+                    racename = T(u.race, "plural_name")
+                else:
+                    racename = "none"
                 runits = races.get(racename, [])
                 runits.append(uid)
                 races[racename] = runits
@@ -1104,6 +1107,8 @@ def parse_game():
         p("    Parsing %s units ... " % cname)
         n = stuff.add_campaign_units(cname, image_collector)
         pn("%d units found." % n)
+        if not n:
+            del stuff.campaign_lookup[cname]
 
     mainline_campaigns = set(stuff.campaign_lookup.keys())
 
@@ -1124,6 +1129,8 @@ def parse_game():
             p("    Parsing %s units ... " % cname)
             n = stuff.add_addon_campaign_units(cname, image_collector)
             pn("%d units found." % n)
+            if not n:
+                del stuff.campaign_lookup[cname]
 
     stuff.find_unit_factions()
 
