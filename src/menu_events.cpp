@@ -3484,8 +3484,8 @@ void console_handler::do_unit() {
 	if (events::commands_disabled > 0)
 		return;
 	unit_map::iterator i = menu_handler_.current_unit();
-	const map_location loc = i->get_location();
 	if (i == menu_handler_.units_.end()) return;
+	const map_location loc = i->get_location();
 	const std::string data = get_data(1);
 	std::vector<std::string> parameters = utils::split(data, '=', utils::STRIP_SPACES);
 	if (parameters.size() < 2)
