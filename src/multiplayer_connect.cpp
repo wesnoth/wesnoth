@@ -1169,7 +1169,16 @@ void connect::start_game()
 {
 	DBG_MP << "starting a new game" << std::endl;
 
-		// Shuffle sides (check preferences and if it is a re-loaded game)
+    // Resolves the "random faction", "random gender" and "random message"
+    // Must be done before shuffle sides, or some cases will cause errors
+	for (side_list::iterator itor = sides_.begin(); itor != sides_.end();
+			++itor) {
+
+		itor->resolve_random();
+	}
+
+	// Shuffle sides (check preferences and if it is a re-loaded game)
+	// Must be done after resolve_random() or shuffle sides, or they won't work.
 	if (preferences::shuffle_sides() && !(level_.child("snapshot") && level_.child("snapshot").child("side")))
 	{
 		// Only playable sides should be shuffled
@@ -1204,12 +1213,6 @@ void connect::start_game()
 		}
 	}
 
-	// Resolves the "random faction", "random gender" and "random message"
-	for (side_list::iterator itor = sides_.begin(); itor != sides_.end();
-			++itor) {
-
-		itor->resolve_random();
-	}
 	// Make other clients not show the results of resolve_random().
 	config lock;
 	lock.add_child("stop_updates");
