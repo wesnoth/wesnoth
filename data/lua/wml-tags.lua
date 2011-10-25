@@ -515,6 +515,23 @@ function wml_actions.unhide_unit(cfg)
 	wml_actions.redraw {}
 end
 
+--note: when using these, make sure that nothing can throw over the call to end_var_scope
+local function start_var_scope(name)
+	local var = helper.get_variable_array(name) --containers and arrays
+	if #var == 0 then var = wesnoth.get_variable(name) end --scalars (and nil/empty)
+	wesnoth.set_variable(name)
+	return var
+end
+
+local function end_var_scope(name, var)
+	wesnoth.set_variable(name)
+	if type(var) == "table" then
+		helper.set_variable_array(name, var)
+	else
+		wesnoth.set_variable(name, var)
+	end
+end
+
 function wml_actions.modify_unit(cfg)
 	local unit_variable = "LUA_modify_unit"
 
@@ -575,20 +592,11 @@ function wml_actions.modify_unit(cfg)
 	wml_actions.store_unit { {"filter", filter}, variable = unit_variable, kill = true }
 	local max_index = wesnoth.get_variable(unit_variable .. ".length") - 1
 
-	local this_unit = helper.get_variable_array("this_unit") --containers and arrays
-	if #this_unit == 0 then this_unit = wesnoth.get_variable("this_unit") end --scalars (and nil/empty)
-
-	wesnoth.set_variable("this_unit")
+	local this_unit = start_var_scope("this_unit")
 	for current_unit = 0, max_index do
 		handle_unit(current_unit)
 	end
-	wesnoth.set_variable("this_unit")
-
-	if type(this_unit) == "table" then
-		helper.set_variable_array("this_unit", this_unit)
-	else
-		wesnoth.set_variable("this_unit", this_unit)
-	end
+	end_var_scope("this_unit", this_unit)
 
 	wesnoth.set_variable(unit_variable)
 end
