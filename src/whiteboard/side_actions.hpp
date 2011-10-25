@@ -309,6 +309,19 @@ public:
 			, contents_(that.base().contents_)
 		{}
 
+	/**
+	 * Copy constructor.
+	 *
+	 * If the contents_ is NULL the iterator is singular. Copying singular
+	 * iterators is UB, so avoid it.
+	 */
+	iterator(const iterator& that)
+			: base_(that.contents_ ? that.base_ : base_t())
+			, turn_num_(that.contents_ ? that.turn_num_ : 0)
+			, contents_(that.contents_)
+	{
+	}
+
 	action_ptr& operator*() const {return *base_;}
 	action_ptr* operator->() const {return base_.operator->();}
 	this_t& operator++()
