@@ -233,6 +233,25 @@ void ttree_view_node::clear()
 
 struct ttree_view_node_implementation
 {
+private:
+
+	template<class W, class It>
+	static W* find_at_aux(
+			  It begin
+			, It end
+			, const tpoint& coordinate
+			, const bool must_be_active)
+	{
+		for(It it = begin; it != end; ++it) {
+			if(W* widget = it->find_at(coordinate, must_be_active)) {
+				return widget;
+			}
+		}
+		return NULL;
+	}
+
+public:
+
 	template<class W>
 	static W* find_at(
 			  typename tconst_duplicator<W, ttree_view_node>::type&
@@ -250,13 +269,9 @@ struct ttree_view_node_implementation
 		}
 
 		typedef typename tconst_duplicator<W, ttree_view_node>::type thack;
-		foreach(thack& node, tree_view_node.children_) {
-			if(W* widget = node.find_at(coordinate, must_be_active)) {
-				return widget;
-			}
-		}
-
-		return NULL;
+		return find_at_aux<W>(tree_view_node.children_.begin(),
+				      tree_view_node.children_.end(),
+				      coordinate, must_be_active);
 	}
 };
 
@@ -308,7 +323,10 @@ tpoint ttree_view_node::get_current_size() const
 		return size;
 	}
 
-	foreach(const ttree_view_node& node, children_) {
+	for(boost::ptr_vector<ttree_view_node>::const_iterator itor =
+			children_.begin (); itor != children_.end (); ++itor) {
+
+		const ttree_view_node& node = *itor;
 
 		if(node.grid_.get_visible() == twidget::INVISIBLE) {
 			continue;
@@ -339,7 +357,10 @@ tpoint ttree_view_node::get_unfolded_size() const
 		size.x += (get_indention_level() - 1) * tree_view().indention_step_size_;
 	}
 
-	foreach(const ttree_view_node& node, children_) {
+	for(boost::ptr_vector<ttree_view_node>::const_iterator itor =
+			children_.begin (); itor != children_.end (); ++itor) {
+
+		const ttree_view_node& node = *itor;
 
 		if(node.grid_.get_visible() == twidget::INVISIBLE) {
 			continue;
@@ -373,7 +394,10 @@ tpoint ttree_view_node::calculate_best_size(const int indention_level
 
 	DBG_GUI_L << LOG_HEADER << " own grid best size " << best_size << ".\n";
 
-	foreach(const ttree_view_node& node, children_) {
+	for(boost::ptr_vector<ttree_view_node>::const_iterator itor =
+			children_.begin (); itor != children_.end (); ++itor) {
+
+		const ttree_view_node& node = *itor;
 
 		if(node.grid_.get_visible() == twidget::INVISIBLE) {
 			continue;
