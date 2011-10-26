@@ -71,7 +71,7 @@ if __name__ == "__main__":
     returns             A dictonary with the addon as key and the translatable
                         status as value.
     """
-    def list(server, translatable_only):
+    def list_addons(server, translatable_only):
 
         logging.debug("list addons server = '%s' translatable_only = %s",
             server, translatable_only)
@@ -136,7 +136,7 @@ if __name__ == "__main__":
             server, addon, temp_dir, svn_dir)
 
         # Is the addon in the list with campaigns to be translated.
-        campaigns = list(server, True)
+        campaigns = list_addons(server, True)
         if((addon in campaigns) == False):
             logging.info("Addon '%s' is not marked as translatable "
                 + "upload aborted.", addon)
@@ -356,7 +356,7 @@ if __name__ == "__main__":
     if(options.list or options.list_translatable):
 
         try:
-            addons = list(server, options.list_translatable)
+            addons = list_addons(server, options.list_translatable)
         except libsvn.error, e:
             print "[ERROR svn] " + str(e)
             sys.exit(1)
@@ -401,7 +401,7 @@ if __name__ == "__main__":
 
         error = False
         try:
-            addons = list(server, True)
+            addons = list_addons(server, True)
         except socket.error, e:
             print "Socket error: " + str(e)
             sys.exit(e[0])
@@ -460,7 +460,7 @@ if __name__ == "__main__":
 
         error = False
         try:
-            addons = list(server, True)
+            addons = list_addons(server, True)
         except socket.error, e:
             print "Socket error: " + str(e)
             sys.exit(e[0])
