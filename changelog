@@ -371,6 +371,7 @@ Version 1.9.7:
      * dropped --log alias for --log-error
    * Fixed: Compilation on kfreebsd (Debian bug #626313)
    * Fixed: CMake Subversion revision script causing build errors with MSVC.
+   * Fix time of day not changing in time area (bug #16584, bug #17543)
 
 Version 1.9.6:
  * Campaigns:
@@ -914,7 +915,6 @@ Version 1.9.1:
    * Modified [set_variable] "divide" so that it always performs a
      floating-point divide.
    * Allow time_area to define local time of day on map border (bug #16508)
-   * Fix time of day not changing in time area (bug #16584)
    * Allowed negative defense values as a way to set upper bounds,
      e.g. village=-60 means that a unit cannot have less than 60 def (more
      than 40% def) on terrains containing villages.
