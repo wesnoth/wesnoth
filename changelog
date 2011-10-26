@@ -88,6 +88,8 @@ Version 1.9.9+svn:
    * Fixed: Compilation with boost 1.47 (bug #18399's patch).
    * Fixed: Compilation with the clang 2.9 compiler (bug #18399's patch).
    * Fixed: Avoid copying of singular iterators in the whiteboard code.
+   * Fixed a problem where version comparisons could cease to work until
+     Wesnoth was restarted (bug #18766)
 
 Version 1.9.9:
  * AI:

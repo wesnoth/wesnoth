@@ -173,11 +173,6 @@ namespace {
 		LT, GT
 	};
 
-	namespace {
-		static const size_t max_recursions = 256;
-		static size_t level = 0;
-	}
-
 	/*
 	           x         >          y
 	x0.x1.x2.x3.[...].xN > y0.y1.y2.y3.[...].yN iff
@@ -188,7 +183,7 @@ namespace {
 	template<typename _Toperator, typename _Tfallback_operator>
 	bool recursive_order_operation(const std::vector<unsigned int>& l, const std::vector<unsigned int>& r, size_t k)
 	{
-		if(k >= l.size() || k >= r.size() || ++level > max_recursions) {
+		if(k >= l.size() || k >= r.size()) {
 			return false;
 		}
 
