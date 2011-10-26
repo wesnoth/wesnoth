@@ -18,29 +18,7 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-#include <vector>
-
-struct addon_info
-{
-	addon_info()
-		: name()
-		, description()
-		, icon()
-		, version()
-		, author()
-		, sizestr()
-		, translations()
-	{
-	}
-
-	std::string name;
-	std::string description;
-	std::string icon;
-	std::string version;
-	std::string author;
-	std::string sizestr;
-	std::vector<std::string> translations;
-};
+#include "addon/info.hpp"
 
 namespace gui2 {
 
