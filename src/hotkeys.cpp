@@ -324,7 +324,6 @@ hotkey_item::hotkey_item(HOTKEY_COMMAND id,
 	description_(description),
 	scope_(s),
 	type_(UNBOUND),
-	character_(0),
 	ctrl_(false),
 	alt_(false),
 	cmd_(false),
@@ -372,8 +371,11 @@ void hotkey_item::load_from_config(const config& cfg)
 
 	if (key == CLEARED_TEXT)
 	{
-		type_ = hotkey_item::CLEARED;
+		type_ = CLEARED;
 		return;
+	} else {
+		type_ = BY_KEYCODE;
+		keycode_ = sdl_keysym_from_name(key);
 	}
 
 	wide_string wkey = utils::string_to_wstring(key);
@@ -381,9 +383,6 @@ void hotkey_item::load_from_config(const config& cfg)
 	// They may really want a specific key on the keyboard: we assume
 	// that any single character keyname is a character.
 	if (wkey.size() > 1) {
-		type_ = BY_KEYCODE;
-
-		keycode_ = sdl_keysym_from_name(key);
 		if (keycode_ == SDLK_UNKNOWN) {
 			if (tolower(key[0]) != 'f') {
 				ERR_CF << "hotkey key '" << key << "' invalid\n";
@@ -405,24 +404,13 @@ void hotkey_item::load_from_config(const config& cfg)
 		// files.
 		type_ = BY_KEYCODE;
 		keycode_ = wkey[0];
-	} else {
-		type_ = BY_CHARACTER;
-		character_ = wkey[0];
 	}
 }
 
 std::string hotkey_item::get_name() const
 {
 	std::stringstream str;
-	if (type_ == BY_CHARACTER) {
-		if (alt_)
-			str << "alt+";
-		if (cmd_)
-			str << "cmd+";
-		if (ctrl_)
-			str << "ctrl+";
-		str << static_cast<char>(character_);
-	} else if (type_ == BY_KEYCODE) {
+	if (type_ == BY_KEYCODE) {
 		if (alt_)
 			str << "alt+";
 		if (ctrl_)
@@ -466,6 +454,7 @@ std::string hotkey_item::get_name() const
 				break;
 			default:
 				direction = "Unknown";
+				break;
 		}
 		str << "Joy" << joystick_ << "Hat" << hat_ << direction;
 	}
@@ -496,48 +485,21 @@ void hotkey_item::set_hat(int joystick, int hat, int value)
 	type_ = HAT;
 }
 
-void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
+void hotkey_item::set_key(int keycode, bool shift, bool ctrl, bool alt, bool cmd)
 {
-	const std::string keyname = SDL_GetKeyName(SDLKey(keycode));
-
-	LOG_G << "setting hotkey: char=" << lexical_cast<std::string>(character)
-		   << " keycode="  << lexical_cast<std::string>(keycode) << " "
+	LOG_G << "setting hotkey: keycode="  << lexical_cast<std::string>(keycode) << " "
 		   << (shift ? "shift," : "")
 		   << (ctrl ? "ctrl," : "")
 		   << (alt ? "alt," : "")
 		   << (cmd ? "cmd," : "")
 		   << "\n";
 
-	// Sometimes control modifies by -64, ie ^A == 1.
-	if (character < 64 && ctrl) {
-		if (shift)
-			character += 64;
-		else
-			character += 96;
-		LOG_G << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
-	}
-
-	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
-	if (cmd && character > 96 && character < 123 && shift)
-		character -= 32;
-
-	// We handle simple cases by character, others by the actual key.
-	if (isprint(character) && !isspace(character)) {
-		type_ = BY_CHARACTER;
-		character_ = character;
-		ctrl_ = ctrl;
-		alt_ = alt;
-		cmd_ = cmd;
-		LOG_G << "type = BY_CHARACTER\n";
-	} else {
-		type_ = BY_KEYCODE;
-		keycode_ = keycode;
-		shift_ = shift;
-		ctrl_ = ctrl;
-		alt_ = alt;
-		cmd_ = cmd;
-		LOG_G << "type = BY_KEYCODE\n";
-	}
+	type_ = BY_KEYCODE;
+	keycode_ = keycode;
+	shift_ = shift;
+	ctrl_ = ctrl;
+	alt_ = alt;
+	cmd_ = cmd;
 }
 
 manager::manager()
@@ -643,12 +605,10 @@ void save_hotkeys(config& cfg)
 		if (i->get_type() == hotkey_item::BY_KEYCODE) {
 			item["key"] = SDL_GetKeyName(SDLKey(i->get_keycode()));
 			item["shift"] = i->get_shift();
-		} else if (i->get_type() == hotkey_item::BY_CHARACTER) {
-			item["key"] = utils::wchar_to_string(i->get_character());
+			item["alt"] = i->get_alt();
+			item["ctrl"] = i->get_ctrl();
+			item["cmd"] = i->get_cmd();
 		}
-		item["alt"] = i->get_alt();
-		item["ctrl"] = i->get_ctrl();
-		item["cmd"] = i->get_cmd();
 	}
 }
 
@@ -721,48 +681,20 @@ hotkey_item& get_hotkey(int joy_num, int hat_num, int hat_value)
 	return *itor;
 }
 
-hotkey_item& get_hotkey(int character, int keycode, bool shift, bool ctrl,
+hotkey_item& get_hotkey(int keycode, bool shift, bool ctrl,
 	bool alt, bool cmd)
 {
 	std::vector<hotkey_item>::iterator itor;
 
-	DBG_G << "getting hotkey: char=" << lexical_cast<std::string>(character)
-		   << " keycode="  << lexical_cast<std::string>(keycode) << " "
+	DBG_G << "getting hotkey: keycode="  << lexical_cast<std::string>(keycode) << " "
 		   << (shift ? "shift," : "")
 		   << (ctrl ? "ctrl," : "")
 		   << (alt ? "alt," : "")
 		   << (cmd ? "cmd," : "")
 		   << "\n";
 
-	// Sometimes control modifies by -64, ie ^A == 1.
-	if (0 < character && character < 64 && ctrl) {
-		if (shift)
-			character += 64;
-		else
-			character += 96;
-		DBG_G << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
-	}
-
-	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
-	if (cmd && character > 96 && character < 123 && shift)
-		character -= 32;
-
 	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if (itor->get_type() == hotkey_item::BY_CHARACTER) {
-			if (character == itor->get_character()) {
-				if (ctrl == itor->get_ctrl()
-						&& alt == itor->get_alt()
-						&& cmd == itor->get_cmd()) {
-					if (itor->is_in_active_scope()) {
-						DBG_G << "Could match by character..." << "yes\n";
-						break;
-					} else {
-						DBG_G << "Could match by character..." << "yes, but scope is inactive\n";
-					}
-				}
-				DBG_G << "Could match by character..." << "but modifiers different\n";
-			}
-		} else if (itor->get_type() == hotkey_item::BY_KEYCODE) {
+		if (itor->get_type() == hotkey_item::BY_KEYCODE) {
 			if (keycode == itor->get_keycode()) {
 				if (shift == itor->get_shift()
 						&& ctrl == itor->get_ctrl()
@@ -798,7 +730,7 @@ hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
 
 hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 {
-	return get_hotkey(event.keysym.unicode, event.keysym.sym,
+	return get_hotkey(event.keysym.sym,
 			(event.keysym.mod & KMOD_SHIFT) != 0,
 			(event.keysym.mod & KMOD_CTRL) != 0,
 			(event.keysym.mod & KMOD_ALT) != 0,
