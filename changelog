@@ -77,6 +77,7 @@ Version 1.9.9+svn:
    * Made $this_unit in filter_recall work
    * Added IS_EXPENDABLE_LEADER, which gives a unit the expendable leader icon
    * Added $this_unit support to [harm_unit] and [find_path]
+   * Settings by [color_adjust] no longer expire at turn start or over save/load cycles
  * Miscellaneous and bug fixes:
    * Fixed compilation on all Debian architectures (Debian bug #636193)
    * Fixed handling of #ifver and #ifnver preprocessor directives in wmllint
