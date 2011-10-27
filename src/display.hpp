@@ -572,9 +572,6 @@ protected:
 	bool turbo_;
 	bool invalidateGameStatus_;
 	boost::scoped_ptr<map_labels> map_labels_;
-	int color_adjust_red_;
-	int color_adjust_green_;
-	int color_adjust_blue_;
 
 
 	/** Event raised when the map is being scrolled */
@@ -852,6 +849,10 @@ private:
 	typedef std::map<map_location, arrows_list_t > arrows_map_t;
 	/** Maps the list of arrows for each location */
 	arrows_map_t arrows_map_;
+
+	int color_adjust_red_;
+	int color_adjust_green_;
+	int color_adjust_blue_;
 
 #if defined(__GLIBC__)
 	/** Flag for bug #17573 - this is set in the constructor **/
