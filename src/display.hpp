@@ -472,6 +472,10 @@ public:
 
 	virtual bool has_time_area() const {return false;};
 
+	void write(config& cfg) const;
+private:
+	void read(const config& cfg);
+
 protected:
 	/** Clear the screen contents */
 	void clear_screen();

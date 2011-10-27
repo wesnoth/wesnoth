@@ -94,9 +94,6 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	turbo_(false),
 	invalidateGameStatus_(true),
 	map_labels_(new map_labels(*this, 0)),
-	color_adjust_red_(0),
-	color_adjust_green_(0),
-	color_adjust_blue_(0),
 	scroll_event_("scrolled"),
 	complete_redraw_event_("completely_redrawn"),
 	nextDraw_(0),
@@ -127,11 +124,16 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	redraw_observers_(),
 	draw_coordinates_(false),
 	draw_terrain_codes_(false),
-	arrows_map_()
+	arrows_map_(),
+	color_adjust_red_(0),
+	color_adjust_green_(0),
+	color_adjust_blue_(0)
 #if defined(__GLIBC__)
 	, do_reverse_memcpy_workaround_(false)
 #endif
 {
+	read(level.child_or_empty("display"));
+
 	if(non_interactive()
 		&& (get_video_surface() != NULL
 		&& video.faked())) {
@@ -2529,4 +2531,18 @@ void display::update_arrow(arrow & arrow)
 	{
 		arrows_map_[loc].push_back(&arrow);
 	}
+}
+
+void display::write(config& cfg) const
+{
+	cfg["color_adjust_red"] = color_adjust_red_;
+	cfg["color_adjust_green"] = color_adjust_green_;
+	cfg["color_adjust_blue_"] = color_adjust_blue_;
+}
+
+void display::read(const config& cfg)
+{
+	color_adjust_red_ = cfg["color_adjust_red"].to_int(0);
+	color_adjust_green_ = cfg["color_adjust_green"].to_int(0);
+	color_adjust_blue_ = cfg["color_adjust_blue_"].to_int(0);
 }

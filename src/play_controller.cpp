@@ -704,6 +704,10 @@ config play_controller::to_config() const
 	cfg["map_data"] = map_.write();
 	cfg.merge_with(pathfind_manager_->to_config());
 
+	config display;
+	gui_->write(display);
+	cfg.add_child("display", display);
+
 	return cfg;
 }
 
