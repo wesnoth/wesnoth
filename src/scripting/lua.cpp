@@ -3778,7 +3778,8 @@ void LuaKernel::initialize()
 static char const *handled_file_tags[] = {
 	"color_palette", "color_range", "era", "event", "generator",
 	"label", "lua", "menu_item", "music", "side", "sound_source", "story",
-	"terrain_graphics", "time", "time_area", "tunnel", "variables", "endlevel"
+	"terrain_graphics", "time", "time_area", "tunnel", "variables", "endlevel",
+	"display"
 };
 
 static bool is_handled_file_tag(const std::string &s)
