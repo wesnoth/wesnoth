@@ -234,6 +234,7 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 		if (tod.red == r && tod.green == g && tod.blue == b) {
 			current_tod_ = i;
 			custom_tod_toggle_->set_value(false);
+			update_selected_tod_info(window);
 			return;
 		}
 	}
