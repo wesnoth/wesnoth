@@ -353,15 +353,16 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			disp.update_display();
 			SDL_Event event;
 			event.type = 0;
-			int keycode = 0, mod = 0; // Just to avoid warning
+			int character = 0, keycode = 0, mod = 0; // Just to avoid warning
 			int joystick = 0, button = 0, hat = 0, value = 0;
-			const int any_mod = KMOD_CTRL | KMOD_ALT | KMOD_LMETA | KMOD_SHIFT;
+			const int any_mod = KMOD_CTRL | KMOD_ALT | KMOD_LMETA;
 
 			while (event.type!=SDL_KEYDOWN && event.type!=SDL_JOYBUTTONDOWN && event.type!= SDL_JOYHATMOTION) SDL_PollEvent(&event);
 			do {
 				if (event.type==SDL_KEYDOWN)
 				{
 					keycode=event.key.keysym.sym;
+					character=event.key.keysym.unicode;
 					mod=event.key.keysym.mod;
 				};
 				if (event.type==SDL_JOYBUTTONDOWN) {
@@ -382,7 +383,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			if (keycode == SDLK_ESCAPE && (mod & any_mod) == 0) {
 				//cancel -- no action
 			} else {
-				const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(keycode, (mod & KMOD_SHIFT) != 0,
+				const hotkey::hotkey_item& oldhk = hotkey::get_hotkey(character, keycode, (mod & KMOD_SHIFT) != 0,
 						(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
 				hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
@@ -417,7 +418,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 						}
 					} else {
 
-						newhk.set_key(keycode, (mod & KMOD_SHIFT) != 0,
+						newhk.set_key(character, keycode, (mod & KMOD_SHIFT) != 0,
 								(mod & KMOD_CTRL) != 0, (mod & KMOD_ALT) != 0, (mod & KMOD_LMETA) != 0);
 
 						menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());

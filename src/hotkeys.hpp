@@ -131,6 +131,7 @@ public:
 		description_(),
 		scope_(SCOPE_GENERAL),
 		type_(UNBOUND),
+		character_(0),
 		ctrl_(false),
 		alt_(false),
 		cmd_(false),
@@ -159,11 +160,12 @@ public:
 	void set_button(int button, int joystick);
 	void set_hat(int joystick, int hat, int value);
 
-	void set_key(int keycode, bool shift, bool ctrl, bool alt, bool cmd);
+	void set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd);
 
 	enum type {
 		UNBOUND,
 		BY_KEYCODE,
+		BY_CHARACTER,
 		CLEARED,
 		BUTTON,
 		HAT
@@ -178,6 +180,7 @@ public:
 	bool is_in_active_scope() const { return is_scope_active(get_scope()); }
 
 	// Returns unicode value of keypress.
+	int get_character() const { return character_; }
 	int get_button() const { return button_; }
 	int get_joystick() const { return joystick_; }
 	int get_hat() const { return hat_; }
@@ -205,6 +208,8 @@ private:
 	// BUTTON means gamepad/joystick button_.
 	enum type type_;
 
+	// Actual unicode character
+	int character_;
 	bool ctrl_;
 	bool alt_;
 	bool cmd_;
@@ -212,7 +217,6 @@ private:
 	// These used for function keys (which don't have a unicode value) or
 	// space (which doesn't have a distinct unicode value when shifted).
 	bool shift_;
-	// Actual unicode character
 	int keycode_;
 
 	// In case type=BUTTON
@@ -256,7 +260,7 @@ hotkey_item& get_hotkey(const std::string& command);
 
 hotkey_item& get_hotkey(int joy_num, int button_num);
 hotkey_item& get_hotkey(int joy_num, int hat_num, int hat_value);
-hotkey_item& get_hotkey(int keycode, bool shift,
+hotkey_item& get_hotkey(int character, int keycode, bool shift,
 		bool ctrl, bool alt, bool cmd);
 hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event);
 hotkey_item& get_hotkey(const SDL_JoyHatEvent& event);
