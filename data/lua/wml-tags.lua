@@ -721,29 +721,38 @@ function wml_actions.unpetrify(cfg)
 end
 
 function wml_actions.harm_unit(cfg)
-	local amount = tonumber(cfg.amount) or helper.wml_error("[harm_unit] has missing or wrong required amount= attribute")
 	local filter = helper.get_child(cfg, "filter") or helper.wml_error("[harm_unit] missing required [filter] tag")
-	local variable = cfg.variable
-	local animate = cfg.animate -- attacker and defender are special values
-	local delay = cfg.delay or 500
-	local kill = cfg.kill
-	local fire_event = cfg.fire_event
+	-- we need to use shallow_literal field, to avoid raising an error if $this_unit (not yet assigned) is used
+	if not cfg.__shallow_literal.amount then helper.wml_error("[harm_unit] has missing required amount= attribute") end
+	local variable = cfg.variable -- kept out of the way to avoid problems
 	local _ = wesnoth.textdomain "wesnoth"
 	-- #textdomain wesnoth
-	local primary_attack = helper.get_child(cfg, "primary_attack")
-	local secondary_attack = helper.get_child(cfg, "secondary_attack")
-	local harmer_filter = helper.get_child(cfg, "filter_second")
 	local harmer
-	local experience = cfg.experience
-	if harmer_filter then harmer = wesnoth.get_units(harmer_filter)[1] end
 
-	local private_unit = wesnoth.create_unit { type = "Fog Clearer", alignment = cfg.alignment or "neutral" }
-	wesnoth.add_modification(private_unit, "object", { { "effect",
-		{ apply_to = "new_attack", type = cfg.damage_type or "dummy", range = "dummy", damage = amount, number = 1,
-		{ "specials", { { "chance_to_hit", { value = 100, cumulative = false } } } } } } })
+	local this_unit = start_var_scope("this_unit")
 
 	for index, unit_to_harm in ipairs(wesnoth.get_units(filter)) do
-		if not fire_event or unit_to_harm.valid then
+		if unit_to_harm.valid then
+			-- block to support $this_unit
+			wesnoth.set_variable ( "this_unit" ) -- clearing this_unit
+			wesnoth.set_variable("this_unit", unit_to_harm.__cfg) -- cfg field needed
+			local amount = tonumber(cfg.amount)
+			local animate = cfg.animate -- attacker and defender are special values
+			local delay = cfg.delay or 500
+			local kill = cfg.kill
+			local fire_event = cfg.fire_event
+			local primary_attack = helper.get_child(cfg, "primary_attack")
+			local secondary_attack = helper.get_child(cfg, "secondary_attack")
+			local harmer_filter = helper.get_child(cfg, "filter_second")
+			local experience = cfg.experience
+			if harmer_filter then harmer = wesnoth.get_units(harmer_filter)[1] end
+			-- end of block to support $this_unit
+
+			local private_unit = wesnoth.create_unit { type = "Fog Clearer", alignment = cfg.alignment or "neutral" }
+			wesnoth.add_modification(private_unit, "object", { { "effect",
+				{ apply_to = "new_attack", type = cfg.damage_type or "dummy", range = "dummy", damage = amount, number = 1,
+				{ "specials", { { "chance_to_hit", { value = 100, cumulative = false } } } } } } })
+
 			if animate then
 				if animate ~= "defender" and harmer and harmer.valid then
 					wesnoth.scroll_to_tile(harmer.x, harmer.y, true)
@@ -847,16 +856,19 @@ function wml_actions.harm_unit(cfg)
 				wml_actions.unstore_unit { variable = "Lua_store_unit", find_vacant = false, advance = true }
 				wesnoth.set_variable ( "Lua_store_unit", nil )
 			end
-
-			wml_actions.redraw {}
 		end
+
+		if experience ~= false and harmer and harmer.valid and harmer.experience >= harmer.max_experience then
+			wml_actions.store_unit { { "filter", { id = harmer.id } }, variable = "Lua_store_unit", kill = true }
+			wml_actions.unstore_unit { variable = "Lua_store_unit", find_vacant = false, advance = true }
+			wesnoth.set_variable ( "Lua_store_unit", nil )
+		end
+
+		wml_actions.redraw {}
 	end
 
-	if experience ~= false and harmer and harmer.valid and harmer.experience >= harmer.max_experience then
-		wml_actions.store_unit { { "filter", { id = harmer.id } }, variable = "Lua_store_unit", kill = true }
-		wml_actions.unstore_unit { variable = "Lua_store_unit", find_vacant = false, advance = true }
-		wesnoth.set_variable ( "Lua_store_unit", nil )
-	end
+	wesnoth.set_variable ( "this_unit" ) -- clearing this_unit
+	end_var_scope("this_unit", this_unit)
 end
 
 function wml_actions.transform_unit(cfg)
@@ -979,6 +991,14 @@ end
 
 function wml_actions.find_path(cfg)
 	local filter_unit = (helper.get_child(cfg, "traveler")) or helper.wml_error("[find_path] missing required [traveler] tag")
+	-- only the first unit matching
+	local unit = wesnoth.get_units(filter_unit)[1] or helper.wml_error("[find_path]'s filter didn't match any unit")
+	if not helper.get_child(cfg, "destination") then helper.wml_error( "[find_path] missing required [destination] tag" ) end
+	-- support for $this_unit
+	local this_unit = start_var_scope("this_unit")
+	wesnoth.set_variable ( "this_unit" ) -- clearing this_unit
+	wesnoth.set_variable("this_unit", unit.__cfg) -- cfg field needed
+
 	local filter_location = (helper.get_child(cfg, "destination")) or helper.wml_error("[find_path] missing required [destination] tag")
 	local variable = cfg.variable or "path"
 	local ignore_units = false
@@ -996,8 +1016,6 @@ function wml_actions.find_path(cfg)
 
 	if not cfg.check_visibility then viewing_side = 0 end -- if check_visiblity then shroud is taken in account
 
-	-- only the first unit matching
-	local unit = wesnoth.get_units(filter_unit)[1] or helper.wml_error("[find_path]'s filter didn't match any unit")
 	local locations = wesnoth.get_locations(filter_location) -- only the location with the lowest distance and lowest movement cost will match. If there will still be more than 1, only the 1st maching one.
 	if not allow_multiple_turns then local max_cost = unit.moves end --to avoid wrong calculation on already moved units
 	local current_distance, current_cost = math.huge, math.huge
@@ -1021,7 +1039,7 @@ function wml_actions.find_path(cfg)
 		end
 	end
 
-	if #current_location == 0 then helper.wml_error("[find_path]'s filter didn't match any location")
+	if #current_location == 0 then wesnoth.message("WML warning","[find_path]'s filter didn't match any location")
 	else
 		local path, cost = wesnoth.find_path( unit, current_location[1], current_location[2], { max_cost = max_cost, ignore_units = ignore_units, ignore_teleport = ignore_teleport, viewing_side = viewing_side } )
 		local turns
@@ -1055,6 +1073,10 @@ function wml_actions.find_path(cfg)
 			wesnoth.set_variable ( string.format( "%s.step[%d]", variable, index - 1 ), { x = path_loc[1], y = path_loc[2], terrain = wesnoth.get_terrain( path_loc[1], path_loc[2] ), movement_cost = sub_cost, required_turns = sub_turns } ) -- this structure takes less space in the inspection window
 		end
 	end
+
+	-- support for $this_unit
+	wesnoth.set_variable ( "this_unit" ) -- clearing this_unit
+	end_var_scope("this_unit", this_unit)
 end
 
 function wml_actions.store_starting_location(cfg)
