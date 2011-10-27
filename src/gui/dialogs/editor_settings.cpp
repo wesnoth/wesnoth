@@ -245,5 +245,11 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 	update_selected_tod_info(window);
 }
 
+void teditor_settings::post_show(twindow& window)
+{
+    update_tod_display(window);
+}
+
+
 } // namespace gui2
 

@@ -66,6 +66,9 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
+	/** Inherited from tdialog. */
+	void post_show(twindow& window);
+
 	/** Available time_of_days */
 	std::vector<time_of_day> tods_;
 
