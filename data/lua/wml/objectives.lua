@@ -77,9 +77,9 @@ local function generate_objectives(cfg)
 
 			if condition == "win" then
 				local caption = obj.caption
-				local r = obj.r or 0
-				local g = obj.g or 255
-				local b = obj.b or 0
+				local r = obj.red or 0
+				local g = obj.green or 255
+				local b = obj.blue or 0
 
 				if caption then
 					win_objectives = win_objectives .. caption .. "\n"
@@ -88,9 +88,9 @@ local function generate_objectives(cfg)
 				win_objectives = win_objectives .. color_prefix(r, g, b) .. objective_bullet .. description .. turn_counter .. "</span>" .. "\n"
 			elseif condition == "lose" then
 				local caption = obj.caption
-				local r = obj.r or 255
-				local g = obj.g or 0
-				local b = obj.b or 0
+				local r = obj.red or 255
+				local g = obj.green or 0
+				local b = obj.blue or 0
 
 				if caption then
 					lose_objectives = lose_objectives .. caption .. "\n"
@@ -105,9 +105,9 @@ local function generate_objectives(cfg)
 
 	for obj in helper.child_range(cfg, "gold_carryover") do
 		local gold_carryover_bullet = obj.bullet or bullet
-		local r = obj.r or 255
-		local g = obj.g or 255
-		local b = obj.b or 192
+		local r = obj.red or 255
+		local g = obj.green or 255
+		local b = obj.blue or 192
 
 		if obj.bonus ~= nil then
 			if obj.bonus then
@@ -132,9 +132,9 @@ local function generate_objectives(cfg)
 
 	for note in helper.child_range(cfg, "note") do
 		local note_bullet = note.bullet or bullet
-		local r = note.r or 255
-		local g = note.g or 255
-		local b = note.b or 255
+		local r = note.red or 255
+		local g = note.green or 255
+		local b = note.blue or 255
 
 		if note.description then
 			notes = notes .. color_prefix(r, g, b) .. note_bullet .. "<small>" .. note.description .. "</small></span>\n"
