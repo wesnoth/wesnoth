@@ -329,7 +329,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
  * does not take GUI language setting into account.
  */
 static void init_locale() {
-	#ifdef _WIN32
+	#if defined _WIN32 || defined __APPLE__
 	    setlocale(LC_ALL, "English");
 	#else
 		std::setlocale(LC_ALL, "C");
