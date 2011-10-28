@@ -21,7 +21,7 @@
 
 #include "../construct_dialog.hpp"
 #include "../gettext.hpp"
-
+#include "../gui/dialogs/editor_set_starting_position.hpp"
 
 namespace editor {
 
@@ -421,27 +421,35 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 	if (!disp.map().on_board(hex)) {
 		return NULL;
 	}
-	int player_starting_at_hex = disp.map().is_starting_position(hex) + 1;
-	std::vector<std::string> players;
-	players.push_back(_("(Player)^None"));
-	for (int i = 1; i <= gamemap::MAX_PLAYERS; i++) {
-		std::stringstream str;
-		str << _("Player") << " " << i;
-		players.push_back(str.str());
+
+	const unsigned player_starting_at_hex =
+		static_cast<unsigned>(disp.map().is_starting_position(hex) + 1); // 1st player = 1
+
+	std::vector<map_location> starting_positions;
+	
+	for(int i = 1; i <= gamemap::MAX_PLAYERS; ++i) {
+		starting_positions.push_back(disp.map().starting_position(i));
 	}
-	gui::dialog pmenu = gui::dialog(disp,
-				       _("Choose player"),
-				       _("Which player should start here? You can use alt and a number key to set the starting position for a player, and del to clear the starting position under the cursor. Pressing a number key by itself will scroll to that player’s starting position."),
-				       gui::OK_CANCEL);
-	pmenu.set_menu(players);
-	int res = pmenu.show();
+
+	gui2::teditor_set_starting_position dlg(
+		player_starting_at_hex, gamemap::MAX_PLAYERS, starting_positions);
+	dlg.show(disp.video());
+
+	unsigned new_player_at_hex = dlg.result(); // 1st player = 1
 	editor_action* a = NULL;
-	if (res == 0 && player_starting_at_hex != -1) {
-		a = new editor_action_starting_position(map_location(), player_starting_at_hex);
-	} else if (res > 0 && res != player_starting_at_hex) {
-		a = new editor_action_starting_position(hex, res);
+
+	if(new_player_at_hex != player_starting_at_hex) {
+		if(!new_player_at_hex) {
+			// Erase current starting position
+			a = new editor_action_starting_position(map_location(), player_starting_at_hex);
+		} else {
+			// Set a starting position
+			a = new editor_action_starting_position(hex, new_player_at_hex);
+		}
 	}
+
 	update_brush_highlights(disp, hex);
+
 	return a;
 }
 
