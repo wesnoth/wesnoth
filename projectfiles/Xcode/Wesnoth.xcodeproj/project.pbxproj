@@ -896,6 +896,8 @@
 		F46C5DCE13A5074C00DD0816 /* game_controller_abstract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DC913A5074C00DD0816 /* game_controller_abstract.cpp */; };
 		F46C5DCF13A5074C00DD0816 /* commandline_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DCB13A5074C00DD0816 /* commandline_options.cpp */; };
 		F46C5DD413A5089100DD0816 /* lua_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DD313A5089100DD0816 /* lua_object.cpp */; };
+		F4728DB1145A59CF00F0E1E1 /* editor_set_starting_position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4728DAF145A59CF00F0E1E1 /* editor_set_starting_position.cpp */; };
+		F4755E2C1458C192009F13BD /* libboost_program_optionsw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5213AD4E35003C701D /* libboost_program_optionsw.dylib */; };
 		F480CD1F14034E6D007175D6 /* mapbuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD1D14034E6D007175D6 /* mapbuilder.cpp */; };
 		F480CD2414034F18007175D6 /* schema_validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD2214034F18007175D6 /* schema_validator.cpp */; };
 		F480CD4914035038007175D6 /* error_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3914035038007175D6 /* error_container.cpp */; };
@@ -905,7 +907,6 @@
 		F4E4E0B41367244F001C7528 /* image_modifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0B21367244F001C7528 /* image_modifications.cpp */; };
 		F4EF0D4C13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D4B13AD4D53003C701D /* libboost_iostreamsw.dylib */; };
 		F4EF0D4D13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D4B13AD4D53003C701D /* libboost_iostreamsw.dylib */; };
-		F4EF0D5513AD4E35003C701D /* libboost_program_optionsw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5213AD4E35003C701D /* libboost_program_optionsw.dylib */; };
 		F4EF0D5613AD4E35003C701D /* libboost_regexw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5313AD4E35003C701D /* libboost_regexw.dylib */; };
 		F4EF0D5713AD4E35003C701D /* libboost_systemw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_systemw.dylib */; };
 		F4EF0D5C13AD4E6D003C701D /* libboost_threadw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5B13AD4E6D003C701D /* libboost_threadw.dylib */; };
@@ -1908,6 +1909,8 @@
 		F46C5DCB13A5074C00DD0816 /* commandline_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = commandline_options.cpp; sourceTree = "<group>"; };
 		F46C5DD213A5089100DD0816 /* lua_object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_object.hpp; sourceTree = "<group>"; };
 		F46C5DD313A5089100DD0816 /* lua_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_object.cpp; sourceTree = "<group>"; };
+		F4728DAF145A59CF00F0E1E1 /* editor_set_starting_position.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = editor_set_starting_position.cpp; sourceTree = "<group>"; };
+		F4728DB0145A59CF00F0E1E1 /* editor_set_starting_position.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = editor_set_starting_position.hpp; sourceTree = "<group>"; };
 		F480CD1D14034E6D007175D6 /* mapbuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mapbuilder.cpp; sourceTree = "<group>"; };
 		F480CD1E14034E6D007175D6 /* mapbuilder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mapbuilder.hpp; sourceTree = "<group>"; };
 		F480CD2214034F18007175D6 /* schema_validator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = schema_validator.cpp; sourceTree = "<group>"; };
@@ -1955,7 +1958,7 @@
 				B508D13F10013BF900B12852 /* Growl.framework in Frameworks */,
 				B552D95E108CBE36002D8F86 /* CoreServices.framework in Frameworks */,
 				F4EF0D4C13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */,
-				F4EF0D5513AD4E35003C701D /* libboost_program_optionsw.dylib in Frameworks */,
+				F4755E2C1458C192009F13BD /* libboost_program_optionsw.dylib in Frameworks */,
 				F4EF0D5613AD4E35003C701D /* libboost_regexw.dylib in Frameworks */,
 				F4EF0D5713AD4E35003C701D /* libboost_systemw.dylib in Frameworks */,
 				F4EF0D5C13AD4E6D003C701D /* libboost_threadw.dylib in Frameworks */,
@@ -3048,6 +3051,8 @@
 		B5A9BCA20ECA805A002BE442 /* dialogs */ = {
 			isa = PBXGroup;
 			children = (
+				F4728DAF145A59CF00F0E1E1 /* editor_set_starting_position.cpp */,
+				F4728DB0145A59CF00F0E1E1 /* editor_set_starting_position.hpp */,
 				F444917513C5562C003B6442 /* folder_create.cpp */,
 				F444917613C5562C003B6442 /* folder_create.hpp */,
 				F4EF0D7213AD52EA003C701D /* network_transmission.hpp */,
@@ -3849,6 +3854,7 @@
 				F480CD4914035038007175D6 /* error_container.cpp in Sources */,
 				F480CD4B14035038007175D6 /* sourceparser.cpp in Sources */,
 				F480CD4C14035038007175D6 /* tag.cpp in Sources */,
+				F4728DB1145A59CF00F0E1E1 /* editor_set_starting_position.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4445,7 +4451,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_OPENMP_SUPPORT = YES;
+				ENABLE_OPENMP_SUPPORT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
@@ -4454,7 +4460,7 @@
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mac Sources/Wesnoth_Prefix.pch";
-				GCC_VERSION = 4.2;
+				GCC_VERSION = 4.0;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
@@ -4465,7 +4471,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Wesnoth;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4510,10 +4516,11 @@
 					ppc,
 					i386,
 				);
-				ENABLE_OPENMP_SUPPORT = YES;
+				ENABLE_OPENMP_SUPPORT = NO;
 				FRAMEWORK_SEARCH_PATHS = ./lib;
+				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "LOCALEDIR=\\\"translations\\\"";
-				GCC_VERSION = 4.2;
+				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -4535,7 +4542,7 @@
 					"-lbz2",
 				);
 				PREBINDING = NO;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.4u.sdk";
 			};
 			name = Release;
 		};
