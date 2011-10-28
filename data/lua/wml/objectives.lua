@@ -52,11 +52,12 @@ local function generate_objectives(cfg)
 	local gold_carryover_string = cfg.gold_carryover_string or _ "Gold carryover:"
 	local notes_string = cfg.notes_string or _ "Notes:"
 
-	local bullet = "&#8226; "
+	local bullet = cfg.bullet or "&#8226; "
 
 	for obj in helper.child_range(cfg, "objective") do
 		local show_if = helper.get_child(obj, "show_if")
 		if not show_if or wesnoth.eval_conditional(show_if) then
+			local objective_bullet = obj.bullet or bullet
 			local condition = obj.condition
 			local description = obj.description or ""
 			local turn_counter = ""
@@ -81,7 +82,7 @@ local function generate_objectives(cfg)
 					win_objectives = win_objectives .. caption .. "\n"
 				end
 
-				win_objectives = win_objectives .. color_prefix(0, 255, 0) .. bullet .. description .. turn_counter .. "</span>" .. "\n"
+				win_objectives = win_objectives .. color_prefix(0, 255, 0) .. objective_bullet .. description .. turn_counter .. "</span>" .. "\n"
 			elseif condition == "lose" then
 				local caption = obj.caption
 
@@ -89,7 +90,7 @@ local function generate_objectives(cfg)
 					lose_objectives = lose_objectives .. caption .. "\n"
 				end
 
-				lose_objectives = lose_objectives .. color_prefix(255, 0, 0) .. bullet .. description .. turn_counter .. "</span>" .. "\n"
+				lose_objectives = lose_objectives .. color_prefix(255, 0, 0) .. objective_bullet .. description .. turn_counter .. "</span>" .. "\n"
 			else
 				wesnoth.message "Unknown condition, ignoring."
 			end
@@ -97,11 +98,13 @@ local function generate_objectives(cfg)
 	end
 
 	for obj in helper.child_range(cfg, "gold_carryover") do
+		local gold_carryover_bullet = obj.bullet or bullet
+
 		if obj.bonus ~= nil then
 			if obj.bonus then
-				gold_carryover = color_prefix(255, 255, 192) .. bullet .. "<small>" .. _"Early finish bonus." .. "</small></span>\n"
+				gold_carryover = color_prefix(255, 255, 192) .. gold_carryover_bullet .. "<small>" .. _"Early finish bonus." .. "</small></span>\n"
 			else
-				gold_carryover = color_prefix(255, 255, 192) .. bullet .. "<small>" .. _"No early finish bonus." .. "</small></span>\n"
+				gold_carryover = color_prefix(255, 255, 192) .. gold_carryover_bullet .. "<small>" .. _"No early finish bonus." .. "</small></span>\n"
 			end
 		end
 
@@ -114,13 +117,15 @@ local function generate_objectives(cfg)
 				carryover_amount_string = string.format(tostring(_ "%d%% of gold carried over to the next scenario."), obj.carryover_percentage)
 			end
 
-			gold_carryover = gold_carryover .. color_prefix(255, 255, 192) .. bullet .. "<small>" .. carryover_amount_string .. "</small></span>\n"
+			gold_carryover = gold_carryover .. color_prefix(255, 255, 192) .. gold_carryover_bullet .. "<small>" .. carryover_amount_string .. "</small></span>\n"
 		end
 	end
 
 	for note in helper.child_range(cfg, "note") do
+		local note_bullet = note.bullet or bullet
+
 		if note.description then
-			notes = notes .. color_prefix(255, 255, 255) .. bullet .. "<small>" .. note.description .. "</small></span>\n"
+			notes = notes .. color_prefix(255, 255, 255) .. note_bullet .. "<small>" .. note.description .. "</small></span>\n"
 		end
 	end
 
