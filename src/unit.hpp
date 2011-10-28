@@ -77,6 +77,7 @@ public:
 		advance_to(cfg_, t, use_traits, state);
 	}
 	const std::vector<std::string>& advances_to() const { return advances_to_; }
+	const std::vector<std::string> advances_to_translated() const;
 	void set_advances_to(const std::vector<std::string>& advances_to);
 
 	/** The type id of the unit */

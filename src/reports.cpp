@@ -233,7 +233,7 @@ static config unit_level(unit* u)
 	std::ostringstream str, tooltip;
 	str << u->level();
 	tooltip << _("Level: ") << "<b>" << u->level() << "</b>\n";
-	const std::vector<std::string> &adv_to = u->advances_to();
+	const std::vector<std::string> &adv_to = u->advances_to_translated();
 	if (adv_to.empty())
 		tooltip << _("No advancement");
 	else

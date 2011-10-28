@@ -1017,6 +1017,17 @@ void unit::set_recruits(const std::vector<std::string>& recruits)
 	//ai::manager::raise_recruit_list_changed();
 }
 
+const std::vector<std::string> unit::advances_to_translated() const
+{
+	std::vector<std::string> result;
+	foreach (std::string type_id, advances_to_)
+	{
+		const unit_type *type = unit_types.find(type_id);
+		result.push_back(type->type_name());
+	}
+	return result;
+}
+
 void unit::set_advances_to(const std::vector<std::string>& advances_to)
 {
 	unit_types.check_types(advances_to);
