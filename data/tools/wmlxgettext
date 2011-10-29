@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 #
 # wmlxgettext - extract .po files from Wesnoth WML
+#
+# WARNING! This file is basically a "proof of concept" and was meant as
+# replacement for the perl script "utils/wmlxgettext". This script you
+# are looking at is not used for the extraction of strings in Wesnoth mainline.
+# During tests it has shown to be significantly slower than the existing
+# solution so (at least for the moment) that older implementation will be used.
+# This also means that this script can (partly) be broken and/or not lead to
+# the results you might expect.
 
 import sys, os, time, re, getopt
 from wesnoth.wmltools import *
