@@ -231,10 +231,10 @@ if __name__ == "__main__":
         # NOTE wml.put_campaign tests whether the addon.cfg exists so
         # send it unconditionally.
         wml = libwml.CampaignClient(server)
+        ignore = {}
+        stuff = {}
+        stuff["passphrase"] = password
         if(stamp == None):
-            ignore = {}
-            stuff = {}
-            stuff["passphrase"] = password
             wml.put_campaign(addon
                     , temp_dir + "/" + addon + "/_main.cfg"
                     , temp_dir + "/" + addon + "/"
@@ -244,8 +244,11 @@ if __name__ == "__main__":
             logging.info("New version of addon '%s' downloaded.", addon)
         else:
             if(stamp == get_timestamp(server, addon)):
-                wml.put_campaign("", addon, "", password, "", "", "",
-                    temp_dir + "/" + addon + ".cfg", temp_dir + "/" + addon + "/")
+                wml.put_campaign(addon
+                        , temp_dir + "/" + addon + "/_main.cfg"
+                        , temp_dir + "/" + addon + "/"
+                        , ignore
+                        , stuff)
                 logging.info("New version of addon '%s' downloaded.", addon)
                 return True
             else:
