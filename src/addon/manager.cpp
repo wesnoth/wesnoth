@@ -1416,18 +1416,14 @@ namespace {
 		} while (res != gui2::twindow::OK);
 		
 		std::vector<std::string> failed_names, succeeded_names;
-		//std::string all_errors;
 		
 		foreach(const std::string& id, remove_ids) {
-			std::string errors;
 			const std::string& name = get_addon_name(id);
-			
-			//if(remove_local_addon(id, &errors)) {
+
 			if(remove_local_addon(id)) {
 				succeeded_names.push_back(name);
 			} else {
 				failed_names.push_back(name);
-				//all_errors += errors;
 			}
 		}
 		
