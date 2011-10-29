@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-17 23:28+0200\n"
-"PO-Revision-Date: 2011-07-16 10:20-0800\n"
+"PO-Revision-Date: 2011-10-21 14:01-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -79,17 +79,13 @@ msgstr "Sceir Cósta"
 
 #. [terrain_type]: id=gray_reef
 #: data/core/terrain.cfg:93
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Gray Coastal Reef"
-msgstr "Sceir Cósta"
+msgstr "Sceir Cósta Liath"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:113
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Tropical Coastal Reef"
-msgstr "Sceir Cósta"
+msgstr "Sceir Cósta Teochreasach"
 
 #. [terrain_type]: id=swamp_water
 #. [terrain_type]: id=quagmire
@@ -108,10 +104,8 @@ msgstr "Scraith Ghlugair"
 #. [terrain_type]: id=leaf_litter
 #: data/core/terrain.cfg:152 data/core/terrain.cfg:163
 #: data/core/terrain.cfg:174 data/core/terrain.cfg:184
-#, fuzzy
-#| msgid "Island"
 msgid "Grassland"
-msgstr "Oileán"
+msgstr "Talamh Féaraigh"
 
 #. [terrain_type]: id=grassland
 #: data/core/terrain.cfg:153
@@ -138,10 +132,8 @@ msgstr "Easair Dhuillí"
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:196 data/core/terrain.cfg:206
 #: data/core/terrain.cfg:216
-#, fuzzy
-#| msgid "Dry Dirt"
 msgid "Dirt"
-msgstr "Salachar Tirim"
+msgstr "Salachar"
 
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:197
@@ -167,7 +159,7 @@ msgstr "Salachar Tirim"
 #: data/core/terrain.cfg:246 data/core/terrain.cfg:957
 #: data/core/terrain.cfg:967
 msgid "Road"
-msgstr ""
+msgstr "Bóthar"
 
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:227
@@ -182,7 +174,7 @@ msgstr "Duirleoga Glan"
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:247
 msgid "Overgrown Cobbles"
-msgstr "Duirleoga Mothrach"
+msgstr "Duirleoga Mothracha"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:260
@@ -196,10 +188,8 @@ msgstr "Sneachta"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:282
-#, fuzzy
-#| msgid "Desert Keep"
 msgid "Desert"
-msgstr "Daingean Fásaigh"
+msgstr "Fásach"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:283
@@ -515,8 +505,6 @@ msgstr "Cnocain Foraoisithe Mheasctha Sneachtúil"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:912
-#, fuzzy
-#| msgid "Basic Wooden Floor"
 msgid "Wooden Floor"
 msgstr "Urlár Adhmaid"
 
@@ -591,10 +579,8 @@ msgstr "Ráille Mianach"
 #. [terrain_type]: id=lava_chasm
 #: data/core/terrain.cfg:1051 data/core/terrain.cfg:1062
 #: data/core/terrain.cfg:1073 data/core/terrain.cfg:1084
-#, fuzzy
-#| msgid "Lava Chasm"
 msgid "Chasm"
-msgstr "Gáibeal Laibhe"
+msgstr "Gáibéal"
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:1052
@@ -647,10 +633,8 @@ msgstr "Sléibhe Sneachtúil Díbhealaigh"
 #. [terrain_type]: id=cavewall_earthy_hewn
 #: data/core/terrain.cfg:1151 data/core/terrain.cfg:1162
 #: data/core/terrain.cfg:1173 data/core/terrain.cfg:1184
-#, fuzzy
-#| msgid "Hewn Cave Wall"
 msgid "Cave Wall"
-msgstr "Balla Uaimhe Gearrtha"
+msgstr "Balla Uaimhe"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1152
@@ -798,10 +782,8 @@ msgstr "Cathair Daonna"
 
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1392
-#, fuzzy
-#| msgid "Ruined Hill Stone Village"
 msgid "Windmill Village"
-msgstr "Baile Fothraigh Cloiche Cnocáin"
+msgstr "Baile Mhuileann Gaoithe"
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1405
@@ -953,10 +935,8 @@ msgstr "Caisleán Abhcach"
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:1728 data/core/terrain.cfg:1740
 #: data/core/terrain.cfg:1753 data/core/terrain.cfg:1778
-#, fuzzy
-#| msgid "Ruined Human Castle"
 msgid "Ruined Castle"
-msgstr "Caisleán Daonna ina bhFothracha"
+msgstr "Caisleán Fothraigh"
 
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:1729
@@ -1052,10 +1032,8 @@ msgstr "Daingean Abhcach"
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1910 data/core/terrain.cfg:1923
 #: data/core/terrain.cfg:1936 data/core/terrain.cfg:1962
-#, fuzzy
-#| msgid "Ruined Desert Keep"
 msgid "Ruined Keep"
-msgstr "Daingean Fásaigh Fothraigh"
+msgstr "Daingean Fothraigh"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1911
@@ -1104,10 +1082,8 @@ msgstr "Tocht Daingin"
 #: data/core/terrain.cfg:2056 data/core/terrain.cfg:2068
 #: data/core/terrain.cfg:2082 data/core/terrain.cfg:2093
 #: data/core/terrain.cfg:2105
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Bridge"
-msgstr "Droichead Adhmaid"
+msgstr "Droichead"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -1185,7 +1161,7 @@ msgstr "Nasc le Friothálaí"
 #: data/gui/default/window/addon_connect.cfg:59
 #, fuzzy
 msgid "You will now connect to a server to download add-ons."
-msgstr "Nascfaidh tú "
+msgstr "Nascfaidh tú le "
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:89
@@ -1688,7 +1664,7 @@ msgstr "Erráid OOS"
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:143
 msgid "Ignore All"
-msgstr "Déan Neamhaird de Uile"
+msgstr "Díbir iad uile"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
@@ -1878,9 +1854,8 @@ msgstr "Cairde"
 
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:592
-#, fuzzy
 msgid "No ignored"
-msgstr "B<--no-delay>"
+msgstr "Níl aon dhíbeartach ar bith ann"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:598
@@ -1942,30 +1917,23 @@ msgstr "Eolas Imreora — "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:70
-#, fuzzy
-#| msgid "Send private message"
 msgid "Send Private Message"
-msgstr "Seol teachtaireacht príobháideach"
+msgstr "Seol Teachtaireacht Príobháideach"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:99
-#, fuzzy
-#| msgid "Add As Friend"
 msgid "Add to Friends"
-msgstr "Déan Cairdeas"
+msgstr "Cuir ar liosta Carad"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:108
-#, fuzzy
 msgid "Add to Ignores"
-msgstr "Déan Cairdeas"
+msgstr "Cuir ar liosta Díbeartach"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:117
-#, fuzzy
-#| msgid "Remove from list"
 msgid "Remove from List"
-msgstr "Bain de liosta"
+msgstr "Bain as liosta"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:141
@@ -2010,10 +1978,8 @@ msgstr "Leasainm"
 
 #. [label]
 #: data/gui/default/window/mp_change_control.cfg:194
-#, fuzzy
-#| msgid "Change control"
 msgid "Change Control"
-msgstr "Athraigh rial"
+msgstr "Athraigh Rial"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -2032,22 +1998,18 @@ msgstr "Teachtaireacht:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:141
-#, fuzzy
 msgid "Friends/Ignored List"
-msgstr "Ar an líosta cairde"
+msgstr "Liosta carad/díbeartach"
 
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:170
-#, fuzzy
-#| msgid "Add As Friend"
 msgid "Add as Friend"
-msgstr "Déan Cairdeas"
+msgstr "Cuir mar Chara"
 
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
-#, fuzzy
 msgid "Add as Ignore"
-msgstr "Déan Cairdeas"
+msgstr "Cuir mar Dhíbeartach"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
@@ -2513,7 +2475,7 @@ msgstr "Socraigh cosán go wesnothd"
 
 #: src/game_preferences_display.cpp:178
 msgid "Friends List"
-msgstr "Liosta Cairde"
+msgstr "Liosta Carad"
 
 #: src/game_preferences_display.cpp:179
 msgid "Multiplayer Options"
@@ -2521,12 +2483,11 @@ msgstr "Roghanna Ilimreora"
 
 #: src/game_preferences_display.cpp:180
 msgid "Add As Friend"
-msgstr "Déan Cairdeas"
+msgstr "Cuir Mar Chara"
 
 #: src/game_preferences_display.cpp:181
-#, fuzzy
 msgid "Add As Ignore"
-msgstr "Déan Cairdeas"
+msgstr "Cuir Mar Dhíbeartach"
 
 #: src/game_preferences_display.cpp:183
 msgid "Show Floating Labels"
@@ -2608,7 +2569,7 @@ msgstr "Taispeáin Beochan Aonaid Díomhaoin"
 #, fuzzy
 #| msgid "Show Unit Idle Animations"
 msgid "Show Unit Standing Animations"
-msgstr "Taispeáin Beochan Aonaid Díomhaoin"
+msgstr "Taispeáin na haonaid ina Seasamh"
 
 #: src/game_preferences_display.cpp:207 src/hotkeys.cpp:55
 msgid "Animate Map"
@@ -2616,10 +2577,8 @@ msgstr "Ainmnigh Léarscáil"
 
 #: src/game_preferences_display.cpp:209 src/game_preferences_display.cpp:210
 #: src/game_preferences_display.cpp:211 src/game_preferences_display.cpp:212
-#, fuzzy
-#| msgid "SFX Volume:"
 msgid "Volume:"
-msgstr "Airde SFX:"
+msgstr "Airde:"
 
 #: src/game_preferences_display.cpp:214
 msgid "Scroll Speed:"
@@ -2778,15 +2737,15 @@ msgstr "Siar go roghanna ilimreoir"
 
 #: src/game_preferences_display.cpp:387
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Cuir an t-ainm úsáideora seo ar do liosta carad"
 
 #: src/game_preferences_display.cpp:388
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Cuir an t-ainm úsáideora seo ar do liosta díbeartach"
 
 #: src/game_preferences_display.cpp:389
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Bain an t-ainm úsáideora seo as do liosta."
 
 #: src/game_preferences_display.cpp:392
 msgid "Insert a username"
@@ -2836,7 +2795,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:421
 msgid "View and configure keyboard shortcuts"
-msgstr ""
+msgstr "Feic agus cumraigh na haicearra méarchláir"
 
 #: src/game_preferences_display.cpp:748
 msgid "Speed: "
@@ -2872,7 +2831,7 @@ msgstr "cara"
 
 #: src/game_preferences_display.cpp:1102
 msgid "ignored"
-msgstr ""
+msgstr "díbeartha"
 
 #: src/game_preferences_display.cpp:1106
 msgid "(empty list)"
@@ -3078,11 +3037,11 @@ msgstr "Abhaic"
 
 #: src/gui/dialogs/lobby_main.cpp:1419
 msgid "$player has entered the room"
-msgstr ""
+msgstr "Théigh $player isteach an seomra"
 
 #: src/gui/dialogs/lobby_main.cpp:1457
 msgid "$player has left the room"
-msgstr ""
+msgstr "D'fhág $player an seomra"
 
 #: src/gui/dialogs/lobby_main.cpp:1570
 msgid "Password Required"
@@ -3153,11 +3112,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:53
 msgid "Left Mouse Click"
-msgstr ""
+msgstr "Cnaipe Luiche ar Chlé"
 
 #: src/hotkeys.cpp:54
 msgid "Right Mouse Click"
-msgstr ""
+msgstr "Cnaipe Luiche ar Dheis"
 
 #: src/hotkeys.cpp:56
 msgid "Next Unit"

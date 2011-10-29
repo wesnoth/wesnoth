@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-17 23:28+0200\n"
-"PO-Revision-Date: 2011-10-16 00:24+0200\n"
+"PO-Revision-Date: 2011-10-23 14:20+0200\n"
 "Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -24,6 +24,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"com>\n"
+"com>\n"
 "com>\n"
 "com>\n"
 "com>\n"
@@ -39,8 +41,6 @@ msgstr "Comprimir as partidas gardadas."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
-#, fuzzy
-#| msgid "Confirm deleting saves"
 msgid "Confirm Deleting Saves"
 msgstr "Confirmación antes de eliminar partidas."
 
@@ -56,26 +56,21 @@ msgstr "Desprazamento co botón central."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#, fuzzy
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep Scrolling when Mouse Leaves Window"
 msgstr "Desprazamento aínda que o rato saia da xanela."
 
 # Véxase http://forums.wesnoth.org/viewtopic.php?f=5&t=31275&start=15 para comprender en que consiste.
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
-#, fuzzy
-#| msgid "Local time of day light"
 msgid "Local Time of Day Area Lighting"
 msgstr "Manter a iluminación das covas constante."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
-#, fuzzy
-#| msgid "Local time of day light effect (use more memory)."
 msgid "Custom lighting for local time of day areas (uses more memory)"
 msgstr ""
-"Impedir que a intensidade da luz varíe nas covas segundo o momento do día."
+"Impedir que a intensidade da luz varíe nas covas segundo o momento do día "
+"(consume máis memoria)."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
@@ -90,14 +85,10 @@ msgstr "Amosar os combates."
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:61
 msgid "Ping Timeout"
-msgstr "Tempo ata dar por imposíbel unha conexión"
+msgstr "Tempo ata dar por imposíbel unha conexión."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
@@ -107,36 +98,26 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
-#, fuzzy
-#| msgid "Accept whisper messages from friends only"
 msgid "Accept Whispers from Friends Only"
 msgstr "Deixarlles bisbarche só aos teus amigos."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
-#, fuzzy
-#| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open Whisper Windows in Lobby"
 msgstr "Abrir a xanela de bisbar na sala de espera."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
-#, fuzzy
-#| msgid "Group players in lobby"
 msgid "Group Players in Lobby"
 msgstr "Agrupar os xogadores da sala de espera."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid "Lobby sounds"
 msgid "Lobby Sounds"
 msgstr "Reproducir sons na sala de espera."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
-#, fuzzy
-#| msgid "Disable notifications"
 msgid "Disable Notifications"
 msgstr "Desactivar as notificacións."
 
@@ -166,17 +147,11 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
-#, fuzzy
-#| msgid "Chat message aging"
 msgid "Chat Message Aging"
 msgstr "Tempo de caducidade das mensaxes."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:133
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Disable "
-#| "aging with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
@@ -186,22 +161,18 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
-#, fuzzy
-#| msgid "Use 12-hour clock format"
 msgid "Use 12-hour Clock Format"
 msgstr "Empregar o formato de 12 horas para o reloxo."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:150
-#, fuzzy
-#| msgid "Confirm loading of saves from a different version"
 msgid "Confirm Loading of Saves from a Different Version"
 msgstr "Pedir confirmación ao cargar partidas de versións distintas do xogo."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
 msgid "Show All Unit Types in Help"
-msgstr ""
+msgstr "Listar todos os tipos de unidade na axuda."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:158
@@ -209,6 +180,8 @@ msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
+"Listar todos os tipos de unidade na axuda. Fai falla reiniciar o xogo para "
+"que se aplique o cambio. A lista de unidades descubertas non cambiará."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:165
@@ -218,83 +191,83 @@ msgstr "Permitir o uso de mandos."
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:172
 msgid "Joystick: Number of the Scroll X-axis Joystick"
-msgstr "Mando para o desprazamento vertical"
+msgstr "Mando para o desprazamento vertical."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:182
 msgid "Joystick: Number of the Scroll X-axis"
-msgstr "Mando: control para o desprazamento vertical"
+msgstr "Mando: control para o desprazamento vertical."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:192
 msgid "Joystick: Number of the Scroll Y-axis Joystick"
-msgstr "Mando para o desprazamento horizontal"
+msgstr "Mando para o desprazamento horizontal."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:202
 msgid "Joystick: Number of the Scroll Y-axis"
-msgstr "Mando: control para o desprazamento horizontal"
+msgstr "Mando: control para o desprazamento horizontal."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:212
 msgid "Joystick: Deadzone of the Scrolling Stick"
-msgstr "Mando: límite do control do desprazamento"
+msgstr "Mando: límite do control do desprazamento."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:222
 msgid "Joystick: Number of the Cursor X-axis Joystick"
-msgstr "Mando para o movemento vertical do cursor"
+msgstr "Mando para o movemento vertical do cursor."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:232
 msgid "Joystick: Number of the Cursor X-axis"
-msgstr "Mando: control para o movemento vertical do cursor"
+msgstr "Mando: control para o movemento vertical do cursor."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:242
 msgid "Joystick: Number of the Cursor Y-axis Joystick"
-msgstr "Mando para o movemento horizontal do cursor"
+msgstr "Mando para o movemento horizontal do cursor."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:252
 msgid "Joystick: Number of the Cursor Y-axis"
-msgstr "Mando: control para o movemento horizontal do cursor"
+msgstr "Mando: control para o movemento horizontal do cursor."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:262
 msgid "Joystick: Deadzone of the Cursor Stick"
-msgstr "Mando: límite do control do cursor"
+msgstr "Mando: límite do control do cursor."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:272
 msgid "Joystick: Number of the Mouse X-axis Joystick"
-msgstr "Mando para o movemento vertical do rato"
+msgstr "Mando para o movemento vertical do rato."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:282
 msgid "Joystick: Number of the Mouse X-axis"
-msgstr "Mando: control para o rato vertical"
+msgstr "Mando: control para o rato vertical."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:292
 msgid "Joystick: Number of the Mouse Y-axis Joystick"
-msgstr "Mando para o movemento horizontal do rato"
+msgstr "Mando para o movemento horizontal do rato."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:302
 msgid "Joystick: Number of the Mouse Y-axis"
-msgstr "Mando: control para o rato horizontal"
+msgstr "Mando: control para o rato horizontal."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:312
 msgid "Joystick: Deadzone of the Mouse Stick"
-msgstr "Mando: límite do control do rato"
+msgstr "Mando: límite do control do rato."
 
 # Cando saiba o que é o “Thrust Axis” —que sospeito que é o mando que ten un pao, pero non me acaba de encaixar no contexto— terei que revisar a tradución.
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:322
 msgid "Joystick: Number of the Thrust Axis Joystick"
-msgstr "Mando para o eixo de empurre"
+msgstr "Mando para o eixo de empurre."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:332
@@ -5437,16 +5410,12 @@ msgid "Variable not found"
 msgstr "Non se atopou a variábel."
 
 #: src/menu_events.cpp:3507
-#, fuzzy
-#| msgid ""
-#| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, or "
-#| "chaotic."
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 "O aliñamento «$alignment|» é incorrecto, ten que ser “lawful” (legal), "
-"“neutral” or “chaotic” (caótico)."
+"“neutral”, “chaotic” (caótico) ou “liminal” (crepuscular)."
 
 #: src/menu_events.cpp:3563
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -6645,10 +6614,8 @@ msgid "prefix_milli^m"
 msgstr "m"
 
 #: src/serialization/string_utils.cpp:291
-#, fuzzy
-#| msgid "prefix_micro^μ"
 msgid "prefix_micro^µ"
-msgstr "μ"
+msgstr "µ"
 
 #: src/serialization/string_utils.cpp:292
 msgid "prefix_nano^n"

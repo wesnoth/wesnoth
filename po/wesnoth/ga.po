@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-17 23:28+0200\n"
-"PO-Revision-Date: 2011-07-16 09:59-0800\n"
+"PO-Revision-Date: 2011-10-21 13:54-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -116,7 +116,7 @@ msgstr "Díchumasaigh fógraí"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Reverse Time Graphics"
-msgstr ""
+msgstr "Aisiompaigh Grafaicí Ama"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:108
@@ -172,7 +172,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:165
 msgid "Joystick Support"
-msgstr ""
+msgstr "Tacaíocht Luamháin Stiúrtha"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:172
@@ -324,7 +324,7 @@ msgstr ""
 #. [scenario]: id=01_Grass
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:4
 msgid "Test campaign - first scenario (grass)"
-msgstr ""
+msgstr "Feachtas tástála - an chead mhisin (féar)"
 
 #. [side]: id=Alpha, type=Elvish Fighter
 #. [side]: id=Bravo, type=Elvish Archer
@@ -1106,7 +1106,7 @@ msgstr "trírinn stoirme"
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:546
 msgid "sceptre of fire"
-msgstr ""
+msgstr "ríshlat na tine"
 
 #: data/core/macros/names.cfg:18
 msgid ""
@@ -2549,7 +2549,7 @@ msgid ""
 "rare <i>liminal</i> units fight best during twilight."
 msgstr ""
 "Troideann aonaid <i>dhleathacha</i> is fearr i rith an lae, agus anoid "
-"<i>éagruthacha</i> is fearr istoíche. "
+"<i>éagruthacha</i> is fearr istoíche. Troideann aonaid <i>neodracha</i> "
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
@@ -2802,6 +2802,7 @@ msgstr "<i>― Banphríonsa Li’sar, 515YW</i>"
 #: data/hardwired/tips.cfg:144
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
 msgstr ""
+"Léigh an liosta <b>Eochracha Aicearra</b> sa roghchlár <b>Sainroghanna</b>."
 
 #. [tip]
 #: data/hardwired/tips.cfg:148
@@ -2839,7 +2840,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:164
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "Tá ionsaithe <i>rúnda</i> an-cumasach in aghaidh neamh-mharbha."
+msgstr "Tá ionsaithe <i>rúnda</i> an-chumasach in aghaidh neamh-mharbha."
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
@@ -3051,14 +3052,12 @@ msgid "Notes:"
 msgstr "Nótaí:"
 
 #: data/lua/wml/objectives.lua:70
-#, fuzzy
 msgid "(%d turns left)"
-msgstr "Cléchliceáil"
+msgstr "(%d seal atá fanta)"
 
 #: data/lua/wml/objectives.lua:72
-#, fuzzy
 msgid "(this turn left)"
-msgstr "[ag dearbhú na haistriúcháin: %i fágtha]"
+msgstr "(an seal seo atá fanta)"
 
 #: data/lua/wml/objectives.lua:114
 msgid "%d%% of gold carried over to the next scenario."
@@ -3317,42 +3316,42 @@ msgstr "Teileapórtáil teipthe! Níl imeacht folamh"
 #: src/actions.cpp:2731
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "D'fhéach tú $friends aonad cairdiúil!"
-msgstr[1] "D'fhéach tú $friends aonaid cairdiúla!"
-msgstr[2] "D'fhéach tú $friends aonaid cairdiúla!"
-msgstr[3] "D'fhéach tú $friends aonaid cairdiúla!"
-msgstr[4] "D'fhéach tú $friends aonaid cairdiúla!"
+msgstr[0] "Chonacthas aonad na gcarad!"
+msgstr[1] "Chonacthas $friends aonad na gcarad!"
+msgstr[2] "Chonacthas $friends aonad na gcarad!"
+msgstr[3] "Chonacthas $friends aonad na gcarad!"
+msgstr[4] "Chonacthas $friends aonad na gcarad!"
 
 #: src/actions.cpp:2734
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
-msgstr[0] "D'fhéach tú $enemies aonad naimhdeach!"
-msgstr[1] "D'fhéach tú $enemies aonad naimhdeacha!"
-msgstr[2] "D'fhéach tú $enemies aonad naimhdeacha!"
-msgstr[3] "D'fhéach tú $enemies aonad naimhdeacha!"
-msgstr[4] "D'fhéach tú $enemies aonad naimhdeacha!"
+msgstr[0] "Chonacthas $enemies aonad na namhad!"
+msgstr[1] "Chonacthas $enemies aonad na namhad!"
+msgstr[2] "Chonacthas $enemies aonad na namhad!"
+msgstr[3] "Chonacthas $enemies aonad na namhad!"
+msgstr[4] "Chonacthas $enemies aonad na namhad!"
 
 #: src/actions.cpp:2739
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] "$friends cairdiúil"
-msgstr[1] "$friends cairdiúla"
-msgstr[2] "$friends cairdiúla"
-msgstr[3] "$friends cairdiúla"
-msgstr[4] "$friends cairdiúla"
+msgstr[0] "$friends aonad na gcarad"
+msgstr[1] "$friends aonad na gcarad"
+msgstr[2] "$friends aonad na gcarad"
+msgstr[3] "$friends aonad na gcarad"
+msgstr[4] "$friends aonad na gcarad"
 
 #: src/actions.cpp:2740
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] "$enemies naimhdeach"
-msgstr[1] "$enemies naimhdeacha"
-msgstr[2] "$enemies naimhdeacha"
-msgstr[3] "$enemies naimhdeacha"
-msgstr[4] "$enemies naimhdeacha"
+msgstr[0] "$enemies aonad na namhad"
+msgstr[1] "$enemies aonad na namhad"
+msgstr[2] "$enemies aonad na namhad"
+msgstr[3] "$enemies aonad na namhad"
+msgstr[4] "$enemies aonad na namhad"
 
 #: src/actions.cpp:2741
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "D'fhéach tú aonaid! ($friendphrase, $enemyphrase)"
+msgstr "Chonacthas aonaid! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2750
 msgid "(press $hotkey to keep moving)"
@@ -3360,7 +3359,7 @@ msgstr ""
 
 #: src/addon/manager.cpp:412
 msgid "unit_byte^B"
-msgstr ""
+msgstr "B"
 
 #: src/addon/manager.cpp:429
 msgid "addon_type^Campaign"
@@ -3438,10 +3437,8 @@ msgid "Downloading add-on: $addon_title|..."
 msgstr "Forlíontáin a íoslódáil: $addon_title|..."
 
 #: src/addon/manager.cpp:562 src/addon/manager.cpp:1111
-#, fuzzy
-#| msgid "Download"
 msgid "Downloading..."
-msgstr "Íoslódáil"
+msgstr "ag Íoslódáil..."
 
 #: src/addon/manager.cpp:574
 msgid ""
@@ -3603,10 +3600,8 @@ msgid "Confirm"
 msgstr "Deimhnigh"
 
 #: src/addon/manager.cpp:1104
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting..."
-msgstr "Nasctha chuig an bhFreastalaí..."
+msgstr "Ag Nascadh..."
 
 #: src/addon/manager.cpp:1104
 #, fuzzy
@@ -3919,11 +3914,11 @@ msgstr ""
 
 #: src/game_controller.cpp:730
 msgid "No campaigns are available.\n"
-msgstr ""
+msgstr "Níl aon fheachtas ar bith infhaighte. \n"
 
 #: src/game_controller.cpp:962
 msgid "Do you really want to start the server?"
-msgstr "An dteastaíonn uait tosaigh an friothálaí?"
+msgstr "An dteastaíonn uait an friothálaí a tosú?"
 
 #: src/game_controller.cpp:963
 msgid ""
@@ -4054,11 +4049,11 @@ msgstr "I gcluiche:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
 msgid "(observing)"
-msgstr "(breathnú)"
+msgstr "(ag breathnú)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:102
 msgid "(playing)"
-msgstr "(imirt)"
+msgstr "(ag imirt)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "In lobby"
@@ -4066,16 +4061,15 @@ msgstr "I bhforhalla"
 
 #: src/gui/dialogs/lobby_player_info.cpp:129
 msgid "On friends list"
-msgstr "Ar an líosta cairde"
+msgstr "Ar liosta carad"
 
 #: src/gui/dialogs/lobby_player_info.cpp:134
-#, fuzzy
 msgid "On ignores list"
-msgstr "Ar an líosta cairde"
+msgstr "Ar liosta díbeartach"
 
 #: src/gui/dialogs/lobby_player_info.cpp:139
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "Ní cara nó díbeartach é"
 
 #: src/gui/dialogs/lobby_player_info.cpp:144
 msgid "You"
@@ -4087,7 +4081,7 @@ msgstr "Earráid"
 
 #: src/intro.cpp:44
 msgid "The End"
-msgstr "Deaireadh Scéil"
+msgstr "Deireadh Scéil"
 
 #: src/language.cpp:102
 msgid "System default language"
@@ -4118,7 +4112,7 @@ msgstr "?"
 
 #: src/loadscreen.cpp:222
 msgid "Initializing user interface"
-msgstr "Comhéadan úsáideora a réimniú"
+msgstr "Comhéadan úsáideora á réimniú"
 
 #: src/loadscreen.cpp:223
 msgid "Loading game configuration"
@@ -4126,15 +4120,15 @@ msgstr "Cumraíocht cluiche á lódáil"
 
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
 msgid "Verifying cache"
-msgstr "Taisc a fíorú "
+msgstr "Taisc á fíorú "
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
 msgid "Reading files and creating cache"
-msgstr "Comhaid a léamh agus teasc a cruthú"
+msgstr "Comhaid á léamh agus teasc á cruthú"
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
 msgid "Reading unit files"
-msgstr "Comhaid aonaid a léamh"
+msgstr "Comhaid aonaid á léamh"
 
 #: src/loadscreen.cpp:227
 msgid "Reinitialize fonts for the current language"
@@ -4147,35 +4141,35 @@ msgstr "Níl aon forlóntáin suiteáilte agat."
 
 #: src/loadscreen.cpp:229
 msgid "Loading title screen"
-msgstr "Scáileán theideal a lódáil"
+msgstr "Scáileán theideal á lódáil"
 
 #: src/loadscreen.cpp:230
 msgid "Loading data files"
-msgstr "Comhaid sonraí a lódáil"
+msgstr "Comhaid sonraí á lódáil"
 
 #: src/loadscreen.cpp:234
 msgid "Loading level"
-msgstr "Leibhéal a lódáil"
+msgstr "Leibhéal á lódáil"
 
 #: src/loadscreen.cpp:235
 msgid "Initializing teams"
-msgstr "Foirne a réimniú"
+msgstr "Foirne á réimniú"
 
 #: src/loadscreen.cpp:236
 msgid "Loading units"
-msgstr "Aonaid a lódáil"
+msgstr "Aonaid á lódáil"
 
 #: src/loadscreen.cpp:237 src/loadscreen.cpp:239
 msgid "Initializing display"
-msgstr "Teaispeáint a réimniú "
+msgstr "Teaispeáint á réimniú "
 
 #: src/loadscreen.cpp:238
 msgid "Building terrain rules"
-msgstr "Rialacha tír-raoin a tiomsú"
+msgstr "Rialacha tír-raoin á dhéanamh"
 
 #: src/loadscreen.cpp:240
 msgid "Starting game"
-msgstr "Cluiche a tosú"
+msgstr "Cluiche á tosú"
 
 #: src/map.cpp:194
 msgid "A map without a header is not supported"
@@ -4192,18 +4186,16 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:99 src/menu_events.cpp:102 src/menu_events.cpp:106
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "An dteastaíonn uait tosaigh an friothálaí?"
+msgstr "An bhfuil tú cinnte gur mhaith leat é a bhriseadh?"
 
 #: src/menu_events.cpp:99
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "Mo thiarna, is dílis an t-aonad seo!"
+msgstr "A thiarna, tá an t-aonad seo dílis agus níl cothabháil de dhith air!"
 
 #: src/menu_events.cpp:100 src/menu_events.cpp:103 src/menu_events.cpp:107
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "An dteastaíonn uait tosaigh an friothálaí?"
+msgstr "An bhfuil tú cinnte gur mhaith leat í a briseadh?"
 
 #: src/menu_events.cpp:102
 msgid "My lord, this unit is an experienced one, having advanced levels! "
@@ -4263,7 +4255,7 @@ msgstr "Aonaid"
 
 #: src/menu_events.cpp:381
 msgid "Upkeep"
-msgstr "Cothú"
+msgstr "Cothabháil"
 
 #: src/menu_events.cpp:382 src/multiplayer_connect.cpp:1031
 #: src/multiplayer_wait.cpp:522
@@ -4513,9 +4505,8 @@ msgid "aliases:"
 msgstr "ainmneacha bréige:"
 
 #: src/menu_events.cpp:2292
-#, fuzzy
 msgid "(A) - admin command"
-msgstr "Ordú teipthe: %s"
+msgstr "(A) - ordú riarthóra"
 
 #: src/menu_events.cpp:2299 src/menu_events.cpp:2506
 msgid "(admin only)"
@@ -4594,19 +4585,19 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #: src/menu_events.cpp:2360
 msgid "Add a nick to your ignores list."
-msgstr ""
+msgstr "Cuir ainm ar do liosta díbeartach."
 
 #: src/menu_events.cpp:2362
 msgid "Add a nick to your friends list."
-msgstr ""
+msgstr "Cuir ainm ar do liosta carad."
 
 #: src/menu_events.cpp:2364
 msgid "Remove a nick from your ignores or friends list."
-msgstr ""
+msgstr "Bain ainm as do liosta carad nó díbeartach."
 
 #: src/menu_events.cpp:2366
 msgid "Show your ignores and friends list."
-msgstr ""
+msgstr "Taispeáin do liosta carad agus díbeartach."
 
 #: src/menu_events.cpp:2369
 msgid "Display version information."
@@ -4679,7 +4670,7 @@ msgstr "Ceist seomra."
 
 #: src/menu_events.cpp:2498
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
-msgstr ""
+msgstr "(D) - dífhabhtú amháin, (N) - líonra amháin, (A) - riarthóir amháin"
 
 #: src/menu_events.cpp:2504
 msgid "(debug command)"
@@ -4699,7 +4690,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2532
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "[<foireann> [on/off]]"
 
 #: src/menu_events.cpp:2535
 msgid "<side> <nick>"
@@ -4848,12 +4839,14 @@ msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 
 #: src/menu_events.cpp:2601
+#, fuzzy
 msgid "Discover all units in help."
-msgstr ""
+msgstr "Aimsigh "
 
 #: src/menu_events.cpp:2603
+#, fuzzy
 msgid "'Undiscover' all units in help."
-msgstr ""
+msgstr "neamhaimsigh"
 
 #: src/menu_events.cpp:2605
 msgid "Create a unit."
@@ -4921,13 +4914,12 @@ msgid "(empty)"
 msgstr "(folamh)"
 
 #: src/menu_events.cpp:2860 src/menu_events.cpp:2866 src/menu_events.cpp:2916
-#, fuzzy
 msgid "ignores list"
-msgstr "Réim Comhaid"
+msgstr "liosta díbeartach"
 
 #: src/menu_events.cpp:2866
 msgid "Added to ignore list: $nick"
-msgstr ""
+msgstr "Chuir tú $nick ar liosta díbeartach"
 
 #: src/menu_events.cpp:2869 src/menu_events.cpp:2888
 msgid "Invalid username: $nick"
@@ -4935,25 +4927,23 @@ msgstr "Ainm úsáideora anaithnid: $nick"
 
 #: src/menu_events.cpp:2879 src/menu_events.cpp:2886 src/menu_events.cpp:2912
 msgid "friends list"
-msgstr "liosta cairde"
+msgstr "liosta carad"
 
 #: src/menu_events.cpp:2886
 msgid "Added to friends list: $nick"
-msgstr ""
+msgstr "Chuir tú $nick ar liosta carad"
 
 #: src/menu_events.cpp:2902
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Roghnaigh béarla ón réim de bhéarlaí aitheanta"
+msgstr "Tá ainm bainte as liosta: $nick"
 
 #: src/menu_events.cpp:2902 src/menu_events.cpp:2920
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "Déan Cairdeas"
+msgstr "liosta carad agus díbeartach"
 
 #: src/menu_events.cpp:2920
 msgid "There are no players on your friends or ignore list."
-msgstr ""
+msgstr "Níl aon imreoir ar bith ar do liosta carad nó díbeartach."
 
 #: src/menu_events.cpp:2925
 msgid "version"
@@ -5013,18 +5003,16 @@ msgid "Choose Scenario (Debug!)"
 msgstr "Roghnaigh Misean (Dífhabhtaigh)"
 
 #: src/menu_events.cpp:3390
-#, fuzzy
 msgid "Debug mode activated!"
-msgstr "Orduithe in mód dífhabhtúcháin"
+msgstr "Gníomhachtáitear mód dífhabhtúcháin!"
 
 #: src/menu_events.cpp:3393
 msgid "Debug mode not available in network games"
 msgstr ""
 
 #: src/menu_events.cpp:3398
-#, fuzzy
 msgid "Debug mode deactivated!"
-msgstr "Orduithe in mód dífhabhtúcháin"
+msgstr "Díghníomhachtáitear mód dífhabhtúcháin!"
 
 #: src/menu_events.cpp:3409
 msgid "Unsafe Lua scripts."
@@ -5065,14 +5053,12 @@ msgid "Invalid location"
 msgstr "Suíomh neamhbhailí"
 
 #: src/menu_events.cpp:3622
-#, fuzzy
 msgid "Planning mode activated!"
-msgstr "Scoránaigh mód pleanála"
+msgstr "Gníomhachtáitear mód pleanála!"
 
 #: src/menu_events.cpp:3625
-#, fuzzy
 msgid "Planning mode deactivated!"
-msgstr "Scoránaigh mód pleanála"
+msgstr "Díghníomhachtáitear mód pleanála!"
 
 #: src/menu_events.cpp:3638
 msgid "ai"
@@ -5125,24 +5111,20 @@ msgid ""
 msgstr ""
 
 #: src/multiplayer.cpp:248
-#, fuzzy
 msgid "Do you want to continue?"
-msgstr "An dteastaíonn uait tosaigh an friothálaí?"
+msgstr "An dteastaíonn uait lean ar aghaidh?"
 
 #: src/multiplayer.cpp:250
-#, fuzzy
-#| msgid "Warning: "
 msgid "Warning"
-msgstr "Rabhadh: "
+msgstr "Rabhadh"
 
 #: src/multiplayer.cpp:294
 msgid "Bad data received from server"
 msgstr ""
 
 #: src/multiplayer.cpp:335
-#, fuzzy
 msgid "You must login first."
-msgstr "Ní foláir nó go bhfuil tú an Tallan clúiteach."
+msgstr "Tá ort logáil isteach i dtosach."
 
 #: src/multiplayer.cpp:337
 msgid "The nick '$nick' is already taken."
@@ -5361,9 +5343,8 @@ msgid "Observers"
 msgstr "Breathnóirí"
 
 #: src/multiplayer_create.cpp:92
-#, fuzzy
 msgid "Shuffle sides"
-msgstr "Níor aimsíodh foirne ilimreora"
+msgstr "Randamaigh foirne"
 
 #: src/multiplayer_create.cpp:95
 msgid "Regenerate"
@@ -5474,9 +5455,8 @@ msgid "The map is invalid."
 msgstr "Tá an léarscáil anaithnid"
 
 #: src/multiplayer_create.cpp:353
-#, fuzzy
 msgid "You must enter a name."
-msgstr "Ní foláir nó go bhfuil tú an Tallan clúiteach."
+msgstr "Tá ort ainm a chur."
 
 #: src/multiplayer_create.cpp:372
 msgid "Turns: "
@@ -5568,7 +5548,7 @@ msgstr "Sliotáin folamh"
 
 #: src/multiplayer_lobby.cpp:749
 msgid "Friends in Game"
-msgstr "Cairde i gCluiche"
+msgstr "Cairde sa Chluiche"
 
 #: src/multiplayer_lobby.cpp:750
 msgid "Search:"
@@ -5957,7 +5937,7 @@ msgstr "clochraithe: "
 #: src/reports.cpp:306
 #, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
-msgstr "Tá an aonad seo clochraithe. Ní bhféidir do gluaiseacht nó ionsaí."
+msgstr "Tá an aonad seo clochraithe. Ní bhféidir dó gluaiseacht nó ionsaí."
 
 #: src/reports.cpp:329
 msgid "Alignment: "
@@ -6197,75 +6177,77 @@ msgstr "Tá an clib dheiridh ar iarraidh do $tag ag $pos"
 
 #: src/serialization/string_utils.cpp:290
 msgid "prefix_milli^m"
-msgstr ""
+msgstr "m"
 
 #: src/serialization/string_utils.cpp:291
+#, fuzzy
+#| msgid "prefix_micro^μ"
 msgid "prefix_micro^µ"
-msgstr ""
+msgstr "μ"
 
 #: src/serialization/string_utils.cpp:292
 msgid "prefix_nano^n"
-msgstr ""
+msgstr "n"
 
 #: src/serialization/string_utils.cpp:293
 msgid "prefix_pico^p"
-msgstr ""
+msgstr "p"
 
 #: src/serialization/string_utils.cpp:294
 msgid "prefix_femto^f"
-msgstr ""
+msgstr "f"
 
 #: src/serialization/string_utils.cpp:295
 msgid "prefix_atto^a"
-msgstr ""
+msgstr "a"
 
 #: src/serialization/string_utils.cpp:296
 msgid "prefix_zepto^z"
-msgstr ""
+msgstr "z"
 
 #: src/serialization/string_utils.cpp:297
 msgid "prefix_yocto^y"
-msgstr ""
+msgstr "y"
 
 #: src/serialization/string_utils.cpp:309
 msgid "prefix_kibi^K"
-msgstr ""
+msgstr "K"
 
 #: src/serialization/string_utils.cpp:310
 msgid "prefix_kilo^k"
-msgstr ""
+msgstr "k"
 
 #: src/serialization/string_utils.cpp:312
 msgid "prefix_mega^M"
-msgstr ""
+msgstr "M"
 
 #: src/serialization/string_utils.cpp:313
 msgid "prefix_giga^G"
-msgstr ""
+msgstr "G"
 
 #: src/serialization/string_utils.cpp:314
 msgid "prefix_tera^T"
-msgstr ""
+msgstr "T"
 
 #: src/serialization/string_utils.cpp:315
 msgid "prefix_peta^P"
-msgstr ""
+msgstr "P"
 
 #: src/serialization/string_utils.cpp:316
 msgid "prefix_exa^E"
-msgstr ""
+msgstr "E"
 
 #: src/serialization/string_utils.cpp:317
 msgid "prefix_zetta^Z"
-msgstr ""
+msgstr "Z"
 
 #: src/serialization/string_utils.cpp:318
 msgid "prefix_yotta^Y"
-msgstr ""
+msgstr "Y"
 
 #: src/serialization/string_utils.cpp:332
 msgid "infix_binary^i"
-msgstr ""
+msgstr "i"
 
 #: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:126
 msgid "Recruits"
@@ -6440,25 +6422,16 @@ msgid "HIDE ALL allies’ plans"
 msgstr ""
 
 #: src/whiteboard/manager.cpp:956
-#, fuzzy
-#| msgid "Show replay"
 msgid "Show plans for $player"
-msgstr "Taispeáin athfhéachaint"
+msgstr "Taispeáin pleananna do $player"
 
 #: src/whiteboard/manager.cpp:958
-#, fuzzy
-#| msgid "Replace with $player"
 msgid "Hide plans for $player"
-msgstr "Athsholáthair le $player"
+msgstr "Folaigh pleananna do $player"
 
 #: src/whiteboard/manager.cpp:961
 msgid "Whiteboard Options"
-msgstr ""
-
-#, fuzzy
-#~| msgid "Invalid location"
-#~ msgid "Invalid WML found"
-#~ msgstr "Suíomh neamhbhailí"
+msgstr "Roghanna Cláir Bháin"
 
 #~ msgid "B"
 #~ msgstr "B"

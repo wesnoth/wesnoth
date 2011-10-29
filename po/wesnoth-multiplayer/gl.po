@@ -15,14 +15,15 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-17 23:28+0200\n"
-"PO-Revision-Date: 2011-09-05 04:30+0200\n"
-"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"PO-Revision-Date: 2011-10-23 14:31+0200\n"
+"Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"com>\n"
 "com>\n"
 "com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -729,14 +730,6 @@ msgstr "2 xog. — Malos presaxios (supervivencia)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly-spawned AI units. Victory is achieved by surviving and "
@@ -748,12 +741,12 @@ msgid ""
 msgstr ""
 "“Malos presaxios” é un escenario de supervivencia para xogar en equipos de "
 "un ou dous xogadores contra unidades ao chou controladas pola intelixencia "
-"artificial. A vitoria conséguese sobrevivindo a todos os embates do inimigo. "
-"Durante o transcurso da partida, o terreo cambiará de acordo a efectos "
-"meteorolóxicos tamén ao chou.\n"
+"artificial. Gañará o que sobreviva a acabe con todos os embates do inimigo. "
+"Durante o transcurso da partida, a meteoroloxía —tamén ao chou— afectará ao "
+"terreo, cambiándoo.\n"
 "\n"
-"Nota: terás que usar a configuración do mapa para que o escenario funcione "
-"correctamente."
+"Nota: terás que usar a configuración predeterminada do mapa para que o "
+"escenario funcione correctamente."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:434
@@ -815,10 +808,8 @@ msgstr "Humanos"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of your leader"
-msgstr "Morte dos teus líderes."
+msgstr "Morte do teu líder."
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
@@ -826,26 +817,26 @@ msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
+"Como o teu equipo só conta cun líder, reducirase a magnitude dos embates do "
+"inimigo."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of both of your team’s leaders"
-msgstr "Morte dos teus líderes."
+msgstr "Morte dos líderes do voso equipo."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
+"Como o teu equipo conta con dous líderes, a magnitude dos embates do inimigo "
+"será plena."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
-#, fuzzy
-#| msgid "Survive all enemy attacks"
 msgid "Survive and defeat all enemy waves"
-msgstr "Sobrevive a todos os ataques do inimigo."
+msgstr "Sobrevive a acaba con todos os embates do inimigo."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1431
@@ -854,31 +845,6 @@ msgstr "Malos presaxios. Un escenario de supervivencia ao chou."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1451
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves and defeat the final arch-"
-#| "enemies.\n"
-#| "\n"
-#| "The spawning waves are generated randomly and will different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "\n"
-#| "They appear along the north, south and west map edges — though they are "
-#| "most likely to spawn on the west edge. The spawn waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "\n"
-#| "<span color='red'>Dark Forecast was made by:</span>\n"
-#| "\n"
-#| "<span color='green'>jb</span>\n"
-#| "— map design, spawn groups and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen</span>\n"
-#| "— WML implementation"
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -901,29 +867,26 @@ msgid ""
 "<span color='green'>Rhuvaen:</span>\n"
 "• WML implementation"
 msgstr ""
-"O obxectivo é sobrevivir ás ondas de atacantes e derrotar aos inimigos "
+"O obxectivo é sobrevivir aos embates de atacantes e derrotar aos inimigos "
 "finais.\n"
 "\n"
-"As ondas de atacantes xéranse ao chou e serán diferentes cada vez que se "
-"xogue ao escenario.\n"
-"\n"
+"Os embates de atacantes xéranse ao chou e serán diferentes cada vez que se "
+"xogue o escenario.\n"
 "\n"
 "Aparecen dende os extremos norte, sur e oeste do mapa —pensa que é máis "
-"probábel que aparezan dende o extremo oeste—. As ondas de atacantes "
+"probábel que aparezan dende o extremo oeste—. Os embates de atacantes "
 "aparecerán a intervalos máis ou menos regulares.\n"
 "\n"
-"\n"
-"O clima tamén cambiará ao chou, afectando á disposición do mapa.\n"
-"\n"
+"O clima tamén cambiará ao chou, afectando ao terreo.\n"
 "\n"
 "\n"
-"<span color='red'>Autores:</span>\n"
+"<b>Autores:</b>\n"
 "\n"
 "<span color='green'>jb</span>\n"
-"Deseño do mapa, ondas de atacantes e o concepto do escenario.\n"
+"• Deseño do mapa, embates de atacantes e o concepto do escenario.\n"
 "\n"
 "<span color='green'>Rhuvaen</span>\n"
-"Adaptación a código WML."
+"• Adaptación a código WML."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1456
