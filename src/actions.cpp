@@ -357,24 +357,31 @@ const std::set<std::string> get_recruits_for_location(int side, const map_locati
 	unit_map::const_iterator u = resources::units->begin(),
 			u_end = resources::units->end();
 
+	bool leader_in_place = false;
+	bool recruit_loc_is_castle = resources::game_map->is_castle(recruit_loc);
+
 	for(; u != u_end; ++u) {
+		//Only consider leaders on this side.
 		if (!(u->can_recruit() && u->side() == side))
 			continue;
 
-		global_result.insert(u->recruits().begin(), u->recruits().end());
-
-		if (!(resources::game_map->is_keep(u->get_location())))
-			continue;
-
-		if (can_recruit_on(*resources::game_map, u->get_location(), recruit_loc))
+		//Check if the leader is on the right keep.
+		if (resources::game_map->is_keep(u->get_location())
+				&& (can_recruit_on(*resources::game_map, u->get_location(), recruit_loc))) {
+			leader_in_place= true;
 			local_result.insert(u->recruits().begin(), u->recruits().end());
+		} else
+			global_result.insert(u->recruits().begin(), u->recruits().end());
 	}
 
-	if (local_result.empty())
-		global_result.insert(recruit_list.begin(),recruit_list.end());
-	else local_result.insert(recruit_list.begin(),recruit_list.end());
+	bool global = !(recruit_loc_is_castle && leader_in_place);
 
-	return (local_result.empty() ? global_result : local_result);
+	if (global)
+		global_result.insert(recruit_list.begin(),recruit_list.end());
+	else if (leader_in_place)
+		local_result.insert(recruit_list.begin(),recruit_list.end());
+
+	return global ? global_result : local_result;
 }
 
 const std::vector<const unit*> get_recalls_for_location(int side, const map_location &recall_loc) {
@@ -382,7 +389,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 
 	const team& t = (*resources::teams)[side-1];
 	const std::vector<unit>& recall_list = t.recall_list();
-	std::vector<const unit*> local_result;
+	std::vector<const unit*> result;
 
 	/*
 	 * We have two use cases:
@@ -400,7 +407,6 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 		std::set<size_t> valid_local_recalls;
 
 		for(; u != u_end; ++u) {
-
 			//We only consider leaders on our side.
 			if (!(u->can_recruit() && u->side() == side))
 				continue;
@@ -422,7 +428,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 				if (valid_local_recalls.find(recall_unit.underlying_id())
 						== valid_local_recalls.end()) {
 				valid_local_recalls.insert(recall_unit.underlying_id());
-				local_result.push_back(&recall_unit);
+				result.push_back(&recall_unit);
 				}
 			}
 		}
@@ -431,11 +437,11 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 	if (!(recall_loc_is_castle && leader_in_place)) {
 		foreach (const unit &recall, recall_list)
 		{
-			local_result.push_back(&recall);
+			result.push_back(&recall);
 		}
 	}
 
-	return local_result;
+	return result;
 }
 
 std::string find_recall_location(const int side, map_location &recall_loc, const unit &recall_unit)
