@@ -16,7 +16,8 @@ Version 1.9.9+svn:
    * Made sure lighting setting changes are applied immediately when closing the
      settings window when automatic map view updates are disabled
    * Starting position tool menu now displays coordinates of existing positions,
-     and initially highlights the current player number assigned to the selected hex
+     and initially highlights the current player number assigned to the selected
+     hex
  * Graphics:
    * New Animations:
      * Goblin spearman run se
@@ -46,7 +47,8 @@ Version 1.9.9+svn:
    * Forests now give best defense and worst movement on all terrain,
      not just hills - fixes bug #18216
    * Fixed some Khalifate unit animation glitches
-   * The XP required for an AMLA is now 50*level (and 25 for level 0) instead of always 150.
+   * The XP required for an AMLA is now 50*level (and 25 for level 0) instead of
+     always 150.
 * User interface
    * Removed waypoints UI feature
    * Added an option to disable the "loading save from a different version"
@@ -75,36 +77,41 @@ Version 1.9.9+svn:
    * Reintroduced support for [unit][event]s (was until 1.7.10, bug #16259)
      Such events are no longer forcefully variable substituted before inserting
      into the scenario wml
-   * Fixed "error parsing image modifications" message caused by subsequent image
-     mod additions using the add attribute in [effect] apply_to=image_mod
+   * Fixed "error parsing image modifications" message caused by subsequent
+     image mod additions using the add attribute in [effect] apply_to=image_mod
    * Made $this_unit in filter_recall work
    * Added IS_EXPENDABLE_LEADER, which gives a unit the expendable leader icon
    * Added $this_unit support to [harm_unit] and [find_path]
-   * Settings by [color_adjust] no longer expire at turn start or over save/load cycles
-   * Implemented bullet= for [objectives], [objective], [gold_carryover], and [note]
-   * Implemented red=, green=, and blue= for [objective], [gold_carryover], and [note]
+   * Settings by [color_adjust] no longer expire at turn start or over save/load
+     cycles
+   * Implemented bullet= for [objectives], [objective], [gold_carryover], and
+     [note]
+   * Implemented red=, green=, and blue= for [objective], [gold_carryover], and
+     [note]
  * Miscellaneous and bug fixes:
-   * Fixed compilation on all Debian architectures (Debian bug #636193)
-   * Fixed handling of #ifver and #ifnver preprocessor directives in wmllint
-   * Made it possible to switch themes from Preferences in the main menu
-     (bug #10969)
-   * Fixed preload event not being fired (bug #18695)
-   * Make the create unit dialog give the created unit a valid gender for
-     that unit type. (bug #18704)
    * Add --language/-L commandline option to set the language for that session
+   * Fixed: Avoid copying of singular iterators in the whiteboard code
+   * Fixed bug #10969: Made it possible to switch themes from Preferences in the
+     main menu
+   * Fixed bug #16111: gold carryover if loading a save created in linger mode
+   * Fixed bug #16508: remaining time of day areas that should affect map
+     borders in mainline campaigns and MP scenarios
+   * Fixed bug #18399 (part 1): Compilation with boost 1.47 (bug #18399's patch)
+   * Fixed bug #18399 (part 5): Compilation with the clang 2.9 compiler (bug
+     #18399's patch)
+   * Fixed bug #18695: Fixed preload event not being fired
+   * Fixed bug #18701: Evaluate key length even if intervening WML children
+     don't exist
+   * Fixed bug #18704: Make the create unit dialog give the created unit a valid
+     gender for that unit type
+   * Fixed bug #18766: Fixed a problem where version comparisons (including, but
+     not limited to #ifver/#ifnver directives) could cease to work until Wesnoth
+     was restarted
+   * Fixed debian bug #636193: Fixed compilation on all Debian architectures
+   * Fixed handling of #ifver and #ifnver preprocessor directives in wmllint
+   * Removed CANYON and its associated terrain macros
    * The credits screen no longer mangles image path function in background
      image lists
-   * Evaluate key length even if intervening WML children don't exist (bug #18701)
-   * Fix gold carryover if loading a save created in linger mode (bug #16111)
-   * Fixed: Compilation with boost 1.47 (bug #18399's patch).
-   * Fixed: Compilation with the clang 2.9 compiler (bug #18399's patch).
-   * Fixed: Avoid copying of singular iterators in the whiteboard code.
-   * Fixed a problem where version comparisons (including, but not limited to
-     #ifver/#ifnver directives) could cease to work until Wesnoth was restarted
-     (bug #18766)
-   * Fixed remaining time of day areas that should affect map borders in mainline
-     campaigns and MP scenarios (bug #16508)
-   * Removed CANYON and its associated terrain macros
 
 Version 1.9.9:
  * AI:
