@@ -382,33 +382,56 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 
 	const team& t = (*resources::teams)[side-1];
 	const std::vector<unit>& recall_list = t.recall_list();
-	std::set<size_t> valid_local_recalls;
 	std::vector<const unit*> local_result;
 
-	unit_map::const_iterator u = resources::units->begin(),
-	u_end = resources::units->end();
+	/*
+	 * We have two use cases:
+	 * 1. A castle tile is highlighted, we only present the units recallable there.
+	 * 2. A non castle tile is highlighted, we present all units in the recall list.
+	 */
 
-	for(; u != u_end; ++u) {
-		if (!(u->can_recruit() && u->side() == side))
-			continue;
+	bool leader_in_place = false;
+	bool recall_loc_is_castle = resources::game_map->is_castle(recall_loc);
 
-		foreach (const unit& recall_unit, recall_list)
-		{
-			scoped_recall_unit this_unit("this_unit", t.save_id(), &recall_unit - &recall_list[0]);
-			if (!(recall_unit.matches_filter(vconfig(u->recall_filter()), map_location::null_location)))
+	if (recall_loc_is_castle) {
+
+		unit_map::const_iterator u = resources::units->begin(),
+				u_end = resources::units->end();
+		std::set<size_t> valid_local_recalls;
+
+		for(; u != u_end; ++u) {
+
+			//We only consider leaders on our side.
+			if (!(u->can_recruit() && u->side() == side))
 				continue;
 
-			if (!(valid_local_recalls.find(recall_unit.underlying_id()) == valid_local_recalls.end()))
-				continue;
+			//Check if the leader is on the right keep.
+			if (resources::game_map->is_keep(u->get_location())
+					&& (can_recruit_on(*resources::game_map, u->get_location(), recall_loc)))
+				leader_in_place= true;
+			else continue;
 
-			if (!(resources::game_map->is_keep(u->get_location())))
-				continue;
-
-			if (can_recruit_on(*resources::game_map, u->get_location(), recall_loc))
+			foreach (const unit& recall_unit, recall_list)
 			{
+				//Only units which match the leaders recall filter are valid.
+				scoped_recall_unit this_unit("this_unit", t.save_id(), &recall_unit - &recall_list[0]);
+				if (!(recall_unit.matches_filter(vconfig(u->recall_filter()), map_location::null_location)))
+					continue;
+
+				//Do not add a unit twice.
+				if (valid_local_recalls.find(recall_unit.underlying_id())
+						== valid_local_recalls.end()) {
 				valid_local_recalls.insert(recall_unit.underlying_id());
 				local_result.push_back(&recall_unit);
+				}
 			}
+		}
+	}
+
+	if (!(recall_loc_is_castle && leader_in_place)) {
+		foreach (const unit &recall, recall_list)
+		{
+			local_result.push_back(&recall);
 		}
 	}
 
