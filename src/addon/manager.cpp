@@ -1415,16 +1415,28 @@ namespace {
 					, gui2::tmessage::yes_no_buttons);
 		} while (res != gui2::twindow::OK);
 		
-		std::vector<std::string> failed_names, succeeded_names;
+		std::vector<std::string> failed_names, skipped_names, succeeded_names;
 		
 		foreach(const std::string& id, remove_ids) {
 			const std::string& name = get_addon_name(id);
 
-			if(remove_local_addon(id)) {
+			if(have_addon_pbl_info(id) || have_addon_in_vcs_tree(id)) {
+				skipped_names.push_back(name);
+			} else if(remove_local_addon(id)) {
 				succeeded_names.push_back(name);
 			} else {
 				failed_names.push_back(name);
 			}
+		}
+
+		if(!skipped_names.empty()) {
+			const std::string dlg_msg = _n(
+				"The following add-on appears to have publishing or version control information stored locally, and will not be removed:",
+				"The following add-ons appear to have publishing or version control information stored locally, and will not be removed:",
+				skipped_names.size());
+
+			gui2::show_error_message(
+				disp.video(), dlg_msg + list_lead + utils::join(skipped_names, list_sep));
 		}
 		
 		if(!failed_names.empty()) {
