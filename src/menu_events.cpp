@@ -859,10 +859,15 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 			DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
 		}
 
-		if(recall_list_team.empty()) {
+		if(current_team.recall_list().empty()) {
 			gui2::show_transient_message(gui_->video(), "",
 				_("There are no troops available to recall\n(You must have"
 				" veteran survivors from a previous scenario)"));
+			return;
+		}
+		if(recall_list_team.empty()) {
+			gui2::show_transient_message(gui_->video(), "",
+				_("You currently can't recruit at the highlighted location"));
 			return;
 		}
 	} // end planned unit map scope
