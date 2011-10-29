@@ -261,7 +261,7 @@ if __name__ == "__main__":
 
         svn = libsvn.SVN(wescamp)
 
-        svn.update(None, addon)
+        svn.update(None, [addon])
 
         svn.remove(addon)
 

@@ -107,8 +107,7 @@ class SVN:
         if(rev != None):
             command += ["-r", rev]
         if(files != None):
-            # FIXME files should be []
-            command += [self.checkout_path + "/" + files]
+            command += [self.checkout_path + "/" + f for f in files]
         else:
             command += [self.checkout_path]
 
