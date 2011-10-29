@@ -31,6 +31,18 @@ class config_changed_exception {};
 bool remove_local_addon(const std::string& addon);
 
 /**
+ * Returns true if there's a local .pbl file stored for the specified add-on.
+ */
+bool have_addon_pbl_info(const std::string& addon_name);
+
+/**
+ * Returns true if the specified add-ons appear to be managed by a 'supported' VCS.
+ *
+ * Currently supported VCSes are: Subversion, Git, Mercurial.
+ */
+bool have_addon_in_vcs_tree(const std::string& addon_name);
+
+/**
  * Gets the publish information for an add-on.
  *
  * @param addon_name              The add-on's main directory/file name.

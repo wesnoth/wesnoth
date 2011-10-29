@@ -53,6 +53,23 @@ static lg::log_domain log_network("network");
 #define ERR_NET LOG_STREAM(err , log_network)
 #define LOG_NET LOG_STREAM(info, log_network)
 
+bool have_addon_in_vcs_tree(const std::string& addon_name)
+{
+	static const std::string parentd = get_addon_campaigns_dir();
+	return
+		file_exists(parentd+"/"+addon_name+"/.svn") ||
+		file_exists(parentd+"/"+addon_name+"/.git") ||
+		file_exists(parentd+"/"+addon_name+"/.hg");
+}
+
+bool have_addon_pbl_info(const std::string& addon_name)
+{
+	static const std::string parentd = get_addon_campaigns_dir();
+	return
+		file_exists(parentd+"/"+addon_name+".pbl") ||
+		file_exists(parentd+"/"+addon_name+"/_server.pbl");
+}
+
 bool get_addon_info(const std::string& addon_name, config& cfg)
 {
 	const std::string parentd = get_addon_campaigns_dir();
@@ -1523,12 +1540,8 @@ void refresh_addon_version_info_cache()
 			version_info_cache.insert(std::make_pair(addon, version_info(version)));
 		}
 		// Don't print the warning if the user is clearly the author
-		else if (!file_exists(parentd+"/"+addon+".pbl")
-			  && !file_exists(parentd+"/"+addon+"/_server.pbl")
-			  && !file_exists(parentd+"/"+addon+"/.svn")
-			  && !file_exists(parentd+"/"+addon+"/.git")
-			  && !file_exists(parentd+"/"+addon+"/.hg")) {
-				WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info\n";
+		else if (!have_addon_pbl_info(addon) && !have_addon_in_vcs_tree(addon)) {
+			WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info\n";
 		}
 	}
 }
