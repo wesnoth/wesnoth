@@ -76,30 +76,25 @@ void set_addon_info(const std::string& addon_name, const config& cfg, const bool
 	write(*stream, cfg);
 }
 
-bool remove_local_addon(const std::string& addon, std::string* log)
+bool remove_local_addon(const std::string& addon)
 {
 	bool ret = true;
-	std::ostringstream messages;
 	const std::string addon_dir = get_addon_campaigns_dir() + "/" + addon;
 
 	LOG_CFG << "removing local add-on: " << addon << '\n';
 
 	if(file_exists(addon_dir) && !delete_directory(addon_dir, true)) {
-		messages << "Failed to delete directory/file: " << addon_dir << '\n';
+		ERR_CFG << "Failed to delete directory/file: " << addon_dir << '\n';
 		ret = false;
 	}
 
 	if(file_exists(addon_dir + ".cfg") && !delete_directory(addon_dir + ".cfg", true)) {
-		messages << "Failed to delete directory/file: " << addon_dir << ".cfg\n";
+		ERR_CFG << "Failed to delete directory/file: " << addon_dir << ".cfg\n";
 		ret = false;
 	}
 
-	if(log != NULL) {
-		*log = messages.str();
-	}
-
 	if(!ret) {
-		ERR_CFG << "removal of add-on " << addon << " failed:\n" << messages.str();
+		ERR_CFG << "removal of add-on " << addon << " failed!\n";
 	}
 
 	return ret;
