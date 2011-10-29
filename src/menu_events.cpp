@@ -867,7 +867,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		}
 		if(recall_list_team.empty()) {
 			gui2::show_transient_message(gui_->video(), "",
-				_("You currently can't recruit at the highlighted location"));
+				_("You currently can't recall at the highlighted location"));
 			return;
 		}
 	} // end planned unit map scope
