@@ -27,6 +27,7 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/addon/description.hpp"
+#include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/network_transmission.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
@@ -357,7 +358,7 @@ namespace {
 
 
 	/**
-	 * Strip the ".cfg" extension and replace "_" with " " for display.
+	 * Strip the ".cfg" extension..
 	 *
 	 * @param files      List of files in the add-ons directory.
 	 * @param dirs       List of subdirectories in the add-ons directory.
@@ -382,7 +383,6 @@ namespace {
 						break;
 					}
 				};
-				std::replace(i->begin(), i->end(), '_', ' ');
 				++i;
 			}
 		}
@@ -391,7 +391,6 @@ namespace {
 		while(i != dirs.end())
 		{
 			if (file_exists(parent_dir + *i + "/_main.cfg")) {
-				std::replace(i->begin(), i->end(), '_', ' ');
 				files.push_back(*i);
 				++i;
 			} else {
@@ -1338,9 +1337,25 @@ namespace {
 			e.show(disp);
 		}
 	}
+	
+	/** Replaces underscores to dress up file or dirnames as add-on names.
+	 * 
+	 * @todo In the future we should store more local information about add-ons and use
+	 *       this only as a fallback; it could be desirable to fetch translated names as well
+	 *       somehow.
+	 */
+	std::string get_addon_name(const std::string& id)
+	{
+		std::string retv(id);
+		std::replace(retv.begin(), retv.end(), '_', ' ');
+		return retv;
+	}
 
 	void uninstall_local_addons(game_display& disp, bool* should_reload_cfg)
 	{
+		static const std::string list_lead = "\n\n";
+		static const std::string list_sep = "\n";
+
 		std::vector<std::string> addons;
 		std::vector<std::string> addon_dirs;
 
@@ -1360,54 +1375,73 @@ namespace {
 
 		int index = -1;
 		int res;
+		
+		std::vector<std::string> remove_ids, remove_names;
 
 		do {
-			gui2::tsimple_item_selector dlg(
-				_("Uninstall add-ons"), _("Choose the add-on to remove."), addons);
-			dlg.set_selected_index(index);
-			dlg.set_ok_label(_("Remove"));
+			gui2::taddon_uninstall_list dlg(addons);
 			dlg.show(disp.video());
-			index = dlg.selected_index();
-
-			if(index == -1)
+			
+			remove_ids = dlg.selected_addons();
+			if(remove_ids.empty()) {
 				return;
+			}
+			
+			remove_names.clear();
+			
+			foreach(const std::string& id, remove_ids) {
+				remove_names.push_back(get_addon_name(id));
+			}
 
-			std::string confirm_message = _("Are you sure you want to remove the add-on '$addon|'?");
-			utils::string_map symbols;
-			symbols["addon"] = addons.at(static_cast<size_t>(index));
-			confirm_message = utils::interpolate_variables_into_string(confirm_message, &symbols);
+			const std::string confirm_message = _n(
+				"Are you sure you want to remove the following installed add-on?",
+				"Are you sure you want to remove the following installed add-ons?",
+				remove_ids.size()) + list_lead + utils::join(remove_names, list_sep);
 
 			res = gui2::show_message(disp.video()
 					, _("Confirm")
 					, confirm_message
 					, gui2::tmessage::yes_no_buttons);
 		} while (res != gui2::twindow::OK);
-
-		// Put underscores back in the name
-		std::string addon_id = addons.at(index);
-		std::replace(addon_id.begin(), addon_id.end(), ' ', '_');
-
-		// Try to remove add-on and report results
-		std::string removal_log;
-		if(remove_local_addon(addon_id, &removal_log))
-		{
-			std::string message = _("Add-on '$addon|' deleted.");
-			utils::string_map symbols;
-			symbols["addon"] = addons.at(index);
-			message = utils::interpolate_variables_into_string(message, &symbols);
-			gui2::show_transient_message(disp.video()
-					, _("Add-on deleted")
-					, message);
-
-			if(should_reload_cfg != NULL)
-				*should_reload_cfg = true;
+		
+		std::vector<std::string> failed_names, succeeded_names;
+		//std::string all_errors;
+		
+		foreach(const std::string& id, remove_ids) {
+			std::string errors;
+			const std::string& name = get_addon_name(id);
+			
+			//if(remove_local_addon(id, &errors)) {
+			if(remove_local_addon(id)) {
+				succeeded_names.push_back(name);
+			} else {
+				failed_names.push_back(name);
+				//all_errors += errors;
+			}
 		}
-		else
-		{
-			std::string err_msg = _("Add-on could not be deleted properly:");
-			err_msg += '\n';
-			err_msg += removal_log;
-			gui2::show_error_message(disp.video(), err_msg);
+		
+		if(!failed_names.empty()) {
+			gui2::show_error_message(disp.video(), _n(
+				"The following add-on could not be deleted properly:",
+				"The following add-ons could not be deleted properly:",
+				failed_names.size()) + list_lead + utils::join(failed_names, list_sep));
+		}
+		
+		if(!succeeded_names.empty()) {
+			const std::string dlg_title =
+				_n("Add-on Deleted", "Add-ons Deleted", succeeded_names.size());
+			const std::string dlg_msg = _n(
+				"The following add-on was successfully deleted:",
+				"The following add-ons were successfully deleted:",
+				succeeded_names.size());
+			
+			gui2::show_transient_message(
+				disp.video(), dlg_title,
+				dlg_msg + list_lead + utils::join(succeeded_names, list_sep));
+			
+			if(should_reload_cfg != NULL) {
+				*should_reload_cfg = true;
+			}
 		}
 	}
 

@@ -452,6 +452,7 @@ set(wesnoth-main_SRC
 	gui/auxiliary/window_builder/tree_view.cpp
 	gui/auxiliary/window_builder/vertical_scrollbar.cpp
 	gui/dialogs/addon/description.cpp
+	gui/dialogs/addon/uninstall_list.cpp
 	gui/dialogs/addon_connect.cpp
 	gui/dialogs/addon_list.cpp
 	gui/dialogs/campaign_difficulty.cpp
