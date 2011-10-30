@@ -916,6 +916,7 @@
 		F4EF0D8C13AD5635003C701D /* libboost_threadw.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4EF0D5B13AD4E6D003C701D /* libboost_threadw.dylib */; };
 		F4EF0D8D13AD5635003C701D /* libboost_regexw.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4EF0D5313AD4E35003C701D /* libboost_regexw.dylib */; };
 		F4EF0D8E13AD5635003C701D /* libboost_systemw.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_systemw.dylib */; };
+		F4FBD76A145D93370083CA67 /* uninstall_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4FBD769145D93370083CA67 /* uninstall_list.cpp */; };
 		F4FE7FA613DCFF660054F220 /* network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999DA0EC62181008DD061 /* network.cpp */; };
 /* End PBXBuildFile section */
 
@@ -1932,6 +1933,7 @@
 		F4EF0D5B13AD4E6D003C701D /* libboost_threadw.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_threadw.dylib; path = lib/libboost_threadw.dylib; sourceTree = "<group>"; };
 		F4EF0D7213AD52EA003C701D /* network_transmission.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = network_transmission.hpp; sourceTree = "<group>"; };
 		F4EF0D7313AD52EA003C701D /* network_transmission.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = network_transmission.cpp; sourceTree = "<group>"; };
+		F4FBD769145D93370083CA67 /* uninstall_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = uninstall_list.cpp; path = addon/uninstall_list.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2435,6 +2437,7 @@
 		49DA0CFB13550AC5000AFEBD /* addon */ = {
 			isa = PBXGroup;
 			children = (
+				F4FBD769145D93370083CA67 /* uninstall_list.cpp */,
 				4944F4161354FBB20027E614 /* description.cpp */,
 			);
 			name = addon;
@@ -3855,6 +3858,7 @@
 				F480CD4B14035038007175D6 /* sourceparser.cpp in Sources */,
 				F480CD4C14035038007175D6 /* tag.cpp in Sources */,
 				F4728DB1145A59CF00F0E1E1 /* editor_set_starting_position.cpp in Sources */,
+				F4FBD76A145D93370083CA67 /* uninstall_list.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
