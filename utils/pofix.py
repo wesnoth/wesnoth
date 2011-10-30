@@ -3893,7 +3893,7 @@ stringfixes = {
 ("Show Unit Standing Animations", "Show unit standing animations"),
 ("Animate Map", "Animate map"),
 ("Scroll Speed:", "Scroll speed:"),
-("Sample Rate (Hz):", "Sample rate (hz):"),
+("Sample Rate (Hz):", "Sample rate (Hz):"),
 ("Buffer Size: ", "Buffer size: "),
 
 ("Number of Hills:", "Number of hills:"),

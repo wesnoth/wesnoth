@@ -214,7 +214,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  scroll_label_(disp.video(), _("Scroll speed:")),
 	  chat_lines_label_(disp.video(), ""),
 	  turbo_slider_label_(disp.video(), "", font::SIZE_SMALL ),
-	  sample_rate_label_(disp.video(), _("Sample rate (hz):")), buffer_size_label_(disp.video(), ""),
+	  sample_rate_label_(disp.video(), _("Sample rate (Hz):")), buffer_size_label_(disp.video(), ""),
 	  idle_anim_slider_label_(disp.video(), _("Frequency:"), font::SIZE_SMALL ),
 	  autosavemax_slider_label_(disp.video(), "", font::SIZE_SMALL),
 	  advanced_slider_label_(disp.video(), "", font::SIZE_SMALL),
