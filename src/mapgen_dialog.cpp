@@ -120,10 +120,10 @@ void default_map_generator::user_config(display& disp)
 	const std::string& players_label = _("Players:");
 	const std::string& width_label = _("Width:");
 	const std::string& height_label = _("Height:");
-	const std::string& iterations_label = _("Number of Hills:");
-	const std::string& hillsize_label = _("Max Hill Size:");
+	const std::string& iterations_label = _("Number of hills:");
+	const std::string& hillsize_label = _("Max hill size:");
 	const std::string& villages_label = _("Villages:");
-	const std::string& castlesize_label = _("Castle Size:");
+	const std::string& castlesize_label = _("Castle size:");
 	const std::string& landform_label = _("Landform:");
 
 	SDL_Rect players_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,players_label,0,0);
@@ -246,7 +246,7 @@ void default_map_generator::user_config(display& disp)
 	SDL_Rect link_rect = slider_rect;
 	link_rect.y = link_rect.y + link_rect.h + vertical_margin;
 
-	gui::button link_castles(screen,_("Roads Between Castles"),gui::button::TYPE_CHECK);
+	gui::button link_castles(screen,_("Roads between castles"),gui::button::TYPE_CHECK);
 	link_castles.set_check(link_castles_);
 	link_castles.set_location(link_rect);
 

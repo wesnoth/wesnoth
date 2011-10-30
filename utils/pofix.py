@@ -3888,6 +3888,11 @@ stringfixes = {
 ("Sample Rate (Hz):", "Sample rate (hz):"),
 ("Buffer Size: ", "Buffer size: "),
 
+("Number of Hills:", "Number of hills:"),
+("Max Hill Size:", "Max hill size:"),
+("Castle Size:", "Castle size:"),
+("Roads Between Castles:", "Roads between castles:"),
+
 #this rules seems to be f***ed up and not in sync with src/addon/manager.cpp:999
 #uncomment it for the moment, please only reactivate after capitalization of
 #'add-ons' is/was fixed everywhere!
