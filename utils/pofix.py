@@ -3907,7 +3907,9 @@ stringfixes = {
 
 # Fix apostrophes
 ("Hides allies'", "Hides allies’"),
-("Hide Allies' Plans by Default", "Hide Allies’ Plans by Default"),
+
+# Fix apostrophes and capitalization
+("Hide Allies' Plans by Default", "Hide allies’ plans by default"),
 ),
 
 "wesnoth-manual" : (
