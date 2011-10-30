@@ -252,7 +252,7 @@ Version 1.9.9:
      (to remove events that have an id set)
    * Implemented sub= and divide= for abilities and weapon specials
      (patch #2857)
-   * new attribute replay_save= in [end_level]. Defaults to yes, allows
+   * new attribute replay_save= in [endlevel]. Defaults to yes, allows
      WML authors to disable replay saving for a scenario. (bug #18026)
    * [harm_unit] always uses wesnoth.float_label to avoid that an incorrect
      weapon filter may prevent floating the damage label
