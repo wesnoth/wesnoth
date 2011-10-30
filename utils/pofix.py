@@ -175,8 +175,6 @@ stringfixes = {
 ("Apply Filter", "Apply filter"),
 ("Vacant Slots", "Vacant slots"),
 ("Friends in Game", "Friends in game"),
-("", ""),
-("", ""),
 ),
 
 "wesnoth-anl" : (
