@@ -97,6 +97,8 @@ private:
 	 * pointer to a valid object.
 	 */
 	editor::editor_display* display_;
+
+	bool can_update_display_;
 };
 
 } // namespace gui2

@@ -98,6 +98,7 @@ teditor_settings::teditor_settings(editor::editor_display* display
 				, &preferences::editor::tod_b
 				, &preferences::editor::set_tod_b))
 	, display_(display)
+	, can_update_display_(false)
 {
 	register_bool("use_mdi"
 			, true
@@ -172,8 +173,11 @@ void teditor_settings::update_selected_tod_info(twindow& window)
 	custom_tod_green_field_->widget()->set_active(custom);
 	custom_tod_blue_field_->widget()->set_active(custom);
 	current_tod_label_->set_active(!custom);
-	update_tod_display(window);
-	window.invalidate_layout();
+
+	if(can_update_display_) {
+		update_tod_display(window);
+		window.invalidate_layout();
+	}
 }
 
 void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
@@ -235,6 +239,7 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 			current_tod_ = i;
 			custom_tod_toggle_->set_value(false);
 			update_selected_tod_info(window);
+			can_update_display_ = true;
 			return;
 		}
 	}
@@ -243,11 +248,15 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 	custom_tod_toggle_->set_value(true);
 
 	update_selected_tod_info(window);
+
+	can_update_display_ = true;
 }
 
 void teditor_settings::post_show(twindow& window)
 {
     update_tod_display(window);
+
+	can_update_display_ = false;
 }
 
 
