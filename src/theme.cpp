@@ -812,7 +812,7 @@ void theme::modify_label(const std::string& id, const std::string& text)
 {
 	theme::label *label = dynamic_cast<theme::label *>(&find_element(id));
 	if (!label) {
-		ERR_DP << "Theme contains no label called '" << id << "'.\n";
+		LOG_DP << "Theme contains no label called '" << id << "'.\n";
 		return;
 	}
 	label->set_text(text);
