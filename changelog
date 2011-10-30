@@ -91,6 +91,8 @@ Version 1.9.9+svn:
      [note]
    * Implemented red=, green=, and blue= for [objective], [gold_carryover], and
      [note]
+   * Added [theme] hidden= attribute that makes a theme unavailable for selection
+     in Preferences or :theme (defaults to no)
  * Miscellaneous and bug fixes:
    * Add --language/-L commandline option to set the language for that session
    * Fixed: Avoid copying of singular iterators in the whiteboard code

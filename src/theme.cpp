@@ -761,7 +761,7 @@ void theme::set_known_themes(const config* cfg)
 	foreach (const config &thm, cfg->child_range("theme"))
 	{
 		std::string thm_name = thm["name"];
-		if (thm_name != "null" && thm_name != "editor")
+		if (!thm["hidden"].to_bool(false))
 			known_themes[thm_name] = thm;
 	}
 }
