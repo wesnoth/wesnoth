@@ -1349,9 +1349,9 @@ namespace {
 			e.show(disp);
 		}
 	}
-	
+
 	/** Replaces underscores to dress up file or dirnames as add-on names.
-	 * 
+	 *
 	 * @todo In the future we should store more local information about add-ons and use
 	 *       this only as a fallback; it could be desirable to fetch translated names as well
 	 *       somehow.
@@ -1386,20 +1386,20 @@ namespace {
 		sorter.set_alpha_sort(1);
 
 		int res;
-		
+
 		std::vector<std::string> remove_ids, remove_names;
 
 		do {
 			gui2::taddon_uninstall_list dlg(addons);
 			dlg.show(disp.video());
-			
+
 			remove_ids = dlg.selected_addons();
 			if(remove_ids.empty()) {
 				return;
 			}
-			
+
 			remove_names.clear();
-			
+
 			foreach(const std::string& id, remove_ids) {
 				remove_names.push_back(get_addon_name(id));
 			}
@@ -1414,9 +1414,9 @@ namespace {
 					, confirm_message
 					, gui2::tmessage::yes_no_buttons);
 		} while (res != gui2::twindow::OK);
-		
+
 		std::vector<std::string> failed_names, skipped_names, succeeded_names;
-		
+
 		foreach(const std::string& id, remove_ids) {
 			const std::string& name = get_addon_name(id);
 
@@ -1438,14 +1438,14 @@ namespace {
 			gui2::show_error_message(
 				disp.video(), dlg_msg + list_lead + utils::join(skipped_names, list_sep));
 		}
-		
+
 		if(!failed_names.empty()) {
 			gui2::show_error_message(disp.video(), _n(
 				"The following add-on could not be deleted properly:",
 				"The following add-ons could not be deleted properly:",
 				failed_names.size()) + list_lead + utils::join(failed_names, list_sep));
 		}
-		
+
 		if(!succeeded_names.empty()) {
 			const std::string dlg_title =
 				_n("Add-on Deleted", "Add-ons Deleted", succeeded_names.size());
@@ -1453,11 +1453,11 @@ namespace {
 				"The following add-on was successfully deleted:",
 				"The following add-ons were successfully deleted:",
 				succeeded_names.size());
-			
+
 			gui2::show_transient_message(
 				disp.video(), dlg_title,
 				dlg_msg + list_lead + utils::join(succeeded_names, list_sep));
-			
+
 			if(should_reload_cfg != NULL) {
 				*should_reload_cfg = true;
 			}

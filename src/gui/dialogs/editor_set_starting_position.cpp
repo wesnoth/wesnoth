@@ -41,7 +41,7 @@ namespace gui2 {
  * Map editor dialog for setting player starting positions.
  *
  * @begin{table}{dialog_widgets}
- * 
+ *
  * listbox & & listbox & m &
  *         Listbox displaying player choices. $
  *

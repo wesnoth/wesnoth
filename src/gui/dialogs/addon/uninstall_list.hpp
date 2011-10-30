@@ -33,7 +33,7 @@ public:
 	 */
 	explicit taddon_uninstall_list(const std::vector<std::string>& addon_ids)
 		: ids_(addon_ids), names_(), selections_() {}
-	
+
 	std::vector<std::string> selected_addons() const;
 
 private:
@@ -43,10 +43,10 @@ private:
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-	
+
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
-	
+
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 };

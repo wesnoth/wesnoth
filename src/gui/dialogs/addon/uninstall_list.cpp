@@ -35,7 +35,7 @@ namespace {
 		std::replace(r.begin(), r.end(), '_', ' ');
 		return r;
 	}
-	
+
 }
 
 namespace gui2 {
@@ -46,17 +46,17 @@ void taddon_uninstall_list::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "addons_list", false);
 	window.keyboard_capture(&list);
-	
+
 	this->names_.clear();
 	this->selections_.clear();
-	
+
 	foreach(const std::string& id, this->ids_) {
 		this->names_.push_back(make_addon_name(id));
 		this->selections_[id] = false;
 
 		std::map<std::string, string_map> data;
 		string_map column;
-		
+
 		column["label"] = this->names_.back();
 		data.insert(std::make_pair("name", column));
 		list.add_row(data);
@@ -67,19 +67,19 @@ void taddon_uninstall_list::post_show(twindow& window)
 {
 	const tlistbox& list = find_widget<tlistbox>(&window, "addons_list", false);
 	const unsigned rows = list.get_item_count();
-	
+
 	assert(rows == this->ids_.size() && rows == this->names_.size());
-	
+
 	if(!rows || get_retval() != twindow::OK) {
 		return;
 	}
-	
+
 	for(unsigned k = 0; k < rows; ++k) {
 		tgrid const* g = list.get_row_grid(k);
 		const ttoggle_button& checkbox = find_widget<const ttoggle_button>(g, "checkbox", false);
 		this->selections_[this->ids_[k]] = checkbox.get_value();
 	}
-	
+
 }
 
 std::vector<std::string> taddon_uninstall_list::selected_addons() const
@@ -92,7 +92,7 @@ std::vector<std::string> taddon_uninstall_list::selected_addons() const
 			retv.push_back(entry.first);
 		}
 	}
-	
+
 	return retv;
 }
 

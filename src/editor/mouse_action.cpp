@@ -426,7 +426,7 @@ editor_action* mouse_action_starting_position::up_left(editor_display& disp, int
 		static_cast<unsigned>(disp.map().is_starting_position(hex) + 1); // 1st player = 1
 
 	std::vector<map_location> starting_positions;
-	
+
 	for(int i = 1; i <= gamemap::MAX_PLAYERS; ++i) {
 		starting_positions.push_back(disp.map().starting_position(i));
 	}
