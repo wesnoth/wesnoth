@@ -26,6 +26,9 @@
 #include "editor_layout.hpp"
 
 namespace editor {
+
+std::string get_selected_terrain();
+
 /**
  * Stores the info about the data in editor-groups.cfg in a nice format.
  *

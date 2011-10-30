@@ -30,8 +30,16 @@
 #include "../tooltips.hpp"
 #include "../marked-up_text.hpp"
 
+namespace {
+static std::string selected_terrain;
+}
 
 namespace editor {
+
+std::string get_selected_terrain()
+{
+	return selected_terrain;
+}
 
 static bool is_valid_terrain(t_translation::t_terrain c) {
 	return !(c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
@@ -511,8 +519,6 @@ int terrain_palette::tile_selected(const int x, const int y) const {
 	}
 	return -1;
 }
-
-std::string selected_terrain;
 
 void terrain_palette::update_report()
 {
