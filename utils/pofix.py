@@ -3945,6 +3945,8 @@ stringfixes = {
 
 ("Scenario Start", "Scenario start"),
 
+("Fog of War", "Fog of war"),
+
 #this rules seems to be f***ed up and not in sync with src/addon/manager.cpp:999
 #uncomment it for the moment, please only reactivate after capitalization of
 #'add-ons' is/was fixed everywhere!
