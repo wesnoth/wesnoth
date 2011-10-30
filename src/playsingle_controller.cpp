@@ -358,6 +358,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 		LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
+		events::raise_draw_event();
 		fire_start(!loading_game_);
 		gui_->recalculate_minimap();
 
