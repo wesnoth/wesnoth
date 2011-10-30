@@ -282,7 +282,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	buffer_size_slider_.value_change();
 	buffer_size_slider_.set_help_string(_("Change the buffer size"));
 	std::stringstream buf;
-	buf << _("Buffer Size: ") << sound_buffer_size();
+	buf << _("Buffer size: ") << sound_buffer_size();
 	buffer_size_label_.set_text(buf.str());
 	buffer_size_label_.set_help_string(_("Change the buffer size"));
 
@@ -881,7 +881,7 @@ void preferences_dialog::process_event()
 			const size_t buffer_size = 512 << buffer_size_slider_.value();
 			save_sound_buffer_size(buffer_size);
 			std::stringstream buf;
-			buf << _("Buffer Size: ") << buffer_size;
+			buf << _("Buffer size: ") << buffer_size;
 			buffer_size_label_.set_text(buf.str());
 		}
 
