@@ -3848,6 +3848,10 @@ stringfixes = {
 
 # Fix capitalization
 ("Lava chasm", "Lava Chasm"),
+
+# Checkbox/slider title case -> sentence case conversions in 1.9.10
+("Ignore All", "Ignore all"),
+
 #this rules seems to be f***ed up and not in sync with src/addon/manager.cpp:999
 #uncomment it for the moment, please only reactivate after capitalization of
 #'add-ons' is/was fixed everywhere!
