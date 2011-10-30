@@ -3931,7 +3931,6 @@ stringfixes = {
 ("Show Haloing Effects", "Show haloing effects"),
 ("Chat Timestamping", "Chat timestamping"),
 ("User Interface Sounds", "User interface sounds"),
-("Show Unit Idle Animations", "Show unit idle animations"),
 ("Show Unit Standing Animations", "Show unit standing animations"),
 ("Animate Map", "Animate map"),
 ("Scroll Speed:", "Scroll speed:"),
