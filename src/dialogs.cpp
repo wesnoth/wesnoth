@@ -508,7 +508,7 @@ void save_preview_pane::draw_contents()
 		} else if (!summary["turn"].empty()) {
 			str << _("Turn") << " " << summary["turn"];
 		} else {
-			str << _("Scenario Start");
+			str << _("Scenario start");
 		}
 
 		str << "\n" << _("Difficulty: ") << string_table[summary["difficulty"]];

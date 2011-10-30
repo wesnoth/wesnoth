@@ -314,7 +314,7 @@ void tgame_load::evaluate_summary_string(std::stringstream& str
 		} else if (!cfg_summary["turn"].empty()) {
 			str << _("Turn") << " " << cfg_summary["turn"];
 		} else {
-			str << _("Scenario Start");
+			str << _("Scenario start");
 		}
 
 		str << "\n" << _("Difficulty: ")

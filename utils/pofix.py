@@ -223,6 +223,8 @@ stringfixes = {
 ("Joystick: Number of the Thrust Axis Joystick", "Joystick: number of the thrust axis joystick"),
 ("Joystick: Number of the Thrust Axis", "Joystick: number of the thrust axis"),
 ("Joystick: Deadzone of the Thruster", "Joystick: deadzone of the thruster"),
+
+("Scenario Start", "Scenario start"),
 ),
 
 "wesnoth-anl" : (
@@ -3940,6 +3942,8 @@ stringfixes = {
 ("Max Hill Size:", "Max hill size:"),
 ("Castle Size:", "Castle size:"),
 ("Roads Between Castles:", "Roads between castles:"),
+
+("Scenario Start", "Scenario start"),
 
 #this rules seems to be f***ed up and not in sync with src/addon/manager.cpp:999
 #uncomment it for the moment, please only reactivate after capitalization of
