@@ -86,7 +86,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	map_label_(disp.video(), _("Map to play:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	use_map_settings_(disp.video(), _("Use map settings"), gui::button::TYPE_CHECK),
 	random_start_time_(disp.video(), _("Random start time"), gui::button::TYPE_CHECK),
-	fog_game_(disp.video(), _("Fog Of War"), gui::button::TYPE_CHECK),
+	fog_game_(disp.video(), _("Fog of war"), gui::button::TYPE_CHECK),
 	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
 	shuffle_sides_(disp.video(), _("Shuffle sides"), gui::button::TYPE_CHECK),
@@ -371,7 +371,7 @@ void create::process_event()
 	if(cur_turns < 100) {
 		buf << _("Turns: ") << cur_turns;
 	} else {
-		buf << _("Unlimited Turns");
+		buf << _("Unlimited turns");
 	}
 	turns_label_.set_text(buf.str());
 
@@ -399,12 +399,12 @@ void create::process_event()
 	mp_countdown_reservoir_time_ = countdown_reservoir_time_slider_.value();
 
 	buf.str("");
-	buf <<  _("Init. Limit: ") << mp_countdown_init_time_; // << _(" sec.");
+	buf <<  _("Init. limit: ") << mp_countdown_init_time_; // << _(" sec.");
 	countdown_init_time_label_.set_text(buf.str());
 
 	const int mp_countdown_turn_bonus_val = countdown_turn_bonus_slider_.value();
 	buf.str("");
-	buf <<  _("Turn Bonus: ") << mp_countdown_turn_bonus_val; // << _(" sec.");
+	buf <<  _("Turn bonus: ") << mp_countdown_turn_bonus_val; // << _(" sec.");
 	countdown_turn_bonus_label_.set_text(buf.str());
 
 	buf.str("");
@@ -413,20 +413,20 @@ void create::process_event()
 
 	const int mp_countdown_action_bonus_val = countdown_action_bonus_slider_.value();
 	buf.str("");
-	buf <<  _("Action Bonus: ") << mp_countdown_action_bonus_val; // << _(" sec.");
+	buf <<  _("Action bonus: ") << mp_countdown_action_bonus_val; // << _(" sec.");
 	countdown_action_bonus_label_.set_text(buf.str());
 
 
 	// Villages can produce between 1 and 5 gold a turn
 	const int village_gold = village_gold_slider_.value();
 	buf.str("");
-	buf << _("Village Gold: ") << village_gold;
+	buf << _("Village gold: ") << village_gold;
 	village_gold_label_.set_text(buf.str());
 
 	// Experience modifier
 	const int xpmod = xp_modifier_slider_.value();
 	buf.str("");
-	buf << _("Experience Modifier: ") << xpmod << "%";
+	buf << _("Experience modifier: ") << xpmod << "%";
 
 	xp_modifier_label_.set_text(buf.str());
 

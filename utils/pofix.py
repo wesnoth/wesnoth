@@ -175,6 +175,14 @@ stringfixes = {
 ("Apply Filter", "Apply filter"),
 ("Vacant Slots", "Vacant slots"),
 ("Friends in Game", "Friends in game"),
+
+("Fog Of War", "Fog of war"),
+("Action Bonus: ", "Action bonus: "),
+("Turn Bonus: ", "Turn bonus: "),
+("Init. Limit: ", "Init. limit: "),
+("Village Gold: ", "Village gold: "),
+("Experience Modifier: ", "Experience modifier: "),
+("Unlimited Turns", "Unlimited turns"),
 ),
 
 "wesnoth-anl" : (
