@@ -1425,6 +1425,11 @@ void display::draw_border(const map_location& loc, const int xpos, const int ypo
 void display::draw_minimap()
 {
 	const SDL_Rect& area = minimap_area();
+
+	if(area.w == 0 || area.h == 0) {
+		return;
+	}
+
 	if(minimap_ == NULL || minimap_->w > area.w || minimap_->h > area.h) {
 		minimap_ = image::getMinimap(area.w, area.h, get_map(), viewpoint_);
 		if(minimap_ == NULL) {
