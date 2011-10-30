@@ -169,6 +169,14 @@ stringfixes = {
 # Fix apostrophes
 ("SHOW ALL allies'", "SHOW ALL allies’"),
 ("HIDE ALL allies'", "HIDE ALL allies’"),
+
+# Checkbox/slider title case -> sentence case conversions in 1.9.10
+("Quick Replays", "Quick replays"),
+("Apply Filter", "Apply filter"),
+("Vacant Slots", "Vacant slots"),
+("Friends in Game", "Friends in game"),
+("", ""),
+("", ""),
 ),
 
 "wesnoth-anl" : (
