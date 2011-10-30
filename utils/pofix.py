@@ -3852,6 +3852,36 @@ stringfixes = {
 # Checkbox/slider title case -> sentence case conversions in 1.9.10
 ("Ignore All", "Ignore all"),
 
+("Full Screen", "Full screen"),
+("Accelerated Speed", "Accelerated speed"),
+("Skip AI Moves", "Skip AI moves"),
+("Interrupt Move when an Ally is Sighted", "Interrupt move when an ally is sighted"),
+("Show Grid", "Show grid"),
+("Save Replay on SP/MP Victory or MP Defeat", "Save replay on SP/MP victory or MP defeat"),
+("Delete Auto-Saves on SP/MP Victory or MP Defeat", "Delete auto-saves on SP/MP victory or MP defeat"),
+("Do Not Show Lobby Joins", "Do not show lobby joins"),
+("Show Lobby Joins Of Friends Only", "Show lobby joins of friends only"),
+("Show All Lobby Joins", "Show all lobby joins"),
+("Sort Lobby List", "Sort lobby list"),
+("Iconize Lobby List", "Iconize lobby list"),
+("Save Password to Preferences (Plain Text)", "Save password to preferences (plain text)"),
+("Show Floating Labels", "Show floating labels"),
+("Turn Dialog", "Turn dialog"),
+("Enable Planning Mode on Start", "Enable planning mode on start"),
+("Hide Allies’ Plans by Default", "Hide allies’ plans by default"),
+("Turn Bell", "Turn bell"),
+("Show Team Colors", "Show team colors"),
+("Show Color Cursors", "Show color cursors"),
+("Show Haloing Effects", "Show haloing effects"),
+("Chat Timestamping", "Chat timestamping"),
+("User Interface Sounds", "User interface sounds"),
+("Show Unit Idle Animations", "Show unit idle animations"),
+("Show Unit Standing Animations", "Show unit standing animations"),
+("Animate Map", "Animate map"),
+("Scroll Speed:", "Scroll speed:"),
+("Sample Rate (Hz):", "Sample rate (hz):"),
+("Buffer Size: ", "Buffer size: "),
+
 #this rules seems to be f***ed up and not in sync with src/addon/manager.cpp:999
 #uncomment it for the moment, please only reactivate after capitalization of
 #'add-ons' is/was fixed everywhere!
