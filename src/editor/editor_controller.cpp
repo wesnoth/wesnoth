@@ -47,9 +47,18 @@
 
 namespace {
 static std::vector<std::string> saved_windows_;
+
+static std::string left_button_function;
 }
 
+
+
 namespace editor {
+
+std::string get_left_button_function()
+{
+	return left_button_function;
+}
 
 /**
  * Utility class to properly refresh the display when the map context object is replaced
@@ -1208,8 +1217,6 @@ void editor_controller::fill_selection()
 {
 	perform_refresh(editor_action_paint_area(get_map().selection(), foreground_terrain_));
 }
-
-std::string left_button_function;
 
 void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 {

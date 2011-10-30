@@ -17,6 +17,7 @@
 
 #include "actions.hpp"
 #include "attack_prediction.hpp"
+#include "editor/editor_controller.hpp"
 #include "font.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
@@ -1193,7 +1194,7 @@ REPORT_GENERATOR(observers)
 }
 
 namespace editor {
-extern std::string selected_terrain, left_button_function;
+extern std::string selected_terrain ;
 }
 
 REPORT_GENERATOR(selected_terrain)
@@ -1206,10 +1207,11 @@ REPORT_GENERATOR(selected_terrain)
 
 REPORT_GENERATOR(edit_left_button_function)
 {
-	if (editor::left_button_function.empty())
+	const std::string left_button_function = editor::get_left_button_function();
+	if (left_button_function.empty())
 		return report();
 	else
-		return text_report(editor::left_button_function);
+		return text_report(left_button_function);
 }
 
 REPORT_GENERATOR(editor_tool_hint)

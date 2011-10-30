@@ -53,6 +53,8 @@ struct size_specs;
 class terrain_palette;
 class editor_map;
 
+std::string get_left_button_function();
+
 /**
  * The editor_controller class containts the mouse and keyboard event handling
  * routines for the editor. It also serves as the main editor class with the
