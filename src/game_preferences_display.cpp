@@ -935,7 +935,7 @@ void preferences_dialog::process_event()
 
 		//display currently select amount of chat lines
 		std::stringstream buf;
-		buf << _("Chat Lines: ") << chat_lines_slider_.value();
+		buf << _("Chat lines: ") << chat_lines_slider_.value();
 		chat_lines_label_.set_text(buf.str());
 
 		return;

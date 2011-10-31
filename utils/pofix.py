@@ -3936,6 +3936,7 @@ stringfixes = {
 ("Scroll Speed:", "Scroll speed:"),
 ("Sample Rate (Hz):", "Sample rate (Hz):"),
 ("Buffer Size: ", "Buffer size: "),
+("Chat Lines: ", "Chat lines: "),
 
 ("Number of Hills:", "Number of hills:"),
 ("Max Hill Size:", "Max hill size:"),
