@@ -279,7 +279,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 	SDL_Rect clip_rect = create_rect(0, 0, disp.w (), disp.h ());
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
-					     font::NORMAL_COLOR,_("Press desired Hotkey (Esc cancels)"),
+					     font::NORMAL_COLOR,_("Press desired hotkey (Esc cancels)"),
 					     0, 0);
 
 	std::vector<std::string> menu_items;
@@ -348,7 +348,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 			mini_frame.draw_background();
 			mini_frame.draw_border();
 			font::draw_text (&disp.video(), clip_rect, font::SIZE_LARGE,font::NORMAL_COLOR,
-				 _("Press desired Hotkey (Esc cancels)"),centerx-text_size.w/2,
+				 _("Press desired hotkey (Esc cancels)"),centerx-text_size.w/2,
 				 centery-text_size.h/2);
 			disp.update_display();
 			SDL_Event event;
@@ -391,7 +391,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 				if(oldhk.get_id() != newhk.get_id() && !oldhk.null()) {
 					std::stringstream msg;
 					msg << "   " << oldhk.get_description() << " : " << oldhk.get_name();
-					gui2::show_transient_message(disp.video(),_("This Hotkey is already in use."),msg.str());
+					gui2::show_transient_message(disp.video(),_("This hotkey is already in use."),msg.str());
 				} else {
 					if (event.type == SDL_JOYHATMOTION) {
 						const hotkey::hotkey_item& oldhkhat = hotkey::get_hotkey(joystick, hat, value);
@@ -399,7 +399,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 						if(oldhkhat.get_id() != newhk.get_id() && !oldhkhat.null()) {
 							std::stringstream msg;
 							msg << "   " << oldhkhat.get_description() << " : " << oldhkhat.get_name();
-							gui2::show_transient_message(disp.video(),_("This Hotkey is already in use."),msg.str());
+							gui2::show_transient_message(disp.video(),_("This hotkey is already in use."),msg.str());
 						} else {
 							newhk.set_hat(joystick, hat, value);
 							menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
@@ -411,7 +411,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 						if(oldhkbtn.get_id() != newhk.get_id() && !oldhkbtn.null()) {
 							std::stringstream msg;
 							msg << "   " << oldhkbtn.get_description() << " : " << oldhkbtn.get_name();
-							gui2::show_transient_message(disp.video(),_("This Hotkey is already in use."),msg.str());
+							gui2::show_transient_message(disp.video(),_("This hotkey is already in use."),msg.str());
 						} else {
 							newhk.set_button(button, joystick);
 							menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
