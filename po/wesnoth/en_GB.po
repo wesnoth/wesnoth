@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2011-10-17 17:48-0500\n"
+"PO-Revision-Date: 2011-10-31 16:29-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -199,10 +199,9 @@ msgstr "Joystick: deadzone of the scrolling stick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:223
-#, fuzzy
 #| msgid "Joystick: number of the cursor X-axis joystick"
 msgid "Joystick: number of the cursor x-axis joystick"
-msgstr "Joystick: number of the cursor X-axis joystick"
+msgstr "Joystick: number of the cursor x-axis joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:233
@@ -2613,7 +2612,6 @@ msgstr "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
-#, fuzzy
 #| msgid ""
 #| "If you are playing with <b>Shroud</b> or <b>Fog of war</b> active, you "
 #| "won’t know what you’re facing. In this case, long-range scouting units "
@@ -2626,7 +2624,7 @@ msgid ""
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"If you are playing with <b>Shroud</b> or <b>Fog of war</b> active, you won’t "
+"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
@@ -2742,7 +2740,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:88
-#, fuzzy
 #| msgid ""
 #| "On maps where <i>Shroud</i> or <i>Fog of war</i> has been enabled, all "
 #| "units’ sightlines are limited by their maximum movement. If you have some "
@@ -2754,10 +2751,10 @@ msgid ""
 "valuable but slow units, keep at least one fast unit with them so that you "
 "are not caught out by a surprise attack."
 msgstr ""
-"On maps where <i>Shroud</i> or <i>Fog of war</i> has been enabled, all "
-"units’ sightlines are limited by their maximum movement. If you have some "
-"valuable but slow units, keep at least one fast unit with them so that you "
-"are not caught out by a surprise attack."
+"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
+"units’ lines of sight are limited by their maximum movement. If you have "
+"some valuable but slow units, keep at least one fast unit with them so that "
+"you are not caught out by a surprise attack."
 
 #. [tip]
 #: data/hardwired/tips.cfg:92
@@ -3436,10 +3433,9 @@ msgstr "Point of view"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#, fuzzy
 #| msgid "Skip Animation"
 msgid "Skip animation"
-msgstr "Skip Animation"
+msgstr "Skip animation"
 
 #: src/about.cpp:204 src/menu_events.cpp:324 src/menu_events.cpp:351
 #: src/statistics_dialog.cpp:114
@@ -3848,12 +3844,11 @@ msgid "You have no add-ons installed."
 msgstr "You have no add-ons installed."
 
 #: src/addon/manager.cpp:1408
-#, fuzzy
 #| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] "Are you sure you want to remove the add-on '$addon|'?"
-msgstr[1] "Are you sure you want to remove the add-on '$addon|'?"
+msgstr[0] "Are you sure you want to remove the following installed add-on?"
+msgstr[1] "Are you sure you want to remove the following installed add-ons?"
 
 #: src/addon/manager.cpp:1434
 msgid ""
@@ -3863,32 +3858,33 @@ msgid_plural ""
 "The following add-ons appear to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr[0] ""
+"The following add-on appears to have publishing or version control "
+"information stored locally, and will not be removed:"
 msgstr[1] ""
+"The following add-ons appear to have publishing or version control "
+"information stored locally, and will not be removed:"
 
 #: src/addon/manager.cpp:1444
-#, fuzzy
 #| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
-msgstr[0] "Add-on could not be deleted properly:"
-msgstr[1] "Add-on could not be deleted properly:"
+msgstr[0] "The following add-on could not be deleted properly:"
+msgstr[1] "The following add-ons could not be deleted properly:"
 
 #: src/addon/manager.cpp:1451
-#, fuzzy
 #| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
-msgstr[0] "Add-on deleted"
-msgstr[1] "Add-on deleted"
+msgstr[0] "Add-on Deleted"
+msgstr[1] "Add-ons Deleted"
 
 #: src/addon/manager.cpp:1453
-#, fuzzy
 #| msgid "The following add-on had errors and could not be loaded:"
 #| msgid_plural "The following add-ons had errors and could not be loaded:"
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
-msgstr[0] "The following add-on had errors and could not be loaded:"
-msgstr[1] "The following add-ons had errors and could not be loaded:"
+msgstr[0] "The following add-on was successfully deleted:"
+msgstr[1] "The following add-ons were successfully deleted:"
 
 #: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
@@ -3975,10 +3971,9 @@ msgid "Tutorial"
 msgstr "Tutorial"
 
 #: src/dialogs.cpp:499
-#, fuzzy
 #| msgid "Remote scenario"
 msgid "Test scenario"
-msgstr "Remote scenario"
+msgstr "Test scenario"
 
 #: src/dialogs.cpp:509 src/savegame.cpp:1050
 msgid "Turn"
@@ -4214,13 +4209,12 @@ msgid "Turn "
 msgstr "Turn "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
-#, fuzzy
 #| msgid "Vacant Slot:"
 #| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Vacant Slot:"
-msgstr[1] "Vacant slots:"
+msgstr[1] "Vacant Slots:"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:306 src/multiplayer_lobby.cpp:560
 msgid "Fog"
@@ -4588,7 +4582,7 @@ msgstr ""
 
 #: src/menu_events.cpp:870
 msgid "You currently can't recall at the highlighted location"
-msgstr ""
+msgstr "You currently can’t recall at the highlighted location"
 
 #: src/menu_events.cpp:882
 msgid "Traits"
@@ -5087,10 +5081,9 @@ msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Toggle overlaying of terrain codes on hexes."
 
 #: src/menu_events.cpp:2627
-#, fuzzy
 #| msgid "Toggle Planning Mode."
 msgid "Toggle planning mode."
-msgstr "Toggle Planning Mode."
+msgstr "Toggle planning mode."
 
 #: src/menu_events.cpp:2630
 msgid "Access whiteboard options dialog."
@@ -6200,10 +6193,9 @@ msgid "(Att / Def)"
 msgstr "(Att / Def)"
 
 #: src/reports.cpp:443
-#, fuzzy
 #| msgid "Experience modifier: "
 msgid "Experience Modifier: "
-msgstr "Experience modifier: "
+msgstr "Experience Modifier: "
 
 #: src/reports.cpp:494
 msgid "Terrain: "
