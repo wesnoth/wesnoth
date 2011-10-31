@@ -96,7 +96,7 @@ local function generate_objectives(cfg)
 					lose_objectives = lose_objectives .. caption .. "\n"
 				end
 
-				lose_objectives = lose_objectives .. color_prefix(255, 0, 0) .. objective_bullet .. description .. turn_counter .. "</span>" .. "\n"
+				lose_objectives = lose_objectives .. color_prefix(r, g, b) .. objective_bullet .. description .. turn_counter .. "</span>" .. "\n"
 			else
 				wesnoth.message "Unknown condition, ignoring."
 			end
