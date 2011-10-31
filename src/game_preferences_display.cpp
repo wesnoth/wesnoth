@@ -54,7 +54,7 @@ struct advanced_preferences_sorter
 {
 	bool operator()(const config& lhs, const config& rhs) const
 	{
-		return lhs["name"].t_str() < rhs["name"].t_str();
+		return lhs["name"].t_str().str() < rhs["name"].t_str().str();
 	}
 };
 
