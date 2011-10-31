@@ -265,7 +265,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	const int centerx = disp.w()/2;
 	const int centery = disp.h()/2;
 	const int width  = 700;
-	const int height = 500;
+	const int height = disp.video().gety() < 600 ? 380 : 500;
 	const int xpos = centerx  - width/2;
 	const int ypos = centery  - height/2;
 
@@ -304,11 +304,11 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(0).set_alpha_sort(1);
 
-	gui::menu menu_(disp.video(), menu_items, false, height, -1, &sorter, &gui::menu::bluebg_style);
+	gui::menu menu_(disp.video(), menu_items, false, height - font::relative_size(10), -1, &sorter, &gui::menu::bluebg_style);
 	menu_.sort_by(0);
 	menu_.reset_selection();
 	menu_.set_width(font::relative_size(500));
-	menu_.set_location(xpos + font::relative_size(20), ypos);
+	menu_.set_location(xpos + font::relative_size(10), ypos + font::relative_size(10));
 
 	gui::button change_button (disp.video(), _("Change Hotkey"));
 	change_button.set_location(xpos + width - change_button.width () - font::relative_size(30),ypos + font::relative_size(30));
