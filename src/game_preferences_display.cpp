@@ -1289,7 +1289,7 @@ bool show_theme_dialog(display& disp)
 {
 	std::vector<std::string> options = disp.get_theme().get_known_themes();
 	if(!options.empty()){
-		gui2::tsimple_item_selector dlg(_("Choose theme"), "", options);
+		gui2::tsimple_item_selector dlg(_("Choose Theme"), "", options);
 
 		for(size_t k = 0; k < options.size(); ++k) {
 			if(options[k] == preferences::theme()) {
