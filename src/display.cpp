@@ -748,7 +748,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 						image.get_filename(),
 						image.get_loc(),
 						image.get_center_x(), image.get_center_y(),
-						image.get_modifications() + color_mod
+						image.get_modifications(), color_mod
 					);
 
 				surf = image::get_image(colored_image, image::SCALED_TO_HEX);

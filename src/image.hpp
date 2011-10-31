@@ -45,7 +45,7 @@ namespace image {
 			value(const char *filename);
 			value(const std::string& filename);
 			value(const std::string& filename, const std::string& modifications);
-			value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications);
+			value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications, const std::string& lightmap);
 
 			bool operator==(const value& a) const;
 			bool operator<(const value& a) const;
@@ -54,6 +54,7 @@ namespace image {
 			std::string filename_;
 			map_location loc_;
 			std::string modifications_;
+			std::string lightmap_;
 			int center_x_;
 			int center_y_;
 		};
@@ -79,7 +80,7 @@ namespace image {
 		locator(const char *filename);
 		locator(const std::string& filename);
 		locator(const std::string& filename, const std::string& modifications);
-		locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications="");
+		locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications="", const std::string& lightmap="");
 
 		locator& operator=(const locator &a);
 		bool operator==(const locator &a) const { return index_ == a.index_; }

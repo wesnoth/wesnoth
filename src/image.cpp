@@ -240,9 +240,9 @@ locator::locator(const std::string &filename, const std::string& modifications) 
 }
 
 locator::locator(const std::string &filename, const map_location &loc,
-		int center_x, int center_y, const std::string& modifications) :
+		int center_x, int center_y, const std::string& modifications, const std::string& lightmap) :
 	index_(-1),
-	val_(filename, loc, center_x, center_y, modifications)
+	val_(filename, loc, center_x, center_y, modifications, lightmap)
 {
 	init_index();
 }
@@ -257,42 +257,37 @@ locator& locator::operator=(const locator &a)
 
 locator::value::value(const locator::value& a) :
   type_(a.type_), filename_(a.filename_), loc_(a.loc_),
-  modifications_(a.modifications_),
+  modifications_(a.modifications_), lightmap_(a.lightmap_),
   center_x_(a.center_x_), center_y_(a.center_y_)
-{
-}
+{}
 
 locator::value::value() :
-	type_(NONE), filename_(), loc_(), modifications_(),
+	type_(NONE), filename_(), loc_(),
+	modifications_(), lightmap_(),
   center_x_(0), center_y_(0)
-
 {}
 
 locator::value::value(const char *filename) :
-  type_(FILE), filename_(filename), loc_(), modifications_(),
+  type_(FILE), filename_(filename), loc_(),
+  modifications_(), lightmap_(),
   center_x_(0), center_y_(0)
-
-{
-}
+{}
 
 locator::value::value(const std::string& filename) :
-  type_(FILE), filename_(filename),  loc_(), modifications_(),
+  type_(FILE), filename_(filename),  loc_(),
+  modifications_(), lightmap_(),
   center_x_(0), center_y_(0)
-
-{
-}
+{}
 
 locator::value::value(const std::string& filename, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications),
+  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications), lightmap_(),
   center_x_(0), center_y_(0)
+{}
 
-{
-}
-
-locator::value::value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications), center_x_(center_x), center_y_(center_y)
-{
-}
+locator::value::value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications, const std::string& lightmap) :
+  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications), lightmap_(lightmap),
+  center_x_(center_x), center_y_(center_y)
+{}
 
 bool locator::value::operator==(const value& a) const
 {
@@ -301,7 +296,7 @@ bool locator::value::operator==(const value& a) const
 	} else if(type_ == FILE) {
 		return filename_ == a.filename_;
 	} else if(type_ == SUB_FILE) {
-	  return filename_ == a.filename_ && loc_ == a.loc_ && modifications_ == a.modifications_
+	  return filename_ == a.filename_ && loc_ == a.loc_ && modifications_ == a.modifications_ && lightmap_ == a.lightmap_
           && center_x_ == a.center_x_ && center_y_ == a.center_y_;
 	} else {
 		return false;
@@ -323,8 +318,9 @@ bool locator::value::operator<(const value& a) const
             return center_x_ < a.center_x_;
         if(center_y_ != a.center_y_)
             return center_y_ < a.center_y_;
-
-		return(modifications_ < a.modifications_);
+		if(modifications_ != a.modifications_)
+			return(modifications_ < a.modifications_);
+		return (lightmap_ < a.lightmap_);
 	} else {
 		return false;
 	}
@@ -344,6 +340,7 @@ size_t hash_value(const locator::value& val) {
 		hash_combine(hash, val.center_x_);
 		hash_combine(hash, val.center_y_);
 		hash_combine(hash, val.modifications_);
+		hash_combine(hash, val.lightmap_);
 	}
 
 	return hash;
@@ -498,6 +495,16 @@ surface locator::load_image_sub_file() const
 		surf = mask_surface(cut, get_hexmask());
 	}
 
+	modification_queue lightmods = modification::decode(val_.lightmap_);
+
+	while(!lightmods.empty()) {
+		modification* lmod = lightmods.top();
+		lightmods.pop();
+
+		surf = (*lmod)(surf);
+		delete lmod;
+	}
+
 	return surf;
 }
 
@@ -530,6 +537,7 @@ SDL_PixelFormat last_pixel_format;
 
 void set_pixel_format(SDL_PixelFormat* format)
 {
+	std::cout << "ou\n";
 	assert(format != NULL);
 
 	SDL_PixelFormat &f = *format;
