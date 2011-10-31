@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-10 11:40+0200\n"
+"POT-Creation-Date: 2011-10-31 21:12+0100\n"
 "PO-Revision-Date: 2011-07-07 11:37+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
@@ -127,7 +127,7 @@ msgstr "особое"
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor.cfg:179 data/themes/editor.cfg:192
+#: data/themes/editor.cfg:181 data/themes/editor.cfg:194
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -138,7 +138,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:214
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:216
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -148,7 +148,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:203
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:205
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -169,47 +169,47 @@ msgstr ""
 "(повернуть, отразить) буфер обмена."
 
 #. [menu]: id=menu-editor-file
-#: data/themes/editor.cfg:120
+#: data/themes/editor.cfg:122
 msgid "File"
 msgstr "Файл"
 
 #. [menu]: id=menu-editor-edit
-#: data/themes/editor.cfg:131
+#: data/themes/editor.cfg:133
 msgid "Edit"
 msgstr "Правка"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:141
+#: data/themes/editor.cfg:143
 msgid "Map"
 msgstr "Карта"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:151
+#: data/themes/editor.cfg:153
 msgid "Window"
 msgstr "Окно"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:270
+#: data/themes/editor.cfg:272
 msgid "villages"
 msgstr "деревни"
 
-#: src/editor/editor_controller.cpp:123
+#: src/editor/editor_controller.cpp:132
 msgid "Quit Editor"
 msgstr "Выход из редактора"
 
-#: src/editor/editor_controller.cpp:277
+#: src/editor/editor_controller.cpp:286
 msgid "Fatal error"
 msgstr "Критическая ошибка"
 
-#: src/editor/editor_controller.cpp:302 src/editor/editor_controller.cpp:1087
+#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1096
 msgid "(New Map)"
 msgstr "(Новая карта)"
 
-#: src/editor/editor_controller.cpp:308
+#: src/editor/editor_controller.cpp:317
 msgid "Do you really want to quit?"
 msgstr "Действительно хотите выйти?"
 
-#: src/editor/editor_controller.cpp:310
+#: src/editor/editor_controller.cpp:319
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -217,7 +217,7 @@ msgstr ""
 "Действительно хотите выйти? Вы потеряете все изменения, которые внесли с "
 "последнего сохранения."
 
-#: src/editor/editor_controller.cpp:312
+#: src/editor/editor_controller.cpp:321
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -225,78 +225,78 @@ msgstr ""
 "Действительно хотите выйти? У вас есть несохранённые карты, все изменения в "
 "них будут утрачены:"
 
-#: src/editor/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:326
 msgid "Quit"
 msgstr "Выйти"
 
-#: src/editor/editor_controller.cpp:382
+#: src/editor/editor_controller.cpp:391
 msgid "No editor time-of-day found."
 msgstr "Редактор времени суток не найден."
 
-#: src/editor/editor_controller.cpp:403
+#: src/editor/editor_controller.cpp:412
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Вы правда хотите сбросить все изменения, которые внесли с последнего "
 "сохранения карты?"
 
-#: src/editor/editor_controller.cpp:403
+#: src/editor/editor_controller.cpp:412
 msgid "Unsaved Changes"
 msgstr "Несохранённые изменения"
 
-#: src/editor/editor_controller.cpp:425
+#: src/editor/editor_controller.cpp:434
 msgid "Choose a Map to Open"
 msgstr "Выберите, какую карту открыть"
 
-#: src/editor/editor_controller.cpp:459
+#: src/editor/editor_controller.cpp:468
 msgid "Save the Map As"
 msgstr "Сохранить карту как"
 
-#: src/editor/editor_controller.cpp:462
+#: src/editor/editor_controller.cpp:471
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Файл уже существует. Хотите перезаписать?"
 
-#: src/editor/editor_controller.cpp:479
+#: src/editor/editor_controller.cpp:488
 msgid "No random map generators found."
 msgstr "Генераторы случайных карт не найдены."
 
-#: src/editor/editor_controller.cpp:492 src/editor/editor_controller.cpp:496
+#: src/editor/editor_controller.cpp:501 src/editor/editor_controller.cpp:505
 msgid "Map creation failed."
 msgstr "Не удалось создать карту."
 
-#: src/editor/editor_controller.cpp:511
+#: src/editor/editor_controller.cpp:520
 msgid "Choose a mask to apply"
 msgstr "Выберите, какую маску применить"
 
-#: src/editor/editor_controller.cpp:518
+#: src/editor/editor_controller.cpp:527
 msgid "Error loading mask"
 msgstr "Не удалось заглузить маску"
 
-#: src/editor/editor_controller.cpp:533
+#: src/editor/editor_controller.cpp:542
 msgid "Choose target map"
 msgstr "Выберите целевую карту"
 
-#: src/editor/editor_controller.cpp:540 src/editor/editor_controller.cpp:730
+#: src/editor/editor_controller.cpp:549 src/editor/editor_controller.cpp:739
 msgid "Error loading map"
 msgstr "Не удалось загрузить карту"
 
-#: src/editor/editor_controller.cpp:644 src/editor/editor_controller.cpp:686
+#: src/editor/editor_controller.cpp:653 src/editor/editor_controller.cpp:695
 msgid "This map is already open."
 msgstr "Вы уже открыли эту карту"
 
-#: src/editor/editor_controller.cpp:665
+#: src/editor/editor_controller.cpp:674
 msgid "Map saved."
 msgstr "Карта сохранена."
 
-#: src/editor/editor_controller.cpp:709
+#: src/editor/editor_controller.cpp:718
 msgid "Loaded embedded map data"
 msgstr "Загрузил встроенные в карту данные"
 
-#: src/editor/editor_controller.cpp:710 src/editor/editor_controller.cpp:724
+#: src/editor/editor_controller.cpp:719 src/editor/editor_controller.cpp:733
 msgid "Map loaded from scenario"
 msgstr "Карта загружена из сценария"
 
-#: src/editor/editor_controller.cpp:720
+#: src/editor/editor_controller.cpp:729
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -304,35 +304,35 @@ msgstr ""
 "Загрузил файл карты по ссылке:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1117
+#: src/editor/editor_controller.cpp:1126
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/editor/editor_controller.cpp:1119
+#: src/editor/editor_controller.cpp:1128
 msgid "Can’t Undo"
 msgstr "Нечего отменять"
 
-#: src/editor/editor_controller.cpp:1123
+#: src/editor/editor_controller.cpp:1132
 msgid "Redo"
 msgstr "Повторить"
 
-#: src/editor/editor_controller.cpp:1125
+#: src/editor/editor_controller.cpp:1134
 msgid "Can’t Redo"
 msgstr "Нечего повторять"
 
-#: src/editor/editor_controller.cpp:1130
+#: src/editor/editor_controller.cpp:1139
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Автоматически обновлять переходы тайлов: Да"
 
-#: src/editor/editor_controller.cpp:1133
+#: src/editor/editor_controller.cpp:1142
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Автоматически обновлять переходы тайлов: Частично"
 
-#: src/editor/editor_controller.cpp:1137
+#: src/editor/editor_controller.cpp:1146
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Автоматически обновлять переходы тайлов: Нет"
 
-#: src/editor/editor_map.cpp:150 src/editor/mouse_action.cpp:429
+#: src/editor/editor_map.cpp:150
 msgid "Player"
 msgstr "Игрок"
 
@@ -340,19 +340,19 @@ msgstr "Игрок"
 msgid "The size of the target map is different from the current map"
 msgstr "Размер целевой карты отличается от размера текущей"
 
-#: src/editor/editor_palettes.cpp:489
+#: src/editor/editor_palettes.cpp:497
 msgid "(non-core)"
 msgstr "(не-базовые)"
 
-#: src/editor/editor_palettes.cpp:490
+#: src/editor/editor_palettes.cpp:498
 msgid "Will not work in game without extra care."
 msgstr "В игре не заработает без дополнительной работы."
 
-#: src/editor/editor_palettes.cpp:520
+#: src/editor/editor_palettes.cpp:526
 msgid "FG: "
 msgstr "ПП:"
 
-#: src/editor/editor_palettes.cpp:521
+#: src/editor/editor_palettes.cpp:527
 msgid "BG: "
 msgstr "ФОН:"
 
@@ -380,29 +380,33 @@ msgstr "Невозможно сохранить сценарий"
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
-#: src/editor/mouse_action.cpp:426
-msgid "(Player)^None"
+#: src/gui/dialogs/editor_set_starting_position.cpp:84
+#, fuzzy
+#| msgid "(Player)^None"
+msgid "player^None"
 msgstr "Нет"
 
-#: src/editor/mouse_action.cpp:433
-msgid "Choose player"
-msgstr "Выберите игрока"
-
-#: src/editor/mouse_action.cpp:434
-msgid ""
-"Which player should start here? You can use alt and a number key to set the "
-"starting position for a player, and del to clear the starting position under "
-"the cursor. Pressing a number key by itself will scroll to that player’s "
-"starting position."
+#: src/gui/dialogs/editor_set_starting_position.cpp:96
+msgid "Player $player_number"
 msgstr ""
-"Какому игроку начинать отсюда? Можете использовать Alt и клавиши с цифрами, "
-"чтобы задать начальную позицию игрока, и Delete, чтобы очистить начальную "
-"позицию под курсором. Если просто нажать клавишу с цифрой, вы переместитесь "
-"к начальной позиции соответствующего игрока."
 
-#: src/gui/dialogs/editor_settings.cpp:147
+#: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"
 msgstr "Настройка произвольных параметров"
+
+#~ msgid "Choose player"
+#~ msgstr "Выберите игрока"
+
+#~ msgid ""
+#~ "Which player should start here? You can use alt and a number key to set "
+#~ "the starting position for a player, and del to clear the starting "
+#~ "position under the cursor. Pressing a number key by itself will scroll to "
+#~ "that player’s starting position."
+#~ msgstr ""
+#~ "Какому игроку начинать отсюда? Можете использовать Alt и клавиши с "
+#~ "цифрами, чтобы задать начальную позицию игрока, и Delete, чтобы очистить "
+#~ "начальную позицию под курсором. Если просто нажать клавишу с цифрой, вы "
+#~ "переместитесь к начальной позиции соответствующего игрока."
 
 #~ msgid "FG"
 #~ msgstr "ОСН"

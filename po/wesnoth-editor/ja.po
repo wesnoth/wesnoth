@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-10 11:40+0200\n"
+"POT-Creation-Date: 2011-10-31 21:12+0100\n"
 "PO-Revision-Date: 2010-01-31 12:03+0900\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -116,7 +116,7 @@ msgstr "特殊地形"
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor.cfg:179 data/themes/editor.cfg:192
+#: data/themes/editor.cfg:181 data/themes/editor.cfg:194
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -127,7 +127,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:214
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:216
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -137,7 +137,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:203
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:205
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -157,47 +157,47 @@ msgstr ""
 "す。クリップボードの中身を変形（回転、反転）させるには、編集メニューを使用。"
 
 #. [menu]: id=menu-editor-file
-#: data/themes/editor.cfg:120
+#: data/themes/editor.cfg:122
 msgid "File"
 msgstr "ファイル"
 
 #. [menu]: id=menu-editor-edit
-#: data/themes/editor.cfg:131
+#: data/themes/editor.cfg:133
 msgid "Edit"
 msgstr "編集"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:141
+#: data/themes/editor.cfg:143
 msgid "Map"
 msgstr "マップ"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:151
+#: data/themes/editor.cfg:153
 msgid "Window"
 msgstr "ウィンドウ"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:270
+#: data/themes/editor.cfg:272
 msgid "villages"
 msgstr "村"
 
-#: src/editor/editor_controller.cpp:123
+#: src/editor/editor_controller.cpp:132
 msgid "Quit Editor"
 msgstr "エディタを終了"
 
-#: src/editor/editor_controller.cpp:277
+#: src/editor/editor_controller.cpp:286
 msgid "Fatal error"
 msgstr "致命的なエラー"
 
-#: src/editor/editor_controller.cpp:302 src/editor/editor_controller.cpp:1087
+#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1096
 msgid "(New Map)"
 msgstr "（新規マップ）"
 
-#: src/editor/editor_controller.cpp:308
+#: src/editor/editor_controller.cpp:317
 msgid "Do you really want to quit?"
 msgstr "本当に終了してもよろしいですか？"
 
-#: src/editor/editor_controller.cpp:310
+#: src/editor/editor_controller.cpp:319
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -205,7 +205,7 @@ msgstr ""
 "本当に終了してもよろしいですか？ 最後に保存したところからのマップの変更は失わ"
 "れます。"
 
-#: src/editor/editor_controller.cpp:312
+#: src/editor/editor_controller.cpp:321
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -213,76 +213,76 @@ msgstr ""
 "本当に終了してもよろしいですか？ マップは変更されていますが、最後に保存したと"
 "ころからの変更は全て失われます。"
 
-#: src/editor/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:326
 msgid "Quit"
 msgstr "終了"
 
-#: src/editor/editor_controller.cpp:382
+#: src/editor/editor_controller.cpp:391
 msgid "No editor time-of-day found."
 msgstr "エディタの時刻設定が見つかりません。"
 
-#: src/editor/editor_controller.cpp:403
+#: src/editor/editor_controller.cpp:412
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "最後に保存したところからの変更を全て放棄しますか？"
 
-#: src/editor/editor_controller.cpp:403
+#: src/editor/editor_controller.cpp:412
 msgid "Unsaved Changes"
 msgstr "保存されていない変更点"
 
-#: src/editor/editor_controller.cpp:425
+#: src/editor/editor_controller.cpp:434
 msgid "Choose a Map to Open"
 msgstr "読み込むマップを選択"
 
-#: src/editor/editor_controller.cpp:459
+#: src/editor/editor_controller.cpp:468
 msgid "Save the Map As"
 msgstr "マップに名前を付けて保存"
 
-#: src/editor/editor_controller.cpp:462
+#: src/editor/editor_controller.cpp:471
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "マップはすでに存在します。上書きしますか？"
 
-#: src/editor/editor_controller.cpp:479
+#: src/editor/editor_controller.cpp:488
 msgid "No random map generators found."
 msgstr "ランダムマップジェネレータがありません。"
 
-#: src/editor/editor_controller.cpp:492 src/editor/editor_controller.cpp:496
+#: src/editor/editor_controller.cpp:501 src/editor/editor_controller.cpp:505
 msgid "Map creation failed."
 msgstr "マップの作成に失敗しました。"
 
-#: src/editor/editor_controller.cpp:511
+#: src/editor/editor_controller.cpp:520
 msgid "Choose a mask to apply"
 msgstr "適用するマスクを選択"
 
-#: src/editor/editor_controller.cpp:518
+#: src/editor/editor_controller.cpp:527
 msgid "Error loading mask"
 msgstr "マスクの読み込みに失敗"
 
-#: src/editor/editor_controller.cpp:533
+#: src/editor/editor_controller.cpp:542
 msgid "Choose target map"
 msgstr "ターゲットマップを選択"
 
-#: src/editor/editor_controller.cpp:540 src/editor/editor_controller.cpp:730
+#: src/editor/editor_controller.cpp:549 src/editor/editor_controller.cpp:739
 msgid "Error loading map"
 msgstr "マップの読み込みに失敗"
 
-#: src/editor/editor_controller.cpp:644 src/editor/editor_controller.cpp:686
+#: src/editor/editor_controller.cpp:653 src/editor/editor_controller.cpp:695
 msgid "This map is already open."
 msgstr "このマップは既に開かれています。"
 
-#: src/editor/editor_controller.cpp:665
+#: src/editor/editor_controller.cpp:674
 msgid "Map saved."
 msgstr "マップを保存しました。"
 
-#: src/editor/editor_controller.cpp:709
+#: src/editor/editor_controller.cpp:718
 msgid "Loaded embedded map data"
 msgstr "読み込まれた埋め込みマップデータ"
 
-#: src/editor/editor_controller.cpp:710 src/editor/editor_controller.cpp:724
+#: src/editor/editor_controller.cpp:719 src/editor/editor_controller.cpp:733
 msgid "Map loaded from scenario"
 msgstr "シナリオからを読み込まれたマップ"
 
-#: src/editor/editor_controller.cpp:720
+#: src/editor/editor_controller.cpp:729
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -290,35 +290,35 @@ msgstr ""
 "読み込まれた参照マップ:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1117
+#: src/editor/editor_controller.cpp:1126
 msgid "Undo"
 msgstr "元に戻す"
 
-#: src/editor/editor_controller.cpp:1119
+#: src/editor/editor_controller.cpp:1128
 msgid "Can’t Undo"
 msgstr "アンドゥできません"
 
-#: src/editor/editor_controller.cpp:1123
+#: src/editor/editor_controller.cpp:1132
 msgid "Redo"
 msgstr "やり直す"
 
-#: src/editor/editor_controller.cpp:1125
+#: src/editor/editor_controller.cpp:1134
 msgid "Can’t Redo"
 msgstr "リドゥできません"
 
-#: src/editor/editor_controller.cpp:1130
+#: src/editor/editor_controller.cpp:1139
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "地形変化を自動的に更新: 有効"
 
-#: src/editor/editor_controller.cpp:1133
+#: src/editor/editor_controller.cpp:1142
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "地形変化を自動的に更新: 部分的"
 
-#: src/editor/editor_controller.cpp:1137
+#: src/editor/editor_controller.cpp:1146
 msgid "Auto-update Terrain Transitions: No"
 msgstr "地形変化を自動的に更新: 無効"
 
-#: src/editor/editor_map.cpp:150 src/editor/mouse_action.cpp:429
+#: src/editor/editor_map.cpp:150
 msgid "Player"
 msgstr "プレイヤー"
 
@@ -326,19 +326,19 @@ msgstr "プレイヤー"
 msgid "The size of the target map is different from the current map"
 msgstr "ターゲットマップのサイズが現在のマップのサイズと異なります"
 
-#: src/editor/editor_palettes.cpp:489
+#: src/editor/editor_palettes.cpp:497
 msgid "(non-core)"
 msgstr "（コア以外）"
 
-#: src/editor/editor_palettes.cpp:490
+#: src/editor/editor_palettes.cpp:498
 msgid "Will not work in game without extra care."
 msgstr "更に手を入れなければゲームで動作しません。"
 
-#: src/editor/editor_palettes.cpp:520
+#: src/editor/editor_palettes.cpp:526
 msgid "FG: "
 msgstr ""
 
-#: src/editor/editor_palettes.cpp:521
+#: src/editor/editor_palettes.cpp:527
 msgid "BG: "
 msgstr ""
 
@@ -366,28 +366,33 @@ msgstr "シナリオに保存できませんでした。"
 msgid "Could not save the map: $msg"
 msgstr "マップを保存できませんでした: $msg"
 
-#: src/editor/mouse_action.cpp:426
-msgid "(Player)^None"
+#: src/gui/dialogs/editor_set_starting_position.cpp:84
+#, fuzzy
+#| msgid "(Player)^None"
+msgid "player^None"
 msgstr "プレイヤーなし"
 
-#: src/editor/mouse_action.cpp:433
-msgid "Choose player"
-msgstr "プレイヤーを選んでください"
-
-#: src/editor/mouse_action.cpp:434
-msgid ""
-"Which player should start here? You can use alt and a number key to set the "
-"starting position for a player, and del to clear the starting position under "
-"the cursor. Pressing a number key by itself will scroll to that player’s "
-"starting position."
+#: src/gui/dialogs/editor_set_starting_position.cpp:96
+msgid "Player $player_number"
 msgstr ""
-"どのプレイヤーをここから開始させますか？ Alt キーと数字キーを使用してプレイ"
-"ヤーの開始位置を設定することができます。Del キーでカーソルの下の開始位置を消"
-"去できます。数字キーを押すとそのプレイヤーの開始位置にスクロールします。"
 
-#: src/gui/dialogs/editor_settings.cpp:147
+#: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"
 msgstr "設定の変更"
+
+#~ msgid "Choose player"
+#~ msgstr "プレイヤーを選んでください"
+
+#~ msgid ""
+#~ "Which player should start here? You can use alt and a number key to set "
+#~ "the starting position for a player, and del to clear the starting "
+#~ "position under the cursor. Pressing a number key by itself will scroll to "
+#~ "that player’s starting position."
+#~ msgstr ""
+#~ "どのプレイヤーをここから開始させますか？ Alt キーと数字キーを使用してプレ"
+#~ "イヤーの開始位置を設定することができます。Del キーでカーソルの下の開始位置"
+#~ "を消去できます。数字キーを押すとそのプレイヤーの開始位置にスクロールしま"
+#~ "す。"
 
 #~ msgid "FG"
 #~ msgstr "左クリック地形"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.12+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-27 10:14+0200\n"
+"POT-Creation-Date: 2011-10-31 21:12+0100\n"
 "PO-Revision-Date: 2011-01-25 16:25-0300\n"
 "Last-Translator: Diego Inácio Goergen <thegoergen@gmail.com>\n"
 "Language-Team: none\n"
@@ -182,7 +182,7 @@ msgstr "Derrote Bashnark"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:103
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:167
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:126
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:347
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:355
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:131
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:124
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:124
@@ -559,7 +559,7 @@ msgstr "Ajude Marth-Tak a derrotar Gothras"
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:171
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:130
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:351
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:359
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:135
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:128
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:128
@@ -782,13 +782,13 @@ msgid "No bandits in this village."
 msgstr "Sem bandidos neste vilarejo."
 
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:343
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:351
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:215
 msgid "Defeat all enemies"
 msgstr "Derrote todos os inimigos."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:368
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:376
 msgid ""
 "Stay alert, everyone, and keep together. This is bandit country — more than "
 "likely where Gothras and his gang came from."
@@ -798,7 +798,7 @@ msgstr ""
 "vieram."
 
 #. [message]: role=Scout
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:373
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:381
 msgid ""
 "Nae sign o’ bandits I can see, captain — but there are three muckle hosts of "
 "orcs off to our east."
@@ -806,7 +806,7 @@ msgstr ""
 "Sem sinal dos bandidos, capitão — mas tem um grupo de orcs mais ao leste."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:377
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:385
 msgid ""
 "What’s this? Large orcish war-bands so close to the Alliance’s border? That "
 "can only mean trouble."
@@ -815,7 +815,7 @@ msgstr ""
 "pode ser problema."
 
 #. [message]: speaker=Tan-Malgar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:381
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:389
 msgid ""
 "Well, boys, we were planning to invade the Northern Alliance anyway... These "
 "dwarves should make a tasty appetizer."
@@ -824,17 +824,17 @@ msgstr ""
 "anões serão um pequeno aperitivo."
 
 #. [message]: speaker=Tan-Grolak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:385
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:393
 msgid "Yeah, boss. Anything to get away from those masked ones..."
 msgstr "Sim, chefe. Qualquer coisa para fugir daqueles mascarados..."
 
 #. [message]: speaker=Tan-Malgar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:389
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:397
 msgid "Be silent. We are orc warriors; we do not flee foes."
 msgstr "Quieto. Nós somos guerreiros orcs, nós não fugimos."
 
 #. [message]: speaker=Tan-Uthkar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:393
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:401
 msgid "But, given a choice, we fight the weaker foe first."
 msgstr "Mas, se pudermos escolher, lutamos primeiro com o inimigo mais fraco."
 
@@ -2615,8 +2615,13 @@ msgstr ""
 "mensageiros entre diferentes clãs."
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:4
+#, fuzzy
+#| msgid ""
+#| "The presence of this unit inspires own units next to it to deal more "
+#| "damage in combat, though this only applies to units of lower or equal "
+#| "level."
 msgid ""
-"The presence of this unit inspires own units next to it to deal more damage "
+" The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
 "A presença desta unidade inspira as unidades próximas a causar mais dano em "

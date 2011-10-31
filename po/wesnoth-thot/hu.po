@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-thot_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-27 10:14+0200\n"
+"POT-Creation-Date: 2011-10-31 21:12+0100\n"
 "PO-Revision-Date: 2009-10-23 11:59+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -193,7 +193,7 @@ msgstr "Legyőzöd Bashnarkot"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:103
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:167
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:126
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:347
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:355
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:131
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:124
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:124
@@ -573,7 +573,7 @@ msgstr "Segítesz Marth-Taknak legyőzni Gothrast"
 #. [objective]: condition=lose
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:171
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_Troll_Bridge.cfg:130
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:351
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:359
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_High_Pass.cfg:135
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_Mages_and_Drakes.cfg:128
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:128
@@ -800,13 +800,13 @@ msgstr "Nincsenek banditák ebben a faluban."
 
 # Udi: Csak a vezéreket kell legyőzni, nem minden egységet
 #. [objective]: condition=win
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:343
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:351
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:215
 msgid "Defeat all enemies"
 msgstr "Legyőzöd az összes ellenséges vezért"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:368
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:376
 #, fuzzy
 msgid ""
 "Stay alert, everyone, and keep together. This is bandit country — more than "
@@ -816,7 +816,7 @@ msgstr ""
 "valószínű, hogy innen jött Gothras és bandája."
 
 #. [message]: role=Scout
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:373
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:381
 #, fuzzy
 msgid ""
 "Nae sign o’ bandits I can see, captain — but there are three muckle hosts of "
@@ -826,7 +826,7 @@ msgstr ""
 "sereget látok."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:377
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:385
 msgid ""
 "What’s this? Large orcish war-bands so close to the Alliance’s border? That "
 "can only mean trouble."
@@ -835,7 +835,7 @@ msgstr ""
 "Ez csak gondot jelenthet."
 
 #. [message]: speaker=Tan-Malgar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:381
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:389
 #, fuzzy
 msgid ""
 "Well, boys, we were planning to invade the Northern Alliance anyway... These "
@@ -845,17 +845,17 @@ msgstr ""
 "ez a pár törp jó kis előétel lesz."
 
 #. [message]: speaker=Tan-Grolak
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:385
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:393
 msgid "Yeah, boss. Anything to get away from those masked ones..."
 msgstr "Ja, főnök. Bármit, hogy távol kerüljünk azoktól az álarcosoktól..."
 
 #. [message]: speaker=Tan-Malgar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:389
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:397
 msgid "Be silent. We are orc warriors; we do not flee foes."
 msgstr "Hallgass! Ork harcosok vagyunk, nem futunk el az ellenség elől."
 
 #. [message]: speaker=Tan-Uthkar
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:393
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:401
 msgid "But, given a choice, we fight the weaker foe first."
 msgstr ""
 "De ha lehetőség van rá, akkor a gyengébb ellenségünkkel harcolunk először."
@@ -2635,7 +2635,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:4
 #, fuzzy
 msgid ""
-"The presence of this unit inspires own units next to it to deal more damage "
+" The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
 " Ennek az egységnek a jelenléte ösztönzi a mellette álló egységek küzdelmét, "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-17 23:28+0200\n"
+"POT-Creation-Date: 2011-10-31 21:12+0100\n"
 "PO-Revision-Date: 2011-09-09 16:26+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -156,8 +156,8 @@ msgstr "Tanah Kering"
 #. [terrain_type]: id=flagstones_dark
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:226 data/core/terrain.cfg:236
-#: data/core/terrain.cfg:246 data/core/terrain.cfg:957
-#: data/core/terrain.cfg:967
+#: data/core/terrain.cfg:246 data/core/terrain.cfg:845
+#: data/core/terrain.cfg:855
 msgid "Road"
 msgstr "Jalan"
 
@@ -212,90 +212,90 @@ msgid "Oasis"
 msgstr "Oasis"
 
 #. [terrain_type]: id=sand_rubble
-#: data/core/terrain.cfg:312
+#: data/core/terrain.cfg:313
 msgid "Rubble"
 msgstr "Reruntuhan"
 
 #. [terrain_type]: id=crater
-#: data/core/terrain.cfg:322
+#: data/core/terrain.cfg:323
 msgid "Crater"
 msgstr "Kawah"
 
 #. [terrain_type]: id=flowers_mixed
-#: data/core/terrain.cfg:336
+#: data/core/terrain.cfg:337
 msgid "Mixed Flowers"
 msgstr "Bunga-Bunga Bercampur"
 
 #. [terrain_type]: id=farm
-#: data/core/terrain.cfg:345
+#: data/core/terrain.cfg:346
 msgid "Farmland"
 msgstr "Sawah"
 
 #. [terrain_type]: id=stones_small
-#: data/core/terrain.cfg:354
+#: data/core/terrain.cfg:355
 msgid "Stones"
 msgstr "Bebatuan"
 
 #. [terrain_type]: id=mushrooms_small
-#: data/core/terrain.cfg:363
+#: data/core/terrain.cfg:364
 msgid "Small Mushrooms"
 msgstr "Jejamuran Kecil  "
 
 #. [terrain_type]: id=mushrooms_farm
-#: data/core/terrain.cfg:372
+#: data/core/terrain.cfg:373
 msgid "Mushroom Farm"
 msgstr "Ladang Jamur"
 
 #. [terrain_type]: id=desert_plants
-#: data/core/terrain.cfg:381
+#: data/core/terrain.cfg:382
 msgid "Desert Plants"
 msgstr "Tumbuh-Tumbuhan Gurun"
 
 #. [terrain_type]: id=desert_plants_sans_bones
-#: data/core/terrain.cfg:390
+#: data/core/terrain.cfg:391
 msgid "Desert Plants without Bones"
 msgstr "Tumbuh-Tumbuhan Gurun tanpa Duri"
 
 #. [terrain_type]: id=windmill
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:399 data/core/terrain.cfg:1391
+#: data/core/terrain.cfg:400 data/core/terrain.cfg:1279
 msgid "Windmill"
 msgstr "Kincir Angin"
 
 #. [terrain_type]: id=fence
-#: data/core/terrain.cfg:408
+#: data/core/terrain.cfg:409
 msgid "Fence"
 msgstr "Pagar"
 
 #. [terrain_type]: id=sand_drifts
-#: data/core/terrain.cfg:417
+#: data/core/terrain.cfg:418
 msgid "Stones with Sand Drifts"
 msgstr "Bebatuan dengan Bertimbun Pasir"
 
 #. [terrain_type]: id=water-lilies
-#: data/core/terrain.cfg:426
+#: data/core/terrain.cfg:427
 msgid "Water Lilies"
 msgstr "Teratai-Teratai Air"
 
 #. [terrain_type]: id=water-lilies-flower
-#: data/core/terrain.cfg:436
+#: data/core/terrain.cfg:437
 msgid "Flowering Water Lilies"
 msgstr "Teratai-Teratai Air Berbunga"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_dead
-#: data/core/terrain.cfg:450 data/core/terrain.cfg:451
-#: data/core/terrain.cfg:461
+#: data/core/terrain.cfg:451 data/core/terrain.cfg:452
+#: data/core/terrain.cfg:463
 msgid "Great Tree"
 msgstr "Pohon besar"
 
 #. [terrain_type]: id=great_tree_dead
-#: data/core/terrain.cfg:462
+#: data/core/terrain.cfg:464
 msgid "Dead Great Tree"
 msgstr "Pohon Besar yang Mati"
 
 #. [terrain_type]: id=tropical_forest
-#. [terrain_type]: id=forest
+#. [terrain_type]: id=pine_forest
 #. [terrain_type]: id=snow_forest
 #. [terrain_type]: id=deciduous_forest_summer
 #. [terrain_type]: id=deciduous_forest_fall
@@ -305,67 +305,68 @@ msgstr "Pohon Besar yang Mati"
 #. [terrain_type]: id=mixed_forest_fall
 #. [terrain_type]: id=mixed_forest_winter
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:472 data/core/terrain.cfg:483
-#: data/core/terrain.cfg:493 data/core/terrain.cfg:505
-#: data/core/terrain.cfg:516 data/core/terrain.cfg:527
-#: data/core/terrain.cfg:538 data/core/terrain.cfg:550
-#: data/core/terrain.cfg:561 data/core/terrain.cfg:572
-#: data/core/terrain.cfg:583
+#. [terrain_type]: id=forest
+#: data/core/terrain.cfg:475 data/core/terrain.cfg:487
+#: data/core/terrain.cfg:499 data/core/terrain.cfg:511
+#: data/core/terrain.cfg:523 data/core/terrain.cfg:535
+#: data/core/terrain.cfg:547 data/core/terrain.cfg:559
+#: data/core/terrain.cfg:571 data/core/terrain.cfg:583
+#: data/core/terrain.cfg:595 data/core/terrain.cfg:2123
 msgid "Forest"
 msgstr "Hutan"
 
 #. [terrain_type]: id=tropical_forest
-#: data/core/terrain.cfg:473
+#: data/core/terrain.cfg:476
 msgid "Tropical Forest"
 msgstr "Hutan Tropis"
 
-#. [terrain_type]: id=forest
-#: data/core/terrain.cfg:484
+#. [terrain_type]: id=pine_forest
+#: data/core/terrain.cfg:488
 msgid "Pine Forest"
 msgstr "Hutan Cemara "
 
 #. [terrain_type]: id=snow_forest
-#: data/core/terrain.cfg:494
+#: data/core/terrain.cfg:500
 msgid "Snowy Pine Forest"
 msgstr "Hutan Cemara Tertutup salju"
 
 #. [terrain_type]: id=deciduous_forest_summer
-#: data/core/terrain.cfg:506
+#: data/core/terrain.cfg:512
 msgid "Summer Deciduous Forest"
 msgstr "Hutan Musim Panas yang Berganti Daun Setiap Tahun"
 
 #. [terrain_type]: id=deciduous_forest_fall
-#: data/core/terrain.cfg:517
+#: data/core/terrain.cfg:524
 msgid "Fall Deciduous Forest"
 msgstr "Hutan Musim Gugur yang Rontok"
 
 #. [terrain_type]: id=deciduous_forest_winter
-#: data/core/terrain.cfg:528
+#: data/core/terrain.cfg:536
 msgid "Winter Deciduous Forest"
 msgstr "Hutan Musim Dingin yang Rontok"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
-#: data/core/terrain.cfg:539
+#: data/core/terrain.cfg:548
 msgid "Snowy Deciduous Forest"
 msgstr "Hutan Berganti daun setiap tahun Tertutup salju"
 
 #. [terrain_type]: id=mixed_forest_summer
-#: data/core/terrain.cfg:551
+#: data/core/terrain.cfg:560
 msgid "Summer Mixed Forest"
 msgstr "Hutan Musim Panas "
 
 #. [terrain_type]: id=mixed_forest_fall
-#: data/core/terrain.cfg:562
+#: data/core/terrain.cfg:572
 msgid "Fall Mixed Forest"
 msgstr "Hutan Musim Gugur "
 
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:573
+#: data/core/terrain.cfg:584
 msgid "Winter Mixed Forest"
 msgstr "Hutan Musim Dingin "
 
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:584
+#: data/core/terrain.cfg:596
 msgid "Snowy Mixed Forest"
 msgstr "Hutan Salju"
 
@@ -382,40 +383,33 @@ msgstr "Hutan Salju"
 #. [terrain_type]: id=mixed_forest_fall_hills
 #. [terrain_type]: id=mixed_forest_winter_hills
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
-#. [terrain_type]
-#: data/core/terrain.cfg:599 data/core/terrain.cfg:608
-#: data/core/terrain.cfg:628 data/core/terrain.cfg:676
-#: data/core/terrain.cfg:687 data/core/terrain.cfg:698
-#: data/core/terrain.cfg:709 data/core/terrain.cfg:720
-#: data/core/terrain.cfg:731 data/core/terrain.cfg:742
-#: data/core/terrain.cfg:753 data/core/terrain.cfg:764
-#: data/core/terrain.cfg:775 data/core/terrain.cfg:790
-#: data/core/terrain.cfg:800 data/core/terrain.cfg:809
-#: data/core/terrain.cfg:818 data/core/terrain.cfg:827
-#: data/core/terrain.cfg:836 data/core/terrain.cfg:845
-#: data/core/terrain.cfg:854 data/core/terrain.cfg:863
-#: data/core/terrain.cfg:872 data/core/terrain.cfg:881
-#: data/core/terrain.cfg:890 data/core/terrain.cfg:899
+#: data/core/terrain.cfg:611 data/core/terrain.cfg:620
+#: data/core/terrain.cfg:640 data/core/terrain.cfg:688
+#: data/core/terrain.cfg:699 data/core/terrain.cfg:710
+#: data/core/terrain.cfg:721 data/core/terrain.cfg:732
+#: data/core/terrain.cfg:743 data/core/terrain.cfg:754
+#: data/core/terrain.cfg:765 data/core/terrain.cfg:776
+#: data/core/terrain.cfg:787
 msgid "Hills"
 msgstr "Bukit"
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:600
+#: data/core/terrain.cfg:612
 msgid "Regular Hills"
 msgstr "Perbukitan Biasa  "
 
 #. [terrain_type]: id=hills_dry
-#: data/core/terrain.cfg:609
+#: data/core/terrain.cfg:621
 msgid "Dry Hills"
 msgstr "Perbukitan Kering"
 
 #. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:618
+#: data/core/terrain.cfg:630
 msgid "Dunes"
 msgstr "Bukit Pasir"
 
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:629
+#: data/core/terrain.cfg:641
 msgid "Snow Hills"
 msgstr "Bukit Salju"
 
@@ -425,151 +419,139 @@ msgstr "Bukit Salju"
 #. [terrain_type]: id=cloud
 #. [terrain_type]: id=clouddesert
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:643 data/core/terrain.cfg:651
-#: data/core/terrain.cfg:661 data/core/terrain.cfg:1120
-#: data/core/terrain.cfg:1130 data/core/terrain.cfg:1140
+#: data/core/terrain.cfg:655 data/core/terrain.cfg:663
+#: data/core/terrain.cfg:673 data/core/terrain.cfg:1008
+#: data/core/terrain.cfg:1018 data/core/terrain.cfg:1028
 msgid "Mountains"
 msgstr "Gunung"
 
 #. [terrain_type]: id=desert_mountains
-#: data/core/terrain.cfg:652
+#: data/core/terrain.cfg:664
 msgid "Dry Mountains"
 msgstr "Pegunungan Kering"
 
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:662
+#: data/core/terrain.cfg:674
 msgid "Snowy Mountains"
 msgstr "Gunung-Gunung tertutup salju"
 
 #. [terrain_type]: id=forested_hills
-#: data/core/terrain.cfg:677 data/core/terrain.cfg:791
+#: data/core/terrain.cfg:689
 msgid "Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=forested_snow_hills
-#: data/core/terrain.cfg:688
+#: data/core/terrain.cfg:700
 msgid "Forested Snow Hills"
 msgstr "Bukit Salju Berhutan"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
-#. [terrain_type]
-#: data/core/terrain.cfg:699 data/core/terrain.cfg:801
+#: data/core/terrain.cfg:711
 msgid "Summer Deciduous Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
-#. [terrain_type]
-#: data/core/terrain.cfg:710 data/core/terrain.cfg:810
+#: data/core/terrain.cfg:722
 msgid "Fall Deciduous Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
-#. [terrain_type]
-#: data/core/terrain.cfg:721 data/core/terrain.cfg:819
-#: data/core/terrain.cfg:828
+#: data/core/terrain.cfg:733
 msgid "Winter Deciduous Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
-#. [terrain_type]
-#: data/core/terrain.cfg:732 data/core/terrain.cfg:837
-#: data/core/terrain.cfg:846
+#: data/core/terrain.cfg:744
 msgid "Snowy Deciduous Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
-#. [terrain_type]
-#: data/core/terrain.cfg:743 data/core/terrain.cfg:855
+#: data/core/terrain.cfg:755
 msgid "Summer Mixed Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=mixed_forest_fall_hills
-#. [terrain_type]
-#: data/core/terrain.cfg:754 data/core/terrain.cfg:864
+#: data/core/terrain.cfg:766
 msgid "Fall Mixed Forested Hills"
 msgstr "Perbukitan Berhutan Bercampur Musim Gugur"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
-#. [terrain_type]
-#: data/core/terrain.cfg:765 data/core/terrain.cfg:873
-#: data/core/terrain.cfg:882
+#: data/core/terrain.cfg:777
 msgid "Winter Mixed Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
-#. [terrain_type]
-#: data/core/terrain.cfg:776 data/core/terrain.cfg:891
-#: data/core/terrain.cfg:900
+#: data/core/terrain.cfg:788
 msgid "Snowy Mixed Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]
-#: data/core/terrain.cfg:912
+#: data/core/terrain.cfg:800
 msgid "Wooden Floor"
 msgstr "Lantai dari Kayu"
 
 #. [terrain_type]
-#: data/core/terrain.cfg:914
+#: data/core/terrain.cfg:802
 msgid "Basic Wooden Floor"
 msgstr "Lantai Kayu Dasar "
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:927
+#: data/core/terrain.cfg:815
 msgid "Lit"
 msgstr "Tersinar"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:928
+#: data/core/terrain.cfg:816
 msgid "Beam of Light"
 msgstr "Pancaran Cahaya"
 
 #. [terrain_type]: id=cave
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:938 data/core/terrain.cfg:947
+#: data/core/terrain.cfg:826 data/core/terrain.cfg:835
 msgid "Cave"
 msgstr "Gua"
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:939
+#: data/core/terrain.cfg:827
 msgid "Cave Floor"
 msgstr "Lantai Gua"
 
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:948
+#: data/core/terrain.cfg:836
 msgid "Earthy Cave Floor"
 msgstr "Lantai Gua Biasa"
 
 #. [terrain_type]: id=flagstones_dark
-#: data/core/terrain.cfg:958
+#: data/core/terrain.cfg:846
 msgid "Dark Flagstones"
 msgstr "Batu-Batu Hampar Gelap "
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:968
+#: data/core/terrain.cfg:856
 msgid "Cave Path"
 msgstr "Jalan Gua"
 
 #. [terrain_type]: id=fungus
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:977 data/core/terrain.cfg:986
+#: data/core/terrain.cfg:865 data/core/terrain.cfg:874
 msgid "Mushroom Grove"
 msgstr "Hutan Berjamur"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:987
+#: data/core/terrain.cfg:875
 msgid "Lit Mushroom Grove"
 msgstr "Hutan Berjamur Diterangi"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:998
+#: data/core/terrain.cfg:886
 msgid "Rockbound Cave"
 msgstr "Gua Berbatu Karang"
 
 #. [terrain_type]: id=rails
 #. [terrain_type]: id=railsdiag1
 #. [terrain_type]: id=railsdiag2
-#: data/core/terrain.cfg:1010 data/core/terrain.cfg:1022
-#: data/core/terrain.cfg:1034
+#: data/core/terrain.cfg:898 data/core/terrain.cfg:910
+#: data/core/terrain.cfg:922
 msgid "Mine Rail"
 msgstr "Rel Tambang  "
 
@@ -577,53 +559,53 @@ msgstr "Rel Tambang  "
 #. [terrain_type]: id=chasm_earthy
 #. [terrain_type]: id=abyss
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1051 data/core/terrain.cfg:1062
-#: data/core/terrain.cfg:1073 data/core/terrain.cfg:1084
+#: data/core/terrain.cfg:939 data/core/terrain.cfg:950
+#: data/core/terrain.cfg:961 data/core/terrain.cfg:972
 msgid "Chasm"
 msgstr "Jurang"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:1052
+#: data/core/terrain.cfg:940
 msgid "Regular Chasm"
 msgstr "Jurang Biasa"
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:1063
+#: data/core/terrain.cfg:951
 msgid "Earthy Chasm"
 msgstr "Jurang yang Berbau Tanah"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:1074
+#: data/core/terrain.cfg:962
 msgid "Ethereal Abyss"
 msgstr "Jurang Dalam yang Sangat Halus"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1085
+#: data/core/terrain.cfg:973
 msgid "Lava Chasm"
 msgstr "Jurang lahar"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1095
+#: data/core/terrain.cfg:983
 msgid "Lava"
 msgstr "Lahar"
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:1106
+#: data/core/terrain.cfg:994
 msgid "Volcano"
 msgstr "Gunung Berapi"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1121
+#: data/core/terrain.cfg:1009
 msgid "Regular Impassable Mountains"
 msgstr "Pegunungan Tak Terlalui Biasa"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:1131
+#: data/core/terrain.cfg:1019
 msgid "Desert Impassable Mountains"
 msgstr "Pegunungan Tak Terlalui Bergurun"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:1141
+#: data/core/terrain.cfg:1029
 msgid "Snowy Impassable Mountains"
 msgstr "Pegunungan Tak Terlalui Bersalju"
 
@@ -631,52 +613,52 @@ msgstr "Pegunungan Tak Terlalui Bersalju"
 #. [terrain_type]: id=cavewall_hewn
 #. [terrain_type]: id=cavewall_earthy
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1151 data/core/terrain.cfg:1162
-#: data/core/terrain.cfg:1173 data/core/terrain.cfg:1184
+#: data/core/terrain.cfg:1039 data/core/terrain.cfg:1050
+#: data/core/terrain.cfg:1061 data/core/terrain.cfg:1072
 msgid "Cave Wall"
 msgstr "Dinding Gua"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1152
+#: data/core/terrain.cfg:1040
 msgid "Natural Cave Wall"
 msgstr "Dinding Gua Alami"
 
 #. [terrain_type]: id=cavewall_hewn
-#: data/core/terrain.cfg:1163
+#: data/core/terrain.cfg:1051
 msgid "Hewn Cave Wall"
 msgstr "Dinding Gua Dipahat"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:1174
+#: data/core/terrain.cfg:1062
 msgid "Natural Earthy Cave Wall"
 msgstr "Dinding Gua Berbau Tanah Alami"
 
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1185
+#: data/core/terrain.cfg:1073
 msgid "Reinforced Earthy Cave Wall"
 msgstr "Dinding Gua Berbau Tanah Diperkuat "
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1195 data/core/terrain.cfg:1205
+#: data/core/terrain.cfg:1083 data/core/terrain.cfg:1093
 msgid "Stone Wall"
 msgstr "Dinding Batu"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1206
+#: data/core/terrain.cfg:1094
 msgid "Lit Stone Wall"
 msgstr "Dinding Batu Diterangi"
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:1216
+#: data/core/terrain.cfg:1104
 msgid "Impassable Overlay"
 msgstr "Hamparan Tak Terlalui"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:1227 data/core/terrain.cfg:2122
-#: data/core/terrain.cfg:2132
+#: data/core/terrain.cfg:1115 data/core/terrain.cfg:2046
+#: data/core/terrain.cfg:2056
 msgid "Void"
 msgstr "Kosong"
 
@@ -707,182 +689,182 @@ msgstr "Kosong"
 #. [terrain_type]: id=mermen-village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1242 data/core/terrain.cfg:1255
-#: data/core/terrain.cfg:1268 data/core/terrain.cfg:1283
-#: data/core/terrain.cfg:1296 data/core/terrain.cfg:1311
-#: data/core/terrain.cfg:1324 data/core/terrain.cfg:1339
-#: data/core/terrain.cfg:1352 data/core/terrain.cfg:1365
-#: data/core/terrain.cfg:1378 data/core/terrain.cfg:1404
-#: data/core/terrain.cfg:1417 data/core/terrain.cfg:1430
-#: data/core/terrain.cfg:1443 data/core/terrain.cfg:1456
-#: data/core/terrain.cfg:1469 data/core/terrain.cfg:1482
-#: data/core/terrain.cfg:1497 data/core/terrain.cfg:1510
-#: data/core/terrain.cfg:1523 data/core/terrain.cfg:1536
-#: data/core/terrain.cfg:1549 data/core/terrain.cfg:1562
-#: data/core/terrain.cfg:1575 data/core/terrain.cfg:1590
-#: data/core/terrain.cfg:1603 data/core/terrain.cfg:1618
-#: data/core/terrain.cfg:2234
+#: data/core/terrain.cfg:1130 data/core/terrain.cfg:1143
+#: data/core/terrain.cfg:1156 data/core/terrain.cfg:1171
+#: data/core/terrain.cfg:1184 data/core/terrain.cfg:1199
+#: data/core/terrain.cfg:1212 data/core/terrain.cfg:1227
+#: data/core/terrain.cfg:1240 data/core/terrain.cfg:1253
+#: data/core/terrain.cfg:1266 data/core/terrain.cfg:1292
+#: data/core/terrain.cfg:1305 data/core/terrain.cfg:1318
+#: data/core/terrain.cfg:1331 data/core/terrain.cfg:1344
+#: data/core/terrain.cfg:1357 data/core/terrain.cfg:1370
+#: data/core/terrain.cfg:1385 data/core/terrain.cfg:1398
+#: data/core/terrain.cfg:1411 data/core/terrain.cfg:1424
+#: data/core/terrain.cfg:1437 data/core/terrain.cfg:1450
+#: data/core/terrain.cfg:1463 data/core/terrain.cfg:1478
+#: data/core/terrain.cfg:1491 data/core/terrain.cfg:1506
+#: data/core/terrain.cfg:2137
 msgid "Village"
 msgstr "Desa"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1243
+#: data/core/terrain.cfg:1131
 msgid "Adobe Village"
 msgstr "Desa Batako"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1256
+#: data/core/terrain.cfg:1144
 msgid "Desert Tent Village"
 msgstr "Desa Tenda Gurun "
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1269
+#: data/core/terrain.cfg:1157
 msgid "Tent Village"
 msgstr "Desa Tenda"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1284
+#: data/core/terrain.cfg:1172
 msgid "Orcish Village"
 msgstr "Desa Orc"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1297
+#: data/core/terrain.cfg:1185
 msgid "Snowy Orcish Village"
 msgstr "Desa Orc Bersalju"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1312
+#: data/core/terrain.cfg:1200
 msgid "Snowy Elven Village"
 msgstr "Desa Elf Bersalju  "
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1325
+#: data/core/terrain.cfg:1213
 msgid "Elven Village"
 msgstr "Desa Elf"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1340
+#: data/core/terrain.cfg:1228
 msgid "Cottage"
 msgstr "Pondok"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1353
+#: data/core/terrain.cfg:1241
 msgid "Snowy Cottage"
 msgstr "Pondok Bersalju"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1366
+#: data/core/terrain.cfg:1254
 msgid "Ruined Cottage"
 msgstr "Pondok Rusak"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1379
+#: data/core/terrain.cfg:1267
 msgid "Human City"
 msgstr "Kota Manusia  "
 
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1392
+#: data/core/terrain.cfg:1280
 #, fuzzy
 #| msgid "Ruined Hill Stone Village"
 msgid "Windmill Village"
 msgstr "Desa Batu Bukit Hancur"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1405
+#: data/core/terrain.cfg:1293
 msgid "Snowy Human City"
 msgstr "Kota Manusia Bersalju  "
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1418
+#: data/core/terrain.cfg:1306
 msgid "Ruined Human City"
 msgstr "Kota Manusia Hancur  "
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1431
+#: data/core/terrain.cfg:1319
 msgid "Hill Stone Village"
 msgstr "Desa Batu Bukit  "
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1444
+#: data/core/terrain.cfg:1332
 msgid "Snowy Hill Stone Village"
 msgstr "Desa Batu Bukit Bersalju"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1457
+#: data/core/terrain.cfg:1345
 msgid "Ruined Hill Stone Village"
 msgstr "Desa Batu Bukit Hancur"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1470
+#: data/core/terrain.cfg:1358
 msgid "Tropical Village"
 msgstr "Desa Tropis"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1483
+#: data/core/terrain.cfg:1371
 msgid "Drake Village"
 msgstr "Desa Drake "
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1498
+#: data/core/terrain.cfg:1386
 msgid "Cave Village"
 msgstr "Desa Gua"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1511
+#: data/core/terrain.cfg:1399
 msgid "Dwarven Village"
 msgstr "Desa Dwarf"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1524
+#: data/core/terrain.cfg:1412
 msgid "Hut"
 msgstr "Pondok"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1537
+#: data/core/terrain.cfg:1425
 msgid "Snowy Hut"
 msgstr "Pondok Bersalju"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:1550
+#: data/core/terrain.cfg:1438
 msgid "Log Cabin"
 msgstr "Pondok dari Batang Kayu"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:1563
+#: data/core/terrain.cfg:1451
 msgid "Snowy Log Cabin"
 msgstr "Pondok Batang Kayu tertutup salju"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:1576
+#: data/core/terrain.cfg:1464
 msgid "Igloo"
 msgstr "Igloo"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:1591
+#: data/core/terrain.cfg:1479
 msgid "Swamp Village"
 msgstr "Desa Rawa"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:1604
+#: data/core/terrain.cfg:1492
 #, fuzzy
 #| msgid "Swamp Merfolk Village"
 msgid "Merfolk Village"
 msgstr "Desa Manusia Duyung Rawa  "
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:1619
+#: data/core/terrain.cfg:1507
 msgid "Village Overlay"
 msgstr "Hamparan Desa"
 
 #. [terrain_type]: id=encampment
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1634 data/core/terrain.cfg:1635
-#: data/core/terrain.cfg:1646
+#: data/core/terrain.cfg:1522 data/core/terrain.cfg:1523
+#: data/core/terrain.cfg:1534
 msgid "Encampment"
 msgstr "Perkemahan"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1647
+#: data/core/terrain.cfg:1535
 msgid "Snowy Encampment"
 msgstr "Perkemahan Bersalju"
 
@@ -894,40 +876,40 @@ msgstr "Perkemahan Bersalju"
 #. [terrain_type]: id=dwarven_castle
 #. [terrain_type]: id=sand_castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1658 data/core/terrain.cfg:1670
-#: data/core/terrain.cfg:1682 data/core/terrain.cfg:1693
-#: data/core/terrain.cfg:1704 data/core/terrain.cfg:1716
-#: data/core/terrain.cfg:1766 data/core/terrain.cfg:1976
+#: data/core/terrain.cfg:1546 data/core/terrain.cfg:1558
+#: data/core/terrain.cfg:1570 data/core/terrain.cfg:1581
+#: data/core/terrain.cfg:1592 data/core/terrain.cfg:1604
+#: data/core/terrain.cfg:1654 data/core/terrain.cfg:1864
 msgid "Castle"
 msgstr "Istana"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1659
+#: data/core/terrain.cfg:1547
 msgid "Orcish Castle"
 msgstr "Istana Orc"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1671
+#: data/core/terrain.cfg:1559
 msgid "Snowy Orcish Castle"
 msgstr "Istana Orc Bersalju"
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:1683
+#: data/core/terrain.cfg:1571
 msgid "Human Castle"
 msgstr "Istana Manusia"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1694
+#: data/core/terrain.cfg:1582
 msgid "Snowy Human Castle"
 msgstr "Istana Manusia Bersalju"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:1705
+#: data/core/terrain.cfg:1593
 msgid "Elvish Castle"
 msgstr "Istana Elf"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:1717
+#: data/core/terrain.cfg:1605
 msgid "Dwarven Castle"
 msgstr "Istana Dwarf"
 
@@ -935,51 +917,51 @@ msgstr "Istana Dwarf"
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:1728 data/core/terrain.cfg:1740
-#: data/core/terrain.cfg:1753 data/core/terrain.cfg:1778
+#: data/core/terrain.cfg:1616 data/core/terrain.cfg:1628
+#: data/core/terrain.cfg:1641 data/core/terrain.cfg:1666
 msgid "Ruined Castle"
 msgstr "Istana Rusak"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1729
+#: data/core/terrain.cfg:1617
 msgid "Ruined Human Castle"
 msgstr "Istana Manusia Rusak"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1741
+#: data/core/terrain.cfg:1629
 msgid "Sunken Human Ruin"
 msgstr "Reruntuhan Manusia yang Tenggelam"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1754
+#: data/core/terrain.cfg:1642
 msgid "Swamp Human Ruin"
 msgstr "Reruntuhan Manusia Rawa"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1767
+#: data/core/terrain.cfg:1655
 msgid "Desert Castle"
 msgstr "Istana Gurun"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:1779
+#: data/core/terrain.cfg:1667
 msgid "Ruined Desert Castle"
 msgstr "Istana Gurun yang Rusak"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1794 data/core/terrain.cfg:1806
-#: data/core/terrain.cfg:1819
+#: data/core/terrain.cfg:1682 data/core/terrain.cfg:1694
+#: data/core/terrain.cfg:1707
 msgid "Encampment Keep"
 msgstr "Perkemahan"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:1807
+#: data/core/terrain.cfg:1695
 msgid "Tall Encampment Keep"
 msgstr "Benteng Perkemahan Tinggi"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1820
+#: data/core/terrain.cfg:1708
 msgid "Snowy Encampment Keep"
 msgstr "Benteng Perkemahan Bersalju"
 
@@ -991,40 +973,40 @@ msgstr "Benteng Perkemahan Bersalju"
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1832 data/core/terrain.cfg:1845
-#: data/core/terrain.cfg:1858 data/core/terrain.cfg:1871
-#: data/core/terrain.cfg:1884 data/core/terrain.cfg:1897
-#: data/core/terrain.cfg:1949 data/core/terrain.cfg:1988
+#: data/core/terrain.cfg:1720 data/core/terrain.cfg:1733
+#: data/core/terrain.cfg:1746 data/core/terrain.cfg:1759
+#: data/core/terrain.cfg:1772 data/core/terrain.cfg:1785
+#: data/core/terrain.cfg:1837 data/core/terrain.cfg:1876
 msgid "Keep"
 msgstr "Benteng"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1833
+#: data/core/terrain.cfg:1721
 msgid "Orcish Keep"
 msgstr "Benteng Orc"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1846
+#: data/core/terrain.cfg:1734
 msgid "Snowy Orcish Keep"
 msgstr "Benteng Orc Bersalju"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:1859
+#: data/core/terrain.cfg:1747
 msgid "Human Castle Keep"
 msgstr "Benteng Istana Manusia"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:1872
+#: data/core/terrain.cfg:1760
 msgid "Snowy Human Castle Keep"
 msgstr "Benteng Istana Manusia Bersalju"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1885
+#: data/core/terrain.cfg:1773
 msgid "Elven Castle Keep"
 msgstr "Benteng Istana Elf"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:1898
+#: data/core/terrain.cfg:1786
 msgid "Dwarven Castle Keep"
 msgstr "Benteng Istana Dwarf"
 
@@ -1032,121 +1014,135 @@ msgstr "Benteng Istana Dwarf"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:1910 data/core/terrain.cfg:1923
-#: data/core/terrain.cfg:1936 data/core/terrain.cfg:1962
+#: data/core/terrain.cfg:1798 data/core/terrain.cfg:1811
+#: data/core/terrain.cfg:1824 data/core/terrain.cfg:1850
 msgid "Ruined Keep"
 msgstr "Benteng yang Rusak"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1911
+#: data/core/terrain.cfg:1799
 msgid "Ruined Human Castle Keep"
 msgstr "Benteng Istana Manusia yang Rusak"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1924
+#: data/core/terrain.cfg:1812
 msgid "Sunken Human Castle Keep"
 msgstr "Benteng Istana Manusia yang Terendam"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1937
+#: data/core/terrain.cfg:1825
 msgid "Swamp Human Castle Keep"
 msgstr "Benteng Istana Manusia Rawa"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1950
+#: data/core/terrain.cfg:1838
 msgid "Desert Keep"
 msgstr "Benteng Gurun"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:1963
+#: data/core/terrain.cfg:1851
 msgid "Ruined Desert Keep"
 msgstr "Benteng Gurun yang Rusak"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1977
+#: data/core/terrain.cfg:1865
 msgid "Castle Overlay"
 msgstr "Hamparan Istana"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1989
+#: data/core/terrain.cfg:1877
 msgid "Keep Overlay"
 msgstr "Hamparan Benteng"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
+#. [terrain_type]: id=rotbridge
+#. [terrain_type]: id=rotbridgediag1
+#. [terrain_type]: id=rotbridgediag2
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2006 data/core/terrain.cfg:2018
-#: data/core/terrain.cfg:2030 data/core/terrain.cfg:2044
-#: data/core/terrain.cfg:2056 data/core/terrain.cfg:2068
-#: data/core/terrain.cfg:2082 data/core/terrain.cfg:2093
-#: data/core/terrain.cfg:2105
+#: data/core/terrain.cfg:1894 data/core/terrain.cfg:1906
+#: data/core/terrain.cfg:1918 data/core/terrain.cfg:1930
+#: data/core/terrain.cfg:1942 data/core/terrain.cfg:1954
+#: data/core/terrain.cfg:1968 data/core/terrain.cfg:1980
+#: data/core/terrain.cfg:1992 data/core/terrain.cfg:2006
+#: data/core/terrain.cfg:2017 data/core/terrain.cfg:2029
 msgid "Bridge"
 msgstr "Jembatan"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:2007 data/core/terrain.cfg:2019
-#: data/core/terrain.cfg:2031
+#: data/core/terrain.cfg:1895 data/core/terrain.cfg:1907
+#: data/core/terrain.cfg:1919
 msgid "Wooden Bridge"
 msgstr "Jembatan dari Kayu"
 
+#. [terrain_type]: id=rotbridge
+#. [terrain_type]: id=rotbridgediag1
+#. [terrain_type]: id=rotbridgediag2
+#: data/core/terrain.cfg:1931 data/core/terrain.cfg:1943
+#: data/core/terrain.cfg:1955
+#, fuzzy
+#| msgid "Wooden Bridge"
+msgid "Rotting Bridge"
+msgstr "Jembatan dari Kayu"
+
 #. [terrain_type]: id=stone_bridge
-#: data/core/terrain.cfg:2045 data/core/terrain.cfg:2057
-#: data/core/terrain.cfg:2069
+#: data/core/terrain.cfg:1969 data/core/terrain.cfg:1981
+#: data/core/terrain.cfg:1993
 msgid "Basic Stone Bridge"
 msgstr "Jembatan Batu Dasar  "
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2083 data/core/terrain.cfg:2094
-#: data/core/terrain.cfg:2106
+#: data/core/terrain.cfg:2007 data/core/terrain.cfg:2018
+#: data/core/terrain.cfg:2030
 msgid "Cave Chasm Bridge"
 msgstr "Jembatan Jurang Gua  "
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:2123
+#: data/core/terrain.cfg:2047
 msgid "Off Map"
 msgstr "Peta Mati  "
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:2133
+#: data/core/terrain.cfg:2057
 msgid "Experimental Fake Map Edge"
 msgstr "Percobaan Tepi Peta Palsu"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:2142 data/gui/default/window/mp_create_game.cfg:479
+#: data/core/terrain.cfg:2066 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr "Selubung"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:2151
+#: data/core/terrain.cfg:2075
 msgid "Fog"
 msgstr "Kabut"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2220
+#: data/core/terrain.cfg:2116
 msgid "Flat"
 msgstr "Datar"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2227
+#: data/core/terrain.cfg:2130
 msgid "Frozen"
 msgstr "Beku"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2241
+#: data/core/terrain.cfg:2144
 msgid "Impassable"
 msgstr "Tak Terlalui"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2248
+#: data/core/terrain.cfg:2151
 msgid "Unwalkable"
 msgstr "Tak Terlewati"
 
@@ -1193,18 +1189,20 @@ msgstr "Sambungkan"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:228
+#: data/gui/default/window/addon_uninstall_list.cfg:175
 #: data/gui/default/window/campaign_dialog.cfg:440
 #: data/gui/default/window/campaign_difficulty.cfg:193
 #: data/gui/default/window/data_manage.cfg:361
 #: data/gui/default/window/edit_label.cfg:153
-#: data/gui/default/window/editor_generate_map.cfg:119
+#: data/gui/default/window/editor_generate_map.cfg:108
 #: data/gui/default/window/editor_new_map.cfg:119
 #: data/gui/default/window/editor_resize_map.cfg:281
-#: data/gui/default/window/editor_settings.cfg:248
+#: data/gui/default/window/editor_set_starting_position.cfg:176
+#: data/gui/default/window/editor_settings.cfg:262
 #: data/gui/default/window/folder_create.cfg:137
 #: data/gui/default/window/game_load.cfg:451
 #: data/gui/default/window/game_save.cfg:142
-#: data/gui/default/window/language_selection.cfg:141
+#: data/gui/default/window/language_selection.cfg:143
 #: data/gui/default/window/message.cfg:147
 #: data/gui/default/window/mp_change_control.cfg:160
 #: data/gui/default/window/mp_cmd_wrapper.cfg:470
@@ -1213,7 +1211,7 @@ msgstr "Sambungkan"
 #: data/gui/default/window/mp_login.cfg:272
 #: data/gui/default/window/mp_method_selection.cfg:226
 #: data/gui/default/window/mp_server_list.cfg:237
-#: data/gui/default/window/simple_item_selector.cfg:158
+#: data/gui/default/window/simple_item_selector.cfg:159
 #: data/gui/default/window/unit_attack.cfg:208
 #: data/gui/default/window/unit_create.cfg:209
 #: data/gui/default/window/unit_create.cfg:210 src/construct_dialog.cpp:128
@@ -1257,6 +1255,27 @@ msgid "translations^None"
 msgstr "Tidak ada^terjemahan "
 
 #. [label]
+#: data/gui/default/window/addon_uninstall_list.cfg:51
+#, fuzzy
+#| msgid "Update Add-ons"
+msgid "Uninstall Add-ons"
+msgstr "Update Add-ons"
+
+#. [scroll_label]
+#: data/gui/default/window/addon_uninstall_list.cfg:70
+msgid "Choose the add-ons you want to remove."
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=remove
+#. [button]: id=ok
+#: data/gui/default/window/addon_uninstall_list.cfg:162
+#: data/gui/default/window/mp_cmd_wrapper.cfg:200
+#: src/game_preferences_display.cpp:192
+msgid "Remove"
+msgstr "Hapus"
+
+#. [label]
 #: data/gui/default/window/campaign_dialog.cfg:56
 msgid "Play a campaign"
 msgstr "Mainkan Kampanye"
@@ -1268,7 +1287,8 @@ msgstr "Mainkan Kampanye"
 #: data/gui/default/window/data_manage.cfg:347
 #: data/gui/default/window/data_manage.cfg:348
 #: data/gui/default/window/edit_label.cfg:139
-#: data/gui/default/window/editor_settings.cfg:238
+#: data/gui/default/window/editor_set_starting_position.cfg:163
+#: data/gui/default/window/editor_settings.cfg:252
 #: data/gui/default/window/folder_create.cfg:123
 #: data/gui/default/window/game_load.cfg:437
 #: data/gui/default/window/game_load.cfg:438
@@ -1278,13 +1298,14 @@ msgstr "Mainkan Kampanye"
 #: data/gui/default/window/mp_create_game_set_password.cfg:133
 #: data/gui/default/window/mp_login.cfg:244
 #: data/gui/default/window/mp_method_selection.cfg:212
-#: data/gui/default/window/simple_item_selector.cfg:145
+#: data/gui/default/window/simple_item_selector.cfg:146
 #: data/gui/default/window/unit_create.cfg:197
 #: data/gui/default/window/unit_create.cfg:198
 #: data/gui/default/window/wml_message.cfg:478
 #: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169
+#: src/gui/dialogs/message.cpp:169 src/mapgen_dialog.cpp:110
+#: src/preferences_display.cpp:272
 msgid "OK"
 msgstr "OK"
 
@@ -1363,24 +1384,24 @@ msgid "Team only"
 msgstr "Hanya untuk Tim"
 
 #. [label]
-#: data/gui/default/window/editor_generate_map.cfg:46
+#: data/gui/default/window/editor_generate_map.cfg:35
 msgid "Generate Random Map"
 msgstr "Buat Peta Acak"
 
 #. [button]: id=next_generator
-#: data/gui/default/window/editor_generate_map.cfg:75
-#: data/gui/default/window/editor_generate_map.cfg:76
+#: data/gui/default/window/editor_generate_map.cfg:64
+#: data/gui/default/window/editor_generate_map.cfg:65
 msgid "Next Generator"
 msgstr "Generator Berikutnya"
 
 #. [button]: id=settings
-#: data/gui/default/window/editor_generate_map.cfg:98
-#: data/gui/default/window/editor_generate_map.cfg:99
+#: data/gui/default/window/editor_generate_map.cfg:87
+#: data/gui/default/window/editor_generate_map.cfg:88
 msgid "Settings"
 msgstr "Setting"
 
 #. [button]: id=ok
-#: data/gui/default/window/editor_generate_map.cfg:109
+#: data/gui/default/window/editor_generate_map.cfg:98
 msgid "Generate"
 msgstr "Buat"
 
@@ -1450,59 +1471,77 @@ msgstr "Salin ujung daerah"
 msgid "Resize map"
 msgstr "Ukur ulang peta"
 
+#. [label]: id=title
+#: data/gui/default/window/editor_set_starting_position.cfg:50
+#, fuzzy
+#| msgid "Choose theme"
+msgid "Choose Player"
+msgstr "Pilih tema"
+
+#. [label]: id=message
+#: data/gui/default/window/editor_set_starting_position.cfg:70
+msgid "Which player should start here?"
+msgstr ""
+
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:46 src/hotkeys.cpp:124
+#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:124
 msgid "Editor Settings"
 msgstr "Setting Redaktur"
 
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:54
-msgid "Time of day lighting preset"
+#: data/gui/default/window/editor_settings.cfg:53
+#, fuzzy
+#| msgid "Time of day lighting preset"
+msgid "Time of day lighting preset:"
 msgstr "Cahaya Jam Hari set ulang"
 
 #. [button]: id=next_tod
 #. [button]: id=next_tip
-#: data/gui/default/window/editor_settings.cfg:83
-#: data/gui/default/window/editor_settings.cfg:84
+#: data/gui/default/window/editor_settings.cfg:79
+#: data/gui/default/window/editor_settings.cfg:80
 #: data/gui/default/window/title_screen.cfg:177
 msgid "Next"
 msgstr "Terus"
 
 #. [toggle_button]: id=custom_tod_toggle
-#: data/gui/default/window/editor_settings.cfg:91
-msgid "Custom lighting setting"
+#: data/gui/default/window/editor_settings.cfg:104
+#, fuzzy
+#| msgid "Custom lighting setting"
+msgid "Custom lighting settings"
 msgstr "Setting cahaya buatan"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
-#: data/gui/default/window/editor_settings.cfg:101
-msgid "Auto-update map view"
+#: data/gui/default/window/editor_settings.cfg:114
+#, fuzzy
+#| msgid "Auto-update map view"
+msgid "Automatically update map view"
 msgstr "Update pemandangan peta secara otomatis"
 
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:128
+#: data/gui/default/window/editor_settings.cfg:135
 msgid "Red:"
 msgstr "Merah:"
 
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:154
+#: data/gui/default/window/editor_settings.cfg:161
 msgid "Green:"
 msgstr "Hijau:"
 
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:180
+#: data/gui/default/window/editor_settings.cfg:187
 msgid "Blue:"
 msgstr "Biru:"
 
 #. [toggle_button]: id=use_mdi
-#: data/gui/default/window/editor_settings.cfg:216
-msgid "Allow more than one map to be open at the same time (MDI)"
-msgstr "Membolehkan lebih dari satu peta dibuka secara serempak (MDI)"
+#: data/gui/default/window/editor_settings.cfg:231
+msgid "Allow multiple maps to be open simultaneously"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
-#: data/gui/default/window/editor_settings.cfg:258
-#: src/game_preferences_display.cpp:204
+#: data/gui/default/window/editor_settings.cfg:272
+#: src/game_preferences_display.cpp:214
 msgid "Apply"
 msgstr "Terapkan"
 
@@ -1516,7 +1555,7 @@ msgstr "Folder Baru"
 #: data/gui/default/window/folder_create.cfg:72
 #: data/gui/default/window/game_save.cfg:70
 #: data/gui/default/window/game_save_message.cfg:90
-#: data/gui/default/window/game_save_oos.cfg:91
+#: data/gui/default/window/game_save_oos.cfg:93
 msgid "Name:"
 msgstr "Nama:"
 
@@ -1603,8 +1642,8 @@ msgstr "Jangan menanyaiku lagi!"
 #: data/gui/default/window/game_delete.cfg:137
 #: data/gui/default/window/game_save_message.cfg:147
 #: data/gui/default/window/game_save_message.cfg:148
-#: data/gui/default/window/game_save_oos.cfg:195
-#: data/gui/default/window/game_save_oos.cfg:196
+#: data/gui/default/window/game_save_oos.cfg:197
+#: data/gui/default/window/game_save_oos.cfg:198
 #: data/gui/default/window/game_save_overwrite.cfg:96
 #: data/gui/default/window/game_save_overwrite.cfg:97
 #: src/construct_dialog.cpp:123 src/gui/dialogs/message.cpp:176
@@ -1615,7 +1654,7 @@ msgstr "Ya"
 #. [button]: id=cancel
 #: data/gui/default/window/game_delete.cfg:151
 #: data/gui/default/window/game_save_message.cfg:162
-#: data/gui/default/window/game_save_oos.cfg:210
+#: data/gui/default/window/game_save_oos.cfg:212
 #: data/gui/default/window/game_save_overwrite.cfg:111
 #: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:178
 msgid "No"
@@ -1648,7 +1687,7 @@ msgstr "Batalkan"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save.cfg:40
 #: data/gui/default/window/game_save_message.cfg:40
-#: data/gui/default/window/game_save_oos.cfg:40 src/hotkeys.cpp:72
+#: data/gui/default/window/game_save_oos.cfg:42 src/hotkeys.cpp:72
 msgid "Save Game"
 msgstr "Simpan Permainan"
 
@@ -1658,18 +1697,18 @@ msgid "x"
 msgstr "x"
 
 #. [label]: id=lblMessage
-#: data/gui/default/window/game_save_oos.cfg:60
+#: data/gui/default/window/game_save_oos.cfg:62
 msgid "OOS error"
 msgstr "Ada kesalahan OOS"
 
 #. [toggle_button]: id=ignore_all
-#: data/gui/default/window/game_save_oos.cfg:143
+#: data/gui/default/window/game_save_oos.cfg:145
 msgid "Ignore all"
 msgstr "Abaikan Semua"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
-#: data/gui/default/window/game_save_oos.cfg:168 src/hotkeys.cpp:94
+#: data/gui/default/window/game_save_oos.cfg:170 src/hotkeys.cpp:94
 msgid "Quit Game"
 msgstr "Keluar dari Permainan"
 
@@ -1728,20 +1767,23 @@ msgstr "Tutup"
 
 #. [grid]
 #. [label]
-#: data/gui/default/window/language_selection.cfg:39
+#: data/gui/default/window/language_selection.cfg:41
 #: data/gui/default/window/title_screen.cfg:229
 msgid "Language"
 msgstr "Bahasa"
 
 #. [label]
-#: data/gui/default/window/language_selection.cfg:58
+#: data/gui/default/window/language_selection.cfg:60
 msgid "Choose your preferred language:"
 msgstr "Pilih bahasa yang anda sukai:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/language_selection.cfg:126
-#: data/gui/default/window/language_selection.cfg:127
-msgid "Change language"
+#: data/gui/default/window/language_selection.cfg:128
+#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
+#, fuzzy
+#| msgid "Change language"
+msgid "Change Language"
 msgstr "Ganti bahasa"
 
 #. [row]
@@ -1880,7 +1922,7 @@ msgstr "Kirim"
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:666
 #: data/gui/default/window/title_screen.cfg:230
-#: src/game_preferences_display.cpp:56 src/hotkeys.cpp:88
+#: src/game_preferences_display.cpp:64 src/hotkeys.cpp:88
 msgid "Preferences"
 msgstr "Pilihan"
 
@@ -2011,13 +2053,6 @@ msgstr "Tambahkan Sebagai Teman"
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
 msgid "Add as Ignore"
 msgstr "Tambahkan Sebagai Diabaikan"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=remove
-#: data/gui/default/window/mp_cmd_wrapper.cfg:200
-#: src/game_preferences_display.cpp:182
-msgid "Remove"
-msgstr "Hapus"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:241
@@ -2325,9 +2360,8 @@ msgstr "Editor Peta"
 msgid "Start the map editor"
 msgstr "Mulai editor peta"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:229 src/hotkeys.cpp:204
+#: data/gui/default/window/title_screen.cfg:229
 msgid "Change the language"
 msgstr "Ganti bahasa"
 
@@ -2419,380 +2453,394 @@ msgstr ""
 msgid "%I:%M %p"
 msgstr ""
 
-#: src/game_preferences_display.cpp:163
+#: src/game_preferences_display.cpp:173
 msgid "Full screen"
 msgstr "Pasang Layar Penuh"
 
-#: src/game_preferences_display.cpp:164
+#: src/game_preferences_display.cpp:174
 msgid "Accelerated speed"
 msgstr "Kecepatan Diakselerasi"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:175
 msgid "Skip AI moves"
 msgstr "Lompati Gerakan AI"
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:176
 #, fuzzy
 #| msgid "Interrupt move when an ally is sighted"
 msgid "Interrupt move when an ally is sighted"
 msgstr "Menyela Gerakan ketika sekutu terlihat"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:177
 msgid "Show grid"
 msgstr "Tunjukkan Kisi"
 
-#: src/game_preferences_display.cpp:168 src/game_preferences_display.cpp:357
+#: src/game_preferences_display.cpp:178
 msgid "Save replay on SP/MP victory or MP defeat"
 msgstr "Simpan replay pada Kemenangan PS/MP atau Kekalahan MP"
 
-#: src/game_preferences_display.cpp:169 src/game_preferences_display.cpp:360
+#: src/game_preferences_display.cpp:179
 msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgstr "Hapus Simpanan-Otomatis pada Kemenangan PS/MP atau Kekalahan MP"
 
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:180
 msgid "Do not show lobby joins"
 msgstr "Jangan Tunjukkan Pergabungan Lobi"
 
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:181
 msgid "Show lobby joins of friends only"
 msgstr "Hanya Tunjukkan Pergabungan Lobi Teman"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:182
 msgid "Show all lobby joins"
 msgstr "Tunjukkan Semua Pergabungan Lobi"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:183
 msgid "Use new lobby interface"
 msgstr "Gunakan alat penghubung lobi baru"
 
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:184
 msgid "Sort lobby list"
 msgstr "Sortir Daftar Lobi"
 
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:185
 msgid "Iconize lobby list"
 msgstr "Menaruh Simbul untuk Daftar Lobi"
 
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:186
 #, fuzzy
 #| msgid "Save password to preferences (clear text)"
 msgid "Save password to preferences (plain text)"
 msgstr "Simpan kata sandi ke pilihan (singkirkan teks)"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:187
 #, fuzzy
 #| msgid "Set path to wesnothd"
 msgid "Set Path to wesnothd"
 msgstr "Pasang jalan ke wesnothd"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:188
 msgid "Friends List"
 msgstr "Daftar Teman"
 
-#: src/game_preferences_display.cpp:179
+#: src/game_preferences_display.cpp:189
 msgid "Multiplayer Options"
 msgstr "Pilihan Multi-pemain"
 
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:190
 msgid "Add As Friend"
 msgstr "Daftarkan Sebagai Teman"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:191
 msgid "Add As Ignore"
 msgstr "Daftarkan Sebagai Diabaikan"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:193
 msgid "Show floating labels"
 msgstr "Tunjukkan Label Mengapung"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:194
 msgid "Turn dialog"
 msgstr "Dialog Giliran"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:195
 msgid "Enable planning mode on start"
 msgstr "Aktifkan Mode Perencanaan saat Mulai"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:196
 msgid "Hide allies’ plans by default"
 msgstr ""
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:197
 msgid "Turn bell"
 msgstr "Bel Giliran"
 
-#: src/game_preferences_display.cpp:188
+#: src/game_preferences_display.cpp:198
 msgid "Show team colors"
 msgstr "Tunjukkan Warna Tim"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:199
 msgid "Show color cursors"
 msgstr "Tunjukkan Tetikus Berwarna"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:200
 msgid "Show haloing effects"
 msgstr "Tunjukkan Efek Lingkaran Cahaya"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:201
 msgid "Change Resolution"
 msgstr "Ganti Resolusi"
 
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:202
 msgid "Theme"
 msgstr "Tema"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:203
 msgid "Hotkeys"
 msgstr "Hotkey"
 
-#: src/game_preferences_display.cpp:195
+#: src/game_preferences_display.cpp:205
 msgid "Sound effects"
 msgstr "Efek suara"
 
-#: src/game_preferences_display.cpp:196
+#: src/game_preferences_display.cpp:206
 msgid "Music"
 msgstr "Musik"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:207
 msgid "Chat timestamping"
 msgstr "Cap Waktu Obrolan"
 
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:208
 msgid "sound^Advanced Options"
 msgstr "Pilihan Lebih Lanjut"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:209
 msgid "sound^Standard Options"
 msgstr "Pilihan Standar"
 
-#: src/game_preferences_display.cpp:200
+#: src/game_preferences_display.cpp:210
 msgid "User interface sounds"
 msgstr "Suara Antarmuka Pengguna"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:213
 msgid "Custom"
 msgstr "Kustom"
 
-#: src/game_preferences_display.cpp:205
-msgid "Show Unit Idle Animations"
+#: src/game_preferences_display.cpp:215
+#, fuzzy
+#| msgid "Show Unit Idle Animations"
+msgid "Show unit idle animations"
 msgstr "Tunjukkan Animasi Unit Bermalasan"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:216
 msgid "Show unit standing animations"
 msgstr "Tunjukkan Animasi Unit Berdiri"
 
-#: src/game_preferences_display.cpp:207 src/hotkeys.cpp:55
+#: src/game_preferences_display.cpp:217
 msgid "Animate map"
 msgstr "Buat Peta"
 
-#: src/game_preferences_display.cpp:209 src/game_preferences_display.cpp:210
-#: src/game_preferences_display.cpp:211 src/game_preferences_display.cpp:212
+#: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
+#: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
 msgid "Volume:"
 msgstr "Volume:"
 
-#: src/game_preferences_display.cpp:214
+#: src/game_preferences_display.cpp:224
 msgid "Scroll speed:"
 msgstr "Kecepatan Menggulung:"
 
-#: src/game_preferences_display.cpp:217
+#: src/game_preferences_display.cpp:227
 msgid "Sample rate (Hz):"
 msgstr "Laju Contoh (Hz):"
 
-#: src/game_preferences_display.cpp:218
+#: src/game_preferences_display.cpp:228
 msgid "Frequency:"
 msgstr "Frekuensi:"
 
-#: src/game_preferences_display.cpp:239
+#: src/game_preferences_display.cpp:251
 msgid "Sound effects on/off"
 msgstr "Efek suara nyala/mati"
 
-#: src/game_preferences_display.cpp:243
+#: src/game_preferences_display.cpp:255
 msgid "Change the sound effects volume"
 msgstr "Ganti volume efek suara"
 
-#: src/game_preferences_display.cpp:246
+#: src/game_preferences_display.cpp:258
 msgid "Music on/off"
 msgstr "Musik nyala/mati"
 
-#: src/game_preferences_display.cpp:250
+#: src/game_preferences_display.cpp:262
 msgid "Change the music volume"
 msgstr "Ganti volume musik"
 
-#: src/game_preferences_display.cpp:256
+#: src/game_preferences_display.cpp:268
 msgid "Change the bell volume"
 msgstr "Ganti volume bel"
 
-#: src/game_preferences_display.cpp:259
+#: src/game_preferences_display.cpp:271
 msgid "Turn menu and button sounds on/off"
 msgstr "Nyalakan/matikan suara menu dan tombol"
 
-#: src/game_preferences_display.cpp:263
+#: src/game_preferences_display.cpp:275
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Ganti volume suara untuk klik tombol, dll."
 
-#: src/game_preferences_display.cpp:265
+#: src/game_preferences_display.cpp:277
 msgid "Change the sample rate"
 msgstr "Ganti laju contoh"
 
-#: src/game_preferences_display.cpp:274
+#: src/game_preferences_display.cpp:286
 msgid "User defined sample rate"
 msgstr "Laju contoh didefinisi oleh pengguna"
 
-#: src/game_preferences_display.cpp:283 src/game_preferences_display.cpp:287
+#: src/game_preferences_display.cpp:295 src/game_preferences_display.cpp:299
 msgid "Change the buffer size"
 msgstr "Ganti ukuran buffer"
 
-#: src/game_preferences_display.cpp:285 src/game_preferences_display.cpp:884
+#: src/game_preferences_display.cpp:297 src/game_preferences_display.cpp:896
 msgid "Buffer size: "
 msgstr "Ukuran Buffer:"
 
-#: src/game_preferences_display.cpp:292
+#: src/game_preferences_display.cpp:304
 msgid "Change the speed of scrolling around the map"
 msgstr "Ganti kecepatan menggulung peta"
 
-#: src/game_preferences_display.cpp:297 src/game_preferences_display.cpp:299
+#: src/game_preferences_display.cpp:309 src/game_preferences_display.cpp:311
 msgid "Set the amount of chat lines shown"
 msgstr "Pasang jumlah garis obrolan yang ditunjukkan"
 
-#: src/game_preferences_display.cpp:302
+#: src/game_preferences_display.cpp:314
 msgid "Add a timestamp to chat messages"
 msgstr "Tambahkan cap waktu ke pesan obrolan"
 
-#: src/game_preferences_display.cpp:305
+#: src/game_preferences_display.cpp:317
 msgid "Choose whether the game should run full screen or in a window"
 msgstr ""
 "Pilih apakah permainan ini harus memulai di sebuah layar penuh atau di "
 "sebuah jendela"
 
-#: src/game_preferences_display.cpp:308
+#: src/game_preferences_display.cpp:320
 msgid "Make units move and fight faster"
 msgstr "Membuat unit bergerak dan bertarung lebih cepat"
 
-#: src/game_preferences_display.cpp:327
+#: src/game_preferences_display.cpp:339
 msgid "Units move and fight speed"
 msgstr "Kecepatan bergerak dan bertarung unit"
 
-#: src/game_preferences_display.cpp:330
+#: src/game_preferences_display.cpp:342
 msgid "Play short random animations for idle units"
 msgstr "Putar acak animasi singkat untuk unit-unit menganggur"
 
-#: src/game_preferences_display.cpp:333
+#: src/game_preferences_display.cpp:345
 msgid "Continuously animate standing units in the battlefield"
 msgstr "Terus menghidupkan unit-unit berdiri di medan perang"
 
-#: src/game_preferences_display.cpp:336
+#: src/game_preferences_display.cpp:348
 msgid "Display animated terrain graphics"
 msgstr "Tampilan hidup grafis medan"
 
-#: src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:354
 msgid "Set the frequency of unit idle animations"
 msgstr "Pasang frequensi animasi unit bermalasan"
 
-#: src/game_preferences_display.cpp:347
+#: src/game_preferences_display.cpp:359
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Pasang jumlah maksimum simpanan otomatis untuk disimpan"
 
-#: src/game_preferences_display.cpp:351
+#: src/game_preferences_display.cpp:363
 msgid "Do not animate AI units moving"
 msgstr "Jangan tunjukkan animasi unit AI bergerak"
 
-#: src/game_preferences_display.cpp:354
+#: src/game_preferences_display.cpp:366
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Kemunculan unit sekutu menyela pergerakan unit anda"
 
-#: src/game_preferences_display.cpp:362
+#: src/game_preferences_display.cpp:369
+#, fuzzy
+#| msgid "Save replay on SP/MP victory or MP defeat"
+msgid "Save Replay on SP/MP Victory or MP Defeat"
+msgstr "Simpan replay pada Kemenangan PS/MP atau Kekalahan MP"
+
+#: src/game_preferences_display.cpp:372
+#, fuzzy
+#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
+msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
+msgstr "Hapus Simpanan-Otomatis pada Kemenangan PS/MP atau Kekalahan MP"
+
+#: src/game_preferences_display.cpp:374
 msgid "Overlay a grid onto the map"
 msgstr "Lapisi peta dengan kisi-kisi"
 
-#: src/game_preferences_display.cpp:365
+#: src/game_preferences_display.cpp:377
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Sortir daftar pemain di lobi ke dalam grup-grup pemain"
 
-#: src/game_preferences_display.cpp:368
+#: src/game_preferences_display.cpp:380
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Tunjukkan simbul di depan nama-nama pemain di lobi."
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:383
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr "Jangan cek untuk menghapus kata sandi tersimpat (ketika keluar)."
 
-#: src/game_preferences_display.cpp:375
+#: src/game_preferences_display.cpp:387
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Jangan tunjukkan pesan tentang pemain bergabung ke lobi multi-pemain"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:389
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr ""
 "Tunjukkan pesan tentang teman-teman anda bergabung ke lobi multi-pemain"
 
-#: src/game_preferences_display.cpp:379
+#: src/game_preferences_display.cpp:391
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Tunjukkan pesan tentang semua pemain bergabung ke lobi multi-pemain"
 
-#: src/game_preferences_display.cpp:382
+#: src/game_preferences_display.cpp:394
 #, fuzzy
 #| msgid "Use new lobby interface"
 msgid "Use New Lobby Interface"
 msgstr "Gunakan alat penghubung lobi baru"
 
-#: src/game_preferences_display.cpp:384
+#: src/game_preferences_display.cpp:396
 msgid "Find and set path to MP server to host LAN games."
 msgstr "Cari dan pasang jalan ke server MP untuk host permainan LAN."
 
-#: src/game_preferences_display.cpp:385
+#: src/game_preferences_display.cpp:397
 msgid "View and edit your friends and ignores list"
 msgstr "Lihat dan edit daftar teman dan diabaikan anda"
 
-#: src/game_preferences_display.cpp:386
+#: src/game_preferences_display.cpp:398
 msgid "Back to the multiplayer options"
 msgstr "Kembali ke pilihan multi-pemain"
 
-#: src/game_preferences_display.cpp:387
+#: src/game_preferences_display.cpp:399
 msgid "Add this username to your friends list"
 msgstr "Tambahkan nama pengguna ini ke daftar teman anda"
 
-#: src/game_preferences_display.cpp:388
+#: src/game_preferences_display.cpp:400
 msgid "Add this username to your ignores list"
 msgstr "Tambahkan nama pengguna ini ke daftar diabaikan anda"
 
-#: src/game_preferences_display.cpp:389
+#: src/game_preferences_display.cpp:401
 msgid "Remove this username from your list"
 msgstr "Hapus nama pengguna ini dari daftar anda"
 
-#: src/game_preferences_display.cpp:392
+#: src/game_preferences_display.cpp:404
 msgid "Insert a username"
 msgstr "Masukkan sebuah nama pengguna"
 
-#: src/game_preferences_display.cpp:395
+#: src/game_preferences_display.cpp:407
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Tunjukkan teks di atas unit ketika ia terluka untuk menunjukkan luka diderita"
 
-#: src/game_preferences_display.cpp:397
+#: src/game_preferences_display.cpp:409
 msgid "Change the resolution the game runs at"
 msgstr "Ganti resolusi permainan ini"
 
-#: src/game_preferences_display.cpp:398
+#: src/game_preferences_display.cpp:410
 msgid "Change the theme the game runs with"
 msgstr "Ganti tema permainan ini"
 
-#: src/game_preferences_display.cpp:401
+#: src/game_preferences_display.cpp:413
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Tunjukkan dialog di permulaan giliran anda"
 
-#: src/game_preferences_display.cpp:404
+#: src/game_preferences_display.cpp:416
 msgid "Activates Planning Mode on game start"
 msgstr "Mengaktifkan Mode Perencanaan saat memulai permainan"
 
-#: src/game_preferences_display.cpp:407
+#: src/game_preferences_display.cpp:419
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr ""
 
-#: src/game_preferences_display.cpp:410
+#: src/game_preferences_display.cpp:422
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Mainkan suara bel di permulaan giliran anda"
 
-#: src/game_preferences_display.cpp:413
+#: src/game_preferences_display.cpp:425
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -2800,91 +2848,91 @@ msgstr ""
 "Tunjukkan lingkaran berwarna di sekeliling alas setiap unit untuk "
 "menunjukkan sisi mana yang memilikinya"
 
-#: src/game_preferences_display.cpp:416
+#: src/game_preferences_display.cpp:428
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Gunakan tetikus berwarna (mungkin menjadi lebih lambat)"
 
-#: src/game_preferences_display.cpp:419
+#: src/game_preferences_display.cpp:431
 msgid "Use graphical special effects (may be slower)"
 msgstr "Gunakan efek spesial grafik (mungkin menjadi lebih lambat)"
 
-#: src/game_preferences_display.cpp:421
+#: src/game_preferences_display.cpp:433
 msgid "View and configure keyboard shortcuts"
 msgstr "Lihat dan konfigurasi shortcut papan tombol"
 
-#: src/game_preferences_display.cpp:748
+#: src/game_preferences_display.cpp:760
 msgid "Speed: "
 msgstr "Kecepatan:"
 
-#: src/game_preferences_display.cpp:753 src/game_preferences_display.cpp:755
+#: src/game_preferences_display.cpp:765 src/game_preferences_display.cpp:767
 msgid "Maximum Auto-Saves: "
 msgstr "Simpanan-Otomatis Maksimum:"
 
-#: src/game_preferences_display.cpp:753
+#: src/game_preferences_display.cpp:765
 msgid "infinite"
 msgstr "tak terbatas"
 
-#: src/game_preferences_display.cpp:938
+#: src/game_preferences_display.cpp:950
 msgid "Chat lines: "
 msgstr "Garis Obrolan:"
 
-#: src/game_preferences_display.cpp:960 src/game_preferences_display.cpp:968
+#: src/game_preferences_display.cpp:972 src/game_preferences_display.cpp:980
 msgid "Invalid username"
 msgstr "Nama pengguna tidak berlaku"
 
-#: src/game_preferences_display.cpp:1071
+#: src/game_preferences_display.cpp:1083
 msgid "yes"
 msgstr "ya"
 
-#: src/game_preferences_display.cpp:1073
+#: src/game_preferences_display.cpp:1085
 msgid "no"
 msgstr "tidak"
 
-#: src/game_preferences_display.cpp:1096
+#: src/game_preferences_display.cpp:1119
 msgid "friend"
 msgstr "teman"
 
-#: src/game_preferences_display.cpp:1102
+#: src/game_preferences_display.cpp:1125
 msgid "ignored"
 msgstr "diabaikan"
 
-#: src/game_preferences_display.cpp:1106
+#: src/game_preferences_display.cpp:1129
 msgid "(empty list)"
 msgstr "(daftar kosong)"
 
-#: src/game_preferences_display.cpp:1231
+#: src/game_preferences_display.cpp:1254
 msgid "Prefs section^General"
 msgstr "Umum"
 
-#: src/game_preferences_display.cpp:1232
+#: src/game_preferences_display.cpp:1255
 msgid "Prefs section^Display"
 msgstr "Display"
 
-#: src/game_preferences_display.cpp:1233
+#: src/game_preferences_display.cpp:1256
 msgid "Prefs section^Sound"
 msgstr "Suara"
 
-#: src/game_preferences_display.cpp:1234
+#: src/game_preferences_display.cpp:1257
 msgid "Prefs section^Multiplayer"
 msgstr "Multi-pemain"
 
-#: src/game_preferences_display.cpp:1235
+#: src/game_preferences_display.cpp:1258
 msgid "Advanced section^Advanced"
 msgstr "Terlaju"
 
-#: src/game_preferences_display.cpp:1269
+#: src/game_preferences_display.cpp:1292
 msgid "Choose theme"
 msgstr "Pilih tema"
 
-#: src/game_preferences_display.cpp:1284
+#: src/game_preferences_display.cpp:1307
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Tema baru akan berlaku di permainan baru atau yang diload berikutnya."
 
-#: src/game_preferences_display.cpp:1288
+#: src/game_preferences_display.cpp:1311
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Tidak ada tema yang diketahui. Coba ganti dari dalam permainan."
 
-#: src/game_preferences_display.cpp:1331
+#: src/game_preferences_display.cpp:1354
 msgid "Find $filename server binary to host networked games"
 msgstr "Mencari $filename biner server untuk host permainan jaringan"
 
@@ -3004,23 +3052,29 @@ msgstr "#(Tidak Berlaku)"
 msgid "Campaign: $campaign_name"
 msgstr "Kampanye: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:311
-msgid "replay"
-msgstr "permainan ulang"
+#: src/gui/dialogs/game_load.cpp:305
+msgid "Test scenario"
+msgstr ""
 
 #: src/gui/dialogs/game_load.cpp:313
+#, fuzzy
+#| msgid "replay"
+msgid "Replay"
+msgstr "permainan ulang"
+
+#: src/gui/dialogs/game_load.cpp:315
 msgid "Turn"
 msgstr "Akhir Giliran"
 
-#: src/gui/dialogs/game_load.cpp:315
+#: src/gui/dialogs/game_load.cpp:317
 msgid "Scenario start"
 msgstr "Permulaan Skenario"
 
-#: src/gui/dialogs/game_load.cpp:318
+#: src/gui/dialogs/game_load.cpp:320
 msgid "Difficulty: "
 msgstr "Kesulitan: "
 
-#: src/gui/dialogs/game_load.cpp:322
+#: src/gui/dialogs/game_load.cpp:324
 msgid "Version: "
 msgstr "Versi:"
 
@@ -3052,23 +3106,23 @@ msgstr ""
 msgid "Room $name joined"
 msgstr "Bilik $name telah ikut"
 
-#: src/gui/dialogs/lobby_main.cpp:1419
+#: src/gui/dialogs/lobby_main.cpp:1420
 msgid "$player has entered the room"
 msgstr "$player Telah memasuki Bilik"
 
-#: src/gui/dialogs/lobby_main.cpp:1457
+#: src/gui/dialogs/lobby_main.cpp:1458
 msgid "$player has left the room"
 msgstr "$player telah meninggalkan Bilik"
 
-#: src/gui/dialogs/lobby_main.cpp:1570
+#: src/gui/dialogs/lobby_main.cpp:1571
 msgid "Password Required"
 msgstr "Pengingat Kata Sandi"
 
-#: src/gui/dialogs/lobby_main.cpp:1571
+#: src/gui/dialogs/lobby_main.cpp:1572
 msgid "Joining this game requires a password."
 msgstr "Untuk ikut kedalam permainan ini harus memasukkan password."
 
-#: src/gui/dialogs/lobby_main.cpp:1572
+#: src/gui/dialogs/lobby_main.cpp:1573
 msgid "Password: "
 msgstr "Kata Sandi:"
 
@@ -3135,6 +3189,12 @@ msgstr "Klik Mouse Kiri "
 msgid "Right Mouse Click"
 msgstr "Klik Mouse Kanan  "
 
+#: src/hotkeys.cpp:55
+#, fuzzy
+#| msgid "Animate map"
+msgid "Animate Map"
+msgstr "Buat Peta"
+
 #: src/hotkeys.cpp:56
 msgid "Next Unit"
 msgstr "Unit Berikutnya"
@@ -3176,7 +3236,9 @@ msgid "Default Zoom"
 msgstr "Zoom Default"
 
 #: src/hotkeys.cpp:66
-msgid "Toggle Full screen"
+#, fuzzy
+#| msgid "Toggle Full screen"
+msgid "Toggle Full Screen"
 msgstr "Pasang Layar Penuh"
 
 #: src/hotkeys.cpp:67 src/hotkeys.cpp:1172
@@ -3232,7 +3294,9 @@ msgid "Toggle Grid"
 msgstr "Pasang Kisi"
 
 #: src/hotkeys.cpp:82
-msgid "Mouse scrolling"
+#, fuzzy
+#| msgid "Mouse scrolling"
+msgid "Mouse Scrolling"
 msgstr "Gulungan Tetikus"
 
 #: src/hotkeys.cpp:83
@@ -3263,13 +3327,17 @@ msgstr "Daftar Unit"
 msgid "Statistics"
 msgstr "Statistik"
 
-#: src/hotkeys.cpp:92 src/hotkeys.cpp:102
-msgid "Stop"
-msgstr "Berhenti"
+#: src/hotkeys.cpp:92
+#, fuzzy
+#| msgid "Host Networked Game"
+msgid "Pause Network Game"
+msgstr "Host Permainan Jaringan"
 
-#: src/hotkeys.cpp:93 src/hotkeys.cpp:100
-msgid "Play"
-msgstr "Main"
+#: src/hotkeys.cpp:93
+#, fuzzy
+#| msgid "Host Networked Game"
+msgid "Continue Network Game"
+msgstr "Host Permainan Jaringan"
 
 #: src/hotkeys.cpp:95
 msgid "Set Team Label"
@@ -3291,9 +3359,23 @@ msgstr "Tunjukkan Gerakan Musuh"
 msgid "Best Possible Enemy Moves"
 msgstr "Tunjukkan Gerakan Musuh Mungkin Terbaik"
 
+#: src/hotkeys.cpp:100
+#, fuzzy
+#| msgid "Save Replay"
+msgid "Play Replay"
+msgstr "Simpan Replay"
+
 #: src/hotkeys.cpp:101
-msgid "Reset"
-msgstr "Pasang Ulang"
+#, fuzzy
+#| msgid "Save Replay"
+msgid "Reset Replay"
+msgstr "Simpan Replay"
+
+#: src/hotkeys.cpp:102
+#, fuzzy
+#| msgid "Save Replay"
+msgid "Stop Replay"
+msgstr "Simpan Replay"
 
 #: src/hotkeys.cpp:103
 msgid "Next Turn"
@@ -3384,7 +3466,9 @@ msgid "Map Information"
 msgstr "Informasi Peta"
 
 #: src/hotkeys.cpp:134
-msgid "Swap fore- and background terrains"
+#, fuzzy
+#| msgid "Swap fore- and background terrains"
+msgid "Swap Foreground/Background Terrains"
 msgstr "Tukar daerah latar depan dan latar belakang"
 
 #: src/hotkeys.cpp:135
@@ -3556,7 +3640,9 @@ msgid "Custom Command"
 msgstr "Perintah Kustom"
 
 #: src/hotkeys.cpp:208
-msgid "Run AI formula"
+#, fuzzy
+#| msgid "Run AI formula"
+msgid "Run Formula"
 msgstr "Gunakan formula AI"
 
 #: src/hotkeys.cpp:209
@@ -3580,27 +3666,39 @@ msgid "Start Tutorial"
 msgstr "Memulai pelatihan"
 
 #: src/hotkeys.cpp:241
-msgid "Start a campaign"
+#, fuzzy
+#| msgid "Start a campaign"
+msgid "Start Campaign"
 msgstr "Mainkan kampanye"
 
 #: src/hotkeys.cpp:248
-msgid "Start a multiplayer game"
+#, fuzzy
+#| msgid "Start a multiplayer game"
+msgid "Start Multiplayer Game"
 msgstr "Memulai permainan multiplayer"
 
 #: src/hotkeys.cpp:255
-msgid "Manage addons"
+#, fuzzy
+#| msgid "Manage addons"
+msgid "Manage Add-ons"
 msgstr "Mengelola addons"
 
 #: src/hotkeys.cpp:262
-msgid "Start the editor"
+#, fuzzy
+#| msgid "Start the editor"
+msgid "Start Editor"
 msgstr "Memulai editor"
 
 #: src/hotkeys.cpp:269
-msgid "Show the credits"
+#, fuzzy
+#| msgid "Show the credits"
+msgid "Show Credits"
 msgstr "Tampilkan kredit"
 
 #: src/hotkeys.cpp:277
-msgid "Show the helptip"
+#, fuzzy
+#| msgid "Show the helptip"
+msgid "Show Helptip"
 msgstr "Tampilkan info bantuan"
 
 #: src/hotkeys.cpp:875 src/hotkeys.cpp:1220
@@ -3625,13 +3723,9 @@ msgstr "Gambar Layar Diambil"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:406
+#: src/image.cpp:403
 msgid "language code for localized resources^en_US"
 msgstr "kode bahasa untuk sumber daya yang dilokalisir"
-
-#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
-msgid "Close Window"
-msgstr "Tutup Jendela"
 
 #: src/mapgen_dialog.cpp:113
 msgid "Map Generator"
@@ -3662,7 +3756,9 @@ msgid "Landform:"
 msgstr "Bentuk tanah:"
 
 #: src/mapgen_dialog.cpp:249
-msgid "Roads Between Castles"
+#, fuzzy
+#| msgid "Roads Between Castles"
+msgid "Roads between castles"
 msgstr "Jalan Di Antara Istana"
 
 #: src/mapgen_dialog.cpp:306
@@ -3700,7 +3796,9 @@ msgid "Hotkey Settings"
 msgstr "Setting Hotkey"
 
 #: src/preferences_display.cpp:282 src/preferences_display.cpp:351
-msgid "Press desired Hotkey (Esc cancels)"
+#, fuzzy
+#| msgid "Press desired Hotkey (Esc cancels)"
+msgid "Press desired hotkey (Esc cancels)"
 msgstr "Pilih Hotkey yang diinginkan (Esc membatalkan)"
 
 #: src/preferences_display.cpp:301
@@ -3721,15 +3819,25 @@ msgstr "Singkir Hotkey"
 
 #: src/preferences_display.cpp:394 src/preferences_display.cpp:402
 #: src/preferences_display.cpp:414
-msgid "This Hotkey is already in use."
+#, fuzzy
+#| msgid "This Hotkey is already in use."
+msgid "This hotkey is already in use."
 msgstr "Hotkey ini sudah dipakai."
 
 #: src/preferences_display.cpp:429
+#, fuzzy
+#| msgid ""
+#| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
-"Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
+"Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
+"modifiers."
 msgstr ""
 "Peringatan: hotkey gambar layar tidak disatukan dengan tombol Control, Alt "
 "atau Meta."
+
+#: src/preferences_display.cpp:429
+msgid "Warning"
+msgstr ""
 
 #: src/preferences_display.cpp:530
 msgid "There are no alternative video modes available"
@@ -3751,7 +3859,7 @@ msgstr ""
 "Sebuah daerah dengan untaian dengan lebih dengan 4 karakter ditemukan, "
 "daerah terpengaruh adalah :"
 
-#: src/text.cpp:293
+#: src/text.cpp:311
 msgid "The text contains invalid markup: "
 msgstr "Teks ini berisi markup cacat:"
 
@@ -3794,6 +3902,21 @@ msgid ""
 msgstr ""
 "Kunci '$deprecated_key' telah diubah namanya menjadi '$key'. Dukungan untuk "
 "'$deprecated_key' akan dipindahkan dalam versi $removal_version."
+
+#~ msgid "Allow more than one map to be open at the same time (MDI)"
+#~ msgstr "Membolehkan lebih dari satu peta dibuka secara serempak (MDI)"
+
+#~ msgid "Stop"
+#~ msgstr "Berhenti"
+
+#~ msgid "Play"
+#~ msgstr "Main"
+
+#~ msgid "Reset"
+#~ msgstr "Pasang Ulang"
+
+#~ msgid "Close Window"
+#~ msgstr "Tutup Jendela"
 
 #~ msgid "Shallow Merfolk Village"
 #~ msgstr "Desa Manusia Duyung Perairan Dangkal  "

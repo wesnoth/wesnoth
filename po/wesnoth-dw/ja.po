@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth - Dead Water\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-17 23:28+0200\n"
+"POT-Creation-Date: 2011-10-31 21:12+0100\n"
 "PO-Revision-Date: 2011-06-02 23:48+0900\n"
 "Last-Translator: mishan <mishanhideaki88@gmail.com>\n"
 "Language-Team: ja <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -613,87 +613,202 @@ msgstr ""
 msgid "This is impossible!"
 msgstr "そんな馬鹿な！"
 
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:444
+msgid "With their master gone, the undead are vanishing!"
+msgstr ""
+
+#. [unit]: type=Dread Bat, id=Fearsome Bat
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:458
+msgid "Fearsome Bat"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:473
+#, fuzzy
+#| msgid "Look! There is a bat cowering in the corner here."
+msgid "Look! There is a massive bat back here."
+msgstr "見てください！この角にコウモリが縮こまっています。"
+
+#. [message]: speaker=Gwabbo
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:477
+msgid "Be courageous, and attack it anyway!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:481
+msgid ""
+"But it isn't attacking <i>me</i>. Do you think, with its master gone, it "
+"might desire a new one?"
+msgstr ""
+
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:485
+msgid ""
+"If it does not attack, we shall not kill it. Let us see if it follows us."
+msgstr ""
+
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:491
+msgid "That is a mighty bat!"
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:495
+msgid "It is no matter. I will destroy it immediately."
+msgstr ""
+
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:499
+msgid ""
+"Hold a moment! Do you think, with its master gone, it might desire a new one?"
+msgstr ""
+
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:503
+msgid "If it does not attack, do not kill it. Let us see if it follows us."
+msgstr ""
+
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:540
+msgid "With their master gone, the undead are fading away!"
+msgstr ""
+
 #. [unit]: type=Vampire Bat, id=Friendly Bat
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:454
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:555
 msgid "Friendly Bat"
 msgstr "人懐っこいコウモリ"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:470
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:497
-msgid "Look! There is a bat cowering in the corner here."
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:570
+#, fuzzy
+#| msgid "Look! There is a bat cowering in the corner here."
+msgid "And look! There is a bat cowering in the corner here."
 msgstr "見てください！この角にコウモリが縮こまっています。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:474
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:574
 msgid "Well, kill it, and lets keep moving."
 msgstr "うーん、それは殺せ。早く移動しよう。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:478
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:578
 msgid "But look, it’s licking my hand."
 msgstr "しかし、見てください。私の手を舐めています。"
 
 # %
 #. [message]: speaker=Friendly Bat
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:483
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:509
+#. [message]: speaker=$unit.id
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:583
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:609
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:723
 msgid "Neep?"
 msgstr "キィー？"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:487
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:587
 msgid "It’s kind of cute."
 msgstr "ちょっとかわいいですね。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:491
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:591
 msgid "Very well then. I suppose we have our own bat."
 msgstr "わかった。そのコウモリを飼うことにする。"
 
+#. [message]: speaker=second_unit
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:597
+msgid "Look! There is a bat cowering in the corner here."
+msgstr "見てください！この角にコウモリが縮こまっています。"
+
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:501
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:601
 msgid "Aren’t you going to kill it? We need to keep moving."
 msgstr "コウモリを殺さないのですか？動かなければなりませんよ。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:505
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:605
 msgid "I would feel bad about that. It is, uh, licking my hand."
 msgstr "それは悪い予感がする。うっ、私の手を舐めてくるぞ。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:513
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:613
 msgid "Apparently you have your own bat."
 msgstr "みたところ、貴方に飼われたいみたいですね。"
 
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:647
+msgid "With their master gone, the skeletons are crumbling!"
+msgstr ""
+
+#. [unit]: type=Walking Corpse, id=Undead Bat
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:660
+#, fuzzy
+#| msgid "Undead"
+msgid "Undead Bat"
+msgstr "アンデッド"
+
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:541
-msgid "Look, this chest was in his tent. It is filled with gold!"
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:669
+#, fuzzy
+#| msgid "Look! There is a bat cowering in the corner here."
+msgid ""
+"Look! There is a bat in the corner here. It is moving, but it looks half "
+"dead."
+msgstr "見てください！この角にコウモリが縮こまっています。"
+
+#. [message]: speaker=Gwabbo
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:678
+msgid "No, that thing is all the way dead."
+msgstr ""
+
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:684
+msgid "Actually, I believe it is truly dead."
+msgstr ""
+
+#. [message]: speaker=Cylanna
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:690
+msgid ""
+"I beleive it is undead and has no will of its own, but the Kai may have the "
+"will power to direct it."
+msgstr ""
+
+#. [message]: speaker=Kai Krellis
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:694
+msgid "Fascinating. I shall certainly try."
+msgstr ""
+
+#. [message]: speaker=second_unit
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:706
+#, fuzzy
+#| msgid "Look, this chest was in his tent. It is filled with gold!"
+msgid "He had a chest in his tent, too. It is filled with gold!"
 msgstr "みろ、テントの中に金庫があるぞ。ゴールドで一杯だ。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:553
-msgid "You receive 200 gold."
-msgstr "200ゴールド獲得。"
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:718
+#, fuzzy
+#| msgid "You receive 100 gold."
+msgid "You receive 120 gold."
+msgstr "100ゴールド獲得。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:560
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:725
 msgid "It galls me to flee from our home, but we will return."
 msgstr "苛立たしいことだが、住み処から逃げるぞ。だが、我々は戻ってくる。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:644
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:809
 msgid "Have a unit pick up the ring to end the scenario."
 msgstr "ユニットに指輪を拾わせるとシナリオが終わります。"
 
 #. [objective]: condition=win
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:657
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:822
 msgid "Have a unit pick up the ring of power."
 msgstr "力の指輪を拾った。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:675
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:840
 msgid ""
 "Killing these enemies was good, but there were many more on the way. It will "
 "take greater might than we have to defeat them."
@@ -703,7 +818,7 @@ msgstr ""
 
 # %
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:679
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:844
 msgid "Onward to Tyegëa’s island, then."
 msgstr "では、Tyegëa の島へ向かえ。"
 
@@ -783,7 +898,7 @@ msgid "Beware, people!"
 msgstr "民よ、気をつけるんだ！"
 
 # %
-#. [message]: speaker=Friendly Bat
+#. [message]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:241
 msgid "Neep, neep!"
 msgstr "キィー、キィー！"
@@ -816,7 +931,7 @@ msgstr ""
 
 #. [option]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:299
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:914
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:924
 msgid "That sounds great! I’ll take it."
 msgstr "すばらしい！手にいれたぞ。"
 
@@ -1062,7 +1177,7 @@ msgid "You receive 100 gold."
 msgstr "100ゴールド獲得。"
 
 # %
-#. [message]: speaker=Friendly Bat
+#. [message]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:600
 msgid "Neep!"
 msgstr "キィー！"
@@ -2074,7 +2189,7 @@ msgid "Do not worry about him. He is friendly."
 msgstr "心配しないでください。我々は味方です。"
 
 # %
-#. [message]: speaker=Friendly Bat
+#. [message]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:527
 msgid "Neep, neep, neep!"
 msgstr "キィー、キィー、キィー！"
@@ -2151,7 +2266,7 @@ msgstr ""
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:599
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1136
-#: data/campaigns/Dead_Water/utils/dw-utils.cfg:128
+#: data/campaigns/Dead_Water/utils/dw-utils.cfg:134
 msgid "Cylanna! I need you!"
 msgstr "Cylanna！ あなたが必要なのに！"
 
@@ -2164,7 +2279,7 @@ msgstr "Tyegëa は我々を許さないだろう。我々は負けたのだ。"
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:617
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1154
-#: data/campaigns/Dead_Water/utils/dw-utils.cfg:142
+#: data/campaigns/Dead_Water/utils/dw-utils.cfg:148
 msgid "We are lost without our king!"
 msgstr "王なしでは勝てない！"
 
@@ -2204,13 +2319,13 @@ msgstr "炎の剣を所有者から奪取する"
 #. [objective]: condition=lose
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:245
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:372
-#: data/campaigns/Dead_Water/utils/dw-utils.cfg:109
+#: data/campaigns/Dead_Water/utils/dw-utils.cfg:115
 msgid "Death of Kai Krellis"
 msgstr "Kai Krellis の死"
 
 #. [objective]: condition=lose
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:249
-#: data/campaigns/Dead_Water/utils/dw-utils.cfg:113
+#: data/campaigns/Dead_Water/utils/dw-utils.cfg:119
 msgid "Death of Cylanna"
 msgstr "Cylanna の死"
 
@@ -2747,22 +2862,22 @@ msgid "Save me Lord Rava...uhh!"
 msgstr "Rava 様、おたすけください…がはっ！"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:834
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:844
 msgid "We have retaken our home!"
 msgstr "故郷を取り戻したぞ！"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:845
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:855
 msgid "Cylanna! I will miss you."
 msgstr "Cylanna ！ 居なくなっては困る。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:856
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:866
 msgid "Tyegëa! No!"
 msgstr "Tyegëa ！ ダメだ！"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:895
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:905
 msgid ""
 "This man was wearing a necklace with a pendant on it. I’m sure the shape "
 "means something."
@@ -2770,29 +2885,29 @@ msgstr ""
 "こいつはなにかついたネックレスをしているぞ。この形には何かがありそうだ。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:902
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:912
 msgid ""
 "It does indeed. It is an ankh, and that pendant will strengthen your life "
 "force."
 msgstr "そのとおりです。この十字架は力を強化してくれるでしょう。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:907
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:917
 msgid "The ankh necklace provides 70% resistance to <i>arcane</i> damage."
 msgstr "このネックレスは秘術属性のダメージに70%の耐性を得ます。"
 
 #. [option]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:923
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:933
 msgid "It doesn’t seem to have helped its previous owner. I don’t want it."
 msgstr "前の持ち主を助けることができなかったようだな。こんなものは欲しくない。"
 
 #. [option]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:960
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:970
 msgid "I would like my life force protected."
 msgstr "自分の力を守って欲しいものだ。"
 
 #. [option]: speaker=$unit.id
-#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:969
+#: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:979
 msgid "My life force feels fine as it is."
 msgstr "前よりも強くなった気がするぞ。"
 
@@ -3123,17 +3238,8 @@ msgstr "炎の剣"
 msgid "Ankh Necklace"
 msgstr "十字架の首飾り"
 
-#. [message]: speaker=$second_unit.id
-#: data/campaigns/Dead_Water/utils/items.cfg:196
-msgid ""
-"The human wizard was wearing a ring! Maybe it is magic. Someone should try "
-"it on to see what it does."
-msgstr ""
-"人間の魔術師が指輪をはめていました！おそらくは魔法の指輪です。それがどのよう"
-"な効果を持つのかを確認するために誰かが試してみるべきです。"
-
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/utils/items.cfg:226
+#: data/campaigns/Dead_Water/utils/items.cfg:190
 msgid ""
 "The bat slips the ring over a claw, and flies straight up, flapping "
 "powerfully."
@@ -3142,8 +3248,8 @@ msgstr ""
 "うになりました。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/utils/items.cfg:232
-#: data/campaigns/Dead_Water/utils/items.cfg:279
+#: data/campaigns/Dead_Water/utils/items.cfg:196
+#: data/campaigns/Dead_Water/utils/items.cfg:243
 msgid ""
 "The ring of power increases the damage of all its owner’s attacks by one, "
 "and adds three hitpoints."
@@ -3152,43 +3258,43 @@ msgstr ""
 "イントも3上昇します。"
 
 #. [option]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/utils/items.cfg:246
+#: data/campaigns/Dead_Water/utils/items.cfg:210
 msgid "We will let the bat have the ring. It will make him more helpful."
 msgstr "コウモリに持たせるべきだろう。より役に立ってくれるはずだ。"
 
 #. [option]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/utils/items.cfg:255
+#: data/campaigns/Dead_Water/utils/items.cfg:219
 msgid "Someone take that off of him before he hurts himself."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/utils/items.cfg:269
+#: data/campaigns/Dead_Water/utils/items.cfg:233
 msgid "I’ll try on the ring."
 msgstr "指輪を試しにはめてみましょう。"
 
 # 意訳: 直訳なら「違いを感じます」か？
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/utils/items.cfg:274
+#: data/campaigns/Dead_Water/utils/items.cfg:238
 msgid "I feel different, and all my weapons are lighter!"
 msgstr "力がみなぎります。すべての武器が軽く感じます！"
 
 #. [option]: speaker=unit
-#: data/campaigns/Dead_Water/utils/items.cfg:292
+#: data/campaigns/Dead_Water/utils/items.cfg:256
 msgid "I’ll take this ring, and you can rely on my strength."
 msgstr "この指輪をはめましょう。あなたは私の力をあてにすることができます。"
 
 #. [option]: speaker=unit
-#: data/campaigns/Dead_Water/utils/items.cfg:301
+#: data/campaigns/Dead_Water/utils/items.cfg:265
 msgid "This thing makes me dizzy. Someone else can have it."
 msgstr "指輪のせいで眩暈がします。他の誰かがはめてください。"
 
 #. [object]: id=power_ring2
-#: data/campaigns/Dead_Water/utils/items.cfg:320
+#: data/campaigns/Dead_Water/utils/items.cfg:284
 msgid "Ring of Power"
 msgstr "力の指輪"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/utils/items.cfg:369
+#: data/campaigns/Dead_Water/utils/items.cfg:333
 msgid ""
 "Killing these enemies was good, but there were many more on the way. I’m "
 "sure it is still unsafe here."
@@ -3197,10 +3303,19 @@ msgstr ""
 "まだ危険です。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/utils/items.cfg:374
+#: data/campaigns/Dead_Water/utils/items.cfg:338
 msgid "I agree. I hate to leave our home, but we will return."
 msgstr ""
 "その通り。住み処から逃げ出さねばならないことは忌々しいが、必ず戻ってくるぞ。"
+
+#. [message]: speaker=$second_unit.id
+#: data/campaigns/Dead_Water/utils/items.cfg:395
+msgid ""
+"The human wizard was wearing a ring! Maybe it is magic. Someone should try "
+"it on to see what it does."
+msgstr ""
+"人間の魔術師が指輪をはめていました！おそらくは魔法の指輪です。それがどのよう"
+"な効果を持つのかを確認するために誰かが試してみるべきです。"
 
 #: data/campaigns/Dead_Water/utils/specials.cfg:4
 #, fuzzy
@@ -3227,6 +3342,9 @@ msgid ""
 msgstr ""
 "この攻撃を受けたユニットはしばらく支配領域 (ZoC) の維持ができないぐらいに強力"
 "な攻撃です。この効果は攻撃を受けたユニットが次のターンになるまで継続します。"
+
+#~ msgid "You receive 200 gold."
+#~ msgstr "200ゴールド獲得。"
 
 #~ msgid "I think that could be useful. I’ll take it."
 #~ msgstr "これは役に立ちそうだ。貰っておこう。"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-08-10 11:40+0200\n"
+"POT-Creation-Date: 2011-10-31 21:12+0100\n"
 "PO-Revision-Date: 2009-11-08 21:05+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
@@ -114,7 +114,7 @@ msgstr "specjalne"
 #. [menu]: id=draw_button_editor
 #. [menu]: id=flood_button_editor
 #: data/core/editor/tool-hints.cfg:7 data/core/editor/tool-hints.cfg:13
-#: data/themes/editor.cfg:179 data/themes/editor.cfg:192
+#: data/themes/editor.cfg:181 data/themes/editor.cfg:194
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
@@ -125,7 +125,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
-#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:214
+#: data/core/editor/tool-hints.cfg:19 data/themes/editor.cfg:216
 msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
@@ -135,7 +135,7 @@ msgstr ""
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
-#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:203
+#: data/core/editor/tool-hints.cfg:25 data/themes/editor.cfg:205
 msgid ""
 "Left mouse button displays player selection, right clears. Number keys "
 "scroll to the starting position, alt+number sets respective starting "
@@ -154,47 +154,47 @@ msgid ""
 msgstr "Kliknij, aby wkleić. Podczas wklejania "
 
 #. [menu]: id=menu-editor-file
-#: data/themes/editor.cfg:120
+#: data/themes/editor.cfg:122
 msgid "File"
 msgstr "Plik"
 
 #. [menu]: id=menu-editor-edit
-#: data/themes/editor.cfg:131
+#: data/themes/editor.cfg:133
 msgid "Edit"
 msgstr "Edycja"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:141
+#: data/themes/editor.cfg:143
 msgid "Map"
 msgstr "Mapa"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:151
+#: data/themes/editor.cfg:153
 msgid "Window"
 msgstr "Okno"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:270
+#: data/themes/editor.cfg:272
 msgid "villages"
 msgstr "wioski"
 
-#: src/editor/editor_controller.cpp:123
+#: src/editor/editor_controller.cpp:132
 msgid "Quit Editor"
 msgstr "Wyjście z edytora"
 
-#: src/editor/editor_controller.cpp:277
+#: src/editor/editor_controller.cpp:286
 msgid "Fatal error"
 msgstr "Błąd krytyczny"
 
-#: src/editor/editor_controller.cpp:302 src/editor/editor_controller.cpp:1087
+#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1096
 msgid "(New Map)"
 msgstr "(Nowa mapa)"
 
-#: src/editor/editor_controller.cpp:308
+#: src/editor/editor_controller.cpp:317
 msgid "Do you really want to quit?"
 msgstr "Czy naprawdę chcesz wyjść?"
 
-#: src/editor/editor_controller.cpp:310
+#: src/editor/editor_controller.cpp:319
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -202,7 +202,7 @@ msgstr ""
 "Czy naprawdę chcesz wyjść? Zmiany mapy dokonane od ostatniego zapisu zostaną "
 "utracone."
 
-#: src/editor/editor_controller.cpp:312
+#: src/editor/editor_controller.cpp:321
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -210,77 +210,77 @@ msgstr ""
 "Czy naprawdę chcesz wyjść? Te mapy zostały zmodyfikowane i wszystkie zmiany "
 "od ostatniego zapisu zostaną utracone:"
 
-#: src/editor/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:326
 msgid "Quit"
 msgstr "Wyjdź"
 
-#: src/editor/editor_controller.cpp:382
+#: src/editor/editor_controller.cpp:391
 msgid "No editor time-of-day found."
 msgstr "Nie znaleziono pory dnia edytora."
 
-#: src/editor/editor_controller.cpp:403
+#: src/editor/editor_controller.cpp:412
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Czy chcesz odrzucić wszystkie zmiany mapy wprowadzone od ostatniego zapisu?"
 
-#: src/editor/editor_controller.cpp:403
+#: src/editor/editor_controller.cpp:412
 msgid "Unsaved Changes"
 msgstr "Niezapisane zmiany"
 
-#: src/editor/editor_controller.cpp:425
+#: src/editor/editor_controller.cpp:434
 msgid "Choose a Map to Open"
 msgstr "Wybierz mapę do załadowania"
 
-#: src/editor/editor_controller.cpp:459
+#: src/editor/editor_controller.cpp:468
 msgid "Save the Map As"
 msgstr "Zapisz Mapę Jako"
 
-#: src/editor/editor_controller.cpp:462
+#: src/editor/editor_controller.cpp:471
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Ten plik już istnieje. Czy chcesz go nadpisać?"
 
-#: src/editor/editor_controller.cpp:479
+#: src/editor/editor_controller.cpp:488
 msgid "No random map generators found."
 msgstr "Nie znaleziono losowych generatorów map."
 
-#: src/editor/editor_controller.cpp:492 src/editor/editor_controller.cpp:496
+#: src/editor/editor_controller.cpp:501 src/editor/editor_controller.cpp:505
 msgid "Map creation failed."
 msgstr "Tworzenie mapy się nie powiodło."
 
-#: src/editor/editor_controller.cpp:511
+#: src/editor/editor_controller.cpp:520
 msgid "Choose a mask to apply"
 msgstr "Wybierz maskę do zastosowania"
 
-#: src/editor/editor_controller.cpp:518
+#: src/editor/editor_controller.cpp:527
 msgid "Error loading mask"
 msgstr "Błąd ładowania maski"
 
-#: src/editor/editor_controller.cpp:533
+#: src/editor/editor_controller.cpp:542
 msgid "Choose target map"
 msgstr "Wybierz docelową mapę"
 
-#: src/editor/editor_controller.cpp:540 src/editor/editor_controller.cpp:730
+#: src/editor/editor_controller.cpp:549 src/editor/editor_controller.cpp:739
 msgid "Error loading map"
 msgstr "Błąd ładowania mapy"
 
-#: src/editor/editor_controller.cpp:644 src/editor/editor_controller.cpp:686
+#: src/editor/editor_controller.cpp:653 src/editor/editor_controller.cpp:695
 msgid "This map is already open."
 msgstr "Ta mapa jest już otwarta."
 
-#: src/editor/editor_controller.cpp:665
+#: src/editor/editor_controller.cpp:674
 msgid "Map saved."
 msgstr "Mapa zapisana."
 
-#: src/editor/editor_controller.cpp:709
+#: src/editor/editor_controller.cpp:718
 msgid "Loaded embedded map data"
 msgstr "Załadowano osadzone dane mapy"
 
-#: src/editor/editor_controller.cpp:710 src/editor/editor_controller.cpp:724
+#: src/editor/editor_controller.cpp:719 src/editor/editor_controller.cpp:733
 msgid "Map loaded from scenario"
 msgstr "Załadowano mapę ze scenariusza"
 
-#: src/editor/editor_controller.cpp:720
+#: src/editor/editor_controller.cpp:729
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -288,35 +288,35 @@ msgstr ""
 "Załadowano używany plik mapy:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1117
+#: src/editor/editor_controller.cpp:1126
 msgid "Undo"
 msgstr "Cofnij"
 
-#: src/editor/editor_controller.cpp:1119
+#: src/editor/editor_controller.cpp:1128
 msgid "Can’t Undo"
 msgstr "Nie można cofnąć"
 
-#: src/editor/editor_controller.cpp:1123
+#: src/editor/editor_controller.cpp:1132
 msgid "Redo"
 msgstr "Ponów"
 
-#: src/editor/editor_controller.cpp:1125
+#: src/editor/editor_controller.cpp:1134
 msgid "Can’t Redo"
 msgstr "Nie można powtórzyć"
 
-#: src/editor/editor_controller.cpp:1130
+#: src/editor/editor_controller.cpp:1139
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Automatyczna aktualizacja przejść terenu: Tak"
 
-#: src/editor/editor_controller.cpp:1133
+#: src/editor/editor_controller.cpp:1142
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Automatyczna aktualizacja przejść terenu: Częściowa"
 
-#: src/editor/editor_controller.cpp:1137
+#: src/editor/editor_controller.cpp:1146
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Automatyczna aktualizacja przejść terenu: Nie"
 
-#: src/editor/editor_map.cpp:150 src/editor/mouse_action.cpp:429
+#: src/editor/editor_map.cpp:150
 msgid "Player"
 msgstr "Gracz"
 
@@ -324,19 +324,19 @@ msgstr "Gracz"
 msgid "The size of the target map is different from the current map"
 msgstr "Rozmiar mapy docelowej jest inny niż mapy obecnie załadowanej"
 
-#: src/editor/editor_palettes.cpp:489
+#: src/editor/editor_palettes.cpp:497
 msgid "(non-core)"
 msgstr "(niestandardowe)"
 
-#: src/editor/editor_palettes.cpp:490
+#: src/editor/editor_palettes.cpp:498
 msgid "Will not work in game without extra care."
 msgstr "Nie będzie działać w grze bez dodatkowego przystosowania."
 
-#: src/editor/editor_palettes.cpp:520
+#: src/editor/editor_palettes.cpp:526
 msgid "FG: "
 msgstr ""
 
-#: src/editor/editor_palettes.cpp:521
+#: src/editor/editor_palettes.cpp:527
 msgid "BG: "
 msgstr ""
 
@@ -364,28 +364,33 @@ msgstr "Zapisanie do scenariusza nie powiodło się"
 msgid "Could not save the map: $msg"
 msgstr "Zapisanie mapy nie powiodło się: $msg"
 
-#: src/editor/mouse_action.cpp:426
-msgid "(Player)^None"
+#: src/gui/dialogs/editor_set_starting_position.cpp:84
+#, fuzzy
+#| msgid "(Player)^None"
+msgid "player^None"
 msgstr "Brak"
 
-#: src/editor/mouse_action.cpp:433
-msgid "Choose player"
-msgstr "Wybierz gracza"
-
-#: src/editor/mouse_action.cpp:434
-msgid ""
-"Which player should start here? You can use alt and a number key to set the "
-"starting position for a player, and del to clear the starting position under "
-"the cursor. Pressing a number key by itself will scroll to that player’s "
-"starting position."
+#: src/gui/dialogs/editor_set_starting_position.cpp:96
+msgid "Player $player_number"
 msgstr ""
-"Który gracz ma rozpocząć w tym miejscu? Alt+cyfra ustawia pozycję początkową "
-"gracza, a Delete usuwa zaznaczoną pozycję początkową. Naciśnięcie klawisza "
-"cyfry spowoduje ustawienie ekranu na odpowiedniej pozycji początkowej."
 
-#: src/gui/dialogs/editor_settings.cpp:147
+#: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"
 msgstr "Ustawienie niestandardowe"
+
+#~ msgid "Choose player"
+#~ msgstr "Wybierz gracza"
+
+#~ msgid ""
+#~ "Which player should start here? You can use alt and a number key to set "
+#~ "the starting position for a player, and del to clear the starting "
+#~ "position under the cursor. Pressing a number key by itself will scroll to "
+#~ "that player’s starting position."
+#~ msgstr ""
+#~ "Który gracz ma rozpocząć w tym miejscu? Alt+cyfra ustawia pozycję "
+#~ "początkową gracza, a Delete usuwa zaznaczoną pozycję początkową. "
+#~ "Naciśnięcie klawisza cyfry spowoduje ustawienie ekranu na odpowiedniej "
+#~ "pozycji początkowej."
 
 #~ msgid "FG"
 #~ msgstr "1P"
