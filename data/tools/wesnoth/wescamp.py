@@ -30,6 +30,10 @@ import wesnoth.campaignserver_client as libwml
 #import the svn library
 import wesnoth.libsvn as libsvn
 
+#import the github library
+import wesnoth.libgithub as libgithub
+
+
 class tempdir:
     def __init__(self):
         self.path = tempfile.mkdtemp()
@@ -45,6 +49,8 @@ class tempdir:
         logging.debug("removed tempdir '%s'", self.path)
 
 if __name__ == "__main__":
+    use_git = False
+    git_version = None
 
     """Download an addon from the server.
 
@@ -152,23 +158,33 @@ if __name__ == "__main__":
             logging.info("Creating directory in svn '%s'.",
                 svn_dir + "/" + addon)
 
-            svn = libsvn.SVN(svn_dir)
+            if use_git:
+                github = libgithub.GitHub(svn_dir, git_version)
 
-            # Don't update we're in the root and if we update the status of all
-            # other campaigns is lost and no more updates are executed.
-            os.mkdir(svn_dir + "/" + addon)
-            res = svn.add(addon)
-            res = svn.commit("wescamp_client: adding directory for initial "
-                + "inclusion of addon '" + addon + "'", [addon])
+                github.create_addon(addon)
+            else:
+                svn = libsvn.SVN(svn_dir)
+
+                # Don't update we're in the root and if we update the status of all
+                # other campaigns is lost and no more updates are executed.
+                os.mkdir(svn_dir + "/" + addon)
+                res = svn.add(addon)
+                res = svn.commit("wescamp_client: adding directory for initial "
+                    + "inclusion of addon '" + addon + "'", [addon])
 
         # Update the directory
-        svn = libsvn.SVN(svn_dir + "/" + addon)
-        svn.update()
+        if use_git:
+            addon_obj = github.addon(addon)
+            addon_obj.update()
+        else:
+            svn = libsvn.SVN(svn_dir + "/" + addon)
+            svn.update()
         # Translation needs to be prevented from the campaign to overwrite
         # the ones in wescamp.
         # The other files are present in wescamp and shouldn't be deleted.
-        if(svn.copy_to_svn(temp_dir, ["translations", "po", "campaign.def",
-            "config.status", "Makefile"])):
+        ignore_list = ["translations", "po", "campaign.def",
+            "config.status", "Makefile"]
+        if(svn.copy_to_svn(temp_dir, ignore_list) and not use_git): #TODO: use_git
 
             svn.commit("wescamp_client: automatic update of addon '"
                 + addon + "'")
@@ -200,11 +216,17 @@ if __name__ == "__main__":
             server, addon, temp_dir, svn_dir)
 
         # update the wescamp checkout for the translation,
-        svn = libsvn.SVN(wescamp + "/" + addon)
+        if use_git:
+            addon_obj = libgithub.GitHub(wescamp, git_version).addon(addon)
+        else:
+            svn = libsvn.SVN(wescamp + "/" + addon)
 
         # The result of the update can be ignored, no changes when updating
         # doesn't mean no changes to the translations.
-        svn.update()
+        if use_git:
+            addon_obj.update()
+        else:
+            svn.update()
 
         # test whether the svn has a translations dir, if not we can stop
         if(os.path.isdir(wescamp + "/"
@@ -217,8 +239,13 @@ if __name__ == "__main__":
                 return True
 
         # Export the entire addon data dir.
-        svn_addon = libsvn.SVN(wescamp + "/" + addon + "/" + addon)
-        svn_addon.export(temp_dir + "/" + addon)
+        if use_git:
+            source = os.path.join(wescamp, addon, addon)
+            dest = os.path.join(temp_dir, addon)
+            shutil.copytree(source, dest)
+        else:
+            svn_addon = libsvn.SVN(wescamp + "/" + addon + "/" + addon)
+            svn_addon.export(temp_dir + "/" + addon)
 
         # If it is the old format with the addon.cfg copy that as well.
         svn_cfg = wescamp + "/" + addon + "/" + addon + ".cfg"
@@ -259,13 +286,19 @@ if __name__ == "__main__":
         logging.debug("Erase addon from wescamp addon = '%s' svn_dir = '%s'",
             addon, svn_dir)
 
-        svn = libsvn.SVN(wescamp)
+        if use_git:
+            addon_obj = libgithub.GitHub(svn_dir, git_version).addon(addon)
 
-        svn.update(None, [addon])
+            # Note: this is probably not implemented, as it would destroy a repository, including the history.
+            addon_obj.erase()
+        else:
+            svn = libsvn.SVN(svn_dir)
 
-        svn.remove(addon)
+            svn.update(None, [addon])
 
-        svn.commit("Erasing addon " + addon)
+            svn.remove(addon)
+
+            svn.commit("Erasing addon " + addon)
 
     optionparser = optparse.OptionParser("%prog [options]")
 
@@ -317,6 +350,11 @@ if __name__ == "__main__":
     optionparser.add_option("-P", "--password",
         help = "The master password for the addon server. ['']")
 
+    optionparser.add_option("-g", "--git",
+        action = "store_true",
+        help = "Use git instead of svn to interface with wescamp. "
+        + "This is a temporary option for the conversion from berlios to github.")
+
     options, args = optionparser.parse_args()
 
     if(options.verbose):
@@ -354,6 +392,17 @@ if __name__ == "__main__":
 
     password = options.password
 
+    if(options.git):
+        use_git = True
+        if not wescamp:
+            logging.error("No wescamp checkout specified. Needed for git usage.")
+            sys.exit(2)
+        try:
+            git_version = wescamp.split("-")[-1]
+        except:
+            logging.error("Wescamp directory path does not end in a version suffix. Currently needed for git usage.")
+            sys.exit(2)
+
     # List the addons on the server and optional filter on translatable
     # addons.
     if(options.list or options.list_translatable):
@@ -362,6 +411,9 @@ if __name__ == "__main__":
             addons = list_addons(server, options.list_translatable)
         except libsvn.error, e:
             print "[ERROR svn] " + str(e)
+            sys.exit(1)
+        except libgithub.Error, e:
+            print "[ERROR github] " + str(e)
             sys.exit(1)
         except socket.error, e:
             print "Socket error: " + str(e)
@@ -387,6 +439,9 @@ if __name__ == "__main__":
             upload(server, options.upload, target, wescamp)
         except libsvn.error, e:
             print "[ERROR svn] " + str(e)
+            sys.exit(1)
+        except libgithub.Error, e:
+            print "[ERROR github] " + str(e)
             sys.exit(1)
         except socket.error, e:
             print "Socket error: " + str(e)
@@ -417,6 +472,9 @@ if __name__ == "__main__":
             except libsvn.error, e:
                 print "[ERROR svn] in addon '" + k + "'" + str(e)
                 error = True
+            except libgithub.Error, e:
+                print "[ERROR github] in addon '" + k + "'" + str(e)
+                error = True
             except socket.error, e:
                 print "Socket error: " + str(e)
                 error = True
@@ -442,6 +500,9 @@ if __name__ == "__main__":
             download(server, options.download, target, wescamp, password)
         except libsvn.error, e:
             print "[ERROR svn] " + str(e)
+            sys.exit(1)
+        except libgithub.Error, e:
+            print "[ERROR github] " + str(e)
             sys.exit(1)
         except socket.error, e:
             print "Socket error: " + str(e)
@@ -506,6 +567,9 @@ if __name__ == "__main__":
             except libsvn.error, e:
                 print "[ERROR svn] in addon '" + k + "'" + str(e)
                 error = True
+            except libgithub.Error, e:
+                print "[ERROR github] in addon '" + k + "'" + str(e)
+                error = True
             except socket.error, e:
                 print "Socket error: " + str(e)
                 error = True
@@ -527,6 +591,9 @@ if __name__ == "__main__":
             erase(options.erase, wescamp)
         except libsvn.error, e:
             print "[ERROR svn] " + str(e)
+            sys.exit(1)
+        except libgithub.Error, e:
+            print "[ERROR github] " + str(e)
             sys.exit(1)
         except socket.error, e:
             print "Socket error: " + str(e)
