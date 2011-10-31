@@ -169,6 +169,9 @@ stringfixes = {
 # Fix apostrophes
 ("SHOW ALL allies'", "SHOW ALL allies’"),
 ("HIDE ALL allies'", "HIDE ALL allies’"),
+
+# Fix capitalization
+("Joystick: number of the cursor x-axis joystick", "Joystick: number of the cursor X-axis joystick"),
 ),
 
 "wesnoth-anl" : (
