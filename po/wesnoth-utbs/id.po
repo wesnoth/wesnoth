@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-17 23:28+0200\n"
-"PO-Revision-Date: 2011-08-21 22:09+0700\n"
+"PO-Revision-Date: 2011-10-29 15:53+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -1305,12 +1305,12 @@ msgid ""
 msgstr ""
 "Selama siang hari (Fajar, Pagi, Tengah-hari, Sore, dan Senja) pada awal "
 "setiap giliran anda, setiap unit di dalam sebuah, jalan pasir, reruntuhan "
-"atau bukit pasir hex akan turun karena kehausan. Setiap giliran haus "
+"atau bukit pasir heks akan turun karena kehausan. Setiap giliran haus "
 "mengurangi kerusakan menyerang unit dan menyebabkan sebuah unit "
 "$dehydration_loss hitpoints dari kerusakan. Hanya dengan dirawat oleh "
-"seorang penyembuh atau menyegarkan diri di oasis (di setiap hex air dangkal) "
-"pada awal giliran anda unit anda akan memperoleh kembali kekuatan serangan "
-"penuh."
+"seorang penyembuh atau menyegarkan diri di oasis (di setiap heks air "
+"dangkal) pada awal giliran anda unit anda akan memperoleh kembali kekuatan "
+"serangan penuh."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:327
@@ -3346,7 +3346,7 @@ msgstr ""
 msgid ""
 "Strike hard and fast and also be careful—right, this is going to be fun."
 msgstr ""
-"Menyerang keras dan cepat dan juga harus berhati-hati--benar, ini akan "
+"Menyerang keras dan cepat dan juga harus berhati-hati—benar, ini akan "
 "menyenangkan."
 
 #. [event]
@@ -4606,24 +4606,18 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1719
-#, fuzzy
-#| msgid "Defeat Troll Leaders"
 msgid "Defeat troll leaders"
-msgstr "Kalahkan Pemimpin-Pemimpin Troll "
+msgstr "Kalahkan pemimpin-pemimpin troll "
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1735
-#, fuzzy
-#| msgid "Death of Zhul"
 msgid "Death of Fundin"
-msgstr "Kematian Zhul"
+msgstr "Kematian Fundin"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1739
-#, fuzzy
-#| msgid "Death of Nog"
 msgid "Death of Nori"
-msgstr "Kematian Nog"
+msgstr "Kematian Nori"
 
 #. [option]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1752
@@ -4641,24 +4635,18 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1784
-#, fuzzy
-#| msgid "Defeat Dwarf Leaders"
 msgid "Defeat dwarf leaders"
-msgstr "Kalahkan Pemimpin-Pemimpin Dwarf "
+msgstr "Kalahkan pemimpin-pemimpin dwarf "
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1800
-#, fuzzy
-#| msgid "Death of Zhul"
 msgid "Death of Thungar"
-msgstr "Kematian Zhul"
+msgstr "Kematian Thungar"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1804
-#, fuzzy
-#| msgid "Death of Jarl"
 msgid "Death of Gnarl"
-msgstr "Kematian Jarl"
+msgstr "Kematian Gnarl"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1826
@@ -17126,10 +17114,8 @@ msgstr "disegarkan"
 
 #. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:36
-#, fuzzy
-#| msgid "female^Desert Hunter"
 msgid "female^stunned"
-msgstr "perempuan^Pemburu Gurun "
+msgstr "memingsankan"
 
 #. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:43

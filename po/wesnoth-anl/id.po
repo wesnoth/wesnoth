@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2011-09-25 16:09+0700\n"
+"POT-Creation-Date: 2011-10-17 23:28+0200\n"
+"PO-Revision-Date: 2011-10-29 12:41+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -25,17 +25,13 @@ msgstr "4p — Daerah yang baru"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
 msgstr ""
-"4P Skenario Survival ini mengijinkan kamu untuk membangun bangunan dan "
-"terraform pada daratan. Gunakan pengaturan peta. direkomendasikan mulai dari "
-"emas=100."
+"Skenario bertahan hidup 4p ini mengijinkan kamu untuk membangun bangunan dan "
+"bentuk daerah pada daratan. Gunakan pengaturan peta. Emas permulaan yang "
+"dianjurkan adalah 100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
@@ -122,16 +118,12 @@ msgstr ""
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:591
-#, fuzzy
-#| msgid ""
-#| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
-#| "rescue them?"
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
 msgstr ""
-"Aku bersungguh-sungguh, aku melihat seseorang yang terperangkap di dalam "
-"sarang laba-laba. Tidakkah lebih baik kita menolongnya? "
+"Aku bersumpah, aku melihat seseorang yang terperangkap di dalam sarang laba-"
+"laba. Tidakkah lebih baik kita menolongnya? "
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:613
@@ -140,9 +132,9 @@ msgid ""
 "spiders guarding each captive are currently wounded, the sooner you get "
 "there the better chance you have of killing them."
 msgstr ""
-"Gerakkan  unit manapun di sekitar para tawanan sehingga para tawanan itu "
-"akan bergabung di pihakmu. Laba-Laba yang menjaga masing-masing tawanan  "
-"sekarang sedang terluka, lebih cepat kamu ada di sana maka semakin baik pula "
+"Gerakkan unit manapun di sekitar para tawanan sehingga para tawanan itu akan "
+"bergabung di pihakmu. Laba-Laba yang menjaga masing-masing tawanan  sekarang "
+"sedang terluka, lebih cepat kamu ada di sana maka semakin baik pula "
 "kesempatanmu untuk membunuh laba-laba itu."
 
 #. [message]: speaker=narrator
@@ -192,7 +184,7 @@ msgstr ""
 msgid "You have won the game, but you may continue if you wish..."
 msgstr ""
 "Anda telah memenangkan permainan, tetapi anda dapat bermain lagi jika anda "
-"menginginkan ..."
+"menginginkan..."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:698
@@ -326,10 +318,10 @@ msgid ""
 "your chosen research target. Right-click on a mage in a university to change "
 "research target."
 msgstr ""
-"Desa bergaya ' Elvish'  mlambangkan universitas. Di awal giliran mu, "
-"Penyihir di universitas secara otomatis menambah kemajuan perkembangan "
-"penelitian yang telah anda pilih. Klik-Kanan pada penyihir di dalam "
-"universitas untuk merubah model penelitian yang ingin dikembangkan."
+"Desa bergaya 'Elf' melambangkan universitas. Di awal giliran mu, Penyihir di "
+"universitas secara otomatis menambah kemajuan perkembangan penelitian yang "
+"telah anda pilih. Klik-Kanan pada penyihir di dalam universitas untuk "
+"merubah model penelitian yang ingin dikembangkan."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -407,41 +399,29 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of agriculture"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Mengajarkan pengetahuan tentang pertanian"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of mining"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Mengajarkan pengetahuan tentang cara menambang"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of warfare"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Mengajarkan cara berperang"
 
 #. [message]: speaker=unit
@@ -577,13 +557,6 @@ msgstr "Penelitian"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:144
-#, fuzzy
-#| msgid ""
-#| "We are currently studying $player_$side_number|.research.current_target|. "
-#| "To which end would you have our scholars devote their minds?\n"
-#| "\n"
-#| "Our farms produce $player_$side_number|.farming.gold|g\n"
-#| "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgid ""
 "We are currently studying $player_$side_number|.research."
 "target_language_name|. To which end would you have our scholars devote their "
@@ -592,11 +565,11 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
-"Kita saat ini sedang belajar $player_$side_number|.research.current_target|. "
-"Berubah menjadi apakah sarjana kita?\n"
+"Kita saat ini sedang beajar $player_$side_number|.research."
+"target_language_name|. Berubah menjadi apakah sarjana kita?\n"
 "\n"
-"Our farms produce $player_$side_number|.farming.gold|g\n"
-"Our mines produce $player_$side_number|.mining.gold|g\n"
+"Hasil pertanian kita $player_$side_number|.farming.gold|g\n"
+"Hasil pertambangan kita $player_$side_number|.mining.gold|g\n"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
@@ -605,19 +578,13 @@ msgstr "Melanjutkan seperti sebelumnya"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:167
-#, fuzzy
-#| msgid ""
-#| "Agriculture\n"
-#| "Farmers produce +1 gold\n"
-#| "Study Progress: $player_$side_number|.farming.progress|/$player_"
-#| "$side_number|.farming.target"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
-"Pertanian\n"
+"<span color='green'>Pertanian</span>\n"
 "Hasil dari Para Petani +1 emas\n"
 "Kemajuan Pembelajaran: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
