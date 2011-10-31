@@ -537,7 +537,6 @@ SDL_PixelFormat last_pixel_format;
 
 void set_pixel_format(SDL_PixelFormat* format)
 {
-	std::cout << "ou\n";
 	assert(format != NULL);
 
 	SDL_PixelFormat &f = *format;
