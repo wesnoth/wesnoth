@@ -103,20 +103,20 @@ const struct {
 	{ hotkey::HOTKEY_REPLAY_NEXT_TURN, "replaynextturn", N_("Next Turn"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_NEXT_SIDE, "replaynextside", N_("Next Side"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING, "replayshoweverything",
-	  N_("Full map"), false, hotkey::SCOPE_GAME },
+	  N_("Full Map"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SHOW_EACH, "replayshoweach",
-	  N_("Each team"), false, hotkey::SCOPE_GAME },
+	  N_("Each Team"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1",
 	  N_("Team 1"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip animation"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip Animation"), false, hotkey::SCOPE_GAME },
 	// Whiteboard commands
-	{ hotkey::HOTKEY_WB_TOGGLE, "wbtoggle", N_("Toggle planning mode"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_EXECUTE_ACTION, "wbexecuteaction", N_("Execute planned action"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS, "wbexecuteallactions", N_("Execute all actions"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_DELETE_ACTION, "wbdeleteaction", N_("Delete planned action"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("Move action up queue"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("Move action down queue"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("Suppose dead"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_TOGGLE, "wbtoggle", N_("Toggle Planning Mode"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_EXECUTE_ACTION, "wbexecuteaction", N_("Execute Planned Action"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS, "wbexecuteallactions", N_("Execute All Actions"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_DELETE_ACTION, "wbdeleteaction", N_("Delete Planned Action"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("Move Action Up Queue"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("Move Action Down Queue"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("Suppose Dead"), false, hotkey::SCOPE_GAME },
 
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_CLOSE_MAP, "editor-close-map", N_("Close Map"), false, hotkey::SCOPE_EDITOR },
@@ -131,7 +131,7 @@ const struct {
 	{ hotkey::HOTKEY_EDITOR_MAP_REVERT, "editor-map-revert", N_("Revert All Changes"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_MAP_INFO, "editor-map-info", N_("Map Information"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP, "editor-terrain-palette-swap",
-		N_("Swap fore- and background terrains"), false, hotkey::SCOPE_EDITOR },
+		N_("Swap Foreground/Background Terrains"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TOOL_NEXT, "editor-tool-next", N_("Next Tool"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TOOL_PAINT, "editor-tool-paint", N_("Paint Tool"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_TOOL_FILL, "editor-tool-fill", N_("Fill Tool"), false, hotkey::SCOPE_EDITOR },
@@ -143,7 +143,7 @@ const struct {
 	{ hotkey::HOTKEY_EDITOR_CUT, "editor-cut", N_("Cut"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_COPY, "editor-copy", N_("Copy"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_PASTE, "editor-paste", N_("Paste"), false, hotkey::SCOPE_EDITOR },
-	{ hotkey::HOTKEY_EDITOR_EXPORT_SELECTION_COORDS, "editor-export-selection-coords", N_("Export selected coordinates to system clipboard"), false, hotkey::SCOPE_EDITOR },
+	{ hotkey::HOTKEY_EDITOR_EXPORT_SELECTION_COORDS, "editor-export-selection-coords", N_("Export Selected Coordinates to System Clipboard"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SELECT_ALL, "editor-select-all",
 		 N_("Select All"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_SELECT_INVERSE, "editor-select-inverse",
@@ -201,12 +201,12 @@ const struct {
 	{ hotkey::HOTKEY_SPEAK_ALL, "speaktoall", N_("Speak to All"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_HELP, "help", N_("Help"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change Language"), false, hotkey::SCOPE_GENERAL },
 
-	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false, hotkey::SCOPE_GENERAL },
-	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom command"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run AI formula"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear messages"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter User Command"), false, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom Command"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run Formula"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear Messages"), false, hotkey::SCOPE_GAME },
 	{
 		  hotkey::TITLE_SCREEN__RELOAD_WML
 		, "title_screen__reload_wml"
@@ -217,56 +217,56 @@ const struct {
 	{
 		  hotkey::TITLE_SCREEN__NEXT_TIP
 		, "title_screen__next_tip"
-		, N_("Next tip of the day")
+		, N_("Next Tip of the Day")
 		, false
 		, hotkey::SCOPE_GENERAL
 	},
 	{
 		  hotkey::TITLE_SCREEN__PREVIOUS_TIP
 		, "title_screen__previous_tip"
-		, N_("Previous tip of the day")
+		, N_("Previous Tip of the Day")
 		, false
 		, hotkey::SCOPE_GENERAL
 	},
 	{
 		  hotkey::TITLE_SCREEN__TUTORIAL
 		, "title_screen__tutorial"
-		, N_("Start tutorial")
+		, N_("Start Tutorial")
 		, false
 		, hotkey::SCOPE_GENERAL
 	},
 	{
 		  hotkey::TITLE_SCREEN__CAMPAIGN
 		, "title_screen__campaign"
-		, N_("Start a campaign")
+		, N_("Start Campaign")
 		, false
 		, hotkey::SCOPE_GENERAL
 	},
 	{
 		  hotkey::TITLE_SCREEN__MULTIPLAYER
 		, "title_screen__multiplayer"
-		, N_("Start a multiplayer game")
+		, N_("Start Multiplayer Game")
 		, false
 		, hotkey::SCOPE_GENERAL
 	},
 	{
 		  hotkey::TITLE_SCREEN__ADDONS
 		, "title_screen__addons"
-		, N_("Manage addons")
+		, N_("Manage Add-ons")
 		, false
 		, hotkey::SCOPE_GENERAL
 	},
 	{
 		  hotkey::TITLE_SCREEN__EDITOR
 		, "title_screen__editor"
-		, N_("Start the editor")
+		, N_("Start Editor")
 		, false
 		, hotkey::SCOPE_GENERAL
 	},
 	{
 		  hotkey::TITLE_SCREEN__CREDITS
 		, "title_screen__credits"
-		, N_("Show the credits")
+		, N_("Show Credits")
 		, false
 		, hotkey::SCOPE_GENERAL
 	},
@@ -274,7 +274,7 @@ const struct {
 	{
 		  hotkey::GLOBAL__HELPTIP
 		, "global__helptip"
-		, N_("Show the helptip")
+		, N_("Show Helptip")
 		, false
 		, hotkey::SCOPE_GENERAL
 	},

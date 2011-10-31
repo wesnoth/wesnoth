@@ -3946,6 +3946,24 @@ stringfixes = {
 
 ("Fog of War", "Fog of war"),
 
+("Full map", "Full Map"),
+("Each team", "Each Team"),
+("Skip animation", "Skip Animation"),
+("Toggle planning mode", "Toggle Planning Mode"),
+("Execute planned action", "Execute Planned Action"),
+("Execute all actions", "Execute All Actions"),
+("Delete planned action", "Delete Planned Action"),
+("Move action up queue", "Move Action Up Queue"),
+("Move action down queue", "Move Action Down Queue"),
+("Suppose dead", "Suppose Dead"),
+("Export selected coordinates to system clipboard", "Export Selected Coordinates to System Clipboard"),
+("Enter user command", "Enter User Command"),
+("Custom command", "Custom Command"),
+("Clear messages", "Clear Messages"),
+("Next tip of the day", "Next Tip of the Day"),
+("Previous tip of the day", "Previous Tip of the Day"),
+("Start tutorial", "Start Tutorial"),
+
 #this rules seems to be f***ed up and not in sync with src/addon/manager.cpp:999
 #uncomment it for the moment, please only reactivate after capitalization of
 #'add-ons' is/was fixed everywhere!
