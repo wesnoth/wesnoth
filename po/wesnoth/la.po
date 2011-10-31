@@ -25,6 +25,8 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
+#, fuzzy
+#| msgid "Compressed Saves"
 msgid "Compressed saves"
 msgstr "Servati Oppressi"
 
@@ -37,6 +39,8 @@ msgstr "Delendum servatorum confirmare"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:18
+#, fuzzy
+#| msgid "Mouse Scrolling"
 msgid "Mouse scrolling"
 msgstr "Gyrum Muris"
 
@@ -69,18 +73,23 @@ msgstr "Effecti Horae localis (magis memoriae utitur)."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
+#, fuzzy
+#| msgid "Show Titlescreen Animation"
 msgid "Show titlescreen animation"
 msgstr "Animationem Tituli Demonstrare"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
+#, fuzzy
+#| msgid "Show Combat"
 msgid "Show combat"
 msgstr "Certamina Ostendere"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:61
+#, fuzzy
 msgid "Ping timeout"
-msgstr ""
+msgstr "Tempus coniunctionis exit"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
@@ -126,6 +135,8 @@ msgstr "Non nuntia demonstrare"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
+#, fuzzy
+#| msgid "Reverse Time Graphics"
 msgid "Reverse time graphics"
 msgstr "Convertere Picturas Temporis"
 
@@ -137,6 +148,8 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
+#, fuzzy
+#| msgid "Follow Unit Actions"
 msgid "Follow unit actions"
 msgstr "Acta Actorum Sequi"
 
@@ -172,8 +185,10 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
+#, fuzzy
+#| msgid "Discover all units in help."
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "Omnes actores in auxilio invenire."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:158
@@ -3374,6 +3389,8 @@ msgstr "Aspectus"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
+#, fuzzy
+#| msgid "Skip animation"
 msgid "Skip Animation"
 msgstr "Animationem praeterire"
 
@@ -3914,6 +3931,8 @@ msgid "Turn"
 msgstr "Vicis"
 
 #: src/dialogs.cpp:509
+#, fuzzy
+#| msgid "Scenario Start"
 msgid "Scenario start"
 msgstr "Initium Scaenarii"
 
@@ -4153,6 +4172,9 @@ msgid "Turn "
 msgstr "Vicis "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
+#, fuzzy
+#| msgid "Vacant Slot:"
+#| msgid_plural "Vacant Slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant slots:"
 msgstr[0] "Locus Vacuus: "
@@ -5509,6 +5531,8 @@ msgid "Random start time"
 msgstr "Charta fortuita (Hiems)"
 
 #: src/multiplayer_create.cpp:89
+#, fuzzy
+#| msgid "Fog Of War"
 msgid "Fog of war"
 msgstr "Nebula Belli"
 
@@ -5646,14 +5670,20 @@ msgid "Turns: "
 msgstr "Vices: "
 
 #: src/multiplayer_create.cpp:374
+#, fuzzy
+#| msgid "Unlimited Turns"
 msgid "Unlimited turns"
 msgstr "Vices Infinitae"
 
 #: src/multiplayer_create.cpp:402
+#, fuzzy
+#| msgid "Init. Limit: "
 msgid "Init. limit: "
 msgstr "Finis Init.: "
 
 #: src/multiplayer_create.cpp:407
+#, fuzzy
+#| msgid "Turn Bonus: "
 msgid "Turn bonus: "
 msgstr "Bonum a Vice: "
 
@@ -5662,14 +5692,20 @@ msgid "Reservoir: "
 msgstr "Lacus: "
 
 #: src/multiplayer_create.cpp:416
+#, fuzzy
+#| msgid "Action Bonus: "
 msgid "Action bonus: "
 msgstr "Bonum ab Actione: "
 
 #: src/multiplayer_create.cpp:423
+#, fuzzy
+#| msgid "Village Gold: "
 msgid "Village gold: "
 msgstr "Aura Viculorum: "
 
 #: src/multiplayer_create.cpp:429 src/reports.cpp:431
+#, fuzzy
+#| msgid "Experience Modifier: "
 msgid "Experience modifier: "
 msgstr "Usus Mutator: "
 
@@ -5706,6 +5742,8 @@ msgid "Join Game"
 msgstr "Ad Ludum Convenire"
 
 #: src/multiplayer_lobby.cpp:743
+#, fuzzy
+#| msgid "Quick Replays"
 msgid "Quick replays"
 msgstr "Relusi Celeres"
 
@@ -5718,6 +5756,8 @@ msgid "Quit"
 msgstr "Exire"
 
 #: src/multiplayer_lobby.cpp:746
+#, fuzzy
+#| msgid "Apply Filter"
 msgid "Apply filter"
 msgstr "Filtrum Aptare"
 
@@ -5726,10 +5766,14 @@ msgid "Invert"
 msgstr "Invertere"
 
 #: src/multiplayer_lobby.cpp:748
+#, fuzzy
+#| msgid "Vacant Slots"
 msgid "Vacant slots"
 msgstr "Loci Vacui"
 
 #: src/multiplayer_lobby.cpp:749
+#, fuzzy
+#| msgid "Friends in Game"
 msgid "Friends in game"
 msgstr "Amici in Ludum"
 
