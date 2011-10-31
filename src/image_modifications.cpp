@@ -211,10 +211,6 @@ int mask_modification::get_y() const
 surface light_modification::operator()(const surface& src) const {
 	if(src == NULL) { return NULL; }
 
-	if (src->w != surf_->w) {
-		surf_ = scale_surface(surf_,  src->w, src->h);
-	}
-
 	return light_surface(src, surf_);;
 }
 

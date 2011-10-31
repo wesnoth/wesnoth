@@ -209,7 +209,7 @@ public:
 	const surface& get_surface() const;
 
 private:
-	mutable surface surf_;
+	surface surf_;
 };
 
 /**
