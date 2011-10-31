@@ -569,6 +569,9 @@ stringfixes = {
 
 # Add missing diaeresis
 ("Teeloa returned to his home", "Teelöa returned to his home"),
+
+# Fix spelling
+("I beleive it is undead", "I believe it is undead"),
 ),
 
 "wesnoth-ei" : (
