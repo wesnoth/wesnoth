@@ -426,7 +426,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 						if ((newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
 								|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
 								&& (mod & any_mod) == 0) {
-							gui2::show_transient_message(disp.video(),"", _("Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."));
+							gui2::show_transient_message(disp.video(), _("Warning"), _("Screenshot hotkeys cannot be combined with the Control, Alt or Meta modifiers."));
 						}
 					}
 				}
