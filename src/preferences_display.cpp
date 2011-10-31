@@ -269,7 +269,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	const int xpos = centerx  - width/2;
 	const int ypos = centery  - height/2;
 
-	gui::button close_button (disp.video(), _("Close Window"));
+	gui::button close_button (disp.video(), _("OK"));
 	std::vector<gui::button*> buttons;
 	buttons.push_back(&close_button);
 
