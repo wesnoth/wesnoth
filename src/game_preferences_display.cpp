@@ -50,6 +50,14 @@ static void set_iconize_list(bool ison)
 
 namespace {
 
+struct advanced_preferences_sorter
+{
+	bool operator()(const config& lhs, const config& rhs) const
+	{
+		return lhs["name"].t_str() < rhs["name"].t_str();
+	}
+};
+
 class preferences_parent_dialog : public gui::dialog
 {
 public:
@@ -92,6 +100,7 @@ private:
 	void update_location(SDL_Rect const &rect);
 	const config* get_advanced_pref() const;
 	void set_advanced_menu();
+	void sort_advanced_preferences();
 	void set_friends_menu();
 	std::vector<std::string> friends_names_;
 
@@ -143,6 +152,7 @@ private:
 	TAB tab_;
 	display &disp_;
 	const config& game_cfg_;
+	std::vector<config> adv_preferences_cfg_;
 public:
 	util::scoped_ptr<preferences_parent_dialog> parent;
 };
@@ -229,8 +239,10 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  advanced_selection_(-1),
 	  friends_selection_(-1),
 
-	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg), parent(NULL)
+	  tab_(GENERAL_TAB), disp_(disp), game_cfg_(game_cfg), adv_preferences_cfg_(), parent(NULL)
 {
+	sort_advanced_preferences();
+
 	// FIXME: this box should be vertically centered on the screen, but is not
 	set_measurements(465, 425);
 
@@ -1046,20 +1058,20 @@ void preferences_dialog::process_event()
 
 const config* preferences_dialog::get_advanced_pref() const
 {
-	config::const_child_itors itors = game_cfg_.child_range("advanced_preference");
-	int nb_prefs = std::distance(itors.first, itors.second);
-	if (advanced_selection_ >= 0 && advanced_selection_ < nb_prefs) {
-		std::advance(itors.first, advanced_selection_);
-		return &*itors.first;
-	} else {
-		return NULL;
+	if(advanced_selection_ >= 0) {
+		const size_t n = static_cast<size_t>(advanced_selection_);
+		if (n < adv_preferences_cfg_.size()) {
+			return &adv_preferences_cfg_[n];
+		}
 	}
+
+	return NULL;
 }
 
 void preferences_dialog::set_advanced_menu()
 {
 	std::vector<std::string> advanced_items;
-	foreach (const config &adv, game_cfg_.child_range("advanced_preference"))
+	foreach (const config &adv, adv_preferences_cfg_)
 	{
 		std::ostringstream str;
 		std::string field = preferences::get(adv["field"]);
@@ -1078,6 +1090,17 @@ void preferences_dialog::set_advanced_menu()
 	}
 
 	advanced_.set_items(advanced_items,true,true);
+}
+
+void preferences_dialog::sort_advanced_preferences()
+{
+	adv_preferences_cfg_.clear();
+
+	foreach(const config& adv, game_cfg_.child_range("advanced_preference")) {
+		adv_preferences_cfg_.push_back(adv);
+	}
+
+	std::sort(adv_preferences_cfg_.begin(), adv_preferences_cfg_.end(), advanced_preferences_sorter());
 }
 
 void preferences_dialog::set_friends_menu()
