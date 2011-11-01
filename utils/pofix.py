@@ -575,6 +575,9 @@ stringfixes = {
 
 # Fix spelling
 ("I beleive it is undead", "I believe it is undead"),
+
+# Convert straight apostrophe
+("But it isn't attacking <i>me</i>.", "But it isn’t attacking <i>me</i>."),
 ),
 
 "wesnoth-ei" : (
