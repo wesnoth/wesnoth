@@ -532,7 +532,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 		temp_buf << " \n \n"; //and now the "Details:"
 		for(std::vector<std::string>::iterator i=err_lines.begin(); i!=err_lines.end(); ++i)
 		{
-			temp_buf << "<span color='red' size='small'>" << *i << "</span>\n";
+			temp_buf << *i << '\n';
 		}
 		temp_buf << " \n";
 	}
