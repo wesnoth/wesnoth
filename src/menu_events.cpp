@@ -792,9 +792,10 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	const events::command_disabler disable_commands;
 
 	map_location loc = last_hex;
+	map_location recruited_from = map_location::null_location;
 	std::string msg;
 	{ wb::scoped_planned_unit_map future; //< start planned unit map scope
-		msg = find_recruit_location(side_num, loc, u_type->id());
+		msg = find_recruit_location(side_num, loc, recruited_from, u_type->id());
 	} // end planned unit map scope
 	if (!msg.empty()) {
 		gui2::show_transient_message(gui_->video(), "", msg);
@@ -805,7 +806,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		//create a unit with traits
 		recorder.add_recruit(recruit_num, loc);
 		const unit new_unit(u_type, side_num, true);
-		place_recruit(new_unit, loc, false, true);
+		place_recruit(new_unit, loc, recruited_from, false, true);
 		current_team.spend_gold(u_type->cost());
 		statistics::recruit_unit(new_unit);
 
@@ -999,9 +1000,10 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	const events::command_disabler disable_commands;
 
 	map_location recall_location = last_hex;
+	map_location recall_from = map_location::null_location;
 	std::string err;
 	{ wb::scoped_planned_unit_map future; //< start planned unit map scope
-		err = find_recall_location(side_num, recall_location, *(recall_list_team[res]));
+		err = find_recall_location(side_num, recall_location, recall_from, *(recall_list_team[res]));
 	} // end planned unit map scope
 	if(!err.empty()) {
 		gui2::show_transient_message(gui_->video(), "", err);
@@ -1013,11 +1015,11 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	} // end planned unit map scope
 
 	if (!resources::whiteboard->save_recall(*recalled_unit, side_num, recall_location)) {
-		do_recall(*recalled_unit, side_num, recall_location);
+		do_recall(*recalled_unit, side_num, recall_location, recall_from);
 	}
 }
 
-bool menu_handler::do_recall(const unit& un, int side_num, const map_location& recall_location)
+bool menu_handler::do_recall(const unit& un, int side_num, const map_location& recall_location, const map_location& recall_from)
 {
 	team &current_team = teams_[side_num - 1];
 	std::vector<unit>& recall_list_team = current_team.recall_list();
@@ -1034,7 +1036,7 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 
 	recall_list_team.erase(it);
 	recorder.add_recall(un.id(), recall_location);
-	place_recruit(un, recall_location, true, true);
+	place_recruit(un, recall_location, recall_from, true, true);
 	statistics::recall_unit(un);
 	current_team.spend_gold(current_team.recall_cost());
 
@@ -1207,8 +1209,9 @@ void menu_handler::redo(int side_num)
 
 			recorder.add_recall(action.affected_unit.id(), action.recall_loc);
 			map_location loc = action.recall_loc;
+			map_location from = map_location::null_location;
 			const events::command_disabler disable_commands;
-			const std::string &msg = find_recall_location(side_num, loc, action.affected_unit);
+			const std::string &msg = find_recall_location(side_num, loc, from, action.affected_unit);
 			if(msg.empty()) {
 				unit un = action.affected_unit;
 				//remove the unit from the recall list
@@ -1217,7 +1220,7 @@ void menu_handler::redo(int side_num)
 				assert(unit_it != current_team.recall_list().end());
 				current_team.recall_list().erase(unit_it);
 
-				place_recruit(un, loc, true, true);
+				place_recruit(un, loc, from, true, true);
 				statistics::recall_unit(un);
 				current_team.spend_gold(current_team.recall_cost());
 				gui_->invalidate(loc);
@@ -1252,11 +1255,12 @@ void menu_handler::redo(int side_num)
 		last_recruit_ = name;
 		recorder.add_recruit(recruit_num,loc);
 		const events::command_disabler disable_commands;
-		const std::string &msg = find_recruit_location(side_num, loc, action.affected_unit.type_id());
+		map_location from = map_location::null_location;
+		const std::string &msg = find_recruit_location(side_num, loc, from, action.affected_unit.type_id());
 		if(msg.empty()) {
 			const unit new_unit = action.affected_unit;
 			//unit new_unit(action.affected_unit.type(),team_num_,true);
-			place_recruit(new_unit, loc, false, true);
+			place_recruit(new_unit, loc, from, false, true);
 			current_team.spend_gold(new_unit.type()->cost());
 			statistics::recruit_unit(new_unit);
 

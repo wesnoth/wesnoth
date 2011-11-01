@@ -912,10 +912,11 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			const std::string res = find_recruit_location(side_num, loc, u_type->id());
+			map_location from = map_location::null_location;
+			const std::string res = find_recruit_location(side_num, loc, from, u_type->id());
 			const unit new_unit(u_type, side_num, true);
 			if (res.empty()) {
-				place_recruit(new_unit, loc, false, !get_replay_source().is_skipping());
+				place_recruit(new_unit, loc, from, false, !get_replay_source().is_skipping());
 			} else {
 				std::stringstream errbuf;
 				errbuf << "cannot recruit unit: " << res << "\n";
@@ -950,7 +951,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			if (recall_unit != current_team.recall_list().end()) {
 				statistics::recall_unit(*recall_unit);
-				place_recruit(*recall_unit, loc, true, !get_replay_source().is_skipping());
+				map_location from = map_location::null_location;
+				place_recruit(*recall_unit, loc, from, true, !get_replay_source().is_skipping());
 				current_team.recall_list().erase(recall_unit);
 				current_team.spend_gold(current_team.recall_cost());
 				fix_shroud = !get_replay_source().is_skipping();

@@ -83,7 +83,7 @@ bool can_recruit_on(const gamemap& map, const map_location& leader, const map_lo
  * @return an empty string on success. Otherwise a human-readable message
  *         describing the failure is returned.
  */
-std::string find_recruit_location(const int side, map_location &recruit_location, const std::string& unit_type);
+std::string find_recruit_location(const int side, map_location &recruit_location, map_location& recruited_from, const std::string& unit_type);
 
 /**
  * Finds a location to recall @a unit_recall.
@@ -98,7 +98,7 @@ std::string find_recruit_location(const int side, map_location &recruit_location
  * @return an empty string on success. Otherwise a human-readable message
  *         describing the failure is returned.
  */
-std::string find_recall_location(const int side, map_location &recall_location, const unit &unit_recall);
+std::string find_recall_location(const int side, map_location& recall_location, map_location& recall_from, const unit &unit_recall);
 
 /**
  * Get's the recruitable units from a side's leaders' personal recruit lists who can recruit on a specific hex field.
@@ -122,7 +122,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
  * The unit will be placed on @a recruit_location, which should be retrieved
  * through a call to recruit_location().
  */
-void place_recruit(const unit &u, const map_location &recruit_location,
+void place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
 	bool is_recall, bool show = false, bool fire_event = true, bool full_movement = false,
 	bool wml_triggered = false);
 

@@ -444,7 +444,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 	return result;
 }
 
-std::string find_recall_location(const int side, map_location &recall_loc, const unit &recall_unit)
+std::string find_recall_location(const int side, map_location& recall_loc, map_location& recall_from, const unit &recall_unit)
 {
 	LOG_NG << "finding recall location for side " << side << " and unit " << recall_unit.id() << "\n";
 
@@ -453,6 +453,7 @@ std::string find_recall_location(const int side, map_location &recall_loc, const
 			leader_able = u_end, leader_opt = u_end;
 
 	map_location alternate_location = map_location::null_location;
+	map_location alternate_from = map_location::null_location;
 
 	for(; u != u_end; ++u) {
 		//quit if it is not a leader on the @side
@@ -487,9 +488,11 @@ std::string find_recall_location(const int side, map_location &recall_loc, const
 			leader_opt = leader_fit;
 			if (resources::units->count(recall_loc) == 1)
 				recall_loc = tmp_location;
+				recall_from = leader_opt->get_location();
 			break;
 		} else {
 			alternate_location = tmp_location;
+			alternate_from = leader_fit->get_location();
 		}
 	}
 
@@ -513,13 +516,15 @@ std::string find_recall_location(const int side, map_location &recall_loc, const
 		return _("There are no vacant castle tiles in which to recall the unit.");
 	}
 
-	if (leader_opt == u_end)
+	if (leader_opt == u_end) {
 		recall_loc = alternate_location;
+		recall_from = alternate_from;
+	}
 
 	return std::string();
 }
 
-std::string find_recruit_location(const int side, map_location &recruit_location, const std::string& unit_type)
+std::string find_recruit_location(const int side, map_location& recruit_location, map_location& recruited_from, const std::string& unit_type)
 {
 	LOG_NG << "finding recruit location for side " << side << "\n";
 
@@ -528,6 +533,7 @@ std::string find_recruit_location(const int side, map_location &recruit_location
 			leader_able = u_end, leader_opt = u_end;
 
 	map_location alternate_location = map_location::null_location;
+	map_location alternate_from = map_location::null_location;
 
 	const std::set<std::string>& recruit_list = (*resources::teams)[side -1].recruits();
 	std::set<std::string>::const_iterator recruit_it = recruit_list.find(unit_type);
@@ -567,9 +573,11 @@ std::string find_recruit_location(const int side, map_location &recruit_location
 			leader_opt = leader_fit;
 			if (resources::units->count(recruit_location) == 1)
 				recruit_location = tmp_location;
+				recruited_from = leader_opt->get_location();
 			break;
 		} else {
 			alternate_location = tmp_location;
+			alternate_from = leader_fit->get_location();
 		}
 	}
 
@@ -588,13 +596,15 @@ std::string find_recruit_location(const int side, map_location &recruit_location
 		return _("There are no vacant castle tiles in which to recruit the unit.");
 	}
 
-	if (leader_opt == u_end)
+	if (leader_opt == u_end) {
 		recruit_location = alternate_location;
+		recruited_from = alternate_from;
+	}
 
 	return std::string();
 }
 
-void place_recruit(const unit &u, const map_location &recruit_location,
+void place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
     bool is_recall, bool show, bool fire_event, bool full_movement,
     bool wml_triggered)
 {
@@ -618,13 +628,13 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 	{
 		if (fire_event) {
 			LOG_NG << "firing prerecall event\n";
-			game_events::fire("prerecall",recruit_location);
+			game_events::fire("prerecall",recruit_location, recruited_from);
 		}
 	}
 	else
 	{
 		LOG_NG << "firing prerecruit event\n";
-		game_events::fire("prerecruit",recruit_location);
+		game_events::fire("prerecruit",recruit_location, recruited_from);
 	}
 	const unit_map::iterator new_unit_itor = resources::units->find(recruit_location);
 	if (new_unit_itor.valid()) {
@@ -654,13 +664,13 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 	{
 		if (fire_event) {
 			LOG_NG << "firing recall event\n";
-			game_events::fire("recall",recruit_location);
+			game_events::fire("recall", recruit_location, recruited_from);
 		}
 	}
 	else
 	{
 		LOG_NG << "firing recruit event\n";
-		game_events::fire("recruit",recruit_location);
+		game_events::fire("recruit",recruit_location, recruited_from);
 	}
 
 	const std::string checksum = get_checksum(new_unit);

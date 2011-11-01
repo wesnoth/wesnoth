@@ -184,8 +184,8 @@ public:
 	virtual void log_message(const std::string& msg) = 0;
 	virtual attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) = 0;
 	virtual move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
-	virtual recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location) = 0;
-	virtual recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
+	virtual recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location) = 0;
+	virtual recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location) = 0;
 	virtual stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
 	virtual void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
@@ -399,10 +399,10 @@ public:
 	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
 
 
-	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location) = 0;
+	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location) = 0;
 
 
-	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location) = 0;
+	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location) = 0;
 
 
 	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
@@ -526,15 +526,17 @@ public:
 	}
 
 
-	virtual recall_result_ptr check_recall_action(const std::string &id, const map_location &where = map_location::null_location)
+	virtual recall_result_ptr check_recall_action(const std::string &id, const map_location &where = map_location::null_location,
+			const map_location &from = map_location::null_location)
 	{
-		return target_->check_recall_action(id, where);
+		return target_->check_recall_action(id, where, from);
 	}
 
 
-	virtual recruit_result_ptr check_recruit_action(const std::string &unit_name, const map_location &where = map_location::null_location)
+	virtual recruit_result_ptr check_recruit_action(const std::string &unit_name, const map_location &where = map_location::null_location,
+			const map_location &from = map_location::null_location)
 	{
-		return target_->check_recruit_action(unit_name, where);
+		return target_->check_recruit_action(unit_name, where, from);
 	}
 
 	virtual stopunit_result_ptr check_stopunit_action(const map_location &unit_location, bool remove_movement = true, bool remove_attacks = false)
@@ -938,15 +940,15 @@ public:
 	}
 
 
-	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location)
+	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location)
 	{
-		return target_->execute_recall_action(id,where);
+		return target_->execute_recall_action(id,where,from);
 	}
 
 
-	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location)
+	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location)
 	{
-		return target_->execute_recruit_action(unit_name,where);
+		return target_->execute_recruit_action(unit_name,where,from);
 	}
 
 
@@ -1110,7 +1112,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location);
+	recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location);
 
 
 	/**
@@ -1123,7 +1125,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location);
+	recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location);
 
 
 	/**
@@ -1457,7 +1459,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location);
+	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location);
 
 
 	/**
@@ -1470,7 +1472,7 @@ public:
 	 * @retval possible_result: no free space on keep
 	 * @retval possible_result: not enough gold
 	 */
-	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location);
+	virtual recruit_result_ptr execute_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location);
 
 
 	/**

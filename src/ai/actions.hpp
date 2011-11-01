@@ -187,7 +187,7 @@ private:
 
 class recall_result : public action_result {
 public:
-	recall_result (side_number side, const std::string &unit_id, const map_location& where);
+	recall_result (side_number side, const std::string &unit_id, const map_location& where, const map_location& from);
 	static const int E_NOT_AVAILABLE_FOR_RECALLING = 6001;
 	static const int E_NO_GOLD = 6003;
 	static const int E_NO_LEADER = 6004;
@@ -213,11 +213,12 @@ private:
 	const std::string& unit_id_;
 	const map_location where_;
 	map_location recall_location_;
+	map_location recall_from_;
 };
 
 class recruit_result : public action_result {
 public:
-	recruit_result( side_number side, const std::string& unit_name, const map_location& where);
+	recruit_result( side_number side, const std::string& unit_name, const map_location& where, const map_location& from);
 	static const int E_NOT_AVAILABLE_FOR_RECRUITING = 3001;
 	static const int E_UNKNOWN_OR_DUMMY_UNIT_TYPE = 3002;
 	static const int E_NO_GOLD = 3003;
@@ -247,6 +248,7 @@ private:
 	const std::string& unit_name_;
 	const map_location& where_;
 	map_location recruit_location_;
+	map_location recruit_from_;
 	int num_;
 };
 
@@ -339,7 +341,8 @@ static move_result_ptr execute_move_action( side_number side,
 static recall_result_ptr execute_recall_action( side_number side,
 	bool execute,
 	const std::string& unit_id,
-	const map_location& where );
+	const map_location& where,
+	const map_location& from);
 
 
 
@@ -358,7 +361,8 @@ static recall_result_ptr execute_recall_action( side_number side,
 static recruit_result_ptr execute_recruit_action( side_number side,
 	bool execute,
 	const std::string& unit_name,
-	const map_location& where );
+	const map_location& where,
+	const map_location& from);
 
 
 /**

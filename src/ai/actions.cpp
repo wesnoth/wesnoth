@@ -525,11 +525,12 @@ void move_result::do_init_for_execution()
 
 // recall_result
 recall_result::recall_result(side_number side,
-		const std::string& unit_id, const map_location& where)
+		const std::string& unit_id, const map_location& where, const map_location& from)
 	: action_result(side)
 	, unit_id_(unit_id)
 	, where_(where)
 	, recall_location_(where)
+	, recall_from_(from)
 {
 }
 
@@ -672,7 +673,7 @@ void recall_result::do_execute()
 
 	assert(rec != my_team.recall_list().end());
 
-	const std::string &err = find_recall_location(get_side(), recall_location_, *rec);
+	const std::string &err = find_recall_location(get_side(), recall_location_, recall_from_, *rec);
 	if(!err.empty()) {
 		set_error(AI_ACTION_FAILURE);
 		return;
@@ -680,7 +681,7 @@ void recall_result::do_execute()
 
 		unit &un = *rec;
 		recorder.add_recall(un.id(), recall_location_);
-		place_recruit(un, recall_location_, true, true);
+		place_recruit(un, recall_location_, recall_from_, true, true);
 		statistics::recall_unit(un);
 		my_team.spend_gold(my_team.recall_cost());
 
@@ -711,11 +712,12 @@ void recall_result::do_init_for_execution()
 
 // recruit_result
 recruit_result::recruit_result(side_number side,
-		const std::string& unit_name, const map_location& where)
+		const std::string& unit_name, const map_location& where, const map_location& from)
 	: action_result(side)
 	, unit_name_(unit_name)
 	, where_(where)
 	, recruit_location_(where)
+	, recruit_from_(from)
 	, num_(0)
 {
 }
@@ -883,10 +885,11 @@ void recruit_result::do_execute()
 	replay_undo replay_guard(recorder);
 	const unit_type *u = unit_types.find(unit_name_);
 	const events::command_disabler disable_commands;
-	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_, u->id());
+	map_location recruit_from = map_location::null_location;
+	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_, recruit_from, u->id());
 	if(recruit_err.empty()) {
 		const unit new_unit(u, get_side(), true);
-		place_recruit(new_unit, recruit_location_, false, preferences::show_ai_moves());
+		place_recruit(new_unit, recruit_location_, recruit_from, false, preferences::show_ai_moves());
 		statistics::recruit_unit(new_unit);
 		get_my_team().spend_gold(u->cost());
 		// Confirm the transaction - i.e. don't undo recruitment
@@ -1051,9 +1054,10 @@ move_result_ptr actions::execute_move_action( side_number side,
 recall_result_ptr actions::execute_recall_action( side_number side,
 	bool execute,
 	const std::string& unit_id,
-	const map_location& where)
+	const map_location& where,
+	const map_location& from)
 {
-	recall_result_ptr action(new recall_result(side,unit_id,where));
+	recall_result_ptr action(new recall_result(side,unit_id,where,from));
 	execute ? action->execute() : action->check_before();
 	return action;
 
@@ -1063,9 +1067,10 @@ recall_result_ptr actions::execute_recall_action( side_number side,
 recruit_result_ptr actions::execute_recruit_action( side_number side,
 	bool execute,
 	const std::string& unit_name,
-	const map_location& where)
+	const map_location& where,
+	const map_location& from)
 {
-	recruit_result_ptr action(new recruit_result(side,unit_name,where));
+	recruit_result_ptr action(new recruit_result(side,unit_name,where,from));
 	execute ? action->execute() : action->check_before();
 	return action;
 

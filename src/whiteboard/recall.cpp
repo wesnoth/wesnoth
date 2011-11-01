@@ -116,7 +116,7 @@ void recall::execute(bool& success, bool& complete)
 	assert(valid_);
 	assert(temp_unit_);
 	temporary_unit_hider const raii(*fake_unit_);
-	bool const result = resources::controller->get_menu_handler().do_recall(*temp_unit_, team_index() + 1, recall_hex_);
+	bool const result = resources::controller->get_menu_handler().do_recall(*temp_unit_, team_index() + 1, recall_hex_, map_location::null_location);
 	success = complete = result;
 }
 
