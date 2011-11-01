@@ -1863,10 +1863,27 @@ void unit::redraw_unit()
 	}
 	params.y -= height_adjust;
 	params.halo_y -= height_adjust;
-	if (get_state(STATE_POISONED)){
-		params.blend_with = disp.rgb(0,255,0);
-		params.blend_ratio = 0.25;
+
+	int red = 0,green = 0,blue = 0,tints = 0;
+	double blend_ratio = 0;
+	// Add future colored states here
+	if(get_state(STATE_POISONED)) {
+		green += 255;
+		blend_ratio += 0.25;
+		tints += 1;
 	}
+	if(get_state(STATE_SLOWED)) {
+		red += 191;
+		green += 191;
+		blue += 255;
+		blend_ratio += 0.25;
+		tints += 1;
+	}
+	if(tints > 0) {
+		params.blend_with = disp.rgb((red/tints),(green/tints),(blue/tints));
+		params.blend_ratio = ((blend_ratio/tints));
+	}
+
 	//hackish : see unit_frame::merge_parameters
 	// we use image_mod on the primary image
 	// and halo_mod on secondary images and all haloes
