@@ -40,6 +40,8 @@ Version 1.9.9+svn:
    * The side metatable provides also the side number
      (like wesnoth.sides[i].side, which would be i)
    * add function wesnoth.debug
+   * Added: Support for clickables (button and repeating button) to
+     wesnoth.set_dialog_callback (patch #2763).
  * Terrain:
    * Oasis may be placed on any terrain, aliased to base
    * New terrain macro: MOUNTAIN_SINGLE_RANDOM

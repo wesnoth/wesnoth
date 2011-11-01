@@ -59,6 +59,7 @@
 #include "unit.hpp"
 #include "ai/lua/core.hpp"
 #include "version.hpp"
+#include "gui/widgets/clickable.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -3019,8 +3020,15 @@ static int intf_set_dialog_callback(lua_State *L)
 
 	if (lua_isnil(L, 1)) return 0;
 
+	if (gui2::tclickable_ *c = dynamic_cast<gui2::tclickable_ *>(w)) {
+		static tdialog_callback_wrapper wrapper;
+		c->connect_click_handler(boost::bind(
+									  &tdialog_callback_wrapper::forward
+									, wrapper
+									, w));
+	}
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w)) {
+	else if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w)) {
 		static tdialog_callback_wrapper wrapper;
 		connect_signal_notify_modified(*l
 				, boost::bind(
@@ -3029,7 +3037,7 @@ static int intf_set_dialog_callback(lua_State *L)
 					, w));
 	}
 #else
-	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
+	else if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
 		l->set_callback_value_change(&dialog_callback);
 	}
 #endif
