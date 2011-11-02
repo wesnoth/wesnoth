@@ -1803,35 +1803,38 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 			DBG_NG << "checking unit against filter...\n";
 			scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
 			if (u->matches_filter(unit_filter, map_location())) {
+				DBG_NG << u->id() << " matched the filter...\n";
 				const unit to_recruit(*u);
-				avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 				const unit* pass_check = &to_recruit;
 				if(!cfg["check_passability"].to_bool(true)) pass_check = NULL;
 				map_location loc = cfg_to_loc(cfg);
-				map_location from = map_location::null_location;
 
 				//TODO fendrin: comment this monster
 				foreach (unit_map::const_unit_iterator leader, leaders) {
-					if (leader_filter.null() || leader->matches_filter(leader_filter, leader->get_location())) {
-						if (u->matches_filter(vconfig(leader->recall_filter()), map_location())) {
-							if(leader != resources::units->end()) {
-								if(!resources::game_map->on_board(loc))
-									loc = leader->get_location();
-								from = leader->get_location();
-								if(pass_check || (resources::units->count(loc) > 0))
-									loc = pathfind::find_vacant_tile(*resources::game_map,
-											*resources::units, loc, pathfind::VACANT_ANY, pass_check);
-								if(resources::game_map->on_board(loc))
-									place_recruit(to_recruit, loc, from, true, cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false), true, true);
-								else { ERR_NG << "Trying to recall on invalid location!\n"; }
-								return;
-							}
+					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
+					if ( (leader_filter.null() || leader->matches_filter(leader_filter, leader->get_location())) &&
+							(u->matches_filter(vconfig(leader->recall_filter()), map_location())) ) {
+						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
+						if(!resources::game_map->on_board(loc))
+							loc = leader->get_location();
+						if(pass_check || (resources::units->count(loc) > 0))
+							loc = pathfind::find_vacant_tile(*resources::game_map,
+									*resources::units, loc, pathfind::VACANT_ANY, pass_check);
+						if(resources::game_map->on_board(loc)) {
+							DBG_NG << "...valid location for the recall found. Recalling.\n";
+							avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
+							place_recruit(to_recruit, loc, leader->get_location(), true,
+									cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false), true, true);
+							return;
 						}
 					}
 				}
 			}
 		}
 	}
+	//TODO I don't know about that error throwing. Sometimes a unit is just not available,
+	//the designer needs to check with [have_unit] or fetch the recall event.
+	ERR_NG << "Trying to recall unit failed!\n";
 }
 
 WML_HANDLER_FUNCTION(object, event_info, cfg)
