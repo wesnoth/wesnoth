@@ -266,6 +266,7 @@ static int cfun_ai_execute_recruit(lua_State *L)
 		where.x = lua_tonumber(L, 2) - 1;
 		where.y = lua_tonumber(L, 3) - 1;
 	}
+	//TODO fendrin: talk to Crab about the from argument.
 	map_location from = map_location::null_location;
 	ai::recruit_result_ptr recruit_result = ai::actions::execute_recruit_action(side,true,std::string(unit_name),where,from);
 	return transform_ai_action(L,recruit_result);
@@ -280,6 +281,7 @@ static int cfun_ai_execute_recall(lua_State *L)
 		where.x = lua_tonumber(L, 2) - 1;
 		where.y = lua_tonumber(L, 3) - 1;
 	}
+	//TODO fendrin: talk to Crab about the from argument.
 	map_location from = map_location::null_location;
 	ai::recall_result_ptr recall_result = ai::actions::execute_recall_action(side,true,std::string(unit_id),where,from);
 	return transform_ai_action(L,recall_result);
