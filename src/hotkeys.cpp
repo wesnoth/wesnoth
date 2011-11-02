@@ -1290,8 +1290,9 @@ std::vector<std::string> command_executor::get_menu_images(display &disp, const 
 			std::string desc = hk.get_description();
 			if (hk.get_id() == HOTKEY_ENDTURN) {
 				const theme::menu *b = disp.get_theme().get_menu_item("button-endturn");
-				assert(b);
-				desc = b->title();
+				if(b) {
+					desc = b->title();
+				}
 			}
 			str << desc << COLUMN_SEPARATOR << hk.get_name();
 		}
