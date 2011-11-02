@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2011-10-23 14:20+0200\n"
+"PO-Revision-Date: 2011-11-01 18:43+0100\n"
 "Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -24,6 +24,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"com>\n"
+"com>\n"
+"com>\n"
 "com>\n"
 "com>\n"
 "com>\n"
@@ -215,8 +218,6 @@ msgstr "Mando: límite do control do desprazamento."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:223
-#, fuzzy
-#| msgid "Joystick: number of the cursor X-axis joystick"
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Mando para o movemento vertical do cursor."
 
@@ -2620,7 +2621,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:129
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "<i>— Memorias de Gweddry, 627 d.W.</i>"
+msgstr "<i>— Memorias de Uedri, 627 d.W.</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:20
@@ -2737,13 +2738,6 @@ msgstr "<i>— Haldric II, 42 d.W., Manual de análise táctica - Volume I</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
-#, fuzzy
-#| msgid ""
-#| "If you are playing with <b>Shroud</b> or <b>Fog of war</b> active, you "
-#| "won’t know what you’re facing. In this case, long-range scouting units "
-#| "are worth their cost. Try to choose scouts that can easily move across "
-#| "the surrounding terrain, because units can only see as far as they can "
-#| "move in one turn."
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
@@ -2869,12 +2863,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:88
-#, fuzzy
-#| msgid ""
-#| "On maps where <i>Shroud</i> or <i>Fog of war</i> has been enabled, all "
-#| "units’ sightlines are limited by their maximum movement. If you have some "
-#| "valuable but slow units, keep at least one fast unit with them so that "
-#| "you are not caught out by a surprise attack."
 msgid ""
 "On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
 "units’ sightlines are limited by their maximum movement. If you have some "
@@ -3580,8 +3568,6 @@ msgstr "Punto de vista"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#, fuzzy
-#| msgid "Skip Animation"
 msgid "Skip animation"
 msgstr "Saltar a animación"
 
@@ -3951,7 +3937,7 @@ msgstr "Publicar o complemento: "
 
 #: src/addon/manager.cpp:1252
 msgid "Delete add-on: "
-msgstr "Borrar o complemento: "
+msgstr "Eliminar o complemento: "
 
 #: src/addon/manager.cpp:1258
 msgid "There are no add-ons available for download from this server."
@@ -4004,12 +3990,10 @@ msgid "You have no add-ons installed."
 msgstr "Non tes ningún complemento instalado."
 
 #: src/addon/manager.cpp:1408
-#, fuzzy
-#| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] "Seguro que queres desinstalar o complemento «$addon|»?"
-msgstr[1] "Seguro que queres desinstalar o complemento «$addon|»?"
+msgstr[0] "Seguro que queres eliminar este complemento?"
+msgstr[1] "Seguro que queres eliminar estes complementos?"
 
 #: src/addon/manager.cpp:1434
 msgid ""
@@ -4019,32 +4003,29 @@ msgid_plural ""
 "The following add-ons appear to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr[0] ""
+"Este complemento parece conter información local de publicación ou control "
+"de versións, e non se eliminará:"
 msgstr[1] ""
+"Estes complementos parecen conter información local de publicación ou "
+"control de versións, e non se eliminarán:"
 
 #: src/addon/manager.cpp:1444
-#, fuzzy
-#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
-msgstr[0] "Non se puido borrar correctamente o complemento:"
-msgstr[1] "Non se puido borrar correctamente o complemento:"
+msgstr[0] "Non se puido eliminar correctamente o seguinte complemento:"
+msgstr[1] "Non se puideron eliminar correctamente os seguintes complementos:"
 
 #: src/addon/manager.cpp:1451
-#, fuzzy
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
-msgstr[0] "Borrouse o complemento"
-msgstr[1] "Borrouse o complemento"
+msgstr[0] "Complemento eliminado"
+msgstr[1] "Complementos eliminados"
 
 #: src/addon/manager.cpp:1453
-#, fuzzy
-#| msgid "The following add-on had errors and could not be loaded:"
-#| msgid_plural "The following add-ons had errors and could not be loaded:"
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
-msgstr[0] "O seguinte complemento ten erros e non se puido cargar:"
-msgstr[1] "Os seguintes complementos teñen erros e non se puideron cargar:"
+msgstr[0] "O seguinte complemento eliminouse correctamente:"
+msgstr[1] "Os seguintes complementos elimináronse correctamente:"
 
 #: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
@@ -4134,10 +4115,8 @@ msgid "Tutorial"
 msgstr "Aprendizaxe"
 
 #: src/dialogs.cpp:499
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "Test scenario"
-msgstr "Escenario remoto"
+msgstr "Escenario de probas"
 
 # En referencia á rolda en que está a partida (unha rolda é o grupo formado por unha quenda de cada xogador).
 #: src/dialogs.cpp:509 src/savegame.cpp:1050
@@ -4219,7 +4198,7 @@ msgstr "Cancelar as ordes."
 
 #: src/dialogs.cpp:656
 msgid "Delete Save"
-msgstr "Borrar a partida gardada"
+msgstr "Eliminar a partida"
 
 #: src/dialogs.cpp:714
 msgid "Profile"
@@ -4380,9 +4359,6 @@ msgid "Turn "
 msgstr "Rolda "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
-#, fuzzy
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Posto vacante:"
@@ -4755,12 +4731,12 @@ msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
-"Non hai tropas dispoñíbeis para reincorporar\n"
-"(debes ter veteranos superviventes de escenarios anteriores)."
+"Non hai tropas dispoñíbeis para reincorporar.\n"
+"Debes ter veteranos superviventes de escenarios anteriores."
 
 #: src/menu_events.cpp:870
 msgid "You currently can't recall at the highlighted location"
-msgstr ""
+msgstr "Nestes momentos non podes reincorporar unidades na zona salientada."
 
 #: src/menu_events.cpp:882
 msgid "Traits"
@@ -5101,7 +5077,7 @@ msgstr "Asignar o control dun bando a un xogador ou observador diferente."
 
 #: src/menu_events.cpp:2542
 msgid "Clear chat history."
-msgstr "Borrar o historial de conversas."
+msgstr "Limpar o historial de conversas."
 
 #: src/menu_events.cpp:2544
 msgid "Visualize the screen refresh procedure."
@@ -5280,8 +5256,6 @@ msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Cambiar a superposición dos códigos de terreo nos hexágonos."
 
 #: src/menu_events.cpp:2627
-#, fuzzy
-#| msgid "Toggle Planning Mode."
 msgid "Toggle planning mode."
 msgstr "Activar ou desactivar o modo de planificación."
 
@@ -5462,7 +5436,7 @@ msgstr ""
 
 #: src/menu_events.cpp:3568
 msgid "Do you wish to clear all of your discovered units from help?"
-msgstr "Queres borrar todas as unidades descubertas da axuda?"
+msgstr "Queres quitar todas as unidades descubertas da axuda?"
 
 #: src/menu_events.cpp:3579
 msgid "Invalid unit type"
@@ -6424,8 +6398,6 @@ msgid "(Att / Def)"
 msgstr "(Ata. / Def.)"
 
 #: src/reports.cpp:443
-#, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Modificador da experiencia: "
 

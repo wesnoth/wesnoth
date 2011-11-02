@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2011-10-23 14:19+0200\n"
+"PO-Revision-Date: 2011-11-01 17:16+0100\n"
 "Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -23,6 +23,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"com>\n"
 "com>\n"
 "com>\n"
 "com>\n"
@@ -1093,10 +1094,8 @@ msgstr "Ponte de madeira"
 #. [terrain_type]: id=rotbridgediag2
 #: data/core/terrain.cfg:1931 data/core/terrain.cfg:1943
 #: data/core/terrain.cfg:1955
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Rotting Bridge"
-msgstr "Ponte de madeira"
+msgstr "Ponte de madeira podre"
 
 #. [terrain_type]: id=stone_bridge
 #: data/core/terrain.cfg:1969 data/core/terrain.cfg:1981
@@ -1184,7 +1183,7 @@ msgstr "Actualizar os complementos"
 #: data/gui/default/window/addon_connect.cfg:180
 #: data/gui/default/window/addon_connect.cfg:181
 msgid "Remove Add-ons"
-msgstr "Borrar complementos"
+msgstr "Eliminar complementos"
 
 #. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:213
@@ -1264,15 +1263,13 @@ msgstr "ningunha."
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Uninstall Add-ons"
-msgstr "Actualizar os complementos"
+msgstr "Eliminar complementos"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
 msgid "Choose the add-ons you want to remove."
-msgstr ""
+msgstr "Escolle os elementos que queiras eliminar."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
@@ -1281,7 +1278,7 @@ msgstr ""
 #: data/gui/default/window/mp_cmd_wrapper.cfg:200
 #: src/game_preferences_display.cpp:192
 msgid "Remove"
-msgstr "Quitar"
+msgstr "Eliminar"
 
 # Aparece encabezando a lista de campañas, convidando ao usuario a xogar unha.
 #. [label]
@@ -1484,15 +1481,13 @@ msgstr "Cambiar as dimensións do mapa"
 # Non o vin no contexto.
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
-#, fuzzy
-#| msgid "Choose theme"
 msgid "Choose Player"
-msgstr "Escoller"
+msgstr "Escoller un xogador"
 
 #. [label]: id=message
 #: data/gui/default/window/editor_set_starting_position.cfg:70
 msgid "Which player should start here?"
-msgstr ""
+msgstr "Que xogador debería empezar aquí?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1502,10 +1497,8 @@ msgstr "Configuración do editor"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:53
-#, fuzzy
-#| msgid "Time of day lighting preset"
 msgid "Time of day lighting preset:"
-msgstr "Establecemento do momento do día"
+msgstr "Establecemento do momento do día:"
 
 #. [button]: id=next_tod
 #. [button]: id=next_tip
@@ -1517,15 +1510,11 @@ msgstr "Seguinte"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
-#, fuzzy
-#| msgid "Custom lighting setting"
 msgid "Custom lighting settings"
 msgstr "Iluminación personalizada"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:114
-#, fuzzy
-#| msgid "Auto-update map view"
 msgid "Automatically update map view"
 msgstr "Actualizar automaticamente a vista do mapa"
 
@@ -1547,7 +1536,7 @@ msgstr "Azul:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:231
 msgid "Allow multiple maps to be open simultaneously"
-msgstr ""
+msgstr "Permitir que se abra máis dun mapa á vez."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
@@ -1639,12 +1628,12 @@ msgstr "Saír"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:40
 msgid "Delete Save"
-msgstr "Borrar a partida gardada"
+msgstr "Eliminar a partida"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:60
 msgid "Do you really want to delete this game?"
-msgstr "Está seguro de que quere borrar a partida?"
+msgstr "Está seguro de que quere eliminar a partida?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:80
@@ -1686,7 +1675,7 @@ msgstr "Cargar unha partida"
 #: data/gui/default/window/game_load.cfg:360
 #: data/gui/default/window/game_load.cfg:361
 msgid "Delete"
-msgstr "Borrar"
+msgstr "Eliminar"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:379
@@ -1798,8 +1787,6 @@ msgstr "Escolle a lingua que prefiras:"
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
 #: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
-#, fuzzy
-#| msgid "Change language"
 msgid "Change Language"
 msgstr "Cambiar de lingua"
 
@@ -2775,18 +2762,12 @@ msgstr "Interromper o movemento das unidades propias ao avistar aliados."
 
 # Configuración → Xeral.
 #: src/game_preferences_display.cpp:369
-#, fuzzy
-#| msgid "Save replay on SP/MP victory or MP defeat"
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Gardar a repetición das derrotas e vitorias con varios xogadores."
 
 # Configuración → Xeral.
-#
 # A súa lonxitude está limitada polo ancho fixo do cadro en que se amosa. O de «en ditas ocasións» utilizouse para aforrar texto, dado que esta acción é para os casos enunciados na cadea anterior, que tamén aparece antes desta no menú de configuración.
-#
 #: src/game_preferences_display.cpp:372
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Eliminar as partidas gardadas automaticamente en ditas ocasións."
 
@@ -3108,13 +3089,11 @@ msgstr "Campaña: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:305
 msgid "Test scenario"
-msgstr ""
+msgstr "Escenario de probas"
 
 #: src/gui/dialogs/game_load.cpp:313
-#, fuzzy
-#| msgid "replay"
 msgid "Replay"
-msgstr "repetición"
+msgstr "Repetición"
 
 #: src/gui/dialogs/game_load.cpp:315
 msgid "Turn"
@@ -3251,8 +3230,6 @@ msgstr "Botón dereito do rato"
 # Accesible dende:
 # «Configuración → Visualización».
 #: src/hotkeys.cpp:55
-#, fuzzy
-#| msgid "Animate map"
 msgid "Animate Map"
 msgstr "Amosar as animacións do mapa."
 
@@ -3297,8 +3274,6 @@ msgid "Default Zoom"
 msgstr "Distancia predeterminada"
 
 #: src/hotkeys.cpp:66
-#, fuzzy
-#| msgid "Toggle Full screen"
 msgid "Toggle Full Screen"
 msgstr "Pór a pantalla completa"
 
@@ -3356,10 +3331,8 @@ msgid "Toggle Grid"
 msgstr "Activar a grade"
 
 #: src/hotkeys.cpp:82
-#, fuzzy
-#| msgid "Mouse scrolling"
 msgid "Mouse Scrolling"
-msgstr "Desprazamento co rato"
+msgstr "Desprazamento co rato."
 
 #: src/hotkeys.cpp:83
 msgid "Status Table"
@@ -3390,16 +3363,12 @@ msgid "Statistics"
 msgstr "Estatísticas"
 
 #: src/hotkeys.cpp:92
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Pause Network Game"
-msgstr "Aloxar unha partida"
+msgstr "Deter a partida en rede"
 
 #: src/hotkeys.cpp:93
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Continue Network Game"
-msgstr "Aloxar unha partida"
+msgstr "Continuar a partida en rede"
 
 #: src/hotkeys.cpp:95
 msgid "Set Team Label"
@@ -3422,22 +3391,16 @@ msgid "Best Possible Enemy Moves"
 msgstr "Mellores movementos posíbeis do inimigo"
 
 #: src/hotkeys.cpp:100
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Play Replay"
-msgstr "Gardar a repetición"
+msgstr "Reproducir a repetición"
 
 #: src/hotkeys.cpp:101
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Reset Replay"
-msgstr "Gardar a repetición"
+msgstr "Restaurar a repetición"
 
 #: src/hotkeys.cpp:102
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Stop Replay"
-msgstr "Gardar a repetición"
+msgstr "Deter a repetición"
 
 #: src/hotkeys.cpp:103
 msgid "Next Turn"
@@ -3531,8 +3494,6 @@ msgid "Map Information"
 msgstr "Información do mapa"
 
 #: src/hotkeys.cpp:134
-#, fuzzy
-#| msgid "Swap fore- and background terrains"
 msgid "Swap Foreground/Background Terrains"
 msgstr "Intercambiar os terreos en primeiro e segundo plano"
 
@@ -3707,10 +3668,8 @@ msgid "Custom Command"
 msgstr "Orde personalizada"
 
 #: src/hotkeys.cpp:208
-#, fuzzy
-#| msgid "Run AI formula"
 msgid "Run Formula"
-msgstr "Executar a fórmula da intelixencia artificial"
+msgstr "Executar o código Formula"
 
 #: src/hotkeys.cpp:209
 msgid "Clear Messages"
@@ -3733,38 +3692,26 @@ msgid "Start Tutorial"
 msgstr "Comezar a aprendizaxe"
 
 #: src/hotkeys.cpp:241
-#, fuzzy
-#| msgid "Start a campaign"
 msgid "Start Campaign"
 msgstr "Comezar unha campaña"
 
 #: src/hotkeys.cpp:248
-#, fuzzy
-#| msgid "Start a multiplayer game"
 msgid "Start Multiplayer Game"
 msgstr "Comezar unha partida con varios xogadores"
 
 #: src/hotkeys.cpp:255
-#, fuzzy
-#| msgid "Manage addons"
 msgid "Manage Add-ons"
 msgstr "Xestionar os complementos"
 
 #: src/hotkeys.cpp:262
-#, fuzzy
-#| msgid "Start the editor"
 msgid "Start Editor"
 msgstr "Iniciar o editor de mapas"
 
 #: src/hotkeys.cpp:269
-#, fuzzy
-#| msgid "Show the credits"
 msgid "Show Credits"
 msgstr "Amosar a lista dos autores"
 
 #: src/hotkeys.cpp:277
-#, fuzzy
-#| msgid "Show the helptip"
 msgid "Show Helptip"
 msgstr "Amosar a axuda"
 
@@ -3824,8 +3771,6 @@ msgid "Landform:"
 msgstr "Tipo de terreo:"
 
 #: src/mapgen_dialog.cpp:249
-#, fuzzy
-#| msgid "Roads Between Castles"
 msgid "Roads between castles"
 msgstr "Camiños entre os castelos"
 
@@ -3865,8 +3810,6 @@ msgid "Hotkey Settings"
 msgstr "Configuración dos atallos"
 
 #: src/preferences_display.cpp:282 src/preferences_display.cpp:351
-#, fuzzy
-#| msgid "Press desired Hotkey (Esc cancels)"
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Prema a tecla que queira empregar («Esc» para cancelar)."
 
@@ -3884,29 +3827,24 @@ msgstr "Cambiar o atallo"
 
 #: src/preferences_display.cpp:316
 msgid "Clear Hotkey"
-msgstr "Borrar o atallo"
+msgstr "Eliminar o atallo"
 
 #: src/preferences_display.cpp:394 src/preferences_display.cpp:402
 #: src/preferences_display.cpp:414
-#, fuzzy
-#| msgid "This Hotkey is already in use."
 msgid "This hotkey is already in use."
 msgstr "Este atallo xa se está a empregar."
 
 #: src/preferences_display.cpp:429
-#, fuzzy
-#| msgid ""
-#| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
 "Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
 "modifiers."
 msgstr ""
-"Aviso: os atallos de capturas non están combinados coas teclas «Control», "
-"«Alt» ou «Meta»."
+"Os atallos de capturas non se poden combinar cos modificadores «Ctrl», «Alt» "
+"e «Meta»."
 
 #: src/preferences_display.cpp:429
 msgid "Warning"
-msgstr ""
+msgstr "Advertencia"
 
 #: src/preferences_display.cpp:530
 msgid "There are no alternative video modes available"
