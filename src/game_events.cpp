@@ -1773,7 +1773,6 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 {
 	LOG_NG << "recalling unit...\n";
-	bool unit_recalled = false;
 	config temp_config(cfg.get_config());
 	// Prevent the recall unit filter from using the location as a criterion
 
@@ -1785,7 +1784,9 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 	temp_config["x"] = "recall";
 	temp_config["y"] = "recall";
 	vconfig unit_filter(temp_config);
-	for(int index = 0; !unit_recalled && index < int(resources::teams->size()); ++index) {
+	const vconfig leader_filter = cfg.child("secondary_unit");
+
+	for(int index = 0; index < int(resources::teams->size()); ++index) {
 		LOG_NG << "for side " << index + 1 << "...\n";
 		const std::string player_id = (*resources::teams)[index].save_id();
 
@@ -1796,6 +1797,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 		}
 
 		std::vector<unit>& avail = (*resources::teams)[index].recall_list();
+		std::vector<unit_map::unit_iterator> leaders = resources::units->find_leaders(index + 1);
 
 		for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			DBG_NG << "checking unit against filter...\n";
@@ -1806,19 +1808,27 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				const unit* pass_check = &to_recruit;
 				if(!cfg["check_passability"].to_bool(true)) pass_check = NULL;
 				map_location loc = cfg_to_loc(cfg);
-				if(!resources::game_map->on_board(loc))
-				{
-					unit_map::const_unit_iterator leader = resources::units->find_leader(index + 1);
-					if(leader != resources::units->end()) loc = leader->get_location();
-				}
-				if(pass_check || (resources::units->count(loc) > 0)) {
-					loc = pathfind::find_vacant_tile(*resources::game_map, *resources::units, loc, pathfind::VACANT_ANY, pass_check);
-				}
-				if(!resources::game_map->on_board(loc)) { ERR_NG << "Trying to recall on invalid location!\n"; }
 				map_location from = map_location::null_location;
-				place_recruit(to_recruit, loc, from, true, cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false), true, true);
-				unit_recalled = true;
-				break;
+
+				//TODO fendrin: comment this monster
+				foreach (unit_map::const_unit_iterator leader, leaders) {
+					if (leader_filter.null() || leader->matches_filter(leader_filter, leader->get_location())) {
+						if (u->matches_filter(vconfig(leader->recall_filter()), map_location())) {
+							if(leader != resources::units->end()) {
+								if(!resources::game_map->on_board(loc))
+									loc = leader->get_location();
+								from = leader->get_location();
+								if(pass_check || (resources::units->count(loc) > 0))
+									loc = pathfind::find_vacant_tile(*resources::game_map,
+											*resources::units, loc, pathfind::VACANT_ANY, pass_check);
+								if(resources::game_map->on_board(loc))
+									place_recruit(to_recruit, loc, from, true, cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false), true, true);
+								else { ERR_NG << "Trying to recall on invalid location!\n"; }
+								return;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
