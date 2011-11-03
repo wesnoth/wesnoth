@@ -86,6 +86,9 @@ static void value_to_stringstream(
 		case LUA_TTHREAD:
 			output << "THREAD; VALUE: " << lua_topointer(L, i);
 		break;
+		case LUA_TLIGHTUSERDATA:
+			output << "LIGHTUSERDATA; VALUE: " << lua_topointer(L, i);
+		break;
 		default:
 			//There are no other types!
 			assert(false);
