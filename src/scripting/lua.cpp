@@ -3417,8 +3417,8 @@ LuaKernel::LuaKernel(const config &cfg)
 {
 	lua_State *L = mState;
 
-	// Open safe libraries. (Debug is not, but it will be closed below.)
-	// os also isn't but most of its functions will be disabled below
+	// Open safe libraries.
+	// Debug and OS are not, but most of their functions will be disabled below.
 	static const luaL_Reg safe_libs[] = {
 		{ "",       luaopen_base   },
 		{ "table",  luaopen_table  },
@@ -3681,15 +3681,13 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setfield(L, -2, "theme_items");
 	lua_pop(L, 1);
 
-	// Store the error handler, then close debug.
+	// Store the error handler.
 	lua_pushlightuserdata(L
 			, static_cast<void *>(const_cast<char *>(&executeKey)));
 	lua_getglobal(L, "debug");
 	lua_getfield(L, -1, "traceback");
 	lua_remove(L, -2);
 	lua_rawset(L, LUA_REGISTRYINDEX);
-	lua_pushnil(L);
-	lua_setglobal(L, "debug");
 
 	// Disable functions from os which we don't want.
 	lua_getglobal(L, "os");
@@ -3699,6 +3697,18 @@ LuaKernel::LuaKernel(const config &cfg)
 		char const* function = lua_tostring(L, -1);
 		if(strcmp(function, "clock") == 0 || strcmp(function, "date") == 0
 			|| strcmp(function, "time") == 0 || strcmp(function, "difftime") == 0) continue;
+		lua_pushnil(L);
+		lua_setfield(L, -3, function);
+	}
+	lua_pop(L, 1);
+
+	// Disable functions from debug which we don't want.
+	lua_getglobal(L, "debug");
+	lua_pushnil(L);
+	while(lua_next(L, -2) != 0) {
+		lua_pop(L, 1);
+		char const* function = lua_tostring(L, -1);
+		if(strcmp(function, "traceback") == 0) continue;
 		lua_pushnil(L);
 		lua_setfield(L, -3, function);
 	}
