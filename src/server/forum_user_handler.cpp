@@ -58,7 +58,7 @@ void fuh::add_user(const std::string& /*name*/, const std::string& /*mail*/, con
 }
 
 void fuh::remove_user(const std::string& /*name*/) {
-	throw error("'Dropping your nick is currently impossible");
+	throw error("'Dropping your nickname is currently impossible");
 }
 
 // The hashing code is basically taken from forum_auth.cpp

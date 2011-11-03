@@ -1297,7 +1297,7 @@ void connect::process_network_data(const config& data, const network::connection
 			if(find_player_side(name) != -1) {
 				config response;
 				response["failed"] = true;
-				response["message"] = "The nick '" + name + "' is already in use.";
+				response["message"] = "The nickname '" + name + "' is already in use.";
 				network::send_data(response, sock);
 				return;
 			} else {

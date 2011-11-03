@@ -311,7 +311,7 @@ namespace {
 		" dul|deny_unregistered_login [yes|no], kick <mask> [<reason>],"
 		" k[ick]ban <mask> <time> <reason>, help, games, metrics,"
 		" netstats [all], [lobby]msg <message>, motd [<message>],"
-		" pm|privatemsg <nick> <message>, requests, sample, searchlog <mask>,"
+		" pm|privatemsg <nickname> <message>, requests, sample, searchlog <mask>,"
 		" signout, stats, status [<mask>], unban <ipmask>\n"
 		"Specific strings (those not inbetween <> like the command names)"
 		" are case insensitive.";
@@ -442,7 +442,7 @@ void server::send_password_request(network::connection sock, const std::string& 
 	std::string pepper = user_handler_->create_pepper(user);
 	std::string spices = pepper + salt;
 	if(user_handler_->use_phpbb_encryption() && pepper.empty()) {
-		send_error(sock, "Even though your nick is registered on this server you "
+		send_error(sock, "Even though your nickname is registered on this server you "
 					"cannot log in due to an error in the hashing algorithm. "
 					"Logging into your forum account on http://forum.wesnoth.org "
 					"may fix this problem.");
@@ -1025,13 +1025,13 @@ void server::process_login(const network::connection sock,
 	// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
 	std::string username = (*login)["username"].to_string();
 	if (!utils::isvalid_username(username)) {
-		send_error(sock, "The nick '" + username + "' contains invalid "
+		send_error(sock, "The nickname '" + username + "' contains invalid "
 			"characters. Only alpha-numeric characters, underscores and hyphens"
 			"are allowed.", MP_INVALID_CHARS_IN_NAME_ERROR);
 		return;
 	}
 	if (username.size() > 20) {
-		send_error(sock, "The nick '" + username + "' is too long. Nicks must be 20 characters or less.",
+		send_error(sock, "The nickname '" + username + "' is too long. Nicks must be 20 characters or less.",
 			MP_NAME_TOO_LONG_ERROR);
 		return;
 	}
@@ -1042,7 +1042,7 @@ void server::process_login(const network::connection sock,
 		if (utils::wildcard_string_match(utils::lowercase(username),
 			utils::lowercase(*d_it)))
 		{
-			send_error(sock, "The nick '" + username + "' is reserved and cannot be used by players",
+			send_error(sock, "The nickname '" + username + "' is reserved and cannot be used by players",
 				MP_NAME_RESERVED_ERROR);
 			return;
 		}
@@ -1097,10 +1097,10 @@ void server::process_login(const network::connection sock,
 			// This name is registered and no password provided
 			if(password.empty()) {
 				if(p == players_.end()) {
-					send_password_request(sock, "The nick '" + username +"' is registered on this server.",
+					send_password_request(sock, "The nickname '" + username +"' is registered on this server.",
 							username, MP_PASSWORD_REQUEST);
 				} else {
-					send_password_request(sock, "The nick '" + username + "' is registered on this server."
+					send_password_request(sock, "The nickname '" + username + "' is registered on this server."
 							"\n\nWARNING: There is already a client using this username, "
 							"logging in will cause that client to be kicked!",
 							username, MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME, true);
@@ -1117,11 +1117,11 @@ void server::process_login(const network::connection sock,
 			else if(!(user_handler_->login(username, password, seeds_[sock]))) {
 				// Reset the random seed
 				seeds_.erase(sock);
-				send_password_request(sock, "The password you provided for the nick '" + username +
+				send_password_request(sock, "The password you provided for the nickname '" + username +
 						"' was incorrect.", username, MP_INCORRECT_PASSWORD_ERROR);
 
 				LOG_SERVER << network::ip_address(sock) << "\t"
-						<< "Login attempt with incorrect password for nick '" << username << "'.\n";
+						<< "Login attempt with incorrect password for nickname '" << username << "'.\n";
 				return;
 			}
 		// This name exists and the password was neither empty nor incorrect
@@ -1134,8 +1134,8 @@ void server::process_login(const network::connection sock,
 
 	// If we disallow unregistered users and this user is not registered send an error
 	if(user_handler_ && !registered && deny_unregistered_login_) {
-		send_error(sock, "The nick '" + username + "' is not registered. "
-				"This server disallows unregistered nicks.", MP_NAME_UNREGISTERED_ERROR);
+		send_error(sock, "The nickname '" + username + "' is not registered. "
+				"This server disallows unregistered nicknames.", MP_NAME_UNREGISTERED_ERROR);
 		return;
 	}
 
@@ -1144,7 +1144,7 @@ void server::process_login(const network::connection sock,
 			// If there is already a client using this username kick it
 			process_command("kick " + p->second.name() + " autokick by registered user", username);
 		} else {
-			send_error(sock, "The nick '" + username + "' is already taken.", MP_NAME_TAKEN_ERROR);
+			send_error(sock, "The nickname '" + username + "' is already taken.", MP_NAME_TAKEN_ERROR);
 			return;
 		}
 	}

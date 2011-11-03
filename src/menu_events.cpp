@@ -2330,16 +2330,16 @@ class chat_command_handler : public map_command_handler<chat_command_handler>
 			register_alias("query", "q");
 			register_command("ban", &chat_command_handler::do_network_send_req_arg,
 				_("Ban and kick a player or observer. If he is not in the"
-				" game but on the server he will only be banned."), _("<nick>"));
+				" game but on the server he will only be banned."), _("<nickname>"));
 			register_command("unban", &chat_command_handler::do_network_send_req_arg,
 				_("Unban a user. He does not have to be in the game but on"
-				" the server."), _("<nick>"));
+				" the server."), _("<nickname>"));
 			register_command("kick", &chat_command_handler::do_network_send_req_arg,
-				_("Kick a player or observer."), _("<nick>"));
+				_("Kick a player or observer."), _("<nickname>"));
 			register_command("mute", &chat_command_handler::do_network_send,
-				_("Mute an observer. Without an argument displays the mute status."), _("<nick>"));
+				_("Mute an observer. Without an argument displays the mute status."), _("<nickname>"));
 			register_command("unmute", &chat_command_handler::do_network_send,
-				_("Unmute an observer. Without an argument unmutes everyone."), _("<nick>"));
+				_("Unmute an observer. Without an argument unmutes everyone."), _("<nickname>"));
 			register_command("muteall", &chat_command_handler::do_network_send,
 				_("Mute/Unmute all observers. (toggles)"), "");
 			register_command("ping", &chat_command_handler::do_network_send,
@@ -2352,7 +2352,7 @@ class chat_command_handler : public map_command_handler<chat_command_handler>
 				"", "", "A");
 			register_command("report", &chat_command_handler::do_network_send_req_arg,
 				_("Report abuse, rule violations, etc. to the server moderators. "
-				"Make sure to mention relevant nicks, etc."), "");
+				"Make sure to mention relevant nicknames, etc."), "");
 			register_alias("report", "adminmsg");  // deprecated
 			register_command("emote", &chat_command_handler::do_emote,
 				_("Send an emotion or personal action in chat."), _("<message>"));
@@ -2360,33 +2360,33 @@ class chat_command_handler : public map_command_handler<chat_command_handler>
 			register_command("whisper", &chat_command_handler::do_whisper,
 				_("Sends a private message. "
 				"You cannot send private messages to players in a running game you observe or play in."),
-				_("<nick> <message>"));
+				_("<nickname> <message>"));
 			register_alias("whisper", "msg");
 			register_alias("whisper", "m");
 			register_command("log", &chat_command_handler::do_log,
 				_("Change the log level of a log domain."), _("<level> <domain>"));
 			register_command("ignore", &chat_command_handler::do_ignore,
-				_("Add a nick to your ignores list."), _("<nick>"));
+				_("Add a nickname to your ignores list."), _("<nickname>"));
 			register_command("friend", &chat_command_handler::do_friend,
-				_("Add a nick to your friends list."), _("<nick>"));
+				_("Add a nickname to your friends list."), _("<nickname>"));
 			register_command("remove", &chat_command_handler::do_remove,
-				_("Remove a nick from your ignores or friends list."), _("<nick>"));
+				_("Remove a nickname from your ignores or friends list."), _("<nickname>"));
 			register_command("list", &chat_command_handler::do_display,
 				_("Show your ignores and friends list."));
 			register_alias("list", "display");
 			register_command("version", &chat_command_handler::do_version,
 				_("Display version information."));
 			register_command("register", &chat_command_handler::do_register,
-				_("Register your nick"), _("<password> <email (optional)>"));
+				_("Register your nickname"), _("<password> <email (optional)>"));
 			register_command("drop", &chat_command_handler::do_drop,
-				_("Drop your nick."));
+				_("Drop your nickname."));
 			register_command("set", &chat_command_handler::do_set,
-				_("Update details for your nick. For possible details see '/details'."),
+				_("Update details for your nickname. For possible details see '/details'."),
 				_("<detail> <value>"));
 			register_command("info", &chat_command_handler::do_info,
-				_("Request information about a nick."), _("<nick>"));
+				_("Request information about a nickname."), _("<nickname>"));
 			register_command("details", &chat_command_handler::do_details,
-				_("Request a list of details you can set for your registered nick."));
+				_("Request a list of details you can set for your registered nickname."));
 			register_command("join", &chat_command_handler::do_network_send_req_arg,
 				_("Join a room."), _("<room>"));
 			register_alias("join", "j");
@@ -2541,7 +2541,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 				_("Switch a side to/from AI control."), _("do not translate the on/off^[<side> [on/off]]"));
 			register_command("theme", &console_handler::do_theme);
 			register_command("control", &console_handler::do_control,
-				_("Assign control of a side to a different player or observer."), _("<side> <nick>"), "N");
+				_("Assign control of a side to a different player or observer."), _("<side> <nickname>"), "N");
 			register_command("clear", &console_handler::do_clear,
 				_("Clear chat history."));
 			register_command("sunset", &console_handler::do_sunset,
