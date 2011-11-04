@@ -644,7 +644,7 @@ namespace {
 
 		if(show_result) {
 			const std::string& message =
-				utils::interpolate_variables_into_string(_("The add-on ‘$addon_title|’ has been successfully installed."), &syms);
+				utils::interpolate_variables_into_string(_("The add-on '$addon_title|' has been successfully installed."), &syms);
 			gui2::show_transient_message(disp.video(), _("Add-on Installed"), message);
 		}
 
@@ -1095,7 +1095,7 @@ namespace {
 				utils::string_map symbols;
 				symbols["addon"] = addon;
 				const std::string& confirm_message = utils::interpolate_variables_into_string(
-					_("You seem to be the author of ‘$addon|’. Downloading ‘$addon|’ may overwrite any changes you have made since the last upload and may delete your pbl file. Do you really wish to continue?"),
+					_("You seem to be the author of '$addon|'. Downloading '$addon|' may overwrite any changes you have made since the last upload and may delete your pbl file. Do you really wish to continue?"),
 					&symbols);
 				const int res = gui2::show_message(disp.video(),
 					_("Confirm"),
