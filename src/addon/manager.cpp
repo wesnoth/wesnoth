@@ -1323,7 +1323,7 @@ namespace {
 				symbols["addon"] = get_addon_name(addon);
 
 				const std::string& confirm_message = utils::interpolate_variables_into_string(
-					_("Deleting '$addon|' will permanently erase its download and upload count on the add-ons server. Do you really wish to continue?"),
+					_("Deleting '$addon|' will permanently erase its download and upload counts on the add-ons server. Do you really wish to continue?"),
 					&symbols);
 
 				const int res = gui2::show_message(disp.video(),
