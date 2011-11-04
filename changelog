@@ -108,6 +108,7 @@ Version 1.9.9+svn:
      in Preferences or :theme (defaults to no)
    * Implemented $second_unit being bound to the acting leader in recall/recruit events
    * Added [secondary_unit] SUF for filtering the recalling leader in [recall] action WML
+   * Introduce [redraw]clear_shroud=yes|no and [redraw]<SSF> support
  * Miscellaneous and bug fixes:
    * Add --language/-L commandline option to set the language for that session
    * Fixed: Avoid copying of singular iterators in the whiteboard code
