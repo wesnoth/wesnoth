@@ -1332,18 +1332,14 @@ namespace {
 				if(res == gui2::twindow::OK) {
 					delete_remote_addon(disp, addon, connection);
 				}
-
-				return;
 			}
-
 			// Handle publish option
-			if(index >= int(addons.size())) {
+			else if(index >= int(addons.size())) {
 				const std::string& addon = publish_options[index - int(addons.size())];
 				upload_addon_to_server(disp, addon, connection);
-				return;
 			}
-
-			if(check_whether_overwrite(disp, addons[index], publish_options))
+			// Handle download option
+			else if(check_whether_overwrite(disp, addons[index], publish_options))
 			{
 				// Handle download
 				install_addon(disp, addons[index], titles[index], types[index],
@@ -1357,7 +1353,7 @@ namespace {
 				}
 			}
 
-			// Show the dialog again, and position it on the same item installed
+			// Show the dialog again, and position it on the last selected item
 			download_addons(disp, remote_address, update_mode, do_refresh, index);
 
 		} catch(config::error& e) {
