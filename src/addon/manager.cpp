@@ -1318,7 +1318,21 @@ namespace {
 			// Handle deletion option
 			if(index >= int(addons.size() + publish_options.size())) {
 				const std::string& addon = delete_options[index - int(addons.size() + publish_options.size())];
-				delete_remote_addon(disp, addon, connection);
+
+				utils::string_map symbols;
+				symbols["addon"] = get_addon_name(addon);
+
+				const std::string& confirm_message = utils::interpolate_variables_into_string(
+					_("Deleting ‘$addon|’ will permanently erase its download and upload count in the add-ons server. Do you really wish to continue?"),
+					&symbols);
+
+				const int res = gui2::show_message(disp.video(),
+					_("Confirm"), confirm_message, gui2::tmessage::yes_no_buttons);
+
+				if(res == gui2::twindow::OK) {
+					delete_remote_addon(disp, addon, connection);
+				}
+
 				return;
 			}
 
