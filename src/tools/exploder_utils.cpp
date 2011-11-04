@@ -17,6 +17,7 @@
 #include "game_config.hpp"
 #include "serialization/string_utils.hpp"
 #include <png.h>
+#include <zlib.h>
 
 exploder_point::exploder_point(const std::string &s)
 	: x(0)
