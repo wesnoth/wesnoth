@@ -67,6 +67,23 @@ private:
 	void rebuild_replay_theme();
 	void handle_generic_event(const std::string& /*name*/);
 
+	void reset_replay_ui();
+	void update_replay_ui();
+
+	void replay_ui_playback_should_start();
+	void replay_ui_playback_should_stop(bool is_playing);
+
+	gui::button* play_button();
+	gui::button* stop_button();
+	gui::button* reset_button();
+	gui::button* play_turn_button();
+	gui::button* play_side_button();
+
+	bool replay_ui_has_all_buttons() {
+		return play_button() && stop_button() && reset_button() &&
+		       play_turn_button() && play_side_button();
+	}
+
 	game_state gamestate_start_;
 	unit_map units_start_;
 	tod_manager tod_manager_start_;
@@ -77,37 +94,6 @@ private:
 
 	bool show_everything_;
 	unsigned int show_team_;
-
-
-	class replay_buttons_wrapper {
-
-		bool is_valid_;
-
-	public:
-		replay_buttons_wrapper()
-			: is_valid_(false)
-			, play_button_(NULL)
-			, stop_button_(NULL)
-			, reset_button_(NULL)
-			, play_turn_button_(NULL)
-			, play_side_button_(NULL)
-		{
-		}
-
-		gui::button* play_button_;
-		gui::button* stop_button_;
-		gui::button* reset_button_;
-		gui::button* play_turn_button_;
-		gui::button* play_side_button_;
-
-		void update(boost::scoped_ptr<game_display>& gui_);
-		void playback_should_start();
-		void playback_should_stop(bool is_playing);
-
-		void reset_buttons();
-	};
-
-	replay_buttons_wrapper buttons_;
 };
 
 

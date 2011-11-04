@@ -69,8 +69,7 @@ replay_controller::replay_controller(const config& level,
 	delay_(0),
 	is_playing_(false),
 	show_everything_(false),
-	show_team_(state_of_game.classification().campaign_type == "multiplayer" ? 0 : 1),
-	buttons_()
+	show_team_(state_of_game.classification().campaign_type == "multiplayer" ? 0 : 1)
 {
 	units_start_ = units_;
 	teams_start_ = teams_;
@@ -136,90 +135,108 @@ void replay_controller::rebuild_replay_theme()
 	}
 }
 
-void replay_controller::replay_buttons_wrapper::update(boost::scoped_ptr<game_display>& gui_)
+gui::button* replay_controller::play_button()
 {
- 	play_button_ = gui_->find_button("button-playreplay");
-	stop_button_ = gui_->find_button("button-stopreplay");
-	reset_button_ = gui_->find_button("button-resetreplay");
-	play_turn_button_ = gui_->find_button("button-nextturn");
-	play_side_button_ = gui_->find_button("button-nextside");
+	return gui_->find_button("button-playreplay");
+}
 
+gui::button* replay_controller::stop_button()
+{
+	return gui_->find_button("button-stopreplay");
+}
+
+gui::button* replay_controller::reset_button()
+{
+	return gui_->find_button("button-resetreplay");
+}
+
+gui::button* replay_controller::play_turn_button()
+{
+	return gui_->find_button("button-nextturn");
+}
+
+gui::button* replay_controller::play_side_button()
+{
+	return gui_->find_button("button-nextside");
+}
+
+void replay_controller::update_replay_ui()
+{
 	//check if we have all buttons - if someone messed with theme then some buttons may be missing
 	//if any of the buttons is missing, we just disable every one
-	if( !play_button_ || !stop_button_ || !reset_button_ || !play_turn_button_ || !play_side_button_ ) {
+	if(!replay_ui_has_all_buttons()) {
+		gui::button *play_b = play_button(), *stop_b = stop_button(),
+		            *reset_b = reset_button(), *play_turn_b = play_turn_button(),
+		            *play_side_b = play_side_button();
 
-		is_valid_ = false;
-
-		if( play_button_ ) {
-		  play_button_->enable(false);
+		if(play_b) {
+			play_b->enable(false);
 		}
 
-		if( stop_button_ ) {
-		  stop_button_->enable(false);
+		if(stop_b) {
+			stop_b->enable(false);
 		}
 
-		if( reset_button_ ) {
-		  reset_button_->enable(false);
+		if(reset_b) {
+			reset_b->enable(false);
 		}
 
-		if( play_turn_button_ ) {
-		  play_turn_button_->enable(false);
+		if(play_turn_b) {
+			play_turn_b->enable(false);
 		}
 
-		if( play_side_button_ ) {
-		  play_side_button_->enable(false);
+		if(play_side_b) {
+			play_side_b->enable(false);
 		}
-	} else {
-		is_valid_ = true;
 	}
 }
 
-void replay_controller::replay_buttons_wrapper::playback_should_start()
+void replay_controller::replay_ui_playback_should_start()
 {
-	if( !is_valid_ )
+	if(!replay_ui_has_all_buttons())
 		return;
 
-	play_button_->enable(false);
-	reset_button_->enable(false);
-	play_turn_button_->enable(false);
-	play_side_button_->enable(false);
+	play_button()->enable(false);
+	reset_button()->enable(false);
+	play_turn_button()->enable(false);
+	play_side_button()->enable(false);
 }
 
-void replay_controller::replay_buttons_wrapper::playback_should_stop(bool is_playing)
+void replay_controller::replay_ui_playback_should_stop(bool is_playing)
 {
-	if( !is_valid_)
+	if(!replay_ui_has_all_buttons())
 		return;
 
-	if( !recorder.at_end() ) {
-		play_button_->enable(true);
-		reset_button_->enable(true);
-		play_turn_button_->enable(true);
-		play_side_button_->enable(true);
+	if(!recorder.at_end()) {
+		play_button()->enable(true);
+		reset_button()->enable(true);
+		play_turn_button()->enable(true);
+		play_side_button()->enable(true);
 
-		play_button_->release();
-		play_turn_button_->release();
-		play_side_button_->release();
+		play_button()->release();
+		play_turn_button()->release();
+		play_side_button()->release();
 	} else {
-		reset_button_->enable(true);
-		stop_button_->enable(false);
+		reset_button()->enable(true);
+		stop_button()->enable(false);
 	}
 
 	if( !is_playing ) {
 		//user interrupted
-		stop_button_->release();
+		stop_button()->release();
 	}
 }
 
-void replay_controller::replay_buttons_wrapper::reset_buttons()
+void replay_controller::reset_replay_ui()
 {
-	if( !is_valid_ )
+	if(!replay_ui_has_all_buttons())
 		return;
 
-	play_button_->enable(true);
-	stop_button_->enable(true);
-	reset_button_->enable(true);
-	play_turn_button_->enable(true);
-	play_side_button_->enable(true);
+	play_button()->enable(true);
+	stop_button()->enable(true);
+	reset_button()->enable(true);
+	play_turn_button()->enable(true);
+	play_side_button()->enable(true);
 }
 
 
@@ -259,10 +276,10 @@ void replay_controller::reset_replay(){
 	fire_prestart(true);
 	init_gui();
 	fire_start(true);
-	buttons_.update(gui_);
+	update_replay_ui();
 	update_gui();
 
-	buttons_.reset_buttons();
+	reset_replay_ui();
 }
 
 void replay_controller::stop_replay(){
@@ -271,7 +288,7 @@ void replay_controller::stop_replay(){
 
 void replay_controller::replay_next_turn(){
 	is_playing_ = true;
-	buttons_.playback_should_start();
+	replay_ui_playback_should_start();
 
 	play_turn();
 
@@ -279,12 +296,12 @@ void replay_controller::replay_next_turn(){
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 
-	buttons_.playback_should_stop(is_playing_);
+	replay_ui_playback_should_stop(is_playing_);
 }
 
 void replay_controller::replay_next_side(){
 	is_playing_ = true;
-	buttons_.playback_should_start();
+	replay_ui_playback_should_start();
 
 	play_side(player_number_ - 1, false);
 
@@ -292,7 +309,7 @@ void replay_controller::replay_next_side(){
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 
-	buttons_.playback_should_stop(is_playing_);
+	replay_ui_playback_should_stop(is_playing_);
 }
 
 void replay_controller::process_oos(const std::string& msg) const
@@ -343,7 +360,7 @@ void replay_controller::play_replay(){
 
 	try{
 		is_playing_ = true;
-		buttons_.playback_should_start();
+		replay_ui_playback_should_start();
 
 		DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 		for(; !recorder.at_end() && is_playing_; first_player_ = 1) {
@@ -358,7 +375,7 @@ void replay_controller::play_replay(){
 		if (e.result == QUIT) throw;
 	}
 
-	buttons_.playback_should_stop(is_playing_);
+	replay_ui_playback_should_stop(is_playing_);
 }
 
 //make all sides move, then stop
@@ -465,7 +482,7 @@ void replay_controller::show_statistics(){
 void replay_controller::handle_generic_event(const std::string& name){
 
 	if( name == "completely_redrawn" ) {
-		buttons_.update(gui_);
+		update_replay_ui();
 
 		gui::button* skip_animation_button = gui_->find_button("skip-animation");
 
