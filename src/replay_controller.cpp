@@ -485,8 +485,9 @@ void replay_controller::handle_generic_event(const std::string& name){
 		update_replay_ui();
 
 		gui::button* skip_animation_button = gui_->find_button("skip-animation");
-
-		skip_animation_button->set_check(skip_replay_);
+		if(skip_animation_button) {
+			skip_animation_button->set_check(skip_replay_);
+		}
 	} else {
 		rebuild_replay_theme();
 	}
