@@ -329,7 +329,7 @@ std::string si_string(double input, bool base2, std::string unit) {
 	si_string_impl_stream_write(ss, input);
 	ss << ' '
 	   << *prefix
-	   << (base2 ? _("infix_binary^i") : "")
+	   << (base2 && (*prefix != "") ? _("infix_binary^i") : "")
 	   << unit;
 	return ss.str();
 }
