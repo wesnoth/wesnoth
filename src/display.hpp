@@ -272,6 +272,17 @@ public:
 	void clear_redraw_observers();
 
 	theme& get_theme() { return theme_; }
+
+	/**
+	 * Retrieves a pointer to a theme UI button.
+	 *
+	 * @note The returned pointer may either be NULL, meaning the button
+	 *       isn't defined by the current theme, or point to a valid
+	 *       gui::button object. However, the objects retrieved will be
+	 *       destroyed and recreated by draw() method calls. Do *NOT* store
+	 *       these pointers for longer than strictly necessary to
+	 *       accomplish a specific task before the next screen refresh.
+	 */
 	gui::button* find_button(const std::string& id);
 	gui::button::TYPE string_to_button_type(std::string type);
 	void create_buttons();
