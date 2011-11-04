@@ -2380,9 +2380,19 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
 
-	config::attribute_value side = cfg["side"];
-	if (!side.empty()) {
-		clear_shroud(side);
+	const config::attribute_value clear_shroud_av = cfg["clear_shroud"];
+	const config::attribute_value side = cfg["side"];
+	bool clear_shroud_bool = clear_shroud_av.to_bool(false);
+	if(clear_shroud_av.blank() && !side.blank()) {
+		//Backwards compat, behavior of the tag was to clear shroud in case that side= is given.
+		clear_shroud_bool = true;
+	}
+
+	if (clear_shroud_bool) {
+		side_filter filter(cfg);
+		foreach(const int side, filter.get_teams()){
+			clear_shroud(side);
+		}
 		screen.recalculate_minimap();
 	}
 	if (screen_needs_rebuild) {
