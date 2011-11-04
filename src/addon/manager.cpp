@@ -459,6 +459,19 @@ namespace {
 		}
 	}
 
+	/** Replaces underscores to dress up file or dirnames as add-on names.
+	 *
+	 * @todo In the future we should store more local information about add-ons and use
+	 *       this only as a fallback; it could be desirable to fetch translated names as well
+	 *       somehow.
+	 */
+	std::string get_addon_name(const std::string& id)
+	{
+		std::string retv(id);
+		std::replace(retv.begin(), retv.end(), '_', ' ');
+		return retv;
+	}
+
 	void upload_addon_to_server(game_display& disp, const std::string& addon, network_asio::connection& connection)
 	{
 		config request;
@@ -1243,13 +1256,13 @@ namespace {
 
 			foreach(const std::string& pub, publish_options) {
 				static const std::string publish_icon = "icons/icon-addon-publish.png";
-				const std::string text = _("Publish add-on: ") + pub;
+				const std::string text = _("Publish add-on: ") + get_addon_name(pub);
 				options.push_back(IMAGE_PREFIX + publish_icon + COLUMN_SEPARATOR + font::GOOD_TEXT + text);
 				options_to_filter.push_back(text);
 			}
 			foreach(const std::string& del, delete_options) {
 				static const std::string delete_icon = "icons/icon-addon-delete.png";
-				const std::string text = _("Delete add-on: ") + del;
+				const std::string text = _("Delete add-on: ") + get_addon_name(del);
 				options.push_back(IMAGE_PREFIX + delete_icon + COLUMN_SEPARATOR + font::BAD_TEXT + text);
 				options_to_filter.push_back(text);
 			}
@@ -1348,19 +1361,6 @@ namespace {
 		} catch(twml_exception& e) {
 			e.show(disp);
 		}
-	}
-
-	/** Replaces underscores to dress up file or dirnames as add-on names.
-	 *
-	 * @todo In the future we should store more local information about add-ons and use
-	 *       this only as a fallback; it could be desirable to fetch translated names as well
-	 *       somehow.
-	 */
-	std::string get_addon_name(const std::string& id)
-	{
-		std::string retv(id);
-		std::replace(retv.begin(), retv.end(), '_', ' ');
-		return retv;
 	}
 
 	void uninstall_local_addons(game_display& disp, bool* should_reload_cfg)
