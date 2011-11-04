@@ -204,7 +204,7 @@ void replay_controller::replay_ui_playback_should_start()
 	play_side_button()->enable(false);
 }
 
-void replay_controller::replay_ui_playback_should_stop(bool is_playing)
+void replay_controller::replay_ui_playback_should_stop()
 {
 	if(!replay_ui_has_all_buttons())
 		return;
@@ -223,7 +223,7 @@ void replay_controller::replay_ui_playback_should_stop(bool is_playing)
 		stop_button()->enable(false);
 	}
 
-	if( !is_playing ) {
+	if(!is_playing_) {
 		//user interrupted
 		stop_button()->release();
 	}
@@ -297,7 +297,7 @@ void replay_controller::replay_next_turn(){
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 
-	replay_ui_playback_should_stop(is_playing_);
+	replay_ui_playback_should_stop();
 }
 
 void replay_controller::replay_next_side(){
@@ -310,7 +310,7 @@ void replay_controller::replay_next_side(){
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 
-	replay_ui_playback_should_stop(is_playing_);
+	replay_ui_playback_should_stop();
 }
 
 void replay_controller::process_oos(const std::string& msg) const
@@ -376,7 +376,7 @@ void replay_controller::play_replay(){
 		if (e.result == QUIT) throw;
 	}
 
-	replay_ui_playback_should_stop(is_playing_);
+	replay_ui_playback_should_stop();
 }
 
 //make all sides move, then stop

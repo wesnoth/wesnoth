@@ -71,7 +71,7 @@ private:
 	void update_replay_ui();
 
 	void replay_ui_playback_should_start();
-	void replay_ui_playback_should_stop(bool is_playing);
+	void replay_ui_playback_should_stop();
 
 	gui::button* play_button();
 	gui::button* stop_button();
