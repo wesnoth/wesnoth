@@ -361,7 +361,10 @@ bool team::get_village(const map_location& loc, const int owner_side, const bool
 		const config::attribute_value old_value = var;
 		var = owner_side;
 		gamestate_changed = game_events::fire("capture",loc);
-		var = old_value;
+		if(old_value.blank())
+			resources::state_of_game->clear_variable("owner_side");
+		else
+			var = old_value;
 	}
 	return gamestate_changed;
 }
