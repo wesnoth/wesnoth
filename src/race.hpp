@@ -47,6 +47,7 @@ public:
 	const config::const_child_itors &additional_traits() const;
   const config::const_child_itors &additional_topics() const;
 	unsigned int num_traits() const;
+	const std::string& undead_variation() const { return undead_variation_; };
 
 private:
 	const config cfg_;
@@ -62,6 +63,7 @@ private:
 	config::const_child_itors traits_;
   config::const_child_itors topics_;
 	bool global_traits_;
+	std::string undead_variation_;
 };
 
 unit_race::GENDER string_gender(const std::string& str,unit_race::GENDER def=unit_race::MALE);

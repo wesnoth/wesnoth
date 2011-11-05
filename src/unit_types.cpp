@@ -714,6 +714,9 @@ void unit_type::build_full(const movement_type_map &mv_types,
 					possibleTraits_.add_child("trait", t);
 			}
 		}
+		if (undead_variation_.empty()) {
+			undead_variation_ = race_->undead_variation();
+		}
 	}
 
 	// Insert any traits that are just for this unit type

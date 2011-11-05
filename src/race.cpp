@@ -146,7 +146,8 @@ unit_race::unit_race() :
 		chain_size_(0),
 		traits_(empty_traits().child_range("trait")),
 		topics_(empty_topics().child_range("topic")),
-		global_traits_(true)
+		global_traits_(true),
+		undead_variation_()
 {
 		name_[MALE] = "";
 		name_[FEMALE] = "";
@@ -161,7 +162,8 @@ unit_race::unit_race(const config& cfg) :
 		chain_size_(cfg["markov_chain_size"]),
 		traits_(cfg.child_range("trait")),
 		topics_(cfg.child_range("topic")),
-		global_traits_(!cfg["ignore_global_traits"].to_bool())
+		global_traits_(!cfg["ignore_global_traits"].to_bool()),
+		undead_variation_(cfg["undead_variation"])
 
 {
 	if (id_.empty()) {
