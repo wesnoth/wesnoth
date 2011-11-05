@@ -627,7 +627,6 @@ void menu_handler::save_map()
 void menu_handler::preferences()
 {
 	preferences::show_preferences_dialog(*gui_, game_config_);
-	gui_->redraw_everything();
 }
 
 void menu_handler::show_chat_log()
