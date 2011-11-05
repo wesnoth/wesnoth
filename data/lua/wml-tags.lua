@@ -661,6 +661,7 @@ end
 function wml_actions.capture_village(cfg)
 	local side = cfg.side
 	local filter_side = helper.get_child(cfg, "filter_side")
+	local fire_event = cfg.fire_event
 	if side then side = tonumber(side) or helper.wml_error("invalid side in [capture_village]") end
 	if filter_side then
 		if side then helper.wml_error("duplicate side information in [capture_village]") end
@@ -670,7 +671,7 @@ function wml_actions.capture_village(cfg)
 	local locs = wesnoth.get_locations(cfg)
 
 	for i, loc in ipairs(locs) do
-		wesnoth.set_village_owner(loc[1], loc[2], side)
+		wesnoth.set_village_owner(loc[1], loc[2], side, fire_event)
 	end
 end
 
