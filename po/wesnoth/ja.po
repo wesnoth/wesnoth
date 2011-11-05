@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2011-05-16 22:43+0900\n"
+"PO-Revision-Date: 2011-11-05 07:48+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
 "Language: Japanese\n"
@@ -30,8 +30,6 @@ msgstr "圧縮して保存"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
-#, fuzzy
-#| msgid "Confirm deleting saves"
 msgid "Confirm deleting saves"
 msgstr "保存データを削除するときに確認する"
 
@@ -47,8 +45,6 @@ msgstr "中央ボタンでのスクロール"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#, fuzzy
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep scrolling when mouse leaves window"
 msgstr "マウスがウィンドウ外でもスクロールし続ける"
 
@@ -80,10 +76,6 @@ msgstr "Ping の時間切れ"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
@@ -91,29 +83,21 @@ msgstr "タイムアウトするまでの ping 応答を待つ秒数。0 で無�
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
-#, fuzzy
-#| msgid "Accept whisper messages from friends only"
 msgid "Accept whispers from friends only"
-msgstr "友人からのささやきメッセージのみを受け入れる"
+msgstr "友人からのささやきのみを受け入れる"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
-#, fuzzy
-#| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open whisper windows in lobby"
 msgstr "ロビーでささやきウィンドウを自動的に開く"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
-#, fuzzy
-#| msgid "Group players in lobby"
 msgid "Group players in lobby"
 msgstr "ロビーのプレイヤーをグループ分け"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid "Lobby sounds"
 msgid "Lobby sounds"
 msgstr "ロビーの効果音"
 
@@ -300,9 +284,8 @@ msgstr ""
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:46
-#, fuzzy
 msgid "(Easy)"
-msgstr "易しい"
+msgstr "（易しい）"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:46
@@ -311,9 +294,8 @@ msgstr ""
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:47
-#, fuzzy
 msgid "(Normal)"
-msgstr "ノーマル"
+msgstr "（普通）"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:47
@@ -322,9 +304,8 @@ msgstr ""
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:48
-#, fuzzy
 msgid "(Hard)"
-msgstr "難しい"
+msgstr "（難しい）"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:48
@@ -367,21 +348,18 @@ msgstr ""
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
-#, fuzzy
 msgid "Difficulty: Easy"
-msgstr "難易度: "
+msgstr "難易度: 易しい"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:90
-#, fuzzy
 msgid "Difficulty: Normal"
-msgstr "難易度: "
+msgstr "難易度: 普通"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:93
-#, fuzzy
 msgid "Difficulty: Hard"
-msgstr "難易度: "
+msgstr "難易度: 難しい"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:100
@@ -403,9 +381,8 @@ msgstr "マルチプレイヤー"
 
 #. [objective]: condition=win
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
-#, fuzzy
 msgid "Defeat enemy leader"
-msgstr "敵のリーダー（達）を倒す"
+msgstr "敵のリーダーを倒す"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -594,9 +571,8 @@ msgstr "インドネシア語翻訳"
 
 #. [about]
 #: data/core/about.cfg:2106
-#, fuzzy
 msgid "Irish Translation"
-msgstr "トルコ語翻訳"
+msgstr "アイルランド語翻訳"
 
 #. [about]
 #: data/core/about.cfg:2113
@@ -645,9 +621,8 @@ msgstr "ノルウェー語翻訳"
 
 #. [about]
 #: data/core/about.cfg:2321
-#, fuzzy
 msgid "Old English Translation"
-msgstr "英語（イギリス）翻訳"
+msgstr "古英語翻訳"
 
 #. [about]
 #: data/core/about.cfg:2330
@@ -1142,7 +1117,6 @@ msgstr "ストームトライデント"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:546
-#, fuzzy
 msgid "sceptre of fire"
 msgstr "炎の笏"
 
@@ -2204,11 +2178,6 @@ msgstr ""
 #. [language]
 #: data/english.cfg:20
 #, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units only reach their full strength during twilight.\n"
 "\n"
@@ -3368,7 +3337,6 @@ msgstr "視点"
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
 #, fuzzy
-#| msgid "Skip Animation"
 msgid "Skip animation"
 msgstr "アニメーションを省略"
 
@@ -3776,7 +3744,6 @@ msgstr "アドオンは一つも導入されていません。"
 
 #: src/addon/manager.cpp:1408
 #, fuzzy
-#| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "本当にアドオン「 $addon| 」を削除してもよろしいですか？"
@@ -3792,22 +3759,18 @@ msgstr[0] ""
 
 #: src/addon/manager.cpp:1444
 #, fuzzy
-#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "アドオンは削除できませんでした: "
 
 #: src/addon/manager.cpp:1451
 #, fuzzy
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "アドオンは削除されました"
 
 #: src/addon/manager.cpp:1453
 #, fuzzy
-#| msgid "The following add-on had errors and could not be loaded:"
-#| msgid_plural "The following add-ons had errors and could not be loaded:"
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "以下のアドオンキャンペーンには問題があり、読み込めませんでした:"
@@ -3878,7 +3841,6 @@ msgstr "%Y年%m月%d日（%a） %H:%M"
 
 #: src/dialogs.cpp:454 src/savegame.cpp:136
 #, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%Y年%m月%d日（%a） %H:%M"
 
@@ -3900,7 +3862,6 @@ msgstr "チュートリアル"
 
 #: src/dialogs.cpp:499
 #, fuzzy
-#| msgid "Remote scenario"
 msgid "Test scenario"
 msgstr "リモートシナリオ"
 
@@ -3939,7 +3900,6 @@ msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:558 src/savegame.cpp:184
 #, fuzzy
-#| msgid "%A, %H:%M"
 msgid "%A, %I:%M %p"
 msgstr "%A, %H:%M"
 
@@ -4140,8 +4100,6 @@ msgstr "ターン "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
 #, fuzzy
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空いているスロット"
@@ -6119,7 +6077,6 @@ msgstr "(攻撃 / 防御)"
 
 #: src/reports.cpp:443
 #, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "経験の修正: "
 

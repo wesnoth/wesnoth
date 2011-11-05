@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth - Dead Water\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2011-06-02 23:48+0900\n"
-"Last-Translator: mishan <mishanhideaki88@gmail.com>\n"
+"PO-Revision-Date: 2011-11-05 07:40+0900\n"
+"Last-Translator: IWAI Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: ja <wesnoth-ja-translate@lists.sourceforge.jp>\n"
 "Language: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -626,7 +626,6 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:473
 #, fuzzy
-#| msgid "Look! There is a bat cowering in the corner here."
 msgid "Look! There is a massive bat back here."
 msgstr "見てください！この角にコウモリが縮こまっています。"
 
@@ -682,7 +681,6 @@ msgstr "人懐っこいコウモリ"
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:570
 #, fuzzy
-#| msgid "Look! There is a bat cowering in the corner here."
 msgid "And look! There is a bat cowering in the corner here."
 msgstr "見てください！この角にコウモリが縮こまっています。"
 
@@ -743,14 +741,12 @@ msgstr ""
 #. [unit]: type=Walking Corpse, id=Undead Bat
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:660
 #, fuzzy
-#| msgid "Undead"
 msgid "Undead Bat"
 msgstr "アンデッド"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:669
 #, fuzzy
-#| msgid "Look! There is a bat cowering in the corner here."
 msgid ""
 "Look! There is a bat in the corner here. It is moving, but it looks half "
 "dead."
@@ -781,16 +777,13 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:706
 #, fuzzy
-#| msgid "Look, this chest was in his tent. It is filled with gold!"
 msgid "He had a chest in his tent, too. It is filled with gold!"
 msgstr "みろ、テントの中に金庫があるぞ。ゴールドで一杯だ。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:718
-#, fuzzy
-#| msgid "You receive 100 gold."
 msgid "You receive 120 gold."
-msgstr "100ゴールド獲得。"
+msgstr "120ゴールド獲得。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:725
@@ -1857,7 +1850,7 @@ msgid ""
 "Now is not the time. We have a desperate errand, Tyegëa. Jotha has been "
 "attacked and taken."
 msgstr ""
-"時間がないわ。私たちは困難な任務を推敲しているのですよ、Tyegëa。 Jotha は攻撃"
+"時間がないわ。私たちは困難な任務を遂行しているのですよ、Tyegëa。 Jotha は攻撃"
 "されて、包囲されています。"
 
 #. [message]: speaker=Kai Krellis
@@ -1926,11 +1919,6 @@ msgstr "何ですって？ どうしてそうなるのですか？"
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:209
 #, fuzzy
-#| msgid ""
-#| "When your grandfather married Indress, he he did not know that Tyegëa had "
-#| "already born him a son. When she delivered your father to Jotha, your "
-#| "grandmother Indress agreed to keep it secret and raise the infant as her "
-#| "own."
 msgid ""
 "When your grandfather married Indress, he did not know that Tyegëa had "
 "already born him a son. When she delivered your father to Jotha, your "
@@ -2619,7 +2607,7 @@ msgstr "この剣は私が持つのはふさわしくない。誰か他の者が
 #. [option]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1062
 msgid "I’ll carry the sword."
-msgstr "私がこの剣を持とう。・"
+msgstr "私がこの剣を持とう。"
 
 #. [option]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1071
@@ -3069,8 +3057,6 @@ msgstr "尻尾"
 
 #. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:198
-#, fuzzy
-#| msgid "stunned"
 msgid "female^stunned"
 msgstr "スタン"
 
@@ -3318,12 +3304,9 @@ msgstr ""
 "な効果を持つのかを確認するために誰かが試してみるべきです。"
 
 #: data/campaigns/Dead_Water/utils/specials.cfg:4
-#, fuzzy
-#| msgid ""
-#| " This unit is able stun its enemies, disrupting their zones of control."
 msgid ""
 " This unit is able to stun its enemies, disrupting their zones of control."
-msgstr "このユニットは敵を気絶させ、支配領域 (ZoC) を崩壊させます。"
+msgstr " このユニットは敵を気絶させ、支配領域 (ZoC) を崩壊させます。"
 
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:9
@@ -3333,9 +3316,6 @@ msgstr "スタン"
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:10
 #, fuzzy
-#| msgid ""
-#| "This attack hits so hard that the defender is dazed and can no longer "
-#| "enforce a zone of control. The effect wears off on the defenders next turn"
 msgid ""
 "This attack hits so hard that the defender is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the defender’s next turn."
