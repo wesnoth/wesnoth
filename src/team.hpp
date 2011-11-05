@@ -121,7 +121,7 @@ public:
 
 	void write(config& cfg) const;
 
-	bool get_village(const map_location&);
+	bool get_village(const map_location&, const int owner_side);
 	void lose_village(const map_location&);
 	void clear_villages() { villages_.clear(); }
 	const std::set<map_location>& villages() const { return villages_; }

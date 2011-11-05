@@ -1913,7 +1913,7 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 		if (resources::screen != NULL) {
 			resources::screen->invalidate(loc);
 		}
-		return t->get_village(loc);
+		return t->get_village(loc, village_owner(loc, *resources::teams) + 1);
 	}
 
 	return false;
