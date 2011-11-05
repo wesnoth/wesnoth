@@ -1788,7 +1788,7 @@ static int intf_set_village_owner(lua_State *L)
 		return 0;
 
 	if (old_side) teams[old_side - 1].lose_village(loc);
-	if (new_side) teams[new_side - 1].get_village(loc, old_side);
+	if (new_side) teams[new_side - 1].get_village(loc, old_side, lua_toboolean(L, 4));
 	return 0;
 }
 
