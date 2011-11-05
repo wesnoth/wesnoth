@@ -358,6 +358,8 @@ static server_type open_connection(game_display& disp, const std::string& origin
 								"seed for your connection).");
 					} else if((*error)["error_code"] == MP_INCORRECT_PASSWORD_ERROR) {
 						error_message = _("The password you provided was incorrect.");
+					} else if((*error)["error_code"] == MP_TOO_MANY_ATTEMPTS_ERROR) {
+						error_message = _("You have made too many login attempts.");
 					} else {
 						error_message = (*error)["message"].str();
 					}
