@@ -1807,11 +1807,12 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				const unit to_recruit(*u);
 				const unit* pass_check = &to_recruit;
 				if(!cfg["check_passability"].to_bool(true)) pass_check = NULL;
-				map_location loc = cfg_to_loc(cfg);
+				const map_location cfg_loc = cfg_to_loc(cfg);
 
 				//TODO fendrin: comment this monster
 				foreach (unit_map::const_unit_iterator leader, leaders) {
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
+					map_location loc = cfg_loc;
 					if ( (leader_filter.null() || leader->matches_filter(leader_filter, leader->get_location())) &&
 							(u->matches_filter(vconfig(leader->recall_filter()), map_location())) ) {
 						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
@@ -1828,6 +1829,18 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 							return;
 						}
 					}
+				}
+				if (resources::game_map->on_board(cfg_loc)) {
+					map_location loc = cfg_loc;
+					if(pass_check || (resources::units->count(loc) > 0))
+						loc = pathfind::find_vacant_tile(*resources::game_map,
+								*resources::units, loc, pathfind::VACANT_ANY, pass_check);
+					DBG_NG << "No usable leader found, but found usable location. Recalling.\n";
+					avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
+					map_location null_location = map_location::null_location;
+					place_recruit(to_recruit, loc, null_location, true,
+							cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false), true, true);
+					return;
 				}
 			}
 		}
