@@ -43,6 +43,8 @@ Version 1.9.9+svn:
    * Added: Support for clickables (button and repeating button) to
      wesnoth.set_dialog_callback (patch #2763)
    * Allowed function debug.traceback()
+   * wesnoth.set_village_owner takes a bool argument determining
+     whether to fire capture events
  * Terrain:
    * Oasis may be placed on any terrain, aliased to base
    * New terrain macro: MOUNTAIN_SINGLE_RANDOM
@@ -110,6 +112,10 @@ Version 1.9.9+svn:
    * Added [secondary_unit] SUF for filtering the recalling leader in [recall] action WML
    * Introduce [redraw]clear_shroud=yes|no and [redraw]<SSF> support
    * Introduce [race]undead_variation as a default for the race's [unit_type]s
+   * $owner_side describes the previous side owning a village
+     in capture events (FR bug #13567)
+   * Introduce [capture_village]fire_event=yes|no (def no) whether to fire
+     any capture events (was previously always yes)
  * Miscellaneous and bug fixes:
    * Add --language/-L commandline option to set the language for that session
    * Fixed: Avoid copying of singular iterators in the whiteboard code
