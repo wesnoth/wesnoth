@@ -57,6 +57,22 @@ private:
 
 	std::deque<connection_log> ip_log_;
 
+	struct login_log {
+		login_log(std::string _ip, int _attempts, time_t _first_attempt) :
+		ip(_ip), attempts(_attempts), first_attempt(_first_attempt) {}
+		std::string ip;
+		int attempts;
+		time_t first_attempt;
+
+		bool operator==(const login_log& l) const
+		{
+			// only the IP matters
+			return l.ip == ip;
+		}
+	};
+
+	std::deque<login_log> failed_logins_;
+
 	boost::scoped_ptr<user_handler> user_handler_;
 	std::map<network::connection,std::string> seeds_;
 

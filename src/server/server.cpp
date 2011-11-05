@@ -324,6 +324,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	server_(port),
 	ban_manager_(),
 	ip_log_(),
+	failed_logins_(),
 	user_handler_(NULL),
 	seeds_(),
 	players_(),
@@ -1115,10 +1116,45 @@ void server::process_login(const network::connection sock,
 			}
 			// This name is registered and an incorrect password provided
 			else if(!(user_handler_->login(username, password, seeds_[sock]))) {
+				// Log the failure
+				const std::deque<login_log>::size_type max_size = 500;
+
+				const int max_failed_attempts = 10;
+				const time_t ban_time = 3600;
+				const time_t now = time(NULL);
+
+				login_log login_ip = login_log(network::ip_address(sock), now, 0);
+				std::deque<login_log>::iterator i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
+				if(i == failed_logins_.end()) {
+					failed_logins_.push_back(login_ip);
+					i = --failed_logins_.end();
+
+					// Remove oldest entry if maximum size is exceeded
+					if(failed_logins_.size() > max_size)
+						failed_logins_.pop_front();
+
+				}
+
+				// Clear and move to the beginning
+				if (i->first_attempt + ban_time < now) {
+					failed_logins_.erase(i);
+					failed_logins_.push_back(login_ip);
+					i = --failed_logins_.end();
+				}
+
+				i->attempts++;
+
+				if (i->attempts > max_failed_attempts) {
+					LOG_SERVER << ban_manager_.ban(login_ip.ip, now + ban_time, "Maximum login attempts exceeded", "automatic", "", username);
+					send_error(sock, "You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
+					network::queue_disconnect(sock);
+				} else {
+					send_password_request(sock, "The password you provided for the nick '" + username +
+						"' was incorrect.", username, MP_INCORRECT_PASSWORD_ERROR);
+				}
+
 				// Reset the random seed
 				seeds_.erase(sock);
-				send_password_request(sock, "The password you provided for the nickname '" + username +
-						"' was incorrect.", username, MP_INCORRECT_PASSWORD_ERROR);
 
 				LOG_SERVER << network::ip_address(sock) << "\t"
 						<< "Login attempt with incorrect password for nickname '" << username << "'.\n";
