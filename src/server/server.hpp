@@ -116,6 +116,9 @@ private:
 	std::string replay_save_path_;
 	bool allow_remote_shutdown_;
 	std::vector<std::string> tor_ip_list_;
+	int failed_login_limit_;
+	time_t failed_login_ban_;
+	std::deque<login_log>::size_type failed_login_buffer_size_;
 
 	/** Parse the server config into local variables. */
 	void load_config();

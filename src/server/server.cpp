@@ -356,6 +356,9 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	replay_save_path_(),
 	allow_remote_shutdown_(false),
 	tor_ip_list_(),
+	failed_login_limit_(),
+	failed_login_ban_(),
+	failed_login_buffer_size_(),
 	version_query_response_("[version]\n[/version]\n", simple_wml::INIT_COMPRESSED),
 	login_response_("[mustlogin]\n[/mustlogin]\n", simple_wml::INIT_COMPRESSED),
 	join_lobby_response_("[join_lobby]\n[/join_lobby]\n", simple_wml::INIT_COMPRESSED),
@@ -531,6 +534,10 @@ void server::load_config() {
 	default_time_period_ = cfg_["messages_time_period"].to_int(10);
 	concurrent_connections_ = cfg_["connections_allowed"].to_int(5);
 	max_ip_log_size_ = cfg_["max_ip_log_size"].to_int(500);
+
+	failed_login_limit_ = cfg_["failed_logins_limit"].to_int(10);
+	failed_login_ban_ = cfg_["failed_logins_ban"].to_int(3600);
+	failed_login_buffer_size_ = cfg_["failed_logins_buffer_size"].to_int(500);
 
 	// Example config line:
 	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
@@ -1117,10 +1124,6 @@ void server::process_login(const network::connection sock,
 			// This name is registered and an incorrect password provided
 			else if(!(user_handler_->login(username, password, seeds_[sock]))) {
 				// Log the failure
-				const std::deque<login_log>::size_type max_size = 500;
-
-				const int max_failed_attempts = 10;
-				const time_t ban_time = 3600;
 				const time_t now = time(NULL);
 
 				login_log login_ip = login_log(network::ip_address(sock), now, 0);
@@ -1130,13 +1133,13 @@ void server::process_login(const network::connection sock,
 					i = --failed_logins_.end();
 
 					// Remove oldest entry if maximum size is exceeded
-					if(failed_logins_.size() > max_size)
+					if(failed_logins_.size() > failed_login_buffer_size_)
 						failed_logins_.pop_front();
 
 				}
 
 				// Clear and move to the beginning
-				if (i->first_attempt + ban_time < now) {
+				if (i->first_attempt + failed_login_ban_ < now) {
 					failed_logins_.erase(i);
 					failed_logins_.push_back(login_ip);
 					i = --failed_logins_.end();
@@ -1144,8 +1147,8 @@ void server::process_login(const network::connection sock,
 
 				i->attempts++;
 
-				if (i->attempts > max_failed_attempts) {
-					LOG_SERVER << ban_manager_.ban(login_ip.ip, now + ban_time, "Maximum login attempts exceeded", "automatic", "", username);
+				if (i->attempts > failed_login_limit_) {
+					LOG_SERVER << ban_manager_.ban(login_ip.ip, now + failed_login_ban_, "Maximum login attempts exceeded", "automatic", "", username);
 					send_error(sock, "You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
 					network::queue_disconnect(sock);
 				} else {
