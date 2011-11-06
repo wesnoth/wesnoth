@@ -3009,7 +3009,7 @@ std::string unit::image_mods() const{
 	return modifier.str();
 }
 
-std::string unit::effect_image_mods() const{
+const std::string& unit::effect_image_mods() const{
 	return image_mods_;
 }
 

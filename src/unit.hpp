@@ -332,7 +332,7 @@ public:
 	unit& clone(bool is_temporary=true);
 
 	std::string TC_image_mods() const;
-	std::string effect_image_mods() const;
+	const std::string& effect_image_mods() const;
 	std::string image_mods() const;
 
 	/**
