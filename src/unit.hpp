@@ -277,7 +277,7 @@ public:
 		Uint32 text_color = 0, STATE state = STATE_ANIM);
 
 	/** The name of the file to game_display (used in menus). */
-	std::string absolute_image() const { return cfg_["image"]; }
+	std::string absolute_image() const;
 	std::string image_halo() const { return cfg_["halo"]; }
 
 	std::string image_ellipse() const { return cfg_["ellipse"]; }

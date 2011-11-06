@@ -525,7 +525,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 
 	static char const *raw_attrs[] = { "description", "halo",
 		"profile", "small_profile", "upkeep", "usage", "ellipse",
-		"image", "random_traits", "generate_name" };
+		"image", "image_icon", "random_traits", "generate_name" };
 	foreach (const char *attr, raw_attrs) {
 		input_cfg.remove_attribute(attr);
 	}
@@ -796,7 +796,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	// except for a few attributes.
 	config new_cfg;
 	static char const *persistent_attrs[] = { "upkeep", "ellipse",
-		"image", "usage", "random_traits", "generate_name" };
+		"image", "image_icon", "usage", "random_traits", "generate_name" };
 	foreach (const char *attr, persistent_attrs) {
 		if (const config::attribute_value *v = old_cfg.get(attr)) {
 			new_cfg[attr] = *v;
@@ -2706,6 +2706,10 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 		trait_names_.push_back(name);
 		trait_descriptions_.push_back(description);
 	}
+}
+
+std::string unit::absolute_image() const {
+	return cfg_["image_icon"].empty() ? cfg_["image"] : cfg_["image_icon"];
 }
 
 const unit_animation* unit::choose_animation(const game_display& disp, const map_location& loc,const std::string& event,

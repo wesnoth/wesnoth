@@ -568,6 +568,7 @@ unit_type::unit_type(const unit_type& o) :
 	usage_(o.usage_),
 	undead_variation_(o.undead_variation_),
 	image_(o.image_),
+	icon_(o.icon_),
 	small_profile_(o.small_profile_),
 	big_profile_(o.big_profile_),
 	flag_rgb_(o.flag_rgb_),
@@ -614,6 +615,7 @@ unit_type::unit_type(config &cfg) :
 	usage_(),
 	undead_variation_(),
 	image_(),
+	icon_(),
 	small_profile_(),
 	big_profile_(),
 	flag_rgb_(),
@@ -775,6 +777,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	usage_ = cfg_["usage"].str();
 	undead_variation_ = cfg_["undead_variation"].str();
 	image_ = cfg_["image"].str();
+	icon_ = cfg_["image_icon"].str();
 	small_profile_ = cfg_["small_profile"].str();
 	big_profile_ = cfg_["profile"].str();
 	adjust_profile(small_profile_, big_profile_, image_);

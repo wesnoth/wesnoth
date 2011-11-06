@@ -124,6 +124,8 @@ Version 1.9.9+svn:
    * Introduce [capture_village]fire_event=yes|no (def no) whether to fire
      any capture events (was previously always yes)
    * Made [move_unit] respect image modifications applied by EffectWML to single units
+   * Introduce [unit_type]image_icon key to override image for 72x72 icons
+     (FR bug #15466)
  * Miscellaneous and bug fixes:
    * Add --language/-L commandline option to set the language for that session
    * Fixed: Avoid copying of singular iterators in the whiteboard code

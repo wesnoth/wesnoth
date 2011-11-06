@@ -228,6 +228,7 @@ public:
 	int cost() const { return cost_; }
 	const std::string& usage() const { return usage_; }
 	const std::string& image() const { return image_; }
+	const std::string& icon() const { return icon_; }
 	const std::string &small_profile() const { return small_profile_; }
 	const std::string &big_profile() const { return big_profile_; }
 
@@ -306,6 +307,7 @@ private:
     std::string undead_variation_;
 
 	std::string image_;
+	std::string icon_;
 	std::string small_profile_;
 	std::string big_profile_;
 	std::string flag_rgb_;
