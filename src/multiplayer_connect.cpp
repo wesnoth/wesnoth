@@ -199,11 +199,11 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		}
 		std::vector<std::string> leader_name_pseudolist;
 		if(leader_type.empty()) {
-			leader_name_pseudolist.push_back("-");
+			leader_name_pseudolist.push_back(utils::unicode_em_dash);
 		} else {
 			const unit_type *leader_name = unit_types.find(leader_type);
 			if (!leader_name) {
-				leader_name_pseudolist.push_back("-");
+				leader_name_pseudolist.push_back(utils::unicode_em_dash);
 			} else {
 				leader_name_pseudolist.push_back(leader_name->get_gender_unit_type(gender_).type_name());
 			}
@@ -214,7 +214,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 		if (!gender_.empty()) {
 			if (leader_type.empty() || !unit_types.find(leader_type)) {
-				gender_name_pseudolist.push_back("-");
+				gender_name_pseudolist.push_back(utils::unicode_em_dash);
 			} else {
 				if (gender_ == "female")
 					gender_name_pseudolist.push_back( _("Female ♀") );
@@ -225,7 +225,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 				else gender_name_pseudolist.push_back("?");
 			}
 		} else {
-			gender_name_pseudolist.push_back("-");
+			gender_name_pseudolist.push_back(utils::unicode_em_dash);
 		}
 		combo_gender_.set_items(gender_name_pseudolist);
 		combo_gender_.set_selected(0);
