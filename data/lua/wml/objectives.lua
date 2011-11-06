@@ -180,12 +180,12 @@ function wml_actions.objectives(cfg)
 	if side == 0 then
 		for side, team in ipairs(wesnoth.sides) do
 			team.objectives = objectives
-			if not silent then team.objectives_changed = true end
+			team.objectives_changed = not silent
 		end
 	else
 		local team = wesnoth.sides[side]
 		team.objectives = objectives
-		if not silent then team.objectives_changed = true end
+		team.objectives_changed = not silent
 	end
 end
 
