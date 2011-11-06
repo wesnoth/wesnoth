@@ -973,6 +973,7 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("side", u.side());
 	return_string_attrib("id", u.id());
 	return_string_attrib("type", u.type_id());
+	return_string_attrib("image_mods", u.effect_image_mods());
 	return_int_attrib("hitpoints", u.hitpoints());
 	return_int_attrib("max_hitpoints", u.max_hitpoints());
 	return_int_attrib("experience", u.experience());
@@ -2531,18 +2532,6 @@ static int intf_unit_ability(lua_State *L)
 }
 
 /**
- * Returns the EffectWML image modifications affecting the given unit, if any.
- * - Arg 1: unit userdata.
- * - Ret 1: string of image path functions, or an empty string.
- */
-static int intf_unit_image_mods(lua_State *L)
-{
-	unit const *u = luaW_checkunit(L, 1);
-	lua_pushstring(L, u->effect_image_mods().c_str());
-	return 1;
-}
-
-/**
  * Changes a unit to the given unit type.
  * - Arg 1: unit userdata.
  * - Arg 2: string.
@@ -3514,7 +3503,6 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "transform_unit",           &intf_transform_unit           },
 		{ "unit_ability",             &intf_unit_ability             },
 		{ "unit_defense",             &intf_unit_defense             },
-		{ "unit_image_mods",          &intf_unit_image_mods          },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
 		{ "unit_resistance",          &intf_unit_resistance          },
 		{ NULL, NULL }
