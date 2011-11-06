@@ -260,6 +260,15 @@ std::string signed_value(int val)
 	return oss.str();
 }
 
+std::string half_signed_value(int val)
+{
+	std::ostringstream oss;
+	if (val < 0)
+		oss << unicode_minus;
+	oss << abs(val);
+	return oss.str();
+}
+
 static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 #ifdef _MSC_VER
 	// Visual C++ makes 'precision' set the number of decimal places.
