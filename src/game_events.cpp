@@ -895,8 +895,10 @@ WML_HANDLER_FUNCTION(color_adjust, /*event_info*/, cfg)
 
 //Function handling old name
 ///@deprecated 1.9.2 'colour_adjust' instead of 'color_adjust'
+//deprecation message added 1.9.10
 WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 {
+	WRN_NG << "[colour_adjust] is deprecated, use [color_adjust]\n";
 	color_adjust(cfg);
 }
 
