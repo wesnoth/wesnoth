@@ -452,11 +452,11 @@ void menu_handler::status_table(int selected)
 		}
 
 		if(game_config::debug) {
-			str << data.gold << COLUMN_SEPARATOR;
+			str << utils::half_signed_value(data.gold) << COLUMN_SEPARATOR;
 		} else if(enemy && viewing_team.uses_fog()) {
 			str << ' ' << COLUMN_SEPARATOR;
 		} else {
-			str << data.gold << COLUMN_SEPARATOR;
+			str << utils::half_signed_value(data.gold) << COLUMN_SEPARATOR;
 		}
 		str << data.villages;
                 if(!(viewing_team.uses_fog() || viewing_team.uses_shroud())) {
@@ -464,7 +464,7 @@ void menu_handler::status_table(int selected)
                 }
 		str << COLUMN_SEPARATOR
 			<< data.units << COLUMN_SEPARATOR << data.upkeep << COLUMN_SEPARATOR
-			<< (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << data.net_income;
+			<< (data.net_income < 0 ? font::BAD_TEXT : font::NULL_MARKUP) << utils::signed_value(data.net_income);
 		total_villages += data.villages;
 		items.push_back(str.str());
 	}

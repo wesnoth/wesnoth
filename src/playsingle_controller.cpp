@@ -273,9 +273,9 @@ void playsingle_controller::report_victory(
 		report << '\n' << _("Carry over percentage: ") << end_level.carryover_percentage;
 	}
 	if(end_level.carryover_add) {
-		report << "\n<b>" << _("Bonus Gold: ") << player_gold <<"</b>";
+		report << "\n<b>" << _("Bonus Gold: ") << utils::half_signed_value(player_gold) <<"</b>";
 	} else {
-		report << "\n<b>" << _("Retained Gold: ") << player_gold << "</b>";
+		report << "\n<b>" << _("Retained Gold: ") << utils::half_signed_value(player_gold) << "</b>";
 	}
 
 	std::string goldmsg;
