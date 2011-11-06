@@ -40,6 +40,9 @@ Version 1.9.9+svn:
    * The side metatable provides also the side number
      (like wesnoth.sides[i].side, which would be i)
    * add function wesnoth.debug
+   * Added function wesnoth.unit_image_mods, which takes a unit object and
+     retrieves a image path function string depending on image mods applied via
+     EffectWML
    * Added: Support for clickables (button and repeating button) to
      wesnoth.set_dialog_callback (patch #2763)
    * Allowed function debug.traceback()
@@ -116,6 +119,7 @@ Version 1.9.9+svn:
      in capture events (FR bug #13567)
    * Introduce [capture_village]fire_event=yes|no (def no) whether to fire
      any capture events (was previously always yes)
+   * Made [move_unit] respect image modifications applied by EffectWML to single units
  * Miscellaneous and bug fixes:
    * Add --language/-L commandline option to set the language for that session
    * Fixed: Avoid copying of singular iterators in the whiteboard code

@@ -614,6 +614,7 @@ function wml_actions.move_unit(cfg)
 	local pattern = "[^%s,]+"
 	for current_unit_index, current_unit in ipairs(units) do
 		if not fire_event or current_unit.valid then
+			local effect_mods = wesnoth.unit_image_mods(current_unit)
 			local xs, ys = string.gmatch(to_x, pattern), string.gmatch(to_y, pattern)
 			local move_string_x = current_unit.x
 			local move_string_y = current_unit.y
@@ -643,6 +644,7 @@ function wml_actions.move_unit(cfg)
 				type = current_unit_cfg.type,
 				gender = current_unit_cfg.gender,
 				variation = current_unit_cfg.variation,
+				image_mods = effect_mods,
 				side = current_unit_cfg.side,
 				x = move_string_x,
 				y = move_string_y
