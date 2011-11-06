@@ -1003,24 +1003,15 @@ REPORT_GENERATOR(gold)
 		resources::whiteboard->get_spent_gold_for(viewing_side);
 	char const *end = naps;
 	if (viewing_side != resources::screen->playing_side()) {
-		if(fake_gold < 0) {
-			fake_gold = - fake_gold;
-			str << span_color(font::GRAY_COLOR);
-			str << utils::unicode_minus;
-		}
-		else {
-			str << span_color(font::GRAY_COLOR);
-		}
+		str << span_color(font::GRAY_COLOR);
 	}
 	else if (fake_gold < 0) {
-		fake_gold = - fake_gold;
 		str << span_color(font::BAD_COLOR);
-		str << utils::unicode_minus;
 	}
 	else {
 		end = "";
 	}
-	str << fake_gold << end;
+	str << utils::half_signed_value(fake_gold) << end;
 	return text_report(str.str());
 }
 
