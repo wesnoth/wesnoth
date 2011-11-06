@@ -782,8 +782,9 @@ protected:
 		log_step("objectives");
 		// If this team has no objectives, set its objectives
 		// to the level-global "objectives"
-		if (t_->objectives().empty())
-			t_->set_objectives(level_["objectives"], false);
+		const config::attribute_value objectives = level_["objectives"];
+		if (!objectives.blank() && t_->objectives().empty())
+			t_->set_objectives(objectives.t_str(), false);
 	}
 
 
