@@ -7,7 +7,12 @@ the command line git tool.
 
 import logging
 import os
-import simplejson as json
+try:
+    # Externally distributed, usually more up-to-date
+    import simplejson as json
+except:
+    # Distributed with python since 2.6
+    import json
 import subprocess
 import urllib2
 
