@@ -33,9 +33,13 @@ if __name__ == "__main__":
         options.wesnoth = "./wesnoth"
 
     # Parse WML.
-    class Section: pass
-    class Entry: pass
+    class Section:
+        def __init__(self, title):
+            self.title = title
+            self.lines = []
+
     chapters = []
+
     for arg in files:
         sections = []
         wml_parser = wmldata.Parser(options.wesnoth, None, None, False)
@@ -48,9 +52,7 @@ if __name__ == "__main__":
                 continue
             wml = wml[0]
         for about in wml.get_all(tag="about"):
-            section = Section()
-            section.title = about.get_text_val("title")
-            section.lines = []
+            section = Section(about.get_text_val("title"))
             for entry in about.get_all(tag="entry"):
                 name = entry.get_text_val("name")
                 comment = entry.get_text_val("comment", "")
@@ -88,7 +90,7 @@ developer to do it for you.
             beautified = path[slash2 + 1:slash1]
             beautified = beautified.replace("_", " ")
             beautified = beautified[0].upper() + beautified[1:]
-            output("== " + beautified + " ==\n")
+            output("== %s ==\n" % beautified)
         for section in sections:
             output("=== %s ===\n" % section.title)
             for name, comment, wikiuser, email in section.lines:
@@ -113,10 +115,9 @@ developer to do it for you.
                     if "(" in name:
                         name, nick = name.split("(", 1)
                         name = name.strip()
-                        name = "[mailto:" + email + " " + name + "]"
-                        name += " (" + nick
+                        name = "[mailto:%s %s] (%s" % (email, name, nick)
                     else:
-                        name = "[mailto:" + email + " " + name + "]"
+                        name = "[mailto:%s %s]" % (email, name)
                 output("* %s%s\n" % (name, comment))
 
     output("""[[Category:Generated]]""")
