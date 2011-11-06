@@ -920,6 +920,7 @@ static int impl_race_get(lua_State* L)
 	return_int_attrib("num_traits", race.num_traits());
 	return_tstring_attrib("plural_name", race.plural_name());
 	return_bool_attrib("ignore_global_traits", !race.uses_global_traits());
+	return_string_attrib("undead_variation", race.undead_variation());
 	return_cfgref_attrib("__cfg", race.get_cfg());
 
 	return 0;
