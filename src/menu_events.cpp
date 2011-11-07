@@ -1601,7 +1601,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 		unit chosen(type, 1, true, gender);
 		chosen.new_turn();
 
-		const map_location& loc = mousehandler.get_last_hex();
+		const map_location loc = mousehandler.get_last_hex();
 		units_.replace(loc, chosen);
 		unit_display::unit_recruited(loc);
 
