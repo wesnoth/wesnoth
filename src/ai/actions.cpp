@@ -680,7 +680,7 @@ void recall_result::do_execute()
 	} else {
 
 		unit &un = *rec;
-		recorder.add_recall(un.id(), recall_location_);
+		recorder.add_recall(un.id(), recall_location_, recall_from_);
 		place_recruit(un, recall_location_, recall_from_, true, true);
 		statistics::recall_unit(un);
 		my_team.spend_gold(my_team.recall_cost());
@@ -881,15 +881,14 @@ void recruit_result::do_execute()
 	// However, we're not sure if the transaction will be successful,
 	// so use a replay_undo object to cancel it if we don't get
 	// a confirmation for the transaction.
-	recorder.add_recruit(num_,recruit_location_);
+	recorder.add_recruit(num_,recruit_location_,recruit_from_);
 	replay_undo replay_guard(recorder);
 	const unit_type *u = unit_types.find(unit_name_);
 	const events::command_disabler disable_commands;
-	map_location recruit_from = map_location::null_location;
-	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_, recruit_from, u->id());
+	const std::string recruit_err = find_recruit_location(get_side(), recruit_location_, recruit_from_, u->id());
 	if(recruit_err.empty()) {
 		const unit new_unit(u, get_side(), true);
-		place_recruit(new_unit, recruit_location_, recruit_from, false, preferences::show_ai_moves());
+		place_recruit(new_unit, recruit_location_, recruit_from_, false, preferences::show_ai_moves());
 		statistics::recruit_unit(new_unit);
 		get_my_team().spend_gold(u->cost());
 		// Confirm the transaction - i.e. don't undo recruitment
@@ -904,7 +903,6 @@ void recruit_result::do_execute()
 	} else {
 		set_error(AI_ACTION_FAILURE);
 	}
-
 
 }
 

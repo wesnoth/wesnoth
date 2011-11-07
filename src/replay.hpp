@@ -45,8 +45,8 @@ public:
 	bool is_skipping() const;
 
 	void add_start();
-	void add_recruit(int unit_index, const map_location& loc);
-	void add_recall(const std::string& unit_id, const map_location& loc);
+	void add_recruit(int unit_index, const map_location& loc, const map_location& from);
+	void add_recall(const std::string& unit_id, const map_location& loc, const map_location& from);
 	void add_disband(const std::string& unit_id);
 	void add_countdown_update(int value,int team);
 	void add_movement(const std::vector<map_location>& steps);

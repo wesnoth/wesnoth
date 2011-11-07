@@ -356,6 +356,7 @@ struct undo_action {
 			starting_moves(sm),
 			original_village_owner(orig),
 			recall_loc(),
+			recall_from(),
 			type(NONE),
 			affected_unit(u),
 			countdown_time_bonus(timebonus),
@@ -363,12 +364,13 @@ struct undo_action {
 		{
 		}
 
-	undo_action(const unit& u, const map_location& loc,
+	undo_action(const unit& u, const map_location& loc, const map_location& from,
 		const ACTION_TYPE action_type=NONE) :
 			route(),
 			starting_moves(),
 			original_village_owner(),
 			recall_loc(loc),
+			recall_from(from),
 			type(action_type),
 			affected_unit(u),
 			countdown_time_bonus(1),
@@ -379,6 +381,7 @@ struct undo_action {
 	int starting_moves;
 	int original_village_owner;
 	map_location recall_loc;
+	map_location recall_from;
 	ACTION_TYPE type;
 	unit affected_unit;
 	int countdown_time_bonus;

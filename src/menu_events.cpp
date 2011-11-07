@@ -116,7 +116,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		// Remove the item from filter_textbox memory
 		filter_.delete_item(index);
 		//add dismissal to the undo stack
-		resources::undo_stack->push_back(undo_action(u, map_location(), undo_action::DISMISS));
+		resources::undo_stack->push_back(undo_action(u, map_location(), map_location(), undo_action::DISMISS));
 
 		//remove the unit from the recall list
 		std::vector<unit>& recall_list = (*resources::teams)[u.side() -1].recall_list();
@@ -803,7 +803,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 
 	if (!resources::whiteboard->save_recruit(name, side_num, loc)) {
 		//create a unit with traits
-		recorder.add_recruit(recruit_num, loc);
+		recorder.add_recruit(recruit_num, loc, recruited_from);
 		const unit new_unit(u_type, side_num, true);
 		place_recruit(new_unit, loc, recruited_from, false, true);
 		current_team.spend_gold(u_type->cost());
@@ -822,7 +822,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 			|| new_unit.type()->has_random_traits()) {
 			clear_undo_stack(side_num);
 		} else {
-			resources::undo_stack->push_back(undo_action(new_unit, loc, undo_action::RECRUIT));
+			resources::undo_stack->push_back(undo_action(new_unit, loc, recruited_from, undo_action::RECRUIT));
 		}
 
 		gui_->recalculate_minimap();
@@ -1034,7 +1034,7 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 	}
 
 	recall_list_team.erase(it);
-	recorder.add_recall(un.id(), recall_location);
+	recorder.add_recall(un.id(), recall_location, recall_from);
 	place_recruit(un, recall_location, recall_from, true, true);
 	statistics::recall_unit(un);
 	current_team.spend_gold(current_team.recall_cost());
@@ -1043,7 +1043,7 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 	if (shroud_cleared) {
 		clear_undo_stack(side_num);
 	} else {
-		resources::undo_stack->push_back(undo_action(un, recall_location, undo_action::RECALL));
+		resources::undo_stack->push_back(undo_action(un, recall_location, recall_from, undo_action::RECALL));
 	}
 
 	resources::redo_stack->clear();
@@ -1206,7 +1206,7 @@ void menu_handler::redo(int side_num)
 		} else {
 			// Redo recall
 
-			recorder.add_recall(action.affected_unit.id(), action.recall_loc);
+			recorder.add_recall(action.affected_unit.id(), action.recall_loc, action.recall_from);
 			map_location loc = action.recall_loc;
 			map_location from = map_location::null_location;
 			const events::command_disabler disable_commands;
@@ -1234,6 +1234,7 @@ void menu_handler::redo(int side_num)
 	} else if(action.is_recruit()) {
 		// Redo recruit action
 		map_location loc = action.recall_loc;
+		map_location from = action.recall_from;
 		const std::string name = action.affected_unit.type_id();
 
 		//search for the unit to be recruited in recruits
@@ -1252,9 +1253,8 @@ void menu_handler::redo(int side_num)
 			++recruit_num;
 		}
 		last_recruit_ = name;
-		recorder.add_recruit(recruit_num,loc);
+		recorder.add_recruit(recruit_num,loc,from);
 		const events::command_disabler disable_commands;
-		map_location from = map_location::null_location;
 		const std::string &msg = find_recruit_location(side_num, loc, from, action.affected_unit.type_id());
 		if(msg.empty()) {
 			const unit new_unit = action.affected_unit;

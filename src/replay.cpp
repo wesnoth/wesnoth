@@ -187,26 +187,28 @@ void replay::add_start()
 	cmd->add_child("start");
 }
 
-void replay::add_recruit(int value, const map_location& loc)
+void replay::add_recruit(int value, const map_location& loc, const map_location& from)
 {
 	config* const cmd = add_command();
 
 	config val;
 	val["value"] = value;
 	loc.write(val);
+	config& leader_position = val.add_child("from");
+	from.write(leader_position);
 
 	cmd->add_child("recruit",val);
 }
 
-void replay::add_recall(const std::string& unit_id, const map_location& loc)
+void replay::add_recall(const std::string& unit_id, const map_location& loc, const map_location& from)
 {
 	config* const cmd = add_command();
 
 	config val;
-
 	val["value"] = unit_id;
-
 	loc.write(val);
+	config& leader_position = val.add_child("from");
+	from.write(leader_position);
 
 	cmd->add_child("recall",val);
 }
@@ -890,8 +892,12 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			int val = child["value"];
 
 			map_location loc(child, resources::state_of_game);
+			map_location from(child.child_or_empty("from"), resources::state_of_game);
 
-			const std::set<std::string>& recruits = current_team.recruits();
+			unit_map::unit_iterator u = resources::units->find(from);
+
+			std::set<std::string> recruits = current_team.recruits();
+			recruits.insert((u->recruits()).begin(), (u->recruits()).end());
 
 			if(val < 0 || static_cast<size_t>(val) >= recruits.size()) {
 				std::stringstream errbuf;
@@ -912,7 +918,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			map_location from = map_location::null_location;
 			const std::string res = find_recruit_location(side_num, loc, from, u_type->id());
 			const unit new_unit(u_type, side_num, true);
 			if (res.empty()) {
