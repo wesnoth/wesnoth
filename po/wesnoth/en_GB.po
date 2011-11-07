@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2011-10-31 16:29-0500\n"
+"PO-Revision-Date: 2011-11-07 15:54-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -2116,10 +2116,9 @@ msgstr "Bonus objective:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#, fuzzy
 #| msgid "Test scenario"
 msgid "This is the last scenario."
-msgstr "Test scenario"
+msgstr "This is the last scenario."
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -3817,6 +3816,8 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"Deleting '$addon|' will permanently erase its download and upload counts on "
+"the add-ons server. Do you really wish to continue?"
 
 #: src/addon/manager.cpp:1361
 msgid "Network communication error."
@@ -4716,10 +4717,9 @@ msgstr ""
 #: src/menu_events.cpp:2332 src/menu_events.cpp:2335 src/menu_events.cpp:2337
 #: src/menu_events.cpp:2339 src/menu_events.cpp:2341 src/menu_events.cpp:2368
 #: src/menu_events.cpp:2370 src/menu_events.cpp:2372 src/menu_events.cpp:2386
-#, fuzzy
 #| msgid "<nick>"
 msgid "<nickname>"
-msgstr "<nick>"
+msgstr "<nickname>"
 
 #: src/menu_events.cpp:2334
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -4742,7 +4742,6 @@ msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Mute/Unmute all observers. (toggles)"
 
 #: src/menu_events.cpp:2353
-#, fuzzy
 #| msgid ""
 #| "Report abuse, rule violations, etc. to the server moderators. Make sure "
 #| "to mention relevant nicks, etc."
@@ -4751,7 +4750,7 @@ msgid ""
 "mention relevant nicknames, etc."
 msgstr ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
-"mention relevant nicks, etc."
+"mention relevant nicknames, etc."
 
 #: src/menu_events.cpp:2357
 msgid "<message>"
@@ -4770,10 +4769,9 @@ msgstr ""
 "running game you observe or play in."
 
 #: src/menu_events.cpp:2362
-#, fuzzy
 #| msgid "<nick> <message>"
 msgid "<nickname> <message>"
-msgstr "<nick> <message>"
+msgstr "<nickname> <message>"
 
 #: src/menu_events.cpp:2366
 msgid "<level> <domain>"
@@ -4784,22 +4782,19 @@ msgid "Change the log level of a log domain."
 msgstr "Change the log level of a log domain."
 
 #: src/menu_events.cpp:2368
-#, fuzzy
 #| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
-msgstr "Add a nick to your ignores list."
+msgstr "Add a nickname to your ignores list."
 
 #: src/menu_events.cpp:2370
-#, fuzzy
 #| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
-msgstr "Add a nick to your friends list."
+msgstr "Add a nickname to your friends list."
 
 #: src/menu_events.cpp:2372
-#, fuzzy
 #| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
-msgstr "Remove a nick from your ignores or friends list."
+msgstr "Remove a nickname from your ignores or friends list."
 
 #: src/menu_events.cpp:2374
 msgid "Show your ignores and friends list."
@@ -4814,38 +4809,33 @@ msgid "<password> <email (optional)>"
 msgstr "<password> <email (optional)>"
 
 #: src/menu_events.cpp:2379
-#, fuzzy
 #| msgid "Register your nick"
 msgid "Register your nickname"
-msgstr "Register your nick"
+msgstr "Register your nickname"
 
 #: src/menu_events.cpp:2381
-#, fuzzy
 #| msgid "Drop your nick."
 msgid "Drop your nickname."
-msgstr "Drop your nick."
+msgstr "Drop your nickname."
 
 #: src/menu_events.cpp:2383
-#, fuzzy
 #| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
-msgstr "Update details for your nick. For possible details see '/details'"
+msgstr "Update details for your nickname. For possible details see '/details'."
 
 #: src/menu_events.cpp:2384
 msgid "<detail> <value>"
 msgstr "<detail> <value>"
 
 #: src/menu_events.cpp:2386
-#, fuzzy
 #| msgid "Request information about a nick."
 msgid "Request information about a nickname."
-msgstr "Request information about a nick."
+msgstr "Request information about a nickname."
 
 #: src/menu_events.cpp:2388
-#, fuzzy
 #| msgid "Request a list of details you can set for your registered nick."
 msgid "Request a list of details you can set for your registered nickname."
-msgstr "Request a list of details you can set for your registered nick."
+msgstr "Request a list of details you can set for your registered nickname."
 
 #: src/menu_events.cpp:2390 src/menu_events.cpp:2393 src/menu_events.cpp:2395
 msgid "<room>"
@@ -4908,10 +4898,9 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<side> [on/off]]"
 
 #: src/menu_events.cpp:2543
-#, fuzzy
 #| msgid "<side> <nick>"
 msgid "<side> <nickname>"
-msgstr "<side> <nick>"
+msgstr "<side> <nickname>"
 
 #: src/menu_events.cpp:2543
 msgid "Assign control of a side to a different player or observer."
@@ -5330,7 +5319,6 @@ msgid "Connection timed out"
 msgstr "Connection timed out"
 
 #: src/multiplayer.cpp:239
-#, fuzzy
 #| msgid ""
 #| "The nick '$nick' is inactive. You cannot claim ownership of this nick "
 #| "until you activate your account via email or ask an administrator to do "
@@ -5340,8 +5328,9 @@ msgid ""
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
-"The nick '$nick' is inactive. You cannot claim ownership of this nick until "
-"you activate your account via email or ask an administrator to do it for you."
+"The nickname '$nick' is inactive. You cannot claim ownership of this "
+"nickname until you activate your account via email or ask an administrator "
+"to do it for you."
 
 #: src/multiplayer.cpp:248
 msgid "Do you want to continue?"
@@ -5360,13 +5349,11 @@ msgid "You must login first."
 msgstr "You must login first."
 
 #: src/multiplayer.cpp:337
-#, fuzzy
 #| msgid "The nick '$nick' is already taken."
 msgid "The nickname '$nick' is already taken."
-msgstr "The nick '$nick' is already taken."
+msgstr "The nickname '$nick' is already taken."
 
 #: src/multiplayer.cpp:339
-#, fuzzy
 #| msgid ""
 #| "The nick '$nick' contains invalid characters. Only alpha-numeric "
 #| "characters, underscores and hyphens are allowed."
@@ -5374,41 +5361,35 @@ msgid ""
 "The nickname '$nick' contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
 msgstr ""
-"The nick '$nick' contains invalid characters. Only alpha-numeric characters, "
-"underscores and hyphens are allowed."
+"The nickname '$nick' contains invalid characters. Only alpha-numeric "
+"characters, underscores and hyphens are allowed."
 
 #: src/multiplayer.cpp:343
-#, fuzzy
 #| msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgid "The nickname '$nick' is too long. Nicks must be 20 characters or less."
-msgstr "The nick '$nick' is too long. Nicks must be 20 characters or less."
+msgstr "The nickname '$nick' is too long. Nicks must be 20 characters or less."
 
 #: src/multiplayer.cpp:346
-#, fuzzy
 #| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname '$nick' is reserved and cannot be used by players."
-msgstr "The nick '$nick' is reserved and cannot be used by players."
+msgstr "The nickname '$nick' is reserved and cannot be used by players."
 
 #: src/multiplayer.cpp:348
-#, fuzzy
 #| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname '$nick' is not registered on this server."
-msgstr "The nick '$nick' is not registered on this server."
+msgstr "The nickname '$nick' is not registered on this server."
 
 #: src/multiplayer.cpp:349
-#, fuzzy
 #| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
-msgstr " This server disallows unregistered nicks."
+msgstr " This server disallows unregistered nicknames."
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:353
-#, fuzzy
 #| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname '$nick' is registered on this server."
-msgstr "The nick '$nick' is registered on this server."
+msgstr "The nickname '$nick' is registered on this server."
 
 #: src/multiplayer.cpp:354
-#, fuzzy
 #| msgid ""
 #| "WARNING: There is already a client using this nick, logging in will cause "
 #| "that client to be kicked!"
@@ -5416,8 +5397,8 @@ msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
-"WARNING: There is already a client using this nick, logging in will cause "
-"that client to be kicked!"
+"WARNING: There is already a client using this nickname, logging in will "
+"cause that client to be kicked!"
 
 #: src/multiplayer.cpp:357
 msgid ""
@@ -5431,7 +5412,7 @@ msgstr "The password you provided was incorrect."
 
 #: src/multiplayer.cpp:362
 msgid "You have made too many login attempts."
-msgstr ""
+msgstr "You have made too many login attempts."
 
 #: src/multiplayer_connect.cpp:100 src/multiplayer_connect.cpp:449
 #: src/multiplayer_connect.cpp:597
