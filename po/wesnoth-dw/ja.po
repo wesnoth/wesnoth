@@ -2,14 +2,15 @@
 # IWAI Masaharu <iwaim.sub@gmail.com>, 2010-2011.
 # clearpotion <clearpotion+fantasy@gmail.com>, 2010.
 # mishan <mishanhideaki88@gmail.com>, 2011.
+# yma <yma9yma@gmail.com>, 2011.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Wesnoth - Dead Water\n"
+"Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2011-11-05 07:40+0900\n"
-"Last-Translator: IWAI Masaharu <iwaim.sub@gmail.com>\n"
+"PO-Revision-Date: 2011-11-07 08:53+0900\n"
+"Last-Translator: yma <yma9yma@gmail.com>\n"
 "Language-Team: ja <wesnoth-ja-translate@lists.sourceforge.jp>\n"
 "Language: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -62,10 +63,12 @@ msgstr "勇士"
 msgid "(Difficult)"
 msgstr "（難しい）"
 
+# ユニット名に「精鋭トライトン」Lv3(Merman Triton)があるので
+# トリトン→トライトンに変更した。
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:19
 msgid "Triton"
-msgstr "トリトン"
+msgstr "トライトン"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:22
@@ -286,6 +289,7 @@ msgstr ""
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:363
+#, fuzzy
 msgid ""
 "Kai, please lead us against them yourself, it will hearten the folk. And — "
 "if you will permit — you reach the age now where a kai must learn battle "
@@ -396,8 +400,8 @@ msgstr ""
 "たらしいとのことでした。彼は Wesnoth 王国の国境に攻撃を仕掛け、人間族からアン"
 "デッド軍団を作り上げていたのです。また、オーク族を攻撃するために、さらにはエ"
 "ルフ族、様々な種族のアンデッド兵士を得るために降霊術師たちを派遣していまし"
-"た。彼はマーフォークを奴隷にすることも渇望しているらしいのです。Krellis の偵"
-"察隊は、暗黒の軍団が北へ向かっていることを報告しました。"
+"た。彼はマーマン族を奴隷にすることも渇望しているらしいのです。Krellis の偵察"
+"隊は、暗黒の軍団が北へ向かっていることを報告しました。"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:43
@@ -491,6 +495,7 @@ msgstr ""
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:303
+#, fuzzy
 msgid ""
 "I am afraid we cannot. We need help. My old instructor, Tyegëa, teaches on "
 "an island to the north. She and her priestesses are powerful. With their "
@@ -514,6 +519,7 @@ msgstr "わかりません。しかし、あなたならできます。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:318
+#, fuzzy
 msgid ""
 "Me? I’ve never even met Tyegëa. How can I convince her to help us if you "
 "cannot?"
@@ -537,6 +543,7 @@ msgstr "わかりました。我々はどのようにしてそこに行けばい
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:333
+#, fuzzy
 msgid ""
 "We follow the coast north, then go west to Bilheld Island. Tyegëa lives on a "
 "small island to the west of Bilheld, which is over ocean to the west-"
@@ -812,6 +819,7 @@ msgstr ""
 # %
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:844
+#, fuzzy
 msgid "Onward to Tyegëa’s island, then."
 msgstr "では、Tyegëa の島へ向かえ。"
 
@@ -837,8 +845,8 @@ msgid ""
 msgstr ""
 "長い旅をはじめようとしたそのとき、戦の匂いをかぎつけてきたオオカミに遭遇しま"
 "した。多くのオオカミの背にはゴブリンが乗っていました。Kai Laudiss による先の"
-"戦いで痛手を受けた Tirigaz のオークはマーフォークに手を出さないことにしたかも"
-"知れませんが、ゴブリンたちは自身の種族にありがちな山賊として暮らしていたので"
+"戦いで痛手を受けた Tirigaz のオークはマーマン族に手を出さないことにしたかも知"
+"れませんが、ゴブリンたちは自身の種族にありがちな山賊として暮らしていたので"
 "す。"
 
 #. [side]: id=Gashnok, type=Goblin Knight, type=Goblin Knight, type=Direwolf Rider, type=Direwolf Rider
@@ -954,7 +962,7 @@ msgid ""
 "Now, they were farther away from home than most merfolk ever went. Only "
 "Cylanna and a few soldiers had been farther."
 msgstr ""
-"今、一行はマーフォークの歴史の中でも最も住み処より離れたところまできていまし"
+"今、一行はマーマン族の歴史の中でも最も住み処より離れたところまできていまし"
 "た。今までは、こんなに遠くにまで辿り着いたのは Cylanna と数人の兵士のみだった"
 "のです。"
 
@@ -1012,6 +1020,7 @@ msgstr "誰だ？何が起こったんだ？"
 
 #. [message]: speaker=Teeloa
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:372
+#, fuzzy
 msgid ""
 "My name is Teelöa. I have been a slave to these saurians for almost two "
 "years. I saw you coming up the coast in strength, so I fled. They follow in "
@@ -1035,14 +1044,15 @@ msgstr "マーマンめ！貴様は俺たちの所有物だ。命が惜しくば
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:388
+#, fuzzy
 msgid ""
 "If you mean this merman, Teelöa, he is no longer your property. No person "
 "should be the property of another. Release all your slaves, or the wrath of "
 "the merfolk will fall upon you!"
 msgstr ""
 "この Teelöa はもはやお前の所有物ではない。他人を所有物にする権利なんぞ、誰も"
-"持っていないのだ。すべての奴隷を解放しろ！さもなくば、マーフォークの怒りがお"
-"前に炸裂するぞ！"
+"持っていないのだ。すべての奴隷を解放しろ！さもなくば、マーマン族の怒りがお前"
+"に炸裂するぞ！"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:393
@@ -1065,7 +1075,7 @@ msgid ""
 "from fleeing their enemies, cheered his ultimatum and made ready to fight "
 "with a will."
 msgstr ""
-"先の戦いで敵から逃げたことでプライドが傷ついたマーフォークの難民たちが Kai "
+"先の戦いで敵から逃げたことでプライドが傷ついたマーマン族の難民たちが Kai "
 "Krellis のこの宣言を支持し、この戦いのために心の準備をしたことを Kai Krellis "
 "は感じとりました。"
 
@@ -1139,8 +1149,8 @@ msgid ""
 "Hear this! Slaves, the merfolk have sworn war against your tormentors. If "
 "you would be free, arise and seize your liberty!"
 msgstr ""
-"奴隷たちよ！我々マーフォークは、お前たちを捕らえる者どもに宣戦布告した。自由"
-"を求めるならば決起し自由を勝ち取れ！"
+"奴隷たちよ！我々マーマン族は、お前たちを捕らえる者どもに宣戦布告した。自由を"
+"求めるならば決起し自由を勝ち取れ！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:521
@@ -1271,12 +1281,13 @@ msgstr "あなたは誰だ？何故檻の中にいる？"
 
 #. [message]: speaker=Siddry
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:740
+#, fuzzy
 msgid ""
 "My name is Siddry. These cursed saurians nabbed me a week ago — wanted me to "
 "turn overseer to their other slaves. I wouldn’t do it, so they caged me with "
 "them. They tried to take my bow too, but they had some trouble with that."
 msgstr ""
-"Siddry だ。1週間前に忌々しいトカゲどもが俺を捕らえやがった。— 私を他の奴隷の"
+"Siddry だ。1週間前に忌々しいトカゲどもが俺を捕らえやがった。ー私を他の奴隷の"
 "監視者にしたかったようだ。だが、俺が拒否すると奴らは俺を檻に入れた。奴らは俺"
 "の弓も取り上げようとしたが、何か問題が発生してそれはできなかったようだ。"
 
@@ -1337,8 +1348,8 @@ msgid ""
 msgstr ""
 "海岸からずっと内陸に離れた所に Tirigaz の港湾都市はありました。そこはKai "
 "Laudiss が以前徹底的にオークを打ちすえていたところです。Bilheld はその真西に"
-"ありました。マーフォークは不安だったため、夜が訪れると放棄されたオークの野営"
-"地に退避しました。"
+"ありました。マーマン族は不安だったため、夜が訪れると放棄されたオークの野営地"
+"に退避しました。"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:91
@@ -1375,7 +1386,6 @@ msgstr "アンデッド"
 msgid "Found. Them."
 msgstr "見つけた。奴らだ。"
 
-# % 途中まで
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:365
 msgid ""
@@ -1465,12 +1475,11 @@ msgstr ""
 msgid "I wonder how he gets customers with manners like that."
 msgstr "近頃ではそんなビジネスマナーで、お取引先が得られるものなのかしらね。"
 
-# %c fuzzy
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:415
 msgid ""
 "One hour will work for us. It will not take all of us to defeat the undead. "
-msgstr "猶予は一時間だ。アンデッドを倒すのには無理だろうが。"
+msgstr "猶予は一時間だ。その間にアンデッドを倒すのは難しいだろうが。"
 
 # %
 #. [message]: speaker=Kai Krellis
@@ -1531,8 +1540,8 @@ msgid ""
 "This orc leader has not learned that threatening merfolk is a bad idea. We "
 "shall defeat him before we go."
 msgstr ""
-"このオークの指導者は、マーフォークは脅迫できるという悪い印象を与えてしまっ"
-"た。我々はこの地を離れる前に奴を倒してしまうべきだ。"
+"このオークの指導者は、マーマン族は脅迫できるという悪い印象を与えてしまった。"
+"我々はこの地を離れる前に奴を倒してしまうべきだ。"
 
 # %
 #. [message]: speaker=second_unit
@@ -1554,7 +1563,6 @@ msgstr "マーマンなど嫌いだ！"
 msgid "Uncharted Islands"
 msgstr "地図に載っていない島々"
 
-# fuzzy
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:34
 msgid ""
@@ -1564,10 +1572,9 @@ msgid ""
 "needed a break from travel; Cylanna only vaguely remembered them, but "
 "thought they might be safe."
 msgstr ""
-"いまやマーフォークは浅瀬よりもはるかに危険な大海原を進まなければならなかっ"
-"た。数日後、マーフォークは島を見つけた。難民の中には老人と子供もおり、休憩を"
-"必要としていた。Cylanna は漠然と彼らのことを覚えていたが、安全だと思ってい"
-"た。"
+"いまやマーマン族は浅瀬よりもはるかに危険な大海原を進まなければならなかった。"
+"数日後、マーマン族は島を見つけた。難民の中には老人と子供もおり、休憩を必要と"
+"していた。Cylanna は漠然と彼らのことを覚えていたが、安全だと思っていた。"
 
 #. [side]: id=Growloff, type=Ranger
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:83
@@ -1731,6 +1738,7 @@ msgstr "お前たちマーマン族はここで何をしているのだ？"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:161
+#, fuzzy
 msgid "We have business with Tyegëa on the other side of the island."
 msgstr "我々は反対側の島にいるTyegëa に用事があるのです。"
 
@@ -1785,11 +1793,13 @@ msgstr "お前も魚人と共に死ぬがよい！"
 
 #. [scenario]: id=08_Talking_to_Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:7
+#, fuzzy
 msgid "Talking to Tyegëa"
 msgstr "Tyegëa に話しかける"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:15
+#, fuzzy
 msgid ""
 "It had been more of an adventure than the Kai Krellis had planned, but they "
 "were finally at their destination. The small island where Tyegëa and her "
@@ -1817,6 +1827,7 @@ msgstr "聖水を授かるユニットを選んで下さい"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:149
+#, fuzzy
 msgid "Krellis...choose your words carefully. Tyegëa is a bit unpredictable."
 msgstr "Krellis …言葉に気をつけなさい。Tyegëa は一筋縄にはいかないのよ。"
 
@@ -1826,8 +1837,8 @@ msgid ""
 "Welcome, merfolk! It has been a long time since outsiders have visited. And "
 "Cylanna! It is pleasant to see you."
 msgstr ""
-"ようこそ、マーフォークたち！ お客が来るとは久しぶりですわ。それと、Cylanna！ "
-"あなたに会えて嬉しいわ。"
+"ようこそ、マーマン族たち！ お客が来るとは久しぶりですわ。それと、Cylanna！ あ"
+"なたに会えて嬉しいわ。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:157
@@ -1908,6 +1919,7 @@ msgstr "あなたは私の祖父母をご存知で？"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:201
+#, fuzzy
 msgid "Actually, Tyegëa is your grandmother."
 msgstr "実は、Tyegëa はあなた様の祖母なのです。"
 
@@ -1946,6 +1958,7 @@ msgstr ""
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:221
+#, fuzzy
 msgid ""
 "That remains to be seen. I find it disturbing that a Kai — and my descendant "
 "— would run here begging for help. Before I agree to save you, you have to "
@@ -1970,8 +1983,8 @@ msgid ""
 "good of the merfolk. Listen."
 msgstr ""
 "ふん！ ドレークは見かけだおしです。槍を持った兵士で彼らを抑えることはできま"
-"す。私が言いたいのはそういう事ではありません。マーフォークとしての責任を果た"
-"してほしいのです。よく聞きなさい。"
+"す。私が言いたいのはそういう事ではありません。マーマン族としての責任を果たし"
+"てほしいのです。よく聞きなさい。"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:233
@@ -1993,7 +2006,6 @@ msgstr ""
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:237
-#, fuzzy
 msgid ""
 "I have long desired to see the sword returned to the merfolk to whom it "
 "should belong. If you retrieve it, you would prove yourself to be worthy of "
@@ -2002,12 +2014,12 @@ msgid ""
 "ruined castle, lives a mage named Caladon. He has lusted after the sword for "
 "years, so he will know where to find the lich who keeps it."
 msgstr ""
-"わたしはその剣が本来持つべきマーフォークの元に戻ってくることを望んでいる。も"
-"し取り戻せたら、私が助ける価値があるということを証明したことになるでしょう。"
-"その剣がどこにあるのかを正確には知りませんが、その剣の場所を知る者なら知って"
-"います。廃城の近くで、荒野の沼地の南にCaladon という魔術師が住んでいます。彼"
-"はその剣をずっと欲しがっているから、剣を持っているリッチがどこにいるか知って"
-"いるでしょう。"
+"わたしはその剣が本来持つべきマーマン族の元に戻ってくることを望んでいる。もし"
+"取り戻せたら、私が助ける価値があるということを証明したことになるでしょう。そ"
+"の剣がどこにあるのかを正確には知りませんが、その剣の場所を知る者なら知ってい"
+"ます。廃城の近くで、荒野の沼地の南にCaladon という魔術師が住んでいます。彼は"
+"その剣をずっと欲しがっているから、剣を持っているリッチがどこにいるか知ってい"
+"るでしょう。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:241
@@ -2070,6 +2082,7 @@ msgstr "魔術師"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:20
+#, fuzzy
 msgid ""
 "The party traveled back to the mainland and followed the shore further "
 "north. Kai Krellis had much to think about. First, what Tyegëa had revealed "
@@ -2089,6 +2102,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:24
+#, fuzzy
 msgid ""
 "After several days, the smell of the swamp was just becoming noticeable when "
 "they found a small ruined castle in the right place to be the one Tyegëa had "
@@ -2261,6 +2275,7 @@ msgstr "Cylanna！ あなたが必要なのに！"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:603
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1140
+#, fuzzy
 msgid "Tyegëa will never forgive me. We are lost."
 msgstr "Tyegëa は我々を許さないだろう。我々は負けたのだ。"
 
@@ -2504,7 +2519,6 @@ msgstr ""
 
 #. [message]: speaker=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:553
-#, fuzzy
 msgid "I’ll join you right now! That monster is just unnatural."
 msgstr "私も共に戦うぞ！ あいつは残酷だ。"
 
@@ -2645,6 +2659,7 @@ msgstr "援軍"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:12
+#, fuzzy
 msgid ""
 "Kai Krellis and his people no longer feared the open ocean, and they made "
 "straight for Tyegëa’s island to show her the flaming sword."
@@ -2701,6 +2716,7 @@ msgstr "復讐"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:12
+#, fuzzy
 msgid ""
 "The mission had been more difficult than Kai Krellis would have believed "
 "when he started. Finally though, the end was in sight. He had seen how "
@@ -2725,8 +2741,8 @@ msgid ""
 "invaders."
 msgstr ""
 "しかし、彼らは旅で疲労していましたし、 Jotha に近づくにつれてさらに疲弊してき"
-"たのです。マーフォークたちは夜になって港の入り口に到着しました。そこで彼らは"
-"侵入者たちの情報を集めるため、岸に沿って南へ向けて進みました。"
+"たのです。マーマン族たちは夜になって港の入り口に到着しました。そこで彼らは侵"
+"入者たちの情報を集めるため、岸に沿って南へ向けて進みました。"
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:532
@@ -2781,7 +2797,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:585
 msgid "At dawn, the mermen got a good look at their opponents."
-msgstr "夜明けにマーフォークは敵と会いまみえました。"
+msgstr "夜明けにマーマン族は敵と会いまみえました。"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:591
@@ -2861,6 +2877,7 @@ msgstr "Cylanna ！ 居なくなっては困る。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:866
+#, fuzzy
 msgid "Tyegëa! No!"
 msgstr "Tyegëa ！ ダメだ！"
 
@@ -2917,10 +2934,10 @@ msgstr ""
 "Mal-Ravanal の子分をけちらしたあと、 Kai Krellis は次の攻撃に備えました。しか"
 "し、攻撃はありませんでした。 Krellis は偵察隊を南に送り、何が起こったのかを調"
 "べさせました。偵察隊が持って帰った知らせは良いものでした。 Mal-Ravanal は死ん"
-"だのです！ Wesnoth の戦士たちが Mal-Ravanal を倒していたときに、マーフォーク"
-"は Jotha でアンデッドを打ち破ったのでした。邪悪な魔術師がいないと知ると、マー"
-"マンたちは緊張を解き、熱心に再建に取り組みました。 Jotha の町はすぐに復興しま"
-"した。"
+"だのです！ Wesnoth の戦士たちが Mal-Ravanal を倒していたときに、マーマン族は "
+"Jotha でアンデッドを打ち破ったのでした。邪悪な魔術師がいないと知ると、マーマ"
+"ンたちは緊張を解き、熱心に再建に取り組みました。 Jotha の町はすぐに復興しまし"
+"た。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:43
@@ -2932,13 +2949,14 @@ msgid ""
 "shallows. Many of those children were named after Kai Krellis, Gwabbo, "
 "Cylanna, and the other heroes."
 msgstr ""
-"もちろん、すべてが終わったわけではありませんでした。多くのよきマーフォークが"
-"最初の攻撃と旅の途中に星となったのです。司祭たちは遺族を慰めました。数ヶ月"
-"後、浅瀬には子供たちの笑い声が響きわたっていました。多くの子供たちは Kai "
-"Krellis や Gwabbo 、 Cylanna 、その他の英雄たちにちなんで名付けられました。"
+"もちろん、すべてが終わったわけではありませんでした。多くのよきマーマン族が最"
+"初の攻撃と旅の途中に星となったのです。司祭たちは遺族を慰めました。数ヶ月後、"
+"浅瀬には子供たちの笑い声が響きわたっていました。多くの子供たちは Kai Krellis "
+"や Gwabbo 、 Cylanna 、その他の英雄たちにちなんで名付けられました。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:54
+#, fuzzy
 msgid ""
 "Tyegëa returned to her home, but continued to keep in touch with her "
 "grandson. Most of her priestesses went with her, but a few of them stayed in "
@@ -2991,6 +3009,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:118
+#, fuzzy
 msgid ""
 "Teelöa returned to his home where he had been captured by the saurians. He "
 "was delighted to find that many of his family members had also returned. He "
@@ -3133,6 +3152,7 @@ msgstr "戦う王"
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
+#, fuzzy
 msgid ""
 "A king who is skilled at combat commands great respect — especially among "
 "soldiers. His strength allows him to wield powerful weapons and move "
@@ -3183,7 +3203,7 @@ msgstr ""
 
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:72
 msgid "Merman Forces"
-msgstr ""
+msgstr "マーマン軍"
 
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:76
 msgid "Kai Krellis"
@@ -3251,7 +3271,7 @@ msgstr "コウモリに持たせるべきだろう。より役に立ってくれ
 #. [option]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:219
 msgid "Someone take that off of him before he hurts himself."
-msgstr ""
+msgstr "彼が自分自身を傷つける前に誰か止めてくれ。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/utils/items.cfg:233
@@ -3315,7 +3335,6 @@ msgstr "スタン"
 
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:10
-#, fuzzy
 msgid ""
 "This attack hits so hard that the defender is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the defender’s next turn."
