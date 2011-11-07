@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2011-09-22 17:15+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -676,9 +676,16 @@ msgstr "Morogor"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:40
+#, fuzzy
+#| msgid ""
+#| "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
+#| "ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> "
+#| "and east of the <ref>dst=old_continent text='Old Continent'</ref>.\n"
+#| "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
+#| "The central island of the archipelago is also called ‘Morogor’."
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
-"ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> and "
+"Ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> and "
 "east of the <ref>dst=old_continent text='Old Continent'</ref>.\n"
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
@@ -698,8 +705,12 @@ msgstr "Pulau Hijau"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
+#, fuzzy
+#| msgid ""
+#| "A bigger island lying in the <ref>dst='great_ocean' text='great ocean'</"
+#| "ref>."
 msgid ""
-"A bigger island lying in the <ref>dst='great_ocean' text='great ocean'</ref>."
+"A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
 "Sebuah pulau yang lebih besar terletak di <ref>dst='great_ocean' "
 "text='lautan luas'</ref>."
@@ -711,9 +722,13 @@ msgstr "Benua Tua"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
+#, fuzzy
+#| msgid ""
+#| "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
+#| "<ref>dst='Great Ocean' text='Great Ocean'</ref>."
 msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
-"<ref>dst='Great Ocean' text='Great Ocean'</ref>."
+"<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
 "Terletak di sebelah barat dari <ref>dst='morogor' text='Morogor'</ref> "
 "melewati <ref>dst='Great Ocean' text='Lautan Luas'</ref>."
@@ -3649,14 +3664,24 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Change the controller for side (write here the number of the side) to "
+#| "username (write here the nick of the player or observer). You can check "
+#| "what side belongs to which player in the <bold>text='Scenario Settings'</"
+#| "bold> dialog (Press the <bold>text='More'</bold> button in the "
+#| "<bold>text='Status Table'</bold> (alt+s by default) to get there.). The "
+#| "host can change control of any side.\n"
+#| "\n"
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
-"username (write here the nick of the player or observer). You can check what "
-"side belongs to which player in the <bold>text='Scenario Settings'</bold> "
-"dialog (Press the <bold>text='More'</bold> button in the <bold>text='Status "
-"Table'</bold> (alt+s by default) to get there.). The host can change control "
-"of any side.\n"
+"username (write here the nickname of the player or observer). You can check "
+"what side belongs to which player in the <bold>text='Scenario Settings'</"
+"bold> dialog (Press the <bold>text='More'</bold> button in the "
+"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
+"can change control of any side.\n"
 "\n"
 msgstr ""
 "\n"
@@ -4900,22 +4925,22 @@ msgid "female^aged"
 msgstr "umur"
 
 #. [race]: id=bats
-#: data/core/units.cfg:43
+#: data/core/units.cfg:42
 msgid "race^Bat"
 msgstr "Kelelawar"
 
 #. [race]: id=bats
-#: data/core/units.cfg:44
+#: data/core/units.cfg:43
 msgid "race+female^Bat"
 msgstr "Kelelawar"
 
 #. [race]: id=bats
-#: data/core/units.cfg:45
+#: data/core/units.cfg:44
 msgid "race^Bats"
 msgstr "Kelelawar-kelelawar"
 
 #. [race]: id=bats
-#: data/core/units.cfg:46
+#: data/core/units.cfg:45
 msgid ""
 "Bats come in many shapes and sizes, and most are fairly harmless, feeding on "
 "insects and other small animals. The larger and more vicious breeds are "
@@ -5093,22 +5118,22 @@ msgstr ""
 "Benua Besar. "
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:89
+#: data/core/units.cfg:90
 msgid "race^Dwarf"
 msgstr "Dwarf"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:90
+#: data/core/units.cfg:91
 msgid "race+female^Dwarf"
 msgstr "Dwarf wanita"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:91
+#: data/core/units.cfg:92
 msgid "race^Dwarves"
 msgstr "Bangsa Dwarf"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:96
+#: data/core/units.cfg:97
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5175,22 +5200,22 @@ msgstr ""
 "di dalam gunung-gunung dan tebing daerah mereka."
 
 #. [race]: id=elf
-#: data/core/units.cfg:108
+#: data/core/units.cfg:110
 msgid "race^Elf"
 msgstr "Elf"
 
 #. [race]: id=elf
-#: data/core/units.cfg:109
+#: data/core/units.cfg:111
 msgid "race+female^Elf"
 msgstr "Elf"
 
 #. [race]: id=elf
-#: data/core/units.cfg:110
+#: data/core/units.cfg:112
 msgid "race^Elves"
 msgstr "Bangsa Elf"
 
 #. [race]: id=elf
-#: data/core/units.cfg:120
+#: data/core/units.cfg:122
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5271,22 +5296,22 @@ msgstr ""
 "seribu tahun)."
 
 #. [race]: id=goblin
-#: data/core/units.cfg:130
+#: data/core/units.cfg:132
 msgid "race^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:131
+#: data/core/units.cfg:133
 msgid "race+female^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:132
+#: data/core/units.cfg:134
 msgid "race^Goblins"
 msgstr "Bangsa Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:135
+#: data/core/units.cfg:137
 msgid ""
 "Goblins are, despite their appearance, born as siblings to the orcs and "
 "members of the same race. While other races usually bear children singly or "
@@ -5329,37 +5354,37 @@ msgstr ""
 "bukti kehebatan mereka. "
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:147
+#: data/core/units.cfg:150
 msgid "race^Gryphon"
 msgstr "Grifon"
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:148
+#: data/core/units.cfg:151
 msgid "race+female^Gryphon"
 msgstr "Grifon"
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:149
+#: data/core/units.cfg:152
 msgid "race^Gryphons"
 msgstr "Bangsa Grifon"
 
 #. [race]: id=human
-#: data/core/units.cfg:164
+#: data/core/units.cfg:168
 msgid "race^Human"
 msgstr "Manusia"
 
 #. [race]: id=human
-#: data/core/units.cfg:165
+#: data/core/units.cfg:169
 msgid "race+female^Human"
 msgstr "Manusia"
 
 #. [race]: id=human
-#: data/core/units.cfg:166
+#: data/core/units.cfg:170
 msgid "race^Humans"
 msgstr "Bangsa Manusia"
 
 #. [race]: id=human
-#: data/core/units.cfg:173
+#: data/core/units.cfg:177
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5441,32 +5466,32 @@ msgstr ""
 "sama lain."
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:181
+#: data/core/units.cfg:185
 msgid "race^Saurian"
 msgstr "Kadal"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:182
+#: data/core/units.cfg:186
 msgid "race+female^Saurian"
 msgstr "Kadal"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:183
+#: data/core/units.cfg:187
 msgid "race^Saurians"
 msgstr "Bangsa Kadal"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:192
+#: data/core/units.cfg:197
 msgid "race^Mechanical"
 msgstr "Mesin"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:193
+#: data/core/units.cfg:198
 msgid "race+plural^Mechanical"
 msgstr "Mesin"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:194
+#: data/core/units.cfg:199
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5480,22 +5505,22 @@ msgstr ""
 "pesona magis."
 
 #. [race]: id=merman
-#: data/core/units.cfg:203
+#: data/core/units.cfg:208
 msgid "race^Merman"
 msgstr "Duyung Lelaki"
 
 #. [race]: id=merman
-#: data/core/units.cfg:204
+#: data/core/units.cfg:209
 msgid "race^Mermaid"
 msgstr "Putri Duyung"
 
 #. [race]: id=merman
-#: data/core/units.cfg:205
+#: data/core/units.cfg:210
 msgid "race^Mermen"
 msgstr "Bangsa Duyung"
 
 #. [race]: id=merman
-#: data/core/units.cfg:207
+#: data/core/units.cfg:212
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5520,22 +5545,22 @@ msgstr ""
 "atau berhutan."
 
 #. [race]: id=monster
-#: data/core/units.cfg:214
+#: data/core/units.cfg:220
 msgid "race^Monster"
 msgstr "Monster"
 
 #. [race]: id=monster
-#: data/core/units.cfg:215
+#: data/core/units.cfg:221
 msgid "race+female^Monster"
 msgstr "Monster Wanita"
 
 #. [race]: id=monster
-#: data/core/units.cfg:216
+#: data/core/units.cfg:222
 msgid "race^Monsters"
 msgstr "Bangsa Monster"
 
 #. [race]: id=monster
-#: data/core/units.cfg:217
+#: data/core/units.cfg:223
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5547,22 +5572,22 @@ msgstr ""
 "mimpi buruk dari para penghuninya, juga."
 
 #. [race]: id=naga
-#: data/core/units.cfg:224
+#: data/core/units.cfg:230
 msgid "race^Naga"
 msgstr "Kobra Lelaki"
 
 #. [race]: id=naga
-#: data/core/units.cfg:225
+#: data/core/units.cfg:231
 msgid "race^Nagini"
 msgstr "Nagini"
 
 #. [race]: id=naga
-#: data/core/units.cfg:226
+#: data/core/units.cfg:232
 msgid "race^Nagas"
 msgstr "Bangsa Kobra"
 
 #. [race]: id=naga
-#: data/core/units.cfg:227
+#: data/core/units.cfg:233
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -5596,22 +5621,22 @@ msgstr ""
 "menyukai rawa-rawa dan sungai-sungai sebanyak perairan terbuka."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:234
+#: data/core/units.cfg:241
 msgid "race^Ogre"
 msgstr "Raksasa"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:235
+#: data/core/units.cfg:242
 msgid "race+female^Ogre"
 msgstr "Raksasa"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:236
+#: data/core/units.cfg:243
 msgid "race^Ogres"
 msgstr "Bangsa Raksasa"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:237
+#: data/core/units.cfg:244
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5646,22 +5671,22 @@ msgstr ""
 "penjinakan, atau hanya saling menguntungkan tidak diketahui."
 
 #. [race]: id=orc
-#: data/core/units.cfg:245
+#: data/core/units.cfg:252
 msgid "race^Orc"
 msgstr "Orc"
 
 #. [race]: id=orc
-#: data/core/units.cfg:246
+#: data/core/units.cfg:253
 msgid "race+female^Orc"
 msgstr "Orc wanita"
 
 #. [race]: id=orc
-#: data/core/units.cfg:247
+#: data/core/units.cfg:254
 msgid "race^Orcs"
 msgstr "Bangsa Orc"
 
 #. [race]: id=orc
-#: data/core/units.cfg:257
+#: data/core/units.cfg:264
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5782,22 +5807,22 @@ msgstr ""
 "dalam kemampuan lain, seperti memanah atau pembunuhan."
 
 #. [race]: id=troll
-#: data/core/units.cfg:264
+#: data/core/units.cfg:271
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:265
+#: data/core/units.cfg:272
 msgid "race+female^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:266
+#: data/core/units.cfg:273
 msgid "race^Trolls"
 msgstr "Bangsa Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:272
+#: data/core/units.cfg:279
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5872,22 +5897,22 @@ msgstr ""
 "Wesnoth utara dan timur, dan kemanapun gerombolan-gerombolan Orc bepergian."
 
 #. [race]: id=undead
-#: data/core/units.cfg:286
+#: data/core/units.cfg:294
 msgid "race^Undead"
 msgstr "Mayat Hidup"
 
 #. [race]: id=undead
-#: data/core/units.cfg:287
+#: data/core/units.cfg:295
 msgid "race+female^Undead"
 msgstr "Mayat Hidup wanita"
 
 #. [race]: id=undead
-#: data/core/units.cfg:288
+#: data/core/units.cfg:296
 msgid "race+plural^Undead"
 msgstr "Mayat Hidup"
 
 #. [race]: id=undead
-#: data/core/units.cfg:294
+#: data/core/units.cfg:302
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5941,64 +5966,29 @@ msgstr ""
 "dwarf sebelum itu."
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:302
+#: data/core/units.cfg:310
 msgid "race^Wolf"
 msgstr "Serigala"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:303
+#: data/core/units.cfg:311
 msgid "race+female^Wolf"
 msgstr "Serigala"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:304
+#: data/core/units.cfg:312
 msgid "race^Wolves"
 msgstr "Bangsa Serigala"
 
 #. [race]: id=wose, description=
-#: data/core/units.cfg:313
+#: data/core/units.cfg:322
 msgid "race^Wose"
 msgstr "Pohon"
 
 #. [race]: id=wose, description=
-#: data/core/units.cfg:314
+#: data/core/units.cfg:323
 msgid "race^Woses"
 msgstr "Bangsa Pohon"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:324
-msgid "race^Khalifate Human"
-msgstr "Manusia Khalifate"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:325
-msgid "race+female^Khalifate Human"
-msgstr "Manusia Khalifate"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:326
-msgid "race+plural^Khalifate"
-msgstr "Khalifate"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:327
-msgid "This race does not have a description yet."
-msgstr "Ras ini belum memiliki deskripsi."
-
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:336
-msgid "race^Falcon"
-msgstr "Elang"
-
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:337
-msgid "race+female^Falcon"
-msgstr "Elang"
-
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:338
-msgid "race^Falcons"
-msgstr "Elang"
 
 #: src/help.cpp:51
 msgid "Help"
@@ -6163,6 +6153,27 @@ msgstr "Bantuan Pertempuran demi Wesnoth"
 #: src/help.cpp:3216
 msgid "Parse error when parsing help text: "
 msgstr "Error uraian ketika menguraikan teks bantuan:"
+
+#~ msgid "race^Khalifate Human"
+#~ msgstr "Manusia Khalifate"
+
+#~ msgid "race+female^Khalifate Human"
+#~ msgstr "Manusia Khalifate"
+
+#~ msgid "race+plural^Khalifate"
+#~ msgstr "Khalifate"
+
+#~ msgid "This race does not have a description yet."
+#~ msgstr "Ras ini belum memiliki deskripsi."
+
+#~ msgid "race^Falcon"
+#~ msgstr "Elang"
+
+#~ msgid "race+female^Falcon"
+#~ msgstr "Elang"
+
+#~ msgid "race^Falcons"
+#~ msgstr "Elang"
 
 #, fuzzy
 #~ msgid "<header>text='Race specific topics'</header>"

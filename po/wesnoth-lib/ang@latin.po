@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2011-10-31 16:59-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
@@ -1306,8 +1306,7 @@ msgstr ""
 #: data/gui/default/window/wml_message.cfg:478
 #: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169 src/mapgen_dialog.cpp:110
-#: src/preferences_display.cpp:272
+#: src/gui/dialogs/message.cpp:169
 msgid "OK"
 msgstr "Geatan"
 
@@ -1757,6 +1756,7 @@ msgstr ""
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
 msgid "Close"
 msgstr ""
 
@@ -2013,7 +2013,9 @@ msgstr ""
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-msgid "Nick"
+#, fuzzy
+#| msgid "Nick"
+msgid "Nickname"
 msgstr "Eacanama"
 
 #. [label]
@@ -2889,7 +2891,7 @@ msgid "Advanced section^Advanced"
 msgstr ""
 
 #: src/game_preferences_display.cpp:1292
-msgid "Choose theme"
+msgid "Choose Theme"
 msgstr ""
 
 #: src/game_preferences_display.cpp:1307
@@ -3749,8 +3751,8 @@ msgstr ""
 
 #: src/preferences_display.cpp:429
 msgid ""
-"Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
-"modifiers."
+"Screenshot hotkeys should be combined with the Control, Alt or Meta "
+"modifiers to avoid problems."
 msgstr ""
 
 #: src/preferences_display.cpp:429

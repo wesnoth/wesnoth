@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2010-03-03 01:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -1397,8 +1397,7 @@ msgstr "Igranje pohoda"
 #: data/gui/default/window/wml_message.cfg:478
 #: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169 src/mapgen_dialog.cpp:110
-#: src/preferences_display.cpp:272
+#: src/gui/dialogs/message.cpp:169
 msgid "OK"
 msgstr "U redu"
 
@@ -1858,6 +1857,7 @@ msgstr "Promenljiva"
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
 msgid "Close"
 msgstr "Zatvori"
 
@@ -2122,7 +2122,7 @@ msgstr "Sledeća strana"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-msgid "Nick"
+msgid "Nickname"
 msgstr ""
 
 #. [label]
@@ -3045,7 +3045,7 @@ msgstr "Napredno"
 
 #: src/game_preferences_display.cpp:1292
 #, fuzzy
-msgid "Choose theme"
+msgid "Choose Theme"
 msgstr "Pozicija za učitavanje"
 
 #: src/game_preferences_display.cpp:1307
@@ -3962,8 +3962,8 @@ msgstr "Prečica je već u upotrebi."
 #| msgid ""
 #| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
-"Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
-"modifiers."
+"Screenshot hotkeys should be combined with the Control, Alt or Meta "
+"modifiers to avoid problems."
 msgstr ""
 "Upozorenje: prečice za snimanje ekrana nisu kombinacije sa tasterima Ctrl, "
 "Alt ili Meta."

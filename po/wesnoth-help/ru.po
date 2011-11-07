@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2011-07-21 21:09+0300\n"
 "Last-Translator: Ushkin N\n"
 "Language-Team: ZumZoom\n"
@@ -612,7 +612,7 @@ msgstr "Морогор"
 #: data/core/encyclopedia/geography.cfg:40
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
-"ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> and "
+"Ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> and "
 "east of the <ref>dst=old_continent text='Old Continent'</ref>.\n"
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
@@ -625,9 +625,15 @@ msgstr "Зелёный Остров"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
+#, fuzzy
+#| msgid ""
+#| "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
+#| "ref> and running east to the Listra."
 msgid ""
-"A bigger island lying in the <ref>dst='great_ocean' text='great ocean'</ref>."
+"A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Река, берущая исток в <ref>dst='heart_mountains' text='Горах Сердца'</ref> и "
+"текущая на восток, к Листре."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
@@ -638,7 +644,7 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:52
 msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
-"<ref>dst='Great Ocean' text='Great Ocean'</ref>."
+"<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
 
 #. [topic]: id=great_continent
@@ -3307,14 +3313,24 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Change the controller for side (write here the number of the side) to "
+#| "username (write here the nick of the player or observer). You can check "
+#| "what side belongs to which player in the <bold>text='Scenario Settings'</"
+#| "bold> dialog (Press the <bold>text='More'</bold> button in the "
+#| "<bold>text='Status Table'</bold> (alt+s by default) to get there.). The "
+#| "host can change control of any side.\n"
+#| "\n"
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
-"username (write here the nick of the player or observer). You can check what "
-"side belongs to which player in the <bold>text='Scenario Settings'</bold> "
-"dialog (Press the <bold>text='More'</bold> button in the <bold>text='Status "
-"Table'</bold> (alt+s by default) to get there.). The host can change control "
-"of any side.\n"
+"username (write here the nickname of the player or observer). You can check "
+"what side belongs to which player in the <bold>text='Scenario Settings'</"
+"bold> dialog (Press the <bold>text='More'</bold> button in the "
+"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
+"can change control of any side.\n"
 "\n"
 msgstr ""
 "\n"
@@ -4538,22 +4554,22 @@ msgid "female^aged"
 msgstr "старая"
 
 #. [race]: id=bats
-#: data/core/units.cfg:43
+#: data/core/units.cfg:42
 msgid "race^Bat"
 msgstr "Летучая мышь"
 
 #. [race]: id=bats
-#: data/core/units.cfg:44
+#: data/core/units.cfg:43
 msgid "race+female^Bat"
 msgstr "Летучая мышь"
 
 #. [race]: id=bats
-#: data/core/units.cfg:45
+#: data/core/units.cfg:44
 msgid "race^Bats"
 msgstr "Летучие мыши"
 
 #. [race]: id=bats
-#: data/core/units.cfg:46
+#: data/core/units.cfg:45
 msgid ""
 "Bats come in many shapes and sizes, and most are fairly harmless, feeding on "
 "insects and other small animals. The larger and more vicious breeds are "
@@ -4653,22 +4669,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:89
+#: data/core/units.cfg:90
 msgid "race^Dwarf"
 msgstr "Гном"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:90
+#: data/core/units.cfg:91
 msgid "race+female^Dwarf"
 msgstr "Гном"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:91
+#: data/core/units.cfg:92
 msgid "race^Dwarves"
 msgstr "Гномы"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:96
+#: data/core/units.cfg:97
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -4762,22 +4778,22 @@ msgstr ""
 "образом некоторые особенности их природы."
 
 #. [race]: id=elf
-#: data/core/units.cfg:108
+#: data/core/units.cfg:110
 msgid "race^Elf"
 msgstr "Эльф"
 
 #. [race]: id=elf
-#: data/core/units.cfg:109
+#: data/core/units.cfg:111
 msgid "race+female^Elf"
 msgstr "Эльфийка"
 
 #. [race]: id=elf
-#: data/core/units.cfg:110
+#: data/core/units.cfg:112
 msgid "race^Elves"
 msgstr "Эльфы"
 
 #. [race]: id=elf
-#: data/core/units.cfg:120
+#: data/core/units.cfg:122
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -4854,22 +4870,22 @@ msgstr ""
 "первых поселений, хотя, несомненно, более тысячи лет назад."
 
 #. [race]: id=goblin
-#: data/core/units.cfg:130
+#: data/core/units.cfg:132
 msgid "race^Goblin"
 msgstr "Гоблин"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:131
+#: data/core/units.cfg:133
 msgid "race+female^Goblin"
 msgstr "Гоблинша"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:132
+#: data/core/units.cfg:134
 msgid "race^Goblins"
 msgstr "Гоблины"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:135
+#: data/core/units.cfg:137
 msgid ""
 "Goblins are, despite their appearance, born as siblings to the orcs and "
 "members of the same race. While other races usually bear children singly or "
@@ -4908,37 +4924,37 @@ msgstr ""
 "удовлетворения, как показатель их силы и мастерства."
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:147
+#: data/core/units.cfg:150
 msgid "race^Gryphon"
 msgstr "Грифон"
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:148
+#: data/core/units.cfg:151
 msgid "race+female^Gryphon"
 msgstr "Грифонша"
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:149
+#: data/core/units.cfg:152
 msgid "race^Gryphons"
 msgstr "Грифоны"
 
 #. [race]: id=human
-#: data/core/units.cfg:164
+#: data/core/units.cfg:168
 msgid "race^Human"
 msgstr "Человек"
 
 #. [race]: id=human
-#: data/core/units.cfg:165
+#: data/core/units.cfg:169
 msgid "race+female^Human"
 msgstr "Человек"
 
 #. [race]: id=human
-#: data/core/units.cfg:166
+#: data/core/units.cfg:170
 msgid "race^Humans"
 msgstr "Люди"
 
 #. [race]: id=human
-#: data/core/units.cfg:173
+#: data/core/units.cfg:177
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -5017,32 +5033,32 @@ msgstr ""
 "друг друга."
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:181
+#: data/core/units.cfg:185
 msgid "race^Saurian"
 msgstr "Ящер"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:182
+#: data/core/units.cfg:186
 msgid "race+female^Saurian"
 msgstr "Ящерица"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:183
+#: data/core/units.cfg:187
 msgid "race^Saurians"
 msgstr "Ящеры"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:192
+#: data/core/units.cfg:197
 msgid "race^Mechanical"
 msgstr "Механизмы"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:193
+#: data/core/units.cfg:198
 msgid "race+plural^Mechanical"
 msgstr "Механизмы"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:194
+#: data/core/units.cfg:199
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5055,22 +5071,22 @@ msgstr ""
 "некоторые получают эти способности в результате магического вмешательства."
 
 #. [race]: id=merman
-#: data/core/units.cfg:203
+#: data/core/units.cfg:208
 msgid "race^Merman"
 msgstr "Водяной"
 
 #. [race]: id=merman
-#: data/core/units.cfg:204
+#: data/core/units.cfg:209
 msgid "race^Mermaid"
 msgstr "Русалка"
 
 #. [race]: id=merman
-#: data/core/units.cfg:205
+#: data/core/units.cfg:210
 msgid "race^Mermen"
 msgstr "Водяные"
 
 #. [race]: id=merman
-#: data/core/units.cfg:207
+#: data/core/units.cfg:212
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5094,22 +5110,22 @@ msgstr ""
 "замедляется."
 
 #. [race]: id=monster
-#: data/core/units.cfg:214
+#: data/core/units.cfg:220
 msgid "race^Monster"
 msgstr "Монстр"
 
 #. [race]: id=monster
-#: data/core/units.cfg:215
+#: data/core/units.cfg:221
 msgid "race+female^Monster"
 msgstr "Монстр"
 
 #. [race]: id=monster
-#: data/core/units.cfg:216
+#: data/core/units.cfg:222
 msgid "race^Monsters"
 msgstr "Монстры"
 
 #. [race]: id=monster
-#: data/core/units.cfg:217
+#: data/core/units.cfg:223
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5121,22 +5137,22 @@ msgstr ""
 "рассказах."
 
 #. [race]: id=naga
-#: data/core/units.cfg:224
+#: data/core/units.cfg:230
 msgid "race^Naga"
 msgstr "Наг"
 
 #. [race]: id=naga
-#: data/core/units.cfg:225
+#: data/core/units.cfg:231
 msgid "race^Nagini"
 msgstr "Нага"
 
 #. [race]: id=naga
-#: data/core/units.cfg:226
+#: data/core/units.cfg:232
 msgid "race^Nagas"
 msgstr "Наги"
 
 #. [race]: id=naga
-#: data/core/units.cfg:227
+#: data/core/units.cfg:233
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -5165,22 +5181,22 @@ msgstr ""
 "целом, наги любят болота и реки так же, как и открытые моря и океаны."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:234
+#: data/core/units.cfg:241
 msgid "race^Ogre"
 msgstr "Огр"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:235
+#: data/core/units.cfg:242
 msgid "race+female^Ogre"
 msgstr "Огриха"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:236
+#: data/core/units.cfg:243
 msgid "race^Ogres"
 msgstr "Огры"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:237
+#: data/core/units.cfg:244
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5213,22 +5229,22 @@ msgstr ""
 "или случайность."
 
 #. [race]: id=orc
-#: data/core/units.cfg:245
+#: data/core/units.cfg:252
 msgid "race^Orc"
 msgstr "Орк"
 
 #. [race]: id=orc
-#: data/core/units.cfg:246
+#: data/core/units.cfg:253
 msgid "race+female^Orc"
 msgstr "Оркша"
 
 #. [race]: id=orc
-#: data/core/units.cfg:247
+#: data/core/units.cfg:254
 msgid "race^Orcs"
 msgstr "Орки"
 
 #. [race]: id=orc
-#: data/core/units.cfg:257
+#: data/core/units.cfg:264
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5337,22 +5353,22 @@ msgstr ""
 "силовые умения, например, стрельбу из лука или ночные убийства."
 
 #. [race]: id=troll
-#: data/core/units.cfg:264
+#: data/core/units.cfg:271
 msgid "race^Troll"
 msgstr "Тролль"
 
 #. [race]: id=troll
-#: data/core/units.cfg:265
+#: data/core/units.cfg:272
 msgid "race+female^Troll"
 msgstr "Троллиха"
 
 #. [race]: id=troll
-#: data/core/units.cfg:266
+#: data/core/units.cfg:273
 msgid "race^Trolls"
 msgstr "Тролли"
 
 #. [race]: id=troll
-#: data/core/units.cfg:272
+#: data/core/units.cfg:279
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5425,22 +5441,22 @@ msgstr ""
 "востоке Веснота, а также везде, куда где находятся орды орков."
 
 #. [race]: id=undead
-#: data/core/units.cfg:286
+#: data/core/units.cfg:294
 msgid "race^Undead"
 msgstr "Мертвецы"
 
 #. [race]: id=undead
-#: data/core/units.cfg:287
+#: data/core/units.cfg:295
 msgid "race+female^Undead"
 msgstr "Мертвецы"
 
 #. [race]: id=undead
-#: data/core/units.cfg:288
+#: data/core/units.cfg:296
 msgid "race+plural^Undead"
 msgstr "Мертвецы"
 
 #. [race]: id=undead
-#: data/core/units.cfg:294
+#: data/core/units.cfg:302
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5490,64 +5506,29 @@ msgstr ""
 "Континент лишь незадолго до Халдрика I, эльфы и гномы слышали о них и прежде."
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:302
+#: data/core/units.cfg:310
 msgid "race^Wolf"
 msgstr "Волк"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:303
+#: data/core/units.cfg:311
 msgid "race+female^Wolf"
 msgstr "Волчица"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:304
+#: data/core/units.cfg:312
 msgid "race^Wolves"
 msgstr "Волки"
 
 #. [race]: id=wose, description=
-#: data/core/units.cfg:313
+#: data/core/units.cfg:322
 msgid "race^Wose"
 msgstr "Леший"
 
 #. [race]: id=wose, description=
-#: data/core/units.cfg:314
+#: data/core/units.cfg:323
 msgid "race^Woses"
 msgstr "Лешие"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:324
-msgid "race^Khalifate Human"
-msgstr "Человек Халифата"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:325
-msgid "race+female^Khalifate Human"
-msgstr "Человек Халифата"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:326
-msgid "race+plural^Khalifate"
-msgstr "Люди Халифата"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:327
-msgid "This race does not have a description yet."
-msgstr "Пока у этой расы нет описания."
-
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:336
-msgid "race^Falcon"
-msgstr "Сокол"
-
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:337
-msgid "race+female^Falcon"
-msgstr "Соколица"
-
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:338
-msgid "race^Falcons"
-msgstr "Соколы"
 
 #: src/help.cpp:51
 msgid "Help"
@@ -5712,6 +5693,27 @@ msgstr "Помощь по игре Битва за Веснот"
 #: src/help.cpp:3216
 msgid "Parse error when parsing help text: "
 msgstr "Синтаксическая ошибка при загрузке помощи: "
+
+#~ msgid "race^Khalifate Human"
+#~ msgstr "Человек Халифата"
+
+#~ msgid "race+female^Khalifate Human"
+#~ msgstr "Человек Халифата"
+
+#~ msgid "race+plural^Khalifate"
+#~ msgstr "Люди Халифата"
+
+#~ msgid "This race does not have a description yet."
+#~ msgstr "Пока у этой расы нет описания."
+
+#~ msgid "race^Falcon"
+#~ msgstr "Сокол"
+
+#~ msgid "race+female^Falcon"
+#~ msgstr "Соколица"
+
+#~ msgid "race^Falcons"
+#~ msgstr "Соколы"
 
 #~ msgid "<header>text='Race specific topics'</header>"
 #~ msgstr "<header>text='Об отдельных расах'</header>"

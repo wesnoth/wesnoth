@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2011-10-31 16:31-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -1082,7 +1082,6 @@ msgstr "Wooden Bridge"
 #. [terrain_type]: id=rotbridgediag2
 #: data/core/terrain.cfg:1931 data/core/terrain.cfg:1943
 #: data/core/terrain.cfg:1955
-#| msgid "Wooden Bridge"
 msgid "Rotting Bridge"
 msgstr "Rotting Bridge"
 
@@ -1251,7 +1250,6 @@ msgstr "None"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
-#| msgid "Update Add-ons"
 msgid "Uninstall Add-ons"
 msgstr "Uninstall Add-ons"
 
@@ -1298,8 +1296,7 @@ msgstr "Play a campaign"
 #: data/gui/default/window/wml_message.cfg:478
 #: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169 src/mapgen_dialog.cpp:110
-#: src/preferences_display.cpp:272
+#: src/gui/dialogs/message.cpp:169
 msgid "OK"
 msgstr "OK"
 
@@ -1467,7 +1464,6 @@ msgstr "Resize map"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
-#| msgid "Choose theme"
 msgid "Choose Player"
 msgstr "Choose Player"
 
@@ -1484,7 +1480,6 @@ msgstr "Editor Settings"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:53
-#| msgid "Time of day lighting preset"
 msgid "Time of day lighting preset:"
 msgstr "Time of day lighting preset:"
 
@@ -1498,13 +1493,11 @@ msgstr "Next"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
-#| msgid "Custom lighting setting"
 msgid "Custom lighting settings"
 msgstr "Custom lighting settings"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:114
-#| msgid "Auto-update map view"
 msgid "Automatically update map view"
 msgstr "Automatically update map view"
 
@@ -1752,6 +1745,7 @@ msgstr "Variable"
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
 msgid "Close"
 msgstr "Close"
 
@@ -1771,7 +1765,6 @@ msgstr "Choose your preferred language:"
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
 #: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
-#| msgid "Change language"
 msgid "Change Language"
 msgstr "Change Language"
 
@@ -2005,7 +1998,9 @@ msgstr "Side"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-msgid "Nick"
+#, fuzzy
+#| msgid "Nick"
+msgid "Nickname"
 msgstr "Nick"
 
 #. [label]
@@ -2587,7 +2582,6 @@ msgid "Custom"
 msgstr "Custom"
 
 #: src/game_preferences_display.cpp:215
-#| msgid "Show Unit Idle Animations"
 msgid "Show unit idle animations"
 msgstr "Show unit idle animations"
 
@@ -2713,12 +2707,10 @@ msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Sighting an allied unit interrupts your unit’s movement"
 
 #: src/game_preferences_display.cpp:369
-#| msgid "Save replay on SP/MP victory or MP defeat"
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Save Replay on SP/MP Victory or MP Defeat"
 
 #: src/game_preferences_display.cpp:372
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 
@@ -2891,7 +2883,9 @@ msgid "Advanced section^Advanced"
 msgstr "Advanced"
 
 #: src/game_preferences_display.cpp:1292
-msgid "Choose theme"
+#, fuzzy
+#| msgid "Choose theme"
+msgid "Choose Theme"
 msgstr "Choose theme"
 
 #: src/game_preferences_display.cpp:1307
@@ -3025,7 +3019,6 @@ msgid "Test scenario"
 msgstr "Test scenario"
 
 #: src/gui/dialogs/game_load.cpp:313
-#| msgid "replay"
 msgid "Replay"
 msgstr "Replay"
 
@@ -3158,7 +3151,6 @@ msgid "Right Mouse Click"
 msgstr "Right Mouse Click"
 
 #: src/hotkeys.cpp:55
-#| msgid "Animate map"
 msgid "Animate Map"
 msgstr "Animate Map"
 
@@ -3203,7 +3195,6 @@ msgid "Default Zoom"
 msgstr "Default Zoom"
 
 #: src/hotkeys.cpp:66
-#| msgid "Toggle Full screen"
 msgid "Toggle Full Screen"
 msgstr "Toggle Full Screen"
 
@@ -3260,7 +3251,6 @@ msgid "Toggle Grid"
 msgstr "Toggle Grid"
 
 #: src/hotkeys.cpp:82
-#| msgid "Mouse scrolling"
 msgid "Mouse Scrolling"
 msgstr "Mouse Scrolling"
 
@@ -3293,12 +3283,10 @@ msgid "Statistics"
 msgstr "Statistics"
 
 #: src/hotkeys.cpp:92
-#| msgid "Host Networked Game"
 msgid "Pause Network Game"
 msgstr "Pause Network Game"
 
 #: src/hotkeys.cpp:93
-#| msgid "Host Networked Game"
 msgid "Continue Network Game"
 msgstr "Continue Network Game"
 
@@ -3323,17 +3311,14 @@ msgid "Best Possible Enemy Moves"
 msgstr "Best Possible Enemy Moves"
 
 #: src/hotkeys.cpp:100
-#| msgid "Save Replay"
 msgid "Play Replay"
 msgstr "Play Replay"
 
 #: src/hotkeys.cpp:101
-#| msgid "Save Replay"
 msgid "Reset Replay"
 msgstr "Reset Replay"
 
 #: src/hotkeys.cpp:102
-#| msgid "Save Replay"
 msgid "Stop Replay"
 msgstr "Stop Replay"
 
@@ -3426,7 +3411,6 @@ msgid "Map Information"
 msgstr "Map Information"
 
 #: src/hotkeys.cpp:134
-#| msgid "Swap fore- and background terrains"
 msgid "Swap Foreground/Background Terrains"
 msgstr "Swap Foreground/Background Terrains"
 
@@ -3599,7 +3583,6 @@ msgid "Custom Command"
 msgstr "Custom Command"
 
 #: src/hotkeys.cpp:208
-#| msgid "Run AI formula"
 msgid "Run Formula"
 msgstr "Run Formula"
 
@@ -3624,32 +3607,26 @@ msgid "Start Tutorial"
 msgstr "Start Tutorial"
 
 #: src/hotkeys.cpp:241
-#| msgid "Start a campaign"
 msgid "Start Campaign"
 msgstr "Start Campaign"
 
 #: src/hotkeys.cpp:248
-#| msgid "Start a multiplayer game"
 msgid "Start Multiplayer Game"
 msgstr "Start Multiplayer Game"
 
 #: src/hotkeys.cpp:255
-#| msgid "Manage addons"
 msgid "Manage Add-ons"
 msgstr "Manage Add-ons"
 
 #: src/hotkeys.cpp:262
-#| msgid "Start the editor"
 msgid "Start Editor"
 msgstr "Start Editor"
 
 #: src/hotkeys.cpp:269
-#| msgid "Show the credits"
 msgid "Show Credits"
 msgstr "Show Credits"
 
 #: src/hotkeys.cpp:277
-#| msgid "Show the helptip"
 msgid "Show Helptip"
 msgstr "Show Helptip"
 
@@ -3708,7 +3685,6 @@ msgid "Landform:"
 msgstr "Landform:"
 
 #: src/mapgen_dialog.cpp:249
-#| msgid "Roads Between Castles"
 msgid "Roads between castles"
 msgstr "Roads between castles"
 
@@ -3747,7 +3723,6 @@ msgid "Hotkey Settings"
 msgstr "Hotkey Settings"
 
 #: src/preferences_display.cpp:282 src/preferences_display.cpp:351
-#| msgid "Press desired Hotkey (Esc cancels)"
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Press desired hotkey (Esc cancels)"
 
@@ -3769,16 +3744,17 @@ msgstr "Clear Hotkey"
 
 #: src/preferences_display.cpp:394 src/preferences_display.cpp:402
 #: src/preferences_display.cpp:414
-#| msgid "This Hotkey is already in use."
 msgid "This hotkey is already in use."
 msgstr "This hotkey is already in use."
 
 #: src/preferences_display.cpp:429
+#, fuzzy
 #| msgid ""
-#| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
+#| "Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
+#| "modifiers."
 msgid ""
-"Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
-"modifiers."
+"Screenshot hotkeys should be combined with the Control, Alt or Meta "
+"modifiers to avoid problems."
 msgstr ""
 "Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
 "modifiers."

@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>The Battle for Wesnoth ユーザーズ・マニュアル</title><link rel="stylesheet" type="text/css" href="./styles/manual.css" /><meta name="generator" content="DocBook XSL Stylesheets V1.76.1" /></head><body><div xml:lang="ja" class="book" title="The Battle for Wesnoth ユーザーズ・マニュアル" lang="ja"><div class="titlepage"><div><div><h1 class="title"><a id="idp25143216"></a>The Battle for Wesnoth ユーザーズ・マニュアル</h1></div></div><hr /></div><div class="toc"><p><strong>目次</strong></p><dl><dt><span class="preface"><a href="#_preface">はじめに</a></span></dt><dt><span class="chapter"><a href="#_getting_started">1. はじめに</a></span></dt><dd><dl><dt><span class="section"><a href="#_the_world">1.1. 世界</a></span></dt><dd><dl><dt><span class="section"><a href="#_the_creatures">1.1.1. 生物</a></span></dt></dl></dd><dt><span class="section"><a href="#_finding_your_way">1.2. 最初にするべきこと</a></span></dt><dt><span class="section"><a href="#_game_modes">1.3. ゲームモード</a></span></dt><dd><dl><dt><span class="section"><a href="#_campaigns">1.3.1. キャンペーン</a></span></dt><dt><span class="section"><a href="#scenarios">1.3.2. シナリオ</a></span></dt><dt><span class="section"><a href="#game_screen">1.3.3. ゲーム画面</a></span></dt><dt><span class="section"><a href="#_recruit_and_recall">1.3.4. 雇用と召還</a></span></dt><dt><span class="section"><a href="#_your_army">1.3.5. あなたの軍隊</a></span></dt><dt><span class="section"><a href="#_life_and_death_experience">1.3.6. Life and Death — Experience</a></span></dt><dt><span class="section"><a href="#_victory_and_defeat">1.3.7. 勝利と敗北</a></span></dt><dt><span class="section"><a href="#_gold">1.3.8. 所持金</a></span></dt><dt><span class="section"><a href="#_save_and_load">1.3.9. 保存と再開</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#_playing">2. プレイ方法</a></span></dt><dd><dl><dt><span class="section"><a href="#_controls">2.1. 操作</a></span></dt><dt><span class="section"><a href="#_gold_2">2.2. 所持金</a></span></dt><dd><dl><dt><span class="section"><a href="#_recruiting_and_recalling">2.2.1. 雇用と召還</a></span></dt><dt><span class="section"><a href="#_upkeep">2.2.2. 維持費</a></span></dt><dt><span class="section"><a href="#_income">2.2.3. 収入</a></span></dt></dl></dd><dt><span class="section"><a href="#_units">2.3. ユニット</a></span></dt><dd><dl><dt><span class="section"><a href="#_alignment">2.3.1. 時刻属性</a></span></dt><dt><span class="section"><a href="#traits">2.3.2. 特性</a></span></dt><dt><span class="section"><a href="#_unit_specialties">2.3.3. 特殊武器</a></span></dt><dt><span class="section"><a href="#_abilities">2.3.4. 能力</a></span></dt><dt><span class="section"><a href="#_experience">2.3.5. 経験値</a></span></dt><dt><span class="section"><a href="#unit_recall">2.3.6. ユニットの召還</a></span></dt></dl></dd><dt><span class="section"><a href="#_moving">2.4. 移動</a></span></dt><dd><dl><dt><span class="section"><a href="#_zone_of_control">2.4.1. 支配領域(ZOC=Zone Of Control)</a></span></dt><dt><span class="section"><a href="#orbs">2.4.2. 宝珠</a></span></dt><dt><span class="section"><a href="#_ellipses_team_colors_and_hero_icons">2.4.3. 楕円、チームの色、英雄のしるし</a></span></dt></dl></dd><dt><span class="section"><a href="#_fighting">2.5. 戦闘</a></span></dt><dd><dl><dt><span class="section"><a href="#_attack_types">2.5.1. 攻撃の種類</a></span></dt><dt><span class="section"><a href="#_resistance">2.5.2. 抵抗値</a></span></dt></dl></dd><dt><span class="section"><a href="#_healing">2.6. 回復</a></span></dt><dd><dl><dt><span class="section"><a href="#_regeneration">2.6.1. 再生</a></span></dt><dt><span class="section"><a href="#_poison">2.6.2. 毒</a></span></dt></dl></dd></dl></dd><dt><span class="chapter"><a href="#_strategy_and_tips">3. 戦略とヒント</a></span></dt><dd><dl><dt><span class="section"><a href="#basic_strategy">3.1. 基本戦略</a></span></dt><dd><dl><dt><span class="section"><a href="#_don_8217_t_waste_units">3.1.1. ユニットを無意味に消耗させないでください。</a></span></dt><dt><span class="section"><a href="#_out_of_the_enemy_8217_s_reach">3.1.2. 敵の到達可能範囲の外にいるためには</a></span></dt><dt><span class="section"><a href="#zoc">3.1.3. あなたの支配領域(ZOC=Zone Of Control)を保護する</a></span></dt><dt><span class="section"><a href="#_maintain_a_defensive_line">3.1.4. 防衛線を維持するには</a></span></dt><dt><span class="section"><a href="#_rotate_your_troops">3.1.5. あなたの軍隊を交代させる</a></span></dt><dt><span class="section"><a href="#_use_the_terrain">3.1.6. 地形を利用する</a></span></dt><dt><span class="section"><a href="#_attacking_and_choosing_your_targets">3.1.7. あなたの敵の中で攻撃対象とするユニットを選択するには</a></span></dt><dt><span class="section"><a href="#_time_of_day">3.1.8. 時刻</a></span></dt><dt><span class="section"><a href="#_experience_2">3.1.9. 経験値</a></span></dt></dl></dd><dt><span class="section"><a href="#_getting_the_most_fun_out_of_the_game">3.2. このゲームから最大の面白さを引き出すには</a></span></dt><dd><dl><dt><span class="section"><a href="#_at_the_start_of_a_scenario">3.2.1. シナリオ開始時</a></span></dt><dt><span class="section"><a href="#_during_the_scenario">3.2.2. During the scenario</a></span></dt><dt><span class="section"><a href="#_healing_2">3.2.3. 回復</a></span></dt><dt><span class="section"><a href="#_winning_a_scenario">3.2.4. シナリオの勝利条件</a></span></dt><dt><span class="section"><a href="#_more_general_tips">3.2.5. より一般的なヒント</a></span></dt></dl></dd></dl></dd></dl></div><div class="list-of-tables"><p><strong>表の一覧</strong></p><dl><dt>2.1. <a href="#idp30645984">一般的な操作とホットキー</a></dt><dt>2.2. <a href="#idp30688032">ユニットやターンについてのホットキー</a></dt><dt>2.3. <a href="#idp30717888">計画モードで使用されるホットキー</a></dt><dt>2.4. <a href="#idp30730512">マルチプレイヤー・ゲームで使用されるホットキー</a></dt><dt>2.5. <a href="#idp30741104">その他のホットキー</a></dt><dt>2.6. <a href="#idp30757744">その他のホットキー</a></dt><dt>2.7. <a href="#idp30767792">Pandora で使用される操作とホットキー</a></dt><dt>2.8. <a href="#idp30803376">時刻とダメージ</a></dt><dt>2.9. <a href="#idp30934144">敵との戦闘や最後の一撃で得られる経験値は敵のレベルによって異なります。</a></dt><dt>2.10. <a href="#idp30966592">宝珠</a></dt></dl></div><div class="preface" title="はじめに"><div class="titlepage"><div><div><h2 class="title"><a id="_preface"></a>はじめに</h2></div></div></div><p>The Battle for Wesnoth は、ファンタジーをテーマにしたターン制の戦略ゲームです。</p><p>大きな軍隊を作り上げて、未熟な新兵を鍛えて徐々に経験を積んだ強力な兵士に変えて行きます。ゲームの後半で、あなたは強靭な戦士達を召還し、誰も立ち向かえない究極の大軍勢を形成します！
+それぞれの専門家達が掲載されている長いリストからユニットを選び、あなたが直面する地形でのあらゆる抵抗に対してうまく戦える能力を備えた軍隊を作り出してください。</p><p>このゲームにはあなたに体験されるのを待つ数多くの物語があります。あなたは Wesnoth
+王国の歴史に沿ってオークやアンデッドや犯罪者などと戦うことができます。場合によっては、非常に険しい山頂付近のドラゴンや Aethenwood
+の深い森のエルフ族や Knalga の巨大な洞窟のドワーフ族や真珠の入り江(Bay of Pearls)のマーマン族のそばで戦うこともあります。あなたは
+Wesnoth
+王位を奪還するために戦うこともできますし、また、恐怖によって地上を支配するアンデッドにあなたの強大な力を使用することもできますし、または、オークの土地を略奪しようと挑戦してくる人間達に勝利すべく、ある栄光に満ちた部族を率いることもできます。</p><p>You will be able to select from among over two hundred unit types (infantry,
+cavalry, archers, and mages are just the beginning) and fight actions
+ranging from small-unit ambushes to clashes of vast armies. You can also
+challenge your friends – or strangers – and fight in epic multi-player
+fantasy battles.</p><p>Battle for Wesnoth
+はオープンソース・ソフトウェアです。そして多くのボランティアがゲームを改良するために協力しています。あなたは自分で考えたユニットやシナリオを製作できますし、大きなキャンペーンでさえも製作することは可能です。このようなユーザー管理物はアドオン・サーバーから入手できます。そして、非常に人気のあるものは
+Battle for Wesnoth の公式リリースに組み込むことができます。</p></div><div class="chapter" title="第1章 はじめに"><div class="titlepage"><div><div><h2 class="title"><a id="_getting_started"></a>第1章 はじめに</h2></div></div></div><div class="section" title="1.1. 世界"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_the_world"></a>1.1. 世界</h2></div></div></div><p>Wesnoth のある大陸は大きく 3 つの地域に分けられます。それは、法の及ばない北部地域と Wesnoth 王国とその周辺の Elensefar
+などと、エルフの住む南西の Aethenwood の大森林およびその向こう側です。</p><p>Wesnoth 王国はこの大陸の中央部に位置しています。その国境は、北は大いなる川、東と南は低き丘陵、南西は Aethenwood
+の大森林の端、そして西は大洋です。Elensefarは、ある時はWesnoth王国の一地方であり、またある時は独立国、そしてまたある時は緩やかな盟約によりWesnothと結ばれた同盟国であったりする地域です。北は大いなる川、東はあいまいに定められたWesnothとの国境、南は真珠の入江、西は大洋がそれぞれ
+Elensefar の領域を区切っています。</p><p>北部地域は大いなる川の北側に広がる未開の地域です。オーク、ドワーフ、野蛮人、そしてエルフが住んでいます。その北から西には Lintanir
+の大森林が広がっており、北部エルフ族が謎の大王国を作っています。</p><p>全体的にこれらの土地には分散して存在する村があり、そこであなたは傷ついた部隊を回復させたり、あなたの軍隊を維持するのに必要な収入を集めたりします。あなたは山や川を横断したり、森や丘や凍土を進むこともあるでしょう。そして、開けた草原を横切ったりもするでしょう。これらさまざまな環境には異なる種類の生物がその場所に適応しており、それらは慣れ親しんだ地形で移動しやすく戦いやすくなっています。</p><div class="section" title="1.1.1. 生物"><div class="titlepage"><div><div><h3 class="title"><a id="_the_creatures"></a>1.1.1. 生物</h3></div></div></div><p>Wesnoth
+世界の全体には人間、エルフ、ドワーフ、オーク、ドレーク、トカゲ、マーマン、ナーガの各種族および多くの未知なる驚くべき種族が住んでいます。そして、のろわれた地にはよみがえった死体や幽霊がうごめいています。また、遺跡やダンジョンには怪物が潜んでいます。それぞれの種族はそれぞれ特定の地形に適応しています。人間は温暖な草原を好みますし、丘や山や地下はオークとドワーフが故郷としています。森はエルフの領地ですし、大海や川はマーマンとナーガの領域です。</p><p>ゲーム上、種族間の党派が形成されることがあります。例としては、オークはしばしばトロルとエルフやドワーフはしばしば人間と協力します。人間社会内部にも忠誠者と無法者のような党派争いが反映されます。ほとんどのキャンペーンであなたは一つの党派からのユニットを操作します。しかし、ときどき党派同士が同盟を結成したりするので一本のシナリオの中でも複数の党派に直面することがあります。</p></div></div><div class="section" title="1.2. 最初にするべきこと"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_finding_your_way"></a>1.2. 最初にするべきこと</h2></div></div></div><p>Wesnoth
+を起動すると最初に操作可能な画面をメインメニューといいます。ボタンはマウスだけで押すことができます。簡単に言うと、まずチュートリアルをやってみることをお勧めします。その次はキャンペーンから「二人の兄弟」をプレイするとよいでしょう。</p><p><span class="inlinemediaobject"><img src="images/main-menu-1.9.4.jpg" alt="メインメニュー" /></span></p><div class="variablelist"><dl><dt><span class="term">
+チュートリアル
+</span></dt><dd>
+ The tutorial is a real, but basic, game which teaches you some of the basic
+controls needed to play the game. Winning or losing is not important here,
+but learning what to do is. Click the Tutorial button to play. In the
+Tutorial you are in the role of the prince Konrad or the princess
+Li’sar, learning from the Elder Mage Delfador — pay attention or he
+might turn you into a newt.
+</dd><dt><span class="term">
+キャンペーン
+</span></dt><dd>
+ キャンペーンを開始するボタンです。最初の Wesnoth
+はキャンペーンをプレイするために開発されました。キャンペーンとはいくつかのシナリオのセットのことです。次の画面であなたのコンピューターにある（あなたが望むなら追加してダウンロードすることもできます）キャンペーンの一覧が表示されるので選択してください。それぞれのキャンペーンには
+3
+段階の難易度「簡単」「普通」「難しい」があります。開発者としてはやりがいがあると思われる「普通」（「難しい」ではありません）をお勧めします。キャンペーン開始後は継続中キャンペーンの難易度を変更することはできません。をもし、あなたが「簡単」でも壁にぶつかってしまう場合には、<a class="link" href="#basic_strategy" title="3.1. 基本戦略">基本戦略</a>の項目を読むと助けになるでしょう。あなたが難易度を選択した後にキャンペーンが開始されます。
+</dd><dt><span class="term">
+マルチプレイヤー
+</span></dt><dd>
+ 一本のシナリオを一人か複数の相手と対戦するボタンです。あなたはゲームをインターネット経由またはあなたのコンピューターのみで行うことができ、対戦相手はコンピューターか人間になります。このボタンをクリックすると次の画面でシナリオをどのようにプレイするか選択します。詳細は<a class="link" href="#scenarios" title="1.3.2. シナリオ">シナリオ</a>を見てください。
+</dd><dt><span class="term">
+再開
+</span></dt><dd>
+ 前に保存したゲームを再開するためのボタンです。次の画面で、保存されているゲームの一覧が表示されるので、再開したいゲームを選択してダブルクリックすればそのゲームが読み込まれて再開します。もし、あなたがゲームを完了した後でそのリプレイを見たければ、それも保存されているので再開すれば最初から動きを追うことができます。
+</dd><dt><span class="term">
+アドオン
+</span></dt><dd>
+ アドオンを入手するためのボタンです。アドオンとは一般ユーザーが製作した、キャンペーンやマルチプレイヤー・ゲーム用時代設定およびマップなどのことで、専用サーバー（アドオンの内容を確認してあるわけではありません）に置いてあります。一度入手したアドオンも必要なくなれば「アドオンの消去」ボタンであなたのシステム上から消すことができます。
+</dd><dt><span class="term">
+マップエディタ
+</span></dt><dd>
+ マップエディタを開始するボタンです。マップエディタの用途はマルチプレイヤー・ゲーム用に特製マップを製作したり、自分自身のキャンペーンを作る要素としてマップを製作することです。
+</dd><dt><span class="term">
+言語
+</span></dt><dd>
+ 表示言語を選択するボタンです。（日本語になっていればクリックする必要はありません）　最初に Wesnoth
+を起動した時は、あなたのシステムの標準言語（日本語版 OS
+なら日本語）を判断できればそれと同じに、できなければ英語です。しかし、あなたがここで変更すれば、次回もその表示言語になります。
+</dd><dt><span class="term">
+設定
+</span></dt><dd>
+ 標準設定を変更するボタンです。
+</dd><dt><span class="term">
+クレジット
+</span></dt><dd>
+ 主要な貢献者の一覧を表示するボタンです。あなたはチャット(IRC)の irc.freenode.org:6667 on #wesnoth
+で直接彼らと接触することもできます。
+</dd><dt><span class="term">
+終了
+</span></dt><dd>
+ Wesnoth を終了するボタンです。
+</dd><dt><span class="term">
+ヘルプ
+</span></dt><dd>
+ ゲーム・ヘルプを開くボタンです。それは、ユニットや他のゲーム・プレイに重要な情報を提供します。それらの情報の大部分はこのマニュアルでも説明されています。
+</dd><dt><span class="term">
+次
+</span></dt><dd>
+ 次の小さなヒントを表示するボタンです。
+</dd><dt><span class="term">
+前
+</span></dt><dd>
+ 前の小さなヒントを表示するボタンです。
+</dd><dt><span class="term">
+封筒
+</span></dt><dd>
+ 説明文表示の有効・無効を変更できるダイアログが開くボタン（封筒のアイコン）です。例えば、キャンペーンの説明文はあなたに合ったものを選択する助けになります。無効にすると全てのデータは説明文なしで表示されます。
+</dd></dl></div></div><div class="section" title="1.3. ゲームモード"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_game_modes"></a>1.3. ゲームモード</h2></div></div></div><p> Battle for Wesnoth には 2 つの基本的なプレイ方法があります：</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+複数のシナリオからなるキャンペーンをコンピューター相手にプレイする。
+</li><li class="listitem">
+一本のシナリオをコンピューターまたは人間の対戦相手とプレイする。
+</li></ul></div><div class="section" title="1.3.1. キャンペーン"><div class="titlepage"><div><div><h3 class="title"><a id="_campaigns"></a>1.3.1. キャンペーン</h3></div></div></div><p>Campaigns are sequences of battles with a connecting storyline. Typical
+campaigns have about 10–20 scenarios. The main advantage with campaigns is
+that they allow you to develop your army. As you complete each scenario, the
+remaining units at the end are saved for you to use in the next scenario. If
+you choose not to use a unit at all during a scenario it is carried over to
+the next, so you don’t lose units you don’t use.</p><p>キャンペーンは Wesnoth が選ばれる第一の理由です。たぶんキャンペーンは一番楽しめるでしょうし、このゲームを新たに始めた人には最初にお勧めします。</p></div><div class="section" title="1.3.2. シナリオ"><div class="titlepage"><div><div><h3 class="title"><a id="scenarios"></a>1.3.2. シナリオ</h3></div></div></div><p>一本のシナリオを完了するまでの時間は大体 30 分から 2
+時間ぐらいです。これは一番短時間でプレイする方法ですが、あなたのユニットがキャンペーンで経験を積んで成長していくことはありません。あなたはコンピューターを相手にするか、インターネット経由または同じコンピューターの前の席を交替しながら他の人間プレイヤーと対戦できます。シナリオは「マルチプレイヤー」ボタンから利用できます。</p><p>一般的に、マルチプレイヤー・ゲームはインターネット経由でプレイされることが多いでしょう。これらのゲームは Wesnoth
+マルチプレイヤー・サーバーを通じて行われます。マルチプレイヤー・ゲームにかかる時間はマップの大きさや参加人数などによって 1 時間から 10
+時間ぐらいです。平均的には 3 から 7
+時間です。ゲームは参加者の一致があれば途中で保存・再開できるので、ゲームによっては一、二週間になる可能性もありますが、実際にプレイしているのは合計数時間程度です。マルチプレイヤー・ゲームでは次のシナリオにあなたのユニットを持ち運ぶことはできないので、あなたの軍隊を育てるのは、そのシナリオ一本限定になります。</p><p>「マルチプレイヤー」ボタンをクリックするといくつかの選択があります。</p><p><span class="inlinemediaobject"><img src="images/multiplayer-1.9.4.jpg" alt="マルチプレイヤー・ダイアログ" /></span></p><div class="section" title="ログイン"><div class="titlepage"><div><div><h4 class="title"><a id="_login"></a>ログイン</h4></div></div></div><p>これはマルチプレイヤー用サーバーでのあなたのニックネームを質問するものです。もし、あなたがウェブサイト（英文）<a class="ulink" href="http://www.wesnoth.org/forum" target="_top">Wesnoth forums</a>
+にアカウントを持っていたならば、（マルチプレイヤー・ゲームだけならば特別に必要はありません）　それと同じユーザー名とパスワードを使用することができます。パスワードを要求されたならばそのニックネームは先に使われています。あなたは
+Wesnoth forums に登録されているユーザー名と同じニックネームは使えないので、ニックネームを変更してください。</p></div><div class="section" title="公式サーバーに接続する"><div class="titlepage"><div><div><h4 class="title"><a id="_join_official_server"></a>公式サーバーに接続する</h4></div></div></div><p>この選択は面倒な手続き無しに公式サーバーに接続するもので、ネット経由のマルチプレイヤー・ゲームには通常こちらをお勧めします。あなたはそこで仲間を集めて新しいゲームを立ち上げることもできますし、既存のゲームに参加することもできます。そのためにまずロビー（待合所）に参加してこのようなことをします。</p></div><div class="section" title="サーバーに接続する"><div class="titlepage"><div><div><h4 class="title"><a id="_connect_to_server"></a>サーバーに接続する</h4></div></div></div><p>これを選択すると接続先のアドレスを質問するダイアログが開きます。このダイアログには「一覧を見る」ボタンもついていて公式メインサーバーが使用不可能な時に他の公式予備サーバーの一覧の中から選べるようになっています。</p><p>ちなみに公式およびそれ以外のユーザー提供サーバーの完全な一覧は次のウェブサイト（英文）にあります。 <a class="ulink" href="http://wesnoth.org/wiki/MultiplayerServers" target="_top">Multiplayer
+servers</a>.</p><p>この選択からは、他のプレイヤーが立てたサーバーに接続することもできます。そのためにはあなたの LAN
+内で誰かがサーバーを起動している必要があり、そのアドレスとポート番号（標準値は 15000 ）を入力します。例えば、192.168.0.10
+でサーバーが起動しており標準ポート番号を使用していたなら、192.168.0.10:15000 と入力してください。</p></div><div class="section" title="ネットワーク・ゲームを立てる"><div class="titlepage"><div><div><h4 class="title"><a id="_host_networked_game"></a>ネットワーク・ゲームを立てる</h4></div></div></div><p>公式サーバーを使用せずにマルチプレイヤー・ゲームを開始するには、あなた自身で <span class="emphasis"><em>wesnothd</em></span>
+というサーバーソフトを開始しなければなりません。このプログラムは「ネットワーク・ゲームを立てる」を選択すると自動的に起動し、全てのプレイヤーが接続しなくなると終了します。他プレイヤーは
+TCP のポート番号 15000 に接続することで参加可能です。もし、あなたが firewall
+の内側にいたなら問題が発生するかもしれませんが、ネットワークの安全を深刻に傷つけてしまう可能性があるので、何もしないほうがよいでしょう。そのような場合は公式サーバーを利用すると何の問題も発生しないので強くお勧めします。</p></div><div class="section" title="ローカル・ゲーム"><div class="titlepage"><div><div><h4 class="title"><a id="_local_game"></a>ローカル・ゲーム</h4></div></div></div><p>これはあなたのコンピューターだけで開始されるゲームです。あなたは同じコンピューターの前の席を交替しながらプレイするゲームを開始することができます。これを<span class="emphasis"><em>交替ゲーム</em></span>と呼び、ネットを通じて対戦するゲームと同程度の時間を必要とします。また、あなたは交替ゲームの片方をコンピューター
+AI
+に任せることもでき、これは実際の相手と対戦する前にマルチプレイヤー・ゲームで使用されるマップに慣れておくよい方法です。それに、さまざまな党派での対戦を研究しておくこともできます。もちろん、あなたはこの二つを同時に行うこともできます。つまり、友人と共にコンピューター
+AI 連合軍と対戦することもあります。</p></div></div><div class="section" title="1.3.3. ゲーム画面"><div class="titlepage"><div><div><h3 class="title"><a id="game_screen"></a>1.3.3. ゲーム画面</h3></div></div></div><p><span class="inlinemediaobject"><img src="images/game-screen-1.9.4.jpg" alt="ゲーム画面" /></span></p><p>どのキャンペーンをプレイしているかにかかわらず、基本的画面構成は同じです。画面の大半にはマップ（の一部）が表示されており、ゲームの操作の大部分が可能です。その周囲にはさまざまな要素が配置されていて、ゲーム内の役に立つ情報を提供しています。その詳細はこの項目で説明されます。</p><p><span class="inlinemediaobject"><img src="images/top_pane-1.9.4.jpg" alt="画面上" /></span></p><p>画面上の部分を左から右へ順番に説明します：</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+メニューボタン
+</li><li class="listitem">
+行動ボタン
+</li><li class="listitem">
+ターン（現在のターン／そのシナリオに設定されている最長ターン）
+</li><li class="listitem">
+あなたのゴールド
+</li><li class="listitem">
+村の数（あなたが占領している村／あなたが見ることのできるマップ上全部の村）
+</li><li class="listitem">
+あなたの合計ユニット数
+</li><li class="listitem">
+維持費
+</li><li class="listitem">
+収入
+</li><li class="listitem">
+現在の経過時間と残り時間（時間制限付きマルチプレイヤー・ゲームのみ）
+</li><li class="listitem">
+マウスカーソルのあるヘックスのマップ上座標(x,y)
+</li><li class="listitem">
+選択されているユニットについてそのヘックスでの（敵攻撃）回避率と移動コスト
+</li><li class="listitem">
+マウスカーソルのあるヘックスの地形
+</li></ol></div><p><span class="inlinemediaobject"><img src="images/right_pane-1.9.4.jpg" alt="画面右" /></span></p><p>画面右の部分を上から下へ順番に説明します：</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+マップ全体の縮小表示
+</li><li class="listitem">
+時刻
+</li><li class="listitem">
+最後に選択されたユニットの詳細
+</li><li class="listitem">
+ターン終了ボタン
+</li></ol></div></div><div class="section" title="1.3.4. 雇用と召還"><div class="titlepage"><div><div><h3 class="title"><a id="_recruit_and_recall"></a>1.3.4. 雇用と召還</h3></div></div></div><p>あなたはキャンペーン開始時（または次シナリオ開始時）にはマップ上に極少数のユニットしか持っていません。これらにはあなたによって操作される司令官（小さな金の王冠がついているリーダー）が含まれます。大抵の場合、あなたの司令官は城内の特別なヘックスである主塔にいます。あなたの司令官が主塔にいて十分なゴールドを持っている時はいつでも、あなたの軍隊に新兵を雇用できます。ただし、この場合の主塔とは自分自身のものだけでなく、最初は敵が所有していたものをあなたが占領した主塔でもかまいません。後半のシナリオではあなたは前半のシナリオで生き残り経験を積んだユニットを召還できるようになるでしょう。こうして、あなたは敵を征服できるだけの軍隊を作り上げて行くのです。</p><p>まず最初にあなたがやりたいことは最初のユニットを雇用することでしょう。<code class="literal">Ctrl+r</code>キーを押すか、城の空いているヘックスで右クリックしてから「雇用する」を選択することで、あなたは雇用可能一覧からユニットを雇用することができます。雇用されたユニットはそのヘックスに出現します。城の空きヘックスが全て埋まってしまうと次のターンでユニットを移動させるまで次の雇用はできなくなります。あなたの敵の司令官も同様に彼の主塔で軍隊を編成します。敵軍の侵攻を指をくわえて眺めている場合ではありません。これは必ず勝利しなければならない戦争なのです。</p><p>シナリオを成功して終了した時には、あなたの生き残りユニット全部が自動的に保存されます。あなたは次シナリオではそれらを雇用と似た方法で召還できます。しばしば召還された部隊は雇用されたての新兵よりも経験を積んでいるので、大抵の場合はよりよい選択になります。</p></div><div class="section" title="1.3.5. あなたの軍隊"><div class="titlepage"><div><div><h3 class="title"><a id="_your_army"></a>1.3.5. あなたの軍隊</h3></div></div></div><p>Wesnoth
+では全てのゲーム形式（キャンペーンやマルチプレイヤー）で基本的に同一種類の兵士（いわゆるユニット）が使用されます。（追加ユニットが存在する場合はあります）　それぞれのユニットには敵の攻撃に対する抵抗力・今いる地形・レベルなどによる相性があります。それらの完全な詳細はゲーム内ヘルプで解説されます。</p></div><div class="section" title="1.3.6. Life and Death — Experience"><div class="titlepage"><div><div><h3 class="title"><a id="_life_and_death_experience"></a>1.3.6. Life and Death — Experience</h3></div></div></div><p>あなたの部隊が戦いの中で経験値を獲得すると、最終的に彼らはより強くなるでしょう。彼らが戦いの中で死亡すると、あなたは代わりの要員を確保するために雇用・召還しなければならなくなるでしょう。しかし、賢く選択すれば、敵の強さと弱点を巧妙に利用して素早く排除できるユニットを得られることでしょう。</p></div><div class="section" title="1.3.7. 勝利と敗北"><div class="titlepage"><div><div><h3 class="title"><a id="_victory_and_defeat"></a>1.3.7. 勝利と敗北</h3></div></div></div><p>Pay careful attention to the Objectives pop-up box at the beginning of each
+scenario. Usually you will achieve victory by killing all enemy leaders, and
+only be defeated by having your leader killed. But scenarios may have other
+victory objectives — getting your leader to a designated point, say, or
+rescuing someone, or solving a puzzle, or holding out against a siege until
+a certain number of turns have elapsed.</p><p>シナリオに勝利した時にマップは薄暗くなり、「ターン終了」ボタンが「シナリオ終了」に変わるでしょう。このボタンを押して次に進む前に、保存オプションを変更したり、（マルチプレイヤーゲームの場合には）ほかのプレイヤーとチャットしたりといったことができます。</p></div><div class="section" title="1.3.8. 所持金"><div class="titlepage"><div><div><h3 class="title"><a id="_gold"></a>1.3.8. 所持金</h3></div></div></div><p>あなたの軍隊は支払い無しで戦うことはありません。新兵を雇用するのにも彼らを維持するのにもゴールドが必要です。あなたは前シナリオ終了時からある割合で繰り越されたゴールドを持ってシナリオを開始します。（前シナリオで十分な金額を稼げなかったとしても各シナリオには最小金額が設定されているのでそれを下回ることはありません）　そして、シナリオの目標を素早く達成することや村を多く占領し続けることで多くのゴールドを獲得します。あなたが占領している村からはターンあたり
+2
+ゴールドの収入があります。シナリオ開始後できるだけ多くの村を占領し続けることは、あなたにとって有益です。あなたは現在のゴールドと収入を画面の上にある部分で常に表示しています。それは<a class="link" href="#game_screen" title="1.3.3. ゲーム画面">ゲーム情報画面</a>という名の項目で詳しく解説されています。</p></div><div class="section" title="1.3.9. 保存と再開"><div class="titlepage"><div><div><h3 class="title"><a id="_save_and_load"></a>1.3.9. 保存と再開</h3></div></div></div><p>シナリオ開始時に、あなたのゲーム状態は自動的に保存されます。もし、あなたが敗北したなら、そのゲームを再開してやり直すことができます。一回でもあなたが勝利したなら、次のシナリオに移ることができます。もし、あなたがシナリオを遊んでいる途中で中断しなければならなくなったら、あなたのターンで保存して後ほど再開できます。ちょっと覚えておいて欲しいのは、Battle
+for Wesnoth を遊び慣れたプレイヤーは決してシナリオ途中で保存する必要がないことです。しかしながら、大半の初心者は頻繁にそうしたがるようです。</p></div></div></div><div class="chapter" title="第2章 プレイ方法"><div class="titlepage"><div><div><h2 class="title"><a id="_playing"></a>第2章 プレイ方法</h2></div></div></div><div class="section" title="2.1. 操作"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_controls"></a>2.1. 操作</h2></div></div></div><p>これらは標準のホットキー（操作の呼び出し）です。キーの設定はあなたが使用している OS
+（Windows,MacOSX,Linuxなど）によって多少違います。例えばあなたがMacOSXを使用しているなら、Ctrl の代わりに Cmd
+キーを使うことになるでしょう。あなたは設定メニューを使ってお好みでホットキーを変更することができます。</p><div class="table"><a id="idp30645984"></a><p class="title"><strong>表2.1 一般的な操作とホットキー</strong></p><div class="table-contents"><table summary="一般的な操作とホットキー" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    F1
+    </td><td style="" align="left">
+    The Battle for Wesnoth ヘルプ
+    </td></tr><tr><td style="" align="left">
+    矢印キー
+    </td><td style="" align="left">
+    スクロールする
+    </td></tr><tr><td style="" align="left">
+    左クリック
+    </td><td style="" align="left">
+    ユニットの選択と移動
+    </td></tr><tr><td style="" align="left">
+    右クリック
+    </td><td style="" align="left">
+    コンテキスト・メニューの呼び出し、取り消し動作
+    </td></tr><tr><td style="" align="left">
+    中クリック
+    </td><td style="" align="left">
+    マウスカーソルの場所を中心にするように画面移動
+    </td></tr><tr><td style="" align="left">
+    Escキー
+    </td><td style="" align="left">
+    ゲーム終了、メニュー終了、メッセージ取り消し
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Ctrl+s
+    </td><td style="" align="left">
+    ゲームの保存
+    </td></tr><tr><td style="" align="left">
+    Ctrl+o
+    </td><td style="" align="left">
+    ゲームの再開
+    </td></tr><tr><td style="" align="left">
+    Ctrl+p
+    </td><td style="" align="left">
+    設定メニューに行く
+    </td></tr><tr><td style="" align="left">
+    Ctrl+q
+    </td><td style="" align="left">
+    ゲーム終了
+    </td></tr><tr><td style="" align="left">
+    Ctrl+f
+    </td><td style="" align="left">
+    フルスクリーン表示の切替
+    </td></tr><tr><td style="" align="left">
+    Ctrl+Alt+m
+    </td><td style="" align="left">
+    ゲーム音のオンオフ
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    +
+    </td><td style="" align="left">
+    拡大表示
+    </td></tr><tr><td style="" align="left">
+    -
+    </td><td style="" align="left">
+    縮小表示
+    </td></tr><tr><td style="" align="left">
+    0
+    </td><td style="" align="left">
+    拡大・縮小表示を標準に戻す
+    </td></tr><tr><td style="" align="left">
+    Ctrl+e
+    </td><td style="" align="left">
+    ユニット足元の楕円表示を切替
+    </td></tr><tr><td style="" align="left">
+    Ctrl+g
+    </td><td style="" align="left">
+    グリッド表示の切替
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Ctrl+a
+    </td><td style="" align="left">
+    高速ゲーム・モードの切替
+    </td></tr><tr><td style="" align="left">
+    Shiftキーの長押し
+    </td><td style="" align="left">
+    押している間だけ一時的に高速ゲーム・モードの切替
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Ctrl+j
+    </td><td style="" align="left">
+    シナリオ目標を表示
+    </td></tr><tr><td style="" align="left">
+    s
+    </td><td style="" align="left">
+    統計情報を表示
+    </td></tr><tr><td style="" align="left">
+    Alt+s
+    </td><td style="" align="left">
+    ステータス表を表示
+    </td></tr><tr><td style="" align="left">
+    Alt+u
+    </td><td style="" align="left">
+    ユニット一覧を表示
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    l
+    </td><td style="" align="left">
+    自軍リーダーの所在地に向かって移動
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Shift+s
+    </td><td style="" align="left">
+    今すぐ幕を更新
+    </td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="idp30688032"></a><p class="title"><strong>表2.2 ユニットやターンについてのホットキー</strong></p><div class="table-contents"><table summary="ユニットやターンについてのホットキー" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    Ctrl+r
+    </td><td style="" align="left">
+    雇用する
+    </td></tr><tr><td style="" align="left">
+    Ctrl+Alt+r
+    </td><td style="" align="left">
+    最後の雇用と同じ内容で繰り返す
+    </td></tr><tr><td style="" align="left">
+    Alt+r
+    </td><td style="" align="left">
+    召還する
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Ctrl+n
+    </td><td style="" align="left">
+    ユニット名変更
+    </td></tr><tr><td style="" align="left">
+    d
+    </td><td style="" align="left">
+    現在選択されているユニットの解説を表示
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    t
+    </td><td style="" align="left">
+    一時的に中断された移動を再開
+    </td></tr><tr><td style="" align="left">
+    u
+    </td><td style="" align="left">
+    最後の移動の取り消し（追加情報を得なかった場合のみ）
+    </td></tr><tr><td style="" align="left">
+    r
+    </td><td style="" align="left">
+    取り消された移動を再度やり直す
+    </td></tr><tr><td style="" align="left">
+    n
+    </td><td style="" align="left">
+    まだ移動可能な他の自軍ユニットを順番に選択する
+    </td></tr><tr><td style="" align="left">
+    Shift+n
+    </td><td style="" align="left">
+    まだ移動可能な他の自軍ユニットを逆の順番で選択する
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    Ctrl+v
+    </td><td style="" align="left">
+    敵の移動可能性を見る（敵が次のターンで移動可能な地点）
+    </td></tr><tr><td style="" align="left">
+    Ctrl+b
+    </td><td style="" align="left">
+    敵の潜在的な移動可能性を見る。もしあなたのユニットがマップ上に存在しなかった場合の
+    </td></tr><tr><td style="" align="left">
+    数字キーの 1 から 7
+    </td><td style="" align="left">
+    選択されているユニットがそのターンで移動できる範囲
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    空白キー
+    </td><td style="" align="left">
+    そのユニットのターンを終了しまだ移動可能な他の自軍ユニットを選択する
+    </td></tr><tr><td style="" align="left">
+    Shift+空白キー
+    </td><td style="" align="left">
+    現在選択されているユニットのターンを終了する
+    </td></tr><tr><td style="" align="left">
+    Ctrl+空白キー
+    </td><td style="" align="left">
+    ユニットではなくプレイヤー自体のターンを終了する
+    </td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="idp30717888"></a><p class="title"><strong>表2.3 計画モードで使用されるホットキー</strong></p><div class="table-contents"><table summary="計画モードで使用されるホットキー" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    p
+    </td><td style="" align="left">
+    計画モードの切替
+    </td></tr><tr><td style="" align="left">
+    y
+    </td><td style="" align="left">
+    計画実行
+    </td></tr><tr><td style="" align="left">
+    h
+    </td><td style="" align="left">
+    計画の一部行動の取り消し
+    </td></tr><tr><td style="" align="left">
+    Page Down
+    </td><td style="" align="left">
+    行動を繰り下げる
+    </td></tr><tr><td style="" align="left">
+    Page Up
+    </td><td style="" align="left">
+    行動を繰り上げる
+    </td></tr><tr><td style="" align="left">
+    Ctrl+y
+    </td><td style="" align="left">
+    全計画実行
+    </td></tr><tr><td style="" align="left">
+    i
+    </td><td style="" align="left">
+    死亡を仮定
+    </td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="idp30730512"></a><p class="title"><strong>表2.4 マルチプレイヤー・ゲームで使用されるホットキー</strong></p><div class="table-contents"><table summary="マルチプレイヤー・ゲームで使用されるホットキー" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    m
+    </td><td style="" align="left">
+    他のプレイヤーと会話する
+    </td></tr><tr><td style="" align="left">
+    Ctrl+m
+    </td><td style="" align="left">
+    あなたの同盟軍と会話する
+    </td></tr><tr><td style="" align="left">
+    Alt+m
+    </td><td style="" align="left">
+    マルチプレイヤー・ゲームの全員に話しかける
+    </td></tr><tr><td style="" align="left">
+    Alt+c
+    </td><td style="" align="left">
+    会話記録を読む
+    </td></tr><tr><td style="" align="left">
+    Ctrl+x
+    </td><td style="" align="left">
+    会話を消去する
+    </td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="idp30741104"></a><p class="title"><strong>表2.5 その他のホットキー</strong></p><div class="table-contents"><table summary="その他のホットキー" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    Ctrl+c
+    </td><td style="" align="left">
+    画面上のラベルを消去する
+    </td></tr><tr><td style="" align="left">
+    /
+    </td><td style="" align="left">
+    検索（ラベルまたはユニット名による）
+    </td></tr><tr><td style="" align="left">
+    Alt+l
+    </td><td style="" align="left">
+    ヘックス上にラベルを貼りつける
+    </td></tr><tr><td style="" align="left">
+    Ctrl+l
+    </td><td style="" align="left">
+    チーム・ラベルを設定する
+    </td></tr><tr><td style="" align="left">
+    </td><td style="" align="left">
+    </td></tr><tr><td style="" align="left">
+    :
+    </td><td style="" align="left">
+    <a class="ulink" href="http://www.wesnoth.org/wiki/CommandMode" target="_top">コマンド・モード</a>
+    </td></tr><tr><td style="" align="left">
+    F5
+    </td><td style="" align="left">
+    キャッシュを更新する
+    </td></tr><tr><td style="" align="left">
+    Shift+c
+    </td><td style="" align="left">
+    ユニットを出現させる（デバッグ用）
+    </td></tr><tr><td style="" align="left">
+    f
+    </td><td style="" align="left">
+    AI に委任する
+    </td></tr></tbody></table></div></div><br class="table-break" /><p>MacOSX ではいくつかのキーで Ctrl を Cmd に置き換えてください。これは一覧です。</p><div class="table"><a id="idp30757744"></a><p class="title"><strong>表2.6 その他のホットキー</strong></p><div class="table-contents"><table summary="その他のホットキー" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    Cmd+w
+    </td><td style="" align="left">
+    ゲーム終了
+    </td></tr><tr><td style="" align="left">
+    Cmd+,
+    </td><td style="" align="left">
+    設定メニューに行く
+    </td></tr><tr><td style="" align="left">
+    Ctrl+F5
+    </td><td style="" align="left">
+    キャッシュを更新する
+    </td></tr><tr><td style="" align="left">
+    Option+Space
+    </td><td style="" align="left">
+    ユニットではなくプレイヤー自体のターンを終了する
+    </td></tr></tbody></table></div></div><br class="table-break" /><p>Pandora でいくつかのホットキーは Pandora の提供する機能を使うために変更されています。もし、あなたが Pandora
+を使用しているならば、これらのキーは前のものと違います。</p><div class="table"><a id="idp30767792"></a><p class="title"><strong>表2.7 Pandora で使用される操作とホットキー</strong></p><div class="table-contents"><table summary="Pandora で使用される操作とホットキー" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /></colgroup><tbody><tr><td style="" align="left">
+    D-Pad
+    </td><td style="" align="left">
+    スクロールする
+    </td></tr><tr><td style="" align="left">
+    GamingButton A
+    </td><td style="" align="left">
+    雇用する
+    </td></tr><tr><td style="" align="left">
+    GamingButton B
+    </td><td style="" align="left">
+    最後の移動の取り消し（追加情報を得なかった場合のみ）
+    </td></tr><tr><td style="" align="left">
+    GamingButton X
+    </td><td style="" align="left">
+    まだ移動可能な他の自軍ユニットを順番に選択する
+    </td></tr><tr><td style="" align="left">
+    GamingButton Y
+    </td><td style="" align="left">
+    召還する
+    </td></tr><tr><td style="" align="left">
+    Alt+GamingButton Y
+    </td><td style="" align="left">
+    待ち行列を下がる
+    </td></tr><tr><td style="" align="left">
+    Alt+GamingButton X
+    </td><td style="" align="left">
+    待ち行列を上がる
+    </td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section" title="2.2. 所持金"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_gold_2"></a>2.2. 所持金</h2></div></div></div><p>開始時にそれぞれの陣営はいくらかのゴールドを与えられます。そして毎ターン 2+占領している村の数*2
+ゴールドを受け取ります。キャンペーンでは前シナリオ終了時の 80%
+とシナリオに設定されている最小金額の合計になります。通常その最小金額は難易度レベルが低いほど増加します。</p><div class="section" title="2.2.1. 雇用と召還"><div class="titlepage"><div><div><h3 class="title"><a id="_recruiting_and_recalling"></a>2.2.1. 雇用と召還</h3></div></div></div><p><span class="inlinemediaobject"><img src="images/recruit-1.9.4.jpg" alt="雇用ダイアログ" /></span></p><p>ゴールドの主な使い道は新兵を雇用するかキャンペーンの前シナリオからユニットを召還して、あなたの軍隊を作り上げることです。雇用または召還はリーダーが城の主塔におりその城に空きヘックスがある場合のみ可能です。</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+城の空きヘックスで右クリックしてから「雇用する」を選択することで一覧から新ユニットを雇用することができます。雇用にかかる金額はユニットにより異なりますが、大抵は
+10 から 20 ゴールドの間です。
+</li><li class="listitem">
+城の空きヘックスで右クリックしてから「召還する」を選択することで一覧から前シナリオのユニットを召還することができます。召還にかかる金額は一律 20
+ゴールドです。詳しくは<a class="link" href="#unit_recall" title="2.3.6. ユニットの召還">ユニットの召還</a>を見てください。
+</li></ul></div></div><div class="section" title="2.2.2. 維持費"><div class="titlepage"><div><div><h3 class="title"><a id="_upkeep"></a>2.2.2. 維持費</h3></div></div></div><p>Each unit also has an upkeep cost. The upkeep cost is generally equal to the
+level of the unit, unless the unit has the "Loyal" trait (<a class="link" href="#traits" title="2.3.2. 特性">see below</a>). Units that are not initially recruited —
+i.e. the leader or those that join voluntarily — usually have the Loyal
+trait. Upkeep is only paid if the total upkeep of a side’s units is
+greater than the number of villages that side controls. Upkeep paid is the
+difference between the number of villages and the upkeep cost.</p></div><div class="section" title="2.2.3. 収入"><div class="titlepage"><div><div><h3 class="title"><a id="_income"></a>2.2.3. 収入</h3></div></div></div><p>というわけで、最終的な収入を決定する式はこのようになります。</p><pre class="literallayout">2 + villages − maximum(0, upkeep − villages)</pre><p>忠義以外のユニットのレベルの合計が維持費合計となります。</p><p>もし維持費合計が村の数+2 を上回るとその陣営はゴールドを失いはじめます。等しければゴールドの増減はありません。</p></div></div><div class="section" title="2.3. ユニット"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_units"></a>2.3. ユニット</h2></div></div></div><p>Battle for Wesnoth は個性豊かな数百種類のユニットを持っています。加えて、大部分のユニットは<a class="link" href="#traits" title="2.3.2. 特性">特性</a>を持っており、同種ユニットとは微妙に異なる存在になります。またキャンペーン開発者が独自ユニットをそのキャンペーンに追加することもあります。</p><p>全てのユニットはヒットポイント(HP)・残り移動可能ポイント・使用可能武器と与えるダメージ・時刻属性を持ちます。加えて、ユニットはその他の特殊能力を持つ可能性があります。その詳細はこの項目で説明されます。</p><div class="section" title="2.3.1. 時刻属性"><div class="titlepage"><div><div><h3 class="title"><a id="_alignment"></a>2.3.1. 時刻属性</h3></div></div></div><p>全てのユニットは秩序・中立・混沌・黄昏（たそがれ）の中からどれか一つ時刻属性を持ちます。時刻属性はそのユニットがゲーム内の時刻によって受ける影響のことです。中立ユニットは時刻によって影響されません。秩序ユニットは敵に与えるダメージが昼間は大きく夜間は小さくなります。逆に混沌ユニットは敵に与えるダメージが昼間は小さく夜間は大きくなります。黄昏ユニットは敵に与えるダメージが昼夜ともに小さく本来の力を発揮できるのは夜明けと夕方だけです。</p><p>昼夜にはそれぞれ二種類ありますが、画像が異なるだけでゲームへの影響はありません。</p><p>次の表で秩序・混沌・黄昏（たそがれ）ユニットの時刻による影響を示します。（中立ユニットは時刻に全く影響されません）</p><div class="table"><a id="idp30803376"></a><p class="title"><strong>表2.8 時刻とダメージ</strong></p><div class="table-contents"><table summary="時刻とダメージ" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /><col align="left" /><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th style="" align="left">
+    ターン
+    </th><th style="" align="left">
+    画像
+    </th><th style="" align="left">
+    一日の局面
+    </th><th style="" align="left">
+    秩序
+    </th><th style="" align="left">
+    混沌
+    </th><th style="" align="left">
+    黄昏（たそがれ）
+    </th></tr></thead><tbody><tr><td style="" align="left">
+    1
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-dawn.png" alt="images/schedule-dawn.png" /></span>
+    </td><td style="" align="left">
+    夜明け
+    </td><td style="" align="left">
+    --
+    </td><td style="" align="left">
+    --
+    </td><td style="" align="left">
+    --
+    </td></tr><tr><td style="" align="left">
+    2
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-morning.png" alt="images/schedule-morning.png" /></span>
+    </td><td style="" align="left">
+    Day (morning)
+    </td><td style="" align="left">
+    +25%
+    </td><td style="" align="left">
+    −25%
+    </td><td style="" align="left">
+    −25%
+    </td></tr><tr><td style="" align="left">
+    3
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-afternoon.png" alt="images/schedule-afternoon.png" /></span>
+    </td><td style="" align="left">
+    午後
+    </td><td style="" align="left">
+    +25%
+    </td><td style="" align="left">
+    −25%
+    </td><td style="" align="left">
+    −25%
+    </td></tr><tr><td style="" align="left">
+    4
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-dusk.png" alt="images/schedule-dusk.png" /></span>
+    </td><td style="" align="left">
+    夕方
+    </td><td style="" align="left">
+    --
+    </td><td style="" align="left">
+    --
+    </td><td style="" align="left">
+    --
+    </td></tr><tr><td style="" align="left">
+    5
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-firstwatch.png" alt="images/schedule-firstwatch.pn" /></span>
+    </td><td style="" align="left">
+    夜
+    </td><td style="" align="left">
+    −25%
+    </td><td style="" align="left">
+    +25%
+    </td><td style="" align="left">
+    −25%
+    </td></tr><tr><td style="" align="left">
+    6
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-secondwatch.png" alt="images/schedule-secondwatch.png" /></span>
+    </td><td style="" align="left">
+    深夜
+    </td><td style="" align="left">
+    −25%
+    </td><td style="" align="left">
+    +25%
+    </td><td style="" align="left">
+    −25%
+    </td></tr><tr><td style="" align="left">
+    特殊
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/schedule-underground.png" alt="images/schedule-underground.png" /></span>
+    </td><td style="" align="left">
+    地下
+    </td><td style="" align="left">
+    −25%
+    </td><td style="" align="left">
+    +25%
+    </td><td style="" align="left">
+    −25%
+    </td></tr></tbody></table></div></div><br class="table-break" /><p>地下で行われるシナリオがあることに気をつけましょう。ここでは常に夜となります！</p><p>例：　ここで秩序ユニットと混沌ユニットが対戦するとします。両者の基礎攻撃力は共に 12 です。夜明けと夕方の時刻には両者とも攻撃が命中した時のダメージは
+12 です。朝から午後までの時刻には、秩序ユニットは (<code class="literal">12 \* 1.25</code>) つまり 15
+ダメージ、混沌ユニットは(<code class="literal">12 \* 0.75</code>) つまり 9
+ダメージを敵に与えます。逆に夜から深夜までの時刻には秩序ユニットは 9 ダメージ、混沌ユニットは 15 ダメージになります。</p><p>もし、同じ条件で中立ユニットが戦闘したなら、時刻に関係なく 12 ダメージを敵に与えます。</p></div><div class="section" title="2.3.2. 特性"><div class="titlepage"><div><div><h3 class="title"><a id="traits"></a>2.3.2. 特性</h3></div></div></div><p>ユニットはその個性が反映された特性を持ちます。特性はユニットが作り出される時にランダムに割り当てられます。大半のユニットは 2 つの特性を持ちます。</p><p>大半のユニットに適用される特性は次の通りです。</p><div class="variablelist"><dl><dt><span class="term">
+知的
+</span></dt><dd>
+  知的なユニットは通常より 20 ％少ない経験値でレベルアップできます。ただし、トロル族にこの特性が与えられることはありません。
+知的なユニットは次のレベルへと早く進むため、キャンペーンの開始時には大変便利です。最高位後昇進（AMLA）はレベルアップほど重要な変化ではないため、キャンペーンの後半では知的はそれほど有用ではなくなります。もし多くの最高レベルユニットがいるなら、より望ましい特性をもつユニットを召還したほうがよいかもしれません。
+</dd><dt><span class="term">
+敏捷
+</span></dt><dd>
+  敏捷なユニットには移動力が 1 追加されますが、最大 HP は 5 ％減少します。
+敏捷は、特にトロルや重歩兵のような動きの遅いユニットで、最も注目に値する特性です。「敏捷」特性をもつユニットはしばしば荒い地形において素晴らしく増加した機動力があるため、あなたの軍隊を配備する時に考慮すべきです。また敏捷なユニットは、この特性を持たないユニットよりも頑丈ではないため、戦闘の激しい場所を保持し続けることには向いていません。
+</dd><dt><span class="term">
+頑強
+</span></dt><dd>
+  頑強なユニットは最大 HP が 4 ＋レベルあたり 1 追加されます。
+頑強なユニットはキャンペーンの全ての段階において便利であり、全てのユニットにとって便利な特性です。少ないヒットポイントで良い防御力や高い耐性の組み合わせをもつようなユニットには、回復力は特性としてしばしば非常に助けとなります。頑強なユニットは、敵に対して戦略的な拠点を保持する上で、特に便利となります。
+</dd><dt><span class="term">
+強力
+</span></dt><dd>
+  強力なユニットは格闘攻撃で命中あたり 1 の追加ダメージを与える上に、最大 HP も 1 追加されます。
+全ての接近戦ユニットに便利な一方で、「強力」は、エルフの戦士のような高い攻撃回数をもつユニットにとって、最も効果があります。わずかな追加ダメージによって、傷つけるだけの攻撃を最後の一撃へと変えるような場合、強力なユニットは大変便利です。
+</dd></dl></div><p>特定のユニットまたは種族にのみ割り当てられる特性も存在します。それは：</p><div class="variablelist"><dl><dt><span class="term">
+器用
+</span></dt><dd>
+  器用はエルフにのみ備わっている特性です。エルフの者達は不思議な優雅さをもち、弓を扱うことに非常に才能があることで知られています。しかしながら、ある者は同胞を上回る天性の才能を与えられています。これらのエルフは一矢毎に追加のダメージポイントを与えることができます。
+</dd><dt><span class="term">
+壮健
+</span></dt><dd>
+  ドワーフの中には体力があることで有名なものがおり、他のドワーフよりもたくましく、移動している間でも休むことができます。壮健なユニットは最大 HP が 1
+＋レベルあたり 1 追加されますし、負傷していればターンごとに無条件で 2 HP（最大 HP 以下で）回復します。
+</dd><dt><span class="term">
+勇敢
+</span></dt><dd>
+  不利な時刻でも勇敢があれば攻撃力が減少することはありません。（重歩兵、ネクロファージ、トロル族、歩く死体にのみ与えられる可能性があります。）
+</dd></dl></div><p>ランダムに割り当てられることがない、いくつかの特性も存在します。これらの特性はキャンペーン開発者が割り当てるかユニットのタイプに応じて決定されます。</p><div class="variablelist"><dl><dt><span class="term">
+忠義
+</span></dt><dd>
+  キャンペーンの間、ある種のユニットは自分自身の意思でプレイヤーの戦力に加わることを選択します。これらのユニットは忠義特性を持つとされます。彼等は召還される際には支払いが必要ですが、維持費は全くかかりません。これは長いキャンペーンの間に金の貯えが不足した時などには、貴重なものとなります。この特性は雇用されたユニットには決して与えられないため、このようなユニットを解雇したり、愚かな死に追いやることは、とても知恵が無いといえます。
+</dd><dt><span class="term">
+アンデッド
+</span></dt><dd>
+  アンデッドのユニットには毒の効果がありません。同様に、生命吸収や疫病も効果がありません。アンデッドのユニットは基本的に唯一の特性として<span class="emphasis"><em>アンデッド</em></span>を持っています。
+アンデッドのユニットは再び戦うために甦った死んだ肉体であるため、毒は全く効きません。このため、攻撃において毒を使う敵を相手にする場合に、貴重な存在となります。
+</dd><dt><span class="term">
+機械
+</span></dt><dd>
+  機械ユニットには命がないので毒の効果がありません。同様に、生命吸収や疫病も効果がありません。機械ユニットは基本的に唯一の特性として<span class="emphasis"><em>機械</em></span>を持っています。
+</dd></dl></div></div><div class="section" title="2.3.3. 特殊武器"><div class="titlepage"><div><div><h3 class="title"><a id="_unit_specialties"></a>2.3.3. 特殊武器</h3></div></div></div><p>ある種のユニットは特殊な攻撃を持っています。これらはこの項目で一覧表示されます。</p><div class="variablelist"><dl><dt><span class="term">
+奇襲
+</span></dt><dd>
+  奇襲:
+攻撃時に使用された場合、もし攻撃対象の反対側にその対象の敵がいて、かつその反対側のユニットが能力を奪われて（例えば石化していたり麻痺しているなど）いない場合、この攻撃は倍のダメージとなります。
+</dd><dt><span class="term">
+狂戦
+</span></dt><dd>
+  狂戦:
+攻撃においても防御においても、この攻撃が戦いで使われた場合、いずれかの戦闘ユニットが倒されるまで交戦をやめません。もしくは 30
+回の攻撃が行われるまで。
+</dd><dt><span class="term">
+突撃
+</span></dt><dd>
+  突撃:
+攻撃時に使用された場合、この攻撃は標的への与えるダメージが倍となります。標的からの反撃によって受けるダメージも倍となります。
+</dd><dt><span class="term">
+生命吸収
+</span></dt><dd>
+  生命吸収:
+このユニットは生者から生命力を奪って、与えたダメージの半分（切り下げ）だけ自分の HP を回復させます。
+</dd><dt><span class="term">
+先制
+</span></dt><dd>
+  先制:
+このユニットは、たとえ防御時であっても常に戦闘で先に攻撃します。
+</dd><dt><span class="term">
+魔法
+</span></dt><dd>
+  魔法:
+この攻撃は攻撃されるユニットが持っているどんな防御能力も関係なく常に命中率が 70% となります。
+</dd><dt><span class="term">
+射撃
+</span></dt><dd>
+  射撃:
+攻撃時に使用された場合、この攻撃は命中率が最低 60% はあるようになります。
+</dd><dt><span class="term">
+疫病
+</span></dt><dd>
+  疫病:
+疫病攻撃によってユニットが倒された場合は、そのユニットは攻撃ユニットと同じ陣営の歩く死体（これも疫病攻撃を持つ）に置き換えられます。この攻撃はアンデッドや村にいるユニットには効果がありません。
+</dd><dt><span class="term">
+毒
+</span></dt><dd>
+  毒:
+この攻撃は生きている標的を毒状態にします。毒を受けているユニットは解毒するか HP が 1 になるまで、毎ターン HP が 8
+減っていきます。毒そのものでは、ユニットが死ぬことはありません。
+</dd><dt><span class="term">
+遅化
+</span></dt><dd>
+  遅化:
+この攻撃は、ターンが終わるまでターゲットを遅くします。遅化は攻撃によるダメージを半減させ、遅化されたユニットの移動コストを倍にします。遅化を受けたユニットは、選択するとサイドバーの情報にカタツムリのアイコンが表示されます。
+</dd><dt><span class="term">
+石化
+</span></dt><dd>
+  石化:
+この攻撃は標的を石化させ、石へと変えます。石化したユニットは移動や攻撃はできません。
+</dd><dt><span class="term">
+群れ
+</span></dt><dd>
+  群れ:
+ユニットが傷ついているとこの攻撃の回数が減少します。攻撃回数はそのユニットが持つ HP と最大 HP の割合に比例します。例えばユニットの HP
+がその最大 HP の 3/4 だった場合、攻撃回数も 3/4 になります。
+</dd></dl></div></div><div class="section" title="2.3.4. 能力"><div class="titlepage"><div><div><h3 class="title"><a id="_abilities"></a>2.3.4. 能力</h3></div></div></div><p>ある種のユニットは他のユニットに直接影響を与える能力があるか、あるいはそのユニットが他のユニットにどのように作用するかにおいて効力を持ちます。これらの能力はこの項目で一覧表示されます。</p><div class="variablelist"><dl><dt><span class="term">
+伏兵
+</span></dt><dd>
+  伏兵:
+このユニットは森に隠れることができ、敵に見つからなくなります。
+
+このユニットが森にいるときはこのユニットを見つけることはできません。敵がこのユニットの隣にいる場合を除いて。このユニットを初めて見つけた敵ユニットはそれ以上移動することはできません。
+</dd><dt><span class="term">
+潜伏
+</span></dt><dd>
+  潜伏:
+このユニットは村に隠れることができ（水中の村は例外です）、敵に見つけられることはありません。敵がこのユニットの隣にいる場合を除いて。
+
+このユニットが村にいるときは、このユニットを見つけることはできません。敵がこのユニットの隣にいる場合を除いて。このユニットを初めて見つけた敵ユニットはそれ以上移動することはできません。
+</dd><dt><span class="term">
+治療
+</span></dt><dd>
+  治療:
+治療者は、毒を受けたユニットを治療することができます。ただし、毒から治療されたそのターン内には、さらなる回復は受けられません。
+</dd><dt><span class="term">
+回復 +4
+</span></dt><dd>
+  回復 +4:
+このユニットは隣接した友好的なユニットをターン開始時に回復させます。
+
+このユニットに治療されるユニットは 1 ターンに最大でHPが 4 回復します。もしくは、そのターンに毒の効果が発動しないようにします。
+毒を受けているユニットの解毒を行うことはできません。村で回復させるか、治療ユニットを捜して下さい。
+</dd><dt><span class="term">
+回復 +8
+</span></dt><dd>
+  回復 +8:
+このユニットは薬草と魔法を組み合わせて、戦場で通常可能であったよりも素早くユニットを回復します。
+
+このユニットに治癒されるユニットは 1 ターンに最大でHPが 8 回復します。もしくは、そのターンに毒の効果が発動しないようにします。
+毒を受けているユニットの解毒を行うことはできません。村で回復させるか、治療ユニットを捜して下さい。
+</dd><dt><span class="term">
+照明
+</span></dt><dd>
+  照明:
+このユニットは周囲を明るくして、秩序ユニットを戦いやすく、混沌ユニットを戦いにくくします。すべての隣接ユニットは夜には夕方として、夕方には昼として戦うようになります。
+</dd><dt><span class="term">
+統率
+</span></dt><dd>
+  統率:
+このユニットは隣接した自軍が所有するユニットを指揮し、それらがうまく戦えるようにします。
+
+隣接している低レベルの自軍が所有するユニットは戦闘時により多くのダメージを与えるようになります。このユニットとのレベルの差に応じて、与えるダメージが
+25% ずつ増加します。
+</dd><dt><span class="term">
+隠密
+</span></dt><dd>
+  隠密:
+このユニットは夜間は見えなくなります。
+
+このユニットは夜には見つけることはできません。敵がこのユニットの隣にいる場合を除いて。このユニットを初めて見つけた敵ユニットはそれ以上移動することはできません。
+</dd><dt><span class="term">
+再生
+</span></dt><dd>
+  再生:
+このユニットはターンごとに自身の HP を 8 回復します。毒を受けているなら、回復する代わりに毒を取り除きます。
+</dd><dt><span class="term">
+散兵
+</span></dt><dd>
+  散兵:
+このユニットは敵のそばを素早く移動するという能力を持ち、すべての敵の支配ゾーンを無視できます。
+</dd><dt><span class="term">
+装甲
+</span></dt><dd>
+  装甲:
+防御時、このユニットの抵抗力は最大で 50% まで倍増します。弱点には影響がありません。
+</dd><dt><span class="term">
+潜水
+</span></dt><dd>
+  潜水:
+このユニットは水中深くに隠れることができ、敵に見つからなくなります。
+
+このユニットが深い水中にいるときは、このユニットを見つけることはできません。敵がこのユニットの隣にいる場合を除いて。このユニットを初めて見つけた敵ユニットはそれ以上移動することはできません。
+</dd><dt><span class="term">
+瞬間移動
+</span></dt><dd>
+  瞬間移動:
+このユニットは 1 回の移動を使用して、その陣営が所有する誰もいない 2 つの村の間を瞬間移動することができます。
+</dd></dl></div></div><div class="section" title="2.3.5. 経験値"><div class="titlepage"><div><div><h3 class="title"><a id="_experience"></a>2.3.5. 経験値</h3></div></div></div><p>ユニットは戦闘に参加すると経験値を与えられます。十分な経験値を獲得すると、ユニットはレベルアップして、より強力になります。得られる経験値は敵のレベルと戦闘結果によります。つまり、敵ユニットに最後の一撃を与えた時、敵レベルあたり
+8 経験値（レベル 0 の敵からは 4 経験値）を受け取ります。あなたも敵も生き残ったら敵レベルあたり 1 経験値を受け取ります。言い換えると：</p><div class="table"><a id="idp30934144"></a><p class="title"><strong>表2.9 敵との戦闘や最後の一撃で得られる経験値は敵のレベルによって異なります。</strong></p><div class="table-contents"><table summary="敵との戦闘や最後の一撃で得られる経験値は敵のレベルによって異なります。" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th style="" align="left">
+    敵のレベル
+    </th><th style="" align="left">
+    最後の一撃ボーナス
+    </th><th style="" align="left">
+    戦闘ボーナス
+    </th></tr></thead><tbody><tr><td style="" align="left">
+    0
+    </td><td style="" align="left">
+    4
+    </td><td style="" align="left">
+    0
+    </td></tr><tr><td style="" align="left">
+    1
+    </td><td style="" align="left">
+    8
+    </td><td style="" align="left">
+    1
+    </td></tr><tr><td style="" align="left">
+    2
+    </td><td style="" align="left">
+    16
+    </td><td style="" align="left">
+    2
+    </td></tr><tr><td style="" align="left">
+    3
+    </td><td style="" align="left">
+    24
+    </td><td style="" align="left">
+    3
+    </td></tr><tr><td style="" align="left">
+    4
+    </td><td style="" align="left">
+    32
+    </td><td style="" align="left">
+    4
+    </td></tr><tr><td style="" align="left">
+    5
+    </td><td style="" align="left">
+    40
+    </td><td style="" align="left">
+    5
+    </td></tr><tr><td style="" align="left">
+    6
+    </td><td style="" align="left">
+    48
+    </td><td style="" align="left">
+    6
+    </td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section" title="2.3.6. ユニットの召還"><div class="titlepage"><div><div><h3 class="title"><a id="unit_recall"></a>2.3.6. ユニットの召還</h3></div></div></div><p>あなたがシナリオを終わらせた時、全ての生き残り味方ユニットは次のシナリオで召還可能になります。あなたが雇用・召還したターンではそのユニットは移動も攻撃もできません。召還されたユニットは以前のレベル・経験値・ときには獲得した魔法の品物を維持していますが、ヒットポイントだけは最大値で召還されます。</p></div></div><div class="section" title="2.4. 移動"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_moving"></a>2.4. 移動</h2></div></div></div><p>Clicking on a unit identifies all the places it can move on its current turn
+by dimming unreachable hexes (pressing the number keys 2–7 will identify the
+additional hexes that can be reached in that number of turns in a similar
+manner). While in this mode, moving the cursor over a hex will identify the
+path your unit will take towards that hex as well as additional information
+on the defensive bonus of your unit on that hex and, if it will take more
+than one turn, the number of turns it will take your unit to arrive. If you
+do not wish to move the unit this mode can be cancelled by selecting a
+different unit (by clicking on the new unit or using the
+<code class="literal">n</code> or <code class="literal">N</code> keys) or by right-clicking
+(Command-click on a Mac) anywhere on the map. The <a class="link" href="#orbs" title="2.4.2. 宝珠">orbs</a> on the top of a unit’s energy bar provide a
+quick way to see which of your units have already moved or can move further
+in the current turn.</p><p>あなたが選択しているユニットを移動させると決定したら、移動先の地点をクリックするとユニットはその地点へ向かって移動します。もし、あなたが現在のターンで到着できない地点を目的地としたなら、ユニットは現在のターンで行けるだけ進んでから、<span class="emphasis"><em>進行モード</em></span>に入ります。<span class="emphasis"><em>進行モード</em></span>ではユニットは目的地に到着するまでのターンを移動し続けます。あなたは途中でユニットをクリックしてから新しい目的地をクリックして変更することもできますし、再度クリックすることで<span class="emphasis"><em>進行モード</em></span>自体を取り消すこともできます。</p><p>中立・敵所有の村の上に移動するとその村の所有権を獲得してユニットの移動は終了します。</p><p>ほとんどのユニットには支配領域(ZOC=Zone Of
+Control)があるので、あなたのユニットの到達可能地点および経路はその影響を受けます。これらの制限は、自動的に反映されています。</p><div class="section" title="2.4.1. 支配領域(ZOC=Zone Of Control)"><div class="titlepage"><div><div><h3 class="title"><a id="_zone_of_control"></a>2.4.1. 支配領域(ZOC=Zone Of Control)</h3></div></div></div><p>ユニットの支配領域(ZOC)は隣接する 6
+ヘックスに広がっています。また、敵ユニットの支配領域(ZOC)に移動したユニットは強制的に停止させられます。散兵能力を持つユニットは敵の支配領域(ZOC)を無視できますし、強制的に停止させられることなく自由に移動できます。レベル
+0 のユニットは支配領域(ZOC)を形成できないので、全てのユニットは敵レベル 0 ユニットの周囲を移動できることについて考慮してください。</p></div><div class="section" title="2.4.2. 宝珠"><div class="titlepage"><div><div><h3 class="title"><a id="orbs"></a>2.4.2. 宝珠</h3></div></div></div><p>各ユニットの隣に示される体力表示棒の上にあるのは宝珠です。この宝珠は、</p><div class="table"><a id="idp30966592"></a><p class="title"><strong>表2.10 宝珠</strong></p><div class="table-contents"><table summary="宝珠" cellpadding="4px" style="border-collapse: collapse;border-top: 3px solid #527bbd; border-bottom: 3px solid #527bbd; "><colgroup><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th style="" align="left">
+    宝珠
+    </th><th style="" align="left">
+    画像
+    </th><th style="" align="left">
+    説明
+    </th></tr></thead><tbody><tr><td style="" align="left">
+    緑
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/orb-green.jpg" alt="緑の宝珠" /></span>
+    </td><td style="" align="left">
+    あなたが操作するユニットで、このターンにまだ全く動いていないなら緑
+    </td></tr><tr><td style="" align="left">
+    黄
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/orb-yellow.jpg" alt="黄の宝珠" /></span>
+    </td><td style="" align="left">
+    あなたが操作するユニットで、移動したがまだ動いたり攻撃したりできるなら黄
+    </td></tr><tr><td style="" align="left">
+    赤
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/orb-red.jpg" alt="赤の宝珠" /></span>
+    </td><td style="" align="left">
+    あなたが操作するユニットで、全ての行動が終わったなら赤
+    </td></tr><tr><td style="" align="left">
+    青
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/orb-blue.jpg" alt="青の宝珠" /></span>
+    </td><td style="" align="left">
+    あなた自身は操作できない同盟軍のユニット
+    </td></tr><tr><td style="" align="left">
+    -
+    </td><td style="" align="left">
+    <span class="inlinemediaobject"><img src="images/orb-none.jpg" alt="宝珠なし" /></span>
+    </td><td style="" align="left">
+    敵ユニットには、体力表示棒の上に宝珠がありません。
+    </td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section" title="2.4.3. 楕円、チームの色、英雄のしるし"><div class="titlepage"><div><div><h3 class="title"><a id="_ellipses_team_colors_and_hero_icons"></a>2.4.3. 楕円、チームの色、英雄のしるし</h3></div></div></div><p>通常、各ユニットの足元には色つきの楕円があります。色はその所属チームを表現しています。キャンペーンでは人間が操作するプレイヤーは赤になります。チームの色は所属ユニットの衣服や盾に刻み付けられた紋章に影響する事もあります。</p><p>大抵の場合、楕円は実線になるのですが、レベル 0 ユニットでは、あなたは点線の楕円を見ることになるでしょう。これは支配領域(ZOC=Zone Of
+Contorol)をそのユニットが持たないことを意味します。</p><p>いくつかのキャンペーンではリーダーや英雄を示すために星型の足場を使用します。ここで英雄とは何か特別な存在（例えばシナリオ途中で死亡してはならないなど）です。他のキャンペーンでは体力表示棒の上に英雄ユニットには銀色の王冠を表示します。さらに別のキャンペーンでは英雄を示すものが全くない場合もあります。それはキャンペーン製作者のデザイン上の選択によります。</p></div></div><div class="section" title="2.5. 戦闘"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_fighting"></a>2.5. 戦闘</h2></div></div></div><p>If you move next to an enemy unit, you may attack it. Click on your unit
+that is next to an enemy unit, and click on the enemy you want to attack –
+this will bring up a window that presents further options for the
+fight. Every unit has one or more weapons it can attack with. Some weapons,
+such as swords, are melee weapons, and some weapons, such as bows, are
+ranged weapons.</p><p>もし、あなたが格闘用武器で攻撃したなら、敵も格闘用武器を使って反撃してきます。もし、あなたが投射用武器で攻撃したなら、敵も投射用武器を使って反撃してきます。もし、敵ユニットが同種の武器を持っていなければ、反撃することはできず、その戦闘中にあなたはいかなるダメージも受けません。</p><p>Different types of attacks do different amounts of damage, and a certain
+number of strikes may be made with each weapon. For instance, an Elvish
+Fighter does 5 points of damage with its sword every time it hits, and can
+strike 4 blows with the sword in one exchange. This is written as 5–4,
+meaning 5 damage per hit, and 4 strikes.</p><p>それぞれのユニットはそれが居る地形によって敵の攻撃が命中する確率に違いがあります。簡単に言うと、城や村に居るユニットには命中率がもっとも低下し、森に居るエルフには命中率が低いということです。各ユニットのそれぞれ地形における回避率（攻撃が命中しない確率）を見るためには、ユニットをクリックしてから、あなたが興味のある地形にマウスカーソルを移してみてください。すると、ヘックス上に回避率が表示され、同時にステータス画面にも表示されます。</p><p>あなたは攻撃側と防御側それぞれの死亡確率を含む追加情報を得ることもできます。そのためには、戦闘窓の右下にある「ダメージ計算」ボタンをクリックしてみてください。</p><div class="section" title="2.5.1. 攻撃の種類"><div class="titlepage"><div><div><h3 class="title"><a id="_attack_types"></a>2.5.1. 攻撃の種類</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+<span class="strong"><strong>斬撃</strong></span>：
+武器には相手の肉体を切り裂くのに使われる刃があります。例：ダガー、シミター、サーベル、（ドレークなどの）かぎ爪
+</li><li class="listitem">
+<span class="strong"><strong>貫通</strong></span>：
+武器には長い棒に鋭い先端と持ち手があるか飛んでゆく物体であり、相手を突き刺すことに使われます。例：騎兵や歩兵の槍、矢
+</li><li class="listitem">
+<span class="strong"><strong>打撃</strong></span>：
+武器には鋭い先端も刃も全くありませんが、相手の骨を叩き潰すのに十分なだけの重さがあります。例：メイス、杖、（トロルなどの）拳
+</li><li class="listitem">
+<span class="strong"><strong>冷気</strong></span>：
+武器は基本的に冷気または氷の飛んでゆく物体です。例：（暗黒僧などの）冷気の波動
+</li><li class="listitem">
+<span class="strong"><strong>火炎</strong></span>：
+これを利用した武器は相手を焼き鳥のようにします。例：（ドレークの）火炎のブレス
+</li><li class="listitem">
+<span class="strong"><strong>秘術</strong></span>：
+この攻撃は魔法によって作られているゾンビやスペクターそして他のアンデッドや霊魂に対してその魔法を無効にしてしまいます。例：白魔術師の魔法攻撃
+</li></ul></div></div><div class="section" title="2.5.2. 抵抗値"><div class="titlepage"><div><div><h3 class="title"><a id="_resistance"></a>2.5.2. 抵抗値</h3></div></div></div><p>それぞれのユニットは異なる攻撃方法に対して傷つきやすさに強弱があります。ユニットの解説では六個の数字によって六個の攻撃方法に対する強弱が示されています。よい抵抗力を示す数字はその攻撃方法ではあまりダメージを受けないことを意味します。逆に悪い抵抗力を示す数字はその攻撃方法で大きく傷つくことを意味します。</p><p>例：ドレークのうろこはほとんどの攻撃方法に対して強靭ですが、貫通と冷気による武器には弱点を持ちます。人間の騎兵は一般的によく防御されていますが、例外的に貫通攻撃に弱く、それが彼らの弱点になっています。（スケルトン系）アンデッドは斬撃や貫通には非常に強いのですが、打撃や秘術による攻撃に対して非常に弱いです。</p><p>最良の攻撃方法を敵ユニットに対して使用することは、あなたがそれらを倒すチャンスを十分に増大させます。</p></div></div><div class="section" title="2.6. 回復"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_healing"></a>2.6. 回復</h2></div></div></div><p>ユニットはターンあたり最大 8
+ポイント回復する可能性があります。ターンを通じて移動も戦闘も一切しなかったユニットは<span class="emphasis"><em>休息</em></span>状態と呼ばれ、ターンあたり
+2 ポイント回復します。<span class="emphasis"><em>休息</em></span>は他の回復手段と重複できるので、ターンあたり最大 2+8=10
+ポイント回復する場合もあります。</p><p>二つの基本的回復方法があります。</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+村に滞在してターンを終えれば、ターンあたり 8 ポイント回復できます。
+</li><li class="listitem">
+<span class="emphasis"><em>回復</em></span>能力を持つユニットに隣接してターンを終えれば、そのユニットの能力に応じて回復します。これは<span class="emphasis"><em>回復
++4</em></span>または<span class="emphasis"><em>回復 +8</em></span>として常に解説されています。
+</li></ul></div><div class="section" title="2.6.1. 再生"><div class="titlepage"><div><div><h3 class="title"><a id="_regeneration"></a>2.6.1. 再生</h3></div></div></div><p>トロルとウーズは自然に再生して自分自身を回復させる能力を持っています。それらが負傷している時にはターンあたり 8
+ポイント回復します。村や回復ユニットの隣では全ユニットがターンあたり 8
+ポイント回復しますが、トロルとウーズは追加的な恩恵を一切受けないことに注意してください。</p></div><div class="section" title="2.6.2. 毒"><div class="titlepage"><div><div><h3 class="title"><a id="_poison"></a>2.6.2. 毒</h3></div></div></div><p>いくつかの攻撃はあなたのユニットに毒のダメージを与えます。これが発生した時、毒されたユニットは治療されるまでターンあたり8ダメージを失い続けます。毒は村に滞在するか<span class="emphasis"><em>治療</em></span>能力を持つユニットに隣接するかしてターンを終えると治療されます。<span class="emphasis"><em>回復</em></span>能力のみを持つユニットは毒による追加的ダメージを抑えることはできますが根本的に治療することはできません。毒が治療されたターンでは毒による追加的ダメージも他の回復効果も受けることはありません。通常では毒されたユニットが治療されるまでの間に回復効果を得ることはありません。休息は依然として効果を持ちますが、それだけでは毒の効果を十分に減らすことができません。</p><p>回復についてのヒント</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+ユニットは完全に回復するまでに数ターンを必要とします。
+</li><li class="listitem">
+回復ユニット（エルフの呪術師・ドルイド僧・シェード、白魔術師、光の魔術師、聖騎士）は隣接するユニット全てを回復させることができます。よってあなたは、彼らを失わない範囲で前線に接近させておくことができます。
+</li><li class="listitem">
+回復ユニットは敵ユニットを回復させません。
+</li><li class="listitem">
+回復ユニットは自分自身を回復させることはできません。しかし、次の項目を見てください。
+</li><li class="listitem">
+回復ユニットをセットで使えば、もし必要な時は、お互いに回復させることができます。
+</li><li class="listitem">
+異なる同盟軍からの複数の回復ユニットは同じユニットを高速に回復させることができます。
+</li><li class="listitem">
+トロルとウーズは他のユニットを再生させることはできません。
+</li><li class="listitem">
+トロルとウーズは村のように自分自身の毒を治療できます。
+</li></ul></div></div></div></div><div class="chapter" title="第3章 戦略とヒント"><div class="titlepage"><div><div><h2 class="title"><a id="_strategy_and_tips"></a>第3章 戦略とヒント</h2></div></div></div><div class="section" title="3.1. 基本戦略"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="basic_strategy"></a>3.1. 基本戦略</h2></div></div></div><p>次からは、あなたが Wesnoth
+の戦闘に熟練する経歴の始めに知っておくべき基本的な戦闘原則とヒントを述べます。具体例は「王位継承者」キャンペーンを基準にしている場合があります。</p><div class="section" title="3.1.1. ユニットを無意味に消耗させないでください。"><div class="titlepage"><div><div><h3 class="title"><a id="_don_8217_t_waste_units"></a>3.1.1. ユニットを無意味に消耗させないでください。</h3></div></div></div><p>負傷しているユニットを確実な死に向けて送り出さないでください。一度ユニットが半分以上のヒットポイントを失ったら、あなたは次のことを真剣に考慮するべきです。つまり、安全な村に撤退させるか、または回復ユニット（エルフの呪術師や白魔術師のような）の手当てを受けさせるかです。回復ユニットは非常に重要です！</p><p>これには現実的な理由があります。重傷を負っているユニットは攻撃にも防御にもあまり役に立ちません。なぜなら、攻撃と同時に発生する反撃によって、それはしばしば消滅してしまうからです。さらに、それを確実な死に向けて送り出してしまうことで、それが今までに集めた経験値は失われてしまいます。リーダーが雇用可能地点にいないか基金がなくなっているかで交代要員の雇用は不可能である場合がほとんどです。もし交代要員を雇用できたとしても、大抵の場合、前線からは遠く離れています。よってユニットを無意味に消耗させないでください。</p></div><div class="section" title="3.1.2. 敵の到達可能範囲の外にいるためには"><div class="titlepage"><div><div><h3 class="title"><a id="_out_of_the_enemy_8217_s_reach"></a>3.1.2. 敵の到達可能範囲の外にいるためには</h3></div></div></div><p>あなたは負傷しているユニットをどのように守るべきでしょうか？一番簡単な回答は相手の到達可能範囲の外に置くことです。どんな敵でも近づけなければ攻撃することはできません。次章では支配領域(ZOC=Zone
+Of Control)で敵の移動を制限する方法を示します。</p><p>「行動」メニューにおいて「敵の動きを見る」を選ぶと、（あなたのユニットが今いる場所にいると仮定して）敵が移動する可能性があるすべてのヘックスが強調表示されます。次のターンに、弱い、あるいは傷ついたユニットに敵が到達できないことを確認するためにこれを使ってください。</p><p>あなたの軍隊が敵と接触する時には、あなたは先制攻撃したいと思うでしょう。よって、あなたの移動先が敵の到達可能範囲であることは避けるべきです。そうすれば、敵は攻撃できない一方で、あなたの攻撃可能範囲に入ってくることが十分考えられます。</p></div><div class="section" title="3.1.3. あなたの支配領域(ZOC=Zone Of Control)を保護する"><div class="titlepage"><div><div><h3 class="title"><a id="zoc"></a>3.1.3. あなたの支配領域(ZOC=Zone Of Control)を保護する</h3></div></div></div><p>レベル 1
+以上の全ユニットは隣接する六方向のヘックスをカバーする支配領域(ZOC)を持ちます。これは敵が隣接ヘックスに侵入できるのは一回限りであり、移動段階はその時点で終了することを意味します。（めったにいない散兵能力を持つ敵は例外的にこれを無視します）</p><p>支配領域(ZOC)のため、南北方向か斜め方向に 1 マスか最大でも 2
+マス空けて配置された2味方ユニットの間に敵が割り込むことはできません。これらのユニットを長い壁の構成要素として（または多少異なる方法で）使用すると、あなたは背後の負傷しているユニットまで敵が到達するのを防ぐことができます。まず敵は、支配領域(ZOC)を張り巡らすユニットを倒さなければなりません。もし、敵がわずかな可能性で目的地に到着できたとして、ただ一つのユニットでさえももはや広い範囲を守備することはできないでしょう。</p></div><div class="section" title="3.1.4. 防衛線を維持するには"><div class="titlepage"><div><div><h3 class="title"><a id="_maintain_a_defensive_line"></a>3.1.4. 防衛線を維持するには</h3></div></div></div><p>多くのユニットを隙間なく、または少なくても  1 マス以内に一列に並べると。あなたは強力な防衛線を構築できます。注意すべき点は、Wesnoth
+がヘックスを採用しているために、東西方向の防衛線は一直線にならずジグザグになるということです。南北方向または斜め方向では真の直線になります。</p><p>一つの側からやってくる限り、あなたの防衛線を構成しているユニットを敵は一度にニ方向からしか攻撃できません。原則的に、特定の弱点を持たない健康なユニットは同じか下回るレベルの二つの敵ユニットからの攻撃には耐えられます。</p><p>不幸にも、しばしばあなたの防衛線は地形によって楔（くさび）形に曲げさせられます。このような角の位置では敵は3方向から攻撃できます。この状況は防衛線が短すぎる時の両端でも発生します。高ヒットポイントかつ適切な地形効果（または敵に対する抵抗力）を持つユニットを配置すべきです。このユニットは倒されやすいので、できれば経験値を持たないか少ないユニットをこの用途に使いたいものです。</p><p>また、あなたの軍隊を一列に並べることで一つのユニットを敵が取り囲むのを避けることもできます。支配領域(ZOC)の理由で前後を敵に挟まれたユニットは移動が大幅に制限されます。</p></div><div class="section" title="3.1.5. あなたの軍隊を交代させる"><div class="titlepage"><div><div><h3 class="title"><a id="_rotate_your_troops"></a>3.1.5. あなたの軍隊を交代させる</h3></div></div></div><p>前線でユニットが重大なダメージを受けた時、あなたは彼を安全に防衛線の背後に撤退させることができます。防衛線を維持するために、あなたは彼を予備と置き換えるべきでしょう。そのためには前線の後ろに一組のユニットを抱えておくべきです。もし、あなたが回復ユニットを持つならば、ダメージを受けて第二線に撤退したユニットは素早く回復できるでしょう。</p><p>あなたのユニットはあなた自身の軍隊のいるヘックスを通り抜けられることを覚えておいてください。</p></div><div class="section" title="3.1.6. 地形を利用する"><div class="titlepage"><div><div><h3 class="title"><a id="_use_the_terrain"></a>3.1.6. 地形を利用する</h3></div></div></div><p>あなたの軍隊が高い防御効果を得られ敵が低い防御効果しか得られない地形を占領できるように努力してください。そうすることで敵の反撃によるダメージを最小限に減らせます。</p><p>例えば、エルフが森の端に配置されていれば、攻撃してくるオークは草原にいてエルフは森の高防御力を享受（きょうじゅ）することを強制することができます。</p></div><div class="section" title="3.1.7. あなたの敵の中で攻撃対象とするユニットを選択するには"><div class="titlepage"><div><div><h3 class="title"><a id="_attacking_and_choosing_your_targets"></a>3.1.7. あなたの敵の中で攻撃対象とするユニットを選択するには</h3></div></div></div><p>もちろん前進して攻撃することが、あなたの勝利への道で一番面白い部分です。あなたの進路上に存在する敵を倒すか弱体化させ、あなたの防衛線を前に移動してください。これは敵ターンで反撃してくる場合において複雑になります。</p><p>しばしば、あなたは敵の 1
+ユニットを倒すために複数のユニットを投入します。しかし、これらはあなたの防衛線を構成している要素であるため、それは部分的に崩れてしまいます。敵ターン内に次の敵ユニットがたどりつけない場合には問題にならないので、これは非常に強力な敵ユニットを今のターン内では倒せず弱体化できるのみで、敵ターンで反撃を受ける場合に問題となります。おそらくは、騎兵にトドメをさされることが多いでしょう。</p><p>先制攻撃は敵にどのユニットを向かわせるか選択できるため有利です。敵の弱点に応じた有利を得るべきです。例えば、あなたの投射攻撃ユニットを投射可能な武器を持たない敵にぶつけたりします。また、貫通攻撃に対して脆弱性を持つ敵騎兵のような弱点を有効活用すべきです。ただし、敵ターンでは彼らも同じ戦術を逆用してくることを忘れないでください。</p><p>例えば、人間族騎兵はオークの兵卒やトロルの子供に対して防衛線を維持しやすいでしょう。なぜなら、騎兵は斬撃や打撃に対して多少抵抗力があるからです。しかし、オークの弓兵やゴブリンの槍兵に対してあなたの騎兵は速やかに撃破されてしまうでしょう。</p><p>普通は、あなたが直面する敵を倒す（もしくはほぼ倒す）ためには一定の反撃を受けます。もしあなたが 1
+ターンで敵を倒す確信を持てないならば、あなたのユニットを反撃で失うことも覚悟しなければなりません。敵ターンの攻撃に耐えるために、あなたのユニットに、敵に与えるダメージを最大にするよりも、むしろ敵から受ける反撃を最小限にするため、あえて距離をとって攻撃させることはしばしば賢明な方法です。</p><p>敵が投射攻撃を持たないため、あなたは投射武器を使うべき特別な場合があります。コンピューターの第一選択はあなたが敵に与えることのできるだろうダメージだけを基準にしているので、そのままでは必要以上のダメージを受けることになりかねません。</p></div><div class="section" title="3.1.8. 時刻"><div class="titlepage"><div><div><h3 class="title"><a id="_time_of_day"></a>3.1.8. 時刻</h3></div></div></div><p>人間族のような秩序ユニットは昼間によりよく戦えます。オーク族やアンデッドのような混沌ユニットは夜間によりよく戦えます。そして黄昏（たそがれ）ユニットは薄明かりの下で最大の戦闘力を発揮します。理想的には、まずあなたが強く敵が弱い時間帯に出会うことを求めるでしょう。敵が強力な時間帯には、あなたの防衛線を強固にして防御に好都合な地点を確保し続けるために多少の犠牲が払われるのはよくあることです。敵が弱体化する時間帯には、あなたは前進して敵を押しまくれるでしょう。</p><p>例えば、エルフは夜間オークの猛攻にさらされる間、森に留まり続けて、夜明けとともに前進することができます。あなたはコンピューターAI
+も配下のオークに昼間は撤退させることに注意するべきです。</p></div><div class="section" title="3.1.9. 経験値"><div class="titlepage"><div><div><h3 class="title"><a id="_experience_2"></a>3.1.9. 経験値</h3></div></div></div><p>キャンペーンの全過程において、あなたが熟練した軍隊を作り上げることは決定的に重要です。後半のシナリオでは、あなたがレベル 2 や 3
+のユニットを召還できることが当然の前提とされています。</p><p>あなたのユニットは敵に最後の一撃を与えることによって最大の経験値を獲得します。それは、具体的に倒した敵のレベルあたり 8
+経験値です。というわけで、上級ユニットが敵を弱体化した後で、より経験値を必要とするユニットに最後の一撃を譲ることが意味を持ちます。特に回復ユニットはしばしば戦闘能力が低いため、この方法で最後の一撃を<span class="emphasis"><em>盗む</em></span>ことがレベルを上げる手段になります。</p><p>キャンペーン開始時（おそらくあなたは上級ユニットを全く持っていない）、少数のユニットに集中して敵に最後の一撃を与えることを試してください。これはレベル
+2 のユニットを得るための早道です。その後で彼らは他ユニットの経験値獲得を支援することができるでしょう。</p><p>リーダーに経験を積ませることを軽視しないでください！
+彼を安全に保つ必要はありますが、あまりに甘やかしすぎると、将来の戦闘を生き残るにはレベルが低すぎるということになりかねません。</p></div></div><div class="section" title="3.2. このゲームから最大の面白さを引き出すには"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="_getting_the_most_fun_out_of_the_game"></a>3.2. このゲームから最大の面白さを引き出すには</h2></div></div></div><p>忘れないでください、ゲームの概念は面白さを味わうためのものなのです！
+ここにはこのゲームの開発チームからの最大の面白さを引き出すため、いくつかのお勧めがあります。</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+キャンペーンを「中級者」難易度レベルでプレイしてみることを考慮してください。これは特に他の戦略ゲームで十分な経験がある方にお勧めします。あなたはよりやりがいを発見するだろうと思われます。
+</li><li class="listitem">
+あなたはいくつかのユニットを失った時でもあまり悲しまないでください。キャンペーンはプレイヤーがいくつかのユニットを失うことを前提に設計されています。
+</li><li class="listitem">
+ゲームのセーブ機能を使いすぎないでください。大昔に Wesnoth
+はシナリオ終了時にのみセーブを許可していました。シナリオ途中でセーブする機能が追加されたのはプレイヤーが別の日にゲームを再開する必要に迫られた時に便宜を図るためとプログラムのクラッシュから最低限の防御をするためでした。例えば、あなたの白魔術師が死んだからといってセーブゲームを繰り返しロードすることは我々としてはお勧めできません。それよりも、あなたの白魔術師を敵の攻撃から保護するか、または危険に置いた結果を受け入れる判断をするべきです！
+それは戦略の一部なのです。
+</li><li class="listitem">
+もし、あなたがセーブゲームをロードしなければならなくなったら、我々としてはシナリオ開始時からやり直すことをお勧めします。なぜなら、ただ乱数が幸運をもたらすまで繰り返すのではなく、あなたは機能する新しい戦略を選ぶことができるからです。
+</li><li class="listitem">
+しかし、忘れないでください、目的は面白さを味わうことです！ あなたが開発者と違う感覚の持ち主であれば、そうすることが一番楽しいのです！
+もし、あなたが失敗するたびにセーブゲームをロードすることに何の苦痛も感じないならば、<span class="emphasis"><em>完全</em></span>ゲーム（ユニットを全く失わない）を実現することも可能でしょう。どうぞ、どんな手段を使ってでも突き進んでください！
+</li></ul></div><div class="section" title="3.2.1. シナリオ開始時"><div class="titlepage"><div><div><h3 class="title"><a id="_at_the_start_of_a_scenario"></a>3.2.1. シナリオ開始時</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+最初に、シナリオの目標を読んでください。ときどき、あなたは敵リーダーを倒す必要はない場合があります。かわりに特定されたあるターンまで生き残ったり、または、ある目的物を回収することだったりします。
+</li><li class="listitem">
+次に、マップを眺めてください。つまり、地形やあなたと敵のそれぞれのリーダーの位置を把握するのです。
+</li><li class="listitem">
+それから、ユニットの雇用を開始します。安価なユニットは敵軍の第一波に真正面から対抗させるのに有益です。その時、上級ユニットは支援に回ります。高速ユニットはマップを探検し素早く村を獲得する斥候として使うことができます。
+</li></ul></div></div><div class="section" title="3.2.2. During the scenario"><div class="titlepage"><div><div><h3 class="title"><a id="_during_the_scenario"></a>3.2.2. During the scenario</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+可能な限り多くの村を占領し維持することでゴールド収入を確保し続けることを試してください。
+</li><li class="listitem">
+ユニットの集団を維持することで敵は多くの方向から攻撃することができなくなります。そして、あなたはそれぞれの敵ユニットと戦う際に数の優位を得ることができます。あなたのユニットは防衛線を組んで運用することで
+1 味方ユニットに対する敵の攻撃を最大ニ方向に限定できます。
+</li><li class="listitem">
+異なるユニットは地形や攻撃についてそれぞれ違う強さと弱さを持ちます。ユニットを右クリックしてから「ユニットの説明」を選択して、詳細を学んでください。
+</li><li class="listitem">
+あなたは下級ユニットを捨て駒として使うこともできます。敵の動きを遅くするためや、あなたの重要なユニットに敵が到達するのを妨害することもできます。
+</li><li class="listitem">
+You can cause damage to enemies with advanced units and then finish them
+with lower level units — to give them more experience (and finally make them
+advance to next level).
+</li><li class="listitem">
+あなたが白魔術師（魔術師から昇格できます）またはドルイド僧（呪術師から昇格できます）を保有している時は、それらを味方ユニットによる円陣の中央に配置すれば、それらがマップのどの場所に移動しても回復効果が得られます。（エルフの呪術師にもこれと同じ方法をさせられますが、うまくはできません）
+</li><li class="listitem">
+ユニットを失うことは覚悟しておくべきです、たとえ上級ユニットでさえも。
+</li><li class="listitem"><p class="simpara">
+時刻は重大な問題です。
+</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+秩序ユニットは夜にはより小さく昼にはより大きなダメージを敵に与えます。
+</li><li class="listitem">
+混沌ユニットは夜にはより大きく昼にはより小さなダメージを敵に与えます。
+</li><li class="listitem">
+remember to always check the time of day on the right side of the
+screen. Plan ahead — think about what it’s going to be next turn as
+well as this turn.
+</li></ul></div></li><li class="listitem">
+それぞれのユニットは違う種類の攻撃に対して抵抗力もしくは脆弱性があります。乗馬ユニットは貫通攻撃に対して弱点があります。火炎や秘術による攻撃はアンデッドを破壊します。攻撃の種類ごとの抵抗力がどの程度か見るには、ユニットを右クリックして「ユニットの説明」それから「抵抗力」を選択してください。そこでは攻撃の種類ごとの抵抗力が表示されます。
+</li></ul></div></div><div class="section" title="3.2.3. 回復"><div class="titlepage"><div><div><h3 class="title"><a id="_healing_2"></a>3.2.3. 回復</h3></div></div></div><p> Battle for Wesnoth
+において成功の重要な要素は常にあなたのユニットを健全な状態に保つことです。あなたのユニットがダメージを受けた時、あなたは村の上か特別な回復ユニット（例えば「エルフの呪術師」や「白魔術師」）の隣に移動することによって回復させることができます。あなたが将来出会うだろう、トロルのような、ある種族は自然に自ら回復する能力を備えていることがあります。</p></div><div class="section" title="3.2.4. シナリオの勝利条件"><div class="titlepage"><div><div><h3 class="title"><a id="_winning_a_scenario"></a>3.2.4. シナリオの勝利条件</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+上級ユニットが素早く敵指揮官を倒すことで味方ユニットの損失を最小限に抑えることができます。
+</li><li class="listitem">
+シナリオを素早く勝利することで、あなたはより多いゴールドを得ます。つまり、マップ上の全ての村を占領し残りのターンで得る金額の合計よりも素早い勝利で得られるゴールドのほうが多くなるでしょう。
+</li><li class="listitem">
+敵の全リーダーを倒すことは大抵の場合において勝利条件を満たす簡単な方法です。
+</li></ul></div></div><div class="section" title="3.2.5. より一般的なヒント"><div class="titlepage"><div><div><h3 class="title"><a id="_more_general_tips"></a>3.2.5. より一般的なヒント</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+虐殺シナリオ（あなたが大いに苦労する場所）の次には大抵「息抜き」シナリオが配置されており、そこであなたはやや楽にゴールドや経験値（そして上級ユニット）を獲得することができます。
+</li><li class="listitem">
+上級ユニットには下級ユニットより高額な維持費（レベルあたり 1 ゴールド）が必要となります。忠義特性のあるユニットはこの例外です。
+</li></ul></div></div></div></div></div></body></html>

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2010-12-11 23:31+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -1391,8 +1391,7 @@ msgstr "キャンペーンをプレイする"
 #: data/gui/default/window/wml_message.cfg:478
 #: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169 src/mapgen_dialog.cpp:110
-#: src/preferences_display.cpp:272
+#: src/gui/dialogs/message.cpp:169
 msgid "OK"
 msgstr "OK"
 
@@ -1852,6 +1851,7 @@ msgstr "変数"
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
 msgid "Close"
 msgstr "閉じる"
 
@@ -2116,7 +2116,7 @@ msgstr "次の陣営"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-msgid "Nick"
+msgid "Nickname"
 msgstr ""
 
 #. [label]
@@ -3035,7 +3035,7 @@ msgstr "上級者向け"
 
 #: src/game_preferences_display.cpp:1292
 #, fuzzy
-msgid "Choose theme"
+msgid "Choose Theme"
 msgstr "読み込むゲームを選択"
 
 #: src/game_preferences_display.cpp:1307
@@ -3947,8 +3947,8 @@ msgstr "このホットキーは既に使用されています。"
 #| msgid ""
 #| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
-"Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
-"modifiers."
+"Screenshot hotkeys should be combined with the Control, Alt or Meta "
+"modifiers to avoid problems."
 msgstr ""
 "警告: スクリーンショットのホットキーはコントロールキー、Alt キー、メタキーと"
 "組み合わせられません。"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2010-05-26 21:32+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: none\n"
@@ -1393,8 +1393,7 @@ msgstr "开始战役"
 #: data/gui/default/window/wml_message.cfg:478
 #: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169 src/mapgen_dialog.cpp:110
-#: src/preferences_display.cpp:272
+#: src/gui/dialogs/message.cpp:169
 msgid "OK"
 msgstr "确定"
 
@@ -1854,6 +1853,7 @@ msgstr "变量"
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
 msgid "Close"
 msgstr "关闭"
 
@@ -2118,7 +2118,7 @@ msgstr "下一阵营"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-msgid "Nick"
+msgid "Nickname"
 msgstr ""
 
 #. [label]
@@ -3032,7 +3032,7 @@ msgstr "高级"
 
 #: src/game_preferences_display.cpp:1292
 #, fuzzy
-msgid "Choose theme"
+msgid "Choose Theme"
 msgstr "选择要读取的游戏"
 
 #: src/game_preferences_display.cpp:1307
@@ -3943,8 +3943,8 @@ msgstr "此快捷键已经被使用"
 #| msgid ""
 #| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
-"Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
-"modifiers."
+"Screenshot hotkeys should be combined with the Control, Alt or Meta "
+"modifiers to avoid problems."
 msgstr "警告：屏幕截图快捷键没有使用与Control、Alt或Meta键组合。"
 
 #: src/preferences_display.cpp:429

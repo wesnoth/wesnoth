@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -587,7 +587,7 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:40
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
-"ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> and "
+"Ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> and "
 "east of the <ref>dst=old_continent text='Old Continent'</ref>.\n"
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
@@ -600,9 +600,10 @@ msgstr "Žalioji sala"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
+#, fuzzy
 msgid ""
-"A bigger island lying in the <ref>dst='great_ocean' text='great ocean'</ref>."
-msgstr ""
+"A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
+msgstr "<ref>dst='heart_mountains' text='Šerdies kalnai'</ref>"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
@@ -613,7 +614,7 @@ msgstr "Senasis žemynas"
 #: data/core/encyclopedia/geography.cfg:52
 msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
-"<ref>dst='Great Ocean' text='Great Ocean'</ref>."
+"<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
 
 #. [topic]: id=great_continent
@@ -3287,11 +3288,11 @@ msgstr ""
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
-"username (write here the nick of the player or observer). You can check what "
-"side belongs to which player in the <bold>text='Scenario Settings'</bold> "
-"dialog (Press the <bold>text='More'</bold> button in the <bold>text='Status "
-"Table'</bold> (alt+s by default) to get there.). The host can change control "
-"of any side.\n"
+"username (write here the nickname of the player or observer). You can check "
+"what side belongs to which player in the <bold>text='Scenario Settings'</"
+"bold> dialog (Press the <bold>text='More'</bold> button in the "
+"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
+"can change control of any side.\n"
 "\n"
 msgstr ""
 
@@ -4446,22 +4447,22 @@ msgid "female^aged"
 msgstr "pagyvęnusi"
 
 #. [race]: id=bats
-#: data/core/units.cfg:43
+#: data/core/units.cfg:42
 msgid "race^Bat"
 msgstr "Šikšnosparnis"
 
 #. [race]: id=bats
-#: data/core/units.cfg:44
+#: data/core/units.cfg:43
 msgid "race+female^Bat"
 msgstr "Šikšnosparnė"
 
 #. [race]: id=bats
-#: data/core/units.cfg:45
+#: data/core/units.cfg:44
 msgid "race^Bats"
 msgstr "Šikšnosparniai"
 
 #. [race]: id=bats
-#: data/core/units.cfg:46
+#: data/core/units.cfg:45
 msgid ""
 "Bats come in many shapes and sizes, and most are fairly harmless, feeding on "
 "insects and other small animals. The larger and more vicious breeds are "
@@ -4613,22 +4614,22 @@ msgstr ""
 "plėstis net į Didžiojo žemyno tolimoje šiaurėje esančius kalnus."
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:89
+#: data/core/units.cfg:90
 msgid "race^Dwarf"
 msgstr "Dvarfas"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:90
+#: data/core/units.cfg:91
 msgid "race+female^Dwarf"
 msgstr "Dvarfė"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:91
+#: data/core/units.cfg:92
 msgid "race^Dwarves"
 msgstr "Dvarfai"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:96
+#: data/core/units.cfg:97
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -4718,22 +4719,22 @@ msgstr ""
 "daiktų užkerėjimui, tam , kad išryškintų tam tikrus jų kilmės aspektus."
 
 #. [race]: id=elf
-#: data/core/units.cfg:108
+#: data/core/units.cfg:110
 msgid "race^Elf"
 msgstr "Elfas"
 
 #. [race]: id=elf
-#: data/core/units.cfg:109
+#: data/core/units.cfg:111
 msgid "race+female^Elf"
 msgstr "Elfė"
 
 #. [race]: id=elf
-#: data/core/units.cfg:110
+#: data/core/units.cfg:112
 msgid "race^Elves"
 msgstr "Elfai"
 
 #. [race]: id=elf
-#: data/core/units.cfg:120
+#: data/core/units.cfg:122
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -4805,22 +4806,22 @@ msgstr ""
 "egzistavo virš tūkstantmečio."
 
 #. [race]: id=goblin
-#: data/core/units.cfg:130
+#: data/core/units.cfg:132
 msgid "race^Goblin"
 msgstr "Goblinas"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:131
+#: data/core/units.cfg:133
 msgid "race+female^Goblin"
 msgstr "Goblinė"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:132
+#: data/core/units.cfg:134
 msgid "race^Goblins"
 msgstr "Goblinai"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:135
+#: data/core/units.cfg:137
 msgid ""
 "Goblins are, despite their appearance, born as siblings to the orcs and "
 "members of the same race. While other races usually bear children singly or "
@@ -4858,37 +4859,37 @@ msgstr ""
 "orkai mielai imasi, nes gali įrodyti savo šaunumą ir jėgą."
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:147
+#: data/core/units.cfg:150
 msgid "race^Gryphon"
 msgstr "Grifas"
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:148
+#: data/core/units.cfg:151
 msgid "race+female^Gryphon"
 msgstr "Grifė"
 
 #. [race]: id=gryphon, description=
-#: data/core/units.cfg:149
+#: data/core/units.cfg:152
 msgid "race^Gryphons"
 msgstr "Grifai"
 
 #. [race]: id=human
-#: data/core/units.cfg:164
+#: data/core/units.cfg:168
 msgid "race^Human"
 msgstr "Žmogus"
 
 #. [race]: id=human
-#: data/core/units.cfg:165
+#: data/core/units.cfg:169
 msgid "race+female^Human"
 msgstr "Žmogus"
 
 #. [race]: id=human
-#: data/core/units.cfg:166
+#: data/core/units.cfg:170
 msgid "race^Humans"
 msgstr "Žmonės"
 
 #. [race]: id=human
-#: data/core/units.cfg:173
+#: data/core/units.cfg:177
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -4963,32 +4964,32 @@ msgstr ""
 "stipriosios bei silpnosios šių grupių pusės papildo viena kitą."
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:181
+#: data/core/units.cfg:185
 msgid "race^Saurian"
 msgstr "Roplys"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:182
+#: data/core/units.cfg:186
 msgid "race+female^Saurian"
 msgstr "Roplė"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:183
+#: data/core/units.cfg:187
 msgid "race^Saurians"
 msgstr "Ropliai"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:192
+#: data/core/units.cfg:197
 msgid "race^Mechanical"
 msgstr "Mechanizmas"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:193
+#: data/core/units.cfg:198
 msgid "race+plural^Mechanical"
 msgstr "Mechanizmai"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:194
+#: data/core/units.cfg:199
 #, fuzzy
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
@@ -5001,22 +5002,22 @@ msgstr ""
 "judėti, nei galvoti, tačiau kai kurie, paveikti burtų, gali. "
 
 #. [race]: id=merman
-#: data/core/units.cfg:203
+#: data/core/units.cfg:208
 msgid "race^Merman"
 msgstr "Vandenis"
 
 #. [race]: id=merman
-#: data/core/units.cfg:204
+#: data/core/units.cfg:209
 msgid "race^Mermaid"
 msgstr "Vandenė"
 
 #. [race]: id=merman
-#: data/core/units.cfg:205
+#: data/core/units.cfg:210
 msgid "race^Mermen"
 msgstr "Vandeniai"
 
 #. [race]: id=merman
-#: data/core/units.cfg:207
+#: data/core/units.cfg:212
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5038,22 +5039,22 @@ msgstr ""
 "nerangūs ir sunkiai juda grubiose ir miškingose vietovėse. "
 
 #. [race]: id=monster
-#: data/core/units.cfg:214
+#: data/core/units.cfg:220
 msgid "race^Monster"
 msgstr "Pabaisa"
 
 #. [race]: id=monster
-#: data/core/units.cfg:215
+#: data/core/units.cfg:221
 msgid "race+female^Monster"
 msgstr "Monstrė"
 
 #. [race]: id=monster
-#: data/core/units.cfg:216
+#: data/core/units.cfg:222
 msgid "race^Monsters"
 msgstr "Pabaisos"
 
 #. [race]: id=monster
-#: data/core/units.cfg:217
+#: data/core/units.cfg:223
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5064,22 +5065,22 @@ msgstr ""
 "padavimuose ir košmaruose."
 
 #. [race]: id=naga
-#: data/core/units.cfg:224
+#: data/core/units.cfg:230
 msgid "race^Naga"
 msgstr "Nágas"
 
 #. [race]: id=naga
-#: data/core/units.cfg:225
+#: data/core/units.cfg:231
 msgid "race^Nagini"
 msgstr "Nága"
 
 #. [race]: id=naga
-#: data/core/units.cfg:226
+#: data/core/units.cfg:232
 msgid "race^Nagas"
 msgstr "Nágai"
 
 #. [race]: id=naga
-#: data/core/units.cfg:227
+#: data/core/units.cfg:233
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -5108,22 +5109,22 @@ msgstr ""
 "pelkes ir upes mėgsta taip pat, kaip ir atvirus vandenis."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:234
+#: data/core/units.cfg:241
 msgid "race^Ogre"
 msgstr "Žmogėdra"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:235
+#: data/core/units.cfg:242
 msgid "race+female^Ogre"
 msgstr "Žmogėdra"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:236
+#: data/core/units.cfg:243
 msgid "race^Ogres"
 msgstr "Žmogėdros"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:237
+#: data/core/units.cfg:244
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5155,22 +5156,22 @@ msgstr ""
 "pasinaudojimas galimybe."
 
 #. [race]: id=orc
-#: data/core/units.cfg:245
+#: data/core/units.cfg:252
 msgid "race^Orc"
 msgstr "Orkas"
 
 #. [race]: id=orc
-#: data/core/units.cfg:246
+#: data/core/units.cfg:253
 msgid "race+female^Orc"
 msgstr "Orkė"
 
 #. [race]: id=orc
-#: data/core/units.cfg:247
+#: data/core/units.cfg:254
 msgid "race^Orcs"
 msgstr "Orkai"
 
 #. [race]: id=orc
-#: data/core/units.cfg:257
+#: data/core/units.cfg:264
 #, fuzzy
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
@@ -5240,22 +5241,22 @@ msgstr ""
 "Beveik kiekvienas orkas priklauso genčiai ar gaujai. "
 
 #. [race]: id=troll
-#: data/core/units.cfg:264
+#: data/core/units.cfg:271
 msgid "race^Troll"
 msgstr "Trolis"
 
 #. [race]: id=troll
-#: data/core/units.cfg:265
+#: data/core/units.cfg:272
 msgid "race+female^Troll"
 msgstr "Trolė"
 
 #. [race]: id=troll
-#: data/core/units.cfg:266
+#: data/core/units.cfg:273
 msgid "race^Trolls"
 msgstr "Troliai"
 
 #. [race]: id=troll
-#: data/core/units.cfg:272
+#: data/core/units.cfg:279
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5294,22 +5295,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:286
+#: data/core/units.cfg:294
 msgid "race^Undead"
 msgstr "Nemirėlis"
 
 #. [race]: id=undead
-#: data/core/units.cfg:287
+#: data/core/units.cfg:295
 msgid "race+female^Undead"
 msgstr "Nemirėlė"
 
 #. [race]: id=undead
-#: data/core/units.cfg:288
+#: data/core/units.cfg:296
 msgid "race+plural^Undead"
 msgstr "Nemirėliai"
 
 #. [race]: id=undead
-#: data/core/units.cfg:294
+#: data/core/units.cfg:302
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5361,64 +5362,29 @@ msgstr ""
 "dvarfams."
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:302
+#: data/core/units.cfg:310
 msgid "race^Wolf"
 msgstr "Vilkas"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:303
+#: data/core/units.cfg:311
 msgid "race+female^Wolf"
 msgstr "Vilkė"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:304
+#: data/core/units.cfg:312
 msgid "race^Wolves"
 msgstr "Vilkai"
 
 #. [race]: id=wose, description=
-#: data/core/units.cfg:313
+#: data/core/units.cfg:322
 msgid "race^Wose"
 msgstr "Miškinis"
 
 #. [race]: id=wose, description=
-#: data/core/units.cfg:314
+#: data/core/units.cfg:323
 msgid "race^Woses"
 msgstr "Miškiniai"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:324
-msgid "race^Khalifate Human"
-msgstr "Kalifato žmogus"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:325
-msgid "race+female^Khalifate Human"
-msgstr "Kalifato žmogus"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:326
-msgid "race+plural^Khalifate"
-msgstr "Kalifatas"
-
-#. [race]: id=khalifate
-#: data/core/units.cfg:327
-msgid "This race does not have a description yet."
-msgstr ""
-
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:336
-msgid "race^Falcon"
-msgstr "Sakalas"
-
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:337
-msgid "race+female^Falcon"
-msgstr "Sakalė"
-
-#. [race]: id=falcon, description=
-#: data/core/units.cfg:338
-msgid "race^Falcons"
-msgstr "Sakalai"
 
 #: src/help.cpp:51
 msgid "Help"
@@ -5584,3 +5550,21 @@ msgstr "Mūšio dėl Vesnoto pagalba"
 #: src/help.cpp:3216
 msgid "Parse error when parsing help text: "
 msgstr "Nagrinėjimo klaida nagrinėjant pagalbos tekstą: "
+
+#~ msgid "race^Khalifate Human"
+#~ msgstr "Kalifato žmogus"
+
+#~ msgid "race+female^Khalifate Human"
+#~ msgstr "Kalifato žmogus"
+
+#~ msgid "race+plural^Khalifate"
+#~ msgstr "Kalifatas"
+
+#~ msgid "race^Falcon"
+#~ msgstr "Sakalas"
+
+#~ msgid "race+female^Falcon"
+#~ msgstr "Sakalė"
+
+#~ msgid "race^Falcons"
+#~ msgstr "Sakalai"

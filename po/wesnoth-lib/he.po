@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2011-08-29 14:00+0300\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -1305,8 +1305,7 @@ msgstr "שחק במערכה"
 #: data/gui/default/window/wml_message.cfg:478
 #: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169 src/mapgen_dialog.cpp:110
-#: src/preferences_display.cpp:272
+#: src/gui/dialogs/message.cpp:169
 msgid "OK"
 msgstr "אישור"
 
@@ -1763,6 +1762,7 @@ msgstr "משתנה"
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
 msgid "Close"
 msgstr "סגור"
 
@@ -2017,7 +2017,9 @@ msgstr "צד"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-msgid "Nick"
+#, fuzzy
+#| msgid "Nick"
+msgid "Nickname"
 msgstr "כינוי"
 
 #. [label]
@@ -2907,7 +2909,9 @@ msgid "Advanced section^Advanced"
 msgstr "מתקדם"
 
 #: src/game_preferences_display.cpp:1292
-msgid "Choose theme"
+#, fuzzy
+#| msgid "Choose theme"
+msgid "Choose Theme"
 msgstr "בחר ערכת מראה"
 
 #: src/game_preferences_display.cpp:1307
@@ -3813,8 +3817,8 @@ msgstr "מקש הקיצור הזה כבר נמצא בשימוש."
 #| msgid ""
 #| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
-"Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
-"modifiers."
+"Screenshot hotkeys should be combined with the Control, Alt or Meta "
+"modifiers to avoid problems."
 msgstr "אזהרה: מקש הקיצור לתמונה לא מכיל אחד מקונטרול, אלט או שיפט."
 
 #: src/preferences_display.cpp:429

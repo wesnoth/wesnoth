@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2011-10-01 23:27+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -1299,8 +1299,7 @@ msgstr "캠페인을 시작합니다"
 #: data/gui/default/window/wml_message.cfg:478
 #: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169 src/mapgen_dialog.cpp:110
-#: src/preferences_display.cpp:272
+#: src/gui/dialogs/message.cpp:169
 msgid "OK"
 msgstr "확인"
 
@@ -1749,6 +1748,7 @@ msgstr ""
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
 msgid "Close"
 msgstr "닫기"
 
@@ -2005,7 +2005,7 @@ msgstr "다음 진영"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-msgid "Nick"
+msgid "Nickname"
 msgstr ""
 
 #. [label]
@@ -2899,7 +2899,7 @@ msgid "Advanced section^Advanced"
 msgstr "고급"
 
 #: src/game_preferences_display.cpp:1292
-msgid "Choose theme"
+msgid "Choose Theme"
 msgstr ""
 
 #: src/game_preferences_display.cpp:1307
@@ -3794,8 +3794,8 @@ msgstr "이 단축키는 이미 사용되고 있습니다."
 #| msgid ""
 #| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
-"Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
-"modifiers."
+"Screenshot hotkeys should be combined with the Control, Alt or Meta "
+"modifiers to avoid problems."
 msgstr ""
 "주의: 스크린샷 단축키가 컨트롤, 알트 및 메타 키와 이어져 있지 않습니다."
 

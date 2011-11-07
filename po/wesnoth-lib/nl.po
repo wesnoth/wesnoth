@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2011-09-05 00:40+0200\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -1393,8 +1393,7 @@ msgstr "Veldtocht spelen"
 #: data/gui/default/window/wml_message.cfg:478
 #: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169 src/mapgen_dialog.cpp:110
-#: src/preferences_display.cpp:272
+#: src/gui/dialogs/message.cpp:169
 msgid "OK"
 msgstr "Ok"
 
@@ -1863,6 +1862,7 @@ msgstr "Variabele"
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
 msgid "Close"
 msgstr "Sluiten"
 
@@ -2133,7 +2133,7 @@ msgstr "Volgende speler"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-msgid "Nick"
+msgid "Nickname"
 msgstr ""
 
 #. [label]
@@ -3055,7 +3055,7 @@ msgstr "Geavanceerd"
 
 #: src/game_preferences_display.cpp:1292
 #, fuzzy
-msgid "Choose theme"
+msgid "Choose Theme"
 msgstr "Kies spel om te laden"
 
 #: src/game_preferences_display.cpp:1307
@@ -3967,8 +3967,8 @@ msgstr "Deze sneltoets is al in gebruik."
 #| msgid ""
 #| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
-"Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
-"modifiers."
+"Screenshot hotkeys should be combined with the Control, Alt or Meta "
+"modifiers to avoid problems."
 msgstr ""
 "Waarschuwing: schermafdruk sneltoets niet gecombineerd met Control, Alt of "
 "Meta knop."

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -16,13 +16,286 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
 "%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
 
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
+#. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:18
+#: data/core/units/dwarves/Dragonguard.cfg:20
+msgid ""
+"It is not clear why the Dragonguards are called what they are, a name given "
+"by their dwarven brethren. Some speculate that the name comes from their "
+"weapon of choice, these strange staves that belch fire and death. Others "
+"have surmised that it is because such weapons would be a threat against even "
+"a true Dragon, should such a thing be seen again in the known world. "
+"Whatever the case, it is for these weapons that the guardians of the great "
+"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"mightiest of warriors with a single blow."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:25
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:42
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:27
+#: data/core/units/dwarves/Dragonguard.cfg:38
+#: data/core/units/dwarves/Thunderer.cfg:110
+#: data/core/units/dwarves/Thunderguard.cfg:39
+#: data/core/units/humans/Outlaw_Assassin.cfg:40
+#: data/core/units/humans/Outlaw_Rogue.cfg:39
+#: data/core/units/humans/Outlaw_Thief.cfg:188
+#: data/core/units/humans/Woodsman.cfg:43
+#: data/core/units/humans/Woodsman_Huntsman.cfg:50
+#: data/core/units/humans/Woodsman_Poacher.cfg:47
+#: data/core/units/humans/Woodsman_Trapper.cfg:81
+#: data/core/units/orcs/Archer.cfg:40 data/core/units/orcs/Assassin.cfg:41
+#: data/core/units/orcs/Slayer.cfg:39
+#: data/core/units/undead/Skele_Banebow.cfg:44
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:42
+msgid "dagger"
+msgstr "durklas"
+
+#. [attack]: type=pierce
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:34
+#: data/core/units/dwarves/Dragonguard.cfg:47
+msgid "dragonstaff"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
+#. [unit_type]: id=Dwarvish Masked Fighter, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:19
+#: data/core/units/dwarves/Fighter.cfg:19
+msgid ""
+"Dwarvish Fighters wield mighty battle axes and hammers, which make them "
+"feared opponents in close-range combat. They are excellent in mountainous "
+"terrain or underground. Their power and endurance more than compensate for "
+"their relatively poor mobility."
+msgstr ""
+"Dvarfų kovotojai naudoja galingus karo kirvius ir kūjus, kurių visi "
+"prisibijo artimoje kovoje. Jie puikiai kovoja kalnuotose vietovėse bei "
+"požemyje. Jų galia ir ištvermė puikiai atsveria palyginti nedidelį judrumą."
+
+#. [attack]: type=blade
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:34
+#: data/core/units/dwarves/Explorer.cfg:46
+#: data/core/units/dwarves/Fighter.cfg:46
+#: data/core/units/dwarves/Pathfinder.cfg:160
+#: data/core/units/dwarves/Pathfinder.cfg:168
+#: data/core/units/dwarves/Scout.cfg:41 data/core/units/dwarves/Scout.cfg:49
+#: data/core/units/undead/Skele_Deathblade.cfg:162
+#: data/core/units/undead/Skele_Draug.cfg:43
+#: data/core/units/undead/Skele_Revenant.cfg:43
+#: data/core/units/undead/Skeleton.cfg:119
+msgid "axe"
+msgstr "kirvis"
+
+#. [attack]: type=impact
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:42
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:38
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:38
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:32
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:246
+#: data/core/units/dwarves/Arcanister.cfg:48
+#: data/core/units/dwarves/Fighter.cfg:54 data/core/units/dwarves/Lord.cfg:60
+#: data/core/units/dwarves/Runemaster.cfg:42
+#: data/core/units/dwarves/Runesmith.cfg:46
+#: data/core/units/dwarves/Steelclad.cfg:60
+#: data/core/units/trolls/Great.cfg:26 data/core/units/trolls/Hero.cfg:26
+#: data/core/units/trolls/Warrior.cfg:26
+msgid "hammer"
+msgstr "kūjis"
+
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
+#. [unit_type]: id=Dwarvish Masked Guardsman, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:19
+#: data/core/units/dwarves/Guardsman.cfg:19
+msgid ""
+"The dwarven race has always been famed for its sturdiness of build, and many "
+"of their warriors outfit themselves to take advantage of this. Dwarven "
+"guardsmen march into battle with tower shields and spears. Most often, their "
+"role is to hold the line, and to take a heavy toll on those who try to break "
+"it. As the line marches forward, they act to secure its hard-won advance."
+msgstr ""
+"Dvarfai visada garsėjo savo tvirtu sudėjimu ir dauguma jų karių pasiruošia "
+"tai išnaudoti. Dvarfų sargybiniai žygiuoja į mūšį su aukštais skydais ir "
+"ietimis. Dažniausiai jų darbas yra laikyti rikiuotę ir skaudžiai bausti "
+"tuos, kurie bando ją išardyti. Judant eilėms, jie išlaiko sunkiai uždirbtą "
+"pranašumą. "
+
+#. [attack]: type=pierce
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:30
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:38
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:33
+#: data/core/units/drakes/Clasher.cfg:47
+#: data/core/units/drakes/Thrasher.cfg:44
+#: data/core/units/dwarves/Guardsman.cfg:42
+#: data/core/units/dwarves/Sentinel.cfg:50
+#: data/core/units/dwarves/Stalwart.cfg:45
+#: data/core/units/goblins/Impaler.cfg:42
+#: data/core/units/goblins/Impaler.cfg:54
+#: data/core/units/goblins/Rouser.cfg:45
+#: data/core/units/goblins/Spearman.cfg:43
+#: data/core/units/goblins/Spearman.cfg:53
+#: data/core/units/humans/Horseman.cfg:37
+#: data/core/units/humans/Loyalist_Javelineer.cfg:40
+#: data/core/units/humans/Loyalist_Spearman.cfg:144
+#: data/core/units/merfolk/Hoplite.cfg:47
+#: data/core/units/merfolk/Hunter.cfg:37 data/core/units/merfolk/Hunter.cfg:45
+#: data/core/units/merfolk/Javelineer.cfg:36
+#: data/core/units/merfolk/Javelineer.cfg:44
+#: data/core/units/merfolk/Spearman.cfg:35
+#: data/core/units/merfolk/Spearman.cfg:43
+#: data/core/units/saurians/Ambusher.cfg:37
+#: data/core/units/saurians/Ambusher.cfg:46
+#: data/core/units/saurians/Flanker.cfg:38
+#: data/core/units/saurians/Flanker.cfg:47
+#: data/core/units/saurians/Skirmisher.cfg:131
+#: data/core/units/saurians/Skirmisher.cfg:140
+#: data/core/units/undead/Skele_Chocobone.cfg:29
+msgid "spear"
+msgstr "ietis"
+
+#. [attack]: type=pierce
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:39
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:47
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:42
+#: data/core/units/dwarves/Guardsman.cfg:51
+#: data/core/units/dwarves/Sentinel.cfg:59
+#: data/core/units/dwarves/Stalwart.cfg:54
+#: data/core/units/humans/Loyalist_Javelineer.cfg:51
+#: data/core/units/humans/Loyalist_Spearman.cfg:156
+msgid "javelin"
+msgstr "svaidomoji ietis"
+
+#. [attack]: type=blade
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:29
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:29
+#: data/core/units/dwarves/Explorer.cfg:37 data/core/units/dwarves/Lord.cfg:51
+#: data/core/units/dwarves/Steelclad.cfg:51
+#: data/core/units/undead/Skele_Death_Knight.cfg:45
+msgid "battle axe"
+msgstr "karo kirvis"
+
+#. [attack]: type=blade
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:47
+#: data/core/units/dwarves/Lord.cfg:69
+msgid "hatchet"
+msgstr "kirvukas"
+
+#. [unit_type]: id=Dwarvish Sentinel, race=dwarf
+#. [unit_type]: id=Dwarvish Masked Sentinel, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:19
+#: data/core/units/dwarves/Sentinel.cfg:19
+msgid ""
+"Champions among their fellow troops, the dwarven sentinels form the bulwark "
+"of their battle lines. Leading a direct assault against a line that they "
+"fortify, is often out of the question; it tends toward being suicidal, "
+"rather than merely ineffectual. These dwarves are masters of the melee, and "
+"can hold a patch of earth with the singleminded tenacity of an oak."
+msgstr ""
+"Dvarfų sergėtojai yra čempionai savo dalinių tarpe, jie tarsi bangolaužiai "
+"sutvirtina gynybines gretas. Pulti tokią sutvirtintą gretą dažniausiai net "
+"nesvarstoma: tai panašiau į savižudybę, nei šiaip neefektyvu. Kontaktiniame "
+"mūšyje šie dvarfai nuvargsta laikyti poziciją maždaug taip pat greitai kaip "
+"ąžuolai."
+
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
+#. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:18
+#: data/core/units/dwarves/Stalwart.cfg:18
+msgid ""
+"The wiles of experience and training turn guardsmen into worthy soldiers. "
+"These stalwart troops are equipped to match their skills, and can hold their "
+"ground against all but the most visceral assault. It is a dangerous thing to "
+"lose a foothold to one such as these, for it will not be easily reprised."
+msgstr ""
+"Patirties ir treniruočių metai paverčia sargybinius šauniais kariais. Šių "
+"ištvermingų dalinių ginkluotė atitinka jų patirtį ir jie gali išlaikyti "
+"poziciją prieš bet kokį antpuolį, išskyrus pačius nuožmiausius. Puolant "
+"juos, pavojinga suklupti, nes vargu ar teks atnaujinti puolimą."
+
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
+#. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:19
+#: data/core/units/dwarves/Thunderer.cfg:19
+msgid ""
+"When the men of Wesnoth first encountered the dwarves, they were mystified "
+"by the power of the Dwarvish Thunderers, who were able to hurl death from "
+"afar through the apparatus of these strange wands they carried into battle. "
+"The deafening noise of these ‘thundersticks’ is terrifying to behold, and is "
+"made more so by the secrecy which dwarves wrap about their workings."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:51
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:36
+#: data/core/units/dwarves/Thunderer.cfg:119
+#: data/core/units/dwarves/Thunderguard.cfg:48
+msgid "thunderstick"
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
+#. [unit_type]: id=Dwarvish Masked Thunderguard, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:21
+#: data/core/units/dwarves/Thunderguard.cfg:21
+msgid ""
+"The Dwarven Thunderguards are famed for their curious weaponry, these "
+"strange staves of wood and iron that make a thunderous noise in their anger. "
+"The machinations behind this weaponry are a mystery, a secret taken to the "
+"grave by the dwarves of Knalga who wield them, and are assumed to have even "
+"forged them. The most that is known are reports of dwarves pouring a strange "
+"black dust into the mouth of their weapons, which some say is a food to fuel "
+"the beast imprisoned within.\n"
+"\n"
+"Though a single shot from these ‘thundersticks’ can take several minutes to "
+"prepare, the results are seen by the Dwarves as being well worth the wait."
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
+#. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
+#. [unit_type]: id=Dwarvish Rune Lord prerevelation, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:6
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:218
+#: data/core/units/dwarves/Runemaster.cfg:5
+msgid "Dwarvish Runemaster"
+msgstr "Dvarfų runvedys"
+
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
+#. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
+#. [unit_type]: id=Dwarvish Rune Lord prerevelation, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:241
+#: data/core/units/dwarves/Runemaster.cfg:25
+msgid ""
+"Except for those with almost supernatural skill, the highest rank a "
+"runecrafter can rise to is that of the Dwarvish Runemaster. Striking blows "
+"nearly as powerful as those of the best warriors, they would be fearsome "
+"without their craft, but with it they are also nigh on invincible, since "
+"their runes cause the physical blows of their enemies to deal less damage "
+"than would be expected."
+msgstr ""
+
+#. [attack]: type=cold
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:44
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:60
+#: data/core/units/undead/Necro_Lich.cfg:60
+msgid "chill tempest"
+msgstr ""
+
+#. [attack]: type=arcane
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:56
+#: data/core/units/undead/Necro_Ancient_Lich.cfg:72
+#: data/core/units/undead/Necro_Dark_Adept.cfg:55
+#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:120
+#: data/core/units/undead/Necro_Lich.cfg:72
+#: data/core/units/undead/Necromancer.cfg:63
+msgid "shadow wave"
+msgstr "šešėlių banga"
+
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
 msgid "Blood Bat"
 msgstr "Kraujo šikšnosparnis"
 
 #. [unit_type]: id=Blood Bat, race=bats
-#: data/core/units/bats/Bat_Blood.cfg:21
+#: data/core/units/bats/Bat_Blood.cfg:20
 msgid ""
 "Blood Bats are so named because of their ruddy hue, which some mark as a "
 "symbol of their preferred diet. These creatures are fast and can drain the "
@@ -35,13 +308,13 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/bats/Bat_Blood.cfg:191
-#: data/core/units/bats/Bat_Dread.cfg:45
-#: data/core/units/bats/Bat_Vampire.cfg:191
-#: data/core/units/goblins/Direwolf_Rider.cfg:46
-#: data/core/units/goblins/Knight.cfg:48
-#: data/core/units/goblins/Pillager.cfg:47
-#: data/core/units/goblins/Wolf_Rider.cfg:64
+#: data/core/units/bats/Bat_Blood.cfg:190
+#: data/core/units/bats/Bat_Dread.cfg:44
+#: data/core/units/bats/Bat_Vampire.cfg:190
+#: data/core/units/goblins/Direwolf_Rider.cfg:45
+#: data/core/units/goblins/Knight.cfg:47
+#: data/core/units/goblins/Pillager.cfg:46
+#: data/core/units/goblins/Wolf_Rider.cfg:63
 #: data/core/units/monsters/Giant_Spider.cfg:25
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:44
@@ -57,7 +330,7 @@ msgid "Dread Bat"
 msgstr "Baisusis šikšnosparnis"
 
 #. [unit_type]: id=Dread Bat, race=bats
-#: data/core/units/bats/Bat_Dread.cfg:21
+#: data/core/units/bats/Bat_Dread.cfg:20
 msgid ""
 "The most vicious, predatory, and successful of the Blood Bats become Dread "
 "Bats, gaining the ability to drain not merely the blood but the very life "
@@ -73,7 +346,7 @@ msgid "Vampire Bat"
 msgstr "Šikšnosparnis vampyras"
 
 #. [unit_type]: id=Vampire Bat, race=bats
-#: data/core/units/bats/Bat_Vampire.cfg:21
+#: data/core/units/bats/Bat_Vampire.cfg:20
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -149,7 +422,7 @@ msgid "Drake Arbiter"
 msgstr "Slibinų arbitras"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
-#: data/core/units/drakes/Arbiter.cfg:19
+#: data/core/units/drakes/Arbiter.cfg:18
 msgid ""
 "Arbiters take their caste duty of enforcing order very seriously. In order "
 "to better execute their duties, they have abandoned the drakes’ traditional "
@@ -161,8 +434,8 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/drakes/Arbiter.cfg:41 data/core/units/drakes/Arbiter.cfg:50
-#: data/core/units/drakes/Warden.cfg:42 data/core/units/drakes/Warden.cfg:51
+#: data/core/units/drakes/Arbiter.cfg:40 data/core/units/drakes/Arbiter.cfg:49
+#: data/core/units/drakes/Warden.cfg:41 data/core/units/drakes/Warden.cfg:50
 #: data/core/units/humans/Loyalist_Halberdier.cfg:41
 #: data/core/units/humans/Loyalist_Halberdier.cfg:53
 msgid "halberd"
@@ -174,7 +447,7 @@ msgid "Armageddon Drake"
 msgstr ""
 
 #. [unit_type]: id=Armageddon Drake, race=drake
-#: data/core/units/drakes/Armageddon.cfg:28
+#: data/core/units/drakes/Armageddon.cfg:27
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
 "indistinguishable from true dragons, at least to the lesser races for whom "
@@ -183,20 +456,20 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:57 data/core/units/drakes/Fire.cfg:42
-#: data/core/units/drakes/Inferno.cfg:44
+#: data/core/units/drakes/Armageddon.cfg:56 data/core/units/drakes/Fire.cfg:41
+#: data/core/units/drakes/Inferno.cfg:43
 msgid "battle claws"
 msgstr "koviniai nagai"
 
 #. [attack]: type=fire
-#: data/core/units/drakes/Armageddon.cfg:66
-#: data/core/units/drakes/Blademaster.cfg:50
-#: data/core/units/drakes/Burner.cfg:49 data/core/units/drakes/Fighter.cfg:48
-#: data/core/units/drakes/Fire.cfg:51 data/core/units/drakes/Flameheart.cfg:57
-#: data/core/units/drakes/Flare.cfg:56 data/core/units/drakes/Glider.cfg:53
-#: data/core/units/drakes/Hurricane.cfg:138
-#: data/core/units/drakes/Inferno.cfg:53 data/core/units/drakes/Sky.cfg:137
-#: data/core/units/drakes/Warrior.cfg:48
+#: data/core/units/drakes/Armageddon.cfg:65
+#: data/core/units/drakes/Blademaster.cfg:49
+#: data/core/units/drakes/Burner.cfg:48 data/core/units/drakes/Fighter.cfg:47
+#: data/core/units/drakes/Fire.cfg:50 data/core/units/drakes/Flameheart.cfg:56
+#: data/core/units/drakes/Flare.cfg:55 data/core/units/drakes/Glider.cfg:52
+#: data/core/units/drakes/Hurricane.cfg:137
+#: data/core/units/drakes/Inferno.cfg:52 data/core/units/drakes/Sky.cfg:136
+#: data/core/units/drakes/Warrior.cfg:47
 #: data/core/units/monsters/Fire_Dragon.cfg:49
 #: data/core/units/monsters/Fire_Guardian.cfg:40
 msgid "fire breath"
@@ -208,7 +481,7 @@ msgid "Drake Blademaster"
 msgstr ""
 
 #. [unit_type]: id=Drake Blademaster, race=drake
-#: data/core/units/drakes/Blademaster.cfg:21
+#: data/core/units/drakes/Blademaster.cfg:20
 msgid ""
 "Black armor marks the elite order of the Fighter caste: the Blademasters. "
 "Only a few manage to gain the skill and power necessary to be admitted to "
@@ -219,10 +492,10 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Blademaster.cfg:41
-#: data/core/units/drakes/Clasher.cfg:39
-#: data/core/units/drakes/Enforcer.cfg:48
-#: data/core/units/drakes/Thrasher.cfg:36
+#: data/core/units/drakes/Blademaster.cfg:40
+#: data/core/units/drakes/Clasher.cfg:38
+#: data/core/units/drakes/Enforcer.cfg:47
+#: data/core/units/drakes/Thrasher.cfg:35
 msgid "war talon"
 msgstr ""
 
@@ -232,7 +505,7 @@ msgid "Drake Burner"
 msgstr "Slibinas degintojas"
 
 #. [unit_type]: id=Drake Burner, race=drake
-#: data/core/units/drakes/Burner.cfg:20
+#: data/core/units/drakes/Burner.cfg:19
 msgid ""
 "Drake Burners are the proud few in whom the blood and strength of their "
 "remote ancestors runs truest, giving them the ability to breathe fire. This, "
@@ -241,13 +514,11 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Burner.cfg:40
-#: data/core/units/goblins/Direwolf_Rider.cfg:55
-#: data/core/units/gryphons/Gryphon.cfg:41
-#: data/core/units/gryphons/Gryphon_Master.cfg:43
-#: data/core/units/gryphons/Gryphon_Rider.cfg:43
-#: data/core/units/khalifate/Elder_Falcon.cfg:29
-#: data/core/units/khalifate/Falcon.cfg:28
+#: data/core/units/drakes/Burner.cfg:39
+#: data/core/units/goblins/Direwolf_Rider.cfg:54
+#: data/core/units/gryphons/Gryphon.cfg:40
+#: data/core/units/gryphons/Gryphon_Master.cfg:42
+#: data/core/units/gryphons/Gryphon_Rider.cfg:42
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
 #: data/core/units/undead/Corpse_Necrophage.cfg:39
@@ -262,7 +533,7 @@ msgid "Drake Clasher"
 msgstr ""
 
 #. [unit_type]: id=Drake Clasher, race=drake
-#: data/core/units/drakes/Clasher.cfg:23
+#: data/core/units/drakes/Clasher.cfg:22
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
 "armor, while compensating for the drakes’ natural weakness against spears "
@@ -277,45 +548,13 @@ msgid ""
 "and enforcing the laws of their tribe."
 msgstr ""
 
-#. [attack]: type=pierce
-#: data/core/units/drakes/Clasher.cfg:48
-#: data/core/units/drakes/Thrasher.cfg:45
-#: data/core/units/dwarves/Guardsman.cfg:43
-#: data/core/units/dwarves/Sentinel.cfg:51
-#: data/core/units/dwarves/Stalwart.cfg:46
-#: data/core/units/goblins/Impaler.cfg:43
-#: data/core/units/goblins/Impaler.cfg:55
-#: data/core/units/goblins/Rouser.cfg:46
-#: data/core/units/goblins/Spearman.cfg:44
-#: data/core/units/goblins/Spearman.cfg:54
-#: data/core/units/humans/Horseman.cfg:37
-#: data/core/units/humans/Loyalist_Javelineer.cfg:40
-#: data/core/units/humans/Loyalist_Spearman.cfg:144
-#: data/core/units/khalifate/Mudafi.cfg:23
-#: data/core/units/khalifate/Rasikh.cfg:24
-#: data/core/units/merfolk/Hoplite.cfg:48
-#: data/core/units/merfolk/Hunter.cfg:38 data/core/units/merfolk/Hunter.cfg:46
-#: data/core/units/merfolk/Javelineer.cfg:37
-#: data/core/units/merfolk/Javelineer.cfg:45
-#: data/core/units/merfolk/Spearman.cfg:36
-#: data/core/units/merfolk/Spearman.cfg:44
-#: data/core/units/saurians/Ambusher.cfg:38
-#: data/core/units/saurians/Ambusher.cfg:47
-#: data/core/units/saurians/Flanker.cfg:39
-#: data/core/units/saurians/Flanker.cfg:48
-#: data/core/units/saurians/Skirmisher.cfg:132
-#: data/core/units/saurians/Skirmisher.cfg:141
-#: data/core/units/undead/Skele_Chocobone.cfg:29
-msgid "spear"
-msgstr "ietis"
-
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
 msgstr ""
 
 #. [unit_type]: id=Drake Enforcer, race=drake
-#: data/core/units/drakes/Enforcer.cfg:21
+#: data/core/units/drakes/Enforcer.cfg:20
 msgid ""
 "Not for Enforcers are the tactics of maneuver and deception; rather, they "
 "charge in wherever the melee is the fiercest. At close range, it matters "
@@ -326,17 +565,17 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Enforcer.cfg:57
-#: data/core/units/drakes/Thrasher.cfg:54
+#: data/core/units/drakes/Enforcer.cfg:56
+#: data/core/units/drakes/Thrasher.cfg:53
 msgid "ram"
 msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/drakes/Enforcer.cfg:66
-#: data/core/units/merfolk/Fighter.cfg:37
-#: data/core/units/merfolk/Triton.cfg:38 data/core/units/merfolk/Triton.cfg:46
-#: data/core/units/merfolk/Warrior.cfg:36
+#: data/core/units/drakes/Enforcer.cfg:65
+#: data/core/units/merfolk/Fighter.cfg:36
+#: data/core/units/merfolk/Triton.cfg:37 data/core/units/merfolk/Triton.cfg:45
+#: data/core/units/merfolk/Warrior.cfg:35
 msgid "trident"
 msgstr "trišakis"
 
@@ -346,7 +585,7 @@ msgid "Drake Fighter"
 msgstr "Slibinų kovotojas"
 
 #. [unit_type]: id=Drake Fighter, race=drake
-#: data/core/units/drakes/Fighter.cfg:20
+#: data/core/units/drakes/Fighter.cfg:19
 msgid ""
 "Drake Fighters wield curved war blades, and possess the fire-breathing "
 "skills of their ancestors. They can also fly, which is troubling to any foe. "
@@ -355,9 +594,9 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Fighter.cfg:39
-#: data/core/units/drakes/Flameheart.cfg:48
-#: data/core/units/drakes/Flare.cfg:47 data/core/units/drakes/Warrior.cfg:39
+#: data/core/units/drakes/Fighter.cfg:38
+#: data/core/units/drakes/Flameheart.cfg:47
+#: data/core/units/drakes/Flare.cfg:46 data/core/units/drakes/Warrior.cfg:38
 msgid "war blade"
 msgstr ""
 
@@ -367,7 +606,7 @@ msgid "Fire Drake"
 msgstr "Ugnies slibinas"
 
 #. [unit_type]: id=Fire Drake, race=drake
-#: data/core/units/drakes/Fire.cfg:19
+#: data/core/units/drakes/Fire.cfg:18
 msgid ""
 "Not yet permitted to wear the red-gold reserved for the highest ranks of the "
 "Burners, the Fire Drakes trim their armor with silver. Though they have only "
@@ -382,7 +621,7 @@ msgid "Drake Flameheart"
 msgstr ""
 
 #. [unit_type]: id=Drake Flameheart, race=drake
-#: data/core/units/drakes/Flameheart.cfg:27
+#: data/core/units/drakes/Flameheart.cfg:26
 msgid ""
 "Flamehearts lack the strength to defeat other high-ranking drakes in single "
 "combat, but prefer in any case to avoid confrontation within the tribe. "
@@ -399,7 +638,7 @@ msgid "Drake Flare"
 msgstr ""
 
 #. [unit_type]: id=Drake Flare, race=drake
-#: data/core/units/drakes/Flare.cfg:26
+#: data/core/units/drakes/Flare.cfg:25
 msgid ""
 "Respected for the heat of their flame and revered for their charisma, Flares "
 "aspire to become great leaders of their people, both in war and peace. "
@@ -414,7 +653,7 @@ msgid "Drake Glider"
 msgstr "Slibinas sklandytojas"
 
 #. [unit_type]: id=Drake Glider, race=drake
-#: data/core/units/drakes/Glider.cfg:23
+#: data/core/units/drakes/Glider.cfg:22
 msgid ""
 "Many drakes enjoy the flow of air over scales, leading them to don the light "
 "robes of the Glider caste. The long forays to the far reaches of the tribal "
@@ -431,8 +670,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/drakes/Glider.cfg:44
-#: data/core/units/drakes/Hurricane.cfg:129 data/core/units/drakes/Sky.cfg:128
+#: data/core/units/drakes/Glider.cfg:43
+#: data/core/units/drakes/Hurricane.cfg:128 data/core/units/drakes/Sky.cfg:127
 msgid "slam"
 msgstr "trankymas"
 
@@ -442,7 +681,7 @@ msgid "Hurricane Drake"
 msgstr "Uraganinis slibinas"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
-#: data/core/units/drakes/Hurricane.cfg:20
+#: data/core/units/drakes/Hurricane.cfg:19
 msgid ""
 "Hurricane Drakes have moved above the menial hunting and gathering to which "
 "the lower members of their caste are relegated. They are an integral part of "
@@ -459,7 +698,7 @@ msgid "Inferno Drake"
 msgstr "Pragaro slibinas"
 
 #. [unit_type]: id=Inferno Drake, race=drake
-#: data/core/units/drakes/Inferno.cfg:21
+#: data/core/units/drakes/Inferno.cfg:20
 msgid ""
 "Inferno Drakes are masters of the fire they breathe, respected and feared in "
 "their tribes nearly as much as the draconic ancestors themselves. They can "
@@ -474,7 +713,7 @@ msgid "Sky Drake"
 msgstr "Dangaus slibinas"
 
 #. [unit_type]: id=Sky Drake, race=drake
-#: data/core/units/drakes/Sky.cfg:19
+#: data/core/units/drakes/Sky.cfg:18
 msgid ""
 "The lightweight ceramic armor that the Sky Drakes wear is a symbol of their "
 "rank, glazed silver to honor their connection to the air. As leaders of the "
@@ -490,7 +729,7 @@ msgid "Drake Thrasher"
 msgstr "Slibinas talžytojas"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
-#: data/core/units/drakes/Thrasher.cfg:20
+#: data/core/units/drakes/Thrasher.cfg:19
 msgid ""
 "Instead of letting themselves be bound by their armor, Thrashers have "
 "learned to redirect its weight to supplement their bodies’ momentum, adding "
@@ -506,7 +745,7 @@ msgid "Drake Warden"
 msgstr "Slibinų sergėtojas"
 
 #. [unit_type]: id=Drake Warden, race=drake
-#: data/core/units/drakes/Warden.cfg:20
+#: data/core/units/drakes/Warden.cfg:19
 msgid ""
 "Wardens are set apart from the rest of the Clasher caste by two things: "
 "their ornate helms, modeled after their dragon ancestors, and the care with "
@@ -523,7 +762,7 @@ msgid "Drake Warrior"
 msgstr "Slibinų karys"
 
 #. [unit_type]: id=Drake Warrior, race=drake
-#: data/core/units/drakes/Warrior.cfg:19
+#: data/core/units/drakes/Warrior.cfg:18
 msgid ""
 "Drakes of the Fighter caste, like the Warrior, are the foundation of any "
 "tribe’s army. No special abilities or skills set them apart; only their "
@@ -540,7 +779,7 @@ msgid "Dwarvish Arcanister"
 msgstr "Dvarfų kovotojas"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
-#: data/core/units/dwarves/Arcanister.cfg:32
+#: data/core/units/dwarves/Arcanister.cfg:31
 msgid ""
 "The most powerful of all the runecrafters, the Dwarvish Arcanister destroys "
 "wounded enemies almost instantly, and rarely fails to cause a wound when "
@@ -548,24 +787,13 @@ msgid ""
 "he carves into his weapons and armor deflect the blows of his enemies."
 msgstr ""
 
-#. [attack]: type=impact
-#: data/core/units/dwarves/Arcanister.cfg:49
-#: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:61
-#: data/core/units/dwarves/Runemaster.cfg:43
-#: data/core/units/dwarves/Runesmith.cfg:47
-#: data/core/units/dwarves/Steelclad.cfg:61
-#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Hero.cfg:27
-#: data/core/units/trolls/Warrior.cfg:27
-msgid "hammer"
-msgstr "kūjis"
-
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
 msgstr "Dvarfų berserkas"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
-#: data/core/units/dwarves/Berserker.cfg:20
+#: data/core/units/dwarves/Berserker.cfg:19
 msgid ""
 "Berserkers are a rare caste of Dwarves, who work themselves into a towering "
 "rage before combat. These warriors disdain all notion of defense, thinking "
@@ -576,8 +804,8 @@ msgstr ""
 "galvoja tik apie nesustabdomą puolimą, už kurį juos supa legendos."
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Berserker.cfg:44
-#: data/core/units/dwarves/Ulfserker.cfg:45
+#: data/core/units/dwarves/Berserker.cfg:43
+#: data/core/units/dwarves/Ulfserker.cfg:44
 msgid "berserker frenzy"
 msgstr "berserko įtūžis"
 
@@ -586,49 +814,13 @@ msgstr "berserko įtūžis"
 msgid "Dwarvish Dragonguard"
 msgstr "Dvarfų slibingriausmis"
 
-#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
-#: data/core/units/dwarves/Dragonguard.cfg:21
-msgid ""
-"It is not clear why the Dragonguards are called what they are, a name given "
-"by their dwarven brethren. Some speculate that the name comes from their "
-"weapon of choice, these strange staffs that belch fire and death. Others "
-"have surmised that it is because such weapons would be a threat against even "
-"a true Dragon, should such a thing be seen again in the known world. "
-"Whatever the case, it is for these weapons that the guardians of the great "
-"Dwarven citadels are both renowned and feared; weapons that have broken the "
-"mightiest of warriors with a single blow."
-msgstr ""
-
-#. [attack]: type=blade
-#: data/core/units/dwarves/Dragonguard.cfg:39
-#: data/core/units/dwarves/Thunderer.cfg:111
-#: data/core/units/dwarves/Thunderguard.cfg:40
-#: data/core/units/humans/Outlaw_Assassin.cfg:40
-#: data/core/units/humans/Outlaw_Rogue.cfg:39
-#: data/core/units/humans/Outlaw_Thief.cfg:188
-#: data/core/units/humans/Woodsman.cfg:43
-#: data/core/units/humans/Woodsman_Huntsman.cfg:50
-#: data/core/units/humans/Woodsman_Poacher.cfg:47
-#: data/core/units/humans/Woodsman_Trapper.cfg:81
-#: data/core/units/orcs/Archer.cfg:40 data/core/units/orcs/Assassin.cfg:41
-#: data/core/units/orcs/Slayer.cfg:39
-#: data/core/units/undead/Skele_Banebow.cfg:44
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:42
-msgid "dagger"
-msgstr "durklas"
-
-#. [attack]: type=pierce
-#: data/core/units/dwarves/Dragonguard.cfg:48
-msgid "dragonstaff"
-msgstr ""
-
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
 msgid "Dwarvish Explorer"
 msgstr "Dvarfų tyrinėtojas"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
-#: data/core/units/dwarves/Explorer.cfg:20
+#: data/core/units/dwarves/Explorer.cfg:19
 msgid ""
 "Dwarvish Explorers are peerless survivalists. Using only the equipment they "
 "carry, they can range for months around the forests and mountains looking "
@@ -644,74 +836,15 @@ msgstr ""
 "mėtyti kirvuką: užtektinai laiko praleidžia aštrindami įgūdžius medžioklėse. "
 "Būdami manevringi, tyrinėtojai yra pavojingi ir klastingi priešai."
 
-#. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:38 data/core/units/dwarves/Lord.cfg:52
-#: data/core/units/dwarves/Steelclad.cfg:52
-#: data/core/units/undead/Skele_Death_Knight.cfg:45
-msgid "battle axe"
-msgstr "karo kirvis"
-
-#. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:47
-#: data/core/units/dwarves/Fighter.cfg:47
-#: data/core/units/dwarves/Pathfinder.cfg:161
-#: data/core/units/dwarves/Pathfinder.cfg:169
-#: data/core/units/dwarves/Scout.cfg:42 data/core/units/dwarves/Scout.cfg:50
-#: data/core/units/khalifate/Batal.cfg:23
-#: data/core/units/khalifate/Jundi.cfg:22
-#: data/core/units/khalifate/Muharib.cfg:22
-#: data/core/units/undead/Skele_Deathblade.cfg:162
-#: data/core/units/undead/Skele_Draug.cfg:43
-#: data/core/units/undead/Skele_Revenant.cfg:43
-#: data/core/units/undead/Skeleton.cfg:119
-msgid "axe"
-msgstr "kirvis"
-
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
 msgstr "Dvarfų kovotojas"
 
-#. [unit_type]: id=Dwarvish Fighter, race=dwarf
-#: data/core/units/dwarves/Fighter.cfg:20
-msgid ""
-"Dwarvish Fighters wield mighty battle axes and hammers, which make them "
-"feared opponents in close-range combat. They are excellent in mountainous "
-"terrain or underground. Their power and endurance more than compensate for "
-"their relatively poor mobility."
-msgstr ""
-"Dvarfų kovotojai naudoja galingus karo kirvius ir kūjus, kurių visi "
-"prisibijo artimoje kovoje. Jie puikiai kovoja kalnuotose vietovėse bei "
-"požemyje. Jų galia ir ištvermė puikiai atsveria palyginti nedidelį judrumą."
-
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
 msgstr "Dvarfų sargybinis"
-
-#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
-#: data/core/units/dwarves/Guardsman.cfg:20
-msgid ""
-"The dwarven race has always been famed for its sturdiness of build, and many "
-"of their warriors outfit themselves to take advantage of this. Dwarven "
-"guardsmen march into battle with tower shields and spears. Most often, their "
-"role is to hold the line, and to take a heavy toll on those who try to break "
-"it. As the line marches forward, they act to secure its hard-won advance."
-msgstr ""
-"Dvarfai visada garsėjo savo tvirtu sudėjimu ir dauguma jų karių pasiruošia "
-"tai išnaudoti. Dvarfų sargybiniai žygiuoja į mūšį su aukštais skydais ir "
-"ietimis. Dažniausiai jų darbas yra laikyti rikiuotę ir skaudžiai bausti "
-"tuos, kurie bando ją išardyti. Judant eilėms, jie išlaiko sunkiai uždirbtą "
-"pranašumą. "
-
-#. [attack]: type=pierce
-#: data/core/units/dwarves/Guardsman.cfg:52
-#: data/core/units/dwarves/Sentinel.cfg:60
-#: data/core/units/dwarves/Stalwart.cfg:55
-#: data/core/units/humans/Loyalist_Javelineer.cfg:51
-#: data/core/units/humans/Loyalist_Spearman.cfg:156
-msgid "javelin"
-msgstr "svaidomoji ietis"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
@@ -719,7 +852,7 @@ msgid "Dwarvish Lord"
 msgstr "Dvarfų valdovas"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
-#: data/core/units/dwarves/Lord.cfg:20
+#: data/core/units/dwarves/Lord.cfg:19
 msgid ""
 "Clad in shining armor, these dwarves look like kings from under the "
 "mountains. They wield axe and hammer with masterful skill, and can hit a "
@@ -731,18 +864,13 @@ msgstr ""
 "sužaloti priešą už keleto sieksnių. Nors ir lėti, jie yra gyvi paminklai "
 "savo tautos meistriškumui."
 
-#. [attack]: type=blade
-#: data/core/units/dwarves/Lord.cfg:70
-msgid "hatchet"
-msgstr "kirvukas"
-
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
 msgid "Dwarvish Pathfinder"
 msgstr "Dvarfų pėdsekys"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
-#: data/core/units/dwarves/Pathfinder.cfg:24
+#: data/core/units/dwarves/Pathfinder.cfg:23
 msgid ""
 "These hardy dwarves are sometimes away from their caves for long periods, "
 "scouting and patrolling the borders. They spend this time watching for "
@@ -756,22 +884,6 @@ msgstr ""
 "galingai kaunasi artimoje kovoje, o iš toli taip šauniai mėto kirvukus, kad "
 "jų taiklumas ir galia prilygsta žmonių lankininkams."
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
-#: data/core/units/dwarves/Runemaster.cfg:5
-msgid "Dwarvish Runemaster"
-msgstr "Dvarfų runvedys"
-
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
-#: data/core/units/dwarves/Runemaster.cfg:26
-msgid ""
-"Except for those with almost supernatural skill, the highest rank a "
-"runecrafter can rise to is that of the Dwarvish Runemaster. Striking blows "
-"nearly as powerful as those of the best warriors, they would be fearsome "
-"without their craft, but with it they are also nigh on invincible, since "
-"their runes cause the physical blows of their enemies to deal less damage "
-"than would be expected."
-msgstr ""
-
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:4
 #, fuzzy
@@ -779,7 +891,7 @@ msgid "Dwarvish Runesmith"
 msgstr "Dvarfų runvedys"
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
-#: data/core/units/dwarves/Runesmith.cfg:30
+#: data/core/units/dwarves/Runesmith.cfg:29
 msgid ""
 "Dwarvish runesmiths, now practiced at their craft, carve arcane runes into "
 "their weapons and armor. These runes infuse the runesmith’s blows with power "
@@ -793,7 +905,7 @@ msgid "Dwarvish Scout"
 msgstr "Dvarfų žvalgas"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
-#: data/core/units/dwarves/Scout.cfg:24
+#: data/core/units/dwarves/Scout.cfg:23
 msgid ""
 "Although the dwarves cannot match the taller races in a sprint, when "
 "unencumbered by heavy armor their tremendous stamina and endurance allows "
@@ -817,38 +929,10 @@ msgstr ""
 msgid "Dwarvish Sentinel"
 msgstr "Dvarfų sergėtojas"
 
-#. [unit_type]: id=Dwarvish Sentinel, race=dwarf
-#: data/core/units/dwarves/Sentinel.cfg:20
-msgid ""
-"Champions among their fellow troops, the dwarven sentinels form the bulwark "
-"of their battle lines. Leading a direct assault against a line that they "
-"fortify, is often out of the question; it tends toward being suicidal, "
-"rather than merely ineffectual. These dwarves are masters of the melee, and "
-"can hold a patch of earth with the singleminded tenacity of an oak."
-msgstr ""
-"Dvarfų sergėtojai yra čempionai savo dalinių tarpe, jie tarsi bangolaužiai "
-"sutvirtina gynybines gretas. Pulti tokią sutvirtintą gretą dažniausiai net "
-"nesvarstoma: tai panašiau į savižudybę, nei šiaip neefektyvu. Kontaktiniame "
-"mūšyje šie dvarfai nuvargsta laikyti poziciją maždaug taip pat greitai kaip "
-"ąžuolai."
-
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
 msgstr "Dvarfų stipruolis"
-
-#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
-#: data/core/units/dwarves/Stalwart.cfg:19
-msgid ""
-"The wiles of experience and training turn guardsmen into worthy soldiers. "
-"These stalwart troops are equipped to match their skills, and can hold their "
-"ground against all but the most visceral assault. It is a dangerous thing to "
-"lose a foothold to one such as these, for it will not be easily reprised."
-msgstr ""
-"Patirties ir treniruočių metai paverčia sargybinius šauniais kariais. Šių "
-"ištvermingų dalinių ginkluotė atitinka jų patirtį ir jie gali išlaikyti "
-"poziciją prieš bet kokį antpuolį, išskyrus pačius nuožmiausius. Puolant "
-"juos, pavojinga suklupti, nes vargu ar teks atnaujinti puolimą."
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
@@ -856,7 +940,7 @@ msgid "Dwarvish Steelclad"
 msgstr "Dvarfų šarvuotis"
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
-#: data/core/units/dwarves/Steelclad.cfg:20
+#: data/core/units/dwarves/Steelclad.cfg:19
 msgid ""
 "The more experienced Dwarvish Steelclad fighters wear heavy chain mail and "
 "plate armor, for which they are rightly famous."
@@ -869,41 +953,10 @@ msgstr ""
 msgid "Dwarvish Thunderer"
 msgstr "Dvarfų perkūntrankis"
 
-#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
-#: data/core/units/dwarves/Thunderer.cfg:20
-msgid ""
-"When the men of Wesnoth first encountered the dwarves, they were mystified "
-"by the power of the Dwarvish Thunderers, who were able to hurl death from "
-"afar through the apparatus of these strange wands they carried into battle. "
-"The deafening noise of these ‘thundersticks’ is terrifying to behold, and is "
-"made more so by the secrecy which dwarves wrap about their workings."
-msgstr ""
-
-#. [attack]: type=pierce
-#: data/core/units/dwarves/Thunderer.cfg:120
-#: data/core/units/dwarves/Thunderguard.cfg:49
-msgid "thunderstick"
-msgstr ""
-
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
 msgstr "Dvarfų perkūnšaudis"
-
-#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
-#: data/core/units/dwarves/Thunderguard.cfg:22
-msgid ""
-"The Dwarven Thunderguards are famed for their curious weaponry, these "
-"strange staffs of wood and iron that make a thunderous noise in their anger. "
-"The machinations behind this weaponry are a mystery, a secret taken to the "
-"grave by the dwarves of Knalga who wield them, and are assumed to have even "
-"forged them. The most that is known are reports of dwarves pouring a strange "
-"black dust into the mouth of their weapons, which some say is a food to fuel "
-"the beast imprisoned within.\n"
-"\n"
-"Though a single shot from these ‘thundersticks’ can take several minutes to "
-"prepare, the results are seen by the Dwarves as being well worth the wait."
-msgstr ""
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
@@ -911,7 +964,7 @@ msgid "Dwarvish Ulfserker"
 msgstr "Dvarfų ulfserkas"
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
-#: data/core/units/dwarves/Ulfserker.cfg:21
+#: data/core/units/dwarves/Ulfserker.cfg:20
 msgid ""
 "Dwarves are an ancient race of powerful fighters. Ulfserkers are the most "
 "ferocious of these; in battle, they will work themselves into a blind rage "
@@ -965,8 +1018,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Sergeant.cfg:42
 #: data/core/units/humans/Loyalist_Swordsman.cfg:40
 #: data/core/units/humans/Woodsman_Ranger.cfg:58
-#: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
-#: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:72
+#: data/core/units/nagas/Fighter.cfg:101 data/core/units/nagas/Myrmidon.cfg:42
+#: data/core/units/nagas/Warrior.cfg:40 data/core/units/orcs/Grunt.cfg:72
 #: data/core/units/orcs/Leader.cfg:41
 msgid "sword"
 msgstr "kalavijas"
@@ -985,9 +1038,8 @@ msgstr "kalavijas"
 #: data/core/units/humans/Woodsman_Poacher.cfg:56
 #: data/core/units/humans/Woodsman_Ranger.cfg:67
 #: data/core/units/humans/Woodsman_Trapper.cfg:90
-#: data/core/units/khalifate/Hadaf.cfg:32
-#: data/core/units/khalifate/Qanas.cfg:31 data/core/units/orcs/Archer.cfg:49
-#: data/core/units/orcs/Archer.cfg:58 data/core/units/orcs/Warlord.cfg:46
+#: data/core/units/orcs/Archer.cfg:49 data/core/units/orcs/Archer.cfg:58
+#: data/core/units/orcs/Warlord.cfg:46
 #: data/core/units/undead/Skele_Banebow.cfg:53
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:51
 #: data/core/units/undead/Skeleton_Archer.cfg:54
@@ -1085,13 +1137,13 @@ msgstr ""
 #: data/core/units/humans/Mage_Red.cfg:41
 #: data/core/units/humans/Mage_Silver.cfg:48
 #: data/core/units/humans/Mage_White.cfg:108
-#: data/core/units/merfolk/Diviner.cfg:100
-#: data/core/units/merfolk/Enchantress.cfg:37
-#: data/core/units/merfolk/Initiate.cfg:40
-#: data/core/units/merfolk/Priestess.cfg:97
-#: data/core/units/saurians/Augur.cfg:39
-#: data/core/units/saurians/Oracle.cfg:50
-#: data/core/units/saurians/Soothsayer.cfg:39
+#: data/core/units/merfolk/Diviner.cfg:99
+#: data/core/units/merfolk/Enchantress.cfg:36
+#: data/core/units/merfolk/Initiate.cfg:39
+#: data/core/units/merfolk/Priestess.cfg:96
+#: data/core/units/saurians/Augur.cfg:38
+#: data/core/units/saurians/Oracle.cfg:49
+#: data/core/units/saurians/Soothsayer.cfg:38
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:99
 msgid "staff"
 msgstr "lazda"
@@ -1466,7 +1518,7 @@ msgid "Direwolf Rider"
 msgstr "Baisiojo vilko jojikas"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
-#: data/core/units/goblins/Direwolf_Rider.cfg:22
+#: data/core/units/goblins/Direwolf_Rider.cfg:21
 msgid ""
 "‘Dire wolves’ differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1486,7 +1538,7 @@ msgid "Goblin Impaler"
 msgstr "Goblinas persmeigėjas"
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
-#: data/core/units/goblins/Impaler.cfg:21
+#: data/core/units/goblins/Impaler.cfg:20
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy’s battle "
 "line. Those who manage to survive their first few battles equip themselves "
@@ -1500,7 +1552,7 @@ msgid "Goblin Knight"
 msgstr "Goblinų riteris"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
-#: data/core/units/goblins/Knight.cfg:21
+#: data/core/units/goblins/Knight.cfg:20
 msgid ""
 "The Goblin ‘Knights’ have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
@@ -1517,7 +1569,7 @@ msgid "Goblin Pillager"
 msgstr "Goblinas grobikas"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
-#: data/core/units/goblins/Pillager.cfg:20
+#: data/core/units/goblins/Pillager.cfg:19
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -1530,14 +1582,14 @@ msgstr ""
 "susitelkti gynyboje ar atsakomajame puolime."
 
 #. [attack]: type=fire
-#: data/core/units/goblins/Pillager.cfg:56
+#: data/core/units/goblins/Pillager.cfg:55
 msgid "torch"
 msgstr "deglas"
 
 #. [attack]: type=impact
-#: data/core/units/goblins/Pillager.cfg:65
-#: data/core/units/merfolk/Entangler.cfg:35
-#: data/core/units/merfolk/Netcaster.cfg:46
+#: data/core/units/goblins/Pillager.cfg:64
+#: data/core/units/merfolk/Entangler.cfg:34
+#: data/core/units/merfolk/Netcaster.cfg:45
 msgid "net"
 msgstr "tinklas"
 
@@ -1547,7 +1599,7 @@ msgid "Goblin Rouser"
 msgstr "Goblinas įkvėpėjas"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
-#: data/core/units/goblins/Rouser.cfg:22
+#: data/core/units/goblins/Rouser.cfg:21
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -1562,7 +1614,7 @@ msgid "Goblin Spearman"
 msgstr "Goblinų ietininkas"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
-#: data/core/units/goblins/Spearman.cfg:22
+#: data/core/units/goblins/Spearman.cfg:21
 msgid ""
 "In any litter of orcs, several are born much smaller and weaker than the "
 "rest. These runts are called ‘Goblins’ and are looked down on by the rest of "
@@ -1581,7 +1633,7 @@ msgid "Wolf Rider"
 msgstr "Vilko jojikas"
 
 #. [unit_type]: id=Wolf Rider, race=wolf
-#: data/core/units/goblins/Wolf_Rider.cfg:37
+#: data/core/units/goblins/Wolf_Rider.cfg:36
 msgid ""
 "No one is quite sure how the practice of taming and riding wolves came into "
 "being, but the advantages of it for a goblin are obvious. Goblins are "
@@ -1612,7 +1664,7 @@ msgid "Gryphon"
 msgstr "Grifas"
 
 #. [unit_type]: id=Gryphon, race=gryphon
-#: data/core/units/gryphons/Gryphon.cfg:19
+#: data/core/units/gryphons/Gryphon.cfg:18
 msgid ""
 "These majestic and powerful creatures are masters of the sky. Gryphons are "
 "both dangerous and wary of other intelligent creatures, and thus should not "
@@ -1628,7 +1680,7 @@ msgid "Gryphon Master"
 msgstr "Grifų meistras"
 
 #. [unit_type]: id=Gryphon Master, race=gryphon
-#: data/core/units/gryphons/Gryphon_Master.cfg:21
+#: data/core/units/gryphons/Gryphon_Master.cfg:20
 msgid ""
 "Gryphon Masters have long experience flying the Gryphons, which have become "
 "an extension of themselves. This special relationship makes the heart of the "
@@ -1641,7 +1693,7 @@ msgid "Gryphon Rider"
 msgstr "Grifų raitelis"
 
 #. [unit_type]: id=Gryphon Rider, race=gryphon
-#: data/core/units/gryphons/Gryphon_Rider.cfg:21
+#: data/core/units/gryphons/Gryphon_Rider.cfg:20
 msgid ""
 "Only a few are able to bond with the mighty Gryphons. Those who do may "
 "become Gryphon Riders, and discover the world of the skies upon the backs of "
@@ -1680,9 +1732,6 @@ msgstr "ilgas kalavijas"
 #: data/core/units/humans/Horse_Knight.cfg:44
 #: data/core/units/humans/Horse_Lancer.cfg:36
 #: data/core/units/humans/Horse_Paladin.cfg:61
-#: data/core/units/khalifate/Faris.cfg:23
-#: data/core/units/khalifate/Khaiyal.cfg:31
-#: data/core/units/khalifate/Mufariq.cfg:24
 msgid "lance"
 msgstr ""
 
@@ -1975,13 +2024,6 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Fugitive.cfg:41
 #: data/core/units/humans/Outlaw_Highwayman.cfg:37
 #: data/core/units/humans/Royal_Warrior.cfg:35
-#: data/core/units/khalifate/Faris.cfg:31
-#: data/core/units/khalifate/Hadaf.cfg:24
-#: data/core/units/khalifate/Hakim.cfg:26
-#: data/core/units/khalifate/Khaiyal.cfg:39
-#: data/core/units/khalifate/Mufariq.cfg:32
-#: data/core/units/khalifate/Qanas.cfg:23
-#: data/core/units/khalifate/Tabib.cfg:28
 msgid "mace"
 msgstr "vėzdas"
 
@@ -2411,8 +2453,8 @@ msgstr ""
 #. [attack]: type=arcane
 #: data/core/units/humans/Mage_White.cfg:117
 #: data/core/units/humans/Mage_of_Light.cfg:120
-#: data/core/units/merfolk/Diviner.cfg:109
-#: data/core/units/merfolk/Priestess.cfg:106
+#: data/core/units/merfolk/Diviner.cfg:108
+#: data/core/units/merfolk/Priestess.cfg:105
 msgid "lightbeam"
 msgstr "šviesos spindulys"
 
@@ -2468,7 +2510,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw.cfg:44
 #: data/core/units/humans/Outlaw_Footpad.cfg:47
 #: data/core/units/humans/Outlaw_Fugitive.cfg:50
-#: data/core/units/trolls/Rocklobber.cfg:36
+#: data/core/units/trolls/Rocklobber.cfg:35
 msgid "sling"
 msgstr "svaidyklė"
 
@@ -2538,9 +2580,9 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Footpad.cfg:38
 #: data/core/units/humans/Outlaw_Ruffian.cfg:36
 #: data/core/units/humans/Outlaw_Thug.cfg:37
-#: data/core/units/merfolk/Entangler.cfg:27
-#: data/core/units/merfolk/Netcaster.cfg:38
-#: data/core/units/trolls/Troll.cfg:38
+#: data/core/units/merfolk/Entangler.cfg:26
+#: data/core/units/merfolk/Netcaster.cfg:37
+#: data/core/units/trolls/Troll.cfg:37
 msgid "club"
 msgstr "vėzdas"
 
@@ -2778,305 +2820,13 @@ msgid ""
 "unusually competent at night, and in forests and swamps."
 msgstr ""
 
-#. [unit_type]: id=Arif, race=khalifate
-#: data/core/units/khalifate/Arif.cfg:4
-msgid "Arif"
-msgstr ""
-
-#. [unit_type]: id=Arif, race=khalifate
-#: data/core/units/khalifate/Arif.cfg:17
-msgid ""
-"The Arif form the backbone of any Khalifate foot advance. They are often "
-"sent against fortified enemy positions where their valor and skill with a "
-"sword allows them to assault seemingly inpenetrable defenses."
-msgstr ""
-
-#. [attack]: type=blade
-#: data/core/units/khalifate/Arif.cfg:22
-#: data/core/units/khalifate/Ghazi.cfg:23
-#: data/core/units/khalifate/Khalid.cfg:24
-#: data/core/units/khalifate/Mighwar.cfg:26
-#: data/core/units/khalifate/Monawish.cfg:25
-#: data/core/units/khalifate/Shuja.cfg:23
-msgid "long sword"
-msgstr "ilgas kalavijas"
-
-#. [unit_type]: id=Batal, race=khalifate
-#: data/core/units/khalifate/Batal.cfg:4
-msgid "Batal"
-msgstr ""
-
-#. [unit_type]: id=Tineen, race=khalifate
-#. [unit_type]: id=Mufariq, race=khalifate
-#. [unit_type]: id=Muharib, race=khalifate
-#. [unit_type]: id=Ghazi, race=khalifate
-#. [unit_type]: id=Qatif_al_nar, race=khalifate
-#. [unit_type]: id=Khalid, race=khalifate
-#. [unit_type]: id=Qanas, race=khalifate
-#. [unit_type]: id=Tabib, race=khalifate
-#. [unit_type]: id=Falcon, race=falcon
-#. [unit_type]: id=Mudafi, race=khalifate
-#. [unit_type]: id=Rasikh, race=khalifate
-#. [unit_type]: id=Batal, race=khalifate
-#. [unit_type]: id=Hadaf, race=khalifate
-#. [unit_type]: id=Faris, race=khalifate
-#. [unit_type]: id=Shuja, race=khalifate
-#: data/core/units/khalifate/Batal.cfg:18
-#: data/core/units/khalifate/Falcon.cfg:20
-#: data/core/units/khalifate/Faris.cfg:18
-#: data/core/units/khalifate/Ghazi.cfg:18
-#: data/core/units/khalifate/Hadaf.cfg:19
-#: data/core/units/khalifate/Khalid.cfg:19
-#: data/core/units/khalifate/Mudafi.cfg:18
-#: data/core/units/khalifate/Mufariq.cfg:19
-#: data/core/units/khalifate/Muharib.cfg:17
-#: data/core/units/khalifate/Qanas.cfg:18
-#: data/core/units/khalifate/Qatif-al-nar.cfg:23
-#: data/core/units/khalifate/Rasikh.cfg:19
-#: data/core/units/khalifate/Shuja.cfg:18
-#: data/core/units/khalifate/Tabib.cfg:23
-#: data/core/units/khalifate/Tineen.cfg:23
-msgid "There is currently no description available for this unit."
-msgstr ""
-
-#. [attack]: type=pierce
-#: data/core/units/khalifate/Batal.cfg:31
-#: data/core/units/khalifate/Jawal.cfg:33
-#: data/core/units/khalifate/Jundi.cfg:30
-#: data/core/units/khalifate/Muharib.cfg:30
-#: data/core/units/khalifate/Rami.cfg:32
-#: data/core/units/khalifate/Saree.cfg:32
-msgid "composite bow"
-msgstr ""
-
-#. [unit_type]: id=Elder Falcon, race=falcon
-#: data/core/units/khalifate/Elder_Falcon.cfg:4
-msgid "Elder Falcon"
-msgstr "Vyresnysis sakalas"
-
-#. [unit_type]: id=Elder Falcon, race=falcon
-#: data/core/units/khalifate/Elder_Falcon.cfg:21
-msgid ""
-"These falcons have been through many perils and somehow managed to survive "
-"them. Their dives can be so fast that stories abound of them taking a foe’s "
-"head clean off."
-msgstr ""
-
-#. [attack]: type=pierce
-#: data/core/units/khalifate/Elder_Falcon.cfg:38
-#: data/core/units/khalifate/Falcon.cfg:37
-msgid "beak"
-msgstr ""
-
-#. [unit_type]: id=Falcon, race=falcon
-#: data/core/units/khalifate/Falcon.cfg:4
-msgid "Falcon"
-msgstr "Sakalas"
-
-#. [unit_type]: id=Faris, race=khalifate
-#: data/core/units/khalifate/Faris.cfg:4
-msgid "Faris"
-msgstr ""
-
-#. [unit_type]: id=Ghazi, race=khalifate
-#: data/core/units/khalifate/Ghazi.cfg:4
-msgid "Ghazi"
-msgstr ""
-
-#. [attack]: type=impact
-#: data/core/units/khalifate/Ghazi.cfg:35
-#: data/core/units/khalifate/Khalid.cfg:36
-#: data/core/units/khalifate/Shuja.cfg:35
-msgid "shield bash"
-msgstr ""
-
-#. [unit_type]: id=Hadaf, race=khalifate
-#: data/core/units/khalifate/Hadaf.cfg:4
-msgid "Hadaf"
-msgstr ""
-
-#. [unit_type]: id=Hakim, race=khalifate
-#: data/core/units/khalifate/Hakim.cfg:4
-msgid "Hakim"
-msgstr ""
-
-#. [unit_type]: id=Hakim, race=khalifate
-#: data/core/units/khalifate/Hakim.cfg:21
-msgid ""
-"Hakim use their knowledge of ancient medicine and herbal concoctions to "
-"quickly bring the Khalifate soldiers back to the front lines."
-msgstr ""
-
-#. [unit_type]: id=Jawal, race=khalifate
-#: data/core/units/khalifate/Jawal.cfg:4
-msgid "Jawal"
-msgstr ""
-
-#. [unit_type]: id=Jawal, race=khalifate
-#: data/core/units/khalifate/Jawal.cfg:19
-msgid ""
-"Jawal are excellent horsemen and few can shoot as well from horseback as "
-"they. They love to circle and harass enemies from afar while using their "
-"superior speed to avoid heavy counter attack.."
-msgstr ""
-
-#. [attack]: type=blade
-#: data/core/units/khalifate/Jawal.cfg:24
-#: data/core/units/khalifate/Rami.cfg:23
-#: data/core/units/khalifate/Saree.cfg:23
-msgid "cavalry sword"
-msgstr ""
-
-#. [unit_type]: id=Jundi, race=khalifate
-#: data/core/units/khalifate/Jundi.cfg:4
-msgid "Jundi"
-msgstr ""
-
-#. [unit_type]: id=Mighwar, race=khalifate
-#. [unit_type]: id=Jundi, race=khalifate
-#. [unit_type]: id=Monawish, race=khalifate
-#: data/core/units/khalifate/Jundi.cfg:17
-#: data/core/units/khalifate/Mighwar.cfg:21
-#: data/core/units/khalifate/Monawish.cfg:20
-msgid ""
-"The Khalifate uses these Hillmen as their foot force. They are versatile and "
-"excel in hilly terrain."
-msgstr ""
-
-#. [unit_type]: id=Khaiyal, race=khalifate
-#: data/core/units/khalifate/Khaiyal.cfg:4
-msgid "Khaiyal"
-msgstr ""
-
-#. [unit_type]: id=Khaiyal, race=khalifate
-#: data/core/units/khalifate/Khaiyal.cfg:26
-msgid ""
-"The Khaiyal wear truly heavy armor, and thus close with a single high impact "
-"lance charge in order to save their poor horses’ stamina before switching "
-"over to their trusty maces."
-msgstr ""
-
-#. [unit_type]: id=Khalid, race=khalifate
-#: data/core/units/khalifate/Khalid.cfg:4
-msgid "Khalid"
-msgstr ""
-
-#. [unit_type]: id=Mighwar, race=khalifate
-#: data/core/units/khalifate/Mighwar.cfg:4
-msgid "Mighwar"
-msgstr ""
-
-#. [unit_type]: id=Monawish, race=khalifate
-#: data/core/units/khalifate/Monawish.cfg:4
-msgid "Monawish"
-msgstr ""
-
-#. [unit_type]: id=Mudafi, race=khalifate
-#: data/core/units/khalifate/Mudafi.cfg:4
-msgid "Mudafi"
-msgstr ""
-
-#. [unit_type]: id=Mufariq, race=khalifate
-#: data/core/units/khalifate/Mufariq.cfg:4
-msgid "Mufariq"
-msgstr ""
-
-#. [unit_type]: id=Muharib, race=khalifate
-#: data/core/units/khalifate/Muharib.cfg:4
-msgid "Muharib"
-msgstr ""
-
-#. [unit_type]: id=Naffat, race=khalifate
-#: data/core/units/khalifate/Naffat.cfg:4
-msgid "Naffat"
-msgstr ""
-
-#. [unit_type]: id=Naffat, race=khalifate
-#: data/core/units/khalifate/Naffat.cfg:22
-msgid ""
-"Naffat frequently use burning arrows to set fire to enemy fortifications and "
-"generally sow terror amongst the enemy. Such tactics may also have other "
-"uses in a land of many strange wonders..."
-msgstr ""
-
-#. [attack]: type=fire
-#: data/core/units/khalifate/Naffat.cfg:27
-#: data/core/units/khalifate/Qatif-al-nar.cfg:28
-#: data/core/units/khalifate/Tineen.cfg:28
-msgid "naphtha attack"
-msgstr ""
-
-#. [attack]: type=fire
-#: data/core/units/khalifate/Naffat.cfg:36
-#: data/core/units/khalifate/Qatif-al-nar.cfg:37
-#: data/core/units/khalifate/Tineen.cfg:37
-#, fuzzy
-msgid "fire arrow"
-msgstr "ugniniai nagai"
-
-#. [unit_type]: id=Qanas, race=khalifate
-#: data/core/units/khalifate/Qanas.cfg:4
-msgid "Qanas"
-msgstr ""
-
-#. [unit_type]: id=Qatif_al_nar, race=khalifate
-#: data/core/units/khalifate/Qatif-al-nar.cfg:5
-msgid "Qatif-al-nar"
-msgstr ""
-
-#. [unit_type]: id=Rami, race=khalifate
-#: data/core/units/khalifate/Rami.cfg:4
-msgid "Rami"
-msgstr ""
-
-#. [unit_type]: id=Rami, race=khalifate
-#: data/core/units/khalifate/Rami.cfg:18
-msgid ""
-"Rami are excellent horsemen and few can shoot as well from horseback as "
-"they. They love to circle and harass enemies from afar while using their "
-"superior speed to avoid heavy counter attack.."
-msgstr ""
-
-#. [unit_type]: id=Rasikh, race=khalifate
-#: data/core/units/khalifate/Rasikh.cfg:4
-msgid "Rasikh"
-msgstr ""
-
-#. [unit_type]: id=Saree, race=khalifate
-#: data/core/units/khalifate/Saree.cfg:4
-msgid "Saree"
-msgstr ""
-
-#. [unit_type]: id=Saree, race=khalifate
-#: data/core/units/khalifate/Saree.cfg:18
-msgid ""
-"Saree are excellent horsemen and few can shoot as well from horseback as "
-"they. They love to circle and harass enemies from afar while using their "
-"superior speed to avoid heavy counter attack.."
-msgstr ""
-
-#. [unit_type]: id=Shuja, race=khalifate
-#: data/core/units/khalifate/Shuja.cfg:4
-msgid "Shuja"
-msgstr ""
-
-#. [unit_type]: id=Tabib, race=khalifate
-#: data/core/units/khalifate/Tabib.cfg:4
-msgid "Tabib"
-msgstr ""
-
-#. [unit_type]: id=Tineen, race=khalifate
-#: data/core/units/khalifate/Tineen.cfg:4
-msgid "Tineen"
-msgstr ""
-
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
 msgstr "Undinė pranašautoja"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
-#: data/core/units/merfolk/Diviner.cfg:25
+#: data/core/units/merfolk/Diviner.cfg:24
 msgid ""
 "Years of devotion may endow a priestess with great wisdom on the workings of "
 "the world, and grants some the favor of the light. The power thus given to "
@@ -3092,7 +2842,7 @@ msgid "female^Mermaid Enchantress"
 msgstr "Undinė kerėtoja"
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
-#: data/core/units/merfolk/Enchantress.cfg:20
+#: data/core/units/merfolk/Enchantress.cfg:19
 msgid ""
 "Mermaids, like elves, have a powerful and native ability in magic, though "
 "theirs is considerably different than that of the elves. Those who master "
@@ -3103,9 +2853,9 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/merfolk/Enchantress.cfg:46
-#: data/core/units/merfolk/Initiate.cfg:49
-#: data/core/units/merfolk/Siren.cfg:54
+#: data/core/units/merfolk/Enchantress.cfg:45
+#: data/core/units/merfolk/Initiate.cfg:48
+#: data/core/units/merfolk/Siren.cfg:53
 msgid "water spray"
 msgstr "vandens purkšlai"
 
@@ -3115,7 +2865,7 @@ msgid "Merman Entangler"
 msgstr "Vandenis įpainiotojas"
 
 #. [unit_type]: id=Merman Entangler, race=merman
-#: data/core/units/merfolk/Entangler.cfg:22
+#: data/core/units/merfolk/Entangler.cfg:21
 msgid ""
 "Merfolk tend to use a combination of both nets and clubs in fishing; nets to "
 "collect the fish, and clubs to finish the kill. Both of these tools have "
@@ -3135,7 +2885,7 @@ msgid "Merman Fighter"
 msgstr "Vandenis kovotojas"
 
 #. [unit_type]: id=Merman Fighter, race=merman
-#: data/core/units/merfolk/Fighter.cfg:20
+#: data/core/units/merfolk/Fighter.cfg:19
 msgid ""
 "Skilled denizens of the sea, Mermen are powerful and quick in any watery "
 "environment, but lose most of their mobility on land."
@@ -3147,7 +2897,7 @@ msgid "Merman Hoplite"
 msgstr "Vandenių hoplitas"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
-#: data/core/units/merfolk/Hoplite.cfg:21
+#: data/core/units/merfolk/Hoplite.cfg:20
 msgid ""
 "With their towering shields, the Merman Hoplites form the elite guard of the "
 "watery realm. Their powerful armor and rigid discipline allow them to hold a "
@@ -3161,7 +2911,7 @@ msgid "Merman Hunter"
 msgstr "Vandenis medžiotojas"
 
 #. [unit_type]: id=Merman Hunter, race=merman
-#: data/core/units/merfolk/Hunter.cfg:20
+#: data/core/units/merfolk/Hunter.cfg:19
 msgid ""
 "The skills employed by mermen in spear-fishing are easily translated into "
 "warfare, especially against those who are not at home in the water. In times "
@@ -3175,7 +2925,7 @@ msgid "female^Mermaid Initiate"
 msgstr "Undinė kerėtoja"
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
-#: data/core/units/merfolk/Initiate.cfg:23
+#: data/core/units/merfolk/Initiate.cfg:22
 msgid ""
 "Young mermaids are often initiated into the water magics native to their "
 "people. The wondrous abilities this grants are inimitable by any other race, "
@@ -3191,7 +2941,7 @@ msgid "Merman Javelineer"
 msgstr "Vandenis žeberklininkas"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
-#: data/core/units/merfolk/Javelineer.cfg:20
+#: data/core/units/merfolk/Javelineer.cfg:19
 msgid ""
 "Those mermen who master the art of the javelin can become nearly as "
 "effective as an archer — though the heft of their weapons impedes their "
@@ -3205,7 +2955,7 @@ msgid "Merman Netcaster"
 msgstr "Vandenis tinklininkas"
 
 #. [unit_type]: id=Merman Netcaster, race=merman
-#: data/core/units/merfolk/Netcaster.cfg:21
+#: data/core/units/merfolk/Netcaster.cfg:20
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets, where oar-like clubs are used to dispatch the prey. "
@@ -3226,7 +2976,7 @@ msgid "female^Mermaid Priestess"
 msgstr "Undinė žynė"
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
-#: data/core/units/merfolk/Priestess.cfg:23
+#: data/core/units/merfolk/Priestess.cfg:22
 msgid ""
 "Among mermen, mysticism is generally left to the mermaids, who are more "
 "inclined to it. It is they who dedicate themselves to the ideal of bringing "
@@ -3241,7 +2991,7 @@ msgid "Mermaid Siren"
 msgstr "Undinių sirena"
 
 #. [unit_type]: id=Mermaid Siren, race=merman
-#: data/core/units/merfolk/Siren.cfg:23
+#: data/core/units/merfolk/Siren.cfg:22
 msgid ""
 "The faerie nature of the mermaids is strongest in the Sirens, whose "
 "connection to the currents of magic often causes them to be mistaken for "
@@ -3255,7 +3005,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/merfolk/Siren.cfg:42
+#: data/core/units/merfolk/Siren.cfg:41
 msgid "naia touch"
 msgstr ""
 
@@ -3265,7 +3015,7 @@ msgid "Merman Spearman"
 msgstr "Vandenių ietininkas"
 
 #. [unit_type]: id=Merman Spearman, race=merman
-#: data/core/units/merfolk/Spearman.cfg:19
+#: data/core/units/merfolk/Spearman.cfg:18
 msgid ""
 "Archery is little favored by the mermen, for whom use of javelins serves a "
 "similar function. Though thrown javelins are of little use under the water, "
@@ -3281,7 +3031,7 @@ msgid "Merman Triton"
 msgstr "Vandenių tritonas"
 
 #. [unit_type]: id=Merman Triton, race=merman
-#: data/core/units/merfolk/Triton.cfg:21
+#: data/core/units/merfolk/Triton.cfg:20
 msgid ""
 "Tritons are combat masters of the sea. Skilled in use of the trident, "
 "Tritons easily defeat any enemy foolish enough to wander into their "
@@ -3294,7 +3044,7 @@ msgid "Merman Warrior"
 msgstr "Vandenių karys"
 
 #. [unit_type]: id=Merman Warrior, race=merman
-#: data/core/units/merfolk/Warrior.cfg:19
+#: data/core/units/merfolk/Warrior.cfg:18
 msgid ""
 "The Mermen Warriors form the core of the mermen armies. Wielding powerful "
 "tridents, they are a bane to any who dare enter their waters."
@@ -3401,9 +3151,9 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:60
 #: data/core/units/monsters/Yeti.cfg:36
-#: data/core/units/trolls/Rocklobber.cfg:27
-#: data/core/units/trolls/Troll_Shaman.cfg:32
-#: data/core/units/trolls/Whelp.cfg:39
+#: data/core/units/trolls/Rocklobber.cfg:26
+#: data/core/units/trolls/Troll_Shaman.cfg:31
+#: data/core/units/trolls/Whelp.cfg:38
 #: data/core/units/undead/Skeleton_Archer.cfg:45
 msgid "fist"
 msgstr "kumštis"
@@ -3590,7 +3340,7 @@ msgid "Naga Fighter"
 msgstr "Nágų kovotojas"
 
 #. [unit_type]: id=Naga Fighter, race=naga
-#: data/core/units/nagas/Fighter.cfg:21
+#: data/core/units/nagas/Fighter.cfg:20
 msgid ""
 "The serpentine naga are one of the few races capable of any meaningful "
 "mobility in water, giving them mastery of a whole world effectively "
@@ -3601,7 +3351,7 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Fighter.cfg:153
+#: data/core/units/nagas/Fighter.cfg:152
 msgid "Nagini Fighter"
 msgstr "Nágų kovotoja"
 
@@ -3611,7 +3361,7 @@ msgid "Naga Myrmidon"
 msgstr "Nágų mirmidonas"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
-#: data/core/units/nagas/Myrmidon.cfg:22
+#: data/core/units/nagas/Myrmidon.cfg:21
 msgid ""
 "The most practiced of the naga blademasters are initiated into the caste of "
 "the Myrmidon, masters of their twin-bladed art. They strike as fast as the "
@@ -3621,12 +3371,12 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:95
+#: data/core/units/nagas/Myrmidon.cfg:94
 msgid "Nagini Myrmidon"
 msgstr "Nágų mirmidonė"
 
 #. [female]
-#: data/core/units/nagas/Myrmidon.cfg:97
+#: data/core/units/nagas/Myrmidon.cfg:96
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -3641,7 +3391,7 @@ msgid "Naga Warrior"
 msgstr "Nágų karys"
 
 #. [unit_type]: id=Naga Warrior, race=naga
-#: data/core/units/nagas/Warrior.cfg:20
+#: data/core/units/nagas/Warrior.cfg:19
 msgid ""
 "The young warriors of the naga aspire to the day when they merit their "
 "second blade. Their martial practice of using twin blades is wholly unlike "
@@ -3652,12 +3402,12 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:92
+#: data/core/units/nagas/Warrior.cfg:91
 msgid "Nagini Warrior"
 msgstr "Nágų kariautoja"
 
 #. [female]
-#: data/core/units/nagas/Warrior.cfg:94
+#: data/core/units/nagas/Warrior.cfg:93
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -3886,7 +3636,7 @@ msgid "Saurian Ambusher"
 msgstr "Roplių pasalūnas"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
-#: data/core/units/saurians/Ambusher.cfg:19
+#: data/core/units/saurians/Ambusher.cfg:18
 msgid ""
 "Saurians are light on their feet, and able at navigating terrain that often "
 "confounds their enemies. When this natural mobility is combined with "
@@ -3903,7 +3653,7 @@ msgid "Saurian Augur"
 msgstr "Roplių augūras"
 
 #. [unit_type]: id=Saurian Augur, race=lizard
-#: data/core/units/saurians/Augur.cfg:20
+#: data/core/units/saurians/Augur.cfg:19
 msgid ""
 "Saurians have some knowledge of what men call sorcery, but their practice of "
 "it reeks of augury and black magic. It is little understood, but rightly "
@@ -3911,9 +3661,9 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=cold
-#: data/core/units/saurians/Augur.cfg:48
-#: data/core/units/saurians/Oracle.cfg:59
-#: data/core/units/saurians/Soothsayer.cfg:48
+#: data/core/units/saurians/Augur.cfg:47
+#: data/core/units/saurians/Oracle.cfg:58
+#: data/core/units/saurians/Soothsayer.cfg:47
 msgid "curse"
 msgstr "prakeikimas"
 
@@ -3923,7 +3673,7 @@ msgid "Saurian Flanker"
 msgstr ""
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
-#: data/core/units/saurians/Flanker.cfg:20
+#: data/core/units/saurians/Flanker.cfg:19
 msgid ""
 "Saurian warriors are generally weaker in frame than their elven or human "
 "counterparts. This is of course a relative term, and they can still become "
@@ -3938,7 +3688,7 @@ msgid "Saurian Oracle"
 msgstr "Roplių orakulas"
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
-#: data/core/units/saurians/Oracle.cfg:20
+#: data/core/units/saurians/Oracle.cfg:19
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
 "in horrifying, esoteric shapes and markings, both with paint and tattoo. "
@@ -3954,7 +3704,7 @@ msgid "Saurian Skirmisher"
 msgstr "Roplių peštukas"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
-#: data/core/units/saurians/Skirmisher.cfg:22
+#: data/core/units/saurians/Skirmisher.cfg:21
 msgid ""
 "Saurians are very small of frame, and though they are somewhat frail because "
 "of this, they are very, very agile. In combat, their size allows them to "
@@ -3971,7 +3721,7 @@ msgid "Saurian Soothsayer"
 msgstr "Roplių žynys"
 
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
-#: data/core/units/saurians/Soothsayer.cfg:20
+#: data/core/units/saurians/Soothsayer.cfg:19
 msgid ""
 "Saurians are known to have some strange skills, arts bordering on the "
 "magical and mysterious. It is clear that some of them are particularly "
@@ -3985,7 +3735,7 @@ msgid "Great Troll"
 msgstr "Didysis trolis"
 
 #. [unit_type]: id=Great Troll, race=troll
-#: data/core/units/trolls/Great.cfg:19
+#: data/core/units/trolls/Great.cfg:18
 msgid ""
 "When a troll, gifted with abnormal strength of life, matches that with age "
 "and wisdom, it becomes something extraordinary, a beast remembered for "
@@ -4005,7 +3755,7 @@ msgid "Troll Hero"
 msgstr "Trolių herojus"
 
 #. [unit_type]: id=Troll Hero, race=troll
-#: data/core/units/trolls/Hero.cfg:18
+#: data/core/units/trolls/Hero.cfg:17
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
 "that characterizes their race. In a society where might makes right, those "
@@ -4021,7 +3771,7 @@ msgid "Troll Rocklobber"
 msgstr "Trolis akmensvaidys"
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
-#: data/core/units/trolls/Rocklobber.cfg:20
+#: data/core/units/trolls/Rocklobber.cfg:19
 msgid ""
 "The thought of throwing a boulder in combat has certainly occurred to many "
 "trolls, and some have taken to them as a weapon of choice. Because stones "
@@ -4036,7 +3786,7 @@ msgid "Troll"
 msgstr "Trolis"
 
 #. [unit_type]: id=Troll, race=troll
-#: data/core/units/trolls/Troll.cfg:18
+#: data/core/units/trolls/Troll.cfg:17
 msgid ""
 "Trolls have long troubled the thoughts of humanity and dwarf-kind. Sages "
 "remain baffled at the origins of these creatures and the driving force "
@@ -4052,7 +3802,7 @@ msgid "Troll Shaman"
 msgstr "Trolių šamanas"
 
 #. [unit_type]: id=Troll Shaman, race=troll
-#: data/core/units/trolls/Troll_Shaman.cfg:25
+#: data/core/units/trolls/Troll_Shaman.cfg:24
 msgid ""
 "Troll shamans are the mystical leaders of the trolls. Though not as strong "
 "or tough as other trolls, their true power lies in their fire magic, which "
@@ -4063,7 +3813,7 @@ msgstr ""
 "priešininkus ugnies pliūpsniais."
 
 #. [attack]: type=fire
-#: data/core/units/trolls/Troll_Shaman.cfg:42
+#: data/core/units/trolls/Troll_Shaman.cfg:41
 msgid "flame blast"
 msgstr ""
 
@@ -4073,7 +3823,7 @@ msgid "Troll Warrior"
 msgstr "Trolių karys"
 
 #. [unit_type]: id=Troll Warrior, race=troll
-#: data/core/units/trolls/Warrior.cfg:20
+#: data/core/units/trolls/Warrior.cfg:19
 msgid ""
 "Trolls typically neither need nor prefer to use any proper armament in "
 "combat, as large ‘sticks and stones’ serve them all too well. However, "
@@ -4091,7 +3841,7 @@ msgid "Troll Whelp"
 msgstr "Trolių jauniklis"
 
 #. [unit_type]: id=Troll Whelp, race=troll
-#: data/core/units/trolls/Whelp.cfg:20
+#: data/core/units/trolls/Whelp.cfg:19
 msgid ""
 "Describing a troll as a whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -4211,21 +3961,6 @@ msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death."
 msgstr ""
-
-#. [attack]: type=cold
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:60
-#: data/core/units/undead/Necro_Lich.cfg:60
-msgid "chill tempest"
-msgstr ""
-
-#. [attack]: type=arcane
-#: data/core/units/undead/Necro_Ancient_Lich.cfg:72
-#: data/core/units/undead/Necro_Dark_Adept.cfg:55
-#: data/core/units/undead/Necro_Dark_Sorcerer.cfg:120
-#: data/core/units/undead/Necro_Lich.cfg:72
-#: data/core/units/undead/Necromancer.cfg:63
-msgid "shadow wave"
-msgstr "šešėlių banga"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
@@ -4602,7 +4337,7 @@ msgid "Ancient Wose"
 msgstr "Senasis miškinis"
 
 #. [unit_type]: id=Ancient Wose, race=wose
-#: data/core/units/wose/Ancient.cfg:21
+#: data/core/units/wose/Ancient.cfg:20
 msgid ""
 "There is a curious story of a farmer who had a great oak in his lawn, a tree "
 "which had stood when his father first broke the soil on that land, and under "
@@ -4615,8 +4350,8 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/wose/Ancient.cfg:105 data/core/units/wose/Elder.cfg:104
-#: data/core/units/wose/Wose.cfg:43
+#: data/core/units/wose/Ancient.cfg:104 data/core/units/wose/Elder.cfg:103
+#: data/core/units/wose/Wose.cfg:42
 msgid "crush"
 msgstr "sumindžiojimas"
 
@@ -4626,7 +4361,7 @@ msgid "Elder Wose"
 msgstr "Vyresnysis miškinis"
 
 #. [unit_type]: id=Elder Wose, race=wose
-#: data/core/units/wose/Elder.cfg:20
+#: data/core/units/wose/Elder.cfg:19
 msgid ""
 "Woses have been said to possess many shapes, all of them tree-like in form, "
 "and as they age, to increase in size. Tales tell of woses who resemble trees "
@@ -4647,7 +4382,7 @@ msgid "Wose"
 msgstr "Miškinis"
 
 #. [unit_type]: id=Wose, race=wose
-#: data/core/units/wose/Wose.cfg:21
+#: data/core/units/wose/Wose.cfg:20
 msgid ""
 "Rarely seen even by elves, the Wose is an order of creature about which "
 "little is known. The elves are the source of most of this knowledge; they "
@@ -4660,3 +4395,16 @@ msgid ""
 "Woses are utterly unwarlike, but possess a great strength. They are, "
 "however, neither used to, nor quick at moving around."
 msgstr ""
+
+#~ msgid "long sword"
+#~ msgstr "ilgas kalavijas"
+
+#~ msgid "Elder Falcon"
+#~ msgstr "Vyresnysis sakalas"
+
+#~ msgid "Falcon"
+#~ msgstr "Sakalas"
+
+#, fuzzy
+#~ msgid "fire arrow"
+#~ msgstr "ugniniai nagai"
