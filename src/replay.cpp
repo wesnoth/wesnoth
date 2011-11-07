@@ -950,13 +950,13 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		{
 			const std::string& unit_id = child["value"];
 			map_location loc(child, resources::state_of_game);
+			map_location from(child.child_or_empty("from"), resources::state_of_game);
 
 			std::vector<unit>::iterator recall_unit = std::find_if(current_team.recall_list().begin(),
 				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id));
 
 			if (recall_unit != current_team.recall_list().end()) {
 				statistics::recall_unit(*recall_unit);
-				map_location from = map_location::null_location;
 				place_recruit(*recall_unit, loc, from, true, !get_replay_source().is_skipping());
 				current_team.recall_list().erase(recall_unit);
 				current_team.spend_gold(current_team.recall_cost());
