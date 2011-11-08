@@ -255,7 +255,7 @@ void playsingle_controller::report_victory(
 {
 	const end_level_data &end_level = get_end_level_data_const();
 	report << _("Remaining gold: ")
-		   << remaining_gold << "\n";
+		   << utils::half_signed_value(remaining_gold) << "\n";
 	if(end_level.gold_bonus) {
 		if (turns_left > -1) {
 			report << _("Early finish bonus: ")
@@ -267,7 +267,7 @@ void playsingle_controller::report_victory(
 				   << finishing_bonus << "\n";
 		}
 		report << _("Gold: ")
-		       << (remaining_gold + finishing_bonus);
+		       << utils::half_signed_value(remaining_gold + finishing_bonus);
 	}
 	if (remaining_gold > 0) {
 		report << '\n' << _("Carry over percentage: ") << end_level.carryover_percentage;
