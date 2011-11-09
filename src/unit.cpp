@@ -2357,7 +2357,7 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 		// Apply SUF. (Filtering on location is probably a bad idea though.)
 		const vconfig& afilter = veffect.child("filter");
 		if (!afilter.null())
-		    if (!matches_filter(afilter, map_location(cfg_, NULL))) continue;
+			if (!matches_filter(afilter, loc_)) continue;
 
 		const std::string &apply_to = effect["apply_to"];
 		const std::string &apply_times = effect["times"];
