@@ -260,7 +260,7 @@ public:
 
 	size_t modification_count(const std::string& type, const std::string& id) const;
 
-	void add_modification(const std::string& type, const config& modification,
+	void add_modification(const std::string& type, const vconfig& vcfg,
 	                  bool no_add=false);
 
 	bool move_interrupted() const { return movement_left() > 0 && interrupted_move_.x >= 0 && interrupted_move_.y >= 0; }
@@ -365,7 +365,7 @@ private:
 	void remove_ability_by_id(const std::string& ability);
 
 	/** register a trait's name and its description for UI's use*/
-	void add_trait_description(const config& trait, const t_string& description);
+	void add_trait_description(const vconfig& trait, const t_string& description);
 
 	void set_underlying_id();
 

@@ -3258,8 +3258,8 @@ static int intf_add_modification(lua_State *L)
 	if (sm != "advance" && sm != "object" && sm != "trait")
 		return luaL_argerror(L, 2, "unknown modification type");
 
-	config cfg = luaW_checkconfig(L, 3);
-	u->add_modification(sm, cfg);
+	const vconfig& vcfg = luaW_checkvconfig(L, 3);
+	u->add_modification(sm, vcfg);
 	return 0;
 }
 

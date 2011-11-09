@@ -1101,7 +1101,7 @@ game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 		config &effect = mod.add_child("effect");
 		effect["apply_to"] = "variation";
 		effect["name"] = variation;
-		fake_unit->add_modification("variation",mod);
+		fake_unit->add_modification("variation", vconfig(mod));
 	}
 
 	if(!img_mods.empty()) {
@@ -1109,7 +1109,7 @@ game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 		config &effect = mod.add_child("effect");
 		effect["apply_to"] = "image_mod";
 		effect["add"] = img_mods;
-		fake_unit->add_modification("image_mod",mod);
+		fake_unit->add_modification("image_mod", vconfig(mod));
 	}
 
 	return fake_unit;
@@ -1891,7 +1891,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	{
 		text = cfg["description"].str();
 
-		u->add_modification("object", cfg.get_parsed_config());
+		u->add_modification("object", cfg);
 
 		resources::screen->select_hex(event_info.loc1);
 		resources::screen->invalidate_unit();

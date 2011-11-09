@@ -2318,23 +2318,24 @@ static void mod_mdr_merge(config& dst, const config& mod, bool delta)
 	}
 }
 
-void unit::add_modification(const std::string& type, const config& mod, bool no_add)
+void unit::add_modification(const std::string& type, const vconfig& vcfg, bool no_add)
 {
 	//some trait activate specific flags
 	if(type == "trait") {
-		const std::string& id = mod["id"];
+		const std::string id = vcfg["id"].str();
 		is_fearless_ = is_fearless_ || id == "fearless";
 		is_healthy_ = is_healthy_ || id == "healthy";
 	}
 
 	config *new_child = NULL;
 	if(no_add == false) {
-		new_child = &modifications_.add_child(type,mod);
+		new_child = &modifications_.add_child(type, vcfg.get_config());
 	}
 	config last_effect;
 	std::vector<t_string> effects_description;
-	foreach (const config &effect, mod.child_range("effect"))
+	foreach (const vconfig& veffect, vcfg.get_children("effect"))
 	{
+		const config& effect = veffect.get_parsed_config();
 		// See if the effect only applies to certain unit types
 		const std::string &type_filter = effect["unit_type"];
 		if(type_filter.empty() == false) {
@@ -2354,8 +2355,9 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 		}
 		/** @todo The above two filters can be removed in 1.7 they're covered by the SUF. */
 		// Apply SUF. (Filtering on location is probably a bad idea though.)
-		if (const config &afilter = effect.child("filter"))
-		    if (!matches_filter(vconfig(afilter), map_location(cfg_, NULL))) continue;
+		const vconfig& afilter = veffect.child("filter");
+		if (!afilter.null())
+		    if (!matches_filter(afilter, map_location(cfg_, NULL))) continue;
 
 		const std::string &apply_to = effect["apply_to"];
 		const std::string &apply_times = effect["times"];
@@ -2543,7 +2545,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					}
 				} else if (apply_to == "new_ability") {
 					config &ab = cfg_.child_or_add("abilities");
-					if (const config &ab_effect = effect.child("abilities")) {
+					if (const config &ab_effect = veffect.child("abilities").get_config()) {
 						config to_append;
 						foreach (const config::any_child &ab, ab_effect.all_children_range()) {
 							if(!has_ability_by_id(ab.cfg["id"])) {
@@ -2668,7 +2670,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 	t_string description;
 
-	const t_string& mod_description = mod["description"];
+	const t_string mod_description = vcfg["description"].t_str();
 	if (!mod_description.empty()) {
 		description = mod_description + " ";
 	}
@@ -2686,16 +2688,16 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 	// store trait info
 	if(type == "trait") {
-		add_trait_description(mod, description);
+		add_trait_description(vcfg, description);
 	}
 
 	//NOTE: if not a trait, description is currently not used
 }
 
-void unit::add_trait_description(const config& trait, const t_string& description)
+void unit::add_trait_description(const vconfig& trait, const t_string& description)
 {
 	const std::string& gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
-	t_string const &gender_specific_name = trait[gender_string];
+	t_string const gender_specific_name = trait[gender_string].t_str();
 
 	// if this is a t_string& instead of a t_string, msvc9 compiled windows binaries
 	// choke on the case where both gender_specific_name and trait["name"] are empty.
@@ -2745,7 +2747,7 @@ void unit::apply_modifications()
 		const std::string& mod = ModificationTypes[i];
 		foreach (const config &m, modifications_.child_range(mod)) {
 			log_scope("add mod");
-			add_modification(ModificationTypes[i], m, true);
+			add_modification(ModificationTypes[i], vconfig(m), true);
 		}
 	}
 
