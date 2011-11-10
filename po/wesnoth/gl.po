@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2011-11-01 18:43+0100\n"
+"PO-Revision-Date: 2011-11-09 21:33+0100\n"
 "Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -24,6 +24,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"com>\n"
 "com>\n"
 "com>\n"
 "com>\n"
@@ -2108,10 +2109,8 @@ msgstr "Obxectivo con bonificación:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#, fuzzy
-#| msgid "Test scenario"
 msgid "This is the last scenario."
-msgstr "Escenario de probas"
+msgstr "Este é o último escenario."
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -3976,6 +3975,9 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"Se elimina o complemento «$addon|», as súas cifras de descargas e subidas "
+"tamén se eliminarán do servidor de complementos. Está seguro de que quere "
+"continuar?"
 
 #: src/addon/manager.cpp:1361
 msgid "Network communication error."
@@ -4897,8 +4899,6 @@ msgstr ""
 #: src/menu_events.cpp:2332 src/menu_events.cpp:2335 src/menu_events.cpp:2337
 #: src/menu_events.cpp:2339 src/menu_events.cpp:2341 src/menu_events.cpp:2368
 #: src/menu_events.cpp:2370 src/menu_events.cpp:2372 src/menu_events.cpp:2386
-#, fuzzy
-#| msgid "<nick>"
 msgid "<nickname>"
 msgstr "<alcume>"
 
@@ -4928,10 +4928,6 @@ msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Silenciar ou dar voz a todos os observadores (alterna)."
 
 #: src/menu_events.cpp:2353
-#, fuzzy
-#| msgid ""
-#| "Report abuse, rule violations, etc. to the server moderators. Make sure "
-#| "to mention relevant nicks, etc."
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -4958,8 +4954,6 @@ msgstr ""
 "observador."
 
 #: src/menu_events.cpp:2362
-#, fuzzy
-#| msgid "<nick> <message>"
 msgid "<nickname> <message>"
 msgstr "<alcume> <mensaxe>"
 
@@ -4972,20 +4966,14 @@ msgid "Change the log level of a log domain."
 msgstr "Cambiar o nivel de rexistro dun dominio de rexistro."
 
 #: src/menu_events.cpp:2368
-#, fuzzy
-#| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
 msgstr "Engade un alcume á lista de ignorados."
 
 #: src/menu_events.cpp:2370
-#, fuzzy
-#| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
 msgstr "Engade un alcume á lista de amigos."
 
 #: src/menu_events.cpp:2372
-#, fuzzy
-#| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Elimina un alcume da lista de amigos ou de ignorados."
 
@@ -5002,20 +4990,14 @@ msgid "<password> <email (optional)>"
 msgstr "<contrasinal> <correo electrónico (opcional)>"
 
 #: src/menu_events.cpp:2379
-#, fuzzy
-#| msgid "Register your nick"
 msgid "Register your nickname"
 msgstr "Rexistrar o teu alcume"
 
 #: src/menu_events.cpp:2381
-#, fuzzy
-#| msgid "Drop your nick."
 msgid "Drop your nickname."
 msgstr "Borrar o teu alcume."
 
 #: src/menu_events.cpp:2383
-#, fuzzy
-#| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
 "Actualizar os detalles do teu alcume. Para ver os detalles posíbeis consulta "
@@ -5026,14 +5008,10 @@ msgid "<detail> <value>"
 msgstr "<detalle> <valor>"
 
 #: src/menu_events.cpp:2386
-#, fuzzy
-#| msgid "Request information about a nick."
 msgid "Request information about a nickname."
 msgstr "Solicitar información sobre un alcume."
 
 #: src/menu_events.cpp:2388
-#, fuzzy
-#| msgid "Request a list of details you can set for your registered nick."
 msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
 "Solicita unha lista de detalles que podes definir para o teu alcume "
@@ -5100,8 +5078,6 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<bando> [on/off]]"
 
 #: src/menu_events.cpp:2543
-#, fuzzy
-#| msgid "<side> <nick>"
 msgid "<side> <nickname>"
 msgstr "<bando> <alcume>"
 
@@ -5538,19 +5514,13 @@ msgid "Connection timed out"
 msgstr "a conexión caducou"
 
 #: src/multiplayer.cpp:239
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' is inactive. You cannot claim ownership of this nick "
-#| "until you activate your account via email or ask an administrator to do "
-#| "it for you."
 msgid ""
 "The nickname '$nick' is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
-"O alcume «$nick|» está inactivo. Non podes reclamalo como teu ata que "
-"actives a túa conta por correo electrónico, ou pedíndollo a un dos "
-"administradores."
+"O alcume «$nick|» está inactivo. Non podes reclamalo ata que actives a conta "
+"por correo electrónico, ou llo pidas a un dos administradores."
 
 #: src/multiplayer.cpp:248
 msgid "Do you want to continue?"
@@ -5569,67 +5539,47 @@ msgid "You must login first."
 msgstr "Antes debes identificarte."
 
 #: src/multiplayer.cpp:337
-#, fuzzy
-#| msgid "The nick '$nick' is already taken."
 msgid "The nickname '$nick' is already taken."
 msgstr "O alcume «$nick|» xa está collido."
 
 #: src/multiplayer.cpp:339
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname '$nick' contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
 msgstr ""
 "O alcume «$nick|» contén caracteres non válidos. Só se permiten caracteres "
-"alfanuméricos anglosaxóns (nin tiles nin eñes), guións e guións baixos."
+"alfanuméricos latinos (nin tiles nin eñes), guións e guións baixos."
 
 #: src/multiplayer.cpp:343
-#, fuzzy
-#| msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgid "The nickname '$nick' is too long. Nicks must be 20 characters or less."
 msgstr ""
 "O alcume «$nick|» é longo de máis. Os alcumes non poden ter máis de vinte "
 "caracteres."
 
 #: src/multiplayer.cpp:346
-#, fuzzy
-#| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname '$nick' is reserved and cannot be used by players."
 msgstr "O alcume «$nick|» está reservado e ningún xogador pode usalo."
 
 #: src/multiplayer.cpp:348
-#, fuzzy
-#| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname '$nick' is not registered on this server."
 msgstr "O alcume «$nick|» non está rexistrado neste servidor."
 
 #: src/multiplayer.cpp:349
-#, fuzzy
-#| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
 msgstr ""
 " Este servidor non permite empregar alcumes sen rexistralos previamente."
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:353
-#, fuzzy
-#| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname '$nick' is registered on this server."
 msgstr "O alcume «$nick|» xa está rexistrado neste servidor."
 
 #: src/multiplayer.cpp:354
-#, fuzzy
-#| msgid ""
-#| "WARNING: There is already a client using this nick, logging in will cause "
-#| "that client to be kicked!"
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
 "ADVERTENCIA: xa hai un usuario empregando ese alcume, se te identificas con "
-"el botarase a usuario do servidor!"
+"el botarase ao usuario do servidor!"
 
 #: src/multiplayer.cpp:357
 msgid ""
@@ -5643,7 +5593,7 @@ msgstr "O contrasinal é incorrecto."
 
 #: src/multiplayer.cpp:362
 msgid "You have made too many login attempts."
-msgstr ""
+msgstr "Intentou identificarse demasiadas veces sen conseguilo."
 
 #: src/multiplayer_connect.cpp:100 src/multiplayer_connect.cpp:449
 #: src/multiplayer_connect.cpp:597
