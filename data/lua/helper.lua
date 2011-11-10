@@ -2,6 +2,8 @@
 
 local helper = {}
 
+local wml_actions = wesnoth.wml_actions
+
 --! Returns an iterator over all the sides matching a given filter that can be used in a for-in loop.
 function helper.get_sides(cfg)
 	local function f(s)
