@@ -184,9 +184,11 @@ if __name__ == "__main__":
         # The other files are present in wescamp and shouldn't be deleted.
         ignore_list = ["translations", "po", "campaign.def",
             "config.status", "Makefile"]
-        if(svn.copy_to_svn(temp_dir, ignore_list) and not use_git): #TODO: use_git
+        if(addon_obj.sync_from(temp_dir, ignore_list)
+            if use_git
+            else svn.copy_to_svn(temp_dir, ignore_list)):
 
-            svn.commit("wescamp_client: automatic update of addon '"
+            (addon_obj if use_git else svn).commit("wescamp_client: automatic update of addon '"
                 + addon + "'")
             logging.info("New version of addon '%s' uploaded.", addon)
         else:
