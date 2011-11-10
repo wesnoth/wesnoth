@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2011-11-06 01:37-0500\n"
+"PO-Revision-Date: 2011-11-10 10:52-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
@@ -324,7 +324,7 @@ msgstr ""
 #. [side]: id=Charlie, type=Orcish Grunt
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:53
 msgid "Enemies"
-msgstr ""
+msgstr "Geƿinnan"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:73
@@ -607,7 +607,7 @@ msgstr ""
 #. [about]
 #: data/core/about.cfg:2300
 msgid "Norwegian Translation"
-msgstr "Norðish Þeodnes"
+msgstr "Norðisc Þeodnes"
 
 #. [about]
 #: data/core/about.cfg:2325
@@ -2847,6 +2847,7 @@ msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: src/actions.cpp:2779
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -3300,10 +3301,9 @@ msgid "Turn"
 msgstr ""
 
 #: src/dialogs.cpp:511
-#, fuzzy
 #| msgid "scenario settings^Leader"
 msgid "Scenario start"
-msgstr "Lædere"
+msgstr ""
 
 #: src/dialogs.cpp:514
 msgid "Difficulty: "
@@ -3479,7 +3479,7 @@ msgstr ""
 
 #: src/game_events.cpp:181
 msgid "Error: "
-msgstr ""
+msgstr "Gesƿeðrung: "
 
 #: src/game_events.cpp:184
 msgid "Warning: "
@@ -3580,7 +3580,7 @@ msgstr "Þu"
 
 #: src/gui/dialogs/lobby_player_info.cpp:147 src/multiplayer_create.cpp:560
 msgid "Error"
-msgstr ""
+msgstr "Gesƿeðrung"
 
 #: src/intro.cpp:44
 msgid "The End"
@@ -3969,7 +3969,7 @@ msgstr "[all|<gebodu>]"
 
 #: src/menu_events.cpp:2103
 msgid "Error:"
-msgstr ""
+msgstr "Gesƿeðrung:"
 
 #: src/menu_events.cpp:2109
 msgid "Missing argument $arg_id"
@@ -4024,7 +4024,6 @@ msgstr ""
 #: src/menu_events.cpp:2332 src/menu_events.cpp:2335 src/menu_events.cpp:2337
 #: src/menu_events.cpp:2339 src/menu_events.cpp:2341 src/menu_events.cpp:2368
 #: src/menu_events.cpp:2370 src/menu_events.cpp:2372 src/menu_events.cpp:2386
-#, fuzzy
 #| msgid "<nick>"
 msgid "<nickname>"
 msgstr "<eacanama>"
@@ -4383,7 +4382,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2678 src/menu_events.cpp:2687
 msgid "error"
-msgstr ""
+msgstr "gesƿeðrung"
 
 #: src/menu_events.cpp:2685
 msgid "Unknown debug domain: '$domain'."
@@ -4393,9 +4392,11 @@ msgstr ""
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr ""
 
+# Should we append a dative -e to what's inside of $receiver?
 #: src/menu_events.cpp:2765
+#, fuzzy
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "hƿisprian to $receiver"
 
 #: src/menu_events.cpp:2772 src/multiplayer_ui.cpp:542
 msgid "whisper: $sender"
@@ -4717,6 +4718,7 @@ msgid "Reserved"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:762
+#, fuzzy
 msgid "--give--"
 msgstr "--giefan--"
 
@@ -5777,6 +5779,7 @@ msgid "Inflicted"
 msgstr ""
 
 #: src/statistics_dialog.cpp:187
+#, fuzzy
 msgid "Taken"
 msgstr "Genumen"
 
@@ -5887,10 +5890,9 @@ msgid "female^lawful"
 msgstr ""
 
 #: src/unit_types.cpp:977
-#, fuzzy
 #| msgid "female^poisoned"
 msgid "female^liminal"
-msgstr "geætredu"
+msgstr ""
 
 #: src/unit_types.cpp:977
 msgid "female^neutral"
