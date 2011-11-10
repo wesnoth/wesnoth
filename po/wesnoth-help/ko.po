@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2011-10-24 19:30+0900\n"
+"PO-Revision-Date: 2011-11-09 18:48+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -1425,7 +1425,6 @@ msgstr "전투"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:229
-#, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -1438,14 +1437,15 @@ msgid ""
 "as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"Battle for Wesnoth에서의 전투는 항상 근접한 칸에 붙은 유닛들간에만 일어납니"
-"다. 유닛을 클릭하고, 당신이 공격하고자 하는 적을 클릭하십시오: 당신의 유닛은 "
-"적 유닛에게 다가가며, 둘이 나란히 섰을 때 전투가 일어납니다. 공격자와 방어자"
-"는 각자에게 할당된 타격회수를 전부 소모할때까지 공격을 주고받습니다. 공격자"
-"는 자기가 가진 무기 중에서 공격에 쓸 것을 정하고, 방어자는 자신의 무기 중에 "
-"동일한 형태의 무기 중의 하나로 반격합니다. 공격의 형태는 두 종류가 있습니다: "
-"대체로 검, 도끼나 송곳니와 같은 무기는 근접형이며, 활, 창이나 파이어볼과 같"
-"은 무기는 원격형입니다."
+"<italic>text='Battle for Wesnoth'</italic>에서의 전투는 항상 근접한 칸에 붙"
+"은 유닛들간에만 일어납니다. 유닛을 클릭하고, 당신이 공격하고자 하는 적을 클릭"
+"하십시오: 당신의 유닛은 적 유닛에게 다가가며, 둘이 나란히 섰을 때 전투가 일어"
+"납니다. 공격자와 방어자는 각자에게 할당된 타격회수를 전부 소모할때까지 공격"
+"을 주고받습니다. 공격자는 자기가 가진 무기 중에서 공격에 쓸 것을 정하고, 방어"
+"자는 자신의 무기 중에 동일한 형태의 무기 중의 하나로 반격합니다. 공격의 형태"
+"는 두 종류가 있습니다: 대체로 검, 도끼나 송곳니와 같은 무기는 "
+"<italic>text='근접형'</italic>이며, 활, 창이나 파이어볼과 같은 무기는 "
+"<italic>text='원격형'</italic>입니다."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:231
@@ -1460,7 +1460,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1478,7 +1477,7 @@ msgstr ""
 "를 주고, 빗나가면 아무런 피해도 주지 않습니다. 타격은 각 유닛이 자기의 타격회"
 "수를 전부 소모할때까지 오고갑니다. 유닛이 갖는 타격 회수는 서로 다릅니다. 예"
 "를 들면 5-4 공격의 엘프 전사는 4번 타격하고, 각 명중당 5의 데미지를 주며, "
-"9-2 공격의 오크 졸개는 2번밖에 때릴 수 없습니다(하지만 각 명중당 9의 데미지"
+"9-2 공격의 오크 졸개는 2번밖에 때릴 수 없습니다 (하지만 각 명중당 9의 데미지"
 "를 줍니다)."
 
 #. [topic]: id=combat
@@ -1494,7 +1493,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1508,16 +1506,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"모든 유닛에게는 각자가 서 있는 지형에 따른 피격 확률이 있습니다. 이것은 스테"
-"이터스 창에도 떠 있지만, 유닛을 오른쪽 클릭해서 유닛 설명을 선택하여 지형 수"
-"정 항목을 보아도 찾을 수 있습니다. 예를 들면, 대다수 엘프들은 숲에서 70%의 방"
-"어율을 갖고 있기 때문에 그들을 공격하는 유닛의 명중률은 고작 30%에 불과합니"
-"다. 반대로 엘프의 반격시 공격자를 맞힐 기회는 공격자가 어떤 지형에 서 있느냐"
-"에 달려 있습니다."
+"모든 유닛에게는 각자가 서 있는 <italic>text='지형'</italic>에 따른 피격 확률"
+"이 있습니다. 이것은 스테이터스 창에도 떠 있지만, 유닛을 오른쪽 클릭해서 "
+"<bold>text='유닛 설명'</bold>을 선택하여 <bold>text='지형 수정'</bold> 항목"
+"을 보아도 찾을 수 있습니다. 예를 들면, 대다수 엘프들은 숲에서 70%의 방어율을 "
+"갖고 있기 때문에 그들을 공격하는 유닛의 명중률은 고작 30%에 불과합니다. 반대"
+"로 엘프의 반격시 공격자를 맞힐 기회는 공격자가 어떤 지형에 서 있느냐에 달려 "
+"있습니다."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1532,7 +1530,7 @@ msgstr ""
 "이 규칙에는 <ref>dst='weaponspecial_magical' text='마법 공격'</ref>과 "
 "<ref>dst='weaponspecial_marksman' text='저격'</ref>의 2 가지 예외가 있습니"
 "다. 마법 공격은 지형에 관계없이 언제나 명중률이 70%로 고정되며, 저격 공격은 "
-"지형에 관계없이 최소 60%의 명중률을 보장받습니다."
+"지형에 관계없이 공격시에 최소 60%의 명중률을 보장받습니다."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
@@ -1757,7 +1755,7 @@ msgid ""
 msgstr ""
 "두 유닛 모두가 전투에서 살아남으면, 그들은 자기가 싸운 상대의 레벨만큼의 경험"
 "치 포인트를 받습니다. 전투에서 한 유닛이 다른 유닛을 없애면 그 유닛은 훨씬 많"
-"은 경험치를 받습니다 - 0 레벨 유닛을 잡았을 경우 4, 1 레벨 유닛을 잡았으면 "
+"은 경험치를 받습니다 — 0 레벨 유닛을 잡았을 경우 4, 1 레벨 유닛을 잡았으면 "
 "8, 2 레벨은 16, 3 레벨은 24, 등등."
 
 #. [topic]: id=experience_and_advancement
@@ -2907,6 +2905,9 @@ msgid ""
 "Clear chat messages.\n"
 "\n"
 msgstr ""
+"\n"
+"채팅 메세지를 전부 없앱니다.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:799
@@ -3615,127 +3616,127 @@ msgstr ""
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr ""
+msgstr "최대 HP 3 증가, 필요 XP 20% 증가"
 
 #. [time]: id=indoors
 #: data/core/macros/schedules.cfg:70
 msgid "Indoors"
-msgstr ""
+msgstr "건물 내부"
 
 #. [time]: id=deep_underground
 #: data/core/macros/schedules.cfg:90
 msgid "Deep Underground"
-msgstr ""
+msgstr "지하 심층"
 
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:162
 msgid "Midnight"
-msgstr ""
+msgstr "자정"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:174
 msgid "Second Watch — First Hour"
-msgstr ""
+msgstr "삼경 제 1시"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:186
 msgid "Second Watch — Second Hour"
-msgstr ""
+msgstr "삼경 제 2시"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:198
 msgid "Second Watch — Third Hour"
-msgstr ""
+msgstr "삼경 제 3시"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:210
 msgid "Second Watch — Fourth Hour"
-msgstr ""
+msgstr "삼경 제 4시"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:222
 msgid "Second Watch — Fifth Hour"
-msgstr ""
+msgstr "삼경 제 5시"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:234
 msgid "Second Watch — Sixth Hour"
-msgstr ""
+msgstr "삼경 제 6시"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:257
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "아침 제 1시"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:266
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "아침 제 2시"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:275
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "아침 제 3시"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:284
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "아침 제 4시"
 
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:293
 msgid "Midday"
-msgstr ""
+msgstr "정오"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "오후 제 1시"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "오후 제 2시"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "오후 제 3시"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:329
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "오후 제 4시"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:338
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "오후 제 5시"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "오후 제 6시"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "초경 제 1시"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:381
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "초경 제 2시"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:393
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "초경 제 3시"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:405
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "초경 제 4시"
 
 #: data/core/macros/special-notes.cfg:5
 msgid ""
