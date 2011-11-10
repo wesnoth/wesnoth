@@ -1039,10 +1039,10 @@ def write_index(out_path):
     output = MyFile(os.path.join(out_path, "index.html"), "w")
     output.write("""
     <html><head>
-    <meta http-equiv="refresh" content="0;url=C/mainline.html">
+    <meta http-equiv="refresh" content="0;url=en_US/mainline.html">
     </head>
     <body>
-    <a href="C/mainline.html">Redirecting to Wesnoth units database...</a>
+    <a href="en_US/mainline.html">Redirecting to Wesnoth units database...</a>
     </body>
     </html>
     """)
