@@ -28,7 +28,7 @@
 
 <h1>Battle for Wesnoth 1.10 Release Notes</h1>
 
-<p><em>December 2010</em>. It is once again time for that thrill
+<p><em>December 2011</em>. It is once again time for that thrill
 you've all been waiting for, a Wesnoth stable release. The Battle for
 Wesnoth team is proud to release version 1.10 of <em>The Battle for
 Wesnoth</em>, a <a
@@ -62,16 +62,17 @@ now for Windows, Mac OS X and various GNU/Linux distributions.</p>
 <h2 id='game'>What's New in Wesnoth 1.10</h2>
 
 <div class='thumb tright'>
-  <div><a href='images/start-2-full.jpg'><img src='images/start-2.jpg' alt='Wesnoth Screenshot'/></a></div>
+  <div><a href='images/start-1-full.jpg'><img src='images/start-1.jpg' alt='Wesnoth Screenshot'/></a></div>
 </div>
 
-<p>The improvements this time around include one entire new
-full-length campaign, hundreds of new and revised unit portraits, five
-new music tracks, some UI redesign, and substantial improvements in the
-game's AI.</p>
+<p>The list of improvements this time includes beatiful new terrain art,
+a brand new campaign, a lot of work on the UI, and many improvements to WML.</p>
 
 <h3 id='players'>For Players</h3>
 
+<p>To help you quickly identify slowed units, they are now tinted light blue.</p>
+
+<p>There is a new <cite>Whiteboard</cite> system to help you make plans. It allows you to plan many recruitment and movement actions ahead, and then execute them.</p>
 <!--TODO: following: old content, please update!
 <p>To help the player keep those who are loyal to him alive, these units
 are now marked with an overlay symbol that looks like a bronze ring.</p>
@@ -82,7 +83,11 @@ on <a href="http://wiki.wesnoth.org/ImageLocalization">Image
 Localization</a>.</p>
 -->
 
+
 <h4 id='campaigns'>Campaigns</h4>
+
+<!---TODO: better Dead Water summary. I don't like single player -->
+<p>The campaign <cite>Dead Water</cite> is now in mainline. In it you play a young merman who is the heir to his kingdom's throne. You must repel an undead invasion.</p>
 
 <!--TODO: following: old content, please update!
 <p>A new campaign, <cite>Delfador's Memoirs</cite>, tells the tale of
@@ -106,16 +111,18 @@ is available to test Wesnoth's multiplayer campaign feature.</p>
 </div>
 
 <p>There are five new full-orchestral music tracks: <cite>Casualties
-of War</cite>, <cite>Into the Shadows</cite>, <cite>Journey's End</cite>, 
+of War</cite>, <cite>Into the Shadows</cite>, <cite>Journey's End</cite>,
 <cite>Over the Northern Mountains</cite>, and <cite>Weight of Revenge</cite>.</p>
 
 <p>The game AI has been significantly debugged and improved; it
 chooses recruits/recalls better, and does smarter target selection.</p>
 -->
 
-<!--following: old content, please update!
+
 <h4 id='multiplayer'>Multiplayer</h4>
 
+<p>The new lobby from 1.8 has received a lot more polish. It is now stable and ready to use.</p>
+<!--following: old content, please update!
 <p>The operating system's GUI can be told to notify the player that it's his
 turn to play.</p>
 
@@ -130,6 +137,13 @@ impossible, at the cost of breaking compatibility with versions before
 
 <h4 id='general'>General</h4>
 
+<div class='thumb tright'>
+  <div><a href='images/start-3-full.jpg'><img src='images/start-3.jpg' alt='Wesnoth Screenshot'/></a></div>
+</div>
+
+<p>The first batch of standing animations have arrived. Togethor with the new animated water, they breath life into the previously near-motionless battlefield.</p>
+
+<p>You will now be able to uninstall multiple add-ons at once with checkboxes.</p>
 <!--TODO: following: old content, please update!
 <p>The right sidebar on the main game display has been tuned for
 usability. It now gives more prominence to the selected unit's
@@ -139,8 +153,8 @@ terrain defence percentage and time-of-day modifier.</p>
 Dwarvish Scout from Under the Burning Suns is now part of normal
 Dwarvish sides in campaigns. Several other unit lines &mdash; most notably
 the Drakes &mdash; have been completely redone with improved art and
-animations. 
-A remake of the merfolk units out of our Art Director's 
+animations.
+A remake of the merfolk units out of our Art Director's
 virtual pencil has been completed in this release cycle.
 (But most animations are still missing for them.)
 </p>
@@ -171,7 +185,7 @@ one leader with the ability to recruit per side.
 artificial intelligence. The AI can now be scripted to significantly
 change its behavior in different story settings and in response to
 campaign events, give enemy sides more distinct tactical
-personalities. It is possible, though not easy, to use scripting 
+personalities. It is possible, though not easy, to use scripting
 languages (formula_ai, lua) to create alternate AIs that are also scriptable.</p>
 
 <p>A new tool called the <a
