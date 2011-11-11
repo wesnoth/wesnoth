@@ -208,7 +208,7 @@ def actualtype(a):
         atype = "span"
     elif a in ("melee", "ranged"):
         atype = "range"
-    elif a in ("lawful", "neutral", "chaotic"):
+    elif a in ("lawful", "neutral", "chaotic", "liminal"):
         atype = "alignment"
     elif a.startswith("{") or a.endswith("}") or a.startswith("$"):
         atype = None	# Can't tell -- it's a macro expansion
