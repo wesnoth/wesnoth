@@ -132,22 +132,25 @@ class Addon(object):
 
 _GITHUB_API_BASE = "https://api.github.com/"
 _GITHUB_API_REPOS = "orgs/wescamp/repos"
+_GITHUB_API_TEAMS = "orgs/wescamp/teams"
+# PUT /teams/:id/repos/:org/:repo
+_GITHUB_API_TEAM_REPO = "teams/{0}/repos/wescamp/{1}"
 
 class GitHub(object):
     """Interface to a github checkout directory. Such a directory contains all translatable add-ons for a certain wesnoth version.
 
     Every GitHub object is specific to a directory and wesnoth version.
     """
-    def __init__(self, directory, version):
+    def __init__(self, directory, version, userpass=None):
         """Initializes a GitHub object.
 
         directory: Directory in which the git repos for this wesnoth branch live.
         version: The version of this wesnoth branch.
         """
-        logging.debug("GitHub created with directory {0} and version {1}".format(directory, version))
+        logging.debug("GitHub created with directory {0} and version {1}, {2} authentication data".format(directory, version, "with" if userpass else "without"))
         self.directory = directory
         self.version = version
-
+        self.userpass = userpass
 
     def update(self):
         """Update all add-ons.
@@ -186,8 +189,7 @@ class GitHub(object):
         """
         logging.debug("Creating new add-on {0}".format(name))
         response = self._github_repos_create(name)
-        parsed = json.load(response)
-        self._clone(name, parsed["ssh_url"])
+        self._clone(name, response["ssh_url"])
         return self.addon(name)
 
     def _absolute_path(self, name):
@@ -224,11 +226,8 @@ class GitHub(object):
         Returns a list of tuples that contain the add-on name and the url.
         """
         url = _GITHUB_API_BASE + _GITHUB_API_REPOS
-        try:
-            response = urllib2.urlopen(url)
-        except IOError as e:
-            raise Error("GitHub API failure: " + str(e))
-        repos = json.load(response)
+        request = urllib2.Request(url)
+        repos = self._github_api_request(request)
 
         version_suffix = "-{0}".format(self.version)
         return [(repo["name"][:-len(version_suffix)], repo["git_url"])
@@ -239,19 +238,59 @@ class GitHub(object):
 
         name: The name of the add-on for which the repository will be created.
         """
-        url = _GITHUB_API_BASE + _GITHUB_API_REPOS
         reponame = "{0}-{1}".format(name, self.version)
-        request = { "name" : reponame }
-        request = json.dumps(request)
-        #TODO: authentication, either OAuth or basic authentication
+
+        url = _GITHUB_API_BASE + _GITHUB_API_REPOS
+        request = urllib2.Request(url)
+        requestdata = { "name" : reponame }
+        repodata = self._github_api_request(request, requestdata, authenticate=True)
+
+        url = _GITHUB_API_BASE + _GITHUB_API_TEAMS
+        request = urllib2.Request(url)
+        teams = self._github_api_request(request, authenticate=True)
+
+        # This can probably be cleaner
+        team_number = [team["id"] for team in teams if team["name"] == "Developers"][0]
+
+        # PUT /teams/:id/repos/:org/:repo
+        url = _GITHUB_API_BASE + _GITHUB_API_TEAM_REPO
+        request = urllib2.Request(url.format(team_number, reponame))
+        request.get_method = lambda: "PUT"
+        # Github requires data for every modifying request, even if there is none
+        self._github_api_request(request, data="", authenticate=True)
+
+        return repodata
+
+    def _github_api_request(self, request, data=None, authenticate=False):
+        if data == "":
+            # Workaround for PUTs requiring data, even if you have nothing to pass
+            request.add_data(data)
+        elif data:
+            request.add_data(json.dumps(data))
+
+        # Manually adding authentication data
         # Basic works in curl, but urllib2 doesn't
         # probably because github's API doesn't send a www-authenticate header
-        #also TODO: adding to correct teams
-        # PUT /teams/:id/repos/:user/:repo
+        if authenticate:
+            from base64 import encodestring
+            base64string = encodestring(self._github_userpass()).replace('\n','')
+            request.add_header("Authorization", "Basic {0}".format(base64string))
+
         try:
-            urllib2.urlopen(url, request)
+            response = urllib2.urlopen(request)
         except IOError as e:
             raise Error("GitHub API failure: " + str(e))
+        if response.code == 204:
+            # 204 = No content
+            return None
+        else:
+            return json.load(response)
+
+    def _github_userpass(self):
+        if self.userpass:
+            return self.userpass
+        else:
+            raise Error("Authentication required")
 
     def _execute(self, command, cwd=None, check_error=False):
         """Executes a command.
