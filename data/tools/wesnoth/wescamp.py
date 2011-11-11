@@ -51,6 +51,7 @@ class tempdir:
 if __name__ == "__main__":
     use_git = False
     git_version = None
+    git_userpass = None
 
     """Download an addon from the server.
 
@@ -159,7 +160,7 @@ if __name__ == "__main__":
                 svn_dir + "/" + addon)
 
             if use_git:
-                github = libgithub.GitHub(svn_dir, git_version)
+                github = libgithub.GitHub(svn_dir, git_version, userpass=git_userpass)
 
                 github.create_addon(addon)
             else:
@@ -219,7 +220,7 @@ if __name__ == "__main__":
 
         # update the wescamp checkout for the translation,
         if use_git:
-            addon_obj = libgithub.GitHub(wescamp, git_version).addon(addon)
+            addon_obj = libgithub.GitHub(wescamp, git_version, userpass=git_userpass).addon(addon)
         else:
             svn = libsvn.SVN(wescamp + "/" + addon)
 
@@ -289,7 +290,7 @@ if __name__ == "__main__":
             addon, svn_dir)
 
         if use_git:
-            addon_obj = libgithub.GitHub(svn_dir, git_version).addon(addon)
+            addon_obj = libgithub.GitHub(svn_dir, git_version, userpass=git_userpass).addon(addon)
 
             # Note: this is probably not implemented, as it would destroy a repository, including the history.
             addon_obj.erase()
@@ -357,6 +358,9 @@ if __name__ == "__main__":
         help = "Use git instead of svn to interface with wescamp. "
         + "This is a temporary option for the conversion from berlios to github.")
 
+    optionparser.add_option("-G", "--github-login",
+        help = "Username and password for github in the user:pass format")
+
     options, args = optionparser.parse_args()
 
     if(options.verbose):
@@ -396,6 +400,7 @@ if __name__ == "__main__":
 
     if(options.git):
         use_git = True
+        git_userpass = options.github_login
         if not wescamp:
             logging.error("No wescamp checkout specified. Needed for git usage.")
             sys.exit(2)
