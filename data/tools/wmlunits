@@ -289,7 +289,7 @@ class HTMLOutput:
                     campabbrev = campname
                 else:
                     if not cname in self.wesnoth.is_mainline_campaign:
-                        lang = "C" # only mainline campaigns have translations right now
+                        lang = "en_US" # only mainline campaigns have translations right now
                     campname = T(self.wesnoth.campaign_lookup[cname], "name")
                     if not campname:
                         campname = cname
@@ -316,7 +316,7 @@ class HTMLOutput:
                 eids[1].append(eid)
         for i in range(2):
             lang = self.isocode
-            if i == 1: lang = "C" # only mainline translations
+            if i == 1: lang = "en_US" # only mainline translations
             eranames = [(T(self.wesnoth.era_lookup[eid], "name"),
                 eid) for eid in eids[i]]
             eranames.sort()
@@ -1030,7 +1030,7 @@ def generate_single_unit_reports(out_path, isocode, wesnoth):
     html.analyze_units(grouper)
 
     for uid, unit in wesnoth.unit_lookup.items():
-        if isocode != "C" and not uid in wesnoth.is_mainline_unit: continue
+        if isocode != "en_US" and not uid in wesnoth.is_mainline_unit: continue
         output = MyFile(os.path.join(odir, "%s.html" % uid), "w")
         html.target = "%s.html" % uid
         html.write_unit_report(output, unit)
@@ -1159,11 +1159,11 @@ def generate_report(stuff, isocode):
     generate_campaign_report(options.output, isocode, "mainline", stuff)
 
     for campaign in campaigns:
-        if isocode != "C" and not campaign in stuff.is_mainline_campaign: continue
+        if isocode != "en_US" and not campaign in stuff.is_mainline_campaign: continue
         generate_campaign_report(options.output, isocode, campaign, stuff)
 
     for eid in stuff.era_lookup.keys():
-        if isocode != "C" and not eid in stuff.is_mainline_era: continue
+        if isocode != "en_US" and not eid in stuff.is_mainline_era: continue
         generate_era_report(options.output, isocode, eid, stuff)
 
     # Single unit reports.
