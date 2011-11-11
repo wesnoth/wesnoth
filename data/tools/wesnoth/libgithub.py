@@ -197,7 +197,18 @@ class GitHub(object):
 
     def _clone(self, name, url):
         target = self._absolute_path(name)
-        self._execute(["git", "clone", url, target], check_error=True)
+        out, err = self._execute(["git", "clone", url, target])
+
+        # Rather hacky
+        if len(err):
+            errors = [line.strip() for line in err.split('\n') if len(line)]
+            got_error = False
+            for error in errors:
+                if error != "warning: You appear to have cloned an empty repository.":
+                    got_error = True
+                    break
+            if got_error:
+                raise Error("Error cloning an add-on: " + err)
 
     def _get_new_addons(self):
         """Check out any new add-ons.
