@@ -489,7 +489,7 @@ void terrain_palette::draw(bool force) {
 		bool is_core = non_core_terrains_.find(terrain) == non_core_terrains_.end();
 		tooltip_text << map().get_terrain_editor_string(terrain);
 		if (gui_.get_draw_terrain_codes()) {
-			tooltip_text << " - " << terrain;
+			tooltip_text << " " + utils::unicode_em_dash + " " << terrain;
 		}
 		if (!is_core) {
 			tooltip_text << " "
