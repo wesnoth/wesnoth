@@ -3999,7 +3999,7 @@ bool LuaKernel::execute(char const *prog, int nArgs, int nRets)
 		char const *m = lua_tostring(L, -1);
 		chat_message("Lua error", m);
 		ERR_LUA << m << '\n';
-		lua_pop(L, 2);
+		lua_pop(L, 1);
 		return false;
 	}
 
