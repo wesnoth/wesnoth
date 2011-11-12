@@ -409,6 +409,9 @@ class HTMLOutput:
                     link = "../%s/%s.html" % (self.isocode, uid)
                     name = self.wesnoth.get_unit_value(un,
                         "name", translation=self.translation.translate)
+                    if not name:
+                        error_message("Warning: Unit uid=" + uid + " has no name.\n")
+                        name = uid
                     write("<a href=\"" + link + "\">" + name + "</a><br />")
 
             if got_menu: write("</div></li>\n")
