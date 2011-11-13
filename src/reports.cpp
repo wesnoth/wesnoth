@@ -1152,9 +1152,9 @@ REPORT_GENERATOR(position)
 	if (move_cost < unit_movement_type::UNREACHABLE) {
 		str << " (" << defense << "%," << move_cost << ')';
 	} else if (mouseover_hex == displayed_unit_hex) {
-		str << " (" << defense << "%,-)";
+		str << " (" << defense << "%,‒)";
 	} else {
-		str << " (-)";
+		str << " (‒)";
 	}
 	return text_report(str.str());
 }
