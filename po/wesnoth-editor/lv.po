@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.7.9\n"
+"Project-Id-Version: Battle for Wesnoth 1.9.10+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2009-12-02 14:46+0300\n"
+"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"PO-Revision-Date: 2011-11-13 01:09+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -64,7 +64,7 @@ msgstr "tuksnesis"
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
 msgid "embellishments"
-msgstr ""
+msgstr "rotājumi"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:44
@@ -89,7 +89,7 @@ msgstr "ala"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "obstacle"
-msgstr ""
+msgstr "šķērslis"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:79
@@ -104,7 +104,7 @@ msgstr "pils"
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:93
 msgid "bridge"
-msgstr ""
+msgstr "tilts"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:100
@@ -338,11 +338,11 @@ msgstr "Bez īpašas piesardzības spēlē nestrādās."
 
 #: src/editor/editor_palettes.cpp:526
 msgid "FG: "
-msgstr ""
+msgstr "Priekšplāns:"
 
 #: src/editor/editor_palettes.cpp:527
 msgid "BG: "
-msgstr ""
+msgstr "Fons:"
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"
@@ -369,35 +369,13 @@ msgid "Could not save the map: $msg"
 msgstr "Neizdevās saglabāt karti: $msg"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
 msgstr "Neviens"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "Spēlētājs $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"
 msgstr "Pielāgoti iestatījumi"
-
-#~ msgid "Choose player"
-#~ msgstr "Izvēlieties spēlētāju"
-
-#~ msgid ""
-#~ "Which player should start here? You can use alt and a number key to set "
-#~ "the starting position for a player, and del to clear the starting "
-#~ "position under the cursor. Pressing a number key by itself will scroll to "
-#~ "that player’s starting position."
-#~ msgstr ""
-#~ "Kuram spēlētājam būtu jāsāk šeit? Varat izmantot Alt un ciparu taustiņus, "
-#~ "lai iestatītu spēlētāja sākuma pozīciju, un Del, lai notīrītu sākuma "
-#~ "pozīciju zem kursora. Nospiežot tikai ciparu taustiņu, aiziesiet uz "
-#~ "attiecģā spēlētāja sākuma pozīciju."
-
-#~ msgid "FG"
-#~ msgstr "Priekšplāns"
-
-#~ msgid "BG"
-#~ msgstr "Fons"
