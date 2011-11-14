@@ -47,7 +47,7 @@ foreach my $file (@ARGV) {
     if (m/\#define/) {
       unshift @domainstack, $domainstack[0];
       next LINE;
-    } elsif (m/\#enddef/) {
+    } elsif (m/^\s*\#enddef/) {
       shift @domainstack;
     }
 
