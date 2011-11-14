@@ -60,6 +60,10 @@ foreach my $file (@ARGV) {
       next LINE;
     }
 
+    if (m/\#\s*po:\s+(.+)/) {
+      push @{$nodeinfostack[-1][2]}, $1;
+    }
+
     # skip other # lines as comments
     next LINE if m/^\s*\#/ and !defined $str;
 
