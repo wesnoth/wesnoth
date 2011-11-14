@@ -42,21 +42,18 @@ foreach my $file (@ARGV) {
   my @nodeinfostack = (["top", [], []]); # dummy top node
   my @domainstack = ($initialdomain);
   my $valid_wml = 1;
-  my ($is_define, $macro_has_textdomain) = (0, 0);
  LINE: while (<FILE>) {
     # record a #define scope
-    if (m/\#define\>/) {
-      $is_define = 1; $macro_has_textdomain = 0;
+    if (m/\#define/) {
+      unshift @domainstack, $domainstack[0];
       next LINE;
-    } elsif (m/\#enddef\>/) {
-      $is_define = 0;
-      if ($macro_has_textdomain) { shift @domainstack; };
+    } elsif (m/\#enddef/) {
+      shift @domainstack;
     }
 
     # change the current textdomain when hitting the directive
     if (m/\#textdomain\s+(\S+)/) {
-      unshift @domainstack, $1;
-      if ($is_define) { $macro_has_textdomain = 1; };
+      $domainstack[0] = $1;
       next LINE;
     }
 
