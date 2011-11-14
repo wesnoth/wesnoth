@@ -301,17 +301,9 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 					<< "' contains invalid utf-8, trimmed the invalid parts.\n";
 		}
 		if(markedup) {
-			if(!pango_parse_markup(narrow.c_str(), narrow.size()
-						, 0, NULL, NULL, NULL, NULL)) {
-
-				ERR_GUI_L << "ttext::" << __func__
-						<< " text '" << narrow
-						<< "' has broken markup, set to normal text.\n";
-
-				set_text(_("The text contains invalid markup: ") + narrow, false);
+			if(!set_markup(narrow)) {
 				return false;
 			}
-			pango_layout_set_markup(layout_, narrow.c_str(), narrow.size());
 		} else {
 			/*
 			 * pango_layout_set_text after pango_layout_set_markup might
@@ -682,6 +674,59 @@ void ttext::create_surface_buffer(const size_t size) const
 
 	surface_buffer_ = new unsigned char [size];
 	memset(surface_buffer_, 0, size);
+}
+
+bool ttext::set_markup(const std::string& text)
+{
+	if(pango_parse_markup(text.c_str(), text.size()
+			, 0, NULL, NULL, NULL, NULL)) {
+
+		/* Markup is valid so set it. */
+		pango_layout_set_markup(layout_, text.c_str(), text.size());
+		return true;
+	}
+
+	/*
+	 * The markup is invalid. Try to recover.
+	 *
+	 * The pango engine tested seems to accept stray single quotes »'« and
+	 * double quotes »"«. Stray ampersands »&« seem to give troubles.
+	 * So only try to recover from broken ampersands, by simply replacing them
+	 * with the escaped version.
+	 */
+	std::string semi_escaped;
+	BOOST_FOREACH(const char c, text) {
+		if(c == '&') {
+			semi_escaped += "&amp;";
+		} else {
+			semi_escaped += c;
+		}
+	}
+
+	/*
+	 * If at least one ampersand is replaced the semi-escaped string
+	 * is longer than the original.
+	 */
+	if(text.size() != semi_escaped.size()
+			&& !pango_parse_markup(semi_escaped.c_str(), semi_escaped.size()
+				, 0, NULL, NULL, NULL, NULL)) {
+
+		/* Fixing the ampersands didn't work. */
+		ERR_GUI_L << "ttext::" << __func__
+				<< " text '" << text
+				<< "' has broken markup, set to normal text.\n";
+
+		set_text(_("The text contains invalid markup: ") + text, false);
+		return false;
+	}
+
+	/* Replacement worked, still warn the user about the error. */
+	ERR_GUI_L << "ttext::" << __func__
+			<< " text '" << text
+			<< "' has unescaped ampersands '&', escaped them.\n";
+
+	pango_layout_set_markup(layout_, semi_escaped.c_str(), semi_escaped.size());
+	return true;
 }
 
 } // namespace font

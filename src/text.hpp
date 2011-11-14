@@ -301,6 +301,21 @@ private:
 	 * @param size                The required size of the buffer.
 	 */
 	void create_surface_buffer(const size_t size) const;
+
+	/**
+	 * Sets the markup'ed text.
+	 *
+	 * It tries to set the text as markup. If the markup is invalid it will try
+	 * a bit harder to recover from the errors and still set the markup.
+	 *
+	 * @param text                The text to set as markup.
+	 *
+	 * @returns                   Whether the markup was set or an
+	 *                            unrecoverable error occurred and the text is
+	 *                            set as plain text with an error message.
+	 */
+	bool set_markup(const std::string& text);
+
 };
 
 } // namespace font
