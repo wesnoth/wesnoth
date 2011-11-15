@@ -172,6 +172,9 @@ stringfixes = {
 
 # Fix capitalization
 ("Joystick: number of the cursor x-axis joystick", "Joystick: number of the cursor X-axis joystick"),
+
+# Fix quotation marks
+("The nickname '$nick'", "The nickname ‘$nick’"),
 ),
 
 "wesnoth-anl" : (
