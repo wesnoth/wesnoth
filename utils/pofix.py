@@ -3916,6 +3916,10 @@ stringfixes = {
 ("Immune to drain, poison and plague", "Immune to drain, poison, and plague"),
 ),
 
+"wesnoth-manpages" : (
+("of on-line players", "of online players"),
+),
+
 }
 
 # Speak, if all argument files are newer than this timestamp
