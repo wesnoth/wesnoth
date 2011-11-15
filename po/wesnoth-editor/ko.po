@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2006-03-21 13:15-0800\n"
-"Last-Translator: Andrew <Sfradix@hotmail.com>\n"
+"PO-Revision-Date: 2011-11-14 21:31+0900\n"
+"Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -21,92 +21,92 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "단일 칸"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "반경 1칸"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "반경 2칸"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "북서-남동 라인"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
 msgid "all"
-msgstr ""
+msgstr "모든 타일"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:16
 msgid "water"
-msgstr ""
+msgstr "수상 타일"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr ""
+msgstr "평지 타일"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
 msgid "desert"
-msgstr ""
+msgstr "사막 타일"
 
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
 msgid "embellishments"
-msgstr ""
+msgstr "타일 장식"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:44
 msgid "forest"
-msgstr ""
+msgstr "삼림 타일"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:51
 msgid "frozen"
-msgstr ""
+msgstr "냉동 타일"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:58
 msgid "rough"
-msgstr ""
+msgstr "구릉 타일"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:65
 msgid "cave"
-msgstr ""
+msgstr "동굴 타일"
 
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "obstacle"
-msgstr ""
+msgstr "장애 타일"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:79
 msgid "village"
-msgstr ""
+msgstr "마을 타일"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:86
 msgid "castle"
-msgstr ""
+msgstr "성채 타일"
 
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:93
 msgid "bridge"
-msgstr ""
+msgstr "다리 타일"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:100
 msgid "special"
-msgstr ""
+msgstr "특수 타일"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -160,9 +160,8 @@ msgstr ""
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:153
-#, fuzzy
 msgid "Window"
-msgstr "취소"
+msgstr "창"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:272
@@ -183,19 +182,22 @@ msgstr ""
 
 #: src/editor/editor_controller.cpp:317
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "정말로 종료하시겠습니까?"
 
 #: src/editor/editor_controller.cpp:319
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"정말로 종료하시겠습니까? 마지막 저장 이후에 행한 맵 변경사항을 잃게 됩니다."
 
 #: src/editor/editor_controller.cpp:321
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"정말로 종료하시겠습니까? 다음의 맵이 수정되어 있으며 종료하면 변경한 부분은 "
+"사라집니다:"
 
 #: src/editor/editor_controller.cpp:326
 msgid "Quit"
@@ -215,7 +217,6 @@ msgid "Unsaved Changes"
 msgstr ""
 
 #: src/editor/editor_controller.cpp:434
-#, fuzzy
 msgid "Choose a Map to Open"
 msgstr "불러올 맵을 선택하십시오"
 
@@ -224,9 +225,8 @@ msgid "Save the Map As"
 msgstr "저장할 곳을 선택하십시오"
 
 #: src/editor/editor_controller.cpp:471
-#, fuzzy
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "맵이 이미 존재합니다. 덮어 씌우시겠습니까?"
+msgstr "파일이 이미 존재합니다. 덮어 씌우시겠습니까?"
 
 #: src/editor/editor_controller.cpp:488
 msgid "No random map generators found."
@@ -237,9 +237,8 @@ msgid "Map creation failed."
 msgstr ""
 
 #: src/editor/editor_controller.cpp:520
-#, fuzzy
 msgid "Choose a mask to apply"
-msgstr "불러올 맵을 선택하십시오"
+msgstr ""
 
 #: src/editor/editor_controller.cpp:527
 msgid "Error loading mask"
@@ -255,7 +254,7 @@ msgstr ""
 
 #: src/editor/editor_controller.cpp:653 src/editor/editor_controller.cpp:695
 msgid "This map is already open."
-msgstr ""
+msgstr "해당 맵은 이미 열려 있습니다."
 
 #: src/editor/editor_controller.cpp:674
 msgid "Map saved."
@@ -277,19 +276,19 @@ msgstr ""
 
 #: src/editor/editor_controller.cpp:1126
 msgid "Undo"
-msgstr "취소"
+msgstr "물리기"
 
 #: src/editor/editor_controller.cpp:1128
 msgid "Can’t Undo"
-msgstr ""
+msgstr "물리기 불가"
 
 #: src/editor/editor_controller.cpp:1132
 msgid "Redo"
-msgstr "재취소"
+msgstr "재실행"
 
 #: src/editor/editor_controller.cpp:1134
 msgid "Can’t Redo"
-msgstr ""
+msgstr "재실행 불가"
 
 #: src/editor/editor_controller.cpp:1139
 msgid "Auto-update Terrain Transitions: Yes"
@@ -342,22 +341,20 @@ msgid "Empty map file"
 msgstr ""
 
 #: src/editor/map_context.cpp:220
-#, fuzzy
 msgid "Could not save into scenario"
-msgstr "맵을 저장 할 수 없습니다: $msg"
+msgstr ""
 
 #: src/editor/map_context.cpp:227
 msgid "Could not save the map: $msg"
 msgstr "맵을 저장 할 수 없습니다: $msg"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
-#, fuzzy
 msgid "player^None"
-msgstr "플레이어"
+msgstr "선택 해제"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "$player_number 번 플레이어"
 
 #: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"

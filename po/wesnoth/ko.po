@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2011-11-10 19:48+0900\n"
+"PO-Revision-Date: 2011-11-12 15:33+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -141,17 +141,17 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
 msgid "Use 12-hour clock format"
-msgstr ""
+msgstr "12시간제 사용"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:150
 msgid "Confirm loading of saves from a different version"
-msgstr ""
+msgstr "다른 버전의 세이브 파일을 불러올 때 확인"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "도움말에서 모든 유닛들을 본다"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:158
@@ -159,6 +159,8 @@ msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
+"도움말에 모든 유닛들을 수록합니다 (재시작해야 적용됩니다). 이것은 조우한 유닛"
+"의 목록을 바꾸지 않으므로 해제하면 원래대로 돌아옵니다."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:166
@@ -380,10 +382,8 @@ msgstr "추가 캠페인 정리 담당"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:122
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Multiplayer define"
-msgstr "멀티 플레이"
+msgstr "멀티플레이 정리 담당"
 
 #. [objective]: condition=win
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
@@ -2923,14 +2923,14 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
-#, fuzzy
 msgid ""
 "You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
-"안개나 장막을 걷어낸 이동은 취소할 수 없습니다. 유닛을 이동할 때 되돌릴 기회"
-"를 보존하려면 '장막 갱신 지연' 옵션을 활성화하십시오."
+"안개나 장막을 걷어낸 이동은 무를 수 없습니다. 유닛을 이동할 때 되돌릴 기회를 "
+"보존하려면 <b>장막 갱신 지연</b> 옵션을 활성화하거나 새로운 화이트보드 플랜 "
+"도구를 활용하십시오."
 
 #. [tip]
 #: data/hardwired/tips.cfg:192
@@ -3227,7 +3227,7 @@ msgstr ""
 #. [label]: id=replay-label
 #: data/themes/macros.cfg:51 src/dialogs.cpp:507
 msgid "Replay"
-msgstr ""
+msgstr "리플레이"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:66
@@ -3237,7 +3237,7 @@ msgstr ""
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:67
 msgid "continuous replay"
-msgstr ""
+msgstr "리플레이 연속재생"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:80
@@ -3247,7 +3247,7 @@ msgstr ""
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:81
 msgid "pause at end of turn"
-msgstr ""
+msgstr "턴이 끝나면 멈추기"
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:94
@@ -3257,7 +3257,7 @@ msgstr ""
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:95
 msgid "reset to beginning"
-msgstr ""
+msgstr "처음으로 돌아가기"
 
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:108
@@ -3267,7 +3267,7 @@ msgstr ""
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:109
 msgid "play turn"
-msgstr ""
+msgstr "한 턴 진행"
 
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:122
@@ -3277,7 +3277,7 @@ msgstr ""
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:123
 msgid "play side turn"
-msgstr ""
+msgstr "이번 진영의 턴 진행"
 
 #. [menu]: id=show-what
 #: data/themes/macros.cfg:135
@@ -4369,7 +4369,7 @@ msgstr "관전자만이 볼 수 있음"
 #: src/menu_events.cpp:713
 msgid "unit^Gold"
 msgid_plural "Gold"
-msgstr[0] ""
+msgstr[0] "원"
 
 #: src/menu_events.cpp:720
 msgid "You have no units available to recruit."
@@ -4418,7 +4418,7 @@ msgstr "유닛을 버린다"
 #: src/menu_events.cpp:990
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] ""
+msgstr[0] "재소집을 하려면 최소 $cost 원이 필요합니다"
 
 #: src/menu_events.cpp:1376
 msgid "You cannot end your turn yet!"
@@ -4427,12 +4427,12 @@ msgstr ""
 #: src/menu_events.cpp:1400
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
-msgstr ""
+msgstr "아직 아무런 행동도 하지 않았습니다. 정말로 턴을 끝내시겠습니까?"
 
 #: src/menu_events.cpp:1408
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
-msgstr ""
+msgstr "아직 계획된 행동이 남은 유닛이 있습니다. 정말로 턴을 끝내시겠습니까?"
 
 #: src/menu_events.cpp:1416 src/menu_events.cpp:1421
 msgid "Some units have movement left. Do you really want to end your turn?"

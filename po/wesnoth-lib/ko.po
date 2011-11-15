@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2011-11-10 19:55+0900\n"
+"PO-Revision-Date: 2011-11-15 22:04+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -550,7 +550,7 @@ msgstr "암석 동굴"
 #: data/core/terrain.cfg:898 data/core/terrain.cfg:910
 #: data/core/terrain.cfg:922
 msgid "Mine Rail"
-msgstr ""
+msgstr "광산 선로"
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
@@ -589,7 +589,7 @@ msgstr "용암"
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:994
 msgid "Volcano"
-msgstr ""
+msgstr "화산"
 
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1009
@@ -757,7 +757,7 @@ msgstr "무너진 오두막"
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1267
 msgid "Human City"
-msgstr ""
+msgstr "인간 도시"
 
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1280
@@ -767,12 +767,12 @@ msgstr "풍차 마을"
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1293
 msgid "Snowy Human City"
-msgstr ""
+msgstr "눈 덮인 인간 도시"
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1306
 msgid "Ruined Human City"
-msgstr ""
+msgstr "인간 도시의 폐허"
 
 #. [terrain_type]: id=hill_village
 #: data/core/terrain.cfg:1319
@@ -812,22 +812,22 @@ msgstr "드워프식 마을"
 #. [terrain_type]: id=hut_village
 #: data/core/terrain.cfg:1412
 msgid "Hut"
-msgstr ""
+msgstr "오두막"
 
 #. [terrain_type]: id=hut_snow_village
 #: data/core/terrain.cfg:1425
 msgid "Snowy Hut"
-msgstr ""
+msgstr "눈 덮인 오두막"
 
 #. [terrain_type]: id=logcabin_village
 #: data/core/terrain.cfg:1438
 msgid "Log Cabin"
-msgstr ""
+msgstr "통나무집"
 
 #. [terrain_type]: id=logcabin_snow_village
 #: data/core/terrain.cfg:1451
 msgid "Snowy Log Cabin"
-msgstr ""
+msgstr "눈 덮인 통나무집"
 
 #. [terrain_type]: id=igloo
 #: data/core/terrain.cfg:1464
@@ -1461,15 +1461,13 @@ msgstr ""
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
-#, fuzzy
-#| msgid "Choose theme"
 msgid "Choose Player"
-msgstr "테마 선택"
+msgstr "플레이어 선택"
 
 #. [label]: id=message
 #: data/gui/default/window/editor_set_starting_position.cfg:70
 msgid "Which player should start here?"
-msgstr ""
+msgstr "어떤 플레이어가 여기서 시작합니까?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2515,7 +2513,7 @@ msgstr "띄워진 딱지 보이기"
 
 #: src/game_preferences_display.cpp:194
 msgid "Turn dialog"
-msgstr "대화 켜기"
+msgstr "자기 턴일때 메세지 출력"
 
 #: src/game_preferences_display.cpp:195
 msgid "Enable planning mode on start"
@@ -2818,7 +2816,7 @@ msgstr "특수 그래픽 효과 사용 (약간 느려질 수 있음)"
 
 #: src/game_preferences_display.cpp:433
 msgid "View and configure keyboard shortcuts"
-msgstr ""
+msgstr "키보드 단축키를 확인하고 설정합니다"
 
 #: src/game_preferences_display.cpp:760
 msgid "Speed: "
@@ -3172,11 +3170,11 @@ msgstr "리더"
 
 #: src/hotkeys.cpp:61
 msgid "Undo"
-msgstr "취소"
+msgstr "무르기"
 
 #: src/hotkeys.cpp:62
 msgid "Redo"
-msgstr "재취소"
+msgstr "다시 놓기"
 
 #: src/hotkeys.cpp:63
 msgid "Zoom In"
@@ -3279,16 +3277,12 @@ msgid "Statistics"
 msgstr "통계"
 
 #: src/hotkeys.cpp:92
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Pause Network Game"
-msgstr "네트워크 게임 열기"
+msgstr "게임 일시정지"
 
 #: src/hotkeys.cpp:93
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Continue Network Game"
-msgstr "네트워크 게임 열기"
+msgstr "게임 계속 플레이"
 
 #: src/hotkeys.cpp:95
 msgid "Set Team Label"
@@ -3356,27 +3350,27 @@ msgstr "처음부터 계획 모드 활성화"
 
 #: src/hotkeys.cpp:114
 msgid "Execute Planned Action"
-msgstr ""
+msgstr "계획된 행동 실행"
 
 #: src/hotkeys.cpp:115
 msgid "Execute All Actions"
-msgstr ""
+msgstr "모든 행동을 실행"
 
 #: src/hotkeys.cpp:116
 msgid "Delete Planned Action"
-msgstr ""
+msgstr "계획된 행동 삭제"
 
 #: src/hotkeys.cpp:117
 msgid "Move Action Up Queue"
-msgstr ""
+msgstr "해당 행동의 순위를 올림"
 
 #: src/hotkeys.cpp:118
 msgid "Move Action Down Queue"
-msgstr ""
+msgstr "해당 행동의 순위를 내림"
 
 #: src/hotkeys.cpp:119
 msgid "Suppose Dead"
-msgstr ""
+msgstr "죽은 걸로 친다"
 
 #: src/hotkeys.cpp:121
 msgid "Quit to Desktop"
@@ -3384,7 +3378,7 @@ msgstr "프로그램 종료"
 
 #: src/hotkeys.cpp:122
 msgid "Close Map"
-msgstr ""
+msgstr "맵 닫기"
 
 #: src/hotkeys.cpp:123
 msgid "Switch Map"
@@ -3400,12 +3394,11 @@ msgstr "맵 불러오기"
 
 #: src/hotkeys.cpp:129
 msgid "Save Map As"
-msgstr ""
+msgstr "다른 이름으로 맵 저장"
 
 #: src/hotkeys.cpp:130
-#, fuzzy
 msgid "Save All Maps"
-msgstr "맵 저장"
+msgstr "모든 맵을 저장"
 
 #: src/hotkeys.cpp:131
 msgid "Revert All Changes"
@@ -3425,19 +3418,19 @@ msgstr ""
 
 #: src/hotkeys.cpp:136
 msgid "Paint Tool"
-msgstr ""
+msgstr "칠하기 도구"
 
 #: src/hotkeys.cpp:137
 msgid "Fill Tool"
-msgstr ""
+msgstr "채우기 도구"
 
 #: src/hotkeys.cpp:138
 msgid "Selection Tool"
-msgstr ""
+msgstr "선택 도구"
 
 #: src/hotkeys.cpp:140
 msgid "Set Starting Positions Tool"
-msgstr ""
+msgstr "시작 지점 설정 도구"
 
 #: src/hotkeys.cpp:141
 msgid "Next Brush"
@@ -3624,22 +3617,16 @@ msgid "Start Multiplayer Game"
 msgstr "멀티플레이 시작하기"
 
 #: src/hotkeys.cpp:255
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Manage Add-ons"
-msgstr "추가 기능 업데이트"
+msgstr "추가 기능 메뉴 열기"
 
 #: src/hotkeys.cpp:262
-#, fuzzy
-#| msgid "Start the editor"
 msgid "Start Editor"
 msgstr "맵 에디터 열기"
 
 #: src/hotkeys.cpp:269
-#, fuzzy
-#| msgid "Credits"
 msgid "Show Credits"
-msgstr "만든 이들"
+msgstr "만든 이들 보기"
 
 #: src/hotkeys.cpp:277
 msgid "Show Helptip"

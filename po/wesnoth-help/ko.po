@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2011-11-09 18:48+0900\n"
+"PO-Revision-Date: 2011-11-14 20:50+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -562,7 +562,7 @@ msgstr ""
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:31
 msgid "Great Ocean"
-msgstr ""
+msgstr "대양"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
@@ -571,11 +571,14 @@ msgid ""
 "and all rivers eventually flow to it. Far to the west in the the Great Ocean "
 "is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"<ref>dst='great_continent' text='대륙'</ref>의 모든 강이 흘러나가는 서쪽의 바"
+"다. 대양을 건너 먼 서쪽으로 가면 거대 군도인 <ref>dst='morogor' text='모로고"
+"르'</ref>가 있다."
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:37
 msgid "Morogor"
-msgstr ""
+msgstr "모로고르"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:40
@@ -586,22 +589,27 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
+"<ref>dst='great_ocean' text='대양'</ref> 어딘가에 있는 군도로서 "
+"<ref>dst='green_isle' text='초록섬'</ref>에서는 서쪽에, "
+"<ref>dst=old_continent text='옛 대륙'</ref>으로부터는 동쪽에 위치한다.\n"
+"대부분의 거주민들은 <ref>dst='..race_drake' text='drakes'</ref>.\n"
+"군도의 중앙 섬 또한 ‘모로고르’ 라는 이름으로 불린다."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
 msgid "Green Isle"
-msgstr ""
+msgstr "초록섬"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
-msgstr ""
+msgstr "<ref>dst='great_ocean' text='대양'</ref>에 있는 조금 큰 섬이다."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
 msgid "Old Continent"
-msgstr ""
+msgstr "옛 대륙"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
@@ -609,6 +617,8 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"<ref>dst='great_ocean' text='대양'</ref>너머 <ref>dst='morogor' text='모로고"
+"르'</ref> 서쪽에 있다."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:57
@@ -1545,7 +1555,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1559,16 +1568,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"타격이 명중하면 공격 무기에 달린 기본 피해가 가해집니다. 예를 들어 5-4 공격"
-"의 엘프 전사의 공격은 5의 기본 피해를 입힙니다. 이것은 대체로 "
+"타격이 명중하면 무기에 따라 정해진 피해가 가해집니다. 예를 들어 5-4 공격의 엘"
+"프 전사의 공격은 5의 기본 피해를 입힙니다. 피해량은 대체로 "
 "<ref>dst='damage_types_and_resistance' text='저항력'</ref>과 "
 "<ref>dst='time_of_day' text='시간대'</ref>라는 두 가지 요소로 인해 수정됩니"
 "다. 기본 데미지가 상황에 따라 어떻게 변화하는지를 알고 싶다면, 공격 선택 메뉴"
-"에서 <italic>text='데미지 계산'</italic> 버튼을 클릭하세요."
+"에서 <bold>text='데미지 계산'</bold> 버튼을 클릭하세요."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1579,10 +1587,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"일부 유닛은 전투에서 가하는 데미지에 영향을 주는 특수 능력을 갖추고 있습니"
-"다. 이 중 가장 흔한 것이 <ref>dst='weaponspecial_charge' text='돌격'</ref>으"
-"로, 유닛이 돌격 공격을 가하면 공격자와 방어자가 서로에게 가하는 데미지가 모"
-"두 2배가 됩니다."
+"일부 유닛은 전투에서 가하는 데미지에 영향을 주는 <ref>dst='.."
+"abilities_section' text='특수 능력'</ref>을 갖추고 있습니다. 이 중 가장 흔한 "
+"것이 <ref>dst='weaponspecial_charge' text='돌격'</ref>으로, 유닛이 돌격 공격"
+"을 가하면 공격자와 방어자가 서로에게 가하는 데미지가 모두 2배가 됩니다."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:251
@@ -1591,7 +1599,6 @@ msgstr "피해 형태와 내성"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:252
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -1600,10 +1607,10 @@ msgid ""
 "italic>. Different units may have resistances which alter the damage which "
 "they take from certain damage types."
 msgstr ""
-"Wesnoth에는 대체로 물리 공격에 붙는 참격, 관통, 충격의 3 가지 피해 형태와 주"
-"로 마법 공격에 붙는 화염, 냉기, 신령의 3 가지 추가적인 피해 형태가 있습니다. "
-"그리고 각 유닛은 그들이 받는 특정 형태의 피해 정도를 증감시키는 내성을 가지"
-"고 있습니다."
+"Wesnoth에는 대체로 물리 공격에 붙는 <italic>text='참격, 관통, 충격'</italic>"
+"의 3 가지 피해 형태와 주로 마법 공격에 붙는 <italic>text='화염, 냉기, 신령'</"
+"italic>의 3 가지 피해 형태가 있습니다. 그리고 각 유닛은 그들이 받는 특정 형태"
+"의 피해 정도를 증감시키는 내성을 가지고 있습니다."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
@@ -1626,7 +1633,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1776,7 +1782,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:291
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1793,15 +1798,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"대부분의 유닛은 3 레벨까지 올라갈 수 있지만 모두 그런것은 아닙니다. 마법사 같"
-"은 일부 유닛은 4 레벨까지 있습니다. 일단 유닛이 그 최고 레벨까지 도달하면 최"
-"고 레벨 이후 승급(AMLA)이 가능해집니다. AMLA는 유닛이 경험치 목표량에 도달할"
-"때마다 수정되지만, 해당 유닛의 레벨은 오르지 않습니다. 일반적인 AMLA의 효과"
-"는 유닛의 최고 HP를 3 늘리고 완전회복시켜주는 것입니다. 일반적으로 최초의 "
-"AMLA는 150XP(똑똑합(Intelligent) 특성의 유닛의 경우 120XP)를 모았을때 일어납"
-"니다. 하지만 AMLA를 쌓아가는 것은 해당 유닛이 AMLA를 획득해 가면서 점점 어려"
-"워지므로 당신의 낮은 레벨 유닛을 승급시키려고 하는 편이 보통은 좀더 유용합니"
-"다."
+"대부분의 유닛은 3 레벨까지 올라갈 수 있지만 모두 그런것은 아닙니다. "
+"<ref>dst='unit_Mage' text='마법사'</ref> 같은 일부 유닛은 4 레벨까지 있습니"
+"다. 일단 유닛이 그 최고 레벨까지 도달하면 <italic>text='한계승급'</italic>"
+"(AMLA)이 가능해집니다. 한계승급에 필요한 경험치는 유닛이 경험치 목표량에 도달"
+"할때마다 수정되지만, 해당 유닛의 레벨은 오르지 않습니다. 한계승급의 일반적인 "
+"효과는 유닛의 최고 HP를 3 늘리고 완전회복시켜주는 것입니다. 최초의 AMLA는 보"
+"통 150XP (영리한 유닛의 경우 120XP)를 모았을때 일어납니다. 하지만 한계승급을 "
+"계속하는 것은 이것이 중첩될때마다 점점 어려워지므로, 보통은 낮은 레벨 유닛을 "
+"승급시키는 편이 좀더 유용합니다."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:298
@@ -2070,8 +2075,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"유닛에게 붙을 수 있는 또다른 특성은 <ref>dst='traits_dextrous' "
-"text='Dextrous'</ref>, <ref>dst='traits_loyal' text='심복'</ref>, 그리고 "
+"유닛에게 붙을 수 있는 또다른 특성은 <ref>dst='traits_dextrous' text='능란"
+"한'</ref>, <ref>dst='traits_loyal' text='심복'</ref>, 그리고 "
 "<ref>dst='traits_undead' text='언데드'</ref> 입니다.\n"
 "\n"
 
@@ -2205,7 +2210,7 @@ msgstr ""
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:394
 msgid "Fearless"
-msgstr "용맹"
+msgstr "용맹한"
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:395
@@ -2214,9 +2219,8 @@ msgstr "빛이나 어둠에 대한 혐오는 이 용감한 개개인들을 지�
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:400
-#, fuzzy
 msgid "Feral"
-msgstr "전체"
+msgstr "야생종"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:401
@@ -2287,6 +2291,11 @@ msgid ""
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
+"\n"
+"\n"
+"언데드 유닛들은 일반적으로 언데드 속성만을 갖습니다. 이들은 죽은자의 시체로"
+"서 일으켜져 싸우는 존재이므로 독은 이들에게 먹히지 않습니다. 이들은 독을 쓰"
+"는 적을 상대할 때 아주 유용합니다."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:422
@@ -2311,6 +2320,10 @@ msgid ""
 "mechanical units don’t really have life, drain, poison, and plague have no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"기계 유닛들은 일반적으로 기계 속성만을 갖습니다. 이들은 생명을 가진 존재가 아"
+"니기 때문에 흡수, 독, 역병의 영향을 받지 않습니다."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
@@ -2335,18 +2348,22 @@ msgid ""
 "elemental units are energy-based beings, drain, poison, and plague have no "
 "effect upon them."
 msgstr ""
+"\n"
+"\n"
+"원소계 유닛들은 일반적으로 원소계 속성만을 갖습니다. 이들은 에너지를 바탕으"
+"로 존재하기 때문에 흡수, 독, 역병은 이들에게 영향을 주지 못합니다."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
 msgid "Dextrous"
-msgstr ""
+msgstr "능란한"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:439
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
-msgstr "<italic>text='Dextrous'</italic> 유닛은 원격 데미지가 1 많습니다."
+msgstr "<italic>text='능란한'</italic> 유닛은 원격 데미지가 1 많습니다."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:441
@@ -2358,6 +2375,12 @@ msgid ""
 "are gifted with natural talent that exceeds their brethren. These elves "
 "inflict an additional point of damage with each arrow."
 msgstr ""
+"\n"
+"\n"
+"능란함은 오직 엘프들에게만 있는 특성입니다. 엘프 종족은 묘한 품위와 함께 활"
+"을 다루는 엄청난 능력으로 잘 알려져 있습니다. 하지만 그 중에서도 일부는 동족"
+"들을 뛰어넘는 천부적인 재능을 갖고 있습니다. 이런 엘프들은 화살 한방마다 추가"
+"적인 데미지를 가할 수 있습니다."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:446
@@ -2370,6 +2393,8 @@ msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest even when travelling."
 msgstr ""
+"강인한 생명력으로 유명한 드워프 중에서도 특히 기운이 넘치는 이들은 이동중에"
+"도 휴식을 취할수 있습니다."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:449
@@ -2380,6 +2405,11 @@ msgid ""
 "than usual and rest heal the usual 2 HP after each turn they did not fight. "
 "They also suffer a quarter less damage from poison."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='건강한'</italic> 유닛은 기본 추가 HP 1에 레벨당 추가 HP 1을 더 "
+"받으며 전투를 하지 않은 턴마다 HP 2를 회복합니다. 또한 이들은 독 피해를 6만 "
+"받습니다."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:454
@@ -2620,7 +2650,7 @@ msgstr ""
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:595
 msgid "Frozen"
-msgstr ""
+msgstr "냉동"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:600
@@ -2632,6 +2662,12 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"<italic>text='냉동'</italic> 지형은 눈이나 얼음으로 덮인 모든 평지를 말합니"
+"다. 여기서 대부분의 유닛들은 느려지고, 방어하기도 더 힘들어지게 됩니다. 참고"
+"로 수중에서도 숨을 쉴 수 있는 수영 유닛들이라도 얼음 밑에서는 헤엄칠 수 없습"
+"니다.\n"
+"\n"
+"대부분의 유닛들은 냉동 지형에서 20에서 40%의 방어도를 갖습니다."
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:607
@@ -2758,7 +2794,7 @@ msgstr ""
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:691
 msgid "Village"
-msgstr ""
+msgstr "마을"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:698
@@ -2778,7 +2814,7 @@ msgstr ""
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:707
 msgid "Submerged Village"
-msgstr ""
+msgstr "수중 마을"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:712
@@ -2797,7 +2833,7 @@ msgstr ""
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:719
 msgid "Unwalkable"
-msgstr ""
+msgstr "도보불능"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:722
@@ -2828,7 +2864,7 @@ msgstr ""
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:739
 msgid "River Ford"
-msgstr ""
+msgstr "강의 여울"
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:742
@@ -2840,6 +2876,10 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"강이 매우 얕아지는 지점에서 그곳을 건너는건 지상 유닛에게 별로 어렵지 않은 일"
+"입니다. 거기에 수영에 특화된 생물들은 강의 이런 지점에서도 완전한 기동성을 보"
+"입니다. 게임 플레이에 관한 한 강의 여울은 유닛에게 초원과 얕은 물 중 방어도"
+"와 이동 보너스 가 더 좋은 것으로 취급됩니다."
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:749
@@ -2860,7 +2900,7 @@ msgstr ""
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:761
 msgid "Bridge"
-msgstr ""
+msgstr "다리"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:767
@@ -3293,8 +3333,8 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 "광휘:\n"
-"이 유닛은 주변을 비추어 질서 계열 유닛은 더 잘 싸우게, 혼돈 계열 유닛은 전투"
-"력에 제약을 받게 합니다.\n"
+"이 유닛은 주변을 비추어 주행성 유닛은 더 잘 싸우게, 야행서 유닛은 전투력에 제"
+"약을 받게 합니다.\n"
 "\n"
 "이 유닛 옆에 있는 모든 유닛은 밤일때 새벽/저녁인 것처럼, 새벽/저녁일때 낮인 "
 "것 같은 효과를 받습니다."
@@ -3552,7 +3592,7 @@ msgstr ""
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:681
 msgid "swarm"
-msgstr ""
+msgstr "난무"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:683
@@ -3563,6 +3603,10 @@ msgid ""
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
+"난무:\n"
+"이 공격의 타격횟수는 유닛이 상처를 입어갈때마다 감소합니다. 타격횟수는 유닛"
+"의 HP가 몇 % 남았느냐에 비례합니다. 예를 들어 HP가 30% 남은 유닛은 타격횟수"
+"도 30%가 됩니다."
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:692
@@ -3796,12 +3840,16 @@ msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
+" 이 유닛의 통솔력에 기대는 근처의 같은 편 유닛들은 전투에서 더 강력한 위력을 "
+"발휘합니다. 이것은 더 낮은 레벨의 유닛들에게만 적용됩니다."
 
 #: data/core/macros/special-notes.cfg:35
 msgid ""
 " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
+" 이 유닛은 척후 능력으로 적의 통제 권역을 무시하여 적 주변에서 제약없이 이동"
+"할 수 있습니다."
 
 #: data/core/macros/special-notes.cfg:38
 msgid " Illumination increases the lighting level in adjacent areas."
@@ -3818,33 +3866,41 @@ msgid ""
 " In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
+" 이 유닛은 기습 기술을 써서 숲 속에서는 적에게 보이지 않기 때문에 바로 곁에 "
+"가거나 공격받지 않는 한 찾을 수 없습니다."
 
 #: data/core/macros/special-notes.cfg:47
 msgid " This unit is able to hide at night, leaving no trace of its presence."
-msgstr ""
+msgstr " 이 유닛은 야간에는 자신의 흔적을 전혀 남기지 않습니다."
 
 #: data/core/macros/special-notes.cfg:50
 msgid ""
 " This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
 msgstr ""
+" 이 유닛은 마을(수중 마을 빼고)에 숨어서 적이 바로 곁에 오지 않는 한 들키지 "
+"않을 수 있습니다."
 
 #: data/core/macros/special-notes.cfg:53
 msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
+" 이 유닛은 물 밖에서 숨 쉴 필요가 없어서 깊은 물 속에서 보이지 않고 이동할 "
+"수 있습니다."
 
 #: data/core/macros/special-notes.cfg:56
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
-msgstr ""
+msgstr " 이 유닛은 생체 유닛을 하나 죽일때마다 최대 HP를 1 얻습니다."
 
 #: data/core/macros/special-notes.cfg:59
 msgid ""
 " Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
 msgstr ""
+" 일단 광전사의 공격이 시작되면 그 자신이나 적 둘 중 하나가 죽기 전까지는 멈추"
+"지 않습니다."
 
 #: data/core/macros/special-notes.cfg:62
 msgid ""
@@ -3857,7 +3913,7 @@ msgstr ""
 msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
-msgstr ""
+msgstr " 마을 밖에서 역병에 당해 목숨을 잃은 적은 언데드로 환생하게 됩니다."
 
 #: data/core/macros/special-notes.cfg:68
 msgid ""
@@ -3868,49 +3924,58 @@ msgstr ""
 #: data/core/macros/special-notes.cfg:71
 msgid ""
 " The ability to turn the living to stone makes this unit extremely dangerous."
-msgstr ""
+msgstr " 이 유닛은 산 자를 돌로 만드는 능력이 있어 엄청나게 위험합니다."
 
 #: data/core/macros/special-notes.cfg:74
 msgid ""
 " This unit’s marksmanship gives it a high chance of hitting targeted "
 "enemies, but only on the attack."
 msgstr ""
+" 이 유닛은 저격능력을 가지고 있어 목표한 적을 높은 명중률로 맞힐 수 있지만, "
+"방어시에는 이 능력을 쓸 수 없습니다."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
-msgstr ""
+msgstr " 이 유닛은 언제나 높은 명중률을 보장받는 마법 공격을 가지고 있습니다."
 
 #: data/core/macros/special-notes.cfg:80
 msgid ""
 " The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
-msgstr ""
+msgstr " 이 유닛의 난무공격은 이 유닛이 상처를 입을 수록 위험도가 덜해집니다."
 
 #: data/core/macros/special-notes.cfg:83
 msgid ""
 " Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
 msgstr ""
+" 돌격 공격은 주고 받는 피해량 전부를 배가시킵니다. 이 능력은 반격시에는 적용"
+"되지 않습니다."
 
 #: data/core/macros/special-notes.cfg:86
 msgid ""
 " During battle, this unit can drain life from victims to renew its own "
 "health."
 msgstr ""
+" 이 유닛은 전투 중에 상대로부터 생명력을 빨아들여 자신의 체력을 보강할 수 있"
+"습니다."
 
 #: data/core/macros/special-notes.cfg:89
 msgid ""
 " The length of this unit’s weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
+" 이 유닛은 무기의 길이 덕에 방어할 때에도 근접공격의 우선권을 갖습니다."
 
 #: data/core/macros/special-notes.cfg:92
 msgid ""
 " The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
+" 이 유닛의 독에 당하면 마을에서 혹은 치유능력을 가진 유닛을 통해 치유받기 전"
+"까지 계속 피해를 입게 됩니다."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
@@ -3978,12 +4043,12 @@ msgstr "힘센"
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:84
 msgid "dextrous"
-msgstr ""
+msgstr "능란함"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:85
 msgid "female^dextrous"
-msgstr ""
+msgstr "능란함"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:98
@@ -4047,20 +4112,18 @@ msgstr "낮/밤 중 좋지 않은 시간대에도 평소처럼 싸울 수 있다
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
-msgstr "전체"
+msgstr "야생종"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
-msgstr "시간대 중성"
+msgstr "야생종"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
 msgid "Receive only 50% defense in land-based villages"
-msgstr ""
+msgstr "땅에 있는 마을에서 방어도가 50%"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -4367,6 +4430,22 @@ msgid ""
 "exception of jobs that require the brute strength of true orcs. Those the "
 "orcs revel in as proof of their prowess."
 msgstr ""
+"고블린들은 그 형태는 다르지만 오크의 형제자매로 태어나는 같은 종족의 구성원이"
+"다. 보통 다른 종족들이 한번에 하나 혹은 두 자녀를 갖는 반면, 오크들은 한번에 "
+"다수의 자식을 낳기 때문에 그들의 인구는 훨씬 빨리 늘어난다. 하지만 한 배에서 "
+"난 자식들 중에서 그들 종족의 완전한 체격과 신력을 갖는 진짜 오크는 한둘에 불"
+"과하고, 그 큼직한 형제들보다 훨씬 작아서 전투에서 궁사 같은 보조 역할만을 맡"
+"게 되는 하프 오크들은 약간 더 많을 뿐이다. 나머지 전부인 절반 이상의 자식들"
+"은 고블린이 된다. 고블린들은 형편없이 작은데다 약하며, 대부분 인간의 어린아"
+"이 체격 정도에서 더 자라지 못한다. 이들은 평생동안 큰 동족들의 반 노예상태로 "
+"살며, 전투에서는 칼받이의 용도로 쓰인다. 이런 비극적인 운명에도 불구하고 고블"
+"린들의 규모만큼은 번창하는데, 일부 이유는 그들이 엄청나게 많기 때문이고, 또 "
+"다른 이유는 형제 오크들이 자신들이 고블린들에게 얼마나 의존적인지 잘 알고 있"
+"기 때문이다.\n"
+"\n"
+"고블린들은 진짜 오크들의 강인한 힘이 필요한 예외적인 일들을 빼면 오크들에게 "
+"필요한 모든 노동을 담당한다. 오크들이 빈둥댈 수 있는 것은 고블린들의 능력을 "
+"증명하는 것이기도 하다."
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:150
@@ -4765,6 +4844,26 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
+"언데드는 마치 한 종족인 것처럼 취급되지만 실제로 한 종족인 생물들로 구성되어 "
+"있지는 않다. 충분히 숙달된 네크로맨서라면 거의 모든 죽은 생물들에게 반생명을 "
+"주어 그들을 일으킬 수 있다. 대부분의 언데드는 의문도 생각도 없이 창조주의 명"
+"을 따르는 부자연스런 구조물체이다. 네크로맨시에서 가장 의문스러운 것은 어떻"
+"게 지속적인 노력이나 보살핌 없이 이 구조물들이 유지될 수 있는가 하는 점이다. "
+"언데드 피조물들은 네크로맨서의 지속적인 집중이 없이도 자체적으로 주인의 명에 "
+"따라 행동하고 또한 유지된다. 네크로맨서가 창조물을 유지하기 위해 필요한 것은 "
+"아주 가끔 아마도 몇달에 한번 정도의 유지 작업 뿐이다.\n"
+"\n"
+"네크로맨시는 인간들 사이에서 제한된 거의 유일한 것이다. 엘프나 인어들 같이 마"
+"법에 적합한 종족들에서 조차도 어둠의 마법을 추구한 이들은 전설속에나 존재한"
+"다. 아마도 그 이유는 네크로맨시 마법이 인간들 사이에서 흔하게 발견되는 극도"
+"의 적응성과 유연한 정신을 필요로 하기 때문인 것으로 추정된다. 대부분의 네크로"
+"맨서들이 추구하는 궁극의 목표는 그 어떤 댓가를 치러서라도 생명을 보존하고 채"
+"우는 이 기술을 자신들에게 적용하여, 자기 자신을 변화시켜 정신과 영혼을 보존함"
+"으로써 영원히 죽음을 피하고자 하는 것이다.\n"
+"\n"
+"<header>text='지리'</header>\n"
+"언데드 군주들은 Haldric 1세를 쫓아 다수의 군세를 이끌고 처음 대륙에 도달했던 "
+"시점 이전에는 엘프나 드워프들에 대해 한번도 들어본 적이 없었다."
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:310
@@ -4955,17 +5054,14 @@ msgstr "Battle for Wesnoth 도움말"
 msgid "Parse error when parsing help text: "
 msgstr ""
 
-#, fuzzy
 #~| msgid "race^Human"
 #~ msgid "race^Khalifate Human"
 #~ msgstr "인간"
 
-#, fuzzy
 #~| msgid "race+female^Human"
 #~ msgid "race+female^Khalifate Human"
 #~ msgstr "인간"
 
-#, fuzzy
 #~| msgid "race+plural^Mechanical"
 #~ msgid "race+plural^Khalifate"
 #~ msgstr "기계"
@@ -4973,17 +5069,14 @@ msgstr ""
 #~ msgid "This race does not have a description yet."
 #~ msgstr "이 종족에 대한 설명은 아직 존재하지 않습니다."
 
-#, fuzzy
 #~| msgid "race^Human"
 #~ msgid "race^Falcon"
 #~ msgstr "인간"
 
-#, fuzzy
 #~| msgid "race+female^Human"
 #~ msgid "race+female^Falcon"
 #~ msgstr "인간"
 
-#, fuzzy
 #~| msgid "race^Humans"
 #~ msgid "race^Falcons"
 #~ msgstr "인간족"

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2011-09-30 20:09+0900\n"
+"PO-Revision-Date: 2011-11-15 22:13+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -497,15 +497,15 @@ msgid ""
 "granted.\n"
 "(inscribed by Elvish Pillager)"
 msgstr ""
-"엔트 Bramwythl은 다른 엔트들조차도 느릿하고 말수 적은 이로 평가하던 엔트였습"
-"니다. 그는 그 어떤 엔트들보다도 햇살 아래서 팔을 높이 들고 창공을 바라보는 것"
+"나모 Bramwythl은 다른 나모들조차도 느릿하고 말수 적은 이로 평가하던 나모였습"
+"니다. 그는 그 어떤 나모들보다도 햇살 아래서 팔을 높이 들고 창공을 바라보는 것"
 "들 즐겼지요. 심지어 언젠가 그는 친구들에게 그의 가장 큰 소원은 영원히 영광스"
 "런 태양의 빛을 쬐는 것이라고 말한 적도 있었답니다.\n"
-"하지만, 그 때로부터 얼마 지나지 않아 엔트들의 지역 사회에 무서운 괴물이 오고 "
-"있다는 소문이 들려왔습니다. 그 괴물은 이 지역에 있는 몇 안되는 엔트들을 간단"
-"히 부숴버릴 수 있었지요. 그들은 재빨리 떠났지만(엔트들 입장에서 말이죠, 어쨌"
-"든), Bramwtythl은 남았답니다 - 너무 황급해서 아무도 그를 찾아서 위험을 알려"
-"줄 생각을 하지 못한거에요.\n"
+"하지만, 그 때로부터 얼마 지나지 않아 나모들의 지역 사회에 무서운 괴물이 오고 "
+"있다는 소문이 들려왔습니다. 그 괴물은 이 지역에 있는 몇 안되는 나모들을 간단"
+"히 부숴버릴 수 있었지요. 그들은 서둘러 떠났지만(엔트들 입장에서 말이죠, 어쨌"
+"든), Bramwtythl은 남았답니다 - 너무 급했던 나머지 아무도 그를 찾아서 위험을 "
+"알려줄 생각을 하지 못한거에요.\n"
 "그는 바실리스크의 존재를 알지 못했고, 그 괴물이 있는 것을 알아채기도 전에 돌"
 "이 되어 버렸습니다. 석화된 그의 형상은 오늘날에도 남아 창공 아래서 따뜻한 햇"
 "빛을 받으며 서 있지요. 그의 가장 큰 소원은 이루어졌답니다.\n"
@@ -607,14 +607,6 @@ msgstr "2p — 불길한 예언 (서바이벌)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly-spawned AI units. Victory is achieved by surviving and "
@@ -1289,17 +1281,17 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
 msgid "4p — Clash"
-msgstr ""
+msgstr "4p — 격돌"
 
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:7
 msgid "Small map for 2 vs. 2."
-msgstr ""
+msgstr "2대 2용 소형 맵입니다."
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p — Hamlets"
-msgstr ""
+msgstr "4p — 햄릿"
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:6
@@ -1307,11 +1299,13 @@ msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield."
 msgstr ""
+"전쟁은 평화로운 지역의 단순한 농장과 마을들을 미묘하게 갈라진 저낭으로 바꿔버"
+"립니다."
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p — Isar’s Cross"
-msgstr ""
+msgstr "4p — 이사르 교차로"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
@@ -1321,6 +1315,9 @@ msgid ""
 "1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
+"아주 작은 2대 2 맵입니다. 좁은 장소에서의 전투에서는 적절한 유닛 교대와 계획"
+"된 움직임이 중요합니다. 팀은 플레이어 1,4와 2,3 (북동 팀 대 남서 팀)으로 구성"
+"됩니다. 예정된 초기 자금은 75원이며, 마을은 20개입니다."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -1335,7 +1332,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:62
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:110
 msgid "teamname^Southwest"
-msgstr ""
+msgstr "남서 팀"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:32
@@ -1348,19 +1345,19 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:51
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:62
 msgid "teamname^Northeast"
-msgstr ""
+msgstr "북동 팀"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:7
 msgid "4p — King of the Hill"
-msgstr ""
+msgstr "4p — 산악의 제왕"
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid " Recommended setting of 2 gold per village and 150 starting gold."
-msgstr ""
+msgstr " 마을 당 금 2원, 초기 자금 150원으로 설정하는 것을 추천."
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
@@ -1380,7 +1377,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:86
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:98
 msgid "teamname^Southeast"
-msgstr ""
+msgstr "남동 팀"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
@@ -1389,7 +1386,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
-msgstr ""
+msgstr "북서 팀"
 
 #. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:5

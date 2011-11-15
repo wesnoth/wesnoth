@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2011-10-24 18:46+0900\n"
+"PO-Revision-Date: 2011-11-14 21:32+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -1060,7 +1060,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
-msgstr "엘프 대적자"
+msgstr "엘프 대전사"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:20
@@ -1087,6 +1087,12 @@ msgid ""
 "The chief ability of Druids lies in healing, and it is for this skill that "
 "they are revered by their people."
 msgstr ""
+"숲의 엘프들이 쓰는 마법은 전투에는 거의 맞지 않지만, 그럼에도 불구하고 효과적"
+"이다. 이들이 살아가는 숲은 언령을 통해 활성화되어 이들의 평화를 위협하는 자들"
+"을 후려치게 된다.\n"
+"\n"
+"드루이드들의 주요 능력은 치료능력에 있으며, 이들이 사람들에게 존경받는 것도 "
+"이것에 의한 것이다."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:40 data/core/units/elves/Enchantress.cfg:38
@@ -1260,10 +1266,10 @@ msgid ""
 "master."
 msgstr ""
 "엘프들의 긴 수명과 타고난 지성은 그들이 군사적인 면에서도 적성을 갖게 해주"
-"어, 그들의 전쟁에 대한 일반적인 혐오감조차 이겨낼 수 있게 한다. 엘프들은 인류"
-"보다 훨씬 더 명료하게 기억할 수 있으며, 종종 다른 이들이 훈련받아야만 할 수 "
-"있는 것을 직관적으로 해낼 수 있다. 확실히, 엘프가 전쟁을 일으키려 하는 흔치 "
-"않은 일이 생겼을 때, 그들에게서 나오는 전략은 대가의 것들인 경우가 많다."
+"어, 그들의 전쟁에 대해 갖는 일반적인 혐오감조차 이겨낼 수 있게 한다. 엘프들"
+"은 인류보다 훨씬 더 명료하게 기억할 수 있으며, 종종 다른 이들이 훈련받아야만 "
+"할 수 있는 것을 직관적으로 해낼 수 있다. 확실히, 엘프가 전쟁을 일으키려 하는 "
+"흔치 않은 일이 생겼을 때, 그들에게서 나오는 전략은 대가의 것들인 경우가 많다."
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
@@ -1429,6 +1435,9 @@ msgid ""
 "powers. Legends concerning these have given other races a healthy fear of "
 "the elves."
 msgstr ""
+"아주 드물게 발견되는 현자와도 같은 요정들은 요정계와 현세의 본질에 통달해 있"
+"다. 이들은 경이로우며 때로는 공포스럽기도 한 힘을 가지고 있다. 이들에 대해 서"
+"술한 전설은 다른 종족들에게 엘프들에 대한 큰 공포를 불러일으킨다."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:53
@@ -1577,6 +1586,15 @@ msgid ""
 "mounts have a rather easy time traversing the mountains, though water and "
 "woods will still slow them down."
 msgstr ""
+"그 누구도 어떻게 늑대들을 길들여서 타는 것이 현실화되었는지 알지 못하지만, 이"
+"것이 고블린들에게 준 이득은 명백하다. 고블린들은 오크 동족들에 비해 작고 훨"
+"씬 약하며, 싸움에서 가장 위험하고 꺼려지는 임무를 맡는 일이 흔하다. 하지만 늑"
+"대를 타는데 성공한 이들은 전투에서 훨씬 안전하고 아마도 더 재미있는 역할을 맡"
+"게 된다.\n"
+"\n"
+"늑대들은 인간의 무게는 절대로 그 등판에 싣지 못할테지만 가죽 갑옷을 입은 고블"
+"린은 훨씬 싣기 쉬운 짐이다. 이 승용 동물들은 산악을 쉽게 가로지르는데서 말과"
+"는 현격한 차이를 보이지만, 역시 숲이나 물은 이들의 전진을 늦춘다."
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
@@ -1724,6 +1742,11 @@ msgid ""
 "must take care against both spearmen and archers for whom their large size "
 "provide inviting targets."
 msgstr ""
+"주로 Wesnoth에서 보다 황량한 야생 지역 출신인 기마병들은 어릴적부터 기마술을 "
+"훈련받고 엄격한 명예 규칙을 따른다. 기마병의 돌격은 위험하지만 강력한 전술로"
+"서 오랜 시간동안 전장에서 그 가치를 입증하여 왔다. 기마병들은 대부분의 보병들"
+"을 압도하지만 특히 전선에서 이탈한 이들을 잡는데 유용하다. 하지만 그들의 큰 "
+"몸체는 좋은 목표물이 되므로 궁병이나 창병을 상대할 때는 조심하는 것이 좋다."
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
@@ -1739,6 +1762,10 @@ msgid ""
 "woodsmen, military bowmen are trained to competence with both a bow and a "
 "short sword, and are very common on the battlefield."
 msgstr ""
+"사냥감 이외의 것을 쏘는데 궁술을 활용하기 시작한 것은 궁술이 창안되기 시작한 "
+"것과 동시이며, 우리가 기억하지 못하는 먼 옛날부터 궁사들은 전투에서 필수불가"
+"결한 존재였다. 보통 농부나 나무꾼 출신인 궁병들은 단검과 활을 같이 훈련받는 "
+"전장에서 매우 흔한 존재이다."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Bowman.cfg:36
@@ -1759,6 +1786,9 @@ msgid ""
 "a reputation for dash and aggressiveness to match it. The daring deeds of "
 "Cavaliers are the subject of many a tale and song."
 msgstr ""
+"중기병들은 마상 검술과 석궁술의 달인이다. 이들의 타격력과 기동성의 조합은 무"
+"시무시한 위력을 발휘하며, 저돌성과 호전성으로도 정평이 나 있다. 중기병들이 해"
+"낸 대담한 업적들은 많은 이야기와 노래의 주제가 된다."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -1795,6 +1825,12 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scouting work."
 msgstr ""
+"기병들은 기마병과는 전술과 장비면에서 구별된다. 기병은 더 강한 갑옷을 입고 있"
+"으며 기창 대신 검과 방패로 무장하고 있다. 또한 이들의 전술은 돌격이 아닌 말"
+"과 기수를 효과적인 근접전의 도구로 활용한 마상 베기이다.\n"
+"\n"
+"기병은 개활지에서 거점을 장악하고 지키는 것과, 아군 병사들을 지켜서는 것, 그"
+"리고 정찰 활동 모두에 매우 유용하다."
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
@@ -1810,6 +1846,10 @@ msgid ""
 "hold the ground they take. Their mobility and resilience make them of great "
 "value on the battlefield."
 msgstr ""
+"Wesnoth 군단에서 더 능력있는 기병들은 석궁의 사용법을 훈련받고 더 강인한 기마"
+"를 배정받는다. 좋은 장갑을 갖추고 검을 다루는데도 숙련된 이 병사들은 앞으로 "
+"나아가 맡은 거점을 지킨다. 이들의 기동성과 강인함은 전장에서 정말로 유용한 것"
+"이다."
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
@@ -1831,6 +1871,15 @@ msgid ""
 "live long enough to be veterans typically do so by making such concessions "
 "to utility and survival."
 msgstr ""
+"Wesnoth의 귀족들에게는 자식들을 두 종류의 기사 계급 중 하나의 시종으로 들여"
+"서 승마술이나 펜싱을 배우게 하는 특유의 관습이 있다. 결투사라는 이름은 진담이"
+"든 농담이든 모욕으로 상처입은 자에게 자신의 정당한 권리를 마음대로 주장할 수 "
+"있게 해주는 한 풍습의 이름에서 따온 것으로, 이 풍습은 불행히도 젊은 귀족들 사"
+"이에서는 흔한 것이다.\n"
+"\n"
+"숙련된 펜싱 선수들은 코트나 망토 속에 쉽게 숨길 수 있는 작은 석궁을 가지고 다"
+"닌다. 장전이 늦고 때때로 그 사용이 불명예스러운 행위라는 인식을 받긴 하지만, "
+"이것은 사실 "
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:85
@@ -2086,11 +2135,17 @@ msgid ""
 "reliability and mastery of close combat are their best assets, for which "
 "they are well-renowned."
 msgstr ""
+"근위병은 Wesnoth에서도 가장 뛰어난 장검병들 가운데서 선발된다. 고위 귀족들을 "
+"보좌하는 이들의 역할은 경호원이며, 그들을 거느린 사람의 지위를 증명하는 증표"
+"의 역할도 한다. 근위대는 의사당에 주둔하며 왕궁 지역과 왕가를 수호한다. 이들"
+"이 주군과의 사이에 가진 신뢰관계로 인해, 중대한 임무에는 용병들보다는 이들이 "
+"배치된다. 근접전에 관한 전문성이야말로 이들의 가장 큰 재산이며, 이들을 유명하"
+"게 하는 이유이다."
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
 msgid "Sergeant"
-msgstr "병장"
+msgstr "하사"
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:21
@@ -2099,6 +2154,8 @@ msgid ""
 "academically trained, he will need some experience in the field before his "
 "leadership is sound and acknowledged."
 msgstr ""
+"하사는 군대의 하급 장교이다. 비록 사관학교에서 훈련을 받았지만, 그의 통솔력"
+"이 인정받을만한 수준에 이르려면 전장에서의 경험이 더 필요하다."
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
@@ -2467,6 +2524,10 @@ msgid ""
 "victims into submission. Like any sort of outlaw, they’re not comfortable "
 "fighting in broad daylight, being used to working at night."
 msgstr ""
+"날강도들은 대부분 그 배경이 불확실한 인간군상들이다. 이들은 조직적인 범죄집단"
+"에선 어디서나 강력한 무력으로 간주되며, 비록 재주나 지능은 모자라더라도 희생"
+"자를 두들겨 패서 항복시키는 데에는 아주 뛰어나다. 다른 무법자들과 같이, 이들"
+"은 백주대낮에 싸우는 것을 불편해 하며, 밤에 일하는 데 익숙하다."
 
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
@@ -2597,7 +2658,7 @@ msgstr "도둑"
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
-msgstr "폭력배"
+msgstr "깡패"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:20
@@ -2622,6 +2683,10 @@ msgid ""
 "homes. However, if you’re hurling peasants at your foes, you’re clearly out "
 "of superior forces."
 msgstr ""
+"농부들은 시골 경제의 중심축이자 최후의 경우 병사로도 활용가능하다. 이들은 원"
+"래 싸움에 능한 이들은 아니지만 자신의 고향만큼은 완강하게 지켜낸다. 그렇지만 "
+"지금 당신이 농부들을 적에게 던져주고 있다면 분명 더 강한 병력이 전부 바닥난 "
+"것일 것이다."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:37 data/core/units/humans/Peasant.cfg:46
@@ -2639,6 +2704,8 @@ msgid ""
 "Royal warriors are the kings and princes of human noble houses, armed and "
 "armored to a degree heavier than that of their knights."
 msgstr ""
+"왕가의 전사들은 인간 귀족 가문 출신의 왕과 왕자들로, 그들의 기사들보다도 더 "
+"중장갑으로 무장하고 있다."
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
@@ -2693,6 +2760,12 @@ msgid ""
 "Because of their experience, these hunters are unusually capable at night, "
 "and in forests and swamps."
 msgstr ""
+"비록 전사만큼 훈련받지는 못했어도 사냥꾼이 가진 기술 (특히 궁술의 측면에서)"
+"은 전투에 유용합니다. 병사들이든 도둑들이든 야생 지역을 행군하는 무리에겐 사"
+"냥에서나 실전에서의 지원에나 밀렵꾼이 몇명은 필요하게 됩니다.\n"
+"\n"
+"이들이 해온 경험의 영향으로, 이 사냥꾼들은 야간에, 숲과 늪지대에서 드물게 뛰"
+"어난 역량을 보여줍니다."
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
@@ -2816,6 +2889,10 @@ msgid ""
 "steadfast line in the maelstrom of battle. In times of desperation, they can "
 "even do so on land, though not nearly as well as a creature with legs."
 msgstr ""
+"높이 치솟은 방패를 든 인어 장갑병은 수중 왕국의 정예 수비대를 구성한다. 이들"
+"의 강력한 장갑과 엄격한 규율은 전투의 와중에도 철벽같은 전선을 유지하게 해준"
+"다. 이들은 위기의 순간이 오면 비록 다리를 가진 생물만큼은 못하더라도 땅에서"
+"도 같은 일을 할 수 있다."
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
@@ -2846,6 +2923,12 @@ msgid ""
 "Despite their frailty, this makes them quite formidable in combat, as they "
 "can call upon the very water about them to smite their enemies."
 msgstr ""
+"어린 여성 인어들 중 많은 수가 종족 특유의 수계 마법을 접하게 된다. 이 마법이 "
+"주는 놀라운 능력은 다른 종족이 흉내낼 수 없는 것으로서, 이들의 요정적인 측면"
+"을 보여주는 징표다.\n"
+"\n"
+"이들은 연약함에도 불구하고 물로 적을 삼켜 버리게 하는 이 능력덕에 전투에서 어"
+"마어마한 능력을 발휘한다."
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
@@ -2881,6 +2964,16 @@ msgid ""
 "shore. Clubs were used in combat with little or no adaptation from fishing, "
 "since they were already quite deadly."
 msgstr ""
+"인어들은 고기잡이에 아주 노련한 솜씨를 발휘하는데, 이들의 방식은 대체로 노櫓"
+"처럼 생긴 몽둥이로 고기떼를 몰아서 설치된 그물 쪽으로 보내는 것이다. 이 방식"
+"을 즉석에서 병사들에게 써먹었더니 아주 효과적이었다고 한다. 대부분의 육지생물"
+"들은 허리까지 차오르는 물 속에 있는 것만으로 이미 곤란한 상황에 처하며, 그 상"
+"황에서 그물에 걸리면 거의 속수무책이 되기 때문이다.\n"
+"\n"
+"이 방식의 효용성은 공중에 뿌릴 수 있는 더 작고 묵직한 그물의 개발로 이어졌"
+"다. 이것은 고기잡이에는 쓸모가 없으나, 전투 혹은 물가에 가까이 다가온 사냥감"
+"을 잡는데는 유용했다. 몽둥이의 경우에는 이미 충분히 위력적이었기에 고기잡이용"
+"에서 별로 변하지 않았다."
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
@@ -2896,6 +2989,10 @@ msgid ""
 "piety also grants them certain powers, allowing them to guard their people "
 "against magical or unnatural things."
 msgstr ""
+"인어들 사이에서 신비주의는 좀더 그쪽으로 기울어진 여성들의 몫이다. 이들은 세"
+"상에 평화와 활력을 가져다 주리라는 이상과, 그것을 실현시키기 위한 능력을 키우"
+"는데 매진한다. 이들의 독실함은 이들에게 사람들을 마법이나 부자연스러운 것들로"
+"부터 사람들을 지키는 힘을 준다."
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:4
@@ -2954,6 +3051,8 @@ msgid ""
 "Tritons easily defeat any enemy foolish enough to wander into their "
 "preferred environment."
 msgstr ""
+"트리톤은 해양 전투의 달인이다. 삼지창을 다루는데 능숙한 트리톤은 그들에게 유"
+"리한 환경으로 걸어들어오는 어리석은 적을 쉽게 무찌른다."
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
@@ -3890,7 +3989,7 @@ msgstr ""
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:4
 msgid "Ghast"
-msgstr ""
+msgstr "가스트"
 
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:20
@@ -3902,6 +4001,11 @@ msgid ""
 "flesh straight from their foes. Once their enemy is defeated, they eat the "
 "rest of the body, gaining strength in the process."
 msgstr ""
+"가스트는 인류의 가장 오래된 악몽으로부터 나온 피조물이다. 열등한 사촌이라 할 "
+"수 있는 구울과 시체 아귀와는 달리 가스트들은 시체를 먹기 전에 희생자들이 독으"
+"로 죽기까지 기다릴만큼 참을성이 많지 못하다. 이들은 거대한 주둥이로 직접 적"
+"을 공격해서 살덩이를 뜯어내려고 한다. 적이 쓰러지면 이들은 시체의 나머지 부분"
+"을 먹어가며 힘을 키운다."
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
@@ -3932,7 +4036,7 @@ msgstr ""
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
-msgstr "시체를 먹는 자"
+msgstr "시체 아귀"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:19
@@ -3946,13 +4050,13 @@ msgid ""
 "— a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
 msgstr ""
-"아귀, 또는 '시체 포식자'는 인간과 약간 유사한 형태를 갖고 있을 뿐인 기괴하고 "
-"비대한 존재다. 이들은 움직이긴 하지만 상당히 썩어 있어서 그 핏속엔 병균과 맹"
-"독이 그득하며, 마주하기 힘들 정도의 악취가 난다. 하지만 이 일그러진 존재들에"
-"게 씌인 추악한 마법을 인지할 수 있는 이들만이 명백히 알고 있는 이들의 가장 끔"
-"찍한 점은, 이것들이 어떤 식으로든 살아있는 인간으로 만들어진 것이라는 점이다 "
-"— 그 과정에 대해서는 거의 알려져 있지 않지만, 그만큼 악마같은 짓도 없을 것이"
-"다."
+"시체 아귀, 또는 '시체 포식자'는 인간과 약간 유사한 형태를 갖고 있을 뿐인 기괴"
+"하고 비대한 존재다. 이들은 움직이긴 하지만 상당히 썩어 있어서 그 핏속엔 병균"
+"과 맹독이 그득하며, 마주하기 힘들 정도의 악취가 난다. 하지만 이 일그러진 존재"
+"들에게 씌인 추악한 마법을 인지할 수 있는 이들만이 명백히 알고 있는 이들의 가"
+"장 끔찍한 점은, 이것들이 어떤 식으로든 살아있는 인간으로 만들어진 것이라는 점"
+"이다 — 그 과정에 대해서는 거의 알려져 있지 않지만, 그만큼 악마같은 짓도 없을 "
+"것이다."
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
@@ -4084,8 +4188,8 @@ msgstr ""
 "자연의 손아귀에서 그들의 불멸성을 빼내오기 위해, 그 비밀을 쓰는 방법을 어떻"
 "게 계획하든지 간에, 그들의 첫번째 성과는 빠르고 불편한 응용의 결과물이다. 그"
 "들이 죽은 것에 불어넣은 생명은 그들의 주인에게 어떤 의문도 가지지 않고 일하"
-"며, 또한 죽이는 하인들을 창조해 낸다. 이 피조물들은 모든 독재자들이 꿈꾸는 충"
-"성을 바치며, 힘에 대한 아주 작은 바람이라도 가진 모든 이들을 유혹한다."
+"며, 또한 죽이는 하인들을 창조해 낸다. 이 피조물들은 독재자라면 누구나 꿈꿀만"
+"한 충성을 바치며, 힘에 대한 아주 작은 바람이라도 가진 모든 이들을 유혹한다."
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:251
@@ -4094,7 +4198,6 @@ msgstr "흑마녀"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:257
-#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "
@@ -4112,12 +4215,17 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
-"흑마법에 대한 공포는 주로 일반인들이 그것에 대해 얼마나 무지한가로부터온다. "
-"흑마녀들은 생사 - 후자는 매우 일으키기 쉬운 - 의 비밀을 열기 시작했다. 이 작"
-"업은 혼과 비활성 물질 간의 첫번째 반짝이는 이어짐을 주고, 이 끈을 증혹시키는 "
-"첫번째의 성공적인 실험을 준다. 죽음 너머의 공포스런 미지의 것을 얼핏 보게 되"
-"면, 그에 대해 아는 것은 피할 수 없다.\n"
+"흑마법에 의한 공포는 그것이 일반적으로 미지의 것이라는 데에서 온다. 흑마녀들"
+"은 너무도 일으키기 쉬운 죽음과, 생명의 비밀을 풀어내기 시작했다. 이러한 작업"
+"은 영혼과 무기력한 물체, 즉 시체 간에 가느다란 이어짐을 만들며, 이 매듭을 강"
+"화시킬 첫번째 성공적인 실험 결과를 내어준다. 죽음 너머에 숨어있는 미지의 공포"
+"는 보이기만 하면, 알아내는 것은 시간문제다.\n"
 "\n"
+"자연의 손아귀에서 그들의 불멸성을 빼내오기 위해, 그 비밀을 쓰는 방법을 어떻"
+"게 계획하든지 간에, 그들의 첫번째 성과는 빠르고 불편한 응용의 결과물이다. 그"
+"들이 죽은 것에 불어넣은 생명은 그들의 주인에게 어떤 의문도 가지지 않고 일하"
+"며, 또한 죽이는 하인들을 창조해 낸다. 이 피조물들은 독재자라면 누구나 꿈꿀만"
+"한 충성을 바치며, 힘에 대한 아주 작은 바람이라도 가진 모든 이들을 유혹한다."
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
