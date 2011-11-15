@@ -3856,6 +3856,9 @@ stringfixes = {
 "wesnoth-editor" : (
 ("Can't Undo", "Can’t Undo"),
 ("Can't Redo", "Can’t Redo"),
+
+# Fix capitalization
+("Create new map", "Create New Map"),
 ),
 
 "wesnoth-lib" : (
