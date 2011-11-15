@@ -1122,6 +1122,9 @@ stringfixes = {
 # Fix apostrophes...
 ("while the foes'", "while the foes’"),
 ("Don't let them lure", "Don’t let them lure"),
+
+# Spelling fix added in 1.9.9
+("brake the treaty!", "break the treaty!"),
 ),
 
 "wesnoth-multiplayer" : (
@@ -1566,6 +1569,11 @@ stringfixes = {
 ("years, however, I ha' noticed that there", "years, however, I ha’ noticed that there"),
 ("you shall be free!' Then he was", "you shall be free!” Then he was"),
 ("your kind that won't leave US in", "your kind that won’t leave <i>us</i> in"),
+
+# Minor usage fixes added in 1.9.9
+("one you little guys you might fit", "one of you little guys might fit"),
+("yours and your brothers", "your and your brother’s"),
+("What in the world gave you that idea.", "What in the world gave you that idea?"),
 ),
 
 "wesnoth-thot" : (
@@ -2227,6 +2235,10 @@ stringfixes = {
 
 # Convert apostrophe
 ("Don't forget to recruit the miners.", "Don’t forget to recruit the miners."),
+
+# Usage fixes in 1.9.9
+("Och, its some o’ them cave-dwarves.", "Och, it’s some o’ them cave-dwarves."),
+("I guess you would to plan", "I guess you would want to plan"),
 ),
 
 "wesnoth-sotbe" :(
