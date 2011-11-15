@@ -517,7 +517,7 @@ void editor_controller::apply_mask_dialog()
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
-	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a mask to apply"));
+	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Mask to Apply"));
 	if (res == 0) {
 		try {
 			map_context mask(game_config_, fn);
