@@ -539,7 +539,7 @@ void editor_controller::create_mask_to_dialog()
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
-	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose target map"));
+	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose Target Map"));
 	if (res == 0) {
 		try {
 			map_context map(game_config_, fn);

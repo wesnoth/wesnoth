@@ -3860,6 +3860,7 @@ stringfixes = {
 # Fix capitalization
 ("Create new map", "Create New Map"),
 ("Choose a mask to apply", "Choose a Mask to Apply"),
+("Choose target map", "Choose Target Map"),
 ),
 
 "wesnoth-lib" : (
