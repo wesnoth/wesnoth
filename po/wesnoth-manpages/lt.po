@@ -12,8 +12,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
-"%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 # type: TH
 #. type: TH
@@ -382,20 +382,20 @@ msgstr "B<-m, --multiplayer>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:139
-#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
 "paleidžia daugelio žaidėjų žaidimą. Yra papildomų parametrų, kurie gali būti "
-"naudojami kartu su B<--multiplayer>, kaip paaiškinta žemiau."
+"naudojami kartu su B<--multiplayer>, kaip paaiškinta žemiau. Tik šie "
+"papildomi parametrai gali būti naudojami po B<--multiplayer>."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:139
 #, no-wrap
 msgid "B<--new-syntax>"
-msgstr ""
+msgstr "B<--new-syntax>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:142
@@ -555,7 +555,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:190
 #, no-wrap
 msgid "B<--strict-validation>"
-msgstr ""
+msgstr "B<--strict-validation>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:193

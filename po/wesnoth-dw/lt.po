@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:11
@@ -530,7 +530,6 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:473
 #, fuzzy
-#| msgid "Look! There is a bat cowering in the corner here."
 msgid "Look! There is a massive bat back here."
 msgstr "Žiūrėkit! Čia kampe tūno šikšnosparnis."
 
@@ -586,7 +585,6 @@ msgstr "Draugiškas šikšnosparnis"
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:570
 #, fuzzy
-#| msgid "Look! There is a bat cowering in the corner here."
 msgid "And look! There is a bat cowering in the corner here."
 msgstr "Žiūrėkit! Čia kampe tūno šikšnosparnis."
 
@@ -647,14 +645,12 @@ msgstr ""
 #. [unit]: type=Walking Corpse, id=Undead Bat
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:660
 #, fuzzy
-#| msgid "Undead"
 msgid "Undead Bat"
 msgstr "Nemirėliai"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:669
 #, fuzzy
-#| msgid "Look! There is a bat cowering in the corner here."
 msgid ""
 "Look! There is a bat in the corner here. It is moving, but it looks half "
 "dead."
@@ -684,17 +680,13 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:706
-#, fuzzy
-#| msgid "Look, this chest was in his tent. It is filled with gold!"
 msgid "He had a chest in his tent, too. It is filled with gold!"
-msgstr "Pažvelkite į šitą skrynią jo palapinėje. Ji pilna aukso!"
+msgstr "Jis taip pat turėjo skrynią savo palapinėje. Ji pilna aukso!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:718
-#, fuzzy
-#| msgid "You receive 100 gold."
 msgid "You receive 120 gold."
-msgstr "Gaunate 100 auksinių."
+msgstr "Gaunate 120 auksinių."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:725
@@ -1567,7 +1559,7 @@ msgstr "Tuomet kartu su jais ir mirsi!"
 #. [scenario]: id=08_Talking_to_Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:7
 msgid "Talking to Tyegëa"
-msgstr ""
+msgstr "Pokalbis su Tiegėja"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:15
@@ -1581,13 +1573,13 @@ msgstr ""
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:78
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:110
 msgid "Tyegëa and Priestesses"
-msgstr ""
+msgstr "Tiegėja ir žynė"
 
 #. [side]: id=Tyegea, type=Mermaid Diviner
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:83
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:114
 msgid "Tyegëa"
-msgstr ""
+msgstr "Tiegėja"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:109
@@ -1679,9 +1671,8 @@ msgstr "Tu pažinojai mano senelius?"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:201
-#, fuzzy
 msgid "Actually, Tyegëa is your grandmother."
-msgstr "Aš tavo senelė."
+msgstr "Tiesa sakant, Tiegėja yra tavo senelė."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:205
@@ -1974,7 +1965,7 @@ msgstr "Silana! Man tavęs reikia!"
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:603
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1140
 msgid "Tyegëa will never forgive me. We are lost."
-msgstr ""
+msgstr "Tiegėja niekada man neatleis.  Mes pražuvę."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:617
@@ -2511,7 +2502,7 @@ msgstr "Silana! Man tavęs trūks."
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:866
 msgid "Tyegëa! No!"
-msgstr ""
+msgstr "Tiegėja! Ne!"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:905
@@ -2908,6 +2899,3 @@ msgid ""
 "This attack hits so hard that the defender is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the defender’s next turn."
 msgstr ""
-
-#~ msgid "You receive 200 gold."
-#~ msgstr "Gaunate 200 auksinių."

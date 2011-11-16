@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
-"%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -1538,7 +1538,7 @@ msgstr ""
 #. [unit]: id=Thorn, type=Outlaw
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1584
 msgid "Thorn"
-msgstr ""
+msgstr "Tornas"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1653
@@ -3832,7 +3832,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1848
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2134
 msgid "Troll Skirmisher"
-msgstr ""
+msgstr "Trolių peštukas"
 
 #. [else]
 #. [modify_unit]
@@ -3842,7 +3842,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1867
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2125
 msgid "Dwarf Skirmisher"
-msgstr ""
+msgstr "Dvarfų peštukas"
 
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1864
@@ -4154,7 +4154,7 @@ msgstr "Trolis pagalbininkas"
 #. [unit]: type=Troll Whelp, id=Ulg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:393
 msgid "Ulg"
-msgstr ""
+msgstr "Ulgas"
 
 #. [unit]: type=Troll Shaman, role=Troll High Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:425
@@ -5020,7 +5020,7 @@ msgstr ""
 #. [unit]: type=Dwarvish Stalwart, id=Dwarf Hermit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1400
 msgid "Dwarf Hermit"
-msgstr ""
+msgstr "Dvarfų atsiskyrėlis"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1432
@@ -6157,12 +6157,12 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1705
 msgid "There must be another way out. There must!"
-msgstr ""
+msgstr "Turi būti kitas išėjas. Turi būt!"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1710
 msgid "There might be, but I don’t—"
-msgstr ""
+msgstr "Gali būt, bet aš ne—"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1715
@@ -6525,7 +6525,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2828
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2832
 msgid "Restless Dead"
-msgstr ""
+msgstr "Nerimstantys mirusieji"
 
 #. [message]: type=Skeleton
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2839
@@ -6640,7 +6640,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3087
 msgid "Looks like you have your own rather large pet, Nym."
-msgstr ""
+msgstr "Panašu, kad įsigijai gana didelį augintinį, Nym."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3092
@@ -6648,6 +6648,8 @@ msgid ""
 "It wouldn’t have been my first choice. But it could prove useful. I wonder "
 "what it likes to eat?"
 msgstr ""
+"Tai nebūtų pirmasis mano pasirinkimas. Bet jis gali būti naudingas. Įdomu, "
+"ką jis mėgsta valgyti?"
 
 #. [option]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3098
@@ -7407,12 +7409,12 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4459
 msgid "$speaker.name|, be quiet, I’ll explain it all later."
-msgstr ""
+msgstr "$speaker.name|, tyliai, vėliau viską paaiškinsiu."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4476
 msgid "Be quiet Zhul, I’ll explain it all later."
-msgstr ""
+msgstr "Tyliai, Zul, vėliau viską paaiškinsiu."
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4483
@@ -7917,7 +7919,7 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5452
 msgid "He killed himself rather then surrender to us!"
-msgstr ""
+msgstr "Jis nusižudė vietoj to, kad pasiduotų mums!"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5457
@@ -8295,7 +8297,7 @@ msgstr "Žmonės sąjungininkai"
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:110
 msgid "Iron Council"
-msgstr ""
+msgstr "Geležinė taryba"
 
 #. [side]: type=Shock Trooper, id=Zelgant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:141
@@ -11348,7 +11350,7 @@ msgstr "Anarionas"
 #. [unit]: type=Desert Archer, id=Zylea
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:494
 msgid "Zylea"
-msgstr ""
+msgstr "Zylėjas"
 
 #. [message]: speaker=Anarion
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:507
@@ -12112,7 +12114,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:572
 msgid "Actually I just finished."
-msgstr ""
+msgstr "Tiesa sakant, tik ką pabaigiau."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:577
@@ -13344,10 +13346,8 @@ msgstr "atsigaivino"
 
 #. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:36
-#, fuzzy
-#| msgid "female^Desert Hunter"
 msgid "female^stunned"
-msgstr "Dykumos medžiotoja"
+msgstr ""
 
 #. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:43

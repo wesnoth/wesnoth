@@ -12,8 +12,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
-"%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 # type: Attribute 'lang' of: <book>
 #. type: Attribute 'lang' of: <book>
@@ -1240,9 +1240,8 @@ msgstr "Ctrl+e"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:731
-#, fuzzy
 msgid "Toggle ellipses"
-msgstr "Perjungti tinklelį"
+msgstr "Įjungia/išjungia elipses"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1306,7 +1305,7 @@ msgstr "Rodyti statistiką"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:788
 msgid "Alt+s"
-msgstr ""
+msgstr "Alt+s"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1317,7 +1316,7 @@ msgstr "Rodyti būsenos lentelę"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:796
 msgid "Alt+u"
-msgstr ""
+msgstr "Alt+u"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1382,7 +1381,7 @@ msgstr "Pakartoti paskutinį samdymą"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:860
 msgid "Alt+r"
-msgstr ""
+msgstr "Alt+r"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1559,54 +1558,53 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1008
 msgid "p"
-msgstr ""
+msgstr "p"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1011
-#, fuzzy
 msgid "Toggle planning mode"
-msgstr "Įjungia pagreitiną žaidimo režimą"
+msgstr "Įjungia/išjungia planavimo režimą"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1016
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1019
 msgid "Execute planned action"
-msgstr ""
+msgstr "Vykdyti suplanuotą veiksmą"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1024
 msgid "h"
-msgstr ""
+msgstr "h"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1027
 msgid "Delete planned action"
-msgstr ""
+msgstr "Trinti suplanuotą veiksmą"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1032
 msgid "Page Down"
-msgstr ""
+msgstr "Psl žemyn"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1035
 msgid "Move action down in the queue"
-msgstr ""
+msgstr "Nuleisti veiksmą eilėje"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1040
 msgid "Page Up"
-msgstr ""
+msgstr "Psl aukštyn"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1043
 msgid "Move action up in the queue"
-msgstr ""
+msgstr "Pakelti veiksmą eilėje"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1617,17 +1615,17 @@ msgstr "Ctrl+y"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1051
 msgid "Execute all actions"
-msgstr ""
+msgstr "Vykdyti visus veiksmus"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1056
 msgid "i"
-msgstr ""
+msgstr "i"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1059
 msgid "Suppose dead"
-msgstr ""
+msgstr "Laikyti mirusiu"
 
 # type: Content of: <book><chapter><section><section><section><title>
 #. type: Content of: <book><chapter><section><table><title>
@@ -1663,7 +1661,7 @@ msgstr "Žinutė jūsų sąjungininkams (daugelio žaidėjų žaidime)"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1092
 msgid "Alt+m"
-msgstr ""
+msgstr "Alt+m"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1674,7 +1672,7 @@ msgstr "Žinutė visiems, esantiems žaidime (daugelio žaidėjų žaidime)"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1100
 msgid "Alt+c"
-msgstr ""
+msgstr "Alt+c"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1691,7 +1689,7 @@ msgstr "Ctrl+x"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1111
 msgid "Clear messages"
-msgstr ""
+msgstr "Išvalyti pranešimus"
 
 #. type: Content of: <book><chapter><section><table><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1121
@@ -1726,7 +1724,7 @@ msgstr "Ieškoti (rasti žymę arba dalinį pagal vardą)"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1144
 msgid "Alt+l"
-msgstr ""
+msgstr "Alt+l"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1771,7 +1769,7 @@ msgstr "F5"
 #: /src/wesnoth/doc/manual/manual.en.xml:1177
 #: /src/wesnoth/doc/manual/manual.en.xml:1231
 msgid "Refresh Cache"
-msgstr ""
+msgstr "Atnaujinti podėlį"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1782,17 +1780,17 @@ msgstr "Shift+c"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1185
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "Sukurti dalinį (Derinimas!)"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1190
 msgid "f"
-msgstr ""
+msgstr "f"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1193
 msgid "Run AI formula"
-msgstr ""
+msgstr "Vykdyti DI formulę"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1199
@@ -1804,12 +1802,12 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1212
 msgid "Cmd+w"
-msgstr ""
+msgstr "Cmd+w"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1220
 msgid "Cmd+,"
-msgstr ""
+msgstr "Cmd+,"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1870,7 +1868,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1302
 msgid "Move action down queue"
-msgstr ""
+msgstr "Nuleisti veiksmą eilėje"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1307
@@ -1880,7 +1878,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1310
 msgid "Move action up queue"
-msgstr ""
+msgstr "Pakelti veiksmą eilėje"
 
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
@@ -2028,7 +2026,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1384
 msgid "Alignment"
-msgstr ""
+msgstr "Prigimtis"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1385
@@ -2590,7 +2588,7 @@ msgstr "Tam tikri daliniai turi specialias atakas. Jos išvardintos žemiau:"
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:1787
 msgid "Backstab"
-msgstr ""
+msgstr "Dūris į nugarą"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
@@ -2926,7 +2924,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #: /src/wesnoth/doc/manual/manual.en.xml:2053
 msgid "Skirmisher"
-msgstr ""
+msgstr "Peštukas"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
@@ -3620,13 +3618,14 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2556
 msgid "Trolls and Woses cannot regenerate other units."
-msgstr ""
+msgstr "Troliai ir miškiniai negali regeneruoti kitų dalinių."
 
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2561
+#, fuzzy
 msgid "Trolls and Woses cure themselves from poison as a village does."
-msgstr ""
+msgstr "Troliai ir miškiniai gali išsigydyti nuo nuodų, panašiai, kaip kaime."
 
 # type: Content of: <book><chapter><title>
 #. type: Content of: <book><chapter><title>

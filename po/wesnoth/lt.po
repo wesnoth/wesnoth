@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
-"%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -23,8 +23,6 @@ msgstr "Suspausti išsaugojimai"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
-#, fuzzy
-#| msgid "Confirm deleting saves"
 msgid "Confirm deleting saves"
 msgstr "Paklausti prieš trinant išsaugojimą"
 
@@ -40,24 +38,19 @@ msgstr "Žemėlapio slankiojimas viduriniuoju pelės klavišu"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#, fuzzy
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep scrolling when mouse leaves window"
 msgstr "Nenustoti slinkti žemėlapio, pelei palikus langą"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
 #, fuzzy
-#| msgid "Local time of day light"
 msgid "Local time of day area lighting"
 msgstr "Vietinis dienos laikas"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
-#, fuzzy
-#| msgid "Local time of day light effect (use more memory)."
 msgid "Custom lighting for local time of day areas (uses more memory)"
-msgstr "Vietinio dienos laiko poveikis (naudoja daugiau atminties)."
+msgstr "Vietinio dienos laiko poveikis (naudoja daugiau atminties)"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
@@ -77,7 +70,6 @@ msgstr "Periodinio garso signalo laikinas sustabdymas"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
-#, fuzzy
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
@@ -87,36 +79,26 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
-#, fuzzy
-#| msgid "Accept whisper messages from friends only"
 msgid "Accept whispers from friends only"
 msgstr "Šnabždesius priimti tik iš draugų"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
-#, fuzzy
-#| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open whisper windows in lobby"
 msgstr "Automatiškai atsidarantys šnabždesių langai vestibiulyje"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
-#, fuzzy
-#| msgid "Group players in lobby"
 msgid "Group players in lobby"
 msgstr "Grupuoti žaidėjus vestibiulyje"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid "Lobby sounds"
 msgid "Lobby sounds"
 msgstr "Vestibiulio garsai"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
-#, fuzzy
-#| msgid "Disable notifications"
 msgid "Disable notifications"
 msgstr "Uždrausti pranešimus"
 
@@ -144,8 +126,6 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
-#, fuzzy
-#| msgid "Chat message aging"
 msgid "Chat message aging"
 msgstr "Pokalbio žinučių senėjimas"
 
@@ -161,8 +141,6 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
-#, fuzzy
-#| msgid "Use 12-hour clock format"
 msgid "Use 12-hour clock format"
 msgstr "Naudoti 12-valandų laikrodžio formatą"
 
@@ -174,7 +152,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "Rodyti visus dalinius pagalbos sistemoje"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:158
@@ -338,7 +316,7 @@ msgstr ""
 #. [scenario]: id=01_Grass
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:4
 msgid "Test campaign - first scenario (grass)"
-msgstr ""
+msgstr "Testinė kampanija – pirmasis scenarijus (žolė)"
 
 #. [side]: id=Alpha, type=Elvish Fighter
 #. [side]: id=Bravo, type=Elvish Archer
@@ -2141,9 +2119,8 @@ msgstr "Premijinis tikslas:"
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
 #, fuzzy
-#| msgid "Remote scenario"
 msgid "This is the last scenario."
-msgstr "Nutolęs scenarijus"
+msgstr "Testinis scenarijus"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -2501,7 +2478,7 @@ msgid ""
 "level up. Early in a campaign, try to give killing blows to these units so "
 "you can get some high-level troops sooner."
 msgstr ""
-"Daliniams su <i>protingas</i> bruožu reikia mažiau patirties taškų, kad "
+"Daliniams su bruožu <i>protingas</i> reikia mažiau patirties taškų, kad "
 "pasikeltų lygį. Anksti kampanijoje bandykite atiduoti mirtinus smūgius šiems "
 "daliniams, kad greičiau gautumėte aukšto lygio karių."
 
@@ -3364,8 +3341,6 @@ msgstr "Požiūris"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#, fuzzy
-#| msgid "Skip Animation"
 msgid "Skip animation"
 msgstr "Praleisti animaciją"
 
@@ -3431,33 +3406,33 @@ msgstr "Nepavyko teleportuotis! Išėjimas ne laisvas"
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Pastebėtas draugiškas dalinys"
-msgstr[1] "Pastebėtas $friends draugiškas dalinys"
-msgstr[2] "Pastebėti $friends draugiški daliniai"
-msgstr[3] "Pastebėta $friends draugiškų dalinių"
+msgstr[1] "Pastebėti $friends draugiški daliniai"
+msgstr[2] "Pastebėta $friends draugiškų dalinių"
+msgstr[3] "Pastebėtas $friends draugiškas dalinys"
 
 #: src/actions.cpp:2772
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Pastebėtas priešiškas dalinys"
-msgstr[1] "Pastebėtas $enemies priešiškas dalinys"
-msgstr[2] "Pastebėti $enemies priešiški daliniai"
-msgstr[3] "Pastebėta $enemies priešiškų dalinių"
+msgstr[1] "Pastebėti $enemies priešiški daliniai"
+msgstr[2] "Pastebėta $enemies priešiškų dalinių"
+msgstr[3] "Pastebėtas $enemies priešiškas dalinys"
 
 #: src/actions.cpp:2777
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends draugiškas"
-msgstr[1] "$friends draugiškas"
-msgstr[2] "$friends draugiški"
-msgstr[3] "$friends draugiškų"
+msgstr[1] "$friends draugiški"
+msgstr[2] "$friends draugiškų"
+msgstr[3] "$friends draugiškas"
 
 #: src/actions.cpp:2778
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies priešiškas"
-msgstr[1] "$enemies priešiškas"
-msgstr[2] "$enemies priešiški"
-msgstr[3] "$enemies priešiškų"
+msgstr[1] "$enemies priešiški"
+msgstr[2] "$enemies priešiškų"
+msgstr[3] "$enemies priešiškas"
 
 #: src/actions.cpp:2779
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -3795,14 +3770,12 @@ msgid "You have no add-ons installed."
 msgstr "Neturite įdiegtų priedų."
 
 #: src/addon/manager.cpp:1418
-#, fuzzy
-#| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] "Ar tiktai norite pašalinti priedą „$addon|“?"
-msgstr[1] "Ar tiktai norite pašalinti priedą „$addon|“?"
-msgstr[2] "Ar tiktai norite pašalinti priedą „$addon|“?"
-msgstr[3] "Ar tiktai norite pašalinti priedą „$addon|“?"
+msgstr[0] "Ar tiktai norite pašalinti šį priedą?"
+msgstr[1] "Ar tiktai norite pašalinti šiuos priedus?"
+msgstr[2] "Ar tiktai norite pašalinti šiuos priedus?"
+msgstr[3] "Ar tiktai norite pašalinti šiuos priedus?"
 
 #: src/addon/manager.cpp:1444
 msgid ""
@@ -3817,35 +3790,28 @@ msgstr[2] ""
 msgstr[3] ""
 
 #: src/addon/manager.cpp:1454
-#, fuzzy
-#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
-msgstr[0] "Priedas negali būti tinkamai ištrintas:"
-msgstr[1] "Priedas negali būti tinkamai ištrintas:"
-msgstr[2] "Priedas negali būti tinkamai ištrintas:"
-msgstr[3] "Priedas negali būti tinkamai ištrintas:"
+msgstr[0] "Šis priedas negali būti tinkamai ištrintas:"
+msgstr[1] "Šie priedai negali būti tinkamai ištrinti:"
+msgstr[2] "Šie priedai negali būti tinkamai ištrinti:"
+msgstr[3] "Šie priedai negali būti tinkamai ištrinti:"
 
 #: src/addon/manager.cpp:1461
-#, fuzzy
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Priedas pašalintas"
-msgstr[1] "Priedas pašalintas"
-msgstr[2] "Priedas pašalintas"
-msgstr[3] "Priedas pašalintas"
+msgstr[1] "Priedai pašalinti"
+msgstr[2] "Priedai pašalinti"
+msgstr[3] "Priedai pašalinti"
 
 #: src/addon/manager.cpp:1463
-#, fuzzy
-#| msgid "The following add-on had errors and could not be loaded:"
-#| msgid_plural "The following add-ons had errors and could not be loaded:"
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
-msgstr[0] "Šis priedas turėjo klaidų ir negali būti įkeltas:"
-msgstr[1] "Šie priedai turėjo klaidų ir negali būti įkelti:"
-msgstr[2] "Šie priedai turėjo klaidų ir negali būti įkelti:"
-msgstr[3] "Šie priedai turėjo klaidų ir negali būti įkelti:"
+msgstr[0] "Šis priedas sėkmingai pašalintas:"
+msgstr[1] "Šie priedai sėkmingai pašalinti:"
+msgstr[2] "Šie priedai sėkmingai pašalinti:"
+msgstr[3] "Šie priedai sėkmingai pašalinti:"
 
 #: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
@@ -3909,12 +3875,11 @@ msgstr "Nėra jokių tikslų"
 
 #: src/dialogs.cpp:454 src/savegame.cpp:136
 msgid "%a %b %d %H:%M %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%Y %b %d %a %H:%M"
 
 #: src/dialogs.cpp:454 src/savegame.cpp:136
-#, fuzzy
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%Y %b %d %a %H:%M"
 
 #: src/dialogs.cpp:470
 msgid "#(Invalid)"
@@ -3933,10 +3898,8 @@ msgid "Tutorial"
 msgstr "Apmokymas"
 
 #: src/dialogs.cpp:499
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "Test scenario"
-msgstr "Nutolęs scenarijus"
+msgstr "Testinis scenarijus"
 
 #: src/dialogs.cpp:509 src/savegame.cpp:1050
 msgid "Turn"
@@ -3965,14 +3928,13 @@ msgstr "%H:%M"
 
 #: src/dialogs.cpp:550 src/reports.cpp:1218 src/savegame.cpp:176
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/dialogs.cpp:555 src/savegame.cpp:181
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:558 src/savegame.cpp:184
-#, fuzzy
 msgid "%A, %I:%M %p"
 msgstr "%A, %H:%M"
 
@@ -4173,9 +4135,6 @@ msgid "Turn "
 msgstr "Ėjimas "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
-#, fuzzy
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Laisva vieta:"
@@ -4569,9 +4528,9 @@ msgstr "Atleisti dalinį"
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Privalote turėti bent vieną auksinį, kad grąžintumėte dalinį."
-msgstr[1] "Privalote turėti bent $cost auksinį, kad grąžintumėte dalinį."
-msgstr[2] "Privalote turėti bent $cost auksinius, kad grąžintumėte dalinį."
-msgstr[3] "Privalote turėti bent $cost auksinių, kad grąžintumėte dalinį."
+msgstr[1] "Privalote turėti bent $cost auksinius, kad grąžintumėte dalinį."
+msgstr[2] "Privalote turėti bent $cost auksinių, kad grąžintumėte dalinį."
+msgstr[3] "Privalote turėti bent $cost auksinį, kad grąžintumėte dalinį."
 
 #: src/menu_events.cpp:1378
 msgid "You cannot end your turn yet!"
@@ -4690,8 +4649,6 @@ msgstr ""
 #: src/menu_events.cpp:2334 src/menu_events.cpp:2337 src/menu_events.cpp:2339
 #: src/menu_events.cpp:2341 src/menu_events.cpp:2343 src/menu_events.cpp:2370
 #: src/menu_events.cpp:2372 src/menu_events.cpp:2374 src/menu_events.cpp:2388
-#, fuzzy
-#| msgid "<nick>"
 msgid "<nickname>"
 msgstr "<slapyvardis>"
 
@@ -4741,8 +4698,6 @@ msgstr ""
 "žaidžiantiems žaidime, kurį stebite, ar kuriame žaidžiate."
 
 #: src/menu_events.cpp:2364
-#, fuzzy
-#| msgid "<nick> <message>"
 msgid "<nickname> <message>"
 msgstr "<slapyvardis> <žinutė>"
 
@@ -4755,22 +4710,16 @@ msgid "Change the log level of a log domain."
 msgstr "Keisti žurnalo srities žurnalo lygį."
 
 #: src/menu_events.cpp:2370
-#, fuzzy
-#| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
 msgstr "Prideda slapyvardį į jūsų ignoruojamų sąrašą."
 
 #: src/menu_events.cpp:2372
-#, fuzzy
-#| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
-msgstr "Pridėti į draugų sąrašą."
+msgstr "Pridėti slapyvardį į jūsų draugų sąrašą."
 
 #: src/menu_events.cpp:2374
-#, fuzzy
-#| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
-msgstr "Pašalina slapyvardį iš jūsų ignoruojamų sąrašo."
+msgstr "Pašalina slapyvardį iš jūsų ignoruojamų arba draugų sąrašo."
 
 #: src/menu_events.cpp:2376
 msgid "Show your ignores and friends list."
@@ -4785,23 +4734,17 @@ msgid "<password> <email (optional)>"
 msgstr "<slaptažodis> <e. paštas (neprivalomas)>"
 
 #: src/menu_events.cpp:2381
-#, fuzzy
-#| msgid "Register your nick"
 msgid "Register your nickname"
 msgstr "Užregistruoti savo slapyvardį"
 
 #: src/menu_events.cpp:2383
-#, fuzzy
-#| msgid "Drop your nick."
 msgid "Drop your nickname."
 msgstr "Nustoti naudoti savo slapyvardį."
 
 #: src/menu_events.cpp:2385
-#, fuzzy
-#| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
-"Atnaujinti savo slaptažodžio detales. Apie galimas detales žiūrėkite „/"
+"Atnaujinti savo slapyvardžio detales. Apie galimas detales žiūrėkite „/"
 "details“."
 
 #: src/menu_events.cpp:2386
@@ -4809,18 +4752,14 @@ msgid "<detail> <value>"
 msgstr "<detalė> <reikšmė>"
 
 #: src/menu_events.cpp:2388
-#, fuzzy
-#| msgid "Request information about a nick."
 msgid "Request information about a nickname."
-msgstr "Pareikalauti informacijos apie slapyvardį."
+msgstr "Paprašyti informacijos apie slapyvardį."
 
 #: src/menu_events.cpp:2390
-#, fuzzy
-#| msgid "Request a list of details you can set for your registered nick."
 msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
 "Prašyti detalių, kurias galite nustatyti užregistruotam slapyvardžiui, "
-"sąrašų."
+"sąrašą."
 
 #: src/menu_events.cpp:2392 src/menu_events.cpp:2395 src/menu_events.cpp:2397
 msgid "<room>"
@@ -4883,8 +4822,6 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<pusė> [on/off]]"
 
 #: src/menu_events.cpp:2545
-#, fuzzy
-#| msgid "<side> <nick>"
 msgid "<side> <nickname>"
 msgstr "<pusė> <slapyvardis>"
 
@@ -5072,8 +5009,6 @@ msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Perjungti vietovės kodų rodymą ant laukelių."
 
 #: src/menu_events.cpp:2632
-#, fuzzy
-#| msgid "Toggle Planning Mode."
 msgid "Toggle planning mode."
 msgstr "Perjungti planavimo režimą."
 
@@ -5162,16 +5097,15 @@ msgstr "slapyvardžio registracija"
 #: src/menu_events.cpp:2969
 #, fuzzy
 msgid "dropping your username"
-msgstr "pakeisti savo vardą"
+msgstr "pakeisti savo  vardą"
 
 #: src/menu_events.cpp:2987
 msgid "setting $var to $value"
 msgstr "kintamasis $var nustatomas į $value"
 
 #: src/menu_events.cpp:3001
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "reikalaujama informacija apie slapyvardį."
+msgstr "užklausiama informacija apie naudotoją $nick"
 
 #: src/menu_events.cpp:3114
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -5337,60 +5271,40 @@ msgid "You must login first."
 msgstr "Pirmiausia privalote prisijungti."
 
 #: src/multiplayer.cpp:337
-#, fuzzy
-#| msgid "The nick '$nick' is already taken."
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Slapyvardis „$nick“ jau naudojamas."
 
 #: src/multiplayer.cpp:339
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
 msgstr ""
 "Slapyvardyje „$nick“ yra neleidžiamų simbolių. Galima naudoti tik skaičius, "
-"raides, pabraukimą ir brūkšnį."
+"raides, pabraukimą ir brūkšnelį."
 
 #: src/multiplayer.cpp:343
-#, fuzzy
-#| msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Slapyvardis „$nick“ yra per ilgas. Slapyvardžiai privalo būti neilgesni nei "
 "20 simbolių."
 
 #: src/multiplayer.cpp:346
-#, fuzzy
-#| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Slapyvardis „$nick“ rezervuotas, žaidėjams jo naudoti negalima."
 
 #: src/multiplayer.cpp:348
-#, fuzzy
-#| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Slapyvardis „$nick“ neužregistruotas šiame serveryje."
 
 #: src/multiplayer.cpp:349
-#, fuzzy
-#| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
 msgstr " Šis serveris neleidžia neregistruotų slapyvardžių."
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:353
-#, fuzzy
-#| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is registered on this server."
-msgstr "Slapyvardis „$nick“ šiame serveryje jau užregistruotas."
+msgstr "Slapyvardis „$nick“ prisiregistravęs šiame serveryje."
 
 #: src/multiplayer.cpp:354
-#, fuzzy
-#| msgid ""
-#| "WARNING: There is already a client using this nick, logging in will cause "
-#| "that client to be kicked!"
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -5706,7 +5620,7 @@ msgstr "Neriboti ėjimai"
 
 #: src/multiplayer_create.cpp:402
 msgid "Init. limit: "
-msgstr "Pradinė riba:"
+msgstr "Pradinė riba: "
 
 #: src/multiplayer_create.cpp:407
 msgid "Turn bonus: "
@@ -6234,8 +6148,6 @@ msgid "(Att / Def)"
 msgstr "(Puo / Gyn)"
 
 #: src/reports.cpp:443
-#, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Patirties modifikatorius: "
 
@@ -6478,10 +6390,8 @@ msgid "prefix_milli^m"
 msgstr "m"
 
 #: src/serialization/string_utils.cpp:300
-#, fuzzy
-#| msgid "prefix_micro^μ"
 msgid "prefix_micro^µ"
-msgstr "μ"
+msgstr "µ"
 
 #: src/serialization/string_utils.cpp:301
 msgid "prefix_nano^n"
@@ -6633,7 +6543,6 @@ msgstr "$attack_list|: $effect_description"
 
 #: src/unit.cpp:2481
 #, fuzzy
-#| msgid "Moves"
 msgid "moves"
 msgstr "Žingsniai"
 
@@ -6661,9 +6570,9 @@ msgstr[3] "žalos"
 msgid "strike"
 msgid_plural "strikes"
 msgstr[0] "smūgis"
-msgstr[1] "smūgis"
-msgstr[2] "smūgiai"
-msgstr[3] "smūgių"
+msgstr[1] "smūgiai"
+msgstr[2] "smūgių"
+msgstr[3] "smūgis"
 
 #: src/unit_types.cpp:215
 #, no-c-format
@@ -6735,19 +6644,3 @@ msgstr "Pakeisti į $player"
 #: src/whiteboard/manager.cpp:970
 msgid "Whiteboard Options"
 msgstr ""
-
-#~ msgid "Choose the add-on to remove."
-#~ msgstr "Pasirinkite priedą šalinimui."
-
-#~ msgid "Uninstall add-ons"
-#~ msgstr "Pašalinti priedus"
-
-#~ msgid "Remove"
-#~ msgstr "Pašalinti"
-
-#~ msgid "Add-on '$addon|' deleted."
-#~ msgstr "Priedas „$addon|“ ištrintas."
-
-#, fuzzy
-#~ msgid "Invalid WML found"
-#~ msgstr "Netinkama vietovė"

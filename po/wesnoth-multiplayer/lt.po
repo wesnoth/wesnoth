@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
-"%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -81,7 +81,6 @@ msgstr "Nemirėliai"
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
 #, fuzzy
-#| msgid "2p — The Freelands"
 msgid "2p — Aethermaw"
 msgstr "2ž — Laisvos žemės"
 
@@ -650,10 +649,8 @@ msgstr "Žmonės"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of your leader"
-msgstr "Jūsų komandos vadų mirtis"
+msgstr "Jūsų komandos vado mirtis"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
@@ -664,10 +661,8 @@ msgstr ""
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of both of your team’s leaders"
-msgstr "Jūsų komandos vadų mirtis"
+msgstr "Abiejų jūsų komandos vadų mirtis"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
@@ -677,10 +672,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
-#, fuzzy
-#| msgid "Survive all enemy attacks"
 msgid "Survive and defeat all enemy waves"
-msgstr "Išgyvenkite visas priešų atakas"
+msgstr "Išgyvenkite ir įveikite visas priešų bangas"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1432
@@ -1132,9 +1125,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:148
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:149
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:150
-#, fuzzy
 msgid "Statue"
-msgstr "statula"
+msgstr "Statula"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1656,9 +1648,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
-#, fuzzy
 msgid "6p — Volcano"
-msgstr "6ž — Šešiakampis pyragas"
+msgstr "6ž — Ugnikalnis"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
@@ -1822,12 +1813,3 @@ msgid ""
 msgstr ""
 "Vesnoto išbandymas, naudokite --nogui --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "Survive and defeat the waves of opposition."
-#~ msgstr "Išgyvenkite ir nugalėkite pasipriešinimo bangas."
-
-#~ msgid "Defeat all waves"
-#~ msgstr "Nugalėkite visas bangas"
-
-#~ msgid "Lose all your team’s leaders"
-#~ msgstr "Prarasti visus komandos vadus"

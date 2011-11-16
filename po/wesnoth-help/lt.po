@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
-"%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -1951,7 +1951,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1966,8 +1965,10 @@ msgstr ""
 "\n"
 "Pajamos yra paprasta. Jūs gaunate 2 auksinius per kiekvieną ėjimą. Iš "
 "kiekvieno jums priklausančio kaimo kiekvieną ėjimą gausite vieną papildomą "
-"auksinį. Taigi, jei turite dešimt kaimų, kiekvieną ėjimą gautumėte 12 "
-"auksinių. Žemiau paaiškinta, kaip iš šių pajamų atimamos išlaikymo išlaidos."
+"auksinį (Apskritai tai yra konfigūruojama, bet kampanijose beveik visada bus "
+"vienas auksinis nuo kiekvieno kaimo.). Taigi, jei turite dešimt kaimų, "
+"kiekvieną ėjimą gautumėte 12 auksinių. Žemiau paaiškinta, kaip iš šių pajamų "
+"atimamos išlaikymo išlaidos."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
@@ -2006,7 +2007,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2017,6 +2017,7 @@ msgid ""
 "usually have the <italic>text='loyal'</italic> trait. The unit you are "
 "playing (such as Konrad) will almost always be a leader."
 msgstr ""
+"\n"
 "\n"
 "Išlaikymo išlaidoms yra numatytos dvi svarbios išimtys: ištikimi daliniai ir "
 "vadai nereikalauja Išlaikymo. Scenarijaus pradžioje turimi daliniai "
@@ -2254,11 +2255,6 @@ msgstr "Laukinis"
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:401
 #, fuzzy
-#| msgid ""
-#| "Dwellings of sentient beings are not easily used for cover by feral "
-#| "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
-#| "units receive a maximum of 40% defense in any land-based village "
-#| "regardless of base terrain."
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
@@ -2314,12 +2310,11 @@ msgstr "Nemirėlis"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:415
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
-"<italic>text='Nemirėlių'</italic> daliniai yra atsparūs nuodams, be to jų "
-"neveikia išsiurbimas ir maras."
+"<italic>text='Nemirėlių'</italic> daliniai yra atsparūs nuodams, išsiurbimui "
+"ir marui."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:417
@@ -2345,17 +2340,15 @@ msgstr "Mechaninis"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:423
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"<italic>text='Mechaniniai'</italic> daliniai yra atsparūs nuodams, be to "
-"išsiurbimas ir maras neveikia jų."
+"<italic>text='Mechaniniai'</italic> daliniai yra atsparūs nuodams, "
+"išsiurbimui ir marui."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:425
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2593,7 +2586,7 @@ msgid ""
 "\n"
 msgstr ""
 "Savanos yra lygumos su aukšta žole, randamos šiltesnio klimato pasaulio "
-"dalyse. Žaidime jos yra identiškos <ref>dst=terrain_grassland text=žolynams</"
+"dalyse. Žaidime jos yra identiškos <ref>dst=terrain_grassland text=pievoms</"
 "ref>."
 
 #. [topic]: id=terrain_forest
@@ -2725,7 +2718,6 @@ msgstr "Seklus vanduo"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:576
-#, fuzzy
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2738,11 +2730,12 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
-"Seklus vanduo vaizduoja bet kokį vandens telkinį, kurio gilumas yra iki "
-"žmogaus juosmens. Šis gilumas užtektinas sulėtinti kiekvieną ir palikti juos "
-"plačiai atvertus puolimams. Dvarfams apsiginti ypač sunku, nes vanduo beveik "
-"siekia jų galvas. Būtybės, kurių kūnai skirti plaukimui, yra viena išimtis, "
-"jos gauna pastebimą gynybinį pranašumą ir juda visu greičiu.\n"
+"<italic>text='Seklus vanduo'</italic> vaizduoja bet kokį vandens telkinį, "
+"kurio gilumas yra iki žmogaus juosmens. Šis gilumas užtektinas sulėtinti "
+"kiekvieną ir palikti juos plačiai atvertus puolimams. Dvarfams apsiginti "
+"ypač sunku, nes vanduo beveik siekia jų galvas. Būtybės, kurių kūnai skirti "
+"plaukimui, yra viena išimtis, jos gauna pastebimą gynybinį pranašumą ir juda "
+"visu greičiu.\n"
 "\n"
 "Dauguma dalinių turi nuo 20 iki 30% gynybą sekliame vandenyje, tačiau nágai "
 "ir vandeniai mėgaujasi 60%."
@@ -2754,7 +2747,6 @@ msgstr "Gilus vanduo"
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:588
-#, fuzzy
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head. Most units cannot enter deep water: it is the domain "
@@ -2762,9 +2754,10 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
-"Gilus vanduo vaizduoja vandens telkinį, kuriame vanduo padengia žmogaus "
-"galvą. Dauguma dalinių negali įplaukti į gilų vandenį: tai įmanoma tik "
-"daliniams, kurie yra gali skristi arba yra ypač geri plaukikai.\n"
+"<italic>text='Gilus vanduo'</italic> vaizduoja vandens telkinį, kuriame "
+"vanduo padengia žmogaus galvą. Dauguma dalinių negali įplaukti į gilų "
+"vandenį: tai įmanoma tik daliniams, kurie yra gali skristi arba yra ypač "
+"geri plaukikai.\n"
 "\n"
 "Vandeniai ir nágai turi 50% gynybą giliame vandenyje ir juda visu greičiu."
 
@@ -2825,7 +2818,6 @@ msgstr "Smėlis"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:628
-#, fuzzy
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -2834,9 +2826,10 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
-"Smėlio klampumas apsunkina daugumos dalinių judėjimą ir nesudaro priedangos "
-"priešo atakos atveju. Tačiau plačiapadžiams arba gyvačių formos kūnus "
-"turintiems roplių rasių daliniams smėlis kaip tik palengvina judėjimą.\n"
+"<italic>text='Smėlio'</italic> klampumas apsunkina daugumos dalinių judėjimą "
+"ir nesudaro priedangos priešo atakos atveju. Tačiau plačiapadžiams arba "
+"gyvačių formos kūnus turintiems roplių rasių daliniams smėlis kaip tik "
+"palengvina judėjimą.\n"
 "\n"
 "Dauguma dalinių smėlynuose turi  nuo 20 iki 40% gynybinį rodiklį."
 
@@ -2883,7 +2876,6 @@ msgstr "Uolėtas urvas"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:662
-#, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -2897,12 +2889,13 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
-"Uolėtas urvas yra suformuotas vėjyje ir vandenyje esančių erozinių dalelių, "
-"kurios išėda uolienas. Siauras požeminis urvas sumažina daugumos dalinių "
-"efektyvumą, bet sustiprina gynybinį pajėgumą. Dvarfai ir troliai yra urvų "
-"gyventojai, todėl jiems šioje aplinkoje judėti pakankamai lengva. Dvarfai "
-"dėl savo mažo ūgio urvuose turi visišką pranašumą. Vietomis urvai yra "
-"<ref>dst='terrain_illuminated_cave' text='apšviesti'</ref> \n"
+"<italic>text='Uolėtas urvas'</italic> yra suformuotas vėjyje ir vandenyje "
+"esančių erozinių dalelių, kurios išėda uolienas. Siauras požeminis urvas "
+"sumažina daugumos dalinių efektyvumą, bet sustiprina gynybinį pajėgumą. "
+"Dvarfai ir troliai yra urvų gyventojai, todėl jiems šioje aplinkoje judėti "
+"pakankamai lengva. Dvarfai dėl savo mažo ūgio urvuose turi visišką "
+"pranašumą. Vietomis urvai yra <ref>dst='terrain_illuminated_cave' "
+"text='apšviesti'</ref> \n"
 "\n"
 "Dauguma dalinių turi apie 50% gynybinį rodiklį uolėtuose urvuose, tuo tarpu "
 "raiteliai teturi 40%. Dvarfų gynybinis rodiklis uolėtuose urvuose net 60%. "
@@ -2933,7 +2926,6 @@ msgstr "Grybų giraitė"
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:684
-#, fuzzy
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -2945,11 +2937,11 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"Grybų giraitės yra didelė milžiniškų grybų požeminė karalystė, paskandinta "
-"nuolatinėje tamsoje. Dauguma karių turi sunkumų judėdami samanotu "
-"paviršiumi, tačiau nesunkiai gali pasislėpti už storų kotų. Tačiau raiti "
-"kariai dažnai įklimpsta ir mūšio metu yra nejudrūs. Nemirėliai grybų "
-"giraitėje jaučiasi neblogai dėl savo polinkio į irimą.\n"
+"<italic>text='Grybų giraitės'</italic> yra didelė milžiniškų grybų požeminė "
+"karalystė, paskandinta nuolatinėje tamsoje. Dauguma karių turi sunkumų "
+"judėdami samanotu paviršiumi, tačiau nesunkiai gali pasislėpti už storų "
+"kotų. Tačiau raiti kariai dažnai įklimpsta ir mūšio metu yra nejudrūs. "
+"Nemirėliai grybų giraitėje jaučiasi neblogai dėl savo polinkio į irimą.\n"
 "\n"
 "Grybų giraitėje dauguma dalinių turi nuo 50 iki 60% gynybinį rodiklį, o "
 "raiteliai turi tik 20%."
@@ -2990,7 +2982,6 @@ msgstr "Užtvindytas kaimas"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:712
-#, fuzzy
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -3002,11 +2993,11 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"Povandeniniai kaimai yra vandenių ir nágų gyvenamoji vieta. Nors vandens "
-"padarams tai natūrali aplinka, žemės padarams yra sunku judėti ir gintis "
-"povandeniniuose kaimuose. Tačiau kaip ir kituose kaimuose, čia galima "
-"išsigydyti savo žaizdas. Bet koks dalinys kiekvieno ėjimo metu gauna 8 "
-"gyvybės taškus arba yra išgydomas nuo nuodų.\n"
+"<italic>text='Povandeniniai kaimai'</italic> yra vandenių ir nágų gyvenamoji "
+"vieta. Nors vandens padarams tai natūrali aplinka, žemės padarams yra sunku "
+"judėti ir gintis povandeniniuose kaimuose. Tačiau kaip ir kituose kaimuose, "
+"čia galima išsigydyti savo žaizdas. Bet koks dalinys kiekvieno ėjimo metu "
+"gauna 8 gyvybės taškus arba yra išgydomas nuo nuodų.\n"
 "\n"
 "Povandeniniuose kaimuose vandeniai ir nágai turi 60% gynybinį rodiklį, o "
 "žemės padarai paprastai turi žemą gynybinį rodiklį. "
@@ -3036,7 +3027,6 @@ msgstr "Lava"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:732
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -3046,11 +3036,12 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
-"Bandymas eiti lava, be abejo, yra pavojingas. Kai reikia pereiti lavą, kaip "
-"ir <ref>dst='terrain_unwalkable' text='nepereinamos'</ref>vietovės atveju, "
-"tik aukštai skraidantys daliniai gali skristi virš jos. Išsilydžiusi magma "
-"švyti apšviesdama erdvę virš jos. Šviesos daliniams tai suteikia puolimo "
-"pranašumą, o chaotiškiems daliniams – pablogina."
+"Bandymas eiti <italic>text='lava'</italic>, be abejo, yra pavojingas. Kai "
+"reikia pereiti lavą, kaip ir <ref>dst='terrain_unwalkable' "
+"text='nepereinamos'</ref>vietovės atveju, tik aukštai skraidantys daliniai "
+"gali skristi virš jos. Išsilydžiusi magma švyti apšviesdama erdvę virš jos. "
+"Šviesos daliniams tai suteikia puolimo pranašumą, o chaotiškiems daliniams – "
+"pablogina."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:739
@@ -3080,7 +3071,6 @@ msgstr "Pakrantės uolynai"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:754
-#, fuzzy
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand. This provides most land units with a more steady footing and "
@@ -3089,10 +3079,10 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"Pakrantės uolynai suformuoti iš akmenų, smėlio ir koralų. Tai suteikia "
-"daugumai žemės dalinių geresnę galimybę lengvai judėti ir apsiginti nei "
-"sekliuose vandenyse. Pakrantė taip pat suteikia vandens gyventojams "
-"išskirtinai didelę gynybinę galią.\n"
+"<italic>text='Pakrantės uolynai'</italic> suformuoti iš akmenų, smėlio ir "
+"koralų. Tai suteikia daugumai žemės dalinių geresnę galimybę lengvai judėti "
+"ir apsiginti nei sekliuose vandenyse. Pakrantė taip pat suteikia vandens "
+"gyventojams išskirtinai didelę gynybinę galią.\n"
 "\n"
 "Vandeniai ir nágai pakrantės uolynuose gauna 70% gynybinį rodiklį."
 
@@ -3103,7 +3093,6 @@ msgstr "Tiltas"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:767
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -3117,10 +3106,10 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
-"Tiems, kurie turi statybos įgūdžių, tiltų pastatymas leidžia išvengti "
-"bridimo nepastoviais vandens keliais, kurie atsiranda ir pradingsta kintant "
-"vandens lygiui. Jau nekalbant apie prabangą išsaugoti sausas kojas, kas yra "
-"visai nejuojinga šaltuoju metų laiku.\n"
+"Tiems, kurie turi statybos įgūdžių, <italic>text='tiltų'</italic> pastatymas "
+"leidžia išvengti bridimo nepastoviais vandens keliais, kurie atsiranda ir "
+"pradingsta kintant vandens lygiui. Jau nekalbant apie prabangą išsaugoti "
+"sausas kojas, kas yra visai nejuojinga šaltuoju metų laiku.\n"
 "\n"
 "Ir tiems kurie vaikšto žeme, ir tiems kurie plaukia jūra, tiltas žaidime "
 "naudojamas pasirinktinai kaip pieva arba po tiltu esantis vanduo, "
@@ -5096,7 +5085,7 @@ msgid ""
 "themselves at odds with merfolk when their territories overlap, but overall "
 "nagas tend to favor swamps and rivers as much as open water."
 msgstr ""
-"Nágai yra mažiausiai suprantami Didžiojo žemyno padarai. Iš dalies dėl jų "
+"Nágai yra mažiausiai suprasti Didžiojo žemyno padarai. Iš dalies dėl jų "
 "baikštumo, iš dalies dėl jų gyvenamos aplinkos. Nágai yra viena iš "
 "nedaugelio rūšių galinčių judėti vandenyje, kas atveria jiems, žemės "
 "padarams uždraustą pasaulį, ir nutolina nuo kitų sausumos rūšių, kurių jie "
@@ -5550,21 +5539,3 @@ msgstr "Mūšio dėl Vesnoto pagalba"
 #: src/help.cpp:3216
 msgid "Parse error when parsing help text: "
 msgstr "Nagrinėjimo klaida nagrinėjant pagalbos tekstą: "
-
-#~ msgid "race^Khalifate Human"
-#~ msgstr "Kalifato žmogus"
-
-#~ msgid "race+female^Khalifate Human"
-#~ msgstr "Kalifato žmogus"
-
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "Kalifatas"
-
-#~ msgid "race^Falcon"
-#~ msgstr "Sakalas"
-
-#~ msgid "race+female^Falcon"
-#~ msgstr "Sakalė"
-
-#~ msgid "race^Falcons"
-#~ msgstr "Sakalai"

@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
-"%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 #. [scenario]: id=22_The_Rise_of_Wesnoth
 #. [campaign]: id=The_Rise_of_Wesnoth
@@ -884,7 +884,7 @@ msgstr "Esteno pelkė"
 #. [side]: type=Dark Sorcerer, id=Cleon
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:37
 msgid "Cleon"
-msgstr ""
+msgstr "Kleonas"
 
 #. [side]: type=Dark Sorcerer, id=Cleon
 #. [side]: type=Dark Sorcerer, id=Lollyra
@@ -898,12 +898,12 @@ msgstr "Kulto nariai"
 #. [side]: type=Dark Sorcerer, id=Lollyra
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:58
 msgid "Lollyra"
-msgstr ""
+msgstr "Lolyra"
 
 #. [side]: type=Dark Sorcerer, id=Clurka
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/04a_The_Swamp_of_Esten.cfg:86
 msgid "Clurka"
-msgstr ""
+msgstr "Klurka"
 
 #. [event]
 #. [then]
@@ -1387,12 +1387,12 @@ msgstr ""
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:244
 msgid "We will help. "
-msgstr ""
+msgstr "Mes padėsime."
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:244
 msgid "quietly^Be careful with the trees."
-msgstr ""
+msgstr "Būkit atsargūs su medžiais."
 
 #. [message]: speaker=Burin the Lost
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/05_The_Oldwood.cfg:248
@@ -1688,7 +1688,7 @@ msgstr ""
 #. [side]: type=Wose, id=Talodulborentan
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:34
 msgid "Talodulborentan"
-msgstr ""
+msgstr "Talodulborentanas"
 
 #. [side]: type=Wose, id=Talodulborentan
 #. [side]: type=Wose, id=Gullatendronnorbum
@@ -1702,7 +1702,7 @@ msgstr "Medžių tauta"
 #. [side]: type=Wose, id=Gullatendronnorbum
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:44
 msgid "Gullatendronnorbum"
-msgstr ""
+msgstr "Gulatendronorbumas"
 
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/07_Return_to_Oldwood.cfg:87
@@ -3636,7 +3636,7 @@ msgstr "Atvykstame su taika. Tegul mūsų tautos—"
 #. [message]: speaker=Dursil
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:207
 msgid "Get them!"
-msgstr ""
+msgstr "Čiupkit juos!"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:211
@@ -4053,12 +4053,12 @@ msgstr ""
 #. [message]: speaker=Lord Aryad
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:497
 msgid "As per our agreement, you and your people—"
-msgstr ""
+msgstr "Kaip ir tarėmės, tu ir tavo tauta—"
 
 #. [message]: speaker=Lord El'Isomithir
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:502
 msgid "—may stay."
-msgstr ""
+msgstr "—galite pasilikti."
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/16_The_Kalian.cfg:507
@@ -4577,7 +4577,7 @@ msgstr "Šnipas miškuose"
 #. [event]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:94
 msgid "Jessene in Hiding"
-msgstr ""
+msgstr "Džesenė slepiasi"
 
 #. [message]: speaker=Lord Logalmier
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/18_A_Spy_in_the_Woods.cfg:119
@@ -4648,7 +4648,7 @@ msgstr "Tan-Gagaras"
 #. [side]: type=Troll Warrior, id=Thruf
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:115
 msgid "Thruf"
-msgstr ""
+msgstr "Trufas"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:241
@@ -5085,7 +5085,7 @@ msgstr ""
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:135
 msgid "<i>What?!</i>"
-msgstr ""
+msgstr "<i>Ką?!</i>"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/21_The_Plan.cfg:139
@@ -5378,7 +5378,7 @@ msgstr ""
 #. [message]: speaker=Commander Aethyr
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:387
 msgid "Yes, sir. I am ready."
-msgstr ""
+msgstr "Taip, pone. Aš pasiruošęs."
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:398
@@ -5901,7 +5901,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:32
 msgid "bite"
-msgstr ""
+msgstr "įkandimas"
 
 #. [unit_type]: id=Noble Commander, race=human
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4

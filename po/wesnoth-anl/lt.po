@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
-"%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -253,7 +253,7 @@ msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
 msgstr ""
-"Fermas galima įkurti tik žolynuose. Bet kuris valstietis, būdamas fermoje, "
+"Fermas galima įkurti tik pievose. Bet kuris valstietis, būdamas fermoje, "
 "automatiškai pradės gauti derlių, o už jį – auksą."
 
 #. [message]: speaker=narrator
@@ -270,7 +270,7 @@ msgid ""
 "usual. Right-click on a peasant in a village and you can establish a "
 "university."
 msgstr ""
-"Kaimai gali būti statomi tik žolynuose. Jie suteikia pajamas ir gydymą kaip "
+"Kaimai gali būti statomi tik pievose. Jie suteikia pajamas ir gydymą kaip "
 "įprasta. Paspaudę dešinį klavišą ant kaime esančio valstiečio, galite "
 "įsteigti universitetą."
 
@@ -666,7 +666,7 @@ msgstr "Ką paliepsite, valdove?"
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
 msgid "Convert to Grassland"
-msgstr "Paversti į žolynus"
+msgstr "Paversti į pievas"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69

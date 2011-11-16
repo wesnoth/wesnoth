@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
-"%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:10
@@ -2554,16 +2554,11 @@ msgstr ""
 "tarp dvarfų klanų."
 
 #: data/campaigns/The_Hammer_of_Thursagan/utils/abilities.cfg:4
-#, fuzzy
-#| msgid ""
-#| "The presence of this unit inspires own units next to it to deal more "
-#| "damage in combat, though this only applies to units of lower or equal "
-#| "level."
 msgid ""
 " The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
-"Šio dalinio buvimas šalia įkvepia savus dalinius daryti daugiau žalos "
+" Šio dalinio buvimas šalia įkvepia savus dalinius daryti daugiau žalos "
 "mūšyje, tačiau tai veikia tik tokio pat ar žemesnio lygio dalinius."
 
 #. [leadership]: id=inspire_0
@@ -2669,27 +2664,3 @@ msgid ""
 "Aaarrgh! Though I die, the flame of righteousness shall send you down to "
 "darkness!"
 msgstr "Aaarrgh! Nors aš mirštu, teisingumo liepsna pasiųs jus visus į tamsą!"
-
-#~ msgid "Dwarvish Runemaster"
-#~ msgstr "Dvarfų runvedys"
-
-#~ msgid ""
-#~ "Except for those with almost supernatural skill, the highest rank a "
-#~ "runecrafter can rise to is that of the Dwarvish Runemaster. Striking "
-#~ "blows nearly as powerful as those of the best warriors, they would be "
-#~ "fearsome without their craft, but with it they are also nigh on "
-#~ "invincible, since their runes cause the physical blows of their enemies "
-#~ "to deal less damage than would be expected."
-#~ msgstr ""
-#~ "Išskyrus tuos, kurie turi beveik antgamtiškas galias, aukščiausias "
-#~ "rangas, kurį gali pasiekti runakalys, yra dvarfų runvedys. Suduodami "
-#~ "beveik tokius pat stiprius smūgius, kaip ir geriausi kariai, jie būtų "
-#~ "grėsmingi net be savo amato, o dėl jo jie yra beveik nepažeidžiami, nes "
-#~ "jų runos lemia, kad priešininkų suduoti fiziniai smūgiai padaro mažiau "
-#~ "žalos, nei kas tikėtųsi."
-
-#~ msgid "hammer"
-#~ msgstr "kūjis"
-
-#~ msgid "chill tempest"
-#~ msgstr "stingdanti vėtra"

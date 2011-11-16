@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
-"%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
+"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
@@ -54,7 +54,6 @@ msgstr "(Pradedantysis lygis, 4 scenarijai.)"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
-#, fuzzy
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The village’s mage sends to his warrior brother for help, but not all goes "
@@ -62,8 +61,8 @@ msgid ""
 "\n"
 msgstr ""
 "Piktasis magas grasina nedideliam kaimui Magrei ir jo gyventojams. Kaimo "
-"magas Bjarnas paprašo savo brolio pagalbos, bet ne viskas einasi kaip "
-"planuota. Ar galite padėti?\n"
+"magas paprašo savo brolio pagalbos, bet ne viskas einasi kaip planuota. Ar "
+"galite padėti?\n"
 "\n"
 
 #. [about]
@@ -135,7 +134,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:63
-#, fuzzy
 msgid ""
 "There was a man named Baran who had shown talent as a mage when he was "
 "young, gone to the great Academy on the Isle of Alduin, and returned to work "
@@ -145,7 +143,7 @@ msgid ""
 "them down and clean and oil them. He set the smiths of Maghre to making "
 "spearheads and ax-blades for the rest."
 msgstr ""
-"Buvo vyras, vardu Bjarnas, kuris, būdamas jaunas, parodė gabumų magijai ir "
+"Buvo vyras, vardu Barenas, kuris, būdamas jaunas, parodė gabumų magijai ir "
 "išvyko į didžiąją Akademiją Alduino saloje, paskui grįžo į gimtąjį kraštą "
 "dirbti su savo magija. Žmonės jame matė vadovą ir gelbėtoją. Jis rado "
 "ginklus, beveik pamirštus nuo jų tėvų ir senelių laikų, kabojusius daugelyje "
@@ -154,7 +152,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:67
-#, fuzzy
 msgid ""
 "Now Baran had a brother named Arvith who had also left Maghre to seek his "
 "fortune, and had become the leader of a small band of horsemen who hired out "
@@ -163,15 +160,14 @@ msgid ""
 "brother, with which they might call to each other when in dire need. Baran "
 "sent out that call."
 msgstr ""
-"Bjarnas turėjo brolį vardu Arne, kuris taip pat paliko Magrę ieškodamas savo "
-"likimo ir tapo mažos raitelių grupelės vadu, kurie samdėsi pirklių "
-"karavanams saugoti. Laimei, besimokydamas magijos Bjarnas padarė porą "
+"Barenas turėjo brolį vardu Arvitas, kuris taip pat paliko Magrę ieškodamas "
+"savo likimo ir tapo mažos raitelių grupelės vadu, kurie samdėsi pirklių "
+"karavanams saugoti. Laimei, besimokydamas magijos Barenas padarė porą "
 "amuletų sau ir broliui, kuriais labai prireikus jie galėjo vienas kitą "
-"pašaukti. Bjarnas išsiuntė pagalbos šauksmą."
+"pašaukti. Barenas išsiuntė pagalbos šauksmą."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:76
-#, fuzzy
 msgid ""
 "12 V, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -186,27 +182,26 @@ msgid ""
 "perhaps he will return to aid our village in its hour of desperate need."
 msgstr ""
 "12 V, 363 VM\n"
-"Ištrauka iš Bjarno iš Magrės dienoraščio\n"
+"Ištrauka iš Bareno iš Magrės dienoraščio\n"
 "\n"
-"Jei tik galėčiau susikauti akis į akį su šiuo „Mordaku“!  Manau, kad mano "
+"Jei tik galėčiau susikauti akis į akį su šiuo „Mordaku“! Manau, kad mano "
 "magija gali būti stipresnė už jo. Bet jis gyvena kalvose, gerai saugomas "
 "savo tarnų, ir aš surinkau išgąsdintus valstiečius kautis su jo tarnais su "
-"geležtėmis ir lazdomis.  Man reikia mano brolio; jis visada mūšyje turėjo "
+"geležtėmis ir lazdomis. Man reikia mano brolio; jis visada mūšyje turėjo "
 "geresnę galvą nei aš.\n"
 "\n"
 "Ar jis atkreips dėmesį į kvietimą? Nežinau, ar jis išsaugojo amuletą; mes "
 "nekalbėjome nuo tos blogos dienos prie Toen Kariko. Jei jis negrįš dėl "
-"manęs, galbūt jis grįš padėti mūsų kaimui, kai to labiausiai reikia.\n"
+"manęs, galbūt jis grįš padėti mūsų kaimui, kai to labiausiai reikia."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:80
-#, fuzzy
 msgid ""
 "Heeding the call of his amulet, Arvith gathered such men as he could and "
 "hurried to Maghre to help Baran."
 msgstr ""
 "Atsakydamas į amuleto šaukimą, Arvitas surinko tuos vyrus, kuriuos sugebėjo "
-"ir išskubėjo į Magrę padėti Bjarnui."
+"ir išskubėjo į Magrę padėti Barenui."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:91
@@ -239,7 +234,7 @@ msgstr "Arvitas"
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:127
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:755
 msgid "Baran"
-msgstr ""
+msgstr "Barenas"
 
 #. [side]: type=Knight, id=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:147
@@ -382,19 +377,17 @@ msgstr "... Gerai. Svarbiausia, būkit vietoje kai mums jūsų prireiks."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:250
-#, fuzzy
 msgid ""
 "Baran should be in position by now. Press them, distract the adept so Baran "
 "can spring his trap!"
 msgstr ""
-"Bjarnas jau turėtų būti vietoje. Paspauskite juos, atitraukite mago dėmesį, "
-"kad Bjarnas galėtų paspęsti savo spąstus!"
+"Barenas jau turėtų būti vietoje. Paspauskite juos, atitraukite mago dėmesį, "
+"kad Barenas galėtų paspęsti savo spąstus!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:258
-#, fuzzy
 msgid "Baran has not made his attack!"
-msgstr "Bjarnas neužpuolė!"
+msgstr "Barenas neužpuolė!"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:262
@@ -427,20 +420,18 @@ msgstr "Susirūpinęs dėl jo, ar ne? Ė-che-che... hergh... gaargh..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:293
-#, fuzzy
 msgid ""
 "There’s nothing more to be had from this one; we will have to search for "
 "Baran ourselves!"
-msgstr "Iš šito daugiau nieko nebeišgausime; turėsime patys surasti Bjarną!"
+msgstr "Iš šito daugiau nieko nebeišgausime; turėsime patys surasti Bareną!"
 
 #. [message]: role=Reporter
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:301
-#, fuzzy
 msgid ""
 "Sir, our scouts report that Baran was seen captured and carried away further "
 "north!"
 msgstr ""
-"Pone, mūsų žvalgai pranešė, kad Bjarnas buvo pastebėtas surištas ir "
+"Pone, mūsų žvalgai pranešė, kad Barenas buvo pastebėtas surištas ir "
 "gabenamas tolyn į šiaurę!"
 
 #. [message]: speaker=Arvith
@@ -456,12 +447,11 @@ msgstr ""
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:323
-#, fuzzy
 msgid ""
 "My brother, kidnapped? I have failed you, Baran! And even now Mordak’s "
 "forces descend upon the village!"
 msgstr ""
-"Mano brolis, pagrobtas? Nuvyliau tave, Bjarnai! Ir netgi dabar Mordako "
+"Mano brolis, pagrobtas? Nuvyliau tave, Barenai! Ir netgi dabar Mordako "
 "pajėgos puola kaimą!"
 
 #. [message]: speaker=Arvith
@@ -493,7 +483,6 @@ msgstr "Arvitas ir jo gauja nujojo į šiaurę ieškoti pradingusio brolio."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:41
-#, fuzzy
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -511,9 +500,9 @@ msgid ""
 "for the living, and anyone who dies there is doomed to join them."
 msgstr ""
 "16 V, 363 VM\n"
-"Ištrauka iš Arne iš Magrės dienoraščio\n"
+"Ištrauka iš Arvito iš Magrės dienoraščio\n"
 "\n"
-"Ieškojome Bjarno tris dienas, bet nieko neradome. Geriausias mano spėjimas "
+"Ieškojome Bareno tris dienas, bet nieko neradome. Geriausias mano spėjimas "
 "buvo traukti į šiaurę, pasienio link, kur nekromanto pakalikai galėjo "
 "saugiai pasislėpti; visur kitur yra tik dirbama žemė. Pirmiausia galvojau, "
 "kad paieška gali baigtis be rezultatų, bet artėjant į pabaigą pirmajai "
@@ -523,24 +512,10 @@ msgstr ""
 "girios link. Niekas iš dabartinių Magrės, ar kurio nors kito kaimo "
 "gyventojų, nėra taip toli įėjęs į mišką. Pasakojimai, perduodami iš kartos į "
 "kartą, įspėja to nedaryti. Manoma, kad šioje vietoje vaidenasi sielos "
-"išalkusios gyvenimo, ir bet kas čia miręs yra pasmerktas prisijungti prie "
-"jų.\n"
-"\n"
-"Bet aš dabar išaugau iš prietarų; pasaulyje mačiau pakankamai, kad atspėčiau "
-"tiesą, slypinčią už tokių pasakų. Miškas yra nedraugiškų elfų namai, jei "
-"pasakojimai turi nors šiek tiek pagrindo. Nerimauju dėl savo vyrų; žirgai "
-"blogai kaunasi miškuose, o elfai bus pavojingesni savo pačių teritorijoje. "
-"Bet yra darbų, kuriuos reikia atlikti, ir klausimų, į kuriuos reikia "
-"atsakyti. Vyksta kažkas reikšmingesnio. Vienas nekromantas, terorizuojantis "
-"miestiečius, nėra nieko naujo, bet kodėl jo tarnai išsibarstė, kai jis buvo "
-"užmuštas? Kur link jie dabar traukia? Ir, svarbiausia, kodėl jie su savimi "
-"pasiėmė Bjarną?\n"
-"\n"
-"Be to... Noriu atgauti savo brolį."
+"išalkusios gyvenimo, ir bet kas čia miręs yra pasmerktas prisijungti prie jų."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:50
-#, fuzzy
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -558,20 +533,7 @@ msgid ""
 "Besides... I want my brother back."
 msgstr ""
 "16 V, 363 VM\n"
-"Ištrauka iš Arne iš Magrės dienoraščio\n"
-"\n"
-"Ieškojome Bjarno tris dienas, bet nieko neradome. Geriausias mano spėjimas "
-"buvo traukti į šiaurę, pasienio link, kur nekromanto pakalikai galėjo "
-"saugiai pasislėpti; visur kitur yra tik dirbama žemė. Pirmiausia galvojau, "
-"kad paieška gali baigtis be rezultatų, bet artėjant į pabaigą pirmajai "
-"dienai radome pėdsakų. Kai kuriuos iš jų paliko skeletinės pėdos.\n"
-"\n"
-"Dabar esame pakankamai arti, kad būtume tikri: šie pėdsakai veda Pilkosios "
-"girios link. Niekas iš dabartinių Magrės, ar kurio nors kito kaimo "
-"gyventojų, nėra taip toli įėjęs į mišką. Pasakojimai, perduodami iš kartos į "
-"kartą, įspėja to nedaryti. Manoma, kad šioje vietoje vaidenasi sielos "
-"išalkusios gyvenimo, ir bet kas čia miręs yra pasmerktas prisijungti prie "
-"jų.\n"
+"Ištrauka iš Arvito iš Magrės dienoraščio\n"
 "\n"
 "Bet aš dabar išaugau iš prietarų; pasaulyje mačiau pakankamai, kad atspėčiau "
 "tiesą, slypinčią už tokių pasakų. Miškas yra nedraugiškų elfų namai, jei "
@@ -581,7 +543,7 @@ msgstr ""
 "atsakyti. Vyksta kažkas reikšmingesnio. Vienas nekromantas, terorizuojantis "
 "miestiečius, nėra nieko naujo, bet kodėl jo tarnai išsibarstė, kai jis buvo "
 "užmuštas? Kur link jie dabar traukia? Ir, svarbiausia, kodėl jie su savimi "
-"pasiėmė Bjarną?\n"
+"pasiėmė Bareną?\n"
 "\n"
 "Be to... Noriu atgauti savo brolį."
 
@@ -628,13 +590,12 @@ msgstr ""
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:256
-#, fuzzy
 msgid ""
 "So much for those ghost stories. Mere elves will not stop me from freeing "
 "Baran!"
 msgstr ""
 "Tai tiek tų pasakojimų apie vaiduoklius. Paprasti elfai nesutrukdys man "
-"išlaisvinti Bjarną."
+"išlaisvinti Bareną!"
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:260
@@ -765,13 +726,12 @@ msgstr "Suriškit jį ir paimkit kartu su mumis. Jei jis mus apgavo — mirs."
 
 #. [message]: role=speaker
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:397
-#, fuzzy
 msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
 msgstr ""
 "Kapitone, kur mes jojam? Maniau, kad po Toen Kariko nebenorite turėti jokių "
-"reikalų su savo broliu."
+"reikalų su Barenu."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:401
@@ -897,7 +857,6 @@ msgstr "Saugoma pilis"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:54
-#, fuzzy
 msgid ""
 "19 IV, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
@@ -935,16 +894,7 @@ msgstr ""
 "planas būtų puikiai pavykęs, jeigu ne tų raitelių pasirodymas. Dabar jie "
 "atjoja čia, vedami vyro, kuris, pasak gandų, yra šito mago brolis. Jeigu tai "
 "tiesa, niekas jo nesustabdys, panašiai kaip niekas nesustabdytų manęs, jeigu "
-"jie kalintų Mordaką.\n"
-"\n"
-"Sustiprinau apgriuvusią pilį kaip tik mokėjau. Su mumis atvykę orkai saugo "
-"vartus, o aš renku savo tarnus pas mane, vidiniame kieme. Laukia liūdna "
-"lemtis. Ar man pavyks nugalėti tuos raitelius ar ne, orkai vis tiek atvyks "
-"manęs. Ieškodami mūsų, jie šukavo pasienius ir puldinėjo šiaurines fermas.\n"
-"\n"
-"Bet kažkodėl aš labiau baiminuosi brolių. Jeigu Mordakas būtų čia, būtų "
-"kitaip, bet mes išskirti... O šie du vyrai yra kartu. Juose abiejuose, juos "
-"siejančiuose saituose, slypi jėga."
+"jie kalintų Mordaką."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:62
@@ -962,6 +912,17 @@ msgid ""
 "be different, but we are broken... and these two men are whole. In each "
 "other, in the ties that bind them, they have strength."
 msgstr ""
+"19 IV, 363 VM\n"
+"Ištrauka iš Rotariko dienoraščio\n"
+"\n"
+"Sustiprinau apgriuvusią pilį kaip tik mokėjau. Su mumis atvykę orkai saugo "
+"vartus, o aš renku savo tarnus pas mane, vidiniame kieme. Laukia liūdna "
+"lemtis. Ar man pavyks nugalėti tuos raitelius ar ne, orkai vis tiek atvyks "
+"manęs. Ieškodami mūsų, jie šukavo pasienius ir puldinėjo šiaurines fermas.\n"
+"\n"
+"Bet kažkodėl aš labiau baiminuosi brolių. Jeigu Mordakas būtų čia, būtų "
+"kitaip, bet mes išskirti... O šie du vyrai yra kartu. Juose abiejuose, juos "
+"siejančiuose saituose, slypi jėga."
 
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:97
@@ -1003,9 +964,8 @@ msgstr "Pilies sargybinis"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:210
-#, fuzzy
 msgid "Rescue Baran"
-msgstr "Išvaduokite Bjarną"
+msgstr "Išvaduokite Bareną"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:309
@@ -1184,12 +1144,11 @@ msgstr "Jo rūbuose yra raktas."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:682
-#, fuzzy
 msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
 msgstr ""
-"Visai gali būti, kad tai raktas nuo vienutės, kurioje jie laiko Bjarną! "
+"Visai gali būti, kad tai raktas nuo vienutės, kurioje jie laiko Bareną! "
 "Paimsiu jį."
 
 #. [objective]: condition=win
@@ -1209,9 +1168,8 @@ msgstr "Žiūrėkite ką čia radau! Priskaičiuoju penkiasdešimt auksinių."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:783
-#, fuzzy
 msgid "I found Baran. He is in this cell."
-msgstr "Radau Bjarną. Jis šioje vienutėje."
+msgstr "Radau Bareną. Jis šioje vienutėje."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:793
@@ -1225,11 +1183,10 @@ msgstr "Ir tave, broli."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:803
-#, fuzzy
 msgid ""
 "You must be one of Arvith’s men. Please help me get out of this dungeon."
 msgstr ""
-"Tu turbūt vienas iš Arne vyrų. Prašau, padėk man ištrūkti iš šito požemio."
+"Tu turbūt vienas iš Arvito vyrų. Prašau, padėk man ištrūkti iš šito požemio."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:809
@@ -1254,9 +1211,8 @@ msgstr "Ačiū, kad mane išgelbėjai. Aš... nebuvau tikras, kad ateisi."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:865
-#, fuzzy
 msgid "Have you no faith in your brother, Baran?"
-msgstr "Ar jau visai nebetiki savo broliu, Bjarnai?"
+msgstr "Ar jau visai nebetiki savo broliu, Barenai?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:869
@@ -1313,7 +1269,6 @@ msgstr "Sugrįžimas į kaimą"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:37
-#, fuzzy
 msgid ""
 "27 V, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -1332,7 +1287,7 @@ msgid ""
 "given us plenty of time to talk."
 msgstr ""
 "27 V, 363 VM\n"
-"Ištrauka iš Bjarno iš Magrės dienoraščio\n"
+"Ištrauka iš Bareno iš Magrės dienoraščio\n"
 "\n"
 "Jau beveik namie. Pastarąją savaitę man vis maišėsi jausmai — tai "
 "džiaugsmas, tai vėl sunkumai. Viena vertus, puikus jausmas, išsivadavus iš "
@@ -1340,29 +1295,14 @@ msgstr ""
 "baimės mirti, ar dar blogiau... Bet pasitraukus šitiems vargams, susidūriau "
 "su ne ką lengvesniu uždaviniu — kaip atsidėkosiu broliui.\n"
 "\n"
-"Kai Arne išlaisvino mane iš celės, jis jau buvo beveik viską atleidęs. Ir "
+"Kai Arvitas išlaisvino mane iš celės, jis jau buvo beveik viską atleidęs. Ir "
 "visgi, užtrukom visą praeitą savaitę, kol atgaivinom ankstesnį tarpusavio "
 "pasitikėjimą. Mums pasisekė, kad turėjom daug laiko pakeliui atgal — Pilkąją "
 "girią aplenkėm dideliu lanku, o kelias aplinkui ėjo per labai gražias "
-"apylinkes. Tai suteikė mums daugybę laiko pokalbiams.\n"
-"\n"
-"Nors jau kažkiek apsiraminau, mano mintys dažnai grįžta prie Toen Kariko. "
-"Turėjome atstumti orkus be didesnių aukų — Arne paspęstas puolimas turėjo "
-"pagauti priešą tarp kūjo ir priekalo, jeigu ne aš. Palikdamas savo vyrus, "
-"pasielgiau neatsakingai — taip, aš sužeidžiau jų vadą ir priverčiau jį bėgti "
-"iš mūšio lauko, bet to kaina daug kartų viršijo naudą. Man pavaldūs vyrai "
-"galėjo išsigelbėti, jei tik būčiau likęs su jais.\n"
-"\n"
-"Negaliu kaltinti Arne dėl to, kaip jis priėmė žinias apie jų mirtį, ir "
-"niekada nebegalėsiu ištaisyti savo klaidos, bet regis, laikas gydo. Mes vėl "
-"grįžtame į savo kaimą kaip broliai.\n"
-"\n"
-"Bet man vis neramu. Įdomu... Šita negera nuojauta — tai mano kalėjimo "
-"požemyje aidai, ar tikras ženklas, kad kažkas artėja?"
+"apylinkes. Tai suteikė mums daugybę laiko pokalbiams."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:47
-#, fuzzy
 msgid ""
 "27 V, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -1383,28 +1323,16 @@ msgid ""
 "something real?"
 msgstr ""
 "27 V, 363 VM\n"
-"Ištrauka iš Bjarno iš Magrės dienoraščio\n"
-"\n"
-"Jau beveik namie. Pastarąją savaitę man vis maišėsi jausmai — tai "
-"džiaugsmas, tai vėl sunkumai. Viena vertus, puikus jausmas, išsivadavus iš "
-"to požeminio kalėjimo, būti saulėje ir be nuolatos virš galvos kabančios "
-"baimės mirti, ar dar blogiau... Bet pasitraukus šitiems vargams, susidūriau "
-"su ne ką lengvesniu uždaviniu — kaip atsidėkosiu broliui.\n"
-"\n"
-"Kai Arne išlaisvino mane iš celės, jis jau buvo beveik viską atleidęs. Ir "
-"visgi, užtrukom visą praeitą savaitę, kol atgaivinom ankstesnį tarpusavio "
-"pasitikėjimą. Mums pasisekė, kad turėjom daug laiko pakeliui atgal — Pilkąją "
-"girią aplenkėm dideliu lanku, o kelias aplinkui ėjo per labai gražias "
-"apylinkes. Tai suteikė mums daugybę laiko pokalbiams.\n"
+"Ištrauka iš Bareno iš Magrės dienoraščio\n"
 "\n"
 "Nors jau kažkiek apsiraminau, mano mintys dažnai grįžta prie Toen Kariko. "
-"Turėjome atstumti orkus be didesnių aukų — Arne paspęstas puolimas turėjo "
+"Turėjome atstumti orkus be didesnių aukų — Arvito paspęstas puolimas turėjo "
 "pagauti priešą tarp kūjo ir priekalo, jeigu ne aš. Palikdamas savo vyrus, "
 "pasielgiau neatsakingai — taip, aš sužeidžiau jų vadą ir priverčiau jį bėgti "
 "iš mūšio lauko, bet to kaina daug kartų viršijo naudą. Man pavaldūs vyrai "
 "galėjo išsigelbėti, jei tik būčiau likęs su jais.\n"
 "\n"
-"Negaliu kaltinti Arne dėl to, kaip jis priėmė žinias apie jų mirtį, ir "
+"Negaliu kaltinti Arvito dėl to, kaip jis priėmė žinias apie jų mirtį, ir "
 "niekada nebegalėsiu ištaisyti savo klaidos, bet regis, laikas gydo. Mes vėl "
 "grįžtame į savo kaimą kaip broliai.\n"
 "\n"
@@ -1419,9 +1347,8 @@ msgstr "Išsiaiškinkite, kas vyksta kaime"
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:64
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:259
-#, fuzzy
 msgid "Death of Baran"
-msgstr "Bjarno mirtis"
+msgstr "Bareno mirtis"
 
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:103
@@ -1537,13 +1464,12 @@ msgstr "Užmuškite orkų karžygį ir išlaisvinkite kaimą"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:271
-#, fuzzy
 msgid ""
 "It is finished. We’ve defeated him at last. It was good to have you at my "
 "side, Baran."
 msgstr ""
 "Baigta. Pagaliau jį nugalėjome. Gera buvo eiti su tavimi petys petin, "
-"Bjarnai."
+"Barenai."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:275
@@ -1586,7 +1512,6 @@ msgstr "Pasakojimas apie du brolius — Epilogas"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:25
-#, fuzzy
 msgid ""
 "22 IX, 365 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -1602,24 +1527,17 @@ msgid ""
 "new patron, I have asked leave of him to visit my brother and he gave it."
 msgstr ""
 "22 IX, 355 VM\n"
-"Ištrauka iš Arne iš Magrės dienoraščio:\n"
+"Ištrauka iš Arvito iš Magrės dienoraščio:\n"
 "\n"
 "Magrė atrodo daug geriau, nei tada, kai mačiau paskutinį kartą. Per dvejus "
-"metus Bjarnas padarė stebuklus. Kaimas atstatytas, o aplinkinės sodybos "
+"metus Barenas padarė stebuklus. Kaimas atstatytas, o aplinkinės sodybos "
 "sutvarkytos ir vėl apgyvendintos. Nepaisant mano brolio nuogąstavimų, mūsų "
 "žmonėms per tą laiką daugiau niekas nebegrėsė.\n"
 "\n"
 "Per tuos metus man buvo sunkiau vis būti kur išvykus, bet aš turiu savų "
-"reikalų, o Bjarnas savų, tad progų susitikti turėjome mažai. Bet kas kartą, "
+"reikalų, o Barenas savų, tad progų susitikti turėjome mažai. Bet kas kartą, "
 "kai su gvardija keliaujame pro šią karalystės dalį, aš vis atsiklausdavau "
-"mūsų naujojo vado išeiginių broliui aplankyti, ir jis leisdavo.\n"
-"\n"
-"Šis vadas, be kita ko, yra elfas. Niekada nemaniau, kad teks susidraugauti "
-"su elfu, bet šitas ne toks arogantiškas kaip kiti. Jis vardu Kalenzas. Ir "
-"matęs jis daug ko — per daug; tai matosi vien tik pažiūrėjus jam į akis. "
-"Regis, greitai mums teks padirbėti už mums mokamas algas.\n"
-"\n"
-"O kol kas labai gera atsipalaiduoti ir pasimėgauti taika."
+"mūsų naujojo vado išeiginių broliui aplankyti, ir jis leisdavo."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:34
@@ -1634,3 +1552,12 @@ msgid ""
 "\n"
 "In the meantime, though, it’s good to relax and enjoy the peace."
 msgstr ""
+"22 IX, 355 VM\n"
+"Ištrauka iš Arvito iš Magrės dienoraščio:\n"
+"\n"
+"Šis vadas, be kita ko, yra elfas. Niekada nemaniau, kad teks susidraugauti "
+"su elfu, bet šitas ne toks arogantiškas kaip kiti. Jis vardu Kalenzas. Ir "
+"matęs jis daug ko — per daug; tai matosi vien tik pažiūrėjus jam į akis. "
+"Regis, greitai mums teks padirbėti už mums mokamas algas.\n"
+"\n"
+"O kol kas labai gera atsipalaiduoti ir pasimėgauti taika."
