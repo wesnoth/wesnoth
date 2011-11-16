@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-08-17 08:49+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -1429,7 +1429,10 @@ msgstr "Tạo bản đồ mới"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "Thay đổi kích thước bản đồ"
 
@@ -1462,12 +1465,6 @@ msgstr "Mở rộng / thu hẹp hướng"
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr "Chép địa hình cạnh"
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "Thay đổi kích thước bản đồ"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -3854,7 +3851,7 @@ msgstr ""
 "Đã tìm thấy địa hình có chuỗi với nhiều hơn 4 ký tự, địa hình bị ảnh hưởng "
 "là:"
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr ""
 
@@ -3897,6 +3894,9 @@ msgid ""
 msgstr ""
 "Khóa '$deprecated_key' đã được đổi tên thành '$key'. Hỗ trọ cho khóa "
 "'$deprecated_key' sẽ bị gỡ bỏ trong phiên bản $removal_version."
+
+#~ msgid "Resize map"
+#~ msgstr "Thay đổi kích thước bản đồ"
 
 #~ msgid "Allow more than one map to be open at the same time (MDI)"
 #~ msgstr "Cho phép mở nhiều hơn một bản đồ cùng một lúc (MDI)"

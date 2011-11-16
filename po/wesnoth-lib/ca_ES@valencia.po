@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2008-10-25 11:30+0200\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -1541,7 +1541,10 @@ msgstr "Crea un mapa nou"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "Canvia la grandària del mapa"
 
@@ -1578,12 +1581,6 @@ msgstr ""
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr ""
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "Canvia la grandària del mapa"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -4017,7 +4014,7 @@ msgstr ""
 "S'ha trobat un terreny amb un identificador superior a 4 caràcters; el "
 "terreny afectat és: "
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr ""
 
@@ -4058,6 +4055,9 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#~ msgid "Resize map"
+#~ msgstr "Canvia la grandària del mapa"
 
 #~ msgid "Show Unit Idle Animations"
 #~ msgstr "Mostra les animacions de les unitats inactives"

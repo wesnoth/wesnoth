@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-11-09 21:35+0100\n"
 "Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -1437,7 +1437,10 @@ msgstr "Crear un novo mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "Cambiar as dimensións"
 
@@ -1471,12 +1474,6 @@ msgstr "Encoller ou expandir a dirección"
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr "Copiar o terreo dos bordos"
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "Cambiar as dimensións do mapa"
 
 # Non o vin no contexto.
 #. [label]: id=title
@@ -3867,7 +3864,7 @@ msgstr ""
 "Atopouse un terreo cunha cadea de máis de 4 caracteres, o terreo en cuestión "
 "é:"
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr "O texto contén etiquetas incorrectas: "
 
@@ -3910,6 +3907,9 @@ msgid ""
 msgstr ""
 "A clave «$deprecated_key|» chámase agora «$key|». «$deprecated_key|» deixará "
 "de poder empregarse a partir da versión $removal_version do xogo."
+
+#~ msgid "Resize map"
+#~ msgstr "Cambiar as dimensións do mapa"
 
 #~ msgid "Allow more than one map to be open at the same time (MDI)"
 #~ msgstr "Permitir que se abra máis dun mapa á vez (MDI)."

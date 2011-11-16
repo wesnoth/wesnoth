@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-04-10 02:03-0300\n"
 "Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
 "Language-Team: Spanish <shadowm2006@gmail.com>\n"
@@ -1452,7 +1452,10 @@ msgstr "Crear un mapa nuevo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "Cambiar el tamaño del mapa"
 
@@ -1485,12 +1488,6 @@ msgstr "Encoger/expandir dirección"
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr "Copiar terreno del borde"
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "Redimensionar mapa"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -3937,7 +3934,7 @@ msgstr ""
 "Un terreno con una cadena de más de 4 caracteres se ha encontrado, el "
 "terreno afectado es:"
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr "El texto contiene marcado inválido: "
 
@@ -3983,6 +3980,9 @@ msgid ""
 msgstr ""
 "El nombre del atributo '$deprecated_key' ha cambiado a '$key'. La "
 "manutención para '$deprecated_key' se quitará en la versión $removal_version."
+
+#~ msgid "Resize map"
+#~ msgstr "Redimensionar mapa"
 
 #~ msgid "Allow more than one map to be open at the same time (MDI)"
 #~ msgstr "Mantener más de un mapa abierto a la vez (MDI)"

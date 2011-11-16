@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-08-29 19:36+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -1430,7 +1430,10 @@ msgstr "Chartam novam creare"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "Magnitudinem Chartae Mutare"
 
@@ -1463,12 +1466,6 @@ msgstr ""
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr ""
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "Magnitudinem chartae mutare"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -3937,7 +3934,7 @@ msgid ""
 "affected terrain is :"
 msgstr ""
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr ""
 
@@ -3972,6 +3969,9 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#~ msgid "Resize map"
+#~ msgstr "Magnitudinem chartae mutare"
 
 #~ msgid "Show Unit Idle Animations"
 #~ msgstr "Animationes Actorum Otiosorum Monstrare"

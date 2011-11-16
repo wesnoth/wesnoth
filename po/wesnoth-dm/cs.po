@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-17 23:28+0200\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2010-03-17 20:21+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
@@ -447,8 +447,12 @@ msgstr "Ne! Methore... Ty nesmíš zemřít!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:130
+#, fuzzy
+#| msgid ""
+#| "Heed my last words, Delfador! Journey northeast to Weldyn, and seek out "
+#| "my friend Leollyn. He will help you."
 msgid ""
-"Heed my last words, Delfador! Journey northeast to Weldyn, and seek out my "
+"Heed my last words, Delfador! Journey northwest to Weldyn, and seek out my "
 "friend Leollyn. He will help you."
 msgstr ""
 "Slyš má poslední slova, Delfadore! Jdi na severovýchod do Weldynu a vyhledej "
@@ -456,10 +460,16 @@ msgstr ""
 
 #. [message]: speaker=Methor
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:143
+#, fuzzy
+#| msgid ""
+#| "Well done, Delfador! I see I have trained you well, and you are truly "
+#| "ready to seek your fortune. My traveling days are done, but it is time "
+#| "for you to journey northeast to Weldyn, and seek out my friend Leollyn. "
+#| "He will help you."
 msgid ""
 "Well done, Delfador! I see I have trained you well, and you are truly ready "
 "to seek your fortune. My traveling days are done, but it is time for you to "
-"journey northeast to Weldyn, and seek out my friend Leollyn. He will help "
+"journey northwest to Weldyn, and seek out my friend Leollyn. He will help "
 "you."
 msgstr ""
 "Dobrá práce, Delfadore! Vidím, že jsem to dobře vyučil a že jsi plně "
@@ -1699,6 +1709,9 @@ msgstr ""
 "vstup do všech domů mrtvých, možná tam najdeš další pomoc."
 
 #. [message]: speaker=narrator
+#. The Tomb Guardian's dialogue should sound especially archaic
+#. and imperious. If your language has special forms for superior
+#. addressing inferior, use them here.
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:497
 msgid "WHO ENTERS THE TOMB OF AN-USRUKHAR?"
 msgstr "KDO VSTUPUJE DO HROBKY AN-USRUKHARA?"
@@ -1710,6 +1723,9 @@ msgid "I... I am Delfador, a mage of Wesnoth."
 msgstr "Jsem...jsem Delfador, wesnothský mág."
 
 #. [message]: speaker=narrator
+#. "bestrode" = past tense of archaic verb "bestride", literally
+#. meaning to straddle but with a secondary sense of "to
+#. dominate", and connotations of gigantism.
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:509
 msgid ""
 "I am the will of An-Usrukhar, greatest of mages, he who bestrode Irdya in "
@@ -1743,6 +1759,9 @@ msgid "Foretold?"
 msgstr "Předpovězeno?"
 
 #. [message]: speaker=narrator
+#. "Aeon" is a variant form of the word English word "eon", used
+#. for a long and indefinite span of time. The variant has
+#. mystical connotations.
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:530
 msgid ""
 "Foretold in the Primal Aeon, years past beyond your counting. An-Usrukhar "
@@ -1755,6 +1774,9 @@ msgstr ""
 "času, že sem přijde živý člověk, aby byl vyzkoušen. A JÁ JSEM TA ZKOUŠKA!"
 
 #. [message]: speaker=Delfador
+#. "coil" is an archaism. In the English of around 1600, it was
+#. used to refer to a difficulty or entanglement. Translate
+#. freely.
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:538
 msgid ""
 "I have felt the coils of prophecy on me before. I am beginning to dislike "
@@ -1777,6 +1799,10 @@ msgid "I serve my king and my kingdom."
 msgstr "Sloužím svému králi a království."
 
 #. [message]: speaker=narrator
+#. The Tomb Guardian speaks closer to literal truth here than
+#. Delfador can possibly know. It is now 470YW; in 501YW,
+#. Garard II will be murdered by his wife and son, and the
+#. usurpation of Asheviere will begin.
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:555
 msgid ""
 "Your king will die in an eyeblink and your kingdom in the drawing of a "
@@ -1791,6 +1817,9 @@ msgid "I serve my people and my land."
 msgstr "Sloužím svému lidu a své zemi."
 
 #. [message]: speaker=narrator
+#. "matter" is used here with an archaic meaning, roughly
+#. that of "ground" or "essence".  This sense survives in
+#. modern English in constructions like "It matters a lot."
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:567
 msgid ""
 "Peoples vanish and lands wither under the pitiless gaze of eternity; the "
@@ -2294,6 +2323,7 @@ msgstr ""
 "nemůžeme ustát."
 
 #. [message]: speaker=Delfador
+#. "be of heart" -> "have courage" in modern English.
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:414
 msgid ""
 "I have fought these before. Be of heart: impact weapons and magic can defeat "
@@ -2730,6 +2760,9 @@ msgstr ""
 "byla špatná zpráva jak pro všechny lidi, tak i elfy."
 
 #. [part]
+#. "errantry" is an archaic English word associated with medieval
+#. knights. It means he wandered around looking for monsters to
+#. slay and wrongs to right.
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:23
 #, fuzzy
 msgid ""
@@ -4606,6 +4639,9 @@ msgid "Clash at the Manor"
 msgstr "Střet na panském dvoře"
 
 #. [part]
+#. "demesne" = the part of a feudal lord's lands reserved for
+#. personal use.
+#. The "Sceptre" spelling is intentional.
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:26
 #, fuzzy
 msgid ""

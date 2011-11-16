@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-09-29 20:44+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: ZumZoom\n"
@@ -1437,7 +1437,10 @@ msgstr "Создать новую карту"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "Изменить размер карты"
 
@@ -1470,12 +1473,6 @@ msgstr "Направление растяжения / сжатия"
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr "Копировать ландшафт по краю"
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "Изменить размер карты"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -3862,7 +3859,7 @@ msgid ""
 "affected terrain is :"
 msgstr "Найдена  со строкой из более чем 4 символов, это: "
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr "Текст содержит недопустимую разметку: "
 
@@ -3905,6 +3902,9 @@ msgstr ""
 "Клавиша '$deprecated_key' переименована в '$key'. Она будет удалена в версии "
 "$removal_version.Клавиша '$deprecated_key' переименована в '$key'. Она будет "
 "удалена в версии $removal_version."
+
+#~ msgid "Resize map"
+#~ msgstr "Изменить размер карты"
 
 #~ msgid "Allow more than one map to be open at the same time (MDI)"
 #~ msgstr "Открывать более одной карты (MDI)"

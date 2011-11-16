@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-09-09 16:26+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -1430,7 +1430,10 @@ msgstr "Cipta peta baru"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "Ukur Ulang Peta"
 
@@ -1463,12 +1466,6 @@ msgstr "Memperluas / Menciut arah"
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr "Salin ujung daerah"
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "Ukur ulang peta"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -3863,7 +3860,7 @@ msgstr ""
 "Sebuah daerah dengan untaian dengan lebih dengan 4 karakter ditemukan, "
 "daerah terpengaruh adalah :"
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr "Teks ini berisi markup cacat:"
 
@@ -3906,6 +3903,9 @@ msgid ""
 msgstr ""
 "Kunci '$deprecated_key' telah diubah namanya menjadi '$key'. Dukungan untuk "
 "'$deprecated_key' akan dipindahkan dalam versi $removal_version."
+
+#~ msgid "Resize map"
+#~ msgstr "Ukur ulang peta"
 
 #~ msgid "Allow more than one map to be open at the same time (MDI)"
 #~ msgstr "Membolehkan lebih dari satu peta dibuka secara serempak (MDI)"

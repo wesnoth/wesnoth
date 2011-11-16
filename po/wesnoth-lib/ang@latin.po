@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-11-10 16:46-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
@@ -101,7 +101,6 @@ msgstr ""
 #. [terrain_type]: id=leaf_litter
 #: data/core/terrain.cfg:152 data/core/terrain.cfg:163
 #: data/core/terrain.cfg:174 data/core/terrain.cfg:184
-#| msgid "Island"
 msgid "Grassland"
 msgstr ""
 
@@ -1431,7 +1430,10 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr ""
 
@@ -1463,12 +1465,6 @@ msgstr ""
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
-msgstr ""
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
 msgstr ""
 
 #. [label]: id=title
@@ -1959,7 +1955,6 @@ msgstr ""
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:99
-#| msgid "Friends"
 msgid "Add to Friends"
 msgstr ""
 
@@ -2011,7 +2006,6 @@ msgstr ""
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-#| msgid "Nick"
 msgid "Nickname"
 msgstr "Eacanama"
 
@@ -2042,7 +2036,6 @@ msgstr ""
 
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:170
-#| msgid "Friends"
 msgid "Add as Friend"
 msgstr ""
 
@@ -3607,7 +3600,6 @@ msgid "Start Tutorial"
 msgstr ""
 
 #: src/hotkeys.cpp:241
-#| msgid "Start a campaign"
 msgid "Start Campaign"
 msgstr "Fyrd Styrtan"
 
@@ -3773,7 +3765,7 @@ msgid ""
 "affected terrain is :"
 msgstr ""
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr ""
 

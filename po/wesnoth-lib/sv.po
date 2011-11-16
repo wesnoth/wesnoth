@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-09-13 14:06+0100\n"
 "Last-Translator: Andreas Tyrberg <tyrberg.andreas@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -1428,7 +1428,10 @@ msgstr "Skapa ny karta"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "Ändra kartans storlek"
 
@@ -1461,12 +1464,6 @@ msgstr "Hålla att expandera / krympa"
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr "Kopiera kantterräng"
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "Ändra kartans storlek"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -3855,7 +3852,7 @@ msgid ""
 msgstr ""
 "En terräng med fler än 4 tecken har hittats, den aktuella terrängen är "
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr "Texten innehåller ogiltiga taggar:"
 
@@ -3899,6 +3896,9 @@ msgid ""
 msgstr ""
 "Nyckeln '$deprecated_key' har döpts om till '$key'. Stödet för "
 "'$deprecated_key' försvinner i och med version $removal_version."
+
+#~ msgid "Resize map"
+#~ msgstr "Ändra kartans storlek"
 
 #~ msgid "Allow more than one map to be open at the same time (MDI)"
 #~ msgstr "Tillåt mer än en karta att vara öppen samtidigt (MDI)"

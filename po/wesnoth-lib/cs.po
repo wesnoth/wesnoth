@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-03-12 22:12+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -1461,7 +1461,10 @@ msgstr "Vytvoř novou mapu"
 # v editoru map; kontext - v menu "mapa"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "Změň velikost"
 
@@ -1494,13 +1497,6 @@ msgstr "Směr expanze / smrštění"
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr "Kopírovat terén na okraji"
-
-# tlačítko v dialogu
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "Změň velikost"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -3920,7 +3916,7 @@ msgid ""
 "affected terrain is :"
 msgstr "Nalezen terén s řetězcem s více než čtyřmi znaky, postižený terén :"
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr ""
 
@@ -3961,6 +3957,10 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key'  byl přejmenován na '$key' a ve verzi "
 "$removal_version bude odstraněna podpora původního tvaru."
+
+# tlačítko v dialogu
+#~ msgid "Resize map"
+#~ msgstr "Změň velikost"
 
 #~ msgid "Allow more than one map to be open at the same time (MDI)"
 #~ msgstr "Lze otevřít více map zaráz (MDI)"

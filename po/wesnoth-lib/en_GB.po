@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-11-07 15:51-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -1422,7 +1422,10 @@ msgstr "Create New Map"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "Resize Map"
 
@@ -1455,12 +1458,6 @@ msgstr "Expand / shrink direction"
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr "Copy edge terrain"
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "Resize map"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -1998,7 +1995,6 @@ msgstr "Side"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-#| msgid "Nick"
 msgid "Nickname"
 msgstr "Nickname"
 
@@ -2882,7 +2878,6 @@ msgid "Advanced section^Advanced"
 msgstr "Advanced"
 
 #: src/game_preferences_display.cpp:1292
-#| msgid "Choose theme"
 msgid "Choose Theme"
 msgstr "Choose Theme"
 
@@ -3746,9 +3741,6 @@ msgid "This hotkey is already in use."
 msgstr "This hotkey is already in use."
 
 #: src/preferences_display.cpp:429
-#| msgid ""
-#| "Screenshot hotkeys cannot be combined with the Control, Alt or Meta "
-#| "modifiers."
 msgid ""
 "Screenshot hotkeys should be combined with the Control, Alt or Meta "
 "modifiers to avoid problems."
@@ -3780,7 +3772,7 @@ msgstr ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr "The text contains invalid markup: "
 
@@ -3823,3 +3815,6 @@ msgid ""
 msgstr ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
+
+#~ msgid "Resize map"
+#~ msgstr "Resize map"

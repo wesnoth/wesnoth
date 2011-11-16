@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-11-14 17:54+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -1423,7 +1423,10 @@ msgstr "Izveidot jaunu mapi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "Mainīt kartes izmēru"
 
@@ -1456,12 +1459,6 @@ msgstr "Izvērst / samazināt virzienu"
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr "Kopēt malas apvidu"
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "Mainīt kartes izmēru"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -3776,7 +3773,7 @@ msgid ""
 "affected terrain is :"
 msgstr "Atrasts apvidus ar virkni garāku par 4 zīmēm, atbilstošais apvidus ir:"
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr "Teksts satur nederīgu marķējumu: "
 
@@ -3819,3 +3816,6 @@ msgid ""
 msgstr ""
 "Atslēga '$deprecated_key' ir tikusi pārsaukta par '$key'. Atslēgas "
 "'$deprecated_key' atbalsts tiks noņemts versijā $removal_version."
+
+#~ msgid "Resize map"
+#~ msgstr "Mainīt kartes izmēru"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2011-08-29 14:00+0300\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -1431,7 +1431,10 @@ msgstr "צור מפה חדשה"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "שנה גודל מפה"
 
@@ -1464,12 +1467,6 @@ msgstr "הגדל / הקטן כיוון"
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr "העטק שטח קצה"
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-msgid "Resize map"
-msgstr "שנה גודל מפה"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -3843,7 +3840,7 @@ msgid ""
 "affected terrain is :"
 msgstr "שטח עם שם של יותר מ-4 תווים נמצא. השתח המושפע הוא: "
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr "טקסט זה מכיל סימונים לא חוקיים: "
 
@@ -3886,6 +3883,9 @@ msgid ""
 msgstr ""
 "השם '$deprecated_key' שונה ל-'$key'. התמיכה ב-'$deprecated_key' תוסר בגרסא "
 "$removal_version ."
+
+#~ msgid "Resize map"
+#~ msgstr "שנה גודל מפה"
 
 #~ msgid "Allow more than one map to be open at the same time (MDI)"
 #~ msgstr "אפשר ליותר ממפה אחת להיות פתוחה בזמן אחד (MDI)?"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
+"POT-Creation-Date: 2011-11-16 12:43+0100\n"
 "PO-Revision-Date: 2008-07-01 17:35-0000\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
@@ -1546,7 +1546,10 @@ msgstr "إنشاء خريطة جديدة"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:35 src/hotkeys.cpp:172
+#. [button]: id=ok
+#: data/gui/default/window/editor_resize_map.cfg:35
+#: data/gui/default/window/editor_resize_map.cfg:270
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
 msgstr "إعادة تحجيم الخريطة"
 
@@ -1583,13 +1586,6 @@ msgstr ""
 #: data/gui/default/window/editor_resize_map.cfg:248
 msgid "Copy edge terrain"
 msgstr ""
-
-#. [button]: id=ok
-#: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271
-#, fuzzy
-msgid "Resize map"
-msgstr "إعادة تحجيم الخريطة"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
@@ -4031,7 +4027,7 @@ msgid ""
 "affected terrain is :"
 msgstr "عُثِرَ على أرضية ممثلة بواسطة مقطع مكون من  أكثر من 4 محارف.الأرضية هي:"
 
-#: src/text.cpp:311
+#: src/text.cpp:719
 msgid "The text contains invalid markup: "
 msgstr ""
 
@@ -4069,6 +4065,10 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Resize map"
+#~ msgstr "إعادة تحجيم الخريطة"
 
 #~ msgid "Show Unit Idle Animations"
 #~ msgstr "إظهار تحريكات الوحدات الساكنة"
