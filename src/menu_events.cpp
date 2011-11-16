@@ -2299,7 +2299,7 @@ class chat_command_handler : public map_command_handler<chat_command_handler>
 		void do_details();
 
 		std::string get_flags_description() const {
-			return _("(A) - admin command");
+			return _("(A) — admin command");
 		}
 
 		std::string get_command_flags_description(
@@ -2505,7 +2505,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_whiteboard_options();
 
 		std::string get_flags_description() const {
-			return _("(D) - debug only, (N) - network only, (A) - admin only");
+			return _("(D) — debug only, (N) — network only, (A) — admin only");
 		}
 		using chat_command_handler::get_command_flags_description; //silence a warning
 		std::string get_command_flags_description(const chmap::command& c) const
