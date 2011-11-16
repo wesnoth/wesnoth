@@ -122,17 +122,13 @@ if "update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS
     Alias("update-po4a", Alias("manual"))
 
     manpages = Split("wesnoth.6 wesnothd.6")
-    charsets = { "ar":"utf8", "bg":"cp1251", "ca_ES@valencia":"iso-8859-15", "cs":"iso-8859-2", "el":"iso-8859-7",
-          "he":"iso-8859-8", "hr":"utf8", "hu":"iso-8859-2", "ja":"euc-jp", "ko":"euc-kr", "lt":"iso-8859-13", "pl":"iso-8859-2",
-          "racv":"iso-8859-15", "ro":"iso-8859-2", "ru":"iso-8859-5", "sk":"iso-8859-2", "sl":"iso-8859-2", "sr":"utf8", "sr@latin":"utf8",
-          "tr":"iso-8859-9", "zh_CN":"gb2312" }
     env.Po4aGettextize("wesnoth-manpages/wesnoth-manpages.pot",
         [join("../doc/man", man) for man in manpages], PO4A_FORMAT = "man")
     for lingua in linguas:
         for man in manpages:
             env.Po4aTranslate(join("../doc/man", lingua, man),
             [join("../doc/man", man), join("wesnoth-manpages", lingua + ".po")],
-            PO4A_CHARSET = charsets.get(lingua, "iso-8859-1"), PO4A_FORMAT = "man")
+            PO4A_CHARSET = "utf8", PO4A_FORMAT = "man")
     Alias("update-po4a", "../doc/man")
 
 #
