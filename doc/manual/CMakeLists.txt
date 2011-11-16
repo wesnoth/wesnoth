@@ -25,7 +25,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 		COMMAND ${DOS2UNIX_EXECUTABLE} manual.en.xml
 		COMMAND ${XSLTPROC_EXECUTABLE} ${XSLTPROC_OPTIONS} 
 				-o manual.en.html
-				/etc/asciidoc/docbook-xsl/xhtml.xsl 
+				/usr/share/asciidoc/docbook-xsl/xhtml.xsl
 				manual.en.xml
 		DEPENDS manual.txt
 		COMMENT "[update-po4a-manual] Building manual.xml."
@@ -75,7 +75,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 		# executes if the .html file exists. 
 		set(CMD "${XSLTPROC_EXECUTABLE} ${XSLTPROC_OPTIONS}")
 		set(CMD "${CMD} -o manual.${LINGUA}.html")
-		set(CMD "${CMD} /etc/asciidoc/docbook-xsl/xhtml.xsl")
+		set(CMD "${CMD} /usr/share/asciidoc/docbook-xsl/xhtml.xsl")
 		set(CMD "${CMD} manual.${LINGUA}.xml")
 		add_custom_command(
 			OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LINGUA}.html
