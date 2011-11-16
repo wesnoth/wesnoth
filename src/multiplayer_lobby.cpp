@@ -471,10 +471,10 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 					// Parsing the map and generating the minimap are both cpu expensive
 					gamemap map(game_config, games_.back().map_data);
 					games_.back().mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
-					games_.back().map_info_size = str_cast(map.w()) + "x"
+					games_.back().map_info_size = str_cast(map.w()) + utils::unicode_multiplication_sign
 						+ str_cast(map.h());
 				}
-				games_.back().map_info += " - " + games_.back().map_info_size;
+				games_.back().map_info += " — " + games_.back().map_info_size;
 			} catch (incorrect_map_format_error &e) {
 				ERR_CF << "illegal map: " << e.message << '\n';
 				verified = false;
@@ -483,7 +483,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				verified = false;
 			}
 		} else {
-			games_.back().map_info += " - ??x??";
+			games_.back().map_info += " — ??×??";
 		}
 		games_.back().map_info += " ";
 		if (!game["mp_scenario"].empty())
@@ -509,7 +509,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 						}
 					}
 					if(!hash_found) {
-						games_.back().map_info += " - ";
+						games_.back().map_info += " — ";
 						games_.back().map_info += _("Remote scenario");
 						verified = false;
 					}
@@ -525,7 +525,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			verified = false;
 		}
 		if (games_.back().reloaded) {
-			games_.back().map_info += " - ";
+			games_.back().map_info += " — ";
 			games_.back().map_info += _("Reloaded game");
 			verified = false;
 		}

@@ -218,7 +218,7 @@ game_info::game_info(const config& game, const config& game_config)
 	}
 
 	if (map_data.empty()) {
-		map_info += " - ??x??";
+		map_info += " — ??×??";
 	} else {
 		try {
 			gamemap map(game_config, map_data);
@@ -226,7 +226,7 @@ game_info::game_info(const config& game, const config& game_config)
 			std::ostringstream msi;
 			msi << map.w() << utils::unicode_multiplication_sign << map.h();
 			map_size_info = msi.str();
-			map_info += " - " + map_size_info;
+			map_info += " — " + map_size_info;
 		} catch (incorrect_map_format_error &e) {
 			ERR_CF << "illegal map: " << e.message << "\n";
 			verified = false;
@@ -262,7 +262,7 @@ game_info::game_info(const config& game, const config& game_config)
 					}
 					if(!hash_found) {
 						remote_scenario = true;
-						map_info += " - ";
+						map_info += " — ";
 						map_info += _("Remote scenario");
 						verified = false;
 					}
@@ -281,7 +281,7 @@ game_info::game_info(const config& game, const config& game_config)
 		verified = false;
 	}
 	if (reloaded) {
-		map_info += " - ";
+		map_info += " — ";
 		map_info += _("Reloaded game");
 		verified = false;
 	}
