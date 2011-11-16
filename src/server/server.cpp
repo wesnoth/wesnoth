@@ -1098,7 +1098,7 @@ void server::process_login(const network::connection sock,
 		// This name is registered but the account is not active
 		if(exists && !user_handler_->user_is_active(username)) {
 			send_warning(sock, "The nickname '" + username + "' is inactive. You cannot claim ownership of this "
-				"nick until you activate your account via email or ask an administrator to do it for you.", MP_NAME_INACTIVE_WARNING);
+				"nickname until you activate your account via email or ask an administrator to do it for you.", MP_NAME_INACTIVE_WARNING);
 			//registered = false;
 		}
 		else if(exists) {
@@ -1152,7 +1152,7 @@ void server::process_login(const network::connection sock,
 					send_error(sock, "You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
 					network::queue_disconnect(sock);
 				} else {
-					send_password_request(sock, "The password you provided for the nick '" + username +
+					send_password_request(sock, "The password you provided for the nickname '" + username +
 						"' was incorrect.", username, MP_INCORRECT_PASSWORD_ERROR);
 				}
 
