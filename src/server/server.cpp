@@ -1729,7 +1729,7 @@ void server::ban_handler(const std::string& issuer_name, const std::string& /*qu
 				}
 			}*/
 			if(!banned) {
-				*out << "Nickmask '" << target << "' did not match, no bans set.";
+				*out << "Nickname mask '" << target << "' did not match, no bans set.";
 			}
 		}
 	}
@@ -1812,7 +1812,7 @@ void server::kickban_handler(const std::string& issuer_name, const std::string& 
 					}
 				}*/
 				if(!banned) {
-					*out << "Nickmask '" << target << "' did not match, no bans set.";
+					*out << "Nickname mask '" << target << "' did not match, no bans set.";
 				}
 			}
 		}
@@ -1884,7 +1884,7 @@ void server::gban_handler(const std::string& issuer_name, const std::string& /*q
 						}
 					}*/
 					if(!banned) {
-						*out << "Nickmask '" << target << "' did not match, no bans set.";
+						*out << "Nickname mask '" << target << "' did not match, no bans set.";
 					}
 				}
 			}
