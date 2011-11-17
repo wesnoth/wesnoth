@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2011-10-28 17:02+0700\n"
+"PO-Revision-Date: 2011-11-16 17:21+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -482,9 +482,10 @@ msgid ""
 "in rivers and swamps and they will fight well! Put them on dry land and "
 "they’re in trouble!"
 msgstr ""
-"Anda sekarang dapat merekrut Merman Pemburu. Duyung adalah makhluk  air. "
-"Usahakan mereka  di sungai  dan rawa-rawa dan mereka akan bertempur dengan "
-"baik! Menempatkan mereka di lahan kering dan mereka dalam kesulitan!"
+"Anda sekarang dapat merekrut Manusia Duyung Pemburu. Manusia Duyung adalah "
+"makhluk  air. Usahakan mereka  di sungai  dan rawa-rawa dan mereka akan "
+"bertempur dengan baik! Menempatkan mereka di lahan kering dan mereka dalam "
+"kesulitan!"
 
 #. [unit]: type=Longbowman, id=Aleron
 #. [unit]: type=Peasant, id=Aleron
@@ -744,7 +745,8 @@ msgstr "Menteri Hylas"
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:304
 msgid "More bandits?! They’ll feel the deadly bite of my lance!"
 msgstr ""
-"Lebih banyak penjahat?! Mereka akan merasakan tusukan mematikan tombak saya!"
+"Lebih banyak penjahat?! Mereka akan merasakan tusukan mematikan senjata "
+"penusuk saya!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:308
@@ -2239,13 +2241,13 @@ msgid ""
 "Hss... Here are the humans who have made a pact with the cursed mermen! "
 "Hss..."
 msgstr ""
-"Hss... Disini ada bangsa manusia yang telah membuat perjanjian dengan duyung "
-"yang terkutuk! Hss..."
+"Hss... Disini ada bangsa manusia yang telah membuat perjanjian dengan "
+"manusia duyung terkutuk! Hss..."
 
 #. [message]: speaker=Eliomir
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:256
 msgid "We have stumbled into a den of nagas!"
-msgstr "Kami tersandung ke dalam sarang naga!"
+msgstr "Kami tersandung ke dalam sarang kobra!"
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:260
@@ -2259,7 +2261,7 @@ msgid ""
 "lair!"
 msgstr ""
 "Kita harus membersihkan jalan ini untuk Deoran dan Ethiliel! Kita harus "
-"menghancurkan sarang  naga!"
+"menghancurkan sarang kobra!"
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_and_Ill.cfg:270
@@ -2289,7 +2291,7 @@ msgid ""
 "She won’t listen. If we leave these nagas here, they will ambush Deoran and "
 "Ethiliel! We must destroy them!"
 msgstr ""
-"Dia tidak mau mendengarkan. Jika kita membiarkan naga ini di sini, mereka "
+"Dia tidak mau mendengarkan. Jika kita membiarkan kobra ini di sini, mereka "
 "akan menghadang Deoran dan Ethiliel! Kita harus menghancurkan mereka!"
 
 #. [objective]: condition=win
@@ -2303,7 +2305,7 @@ msgid ""
 "There are a group of naga occupying this area... they don’t look very "
 "friendly."
 msgstr ""
-"Ada sekelompok naga menempati daerah ini... mereka tidak terlihat sangat "
+"Ada sekelompok kobra menempati daerah ini... mereka tidak terlihat sangat "
 "ramah."
 
 #. [message]: speaker=Sir Gerrick
@@ -2374,7 +2376,7 @@ msgid ""
 "These naga are still in control of the road. We must clear the way for "
 "Deoran and Ethiliel!"
 msgstr ""
-"Naga ini masih menguasai jalan. Kita harus membersihkan jalan bagi Deoran "
+"Kobra ini masih menguasai jalan. Kita harus membersihkan jalan bagi Deoran "
 "dan Ethiliel!"
 
 #. [message]: speaker=Sir Gerrick
@@ -3666,12 +3668,12 @@ msgstr "menghancurkan"
 #. [attack]: type=arcane
 #: data/campaigns/The_South_Guard/units/Eyestalk.cfg:86
 msgid "gaze"
-msgstr "tatapan"
+msgstr "menatap"
 
 #. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:4
 msgid "Horseman Commander"
-msgstr "Komandan Penunggang Kuda"
+msgstr "Komandan Prajurit Berkuda"
 
 #. [unit_type]: id=Horseman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:27
@@ -3689,13 +3691,13 @@ msgstr ""
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:31
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:33
 msgid "lance"
-msgstr "lembing"
+msgstr "penusuk"
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:42
 #: data/campaigns/The_South_Guard/units/Mounted_General.cfg:44
 msgid "mace"
-msgstr "tongkat kebesaran"
+msgstr "gada"
 
 #. [unit_type]: id=Infantry Commander, race=human
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:4
@@ -3800,9 +3802,9 @@ msgid ""
 "more dangerous at night."
 msgstr ""
 "Para preman adalah andalan pasukan bandit. Mereka tidak memiliki serangan "
-"<i>jarak jauh</i> , dan rentan terhadap para pemanah anda. Lembing Deoran "
-"juga akan memberikan rasa takut ke dalam hati mereka! Seperti semua unit "
-"bandit, mereka jauh lebih berbahaya di malam hari."
+"<i>jarak jauh</i> , dan rentan terhadap para pemanah anda. Senjata penusuk "
+"Deoran juga akan memberikan rasa takut ke dalam hati mereka! Seperti semua "
+"unit bandit, mereka jauh lebih berbahaya di malam hari."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:56
@@ -4129,10 +4131,10 @@ msgid ""
 "lifted their helmets from their brows. The moans of the wounded overshadowed "
 "the rustling of the north wind in the distance. The undead were gone."
 msgstr ""
-"Lelah, Deoran menjatuhkan tombaknya ke tanah. Orang-orang di sekelilingnya  "
-"perlahan-lahan  mengangkat  helm mereka dari kening mereka. Rintihan yang "
-"terluka  mengalihkan gemerisik angin  utara di kejauhan. Mayat hidup itu "
-"sudah lenyap."
+"Lelah, Deoran menjatuhkan senjata penusuknya ke tanah. Orang-orang di "
+"sekelilingnya  perlahan-lahan mengangkat  helm mereka dari kening mereka. "
+"Rintihan yang terluka  mengalihkan gemerisik angin  utara di kejauhan. Mayat "
+"hidup itu sudah lenyap."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:154

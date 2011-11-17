@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.2+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2011-10-24 14:17+0700\n"
+"PO-Revision-Date: 2011-11-16 16:22+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -514,7 +514,7 @@ msgstr ""
 "Kapan saja kamu berada di dalam sebuah <i>benteng</i>, kamu dapat "
 "<i>merekrut</i> di sekitar lantai benteng itu dengan melakukan klik kanan "
 "dan memilih <b>Rekrut</b>. Sementara ini kamu hanya diberi satu jenis unit "
-"untuk dipilih : Petarung Elf."
+"untuk dipilih : Elf Petarung."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:654
@@ -601,7 +601,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:791
 msgid "Left click on an Elvish Fighter"
-msgstr "Klik kiri pada Petarung Elf"
+msgstr "Klik kiri pada Elf Petarung"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:792
@@ -753,11 +753,11 @@ msgid ""
 msgstr ""
 "Ketika suatu unit mendapatkan poin pengalaman yang cukup (<i>batang pengukur "
 "pengalaman</i>, jika muncul, berada pada sisi <b>kanan</b> dari <i>batang "
-"pengukur hitpoint</i>), itu akan menaikan satu level. Petarung Elf  "
-"mempunyai dua pilihan kenaikan pangkat, dan kamu akan mempunyai suatu "
-"kesempatan untuk memilih perubahan yang kamu inginkan. Bagaimanapun, biaya "
-"untuk memunculkan unit-unit level 2 akan naik menjadi dua kali lipat "
-"dibandingkan biaya untuk memuinculkan unit-unit itu ketika masih level 1."
+"pengukur hitpoint</i>), itu akan menaikan satu level. Elf Petarung mempunyai "
+"dua pilihan kenaikan pangkat, dan kamu akan mempunyai suatu kesempatan untuk "
+"memilih perubahan yang kamu inginkan. Bagaimanapun, biaya untuk memunculkan "
+"unit-unit level 2 akan naik menjadi dua kali lipat dibandingkan biaya untuk "
+"memuinculkan unit-unit itu ketika masih level 1."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1044
@@ -935,10 +935,10 @@ msgid ""
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
-"Dengan sedikit bantuan tentunya. Jika kamu pindahkan penyihir mu dekat "
-"dengan unit yang sedang bertahan, dia akan menyembuhkannya 4 hitpoints "
-"setiap giliran. Hanya saja berhati-hatilah untuk tidak memaksakan penyihir "
-"untuk menyerang karena dia sebenarnya lemah."
+"Dengan sedikit bantuan tentunya. Jika kamu pindahkan dukun mu dekat dengan "
+"unit yang sedang bertahan, dia akan menyembuhkannya 4 hitpoints setiap "
+"giliran. Hanya saja berhati-hatilah untuk tidak memaksakan dukun untuk "
+"menyerang karena dia sebenarnya lemah."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
@@ -973,8 +973,7 @@ msgstr "ku harap aku memiliki kesempatan untuk mundur setelah ini!"
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:298
 msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr ""
-"Cukup hanya dengan satu serangan saja oleh  Orc pendengkur, dan Aku kalah!"
+msgstr "Cukup hanya dengan satu serangan saja oleh Orc Muda, dan Aku kalah!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:309
@@ -1067,8 +1066,8 @@ msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river. He should be little trouble."
 msgstr ""
-"Mula-mula, kita harus berhadapan dengan Pendengkur Orc  yang berada pada "
-"posnya di pertengahan sungai. Ia pasti menyebabkan sedikit masalah."
+"Mula-mula, kita harus berhadapan dengan Orc Muda yang berada pada posnya di "
+"pertengahan sungai. Ia pasti menyebabkan sedikit masalah."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:490
@@ -1130,9 +1129,9 @@ msgid ""
 "one Elvish Shaman"
 msgstr ""
 "Untuk memulainya, kita butuh beberapa unit:\n"
-"Dua Petarung Elf\n"
-"Dua Pemanah Elf\n"
-"Satu Dukun Elf"
+"Dua Elf Petarung\n"
+"Dua Elf Pemanah\n"
+"Satu Elf Dukun"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:591
@@ -1193,7 +1192,7 @@ msgstr ""
 "Bila ada Petarung-Petarung Elf dari pertempuran terakhir mu yang mempunyai "
 "pengalaman, kita akan <i>memanggil kembali</i> mereka ke medan perang "
 "sekarang. Tetapi bilamana, veteran-veteran mu tidak mempunyai pengalaman "
-"maka lebih murah untuk merekrut unit-unit baru. Rekrutlah satu Petarung Elf."
+"maka lebih murah untuk merekrut unit-unit baru. Rekrutlah satu Elf Petarung."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:616
@@ -1210,20 +1209,20 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:875
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:918
 msgid "Elvish Fighter"
-msgstr "Petarung Elf "
+msgstr "Elf Petarung"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:620
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
 msgstr ""
-"Klik Kanan pada lantai di arah timur laut mu dan rekrutlah seorang petarung "
-"Elf"
+"Klik Kanan pada lantai di arah timur laut mu dan rekrutlah seorang Elf "
+"Petarung "
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:660
 msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
 msgstr ""
-"Bukan! maksudku rekrutlah seorang <i>Dukun</i> Elf! sekarang coba lagi..."
+"Bukan! maksudku rekrutlah seorang Elf <i>Dukun</i> ! sekarang coba lagi..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:669
@@ -1281,12 +1280,12 @@ msgstr "Eowynial"
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:714
 msgid "Shaman"
-msgstr "Penyihir"
+msgstr "Dukun"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:715
 msgid "Recruit an Elvish Shaman to your north"
-msgstr "Rekrut seorang Dukun Elf disebelah utara mu"
+msgstr "Rekrut seorang Elf Dukun disebelah utara mu"
 
 #. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
@@ -1318,7 +1317,7 @@ msgstr "Pemanah #2"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:783
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:820
 msgid "Recruit two Elvish Archers in the tiles to your west"
-msgstr "Rekrutlah dua Pemanah Elf di lantai sebelah barat mu"
+msgstr "Rekrutlah dua Elf Pemanah di lantai sebelah barat mu"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:796
@@ -1366,7 +1365,8 @@ msgstr "MEMANGGIL KEMBALI  $recall_name2"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:876
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:919
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
-msgstr "Klik kanan pada lantai di sebelah timurmu dan rekrutlah Petarung Elf"
+msgstr ""
+"Klik kanan pada lantai di sebelah timurmu dan rekrutlah seorang Elf Petarung "
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:899
@@ -1374,7 +1374,7 @@ msgid ""
 "$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</i>. "
 "Now try again..."
 msgstr ""
-"$recruit.language_name|? maksudku <i>rekruit</i> seorang <i>Petarung Elf</i> "
+"$recruit.language_name|? maksudku <i>rekruit</i> seorang <i>Elf Petarung</i> "
 "yang baru. Sekarang cobalah lagi..."
 
 #. [unit]: id=Elindel, type=Elvish Fighter
@@ -1444,7 +1444,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
 msgid "Orcish Grunts have no ranged attacks, so use your archers against them."
 msgstr ""
-"Para orc pendengkur tidak memiliki serangan jarak jauh, maka gunakan para "
+"Para orc muda tidak memiliki serangan jarak jauh, maka gunakan para "
 "pemanahmu untuk menyerang mereka."
 
 #. [event]
@@ -1476,7 +1476,7 @@ msgid ""
 "of hitting an Elvish Archer in that tile."
 msgstr ""
 "Bagus. Para elf sangat terlindungi bila berada didalam hutan. Hanya ada 30% "
-"kesempatan mengenai seorang Pemanah Elf di hutan."
+"kesempatan mengenai seorang Elf Pemanah di hutan."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1000
@@ -1540,9 +1540,9 @@ msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
 "then return to the keep to recruit more units!"
 msgstr ""
-"Kirimkan Petarung lain  dan penyihir ke selatan sehingga mereka dapat "
-"menyerang pada giliran berikutnya, kemudian kembali ke benteng untuk "
-"merekrut lebih banyak unit!"
+"Kirimkan Petarung lain dan Dukun ke selatan sehingga mereka dapat menyerang "
+"pada giliran berikutnya, kemudian kembali ke benteng untuk merekrut lebih "
+"banyak unit!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1041
@@ -1589,8 +1589,8 @@ msgid ""
 "That Grunt is blocking the bridge! We must occupy that island before the "
 "Wolf Riders reach it."
 msgstr ""
-"Orc Pendengkur menghalangi jembatan itu! Kita harus menduduki pulau itu "
-"sebelum Pengendara Serigala menjangkaunya."
+"Orc Muda menghalangi jembatan itu! Kita harus menduduki pulau itu sebelum "
+"Pengendara Serigala menjangkaunya."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1096
@@ -1619,7 +1619,7 @@ msgstr ""
 "berada di dalam <i>Zona Kontrol</i> dan tidak bisa bergerak lebih lanjut "
 "pada giliran itu.\n"
 "Untuk memindahkan pasukan mu ke pulau itu tanpa menyeberangi pelan-pelan "
-"melalui air, kamu harus membunuh Pendengkur itu."
+"melalui air, kamu harus membunuh orc muda itu."
 
 #. [then]
 #. [event]
@@ -1653,8 +1653,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1139
 msgid "Move your Shaman onto the bridge to stand behind your other unit"
 msgstr ""
-"Pindahkan Penyihirmu ke atas jembatan dan tempatkan ia dibelakang unit "
-"lainnya"
+"Pindahkan Dukun mu ke atas jembatan dan tempatkan ia dibelakang unit lainnya"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1185
@@ -1810,8 +1809,8 @@ msgid ""
 msgstr ""
 "\n"
 "Ingatlah untuk merekrut pasukan yang bermanfaat pada keadaanya. Para pemanah "
-"terutama sekali efektif melawan Para Orc Pendengkur, Para Pengendara "
-"Serigala dan pemimpin orc."
+"terutama sekali efektif melawan Para Orc Muda, Para Pengendara Serigala dan "
+"pemimpin orc."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1279
@@ -2061,7 +2060,7 @@ msgstr "Petarung Wanita"
 #. [attack]: type=blade
 #: data/campaigns/tutorial/units/Fighteress.cfg:22
 msgid "saber"
-msgstr "pedang"
+msgstr "anggar"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
