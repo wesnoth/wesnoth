@@ -54,16 +54,24 @@ void mapbuilder::pre_build()
 	{
 		bool on_current_side = (u.side() == current_side);
 
+		/**
+		 * @todo Fix this code.
+		 *
+		 * It has been disabled since the temporary vacancy of a hex caused it to be
+		 * chosen as a hex to recruit a unit onto, leading to a collision once
+		 * the real unit map has been restored (bug #18992).
+		 */
 		//Remove any unit the current side cannot see to avoid their detection by planning
 		//Units will be restored to the unit map by destruction of removers_
 
-		if (!on_current_side && !u.is_visible_to_team((*resources::teams)[viewer_team()], false))
-		{
-			removers_.push_back(new temporary_unit_remover(*resources::units, u.get_location()));
+		//if (!on_current_side && !u.is_visible_to_team((*resources::teams)[viewer_team()], false))
+		//{
+		//	removers_.push_back(new temporary_unit_remover(*resources::units, u.get_location()));
 
-			//Don't do anything else to the removed unit!
-			continue;
-		}
+		//	//Don't do anything else to the removed unit!
+		//	continue;
+		//}
+
 
 		//Reset movement points, to be restored by destruction of resetters_
 
