@@ -24,6 +24,10 @@
 #include "game_display.hpp"
 #include "log.hpp"
 
+#ifdef HAVE_VISUAL_LEAK_DETECTOR
+#include "vld.h"
+#endif
+
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -1130,6 +1134,10 @@ functions_map& get_functions_map() {
 
 	static functions_map functions_table;
 
+#ifdef HAVE_VISUAL_LEAK_DETECTOR
+	VLDDisable();
+#endif
+
 	if(functions_table.empty()) {
 #define FUNCTION(name) functions_table[#name] = new function_creator<name##_function>();
 		FUNCTION(debug);
@@ -1171,6 +1179,10 @@ functions_map& get_functions_map() {
 		FUNCTION(cos);
 #undef FUNCTION
 	}
+
+#ifdef HAVE_VISUAL_LEAK_DETECTOR
+	VLDEnable();
+#endif
 
 	return functions_table;
 }
