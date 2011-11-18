@@ -17,6 +17,9 @@
  * @file
  */
 
+#ifndef VALUE_TRANSLATOR_HPP_INCLUDED
+#define VALUE_TRANSLATOR_HPP_INCLUDED
+
 #include "engine.hpp"
 #include "stage.hpp"
 
@@ -416,3 +419,5 @@ public:
 	}
 };
 }  //end of namespace ai
+
+#endif
