@@ -39,6 +39,9 @@ documentation and/or software.
 
 */
 
+#ifndef MD5_HPP_INCLUDED
+#define MD5_HPP_INCLUDED
+
 #include <boost/cstdint.hpp>
 
 class MD5 {
@@ -90,3 +93,5 @@ private:
 			    uint4 s, uint4 ac);
 
 };
+
+#endif
