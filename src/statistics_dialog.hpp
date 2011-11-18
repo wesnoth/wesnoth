@@ -14,6 +14,9 @@
    See the COPYING file for more details.
 */
 
+#ifndef STATISTICS_DIALOG_HPP_INCLUDED
+#define STATISTICS_DIALOG_HPP_INCLUDED
+
 #include "construct_dialog.hpp"
 #include "statistics.hpp"
 
@@ -41,3 +44,5 @@ private:
 	unsigned int team_num_;
 	std::vector<int> unit_count_;
 };
+
+#endif
