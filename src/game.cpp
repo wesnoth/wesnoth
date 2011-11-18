@@ -43,6 +43,10 @@
 #include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
+#ifdef HAVE_VISUAL_LEAK_DETECTOR
+#include "vld.h"
+#endif
+
 // Minimum stack cookie to prevent stack overflow on AmigaOS4
 #ifdef __amigaos4__
 const char __attribute__((used)) stackcookie[] = "\0$STACK: 16000000";
@@ -586,6 +590,11 @@ void init_custom_malloc();
 
 int main(int argc, char** argv)
 {
+
+#ifdef HAVE_VISUAL_LEAK_DETECTOR
+	VLDEnable();
+#endif
+
 #if defined(_OPENMP) && !defined(_WIN32) && !defined(__APPLE__)
 	// Wesnoth is a special case for OMP
 	// OMP wait strategy is to have threads busy-loop for 100ms
