@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2011-09-10 11:37+0200\n"
+"PO-Revision-Date: 2011-11-19 16:21+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -33,8 +33,6 @@ msgstr "Salvataggi compressi"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
-#, fuzzy
-#| msgid "Confirm deleting saves"
 msgid "Confirm deleting saves"
 msgstr "Conferma l’eliminazione dei salvataggi"
 
@@ -50,24 +48,18 @@ msgstr "trascinamento col clic centrale"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#, fuzzy
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep scrolling when mouse leaves window"
 msgstr "Continua a scorrere quando il mouse esce dalla finestra"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
-#, fuzzy
-#| msgid "Local time of day light"
 msgid "Local time of day area lighting"
-msgstr "Ora del giorno locale"
+msgstr "Illuminazione di area dell'ora del giorno locale"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
-#, fuzzy
-#| msgid "Local time of day light effect (use more memory)."
 msgid "Custom lighting for local time of day areas (uses more memory)"
-msgstr "Effetti per l’ora del giorno locale (usa più memoria)."
+msgstr "Effetti per l’ora del giorno locale personalizzati (usa più memoria)."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
@@ -99,36 +91,26 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
-#, fuzzy
-#| msgid "Accept whisper messages from friends only"
 msgid "Accept whispers from friends only"
-msgstr "Accetta messaggi sussurrati solo dagli amici"
+msgstr "Accetta sussurri solo dagli amici"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
-#, fuzzy
-#| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open whisper windows in lobby"
 msgstr "Apri automaticamente le finestre dei sussurri nella lobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
-#, fuzzy
-#| msgid "Group players in lobby"
 msgid "Group players in lobby"
 msgstr "Raggruppa i giocatory nella lobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid "Lobby sounds"
 msgid "Lobby sounds"
 msgstr "Suoni nella lobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
-#, fuzzy
-#| msgid "Disable notifications"
 msgid "Disable notifications"
 msgstr "Disabilita notifiche"
 
@@ -158,8 +140,6 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
-#, fuzzy
-#| msgid "Chat message aging"
 msgid "Chat message aging"
 msgstr "Invecchiamento dei messaggi di chat"
 
@@ -179,17 +159,17 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
 msgid "Use 12-hour clock format"
-msgstr ""
+msgstr "Usa il formato a 12 ore"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:150
 msgid "Confirm loading of saves from a different version"
-msgstr ""
+msgstr "Conferma il caricamento di salvataggi di un’altra versione"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "Mostra tutti i tipi di unità nell’aiuto"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:158
@@ -197,6 +177,8 @@ msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
+"Mostra tutti i tipi di unità nell’aiuto (richiede riavvio). Non altera "
+"l’elenco di unità incontrate."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:166
@@ -350,7 +332,7 @@ msgstr "Gran signore"
 #. [about]
 #: data/campaigns/test_campaign/_main.cfg:52
 msgid "Test campaign test [about] entry"
-msgstr ""
+msgstr "Campagna di prova voce [about] di prova"
 
 #. [scenario]: id=01_Grass
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:4
@@ -2155,10 +2137,8 @@ msgstr "Obiettivo con premio:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "This is the last scenario."
-msgstr "Scenario remoto"
+msgstr "Questo è l’ultimo scenario"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -3010,7 +2990,7 @@ msgid ""
 "Use healers to support your attacks — they will win you battles without "
 "needing to attack anything themselves."
 msgstr ""
-"Usa unità in grado di guarire come supporto per i tuoi attacchi — vinceranno "
+"Usa unità in grado di guarire come supporto per i tuoi attacchi – vinceranno "
 "le tue battaglie senza bisogno di attaccare di persona."
 
 #. [tip]
@@ -3150,6 +3130,12 @@ msgid ""
 "to escape; slow enemies are almost immobilized, and your own units suffer "
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
+"L’abilità <i>Rallentamento</i> è estremamente potente grazie ai suoi effetti "
+"a grande distanza. I nemici non-morti ottengono solo metà dei normali "
+"benefici dall’abilità <i>Assorbimento</i>, il danno aggiuntivo "
+"dell’<i>Ariete</i> è cancellato, e l’abilità <i>Berserk</i> è indebolita. I "
+"nemici veloci faticano a scappare; i nemici lenti sono quasi immobili, e le "
+"tue unità ricevono meno danni, e sono più veloci da guarire."
 
 #. [tip]
 #: data/hardwired/tips.cfg:208
@@ -3176,6 +3162,9 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
+"Pensaci due volte prima di congedare un’unità dall'elenco dei richiami, "
+"anche se ha poca esperienza. A volte conviene pagare un sovrapprezzo per "
+"sapere esattamente le caratteristiche della nuova unità."
 
 #. [tip]
 #: data/hardwired/tips.cfg:220
@@ -3184,6 +3173,9 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
+"Quando una forte unità è ferita in modo grave, mandala in un villaggio "
+"lontana dai combattimenti a farsi curare. Così potrà recuperare in pace (10 "
+"punti salute per turno) standosene fuori dalla battaglia."
 
 #. [tip]
 #: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:233
@@ -3197,6 +3189,10 @@ msgid ""
 "work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
+"Combinare più unità con abilità speciali può essere mortale. Anche se "
+"combinare qualche abilità, come <i>Comando</i>, <i>Illuminazione</i> e "
+"<i>Ariete</i> può richiedere molti sforzi, il risultato può essere davvero "
+"impressionante contro un nemico rallentato."
 
 #. [tip]
 #: data/hardwired/tips.cfg:228
@@ -3206,6 +3202,11 @@ msgid ""
 "your units extra experience. When deciding whether or not to finish a "
 "scenario early, weigh these factors against one another."
 msgstr ""
+"Anche se finendo prima uno scenario guadagnerai più oro come premio, e "
+"ridurrai le opportunità del nemico di uccidere le tue truppe valorose, "
+"perderai le chance di far guadagnare dei punti d’esperienza alle tue unità. "
+"Quando devi decidere se finire prima o dopo uno scenario, ricordati che "
+"questi fattori influiranno sulla prossima partita."
 
 #. [tip]
 #: data/hardwired/tips.cfg:232
@@ -3263,7 +3264,7 @@ msgstr "Sconfitta:"
 
 #: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
-msgstr ""
+msgstr "Oro rimasto:"
 
 #: data/lua/wml/objectives.lua:53
 msgid "Notes:"
@@ -3470,8 +3471,6 @@ msgstr "Punto di vista"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#, fuzzy
-#| msgid "Skip Animation"
 msgid "Skip animation"
 msgstr "Salta le animazioni"
 
@@ -3700,6 +3699,8 @@ msgid ""
 "While the add-on has been installed, a dependency is missing. Try to update "
 "the installed add-ons."
 msgstr ""
+"L’estensione è stata installata, ma una dipendenze è mancante. Prova ad "
+"aggiornare le estensioni installate."
 
 #: src/addon/manager.cpp:844
 msgid "Installation failed"
@@ -3770,6 +3771,8 @@ msgid ""
 "While the add-on has been installed, some dependency is missing. Try to "
 "update the installed add-ons."
 msgstr ""
+"L’estensione è stata installata, ma delle dipendenze sono mancanti. Prova ad "
+"aggiornare le estensioni installate."
 
 #: src/addon/manager.cpp:1072
 msgid "Update failed"
@@ -3793,6 +3796,9 @@ msgid ""
 "any changes you have made since the last upload and may delete your pbl "
 "file. Do you really wish to continue?"
 msgstr ""
+"Sembra che tu sia l’autore di «$addon|». Lo scaricamento di «$addon|» "
+"potrebbe sovrascrivere i cambiamenti fatti dall’ultimo invio e cancellare il "
+"tuo file pbl. Sei sicuro di voler continuare?"
 
 #: src/addon/manager.cpp:1101 src/addon/manager.cpp:1330
 #: src/addon/manager.cpp:1423 src/multiplayer.cpp:264
@@ -3879,12 +3885,10 @@ msgid "You have no add-ons installed."
 msgstr "Non ci sono estensioni installate."
 
 #: src/addon/manager.cpp:1418
-#, fuzzy
-#| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] "Sei sicuro di voler eliminare l’estensione «$addon»?"
-msgstr[1] "Sei sicuro di voler eliminare l’estensione «$addon»?"
+msgstr[0] "Sei sicuro di voler eliminare la seguente estensione?"
+msgstr[1] "Sei sicuro di voler eliminare le seguenti estensioni?"
 
 #: src/addon/manager.cpp:1444
 msgid ""
@@ -3897,20 +3901,16 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/addon/manager.cpp:1454
-#, fuzzy
-#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Non è stato possibile eliminare completamente l’estensione:"
-msgstr[1] "Non è stato possibile eliminare completamente l’estensione:"
+msgstr[1] "Non è stato possibile eliminare completamente le estensioni:"
 
 #: src/addon/manager.cpp:1461
-#, fuzzy
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Estensione eliminata"
-msgstr[1] "Estensione eliminata"
+msgstr[1] "Estensioni eliminate"
 
 #: src/addon/manager.cpp:1463
 #, fuzzy
@@ -3918,9 +3918,8 @@ msgstr[1] "Estensione eliminata"
 #| msgid_plural "The following add-ons had errors and could not be loaded:"
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
-msgstr[0] "La seguente estensione ha degli errori e non può essere caricata:"
-msgstr[1] ""
-"Le seguenti estensioni hanno degli errori e non possono essere caricate:"
+msgstr[0] "La seguente estensione è stata eliminata senza problemi"
+msgstr[1] "Le seguenti estensioni sono state eliminate senza problemi:"
 
 #: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
@@ -4009,10 +4008,8 @@ msgid "Tutorial"
 msgstr "Introduzione"
 
 #: src/dialogs.cpp:499
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "Test scenario"
-msgstr "Scenario remoto"
+msgstr "Scenario di prova"
 
 #: src/dialogs.cpp:509 src/savegame.cpp:1050
 msgid "Turn"
@@ -4041,7 +4038,7 @@ msgstr "%H:%M"
 
 #: src/dialogs.cpp:550 src/reports.cpp:1218 src/savegame.cpp:176
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/dialogs.cpp:555 src/savegame.cpp:181
 msgid "%A, %H:%M"
@@ -4220,7 +4217,7 @@ msgstr "Info: "
 
 #: src/game_events.cpp:2376
 msgid "Invalid value in the result key for [end_level]"
-msgstr ""
+msgstr "Valore non valido inserito nella chiave [end_level]"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:205 src/multiplayer_lobby.cpp:447
 msgid "Unknown era: $era_id"
@@ -4251,9 +4248,6 @@ msgid "Turn "
 msgstr "Turno "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
-#, fuzzy
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Casella vuota:"
@@ -4394,7 +4388,7 @@ msgstr "Preparazione display"
 
 #: src/loadscreen.cpp:238
 msgid "Building terrain rules"
-msgstr ""
+msgstr "Regole per la costruzione dei terreni"
 
 #: src/loadscreen.cpp:240
 msgid "Starting game"
@@ -4624,7 +4618,7 @@ msgstr ""
 
 #: src/menu_events.cpp:872
 msgid "You currently can't recall at the highlighted location"
-msgstr ""
+msgstr "Attualmente non puoi richiamare nel lugo evidenziato"
 
 #: src/menu_events.cpp:884
 msgid "Traits"
@@ -4808,6 +4802,8 @@ msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
+"Riporta abusi, violazioni di regole, ecc. ai moderatori del server. "
+"Ricordati di menzionare nomi utente validi, ecc."
 
 #: src/menu_events.cpp:2359
 msgid "<message>"
@@ -4826,10 +4822,8 @@ msgstr ""
 "giocatori in una partita avviata che stai osservando o a cui partecipi."
 
 #: src/menu_events.cpp:2364
-#, fuzzy
-#| msgid "<nick> <message>"
 msgid "<nickname> <message>"
-msgstr "<nick> <messaggio>"
+msgstr "<nickname> <messaggio>"
 
 #: src/menu_events.cpp:2368
 msgid "<level> <domain>"
@@ -4870,20 +4864,14 @@ msgid "<password> <email (optional)>"
 msgstr "<password> <email> (opzionale)>"
 
 #: src/menu_events.cpp:2381
-#, fuzzy
-#| msgid "Register your nick"
 msgid "Register your nickname"
-msgstr "Registra il tuo nome"
+msgstr "Registra il tuo nome utente"
 
 #: src/menu_events.cpp:2383
-#, fuzzy
-#| msgid "Drop your nick."
 msgid "Drop your nickname."
-msgstr "Scarta il tuo nome."
+msgstr "Scarta il tuo nome utente."
 
 #: src/menu_events.cpp:2385
-#, fuzzy
-#| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
 "Aggiorna i dettagli del tuo nome utente. Per i dettagli possibili vedi «/"
@@ -4894,14 +4882,10 @@ msgid "<detail> <value>"
 msgstr "<dettaglio> <valore>"
 
 #: src/menu_events.cpp:2388
-#, fuzzy
-#| msgid "Request information about a nick."
 msgid "Request information about a nickname."
 msgstr "Richiedi informazioni su un nome utente."
 
 #: src/menu_events.cpp:2390
-#, fuzzy
-#| msgid "Request a list of details you can set for your registered nick."
 msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
 "Richiedi un elenco di dettagli modificabili sul nome utente che hai "
@@ -4969,10 +4953,8 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<fazione> [on/off]]"
 
 #: src/menu_events.cpp:2545
-#, fuzzy
-#| msgid "<side> <nick>"
 msgid "<side> <nickname>"
-msgstr "<fazione> <nick>"
+msgstr "<fazione> <nome_utente>"
 
 #: src/menu_events.cpp:2545
 msgid "Assign control of a side to a different player or observer."
@@ -5073,7 +5055,7 @@ msgstr "Esegui un’istruzione Lua."
 
 #: src/menu_events.cpp:2585
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Permetti privilegi più elevati agli script lua."
 
 #: src/menu_events.cpp:2587
 msgid "Set the command used by the custom command hotkey"
@@ -5161,8 +5143,6 @@ msgstr ""
 "Attiva/disattiva la sovrapposizione dei codici del terreno sugli esagoni."
 
 #: src/menu_events.cpp:2632
-#, fuzzy
-#| msgid "Toggle Planning Mode."
 msgid "Toggle planning mode."
 msgstr "Commuta la modalità di pianificazione."
 
@@ -5312,6 +5292,9 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Stai per compromettere il sistema di sicurezza di Wesnoth. Sei sicuro di "
+"voler continuare? Se hai scaricato delle estensioni, non fare clic su «ok»! "
+"Potranno immediatamente appropriarsi del tuo computer. Sei stato avvertito."
 
 #: src/menu_events.cpp:3423
 msgid "Unsafe mode enabled!"
@@ -5322,16 +5305,12 @@ msgid "Variable not found"
 msgstr "Variabile non trovata"
 
 #: src/menu_events.cpp:3517
-#, fuzzy
-#| msgid ""
-#| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, or "
-#| "chaotic."
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
-"Allineamento non valido: «$alignment», deve essere uno di legale, neutrale o "
-"caotico."
+"Allineamento non valido: «$alignment», deve essere uno di legale, neutrale, "
+"caotico o liminale."
 
 #: src/menu_events.cpp:3573
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -5407,6 +5386,9 @@ msgid ""
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
+"Il nome utente «$nick» è inattivo. Non puoi chiedere il diritto ad usare "
+"questo nome fino a quando non attiverai il nome utente per posta elettronica "
+"o domanderai a un amministratore di farlo per te."
 
 #: src/multiplayer.cpp:248
 msgid "Do you want to continue?"
@@ -5425,16 +5407,10 @@ msgid "You must login first."
 msgstr "Devi prima accedere al server."
 
 #: src/multiplayer.cpp:337
-#, fuzzy
-#| msgid "The nick '$nick' is already taken."
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Il nome utente «$nick» è già in uso."
 
 #: src/multiplayer.cpp:339
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
@@ -5443,43 +5419,29 @@ msgstr ""
 "caratteri alfanumerici, simboli di sottolineatura o trattini."
 
 #: src/multiplayer.cpp:343
-#, fuzzy
-#| msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Il nome utente «$nick» è troppo lungo. I nomi utente devono essere lunghi al "
 "più 20 caratteri."
 
 #: src/multiplayer.cpp:346
-#, fuzzy
-#| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "Il nome utente «$nick» è riservato e non può essere usato dai giocatori."
 
 #: src/multiplayer.cpp:348
-#, fuzzy
-#| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Il nome utente «$nick» non è stato registrato su questo server."
 
 #: src/multiplayer.cpp:349
-#, fuzzy
-#| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
 msgstr " Questo server non permette l’uso di nomi non registrati."
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:353
-#, fuzzy
-#| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Il nome utente «$nick» è stato riservato su questo server."
 
 #: src/multiplayer.cpp:354
-#, fuzzy
-#| msgid ""
-#| "WARNING: There is already a client using this nick, logging in will cause "
-#| "that client to be kicked!"
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -5500,7 +5462,7 @@ msgstr "La password inserita è sbagliata."
 
 #: src/multiplayer.cpp:362
 msgid "You have made too many login attempts."
-msgstr ""
+msgstr "Hai fatto troppi tentativi di accesso."
 
 #: src/multiplayer_connect.cpp:100 src/multiplayer_connect.cpp:449
 #: src/multiplayer_connect.cpp:597
@@ -6024,6 +5986,8 @@ msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
+"Il gioco non è sincronizzato. Non avrebbe nessun senso continuare. Vuoi lo "
+"stesso salvare la partita?"
 
 #: src/play_controller.cpp:1355 src/replay_controller.cpp:322
 msgid "Error details:"
@@ -6308,8 +6272,6 @@ msgid "(Att / Def)"
 msgstr "(Att / Dif)"
 
 #: src/reports.cpp:443
-#, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Modificatori dell’esperienza: "
 
@@ -6392,7 +6354,7 @@ msgstr "Specialità dell’arma: "
 
 #: src/reports.cpp:773
 msgid "None"
-msgstr ""
+msgstr "Nessuna"
 
 #: src/reports.cpp:965
 msgid "Lawful units: "
@@ -6552,8 +6514,6 @@ msgid "prefix_milli^m"
 msgstr "m"
 
 #: src/serialization/string_utils.cpp:300
-#, fuzzy
-#| msgid "prefix_micro^μ"
 msgid "prefix_micro^µ"
 msgstr "µ"
 
