@@ -76,10 +76,10 @@ static void safe_exit(int res) {
 static void gzip_codec(const std::string & input_file, const std::string & output_file, bool encode)
 {
 	try {
-	std::ofstream ofile(output_file.c_str(), std::ios_base::out
-			| std::ios_base::binary | std::ios_base::binary);
-			std::ifstream ifile(input_file.c_str(),
-			std::ios_base::in | std::ios_base::binary);
+		std::ofstream ofile(output_file.c_str(), std::ios_base::out
+				| std::ios_base::binary);
+		std::ifstream ifile(input_file.c_str(),
+		std::ios_base::in | std::ios_base::binary);
 		boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
 		if(encode)
 			in.push(boost::iostreams::gzip_compressor());
