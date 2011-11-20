@@ -411,11 +411,8 @@ inline bool no_break_before(const wchar_t ch)
 		 *   many Chinese punctuations that should not start a line
 		 *   and right side of different kinds of brackets, quotes
 		 */
-		ch == 0x3001 || ch == 0x3002 || ch == 0x301c || ch == 0xff01 || ch == 0xff0c ||
-		ch == 0xff0d || ch == 0xff0e || ch == 0xff1a || ch == 0xff1b || ch == 0xff1f ||
-		ch == 0xff64 || ch == 0xff65 || ch == 0x3015 || ch == 0x3017 || ch == 0x3009 ||
-		ch == 0x301b || ch == 0x3009 || ch == 0x300b || ch == 0x300d || ch == 0x300f ||
-		ch == 0x3011 || ch == 0x301e;
+		ch == 0x301c || ch == 0xff0d || ch == 0xff64 || ch == 0xff65 || ch == 0x3017 ||
+		ch == 0x301b || ch == 0x301e;
 }
 
 inline bool break_before(const wchar_t ch)
