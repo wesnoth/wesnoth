@@ -750,11 +750,6 @@ function wml_actions.harm_unit(cfg)
 			if harmer_filter then harmer = wesnoth.get_units(harmer_filter)[1] end
 			-- end of block to support $this_unit
 
-			local private_unit = wesnoth.create_unit { type = "Fog Clearer", alignment = cfg.alignment or "neutral" }
-			wesnoth.add_modification(private_unit, "object", { { "effect",
-				{ apply_to = "new_attack", type = cfg.damage_type or "dummy", range = "dummy", damage = amount, number = 1,
-				{ "specials", { { "chance_to_hit", { value = 100, cumulative = false } } } } } } })
-
 			if animate then
 				if animate ~= "defender" and harmer and harmer.valid then
 					wesnoth.scroll_to_tile(harmer.x, harmer.y, true)
@@ -766,16 +761,49 @@ function wml_actions.harm_unit(cfg)
 				wesnoth.scroll_to_tile(unit_to_harm.x, unit_to_harm.y, true)
 			end
 
-			private_unit.x, private_unit.y = unit_to_harm.x, unit_to_harm.y
-			local att_stats, def_stats = wesnoth.simulate_combat(private_unit, 1, unit_to_harm)
-			local temp_new_hitpoints = def_stats.average_hp
-
-			if kill == false and temp_new_hitpoints <= 0 then
-				temp_new_hitpoints = 1
+			-- the two functions below are taken straight from the C++ engine, util.cpp and actions.cpp, with a few unuseful parts removed
+			-- may be moved in helper.lua in 1.11
+			local function round_damage( base_damage, bonus, divisor )
+				local rounding
+				if base_damage == 0 then return 0
+				else
+					if bonus < divisor or divisor == 1 then
+						rounding = divisor / 2 - 0
+					else
+						rounding = divisor / 2 - 1
+					end
+					return math.max( 1, math.floor( ( base_damage * bonus + rounding ) / divisor ) )
+				end
 			end
 
-			local damage = unit_to_harm.hitpoints - temp_new_hitpoints
-			unit_to_harm.hitpoints = temp_new_hitpoints
+			local function calculate_damage( base_damage, alignment, tod_bonus, resistance )
+				local damage_multiplier = 100
+				if alignment == "lawful" then
+					damage_multiplier = damage_multiplier + tod_bonus
+				elseif alignment == "chaotic" then
+					damage_multiplier = damage_multiplier - tod_bonus
+				elseif alignment == "liminal" then
+					damage_multiplier = damage_multiplier - math.abs( tod_bonus )
+				else -- neutral, do nothing
+				end
+				damage_multiplier = damage_multiplier * resistance -- at this point, a resistance_modifier can be added, as asked by fendrin
+				local damage = round_damage( base_damage, damage_multiplier, 10000 ) -- if harmer.status.slowed, this may be 20000 ?
+				return damage
+			end
+
+			local damage = calculate_damage( amount,
+							 ( cfg.alignment or "neutral" ),
+							 wesnoth.get_time_of_day( { unit_to_harm.x, unit_to_harm.y, true } ).bonus_modified,
+							 wesnoth.unit_resistance( unit_to_harm, cfg.damage_type or "dummy" )
+						       )
+
+			if unit_to_harm.hitpoints <= damage then
+				if kill == false then damage = unit_to_harm.hitpoints - 1
+				else damage = unit_to_harm.hitpoints
+				end
+			end
+
+			unit_to_harm.hitpoints = unit_to_harm.hitpoints - damage
 			local text = string.format("%d%s", damage, "\n")
 			local add_tab = false
 			local gender = unit_to_harm.__cfg.gender
