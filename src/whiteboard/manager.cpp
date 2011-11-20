@@ -998,6 +998,10 @@ void manager::options_dlg()
 
 void manager::set_planned_unit_map()
 {
+	if(!active_)
+	{
+		return;
+	}
 	if (!executing_actions_ && !wait_for_side_init_)
 	{
 		if (!planned_unit_map_active_)
