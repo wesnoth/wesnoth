@@ -156,11 +156,11 @@ td.none {border: solid 1px; background-color: #ffffff;}
     f.write("<i>total frames (number of animations)</i>\n")
 
     f.write("<h2>Mainline</h2>\n")
-    us = [x for x in wesnoth.unit_lookup.values() if x.campaign == "mainline"]
+    us = [x for x in wesnoth.unit_lookup.values() if x.campaigns[0] == "mainline"]
     put_units(f, us)
 
     f.write("<h2>Campaigns and Addons</h2>\n")
-    us = [x for x in wesnoth.unit_lookup.values() if x.campaign != "mainline"]
+    us = [x for x in wesnoth.unit_lookup.values() if x.campaigns[0] != "mainline"]
     put_units(f, us)
 
     f.write("</body></html>")

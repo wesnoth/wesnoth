@@ -278,13 +278,14 @@ class WesnothList:
                unit.get_text_val("hide_help", "no") in ["no", "false"]:
                 uid = unit.get_text_val("id")
                 if uid in self.unit_lookup:
-                    pass
+                    unit = self.unit_lookup[uid]
                     # TODO: We might want to compare the two units
                     # with the same id and if one is different try
                     # to do something clever like rename it...
                 else:
                     self.unit_lookup[uid] = unit
-                unit.campaign = campaign
+                if not hasattr(unit, "campaigns"): unit.campaigns = []
+                unit.campaigns.append(campaign)
 
         # Find all races.
         newraces = getall("race")

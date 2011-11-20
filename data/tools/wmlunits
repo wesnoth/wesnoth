@@ -89,7 +89,7 @@ class GroupByRace:
 
     def unitfilter(self, unit):
         if not self.campaign: return True
-        return unit.campaign == self.campaign
+        return self.campaign in unit.campaigns
 
     def groups(self, unit):
         return [unit.race]
@@ -338,14 +338,14 @@ class HTMLOutput:
 
             r = {}, {}
             for u in self.wesnoth.unit_lookup.values():
-                if u.campaign != self.campaign: continue
+                if self.campaign not in u.campaigns: continue
 
                 race = u.race
                 racename = T(race, "plural_name")
                 m = 1
-                if u and u.campaign in self.wesnoth.is_mainline_campaign:
+                if u and u.campaigns[0] in self.wesnoth.is_mainline_campaign:
                     m = 0
-                if u.campaign == "mainline":
+                if u.campaigns[0] == "mainline":
                     m = 0
                 r[m][racename] = race.get_text_val("id")
             racenames = sorted(r[0].items())
@@ -384,7 +384,7 @@ class HTMLOutput:
             races = {}
 
             for uid, u in self.wesnoth.unit_lookup.items():
-                if u.campaign != camp: continue
+                if camp not in u.campaigns: continue
                 if u.race:
                     racename = T(u.race, "plural_name")
                 else:
@@ -465,10 +465,10 @@ class HTMLOutput:
                 "Warning: Missing image for unit %s(%s).\n" % (
                 u.get_text_val("id"), x.name))
             return None, None
-        picname = image_collector.add_image(u.campaign, image)
+        picname = image_collector.add_image(u.campaigns[0], image)
         image = os.path.join("../pics", picname)
         if portrait:
-            picname = image_collector.add_image(u.campaign, portrait,
+            picname = image_collector.add_image(u.campaigns[0], portrait,
                 no_tc=True)
             portrait = os.path.join("../pics", picname)
         return image, portrait
@@ -745,7 +745,7 @@ class HTMLOutput:
         write("</td><td>\n")
         for pid in self.forest.get_parents(uid):
             punit = self.wesnoth.unit_lookup[pid]
-            if unit.campaign == "mainline" and punit.campaign != "mainline":
+            if unit.campaigns[0] == "mainline" and punit.campaigns[0] != "mainline":
                 continue
             link = "../%s/%s.html" % (self.isocode, pid)
             name = self.wesnoth.get_unit_value(punit, "name",
@@ -759,14 +759,14 @@ class HTMLOutput:
             link = "../%s/%s.html" % (self.isocode, cid)
             try:
                 cunit = self.wesnoth.unit_lookup[cid]
-                if unit.campaign == "mainline" and cunit.campaign != "mainline":
+                if unit.campaigns[0] == "mainline" and cunit.campaigns[0] != "mainline":
                     continue
                 name = self.wesnoth.get_unit_value(cunit, "name",
                     translation=self.translation.translate)
             except KeyError:
                 error_message("Warning: Unit %s not found.\n" % cid)
                 name = cid
-                if unit.campaign == "mainline": continue
+                if unit.campaigns[0] == "mainline": continue
             write("\n<a href=\"%s\">%s</a>" % (link, name))
         write("</td>\n")
         write("</tr>\n")
@@ -812,7 +812,7 @@ class HTMLOutput:
                 icon = "attacks/%s.png" % aid
 
             picname, error = image_collector.add_image_check(
-                unit.campaign, icon, no_tc=True)
+                unit.campaigns[0], icon, no_tc=True)
             if error:
                 error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                     icon, uid))
@@ -924,6 +924,7 @@ class HTMLOutput:
             elif tid == "frozen": ticon = "frozen/ice"
             elif tid == "unwalkable": ticon = "unwalkable/lava"
             elif tid == "village": ticon = "village/human-tile"
+            elif tid == "forest": ticon = "forest/pine-tile"
             terrainlist.append((name, tid, ticon))
         terrainlist.sort()
 
@@ -1263,10 +1264,10 @@ if __name__ == '__main__':
         u = wesnoth.unit_lookup[uid]
         if u.rid != race:
             if race != None: f.write("</ul>")
-            f.write("<p>%s</p>\n" % u.rid)
+            f.write("<p>%s</p>\n" % (u.rid,))
             f.write("<ul>")
             race = u.rid
-        f.write("<li>%s</li>\n" % uid)
+        f.write("<li>%s</li>\n" % (uid, ))
     f.write("</ul>")
     f.write("</body></html>")
     f.close()
