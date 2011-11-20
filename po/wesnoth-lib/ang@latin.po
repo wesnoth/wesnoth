@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2011-11-10 16:46-0500\n"
+"PO-Revision-Date: 2011-11-11 00:33-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
@@ -156,7 +156,7 @@ msgstr "Drygeu Eorðe"
 #: data/core/terrain.cfg:246 data/core/terrain.cfg:845
 #: data/core/terrain.cfg:855
 msgid "Road"
-msgstr ""
+msgstr "Rad"
 
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:227
@@ -257,7 +257,7 @@ msgstr ""
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:400 data/core/terrain.cfg:1279
 msgid "Windmill"
-msgstr ""
+msgstr "Ƿindmylen"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:409
@@ -764,10 +764,8 @@ msgstr "Menniscu Burg"
 
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1280
-#, fuzzy
-#| msgid "Village"
 msgid "Windmill Village"
-msgstr "Þorp"
+msgstr "Ƿindmylen Þorp"
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1293
@@ -1425,8 +1423,10 @@ msgstr "Hiehðu:"
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:108
 #: data/gui/default/window/editor_new_map.cfg:109
+#, fuzzy
+#| msgid "Create Game"
 msgid "Create New Map"
-msgstr ""
+msgstr "Gamen Macian"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1699,7 +1699,7 @@ msgstr ""
 #. [button]: id=quit_game
 #: data/gui/default/window/game_save_oos.cfg:170 src/hotkeys.cpp:94
 msgid "Quit Game"
-msgstr ""
+msgstr "Gamen Læfan"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save_overwrite.cfg:40
@@ -2424,11 +2424,11 @@ msgstr ""
 
 #: src/game_preferences.cpp:777
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/game_preferences.cpp:780
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/game_preferences_display.cpp:173
 msgid "Full screen"
