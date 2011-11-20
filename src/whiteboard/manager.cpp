@@ -478,6 +478,7 @@ void manager::on_mouseover_change(const map_location& hex)
 void manager::on_gamestate_change()
 {
 	DBG_WB << "Manager received gamestate change notification.\n";
+	assert(!planned_unit_map_active_);
 	gamestate_mutated_ = true;
 	//Clear exclusive draws that might not get a chance to be cleared the normal way
 	resources::screen->clear_exclusive_draws();
@@ -1033,11 +1034,9 @@ void manager::set_real_unit_map()
 	{
 		if (planned_unit_map_active_)
 		{
-			if (mapbuilder_)
-			{
-				log_scope2("whiteboard", "Restoring regular unit map.");
-				mapbuilder_.reset();
-			}
+			assert(mapbuilder_);
+			log_scope2("whiteboard", "Restoring regular unit map.");
+			mapbuilder_.reset();
 			planned_unit_map_active_ = false;
 		}
 		else if (!wait_for_side_init_)
