@@ -897,7 +897,12 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			unit_map::unit_iterator u = resources::units->find(from);
 
 			std::set<std::string> recruits = current_team.recruits();
-			recruits.insert((u->recruits()).begin(), (u->recruits()).end());
+			//TODO fendrin
+			//The next code line (only the condition) is a workaround for the ai not transmitting the from information.
+			//See the talk to crab TODOs in ai
+			//Note that the ai is not able to recruit from the leader specific recruit list until the bug is fixed entirely.
+			if (u != resources::units->end())
+				recruits.insert((u->recruits()).begin(), (u->recruits()).end());
 
 			if(val < 0 || static_cast<size_t>(val) >= recruits.size()) {
 				std::stringstream errbuf;
@@ -1033,7 +1038,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			bool show_move = preferences::show_ai_moves() || !(current_team.is_ai() || current_team.is_network_ai());
 			::move_unit(NULL, steps, NULL, NULL, show_move, NULL, true, true, true);
 
-			//NOTE: The AI fire sighetd event whem moving in the FoV of team 1
+			//NOTE: The AI fire sighted event when moving in the FoV of team 1
 			// (supposed to be the human player in SP)
 			// That's ugly but let's try to make the replay works like that too
 			if (side_num != 1 && resources::teams->front().fog_or_shroud() && !resources::teams->front().fogged(dst)
@@ -1064,7 +1069,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			int weapon_num = child["weapon"];
 			int def_weapon_num = child["defender_weapon"].to_int(-2);
 			if (def_weapon_num == -2) {
-				// Let's not gratuitously destroy backwards compat.
+				// Let's not gratuitously destroy backwards compatibility.
 				WRN_REPLAY << "Old data, having to guess weapon\n";
 				def_weapon_num = -1;
 			}
