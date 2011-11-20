@@ -616,7 +616,10 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 			{
 				sound::play_UI_sound("select-unit.wav");
 				u->set_selecting();
-				game_events::fire("select", hex);
+				// ensure unit map is back to normal while event is fired
+				{ wb::scoped_real_unit_map srum;
+					game_events::fire("select", hex);
+				} //end forced real unit map
 			}
 		}
 
