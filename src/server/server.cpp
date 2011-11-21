@@ -1123,8 +1123,10 @@ void server::process_login(const network::connection sock,
 			}
 			// This name is registered and an incorrect password provided
 			else if(!(user_handler_->login(username, password, seeds_[sock]))) {
-				// Log the failure
 				const time_t now = time(NULL);
+
+				// Reset the random seed
+				seeds_.erase(sock);
 
 				login_log login_ip = login_log(network::ip_address(sock), 0, now);
 				std::deque<login_log>::iterator i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
@@ -1156,9 +1158,7 @@ void server::process_login(const network::connection sock,
 						"' was incorrect.", username, MP_INCORRECT_PASSWORD_ERROR);
 				}
 
-				// Reset the random seed
-				seeds_.erase(sock);
-
+				// Log the failure
 				LOG_SERVER << network::ip_address(sock) << "\t"
 						<< "Login attempt with incorrect password for nickname '" << username << "'.\n";
 				return;
