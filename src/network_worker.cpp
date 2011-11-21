@@ -626,6 +626,37 @@ static SOCKET_STATE receive_buf(TCPsocket sock, std::vector<char>& buf)
 	return SOCKET_READY;
 }
 
+static SOCKET_STATE transmit_buf(buffer *sent_buf)
+{
+	SOCKET_STATE result = SOCKET_READY;
+	if(!sent_buf->config_error.empty())
+	{
+		// We have file to send over net
+		result = send_file(sent_buf);
+	} else {
+		if(sent_buf->raw_buffer.empty()) {
+			const std::string &value = sent_buf->stream.str();
+			make_network_buffer(value.c_str(), value.size(), sent_buf->raw_buffer);
+		}
+
+		result = send_buffer(sent_buf->sock, sent_buf->raw_buffer);
+	}
+	delete sent_buf;
+
+	return result;
+}
+
+static void flush_buffers(TCPsocket sock)
+{
+	const size_t shard = get_shard(sock);
+	for(buffer_set::iterator i = outgoing_bufs[shard].begin(); i != outgoing_bufs[shard].end(); ++i) {
+		if ((*i)->sock == sock)
+		{
+			transmit_buf(*i);
+		}
+	}
+}
+
 inline void check_socket_result(TCPsocket& sock, SOCKET_STATE& result)
 {
 	const size_t shard = get_shard(sock);
@@ -727,20 +758,7 @@ static int process_queue(void* shard_num)
 		std::vector<char> buf;
 
 		if(sent_buf) {
-
- 			if(!sent_buf->config_error.empty())
- 			{
- 				// We have file to send over net
- 				result = send_file(sent_buf);
-			} else {
-				if(sent_buf->raw_buffer.empty()) {
-					const std::string &value = sent_buf->stream.str();
-					make_network_buffer(value.c_str(), value.size(), sent_buf->raw_buffer);
-				}
-
-				result = send_buffer(sent_buf->sock, sent_buf->raw_buffer);
-			}
-			delete sent_buf;
+			result = transmit_buf(sent_buf);
 		} else {
 			result = receive_buf(sock,buf);
 		}
@@ -1046,6 +1064,7 @@ bool close_socket(TCPsocket sock)
 		}
 		if (!(lock_it->second == SOCKET_LOCKED || lock_it->second == SOCKET_INTERRUPT)) {
 			sockets_locked[shard].erase(lock_it);
+			flush_buffers(sock);
 			remove_buffers(sock);
 			return true;
 		} else {
