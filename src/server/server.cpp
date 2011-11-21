@@ -1126,7 +1126,7 @@ void server::process_login(const network::connection sock,
 				// Log the failure
 				const time_t now = time(NULL);
 
-				login_log login_ip = login_log(network::ip_address(sock), now, 0);
+				login_log login_ip = login_log(network::ip_address(sock), 0, now);
 				std::deque<login_log>::iterator i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
 				if(i == failed_logins_.end()) {
 					failed_logins_.push_back(login_ip);
@@ -1138,8 +1138,8 @@ void server::process_login(const network::connection sock,
 
 				}
 
-				// Clear and move to the beginning
 				if (i->first_attempt + failed_login_ban_ < now) {
+					// Clear and move to the beginning
 					failed_logins_.erase(i);
 					failed_logins_.push_back(login_ip);
 					i = --failed_logins_.end();
