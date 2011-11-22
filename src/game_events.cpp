@@ -3389,6 +3389,10 @@ namespace game_events {
 
 	bool pump()
 	{
+		//ensure the whiteboard doesn't attempt to build its future unit map
+		//for the duration of this method
+		wb::scoped_real_unit_map srum;
+
 		assert(manager_running);
 		if(!events_init())
 			return false;

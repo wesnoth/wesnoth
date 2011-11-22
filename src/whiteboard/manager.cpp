@@ -58,6 +58,7 @@ manager::manager():
 		executing_actions_(false),
 		gamestate_mutated_(false),
 		activation_state_lock_(new bool),
+		unit_map_lock_(new bool),
 		mapbuilder_(),
 		highlighter_(),
 		route_(),
@@ -545,7 +546,9 @@ void manager::create_temp_move()
 			|| resources::controller->is_linger_mode())
 		return;
 
-	assert(!has_planned_unit_map());
+	//@todo this commented line shouldn't be necessary anymore with the rework of scoped future map objects.
+	//Clean this up when 100% confirmed and tested.
+	//assert(!has_planned_unit_map());
 
 	pathfind::marked_route const& route =
 			resources::controller->get_mouse_handler_base().get_current_route();
@@ -1006,6 +1009,11 @@ void manager::set_planned_unit_map()
 	{
 		return;
 	}
+	//any more than one reference means a lock on unit map was requested
+	if(!unit_map_lock_.unique())
+	{
+		return;
+	}
 	if (!executing_actions_ && !wait_for_side_init_)
 	{
 		if (!planned_unit_map_active_)
@@ -1067,8 +1075,6 @@ scoped_planned_unit_map::scoped_planned_unit_map():
 {
 	if (!has_planned_unit_map_)
 		resources::whiteboard->set_planned_unit_map();
-	else
-		WRN_WB << "Using scoped planned unit map with future map already active, unit map will be reset when exiting.\n";
 }
 
 scoped_planned_unit_map::~scoped_planned_unit_map()
@@ -1078,7 +1084,8 @@ scoped_planned_unit_map::~scoped_planned_unit_map()
 }
 
 scoped_real_unit_map::scoped_real_unit_map():
-		has_planned_unit_map_(resources::whiteboard->has_planned_unit_map())
+		has_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
+		unit_map_lock_(resources::whiteboard->unit_map_lock_)
 {
 	if (has_planned_unit_map_)
 		resources::whiteboard->set_real_unit_map();

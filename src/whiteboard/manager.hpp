@@ -48,6 +48,7 @@ class manager : private boost::noncopyable
 {
 	friend struct scoped_planned_unit_map;
 	friend struct scoped_real_unit_map;
+
 public:
 
 	manager();
@@ -192,6 +193,9 @@ private:
 
 	/** Reference counted "lock" to allow preventing whiteboard activation state changes */
 	whiteboard_lock activation_state_lock_;
+	/** Reference counted "lock" to prevent the building of the unit map at certain times */
+	whiteboard_lock unit_map_lock_;
+
 
 	boost::scoped_ptr<mapbuilder> mapbuilder_;
 	boost::shared_ptr<highlight_visitor> highlighter_;
@@ -213,7 +217,7 @@ private:
 };
 
 /** Applies the planned unit map for the duration of the struct's life.
- *  Reverts to real unit map on exit, no matter what was the status when the struct was created. */
+ *  Reverts to real unit map on destruction, unless planned unit map was already applied when the struct was created. */
 struct scoped_planned_unit_map
 {
 	scoped_planned_unit_map();
@@ -228,6 +232,7 @@ struct scoped_real_unit_map
 	scoped_real_unit_map();
 	~scoped_real_unit_map();
 	bool has_planned_unit_map_;
+	whiteboard_lock unit_map_lock_;
 };
 
 /// Predicate that compares the id() of two units. Useful for searches in unit vectors with std::find_if()
