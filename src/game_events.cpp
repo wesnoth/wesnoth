@@ -3339,9 +3339,6 @@ namespace game_events {
 			const entity_location& loc2,
 			const config& data)
 	{
-		// game events should never be raised while the whiteboard has modified the unit map
-		assert(!resources::whiteboard->has_planned_unit_map());
-
 		assert(manager_running);
 		if(!events_init())
 			return;

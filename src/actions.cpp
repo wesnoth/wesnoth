@@ -1391,7 +1391,6 @@ std::string attack::unit_info::dump()
 void attack_unit(const map_location &attacker, const map_location &defender,
 	int attack_with, int defend_with, bool update_display)
 {
-	resources::whiteboard->on_gamestate_change();
 	attack dummy(attacker, defender, attack_with, defend_with, update_display);
 	dummy.perform();
 }
@@ -2632,7 +2631,6 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 	// move the real unit
 	units.move(ui->get_location(), steps.back());
-	resources::whiteboard->on_gamestate_change();
 	unit::clear_status_caches();
 
 	ui = units.find(steps.back());

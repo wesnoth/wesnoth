@@ -478,7 +478,10 @@ void manager::on_mouseover_change(const map_location& hex)
 void manager::on_gamestate_change()
 {
 	DBG_WB << "Manager received gamestate change notification.\n";
+	// if on_gamestate_change() is called while the future unit map is applied,
+	// it means that the future unit map scope is used where it shouldn't be.
 	assert(!planned_unit_map_active_);
+	// Set mutated flag so action queue gets validated on next future map build
 	gamestate_mutated_ = true;
 	//Clear exclusive draws that might not get a chance to be cleared the normal way
 	resources::screen->clear_exclusive_draws();
