@@ -118,6 +118,9 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 		size_t viewing_team = viewer_team();
 		if(m.team_index() == viewing_team) //< Don't mess with any other team's queue -- only our own
 		{
+			//@todo The pathfinder doesn't always return the same path between two locations, therefore the
+			// following code needlessly replaces paths quite often. Fix this.
+
 			if(new_route.steps != m.get_route().steps || new_route.move_cost != m.get_route().move_cost)
 			{
 				//new valid path differs from the previous one, replace
