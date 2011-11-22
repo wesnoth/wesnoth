@@ -259,8 +259,7 @@ void side_actions::show()
 
 side_actions::iterator side_actions::queue_move(size_t turn, unit& mover, const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	move_ptr new_move;
-	new_move.reset(new move(team_index(), hidden_, mover, route, arrow, fake_unit));
+	move_ptr new_move(new move(team_index(), hidden_, mover, route, arrow, fake_unit));
 	return queue_action(turn,new_move);
 }
 
@@ -268,29 +267,25 @@ side_actions::iterator side_actions::queue_attack(size_t turn, unit& mover, cons
 		const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	attack_ptr new_attack;
-	new_attack.reset(new attack(team_index(), hidden_, mover, target_hex, weapon_choice, route, arrow, fake_unit));
+	attack_ptr new_attack(new attack(team_index(), hidden_, mover, target_hex, weapon_choice, route, arrow, fake_unit));
 	return queue_action(turn,new_attack);
 }
 
 side_actions::iterator side_actions::queue_recruit(size_t turn, const std::string& unit_name, const map_location& recruit_hex)
 {
-	recruit_ptr new_recruit;
-	new_recruit.reset(new recruit(team_index(), hidden_, unit_name, recruit_hex));
+	recruit_ptr new_recruit(new recruit(team_index(), hidden_, unit_name, recruit_hex));
 	return queue_action(turn,new_recruit);
 }
 
 side_actions::iterator side_actions::queue_recall(size_t turn, const unit& unit, const map_location& recall_hex)
 {
-	recall_ptr new_recall;
-	new_recall.reset(new recall(team_index(), hidden_, unit, recall_hex));
+	recall_ptr new_recall(new recall(team_index(), hidden_, unit, recall_hex));
 	return queue_action(turn,new_recall);
 }
 
 side_actions::iterator side_actions::queue_suppose_dead(size_t turn, unit& curr_unit, map_location const& loc)
 {
-	suppose_dead_ptr new_suppose_dead;
-	new_suppose_dead.reset(new suppose_dead(team_index(),hidden_,curr_unit,loc));
+	suppose_dead_ptr new_suppose_dead(new suppose_dead(team_index(),hidden_,curr_unit,loc));
 	return queue_action(turn,new_suppose_dead);
 }
 
