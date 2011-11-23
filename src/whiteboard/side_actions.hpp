@@ -75,8 +75,9 @@ public:
 
 	/**
 	 * Execute all actions in sequence until the fist attack, or until an action fails to execute.
+	 * @return true if the action queue is empty when the method returns
 	 */
-	void execute_all();
+	bool execute_all();
 
 	/**
 	 * Executes the specified action, if it exists in the queue.

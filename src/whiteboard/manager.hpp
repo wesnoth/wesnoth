@@ -139,8 +139,9 @@ public:
 
 	/** Executes first action in the queue for current side */
 	void contextual_execute();
-	/** Executes all actions in the queue in sequence */
-	void execute_all_actions();
+	/** Executes all actions in the queue in sequence
+	 *  @return true if the action queue is empty when the method returns */
+	bool execute_all_actions();
 	/** Deletes last action in the queue for current side */
 	void contextual_delete();
 	/** Moves the action determined by the UI toward the beginning of the queue  */

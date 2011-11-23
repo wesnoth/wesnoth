@@ -134,12 +134,12 @@ bool side_actions::execute_next()
 		return false;
 }
 
-void side_actions::execute_all()
+bool side_actions::execute_all()
 {
-	if (actions_.empty())
+	if (empty())
 	{
 		WRN_WB << "\"Execute All\" attempt with empty queue.\n";
-		return;
+		return true;
 	}
 
 	if (resources::whiteboard->has_planned_unit_map())
@@ -149,13 +149,16 @@ void side_actions::execute_all()
 
 	LOG_WB << "Before executing all actions, " << *this << "\n";
 
-	bool keep_executing = true;
-	while (keep_executing)
+	while (!empty() && !actions_.front().empty())
 	{
 		iterator position = begin();
-		bool finished = execute(position);
-		keep_executing = finished && !empty() && !actions_.front().empty();
+		bool action_completed = execute(position);
+		if (!action_completed)
+		{
+			return false;
+		}
 	}
+	return true;
 }
 
 bool side_actions::execute(side_actions::iterator position)

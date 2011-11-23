@@ -838,26 +838,30 @@ void manager::contextual_execute()
 	} //Finalizer struct sets executing_actions_ to false
 }
 
-void manager::execute_all_actions()
+bool manager::execute_all_actions()
 {
-//	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
-//			&& resources::controller->current_side() == resources::screen->viewing_side())
+	if(viewer_actions()->empty())
+		return true;
+
 	if(can_enable_execution_hotkeys())
 	{
 		erase_temp_move();
 		validate_viewer_actions();
-		{ //exception-safety block start
+		{ //exception-safety: Finalizer sets executing_actions to false on destruction
 			variable_finalizer<bool> finally(executing_actions_, false);
 
 			executing_actions_ = true;
-			viewer_actions()->execute_all();
-		} // Finalizer sets executing_actions to false here or whenever an exception is thrown.
+			return viewer_actions()->execute_all();
+		}
+	}
+	else
+	{
+		return false;
 	}
 }
 
 void manager::contextual_delete()
 {
-//	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode()))
 	if (can_enable_modifier_hotkeys())
 	{
 		erase_temp_move();
@@ -893,8 +897,6 @@ void manager::contextual_delete()
 
 void manager::contextual_bump_up_action()
 {
-//	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
-//			&& highlighter_)
 	if(can_enable_reorder_hotkeys())
 	{
 		validate_viewer_actions();
@@ -908,8 +910,6 @@ void manager::contextual_bump_up_action()
 
 void manager::contextual_bump_down_action()
 {
-//	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
-//			&& highlighter_)
 	if(can_enable_reorder_hotkeys())
 	{
 		validate_viewer_actions();
