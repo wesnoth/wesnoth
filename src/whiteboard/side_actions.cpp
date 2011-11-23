@@ -177,7 +177,8 @@ bool side_actions::execute(side_actions::iterator position)
 	} catch (end_turn_exception&) {
 		synced_erase(position);
 		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
-		validate_actions();
+		//validate actions at next map rebuild
+		resources::whiteboard->on_gamestate_change();
 		throw;
 	}
 
