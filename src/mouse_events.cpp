@@ -475,36 +475,40 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				return false;
 			}
 			else {
-				// we will now temporary move next to the enemy
-				pathfind::paths::dest_vect::const_iterator itor =
-						current_paths_.destinations.find(attack_from);
-				if(itor == current_paths_.destinations.end()) {
-					// can't reach the attacking location
-					// not supposed to happen, so abort
-					return false;
-				}
-				// update movement_left as if we did the move
-				int move_left_dst = itor->move_left;
-				int move_left_src = u->movement_left();
-				u->set_movement(move_left_dst);
 
-				int choice = -1;
-				// block where we temporary move the unit
-				{
-					temporary_unit_mover temp_mover(units_, src, attack_from);
-					{ wb::scoped_planned_unit_map planned_unit_map; //start planned unit map scope
-						choice = show_attack_dialog(attack_from, clicked_u->get_location());
-					} // end planned unit map scope
-				}
-				// restore unit as before
-				u = units_.find(src);
-				u->set_movement(move_left_src);
-				u->set_standing();
+				int choice = -1; //for the attack dialog
 
-				if (choice < 0) {
-					// user hit cancel, don't start move+attack
-					return false;
-				}
+				{ wb::scoped_planned_unit_map planned_unit_map; //start planned unit map scope
+					// we will now temporary move next to the enemy
+					pathfind::paths::dest_vect::const_iterator itor =
+							current_paths_.destinations.find(attack_from);
+					if(itor == current_paths_.destinations.end()) {
+						// can't reach the attacking location
+						// not supposed to happen, so abort
+						return false;
+					}
+					// update movement_left as if we did the move
+					int move_left_dst = itor->move_left;
+					int move_left_src = u->movement_left();
+					u->set_movement(move_left_dst);
+
+					// block where we temporary move the unit
+					{
+						temporary_unit_mover temp_mover(units_, src, attack_from);
+
+							choice = show_attack_dialog(attack_from, clicked_u->get_location());
+
+					}
+					// restore unit as before
+					u = units_.find(src);
+					u->set_movement(move_left_src);
+					u->set_standing();
+
+					if (choice < 0) {
+						// user hit cancel, don't start move+attack
+						return false;
+					}
+				} // end planned unit map scope
 
 				if (resources::whiteboard->is_active()) {
 					save_whiteboard_attack(attack_from, hex, choice);
