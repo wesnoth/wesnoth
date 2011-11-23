@@ -109,9 +109,6 @@ void attack::accept(visitor& v)
 
 void attack::execute(bool& success, bool& complete)
 {
-	//Never continue an execute-all after an attack
-	success = false;
-
 	if (!valid_) {
 		complete = false;
 		return;
@@ -132,6 +129,15 @@ void attack::execute(bool& success, bool& complete)
 
 	resources::controller->get_mouse_handler_base().attack_enemy(get_dest_hex(), get_target_hex(), weapon_choice_);
 	complete = true;
+
+	//check that attacking unit is still alive, if not, consider the attack a failure
+	unit_map::const_iterator survivor = resources::units->find(get_dest_hex());
+	if(!survivor.valid() || survivor->id() != unit_id_)
+	{
+		success = false;
+	}
+
+	success = true;
 }
 
 void attack::apply_temp_modifier(unit_map& unit_map)
