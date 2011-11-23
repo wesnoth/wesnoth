@@ -804,12 +804,13 @@ void manager::on_save_action(unit const* u) const
 
 void manager::contextual_execute()
 {
-//	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
-//			&& resources::controller->current_side() == resources::screen->viewing_side())
 	if (can_enable_execution_hotkeys())
 	{
 		erase_temp_move();
 		validate_viewer_actions();
+
+		//For exception-safety, this struct sets executing_actions_ to false on destruction.
+		variable_finalizer<bool> finally(executing_actions_, false);
 
 		action_ptr action;
 		side_actions::iterator it;
@@ -819,22 +820,19 @@ void manager::contextual_execute()
 		{
 			executing_actions_ = true;
 			viewer_actions()->execute(it);
-			executing_actions_ = false;
 		}
 		else if (highlighter_ && (action = highlighter_->get_execute_target()) &&
 				 (it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
 		{
 			executing_actions_ = true;
 			viewer_actions()->execute(it);
-			executing_actions_ = false;
 		}
 		else //we already check above for viewer_actions()->empty()
 		{
 			executing_actions_ = true;
 			viewer_actions()->execute_next();
-			executing_actions_ = false;
 		}
-	}
+	} //Finalizer struct sets executing_actions_ to false
 }
 
 void manager::execute_all_actions()
@@ -845,9 +843,12 @@ void manager::execute_all_actions()
 	{
 		erase_temp_move();
 		validate_viewer_actions();
-		executing_actions_ = true;
-		viewer_actions()->execute_all();
-		executing_actions_ = false;
+		{ //exception-safety block start
+			variable_finalizer<bool> finally(executing_actions_, false);
+
+			executing_actions_ = true;
+			viewer_actions()->execute_all();
+		} // Finalizer sets executing_actions to false here or whenever an exception is thrown.
 	}
 }
 
