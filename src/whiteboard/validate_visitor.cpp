@@ -98,44 +98,13 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 	m.unit_ = &*unit_it;
 
 	//check that the path is good
-	if (m.get_source_hex() != m.get_dest_hex()) //allow for zero-hex move, in which case we skip pathfinding
+	if (m.get_source_hex() != m.get_dest_hex()) //skip zero-hex move used by attack subclass
 	{
-		//verify that the destination hex is free
-		if (get_visible_unit(m.get_dest_hex(),resources::teams->at(viewer_team())) != NULL)
-			return OBSTRUCTED;
+		// Mark the plain route to see if the move can still be done in one turn,
+		// which is always the case for planned moves
+		pathfind::marked_route checked_route = pathfind::mark_route(m.get_route().route);
 
-		pathfind::marked_route new_route;
-		new_route = resources::controller->get_mouse_handler_base().get_route(m.get_unit(),m.get_dest_hex(),
-											resources::teams->at(viewer_actions_.team_index()));
-
-		/**
-		 * @todo Is the comparison with getNoPathValue really necessary? An empty route (with cost = 0) is returned
-		 *       when no path exists.
-		 */
-		if(new_route.steps.empty() || new_route.move_cost >= pathfind::cost_calculator::getNoPathValue())
-			return OBSTRUCTED; //no path exists
-
-		size_t viewing_team = viewer_team();
-		if(m.team_index() == viewing_team) //< Don't mess with any other team's queue -- only our own
-		{
-			//@todo The pathfinder doesn't always return the same path between two locations, therefore the
-			// following code needlessly replaces paths quite often. Fix this.
-
-			if(new_route.steps != m.get_route().steps || new_route.move_cost != m.get_route().move_cost)
-			{
-				//new valid path differs from the previous one, replace
-				m.set_route(new_route);
-
-				//send updated path to allies
-				resources::whiteboard->queue_net_cmd(viewing_team,viewer_actions_.make_net_cmd_replace(arg_itor_,m_ptr));
-
-				//@todo: Since this might lengthen the path, we probably need a special conflict state
-				// to warn the player that the initial path is no longer possible.
-			}
-		}
-
-		//Check that the unit still has enough movement to do this move
-		if (unit_it->movement_left() < m.movement_cost_)
+		if (checked_route.marks[checked_route.steps.back()].turns != 1)
 			return OBSTRUCTED;
 	}
 
