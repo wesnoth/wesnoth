@@ -70,6 +70,23 @@ struct temporary_unit_hider {
 	unit* const unit_;
 };
 
+/// finalizer struct to help with exception safety
+/// sets variable to value on destruction
+template <typename T>
+struct variable_finalizer
+{
+	variable_finalizer(T & variable, T value):
+		variable_(variable),
+		value_(value)
+	{}
+	~variable_finalizer()
+	{
+		variable_ = value_;
+	}
+	T & variable_;
+	T value_;
+};
+
 } //end namespace wb
 
 #endif /* WB_UTILITY_HPP_ */
