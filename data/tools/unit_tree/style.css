@@ -80,6 +80,14 @@ div.popupmenu
     margin-top: -1em;
     background: white;
     border: 1px solid black;
+    padding: 8px;
+}
+div.popupmenu > div
+{
+    color: gray;
+    font-size: large;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 0.5em;
 }
 div.popupmenu a {
     text-decoration: none;
@@ -121,9 +129,15 @@ ul.navbar li a:hover {
 }
 ul.navbar a {
     color: #B48648;
-    font-size: medium;
+    font-size: large;
     font-weight: bold;
     cursor: pointer;
+}
+ul.navbar a.unitmenu {
+    font-size: medium;
+}
+ul.navbar div.popupmenu a {
+    font-size: medium;
 }
 td.raceheader {
     background:#272727 url("navbg.png") repeat-x scroll center bottom;

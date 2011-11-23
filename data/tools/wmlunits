@@ -128,6 +128,7 @@ class HTMLOutput:
         self.campaign = campaign
         self.verbose = verbose
         self.target = "index.html"
+        self.mainline = False
         self.wesnoth = wesnoth
         self.forest = None
         self.translation = Translation(options.transdir, isocode)
@@ -265,6 +266,7 @@ class HTMLOutput:
                 onmouseout="toggle_menu(this, '""" + id + """', 0)">""")
             write('<a class="' + class2 + '">' + name + "</a>")
             write('<div class="popupmenu" id="' + id + '">')
+            write("<div>" + name + "</div>")
 
         # Campaigns
         x = self.translate("addon_type^Campaign", "wesnoth")
@@ -429,9 +431,15 @@ class HTMLOutput:
             labb = lang
             underscore = labb.find("_")
             if underscore > 0: labb = labb[:underscore]
-            write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
-                languages[lang], lang, self.target,
-                    labb))
+            
+            if self.mainline:
+                write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
+                    languages[lang], lang, self.target,
+                        labb))
+            else:
+                write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
+                    languages[lang], lang, "mainline.html",
+                        labb))    
             write("</td>")
             if col % 5 == 0:
                 if col < maxcol: write("</tr><tr>")
@@ -1003,6 +1011,7 @@ def generate_campaign_report(out_path, isocode, campaign, wesnoth):
 
     if campaign == "mainline":
         title = html.translate("Units", "wesnoth-help")
+        html.mainline = True
     else:
         title = wesnoth.campaign_lookup[campaign].get_text_val("name",
             translation=html.translate)
@@ -1014,10 +1023,14 @@ def generate_campaign_report(out_path, isocode, campaign, wesnoth):
 def generate_era_report(out_path, isocode, eid, wesnoth):
     path = os.path.join(out_path, isocode)
     if not os.path.isdir(path): os.mkdir(path)
-
+    
     output = MyFile(os.path.join(path, "%s.html" % eid), "w")
     html = HTMLOutput(isocode, output, eid, wesnoth)
     html.target = "%s.html" % eid
+    
+    if eid in wesnoth.is_mainline_era:
+        html.mainline = True
+    
     grouper = GroupByFaction(wesnoth, eid)
     era = wesnoth.era_lookup[eid]
     ename = era.get_text_val("name", translation=html.translate)
@@ -1037,6 +1050,7 @@ def generate_single_unit_reports(out_path, isocode, wesnoth):
         if isocode != "en_US" and not uid in wesnoth.is_mainline_unit: continue
         output = MyFile(os.path.join(odir, "%s.html" % uid), "w")
         html.target = "%s.html" % uid
+        html.mainline = uid in wesnoth.is_mainline_unit
         html.write_unit_report(output, unit)
 
 def write_index(out_path):
