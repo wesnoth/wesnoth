@@ -155,6 +155,10 @@ struct marked_route
 		bool zoc;
 		bool capture;
 		bool invisible;
+
+		bool operator==(const mark& m) const {
+			return turns == m.turns && zoc == m.zoc && capture == m.capture && invisible == m.invisible;
+		}
 	};
 	typedef std::map<map_location, mark> mark_map;
 	plain_route route;
