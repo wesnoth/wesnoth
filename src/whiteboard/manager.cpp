@@ -1077,31 +1077,33 @@ void manager::validate_actions_if_needed()
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map():
-		has_planned_unit_map_(resources::whiteboard->has_planned_unit_map())
+		initial_planned_unit_map_(resources::whiteboard->has_planned_unit_map())
 {
-	if (!has_planned_unit_map_)
+	if (!initial_planned_unit_map_)
 		resources::whiteboard->set_planned_unit_map();
 }
 
 scoped_planned_unit_map::~scoped_planned_unit_map()
 {
-	if (!has_planned_unit_map_)
+	if (!initial_planned_unit_map_)
 		resources::whiteboard->set_real_unit_map();
 }
 
 scoped_real_unit_map::scoped_real_unit_map():
-		has_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
+		initial_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
 		unit_map_lock_(resources::whiteboard->unit_map_lock_)
 {
-	if (has_planned_unit_map_)
+	if (initial_planned_unit_map_)
 		resources::whiteboard->set_real_unit_map();
 }
 
 scoped_real_unit_map::~scoped_real_unit_map()
 {
-	if (has_planned_unit_map_ &&
-			!resources::whiteboard->has_planned_unit_map())
+	assert(!resources::whiteboard->has_planned_unit_map());
+	if (initial_planned_unit_map_)
+	{
 		resources::whiteboard->set_planned_unit_map();
+	}
 }
 
 bool unit_comparator_predicate::operator()(unit const& unit)

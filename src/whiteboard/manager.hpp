@@ -226,7 +226,7 @@ struct scoped_planned_unit_map
 {
 	scoped_planned_unit_map();
 	~scoped_planned_unit_map();
-	bool has_planned_unit_map_;
+	bool initial_planned_unit_map_;
 };
 
 /** Ensures that the real unit map is active for the duration of the struct's life,
@@ -235,7 +235,7 @@ struct scoped_real_unit_map
 {
 	scoped_real_unit_map();
 	~scoped_real_unit_map();
-	bool has_planned_unit_map_;
+	bool initial_planned_unit_map_;
 	whiteboard_lock unit_map_lock_;
 };
 
