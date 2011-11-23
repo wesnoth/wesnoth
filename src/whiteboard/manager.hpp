@@ -67,6 +67,9 @@ public:
 	/** Prevents the whiteboard from changing its activation state, as long as the returned reference is held */
 	whiteboard_lock get_activation_state_lock() { return activation_state_lock_; }
 
+	/** Is the whiteboard in the process of executing an action? */
+	bool is_executing_actions() const { return executing_actions_; }
+
 	/** Used to ask the whiteboard if its action execution hotkeys should be available to the user */
 	bool can_enable_execution_hotkeys() const;
 	/** Used to ask the whiteboard if hotkeys affecting the action queue should be available to the user */
