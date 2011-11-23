@@ -663,6 +663,9 @@ void manager::save_temp_move()
 
 			size_t turn = first_turn + i;
 			fake_unit_ptr fake_unit = fake_units_[i];
+
+			//@todo Using a marked_route here is wrong, since right now it's not marked
+			//either switch over to a plain route for planned moves, or mark it correctly
 			pathfind::marked_route route;
 			route.steps = move_arrow->get_path();
 			route.move_cost = path_cost(route.steps,*u);
