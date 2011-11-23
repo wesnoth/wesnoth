@@ -1011,12 +1011,13 @@ void manager::set_planned_unit_map()
 {
 	if(!active_)
 	{
+		LOG_WB << "Attempt to set planned_unit_map when whiteboard was inactive.\n";
 		return;
 	}
 	//any more than one reference means a lock on unit map was requested
 	if(!unit_map_lock_.unique())
 	{
-		DBG_WB << "Not applying future map, blocked by scoped real unit map's lock.\n";
+		LOG_WB << "Attempt to set planned_unit_map while blocked by scoped real unit map's lock.\n";
 		return;
 	}
 	if (!executing_actions_ && !wait_for_side_init_)
@@ -1036,11 +1037,11 @@ void manager::set_planned_unit_map()
 	}
 	else if (executing_actions_)
 	{
-		DBG_WB << "Attempt to set planned_unit_map during action execution.\n";
+		LOG_WB << "Attempt to set planned_unit_map during action execution.\n";
 	}
 	else if (wait_for_side_init_)
 	{
-		DBG_WB << "Attempt to set planned_unit_map while waiting for side init.\n";
+		LOG_WB << "Attempt to set planned_unit_map while waiting for side init.\n";
 	}
 }
 
