@@ -2778,7 +2778,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 			msg_color = font::NORMAL_COLOR;
 		}
 
-		if(steps.size() < route.size()) {
+		if(steps.size() < route.size() && !resources::whiteboard->is_executing_actions()) {
 			// See if the "Continue Move" action has an associated hotkey
 			const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
 			if(!hk.null()) {
