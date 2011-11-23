@@ -173,10 +173,10 @@ bool side_actions::execute(side_actions::iterator position)
 
 	LOG_WB << "Before execution, " << *this << "\n";
 	action_ptr action = *position;
-	bool result;
+	bool action_successful;
 	bool should_erase;
 	try	{
-		 action->execute(result,should_erase);
+		 action->execute(action_successful,should_erase);
 	} catch (end_turn_exception&) {
 		synced_erase(position);
 		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
@@ -188,7 +188,7 @@ bool side_actions::execute(side_actions::iterator position)
 	if(resources::whiteboard->should_clear_undo())
 		resources::whiteboard->clear_undo();
 
-	LOG_WB << "After " << (result? "successful": "failed") << " execution ";
+	LOG_WB << "After " << (action_successful? "successful": "failed") << " execution ";
 	if(should_erase)
 	{
 		LOG_WB << "with deletion, ";
@@ -206,7 +206,7 @@ bool side_actions::execute(side_actions::iterator position)
 	LOG_WB << *this << "\n";
 
 	validate_actions();
-	return result;
+	return action_successful;
 }
 
 size_t side_actions::size() const
