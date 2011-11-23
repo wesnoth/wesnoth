@@ -1016,6 +1016,7 @@ void manager::set_planned_unit_map()
 	//any more than one reference means a lock on unit map was requested
 	if(!unit_map_lock_.unique())
 	{
+		DBG_WB << "Not applying future map, blocked by scoped real unit map's lock.\n";
 		return;
 	}
 	if (!executing_actions_ && !wait_for_side_init_)
