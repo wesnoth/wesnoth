@@ -1062,10 +1062,8 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			return resources::whiteboard->can_enable_reorder_hotkeys();
 		case hotkey::HOTKEY_WB_SUPPOSE_DEAD:
 		{
-			if(!resources::whiteboard->is_active())
-				return false;
-			wb::scoped_planned_unit_map spum;
-			return menu_handler_.current_unit() != units_.end(); //implicit break;
+			//@todo re-enable this once we figure out a decent UI for suppose_dead
+			return false;
 		}
 
 		default: return play_controller::can_execute_command(command, index);
