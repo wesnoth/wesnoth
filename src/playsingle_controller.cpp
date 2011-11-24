@@ -242,10 +242,10 @@ void playsingle_controller::whiteboard_suppose_dead()
 {
 	unit* curr_unit;
 	map_location loc;
-	{ wb::scoped_planned_unit_map raii;
+	{ wb::future_map future; //start planned unit map scope
 		curr_unit = &*menu_handler_.current_unit();
 		loc = curr_unit->get_location();
-	}
+	} // end planned unit map scope
 	whiteboard_manager_->save_suppose_dead(*curr_unit,loc);
 }
 

@@ -1208,7 +1208,7 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_RECRUIT:
 	case hotkey::HOTKEY_REPEAT_RECRUIT:
 	case hotkey::HOTKEY_RECALL: {
-		wb::scoped_planned_unit_map future; //< lasts until method returns.
+		wb::future_map future; //< lasts until method returns.
 		// last_hex_ is set by mouse_events::mouse_motion
 		// Enable recruit/recall on castle/keep tiles
 		for(unit_map::const_iterator leader = units_.begin();

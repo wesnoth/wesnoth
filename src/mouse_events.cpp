@@ -115,7 +115,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			previous_hex_ = last_hex_;
 			// the hex of the selected unit is also "free"
 			{ // start planned unit map scope
-				wb::scoped_planned_unit_map raii;
+				wb::future_map raii;
 				if (last_hex_ == selected_hex_ || find_unit(last_hex_) == units_.end()) {
 					previous_free_hex_ = last_hex_;
 				}
@@ -133,7 +133,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			if (!current_paths_.destinations.empty() && !show_partial_move_) {
 				unit_map::iterator u;
 				{ // start planned unit map scope
-					wb::scoped_planned_unit_map planned_unit_map;
+					wb::future_map planned_unit_map;
 					 u = find_unit(selected_hex_);
 				} // end planned unit map scope
 				if(selected_hex_.valid() && u != units_.end() ) {
@@ -171,7 +171,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		map_location attack_from;
 
 		{ // start planned unit map scope
-			wb::scoped_planned_unit_map planned_unit_map;
+			wb::future_map planned_unit_map;
 			selected_unit = find_unit(selected_hex_);
 			mouseover_unit = find_unit(new_hex);
 
@@ -219,7 +219,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		map_location dest;
 		unit_map::const_iterator dest_un;
 		{ // start planned unit map scope
-			wb::scoped_planned_unit_map raii;
+			wb::future_map raii;
 			if (attack_from.valid()) {
 				dest = attack_from;
 				dest_un = find_unit(dest);
@@ -268,7 +268,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 
 				{ // start planned unit map scope
-					wb::scoped_planned_unit_map raii;
+					wb::future_map raii;
 					current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
 														false,true,viewing_team(),path_turns_);
 				} // end planned unit map scope
@@ -281,7 +281,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 				if(map_.on_board(go_to)) {
 					pathfind::marked_route route;
 					{ // start planned unit map scope
-						wb::scoped_planned_unit_map raii;
+						wb::future_map raii;
 						route = get_route(un, go_to, current_team());
 					} // end planned unit map scope
 					gui().set_route(&route);
@@ -410,7 +410,7 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool browse)
 	// the second open the context menu
 	unit_map::iterator unit;
 	{
-		wb::scoped_planned_unit_map wb_modifiers;
+		wb::future_map wb_modifiers;
 		unit = find_unit(selected_hex_);
 	}
 	if (selected_hex_.valid() && unit != units_.end()) {
@@ -440,7 +440,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	pathfind::paths orig_paths;
 	map_location attack_from;
 	{ // start planned unit map scope
-		wb::scoped_planned_unit_map planned_unit_map;
+		wb::future_map planned_unit_map;
 		u = find_unit(selected_hex_);
 
 		//if the unit is selected and then itself clicked on,
@@ -462,7 +462,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		if (((u.valid() && u->side() == side_num_) || resources::whiteboard->is_active()) && clicked_u.valid() ) {
 			if (attack_from == selected_hex_) { //no move needed
 				int choice = -1;
-				{ wb::scoped_planned_unit_map planned_unit_map; //start planned unit map scope
+				{ wb::future_map planned_unit_map; //start planned unit map scope
 					choice = show_attack_dialog(attack_from, clicked_u->get_location());
 				} // end planned unit map scope
 				if (choice >=0 ) {
@@ -478,7 +478,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 				int choice = -1; //for the attack dialog
 
-				{ wb::scoped_planned_unit_map planned_unit_map; //start planned unit map scope
+				{ wb::future_map planned_unit_map; //start planned unit map scope
 					// we will now temporary move next to the enemy
 					pathfind::paths::dest_vect::const_iterator itor =
 							current_paths_.destinations.find(attack_from);
@@ -595,7 +595,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 	gui().set_route(NULL);
 	show_partial_move_ = false;
 
-	wb::scoped_planned_unit_map planned_unit_map; //lasts for whole method
+	wb::future_map planned_unit_map; //lasts for whole method
 
 	unit_map::iterator u = find_unit(hex);
 
@@ -621,7 +621,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 				sound::play_UI_sound("select-unit.wav");
 				u->set_selecting();
 				// ensure unit map is back to normal while event is fired
-				{ wb::scoped_real_unit_map srum;
+				{ wb::real_map srum;
 					game_events::fire("select", hex);
 				} //end forced real unit map
 			}

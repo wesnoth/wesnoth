@@ -236,7 +236,7 @@ bool manager::can_enable_reorder_hotkeys() const
 bool manager::allow_leader_to_move(unit const& leader) const
 {
 	//Look for another leader on another keep in the same castle
-	{ wb::scoped_planned_unit_map future; //< start planned unit map scope
+	{ wb::future_map future; //< start planned unit map scope
 		if(find_backup_leader(leader))
 			return true;
 	} // end planned unit map scope
@@ -461,7 +461,7 @@ void manager::on_mouseover_change(const map_location& hex)
 
 	map_location selected_hex = resources::screen->selected_hex();
 	unit_map::iterator it;
-	{ wb::scoped_planned_unit_map future; //< start planned unit map scope
+	{ wb::future_map future; //< start planned unit map scope
 		it = resources::units->find(selected_hex);
 	} // end planned unit map scope
 	if (!((selected_hex.valid() && it != resources::units->end())
@@ -747,7 +747,7 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 
 			side_actions& sa = *viewer_actions();
 			unit* recruiter;
-			{ wb::scoped_planned_unit_map raii;
+			{ wb::future_map raii;
 				recruiter = find_recruiter(side_num-1,recruit_hex);
 			} // end planned unit map scope
 			assert(recruiter);
@@ -1009,11 +1009,6 @@ void manager::options_dlg()
 
 void manager::set_planned_unit_map()
 {
-	if(!active_)
-	{
-		LOG_WB << "Attempt to set planned_unit_map when whiteboard was inactive.\n";
-		return;
-	}
 	//any more than one reference means a lock on unit map was requested
 	if(!unit_map_lock_.unique())
 	{
@@ -1076,20 +1071,45 @@ void manager::validate_actions_if_needed()
 	}
 }
 
-scoped_planned_unit_map::scoped_planned_unit_map():
+future_map::future_map():
 		initial_planned_unit_map_(resources::whiteboard->has_planned_unit_map())
 {
 	if (!initial_planned_unit_map_)
 		resources::whiteboard->set_planned_unit_map();
+	// check if if unit map was successfully applied
+	if (!resources::whiteboard->has_planned_unit_map()) {
+		DBG_WB << "Scoped future unit map failed to apply.\n";
+	}
 }
 
-scoped_planned_unit_map::~scoped_planned_unit_map()
+future_map::~future_map()
 {
-	if (!initial_planned_unit_map_)
+	if (!initial_planned_unit_map_ && resources::whiteboard->has_planned_unit_map())
 		resources::whiteboard->set_real_unit_map();
 }
 
-scoped_real_unit_map::scoped_real_unit_map():
+future_map_if_active::future_map_if_active():
+		initial_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
+		whiteboard_active_(resources::whiteboard->is_active())
+{
+	if (!whiteboard_active_)
+		return;
+	if (!initial_planned_unit_map_)
+		resources::whiteboard->set_planned_unit_map();
+	// check if if unit map was successfully applied
+	if (!resources::whiteboard->has_planned_unit_map()) {
+		DBG_WB << "Scoped future unit map failed to apply.\n";
+	}
+}
+
+future_map_if_active::~future_map_if_active()
+{
+	if (!initial_planned_unit_map_ && resources::whiteboard->has_planned_unit_map())
+		resources::whiteboard->set_real_unit_map();
+}
+
+
+real_map::real_map():
 		initial_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
 		unit_map_lock_(resources::whiteboard->unit_map_lock_)
 {
@@ -1097,7 +1117,7 @@ scoped_real_unit_map::scoped_real_unit_map():
 		resources::whiteboard->set_real_unit_map();
 }
 
-scoped_real_unit_map::~scoped_real_unit_map()
+real_map::~real_map()
 {
 	assert(!resources::whiteboard->has_planned_unit_map());
 	if (initial_planned_unit_map_)

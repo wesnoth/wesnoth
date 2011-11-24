@@ -65,7 +65,7 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	if (!hex.valid())
 		return;
 
-	scoped_real_unit_map ensure_real_map;
+	real_map ensure_real_map;
 	mouseover_hex_ = hex;
 	//if we're right over a unit, just highlight all of this unit's actions
 	unit_map::iterator it = unit_map_.find(hex);

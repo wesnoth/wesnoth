@@ -46,8 +46,9 @@ class highlight_visitor;
  */
 class manager : private boost::noncopyable
 {
-	friend struct scoped_planned_unit_map;
-	friend struct scoped_real_unit_map;
+	friend struct future_map;
+	friend struct future_map_if_active;
+	friend struct real_map;
 
 public:
 
@@ -222,19 +223,29 @@ private:
 
 /** Applies the planned unit map for the duration of the struct's life.
  *  Reverts to real unit map on destruction, unless planned unit map was already applied when the struct was created. */
-struct scoped_planned_unit_map
+struct future_map
 {
-	scoped_planned_unit_map();
-	~scoped_planned_unit_map();
+	future_map();
+	~future_map();
 	bool initial_planned_unit_map_;
 };
 
-/** Ensures that the real unit map is active for the duration of the struct's life,
- * and reverts to planned unit map if it was active when the struct was created. */
-struct scoped_real_unit_map
+/** ONLY IF whiteboard is currently active, applies the planned unit map for the duration of the struct's life.
+ *  Reverts to real unit map on destruction, unless planned unit map was already applied when the struct was created. */
+struct future_map_if_active
 {
-	scoped_real_unit_map();
-	~scoped_real_unit_map();
+	future_map_if_active();
+	~future_map_if_active();
+	bool initial_planned_unit_map_;
+	bool whiteboard_active_;
+};
+
+/** Ensures that the real unit map is active for the duration of the struct's life.
+ *  On destruction reverts to planned unit map if it was active when the struct was created. */
+struct real_map
+{
+	real_map();
+	~real_map();
 	bool initial_planned_unit_map_;
 	whiteboard_lock unit_map_lock_;
 };
