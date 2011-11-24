@@ -698,7 +698,7 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 		item_keys.push_back(*it);
 
 		char prefix;
-		{ wb::future_map future; //< start planned unit map scope
+		{ wb::future_map future; // so gold takes into account planned spending
 			int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
 			//display units that we can't afford to recruit in red
 			prefix = (type->cost() > current_team.gold() - wb_gold
@@ -781,7 +781,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	const unit_type *u_type = unit_types.find(name);
 	assert(u_type);
 
-	{ wb::future_map future; //< start planned unit map scope
+	{ wb::future_map future; // so gold takes into account planned spending
 		if (u_type->cost() > current_team.gold() - resources::whiteboard->get_spent_gold_for(side_num)) {
 			gui2::show_transient_message(gui_->video(), "",
 				_("You don’t have enough gold to recruit that unit"));
@@ -795,7 +795,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	map_location loc = last_hex;
 	map_location recruited_from = map_location::null_location;
 	std::string msg;
-	{ wb::future_map future; //< start planned unit map scope
+	{ wb::future_map_if_active future; //< start planned unit map scope if in planning mode
 		msg = find_recruit_location(side_num, loc, recruited_from, u_type->id());
 	} // end planned unit map scope
 	if (!msg.empty()) {
@@ -854,7 +854,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	gui_->draw(); //clear the old menu
 
-	{ wb::future_map future; //< start planned unit map scope
+	{ wb::future_map future; // ensures recall list has planned recalls removed
 		DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
 		foreach(const unit* unit, recall_list_team)
 		{
@@ -890,7 +890,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
 
-	{ wb::future_map future; //< start planned unit map scope
+	{ wb::future_map future; // ensure recall list has planned recalls removed
 		foreach (const unit* u, recall_list_team)
 		{
 			std::stringstream option, option_to_filter;
@@ -941,7 +941,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	int res = 0;
 
 	{
-		{ wb::future_map future; //< start planned unit map scope
+		{ wb::future_map future; // ensures recall list has planned recalls removed
 			gui::dialog rmenu(*gui_, _("Recall") + get_title_suffix(side_num),
 				_("Select unit:") + std::string("\n"),
 				gui::OK_CANCEL, gui::dialog::default_style);
@@ -983,7 +983,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		} // end planned unit map scope
 	}
 
-	{ wb::future_map future; //< start planned unit map scope
+	{ wb::future_map future; // so gold takes into account planned spending
 		int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
 		if (current_team.gold() - wb_gold < current_team.recall_cost()) {
 			utils::string_map i18n_symbols;
@@ -1003,7 +1003,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	map_location recall_location = last_hex;
 	map_location recall_from = map_location::null_location;
 	std::string err;
-	{ wb::future_map future; //< start planned unit map scope
+	{ wb::future_map_if_active future; // future unit map removes invisible units from map, don't do this outside of planning mode
 		err = find_recall_location(side_num, recall_location, recall_from, *(recall_list_team[res]));
 	} // end planned unit map scope
 	if(!err.empty()) {
@@ -1011,7 +1011,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 	unit* recalled_unit;
-	{ wb::future_map future; //< start planned unit map scope
+	{ wb::future_map future; // ensures recall list has planned recalls removed
 		recalled_unit = new unit(*(recall_list_team[res]));
 	} // end planned unit map scope
 
@@ -1337,7 +1337,7 @@ void menu_handler::clear_undo_stack(int side_num)
 // Highlights squares that an enemy could move to on their turn, showing how many can reach each square.
 void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 {
-	wb::future_map wb_modifiers;
+	wb::future_map future; // use unit positions as if all planned actions were executed
 
 	gui_->unhighlight_reach();
 
