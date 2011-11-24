@@ -545,6 +545,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 void playsingle_controller::play_turn(bool save)
 {
+	resources::whiteboard->on_gamestate_change();
 	gui_->new_turn();
 	gui_->invalidate_game_status();
 	events::raise_draw_event();

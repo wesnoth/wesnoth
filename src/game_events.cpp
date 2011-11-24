@@ -3412,6 +3412,11 @@ namespace game_events {
 			DBG_EH << "processing queued events: " << ss.str() << "\n";
 		}
 
+		//Notify the whiteboard of any event; this is used to track when moves, recruits, etc. happen
+		if(!events_queue.empty()) {
+			resources::whiteboard->on_gamestate_change();
+		}
+
 		bool result = false;
 		while(events_queue.empty() == false) {
 			if(pump_manager::count() <= 1)
@@ -3424,10 +3429,7 @@ namespace game_events {
 			// due to status changes by WML. Every event will flush the cache.
 			unit::clear_status_caches();
 
-			bool lua_event_triggered = resources::lua_kernel->run_event(ev);
-
-			if (lua_event_triggered)
-				resources::whiteboard->on_gamestate_change();
+			/* bool lua_event_triggered = */ resources::lua_kernel->run_event(ev);
 
 			bool init_event_vars = true;
 
@@ -3447,7 +3449,6 @@ namespace game_events {
 					handler.get_config()["id"] << "\n";
 				if(process_event(handler, ev))
 				{
-					resources::whiteboard->on_gamestate_change();
 					result = true;
 				}
 			}
