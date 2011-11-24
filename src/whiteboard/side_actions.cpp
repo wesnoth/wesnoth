@@ -172,7 +172,16 @@ bool side_actions::execute(side_actions::iterator position)
 		return false;
 
 	LOG_WB << "Before execution, " << *this << "\n";
+
 	action_ptr action = *position;
+
+	if (!action->is_valid())
+	{
+		LOG_WB << "Invalid action sent to execution, deleting.\n";
+		synced_erase(position);
+		return true;
+	}
+
 	bool action_successful;
 	bool should_erase;
 	try	{
