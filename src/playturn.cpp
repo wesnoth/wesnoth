@@ -36,11 +36,15 @@
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 
-turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender) :
+turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender,
+	const NETWORK_SIDE_STATE network_side_state) :
 	team_num_(team_num),
 	replay_sender_(replay_sender),
-	host_transfer_("host_transfer"), replay_()
+	host_transfer_("host_transfer"),
+	replay_(),
+	network_side_state_(NETWORK_SIDE_STATE_IRRELEVANT)
 {
+	network_side_state_ = network_side_state;
 	/**
 	 * We do network sync so [init_side] is transferred to network hosts
 	 */
@@ -143,14 +147,29 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		network::send_data_all_except(cfg, from);
 	}
 
+	const config& change = cfg.child_or_empty("change_controller");
+	const std::string& side_drop = cfg["side_drop"].str();
+	if((network_side_state_ == NETWORK_SIDE_STATE_SEEMS_DEAD) &&
+		(!side_drop.empty() || !change.empty())) {
+			//we are sending it to ourself
+			network_side_state_ = NETWORK_SIDE_STATE_GOT_SENT_INIT;
+			const config command("init_side");
+			config turn;
+			turn.add_child("command", command);
+			handle_turn(turn_end, turn, skip_replay, backlog);
+	}
+
 	foreach (const config &t, turns)
 	{
+		const config& command = t.child_or_empty("command");
+		if((network_side_state_ == NETWORK_SIDE_STATE_SEEMS_DEAD) && command.child("init_side"))
+			network_side_state_ = NETWORK_SIDE_STATE_GOT_SENT_INIT;
 		handle_turn(turn_end, t, skip_replay, backlog);
 	}
 
 	resources::whiteboard->process_network_data(cfg);
 
-	if (const config &change= cfg.child("change_controller"))
+	if (!change.empty())
 	{
 		//don't use lexical_cast_default it's "safer" to end on error
 		const int side = lexical_cast<int>(change["side"]);

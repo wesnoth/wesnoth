@@ -457,7 +457,7 @@ void playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
 	gui_->enable_menu("endturn", false);
-	turn_info turn_data(player_number_, replay_sender_);
+	turn_info turn_data(player_number_, replay_sender_, turn_info::NETWORK_SIDE_STATE_SEEMS_DEAD);
 	turn_data.host_transfer().attach_handler(this);
 
 	for(;;) {

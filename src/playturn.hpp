@@ -26,7 +26,16 @@ class replay_network_sender;
 class turn_info
 {
 public:
-	turn_info(unsigned team_num, replay_network_sender &network_sender);
+	//In case a side disconnects, leaves or changes controller during side progression
+	//make sure that this side is initialized on the other clients.
+	enum NETWORK_SIDE_STATE {
+		NETWORK_SIDE_STATE_IRRELEVANT,
+		NETWORK_SIDE_STATE_GOT_SENT_INIT,
+		NETWORK_SIDE_STATE_SEEMS_DEAD
+		};
+
+	turn_info(unsigned team_num, replay_network_sender &network_sender,
+		const NETWORK_SIDE_STATE network_side_state = NETWORK_SIDE_STATE_IRRELEVANT);
 
 	~turn_info();
 
@@ -69,6 +78,8 @@ private:
 	events::generic_event host_transfer_;
 
 	replay replay_;
+
+	NETWORK_SIDE_STATE network_side_state_;
 };
 
 #endif
