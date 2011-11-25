@@ -121,10 +121,7 @@ void playmp_controller::play_side(const unsigned int side_number, bool save)
 						if (t <= 0)
 							t = gui_->playing_side();
 
-						gui_->set_team(t-1);
-						gui_->recalculate_minimap();
-						gui_->invalidate_all();
-						gui_->draw(true,true);
+						update_gui_to_player(t-1);
 					}
 				} else {
 					after_human_turn();
@@ -335,10 +332,7 @@ void playmp_controller::linger()
 
 	if ( get_end_level_data_const().reveal_map ) {
 		// switch to observer viewpoint
-		gui_->set_team(0,true);
-		gui_->recalculate_minimap();
-		gui_->invalidate_all();
-		gui_->draw(true,true);
+		update_gui_to_player(0, true);
 	}
 	bool quit;
 	do {

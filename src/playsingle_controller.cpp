@@ -645,10 +645,7 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 						browse_ = true;
 						int t = find_human_team_before(side_number);
 						if (t > 0) {
-							gui_->set_team(t-1);
-							gui_->recalculate_minimap();
-							gui_->invalidate_all();
-							gui_->draw(true,true);
+							update_gui_to_player(t-1);
 						}
 					}
 				}

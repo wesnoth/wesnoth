@@ -597,10 +597,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 	}
 
 	if(current_team.is_human() && !is_replay) {
-		gui_->set_team(player_number_ - 1);
-		gui_->recalculate_minimap();
-		gui_->invalidate_all();
-		gui_->draw(true,true);
+		update_gui_to_player(player_number_ - 1);
 	}
 	// We want to work out if units for this player should get healed,
 	// and the player should get income now.
@@ -1356,5 +1353,13 @@ void play_controller::process_oos(const std::string& msg) const
 
 	savegame::oos_savegame save(to_config());
 	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
+}
+
+void play_controller::update_gui_to_player(const int team_index, const bool observe)
+{
+	gui_->set_team(team_index, observe);
+	gui_->recalculate_minimap();
+	gui_->invalidate_all();
+	gui_->draw(true,true);
 }
 

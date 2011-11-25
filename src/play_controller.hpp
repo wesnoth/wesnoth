@@ -232,6 +232,11 @@ protected:
 	void set_victory_music_list(const std::string& list);
 	void set_defeat_music_list(const std::string& list);
 
+	/*
+	 * Changes the UI for this client to the passed side index.
+	 */
+	void update_gui_to_player(const int team_index, const bool observe = false);
+
 private:
 	void init(CVideo &video);
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
