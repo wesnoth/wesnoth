@@ -850,29 +850,31 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	std::vector<const unit*> recall_list_team = get_recalls_for_location(side_num, last_hex);
+	std::vector<const unit*> recall_list_team;
+	{ wb::future_map future; // ensures recall list has planned recalls removed
+		recall_list_team = get_recalls_for_location(side_num, last_hex);
+	}
 
 	gui_->draw(); //clear the old menu
 
-	{ wb::future_map future; // ensures recall list has planned recalls removed
-		DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
-		foreach(const unit* unit, recall_list_team)
-		{
-			DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
-		}
 
-		if(current_team.recall_list().empty()) {
-			gui2::show_transient_message(gui_->video(), "",
-				_("There are no troops available to recall\n(You must have"
-				" veteran survivors from a previous scenario)"));
-			return;
-		}
-		if(recall_list_team.empty()) {
-			gui2::show_transient_message(gui_->video(), "",
-				_("You currently can't recall at the highlighted location"));
-			return;
-		}
-	} // end planned unit map scope
+	DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
+	foreach(const unit* unit, recall_list_team)
+	{
+		DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
+	}
+
+	if(current_team.recall_list().empty()) {
+		gui2::show_transient_message(gui_->video(), "",
+			_("There are no troops available to recall\n(You must have"
+			" veteran survivors from a previous scenario)"));
+		return;
+	}
+	if(recall_list_team.empty()) {
+		gui2::show_transient_message(gui_->video(), "",
+			_("You currently can't recall at the highlighted location"));
+		return;
+	}
 
 	std::vector<std::string> options, options_to_filter;
 
@@ -890,97 +892,94 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
 
-	{ wb::future_map future; // ensure recall list has planned recalls removed
-		foreach (const unit* u, recall_list_team)
-		{
-			std::stringstream option, option_to_filter;
-			std::string name = u->name();
-			if (name.empty()) name = "-";
+	foreach (const unit* u, recall_list_team)
+	{
+		std::stringstream option, option_to_filter;
+		std::string name = u->name();
+		if (name.empty()) name = "-";
 
-			option << IMAGE_PREFIX << u->absolute_image();
-		#ifndef LOW_MEM
-			option << "~RC("  << u->team_color() << '>'
-				<< team::get_side_color_index(side_num) << ')';
-		#endif
-			option << COLUMN_SEPARATOR
-				<< u->type_name() << COLUMN_SEPARATOR
-				<< name << COLUMN_SEPARATOR;
+		option << IMAGE_PREFIX << u->absolute_image();
+	#ifndef LOW_MEM
+		option << "~RC("  << u->team_color() << '>'
+			<< team::get_side_color_index(side_num) << ')';
+	#endif
+		option << COLUMN_SEPARATOR
+			<< u->type_name() << COLUMN_SEPARATOR
+			<< name << COLUMN_SEPARATOR;
 
-			// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
-			const int level = u->level();
-			if(level < 1) {
-				option << "<150,150,150>";
-			} else if(level == 1) {
-				option << font::NORMAL_TEXT;
-			} else if(level == 2) {
-				option << font::BOLD_TEXT;
-			} else if(level > 2 ) {
-				option << font::BOLD_TEXT << "<255,255,255>";
-			}
-			option << level << COLUMN_SEPARATOR;
-
-			option << font::color2markup(u->xp_color()) << u->experience() << "/";
-			if (u->can_advance())
-				option << u->max_experience();
-			else
-				option << "-";
-
-			option_to_filter << u->type_name() << " " << name << " " << u->level();
-
-			option << COLUMN_SEPARATOR;
-			foreach (const t_string& trait, u->trait_names()) {
-				option << trait << '\n';
-				option_to_filter << " " << trait;
-			}
-
-			options.push_back(option.str());
-			options_to_filter.push_back(option_to_filter.str());
+		// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
+		const int level = u->level();
+		if(level < 1) {
+			option << "<150,150,150>";
+		} else if(level == 1) {
+			option << font::NORMAL_TEXT;
+		} else if(level == 2) {
+			option << font::BOLD_TEXT;
+		} else if(level > 2 ) {
+			option << font::BOLD_TEXT << "<255,255,255>";
 		}
-	} // end planned unit map scope
+		option << level << COLUMN_SEPARATOR;
+
+		option << font::color2markup(u->xp_color()) << u->experience() << "/";
+		if (u->can_advance())
+			option << u->max_experience();
+		else
+			option << "-";
+
+		option_to_filter << u->type_name() << " " << name << " " << u->level();
+
+		option << COLUMN_SEPARATOR;
+		foreach (const t_string& trait, u->trait_names()) {
+			option << trait << '\n';
+			option_to_filter << " " << trait;
+		}
+
+		options.push_back(option.str());
+		options_to_filter.push_back(option_to_filter.str());
+	}
 
 	int res = 0;
 
 	{
-		{ wb::future_map future; // ensures recall list has planned recalls removed
-			gui::dialog rmenu(*gui_, _("Recall") + get_title_suffix(side_num),
-				_("Select unit:") + std::string("\n"),
-				gui::OK_CANCEL, gui::dialog::default_style);
-			rmenu.set_menu(options, &sorter);
+		gui::dialog rmenu(*gui_, _("Recall") + get_title_suffix(side_num),
+			_("Select unit:") + std::string("\n"),
+			gui::OK_CANCEL, gui::dialog::default_style);
+		rmenu.set_menu(options, &sorter);
 
-			gui::filter_textbox* filter = new gui::filter_textbox(gui_->video(),
-				_("Filter: "), options, options_to_filter, 1, rmenu, 200);
-			rmenu.set_textbox(filter);
+		gui::filter_textbox* filter = new gui::filter_textbox(gui_->video(),
+			_("Filter: "), options, options_to_filter, 1, rmenu, 200);
+		rmenu.set_textbox(filter);
 
-			delete_recall_unit recall_deleter(*gui_, *filter, recall_list_team);
-			gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
-			rmenu.add_button(delete_button);
+		delete_recall_unit recall_deleter(*gui_, *filter, recall_list_team);
+		gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
+		rmenu.add_button(delete_button);
 
-			rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
-				gui::dialog::BUTTON_HELP);
+		rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
+			gui::dialog::BUTTON_HELP);
 
-			dialogs::units_list_preview_pane unit_preview(recall_list_team, filter);
-			rmenu.add_pane(&unit_preview);
+		dialogs::units_list_preview_pane unit_preview(recall_list_team, filter);
+		rmenu.add_pane(&unit_preview);
 
-			//sort by level
-			static int sort_by = 3;
-			static bool sort_reversed = false;
+		//sort by level
+		static int sort_by = 3;
+		static bool sort_reversed = false;
 
-			if(sort_by >= 0) {
+		if(sort_by >= 0) {
+			rmenu.get_menu().sort_by(sort_by);
+			// "reclick" on the sorter to reverse the order
+			if(sort_reversed) {
 				rmenu.get_menu().sort_by(sort_by);
-				// "reclick" on the sorter to reverse the order
-				if(sort_reversed) {
-					rmenu.get_menu().sort_by(sort_by);
-				}
 			}
+		}
 
-			res = rmenu.show();
-			res = filter->get_index(res);
+		res = rmenu.show();
+		res = filter->get_index(res);
 
-			sort_by = rmenu.get_menu().get_sort_by();
-			sort_reversed = rmenu.get_menu().get_sort_reversed();
+		sort_by = rmenu.get_menu().get_sort_by();
+		sort_reversed = rmenu.get_menu().get_sort_reversed();
 
-			if (res < 0) return;
-		} // end planned unit map scope
+		if (res < 0) return;
+
 	}
 
 	{ wb::future_map future; // so gold takes into account planned spending
@@ -1011,9 +1010,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 	unit* recalled_unit;
-	{ wb::future_map future; // ensures recall list has planned recalls removed
-		recalled_unit = new unit(*(recall_list_team[res]));
-	} // end planned unit map scope
+	recalled_unit = new unit(*(recall_list_team[res]));
 
 	if (!resources::whiteboard->save_recall(*recalled_unit, side_num, recall_location)) {
 		do_recall(*recalled_unit, side_num, recall_location, recall_from);
