@@ -216,10 +216,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 
 	//if a side has dropped out of the game.
-	if(cfg["side_drop"] != "") {
+	if(!side_drop.empty()) {
 		const std::string controller = cfg["controller"];
-		const std::string side_str = cfg["side_drop"];
-		int side = atoi(side_str.c_str());
+		int side = atoi(side_drop.c_str());
 		const size_t side_index = side-1;
 
 		bool restart = side == resources::screen->playing_side();
@@ -235,8 +234,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		if (controller == "ai"){
 			tm.make_ai();
-			tm.set_current_player("ai" + side_str);
-			if (have_leader) leader->rename("ai" + side_str);
+			tm.set_current_player("ai" + side_drop);
+			if (have_leader) leader->rename("ai" + side_drop);
 			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 		}
 
@@ -290,15 +289,15 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		switch(action) {
 			case 0:
 				tm.make_human_ai();
-				tm.set_current_player("ai" + side_str);
-				if (have_leader) leader->rename("ai" + side_str);
-				change_controller(side_str, "human_ai");
+				tm.set_current_player("ai" + side_drop);
+				if (have_leader) leader->rename("ai" + side_drop);
+				change_controller(side_drop, "human_ai");
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
 			case 1:
 				tm.make_human();
-				tm.set_current_player("human" + side_str);
-				if (have_leader) leader->rename("human" + side_str);
+				tm.set_current_player("human" + side_drop);
+				if (have_leader) leader->rename("human" + side_drop);
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
 				//The user pressed "end game". Don't throw a network error here or he will get
@@ -310,21 +309,21 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 					{
 						// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
 						tm.make_human();
-						tm.set_current_player("human"+side_str);
-						if (have_leader) leader->rename("human"+side_str);
+						tm.set_current_player("human"+side_drop);
+						if (have_leader) leader->rename("human"+side_drop);
 					}
 
 					const size_t index = static_cast<size_t>(action - 3);
 					if (index < observers.size()) {
-						change_side_controller(side_str, observers[index]);
+						change_side_controller(side_drop, observers[index]);
 					} else if (index < options.size() - 1) {
 						size_t i = index - observers.size();
-						change_side_controller(side_str, allies[i]->current_player());
+						change_side_controller(side_drop, allies[i]->current_player());
 					} else {
 						tm.make_human_ai();
-						tm.set_current_player("ai"+side_str);
-						if (have_leader) leader->rename("ai" + side_str);
-						change_controller(side_str, "human_ai");
+						tm.set_current_player("ai"+side_drop);
+						if (have_leader) leader->rename("ai" + side_drop);
+						change_controller(side_drop, "human_ai");
 					}
 					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 				}
