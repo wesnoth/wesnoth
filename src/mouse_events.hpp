@@ -51,7 +51,6 @@ public:
 	bool get_undo() const { return undo_; }
 	void set_path_turns(const int path_turns) { path_turns_ = path_turns; }
 	void set_current_paths(pathfind::paths new_paths);
-	void set_selected_hex(map_location hex) { selected_hex_ = hex; }
 	void deselect_hex();
 	void invalidate_reachmap() { reachmap_invalid_ = true; }
 
