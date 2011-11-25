@@ -31,8 +31,10 @@
 
 #include "SDL_types.h"
 
-/** Convert comma separated string into rgb values. */
-std::vector<Uint32> string2rgb(std::string s);
+/* Convert comma separated string into rgb values.
+ * Return false and empty result on error.
+ */
+bool string2rgb(const std::string& s, std::vector<Uint32>& result);
 
 /**
  * A color range definition is made of four reference RGB colors, used

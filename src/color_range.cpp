@@ -87,7 +87,8 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_range, const std::
 	return map_rgb;
 }
 
-std::vector<Uint32> string2rgb(std::string s){
+bool string2rgb(const std::string& s, std::vector<Uint32>& result) {
+	result = std::vector<Uint32>();
 	std::vector<Uint32> out;
 	std::vector<std::string> rgb_vec = utils::split(s);
 	std::vector<std::string>::iterator c=rgb_vec.begin();
@@ -96,28 +97,33 @@ std::vector<Uint32> string2rgb(std::string s){
 		Uint32 rgb_hex;
 		if(c->length() != 6)
 		{
-			// integer triplets, e.g. white="255,255,255"
-			rgb_hex =  (0x00FF0000 & ((lexical_cast<int>(*c++))<<16)); //red
-			if(c!=rgb_vec.end())
-			{
-				rgb_hex += (0x0000FF00 & ((lexical_cast<int>(*c++))<<8)); //green
+			try {
+				// integer triplets, e.g. white="255,255,255"
+				rgb_hex =  (0x00FF0000 & ((lexical_cast<int>(*c++))<<16)); //red
 				if(c!=rgb_vec.end())
 				{
-					rgb_hex += (0x000000FF & ((lexical_cast<int>(*c++))<<0)); //blue
+					rgb_hex += (0x0000FF00 & ((lexical_cast<int>(*c++))<<8)); //green
+					if(c!=rgb_vec.end())
+					{
+						rgb_hex += (0x000000FF & ((lexical_cast<int>(*c++))<<0)); //blue
+					}
 				}
+			} catch (bad_lexical_cast&) {
+				return false;
 			}
 		} else {
 			// hexadecimal format, e.g. white="FFFFFF"
 			char* endptr;
 			rgb_hex = (0x00FFFFFF & strtol(c->c_str(), &endptr, 16));
 			if (*endptr != '\0') {
-				throw bad_lexical_cast();
+				return false;
 			}
 			++c;
 		}
 		out.push_back(rgb_hex);
 	}
-	return(out);
+	result = out;
+	return true;
 }
 
 std::vector<Uint32> palette(color_range cr){

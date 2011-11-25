@@ -155,8 +155,11 @@ void team::team_info::read(const config &cfg)
 	std::map<std::string, color_range>::iterator global_rgb = game_config::team_rgb_range.find(cfg["side"]);
 
 	if(!temp_rgb_str.empty()){
-		std::vector<Uint32> temp_rgb = string2rgb(temp_rgb_str);
-		team_color_range_[side] = color_range(temp_rgb);
+		std::vector<Uint32> temp_rgb;
+		if(string2rgb(temp_rgb_str, temp_rgb))
+			team_color_range_[side] = color_range(temp_rgb);
+		else
+			WRN_NG << "can't parse color string, ignoring: " << temp_rgb_str << "\n";
 	}else if(global_rgb != game_config::team_rgb_range.end()){
 		team_color_range_[side] = global_rgb->second;
 	}

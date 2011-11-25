@@ -228,20 +228,34 @@ namespace game_config
 		if (const config::attribute_value *a = v.get("flag_rgb"))
 			flag_rgb = a->str();
 
-		red_green_scale = string2rgb(v["red_green_scale"]);
+		std::string color_string = v["red_green_scale"].str();
+		if(!string2rgb(color_string, red_green_scale)) {
+			ERR_NG << "can't parse color string red_green_scale, ignoring: " << color_string << "\n";
+		}
 		if (red_green_scale.empty()) {
 			red_green_scale.push_back(0x00FFFF00);
 		}
-		red_green_scale_text = string2rgb(v["red_green_scale_text"]);
+
+		color_string = v["red_green_scale_text"].str();
+		if(!string2rgb(color_string, red_green_scale_text)) {
+			ERR_NG << "can't parse color string red_green_scale_text, ignoring: " << color_string << "\n";
+		}
 		if (red_green_scale_text.empty()) {
 			red_green_scale_text.push_back(0x00FFFF00);
 		}
 
-		blue_white_scale = string2rgb(v["blue_white_scale"]);
+		color_string = v["blue_white_scale"].str();
+		if(!string2rgb(color_string, blue_white_scale)) {
+			ERR_NG << "can't parse color string blue_white_scale, ignoring: " << color_string << "\n";
+		}
 		if (blue_white_scale.empty()) {
 			blue_white_scale.push_back(0x00FFFFFF);
 		}
-		blue_white_scale_text = string2rgb(v["blue_white_scale_text"]);
+
+		color_string = v["blue_white_scale_text"].str();
+		if(!string2rgb(color_string, blue_white_scale_text)) {
+			ERR_NG << "can't parse color string blue_white_scale_text, ignoring: " << color_string << "\n";
+		}
 		if (blue_white_scale_text.empty()) {
 			blue_white_scale_text.push_back(0x00FFFFFF);
 		}
@@ -264,7 +278,12 @@ namespace game_config
 				*a2 = teamC.get("rgb");
 			if (!a1 || !a2) continue;
 			std::string id = *a1;
-			std::vector<Uint32> temp = string2rgb(*a2);
+			std::vector<Uint32> temp;
+			if(!string2rgb(*a2, temp)) {
+				std::stringstream ss;
+				ss << "can't parse color string:\n" << teamC.debug() << "\n";
+				throw config::error(ss.str());
+			}
 			team_rgb_range.insert(std::make_pair(id,color_range(temp)));
 			team_rgb_name[id] = teamC["name"];
 			//generate palette of same name;
@@ -291,12 +310,11 @@ namespace game_config
 		{
 			foreach (const config::attribute &rgb, cp.attribute_range())
 			{
-				try {
-					team_rgb_colors.insert(std::make_pair(rgb.first, string2rgb(rgb.second)));
-				} catch(bad_lexical_cast&) {
-					//throw config::error(_("Invalid team color: ") + rgb_it->second);
+				std::vector<Uint32> temp;
+				if(!string2rgb(rgb.second, temp)) {
 					ERR_NG << "Invalid team color: " << rgb.second << "\n";
 				}
+				team_rgb_colors.insert(std::make_pair(rgb.first, temp));
 			}
 		}
 	}
@@ -305,14 +323,11 @@ namespace game_config
 	{
 		std::map<std::string, color_range>::const_iterator i = team_rgb_range.find(name);
 		if(i == team_rgb_range.end()) {
-			try {
-				team_rgb_range.insert(std::make_pair(name,color_range(string2rgb(name))));
-				return color_info(name);
-			} catch(bad_lexical_cast&) {
-				//ERR_NG << "Invalid color range: " << name;
-				//return color_info();
+			std::vector<Uint32> temp;
+			if(!string2rgb(name, temp))
 				throw config::error(_("Invalid color range: ") + name);
-			}
+			team_rgb_range.insert(std::make_pair(name,color_range(temp)));
+			return color_info(name);
 		}
 		return i->second;
 	}
@@ -321,15 +336,14 @@ namespace game_config
 	{
 		std::map<std::string, std::vector<Uint32> >::const_iterator i = team_rgb_colors.find(name);
 		if(i == team_rgb_colors.end()) {
-			try {
-				team_rgb_colors.insert(std::make_pair(name,string2rgb(name)));
-				return tc_info(name);
-			} catch(bad_lexical_cast&) {
+			std::vector<Uint32> temp;
+			if(!string2rgb(name, temp)) {
 				static std::vector<Uint32> stv;
-				//throw config::error(_("Invalid team color: ") + name);
 				ERR_NG << "Invalid team color: " << name << "\n";
 				return stv;
 			}
+			team_rgb_colors.insert(std::make_pair(name,temp));
+			return tc_info(name);
 		}
 		return i->second;
 	}

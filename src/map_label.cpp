@@ -322,12 +322,7 @@ void terrain_label::read(const config &cfg)
 
 	if(!tmp_color.empty()) {
 		std::vector<Uint32> temp_rgb;
-		try {
-			temp_rgb = string2rgb(tmp_color);
-		} catch(bad_lexical_cast&) {
-			//throw config::error(_("Invalid color range: ") + name);
-		}
-		if(!temp_rgb.empty()) {
+		if(string2rgb(tmp_color, temp_rgb) && !temp_rgb.empty()) {
 			color = int_to_color(temp_rgb[0]);
 		}
 	}
