@@ -100,7 +100,7 @@ public:
 	virtual void search();
 
 	virtual void do_init_side(const unsigned int team_index, bool is_replay = false);
-	virtual void play_side(const unsigned int team_num, bool save) = 0;
+	virtual void play_side(const unsigned int side_number, bool save) = 0;
 
 	virtual void force_end_turn() = 0;
 	virtual void force_end_level(LEVEL_RESULT res) = 0;

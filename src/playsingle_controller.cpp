@@ -612,7 +612,7 @@ void playsingle_controller::play_turn(bool save)
 	check_time_over();
 }
 
-void playsingle_controller::play_side(const unsigned int team_index, bool save)
+void playsingle_controller::play_side(const unsigned int side_number, bool save)
 {
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
@@ -628,7 +628,7 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 			end_turn_ = false;
 
 
-		statistics::reset_turn_stats(teams_[team_index - 1].save_id());
+		statistics::reset_turn_stats(teams_[side_number - 1].save_id());
 
 		if(current_team().is_human() || temporary_human) {
 			LOG_NG << "is human...\n";
@@ -637,13 +637,13 @@ void playsingle_controller::play_side(const unsigned int team_index, bool save)
 				play_human_turn();
 				after_human_turn();
 			} catch(end_turn_exception& end_turn) {
-				if (end_turn.redo == team_index) {
+				if (end_turn.redo == side_number) {
 					player_type_changed_ = true;
 					// If new controller is not human,
 					// reset gui to prev human one
-					if (!teams_[team_index-1].is_human()) {
+					if (!teams_[side_number-1].is_human()) {
 						browse_ = true;
-						int t = find_human_team_before(team_index);
+						int t = find_human_team_before(side_number);
 						if (t > 0) {
 							gui_->set_team(t-1);
 							gui_->recalculate_minimap();

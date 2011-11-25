@@ -84,7 +84,7 @@ void playmp_controller::stop_network(){
 	LOG_NG << "network processing stopped";
 }
 
-void playmp_controller::play_side(const unsigned int team_index, bool save)
+void playmp_controller::play_side(const unsigned int side_number, bool save)
 {
 	utils::string_map player;
 	player["name"] = current_team().current_player();
@@ -97,7 +97,7 @@ void playmp_controller::play_side(const unsigned int team_index, bool save)
 		if (!skip_next_turn_)
 			end_turn_ = false;
 
-		statistics::reset_turn_stats(teams_[team_index-1].save_id());
+		statistics::reset_turn_stats(teams_[side_number-1].save_id());
 
 		// we can't call playsingle_controller::play_side because
 		// we need to catch exception here
@@ -110,13 +110,13 @@ void playmp_controller::play_side(const unsigned int team_index, bool save)
 				play_human_turn();
 				after_human_turn();
 			} catch(end_turn_exception& end_turn) {
-				if (end_turn.redo == team_index) {
+				if (end_turn.redo == side_number) {
 					player_type_changed_ = true;
 					// if new controller is not human,
 					// reset gui to prev human one
-					if (!teams_[team_index-1].is_human()) {
+					if (!teams_[side_number-1].is_human()) {
 						browse_ = true;
-						int t = find_human_team_before(team_index);
+						int t = find_human_team_before(side_number);
 
 						if (t <= 0)
 							t = gui_->playing_side();
