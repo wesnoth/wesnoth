@@ -235,6 +235,9 @@ bool manager::can_enable_reorder_hotkeys() const
 
 bool manager::allow_leader_to_move(unit const& leader) const
 {
+	if(!has_actions())
+		return true;
+
 	//Look for another leader on another keep in the same castle
 	{ wb::future_map future; // start planned unit map scope
 		if(!has_planned_unit_map()) {
@@ -439,7 +442,7 @@ void manager::draw_hex(const map_location& hex)
 	 * Doing so messes up the iterator currently going over the list of invalidated hexes to draw.
 	 */
 
-	if (!wait_for_side_init_)
+	if (has_actions() && !wait_for_side_init_)
 	{
 		//call draw() for all actions
 		draw_visitor(hex).visit_all();
@@ -925,14 +928,13 @@ void manager::contextual_bump_down_action()
 	}
 }
 
-void manager::erase_all_actions()
+bool manager::has_actions() const
 {
-	on_deselect_hex();
-	set_real_unit_map();
-	foreach(team& team, *resources::teams)
-	{
-		team.get_side_actions()->clear();
-	}
+	foreach(team& t, *resources::teams)
+		if (!t.get_side_actions()->empty())
+			return true;
+
+	return false;
 }
 
 bool manager::unit_has_actions(unit const* unit) const
@@ -1013,6 +1015,7 @@ void manager::options_dlg()
 
 void manager::set_planned_unit_map()
 {
+
 	//any more than one reference means a lock on unit map was requested
 	if(!unit_map_lock_.unique()) {
 		LOG_WB << "Not building planned unit map: blocked unit map lock.\n";
@@ -1031,10 +1034,18 @@ void manager::set_planned_unit_map()
 		return;
 	}
 
-	validate_actions_if_needed();
-	log_scope2("whiteboard", "Building planned unit map");
-	mapbuilder_.reset(new mapbuilder(*resources::units));
-	mapbuilder_->build_map();
+	if (has_actions())
+	{
+		validate_actions_if_needed();
+		log_scope2("whiteboard", "Building planned unit map");
+		mapbuilder_.reset(new mapbuilder(*resources::units));
+		mapbuilder_->build_map();
+	}
+	else
+	{
+		DBG_WB << "Actions queue empty, unit map flag set but skipping map building.\n";
+	}
+
 	planned_unit_map_active_ = true;
 }
 
@@ -1044,9 +1055,11 @@ void manager::set_real_unit_map()
 	{
 		assert(!executing_actions_);
 		assert(!wait_for_side_init_);
-		assert(mapbuilder_);
-		log_scope2("whiteboard", "Restoring regular unit map.");
-		mapbuilder_.reset();
+		if(mapbuilder_)
+		{
+			log_scope2("whiteboard", "Restoring regular unit map.");
+			mapbuilder_.reset();
+		}
 		planned_unit_map_active_ = false;
 	}
 	else

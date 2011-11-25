@@ -149,12 +149,12 @@ public:
 	void contextual_bump_up_action();
 	/** Moves the action determined by the UI toward the beginning of the queue  */
 	void contextual_bump_down_action();
-	/** Deletes all planned actions for all teams */
-	void erase_all_actions();
 
 	/** Get the highlight visitor instance in use by the manager */
 	boost::weak_ptr<highlight_visitor> get_highlighter() { return highlighter_; }
 
+	/** Checks whether the whiteboard has any planned action on any team */
+	bool has_actions() const;
 	/** Checks whether the specified unit has at least one planned action */
 	bool unit_has_actions(unit const* unit) const;
 
