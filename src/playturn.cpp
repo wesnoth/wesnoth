@@ -79,6 +79,28 @@ void turn_info::send_data()
 	}
 }
 
+void turn_info::handle_turn(
+	bool& turn_end,
+	const config& t,
+	const bool skip_replay,
+	std::deque<config>& backlog)
+{
+	if(turn_end == false) {
+		/** @todo FIXME: Check what commands we execute when it's our turn! */
+		replay_.append(t);
+		replay_.set_skip(skip_replay);
+
+		turn_end = do_replay(team_num_, &replay_);
+		recorder.add_config(t, replay::MARK_AS_SENT);
+	} else {
+
+		//this turn has finished, so push the remaining moves
+		//into the backlog
+		backlog.push_back(config());
+		backlog.back().add_child("turn", t);
+	}
+}
+
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg,
 		network::connection from, std::deque<config>& backlog, bool skip_replay)
 {
@@ -123,20 +145,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	foreach (const config &t, turns)
 	{
-		if(turn_end == false) {
-			/** @todo FIXME: Check what commands we execute when it's our turn! */
-			replay_.append(t);
-			replay_.set_skip(skip_replay);
-
-			turn_end = do_replay(team_num_, &replay_);
-			recorder.add_config(t, replay::MARK_AS_SENT);
-		} else {
-
-			//this turn has finished, so push the remaining moves
-			//into the backlog
-			backlog.push_back(config());
-			backlog.back().add_child("turn", t);
-		}
+		handle_turn(turn_end, t, skip_replay, backlog);
 	}
 
 	resources::whiteboard->process_network_data(cfg);

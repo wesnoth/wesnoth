@@ -56,6 +56,12 @@ private:
 	static void change_controller(const std::string& side, const std::string& controller);
 	static void change_side_controller(const std::string& side, const std::string& player);
 
+	void handle_turn(
+		bool& turn_end,
+		const config& t,
+		const bool skip_replay,
+		std::deque<config>& backlog);
+
 	unsigned int team_num_;
 
 	replay_network_sender& replay_sender_;
