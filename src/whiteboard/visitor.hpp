@@ -58,8 +58,8 @@ template<typename Derived>
 class enable_visit_all
 {
 public:
-	void visit_all() {visit_all_helper<false>();}
-	void reverse_visit_all() {visit_all_helper<true>();}
+	void visit_all() { visit_all_helper(false); }
+	void reverse_visit_all() { visit_all_helper(true); }
 
 protected:
 	/**
@@ -75,8 +75,7 @@ protected:
 	bool post_visit_team(size_t /*team_index*/, team&, side_actions&) {return true;}
 
 private:
-	template<bool reverse>
-	void visit_all_helper()
+	void visit_all_helper( const bool reverse)
 	{
 		Derived* const new_this = static_cast<Derived*>(this);
 
