@@ -483,6 +483,7 @@ void playmp_controller::play_network_turn(){
 				}
 				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, from, data_backlog_, skip_replay_);
 				if (result == turn_info::PROCESS_RESTART_TURN) {
+					update_gui_to_player(player_number_ - 1);
 					player_type_changed_ = true;
 					return;
 				} else if (result == turn_info::PROCESS_END_TURN) {
