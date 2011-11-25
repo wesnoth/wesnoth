@@ -50,6 +50,7 @@ public:
 private:
 	//"Inherited" from enable_visit_all
 	bool visit(size_t team_index, team&, side_actions&, side_actions::iterator);
+	bool pre_visit_team(size_t team_index, team&, side_actions&);
 	bool post_visit_team(size_t team_index, team&, side_actions&);
 
 	//helper for visit(), above

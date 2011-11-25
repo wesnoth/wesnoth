@@ -58,8 +58,7 @@ recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, c
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()),
 		valid_(true),
-		fake_unit_(create_corresponding_unit()),
-		temp_cost_()
+		fake_unit_(create_corresponding_unit())
 {
 	this->init();
 }
@@ -71,7 +70,6 @@ recruit::recruit(config const& cfg, bool hidden)
 	, temp_unit_()
 	, valid_(true)
 	, fake_unit_()
-	, temp_cost_()
 {
 	// Validate unit_name_
 	if(!unit_types.find(unit_name_))
@@ -119,10 +117,9 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 	DBG_WB << "Inserting future recruit [" << temp_unit_->id()
 			<< "] at position " << temp_unit_->get_location() << ".\n";
 
-	temp_cost_ = temp_unit_->type()->cost();
-
+	int cost = temp_unit_->type()->cost();
 	// Add cost to money spent on recruits.
-	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(temp_cost_);
+	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(cost);
 
 	// Temporarily insert unit into unit_map
 	unit_map.insert(temp_unit_);
@@ -137,13 +134,6 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 {
 	temp_unit_ = unit_map.extract(recruit_hex_);
 	assert(temp_unit_);
-
-	/*
-	 * Remove cost from money spent on recruits.
-	 */
-	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(-temp_cost_);
-	temp_cost_ = 0;
-	resources::screen->invalidate_game_status();
 }
 
 void recruit::draw_hex(map_location const& hex)

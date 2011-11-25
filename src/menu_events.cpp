@@ -781,13 +781,11 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	const unit_type *u_type = unit_types.find(name);
 	assert(u_type);
 
-	{ wb::future_map future; // so gold takes into account planned spending
-		if (u_type->cost() > current_team.gold() - resources::whiteboard->get_spent_gold_for(side_num)) {
-			gui2::show_transient_message(gui_->video(), "",
-				_("You don’t have enough gold to recruit that unit"));
-			return false;
-		}
-	} // end planned unit map scope
+	if (u_type->cost() > current_team.gold() - resources::whiteboard->get_spent_gold_for(side_num)) {
+		gui2::show_transient_message(gui_->video(), "",
+			_("You don’t have enough gold to recruit that unit"));
+		return false;
+	}
 
 	last_recruit_ = name;
 	const events::command_disabler disable_commands;
@@ -982,19 +980,17 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	}
 
-	{ wb::future_map future; // so gold takes into account planned spending
-		int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
-		if (current_team.gold() - wb_gold < current_team.recall_cost()) {
-			utils::string_map i18n_symbols;
-			i18n_symbols["cost"] = lexical_cast<std::string>(current_team.recall_cost());
-			std::string msg = vngettext(
-				"You must have at least 1 gold piece to recall a unit",
-				"You must have at least $cost gold pieces to recall a unit",
-				current_team.recall_cost(), i18n_symbols);
-			gui2::show_transient_message(gui_->video(), "", msg);
-			return;
-		}
-	} // end planned unit map scope
+	int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
+	if (current_team.gold() - wb_gold < current_team.recall_cost()) {
+		utils::string_map i18n_symbols;
+		i18n_symbols["cost"] = lexical_cast<std::string>(current_team.recall_cost());
+		std::string msg = vngettext(
+			"You must have at least 1 gold piece to recall a unit",
+			"You must have at least $cost gold pieces to recall a unit",
+			current_team.recall_cost(), i18n_symbols);
+		gui2::show_transient_message(gui_->video(), "", msg);
+		return;
+	}
 
 	LOG_NG << "recall index: " << res << "\n";
 	const events::command_disabler disable_commands;

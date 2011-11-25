@@ -84,8 +84,6 @@ protected:
 	bool valid_;
 	fake_unit_ptr fake_unit_;
 
-	int temp_cost_;
-
 private:
 	void init();
 

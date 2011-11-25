@@ -80,7 +80,6 @@ private:
 	map_location recall_hex_;
 	bool valid_;
 	fake_unit_ptr fake_unit_;
-	int temp_cost_;
 };
 
 std::ostream& operator<<(std::ostream& s, recall_ptr recall);

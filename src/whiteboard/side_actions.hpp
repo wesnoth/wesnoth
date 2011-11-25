@@ -243,6 +243,8 @@ public:
 	int get_gold_spent() const { return gold_spent_; }
 	///Used to track gold spending by recruits/recalls when building the future unit map
 	void change_gold_spent_by(int difference) { gold_spent_ += difference; assert(gold_spent_ >= 0);}
+	///Set gold spent back to zero
+	void reset_gold_spent() { gold_spent_ = 0; }
 
 	void raw_turn_shift();
 	void synced_turn_shift();

@@ -57,8 +57,7 @@ recall::recall(size_t team_index, bool hidden, const unit& unit, const map_locat
 		temp_unit_(new class unit(unit)),
 		recall_hex_(recall_hex),
 		valid_(true),
-		fake_unit_(new class game_display::fake_unit(unit) ),
-		temp_cost_(0)
+		fake_unit_(new class game_display::fake_unit(unit) )
 {
 	this->init();
 }
@@ -69,7 +68,6 @@ recall::recall(config const& cfg, bool hidden)
 	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"])
 	, valid_(true)
 	, fake_unit_()
-	, temp_cost_(0)
 {
 	// Construct and validate temp_unit_
 	size_t underlying_id = cfg["temp_unit_"];
@@ -141,8 +139,8 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 	temp_unit_ = NULL;
 
 	//Add cost to money spent on recruits.
-	temp_cost_ = resources::teams->at(team_index()).recall_cost();
-	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(temp_cost_);
+	int cost = resources::teams->at(team_index()).recall_cost();
+	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(cost);
 
 	// Update gold in top bar
 	resources::screen->invalidate_game_status();
@@ -155,13 +153,6 @@ void recall::remove_temp_modifier(unit_map& unit_map)
 
 	//Put unit back into recall list
 	resources::teams->at(team_index()).recall_list().push_back(*temp_unit_);
-
-	/*
-	 * Remove cost from money spent on recruits.
-	 */
-	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(-temp_cost_);
-	temp_cost_ = 0;
-	resources::screen->invalidate_game_status();
 }
 
 void recall::draw_hex(map_location const& hex)
