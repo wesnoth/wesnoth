@@ -579,10 +579,7 @@ size_t side_actions::get_turn_num_of(unit const& u) const
 
 void side_actions::validate_actions()
 {
-	if (resources::whiteboard->has_planned_unit_map())
-	{
-		ERR_WB << "Validating action queue while temp modifiers are applied!!!\n";
-	}
+	assert(!resources::whiteboard->has_planned_unit_map());
 
 	bool validation_finished = false;
 	int passes = 1;

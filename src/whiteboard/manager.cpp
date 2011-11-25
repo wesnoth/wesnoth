@@ -236,7 +236,10 @@ bool manager::can_enable_reorder_hotkeys() const
 bool manager::allow_leader_to_move(unit const& leader) const
 {
 	//Look for another leader on another keep in the same castle
-	{ wb::future_map future; //< start planned unit map scope
+	{ wb::future_map future; // start planned unit map scope
+		if(!has_planned_unit_map()) {
+			WRN_WB << "Unable to build future map to determine whether leader's allowed to move.\n";
+		}
 		if(find_backup_leader(leader))
 			return true;
 	} // end planned unit map scope
@@ -360,6 +363,7 @@ bool manager::current_side_has_actions()
 void manager::validate_viewer_actions()
 {
 	assert(!executing_actions_);
+	LOG_WB << "'gamestate_mutated_' flag dirty, validating actions.\n";
 	gamestate_mutated_ = false;
 	if (viewer_actions()->empty()) return;
 	viewer_actions()->validate_actions();
@@ -1010,64 +1014,51 @@ void manager::options_dlg()
 void manager::set_planned_unit_map()
 {
 	//any more than one reference means a lock on unit map was requested
-	if(!unit_map_lock_.unique())
-	{
-		LOG_WB << "Attempt to set planned_unit_map while blocked by scoped real unit map's lock.\n";
+	if(!unit_map_lock_.unique()) {
+		LOG_WB << "Not building planned unit map: blocked unit map lock.\n";
 		return;
 	}
-	if (!executing_actions_ && !wait_for_side_init_)
-	{
-		if (!planned_unit_map_active_)
-		{
-			validate_actions_if_needed();
-			log_scope2("whiteboard", "Building planned unit map");
-			mapbuilder_.reset(new mapbuilder(*resources::units));
-			mapbuilder_->build_map();
-			planned_unit_map_active_ = true;
-		}
-		else
-		{
-			WRN_WB << "Attempt to set planned unit map when it was already set.\n";
-		}
+	if (executing_actions_) {
+		LOG_WB << "Not building planned unit map: action is executing.\n";
+		return;
 	}
-	else if (executing_actions_)
-	{
-		LOG_WB << "Attempt to set planned_unit_map during action execution.\n";
+	if (wait_for_side_init_) {
+		LOG_WB << "Not building planned unit map: waiting for side init.\n";
+		return;
 	}
-	else if (wait_for_side_init_)
-	{
-		LOG_WB << "Attempt to set planned_unit_map while waiting for side init.\n";
+	if (planned_unit_map_active_) {
+		WRN_WB << "Not building planned unit map: already set.\n";
+		return;
 	}
+
+	validate_actions_if_needed();
+	log_scope2("whiteboard", "Building planned unit map");
+	mapbuilder_.reset(new mapbuilder(*resources::units));
+	mapbuilder_->build_map();
+	planned_unit_map_active_ = true;
 }
 
 void manager::set_real_unit_map()
 {
-	if (!executing_actions_)
+	if (planned_unit_map_active_)
 	{
-		if (planned_unit_map_active_)
-		{
-			assert(mapbuilder_);
-			log_scope2("whiteboard", "Restoring regular unit map.");
-			mapbuilder_.reset();
-			planned_unit_map_active_ = false;
-		}
-		else if (!wait_for_side_init_)
-		{
-			LOG_WB << "Attempt to disable the planned unit map, when it was already disabled.\n";
-		}
+		assert(!executing_actions_);
+		assert(!wait_for_side_init_);
+		assert(mapbuilder_);
+		log_scope2("whiteboard", "Restoring regular unit map.");
+		mapbuilder_.reset();
+		planned_unit_map_active_ = false;
 	}
-	else //executing_actions_
+	else
 	{
-		DBG_WB << "Attempt to set planned_unit_map during action execution.\n";
+		LOG_WB << "Not disabling planned unit map: already disabled.\n";
 	}
 }
 
 void manager::validate_actions_if_needed()
 {
-	if (gamestate_mutated_)
-	{
-		LOG_WB << "'gamestate_mutated_' flag dirty, validating actions.\n";
-		validate_viewer_actions(); //sets gamestate_mutated_ to false
+	if (gamestate_mutated_)	{
+		validate_viewer_actions();
 	}
 }
 
