@@ -433,8 +433,6 @@ void game_display::draw_report(const std::string &report_name)
 
 void game_display::draw_sidebar()
 {
-	wb::future_map future; //< Lasts for whole method.
-
 	draw_report("report_clock");
 	draw_report("report_countdown");
 
@@ -444,6 +442,8 @@ void game_display::draw_sidebar()
 
 	if (invalidateGameStatus_)
 	{
+		wb::future_map future; // start planned unit map scope
+
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
 		foreach (const std::string &name, reports::report_list()) {
