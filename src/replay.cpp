@@ -331,7 +331,9 @@ void replay::add_rename(const std::string& name, const map_location& loc)
 void replay::init_side()
 {
 	config* const cmd = add_command();
-	cmd->add_child("init_side");
+	config init_side;
+	if(!lg::debug.dont_log("network")) init_side["side_number"] = resources::controller->current_side();
+	cmd->add_child("init_side", init_side);
 }
 
 void replay::end_turn()
