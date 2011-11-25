@@ -163,6 +163,7 @@ Version 1.9.10:
    * Introduce [unit_type]image_icon key to override image for 72x72 icons
      (FR bug #15466)
    * Added IS_LAST_SCENARIO macro, for use in [objectives] dialog.
+   * Fix [objectives]silent= not working initially in a scenario (bug #18927)
  * Miscellaneous and bug fixes:
    * Add --language/-L commandline option to set the language for that session
    * Fixed: Avoid copying of singular iterators in the whiteboard code
