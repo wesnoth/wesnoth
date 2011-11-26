@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-23 14:08+0100\n"
-"PO-Revision-Date: 2011-09-09 16:26+0700\n"
+"POT-Creation-Date: 2011-11-23 15:01+0100\n"
+"PO-Revision-Date: 2011-11-24 17:33+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -75,17 +75,13 @@ msgstr "Pantai Berbatu Karang"
 
 #. [terrain_type]: id=gray_reef
 #: data/core/terrain.cfg:93
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Gray Coastal Reef"
-msgstr "Pantai Berbatu Karang"
+msgstr "Batu Karang Pantai Abu-Abu"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:113
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Tropical Coastal Reef"
-msgstr "Pantai Berbatu Karang"
+msgstr "Batu Karang Pantai Tropis"
 
 #. [terrain_type]: id=swamp_water
 #. [terrain_type]: id=quagmire
@@ -764,10 +760,8 @@ msgstr "Kota Manusia  "
 
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1280
-#, fuzzy
-#| msgid "Ruined Hill Stone Village"
 msgid "Windmill Village"
-msgstr "Desa Batu Bukit Hancur"
+msgstr "Desa Kincir Angin"
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1293
@@ -846,10 +840,8 @@ msgstr "Desa Rawa"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1492
-#, fuzzy
-#| msgid "Swamp Merfolk Village"
 msgid "Merfolk Village"
-msgstr "Desa Manusia Duyung Rawa  "
+msgstr "Desa Manusia Duyung"
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1507
@@ -1086,10 +1078,8 @@ msgstr "Jembatan dari Kayu"
 #. [terrain_type]: id=rotbridgediag2
 #: data/core/terrain.cfg:1931 data/core/terrain.cfg:1943
 #: data/core/terrain.cfg:1955
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Rotting Bridge"
-msgstr "Jembatan dari Kayu"
+msgstr "Jembatan Busuk"
 
 #. [terrain_type]: id=stone_bridge
 #: data/core/terrain.cfg:1969 data/core/terrain.cfg:1981
@@ -1256,15 +1246,13 @@ msgstr "Tidak ada^terjemahan "
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Uninstall Add-ons"
-msgstr "Update Add-ons"
+msgstr "Menguninstal Add-ons"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
 msgid "Choose the add-ons you want to remove."
-msgstr ""
+msgstr "Pilih add-ons yang ingin anda hapus."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
@@ -1469,15 +1457,13 @@ msgstr "Salin ujung daerah"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
-#, fuzzy
-#| msgid "Choose theme"
 msgid "Choose Player"
-msgstr "Pilih tema"
+msgstr "Pilih Pemain"
 
 #. [label]: id=message
 #: data/gui/default/window/editor_set_starting_position.cfg:70
 msgid "Which player should start here?"
-msgstr ""
+msgstr "Pemain mana yang harus memulai di sini?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1487,10 +1473,8 @@ msgstr "Setting Redaktur"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:53
-#, fuzzy
-#| msgid "Time of day lighting preset"
 msgid "Time of day lighting preset:"
-msgstr "Cahaya Jam Hari set ulang"
+msgstr "Menetapkan lebih dahulu penerangan waktu:"
 
 #. [button]: id=next_tod
 #. [button]: id=next_tip
@@ -1502,15 +1486,11 @@ msgstr "Terus"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
-#, fuzzy
-#| msgid "Custom lighting setting"
 msgid "Custom lighting settings"
-msgstr "Setting cahaya buatan"
+msgstr "Setelan penerangan buatan"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:114
-#, fuzzy
-#| msgid "Auto-update map view"
 msgid "Automatically update map view"
 msgstr "Update pemandangan peta secara otomatis"
 
@@ -1532,7 +1512,7 @@ msgstr "Biru:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:231
 msgid "Allow multiple maps to be open simultaneously"
-msgstr ""
+msgstr "Biarkan beberapa peta untuk terbuka secara bersamaan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
@@ -1778,10 +1758,8 @@ msgstr "Pilih bahasa yang anda sukai:"
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
 #: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
-#, fuzzy
-#| msgid "Change language"
 msgid "Change Language"
-msgstr "Ganti bahasa"
+msgstr "Ganti Bahasa"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:109
@@ -2013,8 +1991,6 @@ msgstr "Pihak"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-#, fuzzy
-#| msgid "Nick"
 msgid "Nickname"
 msgstr "Nama"
 
@@ -2446,11 +2422,11 @@ msgstr "pemain"
 
 #: src/game_preferences.cpp:777
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/game_preferences.cpp:780
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/game_preferences_display.cpp:173
 msgid "Full screen"
@@ -2465,10 +2441,8 @@ msgid "Skip AI moves"
 msgstr "Lompati Gerakan AI"
 
 #: src/game_preferences_display.cpp:176
-#, fuzzy
-#| msgid "Interrupt move when an ally is sighted"
 msgid "Interrupt move when an ally is sighted"
-msgstr "Menyela Gerakan ketika sekutu terlihat"
+msgstr "Menyela gerakan ketika seorang sekutu terlihat"
 
 #: src/game_preferences_display.cpp:177
 msgid "Show grid"
@@ -2507,16 +2481,12 @@ msgid "Iconize lobby list"
 msgstr "Menaruh Simbul untuk Daftar Lobi"
 
 #: src/game_preferences_display.cpp:186
-#, fuzzy
-#| msgid "Save password to preferences (clear text)"
 msgid "Save password to preferences (plain text)"
-msgstr "Simpan kata sandi ke pilihan (singkirkan teks)"
+msgstr "Simpan kata sandi ke pilihan (teks biasa)"
 
 #: src/game_preferences_display.cpp:187
-#, fuzzy
-#| msgid "Set path to wesnothd"
 msgid "Set Path to wesnothd"
-msgstr "Pasang jalan ke wesnothd"
+msgstr "Setel Jalan ke wesnothd"
 
 #: src/game_preferences_display.cpp:188
 msgid "Friends List"
@@ -2548,7 +2518,7 @@ msgstr "Aktifkan Mode Perencanaan saat Mulai"
 
 #: src/game_preferences_display.cpp:196
 msgid "Hide allies’ plans by default"
-msgstr ""
+msgstr "Sembunyikan rencana-rencana sekutu"
 
 #: src/game_preferences_display.cpp:197
 msgid "Turn bell"
@@ -2607,10 +2577,8 @@ msgid "Custom"
 msgstr "Kustom"
 
 #: src/game_preferences_display.cpp:215
-#, fuzzy
-#| msgid "Show Unit Idle Animations"
 msgid "Show unit idle animations"
-msgstr "Tunjukkan Animasi Unit Bermalasan"
+msgstr "Tunjukkan animasi-animasi bermalas-malasan unit"
 
 #: src/game_preferences_display.cpp:216
 msgid "Show unit standing animations"
@@ -2736,14 +2704,10 @@ msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Kemunculan unit sekutu menyela pergerakan unit anda"
 
 #: src/game_preferences_display.cpp:369
-#, fuzzy
-#| msgid "Save replay on SP/MP victory or MP defeat"
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr "Simpan replay pada Kemenangan PS/MP atau Kekalahan MP"
+msgstr "Simpan ulangan permainan pada Kemenangan PS/MP atau Kekalahan MP"
 
 #: src/game_preferences_display.cpp:372
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Hapus Simpanan-Otomatis pada Kemenangan PS/MP atau Kekalahan MP"
 
@@ -2777,10 +2741,8 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Tunjukkan pesan tentang semua pemain bergabung ke lobi multi-pemain"
 
 #: src/game_preferences_display.cpp:394
-#, fuzzy
-#| msgid "Use new lobby interface"
 msgid "Use New Lobby Interface"
-msgstr "Gunakan alat penghubung lobi baru"
+msgstr "Gunakan Alat Penghubung Lobi Baru"
 
 #: src/game_preferences_display.cpp:396
 msgid "Find and set path to MP server to host LAN games."
@@ -2834,6 +2796,8 @@ msgstr "Mengaktifkan Mode Perencanaan saat memulai permainan"
 #: src/game_preferences_display.cpp:419
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
 msgstr ""
+"Sembunyikan rencana Mode Perencanaan sekutu dalam permainan-permainan "
+"multipemain"
 
 #: src/game_preferences_display.cpp:422
 msgid "Play a bell sound at the beginning of your turn"
@@ -2920,10 +2884,8 @@ msgid "Advanced section^Advanced"
 msgstr "Terlaju"
 
 #: src/game_preferences_display.cpp:1292
-#, fuzzy
-#| msgid "Choose theme"
 msgid "Choose Theme"
-msgstr "Pilih tema"
+msgstr "Pilih Tema"
 
 #: src/game_preferences_display.cpp:1307
 msgid "New theme will take effect on next new or loaded game."
@@ -3055,13 +3017,11 @@ msgstr "Kampanye: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:305
 msgid "Test scenario"
-msgstr ""
+msgstr "Menguji skenario"
 
 #: src/gui/dialogs/game_load.cpp:313
-#, fuzzy
-#| msgid "replay"
 msgid "Replay"
-msgstr "permainan ulang"
+msgstr "Ulangan permainan"
 
 #: src/gui/dialogs/game_load.cpp:315
 msgid "Turn"
@@ -3142,7 +3102,7 @@ msgstr "Sedang Load Permainan..."
 #: src/gui/dialogs/network_transmission.cpp:55
 #: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1178
 msgid "unit_byte^B"
-msgstr ""
+msgstr "unit_byte^B"
 
 #: src/gui/dialogs/title_screen.cpp:296
 msgid "Version "
@@ -3191,8 +3151,6 @@ msgid "Right Mouse Click"
 msgstr "Klik Mouse Kanan  "
 
 #: src/hotkeys.cpp:55
-#, fuzzy
-#| msgid "Animate map"
 msgid "Animate Map"
 msgstr "Buat Peta"
 
@@ -3237,8 +3195,6 @@ msgid "Default Zoom"
 msgstr "Zoom Default"
 
 #: src/hotkeys.cpp:66
-#, fuzzy
-#| msgid "Toggle Full screen"
 msgid "Toggle Full Screen"
 msgstr "Pasang Layar Penuh"
 
@@ -3295,10 +3251,8 @@ msgid "Toggle Grid"
 msgstr "Pasang Kisi"
 
 #: src/hotkeys.cpp:82
-#, fuzzy
-#| msgid "Mouse scrolling"
 msgid "Mouse Scrolling"
-msgstr "Gulungan Tetikus"
+msgstr "Gulungkan Mouse"
 
 #: src/hotkeys.cpp:83
 msgid "Status Table"
@@ -3329,16 +3283,12 @@ msgid "Statistics"
 msgstr "Statistik"
 
 #: src/hotkeys.cpp:92
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Pause Network Game"
-msgstr "Host Permainan Jaringan"
+msgstr "Jeda Permainan Jaringan"
 
 #: src/hotkeys.cpp:93
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Continue Network Game"
-msgstr "Host Permainan Jaringan"
+msgstr "Lanjutkan Permainan Jaringan"
 
 #: src/hotkeys.cpp:95
 msgid "Set Team Label"
@@ -3361,22 +3311,16 @@ msgid "Best Possible Enemy Moves"
 msgstr "Tunjukkan Gerakan Musuh Mungkin Terbaik"
 
 #: src/hotkeys.cpp:100
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Play Replay"
-msgstr "Simpan Replay"
+msgstr "Memainkan Ulangan Permainan"
 
 #: src/hotkeys.cpp:101
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Reset Replay"
-msgstr "Simpan Replay"
+msgstr "Mengulang Lagi Ulangan Permainan"
 
 #: src/hotkeys.cpp:102
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Stop Replay"
-msgstr "Simpan Replay"
+msgstr "Hentikan Ulangan Permainan"
 
 #: src/hotkeys.cpp:103
 msgid "Next Turn"
@@ -3467,10 +3411,8 @@ msgid "Map Information"
 msgstr "Informasi Peta"
 
 #: src/hotkeys.cpp:134
-#, fuzzy
-#| msgid "Swap fore- and background terrains"
 msgid "Swap Foreground/Background Terrains"
-msgstr "Tukar daerah latar depan dan latar belakang"
+msgstr "Tukar daerah Latar Depan/ Latar Belakang"
 
 #: src/hotkeys.cpp:135
 msgid "Next Tool"
@@ -3641,10 +3583,8 @@ msgid "Custom Command"
 msgstr "Perintah Kustom"
 
 #: src/hotkeys.cpp:208
-#, fuzzy
-#| msgid "Run AI formula"
 msgid "Run Formula"
-msgstr "Gunakan formula AI"
+msgstr "Gunakan Formula"
 
 #: src/hotkeys.cpp:209
 msgid "Clear Messages"
@@ -3667,40 +3607,28 @@ msgid "Start Tutorial"
 msgstr "Memulai pelatihan"
 
 #: src/hotkeys.cpp:241
-#, fuzzy
-#| msgid "Start a campaign"
 msgid "Start Campaign"
-msgstr "Mainkan kampanye"
+msgstr "Mainkan Kampanye"
 
 #: src/hotkeys.cpp:248
-#, fuzzy
-#| msgid "Start a multiplayer game"
 msgid "Start Multiplayer Game"
-msgstr "Memulai permainan multiplayer"
+msgstr "Memulai Permainan Multiplayer"
 
 #: src/hotkeys.cpp:255
-#, fuzzy
-#| msgid "Manage addons"
 msgid "Manage Add-ons"
-msgstr "Mengelola addons"
+msgstr "Mengelola Add-ons"
 
 #: src/hotkeys.cpp:262
-#, fuzzy
-#| msgid "Start the editor"
 msgid "Start Editor"
-msgstr "Memulai editor"
+msgstr "Memulai Editor"
 
 #: src/hotkeys.cpp:269
-#, fuzzy
-#| msgid "Show the credits"
 msgid "Show Credits"
-msgstr "Tampilkan kredit"
+msgstr "Tampilkan Daftar Penghargaan"
 
 #: src/hotkeys.cpp:277
-#, fuzzy
-#| msgid "Show the helptip"
 msgid "Show Helptip"
-msgstr "Tampilkan info bantuan"
+msgstr "Tampilkan Info Bantuan"
 
 #: src/hotkeys.cpp:875 src/hotkeys.cpp:1220
 msgid "Do you really want to quit?"
@@ -3757,10 +3685,8 @@ msgid "Landform:"
 msgstr "Bentuk tanah:"
 
 #: src/mapgen_dialog.cpp:249
-#, fuzzy
-#| msgid "Roads Between Castles"
 msgid "Roads between castles"
-msgstr "Jalan Di Antara Istana"
+msgstr "Jalan-jalan di antara istana-istana"
 
 #: src/mapgen_dialog.cpp:306
 msgid "/1000 tiles"
@@ -3797,10 +3723,8 @@ msgid "Hotkey Settings"
 msgstr "Setting Hotkey"
 
 #: src/preferences_display.cpp:282 src/preferences_display.cpp:351
-#, fuzzy
-#| msgid "Press desired Hotkey (Esc cancels)"
 msgid "Press desired hotkey (Esc cancels)"
-msgstr "Pilih Hotkey yang diinginkan (Esc membatalkan)"
+msgstr "Tekan hotkey yang diinginkan (Esc membatalkan)"
 
 #: src/preferences_display.cpp:301
 msgid "Action"
@@ -3820,25 +3744,20 @@ msgstr "Singkir Hotkey"
 
 #: src/preferences_display.cpp:394 src/preferences_display.cpp:402
 #: src/preferences_display.cpp:414
-#, fuzzy
-#| msgid "This Hotkey is already in use."
 msgid "This hotkey is already in use."
 msgstr "Hotkey ini sudah dipakai."
 
 #: src/preferences_display.cpp:429
-#, fuzzy
-#| msgid ""
-#| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
 "Screenshot hotkeys should be combined with the Control, Alt or Meta "
 "modifiers to avoid problems."
 msgstr ""
-"Peringatan: hotkey gambar layar tidak disatukan dengan tombol Control, Alt "
-"atau Meta."
+"Hotkey gambar layar harus disatukan dengan para pemodifikasi Control, Alt "
+"atau Meta untuk menghindari masalah."
 
 #: src/preferences_display.cpp:429
 msgid "Warning"
-msgstr ""
+msgstr "Peringatan"
 
 #: src/preferences_display.cpp:530
 msgid "There are no alternative video modes available"

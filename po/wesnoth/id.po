@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-23 15:01+0100\n"
-"PO-Revision-Date: 2011-08-24 17:10+0700\n"
+"PO-Revision-Date: 2011-11-24 17:31+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -25,10 +25,8 @@ msgstr "Mengompres Simpanan "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
-#, fuzzy
-#| msgid "Confirm deleting saves"
 msgid "Confirm deleting saves"
-msgstr "mengkonfirmasi menghapus file tersimpan"
+msgstr "Mengkonfirmasi penghapusan file tersimpan"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:18
@@ -42,24 +40,20 @@ msgstr "Klik tengah Scroll Mouse"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#, fuzzy
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep scrolling when mouse leaves window"
-msgstr "Tetap gulungkan ketika tetikus meninggalkan jendela"
+msgstr "Tetap gulungkan ketika mouse meninggalkan jendela"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
-#, fuzzy
-#| msgid "Local time of day light"
 msgid "Local time of day area lighting"
-msgstr "Siang hari waktu setempat"
+msgstr "Menerangi daerah siang hari waktu setempat"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
-#, fuzzy
-#| msgid "Local time of day light effect (use more memory)."
 msgid "Custom lighting for local time of day areas (uses more memory)"
-msgstr "Efek siang hari waktu setempat (menggunakan memori  lebih)."
+msgstr ""
+"Membuat penerangan untuk daerah siang hari waktu setempat (menggunakan lebih "
+"banyak memori)."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
@@ -78,51 +72,37 @@ msgstr "Ping Waktu Habis"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
 msgstr ""
-"beberapa detik sebelum suara berdesing tanda kita beristirahat. batalkan "
-"dengan menekan 0."
+"Beberapa detik sebelum suara berdesing tanda kita beristirahat. Batalkan "
+"dengan menekan 0"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
-#, fuzzy
-#| msgid "Accept whisper messages from friends only"
 msgid "Accept whispers from friends only"
-msgstr "Hanya menerima bisikan pesan  dari teman saja"
+msgstr "Hanya menerima bisikan pesan dari teman saja"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
-#, fuzzy
-#| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open whisper windows in lobby"
 msgstr "Otomatis membuka jendela bisikan di pintu masuk"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
-#, fuzzy
-#| msgid "Group players in lobby"
 msgid "Group players in lobby"
-msgstr "grup pemain di ruangan masuk"
+msgstr "Kelompok pemain di ruangan masuk"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid "Lobby sounds"
 msgid "Lobby sounds"
-msgstr "suara ruangan masuk"
+msgstr "Suara ruangan masuk"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
-#, fuzzy
-#| msgid "Disable notifications"
 msgid "Disable notifications"
-msgstr "Matikan pemberitahuan."
+msgstr "Matikan pemberitahuan"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
@@ -151,35 +131,31 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
 msgid "Chat message aging"
-msgstr ""
+msgstr "Menyimpan lama pesan obrolan"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:133
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
 msgstr ""
-"beberapa detik sebelum suara berdesing tanda kita beristirahat. batalkan "
-"dengan menekan 0."
+"Beberapa detik sebelum pembersihan semua pesan obrolan di dalam game. "
+"Batalkan dengan menekan 0"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
 msgid "Use 12-hour clock format"
-msgstr ""
+msgstr "Gunakan format waktu 12-jam"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:150
 msgid "Confirm loading of saves from a different version"
-msgstr ""
+msgstr "Konfirmasi pemuatan game-game tersimpan dari versi yang berbeda"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "Tampilkan jenis semua unit dalam bantuan"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:158
@@ -187,6 +163,8 @@ msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
+"Tampilkan jenis semua unit dalam bantuan (memerlukan restart).  Ini tidak "
+"mengubah daftar unit yang dihadapi"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:166
@@ -220,10 +198,8 @@ msgstr "Joystick:  Zona mati dari Stick Bergulir"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:223
-#, fuzzy
-#| msgid "Joystick: number of the cursor X-axis joystick"
 msgid "Joystick: number of the cursor X-axis joystick"
-msgstr "Joystick: Jumlah Kursor Joystick sumbu-X "
+msgstr "Joystik: jumlah kursor joystik sumbu-X "
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:233
@@ -2143,10 +2119,8 @@ msgstr "Tujuan bonus:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "This is the last scenario."
-msgstr "Skenario jauh"
+msgstr "Ini adalah skenario terakhir."
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -2281,22 +2255,15 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units only reach their full strength during twilight.\n"
 "\n"
 "Day: −25% Damage\n"
 "Night: −25% Damage"
 msgstr ""
-"Unit baik bertarung lebih baik pada pagi dan siang hari, dan lebih buruk "
-"pada malam hari.\n"
+"Unit-unit liminal hanya mencapai kekuatan maksimal pada waktu senjakala.\n"
 "\n"
-"Siang: +25% Luka\n"
+"Siang: −25% Luka\n"
 "Malam: −25% Luka"
 
 #. [language]
@@ -2483,7 +2450,7 @@ msgstr "dingin"
 #. [language]
 #: data/english.cfg:52
 msgid "arcane"
-msgstr "arkana"
+msgstr "misterius"
 
 #. [server]
 #: data/game_config.cfg:4
@@ -2670,18 +2637,15 @@ msgstr "<i>― Komunitas Wesnoth</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
-#| msgid ""
-#| "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-#| "better at night. <i>Neutral</i> units are unaffected by the time of day."
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>liminal</i> units fight best during twilight."
 msgstr ""
-"Unit-unit <i>Taat hukum</i> bertarung lebih baik pada siang hari, dan unit-"
-"unit <i>semrawut</i> bertarung lebih baik pada malam hari. Unit-unit "
-"<i>neutral</i> tidak terpengaruh oleh waktu."
+"Unit-unit <i>Baik</i> bertarung lebih baik pada siang hari, dan unit-unit "
+"<i>brutal</i> bertarung lebih baik pada malam hari. Unit-unit <i>netral</i> "
+"tidak terpengaruh oleh waktu. Unit-unit <i>liminal</i> yang langka bertarung "
+"paling baik pada senjakala."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
@@ -2707,13 +2671,6 @@ msgstr "<i>― Haldric II, 42YW, Buku Pedoman Analisa Taktis: Jilid I</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
-#, fuzzy
-#| msgid ""
-#| "If you are playing with <b>Shroud</b> or <b>Fog of war</b> active, you "
-#| "won’t know what you’re facing. In this case, long-range scouting units "
-#| "are worth their cost. Try to choose scouts that can easily move across "
-#| "the surrounding terrain, because units can only see as far as they can "
-#| "move in one turn."
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
@@ -2841,12 +2798,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:88
-#, fuzzy
-#| msgid ""
-#| "On maps where <i>Shroud</i> or <i>Fog of war</i> has been enabled, all "
-#| "units’ sightlines are limited by their maximum movement. If you have some "
-#| "valuable but slow units, keep at least one fast unit with them so that "
-#| "you are not caught out by a surprise attack."
 msgid ""
 "On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
 "units’ sightlines are limited by their maximum movement. If you have some "
@@ -2978,7 +2929,7 @@ msgid ""
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
 "Kerangka kebal dari serangan penusuk, senjata tajam dan serangan dingin "
-"tetapi lemah melawan serangan peremuk, api dan arkana."
+"tetapi lemah melawan serangan peremuk, api dan misterius."
 
 #. [tip]
 #: data/hardwired/tips.cfg:132
@@ -3102,7 +3053,7 @@ msgid ""
 "lower-level units instead."
 msgstr ""
 "Daripada menaikkan level, unit-unit berlevel tinggi mendapatkan bonus "
-"<i>Kenaikan Level Setelah Level Maksimum<i> (KLSLM), yang biasanya menambah "
+"<i>Kenaikan Level Setelah Level Maksimum</i> (KLSLM), yang biasanya menambah "
 "darah maksimum unit itu dengan tiga dan memberikan kesembuhan penuh "
 "kepadanya. Ini jauh lebih sedikit dari manfaat biasa yang didapatkan dari "
 "kenaikan level, jadi biasanya lebih bijaksana mencoba menaikkan level unit-"
@@ -3206,10 +3157,10 @@ msgid ""
 "as inevitably happens from time to time."
 msgstr ""
 "Cobalah untuk menjalankan unit-unit dengan sejumlah kecil serangan kuat—"
-"seperti Ahli Nujum, Penunggang Kuda, Orc Pendengkur atau Para Dwarvish "
-"Thunderer—berpasangan atau bertiga. Ini membuat anda dapat mencoba lagi "
-"setiap kali serangan pertama menghancurkan anda luput — sebagai peristiwa "
-"tak terelakkan dari waktu ke waktu."
+"seperti Ahli Nujum, Penunggang Kuda, Orc Muda atau Para Dwarvish Thunderer—"
+"berpasangan atau bertiga. Ini membuat anda dapat mencoba lagi setiap kali "
+"serangan pertama menghancurkan anda luput — sebagai peristiwa tak terelakkan "
+"dari waktu ke waktu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:212
@@ -3552,10 +3503,8 @@ msgstr "Visi"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#, fuzzy
-#| msgid "Skip Animation"
 msgid "Skip animation"
-msgstr "Lompatkan animasi"
+msgstr "Lompati animasi"
 
 #: src/about.cpp:204 src/menu_events.cpp:324 src/menu_events.cpp:351
 #: src/statistics_dialog.cpp:114
@@ -3641,7 +3590,7 @@ msgstr "(tekan $hotkey untuk pindah terus)"
 
 #: src/addon/manager.cpp:423
 msgid "unit_byte^B"
-msgstr ""
+msgstr "unit_byte^B"
 
 #: src/addon/manager.cpp:440
 msgid "addon_type^Campaign"
@@ -3946,6 +3895,8 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"Menghapus  '$addon|' akan secara permanen menghapus download-nya dan upload "
+"berarti pada server pengaya. Apakah anda benar-benar ingin melanjutkan?"
 
 #: src/addon/manager.cpp:1361
 msgid "Network communication error."
@@ -3968,11 +3919,9 @@ msgid "You have no add-ons installed."
 msgstr "Anda tidak memiliki tambahan terinstal."
 
 #: src/addon/manager.cpp:1418
-#, fuzzy
-#| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] "Apakah anda yakin anda mau menghapus add-on '$addon|'?"
+msgstr[0] "Apakah anda yakin anda mau menghapus add-on terinstal berikut?"
 
 #: src/addon/manager.cpp:1444
 msgid ""
@@ -3982,30 +3931,23 @@ msgid_plural ""
 "The following add-ons appear to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr[0] ""
+"Add-on berikut tampaknya telah menerbitkan atau versi  informasi kontrol "
+"disimpan secara lokal, dan tidak akan dihapus:"
 
 #: src/addon/manager.cpp:1454
-#, fuzzy
-#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
-msgstr[0] "Tambahan tidak bisa dihapus dengan benar:"
+msgstr[0] "Add-on berikut tidak bisa dihapus sebagaimana mestinya:"
 
 #: src/addon/manager.cpp:1461
-#, fuzzy
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
-msgstr[0] "Tambahan sudah dihapus"
+msgstr[0] "Add-on sudah dihapus"
 
 #: src/addon/manager.cpp:1463
-#, fuzzy
-#| msgid "The following add-on had errors and could not be loaded:"
-#| msgid_plural "The following add-ons had errors and could not be loaded:"
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
-msgstr[0] ""
-"1 Add-on berikut memiliki error dan tidak bisa diload: Semua add-on berikut "
-"memiliki error dan tidak bisa diload:"
+msgstr[0] "Add-on berikut telah berhasil dihapus:"
 
 #: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
@@ -4072,10 +4014,8 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %d %b %H:%M %Y"
 
 #: src/dialogs.cpp:454 src/savegame.cpp:136
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %d %b %H:%M %Y"
+msgstr "%a %b %d %I:%M %p %Y"
 
 #: src/dialogs.cpp:470
 msgid "#(Invalid)"
@@ -4094,10 +4034,8 @@ msgid "Tutorial"
 msgstr "Latihan"
 
 #: src/dialogs.cpp:499
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "Test scenario"
-msgstr "Skenario jauh"
+msgstr "Menguji skenario"
 
 #: src/dialogs.cpp:509 src/savegame.cpp:1050
 msgid "Turn"
@@ -4126,17 +4064,15 @@ msgstr "%H:%M"
 
 #: src/dialogs.cpp:550 src/reports.cpp:1218 src/savegame.cpp:176
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/dialogs.cpp:555 src/savegame.cpp:181
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:558 src/savegame.cpp:184
-#, fuzzy
-#| msgid "%A, %H:%M"
 msgid "%A, %I:%M %p"
-msgstr "%A, %H:%M"
+msgstr "%A, %I:%M %p"
 
 #: src/dialogs.cpp:562 src/savegame.cpp:188
 msgid "%b %d"
@@ -4337,12 +4273,9 @@ msgid "Turn "
 msgstr "Giliran"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
-#, fuzzy
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] "Tempat kosong"
+msgstr[0] "Tempat Kosong:"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:306 src/multiplayer_lobby.cpp:560
 msgid "Fog"
@@ -4515,7 +4448,7 @@ msgstr "Apakah anda benar-benar mau memecat dia?"
 
 #: src/menu_events.cpp:102
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr "Tuan, unit ini berpengalaman, memiliki level tinggi!"
+msgstr "Tuan, unit ini berpengalaman, memiliki level tinggi! "
 
 #: src/menu_events.cpp:106
 msgid "My lord, this unit is close to advancing a level! "
@@ -4710,7 +4643,7 @@ msgstr ""
 
 #: src/menu_events.cpp:872
 msgid "You currently can't recall at the highlighted location"
-msgstr ""
+msgstr "Anda saat ini tidak dapat memanggil kembali di lokasi yang disorot"
 
 #: src/menu_events.cpp:884
 msgid "Traits"
@@ -4856,10 +4789,8 @@ msgstr ""
 #: src/menu_events.cpp:2335 src/menu_events.cpp:2338 src/menu_events.cpp:2340
 #: src/menu_events.cpp:2342 src/menu_events.cpp:2344 src/menu_events.cpp:2371
 #: src/menu_events.cpp:2373 src/menu_events.cpp:2375 src/menu_events.cpp:2389
-#, fuzzy
-#| msgid "<nick>"
 msgid "<nickname>"
-msgstr "<nick>"
+msgstr "<nama>"
 
 #: src/menu_events.cpp:2337
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -4884,16 +4815,12 @@ msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Mute semua peninjau."
 
 #: src/menu_events.cpp:2356
-#, fuzzy
-#| msgid ""
-#| "Report abuse, rule violations, etc. to the server moderators. Make sure "
-#| "to mention relevant nicks, etc."
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
-"Laporkan penyalahgunaan, pelanggaran aturan, dll. ke moderator server. "
-"Pastikan untuk menyebutkan nick yang relevan, dll."
+"Laporkan penyalahgunaan, pelanggaran aturan, dll. ke para moderator server. "
+"Pastikan untuk menyebutkan nama yang relevan, dll."
 
 #: src/menu_events.cpp:2360
 msgid "<message>"
@@ -4913,10 +4840,8 @@ msgstr ""
 "mainkan."
 
 #: src/menu_events.cpp:2365
-#, fuzzy
-#| msgid "<nick> <message>"
 msgid "<nickname> <message>"
-msgstr "<nick> <message>"
+msgstr "<nama> <pesan>"
 
 #: src/menu_events.cpp:2369
 msgid "<level> <domain>"
@@ -4927,22 +4852,16 @@ msgid "Change the log level of a log domain."
 msgstr "Ganti level log domain."
 
 #: src/menu_events.cpp:2371
-#, fuzzy
-#| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
 msgstr "Menambahkan sebuah nama ke daftar abaian anda."
 
 #: src/menu_events.cpp:2373
-#, fuzzy
-#| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
-msgstr "Menambahkan sebuah nama ke daftar teman anda.a"
+msgstr "Menambahkan sebuah nama ke daftar teman anda."
 
 #: src/menu_events.cpp:2375
-#, fuzzy
-#| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
-msgstr "Menghapus sebuah nama dari daftar abaian atau teman anda."
+msgstr "Menghapus sebuah nama dari daftar abaian atau daftar teman anda."
 
 #: src/menu_events.cpp:2377
 msgid "Show your ignores and friends list."
@@ -4957,39 +4876,31 @@ msgid "<password> <email (optional)>"
 msgstr "<password> <email (optional)>"
 
 #: src/menu_events.cpp:2382
-#, fuzzy
-#| msgid "Register your nick"
 msgid "Register your nickname"
 msgstr "Mendaftarkan nama anda."
 
 #: src/menu_events.cpp:2384
-#, fuzzy
-#| msgid "Drop your nick."
 msgid "Drop your nickname."
-msgstr "Rubah nama anda."
+msgstr "Membatalkan nama anda."
 
 #: src/menu_events.cpp:2386
-#, fuzzy
-#| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
-"Mengupdate detil untuk nama anda. Untuk detil yang mungkin lihat '/details'."
+"Mengupdate perincian untuk nama anda. Untuk perincian yang tepat lihat '/"
+"details'."
 
 #: src/menu_events.cpp:2387
 msgid "<detail> <value>"
 msgstr "<detail> <value>"
 
 #: src/menu_events.cpp:2389
-#, fuzzy
-#| msgid "Request information about a nick."
 msgid "Request information about a nickname."
 msgstr "Meminta informasi tentang sebuah nama."
 
 #: src/menu_events.cpp:2391
-#, fuzzy
-#| msgid "Request a list of details you can set for your registered nick."
 msgid "Request a list of details you can set for your registered nickname."
-msgstr "Meminta daftar detil yang anda bisa pasang untuk nama terdaftar anda."
+msgstr ""
+"Meminta daftar perincian yang anda bisa pasang untuk nama terdaftar anda."
 
 #: src/menu_events.cpp:2393 src/menu_events.cpp:2396 src/menu_events.cpp:2398
 msgid "<room>"
@@ -5052,10 +4963,8 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<side> [on/off]]"
 
 #: src/menu_events.cpp:2546
-#, fuzzy
-#| msgid "<side> <nick>"
 msgid "<side> <nickname>"
-msgstr "<side> <nick>"
+msgstr "<pihak> <nama>"
 
 #: src/menu_events.cpp:2546
 msgid "Assign control of a side to a different player or observer."
@@ -5242,14 +5151,12 @@ msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Setel menaruh kode daerah di atas heks."
 
 #: src/menu_events.cpp:2633
-#, fuzzy
-#| msgid "Toggle Planning Mode."
 msgid "Toggle planning mode."
 msgstr "Setel mode perencanaan."
 
 #: src/menu_events.cpp:2636
 msgid "Access whiteboard options dialog."
-msgstr ""
+msgstr "Mengakses dialog pilihan papan tulis."
 
 #: src/menu_events.cpp:2679
 msgid "Unknown debug level: '$level'."
@@ -5404,16 +5311,12 @@ msgid "Variable not found"
 msgstr "Variabel tidak ditemukan"
 
 #: src/menu_events.cpp:3518
-#, fuzzy
-#| msgid ""
-#| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, or "
-#| "chaotic."
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
-"Membenarkan yang salah: '$alignment', harus menjadi salah satu dari sah "
-"menurut hukum, netral atau semrawut."
+"Penjajaran salah: '$alignment', harus menjadi salah satu dari baik, netral, "
+"brutal atau liminal."
 
 #: src/menu_events.cpp:3574
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -5485,19 +5388,14 @@ msgid "Connection timed out"
 msgstr "Koneksi timed out."
 
 #: src/multiplayer.cpp:239
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' is inactive. You cannot claim ownership of this nick "
-#| "until you activate your account via email or ask an administrator to do "
-#| "it for you."
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
-"Nama '$nick' tidak aktif. Anda tidak dapat mengklaim kepemilikan nick ini "
-"sampai Anda mengaktifkan account  Anda melalui email atau meminta "
-"administrator untuk melakukannya untuk Anda."
+"Nama '$nick' tidak aktif. Anda tidak dapat mengklaim kepemilikan nama ini "
+"sampai anda mengaktifkan nama anda melalui email atau meminta seorang "
+"pengurus untuk melakukannya untuk anda."
 
 #: src/multiplayer.cpp:248
 msgid "Do you want to continue?"
@@ -5516,65 +5414,45 @@ msgid "You must login first."
 msgstr "Anda harus pertama-tama login."
 
 #: src/multiplayer.cpp:337
-#, fuzzy
-#| msgid "The nick '$nick' is already taken."
 msgid "The nickname ‘$nick’ is already taken."
-msgstr "Nama '$nick' sudah diambil."
+msgstr "Nama '$nick' sudah digunakan."
 
 #: src/multiplayer.cpp:339
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
 msgstr ""
-"Nama '$nick' memiliki karakter tidak berlaku. Hanya huruf, angka, garis "
-"bawah dan strip dibolehkan."
+"Nama '$nick' berisi karakter yang tidak berlaku. Hanya huruf, angka, garis "
+"bawah dan strip yang dibolehkan."
 
 #: src/multiplayer.cpp:343
-#, fuzzy
-#| msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Nama '$nick' terlalu panjang. Nama harus memiliki 20 karakter atau kurang."
 
 #: src/multiplayer.cpp:346
-#, fuzzy
-#| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
-msgstr "Nama '$nick' dilindungi dan tidak bisa digunakan oleh pemain."
+msgstr "Nama '$nick' dipesan dan tidak bisa digunakan oleh para pemain."
 
 #: src/multiplayer.cpp:348
-#, fuzzy
-#| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Nama '$nick' tidak terdaftar di server ini"
 
 #: src/multiplayer.cpp:349
-#, fuzzy
-#| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
 msgstr "Server ini tidak membolehkan nama-nama tidak terdaftar."
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:353
-#, fuzzy
-#| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Nama '$nick' terdaftar di server ini"
 
 #: src/multiplayer.cpp:354
-#, fuzzy
-#| msgid ""
-#| "WARNING: There is already a client using this nick, logging in will cause "
-#| "that client to be kicked!"
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
-"PERINGATAN: Sudah ada sebuah klien menggunakan nama ini, melog in akan "
-"menyebabkan klien tersebut ditendang!"
+"PERINGATAN: Sudah ada seorang klien menggunakan nama ini, melog masuk akan "
+"menyebabkan klien tersebut terusir!"
 
 #: src/multiplayer.cpp:357
 msgid ""
@@ -5588,7 +5466,7 @@ msgstr "Kata sandi yang anda berikan salah."
 
 #: src/multiplayer.cpp:362
 msgid "You have made too many login attempts."
-msgstr ""
+msgstr "Anda telah terlalu banyak mencoba login."
 
 #: src/multiplayer_connect.cpp:100 src/multiplayer_connect.cpp:449
 #: src/multiplayer_connect.cpp:597
@@ -6392,8 +6270,6 @@ msgid "(Att / Def)"
 msgstr "(Ser / Per)"
 
 #: src/reports.cpp:443
-#, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Pemodifikasi Pengalaman:"
 
@@ -6475,7 +6351,7 @@ msgstr "Kemampuan khusus senjata:"
 
 #: src/reports.cpp:773
 msgid "None"
-msgstr ""
+msgstr "Tidak ada"
 
 #: src/reports.cpp:965
 msgid "Lawful units: "
@@ -6487,12 +6363,11 @@ msgstr "Unit netral:"
 
 #: src/reports.cpp:967
 msgid "Chaotic units: "
-msgstr "Unit semrawut:"
+msgstr "Unit brutal:"
 
 #: src/reports.cpp:968
-#, fuzzy
 msgid "Liminal units: "
-msgstr "Unit baik:"
+msgstr "Unit-unit liminal:"
 
 #: src/reports.cpp:1181
 msgid "Observers:"
@@ -6630,75 +6505,75 @@ msgstr " $error, value '$value' di $pos"
 
 #: src/serialization/string_utils.cpp:299
 msgid "prefix_milli^m"
-msgstr ""
+msgstr "prefix_milli^m"
 
 #: src/serialization/string_utils.cpp:300
 msgid "prefix_micro^µ"
-msgstr ""
+msgstr "prefix_micro^µ"
 
 #: src/serialization/string_utils.cpp:301
 msgid "prefix_nano^n"
-msgstr ""
+msgstr "prefix_nano^n"
 
 #: src/serialization/string_utils.cpp:302
 msgid "prefix_pico^p"
-msgstr ""
+msgstr "prefix_pico^p"
 
 #: src/serialization/string_utils.cpp:303
 msgid "prefix_femto^f"
-msgstr ""
+msgstr "prefix_femto^f"
 
 #: src/serialization/string_utils.cpp:304
 msgid "prefix_atto^a"
-msgstr ""
+msgstr "prefix_atto^a"
 
 #: src/serialization/string_utils.cpp:305
 msgid "prefix_zepto^z"
-msgstr ""
+msgstr "prefix_zepto^z"
 
 #: src/serialization/string_utils.cpp:306
 msgid "prefix_yocto^y"
-msgstr ""
+msgstr "prefix_yocto^y"
 
 #: src/serialization/string_utils.cpp:318
 msgid "prefix_kibi^K"
-msgstr ""
+msgstr "prefix_kibi^K"
 
 #: src/serialization/string_utils.cpp:319
 msgid "prefix_kilo^k"
-msgstr ""
+msgstr "prefix_kilo^k"
 
 #: src/serialization/string_utils.cpp:321
 msgid "prefix_mega^M"
-msgstr ""
+msgstr "prefix_mega^M"
 
 #: src/serialization/string_utils.cpp:322
 msgid "prefix_giga^G"
-msgstr ""
+msgstr "prefix_giga^G"
 
 #: src/serialization/string_utils.cpp:323
 msgid "prefix_tera^T"
-msgstr ""
+msgstr "prefix_tera^T"
 
 #: src/serialization/string_utils.cpp:324
 msgid "prefix_peta^P"
-msgstr ""
+msgstr "prefix_peta^P"
 
 #: src/serialization/string_utils.cpp:325
 msgid "prefix_exa^E"
-msgstr ""
+msgstr "prefix_exa^E"
 
 #: src/serialization/string_utils.cpp:326
 msgid "prefix_zetta^Z"
-msgstr ""
+msgstr "prefix_zetta^Z"
 
 #: src/serialization/string_utils.cpp:327
 msgid "prefix_yotta^Y"
-msgstr ""
+msgstr "prefix_yotta^Y"
 
 #: src/serialization/string_utils.cpp:341
 msgid "infix_binary^i"
-msgstr ""
+msgstr "infix_binary^i"
 
 #: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:126
 msgid "Recruits"
@@ -6833,9 +6708,8 @@ msgid "lawful"
 msgstr "baik"
 
 #: src/unit_types.cpp:976
-#, fuzzy
 msgid "liminal"
-msgstr "setia"
+msgstr "liminal"
 
 #: src/unit_types.cpp:976
 msgid "neutral"
@@ -6850,9 +6724,8 @@ msgid "female^lawful"
 msgstr "baik"
 
 #: src/unit_types.cpp:977
-#, fuzzy
 msgid "female^liminal"
-msgstr "setia"
+msgstr "liminal wanita"
 
 #: src/unit_types.cpp:977
 msgid "female^neutral"
@@ -6860,27 +6733,23 @@ msgstr "netral"
 
 #: src/whiteboard/manager.cpp:961
 msgid "SHOW ALL allies’ plans"
-msgstr ""
+msgstr "TUNJUKKAN SEMUA rencana sekutu"
 
 #: src/whiteboard/manager.cpp:962
 msgid "HIDE ALL allies’ plans"
-msgstr ""
+msgstr "SEMBUNYIKAN SEMUA rencana sekutu"
 
 #: src/whiteboard/manager.cpp:976
-#, fuzzy
-#| msgid "Show replay"
 msgid "Show plans for $player"
-msgstr "Tunjukkan permainan ulang"
+msgstr "Tunjukkan rencana untuk $player"
 
 #: src/whiteboard/manager.cpp:978
-#, fuzzy
-#| msgid "Replace with $player"
 msgid "Hide plans for $player"
-msgstr "Gantikan oleh $player"
+msgstr "Sembunyikan rencana untuk $player"
 
 #: src/whiteboard/manager.cpp:981
 msgid "Whiteboard Options"
-msgstr ""
+msgstr "Pilihan Papan Tulis Putih"
 
 #~ msgid ""
 #~ "Some units have planned actions left. Do you really want to end your turn?"
@@ -6903,7 +6772,6 @@ msgstr ""
 #~ msgid "Add-on '$addon|' deleted."
 #~ msgstr "Add-on '$addon|' sudah dihapus."
 
-#, fuzzy
 #~| msgid "Invalid location"
 #~ msgid "Invalid WML found"
 #~ msgstr "lokasi Tidak Berlaku"
