@@ -332,7 +332,7 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		case TIMER_EVENT:
-			execute_timer(reinterpret_cast<unsigned long>(event.user.data1));
+			execute_timer(reinterpret_cast<long>(event.user.data1));
 			break;
 
 		case CLOSE_WINDOW_EVENT:
