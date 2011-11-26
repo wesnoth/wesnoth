@@ -1023,7 +1023,11 @@ const std::vector<std::string> unit::advances_to_translated() const
 	foreach (std::string type_id, advances_to_)
 	{
 		const unit_type *type = unit_types.find(type_id);
-		result.push_back(type->type_name());
+		if (type)
+			result.push_back(type->type_name());
+		else
+			WRN_UT << "unknown unit in advances_to list of type "
+			<< type_ << ": " << type_id << "\n";
 	}
 	return result;
 }
