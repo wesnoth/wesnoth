@@ -126,21 +126,28 @@ void manager::print_help_once()
 #endif
 }
 
+bool manager::can_modify_game_state() const
+{
+	if(wait_for_side_init_
+					|| executing_actions_
+					|| is_observer()
+					|| resources::controller->is_linger_mode())
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
 bool manager::can_activate() const
 {
 	//any more than one reference means a lock on whiteboard state was requested
 	if(!activation_state_lock_.unique())
 		return false;
 
-	if(wait_for_side_init_
-				|| executing_actions_
-				|| is_observer()
-				|| resources::controller->is_linger_mode())
-	{
-		return false;
-	}
-
-	return true;
+	return can_modify_game_state();
 }
 
 void manager::set_active(bool active)
@@ -225,7 +232,7 @@ bool manager::can_enable_execution_hotkeys() const
 
 bool manager::can_enable_modifier_hotkeys() const
 {
-	return can_activate() && !viewer_actions()->empty();
+	return can_modify_game_state() && !viewer_actions()->empty();
 }
 
 bool manager::can_enable_reorder_hotkeys() const
@@ -442,7 +449,7 @@ void manager::draw_hex(const map_location& hex)
 	 * Doing so messes up the iterator currently going over the list of invalidated hexes to draw.
 	 */
 
-	if (has_actions() && !wait_for_side_init_)
+	if (!wait_for_side_init_ && has_actions())
 	{
 		//call draw() for all actions
 		draw_visitor(hex).visit_all();
@@ -930,6 +937,7 @@ void manager::contextual_bump_down_action()
 
 bool manager::has_actions() const
 {
+	assert(!wait_for_side_init_);
 	foreach(team& t, *resources::teams)
 		if (!t.get_side_actions()->empty())
 			return true;
@@ -939,11 +947,13 @@ bool manager::has_actions() const
 
 bool manager::unit_has_actions(unit const* unit) const
 {
+	assert(!wait_for_side_init_);
 	return viewer_actions()->unit_has_actions(unit);
 }
 
 int manager::get_spent_gold_for(int side)
 {
+	assert(!wait_for_side_init_);
 	return resources::teams->at(side - 1).get_side_actions()->get_gold_spent();
 }
 
@@ -1015,7 +1025,10 @@ void manager::options_dlg()
 
 void manager::set_planned_unit_map()
 {
-
+	if (wait_for_side_init_) {
+		LOG_WB << "Not building planned unit map: waiting for side init.\n";
+		return;
+	}
 	//any more than one reference means a lock on unit map was requested
 	if(!unit_map_lock_.unique()) {
 		LOG_WB << "Not building planned unit map: blocked unit map lock.\n";
@@ -1023,10 +1036,6 @@ void manager::set_planned_unit_map()
 	}
 	if (executing_actions_) {
 		LOG_WB << "Not building planned unit map: action is executing.\n";
-		return;
-	}
-	if (wait_for_side_init_) {
-		LOG_WB << "Not building planned unit map: waiting for side init.\n";
 		return;
 	}
 	if (planned_unit_map_active_) {

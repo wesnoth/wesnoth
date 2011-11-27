@@ -57,6 +57,10 @@ public:
 
 	void print_help_once();
 
+	/** Determine whether the game is initialized and the current side has control of the game
+	 *  i.e. the whiteboard can take over
+	 */
+	bool can_modify_game_state() const;
 	/** Determine whether the whiteboard can be activated safely */
 	bool can_activate() const;
 	/** Determine whether the whiteboard is activated. */
