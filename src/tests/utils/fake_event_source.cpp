@@ -87,7 +87,7 @@ namespace test_utils {
 		int x, y;
 		SDL_GetMouseState(&x, &y);
 		event_.button.x = static_cast<Uint16>(x);
-		event_.button.y = y;
+		event_.button.y = static_cast<Uint16>(y);
 		event_node::fire_event();
 	}
 
