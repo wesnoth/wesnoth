@@ -240,9 +240,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 					// Show the route from selected unit to mouseover hex
 					current_route_ = get_route(&*selected_unit, dest, viewing_team());
 
-					{ //wb::scoped_real_unit_map raii;
-						resources::whiteboard->create_temp_move();
-					}
+					resources::whiteboard->create_temp_move();
 
 					if(!browse) {
 						gui().set_route(&current_route_);
