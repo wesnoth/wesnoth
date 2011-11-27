@@ -283,11 +283,12 @@ void game::update_side_data() {
 	observers_.clear();
 
 	const simple_wml::node::child_list& level_sides = level_.root().children("side");
+	/* This causes data corruption for some reason
 	if (!lg::debug.dont_log(log_server)) {
 		for (simple_wml::node::child_list::const_iterator side = level_sides.begin();
 				side != level_sides.end(); ++side)
 			DBG_GAME << "[side]\n" << simple_wml::node_to_string(**side) << "[/side]\n";
-	}
+	}*/
 	// For each user:
 	// * Find the username.
 	// * Find the side this username corresponds to.
