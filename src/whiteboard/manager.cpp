@@ -953,7 +953,9 @@ bool manager::unit_has_actions(unit const* unit) const
 
 int manager::get_spent_gold_for(int side)
 {
-	assert(!wait_for_side_init_);
+	if(wait_for_side_init_)
+		return 0;
+
 	return resources::teams->at(side - 1).get_side_actions()->get_gold_spent();
 }
 
