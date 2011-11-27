@@ -58,7 +58,7 @@ namespace test_utils {
 			, font_manager_()
 		{
 #ifdef _WIN32
-			std::setlocale(LC_ALL, "English");
+			setlocale(LC_ALL, "English");
 #else
 			std::setlocale(LC_ALL, "C");
 			std::setlocale(LC_MESSAGES, "");
