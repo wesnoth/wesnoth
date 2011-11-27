@@ -1085,8 +1085,10 @@ void manager::validate_actions_if_needed()
 }
 
 future_map::future_map():
-		initial_planned_unit_map_(resources::whiteboard->has_planned_unit_map())
+		initial_planned_unit_map_(resources::whiteboard && resources::whiteboard->has_planned_unit_map())
 {
+	if (!resources::whiteboard)
+		return;
 	if (!initial_planned_unit_map_)
 		resources::whiteboard->set_planned_unit_map();
 	// check if if unit map was successfully applied
@@ -1097,14 +1099,18 @@ future_map::future_map():
 
 future_map::~future_map()
 {
+	if (!resources::whiteboard)
+		return;
 	if (!initial_planned_unit_map_ && resources::whiteboard->has_planned_unit_map())
 		resources::whiteboard->set_real_unit_map();
 }
 
 future_map_if_active::future_map_if_active():
-		initial_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
-		whiteboard_active_(resources::whiteboard->is_active())
+		initial_planned_unit_map_(resources::whiteboard && resources::whiteboard->has_planned_unit_map()),
+		whiteboard_active_(resources::whiteboard && resources::whiteboard->is_active())
 {
+	if (!resources::whiteboard)
+		return;
 	if (!whiteboard_active_)
 		return;
 	if (!initial_planned_unit_map_)
@@ -1117,21 +1123,27 @@ future_map_if_active::future_map_if_active():
 
 future_map_if_active::~future_map_if_active()
 {
+	if (!resources::whiteboard)
+		return;
 	if (!initial_planned_unit_map_ && resources::whiteboard->has_planned_unit_map())
 		resources::whiteboard->set_real_unit_map();
 }
 
 
 real_map::real_map():
-		initial_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
-		unit_map_lock_(resources::whiteboard->unit_map_lock_)
+		initial_planned_unit_map_(resources::whiteboard && resources::whiteboard->has_planned_unit_map()),
+		unit_map_lock_(resources::whiteboard ? resources::whiteboard->unit_map_lock_ : boost::shared_ptr<bool>(new bool(false)))
 {
+	if (!resources::whiteboard)
+		return;
 	if (initial_planned_unit_map_)
 		resources::whiteboard->set_real_unit_map();
 }
 
 real_map::~real_map()
 {
+	if (!resources::whiteboard)
+		return;
 	assert(!resources::whiteboard->has_planned_unit_map());
 	if (initial_planned_unit_map_)
 	{
