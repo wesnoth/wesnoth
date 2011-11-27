@@ -34,7 +34,7 @@ namespace test_utils {
 
 	static bool match_english(const language_def& def)
 	{
-		return def.localename == "C";
+		return def.localename == "en_US";
 	}
 
 	class game_config_manager {
