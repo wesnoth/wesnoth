@@ -134,7 +134,7 @@ connect_aborter::ACTION connect_aborter::process()
 	}
 }
 
-
+#if 0
 BOOST_AUTO_TEST_CASE( test_sdl_thread_wait_crash )
 {
 
@@ -168,6 +168,7 @@ BOOST_AUTO_TEST_CASE( test_sdl_thread_wait_crash )
 	wes_manager = new network::manager(MIN_THREADS,MAX_THREADS);
 	wes_server = new network::server_manager(TEST_PORT,network::server_manager::MUST_CREATE_SERVER);
 }
+#endif
 
 // Use 1kb, 500kb and 10Mb files for testing
 struct sendfile_param {
