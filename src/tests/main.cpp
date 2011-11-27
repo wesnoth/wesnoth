@@ -34,6 +34,7 @@
 #include "log.hpp"
 
 #include "tests/utils/fake_display.hpp"
+#include "game_display.hpp"
 /**
  * @todo add all others exception handlers too
  **/
