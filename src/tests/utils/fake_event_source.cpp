@@ -147,7 +147,7 @@ namespace test_utils {
 		SDL_Event event;
 		event.type = SDL_MOUSEMOTION;
 		event.motion.x = static_cast<Uint16>(x);
-		event.motion.y = y;
+		event.motion.y = static_cast<Uint16>(y);
 		event_node_ptr new_move(new event_node_mouse_motion(time, event));
 		add_event(new_move);
 		return new_move;
