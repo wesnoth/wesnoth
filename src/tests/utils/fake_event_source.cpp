@@ -138,7 +138,7 @@ namespace test_utils {
 		event.key.keysym.sym = key;
 		event.key.keysym.scancode = static_cast<Uint8>(key); //
 		event.key.keysym.mod = mod;
-		event.key.keysym.unicode = key; //
+		event.key.keysym.unicode = static_cast<Uint16>(key); //
 		return event;
 	}
 
