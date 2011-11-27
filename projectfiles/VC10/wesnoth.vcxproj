@@ -416,6 +416,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Editor\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Editor\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\addon\uninstall_list.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\editor_set_starting_position.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug (fast)|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\folder_create.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug (fast)|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -798,6 +806,8 @@
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\addon\description.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug (fast)|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\auxiliary\canvas.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug (fast)|Win32'">$(IntDir)Gui\Auxiliary\</ObjectFileName>
@@ -1442,6 +1452,8 @@
     <ClInclude Include="..\..\src\editor\map_context.hpp" />
     <ClInclude Include="..\..\src\editor\map_fragment.hpp" />
     <ClInclude Include="..\..\src\editor\mouse_action.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\addon\uninstall_list.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\editor_set_starting_position.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\folder_create.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\button.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\container.hpp" />

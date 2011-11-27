@@ -904,6 +904,12 @@
     <ClCompile Include="..\..\src\gui\dialogs\folder_create.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\addon\uninstall_list.cpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\editor_set_starting_position.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\manager.hpp">
@@ -1757,6 +1763,12 @@
       <Filter>tools\schema</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\folder_create.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\addon\uninstall_list.hpp">
+      <Filter>Gui\Dialogs\Addon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\editor_set_starting_position.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
