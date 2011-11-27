@@ -136,7 +136,7 @@ namespace test_utils {
 		else
 			event.key.state = SDL_RELEASED;
 		event.key.keysym.sym = key;
-		event.key.keysym.scancode = key; //
+		event.key.keysym.scancode = static_cast<Uint8>(key); //
 		event.key.keysym.mod = mod;
 		event.key.keysym.unicode = key; //
 		return event;
