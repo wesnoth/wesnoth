@@ -86,7 +86,7 @@ namespace test_utils {
 		// in types for mouse position.
 		int x, y;
 		SDL_GetMouseState(&x, &y);
-		event_.button.x = x;
+		event_.button.x = static_cast<Uint16>(x);
 		event_.button.y = y;
 		event_node::fire_event();
 	}
