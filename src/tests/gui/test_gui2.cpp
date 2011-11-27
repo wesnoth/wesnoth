@@ -218,6 +218,10 @@ CVideo & video() {
 		}
 	}
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable: 4702)
+#endif
 	void test_tip_resolutions(const tresolution_list& resolutions
 			, const std::string& id)
 	{
@@ -265,6 +269,9 @@ CVideo & video() {
 					<< "\nException caught: " << exception << '.');
 		}
 	}
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 const tresolution_list& get_small_gui_resolutions()
 {
