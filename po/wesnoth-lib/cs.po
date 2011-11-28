@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-23 14:08+0100\n"
-"PO-Revision-Date: 2011-03-12 22:12+0100\n"
+"POT-Creation-Date: 2011-11-23 15:01+0100\n"
+"PO-Revision-Date: 2011-11-22 20:20+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -865,10 +865,10 @@ msgstr ""
 msgid "Swamp Village"
 msgstr "Vesnice, bažinná"
 
+# | msgid "Swamp Merfolk Village"
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1492
 #, fuzzy
-#| msgid "Swamp Merfolk Village"
 msgid "Merfolk Village"
 msgstr "Vesnice, mokřinná mořského lidu"
 
@@ -1108,13 +1108,13 @@ msgstr "Most, dřevěný"
 msgid "Wooden Bridge"
 msgstr "Most, dřevěný"
 
+# | msgid "Wooden Bridge"
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
 #: data/core/terrain.cfg:1931 data/core/terrain.cfg:1943
 #: data/core/terrain.cfg:1955
 #, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Rotting Bridge"
 msgstr "Most, dřevěný"
 
@@ -1515,10 +1515,10 @@ msgstr ""
 msgid "Editor Settings"
 msgstr "Nastavení editoru"
 
+# | msgid "Time of day lighting preset"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:53
 #, fuzzy
-#| msgid "Time of day lighting preset"
 msgid "Time of day lighting preset:"
 msgstr "Nastavení osvětlení / denní doby"
 
@@ -1530,17 +1530,17 @@ msgstr "Nastavení osvětlení / denní doby"
 msgid "Next"
 msgstr "Další"
 
+# | msgid "Custom lighting setting"
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
 #, fuzzy
-#| msgid "Custom lighting setting"
 msgid "Custom lighting settings"
 msgstr "Nastavení vlastního osvětlení"
 
+# | msgid "Auto-update map view"
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:114
 #, fuzzy
-#| msgid "Auto-update map view"
 msgid "Automatically update map view"
 msgstr "Aktualizovat automaticky pohled"
 
@@ -1807,12 +1807,12 @@ msgstr "Jazyk"
 msgid "Choose your preferred language:"
 msgstr "Vyber si preferovaný jazyk:"
 
+# | msgid "Change language"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
 #: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
 #, fuzzy
-#| msgid "Change language"
 msgid "Change Language"
 msgstr "Změnit jazyk"
 
@@ -2504,9 +2504,9 @@ msgstr "Zrychlená hra"
 msgid "Skip AI moves"
 msgstr "Přeskakuj tahy počítače"
 
+# | msgid "Interrupt move when an ally is sighted"
 #: src/game_preferences_display.cpp:176
 #, fuzzy
-#| msgid "Interrupt move when an ally is sighted"
 msgid "Interrupt move when an ally is sighted"
 msgstr "Přerušit pohyb při spatření přátelské jednotky"
 
@@ -2549,16 +2549,16 @@ msgstr "Seřaď seznam v čekárně"
 msgid "Iconize lobby list"
 msgstr "Ikony v čekárně"
 
+# | msgid "Save password to preferences (clear text)"
 #: src/game_preferences_display.cpp:186
 #, fuzzy
-#| msgid "Save password to preferences (clear text)"
 msgid "Save password to preferences (plain text)"
 msgstr "Uložit heslo do nastavení (prostý text)"
 
 # kratší?
+# | msgid "Set path to wesnothd"
 #: src/game_preferences_display.cpp:187
 #, fuzzy
-#| msgid "Set path to wesnothd"
 msgid "Set Path to wesnothd"
 msgstr "Nastavit umístění serveru wesnothd"
 
@@ -2781,16 +2781,16 @@ msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Přeruší pohyb jednotek při spatření spřátelené jednotky"
 
 # !!!! délka
+# | msgid "Save replay on SP/MP victory or MP defeat"
 #: src/game_preferences_display.cpp:369
 #, fuzzy
-#| msgid "Save replay on SP/MP victory or MP defeat"
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Ukládej záznamy při prohře ve hře více hráčů a každém vítězství"
 
 # !!!! délka
+# | msgid "Delete auto-saves on SP/MP victory or MP defeat"
 #: src/game_preferences_display.cpp:372
 #, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Maž uložené pozice při prohře ve hře více hráčů a každém vítězství"
 
@@ -2822,9 +2822,9 @@ msgstr "Ukazuj zprávy o tvých přátelích, kteří se připojili k serveru"
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Ukazuj zprávy o všech hráčích, kteří se připojili k serveru"
 
+# | msgid "Use new lobby interface"
 #: src/game_preferences_display.cpp:394
 #, fuzzy
-#| msgid "Use new lobby interface"
 msgid "Use New Lobby Interface"
 msgstr "Používej nové uspořádání čekárny"
 
@@ -3105,9 +3105,9 @@ msgstr "Tažení: $campaign_name"
 msgid "Test scenario"
 msgstr ""
 
+# | msgid "replay"
 #: src/gui/dialogs/game_load.cpp:313
 #, fuzzy
-#| msgid "replay"
 msgid "Replay"
 msgstr "záznam"
 
@@ -3241,9 +3241,9 @@ msgstr ""
 msgid "Right Mouse Click"
 msgstr ""
 
+# | msgid "Animate map"
 #: src/hotkeys.cpp:55
 #, fuzzy
-#| msgid "Animate map"
 msgid "Animate Map"
 msgstr "Animovat mapu"
 
@@ -3287,9 +3287,9 @@ msgstr "Oddal pohled"
 msgid "Default Zoom"
 msgstr "Implicitní pohled"
 
+# | msgid "Toggle Full screen"
 #: src/hotkeys.cpp:66
 #, fuzzy
-#| msgid "Toggle Full screen"
 msgid "Toggle Full Screen"
 msgstr "Okno/Celá obrazovka"
 
@@ -3345,9 +3345,9 @@ msgstr "Zapni/vypni elipsy"
 msgid "Toggle Grid"
 msgstr "Zapni/vypni mřížku"
 
+# | msgid "Mouse scrolling"
 #: src/hotkeys.cpp:82
 #, fuzzy
-#| msgid "Mouse scrolling"
 msgid "Mouse Scrolling"
 msgstr "Posouvat pomocí myši"
 
@@ -3379,15 +3379,15 @@ msgstr "Seznam jednotek"
 msgid "Statistics"
 msgstr "Statistiky"
 
+# | msgid "Host Networked Game"
 #: src/hotkeys.cpp:92
 #, fuzzy
-#| msgid "Host Networked Game"
 msgid "Pause Network Game"
 msgstr "Hostuj síťovou hru"
 
+# | msgid "Host Networked Game"
 #: src/hotkeys.cpp:93
 #, fuzzy
-#| msgid "Host Networked Game"
 msgid "Continue Network Game"
 msgstr "Hostuj síťovou hru"
 
@@ -3411,21 +3411,21 @@ msgstr "Ukaž tahy nepřítele"
 msgid "Best Possible Enemy Moves"
 msgstr "Nejlepší možné tahy nepřítele"
 
+# | msgid "Save Replay"
 #: src/hotkeys.cpp:100
 #, fuzzy
-#| msgid "Save Replay"
 msgid "Play Replay"
 msgstr "Ulož záznam"
 
+# | msgid "Save Replay"
 #: src/hotkeys.cpp:101
 #, fuzzy
-#| msgid "Save Replay"
 msgid "Reset Replay"
 msgstr "Ulož záznam"
 
+# | msgid "Save Replay"
 #: src/hotkeys.cpp:102
 #, fuzzy
-#| msgid "Save Replay"
 msgid "Stop Replay"
 msgstr "Ulož záznam"
 
@@ -3518,9 +3518,9 @@ msgstr "Vrátit všechny změny"
 msgid "Map Information"
 msgstr "Informace o mapě"
 
+# | msgid "Swap fore- and background terrains"
 #: src/hotkeys.cpp:134
 #, fuzzy
-#| msgid "Swap fore- and background terrains"
 msgid "Swap Foreground/Background Terrains"
 msgstr "Prohodit terény pro popředí a pozadí"
 
@@ -3694,9 +3694,9 @@ msgstr "Vlož uživatelský příkaz"
 msgid "Custom Command"
 msgstr "Uživatelský příkaz"
 
+# | msgid "Run AI formula"
 #: src/hotkeys.cpp:208
 #, fuzzy
-#| msgid "Run AI formula"
 msgid "Run Formula"
 msgstr "Provede vzorec umělé inteligence"
 
@@ -3728,9 +3728,9 @@ msgid "Start Campaign"
 msgstr "Hraj tažení"
 
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
+# | msgid "Multiplayer"
 #: src/hotkeys.cpp:248
 #, fuzzy
-#| msgid "Multiplayer"
 msgid "Start Multiplayer Game"
 msgstr "Hra více hráčů"
 
@@ -3739,22 +3739,22 @@ msgstr "Hra více hráčů"
 msgid "Manage Add-ons"
 msgstr "Aktualizace rozšíření"
 
+# | msgid "Map Editor"
 #: src/hotkeys.cpp:262
 #, fuzzy
-#| msgid "Map Editor"
 msgid "Start Editor"
 msgstr "Editor map"
 
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
+# | msgid "Credits"
 #: src/hotkeys.cpp:269
 #, fuzzy
-#| msgid "Credits"
 msgid "Show Credits"
 msgstr "Poděkování"
 
+# | msgid "Show replay"
 #: src/hotkeys.cpp:277
 #, fuzzy
-#| msgid "Show replay"
 msgid "Show Helptip"
 msgstr "Přehrát záznam"
 
@@ -3813,9 +3813,9 @@ msgstr "Velikost hradu:"
 msgid "Landform:"
 msgstr "Typ krajiny:"
 
+# | msgid "Roads Between Castles"
 #: src/mapgen_dialog.cpp:249
 #, fuzzy
-#| msgid "Roads Between Castles"
 msgid "Roads between castles"
 msgstr "Cesty mezi hrady"
 
@@ -3854,9 +3854,9 @@ msgstr ""
 msgid "Hotkey Settings"
 msgstr "Nastavení klávesových zkratek"
 
+# | msgid "Press desired Hotkey (Esc cancels)"
 #: src/preferences_display.cpp:282 src/preferences_display.cpp:351
 #, fuzzy
-#| msgid "Press desired Hotkey (Esc cancels)"
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Stiskni klávesu (Esc pro zrušení)"
 
@@ -3876,17 +3876,17 @@ msgstr "Změň klávesovou zkratku"
 msgid "Clear Hotkey"
 msgstr "Odeber klávesovou zkratku"
 
+# | msgid "This Hotkey is already in use."
 #: src/preferences_display.cpp:394 src/preferences_display.cpp:402
 #: src/preferences_display.cpp:414
 #, fuzzy
-#| msgid "This Hotkey is already in use."
 msgid "This hotkey is already in use."
 msgstr "Tato zkratka je již použita pro jinou akci."
 
+# | msgid ""
+# | "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 #: src/preferences_display.cpp:429
 #, fuzzy
-#| msgid ""
-#| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
 "Screenshot hotkeys should be combined with the Control, Alt or Meta "
 "modifiers to avoid problems."
@@ -3896,7 +3896,7 @@ msgstr ""
 
 #: src/preferences_display.cpp:429
 msgid "Warning"
-msgstr ""
+msgstr "Varování"
 
 #: src/preferences_display.cpp:530
 msgid "There are no alternative video modes available"
@@ -4022,21 +4022,3 @@ msgstr ""
 
 #~ msgid "Music Volume:"
 #~ msgstr "Hlasitost hudby:"
-
-# !!!! zkontrolovat délku
-#~ msgid "UI Sound Volume:"
-#~ msgstr "Hlasitost zvuků uživatelského rozhraní:"
-
-#~ msgid "Bell Volume:"
-#~ msgstr "Hlasitost zvonku:"
-
-#~ msgid ""
-#~ "Should the map view scroll to a unit when an action or move is animated."
-#~ msgstr "Má se mapa posunout, když jednotky bojují či se pohybují, za nimi?"
-
-#~ msgid "Choose whether the sun moves left-to-right or right-to-left"
-#~ msgstr ""
-#~ "Zvol, zda-li se má slunce pohybovat zleva doprava, nebo zprava doleva"
-
-#~ msgid "Select unit:"
-#~ msgstr "Vyber jednotku:"

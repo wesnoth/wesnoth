@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2011-03-12 20:11+0100\n"
+"POT-Creation-Date: 2011-11-23 15:01+0100\n"
+"PO-Revision-Date: 2011-11-27 12:32+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -89,12 +89,12 @@ msgstr "Odbojní"
 msgid "Undead"
 msgstr "Nemrtví"
 
+# | msgid "2p — The Freelands"
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
 #, fuzzy
-#| msgid "2p — The Freelands"
 msgid "2p — Aethermaw"
-msgstr "2p — Země nikoho"
+msgstr "2p — "
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -768,16 +768,16 @@ msgstr ""
 msgid "2p — Dark Forecast (Survival)"
 msgstr "2p — Temná předpověď (přežití)"
 
+# | msgid ""
+# | "Dark Forecast is a survival scenario for solitaire or two-player team-"
+# | "based play against randomly AI spawned units. Victory is achieved by "
+# | "surviving all enemy waves. During the course of play, the terrain will "
+# | "change based on random weather effects.\n"
+# | "\n"
+# | "Note: You need to use map settings for the scenario to work right."
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
 #, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly-spawned AI units. Victory is achieved by surviving and "
@@ -850,12 +850,11 @@ msgstr "Povstalci"
 msgid "teamname^Human"
 msgstr "Lidé"
 
+# | msgid "Death of your team leaders"
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of your leader"
-msgstr "Vůdci tvých týmů zemřou"
+msgstr "Tvůj vůdce zemře"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
@@ -864,12 +863,11 @@ msgid ""
 "strength."
 msgstr ""
 
+# | msgid "Death of your team leaders"
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of both of your team’s leaders"
-msgstr "Vůdci tvých týmů zemřou"
+msgstr "Vůdci obou tvých týmů zemřou"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
@@ -877,45 +875,43 @@ msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
 
+# | msgid "Survive all enemy attacks"
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
-#, fuzzy
-#| msgid "Survive all enemy attacks"
 msgid "Survive and defeat all enemy waves"
-msgstr "Přežij všechny nepřátelské útoky"
+msgstr "Přežij a poraz všechny nepřátelské útoky"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1432
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Temná předpověď - náhodný přežívací scénář"
 
+# | msgid ""
+# | "Your aim is to survive the spawning waves and defeat the final arch-"
+# | "enemies.\n"
+# | "\n"
+# | "The spawning waves are generated randomly and will different each time "
+# | "Dark Forecast is played.\n"
+# | "\n"
+# | "\n"
+# | "They appear along the north, south and west map edges — though they are "
+# | "most likely to spawn on the west edge. The spawn waves appear at somewhat "
+# | "regular intervals.\n"
+# | "\n"
+# | "\n"
+# | "The weather will also change randomly, affecting the layout of the map.\n"
+# | "\n"
+# | "\n"
+# | "\n"
+# | "<span color='red'>Dark Forecast was made by:</span>\n"
+# | "\n"
+# | "<span color='green'>jb</span>\n"
+# | "— map design, spawn groups and scenario concept\n"
+# | "\n"
+# | "<span color='green'>Rhuvaen</span>\n"
+# | "— WML implementation"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves and defeat the final arch-"
-#| "enemies.\n"
-#| "\n"
-#| "The spawning waves are generated randomly and will different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "\n"
-#| "They appear along the north, south and west map edges — though they are "
-#| "most likely to spawn on the west edge. The spawn waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "\n"
-#| "<span color='red'>Dark Forecast was made by:</span>\n"
-#| "\n"
-#| "<span color='green'>jb</span>\n"
-#| "— map design, spawn groups and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen</span>\n"
-#| "— WML implementation"
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -944,22 +940,19 @@ msgstr ""
 "Vlny nepřátel jsou vytvářeny náhodně a budou se lišit pokaždé, když je Temná "
 "předpověď hrána.\n"
 "\n"
-"\n"
 "Objevují se na všech okrajích kromě východního, ale nejpravděpodobněji na "
 "západě. Intervaly mezi nimi jsou částečně pravidelné.\n"
-"\n"
 "\n"
 "Počasí se také mění náhodně a ovlivňuje terén mapy.\n"
 "\n"
 "\n"
-"\n"
-"<span color='red'>Temnou předpověď vytvořili:</span>\n"
+"<b>Temnou předpověď vytvořili:</b>\n"
 "\n"
 "<span color='green'>jb</span>\n"
-"- návrh mapy, sestavy skupinek nepřátel a koncepce scénáře\n"
+"• návrh mapy, sestavy skupinek nepřátel a koncepce scénáře\n"
 "\n"
 "<span color='green'>Rhuvaen</span>\n"
-"- kódování WML"
+"• kódování WML"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1457
@@ -1075,13 +1068,12 @@ msgstr "2p — Vesnice"
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:7
-#, fuzzy
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
 "Válčení proměnilo prosté farmy a vesnice tohoto jinak poklidného regionu v "
-"rozdělená válečná pole."
+"rozdělená válečná pole. Navrhl Doc Patterson."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:24
@@ -1113,7 +1105,7 @@ msgstr ""
 #. [unit]: type=Dwarvish Scout, id=Kolbur
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:152
 msgid "Kolbur"
-msgstr ""
+msgstr "Kolbur"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:177
@@ -1419,9 +1411,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:148
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:149
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:150
-#, fuzzy
 msgid "Statue"
-msgstr "socha"
+msgstr "Socha"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1999,9 +1990,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
-#, fuzzy
 msgid "6p — Volcano"
-msgstr "6p — Hexcake"
+msgstr "6p — Vulkán"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9

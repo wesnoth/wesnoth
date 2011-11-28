@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2009-12-22 19:19+0100\n"
+"POT-Creation-Date: 2011-11-23 15:01+0100\n"
+"PO-Revision-Date: 2011-11-27 16:58+0100\n"
 "Last-Translator: Viliam Búr <viliam@bur.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -62,7 +62,7 @@ msgstr "púšť"
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
 msgid "embellishments"
-msgstr ""
+msgstr "okrasy"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:44
@@ -87,7 +87,7 @@ msgstr "jaskyne"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "obstacle"
-msgstr ""
+msgstr "prekážka"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:79
@@ -102,7 +102,7 @@ msgstr "hrad"
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:93
 msgid "bridge"
-msgstr ""
+msgstr "most"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:100
@@ -333,11 +333,11 @@ msgstr "Nebude fungovať v hre bez ďalšej práce."
 
 #: src/editor/editor_palettes.cpp:526
 msgid "FG: "
-msgstr ""
+msgstr "Pred: "
 
 #: src/editor/editor_palettes.cpp:527
 msgid "BG: "
-msgstr ""
+msgstr "Za: "
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"
@@ -364,14 +364,12 @@ msgid "Could not save the map: $msg"
 msgstr "Neviem uložiť mapu: $msg"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
 msgstr "Žiaden"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "Hráč $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"

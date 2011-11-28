@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-23 15:01+0100\n"
-"PO-Revision-Date: 2010-08-14 18:26+0100\n"
+"PO-Revision-Date: 2011-11-25 23:43+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -26,8 +26,6 @@ msgstr "Komprimovať uložené hry"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
-#, fuzzy
-#| msgid "Confirm deleting saves"
 msgid "Confirm deleting saves"
 msgstr "Potvrdzovať mazanie uložených hier"
 
@@ -43,8 +41,6 @@ msgstr "Umožniť rolovanie stredným tlačidlom"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#, fuzzy
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep scrolling when mouse leaves window"
 msgstr "Pokračovať v posúvaní mapy aj keď myš opustí okno"
 
@@ -76,10 +72,6 @@ msgstr "Čas na odozvu"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
@@ -87,36 +79,26 @@ msgstr "Počet sekúnd, počas ktorých sa má čakať na odozvu (ping). Vypni s
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
-#, fuzzy
-#| msgid "Accept whisper messages from friends only"
 msgid "Accept whispers from friends only"
 msgstr "Súkromné správy prijímať len od priateľov"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
-#, fuzzy
-#| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open whisper windows in lobby"
 msgstr "Súkromné správy v čakárni otvoria okno"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
-#, fuzzy
-#| msgid "Group players in lobby"
 msgid "Group players in lobby"
 msgstr "Zoskupovať hráčov v čakárni"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid "Lobby sounds"
 msgid "Lobby sounds"
 msgstr "Zvuky v čakárni"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
-#, fuzzy
-#| msgid "Disable notifications"
 msgid "Disable notifications"
 msgstr "Vypnúť oznamovania"
 
@@ -149,14 +131,10 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:133
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
-msgstr "Počet sekúnd, počas ktorých sa má čakať na odozvu (ping). Vypni s 0."
+msgstr "Po koľkých minútach zmazať správu od iného hráča v hre. Vypni s 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
@@ -290,48 +268,42 @@ msgstr "otrávený"
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:43
 msgid "TestCamp"
-msgstr ""
+msgstr "TestCamp"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:45
 msgid "Test campaign used to check if new campaign syntax is working."
-msgstr ""
+msgstr "Testovacia výprava na otestovanie funkčnosti novej syntaxe výprav."
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:46
-#, fuzzy
-#| msgid "Easy"
 msgid "(Easy)"
-msgstr "Ľahká"
+msgstr "(Ľahká)"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:46
 msgid "Soldier"
-msgstr ""
+msgstr "Vojak"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:47
-#, fuzzy
-#| msgid "Normal"
 msgid "(Normal)"
-msgstr "Normálny"
+msgstr "(Normálna)"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:47
 msgid "Lord"
-msgstr ""
+msgstr "Pán"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:48
-#, fuzzy
-#| msgid "Hard"
 msgid "(Hard)"
-msgstr "Ťažká"
+msgstr "(Ťažká)"
 
 #. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
 #: data/campaigns/test_campaign/_main.cfg:48
 msgid "High Lord"
-msgstr ""
+msgstr "Veľmož"
 
 #. [about]
 #: data/campaigns/test_campaign/_main.cfg:52
@@ -347,17 +319,13 @@ msgstr ""
 #. [side]: id=Bravo, type=Elvish Archer
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:24
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:41
-#, fuzzy
-#| msgid "Players: "
 msgid "Players"
-msgstr "Hráči: "
+msgstr "Hráči"
 
 #. [side]: id=Charlie, type=Orcish Grunt
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:53
-#, fuzzy
-#| msgid "Enemy village"
 msgid "Enemies"
-msgstr "Nepriateľská dedina"
+msgstr "Nepriatelia"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:73
@@ -371,24 +339,18 @@ msgstr ""
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Easy"
-msgstr "Zložitosť: "
+msgstr "Obtiažnosť: Ľahká"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:90
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Normal"
-msgstr "Zložitosť: "
+msgstr "Obtiažnosť: Normálna"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:93
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty: Hard"
-msgstr "Zložitosť: "
+msgstr "Obtiažnosť: Ťažká"
 
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:100
@@ -413,10 +375,8 @@ msgstr "Zápas"
 
 #. [objective]: condition=win
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
-#, fuzzy
-#| msgid "Defeat enemy leader(s)"
 msgid "Defeat enemy leader"
-msgstr "Porazíš ostatných veliteľov"
+msgstr "Porazíš nepriateľského veliteľa"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -605,9 +565,8 @@ msgstr "Indonézsky preklad"
 
 #. [about]
 #: data/core/about.cfg:2106
-#, fuzzy
 msgid "Irish Translation"
-msgstr "Turecký preklad"
+msgstr "Írsky preklad"
 
 #. [about]
 #: data/core/about.cfg:2113
@@ -656,9 +615,8 @@ msgstr "Nórsky preklad"
 
 #. [about]
 #: data/core/about.cfg:2331
-#, fuzzy
 msgid "Old English Translation"
-msgstr "Anglický (britský) preklad"
+msgstr "Staroanglický preklad"
 
 #. [about]
 #: data/core/about.cfg:2340
@@ -1041,11 +999,11 @@ msgstr ""
 
 #: data/core/macros/items.cfg:268
 msgid "holy water^Take it"
-msgstr ""
+msgstr "Vziať ju"
 
 #: data/core/macros/items.cfg:269
 msgid "holy water^Leave it"
-msgstr ""
+msgstr "Nechať ju"
 
 #: data/core/macros/items.cfg:270
 msgid "I am not suited to the use of this item! Let another take it."
@@ -1130,14 +1088,12 @@ msgid "Should $unit.name pick up the trident?"
 msgstr "Má $unit.name zodvihnúť trojzubec?"
 
 #: data/core/macros/items.cfg:514
-#, fuzzy
 msgid "storm trident^Leave it"
-msgstr "hromový trojzubec"
+msgstr "Nechať ho"
 
 #: data/core/macros/items.cfg:514
-#, fuzzy
 msgid "storm trident^Take it"
-msgstr "hromový trojzubec"
+msgstr "Vziať ho"
 
 #. [object]
 #: data/core/macros/items.cfg:516
@@ -1158,10 +1114,8 @@ msgstr "hromový trojzubec"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:546
-#, fuzzy
-#| msgid "ruby of fire"
 msgid "sceptre of fire"
-msgstr "ohnivý rubín"
+msgstr "ohnivé žezlo"
 
 #: data/core/macros/names.cfg:18
 msgid ""
@@ -2035,9 +1989,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
-#, fuzzy
 msgid "Turns run out"
-msgstr "Kolá: "
+msgstr "Vyprší čas"
 
 #: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:114
 msgid "Early finish bonus."
@@ -2052,9 +2005,8 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(bonus za rýchly koniec)</small>"
 
 #: data/core/macros/objective-utils.cfg:25
-#, fuzzy
 msgid "(early finish bonus)"
-msgstr "Bonus za rýchly koniec."
+msgstr "(bonus za rýchly koniec)"
 
 #: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:124
 msgid "No gold carried over to the next scenario."
@@ -2089,16 +2041,13 @@ msgid "Alternative objective:"
 msgstr "Alternatívny cieľ:"
 
 #: data/core/macros/objective-utils.cfg:52
-#, fuzzy
 msgid "Bonus objective:"
-msgstr "Alternatívny cieľ:"
+msgstr "Bonusový cieľ:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "This is the last scenario."
-msgstr "Scéna z iného počítača"
+msgstr "Toto je posledná scéna."
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -2250,13 +2199,13 @@ msgstr ""
 #. [language]
 #: data/english.cfg:23
 msgid "$name|’s Bridge,$name|’s Crossing"
-msgstr "Most $name"
+msgstr "Most $name,$name|ov prechod"
 
 # Path
 #. [language]
 #: data/english.cfg:24
 msgid "$name|’s Highway,$name|’s Pass,Path of $name"
-msgstr "$name|ova cesta,$name|ova púť,$name|ova trasa"
+msgstr "$name|ova cesta,$name|ov prechod,$name|ova trasa"
 
 #. [language]
 #: data/english.cfg:25
@@ -2276,7 +2225,7 @@ msgstr "Jazero $name"
 #. [language]
 #: data/english.cfg:28
 msgid "$name|’s Peak,Mount $name"
-msgstr "$name'ov štít,Vrch $name"
+msgstr "$name|ov štít,Vrch $name"
 
 # Village + Grassland
 #. [language]
@@ -2333,19 +2282,19 @@ msgstr ""
 #. [language]
 #: data/english.cfg:36
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name|ová,$name|ovka,$name|ovce,$name|ov kopec"
+msgstr "$name|ová,$name|ovka,$name|ovce,$name|ov kopec,$name|ov hrebeň"
 
 #. [language]
 #: data/english.cfg:37
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr "$mountain|ský vrch,$mountain|ský útes,$mountain|ovo,$mountain|a hoľa"
+msgstr "$mountain|ský vrch,$mountain|ská skala,$mountain|ovo,$mountain|a hoľa"
 
 # Village + Mountain
 #. [language]
 #: data/english.cfg:38
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
-msgstr "$name|ová,$name|ovka,$name|ovce,$name|ovo bralo"
+msgstr "$name|ová,$name|ovka,$name|ovce,$name|ovo bralo,$name|ov útes"
 
 #. [language]
 #: data/english.cfg:39
@@ -3044,15 +2993,14 @@ msgstr "- Kráľovná Li'sar, 528 R.W."
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
-#, fuzzy
 msgid ""
 "You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
 "Nemôžeš vrátiť späť pohyb jednotky, ktorý odkryje mapu alebo hmlu. Ak si "
-"chceš zachovať možnosť vrátiť pohyb späť, zapni voľbu \"Pozastav odkrývanie "
-"mapy\" ešte pred ťahaním jednotkami."
+"chceš zachovať možnosť vrátiť pohyb späť, zapni voľbu <b>Pozastav odkrývanie "
+"mapy</b> ešte pred ťahaním jednotkami. Alebo použi nástroj plánovania."
 
 #. [tip]
 #: data/hardwired/tips.cfg:192
@@ -3189,14 +3137,12 @@ msgid "petrified"
 msgstr "skamenený"
 
 #: data/lua/wml-tags.lua:832
-#, fuzzy
 msgid "female^unhealable"
-msgstr "nemŕtva"
+msgstr "neliečiteľná"
 
 #: data/lua/wml-tags.lua:832
-#, fuzzy
 msgid "unhealable"
-msgstr "Neschodné"
+msgstr "neliečiteľný"
 
 #: data/lua/wml/objectives.lua:50 src/multiplayer_connect.cpp:1702
 msgid "Victory:"
@@ -3223,9 +3169,8 @@ msgid "(this turn left)"
 msgstr ""
 
 #: data/lua/wml/objectives.lua:126
-#, fuzzy
 msgid "%d%% of gold carried over to the next scenario."
-msgstr "Žiadne zlato sa neprenáša do ďalšej scény."
+msgstr "%d%% zlata sa prenáša do ďalšej scény."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
@@ -3249,9 +3194,8 @@ msgstr ""
 
 #. [language]
 #: data/scenario-test.cfg:3119
-#, fuzzy
 msgid "electrical"
-msgstr "mechanický"
+msgstr "elektrický"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:121 data/themes/dfool.cfg:140
@@ -3417,8 +3361,6 @@ msgstr "Pohľad"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#, fuzzy
-#| msgid "Skip Animation"
 msgid "Skip animation"
 msgstr "Preskoč animáciu"
 
@@ -3428,48 +3370,30 @@ msgid "Close"
 msgstr "Zavri"
 
 #: src/actions.cpp:501
-#, fuzzy
-#| msgid "You don’t have a leader to recruit with."
 msgid "You don’t have a leader to recall with."
-msgstr "Nemáš veliteľa a tak nemôžeš verbovať."
+msgstr "Nemáš veliteľa a tak nemôžeš privolávať."
 
 #: src/actions.cpp:506
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders is able to recall that unit."
-msgstr ""
-"Aby si mohol verbovať alebo privolávať jednotky, musíš mať v pevnosti "
-"veliteľa."
+msgstr "Žiadny z tvojich veliteľov nemôže privolať túto jednotku."
 
 #: src/actions.cpp:511
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr ""
-"Aby si mohol verbovať alebo privolávať jednotky, musíš mať v pevnosti "
-"veliteľa."
+msgstr "Musíš mať v pevnosti veliteľa, ktorý môže privolať túto jednotku."
 
 #: src/actions.cpp:516
-#, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recall the unit."
-msgstr "Nemáš v pevnosti miesto, kam by si naverboval jednotku."
+msgstr "Nemáš v pevnosti miesto, kam by si privolal jednotku."
 
 #: src/actions.cpp:586
 msgid "You don’t have a leader to recruit with."
 msgstr "Nemáš veliteľa a tak nemôžeš verbovať."
 
 #: src/actions.cpp:591
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recruit the unit."
-msgstr ""
-"Aby si mohol verbovať alebo privolávať jednotky, musíš mať v pevnosti "
-"veliteľa."
+msgstr "Musíš mať v pevnosti veliteľa, ktorý môže naverbovať túto jednotku."
 
 #: src/actions.cpp:596
-#, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Nemáš v pevnosti miesto, kam by si naverboval jednotku."
 
@@ -3527,7 +3451,7 @@ msgstr "(stlač $hotkey na dokončenie pohybu)"
 
 #: src/addon/manager.cpp:423
 msgid "unit_byte^B"
-msgstr ""
+msgstr "B"
 
 #: src/addon/manager.cpp:440
 msgid "addon_type^Campaign"
@@ -3570,10 +3494,8 @@ msgid "addon_type^(unknown)"
 msgstr "(neznámy)'"
 
 #: src/addon/manager.cpp:481
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting terms"
-msgstr "Pýtam si zoznam doplnkov"
+msgstr "Pýtam si podmienky"
 
 #: src/addon/manager.cpp:486
 msgid "The server responded with an error: \"$error|\""
@@ -3597,19 +3519,16 @@ msgid "Response"
 msgstr "Odpoveď"
 
 #: src/addon/manager.cpp:554
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting the addon to be deleted"
-msgstr "Pýtam si zoznam doplnkov"
+msgstr "Žiadam o vymazanie doplnku"
 
 #: src/addon/manager.cpp:580
 msgid "Downloading add-on: $addon_title|..."
 msgstr "Sťahujem doplnok: $addon_title|..."
 
 #: src/addon/manager.cpp:586 src/addon/manager.cpp:1135
-#, fuzzy
 msgid "Downloading..."
-msgstr "Stiahnutí"
+msgstr "Sťahovanie..."
 
 #: src/addon/manager.cpp:598
 msgid ""
@@ -3651,9 +3570,8 @@ msgid "Type"
 msgstr "Typ"
 
 #: src/addon/manager.cpp:798
-#, fuzzy
 msgid "Install dependencies"
-msgstr "Závisloti"
+msgstr "Inštalovať závislosti"
 
 #: src/addon/manager.cpp:799
 msgid ""
@@ -3725,7 +3643,6 @@ msgid "Old version"
 msgstr "Stará verzia"
 
 #: src/addon/manager.cpp:986
-#, fuzzy
 msgid "Update add-ons"
 msgstr "Aktualizovať doplnky"
 
@@ -3778,10 +3695,8 @@ msgid "Confirm"
 msgstr "Potvrdiť"
 
 #: src/addon/manager.cpp:1128
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting..."
-msgstr "Pripájam sa na server..."
+msgstr "Pripájam sa..."
 
 #: src/addon/manager.cpp:1128
 msgid "Requesting list of add-ons"
@@ -3816,13 +3731,12 @@ msgid "Choose the add-on to download."
 msgstr "Vyber si doplnok, ktorý chceš stiahnuť."
 
 #: src/addon/manager.cpp:1286
-#, fuzzy
 msgid "Download"
-msgstr "Stiahnutí"
+msgstr "Stiahnutie"
 
 #: src/addon/manager.cpp:1287
 msgid "Done"
-msgstr ""
+msgstr "Hotovo"
 
 #: src/addon/manager.cpp:1299 src/dialogs.cpp:634 src/menu_events.cpp:951
 #: src/menu_events.cpp:1576
@@ -3859,13 +3773,11 @@ msgid "You have no add-ons installed."
 msgstr "Nie sú nainštalované žiadne doplnky."
 
 #: src/addon/manager.cpp:1418
-#, fuzzy
-#| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] "Naozaj odstrániť doplnok '$addon|'?"
-msgstr[1] "Naozaj odstrániť doplnok '$addon|'?"
-msgstr[2] "Naozaj odstrániť doplnok '$addon|'?"
+msgstr[0] "Naozaj odstrániť nasledovné nainštalované doplnky?"
+msgstr[1] "Naozaj odstrániť nasledovný nainštalovaný doplnok?"
+msgstr[2] "Naozaj odstrániť nasledovné nainštalované doplnky?"
 
 #: src/addon/manager.cpp:1444
 msgid ""
@@ -3879,32 +3791,25 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: src/addon/manager.cpp:1454
-#, fuzzy
-#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
-msgstr[0] "Doplnok nemohol byť správne vymazaný:"
-msgstr[1] "Doplnok nemohol byť správne vymazaný:"
-msgstr[2] "Doplnok nemohol byť správne vymazaný:"
+msgstr[0] "Nasledovné doplnky nemohli byť správne vymazané:"
+msgstr[1] "Nasledovný doplnok nemohol byť správne vymazaný:"
+msgstr[2] "Nasledovné doplnky nemohli byť správne vymazané:"
 
 #: src/addon/manager.cpp:1461
-#, fuzzy
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
-msgstr[0] "Doplnok odstránený"
+msgstr[0] "Doplnkov odstránených"
 msgstr[1] "Doplnok odstránený"
-msgstr[2] "Doplnok odstránený"
+msgstr[2] "Doplnky odstránené"
 
 #: src/addon/manager.cpp:1463
-#, fuzzy
-#| msgid "The following add-on had errors and could not be loaded:"
-#| msgid_plural "The following add-ons had errors and could not be loaded:"
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
-msgstr[0] "Kvôli chybám sa nepodarilo načítať nasledujúce doplňujúce príbehy:"
-msgstr[1] "Kvôli chybám sa nepodarilo načítať nasledujúci doplňujúci príbeh:"
-msgstr[2] "Kvôli chybám sa nepodarilo načítať nasledujúce doplňujúce príbehy:"
+msgstr[0] "Nasledovné doplnky boli úspešne vymazané:"
+msgstr[1] "Nasledovný doplnok bol úspešne vymazaný:"
+msgstr[2] "Nasledovné doplnky boli úspešne vymazané:"
 
 #: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
@@ -3971,10 +3876,8 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:454 src/savegame.cpp:136
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %b %d %I:%M %p %Y"
 
 #: src/dialogs.cpp:470
 msgid "#(Invalid)"
@@ -3993,10 +3896,8 @@ msgid "Tutorial"
 msgstr "Výcvik"
 
 #: src/dialogs.cpp:499
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "Test scenario"
-msgstr "Scéna z iného počítača"
+msgstr "Testovacia scéna"
 
 #: src/dialogs.cpp:509 src/savegame.cpp:1050
 msgid "Turn"
@@ -4008,7 +3909,7 @@ msgstr "Spusti mapu"
 
 #: src/dialogs.cpp:514
 msgid "Difficulty: "
-msgstr "Zložitosť: "
+msgstr "Obtiažnosť: "
 
 #: src/dialogs.cpp:516
 msgid "Version: "
@@ -4025,17 +3926,15 @@ msgstr "%H:%M"
 
 #: src/dialogs.cpp:550 src/reports.cpp:1218 src/savegame.cpp:176
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/dialogs.cpp:555 src/savegame.cpp:181
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:558 src/savegame.cpp:184
-#, fuzzy
-#| msgid "%A, %H:%M"
 msgid "%A, %I:%M %p"
-msgstr "%A, %H:%M"
+msgstr "%A, %I:%M %p"
 
 #: src/dialogs.cpp:562 src/savegame.cpp:188
 msgid "%b %d"
@@ -4109,7 +4008,7 @@ msgstr "Neplatný farebný rozsah: "
 
 #: src/game_controller.cpp:620 src/game_controller.cpp:638
 msgid "The file you have tried to load is corrupt"
-msgstr "Súbor, ktorý si chcel načítať, je poškodený"
+msgstr "Súbor, ktorý ste chceli načítať, je poškodený"
 
 #: src/game_controller.cpp:623 src/game_controller.cpp:641
 #: src/savegame.cpp:565
@@ -4121,9 +4020,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Chyba pri čítaní súboru hry"
 
 #: src/game_controller.cpp:633
-#, fuzzy
 msgid "File I/O Error while reading the game: '"
-msgstr "Chyba pri čítaní súboru hry"
+msgstr "Chyba pri čítaní súboru hry: '"
 
 #: src/game_controller.cpp:730
 msgid "No campaigns are available.\n"
@@ -4236,12 +4134,9 @@ msgid "Turn "
 msgstr "Kolo "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
-#, fuzzy
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] "Voľné miesta:"
+msgstr[0] "Voľných miest:"
 msgstr[1] "Voľné miesto:"
 msgstr[2] "Voľné miesta:"
 
@@ -4327,44 +4222,36 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:222
-#, fuzzy
 msgid "Initializing user interface"
-msgstr "Inicializujú sa tímy"
+msgstr "Inicializuje používateľské rozhranie"
 
 #: src/loadscreen.cpp:223
-#, fuzzy
 msgid "Loading game configuration"
-msgstr "Načítavam nastavenia hry."
+msgstr "Načítavajú sa nastavenia hry"
 
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Kontroluje sa vyrovnávacia pamäť..."
+msgstr "Kontroluje sa vyrovnávacia pamäť"
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
-#, fuzzy
 msgid "Reading files and creating cache"
-msgstr "Načítavajú sa súbory a vytvára vyrovnávacia pamäť..."
+msgstr "Načítavajú sa súbory a vytvára vyrovnávacia pamäť"
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
-#, fuzzy
 msgid "Reading unit files"
-msgstr "Načítavajú sa súbory jednotiek..."
+msgstr "Načítavajú sa súbory jednotiek"
 
 #: src/loadscreen.cpp:227
-#, fuzzy
 msgid "Reinitialize fonts for the current language"
 msgstr "Znovunačítaj písmo pre aktuálny jazyk"
 
 #: src/loadscreen.cpp:228
-#, fuzzy
 msgid "Searching for installed add-ons"
 msgstr "Hľadám nainštalované doplnky"
 
 #: src/loadscreen.cpp:229
-#, fuzzy
 msgid "Loading title screen"
-msgstr "Načítava sa úvodná obrazovka."
+msgstr "Načítava sa úvodná obrazovka"
 
 #: src/loadscreen.cpp:230
 msgid "Loading data files"
@@ -4640,9 +4527,8 @@ msgstr[1] "Musíš mať aspoň $cost zlatku, aby si privolal jednotku"
 msgstr[2] "Musíš mať aspoň $cost zlatky, aby si privolal jednotku"
 
 #: src/menu_events.cpp:1378
-#, fuzzy
 msgid "You cannot end your turn yet!"
-msgstr "pauza na konci kola"
+msgstr "Ešte nemôžeš ukončiť kolo!"
 
 #: src/menu_events.cpp:1405
 msgid ""
@@ -4760,8 +4646,6 @@ msgstr ""
 #: src/menu_events.cpp:2335 src/menu_events.cpp:2338 src/menu_events.cpp:2340
 #: src/menu_events.cpp:2342 src/menu_events.cpp:2344 src/menu_events.cpp:2371
 #: src/menu_events.cpp:2373 src/menu_events.cpp:2375 src/menu_events.cpp:2389
-#, fuzzy
-#| msgid "<nick>"
 msgid "<nickname>"
 msgstr "<prezývka>"
 
@@ -4800,17 +4684,14 @@ msgid "Send an emotion or personal action in chat."
 msgstr "Pošle v diskusii emóciu alebo osobnú akciu."
 
 #: src/menu_events.cpp:2363
-#, fuzzy
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
-"Posiela súkromné správy. Nemôžeš posielať správy hráčom, ktorí v tejto hre "
-"nehrajú za niektorú stranu."
+"Posiela súkromné správy. Nemôžeš posielať súkromné správy hráčom v hre, "
+"ktorú pozoruješ alebo v nej hráš."
 
 #: src/menu_events.cpp:2365
-#, fuzzy
-#| msgid "<nick> <message>"
 msgid "<nickname> <message>"
 msgstr "<prezývka> <správa>"
 
@@ -4823,22 +4704,16 @@ msgid "Change the log level of a log domain."
 msgstr "Prepne zapisovaciu doménu na inú úroveň závažnosti."
 
 #: src/menu_events.cpp:2371
-#, fuzzy
-#| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
-msgstr "Pridá hráča do svojho zoznamu ignorovaných."
+msgstr "Pridať hráča do tvojho zoznamu ignorovaných."
 
 #: src/menu_events.cpp:2373
-#, fuzzy
-#| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
-msgstr "Pridá hráča do svojho zoznamu priateľov."
+msgstr "Pridať hráča do tvojho zoznamu priateľov."
 
 #: src/menu_events.cpp:2375
-#, fuzzy
-#| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
-msgstr "Odstráň hráča zo svojho zoznamu ignorovaných alebo priateľov."
+msgstr "Odstrániť hráča z tvojho zoznamu ignorovaných alebo priateľov."
 
 #: src/menu_events.cpp:2377
 msgid "Show your ignores and friends list."
@@ -4854,20 +4729,14 @@ msgstr "<heslo> <email (nepovinné)>"
 
 # bodka má byť, podľa kontextu
 #: src/menu_events.cpp:2382
-#, fuzzy
-#| msgid "Register your nick"
 msgid "Register your nickname"
-msgstr "Zaregistruje tvoju prezývku."
+msgstr "Zaregistruj tvoju prezývku"
 
 #: src/menu_events.cpp:2384
-#, fuzzy
-#| msgid "Drop your nick."
 msgid "Drop your nickname."
 msgstr "Vzdať sa prezývky."
 
 #: src/menu_events.cpp:2386
-#, fuzzy
-#| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
 "Aktualizovať údaje o tvojej prezývke. Pre zoznam možných údajov pozri '/"
@@ -4878,17 +4747,13 @@ msgid "<detail> <value>"
 msgstr "<detail> <hodnota>"
 
 #: src/menu_events.cpp:2389
-#, fuzzy
-#| msgid "Request information about a nick."
 msgid "Request information about a nickname."
-msgstr "Vyžiada informácie o prezývke."
+msgstr "Vyžiadať informácie o prezývke."
 
 #: src/menu_events.cpp:2391
-#, fuzzy
-#| msgid "Request a list of details you can set for your registered nick."
 msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
-"Vyžiada zoznam údajov, ktoré je možné nastaviť pre zaregistrovanú prezývku."
+"Vyžiadať zoznam údajov, ktoré je možné nastaviť pre zaregistrovanú prezývku."
 
 #: src/menu_events.cpp:2393 src/menu_events.cpp:2396 src/menu_events.cpp:2398
 msgid "<room>"
@@ -4952,8 +4817,6 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<strana> [on/off]]"
 
 #: src/menu_events.cpp:2546
-#, fuzzy
-#| msgid "<side> <nick>"
 msgid "<side> <nickname>"
 msgstr "<strana> <prezývka>"
 
@@ -5105,9 +4968,8 @@ msgid "Discover all units in help."
 msgstr "Zobrazí v návode všetky jednotky."
 
 #: src/menu_events.cpp:2614
-#, fuzzy
 msgid "'Undiscover' all units in help."
-msgstr "Zobrazí v návode všetky jednotky."
+msgstr "Skryť v návode všetky objavené jednotky."
 
 #: src/menu_events.cpp:2616
 msgid "Create a unit."
@@ -5256,9 +5118,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Nie je možné nastaviť kontrolu strany mimo rozsahu: '$side'."
 
 #: src/menu_events.cpp:3282
-#, fuzzy
 msgid "Layers"
-msgstr "Hráči: "
+msgstr "Vrstvy"
 
 #: src/menu_events.cpp:3355
 msgid "Choose Scenario (Debug!)"
@@ -5320,14 +5181,12 @@ msgid "Invalid location"
 msgstr "Neplatná poloha"
 
 #: src/menu_events.cpp:3633
-#, fuzzy
 msgid "Planning mode activated!"
-msgstr "Režim ladenia aktivovaný!"
+msgstr "Režim plánovania aktivovaný!"
 
 #: src/menu_events.cpp:3636
-#, fuzzy
 msgid "Planning mode deactivated!"
-msgstr "Režim ladenia deaktivovaný!"
+msgstr "Režim plánovania deaktivovaný!"
 
 #: src/menu_events.cpp:3649
 msgid "ai"
@@ -5338,13 +5197,11 @@ msgid "prompt^Command:"
 msgstr "Príkaz:"
 
 #: src/mouse_events.cpp:679
-#, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits "
 "left."
 msgstr ""
-"Aby si mohol verbovať alebo privolávať jednotky, musíš mať v pevnosti "
-"veliteľa."
+"Nemôžeš pohnúť veliteľom z pevnosti keď sú ešte naplánované verbovania."
 
 #: src/mouse_events.cpp:810 src/mouse_events.cpp:890
 msgid "Attack Enemy"
@@ -5385,16 +5242,12 @@ msgid ""
 msgstr ""
 
 #: src/multiplayer.cpp:248
-#, fuzzy
-#| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
-msgstr "Chceš uložiť svoju hru?"
+msgstr "Chceš pokračovať?"
 
 #: src/multiplayer.cpp:250
-#, fuzzy
-#| msgid "Warning: "
 msgid "Warning"
-msgstr "Varovanie:"
+msgstr "Varovanie"
 
 #: src/multiplayer.cpp:294
 msgid "Bad data received from server"
@@ -5405,58 +5258,39 @@ msgid "You must login first."
 msgstr "Musíš sa najprv prihlásiť."
 
 #: src/multiplayer.cpp:337
-#, fuzzy
-#| msgid "The nick '$nick' is already taken."
 msgid "The nickname ‘$nick’ is already taken."
-msgstr "Prezývka '$nick' je už používaná."
+msgstr "Prezývka ‘$nick’ je už používaná."
 
 #: src/multiplayer.cpp:339
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
 msgstr ""
-"Prezývka '$nick' obsahuje nepovolené znaky. Povolené sú len písmená, čísla, "
+"Prezývka ‘$nick’ obsahuje nepovolené znaky. Povolené sú len písmená, čísla, "
 "pomlčky a podtržníky."
 
 #: src/multiplayer.cpp:343
-#, fuzzy
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
-"Prezývka '$nick' je príliš dlhá. Prezývky môžu mať maximálne 18 znakov."
+"Prezývka ‘$nick’ je príliš dlhá. Prezývky môžu mať maximálne 20 znakov."
 
 #: src/multiplayer.cpp:346
-#, fuzzy
-#| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
-msgstr "Prezývka '$nick' je rezervovaná a nemôže byť použitá hráčmi."
+msgstr "Prezývka ‘$nick’ je rezervovaná a nemôže byť použitá hráčmi."
 
 #: src/multiplayer.cpp:348
-#, fuzzy
-#| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname ‘$nick’ is not registered on this server."
-msgstr "Prezývka '$nick' nie je na tomto serveri registrovaná."
+msgstr "Prezývka ‘$nick’ nie je na tomto serveri registrovaná."
 
 #: src/multiplayer.cpp:349
-#, fuzzy
-#| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
 msgstr " Tento server nepovoľuje neregistrované prezývky."
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:353
-#, fuzzy
-#| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is registered on this server."
-msgstr "Prezývka '$nick' je na tomto serveri registrovaná."
+msgstr "Prezývka ‘$nick’ je na tomto serveri registrovaná."
 
 #: src/multiplayer.cpp:354
-#, fuzzy
-#| msgid ""
-#| "WARNING: There is already a client using this nick, logging in will cause "
-#| "that client to be kicked!"
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -5562,9 +5396,8 @@ msgid "I’m Ready"
 msgstr "Som pripravený"
 
 #: src/multiplayer_connect.cpp:1035
-#, fuzzy
 msgid "Add named local player"
-msgstr "Anonymný lokálny hráč"
+msgstr "Pridať pomenovaného lokálneho hráča"
 
 #: src/multiplayer_connect.cpp:1045
 msgid "The scenario is invalid because it has no id."
@@ -5607,9 +5440,8 @@ msgid "Waiting for players to join..."
 msgstr "Čakám, kým sa pripoja hráči..."
 
 #: src/multiplayer_connect.cpp:1810
-#, fuzzy
 msgid "Waiting for players to choose factions..."
-msgstr "Čakám, kým sa pripoja hráči..."
+msgstr "Čakám, kým si hráči zvolia frakciu..."
 
 #: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:742
 msgid "Create Game"
@@ -5966,9 +5798,8 @@ msgstr "Neviem poslať úvodnú správu"
 
 #: src/network_manager_ana.cpp:650 src/network_manager_ana.cpp:667
 #: src/network_manager_ana.cpp:689
-#, fuzzy
 msgid "Could not connect to host"
-msgstr "Neviem sa pripojiť na server."
+msgstr "Neviem sa pripojiť na server"
 
 #: src/pathfind/pathfind.cpp:455
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -5998,9 +5829,8 @@ msgid ""
 msgstr ""
 
 #: src/play_controller.cpp:1355 src/replay_controller.cpp:322
-#, fuzzy
 msgid "Error details:"
-msgstr "Chyba:"
+msgstr "Detaily chyby:"
 
 #: src/playcampaign.cpp:137 src/playcampaign.cpp:176
 msgid "Defeat"
@@ -6146,13 +5976,11 @@ msgid "The game is over."
 msgstr "Hra skončila."
 
 #: src/playsingle_controller.cpp:532
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Prerušilo sa sieťové spojenie a hra\n"
-"nemôže pokračovať. Chceš ju uložiť?"
+"Prerušilo sa sieťové spojenie a hra nemôže pokračovať. Chceš ju uložiť?"
 
 #: src/playsingle_controller.cpp:693
 msgid "It is now $name|’s turn"
@@ -6191,42 +6019,36 @@ msgid "$player has left the game. What do you want to do?"
 msgstr "$player opustil hru. Čo chceš urobiť?"
 
 #: src/replay_controller.cpp:321
-#, fuzzy
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
 "Do you want to save the game?"
 msgstr ""
-"Prerušilo sa sieťové spojenie a hra\n"
-"nemôže pokračovať. Chceš ju uložiť?"
+"Záznam je poškodený alebo nesynchronizovaný. Nemá veľmi zmysel pokračovať. "
+"Chceš hru uložiť?"
 
 #: src/reports.cpp:175
-#, fuzzy
 msgid "Type: "
-msgstr "Typ"
+msgstr "Typ:"
 
 #: src/reports.cpp:195
 msgid "Race: "
 msgstr "Rasa: "
 
 #: src/reports.cpp:237
-#, fuzzy
 msgid "Level: "
-msgstr "Úroveň"
+msgstr "Úroveň:"
 
 #: src/reports.cpp:240
-#, fuzzy
 msgid "No advancement"
-msgstr "Povýšených"
+msgstr "Žiadne povýšenie"
 
 #: src/reports.cpp:242
-#, fuzzy
 msgid "Advances to:"
-msgstr "Povýši sa na: "
+msgstr "Povýši sa na:"
 
 #: src/reports.cpp:282
-#, fuzzy
 msgid "Trait: "
-msgstr "Vlastnosti"
+msgstr "Vlastnosť:"
 
 #: src/reports.cpp:305
 msgid "invisible: "
@@ -6281,9 +6103,8 @@ msgid "Alignment: "
 msgstr "Príslušnosť: "
 
 #: src/reports.cpp:370
-#, fuzzy
 msgid "Ability: "
-msgstr "Schopnosti: "
+msgstr "Schopnosť: "
 
 #: src/reports.cpp:415
 msgid "Resistances: "
@@ -6294,106 +6115,88 @@ msgid "(Att / Def)"
 msgstr "(Úto / Obr)"
 
 #: src/reports.cpp:443
-#, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Modifikátor skúseností: "
 
 #: src/reports.cpp:494
-#, fuzzy
 msgid "Terrain: "
-msgstr "Terén"
+msgstr "Terén: "
 
 #: src/reports.cpp:512
 msgid "maximum^max."
-msgstr ""
+msgstr "max."
 
 #: src/reports.cpp:512
 msgid "minimum^min."
-msgstr ""
+msgstr "min."
 
 #: src/reports.cpp:517
-#, fuzzy
 msgid "Defense: "
-msgstr "Obrana"
+msgstr "Obrana: "
 
 #: src/reports.cpp:600 src/reports.cpp:790 src/reports.cpp:802
-#, fuzzy
 msgid "Weapon: "
-msgstr "dosah zbrane: "
+msgstr "Zbraň: "
 
 #: src/reports.cpp:601 src/reports.cpp:791
-#, fuzzy
 msgid "Damage: "
-msgstr "Zranenia"
+msgstr "Zranenia: "
 
 #: src/reports.cpp:605
-#, fuzzy
 msgid "Base damage: "
-msgstr "Celkové zranenie"
+msgstr "Základné zranenie: "
 
 #: src/reports.cpp:607
-#, fuzzy
 msgid "Time of day: "
-msgstr "Denná doba"
+msgstr "Denná doba: "
 
 #: src/reports.cpp:611
-#, fuzzy
 msgid "Leadership: "
-msgstr "Velenie"
+msgstr "Velenie: "
 
 #: src/reports.cpp:615
-#, fuzzy
 msgid "Slowed: "
-msgstr "spomalený: "
+msgstr "Spomalený: "
 
 #: src/reports.cpp:619
-#, fuzzy
 msgid "Attacks: "
-msgstr "Útočník"
+msgstr "Útoky: "
 
 #: src/reports.cpp:621
 msgid "Base attacks: "
-msgstr ""
+msgstr "Základné útoky: "
 
 #: src/reports.cpp:623
-#, fuzzy
 msgid "Swarm: "
-msgstr "húf"
+msgstr "Húf: "
 
 #: src/reports.cpp:635
-#, fuzzy
 msgid "Weapon range: "
-msgstr "dosah zbrane: "
+msgstr "Dosah zbrane: "
 
 #: src/reports.cpp:636
-#, fuzzy
 msgid "Damage type: "
-msgstr "typ zranenia: "
+msgstr "Typ zranenia: "
 
 #: src/reports.cpp:637
-#, fuzzy
 msgid "Damage versus: "
-msgstr "typ zranenia: "
+msgstr "Zranenie voči: "
 
 #: src/reports.cpp:681
-#, fuzzy
 msgid "Accuracy:"
-msgstr "% presnosť"
+msgstr "Presnosť:"
 
 #: src/reports.cpp:686
-#, fuzzy
 msgid "Parry:"
-msgstr "% odvrátenie"
+msgstr "Odvrátenie:"
 
 #: src/reports.cpp:703
-#, fuzzy
 msgid "Weapon special: "
-msgstr "Špeciálne zbrane"
+msgstr "Špeciálna zbraň: "
 
 #: src/reports.cpp:773
 msgid "None"
-msgstr ""
+msgstr "Žiadny"
 
 #: src/reports.cpp:965
 msgid "Lawful units: "
@@ -6543,75 +6346,75 @@ msgstr "$error, hodnota  '$value' na $pos"
 
 #: src/serialization/string_utils.cpp:299
 msgid "prefix_milli^m"
-msgstr ""
+msgstr "m"
 
 #: src/serialization/string_utils.cpp:300
 msgid "prefix_micro^µ"
-msgstr ""
+msgstr "µ"
 
 #: src/serialization/string_utils.cpp:301
 msgid "prefix_nano^n"
-msgstr ""
+msgstr "n"
 
 #: src/serialization/string_utils.cpp:302
 msgid "prefix_pico^p"
-msgstr ""
+msgstr "p"
 
 #: src/serialization/string_utils.cpp:303
 msgid "prefix_femto^f"
-msgstr ""
+msgstr "f"
 
 #: src/serialization/string_utils.cpp:304
 msgid "prefix_atto^a"
-msgstr ""
+msgstr "a"
 
 #: src/serialization/string_utils.cpp:305
 msgid "prefix_zepto^z"
-msgstr ""
+msgstr "z"
 
 #: src/serialization/string_utils.cpp:306
 msgid "prefix_yocto^y"
-msgstr ""
+msgstr "y"
 
 #: src/serialization/string_utils.cpp:318
 msgid "prefix_kibi^K"
-msgstr ""
+msgstr "K"
 
 #: src/serialization/string_utils.cpp:319
 msgid "prefix_kilo^k"
-msgstr ""
+msgstr "k"
 
 #: src/serialization/string_utils.cpp:321
 msgid "prefix_mega^M"
-msgstr ""
+msgstr "M"
 
 #: src/serialization/string_utils.cpp:322
 msgid "prefix_giga^G"
-msgstr ""
+msgstr "G"
 
 #: src/serialization/string_utils.cpp:323
 msgid "prefix_tera^T"
-msgstr ""
+msgstr "T"
 
 #: src/serialization/string_utils.cpp:324
 msgid "prefix_peta^P"
-msgstr ""
+msgstr "P"
 
 #: src/serialization/string_utils.cpp:325
 msgid "prefix_exa^E"
-msgstr ""
+msgstr "E"
 
 #: src/serialization/string_utils.cpp:326
 msgid "prefix_zetta^Z"
-msgstr ""
+msgstr "Z"
 
 #: src/serialization/string_utils.cpp:327
 msgid "prefix_yotta^Y"
-msgstr ""
+msgstr "Y"
 
 #: src/serialization/string_utils.cpp:341
 msgid "infix_binary^i"
-msgstr ""
+msgstr "i"
 
 #: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:126
 msgid "Recruits"
@@ -6784,16 +6587,12 @@ msgid "HIDE ALL allies’ plans"
 msgstr ""
 
 #: src/whiteboard/manager.cpp:976
-#, fuzzy
-#| msgid "Show replay"
 msgid "Show plans for $player"
-msgstr "Ukáž záznam"
+msgstr "Ukáž plán pre $player"
 
 #: src/whiteboard/manager.cpp:978
-#, fuzzy
-#| msgid "Replace with $player"
 msgid "Hide plans for $player"
-msgstr "Nahraď hráčom $player"
+msgstr "Skryť plán pre $player"
 
 #: src/whiteboard/manager.cpp:981
 msgid "Whiteboard Options"
@@ -6817,7 +6616,6 @@ msgstr ""
 #~ msgid "Add-on '$addon|' deleted."
 #~ msgstr "Doplnok '$addon|' vymazaný."
 
-#, fuzzy
 #~| msgid "Invalid location"
 #~ msgid "Invalid WML found"
 #~ msgstr "Neplatná poloha"
