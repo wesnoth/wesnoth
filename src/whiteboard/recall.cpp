@@ -114,6 +114,8 @@ void recall::execute(bool& success, bool& complete)
 	assert(valid_);
 	assert(temp_unit_);
 	temporary_unit_hider const raii(*fake_unit_);
+	//Give back the spent gold so we don't get "not enough gold" message
+	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(-temp_unit_->type()->cost());
 	bool const result = resources::controller->get_menu_handler().do_recall(*temp_unit_, team_index() + 1, recall_hex_, map_location::null_location);
 	success = complete = result;
 }
