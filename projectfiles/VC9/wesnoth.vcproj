@@ -359,7 +359,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA;MSVC_DO_UNIT_TESTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -441,7 +441,7 @@
 				EnableIntrinsicFunctions="true"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;MSVC_DO_UNIT_TESTS"
 				MinimalRebuild="true"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -13483,7 +13483,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Test_Debug|Win32"
-					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -13492,7 +13491,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Test_Release|Win32"
-					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -13765,7 +13763,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Test_Debug|Win32"
-					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -13774,7 +13771,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Test_Release|Win32"
-					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -15821,6 +15817,10 @@
 		</File>
 		<File
 			RelativePath="..\..\src\unit_types.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\util.cpp"
 			>
 		</File>
 		<File
