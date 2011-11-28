@@ -35,6 +35,7 @@ int lexical_cast<int, const std::string&>(const std::string& a)
 	}
 }
 
+#ifndef MSVC_DO_UNIT_TESTS
 template<>
 int lexical_cast<int, const char*>(const char* a)
 {
@@ -47,6 +48,7 @@ int lexical_cast<int, const char*>(const char* a)
 		return res;
 	}
 }
+#endif
 
 template<>
 int lexical_cast_default<int, const std::string&>(const std::string& a, int def)
@@ -82,6 +84,7 @@ int lexical_cast_default<int, const char*>(const char* a, int def)
 	}
 }
 
+#ifndef MSVC_DO_UNIT_TESTS
 template<>
 double lexical_cast_default<double, const std::string&>(const std::string& a, double def)
 {
@@ -98,4 +101,5 @@ double lexical_cast_default<double, const std::string&>(const std::string& a, do
 		return res;
 	}
 }
+#endif
 
