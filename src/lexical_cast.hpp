@@ -51,6 +51,8 @@
 #define strtoull _strtoui64
 #endif
 
+#include "global.hpp"
+
 #include <string>
 #include <sstream>
 #include <boost/mpl/set.hpp>
