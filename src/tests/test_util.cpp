@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE( test_lexical_cast )
 		/* A bad_lexical_cast should have been thrown already */
 		BOOST_CHECK( false );
 	}
-	catch( const bad_lexical_cast &e) {
+	catch( const bad_lexical_cast &) {
 		// Don't do anything, we succeeded.
 	}
 
