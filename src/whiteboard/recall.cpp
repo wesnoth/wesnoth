@@ -106,7 +106,7 @@ recall::~recall()
 
 void recall::accept(visitor& v)
 {
-	v.visit_recall(shared_from_this());
+	v.visit(shared_from_this());
 }
 
 void recall::execute(bool& success, bool& complete)

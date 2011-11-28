@@ -108,7 +108,7 @@ private:
 					side_actions::reverse_iterator end  = acts.second;
 					while(itor!=end) {
 						++itor;
-						if(!new_this->visit(team_index,t,sa,itor.base()))
+						if(!new_this->process(team_index,t,sa,itor.base()))
 							return; //< Early abort
 					}
 				}
@@ -118,7 +118,7 @@ private:
 					side_actions::iterator itor = acts.first;
 					side_actions::iterator end  = acts.second;
 					for(; itor!=end; ++itor)
-						if(!new_this->visit(team_index,t,sa,itor))
+						if(!new_this->process(team_index,t,sa,itor))
 							return; //< Early abort
 				}
 				if(!new_this->post_visit_team(team_index,t,sa))
@@ -138,11 +138,14 @@ private:
 class visitor
 	: private boost::noncopyable
 {
-	friend class move;
-	friend class attack;
-	friend class recruit;
-	friend class recall;
-	friend class suppose_dead;
+
+public:
+
+	virtual void visit(move_ptr move) = 0;
+	virtual void visit(attack_ptr attack) = 0;
+	virtual void visit(recruit_ptr recruit) = 0;
+	virtual void visit(recall_ptr recall) = 0;
+	virtual void visit(suppose_dead_ptr sup_d) = 0;
 
 protected:
 	visitor() {}
@@ -153,23 +156,17 @@ protected:
 	 * without having to override visit(); i.e., the below implementation can be used as a
 	 * default.
 	 */
-	bool visit(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
+	bool process(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
 		{ (*itor)->accept(*this);   return true; }
 
 	//Utility fcn for derived classes that don't need to customize the iteration.
 	void visit_all_actions() {visitor_helper::visit_all_actions_helper(this);}
 
-	virtual void visit_move(move_ptr move) = 0;
-	virtual void visit_attack(attack_ptr attack) = 0;
-	virtual void visit_recruit(recruit_ptr recruit) = 0;
-	virtual void visit_recall(recall_ptr recall) = 0;
-	virtual void visit_suppose_dead(suppose_dead_ptr sup_d) = 0;
-
 private:
 	struct visitor_helper
 		: enable_visit_all<visitor_helper>
 	{
-		bool visit(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
+		bool process(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
 			{ (*itor)->accept(*v_);   return true; }
 
 		static void visit_all_actions_helper(visitor* v)

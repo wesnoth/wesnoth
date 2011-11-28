@@ -210,10 +210,9 @@ move::~move()
 	//its whole path.
 }
 
-
 void move::accept(visitor& v)
 {
-	v.visit_move(shared_from_this());
+	v.visit(shared_from_this());
 }
 
 void move::execute(bool& success, bool& complete)

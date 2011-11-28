@@ -124,7 +124,7 @@ bool validate_visitor::no_previous_invalids(side_actions::iterator const& itor)
 	return (*prev_action_of_unit)->is_valid();
 }
 
-void validate_visitor::visit_move(move_ptr move)
+void validate_visitor::visit(move_ptr move)
 {
 	DBG_WB <<"visiting move from " << move->get_source_hex()
 			<< " to " << move->get_dest_hex() << "\n";
@@ -156,7 +156,7 @@ void validate_visitor::visit_move(move_ptr move)
 	}
 }
 
-void validate_visitor::visit_attack(attack_ptr attack)
+void validate_visitor::visit(attack_ptr attack)
 {
 	DBG_WB <<"visiting attack from " << attack->get_dest_hex()
 			<< " to " << attack->target_hex_ << "\n";
@@ -182,11 +182,11 @@ void validate_visitor::visit_attack(attack_ptr attack)
 
 		//@todo: Verify that the target unit is our enemy
 
-		visit_move(boost::static_pointer_cast<move>(attack));
+		visit(boost::static_pointer_cast<move>(attack));
 	}
 }
 
-void validate_visitor::visit_recruit(recruit_ptr recruit)
+void validate_visitor::visit(recruit_ptr recruit)
 {
 	DBG_WB << "visiting recruit on hex " << recruit->recruit_hex_ << "\n";
 	//invalidate recruit hex so number display is updated properly
@@ -233,7 +233,7 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 	}
 }
 
-void validate_visitor::visit_recall(recall_ptr recall)
+void validate_visitor::visit(recall_ptr recall)
 {
 	DBG_WB << "visiting recall on hex " << recall->recall_hex_ << "\n";
 	//invalidate recall hex so number display is updated properly
@@ -283,7 +283,7 @@ void validate_visitor::visit_recall(recall_ptr recall)
 	}
 }
 
-void validate_visitor::visit_suppose_dead(suppose_dead_ptr sup_d)
+void validate_visitor::visit(suppose_dead_ptr sup_d)
 {
 	DBG_WB << "visiting suppose_dead on hex " << sup_d->loc_ << "\n";
 	//invalidate suppose-dead hex so number display is updated properly

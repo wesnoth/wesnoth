@@ -95,7 +95,7 @@ bool mapbuilder::visit_helper(side_actions::iterator const& itor, action_ptr con
 		return false;
 }
 
-bool mapbuilder::visit(size_t, team&, side_actions&, side_actions::iterator itor)
+bool mapbuilder::process(size_t, team&, side_actions&, side_actions::iterator itor)
 {
 	action_ptr act = *itor;
 

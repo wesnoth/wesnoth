@@ -32,7 +32,7 @@ class visitor;
 /**
  * Abstract base class for all the whiteboard planned actions.
  */
-class action
+class action : public boost::enable_shared_from_this<action>
 {
 public:
 	action(size_t team_index, bool hidden);

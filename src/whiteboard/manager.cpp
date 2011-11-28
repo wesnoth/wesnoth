@@ -432,7 +432,7 @@ namespace
 
 	private:
 		//"Inherited" from enable_visit_all
-		bool visit(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
+		bool process(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
 			{ (*itor)->draw_hex(hex_);   return true; }
 		//using default pre_visit_team()
 		//using default post_visit_team()

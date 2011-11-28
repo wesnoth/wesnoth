@@ -46,11 +46,11 @@ public:
 	bool validate_actions();
 
 private:
-	virtual void visit_move(move_ptr move);
-	virtual void visit_attack(attack_ptr attack);
-	virtual void visit_recruit(recruit_ptr recruit);
-	virtual void visit_recall(recall_ptr recall);
-	virtual void visit_suppose_dead(suppose_dead_ptr sup_d);
+	virtual void visit(move_ptr move);
+	virtual void visit(attack_ptr attack);
+	virtual void visit(recruit_ptr recruit);
+	virtual void visit(recall_ptr recall);
+	virtual void visit(suppose_dead_ptr sup_d);
 
 	enum VALIDITY {VALID, OBSTRUCTED, WORTHLESS};
 	VALIDITY evaluate_move_validity(move_ptr);

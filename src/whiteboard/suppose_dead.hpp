@@ -31,7 +31,6 @@ namespace wb {
 	 */
 	class suppose_dead
 	: public action
-	, public boost::enable_shared_from_this<suppose_dead>
 	{
 		friend class validate_visitor;
 		friend class highlight_visitor;
@@ -50,7 +49,7 @@ namespace wb {
 	//	{
 			virtual std::ostream& print(std::ostream& s) const;
 
-			virtual void accept(visitor& v);
+			virtual void accept(visitor &v);
 
 			virtual void execute(bool& success, bool& complete);
 
@@ -71,6 +70,11 @@ namespace wb {
 	//	}	End Inherits from action
 
 	protected:
+
+		boost::shared_ptr<suppose_dead> shared_from_this() {
+			return boost::static_pointer_cast<suppose_dead>(action::shared_from_this());
+		}
+
 		unit* unit_;
 		std::string unit_id_;
 		map_location loc_;

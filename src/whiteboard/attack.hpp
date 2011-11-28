@@ -54,7 +54,14 @@ public:
 
 	virtual config to_config() const;
 
+protected:
+
+	boost::shared_ptr<attack> shared_from_this() {
+		return boost::static_pointer_cast<attack>(move::shared_from_this());
+	}
+
 private:
+
 	void init();
 
 	virtual void do_hide() {invalidate();}

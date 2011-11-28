@@ -104,7 +104,7 @@ namespace wb
 
 	void suppose_dead::accept(visitor& v)
 	{
-		v.visit_suppose_dead(shared_from_this());
+		v.visit(shared_from_this());
 	}
 
 	void suppose_dead::execute(bool& success, bool& complete)

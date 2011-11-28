@@ -27,7 +27,7 @@
 namespace wb
 {
 
-class recall: public wb::action, public boost::enable_shared_from_this<recall>
+class recall: public action
 {
 public:
 	recall(size_t team_index, bool hidden, const unit& unit, const map_location& recall_hex);
@@ -69,6 +69,12 @@ public:
 	virtual bool is_valid() { return valid_; }
 
 	virtual config to_config() const;
+
+protected:
+
+	boost::shared_ptr<recall> shared_from_this() {
+		return boost::static_pointer_cast<recall>(action::shared_from_this());
+	}
 
 private:
 	void init();

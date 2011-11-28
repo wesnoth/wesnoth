@@ -213,7 +213,7 @@ unit* highlight_visitor::get_selection_target()
 		return selection_candidate_;
 }
 
-void highlight_visitor::visit_move(move_ptr move)
+void highlight_visitor::visit(move_ptr move)
 {
 	switch (mode_)
 	{
@@ -279,13 +279,13 @@ void highlight_visitor::visit_move(move_ptr move)
 	}
 }
 
-void highlight_visitor::visit_attack(attack_ptr attack)
+void highlight_visitor::visit(attack_ptr attack)
 {
-	visit_move(boost::static_pointer_cast<move>(attack));
+	visit(boost::static_pointer_cast<move>(attack));
 	//@todo: highlight the attack indicator
 }
 
-void highlight_visitor::visit_recruit(recruit_ptr recruit)
+void highlight_visitor::visit(recruit_ptr recruit)
 {
 	switch (mode_)
 	{
@@ -321,7 +321,7 @@ void highlight_visitor::visit_recruit(recruit_ptr recruit)
 	}
 }
 
-void highlight_visitor::visit_recall(recall_ptr recall)
+void highlight_visitor::visit(recall_ptr recall)
 {
 	switch (mode_)
 	{
@@ -357,7 +357,7 @@ void highlight_visitor::visit_recall(recall_ptr recall)
 	}
 }
 
-void highlight_visitor::visit_suppose_dead(suppose_dead_ptr sup_d)
+void highlight_visitor::visit(suppose_dead_ptr sup_d)
 {
 	switch(mode_)
 	{
@@ -397,7 +397,7 @@ void highlight_visitor::find_main_highlight()
 }
 
 //Used only by find_main_highlight()
-bool highlight_visitor::visit(size_t, team&, side_actions&, side_actions::iterator itor)
+bool highlight_visitor::process(size_t, team&, side_actions&, side_actions::iterator itor)
 {
 	(*itor)->accept(*this);
 	if (action_ptr main = main_highlight_.lock())

@@ -31,7 +31,7 @@ namespace wb
 /*
  *
  */
-class recruit: public wb::action, public boost::enable_shared_from_this<recruit>
+class recruit: public action
 {
 public:
 	recruit(size_t team_index, bool hidden, const std::string& unit_name, const map_location& recruit_hex);
@@ -75,6 +75,11 @@ public:
 	virtual config to_config() const;
 
 protected:
+
+	boost::shared_ptr<recruit> shared_from_this() {
+		return boost::static_pointer_cast<recruit>(action::shared_from_this());
+	}
+
 	virtual game_display::fake_unit * create_corresponding_unit();
 
 	std::string unit_name_;

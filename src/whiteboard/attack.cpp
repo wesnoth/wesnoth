@@ -91,6 +91,11 @@ attack::~attack()
 	invalidate();
 }
 
+void attack::accept(visitor& v)
+{
+	v.visit(shared_from_this());
+}
+
 /* private */
 void attack::invalidate()
 {
@@ -100,11 +105,6 @@ void attack::invalidate()
 		resources::screen->invalidate(get_dest_hex());
 		resources::screen->invalidate(target_hex_);
 	}
-}
-
-void attack::accept(visitor& v)
-{
-	v.visit_attack(boost::static_pointer_cast<attack>(shared_from_this()));
 }
 
 void attack::execute(bool& success, bool& complete)

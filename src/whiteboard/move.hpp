@@ -31,7 +31,7 @@ namespace wb {
  * A planned move, represented on the map by an arrow and
  * a ghosted unit in the destination hex.
  */
-class move : public action, public boost::enable_shared_from_this<move>
+class move : public action
 {
 public:
 	friend class validate_visitor;
@@ -85,6 +85,10 @@ public:
 	void set_arrow_texture(ARROW_TEXTURE x) {arrow_texture_=x; update_arrow_style();}
 
 protected:
+
+	boost::shared_ptr<move> shared_from_this() {
+		return boost::static_pointer_cast<move>(action::shared_from_this());
+	}
 
 	void calculate_move_cost();
 

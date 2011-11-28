@@ -97,7 +97,7 @@ recruit::~recruit()
 
 void recruit::accept(visitor& v)
 {
-	v.visit_recruit(shared_from_this());
+	v.visit(shared_from_this());
 }
 
 void recruit::execute(bool& success, bool& complete)
