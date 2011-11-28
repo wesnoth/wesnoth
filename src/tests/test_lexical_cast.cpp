@@ -29,8 +29,17 @@
 
 namespace test_throw {
 
+#ifdef _MSC_VER
+#pragma warning(push)
+#pragma warning(disable:4702)
+#endif
+
 #define LEXICAL_CAST_DEBUG
 #include "lexical_cast.hpp"
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 typedef boost::mpl::vector<
 	/* note Wesnoth's coding style doesn't allow w_char so ignore them. */
