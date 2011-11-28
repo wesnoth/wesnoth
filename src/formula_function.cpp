@@ -401,7 +401,7 @@ public:
 		} else {
 			if(static_cast<size_t>(offset) >= result.size()) {
 				WRN_SF << "[concatenate] Offset '" << offset
-						<< "' is larger as the size of '" << result
+						<< "' is larger than the size of '" << result
 						<< "' and results in an empty string.\n";
 
 				return variant(std::string());
