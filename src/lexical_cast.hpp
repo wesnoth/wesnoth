@@ -46,6 +46,11 @@
 #define __LONG_LONG_SUPPORTED
 #endif
 
+#ifdef _MSC_VER
+#define strtoll _strtoi64
+#define strtoull _strtoui64
+#endif
+
 #include <string>
 #include <sstream>
 #include <boost/mpl/set.hpp>
