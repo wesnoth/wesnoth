@@ -135,5 +135,17 @@ temporary_unit_hider::temporary_unit_hider(unit& u)
 temporary_unit_hider::~temporary_unit_hider()
 	{unit_->set_hidden(false);}
 
+void ghost_owner_unit(unit* unit)
+{
+	unit->set_disabled_ghosted(false);
+	resources::screen->invalidate(unit->get_location());
+}
+
+void unghost_owner_unit(unit* unit)
+{
+	unit->set_standing(true);
+	resources::screen->invalidate(unit->get_location());
+}
+
 } //end namespace wb
 

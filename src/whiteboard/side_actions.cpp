@@ -601,6 +601,7 @@ void side_actions::update_size()
 	while(!actions_.empty() && actions_.back().empty())
 		actions_.pop_back();
 }
+
 side_actions::iterator side_actions::raw_erase(iterator itor)
 {
 	//precondition
@@ -626,12 +627,14 @@ side_actions::iterator side_actions::raw_erase(iterator itor)
 	else
 		return iterator(after_erase, turn_num, *this);
 }
+
 side_actions::iterator side_actions::raw_insert(iterator itor, action_ptr act)
 {
 	size_t turn_num = itor.turn_num_;
 	action_queue::iterator new_itor = actions_[itor.turn_num_].insert(itor.base_,act);
 	return iterator(new_itor,turn_num,*this);
 }
+
 side_actions::iterator side_actions::raw_enqueue(size_t turn_num, action_ptr act)
 {
 	//for a little extra safety, since we should never resize by much at a time
@@ -642,6 +645,7 @@ side_actions::iterator side_actions::raw_enqueue(size_t turn_num, action_ptr act
 	actions_[turn_num].push_back(act);
 	return iterator(actions_[turn_num].end()-1,turn_num,*this);
 }
+
 side_actions::iterator side_actions::safe_insert(size_t turn, size_t pos, action_ptr act)
 {
 	assert(act);
@@ -662,16 +666,19 @@ side_actions::iterator side_actions::safe_insert(size_t turn, size_t pos, action
 
 	return result;
 }
+
 side_actions::iterator side_actions::synced_erase(iterator itor)
 {
 	resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_remove(itor));
 	return safe_erase(itor);
 }
+
 side_actions::iterator side_actions::synced_insert(iterator itor, action_ptr act)
 {
 	resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_insert(itor,act));
 	return raw_insert(itor,act);
 }
+
 side_actions::iterator side_actions::synced_enqueue(size_t turn_num, action_ptr act)
 {
 	//raw_enqueue() creates actions_[turn_num] if it doesn't exist already, so we
@@ -684,6 +691,7 @@ side_actions::iterator side_actions::synced_enqueue(size_t turn_num, action_ptr 
 side_actions::iterator side_actions::safe_erase(iterator const& itor)
 {
 	action_ptr action = *itor;
+	resources::whiteboard->pre_delete_action(action); //misc cleanup
 	return raw_erase(itor);
 }
 

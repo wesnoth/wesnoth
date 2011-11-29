@@ -87,6 +87,9 @@ struct variable_finalizer
 	T value_;
 };
 
+void ghost_owner_unit(unit* unit);
+void unghost_owner_unit(unit* unit);
+
 } //end namespace wb
 
 #endif /* WB_UTILITY_HPP_ */

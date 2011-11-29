@@ -238,7 +238,7 @@ void highlight_visitor::visit(move_ptr move)
 		if (move->fake_unit_)
 		{
 			///@todo find some highlight animation
-			move->fake_unit_->set_ghosted(false);
+			move->fake_unit_->set_ghosted(true);
 			//Make sure the fake unit is the only one displayed in its hex
 			resources::screen->add_exclusive_draw(move->fake_unit_->get_location(), *move->fake_unit_);
 			exclusive_display_hexes_.insert(move->fake_unit_->get_location());
@@ -251,13 +251,13 @@ void highlight_visitor::visit(move_ptr move)
 		}
 		if (move->fake_unit_)
 		{
-			move->fake_unit_->set_ghosted(false);
+			move->fake_unit_->set_ghosted(true);
 			//Make sure the fake unit is the only one displayed in its hex
 			resources::screen->add_exclusive_draw(move->fake_unit_->get_location(), *move->fake_unit_);
 			exclusive_display_hexes_.insert(move->fake_unit_->get_location());
 		}
 		break;
-	case UNHIGHLIGHT_MAIN:
+	case UNHIGHLIGHT_MAIN: // fall-through
 	case UNHIGHLIGHT_SECONDARY:
 		if (move->arrow_)
 		{

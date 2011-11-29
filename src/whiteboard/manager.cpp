@@ -294,6 +294,18 @@ void manager::on_finish_side_turn(int side)
 	LOG_WB << "on_finish_side_turn()\n";
 }
 
+void manager::pre_delete_action(action_ptr action)
+{
+	//If we're deleting the last planned move of a unit, reset it to normal animation
+	if (action->is_valid()
+			&& action->get_unit()
+			&& boost::dynamic_pointer_cast<move>(action)
+			&& viewer_actions()->count_actions_of(action->get_unit()) == 1)
+	{
+		action->get_unit()->set_standing(true);
+	}
+}
+
 static void hide_all_plans()
 {
 	foreach(team& t, *resources::teams)
@@ -626,13 +638,13 @@ void manager::create_temp_move()
 					// Create temp ghost unit
 					fake_unit.reset(new game_display::fake_unit(*selected_unit));
 					fake_unit->place_on_game_display( resources::screen);
-					fake_unit->set_ghosted(false);
+					fake_unit->set_ghosted(true);
 				}
 
 				unit_display::move_unit(path, *fake_unit, *resources::teams,
 						false); //get facing right
 				fake_unit->set_location(*curr_itor);
-				fake_unit->set_ghosted(false);
+				fake_unit->set_ghosted(true);
 
 				//if destination is over another unit, temporarily hide it
 				resources::screen->add_exclusive_draw(fake_unit->get_location(), *fake_unit);
@@ -688,6 +700,9 @@ void manager::save_temp_move()
 		}
 		erase_temp_move();
 
+		//@todo rework this once I combine mapbuilder and verifier
+		ghost_owner_unit(u);
+
 		LOG_WB << *viewer_actions() << "\n";
 		print_help_once();
 	}
@@ -702,10 +717,12 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
 		map_location source_hex;
+		bool attack_move;
 
 		if (route_ && !route_->steps.empty())
 		{
 			//attack-move
+			attack_move = true;
 
 			assert(move_arrows_.size() == 1);
 			assert(fake_units_.size() == 1);
@@ -715,11 +732,12 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 			assert(route_->steps.back() == attacker_loc);
 			source_hex = route_->steps.front();
 
-			fake_unit->set_disabled_ghosted(false);
+			fake_unit->set_disabled_ghosted(true);
 		}
 		else
 		{
 			//simple attack
+			attack_move = false;
 
 			move_arrow.reset(new arrow);
 			source_hex = attacker_loc;
@@ -730,6 +748,11 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 
 		unit* attacking_unit = future_visible_unit(source_hex);
 		assert(attacking_unit);
+
+		if (attack_move) {
+			//@todo rework this once I combine mapbuilder and verifier
+			ghost_owner_unit(attacking_unit);
+		}
 
 		on_save_action(attacking_unit);
 
@@ -861,6 +884,12 @@ bool manager::execute_all_actions()
 	{
 		erase_temp_move();
 		validate_viewer_actions();
+
+		// Build unit map once to ensure spent gold and other calculations are refreshed
+		set_planned_unit_map();
+		assert(has_planned_unit_map());
+		set_real_unit_map();
+
 		{ //exception-safety: Finalizer sets executing_actions to false on destruction
 			variable_finalizer<bool> finally(executing_actions_, false);
 

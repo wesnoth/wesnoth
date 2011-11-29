@@ -129,7 +129,7 @@ move::move(config const& cfg, bool hidden)
 	if(hidden)
 		fake_unit_->set_hidden(true);
 	fake_unit_->place_on_game_display(resources::screen);
-	fake_unit_->set_ghosted(false);
+	fake_unit_->set_ghosted(true);
 	unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams, false); //get facing right
 	fake_unit_->set_location(route_->steps.back());
 
@@ -155,7 +155,7 @@ void move::init()
 		if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action))
 		{
 			if (move->fake_unit_)
-				move->fake_unit_->set_disabled_ghosted(false);
+				move->fake_unit_->set_disabled_ghosted(true);
 		}
 	}
 
@@ -238,6 +238,7 @@ void move::execute(bool& success, bool& complete)
 
 	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
 	hide_fake_unit();
+	unghost_owner_unit(unit_);
 
 	events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
 	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), side_number());
@@ -327,6 +328,13 @@ void move::execute(bool& success, bool& complete)
 	{
 		set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 		show_fake_unit();
+		ghost_owner_unit(unit_);
+	}
+
+	//if unit has other moves besides this one, set it back to ghosted visuals
+	//@todo handle this in a more centralized fashion
+	if (resources::teams->at(team_index()).get_side_actions()->count_actions_of(unit_) > 1) {
+		ghost_owner_unit(unit_);
 	}
 }
 
@@ -387,6 +395,10 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	DBG_WB << "Move: Temporarily moving unit " << unit.name() << " [" << unit.id()
 			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")\n";
 	mover_.reset(new temporary_unit_mover(unit_map,get_source_hex(), get_dest_hex()));
+
+	//Update status of fake unit (not undone by remove_temp_modifiers)
+	//@todo this contradicts the name "temp_modifiers"
+	fake_unit_->set_movement(unit.movement_left());
 }
 
 void move::remove_temp_modifier(unit_map&)

@@ -156,6 +156,11 @@ void attack::apply_temp_modifier(unit_map& unit_map)
 				<< "] from " << unit.movement_left() << " to "
 				<< unit.movement_left() - temp_movement_subtracted_ << ".\n";
 	unit.set_movement(unit.movement_left() - temp_movement_subtracted_);
+
+	//Update status of fake unit (not undone by remove_temp_modifiers)
+	//@todo this contradicts the name "temp_modifiers"
+	fake_unit_->set_movement(unit.movement_left());
+	fake_unit_->set_attacks(unit.attacks_left());
 }
 
 void attack::remove_temp_modifier(unit_map& unit_map)
