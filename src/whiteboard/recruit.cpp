@@ -106,8 +106,13 @@ void recruit::execute(bool& success, bool& complete)
 	temporary_unit_hider const raii(*fake_unit_);
 	int const side_num = team_index() + 1;
 	//Give back the spent gold so we don't get "not enough gold" message
-	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(-temp_unit_->type()->cost());
+	int cost = temp_unit_->type()->cost();
+	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(-cost);
 	bool const result = resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, recruit_hex_);
+	//If it failed, take back the gold
+	if (!result) {
+		resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(cost);
+	}
 	success = complete = result;
 }
 
