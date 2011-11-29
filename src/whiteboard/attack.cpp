@@ -159,8 +159,10 @@ void attack::apply_temp_modifier(unit_map& unit_map)
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
 	//@todo this contradicts the name "temp_modifiers"
-	fake_unit_->set_movement(unit.movement_left());
-	fake_unit_->set_attacks(unit.attacks_left());
+	if (fake_unit_) { //Attacks that are not attack-moves don't have fake units
+		fake_unit_->set_movement(unit.movement_left());
+		fake_unit_->set_attacks(unit.attacks_left());
+	}
 }
 
 void attack::remove_temp_modifier(unit_map& unit_map)
