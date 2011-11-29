@@ -682,7 +682,10 @@ side_actions::iterator side_actions::synced_enqueue(size_t turn_num, action_ptr 
 }
 
 side_actions::iterator side_actions::safe_erase(iterator const& itor)
-	{action_ptr action = *itor;   return raw_erase(itor);}
+{
+	action_ptr action = *itor;
+	return raw_erase(itor);
+}
 
 void side_actions::execute_net_cmd(net_cmd const& cmd)
 {
