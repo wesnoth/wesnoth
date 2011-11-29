@@ -99,30 +99,27 @@ bool mapbuilder::process(size_t, team&, side_actions&, side_actions::iterator it
 {
 	action_ptr act = *itor;
 
-	// @todo: FIX all commented code below. At this point the actions have not been validated yet,
-	// and so you can't safely get and use the unit pointer from the action.
+	unit* u = act->get_unit();
 
-	//unit* u = act->get_unit();
-
-	//if(acted_this_turn_.find(u) != acted_this_turn_.end())
+	if(!u || !act->is_valid() || acted_this_turn_.find(u) != acted_this_turn_.end())
 		visit_helper(itor,act);
-//	else //gotta restore MP first
-//	{
-//		int original_moves = u->movement_left();
-//
-//		//reset MP
-//		u->set_movement(u->total_movement());
-//		acted_this_turn_.insert(u);
-//
-//		bool revert = !visit_helper(itor,act);
-//
-//		if(revert) //< the action was invalid
-//		{
-//			//didn't need to restore MP after all ... so let's change it back
-//			acted_this_turn_.erase(u);
-//			u->set_movement(original_moves);
-//		}
-//	}
+	else //gotta restore MP first
+	{
+		int original_moves = u->movement_left();
+
+		//reset MP
+		u->set_movement(u->total_movement());
+		acted_this_turn_.insert(u);
+
+		bool revert = !visit_helper(itor,act);
+
+		if(revert) //< the action was invalid
+		{
+			//didn't need to restore MP after all ... so let's change it back
+			acted_this_turn_.erase(u);
+			u->set_movement(original_moves);
+		}
+	}
 	return true;
 }
 
