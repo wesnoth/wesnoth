@@ -1033,7 +1033,7 @@ void manager::set_planned_unit_map()
 	}
 	//any more than one reference means a lock on unit map was requested
 	if(!unit_map_lock_.unique()) {
-		LOG_WB << "Not building planned unit map: blocked unit map lock.\n";
+		LOG_WB << "Not building planned unit map: unit map locked.\n";
 		return;
 	}
 	if (executing_actions_) {

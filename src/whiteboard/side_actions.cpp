@@ -197,22 +197,24 @@ bool side_actions::execute(side_actions::iterator position)
 	if(resources::whiteboard->should_clear_undo())
 		resources::whiteboard->clear_undo();
 
-	LOG_WB << "After " << (action_successful? "successful": "failed") << " execution ";
+	std::stringstream ss;
+	ss << "After " << (action_successful? "successful": "failed") << " execution ";
 	if(should_erase)
 	{
-		LOG_WB << "with deletion, ";
+		ss << "with deletion, ";
 		synced_erase(position);
 	}
 	else //action may have revised itself; let's tell our allies.
 	{
-		LOG_WB << "without deletion, ";
+		ss << "without deletion, ";
 		resources::whiteboard->queue_net_cmd(team_index_,make_net_cmd_replace(position,*position));
 
 		//Idea that needs refining: move action at the end of the queue if it failed executing:
 			//actions_.erase(position);
 			//actions_.insert(end(), action);
 	}
-	LOG_WB << *this << "\n";
+	ss << *this << "\n";
+	LOG_WB << ss.str();
 
 	validate_actions();
 	return action_successful;
