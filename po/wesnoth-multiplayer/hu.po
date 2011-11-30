@@ -5,13 +5,13 @@
 #
 # Széll Tamás <tomi@digiflex.hu>, 2005.
 # Máthé katalin <katkadu@gmail.com>, 2008.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008., 2009, 2010.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008., 2009, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2010-04-25 09:39+0200\n"
+"POT-Creation-Date: 2011-11-23 15:01+0100\n"
+"PO-Revision-Date: 2011-11-27 18:10+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "Language: hu\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.2\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -85,10 +85,8 @@ msgstr "Élőholtak"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
-#, fuzzy
-#| msgid "2p — The Freelands"
 msgid "2p — Aethermaw"
-msgstr "2j - Szabadfölde"
+msgstr "2j - Étercsapda"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -106,6 +104,20 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"Réges-régen Sullát, a nagy mágusnőt, fogságba ejtették az étercsapdában: egy "
+"titokzatos energiák csomópontjában lévő helyen, amely törvénytelen "
+"kisugárzása megakadályozta, hogy Sulla elmeneküljön. Azonban a századok "
+"múlásával a mágusnő hatalma fokozatosan erőt vett az étercsapdát alkotó "
+"kaotikus örvényen, és képessé vált arra, hogy a csapda hatását kivetítse az "
+"anyagvilágra, amely így kiterjedt földterületeket szippantott magába a "
+"különböző világok, valóságok és idők százaiból. Sulla kísérletezik a "
+"világegyetem e kis darabjaival, megváltoztatja azokat, és oda-vissza "
+"küldözgeti őket az étercsapda és eredeti helyük között. Talán ahogy egyre nő "
+"a tudása a csapdával kapcsolatban, egy nap képes lesz lerázni láncait. Addig "
+"a napig azonban Sulla azzal szórakoztatja magát, hogy csatákat rendez a "
+"szerencsétlen halandók között, akiket a mélységbe szippantott.\n"
+"\n"
+"(Készítette: Doc Paterson)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -170,7 +182,7 @@ msgstr "Dél"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:277
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr ""
+msgstr "Étercsapda – Készítette: Doc Paterson"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:291
@@ -190,17 +202,30 @@ msgid ""
 "unite the two halves of the battlefield. The process will be complete by the "
 "end of turn 6.</span>\n"
 msgstr ""
+"A Nagy Sulla mágusnő erre a furcsa energia-csomópontra repítette "
+"seregeiteket, és azt követeli, hogy csatával szórakoztassátok őt.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>Megjegyzés:</span>\n"
+"\n"
+"<span color='green'>Az energiakövek mezőire nem léphetnek egységek, de "
+"toborozni és ellépni lehet onnan.</span>\n"
+"\n"
+"<span color='green'>A 4. kör elején a Nagy Sulla elkezdi egyesíteni a "
+"csatatér két felét. A folyamat a 6. kör végére fejeződik be.</span>\n"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:304
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:321
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "Az étercsapda morajlani kezd."
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
 msgid "2p — Arcanclave Citadel"
-msgstr ""
+msgstr "2j - Arcanclave fellegvár"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
@@ -224,6 +249,26 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
+"Réges-régen, megszámlálhatatlan századdal Haldric ideje előtt... messze a "
+"Lintanir-erdőség legkeletibb szélén is túl... ádáz és szörnyű háborúkat "
+"vívtak. A feljegyzések egy hatalmas, harcos mágusról írnak, aki a földöntúli "
+"varázslatok páratlan ismerője és kiváló taktikus volt, ezért követői a "
+"„Rettenthetetlen” nevet adták neki. Az Arcanclave-i csatában a "
+"Rettenthetelen és seregei a Kah Ruuk-ként ismert varázslódémonok kegyetlen "
+"népével ütköztek meg. Miután több tízezer Kah Ruuk vette körül őket, a "
+"Rettenthetetlen a varázslatai segítségével megidézett egy hatalmas földerőt, "
+"aki ismeretlen okokból hálával tartozott neki. A földerő a mélyből óriási "
+"köveket emelt elő, és néhány pillanat alatt egy bevehetetlen erőd falaivá és "
+"oromzataivá alakította őket. Többezer Kah Ruuk veszett oda, miközben "
+"próbálta lerohanna az Arcanclave fellegvárat, a Rettenthetetlen és serege "
+"győzelmet aratott aznap. Több mint ezer évvel később I. Cynsaun harcos "
+"királynő egy holtidéző törzset űzött el az Arcanclave fellegvárból, majd az "
+"azt követő években az egész vidéket egy katonai erődítménnyé alakította. Úgy "
+"hírlik, hogy számos nagy erejű kegytárgy – amelyek még a Rettenthetetlen "
+"uralma után maradtak itt – talán még mindig itt van valahol a fellegvár "
+"gránit és obszidián falaiban.\n"
+"\n"
+"(Készítette: Doc Paterson)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -298,8 +343,8 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
-"Ezek a barlangok egykoron a legendás \"Elsőszülött Sárkánygyík\", Chak'kso "
-"Ney'yks, fészkéül szolgáltak. Áldozatainak megkövesedett maradványai emléket "
+"Ezek a barlangok egykoron a legendás „Elsőszülött Sárkánygyík”, Chak’kso "
+"Ney’yks, fészkéül szolgáltak. Áldozatainak megkövesedett maradványai emléket "
 "állítanak kegyetlen erejének."
 
 #. [unit]
@@ -380,7 +425,7 @@ msgid ""
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
 "Syrsszki Xikkrisx egy erős gyík harcos volt, akit a Rysssrylossszkk "
-"(fordítás: \"Vadászatok-Ellenségek-A-Forró-Folyóban\") törzs Bölcsei küldtek "
+"(fordítás: „Vadászatok-Ellenségek-A-Forró-Folyóban”) törzs Bölcsei küldtek "
 "erre a területre. A Bölcsek épp háborút készültek indítani egy emberi őrhely "
 "ellen, s nagy szükségük volt Oxsrrsk, a gyík varázsló, hatalmas mágikus "
 "erejére, kit utoljára a Ruaskkolin-tó irányába láttak haladni.\n"
@@ -388,12 +433,12 @@ msgstr ""
 " Xikkrisx megtalálta Oxsrrsk megkövesedett holttestét egy gondosan "
 "összekötött tekerccsel, mely egy keskeny résbe volt dobva a barlang "
 "padlóján. Kinyitotta a tekercset, s olvasott egy rövid részt a közepéről: "
-"\"Miután Chak'ksot láncra verték és kitaszították a Felsőbb Világból, "
+"„Miután Chak’ksot láncra verték és kitaszították a Felsőbb Világból, "
 "felbőszült szelleme kiutat keresett, s képes volt rontó erőt szabadítani a "
-"Felsőbb Világ bizonyos részeire a \"kövek útjain\" keresztül, melyek az "
+"Felsőbb Világ bizonyos részeire a „kövek útjain” keresztül, melyek az "
 "Alvilág mélységeiből egészen a felszínig terjednek. Ez a rontás "
-"megváltoztatta az óriás gyíkok tojásait, testük és lelkük Chak'kso "
-"gyűlöletének hordozójává lett.\"\n"
+"megváltoztatta az óriás gyíkok tojásait, testük és lelkük Chak’kso "
+"gyűlöletének hordozójává lett.”\n"
 "\n"
 "Xikkrisx zavarodottan állt ott. Átgondolta a feladatot, amit rábíztak. Úgy "
 "gondolván, hogy talán a Bölcsek képesek lehetnek Oxsrrsk felélesztésére... "
@@ -432,24 +477,23 @@ msgid ""
 msgstr ""
 "Oxsrrsk egy nagyhatalmú gyík jövendőmondó volt, aki részt vett a rivális "
 "Xraxss klán elleni egyik rajtaütésen, ahol rátalált (a mostanra már halott "
-"Hesx-Rzzak madárjós rejtekhelyén) egy lenyűgöző tekercsre. A tekercs \"A "
-"Gránittekintetű Ney'yks\"-nek volt címezve, tartalma pedig egy \"Chak'kso "
-"Ney'yks\" nevű élőlényről szólt. Ez a név az ősi gyík nyelven annyit tesz, "
-"mint \"Chak'kso Elsőszülöttje\". Régen úgy tartották, hogy Chak'kso az "
-"Alvilág egyik legerősebb félistene, akit a tünde mondák \"a föld rettegett "
-"démona\"-ként emlegetnek. Ezen mondák szerint Chak'kso olyan szörnyű "
-"gyűlöletet táplált a hús-vér teremtmények iránt, hogy a világ összes "
-"élőlényét kővé akarta változtatni. Bár végérvényesen legyőzték és erőteljes "
-"varázslatokkal megbéklyózták, évszázadokkal az Alvilágba való száműzetése "
-"után egy újfajta élőlény tűnt fel a mondákban... egy olyan élőlény, mely "
-"képes volt az eleven húst kővé változtatni. Volt egy időszak, mikor ezek a "
-"sárkánygyíkok (ahogyan ismertté váltak) pusztulást hoztak az élők világára, "
-"ezreket változtatván kővé. Aztán egyesével, hatalmas árat fizetve legyőzték "
-"a sárkánygyíkokat. Mindegyiket, egy kivételével: a Sárkánygyík, kit \"A "
-"Ney'yks\"-nek vagyis \"Az Elsőszülött\"-nek hívtak a nép nyelvén. Oxsrrsk a "
-"legtökéletesebben meg volt győződve arról, hogy képes megtalálni és saját "
-"igája alá hajtani ezt a hatalmas erejű teremtményt... ennek tudatában indult "
-"útnak..."
+"Hesx-Rzzak madárjós rejtekhelyén) egy lenyűgöző tekercsre. A tekercs „A "
+"Gránittekintetű Ney’yks”-nek volt címezve, tartalma pedig egy „Chak’kso "
+"Ney’yks” nevű élőlényről szólt. Ez a név az ősi gyík nyelven annyit tesz, "
+"mint „Chak’kso Elsőszülöttje”. Régen úgy tartották, hogy Chak’kso az Alvilág "
+"egyik legerősebb félistene, akit a tünde mondák „a föld rettegett démona”-"
+"ként emlegetnek. Ezen mondák szerint Chak’kso olyan szörnyű gyűlöletet "
+"táplált a hús-vér teremtmények iránt, hogy a világ összes élőlényét kővé "
+"akarta változtatni. Bár végérvényesen legyőzték és erőteljes varázslatokkal "
+"megbéklyózták, évszázadokkal az Alvilágba való száműzetése után egy újfajta "
+"élőlény tűnt fel a mondákban... egy olyan élőlény, mely képes volt az eleven "
+"húst kővé változtatni. Volt egy időszak, mikor ezek a sárkánygyíkok (ahogyan "
+"ismertté váltak) pusztulást hoztak az élők világára, ezreket változtatván "
+"kővé. Aztán egyesével, hatalmas árat fizetve legyőzték a sárkánygyíkokat. "
+"Mindegyiket, egy kivételével: a Sárkánygyík, kit „A Ney’yks”-nek vagyis „Az "
+"Elsőszülött”-nek hívtak a nép nyelvén. Oxsrrsk a legtökéletesebben meg volt "
+"győződve arról, hogy képes megtalálni és saját igája alá hajtani ezt a "
+"hatalmas erejű teremtményt... ennek tudatában indult útnak..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:129
@@ -464,12 +508,12 @@ msgid ""
 "(inscribed by Gauteamus)"
 msgstr ""
 "Vékony alkat, ügyes kezek\n"
-"- - Hét szikla és tizenegy\n"
-"nincs remény az ellengégnek\n"
-"- - Hét szikla és tizenegy\n"
+"– Hét szikla és tizenegy\n"
+"nincs remény az ellenségnek\n"
+"– Hét szikla és tizenegy\n"
 "Sárkányölőt, a mesterlövészt\n"
 "E szobrok közt érte a vég\n"
-"-- Hét szikla és tizenegy\n"
+"– Hét szikla és tizenegy\n"
 "\n"
 "(írta: Gauteamus)\n"
 "\n"
@@ -511,8 +555,8 @@ msgstr ""
 "Ám iszonyatos rémület lett úrrá Blum Dukon. Azon nyomban reszketni kezdett a "
 "félelemtől, amint meglátta a Sárkánygyíkot. Megpróbálta úgy irányítani a "
 "farkasát, hogy elmeneküljön, de az meg sem mozdult. Amint a lény peckesen "
-"közeledett felé, utolsó szavait kiáltotta a világba: \"Édes kiskutyám, hát "
-"neked meg kővé váltak a lábaid, vagy mifene?!?\"\n"
+"közeledett felé, utolsó szavait kiáltotta a világba: „Édes kiskutyám, hát "
+"neked meg kővé váltak a lábaid, vagy mifene?!?”\n"
 "\n"
 "(Írta: Elvish Pillager)"
 
@@ -536,14 +580,14 @@ msgid ""
 msgstr ""
 "Rah Ihn Mar az Égő Hegyek Bajnoka volt, aki eljutott a Ruaskkolin-tó "
 "vidékére, miközben Terowydilithrolt, a tünde hőst üldözte, akit a tündék "
-"csak \"Sárkányölő\"-ként emlegettek. Terowydilithrol állítólag megölte a Tűz "
+"csak „Sárkányölő”-ként emlegettek. Terowydilithrol állítólag megölte a Tűz "
 "Sárkányát, mely egy tünde falut tartott rettegésben, ezzel pedig egy olyan "
-"\"ellentámadást\" váltott ki, melyben mintegy 37, egy közelben lévő "
-"szurdokban tanyázó, a sárkánnyal feltehetőleg szövetségben lévő perzsekényt "
-"mészároltak le. Rah Ihn Mar tudta, hogy ezek a perzsekények ártatlanok "
-"voltak, ezért eljött a Ruaskkolin-tó vidékére, hogy felkutassa és megölje "
-"Terowydlithrolt, akit pár nappal ezelőtt láttak megérkezni e területre. Rah "
-"Ihn Mar a bosszútól fűtve kezdte meg a vadászatot..."
+"„ellentámadást” váltott ki, melyben mintegy 37, egy közelben lévő szurdokban "
+"tanyázó, a sárkánnyal feltehetőleg szövetségben lévő perzsekényt mészároltak "
+"le. Rah Ihn Mar tudta, hogy ezek a perzsekények ártatlanok voltak, ezért "
+"eljött a Ruaskkolin-tó vidékére, hogy felkutassa és megölje Terowydlithrolt, "
+"akit pár nappal ezelőtt láttak megérkezni e területre. Rah Ihn Mar a "
+"bosszútól fűtve kezdte meg a vadászatot..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:152
@@ -570,6 +614,8 @@ msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
+"Úgy tűnik, hogy senki nem ismeri ennek a bátor póknak a történetét.\n"
+"(írta: WinnerA)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:168
@@ -577,6 +623,8 @@ msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
+"Ennek a szerencsétlen banditának a története egyelőre ismeretlen.\n"
+"(írta: WinnerB)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
@@ -634,7 +682,7 @@ msgstr ""
 "hogy egy irtózatos szörnyeteg közeledik, aki elég erős ahhoz, hogy könnyedén "
 "elintézze azt a kevés fapásztort, akik ezen a vidéken éltek. Mindenki "
 "gyorsan elhúzta a csíkot (mármint egy fapásztorhoz képest gyorsan), csak "
-"Bramwythl maradt - a nagy sietségben ugyanis mindenki megfeledkezett arról, "
+"Bramwythl maradt – a nagy sietségben ugyanis mindenki megfeledkezett arról, "
 "hogy figyelmeztesse a közelgő veszélyről.\n"
 "A Sárkánygyík érkezése teljesen váratlanul érte, így az kővé változtatta őt, "
 "mielőtt még fölismerhette volna a bestia szándékát. Megkövesedett alakja ma "
@@ -673,10 +721,10 @@ msgid ""
 "Perhaps he should not have shouted quite so loudly.... "
 msgstr ""
 "Ezek voltak az utolsó szavak, melyek Aethec Corryn tábornagy szájából "
-"elhangzottak: \"Talael Ryndoc! Most már elegem van a keresgélésedből! "
+"elhangzottak: „Talael Ryndoc! Most már elegem van a keresgélésedből! "
 "Visszamegyek Haldric csarnokába, és értesítem a bíróságot, hogy annyira "
 "gyáva voltál, hogy el sem mertél jönni a párbajra! Kegyvesztettséged még "
-"gyötrelmesebb lesz számodra, mint ha megöltelek volna!\"\n"
+"gyötrelmesebb lesz számodra, mint ha megöltelek volna!”\n"
 "\n"
 "Talán nem kellett volna olyan hangosan ordítania..."
 
@@ -702,7 +750,7 @@ msgid ""
 msgstr ""
 "Ez a bátor harcos, aki Rilhonként ismert a nagák köreiben, hallott a mesés "
 "kincsről, mely az itteni vízzel telt barlangok mélyén veszett el. Ez a kincs "
-"állítólag egy olyan lándzsa volt, mely hegyét Chak'kso Ney'yks, az "
+"állítólag egy olyan lándzsa volt, mely hegyét Chak’kso Ney’yks, az "
 "Elsőszülött Sárkánygyík, fogából faragták, miután Eloralduil, a tünde hős, "
 "legyőzte őt. A legenda szerint ez a fegyver valahol ennek a tónak a legalján "
 "pihent (Ruaskkolin-tó, mely az itt élő, széles körben ismert tengeri kígyó "
@@ -710,7 +758,7 @@ msgstr ""
 "Miután Rilhon felvértezte magát, hogy megküzdjön a kígyóval, két "
 "meglehetősen nagy meglepetéssel találta magát szembe. Az első egy kővé "
 "dermedt kígyó volt, aki minden kétséget kizáróan maga Ruaskkolin volt. A "
-"második pedig a nagyon-is-élő Chak'kso Ney'yks volt, aki vitathatatlanul "
+"második pedig a nagyon-is-élő Chak’kso Ney’yks volt, aki vitathatatlanul "
 "rendelkezett az összes fogával.\n"
 "\n"
 "(írta: Paterson)"
@@ -773,14 +821,6 @@ msgstr "2j - Sötét jóslat (túlélőpálya)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly-spawned AI units. Victory is achieved by surviving and "
@@ -790,10 +830,11 @@ msgid ""
 "Note: You need to use the default map settings for the scenario to work "
 "right."
 msgstr ""
-"A \"Sötét jóslat\" egy 1 vagy 2 játékosnak szánt, csapatban játszott "
+"A „Sötét jóslat” egy 1 vagy 2 játékosnak szánt, csapatban játszott "
 "túlélőpálya, melyen a véletlenszerűen születő, számítógép-vezérelt egységek "
 "ellen kell küzdeni. A győzelem eléréséhez túl kell élni a támadás összes "
-"hullámát. A játék alatt a terep a véletlenszerű időjárás miatt változik.\n"
+"hullámát, és le kell győzni valamennyi ellenfelet. A játék alatt a terep a "
+"véletlenszerű időjárás miatt változik.\n"
 "\n"
 "Megjegyzés: a megfelelő működéshez használd a térkép beállításait."
 
@@ -856,9 +897,8 @@ msgstr "Játékos(ok)"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-#, fuzzy
 msgid "Death of your leader"
-msgstr "Csapatod összes vezetője elesik."
+msgstr "A vezéred elesik."
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
@@ -866,33 +906,33 @@ msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
+"Mivel csak egy vezér maradt a csapatodban, a támadáshullámok nem lesznek "
+"teljes erejűek."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
-#, fuzzy
 msgid "Death of both of your team’s leaders"
-msgstr "Csapatod összes vezetője elesik."
+msgstr "Csapatod mindkét vezetője elesik."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
+"Mivel csapatodnak két vezére van, a támadáshullámok teljes erejűek lesznek."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
-#, fuzzy
 msgid "Survive and defeat all enemy waves"
-msgstr "Túléled az összes támadást."
+msgstr "Túléled és legyőzöd az összes támadást"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1432
 msgid "Dark Forecast — a random survival scenario"
-msgstr "Sötét jóslat - egy véletlenszerű túlélőpálya"
+msgstr "Sötét jóslat – egy véletlenszerű túlélőpálya"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
-#, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -917,33 +957,30 @@ msgid ""
 msgstr ""
 "Célod, hogy túléld a hullámokban érkező ellenséges támadásokat, és hogy "
 "legyőzd a végső fő ellenséget.\n"
-"-------\n"
-"A támadáshullámok egységösszetétele véletlenszerűen alakul, és minden egyes "
-"alkalommal, amikor a \"Sötét jóslat\"-ot játszod, más és más lesz. \n"
 "\n"
+"A támadáshullámok egységösszetétele véletlenszerűen alakul, és minden egyes "
+"alkalommal, amikor a „Sötét jóslat”-ot játszod, más és más lesz. \n"
 "\n"
 "A támadók feltűnhetnek a térkép északi, déli és nyugati szélén is, azonban "
-"legtöbbször nyugatról érkeznek. A hullámok valamennyire rendszeres "
-"időközönként jelennek meg.\n"
-"\n"
+"legtöbbször nyugaton jelennek meg. A hullámok valamennyire rendszeres "
+"időközönként érkeznek.\n"
 "\n"
 "Az időjárás szintén véletlenszerűen alakul majd, ez pedig változtatja a "
 "térkép arculatát. \n"
 "\n"
 "\n"
-"<span color='red'>A \"Sötét jóslat\"-ot készítette:</span>\n"
+"<b>A „Sötét jóslat”-ot készítette:</b>\n"
 "\n"
 "<span color='green'>jb</span>\n"
-"- pályaötlet, térképtervezés, támadáshullámok\n"
+"• pályaötlet, térképtervezés, támadáshullámok\n"
 "\n"
 "<span color='green'>Rhuvaen</span>\n"
-"- WML kód megvalósítása "
+"• WML kód megvalósítása "
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1457
-#, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
-msgstr "Tehát ez az elátkozott völgy - a föld, mely a miénk lehet."
+msgstr "Tehát ez az elátkozott völgy – a föld, amely a miénk lehet."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1461
@@ -1010,7 +1047,7 @@ msgid ""
 "the Den of Onis, hoping to unlock the strange and mysterious magics of its "
 "creators."
 msgstr ""
-"Ezt az igencsak szokatlan barlangot hajdanán a \"nevető ördögök odúja\"-ként "
+"Ezt az igencsak szokatlan barlangot hajdanán a „nevető ördögök odúja”-ként "
 "ismerték, mivel a Kah Ruuk Oni legvédettebb fellegvára volt. A Kah Ruuk egy "
 "emberevő démonok alkotta gonosz és ravasz faj volt, amely közel négy "
 "évszázadon keresztül félelemben tartotta a keleti vidékek lakóit, mielőtt "
@@ -1058,16 +1095,14 @@ msgstr "2j - Falvacskák"
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Warfare transforms the simple farms and villages of a peaceful region "
-#| "into a subtly parceled battlefield."
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
 "A háborúskodás egy finoman felszabdalt csatatérré alakítja át a békés táj "
-"egyszerű tanyáit és falvait."
+"egyszerű tanyáit és falvait.\n"
+"\n"
+"(Készítette: Doc Paterson)"
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:24
@@ -1080,6 +1115,10 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"A játékosoknak fura szövetségre kell lépniük a helyiekkel, ha túl akarják "
+"élni ezt a nem mindennapi szigetet.\n"
+"\n"
+"(Készítette: Doc Paterson)"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
@@ -1089,22 +1128,22 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:275
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:325
 msgid "Big Baby Bo"
-msgstr ""
+msgstr "Bo nagyfiú"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:103
 msgid "Rawffus the Dim"
-msgstr ""
+msgstr "Rawffus, a buta"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:152
 msgid "Kolbur"
-msgstr ""
+msgstr "Kolbur"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:177
 msgid "Vilhelm Viskitynnyri"
-msgstr ""
+msgstr "Vilhelm Viskitynnyri"
 
 #. [unit]: type=Woodsman, id=Clockwork Boy
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:236
@@ -1112,27 +1151,27 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:623
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:635
 msgid "Clockwork Boy"
-msgstr ""
+msgstr "Órás fiú"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:298
 msgid "Neki the Brutal"
-msgstr ""
+msgstr "Neki, a brutális"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:338
 msgid "Drowsk Calbeht"
-msgstr ""
+msgstr "Drowsk Calbeht"
 
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:398
 msgid "Rzrrt the Dauntless"
-msgstr ""
+msgstr "Rzrrt, a rettenthetetlen"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:437
 msgid "Sorrek, Chosen of Death"
-msgstr ""
+msgstr "Sorrek, a halál választottja"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:477
@@ -1141,42 +1180,42 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:662
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:712
 msgid "Big Baby Dro"
-msgstr ""
+msgstr "Dro nagyfiú"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:490
 msgid "Gawffus the Dim"
-msgstr ""
+msgstr "Gawffus, a buta"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:539
 msgid "Rublok"
-msgstr ""
+msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:564
 msgid "Ulysses Mantyjuuri"
-msgstr ""
+msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:685
 msgid "Neki the Brute"
-msgstr ""
+msgstr "Neki, a könyörtelen"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:725
 msgid "Claiomh Dubh"
-msgstr ""
+msgstr "Claiomh Dubh"
 
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:784
 msgid "Tyxrrn the Dauntless"
-msgstr ""
+msgstr "Tyxrrn, a rettenthetetlen"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:823
 msgid "Rukhos, Chosen of Death"
-msgstr ""
+msgstr "Rukhos, a halál választottja"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
@@ -1223,7 +1262,7 @@ msgstr ""
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
 msgid "evil eye"
-msgstr ""
+msgstr "gonosz szem"
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
@@ -1321,7 +1360,7 @@ msgid ""
 "for hundreds of years, repelling great beasts from their western borders, "
 "and Carorathian Imperialists from their eastern borders."
 msgstr ""
-"Szabadfölde, melyet a távoli kelet lakói a \"Királyok Nélküli Föld\"-ként is "
+"Szabadfölde, melyet a távoli kelet lakói a „Királyok Nélküli Föld”-ként is "
 "ismernek, Vadfölde és a Carorathi Királyság között terül el, így elválasztja "
 "a sérthetetlen törvény és a teljes vadság vidékét egymástól. Szabadfölde "
 "lakói több száz éve küzdenek országuk önjelölt hódítóival; nyugati "
@@ -1331,12 +1370,15 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
 msgid "2p — Thousand Stings Garrison"
-msgstr ""
+msgstr "2j - Ezer méregtüskés őrség"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
 msgid "A strange place. Designed by Doc Paterson"
 msgstr ""
+"Egy furcsa hely.\n"
+"\n"
+"(Készítette: Doc Paterson)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1405,10 +1447,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:148
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:149
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:150
-#, fuzzy
-#| msgid "statue"
 msgid "Statue"
-msgstr "szobor"
+msgstr "Szobor"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1476,7 +1516,7 @@ msgid ""
 "3 player free for all map."
 msgstr ""
 "A középen elhelyezkedő sziget feletti ellenőrzés jelenti a győzelem kulcsát "
-"ezen a 21x21 hatszög méretű, három játékosra tervezett (mindenki mindenki "
+"ezen a 21×21 hatszög méretű, három játékosra tervezett (mindenki mindenki "
 "ellen, MME) pályán."
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
@@ -1639,7 +1679,7 @@ msgid ""
 "4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "Létfontosságú a középen elhelyezkedő várat és környékét ellenőrzés alatt "
-"tartani ezen a 36x36 hatszög méretű, négy játékosnak (mindenki mindenki "
+"tartani ezen a 36×36 hatszög méretű, négy játékosnak (mindenki mindenki "
 "ellen, MME) szánt pályán. Remekül működik 2 fős csapatokkal is. A térképen "
 "36 falu található."
 
@@ -1695,7 +1735,7 @@ msgid ""
 "A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
 "Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgstr ""
-"Egy 25x25 hatszög méretű 2-2 elleni pálya, melyen a térkép sarkaiból 2-2 "
+"Egy 25×25 hatszög méretű 2-2 elleni pálya, melyen a térkép sarkaiból 2-2 "
 "várkastély néz farkasszemet egymással a folyó fölött. A csapatbeállítások a "
 "következők: az 1-es és a 4-es játékos kontra a 2-es és a 3-as játékos. A "
 "térképen 28 falu található."
@@ -1728,7 +1768,7 @@ msgid ""
 "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
 "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgstr ""
-"Egy 35x27 hatszög méretű 2-2 elleni pálya, melyen öt különböző útvonalon "
+"Egy 35×27 hatszög méretű 2-2 elleni pálya, melyen öt különböző útvonalon "
 "keresztül lehet egymás torkának esni. A térkép a kelet kontra nyugat (az 1-"
 "es és a 4-es játékos kontra a 2-es és a 3-as játékos) játék esetén a "
 "legkiegyensúlyozottabb, de bármilyen csapatbeállítással, vagy mindenki "
@@ -1755,12 +1795,11 @@ msgstr "4j - Ostromlott várak"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
-#, fuzzy
 msgid ""
 "36X36 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
-"Egy 40x30 hatszög méretű, négy játékosnak szánt pálya, melyen négy hatalmas "
+"Egy 36×36 hatszög méretű, négy játékosnak szánt pálya, melyen négy hatalmas "
 "várkastély néz farkasszemet egymással két folyó megközelítőleg T alakú "
 "találkozásánál. 2-2 ellen, és mindenki mindenki ellen (MME) játszva is "
 "élvezetes. A térképen körülbelül 45 falu található."
@@ -1786,7 +1825,7 @@ msgid ""
 "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
 "center common."
 msgstr ""
-"Egy 24x28 hatszög méretű 2-2 elleni pálya, melyen kisegítő várak is "
+"Egy 24×28 hatszög méretű 2-2 elleni pálya, melyen kisegítő várak is "
 "fellelhetők. A térkép közepén nem ritka a rendkívül zavaros, nagy horderejű "
 "csatározás."
 
@@ -1895,15 +1934,13 @@ msgstr "Védő"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:426
-#, fuzzy
 msgid "Survive all enemy attacks"
-msgstr "Túléled az összes támadást."
+msgstr "Túléled az összes támadást"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:432
-#, fuzzy
 msgid "Death of your team leaders"
-msgstr "Csapatod összes vezetője elesik."
+msgstr "Csapatod összes vezetője elesik"
 
 #. [note]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:437
@@ -1991,7 +2028,7 @@ msgid ""
 "extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
 "starting gold, has 33 villages."
 msgstr ""
-"Ez egy 40X20 hatszög méretű 3-3 elleni pálya. A manzivai csapdák széles "
+"Ez egy 40×20 hatszög méretű 3-3 elleni pálya. A manzivai csapdák széles "
 "körben úgy ismertek, mint egy olyan bonyolult, zavarba ejtő vidék, ahol az "
 "ember könnyen otthagyhatja a fogát, ha nem a megfelelő helyen van, vagy "
 "túlzott mértékben terjeszkedik. A csapatbeállítások a következők: az 145-ös "
@@ -2000,10 +2037,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
-#, fuzzy
-#| msgid "6p — Hexcake"
 msgid "6p — Volcano"
-msgstr "6j - Hatszögsüti"
+msgstr "6j - Vulkán"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
@@ -2011,6 +2046,8 @@ msgid ""
 "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
+"Egy 3-3 elleni csata, amely egy királyság hamvaiért folyik, melyet egy "
+"vulkánkitörés pusztított el réges-régen. A pályán 36 falu található."
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
@@ -2025,7 +2062,7 @@ msgid ""
 "south), but having players 146 or 136 as a team is also interesting. "
 "Designed for 150 starting gold, has 44 villages."
 msgstr ""
-"Ez egy 40x40 hatszög méretű 3-3 elleni pálya. A szövetségeknek rugalmasan "
+"Ez egy 40×40 hatszög méretű 3-3 elleni pálya. A szövetségeknek rugalmasan "
 "kell működniük, különben egyiküket elsöpörheti a túlerővel érkező támadás. "
 "Kezdéshez 150 arany beállítása javasolt. A csapatbeállítások a következők: "
 "az 1,4,5-ös játékosok a 2,3,6-os játékosok ellen (észak kontra dél), de az "
@@ -2195,82 +2232,3 @@ msgid ""
 msgstr ""
 "Ez egy wesnoth teljesítménymérő, futtatáshoz használd ezt: --no-delay --"
 "multiplayer --scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "Single player mode — uses the reduced strength spawns."
-#~ msgstr "Egyjátékos mód - csökkentett erejű ellenfelek előhívása."
-
-#~ msgid "Two player mode — uses the full strength spawns."
-#~ msgstr "Kétjátékos mód - teljes erejű ellenfelek előhívása."
-
-#~ msgid "Survive and defeat the waves of opposition."
-#~ msgstr "Éld túl és győzd le a hullámokban érkező ellenséges támadásokat."
-
-#~ msgid "Defeat all waves"
-#~ msgstr "Visszavered az összes támadáshullámot"
-
-#~ msgid "Lose all your team’s leaders"
-#~ msgstr "Elveszted a csapatod összes vezetőjét"
-
-#~ msgid ""
-#~ "Players must navigate the dispersive terrain of this small but "
-#~ "topographically dense island."
-#~ msgstr ""
-#~ "A játékosoknak ezen a kusza területen kell tájékozódniuk, mely kicsi "
-#~ "ugyan, de térképészetileg meglehetősen sűrű."
-
-#~ msgid "teamname^South-West"
-#~ msgstr "Délnyugat"
-
-#~ msgid "teamname^North-East"
-#~ msgstr "Északkelet"
-
-#~ msgid "teamname^South-East"
-#~ msgstr "Délkelet"
-
-#~ msgid "teamname^North-West"
-#~ msgstr "Északnyugat"
-
-#~ msgid "Survive for 32 turns."
-#~ msgstr "Maradj életben a 32. kör végéig."
-
-#~ msgid "2p - Fast To Madness"
-#~ msgstr "2j - Rohanás az őrületbe"
-
-#~ msgid ""
-#~ "For a long time these two landlords have been at loggerheads with each "
-#~ "other and it seems that today another chapter will be added to their "
-#~ "story of pointless skirmishes."
-#~ msgstr ""
-#~ "Ez a két földesúr már régóta marakodik egymással, és úgy tűnik, "
-#~ "értelmetlen csetepatéjuk története ma újabb fejezettel bővül."
-
-#~ msgid "2p - Thalin's Stronghold"
-#~ msgstr "2j - Thalin erődje"
-
-#~ msgid "Deep within the mountains lie the castles of the dwarven lords."
-#~ msgstr "A végtelen hegyvidék szívében fekszik a törp bárók várkastélya."
-
-#~ msgid "4p - Eryn Chethu"
-#~ msgstr "4j - Eryn Chethu"
-
-#~ msgid " Recommended setting of 3 gold per village."
-#~ msgstr " Falvanként 3 arany bevétel beállítása javasolt."
-
-#~ msgid ""
-#~ "Beware wanderer, for even the elves do not know what lives in the forests "
-#~ "of Eryn Chethu."
-#~ msgstr ""
-#~ "Vándor, légy résen, mert még a tündék sem tudják, miféle lények élnek "
-#~ "Eryn Chethu erdeiben."
-
-#~ msgid "4p - Mines of Mallorod"
-#~ msgstr "4j - Mallorod bányái"
-
-#~ msgid ""
-#~ "The dwarves were the first to arrive when it became known that gold had "
-#~ "been found at Mallorod. Shortly after others followed and soon quarrels "
-#~ "arose over the right to delve for the shiny metal."
-#~ msgstr ""
-#~ "A törpök érkeztek elsőként Mallorodba, amikor kiderült, hogy aranyat "
-#~ "találtak ott. Nem sokkal utánuk mások is érkeztek, és hamarosan viták "
-#~ "robbantak ki azon, hogy kié legyen a csillogó fém kiásásának joga."
