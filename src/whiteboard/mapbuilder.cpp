@@ -49,6 +49,12 @@ mapbuilder::~mapbuilder()
 
 void mapbuilder::pre_build()
 {
+	foreach(team& t, *resources::teams)
+	{
+		//Reset spent gold to zero, it'll be recalculated during the map building
+		t.get_side_actions()->reset_gold_spent();
+	}
+
 	int current_side = resources::controller->current_side();
 	foreach(unit& u, *resources::units)
 	{
@@ -125,9 +131,6 @@ bool mapbuilder::process(size_t, team&, side_actions&, side_actions::iterator it
 
 bool mapbuilder::pre_visit_team(size_t /*team_index*/, team&, side_actions& sa)
 {
-	//Reset spent gold to zero, it'll be recalculated during the map building
-	sa.reset_gold_spent();
-
 	return !sa.hidden();
 }
 
