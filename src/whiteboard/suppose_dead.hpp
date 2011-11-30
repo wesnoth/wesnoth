@@ -42,6 +42,8 @@ namespace wb {
 
 		/** Return the unit targeted by this action. Null if unit doesn't exist. */
 		virtual unit* get_unit() const { return unit_; }
+		/** @return null pointer */
+		virtual fake_unit_ptr get_fake_unit() { return fake_unit_ptr(); }
 		/** Return the location at which this action was planned. */
 		virtual map_location get_source_hex() const { return loc_; }
 

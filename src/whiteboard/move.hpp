@@ -50,6 +50,8 @@ public:
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit* get_unit() const { return unit_; }
+	/** @return pointer to the fake unit used only for visuals */
+	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
 	virtual map_location get_source_hex() const;
 	virtual map_location get_dest_hex() const;
@@ -61,7 +63,6 @@ public:
 	virtual bool calculate_new_route(const map_location& source_hex, const map_location& dest_hex);
 
 	virtual arrow_ptr get_arrow() { return arrow_; }
-	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
 	/** Applies temporarily the result of this action to the specified unit map. */
 	virtual void apply_temp_modifier(unit_map& unit_map);

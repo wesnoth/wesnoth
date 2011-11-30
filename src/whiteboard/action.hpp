@@ -69,6 +69,8 @@ public:
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit* get_unit() const = 0;
+	/** @return pointer to the fake unit used only for visuals */
+	virtual fake_unit_ptr get_fake_unit() = 0;
 	/** Returns the index of the team that owns this action */
 	size_t team_index() const { return team_index_; }
 	/** Returns the number of the side that owns this action, i.e. the team index + 1. */

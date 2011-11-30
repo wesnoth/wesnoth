@@ -58,6 +58,8 @@ public:
 
 	/** @return pointer to a copy of the recall unit. */
 	virtual unit* get_unit() const { return temp_unit_; }
+	/** @return pointer to the fake unit used only for visuals */
+	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
 	map_location const get_recall_hex() const { return recall_hex_; }
 
