@@ -265,17 +265,32 @@ void highlight_visitor::visit(move_ptr move)
 		}
 		if (move->fake_unit_)
 		{
-			side_actions& sa = *resources::teams->at(move->team_index()).get_side_actions();
-			side_actions::iterator last_action = sa.find_last_action_of(move->get_unit());
-
-			if(last_action != sa.end() && *last_action != move)
-			{
-				move->fake_unit_->set_disabled_ghosted(false);
-			}
+			move->fake_unit_->set_disabled_ghosted(false);
 		}
 		break;
 	default:
 		assert (false);
+		break;
+	}
+
+	//Last action with a fake unit always gets normal appearance
+	//Override choices above
+	if (move->fake_unit_)
+	{
+		side_actions& sa = *resources::teams->at(move->team_index()).get_side_actions();
+		side_actions::iterator last_action = sa.find_last_action_of(move->get_unit());
+		side_actions::iterator second_to_last_action =
+				last_action != sa.end() && last_action != sa.begin() ? last_action - 1 : sa.end();
+		bool this_is_last_action = last_action != sa.end() && move == *last_action;
+		bool last_action_has_fake_unit = last_action != sa.end() && (*last_action)->get_fake_unit();
+		bool this_is_second_to_last_action = (second_to_last_action != sa.end()
+				&& move == *second_to_last_action);
+
+		if (this_is_last_action
+				|| (this_is_second_to_last_action && !last_action_has_fake_unit))
+		{
+			move->fake_unit_->set_standing(true);
+		}
 	}
 }
 
