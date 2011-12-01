@@ -1,7 +1,7 @@
 # translation of wesnoth.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2010 Wesnoth development team
+# Copyright (C) 2004 - 2011 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
@@ -9,13 +9,13 @@
 #
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007, 2010.
-# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2010.
+# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-23 15:01+0100\n"
-"PO-Revision-Date: 2011-11-22 20:32+0100\n"
+"PO-Revision-Date: 2011-11-30 16:23+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
 "Language: cs\n"
@@ -3211,7 +3211,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:233
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
+msgstr "<i>― Lord Hamel z Knalgy</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:224
@@ -3296,7 +3296,7 @@ msgstr "Poznámky:"
 
 #: data/lua/wml/objectives.lua:71
 msgid "(%d turns left)"
-msgstr ""
+msgstr "(zbývá %d kol)"
 
 #: data/lua/wml/objectives.lua:73
 msgid "(this turn left)"
@@ -6265,9 +6265,8 @@ msgstr ""
 "nemůže pokračovat. Chcete ji uložit?"
 
 #: src/reports.cpp:175
-#, fuzzy
 msgid "Type: "
-msgstr "Typ"
+msgstr "Typ: "
 
 #: src/reports.cpp:195
 msgid "Race: "
@@ -6287,9 +6286,8 @@ msgid "Advances to:"
 msgstr "Povyšuje na:"
 
 #: src/reports.cpp:282
-#, fuzzy
 msgid "Trait: "
-msgstr "Vlastnosti"
+msgstr "Vlastnost: "
 
 #: src/reports.cpp:305
 msgid "invisible: "
@@ -6346,9 +6344,8 @@ msgid "Alignment: "
 msgstr "Příslušnost: "
 
 #: src/reports.cpp:370
-#, fuzzy
 msgid "Ability: "
-msgstr "Schopnosti: "
+msgstr "Schopnost: "
 
 #: src/reports.cpp:415
 msgid "Resistances: "
@@ -6359,23 +6356,20 @@ msgid "(Att / Def)"
 msgstr "(Út / Obr)"
 
 #: src/reports.cpp:443
-#, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
-msgstr "Modifikátor zkušenostních bodů: "
+msgstr "Modifikátor zkušeností: "
 
 #: src/reports.cpp:494
-#, fuzzy
 msgid "Terrain: "
-msgstr "Terén"
+msgstr "Terén: "
 
 #: src/reports.cpp:512
 msgid "maximum^max."
-msgstr ""
+msgstr "max."
 
 #: src/reports.cpp:512
 msgid "minimum^min."
-msgstr ""
+msgstr "min."
 
 #: src/reports.cpp:517
 msgid "Defense: "
@@ -6399,9 +6393,8 @@ msgid "Time of day: "
 msgstr "Denní doba: "
 
 #: src/reports.cpp:611
-#, fuzzy
 msgid "Leadership: "
-msgstr "velení"
+msgstr "Velení: "
 
 #: src/reports.cpp:615
 msgid "Slowed: "
