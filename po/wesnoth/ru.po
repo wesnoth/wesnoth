@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-23 15:01+0100\n"
-"PO-Revision-Date: 2011-10-12 17:01+0200\n"
+"PO-Revision-Date: 2011-12-01 12:05+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: ZumZoom\n"
 "Language: ru\n"
@@ -33,8 +33,6 @@ msgstr "Сжимать сохранения"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
-#, fuzzy
-#| msgid "Confirm deleting saves"
 msgid "Confirm deleting saves"
 msgstr "Подтверждать удаление сохранений"
 
@@ -50,24 +48,20 @@ msgstr "Прокрутка средним кликом"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#, fuzzy
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep scrolling when mouse leaves window"
 msgstr "Продолжать прокрутку, когда мышь покидает окно"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
-#, fuzzy
-#| msgid "Local time of day light"
 msgid "Local time of day area lighting"
-msgstr "Синхронизировать время суток"
+msgstr "Освещение полей по локальному времени суток"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
-#, fuzzy
-#| msgid "Local time of day light effect (use more memory)."
 msgid "Custom lighting for local time of day areas (uses more memory)"
-msgstr "Синхронизировать время суток (требует больше памяти)"
+msgstr ""
+"Рисовать специальное освещение полей по локальному времени суток (требует "
+"больше памяти)"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
@@ -86,47 +80,33 @@ msgstr "Таймаут пинга"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
-msgstr "Время ожидания ответа от сервера в секундах. 0 — отключить."
+msgstr "Сколько секунд ждать ответа сервера на пинг. 0 — отключить."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
-#, fuzzy
-#| msgid "Accept whisper messages from friends only"
 msgid "Accept whispers from friends only"
 msgstr "Получать личные сообщения только от друзей"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
-#, fuzzy
-#| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open whisper windows in lobby"
 msgstr "Автоматически открывать окна личных сообщений в холле"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
-#, fuzzy
-#| msgid "Group players in lobby"
 msgid "Group players in lobby"
 msgstr "Группировать игроков в холле"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid "Lobby sounds"
 msgid "Lobby sounds"
 msgstr "Звуки в холле"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
-#, fuzzy
-#| msgid "Disable notifications"
 msgid "Disable notifications"
 msgstr "Отключить уведомления"
 
@@ -155,17 +135,11 @@ msgstr "Будет ли камера следовать за бойцом, ко�
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
-#, fuzzy
-#| msgid "Chat message aging"
 msgid "Chat message aging"
 msgstr "Устарение сообщений в чате"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:133
-#, fuzzy
-#| msgid ""
-#| "Number of minutes to wait before clearing an ingame chat message. Disable "
-#| "aging with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
@@ -526,7 +500,7 @@ msgstr "Британский английский перевод"
 #. [about]
 #: data/core/about.cfg:1587
 msgid "English (Shaw) Translation"
-msgstr "Английский перевод – \"Шоу\""
+msgstr "Английский перевод – «Шоу»"
 
 #. [about]
 #: data/core/about.cfg:1611
@@ -2096,10 +2070,8 @@ msgstr "Дополнительная цель:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "This is the last scenario."
-msgstr "Удаленный сценарий"
+msgstr "Это последний сценарий."
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -2603,22 +2575,15 @@ msgstr "— Руководство по тактическому анализу,
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
-#, fuzzy
-#| msgid ""
-#| "If you are playing with <b>Shroud</b> or <b>Fog of war</b> active, you "
-#| "won’t know what you’re facing. In this case, long-range scouting units "
-#| "are worth their cost. Try to choose scouts that can easily move across "
-#| "the surrounding terrain, because units can only see as far as they can "
-#| "move in one turn."
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"Если Вы играете со включённой «Пеленой» или «Туманом войны», Вы не можете "
-"видеть, что Вас ждет. В такой ситуации бойцы-разведчики стоят своих денег. "
-"Старайтесь выбирать разведчиков, которые могут легко перемещаться по "
+"Если Вы играете со включённой <b>Пеленой</b> или <b>Туманом войны</b>, то не "
+"сможете увидеть, что Вас ждет. В такой ситуации бойцы-разведчики стоят своих "
+"денег. Старайтесь выбирать разведчиков, которые могут легко перемещаться по "
 "окружающей территории, поскольку они видят ровно столько, насколько они "
 "смогут продвинуться за один ход."
 
@@ -2733,22 +2698,16 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:88
-#, fuzzy
-#| msgid ""
-#| "On maps where <i>Shroud</i> or <i>Fog of war</i> has been enabled, all "
-#| "units’ sightlines are limited by their maximum movement. If you have some "
-#| "valuable but slow units, keep at least one fast unit with them so that "
-#| "you are not caught out by a surprise attack."
 msgid ""
 "On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
 "units’ sightlines are limited by their maximum movement. If you have some "
 "valuable but slow units, keep at least one fast unit with them so that you "
 "are not caught out by a surprise attack."
 msgstr ""
-"На картах с пеленой или туманом войны обзор бойца ограничен клетками, до "
-"которых он может дойти. Помните об этом, и всегда держите при группе важных, "
-"но медленных бойцов как минимум одного быстрого разведчика, чтобы не быть "
-"захваченным врасплох внезапной атакой."
+"На картах с <i>пеленой</i> или <i>туманом войны</i> обзор бойца ограничен "
+"клетками, до которых он может дойти. Помните об этом, и всегда держите при "
+"группе важных, но медленных бойцов как минимум одного быстрого разведчика, "
+"чтобы не быть захваченным врасплох внезапной атакой."
 
 #. [tip]
 #: data/hardwired/tips.cfg:92
@@ -3425,10 +3384,8 @@ msgstr "точка зрения"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#, fuzzy
-#| msgid "Skip Animation"
 msgid "Skip animation"
-msgstr "пропустить анимацию"
+msgstr "Пропустить анимацию"
 
 #: src/about.cpp:204 src/menu_events.cpp:324 src/menu_events.cpp:351
 #: src/statistics_dialog.cpp:114
@@ -3519,7 +3476,7 @@ msgstr "(нажмите $hotkey, чтобы продолжить движени�
 
 #: src/addon/manager.cpp:423
 msgid "unit_byte^B"
-msgstr ""
+msgstr "б"
 
 #: src/addon/manager.cpp:440
 msgid "addon_type^Campaign"
@@ -3567,7 +3524,7 @@ msgstr "Запрашиваю термины"
 
 #: src/addon/manager.cpp:486
 msgid "The server responded with an error: \"$error|\""
-msgstr "Сервер ответил с ошибкой: \"$error|\""
+msgstr "Сервер ответил ошибкой: «$error|»"
 
 #: src/addon/manager.cpp:495
 msgid "Terms"
@@ -3579,7 +3536,7 @@ msgstr "Отправляю аддон"
 
 #: src/addon/manager.cpp:534 src/addon/manager.cpp:559
 msgid "The server responded with an error: \""
-msgstr "Сервер ответил с ошибкой: \""
+msgstr "Сервер ответил ошибкой: \""
 
 #: src/addon/manager.cpp:537 src/addon/manager.cpp:562
 #: src/multiplayer_wait.cpp:408
@@ -3829,6 +3786,8 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"Если Вы удалите '$addon|', то тем самым навсегда удалите с сервера "
+"статистиику закачиваний и скачиваний. Вы точно хотите продолжить?"
 
 #: src/addon/manager.cpp:1361
 msgid "Network communication error."
@@ -3849,13 +3808,11 @@ msgid "You have no add-ons installed."
 msgstr "У Вас нет установленных аддонов."
 
 #: src/addon/manager.cpp:1418
-#, fuzzy
-#| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] "Вы уверены, что хотите удалить аддон '$addon|'?"
-msgstr[1] "Вы уверены, что хотите удалить аддон '$addon|'?"
-msgstr[2] "Вы уверены, что хотите удалить аддон '$addon|'?"
+msgstr[0] "Вы уверены, что хотите удалить следующий аддон?"
+msgstr[1] "Вы уверены, что хотите удалить следующие аддоны?"
+msgstr[2] "Вы уверены, что хотите удалить следующие аддоны?"
 
 #: src/addon/manager.cpp:1444
 msgid ""
@@ -3869,32 +3826,25 @@ msgstr[1] ""
 msgstr[2] ""
 
 #: src/addon/manager.cpp:1454
-#, fuzzy
-#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
-msgstr[0] "Не удалось правильно удалить аддон."
-msgstr[1] "Не удалось правильно удалить аддон."
-msgstr[2] "Не удалось правильно удалить аддон."
+msgstr[0] "Не удалось правильно удалить аддон:"
+msgstr[1] "Не удалось правильно удалить аддоны:"
+msgstr[2] "Не удалось правильно удалить аддоны:"
 
 #: src/addon/manager.cpp:1461
-#, fuzzy
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Аддон удалён"
-msgstr[1] "Аддон удалён"
-msgstr[2] "Аддон удалён"
+msgstr[1] "Аддоны удалены"
+msgstr[2] "Аддоны удалены"
 
 #: src/addon/manager.cpp:1463
-#, fuzzy
-#| msgid "The following add-on had errors and could not be loaded:"
-#| msgid_plural "The following add-ons had errors and could not be loaded:"
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
-msgstr[0] "Следующий аддон имеет ошибки и не может быть загружен:"
-msgstr[1] "Следующие аддоны имеют ошибки и не могут быть загружены:"
-msgstr[2] "Следующие аддоны имеют ошибки и не могут быть загружены:"
+msgstr[0] "Следующий аддон был удалён:"
+msgstr[1] "Следующие аддоны были удалены:"
+msgstr[2] "Следующие аддоны были удалены:"
 
 #: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
@@ -3983,10 +3933,8 @@ msgid "Tutorial"
 msgstr "Обучение"
 
 #: src/dialogs.cpp:499
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "Test scenario"
-msgstr "Удаленный сценарий"
+msgstr "Тестовый сценарий"
 
 #: src/dialogs.cpp:509 src/savegame.cpp:1050
 msgid "Turn"
@@ -4225,9 +4173,6 @@ msgid "Turn "
 msgstr "Ход"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
-#, fuzzy
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Свободный слот:"
@@ -4601,7 +4546,7 @@ msgstr ""
 
 #: src/menu_events.cpp:872
 msgid "You currently can't recall at the highlighted location"
-msgstr ""
+msgstr "Вы сейчас не можете призывать на этом поле"
 
 #: src/menu_events.cpp:884
 msgid "Traits"
@@ -4745,8 +4690,6 @@ msgstr ""
 #: src/menu_events.cpp:2335 src/menu_events.cpp:2338 src/menu_events.cpp:2340
 #: src/menu_events.cpp:2342 src/menu_events.cpp:2344 src/menu_events.cpp:2371
 #: src/menu_events.cpp:2373 src/menu_events.cpp:2375 src/menu_events.cpp:2389
-#, fuzzy
-#| msgid "<nick>"
 msgid "<nickname>"
 msgstr "<ник>"
 
@@ -4775,10 +4718,6 @@ msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Запретить/разрешить всем зрителям говорить. (переключить)"
 
 #: src/menu_events.cpp:2356
-#, fuzzy
-#| msgid ""
-#| "Report abuse, rule violations, etc. to the server moderators. Make sure "
-#| "to mention relevant nicks, etc."
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -4803,8 +4742,6 @@ msgstr ""
 "играющим в или наблюдающим за Вашей партией."
 
 #: src/menu_events.cpp:2365
-#, fuzzy
-#| msgid "<nick> <message>"
 msgid "<nickname> <message>"
 msgstr "<ник> <сообщение>"
 
@@ -4817,20 +4754,14 @@ msgid "Change the log level of a log domain."
 msgstr "Сменить уровень лога в домене лога."
 
 #: src/menu_events.cpp:2371
-#, fuzzy
-#| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
 msgstr "Добавить игрока в список игнора."
 
 #: src/menu_events.cpp:2373
-#, fuzzy
-#| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
 msgstr "Добавить в друзья."
 
 #: src/menu_events.cpp:2375
-#, fuzzy
-#| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Удалить игрока из списка игнора или списка друзей."
 
@@ -4847,20 +4778,14 @@ msgid "<password> <email (optional)>"
 msgstr "<пароль> <email (необязательно)>"
 
 #: src/menu_events.cpp:2382
-#, fuzzy
-#| msgid "Register your nick"
 msgid "Register your nickname"
 msgstr "Зарегистрировать свой ник"
 
 #: src/menu_events.cpp:2384
-#, fuzzy
-#| msgid "Drop your nick."
 msgid "Drop your nickname."
 msgstr "Удалить свой ник."
 
 #: src/menu_events.cpp:2386
-#, fuzzy
-#| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr "Обновить профиль своего ника. Подробности смотрите через '/details'."
 
@@ -4869,16 +4794,12 @@ msgid "<detail> <value>"
 msgstr "<параметр> <значение>"
 
 #: src/menu_events.cpp:2389
-#, fuzzy
-#| msgid "Request information about a nick."
 msgid "Request information about a nickname."
-msgstr "Запросить информацию о нике"
+msgstr "Запросить данные о нике."
 
 #: src/menu_events.cpp:2391
-#, fuzzy
-#| msgid "Request a list of details you can set for your registered nick."
 msgid "Request a list of details you can set for your registered nickname."
-msgstr "Запросить, какие данные можно менять в своём нике."
+msgstr "Запросить, какие данные можно менять для своего ника."
 
 #: src/menu_events.cpp:2393 src/menu_events.cpp:2396 src/menu_events.cpp:2398
 msgid "<room>"
@@ -4942,8 +4863,6 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<сторона> [on/off]]"
 
 #: src/menu_events.cpp:2546
-#, fuzzy
-#| msgid "<side> <nick>"
 msgid "<side> <nickname>"
 msgstr "<сторона> <ник>"
 
@@ -5128,10 +5047,8 @@ msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Переключить отрисовку кодов местности на сетке."
 
 #: src/menu_events.cpp:2633
-#, fuzzy
-#| msgid "Toggle Planning Mode."
 msgid "Toggle planning mode."
-msgstr "Переключить режим планирования."
+msgstr "Переключить режим планирования"
 
 #: src/menu_events.cpp:2636
 msgid "Access whiteboard options dialog."
@@ -5229,23 +5146,23 @@ msgstr "запрашиваю информацию о пользователе $n
 
 #: src/menu_events.cpp:3115
 msgid "Couldn't find label or unit containing the string '$search'."
-msgstr "Не могу найти метку или бойца с текстом \"$search\"."
+msgstr "Не могу найти метку или бойца с текстом «$search»."
 
 #: src/menu_events.cpp:3149
 msgid "Can't droid invalid side: '$side'."
-msgstr "Нельзя переключить на ИИ неверную сторону:  '$side'."
+msgstr "Нельзя переключить на ИИ неверную сторону: '$side'."
 
 #: src/menu_events.cpp:3154
 msgid "Can't droid networked side: '$side'."
-msgstr "Нельзя переключить на ИИ сетевую сторону:  '$side'."
+msgstr "Нельзя переключить на ИИ сетевую сторону: '$side'."
 
 #: src/menu_events.cpp:3192
 msgid "Can't change control of invalid side: '$side'."
-msgstr "Не могу изменить управление неверной стороной:  '$side'."
+msgstr "Не могу изменить управление неверной стороной: '$side'."
 
 #: src/menu_events.cpp:3198
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr "Не могу изменить управление вышедшей из пределов стороны:  '$side'. "
+msgstr "Не могу изменить управление вышедшей из пределов стороны: '$side'. "
 
 #: src/menu_events.cpp:3282
 msgid "Layers"
@@ -5278,7 +5195,7 @@ msgid ""
 "instantly take over your computer. You have been warned."
 msgstr ""
 "Вы собираетесь открыть «дыру в безопасности» в «Весноте». Вы уверены, что "
-"хотите это сделать? Если Вы скачиваете адд-он, не нажимайте \"OK\"! Он "
+"хотите это сделать? Если Вы скачиваете адд-он, не нажимайте «OK»! Он "
 "моментально захватит Ваш компьютер. Мы Вас предупредили."
 
 #: src/menu_events.cpp:3424
@@ -5290,16 +5207,12 @@ msgid "Variable not found"
 msgstr "Переменная не найдена"
 
 #: src/menu_events.cpp:3518
-#, fuzzy
-#| msgid ""
-#| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, or "
-#| "chaotic."
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
-"Неизвестный тип: «$alignment», должен быть: «порядочный», либо «хаотичный», "
-"либо «нейтральный»."
+"Неизвестный характер: «$alignment», должен быть: «порядочный», либо "
+"«хаотичный», либо «нейтральный»."
 
 #: src/menu_events.cpp:3574
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -5369,11 +5282,6 @@ msgid "Connection timed out"
 msgstr "Превышен лимит времени подключения"
 
 #: src/multiplayer.cpp:239
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' is inactive. You cannot claim ownership of this nick "
-#| "until you activate your account via email or ask an administrator to do "
-#| "it for you."
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -5381,8 +5289,6 @@ msgid ""
 msgstr ""
 "Ник '$nick' неактивен. Вы не можете запрашивать этот ник, пока не "
 "активируете свой аккаунт по email или не попросите администратора "
-"активировать Вас.Ник '$nick' неактивен. Вы не можете запрашивать этот ник, "
-"пока не активируете свой аккаунт по email или не попросите администратора "
 "активировать Вас."
 
 #: src/multiplayer.cpp:248
@@ -5402,64 +5308,44 @@ msgid "You must login first."
 msgstr "Сначала надо залогиниться"
 
 #: src/multiplayer.cpp:337
-#, fuzzy
-#| msgid "The nick '$nick' is already taken."
 msgid "The nickname ‘$nick’ is already taken."
-msgstr "Ник '$nick' уже занят."
+msgstr "The nickname ‘$nick’ is already taken."
 
 #: src/multiplayer.cpp:339
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
 msgstr ""
-"Ник '$nick' содержит недопустимые символы. Разрешены только латинские "
-"алфавитно-цифровые, подчёркивания и дефисы."
+"The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
+"characters, underscores and hyphens are allowed."
 
 #: src/multiplayer.cpp:343
-#, fuzzy
-#| msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
-msgstr "Ник '$nick' слишком длинный, разрешается не более 18 символов."
+msgstr "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 
 #: src/multiplayer.cpp:346
-#, fuzzy
-#| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
-msgstr "Ник '$nick' зарезервирован и запрещён для игроков."
+msgstr "The nickname ‘$nick’ is reserved and cannot be used by players."
 
 #: src/multiplayer.cpp:348
-#, fuzzy
-#| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname ‘$nick’ is not registered on this server."
-msgstr "Ник '$nick' не зарегистрирован на этом сервере."
+msgstr "The nickname ‘$nick’ is not registered on this server."
 
 #: src/multiplayer.cpp:349
-#, fuzzy
-#| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
-msgstr " На этом сервере не разрешены незарегистрированные ники."
+msgstr " This server disallows unregistered nicknames."
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:353
-#, fuzzy
-#| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is registered on this server."
-msgstr "Ник '$nick' уже есть на этом сервере."
+msgstr "The nickname ‘$nick’ is registered on this server."
 
 #: src/multiplayer.cpp:354
-#, fuzzy
-#| msgid ""
-#| "WARNING: There is already a client using this nick, logging in will cause "
-#| "that client to be kicked!"
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
-"ПРЕДУПРЕЖДЕНИЕ: Клиент с таким ником уже подключён, если вы войдёте, то он "
-"отвалится!"
+"WARNING: There is already a client using this nickname, logging in will "
+"cause that client to be kicked!"
 
 #: src/multiplayer.cpp:357
 msgid ""
@@ -5472,7 +5358,7 @@ msgstr "Вы ввели неправильный пароль."
 
 #: src/multiplayer.cpp:362
 msgid "You have made too many login attempts."
-msgstr ""
+msgstr "Вы пытались войти слишком много раз."
 
 #: src/multiplayer_connect.cpp:100 src/multiplayer_connect.cpp:449
 #: src/multiplayer_connect.cpp:597
@@ -5861,8 +5747,6 @@ msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
-"Включить фильтр игр. Если выключен, будут видны все игры, вне зависимости от "
-"настроек фильтра."
 
 #: src/multiplayer_lobby.cpp:764
 msgid ""
@@ -6279,10 +6163,8 @@ msgid "(Att / Def)"
 msgstr "(Атака / Защ)"
 
 #: src/reports.cpp:443
-#, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
-msgstr "Модификатор опыта: "
+msgstr "Experience Modifier: "
 
 #: src/reports.cpp:494
 msgid "Terrain: "
@@ -6362,7 +6244,7 @@ msgstr "Особенность оружия: "
 
 #: src/reports.cpp:773
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
 #: src/reports.cpp:965
 msgid "Lawful units: "
@@ -6781,7 +6663,6 @@ msgstr "Настройки планировщика"
 #~ msgid "Add-on '$addon|' deleted."
 #~ msgstr "Аддон '$addon|' удалён."
 
-#, fuzzy
 #~| msgid "Invalid location"
 #~ msgid "Invalid WML found"
 #~ msgstr "Неверное место"

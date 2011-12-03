@@ -1,7 +1,7 @@
 # translation of wesnoth-tutorial.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2010 Wesnoth development team
+# Copyright (C) 2004 - 2011 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
@@ -9,13 +9,13 @@
 #
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2008.
-# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2010.
+# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2009-09-22 11:10+0100\n"
+"PO-Revision-Date: 2011-12-02 22:27+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -37,7 +37,6 @@ msgstr ""
 "\n"
 "<big>Pro pokračování klikni levým tlačítkem nebo zmáčkni mezerník...</big>"
 
-# alt.: "druhá část"
 #. [tutorial]: id=tutorial
 #. Hello translators! Tutorial is meant to be a bit funny at the start,
 #. welcoming new players. Please keep the friendly fun feeling!
@@ -45,7 +44,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
 #, fuzzy
 msgid "Wesnoth Tutorial Part I"
-msgstr "Wesnoth Tutoriál, kapitola II"
+msgstr "Wesnoth Tutoriál, kapitola I"
 
 #. [side]: type=Fighter, id=student
 #. [command]
@@ -109,9 +108,8 @@ msgstr "Lisar"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:210
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:216
-#, fuzzy
 msgid "Welcome to Wesnoth!"
-msgstr "<big>Vítej ve Wesnothu!</big>"
+msgstr "Vítej ve Wesnothu!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:212
@@ -362,9 +360,8 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:485
-#, fuzzy
 msgid "The <i>dummy</i> gets a turn?"
-msgstr "Tenhle PANÁK bude mít tah?"
+msgstr "Tenhle <i>panák</i> bude mít tah?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:491
@@ -382,9 +379,8 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:494
-#, fuzzy
 msgid "Click on the <b>End Turn</b> button in the bottom right of the screen"
-msgstr "Klikni na tlačítko 'Ukonči kolo' v pravém dolním rohu"
+msgstr "Klikni na tlačítko <b>Ukonči kolo</b> v pravém dolním rohu"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:515
@@ -430,7 +426,6 @@ msgstr "Klikni na vesnici pro přesun Lisar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:559
-#, fuzzy
 msgid "Villages"
 msgstr "Vesnice"
 
@@ -456,15 +451,13 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:870
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:922
-#, fuzzy
 msgid "Click on the <b>End Turn</b> button"
-msgstr "Klikni na tlačítko 'Ukonči kolo'"
+msgstr "Klikni na tlačítko <b>Ukonči kolo</b>"
 
 # proměnná číselná - ?
 # !!!!
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:601
-#, fuzzy
 msgid ""
 "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
 "summon some help against that quintain."
@@ -476,7 +469,6 @@ msgstr ""
 # !!!!
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:606
-#, fuzzy
 msgid ""
 "female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
 "to summon some help against that quintain."
@@ -531,15 +523,14 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
-#, fuzzy
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
 "you will only be given one type of unit to choose: the Elvish Fighter."
 msgstr ""
-"Kdykoliv jsi ve tvrzi, můžeš verbovat jednotky do políček hradu kolem ní "
-"kliknutím pravým tlačítkem a vybráním „Naverbuj“. Pro tentokrát dostaneš k "
-"verbování pouze jeden druh jednotky: Elfí bojovníky."
+"Kdykoliv jsi ve <i>tvrzi</i>, můžeš verbovat jednotky do políček hradu kolem "
+"ní kliknutím pravým tlačítkem a vybráním „<b>Naverbuj</b>“. Pro tentokrát "
+"dostaneš k verbování pouze jeden druh jednotky: Elfí bojovníky."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:654
@@ -811,7 +802,6 @@ msgstr ""
 # pův.: cenné
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1072
-#, fuzzy
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "Panák je mrtvý a získal jsem další zkušenosti!"
 
@@ -842,7 +832,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1119
 msgid "Note"
-msgstr ""
+msgstr "Poznámka"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1121
@@ -1730,9 +1720,8 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1226
-#, fuzzy
 msgid "<big>Time of Day</big>"
-msgstr "<big>Vítej ve Wesnothu!</big>"
+msgstr "<big>Denní doba</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1227
@@ -1875,7 +1864,6 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1417
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
 "points. He would have advanced to second level soon."
@@ -1885,17 +1873,15 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1420
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points. She would have advanced to second level soon."
 msgstr ""
-" $deadguy.name| nám bude chybět; kromě toho měl $deadguy.experience bodů "
-"zkušenosti, takže by brzy postoupil na druhou úroveň."
+" $deadguy.name| nám bude chybět; kromě toho měla $deadguy.experience bodů "
+"zkušenosti, takže by brzy postoupila na druhou úroveň."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1437
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least he was not one of our experienced "
 "troops!"
@@ -1905,7 +1891,6 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least she was not one of our experienced "
 "troops!"
@@ -2023,13 +2008,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1719
-#, fuzzy
 msgid "You took too long! We’ll never be rid of these orcs!"
 msgstr "Trvalo ti to příliš dlouho, takhle se těch skřetů nikdy nezbavíme!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1742
-#, fuzzy
 msgid ""
 "You have beaten the orcs! You may want to try some novice-level campaigns "
 "next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A Tale "
@@ -2037,12 +2020,12 @@ msgid ""
 "was specifically designed as a beginner’s campaign. Konrad, Li’sar and "
 "Delfador are characters from <i>Heir to the Throne</i>."
 msgstr ""
-"Gratuluji - zvítězil jsi nad skřety! Nyní můžeš zkusit některé z tažení na "
-"začátečnické úrovni. Jsou to například Skřetí invaze, Jižní hlídka, Příběh "
-"dvou bratrů nebo Dědic trůnu. Jižní hlídka byla navržena právě jako tažení "
-"pro začátečníky.\n"
+"Gratuluji – zvítězil jsi nad skřety! Nyní můžeš zkusit některé z tažení na "
+"začátečnické úrovni. Jsou to například <i>Skřetí invaze</i>, <i>Jižní "
+"hlídka</i>, <i>Příběh dvou bratrů</i> nebo <i>Dědic trůnu</i>. <i>Jižní "
+"hlídka</i> byla navržena právě jako tažení pro začátečníky.\n"
 "\n"
-"Konrád, Lisar a Delfador jsou postavy z příběhu Dědic trůnu."
+"Konrád, Lisar a Delfador jsou postavy z příběhu <i>Dědic trůnu</i>."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4

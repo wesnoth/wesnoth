@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-23 14:08+0100\n"
-"PO-Revision-Date: 2011-09-29 20:44+0200\n"
+"POT-Creation-Date: 2011-11-23 15:01+0100\n"
+"PO-Revision-Date: 2011-12-01 12:27+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: ZumZoom\n"
 "Language: ru\n"
@@ -853,10 +853,8 @@ msgstr "Болотная деревня"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1492
-#, fuzzy
-#| msgid "Swamp Merfolk Village"
 msgid "Merfolk Village"
-msgstr "Болотная деревня водяных"
+msgstr "Деревня водяных"
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1507
@@ -1093,10 +1091,8 @@ msgstr "Деревянный мост"
 #. [terrain_type]: id=rotbridgediag2
 #: data/core/terrain.cfg:1931 data/core/terrain.cfg:1943
 #: data/core/terrain.cfg:1955
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Rotting Bridge"
-msgstr "Деревянный мост"
+msgstr "Подгнивший мост"
 
 #. [terrain_type]: id=stone_bridge
 #: data/core/terrain.cfg:1969 data/core/terrain.cfg:1981
@@ -1263,15 +1259,13 @@ msgstr "Нет"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Uninstall Add-ons"
-msgstr "Обновить аддоны"
+msgstr "Удалить аддоны"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
 msgid "Choose the add-ons you want to remove."
-msgstr ""
+msgstr "Какие аддоны удалить?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
@@ -1476,15 +1470,13 @@ msgstr "Копировать ландшафт по краю"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
-#, fuzzy
-#| msgid "Choose theme"
 msgid "Choose Player"
-msgstr "Выберите тему"
+msgstr "Выберите игрока"
 
 #. [label]: id=message
 #: data/gui/default/window/editor_set_starting_position.cfg:70
 msgid "Which player should start here?"
-msgstr ""
+msgstr "Какой игрок стартует здесь?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1494,10 +1486,8 @@ msgstr "Настройки редактора"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:53
-#, fuzzy
-#| msgid "Time of day lighting preset"
 msgid "Time of day lighting preset:"
-msgstr "Предустановленная освещённость по времеми суток"
+msgstr "Предустановленная освещённость по времеми суток:"
 
 #. [button]: id=next_tod
 #. [button]: id=next_tip
@@ -1509,15 +1499,11 @@ msgstr "Следующий"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
-#, fuzzy
-#| msgid "Custom lighting setting"
 msgid "Custom lighting settings"
 msgstr "Специальные настройки освещённости"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:114
-#, fuzzy
-#| msgid "Auto-update map view"
 msgid "Automatically update map view"
 msgstr "Автоматически обновлять карту"
 
@@ -1539,7 +1525,7 @@ msgstr "Синий:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:231
 msgid "Allow multiple maps to be open simultaneously"
-msgstr ""
+msgstr "Разрешить открыть сразу несколько карт"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
@@ -1785,8 +1771,6 @@ msgstr "Какой язык предпочитаете:"
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
 #: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
-#, fuzzy
-#| msgid "Change language"
 msgid "Change Language"
 msgstr "Сменить язык"
 
@@ -2020,8 +2004,6 @@ msgstr "Сторона"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-#, fuzzy
-#| msgid "Nick"
 msgid "Nickname"
 msgstr "Ник"
 
@@ -2469,8 +2451,6 @@ msgid "Skip AI moves"
 msgstr "Пропускать ходы компьютера"
 
 #: src/game_preferences_display.cpp:176
-#, fuzzy
-#| msgid "Interrupt move when an ally is sighted"
 msgid "Interrupt move when an ally is sighted"
 msgstr "Прерывать движение, если замечен союзник"
 
@@ -2511,14 +2491,10 @@ msgid "Iconize lobby list"
 msgstr "Иконки в списке холла"
 
 #: src/game_preferences_display.cpp:186
-#, fuzzy
-#| msgid "Save password to preferences (clear text)"
 msgid "Save password to preferences (plain text)"
 msgstr "Сохранять пароль в настройках (в незашифрованном виде)"
 
 #: src/game_preferences_display.cpp:187
-#, fuzzy
-#| msgid "Set path to wesnothd"
 msgid "Set Path to wesnothd"
 msgstr "Установить путь к wesnothd"
 
@@ -2736,16 +2712,16 @@ msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Прервать движение вашего бойца при встрече с дружественным бойцом"
 
 #: src/game_preferences_display.cpp:369
-#, fuzzy
-#| msgid "Save replay on SP/MP victory or MP defeat"
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr "Сохранять повторы"
+msgstr ""
+"Сохранять повторы при победе в соло/мультиплеере и при проигрыше в "
+"мультиплеере"
 
 #: src/game_preferences_display.cpp:372
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr "Автоматически удалять автосохранения"
+msgstr ""
+"Автоматически удалять автосохранения при победе в соло/мультиплеере и "
+"проигрыше в мультиплеере"
 
 #: src/game_preferences_display.cpp:374
 msgid "Overlay a grid onto the map"
@@ -2776,8 +2752,6 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Показывать сообщения о всех игроках, подключившихся к холлу игр"
 
 #: src/game_preferences_display.cpp:394
-#, fuzzy
-#| msgid "Use new lobby interface"
 msgid "Use New Lobby Interface"
 msgstr "Использовать новый интерфейс холла"
 
@@ -2920,8 +2894,6 @@ msgid "Advanced section^Advanced"
 msgstr "Другие"
 
 #: src/game_preferences_display.cpp:1292
-#, fuzzy
-#| msgid "Choose theme"
 msgid "Choose Theme"
 msgstr "Выберите тему"
 
@@ -3056,13 +3028,11 @@ msgstr "Кампания: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:305
 msgid "Test scenario"
-msgstr ""
+msgstr "Тестовый сценарий"
 
 #: src/gui/dialogs/game_load.cpp:313
-#, fuzzy
-#| msgid "replay"
 msgid "Replay"
-msgstr "повтор"
+msgstr "Повтор"
 
 #: src/gui/dialogs/game_load.cpp:315
 msgid "Turn"
@@ -3176,7 +3146,7 @@ msgstr "Неизвестное название конструктора для 
 
 #: src/gui/widgets/window.cpp:924
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr "Закрытие по клику требует кнопки \"click_dismiss\" или 'ok'."
+msgstr "Закрытие по клику требует кнопки «click_dismiss» или «ok»."
 
 #: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:982
 #: src/tests/gui/test_gui2.cpp:425
@@ -3192,8 +3162,6 @@ msgid "Right Mouse Click"
 msgstr "Правый щелчок мышью"
 
 #: src/hotkeys.cpp:55
-#, fuzzy
-#| msgid "Animate map"
 msgid "Animate Map"
 msgstr "Анимированная карта"
 
@@ -3238,10 +3206,8 @@ msgid "Default Zoom"
 msgstr "Масштаб по умолчанию"
 
 #: src/hotkeys.cpp:66
-#, fuzzy
-#| msgid "Toggle Full screen"
 msgid "Toggle Full Screen"
-msgstr "На весь экран"
+msgstr "Переключить полный экран"
 
 #: src/hotkeys.cpp:67 src/hotkeys.cpp:1172
 msgid "Screenshot"
@@ -3296,10 +3262,8 @@ msgid "Toggle Grid"
 msgstr "Показать сетку"
 
 #: src/hotkeys.cpp:82
-#, fuzzy
-#| msgid "Mouse scrolling"
 msgid "Mouse Scrolling"
-msgstr "Прокрутка мыши"
+msgstr "Прокрутка мышью"
 
 #: src/hotkeys.cpp:83
 msgid "Status Table"
@@ -3330,16 +3294,12 @@ msgid "Statistics"
 msgstr "Статистика"
 
 #: src/hotkeys.cpp:92
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Pause Network Game"
-msgstr "Захостить сетевую игру"
+msgstr "Пауза в сетевой игре"
 
 #: src/hotkeys.cpp:93
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Continue Network Game"
-msgstr "Захостить сетевую игру"
+msgstr "Продолжить сетевую игру"
 
 #: src/hotkeys.cpp:95
 msgid "Set Team Label"
@@ -3362,22 +3322,16 @@ msgid "Best Possible Enemy Moves"
 msgstr "Вероятные ходы противника"
 
 #: src/hotkeys.cpp:100
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Play Replay"
-msgstr "Сохранить повтор"
+msgstr "Воспроизвести повтор"
 
 #: src/hotkeys.cpp:101
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Reset Replay"
-msgstr "Сохранить повтор"
+msgstr "Перемотать повтор"
 
 #: src/hotkeys.cpp:102
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Stop Replay"
-msgstr "Сохранить повтор"
+msgstr "Остановить повтор"
 
 #: src/hotkeys.cpp:103
 msgid "Next Turn"
@@ -3468,8 +3422,6 @@ msgid "Map Information"
 msgstr "Информация о карте"
 
 #: src/hotkeys.cpp:134
-#, fuzzy
-#| msgid "Swap fore- and background terrains"
 msgid "Swap Foreground/Background Terrains"
 msgstr "Поменять местами основной и фоновой ландшафты"
 
@@ -3642,10 +3594,8 @@ msgid "Custom Command"
 msgstr "Пользовательская команда"
 
 #: src/hotkeys.cpp:208
-#, fuzzy
-#| msgid "Run AI formula"
 msgid "Run Formula"
-msgstr "Запустить формулу AI"
+msgstr "Запустить формулу"
 
 #: src/hotkeys.cpp:209
 msgid "Clear Messages"
@@ -3668,38 +3618,26 @@ msgid "Start Tutorial"
 msgstr "Начать обучение"
 
 #: src/hotkeys.cpp:241
-#, fuzzy
-#| msgid "Start a campaign"
 msgid "Start Campaign"
 msgstr "Начать кампанию"
 
 #: src/hotkeys.cpp:248
-#, fuzzy
-#| msgid "Start a multiplayer game"
 msgid "Start Multiplayer Game"
 msgstr "Начать многопользовательскую игру"
 
 #: src/hotkeys.cpp:255
-#, fuzzy
-#| msgid "Manage addons"
 msgid "Manage Add-ons"
 msgstr "Управление аддонами"
 
 #: src/hotkeys.cpp:262
-#, fuzzy
-#| msgid "Start the editor"
 msgid "Start Editor"
 msgstr "Запустить редактор"
 
 #: src/hotkeys.cpp:269
-#, fuzzy
-#| msgid "Show the credits"
 msgid "Show Credits"
 msgstr "Показать титры"
 
 #: src/hotkeys.cpp:277
-#, fuzzy
-#| msgid "Show the helptip"
 msgid "Show Helptip"
 msgstr "Показать подсказку"
 
@@ -3758,8 +3696,6 @@ msgid "Landform:"
 msgstr "Форма земли:"
 
 #: src/mapgen_dialog.cpp:249
-#, fuzzy
-#| msgid "Roads Between Castles"
 msgid "Roads between castles"
 msgstr "Дороги между замками"
 
@@ -3798,8 +3734,6 @@ msgid "Hotkey Settings"
 msgstr "Настройка горячих клавиш"
 
 #: src/preferences_display.cpp:282 src/preferences_display.cpp:351
-#, fuzzy
-#| msgid "Press desired Hotkey (Esc cancels)"
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Нажмите желаемую горячую клавишу (Esc отменяет)"
 
@@ -3821,25 +3755,20 @@ msgstr "Сбросить горячую клавишу"
 
 #: src/preferences_display.cpp:394 src/preferences_display.cpp:402
 #: src/preferences_display.cpp:414
-#, fuzzy
-#| msgid "This Hotkey is already in use."
 msgid "This hotkey is already in use."
 msgstr "Эта горячая клавиша уже занята."
 
 #: src/preferences_display.cpp:429
-#, fuzzy
-#| msgid ""
-#| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
 "Screenshot hotkeys should be combined with the Control, Alt or Meta "
 "modifiers to avoid problems."
 msgstr ""
-"Предупреждение: для скриншота лучше бы использовать комбинацию с клавишами "
+"Предупреждение: для скриншота лучше использовать комбинацию с клавишами "
 "Control, Alt или Meta."
 
 #: src/preferences_display.cpp:429
 msgid "Warning"
-msgstr ""
+msgstr "Предупреждение"
 
 #: src/preferences_display.cpp:530
 msgid "There are no alternative video modes available"

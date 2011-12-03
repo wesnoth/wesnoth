@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-23 15:01+0100\n"
-"PO-Revision-Date: 2011-11-30 16:46+0100\n"
+"PO-Revision-Date: 2011-11-30 23:10+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -89,12 +89,10 @@ msgstr "Odbojní"
 msgid "Undead"
 msgstr "Nemrtví"
 
-# | msgid "2p — The Freelands"
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
-#, fuzzy
 msgid "2p — Aethermaw"
-msgstr "2p — "
+msgstr "2p — Tlama Éteru"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -112,6 +110,15 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"Kdysi dávno byla Velká magyně Sulla uvězněna v Tlamě éteru, uzlu magické "
+"energie. Chaotickost zdejšího prostředí jí zabraňuje uprchnout. Během "
+"staletí však Sulla postupně získala kontrolu nad tímto vírem neuspořádanosti "
+"a nyní již dokáže částečně promítnout jeho moc do fyzického světa. Vsává "
+"dovnitř a opět vyvrhuje ven z Tlamy éteru kusy země ze stovek různých světů, "
+"realit a časů. Jak její vláda nad Tlamou roste, jednou snad Sulla dokáže "
+"překonat i to, co ji sem váže. Do té doby se bude bavit pořádáním bitev mezi "
+"tvory, kteří měli to neštěstí, že sem byli vtaženi.\n"
+"Navrhl Doc Patterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -176,7 +183,7 @@ msgstr "Jižané"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:277
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr ""
+msgstr "Tlama éteru — vytvořil Doc Patterson"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:291
@@ -196,18 +203,31 @@ msgid ""
 "unite the two halves of the battlefield. The process will be complete by the "
 "end of turn 6.</span>\n"
 msgstr ""
+"Velká magyně Sulla přenesla tvou armádu do tohoto prapodivného místa a "
+"požaduje rozptýlení pohledem na trochu boje.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>Poznámka:</span>\n"
+"\n"
+"<span color='green'>Jednotky nemohou vstoupit na pole s kamennou mohylou. "
+"Mohou však být na těchto polích verbovány a odejít z nich.</span>\n"
+"\n"
+"<span color='green'>Počínajíc čtvrtým kolem, Velká magyně Sulla započne "
+"propojování obou polovin bojiště. Tento proces bude dokončen koncem šestého "
+"kola.</span>\n"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:304
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:321
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "Tlama éteru zavrčela."
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
-#, fuzzy
 msgid "2p — Arcanclave Citadel"
-msgstr "2p — "
+msgstr "2p — Citadela Arcanclave"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
@@ -231,6 +251,22 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
+"Před dávnými věky, staletí před příchodem Haldrika, byly na východě, daleko "
+"i za lesem Lintanir, sváděny ohromné války. Záznamy hovoří o mocném čaroději "
+"a bojovníkovi, skvělém stratégovi a praktikovi nezemských umění, kterého "
+"jeho následovníci zvali „Neohrožený“. V bitvě o Arcanclave se Neohrožený a "
+"jeho armády utkali s primitivní rasou démonů a čarodějů, známých jako Kah "
+"Ruukové. Poté, co jej obklopily desetiticíse Kah Ruuků, Neohrožený využil "
+"magii k přivolání mocného elementála země (který mu zřejmě byl zavázán; "
+"nevíme proč). Elementál pozvedl z hlubin země ohromné balvany a v mžiku z "
+"nich zformoval skvělou pevnost. Tisíce Kah Ruuků nato padly při pokusu ztéct "
+"její zdi. Neohrožený a jeho přátelé i tentokrát zvítězili.\n"
+"O tisíc let později Válečnická královna Cynsaun I. z ruin oné pevnosti "
+"vyhnala klan nekromancerů a opět ji vystavěla, ač snad ne v síle, kterou "
+"měla od elementála. Doteď kolují povídačky o mnohých mocných předmětech a "
+"artefaktech, ukrytých či ztracených někde mezi žulovými a obsidiánovými zdmi "
+"citadely ještě za dob Neohroženého.\n"
+"Navrhl Doc Patterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -579,6 +615,8 @@ msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
+"Zdá se, že příběh tohoto statečného pavouka nikdo nezná.\n"
+"(sepsáno Vítězem A)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:168
@@ -586,6 +624,8 @@ msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
+"Balada o tomto nešťastném lupiči ještě nebyla dokončena.\n"
+"(sepsal vítěz B)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
@@ -763,7 +803,6 @@ msgstr ""
 "Cynsaunská provincie je pojmenována po královně - válečnici Cynsaun první, "
 "která z těchto zemí vytlačila nekromancery v roce 961 YW."
 
-# pův.: "Přežívačka"
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:5
 msgid "2p — Dark Forecast (Survival)"
@@ -843,7 +882,6 @@ msgstr "Povstalci"
 msgid "teamname^Human"
 msgstr "Lidé"
 
-# | msgid "Death of your team leaders"
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
 msgid "Death of your leader"
@@ -854,9 +892,8 @@ msgstr "Tvůj vůdce zemře"
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
-msgstr ""
+msgstr "Tvůj tým má pouze jednoho vůdce, nepřátelské vlny tedy budou oslabeny."
 
-# | msgid "Death of your team leaders"
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
 msgid "Death of both of your team’s leaders"
@@ -866,9 +903,8 @@ msgstr "Vůdci obou tvých týmů zemřou"
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
-msgstr ""
+msgstr "Tvůj tým má dva vůdce, takže nepřátelské vlny zaútočí v plné síle."
 
-# | msgid "Survive all enemy attacks"
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
 msgid "Survive and defeat all enemy waves"
@@ -879,30 +915,6 @@ msgstr "Přežij a poraz všechny nepřátelské útoky"
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Temná předpověď - náhodný přežívací scénář"
 
-# | msgid ""
-# | "Your aim is to survive the spawning waves and defeat the final arch-"
-# | "enemies.\n"
-# | "\n"
-# | "The spawning waves are generated randomly and will different each time "
-# | "Dark Forecast is played.\n"
-# | "\n"
-# | "\n"
-# | "They appear along the north, south and west map edges — though they are "
-# | "most likely to spawn on the west edge. The spawn waves appear at somewhat "
-# | "regular intervals.\n"
-# | "\n"
-# | "\n"
-# | "The weather will also change randomly, affecting the layout of the map.\n"
-# | "\n"
-# | "\n"
-# | "\n"
-# | "<span color='red'>Dark Forecast was made by:</span>\n"
-# | "\n"
-# | "<span color='green'>jb</span>\n"
-# | "— map design, spawn groups and scenario concept\n"
-# | "\n"
-# | "<span color='green'>Rhuvaen</span>\n"
-# | "— WML implementation"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
 msgid ""
@@ -1079,6 +1091,8 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"Aby přežili na tomto nejpozoruhodnějším z ostrovů, musí uzavřít zvláštní "
+"spojenectví s místními domorodci. Navrženo Doc Pattersonem."
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
@@ -1088,12 +1102,12 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:275
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:325
 msgid "Big Baby Bo"
-msgstr ""
+msgstr "Big Baby Bo"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:103
 msgid "Rawffus the Dim"
-msgstr ""
+msgstr "Rawffus Hloupý"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:152
@@ -1103,7 +1117,7 @@ msgstr "Kolbur"
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:177
 msgid "Vilhelm Viskitynnyri"
-msgstr ""
+msgstr "Vilhelm Viskitynnyri"
 
 #. [unit]: type=Woodsman, id=Clockwork Boy
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:236
@@ -1111,27 +1125,27 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:623
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:635
 msgid "Clockwork Boy"
-msgstr ""
+msgstr "Hodinařík"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:298
 msgid "Neki the Brutal"
-msgstr ""
+msgstr "Brutální Neki"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:338
 msgid "Drowsk Calbeht"
-msgstr ""
+msgstr "Drowsk Calbeht"
 
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:398
 msgid "Rzrrt the Dauntless"
-msgstr ""
+msgstr "Rzrrt zvaný Nebojácný"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:437
 msgid "Sorrek, Chosen of Death"
-msgstr ""
+msgstr "Sorrek, zástupce Smrti"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:477
@@ -1140,12 +1154,12 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:662
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:712
 msgid "Big Baby Dro"
-msgstr ""
+msgstr "Big Baby Dro"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:490
 msgid "Gawffus the Dim"
-msgstr ""
+msgstr "Gawffus Hloupý"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:539
@@ -1155,12 +1169,12 @@ msgstr "Rublok"
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:564
 msgid "Ulysses Mantyjuuri"
-msgstr ""
+msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:685
 msgid "Neki the Brute"
-msgstr ""
+msgstr "Krvák Neki"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:725
@@ -1170,12 +1184,12 @@ msgstr "Claiomh Dubh"
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:784
 msgid "Tyxrrn the Dauntless"
-msgstr ""
+msgstr "Tyxrrn Nebojácný"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:823
 msgid "Rukhos, Chosen of Death"
-msgstr ""
+msgstr "Rukhos, vyvolený Smrti"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
@@ -1329,14 +1343,13 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
-#, fuzzy
 msgid "2p — Thousand Stings Garrison"
-msgstr "2p — "
+msgstr "2p — Pevnost tisíce žihadel"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "Podivné místo, Návrh Doc pattersona."
+msgstr "Podivné místo. Návrhl Doc Patterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1993,6 +2006,8 @@ msgid ""
 "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
+"Bitva tří proti třem s cílem ovládnout trosky království, zničeného před "
+"dávnými časy erupcí sopky. Na mapě je 36 vesnic."
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2011-07-26 11:22+0200\n"
+"POT-Creation-Date: 2011-11-23 15:01+0100\n"
+"PO-Revision-Date: 2011-12-01 12:36+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team:  <ru@li.org>\n"
 "Language: \n"
@@ -94,7 +94,7 @@ msgstr "Мертвецы"
 #, fuzzy
 #| msgid "2p — The Freelands"
 msgid "2p — Aethermaw"
-msgstr "2и - Дикие земли"
+msgstr "2и - Aethermaw"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -749,14 +749,6 @@ msgstr "2и - Мрачный прогноз (выживание)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly-spawned AI units. Victory is achieved by surviving and "
@@ -768,8 +760,8 @@ msgid ""
 msgstr ""
 "Мрачный Прогноз — сценарий на выживание для одного или двух игроков, "
 "играющих вместе против случайно порождаемых войск компьютера. Вы побеждаете, "
-"если переживёте все волны нападающих. Во время игры местность будет меняться "
-"в зависимости от погоды.\n"
+"если переживёте все волны нападающих. Во время игры местность будет "
+"случайным образом меняться в зависимости от погоды.\n"
 "\n"
 "Примечание: Чтобы сценарий работал, включите настройку «Использовать "
 "настройки карты»."
@@ -833,10 +825,8 @@ msgstr "Люди"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of your leader"
-msgstr "Гибель лидеров команды"
+msgstr "Гибель Вашего лидера"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
@@ -844,26 +834,23 @@ msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
+"Поскольку у Вашей команды только один лидер, волны пойдут в неполную силу."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of both of your team’s leaders"
-msgstr "Гибель лидеров команды"
+msgstr "Гибель обоих лидеров Вашей команды"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
-msgstr ""
+msgstr "Поскольку у Вашей команды два лидера, волны будут в полную силу."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
-#, fuzzy
-#| msgid "Survive all enemy attacks"
 msgid "Survive and defeat all enemy waves"
-msgstr "Отбейте все атаки противника."
+msgstr "Выживите и отбейте все атаки противника"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1432
@@ -872,31 +859,6 @@ msgstr "Мрачный Прогноз — сценарий на выживани
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves and defeat the final arch-"
-#| "enemies.\n"
-#| "\n"
-#| "The spawning waves are generated randomly and will different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "\n"
-#| "They appear along the north, south and west map edges — though they are "
-#| "most likely to spawn on the west edge. The spawn waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "\n"
-#| "<span color='red'>Dark Forecast was made by:</span>\n"
-#| "\n"
-#| "<span color='green'>jb</span>\n"
-#| "— map design, spawn groups and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen</span>\n"
-#| "— WML implementation"
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -925,12 +887,6 @@ msgstr ""
 "Волны генерируются случайно, и будут разными каждый раз, что вы играете в "
 "Мрачный Прогноз.\n"
 "\n"
-"Волны генерируются случайно, и будут разными каждый раз, что вы играете в "
-"Мрачный Прогноз.\n"
-"\n"
-"Они появляются на северном, южном и западном краях карты — чаще всего на "
-"западном. Волны идут с почти равными интервалами.\n"
-"\n"
 "Они появляются на северном, южном и западном краях карты — чаще всего на "
 "западном. Волны идут с почти равными интервалами.\n"
 "\n"
@@ -939,13 +895,13 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"<span color='red'>Мрачный Прогноз создали:</span>\n"
+"<b>Мрачный Прогноз создали:</b>\n"
 "\n"
 "<span color='green'>jb</span>\n"
-"— дизайн карты, порождение волн, и концепция сценария\n"
+"• дизайн карты, порождение волн, и концепция сценария\n"
 "\n"
 "<span color='green'>Rhuvaen</span>\n"
-"— реализация WML"
+"• реализация WML"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1457
@@ -1082,6 +1038,8 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"Чтобы выжить на самом необычном из островов, игроки вступают в странные "
+"альянсы с местными жителями. Дизайн — Док Патерсон."
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
@@ -1091,22 +1049,22 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:275
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:325
 msgid "Big Baby Bo"
-msgstr ""
+msgstr "Большой Малыш Бо"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:103
 msgid "Rawffus the Dim"
-msgstr ""
+msgstr "Раффус-Дурак"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:152
 msgid "Kolbur"
-msgstr ""
+msgstr "Колбур"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:177
 msgid "Vilhelm Viskitynnyri"
-msgstr ""
+msgstr "Вильгельм Вискитайнайри"
 
 #. [unit]: type=Woodsman, id=Clockwork Boy
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:236
@@ -1114,7 +1072,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:623
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:635
 msgid "Clockwork Boy"
-msgstr ""
+msgstr "Механический лук"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:298
@@ -1134,7 +1092,7 @@ msgstr ""
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:437
 msgid "Sorrek, Chosen of Death"
-msgstr ""
+msgstr "Соррек, Избранный Смертью"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:477
@@ -1143,22 +1101,22 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:662
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:712
 msgid "Big Baby Dro"
-msgstr ""
+msgstr "Большой Малыш Дро"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:490
 msgid "Gawffus the Dim"
-msgstr ""
+msgstr "Гаффус-Дурак"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:539
 msgid "Rublok"
-msgstr ""
+msgstr "Рублок"
 
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:564
 msgid "Ulysses Mantyjuuri"
-msgstr ""
+msgstr "Улисс Мантайджуури"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:685
@@ -1168,7 +1126,7 @@ msgstr ""
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:725
 msgid "Claiomh Dubh"
-msgstr ""
+msgstr "Клайомх Дубх"
 
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:784
@@ -1178,7 +1136,7 @@ msgstr ""
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:823
 msgid "Rukhos, Chosen of Death"
-msgstr ""
+msgstr "Рухос, Избранный Смертью"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
@@ -1334,10 +1292,8 @@ msgstr "2и - Гарнизон тысячи жал"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
-#, fuzzy
-#| msgid "Designed by Doc Paterson."
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "Дизайн — Doc Paterson."
+msgstr "Странное место. Дизайн — Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1474,7 +1430,7 @@ msgid ""
 "3 player free for all map."
 msgstr ""
 "Контроль над центральным островом часто является ключом к победе в этой "
-"карте для трёх игроков (\"каждый за себя\") размером 21х21 ячеек."
+"карте для трёх игроков («каждый за себя») размером 21х21 ячеек."
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
@@ -1993,7 +1949,9 @@ msgid ""
 msgstr ""
 "Битва 3x3 за прах великого древнего королевства, давным-давно павшего от "
 "извержения вулкана. 36 деревень.Битва 3x3 за прах великого древнего "
-"королевства, давным-давно павшего от извержения вулкана. 36 деревень."
+"королевства, давным-давно павшего от извержения вулкана. 36 деревень.Битва "
+"3x3 за прах великого древнего королевства, давным-давно павшего от "
+"извержения вулкана. 36 деревень."
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
@@ -2024,7 +1982,7 @@ msgid ""
 "Inspired from Morituri, this 8 player map creates an epic battle scene that "
 "requires two teams to coordinate on both offense and defense."
 msgstr ""
-"Эта карта на 8 игроков, вдохновлённая картой \"Идущие на смерть\", "
+"Эта карта на 8 игроков, вдохновлённая картой «Идущие на смерть», "
 "представляет эпическую баталию, требующую двух команд для координации как "
 "нападения, так и защиты."
 
