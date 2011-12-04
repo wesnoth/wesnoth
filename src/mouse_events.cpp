@@ -131,12 +131,12 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		if (reachmap_invalid_) {
 			reachmap_invalid_ = false;
 			if (!current_paths_.destinations.empty() && !show_partial_move_) {
-				unit_map::iterator u;
+				bool selected_hex_has_unit;
 				{ // start planned unit map scope
 					wb::future_map_if_active planned_unit_map;
-					 u = find_unit(selected_hex_);
+					selected_hex_has_unit = find_unit(selected_hex_) != units_.end();
 				} // end planned unit map scope
-				if(selected_hex_.valid() && u != units_.end() ) {
+				if(selected_hex_.valid() && selected_hex_has_unit ) {
 					// reselect the unit without firing events (updates current_paths_)
 					select_hex(selected_hex_, true);
 				}
