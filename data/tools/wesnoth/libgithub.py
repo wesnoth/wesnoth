@@ -13,6 +13,7 @@ try:
 except ImportError:
     # Distributed with python since 2.6
     import json
+import shutil
 import subprocess
 import urllib2
 
@@ -74,8 +75,8 @@ class Addon(object):
 
         self._rmtree(".", exclude)
         #actual copying
-        shutil.copytree(src, self._get_dir(), ignore=lambda src,names: [n for n in names if n in exclude])
-        self._execute(["git", "add", self._get_dir()], check_error=True)
+        self._copytree(src, self._get_dir(), ignore=lambda src,names: [n for n in names if n in exclude])
+        self._execute(["git", "add", "."], check_error=True)
 
         status = self._status()
         return len(status) > 0
@@ -121,6 +122,47 @@ class Addon(object):
             else:
                 self._execute(["git", "rm", relpath], check_error=True)
 
+    def _copytree(self, src, dst, ignore=None):
+        """Recursively copy a directory tree using copy2().
+
+        Based on shutil.copytree
+        """
+        names = os.listdir(src)
+        if ignore is not None:
+            ignored_names = ignore(src, names)
+        else:
+            ignored_names = set()
+
+        if not os.path.exists(dst):
+            os.makedirs(dst)
+        errors = []
+        for name in names:
+            if name in ignored_names:
+                continue
+            srcname = os.path.join(src, name)
+            dstname = os.path.join(dst, name)
+            try:
+                if os.path.isdir(srcname):
+                    self._copytree(srcname, dstname, ignore)
+                else:
+                    shutil.copy2(srcname, dstname)
+                # XXX What about devices, sockets etc.?
+            except (IOError, os.error), why:
+                errors.append((srcname, dstname, str(why)))
+            # catch the Error from the recursive copytree so that we can
+            # continue with other files
+            except Error, err:
+                errors.extend(err.args[0])
+        try:
+            shutil.copystat(src, dst)
+        except OSError, why:
+            if WindowsError is not None and isinstance(why, WindowsError):
+                # Copying file access times may fail on Windows
+                pass
+            else:
+                errors.extend((src, dst, str(why)))
+        if errors:
+            raise Error, errors
     def _status(self):
         out, err = self._execute(["git", "status", "--porcelain"])
         if err:

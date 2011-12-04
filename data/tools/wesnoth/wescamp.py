@@ -154,14 +154,16 @@ if __name__ == "__main__":
 
         # If the directory in svn doesn't exist we need to create and commit it.
         message = "wescamp.py automatic update"
+
+        if use_git:
+            github = libgithub.GitHub(svn_dir, git_version, userpass=git_userpass)
+
         if(os.path.isdir(svn_dir + "/" + addon) == False):
 
             logging.info("Creating directory in svn '%s'.",
                 svn_dir + "/" + addon)
 
             if use_git:
-                github = libgithub.GitHub(svn_dir, git_version, userpass=git_userpass)
-
                 github.create_addon(addon)
             else:
                 svn = libsvn.SVN(svn_dir)
