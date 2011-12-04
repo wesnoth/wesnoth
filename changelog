@@ -6,6 +6,17 @@ Version 1.9.11+svn:
    * Fixed missed side init if controller changes at side progression
      (bug #16299)
    * Fixed user interface not updated if controller changes (bug #19056)
+ * Whiteboard:
+   * Fix invalid actions not being detected until another action is created
+   * Erase invalid actions when you try to execute them
+   * Disable access to Suppose Dead action until we can find a better UI for it
+   * Fix bug #18774: Recalling with the whiteboard enabled causes crash
+   * Fix bug #19061: Crash on starting most campaign scenarios
+   * Fix getting "not enough gold" message when executing planned recruits/recalls
+   * Ghost the unit at starting position of planned moves
+   * On mouseover, display orb and xp bar on planned moves with accurate status
+   * Mouseover on last planned move of a unit displays accurate movement left
+   * Re-enabled multi-turn moves
  * Miscellaneous and bug fixes:
    * Fixed bug #19095: fixed a gcc warning when compiling under OpenBSD
    * Fixed bug #19096: fixed linker errors on OpenBSD when using the CMake
