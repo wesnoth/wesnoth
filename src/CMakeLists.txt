@@ -876,6 +876,7 @@ if(ENABLE_TESTS)
 		tests/test_lexical_cast.cpp
 		tests/test_network_worker.cpp
 		tests/test_team.cpp
+		tests/test_unit_map.cpp
 		tests/test_util.cpp
 		tests/test_serialization.cpp
 		tests/test_version.cpp
