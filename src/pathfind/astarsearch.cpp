@@ -220,7 +220,7 @@ pathfind::plain_route pathfind::a_star_search(const map_location& src, const map
 			next = node(cost, locs[i], n.curr, dst, true, teleports);
 
 			if (in_list) {
-				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), index(locs[i])) + 1, node_comp);
+				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), static_cast<int>(index(locs[i]))) + 1, node_comp);
 			} else {
 				pq.push_back(index(locs[i]));
 				std::push_heap(pq.begin(), pq.end(), node_comp);

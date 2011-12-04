@@ -7,6 +7,7 @@ Version 1.9.11+svn:
      (bug #16299)
    * Fixed user interface not updated if controller changes (bug #19056)
  * Miscellaneous and bug fixes:
+   * Fixed bug #19095: fixed a gcc warning when compiling under OpenBSD
    * Fixed bug #19096: fixed linker errors on OpenBSD when using the CMake
      build system
 
