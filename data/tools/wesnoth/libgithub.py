@@ -19,6 +19,7 @@ import urllib2
 
 
 #TODO: document and log where missing
+#TODO: every _execute with check_error=False is a place where more sophisticated checking should be done
 
 class Error(Exception):
     """Base class for exceptions in this module."""
@@ -55,7 +56,8 @@ class Addon(object):
         Returns whether anything changed.
         """
         logging.debug("Updating add-on {0}".format(self.name))
-        out, err = self._execute(["git", "pull"], check_error=True)
+        # Stuff gets printed to stderr on a checkout of a fresh (empty) repository
+        out, err = self._execute(["git", "pull"], check_error=False)
         #TODO: make this less hacky
         return len(out.split("\n")) > 2
 
@@ -234,6 +236,16 @@ class GitHub(object):
         response = self._github_repos_create(name)
         self._clone(name, response["ssh_url"])
         return self.addon(name)
+
+    def addon_exists(self, name):
+        """Checks whether an add-on exists on github..
+
+        name: Name of the add-on.
+        Returns a bool representing the existence of the add-on.
+        """
+        logging.debug("Checking whether add-on {0} exists".format(name))
+        github_list = self._github_repos_list()
+        return name in [repo[0] for repo in github_list]
 
     def _absolute_path(self, name):
         return os.path.join(self.directory, name)

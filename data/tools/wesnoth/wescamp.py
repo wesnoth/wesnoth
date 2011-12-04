@@ -164,7 +164,8 @@ if __name__ == "__main__":
                 svn_dir + "/" + addon)
 
             if use_git:
-                github.create_addon(addon)
+                if not github.addon_exists(addon):
+                    github.create_addon(addon)
             else:
                 svn = libsvn.SVN(svn_dir)
 
@@ -407,7 +408,7 @@ if __name__ == "__main__":
             logging.error("No wescamp checkout specified. Needed for git usage.")
             sys.exit(2)
         try:
-            git_version = wescamp.split("-")[-1]
+            git_version = wescamp.split("-")[-1].strip("/").split("/")[-1]
         except:
             logging.error("Wescamp directory path does not end in a version suffix. Currently needed for git usage.")
             sys.exit(2)
