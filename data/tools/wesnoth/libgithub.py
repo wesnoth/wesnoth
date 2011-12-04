@@ -94,7 +94,8 @@ class Addon(object):
         tmpfile.close()
         self._execute(["git", "commit", "-F", tmpname], check_error=True)
         os.remove(tmpname)
-        self._execute(["git", "push", "-u", "origin", "master"], check_error=True)
+        # Apparently, push writes to stderr on success
+        self._execute(["git", "push", "-u", "origin", "master"], check_error=False)
 
     # Internal functions
 
