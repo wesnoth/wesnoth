@@ -57,14 +57,14 @@ recall::recall(size_t team_index, bool hidden, const unit& unit, const map_locat
 		temp_unit_(new class unit(unit)),
 		recall_hex_(recall_hex),
 		valid_(true),
-		fake_unit_(new class game_display::fake_unit(unit) )
+		fake_unit_(new game_display::fake_unit(unit) )
 {
 	this->init();
 }
 
 recall::recall(config const& cfg, bool hidden)
 	: action(cfg,hidden)
-	, temp_unit_(NULL)
+	, temp_unit_()
 	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"])
 	, valid_(true)
 	, fake_unit_()
@@ -75,14 +75,15 @@ recall::recall(config const& cfg, bool hidden)
 	{
 		if(recall_unit.underlying_id()==underlying_id)
 		{
-			temp_unit_=new unit(recall_unit);
+			temp_unit_.reset(new unit(recall_unit));
 			break;
 		}
 	}
-	if(temp_unit_==NULL)
+	if(!temp_unit_.get()) {
 		throw action::ctor_err("recall: Invalid underlying_id");
+	}
 
-	fake_unit_.reset(new game_display::fake_unit(*temp_unit_) );
+	fake_unit_.reset(new game_display::fake_unit(*temp_unit_)); //makes copy of temp_unit_
 
 	this->init();
 }
@@ -101,7 +102,6 @@ void recall::init()
 
 recall::~recall()
 {
-	delete temp_unit_;
 }
 
 void recall::accept(visitor& v)
@@ -112,7 +112,7 @@ void recall::accept(visitor& v)
 void recall::execute(bool& success, bool& complete)
 {
 	assert(valid_);
-	assert(temp_unit_);
+	assert(temp_unit_.get());
 	temporary_unit_hider const raii(*fake_unit_);
 	//Give back the spent gold so we don't get "not enough gold" message
 	int cost = resources::teams->at(team_index()).recall_cost();
@@ -140,9 +140,8 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 	recalls.erase(it);
 
 	// Temporarily insert unit into unit_map
-	unit_map.insert(temp_unit_);
 	//unit map takes ownership of temp_unit
-	temp_unit_ = NULL;
+	unit_map.insert(temp_unit_.release());
 
 	//Add cost to money spent on recruits.
 	int cost = resources::teams->at(team_index()).recall_cost();
@@ -154,8 +153,8 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 
 void recall::remove_temp_modifier(unit_map& unit_map)
 {
-	temp_unit_ = unit_map.extract(recall_hex_);
-	assert(temp_unit_);
+	temp_unit_.reset(unit_map.extract(recall_hex_));
+	assert(temp_unit_.get());
 
 	//Put unit back into recall list
 	resources::teams->at(team_index()).recall_list().push_back(*temp_unit_);

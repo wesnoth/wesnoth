@@ -57,7 +57,7 @@ public:
 	virtual map_location get_numbering_hex() const { return recall_hex_; }
 
 	/** @return pointer to a copy of the recall unit. */
-	virtual unit* get_unit() const { return temp_unit_; }
+	virtual unit* get_unit() const { return temp_unit_.get(); }
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
@@ -84,7 +84,7 @@ private:
 	virtual void do_hide();
 	virtual void do_show();
 
-	unit* temp_unit_;
+	std::auto_ptr<unit> temp_unit_;
 	map_location recall_hex_;
 	bool valid_;
 	fake_unit_ptr fake_unit_;
