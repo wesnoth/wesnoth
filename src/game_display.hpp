@@ -233,10 +233,6 @@ public:
 	 */
 	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
 
-	/** Returns a reference to the temp units deque.
-	 */
-	//	const std::deque<unit*>& get_fake_units() { return fake_units_; }
-
 	/** Set the attack direction indicator. */
 	void set_attack_indicator(const map_location& src, const map_location& dst);
 	void clear_attack_indicator();
