@@ -597,14 +597,14 @@ void side_actions::validate_actions()
 
 void side_actions::change_gold_spent_by(int difference)
 {
-	LOG_WB << "Changing gold spent for side " << (team_index() + 1)	<< "; old value: "
+	DBG_WB << "Changing gold spent for side " << (team_index() + 1)	<< "; old value: "
 			<< gold_spent_ << "; new value: " << (gold_spent_ + difference) << "\n";
 	gold_spent_ += difference; assert(gold_spent_ >= 0);
 }
 
 void side_actions::reset_gold_spent()
 {
-	LOG_WB << "Resetting gold spent for side " << (team_index() + 1) << " to 0.\n";
+	DBG_WB << "Resetting gold spent for side " << (team_index() + 1) << " to 0.\n";
 	gold_spent_ = 0;
 }
 
