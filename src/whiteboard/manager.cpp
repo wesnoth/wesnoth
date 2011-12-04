@@ -967,11 +967,7 @@ void manager::contextual_bump_down_action()
 bool manager::has_actions() const
 {
 	assert(!wait_for_side_init_);
-	foreach(team& t, *resources::teams)
-		if (!t.get_side_actions()->empty())
-			return true;
-
-	return false;
+	return wb::has_actions();
 }
 
 bool manager::unit_has_actions(unit const* unit) const
@@ -1074,17 +1070,10 @@ void manager::set_planned_unit_map()
 		return;
 	}
 
-	if (has_actions())
-	{
-		validate_actions_if_needed();
-		log_scope2("whiteboard", "Building planned unit map");
-		mapbuilder_.reset(new mapbuilder(*resources::units));
-		mapbuilder_->build_map();
-	}
-	else
-	{
-		DBG_WB << "Actions queue empty, unit map flag set but skipping map building.\n";
-	}
+	validate_actions_if_needed();
+	log_scope2("whiteboard", "Building planned unit map");
+	mapbuilder_.reset(new mapbuilder(*resources::units));
+	mapbuilder_->build_map();
 
 	planned_unit_map_active_ = true;
 }

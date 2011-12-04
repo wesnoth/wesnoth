@@ -90,6 +90,9 @@ struct variable_finalizer
 void ghost_owner_unit(unit* unit);
 void unghost_owner_unit(unit* unit);
 
+/** Return whether the whiteboard has actions. */
+bool has_actions();
+
 } //end namespace wb
 
 #endif /* WB_UTILITY_HPP_ */

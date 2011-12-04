@@ -147,5 +147,14 @@ void unghost_owner_unit(unit* unit)
 	resources::screen->invalidate(unit->get_location());
 }
 
+bool has_actions()
+{
+	foreach(team& t, *resources::teams)
+		if (!t.get_side_actions()->empty())
+			return true;
+
+	return false;
+}
+
 } //end namespace wb
 

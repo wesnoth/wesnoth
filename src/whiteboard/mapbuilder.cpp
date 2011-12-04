@@ -84,7 +84,9 @@ void mapbuilder::pre_build()
 void mapbuilder::build_map()
 {
 	pre_build();
-	visit_all();
+	if (wb::has_actions()) {
+		visit_all();
+	}
 }
 
 ///@return whether act is valid
