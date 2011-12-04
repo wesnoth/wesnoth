@@ -54,7 +54,12 @@ include_directories( ${CMAKE_SOURCE_DIR}/src/ )
 # needed to have the generated config.h used, too
 include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
 
-link_directories(${Boost_LIBRARY_DIRS})
+link_directories(
+	${Boost_LIBRARY_DIRS}
+	${PANGOCAIRO_LIBRARY_DIRS}
+	${FONTCONFIG_LIBRARY_DIRS}
+	${LIBDBUS_LIBRARY_DIRS}
+)
 
 if(MSVC)
 	# Since MSVC does autolinking of boost adding those files will duplicate
@@ -71,6 +76,7 @@ else(MSVC)
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
 		${Boost_PROGRAM_OPTIONS_LIBRARY}
+		${LIBINTL_LIBRARIES}
 	)
 endif(MSVC)
 
@@ -84,7 +90,6 @@ set(game-external-libs
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
-	${LIBINTL_LIBRARIES}
 )
 
 if(MSVC)
