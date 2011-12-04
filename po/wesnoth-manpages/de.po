@@ -1,18 +1,17 @@
 # Translators:
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2006 - 2010
-#  Gerfried Fuchs <rhonda@deb.at>, 2008 - 2010
+#  Gerfried Fuchs <rhonda@deb.at>, 2008 - 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "POT-Creation-Date: 2011-08-27 10:13+0300\n"
-"PO-Revision-Date: 2010-04-07 14:46+0200\n"
+"PO-Revision-Date: 2011-11-30 14:19+0100\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 # type: TH
 #. type: TH
@@ -25,7 +24,7 @@ msgstr "WESNOTH"
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2011"
-msgstr ""
+msgstr "2011"
 
 # type: TH
 #. type: TH
@@ -85,6 +84,16 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:42
+#, fuzzy
+#| msgid ""
+#| "Defeat all enemy leaders using a well-chosen cadre of troops, taking care "
+#| "to manage your resources of gold and villages. All units have their own "
+#| "strengths and weaknesses; to win, deploy your forces to their best "
+#| "advantage while denying your foes the chance to do the same. As units "
+#| "gain experience, they acquire new abilities and become more powerful. "
+#| "Play in your own language and test your skill against a smart computer "
+#| "opponent, or join Wesnoth's large community of on-line players. Create "
+#| "your own custom units, scenarios or campaigns, and share them with others."
 msgid ""
 "Defeat all enemy leaders using a well-chosen cadre of troops, taking care to "
 "manage your resources of gold and villages. All units have their own "
@@ -151,6 +160,9 @@ msgstr "B<--config-dir>I<\\ Name>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:63
 #, fuzzy
+#| msgid ""
+#| "sets the user configuration directory to I<name> under $HOME or \"My "
+#| "Documents\\eMy Games\" for windows."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -178,12 +190,12 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:66
 #, no-wrap
 msgid "B<--data-dir E<lt>directoryE<gt>>"
-msgstr ""
+msgstr "B<--data-dir E<lt>VerzeichnisE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:69
 msgid "overrides the data directory with the one specified"
-msgstr ""
+msgstr "Das angegebene Verzeichnis als Daten-Verzeichnis verwenden"
 
 # type: TP
 #. type: TP
@@ -213,13 +225,12 @@ msgstr "B<-e,\\ --editor>I<\\ Datei>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:79
-#, fuzzy
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
 msgstr ""
 "Den im Spiel integrierten Karteneditor direkt starten. Falls I<Datei> "
-"angegeben wurde, verhält es sich äquivalent zu B<-e --load>"
+"angegeben wurde, verhält es sich äquivalent zu B<-l --load>"
 
 # type: TP
 #. type: TP
@@ -343,9 +354,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:122
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--logdomains\\ [filter]>"
-msgstr "B<--logdomains>"
+msgstr "B<--logdomains\\ [Filter]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:127
@@ -353,6 +364,8 @@ msgid ""
 "lists defined log domains (only the ones containing B<filter> if used) and "
 "exits"
 msgstr ""
+"Gibt die definierten Log-Domänen aus (nur jene, die B<Filter> enthalten, "
+"falls angegeben) und beenden."
 
 # type: TP
 #. type: TP
@@ -396,12 +409,12 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:139
 #, no-wrap
 msgid "B<--new-syntax>"
-msgstr ""
+msgstr "B<--new-syntax>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:142
 msgid "enables the new campaign syntax parsing."
-msgstr ""
+msgstr "Aktiviert die neue Syntaxanalyse für Kampagnen."
 
 # type: TP
 #. type: TP
@@ -559,12 +572,12 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:190
 #, no-wrap
 msgid "B<--strict-validation>"
-msgstr ""
+msgstr "B<--strict-validation>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:193
 msgid "validation errors are treated as fatal errors."
-msgstr ""
+msgstr "Prüfungsfehler werden als schwerwiegende Fehler angesehen."
 
 # type: TP
 #. type: TP
@@ -893,10 +906,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:290 ../../doc/man/wesnothd.6:280
-#, fuzzy
 msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -928,9 +940,8 @@ msgstr "ANDERE"
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:296
-#, fuzzy
 msgid "B<wesnothd>(6)."
-msgstr "wesnothd"
+msgstr "B<wesnothd>(6)."
 
 # type: TH
 #. type: TH
@@ -1838,9 +1849,8 @@ msgstr ""
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:286
-#, fuzzy
 msgid "B<wesnoth>(6)."
-msgstr "wesnoth"
+msgstr "B<wesnoth>(6)."
 
 # type: TP
 #~ msgid "B<--smallgui>"
