@@ -89,7 +89,7 @@ class Addon(object):
         logging.debug("Committing and pushing add-on {0}".format(self.name))
 
         tmpname = os.tmpnam()
-        tmpfile = open(tmpname)
+        tmpfile = open(tmpname, "w")
         tmpfile.write(message)
         tmpfile.close()
         self._execute(["git", "commit", "-F", tmpname], check_error=True)
