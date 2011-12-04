@@ -380,25 +380,27 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	// by capturing a village
 
 	//@todo: we may need to change unit status here and change it back in remove_temp_modifier
+	unit* unit;
+	{
+		unit_map::iterator unit_it = unit_map.find(get_source_hex());
+		assert(unit_it != unit_map.end());
+		unit = &*unit_it;
+	}
 
-	unit_map::iterator unit_it = unit_map.find(get_source_hex());
-	assert(unit_it != unit_map.end());
-
-	unit& unit = *unit_it;
 	//Modify movement points
-	DBG_WB <<"Move: Changing movement points for unit " << unit.name() << " [" << unit.id()
-			<< "] from " << unit.movement_left() << " to "
-			<< unit.movement_left() - movement_cost_ << ".\n";
-	unit.set_movement(unit.movement_left() - movement_cost_);
+	DBG_WB <<"Move: Changing movement points for unit " << unit->name() << " [" << unit->id()
+			<< "] from " << unit->movement_left() << " to "
+			<< unit->movement_left() - movement_cost_ << ".\n";
+	unit->set_movement(unit->movement_left() - movement_cost_);
 
 	// Move the unit
-	DBG_WB << "Move: Temporarily moving unit " << unit.name() << " [" << unit.id()
+	DBG_WB << "Move: Temporarily moving unit " << unit->name() << " [" << unit->id()
 			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")\n";
 	mover_.reset(new temporary_unit_mover(unit_map,get_source_hex(), get_dest_hex()));
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
 	//@todo this contradicts the name "temp_modifiers"
-	fake_unit_->set_movement(unit.movement_left());
+	fake_unit_->set_movement(unit->movement_left());
 }
 
 void move::remove_temp_modifier(unit_map&)
@@ -406,15 +408,18 @@ void move::remove_temp_modifier(unit_map&)
 	if (get_source_hex() == get_dest_hex())
 		return; //zero-hex move, probably used by attack subclass
 
-	unit_map::iterator unit_it = resources::units->find(get_dest_hex());
-	assert(unit_it != resources::units->end());
-	unit& unit = *unit_it;
+	unit* unit;
+	{
+		unit_map::iterator unit_it = resources::units->find(get_dest_hex());
+		assert(unit_it != resources::units->end());
+		unit = &*unit_it;
+	}
 
 	// Restore movement points
-	DBG_WB << "Move: Changing movement points for unit " << unit.name() << " [" << unit.id()
-				<< "] from " << unit.movement_left() << " to "
-				<< unit.movement_left() + movement_cost_ << ".\n";
-	unit.set_movement(unit.movement_left() + movement_cost_);
+	DBG_WB << "Move: Changing movement points for unit " << unit->name() << " [" << unit->id()
+				<< "] from " << unit->movement_left() << " to "
+				<< unit->movement_left() + movement_cost_ << ".\n";
+	unit->set_movement(unit->movement_left() + movement_cost_);
 
 	// Restore the unit to its original position
 	mover_.reset();

@@ -486,11 +486,11 @@ void manager::on_mouseover_change(const map_location& hex)
 	hidden_unit_hexes_.clear();
 
 	map_location selected_hex = resources::screen->selected_hex();
-	unit_map::iterator it;
+	bool hex_has_unit;
 	{ wb::future_map future; //< start planned unit map scope
-		it = resources::units->find(selected_hex);
+		hex_has_unit = resources::units->find(selected_hex) != resources::units->end();
 	} // end planned unit map scope
-	if (!((selected_hex.valid() && it != resources::units->end())
+	if (!((selected_hex.valid() && hex_has_unit)
 			|| has_temp_move() || wait_for_side_init_ || executing_actions_))
 	{
 		if (!highlighter_)
