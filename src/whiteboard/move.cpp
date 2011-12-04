@@ -425,9 +425,8 @@ void move::remove_temp_modifier(unit_map&)
 	mover_.reset();
 }
 
-void move::draw_hex(const map_location& hex)
+void move::draw_hex(map_location const&)
 {
-	(void) hex; //temporary to avoid unused param warning
 }
 
 void move::do_hide()

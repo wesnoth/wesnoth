@@ -70,7 +70,7 @@ public:
 	virtual void remove_temp_modifier(unit_map& unit_map);
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
-	virtual void draw_hex(const map_location& hex);
+	virtual void draw_hex(map_location const& hex);
 
 	virtual map_location get_numbering_hex() const;
 
