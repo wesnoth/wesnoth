@@ -32,9 +32,14 @@ wesnoth \- Battle for Wesnoth, ein rundenbasiertes Strategiespiel
 Battle for \fBWesnoth\fP ist ein rundenbasiertes Strategiespiel in einem
 Fantasy\-Szenario.
 
-Schlüpfen Sie in die Rolle eines Heerführers und führen Sie Ihre Armee zum
-Sieg. Wählen Sie dabei aus verschiedenen Rassen, mit unterschiedlichen
-Fertigkeiten, Waffen und Sprüchen aus und zerschmettern Sie Ihre Gegner.
+Defeat all enemy leaders using a well\-chosen cadre of troops, taking care to
+manage your resources of gold and villages. All units have their own
+strengths and weaknesses; to win, deploy your forces to their best advantage
+while denying your foes the chance to do the same. As units gain experience,
+they acquire new abilities and become more powerful. Play in your own
+language and test your skill against a smart computer opponent, or join
+Wesnoth's large community of online players. Create your own custom units,
+scenarios or campaigns, and share them with others.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
@@ -60,8 +65,8 @@ the configuration directory outside the $HOME or "My Documents\eMy Games"
 \fB\-\-config\-path\fP
 Zeigt an, wo sich das Verzeichnis für die Nutzereinstellungen befindet.
 .TP 
-\fB\-\-data\-dir <directory>\fP
-overrides the data directory with the one specified
+\fB\-\-data\-dir <Verzeichnis>\fP
+Das angegebene Verzeichnis als Daten\-Verzeichnis verwenden
 .TP 
 \fB\-d, \-\-debug\fP
 Erlaubt zusätzliche Kommandos in der spieleigenen Befehlszeile (auf der
@@ -69,8 +74,8 @@ Wiki\-Seite http://www.wesnoth.org/wiki/CommandMode sind weitere
 Informationen hierzu verfügbar).
 .TP 
 \fB\-e,\ \-\-editor\fP\fI\ Datei\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-l \-\-load\fP
+Den im Spiel integrierten Karteneditor direkt starten. Falls \fIDatei\fP
+angegeben wurde, verhält es sich äquivalent zu \fB\-l \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 Aktiviert die Anzeige der Bilder pro Sekunde im Spiel.
@@ -102,9 +107,9 @@ Verzeichnis gestartet.
 Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
 zu verwenden. Verfügbare Stufen: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig wird die Stufe \fBerror\fP verwendet.
 .TP 
-\fB\-\-logdomains\ [filter]\fP
-lists defined log domains (only the ones containing \fBfilter\fP if used) and
-exits
+\fB\-\-logdomains\ [Filter]\fP
+Gibt die definierten Log\-Domänen aus (nur jene, die \fBFilter\fP enthalten,
+falls angegeben) und beenden.
 .TP 
 \fB\-\-max\-fps\fP
 Setzt die Anzahl der gezeichneten Bilder pro Sekunde, die vom Spiel
@@ -118,7 +123,7 @@ werden können. Nur diese zusätzlichen Optionen können \fB\-\-multiplayer\fP
 folgen.
 .TP 
 \fB\-\-new\-syntax\fP
-enables the new campaign syntax parsing.
+Aktiviert die neue Syntaxanalyse für Kampagnen.
 .TP 
 \fB\-\-no\-delay\fP
 Das Spiel wird ohne Verzögerungen ausgeführt. Wird zum Ausführen grafischer
@@ -169,7 +174,7 @@ zum ersten Rechner in den Einstellungen. Beispiel: \fB\-\-server
 server.wesnoth.org\fP
 .TP 
 \fB\-\-strict\-validation\fP
-validation errors are treated as fatal errors.
+Prüfungsfehler werden als schwerwiegende Fehler angesehen.
 .TP 
 \fB\-t, \-\-test\fP
 Startet das Programm mit einem kleinen Testszenario.

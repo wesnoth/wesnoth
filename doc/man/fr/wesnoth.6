@@ -32,15 +32,14 @@ wesnoth \- Bataille pour Wesnoth, un jeu fantasy de stratégie tour par tour
 Bataille pour \fBWesnoth\fP est un jeu de stratégie tour par tour dans un
 univers de fantasy.
 
-Venez à bout de tous les chefs ennemis en utilisant les unités adéquates et
-en gérant au mieux votre or et vos villages. Chaque unité a ses forces et
-ses faiblesses\ ; pour gagner, déployez vos troupes de façon optimale tout en
-empêchant vos ennemis de faire de même. Toutes les unités gagnent de
-l'expérience et acquièrent de nouvelles compétences, devenant plus
-puissantes. Jouez dans votre langue favorite, testez votre habileté contre
-l'ordinateur, ou rejoignez la grande communauté des joueurs en ligne de
-Wesnoth. Créez vos propres unités, vos scénarios ou vos campagnes et
-partagez\-les avec d'autres.
+Defeat all enemy leaders using a well\-chosen cadre of troops, taking care to
+manage your resources of gold and villages. All units have their own
+strengths and weaknesses; to win, deploy your forces to their best advantage
+while denying your foes the chance to do the same. As units gain experience,
+they acquire new abilities and become more powerful. Play in your own
+language and test your skill against a smart computer opponent, or join
+Wesnoth's large community of online players. Create your own custom units,
+scenarios or campaigns, and share them with others.
 .
 .SH OPTIONS
 .
@@ -48,7 +47,7 @@ partagez\-les avec d'autres.
 \fB\-\-bpp\fP\fI\ nombre\fP
 Définit la valeur de bits par pixel (couleurs). Exemple\ : \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+\fB\-c, \-\-campaign[[<difficulté>] <id_campagne> [<id_scénario>]]\fP
 goes directly to the campaign based on the parameters.  The difficulty is a
 number between 1 and current campaign's difficulties number.  The default
 difficulty is 1.  The scenario must be one of the campaign's child
@@ -57,7 +56,7 @@ using this switch please ensure that you specify the data directory path as
 the final argument\fP aswell, otherwise the game will take the
 campaign/scenario id as the data dir.
 .TP 
-\fB\-\-config\-dir\fP\fI\ répertoire\fP
+\fB\-\-config\-dir\fP\fI\ nom\fP
 sets the user configuration directory to \fIname\fP under $HOME or "My
 Documents\eMy Games" for windows.  You can also specify an absolute path for
 the configuration directory outside the $HOME or "My Documents\eMy Games"
@@ -66,7 +65,7 @@ the configuration directory outside the $HOME or "My Documents\eMy Games"
 Affiche le nom du répertoire de configuration utilisateur et quitte le
 programme.
 .TP 
-\fB\-\-data\-dir <directory>\fP
+\fB\-\-data\-dir <répertoire>\fP
 overrides the data directory with the one specified
 .TP 
 \fB\-d, \-\-debug\fP
@@ -97,11 +96,11 @@ d'entrée.gz\fP, puis efface \fIfichier_d'entrée\fP.
 Affiche un résumé des options de ligne de commande sur la sortie standard et
 quitte le programme.
 .TP 
-\fB\-\-load\fP\fI\ fichier\fP
-charge la sauvegarde \fIfile\fP à partir du répertoire par défaut du jeu.  Si
-les options \fB\-e\fP ou \fB\-\-editor\fP sont aussi utilisées, lance l'éditeur avec
-la carte située dans \fIfile\fP (Si c'est un répertoire, l'éditeur commence par
-demander de choisir une carte).
+\fB\-l,\ \-\-load\fP\fI\ fichier\fP
+loads the savegame \fIfile\fP from the standard save game directory.  If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open. If it is a directory, the editor will start with a load
+map dialog opened there.
 .TP 
 \fB\-\-log\-\fP\fIniveau\fP\fB=\fP\fIdomaine1\fP\fB,\fP\fIdomaine2\fP\fB,\fP\fI...\fP
 Définit le niveau d'alerte du débogueur. \fBall\fP permet de suivre tous les
@@ -161,11 +160,11 @@ macros in the target file. If the file is not specified the output will be
 file '_MACROS_.cfg' in the target directory of preprocess's command.  This
 switch should be typed before the \-\-preprocess command.
 .TP 
-\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-résolution\fP\ \fIX\fP\fBx\fP\fIY\fP
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\fP\ \fIX\fP\fBx\fP\fIY\fP
 Définit la résolution de l'écran. Exemple\ : \fB\-r 800x600\fP
 .TP 
 \fB\-s,\ \-\-server\ [hôte]\fP
-se connecte à un hôte prédéfini s'il existe, sinon tente de se connecter au
+Se connecte à un hôte prédéfini s'il existe, sinon tente de se connecter au
 premier serveur paramétré dans les préférences. Exemple\ : \fB\-\-server
 server.wesnoth.org\fP
 .TP 
@@ -176,7 +175,7 @@ validation errors are treated as fatal errors.
 Lance le jeu avec un petit scénario de test.
 .TP 
 \fB\-\-validcache\fP
-suppose que le cache est valide (risqué).
+Suppose que le cache est valide (risqué).
 .TP 
 \fB\-v, \-\-version\fP
 Affiche le numéro de version et quitte le programme.
@@ -248,7 +247,7 @@ les options de ligne de commande.
 Écrit par David White <davidnwhite@verizon.net>.
 .br
 Édité par Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
-<ott@gaon.net> et Soliton <soliton@gmail.com>.
+<ott@gaon.net> et Soliton <soliton.de@gmail.com>.
 .br
 Ce manuel a été à l'origine écrit par Cyril Bouthors
 <cyril@bouthors.org>.
