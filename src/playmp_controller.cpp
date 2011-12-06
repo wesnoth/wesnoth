@@ -332,7 +332,7 @@ void playmp_controller::linger()
 
 	if ( get_end_level_data_const().reveal_map ) {
 		// switch to observer viewpoint
-		update_gui_to_player(0, true);
+		update_gui_to_player(gui_->viewing_team(), true);
 	}
 	bool quit;
 	do {
