@@ -90,7 +90,7 @@ void mapbuilder::build_map()
 }
 
 ///@return whether act is valid
-bool mapbuilder::visit_helper(side_actions::iterator const& itor, action_ptr const& act)
+bool mapbuilder::process_helper(side_actions::iterator const& itor, action_ptr const& act)
 {
 	validate(itor);
 	if(act->is_valid())
@@ -103,29 +103,29 @@ bool mapbuilder::visit_helper(side_actions::iterator const& itor, action_ptr con
 		return false;
 }
 
-bool mapbuilder::process(size_t, team&, side_actions&, side_actions::iterator itor)
+bool mapbuilder::process(size_t, team&, side_actions&, side_actions::iterator action_it)
 {
-	action_ptr act = *itor;
+	action_ptr action = *action_it;
 
-	unit* u = act->get_unit();
+	unit* unit = action->get_unit();
 
-	if(!u || !act->is_valid() || acted_this_turn_.find(u) != acted_this_turn_.end())
-		visit_helper(itor,act);
+	if(!unit || !action->is_valid() || acted_this_turn_.find(unit) != acted_this_turn_.end())
+		process_helper(action_it,action);
 	else //gotta restore MP first
 	{
-		int original_moves = u->movement_left();
+		int original_moves = unit->movement_left();
 
 		//reset MP
-		u->set_movement(u->total_movement());
-		acted_this_turn_.insert(u);
+		unit->set_movement(unit->total_movement());
+		acted_this_turn_.insert(unit);
 
-		bool revert = !visit_helper(itor,act);
+		bool revert = !process_helper(action_it,action);
 
 		if(revert) //< the action was invalid
 		{
 			//didn't need to restore MP after all ... so let's change it back
-			acted_this_turn_.erase(u);
-			u->set_movement(original_moves);
+			acted_this_turn_.erase(unit);
+			unit->set_movement(original_moves);
 		}
 	}
 	return true;
