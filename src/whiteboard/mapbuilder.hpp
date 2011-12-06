@@ -50,8 +50,8 @@ public:
 private:
 	//"Inherited" from enable_visit_all
 	bool process(size_t team_index, team&, side_actions&, side_actions::iterator);
-	bool pre_visit_team(size_t team_index, team&, side_actions&);
-	bool post_visit_team(size_t team_index, team&, side_actions&);
+	bool pre_visit_team(size_t turn, size_t team_index, team&, side_actions&);
+	bool post_visit_team(size_t turn, size_t team_index, team&, side_actions&);
 
 	bool process_helper(side_actions::iterator const&, action_ptr const&);
 
@@ -66,6 +66,7 @@ private:
 	unit_map& unit_map_;
 
 	action_queue applied_actions_;
+	action_queue applied_actions_this_turn_;
 
 	//Used by pre_build()
 	boost::ptr_vector<unit_movement_resetter> resetters_;

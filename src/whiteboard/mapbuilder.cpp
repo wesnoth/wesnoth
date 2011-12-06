@@ -20,6 +20,7 @@
 #include "mapbuilder.hpp"
 
 #include "action.hpp"
+#include "move.hpp"
 #include "side_actions.hpp"
 #include "utility.hpp"
 
@@ -35,6 +36,7 @@ namespace wb
 mapbuilder::mapbuilder(unit_map& unit_map)
 	: unit_map_(unit_map)
 	, applied_actions_()
+	, applied_actions_this_turn_()
 	, resetters_()
 	, removers_()
 	, acted_this_turn_()
@@ -97,6 +99,7 @@ bool mapbuilder::process_helper(side_actions::iterator const& itor, action_ptr c
 	{
 		act->apply_temp_modifier(unit_map_);
 		applied_actions_.push_back(act);
+		applied_actions_this_turn_.push_back(act);
 		return true;
 	}
 	else //invalid
@@ -131,13 +134,33 @@ bool mapbuilder::process(size_t, team&, side_actions&, side_actions::iterator ac
 	return true;
 }
 
-bool mapbuilder::pre_visit_team(size_t /*team_index*/, team&, side_actions& sa)
+bool mapbuilder::pre_visit_team(size_t /*turn*/, size_t /*team_index*/, team&, side_actions& sa)
 {
 	return !sa.hidden();
 }
 
-bool mapbuilder::post_visit_team(size_t, team&, side_actions&)
+bool mapbuilder::post_visit_team(size_t turn, size_t /*team_index*/, team&, side_actions&)
 {
+	std::set<unit const*> seen;
+
+	// Go backwards through the actions of this turn to identify
+	// which ones are moves that end a turn.
+	BOOST_REVERSE_FOREACH(action_ptr action, applied_actions_this_turn_)
+	{
+		move_ptr move = boost::dynamic_pointer_cast<class move>(action);
+		if (move) {
+			move->set_turn_number(0);
+			if(move->get_route().steps.size() > 1 && seen.count(move->get_unit()) == 0)
+			{
+				seen.insert(move->get_unit());
+				move->set_turn_number(turn + 1);
+			}
+		}
+	}
+
+	// Clear list of planned actions applied this turn
+	applied_actions_this_turn_.clear();
+	// Clear the list of units of this team that have acted this turn
 	acted_this_turn_.clear();
 	return true;
 }

@@ -65,6 +65,7 @@ move::move(size_t team_index, bool hidden, unit& u, const pathfind::marked_route
   unit_id_(),
   route_(new pathfind::marked_route(route)),
   movement_cost_(0),
+  turn_number_(0),
   arrow_(arrow),
   fake_unit_(fake_unit),
   valid_(true),
@@ -86,7 +87,8 @@ move::move(config const& cfg, bool hidden)
 	, unit_()
 	, unit_id_()
 	, route_(new pathfind::marked_route())
-	, movement_cost_()
+	, movement_cost_(0)
+	, turn_number_(0)
 	, arrow_(new arrow(hidden))
 	, fake_unit_()
 	, valid_(true)
@@ -425,8 +427,15 @@ void move::remove_temp_modifier(unit_map&)
 	mover_.reset();
 }
 
-void move::draw_hex(map_location const&)
+void move::draw_hex(map_location const& hex)
 {
+	//display turn info for turns 2 and above
+	if (hex == get_dest_hex() && turn_number_ >= 2)
+	{
+		std::stringstream turn_text;
+		turn_text << turn_number_;
+		resources::screen->draw_text_in_hex(hex, display::LAYER_MOVE_INFO, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
+	}
 }
 
 void move::do_hide()

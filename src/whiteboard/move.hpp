@@ -71,6 +71,8 @@ public:
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 	virtual void draw_hex(map_location const& hex);
+	/** Assigns a turn number to display to this planned move. Assigning zero removes any turn number. */
+	virtual void set_turn_number(int turn) { turn_number_ = turn; }
 
 	virtual map_location get_numbering_hex() const;
 
@@ -97,6 +99,8 @@ protected:
 	std::string unit_id_;
 	boost::scoped_ptr<pathfind::marked_route> route_;
 	int movement_cost_;
+	/// Turn end number to draw if greater than zero. Assigned by the map builder.
+	int turn_number_;
 
 	arrow_ptr arrow_;
 	fake_unit_ptr fake_unit_;

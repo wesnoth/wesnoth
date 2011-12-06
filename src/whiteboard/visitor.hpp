@@ -70,9 +70,9 @@ protected:
 	//bool visit(size_t team_index, team&, side_actions&, side_actions::iterator);
 
 	///@return Whether or not to visit any of the contents of sa.
-	bool pre_visit_team(size_t /*team_index*/, team&, side_actions& sa) {return !sa.hidden();}
+	bool pre_visit_team(size_t /*turn*/, size_t /*team_index*/, team&, side_actions& sa) { return !sa.hidden(); }
 	///@return Whether or not to visit any more teams after this one.
-	bool post_visit_team(size_t /*team_index*/, team&, side_actions&) {return true;}
+	bool post_visit_team(size_t /*turn*/, size_t /*team_index*/, team&, side_actions&) { return true; }
 
 private:
 	void visit_all_helper( const bool reverse)
@@ -98,7 +98,7 @@ private:
 						= (current_team+num_teams+(reverse? -1-team_iter: team_iter)) % num_teams;
 				team& t = resources::teams->at(team_index);
 				side_actions& sa = *t.get_side_actions();
-				if(!new_this->pre_visit_team(team_index,t,sa))
+				if(!new_this->pre_visit_team(turn_iter, team_index, t, sa))
 					continue; //< Skip this team's actions
 
 				if(reverse)
@@ -121,7 +121,7 @@ private:
 						if(!new_this->process(team_index,t,sa,itor))
 							return; //< Early abort
 				}
-				if(!new_this->post_visit_team(team_index,t,sa))
+				if(!new_this->post_visit_team(turn_iter, team_index, t, sa))
 					break; //< Early abort
 			}
 		}
