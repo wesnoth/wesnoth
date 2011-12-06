@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2011-07-21 21:09+0300\n"
-"Last-Translator: Ushkin N\n"
+"POT-Creation-Date: 2011-12-05 16:25+0100\n"
+"PO-Revision-Date: 2011-12-06 11:42+0200\n"
+"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: ZumZoom\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -625,15 +625,10 @@ msgstr "Зелёный Остров"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
-#, fuzzy
-#| msgid ""
-#| "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
-#| "ref> and running east to the Listra."
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
-"Река, берущая исток в <ref>dst='heart_mountains' text='Горах Сердца'</ref> и "
-"текущая на восток, к Листре."
+"Большой остров, лежащий в <ref>dst='great_ocean' text='Великом Океане'</ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
@@ -1707,12 +1702,6 @@ msgstr "Время суток"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
-#| " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-#| " Neutral units are unaffected by the time of day."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1723,8 +1712,8 @@ msgstr ""
 "Время суток влияет на урон, наносимый некоторыми бойцами:\n"
 " Порядочные бойцы наносят +25% урона днем и −25% ночью.\n"
 " Хаотичные бойцы наносят +25% урона ночью и −25% днем.\n"
-" Теневые бойцы наносят +25% урона в сумерках.\n"
-" Нейтральные бойцы не получают бонусов от времени суток."
+" На нейтральных бойцов время суток не влияет.\n"
+" Теневые бойцы наносят -25% урона днём и ночью."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
@@ -2273,16 +2262,15 @@ msgstr "Дикий"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:401
-#, fuzzy
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
 "units receive a maximum of 50% defense in any land-based village regardless "
 "of base terrain."
 msgstr ""
-"Диким существам со слабым интеллектом сложно прятаться среди жилых построек, "
-"поэтому в деревнях они получают рейтинг защиты лишь 40%, независимо от типа "
-"местности."
+"Диким существам со слабым интеллектом сложно прятаться среди жилых построек. "
+"Поэтому в любых деревнях <italic>дикие</italic> существа получают рейтинг "
+"защиты не более 50%, независимо от типа местности."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:406
@@ -3313,16 +3301,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Change the controller for side (write here the number of the side) to "
-#| "username (write here the nick of the player or observer). You can check "
-#| "what side belongs to which player in the <bold>text='Scenario Settings'</"
-#| "bold> dialog (Press the <bold>text='More'</bold> button in the "
-#| "<bold>text='Status Table'</bold> (alt+s by default) to get there.). The "
-#| "host can change control of any side.\n"
-#| "\n"
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3334,11 +3312,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Сменить игрока фракции (напишите здесь номер фракции) на пользователя "
+"Сменить управляющего игрока (впишите здесь номер фракции) на пользователя "
 "(впишите здесь ник игрока или наблюдателя). Вы можете узнать, какой фракции "
-"какой игрок принадлежит, в диалоге «Настройки сценария» (чтобы попасть туда, "
-"нажмите кнопку «больше» в «Панели Состояния» (по умолчанию Alt+s). Хост "
-"может менять игроков любой стороны.\n"
+"какой игрок принадлежит, в диалоге  <bold>text='Настройки сценария'</bold> "
+"(чтобы попасть туда, нажмите кнопку <bold>text='More'</bold> в «Панели "
+"Состояния» (по умолчанию Alt+s). Хост может менять игроков любой стороны.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -4023,124 +4001,112 @@ msgstr "Глубокое подземелье"
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:162
 msgid "Midnight"
-msgstr ""
+msgstr "Полночь"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:174
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "Вторая стража"
+msgstr "Вторая стража - первый час"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:186
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "Вторая стража"
+msgstr "Вторая стража - второй час"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:198
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "Вторая стража"
+msgstr "Вторая стража - третий час"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:210
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "Вторая стража"
+msgstr "Вторая стража - четвёртый час"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:222
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "Вторая стража"
+msgstr "Вторая стража - пятый час"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:234
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "Вторая стража"
+msgstr "Вторая стража - шестой час"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:257
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "Утро - первый час"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:266
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "Утро - второй час"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:275
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "Утро - третий час"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:284
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "Утро - четвёртый час"
 
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:293
 msgid "Midday"
-msgstr ""
+msgstr "Полдень"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "Полдень - первый час"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "Полдень - второй час"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "Полдень - третий час"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:329
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "Полдень - четвёртый час"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:338
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "Полдень - пятый час"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "Полдень - шестой час"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "Первая стража - первый час"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:381
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "Первая стража - второй час"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:393
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "Первая стража - третий час"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:405
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "Первая стража - четвёртый час"
 
 #: data/core/macros/special-notes.cfg:5
 msgid ""
@@ -4317,15 +4283,11 @@ msgstr ""
 "но лишь при атаке. "
 
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
-#| msgid ""
-#| " The unit has magical attacks, which always have a high chance of hitting "
-#| "an opponent."
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
 msgstr ""
-" Этот боец имеет магическую атаку, что всегда даёт высокий шанс поразить "
+"Этот боец атакует магией, которая всегда с высокой вероятностью поражает "
 "противника."
 
 #: data/core/macros/special-notes.cfg:80

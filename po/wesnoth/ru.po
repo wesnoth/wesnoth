@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-05 16:25+0100\n"
-"PO-Revision-Date: 2011-12-01 12:05+0200\n"
+"PO-Revision-Date: 2011-12-06 10:29+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: ZumZoom\n"
 "Language: ru\n"
@@ -149,17 +149,17 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:143
 msgid "Use 12-hour clock format"
-msgstr ""
+msgstr "12-часовой формат времени"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:150
 msgid "Confirm loading of saves from a different version"
-msgstr ""
+msgstr "Подтверждать загрузку сохранений из других версий"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "Показывать в справке всех бойцов"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:158
@@ -167,6 +167,8 @@ msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
+"Показывать в справке все типы бойцов (нужен перезапуск). Не влияет на список "
+"встреченных бойцов."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:166
@@ -2201,21 +2203,15 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units only reach their full strength during twilight.\n"
 "\n"
 "Day: −25% Damage\n"
 "Night: −25% Damage"
 msgstr ""
-"Порядочные бойцы лучше сражаются днем и хуже ночью.\n"
+"Теневые бойцы набирают полную силу только в сумерках.\n"
 "\n"
-"День: +25% ущерба\n"
+"День: -25% ущерба\n"
 "Ночь: −25% ущерба"
 
 #. [language]
@@ -2540,17 +2536,14 @@ msgstr "— Сообщество Веснота"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
-#| msgid ""
-#| "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-#| "better at night. <i>Neutral</i> units are unaffected by the time of day."
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>liminal</i> units fight best during twilight."
 msgstr ""
 "<i>Порядочные</i> бойцы лучше сражаются днём, а <i>хаотичные</i> — ночью. На "
-"<i>Нейтральных</i> бойцов время суток не влияет."
+"<i>Нейтральных</i> бойцов время суток не влияет. Редкий вид <i>Теневых</i> "
+"бойцов лучше сражается в сумерках."
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
@@ -3822,8 +3815,11 @@ msgid_plural ""
 "The following add-ons appear to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr[0] ""
+"Следующий аддон, похоже, хранит историю версий локально, и не будет удалён:"
 msgstr[1] ""
+"Следующие аддоны, похоже, хранят историю версий локально, и не будут удалены:"
 msgstr[2] ""
+"Следующие аддоны, похоже, хранят историю версий локально, и не будут удалены:"
 
 #: src/addon/manager.cpp:1454
 msgid "The following add-on could not be deleted properly:"
@@ -5212,7 +5208,7 @@ msgid ""
 "chaotic, or liminal."
 msgstr ""
 "Неизвестный характер: «$alignment», должен быть: «порядочный», либо "
-"«хаотичный», либо «нейтральный»."
+"«хаотичный», либо «теневой»."
 
 #: src/menu_events.cpp:3567
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -5747,6 +5743,8 @@ msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
+"Включить фильтр списка игр. Если выключено, Вы будете видеть все игры, вне "
+"зависимости от условий фильтра."
 
 #: src/multiplayer_lobby.cpp:764
 msgid ""
