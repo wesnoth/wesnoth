@@ -331,7 +331,8 @@ void playmp_controller::linger()
 	set_end_scenario_button();
 
 	if ( get_end_level_data_const().reveal_map ) {
-		// switch to observer viewpoint
+		// Change the view of all players and observers
+		// to see the whole map regardless of shroud and fog.
 		update_gui_to_player(gui_->viewing_team(), true);
 	}
 	bool quit;
