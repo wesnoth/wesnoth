@@ -2826,7 +2826,7 @@ bool unit::is_visible_to_team(team const& team, bool const see_all, gamemap cons
 		return false;
 	if (see_all)
 		return true;
-	if (team.fogged(loc)
+	if ((team.fogged(loc) && &(*resources::teams)[side() - 1] != &team)
 			|| (team.is_enemy(side()) && invisible(loc)))
 		return false;
 

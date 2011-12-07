@@ -485,7 +485,7 @@ void manager::on_mouseover_change(const map_location& hex)
 		resources::screen->remove_exclusive_draw(hex);
 	hidden_unit_hexes_.clear();
 
-	map_location selected_hex = resources::screen->selected_hex();
+	map_location selected_hex = resources::controller->get_mouse_handler_base().get_selected_hex();
 	bool hex_has_unit;
 	{ wb::future_map future; //< start planned unit map scope
 		hex_has_unit = resources::units->find(selected_hex) != resources::units->end();
@@ -572,16 +572,13 @@ void manager::create_temp_move()
 			|| resources::controller->is_linger_mode())
 		return;
 
-	//@todo this commented line shouldn't be necessary anymore with the rework of scoped future map objects.
-	//Clean this up when 100% confirmed and tested.
-	//assert(!has_planned_unit_map());
-
 	pathfind::marked_route const& route =
 			resources::controller->get_mouse_handler_base().get_current_route();
 
 	if (route.steps.empty() || route.steps.size() < 2) return;
 
-	unit const* selected_unit = future_visible_unit(resources::screen->selected_hex(), viewer_side());
+	unit const* selected_unit =
+			future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
 	if (!selected_unit) return;
 	if (selected_unit->side() != resources::screen->viewing_side()) return;
 
@@ -854,7 +851,7 @@ void manager::contextual_execute()
 
 		action_ptr action;
 		side_actions::iterator it;
-		unit const* selected_unit = future_visible_unit(resources::screen->selected_hex(), viewer_side());
+		unit const* selected_unit = future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
 		if (selected_unit &&
 				(it = viewer_actions()->find_first_action_of(selected_unit)) != viewer_actions()->end())
 		{
@@ -912,7 +909,7 @@ void manager::contextual_delete()
 
 		action_ptr action;
 		side_actions::iterator it;
-		unit const* selected_unit = future_visible_unit(resources::screen->selected_hex(), viewer_side());
+		unit const* selected_unit = future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
 		if (selected_unit &&
 				(it = viewer_actions()->find_first_action_of(selected_unit)) != viewer_actions()->end())
 		{
