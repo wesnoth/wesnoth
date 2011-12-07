@@ -1046,6 +1046,7 @@ void manager::options_dlg()
 			bool hidden = team_plans_hidden_[t_index];
 			team_plans_hidden_[t_index] = !hidden;
 		}
+		break;
 	}
 	update_plan_hiding();
 }
