@@ -1153,9 +1153,13 @@ void unit_type_data::set_config(config &cfg)
 			merge_cfg.merge_with(ut);
 			ut.swap(merge_cfg);
 		}
-		// We insert an empty unit_type and build it after the copy (for performance).
-		insert(std::make_pair(id, unit_type(ut)));
-		LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
+		if(ut["id"].empty()) {
+			ERR_CF << "[unit_type] with empty id=, ignoring:\n" << ut.debug();
+		} else {
+			// We insert an empty unit_type and build it after the copy (for performance).
+			insert(std::make_pair(id, unit_type(ut)));
+			LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
+		}
 		loadscreen::increment_progress();
 	}
 
