@@ -723,7 +723,7 @@ bool game_controller::new_campaign()
 	const config::const_child_itors &ci = game_config().child_range("campaign");
 	std::vector<config> campaigns(ci.first, ci.second);
 	mark_completed_campaigns(campaigns);
-	std::sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
+	std::stable_sort(campaigns.begin(),campaigns.end(),less_campaigns_rank);
 
 	if(campaigns.begin() == campaigns.end()) {
 	  gui2::show_error_message(disp().video(),
