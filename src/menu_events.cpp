@@ -1401,6 +1401,14 @@ bool menu_handler::end_turn(int side_num)
 		}
 	}
 
+	// Ask for confirmation if units still have planned moves from the whiteboard
+	if(!is_observer() && resources::whiteboard->current_side_has_actions()) {
+		const int res = gui2::show_message((*gui_).video(), "", _("Some units have planned actions left. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
+		if(res == gui2::twindow::CANCEL) {
+			return false;
+		}
+	}
+
 	// Ask for confirmation if units still have movement left
 	if(preferences::yellow_confirm() && partmoved_units) {
 		const int res = gui2::show_message((*gui_).video(), "", _("Some units have movement left. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
@@ -1412,12 +1420,6 @@ bool menu_handler::end_turn(int side_num)
 		if(res == gui2::twindow::CANCEL) {
 			return false;
 		}
-	}
-
-	// Auto-execute remaining whiteboard planned actions
-	// Only finish turn if they all execute successfully, i.e. no ambush, etc.
-	if (!resources::whiteboard->execute_all_actions()) {
-		return false;
 	}
 
 	return true;
