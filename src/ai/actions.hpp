@@ -36,9 +36,12 @@ namespace ai {
 
 class action_result {
 public:
-	static const int AI_ACTION_SUCCESS = 0;
-	static const int AI_ACTION_STARTED = 1;
-	static const int AI_ACTION_FAILURE = -1;
+
+	enum tresult {
+		AI_ACTION_SUCCESS = 0,
+		AI_ACTION_STARTED = 1,
+		AI_ACTION_FAILURE = -1
+	};
 
 	virtual ~action_result();
 
@@ -127,16 +130,20 @@ public:
 		const map_location& defender_loc,
 		int attacker_weapon,
 		double aggression );
-	static const int E_EMPTY_ATTACKER = 1001;
-	static const int E_EMPTY_DEFENDER = 1002;
-	static const int E_INCAPACITATED_ATTACKER = 1003;
-	static const int E_INCAPACITATED_DEFENDER = 1004;
-	static const int E_NOT_OWN_ATTACKER = 1005;
-	static const int E_NOT_ENEMY_DEFENDER = 1006;
-	static const int E_NO_ATTACKS_LEFT = 1007;
-	static const int E_WRONG_ATTACKER_WEAPON = 1008;
-	static const int E_UNABLE_TO_CHOOSE_ATTACKER_WEAPON = 1009;
-	static const int E_ATTACKER_AND_DEFENDER_NOT_ADJACENT = 1010;
+
+	enum tresult {
+		E_EMPTY_ATTACKER = 1001,
+		E_EMPTY_DEFENDER = 1002,
+		E_INCAPACITATED_ATTACKER = 1003,
+		E_INCAPACITATED_DEFENDER = 1004,
+		E_NOT_OWN_ATTACKER = 1005,
+		E_NOT_ENEMY_DEFENDER = 1006,
+		E_NO_ATTACKS_LEFT = 1007,
+		E_WRONG_ATTACKER_WEAPON = 1008,
+		E_UNABLE_TO_CHOOSE_ATTACKER_WEAPON = 1009,
+		E_ATTACKER_AND_DEFENDER_NOT_ADJACENT = 1010
+	};
+
 	virtual std::string do_describe() const;
 protected:
 	virtual void do_check_before();
@@ -157,14 +164,18 @@ public:
 		const map_location& to,
 		bool remove_movement,
 		bool unreach_is_ok);
-	static const int E_EMPTY_MOVE = 2001;
-	static const int E_NO_UNIT = 2002;
-	static const int E_NOT_OWN_UNIT = 2003;
-	static const int E_INCAPACITATED_UNIT = 2004;
-	static const int E_AMBUSHED = 2005;
-	static const int E_FAILED_TELEPORT = 2006;
-	static const int E_NOT_REACHED_DESTINATION = 2007;
-	static const int E_NO_ROUTE = 2008;
+
+	enum tresult {
+		E_EMPTY_MOVE = 2001,
+		E_NO_UNIT = 2002,
+		E_NOT_OWN_UNIT = 2003,
+		E_INCAPACITATED_UNIT = 2004,
+		E_AMBUSHED = 2005,
+		E_FAILED_TELEPORT = 2006,
+		E_NOT_REACHED_DESTINATION = 2007,
+		E_NO_ROUTE = 2008
+	};
+
 	virtual std::string do_describe() const;
 	virtual const map_location& get_unit_location() const;
 protected:
@@ -188,11 +199,15 @@ private:
 class recall_result : public action_result {
 public:
 	recall_result (side_number side, const std::string &unit_id, const map_location& where, const map_location& from);
-	static const int E_NOT_AVAILABLE_FOR_RECALLING = 6001;
-	static const int E_NO_GOLD = 6003;
-	static const int E_NO_LEADER = 6004;
-	static const int E_LEADER_NOT_ON_KEEP = 6005;
-	static const int E_BAD_RECALL_LOCATION = 6006;
+
+	enum tresult {
+		E_NOT_AVAILABLE_FOR_RECALLING = 6001,
+		E_NO_GOLD = 6003,
+		E_NO_LEADER = 6004,
+		E_LEADER_NOT_ON_KEEP = 6005,
+		E_BAD_RECALL_LOCATION = 6006
+	};
+
 	virtual std::string do_describe() const;
 protected:
 	virtual void do_check_before();
@@ -219,12 +234,15 @@ private:
 class recruit_result : public action_result {
 public:
 	recruit_result( side_number side, const std::string& unit_name, const map_location& where, const map_location& from);
-	static const int E_NOT_AVAILABLE_FOR_RECRUITING = 3001;
-	static const int E_UNKNOWN_OR_DUMMY_UNIT_TYPE = 3002;
-	static const int E_NO_GOLD = 3003;
-	static const int E_NO_LEADER = 3004;
-	static const int E_LEADER_NOT_ON_KEEP = 3005;
-	static const int E_BAD_RECRUIT_LOCATION = 3006;
+
+	enum tresult {
+		E_NOT_AVAILABLE_FOR_RECRUITING = 3001,
+		E_UNKNOWN_OR_DUMMY_UNIT_TYPE = 3002,
+		E_NO_GOLD = 3003,
+		E_NO_LEADER = 3004,
+		E_LEADER_NOT_ON_KEEP = 3005,
+		E_BAD_RECRUIT_LOCATION = 3006
+	};
 
 	virtual std::string do_describe() const;
 protected:
@@ -258,9 +276,12 @@ public:
 		const map_location& unit_location,
 		bool remove_movement,
 		bool remove_attacks );
-	static const int E_NO_UNIT = 4002;
-	static const int E_NOT_OWN_UNIT = 4003;
-	static const int E_INCAPACITATED_UNIT = 4004;
+
+	enum tresult {
+		E_NO_UNIT = 4002,
+		E_NOT_OWN_UNIT = 4003,
+		E_INCAPACITATED_UNIT = 4004
+	};
 
 	virtual std::string do_describe() const;
 protected:

@@ -8,6 +8,8 @@ Version 1.9.12+svn:
    * Removed blur from the add-ons description dialog
  * Whiteboard:
    * Display turn numbers on multi-turn planned moves
+ * Miscellaneous and bug fixes:
+   * Fixed: compilation with clang 3.0 in C++11 mode.
 
 Version 1.9.12:
  * Language and i18n:
@@ -481,7 +483,7 @@ Version 1.9.7:
         -- The unit can only recall units which pass the SUF
    * Removed the Liminal alignment
    * Fixed: a divide by zero in the calculate_map_ownership_function function
-   * Possibly fixed: rounding errors when using ^ in formulas
+   * Possibly fixed: rounding errors when using ^ in formulas (bug #18165)
    * Animation will now cycle according to a WML parameter, use with caution
    * Toplevel [tunnel] tags are now ignored rather than cause assertion
      failures (bug #18201).
