@@ -668,6 +668,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		static const std::string dir[6] = {"n","ne","se","s","sw","nw"};
 
 		//get all the light transitions
+		//note that lightmap needs halved values
 		std::ostringstream light_trans;
 		for(int d=0; d<6; ++d){
 			const time_of_day& atod = get_time_of_day(adjs[d]);
@@ -677,9 +678,9 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 				<< "~BLIT("
 				<< "terrain/light-" << dir[d] << ".png"
 				<< "~CS("
-				<< (atod.red + color_adjust_red_) << ","
-				<< (atod.green + color_adjust_green_) << ","
-				<< (atod.blue + color_adjust_blue_)
+				<< (atod.red + color_adjust_red_)/2 << ","
+				<< (atod.green + color_adjust_green_)/2 << ","
+				<< (atod.blue + color_adjust_blue_)/2
 				<< ")" // CS
 				<< ")"; //BLIT
 			use_lightmap = true;
@@ -692,9 +693,9 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			mod	<< "~L("
 				<< "terrain/light.png"
 				<< "~CS("
-				<< (tod.red  + color_adjust_red_) << ","
-				<< (tod.green  + color_adjust_green_)<< ","
-				<< (tod.blue  + color_adjust_blue_)
+				<< (tod.red  + color_adjust_red_)/2 << ","
+				<< (tod.green  + color_adjust_green_)/2<< ","
+				<< (tod.blue  + color_adjust_blue_)/2
 				<< ")" // CS
 				<< light_trans.str()
 				<< ")"; // L
@@ -710,9 +711,9 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 					   || (tod.blue + color_adjust_blue_) != 0) {
 				// simply color it if needed
 				mod << "~CS("
-					<< (tod.red   + color_adjust_red_) << ","
-					<< (tod.green   + color_adjust_green_)<< ","
-					<< (tod.blue  + color_adjust_blue_)
+					<< (tod.red + color_adjust_red_) << ","
+					<< (tod.green + color_adjust_green_)<< ","
+					<< (tod.blue + color_adjust_blue_)
 					<< ")"; // CS
 			}
 		}

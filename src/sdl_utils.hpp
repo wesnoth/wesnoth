@@ -242,7 +242,14 @@ bool in_mask_surface(const surface &surf, const surface &mask);
 */
 surface submerge_alpha(const surface &surf, int depth, float alpha_base, float alpha_delta, bool optimize=true);
 
-/** Light surf using lightmap (RGB=128,128,128 means no change) */
+/**
+ * Light surf using lightmap
+ * @param surf               The source surface.
+ * @param lightmap           add/subtract this color to surf
+ *                           but RGB values are converted to (X-128)*2
+ *                           to cover the full (-256,256) spectrum
+ * @param optimize           Whether the new surface should be RLE encoded.
+*/
 surface light_surface(const surface &surf, const surface &lightmap, bool optimize=true);
 
 /** Cross-fades a surface. */

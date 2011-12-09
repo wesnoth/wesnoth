@@ -1025,9 +1025,13 @@ surface light_surface(const surface &surf, const surface &lightmap, bool optimiz
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				r = std::max<int>(0,std::min<int>(255,int(r) + lr - 128));
-				g = std::max<int>(0,std::min<int>(255,int(g) + lg - 128));
-				b = std::max<int>(0,std::min<int>(255,int(b) + lb - 128));
+				int dr = (static_cast<int>(lr) - 128) * 2;
+				int dg = (static_cast<int>(lg) - 128) * 2;
+				int db = (static_cast<int>(lb) - 128) * 2;
+				//note that r + dr will promote r to int (needed to avoid Uint8 math)
+				r = std::max<int>(0,std::min<int>(255, r + dr));
+				g = std::max<int>(0,std::min<int>(255, g + dg));
+				b = std::max<int>(0,std::min<int>(255, b + db));
 
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
