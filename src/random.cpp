@@ -135,6 +135,11 @@ void set_new_seed_callback(boost::function<void (int)> f)
 	new_seed_callback = f;
 }
 
+bool has_new_seed_callback()
+{
+	return new_seed_callback != NULL;
+}
+
 void clear_new_seed_callback()
 {
 	DBG_RND << "clear_new_seed_callback\n";

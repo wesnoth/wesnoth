@@ -148,6 +148,9 @@ public:
 	/** Executes all actions in the queue in sequence
 	 *  @return true if the action queue is empty when the method returns */
 	bool execute_all_actions();
+	/** Called by the game controller to let the whiteboard continue executing all actions
+	 *  if it stopped to wait for an attack to complete on reception of its random seed from server */
+	void continue_execute_all();
 	/** Deletes last action in the queue for current side */
 	void contextual_delete();
 	/** Moves the action determined by the UI toward the beginning of the queue  */
@@ -198,6 +201,8 @@ private:
 	bool planned_unit_map_active_;
 	/** Track whenever we're modifying actions, to avoid dual execution etc. */
 	bool executing_actions_;
+	/** Track whether we're in the process of executing all actions */
+	bool executing_all_actions_;
 	/** Track whether the gamestate changed and we need to validate actions. */
 	bool gamestate_mutated_;
 

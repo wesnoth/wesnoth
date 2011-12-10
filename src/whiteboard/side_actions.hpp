@@ -74,12 +74,6 @@ public:
 	bool execute_next();
 
 	/**
-	 * Execute all actions in sequence until the fist attack, or until an action fails to execute.
-	 * @return true if the action queue is empty when the method returns
-	 */
-	bool execute_all();
-
-	/**
 	 * Executes the specified action, if it exists in the queue.
 	 * If the action is not finished, it's moved at the end of the queue.
 	 * @return true - if the action was completed successfully
@@ -108,6 +102,9 @@ public:
 
 	/**
 	 * Indicates whether the action queue is empty.
+	 * Since it's a queue of queues (one per turn), it can be empty of actions,
+	 * while still containing empty queues.
+	 * @todo devise a cleanup system to prevent the possibility of empty queues.
 	 */
 	bool empty() const { return actions_.empty(); }
 

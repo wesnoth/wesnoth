@@ -40,6 +40,7 @@
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
+#include "rng.hpp"
 #include "team.hpp"
 #include "unit_display.hpp"
 
@@ -56,6 +57,7 @@ manager::manager():
 		wait_for_side_init_(true),
 		planned_unit_map_active_(false),
 		executing_actions_(false),
+		executing_all_actions_(false),
 		gamestate_mutated_(false),
 		activation_state_lock_(new bool),
 		unit_map_lock_(new bool),
@@ -887,16 +889,66 @@ bool manager::execute_all_actions()
 		assert(has_planned_unit_map());
 		set_real_unit_map();
 
-		{ //exception-safety: Finalizer sets executing_actions to false on destruction
-			variable_finalizer<bool> finally(executing_actions_, false);
+		//exception-safety: Finalizer sets executing_actions to false on destruction
+		variable_finalizer<bool> finally(executing_actions_, false);
+		executing_actions_ = true;
+		executing_all_actions_ = true;
 
-			executing_actions_ = true;
-			return viewer_actions()->execute_all();
+		side_actions_ptr sa = viewer_actions();
+
+		if (sa->empty())
+		{
+			WRN_WB << "\"Execute All\" attempt with empty queue.\n";
+			return true;
 		}
+
+		if (resources::whiteboard->has_planned_unit_map())
+		{
+			ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		}
+
+		//LOG_WB << "Before executing all actions, " << *sa << "\n";
+
+		while (sa->begin() != sa->end())
+		{
+			bool action_completed;
+			try {
+				action_completed = sa->execute(sa->begin());
+			} catch (end_level_exception&) { //satisfy the gods of WML
+				executing_all_actions_ = false;
+				throw;
+			} catch (end_turn_exception&) { //satisfy the gods of WML
+				executing_all_actions_ = false;
+				throw;
+			}
+			// Interrupt if an attack is waiting for a random seed from the server
+			if ( rand_rng::has_new_seed_callback())
+			{
+				//leave executing_all_actions_ to true, we'll resume once attack completes
+				events::commands_disabled++; //to be decremented by continue_execute_all()
+				return false;
+			}
+			// Interrupt on incomplete action
+			if (!action_completed)
+			{
+				executing_all_actions_ = false;
+				return false;
+			}
+		}
+		executing_all_actions_ = false;
+		return true;
 	}
 	else
 	{
 		return false;
+	}
+}
+
+void manager::continue_execute_all()
+{
+	if (executing_all_actions_ && !rand_rng::has_new_seed_callback()) {
+		events::commands_disabled--;
+		execute_all_actions();
 	}
 }
 

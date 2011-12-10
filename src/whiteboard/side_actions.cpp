@@ -134,33 +134,6 @@ bool side_actions::execute_next()
 		return false;
 }
 
-bool side_actions::execute_all()
-{
-	if (empty())
-	{
-		WRN_WB << "\"Execute All\" attempt with empty queue.\n";
-		return true;
-	}
-
-	if (resources::whiteboard->has_planned_unit_map())
-	{
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
-	}
-
-	LOG_WB << "Before executing all actions, " << *this << "\n";
-
-	while (!empty() && !actions_.front().empty())
-	{
-		iterator position = begin();
-		bool action_completed = execute(position);
-		if (!action_completed)
-		{
-			return false;
-		}
-	}
-	return true;
-}
-
 bool side_actions::execute(side_actions::iterator position)
 {
 	if (resources::whiteboard->has_planned_unit_map())
