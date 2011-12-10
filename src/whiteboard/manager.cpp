@@ -306,7 +306,12 @@ void manager::pre_delete_action(action_ptr action)
 			&& boost::dynamic_pointer_cast<move>(action)
 			&& viewer_actions()->count_actions_of(action->get_unit()) == 1)
 	{
-		action->get_unit()->set_standing(true);
+		//but first, check that the unit's still around and that it's the same one
+		unit_map::iterator unit_it =
+				resources::units->find(boost::static_pointer_cast<move>(action)->get_dest_hex());
+		if (unit_it != resources::units->end() && &*unit_it == action->get_unit()) {
+			action->get_unit()->set_standing(true);
+		}
 	}
 }
 
