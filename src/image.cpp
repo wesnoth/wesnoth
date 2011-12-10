@@ -44,6 +44,9 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 #define LOG_DP LOG_STREAM(info, log_display)
 
+static lg::log_domain log_config("config");
+#define ERR_CFG LOG_STREAM(err , log_config)
+
 template<typename T>
 struct cache_item
 {
@@ -475,7 +478,14 @@ surface locator::load_image_sub_file() const
 		modification* mod = mods.top();
 		mods.pop();
 
-		surf = (*mod)(surf);
+		try {
+			surf = (*mod)(surf);
+		} catch(const image::modification::texception& e) {
+			ERR_CFG << "Failed to apply a modification to an image:\n"
+				<< "Image: " << val_.filename_ << ".\n"
+				<< "Modifications: " << val_.modifications_ << ".\n"
+				<< "Error: " << e.message;
+		}
 		delete mod;
 	}
 

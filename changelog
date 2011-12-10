@@ -11,6 +11,7 @@ Version 1.9.12+svn:
  * Miscellaneous and bug fixes:
    * Fixed: compilation with clang 3.0 in C++11 mode.
    * Changed: Sort order of campaigns uses a stable sort now.
+   * Fixed bug #18832: Fixed ~BLIT() to access images out of bounds.
 
 Version 1.9.12:
  * Language and i18n:

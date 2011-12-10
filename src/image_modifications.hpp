@@ -34,6 +34,41 @@ typedef std::priority_queue<modification*,
 class modification
 {
 public:
+
+	/** Exception thrown by the operator() when an error occurs. */
+	struct texception
+		: public tlua_jailbreak_exception
+	{
+		/**
+		 * Constructor.
+		 *
+		 * @pre message_stream.str()[message_stream.str().size() - 1] == '\n'
+		 *
+		 * @param message_stream  Stream with the error message regarding
+		 *                        the failed operation.
+		 */
+		texception(const std::stringstream& message_stream);
+
+		/**
+		 * Constructor.
+		 *
+		 * @pre message[message.size() - 1] == '\n'
+		 *
+		 * @param message         String with the error message regarding
+		 *                        the failed operation.
+		 */
+		texception(const std::string& message);
+
+		~texception() throw() {}
+
+		/** The error message regarding the failed operation. */
+		const std::string message;
+
+	private:
+
+		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(texception)
+	};
+
 	/// Decodes modifications from a modification string
 	static modification_queue decode(const std::string&);
 

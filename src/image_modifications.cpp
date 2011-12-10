@@ -75,6 +75,17 @@ modification* decode_modification(const std::string& encoded_mod)
 }
 } // end anon namespace
 
+
+modification::texception::texception(const std::stringstream& message_stream)
+	: message(message_stream.str())
+{
+}
+
+modification::texception::texception(const std::string& message)
+		: message(message)
+{
+}
+
 /** Decodes the modification string
  *
  * Important:
@@ -160,6 +171,42 @@ const SDL_Rect& crop_modification::get_slice() const
 
 surface blit_modification::operator()(const surface& src) const
 {
+	if(x_ >= src->w) {
+		std::stringstream sstr;
+		sstr << "~BLIT(): x-coordinate '"
+			<< x_ << "' larger than destination image's width '"
+			<< src->w << "' no blitting performed.\n";
+
+		throw texception(sstr);
+	}
+
+	if(y_ >= src->h) {
+		std::stringstream sstr;
+		sstr << "~BLIT(): y-coordinate '"
+			<< y_ << "' larger than destination image's height '"
+			<< src->h << "' no blitting performed.\n";
+
+		throw texception(sstr);
+	}
+
+	if(surf_->w + x_ > src->w) {
+		std::stringstream sstr;
+		sstr << "~BLIT(): offset and width '"
+			<< x_ + surf_->w << "' larger than destination image's width '"
+			<< src->w << "' no blitting performed.\n";
+
+		throw texception(sstr);
+	}
+
+	if(surf_->h + y_ > src->h) {
+		std::stringstream sstr;
+		sstr << "~BLIT(): offset and height '"
+			<< x_ + surf_->h << "' larger than destination image's height '"
+			<< src->h << "' no blitting performed.\n";
+
+		throw texception(sstr);
+	}
+
 	//blit_surface want neutral surfaces
 	surface nsrc = make_neutral_surface(src);
 	surface nsurf = make_neutral_surface(surf_);
