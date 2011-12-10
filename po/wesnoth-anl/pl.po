@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2009-11-22 20:40+0100\n"
+"POT-Creation-Date: 2011-12-05 16:25+0100\n"
+"PO-Revision-Date: 2011-04-11 14:48+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "Language: \n"
@@ -25,7 +25,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
 msgid "4p — A New Land"
-msgstr "4g - Nowa Ziemia"
+msgstr "4g — Nowa Ziemia"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
@@ -461,12 +461,11 @@ msgstr "Nic"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:315
-#, fuzzy
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
 "Give 20 gold to another player"
 msgstr ""
-"Przekaż fundusze\n"
+"<span color='green'>Przekaż fundusze</span>\n"
 "Daj 20 sztuk złota innemu graczowi"
 
 #. [message]: speaker=unit
@@ -482,12 +481,11 @@ msgstr "Powrót"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:359
-#, fuzzy
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
 "Help an ally with their research"
 msgstr ""
-"Podziel się wiedzą\n"
+"<span color='green'>Podziel się wiedzą</span>\n"
 "Przekaż sojusznikowi wyniki swoich badań"
 
 #. [message]: speaker=unit
@@ -497,28 +495,26 @@ msgstr "Z kim chcesz się podzielić wiedzą?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:417
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
 "Lets you recruit a Dwarvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
-"Negocjuj z krasnoludami\n"
+"<span color='green'>Negocjuj z krasnoludami</span>\n"
 "Pozwala rekrutować krasnoludzką jednostkę\n"
 "Postęp negocjacji: $player_$side_number|.leader_option_1.progress|/$player_"
 "$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:472
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
 "Lets you recruit an Elvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
-"Negocjuj z elfami\n"
+"<span color='green'>Negocjuj z elfami</span>\n"
 "Pozwala rekrutować elficką jednostkę\n"
 "Postęp negocjacji: $player_$side_number|.leader_option_2.progress|/$player_"
 "$side_number|.leader_option_2.target"
@@ -578,6 +574,13 @@ msgstr "Badania"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:144
+#, fuzzy
+#| msgid ""
+#| "We are currently studying $player_$side_number|.research.current_target|. "
+#| "To which end would you have our scholars devote their minds?\n"
+#| "\n"
+#| "Our farms produce $player_$side_number|.farming.gold|g\n"
+#| "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgid ""
 "We are currently studying $player_$side_number|.research."
 "target_language_name|. To which end would you have our scholars devote their "
@@ -586,7 +589,7 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
-"Obecny cen badań to $player_$side_number|.research.target_language_name|.\n"
+"Obecny cen badań to $player_$side_number|.research.current_target|.\n"
 " Czym powinni zająć się nasi uczeni?\n"
 "\n"
 "Nasze farmy produkują $player_$side_number|.farming.gold|zł\n"
@@ -625,14 +628,13 @@ msgstr "rolnictwo"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
-#, fuzzy
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
-"Górnictwo\n"
+"<span color='green'>Górnictwo</span>\n"
 "Górnicy produkują +1 sztuk złota\n"
 "Postęp badań: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
@@ -644,14 +646,13 @@ msgstr "górnictwo"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:189
-#, fuzzy
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
-"Technika wojenna\n"
+"<span color='green'>Technika wojenna</span>\n"
 "Pozwala rekrutować nowy rodzaj jednostek\n"
 "Postęp badań: $player_$side_number|.warfare.progress|/$player_$side_number|."
 "warfare.target"
