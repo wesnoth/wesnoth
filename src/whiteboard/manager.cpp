@@ -58,6 +58,7 @@ manager::manager():
 		planned_unit_map_active_(false),
 		executing_actions_(false),
 		executing_all_actions_(false),
+		preparing_to_end_turn_(false),
 		gamestate_mutated_(false),
 		activation_state_lock_(new bool),
 		unit_map_lock_(new bool),
@@ -287,6 +288,7 @@ void manager::on_init_side()
 
 void manager::on_finish_side_turn(int side)
 {
+	preparing_to_end_turn_ = false;
 	wait_for_side_init_ = true;
 	if(side == viewer_side() && !viewer_actions()->empty()) {
 		viewer_actions()->synced_turn_shift();
@@ -874,6 +876,12 @@ void manager::contextual_execute()
 	} //Finalizer struct sets executing_actions_ to false
 }
 
+bool manager::allow_end_turn()
+{
+	preparing_to_end_turn_ = true;
+	return execute_all_actions();
+}
+
 bool manager::execute_all_actions()
 {
 	if(viewer_actions()->empty())
@@ -948,7 +956,9 @@ void manager::continue_execute_all()
 {
 	if (executing_all_actions_ && !rand_rng::has_new_seed_callback()) {
 		events::commands_disabled--;
-		execute_all_actions();
+		if (execute_all_actions()) {
+			resources::controller->force_end_turn();
+		}
 	}
 }
 

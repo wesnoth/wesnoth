@@ -83,7 +83,8 @@ public:
 	bool can_enable_reorder_hotkeys() const;
 	/** Used to ask permission to the wb to move a leader, to avoid invalidating planned recruits */
 	bool allow_leader_to_move(unit const& leader) const;
-
+	/** @ return true if the whiteboard is ready to end turn. Triggers the execution of remaining planned actions. */
+	bool allow_end_turn();
 	/**
 	 * The on_* methods below inform the whiteboard of specific events
 	 */
@@ -203,6 +204,8 @@ private:
 	bool executing_actions_;
 	/** Track whether we're in the process of executing all actions */
 	bool executing_all_actions_;
+	/** true if we're in the process of executing all action and should end turn once finished. */
+	bool preparing_to_end_turn_;
 	/** Track whether the gamestate changed and we need to validate actions. */
 	bool gamestate_mutated_;
 
