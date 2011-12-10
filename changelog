@@ -10,6 +10,7 @@ Version 1.9.12+svn:
    * Fixed bug #17961 and #18686: Shows of big portraits on smaller screens.
  * Whiteboard:
    * Display turn numbers on multi-turn planned moves
+   * Fix attacks not finishing but still being transmitted over the network when executing all actions
  * Miscellaneous and bug fixes:
    * Fixed: compilation with clang 3.0 in C++11 mode.
    * Changed: Sort order of campaigns uses a stable sort now.
