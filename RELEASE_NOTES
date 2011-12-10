@@ -14,20 +14,11 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="Whiteboard"]
-As you may have noticed, GSoC added a very nice multiplayer feature to the whiteboard, but not without its share of bugs. Fixing those sometimes creates other bugs or breaks some UI features, please be patient while we polish everything up.
-
-Notable changes this release:
-[list][*]Multi-turn moves are back in, but their UI is not complete yet.
-[*] Planned actions now auto-execute when you end your turn, we didn't mention this in previous release notes.
-[*] The option to hide allies' plans has no effect if you change it during a game.
-[/list]
-
-Also see the known bugs below.
-[/section]
-
 [section="Portraits in dialogs"]
 Large portraits, especially high ones, should now work properly. For example TRoW scenario 5 (The Oldwood) now shows Elilmaldur-Rithrandil properly even when the screen resolution is 1920x480. If there are still issues with portraits not being shown, please let us know, either in this thread or by a bug report.
+[/section]
+
+[section="Another Change"]
 [/section]
 
 [section="Another Change"]
@@ -37,8 +28,6 @@ Large portraits, especially high ones, should now work properly. For example TRo
 KNOWN BUGS
 ==========
 
-Whiteboard:
-[list][*] Multi-turn moves are still missing turn and terrain % indicators.
-[*] The fake units from planned moves are not visible or selectable when under fog.
-[*] Clicking on a planned recruit/recall gives the impression that you can give them orders, but you can't.
+[list][*] Text for entry1.
+[*] Text for entry2
 [/list]
