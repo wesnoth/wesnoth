@@ -955,6 +955,13 @@ void twindow::layout()
 		assert(click_dismiss_button);
 		click_dismiss_button->set_visible(twidget::VISIBLE);
 
+		connect_signal_mouse_left_click(
+				  *click_dismiss_button
+				, boost::bind(
+					  &twindow::set_retval
+					, this
+					, OK
+					, true));
 
 		layout_init(true);
 		generate_dot_file("layout_init", LAYOUT);
