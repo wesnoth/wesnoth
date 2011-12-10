@@ -1559,7 +1559,9 @@ void blit_surface(const surface& src,
 				// We do these optimizations between the extraction of the variables
 				// to avoid creating variables not used (it might save us some cycles).
 
-				const Uint32 src_pixel = src_pixels[(y + src_rect.y) * src->w + (x + src_rect.x)];
+				const int src_offset = (y + src_rect.y) * src->w + (x + src_rect.x);
+				assert(src_offset < src->w * src->h);
+				const Uint32 src_pixel = src_pixels[src_offset];
 				const Uint8 src_a = (src_pixel & 0xFF000000) >> 24;
 
 				if(!src_a) {
@@ -1568,6 +1570,7 @@ void blit_surface(const surface& src,
 				}
 
 				const ptrdiff_t dst_offset = (y + dst_rect.y) * dst->w + (x + dst_rect.x);
+				assert(dst_offset < dst->w * dst->h);
 				if(src_a == 255) {
 					// Fully opaque source, copy
 					dst_pixels[dst_offset] = src_pixel;
