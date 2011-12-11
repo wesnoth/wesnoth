@@ -95,8 +95,7 @@ config tod_manager::to_config() const
 	return cfg;
 }
 
-const time_of_day& tod_manager::get_time_of_day(int for_turn
-		, const map_location& loc) const
+const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int for_turn) const
 {
 	if(for_turn == 0) for_turn = turn_;
 	if(!resources::game_map->on_board(loc)) {
@@ -215,7 +214,7 @@ const time_of_day& tod_manager::get_time_of_day_turn(const std::vector<time_of_d
 	return times[time];
 }
 
-const time_of_day tod_manager::get_illuminated_time_of_day(int for_turn, const map_location& loc) const
+const time_of_day tod_manager::get_illuminated_time_of_day(const map_location& loc, int for_turn) const
 {
 	if(for_turn == 0) for_turn = turn_;
 

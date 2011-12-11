@@ -38,15 +38,16 @@ class tod_manager : public savegame::savegame_config
 		 * for_turn = 0 means current turn
 		 * if loc is on board then tod areas matter (else: scenario main time)
 		 */
-		const time_of_day& get_time_of_day(int for_turn = 0
-				, const map_location& loc = map_location()) const;
+		const time_of_day& get_time_of_day(const map_location& loc = map_location(),
+				int for_turn = 0) const;
 		/**
 		 * Returns time of day object for the passed turn.
 		 * taking account of illumination caused by units
 		 * for_turn = 0 means current turn
 		 * if loc is on board then tod areas matter (else: scenario main time)
 		 */
-		const time_of_day get_illuminated_time_of_day(int for_turn, const map_location& loc) const;
+		const time_of_day get_illuminated_time_of_day(const map_location& loc,
+				int for_turn = 0) const;
 
 		const time_of_day& get_previous_time_of_day() const;
 

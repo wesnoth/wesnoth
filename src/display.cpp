@@ -167,7 +167,7 @@ display::~display()
 const time_of_day & display::get_time_of_day(const map_location& loc) const
 {
 	static time_of_day tod;
-	if(resources::tod_manager != NULL){ tod = resources::tod_manager->get_time_of_day(0, loc); }
+	if(resources::tod_manager != NULL){ tod = resources::tod_manager->get_time_of_day(loc); }
 	return tod;
 }
 
