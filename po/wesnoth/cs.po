@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-05 16:25+0100\n"
-"PO-Revision-Date: 2011-12-07 17:22+0100\n"
+"PO-Revision-Date: 2011-12-11 13:43+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
 "Language: cs\n"
@@ -33,10 +33,10 @@ msgstr ""
 msgid "Compressed saves"
 msgstr "Ukládat hry v komprimovaném formátu"
 
+# | msgid "Confirm deleting saves"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
 #, fuzzy
-#| msgid "Confirm deleting saves"
 msgid "Confirm deleting saves"
 msgstr "Potvrzovat smazání uložených her"
 
@@ -50,10 +50,10 @@ msgstr "Posouvání pomocí myši"
 msgid "Middle-click scrolling"
 msgstr "Posouvání prostředním tlačítkem"
 
+# | msgid "Keep scrolling when mouse leaves window"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
 #, fuzzy
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep scrolling when mouse leaves window"
 msgstr "Posouvat za myší, i když je mimo okno"
 
@@ -83,12 +83,12 @@ msgstr "Ukazovat boj"
 msgid "Ping timeout"
 msgstr "Doba vypršení pingu"
 
+# | msgid ""
+# | "Number of seconds to wait for a ping reply before we time out. Disable "
+# | "with 0."
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
 #, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
@@ -96,30 +96,33 @@ msgstr ""
 "Počet sekund, po něž se čeká na odpověď na ping. Pokud je překročen, je "
 "detekováno odpojení. Tuto kontrolu deaktivuje hodnota 0."
 
+# | msgid "Accept whisper messages from friends only"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:72
 #, fuzzy
-#| msgid "Accept whisper messages from friends only"
 msgid "Accept whispers from friends only"
 msgstr "Přijímat soukromé zprávy pouze od přátel"
 
+# | msgid "Auto-open whisper windows in lobby"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 #, fuzzy
-#| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open whisper windows in lobby"
 msgstr "Otevírat v čekárně automaticky okna se soukromými zprávami"
 
+# | msgid "Group players in lobby"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Group players in lobby"
 msgstr "Seskupovat hráče v čekárně"
 
+# | msgid "Lobby sounds"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
 msgid "Lobby sounds"
 msgstr "Zvuky v čekárně"
 
+# | msgid "Disable notifications"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:100
 msgid "Disable notifications"
@@ -128,17 +131,17 @@ msgstr "Vypnout oznamování"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Reverse time graphics"
-msgstr ""
+msgstr "Rotace země"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:108
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
+msgstr "Zvol, zda-li se má slunce pohybovat zleva doprava, nebo zprava doleva"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
 msgid "Follow unit actions"
-msgstr ""
+msgstr "Posouvat obrazovku za činností"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:116
@@ -339,7 +342,6 @@ msgstr "Zkušební text pro tag [about]."
 msgid "Test campaign - first scenario (grass)"
 msgstr "Testovací tažení, scénář první (tráva)"
 
-# | msgid "Players: "
 #. [side]: id=Alpha, type=Elvish Fighter
 #. [side]: id=Bravo, type=Elvish Archer
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:24
@@ -347,7 +349,6 @@ msgstr "Testovací tažení, scénář první (tráva)"
 msgid "Players"
 msgstr "Hráči"
 
-# | msgid "Enemy village"
 #. [side]: id=Charlie, type=Orcish Grunt
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:53
 msgid "Enemies"
@@ -363,19 +364,16 @@ msgstr ""
 msgid "Failed test color"
 msgstr ""
 
-# | msgid "Difficulty: "
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
 msgid "Difficulty: Easy"
 msgstr "Obtížnost: jednoduchá"
 
-# | msgid "Difficulty: "
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:90
 msgid "Difficulty: Normal"
 msgstr "Obtížnost: normální"
 
-# | msgid "Difficulty: "
 #. [label]
 #: data/campaigns/test_campaign/scenarios/01_Grass.cfg:93
 msgid "Difficulty: Hard"
@@ -3193,7 +3191,7 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
-"<i>Divoké</i> jednotky jako netopýři a divá zvěř se straní vesnic. I když se "
+"<i>Divé</i> jednotky jako netopýři a divoká zvěř se straní vesnic. I když se "
 "postaví na políčko s vesnicí, nezískají z ní žádné obranné bonusy, i když "
 "budou léčeny."
 
@@ -3878,9 +3876,9 @@ msgstr "Při vytváření souborů potřebných k instalaci rozšíření došlo
 msgid "You have no add-ons installed."
 msgstr "Nejsou nainstalována žádná rozšíření."
 
+# | msgid "Are you sure you want to remove the add-on '$addon|'?"
 #: src/addon/manager.cpp:1418
 #, fuzzy
-#| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Opravdu chcete odstranit rozšíření „$addon|“?"
@@ -3898,9 +3896,9 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
+# | msgid "Add-on could not be deleted properly:"
 #: src/addon/manager.cpp:1454
 #, fuzzy
-#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Rozšíření nebylo možno správně odstranit:"
@@ -3908,13 +3906,11 @@ msgstr[1] "Rozšíření nebylo možno správně odstranit:"
 msgstr[2] "Rozšíření nebylo možno správně odstranit:"
 
 #: src/addon/manager.cpp:1461
-#, fuzzy
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Rozšíření smazáno"
-msgstr[1] "Rozšíření smazáno"
-msgstr[2] "Rozšíření smazáno"
+msgstr[1] "Rozšíření smazána"
+msgstr[2] "Rozšíření smazána"
 
 #: src/addon/manager.cpp:1463
 msgid "The following add-on was successfully deleted:"
@@ -4007,9 +4003,9 @@ msgstr "Hra více hráčů"
 msgid "Tutorial"
 msgstr "Výcvik"
 
+# | msgid "Remote scenario"
 #: src/dialogs.cpp:499
 #, fuzzy
-#| msgid "Remote scenario"
 msgid "Test scenario"
 msgstr "Vzdálený scénář"
 
@@ -4249,10 +4245,10 @@ msgid "Turn "
 msgstr "Kolo"
 
 # nebylo by jednodušší jenom "prázdné pozice"?
+# | msgid "Vacant Slot:"
+# | msgid_plural "Vacant slots:"
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
 #, fuzzy
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Prázdná pozice:"
@@ -4840,21 +4836,21 @@ msgid "Change the log level of a log domain."
 msgstr "Přepne logovací kategorii na jinou úroveň logování."
 
 # nekonzistence addignore/ignore i v angl
+# | msgid "Add a nick to your ignores list."
 #: src/menu_events.cpp:2364
 #, fuzzy
-#| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
 msgstr "Přidej uživatele do seznamu otrapů."
 
+# | msgid "Add a nick to your friends list."
 #: src/menu_events.cpp:2366
 #, fuzzy
-#| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
 msgstr "Přidá uživatele do seznamu přátel."
 
+# | msgid "Remove a nick from your ignores or friends list."
 #: src/menu_events.cpp:2368
 #, fuzzy
-#| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Smaže uživatele ze seznamu otrapů nebo přátel."
 
@@ -4871,21 +4867,21 @@ msgstr "Zobrazí informace o verzi."
 msgid "<password> <email (optional)>"
 msgstr "<heslo> <email (nepovinný)>"
 
+# | msgid "Register your nick"
 #: src/menu_events.cpp:2375
 #, fuzzy
-#| msgid "Register your nick"
 msgid "Register your nickname"
 msgstr "Registruje přezdívku."
 
+# | msgid "Drop your nick."
 #: src/menu_events.cpp:2377
 #, fuzzy
-#| msgid "Drop your nick."
 msgid "Drop your nickname."
 msgstr "Zahodí tvou přezdívku."
 
+# | msgid "Update details for your nick. For possible details see '/details'."
 #: src/menu_events.cpp:2379
 #, fuzzy
-#| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr "Aktualizuje podrobnosti vaší přezdívky. Možné detaily viz '/details'."
 
@@ -4893,15 +4889,15 @@ msgstr "Aktualizuje podrobnosti vaší přezdívky. Možné detaily viz '/detail
 msgid "<detail> <value>"
 msgstr "<vlastnost> <hodnota>"
 
+# | msgid "Request information about a nick."
 #: src/menu_events.cpp:2382
 #, fuzzy
-#| msgid "Request information about a nick."
 msgid "Request information about a nickname."
 msgstr "Vyžádá informace o uživateli."
 
+# | msgid "Request a list of details you can set for your registered nick."
 #: src/menu_events.cpp:2384
 #, fuzzy
-#| msgid "Request a list of details you can set for your registered nick."
 msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
 "Vyžádá seznam podrobností, které můžete nastavit pro vaši registrovanou "
@@ -6331,9 +6327,8 @@ msgid "Base attacks: "
 msgstr "Základní útoky: "
 
 #: src/reports.cpp:623
-#, fuzzy
 msgid "Swarm: "
-msgstr "hejno"
+msgstr "Hejno: "
 
 #: src/reports.cpp:635
 msgid "Weapon range: "
@@ -6363,7 +6358,7 @@ msgstr "Speciální druhy útoků"
 
 #: src/reports.cpp:773
 msgid "None"
-msgstr ""
+msgstr "Nic"
 
 #: src/reports.cpp:965
 msgid "Lawful units: "
@@ -6610,7 +6605,6 @@ msgstr "Zabito"
 msgid "Details"
 msgstr "Detaily"
 
-# !!!! prozkoumat jestli se sem nehodí něco jiného
 #: src/statistics_dialog.cpp:175
 msgid "Damage"
 msgstr "Zranění"
@@ -6687,7 +6681,6 @@ msgstr " krok"
 msgid "$effect_description per level"
 msgstr "$effect_description na úroveň"
 
-# !!!! prozkoumat jestli se sem nehodí něco jiného
 #: src/unit_types.cpp:192 src/unit_types.cpp:262
 msgid "damage"
 msgid_plural "damage"
@@ -6702,13 +6695,11 @@ msgstr[0] "úder"
 msgstr[1] "údery"
 msgstr[2] "úderů"
 
-# Hodnota, které se odečítá od obrany dané terénem; vypadá v praxi jako "+-10% TEXT"
 #: src/unit_types.cpp:215
 #, no-c-format
 msgid "% accuracy"
 msgstr "% přesnosti"
 
-# Hodnota, které se přičítá k obraně dané terénem; vypadá v praxi jako "+-10% TEXT"
 #: src/unit_types.cpp:226
 #, no-c-format
 msgid "% parry"

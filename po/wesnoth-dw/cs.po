@@ -1,9 +1,20 @@
+# translation of wesnoth-dm.pot to Czech
+# Czech translations for Battle for Wesnoth package.
+# Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
+# Copyright (C) 2010 - 2011 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
+#
+# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2010 - 2011
+# Petr 'Septim' Šlejhar, 2010 - 2011
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-23 15:01+0100\n"
-"PO-Revision-Date: 2011-11-22 20:36+0100\n"
+"PO-Revision-Date: 2011-12-11 13:16+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -627,7 +638,6 @@ msgstr "Po smrti svého pána se nemrtví ztrácí!"
 msgid "Fearsome Bat"
 msgstr "Hrůzostrašný netopýr"
 
-# | msgid "Look! There is a bat cowering in the corner here."
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:473
 msgid "Look! There is a massive bat back here."
@@ -684,7 +694,6 @@ msgstr "Po smrti svého pána nemrtví chřadnou!"
 msgid "Friendly Bat"
 msgstr "Přátelský netopýr"
 
-# | msgid "Look! There is a bat cowering in the corner here."
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:570
 msgid "And look! There is a bat cowering in the corner here."
@@ -744,13 +753,11 @@ msgstr "Zjevně máš svého vlastního netopýra."
 msgid "With their master gone, the skeletons are crumbling!"
 msgstr "Po smrti svého pána se kostlivci rozpadají!"
 
-# | msgid "Undead"
 #. [unit]: type=Walking Corpse, id=Undead Bat
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:660
 msgid "Undead Bat"
 msgstr "Nemrtvý netopýr"
 
-# | msgid "Look! There is a bat cowering in the corner here."
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:669
 msgid ""
@@ -782,13 +789,11 @@ msgstr ""
 msgid "Fascinating. I shall certainly try."
 msgstr "Fascinující. Určitě to zkusím."
 
-# | msgid "Look, this chest was in his tent. It is filled with gold!"
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:706
 msgid "He had a chest in his tent, too. It is filled with gold!"
 msgstr "Měl ve svém stanu truhlu. Je plná zlata!"
 
-# | msgid "You receive 100 gold."
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:718
 msgid "You receive 120 gold."
@@ -1902,11 +1907,6 @@ msgid "What? How is that possible?"
 msgstr "Cože? Jak je to možné?"
 
 # doplnění jména v druhé větě pro lepší srozumitelnost.
-# | msgid ""
-# | "When your grandfather married Indress, he he did not know that Tyegëa had "
-# | "already born him a son. When she delivered your father to Jotha, your "
-# | "grandmother Indress agreed to keep it secret and raise the infant as her "
-# | "own."
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:209
 msgid ""
@@ -3070,7 +3070,6 @@ msgstr "pěst"
 msgid "tail"
 msgstr "ocas"
 
-# | msgid "stunned"
 #. [set_variable]
 #: data/campaigns/Dead_Water/units/Brawler.cfg:197
 msgid "female^stunned"
@@ -3318,8 +3317,6 @@ msgstr ""
 "Ten lidský čaroděj nosil prsten! Možná magický. Někdo by si ho měl "
 "vyzkoušet, aby se vidělo, co dělá."
 
-# | msgid ""
-# | " This unit is able stun its enemies, disrupting their zones of control."
 #: data/campaigns/Dead_Water/utils/specials.cfg:4
 msgid ""
 " This unit is able to stun its enemies, disrupting their zones of control."
@@ -3332,9 +3329,6 @@ msgstr ""
 msgid "stun"
 msgstr "omráčení"
 
-# | msgid ""
-# | "This attack hits so hard that the defender is dazed and can no longer "
-# | "enforce a zone of control. The effect wears off on the defenders next turn"
 #. [damage]: id=tail_stun
 #: data/campaigns/Dead_Water/utils/specials.cfg:10
 msgid ""
@@ -3344,6 +3338,3 @@ msgstr ""
 "Tento útok je tak drtivý, že je zasažená jednotka omráčena a není schopna "
 "dále zajištovat svou zónu kontroly. Tento efekt pomine na začátku dalšího "
 "kola zasažené jednotky."
-
-#~ msgid "You receive 200 gold."
-#~ msgstr "Získal jsi 200 zlatých."

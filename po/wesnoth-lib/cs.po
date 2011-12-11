@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-05 16:25+0100\n"
-"PO-Revision-Date: 2011-12-07 17:16+0100\n"
+"PO-Revision-Date: 2011-12-11 13:25+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -1603,11 +1603,11 @@ msgstr "Vykročit ven"
 msgid "Continue"
 msgstr "Pokračovat"
 
-# ????
+# asi něco jako "stack trace"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:178
 msgid "Execution trace"
-msgstr "Běhová stopa"
+msgstr "Posloupnost volání"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -2318,10 +2318,13 @@ msgstr ""
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:225
+#, fuzzy
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
+"Hraj spolu s více hráči (na místě, přes LAN nebo po internetu), nebo jediný "
+"scénář proti AI"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
@@ -3032,9 +3035,8 @@ msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[node]id 'root' je vyhrazen implementací."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
-#, fuzzy
 msgid "No node defined."
-msgstr "Není definována žádná stránka."
+msgstr "Není definován žádný uzel."
 
 #: src/gui/dialogs/game_load.cpp:274
 msgid "#(Invalid)"
@@ -3314,17 +3316,13 @@ msgstr "Seznam jednotek"
 msgid "Statistics"
 msgstr "Statistiky"
 
-# | msgid "Host Networked Game"
 #: src/hotkeys.cpp:92
-#, fuzzy
 msgid "Pause Network Game"
-msgstr "Hostuj síťovou hru"
+msgstr "Pozastav síťovou hru"
 
-# | msgid "Host Networked Game"
 #: src/hotkeys.cpp:93
-#, fuzzy
 msgid "Continue Network Game"
-msgstr "Hostuj síťovou hru"
+msgstr "pokračuj v síťové hře"
 
 #: src/hotkeys.cpp:95
 msgid "Set Team Label"
@@ -3346,23 +3344,17 @@ msgstr "Ukaž tahy nepřítele"
 msgid "Best Possible Enemy Moves"
 msgstr "Nejlepší možné tahy nepřítele"
 
-# | msgid "Save Replay"
 #: src/hotkeys.cpp:100
-#, fuzzy
 msgid "Play Replay"
-msgstr "Ulož záznam"
+msgstr "Přehrej záznam"
 
-# | msgid "Save Replay"
 #: src/hotkeys.cpp:101
-#, fuzzy
 msgid "Reset Replay"
-msgstr "Ulož záznam"
+msgstr "Resetuj záznam"
 
-# | msgid "Save Replay"
 #: src/hotkeys.cpp:102
-#, fuzzy
 msgid "Stop Replay"
-msgstr "Ulož záznam"
+msgstr "Zastav záznam"
 
 #: src/hotkeys.cpp:103
 msgid "Next Turn"
@@ -3394,15 +3386,15 @@ msgstr ""
 
 #: src/hotkeys.cpp:114
 msgid "Execute Planned Action"
-msgstr ""
+msgstr "Provede naplánovnou akci"
 
 #: src/hotkeys.cpp:115
 msgid "Execute All Actions"
-msgstr ""
+msgstr "Provede všechny akce"
 
 #: src/hotkeys.cpp:116
 msgid "Delete Planned Action"
-msgstr ""
+msgstr "Smazat plánované akce"
 
 #: src/hotkeys.cpp:117
 msgid "Move Action Up Queue"
@@ -3515,12 +3507,10 @@ msgstr "Invertovat výběr"
 msgid "Select None"
 msgstr "Vyber nic"
 
-# délka?
 #: src/hotkeys.cpp:154
 msgid "Rotate Clipboard Clockwise"
 msgstr "Otočit schránku po směru hodinových ručiček"
 
-# délka?
 #: src/hotkeys.cpp:156
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Otočit schránku proti směru hodinových ručiček"
@@ -3660,8 +3650,6 @@ msgstr "Výcvik"
 msgid "Start Campaign"
 msgstr "Hraj tažení"
 
-# !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
-# | msgid "Multiplayer"
 #: src/hotkeys.cpp:248
 msgid "Start Multiplayer Game"
 msgstr "Hraj hru více hráčů"
@@ -3675,17 +3663,13 @@ msgid "Start Editor"
 msgstr "Spusť editor map"
 
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
-# | msgid "Credits"
 #: src/hotkeys.cpp:269
-#, fuzzy
 msgid "Show Credits"
-msgstr "Poděkování"
+msgstr "Zobraz poděkování"
 
-# | msgid "Show replay"
 #: src/hotkeys.cpp:277
-#, fuzzy
 msgid "Show Helptip"
-msgstr "Přehrát záznam"
+msgstr ""
 
 #: src/hotkeys.cpp:875 src/hotkeys.cpp:1220
 msgid "Do you really want to quit?"
@@ -3823,8 +3807,9 @@ msgid "There are no alternative video modes available"
 msgstr "Žádné jiné grafické módy nejsou k dispozici."
 
 #: src/preferences_display.cpp:561
+#, fuzzy
 msgid " (widescreen)"
-msgstr ""
+msgstr " (širokoúhlé)"
 
 #: src/preferences_display.cpp:565
 msgid "Choose Resolution"
