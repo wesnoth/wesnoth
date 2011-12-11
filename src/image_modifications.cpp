@@ -608,23 +608,6 @@ REGISTER_MOD_PARSER(CROP, args)
 	return new crop_modification(slice_rect);
 }
 
-// LOC function (unsupported)
-REGISTER_MOD_PARSER(LOC, )
-{
-	/*
-	//FIXME: WIP, don't use it yet
-	std::vector<std::string> const& params = utils::split(args);
-	int x = lexical_cast<int>(params[0]);
-	int y = lexical_cast<int>(params[1]);
-	int cx = lexical_cast<int>(params[2]);
-	int cy = lexical_cast<int>(params[3]);
-	image::locator new_loc(val_.filename_, map_location(x,y), cx, cy, "");//TODO remove only ~LOC
-	surf = get_image(new_loc, TOD_COLORED);
-	*/
-
-	return NULL;
-}
-
 // Blit
 REGISTER_MOD_PARSER(BLIT, args)
 {
