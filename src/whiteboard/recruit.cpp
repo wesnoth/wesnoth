@@ -71,6 +71,7 @@ recruit::recruit(config const& cfg, bool hidden)
 	, temp_unit_()
 	, valid_(true)
 	, fake_unit_()
+	, cost_(0)
 {
 	// Validate unit_name_
 	if(!unit_types.find(unit_name_))
