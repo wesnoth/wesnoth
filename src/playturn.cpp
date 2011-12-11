@@ -42,9 +42,8 @@ turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender,
 	replay_sender_(replay_sender),
 	host_transfer_("host_transfer"),
 	replay_(),
-	network_side_state_(NETWORK_SIDE_STATE_IRRELEVANT)
+	network_side_state_(network_side_state)
 {
-	network_side_state_ = network_side_state;
 	/**
 	 * We do network sync so [init_side] is transferred to network hosts
 	 */
@@ -149,15 +148,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	const config& change = cfg.child_or_empty("change_controller");
 	const std::string& side_drop = cfg["side_drop"].str();
-	if((network_side_state_ == NETWORK_SIDE_STATE_SEEMS_DEAD) &&
-		(!side_drop.empty() || !change.empty())) {
-			//we are sending it to ourself
-			network_side_state_ = NETWORK_SIDE_STATE_GOT_SENT_INIT;
-			const config command("init_side");
-			config turn;
-			turn.add_child("command", command);
-			handle_turn(turn_end, turn, skip_replay, backlog);
-	}
 
 	foreach (const config &t, turns)
 	{
@@ -205,6 +195,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			else
 			{
 				restart = false;
+			}
+
+			if ((network_side_state_ == NETWORK_SIDE_STATE_SEEMS_DEAD) && tm.is_local()) {
+				recorder.init_side();
+				resources::controller->do_init_side(index, false);
+				network_side_state_ = NETWORK_SIDE_STATE_GOT_SENT_INIT;
 			}
 
 			resources::whiteboard->on_change_controller(side,tm);
@@ -292,12 +288,26 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				tm.set_current_player("ai" + side_drop);
 				if (have_leader) leader->rename("ai" + side_drop);
 				change_controller(side_drop, "human_ai");
+
+				if ((network_side_state_ == NETWORK_SIDE_STATE_SEEMS_DEAD)) {
+					recorder.init_side();
+					resources::controller->do_init_side(side_index, false);
+					network_side_state_ = NETWORK_SIDE_STATE_GOT_SENT_INIT;
+				}
+
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
 			case 1:
 				tm.make_human();
 				tm.set_current_player("human" + side_drop);
 				if (have_leader) leader->rename("human" + side_drop);
+
+				if ((network_side_state_ == NETWORK_SIDE_STATE_SEEMS_DEAD)) {
+					recorder.init_side();
+					resources::controller->do_init_side(side_index, false);
+					network_side_state_ = NETWORK_SIDE_STATE_GOT_SENT_INIT;
+				}
+
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
 				//The user pressed "end game". Don't throw a network error here or he will get
