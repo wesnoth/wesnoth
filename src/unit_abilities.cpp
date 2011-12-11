@@ -201,9 +201,9 @@ std::vector<std::string> unit::get_ability_list() const
 	return res;
 }
 
-std::vector<t_string> unit::ability_tooltips(bool force_active) const
+std::vector<boost::tuple<t_string,t_string,t_string> > unit::ability_tooltips(bool force_active) const
 {
-	std::vector<t_string> res;
+	std::vector<boost::tuple<t_string,t_string,t_string> > res;
 
 	const config &abilities = cfg_.child("abilities");
 	if (!abilities) return res;
@@ -217,8 +217,10 @@ std::vector<t_string> unit::ability_tooltips(bool force_active) const
 				ab.cfg["name"].t_str() : ab.cfg["female_name"].t_str();
 
 			if (!name.empty()) {
-				res.push_back(name);
-				res.push_back(ab.cfg["description"].t_str());
+				res.push_back(boost::make_tuple(
+						ab.cfg["name"].t_str(),
+						name,
+						ab.cfg["description"].t_str()));
 			}
 		}
 		else
@@ -228,8 +230,10 @@ std::vector<t_string> unit::ability_tooltips(bool force_active) const
 				ab.cfg["name_inactive"].t_str() : ab.cfg["female_name_inactive"].t_str();
 
 			if (!name.empty()) {
-				res.push_back(name);
-				res.push_back(ab.cfg["description_inactive"].t_str());
+				res.push_back(boost::make_tuple(
+						ab.cfg["name_inactive"].t_str(),
+						name,
+						ab.cfg["description_inactive"].t_str()));
 			}
 		}
 	}

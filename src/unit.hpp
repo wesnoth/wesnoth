@@ -18,6 +18,7 @@
 #ifndef UNIT_H_INCLUDED
 #define UNIT_H_INCLUDED
 
+#include "boost/tuple/tuple.hpp"
 #include "formula_callable.hpp"
 #include "resources.hpp"
 #include "unit_types.hpp"
@@ -303,7 +304,8 @@ public:
 	unit_ability_list get_abilities(const std::string &ability, const map_location& loc) const;
 	unit_ability_list get_abilities(const std::string &ability) const
 	{ return get_abilities(ability, loc_); }
-	std::vector<t_string> ability_tooltips(bool force_active = false) const;
+	/** Tuple of: neutral ability name, gendered ability name, description */
+	std::vector<boost::tuple<t_string,t_string,t_string> > ability_tooltips(bool force_active = false) const;
 	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
 

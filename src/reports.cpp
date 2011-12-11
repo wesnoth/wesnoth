@@ -358,16 +358,15 @@ static config unit_abilities(unit* u)
 {
 	if (!u) return report();
 	config res;
-	const std::vector<t_string> &abilities = u->ability_tooltips();
-	for (std::vector<t_string>::const_iterator i = abilities.begin(),
+	const std::vector<boost::tuple<t_string,t_string,t_string> > &abilities = u->ability_tooltips();
+	for (std::vector<boost::tuple<t_string,t_string,t_string> >::const_iterator i = abilities.begin(),
 	     i_end = abilities.end(); i != i_end; ++i)
 	{
 		std::ostringstream str, tooltip;
-		const std::string &name = i->base_str();
-		str << i->str();
-		if (i + 2 != i_end) str << ", ";
-		++i;
-		tooltip << _("Ability: ") << i->str();
+		const std::string &name = i->get<0>().base_str();
+		str << i->get<1>().str();
+		if (i + 1 != i_end) str << ", ";
+		tooltip << _("Ability: ") << i->get<2>().str();
 		add_text(res, str.str(), tooltip.str(), "ability_" + name);
 	}
 	return res;
