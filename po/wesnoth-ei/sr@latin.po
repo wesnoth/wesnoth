@@ -1,15 +1,15 @@
 # Translation of wesnoth-ei.po into Serbian.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010.
-# Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010, 2011.
+# Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2010-03-05 01:53+0100\n"
+"PO-Revision-Date: 2011-12-10 10:16+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "Language: sr\n"
@@ -65,9 +65,8 @@ msgstr "carigardejac"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
-#, fuzzy
 msgid "(Intermediate level, 16 scenarios.)"
-msgstr "(Srednji nivo, 18 scenarija.)"
+msgstr "(Srednji nivo, 16 scenarija.)"
 
 #. [campaign]: id=Eastern_Invasion
 #: data/campaigns/Eastern_Invasion/_main.cfg:21
@@ -184,6 +183,7 @@ msgstr ""
 "pasku Krune nad naseljenom zemljom s obe strane donjeg toka Veldina. Na "
 "zadatak otposla dvojicu darovitih mladih oficira."
 
+# сјеверна у смислу да је на сјеверу, а не да припада фракцији сјеверњацима тј. орковима
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:44
 msgid ""
@@ -191,7 +191,7 @@ msgid ""
 "outpost, he sent Gweddry, who would be accompanied by Dacyn the mage. It is "
 "with them this story is concerned."
 msgstr ""
-"U severnjačku ispostavu kralj posla Ovaeka, plemića iz klanova. U južnjačku "
+"U severnu ispostavu kralj posla Ovaeka, plemića iz klanova. U južnu "
 "ispostavu posla Gvedrija, koga će pratiti i mag Desin. Njima se bavi ova "
 "priča."
 
@@ -593,9 +593,8 @@ msgstr "mal Bakral"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:92
-#, fuzzy
 msgid "Gweddry reaches the end of the tunnel"
-msgstr "Dosegneš li kraj hodnika"
+msgstr "Dosegne li Gvedri kraj hodnika"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:121
@@ -669,15 +668,15 @@ msgstr ""
 "Hvala vam. Pozivam vas da nam se pridružite. Nemrtvi su ovim zemljama, "
 "pronaći će ove pećine pre ili kasnije."
 
-# well-spelled: Нећ
+# |, no-check-spell, no-hybdl
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:203
 msgid ""
 "My clan ha’ lived in these caves for centuries. We’ll no’ be scattered now "
 "by a few undead."
 msgstr ""
-"Moj klan živ' u ovim pećinama već vekovima. Neć' nas sad razbacati šačica "
-"nemrtvaca."
+"Moj klan živ’ u ovim pećinama već v’jekovima. Neće nas sad razbacat šač’ca "
+"nemrtvi’."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:207
@@ -692,11 +691,10 @@ msgstr "Dobro onda. Najbolje vam želim u vašoj borbi."
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:781
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:328
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:532
-#, fuzzy
 msgid ""
 "Wearing this amulet will cause every blow you deal to inflict <i>arcane</i> "
 "damage!"
-msgstr "Ko ponese ovu amajliju, svaki će mu udar biti volšeban!"
+msgstr "Ko ponese ovu amajliju, svaki će mu udar biti <i>volšeban</i>!"
 
 #. [scenario]: id=05_Northern_Outpost
 #. [scenario]: id=02_The_Escape_Tunnel
@@ -706,9 +704,8 @@ msgstr "Ko ponese ovu amajliju, svaki će mu udar biti volšeban!"
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:782
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:329
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:533
-#, fuzzy
 msgid "holy amulet^Take it"
-msgstr "sveta amajlija"
+msgstr "Uzmi je"
 
 #. [scenario]: id=05_Northern_Outpost
 #. [scenario]: id=02_The_Escape_Tunnel
@@ -719,7 +716,7 @@ msgstr "sveta amajlija"
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:330
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:534
 msgid "holy amulet^Leave it"
-msgstr ""
+msgstr "Ostavi je"
 
 #. [scenario]: id=05_Northern_Outpost
 #. [scenario]: id=02_The_Escape_Tunnel
@@ -829,9 +826,8 @@ msgstr "Zašto ne bismo iskušali novog regruta? Na posletku, tek ih je dvojica!
 
 #. [message]: speaker=Mal-Tar
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:171
-#, fuzzy
 msgid "No!! They’ll kill me!"
-msgstr "Ne!!! Ubiće me!"
+msgstr "Ne!! Ubiće me!"
 
 #. [message]: speaker=Mal-Kallat
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:175
@@ -1134,7 +1130,7 @@ msgstr "Ništa nema od mog unapređenja!"
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:146
 msgid "Come, let us return to Wesnoth and aid the Northern Outpost."
-msgstr "Hajmo, natrag u Vesnot, da pomognemo Severnjačkoj ispostavi."
+msgstr "Hajmo, natrag u Vesnot, da pomognemo severnoj ispostavi."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:163
@@ -1166,7 +1162,6 @@ msgstr "Ne mogu reći da li je to dobra odluka, ali ću te pratiti."
 
 #. [message]: speaker=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:177
-#, fuzzy
 msgid "Noo!! I can’t be promoted if they run away!"
 msgstr "Ne! Ne mogu dobiti unapređenje ako mi pobegnu!"
 
@@ -1177,7 +1172,7 @@ msgid ""
 "turn back, going to the Northern Outpost."
 msgstr ""
 "U pravu ste. Nesmotreno je nastaviti napred — moramo poraziti mal Skrata i "
-"okrenuti se, prema Severnjačkoj ispostavi."
+"okrenuti se, prema severnoj ispostavi."
 
 #. [message]: speaker=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:192
@@ -1204,12 +1199,11 @@ msgstr ""
 
 #. [message]: speaker=Mal-Skraat
 #: data/campaigns/Eastern_Invasion/scenarios/04b_The_Undead_Border_Patrol.cfg:221
-#, fuzzy
 msgid ""
 "Noo!! He will reach Mal-Ravanal’s capital, and I shall be punished for "
 "letting him escape!"
 msgstr ""
-"Ne!!! Dosegnuće sve do prestonice mal Ravanala, a mene će kazniti što sam ih "
+"Ne!! Dosegnuće sve do prestonice mal Ravanala, a mene će kazniti što sam ih "
 "propustio!"
 
 #. [scenario]: id=04c_Mal-Ravanals_Capital
@@ -1357,7 +1351,7 @@ msgstr ""
 #. [scenario]: id=05_Northern_Outpost
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:4
 msgid "Northern Outpost"
-msgstr "Severnjačka ispostava"
+msgstr "Severna ispostava"
 
 #. [side]: type=Mounted Fighter, id=Owaec
 #. [unit]: id=Owaec, type=$stored_Owaec.type
@@ -1699,7 +1693,7 @@ msgstr ""
 #. [message]: speaker=Wak-Rano
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:141
 msgid "Perhaps he will die, and I will win our battle without fighting."
-msgstr ""
+msgstr "Možda će poginuti, a ja ću dobiti i našu bitku bez borbe."
 
 #. [message]: speaker=Mal-Arnai
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:145
@@ -2024,15 +2018,14 @@ msgstr ""
 
 #. [message]: speaker=Prok-Bak
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:155
-#, fuzzy
 msgid "You human! Call us foul, will you?!"
-msgstr "Ti čoveče! Zoveš nas poganim, tako!?"
+msgstr "Ti čoveče! Zoveš nas poganim, tako?!"
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:159
 msgid "Why should we help you? You’re not a dwarf!"
-msgstr "Što b'smo vam pomogl'? Niste patuljc'!"
+msgstr "Što b’smo vam pomogl’? Niste patuljc’!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:163
@@ -2048,7 +2041,7 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:167
 msgid "Impossible! I canna’ believe any of my kin would ha’ helped a human!"
 msgstr ""
-"Nemoguće! Ne morem vjerovat' da b' neko od naši' sadruga pomogô̂ čo'jeku!"
+"Nemoguće! Ne morem vjerovat’ da b’ neko od naši’ sadruga pomogô̂ čo’jeku!"
 
 #. [message]: speaker=Elandin
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:171
@@ -2084,7 +2077,7 @@ msgstr ""
 #. [message]: speaker=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:192
 msgid "Oh, elvish land is it now? Die, ye elf-dog! And you too, human!"
-msgstr "Sad je vilenjačka zemlja, je l'? Umri, vilin-pseto! A i ti, čo'ječe!"
+msgstr "Sad je vilenjačka zemlja, je l’? Umri, vilin-pseto! A i ti, čo’ječe!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:196
@@ -2136,19 +2129,19 @@ msgstr "Pogani orkovi! Možda se trebasmo udružiti s ljudima..."
 #. [message]: speaker=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:297
 msgid "It seems yon humans are mightier than I kenned..."
-msgstr "Čini m'se da su ovi ljud' jači neg' što sam mislio..."
+msgstr "Čini m’se da su ovi ljud’ jači neg’ što sam mislio..."
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:310
 msgid "Foul orcs! Perhaps we should ha’ allied wi’ the humans..."
-msgstr "Pogani orkovi! Možda b' bilo bolje da se udruž'smo s ljud'ma..."
+msgstr "Pogani orkovi! Možda b’ bilo bolje da se udruž’smo s ljud’ma..."
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Pelathsil
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:323
 msgid "Cursed elves! Perhaps we should have allied wi’ the humans..."
-msgstr "Kleti vilenjaci! Možda b' bilo bolje da se udruž'smo s ljud'ma..."
+msgstr "Kleti vilenjaci! Možda b’ bilo bolje da se udruž’smo s ljud’ma..."
 
 #. [scenario]: id=10_Lake_Vrug
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:4
@@ -2369,20 +2362,19 @@ msgstr "A gde im je vođa? Ne vidim ga."
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
 msgid "Uh... "
-msgstr ""
+msgstr "Ovaj..."
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
-#, fuzzy
 msgid "whisper^I dunno. He escaped, I think."
-msgstr "Ovaj... [šapuće] Ne znam. Pobeže, mislim."
+msgstr "Ne znam. Pobeže, mislim."
 
 #. [message]: speaker=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:312
 msgid ""
 "You fool! Well, find him. Bring him to me! Wait, no, just kill him on sight."
 msgstr ""
-"Budalo! Nađi ga onda, i dovedi ga k meni! Ček', čemu to, ubijte ga čim ga "
+"Budalo! Nađi ga onda, i dovedi ga k meni! Ček’, čemu to, ubijte ga čim ga "
 "spazite."
 
 #. [message]: speaker=unit
@@ -2484,13 +2476,12 @@ msgstr "inženjer"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:198
-#, fuzzy
 msgid ""
 "All is lost! We have to get out of the Northlands as quickly as possible! "
 "Run for your — what the...?! Who are you?"
 msgstr ""
 "Sve je izgubljeno! Moramo napolje iz Severozemlja što je pre moguće! "
-"Spasavajte žive— šta do...!? Ko ste vi?"
+"Spasavajte žive— šta do...?! Ko ste vi?"
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
@@ -2500,14 +2491,13 @@ msgid ""
 "I’m an enginea’. I s’pect you’ll have a need of me services. I bet you’re "
 "gonna want me to blow up that bridge ov’r theah."
 msgstr ""
-"Ja sam inženjer. Čini m'se da će vam trebat' moje usluge. Kladim se da ćete "
-"šćet' da porušim taj most."
+"Ja sam inženjer. Čini m’se da će vam trebat’ moje usluge. Kladim se da ćete "
+"šćet’ da porušim taj most."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:207
-#, fuzzy
 msgid "Why would we want to do that?!"
-msgstr "A zašto bismo to želeli?!?"
+msgstr "A zašto bismo to želeli?!"
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
@@ -2516,8 +2506,8 @@ msgid ""
 "Well, I see those orcs are chasin’ you, and if I blow up the bridge, they "
 "can’t get across. It’ll help you to escape."
 msgstr ""
-"Pa, vidim da vas gone neki orkovi, i ako oborim most, on' ne mogu prijeć'. "
-"Tak' ćete lakše pobjeć'."
+"Pa, vidim da vas gone neki orkovi, i ako oborim most, on’ ne mogu prijeć’. "
+"Tak’ ćete lakše pobjeć’."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:215
@@ -2531,7 +2521,7 @@ msgid ""
 "I ain’t charging gold — I wants protecshun! Everywhere I go, I see orcs, "
 "undead. ’T’ain’t safe ’round ’ere!"
 msgstr ""
-"Ma neć'a zlata — tražim zaštitu. Đe god krenem, vidim orke i nemrtve. Nije "
+"Ma neć’a zlata — tražim zaštitu. Đe god krenem, vidim orke i nemrtve. Nije "
 "sigurno voj!"
 
 #. [message]: speaker=Gweddry
@@ -2551,14 +2541,14 @@ msgid ""
 "my eq’pment is. But ev’ryone not ov’r theah on that side when it blows w’ll "
 "be killed by the orcs fa’ sure!"
 msgstr ""
-"Valja. Diću ga u vazduh čim stignem do'nog znaka tam', đem' je oprema. Ali "
-"svi što ne budu na onoj strani kad pukne, pob'će orkovi sigurno!"
+"Valja. Diću ga u vazduh čim stignem do’nog znaka tam’, đem’ je oprema. Ali "
+"svi što ne budu na onoj strani kad pukne, pob’će orkovi sigurno!"
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:244
 msgid "So, d’ya want me to blow up der bridge yet, Cap’n?"
-msgstr "Pa, 'oćeš me već jednom pust't' da srušim most, šefe?"
+msgstr "Pa, ’oćeš me već jednom pust’t’ da srušim most, šefe?"
 
 #. [option]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:250
@@ -2568,14 +2558,13 @@ msgstr "Da, ruši ga."
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:254
-#, fuzzy
 msgid "All right! Blast’n time!"
-msgstr "Tako! Sad će puć'!"
+msgstr "Tako! Sad će puć’!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:267
 msgid "<big><i>BOOM!!</i></big>"
-msgstr ""
+msgstr "<big><i>BUM!!</i></big>"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:306
@@ -2603,9 +2592,8 @@ msgstr "Ne, sačekaj malo."
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:326
-#, fuzzy
 msgid "Neh? A’right then, we’ll wait fa’ later, eh?"
-msgstr "Ne? Dobro, onda ostav'ćemo za kasnije, a?"
+msgstr "Ne? Dobro, onda ostav’ćemo za kasnije, a?"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:339
@@ -2702,8 +2690,8 @@ msgid ""
 "I’ll be followin’ yah from now on. Hope yah can get to Weld’n an’ all so I "
 "c’n stop runnin’..."
 msgstr ""
-"Ja ću vas od sad' prat't'. Nadam se da ćete stić' do Veld'na pa da mogu "
-"prestat' bježat'..."
+"Ja ću vas od sad’ prat’t’. Nadam se da ćete stić’ do Veld’na pa da mogu "
+"prestat’ bježat’..."
 
 #. [scenario]: id=13_The_Drowned_Plains
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:4
@@ -2755,7 +2743,7 @@ msgstr ""
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:402
 msgid "I s’ppose we’ll hav’ to wade across it anyway... ugh."
-msgstr "Vjerovatno ćemo morat' gacat' preko svêdno... ugh."
+msgstr "Vjerovatno ćemo morat’ gacat’ preko svêdno... ugh."
 
 # |, no-check-spell
 #. [message]
@@ -2765,9 +2753,8 @@ msgstr "Nađisss... posecisssh... ubijhhh...."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:414
-#, fuzzy
 msgid "What is that sound?!"
-msgstr "Šta se to čuje?!?"
+msgstr "Šta se to čuje?!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/13_The_Drowned_Plains.cfg:418
@@ -3161,7 +3148,6 @@ msgstr "U redu, možeš je pročitati. Možda nam i kaže nešto korisno."
 
 #. [message]: speaker=Messenger of Doom
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:282
-#, fuzzy
 msgid ""
 "He says: <i>“Well done; you have defeated some of my less powerful captains, "
 "and a small fraction of my horde. Were I to bring the whole might of my "
@@ -3173,14 +3159,14 @@ msgid ""
 "behind the lines in safety while others braver than you fought and died in "
 "your name.”</i>"
 msgstr ""
-"On veli: Dobro urađeno. Porazili ste nekoliko mojih slabijih kapetana, i "
+"On veli: „Dobro urađeno. Porazili ste nekoliko mojih slabijih kapetana, i "
 "mali deo moje horde. Kada bih oslobodio celokupnu moć svojih Legija Straha, "
 "pregazili bi vas kao insekte. Ali, iskam pobedu koja će otkriti stvarne "
 "dosege moje lične moći. Za razliku od velikog generala Gvedrija, ne želim da "
 "se skrivam iza oklopnih suknji svojih vojnika! Ti si, o zapovedniče Gvedri, "
 "obična kukavica! Bardovi mogu opevati kako si pobedio moje kapetane, ali u "
 "zbilji nisi učinio ništa do skrivao se u bezbednosti zaleđine svojih redova, "
-"dok su drugi hrabriji od tebe krvarili i ginuli u tvoje ime."
+"dok su drugi hrabriji od tebe krvarili i ginuli u tvoje ime.“"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:286
@@ -3358,10 +3344,8 @@ msgstr "?"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:172
-#, fuzzy
-#| msgid "Death of Konrad II"
 msgid "Death of Konrad"
-msgstr "Nastrada li Konrad Drugi"
+msgstr "Nastrada li Konrad"
 
 #. [objective]: condition=lose
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:176
@@ -3370,7 +3354,6 @@ msgstr "Propustiš li ijednog neprijatelja na svoju kulu"
 
 #. [message]: speaker=Mal-Drakanal
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:201
-#, fuzzy
 msgid ""
 "You people are fools! You rejected my master’s offer to duel... very well, "
 "you will <i>all</i> die! And know this; my master is here to enjoy your "
@@ -3379,11 +3362,12 @@ msgid ""
 "the real leader! Ha ha ha ha! To be fair about it, we will all tell you our "
 "names if you can reach us."
 msgstr ""
-"Vi ste budale! Odbiste ponudu za dvoboj moga gospodara. Ako tako želite, SVI "
-"ste već mrtvi! I znajte ovo: gospodar je ovde da uživa u vašoj propasti. Jer "
-"on se vas nimalo ne plaši, i zna da ga nikako ne možete pronaći i ubiti! Ima "
-"nas sedam, i samo JEDAN od nas jeste Gospodar. Ha, ha, ha! Da bude pošteno, "
-"svaki od nas će vam reći svoje ime, ako ga uspete svladati."
+"Vi ste budale! Odbiste ponudu za dvoboj moga gospodara. Ako tako želite, "
+"<i>svi</i> ste već mrtvi! I znajte ovo: gospodar je ovde da uživa u vašoj "
+"propasti. Jer on se vas nimalo ne plaši, i zna da ga nikako ne možete "
+"pronaći i ubiti! Ima nas sedam, i samo jedan od nas jeste Gospodar. Ha, ha, "
+"ha! Da bude pošteno, svaki od nas će vam reći svoje ime, ako ga uspete "
+"svladati."
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:205
@@ -3422,15 +3406,13 @@ msgstr "mal Larakan"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:279
-#, fuzzy
 msgid "There he is!"
-msgstr "[šapuće] Eno ga!"
+msgstr "Evo ga stiže!"
 
 #. [message]: speaker=Dacyn
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:286
-#, fuzzy
 msgid "That isn’t him..."
-msgstr "[šapuće] Nije on..."
+msgstr "Nije on..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:298
@@ -3455,7 +3437,7 @@ msgstr "Ubiše Konrada... Sada čak i da spasimo Veldin, kraljevstvu je kraj."
 #. [message]: speaker=Konrad
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:358
 msgid "The Kingdom of Wesnoth dies with me!"
-msgstr ""
+msgstr "Vesnotsko kraljevstvo umire sa mnom!"
 
 #. [scenario]: id=18_Epilogue
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:4
@@ -3485,7 +3467,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:24
-#, fuzzy
 msgid ""
 "... and then it thinned, and paled, and a breeze from the west dissolved it "
 "in tatters, and the light of day shone once again undiminished on Weldyn."
@@ -3503,7 +3484,6 @@ msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:90
-#, fuzzy
 msgid ""
 "So many months of fighting... I feel as though I am awakening from a long "
 "nightmare."
@@ -3520,7 +3500,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:107
-#, fuzzy
 msgid ""
 "We will be years... perhaps decades... recovering from the ill he has "
 "wrought."
@@ -3570,9 +3549,8 @@ msgstr "Gospodaru, tek obavismo svoju dužnost."
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:157
-#, fuzzy
 msgid "Quite. Now do not interrupt while I am doing mine... Kneel, Owaec."
-msgstr "Uistinu. Sada me ne ometaj dok ja obavljam svoju... klekni, Ovaeče."
+msgstr "Uistinu. Sada me ne ometaj dok ja obavljam svoju... Klekni, Ovaeče."
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:164
@@ -3594,9 +3572,8 @@ msgstr "Klekni, Gvedri."
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:199
-#, fuzzy
 msgid "Quite. Now do not interrupt while I am doing mine... Kneel, Gweddry."
-msgstr "Uistinu. Sada me ne ometaj dok ja obavljam svoju... klekni, Gvedri."
+msgstr "Uistinu. Sada me ne ometaj dok ja obavljam svoju... Klekni, Gvedri."
 
 #. [message]: speaker=Konrad II
 #: data/campaigns/Eastern_Invasion/scenarios/18_Epilogue.cfg:208
@@ -3688,7 +3665,7 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:9
 msgid "shock"
-msgstr ""
+msgstr "šok"
 
 #. [attacks]: id=shock
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
@@ -3698,6 +3675,9 @@ msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""
+"Šok:\n"
+"Kada se ovaj napad iskoristi ofanzivno protivnik će uzvratiti jednim udarcem "
+"manje nego obično, a najmanje jednim."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9
@@ -3711,22 +3691,20 @@ msgstr "Svi smo propali..."
 
 #. [message]: speaker=Owaec
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:37
-#, fuzzy
 msgid "I... must— Argh...!"
-msgstr "Ja... moram... argh."
+msgstr "Ja... moram... argh!"
 
 # |, no-check-spell
 #. [message]: speaker=Grug
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:51
-#, fuzzy
 msgid "Grarrgghh..."
-msgstr "Grarrrg..."
+msgstr "Grarrrghh..."
 
 # |, no-check-spell, no-hybdl
 #. [message]: speaker=Engineer
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:62
 msgid "Wha’? Yah fail’d to give me protecshun..."
-msgstr "Šta? Niste m' pružl' mi zaštitu..."
+msgstr "Šta? Niste m’ pružl’ mi zaštitu..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:73
@@ -3770,10 +3748,3 @@ msgid ""
 msgstr ""
 "Sa najodanijim braniocima Vesnota poraženim na domaćem terenu, nekada veliko "
 "kraljevstvo obruši se u konačnu tamu pod osvetničkom rukom mal Ravanala."
-
-#~ msgid "Turns run out"
-#~ msgstr "Isteknu li potezi"
-
-# |, no-check-spell
-#~ msgid "BOOM!!!"
-#~ msgstr "BUUUM!!!"

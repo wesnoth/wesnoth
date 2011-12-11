@@ -1,16 +1,16 @@
 # Translation of wesnoth-anl.po into Serbian.
 # Copyright © 2009, Wesnoth development team.
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2009.
-# Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2009, 2011.
+# Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2010-02-22 15:03+0100\n"
-"Last-Translator: Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>\n"
+"PO-Revision-Date: 2011-12-10 10:16+0100\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -28,17 +28,13 @@ msgstr "4i: Nova zemlja"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
 msgstr ""
 "Scenario opstanka za četiri igrača koji dozvoljava podizanje građevina i "
 "oblikovanje zemlje. Upotrebite postavke mape. Preporučeno zlato na početku "
-"100."
+"je 100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
@@ -121,16 +117,12 @@ msgstr ""
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:591
-#, fuzzy
-#| msgid ""
-#| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
-#| "rescue them?"
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
 msgstr ""
-"Kunem se da sam video neke uhvaćene u paukovoj mreži. Možda bi trebalo da ih "
-"spasemo?"
+"Kunem se da sam video nekog uhvaćenog u paukovoj mreži. Možda bi trebalo da "
+"ga spasemo?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:613
@@ -401,41 +393,29 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of agriculture"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Podeli znanje o poljoprivredi"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of mining"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Podeli znanje o rudarstvu"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of warfare"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Podeli znanje o ratovanju"
 
 #. [message]: speaker=unit
@@ -458,12 +438,11 @@ msgstr "Ništa"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:315
-#, fuzzy
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
 "Give 20 gold to another player"
 msgstr ""
-"Priloži sredstva\n"
+"<span color='green'>Priloži sredstva</span>\n"
 "Podaj 20 zlatnika drugom igraču"
 
 #. [message]: speaker=unit
@@ -479,12 +458,11 @@ msgstr "Nazad"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:359
-#, fuzzy
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
 "Help an ally with their research"
 msgstr ""
-"Podeli znanje\n"
+"<span color='green'>Podeli znanje</span>\n"
 "Pomozi saveznika u njegovom istraživanju"
 
 #. [message]: speaker=unit
@@ -494,28 +472,26 @@ msgstr "S kim ćeš podeliti svoja saznanja?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:417
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
 "Lets you recruit a Dwarvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
-"Pregovaraj sa patuljcima\n"
+"<span color='green'>Pregovaraj sa patuljcima</span>\n"
 "Omogućava najamljivanje patuljačke jedinice\n"
 "Napredak pregovora: $player_$side_number|.leader_option_1.progress|/$player_"
 "$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:472
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
 "Lets you recruit an Elvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
-"Pregovaraj sa vilenjacima\n"
+"<span color='green'>Pregovaraj sa vilenjacima</span>\n"
 "Omogućava najamljivanje vilenjačke jedinice\n"
 "Napredak pregovora: $player_$side_number|.leader_option_2.progress|/$player_"
 "$side_number|.leader_option_2.target"
@@ -598,19 +574,13 @@ msgstr "Nastavi kao i do sada"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:167
-#, fuzzy
-#| msgid ""
-#| "Agriculture\n"
-#| "Farmers produce +1 gold\n"
-#| "Study Progress: $player_$side_number|.farming.progress|/$player_"
-#| "$side_number|.farming.target"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
-"Poljoprivreda\n"
+"<span color='green'>Poljoprivreda</span>\n"
 "Zemljoradnici da proizvode +1 zl.\n"
 "Napredak proučavanja: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
@@ -624,14 +594,13 @@ msgstr "poljoprivreda"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
-#, fuzzy
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
-"Rudarstvo\n"
+"<span color='green'>Rudarstvo</span>\n"
 "Rudari da proizvode +1 zl.\n"
 "Napredak proučavanja: $player_$side_number|.mining.progress|/$player_"
 "$side_number|.mining.target"
@@ -643,14 +612,13 @@ msgstr "rudarstvo"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:189
-#, fuzzy
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
-"Ratovanje\n"
+"<span color='green'>Ratovanje</span>\n"
 "Mogućnost najamljivanja novog tipa jedinica\n"
 "Napredak proučavanja: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"

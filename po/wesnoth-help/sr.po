@@ -1,27 +1,25 @@
-# Translation of wesnoth.po into Serbian.
-# Copyright (C) 2005 Wesnoth development team
+# Translation of wesnoth-help.po into Serbian.
+# Copyright (C) 2011 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010.
-# Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
-#
-# Branko Kokanovic, 2006.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth\n"
+"Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2010-03-15 22:39+0100\n"
+"PO-Revision-Date: 2011-12-11 11:01+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Kate\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: wesnoth, wesnoth/noent\n"
-"X-Associated-UI-Catalogs: wesnoth-lib wesnoth-httt\n"
 "X-Wrapping: fine\n"
+"X-Associated-UI-Catalogs: wesnoth-lib wesnoth wesnoth-httt\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -152,18 +150,17 @@ msgstr ""
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
 msgid "Encyclopedia"
-msgstr ""
+msgstr "Енциклопедија"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
-msgstr ""
+msgstr "<ref>dst='..geography' text='Географија'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
-#, fuzzy
 msgid "Caste"
-msgstr "замак"
+msgstr "каста"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:8
@@ -172,11 +169,14 @@ msgid ""
 "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
 "Fighter'</ref>."
 msgstr ""
+"Један од појавних облика змагова: може постати или <ref>dst='unit_Drake "
+"Clasher' text='сударач'</ref> или <ref>dst='unit_Drake Fighter' "
+"text='борац'</ref>."
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
 msgid "Aerie"
-msgstr ""
+msgstr "аеријум"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
@@ -185,12 +185,13 @@ msgid ""
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
+"Врло велика грађевина налик на замак, која је дом <ref>dst='flight' "
+"text='лету'</ref>. Садржи <ref>dst='breeding_pen' text='плоднике'</ref>."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
-#, fuzzy
 msgid "Breeding Pen"
-msgstr "храњење"
+msgstr "плодник"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
@@ -199,23 +200,26 @@ msgid ""
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
 "text='Dominant'</ref>’s eye."
 msgstr ""
+"Одељак <ref>dst='aerie' text='аеријума'</ref> у којем бесловесне "
+"<ref>dst='breeder' text='расплоднице'</ref> бивствују под оком "
+"<ref>dst='dominant' text='надмоћника'</ref>."
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
 msgid "Breeding Cycle"
-msgstr ""
+msgstr "расплодни циклус"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:26
 msgid ""
 "The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
 "next."
-msgstr ""
+msgstr "Време које прође између два полагања <ref>dst=egg text='јаја'</ref>."
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
 msgid "World Ocean"
-msgstr ""
+msgstr "Светски океан"
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:32
@@ -224,11 +228,14 @@ msgid ""
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
 "the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
 msgstr ""
+"Светски океан је назив отвореног мора које окружује архипелаг "
+"<ref>dst='morogor' text='Морогор'</ref>. Змагови верују да се окончава "
+"<ref>dst='abyss' text='Безданом'</ref>, неизмерним и смртоносним водопадом."
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
 msgid "New Continent"
-msgstr ""
+msgstr "Нови континент"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
@@ -237,11 +244,14 @@ msgid ""
 "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
 "flight of Galun."
 msgstr ""
+"Нови континент је велики континент источно од <ref>dst='morogor' "
+"text='Морогора'</ref>. За његово постојање змагови нису знали пре Галуновог "
+"лета."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
 msgid "Abyss"
-msgstr ""
+msgstr "Бездан"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:44
@@ -249,11 +259,13 @@ msgid ""
 "In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
 "falls off the world-disc."
 msgstr ""
+"У змашкој космологији, неизмеран и смртоносан водопад преко којег океан пада "
+"са света-диска."
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
 msgid "Spiral Path"
-msgstr ""
+msgstr "Спирални пут"
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:50
@@ -262,11 +274,13 @@ msgid ""
 "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
 "Path'</ref>"
 msgstr ""
+"Квазитајна организација у змагова, посвећена избегавању малтузијанског "
+"коначног рата. Види: <ref>dst='straight_path' text='прави пут'</ref>."
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:55
 msgid "Straight Path"
-msgstr ""
+msgstr "прави пут"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:56
@@ -275,11 +289,13 @@ msgid ""
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
+"Змашка традиција непрекидног ширења и освајања. Овај израз обично користе "
+"чланови <ref>dst='spiral_path' text='Спиралног пута'</ref>."
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
 msgid "Dominant"
-msgstr ""
+msgstr "надмоћник"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
@@ -289,11 +305,14 @@ msgid ""
 "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
 "privileges on others."
 msgstr ""
+"<ref>dst='aspirant' text='Стремилац'</ref> који изађе као вођа змагова, "
+"једини је змаг у племену коме је дозвољено да се пари са <ref>dst='breeder' "
+"text='расплодницама'</ref>. Ретко, он може дати право размножавања и другима."
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
 msgid "Vulcaniad"
-msgstr ""
+msgstr "вулканада"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
@@ -302,11 +321,14 @@ msgid ""
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
 "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
 msgstr ""
+"Период, не сасвим уједначен, између узастопних ерупција "
+"<ref>dst='mount_morogor' text='Морогорника'</ref>. На њему се заснива "
+"<ref>dst='long_count' text='дугобројни'</ref> календар."
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
 msgid "Recorder"
-msgstr ""
+msgstr "бележник"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
@@ -316,29 +338,33 @@ msgid ""
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
 msgstr ""
+"Бележник је змашки чувар свитака који је овладао <ref>dst='drakish_script' "
+"text='змашким писмом'</ref>. Бележници су једина змашка <ref>dst='caste' "
+"text='каста'</ref> која није биолошки одређена: њихови чланови стижу из свих "
+"осталих каста."
 
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
 msgid "Laying"
-msgstr ""
+msgstr "полагање"
 
 #. [topic]: id=laying
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
 msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr ""
+msgstr "Део <ref>dst='breeding_cycle' text='расплодног циклуса'</ref>."
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
 msgid "Hatching"
-msgstr ""
+msgstr "излегање"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
-#, fuzzy
 msgid "Hatchling"
-msgstr "Лечење"
+msgstr "излешче"
 
+# >? No sense.
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
 msgid ""
@@ -346,12 +372,14 @@ msgid ""
 "the current generation of hatchlings are the most aggressive is the behavior "
 "of the <ref>dst='flight' text='flight'</ref>."
 msgstr ""
+"Млади змаг који још није доживео излегање наредног покољења. Млађи у "
+"тренутном покољењу излешчади понашају се најнасртљивије унутар "
+"<ref>dst='flight' text='лета'</ref>."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
-#, fuzzy
 msgid "Fledgling"
-msgstr "Лечење"
+msgstr "ројеник"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
@@ -360,11 +388,14 @@ msgid ""
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
+"Млади змаг који је доживео излегање наредног покољења. Ако <ref>dst='flight' "
+"text='лет'</ref> може да приушти губитак једног покољења, започиње "
+"<ref>dst='swarming' text='ројење'</ref>."
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
 msgid "Breeder"
-msgstr ""
+msgstr "расплодница"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:104
@@ -375,11 +406,16 @@ msgid ""
 "take care of their food for themselves when laying. Drake breeders become "
 "fertile after the next <ref>dst='hatching' text='hatching'</ref>."
 msgstr ""
+"Женка змага. Женке су ретке, пошто се <ref>dst='egg' text='јајима'</ref> из "
+"којих постају расплоднице мора посветити посебна брига. Број расплодница "
+"такође је ограничен бројем других змагова, пошто расплоднице не могу саме да "
+"се старају о исхрани током полагања. Змашке расплоднице постају плодне по "
+"наредном <ref>dst='hatching' text='излегању'</ref>."
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:109
 msgid "Egg, Drake"
-msgstr ""
+msgstr "јаје (змашко)"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:110
@@ -388,11 +424,14 @@ msgid ""
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid "
 "and to some extent the ambient temperature."
 msgstr ""
+"<ref>dst=caste text='Касту'</ref> којој ће <ref>dst='hatchling' "
+"text='излешче'</ref> припадати одређује тренутак полагања и, донекле, "
+"температура околине."
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
 msgid "Flight"
-msgstr ""
+msgstr "лет"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
@@ -401,11 +440,14 @@ msgid ""
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
+"Змашко племе, које живи у <ref>dst='aerie' text='аеријуму'</ref> и управља "
+"ловним забраном. Свако племе има једног <ref>dst='dominant' "
+"text='надмоћника'</ref>, који додељује право на парање."
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:121
 msgid "Aspirant"
-msgstr ""
+msgstr "стремилац"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
@@ -415,23 +457,26 @@ msgid ""
 "secretion of the hormone is caused by hunt and combat actions in which the "
 "drake is involved."
 msgstr ""
+"Мушки змаг који је прошао кроз хормонални преображај, чинећи га способним за "
+"парење са <ref>dst='breeder' text='расплодницама'</ref>. Лучење тог хормона "
+"изазивају лов и борбена дејства у којима је змаг учествовао."
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:127
 msgid "Ascendant"
-msgstr ""
+msgstr "успоник"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
+"Змашки назив за истинског <ref>dst='unit_Fire Dragon' text='змаја'</ref>."
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
-#, fuzzy
 msgid "Intendant"
-msgstr "оштроумност"
+msgstr "примоћник"
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:134
@@ -443,10 +488,14 @@ msgid ""
 "likeliest to be granted mating privileges, especially after a notable "
 "service."
 msgstr ""
+"Један од <ref>dst='aspirant' text='стремилаца'</ref> <ref>dst='dominant' "
+"text='надмоћникових'</ref> заменика. Обично надмоћник има по једног из сваке "
+"<ref>dst=caste text='касте'</ref> различите од своје. Понекад бивају "
+"именовани додатни примоћници за посебне дужности. Примоћници су међу "
+"најизгледнијима за добијање права на парење, нарочито после истакнуте службе."
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
-#, fuzzy
 msgid "Swarm"
 msgstr "рој"
 
@@ -456,12 +505,13 @@ msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
+"<ref>dst='swarmlings' text='Ројеници'</ref> који су напустили "
+"<ref>dst='aerie' text='аеријум'</ref> да би засновали нови."
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
-#, fuzzy
 msgid "Swarming"
-msgstr "рој"
+msgstr "ројење"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -470,21 +520,24 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
+" <ref>dst='flight' text='Лет'</ref> ради заснивања змашког <ref>dst='aerie' "
+"text='аеријума'</ref>, који се понавља сваког <ref>dst='breeding_cycle' "
+"text='расплодног циклуса'</ref>. Види: <ref>dst='swarm' text='рој'</ref>."
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
 msgid "Runners"
-msgstr ""
+msgstr "тркачи"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:152
 msgid "Drakish term for escaped slaves hunted as game."
-msgstr ""
+msgstr "Змашки израз за одбегле робове који се третирају као ловина."
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
 msgid "Mount Morogor"
-msgstr ""
+msgstr "Морогорник"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
@@ -492,11 +545,13 @@ msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Вулканска планина на средишњем острву архипелага <ref>dst='morogor' "
+"text='Морогор'</ref>."
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
 msgid "Long Count"
-msgstr ""
+msgstr "дугобројац"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
@@ -504,11 +559,13 @@ msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
+"Змашки календар заснован на <ref>dst='vulcaniad' text='вулканади'</ref> и "
+"<ref>dst=breeding_cycle text='расплодним циклусима'</ref>."
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
 msgid "Long Pig"
-msgstr ""
+msgstr "дугосвињско"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:170
@@ -516,11 +573,13 @@ msgid ""
 "South Seas pidgin for human meat, used to translate a Drakish word with the "
 "same meaning."
 msgstr ""
+"Јужноморски пиџин за људско месо, који служи као превод змашке речи истог "
+"значења."
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
 msgid "Ceramics"
-msgstr ""
+msgstr "керамика"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
@@ -529,11 +588,14 @@ msgid ""
 "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
 "generate the amount of heat to cure the pieces to full strength."
 msgstr ""
+"Змагови обрађују метал, али су мајстори у вештини обраде керамике. Само "
+"<ref>dst='unit_Drake Burner' text='кремени'</ref> могу произвести довољну "
+"топлоту за очвршћивање керамике до пуне отпорности."
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:181
 msgid "Drakish, script"
-msgstr ""
+msgstr "змашки (писмо)"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
@@ -542,28 +604,30 @@ msgid ""
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
 "text='Recorder'</ref> vocation."
 msgstr ""
+"Писани језик змагова. Записују га на <ref>dst='ceramic' text='керамичким'</"
+"ref> таблицама чланови <ref>dst='recorder' text='бележничке'</ref> професије."
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:187
 msgid "Drakish, language"
-msgstr ""
+msgstr "змашки (језик)"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:188
 msgid "The language spoken by the drakes."
-msgstr ""
+msgstr "Језик којим говоре змагови."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
 #: data/core/encyclopedia/geography.cfg:11
 #: data/core/encyclopedia/geography.cfg:18
 msgid "Geography"
-msgstr ""
+msgstr "Географија"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:25
 msgid "Arkan-thoria"
-msgstr ""
+msgstr "Аркан-торија"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
@@ -571,11 +635,13 @@ msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
+"Река што извире у <ref>dst='heart_mountains' text='Језгреним планинама'</"
+"ref> и тече на исток до Листре."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:31
 msgid "Great Ocean"
-msgstr ""
+msgstr "Велики океан"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
@@ -584,11 +650,14 @@ msgid ""
 "and all rivers eventually flow to it. Far to the west in the the Great Ocean "
 "is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Простире се западно од <ref>dst='great_continent' text='континента'</ref> и "
+"све реке се на концу у њега уливају. Далеко на запад у Великом океану налази "
+"се огроман архипелаг по имену <ref>dst='morogor' text='Морогор'</ref>."
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:37
 msgid "Morogor"
-msgstr ""
+msgstr "Морогор"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:40
@@ -599,23 +668,27 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
+"Архипелаг, смештен негде у <ref>dst='great_ocean' text='Великом океану'</"
+"ref> западно од <ref>dst='green_isle' text='Зеленострва'</ref> а источно од "
+"<ref>dst=old_continent text='Старог континента'</ref>.\n"
+"Углавном је насељен <ref>dst='..race_drake' text='змаговима'</ref>.\n"
+"Средишње острво архипелага такође се назива Морогором."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
-#, fuzzy
 msgid "Green Isle"
-msgstr "зелена"
+msgstr "Зеленострво"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
-msgstr ""
+msgstr "Повеће острво у <ref>dst='great_ocean' text='Великом океану'</ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
 msgid "Old Continent"
-msgstr ""
+msgstr "Стари континент"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
@@ -623,11 +696,13 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Простире се западно од <ref>dst='morogor' text='Морогора'</ref>, с ону "
+"страну <ref>dst='great_ocean' text='Великог океана'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:57
 msgid "Great Continent"
-msgstr ""
+msgstr "Велики континент"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:58
@@ -636,11 +711,14 @@ msgid ""
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Континент на коме се налази <ref>dst='kingdom_wesnoth' text='Веснотско "
+"краљевство'</ref>. Западном обалом излази на <ref>dst='great_ocean' "
+"text='Велики океан'</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:63
 msgid "Irdya"
-msgstr ""
+msgstr "Ирдија"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:64
@@ -650,11 +728,15 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
+"Ирдијом се назива свет у коме постоји <ref>dst='kingdom_wesnoth' "
+"text='Веснотско краљевство'</ref>. Овај израз, међутим, ретко се користи у "
+"подручјима приказаним на главној карти. Тамошњи народи обично кажу просто "
+"„свет“, или, поетичније, „широки зелени свет“."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
 msgid "Kingdom of Wesnoth"
-msgstr ""
+msgstr "Веснотско краљевство"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:95
@@ -713,11 +795,63 @@ msgid ""
 "south of Aldril. It receives drainage from the Brown Hills and feeds into "
 "the Great River. (Not shown on the main map.)"
 msgstr ""
+"Веснотско краљевство протеже се преко средишњег и северног дела "
+"<ref>dst='great_continent' text='Великог континента'</ref>. Већина похода из "
+"главног одиграва се у вези с њим. Границе на главној карти су му велика река "
+"на северу, обала Великог океана на западу, Етенвуд на "
+"<ref>dst='southwest_elven_lands' text='југозападу'</ref> и Грча мочвара на "
+"југоистоку (доњи десни угао карте).\n"
+"\n"
+"Преко реке Етен, јужно од утврде Тан, лежи веснотско погранично подручје. На "
+"југу (ван карте) ограничено је густом шумом, чијим се најсевернијим делом "
+"може сматрати Етенвуд.\n"
+"\n"
+"    • Истакнути градови:\n"
+"          ◦ Велдин: престоница Веснота.\n"
+"          ◦ Алдрил: град на Бисерном заливу.\n"
+"          ◦ Лука Црноморска: град јужно од Бисерног залива.\n"
+"          ◦ Карсин: између Седошумља и Велике реке.\n"
+"          ◦ Дан-тонк: Највећи град у Весноту, смештен у срцу земље, "
+"северозападно надомак Велдина.\n"
+"          ◦ Сорадок: Најсевернија гранична испостава Веснота, надгледа ушће "
+"Велдина и Велике реке.\n"
+"          ◦ Утврда Тан: Најјужнија гранична испостава, надгледа прелаз пута "
+"север-запад преко реке Етен.\n"
+"          ◦ Тат: важан утврђени град северно од Дан-тонка, држи под "
+"контролом дивљину источно од Смеђих брда и северно од газа Абеза.\n"
+"\n"
+"    • Истакнута географија:\n"
+"          ◦ Грифонска планина: дом бајковитим грифонима.\n"
+"          ◦ Газ Абеза: плитак део Велике реке, обично у влашћу веснотских "
+"снага.\n"
+"          ◦ Река Велдин: грана се из Велике реке и тече ка југу.\n"
+"          ◦ Велика средишња равница: подручје ограничено Велдином, Дан-"
+"тонком и утврдом Тан, веснотска житница и дом већем делу његовог "
+"становништва.\n"
+"          ◦ Дулатијско побрђе: ниска брда уз Велику средишњу равницу, извор "
+"доброг дела веснотске стоке и житарица.\n"
+"          ◦ Смеђа брда: пустош око Грифонске планине, слабо насељена и "
+"повремено врло опасна.\n"
+"          ◦ Коњичке равнице: ниско побрђе одмах јужно од Велике реке, "
+"ограничено Глиновом шумом на западу и реком Велдин на истоку, док се јужним "
+"крајем претапа у Средишњу равницу. Дом моћним клановима, где се гаје најбољи "
+"коњи у Весноту.\n"
+"          ◦ Естмаршко побрђе: повелики венац што се издиже јужно од велике "
+"реке а источно од реке Велдин. Најсевернији део, близу реке Велдин, "
+"повремено су насељавали Весноћани, али је краљевска паска на њим танка и у "
+"најбоља времена и разбојништва су честа.\n"
+"          ◦ Глинова шума: понекад знана и као Краљевска шума, по једном од "
+"синова Халдрика Другог.\n"
+"          ◦ Седошумље: Велика шума у срцу веснотске дивљине, распрострта "
+"између Карсина и Алдрила, обично се сматра поседнутом.\n"
+"          ◦ Зелена мочвара: велика мочвара у средишту веснотске дивљине, "
+"јужно од Алдрила. Наводњава се из Смеђих брда а одлива у Велику реку (ван "
+"главне карте)."
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:100
 msgid "Elensefar"
-msgstr ""
+msgstr "Еленсефар"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
@@ -738,11 +872,26 @@ msgid ""
 "          ◦ <ref>dst='great_river' text='Great River'</ref>: It is very wide "
 "at this point, and only ships can cross it."
 msgstr ""
+"У нека времена Еленсефар је покрајина <ref>dst='kingdom_wesnoth' "
+"text='Веснота'</ref>, у нека друга назависна држава, а понекад пак у "
+"споразумној федерацији са Веснотом. Границе су му Велика река на северу, "
+"слабо одређена међа према Весноту на истоку, Бисерни залив на југу, и "
+"<ref>dst='great_ocean' text='океан'</ref> на западу. Више података може се "
+"наћи у историографији Веснота.\n"
+"\n"
+"    • Истакнути градови:\n"
+"          ◦ Еленсефар: престоница, смештена на острву у делти "
+"<ref>dst='great_river' text='Велике реке'</ref>.\n"
+"          ◦ Карсин: град на веснотско-еленсефарској граници, у спору са "
+"Веснотом.\n"
+"    • Истакнута географија:\n"
+"          ◦ <ref>dst='great_river' text='Велика река'</ref>: врло широка на "
+"овом месту, да се само бродом може прећи."
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:112
 msgid "Northlands"
-msgstr ""
+msgstr "Североземље"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:130
@@ -787,11 +936,47 @@ msgid ""
 "          ◦ Great River: The origin of this river is somewhere in the east "
 "of the northern lands"
 msgstr ""
+"Североземље нема никакве владе. У том подручју обитавају разнолике скупине "
+"оркова, патуљака, људи варвара, па чак и вилењака. Северне и источне границе "
+"нису одређене, док је јужна <ref>dst='great_river' text='Велика река'</ref> "
+"а западна <ref>dst='great_ocean' text='Велики океан'</ref>.\n"
+"\n"
+"    • Истакнути градови:\n"
+"          ◦ Гламдрол: орковска племенска престоница.\n"
+"          ◦ Ромир: још једна орковска племенска престоница.\n"
+"          ◦ Весмер: седиште Калијана, вилењачког већа.\n"
+"          ◦ Патуљачке двери: мешани људско-патуљачки град у области Кналге, "
+"у јужним Језгреним планинама. Велико трговачко средиште.\n"
+"          ◦ Далбен и Делвин: људска села која првобитно подигоше насељеници "
+"што дођоше преко Велике реке, током ширења у златно доба Веснота. Тренутно "
+"напуштена. Пошумљено подручје североисточно од Еленсефара, где се ова села "
+"налазише, људи су назвали покрајином Анувин, а међу вилењацима знано је као "
+"Весмер.\n"
+"\n"
+"    • Истакнута географија:\n"
+"          ◦ Језгрене планине: готово непроходна препрека између речних "
+"крајева и северних равница.\n"
+"          ◦ Језгрене канџе: посебно злокобан потез високих врхова "
+"југозападно од језера Вруг и северно Весмерске шуме. Најнегостољубивији и "
+"најопаснији предео Језгрених планина; у њему пребивају само пустињаци, "
+"махнити и магови.\n"
+"          ◦ Мочвара ужаса: веома велика каљуга између Језгрених планина и "
+"Велике реке. Озлоглашена по својим опасностима.\n"
+"          ◦ Вруг: велико планинско језеро чија река усеца једини пролаз кроз "
+"северне планине.\n"
+"          ◦ Аркан-торија: река што истиче из Вруга. Ово је вилењачко име, а "
+"људи је знају као Лонглијер.\n"
+"          ◦ Листра: притока јужног тока Велике реке, у њу се улива Аркан-"
+"торија.\n"
+"          ◦ Линтанирска шума: најјужнији део Велике северне шуме, огромног "
+"пошумља чије су источне и северне границе познате једино вилењацима. Њихову "
+"престоницу, Еленсирију, посетио је тек по који човек.\n"
+"          ◦ Велика река: извире негде на истоку северних земаља."
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr ""
+msgstr "југозападне вилењачке земље"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
@@ -808,12 +993,22 @@ msgid ""
 "the southwest—much farther than is charted—and is home to <ref>dst='.."
 "race_elf' text='elves'</ref>."
 msgstr ""
+"Шумски вилењаци су подвојени од оних на северу, и тек повремено ступају у "
+"додир са њима и са другим земљама. Границе су им Зелена мочвара ка "
+"североистоку, пустиња (ван карте) ка југу и <ref>dst='great_ocean' "
+"text='океан'</ref> ка западу.\n"
+"\n"
+"    • Истакнути градови:\n"
+"          ◦ Не зна се ни за један.\n"
+"    • Истакнута географија:\n"
+"          ◦ Шума Етен: највећа од јужних шума, протеже се далеко на "
+"југозапад — много даље него што је картографисано — и дом је <ref>dst='.."
+"race_elf' text='вилењацима'</ref>."
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:146
-#, fuzzy
 msgid "Heart Mountains"
-msgstr "планине"
+msgstr "Језгрене планине"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:147
@@ -822,11 +1017,13 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
+"Готово непроходна препрека између <ref>dst='arkan_thoria' text='речних'</"
+"ref> земаља и <ref>dst='far_north' text='северних равница'</ref>."
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
 msgid "Far North"
-msgstr ""
+msgstr "Далеки север"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:176
@@ -863,6 +1060,37 @@ msgid ""
 "          ◦ River Bork\n"
 "          ◦ Wild Steppe"
 msgstr ""
+"Хладан, суров и неприступачан, Далеки север је прадавни дом Орковског "
+"кланата. Простире се северно од <ref>dst='heart_mountains' text='Језгрених "
+"планина'</ref>, које оркови називају Хагид-Даргором и полажу (без темеља) "
+"права на њих. На истоку се срећу несврстана племена из Дивље степе, отргнута "
+"од власти Кланата, која језде са дивљим људским варварима и сукобљавају се "
+"са високим вилењацима из северних равница (у људским земљама знаним као "
+"северни вилењаци). Сами високи вилењаци насељени су даље на истоку, где, "
+"круже гласине, владају неизмерним краљевством.\n"
+"\n"
+"    • Истакнути градови:\n"
+"          ◦ Бараг Гор, град домаћин Орковског већа\n"
+"          ◦ Биток\n"
+"          ◦ Борстеп\n"
+"          ◦ Кастелфранг\n"
+"          ◦ Фарзи\n"
+"          ◦ Фестог\n"
+"          ◦ Гризби\n"
+"          ◦ Лмариг\n"
+"          ◦ Мелмог\n"
+"          ◦ Престим\n"
+"          ◦ Тиригаз\n"
+"    • Истакнута географија:\n"
+"          ◦ Мочвара пустоши\n"
+"          ◦ Дортске планине\n"
+"          ◦ Хашке планине\n"
+"          ◦ Зелена шума\n"
+"          ◦ Нечујна шума\n"
+"          ◦ Телијанска шума\n"
+"          ◦ река Оумф\n"
+"          ◦ река Борк\n"
+"          ◦ Дивља степа"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -874,7 +1102,7 @@ msgstr "Увод"
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:16 data/core/help.cfg:126
 msgid "Gameplay"
-msgstr "Играње"
+msgstr "Извођење"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
@@ -966,7 +1194,6 @@ msgstr "Преглед"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:120
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -979,20 +1206,20 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"„Бој за Веснот“ је фантазијска стратегија на потезе, понешто необична међу "
-"савременим стратешким играма. Док друге игре нагињу сложености, „Бој за "
-"Веснот“ тежи једноставности, како правила тако и начина играња. То, међутим, "
-"не чини ову игру лаком — из једноставних правила рађа се изобиље тактика, те "
-"је игру лако научити, али изазовно њоме загосподарити."
+"<italic>text='Бој за Веснот'</italic> је фантазијска стратегија на потезе, "
+"понешто необична међу савременим стратешким играма. Док друге игре нагињу "
+"сложености, <italic>text='Бој за Веснот'</italic> тежи једноставности, како "
+"правила тако и извођења. То, међутим, не чини ову игру лаком — из "
+"једноставних правила рађа се изобиље тактика, те је игру лако научити, али "
+"изазовно њоме загосподарити."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:132
 msgid "Fundamentals of Gameplay"
-msgstr "Темељи играња"
+msgstr "Темељи извођења"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:133
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play <italic>text='Battle for "
 "Wesnoth'</italic>. They cover how to play and the basic mechanics behind the "
@@ -1000,15 +1227,15 @@ msgid ""
 "come across new aspects of the game. For more detailed information on "
 "special situations and exceptions, please follow the links included."
 msgstr ""
-"Ове странице дају осврт на све што је непходно знати да заиграте „Бој за "
-"Веснот“ — начин играња и основну механику која погони игру. Док будете "
-"играли, странице ће бити допуњаване подацима који ће представљати нове "
-"углове игре на које будете наилазили. Зажелите ли детаљније информације о "
-"посебним околностима и изузецима, можете испратити убачене везе."
+"Ове странице пружају осврт на све што је непходно да знате да бисте заиграли "
+"<italic>text='Бој за Веснот'</italic> — начин играња и основну механику која "
+"погони игру. Док будете играли, странице ће бити допуњаване подацима који ће "
+"представљати нове углове игре на које будете наилазили. Зажелите ли "
+"детаљније информације о посебним околностима и изузецима, можете испратити "
+"убачене везе."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:135
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1021,12 +1248,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"За почетак, најбоље је да кликнете на дугме <italic>text=Подучавање</italic> "
-"у главном менију. То ће вас одвести у интерактивно подучавање, где ћете бити "
-"научени основама Веснота. Потом, препоручујемо да прво одиграте поход "
-"„Наследник престола“ — кликните на <italic>text=Поход</italic>, па "
-"<italic>text='Наследник престола'</italic>. Како „Бој за Веснот“ може бити "
-"врло изазован, можете се одлучити да почнете од <italic>text=лаког</italic>."
+"За почетак, најбоље је да кликнете на дугме <italic>text='Подучавање'</"
+"italic> у главном менију. То ће вас одвести у интерактивно подучавање, где "
+"ћете бити научени основама Веснота. Потом, препоручујемо да прво одиграте "
+"поход „Наследник престола“ — кликните на <italic>text='Поход'</italic>, па "
+"<italic>text='Наследник престола'</italic>. Како <italic>text='Бој за "
+"Веснот'</italic> може бити врло изазован, можете се одлучити да почнете од "
+"<italic>text='лаког'</italic>."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:138
@@ -1049,7 +1277,6 @@ msgstr "О игри"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:144
-#, fuzzy
 msgid ""
 "The game takes place over a series of battles, called "
 "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
@@ -1059,16 +1286,16 @@ msgid ""
 "other people connected to that network. If your computer has a connection to "
 "the Internet, you can play against other people across the Internet."
 msgstr ""
-"Игра се протеже преко низа битака, које се називају сценаријима. Сваки "
-"сценарио судара ваше снаге са снагама једног или више супарника. Можете "
-"играти против рачунара, или пријатељâ који се по потезима смењују испред "
-"рачунара (тзв. усијана игра). Ако вам је рачунар повезан у мрежи, можете "
-"такође играти са другима повезаним у исту ту мрежу. Ако имате везу са "
-"Интернетом, можете играти са људима широм света."
+"Игра се протеже преко низа битака, које се називају "
+"<italic>text='сценаријима'</italic>. Сваки сценарио судара ваше снаге са "
+"снагама једног или више супарника. Можете играти против рачунара, или "
+"пријатељâ који се по потезима смењују испред рачунара (тзв. усијана игра). "
+"Ако вам је рачунар повезан у мрежи, можете такође играти са другима "
+"повезаним у исту ту мрежу. Ако имате везу са Интернетом, можете играти са "
+"људима широм света."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:146
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1079,10 +1306,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Походи се састоје од више сценарија који се настављају један на други, "
-"плетући своју причу. У походима често морате играти опрезније, чувајући "
-"своје најбоље снаге како бисте их могли употребити у наступајућим "
-"сценаријима."
+"<italic>text='Походи'</italic> се састоје од више сценарија који се "
+"настављају један на други, плетући своју причу. У походима често морате "
+"играти опрезније, чувајући своје најбоље снаге како бисте их могли "
+"употребити у наступајућим сценаријима."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:152
@@ -1091,7 +1318,6 @@ msgstr "Победа и пораз"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:153
-#, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. Usually you will achieve victory by killing "
@@ -1100,16 +1326,15 @@ msgid ""
 "designated point, say, or rescuing someone, or solving a puzzle, or holding "
 "out against a siege until a certain number of turns have elapsed."
 msgstr ""
-"Пажљиво протумачите искачуће прозорче са циљевима на почетку сваког "
-"сценарија. До победе се обично долази истребљењем свих противничких вођа, а "
-"пораз трпи када ваш сопствени настрада. Али сценарији могу имати и другачије "
-"циљеве за победу — отправљање свог вођа до одређеног места, спасавање "
-"некога, решавање загонетке, опстајање усред опсаде док не прође одређен број "
-"потеза, итд."
+"Пажљиво протумачите искачуће прозорче са <bold>text='циљевима'</bold> на "
+"почетку сваког сценарија. До победе се обично долази истребљењем свих "
+"противничких вођа, а пораз трпи када ваш вођ настрада. Али сценарији могу "
+"имати и другачије циљеве за победу — отправљање свог вођа до одређеног "
+"места, спасавање некога, решавање загонетке, опстајање усред опсаде док не "
+"прође одређен број потеза, итд."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1120,10 +1345,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Када добијете сценарио, мапа ће се засивети и дугме „Готово“ при дну "
-"променити у „Крај“. Пре него што кликнете на дугме да наставите, можете "
-"променити опције уписивања, или (у вишеиграчкој партији) попричати са "
-"саиграчима."
+"Када добијете сценарио, мапа ће се засивети и дугме <bold>text='Готово'</"
+"bold> при дну променити у <bold>text='Крај'</bold>. Пре него што кликнете на "
+"дугме да наставите, можете променити опције уписивања, или (у вишеиграчкој "
+"партији) попричати са саиграчима."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:162
@@ -1132,7 +1357,6 @@ msgstr "Унајмљивање и сазивање"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1150,11 +1374,11 @@ msgstr ""
 "text='јединице'</ref> за своју војску. Да бисте најмили, ваш вођ (нпр. "
 "Конрад у походу „Наследник престола“) мора стајати на пољу куле у "
 "<ref>dst='terrain_castle' text='замку'</ref>. Тада можете или изабрати "
-"„Унајмљивање“ из менија, или кликнути десним на поље и изабрати "
-"<italic>text='Унајмљивање'</italic>. Ово ће вам дати списак јединица које "
-"можете унајмити, заједно са ценом коју морате платити за сваку. Кликните на "
-"јединицу да видите њене карактеристике, а на дугме „Унајмљивање“ да је "
-"унајмите."
+"„Унајми“ из менија, или кликнути десним на поље и изабрати "
+"<italic>text='Унајми'</italic>. Ово ће вам дати списак јединица које можете "
+"унајмити, заједно са ценом коју морате платити за сваку. Кликните на "
+"јединицу да видите њене карактеристике, а на дугме <italic>text='Унајми'</"
+"italic> да је унајмите."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
@@ -1176,7 +1400,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1205,7 +1428,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1235,33 +1457,31 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
-#, fuzzy
 msgid " green if it hasn’t moved this turn,"
-msgstr "зелена, ако се јединица није померила у току потеза,"
+msgstr " зелена, ако се јединица није померила у току потеза,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:181
-#, fuzzy
 msgid " yellow if it has moved, but could still move further or attack, or"
-msgstr "жута, ако се јесте померила, али се још може кретати или напасти, и"
+msgstr " жута, ако се јесте померила, али се још може кретати или напасти,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:182
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
+" црвена, ако се више не може померати нити нападати, или јој је играч "
+"окончао потез, и"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
-#, fuzzy
 msgid " blue if the unit is an ally you do not control."
-msgstr "Куглица је плава ако је јединица савезник којим не управљате."
+msgstr " плава, ако је јединица савезник којим не управљате."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:184
-#, fuzzy
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr "Непријатељске јединице немају овакве куглице."
+msgstr " Непријатељске јединице немају овакве куглице."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:191
@@ -1270,7 +1490,6 @@ msgstr "Ударпоени и искуство"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:192
-#, fuzzy
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1278,9 +1497,10 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
-"Свака јединица има известан број ударпоена (УП); падну ли испод 1, јединица "
-"страда. Такође, свака јединица има и искуствене поене (ИП); нове јединице "
-"почињу без искуства, и добијају га у борби против непријатеља."
+"Свака јединица има известан број <italic>text='ударпоена'</italic> (УП); "
+"падну ли испод 1, јединица страда. Такође, свака јединица има и "
+"<italic>text='искуствене поене'</italic> (ИП); нове јединице почињу без "
+"искуства, и добијају га у борби против непријатеља."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:196
@@ -1312,7 +1532,6 @@ msgstr "Кретање"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:205
-#, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1327,22 +1546,21 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"Кретање у „Боју за Веснот“ је једноставно. Кликните на јединицу коју желите "
-"да покренете да је изаберете, а затим на поље где желите да се помери. Када "
-"је јединица изабрана, сва поља које може досећи у овом потезу бивају "
-"истакнута, а сва остала поља затамњена. Прелаз мишем преко истакнутог поља "
-"даје одбрамбени разред који ће јединица имати ако се помери на њ. Прелаз "
-"мишем преко затамњеног поља ће додатно приказати број потеза неопходан да га "
-"јединица досегне, а кликом ћете послати јединицу тамо најбржим путем у току "
-"овог и наредних потеза. Ако не истрошите сву покретљивост јединице када је "
-"први пут померите, можете је померити поново, што је корисно када желите да "
-"двије јединице размијене положаје. Напад јединицом ће јој истрошити сву "
-"покретљивост. Померање у село које није ваше ће такође истрошити "
-"покретљивост, али ће јединица и даље моћи да нападне."
+"Кретање у <italic>text='Боју за Веснот'</italic> је једноставно. Кликните на "
+"јединицу коју желите да покренете да је изаберете, а затим на поље где "
+"желите да се помери. Када је јединица изабрана, сва поља које може досећи у "
+"овом потезу бивају истакнута, а сва остала поља затамњена. Прелаз мишем "
+"преко истакнутог поља даје одбрамбени разред који ће јединица имати ако се "
+"помери на њ. Прелаз мишем преко затамњеног поља ће додатно приказати број "
+"потеза неопходан да га јединица досегне, а кликом ћете послати јединицу тамо "
+"најбржим путем у току овог и наредних потеза. Ако не истрошите сву "
+"покретљивост јединице када је први пут померите, можете је померити поново, "
+"што је корисно када желите да две јединице размене положаје. Напад јединицом "
+"ће јој истрошити сву покретљивост. Померање у село које није ваше ће такође "
+"истрошити покретљивост, али ће јединица и даље моћи да нападне."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1364,12 +1582,11 @@ msgstr ""
 "и од типа јединице — у шуми, вилењачке јединице троше само по 1 поен, већина "
 "људских и орковских по 2, а коњаници чак 3. Да бисте сазнали колико некој "
 "јединици треба поена за улазак на одређени тип терена, кликните десним на "
-"њу, па изаберите „Опис јединице“, и погледајте <italic>text='теренске "
-"модификаторе'</italic>."
+"њу, па изаберите <bold>text='Опис јединице'</bold>, и погледајте "
+"<bold>text='теренске модификаторе'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1383,11 +1600,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"У току померања такође морате имати на уму „надзорне појасеве“. Свака "
-"јединица ствара надзорни појас у пољима која је непосредно окружују, и "
-"непријатељска јединица која крочи у појас одмах окончава своје кретање. "
-"Научити како користити надзорне појасеве за сопствену добит, важан је део "
-"тактике Веснота — само малобројни <ref>dst='ability_skirmisher' "
+"У току померања такође морате имати на уму <italic>text='надзорне појасеве'</"
+"italic>. Свака јединица ствара надзорни појас у пољима која је непосредно "
+"окружују, и непријатељска јединица која крочи у појас одмах окончава своје "
+"кретање. Научити како користити надзорне појасеве за сопствену добит, важан "
+"је део тактике Веснота — само малобројни <ref>dst='ability_skirmisher' "
 "text='чаркаши'</ref> могу игнорисати надзорне појасеве."
 
 #. [topic]: id=movement
@@ -1402,7 +1619,7 @@ msgstr ""
 "\n"
 "\n"
 "Да бисте видели куда се непријатељ може покренути током свог потеза, "
-"притисните ctrl-v или cmd-v; ctrl-b или cmd-b показују куда би се непријатељ "
+"притисните Ctrl-V или Cmd-V; Ctrl-B или Cmd-B показују куда би се непријатељ "
 "могао померити када на мапи не би било ваших јединица да их блокирају."
 
 #. [topic]: id=shroud_and_fog
@@ -1412,7 +1629,6 @@ msgstr "Покров и магла рата"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:221
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1436,23 +1652,23 @@ msgid ""
 "movement."
 msgstr ""
 "У неким сценаријима, део мапе ће бити скривен од вашег погледа. Постоје два "
-"механизма која то могу чинити, заједно или одвојено. Покров сакрива и терен "
-"и јединице које се на њему могу наћи. Када се покров једном развеје, надаље "
-"увек можете видети терен. Магла рата сакрива само јединице и поседе над "
-"селима (не рачунајући ваше и савезничке). Магла рата се разилази само "
-"привремено, док су ваше јединице у близини, али се враћа када се оне "
-"одмакну. Јединице развејавају и покров и маглу рата. Свака јединица чисти "
-"поља у домету кретања у датом потезу, при чему се игноришу непријатељске "
-"јединице и надзорни појасеви.\n"
+"механизма која то могу чинити, заједно или одвојено. <italic>text='Покров'</"
+"italic> сакрива и терен и јединице које се на њему могу наћи. Када се покров "
+"једном развеје, надаље увек можете видети терен. <italic>text='Магла рата'</"
+"italic> сакрива само јединице и поседе над селима (не рачунајући ваше и "
+"савезничке). Магла рата се разилази само привремено, док су ваше јединице у "
+"близини, али се враћа када се оне одмакну. Јединице развејавају и покров и "
+"маглу рата. Свака јединица чисти поља у домету кретања у датом потезу, при "
+"чему се игноришу непријатељске јединице и надзорни појасеви.\n"
 "\n"
 "Потез јединице обично можете опозвати, све док није дошло до догађаја са "
 "насумичним исходом, као што је борба или унајмљивање (где већина јединица "
 "поприма случајне особине). Истраживање скривеног терена развејавањем покрова "
 "или магле такође спречава опозив на претходно стање. Ако желите, у менију "
-"радњи можете укључити „Застој ажурирања покрова“, што ће спречити да "
-"јединице развеју покров или маглу до следећег насумичног догађаја или ручног "
-"ажурирања помоћу „Ажурирај покров сада“ (или краја вашег потеза), и тако "
-"очувати могућност опозива."
+"радњи можете укључити <bold>text='Застој ажурирања покрова'</bold>, што ће "
+"спречити да јединице развеју покров или маглу до следећег насумичног "
+"догађаја или ручног ажурирања помоћу <bold>text='Ажурирај покров сада'</"
+"bold> (или краја вашег потеза), и тако очувати могућност опозива."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:228
@@ -1461,7 +1677,6 @@ msgstr "Борба"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:229
-#, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -1474,17 +1689,17 @@ msgid ""
 "as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"Борба се у „Боју за Веснот“ увек одиграва између јединица у суседним пољима. "
-"Кликните на своју јединцу, па на непријатељску коју желите да нападнете: "
-"ваша јединица ће се покренути ка непријатељској, и када се додирну, борба ће "
-"започети. Нападач и бранилац размењују ударце, колико их имају додељених. "
-"Нападач бира оружје којим напада, а бранилац одговара оружјем истог типа. "
-"Постоје два типа напада: блиски, оружјем попут мача, секира или канџи, и "
-"одступни, обично путем лукова, копаља или ватреница."
+"Борба се у <italic>text='Боју за Веснот'</italic> увек одиграва између "
+"јединица у суседним пољима. Кликните на своју јединцу, па на непријатељску "
+"коју желите да нападнете: ваша јединица ће се покренути ка непријатељској, и "
+"када се додирну, борба ће започети. Нападач и бранилац размењују ударце, "
+"колико их имају додељених. Нападач бира оружје којим напада, а бранилац "
+"одговара оружјем истог типа. Постоје два типа напада: <italic>text='блиски'</"
+"italic>, оружјем попут мача, секира или канџи, и <italic>text='одступни'</"
+"italic>, обично помоћу лукова, копаља или ватреница."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:231
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1496,7 +1711,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1513,13 +1727,12 @@ msgstr ""
 "Нападач удара први, затим бранилац узвраћа. Сваки удар или погађа, наносећи "
 "извесну штету, или промашује, не чинећи никакву штету. Удари се смењују док "
 "обе јединице не истроше све на располагању. Број удара које јединица има "
-"променљив је; на пример, вилин-борац са нападом 5-4 може ударити 4 пута, при "
-"сваком поготку наносећи 5 штете, док орк-грокташ са нападом 9-2 може ударити "
+"променљив је; на пример, вилин-борац са нападом 5–4 може ударити 4 пута, при "
+"сваком поготку наносећи 5 штете, док орк-грокташ са нападом 9–2 може ударити "
 "само двапут, али наносећи 9 штете при поготку."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:235
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1531,7 +1744,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1545,17 +1757,17 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Свака јединица је у одређеној прилици да буде погођена, према терену на коме "
-"се налази. Вредност је приказана у окну стања, а може се видети и десним "
-"кликом на јединицу, избором „Опис јединице“, па под <italic>text='теренски "
-"модификатори'</italic>. На пример, вилењаци имају одбрамбени разред 70% у "
+"Свака јединица је у одређеној прилици да буде погођена, према "
+"<italic>text='терену'</italic> на коме се налази. Вредност је приказана у "
+"окну стања, а може се видети и десним кликом на јединицу, избором "
+"<bold>text='Опис јединице'</bold>, па под <bold>text='теренски "
+"модификатори'</bold>. На пример, вилењаци имају одбрамбени разред 70% у "
 "шуми, тако да јединица која их напада има само 30% изгледа да погоди. И "
 "обрнуто, вилењак је у прилици да погоди нападача према терену на којем се "
 "нападач налази."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1585,7 +1797,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1600,15 +1811,14 @@ msgstr ""
 "\n"
 "\n"
 "Сваки удар који погоди наноси основну количину штете, у зависности од типа "
-"напада. На пример, вилин-борац са нападом 5-4 чини 5 основне штете. На овај "
+"напада. На пример, вилин-борац са нападом 5–4 чини 5 основне штете. На овај "
 "број могу утицати два фактора: <ref>dst='damage_types_and_resistance' "
 "text='отпорност'</ref> и <ref>dst='time_of_day' text='доба дана'</ref>. Да "
 "бисте видели како околности тачно утичу на основну штету, у менију за избор "
-"напада погледајте <italic>text='Рачунање штете'</italic>."
+"напада погледајте <bold>text='Рачунање штете'</bold>."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1631,7 +1841,6 @@ msgstr "Видови штете и отпорности"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:252
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -1641,14 +1850,13 @@ msgid ""
 "they take from certain damage types."
 msgstr ""
 "У Весноту постоје три вида штете својствена физичким нападима: штета "
-"сечивом, пробојем и ударом. Постоје још три вида штете повезана са магичним "
-"нападима: ватрени, мразни и волшебни напади. Различите јединицу имају "
-"различите отпорности које утичу на штету коју им одређени типови напада могу "
-"нанети."
+"<italic>text='сечивом, пробојем и ударом'</italic>. Постоје још три вида "
+"штете повезана са магичним нападима: <italic>text='ватрени, мразни и "
+"волшебни'</italic> напади. Различите јединицу имају различите отпорности "
+"које утичу на штету коју им одређени типови напада могу нанети."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1668,7 +1876,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1702,7 +1909,6 @@ msgstr "Доба дана"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1711,13 +1917,13 @@ msgid ""
 " Liminal units get −25% damage during both night and daytime."
 msgstr ""
 "Доба дана утиче на штету коју јединице наносе, на следећи начин:\n"
-"- законите јединице чине +25% штете током дана, а −25% током ноћи,\n"
-"- хаотичне јединице чине +25% штете током ноћи, а −25% током дана,\n"
-"- неутралне јединице нису под утицајем доба дана."
+"— законите јединице наносе +25% штете током дана, а −25% током ноћи;\n"
+"— хаотичне јединице наносе +25% штете током ноћи, а −25% током дана;\n"
+"— неутралне јединице нису под утицајем доба дана;\n"
+"— двојствене јединице наносе −25% штете и током дана и током ноћи."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1817,7 +2023,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:291
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1836,12 +2041,13 @@ msgstr ""
 "\n"
 "Иако већина јединица има три нивоа, неке јединице могу имати четири (нпр. "
 "<ref>dst='unit_Mage' text='магови'</ref>). Када јединица достигне свој "
-"највећи ниво, може имати и „напредовање по највећем нивоу“ (НАПОН). НАПОН ће "
-"изменити јединицу сваки пут када достигне циљно искуство, али ће ипак остати "
-"на истом нивоу. Уобичајен ефекат НАПОНА је да увећа максимум УП за 3. Први "
-"НАПОН ће нормално бити достигнут са 150 ИП (120 ИП за оштроумне јединице). "
-"Међутим, добијање НАПОНА постаје прогресивно теже после сваког следећег, "
-"тако да је обично корисније да радите на унапређењу јединица нижег нивоа."
+"највећи ниво, може имати и <italic>text='напредовање по највећем нивоу'</"
+"italic> (НАПОН). НАПОН ће изменити јединицу сваки пут када достигне циљно "
+"искуство, али ће ипак остати на истом нивоу. Уобичајен ефекат НАПОНА је да "
+"увећа максимум УП за 3. Први НАПОН ће нормално бити достигнут са 150 ИП (120 "
+"ИП за оштроумне јединице). Међутим, добијање НАПОНА постаје прогресивно теже "
+"после сваког следећег, тако да је обично корисније да радите на унапређењу "
+"јединица нижег нивоа."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:298
@@ -1866,7 +2072,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:301
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1875,19 +2080,20 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Одмарање: Јединица која се није померила, није напала, нити била под нападом "
-"у току потеза, повратиће 2 УП на почетку следећег потеза."
+"<italic>text='Одмарање'</italic>: Јединица која се није померила, није "
+"напала, нити била под нападом у току потеза, повратиће 2 УП на почетку "
+"следећег потеза."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Villages'</italic>: A unit which starts a turn in a village "
 "will heal 8HP."
 msgstr ""
 "\n"
-"Села: Јединица која почетак потеза дочека у селу попуниће 8 УП."
+"<italic>text='Села'</italic>: Јединица која почетак потеза дочека у селу "
+"попуниће 8 УП."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1902,7 +2108,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Healing units'</italic>: Units with the "
@@ -1912,15 +2117,14 @@ msgid ""
 "from causing that unit damage."
 msgstr ""
 "\n"
-"Видарске јединице: Јединице са способношћу <ref>dst='ability_heals +4' "
-"text='лечења'</ref> лечиће суседне пријатељске јединице, обично "
-"<ref>dst='ability_heals +4' text='4'</ref> или <ref>dst='ability_heals +8' "
-"text='8 УП'</ref> по потезу, или спречавати отров да оштети отровану "
-"јединицу."
+"<italic>text='Видарске јединице'</italic>: Јединице са способношћу "
+"<ref>dst='ability_heals +4' text='лечења'</ref> лечиће суседне пријатељске "
+"јединице, обично <ref>dst='ability_heals +4' text='4'</ref> или "
+"<ref>dst='ability_heals +8' text='8 УП'</ref> по потезу, или спречавати "
+"отров да оштети отровану јединицу."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Curing units'</italic>: Units with the "
@@ -1929,9 +2133,10 @@ msgid ""
 "well)."
 msgstr ""
 "\n"
-"Исцелитељске јединице: Јединице са способношћу <ref>dst='ability_cures' "
-"text='исцеливања'</ref> ослобађаће отрова све суседне пријатељске јединице "
-"(као приоритетно над лечењем, ако јединица има и ту способност)."
+"<italic>text='Исцелитељске јединице'</italic>: Јединице са способношћу "
+"<ref>dst='ability_cures' text='исцеливања'</ref> ослобађаће отрова све "
+"суседне пријатељске јединице (као приоритетно над лечењем, ако јединица има "
+"и ту способност)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -1955,7 +2160,6 @@ msgstr "Приходи и издаци"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:315
-#, fuzzy
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1964,11 +2168,11 @@ msgid ""
 msgstr ""
 "У Весноту, није довољно просто унајмити јединице и упустити се у битку. "
 "Морате држати око и на свом злату, посебно у походима, где се злато преноси "
-"из сценарија у сценарио. Ово је медаља са две стране: приход и издаци."
+"из сценарија у сценарио. Ово је медаља са две стране: <italic>text='приход'</"
+"italic> и <italic>text='издаци'</italic>."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1982,13 +2186,13 @@ msgstr ""
 "\n"
 "\n"
 "Приход је једноставан. Имате основни прилив од 2 златника по потезу; за "
-"свако село које запоседате, добијате још по један златник по потезу. Тако, "
+"свако село које запоседате, добијате још по један златник по потезу (у "
+"општем ово је подесиво, али је у походима готово увек један по селу). Тако, "
 "ако имате 10 села, приход вам је 12 златника у сваком потезу. Од ове суме "
 "одузимају се издаци, како је наведено испод."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2002,15 +2206,13 @@ msgstr ""
 "\n"
 "\n"
 "И издаци су углавном једноставни. Свака јединица захтева одређени издатак, "
-"једнак свом нивоу у златницима. Можете подржавати без издатака онолико "
-"<italic>text=нивоа-јединица</italic> колико имате села. Међутим за сваки "
-"ниво-јединицу преко тога, морате плаћати један златник по потезу. На пример, "
-"ако имате 12 јединица првог нивоа и 10 села, плаћате 2 златника на издатке "
-"по потезу."
+"једнак свом нивоу у златницима. Можете подржавати без издатака онолико нивоа-"
+"јединица колико имате села. Међутим за сваки ниво-јединицу преко тога, "
+"морате плаћати један златник по потезу. На пример, ако имате 12 јединица "
+"првог нивоа и 10 села, плаћате 2 златника на издатке по потезу."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:321
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2025,7 +2227,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2041,8 +2242,9 @@ msgstr ""
 "Постоје два важна изузетка: јединице са особином оданости и вођи неће имати "
 "издатке. Јединице са којима започињете сценарио (нпр. Делфадор), или "
 "јединице које вам се придруже током сценарија (нпр. коњаник у другом "
-"сценарију „Наследник престола“), обично ће бити одане. Јединица која вас "
-"лично представља (нпр. Конрад) готово увек је вођ."
+"сценарију <italic>text='Наследник престола'</italic>), обично ће бити "
+"<italic>text='одане'</italic>. Јединица која вас лично представља (нпр. "
+"Конрад) готово увек је вођ."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:329
@@ -2051,7 +2253,6 @@ msgstr "Да заокружимо"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2063,7 +2264,8 @@ msgstr ""
 "основној стратегији, или се упознавати са <ref>dst='..traits_section' "
 "text='особинама'</ref> и <ref>dst='..abilities_section' "
 "text='способностима'</ref>, али већ знате све што вам је неопходно да "
-"заиграте поход „Наследник престола“. Забавите се, и срећно!"
+"заиграте поход <italic>text='Наследник престола'</italic>. Забавите се, и "
+"срећно!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -2077,7 +2279,6 @@ msgstr "Услови коришћења"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:350
-#, fuzzy
 msgid ""
 "Most units have two traits. However, undead units are assigned the single "
 "trait <italic>text='undead'</italic>, and woses do not receive any traits. "
@@ -2085,13 +2286,12 @@ msgid ""
 "usually randomly assigned to a unit when it is recruited."
 msgstr ""
 "Већина јединица има по две особине. Изузеци су немртви, који увек имају само "
-"особину ‘немртвост’, и ивери, који немају ниједну особину. Особине уводе "
-"мале измене у атрибутима јединице. Обично се додељују насумично, при "
-"унајмљивању јединице."
+"особину <italic>text='немртвост'</italic>, и ивери, који немају ниједну "
+"особину. Особине уводе мале измене у атрибутима јединице. Обично се додељују "
+"насумично, при унајмљивању јединице."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2109,7 +2309,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2139,7 +2338,6 @@ msgstr ""
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:365
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2152,11 +2350,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Оштроумне јединице су врло корисне на почетку похода, пошто брже могу "
-"достићи више нивое. Касније у току похода оштроумност није тако корисна, "
-"пошто „напредовање по највећем нивоу“ (НАПОН) није тако значајно као "
-"напредовање у нивоу. Ако имате много таквих јединица највишег нивоа, можда "
-"је боље да сазивате јединице са пожељнијим особинама."
+"<italic>text='Оштроумне'</italic> јединице су врло корисне на почетку "
+"похода, пошто брже могу достићи више нивое. Касније у току похода "
+"оштроумност није тако корисна, пошто <italic>text='напредовање по највећем "
+"нивоу'</italic> (НАПОН) није тако значајно као напредовање у нивоу. Ако "
+"имате много таквих јединица највишег нивоа, можда је боље да сазивате "
+"јединице са пожељнијим особинама."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:370
@@ -2165,16 +2364,15 @@ msgstr "хитрост"
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:371
-#, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "HP than usual."
 msgstr ""
-"Хитре јединице имају 1 додатан поен на кретање, али 5% мање УП него обично."
+"<italic>text='Хитре'</italic> јединице имају 1 додатан поен на кретање, али "
+"5% мање УП него обично."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:373
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2200,11 +2398,12 @@ msgstr "жилавост"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:379
-#, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
 "than usual."
-msgstr "Жилаве јединице имају 4 УП плус 1 УП по нивоу више него обично."
+msgstr ""
+"<italic>text='Жилаве'</italic> јединице имају 4 УП плус 1 УП по нивоу више "
+"него обично."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:381
@@ -2232,17 +2431,15 @@ msgstr "кршност"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:387
-#, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 more HP."
 msgstr ""
-"Кршне јединице чине 1 поен штете више за сваки успешан удар у блиској борби, "
-"и имају 1 УП више."
+"<italic>text='Кршне'</italic> јединице чине 1 поен штете више за сваки "
+"успешан удар у блиској борби, и имају 1 УП више."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:389
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2271,9 +2468,8 @@ msgstr ""
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:400
-#, fuzzy
 msgid "Feral"
-msgstr "збирна"
+msgstr "неукроћеност"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:401
@@ -2283,6 +2479,10 @@ msgid ""
 "units receive a maximum of 50% defense in any land-based village regardless "
 "of base terrain."
 msgstr ""
+"Настамбе свесних бића нису пригодно склониште дивљим створењима ниске "
+"интелигенције. Због тога, <italic>text='неукроћене'</italic> јединице "
+"добијају највише 50% одбране у сваком копненом селу, без обзира на подложни "
+"терен."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:406
@@ -2291,18 +2491,17 @@ msgstr "оданост"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:407
-#, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
 "units do not incur this cost."
 msgstr ""
-"Одане јединице не праве издатке. Већина јединица има издатке на крају сваког "
-"потеза, бројевно једнаке њиховом нивоу. Одане јединице немају таквих захтева."
+"<italic>text='Одане'</italic> јединице не праве издатке. Већина јединица има "
+"издатке на крају сваког потеза, бројевно једнаке њиховом нивоу. Одане "
+"јединице немају таквих захтева."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:409
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2329,16 +2528,13 @@ msgstr "немртвост"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:415
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
-"Немртве јединице су имуне на отров, а ни црпљење ни куга немају утицаја на "
-"њих."
+"<italic>text='Немртве'</italic> јединице су имуне на отров, црпљење и кугу."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:417
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2361,17 +2557,14 @@ msgstr "механичност"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:423
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Механичке јединице су имуне на отров, а ни црпљење ни куга немају утицаја на "
-"њих."
+"<italic>text='Механичке'</italic> јединице су имуне на отров, црпљење и кугу."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:425
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2381,28 +2574,25 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Механичке јединице обично имају ‘механичност’ као једину особину. Пошто оне "
+"Механичке јединице обично имају механичност као једину особину. Пошто оне "
 "нису збиља живе, црпљење, отров и куга не утичу на њих."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
-#, fuzzy
 msgid "trait^Elemental"
-msgstr "скривање"
+msgstr "елементарност"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:431
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Механичке јединице су имуне на отров, а ни црпљење ни куга немају утицаја на "
-"њих."
+"<italic>text='Елементарне'</italic> јединице су имуне на отров, црпљење и "
+"кугу."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:433
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2412,8 +2602,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Механичке јединице обично имају ‘механичност’ као једину особину. Пошто оне "
-"нису збиља живе, црпљење, отров и куга не утичу на њих."
+"Елементарне јединице обично имају елементарност као своју једину особину. "
+"Пошто су оне бића енергетског састава, црпљење, отров и куга не утичу на њих."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
@@ -2422,17 +2612,15 @@ msgstr "спретност"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:439
-#, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
 msgstr ""
-"Спретне јединице чине 1 поен штете више при сваком успешном удару у "
-"одступној борби."
+"<italic>text='Спретне'</italic> јединице чине 1 поен штете више при сваком "
+"успешном удару у одступној борби."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:441
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2464,7 +2652,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:449
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2474,9 +2661,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Јединице истакнутог здравља имају 1 УП плус 1 УП по нивоу више него обичне, "
-"и зацељују уобичајена 2 УП после сваког потеза у коме се нису бориле. Такође "
-"трпе за четврт мање штете од отрова."
+"Јединице истакнутог <italic>text='здравља'</italic> имају 1 УП плус 1 УП по "
+"нивоу више него обичне, и зацељују уобичајена 2 УП после сваког потеза у "
+"коме се нису бориле. Такође трпе за четврт мање штете од отрова."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:454
@@ -2485,12 +2672,12 @@ msgstr "приглупост"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:455
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
-"Приглупе јединице трпе 20% увећања неопходног искуства да би испредњачиле."
+"<italic>text='Приглупе'</italic> јединице трпе 20% увећања неопходног "
+"искуства да би испредњачиле."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:457
@@ -2512,10 +2699,11 @@ msgstr "тромост"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:463
-#, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
-msgstr "Троме јединице имају -1 на кретање, али 5% више ударпоена."
+msgstr ""
+"<italic>text='Троме'</italic> јединице имају −1 на кретање, али 5% више "
+"ударпоена."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:465
@@ -2538,26 +2726,26 @@ msgstr "крхкост"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:471
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
 "hitpoints and melee damage."
-msgstr "Крхке јединице трпе -1 на ударпоене и штету у блиској борби."
+msgstr ""
+"<italic>text='Крхке'</italic> јединице трпе −1 на ударпоене и штету у "
+"блиској борби."
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
-#, fuzzy
-#| msgid "trait^Undead"
 msgid "trait^Aged"
-msgstr "немртвост"
+msgstr "старост"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:477
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
-msgstr "Крхке јединице трпе -1 на ударпоене и штету у блиској борби."
+msgstr ""
+"<italic>text='Остареле'</italic> јединице трпе −8 на ударпоене и −1 на "
+"кретање и штету у блиској борби."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:485
@@ -2577,7 +2765,6 @@ msgstr "равница"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:497
-#, fuzzy
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild. Being open ground, grassland is "
@@ -2587,10 +2774,10 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"Равница представља отворене просторе, било обрађене, покошене за испашу, или "
-"дивље. Равницом је лако кретати се, али је тешко у њој бранити се. Јединице "
-"које се добро носе у равници су обично или коњичке, или врло окретне "
-"јединице, којима отворени простори иду на руку.\n"
+"<italic>text='Равница'</italic> представља отворене просторе, било обрађене, "
+"покошене за испашу, или дивље. Равницом је лако кретати се, али је тешко у "
+"њој бранити се. Јединице које се добро носе у равници су обично или коњичке, "
+"или врло окретне јединице, којима отворени простори иду на руку.\n"
 "\n"
 "Већина јединица има одбрану од 30 до 40% у равници."
 
@@ -2601,16 +2788,16 @@ msgstr "друм"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:511
-#, fuzzy
 msgid ""
 "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
 "\n"
 msgstr ""
-"Друмови су стазе угажене земље, настале преласцима многих путника преко њих. "
-"Што се играња тиче, друмови дођу исто што и <ref>dst='terrain_flat' "
-"text='равница'</ref>."
+"<italic>text='Друмови'</italic> су стазе угажене земље, настале преласцима "
+"многих путника преко њих. Што се играња тиче, друмови дођу исто што и "
+"<ref>dst='terrain_flat' text='равница'</ref>.\n"
+"\n"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:518
@@ -2619,7 +2806,6 @@ msgstr "шума"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:525
-#, fuzzy
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2637,15 +2823,15 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests.\n"
 "\n"
 msgstr ""
-"Шуме представљају било које земљиште са довољно растиња да ограничи "
-"покретљивост кроз њих. Иако успоравају скоро свакога, шуме већини јединица "
-"пружају и већу заштиту него отворен терен. Коњица, међутим, има толико "
-"проблема у кретању, да им је свака користи од прикривености негирана. "
-"Вилењаци су изузетак ових општих правила о шуми. Не само да се могу "
-"неометано кретати у њој, већ имају и значајну одбрамбену добит. Патуљци су "
-"још један изузетак; иако могу да се пробијају кроз шуму без много губитка у "
-"брзини, њихова потпуна неупознатост са таквим тереном води малој "
-"заштићености у борби.\n"
+"<italic>text='Шуме'</italic> представљају било које земљиште са довољно "
+"растиња да ограничи покретљивост кроз њих. Иако успоравају скоро свакога, "
+"шуме већини јединица пружају и већу заштиту него отворен терен. Коњица, "
+"међутим, има толико проблема у кретању, да им је свака користи од "
+"прикривености негирана. Вилењаци су изузетак ових општих правила о шуми. Не "
+"само да се могу неометано кретати у њој, већ имају и значајну одбрамбену "
+"добит. Патуљци су још један изузетак; иако могу да се пробијају кроз шуму "
+"без много губитка у брзини, њихова потпуна неупознатост са таквим тереном "
+"води малој заштићености у борби.\n"
 "\n"
 "Већина јединица има 50% заштите у шуми, али је коњица ограничена на 30%. "
 "Вилењаци, с друге стране, добијају чак 60 до 70% у одбрани, чак и на коњима. "
@@ -2659,7 +2845,6 @@ msgstr "брда"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:540
-#, fuzzy
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2672,14 +2857,15 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills.\n"
 "\n"
 msgstr ""
-"Брда чини сваки разумно нераван терен, са довољно удолина и узвишица да "
-"пружи некакву заштиту. Већини јединица је тешко кретати се брдима. Патуљци, "
-"тролови и оркови су довољно упознати са оваквим тереном, да им кретање не "
-"буде отежано. Коњица има озбиљних проблема, који негирају могуће користи у "
-"одбрани.\n"
+"<italic>text='Брда'</italic> чини сваки разумно нераван терен, са довољно "
+"удолина и узвишица да пружи некакву заштиту. Већини јединица је тешко "
+"кретати се брдима. Патуљци, тролови и оркови су довољно упознати са оваквим "
+"тереном, да им кретање не буде отежано. Коњица има озбиљних проблема, који "
+"негирају могуће користи у одбрани.\n"
 "\n"
 "Већина јединица има око 50% заштите у брдима, док је коњица ограничена на "
-"40%. Патуљци уживају чак 60% заштите у брдима."
+"40%. Патуљци уживају чак 60% заштите у брдима.\n"
+"\n"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:547
@@ -2688,7 +2874,6 @@ msgstr "планине"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:552
-#, fuzzy
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move. By this nature, they provide a considerable "
@@ -2700,12 +2885,12 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
-"Планине су довољно стрме да јединице често морају да се веру преко препрека "
-"да би се кретале. Стога, планине пружају приличну заштиту већини јединица, "
-"али их такође и озбиљно ограничавају у кретању. Већина коњичких јединица "
-"једноставно не може ићи планинским тереном; изузетак томе је вилењачка "
-"коњица, као гоблински вукоседлаши. Планине су и патуљцима и троловима домаћи "
-"терен, те се они врло лако сналазе по њима.\n"
+"<italic>text='Планине'</italic> су довољно стрме да јединице често морају да "
+"се веру преко препрека да би се кретале. Стога, планине пружају приличну "
+"заштиту већини јединица, али их такође и озбиљно ограничавају у кретању. "
+"Већина коњичких јединица једноставно не може ићи планинским тереном; "
+"изузетак томе је вилењачка коњица, као гоблински вукоседлаши. Планине су и "
+"патуљцима и троловима домаћи терен, те се они врло лако сналазе по њима.\n"
 "\n"
 "Већина јединица има око 60% заштите у планини, а патуљци уживају 70%."
 
@@ -2716,7 +2901,6 @@ msgstr "мочвара"
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:564
-#, fuzzy
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps slow "
 "down nearly everyone, and inhibit their ability to defend themselves. An "
@@ -2727,10 +2911,11 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
-"Мочвару чине све врсте клизног земљишта. Мочваре успоравају скоро сваког, а "
-"и сметају одбрани. Изузетак томе су расе веште у кретању водом, које имају и "
-"пуну покретљивост и заштиту. Они који пребивају у оваквим крајевима, такође "
-"су умешни у коришћењу мочварног терена за скривање.\n"
+"<italic>text='Мочвару'</italic> чине све врсте клизног земљишта. Мочваре "
+"успоравају скоро сваког, а и сметају одбрани. Изузетак томе су расе веште у "
+"кретању водом, које имају и пуну покретљивост и заштиту. Они који пребивају "
+"у оваквим крајевима, такође су умешни у коришћењу мочварног терена за "
+"скривање.\n"
 "\n"
 "Већина јединица мора се помирити са 30% заштите у мочварама. Насупрот њима, "
 "морејци, нагајци и сауријанци уживају чак 60%."
@@ -2742,7 +2927,6 @@ msgstr "плитка вода"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:576
-#, fuzzy
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2755,11 +2939,11 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
-"Плитка вода представља водене појасеве који досежу отприлике до људског "
-"струка. То је већ довољно да успори скоро свакога и остави их незаштићене "
-"при нападу. Патуљцима то посебно тешко пада, пошто им вода досеже скоро до "
-"глава. Изузетак су расе природно прилагођене пливању, које стога имају пуну "
-"покретљивост и значајну добит у одбрани.\n"
+"<italic>text='Плитка вода'</italic> представља водене појасеве који досежу "
+"отприлике до људског струка. То је већ довољно да успори скоро свакога и "
+"остави их незаштићене при нападу. Патуљцима то посебно тешко пада, пошто им "
+"вода досеже скоро до глава. Изузетак су расе природно прилагођене пливању, "
+"које стога имају пуну покретљивост и значајну добит у одбрани.\n"
 "\n"
 "Већина јединица трпи свега 20 до 30% заштите у плиткој води, док нагајци и "
 "морејци уживају 60%"
@@ -2771,7 +2955,6 @@ msgstr "дубока вода"
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:588
-#, fuzzy
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head. Most units cannot enter deep water: it is the domain "
@@ -2779,9 +2962,9 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
-"Дубока вода представља све појасеве довољно дубоке да пређу човеку преко "
-"главе. Већина јединица не може ући у дубоку воду; она је погодна онима који "
-"или лете, или су одлични пливачи.\n"
+"<italic>text='Дубока вода'</italic> представља све појасеве довољно дубоке "
+"да пређу човеку преко главе. Већина јединица не може ући у дубоку воду; она "
+"је погодна онима који или лете, или су одлични пливачи.\n"
 "\n"
 "И морејци и нагајци имају 50% заштите у дубокој води, уз пуну покретљивост."
 
@@ -2792,7 +2975,6 @@ msgstr "клизавица"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:600
-#, fuzzy
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice. Most units are slowed down on it, and have a harder "
@@ -2801,10 +2983,10 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"Клизави терен означава сваку равничарску област која је прекривена снегом "
-"или ледом. Успорава већину јединица, и отежава им одбрану. Имајте у виду да "
-"пливачке јединице, чак и оне што могу да дишу под водом, не могу пливати под "
-"ледом.\n"
+"<italic>text='Клизави'</italic> терен означава сваку равничарску област која "
+"је прекривена снегом или ледом. Успорава већину јединица, и отежава им "
+"одбрану. Имајте у виду да пливачке јединице, чак и оне што могу да дишу под "
+"водом, не могу пливати под ледом.\n"
 "\n"
 "Већина јединица има 20 до 40% заштите на клизавици."
 
@@ -2815,7 +2997,6 @@ msgstr "замак"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2827,11 +3008,11 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
-"Замкови означавају сва трајна утврђења. Скоро све јединице добијају значајну "
-"заштиту док се налазе у замку, а све добијају и пуну покретљивост. "
-"Постављање јединица у замку одражава његову одбрамбену намену; ако је неко "
-"поље замка празно, непријатељ може просто ући на њега и тако уживати исту "
-"одбрану као и било ко други у замку.\n"
+"<italic>text='Замкови'</italic> означавају сва трајна утврђења. Скоро све "
+"јединице добијају значајну заштиту док се налазе у замку, а све добијају и "
+"пуну покретљивост. Постављање јединица у замку одражава његову одбрамбену "
+"намену; ако је неко поље замка празно, непријатељ може просто ући на њега и "
+"тако уживати исту одбрану као и било ко други у замку.\n"
 "\n"
 "Већина јединица добија око 60% заштите у замку.\n"
 "\n"
@@ -2843,7 +3024,6 @@ msgstr "песак"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:628
-#, fuzzy
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -2852,9 +3032,9 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
-"Непостојаност песка чини га већини јединица тежим за прелазак, и оставља их "
-"отвореним за нападе. Насупрот томе, широка стопала и змијолика тела "
-"гуштерских раса знатно олакшавају кретање песком.\n"
+"Непостојаност <italic>text='песка'</italic> чини га већини јединица тежим за "
+"прелазак, и оставља их отвореним за нападе. Насупрот томе, широка стопала и "
+"змијолика тела рептилских раса знатно олакшавају кретање песком.\n"
 "\n"
 "Већина јединица добије 20 до 40% заштите у песку."
 
@@ -2865,14 +3045,14 @@ msgstr "пустиња"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:638
-#, fuzzy
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
-"Пустиње су понешто различитог састава од малих пешчаних јама или плажа, али "
-"су у оквиру игре истоветне. Види <ref>dst='terrain_sand' text='песак'</ref>."
+"<italic>text='Пустиње'</italic> су понешто различитог састава од малих "
+"пешчаних јама или плажа, али су у оквиру игре истоветне. Види "
+"<ref>dst='terrain_sand' text='песак'</ref>."
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:645
@@ -2881,7 +3061,6 @@ msgstr "пећина"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:650
-#, fuzzy
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass. Most units are wholly unfamiliar with the "
@@ -2893,13 +3072,13 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
-"У пећински терен спадају сва подземна окна са довољно простора да се кроз "
-"њих креће. Већини јединица то је потпуно непознат терен, и стога су и "
-"успорене и рањиве у одбрани. Патуљци и тролови, којима су насупрот томе "
-"домови у пећинама, лако се крећу њима. Посебно уживају патуљци, који врлином "
-"свог ниског раста могу заобилазити препреке несавладиве другим расама. "
-"Повремено су пећине <ref>dst='terrain_illuminated_cave' text='обасјане'</"
-"ref>.\n"
+"У <italic>text='пећински'</italic> терен спадају сва подземна окна са "
+"довољно простора да се кроз њих креће. Већини јединица то је потпуно "
+"непознат терен, и стога су и успорене и рањиве у одбрани. Патуљци и тролови, "
+"којима су насупрот томе домови у пећинама, лако се крећу њима. Посебно "
+"уживају патуљци, који врлином свог ниског раста могу заобилазити препреке "
+"несавладиве другим расама. Повремено су пећине "
+"<ref>dst='terrain_illuminated_cave' text='обасјане'</ref>.\n"
 "\n"
 "Већина јединица добија 20 до 40% заштите у пећинама, док патуљци имају 50%."
 
@@ -2910,7 +3089,6 @@ msgstr "стеновита пећина"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:662
-#, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -2924,12 +3102,13 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
-"Стеновите пећине настају дејством воде и ветра, који носе ерозивне честице "
-"које стружу стене. Услед многих назубљења и удубљења, већини јединица је "
-"кретање отежано, али се могу добро скривати. Патуљци и тролови, који су "
-"главни насељеници пећина, лако се крећу овим тереном. Патуљци посебно, услед "
-"своје мале висине, су у пуној предности у овим пећинама. Повремено су пећине "
-"<ref>dst='terrain_illuminated_cave' text='обасјане'</ref>.\n"
+"<italic>text='Стеновите пећине'</italic> настају дејством воде и ветра, који "
+"носе ерозивне честице које стружу стене. Услед многих назубљења и удубљења, "
+"већини јединица је кретање отежано, али се могу добро скривати. Патуљци и "
+"тролови, који су главни насељеници пећина, лако се крећу овим тереном. "
+"Патуљци посебно, услед своје мале висине, су у пуној предности у овим "
+"пећинама. Повремено су пећине <ref>dst='terrain_illuminated_cave' "
+"text='обасјане'</ref>.\n"
 "\n"
 "Већина јединица има око 50% заштите у стеновитим пећинама, коњица 40%, а "
 "патуљци чак 60%."
@@ -2941,7 +3120,6 @@ msgstr "обасјана пећина"
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:672
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2952,7 +3130,7 @@ msgstr ""
 "Ретки предели подземног света обасјани су светлошћу дана што се пробија кроз "
 "пукотине у суморну таму. Ово пружа добит у нападу законитим јединицама, а "
 "уклања добит хаотичним. У сваком погледу, обасјана пећина је иста као и "
-"обичан пећински терен."
+"обичан <ref>dst='terrain_cave' text='пећински терен'</ref>."
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:679
@@ -2961,7 +3139,6 @@ msgstr "гљиварски гај"
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:684
-#, fuzzy
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -2973,12 +3150,12 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"Гљиварски гајеви су непрегледне подземне шуме огромних печурки, које одлично "
-"успевају у влажној тами. Већини јединица је проблем корачати преко "
-"сунђерасте подлоге од мањих печурака, али зато имају обиље заклона иза већих "
-"стабљика. Коњичке јединице су, међутим, потпуно упетљане и недостаје им "
-"слобода кретања у борби. С обзиром на своју склоност распадању, немртве "
-"јединице делају сасвим добро у овим гљивичним шумама.\n"
+"<italic>text='Гљиварски гајеви'</italic> су непрегледне подземне шуме "
+"огромних печурки, које одлично успевају у влажној тами. Већини јединица је "
+"проблем корачати преко сунђерасте подлоге од мањих печурака, али зато имају "
+"обиље заклона иза већих стабљика. Коњичке јединице су, међутим, потпуно "
+"упетљане и недостаје им слобода кретања у борби. С обзиром на своју склоност "
+"распадању, немртве јединице делају сасвим добро у овим гљивичним шумама.\n"
 "\n"
 "Већина јединица прима 50 до 60% заштите у гљиварским гајевима, али коњица "
 "свега 20%."
@@ -2990,7 +3167,6 @@ msgstr "село"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:698
-#, fuzzy
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise. Almost all units, even cavalry, have an easy time navigating "
@@ -3003,11 +3179,11 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
-"Села чине било какве скупине грађевина, људских или других. Скоро све "
-"јединице, чак и коњица, немају проблема у кретању кроз села, а већина их "
-"добија и предност у одбрани док су у селу. Јединице се у селу могу окрепити "
-"и извидати повреде, услед чега свака јединица добија 8 УП по потезу док се "
-"налази у селу; такође, бива исецељена уколико је отрована.\n"
+"<italic>text='Села'</italic> чине било какве скупине грађевина, људских или "
+"других. Скоро све јединице, чак и коњица, немају проблема у кретању кроз "
+"села, а већина их добија и предност у одбрани док су у селу. Јединице се у "
+"селу могу окрепити и извидати повреде, услед чега свака јединица добија 8 УП "
+"по потезу док се налази у селу; такође, бива исцељена уколико је отрована.\n"
 "\n"
 "Већина јединица добија 50 до 60% заштите у селима, а коњица само 40%.\n"
 "\n"
@@ -3019,7 +3195,6 @@ msgstr "подводно село"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:712
-#, fuzzy
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -3031,12 +3206,12 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"Подводна села су домови морејцима и нагајцима. Док се водо-бивствујућа "
-"створења у њима осећају као код куће, становницима копна отежано је кретање "
-"кроз ова села и њихова одбрана. Међутим, као и било које село, пружају "
-"средства за видање свим створењима чије су јединице способне за старање о "
-"својим повредама. Јединица која борави у селу извидаће осам ударпоена по "
-"потезу, или бити исцељена од отрова.\n"
+"<italic>text='Подводна села'</italic> су домови морејцима и нагајцима. Док "
+"се водо-бивствујућа створења у њима осећају као код куће, становницима копна "
+"отежано је кретање кроз ова села и њихова одбрана. Међутим, као и било које "
+"село, пружају средства за видање свим створењима чије су јединице способне "
+"за старање о својим повредама. Јединица која борави у селу извидаће осам "
+"ударпоена по потезу, или бити исцељена од отрова.\n"
 "\n"
 "Морејци и нагајци уживају 60% одбране у подводним селима, док је за копнене "
 "јединице тај постотак обично низак."
@@ -3048,17 +3223,16 @@ msgstr "расцеп"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:722
-#, fuzzy
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
-"У расцеп се рачуна какав бездан или кланац, онај који се, како му име каже, "
-"не може пешке превалити. Бездани су познати по тектонским зидовима, за које "
-"би били потребни дани да се пређу. Што се играња тиче, само летачке јединице "
-"могу прећи преко оваквог терена."
+"У <italic>text='расцеп'</italic> се рачуна какав бездан или кланац, онај "
+"који се, како му име каже, не може пешке превалити. Бездани су познати по "
+"тектонским зидовима, за које би били потребни дани да се пређу. Што се "
+"играња тиче, само летачке јединице могу прећи преко оваквог терена."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:729
@@ -3067,7 +3241,6 @@ msgstr "лава"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:732
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -3077,11 +3250,12 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
-"Опасности у покушајима савладавања лаве очигледне су. Што се кретања тиче, "
-"лава спада у <ref>dst='terrain_unwalkable' text='непроходан'</ref> терен, те "
-"је могу прећи само јединице које могу да лете повисоко изнад. Растопљена "
-"магма такође производи значајно исијавање, осветљавајући околну област. Ово "
-"пружа законитим јединицама предност у нападу, а одузима је хаотичним."
+"Опасности у покушајима савладавања <italic>text='лаве'</italic> очигледне "
+"су. Што се кретања тиче, лава спада у <ref>dst='terrain_unwalkable' "
+"text='непроходан'</ref> терен, те је могу прећи само јединице које могу да "
+"лете повисоко изнад. Растопљена магма такође производи значајно исијавање, "
+"осветљавајући околну област. Ово пружа законитим јединицама предност у "
+"нападу, а одузима је хаотичним."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:739
@@ -3100,7 +3274,7 @@ msgid ""
 msgstr ""
 "На местима где је река врло плитка, копнене јединице је могу лако прегазити. "
 "Сва створења прилагођена пливању имају пуну покретљивост у таквим појасевима "
-"реке. У погледу играња, речни газ узима се или као равница или као плитка "
+"реке. У погледу извођења, речни газ узима се или као равница или као плитка "
 "вода, већ према томе које пружа бољу заштиту и покретљивост јединици која "
 "стоји на њему."
 
@@ -3111,7 +3285,6 @@ msgstr "обалски гребен"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:754
-#, fuzzy
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand. This provides most land units with a more steady footing and "
@@ -3120,10 +3293,10 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"Обалски гребени су плићаци сачињени од камена, корала и песка. Већини "
-"копнених јединица пружају бољи ослонац и одбрамбени положај него што је "
-"уобичајено за гажење кроз плитку воду, а водо-бивствујућим расама "
-"представљају изванредну заштиту.\n"
+"<italic>text='Обалски гребени'</italic> су плићаци сачињени од камена, "
+"корала и песка. Већини копнених јединица пружају бољи ослонац и одбрамбени "
+"положај него што је уобичајено за гажење кроз плитку воду, а водо-"
+"бивствујућим расама представљају изванредну заштиту.\n"
 "\n"
 "И морејци и нагајци уживају 70% заштите на обалским гребенима."
 
@@ -3134,7 +3307,6 @@ msgstr "мост"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:767
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -3148,10 +3320,10 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
-"Онима који су кадри да их граде, мостови пружају слободу од хировитих "
-"природних водених токова, чији прелази израњају и нестају са скоковима и "
-"падовима водостаја. А да се не помиње луксуз сувих стопала, што никако није "
-"за занемарити у хладнијим месецима године.\n"
+"Онима који су кадри да их граде, <italic>text='мостови'</italic> пружају "
+"слободу од хировитих природних водених токова, чији прелази израњају и "
+"нестају са скоковима и падовима водостаја. А да се не помиње луксуз сувих "
+"стопала, што никако није за занемарити у хладнијим месецима године.\n"
 "\n"
 "Било за копнене или пливачке јединице, мост је најбоље од оба света. У "
 "оквиру игре, узима се или као равница или као плитка вода, према томе која "
@@ -3194,7 +3366,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:799
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3204,7 +3375,7 @@ msgid ""
 msgstr ""
 "\n"
 "улази у исправљачки режим (не ради у вишеигрању); погледајте "
-"<ref>dst='debug_commands' text='Исправљачке наредбе'</ref>.\n"
+"<ref>dst='debug_commands' text='исправљачке наредбе'</ref>.\n"
 "Исправљање се искључује напуштањем игре или наредбом :nodebug.\n"
 "\n"
 
@@ -3323,7 +3494,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3337,8 +3507,9 @@ msgstr ""
 "\n"
 "мења управљача стране (задате бројем) на дато корисничко име (надимак играча "
 "или посматрача). Који играч припада којој страни можете проверити у дијалогу "
-"„Поставке сценарија“; притисните дугме за више у табели стања (подразумевно "
-"алт+S) да дођете дотле. Домаћин може изменити управљање било којом страном.\n"
+"<bold>text='Поставке сценарија'</bold>; притисните дугме за више у табели "
+"стања (подразумевно Alt+S) да дођете дотле. Домаћин може изменити управљање "
+"било којом страном.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3358,7 +3529,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:844
-#, fuzzy
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3366,8 +3536,10 @@ msgid ""
 "game.\n"
 "\n"
 msgstr ""
-"Шаље приватну поруку. Не можете слати поруке играчима који не управљају "
-"неком страном у текућој партији у којој сте и сами."
+"\n"
+"шаље приватну поруку кориснику. Док сте у партији, не можете слати приватне "
+"поруке играчима који тренутно управљају неком од страна у истој партији.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:847
@@ -4011,7 +4183,7 @@ msgstr "Maкс. бонус УП +3, макс. ИП +20%"
 #. [time]: id=indoors
 #: data/core/macros/schedules.cfg:70
 msgid "Indoors"
-msgstr ""
+msgstr "унутрашњост"
 
 #. [time]: id=deep_underground
 #: data/core/macros/schedules.cfg:90
@@ -4021,124 +4193,112 @@ msgstr "дубоко подземље"
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:162
 msgid "Midnight"
-msgstr ""
+msgstr "поноћ"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:174
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "друга стража"
+msgstr "друга стража — први час"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:186
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "друга стража"
+msgstr "друга стража — други час"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:198
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "друга стража"
+msgstr "друга стража — трећи час"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:210
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "друга стража"
+msgstr "друга стража — четврти час"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:222
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "друга стража"
+msgstr "друга стража — пети час"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:234
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "друга стража"
+msgstr "друга стража — шести час"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:257
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "јутро — први час"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:266
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "јутро — други час"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:275
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "јутро — трећи час"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:284
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "јутро — четврти час"
 
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:293
 msgid "Midday"
-msgstr ""
+msgstr "подне"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "поподне — први час"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "поподне — други час"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "поподне — трећи час"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:329
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "поподне — четврти час"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:338
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "поподне — пети час"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "поподне — шести час"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "прва стража — први час"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:381
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "прва стража — други час"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:393
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "прва стража — трећи час"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:405
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "прва стража четврти час"
 
 #: data/core/macros/special-notes.cfg:5
 msgid ""
@@ -4171,10 +4331,8 @@ msgid " This unit is capable of basic healing."
 msgstr " Ова јединица познаје основе лечења."
 
 #: data/core/macros/special-notes.cfg:17
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid " This unit is capable of rapid healing."
-msgstr " Ова јединица познаје основе лечења."
+msgstr " Ова јединица је добро изучила лечење."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
@@ -4317,10 +4475,6 @@ msgstr ""
 "непријатеља, али само у нападу."
 
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
-#| msgid ""
-#| " The unit has magical attacks, which always have a high chance of hitting "
-#| "an opponent."
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
@@ -4381,7 +4535,7 @@ msgstr "оданост"
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:10
 msgid "Zero upkeep"
-msgstr "нулти издаци"
+msgstr "без издатака"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:22
@@ -4413,15 +4567,13 @@ msgstr "механичност"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "elemental"
-msgstr "скривање"
+msgstr "елементарност"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:53
-#, fuzzy
 msgid "female^elemental"
-msgstr "оданост"
+msgstr "елементарност"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:66
@@ -4505,20 +4657,18 @@ msgstr "у боју без заостатка у неповољна доба д�
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
-msgstr "збирна"
+msgstr "неукроћеност"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
-msgstr "неутрална"
+msgstr "неукроћеност"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
 msgid "Receive only 50% defense in land-based villages"
-msgstr ""
+msgstr "само 50% одбране у копненим селима"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -4533,12 +4683,12 @@ msgstr "нејакост"
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:226
 msgid "slow"
-msgstr "спорост"
+msgstr "тромост"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:227
 msgid "female^slow"
-msgstr "спорост"
+msgstr "тромост"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:243
@@ -4557,9 +4707,8 @@ msgstr "старост"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:257
-#, fuzzy
 msgid "female^aged"
-msgstr "приглупост"
+msgstr "старост"
 
 #. [race]: id=bats
 #: data/core/units.cfg:42
@@ -4585,6 +4734,11 @@ msgid ""
 "especially when encountered in groups. Typically nocturnal, they are often "
 "kept (and occasionally tamed) by those who share their love of the night."
 msgstr ""
+"Шишмиша има разних величина и грађа, од којих је већина безопасна, хранећи "
+"се инсектима и другим животињицама. Али постоје и веће и злокобније врсте "
+"које су претња људима и другима расама, и њиховој стоци, посебно када се "
+"сусретну у групама. То су обично ноћна створења, и зато их често држе (а "
+"понекад и припитомљавају) они који деле исту склоност ка ноћи."
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
@@ -4669,6 +4823,64 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
+"Змагови су велика, крилата и ватродахна створења, спомен истинским "
+"змајевима. Просечан одрастао змаг сеже три метра у висину и лако тежи више "
+"од човека и коња му заједно. Кожа им је сачињена од тврде крљушти, отпорне "
+"на већину физичких утицаја осим пробојних и мразних удара. Већина змагова "
+"вична је правом лету, брзо преваљујући велику даљину. Ипак, сирова им тежина "
+"и обујам понешто ограничава вештину лета, чинећи их незграпним у ваздуху. "
+"Где је то могуће, за полетање користе обличја терена попут брда, планина и "
+"стабала, како би досегли већу висину и брзину. Срећом по њихове непријатеље, "
+"створења су сасма неспретна и изненађујуће спора у боју. Ово их, уз големи "
+"стас, чини лаким метама онима што се усуде насрнути.\n"
+"\n"
+"Змагови су самосвојно магична створења, којима тајанствени унутрашњи плам "
+"погони саме животе. Ово се лако примети кад неки од њихове сорте страда у "
+"боју: плам се ослободи, спаљујући остатке до пепела. Тај унутрашњи плам им "
+"је и највећа слабост, чинећи их изнимно рањивим на мразне нападе. Упркос "
+"својој магичној природи, змагови нису способни за контролисано усмеравање "
+"магије. Док им свепрожимајућа телесна магија даје живот и омогућава бљување "
+"ватре, немају свесну контролу над њеним деловањем.\n"
+"\n"
+"<header>text='Друштво'</header>\n"
+"Змагови су сразмерно ратоборна раса, чија се друштва понајбоље могу описати "
+"као узорна војничка устројства. Срж змашког племена група је прекаљених "
+"ратника, на челу са свеопште поштованим — или страхопоштованим — "
+"<ref>dst='dominant' text='надмоћником'</ref>, који друштвом влада гвозденом "
+"песницом. Од сваког се змага очекује да заради своје место у строгој "
+"хијерархији, да поштује своје главешине и командује својим подређенима. "
+"Приступ владајућој елити могуће је само кроз изазов и победу над надређеним "
+"у борби један на један, што је и начин на који се успоставља хијерархија "
+"међу самом елитом. Било каква врста обмањивања својих сународника сматра се, "
+"без изузетка, кукавичком и неприхватљивом.\n"
+"\n"
+"Док их ратоборна природа и територијална свест гони на дивљу одбрану својих "
+"насеобина, змагови ретко упадају на подручја већ под управом неке од других "
+"великих раса. Уместо тога насељавају се у ненасељеним областима, где "
+"успостављају свој поредак. Претежно се хране великом ловином коју налазе у "
+"удолинама око својих домова, али је познато да се новоизлегли и ниже змашке "
+"касте хране и врстама маховина и гљива које гаје дубоко у својим пећинама. "
+"Израда оклопа и оружја једино је умеће које змагови цене и нити знају нити "
+"траже других наука поред ове. Ипак, малобројни предмети што их израђују "
+"каквоће су скоро без премца, с којом се може мерити само најбоље из "
+"патуљачких ковница.\n"
+"\n"
+"Змагови се легу из јаја, и обично достижу између 20 и 30 година старости. За "
+"једног змага, смрт у боју је најпожељнији начин да се напусти овај свет. За "
+"разлику од старијих чланова других раса, змагови природно постају све "
+"насртљивији и необузданији како се ближе крају живота, можда како би "
+"осигурали себи место у јуначким предањима своје врсте.\n"
+"\n"
+"<header>text='Распрострањеност'</header>\n"
+"Постојбина змагова беше архипелаг вулканских острва у <ref>dst='great_ocean' "
+"text='Великом океану'</ref> по имену <ref>dst='morogor' text='Морогор'</"
+"ref>. Спрега пренасељености и постепеног тоњења многих од тих острва учини "
+"да се колоније змашке размиле до <ref>dst='great_continent' text='Великог "
+"континента'</ref>. Змагови обично свијају домове у планинским пећинама, "
+"близу вулкана ради заштите својих јаја, излеглих и ковница. Док змагови "
+"уживају у топлом, унутрашњи им плам омогућава да се одрже у сразмерно "
+"хладним пределима. Ово им је допустило да настане чак и неке планине на "
+"далеком северу Великог континента."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:90
@@ -4755,7 +4967,7 @@ msgstr ""
 "Једини изузетак оваквом опхођењу чине према људима, што се може испратити до "
 "раздобља Халдрика I и пристизања људи и оркова на континент. У то време "
 "патуљци почеше допуштати неким људима, понајпре неистомишљеницима и "
-"одметницима из Краљевства Веснота, да насељавају одређена подручја "
+"одметницима из Веснотског краљевства, да насељавају одређена подручја "
 "Североземља. Повод томе не беше изненађујућ; положај ових појединаца "
 "подсећаше патуљке на сопствене прапочетке прогона, изазивајући осећање "
 "блискости. Патуљцима су имали и користи од успостављања веза са изгнаницима. "
@@ -4774,7 +4986,7 @@ msgstr ""
 "користе овај прах за упућивање малих предмета неизмерним брзинама ка "
 "противнику. С обзиром на своје технолошке тежње, многи су патуљци "
 "неповерљиви према зналцима магије. Па ипак, неки увежбавају облике магије "
-"засноване на резбарењу рунâ; знани као руноковци, гравурама могу зачарати "
+"засноване на резбарењу рунâ; знани као рунотворци, гравурама могу зачарати "
 "предмете како би им оснажили неке природне особине."
 
 #. [race]: id=elf
@@ -4831,6 +5043,39 @@ msgid ""
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
 "having existed for over a millennium."
 msgstr ""
+"Наспрам људи, вилењаци су нешто виши растом, окретнији, али нежније грађе. "
+"Уши су им незнатно зашиљене, тен блед, а коса углавном плава. Мало је "
+"разлика између људи и вилењака изразитијих од необично дугог века потоњих — "
+"не опхрва ли их болест, удес или рат, обично поживе два и по столећа. Док су "
+"познати вилењаци високих магијских склоности који су дочекали и крај трећег "
+"столећа, већина почиње физички да посустаје између двадесетпете и тридесете "
+"деценије, да би потом убрзано свенули за непуну годину или две.\n"
+"\n"
+"Вилењаци су у малој мери природно прожети магијом. Иако се претежно не умеју "
+"њоме непосредно служити, њено потајно присуство пружа им оштра чула и дуг "
+"век. Магија у вилењака потпомаже и извесне вештине, попут стрељаштва или "
+"прикривања, омогућавајући постигнућа у њима већини овосветских бића "
+"запањујућим. Вилењаци који се науче општијим начинима употребе ове моћи могу "
+"постати њени истински владари. Многи изаберу да свој дар примене у видању "
+"других.\n"
+"\n"
+"Понеки вилењак, који се дубоко отисне стазама магије и мистицизма, постане "
+"осетљив на присуство хладног гвожђа толико да га ово може опећи. Вилењачка "
+"предања наговештавају чешћу појаву овога у далекој прошлости.\n"
+"\n"
+"Вилењаци проводе пуно времена изоштравајући своју надареност и вештине. Они "
+"који нису пристали магијским умећима обично се посвећују физичким вештинама. "
+"Исход тога је вилењачко ненадмашно стрељаштво, можда њихов најзначајнији "
+"ратнички правац. Готово сви вилењачки борци носе лук, а ниједна се друга "
+"раса не може мерити с вилин-стрелцима по хитрости и прецизности. Сви "
+"вилењаци такође деле силну приврженост неисквареној природи. Често се "
+"осећају непријатно на пустим неозелењеним просторима. Углавном живе по "
+"шумама Великог континента: у Етенвуду на југозападу, Весмеру на "
+"северозападу, и великим северним шумама Линтанира.\n"
+"\n"
+"Вилењаци су најдревнија раса континента, могуће с изузетком тролова. Многим "
+"вилењачким насеобинама није могуће поуздано проценити старост, која се "
+"засигурно протеже више од миленијума."
 
 #. [race]: id=goblin
 #: data/core/units.cfg:132
@@ -4868,6 +5113,24 @@ msgid ""
 "exception of jobs that require the brute strength of true orcs. Those the "
 "orcs revel in as proof of their prowess."
 msgstr ""
+"Гоблини се, упркос својој појави, рађају као сродници оркова и припадници су "
+"исте расе. Док се код других раса деца обично рађају појединачно или у пару, "
+"оркови добијају велике накоте, због чега им бројност брзо експлодира. У "
+"сваком накоту биће само један до два права орка, који ће нарасти до пуне "
+"величине и снаге својствене својој раси. Наћи ће се ту још неколико "
+"полуоркова, уочљиво слабијих од своје велике браће, који ће као одрасли "
+"добити споредне улоге у борби, попут стрељаштва. Остали, обично половина "
+"накота па и преко тога, биће гоблини.\n"
+"\n"
+"Гоблини су нејаки и прилично крхки, и ретко престижу по висини и стасу "
+"људску децу. Живе готово ропски под својим већим сродницима, а у бојевима се "
+"користе као потрошна роба. Упркос својој трагичној судбини, они итекако "
+"опстају: донекле зато што су тако бројни, али и јер су оркови врло свесни "
+"колико зависе од гоблина.\n"
+"\n"
+"У орковском друштву гоблини изводе главнину послова, с изузетком само оних "
+"који захтевају сирову снагу истинских оркова. У таквим пословима уживају "
+"оркови сами, као у доказу сопствене моћи."
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:150
@@ -5007,6 +5270,10 @@ msgid ""
 "intelligent being. Most mechanical things neither move nor think on their "
 "own, but some do so as a result of magical enchantment."
 msgstr ""
+"Покретани ни природним животом ни некромантијом, израз "
+"<italic>text='машина'</italic> описује предмете које су створила разумна "
+"бића. Већина машина се нити креће нити размишља својом вољом, али неке ипак "
+"то чине заслугом магичне зачараности."
 
 #. [race]: id=merman
 #: data/core/units.cfg:208
@@ -5036,6 +5303,14 @@ msgid ""
 "ocean. They are typically wary of dry land, as they are awkward and clumsy "
 "there and they struggle greatly to move over rough or forested terrain."
 msgstr ""
+"Нешто попут споја човека и рибе, морејци су загонетна раса и рибљих и "
+"човеколиких својстава. Имају снажне репове који им омогућавају брзо кретање "
+"у свим воденим окружењима, а спретне руке и паметне умове којима су развили "
+"вештине израде алатки и других предмета. По природи на граници између мора и "
+"копна, морејци без проблема могу дисати како у води тако и на сувом. Иако "
+"могу да живе на копну, много су бржи и окретнији у води, па се ретко налазе "
+"подаље од океана. Клоне се сувог тла, пошто су на њему трапави и неспретни, "
+"и јако се тешко крећу по кршним и шумским подручјима."
 
 #. [race]: id=monster
 #: data/core/units.cfg:220
@@ -5044,8 +5319,6 @@ msgstr "чудовиште"
 
 #. [race]: id=monster
 #: data/core/units.cfg:221
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "чудовиште"
 
@@ -5061,6 +5334,9 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
+"Изразом „чудовиште“ описују се многе гнусне звери што походе пећине, "
+"дивљине, океанске дубине и друга поднебља свету. Такође су их пуне приче и "
+"ноћне море становника тих поднебља."
 
 #. [race]: id=naga
 #: data/core/units.cfg:230
@@ -5069,8 +5345,6 @@ msgstr "нагајац"
 
 #. [race]: id=naga
 #: data/core/units.cfg:231
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
 msgstr "нагајка"
 
@@ -5096,6 +5370,18 @@ msgid ""
 "themselves at odds with merfolk when their territories overlap, but overall "
 "nagas tend to favor swamps and rivers as much as open water."
 msgstr ""
+"Змијолики нагајци једна су од најмање схваћених раса на Великом континенту, "
+"делом због њихове ксенофобне природе а делом због њиховог туђинског "
+"окружења. Нагајци су једна од малобројних раса способних за делотворно "
+"кретање у води, што им отвара врата ка једном целом свету у суштини "
+"забрањеном становницима копна, али их и још више удаљава од копнених бића "
+"којих се клоне. Па ипак, нису истинска морска створења услед немогућност "
+"дисања у води, због чега морају устукнути пред безданом. Живот у приобалним "
+"подручјима отвара им копнени пут за бег од створења из дубине, док их држи "
+"подаље од свих оних који путују на ногама, копитима или крилима. Иако су "
+"нагајци понешто крхког стаса, обично су бржи и окретнији од својих "
+"противника. Понекад се нађу у сукобу са морејцима када им се територије "
+"преклопе, али углавном воле мочваре и реке више него отворено море."
 
 #. [race]: id=ogre
 #: data/core/units.cfg:241
@@ -5130,6 +5416,19 @@ msgid ""
 "is a sign of cooperation, domestication, or simply mutual opportunism is not "
 "known."
 msgstr ""
+"Огрови су дивља и нецивилизована раса што пребива углавном по дивљинама "
+"Великог континента. Физички наликују људима и орковима, али су већи и јачи. "
+"Чак су и млади огрови више него равни већини људи. У многим насељеним "
+"подручјима не трпе огрове, тако да их огрови што избегавају што бивају силом "
+"избацивани. Уместо тога вребају у планинским областима на рубовима "
+"цивилизације, где су гладни огровски разбојници стална претња путницима и "
+"караванима. Иако огрови нису посебно оштроумни нити брзи, због своје "
+"жилавости и физичке снаге радо су виђени у војскама других раса. Посебно их "
+"цене безобзирнији заповедници којима не смета огровска суровост. Мало се зна "
+"о биологији и друштвеним односима огрова, ако се уопште може рећи да их "
+"имају, али се прича да нападају заједно са вуковима и другим зверима. Да ли "
+"је то знак сарадње, припитомљавања или просто обостраног опортунизма, није "
+"познато."
 
 #. [race]: id=orc
 #: data/core/units.cfg:252
@@ -5415,10 +5714,8 @@ msgstr "вук"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:311
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
-msgstr "вилењакиња"
+msgstr "вучица"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:312
@@ -5601,40 +5898,3 @@ msgstr "Помоћ „Боја за Веснот“"
 #: src/help.cpp:3216
 msgid "Parse error when parsing help text: "
 msgstr "Грешка при рашчлањивању текста помоћи: "
-
-#, fuzzy
-#~| msgid "race^Human"
-#~ msgid "race^Khalifate Human"
-#~ msgstr "човек"
-
-#, fuzzy
-#~| msgid "race+female^Human"
-#~ msgid "race+female^Khalifate Human"
-#~ msgstr "човек"
-
-#, fuzzy
-#~| msgid "race+plural^Mechanical"
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "машине"
-
-#, fuzzy
-#~| msgid "race^Human"
-#~ msgid "race^Falcon"
-#~ msgstr "човек"
-
-#, fuzzy
-#~| msgid "race+female^Human"
-#~ msgid "race+female^Falcon"
-#~ msgstr "човек"
-
-#, fuzzy
-#~| msgid "race^Humans"
-#~ msgid "race^Falcons"
-#~ msgstr "људи"
-
-#, fuzzy
-#~ msgid "<header>text='Race specific topics'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Изгледи за погодак'</header>"

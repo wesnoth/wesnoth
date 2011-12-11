@@ -1,7 +1,7 @@
 # Translation of wesnoth-editor.po into Serbian.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010, 2011.
 # Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
 # Branko Kokanovic, 2006.
 msgid ""
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2010-02-22 13:52+0100\n"
+"PO-Revision-Date: 2011-11-30 16:10+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "Language: sr\n"
@@ -65,7 +65,7 @@ msgstr "pustinja"
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
 msgid "embellishments"
-msgstr ""
+msgstr "ornament"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:44
@@ -90,7 +90,7 @@ msgstr "pećina"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "obstacle"
-msgstr ""
+msgstr "prepreka"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:79
@@ -105,7 +105,7 @@ msgstr "zamak"
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:93
 msgid "bridge"
-msgstr ""
+msgstr "most"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:100
@@ -342,13 +342,15 @@ msgstr "(spoljašnji)"
 msgid "Will not work in game without extra care."
 msgstr "Neće raditi u igri bez dodatne brige."
 
+# |, no-check-spell
 #: src/editor/editor_palettes.cpp:526
 msgid "FG: "
-msgstr ""
+msgstr "Pred: "
 
+# |, no-check-spell
 #: src/editor/editor_palettes.cpp:527
 msgid "BG: "
-msgstr ""
+msgstr "Poz: "
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"
@@ -375,37 +377,13 @@ msgid "Could not save the map: $msg"
 msgstr "Ne mogu da sačuvam mapu: $msg"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
 msgstr "nijedan"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "Igrač $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"
 msgstr "Posebna postavka"
-
-# наслов
-#~ msgid "Choose player"
-#~ msgstr "Izbor igrača"
-
-#~ msgid ""
-#~ "Which player should start here? You can use alt and a number key to set "
-#~ "the starting position for a player, and del to clear the starting "
-#~ "position under the cursor. Pressing a number key by itself will scroll to "
-#~ "that player’s starting position."
-#~ msgstr ""
-#~ "Koji igrač kreće odavde? tasterom Alt i brojem možete zadati početni "
-#~ "položaj, a Delete uklanja onaj pod kursorom. Samo taster broja otklizaće "
-#~ "mapu do početnog položaja toga igrača."
-
-# well-spelled: Исп
-#~ msgid "FG"
-#~ msgstr "Isp."
-
-# well-spelled: Поз
-#~ msgid "BG"
-#~ msgstr "Poz."
