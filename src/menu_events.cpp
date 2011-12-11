@@ -3246,15 +3246,45 @@ void console_handler::do_layers() {
 		const map_location& loc_cut = img.get_loc();
 
 		std::ostringstream str;
+
+		int tz = image::tile_size;
+		SDL_Rect r = create_rect(0,0,tz,tz);
+
+		surface surf = image::get_image(img.get_filename());
+
+		// calculate which part of the image the terrain engine uses
+		if(loc_cut.valid()) {
+			// copied from image.cpp : load_image_sub_file()
+			r = create_rect(
+					((tz*3) / 4) * loc_cut.x
+					, tz * loc_cut.y + (tz / 2) * (loc_cut.x % 2)
+					, tz, tz);
+
+			if(img.get_center_x() >= 0 && img.get_center_y()>= 0){
+				r.x += surf->w/2 - img.get_center_x();
+				r.y += surf->h/2 - img.get_center_y();
+			}
+		}
+
 		str << (ri->is_background() ? "B ": "F ") << order
 			<< COLUMN_SEPARATOR
-			<< IMAGE_PREFIX << "terrain/foreground.png"
-			<< "~BLIT("
-				<< name << "~LOC("
-				<< loc_cut.x << "," << loc_cut.y << ","
-				<< img.get_center_x() << "," << img.get_center_y() << ")"
-			<< ")"
-			<< COLUMN_SEPARATOR
+			<< IMAGE_PREFIX << "terrain/foreground.png";
+
+		// cut and mask the image
+		// ~CROP and ~BLIT have limitations, we do some math to avoid them
+		SDL_Rect r2 = intersect_rects(r, create_rect(0,0,surf->w,surf->h));
+		if(r2.w > 0 && r2.h > 0) {
+			str << "~BLIT("
+					<< name << "~CROP("
+						<< r2.x << "," << r2.y << ","
+						<< r2.w << "," << r2.h
+					<< ")"
+					<< "," << r2.x-r.x << "," << r2.y-r.y
+				<< ")"
+				<< "~MASK(" << "terrain/alphamask.png" << ")";
+		}
+
+		str	<< COLUMN_SEPARATOR
 			<< IMAGE_PREFIX  << name << "~SCALE(72,72)"
 			<< IMG_TEXT_SEPARATOR << name
 			<< COLUMN_SEPARATOR << img.get_loc()
