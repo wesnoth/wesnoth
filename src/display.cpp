@@ -125,9 +125,7 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	draw_coordinates_(false),
 	draw_terrain_codes_(false),
 	arrows_map_(),
-	color_adjust_red_(0),
-	color_adjust_green_(0),
-	color_adjust_blue_(0)
+	color_adjust_()
 #if defined(__GLIBC__)
 	, do_reverse_memcpy_workaround_(false)
 #endif
@@ -175,15 +173,13 @@ const time_of_day & display::get_time_of_day(const map_location& loc) const
 
 void display::update_tod() {
 	const time_of_day& tod = get_time_of_day();
-	image::set_color_adjustment(color_adjust_red_ + tod.red, color_adjust_green_ + tod.green, color_adjust_blue_ + tod.blue);
+	tod_color col = color_adjust_ + tod.color;
+	image::set_color_adjustment(col.r, col.g, col.b);
 }
 
 void display::adjust_color_overlay(int r, int g, int b) {
-	const time_of_day& tod = get_time_of_day();
-	image::set_color_adjustment(r + tod.red, g + tod.green, b + tod.blue);
-	color_adjust_red_ = r ;
-	color_adjust_green_ = g ;
-	color_adjust_blue_ = b ;
+	color_adjust_ = tod_color(r, g, b);
+	update_tod();
 }
 
 
@@ -668,53 +664,47 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		static const std::string dir[6] = {"n","ne","se","s","sw","nw"};
 
 		//get all the light transitions
-		//note that lightmap needs halved values
 		std::ostringstream light_trans;
 		for(int d=0; d<6; ++d){
 			const time_of_day& atod = get_time_of_day(adjs[d]);
-			if(atod.red == tod.red  &&  atod.green  == tod.green  &&  atod.blue == tod.blue) { continue; }
+			if(atod.color == tod.color)
+				continue;
 
-			light_trans
-				<< "~BLIT("
-				<< "terrain/light-" << dir[d] << ".png"
-				<< "~CS("
-				<< (atod.red + color_adjust_red_)/2 << ","
-				<< (atod.green + color_adjust_green_)/2 << ","
-				<< (atod.blue + color_adjust_blue_)/2
-				<< ")" // CS
-				<< ")"; //BLIT
+			tod_color col = (atod.color + color_adjust_);
+			col *= 0.5; // lightmap needs halved values
+
+			light_trans	<< "~BLIT(terrain/light-" << dir[d] << ".png";
+			if(!col.is_zero()) {
+				light_trans << "~CS(" << col << ")";
+			}
+			light_trans	<< ")"; //BLIT
 			use_lightmap = true;
 		}
 
 		std::ostringstream mod;
 		if(use_lightmap) {
+			tod_color col = tod.color + color_adjust_;
+			col *= 0.5; // lightmap needs halved values
+
 			//generate the base of the lightmap
 			//and add light transitions on it
-			mod	<< "~L("
-				<< "terrain/light.png"
-				<< "~CS("
-				<< (tod.red  + color_adjust_red_)/2 << ","
-				<< (tod.green  + color_adjust_green_)/2<< ","
-				<< (tod.blue  + color_adjust_blue_)/2
-				<< ")" // CS
-				<< light_trans.str()
-				<< ")"; // L
+			mod	<< "~L(terrain/light.png";
+			if(!col.is_zero()) {
+				mod << "~CS(" << col << ")";
+			}
+			mod	<< light_trans.str() << ")"; // L
 		} else {
 			// no light map needed, but still need to color the hex
 			const time_of_day& global_tod = get_time_of_day(map_location::null_location);
-			bool is_same_as_global(tod.red == global_tod.red && tod.green == global_tod.green && tod.blue == global_tod.blue);
-			if(is_same_as_global ) {
+			if(tod.color == global_tod.color) {
 				// It's the same as global ToD, don't use local light
 				use_local_light = false;
-			} else if ((tod.red + color_adjust_red_) != 0
-					   || (tod.green + color_adjust_green_) != 0
-					   || (tod.blue + color_adjust_blue_) != 0) {
+			} else {
 				// simply color it if needed
-				mod << "~CS("
-					<< (tod.red + color_adjust_red_) << ","
-					<< (tod.green + color_adjust_green_)<< ","
-					<< (tod.blue + color_adjust_blue_)
-					<< ")"; // CS
+				tod_color col = tod.color + color_adjust_;
+				if(!col.is_zero()) {
+					mod << "~CS(" << col << ")";
+				}
 			}
 		}
 		color_mod = mod.str();
@@ -732,7 +722,6 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 				it->get_current_frame() : it->get_first_frame();
 
 			// We prevent ToD coloring and brightening of off-map tiles,
-			// except if we are not in_game and so in the editor.
 			// We need to test for the tile to be rendered and
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
@@ -2541,14 +2530,14 @@ void display::update_arrow(arrow & arrow)
 
 void display::write(config& cfg) const
 {
-	cfg["color_adjust_red"] = color_adjust_red_;
-	cfg["color_adjust_green"] = color_adjust_green_;
-	cfg["color_adjust_blue_"] = color_adjust_blue_;
+	cfg["color_adjust_red"] = color_adjust_.r;
+	cfg["color_adjust_green"] = color_adjust_.g;
+	cfg["color_adjust_blue_"] = color_adjust_.b;
 }
 
 void display::read(const config& cfg)
 {
-	color_adjust_red_ = cfg["color_adjust_red"].to_int(0);
-	color_adjust_green_ = cfg["color_adjust_green"].to_int(0);
-	color_adjust_blue_ = cfg["color_adjust_blue_"].to_int(0);
+	color_adjust_.r = cfg["color_adjust_red"].to_int(0);
+	color_adjust_.g = cfg["color_adjust_green"].to_int(0);
+	color_adjust_.b = cfg["color_adjust_blue_"].to_int(0);
 }

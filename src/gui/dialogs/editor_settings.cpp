@@ -161,13 +161,13 @@ void teditor_settings::update_selected_tod_info(twindow& window)
 		//current_tod_image_->set_icon_name(get_selected_tod().image);
 		custom_tod_red_field_->set_widget_value(
 				  window
-				, get_selected_tod().red);
+				, get_selected_tod().color.r);
 		custom_tod_green_field_->set_widget_value(
 				  window
-				, get_selected_tod().green);
+				, get_selected_tod().color.g);
 		custom_tod_blue_field_->set_widget_value(
 				  window
-				, get_selected_tod().blue);
+				, get_selected_tod().color.b);
 	}
 	custom_tod_red_field_->widget()->set_active(custom);
 	custom_tod_green_field_->widget()->set_active(custom);
@@ -235,7 +235,7 @@ void teditor_settings::pre_show(CVideo& /*video*/, twindow& window)
 		const int r = custom_tod_red_field_->get_widget_value(window);
 		const int g = custom_tod_green_field_->get_widget_value(window);
 		const int b = custom_tod_blue_field_->get_widget_value(window);
-		if (tod.red == r && tod.green == g && tod.blue == b) {
+		if (tod.color.r == r && tod.color.g == g && tod.color.b == b) {
 			current_tod_ = i;
 			custom_tod_toggle_->set_value(false);
 			update_selected_tod_info(window);

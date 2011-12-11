@@ -1736,11 +1736,11 @@ static int intf_get_time_of_day(lua_State *L)
 	luaW_pushtstring(L, tod.name);
 	lua_setfield(L, -2, "name");
 
-	lua_pushinteger(L, tod.red);
+	lua_pushinteger(L, tod.color.r);
 	lua_setfield(L, -2, "red");
-	lua_pushinteger(L, tod.green);
+	lua_pushinteger(L, tod.color.g);
 	lua_setfield(L, -2, "green");
-	lua_pushinteger(L, tod.blue);
+	lua_pushinteger(L, tod.color.b);
 	lua_setfield(L, -2, "blue");
 
 	return 1;

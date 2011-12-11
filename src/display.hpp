@@ -43,6 +43,7 @@ class arrow;
 #include "font.hpp"
 #include "key.hpp"
 #include "team.hpp"
+#include "time_of_day.hpp"
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
@@ -865,9 +866,7 @@ private:
 	/** Maps the list of arrows for each location */
 	arrows_map_t arrows_map_;
 
-	int color_adjust_red_;
-	int color_adjust_green_;
-	int color_adjust_blue_;
+	tod_color color_adjust_;
 
 #if defined(__GLIBC__)
 	/** Flag for bug #17573 - this is set in the constructor **/
