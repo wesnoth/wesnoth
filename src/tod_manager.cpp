@@ -95,14 +95,10 @@ config tod_manager::to_config() const
 	return cfg;
 }
 
-const time_of_day tod_manager::get_time_of_day(int for_turn
-		, const map_location& loc
-		, const bool consider_illuminates) const
+const time_of_day& tod_manager::get_time_of_day(int for_turn
+		, const map_location& loc) const
 {
 	if(for_turn == 0) for_turn = turn_;
-	if(consider_illuminates) {
-		return get_time_of_day_with_areas_and_units(loc, for_turn);
-	}
 	if(!resources::game_map->on_board(loc)) {
 		return get_time_of_day_turn(times_, for_turn, currentTime_);
 	}
@@ -219,8 +215,10 @@ const time_of_day& tod_manager::get_time_of_day_turn(const std::vector<time_of_d
 	return times[time];
 }
 
-time_of_day tod_manager::get_time_of_day_with_areas_and_units(const map_location& loc, const int for_turn) const
+const time_of_day tod_manager::get_illuminated_time_of_day(int for_turn, const map_location& loc) const
 {
+	if(for_turn == 0) for_turn = turn_;
+
 	const gamemap& map = *resources::game_map;
 	const unit_map& units = *resources::units;
 	int light_modif =  map.get_terrain_info(map.get_terrain(loc)).light_modification();

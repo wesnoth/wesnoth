@@ -1722,7 +1722,9 @@ static int intf_get_time_of_day(lua_State *L)
 		lua_pop(L, 1);
 	}
 
-	const time_of_day& tod = resources::tod_manager->get_time_of_day(for_turn, loc, consider_illuminates);
+	const time_of_day& tod = consider_illuminates ?
+		resources::tod_manager->get_illuminated_time_of_day(for_turn, loc) :
+		resources::tod_manager->get_time_of_day(for_turn, loc);
 
 	lua_newtable(L);
 	lua_pushstring(L, tod.id.c_str());

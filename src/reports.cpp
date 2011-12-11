@@ -955,7 +955,7 @@ static config time_of_day_at(map_location& mouseover_hex)
 		// Don't show illuminated time on fogged tiles.
 		tod = resources::tod_manager->get_time_of_day_with_areas(mouseover_hex);
 	} else {
-		tod = resources::tod_manager->get_time_of_day(0, mouseover_hex, true);
+		tod = resources::tod_manager->get_illuminated_time_of_day(0, mouseover_hex);
 	}
 
 	int b = tod.lawful_bonus;

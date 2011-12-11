@@ -37,11 +37,16 @@ class tod_manager : public savegame::savegame_config
 		 * Returns time of day object for the passed turn.
 		 * for_turn = 0 means current turn
 		 * if loc is on board then tod areas matter (else: scenario main time)
-		 * if consider_illuminates then tod modifying units matter in addition to time areas
 		 */
-		const time_of_day get_time_of_day(int for_turn = 0
-				, const map_location& loc = map_location()
-				, const bool consider_illuminates = false) const;
+		const time_of_day& get_time_of_day(int for_turn = 0
+				, const map_location& loc = map_location()) const;
+		/**
+		 * Returns time of day object for the passed turn.
+		 * taking account of illumination caused by units
+		 * for_turn = 0 means current turn
+		 * if loc is on board then tod areas matter (else: scenario main time)
+		 */
+		const time_of_day get_illuminated_time_of_day(int for_turn, const map_location& loc) const;
 
 		const time_of_day& get_previous_time_of_day() const;
 
@@ -123,9 +128,6 @@ class tod_manager : public savegame::savegame_config
 		 * Correct time is calculated from current time.
 		 */
 		const time_of_day& get_time_of_day_turn(const std::vector<time_of_day>& times, int nturn, const int current_time) const;
-
-		//consider tod modifying units (e.g. illuminates)
-		time_of_day get_time_of_day_with_areas_and_units(const map_location& loc, const int for_turn = 0) const;
 
 		/**
 		 * Computes for the main time or a time area the index of its times where we're currently at.
