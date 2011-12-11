@@ -109,8 +109,7 @@ namespace game_config
 	double hp_bar_scaling = 0.666;
 	double xp_bar_scaling = 0.5;
 
-	double hex_brightening = 1.5;
-	double hex_semi_brightening = 1.25;
+	double hex_brightening = 1.25;
 
 	std::vector<std::string> foot_speed_prefix;
 	std::string foot_teleport_enter;
@@ -213,8 +212,7 @@ namespace game_config
 
 		hp_bar_scaling = v["hp_bar_scaling"].to_double(0.666);
 		xp_bar_scaling = v["xp_bar_scaling"].to_double(0.5);
-		hex_brightening = v["hex_brightening"].to_double(1.5);
-		hex_semi_brightening = v["hex_semi_brightening"].to_double(1.25);
+		hex_brightening = v["hex_brightening"].to_double(1.25);
 
 		foot_speed_prefix = utils::split(v["footprint_prefix"]);
 		foot_teleport_enter = v["footprint_teleport_enter"].str();

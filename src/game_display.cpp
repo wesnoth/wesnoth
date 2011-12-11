@@ -282,22 +282,6 @@ void game_display::pre_draw() {
 	prune_chat_messages();
 }
 
-image::TYPE game_display::get_image_type(const map_location& loc) {
-	// We highlight hex under the mouse, or under a selected unit.
-	if (get_map().on_board(loc)) {
-		if (loc == mouseoverHex_ || loc == attack_indicator_src_) {
-			return image::BRIGHTENED;
-		} else if (loc == selectedHex_) {
-			const unit *un = get_visible_unit(loc, teams_[currentTeam_], !viewpoint_);
-			if (un && !un->get_hidden()) {
-				return image::BRIGHTENED;
-			}
-		}
-	}
-	return image::TOD_COLORED;
-}
-
-
 void game_display::draw_invalidated()
 {
 	halo::unrender(invalidated_);

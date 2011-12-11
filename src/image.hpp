@@ -185,8 +185,7 @@ namespace image {
 	/// SCALED_TO_HEX : image will be scaled to fit into a hex, taking zoom into account
 	/// TOD_COLORED : same as SCALED_TO_HEX but ToD coloring is also applied
 	/// BRIGHTENED  : same as TOD_COLORED but also brightened
-	/// SEMI_BRIGHTENED  : same as TOD_COLORED but also semi-brightened
-	enum TYPE { UNSCALED, SCALED_TO_ZOOM, HEXED, SCALED_TO_HEX, TOD_COLORED, BRIGHTENED, SEMI_BRIGHTENED};
+	enum TYPE { UNSCALED, SCALED_TO_ZOOM, HEXED, SCALED_TO_HEX, TOD_COLORED, BRIGHTENED};
 
 	///function to get the surface corresponding to an image.
 	///note that this surface must be freed by the user by calling

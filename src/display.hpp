@@ -526,7 +526,6 @@ protected:
 
 	/**
 	 * @returns the image type to be used for the passed hex
-	 * (mostly to do with brightening like for mouseover)
 	 */
 	virtual image::TYPE get_image_type(const map_location& loc);
 

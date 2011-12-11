@@ -64,9 +64,9 @@ void editor_display::pre_draw()
 image::TYPE editor_display::get_image_type(const map_location& loc)
 {
 	if (brush_locations_.find(loc) != brush_locations_.end()) {
-		return image::BRIGHTENED;
+		return image::TOD_COLORED;
 	} else if (map().in_selection(loc)) {
-		return image::SEMI_BRIGHTENED;
+		return image::BRIGHTENED;
 	}
 	return image::TOD_COLORED;
 }

@@ -141,11 +141,6 @@ protected:
 	 */
 	void pre_draw();
 
-	/**
-	 * Hex brightening for game - take units into account
-	 */
-	image::TYPE get_image_type(const map_location& loc);
-
 	void draw_invalidated();
 
 	void post_commit();

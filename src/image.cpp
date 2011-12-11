@@ -113,8 +113,7 @@ image::image_cache images_,
 		hexed_images_,
 		scaled_to_hex_images_,
 		tod_colored_images_,
-		brightened_images_,
-		semi_brightened_images_;
+		brightened_images_;
 
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
@@ -159,7 +158,6 @@ void flush_cache()
 		scaled_to_zoom_.flush();
 		scaled_to_hex_images_.flush();
 		brightened_images_.flush();
-		semi_brightened_images_.flush();
 		in_hex_info_.flush();
 		mini_terrain_cache.clear();
 		mini_fogged_terrain_cache.clear();
@@ -575,7 +573,6 @@ void set_color_adjustment(int r, int g, int b)
 		blue_adjust = b;
 		tod_colored_images_.flush();
 		brightened_images_.flush();
-		semi_brightened_images_.flush();
 		reversed_images_.clear();
 	}
 }
@@ -610,7 +607,6 @@ void set_zoom(int amount)
 		zoom = amount;
 		tod_colored_images_.flush();
 		brightened_images_.flush();
-		semi_brightened_images_.flush();
 		reversed_images_.clear();
 
 		// We keep these caches if:
@@ -663,12 +659,6 @@ static surface get_brightened(const locator& i_locator)
 	return surface(brighten_image(image, ftofxp(game_config::hex_brightening)));
 }
 
-static surface get_semi_brightened(const locator& i_locator)
-{
-	surface image(get_image(i_locator, TOD_COLORED));
-	return surface(brighten_image(image, ftofxp(game_config::hex_semi_brightening)));
-}
-
 ///translate type to a simpler one when possible
 static TYPE simplify_type(const image::locator& i_locator, TYPE type){
 	switch(type) {
@@ -678,10 +668,6 @@ static TYPE simplify_type(const image::locator& i_locator, TYPE type){
 		break;
 	case BRIGHTENED:
 		if(ftofxp(game_config::hex_brightening) == ftofxp(1.0))
-			type = TOD_COLORED;
-		break;
-	case SEMI_BRIGHTENED:
-		if(ftofxp(game_config::hex_semi_brightening) == ftofxp(1.0))
 			type = TOD_COLORED;
 		break;
 	default:
@@ -738,9 +724,6 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	case BRIGHTENED:
 		imap = &brightened_images_;
 		break;
-	case SEMI_BRIGHTENED:
-		imap = &semi_brightened_images_;
-		break;
 	default:
 		return res;
 	}
@@ -781,9 +764,6 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		break;
 	case BRIGHTENED:
 		res = get_brightened(i_locator);
-		break;
-	case SEMI_BRIGHTENED:
-		res = get_semi_brightened(i_locator);
 		break;
 	default:
 		return res;
