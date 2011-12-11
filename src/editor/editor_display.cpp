@@ -63,9 +63,7 @@ void editor_display::pre_draw()
 
 image::TYPE editor_display::get_image_type(const map_location& loc)
 {
-	if (brush_locations_.find(loc) != brush_locations_.end()) {
-		return image::TOD_COLORED;
-	} else if (map().in_selection(loc)) {
+	if (map().in_selection(loc)) {
 		return image::BRIGHTENED;
 	}
 	return image::TOD_COLORED;
@@ -84,7 +82,7 @@ void editor_display::draw_hex(const map_location& loc)
 
 		if (brush_locations_.find(loc) != brush_locations_.end()) {
 			static const image::locator brush(game_config::images::editor_brush);
-			drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos,
+			drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
 					image::get_image(brush, image::SCALED_TO_HEX));
 		}
 	}
