@@ -1,4 +1,4 @@
-/* $Id: chat_log.cpp 48153 2011-01-01 15:57:50Z mordante $ */
+/* $Id$ */
 /*
    Copyright (C) 2011 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
