@@ -109,7 +109,7 @@ void tslider::set_minimum_value(const int minimum_value)
 	}
 
 	/** @todo maybe make it a VALIDATE. */
-	assert(minimum_value < get_maximum_value());
+	assert(minimum_value <= get_maximum_value());
 
 	const int value = get_value();
 	const int maximum_value = get_maximum_value();
@@ -132,7 +132,7 @@ void tslider::set_maximum_value(const int maximum_value)
 	}
 
 	/** @todo maybe make it a VALIDATE. */
-	assert(minimum_value_ < maximum_value);
+	assert(minimum_value_ <= maximum_value);
 
 	const int value = get_value();
 

@@ -128,4 +128,10 @@ std::map<Uint32, Uint32> recolor_range(const color_range& new_rgb, const std::ve
  * For example, 0x00CC00CC becomes "<204,0,204>".
  */
 std::string rgb2highlight(Uint32 rgb);
+
+/**
+ * Converts a color value to WML text markup syntax for highlighting.
+ * For example, 0x00CC00CC becomes "#CC00CC".
+ */
+std::string rgb2highlight_pango(Uint32 rgb);
 #endif

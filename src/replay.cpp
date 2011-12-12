@@ -129,6 +129,39 @@ static void verify(const unit_map& units, const config& cfg) {
 // references to it from this very file and move it out of here.
 replay recorder;
 
+chat_msg::chat_msg(const config &cfg)
+{
+	const std::string& team_name = cfg["team_name"];
+	if(team_name == "")
+	{
+		nick_ = cfg["id"].str();
+	} else {
+		nick_ = str_cast("*")+cfg["id"].str()+"*";
+	}
+	text_ = cfg["message"].str();
+	int side = lexical_cast_default<int>(cfg["side"],0);
+	LOG_REPLAY << "side in message: " << side << std::endl;
+	if (side==0) {
+		color_ = "white";//observers
+	} else {
+		color_ = team::get_side_highlight_pango(side-1);
+	}
+	/*
+	} else if (side==1) {
+		color_ = "red";
+	} else if (side==2) {
+		color_ = "blue";
+	} else if (side==3) {
+		color_ = "green";
+	} else if (side==4) {
+		color_ = "purple";
+		}*/
+}
+
+chat_msg::~chat_msg()
+{
+}
+
 replay::replay() :
 	cfg_(),
 	pos_(0),
@@ -424,19 +457,13 @@ void replay::speak(const config& cfg)
 	}
 }
 
-void replay::add_chat_log_entry(const config &cfg, std::ostream &str) const
+void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std::vector<chat_msg> > &i) const
 {
 	if (!cfg) return;
 
 	if (!preferences::parse_should_show_lobby_join(cfg["id"], cfg["message"])) return;
 	if (preferences::is_ignored(cfg["id"])) return;
-	const std::string& team_name = cfg["team_name"];
-	if(team_name == "") {
-		str << "<" << cfg["id"] << "> ";
-	} else {
-		str << "*" << cfg["id"] << "* ";
-	}
-	str << cfg["message"] << "\n";
+	*i = chat_msg(cfg);
 }
 
 void replay::remove_command(int index)
@@ -450,33 +477,23 @@ void replay::remove_command(int index)
 }
 
 // cached message log
-std::stringstream message_log;
+std::vector< chat_msg > message_log;
 
 
-std::string replay::build_chat_log()
+const std::vector<chat_msg>& replay::build_chat_log()
 {
 	std::vector<int>::iterator loc_it;
 	int last_location = 0;
+	std::back_insert_iterator<std::vector < chat_msg > > chat_log_appender( back_inserter(message_log));
 	for (loc_it = message_locations.begin(); loc_it != message_locations.end(); ++loc_it)
 	{
 		last_location = *loc_it;
 		const config &speak = command(last_location).child("speak");
-		add_chat_log_entry(speak, message_log);
+		add_chat_log_entry(speak, chat_log_appender);
 
 	}
 	message_locations.clear();
-
-#if 0
-	for(config::child_list::const_iterator i = cmd.begin() + (last_location + 1); i != cmd.end(); ++i) {
-		++last_location;
-		const config* speak = (**i).child("speak");
-		if(speak != NULL) {
-			message_locations.push_back(last_location);
-			add_chat_log_entry(speak, str);
-		}
-	}
-#endif
-	return message_log.str();
+	return message_log;
 }
 
 config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
@@ -648,7 +665,7 @@ void replay::set_to_end()
 void replay::clear()
 {
 	message_locations.clear();
-	message_log.str(std::string());
+	message_log.clear();
 	cfg_ = config();
 	pos_ = 0;
 	current_ = NULL;
