@@ -208,6 +208,7 @@ public:
 		model_.populate_chat_message_list(first,last);
 		model_.page_number->set_minimum_value(1);
 		model_.page_number->set_maximum_value(count_of_pages);
+		model_.page_number->set_active(count_of_pages > 1);
 		LOG_CHAT_LOG << "Maximum value of page number slider: " << count_of_pages << std::endl;
 		model_.page_number->set_value(page+1);
 		LOG_CHAT_LOG << "Exiting tchat_log::controller::update_view_from_model" << std::endl;
