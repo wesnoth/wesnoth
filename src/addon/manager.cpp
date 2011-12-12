@@ -1282,10 +1282,8 @@ namespace {
 				sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_alpha_sort(4).set_numeric_sort(5).set_position_sort(6,sizes);
 
 				gui::dialog addon_dialog(disp, _("Get add-ons"),
-					_("Choose the add-on to download."));
-				addon_dialog.add_button(new gui::standard_dialog_button(disp.video(), _("Download"), 0, false), gui::dialog::BUTTON_STANDARD);
-				addon_dialog.add_button(new gui::standard_dialog_button(disp.video(), _("Done"), 1, true), gui::dialog::BUTTON_STANDARD);
-				addon_dialog.set_basic_behavior(gui::OK_CANCEL);
+					_("Choose the add-on to download."),
+					gui::OK_CANCEL);
 				gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
 
 				//make sure the icon isn't too big
