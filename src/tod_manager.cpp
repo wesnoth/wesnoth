@@ -116,6 +116,55 @@ const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_t
 	return get_time_of_day_turn(times_, n_turn, currentTime_);
 }
 
+const time_of_day tod_manager::get_illuminated_time_of_day(const map_location& loc, int for_turn) const
+{
+	// get ToD ignoring illumination
+	time_of_day tod = get_time_of_day(loc, for_turn);
+
+	// now add illumination
+	const gamemap& map = *resources::game_map;
+	const unit_map& units = *resources::units;
+	int light_modif =  map.get_terrain_info(map.get_terrain(loc)).light_modification();
+
+	int light = tod.lawful_bonus + light_modif;
+	int illum_light = light;
+
+	if(loc.valid()) {
+		map_location locs[7];
+		locs[0] = loc;
+		get_adjacent_tiles(loc,locs+1);
+
+		for(int i = 0; i != 7; ++i) {
+			const unit_map::const_iterator itor = units.find(locs[i]);
+			if(itor != units.end() &&
+			    itor->get_ability_bool("illuminates") &&
+			    !itor->incapacitated())
+			{
+				unit_ability_list illum = itor->get_abilities("illuminates");
+				unit_abilities::effect illum_effect(illum, light, false);
+
+				illum_light = light + illum_effect.get_composite_value();
+				//max_value and min_value control the final result
+				//unless ToD + terrain effect is stronger
+				int max = std::max(light, illum.highest("max_value").first);
+				int min = std::min(light, illum.lowest("min_value").first);
+				if(illum_light > max) {
+					illum_light = max;
+				} else if (illum_light < min) {
+					illum_light = min;
+				}
+
+			}
+		}
+	}
+
+	tod.bonus_modified = illum_light - tod.lawful_bonus;
+	tod.lawful_bonus = illum_light;
+
+	return tod;
+}
+
+
 bool tod_manager::is_start_ToD(const std::string& random_start_time)
 {
 	return !random_start_time.empty()
@@ -203,54 +252,6 @@ const time_of_day& tod_manager::get_time_of_day_turn(const std::vector<time_of_d
 {
 	const int time = calculate_current_time(times.size(), nturn, current_time);
 	return times[time];
-}
-
-const time_of_day tod_manager::get_illuminated_time_of_day(const map_location& loc, int for_turn) const
-{
-	if(for_turn == 0) for_turn = turn_;
-
-	const gamemap& map = *resources::game_map;
-	const unit_map& units = *resources::units;
-	int light_modif =  map.get_terrain_info(map.get_terrain(loc)).light_modification();
-
-	time_of_day tod = get_time_of_day(loc, for_turn);
-
-	int light = tod.lawful_bonus + light_modif;
-	int illum_light = light;
-
-	if(loc.valid()) {
-		map_location locs[7];
-		locs[0] = loc;
-		get_adjacent_tiles(loc,locs+1);
-
-		for(int i = 0; i != 7; ++i) {
-			const unit_map::const_iterator itor = units.find(locs[i]);
-			if(itor != units.end() &&
-			    itor->get_ability_bool("illuminates") &&
-			    !itor->incapacitated())
-			{
-				unit_ability_list illum = itor->get_abilities("illuminates");
-				unit_abilities::effect illum_effect(illum, light, false);
-
-				illum_light = light + illum_effect.get_composite_value();
-				//max_value and min_value control the final result
-				//unless ToD + terrain effect is stronger
-				int max = std::max(light, illum.highest("max_value").first);
-				int min = std::min(light, illum.lowest("min_value").first);
-				if(illum_light > max) {
-					illum_light = max;
-				} else if (illum_light < min) {
-					illum_light = min;
-				}
-
-			}
-		}
-	}
-
-	tod.bonus_modified = illum_light - tod.lawful_bonus;
-	tod.lawful_bonus = illum_light;
-
-	return tod;
 }
 
 void tod_manager::modify_turns(const std::string& mod)
