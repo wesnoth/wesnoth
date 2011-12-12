@@ -64,19 +64,17 @@ REGISTER_DIALOG(chat_log)
 class tchat_log::model {
 public:
 	model(const vconfig &c, replay *r)
-		: cfg(c), name(), chat_log_history(r->build_chat_log()), page(0), page_number(), previous_page(), next_page()
+		: cfg(c), chat_log_history(r->build_chat_log()), page(0), page_number(), previous_page(), next_page()
 	{
 		LOG_CHAT_LOG << "entering tchat_log::model...\n";
-		name = "prototype of chat log";//cfg["name"].str();
 		LOG_CHAT_LOG << "finished tchat_log::model...\n";
 	}
 
 	vconfig cfg;
-	std::string name;
 	tcontrol *msg_label;
 	const std::vector<chat_msg> &chat_log_history;
 	int page;
-	static const int COUNT_PER_PAGE = 100;
+	static const int COUNT_PER_PAGE = 1000;
 	tslider *page_number;
 	tbutton *previous_page;
 	tbutton *next_page;
@@ -140,11 +138,11 @@ public:
 	void next_page()
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::controller::next_page" << std::endl;
-		if (model_.page == model_.count_of_pages()-1) {
+		if (model_.page >= model_.count_of_pages()-1) {
 			return;
 		}
-
 		model_.page++;
+		LOG_CHAT_LOG << "Set page to " << model_.page+1 << std::endl;
 		update_view_from_model();
 		LOG_CHAT_LOG << "Exiting tchat_log::controller::next_page" << std::endl;
 	}
@@ -156,6 +154,7 @@ public:
 			return;
 		}
 		model_.page--;
+		LOG_CHAT_LOG << "Set page to " << model_.page+1 << std::endl;
 		update_view_from_model();
 		LOG_CHAT_LOG << "Exiting tchat_log::controller::previous_page" << std::endl;
 	}
@@ -163,7 +162,8 @@ public:
 	void handle_page_number_changed()
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::controller::handle_page_number_changed" << std::endl;
-		model_.page = model_.page_number->get_value();
+		model_.page = model_.page_number->get_value()-1;
+		LOG_CHAT_LOG << "Set page to " << model_.page+1 << std::endl;
 		update_view_from_model();
 		LOG_CHAT_LOG << "Exiting tchat_log::controller::handle_page_number_changed" << std::endl;
 	}
@@ -188,11 +188,14 @@ public:
 		int last = (page<count_of_pages-1) ? first+model_.COUNT_PER_PAGE : size;
 		LOG_CHAT_LOG << "First " << first << ", last " << last << std::endl;
 		// determine has previous, determine has next
-		//bool has_next = page < count_of_pages;
-		//bool has_previous = page > 0;
+		bool has_next = page+1 < count_of_pages;
+		bool has_previous = page > 0;
+		model_.previous_page->set_active(has_previous);
+		model_.next_page->set_active(has_next);
 		model_.populate_chat_message_list(first,last);
 		model_.page_number->set_minimum_value(1);
 		model_.page_number->set_maximum_value(count_of_pages);
+		LOG_CHAT_LOG << "Maximum value of page number slider: " << count_of_pages << std::endl;
 		model_.page_number->set_value(page+1);
 		LOG_CHAT_LOG << "Exiting tchat_log::controller::update_view_from_model" << std::endl;
 	}
@@ -242,9 +245,7 @@ public:
 		LOG_CHAT_LOG << "Entering tchat_log::view::bind" << std::endl;
 		model_.msg_label = &find_widget<tcontrol>(&window, "msg", false);
 		model_.page_number = &find_widget<tslider>(&window, "page_number", false);
-		//@TODO: find out how to set that callback
-		//model_.page_number->set_callback_value_change(
-		//	dialog_view_callback<tchat_log, tchat_log::view, &tchat_log::view::handle_page_number_changed>);
+		connect_signal_notify_modified(*model_.page_number, boost::bind(&view::handle_page_number_changed, this, boost::ref(window)));
 
 		model_.previous_page = &find_widget<tbutton>(&window, "previous_page", false);
 		model_.previous_page->connect_click_handler(boost::bind(&view::previous_page, this, boost::ref(window)));
