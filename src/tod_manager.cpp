@@ -108,9 +108,8 @@ const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_t
 	for (std::vector<area_time_of_day>::const_reverse_iterator
 		 i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i)
 	{
-		if (i->hexes.count(loc) != 1) continue;
-		VALIDATE(i->times.size(), _("No time of day has been defined."));
-		return get_time_of_day_turn(i->times, n_turn, i->currentTime);
+		if (i->hexes.find(loc) != i->hexes.end())
+			return get_time_of_day_turn(i->times, n_turn, i->currentTime);
 	}
 
 	return get_time_of_day_turn(times_, n_turn, currentTime_);
