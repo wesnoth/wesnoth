@@ -84,9 +84,22 @@ public:
 		msg_label->set_label("");
 	}
 
+	std::string replace(std::string str, const std::string &src, const std::string &dst)
+	{
+		std::string::size_type pos = 0;
+		while ( (pos = str.find(src, pos)) != std::string::npos ) {
+			str.replace( pos, src.size(), dst );
+			pos++;
+		}
+		return str;
+	}
 	std::string escape(const std::string &str)
 	{
-		return utils::escape(str,"&<>\\");
+		// need pango escape here
+		std::string result = replace(str,"&","&amp;");
+		result = replace(result,"<","&lt;");
+		result = replace(result,">","&gt;");
+		return result;
 	}
 
 	int count_of_pages()
