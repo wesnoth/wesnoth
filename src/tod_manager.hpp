@@ -34,28 +34,30 @@ class tod_manager : public savegame::savegame_config
 		config to_config() const;
 
 		/**
-		 * Returns time of day object for the passed turn.
+		 * Returns global time of day for the passed turn.
 		 * for_turn = 0 means current turn
-		 * if loc is on board then tod areas matter (else: scenario main time)
 		 */
-		const time_of_day& get_time_of_day(const map_location& loc = map_location(),
-				int for_turn = 0) const;
+		const time_of_day& get_time_of_day(int for_turn = 0) const {
+			return get_time_of_day_turn(times_, for_turn ? for_turn : turn_, currentTime_);
+		}
+
 		/**
-		 * Returns time of day object for the passed turn.
+		 * Returns time of day for the passed turn at a location.
+		 * tod areas matter, for_turn = 0 means current turn
+		 * ignoring illumination
+		 */
+		const time_of_day& get_time_of_day(const map_location& loc,
+				int for_turn = 0) const;
+
+		/**
+		 * Returns time of day object for the passed turn at a location.
+		 * tod areas matter, for_turn = 0 means current turn
 		 * taking account of illumination caused by units
-		 * for_turn = 0 means current turn
-		 * if loc is on board then tod areas matter (else: scenario main time)
 		 */
 		const time_of_day get_illuminated_time_of_day(const map_location& loc,
 				int for_turn = 0) const;
 
 		const time_of_day& get_previous_time_of_day() const;
-
-		/**
-		 * Returns time of day object in the turn at a location.
-		 * If nturn = 0 use current turn
-		 */
-		const time_of_day& get_time_of_day_with_areas(const map_location& loc, int n_turn = 0) const;
 
 		static bool is_start_ToD(const std::string&);
 

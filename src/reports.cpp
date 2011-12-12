@@ -953,7 +953,7 @@ static config time_of_day_at(map_location& mouseover_hex)
 		tod = resources::tod_manager->get_time_of_day();
 	} else if (viewing_team.fogged(mouseover_hex)) {
 		// Don't show illuminated time on fogged tiles.
-		tod = resources::tod_manager->get_time_of_day_with_areas(mouseover_hex);
+		tod = resources::tod_manager->get_time_of_day(mouseover_hex);
 	} else {
 		tod = resources::tod_manager->get_illuminated_time_of_day(mouseover_hex);
 	}
