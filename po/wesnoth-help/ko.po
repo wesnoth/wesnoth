@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2011-11-14 20:50+0900\n"
+"PO-Revision-Date: 2011-11-30 15:07+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2498,6 +2498,9 @@ msgid ""
 "unit’s defensive capability in combat.\n"
 "\n"
 msgstr ""
+"게임상의 맵들은 유닛의 이동력과 전투시의 방어능력에 영향을 주는 다양한 지형들"
+"로 구성되어 있습니다.\n"
+"\n"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:492
@@ -2515,6 +2518,12 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"<italic>text='초원'</italic>은 경작지나 목초지 혹은 황야 같은 모든 평야 지대"
+"를 대표합니다. 탁 트인 지형인 초원은 이동하기도 쉽지만 스스로를 방어하기도 어"
+"려운 지형입니다. 보통 초원에서 가장 뛰어난 능력을 발휘하는 유닛은 기병과 같"
+"이 개활지에서 유리한 매우 빠른 유닛들입니다.\n"
+"\n"
+"대부분의 유닛들은 초원에서 30에서 40%의 방어도를 갖습니다."
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:506
@@ -2529,6 +2538,10 @@ msgid ""
 "as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
 "\n"
 msgstr ""
+"<italic>text='길'</italic>은 그 위를 지났던 수많은 행인들에 의해 다져진 흙밭"
+"입니다. 게임상에서 길은 <ref>dst='terrain_flat' text='평지'</ref>로 취급됩니"
+"다.\n"
+"\n"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:518
@@ -3002,6 +3015,9 @@ msgid ""
 "Bring up theme selection menu.\n"
 "\n"
 msgstr ""
+"\n"
+"테마 선택 메뉴를 엽니다.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:817
@@ -3010,6 +3026,9 @@ msgid ""
 "Quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
+"\n"
+"시나리오에서 나갑니다 (묻는 창 뜨지 않음).\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:820
@@ -3018,6 +3037,9 @@ msgid ""
 "Save the game (without prompting).\n"
 "\n"
 msgstr ""
+"\n"
+"게임을 저장합니다 (창이 뜨지 않음).\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:821
@@ -3025,6 +3047,8 @@ msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
+"\n"
+"게임을 저장하고 시나리오에서 나갑니다 (묻는 창 뜨지 않음)."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:829
@@ -3797,43 +3821,51 @@ msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
 msgstr ""
+" 영혼들은 타격에 대해 비범한 저항력을 가지고 있으며, 물 위에서는 상당히 느려"
+"진다."
 
 #: data/core/macros/special-notes.cfg:11
 msgid ""
 " This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
+" 이 유닛의 신령 공격은 마법적인 생물들에게 심대한 타격을 주며, 현실 생물들에"
+"게도 어느 정도의 타격을 줍니다."
 
 #: data/core/macros/special-notes.cfg:14
 msgid " This unit is capable of basic healing."
-msgstr ""
+msgstr " 이 유닛은 기본적인 치료를 할 수 있습니다."
 
 #: data/core/macros/special-notes.cfg:17
 msgid " This unit is capable of rapid healing."
-msgstr ""
+msgstr " 이 유닛은 신속한 치료를 할 수 있습니다."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
-msgstr ""
+msgstr " 이 유닛은 주변의 유닛들을 치료하며, 독을 치유할 수 있습니다."
 
 #: data/core/macros/special-notes.cfg:23
 msgid ""
 " This unit is capable of neutralizing the effects of poison in units around "
 "it."
-msgstr ""
+msgstr " 이 유닛은 주변의 유닛들이 독에 걸렸을 경우 그것을 중화할 수 있습니다."
 
 #: data/core/macros/special-notes.cfg:26
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
 msgstr ""
+" 이 유닛은 재생 능력을 가지고 있어 항상 마을에 있는 것과 같은 회복능력을 발휘"
+"합니다."
 
 #: data/core/macros/special-notes.cfg:29
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
 msgstr ""
+" 이 유닛은 꿋꿋한 방어자세로 어떤 종류의 공격으로 받는 피해를 줄일 수 있습니"
+"다. 이것은 방어시에만 적용됩니다."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -3853,13 +3885,14 @@ msgstr ""
 
 #: data/core/macros/special-notes.cfg:38
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr ""
+msgstr " 광휘는 주변 지역의 광도를 높입니다."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
+" 이 유닛은 이동력 1을 써서 아군 세력의 빈 마을들 사이를 이동할 수 있습니다."
 
 #: data/core/macros/special-notes.cfg:44
 msgid ""
@@ -3908,6 +3941,8 @@ msgid ""
 "attacking it, this unit may backstab, inflicting double damage by creeping "
 "around behind that enemy."
 msgstr ""
+" 공격시에 목표물이 반대편에서 적을 상대하고 있으면, 이 유닛은 목표물의 뒤에"
+"서 몰래 움직여 뒷치기로 두 배의 피해를 줄 수 있습니다."
 
 #: data/core/macros/special-notes.cfg:65
 msgid ""
@@ -3920,6 +3955,8 @@ msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
+" 이 유닛은 적을 둔화시켜 적의 턴이 끝날 때까지 이동 속도와 공격력을 반감시킵"
+"니다."
 
 #: data/core/macros/special-notes.cfg:71
 msgid ""

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-05 16:25+0100\n"
-"PO-Revision-Date: 2011-11-12 15:33+0900\n"
+"PO-Revision-Date: 2011-12-01 14:25+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -998,23 +998,25 @@ msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
+"이 물을 근접 무기에 뿌리면 현재 시나리오가 끝나기 전까지 <i>신령</i> 속성을 "
+"얻게 됩니다. $unit.name 에게 사용시키겠습니까?"
 
 #: data/core/macros/items.cfg:268
 msgid "holy water^Take it"
-msgstr ""
+msgstr "가진다"
 
 #: data/core/macros/items.cfg:269
 msgid "holy water^Leave it"
-msgstr ""
+msgstr "놔둔다"
 
 #: data/core/macros/items.cfg:270
 msgid "I am not suited to the use of this item! Let another take it."
-msgstr ""
+msgstr "난 이 아이템을 다루기에 적합하지 않아! 다른 사람에게 갖게 해."
 
 #. [object]
 #: data/core/macros/items.cfg:272
 msgid "Holy Water"
-msgstr ""
+msgstr "성수"
 
 #. [object]
 #: data/core/macros/items.cfg:275
@@ -1022,6 +1024,8 @@ msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr ""
+"이 물은 현재 시나리오가 끝날 때까지 근접 공격에 <i>신령</i> 속성을 부여합니"
+"다."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:304
@@ -1087,14 +1091,12 @@ msgid "Should $unit.name pick up the trident?"
 msgstr "$unit.name 가 트라이던트를 가집니까?"
 
 #: data/core/macros/items.cfg:514
-#, fuzzy
 msgid "storm trident^Leave it"
-msgstr "폭풍의 삼지창"
+msgstr "놔둔다"
 
 #: data/core/macros/items.cfg:514
-#, fuzzy
 msgid "storm trident^Take it"
-msgstr "폭풍의 삼지창"
+msgstr "가진다"
 
 #. [object]
 #: data/core/macros/items.cfg:516
@@ -5216,7 +5218,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:646 src/multiplayer_connect.cpp:1524
 msgid "Computer Player"
-msgstr ""
+msgstr "컴퓨터 상대"
 
 #: src/multiplayer_connect.cpp:649
 msgid "$playername $side"
@@ -5228,11 +5230,11 @@ msgstr "(없는 칸)"
 
 #: src/multiplayer_connect.cpp:660
 msgid "(Reserved for $playername)"
-msgstr ""
+msgstr "($playername|를 위해 비워둠)"
 
 #: src/multiplayer_connect.cpp:761
 msgid "Reserved"
-msgstr ""
+msgstr "비워둠"
 
 #: src/multiplayer_connect.cpp:762
 msgid "--give--"
@@ -5244,11 +5246,11 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:967
 msgid "Unable to find a leader type for faction $faction"
-msgstr ""
+msgstr "$faction 당파에 지휘관 타입 유닛을 찾을 수 없습니다"
 
 #: src/multiplayer_connect.cpp:1004
 msgid "Game Lobby: "
-msgstr ""
+msgstr "방 로비: "
 
 #: src/multiplayer_connect.cpp:1026
 msgid "Player/Type"
@@ -5293,7 +5295,7 @@ msgstr "이름: "
 
 #: src/multiplayer_connect.cpp:1521
 msgid "Network Player"
-msgstr ""
+msgstr "네트워크 상대"
 
 #: src/multiplayer_connect.cpp:1523
 msgid "Local Player"
@@ -5301,15 +5303,15 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:1525
 msgid "Empty"
-msgstr ""
+msgstr "비움"
 
 #: src/multiplayer_connect.cpp:1678
 msgid "Cannot find era $era"
-msgstr ""
+msgstr "$era 시대를 찾을 수 없습니다"
 
 #: src/multiplayer_connect.cpp:1704
 msgid "Defeat enemy leader(s)"
-msgstr ""
+msgstr "적 지휘관(들)을 격파하라"
 
 #: src/multiplayer_connect.cpp:1809
 msgid "Waiting for players to join..."
@@ -5455,7 +5457,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:238
 msgid "$login|’s game"
-msgstr ""
+msgstr "$login|의 방"
 
 #: src/multiplayer_create.cpp:304
 msgid "Invalid era selected"
@@ -5515,7 +5517,7 @@ msgstr "--열려 있는 방이 없음--"
 
 #: src/multiplayer_lobby.cpp:159
 msgid " (Unknown Era)"
-msgstr ""
+msgstr " (미지의 시대)"
 
 #: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:891
 msgid "Password Required"
@@ -5632,7 +5634,7 @@ msgstr "게임 정보를 읽고 있습니다..."
 
 #: src/multiplayer_wait.cpp:264
 msgid "No era information found."
-msgstr ""
+msgstr "시대 정보를 찾을 수 없습니다."
 
 #: src/multiplayer_wait.cpp:268
 msgid "No multiplayer sides found"

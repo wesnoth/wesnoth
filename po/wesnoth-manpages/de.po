@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "POT-Creation-Date: 2011-08-27 10:13+0300\n"
-"PO-Revision-Date: 2011-11-30 14:19+0100\n"
+"PO-Revision-Date: 2011-12-13 10:30+0100\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
@@ -84,16 +84,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:42
-#, fuzzy
-#| msgid ""
-#| "Defeat all enemy leaders using a well-chosen cadre of troops, taking care "
-#| "to manage your resources of gold and villages. All units have their own "
-#| "strengths and weaknesses; to win, deploy your forces to their best "
-#| "advantage while denying your foes the chance to do the same. As units "
-#| "gain experience, they acquire new abilities and become more powerful. "
-#| "Play in your own language and test your skill against a smart computer "
-#| "opponent, or join Wesnoth's large community of on-line players. Create "
-#| "your own custom units, scenarios or campaigns, and share them with others."
 msgid ""
 "Defeat all enemy leaders using a well-chosen cadre of troops, taking care to "
 "manage your resources of gold and villages. All units have their own "
@@ -104,9 +94,16 @@ msgid ""
 "Wesnoth's large community of online players. Create your own custom units, "
 "scenarios or campaigns, and share them with others."
 msgstr ""
-"Schlüpfen Sie in die Rolle eines Heerführers und führen Sie Ihre Armee zum "
-"Sieg. Wählen Sie dabei aus verschiedenen Rassen, mit unterschiedlichen "
-"Fertigkeiten, Waffen und Sprüchen aus und zerschmettern Sie Ihre Gegner."
+"Besiegen Sie alle feindlichen Anführer, indem Sie einen geschickt gewählten "
+"Kader an Truppen in die Schlacht führen und dabei auch Ihr Gold und Ihre "
+"Dörfer verwalten. Alle Einheiten haben ihre eigenen Stärken und Schwächen; "
+"um siegreich hervor zu gehen, müssen Sie diese Kräfte zu Ihrem Vorteil "
+"nutzen und zugleich den Gegner an selbigem hindern. Mit wachsender Erfahrung "
+"erlernen die Truppen neue Fertigkeiten und werden mächtiger. Spielt in Eurer "
+"eigenen Sprache und testet Eure Fertigkeiten gegen kluge Computer-Gegner, "
+"oder tretet Wesnoths vielfältiger Gemeinschaft der Online-Spieler bei. "
+"Erstellt eure eigen angepassten Einheiten, Szenarien oder Kampagnen, und "
+"teilt diese mit anderen."
 
 # type: SH
 #. type: SH
@@ -134,7 +131,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
-msgstr ""
+msgstr "B<-c, --campaign[[E<lt>EinstufungE<gt>] E<lt>id_KampagneE<gt> [E<lt>id_SzenarioE<gt>]]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:56
@@ -147,6 +144,14 @@ msgid ""
 "the final argument> aswell, otherwise the game will take the campaign/"
 "scenario id as the data dir."
 msgstr ""
+"Geht direkt zu der von den Parametern bestimmten Kampagne. Die Einstufung "
+"ist eine Nummer zwischen 1 und der Einstufungsnummer der aktuellen Kampagne. "
+"Die Standardeinstufung ist 1. Das Szenario muss eines der Unterszenarien der "
+"Kampagne sein. Das Standardszenario ist das erste Szenario der Kampagne. "
+"B<Anmerkung: Wenn dieser Schalter verwendet wird, stellen Sie sicher, dass "
+"der Pfad zum Datenverzeichnis als letztes Argument angegeben ist>, "
+"anderenfalls wird das Spiel die Kampagnen-/Szenario-ID als Datenverzeichnis "
+"verwenden."
 
 # type: TP
 #. type: TP
@@ -159,10 +164,6 @@ msgstr "B<--config-dir>I<\\ Name>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:63
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -170,7 +171,9 @@ msgid ""
 "Games\""
 msgstr ""
 "Setzt das Konfigurationsverzeichnis des Benutzers auf I<name> in $HOME oder "
-"»Eigene Dateien\\eMy Games« auf Windows."
+"»Eigene Dateien\\eMy Games« auf Windows. Es kann auch ein absoluter Pfad zum "
+"Konfigurationsverzeichnis außerhalb von $HOME oder »Eigene Dateien\\eMy "
+"Games« angegeben werden."
 
 # type: TP
 #. type: TP
@@ -490,7 +493,7 @@ msgstr "Zeigt an, wo sich das Verzeichnis mit den Spieldateien befindet."
 #: ../../doc/man/wesnoth.6:158
 #, no-wrap
 msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr ""
+msgstr "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>Datei/VerzeichnisE<gt> E<lt>ZielverzeichnisE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:172
@@ -506,12 +509,24 @@ msgid ""
 "campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
 "data/campaign/camp ~/result>"
 msgstr ""
+"Eine angegebene Datei/Verzeichnis vorverarbeiten. Die Datei(en) werden in "
+"das angegebene Zielverzeichnis geschrieben: Eine einfache cfg-Datei und eine "
+"vorverarbeitete cfg-Datei. Wenn ein Verzeichnis angegeben wird, wird dieses "
+"basierend auf den bekannten Vorverarbeitungsregeln rekursiv verarbeitet. Die "
+"allgemeinen Makros aus data/core/macros werden vor den angegebenen "
+"Ressourcen verarbeitet. B<define1,define2,...> - die zusätzlichen "
+"Definitionen werden vor dem Verarbeiten der Dateien hinzugefügt. Wenn sie "
+"hinzugefügt werden sollen, muss das »=«-Zeichen davor eingegeben werden. "
+"Wenn sich »SKIP_CORE« in der Definitionsliste befindet, wird data/core nicht "
+"vorverarbeitet. Beispiel: B<-p ~/wesnoth/data/campaigns/tutorial ~/ergebnis> "
+"oder B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/"
+"ergebnis>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:172
 #, no-wrap
 msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
-msgstr ""
+msgstr "B<--preprocess-input-macros E<lt>QuelldateiE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:176
@@ -519,12 +534,14 @@ msgid ""
 "used only by the '--preprocess' command.  Specifies a file that contains "
 "[preproc_define]s to be included before preprocessing."
 msgstr ""
+"Wird nur vom »--preprocess«-Befehl verwendet. Gibt eine [preproc_define] "
+"enthaltende Datei an, die vor dem Vorbearbeiten eingelesen wird."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:176
 #, no-wrap
 msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
-msgstr ""
+msgstr "B<--preprocess-output-macros [E<lt>ZieldateiE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:182
@@ -534,6 +551,11 @@ msgid ""
 "file '_MACROS_.cfg' in the target directory of preprocess's command.  This "
 "switch should be typed before the --preprocess command."
 msgstr ""
+"Wird nur vom »--preprocess«-Befehl verwendet. Gibt alle vorverarbeiteten "
+"Makros in die Zieldatei aus. Falls keine Datei angegeben wird, wird die "
+"Ausgabe in die Datei »_MACROS_.cfg« im Zielverzeichnis des Vorverarbeitungs-"
+"Befehls geschrieben. Dieser Schalter sollte vor dem --preprocess Befehl "
+"angegeben werden."
 
 # type: TP
 #. type: TP
