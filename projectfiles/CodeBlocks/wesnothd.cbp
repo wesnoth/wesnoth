@@ -28,6 +28,7 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-mthreads" />
 			<Add option="-fexceptions" />
@@ -36,6 +37,7 @@
 			<Add option="-fopenmp" />
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
+			<Add option="-DHAVE_CXX0X" />
 			<Add directory="..\..\src" />
 			<Add directory="..\..\src\server" />
 			<Add directory="..\..\src\serialization" />

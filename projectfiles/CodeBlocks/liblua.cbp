@@ -30,7 +30,9 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
+			<Add option="-fdiagnostics-show-option" />
 			<Add directory="..\..\src" />
 		</Compiler>
 		<Unit filename="..\..\src\lua\lapi.c">
