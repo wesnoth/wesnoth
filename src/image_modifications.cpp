@@ -201,7 +201,7 @@ surface blit_modification::operator()(const surface& src) const
 	if(surf_->h + y_ > src->h) {
 		std::stringstream sstr;
 		sstr << "~BLIT(): offset and height '"
-			<< x_ + surf_->h << "' larger than destination image's height '"
+			<< y_ + surf_->h << "' larger than destination image's height '"
 			<< src->h << "' no blitting performed.\n";
 
 		throw texception(sstr);
