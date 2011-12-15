@@ -45,7 +45,7 @@ namespace image {
 			value(const char *filename);
 			value(const std::string& filename);
 			value(const std::string& filename, const std::string& modifications);
-			value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications, const std::string& lightmap);
+			value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications);
 
 			bool operator==(const value& a) const;
 			bool operator<(const value& a) const;
@@ -54,7 +54,6 @@ namespace image {
 			std::string filename_;
 			map_location loc_;
 			std::string modifications_;
-			std::string lightmap_;
 			int center_x_;
 			int center_y_;
 		};
@@ -80,7 +79,8 @@ namespace image {
 		locator(const char *filename);
 		locator(const std::string& filename);
 		locator(const std::string& filename, const std::string& modifications);
-		locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications="", const std::string& lightmap="");
+		locator(const std::string &filename, const map_location &loc,
+		int center_x, int center_y, const std::string& modifications = "");
 
 		locator& operator=(const locator &a);
 		bool operator==(const locator &a) const { return index_ == a.index_; }
@@ -117,6 +117,8 @@ namespace image {
 		template <typename T>
 		bool in_cache(cache_type<T> &cache) const;
 		template <typename T>
+		T &access_in_cache(cache_type<T> &cache) const;
+		template <typename T>
 		const T &locate_in_cache(cache_type<T> &cache) const;
 		template <typename T>
 		void add_to_cache(cache_type<T> &cache, const T &data) const;
@@ -135,9 +137,23 @@ namespace image {
 
 	typedef cache_type<surface> image_cache;
 	typedef cache_type<bool> bool_cache;
+
 	typedef std::map<t_translation::t_terrain, surface> mini_terrain_cache_map;
 	extern mini_terrain_cache_map mini_terrain_cache;
 	extern mini_terrain_cache_map mini_fogged_terrain_cache;
+
+	///light_string store colors info of central and adjacents hexes.
+	///The structure is one or several 4 chars blocks (L,R,G,B)
+	///where RGB is the color and L is the lightmap to use:
+	///(-1:none, 0-5:transition in each direction, 6:full hex)
+	typedef std::basic_string<signed char> light_string;
+	///return light_string of one light operation(see above)
+	light_string get_light_string(int op, int r, int g, int b);
+
+	// pair each light possibilty with its lighted surface
+	typedef std::map<light_string, surface> lit_variants;
+	// lighted variants for each locator
+	typedef cache_type<lit_variants> lit_cache;
 
 	void flush_cache();
 
@@ -191,6 +207,11 @@ namespace image {
 	///note that this surface must be freed by the user by calling
 	///SDL_FreeSurface()
 	surface get_image(const locator& i_locator, TYPE type=UNSCALED);
+
+	///function to get the surface corresponding to an image.
+	///after applying the lightmap encoded in ls
+	///type should be HEXED or SCALED_TO_HEX
+	surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type);
 
 	///function to get the standard hex mask
 	surface get_hexmask();

@@ -95,6 +95,13 @@ const T &locator::locate_in_cache(cache_type<T> &cache) const
 }
 
 template <typename T>
+T &locator::access_in_cache(cache_type<T> &cache) const
+{
+	static T dummy;
+	return index_ < 0 ? dummy : cache.get_element(index_).item;
+}
+
+template <typename T>
 void locator::add_to_cache(cache_type<T> &cache, const T &data) const
 {
 	if (index_ >= 0)
@@ -117,6 +124,12 @@ image::image_cache images_,
 
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
+
+// caches storing the diffrent lighted cases for each image
+image::lit_cache lit_images_,
+		lit_scaled_images_;
+// caches storing each lightmap generated
+image::lit_variants lightmaps_;
 
 // const int cache_version_ = 0;
 
@@ -158,6 +171,8 @@ void flush_cache()
 		scaled_to_zoom_.flush();
 		scaled_to_hex_images_.flush();
 		brightened_images_.flush();
+		lit_images_.flush();
+		lit_scaled_images_.flush();
 		in_hex_info_.flush();
 		mini_terrain_cache.clear();
 		mini_fogged_terrain_cache.clear();
@@ -241,9 +256,9 @@ locator::locator(const std::string &filename, const std::string& modifications) 
 }
 
 locator::locator(const std::string &filename, const map_location &loc,
-		int center_x, int center_y, const std::string& modifications, const std::string& lightmap) :
+		int center_x, int center_y, const std::string& modifications) :
 	index_(-1),
-	val_(filename, loc, center_x, center_y, modifications, lightmap)
+	val_(filename, loc, center_x, center_y, modifications)
 {
 	init_index();
 }
@@ -258,35 +273,35 @@ locator& locator::operator=(const locator &a)
 
 locator::value::value(const locator::value& a) :
   type_(a.type_), filename_(a.filename_), loc_(a.loc_),
-  modifications_(a.modifications_), lightmap_(a.lightmap_),
+  modifications_(a.modifications_),
   center_x_(a.center_x_), center_y_(a.center_y_)
 {}
 
 locator::value::value() :
 	type_(NONE), filename_(), loc_(),
-	modifications_(), lightmap_(),
+	modifications_(),
   center_x_(0), center_y_(0)
 {}
 
 locator::value::value(const char *filename) :
   type_(FILE), filename_(filename), loc_(),
-  modifications_(), lightmap_(),
+  modifications_(),
   center_x_(0), center_y_(0)
 {}
 
 locator::value::value(const std::string& filename) :
   type_(FILE), filename_(filename),  loc_(),
-  modifications_(), lightmap_(),
+  modifications_(),
   center_x_(0), center_y_(0)
 {}
 
 locator::value::value(const std::string& filename, const std::string& modifications) :
-  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications), lightmap_(),
+  type_(SUB_FILE), filename_(filename), loc_(), modifications_(modifications),
   center_x_(0), center_y_(0)
 {}
 
-locator::value::value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications, const std::string& lightmap) :
-  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications), lightmap_(lightmap),
+locator::value::value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications) :
+  type_(SUB_FILE), filename_(filename), loc_(loc), modifications_(modifications),
   center_x_(center_x), center_y_(center_y)
 {}
 
@@ -297,8 +312,9 @@ bool locator::value::operator==(const value& a) const
 	} else if(type_ == FILE) {
 		return filename_ == a.filename_;
 	} else if(type_ == SUB_FILE) {
-	  return filename_ == a.filename_ && loc_ == a.loc_ && modifications_ == a.modifications_ && lightmap_ == a.lightmap_
-          && center_x_ == a.center_x_ && center_y_ == a.center_y_;
+	  return filename_ == a.filename_ && loc_ == a.loc_
+			&& modifications_ == a.modifications_
+			&& center_x_ == a.center_x_ && center_y_ == a.center_y_;
 	} else {
 		return false;
 	}
@@ -319,9 +335,7 @@ bool locator::value::operator<(const value& a) const
             return center_x_ < a.center_x_;
         if(center_y_ != a.center_y_)
             return center_y_ < a.center_y_;
-		if(modifications_ != a.modifications_)
-			return(modifications_ < a.modifications_);
-		return (lightmap_ < a.lightmap_);
+		return (modifications_ < a.modifications_);
 	} else {
 		return false;
 	}
@@ -341,7 +355,6 @@ size_t hash_value(const locator::value& val) {
 		hash_combine(hash, val.center_x_);
 		hash_combine(hash, val.center_y_);
 		hash_combine(hash, val.modifications_);
-		hash_combine(hash, val.lightmap_);
 	}
 
 	return hash;
@@ -464,6 +477,66 @@ surface locator::load_image_file() const
 	return res;
 }
 
+//small utility function to store an int from (-256,254) to an signed char
+signed char col_to_uchar(int i) {
+	return static_cast<signed char>(std::min<int>(127, std::max<int>(-128, i/2)));
+}
+
+light_string get_light_string(int op, int r, int g, int b){
+	light_string ls;
+	ls.reserve(4);
+	ls.push_back(op);
+	ls.push_back(col_to_uchar(r));
+	ls.push_back(col_to_uchar(g));
+	ls.push_back(col_to_uchar(b));
+	return ls;
+}
+
+surface apply_light(surface surf, const light_string& ls){
+	// atomic lightmap operation are handled directly (important to end recursion)
+	if(ls.size() == 4){
+		//if no lightmap (first char = -1) then we need the inital value
+		//(before the halving done for lightmap)
+		int m = ls[0] == -1 ? 2 : 1;
+		return adjust_surface_color(surf, ls[1]*m, ls[2]*m, ls[3]*m);
+	}
+
+	// check if the lightmap is already cached or need to be generated
+	surface lightmap = NULL;
+	lit_variants::iterator i = lightmaps_.find(ls);
+	if(i != lightmaps_.end()) {
+		lightmap = i->second;
+	} else {
+		//build all the 7 paths for lightmap sources
+		static const std::string p = "terrain/light";
+		static const std::string lm_img[7] = {
+			p+"-n.png", p+"-ne.png", p+"-se.png",
+			p+"-s.png", p+"-sw.png", p+"-nw.png",
+			p+".png"
+		};
+
+		//decompose into atomic lightmap operations (4 chars)
+		for(size_t c = 0; c+3 < ls.size(); c+=4){
+			light_string sls = ls.substr(c,4);
+			//get the corresponding image and apply the lightmap operation to it
+			//This allows to also cache lightmap parts.
+			//note that we avoid infinite recursion by using only atomic operation
+			surface lts = image::get_lighted_image(lm_img[sls[0]], sls, HEXED);
+			//first image will be the base where we blit the others
+			if(lightmap == NULL) {
+				//copy the cached image to avoid modifying the cache
+				lightmap = make_neutral_surface(lts);
+			} else{
+				blit_surface(lts, NULL, lightmap, NULL);
+			}
+		}
+		//cache the result
+		lightmaps_[ls] = lightmap;
+	}
+	// apply the final lightmap
+	return light_surface(surf, lightmap);
+}
+
 surface locator::load_image_sub_file() const
 {
 	surface surf = get_image(val_.filename_, UNSCALED);
@@ -501,16 +574,6 @@ surface locator::load_image_sub_file() const
 
 		surface cut(cut_surface(surf, srcrect));
 		surf = mask_surface(cut, get_hexmask());
-	}
-
-	modification_queue lightmods = modification::decode(val_.lightmap_);
-
-	while(!lightmods.empty()) {
-		modification* lmod = lightmods.top();
-		lightmods.pop();
-
-		surf = (*lmod)(surf);
-		delete lmod;
 	}
 
 	return surf;
@@ -573,6 +636,8 @@ void set_color_adjustment(int r, int g, int b)
 		blue_adjust = b;
 		tod_colored_images_.flush();
 		brightened_images_.flush();
+		lit_images_.flush();
+		lit_scaled_images_.flush();
 		reversed_images_.clear();
 	}
 }
@@ -615,6 +680,7 @@ void set_zoom(int amount)
 		if (zoom != tile_size && zoom != cached_zoom) {
 			scaled_to_zoom_.flush();
 			scaled_to_hex_images_.flush();
+			lit_scaled_images_.flush();
 			cached_zoom = zoom;
 		}
 	}
@@ -780,6 +846,57 @@ surface get_image(const image::locator& i_locator, TYPE type)
 
 	return res;
 }
+
+surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type)
+{
+	surface res;
+	if(i_locator.is_void())
+		return res;
+
+	if(type == SCALED_TO_HEX && zoom == tile_size){
+		type = HEXED;
+	}
+
+	// select associated cache
+	lit_cache* imap = &lit_images_;
+	if(type == SCALED_TO_HEX)
+		imap = &lit_scaled_images_;
+
+	// if no light variants yet, need to add an empty map
+	if(!i_locator.in_cache(*imap)){
+		i_locator.add_to_cache(*imap, lit_variants());
+	}
+
+	//need access to add it if not found
+	lit_variants& lvar = i_locator.access_in_cache(*imap);
+	lit_variants::iterator lvi = lvar.find(ls);
+	if(lvi != lvar.end()) {
+		return lvi->second;
+	}
+
+	// not cached yet, generate it
+	switch(type) {
+	case HEXED:
+		res = get_image(i_locator, HEXED);
+		res = apply_light(res, ls);
+		break;
+	case SCALED_TO_HEX:
+		//we light before scaling to reuse the unscaled cache
+		res = get_lighted_image(i_locator, ls, HEXED);
+		res = scale_surface(res, zoom, zoom);;
+		break;
+	default:
+		;
+	}
+
+	// Optimizes surface before storing it
+	res = create_optimized_surface(res);
+	// record the lighted surface in the corresponding variants cache
+	lvar[ls] = res;
+
+	return res;
+}
+
 
 surface get_hexmask()
 {

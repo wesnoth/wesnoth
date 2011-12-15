@@ -652,61 +652,41 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 	const terrain_builder::imagelist* const terrains = builder_->get_terrain_at(loc,
 			timeid, builder_terrain_type);
 
-	std::string color_mod;
-	bool use_lightmap = false;
+	image::light_string lt;
 	bool use_local_light = local_tod_light_;
 	if(use_local_light){
 		const time_of_day& tod = get_time_of_day(loc);
 
+		//get all the light transitions
 		map_location adjs[6];
 		get_adjacent_tiles(loc,adjs);
-		static const std::string dir[6] = {"n","ne","se","s","sw","nw"};
-
-		//get all the light transitions
-		std::ostringstream light_trans;
 		for(int d=0; d<6; ++d){
 			const time_of_day& atod = get_time_of_day(adjs[d]);
 			if(atod.color == tod.color)
 				continue;
 
-			tod_color col = (atod.color + color_adjust_);
-			col *= 0.5; // lightmap needs halved values
-
-			light_trans	<< "~BLIT(terrain/light-" << dir[d] << ".png";
-			if(!col.is_zero()) {
-				light_trans << "~CS(" << col << ")";
+			if(lt.empty()) {
+				//color the full hex before adding transitions
+				tod_color col = tod.color + color_adjust_;
+				lt = image::get_light_string(6, col.r, col.g, col.b);
 			}
-			light_trans	<< ")"; //BLIT
-			use_lightmap = true;
+
+			// add the directional transitions
+			tod_color acol = atod.color + color_adjust_;
+			lt += image::get_light_string(d, acol.r, acol.g, acol.b);
 		}
 
-		std::ostringstream mod;
-		if(use_lightmap) {
-			tod_color col = tod.color + color_adjust_;
-			col *= 0.5; // lightmap needs halved values
-
-			//generate the base of the lightmap
-			//and add light transitions on it
-			mod	<< "~L(terrain/light.png";
-			if(!col.is_zero()) {
-				mod << "~CS(" << col << ")";
-			}
-			mod	<< light_trans.str() << ")"; // L
-		} else {
-			// no light map needed, but still need to color the hex
-			const time_of_day& global_tod = get_time_of_day(map_location::null_location);
-			if(tod.color == global_tod.color) {
-				// It's the same as global ToD, don't use local light
+		if(lt.empty()){
+			if(tod.color == get_time_of_day().color) {
 				use_local_light = false;
 			} else {
-				// simply color it if needed
 				tod_color col = tod.color + color_adjust_;
-				if(!col.is_zero()) {
-					mod << "~CS(" << col << ")";
+				if(!col.is_zero()){
+					// no real lightmap needed but still color the hex
+					lt = image::get_light_string(-1, col.r, col.g, col.b);
 				}
 			}
 		}
-		color_mod = mod.str();
 	}
 
 	if(terrains != NULL) {
@@ -726,21 +706,13 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			// over the offmap-terrain and these need a ToD coloring.
 
 			surface surf;
-
-			if(!use_local_light) {
-				const bool off_map = (image.get_filename() == off_map_name);
+			const bool off_map = image.get_filename() == off_map_name;
+			if(!use_local_light || off_map) {
 				surf = image::get_image(image, off_map ? image::SCALED_TO_HEX : image_type);
-			} else if(color_mod.empty()) {
+			} else if(lt.empty()) {
 				surf = image::get_image(image, image::SCALED_TO_HEX);
 			} else {
-				image::locator colored_image(
-						image.get_filename(),
-						image.get_loc(),
-						image.get_center_x(), image.get_center_y(),
-						image.get_modifications(), color_mod
-					);
-
-				surf = image::get_image(colored_image, image::SCALED_TO_HEX);
+				surf = image::get_lighted_image(image, lt, image::SCALED_TO_HEX);
 			}
 
 			if (!surf.null()) {
