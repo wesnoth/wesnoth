@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-05 16:25+0100\n"
+"POT-Creation-Date: 2011-12-15 10:39+0100\n"
 "PO-Revision-Date: 2010-09-30 05:00-0400\n"
 "Last-Translator: Arc Riley <arcriley@gmail.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -1230,6 +1230,21 @@ msgstr "𐑦𐑥𐑐𐑨𐑕𐑩𐑚𐑩𐑤"
 msgid "Unwalkable"
 msgstr "𐑳𐑯𐑢𐑷𐑒𐑩𐑚𐑤"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=click_dismiss
+#. [button]: id=ok
+#. [button]: id=cancel
+#. [button]: id=close_window
+#: data/gui/default/widget/window_default.cfg:140
+#: data/gui/default/window/chat_log.cfg:121
+#: data/gui/default/window/gamestate_inspector.cfg:339
+#: data/gui/default/window/lobby_main.cfg:619
+#: data/gui/default/window/lobby_player_info.cfg:200
+#: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
+msgid "Close"
+msgstr "𐑒𐑤𐑴𐑕"
+
 #. [label]
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:40
@@ -1387,8 +1402,8 @@ msgstr "𐑐𐑤𐑱 𐑩 𐑒𐑨𐑥𐑐𐑱𐑯"
 #: data/gui/default/window/simple_item_selector.cfg:146
 #: data/gui/default/window/unit_create.cfg:197
 #: data/gui/default/window/unit_create.cfg:198
-#: data/gui/default/window/wml_message.cfg:478
-#: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
+#: data/gui/default/window/wml_message.cfg:485
+#: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
@@ -1404,6 +1419,42 @@ msgstr "𐑛𐑦𐑓𐑦𐑒𐑩𐑤𐑑𐑰: "
 #: data/gui/default/window/campaign_difficulty.cfg:77
 msgid "Select difficulty level:"
 msgstr ""
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:38
+#, fuzzy
+#| msgid "View Chat Log"
+msgid "Chat Log"
+msgstr "𐑝𐑿 𐑗𐑨𐑑 𐑤𐑪𐑜"
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:56
+#, fuzzy
+#| msgid "Message:"
+msgid "Page:"
+msgstr "𐑥𐑧𐑕𐑦𐑡:"
+
+#. [slider]: id=page_number
+#: data/gui/default/window/chat_log.cfg:69
+msgid "Last"
+msgstr ""
+
+#. [button]: id=previous_page
+#. [button]: id=previous_tip
+#: data/gui/default/window/chat_log.cfg:79
+#: data/gui/default/window/title_screen.cfg:162
+msgid "Previous"
+msgstr "𐑐𐑮𐑰𐑝𐑦𐑩𐑕"
+
+#. [button]: id=next_tod
+#. [button]: id=next_page
+#. [button]: id=next_tip
+#: data/gui/default/window/chat_log.cfg:89
+#: data/gui/default/window/editor_settings.cfg:79
+#: data/gui/default/window/editor_settings.cfg:80
+#: data/gui/default/window/title_screen.cfg:177
+msgid "Next"
+msgstr "𐑯𐑧𐑒𐑕𐑑"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
@@ -1580,14 +1631,6 @@ msgstr "𐑧𐑛𐑦𐑑𐑹 𐑕𐑧𐑑𐑦𐑙𐑟"
 #| msgid "Time of day lighting preset"
 msgid "Time of day lighting preset:"
 msgstr "𐑑𐑲𐑥 𐑝 𐑛𐑱 𐑤𐑲𐑑𐑦𐑙 𐑐𐑮𐑰𐑕𐑧𐑑"
-
-#. [button]: id=next_tod
-#. [button]: id=next_tip
-#: data/gui/default/window/editor_settings.cfg:79
-#: data/gui/default/window/editor_settings.cfg:80
-#: data/gui/default/window/title_screen.cfg:177
-msgid "Next"
-msgstr "𐑯𐑧𐑒𐑕𐑑"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
@@ -1838,18 +1881,6 @@ msgstr "𐑑𐑲𐑐"
 #: data/gui/default/window/gamestate_inspector.cfg:214
 msgid "Variable"
 msgstr "𐑝𐑺𐑦𐑩𐑚𐑩𐑤"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=cancel
-#. [button]: id=close_window
-#: data/gui/default/window/gamestate_inspector.cfg:339
-#: data/gui/default/window/lobby_main.cfg:619
-#: data/gui/default/window/lobby_player_info.cfg:200
-#: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
-#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
-msgid "Close"
-msgstr "𐑒𐑤𐑴𐑕"
 
 #. [grid]
 #. [label]
@@ -2387,11 +2418,6 @@ msgstr "𐑣𐑧𐑤𐑐"
 #: data/gui/default/window/title_screen.cfg:147
 msgid "Show Battle for Wesnoth help"
 msgstr "𐑖𐑴 ·𐑚𐑨𐑑𐑩𐑤 𐑓𐑹 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑣𐑧𐑤𐑐"
-
-#. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:162
-msgid "Previous"
-msgstr "𐑐𐑮𐑰𐑝𐑦𐑩𐑕"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:163
@@ -3279,7 +3305,7 @@ msgstr "𐑳𐑯𐑯𐑴𐑯 𐑚𐑦𐑤𐑛𐑻 id 𐑓𐑹 𐑑𐑮𐑰 𐑝�
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "𐑒𐑤𐑦𐑒 𐑛𐑦𐑕𐑥𐑦𐑕 𐑯𐑰𐑛𐑟 𐑩 'click_dismiss' 𐑹 '𐑴𐑒𐑱' 𐑚𐑳𐑑𐑩𐑯."
 
-#: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:982
+#: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:989
 #: src/tests/gui/test_gui2.cpp:432
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "𐑓𐑱𐑤𐑛 𐑑 𐑖𐑴 𐑩 𐑛𐑲𐑩𐑤𐑪𐑜, 𐑢𐑦𐑗 𐑛𐑳𐑟𐑯𐑑 𐑓𐑦𐑑 𐑪𐑯 𐑞 𐑕𐑒𐑮𐑰𐑯."
@@ -3824,7 +3850,7 @@ msgstr "𐑕𐑒𐑮𐑰𐑯𐑖𐑷𐑑 𐑛𐑳𐑯"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:403
+#: src/image.cpp:404
 msgid "language code for localized resources^en_US"
 msgstr "en@shaw"
 

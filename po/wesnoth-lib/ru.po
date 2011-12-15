@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-05 16:25+0100\n"
+"POT-Creation-Date: 2011-12-15 10:39+0100\n"
 "PO-Revision-Date: 2011-12-06 10:33+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: ZumZoom\n"
@@ -1149,6 +1149,21 @@ msgstr "Непроходимая местность"
 msgid "Unwalkable"
 msgstr "Непроходимая местность"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=click_dismiss
+#. [button]: id=ok
+#. [button]: id=cancel
+#. [button]: id=close_window
+#: data/gui/default/widget/window_default.cfg:140
+#: data/gui/default/window/chat_log.cfg:121
+#: data/gui/default/window/gamestate_inspector.cfg:339
+#: data/gui/default/window/lobby_main.cfg:619
+#: data/gui/default/window/lobby_player_info.cfg:200
+#: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
+msgid "Close"
+msgstr "Закрыть"
+
 #. [label]
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:40
@@ -1302,8 +1317,8 @@ msgstr "Играть кампанию"
 #: data/gui/default/window/simple_item_selector.cfg:146
 #: data/gui/default/window/unit_create.cfg:197
 #: data/gui/default/window/unit_create.cfg:198
-#: data/gui/default/window/wml_message.cfg:478
-#: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
+#: data/gui/default/window/wml_message.cfg:485
+#: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
@@ -1318,6 +1333,42 @@ msgstr "Сложность"
 #: data/gui/default/window/campaign_difficulty.cfg:77
 msgid "Select difficulty level:"
 msgstr "Выберите уровень сложности:"
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:38
+#, fuzzy
+#| msgid "View Chat Log"
+msgid "Chat Log"
+msgstr "Смотреть лог чата"
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:56
+#, fuzzy
+#| msgid "Message:"
+msgid "Page:"
+msgstr "Сообщение:"
+
+#. [slider]: id=page_number
+#: data/gui/default/window/chat_log.cfg:69
+msgid "Last"
+msgstr ""
+
+#. [button]: id=previous_page
+#. [button]: id=previous_tip
+#: data/gui/default/window/chat_log.cfg:79
+#: data/gui/default/window/title_screen.cfg:162
+msgid "Previous"
+msgstr "Предыдущий"
+
+#. [button]: id=next_tod
+#. [button]: id=next_page
+#. [button]: id=next_tip
+#: data/gui/default/window/chat_log.cfg:89
+#: data/gui/default/window/editor_settings.cfg:79
+#: data/gui/default/window/editor_settings.cfg:80
+#: data/gui/default/window/title_screen.cfg:177
+msgid "Next"
+msgstr "Следующий"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
@@ -1488,14 +1539,6 @@ msgstr "Настройки редактора"
 #: data/gui/default/window/editor_settings.cfg:53
 msgid "Time of day lighting preset:"
 msgstr "Предустановленная освещённость по времеми суток:"
-
-#. [button]: id=next_tod
-#. [button]: id=next_tip
-#: data/gui/default/window/editor_settings.cfg:79
-#: data/gui/default/window/editor_settings.cfg:80
-#: data/gui/default/window/title_screen.cfg:177
-msgid "Next"
-msgstr "Следующий"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
@@ -1742,18 +1785,6 @@ msgstr "Тип"
 #: data/gui/default/window/gamestate_inspector.cfg:214
 msgid "Variable"
 msgstr "Переменная"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=cancel
-#. [button]: id=close_window
-#: data/gui/default/window/gamestate_inspector.cfg:339
-#: data/gui/default/window/lobby_main.cfg:619
-#: data/gui/default/window/lobby_player_info.cfg:200
-#: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
-#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
-msgid "Close"
-msgstr "Закрыть"
 
 #. [grid]
 #. [label]
@@ -2268,11 +2299,6 @@ msgstr "Помощь"
 #: data/gui/default/window/title_screen.cfg:147
 msgid "Show Battle for Wesnoth help"
 msgstr "Показать помощь"
-
-#. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:162
-msgid "Previous"
-msgstr "Предыдущий"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:163
@@ -3148,7 +3174,7 @@ msgstr "Неизвестное название конструктора для 
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Закрытие по клику требует кнопки «click_dismiss» или «ok»."
 
-#: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:982
+#: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:989
 #: src/tests/gui/test_gui2.cpp:432
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не могу показать диалог, он не помещается на экране."
@@ -3663,7 +3689,7 @@ msgstr "Скриншот готов"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:403
+#: src/image.cpp:404
 msgid "language code for localized resources^en_US"
 msgstr "ru,ua"
 

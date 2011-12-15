@@ -32,14 +32,16 @@ wesnoth \- Battle for Wesnoth, ein rundenbasiertes Strategiespiel
 Battle for \fBWesnoth\fP ist ein rundenbasiertes Strategiespiel in einem
 Fantasy\-Szenario.
 
-Defeat all enemy leaders using a well\-chosen cadre of troops, taking care to
-manage your resources of gold and villages. All units have their own
-strengths and weaknesses; to win, deploy your forces to their best advantage
-while denying your foes the chance to do the same. As units gain experience,
-they acquire new abilities and become more powerful. Play in your own
-language and test your skill against a smart computer opponent, or join
-Wesnoth's large community of online players. Create your own custom units,
-scenarios or campaigns, and share them with others.
+Besiegen Sie alle feindlichen Anführer, indem Sie einen geschickt gewählten
+Kader an Truppen in die Schlacht führen und dabei auch Ihr Gold und Ihre
+Dörfer verwalten. Alle Einheiten haben ihre eigenen Stärken und Schwächen;
+um siegreich hervor zu gehen, müssen Sie diese Kräfte zu Ihrem Vorteil
+nutzen und zugleich den Gegner an selbigem hindern. Mit wachsender Erfahrung
+erlernen die Truppen neue Fertigkeiten und werden mächtiger. Spielt in Eurer
+eigenen Sprache und testet Eure Fertigkeiten gegen kluge Computer\-Gegner,
+oder tretet Wesnoths vielfältiger Gemeinschaft der Online\-Spieler
+bei. Erstellt eure eigen angepassten Einheiten, Szenarien oder Kampagnen,
+und teilt diese mit anderen.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
@@ -48,19 +50,21 @@ scenarios or campaigns, and share them with others.
 Bestimmt die Farbtiefe, in der das Spiel gestartet wird. Beispiel: \fB\-\-bpp
 32\fP
 .TP 
-\fB\-c, \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
-goes directly to the campaign based on the parameters.  The difficulty is a
-number between 1 and current campaign's difficulties number.  The default
-difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.  \fBNote: When
-using this switch please ensure that you specify the data directory path as
-the final argument\fP aswell, otherwise the game will take the
-campaign/scenario id as the data dir.
+\fB\-c, \-\-campaign[[<Einstufung>] <id_Kampagne> [<id_Szenario>]]\fP
+Geht direkt zu der von den Parametern bestimmten Kampagne. Die Einstufung
+ist eine Nummer zwischen 1 und der Einstufungsnummer der aktuellen
+Kampagne. Die Standardeinstufung ist 1. Das Szenario muss eines der
+Unterszenarien der Kampagne sein. Das Standardszenario ist das erste
+Szenario der Kampagne. \fBAnmerkung: Wenn dieser Schalter verwendet wird,
+stellen Sie sicher, dass der Pfad zum Datenverzeichnis als letztes Argument
+angegeben ist\fP, anderenfalls wird das Spiel die Kampagnen\-/Szenario\-ID als
+Datenverzeichnis verwenden.
 .TP 
 \fB\-\-config\-dir\fP\fI\ Name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games"
+Setzt das Konfigurationsverzeichnis des Benutzers auf \fIname\fP in $HOME oder
+»Eigene Dateien\eMy Games« auf Windows. Es kann auch ein absoluter Pfad zum
+Konfigurationsverzeichnis außerhalb von $HOME oder »Eigene Dateien\eMy
+Games« angegeben werden.
 .TP 
 \fB\-\-config\-path\fP
 Zeigt an, wo sich das Verzeichnis für die Nutzereinstellungen befindet.
@@ -142,27 +146,30 @@ Deaktiviert jegliche Soundeffekte im Spiel.
 \fB\-\-path\fP
 Zeigt an, wo sich das Verzeichnis mit den Spieldateien befindet.
 .TP 
-\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
-preprocesses a specified file/folder. The file(s) will be written in
-specified target directory: a plain cfg file and a processed cfg file. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the data/core/macros will be
-preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
-extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  If 'SKIP_CORE' is in the define
-list the data/core won't be preprocessed.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result\fP or
-\fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <Datei/Verzeichnis> <Zielverzeichnis>\fP
+Eine angegebene Datei/Verzeichnis vorverarbeiten. Die Datei(en) werden in
+das angegebene Zielverzeichnis geschrieben: Eine einfache cfg\-Datei und eine
+vorverarbeitete cfg\-Datei. Wenn ein Verzeichnis angegeben wird, wird dieses
+basierend auf den bekannten Vorverarbeitungsregeln rekursiv verarbeitet. Die
+allgemeinen Makros aus data/core/macros werden vor den angegebenen
+Ressourcen verarbeitet. \fBdefine1,define2,...\fP \- die zusätzlichen
+Definitionen werden vor dem Verarbeiten der Dateien hinzugefügt. Wenn sie
+hinzugefügt werden sollen, muss das »=«\-Zeichen davor eingegeben
+werden. Wenn sich »SKIP_CORE« in der Definitionsliste befindet, wird
+data/core nicht vorverarbeitet. Beispiel: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/ergebnis\fP oder
+\fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/ergebnis\fP
 .TP 
-\fB\-\-preprocess\-input\-macros <source file>\fP
-used only by the '\-\-preprocess' command.  Specifies a file that contains
-[preproc_define]s to be included before preprocessing.
+\fB\-\-preprocess\-input\-macros <Quelldatei>\fP
+Wird nur vom »\-\-preprocess«\-Befehl verwendet. Gibt eine [preproc_define]
+enthaltende Datei an, die vor dem Vorbearbeiten eingelesen wird.
 .TP 
-\fB\-\-preprocess\-output\-macros [<target file>]\fP
-used only by the '\-\-preprocess' command.  Will output all preprocessed
-macros in the target file. If the file is not specified the output will be
-file '_MACROS_.cfg' in the target directory of preprocess's command.  This
-switch should be typed before the \-\-preprocess command.
+\fB\-\-preprocess\-output\-macros [<Zieldatei>]\fP
+Wird nur vom »\-\-preprocess«\-Befehl verwendet. Gibt alle vorverarbeiteten
+Makros in die Zieldatei aus. Falls keine Datei angegeben wird, wird die
+Ausgabe in die Datei »_MACROS_.cfg« im Zielverzeichnis des
+Vorverarbeitungs\-Befehls geschrieben. Dieser Schalter sollte vor dem
+\-\-preprocess Befehl angegeben werden.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 Ermöglicht es, die Auflösung zu bestimmen, in der das Spiel gestartet

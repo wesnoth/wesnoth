@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-05 16:25+0100\n"
+"POT-Creation-Date: 2011-12-15 10:39+0100\n"
 "PO-Revision-Date: 2011-05-03 21:11+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -1301,6 +1301,21 @@ msgstr "Neprekročiteľné"
 msgid "Unwalkable"
 msgstr "Nepriechodné"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=click_dismiss
+#. [button]: id=ok
+#. [button]: id=cancel
+#. [button]: id=close_window
+#: data/gui/default/widget/window_default.cfg:140
+#: data/gui/default/window/chat_log.cfg:121
+#: data/gui/default/window/gamestate_inspector.cfg:339
+#: data/gui/default/window/lobby_main.cfg:619
+#: data/gui/default/window/lobby_player_info.cfg:200
+#: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
+msgid "Close"
+msgstr "Zavri"
+
 #. [label]
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:40
@@ -1462,8 +1477,8 @@ msgstr "Hrať výpravu"
 #: data/gui/default/window/simple_item_selector.cfg:146
 #: data/gui/default/window/unit_create.cfg:197
 #: data/gui/default/window/unit_create.cfg:198
-#: data/gui/default/window/wml_message.cfg:478
-#: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
+#: data/gui/default/window/wml_message.cfg:485
+#: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
@@ -1480,6 +1495,42 @@ msgstr "Náročnosť:"
 #: data/gui/default/window/campaign_difficulty.cfg:77
 msgid "Select difficulty level:"
 msgstr ""
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:38
+#, fuzzy
+#| msgid "Chat log"
+msgid "Chat Log"
+msgstr "Záznam rozhovoru"
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:56
+#, fuzzy
+#| msgid "Page"
+msgid "Page:"
+msgstr "Strana"
+
+#. [slider]: id=page_number
+#: data/gui/default/window/chat_log.cfg:69
+msgid "Last"
+msgstr "Posledná"
+
+#. [button]: id=previous_page
+#. [button]: id=previous_tip
+#: data/gui/default/window/chat_log.cfg:79
+#: data/gui/default/window/title_screen.cfg:162
+msgid "Previous"
+msgstr "Predchádzajúca"
+
+#. [button]: id=next_tod
+#. [button]: id=next_page
+#. [button]: id=next_tip
+#: data/gui/default/window/chat_log.cfg:89
+#: data/gui/default/window/editor_settings.cfg:79
+#: data/gui/default/window/editor_settings.cfg:80
+#: data/gui/default/window/title_screen.cfg:177
+msgid "Next"
+msgstr "Ďalšia"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
@@ -1660,14 +1711,6 @@ msgstr "Nastavenia editora"
 #| msgid "Time of day lighting preset"
 msgid "Time of day lighting preset:"
 msgstr "Prednastavenie osvetlenia dennou dobou"
-
-#. [button]: id=next_tod
-#. [button]: id=next_tip
-#: data/gui/default/window/editor_settings.cfg:79
-#: data/gui/default/window/editor_settings.cfg:80
-#: data/gui/default/window/title_screen.cfg:177
-msgid "Next"
-msgstr "Ďalšia"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
@@ -1918,18 +1961,6 @@ msgstr "Typ"
 #: data/gui/default/window/gamestate_inspector.cfg:214
 msgid "Variable"
 msgstr "Premenná"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=cancel
-#. [button]: id=close_window
-#: data/gui/default/window/gamestate_inspector.cfg:339
-#: data/gui/default/window/lobby_main.cfg:619
-#: data/gui/default/window/lobby_player_info.cfg:200
-#: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
-#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
-msgid "Close"
-msgstr "Zavri"
 
 #. [grid]
 #. [label]
@@ -2468,11 +2499,6 @@ msgstr "Pomoc"
 #: data/gui/default/window/title_screen.cfg:147
 msgid "Show Battle for Wesnoth help"
 msgstr ""
-
-#. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:162
-msgid "Previous"
-msgstr "Predchádzajúca"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:163
@@ -3377,7 +3403,7 @@ msgstr ""
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Zrušenie kliknutia vyžaduje tlačidlo 'click_dismiss' alebo 'ok'."
 
-#: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:982
+#: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:989
 #: src/tests/gui/test_gui2.cpp:432
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
@@ -3933,7 +3959,7 @@ msgstr "Snímok obrazovky hotový"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:403
+#: src/image.cpp:404
 msgid "language code for localized resources^en_US"
 msgstr "sk,cz,en"
 
@@ -4219,15 +4245,6 @@ msgstr ""
 
 #~ msgid "Chat log dialog."
 #~ msgstr "Okno záznamu hovoru."
-
-#~ msgid "Chat log"
-#~ msgstr "Záznam rozhovoru"
-
-#~ msgid "Page"
-#~ msgstr "Strana"
-
-#~ msgid "Last"
-#~ msgstr "Posledná"
 
 #~ msgid "Generate name"
 #~ msgstr "Generuj meno"

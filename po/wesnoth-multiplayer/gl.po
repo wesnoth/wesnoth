@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-16 12:43+0100\n"
+"POT-Creation-Date: 2011-12-15 10:39+0100\n"
 "PO-Revision-Date: 2011-11-09 21:59+0100\n"
 "Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -40,14 +40,31 @@ msgstr "Mapa do usuario"
 msgid "Random"
 msgstr "Ao chou"
 
+#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
+#: data/multiplayer/eras.cfg:126
+msgid ""
+"<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
+"score = %d  Gold = %d"
+msgstr ""
+
+#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
+#: data/multiplayer/eras.cfg:126
+msgid "Grand total: <b>%d</b>"
+msgstr ""
+
+#. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
+#: data/multiplayer/eras.cfg:136
+msgid "<span foreground='%s'>Side %d</span> has the advantage."
+msgstr ""
+
 # Aparece cando se acceder a «Varios xogadores → Partida local». «Predeterminada» non cabe no botón, de aí que se acurte co punto.
 #. [era]: id=era_default
-#: data/multiplayer/eras.cfg:159
+#: data/multiplayer/eras.cfg:160
 msgid "Default"
 msgstr "Predeterm."
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:179
+#: data/multiplayer/eras.cfg:180
 msgid "Age of Heroes"
 msgstr "Idade dos heroes"
 
