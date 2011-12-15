@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
+"PO-Revision-Date: 2011-12-15 11:57+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -524,9 +524,8 @@ msgstr ""
 
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:856
-#, fuzzy
 msgid "Cave Path"
-msgstr "Urvas"
+msgstr "Urvo takas"
 
 #. [terrain_type]: id=fungus
 #. [terrain_type]: id=fungus_beam
@@ -536,9 +535,8 @@ msgstr "Grybų giraitė"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:875
-#, fuzzy
 msgid "Lit Mushroom Grove"
-msgstr "Grybų giraitė"
+msgstr "Apšviesta grybų giraitė"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:886
@@ -806,9 +804,8 @@ msgstr "Slibinų kaimas"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:1386
-#, fuzzy
 msgid "Cave Village"
-msgstr "Kaimas"
+msgstr "Urvo kaimas"
 
 #. [terrain_type]: id=dwarven_village
 #: data/core/terrain.cfg:1399
@@ -1333,22 +1330,18 @@ msgstr "Pasirinkite sudėtingumo lygį:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
-#, fuzzy
-#| msgid "View Chat Log"
 msgid "Chat Log"
-msgstr "Žiūrėti pokalbių žurnalą"
+msgstr "Pokalbių žurnalas"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
-#, fuzzy
-#| msgid "Message:"
 msgid "Page:"
-msgstr "Žinutė:"
+msgstr "Puslapis:"
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:69
 msgid "Last"
-msgstr ""
+msgstr "Paskutinis"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
@@ -2028,9 +2021,8 @@ msgstr "Išspirti"
 
 #. [label]: id=side_title
 #: data/gui/default/window/mp_change_control.cfg:21
-#, fuzzy
 msgid "Side"
-msgstr "Kita pusė"
+msgstr "Pusė"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
@@ -3336,19 +3328,16 @@ msgid "Best Possible Enemy Moves"
 msgstr "Geriausi įmanomi priešų ėjimai"
 
 #: src/hotkeys.cpp:100
-#, fuzzy
 msgid "Play Replay"
-msgstr "Išsaugoti peržaidimą"
+msgstr "Leisti peržaidimą"
 
 #: src/hotkeys.cpp:101
-#, fuzzy
 msgid "Reset Replay"
-msgstr "Išsaugoti peržaidimą"
+msgstr "Perleisti peržaidimą"
 
 #: src/hotkeys.cpp:102
-#, fuzzy
 msgid "Stop Replay"
-msgstr "Išsaugoti peržaidimą"
+msgstr "Stabdyti peržaidimą"
 
 #: src/hotkeys.cpp:103
 msgid "Next Turn"
@@ -3400,7 +3389,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:119
 msgid "Suppose Dead"
-msgstr ""
+msgstr "Laikyti mirusiu"
 
 #: src/hotkeys.cpp:121
 msgid "Quit to Desktop"
@@ -3841,6 +3830,3 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-
-#~ msgid "Resize map"
-#~ msgstr "Keisti žemėlapio dydį"

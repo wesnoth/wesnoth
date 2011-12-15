@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
+"PO-Revision-Date: 2011-12-01 11:36+0100\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -1020,7 +1020,7 @@ msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr ""
-"Šiuo vandeniu apšlakstyti kontaktiniai ginklai darys <i>paslaptingą<i> žalą "
+"Šiuo vandeniu apšlakstyti kontaktiniai ginklai darys <i>paslaptingą</i> žalą "
 "iki scenarijaus pabaigos. "
 
 #. [object]: id={ID}
@@ -3350,39 +3350,30 @@ msgid "Close"
 msgstr "Užverti"
 
 #: src/actions.cpp:501
-#, fuzzy
 msgid "You don’t have a leader to recall with."
-msgstr "Neturite vado, su kuriuo galite samdyti."
+msgstr "Neturite vado, su kuriuo galite grąžinti."
 
 #: src/actions.cpp:506
-#, fuzzy
 msgid "None of your leaders is able to recall that unit."
-msgstr ""
-"Jūsų vadas turi būti bokšte, kad galėtumėte samdyti arba grąžinti dalinius."
+msgstr "Nė vienas iš jūsų vadų negali grąžinto šio dalinio."
 
 #: src/actions.cpp:511
-#, fuzzy
 msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr ""
-"Jūsų vadas turi būti bokšte, kad galėtumėte samdyti arba grąžinti dalinius."
+msgstr "Jūsų vadas turi būti bokšte, kad galėtumėte grąžinti dalinį."
 
 #: src/actions.cpp:516
-#, fuzzy
 msgid "There are no vacant castle tiles in which to recall the unit."
-msgstr "Nėra laisvų pilies laukelių, kuriuose galima samdyti dalinį."
+msgstr "Nėra laisvų pilies laukelių, kuriuose galima grąžinti dalinį."
 
 #: src/actions.cpp:586
 msgid "You don’t have a leader to recruit with."
 msgstr "Neturite vado, su kuriuo galite samdyti."
 
 #: src/actions.cpp:591
-#, fuzzy
 msgid "You must have a leader on a keep who is able to recruit the unit."
-msgstr ""
-"Jūsų vadas turi būti bokšte, kad galėtumėte samdyti arba grąžinti dalinius."
+msgstr "Jūsų vadas turi būti bokšte, kad galėtumėte samdyti dalinį."
 
 #: src/actions.cpp:596
-#, fuzzy
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Nėra laisvų pilies laukelių, kuriuose galima samdyti dalinį."
 
@@ -5015,11 +5006,11 @@ msgstr "Pakeistas domenas: „$domain“ į lygį: „$level“."
 
 #: src/menu_events.cpp:2767
 msgid "whisper to $receiver"
-msgstr "šnabždesys: $gavėjui"
+msgstr "šnabždesys: $receiver"
 
 #: src/menu_events.cpp:2774 src/multiplayer_ui.cpp:542
 msgid "whisper: $sender"
-msgstr "šnabždesys: $siuntėjui"
+msgstr "šnabždesys: $sender"
 
 #: src/menu_events.cpp:2870 src/menu_events.cpp:2889
 #: src/multiplayer_connect.cpp:665
@@ -5991,13 +5982,12 @@ msgid "The game is over."
 msgstr "Žaidimas baigtas."
 
 #: src/playsingle_controller.cpp:532
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Įvyko tinklo atsijungimas ir žaidimas negali tęstis.\n"
-"Ar norite išsaugoti šį žaidimą?"
+"Nutrūko tinklo ryšys ir žaidimas negali tęstis. Ar norite išsaugoti šį "
+"žaidimą?"
 
 #: src/playsingle_controller.cpp:691
 msgid "It is now $name|’s turn"
@@ -6602,11 +6592,11 @@ msgstr "neutrali"
 
 #: src/whiteboard/manager.cpp:1068
 msgid "SHOW ALL allies’ plans"
-msgstr ""
+msgstr "RODYTI VISUS sąjungininkų planus"
 
 #: src/whiteboard/manager.cpp:1069
 msgid "HIDE ALL allies’ plans"
-msgstr ""
+msgstr "SLĖPTI VISUS sąjungininkų planus"
 
 #: src/whiteboard/manager.cpp:1083
 #, fuzzy
@@ -6621,21 +6611,3 @@ msgstr "Pakeisti į $player"
 #: src/whiteboard/manager.cpp:1088
 msgid "Whiteboard Options"
 msgstr ""
-
-#~ msgid "Download"
-#~ msgstr "Atsisiųsti"
-
-#~ msgid "Done"
-#~ msgstr "Atlikta"
-
-#~ msgid "Chat Log"
-#~ msgstr "Pokalbio žurnalas"
-
-#~ msgid "No time of day has been defined."
-#~ msgstr "Nebuvo nurodytas dienos laikas."
-
-#~ msgid ""
-#~ "Some units have planned actions left. Do you really want to end your turn?"
-#~ msgstr ""
-#~ "Kai kurie daliniai dar turi suplanuotų veiksmų. Ar tikrai norite baigti "
-#~ "ėjimą?"

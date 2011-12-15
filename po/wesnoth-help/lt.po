@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
+"PO-Revision-Date: 2011-12-15 21:10+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -581,7 +581,7 @@ msgstr ""
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:37
 msgid "Morogor"
-msgstr ""
+msgstr "Morogoras"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:40
@@ -818,7 +818,7 @@ msgstr ""
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
 msgid "Far North"
-msgstr ""
+msgstr "Tolimoji šiaurė"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:176
@@ -4571,13 +4571,13 @@ msgstr ""
 "<header>text='Visuomenė'</header>\n"
 "Slibinai yra karinga rūšis ir jų visuomenė gali būti apibūdinama kaip kovos "
 "menų visuomenė. Genties stuburą sudaro nedidelė senbuvių karių grupė, lydima "
-"bendru sutarimu gerbiamo arba tiesiog labiausiai bijomo vado, kuris "
-"visuomenei vadovauja su geležiniu kumščiu. Kiekvienas slibinas turi "
-"užsitarnauti savo vietą bandoje pagal griežtus hierarchijos principus, "
-"klausyti vyresniųjų ir vadovauti jaunesniesiems. Į valdančiųjų ratą galima "
-"patekti tiktai dvikovoje nukovus vyresnį, tokiu pačiu principu hierarchija "
-"sudaroma ir valdančiųjų rate. Bet kokios apgavystės tarp slibinų yra, be "
-"išimčių, visiškai nepriimtinos.\n"
+"bendru sutarimu gerbiamo arba tiesiog labiausiai bijomo <ref>dst='dominant' "
+"text='vado'</ref>, kuris visuomenei vadovauja su geležiniu kumščiu. "
+"Kiekvienas slibinas turi užsitarnauti savo vietą bandoje pagal griežtus "
+"hierarchijos principus, klausyti vyresniųjų ir vadovauti jaunesniesiems. Į "
+"valdančiųjų ratą galima patekti tiktai dvikovoje nukovus vyresnį, tokiu "
+"pačiu principu hierarchija sudaroma ir valdančiųjų rate. Bet kokios "
+"apgavystės tarp slibinų yra, be išimčių, visiškai nepriimtinos.\n"
 "\n"
 "Nors jų karingumas ir savų teritorijų suvokimas verčia juos tas teritorijas "
 "įnirtingai ginti, slibinai retai įsiveržia į kitų rasių užimtas teritorijas. "
@@ -4595,12 +4595,14 @@ msgstr ""
 "užtikrinti savo vietą slibinų legendose apie didvyrius.\n"
 "\n"
 "<header>text='Geografija'</header>\n"
-"Slibinai kilę iš vulkaninių salų, esančių Didžiajame vandenyne, grandinės. "
-"Didelė populiacija ir salų mažėjimas privertė juos plėstis į Didįjį žemyną. "
-"Slibinai linkę įsikurti kalnų urvuose netoli ugnikalnių tam, kad apsaugotų "
-"savo kiaušinius, jauniklius ir dirbtuves. Slibinai mėgsta šiltesnį klimatą, "
-"tačiau dėl savo vidinės ugnies jie gali pakelti šaltį ir tai leidžia jiems "
-"plėstis net į Didžiojo žemyno tolimoje šiaurėje esančius kalnus."
+"Slibinai kilę iš <ref>dst='morogor' text='Morogoro'</ref> vulkaninių salų, "
+"esančių <ref>dst='great_ocean' text='Didžiajame vandenyne'</ref>, grandinės. "
+"Didelė populiacija ir salų mažėjimas privertė juos plėstis į "
+"<ref>dst='great_continent' text='Didįjį žemyną'</ref>. Slibinai linkę "
+"įsikurti kalnų urvuose netoli ugnikalnių tam, kad apsaugotų savo kiaušinius, "
+"jauniklius ir dirbtuves. Slibinai mėgsta šiltesnį klimatą, tačiau dėl savo "
+"vidinės ugnies jie gali pakelti šaltį ir tai leidžia jiems plėstis net į "
+"Didžiojo žemyno tolimoje šiaurėje esančius kalnus."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:90
