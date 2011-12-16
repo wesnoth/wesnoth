@@ -255,17 +255,6 @@ int mask_modification::get_y() const
 	return y_;
 }
 
-surface light_modification::operator()(const surface& src) const {
-	if(src == NULL) { return NULL; }
-
-	return light_surface(src, surf_);;
-}
-
-const surface& light_modification::get_surface() const
-{
-	return surf_;
-}
-
 surface scale_modification::operator()(const surface& src) const
 {
 	const int old_w = src->w;
@@ -662,19 +651,6 @@ REGISTER_MOD_PARSER(MASK, args)
 	surface surf = get_image(param[0]);
 
 	return new mask_modification(surf, x, y);
-}
-
-// Light
-REGISTER_MOD_PARSER(L, args)
-{
-	if(args.empty()){
-		ERR_DP << "no arguments passed to the ~L() function\n";
-		return NULL;
-	}
-
-	surface surf = get_image(args);
-
-	return new light_modification(surf);
 }
 
 // Scale
