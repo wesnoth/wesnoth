@@ -495,6 +495,12 @@ void team::change_team(const std::string &name, const t_string &user_name)
 	clear_caches();
 }
 
+void team::set_current_player(const t_string &current_player)
+{
+	info_.current_player = current_player;
+	clear_caches();
+}
+
 void team::clear_caches(){
 	// Reset the cache of allies for all teams
 	if(teams != NULL) {
