@@ -987,29 +987,28 @@ surface light_surface(const surface &surf, const surface &lightmap, bool optimiz
 	}
 
 	surface nsurf = make_neutral_surface(surf);
-	surface nlightmap = make_neutral_surface(lightmap);
 
-	if(nsurf == NULL || nlightmap == NULL) {
+	if(nsurf == NULL) {
 		std::cerr << "could not make neutral surface...\n";
 		return NULL;
 	}
-	if (nsurf->w != nlightmap->w) {
+	if (nsurf->w != lightmap->w) {
 		// we don't support efficiently different width.
 		// (different height is not a real problem)
 		// This function is used on all hexes and usually only for that
 		// so better keep it simple and efficient for the normal case
 		std::cerr << "Detected an image with bad dimensions :" << nsurf->w << "x" << nsurf->h << "\n";
-		std::cerr << "It will not be lighted, please use :"<< nlightmap->w << "x" << nlightmap->h << "\n";
+		std::cerr << "It will not be lighted, please use :"<< lightmap->w << "x" << lightmap->h << "\n";
 		return nsurf;
 	}
 	{
 		surface_lock lock(nsurf);
-		const_surface_lock llock(nlightmap);
+		const_surface_lock llock(lightmap);
 
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w * nsurf->h;
 		const Uint32* lbeg = llock.pixels();
-		const Uint32* lend = lbeg + nlightmap->w * nlightmap->h;
+		const Uint32* lend = lbeg + lightmap->w * lightmap->h;
 
 		while(beg != end && lbeg != lend) {
 			Uint8 alpha = (*beg) >> 24;

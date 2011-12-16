@@ -247,7 +247,8 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
  * @param surf               The source surface.
  * @param lightmap           add/subtract this color to surf
  *                           but RGB values are converted to (X-128)*2
- *                           to cover the full (-256,256) spectrum
+ *                           to cover the full (-256,256) spectrum.
+ *                           Should already be neutral
  * @param optimize           Whether the new surface should be RLE encoded.
 */
 surface light_surface(const surface &surf, const surface &lightmap, bool optimize=true);
