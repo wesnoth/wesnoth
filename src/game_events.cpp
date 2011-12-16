@@ -953,7 +953,6 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 
 	std::string team_name = cfg["team_name"];
 	std::string user_team_name = cfg["user_team_name"];
-	std::string current_player = cfg["current_player"];
 	std::string controller = cfg["controller"];
 	std::string recruit_str = cfg["recruit"];
 	std::string shroud_data = cfg["shroud_data"];
@@ -980,10 +979,6 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			LOG_NG << "change side's user_team_name to '" << user_team_name << "'\n";
 			teams[team_index].change_team(teams[team_index].team_name(),
 					user_team_name);
-		}
-		if (!current_player.empty()) {
-			LOG_NG << "change side's current_player to '" << current_player << "'\n";
-			teams[team_index].set_current_player(current_player);
 		}
 		// Modify recruit list (override)
 		if (!recruit_str.empty()) {
