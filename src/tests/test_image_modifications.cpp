@@ -608,6 +608,28 @@ BOOST_AUTO_TEST_CASE(test_l_modification_decoding_no_args)
 	BOOST_CHECK_EQUAL(queue.size(), 0);
 }
 
+/** Tests if the L modification with one argument is correctly decoded
+ *
+ * @todo check if the surface is correct
+ */
+BOOST_AUTO_TEST_CASE(test_l_modification_decoding_1_arg)
+{
+	environment_setup env_setup;
+
+	modification_queue queue = modification::decode("~L(wesnoth-icon.png)");
+
+	BOOST_REQUIRE_EQUAL(queue.size(), 1);
+
+	light_modification* mod = dynamic_cast<light_modification*>(queue.top());
+
+	// The dynamic_cast returns NULL if the argument doesn't match the type
+	BOOST_REQUIRE(mod != NULL);
+
+	BOOST_CHECK(!mod->get_surface().null());
+
+	delete mod;
+}
+
 /// Tests if the SCALE modification without arguments is ignored
 BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_no_args)
 {

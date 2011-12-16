@@ -230,6 +230,24 @@ private:
 };
 
 /**
+ * LIGHT (L) modification.
+ */
+
+class light_modification : public modification
+{
+public:
+	light_modification(const surface& surf)
+		: surf_(surf)
+	{}
+	virtual surface operator()(const surface& src) const;
+
+	const surface& get_surface() const;
+
+private:
+	surface surf_;
+};
+
+/**
  * Scale (SCALE) modification.
  */
 class scale_modification : public modification
