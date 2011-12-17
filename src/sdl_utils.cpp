@@ -28,15 +28,6 @@
 #include <cstring>
 #include <iostream>
 
-
-/// Check that the surface is neutral bpp 32, possibly with an empty alpha channel.
-inline bool is_neutral(const surface& surf)
-{
-	return (surf->format->BytesPerPixel == 4 &&
-		surf->format->Rmask == 0xFF0000u &&
-		(surf->format->Amask | 0xFF000000u) == 0xFF000000u);
-}
-
 surface_lock::surface_lock(surface &surf) : surface_(surf), locked_(false)
 {
 	assert(is_neutral(surface_));
@@ -158,6 +149,13 @@ SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 bool operator<(const surface& a, const surface& b)
 {
 	return a.get() < b.get();
+}
+
+bool is_neutral(const surface& surf)
+{
+	return (surf->format->BytesPerPixel == 4 &&
+		surf->format->Rmask == 0xFF0000u &&
+		(surf->format->Amask | 0xFF000000u) == 0xFF000000u);
 }
 
 static SDL_PixelFormat& get_neutral_pixel_format()

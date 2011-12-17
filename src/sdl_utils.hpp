@@ -133,6 +133,17 @@ inline void sdl_fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color){
 	SDL_FillRect(dst, dst_rect, color);
 }
 
+/**
+ * Check that the surface is neutral bpp 32.
+ *
+ * The surface may have an empty alpha channel.
+ *
+ * @param surf                    The surface to test.
+ *
+ * @returns                       The status @c true if neutral, @c false if not.
+ */
+bool is_neutral(const surface& surf);
+
 surface make_neutral_surface(const surface &surf);
 surface create_neutral_surface(int w, int h);
 surface create_optimized_surface(const surface &surf);

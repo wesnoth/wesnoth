@@ -1434,7 +1434,7 @@ void tcanvas::blit(surface& surf, SDL_Rect rect)
 	draw();
 
 	if(blur_depth_) {
-		if(surf->format->BitsPerPixel == 32) {
+		if(is_neutral(surf)) {
 			blur_surface(surf, rect, blur_depth_);
 		} else {
 			// Can't directly blur the surface if not 32 bpp.
