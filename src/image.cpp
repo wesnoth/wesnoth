@@ -478,7 +478,7 @@ surface locator::load_image_file() const
 }
 
 //small utility function to store an int from (-256,254) to an signed char
-signed char col_to_uchar(int i) {
+static signed char col_to_uchar(int i) {
 	return static_cast<signed char>(std::min<int>(127, std::max<int>(-128, i/2)));
 }
 
@@ -492,7 +492,7 @@ light_string get_light_string(int op, int r, int g, int b){
 	return ls;
 }
 
-surface apply_light(surface surf, const light_string& ls){
+static surface apply_light(surface surf, const light_string& ls){
 	// atomic lightmap operation are handled directly (important to end recursion)
 	if(ls.size() == 4){
 		//if no lightmap (first char = -1) then we need the inital value
