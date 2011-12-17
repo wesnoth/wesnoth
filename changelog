@@ -47,6 +47,7 @@ Version 1.9.12+svn:
      executing all actions
 *  WML engine:
    * Made it so that [modify_side] can change the current_player attribute
+   * Made it so that [store_side] stores current_player
  * Miscellaneous and bug fixes:
    * Fixed: compilation with clang 3.0 in C++11 mode.
    * Changed: Sort order of campaigns uses a stable sort now.
