@@ -407,14 +407,13 @@ void connect_operation::run()
 		return;
 	}
 
+	_TCPsocket* raw_sock = reinterpret_cast<_TCPsocket*>(sock);
 #ifdef TCP_NODELAY
 	//set TCP_NODELAY to 0 because SDL_Net turns it off, causing packet
 	//flooding!
 	{
-	_TCPsocket* raw_sock = reinterpret_cast<_TCPsocket*>(sock);
-	int no = 0;
-	setsockopt(raw_sock->channel,
-			IPPROTO_TCP, TCP_NODELAY, reinterpret_cast<char*>(&no), sizeof(no));
+		int no = 0;
+		setsockopt(raw_sock->channel, IPPROTO_TCP, TCP_NODELAY, reinterpret_cast<char*>(&no), sizeof(no));
 	}
 #endif
 
@@ -422,11 +421,11 @@ void connect_operation::run()
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
 	{
 		unsigned long mode = 1;
-		ioctlsocket (((_TCPsocket*)sock)->channel, FIONBIO, &mode);
+		ioctlsocket (raw_sock->channel, FIONBIO, &mode);
 	}
 #elif !defined(__BEOS__)
 	int flags;
-	flags = fcntl((reinterpret_cast<_TCPsocket*>(sock))->channel, F_GETFL, 0);
+	flags = fcntl(raw_sock->channel, F_GETFL, 0);
 #if defined(O_NONBLOCK)
 	flags |= O_NONBLOCK;
 #elif defined(O_NDELAY)
@@ -434,17 +433,25 @@ void connect_operation::run()
 #elif defined(FNDELAY)
 	flags |= FNDELAY;
 #endif
-	if(fcntl((reinterpret_cast<_TCPsocket*>(sock))->channel, F_SETFL, flags) == -1) {
+	if (fcntl(raw_sock->channel, F_SETFL, flags) == -1) {
 		error_ = ("Could not make socket non-blocking: " + std::string(strerror(errno))).c_str();
 		SDLNet_TCP_Close(sock);
 		return;
 	}
 #else
 	int on = 1;
-	if(setsockopt(((_TCPsocket*)sock)->channel, SOL_SOCKET, SO_NONBLOCK, &on, sizeof(int)) < 0) {
+	if (setsockopt(raw_sock->channel, SOL_SOCKET, SO_NONBLOCK, &on, sizeof(int)) < 0) {
 		error_ = ("Could not make socket non-blocking: " + std::string(strerror(errno))).c_str();
 		SDLNet_TCP_Close(sock);
 		return;
+	}
+
+	int fd_flags = fcntl(raw_sock->channel, F_GETFD, 0);
+	fd_flags |= FD_CLOEXEC;
+	if (fcntl(raw_sock->channel, F_SETFD, fd_flags) == -1) {
+		WRN_NW << "could not make socket " << sock << " close-on-exec: " << strerror(errno);
+	} else {
+		DBG_NW << "made socket " << sock << " close-on-exec\n";
 	}
 #endif
 
@@ -603,6 +610,17 @@ connection accept_connection()
 
 	const TCPsocket sock = SDLNet_TCP_Accept(server_socket);
 	if(sock) {
+#if !defined(_WIN32) && !defined(__WIN32__) && !defined (WIN32)
+		_TCPsocket* raw_sock = reinterpret_cast<_TCPsocket*>(sock);
+		int fd_flags = fcntl(raw_sock->channel, F_GETFD, 0);
+		fd_flags |= FD_CLOEXEC;
+		if (fcntl(raw_sock->channel, F_SETFD, fd_flags) == -1) {
+			WRN_NW << "could not make socket " << sock << " close-on-exec: " << strerror(errno);
+		} else {
+			DBG_NW << "made socket " << sock << " close-on-exec\n";
+		}
+#endif
+
 		DBG_NW << "received connection. Pending handshake...\n";
 
 		if(pending_socket_set == 0) {
