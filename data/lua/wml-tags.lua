@@ -947,6 +947,7 @@ function wml_actions.store_side(cfg)
 				name = t.name,
 				team_name = t.team_name,
 				user_team_name = t.user_team_name,
+				current_player = t.current_player,
 				color = t.color,
 				colour = t.color,
 				gold = t.gold,
