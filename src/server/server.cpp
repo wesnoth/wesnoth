@@ -1072,11 +1072,19 @@ void server::process_login(const network::connection sock,
 	}
 
 	// Check the username isn't already taken
+	bool name_taken = false;
 	wesnothd::player_map::const_iterator p;
 	for (p = players_.begin(); p != players_.end(); ++p) {
 		if (p->second.name() == username) {
+			name_taken = true;
 			break;
 		}
+	}
+
+	// unregistered users may not get auto-kicked to prevent abuse
+	if (name_taken && !p->second.registered()) {
+		send_error(sock, "The nickname '" + username + "' is already taken.", MP_NAME_TAKEN_ERROR);
+		return;
 	}
 
 	// Check for password
@@ -1104,7 +1112,7 @@ void server::process_login(const network::connection sock,
 		else if(exists) {
 			// This name is registered and no password provided
 			if(password.empty()) {
-				if(p == players_.end()) {
+				if (!name_taken) {
 					send_password_request(sock, "The nickname '" + username +"' is registered on this server.",
 							username, MP_PASSWORD_REQUEST);
 				} else {
@@ -1163,11 +1171,16 @@ void server::process_login(const network::connection sock,
 						<< "Login attempt with incorrect password for nickname '" << username << "'.\n";
 				return;
 			}
-		// This name exists and the password was neither empty nor incorrect
-		registered = true;
-		// Reset the random seed
-		seeds_.erase(sock);
-		user_handler_->user_logged_in(username);
+			// This name exists and the password was neither empty nor incorrect
+			registered = true;
+			// Reset the random seed
+			seeds_.erase(sock);
+			user_handler_->user_logged_in(username);
+
+			if (name_taken) {
+				// If there is already a client using this username kick it
+				process_command("kick " + username + " autokick by registered user", username);
+			}
 		}
 	}
 
@@ -1178,14 +1191,10 @@ void server::process_login(const network::connection sock,
 		return;
 	}
 
-	if(p != players_.end()) {
-		 if(registered) {
-			// If there is already a client using this username kick it
-			process_command("kick " + p->second.name() + " autokick by registered user", username);
-		} else {
-			send_error(sock, "The nickname '" + username + "' is already taken.", MP_NAME_TAKEN_ERROR);
-			return;
-		}
+	// if registered, the old client got kicked
+	if (name_taken && !registered) {
+		send_error(sock, "The nickname '" + username + "' is already taken.", MP_NAME_TAKEN_ERROR);
+		return;
 	}
 
 	// Check if the version is now available. If it is not, this player must
