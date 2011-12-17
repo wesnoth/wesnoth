@@ -261,6 +261,26 @@ void get_files_in_dir(const std::string &directory,
 	}
 }
 
+#ifdef __native_client__
+// For performance reasons, on NaCl we only keep preferences and saves in persistent storage.
+std::string get_prefs_file()
+{
+	return "/wesnoth-userdata/preferences";
+}
+
+std::string get_save_index_file()
+{
+	return "/wesnoth-userdata/save_index.gz";
+}
+
+std::string get_saves_dir()
+{
+	const std::string dir_path = "/wesnoth-userdata/saves";
+	return get_dir(dir_path);
+}
+
+#else
+
 std::string get_prefs_file()
 {
 	return get_user_config_dir() + "/preferences";
@@ -276,6 +296,7 @@ std::string get_saves_dir()
 	const std::string dir_path = get_user_data_dir() + "/saves";
 	return get_dir(dir_path);
 }
+#endif
 
 std::string get_addon_campaigns_dir()
 {

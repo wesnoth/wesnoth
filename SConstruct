@@ -291,6 +291,27 @@ if env["prereqs"]:
             conf.CheckBoost("thread") and \
             conf.CheckBoost("asio", header_only = True)
 
+    if env['host'] in ['x86_64-nacl', 'i686-nacl']:
+        # libppapi_cpp has a reverse dependency on the following function
+        env.Append(LINKFLAGS = ['-Wl,--undefined=_ZN2pp12CreateModuleEv'])
+        conf.CheckLib("ppapi")
+        conf.CheckLib("ppapi_cpp")
+        conf.CheckLib("nacl-mounts")
+        # We are linking static libraries without libtool.
+        # Enumerating all transitive dependencies.
+        conf.CheckLib("pthread")
+        conf.CheckLib("dl")
+        conf.CheckLib("SDL")
+        conf.CheckLib("jpeg")
+        conf.CheckLib("png")
+        conf.CheckLib("tiff")
+        conf.CheckLib("ogg")
+        conf.CheckLib("expat")
+        conf.CheckLib("pixman-1")
+        conf.CheckLib("vorbisfile")
+        conf.CheckLib("vorbis")
+        conf.CheckLib("mikmod")
+
     have_server_prereqs = \
         conf.CheckCPlusPlus(gcc_version = "3.3") and \
         conf.CheckGettextLibintl() and \
@@ -354,6 +375,11 @@ else:
     test_env = env.Clone()
     client_env = env.Clone()
 
+
+if env['host'] in ['x86_64-nacl', 'i686-nacl']:
+  env['_LIBFLAGS'] = '-Wl,--start-group ' + env['_LIBFLAGS'] + ' -Wl,--end-group'
+  client_env['_LIBFLAGS'] = '-Wl,--start-group ' + client_env['_LIBFLAGS'] + ' -Wl,--end-group'
+
 have_msgfmt = env["MSGFMT"]
 if not have_msgfmt:
      env["nls"] = False
@@ -367,7 +393,7 @@ if not env['nls']:
 #
 
 for env in [test_env, client_env, env]:
-    env.Append(CPPPATH = ["#/", "#/src"])
+    env.Prepend(CPPPATH = ["#/", "#/src"])
 
     env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 

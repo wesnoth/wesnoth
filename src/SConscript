@@ -482,7 +482,11 @@ for env in [test_env, client_env, env]:
 
 game_cpp = client_env.Object("game.cpp", EXTRA_DEFINE = not env["pool_alloc"] and "DISABLE_POOL_ALLOC" or None);
 
-client_env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, env["wesnoth_res"]], have_client_prereqs)
+wesnoth_objects = [game_cpp, libwesnoth_extras, libwesnoth_core, libwesnoth_sdl,
+                   libwesnoth, env["wesnoth_res"]]
+if env["host"] in ["x86_64-nacl", "i686-nacl"]:
+    wesnoth_objects += [SConscript("nacl/SConscript")]
+client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
 
 campaignd_sources = Split("""
     server/input_stream.cpp

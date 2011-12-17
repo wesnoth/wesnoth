@@ -1,0 +1,41 @@
+Building Wesnoth for NativeClient.
+
+1. Get the NaCl SDK from http://code.google.com/chrome/nativeclient/
+Setup enviroment:
+NACL_SDK_ROOT=<path to sdk>
+NACL_TOOLCHAIN_ROOT=$NACL_SDK_ROOT/pepper_15/toolchain/linux_x86
+
+2. Get naclports: http://code.google.com/p/naclports/
+Build the ports for both x86_64 and i686:
+make NACL_GLIBC=1 NACL_PACKAGES_BITSIZE=32
+make NACL_GLIBC=1 NACL_PACKAGES_BITSIZE=64
+This will install all prerequisites under $NACL_TOOLCHAIN_ROOT.
+
+3. Build Wesnoth.
+./utils/nacl/build.sh # build and install under $NACL_TOOLCHAIN_ROOT
+
+# Scan installed files, pack them in bundles.
+# You can't realistically download 13000 small files over HTTP.
+mkdir -p src/nacl/generated
+./utils/nacl/buildpack.py $NACL_TOOLCHAIN_ROOT/x86_64-nacl/usr/local/share/wesnoth/
+./utils/nacl/genfs
+
+# Rebuild Wesnoth with the generated file metadata.
+./utils/nacl/build.sh
+
+# Build 32-bit version. No need to repeat the scanning step.
+./utils/nacl/build32.sh
+cp wesnoth $NACL_TOOLCHAIN_ROOT/x86_64-nacl/usr/local/share/bin/wesnoth32
+
+4. Deploy
+Copy stuff from utils/nacl/static to $NACL_TOOLCHAIN_ROOT/x86_64-nacl
+
+./install.sh inst
+
+Upload inst/ to any static file hosting.
+Open wesnoth.html in Chromium >= 15. At the moment you need to either enable NativeClient in
+about:flags, or (preferred) access it through Chrome Store.
+
+Warning: NaCl app will download its data with xmlHttpRequest(). This is not compatible with
+CDNs that use HTTP 302 redirects to another domain for load balancing and do not set CORS
+headers appropriately.

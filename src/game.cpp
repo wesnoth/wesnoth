@@ -588,7 +588,12 @@ void init_custom_malloc();
 }
 #endif
 
+
+#ifdef __native_client__
+int wesnoth_main(int argc, char** argv)
+#else
 int main(int argc, char** argv)
+#endif
 {
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
@@ -672,4 +677,3 @@ int main(int argc, char** argv)
 
 	return 0;
 } // end main
-

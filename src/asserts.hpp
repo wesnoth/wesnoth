@@ -25,7 +25,8 @@
 #define BREAKPOINT() __debugbreak()
 #define WES_HALT() do { BREAKPOINT(); exit(1); } while (false)
 
-#elif defined(__GNUG__) && (defined(__i386__) || defined(__x86_64__))
+#elif defined(__GNUG__) && (defined(__i386__) || defined(__x86_64__)) \
+  && !defined(__native_client__)
 #define BREAKPOINT() asm("int3")
 #define WES_HALT() do { BREAKPOINT(); abort(); } while (false)
 

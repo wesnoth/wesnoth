@@ -1,0 +1,7 @@
+Import("env")
+
+env.Append(CPPPATH=["#/src/nacl/generated", "#/src/nacl"])
+
+libwesnoth_nacl = env.Library("wesnoth_nacl", ["plugin.cc"])
+
+Return("libwesnoth_nacl")

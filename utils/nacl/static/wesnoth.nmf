@@ -1,0 +1,52 @@
+{
+  "program": {
+    "x86-32": {"url": "lib32/runnable-ld.so"},
+    "x86-64": {"url": "lib64/runnable-ld.so"}
+  },
+  "files": {
+    "libc.so.5e6ad7ea" : {
+      "x86-32" : {"url": "lib32/libc.so.5e6ad7ea"},
+      "x86-64" : {"url": "lib64/libc.so.5e6ad7ea"}
+    },
+    "libdl.so.5e6ad7ea" : {
+      "x86-32" : {"url": "lib32/libdl.so.5e6ad7ea"},
+      "x86-64" : {"url": "lib64/libdl.so.5e6ad7ea"}
+    },
+    "librt.so.5e6ad7ea" : {
+      "x86-32" : {"url": "lib32/librt.so.5e6ad7ea"},
+      "x86-64" : {"url": "lib64/librt.so.5e6ad7ea"}
+    },
+    "libm.so.5e6ad7ea" : {
+      "x86-32" : { "url": "lib32/libm.so.5e6ad7ea"},
+      "x86-64" : { "url": "lib64/libm.so.5e6ad7ea"}
+    },
+    "libgcc_s.so.1" : {
+      "x86-32" : { "url": "lib32/libgcc_s.so.1"},
+      "x86-64" : { "url": "lib64/libgcc_s.so.1"}
+    },
+    "libpthread.so.5e6ad7ea" : {
+      "x86-32" : { "url": "lib32/libpthread.so.5e6ad7ea"},
+      "x86-64" : { "url": "lib64/libpthread.so.5e6ad7ea"}
+    },
+    "libstdc++.so.6" : {
+      "x86-32" : { "url": "lib32/libstdc++.so.6"},
+      "x86-64" : { "url": "lib64/libstdc++.so.6"}
+    },
+    "libplatform.so" : {
+      "x86-32" : { "url": "lib32/libplatform.so"},
+      "x86-64" : { "url": "lib64/libplatform.so"}
+    },
+    "libgio.so" : {
+      "x86-32" : { "url": "lib32/libgio.so"},
+      "x86-64" : { "url": "lib64/libgio.so"}
+    },
+    "libppapi_cpp.so" : {
+      "x86-32" : { "url": "lib32/libppapi_cpp.so"},
+      "x86-64" : { "url": "lib64/libppapi_cpp.so"}
+    },
+    "main.nexe" : {
+      "x86-32" : {"url" : "usr/local/bin/wesnoth32"},
+      "x86-64" : {"url" : "usr/local/bin/wesnoth"}
+    }
+  }
+}
