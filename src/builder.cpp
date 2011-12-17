@@ -77,7 +77,21 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 			//need to break parity pattern in RNG
 			/** @todo improve this */
 			unsigned int rnd = ri.rand / 7919; //just the 1000th prime
-			img_list.push_back(variant.images[rnd % variant.images.size()]);
+			const animated<image::locator>& anim = variant.images[rnd % variant.images.size()];
+
+			bool is_empty = true;
+			for(size_t i = 0; i < anim.get_frames_count(); ++i) {
+				if(!image::is_empty_hex(anim.get_frame(i))) {
+					is_empty = false;
+					break;
+				}
+			}
+
+			if(is_empty)
+				continue;
+
+			img_list.push_back(anim);
+
 			if(variant.random_start)
 				img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
 

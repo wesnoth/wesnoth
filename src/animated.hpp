@@ -89,8 +89,9 @@ public:
 	int get_current_frame_duration() const;
 	int get_current_frame_time() const;
 	const T& get_first_frame() const;
+	const T& get_frame(size_t n) const;
 	const T& get_last_frame() const;
-	int get_frames_count() const;
+	size_t get_frames_count() const;
 	void force_change() {does_not_change_ = false ; }
 	bool does_not_change() const {return does_not_change_;}
 

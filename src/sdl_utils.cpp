@@ -809,7 +809,7 @@ surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-surface mask_surface(const surface &surf, const surface &mask)
+surface mask_surface(const surface &surf, const surface &mask, bool* empty_result)
 {
 	if(surf == NULL) {
 		return NULL;
@@ -835,6 +835,7 @@ surface mask_surface(const surface &surf, const surface &mask)
 		return nsurf;
 	}
 
+	bool empty = true;
 	{
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
@@ -854,7 +855,11 @@ surface mask_surface(const surface &surf, const surface &mask)
 				b = (*beg);
 
 				Uint8 malpha = (*mbeg) >> 24;
-				if (alpha > malpha) alpha = malpha;
+				if (alpha > malpha) {
+					alpha = malpha;
+				}
+				if(alpha)
+					empty = false;
 
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
@@ -863,6 +868,8 @@ surface mask_surface(const surface &surf, const surface &mask)
 			++mbeg;
 		}
 	}
+	if(empty_result)
+		*empty_result = empty;
 
 	return nsurf;
 	//return create_optimized_surface(nsurf);

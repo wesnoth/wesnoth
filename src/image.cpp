@@ -125,6 +125,9 @@ image::image_cache images_,
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
 
+// cache storing if this is an empty hex
+image::bool_cache is_empty_hex_;
+
 // caches storing the diffrent lighted cases for each image
 image::lit_cache lit_images_,
 		lit_scaled_images_;
@@ -174,6 +177,7 @@ void flush_cache()
 		lit_images_.flush();
 		lit_scaled_images_.flush();
 		in_hex_info_.flush();
+		is_empty_hex_.flush();
 		mini_terrain_cache.clear();
 		mini_fogged_terrain_cache.clear();
 		reversed_images_.clear();
@@ -572,8 +576,11 @@ surface locator::load_image_sub_file() const
 			srcrect.y += surf->h/2 - val_.center_y_;
 		}
 
+		// cut and hex mask, but also check and cache if empty result
 		surface cut(cut_surface(surf, srcrect));
-		surf = mask_surface(cut, get_hexmask());
+		bool is_empty = false;
+		surf = mask_surface(cut, get_hexmask(), &is_empty);
+		add_to_cache(is_empty_hex_, is_empty);
 	}
 
 	return surf;
@@ -689,8 +696,11 @@ void set_zoom(int amount)
 static surface get_hexed(const locator& i_locator)
 {
 	surface image(get_image(i_locator, UNSCALED));
-	// Re-cut scaled tiles according to a mask.
-	return mask_surface(image, get_hexmask());
+	// hex cut tiles, also check and cache if empty result
+	bool is_empty = false;
+	surface res = mask_surface(image, get_hexmask(), &is_empty);
+	i_locator.add_to_cache(is_empty_hex_, is_empty);
+	return res;
 }
 
 static surface get_scaled_to_hex(const locator& i_locator)
@@ -927,6 +937,24 @@ bool is_in_hex(const locator& i_locator)
 	}
 	}
 	return result;
+}
+
+bool is_empty_hex(const locator& i_locator)
+{
+	if(!i_locator.in_cache(is_empty_hex_)) {
+		const surface surf = get_image(i_locator, HEXED);
+		// emptiness of terrain image is checked during hex cut
+		// so, maybe in cache now, let's recheck
+		if(!i_locator.in_cache(is_empty_hex_)) {
+			//should never reach here
+			//but do it manually if it happens
+			//assert(false);
+			bool is_empty = false;
+			mask_surface(surf, get_hexmask(), &is_empty);
+			i_locator.add_to_cache(is_empty_hex_, is_empty);
+		}
+	}
+	return i_locator.locate_in_cache(is_empty_hex_);
 }
 
 

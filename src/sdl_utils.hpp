@@ -228,7 +228,7 @@ surface adjust_surface_alpha(const surface &surf, fixed_t amount, bool optimize=
 surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize=true);
 
 /** Applies a mask on a surface. */
-surface mask_surface(const surface &surf, const surface &mask);
+surface mask_surface(const surface &surf, const surface &mask, bool* empty_result = NULL);
 
 /** Check if a surface fit into a mask */
 bool in_mask_surface(const surface &surf, const surface &mask);
