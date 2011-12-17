@@ -30,7 +30,6 @@
 
 surface_lock::surface_lock(surface &surf) : surface_(surf), locked_(false)
 {
-	assert(is_neutral(surface_));
 	if (SDL_MUSTLOCK(surface_))
 		locked_ = SDL_LockSurface(surface_) == 0;
 }
@@ -43,7 +42,6 @@ surface_lock::~surface_lock()
 
 const_surface_lock::const_surface_lock(const surface &surf) : surface_(surf), locked_(false)
 {
-	assert(is_neutral(surface_));
 	if (SDL_MUSTLOCK(surface_))
 		locked_ = SDL_LockSurface(surface_) == 0;
 }
