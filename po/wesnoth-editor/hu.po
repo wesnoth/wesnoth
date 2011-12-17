@@ -2,13 +2,13 @@
 #
 #
 # Gabor Udvari <gabor.udvari@gmail.com>, 2009.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-editor_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2009-10-17 21:52+0200\n"
+"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"PO-Revision-Date: 2011-12-17 13:45+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.2\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
@@ -61,7 +61,7 @@ msgstr "sivatag"
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
 msgid "embellishments"
-msgstr ""
+msgstr "díszítések"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:44
@@ -86,7 +86,7 @@ msgstr "barlang"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "obstacle"
-msgstr ""
+msgstr "akadály"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:79
@@ -101,7 +101,7 @@ msgstr "vár"
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:93
 msgid "bridge"
-msgstr ""
+msgstr "híd"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:100
@@ -337,11 +337,11 @@ msgstr ""
 
 #: src/editor/editor_palettes.cpp:526
 msgid "FG: "
-msgstr ""
+msgstr "Előtér: "
 
 #: src/editor/editor_palettes.cpp:527
 msgid "BG: "
-msgstr ""
+msgstr "Háttér: "
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"
@@ -367,51 +367,13 @@ msgid "Could not save the map: $msg"
 msgstr "A következő pályát nem lehet elmenteni: $msg"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
-msgstr "Játékos"
+msgstr "Senki"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "$player_number. játékos"
 
 #: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"
 msgstr "Egyedi beállítások"
-
-#~ msgid "Choose player"
-#~ msgstr "Válassz játékost"
-
-#~ msgid ""
-#~ "Which player should start here? You can use alt and a number key to set "
-#~ "the starting position for a player, and del to clear the starting "
-#~ "position under the cursor. Pressing a number key by itself will scroll to "
-#~ "that player’s starting position."
-#~ msgstr ""
-#~ "Melyik játékos kezdjen itt? Az Alt+szám billentyűk lenyomásával megadható "
-#~ "az adott számú játékos kezdési helye; a Del gomb törli az egérmutató "
-#~ "alatti kezdési helyet. Egy szám lenyomásakor a térkép az adott játékos "
-#~ "kezdési helyéhez ugrik."
-
-#~ msgid "FG"
-#~ msgstr "Előtér"
-
-#~ msgid "BG"
-#~ msgstr "Háttér"
-
-#~ msgid "Error creating action object"
-#~ msgstr "Hiba a parancsobjektum létrehozásakor"
-
-#~ msgid "Action not implemented"
-#~ msgstr "A parancs nincs definiálva"
-
-#~ msgid "Error"
-#~ msgstr "Hiba"
-
-#~ msgid ""
-#~ "Which player should start here? You can also use the 1-9 and delete keys "
-#~ "to set/clear starting positions."
-#~ msgstr ""
-#~ "Melyik játékos kezdjen itt? Használhatod az 1-9 számokat a kezdőhely "
-#~ "kijelöléséhez, vagy a Delete billentyűt a törléshez."

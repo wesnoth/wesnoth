@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2011-11-30 11:30+0100\n"
+"PO-Revision-Date: 2011-12-17 14:42+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "Language: hu\n"
@@ -702,7 +702,7 @@ msgstr "MI játékosok"
 #: data/core/macros/ai.cfg:526
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
-"Kérjük meg $ally_leader.name játékost (a(z) $ally_leader.side|. oldal "
+"Kérjük meg $ally_leader.name játékost (a(z) $ally_leader.side. oldal "
 "vezetőjét), hogy lépjen ide"
 
 #. [note]
@@ -787,7 +787,7 @@ msgstr "($temp_i|. oldal)"
 #: data/core/macros/ai_controller.cfg:143
 #: data/core/macros/ai_controller.cfg:278
 msgid "side $temp_i"
-msgstr "$temp_i|. oldal"
+msgstr "$temp_i. oldal"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:156
@@ -2132,7 +2132,7 @@ msgid ""
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
 "A számítógép valószínűleg nem lesz képes megfelelően irányítani a(z) "
-"$side_number|. oldalt ezen a pályán. A(z) $side_number|. oldalt emberi "
+"$side_number. oldalt ezen a pályán. A(z) $side_number. oldalt emberi "
 "játékosra tervezték."
 
 #. [color_range]: id=red
@@ -4526,7 +4526,7 @@ msgstr "igen"
 
 #: src/menu_events.cpp:580
 msgid "Scenario Settings"
-msgstr "A küldetés beállításai"
+msgstr "A küldetés beállítása"
 
 #: src/menu_events.cpp:583
 msgid " < Back"
@@ -6723,7 +6723,7 @@ msgstr "$player terveinek elrejtése"
 
 #: src/whiteboard/manager.cpp:1088
 msgid "Whiteboard Options"
-msgstr "Lépéstervező beállításai"
+msgstr "Lépéstervező beállítása"
 
 #~ msgid "Download"
 #~ msgstr "Letöltés"
