@@ -29,6 +29,8 @@ Version 1.9.12+svn:
      * The Desert of Death: integrated a sighted event with moveto event
    * Legend of Wesmere:
      * Ka'lian Under Attack: fixed a lua error in AI code
+ * Editor:
+   * Fixed missing brightening of selected hexes under the brush
  * Language and i18n:
    * Updated translations: British English, Czech, Dutch, French, Galician,
      German, Hungarian, Korean, Lithuanian, Old English, Polish, Russian,
@@ -51,16 +53,20 @@ Version 1.9.12+svn:
 *  WML engine:
    * Made it so that [modify_side] can change the current_player attribute
    * Made it so that [store_side] stores current_player
+   * Fixed: ~L() not handling lightmap having different width. Now rescaled.
  * Miscellaneous and bug fixes:
    * Fixed: compilation with clang 3.0 in C++11 mode.
    * Changed: Sort order of campaigns uses a stable sort now.
    * Fixed bug #18832: Fixed ~BLIT() to access images out of bounds.
    * Fixed: ToD local light for RGB values bigger than 128.
-   * Fixed: hex-cut of images in :layers debug tool.
+   * Fixed: hex-cut of images in :layers debug tool. Also removed empty images
    * Forward ported a new version of multiplayer chat log history dialog
    * Fixed bug #19188: Turn dialog always speaks of Konrad in tutorial
    * Added: NativeClient port.
    * Fixed: crash when using fullscreen on Mac OS using SDL nightly builds.
+   * Optimized screen update (zooming, ToD change, etc)
+   * Optimized framerate by removing a lot of empty terrain images
+   * Optimized perfomance cost of complex local ToD areas
 
 Version 1.9.12:
  * Language and i18n:
