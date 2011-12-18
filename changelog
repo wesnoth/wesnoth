@@ -35,8 +35,6 @@ Version 1.9.12+svn:
    * Updated translations: British English, Czech, Dutch, French, Galician,
      German, Hungarian, Korean, Latin, Lithuanian, Old English, Polish,
      Russian, Serbian
- * Lua API:
-   * add getter and setter for [side]current_player= attribute
  * Multiplayer:
    * Fix user interface set to side 1 when entering linger mode
      (bug #15847)
@@ -57,8 +55,6 @@ Version 1.9.12+svn:
    * Fix attacks not finishing but still being transmitted over the network when
      executing all actions
 *  WML engine:
-   * Made it so that [modify_side] can change the current_player attribute
-   * Made it so that [store_side] stores current_player
    * Fixed: ~L() not handling lightmap having different width. Now rescaled.
  * Miscellaneous and bug fixes:
    * Fixed: compilation with clang 3.0 in C++11 mode.
