@@ -138,6 +138,10 @@ void erase(const std::string& key) {
 	prefs.remove_attribute(key);
 }
 
+bool have_setting(const std::string& key) {
+	return prefs.has_attribute(key);
+}
+
 std::string get(const std::string& key) {
 	return prefs[key];
 }

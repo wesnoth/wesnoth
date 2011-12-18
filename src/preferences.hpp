@@ -46,6 +46,7 @@ namespace preferences {
 	std::string get(const std::string& key);
 	bool get(const std::string &key, bool def);
 	void erase(const std::string& key);
+	bool have_setting(const std::string& key);
 
 	void disable_preferences_save();
 

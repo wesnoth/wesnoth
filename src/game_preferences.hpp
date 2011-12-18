@@ -66,6 +66,15 @@ namespace preferences {
 	std::string campaign_server();
 	void set_campaign_server(const std::string& host);
 
+	/**
+	 * Returns whether the MP username is stored wrapped in markers.
+	 *
+	 * New usernames are stored in a specific format to force string interpretation
+	 * (due to bug #16571).
+	 */
+	bool wrap_login();
+	void set_wrap_login(bool wrap);
+
 	std::string login();
 	void set_login(const std::string& username);
 
@@ -80,6 +89,15 @@ namespace preferences {
 	namespace prv {
 		extern std::string password;
 	}
+
+	/**
+	 * Returns whether the password is stored wrapped in markers.
+	 *
+	 * New passwords are stored in a specific format to force string interpretation
+	 * (due to bug #16571).
+	 */
+	bool wrap_password();
+	void set_wrap_password(bool wrap);
 
 	std::string password();
 	void set_password(const std::string& password);

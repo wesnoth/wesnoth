@@ -31,6 +31,8 @@
 #include "unit_map.hpp"
 #include "wml_exception.hpp"
 
+static lg::log_domain log_config("config");
+#define ERR_CFG LOG_STREAM(err , log_config)
 
 namespace {
 
@@ -51,6 +53,29 @@ bool friends_initialized = false;
 bool ignores_initialized = false;
 
 bool authenticated = false;
+
+const char WRAP_CHAR = '@';
+const std::string EMPTY_WRAPPED_STRING = "@@";
+
+std::string wrap_credentials_field_value(const std::string& value)
+{
+	return WRAP_CHAR + value + WRAP_CHAR;
+}
+
+std::string parse_wrapped_credentials_field(const std::string& raw)
+{
+	if(raw.empty() || raw == EMPTY_WRAPPED_STRING) {
+		// empty (wrapped or not)
+		return raw;
+	} else if(raw.length() < 2 || raw[0] != WRAP_CHAR || raw[raw.length() - 1] != WRAP_CHAR ) {
+		// malformed/not wrapped (shouldn't happen)
+		ERR_CFG << "malformed user credentials (did you manually edit the preferences file?)\n";
+		return raw;
+	}
+
+	return raw.substr(1, raw.length() - 2);
+}
+
 } // anon namespace
 
 namespace preferences {
@@ -333,6 +358,30 @@ void set_campaign_server(const std::string& host)
 	preferences::set("campaign_server", host);
 }
 
+bool wrap_password()
+{
+	const bool have_old_password_format =
+		(!preferences::have_setting("password_is_wrapped")) && preferences::have_setting("password");
+	return have_old_password_format ? false : preferences::get("password_is_wrapped", true);
+}
+
+void set_wrap_password(bool wrap)
+{
+	preferences::set("password_is_wrapped", wrap);
+}
+
+bool wrap_login()
+{
+	const bool have_old_login_format =
+		(!preferences::have_setting("login_is_wrapped")) && preferences::have_setting("login");
+	return have_old_login_format ? false : preferences::get("login_is_wrapped", true);
+}
+
+void set_wrap_login(bool wrap)
+{
+	preferences::set("login_is_wrapped", wrap);
+}
+
 std::string login()
 {
 	const std::string res = preferences::get("login");
@@ -347,12 +396,17 @@ std::string login()
 		}
 	}
 
-	return res;
+	if(!wrap_login()) {
+		return res;
+	} else {
+		return parse_wrapped_credentials_field(res);
+	}
 }
 
 void set_login(const std::string& username)
 {
-	preferences::set("login", username);
+	set_wrap_login(true);
+	preferences::set("login", wrap_credentials_field_value(username));
 }
 
 namespace prv {
@@ -362,7 +416,12 @@ namespace prv {
 std::string password()
 {
 	if(remember_password()) {
-		return preferences::get("password");
+		const std::string saved_pass = preferences::get("password");
+		if(!wrap_password()) {
+			return saved_pass;
+		} else {
+			return parse_wrapped_credentials_field(saved_pass);
+		}
 	} else {
 		return prv::password;
 	}
@@ -372,7 +431,8 @@ void set_password(const std::string& password)
 {
 	prv::password = password;
 	if(remember_password()) {
-		preferences::set("password", password);
+		set_wrap_password(true);
+		preferences::set("password", wrap_credentials_field_value(password));
 	}
 }
 
