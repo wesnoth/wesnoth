@@ -878,10 +878,12 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	}
 
 	//need access to add it if not found
-	lit_variants& lvar = i_locator.access_in_cache(*imap);
-	lit_variants::iterator lvi = lvar.find(ls);
-	if(lvi != lvar.end()) {
-		return lvi->second;
+	{ // enclose reference pointing to data stored in a changing vector
+		const lit_variants& lvar = i_locator.locate_in_cache(*imap);
+		lit_variants::const_iterator lvi = lvar.find(ls);
+		if(lvi != lvar.end()) {
+			return lvi->second;
+		}
 	}
 
 	// not cached yet, generate it
@@ -902,7 +904,7 @@ surface get_lighted_image(const image::locator& i_locator, const light_string& l
 	// Optimizes surface before storing it
 	res = create_optimized_surface(res);
 	// record the lighted surface in the corresponding variants cache
-	lvar[ls] = res;
+	i_locator.access_in_cache(*imap)[ls] = res;
 
 	return res;
 }
