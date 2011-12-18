@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2011-09-04 22:31+0100\n"
+"PO-Revision-Date: 2011-12-18 04:47+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
 "Language: la\n"
@@ -2338,7 +2338,7 @@ msgstr "$name|usium,$name|num,$name|opolis,$name|tia"
 #. [language]
 #: data/english.cfg:31
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "Portus $name|ensis, Portus $name|ensis, Portus $name|ensis"
+msgstr "Portus $name|ensis,Portus $name|ensis,Portus $name|ensis"
 
 #. [language]
 #: data/english.cfg:32
@@ -6463,7 +6463,7 @@ msgstr ""
 
 #: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
 msgid "Empty variable name"
-msgstr "Nomen variabili vacuum"
+msgstr "Nomen vacuum variabili"
 
 #: src/serialization/parser.cpp:243
 #, fuzzy
@@ -6481,7 +6481,7 @@ msgstr ""
 
 #: src/serialization/parser.cpp:366
 msgid "$error, value '$value' at $pos"
-msgstr "$error, variabile '$pos' in $pos"
+msgstr "$error, variabile '$value' in $pos"
 
 #: src/serialization/string_utils.cpp:299
 msgid "prefix_milli^m"
@@ -6760,7 +6760,6 @@ msgstr ""
 #~ msgid "Add-on '$addon|' deleted."
 #~ msgstr "Appendix '$addon|' deleta est."
 
-#, fuzzy
 #~| msgid "Invalid location"
 #~ msgid "Invalid WML found"
 #~ msgstr "Locus Irritus"

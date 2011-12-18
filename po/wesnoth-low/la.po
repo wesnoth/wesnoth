@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2011-09-26 13:42+0100\n"
+"PO-Revision-Date: 2011-12-17 19:50+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
 "Language: la\n"
@@ -571,7 +571,7 @@ msgstr "Tot sunt. Nobis dedendum est! "
 msgid ""
 "Elves must never surrender to these foul beasts! Who will fight them beside "
 "me?"
-msgstr "Dryadales numquam bestiis putidis dedere debent! Qui mecum pugnabit?"
+msgstr "Dryadales numquam bestiis putidis dedere debent! Quis mecum pugnabit?"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:413
@@ -770,7 +770,7 @@ msgid ""
 "is without making blood enemies of these dwarves."
 msgstr ""
 "Pugnate ad subigendum, nolite interficere nisi necesse. Sunt iam satis "
-"hostium etiamsi hi nani fatales hostes non sint"
+"hostium etiamsi hi nani fatales hostes non sint."
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/02_Hostile_Mountains.cfg:338
@@ -993,7 +993,7 @@ msgstr "Potis. Plurimos trucidavimus."
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:501
 msgid "No, our attack was repulsed."
-msgstr "Non potis, impetus depulsus est."
+msgstr "Non potis, impetus depulsus."
 
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:507
@@ -1077,7 +1077,7 @@ msgid ""
 "long enough for the humans to come to our aid."
 msgstr ""
 "Haudquaquam. Impetum in sedem fugimus. Mox tempus loqui erit; seu opus est "
-"uns orces superare, seu saltem resistere donec homines nobis subvenient."
+"una orces superare, seu saltem resistere donec homines nobis subvenient."
 
 #. [message]: id=Galtrid
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:909
@@ -1130,7 +1130,7 @@ msgid ""
 "citadel of the Ka’lian, for it has stood since before your kind crawled into "
 "sunlight and will endure long after you are forgotten!"
 msgstr ""
-"Quid est ‘lapis’, inepte orcs ac foede? Non etiam te decet arcem Calianem "
+"Quid ‘lapis’, inepte orcs ac foede? Non etiam te decet arcem Calianem "
 "nominare, nam prius stabat quam genus tuum in lucem repserunt et stabit "
 "vobis oblittatis!"
 
@@ -1297,7 +1297,7 @@ msgstr "Et video reliquias praesidii captas esse."
 msgid ""
 "We must free them and make these saurians pay. Attack and leave no one alive!"
 msgstr ""
-"Liberandae sunt et cogamus lacertae poenas dare. Pugnate et nullo parcite!"
+"Liberandae sunt et cogamus lacertas poenas dare. Pugnate et nullo parcite!"
 
 #. [message]: role=liberator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:337
@@ -1360,6 +1360,7 @@ msgstr ""
 "Studium tuum cum gratia accipio, nam omnia ferra et arcus carminaque ad "
 "irrumpentes vincendum requiro. Mox tempus loqui; nunc, pugnandum est."
 
+# Let's use the archaic feminine genitive!
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:483
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:228
@@ -1375,7 +1376,7 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:273
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/23_End_of_War.cfg:113
 msgid "Death of Cleodil"
-msgstr "Mors Cleodilae"
+msgstr "Mors Cleodilai"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:502
@@ -1527,10 +1528,12 @@ msgid "New Objective: Transport the treasure with a rider to the signpost"
 msgstr "Propositum novum: Ferre thesaurum equite ad signum"
 
 # speciam is ante-classical
+# ...
+# and the archaic feminine genitive
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:376
 msgid "Aargh! I shall never see the bright moon’s face again!"
-msgstr "Ah! Numquam faciem lunae clarae speciam!"
+msgstr "Ah! Numquam faciem lunai clarai speciam!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:426
@@ -1598,7 +1601,7 @@ msgid ""
 "Cleodil’s doubt is wise. Only a foolish commander divides his forces in the "
 "presence of superior numbers; to do so is to invite defeat in detail."
 msgstr ""
-"Dubitare Cleodilae est sapiens. Tantum dux stultus palam maiore copias "
+"Dubitare Cleodilai est sapiens. Tantum dux stultus palam maiore copias "
 "diducit; hoc facere cladem summam invitat. "
 
 #. [message]: id=Cleodil
@@ -1721,12 +1724,15 @@ msgstr ""
 "Mox erit in Vesmere proelium cum orcibus magnum. Si latus nostrum texeris, "
 "CD auri tibi dabo."
 
+# legibus for conditions is ante-classical
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:322
 msgid ""
 "A proper contract for good money? That’s a different matter; I’m sure I can "
 "find some o’ my people willing to fight on those terms!"
 msgstr ""
+"Foedusne decens facere tanti? Est alia res; certum habeo me partem populi, "
+"quae pugnare his legibus velint, invenire posse!"
 
 # latro=mercenary in this context (ante-classical)
 # astus=astutus (ante-classical)
@@ -1808,7 +1814,7 @@ msgid ""
 "You must own the field and be capable of overwhelming your opponents. (Player"
 "(s) own more than 25 units while the foes’ numbers fell below 15)"
 msgstr ""
-"Necesse est campo pollere et hostes opprimere posse. (Lusor(es) plus quam "
+"Necesse est campo pollere et hostes opprimere posse. (Lusor(es) plures quam "
 "XXV actorum tenent tamen hostes minus XV) "
 
 #. [message]
@@ -1882,7 +1888,7 @@ msgstr "Vere est lumen obscurum cum Dryadalibus somniis caedis durandum est."
 #. [message]: id=Grubr
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:555
 msgid "We’ll crush those weak elves and I’ll get da stone!"
-msgstr "Opprimemus istos dryadales debiles et lapem capiam!"
+msgstr "Opprimemus istos dryadales debiles et lepistam capiam!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:559
@@ -2097,9 +2103,8 @@ msgid ""
 "No, don’t leave your formation. An elf was slain by beast. What does it "
 "matter which beast it was? We must kill them all."
 msgstr ""
-"Noli facere, nolite ab signis discedere. Dryadalis ab bestia interfectus "
-"est. Quid interest, utrum haec interfecit aut illa? Per nos omnibus "
-"moriendum est."
+"Noli facere, nolite ab signis discedere. Dryadalis bestia interfectus est. "
+"Quid interest, utrum haec interfecit an illa? Nobis omnibus moriendum est."
 
 #. [unit]: id=Bulrod, type=Dwarvish Steelclad
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand_utils.cfg:5
@@ -2308,6 +2313,7 @@ msgstr ""
 "extra silvas. Iam demonstravimus stulti orcis esse nos aggredi; est "
 "prudentis copias restituere."
 
+# archaic feminine genitive
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:60
 msgid ""
@@ -2316,7 +2322,7 @@ msgid ""
 "lands. And, we are willing to die in order to defeat foul orcs!"
 msgstr ""
 "Illi Calentem secuti probaverunt facere posse, nam contendimus post ex "
-"patria in omne genus terrae expulsos et mori volumus ut orces foedos "
+"patria in omne genus terrai expulsos et mori volumus ut orces foedos "
 "superemus!"
 
 # moenimenta be archaic for munimentum for Dionli is older.
@@ -2326,7 +2332,7 @@ msgid ""
 "Our answer is still no. Prepare our defenses as best you can, but do not "
 "renew offensive war. This is the council’s decision."
 msgstr ""
-"Etiam vetamus. Moenimenta para pro parte tua, sed noli renovare bellum. Sic "
+"Etiam vetamus. Moenimenta para pro parte tua, sed noli renovare duellum. Sic "
 "concilium consituerunt."
 
 #. [part]
@@ -2431,7 +2437,7 @@ msgid ""
 "anyone for free. Thoria is very dangerous, especially for elves. Even "
 "dwarves and trolls dinna’ go there lightly."
 msgstr ""
-"Non facile factu est. Montes Toriae habitat et numquam aliquem sine pretio "
+"Non facile factu est. Montes Toriai habitat et numquam aliquem sine pretio "
 "adiuvat. Toria est periculosissima, praesertim dryadalibus. Etiam nani "
 "troglodytaeque illoc otiose non eunt."
 
@@ -2492,10 +2498,11 @@ msgstr ""
 "Liber III\n"
 " Mediocris"
 
+# archaic genitive
 #. [scenario]: id=09_Bounty_Hunters
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:12
 msgid "Bounty Hunters"
-msgstr "Captatores Praedae"
+msgstr "Captatores Praedai"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:35
@@ -2633,7 +2640,7 @@ msgid ""
 "it. May be they are but children’s tales... Still, be very careful when you "
 "cross it."
 msgstr ""
-"Vero credo hoc flumen Arkan-Thoria esse; sunt rumores formidulosos, fortasse "
+"Vero credo hoc flumen Arcantoriam esse; sunt rumores formidulosos, fortasse "
 "modo fabulae aniles... sed praecavete cum transeatis."
 
 #. [message]: id=Kalenz
@@ -2703,7 +2710,7 @@ msgstr "Marelur"
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:615
 msgid "The legends are true! Sea creatures are upon us!"
-msgstr "Fabula sunt verae! Bestiae maris nobis minantur!"
+msgstr "Fabulae sunt verae! Bestiae maris nobis minantur!"
 
 #. [unit]: type=Cuttle Fish, id=Kallub
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:626
@@ -2738,7 +2745,7 @@ msgstr "Alkamer"
 #. [scenario]: id=10_Cliffs_of_Thoria
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:29
 msgid "Cliffs of Thoria"
-msgstr "Rupes Toriae"
+msgstr "Rupes Toriai"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:47
@@ -2866,10 +2873,11 @@ msgstr "Drolgus"
 msgid "Battle of the Book"
 msgstr "Proelium Libro"
 
+# ruere=ruerunt
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:46
 msgid "Quickening their pace, the elves and dwarves raced towards the smoke..."
-msgstr "Accelerantes ad fumum dryadales nanique ruerunt..."
+msgstr "Accelerantes ad fumum dryadales nanique ruere..."
 
 #. [side]: type=Arch Mage, id=Aquagar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:100
@@ -3002,7 +3010,7 @@ msgid ""
 "great drake wizard of Morogoth."
 msgstr ""
 "Morior, sed non ibo inultus! Istud detestor Calentem! Numquam longam pacem "
-"vitae invenias, carissimos perdas. Et tu, Crelane, liber tibi calamitates "
+"in vita invenias, carissimos perdas. Et tu, Crelane, liber tibi calamitates "
 "ferat et ad mortem dominos venturos persequatur ut idolon! Hic erit pretium "
 "mei necandi, Aquageri, draculi magi magni Morogothi.  "
 
@@ -3054,9 +3062,9 @@ msgid ""
 "they grow stronger every day. You contend against destiny. But for the "
 "moment you have diverted the orcs’ attention."
 msgstr ""
-"Dryadales, fortiter pugnato victoriam magnam in silva Vesmerei rapuistis."
+"Dryadales, fortiter pugnato victoriam magnam in silva Vesmerei rapuistis. "
 "Sed copiae contra vos iaculatae nondum vincuntur. Etenim cotidie augescunt. "
-"Contra fata contenditis. Sed breve spatium orces distraxistis." 
+"Contra fata contenditis. Sed breve spatium orces distraxistis."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:39
@@ -3075,7 +3083,7 @@ msgstr ""
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:49
 msgid "Because they are orcs! Look old man, can you help us beat them or not?"
-msgstr "Quod orces sunt! Senex, ehodum, nos iuvare potes ut pelsemus an non?"
+msgstr "Quod orces sunt! Senex, ehodum, nos iuvare potes ut pulsemus an non?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:54
@@ -3090,8 +3098,8 @@ msgid ""
 "wise, but only help for a price. We will pay any price within our power; "
 "just name it."
 msgstr ""
-"Lander audax, sed plane dicit quid huc venimus. Non quoque verba tui"
-"intellego. Olurfius me refert te sapientissimum esse, sed modo pretio. "
+"Lander audax, sed plane dicit quid huc venimus. Non quoque verba tui "
+"intellego. Olurfius me refert te sapientissimum esse, sed modo aere dato. "
 "Ullum pretium trademus, quod nostra potestas est, modo dic."
 
 #. [part]
@@ -3116,7 +3124,7 @@ msgstr ""
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:79
 msgid "It’s not a dastone, it’s the stone: They mean the Ruby of Fire..."
-msgstr "Non lepista est, est lapis: Gemmam Ignis loquebantur..."
+msgstr "Non lepista est, sed lapis: Gemmam Ignis loquebantur..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:84
@@ -3142,8 +3150,8 @@ msgid ""
 "Hmm... You seem to love king Haldric even less than the elf-lords of the "
 "Ka’lian do... How do you know all this of him?"
 msgstr ""
-"Videris regem Haldricum amare minus quam amant domini dryadalium "
-"Kalianis... Quomodo talia de eo scis?"
+"Videris regem Haldricum amare minus quam amant domini dryadalium Calianis... "
+"Quomodo talia de eo scis?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:99
@@ -3158,12 +3166,12 @@ msgid ""
 "radiance changes Haldric a little every time he comes close to it."
 msgstr ""
 "Quondam Haldricum amicum numeraveram, sed ipse me e Vesnote fugavisti. Me, "
-"potestatem eius mihi quaerentem, furti Gemmae accusavisti... sed vere Gemma "
+"potestatem eius mihi quaerentem, furti Gemmai accusavisti... sed vere Gemma "
 "mentis Haldrici detorquet, severiorem atque suspiciosum reddens in quos "
 "socios numeratos. Aliquis Gemmam in proelio gerere potest cum ira calida "
-"natura gemmae misceat, sed modo potentis artis magicae est, virive egregie "
+"natura gemmai misceat, sed modo potentis artis magicai est, virive egregie "
 "animo puro, campum extra gerere. Fulgor patefactus paulatim Haldricum cum "
-"tangit mutat."  
+"tangit mutat."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:104
@@ -3200,7 +3208,7 @@ msgid ""
 "time, in the hope that you can use it to grow strong again."
 msgstr ""
 "Cum copiis quibus iam imperas illos non potes vincere, tantum eos morari, ut "
-"fortasse convalescatis." 
+"fortasse convalescatis."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:129
@@ -3211,7 +3219,7 @@ msgid ""
 msgstr ""
 "Quomodo? Num cum lacertis pugnavimus, Arcantoriam tansivimus, adversus feras "
 "fluminis contendimus, atque troglodytas ac simios nivis, qui adhuc irriti "
-"veniamus!"  
+"veniamus!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:134
@@ -3222,7 +3230,7 @@ msgid ""
 "arises strong enough to unite them again."
 msgstr ""
 "Bellipotentem orcum interficere opus est quasi orcibus necatus esset. Sic "
-"duellum civilem coronae capiendi movebunt, nam plures se supponere in regis "
+"duellum civilem coronai capiendi movebunt, nam plures se supponere in regis "
 "locum cupiunt. Sospites eritis dum dux novus potens inter se coniungendi "
 "surgat."
 
@@ -3254,11 +3262,17 @@ msgid ""
 "destroy it than I could slay my own child. Aquagar is slain, but more will "
 "come. One of my allies has betrayed me, and now too many know of this book."
 msgstr ""
+"Quidem. Isti draculi librum meum petebant. Hic tota rerum, qua scio, magicai "
+"habet. Sunt potentissima, sed unus hostes quem superare non possunt senectus "
+"est. Scientia me probat ne vitam meam maloque nigroque modo extendam... Sed "
+"hac sunt opus vitai ipsius, idcirco vix delere possum quam puerum proprium. "
+"Aquager occisus est, sed plures venient. Quidam de sociis meis me dedit, et "
+"iam nimis hominum librum sciunt. "
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:159
 msgid "If you come with us, we will protect you..."
-msgstr ""
+msgstr "Si nobiscum veneris, te protegemus..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:164
@@ -3269,11 +3283,12 @@ msgid ""
 "it, but to use it!"
 msgstr ""
 
+# oeteris is archaic for uteris
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:169
 msgid ""
 "If your book is as powerful as you say, why not use it against the orcs?"
-msgstr ""
+msgstr "Si liber tam potens est quam dicis, cur ad orces eo non oeteris? "
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:174
@@ -3282,6 +3297,9 @@ msgid ""
 "book, but only a master can vanquish the lust for power that it will bring "
 "out in him. He who fails will turn into something like Haldric, or worse..."
 msgstr ""
+"Quod liber similis Gemmai Ignis est. Ullus asinus magiae in libro uti "
+"potest, sed modo magister cupidinem venturam potestatis vincere. Qui deest "
+"in Haldricos vertetur aut peiores..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:179
@@ -3289,6 +3307,8 @@ msgid ""
 "Cleodil is pure in heart. Perhaps she can guard your book without being "
 "corrupted by its secrets..."
 msgstr ""
+"Cleodila cor purum habet. Fortasse librum sine ab occultis corrupta "
+"tueatur..."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:184
