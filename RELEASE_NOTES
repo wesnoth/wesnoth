@@ -22,6 +22,11 @@ Large portraits, especially high ones, should now work properly. For example TRo
 Added the NativeClient port code, provided by Evgeniy Stepanov.
 [/section]
 
+[section="Fullscreen in Lion"]
+Full screen mode on Lion should now work. Wesnoth currently uses a custom version of SDL to make this work, so people trying to compile on a Macintosh need to copy SDL.Framework from the package into Xcode/lib before compiling.
+If you are not using Lion, it is safe to continue using SDL 1.2.13.
+[/section]
+
 [section="Another Change"]
 [/section]
 
@@ -29,6 +34,6 @@ Added the NativeClient port code, provided by Evgeniy Stepanov.
 KNOWN BUGS
 ==========
 
-[list][*] Text for entry1.
+[list][*] The minimap when in windowed mode on OS X on Intel processors displays overlays (forests, villages) as black.
 [*] Text for entry2
 [/list]
