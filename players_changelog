@@ -15,6 +15,12 @@ Version 1.9.12+svn:
  * Unit changes and balancing:
    * Changed the Lancer's and the Deathblade's AMLA requirements to conform to
      the current AMLA standards.
+ * User interface:
+   * Fixed bug #19118: Default theme: coordinates overlap with the clock status
+     panel on small horizontal resolutions. Also fixed for the widescreeen
+     theme.
+   * Made it so that "AM"/"PM" show up in the default and widescreen themes
+     on the lowest supported resolutions.
  * Whiteboard:
    * Display turn numbers on multi-turn planned moves.
    * Fix attacks not finishing but still being transmitted over the network when
