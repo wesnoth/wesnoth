@@ -36,13 +36,11 @@
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 
-turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender,
-	const NETWORK_SIDE_STATE network_side_state) :
+turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender) :
 	team_num_(team_num),
 	replay_sender_(replay_sender),
 	host_transfer_("host_transfer"),
-	replay_(),
-	network_side_state_(network_side_state)
+	replay_()
 {
 	/**
 	 * We do network sync so [init_side] is transferred to network hosts
@@ -151,9 +149,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	foreach (const config &t, turns)
 	{
-		const config& command = t.child_or_empty("command");
-		if((network_side_state_ == NETWORK_SIDE_STATE_SEEMS_DEAD) && command.child("init_side"))
-			network_side_state_ = NETWORK_SIDE_STATE_GOT_SENT_INIT;
 		handle_turn(turn_end, t, skip_replay, backlog);
 	}
 
@@ -197,11 +192,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				restart = false;
 			}
 
-			if ((network_side_state_ == NETWORK_SIDE_STATE_SEEMS_DEAD) && tm.is_local()) {
-				recorder.init_side();
-				resources::controller->do_init_side(index, false);
-				network_side_state_ = NETWORK_SIDE_STATE_GOT_SENT_INIT;
-			}
+			resources::controller->maybe_do_init_side(index);
 
 			resources::whiteboard->on_change_controller(side,tm);
 
@@ -288,12 +279,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				tm.set_current_player("ai" + side_drop);
 				if (have_leader) leader->rename("ai" + side_drop);
 				change_controller(side_drop, "human_ai");
-
-				if ((network_side_state_ == NETWORK_SIDE_STATE_SEEMS_DEAD)) {
-					recorder.init_side();
-					resources::controller->do_init_side(side_index, false);
-					network_side_state_ = NETWORK_SIDE_STATE_GOT_SENT_INIT;
-				}
+				resources::controller->maybe_do_init_side(side_index);
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
@@ -302,11 +288,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				tm.set_current_player("human" + side_drop);
 				if (have_leader) leader->rename("human" + side_drop);
 
-				if ((network_side_state_ == NETWORK_SIDE_STATE_SEEMS_DEAD)) {
-					recorder.init_side();
-					resources::controller->do_init_side(side_index, false);
-					network_side_state_ = NETWORK_SIDE_STATE_GOT_SENT_INIT;
-				}
+				resources::controller->maybe_do_init_side(side_index);
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:

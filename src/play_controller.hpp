@@ -99,6 +99,7 @@ public:
 	virtual void toggle_grid();
 	virtual void search();
 
+	virtual void maybe_do_init_side(const unsigned int team_index, bool is_replay = false);
 	virtual void do_init_side(const unsigned int team_index, bool is_replay = false);
 	virtual void play_side(const unsigned int side_number, bool save) = 0;
 
@@ -225,6 +226,7 @@ protected:
 	bool skip_replay_;
 	bool linger_;
 	bool it_is_a_new_turn_;
+	bool init_side_done_;
 
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;

@@ -106,6 +106,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	skip_replay_(skip_replay),
 	linger_(false),
 	it_is_a_new_turn_(true),
+	init_side_done_(false),
 	savenames_(),
 	wml_commands_(),
 	victory_when_enemies_defeated_(true),
@@ -545,13 +546,12 @@ void play_controller::init_gui(){
 
 void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	log_scope("player turn");
-	team& current_team = teams_[team_index];
+	init_side_done_ = false;
 
 	mouse_handler_.set_side(team_index + 1);
 
 	// If we are observers we move to watch next team if it is allowed
-	if (is_observer()
-		&& !current_team.get_disallow_observers()) {
+	if (is_observer() && !current_team().get_disallow_observers()) {
 		gui_->set_team(size_t(team_index));
 	}
 	gui_->set_playing_team(size_t(team_index));
@@ -559,15 +559,24 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	gamestate_.get_variable("side_number") = player_number_;
 	gamestate_.last_selected = map_location::null_location;
 
+	maybe_do_init_side(team_index, is_replay);
+}
+
+/**
+ * Called by turn_info::process_network_data() or init_side() to call do_init_side() if necessary.
+ */
+void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_replay) {
 	/**
-	 * We do this only for local side when we are not replaying.
-	 * For all other sides it is recorded in replay and replay handler has to handle calling do_init_side()
-	 * functions.
+	 * We do side init only if not done yet for a local side when we are not replaying.
+	 * For all other sides it is recorded in replay and replay handler has to handle
+	 * calling do_init_side() functions.
 	 **/
-	if (!current_team.is_local()
-		|| is_replay)
+	if (is_replay || init_side_done_ || !current_team().is_local()) {
 		return;
+	}
+
 	if (!loading_game_) recorder.init_side();
+
 	do_init_side(team_index, is_replay);
 }
 
@@ -645,6 +654,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 	loading_game_ = false;
+	init_side_done_ = true;
 
 	resources::whiteboard->on_init_side();
 }
