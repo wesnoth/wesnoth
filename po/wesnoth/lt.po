@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
 "PO-Revision-Date: 2011-12-01 11:36+0100\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -5784,12 +5784,12 @@ msgstr "Klientas atsijungė"
 msgid "Could not connect to host."
 msgstr "Nepavyko prisijungti prie mazgo."
 
-#: src/network.cpp:565
+#: src/network.cpp:572
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "Nepavyko pridėti prievado prie prievadų rinkinio."
 
-#: src/network.cpp:577
+#: src/network.cpp:584
 msgid "Could not send initial handshake"
 msgstr "Nepavyko išsiųsti pradinio rankos paspaudimo"
 
@@ -5802,24 +5802,24 @@ msgstr "Nepavyko prisijungti prie mazgo"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Rasta vietovė su judėjimo kaina mažesne nei 1."
 
-#: src/play_controller.cpp:239
+#: src/play_controller.cpp:240
 msgid "time left for current turn"
 msgstr "šiam ėjimui likęs laikas"
 
-#: src/play_controller.cpp:241 src/replay_controller.cpp:133
+#: src/play_controller.cpp:242 src/replay_controller.cpp:133
 msgid "current local time"
 msgstr "dabartinis vietinis laikas"
 
-#: src/play_controller.cpp:1096 src/savegame.cpp:320 src/savegame.cpp:332
+#: src/play_controller.cpp:1106 src/savegame.cpp:320 src/savegame.cpp:332
 #: src/savegame.cpp:1006 src/savegame.cpp:1008
 msgid "Auto-Save"
 msgstr "Autoišsaugojimas"
 
-#: src/play_controller.cpp:1103
+#: src/play_controller.cpp:1113
 msgid "Back to turn "
 msgstr "Atgal į ėjimą "
 
-#: src/play_controller.cpp:1351
+#: src/play_controller.cpp:1361
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -5827,7 +5827,7 @@ msgstr ""
 "Šis žaidimas išsisinchronizavo. Nėra prasmės tęsti žaidimą. Ar norite "
 "išsaugoti žaidimą?"
 
-#: src/play_controller.cpp:1352 src/replay_controller.cpp:322
+#: src/play_controller.cpp:1362 src/replay_controller.cpp:322
 msgid "Error details:"
 msgstr "Klaidos detalės:"
 
@@ -6005,23 +6005,23 @@ msgstr "Pergalė"
 msgid "You have emerged victorious!"
 msgstr "Jūs išėjote nugalėtoju!"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:238
 msgid "Replace with AI"
 msgstr "Pakeisti į DI"
 
-#: src/playturn.cpp:248
+#: src/playturn.cpp:239
 msgid "Replace with local player"
 msgstr "Pakeisti vietiniu žaidėju"
 
-#: src/playturn.cpp:249
+#: src/playturn.cpp:240
 msgid "Abort game"
 msgstr "Nutraukti žaidimą"
 
-#: src/playturn.cpp:255 src/playturn.cpp:269
+#: src/playturn.cpp:246 src/playturn.cpp:260
 msgid "Replace with $player"
 msgstr "Pakeisti į $player"
 
-#: src/playturn.cpp:275
+#: src/playturn.cpp:266
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player paliko žaidimą. Ką norite daryti?"
 

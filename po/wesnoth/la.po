@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
 "PO-Revision-Date: 2011-12-18 04:47+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -5909,12 +5909,12 @@ msgstr "Cliens disiungitur."
 msgid "Could not connect to host."
 msgstr "Non poteram cum hospite coniungere."
 
-#: src/network.cpp:565
+#: src/network.cpp:572
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "Non poteram portum ad congeriem portuum adiungere"
 
-#: src/network.cpp:577
+#: src/network.cpp:584
 #, fuzzy
 msgid "Could not send initial handshake"
 msgstr "Non potui mittere salutationem initialem"
@@ -5929,25 +5929,25 @@ msgstr "Non poteram cum hospite coniungere."
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
-#: src/play_controller.cpp:239
+#: src/play_controller.cpp:240
 msgid "time left for current turn"
 msgstr "tempus reliquus hui vice"
 
-#: src/play_controller.cpp:241 src/replay_controller.cpp:133
+#: src/play_controller.cpp:242 src/replay_controller.cpp:133
 msgid "current local time"
 msgstr "tempus currens localis"
 
-#: src/play_controller.cpp:1096 src/savegame.cpp:320 src/savegame.cpp:332
+#: src/play_controller.cpp:1106 src/savegame.cpp:320 src/savegame.cpp:332
 #: src/savegame.cpp:1006 src/savegame.cpp:1008
 #, fuzzy
 msgid "Auto-Save"
 msgstr "Servatum-Automatarium"
 
-#: src/play_controller.cpp:1103
+#: src/play_controller.cpp:1113
 msgid "Back to turn "
 msgstr "Rursus ad vicem "
 
-#: src/play_controller.cpp:1351
+#: src/play_controller.cpp:1361
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -5956,7 +5956,7 @@ msgstr ""
 "Ludi non synchonizantur et exire debebunt. Visne acta mendorum lusus tui "
 "servare?"
 
-#: src/play_controller.cpp:1352 src/replay_controller.cpp:322
+#: src/play_controller.cpp:1362 src/replay_controller.cpp:322
 msgid "Error details:"
 msgstr "Summa erroris: "
 
@@ -6110,24 +6110,24 @@ msgstr "Victoria"
 msgid "You have emerged victorious!"
 msgstr "Vicisti!"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:238
 msgid "Replace with AI"
 msgstr "Cum IA Supponere"
 
-#: src/playturn.cpp:248
+#: src/playturn.cpp:239
 msgid "Replace with local player"
 msgstr "Cum lusore locale supponere"
 
-#: src/playturn.cpp:249
+#: src/playturn.cpp:240
 #, fuzzy
 msgid "Abort game"
 msgstr "Lusum finire"
 
-#: src/playturn.cpp:255 src/playturn.cpp:269
+#: src/playturn.cpp:246 src/playturn.cpp:260
 msgid "Replace with $player"
 msgstr "Cum $player|ine supponere"
 
-#: src/playturn.cpp:275
+#: src/playturn.cpp:266
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player ludum reliquit. Quid facere vis?"
 

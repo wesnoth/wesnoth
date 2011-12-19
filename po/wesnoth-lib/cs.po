@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
 "PO-Revision-Date: 2011-12-11 13:25+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -2462,20 +2462,20 @@ msgstr "Smazání souboru se nezdařilo."
 msgid "Creation of the directory failed."
 msgstr "Složku se nezdařilo vytvořit."
 
-#: src/game_preferences.cpp:290
+#: src/game_preferences.cpp:315
 msgid "No server has been defined."
 msgstr "Nebyl definován žádný server."
 
-#: src/game_preferences.cpp:346
+#: src/game_preferences.cpp:395
 msgid "player"
 msgstr "hráč"
 
-#: src/game_preferences.cpp:777
+#: src/game_preferences.cpp:837
 msgid "%H:%M"
 msgstr "%H:%M"
 
 # formát času pro 2x12 + AM/PM
-#: src/game_preferences.cpp:780
+#: src/game_preferences.cpp:840
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -3720,7 +3720,7 @@ msgstr "Screenshot dokončen"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:404
+#: src/image.cpp:421
 msgid "language code for localized resources^en_US"
 msgstr "cs"
 

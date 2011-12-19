@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
 "PO-Revision-Date: 2010-12-10 21:09+0200\n"
 "Last-Translator: Jussi Rautio <kipuna@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -5964,11 +5964,11 @@ msgstr "Vastapuoli katkaisi yhteyden."
 msgid "Could not connect to host."
 msgstr "Yhteyttä koneeseen ei saatu."
 
-#: src/network.cpp:565
+#: src/network.cpp:572
 msgid "Could not add socket to socket set"
 msgstr "Ei voitu lisätä yhteyspalikkaa."
 
-#: src/network.cpp:577
+#: src/network.cpp:584
 msgid "Could not send initial handshake"
 msgstr "Ei voitu lähettää alkukättelyä."
 
@@ -5981,24 +5981,24 @@ msgstr "Yhteyttä palvelimeen ei saatu"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Maastoa yhtä vähemmällä liikkumiskustannuksella kohdattu."
 
-#: src/play_controller.cpp:239
+#: src/play_controller.cpp:240
 msgid "time left for current turn"
 msgstr "Aikaa jäljellä nykyisellä vuorolla"
 
-#: src/play_controller.cpp:241 src/replay_controller.cpp:133
+#: src/play_controller.cpp:242 src/replay_controller.cpp:133
 msgid "current local time"
 msgstr "tämänhetkinen paikallinen aika"
 
-#: src/play_controller.cpp:1096 src/savegame.cpp:320 src/savegame.cpp:332
+#: src/play_controller.cpp:1106 src/savegame.cpp:320 src/savegame.cpp:332
 #: src/savegame.cpp:1006 src/savegame.cpp:1008
 msgid "Auto-Save"
 msgstr "Automaattinen tallennus"
 
-#: src/play_controller.cpp:1103
+#: src/play_controller.cpp:1113
 msgid "Back to turn "
 msgstr "Takaisin vuoron alkuun"
 
-#: src/play_controller.cpp:1351
+#: src/play_controller.cpp:1361
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -6006,7 +6006,7 @@ msgstr ""
 "Palvelimella on erilainen käsitys pelitilanteesta. Luultavasti kannattaa "
 "lopettaa.. Haluatko tallentaa pelisi?"
 
-#: src/play_controller.cpp:1352 src/replay_controller.cpp:322
+#: src/play_controller.cpp:1362 src/replay_controller.cpp:322
 msgid "Error details:"
 msgstr "Virheen kuvaus:"
 
@@ -6170,23 +6170,23 @@ msgstr "Voitto!"
 msgid "You have emerged victorious!"
 msgstr "Olet voittaja!"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:238
 msgid "Replace with AI"
 msgstr "Korvaa tietokoneella"
 
-#: src/playturn.cpp:248
+#: src/playturn.cpp:239
 msgid "Replace with local player"
 msgstr "Korvaa paikallisella pelaajalla"
 
-#: src/playturn.cpp:249
+#: src/playturn.cpp:240
 msgid "Abort game"
 msgstr "Keskeytä peli"
 
-#: src/playturn.cpp:255 src/playturn.cpp:269
+#: src/playturn.cpp:246 src/playturn.cpp:260
 msgid "Replace with $player"
 msgstr "Korvaa pelaajalla $player"
 
-#: src/playturn.cpp:275
+#: src/playturn.cpp:266
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player on poistunut pelistä. Mitä haluat tehdä?"
 

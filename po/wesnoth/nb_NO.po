@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
 "PO-Revision-Date: 2009-04-05 10:50+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -5886,11 +5886,11 @@ msgstr "Tilkobling avbrutt."
 msgid "Could not connect to host."
 msgstr "Kunne ikke koble til nettvert."
 
-#: src/network.cpp:565
+#: src/network.cpp:572
 msgid "Could not add socket to socket set"
 msgstr "Kunne ikke koble til (Could not add socket to socket set)"
 
-#: src/network.cpp:577
+#: src/network.cpp:584
 msgid "Could not send initial handshake"
 msgstr "Kunne ikke sende håndtrykk"
 
@@ -5904,25 +5904,25 @@ msgstr "Kunne ikke koble til nettvert."
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
-#: src/play_controller.cpp:239
+#: src/play_controller.cpp:240
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:241 src/replay_controller.cpp:133
+#: src/play_controller.cpp:242 src/replay_controller.cpp:133
 #, fuzzy
 msgid "current local time"
 msgstr "Nåværende koordinator"
 
-#: src/play_controller.cpp:1096 src/savegame.cpp:320 src/savegame.cpp:332
+#: src/play_controller.cpp:1106 src/savegame.cpp:320 src/savegame.cpp:332
 #: src/savegame.cpp:1006 src/savegame.cpp:1008
 msgid "Auto-Save"
 msgstr "Lagre automatisk"
 
-#: src/play_controller.cpp:1103
+#: src/play_controller.cpp:1113
 msgid "Back to turn "
 msgstr "Tilbake til tur "
 
-#: src/play_controller.cpp:1351
+#: src/play_controller.cpp:1361
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -5931,7 +5931,7 @@ msgstr ""
 "Spillene er ikke synkroniserte og må derfor avsluttes. Vil du lagre en "
 "feillogg?"
 
-#: src/play_controller.cpp:1352 src/replay_controller.cpp:322
+#: src/play_controller.cpp:1362 src/replay_controller.cpp:322
 #, fuzzy
 msgid "Error details:"
 msgstr "Feil"
@@ -6092,24 +6092,24 @@ msgstr "Seier"
 msgid "You have emerged victorious!"
 msgstr "Du har seiret!"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:238
 msgid "Replace with AI"
 msgstr "Erstatt med AI"
 
-#: src/playturn.cpp:248
+#: src/playturn.cpp:239
 msgid "Replace with local player"
 msgstr "Erstatt med lokal spiller"
 
-#: src/playturn.cpp:249
+#: src/playturn.cpp:240
 msgid "Abort game"
 msgstr "Avbryt spill"
 
-#: src/playturn.cpp:255 src/playturn.cpp:269
+#: src/playturn.cpp:246 src/playturn.cpp:260
 #, fuzzy
 msgid "Replace with $player"
 msgstr "Erstatt med lokal spiller"
 
-#: src/playturn.cpp:275
+#: src/playturn.cpp:266
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "har forlatt spillet. Hva vil du gjøre?"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
 "PO-Revision-Date: 2011-11-09 21:33+0100\n"
 "Last-Translator: Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -6066,11 +6066,11 @@ msgstr "O cliente desconectouse."
 msgid "Could not connect to host."
 msgstr "Non se puido conectar ao servidor."
 
-#: src/network.cpp:565
+#: src/network.cpp:572
 msgid "Could not add socket to socket set"
 msgstr "Non se puido engadir o socket ao grupo de sockets."
 
-#: src/network.cpp:577
+#: src/network.cpp:584
 msgid "Could not send initial handshake"
 msgstr "No se puido enviar o saúdo inicial."
 
@@ -6084,24 +6084,24 @@ msgstr "Non se puido establecer a conexión."
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Atopouse un terreo cun custe de movemento inferior a 1."
 
-#: src/play_controller.cpp:239
+#: src/play_controller.cpp:240
 msgid "time left for current turn"
 msgstr "tempo restante da quenda actual"
 
-#: src/play_controller.cpp:241 src/replay_controller.cpp:133
+#: src/play_controller.cpp:242 src/replay_controller.cpp:133
 msgid "current local time"
 msgstr "hora local"
 
-#: src/play_controller.cpp:1096 src/savegame.cpp:320 src/savegame.cpp:332
+#: src/play_controller.cpp:1106 src/savegame.cpp:320 src/savegame.cpp:332
 #: src/savegame.cpp:1006 src/savegame.cpp:1008
 msgid "Auto-Save"
 msgstr "Gardado automático"
 
-#: src/play_controller.cpp:1103
+#: src/play_controller.cpp:1113
 msgid "Back to turn "
 msgstr "Volver á quenda "
 
-#: src/play_controller.cpp:1351
+#: src/play_controller.cpp:1361
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -6109,7 +6109,7 @@ msgstr ""
 "A partida non está sincronizada. Pode que non teña moito sentido continuar. "
 "Quere gardala?"
 
-#: src/play_controller.cpp:1352 src/replay_controller.cpp:322
+#: src/play_controller.cpp:1362 src/replay_controller.cpp:322
 msgid "Error details:"
 msgstr "Detalles:"
 
@@ -6272,23 +6272,23 @@ msgstr "Vitoria"
 msgid "You have emerged victorious!"
 msgstr "Venciches!"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:238
 msgid "Replace with AI"
 msgstr "Substituír pola intelixencia artificial"
 
-#: src/playturn.cpp:248
+#: src/playturn.cpp:239
 msgid "Replace with local player"
 msgstr "Substituír por un xogador local"
 
-#: src/playturn.cpp:249
+#: src/playturn.cpp:240
 msgid "Abort game"
 msgstr "Interromper a partida"
 
-#: src/playturn.cpp:255 src/playturn.cpp:269
+#: src/playturn.cpp:246 src/playturn.cpp:260
 msgid "Replace with $player"
 msgstr "Substituír por $player"
 
-#: src/playturn.cpp:275
+#: src/playturn.cpp:266
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player deixou a partida. Que queres facer?"
 

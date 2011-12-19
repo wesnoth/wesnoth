@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -5541,11 +5541,11 @@ msgstr "Връзката с клиента прекъсна"
 msgid "Could not connect to host."
 msgstr "Свързването към сървъра бе неуспешно."
 
-#: src/network.cpp:565
+#: src/network.cpp:572
 msgid "Could not add socket to socket set"
 msgstr "Добавянето на сокета към комплекта от сокети бе невъзможно "
 
-#: src/network.cpp:577
+#: src/network.cpp:584
 msgid "Could not send initial handshake"
 msgstr "Пращането на първоначалния поздрав е невъзможно"
 
@@ -5559,25 +5559,25 @@ msgstr "Свързването към сървъра бе неуспешно."
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
-#: src/play_controller.cpp:239
+#: src/play_controller.cpp:240
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:241 src/replay_controller.cpp:133
+#: src/play_controller.cpp:242 src/replay_controller.cpp:133
 #, fuzzy
 msgid "current local time"
 msgstr "Настоящ координатор"
 
-#: src/play_controller.cpp:1096 src/savegame.cpp:320 src/savegame.cpp:332
+#: src/play_controller.cpp:1106 src/savegame.cpp:320 src/savegame.cpp:332
 #: src/savegame.cpp:1006 src/savegame.cpp:1008
 msgid "Auto-Save"
 msgstr "Автоматично запазване"
 
-#: src/play_controller.cpp:1103
+#: src/play_controller.cpp:1113
 msgid "Back to turn "
 msgstr "Обратно към ход"
 
-#: src/play_controller.cpp:1351
+#: src/play_controller.cpp:1361
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -5586,7 +5586,7 @@ msgstr ""
 "Синхронът на игрите е нарушен и се налага да бъдат прекратени. Искате ли да "
 "запазите файл дневник с грешките от играта?"
 
-#: src/play_controller.cpp:1352 src/replay_controller.cpp:322
+#: src/play_controller.cpp:1362 src/replay_controller.cpp:322
 #, fuzzy
 msgid "Error details:"
 msgstr "Грешка"
@@ -5744,24 +5744,24 @@ msgstr "Победа"
 msgid "You have emerged victorious!"
 msgstr "Вие сте победител!"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:238
 msgid "Replace with AI"
 msgstr "Замяна с компютър"
 
-#: src/playturn.cpp:248
+#: src/playturn.cpp:239
 msgid "Replace with local player"
 msgstr "Замяна с локален играч"
 
-#: src/playturn.cpp:249
+#: src/playturn.cpp:240
 msgid "Abort game"
 msgstr "Прекъсване на играта"
 
-#: src/playturn.cpp:255 src/playturn.cpp:269
+#: src/playturn.cpp:246 src/playturn.cpp:260
 #, fuzzy
 msgid "Replace with $player"
 msgstr "Замяна с локален играч"
 
-#: src/playturn.cpp:275
+#: src/playturn.cpp:266
 #, fuzzy
 msgid "$player has left the game. What do you want to do?"
 msgstr "излезе от играта. Как ще постъпите?"

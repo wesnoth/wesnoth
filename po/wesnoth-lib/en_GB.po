@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
 "PO-Revision-Date: 2011-12-16 05:51-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -1327,13 +1327,11 @@ msgstr "Select difficulty level:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
-#| msgid "View Chat Log"
 msgid "Chat Log"
 msgstr "Chat Log"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
-#| msgid "Message:"
 msgid "Page:"
 msgstr "Page:"
 
@@ -2436,19 +2434,19 @@ msgstr "Deletion of the file failed."
 msgid "Creation of the directory failed."
 msgstr "Creation of the directory failed."
 
-#: src/game_preferences.cpp:290
+#: src/game_preferences.cpp:315
 msgid "No server has been defined."
 msgstr "No server has been defined."
 
-#: src/game_preferences.cpp:346
+#: src/game_preferences.cpp:395
 msgid "player"
 msgstr "player"
 
-#: src/game_preferences.cpp:777
+#: src/game_preferences.cpp:837
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:780
+#: src/game_preferences.cpp:840
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -3669,7 +3667,7 @@ msgstr "Screenshot done"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:404
+#: src/image.cpp:421
 msgid "language code for localized resources^en_US"
 msgstr "en_GB"
 

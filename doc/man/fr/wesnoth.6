@@ -32,14 +32,15 @@ wesnoth \- Bataille pour Wesnoth, un jeu fantasy de stratégie tour par tour
 Bataille pour \fBWesnoth\fP est un jeu de stratégie tour par tour dans un
 univers de fantasy.
 
-Defeat all enemy leaders using a well\-chosen cadre of troops, taking care to
-manage your resources of gold and villages. All units have their own
-strengths and weaknesses; to win, deploy your forces to their best advantage
-while denying your foes the chance to do the same. As units gain experience,
-they acquire new abilities and become more powerful. Play in your own
-language and test your skill against a smart computer opponent, or join
-Wesnoth's large community of online players. Create your own custom units,
-scenarios or campaigns, and share them with others.
+Venez à bout de tous les chefs ennemis en utilisant les unités adéquates et
+en gérant au mieux votre or et vos villages. Chaque unité a ses forces et
+ses faiblesses\ ; pour gagner, déployez vos troupes de façon optimale tout en
+empêchant vos adversaires de faire de même. En gagnant de l'expérience, les
+unités acquièrent de nouvelles compétences et deviennent plus
+puissantes. Jouez dans votre langue favorite, et testez votre habileté
+contre une intelligence artificielle élaborée ou rejoignez la grande
+communauté des joueurs en ligne de Wesnoth. Créez vos propres unités, vos
+scénarios ou vos campagnes et partagez\-les avec le reste du monde.
 .
 .SH OPTIONS
 .
@@ -48,25 +49,26 @@ scenarios or campaigns, and share them with others.
 Définit la valeur de bits par pixel (couleurs). Exemple\ : \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign[[<difficulté>] <id_campagne> [<id_scénario>]]\fP
-goes directly to the campaign based on the parameters.  The difficulty is a
-number between 1 and current campaign's difficulties number.  The default
-difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.  \fBNote: When
-using this switch please ensure that you specify the data directory path as
-the final argument\fP aswell, otherwise the game will take the
-campaign/scenario id as the data dir.
+Va directement à la campagne renseignée en paramètre.  La difficulté est un
+nombre entre 1 et le nombre de niveaux de difficulté de la campagne en
+cours.  La difficulté par défaut est 1.  Le scénario doit être un de ceux de
+la campagne. Le scénario par défaut est le premier scénario de la campagne.
+\fBNote\ : Lorsque vous utilisez cette option, assurez\-vous d'avoir spécifié
+le chemin vers le dossier de données en argument final\fP, sinon le jeu
+prendra l'identifiant campagne/scénario comme répertoire de données.
 .TP 
 \fB\-\-config\-dir\fP\fI\ nom\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games"
+Définit le répertoire de configuration de l'utilisateur à \fInom\fP dans $HOME
+ou dans "Mes Documents\eMes Jeux" pour windows.  Vous pouvez aussi
+renseigner un chemin absolu pour un dossier de configuration situé en dehors
+de $HOME ou de "Mes Documents\eMes Jeux"
 .TP 
 \fB\-\-config\-path\fP
 Affiche le nom du répertoire de configuration utilisateur et quitte le
 programme.
 .TP 
 \fB\-\-data\-dir <répertoire>\fP
-overrides the data directory with the one specified
+Remplace le répertoire data par celui spécifié
 .TP 
 \fB\-d, \-\-debug\fP
 Active des options supplémentaires pour la ligne de commande dans le jeu (se
@@ -74,8 +76,8 @@ reporter au Wiki\ : http://www.wesnoth.org/wiki/CommandMode pour plus
 d'informations).
 .TP 
 \fB\-e,\ \-\-editor\fP\fI\ fichier\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-l \-\-load\fP
+Lance directement l'éditeur de carte.  Si \fIfichier\fP est utilisé, équivaut à
+\fB\-l \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 Affiche, dans un angle de l'écran, le nombre actuel d'images par seconde du
@@ -89,26 +91,26 @@ Décompresse une sauvegarde, normalement au format gzip, en un fichier sans
 l'extension .gz. \fIfichier_d'entrée.gz\fP sera effacé.
 .TP 
 \fB\-\-gzip\fP\fI\ fichier_d'entrée\fP
-Compresse une sauvegarde au format gzip et la place dans \fIfichier
-d'entrée.gz\fP, puis efface \fIfichier_d'entrée\fP.
+Compresse une sauvegarde au format gzip et la place dans
+\fIfichier_d'entrée.gz\fP, puis efface \fIfichier_d'entrée\fP.
 .TP 
 \fB\-h, \-\-help\fP
 Affiche un résumé des options de ligne de commande sur la sortie standard et
 quitte le programme.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ fichier\fP
-loads the savegame \fIfile\fP from the standard save game directory.  If the
-\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
-from \fIfile\fP open. If it is a directory, the editor will start with a load
-map dialog opened there.
+Charge la sauvegarde \fIfichier\fP à partir du répertoire par défaut du jeu.
+Si les options \fB\-e\fP ou \fB\-\-editor\fP sont aussi utilisées, l'éditeur est
+lancé en ouvrant la carte située dans \fIfichier\fP. Si c'est un répertoire,
+l'éditeur commence par demander de choisir une carte.
 .TP 
 \fB\-\-log\-\fP\fIniveau\fP\fB=\fP\fIdomaine1\fP\fB,\fP\fIdomaine2\fP\fB,\fP\fI...\fP
 Définit le niveau d'alerte du débogueur. \fBall\fP permet de suivre tous les
 niveaux de déboguage. Niveaux disponibles : \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Le niveau par défaut est \fBerror\fP.
 .TP 
-\fB\-\-logdomains\ [filter]\fP
-lists defined log domains (only the ones containing \fBfilter\fP if used) and
-exits
+\fB\-\-logdomains\ [filtre]\fP
+Liste les types de journaux définis (uniquement ceux contenant \fBfiltre\fP si
+l'option est utilisée) et quitte
 .TP 
 \fB\-\-max\-fps\fP
 Nombre d'images par seconde que le jeu peut afficher. La valeur doit être
@@ -120,7 +122,7 @@ utilisées avec \fB\-\-multiplayer\fP\ : voir ci\-dessous. Seules ces options
 supplémentaires peuvent suivre \fB\-\-multiplayer\fP.
 .TP 
 \fB\-\-new\-syntax\fP
-enables the new campaign syntax parsing.
+Active le parsage de la nouvelle syntaxe des campagnes.
 .TP 
 \fB\-\-no\-delay\fP
 Lance le jeu sans pause pour mesurer les performances graphiques. Cette
@@ -138,27 +140,29 @@ Lance le jeu sans son ni musique.
 \fB\-\-path\fP
 Affiche le nom du répertoire principal du jeu et quitte le programme.
 .TP 
-\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
-preprocesses a specified file/folder. The file(s) will be written in
-specified target directory: a plain cfg file and a processed cfg file. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the data/core/macros will be
-preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
-extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  If 'SKIP_CORE' is in the define
-list the data/core won't be preprocessed.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result\fP or
+\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <fichier/dossier> <répertoire cible>\fP
+Prétraite un fichier/dossier spécifié. Un ou plusieurs fichiers seront
+écrits dans le répertoire cible renseigné\ : un fichier cfg brut et un
+fichier cfg prétraité. Si un dossier est spécifié, il sera prétraité
+récursivement à partir des règles de prétraitement connues. Les macros
+standards contenues dans data/core/macros seront prétraitées avant les
+ressources spécifiées.  Les définitions supplémentaires
+(\fBdefine1,define2,...\fP) seront ajoutées avant le traitement des
+fichiers. Pour en ajouter, il faut les faire précéder du caractère «\ =\ ».
+Si «\ SKIP_CORE\ » est dans la liste de définitions, data/core ne sera pas
+prétraité.  Exemple\ : \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result\fP ou
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
 .TP 
-\fB\-\-preprocess\-input\-macros <source file>\fP
-used only by the '\-\-preprocess' command.  Specifies a file that contains
-[preproc_define]s to be included before preprocessing.
+\fB\-\-preprocess\-input\-macros <fichier source>\fP
+Utilisé uniquement par la commande «\ \-\-preprocess\ ». Spécifie un fichier qui
+contient des [preproc_define]s à inclure avant le prétraitement.
 .TP 
-\fB\-\-preprocess\-output\-macros [<target file>]\fP
-used only by the '\-\-preprocess' command.  Will output all preprocessed
-macros in the target file. If the file is not specified the output will be
-file '_MACROS_.cfg' in the target directory of preprocess's command.  This
-switch should be typed before the \-\-preprocess command.
+\fB\-\-preprocess\-output\-macros [<fichier cible>]\fP
+Utilisé uniquement par la commande «\ \-\-preprocess\ ».  La sortie des macros
+prétraitées sera envoyée dans le fichier cible. Si le fichier n'est pas
+spécifié, la sortie sera envoyée dans «\ _MACROS_.cfg\ » situé dans le
+répertoire cible de la commande «\ \-\-preprocess\ ».  Cette commande doit être
+saisie avant «\ \-\-preprocess\ ».
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\fP\ \fIX\fP\fBx\fP\fIY\fP
 Définit la résolution de l'écran. Exemple\ : \fB\-r 800x600\fP
@@ -169,7 +173,7 @@ premier serveur paramétré dans les préférences. Exemple\ : \fB\-\-server
 server.wesnoth.org\fP
 .TP 
 \fB\-\-strict\-validation\fP
-validation errors are treated as fatal errors.
+Les erreurs de validation sont traitées comme des erreurs fatales.
 .TP 
 \fB\-t, \-\-test\fP
 Lance le jeu avec un petit scénario de test.

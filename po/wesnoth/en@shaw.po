@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -5884,11 +5884,11 @@ msgstr "𐑒𐑤𐑲𐑩𐑯𐑑 𐑛𐑦𐑕𐑒𐑩𐑯𐑧𐑒𐑑𐑩𐑛"
 msgid "Could not connect to host."
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑒𐑩𐑯𐑧𐑒𐑑 𐑑 𐑣𐑴𐑕𐑑."
 
-#: src/network.cpp:565
+#: src/network.cpp:572
 msgid "Could not add socket to socket set"
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑨𐑛 𐑕𐑪𐑒𐑩𐑑 𐑑 𐑕𐑪𐑒𐑩𐑑 𐑕𐑧𐑑"
 
-#: src/network.cpp:577
+#: src/network.cpp:584
 msgid "Could not send initial handshake"
 msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑕𐑧𐑯𐑛 𐑦𐑯𐑦𐑖𐑩𐑤 𐑣𐑨𐑯𐑛𐑖𐑱𐑒"
 
@@ -5902,30 +5902,30 @@ msgstr "𐑒𐑫𐑛 𐑯𐑪𐑑 𐑒𐑩𐑯𐑧𐑒𐑑 𐑑 𐑣𐑴𐑕𐑑
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "𐑑𐑻𐑱𐑯 𐑢𐑦𐑞 𐑩 𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑒𐑪𐑕𐑑 𐑤𐑧𐑕 𐑞𐑨𐑯 1 𐑦𐑯𐑒𐑬𐑯𐑑𐑻𐑛."
 
-#: src/play_controller.cpp:239
+#: src/play_controller.cpp:240
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:241 src/replay_controller.cpp:133
+#: src/play_controller.cpp:242 src/replay_controller.cpp:133
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:1096 src/savegame.cpp:320 src/savegame.cpp:332
+#: src/play_controller.cpp:1106 src/savegame.cpp:320 src/savegame.cpp:332
 #: src/savegame.cpp:1006 src/savegame.cpp:1008
 msgid "Auto-Save"
 msgstr "𐑷𐑑𐑴-𐑕𐑱𐑝"
 
-#: src/play_controller.cpp:1103
+#: src/play_controller.cpp:1113
 msgid "Back to turn "
 msgstr "𐑚𐑨𐑒 𐑑 𐑑𐑻𐑯 "
 
-#: src/play_controller.cpp:1351
+#: src/play_controller.cpp:1361
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 
-#: src/play_controller.cpp:1352 src/replay_controller.cpp:322
+#: src/play_controller.cpp:1362 src/replay_controller.cpp:322
 #, fuzzy
 msgid "Error details:"
 msgstr "𐑻𐑹: "
@@ -6092,23 +6092,23 @@ msgstr "𐑝𐑦𐑒𐑑𐑼𐑦"
 msgid "You have emerged victorious!"
 msgstr "𐑿 𐑣𐑨𐑝 𐑦𐑥𐑻𐑡𐑛 𐑝𐑦𐑒𐑑𐑹𐑦𐑩𐑕!"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:238
 msgid "Replace with AI"
 msgstr "𐑮𐑦𐑐𐑤𐑱𐑕 𐑢𐑦𐑞 AI"
 
-#: src/playturn.cpp:248
+#: src/playturn.cpp:239
 msgid "Replace with local player"
 msgstr "𐑮𐑦𐑐𐑤𐑱𐑕 𐑢𐑦𐑞 𐑤𐑴𐑒𐑩𐑤 𐑐𐑤𐑱𐑻"
 
-#: src/playturn.cpp:249
+#: src/playturn.cpp:240
 msgid "Abort game"
 msgstr "𐑩𐑚𐑹𐑑 𐑜𐑱𐑥"
 
-#: src/playturn.cpp:255 src/playturn.cpp:269
+#: src/playturn.cpp:246 src/playturn.cpp:260
 msgid "Replace with $player"
 msgstr "𐑮𐑦𐑐𐑤𐑱𐑕 𐑢𐑦𐑞 $player"
 
-#: src/playturn.cpp:275
+#: src/playturn.cpp:266
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player 𐑣𐑨𐑟 𐑤𐑧𐑓𐑑 𐑞 𐑜𐑱𐑥. 𐑢𐑪𐑑 𐑛𐑵 𐑿 𐑢𐑪𐑯𐑑 𐑑 𐑛𐑵?"
 
