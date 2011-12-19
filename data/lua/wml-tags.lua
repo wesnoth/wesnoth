@@ -409,20 +409,23 @@ function wml_actions.store_unit(cfg)
 
 	local var = cfg.variable or "unit"
 	local idx = 0
+	--cache the needed units here, since the filter might reference the to-be-cleared variable(s)
+	local units = wesnoth.get_units(filter)
+	local recall_units = wesnoth.get_recall_units(filter)
 	if mode == "append" then
 		idx = wesnoth.get_variable(var .. ".length")
 	elseif mode ~= "replace" then
 		wesnoth.set_variable(var)
 	end
 
-	for i,u in ipairs(wesnoth.get_units(filter)) do
+	for i,u in ipairs(units) do
 		wesnoth.set_variable(string.format("%s[%d]", var, idx), u.__cfg)
 		idx = idx + 1
 		if kill_units then wesnoth.put_unit(u.x, u.y) end
 	end
 
 	if (not filter.x or filter.x == "recall") and (not filter.y or filter.y == "recall") then
-		for i,u in ipairs(wesnoth.get_recall_units(filter)) do
+		for i,u in ipairs(recall_units) do
 			local ucfg = u.__cfg
 			ucfg.x = "recall"
 			ucfg.y = "recall"
