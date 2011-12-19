@@ -4,41 +4,54 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.9.13:
  * Language and i18n:
+   * Updated translations:
+
+
+Version 1.9.13:
+ * Language and i18n:
    * Updated translations: British English, Czech, Dutch, French, Galician,
      German, Hungarian, Korean, Latin, Lithuanian, Old English, Polish,
      Russian, Serbian.
+
  * Multiplayer:
    * Fix user interface set to side 1 when entering linger mode
      (bug #15847).
    * Fixes showing of larger portraits on smaller screens
      (bugs #17961 and #18686).
+
  * Unit changes and balancing:
    * Changed the Lancer's and the Deathblade's AMLA requirements to conform to
      the current AMLA standards.
+
  * User interface:
    * Fixed bug #19118: Default theme: coordinates overlap with the clock status
      panel on small horizontal resolutions. Also fixed for the widescreeen
      theme.
    * Made it so that "AM"/"PM" show up in the default and widescreen themes
      on the lowest supported resolutions.
+
  * Whiteboard:
    * Display turn numbers on multi-turn planned moves.
    * Fix attacks not finishing but still being transmitted over the network when
      executing all actions.
+
  * Miscellaneous and bug fixes:
    * Forward ported a new version of multiplayer chat log history dialog.
    * Fixed bug #19188: Turn dialog always speaks of Konrad in tutorial.
    * Added NativeClient port.
    * Optimized screen update (zooming, ToD change) and framerate.
 
+
 Version 1.9.12:
  * Language and i18n:
    * Updated translations: British English, Czech, French, German, Hungarian,
      Indonesian, Italian, Latin, Latvian, Old English, Russian, Slovak.
+
  * Multiplayer:
    * Fixed missed side init if controller changes at side progression
      (bug #16299).
    * Fixed user interface not updated if controller changes (bug #19056).
+
  * Whiteboard:
    * Fix invalid actions not being detected until another action is created
    * Erase invalid actions when you try to execute them
