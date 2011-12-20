@@ -14,17 +14,10 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="Portraits in dialogs"]
-Large portraits, especially high ones, should now work properly. For example TRoW scenario 5 (The Oldwood) now shows Elilmaldur-Rithrandil properly even when the screen resolution is 1920x480. If there are still issues with portraits not being shown, please let us know, either in this thread or by a bug report.
+[section="Another Change"]
 [/section]
 
-[section="NativeClient"]
-Added the NativeClient port code, provided by Evgeniy Stepanov.
-[/section]
-
-[section="Fullscreen in Lion"]
-Full screen mode on Lion should now work. Wesnoth currently uses a custom version of SDL to make this work, so people trying to compile on a Macintosh need to copy SDL.Framework from the package into Xcode/lib before compiling.
-If you are not using Lion, it is safe to continue using SDL 1.2.13.
+[section="Another Change"]
 [/section]
 
 [section="Another Change"]
@@ -34,6 +27,6 @@ If you are not using Lion, it is safe to continue using SDL 1.2.13.
 KNOWN BUGS
 ==========
 
-[list][*] The minimap when in windowed mode on OS X on Intel processors displays overlays (forests, villages) as black.
-[*] Text for entry2
+[list][*] Text for entry1.
+[*] Text for entry2.
 [/list]
