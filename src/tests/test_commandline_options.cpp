@@ -65,7 +65,7 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
 	BOOST_CHECK(!co.new_storyscreens);
-	BOOST_CHECK(!co.new_syntax);
+	//BOOST_CHECK(!co.new_syntax);
 	BOOST_CHECK(!co.new_widgets);
 	BOOST_CHECK(!co.path);
 	BOOST_CHECK(!co.preprocess);
@@ -149,7 +149,7 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
 	BOOST_CHECK(!co.new_storyscreens);
-	BOOST_CHECK(!co.new_syntax);
+	//BOOST_CHECK(!co.new_syntax);
 	BOOST_CHECK(!co.new_widgets);
 	BOOST_CHECK(!co.path);
 	BOOST_CHECK(!co.preprocess);
@@ -219,7 +219,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 		"--max-fps=100",
 		"--multiplayer",
 		"--new-storyscreens",
-		"--new-syntax",
+		//"--new-syntax",
 		"--new-widgets",
 		"--nocache",
 		"--nodelay",
@@ -317,7 +317,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.nomusic);
 	BOOST_CHECK(co.nosound);
 	BOOST_CHECK(co.new_storyscreens);
-	BOOST_CHECK(co.new_syntax);
+	//BOOST_CHECK(co.new_syntax);
 	BOOST_CHECK(co.new_widgets);
 	BOOST_CHECK(co.path);
 	BOOST_CHECK(co.preprocess && co.preprocess_path && co.preprocess_target);
@@ -395,7 +395,7 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.nomusic);
 	BOOST_CHECK(!co.nosound);
 	BOOST_CHECK(!co.new_storyscreens);
-	BOOST_CHECK(!co.new_syntax);
+	//BOOST_CHECK(!co.new_syntax);
 	BOOST_CHECK(!co.new_widgets);
 	BOOST_CHECK(!co.path);
 	BOOST_CHECK(!co.preprocess);
