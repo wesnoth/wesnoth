@@ -586,7 +586,7 @@ surface locator::load_image_sub_file() const
 	return surf;
 }
 
-bool locator::file_exists()
+bool locator::file_exists() const
 {
 	return !get_binary_file_location("images", val_.filename_).empty();
 }
