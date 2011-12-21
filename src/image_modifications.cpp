@@ -614,6 +614,14 @@ REGISTER_MOD_PARSER(CROP, args)
 	return new crop_modification(slice_rect);
 }
 
+static bool check_image(const image::locator& img, std::stringstream & message)
+{
+	if(img.file_exists()) return true;
+	message << " image not found: '" << img.get_filename() << "'\n";
+	ERR_DP << message.str();
+	return false;
+}
+
 // Blit
 REGISTER_MOD_PARSER(BLIT, args)
 {
@@ -637,7 +645,12 @@ REGISTER_MOD_PARSER(BLIT, args)
 		return NULL;
 	}
 
-	surface surf = get_image(param[0]);
+	const image::locator img(param[0]);
+	std::stringstream message;
+	message << "~BLIT():";
+	if(!check_image(img, message))
+		return NULL;
+	surface surf = get_image(img);
 
 	return new blit_modification(surf, x, y);
 }
@@ -665,7 +678,12 @@ REGISTER_MOD_PARSER(MASK, args)
 		return NULL;
 	}
 
-	surface surf = get_image(param[0]);
+	const image::locator img(param[0]);
+	std::stringstream message;
+	message << "~MASK():";
+	if(!check_image(img, message))
+		return NULL;
+	surface surf = get_image(img);
 
 	return new mask_modification(surf, x, y);
 }
