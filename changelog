@@ -4,6 +4,8 @@ Version 1.9.13+svn:
  * WML engine:
    * Fix store_unit clearing the used variable before its filter can reference it
      (bug #19203)
+   * Check for argument image file existence before creating a MASK or
+     BLIT image mod (bug #19208)
  * Miscellaneous and bug fixes:
    * Fixed bug #19032: Poison and level up AI defense placement calculation
 
