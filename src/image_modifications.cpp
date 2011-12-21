@@ -105,6 +105,8 @@ modification_queue modification::decode(const std::string& encoded_mods)
 
 		if(mod) {
 			mods.push(mod);
+		} else {
+			ERR_DP << "cannot decode image modification: '" << encoded_mod << "'\n";
 		}
 	}
 
