@@ -96,7 +96,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 						surface overlay = get_image(overlay_file,image::HEXED);
 
 						if(overlay != NULL && overlay != tile) {
-							surface combined = create_compatible_surface(tile, tile->w, tile->h);
+							surface combined = create_neutral_surface(tile->w, tile->h);
 							SDL_Rect r = create_rect(0,0,0,0);
 							sdl_blit(tile, NULL, combined, &r);
 							r.x = std::max(0, (tile->w - overlay->w)/2);
