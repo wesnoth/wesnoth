@@ -1,15 +1,21 @@
+# The Battle for Wesnoth - Simplified Chinese Translations
+# Copyright (C) 2005-2011 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# CloudiDust <cloudidust@gmail.com>, 2011.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: wescamp-i 18n\n"
+"Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2009-03-02 19:04-0600\n"
-"Last-Translator: sylecn <sylecn@yahoo.com.cn>\n"
-"Language-Team: chinese\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
+"PO-Revision-Date: 2011-06-05 21:02+0800\n"
+"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
+"translation-cn>\n"
+"Language: zh_CN\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
@@ -18,7 +24,7 @@ msgstr ""
 #. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
 msgid "Liberty"
-msgstr "自由"
+msgstr "自由之战"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
@@ -39,7 +45,7 @@ msgstr "农夫"
 #. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:18
 msgid "(Normal)"
-msgstr "（正常）"
+msgstr "（普通）"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
@@ -117,6 +123,7 @@ msgstr "Dallben"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:23
+#, fuzzy
 msgid ""
 "In the Era of Turmoil, during the reign of King Garard II, the border towns "
 "of Delwyn and Dallben in the province of Annuvin grew increasingly "
@@ -384,6 +391,7 @@ msgstr "如果援助还不快到的话，旗帜就要飘在鬼镇上了。"
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:346
+#, fuzzy
 msgid ""
 "They’re getting closer to our village! What about the town guards, can they "
 "help us?"
@@ -417,6 +425,7 @@ msgstr "Jasken"
 
 #. [message]: speaker=Wolmas
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:378
+#, fuzzy
 msgid "What’s happening here? Why are you running like mad, $unit.name|?"
 msgstr "这儿发生了什么？为什么你跑的这么疯狂，$unit.name|？"
 
@@ -427,6 +436,7 @@ msgstr "地精骑士们更接近了。我们不准他们任何一个进入村庄
 
 #. [message]: speaker=Wolmas
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:389
+#, fuzzy
 msgid "Look! Goblin riders are on the hunt — and heading right for Dallben!"
 msgstr "看！地精骑士们又近一步 - 正朝着Dallben！"
 
@@ -628,8 +638,9 @@ msgstr "憧憬"
 
 #. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:43
+#, fuzzy
 msgid "Relana"
-msgstr ""
+msgstr "Relnan"
 
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:70
@@ -647,7 +658,7 @@ msgstr "Urk Delek"
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:123
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:140
 msgid "Evil"
-msgstr "Evil邪恶"
+msgstr "邪恶势力"
 
 #. [side]: type=Saurian Oracle, id=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:99
@@ -714,6 +725,7 @@ msgstr "恩，不久他们向本地驻军汇报你们的遭遇。"
 
 #. [message]: speaker=Advisor
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:198
+#, fuzzy
 msgid "Then they’ll be back in force."
 msgstr "然后他们会带军队回来了。"
 
@@ -758,6 +770,7 @@ msgstr ""
 
 #. [message]: speaker=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:222
+#, fuzzy
 msgid ""
 "By the sound of the wolves, the scent trail of Fal Khag’s killers ends here."
 msgstr "根据狼的叫声，Fal Khag的杀手的尾迹在这里结束了。"
@@ -900,6 +913,7 @@ msgstr "你拒绝了吗？"
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:206
+#, fuzzy
 msgid ""
 "Yes. The Queen ascended to the throne through the vilest of treachery. "
 "However, while most of my forces were sent with the King to fight the orcs, "
@@ -911,6 +925,7 @@ msgstr ""
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:210
+#, fuzzy
 msgid ""
 "We have an uneasy peace until they are done with the smaller villages and "
 "finally come around to obtaining my oath. The treaty between Elensefar and "
@@ -923,6 +938,7 @@ msgstr ""
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:214
+#, fuzzy
 msgid ""
 "What can we do then? We have brought with us many from Annuvin province who "
 "are willing to fight, but our families are still at home. They will not last "
@@ -1009,6 +1025,7 @@ msgstr "Maddock领主，现在我们获胜了，你可以帮我们了吗？"
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:601
+#, fuzzy
 msgid ""
 "I will not. Unless you want me to round up the city’s thieves to fight for "
 "you, I do not have the troops to spare. However, I am not the only one who "
@@ -1019,6 +1036,7 @@ msgstr ""
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:605
+#, fuzzy
 msgid "I don’t understand. There are no other noble lords in this area."
 msgstr "我不明白。这一地区并没有其他的贵族领主。"
 
@@ -1031,6 +1049,7 @@ msgstr "这儿的东南面有个镇子，在那里你可以找到我无法提供
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:613
+#, fuzzy
 msgid ""
 "Wish us well. If we are to resist the Wesnoth army a second time, we’re "
 "going to need more than clubs and slings against steel."
@@ -1127,6 +1146,7 @@ msgstr ""
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:524
+#, fuzzy
 msgid "They’re looking for us."
 msgstr "他们是在找我们。"
 
@@ -1145,6 +1165,7 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:566
+#, fuzzy
 msgid ""
 "Looks like these guards hold stationary posts, so if we’re careful enough we "
 "should be able to slip our way around them unnoticed."
@@ -1154,6 +1175,7 @@ msgstr ""
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:570
+#, fuzzy
 msgid ""
 "Harper, you younger and faster folks need to be our eyes now. Scout ahead "
 "and try to find a way for us to get past the guards, but make sure to not "
@@ -1188,6 +1210,7 @@ msgstr "一旦我们从这韦诺的死亡军队逃出来，我们就会乐于效
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:699
+#, fuzzy
 msgid ""
 "I haven’t run this much in years. If you were to ask me to infiltrate a "
 "heavily guarded city relying on nothing but the cover of darkness and my "
@@ -1198,6 +1221,7 @@ msgstr ""
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:703
+#, fuzzy
 msgid "As it turns out, I’m the crazy one. Let’s finish this folly."
 msgstr "伴随着这成功，我也是这疯狂的一位。让我们结束这个荒唐的举动。"
 
@@ -1223,6 +1247,7 @@ msgstr "沿着这路..."
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:777
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:444
+#, fuzzy
 msgid ""
 "We have spent too much time here. Surely the Queen’s forces have returned to "
 "Dallben. Our mission is unfinished, but we must return to fight a suicide "
@@ -1288,6 +1313,7 @@ msgstr "你们的追求？"
 
 #. [message]: speaker=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:237
+#, fuzzy
 msgid ""
 "The former King’s magic ministry kept a tight control on the training and "
 "employment of mages in Wesnoth. Those of us who dared to... depart from the "
@@ -1324,6 +1350,7 @@ msgstr "我...明白了，我想。为什么你要帮助我们？"
 
 #. [message]: speaker=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:253
+#, fuzzy
 msgid ""
 "We don’t. You have sought us out. But, I do know of your situation and am "
 "willing to help. Any weakening of the Throne of Wesnoth, whether it be "
@@ -1467,6 +1494,7 @@ msgstr "好。我最出色的法师和盗贼由你差遣。好好用他们。"
 
 #. [option]: speaker=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:411
+#, fuzzy
 msgid "I wish you to join us in battle against the Queen’s forces."
 msgstr "我希望你能加入我们对付女王军的战斗。"
 
@@ -1638,6 +1666,7 @@ msgstr ""
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:199
+#, fuzzy
 msgid ""
 "The troop movements all make sense now. We must stop this army from reaching "
 "the garrison. We cannot swallow them whole, but we can gnaw away at them. "
@@ -1650,11 +1679,13 @@ msgstr ""
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:203
+#, fuzzy
 msgid "You just said we can’t beat their entire army!"
 msgstr "你说过我们不可能击败他们全体军队的！"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:207
+#, fuzzy
 msgid ""
 "Do you propose surrender? It’s this or nothing. All we can do is see it "
 "through to the end."
@@ -1686,6 +1717,7 @@ msgstr ""
 
 #. [message]: speaker=Linneus
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:288
+#, fuzzy
 msgid "It’s an ambush! Hold your ground!"
 msgstr "是个埋伏！守住自己的阵地。"
 
@@ -1715,6 +1747,7 @@ msgstr "噢！火很烫！别跳进去！"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:344
+#, fuzzy
 msgid ""
 "What a bloody mess. We must attack Halstead next. If we wait, they will "
 "become invincible. If we can burn it to the ground before that happens, our "
@@ -1772,6 +1805,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:32
+#, fuzzy
 msgid ""
 "A monument to this achievement was erected in the very heart of the "
 "wildlands. In a twelve-year ritual, the High Council demonstrated the height "
@@ -1852,6 +1886,7 @@ msgstr ""
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:443
+#, fuzzy
 msgid ""
 "I don’t see how we can bring it down. They are already invincible in there!"
 msgstr "我不知道我们怎样才能让它倒塌。他们在那里已经是不可战胜的了！"
@@ -1919,6 +1954,7 @@ msgstr "你怎么知道的？"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:484
+#, fuzzy
 msgid ""
 "When I was a boy, my father — your grandfather — brought your dad and me to "
 "live in Aldril after orcs massacred many in our village. We grew up around "
@@ -1940,12 +1976,14 @@ msgstr ""
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:502
+#, fuzzy
 msgid ""
 "I hope you’re right. In a few hours, night will fall, and we will find out."
 msgstr "我希望你是正确的。几个小时内，黑夜会降临，我们会找出来的。"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:506
+#, fuzzy
 msgid ""
 "We must be cautious. Look there, a substantial orc force is also advancing "
 "on Halstead. They must think Wesnoth’s army is spread out right now."
@@ -1955,6 +1993,7 @@ msgstr ""
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:510
+#, fuzzy
 msgid "Heh. They’re in for a surprise. This may work to our advantage."
 msgstr "哼哼。他们会大吃一惊的。这对我们的工作有利。"
 
@@ -2021,6 +2060,7 @@ msgstr "那个下午，另一队先头的韦诺主力军队到达了..."
 
 #. [message]: speaker=Dommel
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:690
+#, fuzzy
 msgid ""
 "I think... I think they’re trying to storm Halstead itself... the fools!"
 msgstr "我想...我想他们要破坏Halstead...这群傻瓜！"
@@ -2032,6 +2072,7 @@ msgstr "他们已经破坏了城堡大门！击退他们！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:723
+#, fuzzy
 msgid "I’m inside the tower! I’m going down to the catacombs — cover me."
 msgstr "我进到塔里了！我准备下到地下墓穴里 － 掩护我。"
 
@@ -2042,6 +2083,7 @@ msgstr "一个小时后..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:743
+#, fuzzy
 msgid "It’s done."
 msgstr "搞定了。"
 
@@ -2080,6 +2122,7 @@ msgstr "任何城堡内的人都不会活着出来了。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:904
+#, fuzzy
 msgid ""
 "After more than a week of fierce fighting, the main body of Asheviere’s host "
 "arrived from Weldyn. The battle was soon finished. Every last man from the "
@@ -2187,6 +2230,7 @@ msgstr "小胜？呸！现在我们会毁掉城堡并把它埋葬到土里，那
 
 #. [scenario]: id=09_Epilogue
 #: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:4
+#, fuzzy
 msgid "Liberty — Epilogue"
 msgstr "自由 - 收场白"
 
@@ -2199,6 +2243,7 @@ msgstr "剩下的战斗不清楚。这发生的冲突震惊了所有人。"
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:17
+#, fuzzy
 msgid ""
 "Baldras and his men fled the plains of western Wesnoth under the cover of "
 "night. The spectacle of Halstead’s destruction stunned them into a daze that "
@@ -2221,6 +2266,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:23
+#, fuzzy
 msgid ""
 "As the main body of Asheviere’s army neared the ruins of Halstead, strange "
 "things began to happen. Every night, men would disappear. Others were found "
@@ -2234,6 +2280,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:26
+#, fuzzy
 msgid ""
 "When the army of Wesnoth found the ruins of the mighty fortress Halstead, it "
 "was too much. Their shock that such a thing could happen combined with the "
@@ -2352,6 +2399,7 @@ msgstr "流浪法师"
 
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:19
+#, fuzzy
 msgid ""
 "Some mages are thrown out of the mage’s guild for attempting to practice "
 "forbidden arts. Now completely outside the law, these rogue mages do "
@@ -2416,6 +2464,7 @@ msgstr "暗影法师"
 
 #. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:22
+#, fuzzy
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
 "arts have turned the shadow mages into feared fighters. Now completely "
@@ -2448,7 +2497,7 @@ msgstr ""
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:20
 msgid "Villager"
-msgstr "村庄长老"
+msgstr "村民"
 
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:23
@@ -2464,6 +2513,7 @@ msgstr "村庄长老"
 
 #. [unit_type]: id=Bandit_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:39
+#, fuzzy
 msgid ""
 "Each of the villages scattered across the Wesnoth countryside is normally "
 "guided by a group of elders, who are the village’s wisest and most "
@@ -2479,6 +2529,7 @@ msgstr "资深村庄长老"
 
 #. [unit_type]: id=Highwayman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:56
+#, fuzzy
 msgid ""
 "The entire village looks to the senior elder for guidance. Strong and wise, "
 "the senior elders take responsibility for the community’s well-being on "
@@ -2613,6 +2664,7 @@ msgstr ""
 
 #. [object]: id={ID}
 #: data/campaigns/Liberty/utils/utils.cfg:58
+#, fuzzy
 msgid ""
 "There is a strange altar here and a pendant on it. I don’t want to touch it."
 msgstr "这儿有个奇怪的祭坛，还有个垂饰在上面。我不想去碰它。"
@@ -2649,68 +2701,3 @@ msgid ""
 "left dead and the few survivors born away to unguessable fates. It was a "
 "bitter doom, but as Asheviere’s grip tightened they would live to see worse."
 msgstr ""
-
-#~ msgid "Relnan"
-#~ msgstr "Relnan"
-
-#~ msgid "magic missile"
-#~ msgstr "飞魔弹"
-
-#~ msgid "Turns run out"
-#~ msgstr "回合耗尽"
-
-#~ msgid "(Baldras!)"
-#~ msgstr "（Baldras！）"
-
-#~ msgid "Translators"
-#~ msgstr "翻译者"
-
-#~ msgid ""
-#~ "Goblins do not do well without their leaders. If we can kill this one, it "
-#~ "may take the fight out of the rest."
-#~ msgstr ""
-#~ "地精们没了他们的头儿就不行了。要是我们杀了这个头儿，剩下的可能就好对付了。"
-
-#~ msgid ""
-#~ "Each village has a group of highly capable fighters dedicated to fending "
-#~ "off orc raids. Some of these join the Wesnoth army, while others join the "
-#~ "core of the village's patrol."
-#~ msgstr ""
-#~ "每一个村庄都有一群非常有能力的战士们专注于抵挡兽人的袭击。他们中的一些加入"
-#~ "了韦诺军，其他的加入了村庄巡逻队的核心。"
-
-#, fuzzy
-#~ msgid "Amman"
-#~ msgstr "神射手"
-
-#~ msgid "Dusk"
-#~ msgstr "黄昏"
-
-#~ msgid "leadership"
-#~ msgstr "领导能力"
-
-#~ msgid "blade"
-#~ msgstr "剑"
-
-#, fuzzy
-#~ msgid "fire"
-#~ msgstr "刺"
-
-#~ msgid "marksman"
-#~ msgstr "神射手"
-
-#~ msgid "impact"
-#~ msgstr "冲击"
-
-#, fuzzy
-#~ msgid "magic-missile"
-#~ msgstr "魔法飞弹"
-
-#~ msgid "cold"
-#~ msgstr "冰"
-
-#~ msgid "club"
-#~ msgstr "木棒"
-
-#~ msgid "magical"
-#~ msgstr "魔法攻击"

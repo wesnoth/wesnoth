@@ -1,24 +1,24 @@
-# ----wesnoth-editor.cpp1.po (Battle for Wesnoth 1.1+cvs)  ----Chinese translations for Battle for Wesnoth package.
-# Copyright (C) 2005 Wesnoth development team
+# The Battle for Wesnoth - Simplified Chinese Translations
+# Copyright (C) 2005-2011 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
-# Automatically generated <>, 2005.
-# Huang huan <unicon221@gmail.com>, 2005.(unicon)
+# Huang Huan(unicon) <unicon221@gmail.com>, 2005.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
+"Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2010-05-22 11:55+0800\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
+"PO-Revision-Date: 2011-12-14 21:17+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
-"Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
-"Language: \n"
+"Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
+"translation-cn>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
@@ -63,7 +63,7 @@ msgstr "沙漠"
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
 msgid "embellishments"
-msgstr ""
+msgstr "装饰"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:44
@@ -88,7 +88,7 @@ msgstr "洞穴"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "obstacle"
-msgstr ""
+msgstr "障碍物"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:79
@@ -103,7 +103,7 @@ msgstr "城堡"
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:93
 msgid "bridge"
-msgstr ""
+msgstr "桥"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:100
@@ -330,11 +330,11 @@ msgstr "除非特别注意，否则不会正常工作。"
 
 #: src/editor/editor_palettes.cpp:526
 msgid "FG: "
-msgstr ""
+msgstr "前景地形："
 
 #: src/editor/editor_palettes.cpp:527
 msgid "BG: "
-msgstr ""
+msgstr "背景地形："
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"
@@ -360,33 +360,13 @@ msgid "Could not save the map: $msg"
 msgstr "无法保存地图：$msg"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
 msgstr "无"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "玩家 $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"
 msgstr "自定义设置"
-
-#~ msgid "Choose player"
-#~ msgstr "选择玩家"
-
-#~ msgid ""
-#~ "Which player should start here? You can use alt and a number key to set "
-#~ "the starting position for a player, and del to clear the starting "
-#~ "position under the cursor. Pressing a number key by itself will scroll to "
-#~ "that player’s starting position."
-#~ msgstr ""
-#~ "哪位玩家应该在这里开始游戏？您可以使用alt+数字键为玩家设置起始点，使用del"
-#~ "键清除光标所在位置的起始点。仅按下数字键可以跳转到对应的起始点。"
-
-#~ msgid "FG"
-#~ msgstr "前景地形"
-
-#~ msgid "BG"
-#~ msgstr "背景地形"

@@ -1,27 +1,29 @@
+# The Battle for Wesnoth - Simplified Chinese Translations
+# Copyright (C) 2005-2011 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
 # Lim Choon Kiat <lim@singindustry.com>, 2005.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-httt\n"
+"Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2010-08-30 19:33+0800\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
+"PO-Revision-Date: 2011-09-24 16:38+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
-"Language-Team:  <zh@li.org>\n"
-"Language: \n"
+"Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
+"translation-cn>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:11
 msgid "Heir to the Throne"
-msgstr "王座继承者"
+msgstr "王座之承"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:12
@@ -31,7 +33,7 @@ msgstr "HttT"
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
 msgid "(Beginner)"
-msgstr "（新手）"
+msgstr "（初心者）"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
@@ -61,9 +63,8 @@ msgstr "斗士"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
-#, fuzzy
 msgid "(Novice level, 23 scenarios.)"
-msgstr "（新手级别，25幕场景。）"
+msgstr "（新手级别，23幕场景。）"
 
 # I have translated Wesnoth into two chinese characters counting from the last four characters.
 # Wesnoth = mid(TranslatedString, 9,2)
@@ -80,7 +81,7 @@ msgid ""
 "heir.\n"
 "\n"
 msgstr ""
-"为夺回韦诺的王座而战斗吧，你才是合法的王座继承者。\n"
+"为夺回韦诺的王座而战斗吧，你才是合法的继承者。\n"
 "\n"
 
 #. [about]
@@ -113,9 +114,6 @@ msgstr "精灵受困"
 msgid "Move Konrad to the signpost in the northwest"
 msgstr "将科纳德移动到西北面的路标处"
 
-# Here, I translated the primary character Konrad into "kong lie" (Hanyu Pinyin)
-# There was once a very famous Chinese Poet name "Kong Zhi". Much of his works stills flow among the Chinese today. Another great man was written in the "Romance of the Three Kingdoms" (see comments at "Fight to gain back the throne of Wesnoth, of which you are the legitimate heir."). This man was "Kong Ming" -- Known to be the greatest Chinese Strategist. He also became the Prime Minister of his state.
-# Hence, I chose this word because, Konrad was suppose to be a great leader and King. Also, his long association with the Elves should have made him wise. Hence, Using the same word as the great men, many Chinese can associate him with the great sages of the past.
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:32
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:30
@@ -149,7 +147,6 @@ msgstr "将科纳德移动到西北面的路标处"
 msgid "Death of Konrad"
 msgstr "科纳德阵亡"
 
-# This is only a sounds-like translation. More recommendations welcome.
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:36
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:34
@@ -265,7 +262,6 @@ msgstr "反抗军"
 msgid "Delfador"
 msgstr "黎伐多"
 
-# This is only a sounds-like translation. More recommendations welcome.
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:155
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:88
@@ -331,7 +327,7 @@ msgstr "马加-克纳法"
 #. [side]: type=Elvish Champion, id=Galdrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:220
 msgid "Galdrad"
-msgstr "伽尔德拉德"
+msgstr "伽德拉德"
 
 #. [side]: type=Elvish Shyde, id=Chantal
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:236
@@ -538,7 +534,6 @@ msgstr "别回头看！我们必须尽快离开！"
 
 #. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
-#, fuzzy
 msgid "scenario name^Blackwater Port"
 msgstr "黑水港"
 
@@ -552,7 +547,7 @@ msgstr "坚守直到回合数耗尽"
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
 msgid "(special bonus)"
-msgstr ""
+msgstr "（特别奖励）"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:25
@@ -609,8 +604,6 @@ msgstr ""
 msgid "Delfador, some orcs are following us! We must make haste!"
 msgstr "黎伐多，兽人大军追上来了！我们得加快速度！"
 
-# I took it on myself to add words (two characters only) of emotions to this sentence.
-# One is before the second exclamation mark, the other the last. These characters are unique to Chinese Language but not English. Though meaningless to English Language, they are rich expressions of emotions in Chinese. So much spoken in common speeches that Singaporeans and Malaysians use them in English! (Have you heard the term 'Singlish'? Basically, it is English infiltrated with Chinese words like the two inserted, as well as some Malay and Tamil.)
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:166
 msgid ""
@@ -645,7 +638,6 @@ msgstr ""
 msgid "We will help you fight them off until the reinforcements arrive."
 msgstr "我们愿意助阵，一同坚守到援军前来。"
 
-# This is the first time Sir Kaylan speaks with Konrad. In Chinese History, when a Knight speaks with the King, they knelt and bow head to the floor. With such a history in Chinese's mind, I translated the words with full humility and respect a Knight will bestow to a would-be King he loved. (A great difference in tone of voice from the way he speaks with Delfador, his old friend)
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:182
 msgid ""
@@ -658,27 +650,11 @@ msgstr ""
 "生命比这个港口重要得多。两天之后就会有一艘船来到这里，它一定能将您带到安全的"
 "地方的。"
 
-# Alduin is translated based on "sounds-like" principle.
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:186
 msgid "And the ship will take us to Alduin?"
 msgstr "那这艘船会把我们带到安度云？"
 
-# This is the first occurance of "mage" in this po file.
-# Two options I have so far:
-# 1. Magician (sounds weird and low class to Chinese -- like street performers)
-# 2. Taoist (Sounds religious, but easily understood by Chinese to be fighters of evil spirits)
-# To make it less "religious", I add Wesnoth, hence "Wesnoth Taoist".
-# (Hence "home of many mages" translated to "home of Wesnoth Taoists")
-# ********************************************************
-# What Chinese film producers think of "Taoist"
-# ********************************************************
-# In many Hong Kong/Taiwan movies,
-# 1. Taoist in ghost movies ward off evils spirits, like that of White Mages.
-# 2. In non-ghost, Kung Fu movies, Taoist possess great, destructive powers (full of pyro-technic explosive effects), like red-mages.
-# (They however, do not have much on Teleportation. Perhaps difficult to film and not probably interesting. Many Taoist, hovever, can fly though. Wonder if they can be interpolate to mean teleportation or not.)
-# Note: Many Chinese Kung Fu movies (non-mythological) based their works on the philosophy coined by a famous writer called Jin Yung. Much like many Medivial Characters stem from "Dungeons & Dragons", many Chinese philosophical characters stem from his works (while many other mythological characters like Dragons, stem from Chinese myths).
-# Lim C.K.
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:190
 msgid ""
@@ -686,7 +662,6 @@ msgid ""
 "many magi."
 msgstr "没错，我们将航向安度云岛，我的家乡，科纳德，也是许多法师的家乡。"
 
-# Note: To be consistent with the respectful attitude Kaylan have for Konrad, the word "Konrad" is translated with only the word "Kong" followed by "Jun" (a word used by Chinese to mean gentleman, but in this context, a respectful address from a subordinate to his/her Lord and King when addressing the superior's name.)
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:194
 msgid ""
@@ -704,12 +679,6 @@ msgid ""
 "from elves?"
 msgstr "多谢您，爵士。但我怎样才能指挥好这些骑手呢？他们和精灵有什么不同？"
 
-# This is the first occurance of the word "Lawful" in Wesnoth context.
-# There is a direct translation "he fa". But in Chinese, this applies to people who obeys the law.
-# It is contextually wrong for Wesnoth. Hence I attempts to coin a term (perhaps can be patented for Wesnoth): "Shun Yang Zhe". This is an extract from the Taoist theory of "Ying and Yang" well known among Chinese.
-# (I am sure we will become a laughing stock if I translate "Lawful" into one who obeys Law and "Chaotic" into one who disobey Law. Reason: This is a game involving war. Civil law does not apply. In Wesnoth, even "Chaotic" has the rights to win and stay in the territory, like the Dark Hordes.)
-# Hence I recommend: "Lawful" = "Shun Yang Zhe", "Chaotic" = "Shun Ying Zhe", "Neutral" = "Ying Yang He Zhe". I think most Chinese will like these terms. Reason: One with "Ying Yang" balanced has no problem with day or night. (Exactly what a neutral unit is). A "Shun Yang Zhe" (Literally one who favours "Yang" (Transliterate: "Sun", day) will like day and same goes for "Shun Ying Zhe" (One who favours "Ying" (transliterate: darkness, night) ) will favour night more!
-# Well, Developers, please give your approval.
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:208
 msgid ""
@@ -1044,9 +1013,8 @@ msgstr "珍珠湾"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:19
-#, fuzzy
 msgid "Defeat one enemy leader, and resist the other until turns run out"
-msgstr "击败一名敌军领袖，并抵御其他人的攻击直到时限到来。"
+msgstr "击败一名敌军领袖，并抵御另一名领袖的攻击直到回合耗尽。"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:24
@@ -1062,9 +1030,8 @@ msgstr "击败所有的敌军领袖"
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:32
 msgid "Turns run out with both enemy leaders standing"
-msgstr ""
+msgstr "回合数耗尽且两名敌军领袖均存活"
 
-# The next few names are just translated based on sounds-like characters. Very much subjected to debate, but will be of no avail as there is not a one-to-one translation for these in Chinese.
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:63
 msgid "Dwaba-Kukai"
@@ -1073,7 +1040,7 @@ msgstr "达瓦巴-库凯"
 #. [side]: type=Orcish Warrior, id=Managa'Gwin
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:81
 msgid "Managa’Gwin"
-msgstr "马纳加-戈温"
+msgstr "马纳加·戈温"
 
 #. [unit]: type=Orcish Archer, id=Bugg
 #. [then]
@@ -1114,17 +1081,11 @@ msgstr ""
 msgid "Very well. Be careful!"
 msgstr "好的。请您小心！"
 
-# Tentative translation for Naga:
-# Bay/Sea Of Pearls Dragon
-# (Awaiting comments from Team)
 #. [message]: speaker=Bugg
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:240
 msgid "But boss, why are we only using bats and nagas?"
 msgstr "不过老大，为什么我们只用蝙蝠和娜迦？"
 
-# Tentative translation for Naga:
-# Bay/Sea Of Pearls Dragon
-# (Awaiting comments from Team)
 #. [message]: speaker=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:245
 msgid ""
@@ -1162,7 +1123,6 @@ msgstr "但……但……这怎么会在我身上发生？"
 msgid "Who was that idiot?"
 msgstr "那白痴是谁？"
 
-# Those names from this string down are translated based on sounds-like only.
 #. [unit]: id=Gwaba, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:328
 msgid "Gwaba"
@@ -1226,7 +1186,7 @@ msgstr "卡瓦布"
 #. [message]: speaker=Kaba
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:511
 msgid "Freedom! Now where are those orcs? Let me at ’em!"
-msgstr "自由了！兽人在哪儿？让我把他们揍翻！"
+msgstr "终于自由了！兽人在哪儿？让我把他们揍翻！"
 
 #. [unit]: id=Gwimli, type=Merman Fighter
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:533
@@ -1338,8 +1298,8 @@ msgid ""
 "city-state. If the city falls, there is no telling how many other lands she "
 "may swallow up!"
 msgstr ""
-"科纳德，恐怕我们没时间休息了。艾斯威勒已经开始围攻埃仁撒伐，撕毁了韦诺和埃仁"
-"斯城邦之间上百年的盟约。如果埃仁撒伐沦陷，不知道她还会再吞下多少土地！"
+"科纳德，恐怕我们没时间休息了。艾斯威勒已经撕毁了韦诺和埃仁斯城邦之间上百年的"
+"盟约，开始围攻埃仁撒伐。如果埃仁撒伐沦陷，不知道她还会再吞下多少土地！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:735
@@ -1359,7 +1319,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:745
 msgid ""
 "I must do that? But what about you, Delfador? You’re coming with me, right?"
-msgstr "*我*必须这么做？那么您呢，黎伐多？您会和我一起去的，不是吗？"
+msgstr "“我”必须这么做？那么您呢，黎伐多？您会和我一起去的，不是吗？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:750
@@ -1386,7 +1346,7 @@ msgstr "您一个人？殿下！我们，您忠诚的将士们，会支持您的
 msgid ""
 "You will prevail. I have faith in you. Head north. Elensefar is but three "
 "days’ travel if you make haste."
-msgstr "你会获胜的，我相信你。请迅速北上，到达埃仁撒伐只需三天的时间。"
+msgstr "你会获胜的，我相信你。请迅速北上，这样到达埃仁撒伐只需三天的时间。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:772
@@ -1464,7 +1424,7 @@ msgstr ""
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:865
 msgid "I must do this? But you are coming with me, aren’t you, Delfador?"
-msgstr "*我*必须这么做？但您会和我一起去的，不是吗，黎伐多？"
+msgstr "“我”必须这么做？但您会和我一起去的，不是吗，黎伐多？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:869
@@ -1492,7 +1452,7 @@ msgid ""
 "be safest. Sail along the coast, and you can land mere miles from Elensefar. "
 "Make haste!"
 msgstr ""
-"既然你已经打破了兽人的海上霸权，那么从海路走是最安全的。沿着海岸前进，你就可"
+"既然你已经击碎了兽人的海上霸权，那么从海路走是最安全的。沿着海岸前进，你就可"
 "以在埃仁撒伐城外几里的地方登岸了。行动要快！"
 
 #. [message]: speaker=Delfador
@@ -1516,9 +1476,8 @@ msgstr "沿着通往埃仁撒伐的道路奔逃"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:26
-#, fuzzy
 msgid "Defeat Muff Malal"
-msgstr "玛夫·玛拉尔"
+msgstr "击败玛夫·玛拉尔"
 
 #. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:62
@@ -1706,7 +1665,7 @@ msgid ""
 "Let’s hope these rumors are not true! I have none of my men or gold with me! "
 "How could I defend myself?"
 msgstr ""
-"但愿望这些传言不是真的！我的部下都不在身边，金币也全都丢了！我该怎么自卫呢？"
+"但愿这些传言都不是真的！我的部下都不在身边，金币也全都丢了！我该怎么自卫呢？"
 
 #. [message]: speaker=Kalba
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:177
@@ -1957,7 +1916,6 @@ msgstr "伽姆蕾儿"
 msgid "As night began to fall, three dark figures crept out of the forest."
 msgstr "夜幕渐渐降临，三条黑影从森林中溜了出来。"
 
-# In this conversation, I translated Konrad's speech in common way. This is because of the "thieves" image. (Imagine you talking to someone admitting being a thief, or say ex-convict. Sorry, no discrimination, but really, it's so easy for us to become overly cautious as to even lose our usual "noble & honorable" self.)
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:260
 msgid "Halt! Who goes there, friend or foe?"
@@ -1982,7 +1940,7 @@ msgid ""
 "We would understand if you didn’t trust us, of course, but it is in our "
 "mutual interest to rid the city of the orcs!"
 msgstr ""
-"公子不相信我们，我们当然也能理解。不过把兽人从城市里赶出去对我们双方都有好"
+"公子不相信我们，我们当然也能理解。不过把兽人从城市里赶出去，对我们双方都有好"
 "处。"
 
 #. [message]: speaker=Konrad
@@ -2011,8 +1969,8 @@ msgid ""
 "orcs. Alternatively, we can lay in wait until you give us a signal then "
 "ambush the orcs’ rear."
 msgstr ""
-"我们靠着匿踪生存。我们可以帮助公子溜进城里，把兽人团团包围。或者，我们可以等"
-"待公子的信号，然后从兽人的背后偷袭。"
+"我们靠着匿踪生存。我们可以帮助公子溜进城里，把兽人团团包围。或者，我们也可以"
+"等待公子的信号，然后从兽人的背后偷袭。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:292
@@ -2042,13 +2000,13 @@ msgid ""
 "Very well. When you raise your red banner over any building in the city "
 "proper, we will see the sign and attack from the city’s northern gate."
 msgstr ""
-"很好。公子只需要把红旗挂在城内任意一栋建筑上作为信号，我们看到后，就从北门攻"
-"入。"
+"很好。公子只需要把红旗挂在城内任意一栋建筑上作为信号，我们看到后，就从城市的"
+"北门攻入。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:319
 msgid "Agreed. But, will you be able to see our flag if it’s dark?"
-msgstr "就这么说定了。不过黑灯瞎火的，你们能看到红旗吗？"
+msgstr "就这么说定了。不过黑灯瞎火的，你们能看到我们的旗帜吗？"
 
 #. [message]: speaker=Reglok
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:323
@@ -2163,23 +2121,20 @@ msgid ""
 "Delfador, we have captured this city, but surely Asheviere’s men will come "
 "and attack us! What should we do?"
 msgstr ""
-"黎伐多，我们夺下了这座城市，但艾斯威勒的人一定会反攻我们的！我们该怎么办？"
+"黎伐多，我们夺下了这座城市，但艾斯威勒的人一定会来反攻我们的！我们该怎么办？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:590
-#, fuzzy
 msgid "The Ka’lian has met and decided: we must capture the Sceptre of Fire."
 msgstr "卡·利安已经会晤过并做出了决定：我们必须得到圣火权杖。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:595
-#, fuzzy
 msgid "The Sceptre of Fire? What’s that?"
 msgstr "圣火权杖？那是什么？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:600
-#, fuzzy
 msgid ""
 "The Sceptre of Fire is the most ancient artifact of the realm of Wesnoth. It "
 "was forged by the dwarves of Knalga at the request of King Haldric II. It "
@@ -2202,14 +2157,13 @@ msgstr "但这和我有什么关系？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:610
-#, fuzzy
 msgid ""
 "When Garard II, your uncle, was deciding upon a successor, he issued an "
 "edict that whichever member of the royal family could retrieve the Sceptre "
 "of Fire would rule the land."
 msgstr ""
-"当年伽拉德二世在决定继承人时曾经下令，王族成员中，谁能找回圣火权杖，谁就可以"
-"统治这个国家！"
+"当年伽拉德二世，你的皇叔，在决定继承人时曾经下令，王族成员中谁能找回圣火权"
+"杖，谁就可以统治这个国家！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:615
@@ -2223,7 +2177,6 @@ msgstr "我们将帮助您找回它，殿下。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:625
-#, fuzzy
 msgid ""
 "Time is short. We think that Asheviere is also searching for the Sceptre, to "
 "help seal her place as ruler. But if you find the Sceptre first, the people "
@@ -2268,7 +2221,6 @@ msgstr "交叉路口之战"
 msgid "Defeat Kojun Herolm"
 msgstr "击败阔军·荷洛姆"
 
-# This is only a sounds-like translation. More recommendations welcome.
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:30
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:32
@@ -2308,7 +2260,8 @@ msgid ""
 "The queen’s agents were still scouring the coastal regions, for news of "
 "Elensefar’s rescue had not yet reached her."
 msgstr ""
-"女王的代理人仍然在洗劫海岸区域，因为埃仁撒伐光复的消息还没有传到她的耳朵里。"
+"女王的代理人们仍然在洗劫海岸区域，因为埃仁撒伐光复的消息还没有传到她的耳朵"
+"里。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:55
@@ -2317,8 +2270,8 @@ msgid ""
 "sparsely populated western countryside for a time. However, their luck did "
 "not hold."
 msgstr ""
-"科纳德的军队人马很少，因此在一段时间内并没有被这人口稀疏的西部乡村野地里满怀"
-"敌意的人发现。然而，他们的好运并没有持续多久。"
+"科纳德的军队人马很少，因此在一段时间内，并没有被这人口稀疏的西部乡村野地里那"
+"些满怀敌意的人发现。然而，他们的好运并没有持续多久。"
 
 #. [side]: type=Orcish Warlord, id=Kojun Herolm
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:172
@@ -2342,8 +2295,8 @@ msgid ""
 "strategy, and she has hired orcs to guard them. We shall have to fight to "
 "travel through."
 msgstr ""
-"小心！这山路十分不安全！这里是艾斯威勒的战略要地，她已经雇佣了兽人守卫这里。"
-"要翻过此山，战斗不可避免。"
+"小心！这山路十分不安全！这些道路是艾斯威勒战略之中的关键，她已经雇佣了兽人守"
+"卫这里。要翻过此山，战斗不可避免。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:230
@@ -2382,32 +2335,22 @@ msgid ""
 "NE — Dan’Tonk\n"
 "SE — Fort Tahn"
 msgstr ""
-"东北 - 丹·冬克\n"
-"东南 - 塔恩关"
+"东北 — 丹·冬克\n"
+"东南 — 塔恩要塞"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:515
 msgid "Dan’Tonk, we are so close to Weldyn."
 msgstr "丹·冬克，我们已经如此接近维尔帝了。"
 
-# This is the first occurance of the word "Sceptor of Fire".
-# previously, Sceptor has been translated as "huang bing".
-# Now, I have a few words in mind for Sceptor of Fire:
-# 1. tian huo huang bing (heavenly fire sceptor, sounds a little "common")
-# 2. huo huang bing (fire sceptor, but lack the peotic and "power" compared to the rest)
-# 3. sheng4 huo huang bing (holy fire ... sounds religious)
-# 4. sheng2 huo huang bing (god fire .... powerful intonation, non-religious)
-# 5. xuan huo huang bing (fire summoning ..... sound OK to me)
-# At the meanwhile, I choose 5.
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:519
-#, fuzzy
 msgid ""
 "We dare not confront Asheviere yet. We must retrieve the Sceptre of Fire and "
 "gather more allies in the north."
 msgstr ""
-"不过，我们暂时还不是艾斯威勒的对手。我们必须先找回圣火权杖，在北方找到更多的"
-"盟友。"
+"不过，我们暂时还不是艾斯威勒的对手。我们必须先找回圣火权杖，还得在北方找到更"
+"多的盟友。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:539
@@ -2494,15 +2437,14 @@ msgstr "母后派我来阻止你，冒名顶替者！"
 
 #. [message]: role=Advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:172
-#, fuzzy
 msgid ""
 "That’s the princess, Li’sar. The daughter of the Queen, and her successor!"
-msgstr "这是韦诺的公主，莉莎。女王的女儿，她的继承人！"
+msgstr "那是王国的公主，莉莎。女王的女儿，她的继承人！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:176
 msgid "I’m no impostor. It seems that your mother has lied to you."
-msgstr "我不是什么冒名顶替者。似乎你的母亲对你撒了谎。"
+msgstr "我可不是什么冒名顶替者。似乎你的母亲对你撒了谎。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:181
@@ -2534,7 +2476,8 @@ msgstr "我投降！别伤害我，冒名顶替的家伙。"
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:223
 msgid ""
 "I said before I’m not an impostor, but if you yield, I will spare your life."
-msgstr "我说过了，我不是什么冒名顶替的家伙。但如果你投降的话，我会饶你一命。"
+msgstr ""
+"我说过了，我可不是什么冒名顶替的家伙。但如果你投降的话，我可以饶你一命。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:227
@@ -2555,7 +2498,6 @@ msgstr "老国王？我听说过那件事，但我知道那不是真的。我的
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:239
-#, fuzzy
 msgid ""
 "Your mother has lied to you, child. Now I suggest you reconsider, and either "
 "join us, or flee as an exile. There will be a great battle soon, and if you "
@@ -2596,7 +2538,7 @@ msgid ""
 "backyard so easily... Come forth and attack, my loyal duelist!"
 msgstr ""
 "我看到你的军队压过来了，冒名顶替者！我不会就这样在自己的后院里被轻易击败的……"
-"上前！进攻！我忠诚的决斗者！"
+"上前！进攻！我忠诚的决斗士！"
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:324
@@ -2627,7 +2569,7 @@ msgstr "陷阱被发现了，但我仍然可以在他们的要塞煽起暴动！
 #. [scenario]: id=09_The_Valley_of_Death
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:4
 msgid "The Valley of Death — The Princess’s Revenge"
-msgstr "亡魂谷 - 公主的复仇"
+msgstr "亡魂谷 — 公主的复仇"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:18
@@ -2637,7 +2579,7 @@ msgstr "撑过两天"
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:24
 msgid "Eradicate the liches"
-msgstr ""
+msgstr "根除所有巫妖"
 
 #. [side]: type=Lich, id=Galga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:78
@@ -2822,7 +2764,6 @@ msgstr ""
 msgid "Indeed! Let us go from here!"
 msgstr "很好！我们走吧！"
 
-# I Translate Gryphon based on the "Component" of this creature: mainly Lion and Eagle. Hence translated "Lion-Eagle-Beast"
 #. [scenario]: id=10_Gryphon_Mountain
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:4
 msgid "Gryphon Mountain"
@@ -2843,7 +2784,6 @@ msgstr "罗伯林"
 msgid "Mother Gryphon"
 msgstr "母狮鹫"
 
-# The next few names are translated based on "sounds-like" only. Since these are Birds, I used terms for fruits in their names.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:113
 msgid "Graak"
@@ -2961,13 +2901,11 @@ msgstr ""
 msgid "Whoa!!"
 msgstr "哇！"
 
-# The next few names are translated based on "sounds-like" only. Since these are Birds, I used terms for fruits in their names.
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:323
 msgid "Graik"
 msgstr "格莱克"
 
-# The next few names are translated based on "sounds-like" only. Since these are Birds, I used terms for fruits in their names.
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:324
 msgid "Griak"
@@ -2980,8 +2918,8 @@ msgid ""
 "glared in Konrad’s direction, their eagle eyes fixed on him at an incredible "
 "distance."
 msgstr ""
-"果然，这些庄严的野兽现在正在山峰上绕着圈。其中有几只瞪着科纳德所在的方向，它"
-"们的鹰眼在令人难以置信的距离上死死地盯着他。"
+"果然，这些庄严的野兽正在山峰上绕着圈。其中有几只瞪着科纳德所在的方向，它们的"
+"鹰眼从令人难以置信的距离之外死死地盯着他。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:368
@@ -3004,8 +2942,8 @@ msgid ""
 "It is a shame we could not get those gryphon eggs — they would surely have "
 "given us an advantage sometime. Still, we must continue."
 msgstr ""
-"很遗憾我们没能拿到那些狮鹫蛋——在某个时候它们确实可以给我们带来一些优势的。不"
-"过，我们还是得继续前进。"
+"很遗憾我们没能拿到那些狮鹫蛋——要不以后某个时候，它们肯定能给我们带来点优势"
+"的。不过，我们还是得继续前进。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:390
@@ -3053,16 +2991,15 @@ msgstr "怪兽"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:194
-#, fuzzy
 msgid ""
 "This is the Ford of Abez. When we ford this river, we will be leaving "
 "Wesnoth, and entering the lands of the North. The dwarves once ruled these "
 "lands, but they are now filled only with chaos. This is where your father "
 "and uncle were betrayed, almost seventeen years ago now, Konrad."
 msgstr ""
-"这儿就是雅碧滩。一但涉水过河，我们就会离开韦诺，进入北方大陆。矮人曾经统治着"
-"那里，但如今却只剩下一片混乱。这儿就是你的父亲和叔叔遭到背叛的地方，那已经差"
-"不多是十九年之前的事了，科纳德。"
+"这儿就是雅碧滩。一但涉水过河，我们就会离开韦诺，而进入北方大陆。矮人曾经统治"
+"着那里，但如今却只剩下一片混乱。这儿就是你的父亲和叔叔遭到背叛的地方，那已经"
+"差不多是十九年之前的事了，科纳德。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:198
@@ -3092,7 +3029,6 @@ msgstr "不，我们眼看就要胜利了。我们打得他们节节败退……
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:214
-#, fuzzy
 msgid "And then the king’s son, in the heat of battle, turned upon the king!"
 msgstr "但是先王的儿子，在战斗最激烈的时候，倒戈杀向了先王！"
 
@@ -3173,13 +3109,13 @@ msgid ""
 "Look! Some of the southerners, men of Wesnoth, are trying to cross into our "
 "lands! We will slaughter them by the river’s edge!"
 msgstr ""
-"看！有些南方人，韦诺的人类，他们想渡河进入我们的地盘！我们要在河边把他们屠杀"
+"看！这些南方人，韦诺的人类，他们想渡河进入我们的地盘！我们要在河边把他们屠杀"
 "干净！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:259
 msgid "Isn’t there somewhere else we can cross? Maybe upstream?"
-msgstr "没有别的地方可以过河了么？也许在上游有？"
+msgstr "没有别的地方可以过河了么？要不试试上游？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:263
@@ -3201,7 +3137,7 @@ msgid ""
 "There they are! So it is true, they foiled the undead. Now they are trying "
 "to leave Wesnoth. We can’t let them cross the river. After them, men!"
 msgstr ""
-"他们来了！看来是真的了，他们击退了亡灵。现在他们又想离开韦诺。我们不能让他们"
+"他们来了！看来他们击退亡灵的事是真的了。现在他们试图离开韦诺。我们不能让他们"
 "渡河！紧追他们，士兵！"
 
 #. [message]: speaker=Konrad
@@ -3229,7 +3165,6 @@ msgstr "站住！你们不得通过！快！增援部队！保护公主殿下！
 msgid "You drive me from the field, but you have not vanquished me, impostor!"
 msgstr "你把我驱赶出了战场，但你没有征服我，冒名顶替者！"
 
-# In English, Sea Serpent conveys the meaning of a mysterious, ferociously huge snake. I however, translate the word "Sea" to "Deep Ocean" because the words in Chinese conveys the feeling of mystery. Hence "Giant Serpent of Deep Ocean" is my translation. (Again, I use four characters to make it sounds "peotic". This again can be a "patented" word for Wesnoth.) Comments welcome.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:372
 msgid "Water Serpent"
@@ -3263,7 +3198,6 @@ msgstr "深渊怪兽正在接近我们！这非常危险！快点！我们必须
 msgid "We made it across the river safely! Where to now?"
 msgstr "终于安全过河了！现在去哪里？"
 
-# Knalga is transliterated based on sound-like translation only.
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:423
 msgid ""
@@ -3284,7 +3218,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:439
-#, fuzzy
 msgid "Do you think she’s really going to chase us, Delfador?"
 msgstr "您觉得她真的会追击我们么，黎伐多？"
 
@@ -3319,8 +3252,8 @@ msgid ""
 "Swirling, snow-laden winds tore at Konrad’s army, signaling the final exit "
 "of autumn and the onset of what would be a harsh winter."
 msgstr ""
-"夹带着雪花的大风旋转着撕扯科纳德的军队，标志着秋天的最终消逝，与一个严酷的冬"
-"天的到来。"
+"夹带着雪花的寒风旋转着撕扯科纳德的军队。这标志着秋天的最终消逝与严酷的冬天的"
+"到来。"
 
 #. [side]: type=Orcish Warrior, id=Halgar Du'nar
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:86
@@ -3330,7 +3263,7 @@ msgstr "哈尔加·杜纳"
 #. [side]: type=Orcish Warrior, id=Gorlak
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:112
 msgid "Gorlak"
-msgstr ""
+msgstr "格拉克"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:157
@@ -3340,12 +3273,10 @@ msgstr "这冬天太刺骨地冷了！也需要我们应该在这里停下，休
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:161
-#, fuzzy
 msgid ""
 "Stop and rest? My lord, we must go hard after the Sceptre of Fire, lest it "
 "fall into the hands of our enemies!"
-msgstr ""
-"停下休息？殿下，我们现在必须尽力找回圣火权杖，以免它落入我们的敌人手中！"
+msgstr "停下休息？殿下，我们现在必须尽力找回圣火权杖，以免它落入敌手！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:165
@@ -3370,18 +3301,16 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:173
-#, fuzzy
 msgid ""
 "We are pursued by the forces of your arch-enemy, chasing the Sceptre of "
 "Fire, the fate of the realm in our hands, and you humans want to stop and "
 "rest? Onward, I say!"
 msgstr ""
-"我们后有你们的大敌追赶，前有圣火权杖要寻，一个国家的命运在我们手中，而你们这"
-"些人类居然说要停下来休息？按我说，继续前进！"
+"我们后有你们的死对头追赶，前有圣火权杖要寻，一个国家的命运在我们手中，而你们"
+"这些人类居然说要停下来休息？按我说，继续前进！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:177
-#, fuzzy
 msgid ""
 "They are right, Kalenz. I had wanted to acquire the Sceptre within a moon, "
 "but it is not to be. Our soldiers will begin to desert if they do not rest "
@@ -3389,8 +3318,8 @@ msgid ""
 "rest. Look to the north! Those foul orcs will not allow us any peace!"
 msgstr ""
 "他们是对的，凯雷茨。我也曾经很想在一个月内拿到权杖，但这不可能。如果再不休"
-"整，士兵们会弃我们而去的！不过在这蛮荒的北大陆，就连休息都要靠我们用战斗来争"
-"取。看北边！邪恶的兽人军队可不会允许我们悠闲自得！"
+"整，士兵们会弃我们而去的！不过在这蛮荒的北大陆，就连休息都要靠战斗来争取。看"
+"北边！邪恶的兽人军队可不会允许我们悠闲自得！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:181
@@ -3454,8 +3383,8 @@ msgid ""
 "compelling. And so after many days of rest, the party set out once again for "
 "the dwarven kingdom..."
 msgstr ""
-"科纳德最终决定他不能等到狮鹫们长成的时候——黎伐多对于必须找回权杖的坚持实在是"
-"太有说服力了。于是，在许多天的休整之后，一行人又一次踏上了前往矮人王国的旅"
+"科纳德最终决定他不能等到狮鹫们长成的时候——黎伐多坚持说必须得找回权杖，这实在"
+"是太有说服力了。于是，在许多天的休整之后，一行人又一次踏上了前往矮人王国的旅"
 "程……"
 
 #. [message]: speaker=narrator
@@ -3475,7 +3404,7 @@ msgid ""
 "having yet fully arrived. And so after many days of rest, the party set out "
 "once again for the dwarven kingdom..."
 msgstr ""
-"最终，黎伐多对于必须找回权杖的坚持变得实在是太有说服力了，哪怕这意味着在春天"
+"黎伐多坚持说必须找回权杖，最终，这变得实在是太有说服力了，哪怕这意味着在春天"
 "完全到来之前就拆除营地。于是，在许多天的休整之后，一行人又一次踏上了前往矮人"
 "王国的旅程……"
 
@@ -3514,12 +3443,6 @@ msgstr "苏内达因之柱"
 msgid "The Great Doors"
 msgstr "伟大之门"
 
-# There is a olden Chinese term for Royal Guards (Which is what I translated here).
-# This term however, is not a one-to-one mapping in words.
-# Other English-Like translation includes:
-# 1. huang shi wei (literally: Royal Guards)
-# 2. huang shi hu wei (literally: Royal Guards)
-# But "jing yi wei" are part of the Chinese culture. Upon hearing these words, players know who they are up against.
 #. [scenario]: id=13_The_Dwarven_Doors
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:152
 msgid "Royal Guard"
@@ -3549,7 +3472,6 @@ msgstr "成了兽人的奴隶？我们必须解放他们！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:207
-#, fuzzy
 msgid ""
 "That would not be a wise choice, for our mission is to retrieve the Sceptre "
 "of Fire. If we tarry in this place, hordes of orcs will surround us."
@@ -3564,8 +3486,8 @@ msgid ""
 "orcs from these lands. Look — orcs are already gathering. More are surely on "
 "their way."
 msgstr ""
-"科纳德，请听从黎伐多的建议。我们将会回到这里推翻兽人的统治。看，兽人们已经在"
-"聚集了。更多的兽人无疑正在路上。"
+"科纳德，请听从黎伐多的建议，我们将会回到这里推翻兽人的统治。看，兽人们已经在"
+"聚集了，更多的兽人无疑正在赶来。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:215
@@ -3645,7 +3567,7 @@ msgstr "苏莫夫大叔"
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:332
 msgid "Who... who’s here?"
-msgstr "谁……谁在这里？"
+msgstr "谁……谁在这儿？"
 
 #. [message]: speaker=Uncle Somf
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:347
@@ -3805,13 +3727,6 @@ msgstr "呜啊啊啊啊啊啊啊！！"
 msgid "A monster was hiding in that lake!"
 msgstr "湖里藏着怪物！"
 
-# tentacle = chu xu   or   chu shou?
-# Is there a better translation?
-# I like chu jiao, but do not know whether is it proper or not. Need more recommendation(s).
-# (At the meanwhile, I use "chu xu" as recommended by http://www.mandarintools.com)
-# Reason for query:
-# The word "xu" suggests hairy features (beard = hu xu, tentacles of ant is acceptable, but not a monster!)
-# "chu shou" sounds OK, but was from the site that wrongly translated "elves" to "dwarves". So if one can translate to "shou" (hand), surely one can use "jiao" (leg) also, right? I'm not sure. So someone, please advice.
 #. [message]: role=whiner
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:648
 msgid ""
@@ -3822,7 +3737,7 @@ msgstr "看来传说是真的！在矮人坑道旁边的湖里总是有长触手
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:658
 msgid "But Konrad’s party was not alone in entering the caves..."
-msgstr "但是进入洞穴的并不是只有科纳德一行......"
+msgstr "但是进入洞穴的并不是只有科纳德一行……"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:671
@@ -3941,40 +3856,36 @@ msgstr "恩，我们……我们……"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:354
-#, fuzzy
 msgid ""
 "We have come so that an heir may claim his inheritance, that a king may "
 "claim his throne. We seek the Sceptre of Fire."
 msgstr ""
-"我们来到这里，以便让一位后嗣可以证明他的传承，让一位君王可以夺回他的宝座。我"
-"们此行是为了寻找圣火权杖。"
+"我们来到此处，让一位后嗣可以证明他的传承，让一位君王可以夺回他的宝座。我们此"
+"行是为了寻找圣火权杖。"
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:359
-#, fuzzy
 msgid ""
 "The Sceptre of Fire? Are you out of your minds? Surely you speak in jest!"
 msgstr "圣火权杖？你们疯了吗？开什么玩笑！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:364
-#, fuzzy
 msgid ""
 "We jest not, friend. We seek the Sceptre of Fire. We seek the help of the "
 "dwarves in finding it. But know that we will find it, whether you help us or "
 "not."
 msgstr ""
 "我的朋友啊，我一点都没有说笑。我们确实在寻找圣火权杖，还想请你们帮忙。但我们"
-"知道我们能够找到它，不论你们是帮忙，还是不帮。"
+"知道它必能寻得，不论你们是帮忙，还是不帮。"
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:369
-#, fuzzy
 msgid ""
 "You speak foolishness. No one even knows if the Sceptre of Fire still "
 "exists. And who is this heir, this king that you speak of?"
 msgstr ""
-"真是蠢话。甚至没有人知道圣火权杖是不是还存在。还有，谁是那位后嗣，你所说的君"
+"真是蠢话。甚至没有人知道圣火权杖是不是还存在。此外，谁是那位后嗣，你所说的君"
 "王？"
 
 #. [message]: speaker=Konrad
@@ -4027,13 +3938,11 @@ msgstr "大家都以为我已经死了。敌人更希望我已经死了。但我
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:434
-#, fuzzy
 msgid "And you really think that you can find the Sceptre of Fire?"
 msgstr "您真的认为您可以找到圣火权杖吗？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:439
-#, fuzzy
 msgid ""
 "Yes, I do. If you help us, friend, all the treasures of Knalga that we find "
 "are yours. We want only the Sceptre. It will be dangerous. Make no mistake "
@@ -4041,25 +3950,23 @@ msgid ""
 "better than hiding from the orcs like worms."
 msgstr ""
 "没错，我有十足的把握。如果你帮助我们，朋友，那么我们找到的一切纳尔迦的宝藏都"
-"归你。我们只要权杖。这将会很危险。请不要搞错了：矮人们会被杀的，或许很多矮人"
-"会被杀的。但这总比像虫子一样在兽人眼皮底下东躲西藏要好得多。"
+"归你。我们只要权杖。这将会很危险，请不要搞错了，矮人会被杀的，或许很多矮人会"
+"被杀的。但这总比像虫子一样在兽人眼皮底下东躲西藏要好得多。"
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:444
-#, fuzzy
 msgid ""
 "You are right, friend. I will put my best men at your disposal. We know not "
 "where the Sceptre is though. Legend says it is hidden in the eastern tunnels."
 msgstr ""
-"朋友，看来您是对的！我会派出我最好的属下供您调遣。但是我们并不知道权杖在哪"
-"里。传说它藏在东部坑道里面。"
+"朋友，看来您是对的，我会派出我最优秀的部下供您调遣。但是我们并不知道权杖在哪"
+"里，传说它藏在东部的坑道里。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:449
 msgid "Then to the eastern tunnels we shall go!"
 msgstr "那就去东部坑道吧，我们应该！（译者：Master Yoda！好久不见！）"
 
-# I Translate Gryphon based on the "Component" of this creature: mainly Lion and Eagle. Hence translated "Lion-Eagle-Beast"
 #. [unit]: type=Elvish Shaman, id=Gryphon Tender
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:514
 msgid "Gryphon Tender"
@@ -4103,8 +4010,8 @@ msgid ""
 "troops as riders! A frail human — or worse, an elf — would never be able to "
 "handle their violent instincts!"
 msgstr ""
-"好吧，如果你们一定要坚持这个疯狂的计划，那就让我提供我自己的部下作为骑手吧！"
-"一个脆弱的人类——或者更糟糕，一个精灵——永远都不可能驾驭它们暴烈的本能！"
+"好吧，如果你们一定要坚持这个疯狂的计划，我会派我的部下作为骑手协助你们！一个"
+"脆弱的人类——或者更糟糕，一个精灵——永远都不可能驾驭它们暴烈的本能！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:585
@@ -4194,7 +4101,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:146
 msgid "The sign says ‘Guest quarters’."
-msgstr "标签写的是“客房部”。"
+msgstr "标签写的是“宾客居处”。"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:159
@@ -4204,7 +4111,7 @@ msgstr "巴尔林"
 #. [message]: speaker=Burlin
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:164
 msgid "My uncle’s family drowned after the orcs flooded that cavern..."
-msgstr "我舅舅一家在兽人们往洞穴里灌水之后淹死了……"
+msgstr "在兽人们往洞穴里灌水之后，我舅舅一家淹死了……"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:179
@@ -4219,7 +4126,7 @@ msgstr "乌尔夫戴恩"
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:218
 msgid "What’s this, more trolls? Aye, come to papa, little whelps."
-msgstr "这是什么？更多的巨魔？哦，小东西，来爸爸这里！"
+msgstr "这是什么？还有巨魔？哦，小东西，来爸爸这里！"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:222
@@ -4264,7 +4171,7 @@ msgid ""
 "grotto."
 msgstr ""
 "俺那时在守卫俺的前哨站，正好在和那些小不点儿打架的时候啊，俺们不小心跌进了水"
-"里，结果就被吸进了这个洞穴了。"
+"里，结果就被吸进这个洞里啦。"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:247
@@ -4278,8 +4185,8 @@ msgid ""
 "little ravenous, if ye catch my drift. Canna’ swim past that current, and "
 "no’ for lack o’ tryin’."
 msgstr ""
-"啊哈，最少也有好几天了吧。巨魔的肉已经发臭了，俺现在饿急了，你明白没？俺游不"
-"过去，不是因为没试过啊。"
+"啊哈，最少也有好几天了吧。巨魔的肉都发臭了，俺现在饿急了，你明白没？俺游不过"
+"去，试过了不行啊。"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:255
@@ -4379,16 +4286,15 @@ msgstr "黎尔诺？一位将军？我记得这个名字……"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:494
-#, fuzzy
 msgid ""
 "Remember me, do you? Aye. I was the king’s finest general, sent down to "
 "these pits to retrieve the Sceptre. But the orcs trapped me and my men in "
 "this cavern, to starve to death. The dwarves were no help, leaving me to "
 "die. Now I will get revenge on you all!"
 msgstr ""
-"你还记得我？对。我曾经是吾王麾下最勇猛的将军。吾王派我来这些深坑里寻回圣火权"
-"杖。但是兽人把我和我的部下围困在这里，我们粮食用尽，全军覆灭。矮人们竟然见死"
-"不救！现在我定要向你们复仇！"
+"你还记得我么？对。我曾经是吾王麾下最勇猛的将军。吾王派我来这些深坑里寻回圣火"
+"权杖。但是兽人把我和我的部下围困在这里，我们粮食用尽，全军覆灭。矮人们竟然见"
+"死不救！现在我定要向你们复仇！"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:513
@@ -4404,7 +4310,6 @@ msgstr "愿您安息，黎尔诺，可怜的，失落的，将军。"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:521
-#, fuzzy
 msgid ""
 "I am destroyed, but my mission must be completed. Though you are foes, you "
 "are at least worthy ones, so I will tell you that the Sceptre is east from "
@@ -4414,7 +4319,7 @@ msgid ""
 msgstr ""
 "我就要完了，但是吾王交给我的任务必须完成。虽然你们是敌人，但你们至少是可敬的"
 "敌人。所以我告诉你们，权杖在东面，在你们前来的方向，深藏在洞穴之中。我犯了错"
-"误，迷途之时并没有问路。愿你们在自己的探寻中比我好运！"
+"误，迷途之时并没有问路。愿你们此次搜寻比我好运！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:535
@@ -4432,25 +4337,23 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:575
-#, fuzzy
 msgid ""
 "These caves are vast. If we are to find the Sceptre of Fire we must hurry. "
 "We are not alone, and now that our foes have smelled our blood it will be "
 "worse."
 msgstr ""
 "这些洞穴范围太广阔了。我们若想找到权杖，就要尽快！这儿可不是只有我们，现在敌"
-"人们问到了我们身上鲜血的味道，就更糟糕了。"
+"人闻到了我们身上鲜血的味道，就更糟糕了。"
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:579
-#, fuzzy
 msgid ""
 "The Sceptre? Ah, the Sceptre ye seek. You surface dwellers are ambitious. "
 "Beyond my citadel the spawn of the darkness hold complete sway. You’ll no’ "
 "survive without assistance."
 msgstr ""
 "权杖？啊，你们在找的权杖。你们这些地表居民野心真大。过了俺的碉堡之后，黑暗的"
-"产物统治了一切。没有人帮忙的话你们都活不了。"
+"造物统治了一切。没人帮忙的话，你们都活不了。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:583
@@ -4459,18 +4362,16 @@ msgstr "我们怎样才能成功呢？"
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:587
-#, fuzzy
 msgid ""
 "Northeast o’ my keep, young human, the tunnels converge towards the deepest "
 "reaches of the underground kingdom. The Sceptre can only be there. Please "
 "accept the service of my guardsmen. These elite warriors will protect you."
 msgstr ""
-"俺要塞的东北方，年轻人。在那里，坑道汇聚在地下王国里最深的边界地儿。权杖只可"
+"俺要塞的东北方，年轻人。在那里，坑道在地下王国最深的地儿里汇到一起。权杖只可"
 "能在那里。请让俺的卫兵们来为你们服务吧。这些精英武士会保护你们的。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:597
-#, fuzzy
 msgid ""
 "Your boon is most welcome, sir dwarf. Keeping the Sceptre out of the hands "
 "of evil beasts is a common goal for us, and we will prevail with your help."
@@ -4497,7 +4398,6 @@ msgstr ""
 msgid "Hasty Alliance"
 msgstr "草率的联盟"
 
-# This is the Chinese form of the name "Lisa". More recommendations welcome.
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:30
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:74
@@ -4597,7 +4497,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:236
-#, fuzzy
 msgid ""
 "Don’t try to trick me! I know why you have come here! But I will put an end "
 "to you and your treason here. Then I will get the Sceptre, and return to the "
@@ -4628,7 +4527,6 @@ msgstr ""
 "我明白，看来没什么选择了，我们只能互相协助了。让我们一起战斗直到返回地表为"
 "止。同意么？"
 
-# Probably memorised by Lisar's beauty, Konrad delivered a "touching" promise to "live or die together" with her. How romantic! First sign of love indeed!
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:359
 msgid ""
@@ -4636,7 +4534,6 @@ msgid ""
 "perish together, Princess."
 msgstr "很好，我发誓会让你再一次回到地表的，或者我们就死在一起，公主殿下。"
 
-# Angry words indeed! But full of "cover-ups" to have more time to be with Konrad. How un-romantically romantic! (Wonder why women behaves this way. If in love, just say so! ;-）
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:363
 msgid "But once we escape from this hole, I have a score to settle with you!"
@@ -4648,8 +4545,8 @@ msgid ""
 "Well, we have helped each other survive so far, Princess. Now let’s continue "
 "together. What do you say?"
 msgstr ""
-"恩，到现在为止，我们算是互相协助存活下来了，公主殿下。现在我想让我们继续合作"
-"吧。你觉得如何？"
+"恩，到现在为止，我们算是互相协助存活下来了，公主殿下。现在让我们继续合作吧。"
+"你觉得如何？"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:376
@@ -4662,7 +4559,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:381
-#, fuzzy
 msgid "Thank you, Princess. Come, men. Let us find the Sceptre!"
 msgstr "谢谢，公主殿下。前进，战士们。让我们找回权杖吧！"
 
@@ -4676,7 +4572,6 @@ msgstr "我不相信……居然这样就……结束了……"
 #. [scenario]: id=17_Scepter_of_Fire
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:4
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:33
-#, fuzzy
 msgid "The Sceptre of Fire"
 msgstr "圣火权杖"
 
@@ -4704,13 +4599,11 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:62
-#, fuzzy
 msgid "Capture the Sceptre of Fire with Konrad or Li’sar"
 msgstr "让科纳德或者莉莎夺回圣火权杖"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:160
-#, fuzzy
 msgid "The Sceptre must be getting close now! Where shall we go?"
 msgstr "权杖一定就在附近了！我们应该去哪边找？"
 
@@ -4748,7 +4641,6 @@ msgstr "发现？谁？黎伐多，他是什么意思？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:186
-#, fuzzy
 msgid ""
 "The Sceptre... the earth... the molten lava... the fire... the air around "
 "us... everything. It calls out to the heir — I can barely hold it back in my "
@@ -4786,19 +4678,17 @@ msgstr "必须的抉择"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:16
-#, fuzzy
 msgid ""
 "The Sceptre, initially dulled from decades of dust and debris, began to glow "
 "from the ruby’s inner fire. Dwarvish runes on the golden handle lit up in "
 "pulsating blue. The heat and light were comforting in the pitch-black."
 msgstr ""
-"圣火权杖最初由于数十年的积尘与碎石而显得有些暗淡，而现在却因红宝石中的圣火而"
+"由于数十年的积尘与碎石，圣火权杖最初显得有些暗淡，而现在却因红宝石中的圣火而"
 "开始发散出光芒。黄金杖柄上的矮人符文显现出脉动的蓝色。这热度与光亮在这漆黑一"
 "片的世界里很是鼓舞人心。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:21
-#, fuzzy
 msgid ""
 "An early encounter with the Sceptre in the hands of its new owners left "
 "several trolls as smoking husks. Sensing the awakening of a powerful magic, "
@@ -4824,24 +4714,11 @@ msgstr ""
 msgid "Defeat either of the enemy leaders"
 msgstr "击败任意一位敌军领袖"
 
-# This is only a sounds-like translation. More recommendations welcome.
 #. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:110
 msgid "Unan-Ka’tall"
 msgstr "乌南-卡塔尔"
 
-# Chinese can be spoken in two manner: Poetic and common.
-# Usually, those with higher social status speaks peotically, much like the Royals in the West speaks in verse.
-# These are my Character Analysis of Li'sar. (Please feel free to correct me if I am wrong. These are the impressions I get after playing the game many many times.)
-# 1) She was brought up in the Royal family, probably treated with fine education by great tutors of her time.
-# 2) Her mother's diabolical influence though has not rubbed into her, has however, influence her character. She was caught between the "good" and the "evil".
-# 3) Though not spoken, she has actually fallen in love with Konrad in the tunnel, probably during the "Hasty Alliance" episode.
-# 4) She "matures" after seeking refuge with the Elves, and joining the Elvian Council.
-# 5) After Konrad expresses his love for her, she blossoms into a true lady, well respected and loved.
-# With such, I decided to translate speeches of Li'sar in this manner:
-# 1) Her speech should reflect her royal upbringing, yet tempered with arrogance, especially with subordinates.
-# 2) Her arrogance will be coupled with a little flirtation after "Hasty Alliance" when directed to Konrad.
-# 3) When speaking to other characters, she will be rude before Elvian Council, but after, sweet.
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:176
 msgid ""
@@ -4849,14 +4726,6 @@ msgid ""
 "is mine!"
 msgstr "谢谢你帮我回到了地面上，不过现在我必须拿走属于我的东西！"
 
-# This is my Character Analysis of Konrad. (Please feel free to correct me if I am wrong. These are the impressions I get after playing the game many many times.)
-# 1) Brought up in the Elvian society from infancy, Konrad was for certainty, a man of unparallel wisdom.
-# 2) Coupled with council and guidance from Delfador (a wise man even praised by the Elve Lords) who was a veteran in warfare, Konrad no doubt has acquired much leadership skills from him.
-# 3) Having missed out femanine association from the Human race, Li'sar has proven to be a rose to his eyes. Surely, his speeches will reflect such when speaking with her. (No wonder the Parandra tease him into staying with the elves instead of joining Li'sar in her quest).
-# With such, I will translate Konrad's speeches in this manner.
-# 1) Since Delfador is his mentor, with speech in his presence will be respectful and peotic
-# 2) His speech against enemies will be short, commanding and direct.
-# 3) His speech with Li'sar will be common and child-like. [That's me when I first fell in love ;-)]
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:180
 msgid "You still want to fight me, do you, Princess?"
@@ -4888,13 +4757,12 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:196
-#, fuzzy
 msgid ""
 "Perhaps it is in both our best interests for us to remain allies for a "
 "little longer... but I do want that Sceptre, and someday I will have it!"
 msgstr ""
-"也许对我们双方来说最好还是再当一会儿盟友……但是我的确想要权杖，而且某一天我一"
-"定会得到它！"
+"也许对我们双方来说，最好还是再当一会儿盟友……但是我的确想要权杖，而且某一天我"
+"一定会得到它！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:200
@@ -4908,7 +4776,6 @@ msgstr "我们逃出来了。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:212
-#, fuzzy
 msgid ""
 "Yes, we have. Now I suppose you want to use the Sceptre against me, Princess?"
 msgstr "是的，我们逃出来了。现在我猜你想用权杖来对付我，是吧公主殿下？"
@@ -4923,17 +4790,8 @@ msgstr ""
 "不，我在想……我并不是真的想要杀死你。我已经拥有了我要拿走的东西，所以如果你发"
 "誓再也不到大河的南岸来，那我就会饶你一命。"
 
-# This is my Character Analysis of Kalenz. (Please feel free to correct me if I am wrong.)
-# 1) Though of Elvian origin, Kalenz have been a warrior all his/her life. Rising to Elvian Lord has been a long and tedious journey.
-# 2) Though supporting human efforts now, Elves have very little dealings with humans. Hence, they can only speak like common human.
-# 3) Lacking in leadership quality puts Kalenz in a position of subordinate, though acquiring "lord" status.
-# (Lord as in ability to fight, but not ability to strategise.)
-# With such, I will translate Kanelz speeches in the following manner:
-# 1) Common way of speaking by most Chinese (Hence, it is easier to read and understand Kalenz than Konrad and Li'sar)
-# 2) I will not use crude words as this will defeat the overall image of Wesnoth.
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:220
-#, fuzzy
 msgid ""
 "With all due respect, Princess, it is once again we who will spare you, "
 "Sceptre or no Sceptre."
@@ -4975,7 +4833,7 @@ msgid ""
 "lies to the east."
 msgstr ""
 "我想我知道这是什么地方。这条河，人类称之为“绵长之河”，而在我们族人的古语中称"
-"为“阿坎-索丽亚”。我族的家园就在东方。"
+"为“阿坎-索丽亚”。我们一族的家园就在东方。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:244
@@ -4994,7 +4852,7 @@ msgid ""
 "over the Cliffs and survived. No, Prince, we must choose another way."
 msgstr ""
 "我们应该在此寻找庇护所，王子殿下，而不是沿着河向东去。此河之名意为“万骨河”，"
-"巨大而邪恶的怪兽潜伏在岸边，河水也不能饮用。它一直通往Thoria之崖，数百年来，"
+"巨大而邪恶的怪兽潜伏在岸边，河水也不能饮用。它一直通往索利亚之崖，数百年来，"
 "从来没有人或者精灵能够活着翻越山崖。不，王子殿下，我们必须选择另一条路。"
 
 #. [message]: speaker=Konrad
@@ -5248,9 +5106,9 @@ msgid ""
 "visiting their home as an envoy from us North Elves and was called upon to "
 "vanquish some beast or other."
 msgstr ""
-"我相信这把剑属于伊拉·艾利温，一位强大的精灵元帅。你们在南方的精灵朋友们为这把"
+"我相信这把剑属于伊拉·艾利温，强大的森林元帅之一。你们在南方的精灵朋友们为这把"
 "剑注入了魔力，并送给他作为礼物。当时他正作为我们北方精灵的使节，前往南方消灭"
-"某只野兽或者什么其它的东西。"
+"某只野兽或者其它的什么东西。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:130
@@ -5283,7 +5141,6 @@ msgstr ""
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:142
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:349
-#, fuzzy
 msgid "He was just someone who couldn’t handle the power given to him."
 msgstr "他不过只是一个无法控制自己得到的力量的家伙而已。"
 
@@ -5368,7 +5225,7 @@ msgid ""
 "end by my blade!"
 msgstr ""
 "够了！我再也听不下去了！公主殿下，你也许只是想终结你的母亲的统治，但我会终结"
-"她的性命，就像她终结了我父亲和我兄弟的性命一样！Asheviere的背叛将会终结，被我"
+"她的性命，就像她终结了我父亲和我兄弟的性命一样！艾斯威勒的背叛将会终结，被我"
 "的剑所终结！"
 
 #. [scenario]: id=19b_Swamp_Of_Dread
@@ -5384,7 +5241,7 @@ msgstr "击败巫妖王艾姆卡苏尔"
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:26
 msgid "Defeat all Death Knights first"
-msgstr ""
+msgstr "首先击败所有死亡骑士"
 
 #. [side]: type=Death Knight, id=Clarustus
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:92
@@ -5476,18 +5333,16 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:275
-#, fuzzy
 msgid ""
 "As the last of its generals falls, an ear-splitting screech escapes from the "
 "lich. It is clear that controlling such powerful spirits has drained it "
 "significantly, and it is seething in anger towards you."
 msgstr ""
-"最后一个死亡骑士倒下之时，巫妖王的体内传出刺耳的悲鸣。很明显控制这些强大的亡"
-"魂吸收了它大量的能量，而现在，它对您的愤怒已然沸腾起来。"
+"最后一个死亡骑士倒下之时，巫妖的体内传出刺耳的悲鸣。很明显控制这些强大的亡魂"
+"吸收了它大量的能量，而现在，它对您的愤怒已然沸腾起来。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:315
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. The last of his minions silently falls like a puppet with its "
@@ -5500,7 +5355,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:322
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. His minions fall like puppets with their strings cut. A cloud of "
@@ -5512,7 +5366,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:331
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. A giant cloud of dust billows out as the remnants of the lich’s "
@@ -5581,7 +5434,7 @@ msgstr "设法移动到河的尽头"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:139
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:91
 msgid "Drakes"
-msgstr "龙族"
+msgstr "龙人"
 
 #. [unit]: type=Injured Sergeant, id=Warven
 #. [unit]: type=Sergeant, id=Warven
@@ -5605,7 +5458,7 @@ msgid ""
 "shattered among the river islands. Konrad sent some of the mermen to "
 "investigate."
 msgstr ""
-"一天，他们看到了可怕的景象——在河中岛间，一大群航船和小舟沉没或者碎裂了。科纳"
+"一天，他们看到了可怕的景象——在河中岛间，一大群航船和小舟碎裂或者沉没了。科纳"
 "德派出了一些人鱼前去调查。"
 
 #. [message]: role=merman-advisor
@@ -5617,10 +5470,10 @@ msgid ""
 "place not long ago, perhaps only a few weeks past. We’ve found no survivors. "
 "One more thing...all flew the banner of the Crown of Wesnoth."
 msgstr ""
-"这些不是正规的船，而是最近才草草造出来的小舟，船上的很多木料还是新的。它们是"
-"在战斗中沉没的，而不是被风暴击沉的，没有倾覆的船都被烧毁了。这场战斗肯定是在"
-"不久前发生的，也许只是几个星期之前。我们没有发现幸存者。还有一件事……这些船上"
-"挂的都是韦诺王国的旗帜。"
+"这些不是完全意义上的战船，而是最近才草草造出来的小舟，船上的很多木料还是新"
+"的。它们是在战斗中沉没的，而不是被风暴击沉的，没有倾覆的船都被烧毁了。这场战"
+"斗肯定是在不久前发生的，也许只是几个星期之前。我们没有发现幸存者。还有一件"
+"事……这些船上挂的都是韦诺王国的旗帜。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:275
@@ -5711,7 +5564,7 @@ msgstr "一条龙！一条大龙！"
 msgid ""
 "I am Keh Ohn, leader of the drakes who have settled upon these cliffs. Who "
 "are you?"
-msgstr "我叫克·欧亨，是居住在这些峭壁之上的龙族的领袖。你们是谁？"
+msgstr "我叫克·欧亨，是居住在这些峭壁之上的龙人的领袖。你们是谁？"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:348
@@ -5738,7 +5591,7 @@ msgstr ""
 msgid ""
 "Here? But, drakes have never been seen in Wesnoth before... Are you certain "
 "of this?"
-msgstr "这里？但是，在韦诺从来没有人看到过龙族……你确定吗？"
+msgstr "这里？但是，在韦诺从来没有人看到过龙人……你确定吗？"
 
 #. [message]: role=merman-advisor
 #. Yes, "Eastern Shore" is correct. Mermen are water-oriented;
@@ -5754,8 +5607,8 @@ msgid ""
 "be found outside of Wesnoth."
 msgstr ""
 "我生于珍珠湾，一生都居住在海之东岸。但我曾经和去过西大洋的同伴们交谈过，他们"
-"在旅途中见过龙族。所以，我非常确信在我们面前飞翔的生物是龙族，黎伐多。关于从"
-"没有人在韦诺见过龙族的事，我是不是必须提醒你我们已经早就不在韦诺了？在韦诺之"
+"在旅途中见过龙人。所以，我非常确信在我们面前飞翔的生物是龙人，黎伐多。关于从"
+"没有人在韦诺见过龙人的事，我是不是必须提醒你我们已经早就不在韦诺了？在韦诺之"
 "外，可以找到很多超乎想象的东西和生物。"
 
 #. [message]: speaker=Keh Ohn
@@ -5771,7 +5624,7 @@ msgid ""
 "Eh... well of course, sir drake. Let me introduce myself — I am Prince "
 "Konrad, leader of the group and heir to the throne of Wesnoth."
 msgstr ""
-"呃……当然可以，龙族先生。请容我作自我介绍——我是科纳德王子，这个团队的领袖，韦"
+"呃……当然可以，龙人爵士。请容我作自我介绍——我是科纳德王子，这个团队的领袖，韦"
 "诺王座的继承者。"
 
 #. [message]: speaker=Li'sar
@@ -5791,8 +5644,7 @@ msgid ""
 "destroyed them, you come to do the job yourselves."
 msgstr ""
 "（向科纳德和莉莎倾下火雨）\n"
-"啊......就是你们！派了属下来攻打我们！现在我们摧毁了他们，你们就亲自来进攻了"
-"吗？"
+"啊……就是你们！派了属下来攻打我们！现在我们摧毁了他们，你们就亲自来进攻了吗？"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:391
@@ -5816,7 +5668,7 @@ msgid ""
 "healing their wounds, but we still have claws. Go back now and leave us in "
 "peace. If you go further we’ll be forced to show them."
 msgstr ""
-"我不知道。也许你们说的是实话，也许不是。我们龙族不相信你们人类。我们的很多勇"
+"我不知道。也许你们说的是实话，也许不是。我们龙人不相信你们人类。我们的很多勇"
 "士死于战斗之中，更多的还在养伤，但我们还是有利爪。现在就回去，把平静还给我"
 "们。如果你们继续深入进来，那我们就不得不让你们看看爪子的厉害了。"
 
@@ -5841,7 +5693,7 @@ msgstr ""
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:415
 msgid "You will regret challenging us. Drakes, to arms!"
-msgstr "胆敢挑战我们，你们会后悔的！龙族战士们，准备战斗！"
+msgstr "胆敢挑战我们，你们会后悔的！龙人战士们，准备战斗！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:512
@@ -5860,19 +5712,16 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:585
-#, fuzzy
 msgid "We’ve found $random gold in the drake nest."
-msgstr "我们在龙穴中找到了$random金币。"
+msgstr "我们在龙穴中找到了 $random 金币。"
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:625
-#, fuzzy
 msgid "GRRROOOOAAAAR!"
-msgstr "嘎啊啊啊啊啊啊啊"
+msgstr "嘎啊啊啊啊啊啊啊！！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:629
-#, fuzzy
 msgid "Hurrah! We’ve killed their leader!"
 msgstr "万岁！我们干掉了他们的首领！"
 
@@ -5892,7 +5741,7 @@ msgid ""
 "as possible to pay with their lives. They have defied us, and now they will "
 "meet the same fate as their leader!"
 msgstr ""
-"继续顺流而下。等我们到了之后，就让尽可能多的龙族付出生命的代价吧。他们违抗了"
+"继续顺流而下。等我们到了之后，就让尽可能多的龙人付出生命的代价吧。他们违抗了"
 "我们，现在他们必须面对和他们的领袖一样的命运！"
 
 #. [message]
@@ -5918,7 +5767,7 @@ msgid ""
 "I wonder why the drakes haven’t finished him by now? It is strange that "
 "there are not any drakes or undead in that area."
 msgstr ""
-"奇怪，为什么龙族到现在还没有干掉他？这个地区里竟然一个龙族或者亡灵都没有，真"
+"奇怪，为什么龙人到现在还没有干掉他？这个地区里竟然一个龙人或者亡灵都没有，真"
 "是太奇怪了。"
 
 #. [message]: type=Water Serpent
@@ -5966,8 +5815,8 @@ msgid ""
 "unfortunate position he is in. If you help him, I’ll do my best to convince "
 "him that you are not his enemies but his friends..."
 msgstr ""
-"随便怎么样都好……我仍然认为我们应该努力一下把他从那个倒霉的位置上救回来。如果"
-"你们帮助他，我会尽力劝他相信你们不是他的敌人，而是他的朋友。"
+"随便怎么样都好……我仍然认为应该努力把他从那个倒霉的位置上救回来。如果你们帮助"
+"他，我会尽力劝他相信你们不是他的敌人，而是他的朋友。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:819
@@ -5997,7 +5846,7 @@ msgstr "说得好……"
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:841
 msgid "Rescue the sergeant"
-msgstr ""
+msgstr "拯救军士"
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:902
@@ -6009,7 +5858,7 @@ msgstr "谁……你们是谁？是敌是友？"
 msgid ""
 "We are friends. Don’t worry about it and don’t try to fight us — you are in "
 "no condition to fight."
-msgstr "我们是朋友。不用担心，也不用尝试和我们战斗——你这副样子可不能战斗啊。"
+msgstr "我们是朋友。不用担心，也别试图和我们战斗——你这副样子可不能战斗啊。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:910
@@ -6021,7 +5870,7 @@ msgstr "我是莉莎公主，我们是朋友。加入我们吧，让治疗师们
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:914
 msgid "Princess Li’sar — here? Your Highness, I am yours to command!"
-msgstr "莉莎公主——您在这里？殿下，我听从您的号令！"
+msgstr "莉莎公主——您在这里？殿下，谨遵您的号令！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:918
@@ -6073,7 +5922,7 @@ msgstr ""
 "泉。我对此也说不出更多了，但那里到处都是亡灵和其他生物，它们在洞穴的黑暗中得"
 "到了力量。我们精灵倾向于避免到洞里冒险，取而代之的是，我们在入口处布置了守"
 "卫，把任何愚蠢到竟敢游荡到外部世界的邪恶生物杀死。几百年来没有任何一位精灵进"
-"入过这些洞穴，这片区域对我们而言是未知的。实话实说，如果有其他选项的话，我不"
+"入过这些洞穴，这片区域对我们而言是未知的。实话实说，如果有其他选择的话，我不"
 "建议进入这个洞穴。"
 
 #. [message]: speaker=Konrad
@@ -6083,7 +5932,6 @@ msgstr "不幸的是，我们确实没有其他选项。前进！进入洞穴！
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:962
-#, fuzzy
 msgid "Reach the cave"
 msgstr "抵达洞穴。"
 
@@ -6094,8 +5942,8 @@ msgid ""
 "running through the mountains. Follow me, and let us hope we somehow manage "
 "to get out alive."
 msgstr ""
-"我抵达了洞穴入口。似乎有个通道系统穿越了山脉。大家都跟我来，但愿我们能设法活"
-"着出去。"
+"我抵达了洞穴入口。似乎有一系列的通道贯通了山脉。跟我上，但愿我们能设法活着出"
+"去。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1010
@@ -6147,9 +5995,8 @@ msgstr "在到达森林之前回合数耗尽"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:50
-#, fuzzy
 msgid "Note: your encampment will be dismantled after the first turn."
-msgstr "注意：您的营地在第一回合后会被拆除。\n"
+msgstr "注意：您的营地在第一回合后会被拆除。"
 
 #. [side]: type=Commander, id=Konrad
 #. [side]: type=Elvish Lord, id=Uradredia
@@ -6171,7 +6018,7 @@ msgstr "基欧-达尔"
 #. [side]: type=General, id=Honber
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:135
 msgid "Honber"
-msgstr ""
+msgstr "洪博"
 
 #. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:201
@@ -6199,7 +6046,7 @@ msgstr "在荒地里待了这么长时间，能休息一下还真是不错！"
 msgid ""
 "But there is a great fog around us again! We don’t know what dangers may lie "
 "ahead!"
-msgstr "但浓雾又把我们包围了！我们不知道前方会有什么危险！"
+msgstr "但浓雾又把我们包围了！不知道前方会有什么危险！"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:370
@@ -6360,9 +6207,9 @@ msgid ""
 "marching full speed for the orcs’ camp, and vice-versa. These armies are out "
 "for blood."
 msgstr ""
-"请等一下，公主殿下。看——在这么远的距离上你几乎无法看到他们，但双方的先头侦察"
-"部队已经发现了对方。女王的军队正全速向兽人营地开进，反之也一样。这两支军队马"
-"上就要开始血战了。"
+"请等一下，公主殿下。看——虽然在这么远的距离你几乎无法看清，但双方的先头侦察部"
+"队已经发现了对方。女王的军队正全速向兽人营地开进，反之也一样。这两支军队马上"
+"就要开始血战了。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:504
@@ -6459,7 +6306,7 @@ msgid ""
 "enemies."
 msgstr ""
 "多谢您，艾尔林恩领主。北方精灵就和你们南方的同胞一样慷慨好客！我的士兵会帮助"
-"您抵抗我们的敌人的。"
+"您抵抗敌人的。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:697
@@ -6484,7 +6331,6 @@ msgstr "精灵之友，你们安全了！"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:768
-#, fuzzy
 msgid ""
 "El’rien, we have the Sceptre of Fire with us! We must escort them to "
 "Elensiria!"
@@ -6508,7 +6354,7 @@ msgstr "找到地下世界的出口，并把科纳德移动到那里。"
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:33
 msgid "Help the Wose fend off the undead attack"
-msgstr ""
+msgstr "帮助树人击退亡灵的进攻"
 
 #. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:87
@@ -6572,15 +6418,14 @@ msgstr "艾芙洛儿"
 
 #. [message]: speaker=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:103
-#, fuzzy
 msgid ""
 "Greetings, and welcome to our capital. You should feel honored. It has been "
 "half a century — a generation in the way your race counts time — since any "
 "man has been considered Elf-friend enough to stand here in Elensiria."
 msgstr ""
 "你们好，欢迎来到我们的首都。你们应该感到荣幸，已有整整五十年——以你们种族的计"
-"时方式而言，整整一代人的时间——没有任何人类有资格被看做精灵之友，而能站在埃仁"
-"希利亚的土地上。"
+"时方式而言，整整一代人的时间——没有任何人类被看做精灵之友的资格，便也没有人能"
+"站在埃仁希利亚的土地上。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:107
@@ -6613,10 +6458,6 @@ msgid ""
 msgstr ""
 "是的……您是对的，先生。能够站在这里，我深感荣幸。适才无礼之处，我深表歉意。"
 
-# I purposely translate this phrase spoken by an elf in peotic form to bring out the following:
-# 1) Elf Lord's unwithheld expression to praise Delfador for his greatness
-# 2) the great respect and honour Elves have for him.
-# 3) The supreme wisdom manifested by Elves, much like a well thought out phrase by non-English speaking high official speaking in English over the press.
 #. [message]: speaker=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:123
 msgid ""
@@ -6709,7 +6550,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:173
-#, fuzzy
 msgid ""
 "Well, that is why I must take the Sceptre. I will return, and people will "
 "accept me as Queen. I will rule justly and fairly. My mother is only Queen "
@@ -6721,17 +6561,15 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:177
-#, fuzzy
 msgid ""
 "Princess, there is some good in you, but the throne is not yours to claim. "
 "Konrad has the Sceptre. He will take the throne."
 msgstr ""
-"公主，你有着优秀的品德。但王座不是属于你的。科纳德持有着权杖，他才应该得到王"
-"座。"
+"公主，你的内心里有着善良的部分。但王座不是属于你的。科纳德持有着权杖，他才应"
+"该得到王座。"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:183
-#, fuzzy
 msgid ""
 "Well, I have the Sceptre! I will return and the people will accept me as "
 "Queen! My mother is only Queen Mother. The Throne is rightfully mine, and I "
@@ -6744,7 +6582,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:187
-#, fuzzy
 msgid ""
 "Though you have the Sceptre, Princess, it is rightfully Konrad’s. You have "
 "it now only because we helped you get it."
@@ -6802,7 +6639,6 @@ msgstr ""
 "以后，真相会渐渐显露出来的，美丽的公主殿下。而现在，请继续前进，夺下韦诺的王"
 "座吧。"
 
-# I translate Delfador's speech this round in common speech because I treat this as a "small talk" between him and the Elf alone (though in-front of the rest of the group).
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:222
 msgid ""
@@ -6840,7 +6676,6 @@ msgstr ""
 "的道路。我看到了，你看着她时的目光，科纳德。我想现在，你会一直追随她，哪怕是"
 "到大地的终结之处。"
 
-# Here, I translated Konrad's speech into common speech. I added the "Ya" & "Ah" in the sentences to show Konrad's embarassment with his "secret" being openly exposed. (Note: this way of speech is frequently used by Chinese in informal expressions. Words like "Ah" and "Ya" means nothing in English, but rich in feelings among the Chinese.)
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:238
 msgid ""
@@ -6873,7 +6708,7 @@ msgstr "尤拉德雷利亚，你怎么想？"
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:254
 msgid ""
 "Tell me, Li’sar, are you willing to fight your own mother for the throne?"
-msgstr "告诉我，莉莎，你愿意和自己的母后为了王座而战吗？"
+msgstr "告诉我，莉莎，你愿意为了王座，而与自己的母后作战吗？"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:258
@@ -7016,9 +6851,9 @@ msgid ""
 "find the band of rebels. The high craggy peaks of the mountains of the "
 "Dragons looked down on them in deserted desolation."
 msgstr ""
-"凯雷茨的精良侍卫护送着科纳德和黎伐多通过他们的森林，这是一支几乎无法战胜的先"
+"凯雷茨的精锐侍卫护送着科纳德和黎伐多通过他们的森林，这是一支几乎无法战胜的先"
 "锋部队。战火已然蔓延到了北方大陆，由崎岖不平的东部山脉而来，留下了一大片荒"
-"芜，却没有找到反抗军们的踪影。在荒凉的大漠之上，火龙山脉高耸陡峭的巨峰默然地"
+"芜，却没能找到反抗军们的踪影。在荒凉的大漠之上，火龙山脉高耸陡峭的巨峰默然地"
 "俯视着他们。"
 
 #. [part]
@@ -7029,7 +6864,7 @@ msgid ""
 "plains of Northeastern Wesnoth lay before them."
 msgstr ""
 "科纳德身边的一小群精灵已然变成了一支庞大的军队。那位偶尔喜欢隐居的大法师很清"
-"楚如何引导这支大军，很快，韦诺东南部的平原便展现在他们眼前了。"
+"楚自己没必要去影响这次行军，很快，韦诺东南部的平原便展现在他们眼前了。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:81
@@ -7072,7 +6907,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:187
-#, fuzzy
 msgid ""
 "What? Me, a traitor? It is the Queen who is a traitor, for not obeying the "
 "wishes of King Garard II. We have the Sceptre of Fire, so let us in!"
@@ -7111,8 +6945,7 @@ msgstr "我们改变了计划。现在杀光他们。"
 msgid ""
 "We must make haste! Far greater challenges lie before us, by tarrying here "
 "we’re diminishing our resources."
-msgstr ""
-"急行军！有更为巨大的挑战挡在我们面前！在此耽搁，只会无谓地消耗我们的资源。"
+msgstr "急行军！更大的挑战挡在我们面前！在此耽搁，只会无谓地消耗我们的资源！"
 
 #. [scenario]: id=23_Test_of_the_Clans
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:4
@@ -7356,7 +7189,7 @@ msgstr ""
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:456
 msgid "Delfador, don’t you think it is time we settled this?"
-msgstr "黎伐多，难道你不觉得是时候把这件事解决了吗？"
+msgstr "黎伐多，难道你不觉得是时候该把这事解决了吗？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:460
@@ -7391,7 +7224,7 @@ msgid ""
 "help in guarding our flanks will be invaluable."
 msgstr ""
 "我们击溃了他们的部队！让我们看看氏族是不是已经受够了。他们若能守卫我们的侧"
-"翼，那将是无价的帮助。"
+"翼，那将是无价的协助。"
 
 #. [print]
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:503
@@ -7408,14 +7241,6 @@ msgstr "韦诺之战"
 msgid "Defeat Asheviere"
 msgstr "击败艾斯威勒"
 
-# Character Analysis of Delfador
-# (I might be wrong. So correct me if necessary as I translate his speeches based on these attributes.)
-# 1. A very wise and loyal man. One who during his younger times, fought bravely, conquering even the world of death. This made him a person rich in life experience and a true veteran in war.
-# 2. During his older age, he protects the "heir" alongside the Elves. Although remorse over his past, he attempts to amend the future. A manifestation of true courage and humility.
-# 3. Though gone through many warfares, his failure in protecting the real Konrad has crippled his ability to become a leader again.
-# Nevertheless, his loyalty has made him an invaluable asset to the young leader he would serve.
-# With such I like to translate his speeches in HttT with texts expressing true wisdom, yet full of humility and modesty. I will made the reader feel that he is a person who will not only win wars, but also one who will win hearts.
-# (I will attempt to made his speeches, especially the part where he reveal Konrad's true identity, poetic. If recited aloud, his words will touch hearts.)
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:49
 msgid ""
@@ -7444,7 +7269,7 @@ msgid ""
 "out their evil orders."
 msgstr ""
 "那场战斗，漫长而艰苦，我军最终兵败。埃雷德是被杀了，但我知道艾斯威勒的愤怒将"
-"会无比恐怖。很多无辜者都将被她杀害。我必须保住这个国家的君主，我必须保住王子"
+"会无比恐怖，很多无辜者都将被她杀害。我必须保住这个国家的君主，我必须保住王子"
 "们。我必须尽快赶到维尔帝，在艾斯威勒的卫兵赶到那儿并执行他们邪恶的命令之前。"
 
 #. [part]
@@ -7468,7 +7293,8 @@ msgid ""
 "elves."
 msgstr ""
 "当然，你们会很惊讶，但这就是事实。匆忙之中，我打倒了做出如此卑劣之事的恶徒"
-"们。而后我带着小王子的遗体，骑马离开。我跑出了很远，到了精灵们的领地上。"
+"们。而后我带着小王子的遗体，骑马离开。我逃到了很远的地方，到了精灵们的领地"
+"上。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:70
@@ -7480,8 +7306,8 @@ msgid ""
 "of peoples agreed to my plan."
 msgstr ""
 "造化弄人，那时精灵女领主帕兰德拉偶然救回了一个人类男婴。她也不知道这个孩子来"
-"自何方，只知道如果不是因为自己的干涉，他已经被兽人们吃掉了。精灵们觉得命运女"
-"神正向着这人类的孩子微笑。也许这就是这些最真诚的人会同意我的计划的原因。"
+"自何方，只知道如果不是因为自己出手相救，他已经被兽人们吃掉了。精灵们觉得命运"
+"女神正向着这人类的孩子微笑。也许这就是这些最真诚的人会同意我的计划的原因。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:74
@@ -7509,7 +7335,7 @@ msgstr ""
 "我曾经以为总有一天我们可以让你成为国王，科纳德。但现在我知道了，命运之神做出"
 "了一个不同的选择。尽管艾斯威勒无比邪恶，但莉莎却有着得到王座所必须的美德。她"
 "才是合法的女王，她的血统可以沿着韦诺的历代国王向上追溯，一直追溯到那群来自西"
-"方的海员们。"
+"方的海上漂泊者们。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:82
@@ -7559,7 +7385,7 @@ msgid ""
 "Surrender, mother. The land’s blood is spent. I have come to take my "
 "rightful place."
 msgstr ""
-"投降吧，母后。这片土地已经流尽了鲜血。我来到这里，只是为了取回属于我的位置。"
+"投降吧，母后。这片土地已经流尽了鲜血。我来到这里，只是为了夺回属于我的位置。"
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:246
@@ -7616,7 +7442,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:292
 msgid "Li’sar strikes a killing blow!"
-msgstr "莉莎一剑刺了下去！"
+msgstr "莉莎刺出了致命的一剑！"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:316
@@ -7756,14 +7582,13 @@ msgstr "尾声"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:11
-#, fuzzy
 msgid ""
 "And so the Dark Queen’s reign was ended. Li’sar, daughter of Garard II and "
 "Heir to the Throne of Wesnoth, was crowned Queen and Bearer of the Sceptre "
 "of Fire, which she would pass on to all her successors."
 msgstr ""
 "就这样，黑暗女王的统治结束了。莉莎，伽拉德二世之女，韦诺王座的继承者，加冕为"
-"女王——圣火权杖的持有者。她将会把这一切传给自己所有的后代。"
+"女王，亦为圣火权杖之持有者。她将会把这一切传给自己所有的后代。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:15
@@ -7777,8 +7602,8 @@ msgid ""
 "matters of state. He lived until a ripe old age and was granted a royal "
 "funeral, after which he was buried in the Royal Crypt in Weldyn."
 msgstr ""
-"黎伐多成为了莉莎的首席高等参事，在最重要的国事上提出睿智的建议。他享年很久，"
-"得到了皇家葬礼的礼遇，之后，他被安葬在维尔帝的皇家陵寝中。"
+"黎伐多成为了莉莎的高等参事，在最重要的国事方面提出睿智的建议。他享年很久，去"
+"世之后亦得到了皇家葬礼的礼遇，他被安葬在维尔帝的皇家陵寝中。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:23
@@ -7988,7 +7813,7 @@ msgstr "嘘！这只狮鹫睡着了！您最好还是不要吵醒它！"
 #. [attack]: type=blade
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:36
 msgid "claws"
-msgstr "爪击"
+msgstr "爪"
 
 #. [message]: speaker=last breath
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:9
@@ -8119,7 +7944,6 @@ msgstr ""
 
 #. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
-#, fuzzy
 msgid "Sceptre of Fire"
 msgstr "圣火权杖"
 
@@ -8187,16 +8011,15 @@ msgstr ""
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:460
 msgid "I think I know what I’m doing. Come, let us go!"
-msgstr "我想我知道我在做什么。来吧，让我们出发！"
+msgstr "我想我知道我在做什么。来吧，让我们出发吧！"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:5
-#, fuzzy
 msgid ""
 "In the twenty-eighth year of the reign of Garard II, king of Wesnoth, the "
 "kingdom was plunged into a bitter war with the Orcs of the North."
 msgstr ""
-"在韦诺之王，伽拉德二世统治的第二十七个年头，王国陷入了与北方兽人的苦战之中。"
+"在韦诺之王伽拉德二世统治的第二十七个年头，王国陷入了与北方兽人的苦战之中。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:10
@@ -8217,8 +8040,8 @@ msgid ""
 "slain in battle that day, along with his brother and all his sons but Eldred."
 msgstr ""
 "埃雷德是一位勇敢无畏的武士，调兵遣将的能手。对伽拉德而言不幸的是，他的儿子野"
-"心勃勃……意欲谋反。在战斗最激烈的时刻，的军队突然倒戈攻击国王。于是，伽拉德当"
-"日战死沙场，而他的兄弟一同陪葬，王子之中也只余下埃雷德一人。"
+"心勃勃……意欲谋反。在战斗最激烈的时刻，埃雷德的军队突然倒戈攻击国王。于是，伽"
+"拉德当日战死沙场，而他的兄弟一同陪葬，王子之中也只余下埃雷德一人。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:18
@@ -8228,8 +8051,8 @@ msgid ""
 "for power far better than her husband’s had."
 msgstr ""
 "伽拉德的王后，艾斯威勒，本是来到附近小山上旁观这场战斗的，她欣喜地注视着所发"
-"生的一切。她的儿子的统治必能更好地满足她对权力的贪欲，这将远远胜过自己的丈"
-"夫。"
+"生的一切。她的儿子的统治必能更好地满足她对权力的贪欲，在这一点上远远胜过自己"
+"的丈夫。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:22
@@ -8242,7 +8065,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:26
-#, fuzzy
 msgid ""
 "But Garard’s arch-mage, Delfador, had escaped the battle and, riding with "
 "haste, reached Weldyn first. He mustered a force of loyalists to fight "
@@ -8253,17 +8075,15 @@ msgstr ""
 "召集了一支忠诚的军队与埃雷德作战，为国王之死复仇。忠诚派军队向北行军，迎战埃"
 "雷德。"
 
-# In general, I translated narrations in common tongue. But for this instance, I translated the Queen's words poetically. In this way, I try to potray the Queen's image as one who is intellectual, witty, yet extremely evil, perhaps the impersonation of evil. (In Chinese Classic The Romance of the Three Kingdoms, Cao Cao is also such a character. Those who read this classic, will weep when he won battles, and joy when he loses. This person was the Chinese's perception of true diabolical entity. Yet in his speeches, he spoke poetically).
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:30
-#, fuzzy
 msgid ""
 "Eldred made war upon Delfador and his forces with his mother’s advice "
 "ringing in his ears: <i>“Fight no one great or small except the old mage, "
 "whose head should be severed from his shoulders.”</i>"
 msgstr ""
-"埃雷德向黎伐多和他的军队宣战。他母亲的忠告回绕在他的耳际：“除了那个老法师之"
-"外，不要与任何人作战。一定要让他人头落地。”"
+"埃雷德向黎伐多和他的军队宣战。他母亲的忠告回绕在他的耳际：<i>“除了那个老法师"
+"之外，不要与任何人作战。一定要让他人头落地。”</i>"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:34
@@ -8282,11 +8102,10 @@ msgid ""
 "son’s lifeless body, fixed to the ground by the great mage’s staff."
 msgstr ""
 "最终，黎伐多的军队被击败，他们溃退了。但艾斯威勒却在战场上发现了儿子毫无生气"
-"的身体，被大法师的法杖死死地钉在地上。"
+"的尸体，他被大法师的法杖死死地钉在地上。"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:42
-#, fuzzy
 msgid ""
 "Asheviere herself then took command of the army and led it back to Weldyn. "
 "Knowing that the king’s young nephews were next in line to the throne, she "
@@ -8302,7 +8121,7 @@ msgid ""
 "the palace and stole away Konrad, the youngest of Garard’s nephews, thereby "
 "saving him from death."
 msgstr ""
-"黎伐多听说艾斯威勒的命令之后不久，便秘密潜入王宫，偷走了科纳德，伽拉德的侄子"
+"黎伐多听说艾斯威勒的命令之后不久，便秘密潜入王宫，偷走了科纳德——伽拉德的侄子"
 "中最小的一个，因此让他逃过了死劫。"
 
 #. [part]
@@ -8314,98 +8133,3 @@ msgid ""
 msgstr ""
 "黎伐多逃到了埃森丛林，远在韦诺的西南边境之外。在精灵们的保护下，他将科纳德抚"
 "养长大。而与此同时，他只能悲哀地看着艾斯威勒的恐怖统治开始在这片土地上蔓延……"
-
-#, fuzzy
-#~ msgid ""
-#~ "A final blow destroys the lich, releasing a small shock wave of energy "
-#~ "outwards. The Death Knights silently fall to the ground, inanimate. A "
-#~ "giant cloud of dust bellows out as the remnants of the lich’s once-mortal "
-#~ "skin and centuries of grime and gristle are dislodged for the last time."
-#~ msgstr ""
-#~ "致命一击摧毁了巫妖，一瞬间火石四射。死亡骑士们也无声地倒在地上，一动不动"
-#~ "了。巫妖身上仅存的曾经鲜活的皮肤，积压了好几个世纪的尘垢，以及那体内的软"
-#~ "骨，最后一次散落，扬起了一片巨大的浮尘。"
-
-#~ msgid "Herbert"
-#~ msgstr "赫伯特"
-
-#~ msgid "Turns run out"
-#~ msgstr "回合数耗尽"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Defeat the enemy leader</span> <small>(special bonus)"
-#~ "</small>"
-#~ msgstr ""
-#~ "<span color='white'>替代目标：</span>\n"
-#~ "<span color='green'>击败敌军领袖</span> <small>（特殊奖励）</small>"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Defeat all enemy leaders</span> <small>(early finish "
-#~ "bonus)</small>"
-#~ msgstr ""
-#~ "<span color='white'>替代目标：</span>\n"
-#~ "<span color='green'>击败所有的敌军领袖</span> <small>（提前过关奖励）</"
-#~ "small>"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Defeat Muff Malal</span> <small>(early finish bonus)</"
-#~ "small>"
-#~ msgstr ""
-#~ "<span color='white'>替代目标：</span>\n"
-#~ "<span color='green'>击败玛夫·玛拉尔</span> <small>（提前过关奖励）</small>"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Defeat all enemy leaders</span> <small>(special bonus)"
-#~ "</small>"
-#~ msgstr ""
-#~ "<span color='white'>替代目标：</span>\n"
-#~ "<span color='green'>击败所有的敌军领袖</span> <small>（特别奖励）</small>"
-
-#~ msgid ""
-#~ "<span color='white'>Alternative objective:</span>\n"
-#~ "<span color='green'>Eradicate the liches</span> <small>(early finish "
-#~ "bonus)</small>"
-#~ msgstr ""
-#~ "<span color='white'>替代目标：</span>\n"
-#~ "<span color='green'>根除所有的巫妖</span> <small>（提前过关奖励）</small>"
-
-#~ msgid ""
-#~ "<span color='white'>Bonus objective:</span>\n"
-#~ "<span color='green'>Defeat all Death Knights first</span>"
-#~ msgstr ""
-#~ "<span color='white'>奖励目标：</span>\n"
-#~ "<span color='green'>首先击败所有死亡骑士</span>"
-
-#~ msgid ""
-#~ "<span color='white'>Optional objective:</span>\n"
-#~ "<span color='green'>Rescue the sergeant</span>"
-#~ msgstr ""
-#~ "<span color='white'>可选目标：</span>\n"
-#~ "<span color='green'>解救军士</span>"
-
-#~ msgid ""
-#~ "<span color='white'>Optional objective:</span>\n"
-#~ "<span color='green'>Help the Wose fend off the undead attack</span>"
-#~ msgstr ""
-#~ "<span color='white'>可选目标：</span>\n"
-#~ "<span color='green'>帮助树人抵挡亡灵的进攻</span>"
-
-#~ msgid "Turns expire"
-#~ msgstr "回合数耗尽"
-
-#~ msgid ""
-#~ "<span color='white'>Bonus objective:</span>\n"
-#~ "<span color='green'>Defeat all enemy leaders</span>"
-#~ msgstr ""
-#~ "<span color='white'>奖励目标：</span>\n"
-#~ "<span color='green'>击败所有的敌军领袖</span>"
-
-#~ msgid "And so it has begun!"
-#~ msgstr "殿下，我们的旅程从现在开始了！"
-
-#~ msgid "Robert"
-#~ msgstr "罗伯特"

@@ -1,23 +1,26 @@
-# Huang huan <unicon221@gmail.com>, 2005.
-# Dionysus <huang.wei.bhu@gmail.com>, 2007. (unicon)
+# The Battle for Wesnoth - Simplified Chinese Translations
+# Copyright (C) 2005-2011 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# Huang Huan <unicon221@gmail.com>, 2005.
+# Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
 # CloudiDust <cloudidust@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
+"Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2010-05-28 16:04+0800\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
+"PO-Revision-Date: 2011-12-20 19:53+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
-"Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
-"Language: \n"
+"Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
+"translation-cn>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Bookmarks: 173,206,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
-#, fuzzy
 msgid ""
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
@@ -30,9 +33,8 @@ msgstr ""
 #. welcoming new players. Please keep the friendly fun feeling!
 #. Any questions email rusty@rustcorp.com.au!"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
-#, fuzzy
 msgid "Wesnoth Tutorial Part I"
-msgstr "韦诺教程 第二部分"
+msgstr "韦诺教程 第一部分"
 
 #. [side]: type=Fighter, id=student
 #. [command]
@@ -71,12 +73,12 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:155
 msgid "Destroy a fierce enemy"
-msgstr "击败凶残的敌人。"
+msgstr "击败凶残的敌人"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:159
 msgid "Get yourself killed"
-msgstr "把你自己搞死。"
+msgstr "把你自己搞死"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:171
@@ -96,27 +98,28 @@ msgstr "莉莎"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:210
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:216
-#, fuzzy
 msgid "Welcome to Wesnoth!"
-msgstr "<big>欢迎来到韦诺！</big>"
+msgstr "欢迎来到韦诺！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:212
-#, fuzzy
 msgid ""
 "For this tutorial, you are playing Konrad.\n"
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
-msgstr "你现在站在城堡主楼里，而你的导师黎伐多则在河的东岸。"
+msgstr ""
+"在这个教程里，你扮演科纳德。\n"
+"你现在站在城堡主楼里，而你的导师黎伐多则在河的东岸。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
-#, fuzzy
 msgid ""
 "For this tutorial, you are playing Li’sar.\n"
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
-msgstr "你现在站在城堡主楼里，而你的导师黎伐多则在河的东岸。"
+msgstr ""
+"在这个教程里，你扮演莉莎。\n"
+"你现在站在城堡主楼里，而你的导师黎伐多则在河的东岸。"
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -157,43 +160,38 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:254
 msgid "Here"
-msgstr ""
+msgstr "这儿"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:260
-#, fuzzy
 msgid ""
 "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
-msgstr "单击标记着“这儿”的格子，把科纳德移动到黎伐多身边。"
+msgstr "单击标记着<b>这儿</b>的格子，把科纳德移动到黎伐多身边。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:264
-#, fuzzy
 msgid ""
 "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
-msgstr "单击标记着“这儿”的格子，把莉莎移动到黎伐多身边。"
+msgstr "单击标记着<b>这儿</b>的格子，把莉莎移动到黎伐多身边。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:269
-#, fuzzy
 msgid "Left click on tile labeled <b>Here</b>"
-msgstr "左键单击标记着“这儿”的格子"
+msgstr "左键单击标记着<b>这儿</b?的格子"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:294
 msgid "Oops!"
-msgstr ""
+msgstr "哎哟！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:296
-#, fuzzy
 msgid ""
 "You moved to the wrong place! After this message, you can press <b>u</b> to "
 "undo, then try again."
 msgstr ""
-"<big>啊！</big>\n"
-"你移动到了错误的地点！读完这条消息后，你可以按键盘上的“u”键来撤销移动，然后再"
-"试一次。"
+"你移动到了错误的地点！读完这条消息后，你可以按<b>u</b>键来撤销移动，然后再试"
+"一次。"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
@@ -229,51 +227,46 @@ msgstr "……这个刺靶！"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
-#, fuzzy
 msgid "A quintain? You want me to fight a dummy?"
-msgstr "一个刺靶？您是想让我装作和一个假人打斗吗？"
+msgstr "一个刺靶？您是想让我和一个假人打斗吗？"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:373
-#, fuzzy
 msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
 msgstr "孩子，你有32点生命值和一把剑。我很确定你会赢的。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:378
-#, fuzzy
 msgid ""
 "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
 "win."
-msgstr "孩子，你有32点生命值和一把剑。我很确定你会赢的。"
+msgstr "小姐，你有32点生命值和一把剑。我很确定你会赢的。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:386
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:392
 msgid "Attacking"
-msgstr ""
+msgstr "攻击"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:388
-#, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Konrad will attack."
 msgstr ""
 "要攻击刺靶，首先要选中进攻者（科纳德），然后点击目标（刺靶）。你将会看到攻击"
-"描述。当你点击“确定”时，康纳德就会发动攻击。"
+"描述。当你点击<b>确定</b>时，科纳德就会发动攻击。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
-#, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Li’sar will attack."
 msgstr ""
 "要攻击刺靶，首先要选中进攻者（莉莎），然后点击目标（刺靶）。你将会看到攻击描"
-"述。当你点击“确定”时，莉莎就会发动攻击。"
+"述。当你点击<b>确定</b>时，莉莎就会发动攻击。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:404
@@ -287,7 +280,6 @@ msgstr "嘿！这个刺靶会反击！"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:444
-#, fuzzy
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "唔，也许我们应该从一个玩偶开始。"
 
@@ -305,49 +297,46 @@ msgstr "好主意！"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:457
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:461
 msgid "Crowns"
-msgstr ""
+msgstr "皇冠"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
-#, fuzzy
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Konrad) is killed."
 msgstr ""
-"注意：黎伐多头顶的那个蓝色小皇冠表明，如果他被杀的话游戏就会失败。如果你的领"
-"袖（科纳德）被杀的话，游戏同样会失败。"
+"黎伐多头顶的那个金属小皇冠表明，如果他被杀的话游戏就会失败。如果你的领袖（科"
+"纳德）被杀的话，游戏同样会失败。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:462
-#, fuzzy
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Li’sar) is killed."
 msgstr ""
-"注意：黎伐多头顶的那个蓝色小皇冠表明，如果他被杀的话游戏就会失败。如果你的领"
-"袖（莉莎）被杀的话，游戏同样会失败。"
+"黎伐多头顶的那个金属小皇冠表明，如果他被杀的话游戏就会失败。如果你的领袖（莉"
+"莎）被杀的话，游戏同样会失败。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:474
-#, fuzzy
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
-msgstr "可惜你已经把你的回合用来攻击刺靶了，现在就要轮到刺靶的回合了。"
+msgstr ""
+"很不幸，为了攻击刺靶，你已经把自己的回合用掉了。现在刺靶将要发动攻击了。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:479
-#, fuzzy
 msgid ""
 "female^Unfortunately, you’ve used up your turn attacking the quintain. The "
 "quintain now gets to attack."
-msgstr "可惜你已经把你的回合用来攻击刺靶了，现在就要轮到刺靶的回合了。"
+msgstr ""
+"很不幸，为了攻击刺靶，你已经把自己的回合用掉了。现在刺靶将要发动攻击了。"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:485
-#, fuzzy
 msgid "The <i>dummy</i> gets a turn?"
-msgstr "轮到这个*假人*了？"
+msgstr "这<i>假人</i>也能攻击？"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:491
@@ -363,9 +352,8 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:494
-#, fuzzy
 msgid "Click on the <b>End Turn</b> button in the bottom right of the screen"
-msgstr "单击右下角的“结束回合”按钮"
+msgstr "单击屏幕右下角的<b>结束回合</b>按钮"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:515
@@ -409,13 +397,11 @@ msgstr "单击村庄把莉莎移动到那里"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:559
-#, fuzzy
 msgid "Villages"
 msgstr "村庄"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:561
-#, fuzzy
 msgid ""
 "You have captured a village! It now flies your flag and has been added to "
 "your total village count. (The house icon at the top of the screen shows how "
@@ -423,9 +409,10 @@ msgid ""
 "recruit units. Each turn, you gain two gold plus one for every village you "
 "own."
 msgstr ""
-"你占领了一个村庄！你可以看到它升起了你的旗帜，并且已经被加到了你的村庄总数中"
-"（屏幕顶部的房子图标）。村庄会提供金币，金币可以用于征募单位。每回合你将得到"
-"两个金币，而你拥有的每个村庄都会产生一个额外的金币。"
+"你占领了一个村庄！你可以看到它升起了你的旗帜，并且已经被加到了你的村庄总数"
+"中。（屏幕顶部的房子图标旁会显示你当前控制着多少个村庄）。村庄会提供金币，金"
+"币可以用于征募单位。每回合你将得到两个金币，而你拥有的每个村庄都会产生一个额"
+"外的金币。"
 
 #. [event]
 #. [then]
@@ -435,27 +422,22 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:730
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:870
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:922
-#, fuzzy
 msgid "Click on the <b>End Turn</b> button"
-msgstr "点击“结束回合”按钮"
+msgstr "点击<b>结束回合</b>按钮"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:601
-#, fuzzy
 msgid ""
 "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
 "summon some help against that quintain."
-msgstr ""
-"你就要回复$hp_difference点生命值了，但我认为你需要帮助才能打败那个刺靶。"
+msgstr "你就要回复$hp_difference点生命值了，但现在应该召唤一些帮手来对付刺靶。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:606
-#, fuzzy
 msgid ""
 "female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
 "to summon some help against that quintain."
-msgstr ""
-"你就要回复$hp_difference点生命值了，但我认为你需要帮助才能打败那个刺靶。"
+msgstr "你就要回复$hp_difference点生命值了，但现在应该召唤一些帮手来对付刺靶。"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
@@ -498,49 +480,46 @@ msgstr "把莉莎移动到城堡主楼"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:648
 msgid "Recruiting"
-msgstr ""
+msgstr "征募"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
-#, fuzzy
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
 "you will only be given one type of unit to choose: the Elvish Fighter."
 msgstr ""
-"任何时候，只要你在城堡主楼上，你就可以在其四周的城堡格子里进行征募，只需要右"
-"键单击格子并且选择“征募”。现在你只有一种单位类型可以选择：精灵战士。"
+"任何时候，只要你在<i>城堡主楼</i>上，你就可以在其四周的城堡格子里进行<i>征募"
+"</i>，只需要右键单击格子并且选择<b>征募</b>即可。现在你只有一种单位类型可以选"
+"择：精灵战士。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:654
-#, fuzzy
 msgid "Right click on a castle tile and select <b>Recruit</b>"
-msgstr "右键单击一个城堡格子并选择“征募”"
+msgstr "右键单击一个城堡格子并选择<b>征募</b>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:688
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:721
 msgid "New Recruits"
-msgstr ""
+msgstr "新兵"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:691
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:724
-#, fuzzy
 msgid ""
 "New units cannot act in the turn they appear; you will gain control of them "
 "next turn.\n"
 "After this dialog, you can move the mouse over a unit to see a summary of "
 "its abilities on the right of the screen."
 msgstr ""
-"这些新征募的单位本回合什么都做不了。下回合你才能控制他们。\n"
-"注意：在这条信息之后，你可以把鼠标移动到一个单位上，这样就可以在屏幕右边看到"
-"它的描述。"
+"新征募的单位在初次出现的回合什么都做不了。下回合开始你才能控制他们。\n"
+"在这对白之后，你可以把鼠标移动到一个单位上，这样就可以在屏幕右边看到其能力的"
+"概述。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:702
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:735
-#, fuzzy
 msgid "Right click on the other castle tile and recruit another unit"
 msgstr "右键单击城堡的另一个格子并征募另一个单位"
 
@@ -552,9 +531,8 @@ msgstr "嘿，这个刺靶刚恢复了2点生命值！我得赶快弄死它！"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:761
-#, fuzzy
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
-msgstr "是的，如果一个单位在一回合内什么都没有做，他将会缓慢地回复生命值。"
+msgstr "是的，如果一个单位在一回合内什么都没有做，它将会缓慢地回复生命值。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:767
@@ -562,8 +540,8 @@ msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
-"假如刺靶承受住了你的攻击，他会恢复2点生命值。如果一个单位在一回合内什么都没有"
-"做,他将会缓慢地恢复生命."
+"假如刺靶承受住了你的攻击，它会恢复2点生命值。如果一个单位在一回合内什么都没有"
+"做，它将会缓慢地恢复生命。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:781
@@ -582,7 +560,7 @@ msgstr "我会让他们使用伤害最高的攻击方式！"
 msgid ""
 "And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
 "find out..."
-msgstr "那么你认为哪种伤害更高呢？剑（5-4）还是弓（3-3）？我想你会找到答案的……"
+msgstr "那么你认为哪种伤害更高呢？剑（5–4）还是弓（3–3）？我想你会找到答案的……"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:791
@@ -601,12 +579,11 @@ msgid ""
 "now would you?\n"
 "Use the fighters you recruited first; they’ll be a lot of help."
 msgstr ""
-"现在你不会去做亲自向着那个刺靶冲锋这样的傻事了，是吧？\n"
+"现在你不会去做亲自向着刺靶冲锋这样的傻事了，是吧？\n"
 "首先使用你征募的战士们，他们会帮上大忙。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:822
-#, fuzzy
 msgid "Left click on the quintain to attack it."
 msgstr "左键单击刺靶以攻击它。"
 
@@ -614,28 +591,28 @@ msgstr "左键单击刺靶以攻击它。"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
 msgid " The ranged attack would have been safer."
-msgstr ""
+msgstr " 远程攻击应该会更安全些的。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:859
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:878
-#, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
 "attack. The quintain defended with its melee attack (3–5)."
 msgstr ""
-"你的精灵使用了剑（5-4，或者说每次5点伤害，攻击4次），这是一种近战攻击。刺靶会"
-"以它的近战攻击（3-5）进行反击。而远程攻击更安全。"
+"你的精灵使用了剑（5–4，或者说每次5点伤害，攻击4次），这是一种<i>近战</i>攻"
+"击。刺靶会以它的近战攻击（3–5）进行反击。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:867
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:919
-#, fuzzy
 msgid ""
 "\n"
 "End your turn, then attack again."
-msgstr "结束你的回合，然后再次攻击。"
+msgstr ""
+"\n"
+"结束你的回合，然后再次攻击。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:879
@@ -643,11 +620,12 @@ msgid ""
 "\n"
 "You should tell the other elf to use the bow."
 msgstr ""
+"\n"
+"你应该让另一位精灵用弓。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:882
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:931
-#, fuzzy
 msgid "Attack with the other elf"
 msgstr "让另一个精灵攻击"
 
@@ -655,14 +633,13 @@ msgstr "让另一个精灵攻击"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:911
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:918
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:929
-#, fuzzy
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
 "attacks). The quintain has no ranged attack, only a melee attack, so it "
 "could not defend itself."
 msgstr ""
-"你的精灵使用了弓，这是一种远程攻击（3-3，或者说每次3点伤害，攻击3次）。刺靶没"
-"有远程攻击，只有近战攻击，所以它无法反击。"
+"你的精灵使用了弓，这是一种<i>远程</i>攻击（3–3，或者说每次3点伤害，攻击3"
+"次）。刺靶没有远程攻击，只有近战攻击，所以它无法保护自己。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:950
@@ -677,58 +654,50 @@ msgstr "或许你应该再征募一个精灵?"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:968
 msgid "Unit Descriptions"
-msgstr ""
+msgstr "单位描述"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:970
-#, fuzzy
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
-msgstr ""
-"注意：\n"
-"你可以右键单击一个单位来查看详细的“单位描述”。."
+msgstr "你可以右键单击一个单位来查看详细的<b>单位描述</b>。."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:991
 msgid "Protect Your Troops"
-msgstr ""
+msgstr "保护你的部队"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:993
-#, fuzzy
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points (XP)"
 "</i> so they can gain levels and become more powerful."
 msgstr ""
-"注意：\n"
 "记得把受伤的单位撤回村庄，如果需要的话征募更多的单位。特别要注意保护那些得到"
-"最多经验值（XP）的单位，让他们可以升级！"
+"最多<i>经验值（XP）</i>的单位，让他们得以升级，并变得更强。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1010
 msgid "Support"
-msgstr ""
+msgstr "供给"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1012
-#, fuzzy
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
 msgstr ""
-"注意：\n"
-"你拥有的每个村庄都可以免费支持一个单位。超出村庄数目的话，每个单位每回合会耗"
-"费你1个金币。"
+"你控制的每个村庄都可以免费<i>供给</i>一个单位。超出村庄数目的话，每个单位每回"
+"合会耗费你1个金币。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1027
 msgid "Advancement"
-msgstr ""
+msgstr "前进"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1029
-#, fuzzy
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
 "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will go up "
@@ -736,20 +705,17 @@ msgid ""
 "to choose which one you want. However, second level units cost twice as much "
 "to support as first level units."
 msgstr ""
-"注意：\n"
-"当一个单位获得足够的经验值（经验值条是单位右边那个短些的计量条），他就会升"
-"级。精灵战士有两种选项，你有机会选择你想要的升级，注意2级单位的维护费用是1级"
-"单位的2倍。"
+"当一个单位获得足够的经验值时（<i>经验值条</i>，如果有的话，会显示在<i>生命值"
+"条</i>的<b>右边</b>），它就会升级。精灵战士有两种升级选项，你可以选择你想要的"
+"选项。不过，二级单位的维护费用是一级单位的两倍。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1044
-#, fuzzy
 msgid "Defenses"
-msgstr "守卫此处"
+msgstr "防御"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1047
-#, fuzzy
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -758,20 +724,18 @@ msgid ""
 "rivers. However, these quintains use a <i>magical</i> attack, which always "
 "has a 70% chance of hitting no matter what terrain its target occupies."
 msgstr ""
-"注意：\n"
-"一旦你选中一个单位，你可以看到在不同地形的格子上会显示不同的百分比：数值越"
-"高，单位的防御值（闪避率）越高。例如，村庄和城堡中的闪避率挺不错，而河里则很"
-"糟糕。但是，假人的攻击是魔法攻击，所以不管你站在哪里他们都有70%的可能命中你。"
+"一旦选中一个单位，那么当鼠标在地图上移动时，你将看到不断变化的百分数值：数值"
+"越高，则该单位在此类地形上的<i>防御率（闪避率）</i>越高。例如，大多数单位在村"
+"庄和城堡中的闪避率挺不错，而在河里则很糟糕。但是，这些刺靶使用的是<i>魔法</i>"
+"攻击，所以不管对手占据了哪里，它们都有70%的可能命中。"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1072
-#, fuzzy
 msgid "The quintain is destroyed, and I have gained more experience!"
-msgstr "刺靶死掉了，而我获得了更多的经验值！"
+msgstr "刺靶坏掉了，而我获得了更多的经验值！"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1078
-#, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
@@ -779,11 +743,11 @@ msgid ""
 "we have real work to do..."
 msgstr ""
 "没错，你通过战斗，尤其是杀死对手来获得经验值。获得足够的经验值之后你就会变得"
-"更加强大。"
+"更加强大。\n"
+"现在，科纳德，我会再给你留点假人来练习！结束之后，我们有真正的事情要做……"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1082
-#, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
@@ -791,22 +755,21 @@ msgid ""
 "we have real work to do..."
 msgstr ""
 "没错，你通过战斗，尤其是杀死对手来获得经验值。获得足够的经验值之后你就会变得"
-"更加强大。"
+"更加强大。\n"
+"现在，莉莎，我会再给你留点假人来练习！结束之后，我们有真正的事情要做……"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1119
 msgid "Note"
-msgstr ""
+msgstr "提示"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1121
-#, fuzzy
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
 msgstr ""
-"注意：\n"
-"这些假人只会在你和他们之间只有一格距离时才会进攻。如果足够谨慎，你应该能把他"
+"这些假人只会在你和它们之间只有一格距离时才会进攻。如果足够谨慎，你应该能把它"
 "们逐个击破。"
 
 #. [message]: speaker=narrator
@@ -827,11 +790,10 @@ msgstr "不，我想我已经弄明白了。"
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1176
 msgid "Victory"
-msgstr ""
+msgstr "胜利"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1177
-#, fuzzy
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over, but you will still be able to examine the final positions "
@@ -839,46 +801,42 @@ msgid ""
 "mode</i>. When you’re finished, click the <b>End Scenario</b> button to go "
 "on the next scenario in the campaign."
 msgstr ""
-"在你的胜利提示之后，地图会变为灰色，以表示本场景已经结束了。但在你点击“结束场"
-"景”并前往下一个场景之前，你可以检查你的部队的最终位置和状态。"
+"在你的胜利提示之后，地图会变为灰色，以表示本场景已经结束了。但你将仍然可以仔"
+"细查看你的部队以及所有存活的敌人的最终位置和状态。这称为<i>逗留模式</i>。当你"
+"觉得可以结束时，点击<b>结束场景</b>按钮，就可以进入战役中的下一个场景了。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:30
 msgid "Undo"
-msgstr ""
+msgstr "撤销"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:31
-#, fuzzy
 msgid ""
 "Don’t forget, you can press <b>u</b> to undo most things; useful for "
 "correcting mistakes."
-msgstr ""
-"<big>记住：</big>\n"
-"你可以用“u”键来撤销大部分操作，这在修正错误时非常有用。"
+msgstr "别忘了，你可以按<b>u</b>键来撤销大部分操作，这在修正错误时非常有用。"
 
 #. [then]
 #. This string used as follows: "<unit name>', your new recruit, has two traits...'"
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:78
-#, fuzzy
 msgid ""
 ", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
 "‘Strong’ means a unit does more damage, and ‘intelligent’ means it needs "
 "less experience to advance a level."
 msgstr ""
-"，你的新兵，拥有两项特质：“强壮”和“聪慧”。强壮说明这个单位可以造成更多伤害，"
-"而聪慧说明他升级所需的经验值较少。"
+"，你的新兵，拥有两项特质：<i>强壮</i>和<i>聪慧</i>。“强壮”说明此单位可以造成"
+"更多伤害，而“聪慧”说明它升级所需的经验值较少。"
 
 #. [then]
 #. This string used as follows: "<unit name>' has two traits: <i>quick</i> and ...'"
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:93
-#, fuzzy
 msgid ""
 " has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit can "
 "move one tile further each turn, and ‘resilient’ means it has more hitpoints."
 msgstr ""
-"拥有两项特质：“迅捷”和“坚韧”。迅捷说明这个单位每回合可以多移动一格，而坚韧说"
-"明他有更多的生命值。"
+"拥有两项特质：<i>迅捷</i>和<i>坚韧</i>。“迅捷”说明这个单位每回合可以多移动一"
+"格，而“坚韧”则说明他有更多的生命值。"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:25
@@ -887,13 +845,12 @@ msgstr "森林据点"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:26
-#, fuzzy
 msgid ""
 "Now put an unwounded unit, preferably a Fighter, in that patch of forest on "
 "the south-east of the island; a nice, defensible spot."
 msgstr ""
-"现在，把一个没有受伤的单位，最好是一个战士，移动到海岛东南部的“森林据点”处。"
-"那是一个良好的防守点。"
+"现在，把一个没有受伤的单位，最好是一个战士，移动到岛屿东南部的那片森林里。那"
+"是一个良好的防守点。"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:27
@@ -913,17 +870,15 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
-#, fuzzy
 msgid "Move a unit (a Fighter if possible) to the patch of forest"
-msgstr "移动一个单位（最好是个战士）到“森林据点”处"
+msgstr "移动一个单位（有可能的话最好是个战士）到那片森林中"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:36
-#, fuzzy
 msgid ""
 "Advance other units onto the island or to capture villages, then <b>End "
 "Turn</b>"
-msgstr "让其他单位前进到小岛上，或者去占领其他村庄，然后“结束回合”。"
+msgstr "让其他单位前进到岛屿上，或者去占领其他村庄，然后<b>结束回合</b>。"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:234
@@ -940,7 +895,7 @@ msgstr "但愿我还能活着回去！"
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:298
 msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr "只要一个兽人步兵再碰我一下，我就要完了！"
+msgstr "只要一个交好运的兽人步兵再碰到我一下，我就要完了！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:309
@@ -986,20 +941,19 @@ msgstr "莉莎阵亡"
 #. [unit]: id=Galdrad, type=Elvish Captain
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:451
 msgid "Galdrad"
-msgstr "伽尔德拉德"
+msgstr "伽德拉德"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:478
-#, fuzzy
 msgid ""
 "Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
 "of scarecrows, perhaps?"
-msgstr "呵，伽尔德拉德！黎伐多有没有召唤些别的什么来揍我？比如说，一群稻草人？"
+msgstr "呵，伽德拉德！黎伐多有没有召唤些别的什么来揍我？比如说，一群稻草人？"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:480
 msgid "This is no game, Konrad! "
-msgstr "这次可不是闹着玩的，科纳德！"
+msgstr "这可不是闹着玩的，科纳德！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:481
@@ -1016,7 +970,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:481
 msgid "This is no game, Li’sar! "
-msgstr "这次可不是闹着玩的，莉莎！"
+msgstr "这可不是闹着玩的，莉莎！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:484
@@ -1032,7 +986,6 @@ msgstr "首先，我们必须干掉驻守在河中间的兽人步兵。他应该
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:490
-#, fuzzy
 msgid ""
 "By then, their leader will have recruited more units to send against us and "
 "the real fight will begin."
@@ -1046,27 +999,26 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:494
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:495
 msgid "Shallow"
-msgstr ""
+msgstr "浅"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:496
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:497
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:498
 msgid "Deep water"
-msgstr ""
+msgstr "深水"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:500
-#, fuzzy
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
 "the east; but we could stand on the shore and force them to fight us from "
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
-"看到那些深蓝色的水域了吗？那些地方水太深，双方都无法通过。他们可以从东面狭窄"
-"的浅蓝色水域缓慢地渡河，不过我们可以坚守河岸，迫使他们站在水中和我们战斗，那"
-"时他们将无处可躲，而我们则处于森林的保护之中。"
+"看到那些深蓝色的水域了吗？那些地方水太深，双方都无法通过。兽人们可以从东面狭"
+"窄的浅蓝色浅水中缓慢地渡河，不过我们可以坚守河岸，迫使他们站在水中和我们战"
+"斗，那时他们将无处可躲，而我们则处于森林的保护之中。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:510
@@ -1080,40 +1032,37 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:516
-#, fuzzy
 msgid ""
 "To start, we will need some units:\n"
 "two Elvish Fighters\n"
 "two Elvish Archers\n"
 "one Elvish Shaman"
 msgstr ""
-"作为开始，我们需要些部队：\n"
+"作为开始，我们需要些单位：\n"
 "两个精灵战士\n"
 "两个精灵弓箭手\n"
 "一个精灵萨满"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:591
-#, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should <i>recall</i> them now so they can "
 "gain more experience, rather than recruiting new Fighters."
 msgstr ""
 "在之前的教程中，$recall_name1和$recall_name2都积累了$recall_xp1点经验值。你现"
-"在应该把他们召回而不要征募新的单位，这样他们可以获得更多的经验。"
+"在应该把他们<i>召回</i>而不要征募新的战士，这样他们可以获得更多的经验。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:594
-#, fuzzy
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
 "and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now so "
 "they can gain more experience, rather than recruiting new Fighters."
 msgstr ""
-"在之前的教程中，$recall_name1积累了$recall_xp1点经验值，而$recall_name2获得了"
-"$recall_xp2点。你现在应该把他们召回而不要征募新的单位，这样他们可以获得更多的"
-"经验。"
+"在之前的教程中，$recall_name1积累了$recall_xp1点经验值，而$recall_name2积累了"
+"$recall_xp2点。你现在应该把他们<i>召回</i>而不要征募新的战士，这样他们可以获"
+"得更多的经验。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:600
@@ -1132,32 +1081,30 @@ msgstr "召回$recall_name1"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:604
-#, fuzzy
 msgid ""
 "Right click on the tile north-east of you and <i>recall</i> $recall_name1"
-msgstr "右键单击你东北面的格子并且召回$recall_name1"
+msgstr "右键单击你东北面的格子并<i>召回</i>$recall_name1"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:613
-#, fuzzy
 msgid ""
 "If any Elvish Fighters from your last battle had experience, we would "
 "<i>recall</i> them to the current battlefield. However, your veterans gained "
 "no experience so it’s cheaper to recruit new units instead. Recruit an "
 "Elvish Fighter."
 msgstr ""
-"如果有精灵战士在上一场战斗中获得了经验，我们将召回他们，让他们来到现在的战"
-"场。可惜他们经验都不多，所以还是征募新的战士比较划算。现在征募一个精灵战士。"
+"如果有精灵战士在上一场战斗中获得了经验，我们将把他们<i>召回</i>到现在的战场。"
+"可惜你的老兵们没得到什么经验，所以还是征募新的单位比较划算。现在征募一个精灵"
+"战士。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:616
-#, fuzzy
 msgid ""
 "If you had any experienced units alive from your last battle we would "
 "<i>recall</i> them. Instead we must recruit some new Elvish Fighters."
 msgstr ""
-"如果你有经验丰富的单位在上场战斗中生存下来的话，我们会召回他们的。现在，我们"
-"只能征募一个新的精灵战士了。"
+"如果你有经验丰富的单位在上场战斗中生存下来的话，我们会<i>召回</i>他们的。现"
+"在，我们只能征募几位新的精灵战士了。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:619
@@ -1173,20 +1120,18 @@ msgstr "右键单击你东北面的格子并征募一个精灵战士"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:660
-#, fuzzy
 msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
-msgstr "不对！我说了征募一个精灵*萨满*！现在再试一次……"
+msgstr "不对！我说了征募一个精灵<i>萨满</i>！现在再试一次……"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:669
-#, fuzzy
 msgid ""
 "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
 "friendly units around her. She also has a special attack which <i>slows</i> "
 "enemies, halving the damage they do."
 msgstr ""
-"萨满是一种相当脆弱的单位，不过有治疗周围单位的能力。同时她也有可以让敌人减速"
-"的特殊攻击，这种攻击还可以让敌人的伤害输出减半！"
+"萨满是一种相当脆弱的单位，不过有<i>治疗</i>周围单位的能力。同时她也拥有可以让"
+"敌人<i>减速</i>的特殊攻击，这种攻击还会让敌人的伤害输出减半。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:670
@@ -1216,9 +1161,8 @@ msgstr "移动莉莎去占领一座村庄"
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:692
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:731
-#, fuzzy
 msgid "No! I said recruit an Elvish <i>Archer</i>! Now try again..."
-msgstr "不对！我说了征募一个精灵*萨满*！现在再试一次……"
+msgstr "不对！我说了征募一个精灵<i>弓箭手</i>！现在再试一次……"
 
 #. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
@@ -1246,9 +1190,8 @@ msgstr "艾尔林安德"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:771
-#, fuzzy
 msgid "No! I said <i>recall</i> $recall_name2|! Now try again..."
-msgstr "不对！我说了召回$recall_name2|！现在再试一次……"
+msgstr "不对！我说了<i>召回</i>$recall_name2|！现在再试一次……"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:780
@@ -1265,15 +1208,13 @@ msgstr "弓箭手 #2"
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:783
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:820
-#, fuzzy
 msgid "Recruit two Elvish Archers in the tiles to your west"
 msgstr "在你西边的格子中征募两个精灵弓箭手"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:796
-#, fuzzy
 msgid "No! I said recruit an Elvish <i>Fighter</i>! Now try again..."
-msgstr "不对！我说了征募一个精灵*战士*！现在再试一次……"
+msgstr "不对！我说了征募一个精灵<i>战士</i>！现在再试一次……"
 
 #. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
@@ -1289,13 +1230,12 @@ msgstr "不对！我说了召回$recall_name1，不是$recall_name2|！现在再
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:855
-#, fuzzy
 msgid ""
 "No! I said <i>recall</i> $recall_name1 from the last battle, not recruit a "
 "new $recruit.language_name|! Now try again..."
 msgstr ""
-"不对！我说了召回$recall_name1，不是征募一个新的$recruit.language_name|！现在"
-"再试一次……"
+"不对！我说了<i>召回</i>$recall_name1，不是征募一个新的$recruit."
+"language_name|！现在再试一次……"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:871
@@ -1315,12 +1255,12 @@ msgstr "右键单击你东面的格子并征募一个精灵战士"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:899
-#, fuzzy
 msgid ""
 "$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</i>. "
 "Now try again..."
 msgstr ""
-"$recruit.language_name|？我说了*征募*一个新的*精灵战士*！现在再试一次……"
+"$recruit.language_name|？我说了<i>征募</i>一个新的<i>精灵战士</i>。现在再试一"
+"次……"
 
 #. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
@@ -1341,7 +1281,7 @@ msgid ""
 "The village supports one unit and pays 1 gold per turn. You’re only losing 1 "
 "gold per turn now."
 msgstr ""
-"这个村庄会支持一个单位，并每回合支付1个金币给你。你现在每回合只损失1个金币"
+"这个村庄会供给一个单位，并每回合支付1个金币给你。你现在每回合只损失1个金币"
 "了。"
 
 #. [then]
@@ -1362,34 +1302,31 @@ msgid ""
 "You’ve captured all the villages around the keep, but stay near so you can "
 "recruit more units."
 msgstr ""
-"你已经占领了城堡主楼附近的所有村庄，但是不要离开太远，这样你就可以招募更多的"
+"你已经占领了城堡主楼附近的所有村庄，但是不要离开太远，这样你就可以征募更多的"
 "单位。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:972
-#, fuzzy
 msgid ""
 "You should leave the villages near your keep for Konrad to capture. He needs "
 "to stay nearby to recruit more units anyway."
 msgstr ""
-"你应该把城堡主楼附近的村庄留给科纳德去占领，因为不管怎么说，他总是需要呆在主"
-"楼附近以便征募更多的单位。"
+"你应该把城堡主楼附近的村庄留给科纳德去占领，因为不管怎么说，他总是得呆在主楼"
+"附近以便征募更多的单位。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:973
-#, fuzzy
 msgid ""
 "You should leave the villages near your keep for Li’sar to capture. She "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
-"你应该把城堡主楼附近的村庄留给莉莎去占领，因为不管怎么说，她总是需要呆在主楼"
-"附近以便征募更多的单位。"
+"你应该把城堡主楼附近的村庄留给莉莎去占领，因为不管怎么说，她总是得呆在主楼附"
+"近以便征募更多的单位。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-#, fuzzy
 msgid "Orcish Grunts have no ranged attacks, so use your archers against them."
-msgstr "兽人没有远程攻击，用你的弓箭手攻击他们。"
+msgstr "兽人步兵没有远程攻击，所以用你的弓箭手去攻击他们。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:981
@@ -1400,7 +1337,7 @@ msgstr "用弓箭手攻击那个兽人"
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:982
 msgid "<big>Unit Summaries</big>"
-msgstr ""
+msgstr "<big>单位概述</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:983
@@ -1409,16 +1346,18 @@ msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
+"\n"
+"若要查看某个单位的能力——包括敌人的能力——那就将鼠标指向它，你就会在屏幕右边看"
+"到单位概述。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:991
-#, fuzzy
 msgid ""
 "Excellent. Elves are well-protected in the forest. There’s only a 30% chance "
 "of hitting an Elvish Archer in that tile."
 msgstr ""
-"漂亮极了。精灵们在森林中会受到良好的保护。当精灵弓箭手处于森林中时敌人只有30%"
-"的几率能击中他。"
+"漂亮极了。精灵们在森林中会受到良好的保护。当精灵弓箭手处于该格子中时，敌人只"
+"有30%的几率能击中他。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1000
@@ -1431,7 +1370,6 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1006
-#, fuzzy
 msgid "Attack the orc with the other Archer"
 msgstr "用另一个弓箭手攻击兽人"
 
@@ -1442,30 +1380,29 @@ msgstr "把战士移动到*这里*"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1019
-#, fuzzy
 msgid ""
 "Your other units cannot reach the orc this turn. Send a Fighter to the "
 "village in the far east of the map. It will take two turns to reach it."
 msgstr ""
-"你的其他单位这回合无法抵达兽人的位置。派一个战士去占领东面的那个距离挺远的村"
-"庄。他将消耗两回合以到达那里。"
+"你的其他单位这回合无法抵达兽人的位置。派一个战士去占领地图东面那个距离挺远的"
+"村庄。需要两回合才能抵达那里。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
 msgid "<big>Long-distance Movement</big>"
-msgstr ""
+msgstr "<big>长距离移动</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1021
-#, fuzzy
 msgid ""
 "\n"
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
+"\n"
 "你可以命令一个单位在多个回合中进行连续移动。只要选中单位，然后单击目的地即"
-"可。一个数字将会显示该单位需要多少回合才能达到那个格子。"
+"可。一个数字将会显示该单位需要多少回合才能到达目的地。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1022
@@ -1483,15 +1420,13 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1041
-#, fuzzy
 msgid "Move your Fighter and Shaman south, then return Konrad to the keep"
-msgstr "让战士和萨满向南移动，然后让科纳德返回城堡主楼"
+msgstr "让你的战士和萨满向南移动，然后让科纳德返回城堡主楼"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1042
-#, fuzzy
 msgid "Move your Fighter and Shaman south, then return Li’sar to the keep"
-msgstr "让战士和萨满向南移动，然后让莉莎返回城堡主楼"
+msgstr "让你的战士和萨满向南移动，然后让莉莎返回城堡主楼"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1052
@@ -1505,9 +1440,8 @@ msgstr "我没钱征募了！"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1068
-#, fuzzy
 msgid "That is often a problem, which is why owning villages is important."
-msgstr "这是个常常出现的问题，所以占领村庄是非常重要的。"
+msgstr "这常常是个问题，所以拥有村庄是非常重要的。"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1069
@@ -1529,7 +1463,7 @@ msgstr "那个兽人步兵堵住了桥！我们必须在狼骑兵到达前占领
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1096
 msgid "Can’t our units just move around him?"
-msgstr "我们的单位不能直接从他身边通过吗？"
+msgstr "我们的单位就不能直接从他身边通过吗？"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1099
@@ -1543,44 +1477,38 @@ msgstr "控制区域"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1107
-#, fuzzy
 msgid ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
 "i> and cannot move further that turn.\n"
 "To move your troops onto that island without wading slowly through the "
 "water, you’ll have to kill the Grunt."
 msgstr ""
-"不行。一旦你靠近敌人单位，你就处于他的“控制区域”内，并且在那回合无法继续深入"
-"敌后。\n"
-"如果你不想让你的军队缓慢地涉水到达那座岛屿的话，你必须杀掉那个兽人。"
+"不行。一旦你靠近敌人单位，你就处于它的<i>控制区域</i>内，并且在那回合无法继续"
+"深入敌后。\n"
+"如果你不想让你的军队缓慢地涉水到达那座岛屿的话，你必须杀掉那个兽人步兵。"
 
 #. [then]
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1134
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1145
-#, fuzzy
 msgid "Advance other units and capture villages, then <b>End Turn</b>"
-msgstr "让其他单位推进并占领剩下的村庄，然后“结束回合”"
+msgstr "让其他单位推进并占领村庄，然后<i>结束回合</i>"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1137
-#, fuzzy
 msgid ""
 "No other units can reach that orc. I hope my $unit.type survives its counter-"
 "attack! I’d better grab more villages and move everyone closer for next turn."
 msgstr ""
-"其他单位无法接近那个兽人了。但愿我的弓箭手能撑过它的反击！看来在下回合我应该"
-"占领更多的村庄，并让大家再靠近一点战场。"
+"其他单位无法接近那个兽人了。但愿我的$unit.type能撑过它的反击！看来在下回合我"
+"最好占领更多的村庄，让大家再互相靠近一点。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1138
-#, fuzzy
 msgid ""
 "Yes. If your Shaman stands just behind that unit on the bridge, she will "
 "heal it at the beginning of the next turn."
-msgstr ""
-"对。如果你的萨满紧靠着那个单位，站在他背后的桥上，那么她会在下回合开始时治疗"
-"他。"
+msgstr "对。如果你的紧靠在桥上单位的背后，那么她会在下回合开始时治疗它。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1139
@@ -1601,31 +1529,28 @@ msgid ""
 "unit will have an 80% chance of being hit! Cancel, and wait for them to "
 "attack you!"
 msgstr ""
-"附近有敌人时站在水里非常危险！你的单位有80%的几率被击中！取消移动，等他们来主"
-"动进攻你！"
+"附近有敌人时站在水里非常危险！你的单位有80%的几率被击中！取消移动，等他们来进"
+"攻你！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1208
-#, fuzzy
 msgid ""
 "Don’t forget about your Fighter in the east; you can move him south to that "
 "last village near the channel."
-msgstr "别忘了你东面的战士。你可以把他向南移动到水道旁边的最后一个村庄里。"
+msgstr "别忘了你在东面的战士，你可以把他向南移动到水道旁边的最后一个村庄里。"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1213
-#, fuzzy
 msgid ""
 "We need to occupy that village, otherwise they will take it next turn! Move "
 "a unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
-"我们需要占领岛上的村庄，否则下回合他们会占领它的！把你受伤的单位移动到村庄里"
-"去恢复，然后杀掉那个兽人！"
+"我们得占领岛上的村庄，否则下回合他们会占领它的！把一个单位移动到村庄里去，以"
+"阻止兽人对它的占领。不论你选择哪个单位，他都会得到村庄的治疗。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1225
-#, fuzzy
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
 "attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
@@ -1633,38 +1558,36 @@ msgid ""
 "at night. Your elvish warriors are <i>neutral</i>: unaffected by the time of "
 "day."
 msgstr ""
-"小心！现在已经是夜间了。兽人属于混乱立场，这表示他们的攻击在夜间会增强25%，在"
-"昼间则减弱25%。你属于守序立场：在白天更强大。精灵则是中立的：我们不受白天黑夜"
-"的影响。"
+"小心！现在已经是夜间了。兽人是<i>混沌</i>的，这意味着他们的攻击现在会增强"
+"25%。在昼间，他们的攻击则减弱25%，这可是很明显的区别。你是<i>守序</>的：在昼"
+"间变得强大，而在夜间变得弱小。精灵则是<i>中立</i>的：不受时段的影响。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1226
-#, fuzzy
 msgid "<big>Time of Day</big>"
-msgstr "<big>欢迎来到韦诺！</big>"
+msgstr "<big>时段</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1227
-#, fuzzy
 msgid ""
 "\n"
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"在这个消息之后，把鼠标在右边小地图下的图片上停留一会儿，以查看关于时段的描"
-"述。"
+"\n"
+"在这对白之后，把鼠标移动到右边小地图上方的风景图上停留一会儿。你将会看到关于"
+"时段的描述，以及何类单位在此时具有优势。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1234
-#, fuzzy
 msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
 "hitpoints at a time, while villages can heal 8 (the maximum healing for any "
 "unit)."
 msgstr ""
-"记得让你受伤的单位撤退到村庄里。治疗者每次只能回复4点生命值，而村庄则可以回复"
-"8点（对任何单位来说这都是最大值）。"
+"记得让你受伤的单位撤退到村庄里。治疗师们每次只能回复4点生命值，而村庄则可以回"
+"复8点（对任何单位来说这都是最大值）。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1241
@@ -1673,20 +1596,18 @@ msgstr "守卫此处"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
-#, fuzzy
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
 "be hard to dislodge!"
-msgstr "注意那些涉水渡河的兽人！如果让他们进入森林，那就很难打退他们了！"
+msgstr "注意那些正在渡河的兽人！如果让他们进入森林，那就很难击退了！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1248
 msgid "<big>Tracking Unused Units</big>"
-msgstr ""
+msgstr "<big>跟踪未使用的单位</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1249
-#, fuzzy
 msgid ""
 "\n"
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
@@ -1695,14 +1616,15 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"你可以确认每回合你是否已经移动了所有的单位：按键盘上的“n”键可以选中下一个单"
-"位，*空格键*可以将他设置为行动完毕。\n"
-"当“n”无法选中任何新单位时，你就可以结束你的回合了。"
+"\n"
+"通过按<b>n</b>键依次选中各个单位，你可以确保自己使用了所有的部队。如果按下<b>"
+"空格</b>，你就可以将当前选中的单位标记为行动完成，这样就不可能因不小心而移动"
+"它了。当<b>n</b>键无法选中新的单位时，就可以放心地结束您的回合了。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1254
 msgid "<big>Victory Conditions</big>"
-msgstr ""
+msgstr "<big>胜利条件</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1255
@@ -1712,31 +1634,33 @@ msgid ""
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
+"\n"
+"在此场景中，你只需要打败兽人领袖就能获胜了。（场景的胜利条件在<b>主菜单</b>的"
+"<b>场景任务目标</b>中给出。）"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1260
 msgid "<big>Recruit the Right Unit Types</big>"
-msgstr ""
+msgstr "<big>征募正确的单位类型</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1261
-#, fuzzy
 msgid ""
 "\n"
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"记得要征募在当前状况下有用的部队。弓箭手们在对付兽人步兵、狼骑兵和他们的领袖"
-"时特别有效。"
+"\n"
+"记得要征募在当前状况下有用的部队。弓箭手们在对付兽人步兵、狼骑兵和兽人领袖时"
+"特别有效。"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1279
-#, fuzzy
 msgid ""
 "Stay near the keep! You need to be on a keep to recruit more units, and I "
 "doubt the orc leader will let you use his!"
 msgstr ""
-"留在城堡主楼附近！你需要站在住楼上才能征募更多的单位，我怀疑兽人领袖是不会让"
+"留在城堡主楼附近！你需要站在主楼上才能征募更多的单位，我怀疑兽人领袖是不会让"
 "你用他的主楼的！"
 
 #. [event]
@@ -1745,8 +1669,8 @@ msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
 msgstr ""
-"他们的首领移动到那个村庄里了！他没有我所想的那么愚蠢。村庄每回合都会治疗他，"
-"而且会提供很好的防御。"
+"他们的领袖移动到那个村庄里了！他没有我所想的那么愚蠢。村庄每回合都会为他治"
+"疗，而且会提供很好的防御。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1304
@@ -1754,8 +1678,8 @@ msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
 msgstr ""
-"那个单位占领了我们的村庄！你最好把他赶出去。村庄每回合都会治疗他，而且会提供"
-"很好的防御。"
+"那个单位占领了我们的村庄！你最好把他赶出去。村庄每回合都会为他治疗，而且会提"
+"供很好的防御。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1316
@@ -1769,87 +1693,78 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1352
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
-#, fuzzy
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
 "16 experience points because he is second level. Choose your attacking unit "
 "carefully!"
 msgstr ""
-"你马上就要杀死他们的领袖了！杀死他的单位将获得16点经验值，因为他是一个2级单"
-"位。谨慎地选择你的单位！"
+"你马上就要杀死他们的领袖了！击杀他的单位将获得16点经验值，因为他是一个二级单"
+"位。谨慎地选择你的进攻单位！"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1417
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
 "points. He would have advanced to second level soon."
 msgstr ""
-"我们会怀念$deadguy.name|的，他有$deadguy.experience点经验值，本来他很快就要升"
-"到2级了。"
+"我们会怀念$deadguy.name|的，因为他有$deadguy.experience点经验值，本来他很快就"
+"要升到二级了。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1420
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points. She would have advanced to second level soon."
 msgstr ""
-"我们会怀念$deadguy.name|的，她有$deadguy.experience点经验值，本来她很快就要升"
-"到2级了。"
+"我们会怀念$deadguy.name|的，因为她有$deadguy.experience点经验值，本来她很快就"
+"要升到二级了。"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1437
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least he was not one of our experienced "
 "troops!"
-msgstr ""
-"我们会怀念$deadguy.name|的，不过总比让我们那些更有经验的部队牺牲要好些！"
+msgstr "我们会怀念$deadguy.name|的，不过至少他不是我们的老兵里的一员！"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
-#, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least she was not one of our experienced "
 "troops!"
-msgstr ""
-"我们会怀念$deadguy.name|的，不过总比让我们那些更有经验的部队牺牲要好些！"
+msgstr "我们会怀念$deadguy.name|的，不过至少她不是我们的老兵里的一员！"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1455
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
-msgstr "失去一位治疗者是对整支军队的打击！保证他们处在敌人的攻击范围之外！"
+msgstr "失去一位治疗师是对整支军队的打击！保证他们处在敌人的攻击范围之外！"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1456
 msgid "<big>Tracking Enemy Movement</big>"
-msgstr ""
+msgstr "<big>跟踪敌人的移动</big>"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1457
-#, fuzzy
 msgid ""
 "\n"
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"你可以将鼠标移动到敌人单位头上以看到他们的移动范围。你可以使用“行动”菜单中"
-"的“显示敌方移动范围”一次性观察所有敌人的移动范围。"
+"\n"
+"你可以将鼠标移动到敌人之上以查看他们的移动范围。你可以使用<b>行动</b>菜单中的"
+"<b>显示敌方移动范围</b>命令一下子查看到所有敌人的移动范围。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1461
-#, fuzzy
 msgid ""
 "Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
 "name|."
-msgstr "2级单位是很强大，但并非坚不可摧！永别了，$deadguy.name|。"
+msgstr "二级单位是很强大，但并非坚不可摧！永别了，$deadguy.name|。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1476
-#, fuzzy
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
@@ -1859,31 +1774,28 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1497
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
 "deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "升级让我的生命值完全回复了！\n"
-"我的“精准”能力让我永远有60%的几率命中对手，并且我有4次攻击，每次命中能造成9点"
-"伤害。让我来对付那些难以命中的家伙。"
+"我的<i>精准</i>技能让我总是有至少60%的几率命中对手，并且我能攻击4次，每次命中"
+"能造成9点伤害。让我来对付那些难以命中的家伙。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1506
-#, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
 "deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "升级让我的生命值完全回复了！\n"
-"我的“精准”能力让我永远有60%的几率命中对手，并且我有4次攻击，每次命中能造成9点"
-"伤害。让我来对付那些难以命中的家伙。"
+"我的<i>精准</i>技能让我总是有至少60%的几率命中对手，并且我能攻击4次，每次命中"
+"能造成9点伤害。让我来对付那些难以命中的家伙。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1522
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, and I have a special ability: <i>Ambush</"
@@ -1891,12 +1803,11 @@ msgid ""
 "next to me."
 msgstr ""
 "升级让我的生命值完全回复了！\n"
-"我对弓和剑都很擅长，而且我有一项特殊技能：伏击。我可以隐藏在森林中，敌人无法"
-"看见我，除非他们就在我旁边。"
+"我对弓和剑都很擅长，而且我拥有一项特殊技能：<i>伏击</i>。我可以隐藏在森林中，"
+"敌人无法看见我，除非他们就在我旁边。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1536
-#, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, and I have a special ability: "
@@ -1904,8 +1815,8 @@ msgid ""
 "position me carefully."
 msgstr ""
 "升级让我的生命值完全回复了！\n"
-"我对弓和剑都很擅长，而且我有一项特殊技能：领导。我周围的1级单位会多输出25%伤"
-"害，所以请谨慎地选择我的位置。"
+"我对弓和剑都很擅长，而且我拥有一项特殊技能：<i>领导</i>。我周围的1级单位会多"
+"输出25%伤害，所以请谨慎地移动我的位置。"
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1551
@@ -1918,13 +1829,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1719
-#, fuzzy
 msgid "You took too long! We’ll never be rid of these orcs!"
 msgstr "你浪费了太多时间了！这样下去我们永远无法击败这些兽人！"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1742
-#, fuzzy
 msgid ""
 "You have beaten the orcs! You may want to try some novice-level campaigns "
 "next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A Tale "
@@ -1932,9 +1841,9 @@ msgid ""
 "was specifically designed as a beginner’s campaign. Konrad, Li’sar and "
 "Delfador are characters from <i>Heir to the Throne</i>."
 msgstr ""
-"你获得了胜利！接着，你可能会想试试看初学者级别的战役，比如说“南疆哨所”、“兽人"
-"入侵”、“兄弟传说”或者“王座继承者”。“南疆哨所”是为初学者特别设计的战役。而科纳"
-"德、莉莎和黎伐多则是“王座继承者”战役中的人物。"
+"你打败了兽人！接着，你可能会想试试看新手级别的战役，比如说<i>南疆哨所</i>、"
+"<i>兽人入侵</i>、<i>兄弟传说</i>或者<i>王座之承</i>。<i>南疆哨所</i>是为初心"
+"者特别设计的战役。而科纳德、莉莎和黎伐多则是<i>王座之承</i>中的人物。"
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
@@ -1979,94 +1888,3 @@ msgstr "刺靶是用来进行剑术和枪术练习的。被一个刺靶攻击是
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "连枷"
-
-#~ msgid "Wesnoth Tutorial"
-#~ msgstr "韦诺教程"
-
-#~ msgid ""
-#~ "\n"
-#~ "For this tutorial, you are playing Konrad. "
-#~ msgstr ""
-#~ "\n"
-#~ "在本教程中，你将扮演科纳德。"
-
-#~ msgid ""
-#~ "\n"
-#~ "For this tutorial, you are playing Li’sar. "
-#~ msgstr ""
-#~ "\n"
-#~ "在本教程中，你将扮演莉莎。"
-
-#~ msgid "HERE"
-#~ msgstr "这儿"
-
-#~ msgid "Click on the End Turn button"
-#~ msgstr "点击“结束回合”按钮"
-
-#~ msgid ""
-#~ " Now, Konrad, I will leave you with more dummies to practice on! After "
-#~ "that, we have real work to do..."
-#~ msgstr ""
-#~ " 现在，科纳德，我将会留给你更多假人来做练习！结束之后，我们有些真正的活要"
-#~ "干……"
-
-#~ msgid ""
-#~ " Now, Li’sar, I will leave you with more dummies to practice on! After "
-#~ "that, we have real work to do..."
-#~ msgstr ""
-#~ " 现在，莉莎，我将会留给你更多假人来做练习！结束之后，我们有些真正的活要"
-#~ "干……"
-
-#~ msgid "SHALLOW"
-#~ msgstr "浅水"
-
-#~ msgid "DEEP"
-#~ msgstr "深水"
-
-#~ msgid ""
-#~ "Attack the orc with an Archer\n"
-#~ "(move mouse over units to see description on right)"
-#~ msgstr ""
-#~ "用一个弓箭手攻击那个兽人\n"
-#~ "（把鼠标移动到单位上就可以在右边查看其描述）"
-
-#, fuzzy
-#~ msgid ""
-#~ "You only need to defeat the leader to win (see <b>Main Menu</b>-"
-#~ "><b>Objectives</b>)."
-#~ msgstr "你只需要击败敌人领袖就可以取得胜利（查看“主菜单”->“任务目标”）。"
-
-#~ msgid ""
-#~ "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3–5). The ranged "
-#~ "attack was safer.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "你的精灵使用了剑（5-4，或者说每次5点伤害，攻击4次），这是一种近战攻击。刺"
-#~ "靶会以它的近战攻击（3-5）进行反击。而远程攻击更安全。\n"
-#~ "结束你的回合，然后再次攻击。"
-
-#~ msgid ""
-#~ "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3–5).\n"
-#~ "You should tell the other Elf to use the bow."
-#~ msgstr ""
-#~ "你的精灵使用了剑（5-4，或者说每次5点伤害，攻击4次），这是一种近战攻击。刺"
-#~ "靶会以它的近战攻击（3-5）进行反击。\n"
-#~ "你应该让另一个精灵使用弓。"
-
-#~ msgid ""
-#~ "Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 "
-#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#~ "could not defend itself.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "你的精灵使用了弓，这是一种远程攻击（3-3，或者说每次3点伤害，攻击3次）。刺"
-#~ "靶没有远程攻击，只有近战攻击，所以它无法反击。\n"
-#~ "结束你的回合，然后再次攻击。"
-
-#~ msgid "Turns run out"
-#~ msgstr "回合数耗尽"
-
-#~ msgid "No! I said recruit an Elvish ARCHER! Now try again..."
-#~ msgstr "不对！我说了征募一个精灵*弓箭手*！现在再试一次……"

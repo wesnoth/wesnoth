@@ -1,26 +1,26 @@
-# Chinese translations for Battle for Wesnoth package.
-# Copyright (C) 2005 Wesnoth development team
+# The Battle for Wesnoth - Simplified Chinese Translations
+# Copyright (C) 2005-2011 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
-# jan2xue <75jan@163.com>, 2005
-# Huang huan <unicon221@gmail.com>, 2005.
-# Dionysus <huang.wei.bhu@gmail.com>, 2007. (unicon)
+# jan2xue <75jan@163.com>, 2005.
+# Huang Huan <unicon221@gmail.com>, 2005.
+# Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth\n"
+"Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2010-05-22 11:54+0800\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
+"PO-Revision-Date: 2011-11-14 21:27+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
-"Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
-"Language: \n"
+"Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
+"translation-cn>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n>1);\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -29,16 +29,12 @@ msgstr "4p — 新世界"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
 msgstr ""
-"在这个4玩家的生存场景里，您可以建造建筑、改变地形。请使用地图设置。推荐初始资"
-"金为100金币。"
+"在这个4玩家的生存场景里，您可以建造建筑以及改变地形。请使用地图设置。推荐初始"
+"资金为100金币."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
@@ -108,18 +104,14 @@ msgstr "您摧毁了蘑菇矿。现在东南方亡灵军团的收入减少了10�
 msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
-msgstr "您的一位农民不慎误入了北面和南面的蜘蛛洞穴中的一个。"
+msgstr "您的一位农民不慎误入了北面或南面的某个蜘蛛洞穴之中。"
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:591
-#, fuzzy
-#| msgid ""
-#| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
-#| "rescue them?"
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
-msgstr "我发誓，我看到有人被蜘蛛网缠住了。也许我们应该去解救他们？"
+msgstr "我发誓，我看到有人被蜘蛛网缠住了。也许我们应该前去相救？"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:613
@@ -144,8 +136,8 @@ msgid ""
 "it must be where the mainstay of their resources are produced. If we could "
 "destroy them our chances wouldn’t nearly be so slim."
 msgstr ""
-"看起来似乎敌人在附近建了一些地下蘑菇矿——这必然是他们资源的主要来源。如果我军"
-"可以摧毁这些矿场，那我们的胜算就不会只有现在这么一点点了。"
+"看起来似乎敌人在附近建了一些地下蘑菇矿——这必然是其资源的主要来源。如果我军可"
+"以摧毁这些矿场，那我们的胜算就不会只有现在这么一点点了。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:653
@@ -298,7 +290,7 @@ msgid ""
 "research target."
 msgstr ""
 "“精灵式”的村庄代表着大学。每当您的回合开始，身处大学的法师就会自动增加您所选"
-"定的研究目标的研究进度。右键点击法师可以改变研究目标。"
+"定的研究目标的研究进度。右键点击大学里的法师以改变研究目标。"
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -314,7 +306,7 @@ msgstr "外交"
 msgid ""
 "Right-clicking on your leader when in a university allows you to select "
 "special diplomatic options."
-msgstr "右键点击身处大学的领袖就可以选择特殊的外交选项。"
+msgstr "当您的领袖身处大学时，右键点击他就可以选择特殊的外交选项。"
 
 #. [set_menu_item]: id=anl_help
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:87
@@ -324,17 +316,17 @@ msgstr "帮助"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:111
 msgid "A New Land — Help"
-msgstr "新世界 - 帮助"
+msgstr "新世界 — 帮助"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
 msgid "Select a topic."
-msgstr "选择主题。"
+msgstr "选择一个主题。"
 
 #. [option]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:115
 msgid "Done"
-msgstr "结束"
+msgstr "完成"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:47
@@ -367,41 +359,29 @@ msgstr "您于兵法所知甚少，$sw_player_name|。我自当倾囊相授。"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of agriculture"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "分享农业知识"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of mining"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "分享矿业知识"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of warfare"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "分享军事知识"
 
 #. [message]: speaker=unit
@@ -424,12 +404,11 @@ msgstr "什么都不做"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:315
-#, fuzzy
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
 "Give 20 gold to another player"
 msgstr ""
-"捐助\n"
+"<span color='green'>捐助资金</span>\n"
 "捐助另一玩家20金币。"
 
 #. [message]: speaker=unit
@@ -445,12 +424,11 @@ msgstr "返回"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:359
-#, fuzzy
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
 "Help an ally with their research"
 msgstr ""
-"分享知识\n"
+"<span color='green'>分享知识</span>\n"
 "帮助一位盟友进行研究"
 
 #. [message]: speaker=unit
@@ -460,29 +438,27 @@ msgstr "您想同谁分享知识？"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:417
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
 "Lets you recruit a Dwarvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
-"与矮人谈判\n"
-"可以招募矮人单位\n"
+"<span color='green'>与矮人谈判</span>\n"
+"使您可以招募一个矮人单位\n"
 "谈判进度：$player_$side_number|.leader_option_1.progress|/$player_"
 "$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:472
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
 "Lets you recruit an Elvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
-"与精灵谈判\n"
-"可以招募精灵单位\n"
+"<span color='green'>与精灵谈判</span>\n"
+"使您可以招募一个精灵单位\n"
 "谈判进度：$player_$side_number|.leader_option_2.progress|/$player_"
 "$side_number|.leader_option_2.target"
 
@@ -545,8 +521,8 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
-"我们正在研究$player_$side_number|.research.target_language_name。您想让我们的"
-"学者专攻哪一方面？\n"
+"我们正在研究 $player_$side_number|.research.target_language_name|。您想让我们"
+"的学者专攻哪一方面？\n"
 "\n"
 "我方粮产：$player_$side_number|.farming.gold 金币\n"
 "我方矿产：$player_$side_number|.mining.gold 金币\n"
@@ -558,19 +534,13 @@ msgstr "继续照旧"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:167
-#, fuzzy
-#| msgid ""
-#| "Agriculture\n"
-#| "Farmers produce +1 gold\n"
-#| "Study Progress: $player_$side_number|.farming.progress|/$player_"
-#| "$side_number|.farming.target"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
-"农业\n"
+"<span color='green'>农业</span>\n"
 "农民们多生产1金币\n"
 "研究进度：$player_$side_number|.farming.progress|/$player_$side_number|."
 "farming.target"
@@ -584,15 +554,14 @@ msgstr "农业"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
-#, fuzzy
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
-"矿业\n"
-"矿工们多生产1金币\n"
+"<span color='green'>矿业</span>\n"
+"可以让矿工们多产出一个金币\n"
 "研究进度：$player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 
@@ -603,15 +572,14 @@ msgstr "矿业"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:189
-#, fuzzy
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
-"军事\n"
-"可以让您招募一个新的兵种\n"
+"<span color='green'>军事</span>\n"
+"可以让您招募一种新的单位\n"
 "研究进度：$player_$side_number|.warfare.progress|/$player_$side_number|."
 "warfare.target"
 
@@ -626,8 +594,8 @@ msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
-"$player_$side_number|.name的农田现在可产$player_$side_number|.mining.gold金"
-"币。"
+"$player_$side_number|.name的农田现在可以产出$player_$side_number|.mining.gold"
+"金币。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:279
@@ -635,8 +603,8 @@ msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
-"$player_$side_number|.name的矿场现在可产$player_$side_number|.mining.gold金"
-"币。"
+"$player_$side_number|.name的矿场现在可以产出$player_$side_number|.mining.gold"
+"金币。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:306
@@ -644,23 +612,23 @@ msgid ""
 "$player_$side_number|.name|, we have finished researching warfare. Right-"
 "click on a mage in a university to select a unit to recruit."
 msgstr ""
-"$player_$side_number|.name，我们完成了军事研究。右键点击在大学的法师可以招募"
-"一个单位。"
+"$player_$side_number|.name，我们完成了军事研究。右键点击身处大学的法师可以招"
+"募一个单位。"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:197
 msgid "Let’s cut you free!"
-msgstr "我们来解救你啦！"
+msgstr "我们来解救你了！"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:201
 msgid "You release the creature from the web and it agrees to help you."
-msgstr "您从网里解救了那个生物，他答应帮助您。"
+msgstr "您从网中解救了这个生物，他答应帮助您。"
 
 #. [set_menu_item]: id=anl_get_to_work
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
 msgid "Get to Work!"
-msgstr "回去干活！"
+msgstr "去干活！"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:50
@@ -670,7 +638,7 @@ msgstr "阁下，我应该做什么？"
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
 msgid "Convert to Grassland"
-msgstr "变成草地"
+msgstr "变为草地"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69

@@ -1,29 +1,27 @@
-# Copyright (C) 2005 Wesnoth development team
+# The Battle for Wesnoth - Simplified Chinese Translations
+# Copyright (C) 2005-2011 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Automatically generated, 2005.
-# jan2xue <75jan@163.com>, 2005
-# Huang huan <unicon221@gmail.com>, 2005.
-# Dionysus <huang.wei.bhu@gmail.com>, 2007.  (unicon)
+# jan2xue <75jan@163.com>, 2005.
+# Huang Huan <unicon221@gmail.com>, 2005.
+# Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
+# Dugucloud <dugucloud@qq.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth\n"
+"Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-07 17:23+0100\n"
-"PO-Revision-Date: 2010-08-30 19:32+0800\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
+"PO-Revision-Date: 2011-11-14 21:39+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
-"Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
-"Language: \n"
+"Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
+"translation-cn>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Chinese\n"
-"X-Poedit-Country: CHINA\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Poedit-Bookmarks: -1,-1,-1,3,-1,-1,-1,-1,-1,-1\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -64,7 +62,7 @@ msgid ""
 "ability of the unit being attacked."
 msgstr ""
 "魔法：\n"
-"本攻击无视被攻击单位的防御能力，而总是具有70%的击中率。"
+"本攻击无视被攻击单位的防御能力，而总是具有70%的命中率。"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
@@ -80,7 +78,7 @@ msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "先制：\n"
-"使用本攻击方式时，本单位每次都能率先攻击，即使是在防御时也不例外。"
+"使用本攻击时，本单位每次都能率先攻击，即使是在防御时也不例外。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -109,8 +107,8 @@ msgstr ""
 "治疗+4：\n"
 "允许本单位在每回合开始时治疗相邻区域内受伤的友军单位。\n"
 "\n"
-"本治疗者所治疗的单位每回合最多能恢复4点生命值，或阻止毒药在该回合发作。\n"
-"中毒的单位不能由治疗者解毒，只有进入村庄或者被拥有治愈能力的单位治疗。"
+"本治疗师所治疗的单位每回合最多能恢复4点生命值，或阻止毒药在该回合发作。\n"
+"中毒的单位不能由治疗师解毒，只有进入村庄或者被拥有治愈技能的单位治愈。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
@@ -140,25 +138,24 @@ msgstr ""
 "治疗+8：\n"
 "本单位将魔法与草药混合使用以在战场上治疗单位，比通常可能的速度快得多。\n"
 "\n"
-"本治疗者所治疗的单位每回合最多能恢复8点生命值，或阻止毒药在该回合发作。\n"
-"中毒的单位不能由治疗者解毒，只有进入村庄或者被拥有治愈能力的单位治疗。"
+"本治疗师所治疗的单位每回合最多能恢复8点生命值，或阻止毒药在该回合发作。\n"
+"中毒的单位不能由治疗师解毒，只有进入村庄或者被拥有治愈技能的单位治愈。"
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
 msgid "Encyclopedia"
-msgstr ""
+msgstr "韦诺大百科"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
-msgstr ""
+msgstr "<ref>dst='..geography' text='地理'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
-#, fuzzy
 msgid "Caste"
-msgstr "城堡"
+msgstr "阶层"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:8
@@ -167,11 +164,13 @@ msgid ""
 "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
 "Fighter'</ref>."
 msgstr ""
+"龙人的两种变体中的一种：或者是<ref>dst='unit_Drake Clasher' text='冲击者'</"
+"ref>，或者是<ref>dst='unit_Drake Fighter' text='战士'</ref>。"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
 msgid "Aerie"
-msgstr ""
+msgstr "龙穴"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
@@ -180,12 +179,13 @@ msgid ""
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
+"<ref>dst='flight' text='龙群'</ref>的家，一座非常巨大的类似城堡的建筑物。其中"
+"有<ref>dst='breeding_pen' text='饲育栏'</ref>。"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
-#, fuzzy
 msgid "Breeding Pen"
-msgstr "食尸"
+msgstr "饲育栏"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
@@ -194,23 +194,26 @@ msgid ""
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
 "text='Dominant'</ref>’s eye."
 msgstr ""
+"<ref>dst='aerie' text='龙穴'</ref>的一部分，在这里，无意识的"
+"<ref>dst='breeder' text=饲育者'</ref>们在<ref>dst='dominant' text='统御者'</"
+"ref>的眼皮底下生活。"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
 msgid "Breeding Cycle"
-msgstr ""
+msgstr "饲育周期"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:26
 msgid ""
 "The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
 "next."
-msgstr ""
+msgstr "从产下一个<ref>dst=egg text='蛋'</ref>到产下另一个蛋之间所经历的时间。"
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
 msgid "World Ocean"
-msgstr ""
+msgstr "世界洋"
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:32
@@ -219,11 +222,14 @@ msgid ""
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
 "the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
 msgstr ""
+"世界洋是环绕着<ref>dst='morogor' text='莫罗戈'</ref>群岛的开阔的大海的名字。"
+"龙人们相信大洋在<ref>dst='abyss' text='深渊'</ref>终结，那是一片宽阔而致命的"
+"瀑布。"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
 msgid "New Continent"
-msgstr ""
+msgstr "新大陆"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
@@ -232,23 +238,25 @@ msgid ""
 "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
 "flight of Galun."
 msgstr ""
+"新大陆——位于<ref>dst='morogor' text='莫罗戈'</ref>东方的大陆。在伽朗部落之"
+"前，其存在并不为龙人们所知。"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
 msgid "Abyss"
-msgstr ""
+msgstr "深渊"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:44
 msgid ""
 "In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
 "falls off the world-disc."
-msgstr ""
+msgstr "在龙人的宇宙观里，这是一片宽广而致命的大瀑布，大洋在此坠落，消失于世。"
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
 msgid "Spiral Path"
-msgstr ""
+msgstr "灵魂之路"
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:50
@@ -257,11 +265,13 @@ msgid ""
 "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
 "Path'</ref>"
 msgstr ""
+"一个准秘密的龙人组织，致力于阻止一场可能发生的马尔萨斯式的大决战。也请参见"
+"<ref>dst='straight_path' text='正统之路'</ref>。"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:55
 msgid "Straight Path"
-msgstr ""
+msgstr "正统之路"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:56
@@ -270,11 +280,13 @@ msgid ""
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
+"永不停止扩张和征服的龙人传统。这个术语通常是由<ref>dst='spiral_path' text=灵"
+"魂之路'</ref>的成员们使用的。"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
 msgid "Dominant"
-msgstr ""
+msgstr "统御者"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
@@ -284,11 +296,14 @@ msgid ""
 "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
 "privileges on others."
 msgstr ""
+"成为龙人领袖的<ref>dst='aspirant' text='渴求者'</ref>，他是在部落中唯一一个可"
+"以和<ref>dst='breeder' text='饲育者'</ref>繁衍后代的龙人。在很不常见的情况"
+"下，他也可能把繁殖的权限赐予其他龙人。"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
 msgid "Vulcaniad"
-msgstr ""
+msgstr "火山周期"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
@@ -297,11 +312,13 @@ msgid ""
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
 "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
 msgstr ""
+"<ref>dst='mount_morogor' text='莫罗戈山'</ref>的（不规则的）喷发间歇期。 "
+"<ref>dst='long_count' text='长时历'</ref>便是以此为基础的。"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
 msgid "Recorder"
-msgstr ""
+msgstr "记录者"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
@@ -311,28 +328,30 @@ msgid ""
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
 msgstr ""
+"记录者是龙人的书记员，他们已经完全掌握了龙人的<ref>dst='drakish_script' "
+"text='文字'</ref>。记录者<ref>dst='caste' text='阶层'</ref>是龙人阶层中唯一一"
+"个不取决于遗传的：他们从所有其他的阶层中征募新成员。"
 
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
 msgid "Laying"
-msgstr ""
+msgstr "产卵"
 
 #. [topic]: id=laying
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
 msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr ""
+msgstr "<ref>dst='breeding_cycle' text='饲育期'</ref>的一部分。"
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
 msgid "Hatching"
-msgstr ""
+msgstr "孵化"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
-#, fuzzy
 msgid "Hatchling"
-msgstr "治疗"
+msgstr "幼仔"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
@@ -341,12 +360,13 @@ msgid ""
 "the current generation of hatchlings are the most aggressive is the behavior "
 "of the <ref>dst='flight' text='flight'</ref>."
 msgstr ""
+"最年幼的一代龙人。在每一代的幼仔中，总是越小的幼仔越具有侵略性，这是"
+"<ref>dst='flight' text='龙群'</ref>的特点。"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
-#, fuzzy
 msgid "Fledgling"
-msgstr "治疗"
+msgstr "雏龙"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
@@ -355,11 +375,14 @@ msgid ""
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
+"稍大的一代幼年龙人，已有更幼小的一代后辈出生。如果<ref>dst='flight' text='龙"
+"群'</ref>可以承受一下子失去一整代幼仔的代价的话，他们便会开始 "
+"<ref>dst='swarming' text='云游'</ref>。"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
 msgid "Breeder"
-msgstr ""
+msgstr "饲育者"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:104
@@ -370,11 +393,15 @@ msgid ""
 "take care of their food for themselves when laying. Drake breeders become "
 "fertile after the next <ref>dst='hatching' text='hatching'</ref>."
 msgstr ""
+"雌性龙人。她们的数量很稀少，因为将孵化出饲育者的<ref>dst='egg' text='龙蛋'</"
+"ref>必须要特别小心地照料才行。饲育者的数量也被周围非饲育者的数量所限制，这是"
+"由于在产卵时，她们不能自己觅食。在下一次<ref>dst='hatching' text='孵化'</ref>"
+"之后，龙人饲育者们会变得多产。"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:109
 msgid "Egg, Drake"
-msgstr ""
+msgstr "龙人的蛋"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:110
@@ -383,11 +410,13 @@ msgid ""
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid "
 "and to some extent the ambient temperature."
 msgstr ""
+"<ref>dst='hatchling' text='幼仔'</ref>所属的<ref>dst=caste text='阶层'</ref>"
+"取决于它被产下的时间，也部分取决于周遭的温度。"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
 msgid "Flight"
-msgstr ""
+msgstr "龙群"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
@@ -396,11 +425,14 @@ msgid ""
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
+"龙人的部落，他们生活在一个<ref>dst='aerie' text='龙穴'</ref>中，控制着一片狩"
+"猎区。每个部落都有一位 <ref>dst='dominant' text='统御者'</ref>，他有权赐予其"
+"他龙人交配的权利。"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:121
 msgid "Aspirant"
-msgstr ""
+msgstr "渴求者"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
@@ -410,23 +442,24 @@ msgid ""
 "secretion of the hormone is caused by hunt and combat actions in which the "
 "drake is involved."
 msgstr ""
+"发育了的雄性龙人，他因此能够和<ref>dst='breeder' text='饲育者'</ref>们结合。"
+"荷尔蒙的分泌是由这只龙人参与的狩猎和战斗行动所造成的。"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:127
 msgid "Ascendant"
-msgstr ""
+msgstr "飞升者"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
-msgstr ""
+msgstr "龙人们对真正的<ref>dst='unit_Fire Dragon' text='巨龙'</ref>的称谓。"
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
-#, fuzzy
 msgid "Intendant"
-msgstr "聪慧"
+msgstr "监督者"
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:134
@@ -438,12 +471,15 @@ msgid ""
 "likeliest to be granted mating privileges, especially after a notable "
 "service."
 msgstr ""
+"<ref>dst='dominant' text='统御者'</ref>手下的<ref>dst='aspirant' text='渴求"
+"者'</ref>副官之一。传统上，除了统御者自己所在的<ref>dst=caste text='阶层'</"
+"ref>之外，他在每个阶层里都有一位副官。有时候，另外的一些“监督者”会被指派给特"
+"殊的使命。监督者们是最可能被赐予交配权限的，尤其是当他们立下显赫的功劳之后。"
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
-#, fuzzy
 msgid "Swarm"
-msgstr "群击"
+msgstr "游子"
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:140
@@ -451,12 +487,13 @@ msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
+"离开<ref>dst='aerie' text='龙穴'</ref>去寻找新家园的<ref>dst='swarmlings' "
+"text='游子'</ref>。"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
-#, fuzzy
 msgid "Swarming"
-msgstr "群击"
+msgstr "云游"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -465,33 +502,36 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
+" 为了寻找新<ref>dst='aerie' text='龙穴'</ref>的<ref>dst='flight' text='远"
+"游'</ref>，每个<ref>dst='breeding_cycle' text='饲育周期'</ref>中都会重复一"
+"次。请参见<ref>dst='swarm' text='游子'</ref>"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
 msgid "Runners"
-msgstr ""
+msgstr "逃跑者"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:152
 msgid "Drakish term for escaped slaves hunted as game."
-msgstr ""
+msgstr "龙人语中用来指逃跑后被当作猎物猎取的奴隶。"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
 msgid "Mount Morogor"
-msgstr ""
+msgstr "莫罗戈山"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
 msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
-msgstr ""
+msgstr "位于<ref>dst='morogor' text='莫罗戈'</ref>群岛的中心岛上的火山。"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
 msgid "Long Count"
-msgstr ""
+msgstr "长时历"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
@@ -499,23 +539,25 @@ msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
+"基于<ref>dst='vulcaniad' text='火山周期'</ref> and <ref>dst=breeding_cycle "
+"text='饲育周期'</ref>的龙人历法。"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
 msgid "Long Pig"
-msgstr ""
+msgstr "长猪"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:170
 msgid ""
 "South Seas pidgin for human meat, used to translate a Drakish word with the "
 "same meaning."
-msgstr ""
+msgstr "在南海商旅的黑话中，指的是人肉。这是用来翻译一个含义相同的龙人语汇的。"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
 msgid "Ceramics"
-msgstr ""
+msgstr "制陶术"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
@@ -524,11 +566,13 @@ msgid ""
 "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
 "generate the amount of heat to cure the pieces to full strength."
 msgstr ""
+"陶瓷是龙人最常用的材料。他们是制陶术的大师。只有<ref>dst='unit_Drake Burner' "
+"text='灼烧者'</ref>们才能产生出足够的热量，将陶瓷锻造到最坚固的程度。"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:181
 msgid "Drakish, script"
-msgstr ""
+msgstr "龙人文字"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
@@ -537,28 +581,30 @@ msgid ""
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
 "text='Recorder'</ref> vocation."
 msgstr ""
+"龙人的书面语。由<ref>dst='recorder' text='记录者'</ref>这一职阶的成员们书写在"
+"陶瓷片上。"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:187
 msgid "Drakish, language"
-msgstr ""
+msgstr "龙人语"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:188
 msgid "The language spoken by the drakes."
-msgstr ""
+msgstr "龙人所说的语言"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
 #: data/core/encyclopedia/geography.cfg:11
 #: data/core/encyclopedia/geography.cfg:18
 msgid "Geography"
-msgstr ""
+msgstr "地理"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:25
 msgid "Arkan-thoria"
-msgstr ""
+msgstr "阿坎-索里亚"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
@@ -566,11 +612,13 @@ msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
+"发源于<ref>dst='heart_mountains' text='心之山脉'</ref>，并向东流入利斯特拉河"
+"的河流。"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:31
 msgid "Great Ocean"
-msgstr ""
+msgstr "大洋"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
@@ -579,11 +627,13 @@ msgid ""
 "and all rivers eventually flow to it. Far to the west in the the Great Ocean "
 "is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"位于<ref>dst='great_continent' text='大陆'</ref>之西，一切河流终将汇入的所"
+"在。大洋的极西面有称为<ref>dst='morogor' text='莫罗戈'</ref>的巨大群岛。"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:37
 msgid "Morogor"
-msgstr ""
+msgstr "莫罗戈"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:40
@@ -594,23 +644,27 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
+"群岛，位于<ref>dst='great_ocean' text='大洋'</ref>中的某处，在"
+"<ref>dst='green_isle' text='绿岛'</ref> 之西，<ref>dst=old_continent text='旧"
+"大陆'</ref>之东。\n"
+"此地居住的主要是<ref>dst='..race_drake' text='龙人'</ref>。\n"
+"群岛的中心岛也被称为“莫罗戈”。"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
-#, fuzzy
 msgid "Green Isle"
-msgstr "绿"
+msgstr "绿岛"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
-msgstr ""
+msgstr "<ref>dst='great_ocean' text='大洋'</ref>中较大的一个岛。"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
 msgid "Old Continent"
-msgstr ""
+msgstr "旧陆"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
@@ -618,11 +672,13 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"在<ref>dst='morogor' text='莫罗戈'</ref>的西面，与它隔着"
+"<ref>dst='great_ocean' text='大洋'</ref>相望。"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:57
 msgid "Great Continent"
-msgstr ""
+msgstr "大陆"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:58
@@ -631,11 +687,13 @@ msgid ""
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"<ref>dst='kingdom_wesnoth' text='韦诺王国'</ref>所在的大陆。其西海岸被"
+"<ref>dst='great_ocean' text='大洋'</ref>所包围。"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:63
 msgid "Irdya"
-msgstr ""
+msgstr "伊利迪亚"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:64
@@ -645,11 +703,14 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
+"<ref>dst='kingdom_wesnoth' text='韦诺'</ref>王国所在的世界的名字叫做“伊利迪"
+"亚”。然而，在主地图所描述的时代里，这个名字很少会被提起。人们通常只是说“世"
+"界”，或者更诗意一些，“宽广而翠绿的世界”。 "
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
 msgid "Kingdom of Wesnoth"
-msgstr ""
+msgstr "韦诺王国"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:95
@@ -708,11 +769,53 @@ msgid ""
 "south of Aldril. It receives drainage from the Brown Hills and feeds into "
 "the Great River. (Not shown on the main map.)"
 msgstr ""
+"韦诺王国位于<ref>dst='great_continent' text='大陆'</ref>的中北部。绝大部分主"
+"线战役的剧情围绕此地。北面的大河，西面的大洋，"
+"<ref>dst='southwest_elven_lands' text='西南面'</ref>的艾森丛林，以及东南面的"
+"苦涩沼泽（位于主地图的右下角）为它划定了疆界。\n"
+"\n"
+"在艾森河之上，塔恩要塞之南，是韦诺的一块边疆领地。其南部以茂密的大森林（地图"
+"上未标注）为界，艾森丛林可以视作是这一大森林最北边的突出部分。\n"
+"\n"
+"    • 著名城市：\n"
+"          ◦ 维尔帝：韦诺的首都。\n"
+"          ◦ 艾迪尔：珍珠湾中的城市。\n"
+"          ◦ 黑水港：珍珠湾南方的城市。\n"
+"          ◦ 卡辛：位于灰色丛林和大河之间。\n"
+"          ◦ 丹·冬克：韦诺的最大城市，位于王国的正中，紧靠在维尔帝的西北面。\n"
+"          ◦ 索拉多克：位于韦诺极北边境的哨站，扼守着维尔帝河与大河的交汇"
+"点。\n"
+"          ◦ 塔恩要塞：位于韦诺极南边境的哨站，控制着横跨艾森河的南北方向的通"
+"路。\n"
+"          ◦ 塔斯：位于丹·冬克北方的重要的要塞都市，固守着棕色丘陵以东、雅碧滩"
+"以北的蛮荒地区。\n"
+"\n"
+"    • 著名地貌：\n"
+"          ◦ 狮鹫山：传说中的狮鹫的家园。\n"
+"          ◦ 雅碧滩：大河狭窄的一部分，通常在韦诺军队的控制之下。\n"
+"          ◦ 维尔帝河：大河的支流，一直向南流去。\n"
+"          ◦ 中央大平原：以维尔帝、丹·冬克和塔恩要塞为界的区域，这里是韦诺的粮"
+"食主产区，绝大部分人口居住于此。\n"
+"          ◦ 杜拉图斯丘陵：位于中央大平原边界之上的延绵不断的丘陵，这里蓄养着"
+"韦诺的大部分家畜，也滋养着其农业。\n"
+"          ◦ 棕色丘陵：位于狮鹫山周围的荒地，没有什么人口，有时会十分危险。\n"
+"          ◦ 骏马平原：大河西面紧靠的延绵不绝的平原，西至格林之森，东至维尔帝"
+"河，而其南部边域则融入了中央大平原。这里是强大的氏族的家园，韦诺最优良的骏马"
+"在此饲育。\n"
+"          ◦ 艾斯玛克丘陵：位于大河以南维尔帝河以东的巨大隆起。其最北边最靠近"
+"维尔帝河的区域，曾多次有过韦诺人定居。但王国对此地的控制充其量只能说是无力"
+"的，而贼党却四处横行。\n"
+"          ◦ 格林之森：有时被称作皇家森林，是以哈德里克二世的一个儿子的名字来"
+"命名的。\n"
+"          ◦ 灰色丛林：位于韦诺荒野的中心位置的大森林，在卡辛和艾迪尔之间，通"
+"常被认为是个闹鬼的地方。\n"
+"          ◦ 绿色沼泽：位于韦诺荒野的中心位置的大沼泽，在艾迪尔之南。棕色丘陵"
+"上的污水流入这里，而其自身又流入大河。（未在主地图上标明。）"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:100
 msgid "Elensefar"
-msgstr ""
+msgstr "埃仁萨伐"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
@@ -733,11 +836,24 @@ msgid ""
 "          ◦ <ref>dst='great_river' text='Great River'</ref>: It is very wide "
 "at this point, and only ships can cross it."
 msgstr ""
+"埃仁萨伐有时是<ref>dst='kingdom_wesnoth' text='韦诺'</ref>的一个省，有时是一"
+"个独立的国家，还有时和韦诺缔结条约组成联邦。 其领土北面以大河为界，东面与韦诺"
+"由一条不甚严谨的国境线分隔开，南面直到珍珠湾，而西面则是"
+"<ref>dst='great_ocean' text='大洋'</ref>。在韦诺的历史记载中有更多相关的信"
+"息。\n"
+"\n"
+"    • 著名城市：\n"
+"          ◦ 埃仁萨伐：都城，位于<ref>dst='great_river' text='大河'</ref>三角"
+"洲的一个岛上。\n"
+"          ◦ 卡辛：位于韦诺-埃仁萨伐边境的城市，两国对此城之归属有争议。\n"
+"     • 著名地貌：\n"
+"          ◦ <ref>dst='great_river' text='大河'</ref>：大河的这一河段十分宽"
+"阔，只有船只才能横渡之。"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:112
 msgid "Northlands"
-msgstr ""
+msgstr "北方大陆"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:130
@@ -782,11 +898,41 @@ msgid ""
 "          ◦ Great River: The origin of this river is somewhere in the east "
 "of the northern lands"
 msgstr ""
+"北方大陆并没有政府存在。各路兽人、矮人、野蛮人甚至精灵居住于此。北陆的北方和"
+"东方边界并不明确，而南方边界是<ref>dst='great_river' text='大河'</ref>，西方"
+"边界是<ref>dst='great_ocean' text='大洋'</ref>。\n"
+"\n"
+"    • 著名城市：\n"
+"          ◦ 戈拉姆多：一个兽人部落的首都。\n"
+"          ◦ 罗迈尔：另一个兽人部落的首都。\n"
+"          ◦ 韦弥尔：卡·利安——精灵大元老会所在地。\n"
+"          ◦ 矮人之门：心之山脉南部纳尔迦区域中的一个人类和矮人混居的城镇，是"
+"主要的贸易中心。\n"
+"          ◦ 达尔本和德尔温：人类村庄，是由韦诺黄金时代的大扩张中渡过大河的移"
+"民们所建造的，现在已经被废弃了。埃仁萨伐东北面的森林区域，也就是这些村庄所在"
+"的地方，被人类称为艾纽温省，但精灵却称此地为韦弥尔。\n"
+"\n"
+"    • 著名地貌：\n"
+"          ◦ 心之山脉：北方平原与河滩之间的一道几乎无法逾越的天险。\n"
+"          ◦ 心之利齿：瓦格湖西南部，韦弥尔森林北部的那些特别让人望而生畏的高"
+"峰，是整个心之山脉中最危险的最不适合居住的区域。只有隐士、疯子和法师定居于"
+"此。\n"
+"          ◦ 恐惧沼泽：心之山脉和大河之间的非常巨大的沼泽，因危险而恶名昭著的"
+"地方。\n"
+"          ◦ 瓦格湖： 广阔的高山湖，其引出的河流雕琢出了穿过北方山脉的唯一一条"
+"通路。\n"
+"          ◦ 阿坎-索里亚：从瓦格湖中流出的河。这是精灵语名称。人类称其为“绵长"
+"之河”。\n"
+"          ◦ 利斯特拉河：大河的支流，向南方流淌着，阿坎-索里亚注入此河。\n"
+"          ◦ 林坦尼森林：北方大森林的最南边的部分，是巨大的丛林。其东面和北面"
+"的边界究竟在何方，只有精灵们才知道。其议会所在地，埃仁希利亚，只有屈指可数的"
+"人类到访过。\n"
+"          ◦ 大河：大河的源头在北陆东方的某处。"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr ""
+msgstr "西南精灵领地"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
@@ -803,12 +949,20 @@ msgid ""
 "the southwest—much farther than is charted—and is home to <ref>dst='.."
 "race_elf' text='elves'</ref>."
 msgstr ""
+"树精灵和北方精灵是被区隔开来的，他们之间只有断断续续的联系，树精灵和大部分其"
+"他国家之间的联系也是如此。其领地以绿色沼泽为东北界，南至大沙漠（未标注），西"
+"至<ref>dst='great_ocean' text='大洋'</ref>。\n"
+"\n"
+"    • 著名城市：\n"
+"          ◦ 未知。\n"
+"    • 著名地貌：\n"
+"          ◦ 艾森丛林：南方最大的森林，一直向西南延伸至很远的地方——比地图上所"
+"画出的部分还远得多——那里是<ref>dst='..race_elf' text='精灵'</ref>的家园。"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:146
-#, fuzzy
 msgid "Heart Mountains"
-msgstr "山岭"
+msgstr "心之山脉"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:147
@@ -817,11 +971,13 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
+"一道位于<ref>dst='arkan_thoria' text='河'</ref> 滩和<ref>dst='far_north' "
+"text='北方平原'</ref>之间的几乎无法逾越的天险。"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
 msgid "Far North"
-msgstr ""
+msgstr "极北之地"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:176
@@ -858,6 +1014,35 @@ msgid ""
 "          ◦ River Bork\n"
 "          ◦ Wild Steppe"
 msgstr ""
+"寒冷、严酷、遥不可及的极北是兽人大部落的故乡。它位于"
+"<ref>dst='heart_mountains' text='心之山脉'</ref>的北方。兽人们称此山脉为“哈吉"
+"德-达戈”并（很不要脸地）宣称那是他们的领地。极北的东面是“荒原的不结盟部落”，"
+"他们脱离了大部落的控制，转而和野蛮的人类结伴游荡，与北方平原的高等精灵（人类"
+"称为“北方精灵”）兵刃相见。高等精灵们则居住在更加偏东的地方，传言说他们在那儿"
+"统治着一个广袤的王国。\n"
+"\n"
+"    • 著名城市：\n"
+"          ◦ 巴拉戈·高，兽人大元老会所在的城市\n"
+"          ◦ 毕图克\n"
+"          ◦ 波斯特普\n"
+"          ◦ 卡斯特弗朗\n"
+"          ◦ 法兹\n"
+"          ◦ 非斯托戈\n"
+"          ◦ 戈里斯比\n"
+"          ◦ 玛里戈\n"
+"          ◦ 梅莫戈\n"
+"          ◦ 普里斯提姆\n"
+"          ◦ 提里戈兹\n"
+"    • 著名地貌：\n"
+"          ◦ 孤寂沼泽\n"
+"          ◦ 多斯山脉\n"
+"          ◦ 哈戈山脉\n"
+"          ◦ 绿林\n"
+"          ◦ 寂静之林\n"
+"          ◦ 瑟利恩森林\n"
+"          ◦ 奥姆河\n"
+"          ◦ 伯克河\n"
+"          ◦ 荒原"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -887,7 +1072,7 @@ msgstr "单位"
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:40 data/core/help.cfg:90
 msgid "Abilities"
-msgstr "能力"
+msgstr "技能"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
@@ -921,8 +1106,9 @@ msgid ""
 "will be listed under this topic as you encounter them.\n"
 "\n"
 msgstr ""
-"某些单位拥有一些能力，可以直接影响其他单位，或影响该单位与其他单位的互动。当"
-"您遇到这些能力时，它们将被列在本主题下面。\n"
+"某些单位拥有一些技能，可以直接影响其他单位，或影响该单位与其他单位的互动。当"
+"您遇到这些技能时，它们将被列在本主题下面。\n"
+"\n"
 
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:102
@@ -958,7 +1144,6 @@ msgstr "概述"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:120
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -971,18 +1156,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"韦诺之战是一个回合制策略游戏，与许多现代的策略游戏不尽相同。其他游戏着眼于复"
-"杂性，而韦诺之战却醉心于简单的规则与玩法，不过这并不会使得游戏变得“简陋”——从"
-"简易的规则中可以演化出丰富的策略，使得本游戏易于学习，难于精通。"
+"<italic>text='韦诺之战'</italic>是一个回合制奇幻策略游戏，它在诸多当代策略游"
+"戏之中是有点不寻常的。其他游戏着力于变得更加复杂，而<italic>text='韦诺之战'</"
+"italic>却醉心于简单的规则与玩法，不过这并不会使得游戏变得“简陋”——从简易的规则"
+"中可以演化出丰富的策略，使得本游戏易于上手，难于精通。"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:132
 msgid "Fundamentals of Gameplay"
-msgstr "游戏基本玩法"
+msgstr "游戏基础"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:133
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play <italic>text='Battle for "
 "Wesnoth'</italic>. They cover how to play and the basic mechanics behind the "
@@ -990,13 +1175,12 @@ msgid ""
 "come across new aspects of the game. For more detailed information on "
 "special situations and exceptions, please follow the links included."
 msgstr ""
-"这些页面概述了玩韦诺之战所必需的知识，包括基本玩法与游戏背后的基本机制。当您"
-"在游戏时遇到新的要素时，相应的新信息也会添加进来。如果需要了解详情或是特殊情"
-"况与例外情形，请跟随文中的链接。"
+"这些页面概述了玩<italic>text='韦诺之战'</italic>所需要的所有知识，包括基本玩"
+"法与游戏背后的基本机制。当您在游戏时遇到新的要素时，相应的新信息也会添加到这"
+"些页面中。欲了解特殊情形与例外情况的详细信息，请点击文中包含的链接。"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:135
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1009,10 +1193,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"刚开始玩时，建议您在主菜单点击<italic>text=教程</italic>。这将带您进入互动教"
-"程，该模式将教给您韦诺的基本玩法。在这之后，建议您先玩“王座继承者”战役。先点"
-"击<italic>text=战役</italic>，再点击<italic>text=王座继承者</italic>。由于“韦"
-"诺之战”可能具有很强的挑战性，您可能会希望从<italic>text=容易</italic>开始。"
+"刚开始玩时，建议您在主菜单中点击<bold>text='教程'</bold>按钮。这将带您进入互"
+"动教程，该模式将教给您韦诺的基本玩法。在这之后，建议您先玩“王座之承”战役——先"
+"点击<bold>text='战役'</bold>，再点击<italic>text='王座之承'</italic>。由于"
+"<italic>text='韦诺之战'</italic>可能具有很强的挑战性，您可能会希望从"
+"<italic>text='容易'</italic>级别开始游戏。"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:138
@@ -1025,16 +1210,15 @@ msgid ""
 msgstr ""
 "在游戏时请牢记，如果您将鼠标悬停在游戏中的物件上，如状态面板中的信息上时，会"
 "显示出一条简短的描述以解释每一个物件。这一功能在您第一次遇到新的<ref>dst='.."
-"abilities_section' text='能力'</ref>时非常有用。"
+"abilities_section' text='技能'</ref>时非常有用。"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:143
 msgid "About the Game"
-msgstr "关于本游戏"
+msgstr "关于游戏"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:144
-#, fuzzy
 msgid ""
 "The game takes place over a series of battles, called "
 "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
@@ -1044,14 +1228,13 @@ msgid ""
 "other people connected to that network. If your computer has a connection to "
 "the Internet, you can play against other people across the Internet."
 msgstr ""
-"本游戏由一系列的战斗，也就是“场景”组成。每个剧本会让您的部队和一个或更多的对"
-"手作战。您可以和电脑对战，或朋友在同一台电脑上对战（热座模式）。如果您的电脑"
-"在局域网内，您也可以和其他局域网内的人对战。如果您的电脑能连接因特网，则可以"
-"和因特网上的其他人对战。"
+"本游戏由一系列的战斗，也称为<italic>text='场景'</italic>所组成。在每个场景"
+"中，您的部队都将和一个或更多的对手作战。您可以和电脑对战，或和朋友在同一台电"
+"脑上对战（热座模式）。如果您的电脑在局域网内，您也可以和局域网内的其他人对"
+"战。如果您的电脑能连接因特网，则可以和因特网上的其他人对战。"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:146
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1062,8 +1245,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"战役讲述着一个故事，是由一系列环环相扣的场景组成的，您常常得更小心谨慎，确保"
-"最精良的部队存活下来，使他们能够在战役中的下一场景里继续战斗。"
+"<italic>text='战役'</italic>讲述着一个故事，是由一系列环环相扣的场景组成的。"
+"在玩战役时，您常常得更小心谨慎，确保最精良的部队存活下来，使他们能够在战役中"
+"的下一场景里继续战斗。"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:152
@@ -1072,7 +1256,6 @@ msgstr "胜利与失败"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:153
-#, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. Usually you will achieve victory by killing "
@@ -1081,14 +1264,13 @@ msgid ""
 "designated point, say, or rescuing someone, or solving a puzzle, or holding "
 "out against a siege until a certain number of turns have elapsed."
 msgstr ""
-"注意每个场景开始前弹出的任务目标窗口。通常杀死所有的敌人领袖您就能取得胜利，"
-"而只有当己方领袖阵亡时游戏才会失败。但是有些场景可能有其他胜利目标——例如，让"
-"您的领袖到达指定地点，或者救出某人，或者解决一个迷题，或者在被围攻时坚守城池"
-"直到撑过一定回合数。"
+"特别要注意每个场景开始前弹出的<bold>text='任务目标'</bold>窗口。通常杀死所有"
+"的敌人领袖您就能取得胜利，而只有当己方领袖阵亡时游戏才会失败。但是有些场景可"
+"能有其他胜利目标——例如，让您的领袖到达指定地点，或者救出某人，或者解决一个迷"
+"题，或者在被围攻时坚守城池直到撑过一定回合数。"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1099,9 +1281,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"当您在场景中获胜后，地图将变为灰色，而“结束回合”按钮会变成“结束场景”。在按下"
-"该按钮继续之前，您可以做些别的事，例如改变游戏存档选项，或者（在多人游戏中）"
-"和其他玩家交流。"
+"当您在场景中获胜后，地图将变为灰色，而<bold>text='结束回合'</bold>按钮会变成"
+"<bold>text='结束场景'</bold>。在按下该按钮继续之前，您可以做些别的事，例如改"
+"变游戏存档选项，或者（在多人游戏中）和其他玩家交谈。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:162
@@ -1110,7 +1292,6 @@ msgstr "征募与召回"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1125,11 +1306,11 @@ msgid ""
 msgstr ""
 "游戏开始时，每一方都有一位领袖在城堡主楼里。在战斗开始时，以及战斗过程中，您"
 "可能需要为您的部队征募<ref>dst='..units' text='单位'</ref>。要想征募单位，您"
-"的首领（例如“王座继承者”战役中的科纳德）必须位于<ref>dst='terrain_castle' "
-"text='城堡'</ref>的主楼上。而后您将可以在菜单中选择“征募”或右键点击城堡内的一"
-"个格子并选择<italic>text=征募</italic>。此时会弹出征募菜单，其中列出了所有可"
-"以征募的单位类别和所需金币数。点击一个单位可以查看其数据，然后点击征募按钮就"
-"可将其征募。"
+"的领袖（例如<italic>text='王座之承'</italic>战役中的科纳德）必须位于"
+"<ref>dst='terrain_castle' text='城堡'</ref>的主楼上。而后您将可以在菜单中选"
+"择 <bold>text='征募'</bold>或右键点击城堡内的一个格子并选择<bold>text='征"
+"募'</bold>。此时会弹出征募菜单，其中列出了所有可以征募的单位和所需金币数。点"
+"击一个单位可以查看其能力数据，然后点击征募按钮就可将其征募。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
@@ -1149,7 +1330,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1158,8 +1338,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"新兵具有两项随机的<ref>dst='..traits_section' text='特质'</ref>，对其数据稍有"
-"影响。"
+"招募来的单位具有两项随机的<ref>dst='..traits_section' text='特质'</ref>，对其"
+"数据有影响。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
@@ -1177,7 +1357,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1187,7 +1366,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"单位不仅仅需要花费金币去征募或召回，还需要金钱来进行维护。参见"
+"单位不仅仅需要花费金币来征募或召回，还需要金钱来进行维护。参见"
 "<ref>dst='income_and_upkeep' text='收入与维护费用'</ref>以获取更多信息。"
 
 #. [topic]: id=orbs
@@ -1206,33 +1385,29 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
-#, fuzzy
 msgid " green if it hasn’t moved this turn,"
-msgstr "绿色，表明本单位本回合没有移动过，"
+msgstr " 绿色：表明本单位本回合还没有移动过，"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:181
-#, fuzzy
 msgid " yellow if it has moved, but could still move further or attack, or"
-msgstr "黄色，表明本单位移动过，但还可以继续移动或攻击，"
+msgstr " 黄色：表明本单位移动过，但还可以继续移动或攻击，或者"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:182
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
-msgstr ""
+msgstr " 红色：表明本单位不能继续移动或攻击，或玩家结束了其回合。"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
-#, fuzzy
 msgid " blue if the unit is an ally you do not control."
-msgstr "行动状态球为蓝色，表明这是一个您不能控制的友军单位。"
+msgstr " 蓝色：表明本单位是您所不能控制的友军。"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:184
-#, fuzzy
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr "敌方单位的能量条上方没有行动状态球。"
+msgstr " 敌方单位的能量条上方没有行动状态球。"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:191
@@ -1241,7 +1416,6 @@ msgstr "生命值与经验值"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:192
-#, fuzzy
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1249,9 +1423,9 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
-"每个单位都有一定数量的生命值（HP）。如果单位的生命值降到1以下，他就会死掉。每"
-"个单位也拥有一定的经验值（XP）。新征募的单位在开始时没有经验值，并通过与敌人"
-"战斗来获得经验值。"
+"每个单位都有一定数量的生命值（HP）。如果单位的生命值降到1以下，它就会死掉。每"
+"个单位也拥有一定的经验值（XP）。新征募的单位在开始时没有经验值，他们通过与敌"
+"人战斗来获得经验值。"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:196
@@ -1260,7 +1434,8 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
-"生命值和经验值都会在状态面板上以两个数来表示（当前值/单位所能拥有的最大值）。"
+"生命值和经验值都会在状态面板上分别以两个数字来表示（当前值和该单位所能拥有的"
+"最大值）。"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:197
@@ -1272,7 +1447,7 @@ msgid ""
 msgstr ""
 "生命值也显示在单位旁边的能量条上。能量条可能是绿色、黄色或红色。至少有1点经验"
 "值的单位拥有一条蓝色经验条，当单位就快<ref>dst='experience_and_advancement' "
-"text='升级'</ref>时经验条会显示为白色。"
+"text='升级'</ref>时经验条会变为白色。"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:204
@@ -1281,7 +1456,6 @@ msgstr "移动"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:205
-#, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1296,18 +1470,17 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"韦诺之战中单位的移动很简单。只需点击选中您想要移动的单位，再点击目的地就行"
-"了。当单位被选中时，该单位在本回合可移动的范围就会以高亮显示，而本回合无法到"
-"达的区域则会暗下去。移动鼠标到高亮显示的格子里，该单位在目的地的防御值（闪避"
-"率）便会显示出来。移动鼠标到暗格子上还会显示要到达那里所需的回合数，点击该格"
-"子会让单位以最佳的路线移动，并在接下来的几回合中到达目的地。如果您没有用完本"
-"回合中某单位所有的移动点数，则还可以继续移动他。当您要交换两个单位的位置时，"
-"这是很有用的。如果命令单位进行攻击，则将耗尽他的移动点数。当单位进入一个您还"
-"没有占领的村庄时也会耗尽所有的移动点数，但他仍然能够攻击。"
+"<italic>text='韦诺之战'</italic>中单位的移动很简单。只需点击选中您想要移动的"
+"单位，再点击目的地就行了。当单位被选中时，该单位在本回合可移动的范围就会以高"
+"亮显示，而本回合无法到达的区域则会暗下去。移动鼠标到高亮显示的格子里，该单位"
+"在目的地的防御率便会显示出来。移动鼠标到暗格子上还会显示要到达那里所需的回合"
+"数，点击该格子会让单位以最佳的路线移动，并在接下来的几回合中到达目的地。如果"
+"您没有用完本回合中某单位所有的移动点数，则还可以继续移动他。当您要交换两个单"
+"位的位置时，这是很有用的。如果命令单位进行攻击，则将耗尽他的移动点数。当单位"
+"进入一个您还没有占领的村庄时也会耗尽所有的移动点数，但他仍然能够攻击。"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1327,12 +1500,11 @@ msgstr ""
 "取决于目标格的地形。例如，进入草地几乎总是耗费1点移动点数。进入特定格子所耗费"
 "的移动点数取决于单位种类——在森林里，精灵族单位只需花费1点移动点数，绝大多数人"
 "类和兽人单位花费2点，而骑兵则要花费3点。如要获悉某个单位进入某个地形所需的移"
-"动点数，只需右击该单位，再选“单位描述”，然后阅读<italic>text='地形影响'</"
-"italic>部分。"
+"动点数，只需右击该单位，选择<bold>text='单位描述'</bold>，然后阅读"
+"<bold>text='地形影响'</bold>部分。"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1346,10 +1518,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"移动时，您还需要记住控制区域的概念。每个单位都会在紧邻自身的格子中产生控制区"
-"域，敌军若进入那些格子，将立即耗尽移动点数。学习如何利用控制区域，是玩韦诺时"
-"的一个重点。只有<ref>dst='ability_skirmisher' text='游击'</ref>能力可以忽略控"
-"制区域的影响。"
+"移动时，您还需要记住<italic>text='控制区域'</italic>的概念。每个单位都会在紧"
+"邻自身的格子中产生控制区域，敌军若进入那些格子，将立即无法继续移动。学习如何"
+"利用控制区域，是玩韦诺时的一个重点。只有<ref>dst='ability_skirmisher' "
+"text='游击士'</ref>可以忽略控制区域的影响。"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
@@ -1372,7 +1544,6 @@ msgstr "战场黑幕与战争迷雾"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:221
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1395,18 +1566,20 @@ msgid ""
 "bold> (or the end of your turn) and thereby preserve your ability to undo "
 "movement."
 msgstr ""
-"某些场景的部分地图是不可见的，这背后有两种机理，可以分开或一同作用。战场黑幕"
-"会隐藏某位置的地形和任何单位。但是，一旦清除黑幕之后，您将总是能看见该位置。"
-"战争迷雾只会隐藏村庄的归属（除了属于您或者您的盟友的村庄之外）以及单位。在迷"
-"雾附近有您的单位时，它会暂时消失，而当他们离去后则会再次笼罩。每个单位都能清"
-"除在一回合中所能移动到的区域以及紧邻于这些区域的地块的战场黑幕和迷雾（忽略控"
-"制区域和敌人部队的影响）。\n"
+"某些场景的部分地图是不可见的，这背后有两种机理，可以分开或一同作用。"
+"<italic>text='战场黑幕'</italic>会隐藏某位置的地形和任何单位。但是，一旦清除"
+"黑幕之后，您将总是能看见该位置。<italic>text='战争迷雾'</italic>只会隐藏单"
+"位，以及村庄的归属（除了属于您或者您的盟友的村庄之外）。当迷雾附近有您的单位"
+"时，它会暂时消失，而当他们离去后则会再次笼罩。黑幕和迷雾都可以被单位所清除。"
+"单位清除黑幕或迷雾的范围，是其在一回合内可以移动到的区域，再加上与这一区域紧"
+"临的一圈格子（忽略控制区域和敌方单位的影响）。\n"
 "\n"
 "通常您可以撤销单位的移动，只要没有发生会产生随机结果的事件即可，比如战斗和征"
-"募（绝大多数单位被征募时都会获得随机的特质）。清除黑幕或迷雾以探索被隐藏地形"
-"的行动也将阻止您撤销回之前的状态。您也许会希望激活行动菜单中的“暂缓刷新黑"
-"幕”功能以保留您撤销移动的能力。该功能将阻止单位清除黑幕或者迷雾，直到下一个随"
-"机事件发生或者使用“立即刷新黑幕”进行手动更新为止。"
+"募（绝大多数单位被征募时都会获得随机的特质）。为了探索被隐藏的地形而清除黑幕"
+"或迷雾的行动，也将阻止您撤销回之前的状态。您也许会希望激活行动菜单中的"
+"<bold>text='暂缓刷新黑幕'</bold>功能，该功能将阻止单位清除黑幕或者迷雾，直到"
+"下一个随机事件发生，或者使用<bold>text='立即刷新黑幕'</bold>进行手动刷新，或"
+"者您的回合结束为止。如此一来，您就可以保留撤销移动的能力了。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:228
@@ -1415,7 +1588,6 @@ msgstr "战斗"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:229
-#, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -1428,15 +1600,15 @@ msgid ""
 "as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"韦诺之战中的战斗总是发生在相邻的两个单位之间。点击您的单位，然后再点击您想攻"
-"击的敌人：您的单位会向敌人方向移动，当两个单位相邻时，战斗就会开始。进攻者和"
-"防御者交替打击对方，直到都用完被分配的攻击次数为止。进攻者选择一种武器进行攻"
-"击，而防御者会使用相同种类的武器进行防御。攻击种类有两种：近战，使用的武器通"
-"常包括剑，斧，或者利齿；远程，使用的武器通常包括弓，矛以及火球。"
+"<italic>text='韦诺之战'</italic>中的战斗总是发生在相邻的两个单位之间。点击您"
+"的单位，然后再点击您想攻击的敌人：您的单位会向敌人移动，当两个单位相邻时，战"
+"斗就会开始。进攻者和防御者交替攻击对方，直到都用完被分配的攻击次数为止。进攻"
+"者选择一种武器进行攻击，而防御者会使用相同种类的武器进行防御。攻击类型有两"
+"种：<italic>text='近战'</italic>，使用的武器通常包括剑，斧，或者利齿；"
+"<italic>text='远程'</italic>，使用的武器通常包括弓，矛以及火球。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:231
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1448,7 +1620,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1462,14 +1633,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"进攻方率先攻击，然后防御者反击。每次攻击要么命中，造成一定的伤害，要么不中，"
-"完全不造成伤害。攻击将反复轮流进行，直到双方都用尽其攻击次数为止。单位拥有的"
-"攻击次数是不同的。例如，攻击值为5-4的精灵战士可以攻击4次，每次击中敌人将造成5"
-"点伤害，而具有9-2攻击值的兽人步兵只能攻击2次（但每次击中敌人会造成9点伤害）。"
+"进攻者率先进行攻击，然后防御者反击。每次攻击要么命中，造成一定的伤害，要么击"
+"偏，完全不造成伤害。攻击将反复轮流进行，直到双方都用尽其攻击次数为止。单位拥"
+"有的攻击次数是不同的：例如，具有5–4攻击力的精灵战士可以攻击4次，每次命中敌人"
+"将造成5点伤害，而具有9–2攻击力的兽人步兵只能攻击2次（但每次命中敌人会造成9点"
+"伤害）。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:235
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1481,7 +1652,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1495,14 +1665,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"根据其所处的地形，每个单位都有一定的几率被击中。这在状态面板上会有显示。也可"
-"以右击单位，选择单位描述，而后查看<italic>text='地形影响'</italic>的内容。例"
-"如，许多精灵在森林里都有70%的防御值（闪避率），这表示进攻者只有30%的几率命中"
-"目标。同样的，该精灵在反击中击中进攻者的几率取决于进攻者所处的地形。"
+"根据其所处的<italic>text='地形'</italic>，每个单位都有一定的几率被命中。这在"
+"状态面板上会有显示。也可以右击单位，选择<bold>text='单位描述'</bold>，而后查"
+"看<bold>text='地形影响'</bold>的内容。例如，许多精灵在森林里都有70%的防御率，"
+"这表示进攻者只有30%的几率命中目标。同样地，精灵在反击中命中进攻者的几率取决于"
+"进攻者所处的地形。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1516,7 +1686,7 @@ msgstr ""
 "\n"
 "以上规则有两个例外：<ref>dst='weaponspecial_magical' text='魔法攻击'</ref>和"
 "<ref>dst='weaponspecial_marksman' text='精准射击'</ref>。魔法攻击可以无视地"
-"形，总是有70%的命中率，而精准射击在进攻时也可以无视地形，而最少有60%的命中"
+"形，总是有70%的命中率。而精准射击在进攻时也可以无视地形，并最少有60%的命中"
 "率。"
 
 #. [topic]: id=combat
@@ -1533,7 +1703,6 @@ msgstr ""
 # sometimes there are quotations in "text='Time of Day'", for example, but sometimes there aren't, as in "text=resistance". what's the difference? and shall i use quotations in a likewise manner in translation?
 #. [topic]: id=combat
 #: data/core/help.cfg:243
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1547,15 +1716,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"根据攻击类型的不同，每次成功的攻击都会造成一定量的基础伤害。例如，具有5-4攻击"
-"值的精灵战士可以造成5点的基本伤害。通常有两种因素会对此作出修正：即"
+"根据攻击类型的不同，每次成功的攻击都会造成一定量的基础伤害。例如，具有5–4攻击"
+"力的精灵战士可以造成5点基本伤害。通常有两种因素会对此作出修正：即"
 "<ref>dst='damage_types_and_resistance' text='抗性'</ref>和"
-"<ref>dst='time_of_day' text='时段'</ref>。欲查看这些状况是如何修正基础伤害"
-"的，请在攻击选择菜单中选择<italic>text='伤害计算'</italic>。"
+"<ref>dst='time_of_day' text='时段'</ref>。欲查看这些因素是如何修正基本伤害"
+"的，请在攻击选择菜单中选择<bold>text='伤害计算'</bold>。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1566,9 +1734,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"有些单位拥有特别的<ref>dst='..abilities_section' text='能力'</ref>，会影响在"
+"有些单位拥有特别的<ref>dst='..abilities_section' text='技能'</ref>，会影响在"
 "战斗中的伤害输出。最常见的能力是<ref>dst='weaponspecial_charge' text='冲锋'</"
-"ref>，当具有冲锋能力的单位进攻时，进攻者和防御者都将输出双倍伤害。"
+"ref>，当具有冲锋技能的单位进攻时，进攻者和防御者都将输出双倍伤害。"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:251
@@ -1577,7 +1745,6 @@ msgstr "伤害类型与抗性"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:252
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -1586,13 +1753,13 @@ msgid ""
 "italic>. Different units may have resistances which alter the damage which "
 "they take from certain damage types."
 msgstr ""
-"在韦诺中，有三种伤害类型通常和物理攻击有关：剑刃，穿刺和冲击伤害。此外，还有"
-"三种伤害类型通常和魔法攻击有关：火焰，寒冰和奥术攻击。不同的单位可能对特定的"
-"伤害类型具有抗性，从而改变被击中时受到的伤害。"
+"在韦诺中，有三种伤害类型通常属于物理攻击：<italic>text='剑刃、穿刺和冲击伤"
+"害'</italic>。此外，还有三种伤害类型通常属于魔法攻击：<italic>text='火焰、寒"
+"冰和奥术攻击'</italic>。不同的单位可能对特定的伤害类型具有抗性，从而改变被这"
+"些类型的攻击命中时受到的伤害。"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1604,13 +1771,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"抗性的原理很简单：如果一个单位对某种伤害类型有40%的抗性，则被该种伤害类型击中"
-"时减少40%的伤害值。一个单位也有可能更易受某种伤害。如果一个单位对某种伤害"
-"有-100%的抗性，则被该种伤害类型击中时增加100%的伤害值。"
+"抗性的适用规则很简单：如果一个单位对某种伤害类型有40%的抗性，则被该种伤害命中"
+"时会减少40%的伤害值。一个单位也有可能更易受某种伤害：如果一个单位对某种伤害有"
+"−100%的抗性，则被该种伤害命中时会增加100%的伤害值。"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1620,8 +1786,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"例如，骷髅对剑刃和穿刺伤害具有很高的抗性，但容易受到冲击和火焰伤害，并且非常"
-"害怕奥术伤害。"
+"例如，骷髅对剑刃和穿刺伤害具有很高的抗性，但却容易受到冲击和火焰伤害，并且非"
+"常害怕奥术伤害。"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:258
@@ -1634,8 +1800,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"每次成功的攻击都至少会造成1点伤害，即使防御者对这种攻击有100%的抗性时也是如"
-"此。"
+"如果某次攻击命中，则至少会造成1点伤害，即使防御者对其伤害类型有100%的抗性时也"
+"是如此。"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:264
@@ -1644,7 +1810,6 @@ msgstr "时段"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1654,12 +1819,12 @@ msgid ""
 msgstr ""
 "时段对某些单位的伤害输出有影响，具体如下：\n"
 " 守序单位昼间伤害+25%，夜间伤害−25%。\n"
-" 混乱单位昼间伤害+25%，夜间伤害−25%。\n"
-" 中立单位不受时段的影响。"
+" 混沌单位夜间伤害+25%，昼间伤害−25%。\n"
+" 中立单位不受时段的影响。\n"
+" 边缘单位在昼间和夜间的伤害都−25%。"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1670,7 +1835,7 @@ msgstr ""
 "\n"
 "\n"
 "当前时段可以在小地图下方的状态面板中看到。在通常的昼夜循环里，上午和下午算作"
-"昼间，而前半夜和后半夜算作夜间：\n"
+"昼间，而前半夜和后半夜则算作夜间：\n"
 
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
@@ -1734,7 +1899,7 @@ msgid ""
 msgstr ""
 "如果两个单位在战斗之后都存活下来，他们都能得到相当于对手等级的经验值。但如果"
 "一个单位在战斗中杀死了另一个，则能得到多得多的经验值——0级单位提供4点，1级单位"
-"8点，2级单位16点，3级单位24点，以此类推。"
+"8点，2级单位16点，3级单位24点，依此类推。"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:289
@@ -1754,7 +1919,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:291
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1772,11 +1936,11 @@ msgstr ""
 "\n"
 "\n"
 "尽管大多数单位有三个等级，但并非都是如此。有些单位（例如<ref>dst='unit_Mage' "
-"text='法师'</ref>）能升到四级。单位升到最高级以后，可以获得满级奖励（AMLA）。"
-"AMLA会在单位获得所需经验值后改变单位属性，但等级不变。典型的AMLA效果是增加3点"
-"最大生命值并补满血。通常情况下，单位会在获得150点经验值（聪慧单位是120点）后"
-"获得第一次AMLA。不过，以后每次获得AMLA的难度逐渐变大，所以尝试让您的低等级单"
-"位升级通常会更有用。"
+"text='法师'</ref>）能升到四级。单位升到最高级以后，可以获得<italic>text='满级"
+"奖励'</italic>（AMLA）。AMLA会在单位获得所需经验值后改变单位属性，但等级不"
+"变。典型的AMLA效果是增加3点最大生命值并补满血。通常情况下，单位会在获得150点"
+"经验值（聪慧单位是120点）后得到第一次AMLA。不过，以后每次获得AMLA的难度逐渐变"
+"大，所以尝试让您的低等级单位升级通常会更有用。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:298
@@ -1800,7 +1964,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:301
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1809,18 +1972,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"休息： 单位在本回合不移动、攻击或被攻击，则会在下回合恢复2点生命值。"
+"<italic>text='休息'</italic>：若某单位在本回合不移动、攻击或被攻击，则会在下"
+"回合开始时恢复2点生命值。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Villages'</italic>: A unit which starts a turn in a village "
 "will heal 8HP."
 msgstr ""
 "\n"
-"村庄：每回合开始时在村庄中的单位可以恢复8点生命值。"
+"<italic>text='村庄'</italic>：每回合开始时，在村庄中的单位可以恢复8点生命值。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1835,7 +1998,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Healing units'</italic>: Units with the "
@@ -1845,13 +2007,13 @@ msgid ""
 "from causing that unit damage."
 msgstr ""
 "\n"
-"治疗单位：有<ref>dst='ability_heals +4' text='治疗'</ref>能力的单位每回合能恢"
-"复相邻友军单位<ref>dst='ability_heals +4' text='4点'</ref>或"
-"<ref>dst='ability_heals +8' text='8点'</ref>的生命值，或阻止毒药发作。"
+"<italic>text='治疗单位'</italic>：有<ref>dst='ability_heals +4' text='治疗'</"
+"ref>技能的单位每回合能恢复相邻友军单位<ref>dst='ability_heals +4' text='4"
+"点'</ref>或<ref>dst='ability_heals +8' text='8点'</ref>生命值，或防止中毒状态"
+"对该单位造成伤害。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Curing units'</italic>: Units with the "
@@ -1860,8 +2022,9 @@ msgid ""
 "well)."
 msgstr ""
 "\n"
-"治愈单位：有<ref>dst='ability_cures' text='治愈'</ref>能力的单位可以治愈全部"
-"相邻友军单位的中毒状态（如果本单位还有治疗能力，则治愈优先于治疗）。"
+"<italic>text='治愈单位'</italic>：有<ref>dst='ability_cures' text='治愈'</"
+"ref>技能的单位可以治愈全部相邻友军单位的中毒状态（如果本单位还有治疗技能，则"
+"治愈优先于治疗）。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -1874,8 +2037,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"休息可以和其它治疗方式叠加，但是村庄、再生、治疗和治愈效果则不能互相叠加。游"
-"戏会自动选择最优的治疗方式。最后，单位能在过场时完全回复生命值。"
+"休息可以和其它治疗方式叠加，但是村庄、再生、治疗和治愈效果则不能互相叠加：游"
+"戏会使用最优的治疗方式。最后，单位在过场时会完全回复生命值。"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:314
@@ -1884,7 +2047,6 @@ msgstr "收入和维护费用"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:315
-#, fuzzy
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1892,12 +2054,11 @@ msgid ""
 "<italic>text='income'</italic> and <italic>text='upkeep'</italic>."
 msgstr ""
 "在韦诺中，仅仅征募单位并战斗是不够的。您还得注意您的金币，特别是在战役中，因"
-"为您可以将多余的金币携带到下一场景。影响金币数量的主要是两个方面：收入和维护"
-"费用。"
+"为可以将多余的金币携带到下一场景。影响金币数量的主要是两个方面："
+"<italic>text='收入'</italic> and <italic>text='维护费用'</italic>."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1910,13 +2071,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"收入这个概念很简单。每回合您都会得到2金币的基本收入。您所占领的每个村庄每回合"
-"也会给您1个金币的额外收入。因此如果您占领了十个村庄，每回合就会有12个金币的收"
-"入。维护费用由您的收入来支付。以下是详细信息。"
+"收入这一概念很简单。每回合您都会得到2金币的基本收入。您所占领的每个村庄每回合"
+"也会给您1金币的额外收入。（一般来说这个数值是可以配置的，但在战役中，几乎总是"
+"每个村庄产出一金币。）因此如果您占领了十个村庄，每回合就会有12金币的收入。但"
+"您的收入中还需要扣除维护费用，详细说明见下。"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1929,14 +2090,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"维护费也相当简单。每个单位都需要支付与其等级相等的维护费用。您所能免费支持的"
-"单位的<italic>text=等级之和</italic>与您所拥有的村庄数量相同。然而，单位等级"
-"之和每超过您所拥有的村庄数1级，您就得每回合支付1金币的维护费用。例如，如果您"
-"有十二个一级的单位和十个村庄，您就得每回合支付2个金币的维护费用。"
+"维护费用这一概念也相当简单。每个单位都需要支付与其等级相等的维护费用。您所能"
+"免费供给的单位的等级之和与您所拥有的村庄数量相同。然而，单位等级之和每超过您"
+"所拥有的村庄数一级，您就得每回合支付一金币的维护费用。例如，如果您拥有十二个"
+"一级的单位和十个村庄，那就得每回合支付两金币的维护费用。"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:321
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1946,12 +2106,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"维护费用以您的收入来支付，所以在有等级总和为十二的单位和十个村庄的情况下，最"
-"终您的收入将会是每回合10个金币。"
+"维护费用将从您的收入中扣除。所以，在有等级总和为十二的单位和十个村庄的情况"
+"下，最终您的收入将会是每回合10金币。"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1965,8 +2124,9 @@ msgstr ""
 "\n"
 "维护费用的支付规则中有两个重要的例外：即具有忠诚特质的单位以及领袖不需要支付"
 "维护费用。每个场景开始时您所拥有的单位（比如黎伐多），或在场景中加入己方的单"
-"位（如在“王座继承者”第二场景中加入的骑手）通常都具有忠诚特质。而您所扮演的角"
-"色（如科纳德）几乎总是一位领袖。"
+"位（如在<italic>text='王座之承'</italic>第二场景中加入的骑手）通常都具有"
+"<italic>text='忠诚'</italic>特质。而您所扮演的角色（如科纳德）几乎总是一位领"
+"袖。"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:329
@@ -1975,7 +2135,6 @@ msgstr "总结"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -1983,10 +2142,10 @@ msgid ""
 "ref>, but you now know everything you need to know to play the "
 "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
 msgstr ""
-"韦诺的基础介绍到此结束。您或许想要继续阅读“基本策略”，或再熟悉一下"
+"韦诺的基础介绍到此结束。您或许想要继续阅读基本策略的相关内容，或熟悉一下"
 "<ref>dst='..traits_section' text='特质'</ref>和<ref>dst='.."
-"abilities_section' text='能力'</ref>。现在您已经有足够的知识去玩“王座继承"
-"者”战役了。祝您好运，玩得开心！"
+"abilities_section' text='技能'</ref>，不过现在您已经准备万全，可以去玩"
+"<italic>text='王座之承'</italic>战役了。祝您好运，玩得开心！"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -2000,19 +2159,18 @@ msgstr "许可证"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:350
-#, fuzzy
 msgid ""
 "Most units have two traits. However, undead units are assigned the single "
 "trait <italic>text='undead'</italic>, and woses do not receive any traits. "
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited."
 msgstr ""
-"大多数单位有两种特质。然而，亡灵只有一种特质，即“亡灵”。而树人则没有任何特"
-"质。特质是对单位属性的细微修正。当单位被征募时，特质通常被随机地分配给他们。"
+"大多数单位有两种特质。然而，亡灵只有一种特质，即<italic>text='亡灵'</"
+"italic>，而树人则没有任何特质。特质是对单位属性的细微修正。通常，特质是在征募"
+"单位时随机地分配给他们的。"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2025,11 +2183,10 @@ msgstr ""
 "\n"
 "所有的非亡灵单位都可能获得的特质有<ref>dst='traits_intelligent' text='聪慧'</"
 "ref>，<ref>dst='traits_quick' text='迅捷'</ref>，<ref>dst='traits_resilient' "
-"text=坚韧</ref>和<ref>dst='traits_strong' text='强壮'</ref>。"
+"text='坚韧'</ref>和<ref>dst='traits_strong' text='强壮'</ref>。"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2057,7 +2214,6 @@ msgstr "聪慧单位每次升级所需的经验值比通常情况少20%。"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:365
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2070,9 +2226,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"聪慧单位在一个战役的开始非常有用，因为他们能更快地升到高等级。在战役的后期聪"
-"慧单位并不是很有用，因为满级奖励（AMLA）与升级相比效果并不显著。如果您有很多"
-"达到“满级”的单位，您也许会希望召回那些有更有用特质的单位。"
+"<italic>text='聪慧'</italic>单位在战役的开始阶段非常有用，因为他们能更快地升"
+"到高等级。在战役的后期聪慧单位并不是很有用，因为<italic>text='满级奖励'</"
+"italic>（AMLA）与升级相比效果并不显著。如果拥有很多达到“满级”的单位，那您也许"
+"会希望召回那些拥有更有用的特质的单位。"
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:370
@@ -2081,15 +2238,15 @@ msgstr "迅捷"
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:371
-#, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "HP than usual."
-msgstr "迅捷单位有1点额外的移动点数，但是比平常减少5%的生命值。"
+msgstr ""
+"<italic>text='迅捷'</italic>单位有1点额外的移动点数，但是比通常单位要少5%的生"
+"命值。"
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:373
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2102,10 +2259,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"迅捷是最容易察觉的特质，特别是对移动很慢的单位，如巨魔或重甲步兵而言。迅捷单"
-"位在恶劣的地形经常上有更好的机动性，在部署您的部队时这是需要考虑的重要因素。"
-"但迅捷单位不如没有该特质的单位强壮，因而在守卫争夺激烈的阵地时没有那些单位"
-"好。"
+"迅捷是最容易察觉的特质，特别是对移动很慢的单位而言，比如巨魔或重甲步兵。具有"
+"迅捷特质的单位在恶劣地形上的机动性经常大为提升，在部署您的部队时这是需要考虑"
+"的重要因素。但迅捷单位不如没有该特质的单位强壮，因而在守卫炮火连天的阵地时没"
+"有那些单位好用。"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:378
@@ -2114,11 +2271,12 @@ msgstr "坚韧"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:379
-#, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
 "than usual."
-msgstr "坚韧单位有额外的4点生命值，且每升一级增加的生命值也多1点。"
+msgstr ""
+"<italic>text='坚韧'</italic>单位有额外的4点生命值，且每升一级增加的生命值也多"
+"1点。"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:381
@@ -2144,16 +2302,15 @@ msgstr "强壮"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:387
-#, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 more HP."
 msgstr ""
-"强壮单位在近战中每回合成功攻击后会造成1点额外伤害，并且其具有1点额外生命值。"
+"<italic>text='强壮'</italic>单位在近战中每次成功的攻击都将造成1点额外伤害，并"
+"且这种单位具有1点额外生命值。"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:389
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2164,9 +2321,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"虽然对任何近战单位都有用，但强壮对于像精灵战士这样攻击次数多的单位则最有效。"
-"当仅仅多几点伤害输出，就能让只是造成伤害的攻击变成致命一击时，强壮单位是非常"
-"有用的。"
+"虽然对任何近战单位都有用，但强壮这一特质对于像精灵战士这样攻击次数多的单位是"
+"最有效的。当仅仅一点点额外的伤害便能让一次普通攻击变成致命一击时，强壮单位的"
+"价值便完全体现出来了。"
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:394
@@ -2180,9 +2337,8 @@ msgstr "对光明或者黑暗的不适绝不可能使这些勇敢的战士动摇
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:400
-#, fuzzy
 msgid "Feral"
-msgstr "总计"
+msgstr "野生"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:401
@@ -2192,6 +2348,9 @@ msgid ""
 "units receive a maximum of 50% defense in any land-based village regardless "
 "of base terrain."
 msgstr ""
+"对低智商的野生生物而言，智慧生物的居所并不能很容易地作为自己的掩护。因此，"
+"<italic>text='野生'</italic>单位在任何一个陆地村庄中都只能获得最高50%的防御"
+"率，而不论其下的地形如何。"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:406
@@ -2200,18 +2359,16 @@ msgstr "忠诚"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:407
-#, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
 "units do not incur this cost."
 msgstr ""
-"忠诚单位不需要维护费用。大多数单位每回合结束后根据其等级而需要相应的维护费"
-"用。忠诚单位不需要。"
+"<italic>text='忠诚'</italic>单位不需要维护费用。大多数单位在每回合结束时都需"
+"要花费维护费用，该费用与他们的等级相等。而忠诚单位不会增加这笔开销。"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:409
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2224,10 +2381,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"在战役中，一些单位会自愿加入玩家的阵营。这些单位都有忠诚特质作为其标志。即使"
+"在战役中，一些单位会自愿加入玩家的阵营。这些单位都有忠诚特质作为其标志。虽然"
 "召回他们需要付费，但却不需要维护费用。在漫长的战役中，金币短缺，这种特质真是"
-"不可多得。新招募的单位永远都不会有这种特质，所以应避免解散忠诚单位，或让他们"
-"去白白送死。"
+"不可多得。招募而来的单位永远都不会有这种特质，所以解散这样的单位或让他们去白"
+"白送死或许是很不聪明的做法。"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:414
@@ -2236,14 +2393,13 @@ msgstr "亡灵"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:415
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
-msgstr "亡灵单位对毒素免疫。而吸血与瘟疫对它们同样无效。"
+msgstr ""
+"<italic>text='亡灵'</italic>单位对毒素免疫，而吸血与瘟疫对它们同样无效。"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:417
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2254,8 +2410,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"亡灵单位通常只拥有“亡灵”这一种特质。它们通常是些被召唤起来再次战斗的尸体，因"
-"此毒素对它们不起作用。这使得它们在与那些善于用毒的对手作战时的价值无法估量。"
+"亡灵单位通常只拥有亡灵这一种特质。亡灵单位通常是些被召唤起来再次战斗的尸体，"
+"因此毒素对它们不起作用。这使得它们在与那些善于用毒的对手作战时的价值无法估"
+"量。"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:422
@@ -2264,15 +2421,14 @@ msgstr "机械"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:423
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
-msgstr "机械单位对毒素免疫。而吸血与瘟疫对它们同样无效。"
+msgstr ""
+"<italic>text='机械'</italic>单位对毒素免疫，而吸血与瘟疫对它们同样无效。"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:425
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2282,26 +2438,24 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"机械单位通常只拥有“机械”这一种特质。由于机械单位并不真的拥有生命，所以吸血、"
-"毒素和瘟疫对它们不起作用。"
+"机械单位通常只拥有机械这一种特质。由于机械单位并不真的拥有生命，所以吸血、毒"
+"素和瘟疫对它们不起作用。"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
-#, fuzzy
 msgid "trait^Elemental"
-msgstr "隐蔽"
+msgstr "元素"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:431
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
-msgstr "机械单位对毒素免疫。而吸血与瘟疫对它们同样无效。"
+msgstr ""
+"<italic>text='元素'</italic> 单位对毒素免疫，而吸血与瘟疫对它们同样无效。"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:433
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2311,8 +2465,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"机械单位通常只拥有“机械”这一种特质。由于机械单位并不真的拥有生命，所以吸血、"
-"毒素和瘟疫对它们不起作用。"
+"元素单位通常只拥有<italic>text='元素'</italic>这一种特质。由于元素单位是由纯"
+"能量组成的存在，所以吸血、毒素和瘟疫对它们不起作用。"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
@@ -2321,15 +2475,14 @@ msgstr "灵巧"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:439
-#, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
-msgstr "灵巧的单位每次成功的远程攻击会造成1点的额外伤害。"
+msgstr ""
+"<italic>text='灵巧'</italic>单位每次成功的远程攻击都将造成1点的额外伤害。"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:441
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2340,7 +2493,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"灵巧是精灵独有的特质。精灵以其不同寻常的优雅与善用弓箭而闻名。然而，有些精灵"
+"灵巧是精灵独有的特质。精灵以其不同寻常的优雅与善用弓箭而闻名。甚而，有些精灵"
 "天赋异禀，远远胜过自己的同胞。这些精灵每次用箭攻击都会造成1点的额外伤害。"
 
 #. [topic]: id=traits_healthy
@@ -2358,7 +2511,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:449
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2368,8 +2520,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"活力单位天生拥有1点附加生命值，每次升级所增加的生命值也多1点。并且在每个无战"
-"斗的回合后都会休息并恢复2点生命值。他们中毒时受到的伤害也减少1/4。"
+"<italic>text='活力'</italic>单位天生拥有1点附加生命值，每次升级所增加的生命值"
+"也多1点，并且在每个无战斗的回合后都会休息并恢复2点生命值。他们中毒时受到的伤"
+"害也减少1/4。"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:454
@@ -2378,11 +2531,11 @@ msgstr "愚笨"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:455
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
-msgstr "有愚笨特质的单位升级所需的经验值比一般单位多20%。"
+msgstr ""
+"拥有<italic>text='愚笨'</italic>特质的单位升级所需的经验值比一般单位多20%。"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:457
@@ -2394,8 +2547,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"愚笨在地精等数量较少的种族中是常见得过头的特质。这些种族之所以数量较少是有原"
-"因的，而愚笨便是其中之一。"
+"愚笨在地精和其他低等种族中是常见得过头的特质。这些种族之所以低等是有原因的，"
+"而这便是其中之一。"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:462
@@ -2404,10 +2557,9 @@ msgstr "缓慢"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:463
-#, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
-msgstr "缓慢单位的移动点数-1，但是生命值多5%。"
+msgstr "<italic>text='缓慢'</italic>单位的移动点数少1点，但是生命值多5%。"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:465
@@ -2430,26 +2582,25 @@ msgstr "虚弱"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:471
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
 "hitpoints and melee damage."
-msgstr "拥有虚弱特质的单位，其最大生命值和近战伤害各-1。"
+msgstr ""
+"拥有<italic>text='虚弱'</italic>特质的单位，其生命值和近战伤害各减少1点。"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
-#, fuzzy
-#| msgid "trait^Undead"
 msgid "trait^Aged"
-msgstr "亡灵"
+msgstr "年长"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:477
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
-msgstr "拥有虚弱特质的单位，其最大生命值和近战伤害各-1。"
+msgstr ""
+"拥有<italic>text='年长'</italic>特质的单位，其生命值减少8点，移动点数和近战伤"
+"害均减少1点。"
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:485
@@ -2469,7 +2620,6 @@ msgstr "平原"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:497
-#, fuzzy
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild. Being open ground, grassland is "
@@ -2479,11 +2629,12 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"草原代表了开阔的平原地形，无论是开垦过的，为放牧修剪过的，还是荒凉的。正因为"
-"宽阔，在草原上移动是很迅速的，但也很难进行有效防御。一般来说，适合平原作战的"
-"单位是骑兵，或能够有效利用开阔地带的敏捷单位。\n"
+"<italic>text='草原'</italic>代表了开阔的平原地形，无论是开垦过的，为放牧而修"
+"剪过的，还是荒凉的。正因为宽阔，在草原上移动是很容易的，但也很难进行有效防"
+"御。一般来说，最适合草原作战的单位是骑兵，或能够有效利用开阔地带的敏捷单"
+"位。\n"
 "\n"
-"绝大多数单位在草原上有30%到40%的闪避率。"
+"绝大多数单位在草原上有30%到40%的防御率。"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:506
@@ -2492,15 +2643,15 @@ msgstr "道路"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:511
-#, fuzzy
 msgid ""
 "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
 "\n"
 msgstr ""
-"道路是许许多多的旅行者在松软的泥土上行走时踩出来的。就游戏规则而言，道路和"
-"<ref>dst='terrain_flat' text='平原'</ref>没有两样。"
+"<italic>text='道路'</italic>是许许多多的旅行者在松软的泥土上行走时踩出来的。"
+"就游戏规则而言，道路和<ref>dst='terrain_flat' text='平原'</ref>没什么两样。\n"
+"\n"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:518
@@ -2509,7 +2660,6 @@ msgstr "森林"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:525
-#, fuzzy
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2527,15 +2677,15 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests.\n"
 "\n"
 msgstr ""
-"森林地形代表任何生有茂密下层植被的林区，这种地形足以减缓移动速度。虽然减慢了"
-"几乎所有兵种的移动速度，但是森林所能提供的保护确实比开阔地带好。然而，骑兵在"
-"森林里行进实在是艰难，以至于隐秘行动带来的一点点优势也就此化为乌有。这些通用"
-"的规则对精灵却不适用，丛林不仅不影响他们的移动速度，还带来可观的防御加成。矮"
-"人是另一种例外，虽然他们奋力穿越森林时速度不受什么影响，但是完全不熟悉地形导"
-"致他们得不到任何防御加成。\n"
+"<italic>text='森林'</italic>地形代表任何生有茂密下层植被的林区，这种地形足以"
+"阻碍单位通过。虽然减慢了几乎所有兵种的移动速度，但是森林所能提供的保护确实比"
+"开阔地带好。然而，骑兵在森林里行进实在是艰难，以至于隐秘行动带来的一点点优势"
+"也就此化为乌有。这些通用的规则对精灵却不适用，丛林不仅不影响他们的移动速度，"
+"还带来可观的防御加成。矮人是另一种例外，虽然他们奋力穿越森林时速度不受什么影"
+"响，但是完全不熟悉地形导致他们得不到任何防御加成。\n"
 "\n"
-"绝大多数单位在森林中有50%的闪避率，但骑兵仅仅有30%。另一方面，精灵则享有60%到"
-"70%的闪避率，甚至连他们的骑兵也是如此。矮人在森林中的闪避率通常只有30%。\n"
+"绝大多数单位在森林中有50%的防御率，但骑兵仅仅有30%。另一方面，精灵则享有60%到"
+"70%的防御率，甚至连他们的骑兵也是如此。矮人在森林中的防御率通常只有30%。\n"
 "\n"
 
 #. [topic]: id=terrain_hills
@@ -2545,7 +2695,6 @@ msgstr "丘陵"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:540
-#, fuzzy
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2558,11 +2707,13 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills.\n"
 "\n"
 msgstr ""
-"丘陵代表的是所有适度崎岖的地形，并有足够的沟壑来形成保护带。大部分部队想穿越"
-"丘陵都有难度，矮人，巨魔和兽人则因为非常熟悉地形，所以速度不受影响。骑兵在丘"
-"陵中行进艰难，那一点防御优势也因此化为乌有。\n"
+"<italic>text='丘陵'</italic>代表的是所有适度崎岖并有足够的沟壑来形成掩体的地"
+"形。大部分部队想穿越丘陵都有难度，矮人、巨魔和兽人则因为非常熟悉地形，所以速"
+"度不受影响。骑兵在丘陵中行进艰难，掩体提供的那一点点防御优势也因此化为乌"
+"有。\n"
 "\n"
-"绝大多数单位在丘陵上有大约50%的闪避率，不过骑兵被限制在40%，而矮人却享有60%。"
+"绝大多数单位在丘陵上有大约50%的防御率，不过骑兵被限制在40%，而矮人却享有"
+"60%。\n"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:547
@@ -2571,7 +2722,6 @@ msgstr "山岭"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:552
-#, fuzzy
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move. By this nature, they provide a considerable "
@@ -2583,12 +2733,12 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
-"山岭很陡峭，部队有时不得不攀过种种障碍才能前进。正因为如此，山岭对大部分部队"
-"的防御有利，但也严重阻碍他们由此通过。大多数骑兵根本无法进入山岭；然而，精灵"
-"骑兵是个例外，地精狼骑士也是一样。矮人和巨魔是山区的土著，因此可以畅通无"
-"阻。\n"
+"<italic>text='山脉'</italic>很陡峭，部队有时不得不攀过种种障碍才能前进。正因"
+"为如此，山脉对大部分部队的防御有可观的加成，但也严重阻碍他们由此通过。大多数"
+"骑兵根本无法进入山脉；然而，精灵骑兵是个例外，地精狼骑士也是一样。矮人和巨魔"
+"是山区的土著，因此可以畅通无阻。\n"
 "\n"
-"绝大多数单位在山岭中有60%的闪避率，而矮人则享有70%。"
+"绝大多数单位在山脉中有60%的防御率，而矮人则享有70%。"
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:559
@@ -2597,7 +2747,6 @@ msgstr "沼泽"
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:564
-#, fuzzy
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps slow "
 "down nearly everyone, and inhibit their ability to defend themselves. An "
@@ -2608,11 +2757,12 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
-"沼泽代表的是所有类型的湿地地貌，几乎所有单位在沼泽里速度都会下降，防御也会降"
-"低。不过，任何天生适应水中环境的种族都是例外；他们能在沼泽里全速移动，还能获"
-"得防御加成。那些生活在沼泽地的生物也能将其化为天然的防御掩体。\n"
+"<italic>text='沼泽'</italic>代表的是所有类型的湿地地貌，几乎所有单位在沼泽里"
+"速度都会下降，防御也会降低。不过，任何天生适应水中环境的种族都是例外：他们能"
+"在沼泽里全速移动，还能获得防御加成。那些生活在湿地里的生物也能将其化为天然的"
+"防御掩体。\n"
 "\n"
-"绝大多数单位在沼泽中有30%的闪避率。人鱼，娜迦和蜥蜴人通常则享有60%。"
+"绝大多数单位在沼泽中有30%的防御率。人鱼，娜迦和蜥蜴人通常则享有60%。"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:571
@@ -2621,7 +2771,6 @@ msgstr "浅水"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:576
-#, fuzzy
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2634,11 +2783,12 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
-"浅水代表的是所有齐腰深的水域。这已经足够减慢几乎所有单位的速度，并让他们暴露"
-"在敌人的攻击之下。浅水几乎会没过矮人的头顶，让他们非常难受。那些天生会游泳的"
-"种族则是例外，他们在浅水里能全速移动，还能获得可观的防御加成。\n"
+"<italic>text='浅水'</italic>代表的是所有齐腰深的水域。这已经足够减慢几乎所有"
+"单位的速度，并让他们暴露在敌人的攻击之下。水面几乎会没过矮人的头顶，这让他们"
+"非常难受。那些天生会游泳的种族则是例外，他们在浅水里能全速移动，还能获得可观"
+"的防御加成。\n"
 "\n"
-"绝大多数单位在浅水中有20%到30%的闪避率，而娜迦和人鱼则享有60%。"
+"绝大多数单位在浅水中有20%到30%的防御率，而娜迦和人鱼则都享有60%。"
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:583
@@ -2647,7 +2797,6 @@ msgstr "深水"
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:588
-#, fuzzy
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head. Most units cannot enter deep water: it is the domain "
@@ -2655,19 +2804,18 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
-"深水代表的是所有能没过成人头顶的水域。大多数单位不能进入深水。这是那些能够飞"
-"行或游泳技术高超的单位的领地。\n"
+"<italic>text='深水'</italic>代表的是所有能没过成人头顶的水域。大多数单位不能"
+"进入深水。这是那些能够飞行或游泳技术高超的单位的领地。\n"
 "\n"
-"人鱼和娜迦在深水中都有50%的闪避率，并且能全速移动。"
+"人鱼和娜迦在深水中都有50%的防御率，并且能全速移动。"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:595
 msgid "Frozen"
-msgstr "雪地"
+msgstr "冻原"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:600
-#, fuzzy
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice. Most units are slowed down on it, and have a harder "
@@ -2676,11 +2824,11 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"雪地代表的是所有被雪或者冰所覆盖的地域，大多数单位会由于雪的影响而减慢行进速"
-"度，并很难有效地进行自我防御。还要注意的是即使是能在水下呼吸的单位，也不能在"
-"冰下游泳。\n"
+"<italic>text='冻原'</italic>代表的是所有被雪或者冰所覆盖的地域，大多数单位会"
+"由于雪的影响而减慢行进速度，并很难有效地进行自我防御。还要注意的是即使是能在"
+"水下呼吸的单位，也不能在冰下游泳。\n"
 "\n"
-"绝大多数单位在雪地上有20%到40%的闪避率。"
+"绝大多数单位在冻原上有20%到40%的防御率。"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:607
@@ -2689,7 +2837,6 @@ msgstr "城堡"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2701,11 +2848,12 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
-"城堡指的是所有形式的永久性防御建筑。几乎所有驻扎在城堡内的单位都会获得可观的"
-"防御加成，并能全速移动。城堡的防御能力在于驻扎其中的单位，如果城堡格子中没有"
-"单位，敌人就能很轻易地溜进城堡，与城堡中的守军获得相同的防守加乘。\n"
+"<italic>text='城堡'</italic>指的是所有形式的永久性防御建筑。几乎所有驻扎在城"
+"堡内的单位都会获得可观的防御加成，并能全速移动。城堡的防御能力在于驻扎其中的"
+"单位，只要有一个城墙格子中没有单位，敌人就能很轻易地溜进城堡，与城堡中的守军"
+"获得相同的防御加成。\n"
 "\n"
-"绝大多数单位在城堡中有大约60%的闪避率。\n"
+"绝大多数单位在城堡中有大约60%的防御率。\n"
 "\n"
 
 #. [topic]: id=terrain_sand
@@ -2715,7 +2863,6 @@ msgstr "沙地"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:628
-#, fuzzy
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -2724,10 +2871,11 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
-"沙地的不稳定性使得大多数单位很难穿过，而且很容易受到攻击。相比之下，那些长着"
-"大脚或蛇形身躯的类蜥蜴单位则能在沙地里相当自由的移动。\n"
+"<italic>text='沙地'</italic>的不稳定性使得大多数单位很难穿过，而且很容易受到"
+"攻击。相反地，那些长着大脚或蛇形身躯的类蜥蜴单位则能在沙地里相当自由的移"
+"动。\n"
 "\n"
-"绝大多数单位在沙地上将获得20%到40%的闪避率。"
+"绝大多数单位在沙地上将获得20%到40%的防御率。"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:635
@@ -2736,14 +2884,13 @@ msgstr "沙漠"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:638
-#, fuzzy
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
-"沙漠不同于小型沙地或沙滩，然而就游戏规则而言，它们是一样的。参见"
-"<ref>dst='terrain_sand' text='沙地'</ref>。"
+"<italic>text='沙漠'</italic>的组成与小型沙地或沙滩有所不同，然而就游戏规则而"
+"言，它们是一样的。参见<ref>dst='terrain_sand' text='沙地'</ref>。"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:645
@@ -2752,7 +2899,6 @@ msgstr "洞穴"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:650
-#, fuzzy
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass. Most units are wholly unfamiliar with the "
@@ -2764,13 +2910,13 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
-"洞穴地形代表所有足以容许单位通过的地下洞穴。大多数单位完全不熟悉此类地形，因"
-"此速度会减慢，防御也会受阻。矮人和巨魔在洞穴里安家，因而穿行于这类地形之中也"
-"就相对容易一些。尤其是矮人们，凭借着自己的小个子，可以越过许多别的种族无法越"
-"过的障碍。有时洞穴也会被<ref>dst='terrain_illuminated_cave' text='照亮'</"
-"ref>。\n"
+"<italic>text='洞穴'</italic>地形代表所有足以容许单位通过的地下洞穴。大多数单"
+"位完全不熟悉此类地形，因此速度会减慢，防御也会受阻。矮人和巨魔在洞穴里安家，"
+"因而穿行于这类地形之中也就相对容易一些。尤其是矮人们，凭借着自己的小个子，可"
+"以越过许多别的种族无法越过的障碍。有时洞穴也会被"
+"<ref>dst='terrain_illuminated_cave' text='照亮'</ref>。\n"
 "\n"
-"绝大多数单位在洞穴中有20%到40%的闪避率，而矮人则拥有50%。"
+"绝大多数单位在洞穴中有20%到40%的防御率，而矮人则拥有50%。"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:657
@@ -2779,7 +2925,6 @@ msgstr "岩石洞穴"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:662
-#, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -2793,13 +2938,13 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
-"岩石洞穴这种地形是由携带腐蚀性粒子的水和风侵蚀而成的。它类似于凹凸不平的地下"
-"洞穴，降低了大部分单位在其中的移动效率，但却会提升防御能力。矮人和巨魔是洞穴"
-"中的主要定居者，因而穿行于这类地形之中也相对容易一些。凭借自身矮小的特点，矮"
-"人在这类地形中穿行时占尽优势。有时洞穴也会被"
+"<italic>text='岩石洞穴'</italic>这种地形是由携带腐蚀性颗粒的水和风的侵蚀而形"
+"成的。它类似于凹凸不平的地下洞穴，降低了大部分单位在其中的移动效率，但却会提"
+"升防御能力。矮人和巨魔是洞穴中的主要定居者，因而穿行于这类地形之中也相对容易"
+"一些。凭借自身矮小的特点，矮人在这类地形中穿行时占尽优势。有时洞穴也会被"
 "<ref>dst='terrain_illuminated_cave' text='照亮'</ref>.\n"
 "\n"
-"绝大多数单位在岩石洞穴中有50%的闪避率，骑兵被限制在40%，而矮人则享有60%。"
+"绝大多数单位在岩石洞穴中有50%的防御率，骑兵被限制在40%，而矮人则享有60%。"
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:669
@@ -2809,7 +2954,6 @@ msgstr "明亮洞穴"
 # not very pleased with "lawful"
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:672
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2818,7 +2962,8 @@ msgid ""
 "<ref>dst='terrain_cave' text='cave terrains'</ref>."
 msgstr ""
 "来自地表的光线洞穿了黑暗，将地下世界中的洞穴照亮。这将为守序单位提供攻击加"
-"成，并去除混乱单位的攻击加成。就其他方面而言，明亮洞穴与普通洞穴并无二致。"
+"成，并移除混沌单位的攻击加成。就其他方面而言，这种地形与普通的"
+"<ref>dst='terrain_cave' text='洞穴地形'</ref>并无二致。"
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:679
@@ -2827,7 +2972,6 @@ msgstr "蘑菇林"
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:684
-#, fuzzy
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -2839,12 +2983,13 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"蘑菇林是由巨型蘑菇形成的广大的地下森林，在潮湿黑暗之处生长繁盛。在通过布满了"
-"松软小蘑菇的地面时，绝大多数单位都会遇到点麻烦，不过那些巨大的蘑菇柄给他们提"
-"供了充足的保护。骑兵则仿佛身陷泥潭，在作战时完全失去了自由移动的能力。亡灵单"
-"位自然而然地对腐烂感到亲切，所以他们在蘑菇林里的表现也很不错。\n"
+"<italic>text='蘑菇林'</italic>是由巨型蘑菇形成的广大的地下森林，在潮湿黑暗之"
+"处生长繁盛。在通过布满了松软小蘑菇的地面时，绝大多数单位都会遇到点麻烦，不过"
+"那些巨大的蘑菇柄给他们提供了充足的保护。骑兵则仿佛身陷泥潭，在作战时完全失去"
+"了自由移动的能力。亡灵单位自然而然地对腐烂感到亲切，所以他们在蘑菇林里的表现"
+"也很不错。\n"
 "\n"
-"绝大多数单位在蘑菇林中的闪避率在50%至60%之间，而骑兵则只有20%。"
+"绝大多数单位在蘑菇林中的防御率在50%至60%之间，而骑兵则只有20%。"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:691
@@ -2853,7 +2998,6 @@ msgstr "村庄"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:698
-#, fuzzy
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise. Almost all units, even cavalry, have an easy time navigating "
@@ -2866,12 +3010,12 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
-"村庄指的是人类或其它种族的建筑群。几乎所有单位，甚至骑兵，都能很轻易地通过村"
-"庄。并且绝大多数单位在驻扎于村庄里时会获得防御加成。村庄会提供给各个单位用于"
-"清洗和包扎伤口的资源，使得驻扎在内的单位每回合回复8点生命值，或治愈中毒状"
-"态。\n"
+"<italic>text='村庄'</italic>指的是人类或其它种族的建筑群。几乎所有单位，甚至"
+"骑兵，都能很轻易地通过村庄。并且绝大多数单位在驻扎于村庄里时都会获得防御加"
+"成。村庄会提供给各个单位用于清洗和包扎伤口的资源，使得驻扎在内的单位每回合回"
+"复8点生命值，或治愈中毒状态。\n"
 "\n"
-"绝大多数单位在村庄里有50%到60%的闪避率，而骑兵则只有40%。\n"
+"绝大多数单位在村庄里有50%到60%的防御率，而骑兵则只有40%。\n"
 "\n"
 
 #. [topic]: id=terrain_water_village
@@ -2881,7 +3025,6 @@ msgstr "水下村庄"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:712
-#, fuzzy
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -2893,11 +3036,12 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"水下村庄是人鱼和娜迦的家。水中的生灵很熟悉这里，但陆地居民们要想穿越或者守卫"
-"这些村庄就很困难了。不过，就像任何陆地上的村庄一样，这里也为任何生灵提供治愈"
-"创伤的设施。驻扎于此的单位每回合可以回复8点生命值，或治愈中毒状态。\n"
+"<italic>text='水下村庄'</italic>是人鱼和娜迦的家。水中的生灵很熟悉这里，但陆"
+"地居民们要想穿越或者守卫这些村庄就很困难了。不过，就像任何陆地上的村庄一样，"
+"这里也会为任何生灵提供治愈创伤的设施。驻扎于此的单位每回合可以回复8点生命值，"
+"或治愈中毒状态。\n"
 "\n"
-"人鱼和娜迦在水下村庄里有60%的闪避率，然而以陆地为家的单位通常只能得到较低程度"
+"人鱼和娜迦在水下村庄里有60%的防御率，然而以陆地为家的单位通常只能得到较低程度"
 "的保护。"
 
 #. [topic]: id=terrain_unwalkable
@@ -2907,16 +3051,15 @@ msgstr "不可步行地形"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:722
-#, fuzzy
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
-"不可步行地形包括所有的深渊和峡谷。正如它的名字所暗示的那样，这些区域是无法简"
-"单地步行通过的。深渊以悬崖峭壁闻名，要花费许多天才能通过。就游戏规则而言，只"
-"有拥有飞行能力的单位可以通过这种地形。"
+"<italic>text='不可步行地形'</italic>形包括所有的深渊和峡谷。正如它的名字所暗"
+"示的那样，这些区域是无法简单地步行通过的。深渊以悬崖峭壁闻名，要花费许多日子"
+"才能通过。就游戏规则而言，只有能够飞行的单位才可以通过这种地形。"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:729
@@ -2925,7 +3068,6 @@ msgstr "熔岩"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:732
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -2935,10 +3077,10 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
-"试图在熔岩上行走所固有的危险是显而易见的。就移动而言，熔岩和"
-"<ref>dst='terrain_unwalkable' text='不可步行'</ref>地形相同，只有那些能飞到离"
-"它足够远的高度的单位才可以通过。同时，熔岩会发散出大量光辉，将其上空照亮。这"
-"将为守序单位提供攻击加成，并去除混乱单位的攻击加成。"
+"试图在<italic>text='熔岩'</italic>上行走所固有的危险是显而易见的。就移动而"
+"言，熔岩和<ref>dst='terrain_unwalkable' text='不可步行'</ref>地形相同，只有那"
+"些能飞到离它足够远的高度的单位才可以通过。同时，熔岩会发散出大量光辉，将其上"
+"空照亮。这将为守序单位提供攻击加成，并移除混沌单位的攻击加成。"
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:739
@@ -2966,7 +3108,6 @@ msgstr "礁石"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:754
-#, fuzzy
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand. This provides most land units with a more steady footing and "
@@ -2975,10 +3116,10 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"礁石是由石头，珊瑚和泥沙组成的浅滩。这为大部分陆地单位提供比浅水更好的支撑和"
-"防御。同时为绝大多数水生种族提供特别高的防御。\n"
+"<italic>text='礁石'</italic>是由石头，珊瑚和泥沙组成的浅滩。这为大部分陆地单"
+"位提供比浅水更好的支撑和防御。同时也为绝大多数水生种族提供特别高的防御。\n"
 "\n"
-"人鱼和娜迦在礁石上都有70%的闪避率。"
+"人鱼和娜迦在礁石上都有70%的防御率。"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:761
@@ -2987,7 +3128,6 @@ msgstr "桥梁"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:767
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -3001,13 +3141,13 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
-"对于能造桥的人来说，架桥的能力意味着把自己从水路那变化多端的本性中解放出来——"
-"浅滩常常随着水位的升降而忽隐忽现。但这并不能保证您能奢侈地让双脚保持干燥——在"
-"寒冷的季节把脚弄湿了可不是开玩笑的事。\n"
+"对于能造桥的人来说，架<italic>text='桥'</italic>的能力意味着把自己从水路那变"
+"化多端的本性中解放出来——浅滩常常随着水位的升降而忽隐忽现。但这并不能保证您能"
+"奢侈地让双脚保持干燥——在寒冷的季节把脚弄湿了可不是开玩笑的事。\n"
 "\n"
-"无论是对适应陆路还是对适应水路的单位来说，桥梁都是理想的地形。就游戏规则而"
-"言，桥可以视为草原或者水域，游戏会自动选择对占据此格之单位的移动和防御加成最"
-"明显的一种。注意，游泳单位和陆地单位不能同时占据同一个桥梁格子。"
+"无论是对适应陆路还是对适应水路的单位来说，桥梁都是最好的地形——就游戏规则而"
+"言，桥可以视为草原或者其下的水域，游戏会自动选择对占据此格之单位的移动和防御"
+"加成最明显的一种。注意，游泳单位和陆地单位不能同时占据同一个桥梁格子。"
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:774
@@ -3045,7 +3185,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:799
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3072,10 +3211,10 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"设置某一方由玩家或者AI来控制。这条命令需要由控制那一方的玩家/客户端来发出。如"
-"果不指定第二个参数，则在玩家控制和AI控制之间切换。如果第二个参数是“on”，则设"
-"置为AI控制。如果第二个参数是“off”，则设置为玩家控制。如果不指定参数，则默认为"
-"当前活动方。\n"
+"设置某一阵营由人类玩家或者AI玩家来控制。这条命令需要由控制该阵营的玩家/客户端"
+"来发出。如果不指定第二个参数，则在人类和AI之间切换。如果第二个参数是“on”，则"
+"设置为AI控制。如果第二个参数是“off”，则设置为玩家控制。如果不指定参数，则默认"
+"为当前活动的阵营。\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -3168,13 +3307,13 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"在多人游戏中封掉用户IP地址，并把他踢出游戏。可以对并不在游戏过程中但在服务器"
-"上的用户使用。（当然这时他们是不会被踢出游戏的。）\n"
+"在多人游戏中根据某个用户名所使用的IP地址来封禁该用户，并把他踢出游戏。可以对"
+"并不在游戏过程中但在服务器上的用户使用。（当然这时他们是不会被踢出游戏"
+"的。）\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3186,9 +3325,10 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"将某一阵营的控制权（在这里输入该方的号码）赋予某个用户（在这里输入玩家或观察"
-"者的昵称）。您可以在“场景设置”对话框中查看哪个玩家控制着哪个阵营(在“状态表”中"
-"按“更多”按钮即可，默认快捷键是alt+s）。主机可以改变任何阵营的控制权。\n"
+"将某一阵营的控制权（此处输入该阵营的编号）赋予某个用户（此处输入玩家或观察者"
+"的昵称）。您可以在<bold>text='场景设置'</bold>对话框中查看哪个玩家控制着哪个"
+"阵营(在<bold>text='状态表'</bold>中按<bold>text='更多'</bold>按钮即可，默认快"
+"捷键是alt+s）。主机可以改变任何阵营的控制权。\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3207,7 +3347,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:844
-#, fuzzy
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3215,7 +3354,10 @@ msgid ""
 "game.\n"
 "\n"
 msgstr ""
-"发送私人消息。您不能发送消息给没有在您所正在进行的游戏中控制一个阵营的玩家。"
+"\n"
+"向一名用户发送私人消息。在游戏进行中，向正控制着同一场游戏中的某个阵营的玩家"
+"发送私人消息是不可能的。\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:847
@@ -3299,7 +3441,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"为当前阵营开/关战争迷雾或战场黑幕。\n"
+"为当前阵营开关战争迷雾或战场黑幕。\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3438,7 +3580,7 @@ msgid ""
 "Vulnerabilities are not affected."
 msgstr ""
 "坚定：\n"
-"当进行防御时，本单位具有双倍抗性，最高50%。该单位的弱点不受此能力影响。"
+"当进行防御时，本单位具有双倍抗性，最高50%。该单位的弱点不受此技能影响。"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
@@ -3516,9 +3658,9 @@ msgid ""
 "night, and as if it were day when it is dusk."
 msgstr ""
 "照明：\n"
-"本单位照亮附近的区域，使守序单位更好地战斗，而混乱单位的表现变差。\n"
+"本单位照亮附近的区域，使守序单位更好地战斗，而使混沌单位的表现变差。\n"
 "\n"
-"如果现在是夜间，那么与这个单位相邻的单位将像在黄昏时一样战斗，如果现在是黄"
+"如果现在是夜间，那么与这个单位相邻的单位会像在黄昏时那样战斗，如果现在是黄"
 "昏，那么他们会像在白天时那样战斗。"
 
 #. [teleport]: id=teleport
@@ -3687,8 +3829,8 @@ msgid ""
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
 "背刺：\n"
-"在用于进攻时，如果攻击者的对面有与目标敌对的单位，且该敌对单位具有战斗力（例"
-"如，没有被石化或者用别的方式麻痹）时，本攻击将造成双倍伤害。"
+"在用于进攻时，如果目标的另一面（与进攻者相对）紧邻着与目标敌对的单位，且该单"
+"位具有战斗力（例如，没有被石化或者用别的方式麻痹）时，本攻击将造成双倍伤害。"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
@@ -3799,7 +3941,8 @@ msgid ""
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
 "冲锋：\n"
-"用于进攻时，本攻击对目标造成双倍伤害，目标的反击也会使本单位受到双倍的伤害。"
+"用于进攻时，本攻击将对目标造成双倍伤害，但目标的反击也会使本单位受到双倍伤"
+"害。"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:706
@@ -3842,7 +3985,7 @@ msgstr "最大生命值奖励+3，最大经验值+20%"
 #. [time]: id=indoors
 #: data/core/macros/schedules.cfg:70
 msgid "Indoors"
-msgstr ""
+msgstr "室内"
 
 #. [time]: id=deep_underground
 #: data/core/macros/schedules.cfg:90
@@ -3852,124 +3995,112 @@ msgstr "深层地下"
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:162
 msgid "Midnight"
-msgstr ""
+msgstr "午夜"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:174
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "后半夜"
+msgstr "后半夜 — 第一小时"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:186
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "后半夜"
+msgstr "后半夜 — 第二小时"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:198
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "后半夜"
+msgstr "后半夜 — 第三小时"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:210
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "后半夜"
+msgstr "后半夜 — 第四小时"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:222
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "后半夜"
+msgstr "后半夜 — 第五小时"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:234
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "后半夜"
+msgstr "后半夜 — 第六小时"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:257
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "上午 — 第一小时"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:266
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "上午 — 第二小时"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:275
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "上午 — 第三小时"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:284
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "上午 — 第四小时"
 
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:293
 msgid "Midday"
-msgstr ""
+msgstr "正午"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "下午 — 第一小时"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "下午 — 第二小时"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "下午 — 第三小时"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:329
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "下午 — 第四小时"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:338
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "下午 — 第五小时"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "下午 — 第六小时"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "前半夜 — 第一小时"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:381
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "前半夜 — 第二小时"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:393
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "前半夜 — 第三小时"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:405
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "前半夜 — 第四小时"
 
 #: data/core/macros/special-notes.cfg:5
 msgid ""
@@ -3999,10 +4130,8 @@ msgid " This unit is capable of basic healing."
 msgstr " 本单位能够进行简单的治疗。"
 
 #: data/core/macros/special-notes.cfg:17
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid " This unit is capable of rapid healing."
-msgstr " 本单位能够进行简单的治疗。"
+msgstr " 本单位能够进行迅速的治疗。"
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
@@ -4019,20 +4148,21 @@ msgstr " 本单位能够中和周围单位身上的毒素。"
 msgid ""
 " This unit regenerates, which allows it to heal as though always stationed "
 "in a village."
-msgstr "本单位能够再生，也就是可以治疗自己，就像一直驻扎在村庄里一样。"
+msgstr " 本单位能够再生，也就是可以治疗自己，就像一直驻扎在村庄里一样。"
 
 #: data/core/macros/special-notes.cfg:29
 msgid ""
 " The steadiness of this unit reduces damage from some attacks, but only "
 "while defending."
-msgstr " 本单位的坚忍不拔使得某些攻击的伤害下降，但只在防御时有效。"
+msgstr ""
+" 本单位的坚忍不拔使得他遭到某些攻击时受到的伤害下降，但这只在防御时有效。"
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
 " The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
-" 本单位的领导能力使得相邻的本方单位在战斗中造成更多的伤害，虽然这只对比本单位"
+" 本单位的领导技能使得相邻的本方单位在战斗中造成更多的伤害，虽然这只对比本单位"
 "等级低的单位有效。"
 
 #: data/core/macros/special-notes.cfg:35
@@ -4040,25 +4170,25 @@ msgid ""
 " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" 本单位的游击能力使其能够忽视敌人的控制区域，因而能毫无阻碍地在他们附近移动。"
+" 本单位的游击技能使其能够忽视敌人的控制区域，因而能毫无阻碍地在他们附近移动。"
 
 #: data/core/macros/special-notes.cfg:38
 msgid " Illumination increases the lighting level in adjacent areas."
-msgstr " 照明能力会提升相邻区域的明亮程度。"
+msgstr " 照明技能会提升相邻区域的明亮程度。"
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-"本单位可以花费一次移动机会，在任意两个属于本阵营的无人驻守的村庄之间移动。"
+" 本单位可以花费一次移动机会，在任意两个属于本阵营的无人驻守的村庄之间移动。"
 
 #: data/core/macros/special-notes.cfg:44
 msgid ""
 " In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
 msgstr ""
-" 在树林中，本单位的伏击能力让敌人无法察觉到其存在，除非敌人与其紧邻。本单位在"
+" 在树林中，本单位的伏击技能让敌人无法察觉到其存在，除非敌人与其紧邻。本单位在"
 "攻击时也会暴露自己。"
 
 #: data/core/macros/special-notes.cfg:47
@@ -4111,7 +4241,7 @@ msgid ""
 " This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
 msgstr ""
-" 本单位能够使敌人减速，让他的移动速度和攻击输出都减半，直到本回合结束。"
+" 本单位能够使敌人减速，让他的移动速度和攻击伤害都减半，直到本回合结束。"
 
 #: data/core/macros/special-notes.cfg:71
 msgid ""
@@ -4126,14 +4256,10 @@ msgstr ""
 " 本单位的精准射术让他有很高的几率命中被瞄准的敌人，但只有在进攻时有效。"
 
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
-#| msgid ""
-#| " The unit has magical attacks, which always have a high chance of hitting "
-#| "an opponent."
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
-msgstr " 本单位拥有魔法攻击能力，使得他总是有很高的几率能命中对手。"
+msgstr " 本单位拥有魔法攻击，该攻击总是有很高的几率能命中对手。"
 
 #: data/core/macros/special-notes.cfg:80
 msgid ""
@@ -4164,7 +4290,7 @@ msgid ""
 " The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
 msgstr ""
-" 本单位的毒素的受害者们将持续地受到伤害，直到他们在城镇中治愈，或者被有此能力"
+" 本单位的毒素的受害者们将持续地受到伤害，直到他们在城镇中治愈，或者被有此技能"
 "的单位治愈。"
 
 #. [trait]: id=loyal
@@ -4212,15 +4338,13 @@ msgstr "机械"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "elemental"
-msgstr "隐蔽"
+msgstr "元素"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:53
-#, fuzzy
 msgid "female^elemental"
-msgstr "忠诚"
+msgstr "元素"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:66
@@ -4304,20 +4428,18 @@ msgstr "在不适应的时段（昼间/夜间）也能正常作战"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
-msgstr "总计"
+msgstr "野生"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
-msgstr "中立"
+msgstr "野生"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
 msgid "Receive only 50% defense in land-based villages"
-msgstr ""
+msgstr "在陆地村庄里只能拥有50%的防御率"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -4383,21 +4505,25 @@ msgid ""
 "especially when encountered in groups. Typically nocturnal, they are often "
 "kept (and occasionally tamed) by those who share their love of the night."
 msgstr ""
+"蝙蝠有多种不同的外形和大小，其中大部分都是基本无害的，只是吃昆虫和其他小动物"
+"为生。而现已确知，更大更凶残的蝙蝠种群对人类、其他种族以及他们的牲畜而言都是"
+"一种威胁，尤其是当它们成群袭来时。它们通常在夜间活动，也往往会被那些同样热爱"
+"夜晚的家伙们收留（有时是被驯养）。"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
 msgid "race^Drake"
-msgstr "龙族"
+msgstr "龙人"
 
 #. [race]: id=drake
 #: data/core/units.cfg:55
 msgid "race+female^Drake"
-msgstr "龙族"
+msgstr "龙人"
 
 #. [race]: id=drake
 #: data/core/units.cfg:56
 msgid "race^Drakes"
-msgstr "龙族"
+msgstr "龙人"
 
 #. [race]: id=drake
 #: data/core/units.cfg:69
@@ -4467,6 +4593,45 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
+"龙人是庞大，有翼，喷吐火焰的生物，是真正的巨龙的后裔。平允而言，成年龙人站起"
+"来大约有三米高，比一个人加一匹马的总重量还重得多。他们的皮肤由坚硬的鳞片组"
+"成，对穿刺和寒冰之外的绝大多数物理攻击都有很高的抗性。他们大多数都能真正地飞"
+"行，而且能快速地远距离移动。但龙人巨大的体重和身形似乎有些影响飞行能力，使得"
+"他们在空中有点儿笨拙。所以他们尽可能地从丘陵、山头或者树上起飞，以获得更高的"
+"高度和更快的速度。对于他们的敌人来说幸运的是，龙人仍然是很笨拙的生物，在战斗"
+"中速度出奇地缓慢。这个弱点，再加上大身材，使得对于那些胆敢袭击他们的家伙们而"
+"言，龙人是很容易对付的目标。\n"
+"\n"
+"龙人天生就是魔法生物，正是他们体内的神秘火焰滋养着他们的生命。当一个龙人战士"
+"在战斗中死去时，这一点很容易就能观察到：逝者体内的火焰会释放出来，将尸体燃烧"
+"殆尽。体内的火焰也是他们最大的弱点：这使他们极易被寒冰攻击所伤。虽然他们有魔"
+"力本能，但龙人却不能用可控的方式来使用魔法。尽管龙人体内的魔法使得他们可以吐"
+"火，也给了他们生命，但他们却不能有意识地控制这魔法的作用。\n"
+"\n"
+"<header>text='社会'</header>\n"
+"龙人是一个相对好战的种族，他们的社会可以准确地称为教化后的军事社会。龙人部落"
+"的核心由一小群经验丰富的老兵组成，他们的首脑与他们相互尊重——或者只是相互畏惧"
+"——这是一位用铁腕统治着龙人社会的领袖。龙人成员必须在这个严格的层级体系中争取"
+"自己的地位，服从上级，指挥下属。进入精英统治阶层的唯一可能性是单挑上级并取得"
+"胜利，这也是精英们内部层级体系的建立方法。针对龙人同胞的任何形式的欺骗，都毫"
+"无例外地被视为懦弱与不可接受的。\n"
+"\n"
+"虽然龙人好战的天性和对领土的敏感使得他们野蛮地捍卫自己的领地，但他们很少会入"
+"侵已经被其他主要种族占据的区域。相反，他们会在无人居住的地区定居，并建立自己"
+"的领地。他们主要猎取家园周边低地中的猎物为食，但刚孵化的幼仔和低等阶层的龙人"
+"也会在自己的洞穴里培养特定种类的苔藓和真菌，并以此来过活。龙人唯一看重的技术"
+"是铠甲和武器锻造，他们不知道也不需要除此之外的科学与文化。然而，他们所使用的"
+"那少数几种用具的质量几乎无可匹敌，只有最好的矮人铸造场的产品才可以比肩。\n"
+"\n"
+"龙人是从蛋中孵化出来的，通常有20至30年寿命。战死沙场是龙人最偏爱的离开这个世"
+"界的方法。和其他种族中的年长者不同的是，很自然地，龙人越接近寿命的极限就会越"
+"具侵略性而鲁莽，也许是为了奠定自己在部族的英雄传说中的地位吧。\n"
+"\n"
+"<header>text='地理'</header>\n"
+"龙人发源于大洋上的一片火山岛链。人口压力和岛屿沉降使得他们的殖民地遍布于整个"
+"大陆。龙人倾向于把他们的家安在火山附近的山洞中，以保护他们的蛋、幼崽以及铸造"
+"场。尽管龙人天生就喜欢温暖，但即使是在相对寒冷的气候里，他们体内的火焰也足以"
+"维持生命了。这一特点使得他们甚至能够在大陆极北的一些山脉里居住。"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:90
@@ -4532,37 +4697,37 @@ msgid ""
 "Called runesmiths, they use these carvings to enchant items in order to "
 "augment certain aspects of their natures."
 msgstr ""
-"矮人是一个以族中的矿工、铁匠、商人和战士闻名于世的种族，作为仅次于精灵和巨魔"
-"的大陆上第三古老的种族，他们的早期历史神秘莫测，一直被笼罩在各种谜团之中。传"
-"说记述了那个早已被遗忘的远古年代，他们的族人穿过洞穴，从地下世界来到大陆，而"
-"有关他们在那之前的生活，一切都并不为人所知，他们来到地表世界的原因也同样是个"
-"谜。不过至此之后，矮人便成为了整个大陆历史不可或缺的一部分。矮人们从地底世界"
-"来到地表后不久，便和大陆上的原住民──精灵发生了冲突。这起纷争的真正原因早已流"
-"失在历史的长河之中，但可以肯定的是，此后两个种族之间爆发了三场旷日持久的战"
-"争，其间短暂的和平仅仅维系了数十年。漫长的战争期间，矮人始终无法将精灵从南方"
-"的密林之中驱离出去，但却成功地巩固了他们在大陆北方的山岳地区──也就是现如今"
-"的“北方大陆”的势力范围。此后，他们在领地内的山峦崖壁深处构筑起了许多梦幻般的"
-"防御工事和居所。\n"
+"矮人是一个以族中的矿工、铁匠、商人和战士闻名于世的族群，被认为是仅次于精灵和"
+"巨魔的大陆上第三古老的种族，他们的早期历史一直被笼罩在各种谜团之中。传说记述"
+"了那个早已被遗忘的远古年代，他们的族人穿过洞穴，从地下世界来到大陆，而有关他"
+"们在那之前的生活，一切都并不为人所知，他们来到地表世界的原因也同样是个谜。不"
+"过至此之后，矮人便成为了整个大陆历史不可或缺的一部分。矮人们从地底世界来到地"
+"表后不久，便和大陆上的原住民──精灵发生了冲突。这起纷争的真正原因早已流失在历"
+"史的长河之中，但可以肯定的是，此后两个种族之间爆发了三场旷日持久的战争，其间"
+"短暂的和平仅仅维系了数十年。漫长的战争期间，矮人始终无法将精灵从南方的密林之"
+"中驱离出去，但却成功地巩固了他们在大陆北方的山岳地区──也就是如今所称的“北方大"
+"陆”的势力范围。此后，他们在领地内的山峦崖壁深处构筑起了许多梦幻般的防御工事和"
+"居所。\n"
 "\n"
 "可能是由于与世隔绝的原因，矮人普遍对别的种族，尤其是精灵感到不堪信任甚至是怀"
-"有敌意，这一种族思维定势的唯一例外是人类。这可以追溯到Haldric一世时代，当人类"
-"和兽人同时来到大陆的时候。当时矮人便开始允许一些人类，主要是来自韦诺王国的政"
-"治避难者和罪犯，在北方大陆的某些特定区域内安顿下来。矮人们的动机并不让人感到"
-"意外，这些人类当时所处的窘境不禁使矮人们回忆起他们在历史上曾经受到的迫害，这"
-"使得他们悻悻相惜。矮人们亦从他们和流亡者们之间的纽带关系中获益匪浅。他们会在"
-"矮人们不喜居住的地区定居下来，例如平原、树林以及沼泽，这让矮人们从防御这些地"
-"区的苦差事中解脱了出来。\n"
+"有敌意，这一种族思维定势的唯一例外是人类。这可以追溯到哈德里克一世时代，当人"
+"类和兽人同时来到大陆的时候。当时矮人便开始允许一些人类，主要是来自韦诺王国的"
+"政治避难者和罪犯，在北方大陆的某些特定区域内安顿下来。矮人们的动机并不让人感"
+"到意外，这些人类当时所处的窘境不禁使矮人们回忆起他们在历史上曾经受到的迫害，"
+"这使得他们悻悻相惜。矮人们亦从他们和流亡者们之间的纽带关系中获益匪浅。他们会"
+"在矮人们不喜居住的地区定居下来，例如平原、树林以及沼泽，这让矮人们从防御这些"
+"地区的苦差事中解脱了出来。\n"
 "\n"
 "以人类的标准来衡量，矮人的身材都很短小，但他们一点儿都不脆弱，他们中的战士坚"
 "韧强悍，整个大陆的人们都对他们在战斗中表现出的高超技艺敬畏有加。除此之外，矮"
 "人的计算能力和卓越的工匠技术也为人所熟知。矮人铁匠们则因他们打造的致命武器和"
-"坚厚铠甲而闻名遐迩，这些军械在质量上无与伦比，可能只有龙族军械师的作品才能与"
+"坚厚铠甲而闻名遐迩，这些军械在质量上无与伦比，可能只有龙人军械师的作品才能与"
 "之比肩。杰出的智慧和天生巨细靡遗一问到底的性格亦使矮人成为大陆上科技最为进步"
 "的种族。其中最有名也是最为骇人的矮人发明之一便是那一遇上火焰或是火花就能产生"
 "剧烈爆炸的神秘药粉。某些矮人战士使用这种药粉将小型物体以极高的速度推射出去。"
-"由于这种对于科技的倾向，许多矮人倾向于不信任那些魔法使用者。但是有一些矮人练"
-"习一种以雕刻符文为基础的魔法形式，他们被称为符文师，并使用这些雕刻来增强物件"
-"的某些自然性质。"
+"由于这种对于科技的偏好，许多矮人倾向于不信任那些魔法使用者。但是有一些矮人练"
+"习一种以雕刻符文为基础的魔法形式，他们被称为符文工匠，并使用这些雕刻来对物件"
+"施法，以增强它们的某些自然性质。"
 
 #. [race]: id=elf
 #: data/core/units.cfg:110
@@ -4618,6 +4783,31 @@ msgid ""
 "trolls. Many of their settlements cannot be reliably dated, undoubtedly "
 "having existed for over a millennium."
 msgstr ""
+"相较于人类，精灵长得较高一些，行动更为敏捷，但是体格不如人类壮硕。他们有对尖"
+"长的耳朵，肤色较白，而且通常一头金发。精灵与人类之间的最大差别莫过于他们拥有"
+"非比寻常的寿命——除非死于疾病、意外或者战争，他们整整可以活两百五十年。大部分"
+"精灵活到出生后250年到300年间就开始迅速虚弱死亡（一般在一两年内），不过据了解"
+"一些拥有高魔法资质的精灵可以再多活一个世纪。\n"
+"\n"
+"精灵天生就有微弱的魔力，虽然大部分的精灵不会直接运用魔法，但这潜藏的魔力也会"
+"赋予他们灵敏的知觉以及极长的寿命。许多精灵拥有着魔法所产生的天赋，例如高超的"
+"射术或者匿踪能力，使他们能够完成令大多数生物惊讶的任务。那些学习将这些力量用"
+"于更通用的场合的精灵们会在这方面变得十分强大。很多精灵选择将这个天赋用于治疗"
+"他人。\n"
+"\n"
+"有少数精灵，因为在魔法与秘术的道路上走得太远，竟变得对冰冷的铁器十分敏感，甚"
+"至会被这些铁器烫伤。精灵族的传说暗示说，在遥远的过去，这种情况要常见得多。\n"
+"\n"
+"精灵们花很多时间来打磨他们的天赋与技能，不擅魔法的就将时间都花在锻炼身体技能"
+"上。因而精灵擅长射术，这可能是他们在战争中最重要的战斗方式。绝大多数精灵士兵"
+"都会携带一把弓，不论是在速度还是在精准度方面，没有任何一个其他种族可以跟精灵"
+"部队的弓箭手匹敌。所有的精灵都对没有被破坏的自然世界有种强烈的情感，在空旷而"
+"没有高大植被的地带里他们常常会觉得很不适应。精灵主要居住在大陆的森林中，像是"
+"西南边的埃森伍德，西北边的韦弥尔，以及以林坦尼森林为最南端的南部大森林地"
+"区。\n"
+"\n"
+"也许除了巨魔以外，精灵是这片大陆上最古老的种族。他们的许多定居点都无法确定究"
+"竟有多少年的历史，但毋庸置疑地都已经存在了超过一千年。"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:132
@@ -4655,6 +4845,18 @@ msgid ""
 "exception of jobs that require the brute strength of true orcs. Those the "
 "orcs revel in as proof of their prowess."
 msgstr ""
+"虽然外表上有区别，但地精天生就是兽人的兄弟，是同一种族的成员。其他种族通常只"
+"会抚养一个或一对孩子，但兽人却会一下子抚养一大窝后代，以至于他们的人口很快便"
+"会爆炸。在任一窝后代中，只会有一个或两个真正的兽人，他们将成长到与种族中其他"
+"成员拥有一样的身材和力量。另一些将成为半兽人，与身躯庞大的兄弟们相比，他们明"
+"显地弱小，在战斗中只能降格担任支援角色，例如弓箭手。而剩下的那些，通常是一窝"
+"后代中的一半或者更多，则会成为地精。地精又小又脆弱，很少能长过人类孩童的身"
+"材。他们天生就要为那些大号的同类过一辈子近乎于奴隶的生活，在战斗中也被当成炮"
+"灰。虽然命运悲惨，但地精仍旧欣欣向荣：这一部分是由于他们的数量实在太多，也是"
+"因为他们的兄弟兽人十分清楚自己是多么需要依靠地精才能存活。\n"
+"\n"
+"地精们负责完成兽人所需的大部分体力劳动，只除了那些需要真正兽人的蛮力的工作以"
+"外。兽人们很陶醉于这类能证明自己强大力量的工作。"
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:150
@@ -4746,7 +4948,7 @@ msgstr ""
 "伍。\n"
 "\n"
 "<header>text='氏族成员'</header>\n"
-"韦诺的东部省份称被为氏族的故乡，那里和西部更文明的省份相比，有着更多开放的平"
+"韦诺的东部省份称被为氏族的家乡，那里和西部更文明的省份相比，有着更多开放的平"
 "原和连绵起伏的丘陵，是马上氏族的家园。他们与韦诺王国结盟，但独立运作，也保持"
 "着自己的身份。有些人把他们当做附庸国，向王国进贡食物和士兵以换取保护。而其他"
 "人说他们与韦诺的西半边平起平坐。不管怎么说，东部省份并没有一支像西韦诺那样的"
@@ -4787,6 +4989,9 @@ msgid ""
 "intelligent being. Most mechanical things neither move nor think on their "
 "own, but some do so as a result of magical enchantment."
 msgstr ""
+"术语<italic>text='机械'</italic>描述了一种由智慧生物创造出来的加工品，它们既"
+"不是由自然的生命，也不是由死灵术来驱动的。绝大多数机械物体都不会自主移动或者"
+"思考，但有一些会由于魔法影响而能够如此。"
 
 #. [race]: id=merman
 #: data/core/units.cfg:208
@@ -4816,6 +5021,12 @@ msgid ""
 "ocean. They are typically wary of dry land, as they are awkward and clumsy "
 "there and they struggle greatly to move over rough or forested terrain."
 msgstr ""
+"人鱼似乎是人和鱼的混合体，是一个同时具有鱼类和人类特性的神秘种族。他们拥有强"
+"壮的尾巴，可以在任何水域中快速移动，而灵巧的手和聪慧的心让他们拥有了高超的技"
+"艺和制造工具的能力。人鱼天生就是半水生的，他们可以毫无困难地呼吸水或者空气。"
+"虽然能够在陆地上存活，但他们在水中要敏捷灵巧得多，也几乎不会在远离大洋的地方"
+"被发现。人鱼通常会很小心干燥的陆地，因为在那儿他们会变得十分笨拙。而通过起伏"
+"的地形或林地，对他们而言也是一件天大的苦差。"
 
 #. [race]: id=monster
 #: data/core/units.cfg:220
@@ -4824,8 +5035,6 @@ msgstr "怪物"
 
 #. [race]: id=monster
 #: data/core/units.cfg:221
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "怪物"
 
@@ -4841,6 +5050,8 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
+"术语“怪物”中包含了很多可怕的野兽。它们经常出没于洞穴、荒野、大洋深处以及世界"
+"的其他地方，同样地，也经常出没于世界住民的传说和梦魇之中。"
 
 #. [race]: id=naga
 #: data/core/units.cfg:230
@@ -4849,8 +5060,6 @@ msgstr "娜迦"
 
 #. [race]: id=naga
 #: data/core/units.cfg:231
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
 msgstr "娜迦"
 
@@ -4876,6 +5085,15 @@ msgid ""
 "themselves at odds with merfolk when their territories overlap, but overall "
 "nagas tend to favor swamps and rivers as much as open water."
 msgstr ""
+"蛇形的娜迦是大陆上最不被了解的种族之一。这一部分是由于他们害怕外族的天性，一"
+"部分是由于他们赖以生存的异域。娜迦是仅有的几个确实称得上能够在水中移动的种族"
+"之一。这让他们能够探访陆地居民事实上无法接触的世界，也让他们进一步远离了他们"
+"所想要躲开的陆生生物。然而，他们并不是真正的海洋生物，无法在水中呼吸，因而十"
+"分害怕深渊。娜迦居住在海岸区域，当来自海洋深处的威胁到来时，便有了逃脱的路"
+"径，同时，这也让他们免受靠脚、翅膀或者蹄子来行动的生物的打扰。虽然娜迦的体格"
+"稍显脆弱，但却常常比对手们更快更敏捷。有时，当他们的领地和人鱼的重叠之时，双"
+"方便会冲突起来，但总的来说娜迦对沼泽以及河流的偏爱程度和对开放水域的偏爱程度"
+"是一样的。"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:241
@@ -4910,6 +5128,15 @@ msgid ""
 "is a sign of cooperation, domestication, or simply mutual opportunism is not "
 "known."
 msgstr ""
+"食人魔是野蛮而未开化的种族，主要居住在大陆的荒野之中。在体格上，他们长得很像"
+"人类和兽人，但体型更大也更强壮。就连少年食人魔都要比绝大多数人都来得壮实。食"
+"人魔在许多人口众多的地方都不受信任，因此常常会避开这些区域，或者被强行赶出"
+"去。他们转而蛰伏于文明边缘的山区之中，在这些地方，饥饿的食人魔土匪对旅行者和"
+"商队造成了持续性的威胁。虽然食人魔们并不特别聪慧或者敏捷，但强壮的身躯和强大"
+"的力量使得他们成为了其他种族军队中的重要一员。他们特别受到那些残忍的指挥官们"
+"的偏爱，这些人根本不在意食人魔的暴虐。关于他们的生理特性和社会结构，人们所知"
+"甚少——如果真的可以认为他们有一个社会的话——但有人说他们会和狼以及其他野兽一起"
+"发动袭击。尚不清楚这究竟标志着合作、驯化，还是单纯的相互利用。"
 
 #. [race]: id=orc
 #: data/core/units.cfg:252
@@ -5143,13 +5370,13 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
-"亡灵并不是一个单一的种族，尽管经常被当成是这样。几乎任何死去的生物都可以被一"
-"个足够强大的死灵法师召回并成为亡灵。亡灵基本上是非自然而没有心智的存在，只听"
-"从创造它们的人的命令，从不会质疑，也不懂得思考。死灵术的重要秘密之一，就是在"
-"死灵法师并没有持续地施法的情况下，这些存在是如何维持自身的。亡灵生物不需要死"
-"灵法师的持续关注、具体操纵或者维持，但可以自动地按照主人的命令来行动。只有在"
-"很少见的情况下，也许是每过几个月，死灵法师才需要才维护一次他创造出来的东"
-"西。\n"
+"亡灵事实上并不是一个单一的种族，尽管经常被当成是这样。几乎任何死去的生物都可"
+"以被一个足够强大的死灵法师召回并成为亡灵。亡灵基本上是非自然而没有心智的存"
+"在，只听从创造它们的人的命令，从不会质疑，也不懂得思考。死灵术的重要秘密之"
+"一，就是在死灵法师并没有持续地施法的情况下，这些存在是如何维持自身的。亡灵生"
+"物不需要死灵法师的持续关注、具体操纵或者维持，但可以自动地按照主人的命令来行"
+"动。只有在很少见的情况下，也许是每过几个月，死灵法师才需要才维护一次他创造出"
+"来的东西。\n"
 "\n"
 "死灵术几乎只有人类才会研习。就连有魔法倾向的种族，比如精灵和人鱼的传说中，都"
 "几乎没有他们的族人研习黑魔法的记载。有人推测说，死灵术需要非常好的适应能力以"
@@ -5158,25 +5385,23 @@ msgstr ""
 "付出什么代价，都要将自己的心智和灵魂保留下来。\n"
 "\n"
 "<header>text='地理'</header>\n"
-"虽然直到Haldric一世的时代，才开始有大批亡灵领主到达大陆，但在那之前，精灵和矮"
-"人们并非没有听说过他们。"
+"虽然直到哈德里克一世的时代，才开始有大批亡灵领主到达大陆，但在那之前，精灵和"
+"矮人们并非没有听说过他们。"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:310
 msgid "race^Wolf"
-msgstr "狼"
+msgstr "狼族"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:311
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
-msgstr "精灵"
+msgstr "狼族"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:312
 msgid "race^Wolves"
-msgstr "狼"
+msgstr "狼族"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:322
@@ -5198,7 +5423,7 @@ msgstr "<header>text='拥有这种特殊攻击的单位'</header>"
 
 #: src/help.cpp:1227
 msgid "<header>text='Units having this ability'</header>"
-msgstr "<header>text='拥有这种能力的单位'</header>"
+msgstr "<header>text='拥有此技能的单位'</header>"
 
 #: src/help.cpp:1260
 msgid "Leaders:"
@@ -5242,11 +5467,11 @@ msgstr "种族："
 
 #: src/help.cpp:1414
 msgid "Abilities: "
-msgstr "能力："
+msgstr "技能："
 
 #: src/help.cpp:1431
 msgid "Ability Upgrades: "
-msgstr "能力升级："
+msgstr "技能升级："
 
 #: src/help.cpp:1447
 msgid "HP: "
@@ -5314,7 +5539,7 @@ msgstr "地形"
 
 #: src/help.cpp:1575
 msgid "Defense"
-msgstr "闪避率"
+msgstr "防御率"
 
 #: src/help.cpp:1576
 msgid "Movement Cost"
@@ -5351,40 +5576,3 @@ msgstr "韦诺之战帮助"
 #: src/help.cpp:3216
 msgid "Parse error when parsing help text: "
 msgstr "分析帮助文本时出现语法错误："
-
-#, fuzzy
-#~| msgid "race^Human"
-#~ msgid "race^Khalifate Human"
-#~ msgstr "人类"
-
-#, fuzzy
-#~| msgid "race+female^Human"
-#~ msgid "race+female^Khalifate Human"
-#~ msgstr "人类"
-
-#, fuzzy
-#~| msgid "race+plural^Mechanical"
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "机械"
-
-#, fuzzy
-#~| msgid "race^Human"
-#~ msgid "race^Falcon"
-#~ msgstr "人类"
-
-#, fuzzy
-#~| msgid "race+female^Human"
-#~ msgid "race+female^Falcon"
-#~ msgstr "人类"
-
-#, fuzzy
-#~| msgid "race^Humans"
-#~ msgid "race^Falcons"
-#~ msgstr "人类"
-
-#, fuzzy
-#~ msgid "<header>text='Race specific topics'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='命中率'</header>"
