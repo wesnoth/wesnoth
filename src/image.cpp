@@ -580,6 +580,13 @@ surface locator::load_image_sub_file() const
 		surface cut(cut_surface(surf, srcrect));
 		bool is_empty = false;
 		surf = mask_surface(cut, get_hexmask(), &is_empty);
+		// discard empty images to free memory
+		if(is_empty) {
+			// Safe because those images are only used by terrain rendering
+			// and it filters them out.
+			// A safer and more general way would be to keep only one copy of it
+			surf = NULL;
+		}
 		add_to_cache(is_empty_hex_, is_empty);
 	}
 
