@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-05 16:25+0100\n"
-"PO-Revision-Date: 2011-12-11 13:44+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
+"PO-Revision-Date: 2011-12-22 22:40+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
 "Language: cs\n"
@@ -182,7 +182,7 @@ msgstr ""
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
 msgid "Aerie"
-msgstr ""
+msgstr "Hnízdiště"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
@@ -191,12 +191,13 @@ msgid ""
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
+"Veliká struktura, sloužící jako domov <ref>dst='flight' text='letky'</ref>. "
+"Obsahuje také <ref>dst='breeding_pen' text='chovné kotce'</ref>."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
-#, fuzzy
 msgid "Breeding Pen"
-msgstr "krmení"
+msgstr "Chovný kotec"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
@@ -205,11 +206,14 @@ msgid ""
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
 "text='Dominant'</ref>’s eye."
 msgstr ""
+"Součást <ref>dst='aerie' text='hnízdiště'</ref>, kde žijí neinteligentní "
+"<ref>dst='breeder' text='chovné'</ref> pod dohledem <ref>dst='dominant' "
+"text='dominanta'</ref>."
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
 msgid "Breeding Cycle"
-msgstr ""
+msgstr "Růstový cyklus"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:26
@@ -217,6 +221,8 @@ msgid ""
 "The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
 "next."
 msgstr ""
+"Čas, uplynuvší mezi jedním a následujícím kladením <ref>dst=egg "
+"text='vajec'</ref>."
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
@@ -292,7 +298,7 @@ msgstr ""
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
 msgid "Dominant"
-msgstr ""
+msgstr "Dominant"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
@@ -302,6 +308,10 @@ msgid ""
 "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
 "privileges on others."
 msgstr ""
+"<ref>dst='aspirant' text='Aspirant'</ref>, který se stane vůdcem letky "
+"drakonidů. Jediný samec kmene, který se může pářit s <ref>dst='breeder' "
+"text='chovnými'</ref>. Zřídkavě může toto privilegium rozšířit i na další "
+"samce."
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
@@ -341,23 +351,23 @@ msgstr ""
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
 msgid "Laying"
-msgstr ""
+msgstr "Kladení"
 
 #. [topic]: id=laying
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
 msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr ""
+msgstr "Součást <ref>dst='breeding_cycle' text='životního cyklu'</ref>."
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
 msgid "Hatching"
-msgstr ""
+msgstr "Klubání"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
 msgid "Hatchling"
-msgstr ""
+msgstr "Výklubek"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
@@ -366,6 +376,9 @@ msgid ""
 "the current generation of hatchlings are the most aggressive is the behavior "
 "of the <ref>dst='flight' text='flight'</ref>."
 msgstr ""
+"Mladý drakonid, který ještě nezažil líhnutí další generace. Nejmladší z "
+"generace výklubků jsou obvykle nejagresivnější jedinci z celé "
+"<ref>dst='flight' text='letky'</ref>."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
@@ -383,7 +396,7 @@ msgstr ""
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
 msgid "Breeder"
-msgstr ""
+msgstr "Chovná"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:104
@@ -394,11 +407,16 @@ msgid ""
 "take care of their food for themselves when laying. Drake breeders become "
 "fertile after the next <ref>dst='hatching' text='hatching'</ref>."
 msgstr ""
+"Drakonidská samice. Jsou vzácné, protože <ref>dst='egg' text='vejce'</ref>, "
+"z nichž se líhnou, vyžadují velkou péči. Počet chovných samic je také "
+"limitován počtem ostatních drakonidů, protože chovné se v období kladení "
+"vajec nemohou samy živit. Drakonidské chovné se stávají plodnými po dalším "
+"<ref>dst='hatching' text='klubání'</ref>."
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:109
 msgid "Egg, Drake"
-msgstr ""
+msgstr "Vejce, drakonidské"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:110
@@ -407,11 +425,14 @@ msgid ""
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid "
 "and to some extent the ambient temperature."
 msgstr ""
+"<ref>dst='caste' text='Kasta'</ref>, k níž bude <ref>dst='hatchling' "
+"text='výklubek'</ref> náležet, je určena dobou kladení a do určité míry také "
+"teplotou."
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
 msgid "Flight"
-msgstr ""
+msgstr "Letka"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
@@ -420,11 +441,14 @@ msgid ""
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
+"Kmen drakonidů, žijící ve <ref>dst='aerie' text='hnízdišti'</ref>, "
+"ovládající lovecký revír. Každý kmen má jednoho <ref>dst='dominant' "
+"text='dominanta'</ref>, který se těší zvláštním výhodám."
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:121
 msgid "Aspirant"
-msgstr ""
+msgstr "Aspirant"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
@@ -434,17 +458,22 @@ msgid ""
 "secretion of the hormone is caused by hunt and combat actions in which the "
 "drake is involved."
 msgstr ""
+"Drakonidský samec, který prošel hormonální proměnou uschopňující jej k "
+"páření s <ref>dst='breeder' text='chovnými'</ref>. Vylučování příslušných "
+"hormonů je podmíněno bojovou a loveckou činností drakonida."
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:127
 msgid "Ascendant"
-msgstr ""
+msgstr "Ascendant"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
+"Drakonidský termín pro <ref>dst='unit_Fire Dragon' text='opravdové draky'</"
+"ref>."
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
@@ -464,9 +493,8 @@ msgstr ""
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
-#, fuzzy
 msgid "Swarm"
-msgstr "hejno"
+msgstr ""
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:140
@@ -477,9 +505,8 @@ msgstr ""
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
-#, fuzzy
 msgid "Swarming"
-msgstr "hejno"
+msgstr ""
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -1097,7 +1124,6 @@ msgstr "Základní pravidla hry"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:133
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play <italic>text='Battle for "
 "Wesnoth'</italic>. They cover how to play and the basic mechanics behind the "
@@ -1105,11 +1131,11 @@ msgid ""
 "come across new aspects of the game. For more detailed information on "
 "special situations and exceptions, please follow the links included."
 msgstr ""
-"Tyto stránky popisují vše podstatné pro hraní hry Bitva o Wesnoth. Obsahují "
-"návod jak hrát a základní mechaniku v pozadí hry. Během vaší hry zde budou "
-"přidávány nové informace, které vás provedou napříč novými možnostmi hry. "
-"Pro bližší informace o zvláštních situacích a aspektech této hry, následujte "
-"prosím přiložený odkaz."
+"Tyto stránky popisují vše podstatné pro hraní hry <italic>text='Bitva o "
+"Wesnoth'</italic>. Obsahují návod jak hrát a základní mechaniku v pozadí "
+"hry. Během vaší hry zde budou přidávány nové informace, které vás provedou "
+"napříč novými možnostmi hry. Pro bližší informace o zvláštních situacích a "
+"aspektech této hry, následujte prosím přiložený odkaz."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:135
@@ -1172,7 +1198,6 @@ msgstr ""
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:146
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1183,9 +1208,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Tažení se sestává z řady scénářů, které na sebe navazují při vyprávění "
-"příběhu. V tažení často potřebujete hrát pozorně a chránit své nejlepší "
-"jednotky, neboť mohou být opět použity v pozdějších scénářích tažení."
+"<italic>text='Tažení'</italic> se sestává z řady scénářů, které na sebe "
+"navazují při vyprávění příběhu. V tažení často potřebujete hrát pozorně a "
+"chránit své nejlepší jednotky, neboť mohou být opět použity v pozdějších "
+"scénářích tažení."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:152
@@ -1222,9 +1248,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Když vyhrajete scénář, mapa zešedne a tlačítko „Ukonči kolo“ se změní na "
-"„Ukončit scénář“. Můžete stále měnit nastavení nebo komunikovat se "
-"spoluhráči (ve hře více hráčů) před potvrzením konce hry tímto tlačítkem."
+"Když vyhrajete scénář, mapa zešedne a tlačítko „<bold>text='Ukonči kolo'</"
+"bold>“ se změní na „<bold>text='Ukončit scénář'</bold>“. Můžete stále měnit "
+"nastavení nebo komunikovat se spoluhráči (ve hře více hráčů) před potvrzením "
+"konce hry tímto tlačítkem."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:162
@@ -1306,7 +1333,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1316,8 +1342,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jednotky stojí peníze nejen při verbování či vyvolání, ale také požadují "
-"peníze pro obživu. Pro více informací se podívejte na "
+"Jednotky stojí peníze nejen při verbování či přivolání, ale také požadují "
+"finanční podporu pro obživu. Pro více informací se podívejte na "
 "<ref>dst='income_and_upkeep' text='Příjmy a Výdaje'</ref>."
 
 #. [topic]: id=orbs
@@ -1463,12 +1489,12 @@ msgstr ""
 "Každá jednotka má jistý počet pohybových bodů, které jsou použity pro pohyb "
 "na nové políčko a závisí na terénu jednotlivých políček. Například pastviny "
 "téměř vždy stojí při vstupu 1 pohybový bod. Přesný počet bodů vyčerpaných "
-"při vstupu na políčko závisí na typu jednotky - elfské jednotky vyčerpají "
+"při vstupu na políčko závisí na typu jednotky — elfské jednotky vyčerpají "
 "při pohybu v lese 1 pohybový bod, většina lidí a obrů vyčerpá 2, zatímco "
 "jezdci 3 body. Kolik bodů jednotlivé jednotky požadují při vstupu na "
 "příslušný terén zjistíte, když kliknete pravým tlačítkem myši na jednotku, "
-"zvolíte popis jednotky a podíváte se na <italic>text='Terénní činitele'</"
-"italic>."
+"zvolíte <bold>text='popis jednotky'</bold> a podíváte se na "
+"<bold>text='Terénní činitele'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
@@ -1920,12 +1946,8 @@ msgstr ""
 "tak se dostanou do další úrovně, zároveň se také během tohoto procesu plně "
 "uzdraví. V některý případech se objeví možnost volby dalšího vývoje."
 
-# \n
-# \n
-# Pamatujte, že jen velmi malé množství jednotek, například Požírači mrtvol, se mohou pomocí AMLA léčit jako při povýšení. Většina jednotek pouze získá bonus k maximálnímu počtu životů.
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:291
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1944,8 +1966,9 @@ msgstr ""
 "\n"
 "Přestože většina jednotek má tři úrovně, není to vždy pravidlem. Některé "
 "jednotky (např. <ref>dst='unit_Mage' text='Mágové'</ref>) mohou mít čtyři. "
-"Jakmile jednotka dosáhne své maximální úrovně, může získat schopnost dalšího "
-"rozvoje (After Maximum Level Advancement - AMLA). AMLA bude měnit nějaké "
+"Jakmile jednotka dosáhne své maximální úrovně, může získat "
+"<italic>text='schopnost dalšího rozvoje'</italic> (<italic>text='After "
+"Maximum Level Advancement'</italic> — AMLA). AMLA bude měnit nějaké "
 "vlastnosti jednotky pokaždé, kdy jednotka dosáhne počtu zkušenostních bodů "
 "nutných pro získání další úrovně, ale jednotka zůstane na stejné úrovni. "
 "Obvykle AMLA ovlivní jednotku tak, že zvýší maximální počet životů o 3 a "
@@ -2098,7 +2121,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2112,11 +2134,10 @@ msgstr ""
 "\n"
 "\n"
 "Výdaje jsou také dosti jednoduché. Každá jednotka požaduje žold, který je "
-"přímo úměrný její úrovni. Jednotky se stejným <italic>text='množstvím "
-"úrovní'</italic> jako je počet vesnic jsou zdarma. Samozřejmě za každou "
-"úroveň jednotky nad rámec počtu vesnic, které máte, musíte platit jeden "
-"zlatý za tah. Například, pokud máte 12 jednotek úrovně jedna a 10 vesnic, "
-"pak budete muset každý tah zaplatit 2 zlaté."
+"přímo úměrný její úrovni. Bez placení žoldu lze podporovat maximálně tolik "
+"úrovní jednotek celkem, jako máte vesnic. Za každou úroveň navíc platíte "
+"jeden zlatý za tah. Například, pokud máte 12 jednotek úrovně jedna a 10 "
+"vesnic, pak budete muset každý tah zaplatit 2 zlaté."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:321

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-19 15:14+0100\n"
-"PO-Revision-Date: 2011-12-11 13:25+0100\n"
+"PO-Revision-Date: 2011-12-22 22:50+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -1342,21 +1342,18 @@ msgstr "Vyber si obtížnost:"
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
 #, fuzzy
-#| msgid "View Chat Log"
 msgid "Chat Log"
 msgstr "Ukaž záznam rozhovoru"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
-#, fuzzy
-#| msgid "Message:"
 msgid "Page:"
-msgstr "Zpráva:"
+msgstr "Stránka:"
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:69
 msgid "Last"
-msgstr ""
+msgstr "Poslední"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
@@ -1410,19 +1407,19 @@ msgstr "Datum"
 #: data/gui/default/window/data_manage.cfg:266
 #: data/gui/default/window/data_manage.cfg:267
 msgid "Clear"
-msgstr ""
+msgstr "Vymazat"
 
 #. [button]: id=restore
 #: data/gui/default/window/data_manage.cfg:283
 #: data/gui/default/window/data_manage.cfg:284
 msgid "Restore"
-msgstr ""
+msgstr "Obnovit"
 
 #. [button]: id=backup
 #: data/gui/default/window/data_manage.cfg:300
 #: data/gui/default/window/data_manage.cfg:301
 msgid "Backup"
-msgstr ""
+msgstr "Zálohovat"
 
 #. [label]: id=title
 #: data/gui/default/window/edit_label.cfg:42
@@ -2412,12 +2409,13 @@ msgstr "Ukončit hru"
 #. [button]: id=ok
 #: data/gui/default/window/unit_attack.cfg:195
 msgid "Attack"
-msgstr ""
+msgstr "Útok!"
 
 #. [label]
 #: data/gui/default/window/unit_attack.cfg:263
+#, fuzzy
 msgid "Attack enemy"
-msgstr ""
+msgstr "Napadni nepřítele"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2799,7 +2797,6 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Ukazuj zprávy o všech hráčích, kteří se připojili k serveru"
 
 #: src/game_preferences_display.cpp:394
-#, fuzzy
 msgid "Use New Lobby Interface"
 msgstr "Používej nové uspořádání čekárny"
 
@@ -3408,7 +3405,7 @@ msgstr "Přeskočit animaci"
 
 #: src/hotkeys.cpp:113
 msgid "Toggle Planning Mode"
-msgstr ""
+msgstr "Přepne plánovací mód"
 
 #: src/hotkeys.cpp:114
 msgid "Execute Planned Action"
@@ -3471,9 +3468,7 @@ msgstr "Vrátit všechny změny"
 msgid "Map Information"
 msgstr "Informace o mapě"
 
-# | msgid "Swap fore- and background terrains"
 #: src/hotkeys.cpp:134
-#, fuzzy
 msgid "Swap Foreground/Background Terrains"
 msgstr "Prohodit terény pro popředí a pozadí"
 

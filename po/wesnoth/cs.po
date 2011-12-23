@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-19 15:14+0100\n"
-"PO-Revision-Date: 2011-12-11 13:43+0100\n"
+"PO-Revision-Date: 2011-12-11 22:16+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
 "Language: cs\n"
@@ -6116,13 +6116,11 @@ msgid "The game is over."
 msgstr "Hra skončila."
 
 #: src/playsingle_controller.cpp:532
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Síťové spojení bylo přerušeno a hra\n"
-"nemůže pokračovat. Chcete ji uložit?"
+"Síťové spojení bylo přerušeno a hra nemůže pokračovat. Chcete ji uložit?"
 
 #: src/playsingle_controller.cpp:691
 msgid "It is now $name|’s turn"
@@ -6161,13 +6159,12 @@ msgid "$player has left the game. What do you want to do?"
 msgstr "$player opustil(a) hru. Co s tím chceš dělat?"
 
 #: src/replay_controller.cpp:321
-#, fuzzy
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
 "Do you want to save the game?"
 msgstr ""
-"Síťové spojení bylo přerušeno a hra\n"
-"nemůže pokračovat. Chcete ji uložit?"
+"Záznam je poškozený nebo je porušen souběh se hrou. Pokračování nemusí mít "
+"smysl. Chcete hru uložit?"
 
 #: src/reports.cpp:175
 msgid "Type: "
@@ -6181,10 +6178,10 @@ msgstr "Národ: "
 msgid "Level: "
 msgstr "Úroveň: "
 
+# text místo klikacího seznamu povýšení v nápovědě
 #: src/reports.cpp:240
-#, fuzzy
 msgid "No advancement"
-msgstr "Povýšení"
+msgstr "Bez povýšení"
 
 #: src/reports.cpp:242
 msgid "Advances to:"
