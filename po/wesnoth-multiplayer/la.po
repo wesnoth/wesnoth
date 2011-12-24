@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2011-08-29 21:15+0100\n"
+"PO-Revision-Date: 2011-12-24 00:59+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
 "Language: la\n"
@@ -38,16 +38,18 @@ msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
+"<span foreground='#%02x%02x%02x'>Manus %d</span>:  Puncta pro fructu = %d  "
+"Puncta pro actoribus = %d  Aurum = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:126
 msgid "Grand total: <b>%d</b>"
-msgstr ""
+msgstr "Ultima summa: <b>%d</b>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:136
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr ""
+msgstr "<span foreground='%s'>Manui %d</span> utilitas est."
 
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:160
@@ -103,10 +105,9 @@ msgstr "Inmortus"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
-#, fuzzy
 #| msgid "2p — The Freelands"
 msgid "2p — Aethermaw"
-msgstr "2l — Terrae Liberae"
+msgstr "2l — Fauces Aetheriae"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -124,6 +125,16 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"Saga Magna iamdudum Sulla in Faucibus Aetheriis inclusa est, quae nexus sunt "
+"energiae mysticae cuius chaos fugam impedire potuit. Saeculis cessis tamen "
+"pedetemptim Sulla vim procellae confusae Faucium Aethaeriarum aptabat, et "
+"radicitus regiones terrae tractans ex centum orbium, veritatumque "
+"temporumque diversorum, ad sphaeram tractabilem momentum extendere coepit. "
+"Haec partes dissimiles temptat universitatis rerum, illis mutantibus inter "
+"se confundentibus, et sursum deorsum inter Fauces Aetherias originemque "
+"mittentibus. Fortasse Sulla cum potestate polleat, olim vincula rumpat. Sed "
+"dum fiat, proeliis hominibus instruendo adeo miserabilibus, ut in abyssum "
+"abstracti sint, ludere pergebit. A Doc Paterson formata.     "
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -187,10 +198,9 @@ msgstr "Auster"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:277
-#, fuzzy
 #| msgid "Designed by Doc Paterson."
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr "A Doc Paterson formata."
+msgstr "Fauces Aetheriae — A Doc Paterson formata"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:291
@@ -210,12 +220,25 @@ msgid ""
 "unite the two halves of the battlefield. The process will be complete by the "
 "end of turn 6.</span>\n"
 msgstr ""
+"Saga Magna Sulla exercitus tui ad hunc nexum mirum traduxit et poscit ut te "
+"decertando se delectet.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>Nota bene:</span>\n"
+"\n"
+"<span color='green'>Actores ad hexagonum quo sepulchrum saxeum est, ire non "
+"possunt. Autem in talibus adlegi exireque possunt.</span>\n"
+"\n"
+"<span color='green'>Saga Magna Sulla vice quarta duos campos coniungere "
+"coepit. Haec vice sexta finiet.</span>\n"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:304
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:321
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "Fauces Aetheriae fremunt"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
@@ -318,6 +341,8 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
+"Hae cavernae latibulum Basilisci Prioris, nomine Iaxo Neix, fuerunt. Formae "
+"lapideae praedae ut monumenta potestatis saevae remanent."
 
 # Alcaic stanzas
 #. [unit]
@@ -357,9 +382,9 @@ msgstr ""
 "\n"
 "\n"
 "Non flamma fervet, nam colubri acrius\n"
-"Cor palpitantem personuit, silex\n"
+"Cor palpitantem personuit: silex\n"
 "Sic draculus usque ad medullas\n"
-"Et manet saecula forte factus.\n"
+"Perpetuatus adest novatus.\n"
 "\n"
 "\n"
 "Obscura hiems flat tam gelide acriter\n"
@@ -440,13 +465,13 @@ msgid ""
 "— Seven Stones — and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
-"Figura gracile, manu perito\n"
+"Figura gracili, manu perito\n"
 "— O Septem Silices Duo et Duo adsunt\n"
 "Spes aegras dedit hostibus benigne\n"
 "— O Septem Silices Duo et Duo adsunt\n"
 "Dexter pernicies draconis arcus\n"
 "Hic inter cecidit imagines has\n"
-"— O Septem Silices — Hamadryadi\n"
+"— O Septem Dryadalis atque quattor\n"
 "(a Gauteamo inscriptum)"
 
 #. [side]
@@ -530,6 +555,8 @@ msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
+"Nemo fabulam huius araneae fortis scire videtur.\n"
+"(a Victore inscriptum)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:168
@@ -537,10 +564,10 @@ msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
+"Non iam ullus fabulam latrocinantis infelicis refert./n(a Victore inscriptum)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
-#, fuzzy
 msgid ""
 "A brave hero of Wesnoth’s Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -550,13 +577,12 @@ msgid ""
 "of his once great bearing and strength.\n"
 "(inscribed by Fynmiir)"
 msgstr ""
-"Heros acer ex Aetate Aurea Occidiseptentrionis eques magnus hic et dux "
-"hominum ad hoc locum sceleratum advenit in excursione contra orcos. Ignari "
-"rapti a creaturis foedis socii multi interfecti sunt, sed hic acriter "
-"pugnavit hostes multos interficiens. Sed heu! Basiliscus foedus eum "
-"petrificavit cum ultimum orcum occidit. Nunc tantum admonitum forte manet "
-"quod loquitur de fortitudine et magnitudine eius. \n"
-"(a Fynmiro inscriptum)"
+"Hic heros acer Aetatis Aureae Vesnotei, eques et dux hominum magnus ad hoc "
+"locum malum excursioni in orces venit. Plures ignari sociorum a creatis "
+"foedis interfecti sunt, sed hic acriter pugnabit multos hostes occidens. At "
+"heu! Basiliscus foedus eum saxum versit simul ultimum orcium occidebat. Nunc "
+"totae reliquiae admonitus fortitudinis et magnitudinis eius stant.\n"
+"(a Fynmiir inscriptum)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:180
@@ -600,7 +626,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:189
 msgid "Talael Ryndoc"
-msgstr "Talael Rendoc"
+msgstr "Talael Rendocius"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:192
@@ -608,11 +634,13 @@ msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
 msgstr ""
+"Legatus Talael Rendocius huc cum Imperatore Aeteco Corrinio in monomachia "
+"pugnatum venit, sed duo numquam utrumque invenerunt."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:195
 msgid "Aethec Corryn"
-msgstr "Aetec Corrin"
+msgstr "Aetecus Corrinius"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:200
@@ -677,14 +705,14 @@ msgid ""
 "(inscribed by MJQ)"
 msgstr ""
 "Per unda fretaque saxosa\n"
-"caerulea albaque\n"
+"candida caeruleaque\n"
 "aestus traxit trusitque\n"
 "et pisces stellas errantes adloqui didicit\n"
-"viridis argenteaque\n"
+"viridis et argentea\n"
 "arte magica\n"
 "currens ex anima in pelles algarum et conchas cochlearum\n"
 "manibus caudaque torquente\n"
-"carmina misit cursum in harinis pedibus acutis\n"
+"carmina misit cursum in harenis pedibus acutis\n"
 "iam iamque\n"
 "et nunc mora mirabilis\n"
 "saecula\n"
@@ -695,7 +723,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
 msgid "2p — Cynsaun Battlefield"
-msgstr "2l — Acies Cynsauno"
+msgstr "2l — Acies Cynsaunae"
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:8
@@ -730,6 +758,9 @@ msgid ""
 "blood soaked blade from the last of the rebels. There will be no more "
 "resistance from the local scum. Your reign has finally earned stability."
 msgstr ""
+"Gemitus querimoniaeque misericordiae denique silent, ut sanguineum gladium "
+"ex ultimum rebellium amoves. Iam non sentina populi resistet; regnum tuum "
+"postremo stabilivisti."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:795
@@ -737,6 +768,8 @@ msgid ""
 "The last and most powerful of these creatures are almost upon us. I feel "
 "that if we can finish them off in time, we shall be victorious."
 msgstr ""
+"Supremi atque potentissimi animalium fere ad manum sunt. Puto, si tempore "
+"illos superare, nos victores fore.  "
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:972
@@ -777,10 +810,9 @@ msgstr "Humani"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-#, fuzzy
 #| msgid "Death of your team leaders"
 msgid "Death of your leader"
-msgstr "Mors ducum manuum"
+msgstr "Mors ducis"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
@@ -791,10 +823,9 @@ msgstr ""
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
-#, fuzzy
 #| msgid "Death of your team leaders"
 msgid "Death of both of your team’s leaders"
-msgstr "Mors ducum manuum"
+msgstr "Mors amborum ducum manus"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
@@ -804,19 +835,17 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
-#, fuzzy
 #| msgid "Survive all enemy attacks"
 msgid "Survive and defeat all enemy waves"
-msgstr "Omnes impetus hostium superare"
+msgstr "Supeesse et omnes impetus hostium superare"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1432
 msgid "Dark Forecast — a random survival scenario"
-msgstr "Augurium Obscurum — scaenarium supervivendi fortunae"
+msgstr "Augurium Obscurum — scaenarium fortunae supervivendi"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
-#, fuzzy
 #| msgid ""
 #| "Your aim is to survive the spawning waves and defeat the final arch-"
 #| "enemies.\n"
@@ -865,24 +894,22 @@ msgid ""
 msgstr ""
 "Necesse est fluctus apparitos superare et principes hostes ultimos vincere.\n"
 "\n"
-"Fluctus apparentes passim fiunt et varii erunt cum Augurium Obscurum ludis.\n"
-"\n"
+"Fluctus apparentes passim fluunt et varii erunt cum Augurium Obscurum "
+"ludis.\n"
 "\n"
 "Ad fines boreos, austros et occidentes veniunt — tamen ad fines occidentes "
 "venire solent. Fluctus fere recte apparebunt\n"
 "\n"
-"\n"
 "Tempestas quoque passim vertet, formam chartae mutans.\n"
 "\n"
 "\n"
+"<b>Augurium Obscurum factum est ab:</b>\n"
 "\n"
-"<span color='red'>Augurium Obscurum factum est ab:</span>\n"
+"<span color='green'>jb:</span>\n"
+"• Forma, cohortes fluctuum et inventio scaenarii\n"
 "\n"
-"<span color='green'>jb</span>\n"
-"— forma, cohortes fluctuum et inventio scaenarii\n"
-"\n"
-"<span color='green'>Rhuvaene</span>\n"
-"— usus VML"
+"<span color='green'>Rhuvaene:</span>\n"
+"• Usus VML"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1457
@@ -967,13 +994,12 @@ msgstr "2l — Lacus Stellae Casae"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
-#, fuzzy
 msgid ""
 "Long ago, a great star fell from the heavens, leaving its mark on this "
 "coniferous region."
 msgstr ""
-"Iampridem cecidit meteoron magnum de caelo, cicatricem relinquens in hac "
-"regione coniferi. Impostatio suasa: II auri pro pago."
+"Iampridem cecidit stella magna de caelo, cicatrice in hac regione pinorum "
+"relicta."
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:6
@@ -1001,6 +1027,8 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"Lusores cum incolis pacisci debent ut in insula insuetissima supersint. A "
+"Doc Paterson formata. "
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
@@ -1102,7 +1130,7 @@ msgstr "Rukhos, Morte Electus"
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
 msgid "2p — Howling Ghost Badlands"
-msgstr "2l — Eremus Lemurum Flentium"
+msgstr "2l — Regio Lemurum Gemituum"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:6
@@ -1110,6 +1138,8 @@ msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
 msgstr ""
+"Sunt paucae reliquiae coloniae fossandi divitis, quae est iam raptoribus et "
+"furibus portus."
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
@@ -1118,13 +1148,12 @@ msgstr "2l — Delta Saxorum"
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:6
-#, fuzzy
 msgid ""
 "Two armies collide on this disjointed coastal landscape of hidden caves and "
 "jagged rivers."
 msgstr ""
-"Duo exercitus concurrent in prospectu agrorum maritimo hoc cum cavernis "
-"occultis et fluminibus serratis. Impostatio suasa: II auri pro pago."
+"Duo exercitus ad agros dissimiles maritimosque cavernis occultis et "
+"fluminibus horridis concurrunt."
 
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:5
@@ -1133,13 +1162,12 @@ msgstr "2l — Transitus Argenteus"
 
 #. [multiplayer]: id=multiplayer_Silverhead_Crossing
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:6
-#, fuzzy
 msgid ""
 "Players must traverse all manner of terrain in pursuit of victory on this "
 "multi-fronted duel map."
 msgstr ""
-"Necesse est lusoribus transire omne genus agri victoriam quaerentibus in hac "
-"charta multiplicum frontum duellis. Impostatio suasa: II auri pro pago."
+"Necesse est lusoribus omne genus terrae victoriam in hac charta monomachiae "
+"multiplicibus aciebus quaerentibus transire."
 
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
@@ -1154,7 +1182,7 @@ msgstr "imago"
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:24
 msgid "This is a sculpture made of stone."
-msgstr "Est statua lapium."
+msgstr "Est statua saxea."
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:39
@@ -1163,14 +1191,12 @@ msgstr "2l — Parietinae Sullae"
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:40
-#, fuzzy
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
-"Inundatum a maribus et quassatum ab elementis hiemis, tantum ruinae, aqua et "
-"gelidum in umbra huius olim magni imperii manent. Impostatio suasa: II auri "
-"pro pago."
+"Tantum ruinae, crystallus aquaeque, inundata pelagis et imbre hiemis "
+"quassata, in umbra regni olim magni remanent."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
@@ -1251,10 +1277,9 @@ msgstr "2l — Castellum Mille Aculeorum"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
-#, fuzzy
 #| msgid "Designed by Doc Paterson."
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "A Doc Paterson formata."
+msgstr "Locus mirus. A Doc Paterson formata"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1374,11 +1399,8 @@ msgstr " Est initium consultum II aurorum pro viculo."
 
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
-#, fuzzy
 msgid "Three players come head to head on this water-cut battlefield."
-msgstr ""
-"Tres lusores conveniunt in hoc agro certaminis aqua secato. Impostatio "
-"suasa: II auri pro pago."
+msgstr "Tres lusores comminus in hoc agro aqua secto conveniunt."
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:5
@@ -1418,17 +1440,15 @@ msgstr "4l — Provincia Aquae Caeruleae"
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:7
-#, fuzzy
 msgid ""
 "Historians write that Bluewater Province has been destroyed and rebuilt some "
 "twenty times. Now, as armies once again converge on the rocky streams and "
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
-"Dicitur Provincia Aquae Ceruleae destructa et readificata circiter "
-"vigenties. Nunc dum exercitus iterum in rivos saxosos et montes nive "
-"operitos provinciae parvae huius convergunt, vicani eius vix animadvertere "
-"videntur. Impostatio suasa: II auri pro pago."
+"Dicitur Provincia Aquae Caeruleae circiter vigenties deleta et refecta esse. "
+"Nunc dum exercitus iterum in rivos saxosos et montes nive opertos parvae "
+"provinciae conveniunt, vicani vix animadvertere videntur."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
@@ -1463,11 +1483,8 @@ msgstr "4l — Insula Castella Mutandi"
 
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:7
-#, fuzzy
 msgid "Hop from castle to castle while fighting over a central isle."
-msgstr ""
-"Duo exercitus concurrent in prospectu agrorum maritimo hoc cum cavernis "
-"occultis et fluminibus serratis. Impostatio suasa: II auri pro pago."
+msgstr "Ad castellum ex castello sali ut pro media insula pugnas."
 
 #. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/4p_Clash.cfg:5
@@ -1497,7 +1514,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:7
 msgid "4p — Isar’s Cross"
-msgstr "4l — Crux Isari"
+msgstr "4l — Crux Isaris"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
@@ -1598,15 +1615,12 @@ msgstr "4l — Stagnum"
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
-msgstr " Est initium consultum I aurorum pro viculo."
+msgstr " Est initium consultum I auri pro viculo."
 
 #. [multiplayer]: id=multiplayer_Lagoon
 #: data/multiplayer/scenarios/4p_Lagoon.cfg:6
-#, fuzzy
 msgid "Four factions contend for dominance over this watery settlement."
-msgstr ""
-"Factiones quattuor certant ut dominentur super coloniam hac aquosam. "
-"Impostatio suasa: I aurum pro pago."
+msgstr "Quattor factiones certant ut in hac colonia aquosa dominentur."
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
@@ -1662,7 +1676,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:6
 msgid "4p — Ruins of Terra-Dwelve"
-msgstr "4l — Parietinae Terrae-Dvelvis"
+msgstr "4l — Parietinae Duelviterrae"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
@@ -1738,7 +1752,7 @@ msgstr "5l — Nemus Metus"
 #. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:7
 msgid "In this mixed landscape, five armies battle for supremacy."
-msgstr "In hoc agro vario contendunt quinque exercitus ut vincant."
+msgstr "Quinque exercitus in hoc agro vario contendunt ut vincant."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:37
@@ -1882,6 +1896,8 @@ msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
+"Hunc ludum perdis, sed noli timere. Retemptare potes, iterumque iterumque. "
+"*Hahahahae* "
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
@@ -2003,7 +2019,7 @@ msgstr ""
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:5
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:10
 msgid "Random map (Desert)"
-msgstr "Charta fortunae (Loca Deserta)"
+msgstr "Charta fortunae (Locus Desertus)"
 
 #. [multiplayer]: id=multiplayer_Random_Map_Desert
 #: data/multiplayer/scenarios/Random_Scenario_Desert.cfg:6
