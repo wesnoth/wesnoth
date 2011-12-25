@@ -249,6 +249,15 @@ class GitHub(object):
         github_list = self._github_repos_list()
         return name in [repo[0] for repo in github_list]
 
+    def list_addons(self):
+        """Returns a list of valid add-on names.
+
+        Returns a list of names that can be passed to self.addon()
+        """
+        logging.debug("Generating list of add-on names for version {0}".format(self.version))
+        github_list = self._github_repos_list()
+        return [repo[0] for repo in github_list]
+
     def _absolute_path(self, name):
         return os.path.join(self.directory, name)
 

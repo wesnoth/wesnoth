@@ -306,6 +306,23 @@ if __name__ == "__main__":
 
             svn.commit("Erasing addon " + addon)
 
+    """Checkout all add-ons of one wesnoth version from wescamp.
+
+    wescamp             The directory where all checkouts should be stored.
+    wesnoth_version     The wesnoth version we should checkout add-ons for.
+    userpass            Authentication data. Shouldn't be needed.
+    """
+    def checkout(wescamp, wesnoth_version, userpass=None):
+
+        logging.debug("checking out add-ons from wesnoth version = '%s' to directory '%s'", wesnoth_version, wescamp)
+
+        github = libgithub.GitHub(wescamp, git_version, userpass=git_userpass)
+
+        for addon in github.list_addons():
+            addon_obj = github.addon(addon)
+            addon_obj.update()
+
+
     optionparser = optparse.OptionParser("%prog [options]")
 
     optionparser.add_option("-l", "--list", action = "store_true",
@@ -363,6 +380,9 @@ if __name__ == "__main__":
 
     optionparser.add_option("-G", "--github-login",
         help = "Username and password for github in the user:pass format")
+
+    optionparser.add_option("-c", "--checkout", action = "store_true",
+        help = "Create a new branch checkout directory")
 
     options, args = optionparser.parse_args()
 
@@ -602,6 +622,28 @@ if __name__ == "__main__":
         except libsvn.error, e:
             print "[ERROR svn] " + str(e)
             sys.exit(1)
+        except libgithub.Error, e:
+            print "[ERROR github] " + str(e)
+            sys.exit(1)
+        except socket.error, e:
+            print "Socket error: " + str(e)
+            sys.exit(e[0])
+        except IOError, e:
+            print "Unexpected error occured: " + str(e)
+            sys.exit(e[0])
+
+    elif(options.checkout != None):
+
+        if(wescamp == None):
+            logging.error("No wescamp checkout specified.")
+            sys.exit(2)
+
+        if not use_git:
+            logging.error("The checkout option is for git only. If you're still using svn for some reason, you can use svn co.")
+            sys.exit(2)
+
+        try:
+            checkout(wescamp, git_version, userpass=git_userpass)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
