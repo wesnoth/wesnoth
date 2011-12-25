@@ -220,7 +220,9 @@ class GitHub(object):
         if not os.path.isdir(self._absolute_path(name)):
             logging.debug("Add-on {0} not found locally, checking github.".format(name))
             github_list = self._github_repos_list()
-            if name in [repo[0] for repo in github_list]:
+            matches = filter(lambda x: x[0] == name, github_list)
+            if matches:
+                repo = matches[0]
                 self._clone(repo[0], repo[1])
             else:
                 raise Error("No such add-on found")
