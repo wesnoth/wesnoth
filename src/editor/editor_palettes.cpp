@@ -134,6 +134,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		if (core) {
 			// Add the terrain to the default group
 			terrain_map_["all"].push_back(t);
+			nmax_terrains_ = std::max(nmax_terrains_, terrain_map_["all"].size());
 		} else {
 			non_core_terrains_.insert(t);
 		}
