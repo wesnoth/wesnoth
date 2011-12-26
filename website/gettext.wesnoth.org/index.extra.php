@@ -274,7 +274,8 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $lang . ".po?view=markup'>" . $langs[$lang] . "</a> (" .$lang . ")";
 	}else{
 		$packname = getpackage($package);
-		$reponame = "$packname-$branch";
+		$wescampver = getwescampbranch($version);
+		$reponame = "$packname-$wescampver";
 		echo "<a href='https://raw.github.com/wescamp/$reponame/master/po/$lang.po'>" . $langs[$lang] . "</a> ($lang)";
 	}
 } ?>
@@ -317,7 +318,8 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $package . ".pot?view=markup'>Template catalog</a>";
 	}else{
 		$packname = getpackage($package);
-		$reponame = "$packname-$branch";
+		$wescampver = getwescampbranch($version);
+		$reponame = "$packname-$wescampver";
 		echo "<a href='https://raw.github.com/wescamp/$reponame/master/po/$package.pot'>Template catalog</a>";
 	}
 }
