@@ -71,6 +71,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	, top_button_y_()
 	, bot_button_y_()
 	, nterrains_()
+	, nmax_terrains_()
 	, terrain_start_()
 	, selected_fg_terrain_(fore)
 	, selected_bg_terrain_(back)
@@ -120,6 +121,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		bool core = false;
 		foreach (const std::string& k, keys) {
 			terrain_map_[k].push_back(t);
+			nmax_terrains_ = std::max(nmax_terrains_, terrain_map_[k].size());
 			std::map<std::string, terrain_group*>::iterator i = id_to_group.find(k);
 			if (i != id_to_group.end()) {
 				if (i->second->core) {
@@ -184,8 +186,7 @@ void terrain_palette::adjust_size() {
 	const unsigned terrains_fitting =
 		static_cast<unsigned> (space_for_terrains / size_specs_.terrain_space) *
 		size_specs_.terrain_width;
-	const unsigned total_terrains = num_terrains();
-	nterrains_ = std::min<int>(terrains_fitting, total_terrains);
+	nterrains_ = std::min<int>(terrains_fitting, nmax_terrains_);
 	bot_button_y_ = size_specs_.palette_y + (nterrains_ / size_specs_.terrain_width) * size_specs_.terrain_space + \
 		button_palette_padding * size_specs_.terrain_width + button_height + group_height;
 	top_button_.set_location(button_x_, top_button_y_);

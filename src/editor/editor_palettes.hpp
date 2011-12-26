@@ -166,7 +166,7 @@ private:
 
 	gui::button top_button_, bot_button_;
 	size_t button_x_, top_button_y_, bot_button_y_;
-	size_t nterrains_, terrain_start_;
+	size_t nterrains_, nmax_terrains_, terrain_start_;
 	t_translation::t_terrain& selected_fg_terrain_;
 	t_translation::t_terrain& selected_bg_terrain_;
 
