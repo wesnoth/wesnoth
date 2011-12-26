@@ -210,7 +210,7 @@ foreach($stats as $stat){
 	if($official == 0){
 		echo "<strong><a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $stat[4]. "/" . $lang . ".po'>" . $stat[4] . "</a></strong>";
 	}else{
-		$packname = getpackage($package);
+		$packname = getpackage($stat[4]);
 		$reponame = "$packname-$branch";
 		echo "<strong><a href='https://raw.github.com/wescamp/$reponame/master/po/$lang.po'>" . $stat[4] ."</a></strong>";
 	}
