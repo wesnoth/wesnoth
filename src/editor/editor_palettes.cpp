@@ -422,6 +422,10 @@ void terrain_palette::draw(bool force) {
 		dstrect.y = y;
 		dstrect.w = size_specs_.terrain_size;
 		dstrect.h = size_specs_.terrain_size;
+
+		// Reset the tile background
+		bg_restore(dstrect);
+
 		std::stringstream tooltip_text;
 
 		//Draw default base for overlay terrains
