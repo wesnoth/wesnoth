@@ -274,12 +274,7 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $lang . ".po?view=markup'>" . $langs[$lang] . "</a> (" .$lang . ")";
 	}else{
 		$packname = getpackage($package);
-		if($version == 'trunk'){
-			$wescampbranch = $wescamptrunkversion;
-		}else{
-			$wescampbranch = $wescampbranchversion;
-		}
-		$reponame = "$packname-$wescampbranch";
+		$reponame = "$packname-$branch";
 		echo "<a href='https://raw.github.com/wescamp/$reponame/master/po/$lang.po'>" . $langs[$lang] . "</a> ($lang)";
 	}
 } ?>
