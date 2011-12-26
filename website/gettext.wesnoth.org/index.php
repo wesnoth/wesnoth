@@ -347,7 +347,9 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 	if($official){
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $lang . ".po'>" . $langs[$lang] . "</a> (" .$lang . ")";
 	}else{
-		echo "<a href='http://svn.berlios.de/viewvc/wescamp-i18n/$repo/" . getpackage($package) . "/po/" . $lang . ".po'>" . $langs[$lang] . "</a> (" . $lang . ")";
+		$packname = getpackage($package);
+		$reponame = "$packname-$version";
+		echo "<a href='https://raw.github.com/wescamp/$reponame/master/po/$lang.po'>" . $langs[$lang] . "</a> ($lang)";
 	}
 } ?>
 	</td>
@@ -388,7 +390,9 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 	if($official){
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $package . ".pot?view=markup'>Template catalog</a>";
 	}else{
-		echo "<a href='http://svn.berlios.de/viewvc/wescamp-i18n/$repo/" . getpackage($package) . "/po/" . $package . ".pot?view=markup'>Template catalog</a>";
+		$packname = getpackage($package);
+		$reponame = "$packname-$version";
+		echo "<a href='https://raw.github.com/wescamp/$reponame/master/po/$package.pot'>Template catalog</a>";
 	}
 }
 ?></td>
