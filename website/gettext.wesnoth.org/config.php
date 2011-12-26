@@ -16,8 +16,8 @@ $wescamptrunkversion="1.10";
 
 $trunkbasedir="/usr/src/svn-checkouts/trunk/";
 $branchbasedir="/usr/src/svn-checkouts/$branch/";
-$extratbasedir="/usr/src/svn-checkouts/wescamp-i18n/branches/$wescamptrunkversion/"; //trunk addon server
-$extrabbasedir="/usr/src/svn-checkouts/wescamp-i18n/branches/$wescampbranchversion/"; //branch addon server
+$extratbasedir="/usr/src/svn-checkouts/wescamp-i18n/branch-$wescamptrunkversion/"; //trunk addon server
+$extrabbasedir="/usr/src/svn-checkouts/wescamp-i18n/branch-$wescampbranchversion/"; //branch addon server
 
 //$packages = file_get_contents($basedir . "/po/DOMAINS");
 //$packages = substr($packages, 0, strlen($packages)-1);

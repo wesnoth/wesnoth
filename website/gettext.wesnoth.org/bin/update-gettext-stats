@@ -15,8 +15,9 @@ svn -q up
 
 #update the wescamp checkout
 cd $SVNCHECKOUTPATH/wescamp-i18n/
-#svn cleanup
-svn -q up trunk/ branches/
+for checkout in `find . -maxdepth 2 -mindepth 2`;do
+    (cd $i; git pull)
+done
 
 #update the website checkout
 cd $SVNCHECKOUTPATH/website/
