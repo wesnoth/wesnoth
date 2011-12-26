@@ -796,7 +796,7 @@ function wml_actions.harm_unit(cfg)
 
 			local damage = calculate_damage( amount,
 							 ( cfg.alignment or "neutral" ),
-							 wesnoth.get_time_of_day( { unit_to_harm.x, unit_to_harm.y, true } ).bonus_modified,
+							 wesnoth.get_time_of_day( { unit_to_harm.x, unit_to_harm.y, true } ).lawful_bonus,
 							 wesnoth.unit_resistance( unit_to_harm, cfg.damage_type or "dummy" )
 						       )
 
