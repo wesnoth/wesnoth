@@ -1926,7 +1926,7 @@ void display::draw(bool update,bool force) {
 		return;
 	}
 
-	local_tod_light_ = has_time_area() && preferences::get("local_tod_light", false);
+	local_tod_light_ = has_time_area() && preferences::get("local_tod_light", true);
 
 	draw_init();
 	pre_draw();
