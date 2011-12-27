@@ -343,13 +343,13 @@ foreach($stats as $lang => $stat){
 if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='allcore'){
 	echo "<strong><a href='index.lang.php?lang=$lang&amp;version=$version'>" . $langs[$lang] . "</a></strong> (" . $lang . ")";
 }else{
-	$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 	if($official){
+		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $lang . ".po'>" . $langs[$lang] . "</a> (" .$lang . ")";
 	}else{
 		$packname = getpackage($package);
-		$wescampver = getwescampbranch($version);
-		$reponame = "$packname-$wescampver";
+		$repo = ($version == 'trunk') ? $wescamptrunkversion : $wescampbranchversion;
+		$reponame = "$packname-$repo";
 		echo "<a href='https://raw.github.com/wescamp/$reponame/master/po/$lang.po'>" . $langs[$lang] . "</a> ($lang)";
 	}
 } ?>
@@ -387,13 +387,13 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='allcore'){
 	echo "<strong>Template catalog</strong>";
 }else{
-	$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 	if($official){
+		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $package . ".pot?view=markup'>Template catalog</a>";
 	}else{
 		$packname = getpackage($package);
-		$wescampver = getwescampbranch($version);
-		$reponame = "$packname-$wescampver";
+		$repo = ($version == 'trunk') ? $wescamptrunkversion : $wescampbranchversion;
+		$reponame = "$packname-$repo";
 		echo "<a href='https://raw.github.com/wescamp/$reponame/master/po/$package.pot'>Template catalog</a>";
 	}
 }

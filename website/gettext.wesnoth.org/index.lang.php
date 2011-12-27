@@ -206,13 +206,13 @@ foreach($stats as $stat){
 <tr class="row<?=$class?>">
     <td>
 <?
-	$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 	if($official == 0){
+		$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 		echo "<strong><a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $stat[4]. "/" . $lang . ".po'>" . $stat[4] . "</a></strong>";
 	}else{
 		$packname = getpackage($stat[4]);
-		$wescampver = getwescampbranch($version);
-		$reponame = "$packname-$wescampver";
+		$repo = ($version == 'trunk') ? $wescamptrunkversion : $wescampbranchversion;
+		$reponame = "$packname-$repo";
 		echo "<strong><a href='https://raw.github.com/wescamp/$reponame/master/po/$lang.po'>" . $stat[4] ."</a></strong>";
 	}
 

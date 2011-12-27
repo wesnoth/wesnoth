@@ -89,14 +89,4 @@ function getpackage($string) {
 	return str_replace("wesnoth-","",$string);
 }
 
-include("config.php");
-
-function getwescampbranch($version) {
-	if ($version == 'trunk') {
-		return $wescamptrunkversion;
-	} else {
-		return $wescampbranchversion;
-	}
-}
-
 ?>
