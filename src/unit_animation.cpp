@@ -454,6 +454,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("victory");
+		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),particule::CYCLE);
 
 		animations.push_back(*itor);
 		animations.back().unit_anim_.override(0,150,particule::NO_CYCLE,"1~0:150");
