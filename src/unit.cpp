@@ -1827,9 +1827,8 @@ void unit::redraw_unit()
 {
 	game_display &disp = *game_display::get_singleton();
 	const gamemap &map = disp.get_map();
-	if (!loc_.valid() || hidden_ || disp.fogged(loc_) ||
-	    (invisible(loc_)
-	&& disp.get_teams()[disp.viewing_team()].is_enemy(side())))
+	
+	if ( hidden_ || !is_visible_to_team(disp.get_teams()[disp.viewing_team()],false,map) )
 	{
 		clear_haloes();
 		if(anim_) {
@@ -2826,8 +2825,11 @@ bool unit::is_visible_to_team(team const& team, bool const see_all, gamemap cons
 		return false;
 	if (see_all)
 		return true;
-	if ((team.fogged(loc) && &(*resources::teams)[side() - 1] != &team)
-			|| (team.is_enemy(side()) && invisible(loc)))
+	if (team.is_enemy(side()) && invisible(loc))
+		return false;
+	if (team.is_enemy(side()) && team.fogged(loc))
+		return false;
+	if (team.fogged(loc)  && !(*resources::teams)[side() - 1].share_view())
 		return false;
 
 	return true;

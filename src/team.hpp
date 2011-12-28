@@ -286,10 +286,9 @@ public:
 
 	config to_config() const;
 
-private:
-	//Make these public if you need them, but look at knows_about_team(...) first.
 	bool share_maps() const { return info_.share_maps; }
 	bool share_view() const { return info_.share_view; }
+private:
 
 	const std::vector<const shroud_map*>& ally_shroud(const std::vector<team>& teams) const;
 	const std::vector<const shroud_map*>& ally_fog(const std::vector<team>& teams) const;
