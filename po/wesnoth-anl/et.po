@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2009-12-25 13:49+0300\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
+"PO-Revision-Date: 2011-12-28 09:36+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -26,16 +26,13 @@ msgstr "Neli vaenlast: uus maa"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
 msgstr ""
-"See nelja vastasega ellujäämisstsenaarium võimaldab ehitada hooneid ja muuta "
-"maastikku. Kasuta kaardi seadeid. Soovitatav kullakogus alguses on 100."
+"See neljale  mängijale mõeldud ellujäämisstsenaarium võimaldab ehitada "
+"hooneid ja muuta maastikku. Kasuta kaardi seadeid. Soovitatav kullakogus "
+"alguses on 100."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
@@ -116,15 +113,11 @@ msgstr "Üks su talumeestest sattus põhjas ja lõunas ämblikupesade peale."
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:591
-#, fuzzy
-#| msgid ""
-#| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
-#| "rescue them?"
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
 msgstr ""
-"Ma vannun, et nägin kedagi ämblikuvõrgus kinni olevat. Ehk peaksime neile "
+"Ma vannun, et nägin kedagi ämblikuvõrgus kinni olevat. Ehk peaksime talle "
 "appi minema?"
 
 #. [message]: speaker=narrator
@@ -390,41 +383,29 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of agriculture"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Jaga teadmisi põllundusest"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of mining"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Jaga teadmisi kaevandamisest"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of warfare"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Jaga teadmisi sõjakunstist"
 
 #. [message]: speaker=unit
@@ -447,12 +428,11 @@ msgstr "Ei midagi"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:315
-#, fuzzy
 msgid ""
 "<span color='green'>Donate Funds</span>\n"
 "Give 20 gold to another player"
 msgstr ""
-"Anneta raha\n"
+"<span color='green'>$player_name</span>\n"
 "Anna teisele mängijale 20 kuldraha"
 
 #. [message]: speaker=unit
@@ -468,12 +448,11 @@ msgstr "Tagasi"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:359
-#, fuzzy
 msgid ""
 "<span color='green'>Share Knowledge</span>\n"
 "Help an ally with their research"
 msgstr ""
-"Jaga teadmisi\n"
+"<span color='green'>$player_name</span>\n"
 "Aita liitlast uurimistöös"
 
 #. [message]: speaker=unit
@@ -483,28 +462,26 @@ msgstr "Kellega soovid teadmisi jagada?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:417
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Dwarves</span>\n"
 "Lets you recruit a Dwarvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_1.progress|/"
 "$player_$side_number|.leader_option_1.target"
 msgstr ""
-"Pea nõu päkapikkudega\n"
+"<span color='green'>$player_name</span>\n"
 "Võimaldab värvata ühe päkapike üksuse\n"
 "Edenemine: $player_$side_number|.leader_option_1.progress|/$player_"
 "$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:472
-#, fuzzy
 msgid ""
 "<span color='green'>Negotiate with the Elves</span>\n"
 "Lets you recruit an Elvish unit\n"
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
-"Pea nõu haldjatega\n"
+"<span color='green'>$player_name</span>\n"
 "Võimaldab värvata ühe haldjate  üksuse\n"
 "Edenemine: $player_$side_number|.leader_option_1.progress|/$player_"
 "$side_number|.leader_option_1.target"
@@ -585,19 +562,13 @@ msgstr "Jätka nagu seni"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:167
-#, fuzzy
-#| msgid ""
-#| "Agriculture\n"
-#| "Farmers produce +1 gold\n"
-#| "Study Progress: $player_$side_number|.farming.progress|/$player_"
-#| "$side_number|.farming.target"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
-"Põllundus\n"
+"<span color='green'>$player_name</span>\n"
 "Talud annavad +1 kuldraha\n"
 "Edenemine: $player_$side_number|.farming.progress|/$player_$side_number|."
 "farming.target"
@@ -611,14 +582,13 @@ msgstr "põllundus"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
-#, fuzzy
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
-"Kaevandamine\n"
+"<span color='green'>$player_name</span>\n"
 "Kaevandused annavad +1 kuldraha\n"
 "Edenemine: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
@@ -630,14 +600,13 @@ msgstr "kaevandamine"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:189
-#, fuzzy
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
 "Study Progress: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 msgstr ""
-"Sõjakunst\n"
+"<span color='green'>$player_name</span>\n"
 "Võimaldab värvata uut tüüpi üksusi\n"
 "Edenemine: $player_$side_number|.warfare.progress|/$player_$side_number|."
 "warfare.target"
