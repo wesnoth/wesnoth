@@ -1891,7 +1891,10 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 	{
 		text = cfg["description"].str();
 
-		u->add_modification("object", cfg);
+		if(cfg["delayed_variable_substitution"].to_bool(false))
+			u->add_modification("object", cfg);
+		else
+			u->add_modification("object", vconfig(cfg.get_parsed_config()));
 
 		resources::screen->select_hex(event_info.loc1);
 		resources::screen->invalidate_unit();
