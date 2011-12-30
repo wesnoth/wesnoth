@@ -1118,8 +1118,39 @@ void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple
 {
 	read_from_player(socket);
 	std::cout << doc->output() << std::endl;
-	if (doc->child("refresh_lobby")) {
+	if(doc->child("refresh_lobby")) {
 		send_to_player(socket, games_and_users_list_);
+	}
+
+	if(simple_wml::node* whisper = doc->child("whisper")) {
+		handle_whisper(socket, *whisper);
+	}
+}
+
+void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
+{
+	if((whisper["receiver"] == "") || (whisper["message"] == "")) {
+		static simple_wml::document data(
+		  "[message]\n"
+		  "message=\"Invalid number of arguments\"\n"
+		  "sender=\"server\"\n"
+		  "[/message]\n", simple_wml::INIT_COMPRESSED);
+		send_to_player(socket, data);
+		return;
+	}
+
+	PlayerMap::right_iterator receiver_iter = player_connections_.right.find(whisper["receiver"].to_string());
+	if(receiver_iter == player_connections_.right.end()) {
+		simple_wml::document server_response;
+		simple_wml::node& msg = server_response.root().add_child("message");
+		msg.set_attr("sender", "server");
+		msg.set_attr_dup("message", ("Can't find '" + whisper["receiver"].to_string() + "'.").c_str());
+		send_to_player(socket, server_response);
+	} else {
+		simple_wml::document cwhisper;
+		whisper.copy_into(cwhisper.root().add_child("whisper"));
+		send_to_player(receiver_iter->second, cwhisper);
+		// TODO: Refuse to send from an observer to a game he observes
 	}
 }
 
