@@ -42,6 +42,7 @@ $(POT): $(TEMPLATE)
 	po4a-gettextize $(PO4A_OPTIONS) -L utf-8 -m $< -p $@
 
 $(PO): $(TEMPLATE)
+	dos2unix $<
 	po4a-updatepo $(PO4A_OPTIONS) -m $< -p $@
 	@touch $@
 
