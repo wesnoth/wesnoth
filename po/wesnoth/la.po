@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
 "PO-Revision-Date: 2011-12-22 22:12+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -80,7 +80,6 @@ msgstr "Animationem Tituli Demonstrare"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
-#| msgid "Show Combat"
 msgid "Show combat"
 msgstr "Certamina ostendere"
 
@@ -113,13 +112,11 @@ msgstr "Semper aperire in atrio fenestras"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
-#| msgid "Group players in lobby"
 msgid "Group players in lobby"
 msgstr "Lusores in atrio congregare "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
-#| msgid "Lobby sounds"
 msgid "Lobby sounds"
 msgstr "Strepiti atrii"
 
@@ -132,7 +129,6 @@ msgstr "Non nuntia demonstrare"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#| msgid "Reverse Time Graphics"
 msgid "Reverse time graphics"
 msgstr "Picturas temporis convertere"
 
@@ -144,7 +140,6 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
-#| msgid "Follow Unit Actions"
 msgid "Follow unit actions"
 msgstr "Acta actorum sequi"
 
@@ -2143,7 +2138,6 @@ msgstr "Propositum additum:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#| msgid "Remote scenario"
 msgid "This is the last scenario."
 msgstr "Hoc est scaenarium supremum."
 
@@ -3382,7 +3376,6 @@ msgstr "Aspectus"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#| msgid "Skip animation"
 msgid "Skip animation"
 msgstr "Animationem praeterire"
 
@@ -3520,7 +3513,6 @@ msgid "addon_type^(unknown)"
 msgstr "(ignota)"
 
 #: src/addon/manager.cpp:481
-#| msgid "Requesting list of add-ons"
 msgid "Requesting terms"
 msgstr "Leges petens"
 
@@ -3816,7 +3808,6 @@ msgstr[0] "Haec stipendia errores continent et restitui non possunt: "
 msgstr[1] "Haec stipendia errores continent et restitui non possunt: "
 
 #: src/addon/manager.cpp:1459
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Appendix Deleta"
@@ -3898,7 +3889,6 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:454 src/savegame.cpp:136
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
@@ -3919,7 +3909,6 @@ msgid "Tutorial"
 msgstr "Rudimentum"
 
 #: src/dialogs.cpp:499
-#| msgid "Remote scenario"
 msgid "Test scenario"
 msgstr "Scaenarium ad probandum"
 
@@ -3928,7 +3917,6 @@ msgid "Turn"
 msgstr "Vicis"
 
 #: src/dialogs.cpp:511
-#| msgid "Scenario Start"
 msgid "Scenario start"
 msgstr "Initium scaenarii"
 
@@ -3958,7 +3946,6 @@ msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:558 src/savegame.cpp:184
-#| msgid "%A, %H:%M"
 msgid "%A, %I:%M %p"
 msgstr "%A, %I:%M %p"
 
@@ -4166,8 +4153,6 @@ msgid "Turn "
 msgstr "Vicis "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant Slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Locus Vacuus:"
@@ -4688,7 +4673,6 @@ msgstr ""
 #: src/menu_events.cpp:2334 src/menu_events.cpp:2337 src/menu_events.cpp:2339
 #: src/menu_events.cpp:2341 src/menu_events.cpp:2343 src/menu_events.cpp:2370
 #: src/menu_events.cpp:2372 src/menu_events.cpp:2374 src/menu_events.cpp:2388
-#| msgid "<nick>"
 msgid "<nickname>"
 msgstr "<nomen>"
 
@@ -4739,7 +4723,6 @@ msgstr ""
 "lusione imperant. Syntaxis: /whisper [cognomini] [nuntium]"
 
 #: src/menu_events.cpp:2364
-#| msgid "<nick> <message>"
 msgid "<nickname> <message>"
 msgstr "<nomen> <nuntius> "
 
@@ -4752,12 +4735,10 @@ msgid "Change the log level of a log domain."
 msgstr ""
 
 #: src/menu_events.cpp:2370
-#| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
 msgstr "Nomen tabulae neglectorum addere."
 
 #: src/menu_events.cpp:2372
-#| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
 msgstr "Nomen tabulae amicorum addere."
 
@@ -4867,7 +4848,6 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr ""
 
 #: src/menu_events.cpp:2545
-#| msgid "<side> <nick>"
 msgid "<side> <nickname>"
 msgstr "<manus> <nomen>"
 
@@ -5528,7 +5508,6 @@ msgid "Random start time"
 msgstr "Charta fortuita (Hiems)"
 
 #: src/multiplayer_create.cpp:89
-#| msgid "Fog Of War"
 msgid "Fog of war"
 msgstr "Nebula belli"
 
@@ -5666,17 +5645,14 @@ msgid "Turns: "
 msgstr "Vices: "
 
 #: src/multiplayer_create.cpp:374
-#| msgid "Unlimited Turns"
 msgid "Unlimited turns"
 msgstr "Vices sempiternae"
 
 #: src/multiplayer_create.cpp:402
-#| msgid "Init. Limit: "
 msgid "Init. limit: "
 msgstr "Finis Init.: "
 
 #: src/multiplayer_create.cpp:407
-#| msgid "Turn Bonus: "
 msgid "Turn bonus: "
 msgstr "Bonum a vice: "
 
@@ -5685,17 +5661,14 @@ msgid "Reservoir: "
 msgstr "Lacus: "
 
 #: src/multiplayer_create.cpp:416
-#| msgid "Action Bonus: "
 msgid "Action bonus: "
 msgstr "Bonum ab actis: "
 
 #: src/multiplayer_create.cpp:423
-#| msgid "Village Gold: "
 msgid "Village gold: "
 msgstr "Aurum viculorum: "
 
 #: src/multiplayer_create.cpp:429
-#| msgid "Experience Modifier: "
 msgid "Experience modifier: "
 msgstr "Usus mutator: "
 
@@ -5732,7 +5705,6 @@ msgid "Join Game"
 msgstr "Ad Ludum Convenire"
 
 #: src/multiplayer_lobby.cpp:743
-#| msgid "Quick Replays"
 msgid "Quick replays"
 msgstr "Relusi celeres"
 
@@ -5755,12 +5727,10 @@ msgid "Invert"
 msgstr "Invertere"
 
 #: src/multiplayer_lobby.cpp:748
-#| msgid "Vacant Slots"
 msgid "Vacant slots"
 msgstr "Loci vacui"
 
 #: src/multiplayer_lobby.cpp:749
-#| msgid "Friends in Game"
 msgid "Friends in game"
 msgstr "Amici in ludo"
 
@@ -5873,12 +5843,12 @@ msgstr "Cliens disiungitur."
 msgid "Could not connect to host."
 msgstr "Non poteram cum hospite coniungere."
 
-#: src/network.cpp:565
+#: src/network.cpp:572
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "Non poteram portum ad congeriem portuum adiungere"
 
-#: src/network.cpp:577
+#: src/network.cpp:584
 #, fuzzy
 msgid "Could not send initial handshake"
 msgstr "Non potui mittere salutationem initialem"
@@ -5893,25 +5863,25 @@ msgstr "Non poteram cum hospite coniungere."
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
-#: src/play_controller.cpp:239
+#: src/play_controller.cpp:240
 msgid "time left for current turn"
 msgstr "tempus reliquus hui vice"
 
-#: src/play_controller.cpp:241 src/replay_controller.cpp:133
+#: src/play_controller.cpp:242 src/replay_controller.cpp:133
 msgid "current local time"
 msgstr "tempus currens localis"
 
-#: src/play_controller.cpp:1096 src/savegame.cpp:320 src/savegame.cpp:332
+#: src/play_controller.cpp:1106 src/savegame.cpp:320 src/savegame.cpp:332
 #: src/savegame.cpp:1006 src/savegame.cpp:1008
 #, fuzzy
 msgid "Auto-Save"
 msgstr "Servatum-Automatarium"
 
-#: src/play_controller.cpp:1103
+#: src/play_controller.cpp:1113
 msgid "Back to turn "
 msgstr "Rursus ad vicem "
 
-#: src/play_controller.cpp:1351
+#: src/play_controller.cpp:1361
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -5920,7 +5890,7 @@ msgstr ""
 "Ludi non synchonizantur et exire debebunt. Visne acta mendorum lusus tui "
 "servare?"
 
-#: src/play_controller.cpp:1352 src/replay_controller.cpp:322
+#: src/play_controller.cpp:1362 src/replay_controller.cpp:322
 msgid "Error details:"
 msgstr "Summa erroris: "
 
@@ -6073,24 +6043,24 @@ msgstr "Victoria"
 msgid "You have emerged victorious!"
 msgstr "Vicisti!"
 
-#: src/playturn.cpp:247
+#: src/playturn.cpp:238
 msgid "Replace with AI"
 msgstr "Cum IA Supponere"
 
-#: src/playturn.cpp:248
+#: src/playturn.cpp:239
 msgid "Replace with local player"
 msgstr "Cum lusore locale supponere"
 
-#: src/playturn.cpp:249
+#: src/playturn.cpp:240
 #, fuzzy
 msgid "Abort game"
 msgstr "Lusum finire"
 
-#: src/playturn.cpp:255 src/playturn.cpp:269
+#: src/playturn.cpp:246 src/playturn.cpp:260
 msgid "Replace with $player"
 msgstr "Cum $player|ine supponere"
 
-#: src/playturn.cpp:275
+#: src/playturn.cpp:266
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player ludum reliquit. Quid facere vis?"
 
@@ -6680,12 +6650,10 @@ msgid "HIDE ALL allies’ plans"
 msgstr ""
 
 #: src/whiteboard/manager.cpp:1083
-#| msgid "Show replay"
 msgid "Show plans for $player"
 msgstr "$player mentem ostendere"
 
 #: src/whiteboard/manager.cpp:1085
-#| msgid "Replace with $player"
 msgid "Hide plans for $player"
 msgstr "$player mentem celare"
 

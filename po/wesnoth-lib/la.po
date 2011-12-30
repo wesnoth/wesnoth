@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
 "PO-Revision-Date: 2011-12-18 21:48+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -846,7 +846,6 @@ msgstr "Viculus Paludinis"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1492
-#| msgid "Swamp Merfolk Village"
 msgid "Merfolk Village"
 msgstr "Viculus Nereidum"
 
@@ -1085,7 +1084,6 @@ msgstr "Pons Ligneus"
 #. [terrain_type]: id=rotbridgediag2
 #: data/core/terrain.cfg:1931 data/core/terrain.cfg:1943
 #: data/core/terrain.cfg:1955
-#| msgid "Wooden Bridge"
 msgid "Rotting Bridge"
 msgstr "Pons Carians"
 
@@ -1269,7 +1267,6 @@ msgstr "Nulla"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
-#| msgid "Update Add-ons"
 msgid "Uninstall Add-ons"
 msgstr "Appendices Delere"
 
@@ -1517,7 +1514,6 @@ msgstr ""
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
-#| msgid "Choose theme"
 msgid "Choose Player"
 msgstr "Lusorem Eligere"
 
@@ -1734,7 +1730,6 @@ msgstr ""
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:145
-#| msgid "Ignore All"
 msgid "Ignore all"
 msgstr "Omnia ignorare"
 
@@ -1802,7 +1797,6 @@ msgstr "Opta linguam praelatam:"
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
 #: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
-#| msgid "Change language"
 msgid "Change Language"
 msgstr "Linguam Mutare"
 
@@ -1986,13 +1980,11 @@ msgstr "Nuntium Privatum Mittere"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:99
-#| msgid "Add As Friend"
 msgid "Add to Friends"
 msgstr "Ut Amicus Addere"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:108
-#| msgid "Add As Ignore"
 msgid "Add to Ignores"
 msgstr "Ut Negelctus Addere"
 
@@ -2039,7 +2031,6 @@ msgstr "Manus"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-#| msgid "Nick"
 msgid "Nickname"
 msgstr "Nomen"
 
@@ -2170,7 +2161,6 @@ msgstr "Aura Viculorum"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:460
-#| msgid "Fog of War"
 msgid "Fog of war"
 msgstr "Nebula belli"
 
@@ -2446,19 +2436,19 @@ msgstr "Deletio pligae fallitur."
 msgid "Creation of the directory failed."
 msgstr "Deletio pligae fallitur."
 
-#: src/game_preferences.cpp:290
+#: src/game_preferences.cpp:315
 msgid "No server has been defined."
 msgstr ""
 
-#: src/game_preferences.cpp:346
+#: src/game_preferences.cpp:395
 msgid "player"
 msgstr "lusor"
 
-#: src/game_preferences.cpp:777
+#: src/game_preferences.cpp:837
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/game_preferences.cpp:780
+#: src/game_preferences.cpp:840
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -2468,12 +2458,10 @@ msgid "Full screen"
 msgstr "Scrinium Totum vel in Fenestra Permutare"
 
 #: src/game_preferences_display.cpp:174
-#| msgid "Accelerated Speed"
 msgid "Accelerated speed"
 msgstr "Velocitas accelerata"
 
 #: src/game_preferences_display.cpp:175
-#| msgid "Skip AI Moves"
 msgid "Skip AI moves"
 msgstr "Vices IA praeterire"
 
@@ -2482,7 +2470,6 @@ msgid "Interrupt move when an ally is sighted"
 msgstr ""
 
 #: src/game_preferences_display.cpp:177
-#| msgid "Show Grid"
 msgid "Show grid"
 msgstr "Cancellos monstrare"
 
@@ -2550,12 +2537,10 @@ msgid "Add As Ignore"
 msgstr "Ut Negelctus Addere"
 
 #: src/game_preferences_display.cpp:193
-#| msgid "Show Floating Labels"
 msgid "Show floating labels"
 msgstr "Titulos nantes monstrare"
 
 #: src/game_preferences_display.cpp:194
-#| msgid "Turn Dialog"
 msgid "Turn dialog"
 msgstr "Colloquium vicis"
 
@@ -2568,12 +2553,10 @@ msgid "Hide allies’ plans by default"
 msgstr ""
 
 #: src/game_preferences_display.cpp:197
-#| msgid "Turn Bell"
 msgid "Turn bell"
 msgstr "Tintinnabulum vicis"
 
 #: src/game_preferences_display.cpp:198
-#| msgid "Show Team Colors"
 msgid "Show team colors"
 msgstr "Colores manuum monstrare"
 
@@ -2635,12 +2618,10 @@ msgid "Show unit idle animations"
 msgstr "Animationes actorum otiosorum monstrare"
 
 #: src/game_preferences_display.cpp:216
-#| msgid "Show Unit Standing Animations"
 msgid "Show unit standing animations"
 msgstr "Animationes actorum stantium monstrare"
 
 #: src/game_preferences_display.cpp:217
-#| msgid "Animate Map"
 msgid "Animate map"
 msgstr "Chartam animare"
 
@@ -2812,7 +2793,6 @@ msgstr ""
 "Nuntios de lusoribus qui in vestibulum plurum lusorum intrant monstrare."
 
 #: src/game_preferences_display.cpp:394
-#| msgid "Use new lobby interface"
 msgid "Use New Lobby Interface"
 msgstr "Faciei Atrii Novi Uti "
 
@@ -3101,7 +3081,6 @@ msgid "Test scenario"
 msgstr "Scaenarium ad probandum"
 
 #: src/gui/dialogs/game_load.cpp:313
-#| msgid "replay"
 msgid "Replay"
 msgstr "Reludere"
 
@@ -3110,7 +3089,6 @@ msgid "Turn"
 msgstr "Vicis"
 
 #: src/gui/dialogs/game_load.cpp:317
-#| msgid "Scenario Start"
 msgid "Scenario start"
 msgstr "Initium scaenarii"
 
@@ -3232,7 +3210,6 @@ msgid "Right Mouse Click"
 msgstr ""
 
 #: src/hotkeys.cpp:55
-#| msgid "Animate Map"
 msgid "Animate Map"
 msgstr "Chartam Animare"
 
@@ -3431,12 +3408,10 @@ msgid "Next Side"
 msgstr "Manus Secunda"
 
 #: src/hotkeys.cpp:106
-#| msgid "Full map"
 msgid "Full Map"
 msgstr "Tota Charta"
 
 #: src/hotkeys.cpp:108
-#| msgid "Each team"
 msgid "Each Team"
 msgstr "Quaeque Manus"
 
@@ -3445,7 +3420,6 @@ msgid "Team 1"
 msgstr "Manus I"
 
 #: src/hotkeys.cpp:111
-#| msgid "Skip animation"
 msgid "Skip Animation"
 msgstr "Animationem Praeterire"
 
@@ -3454,17 +3428,14 @@ msgid "Toggle Planning Mode"
 msgstr ""
 
 #: src/hotkeys.cpp:114
-#| msgid "Delete planned action"
 msgid "Execute Planned Action"
 msgstr "Actionem Contstitutam Delere"
 
 #: src/hotkeys.cpp:115
-#| msgid "Execute all actions"
 msgid "Execute All Actions"
 msgstr "Omnes Actiones Agere"
 
 #: src/hotkeys.cpp:116
-#| msgid "Delete planned action"
 msgid "Delete Planned Action"
 msgstr "Actionem Contstitutam Delere"
 
@@ -3477,7 +3448,6 @@ msgid "Move Action Down Queue"
 msgstr ""
 
 #: src/hotkeys.cpp:119
-#| msgid "Suppose dead"
 msgid "Suppose Dead"
 msgstr "Mortuum Putare"
 
@@ -3704,7 +3674,6 @@ msgid "Run Formula"
 msgstr ""
 
 #: src/hotkeys.cpp:209
-#| msgid "Clear messages"
 msgid "Clear Messages"
 msgstr "Nuntios Delere"
 
@@ -3724,17 +3693,14 @@ msgid "Previous Tip of the Day"
 msgstr "Actor Anterior"
 
 #: src/hotkeys.cpp:234
-#| msgid "Start tutorial"
 msgid "Start Tutorial"
 msgstr "Rudimentum Incipere"
 
 #: src/hotkeys.cpp:241
-#| msgid "Start a campaign"
 msgid "Start Campaign"
 msgstr "Militia Incipere"
 
 #: src/hotkeys.cpp:248
-#| msgid "Start a multiplayer game"
 msgid "Start Multiplayer Game"
 msgstr "Ludum cum Pluribus Lusoribus Incipere"
 
@@ -3744,12 +3710,10 @@ msgid "Manage Add-ons"
 msgstr "Appendices Novare"
 
 #: src/hotkeys.cpp:262
-#| msgid "Start the editor"
 msgid "Start Editor"
 msgstr "Mutator Incipere"
 
 #: src/hotkeys.cpp:269
-#| msgid "Show the credits"
 msgid "Show Credits"
 msgstr "Agnitiones Ostendere"
 
@@ -3783,7 +3747,7 @@ msgstr "Imago Scrinii"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:404
+#: src/image.cpp:421
 msgid "language code for localized resources^en_US"
 msgstr "la"
 
@@ -3796,7 +3760,6 @@ msgid "Players:"
 msgstr "Lusores:"
 
 #: src/mapgen_dialog.cpp:123
-#| msgid "Number of Hills:"
 msgid "Number of hills:"
 msgstr "Numerus collium:"
 
@@ -3811,7 +3774,6 @@ msgid "Villages:"
 msgstr "Viculi:"
 
 #: src/mapgen_dialog.cpp:126
-#| msgid "Castle Size:"
 msgid "Castle size:"
 msgstr "Magnitudo castelli:"
 
@@ -3820,7 +3782,6 @@ msgid "Landform:"
 msgstr "Forma terrae:"
 
 #: src/mapgen_dialog.cpp:249
-#| msgid "Roads Between Castles"
 msgid "Roads between castles"
 msgstr "Viae inter castella"
 
