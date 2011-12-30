@@ -3914,6 +3914,8 @@ stringfixes = {
 
 "wesnoth-help" : (
 ("Immune to drain, poison and plague", "Immune to drain, poison, and plague"),
+
+("Receive only 50% defense in land-based", "Receives only 50% defense in land-based"),
 ),
 
 "wesnoth-manpages" : (
