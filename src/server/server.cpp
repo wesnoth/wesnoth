@@ -53,6 +53,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/scoped_array.hpp>
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 #include <boost/utility.hpp>
 #include <algorithm>
 #include <cassert>
@@ -146,6 +147,8 @@ static void exit_sigterm(int signal) {
 	exit(128 + SIGTERM);
 }
 
+void async_send_error(server::socket_ptr socket, const std::string& msg, const char* error_code = "");
+
 namespace {
 
 // we take profiling info on every n requests
@@ -161,6 +164,126 @@ void send_doc(simple_wml::document& doc, network::connection connection, std::st
 	} catch (simple_wml::error& e) {
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
 	}
+}
+
+bool check_error(const boost::system::error_code& error, server::socket_ptr socket)
+{
+	if(error) {
+		ERR_SERVER << socket->remote_endpoint().address().to_string() << "\t" << error.message() << "\n";
+		return true;
+	}
+	return false;
+}
+
+template<typename Handler, typename ErrorHandler>
+struct HandleDoc
+{
+	Handler handler;
+	ErrorHandler error_handler;
+	server::socket_ptr socket;
+	union DataSize
+	{
+		boost::uint32_t size;
+		char buf[4];
+	};
+	boost::shared_ptr<DataSize> data_size;
+	boost::shared_ptr<simple_wml::document> doc;
+	boost::shared_array<char> buffer;
+	HandleDoc(server::socket_ptr socket, Handler handler, ErrorHandler error_handler, boost::uint32_t size, boost::shared_ptr<simple_wml::document> doc) :
+		handler(handler), error_handler(error_handler), socket(socket), data_size(new DataSize), doc(doc)
+	{
+		data_size->size = htonl(size);
+	}
+	HandleDoc(server::socket_ptr socket, Handler handler, ErrorHandler error_handler) :
+		handler(handler), error_handler(error_handler), socket(socket), data_size(new DataSize)
+	{
+	}
+	void operator()(const boost::system::error_code& error, std::size_t)
+	{
+		if(check_error(error, socket)) {
+			error_handler(socket);
+			return;
+		}
+		handler(socket);
+	}
+};
+
+template<typename Handler, typename ErrorHandler>
+void async_send_doc(server::socket_ptr socket, simple_wml::document& doc, Handler handler, ErrorHandler error_handler)
+{
+	try {
+		boost::shared_ptr<simple_wml::document> doc_ptr(doc.clone());
+		simple_wml::string_span s = doc_ptr->output_compressed();
+		std::vector<boost::asio::const_buffer> buffers;
+
+		HandleDoc<Handler, ErrorHandler> handle_send_doc(socket, handler, error_handler, s.size(), doc_ptr);
+		buffers.push_back(boost::asio::buffer(handle_send_doc.data_size->buf, 4));
+		buffers.push_back(boost::asio::buffer(s.begin(), s.size()));
+		async_write(*socket, buffers, handle_send_doc);
+	} catch (simple_wml::error& e) {
+		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;
+	}
+}
+
+void null_handler(server::socket_ptr)
+{
+}
+
+template<typename Handler>
+void async_send_doc(server::socket_ptr socket, simple_wml::document& doc, Handler handler)
+{
+	async_send_doc(socket, doc, handler, null_handler);
+}
+
+void async_send_doc(server::socket_ptr socket, simple_wml::document& doc)
+{
+	async_send_doc(socket, doc, null_handler, null_handler);
+}
+
+template<typename Handler, typename ErrorHandler>
+struct HandleReceiveDoc : public HandleDoc<Handler, ErrorHandler>
+{
+	std::size_t buf_size;
+	HandleReceiveDoc(server::socket_ptr socket, Handler handler, ErrorHandler error_handler) :
+		HandleDoc<Handler, ErrorHandler>(socket, handler, error_handler)
+	{
+	}
+	void operator()(const boost::system::error_code& error, std::size_t size)
+	{
+		if(check_error(error, this->socket)) {
+			error_handler(this->socket);
+			return;
+		}
+		if(!this->buffer) {
+			assert(size == 4);
+			buf_size = ntohl(this->data_size->size);
+			this->buffer = boost::shared_array<char>(new char[buf_size]);
+			async_read(*(this->socket), boost::asio::buffer(this->buffer.get(), buf_size), *this);
+		} else {
+			simple_wml::string_span compressed_buf(this->buffer.get(), buf_size);
+			try {
+				this->doc.reset(new simple_wml::document(compressed_buf));
+			} catch (simple_wml::error& e) {
+				WRN_CONFIG << "simple_wml error in received data: " << e.message << std::endl;
+				async_send_error(this->socket, "Invalid WML received: " + e.message);
+				return;
+			}
+			handler(this->socket, this->doc);
+		}
+	}
+};
+
+template<typename Handler, typename ErrorHandler>
+void async_receive_doc(server::socket_ptr socket, Handler handler, ErrorHandler error_handler)
+{
+	HandleReceiveDoc<Handler, ErrorHandler> handle_receive_doc(socket, handler, error_handler);
+	async_read(*socket, boost::asio::buffer(handle_receive_doc.data_size->buf, 4), handle_receive_doc);
+}
+
+template<typename Handler>
+void async_receive_doc(server::socket_ptr socket, Handler handler)
+{
+	async_receive_doc(socket, handler, null_handler);
 }
 
 void make_add_diff(const simple_wml::node& src, const char* gamelist,
@@ -319,8 +442,10 @@ namespace {
 
 server::server(int port, const std::string& config_file, size_t min_threads,
 		size_t max_threads) :
+	io_service_(),
+	acceptor_(io_service_),
 	net_manager_(min_threads, max_threads),
-	server_(port),
+	server_(6666),
 	ban_manager_(),
 	ip_log_(),
 	failed_logins_(),
@@ -368,6 +493,15 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	last_uh_clean_(last_ping_),
 	cmd_handlers_()
 {
+	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
+	acceptor_.open(endpoint.protocol());
+	acceptor_.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+	acceptor_.bind(endpoint);
+	acceptor_.listen();
+	serve();
+
+	handshake_response_.connection_num = 42;
+
 	setup_handlers();
 	load_config();
 	ban_manager_.read();
@@ -427,6 +561,17 @@ void server::send_error(network::connection sock, const char* msg, const char* e
 	send_doc(doc, sock, "error");
 }
 
+void async_send_error(server::socket_ptr socket, const std::string& msg, const char* error_code)
+{
+	simple_wml::document doc;
+	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
+	if(*error_code != '\0') {
+		doc.child("error")->set_attr("error_code", error_code);
+	}
+
+	async_send_doc(socket, doc);
+}
+
 void server::send_warning(network::connection sock, const char* msg, const char* warning_code) const
 {
 	simple_wml::document doc;
@@ -436,6 +581,17 @@ void server::send_warning(network::connection sock, const char* msg, const char*
 	}
 
 	send_doc(doc, sock, "warning");
+}
+
+void async_send_warning(server::socket_ptr socket, const std::string& msg, const char* warning_code)
+{
+	simple_wml::document doc;
+	doc.root().add_child("warning").set_attr_dup("message", msg.c_str());
+	if(*warning_code != '\0') {
+		doc.child("warning")->set_attr("warning_code", warning_code);
+	}
+
+	async_send_doc(socket, doc);
 }
 
 void server::send_password_request(network::connection sock, const std::string& msg,
@@ -626,7 +782,400 @@ void server::clean_user_handler(const time_t& now) {
 	user_handler_->clean_up();
 }
 
+void server::serve()
+{
+	socket_ptr socket = boost::make_shared<boost::asio::ip::tcp::socket>(boost::ref(io_service_));
+	acceptor_.async_accept(*socket, boost::bind(&server::accept_connection, this, _1, socket));
+}
+
+void server::accept_connection(const boost::system::error_code& error, socket_ptr socket)
+{
+	serve();
+	if(error) {
+		ERR_SERVER << "Accept failed: " << error.message() << "\n";
+		return;
+	}
+
+	const std::string ip = socket->remote_endpoint().address().to_string();
+
+	const std::string reason = is_ip_banned(ip);
+	if (!reason.empty()) {
+		LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
+		async_send_error(socket, "You are banned. Reason: " + reason);
+		return;
+	} else if (ip_exceeds_connection_limit(ip)) {
+		LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
+		async_send_error(socket, "Too many connections from your IP.");
+		return;
+	} else {
+		
+		DBG_SERVER << ip << "\tnew connection accepted\n";
+		serverside_handshake(socket);
+	}
+
+}
+
+void server::serverside_handshake(socket_ptr socket)
+{
+	boost::shared_array<unsigned char> handshake(new unsigned char[4]);
+	async_read(
+		*socket, boost::asio::buffer(handshake.get(), 4),
+		boost::bind(&server::handle_handshake, this, _1, socket, handshake)
+	);
+}
+
+void server::handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<unsigned char> handshake)
+{
+	if(check_error(error, socket))
+		return;
+
+	if(strcmp((const char*)handshake.get(), "\0\0\0\0") != 0) {
+		ERR_SERVER << socket->remote_endpoint().address().to_string() << "\tincorrect handshake\n";
+		return;
+	}
+	async_write(
+		*socket, boost::asio::buffer(handshake_response_.buf, 4),
+		boost::bind(&server::request_version, this, _1, socket)
+	);
+}
+
+void server::request_version(const boost::system::error_code& error, socket_ptr socket)
+{
+	if(check_error(error, socket))
+		return;
+	
+	async_send_doc(socket, version_query_response_,
+		boost::bind(&server::handle_version, this, _1)
+	);
+}
+
+void server::handle_version(socket_ptr socket)
+{
+	async_receive_doc(socket,
+		boost::bind(&server::read_version, this, _1, _2)
+	);
+}
+
+void server::read_version(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc)
+{
+	if (const simple_wml::node* const version = doc->child("version")) {
+		const simple_wml::string_span& version_str_span = (*version)["version"];
+		const std::string version_str(version_str_span.begin(),
+		                              version_str_span.end());
+		std::vector<std::string>::const_iterator accepted_it;
+		// Check if it is an accepted version.
+		for(accepted_it = accepted_versions_.begin();
+			accepted_it != accepted_versions_.end(); ++accepted_it) {
+			if (utils::wildcard_string_match(version_str, *accepted_it)) break;
+		}
+		if(accepted_it != accepted_versions_.end()) {
+			LOG_SERVER << socket->remote_endpoint().address().to_string()
+				<< "\tplayer joined using accepted version " << version_str
+				<< ":\ttelling them to log in.\n";
+			async_send_doc(socket, login_response_, boost::bind(&server::login, this, _1));
+			return;
+		} else {
+			LOG_SERVER << socket->remote_endpoint().address().to_string()
+				<< "\tplayer joined using unknown version " << version_str
+				<< ":\trejecting them\n";
+		}
+	} else {
+		LOG_SERVER << socket->remote_endpoint().address().to_string()
+			<< "\tclient didn't send its version: rejecting\n";
+	}
+}
+
+void server::login(socket_ptr socket)
+{
+	async_receive_doc(socket,
+		boost::bind(&server::handle_login, this, _1, _2)
+	);
+}
+
+void server::handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc)
+{
+	if(const simple_wml::node* const login = doc->child("login")) {
+		// Check if the username is valid (all alpha-numeric plus underscore and hyphen)
+		std::string username = (*login)["username"].to_string();
+		if (!utils::isvalid_username(username)) {
+			async_send_error(socket, "The nickname '" + username + "' contains invalid "
+				"characters. Only alpha-numeric characters, underscores and hyphens"
+				"are allowed.", MP_INVALID_CHARS_IN_NAME_ERROR);
+			server::login(socket);
+			return;
+		}
+		if (username.size() > 20) {
+			async_send_error(socket, "The nickname '" + username + "' is too long. Nicks must be 20 characters or less.",
+				MP_NAME_TOO_LONG_ERROR);
+			server::login(socket);
+			return;
+		}
+		// Check if the username is allowed.
+		for (std::vector<std::string>::const_iterator d_it = disallowed_names_.begin();
+			d_it != disallowed_names_.end(); ++d_it)
+		{
+			if (utils::wildcard_string_match(utils::lowercase(username),
+				utils::lowercase(*d_it)))
+			{
+				async_send_error(socket, "The nickname '" + username + "' is reserved and cannot be used by players",
+					MP_NAME_RESERVED_ERROR);
+				server::login(socket);
+				return;
+			}
+		}
+
+		// If this is a request for password reminder
+		if(user_handler_) {
+			std::string password_reminder = (*login)["password_reminder"].to_string();
+			if(password_reminder == "yes") {
+				try {
+					user_handler_->password_reminder(username);
+					async_send_error(socket, "Your password reminder email has been sent.");
+				} catch (user_handler::error& e) {
+					async_send_error(socket, "There was an error sending your password reminder email. The error message was: " +
+					e.message);
+				}
+				return;
+			}
+		}
+
+		// Check the username isn't already taken
+		PlayerMap::right_iterator p = player_connections_.right.find(username);
+
+		// Check for password
+
+		// Current login procedure  for registered nicks is:
+		// - Client asks to log in with a particular nick
+		// - Server sends client random salt plus some info
+		// 	generated from the original hash that is required to
+		// 	regenerate the hash
+		// - Client generates hash for the user provided password
+		// 	and mixes it with the received random salt
+		// - Server received salted hash, salts the valid hash with
+		// 	the same salt it sent to the client and compares the results
+
+		bool registered = false;
+		if(user_handler_) {
+			std::string password = (*login)["password"].to_string();
+			const bool exists = user_handler_->user_exists(username);
+			// This name is registered but the account is not active
+			if(exists && !user_handler_->user_is_active(username)) {
+				async_send_warning(socket, "The nickname '" + username + "' is inactive. You cannot claim ownership of this "
+					"nickname until you activate your account via email or ask an administrator to do it for you.", MP_NAME_INACTIVE_WARNING);
+				//registered = false;
+			}
+			else if(exists) {
+				// This name is registered and no password provided
+				if(password.empty()) {
+					if(p == player_connections_.right.end()) {
+						send_password_request(socket, "The nickname '" + username +"' is registered on this server.",
+							username, MP_PASSWORD_REQUEST);
+					} else {
+						send_password_request(socket, "The nickname '" + username + "' is registered on this server."
+								"\n\nWARNING: There is already a client using this username, "
+								"logging in will cause that client to be kicked!",
+							username, MP_PASSWORD_REQUEST_FOR_LOGGED_IN_NAME, true);
+					}
+					return;
+				}
+
+				// A password (or hashed password) was provided, however
+				// there is no seed
+				if(seeds_[(long int)socket.get()].empty()) {
+					send_password_request(socket, "Please try again.", username, MP_NO_SEED_ERROR);
+					return;
+				}
+				// This name is registered and an incorrect password provided
+				else if(!(user_handler_->login(username, password, seeds_[(unsigned long)socket.get()]))) {
+					const time_t now = time(NULL);
+
+					// Reset the random seed
+					seeds_.erase((unsigned long)socket.get());
+
+					login_log login_ip = login_log(network::ip_address((long int)socket.get()), 0, now);
+					std::deque<login_log>::iterator i = std::find(failed_logins_.begin(), failed_logins_.end(), login_ip);
+					if(i == failed_logins_.end()) {
+						failed_logins_.push_back(login_ip);
+						i = --failed_logins_.end();
+
+						// Remove oldest entry if maximum size is exceeded
+						if(failed_logins_.size() > failed_login_buffer_size_)
+							failed_logins_.pop_front();
+
+					}
+
+					if (i->first_attempt + failed_login_ban_ < now) {
+						// Clear and move to the beginning
+						failed_logins_.erase(i);
+						failed_logins_.push_back(login_ip);
+						i = --failed_logins_.end();
+					}
+
+					i->attempts++;
+
+					if (i->attempts > failed_login_limit_) {
+						LOG_SERVER << ban_manager_.ban(login_ip.ip, now + failed_login_ban_, "Maximum login attempts exceeded", "automatic", "", username);
+						async_send_error(socket, "You have made too many failed login attempts.", MP_TOO_MANY_ATTEMPTS_ERROR);
+					} else {
+						send_password_request(socket, "The password you provided for the nickname '" + username +
+							"' was incorrect.", username, MP_INCORRECT_PASSWORD_ERROR);
+					}
+
+					// Log the failure
+					LOG_SERVER << socket->remote_endpoint().address().to_string() << "\t"
+							<< "Login attempt with incorrect password for nickname '" << username << "'.\n";
+					return;
+				}
+			// This name exists and the password was neither empty nor incorrect
+			registered = true;
+			// Reset the random seed
+			seeds_.erase((long int)socket.get());
+			user_handler_->user_logged_in(username);
+			}
+		}
+
+		// If we disallow unregistered users and this user is not registered send an error
+		if(user_handler_ && !registered && deny_unregistered_login_) {
+			async_send_error(socket, "The nickname '" + username + "' is not registered. "
+					"This server disallows unregistered nicknames.", MP_NAME_UNREGISTERED_ERROR);
+			return;
+		}
+
+		if(p != player_connections_.right.end()) {
+			 if(registered) {
+				// If there is already a client using this username kick it
+				process_command("kick " + p->info.name() + " autokick by registered user", username);
+			} else {
+				async_send_error(socket, "The nickname '" + username + "' is already taken.", MP_NAME_TAKEN_ERROR);
+				server::login(socket);
+				return;
+			}
+		}
+
+		simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
+		async_send_doc(socket, join_lobby_response_,
+			boost::bind(&server::add_player, this, _1,
+				wesnothd::player(username, player_cfg, registered,
+				default_max_messages_, default_time_period_, false/*selective_ping*/,
+				user_handler_ && user_handler_->user_is_moderator(username))
+			)
+		);
+		LOG_SERVER << socket->remote_endpoint().address().to_string() << "\t" << username
+			<< "\thas logged on" << (registered ? " to a registered account" : "") << "\n";
+	} else {
+		async_send_error(socket, "You must login first.", MP_MUST_LOGIN);
+	}
+}
+
+void server::send_password_request(server::socket_ptr socket, const std::string& msg,
+	const std::string& user, const char* error_code, bool force_confirmation)
+{
+	std::string salt = user_handler_->create_salt();
+	std::string pepper = user_handler_->create_pepper(user);
+	std::string spices = pepper + salt;
+	if(user_handler_->use_phpbb_encryption() && pepper.empty()) {
+		async_send_error(socket, "Even though your nickname is registered on this server you "
+					"cannot log in due to an error in the hashing algorithm. "
+					"Logging into your forum account on http://forum.wesnoth.org "
+					"may fix this problem.");
+		return;
+	}
+
+	seeds_[(long int)(socket.get())] = salt;
+
+	simple_wml::document doc;
+	simple_wml::node& e = doc.root().add_child("error");
+	e.set_attr_dup("message", msg.c_str());
+	e.set_attr("password_request", "yes");
+	e.set_attr("phpbb_encryption", user_handler_->use_phpbb_encryption() ? "yes" : "no");
+	e.set_attr_dup("salt", spices.c_str());
+	e.set_attr("force_confirmation", force_confirmation ? "yes" : "no");
+	if(*error_code != '\0') {
+		e.set_attr("error_code", error_code);
+	}
+
+	async_send_doc(socket, doc,
+		boost::bind(&server::login, this, _1)
+	);
+}
+
+void server::add_player(socket_ptr socket, const wesnothd::player& player)
+{
+	player_connections_.insert(PlayerMap::value_type(socket, player.name(), player));
+	send_to_player(socket, games_and_users_list_);
+	read_from_player(socket);
+}
+
+void server::read_from_player(socket_ptr socket)
+{
+	async_receive_doc(socket,
+		boost::bind(&server::handle_read_from_player, this, _1, _2),
+		boost::bind(&server::remove_player, this, _1)
+	);
+}
+
+void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc)
+{
+	read_from_player(socket);
+	std::cout << doc->output() << std::endl;
+	if (doc->child("refresh_lobby")) {
+		send_to_player(socket, games_and_users_list_);
+	}
+}
+
+void server::send_to_player(socket_ptr socket, simple_wml::document& doc)
+{
+	SendQueue::iterator iter = send_queue_.find(socket);
+	if(iter == send_queue_.end()) {
+		send_queue_[socket];
+		async_send_doc(socket, doc,
+			boost::bind(&server::handle_send_to_player, this, _1),
+			boost::bind(&server::handle_send_to_player, this, _1)
+		);
+	} else {
+		send_queue_[socket].push_back(boost::shared_ptr<simple_wml::document>(doc.clone()));
+	}
+}
+
+void server::handle_send_to_player(socket_ptr socket)
+{
+	if(send_queue_[socket].empty()) {
+		send_queue_.erase(socket);
+	} else {
+		async_send_doc(socket, *(send_queue_[socket].front()),
+			boost::bind(&server::handle_send_to_player, this, _1),
+			boost::bind(&server::handle_send_to_player, this, _1)
+		);
+		send_queue_[socket].pop_front();
+	}
+}
+
+void server::remove_player(socket_ptr socket)
+{
+	std::string ip = socket->remote_endpoint().address().to_string();
+
+	if(socket->is_open())
+		socket->close();
+	
+	PlayerMap::left_iterator iter = player_connections_.left.find(socket);
+	if(iter == player_connections_.left.end())
+		return;
+
+	const simple_wml::node::child_list& users = games_and_users_list_.root().children("user");
+	const size_t index = std::find(users.begin(), users.end(), iter->info.config_address()) - users.begin();
+
+	games_and_users_list_.root().remove_child("user", index);
+	/* TODO: send diff */
+
+	LOG_SERVER << ip << "\t" << iter->info.name()
+		<< "\twas logged off" << "\n";
+
+	player_connections_.left.erase(iter);
+}
+
 void server::run() {
+	io_service_.run();
+	/*
 	int graceful_counter = 0;
 
 	for (int loop = 0;; ++loop) {
@@ -904,6 +1453,7 @@ void server::run() {
 			ERR_SERVER << "Uncaught user_handler exception: " << e.message << "\n";
 		}
 	}
+	*/
 }
 
 void server::process_data(const network::connection sock,

@@ -283,9 +283,7 @@ if env["prereqs"]:
     conf.CheckLib("m")
     conf.CheckFunc("round")
 
-    def CheckANA(conf, do_check):
-        if not do_check:
-            return True
+    def CheckAsio(conf):
         if env["PLATFORM"] == 'win32':
             conf.env.Append(LIBS = ["libws2_32"])
         return conf.CheckBoost("system") and \
@@ -321,15 +319,13 @@ if env["prereqs"]:
         conf.CheckBoost("smart_ptr", header_only = True) and \
         conf.CheckSDL(require_version = '1.2.7') and \
         conf.CheckSDL('SDL_net') and \
-        CheckANA(conf, env["use_network_ana"]) or Warning("Base prerequisites are not met.")
+        CheckAsio(conf) or Warning("Base prerequisites are not met.")
 
     env = conf.Finish()
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
     have_client_prereqs = have_server_prereqs and \
-        conf.CheckBoost("system") and \
-        conf.CheckBoost("asio", header_only = True) and \
-        conf.CheckPango("cairo", require_version = "1.24.4") and \
+        conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
         conf.CheckBoost("program_options", require_version="1.35.0") and \
         conf.CheckBoost("regex", require_version = "1.35.0") and \

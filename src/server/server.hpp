@@ -27,10 +27,16 @@
 
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_array.hpp>
+#include <boost/bimap/bimap.hpp>
+#include <boost/bimap/unordered_set_of.hpp>
+#include <boost/asio.hpp>
 
 class server
 {
 public:
+	typedef boost::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
+
 	server(int port, const std::string& config_file, size_t min_threads,size_t max_threads);
 	void run();
 private:
@@ -51,6 +57,36 @@ private:
 	void send_password_request(network::connection sock, const std::string& msg,
 			const std::string& user, const char* error_code ="",
 			bool force_confirmation = false);
+
+	boost::asio::io_service io_service_;
+	boost::asio::ip::tcp::acceptor acceptor_;
+	void serve();
+	void accept_connection(const boost::system::error_code& error, socket_ptr socket);
+
+	union {
+		boost::uint32_t connection_num;
+		char buf[4];
+	} handshake_response_;
+	void serverside_handshake(socket_ptr socket);
+	void handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<unsigned char> buf);
+
+	void request_version(const boost::system::error_code& error, socket_ptr socket);
+	void handle_version(socket_ptr socket);
+	void read_version(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+
+	void login(socket_ptr socket);
+	void handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	void send_password_request(server::socket_ptr socket, const std::string& msg,
+		const std::string& user, const char* error_code = "", bool force_confirmation = false);
+	
+	void add_player(socket_ptr socket, const wesnothd::player&);
+	void read_from_player(socket_ptr socket);
+	void handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
+	typedef std::map<socket_ptr, std::deque<boost::shared_ptr<simple_wml::document> > > SendQueue;
+	SendQueue send_queue_;
+	void send_to_player(socket_ptr socket, simple_wml::document& doc);
+	void handle_send_to_player(socket_ptr socket);
+	void remove_player(socket_ptr socket);
 
 	const network::manager net_manager_;
 	network::server_manager server_;
@@ -93,6 +129,12 @@ private:
 	/** std::map<network::connection,player>. */
 	wesnothd::player_map players_;
 	std::set<network::connection> ghost_players_;
+
+	typedef boost::bimaps::bimap<
+		boost::bimaps::unordered_set_of<socket_ptr>, 
+		boost::bimaps::unordered_set_of<std::string>,
+		boost::bimaps::with_info<wesnothd::player> > PlayerMap;
+	PlayerMap player_connections_;
 
 	std::vector<wesnothd::game*> games_;
 	std::set<network::connection> not_logged_in_;
