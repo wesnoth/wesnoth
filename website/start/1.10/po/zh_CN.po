@@ -1,75 +1,56 @@
-# Wesnoth 1.8 announcement
-# Copyright (C) YEAR Wesnoth Development Team
-# This file is distributed under the same license as the PACKAGE package.
-# sylecn <sylecn@yahoo.com.cn>, 2009. (1.6 announcement)
+# The Battle for Wesnoth - Simplified Chinese Release Notes
+# Copyright (C) 2005-2011 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# sylecn <sylecn@yahoo.com.cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
+# DuguCloud <dugucloud@qq.com>, 2011
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth 1.6\n"
+"Project-Id-Version: wesnoth 1.10\n"
 "POT-Creation-Date: 2011-12-28 16:44+0100\n"
-"PO-Revision-Date: 2010-08-13 18:08+0800\n"
-"Last-Translator: Dugucloud <dugucloud@qq.com>\n"
-"Language-Team: zh_CN <www.wesnoth.cn>\n"
-"Language: \n"
+"PO-Revision-Date: 2011-12-29 20:24+0800\n"
+"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
+"translation-cn>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-# type: Attribute 'title' of: <html><head><link>
 #. type: Attribute 'title' of: <html><head><link>
 #: template.html:6
 msgid "Default"
 msgstr "默认"
 
-# type: Content of: <html><head><title>
 #. type: Content of: <html><head><title>
 #: template.html:9
-#, fuzzy
-#| msgid "Battle for Wesnoth 1.8"
 msgid "Battle for Wesnoth 1.10"
-msgstr "韦诺之战 1.8"
+msgstr "韦诺之战 1.10"
 
-# type: Content of: <html><body><div><div><div><a>
 #. type: Content of: <html><body><div><div><div><a>
 #: template.html:18
 msgid "<a href='http://www.wesnoth.org'>"
 msgstr "<a href='http://www.wesnoth.org'>"
 
-# type: Attribute 'alt' of: <html><body><div><div><div><a><img>
 #. type: Attribute 'alt' of: <html><body><div><div><div><a><img>
 #: template.html:18
 msgid "Wesnoth logo"
-msgstr "韦诺之战标志"
+msgstr "韦诺之战标识"
 
-# type: Content of: <html><body><div><div><div>
 #. type: Content of: <html><body><div><div><div><div><div>
 #: template.html:19 template.html:61 template.html:82 template.html:86
 #: template.html:129
 msgid "</a>"
 msgstr "</a>"
 
-# type: Content of: <html><body><div><div><div><h1>
 #. type: Content of: <html><body><div><div><div><h1>
 #: template.html:29
-#, fuzzy
-#| msgid "Battle for Wesnoth 1.8 Release Notes"
 msgid "Battle for Wesnoth 1.10 Release Notes"
-msgstr "韦诺之战 1.8 发行注记"
+msgstr "韦诺之战 1.10 发行注记"
 
-# type: Content of: <html><body><div><div><div><p>
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:31
-#, fuzzy
-#| msgid ""
-#| "<em>April 2010</em>. It is once again time for that thrill you've all "
-#| "been waiting for, a Wesnoth stable release. The Battle for Wesnoth team "
-#| "is proud to release version 1.8 of <em>The Battle for Wesnoth</em>, a <a "
-#| "href='http://www.gnu.org/philosophy/philosophy.html'>free</a> <a "
-#| "href='http://www.opensource.org/'>open-source</a> turn-based strategy "
-#| "game with a fantasy theme and roleplaying elements. The game is <a "
-#| "href='#download'>available for download</a> now for Windows, Mac OS X and "
-#| "various GNU/Linux distributions."
 msgid ""
 "<em>January 2012</em>. It is once again time for that thrill you’ve all been "
 "waiting for: the beginning of a new stable series. <em>The Battle for "
@@ -80,90 +61,72 @@ msgid ""
 "is available for Microsoft Windows, Mac OS X, and various GNU/Linux "
 "distributions."
 msgstr ""
-"<em>2010年4月</em>。又是一个万众期待的激动时刻，新的韦诺之战稳定版本发布了。"
-"韦诺之战工作组在此自豪地发布韦诺之战 1.8 版。韦诺之战是一个<a href='http://"
-"www.gnu.org/philosophy/philosophy.html'>自由</a>，<a href='http://www."
-"opensource.org/'>开源</a>，以奇幻为主题并糅合了角色扮演元素的回合制策略游戏。"
-"针对Windows，Mac OS X和各种GNU/Linux发行版的游戏版本现在就可以<a "
-"href='#download'>下载</a>了。"
+"<em>2012年1月</em>。这又是一个万众期待的激动时刻：<em>韦诺之战</em>的最新稳定"
+"版本发布了。<em>韦诺之战</em>制作组在此自豪地发布 <em>韦诺之战</em> 1.10 版。"
+"这是一个<a href='http://www.gnu.org/philosophy/philosophy.html'>自由</a>、<a "
+"href='http://www.opensource.org/'>开源</a>的回合制策略游戏，以奇幻为主题，并"
+"包含了角色扮演的元素。本游戏可以在Microsoft Windows，Mac OS X以及各种GNU/"
+"Linux发行版下运行。"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:37
-#, fuzzy
-#| msgid "<a href='#game'>What's New in Wesnoth 1.8</a>"
 msgid "<a href='#game'>What’s New in Wesnoth 1.10</a>"
-msgstr "<a href='#game'>韦诺之战 1.8 新增元素</a>"
+msgstr "<a href='#game'>韦诺之战 1.10 新增元素</a>"
 
-# type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #: template.html:40
 msgid "<a href='#players'>For Players</a>"
 msgstr "<a href='#players'>玩家体验</a>"
 
-# type: Content of: <html><body><div><div><div><ul><li><ul><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li><ul><li><ul><li>
 #: template.html:42
 msgid "<a href='#general'>General</a>"
-msgstr "<a href='#general'>总体</a>"
+msgstr "<a href='#general'>总体改进</a>"
 
-# type: Content of: <html><body><div><div><div><ul><li><ul><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li><ul><li><ul><li>
 #: template.html:43
 msgid "<a href='#campaigns'>Campaigns</a>"
 msgstr "<a href='#campaigns'>战役</a>"
 
-# type: Content of: <html><body><div><div><div><ul><li><ul><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li><ul><li><ul><li>
 #: template.html:44
 msgid "<a href='#multiplayer'>Multiplayer</a>"
 msgstr "<a href='#multiplayer'>多人对战</a>"
 
-# type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li><ul><li>
 #: template.html:47
-#, fuzzy
-#| msgid "<a href='#campdev'>For Campaign Developers</a>"
 msgid "<a href='#campdev'>For Content Developers</a>"
-msgstr "<a href='#campdev'>战役制作者可见的变更</a>"
+msgstr "<a href='#campdev'>内容创作者可见的变更</a>"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:50
 msgid "<a href='#download'>Download</a>"
 msgstr "<a href='#download'>下载</a>"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:51
 msgid "<a href='#more'>More Info</a>"
 msgstr "<a href='#more'>更多信息</a>"
 
-# type: Content of: <html><body><div><div><div><h2>
 #. type: Content of: <html><body><div><div><div><h2>
 #: template.html:56
-#, fuzzy
-#| msgid "What's New in Wesnoth 1.8"
 msgid "What’s New in Wesnoth 1.10"
-msgstr "韦诺之战 1.8 新增元素"
+msgstr "韦诺之战 1.10 新增元素"
 
-# type: Content of: <html><body><div><div><div><div><div><a>
 #. type: Content of: <html><body><div><div><div><div><div><a>
 #: template.html:61
 msgid "<a href='images/start-1-full.jpg'>"
 msgstr "<a href='images/start-1-full.jpg'>"
 
-# type: Attribute 'alt' of: <html><body><div><div><div><a><img>
 #. type: Attribute 'alt' of: <html><body><div><div><div><div><div><a><img>
 #: template.html:61 template.html:82 template.html:86 template.html:129
 msgid "Wesnoth Screenshot"
 msgstr "韦诺之战屏幕截图"
 
-# type: Content of: <html><body><div><div><div><h3>
 #. type: Content of: <html><body><div><div><div><h3>
 #: template.html:64
 msgid "For Players"
-msgstr "玩家体验"
+msgstr "玩家可见的改进"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:66
@@ -172,6 +135,8 @@ msgid ""
 "Various improvements were made to the sidebar to make it more appealing and "
 "to make its elements easier to grasp."
 msgstr ""
+"为便于您更快地识别出被减速的单位，他们现在带上了淡淡的蓝色。侧边栏也有多项改"
+"进，变得更加美观，其上各种元素也更加容易理解了。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:69
@@ -182,12 +147,14 @@ msgid ""
 "can even let you visualize shared plans with your allies in multiplayer "
 "games."
 msgstr ""
+"由于2010和2011年的Google代码之夏活动，我们开发出了新的<cite>白板</cite>系统。"
+"它能够协助您制定计划，显示征募、移动、攻击等各种动作。在多人游戏中，它甚至能"
+"够显示您与盟友所共享的计划。"
 
-# type: Content of: <html><body><div><div><div><h4>
 #. type: Content of: <html><body><div><div><div><h4>
 #: template.html:76
 msgid "General"
-msgstr "一般改进"
+msgstr "总体改进"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:78
@@ -196,16 +163,14 @@ msgid ""
 "These along with the new animated water help breathe life into the "
 "previously near-motionless battlefield."
 msgstr ""
+"一些单位，例如蜥蜴人，现在有了新的站立动画。与新加入的动态水面效果一道，这些"
+"动画让之前几乎静止不动的战场有了些许生气。"
 
-# type: Content of: <html><body><div><div><div><div><div><a>
 #. type: Content of: <html><body><div><div><div><div><div><a>
 #: template.html:82
-#, fuzzy
-#| msgid "<a href='images/start-2-full.jpg'>"
 msgid "<a href='images/start-5-full.jpg'>"
-msgstr "<a href='images/start-2-full.jpg'>"
+msgstr "<a href='images/start-5-full.jpg'>"
 
-# type: Content of: <html><body><div><div><div><div><div><a>
 #. type: Content of: <html><body><div><div><div><div><div><a>
 #: template.html:86
 msgid "<a href='images/start-3-full.jpg'>"
@@ -217,6 +182,8 @@ msgid ""
 "Many portraits were added and updated, thus getting us closer to meeting our "
 "goals for completeness and having high-quality art throughout the game."
 msgstr ""
+"游戏中加入并更新了许多头像。我们的目标是在整个游戏中都有完整而高质量的图片，"
+"而现在，我们离目标更近了。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:91
@@ -224,6 +191,8 @@ msgid ""
 "Lots of new terrains have also been added, thus allowing the possibility of "
 "far more interesting maps for players to enjoy."
 msgstr ""
+"同时，也加入了许多新的地形，因此，现在可以绘制比原来有趣许多的地图让玩家们享"
+"受了。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:93
@@ -232,13 +201,15 @@ msgid ""
 "show local time of the day effects and, for example, keep caves dark during "
 "the day."
 msgstr ""
+"光照系统现在可以在特定的区域产生不同的照明效果，如此便能更好地表现受时段影响"
+"的局部画面效果，例如，在白天让洞穴保持黑暗。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:96
 msgid ""
 "Substantial improvements have been made in regards to UI design, typography, "
 "and consistency."
-msgstr ""
+msgstr "在用户界面设计、排版以及一致性方面，有大量的改进。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:98
@@ -248,6 +219,9 @@ msgid ""
 "preference. Another fine example is now being able to remove multiple add-"
 "ons at once using checkboxes."
 msgstr ""
+"用户界面上有许多改进。例如，通过一个新的高级首选项，您现在可以让韦诺使用十二"
+"小时制的时钟格式。另一个很好的例子是，您现在可以使用复选框一次移除多个附加组"
+"件。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:101
@@ -255,13 +229,14 @@ msgid ""
 "The 1.10 series features a completely redone version of the old "
 "<em>Northerners</em> track as well as a new track: <em>Battle Epic</em>."
 msgstr ""
+"1.10系列中，原先的<em>北国人</em>音轨经过了完全的重制，同时，也加入了一条新的"
+"音轨：<em>史诗之战</em>。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:103
 msgid "Also, two new translations were started: Irish and Old English."
-msgstr ""
+msgstr "同时，两个新的语种也开始了翻译：爱尔兰语以及古英语。"
 
-# type: Content of: <html><body><div><div><div><h4>
 #. type: Content of: <html><body><div><div><div><h4>
 #: template.html:108
 msgid "Campaigns"
@@ -277,6 +252,10 @@ msgid ""
 "a> to prepare for mainline inclusion, just like <em>Delfador’s Memoirs</em> "
 "from the 1.8 series."
 msgstr ""
+"战役<em>死寂之水</em>现在已加入了主线。在这个战役中，您扮演一位年轻的人鱼，是"
+"他的人鱼王国的王位继承者；您的任务是击退亡灵的入侵。<em>死寂之水</em>在加入主"
+"线之前，在<a href=\"http://wesnoth-umc-dev.sourceforge.net\">Wesnoth-UMC-Dev"
+"项目</a>中进行了一段时间的润色与准备，正如1.8系列中的<em>德翁往事</em> 一样。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:113
@@ -287,8 +266,10 @@ msgid ""
 "scenarios were reworked to include more dynamic gameplay and improved "
 "mechanics."
 msgstr ""
+"大多数原先就有的战役都经过了或大或小的改进。例如，<em>兄弟传说</em>的故事线有"
+"了明显的进步，而<em>韦弥尔传奇</em>中的几幕场景则经过了重制，包含了变化更多的"
+"玩法和对游戏机制的改进。"
 
-# type: Content of: <html><body><div><div><div><h4>
 #. type: Content of: <html><body><div><div><div><h4>
 #: template.html:119
 msgid "Multiplayer"
@@ -302,14 +283,14 @@ msgid ""
 "balancing tweaks were made to other maps &mdash; including making use of the "
 "new terrains."
 msgstr ""
+"游戏中加入了几张新的多人游戏地图：安瑟茂、阿坎克雷夫堡垒、千刺卫戍军以及火"
+"山。其他地图也有许多改进与平衡性调整——包括使用新的地形。"
 
-# type: Content of: <html><body><div><div><div><h3>
 #. type: Content of: <html><body><div><div><div><h3>
 #: template.html:126
 msgid "For Content Developers"
-msgstr "内容制作者可见的变更"
+msgstr "内容开发者可见的改进"
 
-# type: Content of: <html><body><div><div><div><div><div><a>
 #. type: Content of: <html><body><div><div><div><div><div><a>
 #: template.html:129
 msgid "<a href='images/start-4-full.jpg'>"
@@ -323,6 +304,9 @@ msgid ""
 "variables</a> feature, which allows add-on authors to save data to players’ "
 "hard disks for use by other content or in future playthroughs."
 msgstr ""
+"1.10系列为内容开发者提供了非常多的新特性，例如新的 <a href=\"http://wiki."
+"wesnoth.org/PersistenceWML\">持久性变量</a>特性，这使得附加组件作者们可以将数"
+"据保存到玩家的硬盘上，并由其他的附加内容或在日后的游戏过程中使用。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:135
@@ -332,6 +316,9 @@ msgid ""
 "1.8 series. In fact, one of our Google Summer of Code projects was focused "
 "on improving the AI-related Lua capabilities."
 msgstr ""
+"游戏的Lua机能也得到了可观的增强，这使得内容开发者可以做到的事，要比在1.8系列"
+"中多得多。实际上，我们的Google代码之夏的项目之一，便是专注在增强和AI有关的Lua"
+"机能上的。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:138
@@ -340,6 +327,8 @@ msgid ""
 "org/LanguageWML\">[language]</a>, custom range and attack type strings can "
 "now be translated."
 msgstr ""
+"由于有了可以处理<a href=\"http://wiki.wesnoth.org/LanguageWML\">[language]</"
+"a>标签的代码，自定义的射程与攻击类型字符串现在可以被翻译了。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:140
@@ -348,6 +337,8 @@ msgid ""
 "terrains as well as new structures and embellishments, thus allowing map "
 "makers to create more vibrant maps."
 msgstr ""
+"地形调色板也得到了很大的扩充，加入了新的基本地形以及新的建筑与修饰，这使得地"
+"图制作者们可以创作出更加充满生气的地图。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:143
@@ -360,6 +351,11 @@ msgid ""
 "well as the ability to start the game or map editor and have it go right to "
 "the desired scenario or map."
 msgstr ""
+"由于在2010至2011年期间的一项Google代码之夏项目中的编码工作，我们现在有了一个"
+"<a href=\"http://eclipse.wesnoth.org\">韦诺之战Eclipse插件</a>。它在Eclipse中"
+"提供了一个完整的WML集成开发环境，有着诸如语法高亮、标签折叠、自动补全等特性。"
+"它甚至还包括了各种维护工具，例如wmllint和wmlindent的前端。此外，这个编辑器也"
+"能够启动游戏或者地图编辑器，并直接进入所希望的场景或地图。"
 
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:146
@@ -368,25 +364,16 @@ msgid ""
 "icons&mdash;have been included for the benefit of content creators; "
 "depictions of items such as potions, robes, armor, and jewelry are included."
 msgstr ""
+"为帮助内容创作者，一批新的物品图标也已加入游戏中，它们采用与攻击图标相同的风"
+"格绘制。其中包括了药剂、长袍、铠甲及珠宝的图片。"
 
-# type: Content of: <html><body><div><div><div><h2>
 #. type: Content of: <html><body><div><div><div><h2>
 #: template.html:152
 msgid "Download"
 msgstr "下载"
 
-# type: Content of: <html><body><div><div><div><p>
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:154
-#, fuzzy
-#| msgid ""
-#| "Battle for Wesnoth is made available under the <a href='http://www.gnu."
-#| "org/licenses/gpl-2.0.html'>GNU General Public License</a> (GPL). Source "
-#| "code is available from <a href='http://www.wesnoth.org'>wesnoth.org</a> "
-#| "where you will also find instructions for <a href='http://wiki.wesnoth."
-#| "org/CompilingWesnoth'>building from source</a> on a range of different "
-#| "operating systems. Ready-to-go packages are also available for most "
-#| "popular operating systems, including Linux and Windows and Mac OS X."
 msgid ""
 "<em>The Battle for Wesnoth</em> is made available under the <a href='http://"
 "www.gnu.org/licenses/gpl-2.0.html'>GNU General Public License</a> (GPL). The "
@@ -396,72 +383,52 @@ msgid ""
 "operating systems. Ready-to-go packages are also available for most popular "
 "operating systems, including Microsoft Windows, Mac OS X, and GNU/Linux."
 msgstr ""
-"韦诺之战采用<a href='http://www.gnu.org/licenses/gpl-2.0.html'>《GNU通用公共"
-"许可证》</a>（GPL）授权。源代码可以从<a href='http://www.wesnoth."
-"org'>wesnoth.org</a>获取，在该网站上您还可以获取在各种不同的操作系统上<a "
+"<em>韦诺之战</em>采用<a href='http://www.gnu.org/licenses/gpl-2.0.html'>GNU通"
+"用公共许可证</a>（GPL）授权。源代码可以从<a href='http://www.wesnoth."
+"org'>wesnoth.org</a>获取，在该网站上，您还可以获取在各种不同的操作系统下<a "
 "href='http://wesnoth.org/wiki/CompilingWesnoth'>从源代码编译</a>游戏的相关指"
-"导。我们也为最主流的操作系统，包括Linux，Windows和Mac OS X提供现成的软件包。"
+"导信息。我们也为最流行的操作系统，包括Microsoft Windows，Mac OS X以及GNU/"
+"Linux提供即装即用的软件包。"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:162
-#, fuzzy
-#| msgid ""
-#| "<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
-#| "wesnoth-1.8.tar.bz2/download'>Source code</a> </strong>"
 msgid ""
 "<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth-1.10/"
 "wesnoth-1.10/wesnoth-1.10.tar.bz2/download'>Source code</a> </strong>"
 msgstr ""
-"<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
-"wesnoth-1.8.tar.bz2/download'>源代码</a> </strong>"
+"<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth-1.10/"
+"wesnoth-1.10/wesnoth-1.10.tar.bz2/download'>源代码</a> </strong>"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:167
-#, fuzzy
-#| msgid ""
-#| "<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
-#| "wesnoth-1.8-win32.exe/download'>Wesnoth for MS Windows</a> </strong>"
 msgid ""
 "<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth-1.10/"
 "wesnoth-1.10/wesnoth-1.10-win32.exe/download'>Wesnoth for Microsoft Windows</"
 "a> </strong>"
 msgstr ""
-"<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
-"wesnoth-1.8-win32.exe/download'>韦诺之战的 Windows 版本</a> </strong>"
+"<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth-1.10/"
+"wesnoth-1.10/wesnoth-1.10-win32.exe/download'>韦诺之战 Microsoft Windows 版</"
+"a> </strong>"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:172
-#, fuzzy
-#| msgid ""
-#| "<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
-#| "Wesnoth_1.8.dmg/download'>Wesnoth for Mac OS X</a> </strong>"
 msgid ""
 "<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth-1.10/"
 "wesnoth-1.10/Wesnoth_1.10.dmg/download'>Wesnoth for Mac OS X</a> </strong>"
 msgstr ""
-"<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth/"
-"Wesnoth_1.8.dmg/download'>韦诺之战的 Mac OS X 版本</a> </strong>"
+"<strong> <a href='http://sourceforge.net/projects/wesnoth/files/wesnoth-1.10/"
+"wesnoth-1.10/Wesnoth_1.10.dmg/download'>韦诺之战 Mac OS X 版</a> </strong>"
 
-# type: Content of: <html><body><div><div><div><p>
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:178
-#, fuzzy
-#| msgid ""
-#| "You can get up to date information about downloads at the <a href='http://"
-#| "wiki.wesnoth.org/Download'>downloads page</a>. There you can also find "
-#| "packages and instructions for other platforms once they are available."
 msgid ""
 "You can get up-to-date information on downloads at the <a href='http://wiki."
 "wesnoth.org/Download'>downloads page</a>. There you can also find packages "
 "and instructions for other platforms once they are available."
 msgstr ""
 "您可以在<a href='http://wiki.wesnoth.org/Download'>下载页</a>获取有关于下载的"
-"最新信息。一旦其他平台下的软件包和编译指导出现，在那里您也可以找到它们。"
+"最新信息。其他平台下的软件包和安装指导信息发布后，您也可以在该页面上找到。"
 
-# type: Content of: <html><body><div><div><div><p>
 #. type: Content of: <html><body><div><div><div><p>
 #: template.html:180
 msgid ""
@@ -472,273 +439,53 @@ msgstr ""
 "如果您下载过这个游戏的旧版本，您可能希望只下载<a href='http://www.wesnoth."
 "org/wiki/Download_Xdeltas'>xdelta</a>文件。"
 
-# type: Content of: <html><body><div><div><div><h2>
 #. type: Content of: <html><body><div><div><div><h2>
 #: template.html:183
 msgid "More Info"
 msgstr "更多信息"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:186
-#, fuzzy
-#| msgid ""
-#| "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.8.0/"
-#| "changelog'>Full Changelog</a> (English, very long)"
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.10.0/"
 "changelog'>Full Changelog</a> (English, very long)"
 msgstr ""
-"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.8.0/changelog'>"
-"完整的变更日志</a>（英文，非常长）"
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.10.0/"
+"changelog'>完整的变更日志</a>（英文，非常长）"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:187
-#, fuzzy
-#| msgid ""
-#| "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.8.0/doc/"
-#| "manual/manual.en.html'>User's Manual</a>"
 msgid ""
 "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.10.0/doc/"
 "manual/manual.en.html'>User’s Manual</a>"
 msgstr ""
-"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.8.0/doc/manual/"
-"manual.zh_CN.html'>用户手册</a>"
+"<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/tags/1.10.0/doc/"
+"manual/manual.zh_CN.html'>用户手册</a>"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:188
-#, fuzzy
-#| msgid ""
-#| "<a href='http://www.wesnoth.org'>Wesnoth Official Website</a> (English)"
 msgid "<a href='http://www.wesnoth.org'>Official Website</a> (English)"
-msgstr "<a href='http://www.wesnoth.org'>韦诺之战官方网站</a> (英文)"
+msgstr "<a href='http://www.wesnoth.org'>官方网站</a> （英文）"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:195
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Release Notes</a>"
-msgstr "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 发行注记</a>"
+msgstr "<a href='http://www.wesnoth.org/start/1.4'>韦诺之战 1.4 发行注记</a>"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:196
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.6'>Wesnoth 1.6 Release Notes</a>"
-msgstr "<a href='http://www.wesnoth.org/start/1.6'>Wesnoth 1.6 发行注记</a>"
+msgstr "<a href='http://www.wesnoth.org/start/1.6'>韦诺之战 1.6 发行注记</a>"
 
-# type: Content of: <html><body><div><div><div><ul><li>
 #. type: Content of: <html><body><div><div><div><ul><li>
 #: template.html:197
-#, fuzzy
-#| msgid ""
-#| "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 Release Notes</a>"
 msgid ""
 "<a href='http://www.wesnoth.org/start/1.8'>Wesnoth 1.8 Release Notes</a>"
-msgstr "<a href='http://www.wesnoth.org/start/1.4'>Wesnoth 1.4 发行注记</a>"
+msgstr "<a href='http://www.wesnoth.org/start/1.8'>韦诺之战 1.8 发行注记</a>"
 
-# type: Content of: <html><body><div><div><div><div><p>
 #. type: Content of: <html><body><div><div><div><div><p>
 #: template.html:204
 msgid "This page is also available in the following languages:"
-msgstr "这个页面提供以下语言的翻译："
-
-#~ msgid ""
-#~ "The improvements this time around include one entire new full-length "
-#~ "campaign, hundreds of new and revised unit portraits, five new music "
-#~ "tracks, some UI redesign, and substantial improvements in the game's AI."
-#~ msgstr ""
-#~ "本次改进包括了一个全新的完整战役，数百个新的或修正过的单位头像，五条新的音"
-#~ "轨，部分用户界面的重新设计，以及游戏AI的重大改进。"
-
-#~ msgid ""
-#~ "To help the player keep those who are loyal to him alive, these units are "
-#~ "now marked with an overlay symbol that looks like a bronze ring."
-#~ msgstr "为帮助玩家，忠诚单位现在有一个看上去像青铜环一样的符号。"
-
-#~ msgid ""
-#~ "The names on maps and other images can now be localized to the player's "
-#~ "language; several languages already use this new feature. For more "
-#~ "information and tutorials, look at the wiki article on <a href=\"http://"
-#~ "wiki.wesnoth.org/ImageLocalization\">Image Localization</a>."
-#~ msgstr ""
-#~ "地图上的名字以及其他的图像，现在可以本地化为玩家所用的语言，有些语言已经在"
-#~ "使用这一新功能了。欲知更多的信息以及教程，请参阅<a href=\"http://wiki."
-#~ "wesnoth.org/ImageLocalization\">图片本地化</a>。"
-
-# type: Content of: <html><body><div><div><div><p>
-#~ msgid ""
-#~ "A new campaign, <cite>Delfador's Memoirs</cite>, tells the tale of how a "
-#~ "mage-apprentice rose to become Delfador the Great. This campaign was "
-#~ "imported from the <a href=\"http://wesnoth-umc-dev.sourceforge.net"
-#~ "\">Wesnoth-UMC-Dev project</a>, where it spent almost a year being "
-#~ "adapted for mainline."
-#~ msgstr ""
-#~ "一个新的战役，《黎翁往事》，讲述了一位魔法学徒如何成为大法师黎伐多的故事。"
-#~ "这个战役是从<a href=\"http://wesnoth-umc-dev.sourceforge.net\">Wesnoth-"
-#~ "UMC-Dev项目</a>导入的。在进入游戏主线之前，这个战役在该项目中呆了几乎一"
-#~ "年。"
-
-#~ msgid ""
-#~ "We've continued to polish and improve the mainline campaigns.  The hero "
-#~ "Kaleh's custom advancements in <cite>Under the Burning Suns</cite>, long "
-#~ "a source of problems, have been redesigned in a more robust and "
-#~ "streamlined fashion. Significant continuity problems in <cite>Heir to the "
-#~ "Throne's</cite> \"Cliffs of Thoria\" scenario have been fixed.  Some "
-#~ "scenarios in <cite>Legend of Wesmere</cite> have been rewritten and "
-#~ "significantly enhanced. An early version of its multiplayer port is "
-#~ "available to test Wesnoth's multiplayer campaign feature."
-#~ msgstr ""
-#~ "我们在继续对主线战役进行润色和改进。《双日之下》战役中英雄Kaleh的自定义升"
-#~ "级选项在很长时间内是麻烦之源，而现在已经被重新设计为更健壮而顺畅的方式。 "
-#~ "而《王位继承者》战役的“Thoria之崖”场景中明显的逻辑连续性问题也被修正了。"
-#~ "《韦弥尔传奇》战役中的部分场景经过了重写与显著的增强。该战役的多人模式移植"
-#~ "版的早期版本已经可以用于测试韦诺之战的多人战役特性。"
-
-#~ msgid ""
-#~ "There are five new full-orchestral music tracks: <cite>Casualties of War</"
-#~ "cite>, <cite>Into the Shadows</cite>, <cite>Journey's End</cite>, "
-#~ "<cite>Over the Northern Mountains</cite>, and <cite>Weight of Revenge</"
-#~ "cite>."
-#~ msgstr ""
-#~ "现在游戏中加入了五条全新的管弦乐音轨：《战之殇》、《深入阴影》、《旅程终"
-#~ "末》、《跨越北方山脉》与《复仇的重量》。"
-
-# type: Content of: <html><body><div><div><div><p>
-#~ msgid ""
-#~ "The game AI has been significantly debugged and improved; it chooses "
-#~ "recruits/recalls better, and does smarter target selection."
-#~ msgstr ""
-#~ "游戏AI经过了明显的调试和改进；如今它能更好地选择征募或者召回，同时在选择目"
-#~ "标时也更聪明。"
-
-#~ msgid ""
-#~ "The operating system's GUI can be told to notify the player that it's his "
-#~ "turn to play."
-#~ msgstr "操作系统的图形界面现在可以通知玩家，到了他的行动回合了。"
-
-# type: Content of: <html><body><div><div><div><p>
-#~ msgid ""
-#~ "The multiplayer lobby has been completely redesigned for improved ease of "
-#~ "play and better appearance."
-#~ msgstr ""
-#~ "多人游戏大厅经过了全面的重新设计，更便于进行游戏，也具有更好的外观。"
-
-#~ msgid ""
-#~ "Random numbers are generated on the Wesnoth multiplayer server during MP "
-#~ "combats. This makes certain kinds of cheats and out-of-sync conditions "
-#~ "impossible, at the cost of breaking compatibility with versions before "
-#~ "1.7.13."
-#~ msgstr ""
-#~ "在多人对战中，韦诺服务器上会生成随机数。这不可能再出现特定种类的作弊方法以"
-#~ "及某些失去同步的状况，但代价是不再与1.7.13以前的版本兼容。"
-
-#~ msgid ""
-#~ "The right sidebar on the main game display has been tuned for usability. "
-#~ "It now gives more prominence to the selected unit's terrain defence "
-#~ "percentage and time-of-day modifier."
-#~ msgstr ""
-#~ "主游戏界面上的右边栏经过调整，提升了可用性。现在被选中单位的地形防御百分数"
-#~ "与时段修正值被更加突出了。"
-
-#~ msgid ""
-#~ "There is a new monster unit: the Water Serpent. Additionally, the "
-#~ "Dwarvish Scout from Under the Burning Suns is now part of normal Dwarvish "
-#~ "sides in campaigns. Several other unit lines &mdash; most notably the "
-#~ "Drakes &mdash; have been completely redone with improved art and "
-#~ "animations.  A remake of the merfolk units out of our Art Director's "
-#~ "virtual pencil has been completed in this release cycle.  (But most "
-#~ "animations are still missing for them.)"
-#~ msgstr ""
-#~ "新加入了一个怪物单位：巨型水蛇。双日之下战役中的矮人侦察兵现在是其他战役中"
-#~ "普通矮人阵营的一部分了。一些其他的单位树——最明显的是龙族——完全重新制作了，"
-#~ "现在有了更好的美工和动画。在本次发布周期内，我们的一位美术总监虚拟画笔下的"
-#~ "人鱼族单位的新样貌也已经完成了。（但它们仍然缺少大部分动画。）"
-
-#~ msgid ""
-#~ "Add-on descriptions are now accessible from the add-on download dialog "
-#~ "via a button."
-#~ msgstr "插件的描述现在可以通过插件下载对话框上的一个按钮来获得。"
-
-#~ msgid ""
-#~ "Most translations have been updated. In addition, Vietnamese has "
-#~ "returned, and we have a new transliteration, English in the Shavian "
-#~ "alphabet."
-#~ msgstr ""
-#~ "绝大部分的翻译都更新了。此外，越南文又回来了，而我们也有了一个新的音译版"
-#~ "本：以萧氏字母表书写的英文。"
-
-#~ msgid ""
-#~ "This year Wesnoth was once again a Google \"Summer of Code\" program; one "
-#~ "of its major results was a complete rework of Wesnoth's support for "
-#~ "multiplayer campaigns. Sides in multiplayer games are now persistent and "
-#~ "can be carried over from one multiplayer scenario to the next. The "
-#~ "leaders of AI sides are now able to recall from their side's list. As a "
-#~ "side effect it is now possible to have more than one leader with the "
-#~ "ability to recruit per side."
-#~ msgstr ""
-#~ "今年，韦诺之战又一次成为了谷歌“代码之夏”中的项目；其主要成果之一是对韦诺多"
-#~ "人战役支持功能的完全重写。多人游戏中的各阵营现在是持久的，可以从一个多人场"
-#~ "景中带到另一个之中。AI阵营的领袖现在可以从己方的列表中召回单位。而副作用"
-#~ "是，现在已经有可能让每方拥有一位以上可以招募军队的领袖。"
-
-#~ msgid ""
-#~ "Another Summer of Code result is a new framework for Wesnoth's artificial "
-#~ "intelligence. The AI can now be scripted to significantly change its "
-#~ "behavior in different story settings and in response to campaign events, "
-#~ "give enemy sides more distinct tactical personalities. It is possible, "
-#~ "though not easy, to use scripting languages (formula_ai, lua) to create "
-#~ "alternate AIs that are also scriptable."
-#~ msgstr ""
-#~ "另一个代码之夏的成果是韦诺的新AI框架。AI现在可以脚本化，以在不同的故事情境"
-#~ "下以及对场景中的事件作出反应时明显地改变自身的行为。这样就使得敌方拥有了更"
-#~ "多截然不同的战术风格。虽然并不容易，采用脚本语言（formula_ai和lua）来创建"
-#~ "可以脚本化的替代AI也是有可能的。"
-
-#~ msgid ""
-#~ "A new tool called the <a href=\"http://wiki.wesnoth.org/"
-#~ "CommandMode#Extra_Debugging_Commands\">\"gamestate inspector\"</a> allows "
-#~ "a content developer to view the values of the WML variables, ai "
-#~ "configuration, and the recall list while a game is in progress."
-#~ msgstr ""
-#~ "一个叫做<a href=\"http://wiki.wesnoth.org/"
-#~ "CommandMode#Extra_Debugging_Commands\">“游戏状态检查器”</a>的新工具允许内"
-#~ "容制作者在游戏进行时查看WML变量的值，AI配置，以及单位召回列表。"
-
-#~ msgid ""
-#~ "New Orcish Village and Orcish Keep terrain graphics improve the options "
-#~ "available to map designers."
-#~ msgstr "新的兽人村庄与兽人要塞的地形图使得地图作者有了更好的选项。"
-
-#~ msgid ""
-#~ "We've also achieved excellent results with our inaugural 'Summer Art "
-#~ "Scholarship' program. This has led to dozens of new portraits, as well as "
-#~ "a complete rework of the Drake sprites. We hope to continue this program "
-#~ "in coming years."
-#~ msgstr ""
-#~ "我们的首次“夏日艺术奖学金”计划也取得了杰出的成果。它产生了几十张新的头像，"
-#~ "以及完全重新制作过的龙族图元。我们希望在以后可以继续这一计划。"
-
-# type: Content of: <html><body><div><div><div><p>
-#~ msgid ""
-#~ "We paid a lot of attention to world continuity, from small details like "
-#~ "replacing earth-human names for characters up through larger ones like "
-#~ "putting many new placenames on the main map. The main Wesnoth history "
-#~ "timeline has been tweaked to eliminate various minor inconsistencies."
-#~ msgstr ""
-#~ "世界观的延续性被给予了很高的关注。小到诸如替换人物名字，大到在主地图上标注"
-#~ "很多新的地名。韦诺的历史主线也经过了调整，消除了各种微小的不一致情况。"
-
-#~ msgid ""
-#~ "We kept the promise we made in 1.6 when we had to remove Python for "
-#~ "technical reasons; WML events and AI components can now be written in "
-#~ "lua. The integration of lua in the wesnoth game engine is advanced enough "
-#~ "to even allow the coding of WML action tags with lua definitions that can "
-#~ "read and modify game state variables in the C++ core."
-#~ msgstr ""
-#~ "我们信守了在发布1.6版本时的诺言，当时由于技术原因，我们不得不移除了Python"
-#~ "支持。现在WML事件和AI组件可以使用lua编写了。Lua与韦诺游戏引擎已经高度集"
-#~ "成，甚至可以使用lua来编写可以读取和修改C++核心中的游戏状态变量的WML动作标"
-#~ "签。"
+msgstr "这个页面已被翻译为以下语言："
