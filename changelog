@@ -13,6 +13,8 @@ Version 1.9.13+svn:
      (bug #19203)
    * Check for argument image file existence before creating a MASK or
      BLIT image mod (bug #19208)
+   * New key [object]delayed_variable_substitution=yes|no (default no)
+     as a workaround for bug #18893 (fixes bug #19225)
  * Miscellaneous and bug fixes:
    * Fixed bug #19032: Poison and level up AI defense placement calculation
 
