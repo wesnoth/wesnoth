@@ -99,7 +99,7 @@ int advance_unit_dialog(const map_location &loc)
 	{
 		if (mod["always_display"].to_bool()) always_display = true;
 		sample_units.push_back(::get_advanced_unit(*u, u->type_id()));
-		sample_units.back().add_modification("advance", vconfig(mod));
+		sample_units.back().add_modification("advance", mod);
 		const unit& type = sample_units.back();
 		if (!mod["image"].empty()) {
 			lang_options.push_back(IMAGE_PREFIX + mod["image"].str() + COLUMN_SEPARATOR + mod["description"].str());
@@ -228,7 +228,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice, const bool
 		}
 
 		amla_unit.set_experience(amla_unit.experience() - amla_unit.max_experience());
-		amla_unit.add_modification("advance", vconfig(mod_option));
+		amla_unit.add_modification("advance",mod_option);
 		resources::units->replace(loc, amla_unit);
 
 		if(fire_event)

@@ -2321,25 +2321,25 @@ static void mod_mdr_merge(config& dst, const config& mod, bool delta)
 	}
 }
 
-void unit::add_modification(const std::string& type, const vconfig& vcfg, bool no_add)
+void unit::add_modification(const std::string& type, const config& mod, bool no_add)
 {
 	//some trait activate specific flags
 	if(type == "trait") {
-		const std::string id = vcfg["id"].str();
+		const std::string& id = mod["id"];
 		is_fearless_ = is_fearless_ || id == "fearless";
 		is_healthy_ = is_healthy_ || id == "healthy";
 	}
 
 	config *new_child = NULL;
 	if(no_add == false) {
-		new_child = &modifications_.add_child(type, vcfg.get_config());
+		new_child = &modifications_.add_child(type,mod);
 	}
-	vconfig last_effect = vconfig::unconstructed_vconfig();
+	config last_effect;
 	std::vector<t_string> effects_description;
-	foreach (const vconfig& veffect, vcfg.get_children("effect"))
+	foreach (const config &effect, mod.child_range("effect"))
 	{
 		// See if the effect only applies to certain unit types
-		const std::string type_filter = veffect["unit_type"].str();
+		const std::string &type_filter = effect["unit_type"];
 		if(type_filter.empty() == false) {
 			const std::vector<std::string>& types = utils::split(type_filter);
 			if(std::find(types.begin(),types.end(),type_id()) == types.end()) {
@@ -2347,7 +2347,7 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 			}
 		}
 		// See if the effect only applies to certain genders
-		const std::string gender_filter = veffect["unit_gender"].str();
+		const std::string &gender_filter = effect["unit_gender"];
 		if(gender_filter.empty() == false) {
 			const std::string& gender = gender_string(gender_);
 			const std::vector<std::string>& genders = utils::split(gender_filter);
@@ -2357,12 +2357,11 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 		}
 		/** @todo The above two filters can be removed in 1.7 they're covered by the SUF. */
 		// Apply SUF. (Filtering on location is probably a bad idea though.)
-		const vconfig& afilter = veffect.child("filter");
-		if (!afilter.null())
-			if (!matches_filter(afilter, loc_)) continue;
+		if (const config &afilter = effect.child("filter"))
+			if (!matches_filter(vconfig(afilter), loc_)) continue;
 
-		const std::string apply_to = veffect["apply_to"].str();
-		const std::string apply_times = veffect["times"].str();
+		const std::string &apply_to = effect["apply_to"];
+		const std::string &apply_times = effect["times"];
 		int times = 1;
 		t_string description;
 
@@ -2374,24 +2373,22 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 
 				// Apply unit type/variation changes last to avoid double applying effects on advance.
 				if ((apply_to == "variation" || apply_to == "type") && no_add == false) {
-					last_effect = veffect;
+					last_effect = effect;
 				} else if(apply_to == "profile") {
-					const config::attribute_value v = veffect["portrait"];
-					if (!v.blank()) {
-						std::string big = v.str(), small = veffect["small_portrait"].str();
+					if (const config::attribute_value *v = effect.get("portrait")) {
+						std::string big = *v, small = effect["small_portrait"];
 						adjust_profile(small, big, "");
 						cfg_["profile"] = big;
 						cfg_["small_profile"] = small;
 					}
-					config::attribute_value desc = veffect["description"];
-					if (!desc.blank())
-						cfg_["description"] = desc;
+					if (const config::attribute_value *v = effect.get("description"))
+						cfg_["description"] = *v;
 					//help::unit_topic_generator(*this, (**i.first)["help_topic"]);
 				} else if(apply_to == "new_attack") {
-					attacks_.push_back(attack_type(veffect.get_parsed_config()));
+					attacks_.push_back(attack_type(effect));
 				} else if(apply_to == "remove_attacks") {
 					for(std::vector<attack_type>::iterator a = attacks_.begin(); a != attacks_.end(); ++a) {
-						if (a->matches_filter(veffect.get_parsed_config(), false)) {
+						if (a->matches_filter(effect, false)) {
 							attacks_.erase(a--);
 						}
 					}
@@ -2403,7 +2400,7 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 					std::string desc;
 					for(std::vector<attack_type>::iterator a = attacks_.begin();
 						a != attacks_.end(); ++a) {
-						bool affected = a->apply_modification(veffect.get_parsed_config(), &desc);
+						bool affected = a->apply_modification(effect, &desc);
 						if(affected && desc != "") {
 							if(first_attack) {
 								first_attack = false;
@@ -2424,13 +2421,13 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 					}
 				} else if(apply_to == "hitpoints") {
 					LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
-					const std::string increase_hp = veffect["increase"].str();
-					const std::string increase_total = veffect["increase_total"].str();
-					const std::string set_hp = veffect["set"].str();
-					const std::string set_total = veffect["set_total"].str();
+					const std::string &increase_hp = effect["increase"];
+					const std::string &increase_total = effect["increase_total"];
+					const std::string &set_hp = effect["set"];
+					const std::string &set_total = effect["set_total"];
 
 					// If the hitpoints are allowed to end up greater than max hitpoints
-					const bool violate_max = veffect["violate_maximum"].to_bool();
+					const bool violate_max = effect["violate_maximum"].to_bool();
 
 					if(set_hp.empty() == false) {
 						if(set_hp[set_hp.size()-1] == '%') {
@@ -2459,7 +2456,7 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 					if(max_hit_points_ < 1)
 						max_hit_points_ = 1;
 
-					if (veffect["heal_full"].to_bool()) {
+					if (effect["heal_full"].to_bool()) {
 						heal_all();
 					}
 
@@ -2476,7 +2473,7 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 					if(hit_points_ < 1)
 						hit_points_ = 1;
 				} else if(apply_to == "movement") {
-					const std::string increase = veffect["increase"].str();
+					const std::string &increase = effect["increase"];
 
 					if(increase.empty() == false) {
 						if (!times)
@@ -2486,12 +2483,12 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 						max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
 					}
 
-					max_movement_ = veffect["set"].to_int(max_movement_);
+					max_movement_ = effect["set"].to_int(max_movement_);
 
 					if(movement_ > max_movement_)
 						movement_ = max_movement_;
 				} else if(apply_to == "max_experience") {
-					const std::string increase = veffect["increase"].str();
+					const std::string &increase = effect["increase"];
 
 					if(increase.empty() == false) {
 						if (!times)
@@ -2504,8 +2501,8 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 				} else if(apply_to == "loyal") {
 					cfg_["upkeep"] = "loyal";
 				} else if(apply_to == "status") {
-					const std::string add = veffect["add"].str();
-					const std::string remove = veffect["remove"].str();
+					const std::string &add = effect["add"];
+					const std::string &remove = effect["remove"];
 
 					if(add.empty() == false) {
 						set_state(add, true);
@@ -2516,17 +2513,14 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 					}
 				} else if (apply_to == "movement_costs") {
 					config &mv = cfg_.child_or_add("movement_costs");
-					const vconfig& vmc = veffect.child("movement_costs");
-					if(!vmc.null()) {
-						mod_mdr_merge(mv, vmc.get_parsed_config(), !veffect["replace"].to_bool());
+					if (const config &ap = effect.child("movement_costs")) {
+						mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
 					}
 					movement_costs_.clear();
 				} else if (apply_to == "defense") {
 					config &def = cfg_.child_or_add("defense");
-					const vconfig& vdef = veffect.child("defense");
-					if (!vdef.null()) {
-						const config& ap = vdef.get_parsed_config();
-						bool replace = veffect["replace"].to_bool();
+					if (const config &ap = effect.child("defense")) {
+						bool replace = effect["replace"].to_bool();
 						foreach (const config::attribute &i, ap.attribute_range()) {
 							int v = i.second.to_int();
 							config::attribute_value &dst = def[i.first];
@@ -2543,18 +2537,16 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 					defense_mods_.clear();
 				} else if (apply_to == "resistance") {
 					config &mv = cfg_.child_or_add("resistance");
-					const vconfig& vres = veffect.child("resistance");
-					if (!vres.null()) {
-						mod_mdr_merge(mv, vres.get_parsed_config(), !veffect["replace"].to_bool());
+					if (const config &ap = effect.child("resistance")) {
+						mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
 					}
 				} else if (apply_to == "zoc") {
-					const config::attribute_value v = veffect["value"];
-					if (!v.blank()) {
-						emit_zoc_ = v.to_bool();
+					if (const config::attribute_value *v = effect.get("value")) {
+						emit_zoc_ = v->to_bool();
 					}
 				} else if (apply_to == "new_ability") {
 					config &ab = cfg_.child_or_add("abilities");
-					if (const config &ab_effect = veffect.child("abilities").get_config()) {
+					if (const config &ab_effect = effect.child("abilities")) {
 						config to_append;
 						foreach (const config::any_child &ab, ab_effect.all_children_range()) {
 							if(!has_ability_by_id(ab.cfg["id"])) {
@@ -2564,21 +2556,19 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 						ab.append(to_append);
 					}
 				} else if (apply_to == "remove_ability") {
-					const vconfig& vabilities = veffect.child("abilities");
-					if (!vabilities.null()) {
-						const config& abilities = vabilities.get_parsed_config();
-						foreach (const config::any_child &ab, abilities.all_children_range()) {
+					if (const config &ab_effect = effect.child("abilities")) {
+						foreach (const config::any_child &ab, ab_effect.all_children_range()) {
 							remove_ability_by_id(ab.cfg["id"]);
 						}
 					}
 				} else if (apply_to == "image_mod") {
 					LOG_UT << "applying image_mod \n";
-					std::string mod = veffect["replace"].str();
+					std::string mod = effect["replace"];
 					if (!mod.empty()){
 						image_mods_ = mod;
 					}
 					LOG_UT << "applying image_mod \n";
-					mod = veffect["add"].str();
+					mod = effect["add"].str();
 					if (!mod.empty()){
 						if(!image_mods_.empty()) {
 							image_mods_ += '~';
@@ -2587,10 +2577,9 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 						image_mods_ += mod;
 					}
 
-					game_config::add_color_info(veffect.get_parsed_config());
+					game_config::add_color_info(effect);
 					LOG_UT << "applying image_mod \n";
 				} else if (apply_to == "new_animation") {
-					const config& effect = veffect.get_parsed_config();
 					if(effect["id"].empty()) {
 						unit_animation::add_anims(animations_, effect);
 					} else {
@@ -2602,7 +2591,7 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 					}
 
 				} else if (apply_to == "ellipse") {
-					cfg_["ellipse"] = veffect["ellipse"];
+					cfg_["ellipse"] = effect["ellipse"];
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
@@ -2613,7 +2602,7 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 				for(std::vector<attack_type>::iterator a = attacks_.begin();
 					a != attacks_.end(); ++a) {
 					std::string desc;
-					bool affected = a->describe_modification(veffect.get_parsed_config(), &desc);
+					bool affected = a->describe_modification(effect, &desc);
 					if(affected && desc != "") {
 						if(first_attack) {
 							first_attack = false;
@@ -2625,20 +2614,20 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 					}
 				}
 			} else if(apply_to == "hitpoints") {
-				const std::string increase_total = veffect["increase_total"].str();
+				const std::string &increase_total = effect["increase_total"];
 
 				if(increase_total.empty() == false) {
 					description += utils::print_modifier(increase_total) + " " +
 						t_string(N_("HP"), "wesnoth");
 				}
 			} else if(apply_to == "movement") {
-				const std::string increase = veffect["increase"].str();
+				const std::string &increase = effect["increase"];
 
 				if(increase.empty() == false) {
 					description += utils::print_modifier(increase) + t_string(N_(" move"), "wesnoth");
 				}
 			} else if(apply_to == "max_experience") {
-				const std::string increase = veffect["increase"].str();
+				const std::string &increase = effect["increase"];
 
 				if(increase.empty() == false) {
 					description += utils::print_modifier(increase) + " " +
@@ -2658,14 +2647,13 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 	}
 	// Apply variations -- only apply if we are adding this for the first time.
 	if (!last_effect.empty() && no_add == false) {
-		const std::string apply_to = last_effect["apply_to"].str();
-		if (apply_to == "variation") {
+		if ((last_effect)["apply_to"] == "variation") {
 			variation_ = last_effect["name"].str();
 			advance_to(this->type());
-		} else if (apply_to == "type") {
+		} else if ((last_effect)["apply_to"] == "type") {
 			config::attribute_value &prev_type = (*new_child)["prev_type"];
 			if (prev_type.blank()) prev_type = type_id();
-			const std::string type_id = last_effect["name"].str();
+			const std::string& type_id = last_effect["name"];
 			const unit_type* type = unit_types.find(type_id);
 			if(type) {
 				const bool heal_full = last_effect["heal_full"].to_bool(false);
@@ -2683,7 +2671,7 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 
 	t_string description;
 
-	const t_string mod_description = vcfg["description"].t_str();
+	const t_string& mod_description = mod["description"];
 	if (!mod_description.empty()) {
 		description = mod_description + " ";
 	}
@@ -2701,16 +2689,16 @@ void unit::add_modification(const std::string& type, const vconfig& vcfg, bool n
 
 	// store trait info
 	if(type == "trait") {
-		add_trait_description(vcfg, description);
+		add_trait_description(mod, description);
 	}
 
 	//NOTE: if not a trait, description is currently not used
 }
 
-void unit::add_trait_description(const vconfig& trait, const t_string& description)
+void unit::add_trait_description(const config& trait, const t_string& description)
 {
 	const std::string& gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
-	t_string const gender_specific_name = trait[gender_string].t_str();
+	t_string const &gender_specific_name = trait[gender_string];
 
 	// if this is a t_string& instead of a t_string, msvc9 compiled windows binaries
 	// choke on the case where both gender_specific_name and trait["name"] are empty.
@@ -2760,7 +2748,7 @@ void unit::apply_modifications()
 		const std::string& mod = ModificationTypes[i];
 		foreach (const config &m, modifications_.child_range(mod)) {
 			log_scope("add mod");
-			add_modification(ModificationTypes[i], vconfig(m), true);
+			add_modification(ModificationTypes[i], m, true);
 		}
 	}
 

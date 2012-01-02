@@ -1101,7 +1101,7 @@ game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 		config &effect = mod.add_child("effect");
 		effect["apply_to"] = "variation";
 		effect["name"] = variation;
-		fake_unit->add_modification("variation", vconfig(mod));
+		fake_unit->add_modification("variation",mod);
 	}
 
 	if(!img_mods.empty()) {
@@ -1109,7 +1109,7 @@ game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 		config &effect = mod.add_child("effect");
 		effect["apply_to"] = "image_mod";
 		effect["add"] = img_mods;
-		fake_unit->add_modification("image_mod", vconfig(mod));
+		fake_unit->add_modification("image_mod",mod);
 	}
 
 	return fake_unit;
@@ -1892,9 +1892,9 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 		text = cfg["description"].str();
 
 		if(cfg["delayed_variable_substitution"].to_bool(false))
-			u->add_modification("object", cfg);
+			u->add_modification("object", cfg.get_config());
 		else
-			u->add_modification("object", vconfig(cfg.get_parsed_config()));
+			u->add_modification("object", cfg.get_parsed_config());
 
 		resources::screen->select_hex(event_info.loc1);
 		resources::screen->invalidate_unit();
