@@ -14,21 +14,21 @@
 # Robert Romero <sildurin@gmail.com>, 2006.
 # Sergi March <sergi.march@gmail.com>, 2008.
 # Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008, 2009.
+# Aelonin <quianaaelonin@gmail.com>, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2011-02-16 18:40-0500\n"
+"POT-Creation-Date: 2011-12-19 15:15+0100\n"
+"PO-Revision-Date: 2011-12-29 21:48-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);X-Generator: KBabel 1.11.4X-"
-"Generator: KBabel 1.11.4\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
@@ -479,9 +479,8 @@ msgstr ""
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:4
-#, fuzzy
 msgid "Drake Arbiter"
-msgstr "Luchador draco"
+msgstr "Árbitro draco"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:18
@@ -564,7 +563,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:47
 #: data/core/units/drakes/Thrasher.cfg:35
 msgid "war talon"
-msgstr ""
+msgstr "garra de guerra"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -639,7 +638,7 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:56
 #: data/core/units/drakes/Thrasher.cfg:53
 msgid "ram"
-msgstr ""
+msgstr "embestida"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -657,15 +656,14 @@ msgstr "Luchador draco"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:19
-#, fuzzy
 msgid ""
 "Drake Fighters wield curved war blades, and possess the fire-breathing "
 "skills of their ancestors. They can also fly, which is troubling to any foe. "
 "Their great strength, coupled with their hardened scales, is rightly "
 "frightening to swordsman of any other race."
 msgstr ""
-"Los luchadores dracos portan curvas cimitarras, y poseen la habilidad de "
-"aliento flamígero de sus antepasados. También pueden volar, lo que es "
+"Los luchadores dracos portan corvas espadas de guerra, y poseen la habilidad "
+"de aliento flamígero de sus antepasados. También pueden volar, lo que es "
 "problemático para cualquier enemigo. Su gran fuerza, junto a sus endurecidas "
 "escamas, asusta con razón a los espadachines de cualquier otra raza."
 
@@ -748,6 +746,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:43
 #: data/core/units/drakes/Hurricane.cfg:128 data/core/units/drakes/Sky.cfg:127
+#, fuzzy
 msgid "slam"
 msgstr "caída"
 
@@ -801,9 +800,8 @@ msgstr ""
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
-#, fuzzy
 msgid "Drake Thrasher"
-msgstr "Retador draco"
+msgstr "Vapuleador draco"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:19
@@ -849,11 +847,11 @@ msgid ""
 "hand."
 msgstr ""
 
+# Arcanista no existe, de acuerdo con la RAE, per es usada en los videojueos.
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
-#, fuzzy
 msgid "Dwarvish Arcanister"
-msgstr "Luchador Enano"
+msgstr "Arcanista enano"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:31
@@ -871,16 +869,15 @@ msgstr "Enano berserker"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:19
-#, fuzzy
 msgid ""
 "Berserkers are a rare caste of Dwarves, who work themselves into a towering "
 "rage before combat. These warriors disdain all notion of defense, thinking "
 "only of the unrelenting assaults for which they are legendary."
 msgstr ""
-"Los Berserkers son una rara raza de Enanos, que consiguen alcanzar un estado "
-"de furia impresionante antes de entrar en combate. Estos guerreros olvidan "
-"toda noción de defensa en combate, pensando sólo en practicar los "
-"implacables asaltos que los han hecho legendarios."
+"Los berserker son una clase poco común de enanos, consiguen alcanzar un "
+"estado de furia impresionante antes de entrar en combate. Estos fieros "
+"guerreros olvidan toda noción de defensa en combate, pensando sólo en "
+"continuar con sus implacables asaltos; los cuales les han hecho legendarios."
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:43
@@ -939,9 +936,8 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
-#, fuzzy
 msgid "Dwarvish Pathfinder"
-msgstr "Atronador Enano"
+msgstr "Guía enano"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:23
@@ -955,9 +951,8 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:4
-#, fuzzy
 msgid "Dwarvish Runesmith"
-msgstr "Maestro rúnico enano"
+msgstr "Artesano rúnico enano"
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:29
@@ -1131,7 +1126,7 @@ msgid ""
 "brethren lost earlier in the battle. Although not so base in design, it is "
 "not at all inaccurate."
 msgstr ""
-"El curioso nombre de los elfos 'Vengadores' viene de una táctica usada "
+"El curioso nombre de los elfos «Vengadores» viene de una táctica usada "
 "habitualmente por estos maestros montaraces. Al enemigo se le permite "
 "atravesar una defensa frágil, y cuando las tropas vulnerables detrás de la "
 "primera línea la siguen, estos arqueros salen de su escondite y atacan, "
@@ -1628,7 +1623,7 @@ msgstr ""
 "sabido por los elfos, aunque rara vez se usa con intenciones malévolas; "
 "hacerlo no es tarea fácil, y es un muy mal visto uso de su fuerza.\n"
 "\n"
-"Todas aquellas capaces de hacerlo son más o menos llamadas 'hechiceras' por "
+"Todas aquellas capaces de hacerlo son más o menos llamadas «hechiceras» por "
 "las demás razas; y ciertamente son capaces de hacer su papel."
 
 #. [unit_type]: id=Elvish Sylph, race=elf
@@ -1662,11 +1657,10 @@ msgstr "Limpia-niebla"
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
-msgstr "Jinete de gran lobo"
+msgstr "Jinete de lobo terrible"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "‘Dire wolves’ differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1679,17 +1673,17 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts’ paws into a most "
 "deadly stroke."
 msgstr ""
-"Los 'grandes lobos' se diferencian de la variedad común sólo en el tamaño y "
-"en el color. Normalmente alcanzan una altura mayor que la del lomo de un "
-"caballo y tienen un apetito consecuente con su tamaño. Sólo un loco iría a "
-"su encuentro. Los goblins, con un gran coste para ellos mismos, han "
-"conseguido domesticarlos y usarlos como montura.\n"
+"Los «lobos terribles» se diferencian de la variedad común sólo en el tamaño "
+"y color. Normalmente alcanzan una altura que superior a la de un caballo y "
+"tienen un apetito consecuente con su tamaño. Sólo un loco iría a su "
+"encuentro. Los goblins, con un gran coste para ellos mismos, han conseguido "
+"domesticarlos y usarlos como montura.\n"
 "\n"
-"Las garras de un lobo no se cuentan normalmente entre las armas naturales "
-"más peligrosas que poseen estas bestias, pero en unas bestias de su tamaño, "
-"son más gruesas y largas que clavos de acero. Sus jinetes untan las "
-"delanteras con veneno, uno no muy diferente del que usan los asesinos orcos, "
-"haciendo que un ataque de las garras de estas bestias sea un golpe mortal."
+"Las garras de un lobo habitualmente no se cuentan entre las armas naturales "
+"más peligrosas, pero en unas bestias de su tamaño, son más gruesas y largas "
+"que clavos de acero. Sus jinetes untan las delanteras con veneno, uno no muy "
+"diferente del que usan los asesinos orcos, haciendo que un ataque de las "
+"garras de estas bestias sea un golpe mortal."
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
@@ -1926,9 +1920,8 @@ msgstr ""
 #: data/core/units/humans/Loyalist_General.cfg:56
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:52
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:40
-#, fuzzy
 msgid "longsword"
-msgstr "espada"
+msgstr "espada larga"
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:45
@@ -2023,8 +2016,8 @@ msgstr ""
 "de elaborar engaños para mantener estas tropas leales incondicionalmente, "
 "firmemente en el servicio.\n"
 "      \n"
-"Los Paladines Completos por lo general no son tan temibles como los 'Grandes "
-"Caballeros' que comandan la mayoría de ejércitos, pero son luchadores de "
+"Los Paladines Completos por lo general no son tan temibles como los «Grandes "
+"Caballeros» que comandan la mayoría de ejércitos, pero son luchadores de "
 "primera clase, no obstante. Además, su sabiduría y piedad dan a estos "
 "guerreros monjes ciertas habilidades curiosas; un paladín es muy poderoso en "
 "la lucha contra cosas mágicas o antinaturales, y la mayoría tienen alguna "
@@ -2177,7 +2170,6 @@ msgstr "Duelista"
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:20
-#, fuzzy
 msgid ""
 "It is a peculiar custom of Wesnoth’s nobility that they typically enroll "
 "their sons into one of two orders of armigers, training them either in the "
@@ -2195,8 +2187,8 @@ msgstr ""
 "a sus hijos en una de las dos órdenes de escuderos, para entrenarlos en el "
 "arte de la equitación o la esgrima. Los duelistas reciben este nombre debido "
 "a una práctica, por desgracia muy común entre los jóvenes aristócratas, para "
-"los que la ofensa de un insulto real o imaginado les incita a hacer una "
-"imprudente demostración de sus derechos de nacimiento.\n"
+"los que la ofensa, sea de un insulto real o imaginado, les incita a hacer "
+"una imprudente demostración de sus derechos de nacimiento.\n"
 "\n"
 "Los duelistas experimentados, que normalmente parecen nobles, aunque no "
 "siempre lo sean de nacimiento, llevan con ellos una pequeña ballesta "
@@ -2596,9 +2588,8 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:37
-#, fuzzy
 msgid "flail"
-msgstr "cola"
+msgstr "mangual"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
@@ -2857,8 +2848,8 @@ msgid ""
 "SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
-"Los magos de plata están en armonía con su naturaleza mágica y son altamente "
-"resistentes a daños de naturaleza no física."
+" Los magos de plata están en armonía con su naturaleza mágica y son "
+"altamente resistentes a daños de naturaleza no física."
 
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:24
@@ -3212,7 +3203,7 @@ msgid ""
 "their feet, and good with knives. They happily employ less-than-honorable "
 "tactics in combat, seeing little merit in a ‘fair fight’."
 msgstr ""
-"Desde tiempos inmemoriales, los miembros de los distintos 'gremios' de "
+"Desde tiempos inmemoriales, los miembros de los distintos «gremios» de "
 "rateros surgidos en las grandes ciudades han seguido la curiosa costumbre de "
 "blanquear su pelo con lima hasta que éste adquiría un tono azul claro. Es un "
 "acto audaz, ya que su profesión a menudo profundiza en actividades de dudosa "
@@ -3801,9 +3792,8 @@ msgstr "cola"
 
 #. [unit_type]: id=Fire Guardian, race=monster
 #: data/core/units/monsters/Fire_Guardian.cfg:4
-#, fuzzy
 msgid "Fire Guardian"
-msgstr "Dragón de fuego"
+msgstr "Guardián de fuego"
 
 #. [unit_type]: id=Fire Guardian, race=monster
 #: data/core/units/monsters/Fire_Guardian.cfg:28
@@ -3816,9 +3806,8 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Guardian.cfg:31
-#, fuzzy
 msgid "fire claws"
-msgstr "garras"
+msgstr "garras ardientes"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
@@ -3856,7 +3845,7 @@ msgstr "bola de barro"
 #. [unit_type]: id=Giant Rat, race=monster
 #: data/core/units/monsters/Giant_Rat.cfg:4
 msgid "Giant Rat"
-msgstr ""
+msgstr "Rata gigante"
 
 #. [unit_type]: id=Giant Rat, race=monster
 #: data/core/units/monsters/Giant_Rat.cfg:18
@@ -3981,9 +3970,8 @@ msgstr ""
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
-#, fuzzy
 msgid "Water Serpent"
-msgstr "Serpiente marina"
+msgstr "Serpiente acuática"
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:39
@@ -4015,17 +4003,13 @@ msgstr ""
 
 #. [unit_type]: id=Direwolf, race=wolf
 #: data/core/units/monsters/Wolf_Dire.cfg:4
-#, fuzzy
-#| msgid "Direwolf Rider"
 msgid "Direwolf"
-msgstr "Jinete de gran lobo"
+msgstr "Lobo terrible"
 
 #. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf_Great.cfg:4
-#, fuzzy
-#| msgid "Great Troll"
 msgid "Great Wolf"
-msgstr "Gran troll"
+msgstr "Gran lobo"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -4069,7 +4053,7 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Fighter.cfg:152
 msgid "Nagini Fighter"
-msgstr "Luchadora nagani"
+msgstr "Luchadora nagini"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
@@ -4095,7 +4079,7 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:94
 msgid "Nagini Myrmidon"
-msgstr "Mirmidona nagani"
+msgstr "Mirmidona nagini"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:96
@@ -4113,7 +4097,7 @@ msgid ""
 "only are they potent enemies on any open terrain, but their ability to swim "
 "allows them a deadly mobility."
 msgstr ""
-"A las maestras más experimentadas con la espada entre las nagani se les "
+"A las maestras más experimentadas con la espada entre las naginis se les "
 "inicia en la casta del Mirmidón, maestras del arte de la lucha con dos "
 "espadas. Golpean tan rápido como las serpientes a las que se asemejan, y "
 "brincan con gracia evitando los ataques. No sólo son unas poderosas enemigas "
@@ -4146,7 +4130,7 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:91
 msgid "Nagini Warrior"
-msgstr "Guerrera nagani"
+msgstr "Guerrera nagini"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:93
@@ -4166,8 +4150,8 @@ msgid ""
 "dodge from blows. This makes them potent on land, but the friction of water "
 "greatly impedes their ability to do this."
 msgstr ""
-"Muchas de las jóvenes guerreras nagani suspiran por que llegue el día en que "
-"se hagan merecedoras de su segunda espada. Sus prácticas marciales en la "
+"Muchas de las jóvenes guerreras naginis suspiran por que llegue el día en "
+"que se hagan merecedoras de su segunda espada. Sus prácticas marciales en la "
 "lucha con dos hojas no se parece en nada a aquella de los orcos u otras "
 "razas, ya que han comenzado a aprender el arte de usar su forma enroscada a "
 "su favor, retorciéndose y girando para esquivar los golpes. Esto las hace "
@@ -4740,7 +4724,7 @@ msgstr ""
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:4
 msgid "Ghast"
-msgstr ""
+msgstr "Ghast"
 
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:20
@@ -4752,6 +4736,12 @@ msgid ""
 "flesh straight from their foes. Once their enemy is defeated, they eat the "
 "rest of the body, gaining strength in the process."
 msgstr ""
+"Un ghast es una criatura producto de los miedos más profundos de los "
+"hombres. Al contrario que con sus primos menores, los necrófagos, los ghast "
+"no tienen la paciencia necesaria para esperar a que sus víctimas mueran "
+"envenenadas para devorar sus cuerpos. Atacan con sus enormes bocas, "
+"arrancando directamente la carne a sus enemigos. Una vez derrotados, "
+"engullen los restos, lo que les da mayor fuerza."
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
@@ -4798,7 +4788,7 @@ msgid ""
 "— a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
 msgstr ""
-"El necrófago, o 'devorador de lo muerto', es un ser monstruoso y corpulento, "
+"El necrófago, o «devorador de lo muerto», es un ser monstruoso y corpulento, "
 "que sólo se parece vagamente a un hombre. Parecen estar bastante "
 "descompuestos, pese a su capacidad de moverse; se encuentran saturados de "
 "enfermedades y venenos de la sangre, y su hedor está a la altura. "
@@ -5042,7 +5032,7 @@ msgid ""
 "This ability, in all aspects, is the first step towards cheating death of "
 "its ultimate prize."
 msgstr ""
-"Uno de los pináculos de lo que se conoce como 'magia negra' es el arte de la "
+"Uno de los pináculos de lo que se conoce como «magia negra» es el arte de la "
 "necromancia, la terrible habilidad de despertar a los muertos con falsa "
 "vida. Este descubrimiento, por sí mismo, causó la condena de la magia negra "
 "por parte de la humanidad, debido a las cosas de pesadilla que ha convertido "
@@ -5109,7 +5099,7 @@ msgstr ""
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
-msgstr "Chocobo"
+msgstr "Chocobo esquelético"
 
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:24
@@ -5154,7 +5144,7 @@ msgid ""
 "monsters are much faster than the rest of their kind, both on foot and with "
 "their blades."
 msgstr ""
-"En vida, las abominaciones conocidas como 'hojas de la muerte' eran maestros "
+"En vida, las abominaciones conocidas como «hojas de la muerte» eran maestros "
 "en el combate, soldados que eran tan ágiles como mortales. Sus nuevos "
 "señores, reconociendo esto, los equipan para que puedan usar las habilidades "
 "que tuvieron en vida. Aunque son frágiles, estos monstruos son mucho más "
@@ -5326,7 +5316,7 @@ msgid ""
 "encountering one is that it is likely only the harbinger of a much more "
 "dangerous force that will follow in its wake."
 msgstr ""
-"A veces conocidos como 'hombres huecos', los espectros actúan como el brazo "
+"A veces conocidos como «hombres huecos», los espectros actúan como el brazo "
 "derecho del poder de sus amos. Resultan aterradores para los vivos, pues son "
 "tan mortíferos como aparentan.\n"
 "\n"
@@ -5460,7 +5450,6 @@ msgstr ""
 #~ msgid "long sword"
 #~ msgstr "espada"
 
-#, fuzzy
 #~| msgid "Elder Mage"
 #~ msgid "Elder Falcon"
 #~ msgstr "Mago anciano"
