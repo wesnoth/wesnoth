@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2011-08-27 10:13+0300\n"
+"POT-Creation-Date: 2012-01-03 10:39+0100\n"
 "PO-Revision-Date: 2011-11-24 17:33+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -395,27 +395,16 @@ msgstr ""
 "bersama dengan B<--multiplayer>  seperti yang dijelaskan di bawah ini. Hanya "
 "ini pilihan tambahan dapat mengikuti B<--multiplayer>."
 
-#. type: TP
-#: ../../doc/man/wesnoth.6:139
-#, no-wrap
-msgid "B<--new-syntax>"
-msgstr "B<--new-syntax>"
-
-#. type: Plain text
-#: ../../doc/man/wesnoth.6:142
-msgid "enables the new campaign syntax parsing."
-msgstr "memungkinkan penguraian kampanye sintaksis baru."
-
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:142
+#: ../../doc/man/wesnoth.6:139
 #, no-wrap
 msgid "B<--no-delay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:146
+#: ../../doc/man/wesnoth.6:143
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
@@ -425,64 +414,64 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:146
+#: ../../doc/man/wesnoth.6:143
 #, no-wrap
 msgid "B<--nocache>"
 msgstr "B<--nocache>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:149
+#: ../../doc/man/wesnoth.6:146
 msgid "disables caching of game data."
 msgstr "menghilangkan cache pada data game."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:149
+#: ../../doc/man/wesnoth.6:146
 #, no-wrap
 msgid "B<--nomusic>"
 msgstr "B<--nomusic>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:152
+#: ../../doc/man/wesnoth.6:149
 msgid "runs the game without music."
 msgstr "jalankan permainan tanpa musik."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:152
+#: ../../doc/man/wesnoth.6:149
 #, no-wrap
 msgid "B<--nosound>"
 msgstr "B<--nosound>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:155
+#: ../../doc/man/wesnoth.6:152
 msgid "runs the game without sounds and music."
 msgstr "jalankan permainan tanpa suara latar dan musik."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:155
+#: ../../doc/man/wesnoth.6:152
 #, no-wrap
 msgid "B<--path>"
 msgstr "B<--path>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:155
 msgid "prints the name of the game data directory and exits."
 msgstr "mencetak nama direktori data game dan keluar."
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:155
 #, no-wrap
 msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
 msgstr "B<--preprocess, -p[=E<lt>menetapkan1E<gt>,E<lt>menetapkan2E<gt>,...] E<lt>file/folderE<gt> E<lt>direktori targetE<gt>>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:172
+#: ../../doc/man/wesnoth.6:169
 msgid ""
 "preprocesses a specified file/folder. The file(s) will be written in "
 "specified target directory: a plain cfg file and a processed cfg file. If a "
@@ -508,13 +497,13 @@ msgstr ""
 "data/campaign/camp ~/result>"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:172
+#: ../../doc/man/wesnoth.6:169
 #, no-wrap
 msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
 msgstr "B<--preprocess-input-macros E<lt>file sumberE<gt>>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:176
+#: ../../doc/man/wesnoth.6:173
 msgid ""
 "used only by the '--preprocess' command.  Specifies a file that contains "
 "[preproc_define]s to be included before preprocessing."
@@ -523,13 +512,13 @@ msgstr ""
 "[preproc_define]s untuk dimasukkan sebelum preprocessing."
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:176
+#: ../../doc/man/wesnoth.6:173
 #, no-wrap
 msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
 msgstr "B<--preprocess-output-macros [E<lt>file targetE<gt>]>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:182
+#: ../../doc/man/wesnoth.6:179
 msgid ""
 "used only by the '--preprocess' command.  Will output all preprocessed "
 "macros in the target file. If the file is not specified the output will be "
@@ -543,27 +532,27 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:182
+#: ../../doc/man/wesnoth.6:179
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:186
+#: ../../doc/man/wesnoth.6:183
 msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgstr "mengatur resolusi layar. Contoh: B<-r 800x600>"
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:186
+#: ../../doc/man/wesnoth.6:183
 #, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
 msgstr "B<-s,\\ --server\\ [host]>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:190
+#: ../../doc/man/wesnoth.6:187
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
@@ -573,91 +562,91 @@ msgstr ""
 "server server.wesnoth.org>"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:190
+#: ../../doc/man/wesnoth.6:187
 #, no-wrap
 msgid "B<--strict-validation>"
 msgstr "B<--strict-validation>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:193
+#: ../../doc/man/wesnoth.6:190
 msgid "validation errors are treated as fatal errors."
 msgstr "kesalahan pengesahan diperlakukan sebagai kesalahan fatal."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:193
+#: ../../doc/man/wesnoth.6:190
 #, no-wrap
 msgid "B<-t, --test>"
 msgstr "B<-t, --test>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:193
 msgid "runs the game in a small test scenario."
 msgstr "jalankan permainan pada pengujian skenario kecil-kecilan."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--validcache>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:199
+#: ../../doc/man/wesnoth.6:196
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr "berasumsi bahwa cache sah. (berbahaya)"
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:199
+#: ../../doc/man/wesnoth.6:196
 #, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:202
+#: ../../doc/man/wesnoth.6:199
 msgid "shows the version number and exits."
 msgstr "menunjukkan nomor versi dan keluar."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:202
+#: ../../doc/man/wesnoth.6:199
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:205
+#: ../../doc/man/wesnoth.6:202
 msgid "runs the game in windowed mode."
 msgstr "jalankan game di dalam gaya window."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:205
+#: ../../doc/man/wesnoth.6:202
 #, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--with-replay>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:210
+#: ../../doc/man/wesnoth.6:207
 msgid "replays the game loaded with the B<--load> option."
 msgstr "mainkan ulang game yang telah disimpan dengan B<--load> pilihan."
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:211
+#: ../../doc/man/wesnoth.6:208
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Pilihan untuk --multipemain"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:218
+#: ../../doc/man/wesnoth.6:215
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -669,28 +658,28 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:218
+#: ../../doc/man/wesnoth.6:215
 #, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
 msgstr "B<--ai_config>I<number>B<=>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:221
+#: ../../doc/man/wesnoth.6:218
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr "memilih konfigurasi file memuat kembali pengontrol AI pada sisi ini."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:221
+#: ../../doc/man/wesnoth.6:218
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
 msgstr "B<--algorithm>I<number>B<=>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:228
+#: ../../doc/man/wesnoth.6:225
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
@@ -700,28 +689,28 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:228
+#: ../../doc/man/wesnoth.6:225
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
 msgstr "B<--controller>I<number>B<=>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:234
+#: ../../doc/man/wesnoth.6:231
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr "memilih pengontrol. yang tersedia: B<Human> dan B<Ai>."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:234
+#: ../../doc/man/wesnoth.6:231
 #, no-wrap
 msgid "B<--era=>I<value>"
 msgstr "B<--era=>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:241
+#: ../../doc/man/wesnoth.6:238
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -733,14 +722,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:241
+#: ../../doc/man/wesnoth.6:238
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:245
+#: ../../doc/man/wesnoth.6:242
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -752,14 +741,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:245
+#: ../../doc/man/wesnoth.6:242
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:250
+#: ../../doc/man/wesnoth.6:247
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -769,14 +758,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:250
+#: ../../doc/man/wesnoth.6:247
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:256
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -789,14 +778,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:256
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:263
+#: ../../doc/man/wesnoth.6:260
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -806,14 +795,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:263
+#: ../../doc/man/wesnoth.6:260
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<number>B<=>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:265
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -823,26 +812,26 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:265
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:269
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr ""
 "mengatur jumlah giliran untuk skenario yang dipilih. Standarnya adalah B<50>."
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:273 ../../doc/man/wesnothd.6:265
+#: ../../doc/man/wesnoth.6:270 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "KELUAR "
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:276
+#: ../../doc/man/wesnoth.6:273
 msgid ""
 "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -854,20 +843,20 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:277 ../../doc/man/wesnothd.6:269
+#: ../../doc/man/wesnoth.6:274 ../../doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "PENGARANG"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:280
+#: ../../doc/man/wesnoth.6:277
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Ditulis oleh David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:282
+#: ../../doc/man/wesnoth.6:279
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -877,7 +866,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:284
+#: ../../doc/man/wesnoth.6:281
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -887,27 +876,27 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:286 ../../doc/man/wesnothd.6:276
+#: ../../doc/man/wesnoth.6:283 ../../doc/man/wesnothd.6:276
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Kunjungi halaman resmi kami di: http://www.wesnoth.org/"
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:287 ../../doc/man/wesnothd.6:277
+#: ../../doc/man/wesnoth.6:284 ../../doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "HAK CIPTA"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:290 ../../doc/man/wesnothd.6:280
+#: ../../doc/man/wesnoth.6:287 ../../doc/man/wesnothd.6:280
 msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Hak Cipta \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:293 ../../doc/man/wesnothd.6:283
+#: ../../doc/man/wesnoth.6:290 ../../doc/man/wesnothd.6:283
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -920,14 +909,14 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:294 ../../doc/man/wesnothd.6:284
+#: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "KUNJUNGI JUGA"
 
 # type: TH
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:296
+#: ../../doc/man/wesnoth.6:293
 msgid "B<wesnothd>(6)."
 msgstr "B<wesnothd>(6)."
 
@@ -1827,3 +1816,9 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+#~ msgid "B<--new-syntax>"
+#~ msgstr "B<--new-syntax>"
+
+#~ msgid "enables the new campaign syntax parsing."
+#~ msgstr "memungkinkan penguraian kampanye sintaksis baru."

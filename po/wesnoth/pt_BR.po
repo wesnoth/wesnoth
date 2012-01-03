@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-19 15:14+0100\n"
+"POT-Creation-Date: 2012-01-03 10:39+0100\n"
 "PO-Revision-Date: 2011-10-10 22:59-0300\n"
 "Last-Translator: Filipe Borges <fqborges@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -55,31 +55,22 @@ msgid "Local time of day area lighting"
 msgstr "Iluminação pelo período do dia local"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:40
-#, fuzzy
-#| msgid "Local time of day light effect (use more memory)."
-msgid "Custom lighting for local time of day areas (uses more memory)"
-msgstr ""
-"Efeito de iluminação pela período do dia localizado por hexágono (usa mais "
-"memória)."
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:47
+#: data/advanced_preferences.cfg:46
 msgid "Show titlescreen animation"
 msgstr "Ver Animação da Tela Inicial"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:54
+#: data/advanced_preferences.cfg:53
 msgid "Show combat"
 msgstr "Mostrar Combate"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:61
+#: data/advanced_preferences.cfg:60
 msgid "Ping timeout"
 msgstr "Tempo Limite de Ping"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:62
+#: data/advanced_preferences.cfg:61
 #, fuzzy
 #| msgid ""
 #| "Number of seconds to wait for a ping reply before we time out. Disable "
@@ -92,58 +83,58 @@ msgstr ""
 "0 para Desabilitado."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:72
+#: data/advanced_preferences.cfg:71
 #, fuzzy
 #| msgid "Accept whisper messages from friends only"
 msgid "Accept whispers from friends only"
 msgstr "Aceitar mensagens sussurradas somente de amigos"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:79
+#: data/advanced_preferences.cfg:78
 #, fuzzy
 #| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open whisper windows in lobby"
 msgstr "Abrir automaticamente janelas de sussuros na sala de espera"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:85
 #, fuzzy
 #| msgid "Group players in lobby"
 msgid "Group players in lobby"
 msgstr "Agrupar jogadores na sala de espera"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:93
+#: data/advanced_preferences.cfg:92
 #, fuzzy
 #| msgid "Lobby sounds"
 msgid "Lobby sounds"
 msgstr "Sons na sala de espera"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:100
+#: data/advanced_preferences.cfg:99
 #, fuzzy
 #| msgid "Disable notifications"
 msgid "Disable notifications"
 msgstr "Desabilitar notificações."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:107
+#: data/advanced_preferences.cfg:106
 msgid "Reverse time graphics"
 msgstr "Gráficos do Tempo Invertidos"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:108
+#: data/advanced_preferences.cfg:107
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 "Escolhe se o sol move-se no sentido esquerda/direita ou direita/esquerda"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:115
+#: data/advanced_preferences.cfg:114
 msgid "Follow unit actions"
 msgstr "Acompanhar Ações de Unidade"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:116
+#: data/advanced_preferences.cfg:115
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
@@ -152,14 +143,14 @@ msgstr ""
 "movimento ou a ação é animado"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:132
+#: data/advanced_preferences.cfg:131
 #, fuzzy
 #| msgid "Chat message aging"
 msgid "Chat message aging"
 msgstr "Tempo máximo de mensagem no chat"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:133
+#: data/advanced_preferences.cfg:132
 #, fuzzy
 #| msgid ""
 #| "Number of minutes to wait before clearing an ingame chat message. Disable "
@@ -172,125 +163,125 @@ msgstr ""
 "Desabilitado."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:143
+#: data/advanced_preferences.cfg:142
 #, fuzzy
 #| msgid "Use 12-hour clock format"
 msgid "Use 12-hour clock format"
 msgstr "Usar formato horário de 12 horas"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:150
+#: data/advanced_preferences.cfg:149
 #, fuzzy
 #| msgid "Confirm loading of saves from a different version"
 msgid "Confirm loading of saves from a different version"
 msgstr "Confirmar ao carregar jogos salvos de outra versão"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:156
 msgid "Show all unit types in help"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:158
+#: data/advanced_preferences.cfg:157
 msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:166
+#: data/advanced_preferences.cfg:165
 msgid "Joystick support"
 msgstr "Suporte a Controle (Joystick)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:173
+#: data/advanced_preferences.cfg:172
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Controle: Número do Controle da Rolagem Horizontal (Scroll X)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:183
+#: data/advanced_preferences.cfg:182
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Controle: Número do Eixo da Rolagem Horizontal (Scroll X)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:193
+#: data/advanced_preferences.cfg:192
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Controle: Número do Controle da Rolagem Horizontal (Scroll Y)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:203
+#: data/advanced_preferences.cfg:202
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Controle: Número do Eixo da Rolagem Horizontal (Scroll X)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:213
+#: data/advanced_preferences.cfg:212
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Controle: Deadzone do controle da Rolagem (Scroll)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:223
+#: data/advanced_preferences.cfg:222
 #, fuzzy
 #| msgid "Joystick: number of the cursor X-axis joystick"
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Controle: Número do Controle do Cursor Horizontal (X)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:233
+#: data/advanced_preferences.cfg:232
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Controle: Número do Eixo do Cursor Horizontal (X)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:243
+#: data/advanced_preferences.cfg:242
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Controle: Número do Controle do Cursor Vertical (Y)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:253
+#: data/advanced_preferences.cfg:252
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Controle: Número do Eixo do Cursor Horizontal (Y)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:263
+#: data/advanced_preferences.cfg:262
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Controle: Deadzone do controle do Cursor"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:273
+#: data/advanced_preferences.cfg:272
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Controle: Número do Controle do Movimento X do Mouse"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:283
+#: data/advanced_preferences.cfg:282
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Controle: Número do Eixo do Movimento X do Mouse"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:293
+#: data/advanced_preferences.cfg:292
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Controle: Número do Controle do Movimento Y do Mouse"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:303
+#: data/advanced_preferences.cfg:302
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Controle: Número do Eixo do Movimento Y do Mouse"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:313
+#: data/advanced_preferences.cfg:312
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Controle: Deadzone dos Eixos de Controle do Mouse"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:323
+#: data/advanced_preferences.cfg:322
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Controle: Número do Controle do Eixo Acelerador (Thrust Axis)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:333
+#: data/advanced_preferences.cfg:332
 msgid "Joystick: number of the thrust axis"
 msgstr "Controle: Número do Eixo Acelerador (Thrust Axix)"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:343
+#: data/advanced_preferences.cfg:342
 msgid "Joystick: deadzone of the thruster"
 msgstr "Controle: Deadzone do Acelerador (Thruster)"
 
@@ -302,118 +293,9 @@ msgstr "RCA AI"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
-#: data/lua/wml-tags.lua:828 src/actions.cpp:1492
+#: data/lua/wml-tags.lua:831 src/actions.cpp:1492
 msgid "poisoned"
 msgstr "envenenado"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:43
-msgid "TestCamp"
-msgstr "CampTeste"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:45
-msgid "Test campaign used to check if new campaign syntax is working."
-msgstr ""
-"Campanha de teste usada para checar se a nova sintaxe de campanha está "
-"funcionando"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:46
-msgid "(Easy)"
-msgstr "(Fácil)"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:46
-msgid "Soldier"
-msgstr "Soldado"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:47
-msgid "(Normal)"
-msgstr "(Normal)"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:47
-msgid "Lord"
-msgstr "Lorde"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:48
-msgid "(Hard)"
-msgstr "(Difícil)"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:48
-msgid "High Lord"
-msgstr "Grande lorde"
-
-#. [about]
-#: data/campaigns/test_campaign/_main.cfg:52
-msgid "Test campaign test [about] entry"
-msgstr "Campanha de teste informações [sobre] de teste"
-
-#. [scenario]: id=01_Grass
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:4
-msgid "Test campaign - first scenario (grass)"
-msgstr "Campanha de teste - primeiro cenário (grama)"
-
-#. [side]: id=Alpha, type=Elvish Fighter
-#. [side]: id=Bravo, type=Elvish Archer
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:24
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:41
-msgid "Players"
-msgstr "Jogadores"
-
-#. [side]: id=Charlie, type=Orcish Grunt
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:53
-msgid "Enemies"
-msgstr "Inimigos"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:73
-msgid "Passed test color"
-msgstr "Cor de teste que passou"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:80
-msgid "Failed test color"
-msgstr "Cor de teste que falhou"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
-msgid "Difficulty: Easy"
-msgstr "Dificuldade: Fácil"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:90
-msgid "Difficulty: Normal"
-msgstr "Dificuldade: Normal"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:93
-msgid "Difficulty: Hard"
-msgstr "Dificuldade: Difícil"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:100
-msgid "Main campaign define"
-msgstr "Main campaign define"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:111
-msgid "Extra campaign define"
-msgstr "Extra campaign define"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:122
-msgid "Multiplayer define"
-msgstr "Multiplayer define"
-
-#. [objective]: condition=win
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
-msgid "Defeat enemy leader"
-msgstr "Derrote o(s) líder(es) inimigo(s)"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -501,232 +383,232 @@ msgid "Chinese Translation"
 msgstr "Tradução para o Chinês"
 
 #. [about]
-#: data/core/about.cfg:1396
+#: data/core/about.cfg:1402
 msgid "Chinese (Taiwan) Translation"
 msgstr "Tradução para o Chinês"
 
 #. [about]
-#: data/core/about.cfg:1406
+#: data/core/about.cfg:1412
 msgid "Croatian Translation"
 msgstr "Tradução para o Croata"
 
 #. [about]
-#: data/core/about.cfg:1413
+#: data/core/about.cfg:1419
 msgid "Czech Translation"
 msgstr "Tradução para o Checo"
 
 #. [about]
-#: data/core/about.cfg:1473
+#: data/core/about.cfg:1479
 msgid "Danish Translation"
 msgstr "Tradução para o Dinamarquês"
 
 #. [about]
-#: data/core/about.cfg:1504
+#: data/core/about.cfg:1510
 msgid "Dutch Translation"
 msgstr "Tradução para o Holandês"
 
 #. [about]
-#: data/core/about.cfg:1568
+#: data/core/about.cfg:1574
 msgid "English (GB) Translation"
 msgstr "Tradução para o Inglês Britânico"
 
 #. [about]
-#: data/core/about.cfg:1590
+#: data/core/about.cfg:1596
 msgid "English (Shaw) Translation"
 msgstr "Tradução para o Inglês Britânico"
 
 #. [about]
-#: data/core/about.cfg:1614
+#: data/core/about.cfg:1620
 msgid "Esperanto Translation"
 msgstr "Tradução para o Esperanto"
 
 #. [about]
-#: data/core/about.cfg:1633
+#: data/core/about.cfg:1639
 msgid "Estonian Translation"
 msgstr "Tradução para o Estonês"
 
 #. [about]
-#: data/core/about.cfg:1643
+#: data/core/about.cfg:1649
 msgid "Filipino Translation"
 msgstr "Tradução para o Filipino"
 
 #. [about]
-#: data/core/about.cfg:1653
+#: data/core/about.cfg:1659
 msgid "Finnish Translation"
 msgstr "Tradução para o Finlandês"
 
 #. [about]
-#: data/core/about.cfg:1699
+#: data/core/about.cfg:1705
 msgid "French Translation"
 msgstr "Tradução para o Francês"
 
 #. [about]
-#: data/core/about.cfg:1858
+#: data/core/about.cfg:1864
 msgid "Friulian Translation"
 msgstr "Tradução para o Filipino"
 
 #. [about]
-#: data/core/about.cfg:1865
+#: data/core/about.cfg:1871
 msgid "Galician Translation"
 msgstr "Tradução para o Galício"
 
 #. [about]
-#: data/core/about.cfg:1901
+#: data/core/about.cfg:1907
 msgid "German Translation"
 msgstr "Tradução para o Alemão"
 
 #. [about]
-#: data/core/about.cfg:1968
+#: data/core/about.cfg:1974
 msgid "Greek Translation"
 msgstr "Tradução para o Grego"
 
 #. [about]
-#: data/core/about.cfg:2005
+#: data/core/about.cfg:2011
 msgid "Hebrew Translation"
 msgstr "Tradução para o Hebreu"
 
 #. [about]
-#: data/core/about.cfg:2018
+#: data/core/about.cfg:2024
 msgid "Hungarian Translation"
 msgstr "Tradução para o Húngaro"
 
 #. [about]
-#: data/core/about.cfg:2079
+#: data/core/about.cfg:2085
 msgid "Icelandic Translation"
 msgstr "Tradução para o Islandês"
 
 #. [about]
-#: data/core/about.cfg:2089
+#: data/core/about.cfg:2095
 msgid "Indonesian Translation"
 msgstr "Tradução para o Indonésio"
 
 #. [about]
-#: data/core/about.cfg:2112
+#: data/core/about.cfg:2118
 msgid "Irish Translation"
 msgstr "Tradução para o Irlandês"
 
 #. [about]
-#: data/core/about.cfg:2119
+#: data/core/about.cfg:2125
 msgid "Italian Translation"
 msgstr "Tradução para o Italiano"
 
 #. [about]
-#: data/core/about.cfg:2160
+#: data/core/about.cfg:2166
 msgid "Japanese Translation"
 msgstr "Tradução para o Japonês"
 
 #. [about]
-#: data/core/about.cfg:2228
+#: data/core/about.cfg:2234
 msgid "Korean Translation"
 msgstr "Tradução para o Coreano"
 
 #. [about]
-#: data/core/about.cfg:2236
+#: data/core/about.cfg:2242
 msgid "Latin Translation"
 msgstr "Tradução para o Latin"
 
 #. [about]
-#: data/core/about.cfg:2263
+#: data/core/about.cfg:2269
 msgid "Latvian Translation"
 msgstr "Tradução para o Latin"
 
 #. [about]
-#: data/core/about.cfg:2274
+#: data/core/about.cfg:2280
 msgid "Lithuanian Translation"
 msgstr "Tradução para o Lituanês"
 
 #. [about]
-#: data/core/about.cfg:2296
+#: data/core/about.cfg:2302
 msgid "Macedonian Translation"
 msgstr "Tradução para o Macedônio"
 
 #. [about]
-#: data/core/about.cfg:2303
+#: data/core/about.cfg:2309
 msgid "Marathi Translation"
 msgstr "Tradução para o Marathi"
 
 #. [about]
-#: data/core/about.cfg:2312
+#: data/core/about.cfg:2318
 msgid "Norwegian Translation"
 msgstr "Tradução para o Norueguês"
 
 #. [about]
-#: data/core/about.cfg:2337
+#: data/core/about.cfg:2343
 msgid "Old English Translation"
 msgstr "Tradução para o Inglês Antigo"
 
 #. [about]
-#: data/core/about.cfg:2346
+#: data/core/about.cfg:2352
 msgid "Polish Translation"
 msgstr "Tradução para o Polonês"
 
 #. [about]
-#: data/core/about.cfg:2386
+#: data/core/about.cfg:2392
 msgid "Portuguese Translation"
 msgstr "Tradução para o Português"
 
 #. [about]
-#: data/core/about.cfg:2393
+#: data/core/about.cfg:2399
 msgid "Portuguese (Brazil) Translation"
 msgstr "Tradução para o Português do Brasil"
 
 #. [about]
-#: data/core/about.cfg:2435
+#: data/core/about.cfg:2441
 msgid "Romanian Translation"
 msgstr "Tradução para o Romano"
 
 #. [about]
-#: data/core/about.cfg:2443
+#: data/core/about.cfg:2449
 msgid "Russian Translation"
 msgstr "Tradução para o Russo"
 
 #. [about]
-#: data/core/about.cfg:2525
+#: data/core/about.cfg:2531
 msgid "Serbian Translation"
 msgstr "Tradução para o Sérvio"
 
 #. [about]
-#: data/core/about.cfg:2544
+#: data/core/about.cfg:2550
 msgid "Slovak Translation"
 msgstr "Tradução para o Eslovaco"
 
 #. [about]
-#: data/core/about.cfg:2570
+#: data/core/about.cfg:2576
 msgid "Slovenian Translation"
 msgstr "Tradução para o Eslovênio"
 
 #. [about]
-#: data/core/about.cfg:2586
+#: data/core/about.cfg:2592
 msgid "Spanish Translation"
 msgstr "Tradução para o Espanhol"
 
 #. [about]
-#: data/core/about.cfg:2656
+#: data/core/about.cfg:2673
 msgid "Swedish Translation"
 msgstr "Tradução para o Sueco"
 
 #. [about]
-#: data/core/about.cfg:2697
+#: data/core/about.cfg:2714
 msgid "Turkish Translation"
 msgstr "Tradução para o Turco"
 
 #. [about]
-#: data/core/about.cfg:2719
+#: data/core/about.cfg:2736
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Tradução para o Valenciano (Catalão do sul)"
 
 #. [about]
-#: data/core/about.cfg:2732
+#: data/core/about.cfg:2749
 msgid "Vietnamese Translation"
 msgstr "Tradução para o Vietnamita"
 
 #. [about]
-#: data/core/about.cfg:2751
+#: data/core/about.cfg:2768
 msgid "RACV’s Translation"
 msgstr "Tradução para o RACV (Valenciano)"
 
 #. [about]
-#: data/core/about.cfg:2758
+#: data/core/about.cfg:2775
 msgid "Bots"
 msgstr "Robôs"
 
@@ -3254,31 +3136,31 @@ msgstr ""
 "irão evitar vilas. Mesmo que ocupem uma vila, não receberão nenhum bonus "
 "defensivo dela, mas ainda serão curados."
 
-#: data/lua/wml-tags.lua:828 src/actions.cpp:1492
+#: data/lua/wml-tags.lua:831 src/actions.cpp:1492
 msgid "female^poisoned"
 msgstr "envenenada"
 
-#: data/lua/wml-tags.lua:830 src/actions.cpp:1497
+#: data/lua/wml-tags.lua:833 src/actions.cpp:1497
 msgid "female^slowed"
 msgstr "lenta"
 
-#: data/lua/wml-tags.lua:830 src/actions.cpp:1497
+#: data/lua/wml-tags.lua:833 src/actions.cpp:1497
 msgid "slowed"
 msgstr "lento"
 
-#: data/lua/wml-tags.lua:831 src/actions.cpp:1502
+#: data/lua/wml-tags.lua:834 src/actions.cpp:1502
 msgid "female^petrified"
 msgstr "petrificada"
 
-#: data/lua/wml-tags.lua:831 src/actions.cpp:1502
+#: data/lua/wml-tags.lua:834 src/actions.cpp:1502
 msgid "petrified"
 msgstr "petrificado"
 
-#: data/lua/wml-tags.lua:832
+#: data/lua/wml-tags.lua:835
 msgid "female^unhealable"
 msgstr "incurável"
 
-#: data/lua/wml-tags.lua:832
+#: data/lua/wml-tags.lua:835
 msgid "unhealable"
 msgstr "incurável"
 
@@ -3364,8 +3246,8 @@ msgstr "Terminar o Cenário"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:238
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:247
-#: data/themes/widescreen.cfg:268 src/menu_events.cpp:216 src/unit.cpp:2454
-#: src/unit.cpp:2633
+#: data/themes/widescreen.cfg:268 src/menu_events.cpp:216 src/unit.cpp:2450
+#: src/unit.cpp:2621
 msgid "HP"
 msgstr "HP"
 
@@ -4208,21 +4090,21 @@ msgstr "O mapa do jogo não pôde ser carregado: "
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game_controller.cpp:1195
+#: src/game_controller.cpp:1196
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "O seguintes extra teve erro e não pode ser carregado:"
 msgstr[1] "Os seguintes extras tiveram erros e não puderam ser carregados:"
 
-#: src/game_controller.cpp:1202
+#: src/game_controller.cpp:1203
 msgid "ERROR DETAILS:"
 msgstr "DETALHES DO ERRO:"
 
-#: src/game_controller.cpp:1236
+#: src/game_controller.cpp:1237
 msgid "Error loading game configuration files: '"
 msgstr "Erro carregando arquivo de configuração do jogo: '"
 
-#: src/game_controller.cpp:1237
+#: src/game_controller.cpp:1238
 msgid "' (The game will now exit)"
 msgstr "' (O programa vai terminar agora)"
 
@@ -4242,7 +4124,7 @@ msgstr "Debug: "
 msgid "Info: "
 msgstr "Info: "
 
-#: src/game_events.cpp:2376
+#: src/game_events.cpp:2379
 msgid "Invalid value in the result key for [end_level]"
 msgstr "Valor inválido na chave resultado para [end_level]"
 
@@ -6714,29 +6596,29 @@ msgstr "border_size deve estar entre 0.0 e 0.5."
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tipo de unidade desconhecido '$type|' enquanto gerava características"
 
-#: src/unit.cpp:2413 src/unit.cpp:2622 src/unit.cpp:2699
+#: src/unit.cpp:2409 src/unit.cpp:2610 src/unit.cpp:2686
 msgid " and "
 msgstr " e "
 
-#: src/unit.cpp:2424
+#: src/unit.cpp:2420
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2485
+#: src/unit.cpp:2481
 #, fuzzy
 #| msgid "Moves"
 msgid "moves"
 msgstr "Movimento"
 
-#: src/unit.cpp:2500 src/unit.cpp:2646
+#: src/unit.cpp:2496 src/unit.cpp:2634
 msgid "XP to advance"
 msgstr "XP para avançar"
 
-#: src/unit.cpp:2639
+#: src/unit.cpp:2627
 msgid " move"
 msgstr " movimento"
 
-#: src/unit.cpp:2654
+#: src/unit.cpp:2642
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 
@@ -6817,6 +6699,78 @@ msgstr "Esconder planos de $player"
 #: src/whiteboard/manager.cpp:1088
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
+
+#, fuzzy
+#~| msgid "Local time of day light effect (use more memory)."
+#~ msgid "Custom lighting for local time of day areas (uses more memory)"
+#~ msgstr ""
+#~ "Efeito de iluminação pela período do dia localizado por hexágono (usa "
+#~ "mais memória)."
+
+#~ msgid "TestCamp"
+#~ msgstr "CampTeste"
+
+#~ msgid "Test campaign used to check if new campaign syntax is working."
+#~ msgstr ""
+#~ "Campanha de teste usada para checar se a nova sintaxe de campanha está "
+#~ "funcionando"
+
+#~ msgid "(Easy)"
+#~ msgstr "(Fácil)"
+
+#~ msgid "Soldier"
+#~ msgstr "Soldado"
+
+#~ msgid "(Normal)"
+#~ msgstr "(Normal)"
+
+#~ msgid "Lord"
+#~ msgstr "Lorde"
+
+#~ msgid "(Hard)"
+#~ msgstr "(Difícil)"
+
+#~ msgid "High Lord"
+#~ msgstr "Grande lorde"
+
+#~ msgid "Test campaign test [about] entry"
+#~ msgstr "Campanha de teste informações [sobre] de teste"
+
+#~ msgid "Test campaign - first scenario (grass)"
+#~ msgstr "Campanha de teste - primeiro cenário (grama)"
+
+#~ msgid "Players"
+#~ msgstr "Jogadores"
+
+#~ msgid "Enemies"
+#~ msgstr "Inimigos"
+
+#~ msgid "Passed test color"
+#~ msgstr "Cor de teste que passou"
+
+#~ msgid "Failed test color"
+#~ msgstr "Cor de teste que falhou"
+
+#~ msgid "Difficulty: Easy"
+#~ msgstr "Dificuldade: Fácil"
+
+#~ msgid "Difficulty: Normal"
+#~ msgstr "Dificuldade: Normal"
+
+#~ msgid "Difficulty: Hard"
+#~ msgstr "Dificuldade: Difícil"
+
+#~ msgid "Main campaign define"
+#~ msgstr "Main campaign define"
+
+#~ msgid "Extra campaign define"
+#~ msgstr "Extra campaign define"
+
+#~ msgid "Multiplayer define"
+#~ msgstr "Multiplayer define"
+
+#~ msgid "Defeat enemy leader"
+#~ msgstr "Derrote o(s) líder(es) inimigo(s)"
 
 #~ msgid "Download"
 #~ msgstr "Baixar"

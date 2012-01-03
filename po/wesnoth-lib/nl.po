@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-05 16:25+0100\n"
+"POT-Creation-Date: 2012-01-03 10:40+0100\n"
 "PO-Revision-Date: 2011-12-08 23:33+0100\n"
 "Last-Translator: Koen Vervloesem <koen@vervloesem.eu>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -257,8 +257,7 @@ msgid "Desert Plants without Bones"
 msgstr "Woestijnbergen"
 
 #. [terrain_type]: id=windmill
-#. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:400 data/core/terrain.cfg:1279
+#: data/core/terrain.cfg:400
 msgid "Windmill"
 msgstr "Windmolen"
 
@@ -291,7 +290,6 @@ msgstr "Reuzenboom"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:464
-#| msgid "Great Tree"
 msgid "Dead Great Tree"
 msgstr "Dode Reuzenboom"
 
@@ -696,6 +694,7 @@ msgstr "Ongeldig"
 #. [terrain_type]: id=snow_village
 #. [terrain_type]: id=human_village_ruin
 #. [terrain_type]: id=city_village
+#. [terrain_type]: id=windmill_village
 #. [terrain_type]: id=city_village_wno
 #. [terrain_type]: id=hill_village
 #. [terrain_type]: id=snow-hill_village
@@ -718,16 +717,16 @@ msgstr "Ongeldig"
 #: data/core/terrain.cfg:1184 data/core/terrain.cfg:1199
 #: data/core/terrain.cfg:1212 data/core/terrain.cfg:1227
 #: data/core/terrain.cfg:1240 data/core/terrain.cfg:1253
-#: data/core/terrain.cfg:1266 data/core/terrain.cfg:1292
-#: data/core/terrain.cfg:1305 data/core/terrain.cfg:1318
-#: data/core/terrain.cfg:1331 data/core/terrain.cfg:1344
-#: data/core/terrain.cfg:1357 data/core/terrain.cfg:1370
-#: data/core/terrain.cfg:1385 data/core/terrain.cfg:1398
-#: data/core/terrain.cfg:1411 data/core/terrain.cfg:1424
-#: data/core/terrain.cfg:1437 data/core/terrain.cfg:1450
-#: data/core/terrain.cfg:1463 data/core/terrain.cfg:1478
-#: data/core/terrain.cfg:1491 data/core/terrain.cfg:1506
-#: data/core/terrain.cfg:2137
+#: data/core/terrain.cfg:1266 data/core/terrain.cfg:1279
+#: data/core/terrain.cfg:1292 data/core/terrain.cfg:1305
+#: data/core/terrain.cfg:1318 data/core/terrain.cfg:1331
+#: data/core/terrain.cfg:1344 data/core/terrain.cfg:1357
+#: data/core/terrain.cfg:1370 data/core/terrain.cfg:1385
+#: data/core/terrain.cfg:1398 data/core/terrain.cfg:1411
+#: data/core/terrain.cfg:1424 data/core/terrain.cfg:1437
+#: data/core/terrain.cfg:1450 data/core/terrain.cfg:1463
+#: data/core/terrain.cfg:1478 data/core/terrain.cfg:1491
+#: data/core/terrain.cfg:1506 data/core/terrain.cfg:2137
 msgid "Village"
 msgstr "Dorp"
 
@@ -1193,6 +1192,21 @@ msgstr "Onbegaanbaar"
 msgid "Unwalkable"
 msgstr "Onbegaanbaar"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=click_dismiss
+#. [button]: id=ok
+#. [button]: id=cancel
+#. [button]: id=close_window
+#: data/gui/default/widget/window_default.cfg:140
+#: data/gui/default/window/chat_log.cfg:121
+#: data/gui/default/window/gamestate_inspector.cfg:339
+#: data/gui/default/window/lobby_main.cfg:619
+#: data/gui/default/window/lobby_player_info.cfg:200
+#: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
+#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
+msgid "Close"
+msgstr "Sluiten"
+
 #. [label]
 #. [column]
 #: data/gui/default/window/addon_connect.cfg:40
@@ -1347,8 +1361,8 @@ msgstr "Veldtocht spelen"
 #: data/gui/default/window/simple_item_selector.cfg:146
 #: data/gui/default/window/unit_create.cfg:197
 #: data/gui/default/window/unit_create.cfg:198
-#: data/gui/default/window/wml_message.cfg:478
-#: data/gui/default/window/wml_message.cfg:707 src/construct_dialog.cpp:120
+#: data/gui/default/window/wml_message.cfg:485
+#: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:120
 #: src/construct_dialog.cpp:127 src/gui/dialogs/message.cpp:162
 #: src/gui/dialogs/message.cpp:169
 msgid "OK"
@@ -1363,6 +1377,42 @@ msgstr "Moelijkheid"
 #: data/gui/default/window/campaign_difficulty.cfg:77
 msgid "Select difficulty level:"
 msgstr ""
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:38
+#, fuzzy
+#| msgid "View Chat Log"
+msgid "Chat Log"
+msgstr "Chat-log bekijken"
+
+#. [label]
+#: data/gui/default/window/chat_log.cfg:56
+#, fuzzy
+#| msgid "Message:"
+msgid "Page:"
+msgstr "Bericht:"
+
+#. [slider]: id=page_number
+#: data/gui/default/window/chat_log.cfg:69
+msgid "Last"
+msgstr ""
+
+#. [button]: id=previous_page
+#. [button]: id=previous_tip
+#: data/gui/default/window/chat_log.cfg:79
+#: data/gui/default/window/title_screen.cfg:162
+msgid "Previous"
+msgstr "Vorige"
+
+#. [button]: id=next_tod
+#. [button]: id=next_page
+#. [button]: id=next_tip
+#: data/gui/default/window/chat_log.cfg:89
+#: data/gui/default/window/editor_settings.cfg:79
+#: data/gui/default/window/editor_settings.cfg:80
+#: data/gui/default/window/title_screen.cfg:177
+msgid "Next"
+msgstr "Volgende"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
@@ -1537,17 +1587,8 @@ msgstr "Editorinstellingen"
 msgid "Time of day lighting preset:"
 msgstr "Tijd van de dag verlichtingsstandaardinstelling"
 
-#. [button]: id=next_tod
-#. [button]: id=next_tip
-#: data/gui/default/window/editor_settings.cfg:79
-#: data/gui/default/window/editor_settings.cfg:80
-#: data/gui/default/window/title_screen.cfg:177
-msgid "Next"
-msgstr "Volgende"
-
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
-#| msgid "Custom lighting setting"
 msgid "Custom lighting settings"
 msgstr "Aangepaste verlichtingsinstelling"
 
@@ -1797,18 +1838,6 @@ msgstr "Type"
 msgid "Variable"
 msgstr "Variabele"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=cancel
-#. [button]: id=close_window
-#: data/gui/default/window/gamestate_inspector.cfg:339
-#: data/gui/default/window/lobby_main.cfg:619
-#: data/gui/default/window/lobby_player_info.cfg:200
-#: data/gui/default/window/message.cfg:133 src/construct_dialog.cpp:134
-#: src/mapgen_dialog.cpp:110 src/preferences_display.cpp:272
-msgid "Close"
-msgstr "Sluiten"
-
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:41
@@ -2018,7 +2047,6 @@ msgstr "Voeg toe als vriend"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:108
-#| msgid "Add As Ignore"
 msgid "Add to Ignores"
 msgstr "Voeg toe als genegeerd"
 
@@ -2107,7 +2135,6 @@ msgstr "Voeg toe als vriend"
 
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
-#| msgid "Add As Ignore"
 msgid "Add as Ignore"
 msgstr "Voeg toe als genegeerd"
 
@@ -2348,11 +2375,6 @@ msgid "Show Battle for Wesnoth help"
 msgstr ""
 
 #. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:162
-msgid "Previous"
-msgstr "Vorige"
-
-#. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:163
 msgid "Show previous tip of the day"
 msgstr "Toon vorige tip van de dag"
@@ -2499,19 +2521,19 @@ msgstr "Bestand verwijderen mislukt."
 msgid "Creation of the directory failed."
 msgstr "Map aanmaken mislukt."
 
-#: src/game_preferences.cpp:290
+#: src/game_preferences.cpp:315
 msgid "No server has been defined."
 msgstr "Er is geen server gedefinieerd."
 
-#: src/game_preferences.cpp:346
+#: src/game_preferences.cpp:395
 msgid "player"
 msgstr "speler"
 
-#: src/game_preferences.cpp:777
+#: src/game_preferences.cpp:837
 msgid "%H:%M"
 msgstr ""
 
-#: src/game_preferences.cpp:780
+#: src/game_preferences.cpp:840
 msgid "%I:%M %p"
 msgstr ""
 
@@ -2575,7 +2597,6 @@ msgid "Save password to preferences (plain text)"
 msgstr "Sla wachtwoord op in voorkeuren (in leesbare vorm)"
 
 #: src/game_preferences_display.cpp:187
-#| msgid "Set path to wesnothd"
 msgid "Set Path to wesnothd"
 msgstr "Stel pad naar wesnothd in"
 
@@ -2672,7 +2693,6 @@ msgid "Show unit idle animations"
 msgstr "Toon animatie inactieve eenheden"
 
 #: src/game_preferences_display.cpp:216
-#| msgid "Show Unit Idle Animations"
 msgid "Show unit standing animations"
 msgstr "Toon animaties inactieve eenheden"
 
@@ -2682,7 +2702,6 @@ msgstr "Animeer Kaart"
 
 #: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
 #: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
-#| msgid "SFX Volume:"
 msgid "Volume:"
 msgstr "Volume:"
 
@@ -3233,7 +3252,7 @@ msgstr ""
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:982
+#: src/gui/widgets/window.cpp:949 src/gui/widgets/window.cpp:989
 #: src/tests/gui/test_gui2.cpp:432
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Kon een dialoog niet laten zien, omdat het niet op het scherm paste."
@@ -3292,7 +3311,6 @@ msgid "Default Zoom"
 msgstr "Standaardzoom"
 
 #: src/hotkeys.cpp:66
-#| msgid "Toggle Full screen"
 msgid "Toggle Full Screen"
 msgstr "Volledig scherm aan/uit"
 
@@ -3349,7 +3367,6 @@ msgid "Toggle Grid"
 msgstr "Raster"
 
 #: src/hotkeys.cpp:82
-#| msgid "Mouse scrolling"
 msgid "Mouse Scrolling"
 msgstr "Schuiven met de muis"
 
@@ -3382,12 +3399,10 @@ msgid "Statistics"
 msgstr "Statistieken"
 
 #: src/hotkeys.cpp:92
-#| msgid "Host Networked Game"
 msgid "Pause Network Game"
 msgstr "Pauzeer Netwerkspel"
 
 #: src/hotkeys.cpp:93
-#| msgid "Host Networked Game"
 msgid "Continue Network Game"
 msgstr "Vervolg Netwerkspel"
 
@@ -3412,7 +3427,6 @@ msgid "Best Possible Enemy Moves"
 msgstr "Uiterste bereik vijanden"
 
 #: src/hotkeys.cpp:100
-#| msgid "Save Replay"
 msgid "Play Replay"
 msgstr "Speel herhaling"
 
@@ -3423,7 +3437,6 @@ msgid "Reset Replay"
 msgstr "Bewaar herhaling"
 
 #: src/hotkeys.cpp:102
-#| msgid "Save Replay"
 msgid "Stop Replay"
 msgstr "Stop herhaling"
 
@@ -3516,7 +3529,6 @@ msgid "Map Information"
 msgstr "Kaartinformatie"
 
 #: src/hotkeys.cpp:134
-#| msgid "Swap fore- and background terrains"
 msgid "Swap Foreground/Background Terrains"
 msgstr "Verwissel voor- en achtergrond terrein"
 
@@ -3689,7 +3701,6 @@ msgid "Custom Command"
 msgstr "Aangepaste opdracht"
 
 #: src/hotkeys.cpp:208
-#| msgid "Run AI formula"
 msgid "Run Formula"
 msgstr "Draai formule"
 
@@ -3720,7 +3731,6 @@ msgid "Start Campaign"
 msgstr "Veldtocht spelen"
 
 #: src/hotkeys.cpp:248
-#| msgid "Multiplayer"
 msgid "Start Multiplayer Game"
 msgstr "Start Multiplayerspel"
 
@@ -3733,7 +3743,6 @@ msgid "Start Editor"
 msgstr "Start Editor"
 
 #: src/hotkeys.cpp:269
-#| msgid "Credits"
 msgid "Show Credits"
 msgstr "Toon Aftiteling"
 
@@ -3763,7 +3772,7 @@ msgstr "Schermafdruk gemaakt"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:403
+#: src/image.cpp:421
 msgid "language code for localized resources^en_US"
 msgstr "nl"
 
@@ -3796,7 +3805,6 @@ msgid "Landform:"
 msgstr "Soort gebied:"
 
 #: src/mapgen_dialog.cpp:249
-#| msgid "Roads Between Castles"
 msgid "Roads between castles"
 msgstr "Wegen tussen kastelen"
 
@@ -3836,7 +3844,6 @@ msgid "Hotkey Settings"
 msgstr "Sneltoetsinstellingen"
 
 #: src/preferences_display.cpp:282 src/preferences_display.cpp:351
-#| msgid "Press desired Hotkey (Esc cancels)"
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Druk op de gewenste sneltoets (Esc annuleert)"
 
@@ -3858,13 +3865,10 @@ msgstr "Sneltoets verwijderen"
 
 #: src/preferences_display.cpp:394 src/preferences_display.cpp:402
 #: src/preferences_display.cpp:414
-#| msgid "This Hotkey is already in use."
 msgid "This hotkey is already in use."
 msgstr "Deze sneltoets is al in gebruik."
 
 #: src/preferences_display.cpp:429
-#| msgid ""
-#| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
 "Screenshot hotkeys should be combined with the Control, Alt or Meta "
 "modifiers to avoid problems."
