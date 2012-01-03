@@ -786,6 +786,8 @@ void editor_controller::refresh_after_action(bool drag_part)
 		reload_map();
 		return;
 	} else {
+		const std::set<map_location>& changed_locs = get_map_context().changed_locations();
+
 		if (get_map_context().needs_terrain_rebuild()) {
 			if ((auto_update_transitions_ == preferences::editor::TransitionUpdateMode::on)
 			|| ((auto_update_transitions_ == preferences::editor::TransitionUpdateMode::partial)
@@ -794,16 +796,16 @@ void editor_controller::refresh_after_action(bool drag_part)
 				get_map_context().set_needs_terrain_rebuild(false);
 				gui().invalidate_all();
 			} else {
-				foreach (const map_location& loc, get_map_context().changed_locations()) {
+				foreach (const map_location& loc, changed_locs) {
 					gui().rebuild_terrain(loc);
 				}
-				gui().invalidate(get_map_context().changed_locations());
+				gui().invalidate(changed_locs);
 			}
 		} else {
 			if (get_map_context().everything_changed()) {
 				gui().invalidate_all();
 			} else {
-				gui().invalidate(get_map_context().changed_locations());
+				gui().invalidate(changed_locs);
 			}
 		}
 		if (get_map_context().needs_labels_reset()) {
