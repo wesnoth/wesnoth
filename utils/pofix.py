@@ -3187,6 +3187,10 @@ stringfixes = {
 ("/tags/1.8/", "/tags/1.8.0/"),
 ),
 
+"1.10-announcement" : (
+("roleplaying", "role-playing"),
+),
+
 # Bulk apostrophe and dash conversion, pass 1, all campaigns EXCEPT
 # LOW (already sent as another patch)
 # HTTT and DW (being done by Espreon and ancestral)
