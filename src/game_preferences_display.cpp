@@ -762,9 +762,9 @@ void preferences_dialog::process_event()
 
 		std::stringstream buf2;
 		if (autosavemax_slider_.value() == preferences::INFINITE_AUTO_SAVES)
-			buf2 << _("Maximum Auto-Saves: ") << _("infinite");
+			buf2 << _("Maximum auto-saves: ") << _("infinite");
 		else
-			buf2 << _("Maximum Auto-Saves: ") << autosavemax_slider_.value();
+			buf2 << _("Maximum auto-saves: ") << autosavemax_slider_.value();
 		autosavemax_slider_label_.set_text(buf2.str());
 
 		return;
