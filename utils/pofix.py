@@ -263,6 +263,16 @@ stringfixes = {
 ("The Ka'lian has deliberated", "The Ka’lian has deliberated"),
 ("they're tired and afraid", "they’re tired and afraid"),
 ("I'm... disturbed", "I’m... disturbed"),
+
+# Fixed spelling
+("with no a chance to issue", "with not a chance to issue"),
+("the men are to tired", "the men are too tired"),
+
+# Added a missing "a"
+("but temporary solution", "but a temporary solution"),
+
+# Added a missing comma
+("Soon after Erlornas died the elven party", "Soon after Erlornas died, the elven party"),
 ),
 
 "wesnoth-did" : (
@@ -1577,6 +1587,9 @@ stringfixes = {
 ("one you little guys you might fit", "one of you little guys might fit"),
 ("yours and your brothers", "your and your brother’s"),
 ("What in the world gave you that idea.", "What in the world gave you that idea?"),
+
+# Converted a period to a question marke
+("them into disarray once more.", "them into disarray once more?"),
 ),
 
 "wesnoth-thot" : (
@@ -3899,6 +3912,9 @@ stringfixes = {
 
 # Fix apostrophes and capitalization
 ("Hide Allies' Plans by Default", "Hide allies’ plans by default"),
+
+# Fix capitalization
+("Maximum Auto-Saves:", "Maximum auto-saves:"),
 ),
 
 "wesnoth-manual" : (
@@ -3920,6 +3936,12 @@ stringfixes = {
 ("Immune to drain, poison and plague", "Immune to drain, poison, and plague"),
 
 ("Receive only 50% defense in land-based", "Receives only 50% defense in land-based"),
+
+# Kill useless initial single quote
+("'The drakish tradition", "The drakish tradition"),
+
+# 'whose' -> 'who'
+("Drakish scrollkeeper whose has", "Drakish scrollkeeper who has"),
 ),
 
 "wesnoth-manpages" : (
