@@ -1385,7 +1385,8 @@ static int intf_get_variable(lua_State *L)
  */
 static int intf_set_variable(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
+	const std::string& m = luaL_checkstring(L, 1);
+	if(m.empty()) return luaL_argerror(L, 1, "empty variable name");
 	if (lua_isnoneornil(L, 2)) {
 		resources::state_of_game->clear_variable(m);
 		return 0;

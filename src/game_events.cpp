@@ -1260,6 +1260,10 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	game_state *state_of_game = resources::state_of_game;
 
 	const std::string name = cfg["name"];
+	if(name.empty()) {
+		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
+		return;
+	}
 	config::attribute_value &var = state_of_game->get_variable(name);
 
 	config::attribute_value literal = cfg.get_config()["literal"]; // no $var substitution
@@ -1476,6 +1480,10 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 {
 	const t_string& name = cfg["name"];
 	variable_info dest(name, true, variable_info::TYPE_CONTAINER);
+	if(name.empty()) {
+		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
+		return;
+	}
 
 	std::string mode = cfg["mode"]; // replace, append, merge, or insert
 	if(mode == "extend") {
