@@ -265,7 +265,7 @@ stringfixes = {
 ("I'm... disturbed", "I’m... disturbed"),
 
 # Fixed spelling
-("with no a chance to issue", "with not a chance to issue"),
+("no a chance to issue", "not a chance to issue"),
 ("the men are to tired", "the men are too tired"),
 
 # Added a missing "a"
@@ -1589,7 +1589,7 @@ stringfixes = {
 ("What in the world gave you that idea.", "What in the world gave you that idea?"),
 
 # Converted a period to a question marke
-("them into disarray once more.", "them into disarray once more?"),
+("into disarray once more.", "into disarray once more?"),
 ),
 
 "wesnoth-thot" : (
@@ -3914,7 +3914,7 @@ stringfixes = {
 ("Hide Allies' Plans by Default", "Hide allies’ plans by default"),
 
 # Fix capitalization
-("Maximum Auto-Saves:", "Maximum auto-saves:"),
+("Maximum Auto-Saves", "Maximum auto-saves"),
 ),
 
 "wesnoth-manual" : (
