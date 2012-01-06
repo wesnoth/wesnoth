@@ -166,6 +166,11 @@ stringfixes = {
 ("DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc", "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"),
 ("DejaVu Sans,Andagii,WenQuanYi Zen Hei", "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"),
 
+# switch fonts for CJK translations
+# added in 1.9.13+svn
+("wqy-zenhei.ttc","DroidSansJapanese.ttf,DroidSansFallbackFull.ttf"),
+("WenQuanYi Zen Hei","Droid Sans Japanese,Droid Sans Fallback"),
+
 # Fix apostrophes
 ("SHOW ALL allies'", "SHOW ALL allies’"),
 ("HIDE ALL allies'", "HIDE ALL allies’"),
