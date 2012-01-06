@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2011-08-27 17:25-0500\n"
+"PO-Revision-Date: 2012-01-06 17:44-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -130,23 +130,13 @@ msgstr "sets BitsPerPixel value. Example: B<--bpp 32>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
+#, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
+msgstr "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
 
 # This string is manifestly vile.
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy
-#| msgid ""
-#| "goes directly to the campaign based on the parameters.  The difficulty is "
-#| "a number between 1 and current campaign's difficulties number.  The "
-#| "default difficulty is 1.  The scenario must be one of the campaign's "
-#| "child scenarios. The default scenario is campaign's first scenario.  "
-#| "B<Note: When using this switch please ensure that you specify the data "
-#| "directory path as the final argument> aswell, otherwise the game will "
-#| "take the campaign/scenario id as the data dir."
 msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified.  B<Note:> When using this switch "
@@ -154,20 +144,17 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
-"goes directly to the campaign based on the parameters.  The difficulty is a "
-"number between 1 and current campaign's difficulties number.  The default "
-"difficulty is 1.  The scenario must be one of the campaign's child "
-"scenarios. The default scenario is campaign's first scenario.  B<Note: When "
-"using this switch please ensure that you specify the data directory path as "
-"the final argument> aswell, otherwise the game will take the campaign/"
-"scenario id as the data dir."
+"goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
+"menu will appear if no id was specified.  B<Note:> When using this switch "
+"please ensure that you specify the data directory path as the final argument "
+"as well, otherwise the game will take the campaign/scenario id as the data "
+"dir."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr "B<--data-dir E<lt>directoryE<gt>>"
+msgstr "B<--campaign-difficulty E<lt>difficultyE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -175,12 +162,14 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"The difficulty of the specified campaign (1 to max). If none specified, the "
+"campaign difficulty selection widget will appear."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -188,6 +177,8 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
+"The id of the scenario from the specified campaign. The default is the first "
+"scenario."
 
 # type: TP
 #. type: TP
