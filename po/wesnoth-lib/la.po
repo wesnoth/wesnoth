@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-03 10:40+0100\n"
-"PO-Revision-Date: 2011-12-18 21:48+0100\n"
+"POT-Creation-Date: 2012-01-06 11:47+0100\n"
+"PO-Revision-Date: 2011-12-30 00:16+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
 "Language: la\n"
@@ -1287,7 +1287,7 @@ msgstr "Summovere"
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:56
 msgid "Play a campaign"
-msgstr "Militia Ludere"
+msgstr "Militiam Ludere"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1329,22 +1329,18 @@ msgstr "Difficultatem eligere:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
-#, fuzzy
-#| msgid "View Chat Log"
 msgid "Chat Log"
-msgstr "Colloquium Videre"
+msgstr "Colloquium"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
-#, fuzzy
-#| msgid "Message:"
 msgid "Page:"
-msgstr "Nuntium:"
+msgstr "Pagina:"
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:69
 msgid "Last"
-msgstr ""
+msgstr "Suprema"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
@@ -1372,7 +1368,7 @@ msgstr ""
 #: data/gui/default/window/data_manage.cfg:89
 #: data/gui/default/window/game_load.cfg:189
 msgid "Choose the game to load"
-msgstr ""
+msgstr "Elige chartam restituendam"
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/data_manage.cfg:113
@@ -1520,7 +1516,7 @@ msgstr "Lusorem Eligere"
 #. [label]: id=message
 #: data/gui/default/window/editor_set_starting_position.cfg:70
 msgid "Which player should start here?"
-msgstr ""
+msgstr "Quis lusor hic incipere debet?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1602,7 +1598,7 @@ msgstr "status"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:85
 msgid "Call stack"
-msgstr ""
+msgstr "Acervum arcessere"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:94
@@ -1708,7 +1704,7 @@ msgstr "Relusum monstrare"
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:397
 msgid "Cancel orders"
-msgstr ""
+msgstr "Mandata delere"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -1726,7 +1722,7 @@ msgstr "x"
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:62
 msgid "OOS error"
-msgstr ""
+msgstr "error OOS"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:145
@@ -1820,7 +1816,7 @@ msgstr "Tessera ad conveniendum opus est"
 #: data/gui/default/window/lobby_main.cfg:178
 #: data/gui/default/window/mp_create_game.cfg:321
 msgid "Use map settings"
-msgstr ""
+msgstr "Electionibus chartae uti"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:179
@@ -1835,7 +1831,7 @@ msgstr "Aetas ignota"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:182
 msgid "Gold per village"
-msgstr "Aura per viculum"
+msgstr "Nummi per viculum"
 
 #. [label]
 #. [row]
@@ -1873,7 +1869,7 @@ msgstr "Ludus electus"
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:338
 msgid "Current room"
-msgstr "Locus hic"
+msgstr "Hoc spatium"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:339
@@ -1883,7 +1879,7 @@ msgstr "Atrium"
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:340
 msgid "Other games"
-msgstr "Ludi ali"
+msgstr "Alii ludi"
 
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:479
@@ -1893,7 +1889,7 @@ msgstr "Spatia"
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:497
 msgid "Messages waiting"
-msgstr ""
+msgstr "Nuntii expectantes"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:567
@@ -1923,7 +1919,7 @@ msgstr "Loci vacui"
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:604
 msgid "Invert filter"
-msgstr "Filtrum intervertere"
+msgstr "Velamen invertere"
 
 #. [button]: id=ok
 #. [button]: id=send_message
@@ -1996,12 +1992,12 @@ msgstr "Ex Tabulam Movere"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:141
 msgid "Moderation"
-msgstr ""
+msgstr "Moderare"
 
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:148
 msgid "Check status"
-msgstr ""
+msgstr "Statum inspicere"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:155
@@ -2052,7 +2048,7 @@ msgstr "Nuntius"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:69
 msgid "Message:"
-msgstr "Nuntium:"
+msgstr "Nuntius:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:141
@@ -2072,7 +2068,7 @@ msgstr "Ut Negelctum Addere"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:241
 msgid "Moderating"
-msgstr ""
+msgstr "Moderantes"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:271
@@ -2137,7 +2133,7 @@ msgstr "Usitata"
 #: data/gui/default/window/mp_create_game.cfg:226
 #: data/gui/default/window/mp_create_game_set_password.cfg:42
 msgid "Set Password"
-msgstr "Tessera Ponere"
+msgstr "Tesseram Ponere"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:254
@@ -2157,7 +2153,7 @@ msgstr "Infinitus"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:380
 msgid "Village gold"
-msgstr "Aura Viculorum"
+msgstr "Aurum Viculorum"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:460
@@ -2167,7 +2163,7 @@ msgstr "Nebula belli"
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:501
 msgid "Random start time"
-msgstr ""
+msgstr "Tempus incipere fortunae"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:543
@@ -2178,7 +2174,7 @@ msgstr "Ludum creare"
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
-msgstr ""
+msgstr "Tesseram ponere, cui homines ludum ut lusores inituri, uti debent. "
 
 #. [label]
 #: data/gui/default/window/mp_create_game_set_password.cfg:90
@@ -2301,7 +2297,7 @@ msgstr "Consilium secundum diei ostendere"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:223
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "Rudimentum incipere ut ludum solere fias"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -2313,7 +2309,7 @@ msgstr "Rudimentum"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:224
 msgid "Campaign"
-msgstr "Militiae"
+msgstr "Militia"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:224
@@ -2380,7 +2376,7 @@ msgstr "Agnitiones videre"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:232
 msgid "Quit the game"
-msgstr "Ludum Exire"
+msgstr "Ludum exire"
 
 #. [button]: id=ok
 #: data/gui/default/window/unit_attack.cfg:195
@@ -2390,7 +2386,7 @@ msgstr "Pugnare"
 #. [label]
 #: data/gui/default/window/unit_attack.cfg:263
 msgid "Attack enemy"
-msgstr "Hostes pugnare"
+msgstr "Hostibus pugnare"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2427,9 +2423,8 @@ msgid "Delete File"
 msgstr "Fasciculum Delere"
 
 #: src/filechooser.cpp:196
-#, fuzzy
 msgid "Deletion of the file failed."
-msgstr "Deletio pligae fallitur."
+msgstr "Interitus facisculi defuit."
 
 #: src/filechooser.cpp:212
 #, fuzzy
@@ -2438,7 +2433,7 @@ msgstr "Deletio pligae fallitur."
 
 #: src/game_preferences.cpp:315
 msgid "No server has been defined."
-msgstr ""
+msgstr "Nullum servatrum ostensum est."
 
 #: src/game_preferences.cpp:395
 msgid "player"
@@ -2498,7 +2493,7 @@ msgstr "Monstrare Adiunctos in Vestibulo"
 
 #: src/game_preferences_display.cpp:183
 msgid "Use new lobby interface"
-msgstr "Faciem atrii novi uti "
+msgstr "Faciei atrii novi uti "
 
 #: src/game_preferences_display.cpp:184
 #, fuzzy
@@ -2515,10 +2510,8 @@ msgid "Save password to preferences (plain text)"
 msgstr ""
 
 #: src/game_preferences_display.cpp:187
-#, fuzzy
-#| msgid "Set path to wesnothd"
 msgid "Set Path to wesnothd"
-msgstr "Via ad vesnotesd ponere"
+msgstr "Viam ad vesnotesd ponere"
 
 #: src/game_preferences_display.cpp:188
 msgid "Friends List"
@@ -2687,10 +2680,8 @@ msgid "Change the buffer size"
 msgstr "Magnitudinem musicae mutare"
 
 #: src/game_preferences_display.cpp:297 src/game_preferences_display.cpp:896
-#, fuzzy
-#| msgid "Map size: "
 msgid "Buffer size: "
-msgstr "Magnitudo chartae:"
+msgstr "Magnitudo finium:"
 
 #: src/game_preferences_display.cpp:304
 #, fuzzy
@@ -2730,7 +2721,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:348
 msgid "Display animated terrain graphics"
-msgstr ""
+msgstr "Picturas terrae animatas ostendere"
 
 #: src/game_preferences_display.cpp:354
 msgid "Set the frequency of unit idle animations"
@@ -2775,10 +2766,8 @@ msgid "Uncheck to delete the saved password (on exit)."
 msgstr ""
 
 #: src/game_preferences_display.cpp:387
-#, fuzzy
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr ""
-"Nuntios de lusoribus qui in vestibulum plurum lusorum intrant monstrare."
+msgstr "Nuntios de lusoribus atrium plurium lusorum intrantibus non ostendere"
 
 #: src/game_preferences_display.cpp:389
 #, fuzzy
@@ -2810,15 +2799,15 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:399
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "Hoc nomen tabulae amicorum addere"
 
 #: src/game_preferences_display.cpp:400
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "Hoc nomen tabulae neglectorum addere"
 
 #: src/game_preferences_display.cpp:401
 msgid "Remove this username from your list"
-msgstr ""
+msgstr "Hoc nomen a tabula amovere"
 
 #: src/game_preferences_display.cpp:404
 msgid "Insert a username"
@@ -2942,10 +2931,8 @@ msgid "Advanced section^Advanced"
 msgstr "Addititius"
 
 #: src/game_preferences_display.cpp:1292
-#, fuzzy
-#| msgid "Choose theme"
 msgid "Choose Theme"
-msgstr "Themam eligere"
+msgstr "Themam Eligere"
 
 #: src/game_preferences_display.cpp:1307
 #, fuzzy
@@ -3003,7 +2990,7 @@ msgstr ""
 #: src/gui/auxiliary/window_builder/panel.cpp:36
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:39
 msgid "No grid defined."
-msgstr ""
+msgstr "Nullos cancellos ostensos."
 
 #: src/gui/auxiliary/window_builder.cpp:163
 msgid "Linked '$id' group has multiple definitions."
@@ -3029,7 +3016,7 @@ msgstr ""
 #: src/gui/auxiliary/window_builder/listbox.cpp:58
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:42
 msgid "No list defined."
-msgstr ""
+msgstr "Nulla tabula ostensa"
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:51
 #: src/gui/auxiliary/window_builder/listbox.cpp:62
@@ -3045,7 +3032,7 @@ msgstr ""
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:39
 msgid "No page defined."
-msgstr ""
+msgstr "Nulla pagina ostensa."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
@@ -3053,7 +3040,7 @@ msgstr ""
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
 msgid "No stack defined."
-msgstr ""
+msgstr "Nullus acervus ostensus"
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:46
 msgid "No nodes defined for a tree view."
@@ -3306,14 +3293,12 @@ msgid "End Turn"
 msgstr "Vicem Finire"
 
 #: src/hotkeys.cpp:80
-#, fuzzy
 msgid "Toggle Ellipses"
-msgstr "Rete Ponere/Tollere"
+msgstr "Circulos Variare"
 
 #: src/hotkeys.cpp:81
-#, fuzzy
 msgid "Toggle Grid"
-msgstr "Rete Ponere/Tollere"
+msgstr "Cancellos Variare"
 
 #: src/hotkeys.cpp:82
 #, fuzzy
@@ -3425,7 +3410,7 @@ msgstr "Animationem Praeterire"
 
 #: src/hotkeys.cpp:113
 msgid "Toggle Planning Mode"
-msgstr ""
+msgstr "Modum Meditanti Variare"
 
 #: src/hotkeys.cpp:114
 msgid "Execute Planned Action"
@@ -3546,7 +3531,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:152
 msgid "Select None"
-msgstr "Omnia Nulla Eligere"
+msgstr "Nulla Eligere"
 
 #: src/hotkeys.cpp:154
 msgid "Rotate Clipboard Clockwise"
@@ -3624,7 +3609,7 @@ msgstr "Thesaurum Imaginum Renovare"
 
 #: src/hotkeys.cpp:190
 msgid "Draw Hex Coordinates"
-msgstr ""
+msgstr "Locos Hexagonorum Pingere"
 
 #: src/hotkeys.cpp:192
 #, fuzzy
@@ -3698,7 +3683,7 @@ msgstr "Rudimentum Incipere"
 
 #: src/hotkeys.cpp:241
 msgid "Start Campaign"
-msgstr "Militia Incipere"
+msgstr "Militiam Incipere"
 
 #: src/hotkeys.cpp:248
 msgid "Start Multiplayer Game"
@@ -3711,7 +3696,7 @@ msgstr "Appendices Novare"
 
 #: src/hotkeys.cpp:262
 msgid "Start Editor"
-msgstr "Mutator Incipere"
+msgstr "Mutatorem Incipere"
 
 #: src/hotkeys.cpp:269
 msgid "Show Credits"
@@ -3764,10 +3749,8 @@ msgid "Number of hills:"
 msgstr "Numerus collium:"
 
 #: src/mapgen_dialog.cpp:124
-#, fuzzy
-#| msgid "Max Hill Size:"
 msgid "Max hill size:"
-msgstr "Maxima Magnitudo Collum:"
+msgstr "Maxima magnitudo collium:"
 
 #: src/mapgen_dialog.cpp:125
 msgid "Villages:"
