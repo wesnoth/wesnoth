@@ -17,6 +17,8 @@ Version 1.9.13+svn:
      BLIT image mod (bug #19208)
    * New key [object]delayed_variable_substitution=yes|no (default no)
      as a workaround for bug #18893 (fixes bug #19225)
+   * Made empty {} preprocessor directives be handled more gracefully
+     (bug #19233)
  * Miscellaneous and bug fixes:
    * Fixed bug #19032: Poison and level up AI defense placement calculation
    * Fixed bug #19245: wesnoth(6) man page doesn't describe the --campaign*

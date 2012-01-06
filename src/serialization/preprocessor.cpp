@@ -991,6 +991,10 @@ bool preprocessor_data::get_chunk()
 			//	strings_.pop_back();
 			//}
 
+			if(strings_.size() <= static_cast<size_t>(token.stack_pos)) {
+				target_.error("No macro or file substitution target specified", linenum_);
+			}
+
 			std::string symbol = strings_[token.stack_pos];
 			std::string::size_type pos;
 			while ((pos = symbol.find('\376')) != std::string::npos) {
