@@ -14,13 +14,15 @@
 # Robert Romero <sildurin@gmail.com>, 2006.
 # Sergi March <sergi.march@gmail.com>, 2008.
 # Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008, 2009.
+# Aelonin <quianaaelonin@gmail.com>, 2012.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-19 15:14+0100\n"
-"PO-Revision-Date: 2011-07-25 15:07-0500\n"
-"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
+"POT-Creation-Date: 2012-01-06 11:47+0100\n"
+"PO-Revision-Date: 2012-01-02 05:15+0100\n"
+"Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -107,12 +109,13 @@ msgstr "Rebeldes"
 msgid "Undead"
 msgstr "No muertos"
 
+# Sustituír aethermaw
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
 #, fuzzy
 #| msgid "2p — The Freelands"
 msgid "2p — Aethermaw"
-msgstr "2 jug. — Las Tierras Libres"
+msgstr "2 jug. — Aethermaw"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -191,12 +194,13 @@ msgstr "Norte"
 msgid "teamname^South"
 msgstr "Sur"
 
+# Sustituír aethermaw
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:277
 #, fuzzy
 #| msgid "Designed by Doc Paterson."
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr "Diseñado por Doc Paterson."
+msgstr "Aethermaw — Diseñado por Doc Paterson."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:291
@@ -788,14 +792,6 @@ msgstr "2 jug. — Pronóstico oscuro (supervivencia)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly-spawned AI units. Victory is achieved by surviving and "
@@ -809,7 +805,7 @@ msgstr ""
 "con dos jugadores en equipo para jugar contra las unidades generadas "
 "aleatoriamente por la IA. La victoria se consigue sobreviviendo a todas las "
 "oleadas enemigas. En el transcurso del juego, el terreno cambiará basándose "
-"en efectos meteorológicos aleatorios.\n"
+"en fenómenos meteorológicos aleatorios.\n"
 "\n"
 "Nota: necesita utilizar los ajustes predeterminados del mapa para que el "
 "escenario funcione correctamente."
@@ -874,10 +870,8 @@ msgstr "Humanos"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of your leader"
-msgstr "Muerte de los líderes de su equipo."
+msgstr "Muerte de su líder."
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
@@ -885,24 +879,24 @@ msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
+"Ya que su equipo consta de un único líder, los ataques enemigos serán con "
+"fuerza reducida."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Death of both of your team’s leaders"
-msgstr "Muerte de los líderes de su equipo."
+msgstr "Muerte de ambos líderes de su equipo."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
+"Ya que su equipo consta de dos líderes, los ataques enemigos serán con "
+"fuerza completa."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
-#, fuzzy
-#| msgid "Survive all enemy attacks"
 msgid "Survive and defeat all enemy waves"
 msgstr "Sobrevive a todos los ataques enemigos."
 
@@ -911,33 +905,9 @@ msgstr "Sobrevive a todos los ataques enemigos."
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Pronóstico oscuro — un escenario de supervivencia aleatorio."
 
+# Suena raro decir que un archienemigo sea "final", ya que los archienemigos son (incluso en la elaboración de historias) únicos, con su propio caracter. Supuse que el final significaba que "venían" al final.
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves and defeat the final arch-"
-#| "enemies.\n"
-#| "\n"
-#| "The spawning waves are generated randomly and will different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "\n"
-#| "They appear along the north, south and west map edges — though they are "
-#| "most likely to spawn on the west edge. The spawn waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "\n"
-#| "<span color='red'>Dark Forecast was made by:</span>\n"
-#| "\n"
-#| "<span color='green'>jb</span>\n"
-#| "— map design, spawn groups and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen</span>\n"
-#| "— WML implementation"
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -960,8 +930,8 @@ msgid ""
 "<span color='green'>Rhuvaen:</span>\n"
 "• WML implementation"
 msgstr ""
-"Su objetivo es sobrevivir las oleadas enviadas y derrotar a los enemigos "
-"finales.\n"
+"Su objetivo es sobrevivir las oleadas enemigas y derrotar al final a sus "
+"archienemigos.\n"
 "\n"
 "Las oleadas enviadas son generadas aleatoriamente y serán diferentes cada "
 "vez que se juegue a Pronóstico oscuro.\n"
@@ -1103,10 +1073,6 @@ msgstr "2 jug. — Pueblos"
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Warfare transforms the simple farms and villages of a peaceful region "
-#| "into a subtly parceled battlefield."
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Designed by Doc Paterson."
@@ -1144,7 +1110,7 @@ msgstr ""
 #. [unit]: type=Dwarvish Scout, id=Kolbur
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:152
 msgid "Kolbur"
-msgstr ""
+msgstr "Kolbur"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:177
@@ -1268,7 +1234,7 @@ msgstr ""
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
 msgid "evil eye"
-msgstr ""
+msgstr "ojo maligno"
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
@@ -1381,10 +1347,8 @@ msgstr "2 jug. — Guarnición de mil aguijones"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
-#, fuzzy
-#| msgid "Designed by Doc Paterson."
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "Diseñado por Doc Paterson."
+msgstr "Un lugar extraño. Diseñado por Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
