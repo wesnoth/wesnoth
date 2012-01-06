@@ -3,14 +3,15 @@
 #  Boris Stumm <wesnoth@bstumm.de>, 2005
 #  Gerfried Fuchs <alfie@ist.org>, 2005, 2006
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
-#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2011
+#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012
 #  Oliver Lange <oli-lange äd web Pünktchen de>, 2009 - 2010
+#  Drakefriend, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.9\n"
+"Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2010-04-02 15:35+0100\n"
+"POT-Creation-Date: 2012-01-06 11:48+0100\n"
+"PO-Revision-Date: 2012-01-06 17:43+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
@@ -25,16 +26,6 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:18
 #: data/core/units/dwarves/Dragonguard.cfg:20
-#, fuzzy
-#| msgid ""
-#| "It is not clear why the Dragonguards are called what they are, a name "
-#| "given by their dwarven brethren. Some speculate that the name comes from "
-#| "their weapon of choice, these strange staffs that belch fire and death. "
-#| "Others have surmised that it is because such weapons would be a threat "
-#| "against even a true Dragon, should such a thing be seen again in the "
-#| "known world. Whatever the case, it is for these weapons that the "
-#| "guardians of the great Dwarven citadels are both renowned and feared; "
-#| "weapons that have broken the mightiest of warriors with a single blow."
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -269,19 +260,6 @@ msgstr "Donnerstock"
 #. [unit_type]: id=Dwarvish Masked Thunderguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:21
 #: data/core/units/dwarves/Thunderguard.cfg:21
-#, fuzzy
-#| msgid ""
-#| "The Dwarven Thunderguards are famed for their curious weaponry, these "
-#| "strange staffs of wood and iron that make a thunderous noise in their "
-#| "anger. The machinations behind this weaponry are a mystery, a secret "
-#| "taken to the grave by the dwarves of Knalga who wield them, and are "
-#| "assumed to have even forged them. The most that is known are reports of "
-#| "dwarves pouring a strange black dust into the mouth of their weapons, "
-#| "which some say is a food to fuel the beast imprisoned within.\n"
-#| "\n"
-#| "Though a single shot from these ‘thundersticks’ can take several minutes "
-#| "to prepare, the results are seen by the Dwarves as being well worth the "
-#| "wait."
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staves of wood and iron that make a thunderous noise in their anger. "
@@ -753,7 +731,6 @@ msgstr "Entflammender Drake"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:26
-#, fuzzy
 msgid ""
 "Flamehearts lack the strength to defeat other high-ranking drakes in single "
 "combat, but prefer in any case to avoid confrontation within the tribe. "
@@ -1558,7 +1535,6 @@ msgstr "Elfenlangbogenschütze"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:19
-#, fuzzy
 msgid ""
 "Elves are wonderously keen-sighted, a gift which contributes to their "
 "mastery of the bow. An elf practiced at archery can hit targets that a man "
@@ -1773,7 +1749,6 @@ msgstr "Waldfee"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
-#, fuzzy
 msgid ""
 "Devotion to the path of faerie may eventually transform an elf maiden into a "
 "creature of both worlds. Guided by a power which is little understood, these "
@@ -3601,7 +3576,6 @@ msgstr "Waldläufer"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:22
-#, fuzzy
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
 "their fellow men for myriad reasons. They have spent the better part of "
@@ -4054,9 +4028,8 @@ msgstr "Schwanz"
 
 #. [unit_type]: id=Fire Guardian, race=monster
 #: data/core/units/monsters/Fire_Guardian.cfg:4
-#, fuzzy
 msgid "Fire Guardian"
-msgstr "Feuerdrache"
+msgstr "Feuerwächter"
 
 #. [unit_type]: id=Fire Guardian, race=monster
 #: data/core/units/monsters/Fire_Guardian.cfg:28
@@ -4066,12 +4039,16 @@ msgid ""
 "their bidding. When not being controlled they like to frolic in pools of "
 "lava and take great delight in burning anything they can reach."
 msgstr ""
+"Feuerwächter sind Geister aus Rauch und Flamme. Niemand kann mit Gewissheit "
+"sagen, woher sie kommen, doch manchmal werden sie von mächtigen Magiern "
+"beschworen, um ihren Willen zu vollführen. Wenn sie nicht kontrolliert "
+"werden, planschen Feuerwächter gerne in Lavaseen und lieben es, allles zu "
+"verbrennen, dessen sie habhaft werden können."
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Guardian.cfg:31
-#, fuzzy
 msgid "fire claws"
-msgstr "Klauen"
+msgstr "Feuerklauen"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
@@ -4109,7 +4086,7 @@ msgstr "Schlammklumpen"
 #. [unit_type]: id=Giant Rat, race=monster
 #: data/core/units/monsters/Giant_Rat.cfg:4
 msgid "Giant Rat"
-msgstr ""
+msgstr "Riesenratte"
 
 #. [unit_type]: id=Giant Rat, race=monster
 #: data/core/units/monsters/Giant_Rat.cfg:18
@@ -4117,6 +4094,9 @@ msgid ""
 "Given an adequate supply of food, some rats can grow to truly impressive "
 "sizes. They can also grow quite aggressive."
 msgstr ""
+"Ein entsprechendes Nahrungsangebot vorrausgesetzt, können manche Ratten "
+"wahrlich beeintruckende Größe erreichen. Solche Riesen sind oft sehr "
+"aggressiv."
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
@@ -4286,17 +4266,13 @@ msgstr ""
 
 #. [unit_type]: id=Direwolf, race=wolf
 #: data/core/units/monsters/Wolf_Dire.cfg:4
-#, fuzzy
-#| msgid "Direwolf Rider"
 msgid "Direwolf"
-msgstr "Schreckenswolfreiter"
+msgstr "Schreckenswolf"
 
 #. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf_Great.cfg:4
-#, fuzzy
-#| msgid "Great Troll"
 msgid "Great Wolf"
-msgstr "Trollheld"
+msgstr "Großer Wolf"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
@@ -4368,13 +4344,6 @@ msgstr "Naginischerge"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:96
-#, fuzzy
-#| msgid ""
-#| "The most practiced of the nagani blademasters are initiated into the "
-#| "caste of the Myrmidon, masters of their twin-bladed art. They strike as "
-#| "fast as the snakes which they resemble, and dance away from attacks with "
-#| "grace. Not only are they potent enemies on any open terrain, but their "
-#| "ability to swim allows them a deadly mobility."
 msgid ""
 "The most practiced of the nagini blademasters are initiated into the caste "
 "of the Myrmidon, masters of their twin-bladed art. They strike as fast as "
@@ -4418,14 +4387,6 @@ msgstr "Naginikriegerin"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Many of the young warriors of the nagani aspire for the day when they "
-#| "merit their second blade. Their martial practice of using twin blades is "
-#| "wholly unlike that of the Orcs and other races, for they have begun to "
-#| "learn the art of using their serpentine form to best effect, twisting and "
-#| "turning to dodge from blows. This makes them potent on land, but the "
-#| "friction of water greatly impedes their ability to do this."
 msgid ""
 "Many of the young warriors of the nagini aspire for the day when they merit "
 "their second blade. Their martial practice of using twin blades is wholly "
@@ -4581,7 +4542,6 @@ msgstr "Orkhäuptling"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:20
-#, fuzzy
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a crossbow out of necessity, but are much more skilled "
@@ -4606,7 +4566,6 @@ msgstr "Orkkriegshäuptling"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:19
-#, fuzzy
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
 "unusually intelligent and commanding, and is inevitably very strong as well. "
@@ -5032,7 +4991,7 @@ msgstr ""
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:4
 msgid "Ghast"
-msgstr ""
+msgstr "Scheusal"
 
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:20
@@ -5044,6 +5003,13 @@ msgid ""
 "flesh straight from their foes. Once their enemy is defeated, they eat the "
 "rest of the body, gaining strength in the process."
 msgstr ""
+"Scheusale sind Wesen aus den ältesten Alpträumen der Menschheit. Anders als "
+"ihre niederen Verwandten, die Ghule und Leichenfresser, verfügen Scheusale "
+"nicht über die Geduld, den Tod ihres Opfers abzuwarten, bevor sie ihre "
+"Kadaver verschlingen: Sie greifen direkt mit ihren riesigen Mäulern an und "
+"versuchen ihrem Opfer das Fleisch von den Knochen zu reißen. Sobald ihr "
+"Opfer niedergerungen ist, fressen sie den Rest des Körpers und werden "
+"dadurch noch stärker."
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
@@ -5492,7 +5458,6 @@ msgstr "Wiedergänger"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:19
-#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
@@ -5785,17 +5750,3 @@ msgstr ""
 "\n"
 "Waldschrate sind von Natur aus friedfertig. Man sollte sich jedoch davor "
 "hüten, etwas zu tun, was sie erzürnen könnte."
-
-#, fuzzy
-#~| msgid "longsword"
-#~ msgid "long sword"
-#~ msgstr "Langschwert"
-
-#, fuzzy
-#~| msgid "Elder Mage"
-#~ msgid "Elder Falcon"
-#~ msgstr "Alter Magier"
-
-#, fuzzy
-#~ msgid "fire arrow"
-#~ msgstr "Klauen"
