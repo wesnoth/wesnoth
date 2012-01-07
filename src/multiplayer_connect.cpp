@@ -700,6 +700,8 @@ config connect::side::get_config() const
 		res["user_team_name"] = parent_->user_team_names_[team_];
 		res["allow_player"] = allow_player_;
 		res["color"] = color_ + 1;
+		///@deprecated 1.9.2 'colour' also written
+		res["colour"] = color_ + 1;
 		res["gold"] = gold_;
 		res["income"] = income_;
 
