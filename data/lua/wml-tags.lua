@@ -951,14 +951,12 @@ function wml_actions.store_side(cfg)
 				team_name = t.team_name,
 				user_team_name = t.user_team_name,
 				color = t.color,
-				colour = t.color,
 				gold = t.gold,
 				side = side_number
 			}
 		wesnoth.set_variable(string.format("%s[%u]", variable, index), container)
 		index = index + 1
 	end
-	-- colour deprecated starting with 1.9.0
 end
 
 function wml_actions.add_ai_behavior(cfg)
