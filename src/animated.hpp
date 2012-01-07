@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2004 - 2011 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2004 - 2012 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify

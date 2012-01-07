@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2011 - 2011 by Fabian Mueller
+   Copyright (C) 2011 - 2012 by Fabian Mueller
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
