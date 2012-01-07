@@ -294,13 +294,6 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 		value -= exposure*(1.0-aggression);
 	}
 
-	// If this attack uses our leader, and the leader can reach the keep,
-	// and has gold to spend, reduce the value to reflect the leader's
-	// lost recruitment opportunity in the case of an attack.
-	if(uses_leader && ai_obj.leader_can_reach_keep() && ai_obj.current_team().gold() > 20) {
-		value -= double(ai_obj.current_team().gold())*0.5;
-	}
-
 	// Prefer to attack already damaged targets.
 	value += ((target_starting_damage/3 + avg_damage_inflicted) - (1.0-aggression)*avg_damage_taken)/10.0;
 
