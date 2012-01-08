@@ -23,6 +23,8 @@ Version 1.9.13+svn:
    * Made empty {} preprocessor directives be handled more gracefully
      (bug #19233)
    * Fixed bug #19213: [harm_unit] incorrectly uses ToD bonus
+   * The turn bell and autosaves are not triggered anymore in certain situations
+     after [endlevel] has been issued
  * Miscellaneous and bug fixes:
    * Fixed bug #19032: Poison and level up AI defense placement calculation
    * Fixed bug #19245: wesnoth(6) man page doesn't describe the --campaign*

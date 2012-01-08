@@ -676,12 +676,12 @@ void playsingle_controller::before_human_turn(bool save)
 
 	ai::manager::raise_turn_started();
 
-	if (save) {
+	if(save && level_result_ == NONE) {
 		savegame::autosave_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}
 
-	if(preferences::turn_bell()) {
+	if(preferences::turn_bell() && level_result_ == NONE) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
 }
