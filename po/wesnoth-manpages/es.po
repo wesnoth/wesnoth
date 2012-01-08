@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2012-01-04 23:17-0300\n"
+"PO-Revision-Date: 2012-01-07 20:49-0300\n"
 "Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
 "Language: es\n"
@@ -135,14 +135,13 @@ msgstr "establece el valor de BitsPorPixel. Por ejemplo: B<--bpp 32>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
+#, no-wrap
 #| msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr "B<-c, --campaign[[E<lt>nivel_de_dificultadE<gt>] E<lt>id_de_la_campañaE<gt> [E<lt>id_del_escenarioE<gt>]]>"
+msgstr "B<-c, --campaign \\ [E<lt>id_de_campañaE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy
 #| msgid ""
 #| "goes directly to the campaign based on the parameters.  The difficulty is "
 #| "a number between 1 and current campaign's difficulties number.  The "
@@ -158,21 +157,18 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
-"va directamente a la campaña especificada. El nivel de dificultad es un "
-"número entre 1 y el número actual de dificultades de la campaña. El nivel "
-"predeterminado es 1. El identificador de escenario especificado debe "
-"referirse a uno de los escenarios de la misma campaña. El escenario "
-"predeterminado es el inicial. B<Nota: Al usar esta opción, asegúrese de "
-"especificar la ruta de acceso a los datos como el argumento final> también, "
-"de otro modo el juego interpretará el identificador de escenario o campaña "
-"como tal."
+"va directamente a la campña especificada con el identificador "
+"E<lt>id_de_campañaE<gt>. Un menú de selección aparecerá si no especifica un "
+"id. B<Nota:> Al usar esta opción, asegúrese de especificar la ruta de acceso "
+"a los datos como el argumento final también, de otro modo el juego "
+"interpretará el identificador de escenario o campaña como tal."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
+#, no-wrap
 #| msgid "B<--data-dir E<lt>directoryE<gt>>"
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr "B<--data-dir E<lt>directorioE<gt>>"
+msgstr "B<--campaign-difficulty E<lt>dificultadE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -180,12 +176,14 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"el nivel de dificultad de la campaña especificada (de 1 al máximo). Si no "
+"especifica ninguno, aparecerá el diálogo de selección de nivel de dificultad."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>id_de_escenarioE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -193,6 +191,8 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
+"el identificador del escenario de la campaña especificada. El valor por "
+"defecto es el escenario inicial."
 
 # type: TP
 #. type: TP
