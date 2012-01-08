@@ -136,20 +136,11 @@ msgstr "establece el valor de BitsPorPixel. Por ejemplo: B<--bpp 32>"
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
 #, no-wrap
-#| msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
 msgstr "B<-c, --campaign \\ [E<lt>id_de_campañaE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
-#| msgid ""
-#| "goes directly to the campaign based on the parameters.  The difficulty is "
-#| "a number between 1 and current campaign's difficulties number.  The "
-#| "default difficulty is 1.  The scenario must be one of the campaign's "
-#| "child scenarios. The default scenario is campaign's first scenario.  "
-#| "B<Note: When using this switch please ensure that you specify the data "
-#| "directory path as the final argument> aswell, otherwise the game will "
-#| "take the campaign/scenario id as the data dir."
 msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified.  B<Note:> When using this switch "
@@ -166,7 +157,6 @@ msgstr ""
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
 #, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
 msgstr "B<--campaign-difficulty E<lt>dificultadE<gt>>"
 

@@ -1,0 +1,248 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd 韋諾之戰多人遊戲伺服器
+.
+.SH 命名
+.
+wesnothd \- 韋諾之戰 \fBWesnoth\fP 多人游戲伺服器
+.
+.SH 摘要
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH 描述
+.
+控制韋諾之戰多人遊戲。
+官方wiki上的ServerAdministration頁面上取得更多可以經由韋諾之戰客戶端或者socket在伺服器上運行的指令。連結wiki:
+http://www.wesnoth.org/wiki/ServerAdministration
+.
+.SH 選項
+.
+.TP 
+\fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
+指定韋諾找到的檔案配置目錄。下面的\fBSERVER CONFIG\fP通過發送SIGHUP信號給伺服器程序可以重新裝載檔案配置。
+.TP 
+\fB\-d, \-\-daemon\fP
+以安全模式執行韋諾。
+.TP 
+\fB\-h, \-\-help\fP
+顯示指令的功用。
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+設定日誌記錄的類別。\fBall\fP可以用來支援任何日誌域的類別。可選的類別有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP。預設的類別是\fBerror\fP，對\fBserver\fP域預設類別是\fBinfo\fP。
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+設定伺服器到指定的埠。如果不指定埠將使用\fB15000\fP。
+.TP 
+\fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
+設定網路I/O的最大等待工作流程數為 n (預設值為\fB5\fP，\ 最大值為\ \fB30\fP)。
+.TP 
+\fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
+允許創造最大等待工作流程數。如果設定為\fB0\fP則不限制流程數（預設值：\fB0\fP）
+.TP 
+\fB\-V, \-\-version\fP
+顯示版本並退出。
+.TP 
+\fB\-v, \-\-verbose\fP
+開啟偵測日誌記錄。
+.
+.SH 伺服器設定
+.
+.SS 常用語法是:
+.
+.P
+[\fItag\fP]
+.IP
+\fIkey\fP="\fIvalue\fP"
+.IP
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS 全球關鍵字:
+.
+.TP 
+\fBallow_remote_shutdown\fP
+如果設置為 \fBno\fP （預設值），shut_down（關閉）和restart（重啟）請求將被忽略，除非這些請求來自於fifo。如果設為 \fByes\fP
+則允許管理員透過 /query 遠程關閉。
+.TP 
+\fBban_save_file\fP
+一個伺服器可讀可寫的（經gzip壓縮的）檔案的完整路徑或相對路徑。封禁訊息會自動保存在這個檔案裡，並在伺服器啟動時讀取。
+.TP 
+\fBcompress_stored_rooms\fP
+指定房間檔案是否應該以壓縮形式讀寫。預設值為\fByes\fP。
+.TP 
+\fBconnections_allowed\fP
+同一IP允許的連接數。(預設值：\fB5\fP)
+.TP 
+\fBdisallow_names\fP
+伺服器不允許使用的使用者名稱／暱稱。支援使用 \fB*\fP和\fB?\fP這兩個萬用字元。更多資料請查看 \fBglob\fP(7)
+。預設值(如果使用者沒有指定則自動使用)是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.。
+.TP 
+\fBfifo_path\fP
+伺服器所使用的fifo檔案的路徑（與在wesnoth中使用 /query
+功能相同），您可以從該檔案內ECHO伺服器命令。如果不指定，則預設為編譯時指定的路徑（預設值：\fB/var/run/socket/wesnothd/socket\fP）。
+.TP 
+\fBmax_messages\fP
+\fBmessages_time_period\fP中允許存在的訊息數。 (默認值: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+訊息檢測間隔(秒)。 (預設值: \fB10\fP 秒)
+.TP 
+\fBmotd\fP
+當日訊息。
+.TP 
+\fBnew_room_policy\fP
+指定誰能在伺服器上創建新房間。可選值為
+\fBeveryone\fP、\fBregistered\fP、\fBadmin\fP、和\fBnobody\fP，分別代表所有人、註冊用戶、管理員、或者禁止創建新房間。預設值為
+\fBeveryone\fP。
+.TP 
+\fBpasswd\fP
+取得管理員權限的密碼(透過 \fB/query admin \fP\fIpassword\fP 來取得權限)。
+.TP 
+\fBreplay_save_path\fP
+伺服器用於存放遊戲錄影的目錄。（不要忘了以/結尾！）預設為`'（空），意思是本遊戲啟動時的當前目錄。
+.TP 
+\fBrestart_command\fP
+這是伺服器通過\fBrestart\fP命令開啟新伺服器進程時使用的命令。（只能通過fifo來調用。參見\fBallow_remote_shutdown\fP設置。）
+.TP 
+\fBroom_save_file\fP
+指定存放房間訊息的檔案的路徑。這個檔案在伺服器啟動時讀取，之後會寫入。如果設為空或者不設置，則房間不會被讀取或保存。
+.TP 
+\fBsave_replays\fP
+設置伺服器是否自動保存遊戲錄影。（預設值：\fBfalse\fP）
+.TP 
+\fBversions_accepted\fP
+用逗號分隔的伺服器接受版本列表。支援使用 \fB*\fP 和\fB?\fP這兩個萬用字元。（預設為相同版本）
+.br
+例如: \fBversions_accepted="*"\fP 允許所有版本連接。
+.TP  
+\fBuser_handler\fP
+希望使用的用戶處理程序的名稱。目前可選的有\fBforum\fP（將wesnothd與phpbb論壇的資料庫連接起來）和\fBsample\fP（一個用戶處理介面的執行樣本，如果您真的在實際中使用它，那您一定是瘋了）。預設值是\fBforum\fP，同時您必須添加一個\fB[user_handler]\fP小節，請看下面。
+.
+.SS 全球標籤:
+.
+.P
+\fB[redirect]\fP 伺服器用來重定向特定客戶端版本的標簽。
+.RS
+.TP 
+\fBhost\fP
+重定向到的伺服器地址。
+.TP 
+\fBport\fP
+連接埠口
+.TP 
+\fBversion\fP
+重定向用逗號分隔列表的版本。顯示同樣的模式包括\fBversions_accepted\fP在符號模式。
+.RE
+.P
+\fB[ban_time]\fP 這個標籤用於定義一些方便的關鍵字，以對應一些常用的臨時封禁時間長度。
+.RS
+.TP 
+\fBname\fP
+用於參照封禁時間的名字。
+.TP 
+\fBtime\fP
+時間長度定義。 格式為：%d[%s[%d%s[...]]]
+其中%s是s（秒），m（分鐘），h（小時），D（天），M（月），Y（年），%d是一個數字。如果不指定時間單位，預設為分鐘（m）。例如：\fBtime=\"1D12h30m\"\fP
+代表的是1天12小時30分的封禁。
+.RE
+.P
+\fB[proxy]\fP 這個標簽告訴伺服器扮演代理伺服器角色，把使用者連接重定向到另一台伺服器。與\fB[redirect]\fP接受一樣的參數。
+.RE
+.P
+\fB[user_handler]\fP
+配置用戶處理程序。可設置的主鍵取決於通過\fBuser_handler\fP設置的用戶資料處理器是哪一個。如果配置檔案中沒有\fB[user_handler]\fP小節，則伺服器在運行中將不提供任何暱稱註冊服務。
+.RS
+.TP  
+\fBdb_host\fP
+（如果user_handler=forum）資料庫伺服器的主機名
+.TP  
+\fBdb_name\fP
+（如果user_handler=forum）資料庫名
+.TP  
+\fBdb_user\fP
+（如果user_handler=forum）資料庫登錄用戶名
+.TP  
+\fBdb_password\fP
+（如果user_handler=forum）這個用戶的密碼
+.TP  
+\fBdb_users_table\fP
+（如果user_handler=forum）phpbb
+論壇中存放用戶資料的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
+.TP  
+\fBdb_extra_table\fP
+（如果user_handler=forum）wesnothd存放自用的用戶資料的表名。您必須自己手動創建這個表，例如：\fBCREATE TABLE
+<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
+UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
+0);\fP
+.TP  
+\fBuser_expiration\fP
+（如果user_handler=sample）註冊暱稱的失效時間（單位是天數）。
+.RE
+.P
+\fB[mail]\fP 設置一個SMTP伺服器，通過用戶處理程序可以發送郵件。目前只在樣本用戶處理程序中使用。
+.RS
+.TP  
+\fBserver\fP
+郵件伺服器的主機名。
+.TP  
+\fBusername\fP
+登錄到郵件伺服器的用戶名。
+.TP  
+\fBpassword\fP
+使用者密碼。
+.TP  
+\fBfrom_address\fP
+您的電子信箱的回覆地址。
+.TP  
+\fBmail_port\fP
+郵件伺服器的埠口。預設值為25。
+.
+.SH 退出狀態碼
+.
+正常退出時狀態碼為0，此時伺服器正常關閉。狀態碼2代表命令行選項中有錯誤。
+.
+.SH 作者
+.
+由 David White <davidnwhite@verizon.net>編寫。經 Nils Kneuper
+<crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> 和 Soliton
+<soliton.de@gmail.com>修改。這個說明頁最早由Cyril Bouthors
+<cyril@bouthors.org>編寫。
+.br
+官方網站：http://www.wesnoth.org/；繁體中文翻譯團隊：http://wesnoth\-tw.blogspot.com/
+.
+.SH 版權
+.
+Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+這是一個免費遊戲；使用由FSF發布的GPL v2協議授權。原文如下：This is Free Software; this software is
+licensed under the GPL version 2, as published by the Free Software
+Foundation.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.There is NO warranty; not even for MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH 參見
+.
+\fBwesnoth\fP(6).
