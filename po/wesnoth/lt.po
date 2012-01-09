@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2007-2011.
+# Copyright (C) Wesnoth development team, 2007-2012.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2011.
+#  Andrius Štikonas <stikonas@gmail.com>, 2007-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-06 11:47+0100\n"
-"PO-Revision-Date: 2011-12-01 11:36+0100\n"
+"PO-Revision-Date: 2012-01-06 15:52+0200\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -2003,9 +2003,8 @@ msgstr "Premijinis tikslas:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#, fuzzy
 msgid "This is the last scenario."
-msgstr "Testinis scenarijus"
+msgstr "Tai paskutinis scenarijus."
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -2299,8 +2298,11 @@ msgstr "Alternatyvus Vesnoto serveris"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
-msgid "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
-msgstr "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf"
+msgid ""
+"DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
+"Junicode-Regular.ttf"
+msgstr ""
+"DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
@@ -3335,7 +3337,6 @@ msgid "addon_type^MP era"
 msgstr "DŽ era"
 
 #: src/addon/manager.cpp:446
-#, fuzzy
 msgid "addon_type^MP faction"
 msgstr "DŽ frakcija"
 
@@ -5240,9 +5241,8 @@ msgid "Only random sides in the current era."
 msgstr "Tik atsitiktinės pusės dabartinėje eroje."
 
 #: src/multiplayer_connect.cpp:967
-#, fuzzy
 msgid "Unable to find a leader type for faction $faction"
-msgstr "Nepavyko rasti lyderio tipo frakcija $faction"
+msgstr "Nepavyko rasti lyderio tipo frakcijai $faction"
 
 #: src/multiplayer_connect.cpp:1004
 msgid "Game Lobby: "
@@ -5253,7 +5253,6 @@ msgid "Player/Type"
 msgstr "Žaidėjas/tipas"
 
 #: src/multiplayer_connect.cpp:1027
-#, fuzzy
 msgid "Faction"
 msgstr "Frakcija"
 
@@ -5314,9 +5313,8 @@ msgid "Waiting for players to join..."
 msgstr "Laukiama, kol prisijungs kiti žaidėjai..."
 
 #: src/multiplayer_connect.cpp:1810
-#, fuzzy
 msgid "Waiting for players to choose factions..."
-msgstr "Laukiama, kol prisijungs kiti žaidėjai..."
+msgstr "Laukiama, kol žaidėjai pasirinks frakcijas..."
 
 #: src/multiplayer_create.cpp:56 src/multiplayer_lobby.cpp:742
 msgid "Create Game"
@@ -5639,9 +5637,8 @@ msgid "No multiplayer sides found"
 msgstr "Nerasta daugelio žaidėjų pusių"
 
 #: src/multiplayer_wait.cpp:312
-#, fuzzy
 msgid "Choose your faction:"
-msgstr "Pasirinkite veiksmą:"
+msgstr "Pasirinkite frakciją:"
 
 #: src/multiplayer_wait.cpp:312
 msgid "Starting position: "
@@ -6086,7 +6083,7 @@ msgstr "Ginklų ypatybės: "
 
 #: src/reports.cpp:772
 msgid "None"
-msgstr ""
+msgstr "Nėra"
 
 #: src/reports.cpp:964
 #, fuzzy
@@ -6484,76 +6481,13 @@ msgid "HIDE ALL allies’ plans"
 msgstr "SLĖPTI VISUS sąjungininkų planus"
 
 #: src/whiteboard/manager.cpp:1083
-#, fuzzy
 msgid "Show plans for $player"
-msgstr "Rodyti peržaidimus"
+msgstr "Rodyti žaidėjo $player planus"
 
 #: src/whiteboard/manager.cpp:1085
-#, fuzzy
 msgid "Hide plans for $player"
-msgstr "Pakeisti į $player"
+msgstr "Slėpti žaidėjo $player planus"
 
 #: src/whiteboard/manager.cpp:1088
 msgid "Whiteboard Options"
 msgstr ""
-
-#~ msgid "Custom lighting for local time of day areas (uses more memory)"
-#~ msgstr "Vietinio dienos laiko poveikis (naudoja daugiau atminties)"
-
-#~ msgid "TestCamp"
-#~ msgstr "TestKamp"
-
-#~ msgid "Test campaign used to check if new campaign syntax is working."
-#~ msgstr ""
-#~ "Testinė kampanija naudojama patikrinti, ar veikia kampanijų sintaksė."
-
-#~ msgid "(Easy)"
-#~ msgstr "(Lengva)"
-
-#~ msgid "Soldier"
-#~ msgstr "Karys"
-
-#~ msgid "(Normal)"
-#~ msgstr "(Normalu)"
-
-#~ msgid "Lord"
-#~ msgstr "Valdovas"
-
-#~ msgid "(Hard)"
-#~ msgstr "(Sunku)"
-
-#~ msgid "High Lord"
-#~ msgstr "Didysis valdovas"
-
-#~ msgid "Test campaign - first scenario (grass)"
-#~ msgstr "Testinė kampanija – pirmasis scenarijus (žolė)"
-
-#~ msgid "Players"
-#~ msgstr "Žaidėjai"
-
-#~ msgid "Enemies"
-#~ msgstr "Priešai"
-
-#~ msgid "Difficulty: Easy"
-#~ msgstr "Sunkumas: Lengva"
-
-#~ msgid "Difficulty: Normal"
-#~ msgstr "Sunkumas: Normalu"
-
-#~ msgid "Difficulty: Hard"
-#~ msgstr "Sunkumas: Sunku"
-
-#, fuzzy
-#~ msgid "Main campaign define"
-#~ msgstr "Kampanija: $campaign_name"
-
-#, fuzzy
-#~ msgid "Extra campaign define"
-#~ msgstr "Kampanijų kūrimas"
-
-#, fuzzy
-#~ msgid "Multiplayer define"
-#~ msgstr "Daug žaidėjų"
-
-#~ msgid "Defeat enemy leader"
-#~ msgstr "Nugalėkite priešų vadą"

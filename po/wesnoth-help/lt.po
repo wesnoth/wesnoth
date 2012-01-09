@@ -1,12 +1,12 @@
-# Copyright (C) Wesnoth development team, 2007-2011.
+# Copyright (C) Wesnoth development team, 2007-2012.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2011.
+#  Andrius Štikonas <stikonas@gmail.com>, 2007-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-06 11:47+0100\n"
-"PO-Revision-Date: 2011-12-15 21:10+0300\n"
+"PO-Revision-Date: 2012-01-03 18:05+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -734,7 +734,7 @@ msgstr ""
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:112
 msgid "Northlands"
-msgstr ""
+msgstr "Šiaurinės žemės"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:130
@@ -894,9 +894,8 @@ msgstr "Ginklų ypatybės"
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:56 src/help.cpp:1298 src/help.cpp:1300
-#, fuzzy
 msgid "Factions"
-msgstr "Veiksmai"
+msgstr "Frakcijos"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -1123,19 +1122,6 @@ msgstr "Samdymas ir grąžinimas"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1161,15 +1147,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1180,7 +1157,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Paspaudus dešinį pelės klavišą ant pilies langelio ir pasirinkus samdyti, "
+"Paspaudus dešinį pelės klavišą ant pilies laukelio ir pasirinkus samdyti, "
 "naujas dalinys atsiras tame laukelyje. Kitu atveju, dalinys atsiras laisvame "
 "laukelyje šalia bokšto. Galite samdyti tik tiek dalinių, kiek turite laisvų "
 "langelių savo pilyje ir negalite išleisti daugiau aukso negu turite samdymui."
@@ -2811,17 +2788,6 @@ msgstr "Pilis"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#| "Nearly all units receive a considerable bonus to their defense by being "
-#| "stationed in a castle, and all units receive full movement in a castle. "
-#| "Stationing units in a castle represents its defensive capability. Without "
-#| "a unit in each wall hex, an enemy can simply sneak into the castle "
-#| "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#| "\n"
-#| "Most units have about 60% defense in a castle.\n"
-#| "\n"
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2835,7 +2801,7 @@ msgid ""
 msgstr ""
 "<italic>text='Pilys'</italic> yra bet kokie nuolatiniai apsauginiai "
 "įtvirtinimai. Beveik visų pilyje dislokuotų dalinių galimybė apsiginti "
-"pastebimai išauga ir visi daliniai pilyje gali judėti visu greičiu. Pilyje "
+"pastebimai išauga ir dauguma dalinių pilyje gali judėti visu greičiu. Pilyje "
 "dislokuoti daliniai parodo jos gynybinę galią. Jeigu daliniai nėra užpildę "
 "visų pilies pasienyje esančių langelių, priešas gali tiesiog prasmukti vidun "
 "be pasipriešinimo ir įgyti tokias pačias gynybines galias, kaip ir kiti "
@@ -5438,9 +5404,8 @@ msgid "Factions:"
 msgstr "Frakcijos:"
 
 #: src/help.cpp:1301
-#, fuzzy
 msgid "Factions are only used in multiplayer"
-msgstr "Grupuotės naudojamos tik daugelio žaidėjų žaidime"
+msgstr "Frakcijos naudojamos tik daugelio žaidėjų žaidime"
 
 #: src/help.cpp:1344
 msgid "level"

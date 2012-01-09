@@ -1,11 +1,11 @@
-# Copyright (C) Wesnoth development team, 2007-2011.
+# Copyright (C) Wesnoth development team, 2007-2012.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2011.
+#  Andrius Štikonas <stikonas@gmail.com>, 2007-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
+"PO-Revision-Date: 2012-01-06 14:54+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -129,10 +129,9 @@ msgstr "nustato bitų vienam pikseliui vertę. Pavyzdžiui: B<--bpp 32>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
+#, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr "B<-c, --campaign[[E<lt>sunkumasE<gt>] E<lt>kampanijos_idE<gt> [E<lt>scenarijaus_idE<gt>]]>"
+msgstr "B<-c, --campaign \\ [E<lt>kampanijos_idE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
@@ -146,10 +145,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr "B<--data-dir E<lt>aplankasE<gt>>"
+msgstr "B<--campaign-difficulty E<lt>sunkumasE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -162,7 +160,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>scenarijaus_idE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -1766,6 +1764,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
-
-#~ msgid "B<--new-syntax>"
-#~ msgstr "B<--new-syntax>"
