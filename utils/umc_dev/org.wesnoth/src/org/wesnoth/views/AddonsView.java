@@ -370,9 +370,16 @@ public class AddonsView extends ViewPart
 
                         // got something interesting? parse it
                         if( tmpColumns != null && index != - 1 ) {
+                            int firstIndex = line.indexOf( '\'' ) + 1;
+                            int lastIndex = line.lastIndexOf( '\'' );
+
+                            if( lastIndex < firstIndex ) {
+                                lastIndex = line.length( );
+                            }
+
                             tmpColumns[index] = line.substring(
-                                line.indexOf( '\'' ) + 1,
-                                line.lastIndexOf( '\'' ) ).trim( );
+                                firstIndex,
+                                lastIndex ).trim( );
                         }
                     }
 
