@@ -1,13 +1,13 @@
 # French translations for Battle for Wesnoth package
 # Copyright (C) 2006 Wesnoth development team.
 # Automatically generated, 2006.
-# Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011.
+# Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2011-12-14 17:59+0200\n"
-"Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
+"PO-Revision-Date: 2012-01-09 11:57+0100\n"
+"Last-Translator: Gérard Bodin <bodin.gnork@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "SYNOPSIS"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:26
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
-msgstr "B<wesnoth> [I<OPTIONS>] [I<CHEMIN_DE_DATA>]"
+msgstr "B<wesnoth> [I<OPTIONS>] [I<CHEMIN_VERS_DONNEES>]"
 
 # type: SH
 #. type: SH
@@ -131,22 +131,12 @@ msgstr "Définit la valeur de bits par pixel (couleurs). Exemple : B<--bpp 32>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
+#, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr "B<-c, --campaign[[E<lt>difficultéE<gt>] E<lt>id_campagneE<gt> [E<lt>id_scénarioE<gt>]]>"
+msgstr "B<-c, --campaign \\ [E<lt>id_campagneE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy
-#| msgid ""
-#| "goes directly to the campaign based on the parameters.  The difficulty is "
-#| "a number between 1 and current campaign's difficulties number.  The "
-#| "default difficulty is 1.  The scenario must be one of the campaign's "
-#| "child scenarios. The default scenario is campaign's first scenario.  "
-#| "B<Note: When using this switch please ensure that you specify the data "
-#| "directory path as the final argument> aswell, otherwise the game will "
-#| "take the campaign/scenario id as the data dir."
 msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified.  B<Note:> When using this switch "
@@ -154,20 +144,17 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
-"Va directement à la campagne renseignée en paramètre.  La difficulté est un "
-"nombre entre 1 et le nombre de niveaux de difficulté de la campagne en "
-"cours.  La difficulté par défaut est 1.  Le scénario doit être un de ceux de "
-"la campagne. Le scénario par défaut est le premier scénario de la campagne.  "
-"B<Note : Lorsque vous utilisez cette option, assurez-vous d'avoir spécifié "
-"le chemin vers le dossier de données en argument final>, sinon le jeu "
-"prendra l'identifiant campagne/scénario comme répertoire de données."
+"Va directement à la campagne qui a pour identifiant E<lt>id_campagneE<gt>. "
+"Le menu de sélection de campagne apparaîtra si l'id n'est pas spécifié.  "
+"B<Note :> Lorsque vous utilisez cette option, assurez-vous d'avoir spécifié "
+"le chemin vers le dossier de données en argument final, sinon le jeu prendra "
+"l'identifiant campagne/scénario comme répertoire de données."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr "B<--data-dir E<lt>répertoireE<gt>>"
+msgstr "B<--campaign-difficulty E<lt>difficultéE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -175,12 +162,14 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"La difficulté de la campagne spécifiée (de 1 à max). Si la difficulté n'est "
+"pas spécifiée, le menu de sélection de difficulté apparaîtra."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>id_scénarioE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -188,6 +177,8 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
+"L'identifiant du scénario de la campagne spécifiée. La valeur par défaut est "
+"le premier scénario."
 
 # type: TP
 #. type: TP
