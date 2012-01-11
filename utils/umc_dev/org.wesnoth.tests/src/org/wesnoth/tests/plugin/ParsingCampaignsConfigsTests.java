@@ -30,7 +30,7 @@ import org.wesnoth.wml.WMLConfig;
  * The class tests the parsed campaigns config files
  */
 @RunWith( value = Parameterized.class )
-public class ParsingCampaignsConfigs extends WMLTests
+public class ParsingCampaignsConfigsTests extends WMLTests
 {
     private String         campaignDir_;
     private String         campaignId;
@@ -39,7 +39,7 @@ public class ParsingCampaignsConfigs extends WMLTests
     private List< String > parsedCampaignIds_;
     private List< String > parsedScenarioIds_;
 
-    public ParsingCampaignsConfigs( String[] data ) throws Exception
+    public ParsingCampaignsConfigsTests( String[] data ) throws Exception
     {
         setUp( );
 

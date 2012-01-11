@@ -171,7 +171,8 @@ public abstract class WMLTests extends AbstractXtextTests
         for( INode node: la.getSyntaxErrors( ) ) {
             System.out.println( node.getSyntaxErrorMessage( ).getMessage( ) );
         }
-        assertEquals( false, la.hasSyntaxErrors( ) );
+        assertEquals( "There shouldn't have been any syntax errors", false,
+            la.hasSyntaxErrors( ) );
     }
 
     /**
