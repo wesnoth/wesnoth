@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2010-03-17 20:21+0100\n"
+"POT-Creation-Date: 2012-01-08 18:12+0100\n"
+"PO-Revision-Date: 2012-01-06 16:25+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
 "Language: \n"
@@ -42,7 +42,7 @@ msgstr "DP"
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:31
 msgid "(Normal)"
-msgstr ""
+msgstr "(normální)"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:31
@@ -53,7 +53,7 @@ msgstr "Čarodějův učeň (nejlehčí)"
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:32
 msgid "(Challenging)"
-msgstr ""
+msgstr "(nelehká)"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:32
@@ -63,7 +63,7 @@ msgstr "Mág"
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:33
 msgid "(Difficult)"
-msgstr ""
+msgstr "(náročná)"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:33
@@ -73,9 +73,8 @@ msgstr "Velký mág (nejtěžší)"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:37
-#, fuzzy
 msgid "(Intermediate level, 19 scenarios.)"
-msgstr "(Obtížnost: pokročilý hráč, 23 scénářů)"
+msgstr "(Obtížnost: pokročilý hráč, 19 scénářů)"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:37
@@ -179,21 +178,18 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:66
-#, fuzzy
 msgid "<i>The New Mage Ceremony</i>"
-msgstr " Obřad Nového Mága"
+msgstr "<i>Obřad Nového Mága</i>"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:69
-#, fuzzy
 msgid "and"
-msgstr " a"
+msgstr "a"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:72
-#, fuzzy
 msgid "<i>The Name Journey</i>"
-msgstr "Pouť Nového Jména"
+msgstr "<i>Pouť Nového Jména</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:91
@@ -207,9 +203,8 @@ msgstr "Kouzelnická škola Světla, ostrov Alduin"
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:137
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:146
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:155
-#, fuzzy
 msgid "... thorum restro targa thorum..."
-msgstr " ...thorum restro targa thorum... "
+msgstr "... thorum restro targa thorum..."
 
 #. [message]: speaker=Marshal
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:102
@@ -445,12 +440,12 @@ msgstr "Grooar! Pálit! Pálit! Hahahaha..."
 msgid "No! Methor... Don’t die!"
 msgstr "Ne! Methore... Ty nesmíš zemřít!"
 
+# | msgid ""
+# | "Heed my last words, Delfador! Journey northeast to Weldyn, and seek out "
+# | "my friend Leollyn. He will help you."
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:130
 #, fuzzy
-#| msgid ""
-#| "Heed my last words, Delfador! Journey northeast to Weldyn, and seek out "
-#| "my friend Leollyn. He will help you."
 msgid ""
 "Heed my last words, Delfador! Journey northwest to Weldyn, and seek out my "
 "friend Leollyn. He will help you."
@@ -458,14 +453,14 @@ msgstr ""
 "Slyš má poslední slova, Delfadore! Jdi na severovýchod do Weldynu a vyhledej "
 "tam mého přítele Leollyna. Ten ti jistě pomůže."
 
+# | msgid ""
+# | "Well done, Delfador! I see I have trained you well, and you are truly "
+# | "ready to seek your fortune. My traveling days are done, but it is time "
+# | "for you to journey northeast to Weldyn, and seek out my friend Leollyn. "
+# | "He will help you."
 #. [message]: speaker=Methor
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:143
 #, fuzzy
-#| msgid ""
-#| "Well done, Delfador! I see I have trained you well, and you are truly "
-#| "ready to seek your fortune. My traveling days are done, but it is time "
-#| "for you to journey northeast to Weldyn, and seek out my friend Leollyn. "
-#| "He will help you."
 msgid ""
 "Well done, Delfador! I see I have trained you well, and you are truly ready "
 "to seek your fortune. My traveling days are done, but it is time for you to "
@@ -1156,7 +1151,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:100
 msgid "Survive until daybreak."
-msgstr ""
+msgstr "Přežij do svítání."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:128
@@ -3255,10 +3250,10 @@ msgstr "Qgthun"
 msgid "Trgrau"
 msgstr "Trgrau"
 
+# | msgid "Death of Garard"
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:198
 #, fuzzy
-#| msgid "Death of Garard"
 msgid "Death of Garard II"
 msgstr "Garard zemře"
 
