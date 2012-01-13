@@ -3,21 +3,22 @@
 #
 # Automatically generated, 2004.
 # Santtu Pajukanta <santtu@pajukanta.fi>, 2007.
-# Samu Voutilainen <smar@smar.fi>, 2010.
+# Samu Voutilainen <smar@smar.fi>, 2010, 2011.
+# Jarkko Patteri <jarkkopatteri@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-06 11:47+0100\n"
-"PO-Revision-Date: 2010-12-10 21:09+0200\n"
-"Last-Translator: Jussi Rautio <kipuna@gmail.com>\n"
+"POT-Creation-Date: 2012-01-08 18:12+0100\n"
+"PO-Revision-Date: 2012-01-13 22:39+0200\n"
+"Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.2\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -147,18 +148,17 @@ msgstr ""
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
 msgid "Encyclopedia"
-msgstr ""
+msgstr "Tietosanakirja"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
-msgstr ""
+msgstr "<ref>dst='..geography' text='Maantietoa'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
-#, fuzzy
 msgid "Caste"
-msgstr "linna"
+msgstr "Kasti"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:8
@@ -167,11 +167,14 @@ msgid ""
 "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
 "Fighter'</ref>."
 msgstr ""
+"Draakin eriävä ulkomuoto: joko <ref>dst='unit_Drake Clashed' text='draakkien "
+"iskusoturi'</ref> tai <ref>dst='unit_Drake Fighter' "
+"text='Draakkitaistelija'</ref>."
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
 msgid "Aerie"
-msgstr ""
+msgstr "pesä"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
@@ -180,12 +183,13 @@ msgid ""
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
+"Suuri, linnamainen rakennus, jossa <ref>dst='flight' text='parvi'</ref> "
+"asuu. Sisältää <ref>dst='breeding_pen' text='siitoskarsinat'</ref>."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
-#, fuzzy
 msgid "Breeding Pen"
-msgstr "ruokinta"
+msgstr "Siitoskarsina"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
@@ -194,23 +198,26 @@ msgid ""
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
 "text='Dominant'</ref>’s eye."
 msgstr ""
+"<ref>dst='aerie' text='Pesän'</ref> osa, missä ei-aistivat "
+"<ref>dst='breeder' text='Kasvattajat'</ref> elävät <ref>dst='dominant' "
+"text='Valtiaan'</ref> vahtimana."
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
 msgid "Breeding Cycle"
-msgstr ""
+msgstr "Munintakausi"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:26
 msgid ""
 "The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
 "next."
-msgstr ""
+msgstr "Kahden <ref>dst=egg text='muninnan'</ref> välinen aika."
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
 msgid "World Ocean"
-msgstr ""
+msgstr "Maailmanmeri"
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:32
@@ -219,23 +226,34 @@ msgid ""
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
 "the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
 msgstr ""
+"Maailmanmereksi kutsutaan avomerta, joka ympäröi <ref>dst='morogor' "
+"text='Morogorin'</ref> saaristoa. Draakit uskovat sen päättyvän "
+"<ref>dst='abyss' text='Hornaan'</ref>, voimakkaaseen ja kuolettavaan "
+"vesiputoukseen."
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
 msgid "New Continent"
-msgstr ""
+msgstr "Uusi Manner"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
+#, fuzzy
+#| msgid ""
+#| "New Continent -- The great continent to the east of <ref>dst='morogor' "
+#| "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
+#| "flight of Galun."
 msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
+"Uusi manner sijaitsee <ref>dst='morogor' text='Morogorista'</ref> itään. Sen "
+"olemassaoloa ei tiedetty ennen Galunin lentoa."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
 msgid "Abyss"
-msgstr ""
+msgstr "Horna"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:44
@@ -243,11 +261,13 @@ msgid ""
 "In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
 "falls off the world-disc."
 msgstr ""
+"Draakkien kosmologian mukaan jättimäinen vesiputous, jota pitkin meri valuu "
+"tyhjyyteen."
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
 msgid "Spiral Path"
-msgstr ""
+msgstr "Spiraalin tie"
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:50
@@ -256,24 +276,34 @@ msgid ""
 "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
 "Path'</ref>"
 msgstr ""
+"Lähes salainen Draakkien organisaatio, joka pyrkii välttelemään Malthusian "
+"viimeistä sotaa. Katso myös <ref>dst='straight_path' text='Suora Tie'</ref>"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:55
 msgid "Straight Path"
-msgstr ""
+msgstr "Suora tie"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:56
+#, fuzzy
+#| msgid ""
+#| "'The drakish tradition of perpetual expansion and conquest. This term is "
+#| "mostly used by the members of the <ref>dst='spiral_path' text='Spiral "
+#| "Path'</ref>."
 msgid ""
 "The drakish tradition of perpetual expansion and conquest. This term is "
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
+"'Draakkien perinteinen jatkuva laajentaminen ja valloittaminen. Tätä termiä "
+"käyttävät yleensä <ref>dst='spiral_path' text='Spiraalin tien'</ref> "
+"seuraajat."
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
 msgid "Dominant"
-msgstr ""
+msgstr "Valtias"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
@@ -283,11 +313,14 @@ msgid ""
 "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
 "privileges on others."
 msgstr ""
+"<ref>dst='aspirant' text='Kokelas'</ref> josta tulee draakkien johtaja ja "
+"ainoa draakki, joka saa lisääntyä <ref>dst='breeder' text='Kasvattajien'</"
+"ref> kanssa. Hän uskoo lisääntymisoikeuden muille vain harvoin."
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
 msgid "Vulcaniad"
-msgstr ""
+msgstr "Vulkaniaadi"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
@@ -296,42 +329,54 @@ msgid ""
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
 "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
 msgstr ""
+"Epäsäännöllisten <ref>dst='mount_morogor' text='Morogor -vuoren'</ref> "
+"purkauksien aikaväli. <ref>dst='long_count' text='Pitkän ajan'</ref> "
+"kalenteri perustuu tähän."
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
 msgid "Recorder"
-msgstr ""
+msgstr "Kirjuri"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
+#, fuzzy
+#| msgid ""
+#| "A Recorder is a Drakish scrollkeeper whose has mastered the drakish "
+#| "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
+#| "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: "
+#| "they recruit their members from all of the other castes."
 msgid ""
 "A Recorder is a Drakish scrollkeeper who has mastered the drakish "
 "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
 msgstr ""
+"Draakkikirjuri on omaksunut <ref>dst='drakish_script' text='Draakkien "
+"kirjoitukset'</ref>. Kirjurit ovat ainoita, joiden <ref>dst='caste' "
+"text='kasti'</ref> ei määräydy biologisen muodon mukaan. He värväävät "
+"jäseniään kaikista muista kasteista."
 
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
 msgid "Laying"
-msgstr ""
+msgstr "Muninta"
 
 #. [topic]: id=laying
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
 msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr ""
+msgstr "<ref>dst='breeding_cycle' text='Munintakauden'</ref> osa."
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
 msgid "Hatching"
-msgstr ""
+msgstr "Muninta"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
-#, fuzzy
 msgid "Hatchling"
-msgstr "Parantaminen"
+msgstr "Vastakuoriutunut"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
@@ -339,13 +384,12 @@ msgid ""
 "A young drake that has not yet seen another generation hatch. The younger of "
 "the current generation of hatchlings are the most aggressive is the behavior "
 "of the <ref>dst='flight' text='flight'</ref>."
-msgstr ""
+msgstr "Nuori draakki, joka ei ole nähnyt toisen sukupolven kuoriutumista."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
-#, fuzzy
 msgid "Fledgling"
-msgstr "Parantaminen"
+msgstr "Poikanen"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
@@ -354,11 +398,14 @@ msgid ""
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
+"Nuori draakki, joka on nähnyt toisen sukupolven kuoriutumisen. Jos "
+"<ref>dst='flight' text='parvi'</ref> voi menettää sukupolven, he aloittavat "
+"<ref>dst='swarming' text='parveilun'</ref>."
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
 msgid "Breeder"
-msgstr ""
+msgstr "Kasvattaja"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:104
@@ -369,11 +416,17 @@ msgid ""
 "take care of their food for themselves when laying. Drake breeders become "
 "fertile after the next <ref>dst='hatching' text='hatching'</ref>."
 msgstr ""
+"Naispuolinen draakki. He ovat harvinaisia sillä <ref>dst='egg' text='munat'</"
+"ref>, joista kuoriutuu kasvattajia, vaativat erityistä hoivaa. Kasvattajien "
+"lukumäärä myös rajoittuu ei-kasvattavien lukumäärään. Kasvattajat eivät voi "
+"itse hoitaa ravintoaan muninnan aikana. Draakkien kasvattajat tulevat "
+"hedelmällisiksi ensimmäisen <ref>dst='hatching' text='muninnan'</ref> "
+"jälkeen."
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:109
 msgid "Egg, Drake"
-msgstr ""
+msgstr "Muna, Draakki"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:110
@@ -382,11 +435,14 @@ msgid ""
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid "
 "and to some extent the ambient temperature."
 msgstr ""
+"<ref>dst=caste text='Kasti'</ref> johon <ref>dst='hatchling' "
+"text='Vastakuoriutunut'</ref> syntyy, määräytyy muninnan ajankohdan mukaan "
+"sekä ympäröivän lämpötilan perusteella."
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
 msgid "Flight"
-msgstr ""
+msgstr "Parvi"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
@@ -395,11 +451,14 @@ msgid ""
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
+"Draakkien heimo. Parvi asuu <ref>dst='aerie' text='pesässä'</ref>, "
+"kontrolloiden metsästysaluetta. Jokaisella heimolla on yksi "
+"<ref>dst='dominant' text='Valtias'</ref>, joka huolehtii lisääntymisestä."
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:121
 msgid "Aspirant"
-msgstr ""
+msgstr "Kokelas"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
@@ -409,23 +468,27 @@ msgid ""
 "secretion of the hormone is caused by hunt and combat actions in which the "
 "drake is involved."
 msgstr ""
+"Murrosiän ylittänyt miesdraakki, joka pystyy pariutumaan <ref>dst='breeder' "
+"text='kasvattajien'</ref> kanssa. Hormonierityksen aiheuttaa metsästys ja "
+"taistelu."
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:127
 msgid "Ascendant"
-msgstr ""
+msgstr "Nousija"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
+"Draakkinimitys oikealle <ref>dst='unit_Fire Dragon' text='lohikäärmeelle'</"
+"ref>."
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
-#, fuzzy
 msgid "Intendant"
-msgstr "älykäs"
+msgstr "Intendentti"
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:134
@@ -437,10 +500,15 @@ msgid ""
 "likeliest to be granted mating privileges, especially after a notable "
 "service."
 msgstr ""
+"Yksi <ref>dst='aspirant' text='kokelaista'</ref> jotka toimivat "
+"<ref>dst='dominant' text='Valtiaan'</ref>luutnantteina. Perinteisesti "
+"hänellä on yksi<ref>dst=caste text='kasti'</ref> omansa lisäksi. "
+"Ylimääräisiä'intendenttejä' voi palvella erikoistehtävissä. Intendentit "
+"saavat paritteluoikeuden hyvin todennäköisesti, varsinkin erinomaisen "
+"palveluksen johdosta."
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
-#, fuzzy
 msgid "Swarm"
 msgstr "parvi"
 
@@ -450,12 +518,13 @@ msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
+"Parveilijat, jotka ovat lähteneet <ref>dst='aerie' text='pesästä'</ref> "
+"löytääkseen uuden."
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
-#, fuzzy
 msgid "Swarming"
-msgstr "parvi"
+msgstr "parveilu"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -464,21 +533,24 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
+"<ref>dst='flight' text='Parvi'</ref>, joka suuntaa uutta <ref>dst='aerie' "
+"text='pesää'</ref> kohti, toistuen joka <ref>dst='breeding_cycle' "
+"text='munintakaudella'</ref>."
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
 msgid "Runners"
-msgstr ""
+msgstr "Pakolaiset"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:152
 msgid "Drakish term for escaped slaves hunted as game."
-msgstr ""
+msgstr "Draakkien termi karanneille orjille, joita jahdataan kuin riistaa."
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
 msgid "Mount Morogor"
-msgstr ""
+msgstr "Morogor -vuori"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
@@ -486,11 +558,13 @@ msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Tulivuori <ref>dst='morogor' text='Morogor -saariston'</ref> keskimmäisellä "
+"saarella."
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
 msgid "Long Count"
-msgstr ""
+msgstr "Pitkä lasku"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
@@ -498,11 +572,13 @@ msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
+"Draakkien kalenteri perustuen <ref>dst='vulcaniad' text='vulkaniaadiin'</"
+"ref> ja <ref>dst=breeding_cycle text='munintakausiin'</ref>."
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
 msgid "Long Pig"
-msgstr ""
+msgstr "Pitkä sika"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:170
@@ -510,11 +586,13 @@ msgid ""
 "South Seas pidgin for human meat, used to translate a Drakish word with the "
 "same meaning."
 msgstr ""
+"Etelän merien merkitys ihmislihalle, käytetään kääntämään Draakin kielen "
+"sana, jolla on sama merkitys."
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
 msgid "Ceramics"
-msgstr ""
+msgstr "Keramiikka"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
@@ -523,11 +601,14 @@ msgid ""
 "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
 "generate the amount of heat to cure the pieces to full strength."
 msgstr ""
+"Draakit työstävät metallia, mutta ovat myös keraamisen taiteen mestareita.  "
+"Vain <ref>dst='unit_Drake Burner' text='Polttodraakkit'</ref> kykenevät "
+"kehittämään savenpolttoon vaaditun kuumuuden."
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:181
 msgid "Drakish, script"
-msgstr ""
+msgstr "Draakin kirjoitus"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
@@ -536,28 +617,31 @@ msgid ""
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
 "text='Recorder'</ref> vocation."
 msgstr ""
+"Draakkien kirjoitettu kieli. <ref>dst='recorder' text='kirjurit'</ref> "
+"kirjoittavat draakkien tekstit <ref>dst='ceramic' text='keraamisille'</ref> "
+"laatoille."
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:187
 msgid "Drakish, language"
-msgstr ""
+msgstr "Draakkien kieli"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:188
 msgid "The language spoken by the drakes."
-msgstr ""
+msgstr "Draakkien puhuma kieli"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
 #: data/core/encyclopedia/geography.cfg:11
 #: data/core/encyclopedia/geography.cfg:18
 msgid "Geography"
-msgstr ""
+msgstr "Maantietoa"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:25
 msgid "Arkan-thoria"
-msgstr ""
+msgstr "Arkan-thoria"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
@@ -565,11 +649,13 @@ msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
+"Joki, joka alkaa <ref>dst='heart_mountains' text='Sydänvuorilta'</ref>, "
+"jatkuen itään, Listraan saakka."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:31
 msgid "Great Ocean"
-msgstr ""
+msgstr "Suuri valtameri"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
@@ -578,11 +664,14 @@ msgid ""
 "and all rivers eventually flow to it. Far to the west in the the Great Ocean "
 "is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Sijaitsee <ref>dst='great_continent' text='Suurmantereesta'</ref> itään ja "
+"kaikki joet päättyvät sinne. Suuri saaristo, <ref>dst='morogor' "
+"text='Morogor'</ref> sijaitsee valtameressä kaukana lännessä."
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:37
 msgid "Morogor"
-msgstr ""
+msgstr "Morogor"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:40
@@ -593,23 +682,28 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
+"Saaristo, joka sijaitsee jossain <ref>dst='great_ocean' text='Suuressa "
+"valtameressä'</ref> <ref>dst='green_isle' text='Vihersaaren'</ref> ja "
+"<ref>dst=old_continent text='Vanhan Mantereen'</ref> välissä.\n"
+"<ref>dst='..race_drake' text='Draakit'</ref> asuvat siellä.\n"
+"Morogor on myös saariston keskimmäisen saaren nimi."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
-#, fuzzy
 msgid "Green Isle"
-msgstr "Vihreä"
+msgstr "Vihersaari"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Suurempi saari <ref>dst='great_ocean' text='Suuressa valtameressä'</ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
 msgid "Old Continent"
-msgstr ""
+msgstr "Vanha Manner"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
@@ -617,11 +711,13 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Sijaitseen<ref>dst='morogor' text='Morogorista'</ref> länteen, "
+"<ref>dst='great_ocean' text='Suuren valtameren'</ref> takana."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:57
 msgid "Great Continent"
-msgstr ""
+msgstr "Suurmanner"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:58
@@ -630,11 +726,14 @@ msgid ""
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Manner jossa <ref>dst='kingdom_wesnoth' text='Wesnothin kuningskunta'</ref> "
+"sijaitsee. Sen länsirannikko on osa <ref>dst='great_ocean' text='Suurta "
+"valtamerta'</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:63
 msgid "Irdya"
-msgstr ""
+msgstr "Irdya"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:64
@@ -644,12 +743,15 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
+"Maailma, jossa <ref>dst='kingdom_wesnoth' text='Wesnoth'</ref> sijaitsee on "
+"nimeltään ‘Irdya’. Tätä termiä käytetään vain harvoin pääkartan osoittamalla "
+"aikakaudella. Ihmiset sanovat vain“maailma”, tai runollisesti, \"laaja, "
+"vihreä maailma”."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
-#, fuzzy
 msgid "Kingdom of Wesnoth"
-msgstr "-- Wesnothin kirja"
+msgstr "Wesnothin Kuningaskunta"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:95
@@ -708,11 +810,57 @@ msgid ""
 "south of Aldril. It receives drainage from the Brown Hills and feeds into "
 "the Great River. (Not shown on the main map.)"
 msgstr ""
+"Wesnothin valtakunta sijaitsee <ref>dst='great_continent' "
+"text='Suurmantereen'</ref> pohjoisessa keskiosissa. Suurin osa virallisista "
+"kampanjoista perustuu siihen. Sen rajaavat Suuri joki pohjoisessa, Aethenin "
+"metsä <ref>dst='southwest_elven_lands' text='lounaassa'</ref>, Suuren "
+"valtameren rannikko lännessä ja Karvasvesi kaakossa.\n"
+"\n"
+"Aethen -joen toisella puolella, Tahnin linnoituksesta etelään, sijaitsee "
+"Wesnothin siirtokunta. Sitä rajaa etelässä (ei kartalla) sankka metsikkö, "
+"joka saattaa olla Aethen -metsän pohjoisosia.     • Merkittäviä kaupunkeja:\n"
+"          ◦ Weldyn: Wesnothin pääkaupunki\n"
+"          ◦ Aldril: Kaupunki Helmilahdella\n"
+"          ◦ Mustanveden satama: Kaupunki Helmilahdesta etelään\n"
+"          ◦ Carcyn: Kaupunki Harmaametsän ja Suuren joen välissä.\n"
+"          ◦ Dan’Tonk: Wesnothin suurin kaupunki keskellä maata, Weldynistä "
+"luoteeseen.\n"
+"          ◦ Soradoc: Pohjoisin raja-asema hallinnoi Weldyn -joen ja Suuren "
+"joen haaraa.\n"
+"          ◦ Fort Tahn: Eteläisin raja-asema, hallinnoi pohjois-etelä "
+"suuntaista tietä, joka ylittää Aethen -joen.\n"
+"          ◦ Tath: Tärkeä linnakekaupunki Dan’Tonkista pohjoiseen, hallinnoi "
+"erämaata Ruskakukkuloiden itäpuolelta aina pohjoiseen, Abezin kahlaamoon.\n"
+"\n"
+"    • Huomattavia maanmuotoja:\n"
+"          ◦ Aarnikotkien vuori: Tarunomaisten aarnikotkien koti\n"
+"          ◦ Abezin kahlaamo: Suuren joen matalikko, yleensä Wesnothin "
+"hallussa\n"
+"          ◦ Weldynjoki: Alkaa etelästä, liittyen Suureen jokeen\n"
+"          ◦ Suuri keskitasanko: Alue Weldynin Dan'Tonkin ja Tahnin linnakken "
+"piirissä, joka on erittäin viljelykelpoista. Suurin osa Wesnothin asukkaista "
+"asuu täällä\n"
+"          ◦ Matalat kukkulat: Suuren keskitasangon pohjoispuolella, "
+"maatalouden ja karjan kannalta tuottoisaa aluetta\n"
+"          ◦ Ruskakukkulat: Aarnikotkien vuorta ympäröivät hylätyt alueet, "
+"jotka ovat usein vaarallisia\n"
+"          ◦ Hevostasangot: Tasainen alue Suuresta joesta etelään, Glynin "
+"metsän ja Weldynjoen välissä , sen eteläosat yhdistyvät Keskitasankoihin. "
+"Mahtavien Klaanien koti ja Wesnothin parhaiden hevosten syntysija.\n"
+"          ◦ Estmarkin kukkulat: Suurehko mäkialue Weldynjoen itäpuolella. "
+"Wesnoth on yleensä kansoittanut joen läheisimpiä alueita, mutta "
+"valtionhallinto on heikkoa ja rikollisuus yleistä\n"
+"          ◦ Glynin metsä: Tunnetaan joskus Kuninkaallisena metsänä, joka on "
+"saanut nimensä yhdeltä Haldric II:n pojalta\n"
+"          ◦ Harmaametsä: Laaja metsikkö Carcynin ja Aldrilin välissä, jota "
+"pidetään noiduttuna \n"
+"          ◦ Vihersuo: Laaja suoalue Aldrilista etelään. Ruskakukkuloiden "
+"jätteet valuvat sitä kautta Suurjokeen (ei kartalla)"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:100
 msgid "Elensefar"
-msgstr ""
+msgstr "Elensefar"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
@@ -733,11 +881,25 @@ msgid ""
 "          ◦ <ref>dst='great_river' text='Great River'</ref>: It is very wide "
 "at this point, and only ships can cross it."
 msgstr ""
+"Elensefar on aina välillä <ref>dst='kingdom_wesnoth' text='Wesnothin'</ref> "
+"provinssi, välillä itsenäinen ja välillä liitossa Wesnothin kanssa. "
+"Rajavyöhykket määrittää Suurijoki pohjoisessa, idässä karkeasti määritelty "
+"rajalinja Wesnothin kanssa, Helmilahti etelässä ja ja <ref> dst='great_ocean "
+"text='valtameri'</ref> lännessä. Lisätietoa löytyy Wesnothin historiikista.\n"
+"\n"
+"    • Huomattavia kaupunkeja:\n"
+"          ◦ Elensefar: Pääkaupunki, joka sijaitsee<ref>dst='great_river' "
+"text='Suurijoen'</ref> suistossa olevalla saarella\n"
+"          ◦ Carcyn: Wesnoth-Elensefar rajalla sijaitseva kaupunki, josta "
+"valtiot riitelevät\n"
+"    • Huomattavia maastonkohtia:\n"
+"          ◦ <ref>dst='great_river' text='Suurijoki'</ref>: Elensefarin "
+"kohdalla niin leveä, että vain laiva pääsee siitä yli."
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:112
 msgid "Northlands"
-msgstr ""
+msgstr "Pohjoisen maat"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:130
@@ -782,11 +944,45 @@ msgid ""
 "          ◦ Great River: The origin of this river is somewhere in the east "
 "of the northern lands"
 msgstr ""
+"Pohjoisen mailla ei ole hallintoa. Sitä asuttavat örkkien, kääpiöiden, "
+"barbaarien ja jopa haltioiden joukkiot. Pohjois- ja itärajoja ei ole "
+"määritetty. Eteläisin raja on <ref>dst='great_river' text='Suuri joki'</ref> "
+"ja länsirajana toimii <ref>dst='great_ocean' text='Suuri valtameri'</ref>.\n"
+"\n"
+"    • Huomattavat kaupungit:\n"
+"          ◦ Glamdrol: Örkkiheimon pääkaupunki\n"
+"          ◦ Romyr: Toisen örkkiheimon pääkaupunki\n"
+"          ◦ Wesmere: Ka’lian, haltianeuvoston sijainti\n"
+"          ◦ Kääpiöiden Portit: Ihmisten ja kääpiöiden kaupunki Sydänvuorten "
+"eteläpuolella. Suuri kauppakeskus\n"
+"          ◦ Dallben ja Delwyn: Ihmiskylät jotka Suuren joen ylittäneet "
+"ihmiset rakensivat Wesnothin kulta-ajan laajennuksissa. Nykyisin hylättyjä. "
+"Ihmiset kutsuivat Elensefarin koillispuolen metsikköä, kylien aluetta, "
+"Annuvinin provinssiksi, mutta haltioille se on Wesmere.\n"
+"\n"
+"    • Huomattavia maanmuotoja:\n"
+"          ◦ Heart Mountains: Käytännössä läpipääsemätön este Arkan-thoria -"
+"joen maaston ja Pohjoisten tasankojen välissä          ◦ Sydänhampaat: "
+"Erityisen luotaantyöntävä terävien huippujen alue Vrug -järvestä lounaaseen "
+"ja Wesmerestä pohjoiseen; kaikkein vaarallisin Sydänvuorten alue. jota "
+"asuttavat vain erakot, hullut ja maagit\n"
+"          ◦ Kammosuo: Suuri mutalikko Sydänvuorten ja Suuren joen välissä, "
+"tunnettu vaarallisuudestaan\n"
+"          ◦ Vrug -järvi: Suuri vuoristojärvi, jonka joet ovat ainoa reitti "
+"Pohjoisten vuorten läpi\n"
+"          ◦ Arkan-thoria: Joki, joka laskee Vrug -järvestä: Tämä on sen "
+"haltianimi. Ihmiset tuntevat joen nimellä 'Pitkäkäinen'\n"
+"          ◦ Listra -joki: Suureen jokeen juokseva uoma, josta Vrug -järven "
+"vesi tulee\n"
+"          ◦ Lintanirin metsä: Suuren pohjoismetsän eteläisin osa, "
+"jättimäinen korpi, jonka pohjoisosat tuntevat vain haltiat. Elensiria, "
+"heidän pääkaupunki metsässä, ei yleensä saa ihmisvieraita\n"
+"          ◦ Suurijoki: Joen alkupää on jossain pohjoisten maiden itäpuolella"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr ""
+msgstr "Lounaismaat"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
@@ -803,12 +999,22 @@ msgid ""
 "the southwest—much farther than is charted—and is home to <ref>dst='.."
 "race_elf' text='elves'</ref>."
 msgstr ""
+"Metsähaltiat elävät erillään pohjoisen haltioista, ollen vain ajoittain "
+"yhteydessä heihin ja muihin valtioihin.Sen rajat ovat koillinen Vihersuo, "
+"aavikko (ei näkyvillä) etelässä,ja  <ref>dst='great_ocean' text='meri'</ref> "
+"lännessä.\n"
+"\n"
+"    • Huomattavia kaupunkeja\n"
+"          ◦ Ei tietoa\n"
+"    • Huomattavat maanmuodot:\n"
+"          ◦ Aethenin metsä: Suurin eteläinen metsä, jatkuen pitkälle "
+"lounaaseen - pidemmälle kuin on kartoitettu. Sitä asuttavat <ref>dst='.."
+"race_elf' text='haltiat'</ref>."
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:146
-#, fuzzy
 msgid "Heart Mountains"
-msgstr "vuori"
+msgstr "Sydänvuoret"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:147
@@ -817,11 +1023,14 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
+"Käytännössä läpipääsemätön este <ref>dst='arkan_thoria' text='Arkan-thoria -"
+"joen'</ref> maaston ja <ref>dst='far_north' text='Pohjoisten Tasankojen'</"
+"ref> välissä."
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
 msgid "Far North"
-msgstr ""
+msgstr "Pohjoisen maa"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:176
@@ -858,6 +1067,37 @@ msgid ""
 "          ◦ River Bork\n"
 "          ◦ Wild Steppe"
 msgstr ""
+"Kylmä, kova ja luoksepääsemätön Pohjoisen maa on örkkiklaanien muinainen "
+"koti. Se sijaitesee <ref>dst='heart_mountains' text='Sydänvuorten'</ref> "
+"pohjoispuolella, jota örkit pitävät omanaan, kutsuen sitä nimellä Haggid-"
+"Dargor. Idässä sijaitsevat Villien Arojen järjestäytymättömät heimot, jotka "
+"ovat klaanin ulottumattomissa, kulkevat ihmisbarbaarien mukana ja tappelevat "
+"Pohjoisten Tasankojen Korkeiden Haltioiden kanssa (tunnetaan Pohjoisen "
+"haltioina ihmisten maassa). Korkeat Haltiat itse asuvat kauempana idässä, "
+"huhujen mukaan laajassa kuningaskunnassa.\n"
+"\n"
+"    • Huomattavat kaupungit:\n"
+"          ◦ Barag Gor, Örkkivaltuuston kotikaupunki\n"
+"          ◦ Bitok\n"
+"          ◦ Borstep\n"
+"          ◦ Castelfrang\n"
+"          ◦ Farzi\n"
+"          ◦ Festog\n"
+"          ◦ Grisbi\n"
+"          ◦ Lmarig\n"
+"          ◦ Melmog\n"
+"          ◦ Prestim\n"
+"          ◦ Tirigaz\n"
+"    • Huomattavat Maa-alueet:\n"
+"          ◦ Hylätty suo\n"
+"          ◦ Dorth -vuoret\n"
+"          ◦ Haag -vuoret\n"
+"          ◦ Vihermetsä\n"
+"          ◦ Hiljainen metsä\n"
+"          ◦ Thelienin metsä\n"
+"          ◦ Oumph-joki\n"
+"          ◦ Bork-joki\n"
+"          ◦ Villiarot"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -962,7 +1202,6 @@ msgstr "Yleiskuva"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:120
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -978,11 +1217,11 @@ msgstr ""
 "<italic>text='Taistelu Wesnothista'</italic> on vuoropohjainen "
 "fantasiastrategiapeli, joka poikkeaa hieman muista nykyaikaisista "
 "strategiapeleistä. Siinä, missä muut pelit pyrkivät olemaan mahdollisimman "
-"monimutkaisia sekä sääntöjen että pelaamisen osalta, Taistelu Wesnothista "
-"pyrkii sääntöjen ja pelattavuuden yksinkertaisuuteen. Tämä ei kuitenkaan "
-"tarkoita, että peli olisi yksinkertainen. Näistä yksinkertaisista säännöistä "
-"voi luoda monenlaisia strategioita, joten peli on helppo oppia, mutta vaikea "
-"hallita."
+"monimutkaisia sekä sääntöjen että pelaamisen osalta, <italic>text='Taistelu "
+"Wesnothista'</italic> pyrkii sääntöjen ja pelattavuuden yksinkertaisuuteen. "
+"Tämä ei kuitenkaan tarkoita, että peli olisi yksinkertainen. Näistä "
+"yksinkertaisista säännöistä voi luoda monenlaisia strategioita, joten "
+"pelaamista on helppo oppia, mutta vaikea hallita."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:132
@@ -1006,7 +1245,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:135
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1020,7 +1258,7 @@ msgstr ""
 "\n"
 "\n"
 "Aluksi on parasta painaa <italic>text=Tutoriaali</italic>-nappia "
-"päävalikossa. Tämä vie sinut vuorovaikutteiseen harjoitteluun, joka opettaa "
+"päävalikossa. Tämä vie sinut interaktiiviseen harjoitteluun, joka opettaa "
 "sinulle Wesnothin perusteet. Tämän jälkeen suositellaan kampanjaa "
 "Valtaistuimen perillinen — valitse päävalikosta <italic>text=Kampanjat</"
 "italic> ja <italic>text='Valtaistuimen perillinen'</italic>. Koska Taistelu "
@@ -1048,7 +1286,6 @@ msgstr "Yleistietoja pelistä"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:144
-#, fuzzy
 msgid ""
 "The game takes place over a series of battles, called "
 "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
@@ -1067,7 +1304,6 @@ msgstr ""
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:146
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1090,7 +1326,6 @@ msgstr "Voitto ja häviö"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:153
-#, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. Usually you will achieve victory by killing "
@@ -1099,15 +1334,15 @@ msgid ""
 "designated point, say, or rescuing someone, or solving a puzzle, or holding "
 "out against a siege until a certain number of turns have elapsed."
 msgstr ""
-"Huomioi tarkasti tavoiteikkuna jokaisen skenaarion alussa. Yleensä voitat "
-"tappamalla kaikki vihollisjohtajat ja häviät vain, jos oma johtajasi kuolee. "
-"Skenaarioilla voi kuitenkin olla muitakin voittoedellytyksiä – saada "
-"johtajasi tiettyyn paikkaan, jonkun pelastaminen, arvoituksen ratkaiseminen, "
-"tai paikan puolustaminen, kunnes tietty määrä vuoroja on kulunut."
+"Huomioi tarkasti <bold>text='tavoiteikkuna'</bold> jokaisen skenaarion "
+"alussa. Yleensä voitat tappamalla kaikki vihollisjohtajat ja häviät vain, "
+"jos oma johtajasi kuolee. Skenaarioilla voi kuitenkin olla muitakin "
+"voittoedellytyksiä – saada johtajasi tiettyyn paikkaan, jonkun pelastaminen, "
+"arvoituksen ratkaiseminen, tai paikan puolustaminen, kunnes tietty määrä "
+"vuoroja on kulunut."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1118,7 +1353,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<Kun voitat tehtävän, kartta harmaantuu ja <bold>Lopeta vuoro</bold> -nappi "
+"Kun voitat tehtävän, kartta harmaantuu ja <bold>Lopeta vuoro</bold> -nappi "
 "muuttuu <bold>Päätä tehtävä</bold >-napiksi. Voit vielä tehdä asioita, kuten "
 "muuttaa tallennusasetuksia tai (moninpelissä) keskustella muiden pelaajien "
 "kanssa, ennen kuin painat lopetusnappia päästääksesi takaisin palvelimen "
@@ -1132,6 +1367,18 @@ msgstr "Värväys ja kutsuminen"
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
 #, fuzzy
+#| msgid ""
+#| "Each side begins with one leader in their keep. At the start of any "
+#| "battle, and at times during it, you will need to recruit <ref>dst='.."
+#| "units' text='units'</ref> into your army. To recruit, you must have your "
+#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
+#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
+#| "text='castle'</ref>. Then you may recruit by either choosing "
+#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
+#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
+#| "which lists units available for recruitment, along with their gold cost. "
+#| "Click on a unit to see its statistics, then press the recruit button to "
+#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1185,7 +1432,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1195,7 +1441,7 @@ msgstr ""
 "\n"
 "\n"
 "Värvätyt yksiköt saavat kaksi satunnaista <ref>dst='..traits_section' "
-"text='piirrettä'</ref>, jotka vaikuttavat niiden kykyihin."
+"text='piirrettä'</ref>, jotka vaikuttavat niiden taistelukykyihin."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
@@ -1215,7 +1461,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1245,13 +1490,11 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
-#, fuzzy
 msgid " green if it hasn’t moved this turn,"
 msgstr "vihreä, jos yksikkö ei ole liikkunut tällä vuorolla,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:181
-#, fuzzy
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
 "keltainen, jos se on liikkunut, mutta voisi edelleen liikkua tai hyökätä"
@@ -1261,16 +1504,16 @@ msgstr ""
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
+"punainen, jos yksikkö ei voi enää liikkua tai hyökätä, tai jos pelaaja "
+"päätti yksikön vuoron."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
-#, fuzzy
 msgid " blue if the unit is an ally you do not control."
-msgstr "Pallo on sininen, jos yksikkö on liittolaisesi."
+msgstr "sininen, jos yksikkö on liittolaisesi, jota et voi hallita."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:184
-#, fuzzy
 msgid " Enemy units have no orb on top of their energy bar."
 msgstr "Vihollisen yksiköillä ei ole palloa energiapylväänsä huipulla."
 
@@ -1281,7 +1524,6 @@ msgstr "Elämäpisteet ja kokemuspisteet"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:192
-#, fuzzy
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1289,10 +1531,11 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
-"Jokaisella yksiköllä on tietty määrä elämäpisteitä (EP). Jos yksikön "
-"elämäpisteet putoavat alle 1 pisteen, yksikkö kuolee. Jokaisella yksiköllä "
-"on myös tietty määrä kokemuspisteitä (KP). Vasta värvätyllä yksiköllä ei ole "
-"kokemusta, mutta se saa kokemusta otellessaan vastustajien kanssa."
+"Jokaisella yksiköllä on tietty määrä <italic>text='elämäpisteitä'</italic> "
+"(EP). Jos yksikön elämäpisteet putoavat alle 1 pisteen, yksikkö kuolee. "
+"Jokaisella yksiköllä on myös tietty määrä <italic>text='kokemuspisteitä'</"
+"italic> (KP). Vastavärvätyllä yksiköllä ei ole kokemusta, mutta se saa "
+"kokemusta otellessaan vastustajien kanssa."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:196
@@ -1357,7 +1600,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1386,7 +1628,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1430,7 +1671,6 @@ msgstr "Huntu ja sumu"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:221
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1454,13 +1694,14 @@ msgid ""
 "movement."
 msgstr ""
 "Joissain skenaarioissa osa kartasta on piilotettu. Tähän on kaksi eri tapaa, "
-"joita voidaan käyttää yhdessä tai erikseen. Huntu piilottaa sekä maaston "
-"että yksiköt. Kun paljastat jonkin alueen, se on kuitenkin pysyvästi "
-"näkyvillä. Sumu piilottaa vain vihollisyksiköt ja muiden kuin omien kyliesi "
-"omistustiedot. Sumu poistuu yksiköittesi läheltä, mutta palaa, kun yksikkösi "
-"poistuvat alueelta. Sekä huntu että sumu hälvennetään käyttäen yksiköitä. "
-"Jokainen yksikkö paljastaa alueet, jotka ovat niiden heksojen vieressä, "
-"joihin pääsee yhden vuoron aikana (ottamatta vihollisia huomioon).\n"
+"joita voidaan käyttää yhdessä tai erikseen. <italic>text='Huntu'</italic> "
+"piilottaa sekä maaston että yksiköt. Kun paljastat jonkin alueen, se on "
+"kuitenkin pysyvästi näkyvillä. <italic>text='Sumu'</italic> piilottaa vain "
+"vihollisyksiköt ja muiden kuin omien kyliesi omistustiedot. Sumu poistuu "
+"yksiköittesi läheltä, mutta palaa, kun yksikkösi poistuvat alueelta. Sekä "
+"huntu että sumu hälvennetään käyttäen yksiköitä. Jokainen yksikkö paljastaa "
+"alueet, jotka ovat niiden heksojen vieressä, joihin pääsee yhden vuoron "
+"aikana (ottamatta vihollisia huomioon).\n"
 "\n"
 "Tavallisesti voit peruuttaa yksikön liikkeen niin kauan kuin satunnaista "
 "tapahtumaa, kuten taistelua tai värväystä, ei ole tapahtunut. (Useimmat "
@@ -1469,7 +1710,7 @@ msgstr ""
 "aktivoida asetuksen ”Viivytä peitteen päivitystä” Toiminnot-valikosta. Tämä "
 "estää yksiköitä hälventämästä huntua tai sumua ennen kuin seuraava "
 "satunnainen tapahtuma tai manuaalinen päivitys (”Päivitä peite nyt”) on "
-"tapahtunut tai vuorosi päättyy. Näin voit käyttää peruutustoimintoa "
+"tapahtunut, tai vuorosi päättyy. Näin voit käyttää peruutustoimintoa "
 "normaalisti."
 
 #. [topic]: id=combat
@@ -1479,7 +1720,6 @@ msgstr "Taistelu"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:229
-#, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -1492,19 +1732,18 @@ msgid ""
 "as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"Taistelu pelissä tapahtuu aina vierekkäisissä heksoissa olevien yksiköiden "
+"Taisteleminen tapahtuu aina vierekkäisissä heksoissa olevien yksiköiden "
 "välillä. Klikkaa yksikköäsi, ja klikkaa vihollista, jota vastaan haluat "
-"hyökätä: yksikkösi siirtyy kohti vihollisyksikköä, ja kun ne ovat "
-"vierekkäin, taistelu alkaa. Hyökkääjä ja puolustaja vaihtavat iskuja, kunnes "
-"kumpikin on käyttänyt omat iskunsa. Hyökkääjä valitsee jonkin aseistaan "
-"hyökätäkseen, ja puolustaja vastaa jollakin omista, saman tyypin aseistaan. "
-"On olemassa kahdentyyppisiä hyökkäyksiä: lähitaistelu miekoilla, kirveillä, "
-"hampailla tai vastaavilla aseilla, ja etätaistelu jousilla, heittokeihäillä, "
+"hyökätä: yksikkösi siirtyy kohti vihollisyksikköä, ja kun ne ovat vierekkäin "
+"- taistelu alkaa. Hyökkääjä ja puolustaja vaihtavat iskuja, kunnes kumpikin "
+"on käyttänyt omat iskunsa. Hyökkääjä valitsee jonkin aseistaan hyökätäkseen, "
+"ja puolustaja vastaa jollakin omista, saman tyypin aseistaan. On olemassa "
+"kahdentyyppisiä hyökkäyksiä: lähitaistelu miekoilla, kirveillä, hampailla "
+"tai vastaavilla aseilla, ja etätaistelu jousilla, heittokeihäillä, "
 "tulipalloilla tai vastaavilla aseilla."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:231
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1516,7 +1755,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1539,7 +1777,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:235
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1547,11 +1784,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Mahdollisuus osua'</header>"
+"<header>text='Osumismahdollisuus'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1576,7 +1812,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1607,7 +1842,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1631,7 +1865,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1655,7 +1888,6 @@ msgstr "Vahinkotyypit ja vastustukset"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:252
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -1667,8 +1899,8 @@ msgstr ""
 "Wesnothissa on kolme vahinkotyyppiä, jotka yleensä liittyvät fyysisiin "
 "iskuihin: viilto, lävistys ja murjova isku. Sen lisäksi on kolme yleensä "
 "taikahyökkäyksiin liittyvää vahinkotyyppiä: tuli, kylmä ja salatiede. Eri "
-"yksiköillä voi olla vastustuksia, jotka muuttavat vahinkoa, jonka ne "
-"kärsivät tietyistä vahinkotyypeistä."
+"yksiköillä voi olla vastustuksia, jotka muuttavat tietyistä vahinkotyypeistä "
+"kärsittyä vahinkoa."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
@@ -1691,7 +1923,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1726,13 +1957,6 @@ msgstr "Vuorokaudenaika"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
-#| " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-#| " Liminal units get +25% damage during twilight.\n"
-#| " Neutral units are unaffected by the time of day."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1749,7 +1973,6 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1848,7 +2071,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:291
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1867,15 +2089,15 @@ msgstr ""
 "\n"
 "Vaikka useimmilla yksiköillä on kolme kehitystasoa, kaikilla ei ole. "
 "Joillakin yksiköillä (kuten <ref>dst='unit_Mage' text='velhoilla'</ref>) voi "
-"olla neljä. Kun yksikkö saavuttaa enimmäistasonsa, sillä on luultavasti "
-"mahdollisuus ”enimmäistason jälkeiseen ylenemiseen” (EJY, englanniksi AMLA). "
-"EJY muuttaa yksikköä joka kerta, kun yksikkö saavuttaa kokemuspisteidensä "
-"rajan, mutta yksikkö pysyy samantasoisena. Tyypillinen EJY-vaikutus on, että "
-"yksikön kokonais-EP-määrä kasvaa kolmella ja yksikkö paranee täysin. Yksikkö "
-"saavuttaa ensimmäisen EJY:nsä yleensä 150 KP:llä (120 KP:llä jos se on "
-"älykäs). EJY:n saavuttaminen kuitenkin vaikeutuu jokaisen EJY:n jälkeen, "
-"joten yleensä on kannattavampaa yrittää saada alempitasoisia yksiköitä "
-"ylenemään."
+"olla neljä. Kun yksikkö saavuttaa enimmäistasonsa, sillä voi "
+"ollamahdollisuus ”enimmäistason jälkeiseen ylenemiseen” (EJY, englanniksi "
+"AMLA). EJY muuttaa yksikköä joka kerta, kun yksikkö saavuttaa "
+"kokemuspisteidensä rajan, mutta yksikkö pysyy samantasoisena. Tyypillinen "
+"EJY-vaikutus on, että yksikön kokonais-EP-määrä kasvaa kolmella ja yksikkö "
+"paranee täysin. Yksikkö saavuttaa ensimmäisen EJY:nsä yleensä 150 KP:llä "
+"(120 KP:llä jos se on älykäs). EJY:n saavuttaminen kuitenkin vaikeutuu "
+"jokaisen EJY:n jälkeen, joten yleensä on kannattavampaa yrittää saada "
+"alempitasoisia yksiköitä ylenemään."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:298
@@ -1900,7 +2122,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:301
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1909,19 +2130,20 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Lepääminen: Yksikkö, joka ei liiku, hyökkää, eikä joudu hyökkäyksen "
-"kohteeksi, paranee 2 elämäpisteen verran seuraavalla vuorollaan."
+"<italic>text='Lepääminen'</italic>: Yksikkö, joka ei liiku, hyökkää, eikä "
+"joudu hyökkäyksen kohteeksi, paranee 2 elämäpisteen verran seuraavalla "
+"vuorollaan."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Villages'</italic>: A unit which starts a turn in a village "
 "will heal 8HP."
 msgstr ""
 "\n"
-"Kylät: Yksikkö, joka aloittaa vuoronsa kylässä, paranee 8 elämäpisteellä."
+"<italic>text='Kylät'</italic>: Yksikkö, joka aloittaa vuoronsa kylässä, "
+"paranee 8 elämäpisteellä."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1936,7 +2158,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Healing units'</italic>: Units with the "
@@ -1946,13 +2167,13 @@ msgid ""
 "from causing that unit damage."
 msgstr ""
 "\n"
-"Hoivaavat yksiköt: Yksiköt, joilla on erikoistaito <ref>dst='ability_heals "
-"+4' text='hoivaa'</ref>, voivat hoivata viereisiään ystävällisiä yksiköitä "
-"yleensä 4 tai 8 EP per vuoro, tai estää myrkyn vaikutuksen."
+"<italic>text='Hoivaavat yksiköt'</italic>: Yksiköt, joilla on erikoistaito "
+"<ref>dst='ability_heals +4' text='hoivaa'</ref>, voivat hoivata viereisiään "
+"ystävällisiä yksiköitä yleensä 4 tai 8 EP per vuoro, tai estää myrkyn "
+"vaikutuksen."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Curing units'</italic>: Units with the "
@@ -1961,10 +2182,10 @@ msgid ""
 "well)."
 msgstr ""
 "\n"
-"Lääkitsevät yksiköt: Yksiköt jotka osaavat <ref>dst='ability_cures' "
-"text='lääkitä'</ref>, parantavat jokaisen vieressään olevan oman puolen "
-"yksikön myrkytystilan (hoivaamisen sijaan, jos yksiköllä on myös kyseinen "
-"erikoistaito)."
+"<italic>text='Lääkitsevät yksiköt'</italic>: Yksiköt jotka osaavat "
+"<ref>dst='ability_cures' text='lääkitä'</ref>, parantavat jokaisen "
+"vieressään olevan oman puolen yksikön myrkytystilan (hoivaamisen sijaan, jos "
+"yksiköllä on myös kyseinen erikoistaito)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -1989,7 +2210,6 @@ msgstr "Tulot ja menot"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:315
-#, fuzzy
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1999,11 +2219,10 @@ msgstr ""
 "Wesnothissa ei riitä pelkästään yksiköiden värväys ja taisteleminen. Sinun "
 "pitää tarkkailla myös rahatilannettasi (varsinkin kampanjoissa, joissa voit "
 "viedä ylimääräisen kullan taistelusta toiseen). Olennaisia asioita on kaksi: "
-"tulot ja ylläpito."
+"<italic>text='tulot'</italic> ja <italic>text='ylläpito'</italic>."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2024,7 +2243,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2046,7 +2264,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:321
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2061,7 +2278,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2073,7 +2289,7 @@ msgid ""
 "playing (such as Konrad) will almost always be a leader."
 msgstr ""
 "\n"
-"Ylläpitoon on kaksi tärkeää poikkeusta: yksiköt, joilla on ominaisuus "
+"Ylläpitoon liittyy kaksi tärkeää poikkeusta: yksiköt, joilla on ominaisuus "
 "”uskollinen”, eivät milloinkaan tarvitse ylläpitoa. Yksiköt, jotka sinulla "
 "on taistelun alussa (kuten Konrad ja Delfador), tai yksiköt, jotka liittyvät "
 "taistelun aikana (kuten hevosmies ”Valtaistuimen perillisen” toisessa "
@@ -2086,7 +2302,6 @@ msgstr "Yhteenveto"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2112,7 +2327,6 @@ msgstr "Lisenssi"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:350
-#, fuzzy
 msgid ""
 "Most units have two traits. However, undead units are assigned the single "
 "trait <italic>text='undead'</italic>, and woses do not receive any traits. "
@@ -2127,7 +2341,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2145,7 +2358,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2175,7 +2387,6 @@ msgstr ""
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:365
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2192,7 +2403,7 @@ msgstr ""
 "ylenevät nopeammin. Myöhemmin kampanjassa älykkäät yksiköt eivät ole enää "
 "niin hyödyllisiä, koska enimmäistason jälkeinen yleneminen (EJY) ei ole yhtä "
 "merkittävää kuin yleneminen korkeammalle tasolle. Jos sinulla on paljon "
-"korkeimman tasoisia yksiköitä, voit haluta mieluummin kutsua palvelukseen "
+"korkeimman tasoisia yksiköitä, kannattaa mieluummin kutsua palvelukseen "
 "yksiköitä, joilla on hyödyllisempiä ominaisuuksia."
 
 #. [topic]: id=traits_quick
@@ -2202,17 +2413,15 @@ msgstr "nopea"
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:371
-#, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "HP than usual."
 msgstr ""
 "Nopeilla yksiköillä on 1 liikepiste enemmän, mutta 5% vähemmän elämäpisteitä "
-"kuin muilla."
+"kuin yleensä."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:373
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2226,11 +2435,10 @@ msgstr ""
 "\n"
 "\n"
 "Nopea on helpoiten huomattava ominaisuus, varsinkin hitaissa yksiköissä, "
-"kuten peikoissa ja raskaassa jalkaväessä. Nopeilla yksiköillä on "
-"huomattavasti parantunut liikkuvuus vaikeassa maastossa, minkä voit ottaa "
-"huomioon sijoittaessasi joukkojasi. Toisaalta nopeat yksiköt eivät ole yhtä "
-"kestäviä kuin muut yksiköt, joten ne ovat huonompia puolustamaan kiisteltyjä "
-"asemia."
+"kuten peikoissa ja raskaassa jalkaväessä. Nopeat yksiköt liikkuvat paljon "
+"paremmin vaikeakulkuisessa maastossa, minkä voit ottaa huomioon "
+"sijoittaessasi joukkojasi. Toisaalta nopeat yksiköt eivät ole yhtä kestäviä "
+"kuin muut yksiköt, joten ne ovat huonompia puolustamaan kiisteltyjä asemia."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:378
@@ -2239,7 +2447,6 @@ msgstr "kestävä"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:379
-#, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
 "than usual."
@@ -2273,7 +2480,6 @@ msgstr "vahva"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:387
-#, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 more HP."
@@ -2283,7 +2489,6 @@ msgstr ""
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:389
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2317,7 +2522,6 @@ msgstr "Villi"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:401
-#, fuzzy
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
@@ -2335,7 +2539,6 @@ msgstr "uskollinen"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:407
-#, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
@@ -2346,7 +2549,6 @@ msgstr ""
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:409
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2373,7 +2575,6 @@ msgstr "epäkuollut"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:415
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
@@ -2382,7 +2583,6 @@ msgstr ""
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:417
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2405,7 +2605,6 @@ msgstr "mekaaninen"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:423
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
@@ -2415,7 +2614,6 @@ msgstr ""
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:425
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2431,23 +2629,20 @@ msgstr ""
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
-#, fuzzy
 msgid "trait^Elemental"
 msgstr "elementaali"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:431
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Mekaaniset yksiköt ovat immuuneja myrkylle. Myös elämänimu ja rutto ovat "
+"Elementaalit ovat immuuneja myrkylle. Myös elämänimu ja rutto ovat "
 "tehottomia niitä vastaan."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:433
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2457,9 +2652,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mekaanisilla yksiköillä on yleensä <italic>text='mekaaninen'</italic> "
-"ainoana ominaisuutenaan. Koska mekaaniset yksiköt eivät oikeasti elä, "
-"elämänimu, myrkky ja rutto eivät vaikuta niihin."
+"Elementaaliyksiköillä on yleensä <italic>text='elementaali'</italic> ainoana "
+"ominaisuutenaan. Koska elementaalit ovat vain energiaa, elämänimu, myrkky ja "
+"rutto eivät vaikuta niihin."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
@@ -2468,7 +2663,6 @@ msgstr "taitava"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:439
-#, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
@@ -2477,7 +2671,6 @@ msgstr ""
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:441
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2491,7 +2684,7 @@ msgstr ""
 "Taitavuus on ominaisuus, jonka saavat vain haltiat. Haltiat tunnetaan heidän "
 "hämmästyttävästä hienostuneisuudestaan ja erinomaisista taidoista jousen "
 "kanssa. Jotkut ovat kuitenkin luonnostaan vertaisiaan parempia. Nämä haltiat "
-"aiheuttavat yhden pisteen enemmän vahinkoa kullakin nuolella, joka osuu."
+"aiheuttavat yhden pisteen enemmän vahinkoa kullakin osuvalla nuolella."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:446
@@ -2509,7 +2702,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:449
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2519,8 +2711,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Elinvoimaisilla yksiköillä on muihin nähden ylimääräinen elämäpiste ja sen "
-"lisäksi ylimääräinen elämäpiste jokaista kokemustasoa kohti. Lepääminen "
+"Elinvoimaisilla yksiköillä on vertaisiinsa nähden ylimääräinen elämäpiste ja "
+"sen lisäksi ylimääräinen elämäpiste jokaista kokemustasoa kohti. Lepääminen "
 "parantaa tavallisesti kaksi elämäpistettä joka vuorolla, kun he eivät "
 "taistele. He myös kärsivät neljänneksen vähemmän vahinkoa myrkytyksestä."
 
@@ -2531,7 +2723,6 @@ msgstr "hidasälyinen"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:455
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
@@ -2560,7 +2751,6 @@ msgstr "hidas"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:463
-#, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
 msgstr ""
@@ -2588,7 +2778,6 @@ msgstr "heikko"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:471
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
 "hitpoints and melee damage."
@@ -2598,20 +2787,17 @@ msgstr ""
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
-#, fuzzy
-#| msgid "trait^Undead"
 msgid "trait^Aged"
-msgstr "epäkuollut"
+msgstr "ikääntynyt"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:477
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
 msgstr ""
-"Yksiköt, jotka ovat heikkoja, saavat yhden elämäpisteen vähemmän ja tekevät "
-"yhden pisteen vähemmän lähitaisteluvahinkoa."
+"Ikääntyneet yksiköt, saavat 8 EP:tä vähemmän ja liikkuminen, sekä vahinko "
+"lähitaistelussa vähenee yhdellä."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:485
@@ -2631,7 +2817,6 @@ msgstr "tasamaa"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:497
-#, fuzzy
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild. Being open ground, grassland is "
@@ -2656,14 +2841,13 @@ msgstr "tie"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:511
-#, fuzzy
 msgid ""
 "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
 "\n"
 msgstr ""
-"Tiet ovat kuluneita hiekasta ja mudasta muodostuneita kulkureittejä jotka "
+"Tiet ovat kuluneita, hiekasta ja mudasta muodostuneita kulkureittejä, jotka "
 "ovat syntyneet monien kulkijoiden tallattua samaa polkua pitkin. Pelaamisen "
 "kannalta tiet vastaavat <ref>dst='terrain_flat' text='tasankoja'</ref>.\n"
 "\n"
@@ -2675,7 +2859,6 @@ msgstr "metsä"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:525
-#, fuzzy
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2716,7 +2899,6 @@ msgstr "mäki"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:540
-#, fuzzy
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2746,7 +2928,6 @@ msgstr "vuori"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:552
-#, fuzzy
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move. By this nature, they provide a considerable "
@@ -2774,7 +2955,6 @@ msgstr "suo"
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:564
-#, fuzzy
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps slow "
 "down nearly everyone, and inhibit their ability to defend themselves. An "
@@ -2801,7 +2981,6 @@ msgstr "matalaa vettä"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:576
-#, fuzzy
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2831,7 +3010,6 @@ msgstr "syvää vettä"
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:588
-#, fuzzy
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head. Most units cannot enter deep water: it is the domain "
@@ -2853,7 +3031,6 @@ msgstr "jäätynyt"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:600
-#, fuzzy
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice. Most units are slowed down on it, and have a harder "
@@ -2878,6 +3055,16 @@ msgstr "linna"
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
 #, fuzzy
+#| msgid ""
+#| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
+#| "Nearly all units receive a considerable bonus to their defense by being "
+#| "stationed in a castle, and all units receive full movement in a castle. "
+#| "Stationing units in a castle represents its defensive capability. Without "
+#| "a unit in each wall hex, an enemy can simply sneak into the castle "
+#| "unchallenged, gaining the same defensive bonus as everyone inside.\n"
+#| "\n"
+#| "Most units have about 60% defense in a castle.\n"
+#| "\n"
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2905,7 +3092,6 @@ msgstr "hiekkaa"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:628
-#, fuzzy
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -2927,7 +3113,6 @@ msgstr "aavikko"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:638
-#, fuzzy
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -2944,7 +3129,6 @@ msgstr "luola"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:650
-#, fuzzy
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass. Most units are wholly unfamiliar with the "
@@ -2973,7 +3157,6 @@ msgstr "louhikkoluola"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:662
-#, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -3005,7 +3188,6 @@ msgstr "valaistu luola"
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:672
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -3026,7 +3208,6 @@ msgstr "sienilehto"
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:684
-#, fuzzy
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -3055,7 +3236,6 @@ msgstr "kylä"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:698
-#, fuzzy
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise. Almost all units, even cavalry, have an easy time navigating "
@@ -3086,7 +3266,6 @@ msgstr "vedenalainen kylä"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:712
-#, fuzzy
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -3115,7 +3294,6 @@ msgstr "kulkukelvoton"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:722
-#, fuzzy
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
@@ -3134,7 +3312,6 @@ msgstr "laavaa"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:732
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -3179,7 +3356,6 @@ msgstr "koralliriutta"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:754
-#, fuzzy
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand. This provides most land units with a more steady footing and "
@@ -3203,7 +3379,6 @@ msgstr "silta"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:767
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -3266,7 +3441,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:799
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3397,16 +3571,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Change the controller for side (write here the number of the side) to "
-#| "username (write here the nick of the player or observer). You can check "
-#| "what side belongs to which player in the <bold>text='Scenario Settings'</"
-#| "bold> dialog (Press the <bold>text='More'</bold> button in the "
-#| "<bold>text='Status Table'</bold> (alt+s by default) to get there.). The "
-#| "host can change control of any side.\n"
-#| "\n"
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3418,7 +3582,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Vaihda puolta hallitsevaa käyttäjä (kirjoita tähän puolen numero) toiseksi "
+"Vaihda puolta hallitsevaa käyttäjää (kirjoita tähän puolen numero) toiseksi "
 "(kirjoita tähän pelaajan tai tarkkailijan käyttäjänimi). Voit tarkistaa, "
 "mikä puoli kuuluu millekin pelaajalle <bold>text='tehtävän asetukset'</bold> "
 "-valintaikkunassa (paina <bold>text='Lisää'</bold>-nappia "
@@ -4116,124 +4280,112 @@ msgstr "syvällä maan alla"
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:162
 msgid "Midnight"
-msgstr ""
+msgstr "Keskiyö"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:174
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "aamuyö"
+msgstr "Aamuyö — Ensimmäinen Tunti"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:186
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "aamuyö"
+msgstr "Aamuyö — Toinen Tunti"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:198
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "aamuyö"
+msgstr "Aamuyö — Kolmas Tunti"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:210
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "aamuyö"
+msgstr "Aamuyö — Neljäs Tunti"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:222
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "aamuyö"
+msgstr "Aamuyö — Viides Tunti"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:234
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "aamuyö"
+msgstr "Aamuyö — Kuudes Tunti"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:257
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "Aamu — Ensimmäinen Tunti"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:266
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "Aamu — Toinen Tunti"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:275
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "Aamu — Kolmas Tunti"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:284
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "Aamu — Neljäs Tunti"
 
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:293
 msgid "Midday"
-msgstr ""
+msgstr "Keskipäivä"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "iltapäivä — ensimmäinen tunti"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "iltapäivä — toinen tunti"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "iltapäivä — kolmas tunti"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:329
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "iltapäivä — neljäs tunti"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:338
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "iltapäivä — viides tunti"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "iltapäivä — kuudes tunti"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "Iltayö — Ensimmäinen Tunti"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:381
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "Iltayö — Toinen Tunti"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:393
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "Iltayö — Kolmas Tunti"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:405
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "Iltayö — Neljäs Tunti"
 
 #: data/core/macros/special-notes.cfg:5
 msgid ""
@@ -4266,10 +4418,8 @@ msgid " This unit is capable of basic healing."
 msgstr " Tämä yksikkö kykenee perustason hoivaamiseen."
 
 #: data/core/macros/special-notes.cfg:17
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid " This unit is capable of rapid healing."
-msgstr " Tämä yksikkö kykenee perustason hoivaamiseen."
+msgstr " Tämä yksikkö kykenee nopeaan hoivaamiseen."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
@@ -4419,10 +4569,6 @@ msgstr ""
 "viholliseen maastosta riippumatta."
 
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
-#| msgid ""
-#| " The unit has magical attacks, which always have a high chance of hitting "
-#| "an opponent."
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
@@ -4614,9 +4760,9 @@ msgstr "villi"
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
 #, fuzzy
-#| msgid "Receive only 40% defense in land-based villages"
+#| msgid "Receive only 50% defense in land-based villages"
 msgid "Receives only 50% defense in land-based villages"
-msgstr "Saa vain 40% puolustuksen maalla sijaitsevissa kylissä"
+msgstr "Saa vain 50% puolustuksen maalla sijaitsevissa kylissä"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -4772,6 +4918,62 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
+"Draakit ovat suuria, siivekkäitä ja tultasyökseviä olentoja, jotka "
+"muistuttavat oikeita lohikäärmeitä. Aikuinen draakki on keskimäärin kolme "
+"metriä pitkä ja painaa saman verran kuin ihmisratsastaja. Niiden iho "
+"muodostuu kovista suomuista, jotka kestävät paljon fyysisiä iskuja, paitsi "
+"kylmiä ja pistohyökkäyksiä. Useimmat draakit osaavat lentää, ja pystyvät "
+"taittamaan pitkiä matkoja nopeasti. Kuitenkin heidän massa rajoittaa "
+"lentotaitoa jonkin verran ja ovat siksi kömpelöitä ilmassa. He käyttävät "
+"maastonmuotoja, kuten mäkiä, vuoria ja puita lähtöalustoinaan saavuttaen "
+"enemmän nopeutta ja korkeutta. He ovat kuitenkin hitaita ja kömpelöitä "
+"varsinkin taistelussa. Siksi he ovat helppoja maaleja niille, jotka "
+"uskaltavat käydä heidän kimppuun.\n"
+"\n"
+"Draakit ovat maagisia, joiden elinvoima kumpuaa mysteerisestä, sisäisestä "
+"tulesta. Tulen voi havaita, jos draakki kuolee taistelussa: tuli vapautuu, "
+"polttaen jäänteet tuhkaksi. Sisäinen tuli on myös heidän suurin heikkous, "
+"koska se aiheuttaa heikkouden kylmiä iskuja vastaan. Vaikkakin he ovat "
+"maagista alkuperää, draakit eivät osaa kanavoida magiaa. Magia vahvistaa "
+"heidän tulensyöksemistä, mutta draakit eivät hallitse sen toimintaa "
+"tietoisesti.\n"
+"\n"
+"<header>text='Yhteiskunta'</header>\n"
+"Draakit ovat sotaisa kansa ja heidän yhteisöään voi parhaiten kuvailla "
+"sivistyneeksi taisteluyhteisöksi. Draakkiheimojen ytimen muodostaa pieni "
+"veteraanisoturien joukko, joita johtaa kunnioitettu - tai vain pelätty - "
+"<ref>dst='dominant' text='Valtias'</ref>. Valtias johtaa heimoa rautaisella "
+"otteella. Jokaisen draakin odotetaan ansaitsevan paikkansa hierarkiassa, "
+"seuraavan ylempiään ja komentavan alempiaan. Eliittiin pääsee vain "
+"haastamalla ja voittamalla ylempänsä taistelulla. Tähän perustuu hierarkia "
+"itse eliitissä. Lajitoverin huijaaminen millään tavalla on raukkamaista.\n"
+"\n"
+"Vaikka draakit ovat sotaisia ja heillä on taipumus puolustaa reviirejään "
+"raivokkaasti, he harvemmin valtaavat alueita, joita joku toinen rotu jo "
+"asuttaa. Sen sijaan he etsivät asuttamattomia alueita. He syövät suurta "
+"riisaa, joita he metsästävät alangoilla, pesiensä lähellä, mutta "
+"vastakuoriutuneet ja alemmat kastit syövät myös sammalta ja sieniä joita he "
+"kasvattavat luolissaan. Ainoa teknologia, jota draakit arvostavat, on "
+"aseiden ja haarniskojen valmistus, eivätkä joko tunne tai tarvitse muuta "
+"tiedettä. Kuitenkin heidän metallityönsä ovat niin korkeaa laatua, että vain "
+"kääpiöiden parhaimmat valimot yltävät korkeammalle.\n"
+"\n"
+"Draakit kuoriutuvat munista ja elävät luonnossa noin 20, 30 vuotta. Kuolema "
+"taistelussa on kaikkein arvostetuin tapa kuolla. Toisin kuin muiden rotujen "
+"vanhimmat, Draakeista tulee paljon aggressiivisempia ja holtittomimpia "
+"päiviensä päässä, ehkä siksi, että voisivat saavuttaa paikan sankareiden "
+"joukosta.\n"
+"\n"
+"<header>text='Geography'</header>\n"
+"Draakit ovat lähtöisin tuliperäiseltä saaristolta nimeltään "
+"<ref>dst='morogor' text='Morogor'</ref>, joka sijaitsee "
+"<ref>dst='great_ocean' text='Suuressa valtameressä'</ref>. Väkiluku ja "
+"saaristojen vajoaminen ovat pakottaneen Draakkikolonnien levittäytymisen "
+"<ref>dst='great_continent' text='Suurmantereelle'</ref>. Draakit perustavat "
+"pesänsä  luoliin, tulivuorten lähelle suojellakseen muniaan, poikasiaan ja "
+"pajojaan. Vaikka draakit pitävät lämpimästä, heidän sisäinen tuli auttaa "
+"heitä selviytymään myös kylmissä olosuhteissa. Tämän ansiosta he ovat "
+"asuttaneet vuoria myös kaukana pohjoisessa."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:90
@@ -5173,12 +5375,6 @@ msgstr "Mekaaniset"
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:199
-#, fuzzy
-#| msgid ""
-#| "Animated neither by natural life nor by necromancy, the term ”mechanical” "
-#| "describes a created artifact of an intelligent being. Most mechanical "
-#| "things neither move nor think on their own, but some do so as a result of "
-#| "magical enchantment."
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5236,8 +5432,6 @@ msgstr "Hirviö"
 
 #. [race]: id=monster
 #: data/core/units.cfg:221
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "Hirviö"
 
@@ -5264,8 +5458,6 @@ msgstr "Naga"
 
 #. [race]: id=naga
 #: data/core/units.cfg:231
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
 msgstr "Naga"
 
@@ -5659,8 +5851,6 @@ msgstr "Susi"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:311
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
 msgstr "Haltia"
 
