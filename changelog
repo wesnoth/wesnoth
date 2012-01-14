@@ -15,14 +15,12 @@ Version 1.9.14+svn:
  * Multiplayer:
    * Allow tab completion of player names in commands (bug #19284)
    * Fixed bug #19260: 'villages_value' -> 'village_value' in 5p_The_Wilderlands
-   * Fixed bug #19281: fixed 29_Hornshark_Island to behave better when non 
+   * Fixed bug #19281: fixed 29_Hornshark_Island to behave better when non
      default factions are used
  * Terrain:
    * Removed tags ignored by engine (as reported by lipk in
      http://forums.wesnoth.org/viewtopic.php?f=21&t=35832 )
-   * Renamed reed images to match requirements of OVERLAY_COMPLETE macro fixing
-     reeds in swamp terrain
-   * Fixed bug #18601: use 1.8 images for swamp water
+   * Fixed bug #18601: change swamp water so it looks as good as it did in 1.8
  * User interface:
    * Draw gold hex cursor above all terrain when no unit visible
  * Miscellaneous and bug fixes:
