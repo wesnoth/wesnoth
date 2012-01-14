@@ -1,7 +1,29 @@
 Version 1.9.14+svn:
+ * Campaigns:
+   * An Orcish Incursion:
+     * Scenario 3: select a new unit with the Adviser (sic) role for dialogs if
+       the original unit selected at the start of the scenario died
+ * Editor:
+   * Added Etheral Abyss terrain (Qxua) to the Cave category, too
+   * Updated the terrain palette icons for winter/fall single or mixed forested
+     hills so they show the default base Hhd instead of Hh
  * Language and i18n:
    * Updated translations: Czech, Finnish, French, Galician, German, Italian,
      Lithuanian, Slovak
+ * Terrain:
+   * Removed tags ignored by engine (as reported by lipk in
+     http://forums.wesnoth.org/viewtopic.php?f=21&t=35832 )
+   * Renamed reed images to match requirements of OVERLAY_COMPLETE macro fixing
+     reeds in swamp terrain
+   * Fixed bug #18601: use 1.8 images for swamp water
+ * Miscellaneous and bug fixes:
+   * Fixed bug #19260: 'villages_value' -> 'village_value' in 5p_The_Wilderlands
+   * Fixed bug #19281: fixed 29_Hornshark_Island to behave better when non 
+     default factions are used
+   * Fixed bug #19284: Autocomplete player names in commands
+   * Fixed some spearman attack animations being too slow in some directions
+   * Fixed wmlindent writing CRLF end of lines on windows
+   * Made the gold hex cursor appear above all terrain when no unit visible
 
 Version 1.9.14:
  * AI:
