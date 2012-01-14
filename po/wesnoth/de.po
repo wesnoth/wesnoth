@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-06 11:47+0100\n"
-"PO-Revision-Date: 2011-11-30 13:57+0100\n"
+"POT-Creation-Date: 2012-01-08 18:12+0100\n"
+"PO-Revision-Date: 2012-01-14 16:54+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
@@ -42,8 +42,6 @@ msgstr "Scrollen mit Hilfe der mittleren Maustaste"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#, fuzzy
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep scrolling when mouse leaves window"
 msgstr "Weiter scrollen, wenn die Maus das Fenster verlässt"
 
@@ -70,10 +68,6 @@ msgstr "Wartezeit des Verbindungstests"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:61
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
@@ -83,31 +77,23 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:71
-#, fuzzy
-#| msgid "Accept whisper messages from friends only"
 msgid "Accept whispers from friends only"
 msgstr "Private Nachrichten nur von Freunden akzeptieren"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:78
-#, fuzzy
-#| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open whisper windows in lobby"
-msgstr "Automatisches Öffnen von Fenstern für Nachrichten"
+msgstr "Automatisches Öffnen von Fenstern für private Nachrichten"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:85
-#, fuzzy
-#| msgid "Group players in lobby"
 msgid "Group players in lobby"
-msgstr "Spieler in Eingangshalle gruppieren"
+msgstr "Spieler in Mehrspielerlobby gruppieren"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:92
-#, fuzzy
-#| msgid "Lobby sounds"
 msgid "Lobby sounds"
-msgstr "Klänge der Eingangshalle"
+msgstr "Klänge der Mehrspielerlobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:99
@@ -143,16 +129,12 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
 msgstr ""
-"Anzahl von Sekunden, welche gewartet werden soll, bis der Verbindungsaufbau "
-"abgebrochen wird. Deaktiviert wenn 0."
+"Anzahl von Minuten, welche gewartet werden soll, bis eine Chat Nachricht "
+"innerhalb einer Partie verworfen wird. Deaktiviert wenn 0."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:142
@@ -1031,7 +1013,7 @@ msgstr "Dreizack des Sturms"
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:546
 msgid "sceptre of fire"
-msgstr ""
+msgstr "Zepter des Feuers"
 
 #: data/core/macros/names.cfg:18
 msgid ""
@@ -3382,8 +3364,6 @@ msgstr "Perspektive"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#, fuzzy
-#| msgid "Skip Animation"
 msgid "Skip animation"
 msgstr "Keine Animationen"
 
@@ -3567,10 +3547,8 @@ msgid "Downloading add-on: $addon_title|..."
 msgstr "Erweiterung »$addon_title|« wird heruntergeladen ..."
 
 #: src/addon/manager.cpp:586 src/addon/manager.cpp:1135
-#, fuzzy
-#| msgid "Download"
 msgid "Downloading..."
-msgstr "Herunterladen"
+msgstr "Herunterladen..."
 
 #: src/addon/manager.cpp:598
 msgid ""
@@ -3744,8 +3722,6 @@ msgid "Confirm"
 msgstr "Bestätigen"
 
 #: src/addon/manager.cpp:1128
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting..."
 msgstr "Mit dem Server verbinden..."
 
@@ -3817,14 +3793,11 @@ msgid "You have no add-ons installed."
 msgstr "Ihr habt keine Erweiterungen installiert."
 
 #: src/addon/manager.cpp:1416
-#, fuzzy
-#| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] ""
-"Seid Ihr sicher, dass Ihr die Erweiterung '$addon|' entfernen wollt?"
+msgstr[0] "Seid Ihr sicher, dass Ihr die folgende Erweiterung entfernen wollt?"
 msgstr[1] ""
-"Seid Ihr sicher, dass Ihr die Erweiterung '$addon|' entfernen wollt?"
+"Seid Ihr sicher, dass Ihr die folgenden Erweiterungen entfernen wollt?"
 
 #: src/addon/manager.cpp:1442
 msgid ""
@@ -3837,32 +3810,22 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/addon/manager.cpp:1452
-#, fuzzy
-#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
-msgstr[0] "Erweiterung konnte nicht entfernt werden:"
-msgstr[1] "Erweiterung konnte nicht entfernt werden:"
+msgstr[0] "Die folgenden Erweiterungen konnte nicht entfernt werden:"
+msgstr[1] "Die folgenden Erweiterungen konnte nicht entfernt werden:"
 
 #: src/addon/manager.cpp:1459
-#, fuzzy
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Erweiterung entfernt"
-msgstr[1] "Erweiterung entfernt"
+msgstr[1] "Erweiterungen entfernt"
 
 #: src/addon/manager.cpp:1461
-#, fuzzy
-#| msgid "The following add-on had errors and could not be loaded:"
-#| msgid_plural "The following add-ons had errors and could not be loaded:"
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
-msgstr[0] ""
-"Die folgende Erweiterung weist Fehler auf und konnte nicht geladen werden:"
-msgstr[1] ""
-"Die folgenden Erweiterungen weisen Fehler auf und können nicht geladen "
-"werden:"
+msgstr[0] "Die folgenden Erweiterung wurde erfolgreich gelöscht:"
+msgstr[1] "Die folgenden Erweiterungen wurden erfolgreich gelöscht:"
 
 #: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
@@ -3951,10 +3914,8 @@ msgid "Tutorial"
 msgstr "Einführung"
 
 #: src/dialogs.cpp:499
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "Test scenario"
-msgstr "Entferntes Szenario"
+msgstr "Testszenario"
 
 #: src/dialogs.cpp:509 src/savegame.cpp:1050
 msgid "Turn"
@@ -4194,9 +4155,6 @@ msgid "Turn "
 msgstr "Runde "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
-#, fuzzy
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Verfügbarer Platz:"
@@ -4230,7 +4188,7 @@ msgstr "(spielend)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "In lobby"
-msgstr "In der Eingangshalle"
+msgstr "In der Lobby"
 
 #: src/gui/dialogs/lobby_player_info.cpp:129
 msgid "On friends list"
@@ -4710,8 +4668,6 @@ msgstr ""
 #: src/menu_events.cpp:2334 src/menu_events.cpp:2337 src/menu_events.cpp:2339
 #: src/menu_events.cpp:2341 src/menu_events.cpp:2343 src/menu_events.cpp:2370
 #: src/menu_events.cpp:2372 src/menu_events.cpp:2374 src/menu_events.cpp:2388
-#, fuzzy
-#| msgid "<nick>"
 msgid "<nickname>"
 msgstr "<Spieler>"
 
@@ -4772,8 +4728,6 @@ msgstr ""
 "senden, die keine Fraktion im Spiel kontrollieren."
 
 #: src/menu_events.cpp:2364
-#, fuzzy
-#| msgid "<nick> <message>"
 msgid "<nickname> <message>"
 msgstr "<Spieler> <Nachricht>"
 
@@ -4786,20 +4740,14 @@ msgid "Change the log level of a log domain."
 msgstr "Schaltet die Protokolldomäne auf eine andere Protokollstufe."
 
 #: src/menu_events.cpp:2370
-#, fuzzy
-#| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
 msgstr "Fügt einen Benutzer zur Liste der Benutzer, die Ihr ignoriert, hinzu."
 
 #: src/menu_events.cpp:2372
-#, fuzzy
-#| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
-msgstr "Fügt einen Benutzer Eurer Freundesliste hinzu."
+msgstr "Fügt einen Benutzer zu Eurer Freundesliste hinzu."
 
 #: src/menu_events.cpp:2374
-#, fuzzy
-#| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Entfernt einen Benutzer aus der Liste der Benutzer, die Ihr ignoriert."
 
@@ -4816,32 +4764,24 @@ msgid "<password> <email (optional)>"
 msgstr "<Passwort> <E-Mail Adresse (optional)>"
 
 #: src/menu_events.cpp:2381
-#, fuzzy
-#| msgid "Register your nick"
 msgid "Register your nickname"
 msgstr "Registriert Euren Benutzernamen."
 
 #: src/menu_events.cpp:2383
-#, fuzzy
-#| msgid "Drop your nick."
 msgid "Drop your nickname."
 msgstr "Entfernt die Registrierung Eures Benutzernamens."
 
 #: src/menu_events.cpp:2385
-#, fuzzy
-#| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
 "Aktualisiert Einstellungen Eures Benutzernames. Um mögliche Einstellungen zu "
-"erfahren, verwendet /details"
+"erfahren, verwendet '/details'."
 
 #: src/menu_events.cpp:2386
 msgid "<detail> <value>"
 msgstr "<Einstellung> <Wert>"
 
 #: src/menu_events.cpp:2388
-#, fuzzy
-#| msgid "Request information about a nick."
 msgid "Request information about a nickname."
 msgstr "Fordert Informationen über einen Benutzer an."
 
@@ -4915,8 +4855,6 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<Fraktion> [on/off]]"
 
 #: src/menu_events.cpp:2545
-#, fuzzy
-#| msgid "<side> <nick>"
 msgid "<side> <nickname>"
 msgstr "<Fraktion> <Spieler>"
 
@@ -5365,10 +5303,8 @@ msgid "Do you want to continue?"
 msgstr "Möchtet Ihr diesen Spielstand speichern?"
 
 #: src/multiplayer.cpp:250
-#, fuzzy
-#| msgid "Warning: "
 msgid "Warning"
-msgstr "Warnung: "
+msgstr "Warnung"
 
 #: src/multiplayer.cpp:294
 msgid "Bad data received from server"
@@ -5379,16 +5315,10 @@ msgid "You must login first."
 msgstr "Ihr müsst Euch zuerst anmelden."
 
 #: src/multiplayer.cpp:337
-#, fuzzy
-#| msgid "The nick '$nick' is already taken."
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Der Benutzername »$nick« ist bereits vergeben."
 
 #: src/multiplayer.cpp:339
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
@@ -5397,50 +5327,36 @@ msgstr ""
 "Zeichen, Unter- und Bindestriche sind erlaubt."
 
 #: src/multiplayer.cpp:343
-#, fuzzy
-#| msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Der Benutzername »$nick« ist zu lang. Benuternamen dürfen maximal 20 Zeichen "
 "lang sein."
 
 #: src/multiplayer.cpp:346
-#, fuzzy
-#| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "Der Benutzername »$nick« ist reserviert und kann von Spielern nicht "
 "verwendet werden."
 
 #: src/multiplayer.cpp:348
-#, fuzzy
-#| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Der Benutzername »$nick« ist auf diesem Server nicht registriert."
 
 #: src/multiplayer.cpp:349
-#, fuzzy
-#| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
 msgstr " Der Server erlaubt keine unregistrierten Benutzernamen."
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:353
-#, fuzzy
-#| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Der Benutzername »$nick« ist auf diesem Server registriert."
 
 #: src/multiplayer.cpp:354
-#, fuzzy
-#| msgid ""
-#| "WARNING: There is already a client using this nick, logging in will cause "
-#| "that client to be kicked!"
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
-"WARNUNG: Es gibt bereits einen Teilnehmer, der den Benutzernamen verwendet. "
-"Meldet Ihr Euch an, wird dieser Teilnehmer vom Server geworfen!"
+"WARNUNG: Es gibt bereits einen Teilnehmer, der diesen Benutzernamen "
+"verwendet. Meldet Ihr Euch an, wird dieser Teilnehmer vom Server geworfen!"
 
 #: src/multiplayer.cpp:357
 msgid ""
@@ -5952,9 +5868,8 @@ msgstr "Der Anfangshandschlag konnte nicht ausgeführt werden"
 
 #: src/network_manager_ana.cpp:650 src/network_manager_ana.cpp:667
 #: src/network_manager_ana.cpp:689
-#, fuzzy
 msgid "Could not connect to host"
-msgstr "Es konnte keine Verbindung zum Server aufgebaut werden."
+msgstr "Es konnte keine Verbindung zum Server aufgebaut werden"
 
 #: src/pathfind/pathfind.cpp:455
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -6277,8 +6192,6 @@ msgid "(Att / Def)"
 msgstr "(Ang / Ver)"
 
 #: src/reports.cpp:442
-#, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Erfahrungsmodifikator: "
 
@@ -6791,22 +6704,18 @@ msgstr ""
 #~ msgid "Difficulty: Hard"
 #~ msgstr "Schwierigkeitsgrad: Schwierig"
 
-#, fuzzy
 #~| msgid "Campaign: $campaign_name"
 #~ msgid "Main campaign define"
 #~ msgstr "Kampagne: $campaign_name"
 
-#, fuzzy
 #~| msgid "Campaign Design"
 #~ msgid "Extra campaign define"
 #~ msgstr "Kampagnengestaltung"
 
-#, fuzzy
 #~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "Mehrspieler"
 
-#, fuzzy
 #~| msgid "Defeat enemy leader(s)"
 #~ msgid "Defeat enemy leader"
 #~ msgstr "Besiegt alle gegnerischen Anführer"
