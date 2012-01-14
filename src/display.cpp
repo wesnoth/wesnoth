@@ -2080,13 +2080,6 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos, get_fog_shroud_images(loc, image_type));
 	}
 
-	if(on_map && loc == mouseoverHex_) {
-		drawing_buffer_add(LAYER_MOUSEOVER_TOP,
-				loc, xpos, ypos, image::get_image("misc/hover-hex-top.png", image::SCALED_TO_HEX));
-		drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM,
-				loc, xpos, ypos, image::get_image("misc/hover-hex-bottom.png", image::SCALED_TO_HEX));
-	}
-
 	if (on_map) {
 		if (draw_coordinates_) {
 			int off_x = xpos + hex_size()/2;

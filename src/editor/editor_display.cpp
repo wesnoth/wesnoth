@@ -85,6 +85,10 @@ void editor_display::draw_hex(const map_location& loc)
 			drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
 					image::get_image(brush, image::SCALED_TO_HEX));
 		}
+		if (map().on_board(loc) && loc == mouseoverHex_) {
+			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
+					image::get_image("misc/hover-hex.png", image::SCALED_TO_HEX));
+		}
 	}
 }
 

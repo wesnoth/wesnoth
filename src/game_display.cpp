@@ -321,6 +321,17 @@ void game_display::draw_hex(const map_location& loc)
 	image::TYPE image_type = get_image_type(loc);
 
 	display::draw_hex(loc);
+	
+	if(on_map && loc == mouseoverHex_) {
+		tdrawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
+		if( get_visible_unit(loc, teams_[viewing_team()] ) != NULL ) {
+			hex_top_layer = LAYER_MOUSEOVER_TOP;
+		}
+		drawing_buffer_add( hex_top_layer,
+						   loc, xpos, ypos, image::get_image("misc/hover-hex-top.png", image::SCALED_TO_HEX));
+		drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM,
+						   loc, xpos, ypos, image::get_image("misc/hover-hex-bottom.png", image::SCALED_TO_HEX));
+	}
 
 	if(!is_shrouded) {
 		typedef overlay_map::const_iterator Itor;
