@@ -15,8 +15,9 @@ Version 1.9.14+svn:
  * Multiplayer:
    * Allow tab completion of player names in commands (bug #19284)
    * Fixed bug #19260: 'villages_value' -> 'village_value' in 5p_The_Wilderlands
-   * Fixed bug #19281: fixed 2p_Hornshark_Island to behave better when non
-     default factions are used
+   * Fix eras other than the default breaking 2p_Hornshark_Island. If a player
+     has a faction not in the default era, a standard set of units (aimed at
+     Khalifate) is used now.
  * Terrain:
    * Removed tags ignored by engine (as reported by lipk in
      http://forums.wesnoth.org/viewtopic.php?f=21&t=35832 )
