@@ -1,14 +1,14 @@
 # Translation of wesnoth-manpages.po into Serbian.
 # Copyright (C) 2006 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010, 2011.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010, 2011, 2012.
 # Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2011-11-30 16:10+0100\n"
+"PO-Revision-Date: 2012-01-14 14:50+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "Language: sr\n"
@@ -118,22 +118,12 @@ msgstr "postavlja vrijednost BitsPerPixel. Primjer: B<--bpp 32>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
+#, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr "B<-c, --campaign[[E<lt>težinaE<gt>] E<lt>id-pohodaE<gt> [E<lt>id-scenarijaE<gt>]]>"
+msgstr "B<-c, --campaign  \\ [E<lt>id-pohodaE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy
-#| msgid ""
-#| "goes directly to the campaign based on the parameters.  The difficulty is "
-#| "a number between 1 and current campaign's difficulties number.  The "
-#| "default difficulty is 1.  The scenario must be one of the campaign's "
-#| "child scenarios. The default scenario is campaign's first scenario.  "
-#| "B<Note: When using this switch please ensure that you specify the data "
-#| "directory path as the final argument> aswell, otherwise the game will "
-#| "take the campaign/scenario id as the data dir."
 msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified.  B<Note:> When using this switch "
@@ -141,38 +131,39 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
-"skače direktno na pohod prema parametrima. Težina je broj između 1 i broja "
-"težine pohoda. Podrazumevana težina je 1. Scenario mora pripadati pohodu. "
-"Podrazumevan je prvi scenario pohoda. B<Napomena: Pri upotrebi ove opcije "
-"morate zadati i putanju direktorijuma podataka kao poslednji argument>, "
-"inače će ID pohoda ili scenarija biti shvaćen kao direktorijum podataka."
+"skače direktno na pohod sa ID-om E<lt>id-pohodaE<gt>. Ako se ID ne zada, "
+"pojaviće se meni za izbor. B<Napomena:> Pri upotrebi ove opcije morate "
+"zadati i putanju direktorijuma podataka kao poslednji argument, inače će ID "
+"pohoda ili scenarija biti shvaćen kao direktorijum podataka."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr "B<--data-dir E<lt>direktorijumE<gt>>"
+msgstr "B<--campaign-difficulty E<lt>težinaE<gt>>"
 
+# rewrite-msgid: /widget/dialog/
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
 msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"težina zadatog pohoda (od 1 do najveće). Ako se ne zada, pojaviće se dijalog "
+"za izbor težine pohoda."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>id-scenarijaE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
 msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
-msgstr ""
+msgstr "ID scenarija iz zadatog pohoda. Podrazumevan je prvi scenario."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:60
@@ -1647,9 +1638,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
-
-#~ msgid "B<--new-syntax>"
-#~ msgstr "B<--new-syntax>"
-
-#~ msgid "enables the new campaign syntax parsing."
-#~ msgstr "aktivira novo raščlanjivanje sintakse pohoda."
