@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2006 - 2011 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2012 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -912,12 +912,6 @@ void play_controller::tab()
 
 	std::set<std::string> dictionary;
 	switch(mode) {
-	case gui::TEXTBOX_COMMAND:
-	{
-		std::vector<std::string> commands = menu_handler_.get_commands_list();
-		dictionary.insert(commands.begin(), commands.end());
-		break;
-	}
 	case gui::TEXTBOX_SEARCH:
 	{
 		foreach (const unit &u, units_){
@@ -928,6 +922,12 @@ void play_controller::tab()
 		}
 		//TODO List map labels
 		break;
+	}
+	case gui::TEXTBOX_COMMAND:
+	{
+		std::vector<std::string> commands = menu_handler_.get_commands_list();
+		dictionary.insert(commands.begin(), commands.end());
+		// no break here, we also want player names from the next case
 	}
 	case gui::TEXTBOX_MESSAGE:
 	{
@@ -943,9 +943,9 @@ void play_controller::tab()
 		//Exclude own nick from tab-completion.
 		//NOTE why ?
 		dictionary.erase(preferences::login());
-
 		break;
 	}
+
 	default:
 		ERR_DP << "unknown textbox mode\n";
 	} //switch(mode)

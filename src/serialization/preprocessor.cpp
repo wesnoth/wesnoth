@@ -1,7 +1,7 @@
 /* $Id$ */
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2011 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2012 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -990,6 +990,10 @@ bool preprocessor_data::get_chunk()
 			//	}
 			//	strings_.pop_back();
 			//}
+
+			if(strings_.size() <= static_cast<size_t>(token.stack_pos)) {
+				target_.error("No macro or file substitution target specified", linenum_);
+			}
 
 			std::string symbol = strings_[token.stack_pos];
 			std::string::size_type pos;

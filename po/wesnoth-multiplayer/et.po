@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2010-08-16 09:09+0300\n"
+"POT-Creation-Date: 2011-12-19 15:14+0100\n"
+"PO-Revision-Date: 2011-12-30 18:33+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -35,16 +35,18 @@ msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
+"<span foreground='#%02x%02x%02x'>Osapool - %d</span>:  Sissetulek = %d  "
+"Üksused = %d  Kuld = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:126
 msgid "Grand total: <b>%d</b>"
-msgstr ""
+msgstr "Kõik kokku: <b>%d</b>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:136
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr ""
+msgstr "<span foreground='%s'>Osapool %d</span> on eduseisus."
 
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:160
@@ -100,10 +102,8 @@ msgstr "Kooljad"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
-#, fuzzy
-#| msgid "2p — The Freelands"
 msgid "2p — Aethermaw"
-msgstr "2 mängijat: Vabad Maad"
+msgstr "2 mängijat: Aethermaw"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -121,6 +121,14 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"Kaua aega tagasi võttis korratu müstilise väe keeris Aethermaw vangi "
+"suurvõlur Sulla. Sajandite jooksul aga Sulla kohanes selle väega ning hakkas "
+"selle kaudu mõjutama nähtavat maailma, tõmmates kokku maid eri maailmadest "
+"ja ajastutest. Ta mängib nende tükkidega, töötleb neid, liidab neid ning "
+"liigutab Aethermaw' ja nende päritolupaikade vahel edasi-tagasi.  Võib-olla "
+"pääseb Sulla nõndamoodi ühel päeval vangistusest vabaks.  Seni aga lõbustab "
+"ta end lahingute korraldamisega surelike vahel, kes õnnetul kombel tema "
+"haardesse on sattunud. Kavandaja Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -185,7 +193,7 @@ msgstr "Lõuna"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:277
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr ""
+msgstr "Aethermaw - autor Doc Paterson"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:291
@@ -205,17 +213,29 @@ msgid ""
 "unite the two halves of the battlefield. The process will be complete by the "
 "end of turn 6.</span>\n"
 msgstr ""
+"Suurvõlur Sulla on tõmmanud sinu väed sellesse veidrasse keerisesse ja nõuab "
+"nüüd, et teda sõdimisega lõbustataks.n\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>Märkus:</span>\n"
+"\n"
+"<span color='green'>Üksused ei saa liikuda kaljurünkadele. Neid saab aga "
+"sinna värvata ja sealt ära liigutada.</span>\n"
+"\n"
+"<span color='green'>Alates 4. käigust hakkab suurvõlur Sulla lahinguvälja "
+"kaht poolt ühendama. Ta jõuab sellega valmis 6. käiguks.</span>\n"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:304
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:321
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "Aethermaw uriseb."
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
 msgid "2p — Arcanclave Citadel"
-msgstr ""
+msgstr "2 mängijat - Arcanclave'i kindlus"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
@@ -239,6 +259,19 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
+"Kaua aega tagasi, lugematuid sajandeid enne Haldrici aeg ja kaugel eemal "
+"Lintaniri metsa idaservast toimusid suured sõjad. Lood räägivad vägevast "
+"võlursõdalasest, osavast taktikust ja müstiliste kunstide meistrist, keda "
+"tema järgijad hüüdsid Tuisupeaks. Arcanclave'i lahingus sõdisid Tuisupea ja "
+"tema järgijad Kah Ruuki nimeliste sortsivaimude metsiku sooga.  Tuisupea "
+"kutsus oma väe abil välja vägeva maavaimu (kes mingil kombel oli talle tänu "
+"võlgu). Maavaim kergitas maa seest välja suuri kivimürakaid ja kujundas "
+"neist mõne hetkega võimsa kindluse. Seda rünnates hukkus tuhandeid Kah Ruuki "
+"sõdalasi ning Tuisupea ja tema vägi saavutasid tol päeval võidu. Üle tuhande "
+"aasta hiljem kihutas sõdurkuninganna Cynsaun I Arcanclave'i varemeist välja "
+"hõimu surnumanajaid ning muutis kogu piirkonna suureks kindlustuseks. "
+"Räägitakse, et sealkandis on peidus veel mitmeid Tuisupea ajast pärinevaid "
+"imelisi esemeid. Kavandaja Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -561,6 +594,8 @@ msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
+"Näib et keegi ei tea selle vapra ämbliku lugu.\n"
+"(kirjutanud WinnerA)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:168
@@ -568,6 +603,8 @@ msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
+"Lugu sellest õnnetust teeröövlist ootab veel rääkimist.\n"
+"(kirjutas WinnerB)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
@@ -747,14 +784,6 @@ msgstr "2 mängijat: Tume ennustus (Ellujäämine)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly-spawned AI units. Victory is achieved by surviving and "
@@ -769,7 +798,7 @@ msgstr ""
 "rünnakute tagasi löömise teel. Mängu jooksul muutub maastik juhuslike "
 "ilmaolude tagajärjel.\n"
 "\n"
-"NB: Mängu õigeks toimimiseks on vaja kasutada kaardi seadeid."
+"NB: Mängu õigeks toimimiseks on vaja kasutada vaikimisi kaardiseadeid."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:434
@@ -830,9 +859,8 @@ msgstr "Inimesed"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-#, fuzzy
 msgid "Death of your leader"
-msgstr "Sinu meeskonna pealikute surm."
+msgstr "Sinu pealiku surm"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
@@ -840,24 +868,23 @@ msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
+"Kuna võistkonnal on ainult üks pealik, siis ründavad vaenlased nõrgemini."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
-#, fuzzy
 msgid "Death of both of your team’s leaders"
-msgstr "Sinu meeskonna pealikute surm."
+msgstr "Sinu mõlema pealiku surm"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
-msgstr ""
+msgstr "Kuna võistkonnal on kaks pealikut, ründab vaenlane täisjõuga."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
-#, fuzzy
 msgid "Survive and defeat all enemy waves"
-msgstr "Pea vastu kõigile vastase rünnakutele."
+msgstr "Pea vastu kõigile vastase rünnakutele"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1432
@@ -866,7 +893,6 @@ msgstr "Tume ennustus - juhuslik ellujäämisstsenaarium"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
-#, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -913,7 +939,6 @@ msgstr ""
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1457
-#, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Nii et see ongi see neetud org, mille peame endale saama."
 
@@ -1026,16 +1051,12 @@ msgstr "2 mängijat: Külad"
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Warfare transforms the simple farms and villages of a peaceful region "
-#| "into a subtly parceled battlefield."
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
 "Sõda muudab selle rahuliku paiga lihtsad talud ja külad jagatud "
-"lahinguväljaks."
+"lahinguväljaks. Kavandaja Doc Paterson."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:24
@@ -1048,6 +1069,8 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"Mängijad peavad looma ebatavalisi liite kohalikega, et sel ülimalt "
+"ebatavalisel saarel ellu jääda. Kavandaja Doc Paterson."
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
@@ -1057,22 +1080,22 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:275
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:325
 msgid "Big Baby Bo"
-msgstr ""
+msgstr "Suur Titt Bo"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:103
 msgid "Rawffus the Dim"
-msgstr ""
+msgstr "Rawffus Totu"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:152
 msgid "Kolbur"
-msgstr ""
+msgstr "Kolbur"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:177
 msgid "Vilhelm Viskitynnyri"
-msgstr ""
+msgstr "Villem Viskivaat"
 
 #. [unit]: type=Woodsman, id=Clockwork Boy
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:236
@@ -1080,27 +1103,27 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:623
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:635
 msgid "Clockwork Boy"
-msgstr ""
+msgstr "Kellavärgipoiss"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:298
 msgid "Neki the Brutal"
-msgstr ""
+msgstr "Neki Julmur"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:338
 msgid "Drowsk Calbeht"
-msgstr ""
+msgstr "Drowsk Calbeht"
 
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:398
 msgid "Rzrrt the Dauntless"
-msgstr ""
+msgstr "Rzrrt Tuisupea"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:437
 msgid "Sorrek, Chosen of Death"
-msgstr ""
+msgstr "Sorrek, Surma Väljavalitu"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:477
@@ -1109,42 +1132,42 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:662
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:712
 msgid "Big Baby Dro"
-msgstr ""
+msgstr "Suur Titt Dro"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:490
 msgid "Gawffus the Dim"
-msgstr ""
+msgstr "Gawffus Totu"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:539
 msgid "Rublok"
-msgstr ""
+msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:564
 msgid "Ulysses Mantyjuuri"
-msgstr ""
+msgstr "Odüsseus Männijuurikas"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:685
 msgid "Neki the Brute"
-msgstr ""
+msgstr "Neki Kolekoll"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:725
 msgid "Claiomh Dubh"
-msgstr ""
+msgstr "Claiomh Dubh"
 
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:784
 msgid "Tyxrrn the Dauntless"
-msgstr ""
+msgstr "Tyxrrn Tuisupea"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:823
 msgid "Rukhos, Chosen of Death"
-msgstr ""
+msgstr "Rukhos, Surma Väljavalitu"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
@@ -1191,7 +1214,7 @@ msgstr ""
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
 msgid "evil eye"
-msgstr ""
+msgstr "kuri silm"
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
@@ -1297,12 +1320,12 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
 msgid "2p — Thousand Stings Garrison"
-msgstr ""
+msgstr "2 mängijat: Tuhande Nõela Vahtkond"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
 msgid "A strange place. Designed by Doc Paterson"
-msgstr ""
+msgstr "Üks veider paik. Kavandaja Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1371,10 +1394,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:148
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:149
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:150
-#, fuzzy
-#| msgid "statue"
 msgid "Statue"
-msgstr "kuju"
+msgstr "Kuju"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1706,14 +1727,13 @@ msgstr "4 mängijat: Losside piiramine"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
-#, fuzzy
 msgid ""
 "36X36 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
 "40x30 väljaga 4 mängija kaart, kus neli lossi asuvad  kahe jõe "
-"ristumiskohas. Sobib mängida kaks-kahe-vastu või vabavõitlusena. Umbes 45 "
-"küla."
+"ristumiskohas. Sobib mängida kaks-kahe-vastu või vabavõitlusena. Kaardil on "
+"umbes 45 küla."
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
@@ -1838,15 +1858,13 @@ msgstr "Kaitsja"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:426
-#, fuzzy
 msgid "Survive all enemy attacks"
-msgstr "Pea vastu kõigile vastase rünnakutele."
+msgstr "Pea vastu kõigile vastase rünnakutele"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:432
-#, fuzzy
 msgid "Death of your team leaders"
-msgstr "Sinu meeskonna pealikute surm."
+msgstr "Sinu meeskonna pealikute surm"
 
 #. [note]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:437
@@ -1938,10 +1956,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
-#, fuzzy
-#| msgid "6p — Hexcake"
 msgid "6p — Volcano"
-msgstr "6 mängijat: Kuusnurk"
+msgstr "6 mängijat: Tulemägi"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
@@ -1949,6 +1965,8 @@ msgid ""
 "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
+"Kolm-kolme-vastu lahing - valluta kuningriigi jäänused, mille kunagi ammu "
+"hävitas tulemäe purse. Kaardil on 36 küla."
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7

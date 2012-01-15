@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2011 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -292,13 +292,6 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 		LOG_AI << "attack option has base value " << value << " with exposure " << exposure << ": "
 			<< vulnerability << "/" << support << " = " << (vulnerability/std::max<double>(support,0.1)) << "\n";
 		value -= exposure*(1.0-aggression);
-	}
-
-	// If this attack uses our leader, and the leader can reach the keep,
-	// and has gold to spend, reduce the value to reflect the leader's
-	// lost recruitment opportunity in the case of an attack.
-	if(uses_leader && ai_obj.leader_can_reach_keep() && ai_obj.current_team().gold() > 20) {
-		value -= double(ai_obj.current_team().gold())*0.5;
 	}
 
 	// Prefer to attack already damaged targets.

@@ -1,0 +1,245 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2011 wesnothd "Battle for Wesnoth 多人游戏守护进程（网络服务器）"
+.
+.SH 命名
+.
+wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP） 多人游戏守护进程（网络服务器）
+.
+.SH 摘要
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH 描述
+.
+管理韦诺之战的多人游戏。请参见http://www.wesnoth.org/wiki/ServerAdministration以查看服务器可以接受的命令列表。服务器可以从wesnoth客户端（/query
+\&...）或者fifo接受命令。
+.
+.SH 选项
+.
+.TP 
+\fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
+指定wesnothd查找配置文件的目录。欲获知命令语法，请查看下面的\fB服务器配置\fP小节。通过发送SIGHUP信号给服务器可以重新装载配置文件。
+.TP 
+\fB\-d, \-\-daemon\fP
+以守护进程方式运行wesnothd。
+.TP 
+\fB\-h, \-\-help\fP
+显示命令行选项的作用。
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP。默认的级别是\fBerror\fP，对\fBserver\fP域而言，默认级别是\fBinfo\fP。
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+绑定服务器到指定的端口。如果不指定，则将使用\fB15000\fP端口。
+.TP 
+\fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
+设置网络I/O中等待状态的工作线程的最大数量为n（默认值：\fB5\fP，\ 最大值：\ \fB30\fP）。
+.TP 
+\fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
+设置允许创建的最大工作线程数。如果设置为\fB0\fP则不限制线程数（默认值：\fB0\fP）
+.TP 
+\fB\-V, \-\-version\fP
+显示版本号并退出。
+.TP 
+\fB\-v, \-\-verbose\fP
+开启调试日志记录。
+.
+.SH 服务器配置
+.
+.SS 通用的语法为：
+.
+.P
+[\fItag\fP]
+.IP
+\fIkey\fP="\fIvalue\fP"
+.IP
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS 全局主键：
+.
+.TP 
+\fBallow_remote_shutdown\fP
+如果设置为 \fBno\fP （默认值），shut_down（关闭）和restart（重启）请求将被忽略，除非这些请求来自于fifo。如果设为 \fByes\fP
+则允许管理员通过 /query 远程关闭。
+.TP 
+\fBban_save_file\fP
+一个服务器可读可写的（经gzip压缩的）文件的完整路径或相对路径。封禁信息会自动保存在这个文件里，并在服务器启动时读取。
+.TP 
+\fBcompress_stored_rooms\fP
+指定房间文件是否应该以压缩形式读写。默认值为\fByes\fP。
+.TP 
+\fBconnections_allowed\fP
+同一IP允许的连接数。\fB0\fP 表示无限制。（默认值：\fB5\fP）
+.TP 
+\fBdisallow_names\fP
+服务器不允许使用的用户名/昵称。可以使用\fB*\fP和\fB?\fP通配符。更多详细信息请查看\fBglob\fP(7)。默认值（如果用户没有指定则自动使用）是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
+.TP 
+\fBfifo_path\fP
+服务器所使用的fifo文件的路径（与在wesnoth中使用 /query
+功能相同），您可以向该文件内echo服务器命令。如果不指定，则默认为编译时指定的路径（默认值：\fB/var/run/socket/wesnothd/socket\fP）。
+.TP 
+\fBmax_messages\fP
+\fBmessages_time_period\fP内允许的消息数。（默认值：\fB4\fP）
+.TP 
+\fBmessages_time_period\fP
+消息泛滥检测的时间间隔（秒）。（默认值：\fB10\fP秒）
+.TP 
+\fBmotd\fP
+每日一言
+.TP 
+\fBnew_room_policy\fP
+指定谁能在服务器上创建新房间。可选值为
+\fBeveryone\fP，\fBregistered\fP，\fBadmin\fP和\fBnobody\fP，分别代表所有人，注册用户，管理员或者禁止创建新房间。默认值为
+\fBeveryone\fP。
+.TP 
+\fBpasswd\fP
+用来获取管理员权限的密码（通过 \fB/query admin \fP\fIpassword\fP来取得权限）。
+.TP 
+\fBreplay_save_path\fP
+服务器用于存放游戏录像的目录。（不要忘了以/结尾！）默认为`'（空），意思是wesnothd启动时的当前目录。
+.TP 
+\fBrestart_command\fP
+这是服务器通过\fBrestart\fP命令开启新服务器进程时使用的命令。（只能通过fifo来调用。参见\fBallow_remote_shutdown\fP设置。）
+.TP 
+\fBroom_save_file\fP
+指定存放房间信息的文件的路径。这个文件在服务器启动时读取，之后会写入。如果设为空或者不设置，则房间不会被读取或保存。
+.TP 
+\fBsave_replays\fP
+设置服务器是否自动保存游戏录像。（默认值：\fBfalse\fP）
+.TP 
+\fBversions_accepted\fP
+服务器接受的客户端版本号列表，是以逗号分隔的字符串。支持\fB*\fP和\fB?\fP通配符。（默认为与服务器版本一致的wesnoth版本）
+.br
+例如: \fBversions_accepted="*"\fP 允许所有版本连接。
+.TP  
+\fBuser_handler\fP
+希望使用的用户信息处理器的名称。目前可选的有\fBforum\fP（将wesnothd与phpbb论坛的数据库连接起来）和\fBsample\fP（一个用户信息处理接口的样例实现，如果您真的在实际中使用它，那您一定是疯了）。默认值是\fBforum\fP，同时您必须添加一个\fB[user_handler]\fP小节，请看下面。
+.
+.SS 全局标签：
+.
+.P
+\fB[redirect]\fP 这个标签用于设定一个服务器，以将某些版本的客户端重定向到该服务器上。
+.RS
+.TP 
+\fBhost\fP
+重定向到的服务器的地址。
+.TP 
+\fBport\fP
+应连接的端口。
+.TP 
+\fBversion\fP
+用逗号分隔的需要重定向的版本号列表。可以使用通配符，在这方面和 \fBversions_accepted\fP 一样。
+.RE
+.P
+\fB[ban_time]\fP 这个标签用于定义一些方便的关键字，以对应一些常用的临时封禁时间长度。
+.RS
+.TP 
+\fBname\fP
+用于引用封禁时间的名字。
+.TP 
+\fBtime\fP
+时间长度定义。 格式为：%d[%s[%d%s[...]]]
+其中%s是s（秒），m（分钟），h（小时），D（天），M（月），Y（年），%d是一个数字。如果不指定时间单位，默认为分钟（m）。例如：\fBtime=\"1D12h30m\"\fP
+代表的是1天零12小时又30分钟的封禁。
+.RE
+.P
+\fB[proxy]\fP
+这个标签用于告诉服务器扮演代理服务器角色，把连接在本服务器上的用户的请求转发到指定的服务器。与\fB[redirect]\fP接受一样的主键。
+.RE
+.P
+\fB[user_handler]\fP
+配置用户数据处理器。可设置的主键取决于通过\fBuser_handler\fP设置的用户数据处理器是哪一个。如果配置文件中没有\fB[user_handler]\fP小节，则服务器在运行中将不提供任何昵称注册服务。
+.RS
+.TP  
+\fBdb_host\fP
+（如果user_handler=forum）数据库服务器的主机名
+.TP  
+\fBdb_name\fP
+（如果user_handler=forum）数据库名
+.TP  
+\fBdb_user\fP
+（如果user_handler=forum）数据库登录用户名
+.TP  
+\fBdb_password\fP
+（如果user_handler=forum）这个用户的密码
+.TP  
+\fBdb_users_table\fP
+（如果user_handler=forum）phpbb
+论坛中存放用户数据的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
+.TP  
+\fBdb_extra_table\fP
+（如果user_handler=forum）wesnothd存放自用的用户数据的表名。您必须自己手动创建这个表，例如：\fBCREATE TABLE
+<table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
+UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
+0);\fP
+.TP  
+\fBuser_expiration\fP
+（如果user_handler=sample）注册昵称的失效时间（天数）。
+.RE
+.P
+\fB[mail]\fP 设置一个SMTP服务器，通过它用户信息处理器可以发送邮件。目前只在样例处理器中使用。
+.RS
+.TP  
+\fBserver\fP
+邮件服务器的主机名。
+.TP  
+\fBusername\fP
+登录到邮件服务器的用户名。
+.TP  
+\fBpassword\fP
+这个用户的密码。
+.TP  
+\fBfrom_address\fP
+您的邮箱的“回复到”邮件地址。
+.TP  
+\fBmail_port\fP
+邮件服务器的端口。默认值为25。
+.
+.SH 退出状态码
+.
+正常退出时状态码为0，此时服务器正常关闭。状态码2代表命令行选项中有错误。
+.
+.SH 作者
+.
+由 David White <davidnwhite@verizon.net> 编写。经 Nils Kneuper
+<crazy\-ivanovic@gmx.net>，ott <ott@gaon.net>，Soliton
+<soliton.de@gmail.com> 和 Thomas Baumhauer
+<thomas.baumhauer@gmail.com> 编辑。这个手册页最初由 Cyril Bouthors
+<cyril@bouthors.org> 编写。
+.br
+请访问官方主页：http://www.wesnoth.org/
+以及Wesnoth中文爱好者主页：http://www.wesnoth.cn
+.
+.SH 版权
+.
+版权所有 \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
+.
+.SH 参见
+.
+\fBwesnoth\fP(6).

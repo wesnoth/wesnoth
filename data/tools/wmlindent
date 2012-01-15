@@ -252,8 +252,8 @@ def convertor(linefilter, arglist, exclude):
                     continue
                 else:
                     try:
-                        infp = open(filename, "r")
-                        outfp = open(filename + ".out", "w")
+                        infp = open(filename, "rb")
+                        outfp = open(filename + ".out", "wb")
                         linefilter(filename, infp, outfp)
                         infp.close()
                         outfp.close()

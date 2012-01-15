@@ -47,12 +47,16 @@ campaigns, and share them with others.
 sets BitsPerPixel value. Example:
 .B --bpp 32
 .TP
-.B -c, --campaign[[<difficulty>] <id_campaign> [<id_scenario>]]
-goes directly to the campaign based on the parameters.
-The difficulty is a number between 1 and current campaign's difficulties number.  The default difficulty is 1.
-The scenario must be one of the campaign's child scenarios. The default scenario is campaign's first scenario.
-.B Note: When using this switch please ensure that you specify the data directory path as the final argument
-aswell, otherwise the game will take the campaign/scenario id as the data dir.
+.B -c, --campaign \ [<id_campaign>]
+goes directly to the campaign with id <id_campaign>. A selection menu will appear if no id was specified.
+.B Note:
+When using this switch please ensure that you specify the data directory path as the final argument aswell, otherwise the game will take the campaign/scenario id as the data dir.
+.TP
+.B --campaign-difficulty <difficulty>
+The difficulty of the specified campaign (1 to max). If none specified, the campaign difficulty selection widget will appear.
+.TP
+.B --campaign-scenario <id_scenario>
+The id of the scenario from the specified campaign. The default is the first scenario.
 .TP
 .BI --config-dir \ name
 sets the user configuration directory to

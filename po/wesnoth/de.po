@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-19 15:14+0100\n"
-"PO-Revision-Date: 2011-11-30 13:57+0100\n"
+"POT-Creation-Date: 2012-01-08 18:12+0100\n"
+"PO-Revision-Date: 2012-01-14 16:54+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
@@ -42,8 +42,6 @@ msgstr "Scrollen mit Hilfe der mittleren Maustaste"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#, fuzzy
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep scrolling when mouse leaves window"
 msgstr "Weiter scrollen, wenn die Maus das Fenster verlässt"
 
@@ -54,31 +52,22 @@ msgid "Local time of day area lighting"
 msgstr "Legt die Tageszeit zu Spielbeginn zufällig fest"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:40
-msgid "Custom lighting for local time of day areas (uses more memory)"
-msgstr ""
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:47
+#: data/advanced_preferences.cfg:46
 msgid "Show titlescreen animation"
 msgstr "Startbildschirmanimation anzeigen"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:54
+#: data/advanced_preferences.cfg:53
 msgid "Show combat"
 msgstr "Kampf zeigen"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:61
+#: data/advanced_preferences.cfg:60
 msgid "Ping timeout"
 msgstr "Wartezeit des Verbindungstests"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:62
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
+#: data/advanced_preferences.cfg:61
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
@@ -87,192 +76,180 @@ msgstr ""
 "abgebrochen wird. Deaktiviert wenn 0."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:72
-#, fuzzy
-#| msgid "Accept whisper messages from friends only"
+#: data/advanced_preferences.cfg:71
 msgid "Accept whispers from friends only"
 msgstr "Private Nachrichten nur von Freunden akzeptieren"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:79
-#, fuzzy
-#| msgid "Auto-open whisper windows in lobby"
+#: data/advanced_preferences.cfg:78
 msgid "Auto-open whisper windows in lobby"
-msgstr "Automatisches Öffnen von Fenstern für Nachrichten"
+msgstr "Automatisches Öffnen von Fenstern für private Nachrichten"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:86
-#, fuzzy
-#| msgid "Group players in lobby"
+#: data/advanced_preferences.cfg:85
 msgid "Group players in lobby"
-msgstr "Spieler in Eingangshalle gruppieren"
+msgstr "Spieler in Mehrspielerlobby gruppieren"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:93
-#, fuzzy
-#| msgid "Lobby sounds"
+#: data/advanced_preferences.cfg:92
 msgid "Lobby sounds"
-msgstr "Klänge der Eingangshalle"
+msgstr "Klänge der Mehrspielerlobby"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:100
+#: data/advanced_preferences.cfg:99
 msgid "Disable notifications"
 msgstr "Benachrichtigungen deaktivieren"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:107
+#: data/advanced_preferences.cfg:106
 msgid "Reverse time graphics"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:108
+#: data/advanced_preferences.cfg:107
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:115
+#: data/advanced_preferences.cfg:114
 msgid "Follow unit actions"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:116
+#: data/advanced_preferences.cfg:115
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:132
+#: data/advanced_preferences.cfg:131
 msgid "Chat message aging"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:133
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
+#: data/advanced_preferences.cfg:132
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
 msgstr ""
-"Anzahl von Sekunden, welche gewartet werden soll, bis der Verbindungsaufbau "
-"abgebrochen wird. Deaktiviert wenn 0."
+"Anzahl von Minuten, welche gewartet werden soll, bis eine Chat Nachricht "
+"innerhalb einer Partie verworfen wird. Deaktiviert wenn 0."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:143
+#: data/advanced_preferences.cfg:142
 msgid "Use 12-hour clock format"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:150
+#: data/advanced_preferences.cfg:149
 msgid "Confirm loading of saves from a different version"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:156
 msgid "Show all unit types in help"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:158
+#: data/advanced_preferences.cfg:157
 msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:166
+#: data/advanced_preferences.cfg:165
 msgid "Joystick support"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:173
+#: data/advanced_preferences.cfg:172
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:183
+#: data/advanced_preferences.cfg:182
 msgid "Joystick: number of the scroll X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:193
+#: data/advanced_preferences.cfg:192
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:203
+#: data/advanced_preferences.cfg:202
 msgid "Joystick: number of the scroll Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:213
+#: data/advanced_preferences.cfg:212
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:223
+#: data/advanced_preferences.cfg:222
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:233
+#: data/advanced_preferences.cfg:232
 msgid "Joystick: number of the cursor X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:243
+#: data/advanced_preferences.cfg:242
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:253
+#: data/advanced_preferences.cfg:252
 msgid "Joystick: number of the cursor Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:263
+#: data/advanced_preferences.cfg:262
 msgid "Joystick: deadzone of the cursor stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:273
+#: data/advanced_preferences.cfg:272
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:283
+#: data/advanced_preferences.cfg:282
 msgid "Joystick: number of the mouse X-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:293
+#: data/advanced_preferences.cfg:292
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:303
+#: data/advanced_preferences.cfg:302
 msgid "Joystick: number of the mouse Y-axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:313
+#: data/advanced_preferences.cfg:312
 msgid "Joystick: deadzone of the mouse stick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:323
+#: data/advanced_preferences.cfg:322
 msgid "Joystick: number of the thrust axis joystick"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:333
+#: data/advanced_preferences.cfg:332
 msgid "Joystick: number of the thrust axis"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:343
+#: data/advanced_preferences.cfg:342
 msgid "Joystick: deadzone of the thruster"
 msgstr ""
 
@@ -284,124 +261,9 @@ msgstr "RCA KI"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
-#: data/lua/wml-tags.lua:828 src/actions.cpp:1492
+#: data/lua/wml-tags.lua:831 src/actions.cpp:1492
 msgid "poisoned"
 msgstr "vergiftet"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:43
-msgid "TestCamp"
-msgstr ""
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:45
-msgid "Test campaign used to check if new campaign syntax is working."
-msgstr ""
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:46
-msgid "(Easy)"
-msgstr "(Einfach)"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:46
-msgid "Soldier"
-msgstr ""
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:47
-msgid "(Normal)"
-msgstr "(Normal)"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:47
-msgid "Lord"
-msgstr ""
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:48
-msgid "(Hard)"
-msgstr "(Schwierig)"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:48
-msgid "High Lord"
-msgstr ""
-
-#. [about]
-#: data/campaigns/test_campaign/_main.cfg:52
-msgid "Test campaign test [about] entry"
-msgstr ""
-
-#. [scenario]: id=01_Grass
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:4
-msgid "Test campaign - first scenario (grass)"
-msgstr ""
-
-#. [side]: id=Alpha, type=Elvish Fighter
-#. [side]: id=Bravo, type=Elvish Archer
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:24
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:41
-msgid "Players"
-msgstr "Spieler"
-
-#. [side]: id=Charlie, type=Orcish Grunt
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:53
-msgid "Enemies"
-msgstr "Gegner"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:73
-msgid "Passed test color"
-msgstr ""
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:80
-msgid "Failed test color"
-msgstr ""
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
-msgid "Difficulty: Easy"
-msgstr "Schwierigkeitsgrad: Einfach"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:90
-msgid "Difficulty: Normal"
-msgstr "Schwierigkeitsgrad: Normal"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:93
-msgid "Difficulty: Hard"
-msgstr "Schwierigkeitsgrad: Schwierig"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:100
-#, fuzzy
-#| msgid "Campaign: $campaign_name"
-msgid "Main campaign define"
-msgstr "Kampagne: $campaign_name"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:111
-#, fuzzy
-#| msgid "Campaign Design"
-msgid "Extra campaign define"
-msgstr "Kampagnengestaltung"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:122
-#, fuzzy
-#| msgid "Multiplayer"
-msgid "Multiplayer define"
-msgstr "Mehrspieler"
-
-#. [objective]: condition=win
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
-#, fuzzy
-#| msgid "Defeat enemy leader(s)"
-msgid "Defeat enemy leader"
-msgstr "Besiegt alle gegnerischen Anführer"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -489,232 +351,232 @@ msgid "Chinese Translation"
 msgstr "Chinesische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1396
+#: data/core/about.cfg:1402
 msgid "Chinese (Taiwan) Translation"
 msgstr "(Taiwanesisch-)Chinesische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1406
+#: data/core/about.cfg:1412
 msgid "Croatian Translation"
 msgstr "Kroatische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1413
+#: data/core/about.cfg:1419
 msgid "Czech Translation"
 msgstr "Tschechische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1473
+#: data/core/about.cfg:1479
 msgid "Danish Translation"
 msgstr "Dänische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1504
+#: data/core/about.cfg:1510
 msgid "Dutch Translation"
 msgstr "Niederländische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1568
+#: data/core/about.cfg:1574
 msgid "English (GB) Translation"
 msgstr "Englische (GB) Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1590
+#: data/core/about.cfg:1596
 msgid "English (Shaw) Translation"
 msgstr "Englische (Shaw) Transliteration"
 
 #. [about]
-#: data/core/about.cfg:1614
+#: data/core/about.cfg:1620
 msgid "Esperanto Translation"
 msgstr "Esperanto Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1633
+#: data/core/about.cfg:1639
 msgid "Estonian Translation"
 msgstr "Estländische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1643
+#: data/core/about.cfg:1649
 msgid "Filipino Translation"
 msgstr "Philippinische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1653
+#: data/core/about.cfg:1659
 msgid "Finnish Translation"
 msgstr "Finnische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1699
+#: data/core/about.cfg:1705
 msgid "French Translation"
 msgstr "Französische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1858
+#: data/core/about.cfg:1864
 msgid "Friulian Translation"
 msgstr "Friulische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1865
+#: data/core/about.cfg:1871
 msgid "Galician Translation"
 msgstr "Galicische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1901
+#: data/core/about.cfg:1907
 msgid "German Translation"
 msgstr "Deutsche Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:1968
+#: data/core/about.cfg:1974
 msgid "Greek Translation"
 msgstr "Griechische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2005
+#: data/core/about.cfg:2011
 msgid "Hebrew Translation"
 msgstr "Hebräische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2018
+#: data/core/about.cfg:2024
 msgid "Hungarian Translation"
 msgstr "Ungarische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2079
+#: data/core/about.cfg:2085
 msgid "Icelandic Translation"
 msgstr "Isländische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2089
+#: data/core/about.cfg:2095
 msgid "Indonesian Translation"
 msgstr "Indonesische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2112
+#: data/core/about.cfg:2118
 msgid "Irish Translation"
 msgstr "Irische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2119
+#: data/core/about.cfg:2125
 msgid "Italian Translation"
 msgstr "Italienische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2160
+#: data/core/about.cfg:2166
 msgid "Japanese Translation"
 msgstr "Japanische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2228
+#: data/core/about.cfg:2234
 msgid "Korean Translation"
 msgstr "Koreanische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2236
+#: data/core/about.cfg:2242
 msgid "Latin Translation"
 msgstr "Lateinische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2263
+#: data/core/about.cfg:2269
 msgid "Latvian Translation"
 msgstr "Lettische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2274
+#: data/core/about.cfg:2280
 msgid "Lithuanian Translation"
 msgstr "Litauische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2296
+#: data/core/about.cfg:2302
 msgid "Macedonian Translation"
 msgstr "Mazedonische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2303
+#: data/core/about.cfg:2309
 msgid "Marathi Translation"
 msgstr "Marathi Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2312
+#: data/core/about.cfg:2318
 msgid "Norwegian Translation"
 msgstr "Norwegische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2337
+#: data/core/about.cfg:2343
 msgid "Old English Translation"
 msgstr "Altenglische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2346
+#: data/core/about.cfg:2352
 msgid "Polish Translation"
 msgstr "Polnische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2386
+#: data/core/about.cfg:2392
 msgid "Portuguese Translation"
 msgstr "Portugiesische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2393
+#: data/core/about.cfg:2399
 msgid "Portuguese (Brazil) Translation"
 msgstr "(Brasilianisch-)Portugiesische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2435
+#: data/core/about.cfg:2441
 msgid "Romanian Translation"
 msgstr "Rumänische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2443
+#: data/core/about.cfg:2449
 msgid "Russian Translation"
 msgstr "Russische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2525
+#: data/core/about.cfg:2531
 msgid "Serbian Translation"
 msgstr "Serbische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2544
+#: data/core/about.cfg:2550
 msgid "Slovak Translation"
 msgstr "Slowakische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2570
+#: data/core/about.cfg:2576
 msgid "Slovenian Translation"
 msgstr "Slowenische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2586
+#: data/core/about.cfg:2592
 msgid "Spanish Translation"
 msgstr "Spanische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2656
+#: data/core/about.cfg:2673
 msgid "Swedish Translation"
 msgstr "Schwedische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2697
+#: data/core/about.cfg:2714
 msgid "Turkish Translation"
 msgstr "Türkische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2719
+#: data/core/about.cfg:2736
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencianische (südliches Katalonien) Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2732
+#: data/core/about.cfg:2749
 msgid "Vietnamese Translation"
 msgstr "Vietnamesische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2751
+#: data/core/about.cfg:2768
 msgid "RACV’s Translation"
 msgstr "Valenzianische (nach der RACV) Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2758
+#: data/core/about.cfg:2775
 msgid "Bots"
 msgstr "Bots"
 
@@ -1151,7 +1013,7 @@ msgstr "Dreizack des Sturms"
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:546
 msgid "sceptre of fire"
-msgstr ""
+msgstr "Zepter des Feuers"
 
 #: data/core/macros/names.cfg:18
 msgid ""
@@ -2473,13 +2335,17 @@ msgstr "Alternativer Wesnothserver"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
-msgid "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
-msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
+msgid ""
+"DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
+"Junicode-Regular.ttf"
+msgstr ""
+"DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
+"Junicode-Regular.ttf"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
-msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
-msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
+msgid "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
+msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -3252,31 +3118,31 @@ msgid ""
 "the village, although they will still be healed."
 msgstr ""
 
-#: data/lua/wml-tags.lua:828 src/actions.cpp:1492
+#: data/lua/wml-tags.lua:831 src/actions.cpp:1492
 msgid "female^poisoned"
 msgstr "vergiftet"
 
-#: data/lua/wml-tags.lua:830 src/actions.cpp:1497
+#: data/lua/wml-tags.lua:833 src/actions.cpp:1497
 msgid "female^slowed"
 msgstr "verlangsamt"
 
-#: data/lua/wml-tags.lua:830 src/actions.cpp:1497
+#: data/lua/wml-tags.lua:833 src/actions.cpp:1497
 msgid "slowed"
 msgstr "verlangsamt"
 
-#: data/lua/wml-tags.lua:831 src/actions.cpp:1502
+#: data/lua/wml-tags.lua:834 src/actions.cpp:1502
 msgid "female^petrified"
 msgstr "versteinert"
 
-#: data/lua/wml-tags.lua:831 src/actions.cpp:1502
+#: data/lua/wml-tags.lua:834 src/actions.cpp:1502
 msgid "petrified"
 msgstr "versteinert"
 
-#: data/lua/wml-tags.lua:832
+#: data/lua/wml-tags.lua:835
 msgid "female^unhealable"
 msgstr "unheilbar"
 
-#: data/lua/wml-tags.lua:832
+#: data/lua/wml-tags.lua:835
 msgid "unhealable"
 msgstr "unheilbar"
 
@@ -3363,8 +3229,8 @@ msgstr "Szenario beenden"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:238
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:247
-#: data/themes/widescreen.cfg:268 src/menu_events.cpp:216 src/unit.cpp:2454
-#: src/unit.cpp:2633
+#: data/themes/widescreen.cfg:268 src/menu_events.cpp:216 src/unit.cpp:2450
+#: src/unit.cpp:2621
 msgid "HP"
 msgstr "LP"
 
@@ -3498,8 +3364,6 @@ msgstr "Perspektive"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#, fuzzy
-#| msgid "Skip Animation"
 msgid "Skip animation"
 msgstr "Keine Animationen"
 
@@ -3683,10 +3547,8 @@ msgid "Downloading add-on: $addon_title|..."
 msgstr "Erweiterung »$addon_title|« wird heruntergeladen ..."
 
 #: src/addon/manager.cpp:586 src/addon/manager.cpp:1135
-#, fuzzy
-#| msgid "Download"
 msgid "Downloading..."
-msgstr "Herunterladen"
+msgstr "Herunterladen..."
 
 #: src/addon/manager.cpp:598
 msgid ""
@@ -3860,8 +3722,6 @@ msgid "Confirm"
 msgstr "Bestätigen"
 
 #: src/addon/manager.cpp:1128
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting..."
 msgstr "Mit dem Server verbinden..."
 
@@ -3933,14 +3793,11 @@ msgid "You have no add-ons installed."
 msgstr "Ihr habt keine Erweiterungen installiert."
 
 #: src/addon/manager.cpp:1416
-#, fuzzy
-#| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] ""
-"Seid Ihr sicher, dass Ihr die Erweiterung '$addon|' entfernen wollt?"
+msgstr[0] "Seid Ihr sicher, dass Ihr die folgende Erweiterung entfernen wollt?"
 msgstr[1] ""
-"Seid Ihr sicher, dass Ihr die Erweiterung '$addon|' entfernen wollt?"
+"Seid Ihr sicher, dass Ihr die folgenden Erweiterungen entfernen wollt?"
 
 #: src/addon/manager.cpp:1442
 msgid ""
@@ -3953,32 +3810,22 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/addon/manager.cpp:1452
-#, fuzzy
-#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
-msgstr[0] "Erweiterung konnte nicht entfernt werden:"
-msgstr[1] "Erweiterung konnte nicht entfernt werden:"
+msgstr[0] "Die folgenden Erweiterungen konnte nicht entfernt werden:"
+msgstr[1] "Die folgenden Erweiterungen konnte nicht entfernt werden:"
 
 #: src/addon/manager.cpp:1459
-#, fuzzy
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Erweiterung entfernt"
-msgstr[1] "Erweiterung entfernt"
+msgstr[1] "Erweiterungen entfernt"
 
 #: src/addon/manager.cpp:1461
-#, fuzzy
-#| msgid "The following add-on had errors and could not be loaded:"
-#| msgid_plural "The following add-ons had errors and could not be loaded:"
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
-msgstr[0] ""
-"Die folgende Erweiterung weist Fehler auf und konnte nicht geladen werden:"
-msgstr[1] ""
-"Die folgenden Erweiterungen weisen Fehler auf und können nicht geladen "
-"werden:"
+msgstr[0] "Die folgenden Erweiterung wurde erfolgreich gelöscht:"
+msgstr[1] "Die folgenden Erweiterungen wurden erfolgreich gelöscht:"
 
 #: src/attack_prediction_display.cpp:105 src/attack_prediction_display.cpp:237
 msgid "Attacker"
@@ -4067,10 +3914,8 @@ msgid "Tutorial"
 msgstr "Einführung"
 
 #: src/dialogs.cpp:499
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "Test scenario"
-msgstr "Entferntes Szenario"
+msgstr "Testszenario"
 
 #: src/dialogs.cpp:509 src/savegame.cpp:1050
 msgid "Turn"
@@ -4240,7 +4085,7 @@ msgstr "Die Karte konnte nicht geladen werden: "
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game_controller.cpp:1195
+#: src/game_controller.cpp:1196
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
@@ -4249,15 +4094,15 @@ msgstr[1] ""
 "Die folgenden Erweiterungen weisen Fehler auf und können nicht geladen "
 "werden:"
 
-#: src/game_controller.cpp:1202
+#: src/game_controller.cpp:1203
 msgid "ERROR DETAILS:"
 msgstr "Fehlerdetails:"
 
-#: src/game_controller.cpp:1236
+#: src/game_controller.cpp:1237
 msgid "Error loading game configuration files: '"
 msgstr "Fehler beim Laden der Konfigurationsdateien: '"
 
-#: src/game_controller.cpp:1237
+#: src/game_controller.cpp:1238
 msgid "' (The game will now exit)"
 msgstr "' (Das Spiel wird nun beendet)"
 
@@ -4277,7 +4122,7 @@ msgstr "Debug: "
 msgid "Info: "
 msgstr "Information: "
 
-#: src/game_events.cpp:2376
+#: src/game_events.cpp:2387
 msgid "Invalid value in the result key for [end_level]"
 msgstr ""
 
@@ -4310,9 +4155,6 @@ msgid "Turn "
 msgstr "Runde "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
-#, fuzzy
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Verfügbarer Platz:"
@@ -4346,7 +4188,7 @@ msgstr "(spielend)"
 
 #: src/gui/dialogs/lobby_player_info.cpp:105
 msgid "In lobby"
-msgstr "In der Eingangshalle"
+msgstr "In der Lobby"
 
 #: src/gui/dialogs/lobby_player_info.cpp:129
 msgid "On friends list"
@@ -4826,8 +4668,6 @@ msgstr ""
 #: src/menu_events.cpp:2334 src/menu_events.cpp:2337 src/menu_events.cpp:2339
 #: src/menu_events.cpp:2341 src/menu_events.cpp:2343 src/menu_events.cpp:2370
 #: src/menu_events.cpp:2372 src/menu_events.cpp:2374 src/menu_events.cpp:2388
-#, fuzzy
-#| msgid "<nick>"
 msgid "<nickname>"
 msgstr "<Spieler>"
 
@@ -4888,8 +4728,6 @@ msgstr ""
 "senden, die keine Fraktion im Spiel kontrollieren."
 
 #: src/menu_events.cpp:2364
-#, fuzzy
-#| msgid "<nick> <message>"
 msgid "<nickname> <message>"
 msgstr "<Spieler> <Nachricht>"
 
@@ -4902,20 +4740,14 @@ msgid "Change the log level of a log domain."
 msgstr "Schaltet die Protokolldomäne auf eine andere Protokollstufe."
 
 #: src/menu_events.cpp:2370
-#, fuzzy
-#| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
 msgstr "Fügt einen Benutzer zur Liste der Benutzer, die Ihr ignoriert, hinzu."
 
 #: src/menu_events.cpp:2372
-#, fuzzy
-#| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
-msgstr "Fügt einen Benutzer Eurer Freundesliste hinzu."
+msgstr "Fügt einen Benutzer zu Eurer Freundesliste hinzu."
 
 #: src/menu_events.cpp:2374
-#, fuzzy
-#| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Entfernt einen Benutzer aus der Liste der Benutzer, die Ihr ignoriert."
 
@@ -4932,32 +4764,24 @@ msgid "<password> <email (optional)>"
 msgstr "<Passwort> <E-Mail Adresse (optional)>"
 
 #: src/menu_events.cpp:2381
-#, fuzzy
-#| msgid "Register your nick"
 msgid "Register your nickname"
 msgstr "Registriert Euren Benutzernamen."
 
 #: src/menu_events.cpp:2383
-#, fuzzy
-#| msgid "Drop your nick."
 msgid "Drop your nickname."
 msgstr "Entfernt die Registrierung Eures Benutzernamens."
 
 #: src/menu_events.cpp:2385
-#, fuzzy
-#| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
 "Aktualisiert Einstellungen Eures Benutzernames. Um mögliche Einstellungen zu "
-"erfahren, verwendet /details"
+"erfahren, verwendet '/details'."
 
 #: src/menu_events.cpp:2386
 msgid "<detail> <value>"
 msgstr "<Einstellung> <Wert>"
 
 #: src/menu_events.cpp:2388
-#, fuzzy
-#| msgid "Request information about a nick."
 msgid "Request information about a nickname."
 msgstr "Fordert Informationen über einen Benutzer an."
 
@@ -5031,8 +4855,6 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<Fraktion> [on/off]]"
 
 #: src/menu_events.cpp:2545
-#, fuzzy
-#| msgid "<side> <nick>"
 msgid "<side> <nickname>"
 msgstr "<Fraktion> <Spieler>"
 
@@ -5481,10 +5303,8 @@ msgid "Do you want to continue?"
 msgstr "Möchtet Ihr diesen Spielstand speichern?"
 
 #: src/multiplayer.cpp:250
-#, fuzzy
-#| msgid "Warning: "
 msgid "Warning"
-msgstr "Warnung: "
+msgstr "Warnung"
 
 #: src/multiplayer.cpp:294
 msgid "Bad data received from server"
@@ -5495,16 +5315,10 @@ msgid "You must login first."
 msgstr "Ihr müsst Euch zuerst anmelden."
 
 #: src/multiplayer.cpp:337
-#, fuzzy
-#| msgid "The nick '$nick' is already taken."
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Der Benutzername »$nick« ist bereits vergeben."
 
 #: src/multiplayer.cpp:339
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
@@ -5513,50 +5327,36 @@ msgstr ""
 "Zeichen, Unter- und Bindestriche sind erlaubt."
 
 #: src/multiplayer.cpp:343
-#, fuzzy
-#| msgid "The nick '$nick' is too long. Nicks must be 20 characters or less."
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Der Benutzername »$nick« ist zu lang. Benuternamen dürfen maximal 20 Zeichen "
 "lang sein."
 
 #: src/multiplayer.cpp:346
-#, fuzzy
-#| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "Der Benutzername »$nick« ist reserviert und kann von Spielern nicht "
 "verwendet werden."
 
 #: src/multiplayer.cpp:348
-#, fuzzy
-#| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Der Benutzername »$nick« ist auf diesem Server nicht registriert."
 
 #: src/multiplayer.cpp:349
-#, fuzzy
-#| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
 msgstr " Der Server erlaubt keine unregistrierten Benutzernamen."
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:353
-#, fuzzy
-#| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Der Benutzername »$nick« ist auf diesem Server registriert."
 
 #: src/multiplayer.cpp:354
-#, fuzzy
-#| msgid ""
-#| "WARNING: There is already a client using this nick, logging in will cause "
-#| "that client to be kicked!"
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
 msgstr ""
-"WARNUNG: Es gibt bereits einen Teilnehmer, der den Benutzernamen verwendet. "
-"Meldet Ihr Euch an, wird dieser Teilnehmer vom Server geworfen!"
+"WARNUNG: Es gibt bereits einen Teilnehmer, der diesen Benutzernamen "
+"verwendet. Meldet Ihr Euch an, wird dieser Teilnehmer vom Server geworfen!"
 
 #: src/multiplayer.cpp:357
 msgid ""
@@ -6068,9 +5868,8 @@ msgstr "Der Anfangshandschlag konnte nicht ausgeführt werden"
 
 #: src/network_manager_ana.cpp:650 src/network_manager_ana.cpp:667
 #: src/network_manager_ana.cpp:689
-#, fuzzy
 msgid "Could not connect to host"
-msgstr "Es konnte keine Verbindung zum Server aufgebaut werden."
+msgstr "Es konnte keine Verbindung zum Server aufgebaut werden"
 
 #: src/pathfind/pathfind.cpp:455
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -6393,8 +6192,6 @@ msgid "(Att / Def)"
 msgstr "(Ang / Ver)"
 
 #: src/reports.cpp:442
-#, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Erfahrungsmodifikator: "
 
@@ -6777,27 +6574,27 @@ msgstr "Der Wert für »border_size« muss zwischen 0,0 und 0,5 liegen."
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Unbekannter Einheitentyp '$type|' beim Generieren der Charakteristiken"
 
-#: src/unit.cpp:2413 src/unit.cpp:2622 src/unit.cpp:2699
+#: src/unit.cpp:2409 src/unit.cpp:2610 src/unit.cpp:2686
 msgid " and "
 msgstr " und "
 
-#: src/unit.cpp:2424
+#: src/unit.cpp:2420
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2485
+#: src/unit.cpp:2481
 msgid "moves"
 msgstr "BP"
 
-#: src/unit.cpp:2500 src/unit.cpp:2646
+#: src/unit.cpp:2496 src/unit.cpp:2634
 msgid "XP to advance"
 msgstr "EP pro Stufenanstieg"
 
-#: src/unit.cpp:2639
+#: src/unit.cpp:2627
 msgid " move"
 msgstr " BP"
 
-#: src/unit.cpp:2654
+#: src/unit.cpp:2642
 msgid "$effect_description per level"
 msgstr "$effect_description pro Stufe"
 
@@ -6882,6 +6679,46 @@ msgstr "Durch $player ersetzen"
 #: src/whiteboard/manager.cpp:1088
 msgid "Whiteboard Options"
 msgstr ""
+
+#~ msgid "(Easy)"
+#~ msgstr "(Einfach)"
+
+#~ msgid "(Normal)"
+#~ msgstr "(Normal)"
+
+#~ msgid "(Hard)"
+#~ msgstr "(Schwierig)"
+
+#~ msgid "Players"
+#~ msgstr "Spieler"
+
+#~ msgid "Enemies"
+#~ msgstr "Gegner"
+
+#~ msgid "Difficulty: Easy"
+#~ msgstr "Schwierigkeitsgrad: Einfach"
+
+#~ msgid "Difficulty: Normal"
+#~ msgstr "Schwierigkeitsgrad: Normal"
+
+#~ msgid "Difficulty: Hard"
+#~ msgstr "Schwierigkeitsgrad: Schwierig"
+
+#~| msgid "Campaign: $campaign_name"
+#~ msgid "Main campaign define"
+#~ msgstr "Kampagne: $campaign_name"
+
+#~| msgid "Campaign Design"
+#~ msgid "Extra campaign define"
+#~ msgstr "Kampagnengestaltung"
+
+#~| msgid "Multiplayer"
+#~ msgid "Multiplayer define"
+#~ msgstr "Mehrspieler"
+
+#~| msgid "Defeat enemy leader(s)"
+#~ msgid "Defeat enemy leader"
+#~ msgstr "Besiegt alle gegnerischen Anführer"
 
 #~ msgid "Download"
 #~ msgstr "Herunterladen"

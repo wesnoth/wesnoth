@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2011 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -1101,7 +1101,7 @@ game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 		config &effect = mod.add_child("effect");
 		effect["apply_to"] = "variation";
 		effect["name"] = variation;
-		fake_unit->add_modification("variation", vconfig(mod));
+		fake_unit->add_modification("variation",mod);
 	}
 
 	if(!img_mods.empty()) {
@@ -1109,7 +1109,7 @@ game_display::fake_unit *create_fake_unit(const vconfig& cfg)
 		config &effect = mod.add_child("effect");
 		effect["apply_to"] = "image_mod";
 		effect["add"] = img_mods;
-		fake_unit->add_modification("image_mod", vconfig(mod));
+		fake_unit->add_modification("image_mod",mod);
 	}
 
 	return fake_unit;
@@ -1260,6 +1260,10 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	game_state *state_of_game = resources::state_of_game;
 
 	const std::string name = cfg["name"];
+	if(name.empty()) {
+		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
+		return;
+	}
 	config::attribute_value &var = state_of_game->get_variable(name);
 
 	config::attribute_value literal = cfg.get_config()["literal"]; // no $var substitution
@@ -1476,6 +1480,10 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 {
 	const t_string& name = cfg["name"];
 	variable_info dest(name, true, variable_info::TYPE_CONTAINER);
+	if(name.empty()) {
+		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
+		return;
+	}
 
 	std::string mode = cfg["mode"]; // replace, append, merge, or insert
 	if(mode == "extend") {
@@ -1892,9 +1900,9 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 		text = cfg["description"].str();
 
 		if(cfg["delayed_variable_substitution"].to_bool(false))
-			u->add_modification("object", cfg);
+			u->add_modification("object", cfg.get_config());
 		else
-			u->add_modification("object", vconfig(cfg.get_parsed_config()));
+			u->add_modification("object", cfg.get_parsed_config());
 
 		resources::screen->select_hex(event_info.loc1);
 		resources::screen->invalidate_unit();

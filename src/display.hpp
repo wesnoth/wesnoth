@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2011 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -625,7 +625,7 @@ protected:
 	/** Local cache for preferences::animate_map, since it is constantly queried. */
 	bool animate_map_;
 
-	/** Local cache for preferences "local_tod_light" */
+	/** Local cache for preferences "local_tod_lighting" */
 	bool local_tod_light_;
 
 public:

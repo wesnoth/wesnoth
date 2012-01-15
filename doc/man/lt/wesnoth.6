@@ -48,14 +48,20 @@ ir dalinkitės jais su kitais.
 \fB\-\-bpp\fP\fI\ skaičius\fP
 nustato bitų vienam pikseliui vertę. Pavyzdžiui: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign[[<sunkumas>] <kampanijos_id> [<scenarijaus_id>]]\fP
-goes directly to the campaign based on the parameters.  The difficulty is a
-number between 1 and current campaign's difficulties number.  The default
-difficulty is 1.  The scenario must be one of the campaign's child
-scenarios. The default scenario is campaign's first scenario.  \fBNote: When
-using this switch please ensure that you specify the data directory path as
-the final argument\fP aswell, otherwise the game will take the
-campaign/scenario id as the data dir.
+\fB\-c, \-\-campaign \ [<id_campaign>]\fP
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+aswell, otherwise the game will take the campaign/scenario id as the data
+dir.
+.TP 
+\fB\-\-campaign\-difficulty <difficulty>\fP
+The difficulty of the specified campaign (1 to max). If none specified, the
+campaign difficulty selection widget will appear.
+.TP 
+\fB\-\-campaign\-scenario <id_scenario>\fP
+The id of the scenario from the specified campaign. The default is the first
+scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ pavadinimas\fP
 sets the user configuration directory to \fIname\fP under $HOME or "My
@@ -118,9 +124,6 @@ tarp 1 ir 1000, numatyta \fB50\fP.
 paleidžia daugelio žaidėjų žaidimą. Yra papildomų parametrų, kurie gali būti
 naudojami kartu su \fB\-\-multiplayer\fP, kaip paaiškinta žemiau. Tik šie
 papildomi parametrai gali būti naudojami po \fB\-\-multiplayer\fP.
-.TP 
-\fB\-\-new\-syntax\fP
-enables the new campaign syntax parsing.
 .TP 
 \fB\-\-no\-delay\fP
 paleidžia žaidimą be jokių užlaikymų grafikos testavimui. Tai yra

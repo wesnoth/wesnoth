@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-19 15:14+0100\n"
-"PO-Revision-Date: 2011-07-03 13:49+0300\n"
+"POT-Creation-Date: 2012-01-03 10:40+0100\n"
+"PO-Revision-Date: 2011-12-30 22:14+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -29,24 +29,18 @@ msgstr "Sügav vesi"
 
 #. [terrain_type]: id=deep_water_gray
 #: data/core/terrain.cfg:19
-#, fuzzy
-#| msgid "Deep Water"
 msgid "Gray Deep Water"
-msgstr "Sügav vesi"
+msgstr "Hall sügav vesi"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:30
-#, fuzzy
-#| msgid "Deep Water"
 msgid "Medium Deep Water"
-msgstr "Sügav vesi"
+msgstr "Harilik sügav vesi"
 
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:40
-#, fuzzy
-#| msgid "Deep Water"
 msgid "Tropical Deep Water"
-msgstr "Sügav vesi"
+msgstr "Soe sügav vesi"
 
 #. [terrain_type]: id=gray_tropical_water
 #. [terrain_type]: id=shallow_water
@@ -57,29 +51,23 @@ msgstr "Madal vesi"
 
 #. [terrain_type]: id=gray_tropical_water
 #: data/core/terrain.cfg:51
-#, fuzzy
-#| msgid "Shallow Water"
 msgid "Gray Shallow Water"
-msgstr "Madal vesi"
+msgstr "Hall madal vesi"
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:62
-#, fuzzy
-#| msgid "Shallow Water"
 msgid "Medium Shallow Water"
-msgstr "Madal vesi"
+msgstr "Harilik madal vesi"
 
 #. [terrain_type]: id=tropical_water
 #: data/core/terrain.cfg:72
-#, fuzzy
-#| msgid "Shallow Water"
 msgid "Tropical Shallow Water"
-msgstr "Madal vesi"
+msgstr "Soe madal vesi"
 
 #. [terrain_type]: id=ford
 #: data/core/terrain.cfg:82
 msgid "Ford"
-msgstr ""
+msgstr "Koolmekoht"
 
 #. [terrain_type]: id=gray_reef
 #. [terrain_type]: id=reef
@@ -91,17 +79,13 @@ msgstr "Rannakaljud"
 
 #. [terrain_type]: id=gray_reef
 #: data/core/terrain.cfg:93
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Gray Coastal Reef"
-msgstr "Rannakaljud"
+msgstr "Hallid rannakaljud"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:113
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Tropical Coastal Reef"
-msgstr "Rannakaljud"
+msgstr "Lõuna rannakaljud"
 
 #. [terrain_type]: id=swamp_water
 #. [terrain_type]: id=quagmire
@@ -112,7 +96,7 @@ msgstr "Soo"
 #. [terrain_type]: id=quagmire
 #: data/core/terrain.cfg:135
 msgid "Muddy Quagmire"
-msgstr ""
+msgstr "Porimülgas"
 
 #. [terrain_type]: id=grassland
 #. [terrain_type]: id=savanna
@@ -126,51 +110,45 @@ msgstr "Rohumaa"
 #. [terrain_type]: id=grassland
 #: data/core/terrain.cfg:153
 msgid "Green Grass"
-msgstr ""
+msgstr "Haljas rohi"
 
 #. [terrain_type]: id=savanna
 #: data/core/terrain.cfg:164
 msgid "Semi-dry Grass"
-msgstr ""
+msgstr "Poolkuiv rohi"
 
 #. [terrain_type]: id=grass_dry
 #: data/core/terrain.cfg:175
 msgid "Dry Grass"
-msgstr ""
+msgstr "Kuiv rohi"
 
 #. [terrain_type]: id=leaf_litter
 #: data/core/terrain.cfg:185
 msgid "Leaf Litter"
-msgstr ""
+msgstr "Kuivanud lehed"
 
 #. [terrain_type]: id=dirt_dark
 #. [terrain_type]: id=dirt
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:196 data/core/terrain.cfg:206
 #: data/core/terrain.cfg:216
-#, fuzzy
-#| msgid "Dirt"
 msgid "Dirt"
-msgstr "Muld"
+msgstr "Dirt"
 
 #. [terrain_type]: id=dirt_dark
 #: data/core/terrain.cfg:197
-#, fuzzy
-#| msgid "Dirt"
 msgid "Dark Dirt"
-msgstr "Muld"
+msgstr "Must muld"
 
 #. [terrain_type]: id=dirt
 #: data/core/terrain.cfg:207
 msgid "Regular Dirt"
-msgstr ""
+msgstr "Muld"
 
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:217
-#, fuzzy
-#| msgid "Dirt"
 msgid "Dry Dirt"
-msgstr "Muld"
+msgstr "Kuiv muld"
 
 #. [terrain_type]: id=road
 #. [terrain_type]: id=road_clean
@@ -186,19 +164,17 @@ msgstr "Tee"
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:227
 msgid "Regular Cobbles"
-msgstr ""
+msgstr "Munakivitee"
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:237
-#, fuzzy
-#| msgid "Clear Labels"
 msgid "Clean Gray Cobbles"
-msgstr "Tühjenda sildid"
+msgstr "Hall munakivitee"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:247
 msgid "Overgrown Cobbles"
-msgstr ""
+msgstr "Rohtunud munakivitee"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:260
@@ -212,17 +188,13 @@ msgstr "Lumi"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:282
-#, fuzzy
-#| msgid "Desert"
 msgid "Desert"
-msgstr "Kõrb"
+msgstr "Desert"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:283
-#, fuzzy
-#| msgid "Desert Mountains"
 msgid "Desert Sands"
-msgstr "Kõrbemäed"
+msgstr "Kõrbeliiv"
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:292
@@ -232,7 +204,7 @@ msgstr "Liiv"
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:293
 msgid "Beach Sands"
-msgstr ""
+msgstr "Rannaliiv"
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:301
@@ -251,10 +223,8 @@ msgstr "Kraater"
 
 #. [terrain_type]: id=flowers_mixed
 #: data/core/terrain.cfg:337
-#, fuzzy
-#| msgid "Fall Mixed Forest"
 msgid "Mixed Flowers"
-msgstr "Sügisene segamets"
+msgstr "Lilleväli"
 
 #. [terrain_type]: id=farm
 #: data/core/terrain.cfg:346
@@ -264,57 +234,52 @@ msgstr "Põllumaa"
 #. [terrain_type]: id=stones_small
 #: data/core/terrain.cfg:355
 msgid "Stones"
-msgstr ""
+msgstr "Kivid"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:364
 msgid "Small Mushrooms"
-msgstr ""
+msgstr "Väikesed seened"
 
 #. [terrain_type]: id=mushrooms_farm
 #: data/core/terrain.cfg:373
-#, fuzzy
-#| msgid "Mushroom Grove"
 msgid "Mushroom Farm"
-msgstr "Seenesalu"
+msgstr "Seeneistandus"
 
 #. [terrain_type]: id=desert_plants
 #: data/core/terrain.cfg:382
-#, fuzzy
-#| msgid "Desert Mountains"
 msgid "Desert Plants"
-msgstr "Kõrbemäed"
+msgstr "Kõrberohi"
 
 #. [terrain_type]: id=desert_plants_sans_bones
 #: data/core/terrain.cfg:391
 msgid "Desert Plants without Bones"
-msgstr ""
+msgstr "Kõrberohi ilma luudeta"
 
 #. [terrain_type]: id=windmill
-#. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:400 data/core/terrain.cfg:1279
+#: data/core/terrain.cfg:400
 msgid "Windmill"
-msgstr ""
+msgstr "Tuuleveski"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:409
 msgid "Fence"
-msgstr ""
+msgstr "Tara"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:418
 msgid "Stones with Sand Drifts"
-msgstr ""
+msgstr "Kivid ja tuiskliiv"
 
 #. [terrain_type]: id=water-lilies
 #: data/core/terrain.cfg:427
 msgid "Water Lilies"
-msgstr ""
+msgstr "Vesiroosid"
 
 #. [terrain_type]: id=water-lilies-flower
 #: data/core/terrain.cfg:437
 msgid "Flowering Water Lilies"
-msgstr ""
+msgstr "Õitsvad vesiroosid"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_dead
@@ -325,10 +290,8 @@ msgstr "Suur puu"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:464
-#, fuzzy
-#| msgid "Great Tree"
 msgid "Dead Great Tree"
-msgstr "Suur puu"
+msgstr "Suur kuivanud puu"
 
 #. [terrain_type]: id=tropical_forest
 #. [terrain_type]: id=pine_forest
@@ -432,14 +395,12 @@ msgstr "Künkad"
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:612
 msgid "Regular Hills"
-msgstr ""
+msgstr "Künkad"
 
 #. [terrain_type]: id=hills_dry
 #: data/core/terrain.cfg:621
-#, fuzzy
-#| msgid "Hills"
 msgid "Dry Hills"
-msgstr "Künkad"
+msgstr "Kõrbekünkad"
 
 #. [terrain_type]: id=desert_hills
 #: data/core/terrain.cfg:630
@@ -465,8 +426,6 @@ msgstr "Mäed"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:664
-#, fuzzy
-#| msgid "Desert Mountains"
 msgid "Dry Mountains"
 msgstr "Kõrbemäed"
 
@@ -512,10 +471,8 @@ msgstr "Suvise segametsaga künkad"
 
 #. [terrain_type]: id=mixed_forest_fall_hills
 #: data/core/terrain.cfg:766
-#, fuzzy
-#| msgid "Snowy Mixed Forested Hills"
 msgid "Fall Mixed Forested Hills"
-msgstr "Lumise segametsaga künkad"
+msgstr "Sügisese segametsaga künkad"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #: data/core/terrain.cfg:777
@@ -529,15 +486,13 @@ msgstr "Lumise segametsaga künkad"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:800
-#, fuzzy
-#| msgid "Bridge"
 msgid "Wooden Floor"
-msgstr "Sild"
+msgstr "Puupõrand"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:802
 msgid "Basic Wooden Floor"
-msgstr ""
+msgstr "Puupõrand"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:815
@@ -547,7 +502,7 @@ msgstr "Valgustatud koobas"
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:816
 msgid "Beam of Light"
-msgstr ""
+msgstr "Valguskiir"
 
 #. [terrain_type]: id=cave
 #. [terrain_type]: id=cave_earthy
@@ -557,25 +512,21 @@ msgstr "Koobas"
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:827
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Cave Floor"
-msgstr "Koopasein"
+msgstr "Koopapõrand"
 
 #. [terrain_type]: id=cave_earthy
 #: data/core/terrain.cfg:836
 msgid "Earthy Cave Floor"
-msgstr ""
+msgstr "Koopa muldpõrand"
 
 #. [terrain_type]: id=flagstones_dark
 #: data/core/terrain.cfg:846
 msgid "Dark Flagstones"
-msgstr ""
+msgstr "Tumedad päiskivid"
 
 #. [terrain_type]: id=cave_path
 #: data/core/terrain.cfg:856
-#, fuzzy
-#| msgid "Cave path"
 msgid "Cave Path"
 msgstr "Kooparada"
 
@@ -587,10 +538,8 @@ msgstr "Seenesalu"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:875
-#, fuzzy
-#| msgid "Mushroom Grove"
 msgid "Lit Mushroom Grove"
-msgstr "Seenesalu"
+msgstr "Valgustatud seenesalu"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:886
@@ -603,7 +552,7 @@ msgstr "Kaljukoobas"
 #: data/core/terrain.cfg:898 data/core/terrain.cfg:910
 #: data/core/terrain.cfg:922
 msgid "Mine Rail"
-msgstr ""
+msgstr "Rööpad"
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
@@ -616,22 +565,18 @@ msgstr "Kuristik"
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:940
-#, fuzzy
-#| msgid "Lava Chasm"
 msgid "Regular Chasm"
-msgstr "Laavakuristik"
+msgstr "Kuristik"
 
 #. [terrain_type]: id=chasm_earthy
 #: data/core/terrain.cfg:951
-#, fuzzy
-#| msgid "Lava Chasm"
 msgid "Earthy Chasm"
-msgstr "Laavakuristik"
+msgstr "Sügav auk"
 
 #. [terrain_type]: id=abyss
 #: data/core/terrain.cfg:962
 msgid "Ethereal Abyss"
-msgstr ""
+msgstr "Ebamaine tühjus"
 
 #. [terrain_type]: id=lava_chasm
 #: data/core/terrain.cfg:973
@@ -646,28 +591,22 @@ msgstr "Laava"
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:994
 msgid "Volcano"
-msgstr ""
+msgstr "Tulemägi"
 
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1009
-#, fuzzy
-#| msgid "Impassable Mountains"
 msgid "Regular Impassable Mountains"
 msgstr "Läbimatud mäed"
 
 #. [terrain_type]: id=clouddesert
 #: data/core/terrain.cfg:1019
-#, fuzzy
-#| msgid "Impassable Mountains"
 msgid "Desert Impassable Mountains"
-msgstr "Läbimatud mäed"
+msgstr "Läbimatud kõrbemäed"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1029
-#, fuzzy
-#| msgid "Impassable Mountains"
 msgid "Snowy Impassable Mountains"
-msgstr "Läbimatud mäed"
+msgstr "Läbimatud lumised mäed"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_hewn
@@ -675,52 +614,42 @@ msgstr "Läbimatud mäed"
 #. [terrain_type]: id=cavewall_earthy_hewn
 #: data/core/terrain.cfg:1039 data/core/terrain.cfg:1050
 #: data/core/terrain.cfg:1061 data/core/terrain.cfg:1072
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Cave Wall"
 msgstr "Koopasein"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:1040
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Natural Cave Wall"
-msgstr "Koopasein"
+msgstr "Loomulik koopasein"
 
 #. [terrain_type]: id=cavewall_hewn
 #: data/core/terrain.cfg:1051
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Hewn Cave Wall"
-msgstr "Koopasein"
+msgstr "Tahutud koopasein"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1062
 msgid "Natural Earthy Cave Wall"
-msgstr ""
+msgstr "Koopa muldsein"
 
 #. [terrain_type]: id=cavewall_earthy_hewn
 #: data/core/terrain.cfg:1073
 msgid "Reinforced Earthy Cave Wall"
-msgstr ""
+msgstr "koopa muldsein (toestatud)"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
 #: data/core/terrain.cfg:1083 data/core/terrain.cfg:1093
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Stone Wall"
-msgstr "Koopasein"
+msgstr "Kivisein"
 
 #. [terrain_type]: id=wall_stone_lit
 #: data/core/terrain.cfg:1094
 msgid "Lit Stone Wall"
-msgstr ""
+msgstr "Valgustatud kivisein"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1104
-#, fuzzy
-#| msgid "Impassable"
 msgid "Impassable Overlay"
 msgstr "Läbimatu"
 
@@ -742,6 +671,7 @@ msgstr "Tühjus"
 #. [terrain_type]: id=snow_village
 #. [terrain_type]: id=human_village_ruin
 #. [terrain_type]: id=city_village
+#. [terrain_type]: id=windmill_village
 #. [terrain_type]: id=city_village_wno
 #. [terrain_type]: id=hill_village
 #. [terrain_type]: id=snow-hill_village
@@ -764,197 +694,163 @@ msgstr "Tühjus"
 #: data/core/terrain.cfg:1184 data/core/terrain.cfg:1199
 #: data/core/terrain.cfg:1212 data/core/terrain.cfg:1227
 #: data/core/terrain.cfg:1240 data/core/terrain.cfg:1253
-#: data/core/terrain.cfg:1266 data/core/terrain.cfg:1292
-#: data/core/terrain.cfg:1305 data/core/terrain.cfg:1318
-#: data/core/terrain.cfg:1331 data/core/terrain.cfg:1344
-#: data/core/terrain.cfg:1357 data/core/terrain.cfg:1370
-#: data/core/terrain.cfg:1385 data/core/terrain.cfg:1398
-#: data/core/terrain.cfg:1411 data/core/terrain.cfg:1424
-#: data/core/terrain.cfg:1437 data/core/terrain.cfg:1450
-#: data/core/terrain.cfg:1463 data/core/terrain.cfg:1478
-#: data/core/terrain.cfg:1491 data/core/terrain.cfg:1506
-#: data/core/terrain.cfg:2137
+#: data/core/terrain.cfg:1266 data/core/terrain.cfg:1279
+#: data/core/terrain.cfg:1292 data/core/terrain.cfg:1305
+#: data/core/terrain.cfg:1318 data/core/terrain.cfg:1331
+#: data/core/terrain.cfg:1344 data/core/terrain.cfg:1357
+#: data/core/terrain.cfg:1370 data/core/terrain.cfg:1385
+#: data/core/terrain.cfg:1398 data/core/terrain.cfg:1411
+#: data/core/terrain.cfg:1424 data/core/terrain.cfg:1437
+#: data/core/terrain.cfg:1450 data/core/terrain.cfg:1463
+#: data/core/terrain.cfg:1478 data/core/terrain.cfg:1491
+#: data/core/terrain.cfg:1506 data/core/terrain.cfg:2137
 msgid "Village"
 msgstr "Küla"
 
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1131
-#, fuzzy
-#| msgid "Village"
 msgid "Adobe Village"
-msgstr "Küla"
+msgstr "Saviplokkidest küla"
 
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1144
 msgid "Desert Tent Village"
-msgstr ""
+msgstr "Kõrbe telklaager"
 
 #. [terrain_type]: id=camp_village
 #: data/core/terrain.cfg:1157
-#, fuzzy
-#| msgid "Village"
 msgid "Tent Village"
-msgstr "Küla"
+msgstr "Telklaager"
 
 #. [terrain_type]: id=orcish_village
 #: data/core/terrain.cfg:1172
-#, fuzzy
-#| msgid "Village"
 msgid "Orcish Village"
-msgstr "Küla"
+msgstr "Orkiküla"
 
 #. [terrain_type]: id=orcish_snow_village
 #: data/core/terrain.cfg:1185
 msgid "Snowy Orcish Village"
-msgstr ""
+msgstr "Lumine orkiküla"
 
 #. [terrain_type]: id=elven_snow_village
 #: data/core/terrain.cfg:1200
 msgid "Snowy Elven Village"
-msgstr ""
+msgstr "Lumine haldjaküla"
 
 #. [terrain_type]: id=elven_village
 #: data/core/terrain.cfg:1213
-#, fuzzy
-#| msgid "Village"
 msgid "Elven Village"
-msgstr "Küla"
+msgstr "Haldjaküla"
 
 #. [terrain_type]: id=human_village
 #: data/core/terrain.cfg:1228
 msgid "Cottage"
-msgstr ""
+msgstr "Hütt"
 
 #. [terrain_type]: id=snow_village
 #: data/core/terrain.cfg:1241
-#, fuzzy
-#| msgid "Snowy Mountains"
 msgid "Snowy Cottage"
-msgstr "Lumised mäed"
+msgstr "Lumine hütt"
 
 #. [terrain_type]: id=human_village_ruin
 #: data/core/terrain.cfg:1254
-#, fuzzy
-#| msgid "Ruined Castle Keep"
 msgid "Ruined Cottage"
-msgstr "Varemeis loss"
+msgstr "Varemeis hütt"
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1267
 msgid "Human City"
-msgstr ""
+msgstr "Inimeste linn"
 
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1280
-#, fuzzy
-#| msgid "Village"
 msgid "Windmill Village"
-msgstr "Küla"
+msgstr "Veskiga küla"
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1293
 msgid "Snowy Human City"
-msgstr ""
+msgstr "Lumine inimeste linn"
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1306
 msgid "Ruined Human City"
-msgstr ""
+msgstr "Varemeis inimeste linn"
 
 #. [terrain_type]: id=hill_village
 #: data/core/terrain.cfg:1319
 msgid "Hill Stone Village"
-msgstr ""
+msgstr "Mägiküla"
 
 #. [terrain_type]: id=snow-hill_village
 #: data/core/terrain.cfg:1332
 msgid "Snowy Hill Stone Village"
-msgstr ""
+msgstr "Lumine mägiküla"
 
 #. [terrain_type]: id=hill_village_ruin
 #: data/core/terrain.cfg:1345
 msgid "Ruined Hill Stone Village"
-msgstr ""
+msgstr "Varemeis mägiküla"
 
 #. [terrain_type]: id=tropical_forest_village
 #: data/core/terrain.cfg:1358
-#, fuzzy
-#| msgid "Tropical Forest"
 msgid "Tropical Village"
-msgstr "Lõunamaine mets"
+msgstr "Lõunamaine küla"
 
 #. [terrain_type]: id=drake_village
 #: data/core/terrain.cfg:1371
-#, fuzzy
-#| msgid "Village"
 msgid "Drake Village"
-msgstr "Küla"
+msgstr "Loheküla"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:1386
-#, fuzzy
-#| msgid "Village"
 msgid "Cave Village"
-msgstr "Küla"
+msgstr "Koopaküla"
 
 #. [terrain_type]: id=dwarven_village
 #: data/core/terrain.cfg:1399
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Village"
-msgstr "Päkapikkude kindlus"
+msgstr "Päkapikuküla"
 
 #. [terrain_type]: id=hut_village
 #: data/core/terrain.cfg:1412
-#, fuzzy
-#| msgid "Cut"
 msgid "Hut"
-msgstr "Lõika"
+msgstr "Onn"
 
 #. [terrain_type]: id=hut_snow_village
 #: data/core/terrain.cfg:1425
-#, fuzzy
-#| msgid "Snowy Mountains"
 msgid "Snowy Hut"
-msgstr "Lumised mäed"
+msgstr "Lumine onn"
 
 #. [terrain_type]: id=logcabin_village
 #: data/core/terrain.cfg:1438
 msgid "Log Cabin"
-msgstr ""
+msgstr "Palkonn"
 
 #. [terrain_type]: id=logcabin_snow_village
 #: data/core/terrain.cfg:1451
-#, fuzzy
-#| msgid "Snowy Mountains"
 msgid "Snowy Log Cabin"
-msgstr "Lumised mäed"
+msgstr "Lumine palkonn"
 
 #. [terrain_type]: id=igloo
 #: data/core/terrain.cfg:1464
 msgid "Igloo"
-msgstr ""
+msgstr "Lumeonn"
 
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1479
-#, fuzzy
-#| msgid "Village"
 msgid "Swamp Village"
-msgstr "Küla"
+msgstr "Sooküla"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1492
-#, fuzzy
-#| msgid "Village"
 msgid "Merfolk Village"
-msgstr "Küla"
+msgstr "Näkiküla"
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1507
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Overlay"
-msgstr "Kulda küla kohta"
+msgstr "Küla"
 
 #. [terrain_type]: id=encampment
 #. [terrain_type]: id=encampment_snow
@@ -965,10 +861,8 @@ msgstr "Laager"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1535
-#, fuzzy
-#| msgid "Encampment"
 msgid "Snowy Encampment"
-msgstr "Laager"
+msgstr "Lumine laager"
 
 #. [terrain_type]: id=orcish_fort
 #. [terrain_type]: id=snow_orcish_fort
@@ -987,36 +881,28 @@ msgstr "Loss"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:1547
-#, fuzzy
-#| msgid "Castle"
 msgid "Orcish Castle"
-msgstr "Loss"
+msgstr "Orkikindlus"
 
 #. [terrain_type]: id=snow_orcish_fort
 #: data/core/terrain.cfg:1559
 msgid "Snowy Orcish Castle"
-msgstr ""
+msgstr "Lumine orkikindlus"
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:1571
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Human Castle"
-msgstr "Päkapikkude kindlus"
+msgstr "Inimeste kindlus"
 
 #. [terrain_type]: id=snow_castle
 #: data/core/terrain.cfg:1582
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Snowy Human Castle"
-msgstr "Päkapikkude kindlus"
+msgstr "Lumine inimeste kindlus"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1593
-#, fuzzy
-#| msgid "Castle"
 msgid "Elvish Castle"
-msgstr "Loss"
+msgstr "Haldjakindlus"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1605
@@ -1029,45 +915,33 @@ msgstr "Päkapikkude kindlus"
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:1616 data/core/terrain.cfg:1628
 #: data/core/terrain.cfg:1641 data/core/terrain.cfg:1666
-#, fuzzy
-#| msgid "Ruined Castle Keep"
 msgid "Ruined Castle"
-msgstr "Varemeis loss"
+msgstr "Varemeis kindlus"
 
 #. [terrain_type]: id=ruin
 #: data/core/terrain.cfg:1617
-#, fuzzy
-#| msgid "Ruined Castle Keep"
 msgid "Ruined Human Castle"
-msgstr "Varemeis loss"
+msgstr "Varemeis inimeste kindlus"
 
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:1629
-#, fuzzy
-#| msgid "Sunken Ruin"
 msgid "Sunken Human Ruin"
 msgstr "Veealused varemed"
 
 #. [terrain_type]: id=swampruin
 #: data/core/terrain.cfg:1642
-#, fuzzy
-#| msgid "Swamp Ruin"
 msgid "Swamp Human Ruin"
 msgstr "Soovaremed"
 
 #. [terrain_type]: id=sand_castle
 #: data/core/terrain.cfg:1655
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Desert Castle"
-msgstr "Päkapikkude kindlus"
+msgstr "Kõrbekindlus"
 
 #. [terrain_type]: id=sand_castle_ruin
 #: data/core/terrain.cfg:1667
-#, fuzzy
-#| msgid "Ruined Castle Keep"
 msgid "Ruined Desert Castle"
-msgstr "Varemeis loss"
+msgstr "Varemeis kõrbekindlus"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_keep_tall
@@ -1079,17 +953,13 @@ msgstr "Laagrikindlustus"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:1695
-#, fuzzy
-#| msgid "Encampment Keep"
 msgid "Tall Encampment Keep"
-msgstr "Laagrikindlustus"
+msgstr "Tornkindlus"
 
 #. [terrain_type]: id=encampment_snow_keep
 #: data/core/terrain.cfg:1708
-#, fuzzy
-#| msgid "Encampment Keep"
 msgid "Snowy Encampment Keep"
-msgstr "Laagrikindlustus"
+msgstr "Lumine tornkindlus"
 
 #. [terrain_type]: id=orcish_keep
 #. [terrain_type]: id=snow_orcish_keep
@@ -1108,43 +978,33 @@ msgstr "Kindlus"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:1721
-#, fuzzy
-#| msgid "Fort Keep"
 msgid "Orcish Keep"
-msgstr "Kindlusetorn"
+msgstr "Orkilinnus"
 
 #. [terrain_type]: id=snow_orcish_keep
 #: data/core/terrain.cfg:1734
 msgid "Snowy Orcish Keep"
-msgstr ""
+msgstr "lumine orkiloss"
 
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:1747
-#, fuzzy
-#| msgid "Sunken Castle Keep"
 msgid "Human Castle Keep"
-msgstr "Veealune loss"
+msgstr "Inimeste linnus"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:1760
-#, fuzzy
-#| msgid "Sunken Castle Keep"
 msgid "Snowy Human Castle Keep"
-msgstr "Veealune loss"
+msgstr "Lumine inimeste linnus"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:1773
-#, fuzzy
-#| msgid "Sunken Castle Keep"
 msgid "Elven Castle Keep"
-msgstr "Veealune loss"
+msgstr "Haldjalinnus"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:1786
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Castle Keep"
-msgstr "Päkapikkude kindlus"
+msgstr "Päkapikulinnus"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1152,57 +1012,43 @@ msgstr "Päkapikkude kindlus"
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1798 data/core/terrain.cfg:1811
 #: data/core/terrain.cfg:1824 data/core/terrain.cfg:1850
-#, fuzzy
-#| msgid "Ruined Castle Keep"
 msgid "Ruined Keep"
-msgstr "Varemeis loss"
+msgstr "Varemeis linnus"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1799
-#, fuzzy
-#| msgid "Ruined Castle Keep"
 msgid "Ruined Human Castle Keep"
-msgstr "Varemeis loss"
+msgstr "Varemeis inimeste linnus"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1812
-#, fuzzy
-#| msgid "Sunken Castle Keep"
 msgid "Sunken Human Castle Keep"
-msgstr "Veealune loss"
+msgstr "Veealune linnus"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1825
-#, fuzzy
-#| msgid "Sunken Castle Keep"
 msgid "Swamp Human Castle Keep"
-msgstr "Veealune loss"
+msgstr "Soolinnus"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:1838
-#, fuzzy
-#| msgid "Desert"
 msgid "Desert Keep"
-msgstr "Kõrb"
+msgstr "Kõrbelinnus"
 
 #. [terrain_type]: id=desert_keep_ruined
 #: data/core/terrain.cfg:1851
-#, fuzzy
-#| msgid "Ruined Castle Keep"
 msgid "Ruined Desert Keep"
-msgstr "Varemeis loss"
+msgstr "Varemeis kõrbelinnus"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:1865
-#, fuzzy
-#| msgid "Castle Keep"
 msgid "Castle Overlay"
-msgstr "Lossitorn"
+msgstr "Kindlus"
 
 #. [terrain_type]: id=keep_overlay
 #: data/core/terrain.cfg:1877
 msgid "Keep Overlay"
-msgstr ""
+msgstr "Loss"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -1220,8 +1066,6 @@ msgstr ""
 #: data/core/terrain.cfg:1968 data/core/terrain.cfg:1980
 #: data/core/terrain.cfg:1992 data/core/terrain.cfg:2006
 #: data/core/terrain.cfg:2017 data/core/terrain.cfg:2029
-#, fuzzy
-#| msgid "Bridge"
 msgid "Bridge"
 msgstr "Sild"
 
@@ -1230,26 +1074,22 @@ msgstr "Sild"
 #. [terrain_type]: id=bridgediag2
 #: data/core/terrain.cfg:1895 data/core/terrain.cfg:1907
 #: data/core/terrain.cfg:1919
-#, fuzzy
-#| msgid "Bridge"
 msgid "Wooden Bridge"
-msgstr "Sild"
+msgstr "Puusild"
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
 #: data/core/terrain.cfg:1931 data/core/terrain.cfg:1943
 #: data/core/terrain.cfg:1955
-#, fuzzy
-#| msgid "Bridge"
 msgid "Rotting Bridge"
-msgstr "Sild"
+msgstr "Pehkinud sild"
 
 #. [terrain_type]: id=stone_bridge
 #: data/core/terrain.cfg:1969 data/core/terrain.cfg:1981
 #: data/core/terrain.cfg:1993
 msgid "Basic Stone Bridge"
-msgstr ""
+msgstr "Kivisild"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -1257,17 +1097,17 @@ msgstr ""
 #: data/core/terrain.cfg:2007 data/core/terrain.cfg:2018
 #: data/core/terrain.cfg:2030
 msgid "Cave Chasm Bridge"
-msgstr ""
+msgstr "Kuristikusild koopas"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:2047
 msgid "Off Map"
-msgstr ""
+msgstr "Kaardilt väljas"
 
 #. [terrain_type]: id=off_map2
 #: data/core/terrain.cfg:2057
 msgid "Experimental Fake Map Edge"
-msgstr ""
+msgstr "Katseline liba-kaardiserv"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
@@ -1338,8 +1178,6 @@ msgstr "Server:"
 #. [button]: id=update_addons
 #: data/gui/default/window/addon_connect.cfg:145
 #: data/gui/default/window/addon_connect.cfg:146
-#, fuzzy
-#| msgid "Update add-ons"
 msgid "Update Add-ons"
 msgstr "Uuenda lisamooduleid"
 
@@ -1393,53 +1231,47 @@ msgstr "Tühista"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
 msgid "Author:"
-msgstr ""
+msgstr "Autor:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:118
-#, fuzzy
-#| msgid "Version: "
 msgid "Version:"
 msgstr "Versioon: "
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:149
 msgid "Size:"
-msgstr ""
+msgstr "Suurus:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Description:"
-msgstr "Üksuse kirjeldus"
+msgstr "Kirjeldus:"
 
 #. [scroll_label]: id=description
 #: data/gui/default/window/addon_description.cfg:194
 msgid "No description available."
-msgstr ""
+msgstr "Kirjeldust pole."
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
 msgid "Translations:"
-msgstr ""
+msgstr "Tõlked:"
 
 #. [scroll_label]: id=translations
 #: data/gui/default/window/addon_description.cfg:226
 msgid "translations^None"
-msgstr ""
+msgstr "Puuduvad"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
-#, fuzzy
-#| msgid "Update add-ons"
 msgid "Uninstall Add-ons"
-msgstr "Uuenda lisamooduleid"
+msgstr "Eemalda lisamooduleid"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
 msgid "Choose the add-ons you want to remove."
-msgstr ""
+msgstr "Vali lisamoodulid, mida soovid eemaldada."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
@@ -1485,29 +1317,23 @@ msgstr "Olgu"
 
 #. [label]: id=title
 #: data/gui/default/window/campaign_difficulty.cfg:57
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty"
-msgstr "Raskusaste:"
+msgstr "Raskusaste"
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/campaign_difficulty.cfg:77
 msgid "Select difficulty level:"
-msgstr ""
+msgstr "Vali raskusaste:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
-#, fuzzy
-#| msgid "Chat log"
 msgid "Chat Log"
 msgstr "Vestluse logi"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
-#, fuzzy
-#| msgid "Page"
 msgid "Page:"
-msgstr "Lehekülg"
+msgstr "Lehekülg:"
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:69
@@ -1534,7 +1360,7 @@ msgstr "Järgmine"
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
 msgid "Manage Data"
-msgstr ""
+msgstr "Halda andmeid"
 
 #. [label]: id=lblChoose
 #: data/gui/default/window/data_manage.cfg:89
@@ -1566,40 +1392,34 @@ msgstr "Kuupäev"
 #: data/gui/default/window/data_manage.cfg:266
 #: data/gui/default/window/data_manage.cfg:267
 msgid "Clear"
-msgstr ""
+msgstr "Puhasta"
 
 #. [button]: id=restore
 #: data/gui/default/window/data_manage.cfg:283
 #: data/gui/default/window/data_manage.cfg:284
 msgid "Restore"
-msgstr ""
+msgstr "Taasta"
 
 #. [button]: id=backup
 #: data/gui/default/window/data_manage.cfg:300
 #: data/gui/default/window/data_manage.cfg:301
 msgid "Backup"
-msgstr ""
+msgstr "Varunda"
 
 #. [label]: id=title
 #: data/gui/default/window/edit_label.cfg:42
-#, fuzzy
-#| msgid "Set Label"
 msgid "Place Label"
 msgstr "Paiguta silt"
 
 #. [label]
 #: data/gui/default/window/edit_label.cfg:72
-#, fuzzy
-#| msgid "Set Label"
 msgid "Label:"
-msgstr "Paiguta silt"
+msgstr "Silt:"
 
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/default/window/edit_label.cfg:110
-#, fuzzy
-#| msgid "Team 1"
 msgid "Team only"
-msgstr "Võistkond 1"
+msgstr "Ainult võistkondlik"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
@@ -1688,15 +1508,13 @@ msgstr "Kopeeri servamaastik"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Choose Player"
-msgstr "Vali laetav mäng"
+msgstr "Vali mängija"
 
 #. [label]: id=message
 #: data/gui/default/window/editor_set_starting_position.cfg:70
 msgid "Which player should start here?"
-msgstr ""
+msgstr "Milline mängija peaks siit alustama?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1706,24 +1524,18 @@ msgstr "Redaktori seaded"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:53
-#, fuzzy
-#| msgid "Time of day lighting preset"
 msgid "Time of day lighting preset:"
 msgstr "Valgustus päevaaja järgi"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
-#, fuzzy
-#| msgid "Custom lighting setting"
 msgid "Custom lighting settings"
 msgstr "Ise määratud valgustus"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:114
-#, fuzzy
-#| msgid "Auto-update map view"
 msgid "Automatically update map view"
-msgstr "Kaardi vaate automaatne uuendamine"
+msgstr "Uuenda automaatselt kaardivaadet"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:135
@@ -1743,7 +1555,7 @@ msgstr "Sinine:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:231
 msgid "Allow multiple maps to be open simultaneously"
-msgstr ""
+msgstr "Luba mitme kaardi üheaegset avamist"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
@@ -1977,10 +1789,8 @@ msgstr "Vali sulle sobiv keel:"
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
 #: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
-#, fuzzy
-#| msgid "Change language"
 msgid "Change Language"
-msgstr "Muuda kasutatavat keelt"
+msgstr "Vaheta keelt"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:109
@@ -1990,7 +1800,7 @@ msgstr "Mängud"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
 msgid "Assign sides to players at random"
-msgstr ""
+msgstr "Määra osapooled mängijaile juhuslikult"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:177
@@ -2156,29 +1966,21 @@ msgstr "Mängija info -"
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:70
-#, fuzzy
-#| msgid "Send private message"
 msgid "Send Private Message"
-msgstr "Saada sõnum"
+msgstr "Saada erasõnum"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:99
-#, fuzzy
-#| msgid "Add As Friend"
 msgid "Add to Friends"
 msgstr "Lisa sõbraks"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:108
-#, fuzzy
-#| msgid "Add As Ignore"
 msgid "Add to Ignores"
 msgstr "Lisa eiratavaks"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:117
-#, fuzzy
-#| msgid "Remove from list"
 msgid "Remove from List"
 msgstr "Eemalda nimekirjast"
 
@@ -2215,22 +2017,18 @@ msgstr "Väljaviskamine / blokk"
 
 #. [label]: id=side_title
 #: data/gui/default/window/mp_change_control.cfg:21
-#, fuzzy
-#| msgid "Next Side"
 msgid "Side"
-msgstr "Järgmine osapool"
+msgstr "Osapool"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
 msgid "Nickname"
-msgstr ""
+msgstr "Nimi"
 
 #. [label]
 #: data/gui/default/window/mp_change_control.cfg:194
-#, fuzzy
-#| msgid "Change Hotkey"
 msgid "Change Control"
-msgstr "Muuda kiirklahvi"
+msgstr "Muuda juhtimist"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -2254,15 +2052,11 @@ msgstr "Sõprade ja eiratavate nimekiri"
 
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:170
-#, fuzzy
-#| msgid "Add As Friend"
 msgid "Add as Friend"
 msgstr "Lisa sõbraks"
 
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
-#, fuzzy
-#| msgid "Add As Ignore"
 msgid "Add as Ignore"
 msgstr "Lisa eiratavaks"
 
@@ -2375,7 +2169,7 @@ msgstr "Loo mäng"
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
-msgstr ""
+msgstr "Määra parool, mille mänguga liituda soovijad peavad sisestama."
 
 #. [label]
 #: data/gui/default/window/mp_create_game_set_password.cfg:90
@@ -2420,14 +2214,6 @@ msgstr "Mitmemängija mäng"
 
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:90
-#, fuzzy
-#| msgid ""
-#| "You may login to the official multiplayer server with your forum username "
-#| "and password.\n"
-#| "Note that registration is not required to join the server: you need to "
-#| "supply a password only if you wish to use a registered username.\n"
-#| "\n"
-#| "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgid ""
 "You may login to the official multiplayer server with your forum username "
 "and password.\n"
@@ -2441,7 +2227,7 @@ msgstr ""
 "NB: Serverisse registreerumist pole vaja: parooli läheb vaja üksnes siis, "
 "kui soovid kasutada foorumi kasutajanime.\n"
 "\n"
-"Wesnothi Lahingu foorumi leiad aadressilt http://www.wesnoth.org/forum/"
+"Wesnothi Lahingu foorumi leiad aadressilt http://forums.wesnoth.org/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:146
@@ -2498,22 +2284,22 @@ msgstr "Abiteave"
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:147
 msgid "Show Battle for Wesnoth help"
-msgstr ""
+msgstr "Näita Wesnothi Lahingu abiinfot."
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:163
 msgid "Show previous tip of the day"
-msgstr ""
+msgstr "Näita eelmist vihjet"
 
 #. [button]: id=next_tip
 #: data/gui/default/window/title_screen.cfg:178
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "Näita järgmist vihjet"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:223
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "Käivita mänguõpetus, et mängu põhimõtteid tundma õppida"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -2530,7 +2316,7 @@ msgstr "Sõjakäik"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:224
 msgid "Start a new single player campaign"
-msgstr ""
+msgstr "Käivita uus ühe mängija sõjakäik"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:225
@@ -2538,6 +2324,8 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
+"Mängi mitmemängija mängu (samas arvutis, kohtvõrgus või Internetis) või üht "
+"eraldiseisvat stsenaariumi arvuti vastu"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
@@ -2546,10 +2334,8 @@ msgstr "Lae mäng"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
-#, fuzzy
-#| msgid "Reloaded game"
 msgid "Load a saved game"
-msgstr "Uuesti laetud"
+msgstr "Lae salvestatud mäng"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
@@ -2559,19 +2345,17 @@ msgstr "Lisamoodulid"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Lae alla kasutajate loodud sõjakäike, ajastuid või kaarte"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
-#, fuzzy
-#| msgid "Editor"
 msgid "Map Editor"
 msgstr "Kaardiredaktor"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
 msgid "Start the map editor"
-msgstr ""
+msgstr "Käivita kaardiredaktor"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:229
@@ -2581,7 +2365,7 @@ msgstr "Muuda kasutatavat keelt"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:230
 msgid "Configure the game’s settings"
-msgstr ""
+msgstr "Muuda mängu sätteid"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:231
@@ -2591,24 +2375,22 @@ msgstr "Tegijad"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:231
 msgid "View the credits"
-msgstr ""
+msgstr "Näita tegijaid"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:232
-#, fuzzy
-#| msgid "Quit Game"
 msgid "Quit the game"
-msgstr "Lõpeta mäng"
+msgstr "Välju mängust"
 
 #. [button]: id=ok
 #: data/gui/default/window/unit_attack.cfg:195
 msgid "Attack"
-msgstr ""
+msgstr "Ründa"
 
 #. [label]
 #: data/gui/default/window/unit_attack.cfg:263
 msgid "Attack enemy"
-msgstr ""
+msgstr "Ründa vaenlast"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2662,11 +2444,11 @@ msgstr "mängija"
 
 #: src/game_preferences.cpp:837
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/game_preferences.cpp:840
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/game_preferences_display.cpp:173
 msgid "Full screen"
@@ -2681,8 +2463,6 @@ msgid "Skip AI moves"
 msgstr "Jäta arvuti käigud vahele"
 
 #: src/game_preferences_display.cpp:176
-#, fuzzy
-#| msgid "Interrupt move when an ally is sighted"
 msgid "Interrupt move when an ally is sighted"
 msgstr "Katkesta liikumine, kui üksus märkab liitlast"
 
@@ -2727,14 +2507,10 @@ msgid "Iconize lobby list"
 msgstr "Minimeeri ooteruumis olijate nimekiri"
 
 #: src/game_preferences_display.cpp:186
-#, fuzzy
-#| msgid "Save password to preferences (clear text)"
 msgid "Save password to preferences (plain text)"
 msgstr "Salvesta parool eelistuste alla (avatekstina)"
 
 #: src/game_preferences_display.cpp:187
-#, fuzzy
-#| msgid "Set path to wesnothd"
 msgid "Set Path to wesnothd"
 msgstr "Määra wesnothd kataloogitee"
 
@@ -2764,11 +2540,11 @@ msgstr "Käigu teade"
 
 #: src/game_preferences_display.cpp:195
 msgid "Enable planning mode on start"
-msgstr ""
+msgstr "Lülita alguses plaanimisrežiim sisse"
 
 #: src/game_preferences_display.cpp:196
 msgid "Hide allies’ plans by default"
-msgstr ""
+msgstr "Peida vaikimisi liitlaste plaanid"
 
 #: src/game_preferences_display.cpp:197
 msgid "Turn bell"
@@ -2831,23 +2607,17 @@ msgid "Show unit idle animations"
 msgstr "Näita üksuste jõudeoleku animatsioone"
 
 #: src/game_preferences_display.cpp:216
-#, fuzzy
-#| msgid "Show Unit Idle Animations"
 msgid "Show unit standing animations"
-msgstr "Näita üksuste jõudeoleku animatsioone"
+msgstr "Näita üksuse animatsioone"
 
 #: src/game_preferences_display.cpp:217
-#, fuzzy
-#| msgid "Generate Map"
 msgid "Animate map"
-msgstr "Genereeri uus kaart"
+msgstr "Animeeri kaart"
 
 #: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
 #: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
-#, fuzzy
-#| msgid "SFX Volume:"
 msgid "Volume:"
-msgstr "Efektide helitugevus:"
+msgstr "Helitugevus:"
 
 #: src/game_preferences_display.cpp:224
 msgid "Scroll speed:"
@@ -2931,15 +2701,15 @@ msgstr "Üksuste liikumis- ja võitlemiskiirus"
 
 #: src/game_preferences_display.cpp:342
 msgid "Play short random animations for idle units"
-msgstr ""
+msgstr "Mängi jõude seisvate üksuste juures lühianimatsioone"
 
 #: src/game_preferences_display.cpp:345
 msgid "Continuously animate standing units in the battlefield"
-msgstr ""
+msgstr "Animeeri lahinguvälja üksusi pidevalt"
 
 #: src/game_preferences_display.cpp:348
 msgid "Display animated terrain graphics"
-msgstr ""
+msgstr "Näita maastikuanimatsioone"
 
 #: src/game_preferences_display.cpp:354
 msgid "Set the frequency of unit idle animations"
@@ -2958,16 +2728,12 @@ msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Liitlasüksuse nägemine peatab sinu üksuse käigu"
 
 #: src/game_preferences_display.cpp:369
-#, fuzzy
-#| msgid "Save replay on SP/MP victory or MP defeat"
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
 "Salvesta kordus üksikmängu võidu ning mitmemängija mängu võidu ja kaotuse "
 "korral"
 
 #: src/game_preferences_display.cpp:372
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
 "Kustuta automaatsalvestused üksikmängu võidu ning mitmemängija mängu võidu "
@@ -3003,8 +2769,6 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Näita kõiki ooteruumi tulevaid mängijaid puudutavaid sõnumeid"
 
 #: src/game_preferences_display.cpp:394
-#, fuzzy
-#| msgid "Use new lobby interface"
 msgid "Use New Lobby Interface"
 msgstr "Kasuta uut ooteruumi"
 
@@ -3054,11 +2818,11 @@ msgstr "Sinu käigu alguse kohta näidatakse teadet"
 
 #: src/game_preferences_display.cpp:416
 msgid "Activates Planning Mode on game start"
-msgstr ""
+msgstr "Lülitab mängu alguses sisse plaanimisrežiimi"
 
 #: src/game_preferences_display.cpp:419
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
-msgstr ""
+msgstr "Peida liitlaste plaanid mitmemängija mängudes"
 
 #: src/game_preferences_display.cpp:422
 msgid "Play a bell sound at the beginning of your turn"
@@ -3087,7 +2851,7 @@ msgid "Speed: "
 msgstr "Kiirus:"
 
 #: src/game_preferences_display.cpp:765 src/game_preferences_display.cpp:767
-msgid "Maximum Auto-Saves: "
+msgid "Maximum auto-saves: "
 msgstr "Automaatsalvestuste maksimaalne arv:"
 
 #: src/game_preferences_display.cpp:765
@@ -3111,16 +2875,12 @@ msgid "no"
 msgstr "ei"
 
 #: src/game_preferences_display.cpp:1119
-#, fuzzy
-#| msgid "Friends"
 msgid "friend"
-msgstr "Sõbranimekiri"
+msgstr "sõber"
 
 #: src/game_preferences_display.cpp:1125
-#, fuzzy
-#| msgid "No ignored"
 msgid "ignored"
-msgstr "Eiratavaid pole"
+msgstr "eiratav"
 
 #: src/game_preferences_display.cpp:1129
 msgid "(empty list)"
@@ -3147,10 +2907,8 @@ msgid "Advanced section^Advanced"
 msgstr "Täpsemad sätted"
 
 #: src/game_preferences_display.cpp:1292
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Choose Theme"
-msgstr "Vali laetav mäng"
+msgstr "Vali teema"
 
 #: src/game_preferences_display.cpp:1307
 msgid "New theme will take effect on next new or loaded game."
@@ -3174,17 +2932,13 @@ msgstr "Ristkülik ei mahu aluspinnale."
 
 #: src/gui/auxiliary/canvas.cpp:868 src/gui/auxiliary/canvas.cpp:873
 #: src/gui/auxiliary/canvas.cpp:878 src/gui/auxiliary/canvas.cpp:884
-#, fuzzy
-#| msgid "Line doesn't fit on canvas."
 msgid "Circle doesn't fit on canvas."
-msgstr "Joon ei mahu aluspinnale."
+msgstr "Ring ei mahu aluspinnale."
 
 #: src/gui/auxiliary/canvas.cpp:1070 src/gui/auxiliary/canvas.cpp:1077
 #: src/gui/auxiliary/canvas.cpp:1087 src/gui/auxiliary/canvas.cpp:1094
-#, fuzzy
-#| msgid "Line doesn't fit on canvas."
 msgid "Image doesn't fit on canvas."
-msgstr "Joon ei mahu aluspinnale."
+msgstr "Pilt ei mahu aluspinnale."
 
 #: src/gui/auxiliary/canvas.cpp:1302
 msgid "Text has a font size of 0."
@@ -3229,7 +2983,7 @@ msgstr "Veergude arv ei klapi."
 
 #: src/gui/auxiliary/window_builder/control.cpp:49
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr ""
+msgstr "Leidsin vidina, millel oli abiinfo, kuid mitte vihjet."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:47
 #: src/gui/auxiliary/window_builder/listbox.cpp:58
@@ -3263,17 +3017,15 @@ msgstr "Pinu pole määratud."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:46
 msgid "No nodes defined for a tree view."
-msgstr ""
+msgstr "Puuvaates pole ühtki sõlme defineeritud."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:86
 msgid "[node]id 'root' is reserved for the implementation."
-msgstr ""
+msgstr "Sõlmenimi 'root' on reserveeritud."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
-#, fuzzy
-#| msgid "No page defined."
 msgid "No node defined."
-msgstr "Lehekülge pole määratud."
+msgstr "Sõlmi pole määratud."
 
 #: src/gui/dialogs/game_load.cpp:274
 msgid "#(Invalid)"
@@ -3285,13 +3037,11 @@ msgstr "Sõjakäik: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:305
 msgid "Test scenario"
-msgstr ""
+msgstr "Teststsenaarium"
 
 #: src/gui/dialogs/game_load.cpp:313
-#, fuzzy
-#| msgid "replay"
 msgid "Replay"
-msgstr "mängusalvestus"
+msgstr "Salvestus"
 
 #: src/gui/dialogs/game_load.cpp:315
 msgid "Turn"
@@ -3363,7 +3113,7 @@ msgstr "Viga"
 
 #: src/gui/dialogs/mp_change_control.cpp:244
 msgid "Side $side"
-msgstr ""
+msgstr "Osapool: $side"
 
 #: src/gui/dialogs/mp_create_game.cpp:96
 msgid "Load Game..."
@@ -3372,13 +3122,11 @@ msgstr "Lae mäng"
 #: src/gui/dialogs/network_transmission.cpp:55
 #: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1178
 msgid "unit_byte^B"
-msgstr ""
+msgstr "B"
 
 #: src/gui/dialogs/title_screen.cpp:296
-#, fuzzy
-#| msgid "Version: "
 msgid "Version "
-msgstr "Versioon: "
+msgstr "Versioon"
 
 #: src/gui/dialogs/title_screen.cpp:299
 msgid "Version"
@@ -3403,7 +3151,7 @@ msgstr "Olekuid pole määratud."
 
 #: src/gui/widgets/tree_view_node.cpp:103
 msgid "Unknown builder id for tree view node."
-msgstr ""
+msgstr "Puuvaates on tundmatu ehitaja ID."
 
 #: src/gui/widgets/window.cpp:924
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -3416,17 +3164,15 @@ msgstr "Dialoogiaken ei mahu ekraanile."
 
 #: src/hotkeys.cpp:53
 msgid "Left Mouse Click"
-msgstr ""
+msgstr "Vasakklõps"
 
 #: src/hotkeys.cpp:54
 msgid "Right Mouse Click"
-msgstr ""
+msgstr "Paremklõps"
 
 #: src/hotkeys.cpp:55
-#, fuzzy
-#| msgid "Generate Map"
 msgid "Animate Map"
-msgstr "Genereeri uus kaart"
+msgstr "Animeeri kaart"
 
 #: src/hotkeys.cpp:56
 msgid "Next Unit"
@@ -3469,10 +3215,8 @@ msgid "Default Zoom"
 msgstr "Vaikimisi suurendus"
 
 #: src/hotkeys.cpp:66
-#, fuzzy
-#| msgid "Toggle Full screen"
 msgid "Toggle Full Screen"
-msgstr "Täisekraan"
+msgstr "Täisekraan sisse/välja"
 
 #: src/hotkeys.cpp:67 src/hotkeys.cpp:1172
 msgid "Screenshot"
@@ -3527,8 +3271,6 @@ msgid "Toggle Grid"
 msgstr "Lülita võrgustik sisse/välja"
 
 #: src/hotkeys.cpp:82
-#, fuzzy
-#| msgid "Mouse scrolling"
 msgid "Mouse Scrolling"
 msgstr "Hiirega kerimine"
 
@@ -3561,16 +3303,12 @@ msgid "Statistics"
 msgstr "Statistika"
 
 #: src/hotkeys.cpp:92
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Pause Network Game"
-msgstr "Loo võrgumäng"
+msgstr "Peata võrgumäng"
 
 #: src/hotkeys.cpp:93
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Continue Network Game"
-msgstr "Loo võrgumäng"
+msgstr "Jätka võrgumängu"
 
 #: src/hotkeys.cpp:95
 msgid "Set Team Label"
@@ -3593,22 +3331,16 @@ msgid "Best Possible Enemy Moves"
 msgstr "Vastase võimalikud käigud"
 
 #: src/hotkeys.cpp:100
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Play Replay"
-msgstr "Salvesta kordus"
+msgstr "Mängi salvestust"
 
 #: src/hotkeys.cpp:101
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Reset Replay"
-msgstr "Salvesta kordus"
+msgstr "Keri algusse"
 
 #: src/hotkeys.cpp:102
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Stop Replay"
-msgstr "Salvesta kordus"
+msgstr "Peata salvestus"
 
 #: src/hotkeys.cpp:103
 msgid "Next Turn"
@@ -3636,31 +3368,31 @@ msgstr "Jäta animatsioon vahele"
 
 #: src/hotkeys.cpp:113
 msgid "Toggle Planning Mode"
-msgstr ""
+msgstr "Lülita plaanimisrežiim sisse/välja"
 
 #: src/hotkeys.cpp:114
 msgid "Execute Planned Action"
-msgstr ""
+msgstr "Käivita plaanitud tegevus"
 
 #: src/hotkeys.cpp:115
 msgid "Execute All Actions"
-msgstr ""
+msgstr "Käivita kõik tegevused"
 
 #: src/hotkeys.cpp:116
 msgid "Delete Planned Action"
-msgstr ""
+msgstr "Kustuta plaanitud tegevus"
 
 #: src/hotkeys.cpp:117
 msgid "Move Action Up Queue"
-msgstr ""
+msgstr "Liiguta tegevus järjekorras ettepoole"
 
 #: src/hotkeys.cpp:118
 msgid "Move Action Down Queue"
-msgstr ""
+msgstr "Liiguta tegevus järjekorras tahapoole"
 
 #: src/hotkeys.cpp:119
 msgid "Suppose Dead"
-msgstr ""
+msgstr "Eelda olevat surnud"
 
 #: src/hotkeys.cpp:121
 msgid "Quit to Desktop"
@@ -3687,10 +3419,8 @@ msgid "Save Map As"
 msgstr "Salvesta kaart kui"
 
 #: src/hotkeys.cpp:130
-#, fuzzy
-#| msgid "Save Map"
 msgid "Save All Maps"
-msgstr "Salvesta kaart"
+msgstr "Salvesta kõik kaardid"
 
 #: src/hotkeys.cpp:131
 msgid "Revert All Changes"
@@ -3701,8 +3431,6 @@ msgid "Map Information"
 msgstr "Kaardi info"
 
 #: src/hotkeys.cpp:134
-#, fuzzy
-#| msgid "Swap fore- and background terrains"
 msgid "Swap Foreground/Background Terrains"
 msgstr "Vaheta esi- ja tagaplaani maastik"
 
@@ -3875,72 +3603,52 @@ msgid "Custom Command"
 msgstr "Kasutaja käsk"
 
 #: src/hotkeys.cpp:208
-#, fuzzy
-#| msgid "Run AI formula"
 msgid "Run Formula"
-msgstr "Tehisintellekti valem"
+msgstr "Käivita valem"
 
 #: src/hotkeys.cpp:209
 msgid "Clear Messages"
 msgstr "Kustuta sõnumid"
 
 #: src/hotkeys.cpp:213
-#, fuzzy
-#| msgid "Refresh"
 msgid "Refresh WML"
-msgstr "Värskenda"
+msgstr "Värskenda WMLi"
 
 #: src/hotkeys.cpp:220
 msgid "Next Tip of the Day"
-msgstr ""
+msgstr "Järgmine vihje"
 
 #: src/hotkeys.cpp:227
-#, fuzzy
-#| msgid "Previous Unit"
 msgid "Previous Tip of the Day"
-msgstr "Eelmine üksus"
+msgstr "Eelmine vihje"
 
 #: src/hotkeys.cpp:234
-#, fuzzy
-#| msgid "Tutorial"
 msgid "Start Tutorial"
-msgstr "Mänguõpetus"
+msgstr "Käivita mänguõpetus"
 
 #: src/hotkeys.cpp:241
-#, fuzzy
-#| msgid "Play a campaign"
 msgid "Start Campaign"
-msgstr "Mängi sõjakäiku"
+msgstr "Alusta sõjakäiku"
 
 #: src/hotkeys.cpp:248
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "Start Multiplayer Game"
-msgstr "Mitmemängija mäng"
+msgstr "Alusta mitmemängija mängu"
 
 #: src/hotkeys.cpp:255
-#, fuzzy
-#| msgid "Update add-ons"
 msgid "Manage Add-ons"
-msgstr "Uuenda lisamooduleid"
+msgstr "Halda lisamooduleid"
 
 #: src/hotkeys.cpp:262
-#, fuzzy
-#| msgid "Editor"
 msgid "Start Editor"
-msgstr "Kaardiredaktor"
+msgstr "Ava kaardiredaktor"
 
 #: src/hotkeys.cpp:269
-#, fuzzy
-#| msgid "Credits"
 msgid "Show Credits"
-msgstr "Tegijad"
+msgstr "Näita tegijaid"
 
 #: src/hotkeys.cpp:277
-#, fuzzy
-#| msgid "Show replay"
 msgid "Show Helptip"
-msgstr "Näita kordust"
+msgstr "Näita abivihjet"
 
 #: src/hotkeys.cpp:875 src/hotkeys.cpp:1220
 msgid "Do you really want to quit?"
@@ -3997,10 +3705,8 @@ msgid "Landform:"
 msgstr "Maastiku kuju:"
 
 #: src/mapgen_dialog.cpp:249
-#, fuzzy
-#| msgid "Roads Between Castles"
 msgid "Roads between castles"
-msgstr "Lossidevahelised teed"
+msgstr "Kindlustevahelised teed"
 
 #: src/mapgen_dialog.cpp:306
 msgid "/1000 tiles"
@@ -4037,8 +3743,6 @@ msgid "Hotkey Settings"
 msgstr "Kiirklahvide sätted"
 
 #: src/preferences_display.cpp:282 src/preferences_display.cpp:351
-#, fuzzy
-#| msgid "Press desired Hotkey (Esc cancels)"
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Vajuta soovitud kiirklahvi (Esc tühistab)"
 
@@ -4060,25 +3764,20 @@ msgstr "Puhasta kiirklahvi määrang"
 
 #: src/preferences_display.cpp:394 src/preferences_display.cpp:402
 #: src/preferences_display.cpp:414
-#, fuzzy
-#| msgid "This Hotkey is already in use."
 msgid "This hotkey is already in use."
 msgstr "See kiirklahv on juba kasutusel."
 
 #: src/preferences_display.cpp:429
-#, fuzzy
-#| msgid ""
-#| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
 "Screenshot hotkeys should be combined with the Control, Alt or Meta "
 "modifiers to avoid problems."
 msgstr ""
-"Hoiatus: ekraanitõmmise klahvikombinatsioonid Ctrl, Alt või Meta-klahviga ei "
-"toimi."
+"Ekraanitõmmise klahvikombinatsioonid peavad sisaldama  Ctrl, Alt või Meta-"
+"klahvi."
 
 #: src/preferences_display.cpp:429
 msgid "Warning"
-msgstr ""
+msgstr "Hoiatus"
 
 #: src/preferences_display.cpp:530
 msgid "There are no alternative video modes available"
@@ -4086,7 +3785,7 @@ msgstr "Alternatiivsed videorežiimid puuduvad."
 
 #: src/preferences_display.cpp:561
 msgid " (widescreen)"
-msgstr ""
+msgstr "(laiekraan)"
 
 #: src/preferences_display.cpp:565
 msgid "Choose Resolution"
@@ -4100,7 +3799,7 @@ msgstr "Leiti maastik, mille määrang on üle 4 sümboli pikk:"
 
 #: src/text.cpp:719
 msgid "The text contains invalid markup: "
-msgstr ""
+msgstr "Selles tekstis on vigaseid märgendeid:"
 
 #: src/wml_exception.cpp:60
 msgid ""
@@ -4131,12 +3830,16 @@ msgid ""
 "The key '$key' is deprecated and support will be removed in version "
 "$removal_version."
 msgstr ""
+"Võti '$key' on iganenud ja selle toetus kaob alates versioonist "
+"$removal_version."
 
 #: src/wml_exception.cpp:130
 msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
+"Võti '$deprecated_key' on nüüd nime all '$key'. Võtme '$deprecated_key' "
+"toetus kaob alates versioonist $removal_version."
 
 #~ msgid "Resize map"
 #~ msgstr "Muuda kaardi mõõtmeid"
@@ -4159,7 +3862,6 @@ msgstr ""
 #~ msgid "Close Window"
 #~ msgstr "Sulge aken"
 
-#, fuzzy
 #~| msgid "Saved Theme Preference: "
 #~ msgid "Saved preference:"
 #~ msgstr "Salvestatud teema eelistus:"
@@ -4167,17 +3869,14 @@ msgstr ""
 #~ msgid "Add waypoint"
 #~ msgstr "Lisa teetähis"
 
-#, fuzzy
 #~| msgid "Village"
 #~ msgid "Aquatic Village"
 #~ msgstr "Küla"
 
-#, fuzzy
 #~| msgid "Sunken Castle Keep"
 #~ msgid "Sunken Keep"
 #~ msgstr "Veealune loss"
 
-#, fuzzy
 #~| msgid "Swamp"
 #~ msgid "Swamp Keep"
 #~ msgstr "Soo"

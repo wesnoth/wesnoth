@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2009 - 2011 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2012 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -1385,7 +1385,8 @@ static int intf_get_variable(lua_State *L)
  */
 static int intf_set_variable(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
+	const std::string& m = luaL_checkstring(L, 1);
+	if(m.empty()) return luaL_argerror(L, 1, "empty variable name");
 	if (lua_isnoneornil(L, 2)) {
 		resources::state_of_game->clear_variable(m);
 		return 0;
@@ -3260,8 +3261,8 @@ static int intf_add_modification(lua_State *L)
 	if (sm != "advance" && sm != "object" && sm != "trait")
 		return luaL_argerror(L, 2, "unknown modification type");
 
-	const vconfig& vcfg = luaW_checkvconfig(L, 3);
-	u->add_modification(sm, vcfg);
+	config cfg = luaW_checkconfig(L, 3);
+	u->add_modification(sm, cfg);
 	return 0;
 }
 

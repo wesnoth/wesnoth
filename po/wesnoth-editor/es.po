@@ -7,20 +7,21 @@
 # Roberto Romero <sildurin@gmail.com>, 2007.
 # Sergi March <sergi.march@gmail.com>, 2008.
 # Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2008, 2009, 2010.
+# Aelonin <quianaaelonin@gmail.com>, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-31 21:12+0100\n"
-"PO-Revision-Date: 2010-12-07 19:21-0300\n"
-"Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
-"Language-Team: Spanish <shadowm2006@gmail.com>\n"
+"POT-Creation-Date: 2012-01-06 11:47+0100\n"
+"PO-Revision-Date: 2012-01-02 20:00-0500\n"
+"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
+"Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.0\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
@@ -75,7 +76,7 @@ msgstr "bosque"
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:51
 msgid "frozen"
-msgstr "helado"
+msgstr "congelado"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:58
@@ -122,9 +123,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Use el botón izquierdo o derecho del ratón para dibujar terreno de primer "
-"plano o de fondo, respectivamente. Mantenga presionada Mayús para dibujar "
-"sólo en la capa base. Ctrl+clic para tomar muestra del terreno bajo el "
+"Use el botón izquierdo o derecho del ratón para dibujar terreno del primer "
+"plano o del fondo, respectivamente. Mantenga presionada «Mayús» para dibujar "
+"sólo en la capa base. «Ctrl» + «clic» para tomar muestra del terreno bajo el "
 "cursos."
 
 #. [editor_tool_hint]: id=editor-tool-select
@@ -135,8 +136,8 @@ msgid ""
 "selection of tiles with same terrain."
 msgstr ""
 "El botón izquierdo del ratón selecciona, y el derecho anula la selección. "
-"Mantenga Shift presionada para seleccionar casillas adyacentes del mismo "
-"terreno («varita mágica»)."
+"Mantenga «Mayús» presionada para obtener el efecto de «varita mágica» en las "
+"casillas adyacentes del mismo terreno."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -147,9 +148,9 @@ msgid ""
 "position under cursor, delete clears."
 msgstr ""
 "El botón izquierdo del ratón permite seleccionar un jugador, y el izquierdo "
-"lo quita. Las teclas numéricas desplazan la vista a la ubicación inicial; ALT"
-"+número establece la ubicación inicial respectiva bajo el puntero, y "
-"SUPRIMIR la elimina."
+"anula la selección . Las teclas numéricas desplazan la vista a la ubicación "
+"inicial; «Alt» + «número» establece la ubicación inicial de los jugadores, "
+"respectivamente, bajo el puntero, y «Del» la elimina."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -157,8 +158,8 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
-"Haga clic para pegar; reduzca el zoom para mayor precisión al pegar áreas "
-"extensas. Use el menú Edición para transformar el portapapeles (rotar, "
+"Haga «clic» para pegar; reduzca el zoom para mayor precisión al pegar áreas "
+"extensas. Use el menú «Edición» para transformar el portapapeles (rotar, "
 "voltear)."
 
 #. [menu]: id=menu-editor-file
@@ -194,7 +195,7 @@ msgstr "Salir del editor"
 msgid "Fatal error"
 msgstr "Error grave"
 
-#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1096
+#: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1098
 msgid "(New Map)"
 msgstr "(Nuevo mapa)"
 
@@ -207,16 +208,16 @@ msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
-"¿Realmente desea salir? Se perderán los cambios en el mapa desde la última "
-"vez que lo guardó."
+"¿Realmente desea salir? Se perderán los cambios realizados en el mapa desde "
+"la última vez que lo guardó."
 
 #: src/editor/editor_controller.cpp:321
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
-"¿Realmente desea salir? Se perderán los cambios en los siguientes mapas "
-"desde la última vez que los guardó:"
+"¿Realmente desea salir? Se perderán los cambios realizados en los siguientes "
+"mapas desde la última vez que los guardó:"
 
 #: src/editor/editor_controller.cpp:326
 msgid "Quit"
@@ -224,7 +225,7 @@ msgstr "Salir"
 
 #: src/editor/editor_controller.cpp:391
 msgid "No editor time-of-day found."
-msgstr "No se encontró una hora del día para el editor."
+msgstr "No se encontraron datos del «tiempo del día» para el editor."
 
 #: src/editor/editor_controller.cpp:412
 msgid ""
@@ -251,7 +252,7 @@ msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
 
 #: src/editor/editor_controller.cpp:488
 msgid "No random map generators found."
-msgstr "No se encontraron generadores de mapa aleatorio"
+msgstr "No se encontraron generadores de mapas aleatorios."
 
 #: src/editor/editor_controller.cpp:501 src/editor/editor_controller.cpp:505
 msgid "Map creation failed."
@@ -283,7 +284,7 @@ msgstr "Mapa guardado."
 
 #: src/editor/editor_controller.cpp:718
 msgid "Loaded embedded map data"
-msgstr "Cargar datos incrustados de mapa"
+msgstr "Cargados los datos de mapa incrustados"
 
 #: src/editor/editor_controller.cpp:719 src/editor/editor_controller.cpp:733
 msgid "Map loaded from scenario"
@@ -294,36 +295,36 @@ msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
-"Archivo de mapa referenciado cargado:\n"
+"Cargado el archivo de mapa indicado:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1126
+#: src/editor/editor_controller.cpp:1128
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/editor/editor_controller.cpp:1128
+#: src/editor/editor_controller.cpp:1130
 msgid "Can’t Undo"
 msgstr "No se puede deshacer"
 
-#: src/editor/editor_controller.cpp:1132
+#: src/editor/editor_controller.cpp:1134
 msgid "Redo"
 msgstr "Rehacer"
 
-#: src/editor/editor_controller.cpp:1134
+#: src/editor/editor_controller.cpp:1136
 msgid "Can’t Redo"
 msgstr "No se puede rehacer"
 
-#: src/editor/editor_controller.cpp:1139
+#: src/editor/editor_controller.cpp:1141
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr "Actualizar automáticamente transiciones de terreno: sí"
+msgstr "Actualizar automáticamente transiciones de terreno: Sí"
 
-#: src/editor/editor_controller.cpp:1142
+#: src/editor/editor_controller.cpp:1144
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Actualizar automáticamente transiciones de terreno: parcial"
+msgstr "Actualizar automáticamente transiciones de terreno: Parcialmente"
 
-#: src/editor/editor_controller.cpp:1146
+#: src/editor/editor_controller.cpp:1148
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Actualizar automáticamente transiciones de terreno: no"
+msgstr "Actualizar automáticamente transiciones de terreno: No"
 
 #: src/editor/editor_map.cpp:150
 msgid "Player"
@@ -333,19 +334,19 @@ msgstr "Jugador"
 msgid "The size of the target map is different from the current map"
 msgstr "El tamaño del mapa de destino difiere del mapa actual"
 
-#: src/editor/editor_palettes.cpp:497
+#: src/editor/editor_palettes.cpp:503
 msgid "(non-core)"
 msgstr "(no-principal)"
 
-#: src/editor/editor_palettes.cpp:498
+#: src/editor/editor_palettes.cpp:504
 msgid "Will not work in game without extra care."
-msgstr "No funcionará en un juego sin cuidados extra."
+msgstr "No funcionará en un juego sin atención adicional."
 
-#: src/editor/editor_palettes.cpp:526
+#: src/editor/editor_palettes.cpp:532
 msgid "FG: "
-msgstr "1er plano: "
+msgstr "Primer plano: "
 
-#: src/editor/editor_palettes.cpp:527
+#: src/editor/editor_palettes.cpp:533
 msgid "BG: "
 msgstr "Fondo: "
 
@@ -359,7 +360,7 @@ msgid ""
 "an existing file"
 msgstr ""
 "El mapa parece un escenario, pero el valor de map_data no apunta a un "
-"archivo que exista"
+"archivo existente"
 
 #: src/editor/map_context.cpp:100
 msgid "Empty map file"
@@ -367,25 +368,23 @@ msgstr "Archivo de mapa vacío"
 
 #: src/editor/map_context.cpp:220
 msgid "Could not save into scenario"
-msgstr "No se pudo guardar en escenario"
+msgstr "No se pudo guardar en el escenario"
 
 #: src/editor/map_context.cpp:227
 msgid "Could not save the map: $msg"
 msgstr "No se pudo guardar el mapa: $msg"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
 msgstr "Ninguno"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "Jugador $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"
-msgstr "Personalizado"
+msgstr "Ajustes predeterminados"
 
 #~ msgid "Choose player"
 #~ msgstr "Escoja un jugador"
@@ -396,9 +395,10 @@ msgstr "Personalizado"
 #~ "position under the cursor. Pressing a number key by itself will scroll to "
 #~ "that player’s starting position."
 #~ msgstr ""
-#~ "¿Qué jugador debería comenzar aquí? Puede utilizar ALT y una tecla "
-#~ "numérica para establecer la ubicación inicial bajo el puntero. Presionar "
-#~ "una tecla numérica sola cambiará la vista a la ubicación inicial de ese "
+#~ "¿Qué jugador debería comenzar aquí? Use «Alt» y una tecla numérica para "
+#~ "establecer su respectiva ubicación inicial bajo el puntero, pulse «Del» "
+#~ "para eliminar la posición inicial situada bajo el puntero. Presionar una "
+#~ "tecla numérica dirigirá la vista a la ubicación inicial de su respectivo "
 #~ "jugador."
 
 #~ msgid "FG"

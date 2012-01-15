@@ -4,7 +4,7 @@
  * @file
  * @brief Header file for network features using ana.
  *
- * Copyright (C) 2010 - 2011 Guillermo Biset.
+ * Copyright (C) 2010 - 2012 Guillermo Biset.
  *
  * Part of the Battle for Wesnoth Project http://www.wesnoth.org/
  *

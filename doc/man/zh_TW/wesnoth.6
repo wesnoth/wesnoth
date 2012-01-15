@@ -1,0 +1,233 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2011 wesnoth "Battle for Wesnoth"
+.
+.SH 命名
+韋諾之戰，一個回合制奇幻風格的六角戰棋遊戲
+.
+.SH 摘要
+.
+\fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
+.
+.SH 描述
+.
+韋諾之戰(\fBWesnoth\fP)是一個回合制奇幻風格的六角戰棋遊戲。
+
+用精心挑選的部隊打敗所有的敵人。管理好您的資源和村莊。 所有單位都有自己的優勢與劣勢；要取得勝利，必須發揮出您的部隊的優勢， 同時阻止對手這麼做。
+隨着單位獲得經驗，他們會學會新的技能，變得更強大。
+遊戲特性：可以使用當地語言進行遊戲。通過與電腦AI進行對抗提高自己的技能，當然也可以進入韋諾網路多人對戰。你還可以創造自己的單位，關卡和戰役，並與所有韋諾玩家分享。
+.
+.SH 選項
+.
+.TP 
+\fB\-\-bpp\fP\fI\ number\fP
+設定每個像素的位元數。例如：\fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign \ [<id_campaign>]\fP
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+aswell, otherwise the game will take the campaign/scenario id as the data
+dir.
+.TP 
+\fB\-\-campaign\-difficulty <difficulty>\fP
+The difficulty of the specified campaign (1 to max). If none specified, the
+campaign difficulty selection widget will appear.
+.TP 
+\fB\-\-campaign\-scenario <id_scenario>\fP
+The id of the scenario from the specified campaign. The default is the first
+scenario.
+.TP 
+\fB\-\-config\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games"
+.TP 
+\fB\-\-config\-path\fP
+顯示玩家配置目錄的路徑並退出。
+.TP 
+\fB\-\-data\-dir <directory>\fP
+overrides the data directory with the one specified
+.TP 
+\fB\-d, \-\-debug\fP
+顯示更多的資訊，使一些附加的指令選項可以使用。關於指令(Command Mode)可以參考wiki:
+http://www.wesnoth.org/wiki/CommandMode 。
+.TP 
+\fB\-e,\ \-\-editor\fP\fI\ file\fP
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-l \-\-load\fP
+.TP 
+\fB\-\-fps\fP
+在螢幕一角的顯示游戲幀幅數。
+.TP 
+\fB\-f, \-\-fullscreen\fP
+使用全螢幕模式。
+.TP 
+\fB\-\-gunzip\fP\fI\ infile.gz\fP
+解壓縮gzip格式的檔案，並儲存為去除 .gz 後的相同文件。文件\fIinfile.gz\fP將被刪除。
+.TP 
+\fB\-\-gzip\fP\fI\ infile\fP
+用gzip格式壓縮檔案，文件名為\fIinfile\fP.gz，並刪除\fIinfile\fP。
+.TP 
+\fB\-h, \-\-help\fP
+顯示指令可用選項，然後退出。
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+從預設遊戲存檔目錄讀取存檔\fIfile\fP。如果與 \fB\-e\fP 或 \fB\-\-editor\fP
+選項同時使用，啟動地圖編輯器並打開\fIfile\fP所對應的地圖。如果是一個目錄，則編輯器啟動後自動打開讀取地圖對話框並定位到該目錄。
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+設定debug的級別。\fBall\fP用來支配任意bebug級別。可選的級別有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\ \fBdebug\fP。預設的級別是\fBerror\fP。
+.TP 
+\fB\-\-logdomains\ [filter]\fP
+lists defined log domains (only the ones containing \fBfilter\fP if used) and
+exits
+.TP 
+\fB\-\-max\-fps\fP
+遊戲每秒能顯示的幀幅數，可以設為1－1000的數，預設為\fB50\fP。
+.TP 
+\fB\-m, \-\-multiplayer\fP
+啟動一個多人游戲。有更多的額外選項可以與\fB\-\-multiplayer\fP一起使用，詳見下述。只有這些額外選項可以跟在\fB\-\-multiplayer\fP之後。
+.TP 
+\fB\-\-no\-delay\fP
+不延遲圖形基準測試，直接執行遊戲。使用 \fB\-\-nogui\fP 選項時會自動啟動本選項。
+.TP 
+\fB\-\-nocache\fP
+禁止建立遊戲資料庫的暫存。
+.TP 
+\fB\-\-nomusic\fP
+以無音樂和音效的方式啟動游戲。
+.TP 
+\fB\-\-nosound\fP
+以無音樂和音效的方式啟動游戲。
+.TP 
+\fB\-\-path\fP
+顯示遊戲資料庫目錄並退出。
+.TP 
+\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
+preprocesses a specified file/folder. The file(s) will be written in
+specified target directory: a plain cfg file and a processed cfg file. If a
+folder is specified, it will be preprocessed recursively based on the known
+preprocessor rules. The common macroses from the data/core/macros will be
+preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
+extra defines will be added before processing the files. If you want to add
+them you must add the '=' character before.  If 'SKIP_CORE' is in the define
+list the data/core won't be preprocessed.  Example: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result\fP or
+\fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+.TP 
+\fB\-\-preprocess\-input\-macros <source file>\fP
+used only by the '\-\-preprocess' command.  Specifies a file that contains
+[preproc_define]s to be included before preprocessing.
+.TP 
+\fB\-\-preprocess\-output\-macros [<target file>]\fP
+used only by the '\-\-preprocess' command.  Will output all preprocessed
+macros in the target file. If the file is not specified the output will be
+file '_MACROS_.cfg' in the target directory of preprocess's command.  This
+switch should be typed before the \-\-preprocess command.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+設定螢幕解析度。例如： \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+如果指定了主機的話，連接到指定的主機。否則，連接到偏好設定中的第一個伺服器。例如：\fB\-\-server server.wesnoth.org\fP
+.TP 
+\fB\-\-strict\-validation\fP
+validation errors are treated as fatal errors.
+.TP 
+\fB\-t, \-\-test\fP
+執行游戲測試任務。
+.TP 
+\fB\-\-validcache\fP
+假定快取是有效的。（因此不進行快取驗證，危險）
+.TP 
+\fB\-v, \-\-version\fP
+顯示版本並退出。
+.TP 
+\fB\-w, \-\-windowed\fP
+使用視窗模式執行遊戲。
+.TP 
+\fB\-\-with\-replay\fP
+透過和\fB\-\-load\fP選項一起使用，播放遊戲錄影。
+.
+.SH \-\-multiplayer的額外選項
+.
+多人遊戲裡面選擇一個陣營，可以使用標記\fInumber\fP。 \fInumber\fP 要用代表某個陣營的數字替換。一般是1
+或者2。不過不同的任務可選的陣營數會有不同。取決於您的任務。
+.TP 
+\fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
+為該陣營的AI控制者選擇一個配置檔案來讀取。
+.TP 
+\fB\-\-algorithm\fP\fInumber\fP\fB=\fP\fIvalue\fP
+為這個陣營選擇一個非標準的AI控制。可選值有：\fBidle_ai\fP 和 \fBsample_ai\fP.
+.TP 
+\fB\-\-controller\fP\fInumber\fP\fB=\fP\fIvalue\fP
+選擇這個陣營的控制者。可選值有：\fBhuman\fP和\fBai\fP。
+.TP 
+\fB\-\-era=\fP\fIvalue\fP
+使用這個選項選擇一個模式來代替\fBDefault\fP模式。所選模式由ID決定。模式在\fBdata/multiplayer/eras.cfg\fP檔案中描述。
+.TP 
+\fB\-\-exit\-at\-end\fP
+當任務結束時直接退出而不顯示勝利/失敗對話框。這個選項也可以用在初稿基準測試。
+.TP 
+\fB\-\-nogui\fP
+執行遊戲，但不啟動使用者圖形界面(GUI)。此選項必須在\fB\-\-multiplayer\fP之前使用才有效。
+.TP 
+\fB\-\-parm\fP\fInumber\fP\fB=\fP\fIname\fP\fB:\fP\fIvalue\fP
+為這個陣營設置附加選項。這個參數依\fB\-\-controller\fP和\fB\-\-algorithm\fP的選項而定。這個選項只對設計AI的人比較有用。(目前還沒有相應的文檔)
+.TP 
+\fB\-\-scenario=\fP\fIvalue\fP
+透過ID選擇多人遊戲地圖。預設地圖是\fBmultiplayer_The_Freelands\fP。
+.TP 
+\fB\-\-side\fP\fInumber\fP\fB=\fP\fIvalue\fP
+為當前陣營選擇模式中的一個類別。所選類別由ID決定。類別在文件data/multiplayer.cfg文件中描述。
+.TP 
+\fB\-\-turns=\fP\fIvalue\fP
+設定所選任務的回合數限制。預設值為\fB50\fP。
+.
+.SH 退出狀態碼
+.
+正常退出時的狀態碼為0。狀態碼1代表發生了（SDL、視訊、字型等）初始化錯誤。狀態碼2代表命令行選項中有錯誤。
+.
+.SH 作者
+.
+由David White <davidnwhite@verizon.net>編寫。
+.br
+經Nils Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>
+and Soliton <soliton.de@gmail.com>更動。
+.br
+這個說明頁最早由 Cyril Bouthors 撰寫<cyril@bouthors.org>。
+.br
+官方網站：http://www.wesnoth.org/；繁體中文翻譯團隊：http://wesnoth\-tw.blogspot.com/
+.
+.SH 版權
+.
+Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+這是一個免費遊戲；使用由FSF發布的GPL v2協議授權。原文如下：This is Free Software; this software is
+licensed under the GPL version 2, as published by the Free Software
+Foundation.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.There is NO warranty; not even for MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH 參見
+.
+\fBwesnothd\fP(6).

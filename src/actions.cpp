@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2011 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -1657,7 +1657,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 					config &variation = mod.add_child("effect");
 					variation["apply_to"] = "variation";
 					variation["name"] = undead_variation;
-					newunit.add_modification("variation", vconfig(mod));
+					newunit.add_modification("variation",mod);
 					newunit.heal_all();
 				}
 				units_.add(death_loc, newunit);

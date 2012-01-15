@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2008 - 2011 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2012 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -84,6 +84,10 @@ void editor_display::draw_hex(const map_location& loc)
 			static const image::locator brush(game_config::images::editor_brush);
 			drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
 					image::get_image(brush, image::SCALED_TO_HEX));
+		}
+		if (map().on_board(loc) && loc == mouseoverHex_) {
+			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
+					image::get_image("misc/hover-hex.png", image::SCALED_TO_HEX));
 		}
 	}
 }

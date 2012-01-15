@@ -8,20 +8,22 @@
 # Sergi March <sergi.march@gmail.com>, 2008.
 # Gustavo Gingins <gusgins@gmail.com>, 2009.
 # Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2009.
+# Víctor <quianaaelonin@gmail.com>, 2011.
+# Aelonin <quianaaelonin@gmail.com>, 2012.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2009-01-12 00:28-0300\n"
-"Last-Translator: Gustavo Gingins <gusgins@gmail.com>\n"
-"Language-Team: Español <es@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2012-01-06 11:47+0100\n"
+"PO-Revision-Date: 2012-01-05 04:31+0100\n"
+"Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
+"Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
@@ -79,13 +81,12 @@ msgstr "Fugitivo"
 #. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:27
 msgid "(Intermediate level, 8 scenarios.)"
-msgstr ""
+msgstr "(Nivel Intermedio, 8 escenarios.)"
 
 #. [campaign]: id=Liberty
 #. Yes, that is "marchlanders", not "marshlanders".
 #. "marchlander" is archaic English for an inhabitant of a border region.
 #: data/campaigns/Liberty/_main.cfg:27
-#, fuzzy
 msgid ""
 "As the shadow of civil war lengthens across Wesnoth, a band of hardy "
 "marchlanders revolts against the tyranny of Queen Asheviere. To win their "
@@ -93,13 +94,12 @@ msgid ""
 "troops but darker foes including orcs and undead.\n"
 "\n"
 msgstr ""
-"Mientras la sombra de la guerra civil se alarga a través de Wesnoth, una "
-"banda de robustos hombres de los confines se subleva contra la tiranía de la "
-"reina Asheviere. Para ganar su camino a la libertad, tendrán que derrotar no "
-"sólo a las entrenadas espadas de las tropas de Wesnoth, sino también "
-"enemigos más oscuros incluidos los orcos y los no muertos.\n"
+"Mientras la sombra de la guerra civil se expande a través de Wesnoth, una "
+"banda de robustos hombres de los límites de Wesnoth se subleva contra la "
+"tiranía de la reina Asheviere. En su camino hacia la libertad, tendrán que "
+"derrotar no sólo a las entrenadas espadas de las tropas de Wesnoth, sino "
+"también siniestros enemigos como los orcos y los no muertos.\n"
 "\n"
-"(Nivel intermedio, 9 escenarios)"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:30
@@ -124,7 +124,7 @@ msgstr "Arte y diseño gráfico"
 #. [scenario]: id=01_The_Raid
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:4
 msgid "The Raid"
-msgstr "La Incursión"
+msgstr "La incursión"
 
 #. [label]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:18
@@ -139,12 +139,13 @@ msgid ""
 "dissatisfied with the King’s rule. Being preoccupied with the great wars, "
 "the King was unable to send adequate forces to protect the frontier."
 msgstr ""
-"En la Era de los Tumultos, durante el reinado del Rey Garard II, las "
-"ciudades fronterizas de Delwyn y Dallben en la provincia de Annuvin se "
-"volvían cada vez más insatisfechas con el dominio del Rey. Estando "
-"preocupado con las grandes guerras, el Rey era incapaz de enviar fuerzas "
-"adecuadas para proteger la frontera."
+"A lo largo de la era de la agitación, durante el reinado del Rey Garard II, "
+"las ciudades fronterizas Delwyn y Dallben, en la provincia de Annuvin, se "
+"tornaron, progresivamente, descontentas con el dominio del rey. Absorto por "
+"las grandes guerras, el rey se encontró incapaz de proporcionar la fuerzas "
+"suficientes para proteger su frontera."
 
+# Aunque "como de batalla" no parezca en su sitio, se supone que las habilides que aprenden son de supervivencia, y de "sobrevivir a los arcos invasores", lo cual no queda claro sin "como de batalla".
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:27
 msgid ""
@@ -153,10 +154,11 @@ msgid ""
 "own trading routes and pacts of mutual defense."
 msgstr ""
 "La robusta gente de estas tierras limítrofes se vio obligada a valerse por "
-"sí misma y a aprender técnicas de supervivencia contra las incursiones de "
-"hordas de orcos y saurios salvajes. Establecieron sus propias rutas "
-"comerciales y pactos de defensa mutua."
+"sí misma y a aprender técnicas tanto de supervivencia como de batalla contra "
+"los asaltos de hordas de orcos y saurios salvajes. Establecieron sus propias "
+"rutas comerciales y pactos de defensa mutua."
 
+# Aquí woodsmen no se refiere a la "unidad", sino a unos hombres de los bosques, gente que vive y trabaja en los bosques.
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:31
 msgid ""
@@ -164,9 +166,9 @@ msgid ""
 "were at home in the forests and swamps of the Western Marches, and became "
 "very effective with their simple slings and clubs."
 msgstr ""
-"Aunque no podían permitirse entrenar con armas militares adecuadas, estos "
-"leñadores se sentían cómodos en los bosques y pantanos de los campos "
-"occidentales, y se volvieron muy efectivos con sus hondas y palos."
+"Aunque no podían permitirse entrenar con las armas militares adecuadas, "
+"estos montaraces se sentían cómodos en los bosques y pantanos de los campos "
+"occidentales, y se volvieron muy efectivos con sus hondas y garrotes."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:35
@@ -175,13 +177,15 @@ msgid ""
 "sought to consolidate her ill-gotten power. She sent her armies across "
 "Wesnoth to intimidate the provincial rulers and secure her continued reign."
 msgstr ""
-"Después de la traición del Rey por la reina Asheviere, la nueva regente de "
-"Wesnoth trató de consolidar su mal habido poder. Ella envió sus ejércitos a "
-"través de Wesnoth para intimidar a los gobernantes provinciales y asegurar "
-"su reinado duradero."
+"Tras la traición del rey a manos de la reina Asheviere, la nueva regente de "
+"Wesnoth trató de consolidar su mal habido poder. Envió sus ejércitos a "
+"través de Wesnoth para intimidar a los gobernantes provinciales y asegurarse "
+"un reinado duradero."
 
+# Pretender... doble significado, aspirante al trono, y falso.
 #. [part]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:39
+#, fuzzy
 msgid ""
 "The people of Annuvin were unwilling to relinquish their hard-earned self-"
 "rule, especially not to this pretender..."
@@ -203,12 +207,12 @@ msgstr "Fal Khag"
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:103
 msgid "Defeat all of the Goblin marauders"
-msgstr "Derrote a todos los invasores goblin"
+msgstr "Derrote a todos los asaltantes goblin"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:107
 msgid "Goblins reach the village of Dallben"
-msgstr "Que los goblins alcancen la aldea de Dallben"
+msgstr "Que los goblins alcancen la aldea, Dallben"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:111
@@ -261,6 +265,7 @@ msgstr "Gorokh"
 
 #. [message]: speaker=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:194
+#, fuzzy
 msgid ""
 "I long to burn human cities, but until our great chieftains provide us with "
 "sufficient forces we must look to these villagers to feed our wolves and "
@@ -2854,10 +2859,15 @@ msgstr "Montero campesino"
 
 #. [unit_type]: id=Huntsman_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:228
+#, fuzzy
+#| msgid ""
+#| "Huntsmen have spent their lives in the backwoods and swamps of their "
+#| "wilderness homes. They can bullseye wamprats and track anything that "
+#| "moves in their territory."
 msgid ""
 "Huntsmen have spent their lives in the backwoods and swamps of their "
-"wilderness homes. They can bullseye wamprats and track anything that moves "
-"in their territory."
+"wilderness homes. They can bullseye ferocious swamp rats and track anything "
+"that moves in their territory."
 msgstr ""
 "Los monteros han pasado sus vidas en los bosques y pantanos de sus salvajes "
 "hogares. Pueden atinar y rastrear todo lo que se mueva en su territorio."

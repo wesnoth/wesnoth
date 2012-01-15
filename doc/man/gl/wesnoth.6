@@ -33,16 +33,16 @@ nun mundo fantástico.
 A batalla por \fBWesnoth\fP é un xogo de estratexia por roldas ambientado nun
 mundo fantástico.
 
-Derrota a todos os líderes inimigos escollendo sabiamente as túas tropas e
+Derrota a todos os líderes inimigos escollendo sabiamente as tropas e
 xestionando coidadosamente os recursos de ouro e vilas. Todas as unidades
-teñen as súas propias fortalezas e debilidades. Para gañar, desprega as
-forzas de xeito que aproveiten completamente o seu potencial, e impide que
-os inimigos fagan o mesmo. A medida que as unidades consigan experiencia,
-adquirirán novas habilidades e volveranse máis fortes. Xoga na túa propia
-lingua e proba as túas habilidades contra a intelixencia artificial, ou
-únete á gran comunidade de xogadores do Wesnoth na rede. Crea as túas
-propias unidades, escenarios ou campañas personalizadas, e compárteas cos
-demais.
+teñen as fortalezas e debilidades. Para gañar, desprega as túas forzas de
+xeito que aproveiten completamente o seu potencial, e impide que os inimigos
+fagan o mesmo. A medida que as unidades consigan experiencia, adquirirán
+novas habilidades e volveranse máis fortes. Xoga na lingua que queiras e pon
+a proba as túas habilidades contra a intelixencia artificial, ou únete á
+enorme comunidade internacional de xogadores de A batalla por Wesnoth que se
+reúne na Internet. Crea unidades, escenarios ou campañas personalizadas, e
+compárteo todo co resto da comunidade.
 .
 .SH OPCIÓNS
 .
@@ -50,14 +50,19 @@ demais.
 \fB\-\-bpp\fP\fI\ número\fP
 Establece a cantidade de bits por píxel. Por exemplo: \fB\-\-bpp 32\fP.
 .TP 
-\fB\-c, \-\-campaign[[<dificultade>] <identificador da campaña> [<identificador do escenario>]]\fP
-Ir directamente á campaña indicada cos parámetros empregados. A dificultade
-será un número entre «1» e a cantidade de niveis de dificultade da
-campaña. A dificultade predeterminada é «1». O escenario debe ser un dos da
-campaña. O escenario predeterminado é o primeiro da campaña. \fBNota: ao
-empregar esta opción asegúrese tamén de indicar o directorio dos datos como
-argumento final\fP, ou o xogo pensará que este é o identificador da campaña ou
-escenario.
+\fB\-c, \-\-campaign \ [<identificador da campaña>]\fP
+Ir directamente á campaña indicada co identificador indicado. Se non se
+indica un identificador, aparecerá un menú de escolla. \fBNota:\fP ao empregar
+esta opción asegúrese tamén de indicar o directorio dos datos como argumento
+final, ou asumirase que o identificador é dito directorio.
+.TP 
+\fB\-\-campaign\-difficulty <dificultade>\fP
+A dificultade da campaña indicada (do 1 ao máximo). Se non se especificase,
+aparecería un diálogo de escolla da dificultade da campaña.
+.TP 
+\fB\-\-campaign\-scenario <identificador do escenario>\fP
+O identificador do escenario da campaña indicada. De omitirse o parámetro,
+empregarase o primeiro escenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ nome\fP
 Define \fInome\fP coma o nome do cartafol da configuración do usuario no seu
@@ -122,9 +127,6 @@ debe estar entre «1» e «1000», sendo \fB50\fP o valor predeterminado.
 Executa unha partida de varios xogadores. Hai opcións adicionais que poden
 empregarse xunto con \fB\-\-multiplayer\fP tal e como se explica máis
 abaixo. \fB\-\-multiplayer\fP só pode ir seguido destas opcións adicionais.
-.TP 
-\fB\-\-new\-syntax\fP
-Activa o novo intérprete da sintaxe das campañas.
 .TP 
 \fB\-\-no\-delay\fP
 Executa o xogo sen atrasos para probas de rendemento gráfico. Isto actívase

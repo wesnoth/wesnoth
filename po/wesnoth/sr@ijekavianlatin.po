@@ -1,14 +1,14 @@
 # Translation of wesnoth.po into Serbian.
 # Copyright (C) 2005 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
-# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010, 2011.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2007, 2008, 2009, 2010, 2011, 2012.
 # Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010, 2011.
 # Branko Kokanovic, 2006.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-19 15:14+0100\n"
+"POT-Creation-Date: 2012-01-06 11:47+0100\n"
 "PO-Revision-Date: 2011-12-09 16:37+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -53,28 +53,22 @@ msgid "Local time of day area lighting"
 msgstr "Osvetljenje područja prema lokalnom dobu dana"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:40
-msgid "Custom lighting for local time of day areas (uses more memory)"
-msgstr ""
-"Posebno osvetljenje za područja lokalnog doba dana (traži više memorije)."
-
-#. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:47
+#: data/advanced_preferences.cfg:46
 msgid "Show titlescreen animation"
 msgstr "Animacija naslovnog ekrana"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:54
+#: data/advanced_preferences.cfg:53
 msgid "Show combat"
 msgstr "Prikaz borbe"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:61
+#: data/advanced_preferences.cfg:60
 msgid "Ping timeout"
 msgstr "Prekovrijeme pinga"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:62
+#: data/advanced_preferences.cfg:61
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
@@ -83,47 +77,47 @@ msgstr ""
 "Zadajte 0 da isključite."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:72
+#: data/advanced_preferences.cfg:71
 msgid "Accept whispers from friends only"
 msgstr "Šaptanja se primaju samo od prijatelja"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:79
+#: data/advanced_preferences.cfg:78
 msgid "Auto-open whisper windows in lobby"
 msgstr "Šaptački prozori se sami otvaraju u holu"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:85
 msgid "Group players in lobby"
 msgstr "Grupisanje igrača u holu"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:93
+#: data/advanced_preferences.cfg:92
 msgid "Lobby sounds"
 msgstr "Zvukovi hola"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:100
+#: data/advanced_preferences.cfg:99
 msgid "Disable notifications"
 msgstr "Bez obavještenja"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:107
+#: data/advanced_preferences.cfg:106
 msgid "Reverse time graphics"
 msgstr "Obrnuta grafika vremena"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:108
+#: data/advanced_preferences.cfg:107
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Da li se sunce kreće sleva udesno ili zdesna ulevo."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:115
+#: data/advanced_preferences.cfg:114
 msgid "Follow unit actions"
 msgstr "Praćenje radnji jedinica"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:116
+#: data/advanced_preferences.cfg:115
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
@@ -132,12 +126,12 @@ msgstr ""
 "pomeranja."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:132
+#: data/advanced_preferences.cfg:131
 msgid "Chat message aging"
 msgstr "Starenje poruka u ćaskanju"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:133
+#: data/advanced_preferences.cfg:132
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
@@ -146,22 +140,22 @@ msgstr ""
 "Zadajte 0 da isključite."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:143
+#: data/advanced_preferences.cfg:142
 msgid "Use 12-hour clock format"
 msgstr "12-časovni format sata"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:150
+#: data/advanced_preferences.cfg:149
 msgid "Confirm loading of saves from a different version"
 msgstr "Potvrda za učitavanje pozicija iz različitog izdanja"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:156
 msgid "Show all unit types in help"
 msgstr "Svi tipovi jedinica prikazani u pomoći"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:158
+#: data/advanced_preferences.cfg:157
 msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
@@ -170,97 +164,97 @@ msgstr ""
 "ne menja spisak susretnutih jedinica."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:166
+#: data/advanced_preferences.cfg:165
 msgid "Joystick support"
 msgstr "Podrška za džojstik"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:173
+#: data/advanced_preferences.cfg:172
 msgid "Joystick: number of the scroll X-axis joystick"
 msgstr "Džojstik: broj džojstika sa X-osom za klizanje"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:183
+#: data/advanced_preferences.cfg:182
 msgid "Joystick: number of the scroll X-axis"
 msgstr "Džojstik: broj X-ose za klizanje"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:193
+#: data/advanced_preferences.cfg:192
 msgid "Joystick: number of the scroll Y-axis joystick"
 msgstr "Džojstik: broj džojstika sa Y-osom za klizanje"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:203
+#: data/advanced_preferences.cfg:202
 msgid "Joystick: number of the scroll Y-axis"
 msgstr "Džojstik: broj Y-ose za klizanje"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:213
+#: data/advanced_preferences.cfg:212
 msgid "Joystick: deadzone of the scrolling stick"
 msgstr "Džojstik: mrtva zona palice za klizanje"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:223
+#: data/advanced_preferences.cfg:222
 msgid "Joystick: number of the cursor X-axis joystick"
 msgstr "Džojstik: broj džojstika sa X-osom za kursor"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:233
+#: data/advanced_preferences.cfg:232
 msgid "Joystick: number of the cursor X-axis"
 msgstr "Džojstik: broj X-ose za kursor"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:243
+#: data/advanced_preferences.cfg:242
 msgid "Joystick: number of the cursor Y-axis joystick"
 msgstr "Džojstik: broj džojstika sa Y-osom za kursor"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:253
+#: data/advanced_preferences.cfg:252
 msgid "Joystick: number of the cursor Y-axis"
 msgstr "Džojstik: broj Y-ose za kursor"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:263
+#: data/advanced_preferences.cfg:262
 msgid "Joystick: deadzone of the cursor stick"
 msgstr "Džojstik: mrtva zona palice za kursor"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:273
+#: data/advanced_preferences.cfg:272
 msgid "Joystick: number of the mouse X-axis joystick"
 msgstr "Džojstik: broj džojstika sa X-osom za miš"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:283
+#: data/advanced_preferences.cfg:282
 msgid "Joystick: number of the mouse X-axis"
 msgstr "Džojstik: broj X-ose za miš"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:293
+#: data/advanced_preferences.cfg:292
 msgid "Joystick: number of the mouse Y-axis joystick"
 msgstr "Džojstik: broj džojstika sa Y-osom za miš"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:303
+#: data/advanced_preferences.cfg:302
 msgid "Joystick: number of the mouse Y-axis"
 msgstr "Džojstik: broj Y-ose za miš"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:313
+#: data/advanced_preferences.cfg:312
 msgid "Joystick: deadzone of the mouse stick"
 msgstr "Džojstik: mrtva zona palice za miš"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:323
+#: data/advanced_preferences.cfg:322
 msgid "Joystick: number of the thrust axis joystick"
 msgstr "Džojstik: broj džojstika sa osom potiska"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:333
+#: data/advanced_preferences.cfg:332
 msgid "Joystick: number of the thrust axis"
 msgstr "Džojstik: broj ose potiska"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:343
+#: data/advanced_preferences.cfg:342
 msgid "Joystick: deadzone of the thruster"
 msgstr "Džojstik: mrtva zona ručke potiska"
 
@@ -272,116 +266,9 @@ msgstr "RCA VI"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:309
-#: data/lua/wml-tags.lua:828 src/actions.cpp:1492
+#: data/lua/wml-tags.lua:831 src/actions.cpp:1492
 msgid "poisoned"
 msgstr "otrovan"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:43
-msgid "TestCamp"
-msgstr "Probni pohod"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:45
-msgid "Test campaign used to check if new campaign syntax is working."
-msgstr "Probni pohod za proveru da li nova sintaksa pohoda radi."
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:46
-msgid "(Easy)"
-msgstr "(lako)"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:46
-msgid "Soldier"
-msgstr "vojnik"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:47
-msgid "(Normal)"
-msgstr "(normalno)"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:47
-msgid "Lord"
-msgstr "gospodar"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:48
-msgid "(Hard)"
-msgstr "(teško)"
-
-#. [campaign_metadata]: id=TEST_CAMPAIGN_NEW_SYNTAX
-#: data/campaigns/test_campaign/_main.cfg:48
-msgid "High Lord"
-msgstr "visoki gospodar"
-
-#. [about]
-#: data/campaigns/test_campaign/_main.cfg:52
-msgid "Test campaign test [about] entry"
-msgstr "Probni unos [about] probnog pohoda"
-
-#. [scenario]: id=01_Grass
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:4
-msgid "Test campaign - first scenario (grass)"
-msgstr "Probni pohod — prvi scenario (trava)"
-
-#. [side]: id=Alpha, type=Elvish Fighter
-#. [side]: id=Bravo, type=Elvish Archer
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:24
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:41
-msgid "Players"
-msgstr "Igrači"
-
-#. [side]: id=Charlie, type=Orcish Grunt
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:53
-msgid "Enemies"
-msgstr "Protivnici"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:73
-msgid "Passed test color"
-msgstr "Boja uspele probe"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:80
-msgid "Failed test color"
-msgstr "Boja neuspele probe"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:87
-msgid "Difficulty: Easy"
-msgstr "Težina: lako"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:90
-msgid "Difficulty: Normal"
-msgstr "Težina: normalno"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:93
-msgid "Difficulty: Hard"
-msgstr "Težina: teško"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:100
-msgid "Main campaign define"
-msgstr "Definicija glavnog pohoda"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:111
-msgid "Extra campaign define"
-msgstr "Definicija dopunskog pohoda"
-
-#. [label]
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:122
-msgid "Multiplayer define"
-msgstr "Definicija višeigranja"
-
-#. [objective]: condition=win
-#: data/campaigns/test_campaign/scenarios/01_Grass.cfg:132
-msgid "Defeat enemy leader"
-msgstr "Poraziš li protivničkog vođa"
 
 #. [about]
 #: data/core/about.cfg:7
@@ -469,237 +356,237 @@ msgid "Chinese Translation"
 msgstr "Kineski prevod"
 
 #. [about]
-#: data/core/about.cfg:1396
+#: data/core/about.cfg:1402
 msgid "Chinese (Taiwan) Translation"
 msgstr "Kineski (Tajvan) prevod"
 
 #. [about]
-#: data/core/about.cfg:1406
+#: data/core/about.cfg:1412
 msgid "Croatian Translation"
 msgstr "Hrvatski prevod"
 
 #. [about]
-#: data/core/about.cfg:1413
+#: data/core/about.cfg:1419
 msgid "Czech Translation"
 msgstr "Češki prevod"
 
 #. [about]
-#: data/core/about.cfg:1473
+#: data/core/about.cfg:1479
 msgid "Danish Translation"
 msgstr "Danski prevod"
 
 #. [about]
-#: data/core/about.cfg:1504
+#: data/core/about.cfg:1510
 msgid "Dutch Translation"
 msgstr "Holandski prevod"
 
 #. [about]
-#: data/core/about.cfg:1568
+#: data/core/about.cfg:1574
 msgid "English (GB) Translation"
 msgstr "Britanski engleski prevod"
 
 #. [about]
-#: data/core/about.cfg:1590
+#: data/core/about.cfg:1596
 msgid "English (Shaw) Translation"
 msgstr "Engleski (šovijanski) prevod"
 
 #. [about]
-#: data/core/about.cfg:1614
+#: data/core/about.cfg:1620
 msgid "Esperanto Translation"
 msgstr "Esperanto prevod"
 
 #. [about]
-#: data/core/about.cfg:1633
+#: data/core/about.cfg:1639
 msgid "Estonian Translation"
 msgstr "Estonski prevod"
 
 #. [about]
-#: data/core/about.cfg:1643
+#: data/core/about.cfg:1649
 msgid "Filipino Translation"
 msgstr "Filipinski prevod"
 
 #. [about]
-#: data/core/about.cfg:1653
+#: data/core/about.cfg:1659
 msgid "Finnish Translation"
 msgstr "Finski prevod"
 
 #. [about]
-#: data/core/about.cfg:1699
+#: data/core/about.cfg:1705
 msgid "French Translation"
 msgstr "Francuski prevod"
 
 # каже овако на Википедији
 # well-spelled: Фурлански
 #. [about]
-#: data/core/about.cfg:1858
+#: data/core/about.cfg:1864
 msgid "Friulian Translation"
 msgstr "Furlanski prevod"
 
 # well-spelled: Галицијански
 #. [about]
-#: data/core/about.cfg:1865
+#: data/core/about.cfg:1871
 msgid "Galician Translation"
 msgstr "Galicijanski prevod"
 
 #. [about]
-#: data/core/about.cfg:1901
+#: data/core/about.cfg:1907
 msgid "German Translation"
 msgstr "Njemački prevod"
 
 #. [about]
-#: data/core/about.cfg:1968
+#: data/core/about.cfg:1974
 msgid "Greek Translation"
 msgstr "Grčki prevod"
 
 #. [about]
-#: data/core/about.cfg:2005
+#: data/core/about.cfg:2011
 msgid "Hebrew Translation"
 msgstr "Hebrejski prevod"
 
 #. [about]
-#: data/core/about.cfg:2018
+#: data/core/about.cfg:2024
 msgid "Hungarian Translation"
 msgstr "Mađarski prevod"
 
 #. [about]
-#: data/core/about.cfg:2079
+#: data/core/about.cfg:2085
 msgid "Icelandic Translation"
 msgstr "Islandski prevod"
 
 #. [about]
-#: data/core/about.cfg:2089
+#: data/core/about.cfg:2095
 msgid "Indonesian Translation"
 msgstr "Indonežanski prevod"
 
 #. [about]
-#: data/core/about.cfg:2112
+#: data/core/about.cfg:2118
 msgid "Irish Translation"
 msgstr "Irski prevod"
 
 #. [about]
-#: data/core/about.cfg:2119
+#: data/core/about.cfg:2125
 msgid "Italian Translation"
 msgstr "Italijanski prevod"
 
 #. [about]
-#: data/core/about.cfg:2160
+#: data/core/about.cfg:2166
 msgid "Japanese Translation"
 msgstr "Japanski prevod"
 
 #. [about]
-#: data/core/about.cfg:2228
+#: data/core/about.cfg:2234
 msgid "Korean Translation"
 msgstr "Korejski prevod"
 
 #. [about]
-#: data/core/about.cfg:2236
+#: data/core/about.cfg:2242
 msgid "Latin Translation"
 msgstr "Latinski prevod"
 
 #. [about]
-#: data/core/about.cfg:2263
+#: data/core/about.cfg:2269
 msgid "Latvian Translation"
 msgstr "Letonski prevod"
 
 #. [about]
-#: data/core/about.cfg:2274
+#: data/core/about.cfg:2280
 msgid "Lithuanian Translation"
 msgstr "Litvanski prevod"
 
 #. [about]
-#: data/core/about.cfg:2296
+#: data/core/about.cfg:2302
 msgid "Macedonian Translation"
 msgstr "Makedonski prevod"
 
 # well-spelled: Марати
 #. [about]
-#: data/core/about.cfg:2303
+#: data/core/about.cfg:2309
 msgid "Marathi Translation"
 msgstr "Marati prevod"
 
 #. [about]
-#: data/core/about.cfg:2312
+#: data/core/about.cfg:2318
 msgid "Norwegian Translation"
 msgstr "Norveški prevod"
 
 #. [about]
-#: data/core/about.cfg:2337
+#: data/core/about.cfg:2343
 msgid "Old English Translation"
 msgstr "Staroengleski prevod"
 
 #. [about]
-#: data/core/about.cfg:2346
+#: data/core/about.cfg:2352
 msgid "Polish Translation"
 msgstr "Poljski prevod"
 
 #. [about]
-#: data/core/about.cfg:2386
+#: data/core/about.cfg:2392
 msgid "Portuguese Translation"
 msgstr "Portugalski prevod"
 
 #. [about]
-#: data/core/about.cfg:2393
+#: data/core/about.cfg:2399
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portugalski brazilski prevod"
 
 #. [about]
-#: data/core/about.cfg:2435
+#: data/core/about.cfg:2441
 msgid "Romanian Translation"
 msgstr "Rumunski prevod"
 
 #. [about]
-#: data/core/about.cfg:2443
+#: data/core/about.cfg:2449
 msgid "Russian Translation"
 msgstr "Ruski prevod"
 
 #. [about]
-#: data/core/about.cfg:2525
+#: data/core/about.cfg:2531
 msgid "Serbian Translation"
 msgstr "Srpski prevod"
 
 #. [about]
-#: data/core/about.cfg:2544
+#: data/core/about.cfg:2550
 msgid "Slovak Translation"
 msgstr "Slovački prevod"
 
 #. [about]
-#: data/core/about.cfg:2570
+#: data/core/about.cfg:2576
 msgid "Slovenian Translation"
 msgstr "Slovenački prevod"
 
 #. [about]
-#: data/core/about.cfg:2586
+#: data/core/about.cfg:2592
 msgid "Spanish Translation"
 msgstr "Španski prevod"
 
 #. [about]
-#: data/core/about.cfg:2656
+#: data/core/about.cfg:2673
 msgid "Swedish Translation"
 msgstr "Švedski prevod"
 
 #. [about]
-#: data/core/about.cfg:2697
+#: data/core/about.cfg:2714
 msgid "Turkish Translation"
 msgstr "Turski prevod"
 
 # well-spelled: јужнокаталонски
 #. [about]
-#: data/core/about.cfg:2719
+#: data/core/about.cfg:2736
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valensijski (južnokatalonski) prevod"
 
 #. [about]
-#: data/core/about.cfg:2732
+#: data/core/about.cfg:2749
 msgid "Vietnamese Translation"
 msgstr "Vijetnamski prevod"
 
 #. [about]
-#: data/core/about.cfg:2751
+#: data/core/about.cfg:2768
 msgid "RACV’s Translation"
 msgstr "Valensijski (RACV) prevod"
 
 #. [about]
-#: data/core/about.cfg:2758
+#: data/core/about.cfg:2775
 msgid "Bots"
 msgstr "Botovi"
 
@@ -2443,13 +2330,17 @@ msgstr "Dopunski server Vesnota"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
-msgid "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
-msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
+msgid ""
+"DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
+"Junicode-Regular.ttf"
+msgstr ""
+"DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
+"Junicode-Regular.ttf"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
-msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
-msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
+msgid "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
+msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 # >> Great Mage Delfador
 #. [tip]
@@ -3205,31 +3096,31 @@ msgstr ""
 "izbegavaće sela. Čak i kada stanu na polje sa selom, ne dobijaju odbrambenih "
 "prednosti; mada će ipak biti lečene."
 
-#: data/lua/wml-tags.lua:828 src/actions.cpp:1492
+#: data/lua/wml-tags.lua:831 src/actions.cpp:1492
 msgid "female^poisoned"
 msgstr "otrovana"
 
-#: data/lua/wml-tags.lua:830 src/actions.cpp:1497
+#: data/lua/wml-tags.lua:833 src/actions.cpp:1497
 msgid "female^slowed"
 msgstr "usporena"
 
-#: data/lua/wml-tags.lua:830 src/actions.cpp:1497
+#: data/lua/wml-tags.lua:833 src/actions.cpp:1497
 msgid "slowed"
 msgstr "usporen"
 
-#: data/lua/wml-tags.lua:831 src/actions.cpp:1502
+#: data/lua/wml-tags.lua:834 src/actions.cpp:1502
 msgid "female^petrified"
 msgstr "okamenjena"
 
-#: data/lua/wml-tags.lua:831 src/actions.cpp:1502
+#: data/lua/wml-tags.lua:834 src/actions.cpp:1502
 msgid "petrified"
 msgstr "okamenjen"
 
-#: data/lua/wml-tags.lua:832
+#: data/lua/wml-tags.lua:835
 msgid "female^unhealable"
 msgstr "neiscjeljiva"
 
-#: data/lua/wml-tags.lua:832
+#: data/lua/wml-tags.lua:835
 msgid "unhealable"
 msgstr "neiscjeljiv"
 
@@ -3317,8 +3208,8 @@ msgstr "Kraj"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:238
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:247
-#: data/themes/widescreen.cfg:268 src/menu_events.cpp:216 src/unit.cpp:2454
-#: src/unit.cpp:2633
+#: data/themes/widescreen.cfg:268 src/menu_events.cpp:216 src/unit.cpp:2450
+#: src/unit.cpp:2621
 msgid "HP"
 msgstr "UP"
 
@@ -4201,7 +4092,7 @@ msgstr "Mapu igre nije moguće učitati: "
 msgid "The Battle for Wesnoth"
 msgstr "Boj za Vesnot"
 
-#: src/game_controller.cpp:1195
+#: src/game_controller.cpp:1196
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Sljedeći dodaci imaju grešku i ne mogu se učitati:"
@@ -4209,15 +4100,15 @@ msgstr[1] "Sljedeći dodaci imaju grešku i ne mogu se učitati:"
 msgstr[2] "Sljedeći dodaci imaju grešku i ne mogu se učitati:"
 msgstr[3] "Sljedeći dodatak ima grešku i ne može se učitati:"
 
-#: src/game_controller.cpp:1202
+#: src/game_controller.cpp:1203
 msgid "ERROR DETAILS:"
 msgstr "DETALJI GREŠKE:"
 
-#: src/game_controller.cpp:1236
+#: src/game_controller.cpp:1237
 msgid "Error loading game configuration files: '"
 msgstr "Greška pri učitavanju postavnih datoteka igre: '"
 
-#: src/game_controller.cpp:1237
+#: src/game_controller.cpp:1238
 msgid "' (The game will now exit)"
 msgstr "' (igra će se sad ugasiti)"
 
@@ -4237,7 +4128,7 @@ msgstr "Ispravljanje: "
 msgid "Info: "
 msgstr "Podatak: "
 
-#: src/game_events.cpp:2376
+#: src/game_events.cpp:2387
 msgid "Invalid value in the result key for [end_level]"
 msgstr "Loša vrednost u rezultatu ključa za [end_level]"
 
@@ -6639,27 +6530,27 @@ msgstr "border_size treba da je između 0,0 i 0,5."
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Nepoznat tip jedinice ‘$type|’ pri stvaranju osobina"
 
-#: src/unit.cpp:2413 src/unit.cpp:2622 src/unit.cpp:2699
+#: src/unit.cpp:2409 src/unit.cpp:2610 src/unit.cpp:2686
 msgid " and "
 msgstr " i "
 
-#: src/unit.cpp:2424
+#: src/unit.cpp:2420
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2485
+#: src/unit.cpp:2481
 msgid "moves"
 msgstr "kretnji"
 
-#: src/unit.cpp:2500 src/unit.cpp:2646
+#: src/unit.cpp:2496 src/unit.cpp:2634
 msgid "XP to advance"
 msgstr "IP za napredovanje"
 
-#: src/unit.cpp:2639
+#: src/unit.cpp:2627
 msgid " move"
 msgstr " pokret"
 
-#: src/unit.cpp:2654
+#: src/unit.cpp:2642
 msgid "$effect_description per level"
 msgstr "$effect_description po nivou"
 
@@ -6744,15 +6635,3 @@ msgstr "Sakrij planove igrača $player"
 #: src/whiteboard/manager.cpp:1088
 msgid "Whiteboard Options"
 msgstr "Opcije blokčeta"
-
-#~ msgid "Download"
-#~ msgstr "Preuzmi"
-
-#~ msgid "Done"
-#~ msgstr "Gotovo"
-
-#~ msgid "Chat Log"
-#~ msgstr "Dnevnik ćaskanja"
-
-#~ msgid "No time of day has been defined."
-#~ msgstr "Doba dana nije određeno."

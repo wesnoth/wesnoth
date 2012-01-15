@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2011-08-27 10:13+0300\n"
-"PO-Revision-Date: 2010-08-16 09:07+0300\n"
+"POT-Creation-Date: 2012-01-06 12:00+0100\n"
+"PO-Revision-Date: 2012-01-07 19:15+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -26,7 +26,7 @@ msgstr "WESNOTH"
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2011"
-msgstr ""
+msgstr "2011"
 
 # type: TH
 #. type: TH
@@ -129,35 +129,61 @@ msgstr "määrab bittide arvu pikseli kohta. N: B<--bpp 32>"
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
 #, no-wrap
-msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
-msgstr ""
+msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
+msgstr "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:56
+#: ../../doc/man/wesnoth.6:54
 msgid ""
-"goes directly to the campaign based on the parameters.  The difficulty is a "
-"number between 1 and current campaign's difficulties number.  The default "
-"difficulty is 1.  The scenario must be one of the campaign's child "
-"scenarios. The default scenario is campaign's first scenario.  B<Note: When "
-"using this switch please ensure that you specify the data directory path as "
-"the final argument> aswell, otherwise the game will take the campaign/"
-"scenario id as the data dir."
+"goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
+"menu will appear if no id was specified.  B<Note:> When using this switch "
+"please ensure that you specify the data directory path as the final argument "
+"aswell, otherwise the game will take the campaign/scenario id as the data "
+"dir."
 msgstr ""
+"läheb otse vastavasse sõjakäiku. Kui pole määratud, avatakse valikumenüü.  "
+"B<Märkus: selle võtme kasutamisel lisa kindlasti viimase argumendina "
+"andmekataloogi asukoht> , vastasel juhul käsitleb mäng sõjakäigu või "
+"stsenaariumi nime kataloogina."
+
+#. type: TP
+#: ../../doc/man/wesnoth.6:54
+#, no-wrap
+msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+msgstr "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+
+#. type: Plain text
+#: ../../doc/man/wesnoth.6:57
+msgid ""
+"The difficulty of the specified campaign (1 to max). If none specified, the "
+"campaign difficulty selection widget will appear."
+msgstr ""
+"Valitud sõjakäigu raskusaste (1 kuni maksimaalne). Kui see pole määratud, "
+"avatakse raskusastme valik."
+
+#. type: TP
+#: ../../doc/man/wesnoth.6:57
+#, no-wrap
+msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
+msgstr "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
+
+#. type: Plain text
+#: ../../doc/man/wesnoth.6:60
+msgid ""
+"The id of the scenario from the specified campaign. The default is the first "
+"scenario."
+msgstr "Valitud sõjakäigu stsenaariumi number. Vaikimisi on see 1."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:56
+#: ../../doc/man/wesnoth.6:60
 #, no-wrap
 msgid "B<--config-dir>I<\\ name>"
 msgstr "B<--config-dir>I<\\ nimi>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:63
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows."
+#: ../../doc/man/wesnoth.6:67
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -165,43 +191,44 @@ msgid ""
 "Games\""
 msgstr ""
 "määrab kasutajasätete kataloogiks  I<nimi> kataloogi $HOME või \"My Documents"
-"\\eMy Games\" Windowsi puhul."
+"\\eMy Games\" Windowsi puhul. Võid ka määrata mujal asuva sätetekataloogi "
+"absoluutse kataloogitee."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:63
+#: ../../doc/man/wesnoth.6:67
 #, no-wrap
 msgid "B<--config-path>"
 msgstr "B<--config-path>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:66
+#: ../../doc/man/wesnoth.6:70
 msgid "prints the path of the user configuration directory and exits."
 msgstr ""
 "kirjutab ekraaanile kasutajasätete kataloogi nime ja väljub programmist."
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:66
+#: ../../doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--data-dir E<lt>directoryE<gt>>"
-msgstr ""
+msgstr "B<--data-dir E<lt>directoryE<gt>>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:69
+#: ../../doc/man/wesnoth.6:73
 msgid "overrides the data directory with the one specified"
-msgstr ""
+msgstr "määrab selle kataloogi andmekataloogiks"
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:69
+#: ../../doc/man/wesnoth.6:73
 #, no-wrap
 msgid "B<-d, --debug>"
 msgstr "B<-d, --debug>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:73
+#: ../../doc/man/wesnoth.6:77
 msgid ""
 "enables additional command mode options in-game (see the wiki page at http://"
 "www.wesnoth.org/wiki/CommandMode for more information about command mode)."
@@ -211,18 +238,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:73
+#: ../../doc/man/wesnoth.6:77
 #, no-wrap
 msgid "B<-e,\\ --editor>I<\\ file>"
 msgstr "B<-e,\\ --editor>I<\\ failinimi>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:79
-#, fuzzy
-#| msgid ""
-#| "start the in-game map editor directly. If I<file> is specified, "
-#| "equivalent to B<-e --load>"
+#: ../../doc/man/wesnoth.6:83
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
@@ -232,14 +255,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:79
+#: ../../doc/man/wesnoth.6:83
 #, no-wrap
 msgid "B<--fps>"
 msgstr "B<--fps>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:83
+#: ../../doc/man/wesnoth.6:87
 msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
@@ -247,27 +270,27 @@ msgstr "näitab ekraaninurgas ekraanikaadrite arvu sekundis."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:83
+#: ../../doc/man/wesnoth.6:87
 #, no-wrap
 msgid "B<-f, --fullscreen>"
 msgstr "B<-f, --fullscreen>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:86
+#: ../../doc/man/wesnoth.6:90
 msgid "runs the game in full screen mode."
 msgstr "käivitab mängu üleekraanirežiimis."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:86
+#: ../../doc/man/wesnoth.6:90
 #, no-wrap
 msgid "B<--gunzip>I<\\ infile.gz>"
 msgstr "B<--gunzip>I<\\ sisend.gz>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:92
+#: ../../doc/man/wesnoth.6:96
 msgid ""
 "decompresses a file which should be in gzip format and stores it without "
 "the .gz suffix. The I<infile.gz> will be removed."
@@ -275,14 +298,14 @@ msgstr "pakib gzip-vormingus faili lahti. Fail I<sisend.gz> kustutatakse."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:92
+#: ../../doc/man/wesnoth.6:96
 #, no-wrap
 msgid "B<--gzip>I<\\ infile>"
 msgstr "B<--gzip>I<\\ sisend>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:98
+#: ../../doc/man/wesnoth.6:102
 msgid ""
 "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 "I<infile>."
@@ -292,14 +315,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:98 ../../doc/man/wesnothd.6:55
+#: ../../doc/man/wesnoth.6:102 ../../doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<-h, --help>"
 msgstr "B<-h, --help>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:101
+#: ../../doc/man/wesnoth.6:105
 msgid ""
 "displays a summary of command line options to standard output, and exits."
 msgstr ""
@@ -308,14 +331,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:101
+#: ../../doc/man/wesnoth.6:105
 #, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
 msgstr "B<-l,\\ --load>I<\\ failinimi>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:113
+#: ../../doc/man/wesnoth.6:117
 msgid ""
 "loads the savegame I<file> from the standard save game directory.  If the B<-"
 "e> or B<--editor> option is used as well, starts the editor with the map "
@@ -329,14 +352,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:113 ../../doc/man/wesnothd.6:58
+#: ../../doc/man/wesnoth.6:117 ../../doc/man/wesnothd.6:58
 #, no-wrap
 msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:122
+#: ../../doc/man/wesnoth.6:126
 msgid ""
 "sets the severity level of the log domains.  B<all> can be used to match any "
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
@@ -347,29 +370,30 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:122
-#, fuzzy, no-wrap
-#| msgid "B<--logdomains>"
+#: ../../doc/man/wesnoth.6:126
+#, no-wrap
 msgid "B<--logdomains\\ [filter]>"
-msgstr "B<--logdomains>"
+msgstr "B<--logdomains\\ [filter]>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:127
+#: ../../doc/man/wesnoth.6:131
 msgid ""
 "lists defined log domains (only the ones containing B<filter> if used) and "
 "exits"
 msgstr ""
+"väljastab logidomeenide nimekirja (B<filtri> järgi, kui seda kasutatakse) ja "
+"väljub mängust"
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:127
+#: ../../doc/man/wesnoth.6:131
 #, no-wrap
 msgid "B<--max-fps>"
 msgstr "B<--max-fps>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:132
+#: ../../doc/man/wesnoth.6:136
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is B<50>."
@@ -379,14 +403,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:132
+#: ../../doc/man/wesnoth.6:136
 #, no-wrap
 msgid "B<-m, --multiplayer>"
 msgstr "B<-m, --multiplayer>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:139
+#: ../../doc/man/wesnoth.6:143
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below. Only these additional "
@@ -395,27 +419,16 @@ msgstr ""
 "käivitab mitmemängija mängu. Selle valikuga koos saab kasutada ka teisi, "
 "nagu allpool selgitatud. "
 
-#. type: TP
-#: ../../doc/man/wesnoth.6:139
-#, no-wrap
-msgid "B<--new-syntax>"
-msgstr ""
-
-#. type: Plain text
-#: ../../doc/man/wesnoth.6:142
-msgid "enables the new campaign syntax parsing."
-msgstr ""
-
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:142
+#: ../../doc/man/wesnoth.6:143
 #, no-wrap
 msgid "B<--no-delay>"
 msgstr "B<--no-delay>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:146
+#: ../../doc/man/wesnoth.6:147
 msgid ""
 "runs the game without any delays for graphic benchmarking. This is "
 "automatically enabled by B<--nogui>."
@@ -425,64 +438,64 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:146
+#: ../../doc/man/wesnoth.6:147
 #, no-wrap
 msgid "B<--nocache>"
 msgstr "B<--nocache>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:149
+#: ../../doc/man/wesnoth.6:150
 msgid "disables caching of game data."
 msgstr "lülitab mänguandmete puhverdamise välja."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:149
+#: ../../doc/man/wesnoth.6:150
 #, no-wrap
 msgid "B<--nomusic>"
 msgstr "B<--nomusic>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:152
+#: ../../doc/man/wesnoth.6:153
 msgid "runs the game without music."
 msgstr "käivitab mängu ilma taustamuusikata."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:152
+#: ../../doc/man/wesnoth.6:153
 #, no-wrap
 msgid "B<--nosound>"
 msgstr "B<--nosound>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:155
+#: ../../doc/man/wesnoth.6:156
 msgid "runs the game without sounds and music."
 msgstr "käivitab mängu ilma taustamuusika ja heliefektideta."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:155
+#: ../../doc/man/wesnoth.6:156
 #, no-wrap
 msgid "B<--path>"
 msgstr "B<--path>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:159
 msgid "prints the name of the game data directory and exits."
 msgstr "väljastab mängu andmekataloogi nime ja väljub programmist."
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:158
+#: ../../doc/man/wesnoth.6:159
 #, no-wrap
 msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr ""
+msgstr "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:172
+#: ../../doc/man/wesnoth.6:173
 msgid ""
 "preprocesses a specified file/folder. The file(s) will be written in "
 "specified target directory: a plain cfg file and a processed cfg file. If a "
@@ -495,58 +508,73 @@ msgid ""
 "campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
 "data/campaign/camp ~/result>"
 msgstr ""
+"eeltöötleb määratud faili või kataloogi. Failid (tavaline ja töödeldud cfg-"
+"fail) kirjutatakse määratud kataloogi. Kataloogi määramise korral "
+"eeltöödeldakse seda rekursiivselt vastavalt preprotsessori reeglitele.  "
+"Katalogi data/core/macros üldmakrod töödeldakse enne parameetritega "
+"määratuid. B<define1,define2,...> - lisatakse enne failide eeltöötlus "
+"(lisamiseks tuleb kirjutada nende ette võrdusmärk).  Kui nimekiri sisaldab "
+"'SKIP_CORE'-parameetrit, jäetakse data/core eeltöötlemata. Näide: B<-p ~/"
+"wesnoth/data/campaigns/tutorial ~/result> või  B<-p=MULTIPLAYER,"
+"MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:172
+#: ../../doc/man/wesnoth.6:173
 #, no-wrap
 msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
-msgstr ""
+msgstr "B<--preprocess-input-macros E<lt>source fileE<gt>>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:176
+#: ../../doc/man/wesnoth.6:177
 msgid ""
 "used only by the '--preprocess' command.  Specifies a file that contains "
 "[preproc_define]s to be included before preprocessing."
 msgstr ""
+"kasutatakse ainult --preprocess -käsuga. Määrab faili, kus asuvad enne "
+"eeltöötlust lisatavad definitsioonid."
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:176
+#: ../../doc/man/wesnoth.6:177
 #, no-wrap
 msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
-msgstr ""
+msgstr "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:182
+#: ../../doc/man/wesnoth.6:183
 msgid ""
 "used only by the '--preprocess' command.  Will output all preprocessed "
 "macros in the target file. If the file is not specified the output will be "
 "file '_MACROS_.cfg' in the target directory of preprocess's command.  This "
 "switch should be typed before the --preprocess command."
 msgstr ""
+"kasutatakse ainult --preprocess -käsuga. Väljastab kõik eeltöödeldud makrod "
+"sihtfaili. Kui failinime pole ette antud, võetakse selleks eeltöötluskäsu "
+"sihtkataloogis asuv '_MACROS.cfg'-fail. See võti tuleks kirjutada enne --"
+"preprocess -käsku."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:182
+#: ../../doc/man/wesnoth.6:183
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:186
+#: ../../doc/man/wesnoth.6:187
 msgid "sets the screen resolution. Example: B<-r 800x600>"
 msgstr "määrab ekraani eraldusvõime. N: B<-r 800x600>"
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:186
+#: ../../doc/man/wesnoth.6:187
 #, no-wrap
 msgid "B<-s,\\ --server\\ [host]>"
 msgstr "B<-s,\\ --server\\ [arvuti]>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:190
+#: ../../doc/man/wesnoth.6:191
 msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
@@ -555,91 +583,91 @@ msgstr ""
 "loetletud serveriga. N: B<--server server.wesnoth.org>"
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:190
+#: ../../doc/man/wesnoth.6:191
 #, no-wrap
 msgid "B<--strict-validation>"
-msgstr ""
+msgstr "B<--strict-validation>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:193
+#: ../../doc/man/wesnoth.6:194
 msgid "validation errors are treated as fatal errors."
-msgstr ""
+msgstr "valideerimisvigasid loetakse kriitilisteks."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:193
+#: ../../doc/man/wesnoth.6:194
 #, no-wrap
 msgid "B<-t, --test>"
 msgstr "B<-t, --test>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:197
 msgid "runs the game in a small test scenario."
 msgstr "käivitab mängu ja väikese testistsenaariumi."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:196
+#: ../../doc/man/wesnoth.6:197
 #, no-wrap
 msgid "B<--validcache>"
 msgstr "B<--validcache>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:199
+#: ../../doc/man/wesnoth.6:200
 msgid "assumes that the cache is valid. (dangerous)"
 msgstr "eeldab, et puhver on töökorras. (ohtlik)"
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:199
+#: ../../doc/man/wesnoth.6:200
 #, no-wrap
 msgid "B<-v, --version>"
 msgstr "B<-v, --version>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:202
+#: ../../doc/man/wesnoth.6:203
 msgid "shows the version number and exits."
 msgstr "väljastab versiooninumbri ja väljub programmist."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:202
+#: ../../doc/man/wesnoth.6:203
 #, no-wrap
 msgid "B<-w, --windowed>"
 msgstr "B<-w, --windowed>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:205
+#: ../../doc/man/wesnoth.6:206
 msgid "runs the game in windowed mode."
 msgstr "käivitab mängu aknarežiimis."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:205
+#: ../../doc/man/wesnoth.6:206
 #, no-wrap
 msgid "B<--with-replay>"
 msgstr "B<--with-replay>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:210
+#: ../../doc/man/wesnoth.6:211
 msgid "replays the game loaded with the B<--load> option."
 msgstr "mängib uuesti läbi B<--load> valikuga määratud mängu."
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:211
+#: ../../doc/man/wesnoth.6:212
 #, no-wrap
 msgid "Options for --multiplayer"
 msgstr "Valiku --multiplayer lisavalikud"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:218
+#: ../../doc/man/wesnoth.6:219
 msgid ""
 "The side-specific multiplayer options are marked with I<number>.  I<number> "
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
@@ -651,28 +679,28 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:218
+#: ../../doc/man/wesnoth.6:219
 #, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
 msgstr "B<--ai_config>I<number>B<=>I<value>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:221
+#: ../../doc/man/wesnoth.6:222
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
 msgstr "valib seda osapoolt juhtiva arvutimängija häälestusfaili."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:221
+#: ../../doc/man/wesnoth.6:222
 #, no-wrap
 msgid "B<--algorithm>I<number>B<=>I<value>"
 msgstr "B<--algorithm>I<number>B<=>I<väärtus>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:228
+#: ../../doc/man/wesnoth.6:229
 msgid ""
 "selects a non-standard algorithm to be used by the AI controller for this "
 "side. Available values: B<idle_ai> and B<sample_ai>."
@@ -682,28 +710,28 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:228
+#: ../../doc/man/wesnoth.6:229
 #, no-wrap
 msgid "B<--controller>I<number>B<=>I<value>"
 msgstr "B<--controller>I<number>B<=>I<väärtus>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:234
+#: ../../doc/man/wesnoth.6:235
 msgid ""
 "selects the controller for this side. Available values: B<human> and B<ai>."
 msgstr "valib osapoole juhtimisviisi. Võimalikud: B<human> või B<ai>."
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:234
+#: ../../doc/man/wesnoth.6:235
 #, no-wrap
 msgid "B<--era=>I<value>"
 msgstr "B<--era=>I<väärtus>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:241
+#: ../../doc/man/wesnoth.6:242
 msgid ""
 "use this option to play in the selected era instead of the B<Default> era. "
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
@@ -714,14 +742,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:241
+#: ../../doc/man/wesnoth.6:242
 #, no-wrap
 msgid "B<--exit-at-end>"
 msgstr "B<--exit-at-end>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:245
+#: ../../doc/man/wesnoth.6:246
 msgid ""
 "exits once the scenario is over, without displaying victory/defeat dialog "
 "which requires the user to click OK.  This is also used for scriptable "
@@ -733,14 +761,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:245
+#: ../../doc/man/wesnoth.6:246
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:250
+#: ../../doc/man/wesnoth.6:251
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
@@ -750,14 +778,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:250
+#: ../../doc/man/wesnoth.6:251
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<number>B<=>I<nimi>B<:>I<väärtus>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:260
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -769,14 +797,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:259
+#: ../../doc/man/wesnoth.6:260
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<väärtus>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:263
+#: ../../doc/man/wesnoth.6:264
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
@@ -786,14 +814,14 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:263
+#: ../../doc/man/wesnoth.6:264
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<number>B<=>I<väärtus>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:269
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
@@ -803,26 +831,26 @@ msgstr ""
 
 # type: TP
 #. type: TP
-#: ../../doc/man/wesnoth.6:268
+#: ../../doc/man/wesnoth.6:269
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<väärtus>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:272
+#: ../../doc/man/wesnoth.6:273
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr ""
 "määrab valitud stsenaariumi käikude arvu. Vaikimisi väärtuseks on B<50>."
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:273 ../../doc/man/wesnothd.6:265
+#: ../../doc/man/wesnoth.6:274 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "VÄLJUMISOLEK"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:276
+#: ../../doc/man/wesnoth.6:277
 msgid ""
 "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -833,20 +861,20 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:277 ../../doc/man/wesnothd.6:269
+#: ../../doc/man/wesnoth.6:278 ../../doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOR"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:280
+#: ../../doc/man/wesnoth.6:281
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Kirjutanud David White E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:282
+#: ../../doc/man/wesnoth.6:283
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
 "netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -856,7 +884,7 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:284
+#: ../../doc/man/wesnoth.6:285
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
@@ -866,30 +894,27 @@ msgstr ""
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:286 ../../doc/man/wesnothd.6:276
+#: ../../doc/man/wesnoth.6:287 ../../doc/man/wesnothd.6:276
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr "Külasta ametlikku kodulehte: http://www.wesnoth.org/"
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:287 ../../doc/man/wesnothd.6:277
+#: ../../doc/man/wesnoth.6:288 ../../doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr "AUTORIÕIGUS"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:290 ../../doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
+#: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:280
 msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:293 ../../doc/man/wesnothd.6:283
+#: ../../doc/man/wesnoth.6:294 ../../doc/man/wesnothd.6:283
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -901,18 +926,16 @@ msgstr ""
 
 # type: SH
 #. type: SH
-#: ../../doc/man/wesnoth.6:294 ../../doc/man/wesnothd.6:284
+#: ../../doc/man/wesnoth.6:295 ../../doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "LISAINFO"
 
 # type: TH
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:296
-#, fuzzy
-#| msgid "wesnothd"
+#: ../../doc/man/wesnoth.6:297
 msgid "B<wesnothd>(6)."
-msgstr "wesnothd"
+msgstr "B<wesnothd>(6)."
 
 # type: TH
 #. type: TH
@@ -1788,43 +1811,11 @@ msgstr ""
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:286
-#, fuzzy
-#| msgid "wesnoth"
 msgid "B<wesnoth>(6)."
-msgstr "wesnoth"
+msgstr "B<wesnoth>(6)."
 
-# type: TP
-#~ msgid "B<--smallgui>"
-#~ msgstr "B<--smallgui>"
+#~ msgid "B<--new-syntax>"
+#~ msgstr "B<--new-syntax>"
 
-# type: Plain text
-#~ msgid ""
-#~ "allows to use screen resolutions down to 800x480 and resizes a few "
-#~ "interface elements."
-#~ msgstr ""
-#~ "lubab kasutada eraldusvõimeid kuni 800x480 ja muudab mõningate "
-#~ "kasutajaliidese elementide suurust."
-
-# type: TH
-#~ msgid "2009"
-#~ msgstr "2009"
-
-# type: TP
-#~ msgid "B<-c, --campaign>"
-#~ msgstr "B<-c, --campaign>"
-
-# type: Plain text
-#~ msgid "goes directly to the campaign selection menu."
-#~ msgstr "läheb otse sõjakäikude valimise menüüsse."
-
-# type: Plain text
-#~ msgid "Dumps a list of all log domains and exits."
-#~ msgstr "Väljastab logitasemete nimekirja ja väljub programmist."
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#~ msgid "enables the new campaign syntax parsing."
+#~ msgstr "lülitab uue sõjakäigusüntaksi parseri sisse."

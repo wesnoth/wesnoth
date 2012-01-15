@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2011 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -1926,7 +1926,7 @@ void display::draw(bool update,bool force) {
 		return;
 	}
 
-	local_tod_light_ = has_time_area() && preferences::get("local_tod_light", true);
+	local_tod_light_ = has_time_area() && preferences::get("local_tod_lighting", true);
 
 	draw_init();
 	pre_draw();
@@ -2078,13 +2078,6 @@ void display::draw_hex(const map_location& loc) {
 
 	if(!shrouded(loc)) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos, get_fog_shroud_images(loc, image_type));
-	}
-
-	if(on_map && loc == mouseoverHex_) {
-		drawing_buffer_add(LAYER_MOUSEOVER_TOP,
-				loc, xpos, ypos, image::get_image("misc/hover-hex-top.png", image::SCALED_TO_HEX));
-		drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM,
-				loc, xpos, ypos, image::get_image("misc/hover-hex-bottom.png", image::SCALED_TO_HEX));
 	}
 
 	if (on_map) {

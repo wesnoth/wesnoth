@@ -48,14 +48,20 @@ scénarios ou vos campagnes et partagez\-les avec le reste du monde.
 \fB\-\-bpp\fP\fI\ nombre\fP
 Définit la valeur de bits par pixel (couleurs). Exemple\ : \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign[[<difficulté>] <id_campagne> [<id_scénario>]]\fP
-Va directement à la campagne renseignée en paramètre.  La difficulté est un
-nombre entre 1 et le nombre de niveaux de difficulté de la campagne en
-cours.  La difficulté par défaut est 1.  Le scénario doit être un de ceux de
-la campagne. Le scénario par défaut est le premier scénario de la campagne.
-\fBNote\ : Lorsque vous utilisez cette option, assurez\-vous d'avoir spécifié
-le chemin vers le dossier de données en argument final\fP, sinon le jeu
-prendra l'identifiant campagne/scénario comme répertoire de données.
+\fB\-c, \-\-campaign \ [<id_campaign>]\fP
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+aswell, otherwise the game will take the campaign/scenario id as the data
+dir.
+.TP 
+\fB\-\-campaign\-difficulty <difficulty>\fP
+The difficulty of the specified campaign (1 to max). If none specified, the
+campaign difficulty selection widget will appear.
+.TP 
+\fB\-\-campaign\-scenario <id_scenario>\fP
+The id of the scenario from the specified campaign. The default is the first
+scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ nom\fP
 Définit le répertoire de configuration de l'utilisateur à \fInom\fP dans $HOME
@@ -120,9 +126,6 @@ comprise entre 1 et 1000, la valeur par défaut est \fB50\fP.
 Lance un jeu multijoueurs. Des options supplémentaires peuvent être
 utilisées avec \fB\-\-multiplayer\fP\ : voir ci\-dessous. Seules ces options
 supplémentaires peuvent suivre \fB\-\-multiplayer\fP.
-.TP 
-\fB\-\-new\-syntax\fP
-Active le parsage de la nouvelle syntaxe des campagnes.
 .TP 
 \fB\-\-no\-delay\fP
 Lance le jeu sans pause pour mesurer les performances graphiques. Cette

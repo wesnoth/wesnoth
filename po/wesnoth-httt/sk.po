@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2010-03-28 20:45+0100\n"
+"PO-Revision-Date: 2012-01-06 19:07+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -61,9 +61,8 @@ msgstr "Šampión"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
-#, fuzzy
 msgid "(Novice level, 23 scenarios.)"
-msgstr "(Pre začiatočníkov, 25 scén.)"
+msgstr "(Pre začiatočníkov, 23 scén.)"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
@@ -537,7 +536,6 @@ msgstr "Už niet cesty späť. Musíme ísť, rýchlo!"
 
 #. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
-#, fuzzy
 msgid "scenario name^Blackwater Port"
 msgstr "Prístav Blackwater"
 
@@ -551,7 +549,7 @@ msgstr "Vydržíš sa brániť stanovený čas"
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:25
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:25
 msgid "(special bonus)"
-msgstr ""
+msgstr "(špeciálny bonus)"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:25
@@ -1041,7 +1039,6 @@ msgstr "Perlový záliv"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:19
-#, fuzzy
 msgid "Defeat one enemy leader, and resist the other until turns run out"
 msgstr ""
 "Porazíš aspoň jedného veliteľa nepriateľov a vydržíš odolávať druhému "
@@ -1061,7 +1058,7 @@ msgstr "Porazíš všetkých nepriateľských veliteľov"
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:32
 msgid "Turns run out with both enemy leaders standing"
-msgstr ""
+msgstr "Vyprší čas a obaja nepriateľskí velitelia budú živí"
 
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:63
@@ -1522,9 +1519,8 @@ msgstr "Ujdeš nahor po ceste do Elensefaru"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:26
-#, fuzzy
 msgid "Defeat Muff Malal"
-msgstr "Porazíš Muffa Malala (bonus)"
+msgstr "Porazíš Muffa Malala"
 
 #. [side]: type=Dark Sorcerer, id=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:62
@@ -2198,19 +2194,16 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:590
-#, fuzzy
 msgid "The Ka’lian has met and decided: we must capture the Sceptre of Fire."
 msgstr "Ka'lian sa zišiel a dospel k rozhodnutiu: musíme získať Ohnivé žezlo."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:595
-#, fuzzy
 msgid "The Sceptre of Fire? What’s that?"
 msgstr "Ohnivé žezlo? Čo je to?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:600
-#, fuzzy
 msgid ""
 "The Sceptre of Fire is the most ancient artifact of the realm of Wesnoth. It "
 "was forged by the dwarves of Knalga at the request of King Haldric II. It "
@@ -2234,14 +2227,13 @@ msgstr "Ale čo to má spoločné so mnou?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:610
-#, fuzzy
 msgid ""
 "When Garard II, your uncle, was deciding upon a successor, he issued an "
 "edict that whichever member of the royal family could retrieve the Sceptre "
 "of Fire would rule the land."
 msgstr ""
 "Garard II., tvoj strýc, vyberal následníka. Vydal nariadenie, že ktorý člen "
-"kráľovskej rodiny získa Ohnivé žezlo, bude vládnuť v krajine."
+"kráľovskej rodiny získa Ohnivé žezlo, ten bude vládnuť v krajine."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:615
@@ -2255,14 +2247,13 @@ msgstr "Budeme vám pritom pomáhať, môj pane."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:625
-#, fuzzy
 msgid ""
 "Time is short. We think that Asheviere is also searching for the Sceptre, to "
 "help seal her place as ruler. But if you find the Sceptre first, the people "
 "will support you as the king."
 msgstr ""
-"Čas sa kráti. Myslíme si, že aj Aševiera hľadá to žezlo, aby si poistila "
-"svoje miesto na tróne. Ak sa však dostanete k žezlu ako prvý, ľudia vás "
+"Čas sa kráti. Myslíme si, že aj Aševiera hľadá to Žezlo, aby si poistila "
+"svoje miesto na tróne. Ak sa však dostanete k Žezlu ako prví, ľudia vás "
 "podporia ako kráľa."
 
 #. [message]: speaker=Konrad
@@ -2428,7 +2419,6 @@ msgstr "Dan'Tonk, sme už blízko Weldynu."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Crossroads.cfg:519
-#, fuzzy
 msgid ""
 "We dare not confront Asheviere yet. We must retrieve the Sceptre of Fire and "
 "gather more allies in the north."
@@ -2521,7 +2511,6 @@ msgstr "Kráľovná ma poslala, aby som ťa zastavila, podvodník!"
 
 #. [message]: role=Advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:172
-#, fuzzy
 msgid ""
 "That’s the princess, Li’sar. The daughter of the Queen, and her successor!"
 msgstr "To je princezná Li'sar. Kráľovnina dcéra a následníčka!"
@@ -2588,7 +2577,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:239
-#, fuzzy
 msgid ""
 "Your mother has lied to you, child. Now I suggest you reconsider, and either "
 "join us, or flee as an exile. There will be a great battle soon, and if you "
@@ -2597,7 +2585,7 @@ msgid ""
 msgstr ""
 "Tvoja matka ťa oklamala, dieťa. Odporúčam ti, aby si si to rozmyslela. Buď "
 "sa k nám pridaj, alebo odíď preč. Čoskoro nadíde veľká bitka, a ak v nej "
-"budeš na nesprávnej strane, možno nebudeme mať na výber ušetriť tvoj život "
+"budeš na nesprávnej strane, možno nebudeme mať na možnosť ušetriť tvoj život "
 "po druhýkrát."
 
 #. [message]: speaker=unit
@@ -2670,9 +2658,8 @@ msgstr "Prežiješ dva dni"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:24
-#, fuzzy
 msgid "Eradicate the liches"
-msgstr "Vyhladíš kostejov (Bonus)"
+msgstr "Vyhladíš kostejov"
 
 #. [side]: type=Lich, id=Galga
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:78
@@ -3110,7 +3097,6 @@ msgstr "Obludy"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:194
-#, fuzzy
 msgid ""
 "This is the Ford of Abez. When we ford this river, we will be leaving "
 "Wesnoth, and entering the lands of the North. The dwarves once ruled these "
@@ -3120,7 +3106,7 @@ msgstr ""
 "Toto je brod Abez. Keď prebrodíme rieku, opustíme Wesnoth a vstúpime do "
 "severných krajov. V tých krajoch kedysi vládli trpaslíci, ale dnes tam "
 "vládne už len chaos. Tu vďaka zrade prišiel o život tvoj otec i strýc. Je to "
-"už skoro devätnásť rokov, Konrád."
+"už skoro sedemnásť rokov, Konrád."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:198
@@ -3151,7 +3137,6 @@ msgstr "Vyhrávali sme boj. Odrážali sme ich."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:214
-#, fuzzy
 msgid "And then the king’s son, in the heat of battle, turned upon the king!"
 msgstr "Až kým sa kráľov syn v zápale boja neotočil proti kráľovi!"
 
@@ -3347,7 +3332,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:439
-#, fuzzy
 msgid "Do you think she’s really going to chase us, Delfador?"
 msgstr "Myslíš, že nás bude naozaj prenasledovať, Delfador?"
 
@@ -3395,7 +3379,7 @@ msgstr "Halgar Du’nar"
 #. [side]: type=Orcish Warrior, id=Gorlak
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:112
 msgid "Gorlak"
-msgstr ""
+msgstr "Gorlak"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:157
@@ -3407,7 +3391,6 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:161
-#, fuzzy
 msgid ""
 "Stop and rest? My lord, we must go hard after the Sceptre of Fire, lest it "
 "fall into the hands of our enemies!"
@@ -3440,7 +3423,6 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:173
-#, fuzzy
 msgid ""
 "We are pursued by the forces of your arch-enemy, chasing the Sceptre of "
 "Fire, the fate of the realm in our hands, and you humans want to stop and "
@@ -3452,7 +3434,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:177
-#, fuzzy
 msgid ""
 "They are right, Kalenz. I had wanted to acquire the Sceptre within a moon, "
 "but it is not to be. Our soldiers will begin to desert if they do not rest "
@@ -3622,7 +3603,6 @@ msgstr "Otroci zlých orkov? Musíme ich oslobodiť!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:207
-#, fuzzy
 msgid ""
 "That would not be a wise choice, for our mission is to retrieve the Sceptre "
 "of Fire. If we tarry in this place, hordes of orcs will surround us."
@@ -4021,7 +4001,6 @@ msgstr "No, my... my..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:354
-#, fuzzy
 msgid ""
 "We have come so that an heir may claim his inheritance, that a king may "
 "claim his throne. We seek the Sceptre of Fire."
@@ -4031,14 +4010,12 @@ msgstr ""
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:359
-#, fuzzy
 msgid ""
 "The Sceptre of Fire? Are you out of your minds? Surely you speak in jest!"
 msgstr "Ohnivé žezlo? Čo ste sa pomiatli? Určite iba žartujete!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:364
-#, fuzzy
 msgid ""
 "We jest not, friend. We seek the Sceptre of Fire. We seek the help of the "
 "dwarves in finding it. But know that we will find it, whether you help us or "
@@ -4050,7 +4027,6 @@ msgstr ""
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:369
-#, fuzzy
 msgid ""
 "You speak foolishness. No one even knows if the Sceptre of Fire still "
 "exists. And who is this heir, this king that you speak of?"
@@ -4112,13 +4088,11 @@ msgstr "Mysleli si, že som mŕtvi. Dúfali, že som mŕtvy. No ja stále žijem
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:434
-#, fuzzy
 msgid "And you really think that you can find the Sceptre of Fire?"
 msgstr "A ty si naozaj myslíš, že dokážete nájsť Ohnivé žezlo?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:439
-#, fuzzy
 msgid ""
 "Yes, I do. If you help us, friend, all the treasures of Knalga that we find "
 "are yours. We want only the Sceptre. It will be dangerous. Make no mistake "
@@ -4132,13 +4106,12 @@ msgstr ""
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:444
-#, fuzzy
 msgid ""
 "You are right, friend. I will put my best men at your disposal. We know not "
 "where the Sceptre is though. Legend says it is hidden in the eastern tunnels."
 msgstr ""
 "Máš pravdu, priateľu. Dám vám k dispozícii svojich najlepších mužov. Ale "
-"nevieme, kde je žezlo. Povesť hovorí, že je ukryté vo východných tuneloch."
+"nevieme, kde je Žezlo. Povesť hovorí, že je ukryté vo východných tuneloch."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:449
@@ -4478,7 +4451,6 @@ msgstr "Lionel? Generál? Spomínam si na to meno..."
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:494
-#, fuzzy
 msgid ""
 "Remember me, do you? Aye. I was the king’s finest general, sent down to "
 "these pits to retrieve the Sceptre. But the orcs trapped me and my men in "
@@ -4486,8 +4458,8 @@ msgid ""
 "die. Now I will get revenge on you all!"
 msgstr ""
 "Spomínaš si na mňa? Hej. Bol som najlepší kráľov generál a on ma poslal do "
-"týchto dier nájsť žezlo. Ale orkovia mňa i mojich mužov uväznili v tejto "
-"jaskyni, kde sme zomreli od hladu. Trpaslíci nám nepomohli a nechali ma "
+"týchto dier nájsť Žezlo. Ale orkovia mňa i mojich mužov uväznili v tejto "
+"jaskyni, aby sme zomreli od hladu. Trpaslíci nám nepomohli a nechali ma "
 "umrieť. Teraz sa vám všetkým pomstím!"
 
 #. [message]: speaker=Lionel
@@ -4505,7 +4477,6 @@ msgstr "Odpočívaj v pokoji, Lionel. Úbohý stratený generál."
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:521
-#, fuzzy
 msgid ""
 "I am destroyed, but my mission must be completed. Though you are foes, you "
 "are at least worthy ones, so I will tell you that the Sceptre is east from "
@@ -4535,7 +4506,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:575
-#, fuzzy
 msgid ""
 "These caves are vast. If we are to find the Sceptre of Fire we must hurry. "
 "We are not alone, and now that our foes have smelled our blood it will be "
@@ -4547,13 +4517,12 @@ msgstr ""
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:579
-#, fuzzy
 msgid ""
 "The Sceptre? Ah, the Sceptre ye seek. You surface dwellers are ambitious. "
 "Beyond my citadel the spawn of the darkness hold complete sway. You’ll no’ "
 "survive without assistance."
 msgstr ""
-"Žezlo? Ach, to žezlo, čo hľadáte. Ste veľmi ambiciózni, ľudia z povrchu. Za "
+"Žezlo? Ach, to Žezlo, čo hľadáte. Ste veľmi ambiciózni, ľudia z povrchu. Za "
 "touto citadelou majú splodenci temnôt ohromnú moc. Bez pomoci tam "
 "neprežijete."
 
@@ -4564,25 +4533,23 @@ msgstr "Ako sa tam dostaneme?"
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:587
-#, fuzzy
 msgid ""
 "Northeast o’ my keep, young human, the tunnels converge towards the deepest "
 "reaches of the underground kingdom. The Sceptre can only be there. Please "
 "accept the service of my guardsmen. These elite warriors will protect you."
 msgstr ""
-"Na severovýchod od mojej pevnosti, mladý človeče, sa tunely zbiehajú v "
+"Mladý človeče, na severovýchod od mojej pevnosti sa tunely zbiehajú v "
 "najväčších hlbinách pozemného kráľovstva. Žezlo môže byť jedine tam. Prosím "
 "prijmite službu mojej stráže. Títo elitní bojovníci vás ochránia."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:597
-#, fuzzy
 msgid ""
 "Your boon is most welcome, sir dwarf. Keeping the Sceptre out of the hands "
 "of evil beasts is a common goal for us, and we will prevail with your help."
 msgstr ""
-"Vaša štedrosť je vítaná, pán trpaslík. Dostať žezlo z rúk zlých tvorov je "
-"naším spoločným cieľom, a s vašou pomocou to dokážeme."
+"Vaša štedrosť je vítaná, pán trpaslík. Dostať Žezlo z rúk zlých tvorov je "
+"naším spoločným cieľom a s vašou pomocou to dokážeme."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:602
@@ -4705,14 +4672,13 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:236
-#, fuzzy
 msgid ""
 "Don’t try to trick me! I know why you have come here! But I will put an end "
 "to you and your treason here. Then I will get the Sceptre, and return to the "
 "daylight again!"
 msgstr ""
 "Nepokúšaj sa ma prekabátiť! Viem, prečo ste sem prišli! Lenže ja tu "
-"skoncujem s vami i s vašou zradou. Potom si vezmem žezlo a vrátim sa na "
+"skoncujem s vami i s vašou zradou. Potom si vezmem Žezlo a vrátim sa na "
 "denné svetlo!"
 
 #. [message]: type=Goblin Knight
@@ -4772,9 +4738,8 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:381
-#, fuzzy
 msgid "Thank you, Princess. Come, men. Let us find the Sceptre!"
-msgstr "Ďakujeme, princezná. Poďte, muži, ideme nájsť žezlo!"
+msgstr "Ďakujeme, princezná. Poďte, muži, ideme nájsť Žezlo!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:426
@@ -4786,7 +4751,6 @@ msgstr "Neverím, že to má takto skončiť!"
 #. [scenario]: id=17_Scepter_of_Fire
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:4
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:33
-#, fuzzy
 msgid "The Sceptre of Fire"
 msgstr "Ohnivé žezlo"
 
@@ -4816,13 +4780,11 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:62
-#, fuzzy
 msgid "Capture the Sceptre of Fire with Konrad or Li’sar"
 msgstr "Konrád alebo Li'sar získa Ohnivé žezlo"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:160
-#, fuzzy
 msgid "The Sceptre must be getting close now! Where shall we go?"
 msgstr "Žezlo musí byť niekde nablízku! Kam pôjdeme?"
 
@@ -4863,7 +4825,6 @@ msgstr "Všimlo? Čo? Delfador, čo to má znamenať?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:186
-#, fuzzy
 msgid ""
 "The Sceptre... the earth... the molten lava... the fire... the air around "
 "us... everything. It calls out to the heir — I can barely hold it back in my "
@@ -4871,7 +4832,7 @@ msgid ""
 "power of it!"
 msgstr ""
 "Žezlo... zem... tečúca láva... oheň... vzduch okolo nás... všetko. Volajú na "
-"svojho dediča... sotva dokážem upokojiť svoju myseľ. Tu bolo vykované, kúsok "
+"svojho dediča — sotva dokážem upokojiť svoju myseľ. Tu bolo vykované, kúsok "
 "na sever od miesta, kde stojíme. Tá moc!"
 
 #. [message]: speaker=Konrad
@@ -4901,7 +4862,6 @@ msgstr "Treba si vybrať"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:16
-#, fuzzy
 msgid ""
 "The Sceptre, initially dulled from decades of dust and debris, began to glow "
 "from the ruby’s inner fire. Dwarvish runes on the golden handle lit up in "
@@ -4913,14 +4873,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:21
-#, fuzzy
 msgid ""
 "An early encounter with the Sceptre in the hands of its new owners left "
 "several trolls as smoking husks. Sensing the awakening of a powerful magic, "
 "the dwellers of the deep quickly scattered and remained out of sight."
 msgstr ""
 "Prvé stretnutie so žezlom v rukách nových majiteľov zanechalo z niekoľkých "
-"trollov len dymiace škvarky. Keď obyvatelia pocítili prebudenie mocnej "
+"trolov len dymiace škvarky. Keď obyvatelia hlbín pocítili prebudenie mocnej "
 "mágie, rýchlo sa stiahli mimo dohľad."
 
 #. [part]
@@ -4987,13 +4946,12 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:196
-#, fuzzy
 msgid ""
 "Perhaps it is in both our best interests for us to remain allies for a "
 "little longer... but I do want that Sceptre, and someday I will have it!"
 msgstr ""
 "Asi je v našom najlepšom záujme zostať ešte chvíľu spojencami... ale stále "
-"chcem to žezlo a jedného dňa ho dostanem!"
+"chcem to Žezlo a jedného dňa ho dostanem!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:200
@@ -5007,11 +4965,10 @@ msgstr "Tak sme teda unikli."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:212
-#, fuzzy
 msgid ""
 "Yes, we have. Now I suppose you want to use the Sceptre against me, Princess?"
 msgstr ""
-"Áno, dostali. Predpokladám, že teraz chceš použiť žezlo proti mne, princezná?"
+"Áno, dostali. Predpokladám, že teraz chceš použiť Žezlo proti mne, princezná?"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:216
@@ -5026,13 +4983,12 @@ msgstr ""
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:220
-#, fuzzy
 msgid ""
 "With all due respect, Princess, it is once again we who will spare you, "
 "Sceptre or no Sceptre."
 msgstr ""
-"Pri všetkej úcte, princezná, to my by sme ušetrili tvoj život, či už so "
-"žezlom alebo bez neho."
+"Pri všetkej úcte, princezná, to my sme ušetrili tvoj život, či už so Žezlom "
+"alebo bez neho."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:224
@@ -5397,7 +5353,6 @@ msgstr ""
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:142
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:349
-#, fuzzy
 msgid "He was just someone who couldn’t handle the power given to him."
 msgstr "Bol to skrátka niekto, kto nezvládol moc, ktorá mu bola zverená."
 
@@ -5502,9 +5457,8 @@ msgstr "Porazíš vládcu kosteja Aimucasura"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:26
-#, fuzzy
 msgid "Defeat all Death Knights first"
-msgstr "Porazíš rytierov smrti (Bonus)"
+msgstr "Porazíš najprv rytierov smrti"
 
 #. [side]: type=Death Knight, id=Clarustus
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:92
@@ -5598,46 +5552,43 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:275
-#, fuzzy
 msgid ""
 "As the last of its generals falls, an ear-splitting screech escapes from the "
 "lich. It is clear that controlling such powerful spirits has drained it "
 "significantly, and it is seething in anger towards you."
 msgstr ""
-"Keď padol posledný z rytierov smrti, vydral sa z kosteja uši trhajúci "
-"výkrik. Je jasné, že ovládanie toľkých mocných duší ho výrazne vyčerpalo, a "
-"teraz svoj hnev zameriava na teba."
+"Keď padol posledný z generálov, vydral sa z kosteja uši trhajúci výkrik. Je "
+"jasné, že ovládanie toľkých mocných duší ho výrazne vyčerpalo, a teraz svoj "
+"hnev zameriava na teba."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:315
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. The last of his minions silently falls like a puppet with its "
 "strings cut. A cloud of dust billows outwards as the remnants of the lich’s "
 "once-mortal body disintegrate for the last time."
 msgstr ""
-"Posledný úder zničil kosteja a uvoľnil malú vlnu energie. Posledný rytier "
-"smrti ticho padá na zem, je nehybný. Veľký oblak prachu sa dvíha, ako sa "
+"Posledný úder zničil kosteja a uvoľnil malú vlnu energie. Jeho posledný "
+"prisluhovač ticho padá k zemi ako bábka. Veľký oblak prachu sa dvíha, ako sa "
 "zvyšky kostejovej kedysi smrteľnej telesnej schránky a storočia špiny "
 "definitívne rozkladajú."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:322
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. His minions fall like puppets with their strings cut. A cloud of "
 "dust billows out as the remnants of the lich’s once-mortal body disintegrate "
 "for the last time."
 msgstr ""
-"Posledný úder zničil kosteja a uvoľnil malú vlnu energie. Veľký oblak prachu "
-"sa dvíha, ako sa zvyšky kostejovej kedysi smrteľnej telesnej schránky a "
-"storočia špiny definitívne rozkladajú."
+"Posledný úder zničil kosteja a uvoľnil malú vlnu energie.  Jeho prisluhovači "
+"padajú k zemi ako bábky. Veľký oblak prachu sa dvíha, ako sa zvyšky "
+"kostejovej kedysi smrteľnej telesnej schránky a storočia špiny definitívne "
+"rozkladajú."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:331
-#, fuzzy
 msgid ""
 "A final blow destroys the lich, releasing a small shock wave of energy "
 "outwards. A giant cloud of dust billows out as the remnants of the lich’s "
@@ -6006,21 +5957,18 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:585
-#, fuzzy
 msgid "We’ve found $random gold in the drake nest."
 msgstr "V tábore jašterov sme našli $random zlatiek."
 
 #. [message]: speaker=Keh Ohn
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:625
-#, fuzzy
 msgid "GRRROOOOAAAAR!"
-msgstr "Grrrrrrrrrrrrrrrr"
+msgstr "Grrrrrrrrrrrrrrrr!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:629
-#, fuzzy
 msgid "Hurrah! We’ve killed their leader!"
-msgstr "Hurá! Zabili sme ich veliteľa"
+msgstr "Hurá! Zabili sme ich veliteľa!"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:634
@@ -6151,7 +6099,7 @@ msgstr "To znie rozumne..."
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:841
 msgid "Rescue the sergeant"
-msgstr ""
+msgstr "Zachráň čatára"
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:902
@@ -6247,9 +6195,8 @@ msgstr "Nanešťastie nemáme inú možnosť. Vpred do jaskyne!"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:962
-#, fuzzy
 msgid "Reach the cave"
-msgstr "Dosiahni jaskyňu."
+msgstr "Dosiahni jaskyňu"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1006
@@ -6314,9 +6261,8 @@ msgstr "Vyprší čas skôr ako dôjdeš do lesa"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:50
-#, fuzzy
 msgid "Note: your encampment will be dismantled after the first turn."
-msgstr "Poznámka: tvoje táborisko bude zrušené po prvom kole.\n"
+msgstr "Poznámka: tvoje táborisko bude po prvom kole zrušené."
 
 #. [side]: type=Commander, id=Konrad
 #. [side]: type=Elvish Lord, id=Uradredia
@@ -6338,7 +6284,7 @@ msgstr "Kior-Dal"
 #. [side]: type=General, id=Honber
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:135
 msgid "Honber"
-msgstr ""
+msgstr "Honber"
 
 #. [side]: type=Elvish Marshal, id=El'rien
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:201
@@ -6667,7 +6613,6 @@ msgstr "Priatelia elfov, dostali ste sa do bezpečia!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:768
-#, fuzzy
 msgid ""
 "El’rien, we have the Sceptre of Fire with us! We must escort them to "
 "Elensiria!"
@@ -6692,7 +6637,7 @@ msgstr "Nájdi východ z podzemia a presuň k nemu Konráda"
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:33
 msgid "Help the Wose fend off the undead attack"
-msgstr ""
+msgstr "Pomôž lesnému mužovi odraziť útok nemŕtvych"
 
 #. [side]: type=Saurian Oracle, id=Szerkz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:87
@@ -6756,14 +6701,13 @@ msgstr "Everlore"
 
 #. [message]: speaker=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:103
-#, fuzzy
 msgid ""
 "Greetings, and welcome to our capital. You should feel honored. It has been "
 "half a century — a generation in the way your race counts time — since any "
 "man has been considered Elf-friend enough to stand here in Elensiria."
 msgstr ""
 "Zdravíme vás a vítame v našom hlavnom meste. Je to pre vás česť. Prešlo už "
-"pol storočia - v čase vášho druhu jedna generácia - odkedy sme nejakého "
+"pol storočia — v čase vášho druhu jedna generácia — odkedy sme nejakého "
 "človeka považovali natoľko za priateľa elfov, aby mohol vstúpiť sem do "
 "Elensirie."
 
@@ -6899,47 +6843,43 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:173
-#, fuzzy
 msgid ""
 "Well, that is why I must take the Sceptre. I will return, and people will "
 "accept me as Queen. I will rule justly and fairly. My mother is only Queen "
 "Mother. The throne is rightfully mine, and with the Sceptre I can prove it."
 msgstr ""
-"Potom si musím vziať žezlo. Vrátim sa a ľud ma prijme ako kráľovnú. Budem "
+"Potom si musím vziať Žezlo. Vrátim sa a ľud ma prijme ako kráľovnú. Budem "
 "vládnuť spravodlivo. Moja matka je iba kráľovnou matkou. Trón je po práve "
-"môj, a pomocou žezla to dokážem."
+"môj a pomocou Žezla to dokážem."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:177
-#, fuzzy
 msgid ""
 "Princess, there is some good in you, but the throne is not yours to claim. "
 "Konrad has the Sceptre. He will take the throne."
 msgstr ""
-"Princezná, v tebe je dosť dobra, ale trón ti nepatrí. Konrád má žezlo. On "
+"Princezná, v tebe je dosť dobra, ale trón ti nepatrí. Konrád má Žezlo. On "
 "získa trón."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:183
-#, fuzzy
 msgid ""
 "Well, I have the Sceptre! I will return and the people will accept me as "
 "Queen! My mother is only Queen Mother. The Throne is rightfully mine, and I "
 "will rule from it with justice and fairness. I may even accept you as my "
 "adviser and counselor, Delfador."
 msgstr ""
-"Nuž teraz mám žezlo! Vrátim sa a ľud ma prijme ako kráľovnú! Moja matka je "
+"Nuž teraz mám Žezlo! Vrátim sa a ľud ma prijme ako kráľovnú! Moja matka je "
 "iba kráľovnou matkou. Trón je po práve môj a ja z neho budem vládnuť "
 "spravodlivo. Možno vás dokonca prijmem ako svojho radcu, Delfador."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:187
-#, fuzzy
 msgid ""
 "Though you have the Sceptre, Princess, it is rightfully Konrad’s. You have "
 "it now only because we helped you get it."
 msgstr ""
-"Možno máte žezlo, princezná, ale po práve patrí Konrádovi. Máte ho iba vďaka "
+"Možno máte Žezlo, princezná, ale po práve patrí Konrádovi. Máte ho iba vďaka "
 "tomu, že sme vám ho pomáhali získať."
 
 #. [message]: speaker=Li'sar
@@ -7279,12 +7219,11 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:187
-#, fuzzy
 msgid ""
 "What? Me, a traitor? It is the Queen who is a traitor, for not obeying the "
 "wishes of King Garard II. We have the Sceptre of Fire, so let us in!"
 msgstr ""
-"Čo? Ja, zradkyňa? Kráľovná nás zradila, neposlúchla vôľu kráľa Gararda II. "
+"Čo? Ja a zradkyňa? Kráľovná nás zradila, neposlúchla vôľu kráľa Gararda II. "
 "My máme Ohnivé žezlo, pusťte nás dnu!"
 
 #. [message]: speaker=Malatus
@@ -7981,7 +7920,6 @@ msgstr "Záver"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/25_HttT_Epilogue.cfg:11
-#, fuzzy
 msgid ""
 "And so the Dark Queen’s reign was ended. Li’sar, daughter of Garard II and "
 "Heir to the Throne of Wesnoth, was crowned Queen and Bearer of the Sceptre "
@@ -8362,7 +8300,6 @@ msgstr ""
 
 #. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
-#, fuzzy
 msgid "Sceptre of Fire"
 msgstr "Ohnivé žezlo"
 
@@ -8438,12 +8375,11 @@ msgstr "Myslím, že viem, čo robím. Poďme!"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:5
-#, fuzzy
 msgid ""
 "In the twenty-eighth year of the reign of Garard II, king of Wesnoth, the "
 "kingdom was plunged into a bitter war with the Orcs of the North."
 msgstr ""
-"V dvadsiatom siedmom roku vlády Gararda II., kráľa Wesnothu, bolo kráľovstvo "
+"V dvadsiatom ôsmom roku vlády Gararda II., kráľa Wesnothu, bolo kráľovstvo "
 "zatiahnuté do krutej vojny s orkami zo severu."
 
 #. [part]
@@ -8493,7 +8429,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:26
-#, fuzzy
 msgid ""
 "But Garard’s arch-mage, Delfador, had escaped the battle and, riding with "
 "haste, reached Weldyn first. He mustered a force of loyalists to fight "
@@ -8506,15 +8441,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:30
-#, fuzzy
 msgid ""
 "Eldred made war upon Delfador and his forces with his mother’s advice "
 "ringing in his ears: <i>“Fight no one great or small except the old mage, "
 "whose head should be severed from his shoulders.”</i>"
 msgstr ""
-"Eldred prišiel na bojisko a v hlave si držal jasnú radu od svojej matky: "
-"Nebojuj s nikým silným ani slabým, okrem toho starého mága, ktorého hlava "
-"musí spadnúť z pliec čo najskôr."
+"Eldred bojoval s Delfadorom a jeho armádou pričom v mysli mu znela rada jeho "
+"matky: <i>“Nebojuj s nikým silným ani slabým, okrem toho starého mága, "
+"ktorého hlava musí spadnúť z pliec čo najskôr.”</i>"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:34
@@ -8538,7 +8472,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:42
-#, fuzzy
 msgid ""
 "Asheviere herself then took command of the army and led it back to Weldyn. "
 "Knowing that the king’s young nephews were next in line to the throne, she "

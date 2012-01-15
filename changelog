@@ -1,19 +1,67 @@
-Version 1.9.13+svn:
+Version 1.9.14+svn:
+ * Campaigns:
+   * An Orcish Incursion:
+     * Scenario 3: select a new unit with the Adviser (sic) role for dialogs if
+       the original unit selected at the start of the scenario died
+ * Editor:
+   * Added Etheral Abyss terrain (Qxua) to the Cave category, too
+   * Updated the terrain palette icons for winter/fall single or mixed forested
+     hills so they show the default base Hhd instead of Hh
+ * Graphics:
+   * Fixed some spearman attack animations being too slow in some directions
+ * Language and i18n:
+   * Updated translations: Czech, Finnish, French, Galician, German, Italian,
+     Lithuanian, Serbian, Slovak
+ * Multiplayer:
+   * Allow tab completion of player names in commands (bug #19284)
+   * Fixed bug #19260: 'villages_value' -> 'village_value' in 5p_The_Wilderlands
+   * Fix eras other than the default breaking 2p_Hornshark_Island. If a player
+     has a faction not in the default era, a standard set of units (aimed at
+     Khalifate) is used now.
+ * Terrain:
+   * Removed tags ignored by engine (as reported by lipk in
+     http://forums.wesnoth.org/viewtopic.php?f=21&t=35832 )
+   * Fixed bug #18601: change swamp water so it looks as good as it did in 1.8
+ * User interface:
+   * Draw gold hex cursor above all terrain when no unit visible
+ * Miscellaneous and bug fixes:
+   * Fixed wmlindent writing CRLF end of lines on windows
+
+Version 1.9.14:
+ * AI:
+   * Fixed bug #18962 and bug #19214: AI leaders are no longer slow to select
+     attacks.
+ * Campaigns:
+   * Sceptre of Fire:
+     * New set of portraits
  * Editor:
    * Fixed overpainting of transparent tile icons on the editor palettes on the
      sidebar
    * Fixed terrain palette shrinking to the size of small categories when
      switching maps (bug #19218)
+   * Fixed various crashes related to drawing/filling operations (bug #18928)
  * Language and i18n:
+   * Changed font used for CJK languages to DroidSans
    * Updated translations: British English, Chinese (Simplified), Czech, Dutch,
-     Estonian, French, Galician, Latin, Norwegian, Serbian
+     Estonian, French, Galician, German, Hungarian, Latin, Norwegian, Serbian,
+     Slovak, Spanish
  * WML engine:
    * Fix store_unit clearing the used variable before its filter can reference it
      (bug #19203)
    * Check for argument image file existence before creating a MASK or
      BLIT image mod (bug #19208)
+   * New key [object]delayed_variable_substitution=yes|no (default no)
+     as a workaround for bug #18893 (fixes bug #19225)
+   * Made empty {} preprocessor directives be handled more gracefully
+     (bug #19233)
+   * Fixed bug #19213: [harm_unit] incorrectly uses ToD bonus
+   * The turn bell and autosaves are not triggered anymore in certain situations
+     after [endlevel] has been issued
  * Miscellaneous and bug fixes:
    * Fixed bug #19032: Poison and level up AI defense placement calculation
+   * Fixed bug #19245: wesnoth(6) man page doesn't describe the --campaign*
+     options correctly
+   * Enable local ToD lighting option by default.
 
 Version 1.9.13:
  * Campaigns:
