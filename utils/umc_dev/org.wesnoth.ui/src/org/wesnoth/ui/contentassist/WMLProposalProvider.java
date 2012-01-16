@@ -341,6 +341,10 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             parentTag = ( WMLTag ) model.eContainer( );
         }
 
+        boolean appendEndBracket =
+            context.getCurrentNode( ) == null ||
+                ! context.getCurrentNode( ).getText( ).equals( "]" );
+
         if( parentTag != null ) {
             ICompositeNode node = NodeModelUtils.getNode( model );
 
@@ -375,7 +379,8 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
                     if( toAdd ) {
                         acceptor.accept( createTagProposal( tag.asWMLTag( ),
-                            parentIndent, ruleProposal, context ) );
+                            parentIndent, ruleProposal, context,
+                            appendEndBracket ) );
                     }
                 }
             }
@@ -385,14 +390,15 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             WMLTag rootTag = schemaParser_.getTags( ).get( "root" ); //$NON-NLS-1$
             for( WMLTag tag: rootTag.getWMLTags( ) ) {
                 acceptor.accept( createTagProposal( tag,
-                    "", ruleProposal, context ) ); //$NON-NLS-1$
+                    "", ruleProposal, context, appendEndBracket ) ); //$NON-NLS-1$
             }
         }
 
         // parsed custom tags
         for( WMLTag tag: projectCache_.getWMLTags( ).values( ) ) {
-            acceptor
-                .accept( createTagProposal( tag, "", ruleProposal, context ) ); //$NON-NLS-1$
+            acceptor.accept(
+                createTagProposal( tag, "", ruleProposal, context, //$NON-NLS-1$
+                    appendEndBracket ) );
         }
     }
 
@@ -406,10 +412,12 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
      * @param ruleProposal
      *        Whether this is a proposal for an entire rule or not
      * @param context
+     * @param appendEndBracked
      * @return
      */
     private ICompletionProposal createTagProposal( WMLTag tag, String indent,
-        boolean ruleProposal, ContentAssistContext context )
+        boolean ruleProposal, ContentAssistContext context,
+        boolean appendEndBracked )
     {
         StringBuilder proposal = new StringBuilder( );
         if( ruleProposal ) {
@@ -423,7 +431,11 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                     indent, key.getName( ) ) );
             }
         }
-        proposal.append( String.format( "%s[/%s", indent, tag.getName( ) ) ); //$NON-NLS-1$
+        proposal.append( String.format( "%s[/%s%s",//$NON-NLS-1$
+            indent,
+            tag.getName( ),
+            appendEndBracked ? "]": "" ) );
+
         return createCompletionProposal( proposal.toString( ), tag.getName( ),
             WML_TAG_IMAGE, context, TAG_PRIORITY );
     }
