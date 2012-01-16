@@ -68,7 +68,7 @@
           <terminal xsi:type="xtext:RuleCall" rule="//@rules.4"/>
         </elements>
       </elements>
-      <elements xsi:type="xtext:Assignment" cardinality="+" feature="eol" operator="+=">
+      <elements xsi:type="xtext:Assignment" feature="eol" operator="+=">
         <terminal xsi:type="xtext:Alternatives">
           <elements xsi:type="xtext:RuleCall" rule="//@rules.30"/>
           <elements xsi:type="xtext:RuleCall" rule="//@rules.33"/>

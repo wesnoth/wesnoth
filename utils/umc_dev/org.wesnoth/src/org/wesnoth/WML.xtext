@@ -20,7 +20,7 @@ WMLTag:
 	;
      
 WMLKey hidden(WS):
-	name = ID '=' values += WMLKeyValue* (EOL? '+' EOL? values += WMLKeyValue+)* eol+=(EOL|SL_COMMENT)+;
+	name = ID '=' values += WMLKeyValue* (EOL? '+' EOL? values += WMLKeyValue+)* eol+=(EOL|SL_COMMENT);
 
 WMLKeyValue:
     WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
