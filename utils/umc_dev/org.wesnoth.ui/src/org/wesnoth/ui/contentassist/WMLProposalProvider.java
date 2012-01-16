@@ -351,9 +351,8 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             String parentIndent = ""; //$NON-NLS-1$
             if( context.getCurrentNode( ).getOffset( ) > 0 ) {
                 parentIndent = NodeModelUtils.findLeafNodeAtOffset( node,
-                    context.getCurrentNode( ).getOffset( ) -
-                        // if we have a non-rule proposal, subtract 1
-                        ( ruleProposal ? 0: 1 ) ).getText( );
+                    context.getCurrentNode( ).getTotalOffset( ) -
+                        ( appendEndBracket ? 1: 2 ) ).getText( );
             }
 
             // remove ugly new lines that break indentation
