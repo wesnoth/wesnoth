@@ -97,6 +97,10 @@ std::vector<std::string> get_text(const std::string &campaign)
 
 void set_about(const config &cfg)
 {
+	about_list.clear();
+	images.clear();
+	images_default = "";
+
 	foreach (const config &about, cfg.child_range("about"))
 	{
 		about_list.add_child("about", about);
