@@ -1712,7 +1712,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 	gamemap mask(*resources::game_map);
 
 	try {
-		mask.read(cfg["mask"]);
+		mask.read(cfg["mask"], false);
 	} catch(incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
 		return;
@@ -2912,7 +2912,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 
 	gamemap map(*game_map);
 	try {
-		map.read(cfg["map"]);
+		map.read(cfg["map"], false);
 	} catch(incorrect_map_format_error&) {
 		lg::wml_error << "replace_map: Unable to load map " << cfg["map"] << "\n";
 		return;

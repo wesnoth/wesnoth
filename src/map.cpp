@@ -161,7 +161,7 @@ gamemap::~gamemap()
 {
 }
 
-void gamemap::read(const std::string& data)
+void gamemap::read(const std::string& data, const bool allow_invalid)
 {
 	// Initial stuff
 	tiles_.clear();
@@ -173,7 +173,7 @@ void gamemap::read(const std::string& data)
 	if(data.empty()) {
 		w_ = 0;
 		h_ = 0;
-		return;
+		if(allow_invalid) return;
 	}
 
 	// Test whether there is a header section
