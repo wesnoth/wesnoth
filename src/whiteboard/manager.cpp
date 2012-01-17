@@ -1117,17 +1117,13 @@ void manager::options_dlg()
 
 void manager::set_planned_unit_map()
 {
-	if (wait_for_side_init_) {
-		LOG_WB << "Not building planned unit map: waiting for side init.\n";
+	if (!can_modify_game_state()) {
+		LOG_WB << "Not building planned unit map: cannot modify game state now.\n";
 		return;
 	}
 	//any more than one reference means a lock on unit map was requested
 	if(!unit_map_lock_.unique()) {
 		LOG_WB << "Not building planned unit map: unit map locked.\n";
-		return;
-	}
-	if (executing_actions_) {
-		LOG_WB << "Not building planned unit map: action is executing.\n";
 		return;
 	}
 	if (planned_unit_map_active_) {
