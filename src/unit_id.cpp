@@ -21,10 +21,17 @@
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 
+// The following line sets the value to less than maximum of size_t,
+// but is required since config can't hold size_t and so whiteboard
+// chops it anyway during serialization to config, leading to later
+// errors (and some slowdown).
+// Setting the initial value to 2^32-1 is a safe and easy way to fix this.
+static const size_t INITIAL_FAKE_ID = 4294967295;
+
 namespace n_unit {
 	id_manager id_manager::manager_;
 
-	id_manager::id_manager() : next_id_(0), fake_id_(size_t(-1))
+	id_manager::id_manager() : next_id_(0), fake_id_(INITIAL_FAKE_ID)
 	{}
 
 	id_manager& id_manager::instance()
@@ -60,7 +67,7 @@ namespace n_unit {
 
 	void id_manager::reset_fake()
 	{
-		fake_id_ = size_t(-1);
+		fake_id_ = INITIAL_FAKE_ID;
 	}
 
 	void id_manager::clear()
