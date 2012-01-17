@@ -1731,7 +1731,7 @@ static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 		(*resources::teams)[u.side()-1].recall_list().push_back(u);
 		return true;
 	} else {
-		ERR_NG << "Cannot create unit: location (" << loc.x << "," << loc.y <<") is not on the map, and player "
+		ERR_NG << "unit with id " << u.id() << ": location (" << loc.x << "," << loc.y <<") is not on the map, and player "
 			<< u.side() << " has no recall list.\n";
 		return false;
 	}
