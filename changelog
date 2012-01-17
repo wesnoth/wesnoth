@@ -14,8 +14,10 @@ Version 1.9.14+svn:
  * Graphics:
    * Fixed some spearman attack animations being too slow in some directions
  * Language and i18n:
-   * Updated translations: Czech, Finnish, French, Galician, German, Hungarian, 
+   * Updated translations: Czech, Finnish, French, Galician, German, Hungarian,
      Italian, Lithuanian, Serbian, Slovak
+ * Lua API:
+   * Extend and improve wesnoth.select_hex, deprecate wesnoth.highlight_hex
  * Multiplayer:
    * Allow tab completion of player names in commands (bug #19284)
    * Fixed bug #19260: 'villages_value' -> 'village_value' in 5p_The_Wilderlands
@@ -28,6 +30,8 @@ Version 1.9.14+svn:
    * Fixed bug #18601: change swamp water so it looks as good as it did in 1.8
  * User interface:
    * Draw gold hex cursor above all terrain when no unit visible
+ * WML engine:
+   * Improve [select_unit] to match its original intention (bug #19224)
  * Miscellaneous and bug fixes:
    * Fixed wmlindent writing CRLF end of lines on windows
    * Fix tutorial units without xp bar
