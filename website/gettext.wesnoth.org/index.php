@@ -22,6 +22,7 @@ function cmp_alpha($a, $b){
 }
 
 $official = true;
+$nostats = false;
 
 $existing_packs = explode(" ", $packages);
 $existing_corepacks = explode(" ", $corepackages);
