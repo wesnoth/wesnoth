@@ -261,7 +261,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 	total_height_ = total_width_ > 0 ? tiles_[0].size() : 0;
 	w_ = total_width_ - 2 * border_size_;
 	h_ = total_height_ - 2 * border_size_;
-	VALIDATE((w_ >= 1 && h_ >= 1), _("A map needs at least 1 tile, the map cannot be loaded."));
+	VALIDATE((w_ >= 1 && h_ >= 1), "A map needs at least 1 tile, the map cannot be loaded.");
 
 	for(int x = 0; x < total_width_; ++x) {
 		for(int y = 0; y < total_height_; ++y) {
