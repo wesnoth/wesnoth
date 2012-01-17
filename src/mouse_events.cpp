@@ -586,7 +586,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//FIXME: clean all these "return false"
 }
 
-void mouse_handler::select_hex(const map_location& hex, const bool browse) {
+void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event) {
 	selected_hex_ = hex;
 	gui().select_hex(hex);
 	gui().clear_attack_indicator();
@@ -605,8 +605,10 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 			current_paths_ = pathfind::paths(map_, units_, hex, teams_,
 				false, true, viewing_team(), path_turns_);
 		}
-		show_attack_options(u);
-		gui().highlight_reach(current_paths_);
+		if(highlight) {
+			show_attack_options(u);
+			gui().highlight_reach(current_paths_);
+		}
 		// the highlight now comes from selection
 		// and not from the mouseover on an enemy
 		enemy_paths_ = false;
@@ -618,10 +620,12 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 			{
 				sound::play_UI_sound("select-unit.wav");
 				u->set_selecting();
-				// ensure unit map is back to normal while event is fired
-				{ wb::real_map srum;
+				if(fire_event) {
+					// ensure unit map is back to normal while event is fired
+					wb::real_map srum;
 					game_events::fire("select", hex);
-				} //end forced real unit map
+					//end forced real unit map
+				}
 			}
 		}
 
