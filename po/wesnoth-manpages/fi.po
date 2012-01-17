@@ -3,19 +3,20 @@
 #
 # Automatically generated, 2006.
 # Samu Voutilainen <smar@smar.fi>, 2010.
+# Jarkko Patteri <jarkkopatteri@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2010-02-20 14:40+0200\n"
-"Last-Translator: Samu Voutilainen <smar@smar.fi>\n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-01-17 22:47+0200\n"
+"Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
+"Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.2\n"
 
 # type: TH
 #. type: TH
@@ -28,7 +29,7 @@ msgstr "WESNOTH"
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2011"
-msgstr ""
+msgstr "2011"
 
 # type: TH
 #. type: TH
@@ -129,7 +130,7 @@ msgstr "Asettaa värisyvyyden (bits per pixel). Esimerkki: B<--bpp 32>"
 #: ../../doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr ""
+msgstr "B<-c, --campaign \\ [E<lt>kampanjan_tunnisteE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
@@ -140,12 +141,17 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
+"aloittaa suoraan kampanjasta, jonka tunniste on "
+"E<lt>kamppanjan_tunnisteE<gt>. Kampanjavalikko näytetään, jos tunnistetta ei "
+"ole määritetty. B<Huom:> Käyttäessäsi tätä kytkintä, varmista, että "
+"datahakemiston polku on viimeisenä argumenttina. Muuten peli olettaa, että "
+"kampanjan/ skenaarion tunniste on myös datahakemisto."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
 #, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr ""
+msgstr "B<--campaign-difficulty E<lt>vaikeustasoE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -153,12 +159,14 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"Annetun kampanjan vaikeustaso (1:stä maksimiin). Jos vaikeustasoa ei ole "
+"annettu, näytetään vaikeustason valikko."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>skenaarion_tunnisteE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -166,6 +174,8 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
+"Skenaarion tunniste annetussa kampanjassa. Oletusarvo on ensimmäinen "
+"kampanja."
 
 # type: TP
 #. type: TP
@@ -177,15 +187,15 @@ msgstr "B<--config-dir>I<\\ nimi>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
-#, fuzzy
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\""
 msgstr ""
-"Asettaa käyttäjän asetushakemiston I<nimen> hakemistossa $HOME tai windowsin "
-"kansiossa ”Omat tiedostot\\eOmat pelit”."
+"Asettaa käyttäjän asetushakemiston I<nimi> hakemistossa $HOME tai windowsin "
+"kansiossa ”Omat tiedostot\\eMy Games”. Voit myös määrittää asetushakemiston "
+"tiedostopolun muualle, kuin $HOME tai \"Omat tiedostot\\eMy Games\""
 
 # type: TP
 #. type: TP
@@ -204,12 +214,12 @@ msgstr "Näyttää käyttäjän asetushakemiston polun ja lopettaa."
 #: ../../doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--data-dir E<lt>directoryE<gt>>"
-msgstr ""
+msgstr "B<--data-dir E<lt>hakemistoE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:73
 msgid "overrides the data directory with the one specified"
-msgstr ""
+msgstr "korvaa datahakemiston annetulla polulla"
 
 # type: TP
 #. type: TP
@@ -238,13 +248,12 @@ msgstr "B<-e,\\ --editor>I<\\ tiedosto>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:83
-#, fuzzy
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
 msgstr ""
 "Käynnistää pelinsisäisen karttaeditorin suoraan. Jos I<tiedosto> on "
-"syötetty, komento vastaa B<-e --load>:a"
+"syötetty, komento vastaa komentoa B<-e --load>"
 
 # type: TP
 #. type: TP
@@ -367,7 +376,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:126
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--logdomains\\ [filter]>"
 msgstr "B<--logdomains>"
 
@@ -377,6 +386,8 @@ msgid ""
 "lists defined log domains (only the ones containing B<filter> if used) and "
 "exits"
 msgstr ""
+"listaa määritetyt lokit (vain sellaiset, jotka sisältää B<filter>, jos sitä "
+"käytetään) ja sulkee ohjelman"
 
 # type: TP
 #. type: TP
@@ -487,7 +498,7 @@ msgstr "Näyttää pelidatahakemiston nimen ja lopettaa."
 #: ../../doc/man/wesnoth.6:159
 #, no-wrap
 msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr ""
+msgstr "B<--preprocess, -p[=E<lt>määritys1E<gt>,E<lt>määritys2E<gt>,...] E<lt>tiedosto/kansioE<gt> E<lt>kohdekansioE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:173
@@ -503,12 +514,22 @@ msgid ""
 "campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
 "data/campaign/camp ~/result>"
 msgstr ""
+"esikäsittelee annetun tiedoston/kansion. Tiedosto(t) jotka kirjoitetaan "
+"annettuun kohdehakemistoon ovat käsittelemätön cfg tiedosto ja esikäsitelty "
+"cfg tiedosto. Tiedostot käsitellään rekursiivisesti perustuen "
+"esikäsittelijän sääntöihin, mikäli argumenttina on kansio. Perusmakrot data/"
+"core/macros kansiosta käsitellään ennen annettuja tiedostoja.  B<määritys1,"
+"määritys2,...> - lisämääritykset lisätään ennen tiedostojen käsittelyä. Jos "
+"haluat lisätä ne, käytä '=' merkkiä niiden edessä. Jos 'SKIP_CORE' sisältyy "
+"määrityslistaan, data/core kansiota ei käsitellä. Esimerkit:  B<-p ~/wesnoth/"
+"data/campaigns/tutorial ~/tulos> tai B<-p=MULTIPLAYER,OMA_KAMPANJA ~/wesnoth/"
+"data/campaign/camp ~/tulos>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:173
 #, no-wrap
 msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
-msgstr ""
+msgstr "B<--preprocess-input-macros E<lt>lähdetiedostoE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:177
@@ -516,12 +537,14 @@ msgid ""
 "used only by the '--preprocess' command.  Specifies a file that contains "
 "[preproc_define]s to be included before preprocessing."
 msgstr ""
+"vain '--preprocess' komento käyttää. Määrittää [preproc_define]:it "
+"sisältävän tiedoston, joka lisätään ennen esikäsittelyä."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:177
 #, no-wrap
 msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
-msgstr ""
+msgstr "B<--preprocess-output-macros [E<lt>kohdetiedostoE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:183
@@ -531,6 +554,10 @@ msgid ""
 "file '_MACROS_.cfg' in the target directory of preprocess's command.  This "
 "switch should be typed before the --preprocess command."
 msgstr ""
+"vain '--preprocess' komento käyttää. Tulostaa kaikki esikäsitellyt makrot "
+"kohdetiedostoon. Jos tiedostonimeä ei ole annettu, sen nimeksi annetaan "
+"'_MACROS.cfg', joka sijoitetaan esikäsittelykomennon kohdekansioon. Tätä "
+"kytkintä kannattaa käyttää ennen --preprocess komentoa."
 
 # type: TP
 #. type: TP
@@ -566,12 +593,12 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:191
 #, no-wrap
 msgid "B<--strict-validation>"
-msgstr ""
+msgstr "B<--strict-validation>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:194
 msgid "validation errors are treated as fatal errors."
-msgstr ""
+msgstr "kelpoisuusvirheitä käsitellään vakavina virheinä."
 
 # type: TP
 #. type: TP
@@ -830,7 +857,7 @@ msgstr "Asettaa vuorojen määrän valittuun skenaarioon. Oletus on B<50>."
 #: ../../doc/man/wesnoth.6:274 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
-msgstr ""
+msgstr "PALUUKOODI"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:277
@@ -839,6 +866,9 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"Normaali paluukoodi on 0. paluukoodi 1 tarkoittaa (SDL, video, fonttien, "
+"jne.) aloitusvirhettä. Paluukoodi 2 tarkoittaa virhettä komentorivillä "
+"annetussa komennossa."
 
 # type: SH
 #. type: SH
@@ -891,10 +921,9 @@ msgstr "TEKIJÄNOIKEUS"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:280
-#, fuzzy
 msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2012 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -918,9 +947,8 @@ msgstr "KATSO MYÖS"
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:297
-#, fuzzy
 msgid "B<wesnothd>(6)."
-msgstr "wesnothd"
+msgstr "B<wesnothd>(6)."
 
 # type: TH
 #. type: TH
@@ -1789,6 +1817,8 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
+"Jos palvelin suljettiin kunnolla, normaali paluukoodi on 0. Paluukoodi 2 "
+"tarkoittaa virhettä komentorivillä annetussa komennossa."
 
 # type: Plain text
 #. type: Plain text
@@ -1811,9 +1841,8 @@ msgstr ""
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:286
-#, fuzzy
 msgid "B<wesnoth>(6)."
-msgstr "wesnoth"
+msgstr "B<wesnoth>(6)."
 
 # type: TP
 #~ msgid "B<--smallgui>"
