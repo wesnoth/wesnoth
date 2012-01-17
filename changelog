@@ -32,6 +32,8 @@ Version 1.9.14+svn:
    * Draw gold hex cursor above all terrain when no unit visible
  * WML engine:
    * Improve [select_unit] to match its original intention (bug #19224)
+   * Improve error handling in case of invalid maps passed to
+     [replace_map] or [terrain_mask]
  * Miscellaneous and bug fixes:
    * Fixed wmlindent writing CRLF end of lines on windows
    * Fix tutorial units without xp bar
