@@ -1493,6 +1493,8 @@ static int intf_require(lua_State *L)
  */
 static int intf_highlight_hex(lua_State *L)
 {
+	ERR_LUA << "wesnoth.highlight_hex is deprecated, use wesnoth.select_hex\n";
+
 	int x = luaL_checkinteger(L, 1) - 1;
 	int y = luaL_checkinteger(L, 2) - 1;
 	const map_location loc(x, y);
