@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2011-02-06 12:52+0100\n"
-"Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
+"PO-Revision-Date: 2012-01-17 23:04+0100\n"
+"Last-Translator: Antonio \"Antro\" Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
 # type: TH
@@ -133,10 +133,9 @@ msgstr "imposta il numero di bit per pixel. Esempio: B<--bpp 32>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
+#, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr "B<-c, --campaign[[E<lt>difficoltàE<gt>] E<lt>id_campagnaE<gt> [E<lt>id_scenarioE<gt>]]>"
+msgstr "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
@@ -147,13 +146,18 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
+"salta direttamente alla campagna con identificatore E<lt>id_campaignE<gt>. "
+"Se non si specifica un identificatore, comparirà un menù dal quale sarà "
+"possibile selezionare una campagna. B<Nota:> Quando si usa questo switch, "
+"verifica attentamente di aver messo come ultimo parametro la directory dei "
+"dati, altrimenti il gioco scambierà l'identificatore della campagna/scenario "
+"per la directory."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr "B<--data-dir E<lt>directoryE<gt>>"
+msgstr "B<--campaign-difficulty E<lt>difficultyE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -166,7 +170,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -573,7 +577,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:191
 #, no-wrap
 msgid "B<--strict-validation>"
-msgstr ""
+msgstr "B<--strict-validation>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:194
@@ -851,6 +855,9 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"Il nosrmale stato di uscita è 0. Uno stato di uscita pari a 1 indica un "
+"errore di inizializzazione (SDL, video, fonts, etc.). Uno stato di uscita "
+"pari a 2 indica un errore con le opzioni della linea di comando."
 
 # type: SH
 #. type: SH
@@ -1179,6 +1186,9 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"Se impostato su B<no> (default), le richieste di spegnimento e ripartenza "
+"vengono ignorate a meno che non provengano dal socket. Impostalo a B<yes> "
+"per poter spengere remotamente il server con una /query di un amministratore."
 
 # type: TP
 #. type: TP
@@ -1334,6 +1344,11 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is B<everyone>."
 msgstr ""
+"Stabilisce chi possa creare nuove stanze sul server. Valori possibli sono "
+"B<everyone>, B<registered>, B<admin> e B<nobody> per concedere i permessi "
+"rispettivamente a tutti, ad utenti registrati, ad utenti amministratori o "
+"per disabilitare la creazione di nuove stanze. Il valore di default è "
+"B<everyone>."
 
 # type: TP
 #. type: TP
@@ -1772,6 +1787,9 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
+"Quando il server viene spento correttamente, lo stato di uscita è 0. Un "
+"stato di uscita pari a 2 indica un errore con le opzioni della linea di "
+"comando."
 
 # type: Plain text
 #. type: Plain text
@@ -1794,51 +1812,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
-
-# type: TP
-#~ msgid "B<--smallgui>"
-#~ msgstr "B<--smallgui>"
-
-# type: Plain text
-#~ msgid ""
-#~ "allows to use screen resolutions down to 800x480 and resizes a few "
-#~ "interface elements."
-#~ msgstr ""
-#~ "permette di usare risoluzioni dello schermo basse (fino a 800×480) e "
-#~ "ridimensiona alcuni elementi dell'interfaccia."
-
-# type: TH
-#~ msgid "2009"
-#~ msgstr "2009"
-
-# type: TP
-#~ msgid "B<-c, --campaign>"
-#~ msgstr "B<-c, --campaign>"
-
-# type: Plain text
-#~ msgid "goes directly to the campaign selection menu."
-#~ msgstr "va direttamente al menu di selezione della campagna."
-
-# type: Plain text
-#~ msgid "Dumps a list of all log domains and exits."
-#~ msgstr "Stampa l'elenco di tutti i domini di log ed esce."
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
-
-# type: TP
-#~ msgid "B<--dummy-locales>"
-#~ msgstr "B<--dummy-locales>"
-
-# type: Plain text
-#~ msgid ""
-#~ "use special dummy locales to switch to any language even if that language "
-#~ "isn't installed system-wide."
-#~ msgstr ""
-#~ "Usa un locale fantoccio per poter usare una lingua qualsiasi anche se la "
-#~ "lingua non è installata a livello di sistema."
