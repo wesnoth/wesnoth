@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2010-03-27 23:08+0100\n"
+"PO-Revision-Date: 2012-01-15 18:56+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -28,7 +28,7 @@ msgstr "WESNOTH"
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2011"
-msgstr ""
+msgstr "2011"
 
 # type: TH
 #. type: TH
@@ -131,7 +131,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr ""
+msgstr "B<-c, --campaign \\ [E<lt>id_výpravyE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
@@ -142,12 +142,16 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
+"skočí hneď do výpravy s identifikátorom E<lt>id_výpravyE<gt>. Ak "
+"identifikátor nebol zadaný, zobrazí sa menu s ponukou. B<Poznámka:> Ak je "
+"použitý tento parameter, je potrebné zadať aj cestu k adresáru s údajmi ako "
+"posledný parameter. Inak bude hra považovať id_výpravy za adresár s údajmi."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
 #, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr ""
+msgstr "B<--campaign-difficulty E<lt>obtiažnosťE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -155,19 +159,21 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"Obtiažnosť vybranej výpravy (od 1 do maxima). Ak nie je uvedená, zobrazí sa "
+"ponuka na výber obtiažnosti."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>id_scényE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
 msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
-msgstr ""
+msgstr "Identifikátor scény vo zvolenej výprave. Predvolená je prvá scéna."
 
 # type: TP
 #. type: TP
@@ -179,7 +185,6 @@ msgstr "B<--config-dir>I<\\ názov>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
-#, fuzzy
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -187,7 +192,8 @@ msgid ""
 "Games\""
 msgstr ""
 "nastaví adresár s používateľskými nastaveniami na I<meno> pod $HOME alebo "
-"\"My Documents\\eMy Games\" vo Windows."
+"\"My Documents\\eMy Games\" vo Windows. Je možné zadať aj absolútnu cestu "
+"pre adresáre mimo $HOME alebo \"My Documents\\eMy Games\""
 
 # type: TP
 #. type: TP
@@ -206,12 +212,12 @@ msgstr "vypíše názov adresára s používateľskými nastaveniami a skončí.
 #: ../../doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--data-dir E<lt>directoryE<gt>>"
-msgstr ""
+msgstr "B<--data-dir E<lt>adresárE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:73
 msgid "overrides the data directory with the one specified"
-msgstr ""
+msgstr "nastaví adresár s údajmi"
 
 # type: TP
 #. type: TP
@@ -240,13 +246,12 @@ msgstr "B<-e,\\ --editor>I<\\ súbor>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:83
-#, fuzzy
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
 msgstr ""
-"priamo spustí zabudovaný editor máp. Ak je zadaný I<súbor>, potom je "
-"ekvivalentné s B<-e --load>"
+"priamo spustí zabudovaný editor máp. Ak je zadaný I<súbor>, potom je to "
+"ekvivalentné s B<-I --load>"
 
 # type: TP
 #. type: TP
@@ -369,9 +374,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:126
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--logdomains\\ [filter]>"
-msgstr "B<--logdomains>"
+msgstr "B<--logdomains\\ [filter]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:131
@@ -379,6 +384,8 @@ msgid ""
 "lists defined log domains (only the ones containing B<filter> if used) and "
 "exits"
 msgstr ""
+"vypíše definované domény protokolovania (len tie obsahujúce B<filter>, ak je "
+"parameter použitý) a skončí"
 
 # type: TP
 #. type: TP
@@ -489,7 +496,7 @@ msgstr "vypíše názov dátového adresára hry a skončí."
 #: ../../doc/man/wesnoth.6:159
 #, no-wrap
 msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr ""
+msgstr "B<--preprocess, -p[=E<lt>definícia1E<gt>,E<lt>definícia2E<gt>,...] E<lt>súbor/adresárE<gt> E<lt>cieľový adresárE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:173
@@ -505,12 +512,22 @@ msgid ""
 "campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
 "data/campaign/camp ~/result>"
 msgstr ""
+"spracuje preprocesorom zadaný súbor/adresár. Súbor(y) budú zapísané do "
+"zadaného cieľového adresára: základný cfg súbor a spracovaný cfg súbor. Ak "
+"je adresár zadaný, bude spracovaný rekurzívne podľa pravidiel preprocesora. "
+"Spoločné makrá z data/core/macros budú spracované pred zadanými "
+"prostriedkami (resources).  B<definícia1,definícia2,...> - tieto doplňujúce "
+"definície budú pridané pred spracovaním súborov. Ak je potrebné ich pridať, "
+"potom sa pred ne musí pridať znak '='.  Ak je v zozname definícií použité "
+"'SKIP_CORE', potom data/core nebude spracované.  Príklad: B<-p ~/wesnoth/"
+"data/campaigns/tutorial ~/result> alebo B<-p=MULTIPLAYER,MOJA_VYPRAVA ~/"
+"wesnoth/data/campaign/camp ~/result>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:173
 #, no-wrap
 msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
-msgstr ""
+msgstr "B<--preprocess-input-macros E<lt>zdrojový súborE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:177
@@ -518,12 +535,15 @@ msgid ""
 "used only by the '--preprocess' command.  Specifies a file that contains "
 "[preproc_define]s to be included before preprocessing."
 msgstr ""
+"použitý len s príkazom '--preprocess'.  Určuje súbor, ktorý obsahuje "
+"definície [preproc_define], ktoré majú byť vložené pred spracovaním "
+"preprocesorom."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:177
 #, no-wrap
 msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
-msgstr ""
+msgstr "B<--preprocess-output-macros [E<lt>cieľový súborE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:183
@@ -533,6 +553,10 @@ msgid ""
 "file '_MACROS_.cfg' in the target directory of preprocess's command.  This "
 "switch should be typed before the --preprocess command."
 msgstr ""
+"použitý len s príkazom '--preprocess'.  Vypíše všetky spracované makrá v "
+"cieľovom súbore. Ak súbor nie je zadaný, súborom bude '_MACROS_.cfg' v "
+"cieľovom adresári príkazu 'preprocess'.  Tento prepínač by mal byť uvedený "
+"pred príkazom --preprocess."
 
 # type: TP
 #. type: TP
@@ -568,12 +592,12 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:191
 #, no-wrap
 msgid "B<--strict-validation>"
-msgstr ""
+msgstr "B<--strict-validation>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:194
 msgid "validation errors are treated as fatal errors."
-msgstr ""
+msgstr "chyby pri kontrole dát budú považované za kritické chyby."
 
 # type: TP
 #. type: TP
@@ -895,10 +919,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:280
-#, fuzzy
 msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -923,9 +946,8 @@ msgstr "VIĎ AJ"
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:297
-#, fuzzy
 msgid "B<wesnothd>(6)."
-msgstr "wesnothd"
+msgstr "B<wesnothd>(6)."
 
 # type: TH
 #. type: TH
@@ -1815,42 +1837,5 @@ msgstr ""
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:286
-#, fuzzy
 msgid "B<wesnoth>(6)."
-msgstr "wesnoth"
-
-# type: TP
-#~ msgid "B<--smallgui>"
-#~ msgstr "B<--smallgui>"
-
-# type: Plain text
-#~ msgid ""
-#~ "allows to use screen resolutions down to 800x480 and resizes a few "
-#~ "interface elements."
-#~ msgstr ""
-#~ "umožní použiť malé rozlíšenia obrazovky až 800x480 a zmenší niektoré "
-#~ "prvky užívateľského rozhrania."
-
-# type: TH
-#~ msgid "2009"
-#~ msgstr "2009"
-
-# type: TP
-#~ msgid "B<-c, --campaign>"
-#~ msgstr "B<-c, --campaign>"
-
-# type: Plain text
-#~ msgid "goes directly to the campaign selection menu."
-#~ msgstr "skočí priamo do menu výberu výpravy."
-
-# type: Plain text
-#~ msgid "Dumps a list of all log domains and exits."
-#~ msgstr "Vypíše zoznam všetkých domén logu a vypne sa."
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+msgstr "B<wesnoth>(6)."
