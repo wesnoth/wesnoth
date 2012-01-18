@@ -181,7 +181,7 @@ $sumstat[2]=0;
 $sumstat[3]=0;
 $sumstat[5]=0;
 
-$oldofficial = 0;	//0 == official, 1 == not official
+$official = 0;	//0 == official, 1 == not official
 
 foreach($stats as $stat){
 	$oldofficial = $official;
