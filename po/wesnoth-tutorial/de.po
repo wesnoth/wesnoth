@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-06 11:47+0100\n"
-"PO-Revision-Date: 2012-01-01 22:02+0100\n"
+"POT-Creation-Date: 2012-01-08 18:12+0100\n"
+"PO-Revision-Date: 2012-01-18 14:32+0100\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
@@ -426,12 +426,6 @@ msgstr "Dörfer"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:563
-#, fuzzy
-#| msgid ""
-#| "You captured a village! It now flies your flag color and has been added "
-#| "to your total village count at the top of the screen (house icon). "
-#| "Villages provide the gold needed to recruit units. Each turn, you gain "
-#| "two gold plus one for every village you own."
 msgid ""
 "You have captured a village! It now flies your flag and has been added to "
 "your total village count. (The house icon at the top of the screen shows how "
@@ -440,10 +434,11 @@ msgid ""
 "own."
 msgstr ""
 "Ihr habt ein Dorf erobert! Es lässt nun Eure Flagge wehen und wurde zu der "
-"Gesamtzahl an Dörfern (das Haus-Symbol) oben am Bildrand hinzugefügt. Dörfer "
-"geben Euch die Einnahmen, die für das Rekrutieren von Einheiten notwendig "
-"sind. Pro Zug erhaltet Ihr grundsätzlich zwei Goldstücke, sowie für jedes "
-"Dorf in Eurem Besitz zusätzlich ein Goldstück."
+"Gesamtzahl Eurer Dörfern hinzugefügt. (Das Haus-Symbol oben am Bildrand "
+"zeigt, wieviele Dörfer ihr derzeit kontrolliert.) Dörfer geben Euch die "
+"Einnahmen, die für das Rekrutieren von Einheiten notwendig sind. Pro Zug "
+"erhaltet Ihr grundsätzlich zwei Goldstücke, sowie für jedes Dorf in Eurem "
+"Besitz zusätzlich ein Goldstück."
 
 #. [event]
 #. [then]
@@ -819,10 +814,6 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1080
-#, fuzzy
-#| msgid ""
-#| "Yes, you gain experience through battle, especially by killing an "
-#| "opponent. Gain enough experience and you'll become more powerful."
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
@@ -831,13 +822,11 @@ msgid ""
 msgstr ""
 "Ja, du erhältst Erfahrung durch Kämpfe, speziell durch das Töten eines "
 "Gegners. Gewinne genug Erfahrung und du wirst mächtiger.\n"
+"Nun, Konrad, werde ich dich mit weiteren Turnierpuppen zurücklassen, an "
+"denen du üben kannst! Anschließen haben wir ernsthafte Arbeit zu erledigen …"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1084
-#, fuzzy
-#| msgid ""
-#| "Yes, you gain experience through battle, especially by killing an "
-#| "opponent. Gain enough experience and you'll become more powerful."
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
@@ -846,6 +835,8 @@ msgid ""
 msgstr ""
 "Ja, du erhältst Erfahrung durch Kämpfe, speziell durch das Töten eines "
 "Gegners. Gewinne genug Erfahrung und du wirst mächtiger.\n"
+"Nun, Li’sar, werde ich dich mit weiteren Turnierpuppen zurücklassen, an "
+"denen du üben kannst! Anschließen haben wir ernsthafte Arbeit zu erledigen …"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1121
@@ -919,19 +910,15 @@ msgstr ""
 #. [then]
 #. This string used as follows: "<unit name>', your new recruit, has two traits...'"
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:78
-#, fuzzy
-#| msgid ""
-#| ", your new recruit, has two traits: strong and intelligent. Strong means "
-#| "a unit does more damage, and intelligent means it requires less "
-#| "experience to advance a level."
 msgid ""
 ", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
 "‘Strong’ means a unit does more damage, and ‘intelligent’ means it needs "
 "less experience to advance a level."
 msgstr ""
-", dein neuer Rekrut, hat zwei Charakteristiken: kräftig und intelligent. "
-"Kräftig bedeutet, dass eine Einheit mehr Schaden verursacht und intelligent, "
-"dass sie weniger Erfahrung benötigt, um eine Stufe aufzusteigen."
+", dein neuer Rekrut, hat zwei Charakteristiken: <i>kräftig</i> und "
+"<i>intelligent</i>. »Kräftig« bedeutet, dass eine Einheit mehr Schaden "
+"verursacht und »intelligent«, dass sie weniger Erfahrung benötigt, um eine "
+"Stufe aufzusteigen."
 
 #. [then]
 #. This string used as follows: "<unit name>' has two traits: <i>quick</i> and ...'"
@@ -1105,16 +1092,12 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:491
-#, fuzzy
-#| msgid ""
-#| "By then, their leader will have recruited units to send against us and "
-#| "the real fight will begin."
 msgid ""
 "By then, their leader will have recruited more units to send against us and "
 "the real fight will begin."
 msgstr ""
-"Bis dahin wird ihr Häuptling Einheiten rekrutiert und uns entgegengeschickt "
-"haben. Dann wird die eigentliche Schlacht beginnen."
+"Bis dahin wird ihr Häuptling weitere Einheiten rekrutiert und uns "
+"entgegengeschickt haben. Dann wird die eigentliche Schlacht beginnen."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:492
@@ -1179,35 +1162,25 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:592
-#, fuzzy
-#| msgid ""
-#| "During your tutorial, both $recall_name1 and $recall_name2 gained "
-#| "$recall_xp1 experience points. You should recall them now so they can "
-#| "gain more experience, rather than recruiting new ones."
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
 "$recall_xp1 experience points. You should <i>recall</i> them now so they can "
 "gain more experience, rather than recruiting new Fighters."
 msgstr ""
 "Während deiner Einführung haben $recall_name1 und $recall_name2 $recall_xp1 "
-"Erfahrungspunkte erhalten. Du solltest sie nun einberufen, damit sie mehr "
-"Erfahrung sammeln können, statt neue auszubilden."
+"Erfahrungspunkte erhalten. Du solltest sie nun <i>einberufen</i>, damit sie "
+"mehr Erfahrung sammeln können, statt neue Kämpfer auszubilden."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:595
-#, fuzzy
-#| msgid ""
-#| "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
-#| "and $recall_name2 gained $recall_xp2. You should recall them now so they "
-#| "can gain more experience, rather than recruiting new ones."
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
 "and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now so "
 "they can gain more experience, rather than recruiting new Fighters."
 msgstr ""
 "Während deiner Einführung hat $recall_name1 $recall_xp1 und $recall_name2 "
-"$recall_xp2 Erfahrungspunkte erhalten. Du solltest sie nun einberufen, damit "
-"sie mehr Erfahrung sammeln können, statt neue auszubilden."
+"$recall_xp2 Erfahrungspunkte erhalten. Du solltest sie nun <i>einberufen</"
+"i>, damit sie mehr Erfahrung sammeln können, statt neue Kämpfer auszubilden."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:601
@@ -1227,13 +1200,11 @@ msgstr "$recall_name1 EINBERUFEN"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:605
-#, fuzzy
-#| msgid "Right click on the tile north-east of you and recall $recall_name1"
 msgid ""
 "Right click on the tile north-east of you and <i>recall</i> $recall_name1"
 msgstr ""
 "Klickt mit der rechten Maustaste auf das Feld nordöstlich von Euch und "
-"beruft $recall_name1 ein"
+"<i>beruft</i> $recall_name1 ein"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
@@ -1448,10 +1419,6 @@ msgstr "Du hast gut gelernt, Konrad! "
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:948
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:950
-#, fuzzy
-#| msgid ""
-#| "The village supports one unit and pays 1 gold per turn. You're only "
-#| "losing 1 gold per turn now."
 msgid ""
 "The village supports one unit and pays 1 gold per turn. You’re only losing 1 "
 "gold per turn now."
@@ -1473,10 +1440,6 @@ msgstr "Beendet Euren Zug"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:958
-#, fuzzy
-#| msgid ""
-#| "You've captured all the villages around the keep, but stay near so you "
-#| "can recruit more units."
 msgid ""
 "You’ve captured all the villages around the keep, but stay near so you can "
 "recruit more units."
@@ -1486,34 +1449,24 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:973
-#, fuzzy
-#| msgid ""
-#| "You should leave the villages near your keep for Konrad to capture, as he "
-#| "needs to stay nearby to recruit more units anyway."
 msgid ""
 "You should leave the villages near your keep for Konrad to capture. He needs "
 "to stay nearby to recruit more units anyway."
 msgstr ""
-"Ihr solltet die Dörfer nahe dem Burgfried von Konrad einnehmen lassen, da er "
-"sowieso in der Nähe bleiben muss, um weitere Einheiten zu rekrutieren."
+"Ihr solltet die Dörfer nahe dem Burgfried von Konrad einnehmen lassen. Er "
+"muss sowieso in der Nähe bleiben, um weitere Einheiten zu rekrutieren."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:974
-#, fuzzy
-#| msgid ""
-#| "You should leave the villages near your keep for Li'sar to capture, as "
-#| "she needs to stay nearby to recruit more units anyway."
 msgid ""
 "You should leave the villages near your keep for Li’sar to capture. She "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
-"Ihr solltet die Dörfer nahe dem Burgfried von Li’sar einnehmen lassen, da "
-"sie sowieso in der Nähe bleiben muss, um weitere Einheiten zu rekrutieren."
+"Ihr solltet die Dörfer nahe dem Burgfried von Li’sar einnehmen lassen. Sie "
+"muss sowieso in der Nähe bleiben, um weitere Einheiten zu rekrutieren."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:980
-#, fuzzy
-#| msgid "Orcs have no ranged attack, so use your archers against them."
 msgid "Orcish Grunts have no ranged attacks, so use your archers against them."
 msgstr ""
 "Orkgrunzer besitzen keine Fernkampfwaffe. Verwende also deine Bogenschützen, "
@@ -1938,57 +1891,39 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1418
-#, fuzzy
-#| msgid ""
-#| "We will miss $deadguy.name| because he had $deadguy.experience experience "
-#| "points, meaning he would have advanced to level 2 soon."
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
 "points. He would have advanced to second level soon."
 msgstr ""
 "Wir werden $deadguy.name| vermissen, da er $deadguy.experience "
-"Erfahrungspunkte hatte, was bedeutet, dass er bald auf Stufe 2 aufgestiegen "
-"wäre."
+"Erfahrungspunkte hatte. Er wäre bald auf die zweite Stufe aufgestiegen."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1421
-#, fuzzy
-#| msgid ""
-#| "We will miss $deadguy.name| because she had $deadguy.experience "
-#| "experience points, meaning she would have advanced to level 2 soon."
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points. She would have advanced to second level soon."
 msgstr ""
 "Wir werden $deadguy.name| vermissen, da sie $deadguy.experience "
-"Erfahrungspunkte hatte, was bedeutet, dass sie bald auf Stufe 2 aufgestiegen "
-"wäre."
+"Erfahrungspunkte hatte. Sie wäre bald auf die zweite Stufe aufgestiegen."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1438
-#, fuzzy
-#| msgid ""
-#| "We will miss $deadguy.name|, but it's better than one of our experienced "
-#| "troops dying!"
 msgid ""
 "We will miss $deadguy.name|, but at least he was not one of our experienced "
 "troops!"
 msgstr ""
-"Wir werden $deadguy.name| vermissen. Aber besser diese als eine unserer "
-"erfahreneren Einheiten!"
+"Wir werden $deadguy.name| vermissen, aber zumindest war er keine unserer "
+"erfahrenen Einheiten!"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1441
-#, fuzzy
-#| msgid ""
-#| "We will miss $deadguy.name|, but it's better than one of our experienced "
-#| "troops dying!"
 msgid ""
 "We will miss $deadguy.name|, but at least she was not one of our experienced "
 "troops!"
 msgstr ""
-"Wir werden $deadguy.name| vermissen. Aber besser diese als eine unserer "
-"erfahreneren Einheiten!"
+"Wir werden $deadguy.name| vermissen, aber zumindest war sie keine unserer "
+"erfahrenen Einheiten!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1456
@@ -2019,22 +1954,15 @@ msgstr ""
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1462
-#, fuzzy
-#| msgid ""
-#| "Level 2 units are powerful, but not invulnerable! Goodbye, $deadguy.name|."
 msgid ""
 "Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
 "name|."
 msgstr ""
-"Einheiten der Stufe 2 sind mächtig, aber nicht unverwundbar! Lebe wohl, "
-"$deadguy.name|."
+"Einheiten der zweiten Stufe sind mächtig, aber nicht unverwundbar! Lebe "
+"wohl, $deadguy.name|."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1477
-#, fuzzy
-#| msgid ""
-#| "Beware of the Orc leader: he can do 36 hitpoints of damage at night! "
-#| "Attack with many units at once during the day."
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
@@ -2045,35 +1973,25 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1498
-#, fuzzy
-#| msgid ""
-#| "Advancing a level has fully healed me!\n"
-#| "I always have a 60% chance of hitting with my Marksman ability, and I "
-#| "deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
 "deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "Eine Stufe aufzusteigen, hat mich komplett geheilt!\n"
-"Ich habe immer eine 60% Wahrscheinlichkeit, mit meiner Schießkunst-"
+"Ich habe immer eine 60% Wahrscheinlichkeit, mit meiner <i>Schießkunst</i>-"
 "Fertigkeit zu treffen, und verursache 9 Schadenspunkte mit jedem meiner 4 "
 "Angriffe. Verwendet mich, um schwer treffbare Einheiten zu vertreiben."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1507
-#, fuzzy
-#| msgid ""
-#| "female^Advancing a level has fully healed me!\n"
-#| "I always have a 60% chance of hitting with my Marksman ability, and I "
-#| "deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgid ""
 "female^Advancing a level has fully healed me!\n"
 "I always have a 60% chance of hitting with my <i>Marksman</i> ability, and I "
 "deal 9 damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
 "Eine Stufe aufzusteigen, hat mich komplett geheilt!\n"
-"Ich habe immer eine 60% Wahrscheinlichkeit, mit meiner Schießkunst-"
+"Ich habe immer eine 60% Wahrscheinlichkeit, mit meiner <i>Schießkunst</i>-"
 "Fertigkeit zu treffen, und verursache 9 Schadenspunkte mit jedem meiner 4 "
 "Angriffe. Verwendet mich, um schwer treffbare Einheiten zu vertreiben."
 
