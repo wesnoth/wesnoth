@@ -16,7 +16,7 @@ svn -q up
 #update the wescamp checkout
 cd $SVNCHECKOUTPATH/wescamp-i18n/
 for checkout in `find . -maxdepth 2 -mindepth 2`;do
-    (cd $i; git pull)
+    (cd $checkout; git pull)
 done
 
 #update the website checkout
