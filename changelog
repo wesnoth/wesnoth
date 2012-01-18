@@ -36,6 +36,7 @@ Version 1.9.14+svn:
    * Improve [select_unit] to match its original intention (bug #19224)
    * Improve error handling in case of invalid maps passed to
      [replace_map] or [terrain_mask]
+   * Disable wml menu items in linger mode without debug mode (bug #16262)
  * Miscellaneous and bug fixes:
    * Fixed wmlindent writing CRLF end of lines on windows
    * Fix tutorial units without xp bar
