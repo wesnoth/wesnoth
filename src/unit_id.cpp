@@ -26,7 +26,7 @@ static lg::log_domain log_unit("unit");
 // chops it anyway during serialization to config, leading to later
 // errors (and some slowdown).
 // Setting the initial value to 2^32-1 is a safe and easy way to fix this.
-static const size_t INITIAL_FAKE_ID = 4294967295;
+static const size_t INITIAL_FAKE_ID = 4294967295u;
 
 namespace n_unit {
 	id_manager id_manager::manager_;
