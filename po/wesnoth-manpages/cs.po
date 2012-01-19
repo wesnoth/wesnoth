@@ -1,20 +1,21 @@
 # translation of wesnoth-manpages.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2006 - 2010 Wesnoth development team
+# Copyright (C) 2006 - 2011 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
 #
 #
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007, 2010.
-# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2009.
+# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2011-03-12 20:07+0100\n"
+"PO-Revision-Date: 2012-01-14 13:14+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
 "Language: cs\n"
@@ -27,7 +28,6 @@ msgstr ""
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
 "X-Generator: Lokalize 1.0\n"
 
-# type: TH
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
@@ -40,7 +40,6 @@ msgstr "WESNOTH"
 msgid "2011"
 msgstr "2011"
 
-# type: TH
 #. type: TH
 #: ../../doc/man/wesnoth.6:16
 #, no-wrap
@@ -93,7 +92,6 @@ msgstr "POPIS"
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
 msgstr "Bitva o B<Wesnoth> je tahová fantasy strategická hra."
 
-# type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:42
 msgid ""
@@ -140,7 +138,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr ""
+msgstr "B<-c, --campaign \\ [E<lt>id_taženíE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
@@ -151,12 +149,16 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
+"přímo spouští tažení určené interním E<lt>id_taženíE<gt>. Pokud není id "
+"určeno, ukáže se menu pro výběr tažení.  B<Poznámka:> Při použití tohoto "
+"parametru se prosím ujistěte, že je také jako poslední argument udán adresář "
+"s daty, jinak bude id tažení pochopeno jako tato cesta."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
 #, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr ""
+msgstr "B<--campaign-difficulty E<lt>obtížnostE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -164,12 +166,14 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"Obtížnost určeného tažení (1 až max.). Pokud tento parametr není přítomen, "
+"ukáže se ve hře menu s výběrem obtížnosti."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>id_scénářeE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -177,6 +181,7 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
+"určuje identifikátor scénáře v daném tažení. Výchozí hodnota je první scénář."
 
 # type: TP
 #. type: TP
@@ -185,10 +190,8 @@ msgstr ""
 msgid "B<--config-dir>I<\\ name>"
 msgstr "B<--config-dir>I<\\ jméno>"
 
-# type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
-#, fuzzy
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -196,7 +199,7 @@ msgid ""
 "Games\""
 msgstr ""
 "nastaví adresář s uživatelskými daty na I<jméno> v $HOME nebo \"Dokumenty"
-"\\eMy Games\" pod Windows."
+"\\eMy Games\" pod Windows. Můžete však také použít absolutní cestu."
 
 # type: TP
 #. type: TP
@@ -215,12 +218,12 @@ msgstr "pouze zobrazí cestu k adresáři s konfiguračními soubory a skončí.
 #: ../../doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--data-dir E<lt>directoryE<gt>>"
-msgstr ""
+msgstr "B<--data-dir E<lt>adresářE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:73
 msgid "overrides the data directory with the one specified"
-msgstr ""
+msgstr "nastavuje adresář s daty hry"
 
 # type: TP
 #. type: TP
@@ -333,7 +336,7 @@ msgstr "B<-h, --help>"
 #: ../../doc/man/wesnoth.6:105
 msgid ""
 "displays a summary of command line options to standard output, and exits."
-msgstr "zobrazuje nápovědu k parametrům příkazové řádky."
+msgstr "zobrazí nápovědu k parametrům příkazové řádky a skončí."
 
 # type: TP
 #. type: TP
@@ -379,9 +382,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:126
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--logdomains\\ [filter]>"
-msgstr "B<--logdomains>"
+msgstr "B<--logdomains\\ [filtr]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:131
@@ -389,6 +392,8 @@ msgid ""
 "lists defined log domains (only the ones containing B<filter> if used) and "
 "exits"
 msgstr ""
+"vypíše definované logovací domény (pouze ty obsahující B<filtr>, pokud je "
+"udán) a skončí."
 
 # type: TP
 #. type: TP
@@ -499,7 +504,7 @@ msgstr "pouze zobrazí cestu k adresáři s daty a skončí."
 #: ../../doc/man/wesnoth.6:159
 #, no-wrap
 msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr ""
+msgstr "B<--preprocess, -p[=E<lt>definice1E<gt>,E<lt>definice2E<gt>,...] E<lt>soubor/adresářE<gt> E<lt>cílový adresářE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:173
@@ -515,12 +520,21 @@ msgid ""
 "campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
 "data/campaign/camp ~/result>"
 msgstr ""
+"předzpracuje určený soubor či adresář. Do určeného cílového adresáře budou "
+"zapsány soubor(y): původní soubor 'cfg' a předzpracovaný. Pokud je určen "
+"celý adresář, bude zpracován rekurzivně podle dostupných pravidel "
+"preprocesoru. Běžná makra z umístění data/core/macros budou předzpracována "
+"před udanými zdroji.  B<definice1,definice2,...> - tyto další definice budou "
+"přidány před zpracováním. Pokud je zamýšlíte použít, musíte použít znak '='. "
+"Pokud zde bude definováno 'SKIP_CORE', nebude použit obsah data/core.  "
+"Příklad: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> nebo B<-"
+"p=MULTIPLAYER,MOJE_TAZENI ~/wesnoth/data/campaign/camp ~/result>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:173
 #, no-wrap
 msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
-msgstr ""
+msgstr "B<--preprocess-input-macros E<lt>zdrojový souborE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:177
@@ -528,12 +542,14 @@ msgid ""
 "used only by the '--preprocess' command.  Specifies a file that contains "
 "[preproc_define]s to be included before preprocessing."
 msgstr ""
+"použito pouze příkazem '--preprocess'. Určuje soubor, který obsahuje data "
+"[preproc_define] pro použití před zpracováním."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:177
 #, no-wrap
 msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
-msgstr ""
+msgstr "B<--preprocess-output-macros [E<lt>cílový souborE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:183
@@ -543,6 +559,10 @@ msgid ""
 "file '_MACROS_.cfg' in the target directory of preprocess's command.  This "
 "switch should be typed before the --preprocess command."
 msgstr ""
+"používáno pouze příkazem '--preprocess'. Vypíše všechna předzpracovaná makra "
+"do cílového souboru. Pokud není soubor udán, výstup je uložen do souboru "
+"'_MACROS_.cfg' v cílovém adresáři příkazu preprocesoru. Tento parametr by "
+"měl být použit před '--preprocess'."
 
 # type: TP
 #. type: TP
@@ -578,12 +598,12 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:191
 #, no-wrap
 msgid "B<--strict-validation>"
-msgstr ""
+msgstr "B<--strict-validation>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:194
 msgid "validation errors are treated as fatal errors."
-msgstr ""
+msgstr "chyby validace jsou brány jako fatální."
 
 # type: TP
 #. type: TP
@@ -1821,15 +1841,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
-
-# type: TP
-#~ msgid "B<--smallgui>"
-#~ msgstr "B<--smallgui>"
-
-# type: Plain text
-#~ msgid ""
-#~ "allows to use screen resolutions down to 800x480 and resizes a few "
-#~ "interface elements."
-#~ msgstr ""
-#~ "umožní změnu rozlišení obrazovky až k 800x480 a změní velikost některých "
-#~ "prvků grafického rozhraní."
