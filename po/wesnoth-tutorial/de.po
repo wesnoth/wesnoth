@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-08 18:12+0100\n"
-"PO-Revision-Date: 2012-01-18 14:32+0100\n"
+"PO-Revision-Date: 2012-01-19 20:08+0100\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
@@ -783,14 +783,6 @@ msgstr "Verteidigen"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1049
-#, fuzzy
-#| msgid ""
-#| "Note:\n"
-#| "Once you select a unit, you'll see percentages for different terrain "
-#| "tiles. The higher the percentage, the more defense that unit will have. "
-#| "For example, defense is good in castles and villages but bad in rivers. "
-#| "The dummy's attacks are magical, however, so they have a 70% chance of "
-#| "hitting you wherever you stand."
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -799,12 +791,14 @@ msgid ""
 "rivers. However, these quintains use a <i>magical</i> attack, which always "
 "has a 70% chance of hitting no matter what terrain its target occupies."
 msgstr ""
-"Wenn Ihr eine Einheit ausgewählt habt, seht Ihr Prozentzahlen für "
-"verschiedene Feldarten. Je höher die Prozentzahl ist desto besser kann sich "
-"die Einheit dort verteidigen. Zum Beispiel ist die Verteidigung in Burgen "
-"und Dörfern gut, in Flüssen hingegen schlecht. Die Angriffe der Puppen "
-"jedoch sind magisch, daher haben sie unabhängig von Eurem Standort eine "
-"Wahrscheinlichkeit von 70%, Euch zu treffen."
+"Wann auch immer Ihr eine Eurer Einheit ausgewählt habt, seht Ihr sich "
+"ändernde Prozentzahlen, während Ihr die Maus über die Karte bewegt. Je höher "
+"die Prozentzahl ist desto besser kann sich die Einheit in dieser Feldart "
+"<i>verteidigen</i>. Zum Beispiel können sich die meisten Einheiten in Burgen "
+"und Dörfern gut verteidigen, in Flüssen hingegen jedoch schlecht. Die "
+"Angriffe der Puppen jedoch sind <i>magisch</i>, daher haben sie eine "
+"Wahrscheinlichkeit von 70% Euch zu treffen, unabhängig in welchem Gebiet Ihr "
+"Euch befindet."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1074
@@ -875,12 +869,6 @@ msgstr "Sieg"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1179
-#, fuzzy
-#| msgid ""
-#| "After your victory notice, the map will be grayed out to indicate that "
-#| "the scenario is over, but you will be able to examine the final positions "
-#| "and state of your troops before clicking 'End Scenario' to continue to "
-#| "the next scenario."
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over, but you will still be able to examine the final positions "
@@ -889,9 +877,11 @@ msgid ""
 "on the next scenario in the campaign."
 msgstr ""
 "Nach Eurem Sieg werdet Ihr sehen, wie die Karte ausgegraut wird, um "
-"anzuzeigen, dass diese Szenario beendet ist. Hier könnt Ihr noch einmal Eure "
-"Truppen und ihren Zustand begutachten, bevor Ihr »Szenario beenden« wählt, "
-"um in das folgende Szenario zu wechseln."
+"anzuzeigen, dass diese Szenario beendet ist. Hier könnt Ihr noch einmal den "
+"Zustand Eurer Truppen und der gegebenenfalls überlebenden gegnerischen "
+"Einheiten begutachten. Dies wird <i>Abklingmodus</i> genannt. Wenn Ihr damit "
+"fertig seid, wählt den »Szenario beenden«-Knopf, um in das folgende Szenario "
+"der Kampagne zu wechseln."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:30
@@ -1117,12 +1107,6 @@ msgstr "tiefes Wasser"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:501
-#, fuzzy
-#| msgid ""
-#| "See this dark blue water? It's too deep for either side to cross. They "
-#| "could slowly wade through that narrow band of shallow lighter-blue water "
-#| "in the east; but we could stand on the shore and force them to fight us "
-#| "from the water, where they are exposed and we are protected by the forest."
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1787,7 +1771,6 @@ msgstr "<big>Unbenutzte Einheiten aufspüren</big>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1250
-#, fuzzy
 msgid ""
 "\n"
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
@@ -1800,8 +1783,9 @@ msgstr ""
 "Ihr könnt sicher stellen, dass Ihr alle Einheiten für diese Runde gezogen "
 "habt, indem Ihr <b>n</b> drückt, um eine Einheit nach der anderen "
 "auszuwählen. Drückt die <b>Leertaste</b>, um erkennen zu geben, dass die "
-"aktuell gewählte Einheit nichts mehr tun wird.\n"
-"Wenn »n« keine weitere Einheit auswählt, könnt Ihr Euren Zug beenden."
+"aktuell gewählte Einheit nichts mehr tun wird, was verhindert, dass Ihr sie "
+"später irrtümlich bewegt. Wenn »n« keine weitere Einheit auswählt, könnt Ihr "
+"Euren Zug sicher beenden."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1255
