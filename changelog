@@ -37,6 +37,8 @@ Version 1.9.14+svn:
    * Improve error handling in case of invalid maps passed to
      [replace_map] or [terrain_mask]
    * Disable wml menu items in linger mode without debug mode (bug #16262)
+ * Whiteboard:
+   * Fixed bug #19221 : Assert when a whiteboard move-attack wins a scenario
  * Miscellaneous and bug fixes:
    * Fixed wmlindent writing CRLF end of lines on windows
    * Fix tutorial units without xp bar
