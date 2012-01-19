@@ -322,26 +322,48 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc) c
 	bool wb_active = resources::whiteboard->is_active();
 
 	{
-		const unit_map::const_iterator current = find_unit(selected_hex_);
-		bool eligible = current != units_.end();
-		if (!eligible) return map_location();
+		// Check the unit SOURCE of the attack
 
-		eligible &= current->side() == side_num_ ||
-				(wb_active && current->side() == resources::screen->viewing_side());
-		eligible &= current->attacks_left() != 0;
-		if (!eligible) return map_location();
-	}
+		// Check that there's a selected unit
+		const unit_map::const_iterator source_unit = find_unit(selected_hex_);
+		bool source_eligible = (source_unit != units_.end());
+		if (!source_eligible) return map_location();
 
-	{
+		// The selected unit must at least belong to the player currently controlling this client.
+		source_eligible &= source_unit->side() == resources::screen->viewing_side();
+		if (!source_eligible) return map_location();
+
+		// In addition:
+		// - If whiteboard is enabled, we allow planning attacks outside of player's turn
+		// - If whiteboard is disabled, it must be the turn of the player controlling this client
+		if(!wb_active) {
+			source_eligible &= resources::screen->viewing_side() == resources::controller->current_side();
+			if (!source_eligible) return map_location();
+		}
+
+		// Unit must have attacks left
+		source_eligible &= source_unit->attacks_left() != 0;
+		if (!source_eligible) return map_location();
+
+
+		// Check the unit TARGET of the attack
+
 		team const& viewing_team = (*resources::teams)[resources::screen->viewing_team()];
 
-		const unit_map::const_iterator enemy = find_unit(loc);
-		bool eligible = enemy != units_.end();
-		if (!eligible) return map_location();
+		// Check that there's a unit at the target location
+		const unit_map::const_iterator target_unit = find_unit(loc);
+		bool target_eligible = (target_unit != units_.end());
+		if (!target_eligible) return map_location();
 
-		eligible &= viewing_team.is_enemy(enemy->side());
-		eligible &= !enemy->incapacitated();
-		if (!eligible) return map_location();
+		// The player controlling this client must be an enemy of the target unit's side
+		target_eligible &= viewing_team.is_enemy(target_unit->side());
+		if (!target_eligible) return map_location();
+
+		// Sanity check: source and target of the attack shouldn't be on the same team
+		assert(source_unit->side() != target_unit->side());
+
+		target_eligible &= !target_unit->incapacitated();
+		if (!target_eligible) return map_location();
 	}
 
 	const map_location::DIRECTION preferred = loc.get_relative_dir(previous_hex_);
