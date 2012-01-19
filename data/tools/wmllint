@@ -1720,6 +1720,7 @@ def translator(filename, mapxforms, textxform):
     unbalanced = False
     newdata = []
     refname = None
+    in_lua = False
     while mfile:
         if not map_only:
             line = mfile.pop(0)
@@ -1880,6 +1881,15 @@ def translator(filename, mapxforms, textxform):
             newdata.append(line + terminator)
         else:
             # Handle text (non-map) lines.  It can use within().
+            # Ignore lines with embedded lua.
+            if in_lua:
+                if ">>" in line:
+                    in_lua = False
+                continue
+            elif "<<" in line:
+                if not ">>" in line:
+                    in_lua = True
+                continue
             newline = textxform(filename, lineno, line)
             newdata.append(newline + terminator)
             fields = newline.split("#")
