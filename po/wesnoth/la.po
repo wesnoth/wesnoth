@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-06 11:47+0100\n"
-"PO-Revision-Date: 2011-12-22 22:12+0100\n"
+"PO-Revision-Date: 2012-01-15 09:33+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
 "Language: la\n"
@@ -846,7 +846,7 @@ msgstr ""
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:40
 msgid "Lots of gold"
-msgstr "Plurimum aurum"
+msgstr "Multi aurei"
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:48
@@ -2072,7 +2072,7 @@ msgstr "Nigra"
 #. [color_range]: id=6
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:125
 msgid "Brown"
-msgstr "Murrea"
+msgstr "Adusta"
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
@@ -3054,7 +3054,7 @@ msgstr "Clades: "
 
 #: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
-msgstr "Aurum retenturum:"
+msgstr "Aurei retenturi:"
 
 #: data/lua/wml/objectives.lua:53
 msgid "Notes:"
@@ -3145,7 +3145,7 @@ msgstr "PU"
 #: data/themes/default.cfg:233 data/themes/dfool.cfg:267
 #: data/themes/experimental.cfg:206 data/themes/widescreen.cfg:287
 msgid "gold"
-msgstr "aurum"
+msgstr "aurei"
 
 #. [label]: id=villages-icon
 #: data/themes/default.cfg:242 data/themes/dfool.cfg:276
@@ -4273,7 +4273,7 @@ msgstr "Manus"
 
 #: src/menu_events.cpp:379 src/multiplayer_connect.cpp:1030
 msgid "Gold"
-msgstr "Aurum"
+msgstr "Aurei"
 
 #: src/menu_events.cpp:380
 msgid "Villages"
@@ -4313,7 +4313,7 @@ msgid ""
 "scenario settings^Start\n"
 "Gold"
 msgstr ""
-"Aurum\n"
+"Aurei\n"
 "Initii"
 
 #: src/menu_events.cpp:511
@@ -4329,7 +4329,7 @@ msgid ""
 "scenario settings^Gold Per\n"
 "Village"
 msgstr ""
-"Aurum Per\n"
+"Aurei Per\n"
 "Viculos"
 
 #: src/menu_events.cpp:513
@@ -4388,8 +4388,8 @@ msgstr "Ad spectatores modo mittere"
 #: src/menu_events.cpp:721
 msgid "unit^Gold"
 msgid_plural "Gold"
-msgstr[0] "Aurum"
-msgstr[1] "Aurum"
+msgstr[0] "Aureus"
+msgstr[1] "Aurei"
 
 #: src/menu_events.cpp:728
 #, fuzzy
@@ -4901,7 +4901,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2621
 msgid "Give gold to the current player."
-msgstr "Aurum lusori praesenti dare."
+msgstr "Aureos lusori praesenti dare."
 
 #: src/menu_events.cpp:2623
 msgid "Fire a game event."
@@ -5552,7 +5552,7 @@ msgstr "Bonum ab actis: "
 
 #: src/multiplayer_create.cpp:423
 msgid "Village gold: "
-msgstr "Aurum viculorum: "
+msgstr "Aurei viculorum: "
 
 #: src/multiplayer_create.cpp:429
 msgid "Experience modifier: "
@@ -5710,8 +5710,8 @@ msgstr "Primus status: "
 #: src/multiplayer_wait.cpp:518
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] "Auri"
-msgstr[1] "Auri"
+msgstr[0] "Aureus"
+msgstr[1] "Aurei"
 
 #: src/network.cpp:109
 #, fuzzy
@@ -5838,7 +5838,7 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:257
 msgid "Remaining gold: "
-msgstr "Aurum relinquum: "
+msgstr "Aurei relinqui: "
 
 #: src/playsingle_controller.cpp:261
 msgid "Early finish bonus: "
@@ -5858,7 +5858,7 @@ msgstr "Praemium: "
 
 #: src/playsingle_controller.cpp:269
 msgid "Gold: "
-msgstr "Aurum: "
+msgstr "Aurei: "
 
 #: src/playsingle_controller.cpp:273
 msgid "Carry over percentage: "
@@ -5866,11 +5866,11 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:276
 msgid "Bonus Gold: "
-msgstr "Aurum Praemii: "
+msgstr "Aurei Praemii: "
 
 #: src/playsingle_controller.cpp:278
 msgid "Retained Gold: "
-msgstr "Aurum Retentum: "
+msgstr "Aurei Retenti: "
 
 #: src/playsingle_controller.cpp:291
 #, fuzzy
@@ -6547,7 +6547,6 @@ msgstr "$player mentem celare"
 msgid "Whiteboard Options"
 msgstr ""
 
-#, fuzzy
 #~| msgid "Local time of day light effect (use more memory)."
 #~ msgid "Custom lighting for local time of day areas (uses more memory)"
 #~ msgstr "Effecti Horae localis (magis memoriae utitur)."
@@ -6585,17 +6584,14 @@ msgstr ""
 #~ msgid "Difficulty: Hard"
 #~ msgstr "Difficilis"
 
-#, fuzzy
 #~| msgid "Campaign: $campaign_name"
 #~ msgid "Main campaign define"
 #~ msgstr "Militia: $campaign_name"
 
-#, fuzzy
 #~| msgid "Campaign Design"
 #~ msgid "Extra campaign define"
 #~ msgstr "Forma Militiae"
 
-#, fuzzy
 #~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "Plures Lusores"
