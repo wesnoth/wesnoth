@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-08 18:12+0100\n"
-"PO-Revision-Date: 2012-01-14 16:54+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2012-01-19 23:37+0100\n"
+"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -103,17 +103,18 @@ msgstr "Benachrichtigungen deaktivieren"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:106
 msgid "Reverse time graphics"
-msgstr ""
+msgstr "Tageszeitgrafiken vertauschen"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr ""
+"Bestimmt, ob die Sonne von links-nach-rechts oder rechts-nach-links wandert"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:114
 msgid "Follow unit actions"
-msgstr ""
+msgstr "Einheitenaktionen folgen"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
@@ -125,7 +126,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:131
 msgid "Chat message aging"
-msgstr ""
+msgstr "Alternde Chatnachrichten"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
@@ -144,12 +145,12 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:149
 msgid "Confirm loading of saves from a different version"
-msgstr ""
+msgstr "Laden von Spielständen einer anderen Version bestätigen"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:156
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "Alle Einheitentypen in der Hilfe anzeigen"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
@@ -157,6 +158,8 @@ msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
+"Zeigt alle Einheitentypen in der Hilfe an (benötigt einen Neustart). Dies "
+"verändert nicht die Liste der angetroffenen Einheiten."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:165
@@ -2018,10 +2021,8 @@ msgstr "Bonusziel:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "This is the last scenario."
-msgstr "Entferntes Szenario"
+msgstr "Dies ist das letzte Szenario."
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -2514,11 +2515,6 @@ msgstr "<i>―  Die Gemeinschaft Wesnoths</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
-#| msgid ""
-#| "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-#| "better at night. <i>Neutral</i> units are unaffected by the time of day. "
-#| "The rare <i>Liminal</i> unit type fights best during the twilight hours."
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
@@ -2555,13 +2551,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
-#, fuzzy
-#| msgid ""
-#| "If you are playing with <b>Shroud</b> or <b>Fog of war</b> active, you "
-#| "won’t know what you’re facing. In this case, long-range scouting units "
-#| "are worth their cost. Try to choose scouts that can easily move across "
-#| "the surrounding terrain, because units can only see as far as they can "
-#| "move in one turn."
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
@@ -3196,9 +3185,8 @@ msgstr ""
 
 #. [language]
 #: data/scenario-test.cfg:3152
-#, fuzzy
 msgid "electrical"
-msgstr "Kriegsgerät"
+msgstr "elektrisch"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:121 data/themes/dfool.cfg:140
@@ -3412,10 +3400,8 @@ msgstr ""
 "Euer Heerführer muss sich im Burgfried befinden, um Einheiten auszubilden."
 
 #: src/actions.cpp:596
-#, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recruit the unit."
-msgstr "Es gibt keine freien Burgfelder zum Rekrutieren von Einheiten."
+msgstr "Es gibt keine freien Burgfelder zum Rekrutieren dieser Einheit."
 
 #: src/actions.cpp:749 src/actions.cpp:808 src/actions.cpp:1728
 msgid "An invalid attacker weapon got selected."
@@ -4699,15 +4685,11 @@ msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Allen Beobachtern Redefreiheit entziehen/erteilen. (wechselt)"
 
 #: src/menu_events.cpp:2355
-#, fuzzy
-#| msgid ""
-#| "Report abuse, rule violations, etc. to the server moderators. Make sure "
-#| "to mention relevant nicks, etc."
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
-"Missbrauch, Regelverstoß, usw. an Moderatoren melden. Stellt sicher, die "
+"Missbrauch, Regelverstöße, usw. an Moderatoren melden. Stellt sicher, die "
 "benötigten Informationen wie Spielernamen, usw. anzugeben."
 
 #: src/menu_events.cpp:2359
@@ -4786,12 +4768,10 @@ msgid "Request information about a nickname."
 msgstr "Fordert Informationen über einen Benutzer an."
 
 #: src/menu_events.cpp:2390
-#, fuzzy
-#| msgid "Request a list of details you can set for your registered nick."
 msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
 "Fordert eine Liste mit Einstellungen an, welche Ihr für Euren registrierten "
-"Benutzernamen setzen könnt."
+"Spielernamen setzen könnt."
 
 #: src/menu_events.cpp:2392 src/menu_events.cpp:2395 src/menu_events.cpp:2397
 msgid "<room>"
@@ -5041,7 +5021,7 @@ msgstr "Aktiviert/Deaktiviert die Anzeige von Geländekürzeln auf Feldern."
 
 #: src/menu_events.cpp:2632
 msgid "Toggle planning mode."
-msgstr ""
+msgstr "Planungsmodus umschalten."
 
 #: src/menu_events.cpp:2635
 msgid "Access whiteboard options dialog."
@@ -5209,10 +5189,6 @@ msgid "Variable not found"
 msgstr "Variable nicht gefunden"
 
 #: src/menu_events.cpp:3547
-#, fuzzy
-#| msgid ""
-#| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
-#| "chaotic or liminal."
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -5297,10 +5273,8 @@ msgid ""
 msgstr ""
 
 #: src/multiplayer.cpp:248
-#, fuzzy
-#| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
-msgstr "Möchtet Ihr diesen Spielstand speichern?"
+msgstr "Möchtet Ihr fortfahren?"
 
 #: src/multiplayer.cpp:250
 msgid "Warning"
@@ -6665,16 +6639,12 @@ msgid "HIDE ALL allies’ plans"
 msgstr ""
 
 #: src/whiteboard/manager.cpp:1083
-#, fuzzy
-#| msgid "Show replay"
 msgid "Show plans for $player"
-msgstr "Spielverlauf anzeigen"
+msgstr "Pläne für Spieler $player anzeigen"
 
 #: src/whiteboard/manager.cpp:1085
-#, fuzzy
-#| msgid "Replace with $player"
 msgid "Hide plans for $player"
-msgstr "Durch $player ersetzen"
+msgstr "Pläne für Spieler $player verbergen"
 
 #: src/whiteboard/manager.cpp:1088
 msgid "Whiteboard Options"
