@@ -129,6 +129,7 @@ public:
 
 	size_t turn() const {return tod_manager_.turn();}
 
+	/** Returns the number of the side whose turn it is. Numbering starts at one. */
 	int current_side() const { return player_number_; }
 
 	config to_config() const;
