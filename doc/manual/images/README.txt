@@ -22,7 +22,7 @@ convert -resize 640x480 -quality 80 game-screen-1.5.7.png game-screen-1.5.7.jpg
 from the full versions. All "non fullscreen" screenshots should be stored with a
 compression/quality setting of 90% and in the original size. The imagemagick
 command would look like this:
-convert -quality 80 multiplayer-1.5.7.png multiplayer-1.5.7.jpg
+convert -quality 90 multiplayer-1.5.7.png multiplayer-1.5.7.jpg
 
 5) Send the files in once you translated the strings in the po file. In the
 translation use your locale as prefix/foldername. So if you were eg translating
