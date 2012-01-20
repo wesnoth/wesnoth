@@ -1164,7 +1164,7 @@ def global_sanity_check(filename, lines):
         elif "[/multiplayer]" in lines[i]:
             in_multiplayer = False
         else:
-            if re.match(r"\[[a-z]", lines[i]):
+            if re.search(r"\[[a-z]", lines[i]):
                 subtag_depth += 1
             if "[/" in lines[i]:
                 subtag_depth -= 1
