@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-08 18:12+0100\n"
-"PO-Revision-Date: 2012-01-19 23:13+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2012-01-20 12:46+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -1105,7 +1105,7 @@ msgstr "Jenseits der Karte"
 #. [terrain_type]: id=off_map2
 #: data/core/terrain.cfg:2057
 msgid "Experimental Fake Map Edge"
-msgstr ""
+msgstr "Experimenteller vorgetäuschter Kartenrand"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
@@ -2387,12 +2387,12 @@ msgstr "Spiel beenden"
 #. [button]: id=ok
 #: data/gui/default/window/unit_attack.cfg:195
 msgid "Attack"
-msgstr ""
+msgstr "Angreifen"
 
 #. [label]
 #: data/gui/default/window/unit_attack.cfg:263
 msgid "Attack enemy"
-msgstr ""
+msgstr "Gegner angreifen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2446,11 +2446,11 @@ msgstr "Spieler"
 
 #: src/game_preferences.cpp:837
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/game_preferences.cpp:840
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/game_preferences_display.cpp:173
 msgid "Full screen"
@@ -2605,7 +2605,6 @@ msgid "Show unit idle animations"
 msgstr "Untätigkeitsanimationen der Einheiten anzeigen"
 
 #: src/game_preferences_display.cpp:216
-#, fuzzy
 msgid "Show unit standing animations"
 msgstr "Untätigkeitsanimationen der Einheiten anzeigen"
 
@@ -2703,11 +2702,11 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:342
 msgid "Play short random animations for idle units"
-msgstr ""
+msgstr "Darstellen von zufälligen Animationen für untätige Einheiten"
 
 #: src/game_preferences_display.cpp:345
 msgid "Continuously animate standing units in the battlefield"
-msgstr ""
+msgstr "Einheiten auf dem Schlachtfeld durchgehend animieren"
 
 #: src/game_preferences_display.cpp:348
 msgid "Display animated terrain graphics"
@@ -2878,14 +2877,12 @@ msgid "no"
 msgstr "Nein"
 
 #: src/game_preferences_display.cpp:1119
-#, fuzzy
 msgid "friend"
-msgstr "Freunde"
+msgstr "Freund"
 
 #: src/game_preferences_display.cpp:1125
-#, fuzzy
 msgid "ignored"
-msgstr "Nicht ignoriert"
+msgstr "ignoriert"
 
 #: src/game_preferences_display.cpp:1129
 msgid "(empty list)"
@@ -2994,7 +2991,7 @@ msgstr "Die Anzahl der Spalten ist verschieden."
 
 #: src/gui/auxiliary/window_builder/control.cpp:49
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr ""
+msgstr "Element mit Helptipp aber ohne Tooltipp gefunden."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:47
 #: src/gui/auxiliary/window_builder/listbox.cpp:58
@@ -3034,7 +3031,7 @@ msgstr "Keine Knoten für die Baumansicht definiert."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:86
 msgid "[node]id 'root' is reserved for the implementation."
-msgstr ""
+msgstr "[node]id 'root' ist der Implementierung vorbehalten."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
 msgid "No node defined."
@@ -3166,7 +3163,7 @@ msgstr "Kein Zustands- oder Zeichenabschnitt definiert."
 
 #: src/gui/widgets/tree_view_node.cpp:103
 msgid "Unknown builder id for tree view node."
-msgstr ""
+msgstr "Unbekannte »builder id« für einen Knoten in der Baumdarstellung."
 
 #: src/gui/widgets/window.cpp:924
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -3403,15 +3400,15 @@ msgstr "Geplante Aktionen löschen"
 
 #: src/hotkeys.cpp:117
 msgid "Move Action Up Queue"
-msgstr ""
+msgstr "Handlung vorziehen"
 
 #: src/hotkeys.cpp:118
 msgid "Move Action Down Queue"
-msgstr ""
+msgstr "Handlung zurückstellen"
 
 #: src/hotkeys.cpp:119
 msgid "Suppose Dead"
-msgstr ""
+msgstr "Als Tod annehmen"
 
 #: src/hotkeys.cpp:121
 msgid "Quit to Desktop"
@@ -3666,9 +3663,8 @@ msgid "Show Credits"
 msgstr "Liste der Mitwirkenden anzeigen"
 
 #: src/hotkeys.cpp:277
-#, fuzzy
 msgid "Show Helptip"
-msgstr "Spielverlauf anzeigen"
+msgstr "Ausführlichen Tooltipp anzeigen"
 
 #: src/hotkeys.cpp:875 src/hotkeys.cpp:1220
 msgid "Do you really want to quit?"
