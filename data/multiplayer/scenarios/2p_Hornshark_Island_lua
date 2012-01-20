@@ -1,0 +1,35 @@
+<<
+	local factions = wesnoth.get_variable("factions")
+	local function detect_faction(side_number)
+		local helper = wesnoth.require("lua/helper.lua")
+		for multiplayer_side in helper.child_range(factions, "multiplayer_side") do
+			local function recruits_match()
+				local count = 0
+				for searched in string.gmatch(multiplayer_side.recruit, "[^%s,][^,]*") do
+					count = count + 1
+					local found = false
+					for i, actual in ipairs(wesnoth.sides[side_number].recruit) do
+						if searched == actual then
+							found = true
+							break
+						end
+					end
+					if not found then return false end
+				end
+				return count == #wesnoth.sides[side_number].recruit
+			end
+			local function leader_matches()
+				local actual = wesnoth.get_units({ canrecruit = true, side = side_number })[1]
+				for searched in string.gmatch(multiplayer_side.leader, "[^%s,][^,]*") do
+					if searched == actual.type then return true end
+				end
+			end
+			if recruits_match() and leader_matches() then
+				wesnoth.set_variable("p" .. tostring(side_number) .. "_faction", multiplayer_side.id)
+				return
+			end
+		end
+	end
+	detect_faction(1)
+	detect_faction(2)
+>>
