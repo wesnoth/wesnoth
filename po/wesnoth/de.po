@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-08 18:12+0100\n"
-"PO-Revision-Date: 2012-01-20 18:36+0100\n"
-"Last-Translator: Elias Pschernig <allefant@allefant.com>\n"
+"PO-Revision-Date: 2012-01-20 21:39+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de <>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -49,9 +49,8 @@ msgstr "Weiter scrollen, wenn die Maus das Fenster verlässt"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
-#, fuzzy
 msgid "Local time of day area lighting"
-msgstr "Legt die Tageszeit zu Spielbeginn zufällig fest"
+msgstr "Lokale Tageszeiten für Beleuchtung beachten"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:46
@@ -596,14 +595,13 @@ msgstr ""
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
-#, fuzzy
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
 msgstr ""
-"In vielen Szenarios einer Kampagne könnt Ihr Euren, vom Computer gesteuerten "
-"Verbündeten einfache Befehle erteilen, in dem Ihr das Kontextmenü mit einem "
-"Rechtsklick öffnet und dann »Verbündeten instruieren« auswählt."
+"In diesem Szenario könnt Ihr Euren, vom Computer gesteuerten, Verbündeten "
+"Befehle erteilen indem Ihr einen Rechtsklick auf eine seiner Einheiten "
+"durchführt."
 
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
@@ -656,13 +654,12 @@ msgstr "Besiegt..."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:72
-#, fuzzy
 msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 msgstr ""
-"Spezial: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_special_description"
+"versuche folgende Einheit zu besiegen: $ai_controller.side_$ally_side|"
+"_current_settings.focus_on_enemy.side_description|."
 
 #. [then]
 #. [else]
@@ -700,13 +697,12 @@ msgstr "Beschützt..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:202
-#, fuzzy
 msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
 msgstr ""
-"Spezial: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_special_description"
+"veruche folgende Einheit zu schützen: $ai_controller.side_$ally_side|"
+"_current_settings.protect.side_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:352
@@ -2157,22 +2153,16 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units only reach their full strength during twilight.\n"
 "\n"
 "Day: −25% Damage\n"
 "Night: −25% Damage"
 msgstr ""
-"Redliche Einheiten können bei Tag besser kämpfen als andere. Mit Anbruch der "
-"Dämmerung aber sinkt ihr Kampfesmut.\n"
+"Zwielichtige Einheiten erreichen nur während Morgengrauen und Abenddämmerung "
+"ihre volle Kampfkraft.\n"
 "\n"
-"Tag: +25% Schaden\n"
+"Tag: −25% Schaden\n"
 "Nacht: −25% Schaden"
 
 #. [language]
@@ -2865,15 +2855,14 @@ msgstr "Lest die Liste der <b>Tastenkombinationen</b> im Einstellungsmenü."
 
 #. [tip]
 #: data/hardwired/tips.cfg:148
-#, fuzzy
 msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing <b>u</b>."
 msgstr ""
 "Ihr könnt die Bewegung einer Einheit rückgängig machen, indem Ihr die Taste "
-"»u« drückt. Dies geht jedoch nur, wenn diese Einheit noch nichts entdeckt "
-"hat – beispielsweise neue Dörfer oder gegnerische Einheiten – und sie noch "
-"keine gegnerische Einheit angegriffen hat."
+"<i>u</i> drückt. Dies geht jedoch nur, wenn diese Einheit noch nichts "
+"entdeckt hat – beispielsweise neue Dörfer oder gegnerische Einheiten – und "
+"sie noch keine gegnerische Einheit angegriffen hat."
 
 #. [tip]
 #: data/hardwired/tips.cfg:152
@@ -3034,7 +3023,7 @@ msgid ""
 "to escape; slow enemies are almost immobilized, and your own units suffer "
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
-"Der <i>Verlangsamungs</a>-Angriff ist sehr mächtig da er so weitreichende "
+"Der <i>Verlangsamungs</i>-Angriff ist sehr mächtig da er so weitreichende "
 "Effekte besitzt. Feindliche Einheiten profitieren nur mehr halb so viel von "
 "der <i>Lebensentzug</i>-Fertigkeit, der Schadensbonus für <i>Ansturm</i> und "
 "<i>hinterlistigen Angriff</i> fällt weg und die <i>Kampfrausch</i>-"
@@ -3107,7 +3096,7 @@ msgid ""
 msgstr ""
 "Die Kombination von mehreren spezielle Fertigkeiten kann tödlich sein. Auch "
 "wenn es etwas Geschick bedarf, kann zum Beispiel der Einsatz von "
-"<i>Führungsqualitäten</>, <i>Lichtaura</i> und  <i>Ansturm</i> gegen eine "
+"<i>Führungsqualitäten</i>, <i>Lichtaura</i> und  <i>Ansturm</i> gegen eine "
 "verlangsamte Einheit beeindruckend sein."
 
 #. [tip]
@@ -3405,31 +3394,23 @@ msgid "Close"
 msgstr "Schließen"
 
 #: src/actions.cpp:501
-#, fuzzy
-#| msgid "You don’t have a leader to recruit with."
 msgid "You don’t have a leader to recall with."
 msgstr ""
-"Euer Heerführer ist gefallen. Ihr könnt keine weiteren Einheiten ausbilden."
+"Ihr habt keinen Anführer mit dem Ihr Einheiten wieder einberufen könnt."
 
 #: src/actions.cpp:506
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders is able to recall that unit."
-msgstr ""
-"Euer Heerführer muss sich im Burgfried befinden, um Einheiten auszubilden."
+msgstr "Keiner Eurer Anführer ist befähigt diese Einheit wieder einzuberufen."
 
 #: src/actions.cpp:511
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr ""
-"Euer Heerführer muss sich im Burgfried befinden, um Einheiten auszubilden."
+"Einer Eurer Heerführer der in der Lage ist diese Einheit wieder einzuberufen "
+"muss sich im Burgfried befinden, um sie wieder einzuberufen."
 
 #: src/actions.cpp:516
-#, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recall the unit."
-msgstr "Es gibt keine freien Burgfelder zum Rekrutieren von Einheiten."
+msgstr "Es gibt keine freien Burgfelder zum wieder Einberufen von Einheiten."
 
 #: src/actions.cpp:586
 msgid "You don’t have a leader to recruit with."
@@ -3437,11 +3418,10 @@ msgstr ""
 "Euer Heerführer ist gefallen. Ihr könnt keine weiteren Einheiten ausbilden."
 
 #: src/actions.cpp:591
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr ""
-"Euer Heerführer muss sich im Burgfried befinden, um Einheiten auszubilden."
+"Einer Eurer Heerführer, der in der Lage ist diese Einheit zu rekrutieren, "
+"muss sich im Burgfried befinden, um sie zu rekrutieren."
 
 #: src/actions.cpp:596
 msgid "There are no vacant castle tiles in which to recruit the unit."
@@ -5493,9 +5473,8 @@ msgid "I’m Ready"
 msgstr "Ich bin bereit"
 
 #: src/multiplayer_connect.cpp:1035
-#, fuzzy
 msgid "Add named local player"
-msgstr "Anonymer lokaler Spieler"
+msgstr "Benannten lokaler Spieler hinzufügen"
 
 #: src/multiplayer_connect.cpp:1045
 msgid "The scenario is invalid because it has no id."
