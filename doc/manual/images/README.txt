@@ -2,7 +2,7 @@ This document lists some general guideline on taking the screenshots for the
 manual. Please adopt it to the correct version of the time you are taking the
 screenshot and make sure to point the entry in the po file to the correct
 screenshot.
-The examples I give are based on the availibility of the "imagemagick" tools
+The examples I give are based on the availability of the "imagemagick" tools
 used for converting the images to jpg format.
 
 
@@ -43,6 +43,6 @@ ones were taken):
 * multiplayer-1.5.7.jpg: just the dialog that pops up when clicking on
 'multiplayer' in the main menu, take care to set the player name to the default
 value 'player' (or whatever it is in your lang, since this one is a
-translateable string)
+translatable string)
 * recruit-1.5.7.jpg: start a skirmish game and select elves as your race, click
 on recruit and take a screenshot of the dialog popping up
