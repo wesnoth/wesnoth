@@ -230,7 +230,8 @@ void manager::set_invert_behavior(bool invert)
 
 bool manager::can_enable_execution_hotkeys() const
 {
-	return can_enable_modifier_hotkeys() && viewer_side() == resources::controller->current_side();
+	return can_enable_modifier_hotkeys() && viewer_side() == resources::controller->current_side()
+			&& viewer_actions()->turn_size(0) > 0;
 }
 
 bool manager::can_enable_modifier_hotkeys() const
@@ -911,8 +912,12 @@ bool manager::allow_end_turn()
 
 bool manager::execute_all_actions()
 {
-	if(viewer_actions()->empty())
+	if(viewer_actions()->turn_size(0) == 0)
+	{
+		//LOG_WB << "\"Execute All\" called with empty queue.\n";
+		//No actions to execute, job done.
 		return true;
+	}
 
 	if(can_enable_execution_hotkeys())
 	{
@@ -931,12 +936,6 @@ bool manager::execute_all_actions()
 
 		side_actions_ptr sa = viewer_actions();
 
-		if (sa->empty())
-		{
-			WRN_WB << "\"Execute All\" attempt with empty queue.\n";
-			return true;
-		}
-
 		if (resources::whiteboard->has_planned_unit_map())
 		{
 			ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
@@ -944,7 +943,7 @@ bool manager::execute_all_actions()
 
 		//LOG_WB << "Before executing all actions, " << *sa << "\n";
 
-		while (sa->begin() != sa->end())
+		while (sa->turn_begin(0) != sa->turn_end(0))
 		{
 			bool action_completed;
 			try {

@@ -141,7 +141,9 @@ bool side_actions::execute(side_actions::iterator position)
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
 
-	if(actions_.empty() || !validate_iterator(position) || position.turn_num_ > 0)
+	assert(position.turn_num_ == 0); //can't execute actions from future turns
+
+	if(actions_.empty() || !validate_iterator(position))
 		return false;
 
 	LOG_WB << "Before execution, " << *this << "\n";

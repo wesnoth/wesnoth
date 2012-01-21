@@ -128,6 +128,14 @@ public:
 	range_t iter_turn(size_t turn_num);
 	rrange_t riter_turn(size_t turn_num);
 
+	/** @return the number of actions planned for turn turn_num */
+	size_t turn_size(size_t turn_num) const {
+		if (num_turns() >= turn_num)
+			return actions_[turn_num].size();
+		else
+			return 0;
+	}
+
 	/**
 	 * Empties the action queue.
 	 */
