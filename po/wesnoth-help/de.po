@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:34+0100\n"
-"PO-Revision-Date: 2011-02-06 22:48+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"POT-Creation-Date: 2012-01-21 01:45+0100\n"
+"PO-Revision-Date: 2012-01-21 15:13+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -164,9 +164,8 @@ msgstr "<ref>dst='..geography' text='Geographie'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
-#, fuzzy
 msgid "Caste"
-msgstr "Burg"
+msgstr "Kaste"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:8
@@ -191,9 +190,8 @@ msgstr ""
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
-#, fuzzy
 msgid "Breeding Pen"
-msgstr "Kannibalismus"
+msgstr ""
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
@@ -341,9 +339,8 @@ msgstr ""
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
-#, fuzzy
 msgid "Hatchling"
-msgstr "Heilung"
+msgstr ""
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
@@ -355,9 +352,8 @@ msgstr ""
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
-#, fuzzy
 msgid "Fledgling"
-msgstr "Heilung"
+msgstr ""
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
@@ -435,9 +431,8 @@ msgstr ""
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
-#, fuzzy
 msgid "Intendant"
-msgstr "Intelligent"
+msgstr ""
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:134
@@ -452,7 +447,6 @@ msgstr ""
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
-#, fuzzy
 msgid "Swarm"
 msgstr "Schwarm"
 
@@ -465,9 +459,8 @@ msgstr ""
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
-#, fuzzy
 msgid "Swarming"
-msgstr "Schwarm"
+msgstr ""
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -608,9 +601,8 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
-#, fuzzy
 msgid "Green Isle"
-msgstr "Grün"
+msgstr "Grüne Insel"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
@@ -1146,19 +1138,6 @@ msgstr "Ausbildung und Einberufung"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1171,7 +1150,8 @@ msgid ""
 "recruitment, along with their gold cost. Click on a unit to see its "
 "statistics, then press the recruit button to recruit it."
 msgstr ""
-"Am Anfang einer Schlacht, manchmal auch während des Kampfes, müsst Ihr "
+"Jede Seite beginnt für gewöhnlich mit einem Anführer auf ihrem Burgfried. Am "
+"Anfang einer Schlacht, manchmal auch während des Kampfes, müsst Ihr "
 "<ref>dst='..units' text='Truppen'</ref> für Eure Armee ausbilden. Dafür muss "
 "Euer Anführer (beispielsweise Konrad in der Kampagne <italic>text='Der "
 "Thronerbe'</italic>) auf dem Burgfried-Feld in einer "
@@ -1186,15 +1166,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1288,6 +1259,8 @@ msgstr ""
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
+" rot, wenn die Einheit sich nicht mehr bewegen oder angreifen kann oder vom "
+"Benutzer der Zug der Einheit beendet wurde.\""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
@@ -1753,13 +1726,6 @@ msgstr "Tageszeit"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
-#| " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-#| " Liminal units get +25% damage during twilight.\n"
-#| " Neutral units are unaffected by the time of day."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1773,9 +1739,8 @@ msgstr ""
 "weniger.\n"
 " Lichtscheue Einheiten teilen tagsüber 25% weniger Schaden aus, nachts dafür "
 "25% mehr.\n"
-" Zwielichtige Einheiten teilen während der Dämmerungsphasen 25% mehr Schaden "
-"aus.\n"
-" Neutrale Einheiten werden von den Tageszeiten nicht beeinflusst."
+" Neutrale Einheiten werden von den Tageszeiten nicht beeinflusst.\n"
+" Zwielichtige Einheiten teilen  tagsüber und nachts 25% weniger Schaden aus."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
@@ -2036,7 +2001,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2051,9 +2015,11 @@ msgstr ""
 "\n"
 "Mit dem Einkommen verhält es sich einfach: Grundsätzlich erhaltet Ihr 2 "
 "Goldstücke pro Zug. Für jedes Dorf, das Ihr zusätzlich kontrolliert, "
-"erhaltet Ihr ein weiteres Goldstück. Angenommen, Ihr würdet 10 Dörfer "
-"kontrollieren, so würdet Ihr 12 Goldstücke erhalten. Die Unterhaltskosten "
-"für Eure Truppen werden von Eurem Einkommen abgezogen."
+"erhaltet Ihr ein weiteres Goldstück. (Diese Einstellung kann zwar angepasst "
+"werden, während der Kampagnen wird allerdings fast immer ein Goldstück pro "
+"Dorf als Wert verwendet.) Angenommen, Ihr würdet 10 Dörfer kontrollieren, so "
+"würdet Ihr 12 Goldstücke erhalten. Die Unterhaltskosten für Eure Truppen "
+"werden von Eurem Einkommen abgezogen."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
@@ -2093,7 +2059,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2106,11 +2071,11 @@ msgid ""
 msgstr ""
 "\n"
 "Es gibt zwei wichtige Ausnahmen für die Berechnung der Unterhaltskosten. "
-"Einheiten mit der Charakteristik <italic>text='loyal'</italic> und Euer "
-"Anführer verursachen niemals Unterhaltskosten. Einheiten, mit denen Ihr ein "
-"Szenario beginnt (beispielsweise Delfador) oder Einheiten, die sich Euch "
-"während eines Szenarios anschließen (beispielsweise der Reiter im zweiten "
-"Szenario von <italic>text='Der Thronerbe'</italic>), sind üblicherweise "
+"Einheiten mit der Charakteristik <italic>text='loyal'</italic> und Anführer "
+"verursachen niemals Unterhaltskosten. Einheiten, mit denen Ihr ein Szenario "
+"beginnt (beispielsweise Delfador) oder Einheiten, die sich Euch während "
+"eines Szenarios anschließen (beispielsweise der Reiter im zweiten Szenario "
+"von <italic>text='Der Thronerbe'</italic>), sind üblicherweise "
 "<italic>text='loyal'</italic>. Die Einheit, die Ihr verkörpert "
 "(beispielsweise Konrad), wird fast immer auch Euer Anführer sein."
 
@@ -2342,9 +2307,8 @@ msgstr ""
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:400
-#, fuzzy
 msgid "Feral"
-msgstr "Gesamt"
+msgstr "Wild"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:401
@@ -2354,6 +2318,10 @@ msgid ""
 "units receive a maximum of 50% defense in any land-based village regardless "
 "of base terrain."
 msgstr ""
+"Die Behausungen empfindsamer Wesen können von wilden Kreaturen niedriger "
+"Intelligenz nicht effektiv zur Verteidigung genutzt werden. Als Folge davon "
+"verfügen <italic>text='wilde'</italic> Einheiten maximal über einen "
+"Verteidigungswert von 50% während sie sich in Dörfern auf dem Land aufhalten."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:406
@@ -2400,7 +2368,6 @@ msgstr "Untot"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:415
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
@@ -2432,7 +2399,6 @@ msgstr "Mechanisch"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:423
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
@@ -2442,7 +2408,6 @@ msgstr ""
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:425
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2459,23 +2424,20 @@ msgstr ""
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
-#, fuzzy
 msgid "trait^Elemental"
-msgstr "Gassenwissen"
+msgstr "Elementar"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:431
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"<italic>text='Kriegsgeräte'</italic> werden durch Gift, Lebensentzug und "
-"Untote Plage nicht beeinflusst."
+"<italic>text='Elementare'</italic> Einheiten werden durch Gift, Lebensentzug "
+"und Untote Plage nicht beeinflusst."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:433
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2485,10 +2447,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Da Kriegsgeräte künstlich erschaffene Hilfsmittel sind, besitzen sie nur das "
-"Charakteristikum <italic>text='Mechanisch'</italic>. Da man nicht davon "
-"ausgehen kann, dass Kriegsgeräte in irgendeiner Form Leben beinhalten, sind "
-"sie gegen den Einfluss von Gift, Lebensentzug sowie Untote Plage immun."
+"Elementare Einheiten verfügen über keine zusätzlichen Charakteristiken. Da "
+"es sich um energiebasierte Lebensformen handelt, sind sie gegen den Einfluss "
+"von Gift, Lebensentzug sowie Untote Plage immun."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
@@ -2626,24 +2587,18 @@ msgstr ""
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
-#, fuzzy
-#| msgid "trait^Undead"
 msgid "trait^Aged"
-msgstr "Untot"
+msgstr "Betagt"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:477
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
-#| "hitpoints and melee damage."
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
 msgstr ""
-"<italic>text='Schwächliche'</italic> Einheiten verursachen pro "
-"Nahkampfattacke einen Schadenspunkt weniger und verfügen über einen LP "
-"weniger."
+"<italic>text='Betagte'</italic> Einheiten verursachen pro Nahkampfattacke "
+"einen Schadenspunkt weniger und verfügen über acht LP weniger und ihre "
+"Fortbewegungsgeschwindigkeit ist um eins reduziert."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:485
@@ -2689,7 +2644,6 @@ msgstr "Straße"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:511
-#, fuzzy
 msgid ""
 "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
 "travelers passing over them. As far as gameplay is concerned, roads behave "
@@ -2839,7 +2793,6 @@ msgstr "Seichtes Wasser"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:576
-#, fuzzy
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2870,7 +2823,6 @@ msgstr "Tiefes Wasser"
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:588
-#, fuzzy
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head. Most units cannot enter deep water: it is the domain "
@@ -2919,17 +2871,6 @@ msgstr "Burg"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#| "Nearly all units receive a considerable bonus to their defense by being "
-#| "stationed in a castle, and all units receive full movement in a castle. "
-#| "Stationing units in a castle represents its defensive capability. Without "
-#| "a unit in each wall hex, an enemy can simply sneak into the castle "
-#| "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#| "\n"
-#| "Most units have about 60% defense in a castle.\n"
-#| "\n"
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2959,7 +2900,6 @@ msgstr "Sand"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:628
-#, fuzzy
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -3028,7 +2968,6 @@ msgstr "Unwegsame Höhle"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:662
-#, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -3047,7 +2986,7 @@ msgstr ""
 "leben, haben es dagegen relativ leicht, sich in ihnen fortzubewegen, "
 "besonders die Zwerge, die durch ihren kleinen Wuchs leichter durch viele "
 "Hindernisse kriechen können. Gelegentlich sind Höhlen "
-"<ref>dst=terrain_illuminated_cave text=erhellt</ref>.\n"
+"<ref>dst='terrain_illuminated_cave' text='erhellt'</ref>.\n"
 "\n"
 "Die meisten Einheiten haben 50% Verteidigung in unwegsamen Höhlen, "
 "wohingegen Kavallerie auf 40% begrenzt ist. Zwerge erhalten 60% Verteidigung."
@@ -3079,7 +3018,6 @@ msgstr "Pilzhain"
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:684
-#, fuzzy
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -3091,14 +3029,14 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"Pilzhaine sind mit den oberirdischen Wäldern vergleichbar. In der Dunkelheit "
-"gedeihen diese riesigen Gewächse auf das Prächtigste. Den meisten Einheiten "
-"bereitet es Schwierigkeiten, sich über den schwammigen, mit kleinen Pilzen "
-"bewachsenen Boden zu bewegen, jedoch bieten die großen Stengel "
-"ausgezeichnete Deckung. Berittene Einheiten haben in diesem unwegsamen "
-"Gelände jedoch ihre Schwierigkeiten und können nicht mehr effektiv kämpfen. "
-"Untote Einheiten, die von Verfall angezogen werden, haben weniger "
-"Schwierigkeiten, in diesen Wäldern aus Pilzen voranzukommen.\n"
+"<italic>text='Pilzhaine'</italic> sind mit den oberirdischen Wäldern "
+"vergleichbar. In der Dunkelheit gedeihen diese riesigen Gewächse auf das "
+"Prächtigste. Den meisten Einheiten bereitet es Schwierigkeiten, sich über "
+"den schwammigen, mit kleinen Pilzen bewachsenen Boden zu bewegen, jedoch "
+"bieten die großen Stengel ausgezeichnete Deckung. Berittene Einheiten haben "
+"in diesem unwegsamen Gelände jedoch ihre Schwierigkeiten und können nicht "
+"mehr effektiv kämpfen. Untote Einheiten, die von Verfall angezogen werden, "
+"haben weniger Schwierigkeiten, in diesen Wäldern aus Pilzen voranzukommen.\n"
 "\n"
 "Die meisten Einheiten haben 50 bis 60% Verteidigung in Pilzhainen, "
 "Kavallerie hingegen nur 20%."
@@ -3142,7 +3080,6 @@ msgstr "Versunkenes Dorf"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:712
-#, fuzzy
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -3194,7 +3131,6 @@ msgstr "Lava"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:732
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -3242,7 +3178,6 @@ msgstr "Küstennahes Riff"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:754
-#, fuzzy
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand. This provides most land units with a more steady footing and "
@@ -3251,10 +3186,11 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"Küstennahe Riffe sind Sandbänke, geformt aus Stein, Korallen und Sand. "
-"Dieser Untergrund gibt Landbewohnern besseren Halt und eine bessere "
-"Verteidigungsposition im Vergleich zu seichtem Wasser. Meeresbewohner "
-"profitieren ebenfalls davon und genießen hier außerordentlichen Schutz.\n"
+"<italic>text='Küstennahe Riffe'</italic> sind Sandbänke, geformt aus Stein, "
+"Korallen und Sand. Dieser Untergrund gibt Landbewohnern besseren Halt und "
+"eine bessere Verteidigungsposition im Vergleich zu seichtem Wasser. "
+"Meeresbewohner profitieren ebenfalls davon und genießen hier "
+"außerordentlichen Schutz.\n"
 "\n"
 "Angehörige des Meervolkes sowie Naga haben 70% Verteidigung in küstennahen "
 "Riffen."
@@ -3266,7 +3202,6 @@ msgstr "Brücke"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:767
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -3280,12 +3215,13 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
-"Diejenigen, die in der Lage sind, eine Brücke zu bauen, haben sich von den "
-"Gesetzen der Natur insoweit losgesagt, dass sie einen Fluss überqueren "
-"können, unabhängig von einer vorhandenen Furt, die vielleicht beim nächsten "
-"Wasseranstieg unpassierbar wird. Vielen Kriegern, denen in den kalten "
-"Monaten nach der Durchquerung eines Flusses die Beine erfroren, blieb dieses "
-"Schicksal erspart, da sie eine Brücke benutzen konnten.\n"
+"Diejenigen, die in der Lage sind, eine <italic>text='Brücke'</italic> zu "
+"bauen, haben sich von den Gesetzen der Natur insoweit losgesagt, dass sie "
+"einen Fluss überqueren können, unabhängig von einer vorhandenen Furt, die "
+"vielleicht beim nächsten Wasseranstieg unpassierbar wird. Vielen Kriegern, "
+"denen in den kalten Monaten nach der Durchquerung eines Flusses die Beine "
+"erfroren, blieb dieses Schicksal erspart, da sie eine Brücke benutzen "
+"konnten.\n"
 "\n"
 "Spieltechnisch hat das Gelände Brücke dieselben Auswirkungen wie Wiesen oder "
 "Seichtes Wasser, je nachdem in welchem Gelände bessere Bewegungs- und "
@@ -3464,16 +3400,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Change the controller for side (write here the number of the side) to "
-#| "username (write here the nick of the player or observer). You can check "
-#| "what side belongs to which player in the <bold>text='Scenario Settings'</"
-#| "bold> dialog (Press the <bold>text='More'</bold> button in the "
-#| "<bold>text='Status Table'</bold> (alt+s by default) to get there.). The "
-#| "host can change control of any side.\n"
-#| "\n"
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3490,7 +3416,7 @@ msgstr ""
 "den <bold>text='Szenarioeinstellungen'</bold> könnt Ihr prüfen, welche "
 "Fraktion von welchem Spieler geführt wird (Drückt die <bold>text='Nächste "
 "Seite'</bold> Schaltfläche in der <bold>text='Spielübersicht'</bold> (ALT+s "
-"standardmässig), um dort hin zu gelangen.). Der Gastgeber kann die Kontrolle "
+"standardmäßig), um dort hin zu gelangen.). Der Gastgeber kann die Kontrolle "
 "jedweder Fraktion ändern.\n"
 "\n"
 
@@ -4358,8 +4284,6 @@ msgid " This unit is capable of basic healing."
 msgstr " Diese Einheit beherrscht die grundlegenden Fähigkeiten der Heilkunst."
 
 #: data/core/macros/special-notes.cfg:17
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid " This unit is capable of rapid healing."
 msgstr " Diese Einheit beherrscht die grundlegenden Fähigkeiten der Heilkunst."
 
@@ -4523,10 +4447,6 @@ msgstr ""
 "hoher Wahrscheinlichkeit zu treffen. Dies gilt jedoch nur in der Offensive."
 
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
-#| msgid ""
-#| " The unit has magical attacks, which always have a high chance of hitting "
-#| "an opponent."
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
@@ -4622,15 +4542,13 @@ msgstr "Kriegsgerät"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "elemental"
-msgstr "Gassenwissen"
+msgstr "elementar"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:53
-#, fuzzy
 msgid "female^elemental"
-msgstr "loyal"
+msgstr "elementar"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:66
@@ -4714,20 +4632,20 @@ msgstr "Tag/Nacht haben keinen Einfluß"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
-msgstr "Gesamt"
+msgstr "wild"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
-msgstr "neutral"
+msgstr "wild"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
 msgid "Receives only 50% defense in land-based villages"
 msgstr ""
+"Verfügt nur über einen Verteidigungswert von 50% in auf dem Lang gelegenen "
+"Dörfern"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -5375,8 +5293,6 @@ msgstr "Monster"
 
 #. [race]: id=monster
 #: data/core/units.cfg:221
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "Monster"
 
@@ -5400,10 +5316,8 @@ msgstr "Naga"
 
 #. [race]: id=naga
 #: data/core/units.cfg:231
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
-msgstr "Nagani"
+msgstr "Nagini"
 
 #. [race]: id=naga
 #: data/core/units.cfg:232
@@ -5761,12 +5675,11 @@ msgstr ""
 msgid "race^Wolf"
 msgstr "Wolf"
 
+# unsicher, kommt auf den kontext an...
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:311
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
-msgstr "Elfe"
+msgstr "Wölfinen"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:312
@@ -5947,32 +5860,26 @@ msgstr "Hilfe zu Battle for Wesnoth"
 msgid "Parse error when parsing help text: "
 msgstr "Fehler beim Analysieren des Hilfetextes: "
 
-#, fuzzy
 #~| msgid "race^Human"
 #~ msgid "race^Khalifate Human"
 #~ msgstr "Mensch"
 
-#, fuzzy
 #~| msgid "race+female^Human"
 #~ msgid "race+female^Khalifate Human"
 #~ msgstr "Mensch"
 
-#, fuzzy
 #~| msgid "race+plural^Mechanical"
 #~ msgid "race+plural^Khalifate"
 #~ msgstr "Kriegsgeräte"
 
-#, fuzzy
 #~| msgid "race^Human"
 #~ msgid "race^Falcon"
 #~ msgstr "Mensch"
 
-#, fuzzy
 #~| msgid "race+female^Human"
 #~ msgid "race+female^Falcon"
 #~ msgstr "Mensch"
 
-#, fuzzy
 #~| msgid "race^Humans"
 #~ msgid "race^Falcons"
 #~ msgstr "Menschen"
