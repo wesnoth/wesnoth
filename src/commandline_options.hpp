@@ -146,10 +146,6 @@ public:
 	boost::optional<unsigned int> rng_seed;
 	/// Non-empty if --server was given on the command line.  Connects Wesnoth to specified server. If no server was specified afterwards, contains an empty string.
 	boost::optional<std::string> server;
-	/// Non-empty if --username was given on the command line. Forces Wesnoth to use this network username.
-	boost::optional<std::string> username;
-	/// Non-empty if --password was given on the command line. Forces Wesnoth to use this network password.
-	boost::optional<std::string> password;
 	/// True if --screenshot was given on the command line. Starts Wesnoth in screenshot mode.
 	bool screenshot;
 	/// Map file to make a screenshot of. First parameter given after --screenshot.
