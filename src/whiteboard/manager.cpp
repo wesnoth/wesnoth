@@ -315,6 +315,25 @@ void manager::pre_delete_action(action_ptr action)
 	}
 }
 
+void manager::post_delete_action(action_ptr action)
+{
+	// The ghost of the last fake unit in a chain of planned actions is supposed to look different
+	// If the last remaining action of the unit that owned this move is a move as well,
+	// adjust its appearance accordingly.
+
+	side_actions_ptr side_actions = resources::teams->at(action->team_index()).get_side_actions();
+
+	side_actions::iterator action_it = side_actions->find_last_action_of(action->get_unit());
+	if (action_it != side_actions->end())
+	{
+		if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action_it))
+		{
+			if (move->get_fake_unit())
+				move->get_fake_unit()->set_ghosted(true);
+		}
+	}
+}
+
 static void hide_all_plans()
 {
 	foreach(team& t, *resources::teams)

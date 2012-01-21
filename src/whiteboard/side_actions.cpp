@@ -678,7 +678,9 @@ side_actions::iterator side_actions::safe_erase(iterator const& itor)
 {
 	action_ptr action = *itor;
 	resources::whiteboard->pre_delete_action(action); //misc cleanup
-	return raw_erase(itor);
+	iterator return_itor = raw_erase(itor);
+	resources::whiteboard->post_delete_action(action);
+	return return_itor;
 }
 
 void side_actions::execute_net_cmd(net_cmd const& cmd)

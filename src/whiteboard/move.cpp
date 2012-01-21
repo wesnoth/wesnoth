@@ -186,31 +186,6 @@ void move::init()
 	}
 }
 
-move::~move()
-{
-	// The ghost of the last fake unit in a chain of planned actions is supposed to look different
-	// If the last remaining action of the unit that owned this move is a move as well,
-	// adjust its appearance accordingly.
-	if (resources::teams)
-	{
-		side_actions_ptr side_actions = resources::teams->at(team_index()).get_side_actions();
-
-		side_actions::iterator action_it = side_actions->find_last_action_of(unit_);
-		if (action_it != side_actions->end())
-		{
-			if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action_it))
-			{
-				if (move->fake_unit_)
-					move->fake_unit_->set_ghosted(true);
-			}
-		}
-
-	}
-
-	//reminder: here we rely on the ~arrow destructor to invalidate
-	//its whole path.
-}
-
 void move::accept(visitor& v)
 {
 	v.visit(shared_from_this());
