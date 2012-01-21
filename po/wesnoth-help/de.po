@@ -2,14 +2,14 @@
 #  Andre Schmidt <andre@schmidtandre.de>, 2004, 2005
 #  Boris Stumm <wesnoth@bstumm.de>, 2005
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
-#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2011
+#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012
 #  Gerfried Fuchs <rhonda@deb.at>, 2005, 2006, 2010
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.9\n"
+"Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-21 01:45+0100\n"
-"PO-Revision-Date: 2012-01-21 15:13+0100\n"
+"PO-Revision-Date: 2012-01-21 16:53+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
@@ -1150,8 +1150,7 @@ msgid ""
 "recruitment, along with their gold cost. Click on a unit to see its "
 "statistics, then press the recruit button to recruit it."
 msgstr ""
-"Jede Seite beginnt für gewöhnlich mit einem Anführer auf ihrem Burgfried. Am "
-"Anfang einer Schlacht, manchmal auch während des Kampfes, müsst Ihr "
+"Am Anfang einer Schlacht, manchmal auch während des Kampfes, müsst Ihr "
 "<ref>dst='..units' text='Truppen'</ref> für Eure Armee ausbilden. Dafür muss "
 "Euer Anführer (beispielsweise Konrad in der Kampagne <italic>text='Der "
 "Thronerbe'</italic>) auf dem Burgfried-Feld in einer "
@@ -1260,7 +1259,7 @@ msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
 " rot, wenn die Einheit sich nicht mehr bewegen oder angreifen kann oder vom "
-"Benutzer der Zug der Einheit beendet wurde.\""
+"Benutzer der Zug der Einheit beendet wurde."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
@@ -1740,7 +1739,8 @@ msgstr ""
 " Lichtscheue Einheiten teilen tagsüber 25% weniger Schaden aus, nachts dafür "
 "25% mehr.\n"
 " Neutrale Einheiten werden von den Tageszeiten nicht beeinflusst.\n"
-" Zwielichtige Einheiten teilen  tagsüber und nachts 25% weniger Schaden aus."
+" Zwielichtige Einheiten teilen während der Dämmerungsphasen 25% mehr Schaden "
+"aus."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
@@ -2015,11 +2015,11 @@ msgstr ""
 "\n"
 "Mit dem Einkommen verhält es sich einfach: Grundsätzlich erhaltet Ihr 2 "
 "Goldstücke pro Zug. Für jedes Dorf, das Ihr zusätzlich kontrolliert, "
-"erhaltet Ihr ein weiteres Goldstück. (Diese Einstellung kann zwar angepasst "
-"werden, während der Kampagnen wird allerdings fast immer ein Goldstück pro "
-"Dorf als Wert verwendet.) Angenommen, Ihr würdet 10 Dörfer kontrollieren, so "
-"würdet Ihr 12 Goldstücke erhalten. Die Unterhaltskosten für Eure Truppen "
-"werden von Eurem Einkommen abgezogen."
+"erhaltet Ihr ein weiteres Goldstück. (Dies ist einstellbar, jedoch verwenden "
+"die meisten Kampagnen den Standard von einem Goldstück pro Dorf.) "
+"Angenommen, Ihr würdet 10 Dörfer kontrollieren, so würdet Ihr 12 Goldstücke "
+"erhalten. Die Unterhaltskosten für Eure Truppen werden von Eurem Einkommen "
+"abgezogen."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
@@ -2071,11 +2071,11 @@ msgid ""
 msgstr ""
 "\n"
 "Es gibt zwei wichtige Ausnahmen für die Berechnung der Unterhaltskosten. "
-"Einheiten mit der Charakteristik <italic>text='loyal'</italic> und Anführer "
-"verursachen niemals Unterhaltskosten. Einheiten, mit denen Ihr ein Szenario "
-"beginnt (beispielsweise Delfador) oder Einheiten, die sich Euch während "
-"eines Szenarios anschließen (beispielsweise der Reiter im zweiten Szenario "
-"von <italic>text='Der Thronerbe'</italic>), sind üblicherweise "
+"Einheiten mit der Charakteristik loyal und Euer Anführer verursachen niemals "
+"Unterhaltskosten. Einheiten, mit denen Ihr ein Szenario beginnt "
+"(beispielsweise Delfador) oder Einheiten, die sich Euch während eines "
+"Szenarios anschließen (beispielsweise der Reiter im zweiten Szenario von "
+"<italic>text='Der Thronerbe'</italic>), sind üblicherweise "
 "<italic>text='loyal'</italic>. Die Einheit, die Ihr verkörpert "
 "(beispielsweise Konrad), wird fast immer auch Euer Anführer sein."
 
@@ -2418,9 +2418,9 @@ msgstr ""
 "\n"
 "\n"
 "Da Kriegsgeräte künstlich erschaffene Hilfsmittel sind, besitzen sie nur das "
-"Charakteristikum <italic>text='Mechanisch'</italic>. Da man nicht davon "
-"ausgehen kann, dass Kriegsgeräte in irgendeiner Form Leben beinhalten, sind "
-"sie gegen den Einfluss von Gift, Lebensentzug sowie Untote Plage immun."
+"Charakteristikum Mechanisch. Da man nicht davon ausgehen kann, dass "
+"Kriegsgeräte in irgendeiner Form Leben beinhalten, sind sie gegen den "
+"Einfluss von Gift, Lebensentzug sowie Untote Plage immun."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
@@ -2447,9 +2447,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Elementare Einheiten verfügen über keine zusätzlichen Charakteristiken. Da "
-"es sich um energiebasierte Lebensformen handelt, sind sie gegen den Einfluss "
-"von Gift, Lebensentzug sowie Untote Plage immun."
+"Elementare Einheiten haben üblicherweise als einziges Charakteristikum "
+"elementar. Da diese Wesenheiten aus Energie bestehen, haben Gift, "
+"Lebensentzug sowie Untote Plage keinerlei Wirkung bei ihnen."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
@@ -2588,7 +2588,7 @@ msgstr ""
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
 msgid "trait^Aged"
-msgstr "Betagt"
+msgstr "Gealtert"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:477
@@ -2596,9 +2596,9 @@ msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
 msgstr ""
-"<italic>text='Betagte'</italic> Einheiten verursachen pro Nahkampfattacke "
-"einen Schadenspunkt weniger und verfügen über acht LP weniger und ihre "
-"Fortbewegungsgeschwindigkeit ist um eins reduziert."
+"<italic>text='Gealterte'</italic> Einheiten verursachen pro Nahkampfattacke "
+"einen Schadenspunkt weniger, können sich ein Feld weniger weit fortbewegen "
+"und verfügen über 8 LP weniger."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:485
@@ -2806,15 +2806,14 @@ msgid ""
 "naga and mermen enjoy 60%."
 msgstr ""
 "<italic>text='Seichtes Wasser'</italic> ist tief genug, einem erwachsenen "
-"Mann bis zur Hüfte zu reichen.\n"
-"Das verlangsamt fast alle Einheiten und macht sie zu leichten "
-"Angriffszielen. Zwerge, denen das Wasser dort sprichwörtlich bis zum Hals "
-"steht, haben es besonders schwer. Die Ausnahme sind alle Einheiten, deren "
-"Körper zum Schwimmen geeignet sind. Sie bekommen einen beträchtlichen "
-"Verteidigungsbonus und volle Bewegung.\n"
+"Mann bis zur Hüfte zu reichen. Das verlangsamt fast alle Einheiten und macht "
+"sie zu leichten Angriffszielen. Zwerge, denen das Wasser dort sprichwörtlich "
+"bis zum Hals steht, haben es besonders schwer. Die Ausnahme sind alle "
+"Einheiten, deren Körper zum Schwimmen geeignet sind. Sie bekommen einen "
+"beträchtlichen Verteidigungsbonus und volle Bewegung.\n"
 "\n"
 "Die meisten Einheiten haben zwischen 20 und 30% Verteidigung im seichten "
-"Wasser, Naga und Wassermänner haben 60%."
+"Wasser, Naga und Angehörige des Meervolkes haben 60%."
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:583
@@ -2836,8 +2835,8 @@ msgstr ""
 "bleibt. Es ist das Reich der Einheiten, die entweder fliegen oder gut "
 "schwimmen können.\n"
 "\n"
-"Wassermänner und Naga haben beide 50% Verteidigung und volle Bewegung im "
-"tiefen Wasser."
+"Angehörige des Meervolks sowie Naga erhalten 50% Verteidigung und volle "
+"Bewegung im tiefen Wasser."
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:595
@@ -2884,11 +2883,11 @@ msgid ""
 msgstr ""
 "<italic>text='Burgen'</italic> sind jede Art von dauerhaften Befestigungen. "
 "Fast alle Einheiten erhalten einen Verteidigungsbonus, wenn sie sich auf "
-"einem derartigen Feld aufhalten. In der Burg haben alle Einheiten volle "
-"Bewegung. Die Anzahl der in der Burg stationierten Einheiten repräsentiert "
-"deren Verteidigungsfähigkeit. Wenn nicht auf jedem Burghexfeld eine Einheit "
-"steht, können leicht Gegner diesen Platz einnehmen und den selben "
-"Verteidigungsbonus erhalten.\n"
+"einem derartigen Feld aufhalten. Zudem können alle Einheiten ihre Bewegung "
+"voll ausschöpfen. Die Anzahl der in der Burg stationierten Einheiten "
+"repräsentiert deren Verteidigungsfähigkeit. Wenn nicht auf jedem Burghexfeld "
+"eine Einheit steht, können Gegner leicht diesen Platz einnehmen und den "
+"selben Verteidigungsbonus erhalten.\n"
 "\n"
 "Die meisten Einheiten haben 60% Verteidigung auf Burgfeldern.\n"
 "\n"
@@ -2982,10 +2981,10 @@ msgid ""
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
 "Wind und Wasser haben im Laufe der Zeit Felsen und Steine herbeigetragen und "
-"eine unwegsame Landschaft geformt. Zwerge und Trolle, die in den Höhlen "
-"leben, haben es dagegen relativ leicht, sich in ihnen fortzubewegen, "
-"besonders die Zwerge, die durch ihren kleinen Wuchs leichter durch viele "
-"Hindernisse kriechen können. Gelegentlich sind Höhlen "
+"eine <italic>text='unwegsame Höhle'</italic> geformt. Zwerge und Trolle, die "
+"in den Höhlen leben, haben es dagegen relativ leicht, sich in ihnen "
+"fortzubewegen, besonders die Zwerge, die durch ihren kleinen Wuchs leichter "
+"durch viele Hindernisse kriechen können. Gelegentlich sind Höhlen "
 "<ref>dst='terrain_illuminated_cave' text='erhellt'</ref>.\n"
 "\n"
 "Die meisten Einheiten haben 50% Verteidigung in unwegsamen Höhlen, "
@@ -3145,8 +3144,8 @@ msgstr ""
 "angeht, verhält sich Lava wie <ref>dst='terrain_unwalkable' "
 "text='unpassierbares'</ref> Gelände und kann deshalb nur von fliegenden "
 "Einheiten passiert werden. Die geschmolzene Lava erhellt zudem das "
-"umliegende Gebiet, was rechtschaffenen Einheiten einen Angriffsbonus "
-"verleiht und chaotischen Einheiten den ihrigen entzieht."
+"umliegende Gebiet, was redliche Einheiten einen Angriffsbonus verleiht und "
+"lichtscheue Einheiten den ihrigen entzieht."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:739
@@ -3416,7 +3415,7 @@ msgstr ""
 "den <bold>text='Szenarioeinstellungen'</bold> könnt Ihr prüfen, welche "
 "Fraktion von welchem Spieler geführt wird (Drückt die <bold>text='Nächste "
 "Seite'</bold> Schaltfläche in der <bold>text='Spielübersicht'</bold> (ALT+s "
-"standardmäßig), um dort hin zu gelangen.). Der Gastgeber kann die Kontrolle "
+"standardmässig), um dort hin zu gelangen.). Der Gastgeber kann die Kontrolle "
 "jedweder Fraktion ändern.\n"
 "\n"
 
@@ -4124,7 +4123,7 @@ msgstr "Max. LP +3, Max. EP +20%"
 #. [time]: id=indoors
 #: data/core/macros/schedules.cfg:70
 msgid "Indoors"
-msgstr ""
+msgstr "Innen"
 
 #. [time]: id=deep_underground
 #: data/core/macros/schedules.cfg:90
@@ -4134,124 +4133,112 @@ msgstr "Tiefer Untergrund"
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:162
 msgid "Midnight"
-msgstr ""
+msgstr "Mitternacht"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:174
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "Zweite Wache"
+msgstr "Zweite Wache – Erste Stunde"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:186
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "Zweite Wache"
+msgstr "Zweite Wache – Zweite Stunde"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:198
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "Zweite Wache"
+msgstr "Zweite Wache – Dritte Stunde"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:210
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "Zweite Wache"
+msgstr "Zweite Wache – Vierte Stunde"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:222
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "Zweite Wache"
+msgstr "Zweite Wache – Fünfte Stunde"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:234
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "Zweite Wache"
+msgstr "Zweite Wache – Sechste Stunde"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:257
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "Morgen – Erste Stunde"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:266
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "Morgen – Zweite Stunde"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:275
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "Morgen – Dritte Stunde"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:284
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "Morgen – Vierte Stunde"
 
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:293
 msgid "Midday"
-msgstr ""
+msgstr "Mittag"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "Nachmittag – Erste Stunde"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "Nachmittag – Zweite Stunde"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "Nachmittag – Dritte Stunde"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:329
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "Nachmittag – Vierte Stunde"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:338
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "Nachmittag – Fünfte Stunde"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "Nachmittag – Sechste Stunde"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "Erste Wache – Erste Stunde"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:381
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "Erste Wache – Zweite Stunde"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:393
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "Erste Wache – Dritte Stunde"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:405
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "Erste Wache – Vierte Stunde"
 
 #: data/core/macros/special-notes.cfg:5
 msgid ""
@@ -5675,11 +5662,10 @@ msgstr ""
 msgid "race^Wolf"
 msgstr "Wolf"
 
-# unsicher, kommt auf den kontext an...
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:311
 msgid "race+female^Wolf"
-msgstr "Wölfinen"
+msgstr "Wölfe"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:312
@@ -5859,40 +5845,3 @@ msgstr "Hilfe zu Battle for Wesnoth"
 #: src/help.cpp:3216
 msgid "Parse error when parsing help text: "
 msgstr "Fehler beim Analysieren des Hilfetextes: "
-
-#~| msgid "race^Human"
-#~ msgid "race^Khalifate Human"
-#~ msgstr "Mensch"
-
-#~| msgid "race+female^Human"
-#~ msgid "race+female^Khalifate Human"
-#~ msgstr "Mensch"
-
-#~| msgid "race+plural^Mechanical"
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "Kriegsgeräte"
-
-#~| msgid "race^Human"
-#~ msgid "race^Falcon"
-#~ msgstr "Mensch"
-
-#~| msgid "race+female^Human"
-#~ msgid "race+female^Falcon"
-#~ msgstr "Mensch"
-
-#~| msgid "race^Humans"
-#~ msgid "race^Falcons"
-#~ msgstr "Menschen"
-
-#, fuzzy
-#~ msgid "<header>text='Race specific topics'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Trefferwahrscheinlichkeit'</header>"
-
-#~ msgid ""
-#~ " red if it has finished its turn (might still be able to move or attack)."
-#~ msgstr ""
-#~ " rot, wenn die Einheit sich nicht mehr bewegen oder angreifen kann oder "
-#~ "vom Benutzer der Zug der Einheit beendet wurde."
