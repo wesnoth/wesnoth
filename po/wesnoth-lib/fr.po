@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-08 18:12+0100\n"
-"PO-Revision-Date: 2012-01-14 09:55+0200\n"
-"Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
+"PO-Revision-Date: 2012-01-21 07:23+0100\n"
+"Last-Translator: Pyrophorus <l.sebilleauATfree.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -648,11 +648,12 @@ msgstr "Mur de pierre"
 msgid "Lit Stone Wall"
 msgstr "Mur de pierre éclairé"
 
+# Compte tenu du fait que ces chaînes sont destinées à être affichées dans l'éditeur de cartes, il me semble important de faire court. Si l'utilisateur ne sait pas à quoi sert une surcouche, ce n'est pas dans le libellé qu'il va l'apprendre.
+# Laurent
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1104
-#, fuzzy
 msgid "Impassable Overlay"
-msgstr "Surcharge infranchissable"
+msgstr "Surcouche infranchissable"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
@@ -708,6 +709,8 @@ msgstr "Vide"
 msgid "Village"
 msgstr "Village"
 
+# Adobe est un terme technique (qui n'est pas anglais mais espagnol). Je pense qu'il ne faudrait pas le traduire.
+# Laurent
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1131
 msgid "Adobe Village"
@@ -850,9 +853,8 @@ msgstr "Village ondin"
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1507
-#, fuzzy
 msgid "Village Overlay"
-msgstr "Surcharge village"
+msgstr "Surcouche village"
 
 #. [terrain_type]: id=encampment
 #. [terrain_type]: id=encampment_snow
@@ -954,12 +956,12 @@ msgstr "Château du désert en ruine"
 msgid "Encampment Keep"
 msgstr "Tente de commandement"
 
-# Benoît : « Donjon » ça va pas avec campement, et c'est une tente...
+# Il y a un problème avec ces différentes traductions de 'keep': on perd de vue qu'il s'agit d'abord du seul type d'endroit où le leader peut recruter.
+# Laurent
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:1695
-#, fuzzy
 msgid "Tall Encampment Keep"
-msgstr "Rempart surélevé"
+msgstr "Tente de commandement surélevée"
 
 # Benoît : « Donjon » ça va pas avec campement, et c'est une tente...
 #. [terrain_type]: id=encampment_snow_keep
@@ -1048,15 +1050,13 @@ msgstr "Donjon du désert en ruine"
 
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:1865
-#, fuzzy
 msgid "Castle Overlay"
-msgstr "Surcharge de château"
+msgstr "Surcouche château"
 
 #. [terrain_type]: id=keep_overlay
 #: data/core/terrain.cfg:1877
-#, fuzzy
 msgid "Keep Overlay"
-msgstr "Surcharge de donjon"
+msgstr "Surcouche donjon"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -3039,16 +3039,14 @@ msgid "No stack defined."
 msgstr "Aucune pile définie."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:46
-#, fuzzy
 msgid "No nodes defined for a tree view."
-msgstr "Pas de nœuds définis pour une vue dans l'arborescence."
+msgstr "Pas de nœuds définis dans l'arborescence."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:86
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[node]identifiant « root » réservé pour l'implémentation."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
-#, fuzzy
 msgid "No node defined."
 msgstr "Aucun nœud défini."
 
@@ -3178,7 +3176,6 @@ msgid "No state or draw section defined."
 msgstr "Aucun état ou zone de dessin défini."
 
 #: src/gui/widgets/tree_view_node.cpp:103
-#, fuzzy
 msgid "Unknown builder id for tree view node."
 msgstr "Identifiant du constructeur inconnu pour un nœud de l'arborescence."
 

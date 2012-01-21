@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-21 01:34+0100\n"
-"PO-Revision-Date: 2012-01-13 21:32+0100\n"
-"Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
+"PO-Revision-Date: 2012-01-21 14:15+0200\n"
+"Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -178,38 +178,33 @@ msgstr ""
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
-#, fuzzy
 msgid "Aerie"
-msgstr "Nid d'aigle"
+msgstr "Nid de dragon"
 
-# cf. "Breeding Pen"
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
-#, fuzzy
 msgid ""
 "A very large castle-like structure that is home to a <ref>dst='flight' "
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
-"Une sorte de très grand château qui abrite une <ref>dst='flight' "
-"text='escadrille'</ref>. C'est là que se trouvent leurs "
+"Une sorte de très grand château qui abrite un <ref>dst='flight' "
+"text='escadron'</ref>. C'est là que se trouvent leurs "
 "<ref>dst='breeding_pen' text='nids de reproduction'</ref>."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
-#, fuzzy
 msgid "Breeding Pen"
 msgstr "Nid de reproduction"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
-#, fuzzy
 msgid ""
 "The portion of an <ref>dst='aerie' text='aerie'</ref> where the nonsentient "
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
 "text='Dominant'</ref>’s eye."
 msgstr ""
-"La partie du <ref>dst='aerie' text='nid d'aigle'</ref> où les "
+"La partie de du<ref>dst='aerie' text='nid de dragon'</ref> où les "
 "<ref>dst='breeder' text='pondeuses'</ref> indolentes vivent sous le regard "
 "du <ref>dst='dominant' text='dominant'</ref>."
 
@@ -251,18 +246,12 @@ msgstr "Nouveau Continent"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
-#, fuzzy
-#| msgid ""
-#| "New Continent -- The great continent to the east of <ref>dst='morogor' "
-#| "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
-#| "flight of Galun."
 msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
-"Nouveau-Continent : le vaste continent qui s'étend à l'est de "
-"<ref>dst='morogor' text='Morogor'</ref>. Son existence était inconnue des "
-"dracans jusqu'au vol de Galun."
+"Le vaste continent qui s'étend à l'est de <ref>dst='morogor' text='Morogor'</"
+"ref>. Son existence était inconnue des dracans jusqu'au vol de Galun."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
@@ -306,7 +295,7 @@ msgid ""
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
-"'La tradition dracane de conquête et d'expansion perpétuelle. Ce terme est "
+"La tradition dracane de conquête et d'expansion perpétuelle. Ce terme est "
 "surtout utilisé par les membres de la <ref>dst='spiral_path' text='Voie de "
 "la Spirale'</ref>."
 
@@ -335,7 +324,6 @@ msgstr "Vulcaniade"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
-#, fuzzy
 msgid ""
 "The (irregular) period between consecutive eruptions of "
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
@@ -343,7 +331,7 @@ msgid ""
 msgstr ""
 "La période (irrégulière) qui sépare deux éruptions consécutives du "
 "<ref>dst='mount_morogor' text='mont Morogor'</ref>. C'est la base de "
-"<ref>dst='long_count' text='l'ancien'</ref> calendrier."
+"l'<ref>dst='long_count' text='ancien calendrier'</ref>."
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
@@ -388,7 +376,6 @@ msgstr "Nouveau-né"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
-#, fuzzy
 msgid ""
 "A young drake that has not yet seen another generation hatch. The younger of "
 "the current generation of hatchlings are the most aggressive is the behavior "
@@ -396,25 +383,23 @@ msgid ""
 msgstr ""
 "Un jeune dracan qui n'a pas encore vu l'éclosion de la génération suivante. "
 "Les plus jeunes de cette nouvelle génération ont le comportement le plus "
-"agressif de l'<ref>dst='flight' text='escadrille'</ref>."
+"agressif de l'<ref>dst='flight' text='escadron'</ref>."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
-#, fuzzy
 msgid "Fledgling"
-msgstr "Oisillon"
+msgstr "Dragonet"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
-#, fuzzy
 msgid ""
 "A young drake that has seen another generation hatch. If the "
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
-"Un jeune dracan qui n'a pas vu l'éclosion d'une génération suivante. Si "
-"l'<ref>dst='flight' text='escadrille'</ref> peut se permettre de perdre une "
-"génération, ils commencent l'<ref>dst='swarming' text='essaimage'</ref>."
+"Un jeune dracan qui a vu l'éclosion d'une génération. Si l'<ref>dst='flight' "
+"text='escadron'</ref> peut se permettre de perdre une génération, ils "
+"commencent l'<ref>dst='swarming' text='essaimage'</ref>."
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
@@ -455,19 +440,17 @@ msgstr ""
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
-#, fuzzy
 msgid "Flight"
-msgstr "Escadrille"
+msgstr "Escadron"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
-#, fuzzy
 msgid ""
 "Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
-"Tribu de dracans, vivant dans un <ref>dst='aerie' text='nid d'aigle'</ref> "
+"Tribu de dracans, vivant dans un <ref>dst='aerie' text='nid de dragon'</ref> "
 "et contrôlant un terrain de chasse. Chaque tribu dispose d'un "
 "<ref>dst='dominant' text='dominant'</ref>, qui attribue des droits "
 "d'accouplement."
@@ -479,7 +462,6 @@ msgstr "Aspirant"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
-#, fuzzy
 msgid ""
 "Male drake that has passed through a hormonal metamorphosis that makes him "
 "able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
@@ -498,7 +480,6 @@ msgstr "Ascendant"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
-#, fuzzy
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
@@ -534,13 +515,12 @@ msgstr "Essaim"
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:140
-#, fuzzy
 msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
-"Les <ref>dst='swarmlings' text='essaimeurs'</ref> sont ceux qui quittent le "
-"<ref>dst='aerie' text='nid d'aigle'</ref> pour en fonder un nouveau."
+"Les <ref>dst='swarmlings' text='essaimeurs'</ref> sont ceux qui quittent "
+"le<ref>dst='aerie' text='nid de dragon'</ref> pour en fonder un nouveau."
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
@@ -549,14 +529,13 @@ msgstr "Essaimage"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
-#, fuzzy
 msgid ""
 " The <ref>dst='flight' text='flight'</ref> for a new drake <ref>dst='aerie' "
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
-"L'<ref>dst='flight' text='escadrille'</ref> formée pour la fondation d'un "
-"nouveau <ref>dst='aerie' text='nid d'aigle'</ref> à chaque "
+"L'<ref>dst='flight' text='escadron'</ref> formé pour la fondation d'un "
+"nouveau <ref>dst='aerie' text='nid de dragon'</ref> à chaque "
 "<ref>dst='breeding_cycle' text='cycle de ponte'</ref>. Voir <ref>dst='swarm' "
 "text='essaim'</ref>"
 
@@ -588,19 +567,18 @@ msgstr ""
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
-#, fuzzy
 msgid "Long Count"
-msgstr "Calendrier Ancien"
+msgstr "Ancien Calendrier"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
-#, fuzzy
 msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
-"Le calendrier dracan rythmé par les <ref>dst='vulcaniad' text='vulcaniades'</"
-"ref> et les <ref>dst=breeding_cycle text='cycles de ponte'</ref>."
+"Le calendrier dracan est rythmé par les <ref>dst='vulcaniad' "
+"text='vulcaniades'</ref> et les <ref>dst=breeding_cycle text='cycles de "
+"ponte'</ref>."
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
@@ -673,7 +651,6 @@ msgstr "Arkan-thoria"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
-#, fuzzy
 msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
@@ -688,7 +665,6 @@ msgstr "Grand Océan"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
-#, fuzzy
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
 "and all rivers eventually flow to it. Far to the west in the the Great Ocean "
@@ -768,7 +744,6 @@ msgstr "Irdya"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:64
-#, fuzzy
 msgid ""
 "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
@@ -776,8 +751,8 @@ msgid ""
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
 "Le nom du monde dans lequel le royaume de <ref>dst='kingdom_wesnoth' "
-"text='Wesnoth'</ref> est situé s\"appelle « Irdya ». Ce terme est cependant "
-"rarement utilisé dans l'ère décrite par la carte principale. Normalement on "
+"text='Wesnoth'</ref> est situé s'appelle « Irdya ». Ce terme est cependant "
+"rarement utilisé dans l'aire décrite par la carte principale. Normalement on "
 "dit juste « le monde » ou, poétiquement, « le grand monde vert »."
 
 #. [topic]: id=kingdom_wesnoth
@@ -1078,7 +1053,6 @@ msgstr ""
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
-#, fuzzy
 msgid "Far North"
 msgstr "Grand Nord"
 
@@ -1416,19 +1390,6 @@ msgstr "Recruter et rappeler"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1455,15 +1416,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -3118,17 +3070,6 @@ msgstr "Château"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#| "Nearly all units receive a considerable bonus to their defense by being "
-#| "stationed in a castle, and all units receive full movement in a castle. "
-#| "Stationing units in a castle represents its defensive capability. Without "
-#| "a unit in each wall hex, an enemy can simply sneak into the castle "
-#| "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#| "\n"
-#| "Most units have about 60% defense in a castle.\n"
-#| "\n"
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -3142,7 +3083,7 @@ msgid ""
 msgstr ""
 "Les <italic>text='châteaux'</italic> incluent tous les genres de "
 "fortifications permanentes. Presque toutes les unités y reçoivent un bonus "
-"défensif considérable, et toutes les unités s'y déplacent au maximum de "
+"défensif considérable, et la majorité des unités s'y déplacent au maximum de "
 "leurs capacités. Les unités dans un château constituent sa garnison. Un "
 "hexagone libre permet à un ennemi de s'introduire facilement dans le château "
 "et d'obtenir un bonus de défense identique à celui des troupes à "
@@ -6109,27 +6050,21 @@ msgstr "Aide de « Bataille pour Wesnoth »"
 msgid "Parse error when parsing help text: "
 msgstr "Erreur d'analyse lors de la lecture du texte d'aide :"
 
-#~| msgid "race^Human"
 #~ msgid "race^Khalifate Human"
 #~ msgstr "Humain"
 
-#~| msgid "race+female^Human"
 #~ msgid "race+female^Khalifate Human"
 #~ msgstr "Humaine"
 
-#~| msgid "race+plural^Mechanical"
 #~ msgid "race+plural^Khalifate"
 #~ msgstr "Mécaniques"
 
-#~| msgid "race^Human"
 #~ msgid "race^Falcon"
 #~ msgstr "Humain"
 
-#~| msgid "race+female^Human"
 #~ msgid "race+female^Falcon"
 #~ msgstr "Humaine"
 
-#~| msgid "race^Humans"
 #~ msgid "race^Falcons"
 #~ msgstr "Humains"
 
