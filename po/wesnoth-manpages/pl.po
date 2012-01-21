@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2011-12-27 18:12+0100\n"
+"PO-Revision-Date: 2012-01-21 10:44+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -132,22 +132,12 @@ msgstr "ustawia liczbę bitów na piksel. Przykład: B<--bpp 32>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
+#, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr "B<-c, --campaign[[E<lt>poziom_trudnościE<gt>] E<lt>id_kampaniiE<gt> [E<lt>id_scenariuszaE<gt>]]>"
+msgstr "B<-c, --campaign \\ [E<lt>id_kampaniiE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy
-#| msgid ""
-#| "goes directly to the campaign based on the parameters.  The difficulty is "
-#| "a number between 1 and current campaign's difficulties number.  The "
-#| "default difficulty is 1.  The scenario must be one of the campaign's "
-#| "child scenarios. The default scenario is campaign's first scenario.  "
-#| "B<Note: When using this switch please ensure that you specify the data "
-#| "directory path as the final argument> aswell, otherwise the game will "
-#| "take the campaign/scenario id as the data dir."
 msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified.  B<Note:> When using this switch "
@@ -155,20 +145,17 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
-"przechodzi bezpośrednio do kampanii określonej parametrami. Poziom trudności "
-"to liczba od 1 do liczby poziomów trudności danej kampanii. Domyślny poziom "
-"trudności to 1. Wskazany scenariusz musi należeć do kampanii. Domyślnie "
-"wybierany jest pierwszy scenariusz kampanii. B<Uwaga: używając tej opcji, "
-"należy koniecznie podać ścieżkę do katalogu danych jako ostatni argument> — "
-"w przeciwnym razie gra uzna identyfikator kampanii lub scenariusza za "
-"katalog danych."
+"przechodzi bezpośrednio do kampanii o identyfikatorze E<lt>id_kampaniiE<gt>. "
+"Jeśli identyfikator nie zostanie podany, zostanie wyświetlone menu wyboru. "
+"B<Uwaga:> używając tej opcji, należy koniecznie podać ścieżkę do katalogu "
+"danych jako ostatni argument — w przeciwnym razie gra uzna identyfikator "
+"kampanii lub scenariusza za katalog danych."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr "B<--data-dir E<lt>katalogE<gt>>"
+msgstr "B<--campaign-difficulty E<lt>poziom_trudnościE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -176,12 +163,15 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"Poziom trudności wskazanej kampanii (od 1 do wartości maksymalnej). Jeśli "
+"wartość nie zostanie podana, zostanie wyświetlone okno wyboru poziomu "
+"trudności kampanii."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>id_scenariuszaE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -189,6 +179,8 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
+"Identyfikator scenariusza ze wskazanej kampanii. Domyślnie wczytywany jest "
+"pierwszy scenariusz."
 
 # type: TP
 #. type: TP
