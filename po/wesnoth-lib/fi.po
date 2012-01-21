@@ -9,10 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-08 18:12+0100\n"
-"PO-Revision-Date: 2012-01-14 22:20+0200\n"
+"POT-Creation-Date: 2012-01-21 01:45+0100\n"
+"PO-Revision-Date: 2012-01-20 23:35+0200\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
-"Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -169,7 +169,7 @@ msgstr "tavallisia mukulakiviä"
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:237
 msgid "Clean Gray Cobbles"
-msgstr "Puhtaita harmaita mukulakiviä"
+msgstr "puhtaita harmaita mukulakiviä"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:247
@@ -1318,7 +1318,7 @@ msgstr "Ok"
 #. [label]: id=title
 #: data/gui/default/window/campaign_difficulty.cfg:57
 msgid "Difficulty"
-msgstr "Vaikeusaste"
+msgstr "Vaikeusaste:"
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/campaign_difficulty.cfg:77
@@ -1333,7 +1333,7 @@ msgstr "Katso keskusteluhistoria"
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
 msgid "Page:"
-msgstr "Viesti:"
+msgstr "Viesti: "
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:69
@@ -1525,7 +1525,7 @@ msgstr "Editorin asetukset"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:53
 msgid "Time of day lighting preset:"
-msgstr "Vuorokaudenajan esiasetus:"
+msgstr "Vuorokaudenajan esiasetus"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
@@ -2043,7 +2043,7 @@ msgstr "Viestitys"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:69
 msgid "Message:"
-msgstr "Viesti:"
+msgstr "Viesti: "
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:141
@@ -2068,7 +2068,7 @@ msgstr "Moderointi"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:271
 msgid "Reason:"
-msgstr "Syy:"
+msgstr "Syy: "
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:323
@@ -2106,12 +2106,12 @@ msgstr "Pelin nimi:"
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:148
 msgid "Players: "
-msgstr "Pelaajia: "
+msgstr "Pelaajia:"
 
 #. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:167
 msgid "Map size: "
-msgstr "Kartan koko: "
+msgstr "Kartan koko:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:185
@@ -2228,7 +2228,7 @@ msgstr ""
 "sinun täytyy antaa salasana vain, jos haluat käyttää rekisteröityä "
 "käyttäjätunnusta.\n"
 "\n"
-"Wesnothin foorumin löytää osoitteesta http://www.wesnoth.org/forum/"
+"Wesnothin foorumin löytää osoitteesta http://forums.wesnoth.org/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:146
@@ -2420,7 +2420,7 @@ msgstr "Rotu"
 
 #: src/filechooser.cpp:77
 msgid "File: "
-msgstr "Tiedosto: "
+msgstr "Tiedosto:"
 
 #: src/filechooser.cpp:80
 msgid "Delete File"
@@ -2669,7 +2669,7 @@ msgstr "Muuta puskurin kokoa"
 
 #: src/game_preferences_display.cpp:297 src/game_preferences_display.cpp:896
 msgid "Buffer size: "
-msgstr "Puskurin koko: "
+msgstr "Puskurin koko:"
 
 #: src/game_preferences_display.cpp:304
 msgid "Change the speed of scrolling around the map"
@@ -2840,11 +2840,11 @@ msgstr "Katso ja muokkaa pikanäppäimiä"
 
 #: src/game_preferences_display.cpp:760
 msgid "Speed: "
-msgstr "Nopeus: "
+msgstr "Nopeus:"
 
 #: src/game_preferences_display.cpp:765 src/game_preferences_display.cpp:767
 msgid "Maximum auto-saves: "
-msgstr "Automaattitallennuksien maksimimäärä: "
+msgstr "Automaattitallennuksien maksimimäärä:"
 
 #: src/game_preferences_display.cpp:765
 msgid "infinite"
@@ -3049,11 +3049,11 @@ msgstr "Skenaarion tavoitteet"
 
 #: src/gui/dialogs/game_load.cpp:320
 msgid "Difficulty: "
-msgstr "Vaikeusaste: "
+msgstr "Vaikeusaste:"
 
 #: src/gui/dialogs/game_load.cpp:324
 msgid "Version: "
-msgstr "Versio: "
+msgstr "Versio:"
 
 #: src/gui/dialogs/lobby_main.cpp:230
 msgid "whisper to $receiver"
@@ -3101,7 +3101,7 @@ msgstr "Liittyminen tähän peliin vaatii salasanan"
 
 #: src/gui/dialogs/lobby_main.cpp:1573
 msgid "Password: "
-msgstr "Salasana: "
+msgstr "Salasana:"
 
 #: src/gui/dialogs/message.cpp:190 src/gui/dialogs/transient_message.cpp:62
 msgid "Error"
@@ -3799,7 +3799,7 @@ msgstr ""
 
 #: src/text.cpp:719
 msgid "The text contains invalid markup: "
-msgstr "Teksti sisältää virheellisiä merkintöjä: "
+msgstr "Teksti sisältää virheellisiä merkintöjä:"
 
 #: src/wml_exception.cpp:60
 msgid ""
@@ -3807,7 +3807,7 @@ msgid ""
 "The error message is :"
 msgstr ""
 "Virhe mahdollisesti epäkelvosta WML:stä johtuen\n"
-"Virheviesti:"
+"Virheviesti: "
 
 #: src/wml_exception.cpp:62
 msgid "When reporting the bug please include the following error message :"
@@ -3867,7 +3867,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Saved preference:"
-#~ msgstr "Käytössä oleva teema:"
+#~ msgstr "Käytössä oleva teema: "
 
 #~ msgid "Add waypoint"
 #~ msgstr "Lisää etappi"
@@ -3891,7 +3891,7 @@ msgstr ""
 #~ msgstr "Lähetä yksityisviesti"
 
 #~ msgid "Name: "
-#~ msgstr "Nimi: "
+#~ msgstr "Nimi:"
 
 #~ msgid "Enable scroll tracking of unit actions"
 #~ msgstr "Kytke yksikkötoimintojen vieritystarkkailu päälle/pois"
