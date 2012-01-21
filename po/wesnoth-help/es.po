@@ -22,9 +22,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-11-16 12:43+0100\n"
-"PO-Revision-Date: 2012-01-07 11:43+0100\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2012-01-08 18:12+0100\n"
+"PO-Revision-Date: 2012-01-20 19:38+0100\n"
+"Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -173,11 +173,13 @@ msgstr "<ref>dst='..geography' text='Geografía'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
+#, fuzzy
 msgid "Caste"
 msgstr "Casta"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:8
+#, fuzzy
 msgid ""
 "One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
 "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
@@ -197,6 +199,7 @@ msgstr "Aeria"
 # Ver futuras notas acerca del significado de "breed".
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
+#, fuzzy
 msgid ""
 "A very large castle-like structure that is home to a <ref>dst='flight' "
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
@@ -596,7 +599,7 @@ msgstr ""
 #: data/core/encyclopedia/drakes.cfg:139
 #, fuzzy
 msgid "Swarm"
-msgstr "enjambre"
+msgstr "Enjambre"
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:140
@@ -648,20 +651,23 @@ msgstr "Monte Morogor"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
+#, fuzzy
 msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
-"Montaña volcánica en la isla central del archipielado <ref>dst='morogor' "
+"Volcán en la isla central del archipielado <ref>dst='morogor' "
 "text='Morogor'</ref>."
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
+#, fuzzy
 msgid "Long Count"
 msgstr "Larga cuenta"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
+#, fuzzy
 msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
@@ -671,11 +677,13 @@ msgstr ""
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
+#, fuzzy
 msgid "Long Pig"
 msgstr "Gran cochino"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:170
+#, fuzzy
 msgid ""
 "South Seas pidgin for human meat, used to translate a Drakish word with the "
 "same meaning."
@@ -685,6 +693,7 @@ msgstr ""
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
+#, fuzzy
 msgid "Ceramics"
 msgstr "Cerámica"
 
@@ -709,6 +718,7 @@ msgstr "Dracónica, escritura"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
+#, fuzzy
 msgid ""
 "The scripted language of the drakes. Stored on <ref>dst='ceramic' "
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
@@ -726,6 +736,7 @@ msgstr "Dracónico, lenguaje"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:188
+#, fuzzy
 msgid "The language spoken by the drakes."
 msgstr "La lengua hablada por los dracos."
 
@@ -1078,7 +1089,7 @@ msgstr ""
 "    • Accidentes geográficos de importancia:\n"
 "          ◦ Las montañas profundas: Una barrera virtualmente insalvable "
 "entre las tierras a la linde del río y las llanuras del norte.\n"
-"          ◦Fauces recónditas: extensión, especialmente abrupta, de altas "
+"          ◦ Fauces recónditas: extensión, especialmente abrupta, de altas "
 "cumbres, al sudoeste del lago Vrug, al norte del bosque de Wesmere. Zona "
 "inhóspita de las montañas profundas debido a su peligrosidad; únicamente "
 "magos, eremitas, y dementes osan recluirse allí.\n"
@@ -1125,7 +1136,7 @@ msgstr ""
 "    • Ciudades notables:\n"
 "          ◦ Ninguna conocida.\n"
 "    • Accidentes geográficos de importancia:\n"
-"          ◦ EL bosque de Aethen: El mayor bosque al sur, se extiende lejos "
+"          ◦ El bosque de Aethen: El mayor bosque al sur, se extiende lejos "
 "hacia el sudoeste - mucho más lejos de lo trazado - y es el hogar de "
 "<ref>dst='..race_elf' text='los elfos'</ref>."
 
@@ -1493,19 +1504,6 @@ msgstr "Reclutar y reincorporar"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1523,25 +1521,16 @@ msgstr ""
 "text='unidades'</ref> para su ejército. Para ello, ha de tener a su líder "
 "(por ejemplo, Konrad en la campaña <italic>text='Heredero al trono'</"
 "italic>») en la casilla del torreón de un <ref>dst='terrain_castle' "
-"text='castillo'</ref>. Entonces podrá reclutar tan sólo con escoger "
+"text='castillo'</ref>. Entonces podrá reclutar tan sólo con seleccionar "
 "«<bold>text='Reclutar'</bold>» en el menú, o bien pulsando el botón derecho "
-"en un hexágono y seleccionando la opción «<bold>text='Reclutar'</bold>». Al "
-"hacer esto, se mostrará el menú de reclutamiento, donde se listan las "
-"unidades disponibles para reclutar, junto con su coste en piezas de oro. "
+"del ratón en un hexágono y seleccionando la opción «<bold>text='Reclutar'</"
+"bold>». Al hacer esto, se mostrará el menú de reclutamiento, donde se listan "
+"las unidades disponibles para reclutar, junto con su coste en piezas de oro. "
 "Haga clic en una unidad para ver sus estadísticas, y luego presione el botón "
-"Reclutar para hacerlo."
+"«<bold>text='Reclutar'</bold>» para hacerlo."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1552,7 +1541,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Si ha pinchado con el botón derecho en un hexágono del castillo y "
+"Si ha pinchado con el botón derecho del ratón en un hexágono del castillo y "
 "seleccionado reclutar, la nueva unidad aparecerá en esa casilla. De no haber "
 "sido así, aparecerá en una casilla libre cerca del torreón. Sólo puede "
 "reclutar tantas unidades como hexágonos libres tenga de castillo, y no puede "
@@ -1700,7 +1689,6 @@ msgstr "Movimiento"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:205
-#, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1715,25 +1703,24 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"El movimiento en La Batalla por Wesnoth es simple. Seleccione con el ratón "
-"la unidad que desea mover y a continuación el hexágono donde desea que se "
-"mueva. Cuando esté seleccionada una unidad, se iluminan todos los hexágonos "
-"a los que puede moverse, y se oscurecen aquellos a los que no. Al llevar el "
-"ratón a uno de los hexágonos iluminados, aparecerá el valor de defensa que "
-"tendría la unidad en caso de encontrarse en él. Si llevamos el ratón a uno "
-"de los hexágonos oscuros aparecerá el número de turnos que la unidad "
-"necesitará para llegar hasta allí, y si pincha en él hará que la unidad se "
-"mueva hacia allá por el camino más rápido durante el turno en curso y los "
-"siguientes. Si no utiliza todo el movimiento de la unidad en el primer "
-"movimiento, es posible moverla de nuevo. Esto es útil cuando se desea "
-"intercambiar el lugar de dos unidades. Atacar con una unidad utiliza todo su "
-"movimiento. Acabar el movimiento en una aldea que no era de nuestra "
-"propiedad también usará todo el movimiento de la unidad, pero todavía podrá "
-"atacar."
+"El movimiento en <italic>text='La batalla por Wesnoth'</italic> es simple. "
+"Seleccione con el ratón la unidad que desea mover y a continuación el "
+"hexágono donde desea que se mueva. Cuando esté seleccionada una unidad, se "
+"iluminan todos los hexágonos a los que puede moverse, y se oscurecen "
+"aquellos a los que no. Al llevar el ratón a uno de los hexágonos iluminados, "
+"aparecerá el valor de defensa que tendría la unidad en caso de encontrarse "
+"en él. Si llevamos el ratón a uno de los hexágonos oscuros aparecerá el "
+"número de turnos que la unidad necesitará para llegar hasta allí, y si "
+"pincha en él hará que la unidad se mueva hacia allá por el camino más rápido "
+"durante el turno en curso y los siguientes. Si no utiliza todo el movimiento "
+"de la unidad en el primer movimiento, es posible moverla de nuevo. Esto es "
+"útil cuando se desea intercambiar el lugar de dos unidades. Atacar con una "
+"unidad utiliza todo su movimiento. Acabar el movimiento en una aldea que no "
+"era de nuestra propiedad también usará todo el movimiento de la unidad, pero "
+"todavía podrá atacar."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1763,7 +1750,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1777,13 +1763,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Otra cosa que hay que tener presente durante el movimiento son las Zonas de "
-"Control. Cada unidad genera una zona de control en los 6 hexágonos que la "
-"rodean, y cualquier unidad enemiga que entre en esos hexágonos terminará "
-"inmediatamente su movimiento. Es importante que aprenda a utilizar y "
-"aprovechar las zonas de control en Wesnoth, ya que las únicas unidades que "
-"pueden ignorarlas son aquellas con la habilidad de "
-"<ref>dst='ability_skirmisher' text='hostigar'</ref>."
+"Otra cosa que hay que tener presente durante el movimiento son las "
+"<italic>text='zonas de control'</italic>. Cada unidad genera una zona de "
+"control en los 6 hexágonos que la rodean, y cualquier unidad enemiga que "
+"entre en esos hexágonos terminará inmediatamente su movimiento. Es "
+"importante que aprenda a utilizar y aprovechar las zonas de control en "
+"Wesnoth, ya que las únicas unidades que pueden ignorarlas son aquellas con "
+"la habilidad de <ref>dst='ability_skirmisher' text='hostigar'</ref>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
@@ -1807,7 +1793,6 @@ msgstr "Oscuridad y niebla de guerra"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:221
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1831,27 +1816,28 @@ msgid ""
 "movement."
 msgstr ""
 "En algunos escenarios, habrá partes del mapa que estarán ocultas. Hay dos "
-"mecanismos que pueden usarse juntos o por separado. La oscuridad oculta "
-"tanto el terreno como cualquier unidad que exista en un lugar dado. No "
-"obstante, una vez despejada, siempre será posible ver dicho lugar. La niebla "
-"de guerra sólo oculta las unidades y los dueños de las aldeas (cuando no "
-"pertenezcan al jugador o a sus aliados). La niebla de guerra se despeja "
-"temporalmente cuando hay unidades propias en las cercanías, pero regresa "
-"cuando estas unidades se alejan. Tanto la oscuridad como la niebla de guerra "
-"son levantadas mediante la presencia de unidades. Cada unidad ilumina los "
-"lugares adyacentes a los que puede moverse en un turno (sin tener en cuenta "
-"las zonas de control y las unidades enemigas).\n"
+"mecanismos que pueden usarse juntos o por separado. La "
+"<italic>text='oscuridad</italic> oculta tanto el terreno como cualquier "
+"unidad que exista en un lugar dado. No obstante, una vez despejada, siempre "
+"será posible ver dicho lugar. La <italic>text='niebla de guerra</italic> "
+"sólo oculta las unidades y los dueños de las aldeas (cuando no pertenezcan "
+"al jugador o a sus aliados). La niebla de guerra se despeja temporalmente "
+"cuando hay unidades propias en las cercanías, pero regresa cuando estas "
+"unidades se alejan. Tanto la oscuridad como la niebla de guerra son "
+"levantadas mediante la presencia de unidades. Cada unidad divisa los lugares "
+"adyacentes a los que puede moverse en un turno (sin tener en cuenta las "
+"zonas de control y las unidades enemigas).\n"
 "\n"
 "Normalmente es posible deshacer el movimiento de una unidad, siempre que no "
 "se haya dado un evento con un resultado aleatorio, como un combate o un "
 "reclutamiento (dado que muchas unidades reciben rasgos al azar cuando son "
 "reclutadas). El explorar terreno oculto limpiando la oscuridad o la niebla "
 "también impedirá volver a un estado previo. Puede ser deseable activar la "
-"opción «retardar refresco de zonas oscuras» en el menú de acciones. Esto "
-"impedirá que las unidades limpien la oscuridad o la niebla hasta el próximo "
-"evento aleatorio o hasta una actualización manual mediante «actualizar zonas "
-"oscuras» (o el fin de tu turno) preservando así la posibilidad de deshacer "
-"movimientos."
+"opción <bold>text='retardar refresco de zonas oscuras</bold> en el menú de "
+"acciones. Esto impedirá que las unidades limpien la oscuridad o la niebla "
+"hasta el próximo evento aleatorio o hasta una actualización manual mediante "
+"<bold>text='actualizar zonas oscuras</bold> (o el fin de tu turno) "
+"preservando así la posibilidad de deshacer movimientos."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:228
@@ -1860,7 +1846,6 @@ msgstr "Combate"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:229
-#, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -1873,20 +1858,20 @@ msgid ""
 "as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"El combate en la batalla por Wesnoth siempre tiene lugar entre unidades en "
-"hexágonos adyacentes. Seleccione su unidad, y después seleccione con el "
-"ratón el enemigo al que desea atacar. Su unidad se moverá hacia la unidad "
-"enemiga, y cuando estén al lado uno de otro, comenzará el combate. El "
-"atacante y el defensor intercambian ataques hasta que los dos hayan usado su "
-"número máximo de ataques. El atacante escoge una de sus armas para atacar, y "
-"el defensor le contesta con un ataque del mismo tipo. Hay dos tipos de "
-"ataques: cuerpo a cuerpo, que normalmente se hace con armas como espadas, "
-"hachas o colmillos, y a distancia, que se realiza con arcos, jabalinas o "
+"El combate en <italic>text='La batalla por Wesnoth'</italic> siempre tiene "
+"lugar entre unidades en hexágonos adyacentes. Seleccione su unidad, y "
+"después seleccione con el ratón el enemigo al que desea atacar. Su unidad se "
+"moverá hacia la unidad enemiga, y cuando estén al lado uno de otro, "
+"comenzará el combate. El atacante y el defensor intercambian ataques hasta "
+"que los dos hayan usado su número máximo de ataques. El atacante escoge una "
+"de sus armas para atacar, y el defensor le contesta con un ataque del mismo "
+"tipo. Hay dos tipos de ataques: <italic>text='cuerpo a cuerpo'</italic>, que "
+"normalmente se hace con armas como espadas, hachas o colmillos, y "
+"<italic>text='a distancia'</italic>, que se realiza con arcos, jabalinas o "
 "bolas de fuego."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:231
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1898,7 +1883,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1923,7 +1907,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:235
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1931,11 +1914,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Probabilidad de acierto'</header>"
+"<header>text='Probabilidad de golpear'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1949,19 +1931,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"La probabilidad de golpear a una unidad siempre está basada de forma única "
-"en el valor de defensa del terreno en el que está. Este valor se muestra en "
-"el panel de estado, o también si se pulsa con el botón derecho en una "
-"unidad, se selecciona Descripción de unidad y allí se mira en "
-"<italic>text='Modificadores por terreno'</italic>. Por ejemplo, la mayoría "
-"de los elfos tienen un valor de defensa en bosques de un 70%, lo cual "
-"significa que una unidad que los ataque sólo tiene una probabilidad de un "
-"30% de acertar. Asimismo, la probabilidad del elfo de acertar vendrá dada "
-"por el tipo de terreno en el que esté su atacante."
+"La probabilidad de golpear a una unidad está relacionada con el valor de "
+"defensa del <italic>text='terreno'</italic> en el que se encuentra. Este "
+"valor se muestra en el panel de estado, o también si se pulsa con el botón "
+"derecho en una unidad, se selecciona <bold>text='Descripción'</bold> de "
+"unidad y allí se mira en <bold>text='Modificadores por terreno'</bold>. Por "
+"ejemplo, la mayoría de los elfos tienen un valor de defensa en bosques de un "
+"70%, lo cual significa que una unidad que los ataque sólo tiene una "
+"probabilidad de un 30% de acertar. Asimismo, la probabilidad de golpear del "
+"elfo vendrá dada por el tipo de terreno en el que esté su atacante."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2039,7 +2020,6 @@ msgstr "Tipos de daño y resistencia"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:252
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2049,10 +2029,10 @@ msgid ""
 "they take from certain damage types."
 msgstr ""
 "En Wesnoth, hay tres tipos de daño asociados normalmente a ataques físicos: "
-"cortante (de corte), de penetración y de impacto. A estos tipos hay que "
-"sumar otros tres asociados comúnmente con ataques mágicos: de fuego, de "
-"frío, y arcano. Cada unidad puede tener resistencias especiales frente a los "
-"distintos tipos de ataques."
+"<italic>text='cortante (de corte), de penetración y de impacto'</italic>. A "
+"estos tipos hay que sumar otros tres asociados comúnmente con ataques "
+"mágicos: <italic>text='de fuego, de frío, y arcano'</italic>. Cada unidad "
+"puede tener resistencias especiales frente a los distintos tipos de ataques."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
@@ -2109,9 +2089,9 @@ msgstr ""
 msgid "Time of Day"
 msgstr "Hora del día"
 
+# No he puesto "ganan -25%" ya que el resultado es extraño (no para mi mente matemática sino para la de jugador).
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -2123,7 +2103,9 @@ msgstr ""
 " Las unidades legales ganan un +25% de daño durante el día y un −25% durante "
 "la noche.\n"
 " Las unidades caóticas ganan un +25% de daño de noche y un −25% de día.\n"
-" Las unidades neutrales no se ven afectadas por la hora del día."
+" Las unidades neutrales no se ven afectadas por la hora del día.\n"
+" Las unidades crepusculares causan -25% de daño tanto de día como durante la "
+"noche."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
@@ -2917,9 +2899,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Torpe es un rasgo bastante común entre los goblins y otras especies menores; "
-"hay varias razones para ser consideradas menores, y este rasgo es una de "
-"ellas."
+"Obtuso es un rasgo bastante común entre los goblins y otras especies "
+"menores; hay varias razones para ser consideradas menores, y este rasgo es "
+"una de ellas."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:462
@@ -3860,9 +3842,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Elimina la prohibición de acceso a un usuario y a la dirección IP que usa "
-"ese nombre de usuario. Puede usarse en usuarios que no estén en el juego "
-"pero sí en el servidor.\n"
+"Elimina el veto a un usuario y a la dirección IP que usa ese nombre de "
+"usuario. Puede usarse en usuarios que no estén en el juego pero sí en el "
+"servidor.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -4244,7 +4226,7 @@ msgid ""
 msgstr ""
 "Ocultación:\n"
 "Esta unidad puede ocultarse en aldeas (con la excepción de aldeas "
-"sumergidas), y permanecer indetectable para sus enemigos, salvo para "
+"sumergidas), y permanecer ilocalizable para sus enemigos, salvo para "
 "aquellos adyacentes a ella.\n"
 "\n"
 "Las unidades enemigas no pueden ver a esta unidad cuando se encuentra en una "
@@ -5060,12 +5042,13 @@ msgstr ""
 msgid "race^Drake"
 msgstr "Draco"
 
+# Darkmage→ "La cuestión es que de acuerdo con la «enciclopedia» (línea 60~) los draco hembra son los 'breeders', y no drake, como muestra el archivo."
+# Lo dejo en estado difuso.
 # Perseo-> "Draco hembra y marchando"
 # Weird!
 # Draca sounds weird, yet, drakes' lore is a "work in progress".
 #. [race]: id=drake
 #: data/core/units.cfg:55
-#, fuzzy
 msgid "race+female^Drake"
 msgstr "Draco hembra"
 
@@ -5484,7 +5467,6 @@ msgstr "Grifo"
 # Myths do not really specify wether this creatures have gender or if it is diferentiated...
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:151
-#, fuzzy
 msgid "race+female^Gryphon"
 msgstr "Grifo hembra"
 
@@ -5750,7 +5732,6 @@ msgstr "Ogro"
 # Hum, weird, yet less weird than others...
 #. [race]: id=ogre
 #: data/core/units.cfg:242
-#, fuzzy
 msgid "race+female^Ogre"
 msgstr "Ogresa"
 
@@ -5798,11 +5779,11 @@ msgstr ""
 msgid "race^Orc"
 msgstr "Orco"
 
+# Darkmage→ De todos modos, no queremos confundirlo con ningún bicho marino [salvo el 'orco marino' de HaT, pero no cuenta xD]; y por lo visto, en ningún texto he visto referenciado "Mujer orco" como traducción, salvo para el WoW... supongo que es aceptable.
 # Perseo-> "Las orcas no son tan grandes, mujer orco, como en el de los otros"
 # Humm! Las orcas, esos animales marinos tan grandes... Realmente da lugar a confusión...
 #. [race]: id=orc
 #: data/core/units.cfg:253
-#, fuzzy
 msgid "race+female^Orc"
 msgstr "Mujer orco"
 
