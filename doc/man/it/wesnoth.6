@@ -50,11 +50,12 @@ con gli altri.
 imposta il numero di bit per pixel. Esempio: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign \ [<id_campaign>]\fP
-goes directly to the campaign with id <id_campaign>. A selection
-menu will appear if no id was specified.  \fBNote:\fP When using this switch
-please ensure that you specify the data directory path as the final argument
-aswell, otherwise the game will take the campaign/scenario id as the data
-dir.
+salta direttamente alla campagna con identificatore
+<id_campaign>. Se non si specifica un identificatore, comparirà un
+menù dal quale sarà possibile selezionare una campagna. \fBNota:\fP Quando si
+usa questo switch, verifica attentamente di aver messo come ultimo parametro
+la directory dei dati, altrimenti il gioco scambierà l'identificatore della
+campagna/scenario per la directory.
 .TP 
 \fB\-\-campaign\-difficulty <difficulty>\fP
 The difficulty of the specified campaign (1 to max). If none specified, the
@@ -243,9 +244,9 @@ imposta il numero di turni per lo scenario scelto. L'impostazione standard è
 .
 .SH "STATO DI USCITA"
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video,
-fonts, etc) initialization error. An exit status of 2 indicates an error
-with the command line options.
+Il nosrmale stato di uscita è 0. Uno stato di uscita pari a 1 indica un
+errore di inizializzazione (SDL, video, fonts, etc.). Uno stato di uscita
+pari a 2 indica un errore con le opzioni della linea di comando.
 .
 .SH AUTORE
 .

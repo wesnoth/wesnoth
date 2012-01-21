@@ -1,0 +1,265 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2011 wesnoth "Taistelu Wesnothista"
+.
+.SH NIMI
+wesnoth – Taistelu Wesnothista, vuoropohjainen fantasiastrategiapeli
+.
+.SH TIIVISTELMÄ
+.
+\fBwesnoth\fP [\fIVALITSIMET\fP] [\fIDATAHAKEMISTO\fP]
+.
+.SH KUVAUS
+.
+Taistelu \fBWesnothista\fP on vuoropohjainen fantasiastrategiapeli.
+
+Kukista kaikki vihollisjohtajat käyttäen tarkoin valittua ydinjoukkoa ja
+huolehdi samalla kulta\- ja kyläresursseistasi. Kaikilla yksiköillä on omat
+vahvuutensa ja heikkoutensa; järjestä joukkosi mahdollisimman edullisiin
+asemiin estäen samalla vastustajia tekemästä samoin. Kerätessään kokemusta
+yksiköt oppivat uusia taitoja ja kehittyvät voimakkaammiksi. Pelaa omalla
+kielelläsi ja testaa taitojasi älykästä tietokonevastustajaa vastaan tai
+liity Wesnothin suureen nettipelaajien yhteisöön. Luo omia, uudenlaisia
+yksiköitä, skenaarioita tai kampanjoitasi ja jaa ne muiden pelaajien kanssa.
+.
+.SH VALITSIMET
+.
+.TP 
+\fB\-\-bpp\fP\fI\ luku\fP
+Asettaa värisyvyyden (bits per pixel). Esimerkki: \fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign \ [<kampanjan_tunniste>]\fP
+aloittaa suoraan kampanjasta, jonka tunniste on
+<kamppanjan_tunniste>. Kampanjavalikko näytetään, jos tunnistetta ei
+ole määritetty. \fBHuom:\fP Käyttäessäsi tätä kytkintä, varmista, että
+datahakemiston polku on viimeisenä argumenttina. Muuten peli olettaa, että
+kampanjan/ skenaarion tunniste on myös datahakemisto.
+.TP 
+\fB\-\-campaign\-difficulty <vaikeustaso>\fP
+Annetun kampanjan vaikeustaso (1:stä maksimiin). Jos vaikeustasoa ei ole
+annettu, näytetään vaikeustason valikko.
+.TP 
+\fB\-\-campaign\-scenario <skenaarion_tunniste>\fP
+Skenaarion tunniste annetussa kampanjassa. Oletusarvo on ensimmäinen
+kampanja.
+.TP 
+\fB\-\-config\-dir\fP\fI\ nimi\fP
+Asettaa käyttäjän asetushakemiston \fInimi\fP hakemistossa $HOME tai windowsin
+kansiossa ”Omat tiedostot\eMy Games”. Voit myös määrittää asetushakemiston
+tiedostopolun muualle, kuin $HOME tai "Omat tiedostot\eMy Games"
+.TP 
+\fB\-\-config\-path\fP
+Näyttää käyttäjän asetushakemiston polun ja lopettaa.
+.TP 
+\fB\-\-data\-dir <hakemisto>\fP
+korvaa datahakemiston annetulla polulla
+.TP 
+\fB\-d, \-\-debug\fP
+Mahdollistaa ylimääräisiä komentotila\-asetuksia pelissä. (Katso wiki\-sivulta
+http://www.wesnoth.org/wiki/CommandMode lisätietoja komentotilasta.)
+.TP 
+\fB\-e,\ \-\-editor\fP\fI\ tiedosto\fP
+Käynnistää pelinsisäisen karttaeditorin suoraan. Jos \fItiedosto\fP on
+syötetty, komento vastaa komentoa \fB\-e \-\-load\fP
+.TP 
+\fB\-\-fps\fP
+Näyttää pelin kuvanpäivitysnopeuden (frames per second, päivityksiä
+sekunnissa) ruudun kulmassa.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+Käynnistää pelin kokoruututilassa.
+.TP 
+\fB\-\-gunzip\fP\fI\ syötetiedosto.gz\fP
+Purkaa tiedoston, jonka tulisi olla gzip\-muodossa, ja tallentaa sen ilman
+\&.gz\-päätettä. Poistaa \fIsyötetiedosto.gz\fP:n.
+.TP 
+\fB\-\-gzip\fP\fI\ syötetiedosto\fP
+Pakkaa tiedoston gzip\-muodossa, tallentaa sen nimellä \fIsyötetiedosto\fP.gz ja
+poistaa \fIsyötetiedoston\fP.
+.TP 
+\fB\-h, \-\-help\fP
+Näyttää koosteen komentorivivalitsimista ja lopettaa.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ tiedosto\fP
+Lataa tallennuksen \fItiedosto\fP normaalista tallennushakemistosta. Jos
+valitsinta \fB\-e\fP tai \fB\-\-editor\fP käytetään myös, käynnistää editorin
+\fItiedosto\fPssa oleva kartta avattuna. Jos kyseessä on hakemisto, käynnistää
+editorin kartanlatausdialogi avoinna.
+.TP 
+\fB\-\-log\-\fP\fItaso\fP\fB=\fP\fIaihealue1\fP\fB,\fP\fIaihealue2\fP\fB,\fP\fI...\fP
+Asettaa vakavuusasteen lokin aihealueille. Sana \fBall\fP vastaa kaikkia
+aihealueita. Käytettävissä olevat tasot: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Oletuksena käytetään tasoa \fBerror\fP.
+.TP 
+\fB\-\-logdomains\fP
+listaa määritetyt lokit (vain sellaiset, jotka sisältää \fBfilter\fP, jos sitä
+käytetään) ja sulkee ohjelman
+.TP 
+\fB\-\-max\-fps\fP
+Asettaa enimmäisarvon kuvanpäivitysten määrälle sekunnissa. Arvon tulee olla
+väliltä 1–1000. Oletus on \fB50\fP.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+Käynnistää moninpelin. Joitakiin valitsimia voi yhdistää valitsimen
+\fB\-\-multiplayer\fP kanssa, kuten alla selitetään. Vain nämä valinnaiset
+valitsimet voivat olla tämän valitsimen jälkeen.
+.TP 
+\fB\-\-no\-delay\fP
+Käynnistää pelin ilman viiveitä graafisen suorituskyvyn mittausta
+varten. Tämä on automaattisesti päällä käytettäessä valitsinta \fB\-\-nogui\fP.
+.TP 
+\fB\-\-nocache\fP
+Estää välimuistin luomisen pelidatasta.
+.TP 
+\fB\-\-nomusic\fP
+Käynnistää pelin ilman musiikkia.
+.TP 
+\fB\-\-nosound\fP
+Käynnistää pelin ilman ääniä ja musiikkia.
+.TP 
+\fB\-\-path\fP
+Näyttää pelidatahakemiston nimen ja lopettaa.
+.TP 
+\fB\-\-preprocess, \-p[=<määritys1>,<määritys2>,...] <tiedosto/kansio> <kohdekansio>\fP
+esikäsittelee annetun tiedoston/kansion. Tiedosto(t) jotka kirjoitetaan
+annettuun kohdehakemistoon ovat käsittelemätön cfg tiedosto ja esikäsitelty
+cfg tiedosto. Tiedostot käsitellään rekursiivisesti perustuen
+esikäsittelijän sääntöihin, mikäli argumenttina on kansio. Perusmakrot
+data/core/macros kansiosta käsitellään ennen annettuja tiedostoja.
+\fBmääritys1,määritys2,...\fP \- lisämääritykset lisätään ennen tiedostojen
+käsittelyä. Jos haluat lisätä ne, käytä '=' merkkiä niiden edessä. Jos
+\&'SKIP_CORE' sisältyy määrityslistaan, data/core kansiota ei
+käsitellä. Esimerkit:  \fB\-p ~/wesnoth/data/campaigns/tutorial ~/tulos\fP tai
+\fB\-p=MULTIPLAYER,OMA_KAMPANJA ~/wesnoth/data/campaign/camp ~/tulos\fP
+.TP 
+\fB\-\-preprocess\-input\-macros <lähdetiedosto>\fP
+vain '\-\-preprocess' komento käyttää. Määrittää [preproc_define]:it
+sisältävän tiedoston, joka lisätään ennen esikäsittelyä.
+.TP 
+\fB\-\-preprocess\-output\-macros [<kohdetiedosto>]\fP
+vain '\-\-preprocess' komento käyttää. Tulostaa kaikki esikäsitellyt makrot
+kohdetiedostoon. Jos tiedostonimeä ei ole annettu, sen nimeksi annetaan
+\&'_MACROS.cfg', joka sijoitetaan esikäsittelykomennon kohdekansioon. Tätä
+kytkintä kannattaa käyttää ennen \-\-preprocess komentoa.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+Asettaa kuvatarkkuuden. Esimerkki: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [kone]\fP
+Ottaa yhteyden valittuun koneeseen, muutoin ottaa yhteyden ensimmäiseen
+palvelimeen asetuksissa. Esimerkki: \fB\-\-server server.wesnoth.org\fP
+.TP 
+\fB\-\-strict\-validation\fP
+kelpoisuusvirheitä käsitellään vakavina virheinä.
+.TP 
+\fB\-t, \-\-test\fP
+Käynnistää pelin pienessä testiskenaariossa.
+.TP 
+\fB\-\-validcache\fP
+Olettaa, että välimuisti on validi. (Vaarallista.)
+.TP 
+\fB\-v, \-\-version\fP
+Näyttää versionumeron ja lopettaa.
+.TP 
+\fB\-w, \-\-windowed\fP
+Käynnistää pelin ikkunoidussa tilassa.
+.TP 
+\fB\-\-with\-replay\fP
+Toistaa uusinnan pelistä, joka ladataan valitsimella \fB\-\-load\fP.
+.
+.SH "Valitsimen \-\-multiplayer kanssa käytettävät valitsimet"
+.
+Osapuolikohtaisissa moninpelivalitsimissa on \fInumero\fP\-kenttä. Se täytyy
+korvata puolen numerolla. Yleensä \fInumero\fP on 1 tai 2, mutta voi olla
+suurempikin riippuen valitun skenaarion mahdollisesta pelaajamäärästä.
+.TP 
+\fB\-\-ai_config\fP\fInumero\fP\fB=\fP\fIarvo\fP
+Valitsee asetustiedoston tekoälyn lataamiseksi tälle puolelle.
+.TP 
+\fB\-\-algorithm\fP\fInumero\fP\fB=\fP\fIarvo\fP
+Valitsee puolta kontrolloivalle tekoälylle tavallisesta poikkeavan
+algoritmin. Mahdollisia arvoja: \fBidle_ai\fP, \fBsample_ai\fP.
+.TP 
+\fB\-\-controller\fP\fInumero\fP\fB=\fP\fIarvo\fP
+Valitsee puolen kontrolloijan. Mahdolliset arvot ovat \fBhuman\fP ja \fBai\fP.
+.TP 
+\fB\-\-era=\fP\fIarvo\fP
+Tällä valitsimella voi valita pelattavan aikakauden oletusaikakauden
+sijaan. Aikakausi valitaan tunnisteen (id) perusteella. Aikakaudet on
+kuvattu tiedostossa \fBdata/multiplayer/eras.cfg\fP.
+.TP 
+\fB\-\-exit\-at\-end\fP
+Lopettaa skenaarion päätyttyä näyttämättä voitto\- tai häviöikkunaa, joka
+täytyisi sulkea klikkaamalla OK:ta. Tätä käytetään myös skriptatussa
+suorituskykytestauksessa.
+.TP 
+\fB\-\-nogui\fP
+Käynnistää pelin ilman graafista käyttöliittymää. Toimiakseen tämän täytyy
+olla valitsimen \fB\-\-multiplayer\fP edellä.
+.TP 
+\fB\-\-parm\fP\fInumero\fP\fB=\fP\fInimi\fP\fB:\fP\fIarvo\fP
+Asettaa puolelle lisäparametreja. Nämä parametrit riippuvat valitsimien
+\fB\-\-controller\fP ja \fB\-\-algorithm\fP arvoista. Tämä valitsin on todennäköisesti
+hyödyllinen vain oman tekoälyn kehittäjille. (Ei vielä dokumentoitu
+täydellisesti.)
+.TP 
+\fB\-\-scenario=\fP\fIarvo\fP
+Valitsee moninpeliskenaarion tunnisteen (id) perusteella. Oletustunniste on
+\fBmultiplayer_The_Freelands\fP.
+.TP 
+\fB\-\-side\fP\fInumero\fP\fB=\fP\fIarvo\fP
+Valitsee liittouman tälle puolelle käytössä olevalta aikakaudelta. Liittouma
+valitaan tunnisteen (id) perusteella. Liittoumat on kuvattu tiedostossa
+\fBdata/multiplayer.cfg\fP.
+.TP 
+\fB\-\-turns=\fP\fIarvo\fP
+Asettaa vuorojen määrän valittuun skenaarioon. Oletus on \fB50\fP.
+.
+.SH PALUUKOODI
+.
+Normaali paluukoodi on 0. paluukoodi 1 tarkoittaa (SDL, video, fonttien,
+jne.) aloitusvirhettä. Paluukoodi 2 tarkoittaa virhettä komentorivillä
+annetussa komennossa.
+.
+.SH TEKIJÄT
+.
+Kirjoittanut David White <davidnwhite@verizon.net>.
+.br
+Muokannut Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> ja Soliton <soliton.de@gmail.com>.
+Suomentanut Wesnothin suomennosryhmä
+(http://www.wesnoth.org/wiki/FinnishTranslation).
+.br
+Tämän manuaalin alkuperäisversion kirjoitti Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+Käy virallisella kotisivulla: http://www.wesnoth.org/
+.
+.SH TEKIJÄNOIKEUS
+.
+Copyright \(co 2003\-2012 David White <davidnwhite@verizon.net>
+.br
+This is Free Software; this software is licensed under the GPL version 2, as
+published by the Free Software Foundation.  There is NO warranty; not even
+for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+.
+.SH "KATSO MYÖS"
+.
+\fBwesnothd\fP(6).

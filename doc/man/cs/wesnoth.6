@@ -47,31 +47,29 @@ ostatními.
 \fB\-\-bpp\fP\fI\ číslo\fP
 nastavuje hodnotu BitsPerPixel \- počet bitů na bod. Příklad: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign \ [<id_campaign>]\fP
-goes directly to the campaign with id <id_campaign>. A selection
-menu will appear if no id was specified.  \fBNote:\fP When using this switch
-please ensure that you specify the data directory path as the final argument
-aswell, otherwise the game will take the campaign/scenario id as the data
-dir.
+\fB\-c, \-\-campaign \ [<id_tažení>]\fP
+přímo spouští tažení určené interním <id_tažení>. Pokud není id
+určeno, ukáže se menu pro výběr tažení.  \fBPoznámka:\fP Při použití tohoto
+parametru se prosím ujistěte, že je také jako poslední argument udán adresář
+s daty, jinak bude id tažení pochopeno jako tato cesta.
 .TP 
-\fB\-\-campaign\-difficulty <difficulty>\fP
-The difficulty of the specified campaign (1 to max). If none specified, the
-campaign difficulty selection widget will appear.
+\fB\-\-campaign\-difficulty <obtížnost>\fP
+Obtížnost určeného tažení (1 až max.). Pokud tento parametr není přítomen,
+ukáže se ve hře menu s výběrem obtížnosti.
 .TP 
-\fB\-\-campaign\-scenario <id_scenario>\fP
-The id of the scenario from the specified campaign. The default is the first
-scenario.
+\fB\-\-campaign\-scenario <id_scénáře>\fP
+určuje identifikátor scénáře v daném tažení. Výchozí hodnota je první
+scénář.
 .TP 
 \fB\-\-config\-dir\fP\fI\ jméno\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games"
+nastaví adresář s uživatelskými daty na \fIjméno\fP v $HOME nebo "Dokumenty\eMy
+Games" pod Windows. Můžete však také použít absolutní cestu.
 .TP 
 \fB\-\-config\-path\fP
 pouze zobrazí cestu k adresáři s konfiguračními soubory a skončí.
 .TP 
-\fB\-\-data\-dir <directory>\fP
-overrides the data directory with the one specified
+\fB\-\-data\-dir <adresář>\fP
+nastavuje adresář s daty hry
 .TP 
 \fB\-d, \-\-debug\fP
 umožňuje použít rozšiřující volby příkazového módu (více viz Wiki na
@@ -97,7 +95,7 @@ komprimuje soubor s uloženou hrou (soubor_se_hrou) do formátu gzip a uloží
 jej jako \fIsoubor_se_hrou\fP.gz a odstraní \fIsoubor_se_hrou\fP.
 .TP 
 \fB\-h, \-\-help\fP
-zobrazuje nápovědu k parametrům příkazové řádky.
+zobrazí nápovědu k parametrům příkazové řádky a skončí.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ soubor\fP
 načte uloženou hru \fIsoubor\fP ze standardního adresáře pro uložené hry. Pokud
@@ -110,9 +108,9 @@ nastavuje úroveň závažnosti pro jednotlivé kategorie. \fBall\fP znamená, �
 budou vypisovány všechny kategorie. Dostupné kategorie: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Implicitně je aktivována kategorie
 \fBerror\fP.
 .TP 
-\fB\-\-logdomains\ [filter]\fP
-lists defined log domains (only the ones containing \fBfilter\fP if used) and
-exits
+\fB\-\-logdomains\ [filtr]\fP
+vypíše definované logovací domény (pouze ty obsahující \fBfiltr\fP, pokud je
+udán) a skončí.
 .TP 
 \fB\-\-max\-fps\fP
 počet snímků za sekundu které může hra zobrazit, hodnota by měla náležet do
@@ -139,27 +137,26 @@ spustí hru bez zvuků a hudby.
 \fB\-\-path\fP
 pouze zobrazí cestu k adresáři s daty a skončí.
 .TP 
-\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
-preprocesses a specified file/folder. The file(s) will be written in
-specified target directory: a plain cfg file and a processed cfg file. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the data/core/macros will be
-preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
-extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  If 'SKIP_CORE' is in the define
-list the data/core won't be preprocessed.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result\fP or
-\fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+\fB\-\-preprocess, \-p[=<definice1>,<definice2>,...] <soubor/adresář> <cílový adresář>\fP
+předzpracuje určený soubor či adresář. Do určeného cílového adresáře budou
+zapsány soubor(y): původní soubor 'cfg' a předzpracovaný. Pokud je určen
+celý adresář, bude zpracován rekurzivně podle dostupných pravidel
+preprocesoru. Běžná makra z umístění data/core/macros budou předzpracována
+před udanými zdroji.  \fBdefinice1,definice2,...\fP \- tyto další definice budou
+přidány před zpracováním. Pokud je zamýšlíte použít, musíte použít znak
+\&'='. Pokud zde bude definováno 'SKIP_CORE', nebude použit obsah data/core.
+Příklad: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result\fP nebo
+\fB\-p=MULTIPLAYER,MOJE_TAZENI ~/wesnoth/data/campaign/camp ~/result\fP
 .TP 
-\fB\-\-preprocess\-input\-macros <source file>\fP
-used only by the '\-\-preprocess' command.  Specifies a file that contains
-[preproc_define]s to be included before preprocessing.
+\fB\-\-preprocess\-input\-macros <zdrojový soubor>\fP
+použito pouze příkazem '\-\-preprocess'. Určuje soubor, který obsahuje data
+[preproc_define] pro použití před zpracováním.
 .TP 
-\fB\-\-preprocess\-output\-macros [<target file>]\fP
-used only by the '\-\-preprocess' command.  Will output all preprocessed
-macros in the target file. If the file is not specified the output will be
-file '_MACROS_.cfg' in the target directory of preprocess's command.  This
-switch should be typed before the \-\-preprocess command.
+\fB\-\-preprocess\-output\-macros [<cílový soubor>]\fP
+používáno pouze příkazem '\-\-preprocess'. Vypíše všechna předzpracovaná makra
+do cílového souboru. Pokud není soubor udán, výstup je uložen do souboru
+\&'_MACROS_.cfg' v cílovém adresáři příkazu preprocesoru. Tento parametr by
+měl být použit před '\-\-preprocess'.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastavuje rozlišení. Příklad: \fB\-r 800x600\fP
@@ -169,7 +166,7 @@ přeskočí menu, připojí se k určenému hostiteli (pokud byl určen) nebo
 prvnímu serveru v nastavení. Příklad: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-\-strict\-validation\fP
-validation errors are treated as fatal errors.
+chyby validace jsou brány jako fatální.
 .TP 
 \fB\-t, \-\-test\fP
 spouští hru v malém testovacím scénáři.

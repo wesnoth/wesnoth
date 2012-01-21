@@ -47,20 +47,18 @@ sa drugim igračima.
 \fB\-\-bpp\fP\fI\ broj\fP
 postavlja vrijednost BitsPerPixel. Primjer: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign \ [<id_campaign>]\fP
-goes directly to the campaign with id <id_campaign>. A selection
-menu will appear if no id was specified.  \fBNote:\fP When using this switch
-please ensure that you specify the data directory path as the final argument
-aswell, otherwise the game will take the campaign/scenario id as the data
-dir.
+\fB\-c, \-\-campaign  \ [<id\-pohoda>]\fP
+skače direktno na pohod sa ID\-om <id\-pohoda>. Ako se ID ne zada,
+pojaviće se meni za izbor. \fBNapomena:\fP Pri upotrebi ove opcije morate
+zadati i putanju direktorijuma podataka kao poslednji argument, inače će ID
+pohoda ili scenarija biti shvaćen kao direktorijum podataka.
 .TP 
-\fB\-\-campaign\-difficulty <difficulty>\fP
-The difficulty of the specified campaign (1 to max). If none specified, the
-campaign difficulty selection widget will appear.
+\fB\-\-campaign\-difficulty <težina>\fP
+težina zadatog pohoda (od 1 do najveće). Ako se ne zada, pojaviće se dijalog
+za izbor težine pohoda.
 .TP 
-\fB\-\-campaign\-scenario <id_scenario>\fP
-The id of the scenario from the specified campaign. The default is the first
-scenario.
+\fB\-\-campaign\-scenario <id\-scenarija>\fP
+ID scenarija iz zadatog pohoda. Podrazumevan je prvi scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ ime\fP
 zadaje postavni direktorijum \fIime\fP, pod $HOME ili "Moji dokumenti\eMoje
