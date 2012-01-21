@@ -705,7 +705,7 @@ static surface get_hexed(const locator& i_locator)
 	surface image(get_image(i_locator, UNSCALED));
 	// hex cut tiles, also check and cache if empty result
 	bool is_empty = false;
-	surface res = mask_surface(image, get_hexmask(), &is_empty);
+	surface res = mask_surface(image, get_hexmask(), &is_empty, i_locator.get_filename());
 	i_locator.add_to_cache(is_empty_hex_, is_empty);
 	return res;
 }
