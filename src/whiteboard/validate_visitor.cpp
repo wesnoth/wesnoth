@@ -90,12 +90,8 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 
 	//check if the unit in the source hex has the same unit id as before,
 	//i.e. that it's the same unit
-	if (m.unit_id_ != unit_it->id())
+	if (m.unit_id_ != unit_it->id() || m.unit_underlying_id_ != unit_it->underlying_id())
 		return WORTHLESS;
-
-	//Now that we've reliably identified the unit owning this planned move, update the
-	//pointer in case there has been some funny business in the unit map
-	m.unit_ = &*unit_it;
 
 	//check that the path is good
 	if (m.get_source_hex() != m.get_dest_hex()) //skip zero-hex move used by attack subclass
@@ -301,7 +297,6 @@ void validate_visitor::visit(suppose_dead_ptr sup_d)
 		if(unit_it == resources::units->end())
 		{
 			sup_d->set_valid(false);
-			sup_d->unit_ = NULL;
 		}
 	}
 
@@ -310,7 +305,6 @@ void validate_visitor::visit(suppose_dead_ptr sup_d)
 	if(sup_d->valid_ && sup_d->unit_id_ != unit_it->id())
 	{
 		sup_d->set_valid(false);
-		sup_d->unit_ = NULL;
 	}
 
 	if(!sup_d->valid_)

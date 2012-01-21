@@ -61,7 +61,7 @@ std::ostream& move::print(std::ostream &s) const
 move::move(size_t team_index, bool hidden, unit& u, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 : action(team_index,hidden),
-  unit_(&u),
+  unit_underlying_id_(u.underlying_id()),
   unit_id_(),
   route_(new pathfind::marked_route(route)),
   movement_cost_(0),
@@ -84,7 +84,7 @@ move::move(size_t team_index, bool hidden, unit& u, const pathfind::marked_route
 
 move::move(config const& cfg, bool hidden)
 	: action(cfg,hidden)
-	, unit_()
+	, unit_underlying_id_(0)
 	, unit_id_()
 	, route_(new pathfind::marked_route())
 	, movement_cost_(0)
@@ -98,10 +98,10 @@ move::move(config const& cfg, bool hidden)
 	, fake_unit_hidden_(false)
 {
 	// Construct and validate unit_
-	unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
+	unit_map::iterator unit_itor = resources::units->find(cfg["underlying_id"]);
 	if(unit_itor == resources::units->end())
 		throw action::ctor_err("move: Invalid underlying_id");
-	unit_ = &*unit_itor;
+	unit_underlying_id_ = unit_itor->underlying_id();
 
 	// Construct and validate route_
 	config const& route_cfg = cfg.child("route_");
@@ -127,7 +127,7 @@ move::move(config const& cfg, bool hidden)
 	arrow_->set_path(route_->steps);
 
 	// Construct fake_unit_
-	fake_unit_.reset(new game_display::fake_unit(*unit_) );
+	fake_unit_.reset(new game_display::fake_unit(*get_unit()) );
 	if(hidden)
 		fake_unit_->set_hidden(true);
 	fake_unit_->place_on_game_display(resources::screen);
@@ -140,8 +140,8 @@ move::move(config const& cfg, bool hidden)
 
 void move::init()
 {
-	assert(unit_);
-	unit_id_ = unit_->id();
+	assert(get_unit());
+	unit_id_ = get_unit()->id();
 
 	//This action defines the future position of the unit, make its fake unit more visible
 	//than previous actions' fake units
@@ -150,7 +150,7 @@ void move::init()
 		fake_unit_->set_ghosted(true);
 	}
 	side_actions_ptr side_actions = resources::teams->at(team_index()).get_side_actions();
-	side_actions::iterator action = side_actions->find_last_action_of(unit_);
+	side_actions::iterator action = side_actions->find_last_action_of(get_unit());
 	if (action != side_actions->end())
 	{
 		if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action))
@@ -214,7 +214,7 @@ void move::execute(bool& success, bool& complete)
 
 	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
 	hide_fake_unit();
-	unghost_owner_unit(unit_);
+	unghost_owner_unit(get_unit());
 
 	events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
 	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), side_number());
@@ -304,14 +304,23 @@ void move::execute(bool& success, bool& complete)
 	{
 		set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 		show_fake_unit();
-		ghost_owner_unit(unit_);
+		ghost_owner_unit(get_unit());
 	}
 
 	//if unit has other moves besides this one, set it back to ghosted visuals
 	//@todo handle this in a more centralized fashion
-	if (resources::teams->at(team_index()).get_side_actions()->count_actions_of(unit_) > 1) {
-		ghost_owner_unit(unit_);
+	if (resources::teams->at(team_index()).get_side_actions()->count_actions_of(get_unit()) > 1) {
+		ghost_owner_unit(get_unit());
 	}
+}
+
+unit* move::get_unit() const
+{
+	unit_map::iterator itor = resources::units->find(unit_underlying_id_);
+	if (itor.valid())
+		return &*itor;
+	else
+		return NULL;
 }
 
 map_location move::get_source_hex() const
@@ -457,13 +466,12 @@ void move::set_valid(bool valid)
 	}
 }
 
-///@todo Find a better way to serialize unit_ because underlying_id isn't cutting it
 config move::to_config() const
 {
 	config final_cfg = action::to_config();
 
 	final_cfg["type"]="move";
-	final_cfg["unit_"]=static_cast<int>(unit_->underlying_id());
+	final_cfg["underlying_id"]=static_cast<int>(unit_underlying_id_);
 //	final_cfg["movement_cost_"]=movement_cost_; //Unnecessary
 //	final_cfg["unit_id_"]=unit_id_; //Unnecessary
 
@@ -496,7 +504,7 @@ config move::to_config() const
 
 void move::calculate_move_cost()
 {
-	assert(unit_);
+	assert(get_unit());
 	assert(route_);
 	if (get_source_hex().valid() && get_dest_hex().valid() && get_source_hex() != get_dest_hex())
 	{
@@ -507,7 +515,7 @@ void move::calculate_move_cost()
 			WRN_WB << "Move defined with insufficient movement left.\n";
 		}
 
-		// If unit finishes move in a village it captures, set the move cost to unit_.movement_left()
+		// If unit finishes move in a village it captures, set the move cost to unit's movement_left()
 		 if (route_->marks[get_dest_hex()].capture)
 		 {
 			 movement_cost_ = get_unit()->movement_left();

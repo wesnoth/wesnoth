@@ -306,18 +306,13 @@ void manager::pre_delete_action(action_ptr action)
 			&& boost::dynamic_pointer_cast<move>(action)
 			&& viewer_actions()->count_actions_of(action->get_unit()) == 1)
 	{
-		//but first, check that the unit's still around and that it's the same one
-		unit_map::iterator unit_it =
-				resources::units->find(boost::static_pointer_cast<move>(action)->get_dest_hex());
-		if (unit_it != resources::units->end() && &*unit_it == action->get_unit()) {
-			action->get_unit()->set_standing(true);
-		}
+		action->get_unit()->set_standing(true);
 	}
 }
 
 void manager::post_delete_action(action_ptr action)
 {
-	// The ghost of the last fake unit in a chain of planned actions is supposed to look different
+	// The fake unit representing the destination of a chain of planned moves should have the regular animation.
 	// If the last remaining action of the unit that owned this move is a move as well,
 	// adjust its appearance accordingly.
 
@@ -329,7 +324,7 @@ void manager::post_delete_action(action_ptr action)
 		if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action_it))
 		{
 			if (move->get_fake_unit())
-				move->get_fake_unit()->set_ghosted(true);
+				move->get_fake_unit()->set_standing(true);
 		}
 	}
 }

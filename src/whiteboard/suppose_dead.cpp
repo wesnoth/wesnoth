@@ -62,7 +62,7 @@ namespace wb
 
 	suppose_dead::suppose_dead(size_t team_index, bool hidden, unit& curr_unit, map_location const& loc)
 	: action(team_index,hidden)
-	, unit_(&curr_unit)
+	, unit_underlying_id_(curr_unit.underlying_id())
 	, unit_id_(curr_unit.id())
 	, loc_(loc)
 	, valid_(true)
@@ -72,20 +72,18 @@ namespace wb
 
 	suppose_dead::suppose_dead(config const& cfg, bool hidden)
 	: action(cfg,hidden)
-	, unit_()
+	, unit_underlying_id_(0)
 	, unit_id_()
 	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"])
 	, valid_(true)
 	{
 		// Construct and validate unit_
-		unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
+		unit_map::iterator unit_itor = resources::units->find(cfg["underlying_id"]);
 		if(unit_itor == resources::units->end())
 			throw action::ctor_err("suppose_dead: Invalid underlying_id");
-		unit_ = &*unit_itor;
 
-		/// @todo Why do we even have the unit_id_ field?
-		// Construct unit_id_
-		unit_id_ = unit_->id();
+		unit_underlying_id_ = unit_itor->underlying_id();
+		unit_id_ = unit_itor->id();
 
 		this->init();
 	}
@@ -100,6 +98,15 @@ namespace wb
 		//invalidate hex so that skull indicator is properly cleared
 		if(resources::screen)
 			resources::screen->invalidate(loc_);
+	}
+
+	unit* suppose_dead::get_unit() const
+	{
+		unit_map::iterator itor = resources::units->find(unit_underlying_id_);
+		if (itor.valid())
+			return &*itor;
+		else
+			return NULL;
 	}
 
 	void suppose_dead::accept(visitor& v)
@@ -118,7 +125,7 @@ namespace wb
 				<< "] from (" << loc_ << ")\n";
 
 		// Just check to make sure we removed the unit we expected to remove
-		assert(unit_ == removed_unit);
+		assert(get_unit() == removed_unit);
 	}
 
 	void suppose_dead::remove_temp_modifier(unit_map& unit_map)
@@ -128,7 +135,7 @@ namespace wb
 		assert(unit_it == resources::units->end());
 
 		// Restore the unit
-		unit_map.insert(unit_);
+		unit_map.insert(get_unit());
 	}
 
 	void suppose_dead::draw_hex(const map_location& hex)
@@ -156,7 +163,7 @@ namespace wb
 		config final_cfg = action::to_config();
 
 		final_cfg["type"]="suppose_dead";
-		final_cfg["unit_"]=static_cast<int>(unit_->underlying_id());
+		final_cfg["underlying_id"]=static_cast<int>(unit_underlying_id_);
 		final_cfg["unit_id_"]=unit_id_;
 
 		config loc_cfg;
