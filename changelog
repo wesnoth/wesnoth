@@ -31,6 +31,7 @@ Version 1.9.14+svn:
      Khalifate) is used now.
    * Fixed bug #19083: allow attack to happen normally without causing OOS if
      turn time runs out in attack selection dialog.
+   * Fix some unit images being cropped in 2p_Aethermaw
  * Terrain:
    * Removed tags ignored by engine (as reported by lipk in
      http://forums.wesnoth.org/viewtopic.php?f=21&t=35832 )
@@ -50,6 +51,7 @@ Version 1.9.14+svn:
    * Fixed wmlindent writing CRLF end of lines on windows
    * Fix tutorial units without xp bar
    * Reset game credits instead of appending on WML cache refresh (bug #19292)
+   * Fix wmllint check for "unknown xy referred to by id" not working
 
 Version 1.9.14:
  * AI:
