@@ -364,7 +364,7 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
     <td class="percentage<?=$class?>" align="right"><? printf("%0.2f", ($stat[2]*100)/$main_total); ?></td>
     <td align="right"><? echo ($main_total - $stat[1] - $stat[2]); ?></td>
     <td class="percentage<?=$class?>" align="right"><? printf("%0.2f", (($main_total-$stat[1]-$stat[2])*100)/$main_total); ?></td>
-    <td align="right"><? echo $total; ?></td>
+    <td align="right"><? echo $main_total; ?></td>
     <? $trans = sprintf("%d", ($stat[1]*200)/$main_total);?>
     <? $fuzzy = sprintf("%d", ($stat[2]*200)/$main_total);?>
     <? $untrans = 200 - $trans - $fuzzy;?>
