@@ -610,6 +610,8 @@ void manager::create_temp_move()
 	 * (This section has only one return path.)
 	 */
 
+	temp_move_unit_underlying_id_ = selected_unit->underlying_id();
+
 	//@todo: May be appropriate to replace these separate components by a temporary
 	//      wb::move object
 
@@ -686,6 +688,7 @@ void manager::erase_temp_move()
 	move_arrows_.clear();
 	fake_units_.clear();
 	route_.reset();
+	temp_move_unit_underlying_id_ = 0;
 }
 
 void manager::save_temp_move()
@@ -726,6 +729,11 @@ void manager::save_temp_move()
 		LOG_WB << *viewer_actions() << "\n";
 		print_help_once();
 	}
+}
+
+unit_map::iterator manager::get_temp_move_unit() const
+{
+	return resources::units->find(temp_move_unit_underlying_id_);
 }
 
 void manager::save_temp_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice)

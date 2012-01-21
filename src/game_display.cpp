@@ -563,7 +563,9 @@ void game_display::draw_movement_info(const map_location& loc)
 	// Don't use empty route or the first step (the unit will be there)
 	if(w != route_.marks.end()
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
-		const unit_map::const_iterator un = units_.find(route_.steps.front());
+		const unit_map::const_iterator un =
+				resources::whiteboard->get_temp_move_unit().valid() ?
+						resources::whiteboard->get_temp_move_unit() : units_.find(route_.steps.front());
 		if(un != units_.end()) {
 			// Display the def% of this terrain
 			int def =  100 - un->defense_modifier(get_map().get_terrain(loc));
