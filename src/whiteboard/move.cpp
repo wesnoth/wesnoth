@@ -140,7 +140,6 @@ move::move(config const& cfg, bool hidden)
 
 void move::init()
 {
-	/// @todo Why do we even have the unit_id_ field?
 	assert(unit_);
 	unit_id_ = unit_->id();
 
