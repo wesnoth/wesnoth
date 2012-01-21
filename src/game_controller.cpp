@@ -236,6 +236,14 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 				multiplayer_server_ = "";
 		}
 	}
+	if (cmdline_opts_.username) {
+		preferences::disable_preferences_save();
+		preferences::set_login(*cmdline_opts_.username);
+	}
+	if (cmdline_opts_.password) {
+		preferences::disable_preferences_save();
+		preferences::set_password(*cmdline_opts_.password);
+	}
 	if (cmdline_opts_.smallgui)
 		game_config::small_gui = true;
 	if (cmdline_opts_.test)
