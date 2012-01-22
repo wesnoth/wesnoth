@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-21 01:45+0100\n"
-"PO-Revision-Date: 2012-01-16 12:24+0100\n"
+"PO-Revision-Date: 2012-01-22 14:16+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "Language: \n"
@@ -154,7 +154,7 @@ msgstr ""
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
-msgstr ""
+msgstr "<ref>dst='..geography' text='Geografia'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
@@ -443,9 +443,8 @@ msgstr ""
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
-#, fuzzy
 msgid "Swarm"
-msgstr "rój"
+msgstr "Rój"
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:140
@@ -456,9 +455,8 @@ msgstr ""
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
-#, fuzzy
 msgid "Swarming"
-msgstr "rój"
+msgstr "Rój"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -571,9 +569,8 @@ msgstr ""
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:31
-#, fuzzy
 msgid "Great Ocean"
-msgstr "Wielkie drzewo"
+msgstr "Wielki Ocena"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
@@ -600,9 +597,8 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
-#, fuzzy
 msgid "Green Isle"
-msgstr "Zielony"
+msgstr "Zielona Wyspa"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
@@ -651,9 +647,8 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
-#, fuzzy
 msgid "Kingdom of Wesnoth"
-msgstr "-- Księga Wesnoth"
+msgstr "Królestwo Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:95
@@ -1134,19 +1129,6 @@ msgstr "Rekrutacja i przywoływanie"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1173,15 +1155,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -2414,23 +2387,20 @@ msgstr ""
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
-#, fuzzy
 msgid "trait^Elemental"
-msgstr "ukrywanie się"
+msgstr "Żywiołak"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:431
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Jednostki mechaniczne są odporne na truciznę oraz ataki z wyssaniem życia i "
-"zarazą."
+"<italic>text='Żywiołaki'</italic> są odporne na truciznę oraz ataki z "
+"wyssaniem życia i zarazą."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:433
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2440,9 +2410,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jedyną cechą jednostek mechanicznych jest na ogół \"mechaniczna\". Ponieważ "
-"jednostki mechaniczne nie są ożywione, są one odporne na wyssanie życia, "
-"truciznę i zarazę."
+"Jedyną cechą żywiołaków jest na ogół „żywiołak”. Jako istoty energetyczne są "
+"one odporne na wyssanie życia, truciznę i zarazę."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
@@ -2851,17 +2820,6 @@ msgstr "Zamek"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#| "Nearly all units receive a considerable bonus to their defense by being "
-#| "stationed in a castle, and all units receive full movement in a castle. "
-#| "Stationing units in a castle represents its defensive capability. Without "
-#| "a unit in each wall hex, an enemy can simply sneak into the castle "
-#| "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#| "\n"
-#| "Most units have about 60% defense in a castle.\n"
-#| "\n"
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -3379,7 +3337,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3393,8 +3350,9 @@ msgstr ""
 "\n"
 "Zmiana kontrolera strony o podanym numerze na podanego użytkownika "
 "(pseudonim gracza lub obserwatora). Przynależność stron do graczy można "
-"sprawdzić w oknie dialogowym \"Ustawienia scenariusza\", wyświetlanym po "
-"kliknięciu przycisku \"więcej\" w oknie tabeli statusu (domyślnie Alt+S). "
+"sprawdzić w oknie dialogowym <bold>text='Ustawienia scenariusza'</bold>, "
+"wyświetlanym po kliknięciu przycisku <bold>text='Więcej'</bold> w oknie "
+"<bold>text='Tabela statusu'</bold> (domyślnie wyświetlanym skrótem Alt+s). "
 "Gospodarz może zmienić kontrolera dowolnej ze stron.\n"
 "\n"
 
@@ -3415,7 +3373,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:844
-#, fuzzy
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3423,8 +3380,11 @@ msgid ""
 "game.\n"
 "\n"
 msgstr ""
-"Wysyła prywatną wiadomość. Nie można ich wysyłać do graczy, którzy nie "
-"kontrolują strony w tej grze."
+"\n"
+"Wysyła użytkownikowi wiadomość prywatną. Podczas rozgrywki nie można wysyłać "
+"wiadomości prywatnych do graczy, którzy obecnie kontrolują stronę w tej "
+"samej grze.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:847
@@ -4079,7 +4039,7 @@ msgstr "Premia maks. PŻ +3, maks. PD +20%"
 #. [time]: id=indoors
 #: data/core/macros/schedules.cfg:70
 msgid "Indoors"
-msgstr ""
+msgstr "W pomieszczeniu"
 
 #. [time]: id=deep_underground
 #: data/core/macros/schedules.cfg:90
@@ -4089,124 +4049,112 @@ msgstr "Głębokie podziemie"
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:162
 msgid "Midnight"
-msgstr ""
+msgstr "Północ"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:174
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — pierwsza godzina"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:186
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — druga godzina"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:198
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — trzecia godzina"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:210
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — czwarta godzina"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:222
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — piąta godzina"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:234
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — szósta godzina"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:257
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "Ranek — pierwsza godzina"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:266
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "Ranek — druga godzina"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:275
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "Ranek — trzecia godzina"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:284
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "Ranek — czwarta godzina"
 
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:293
 msgid "Midday"
-msgstr ""
+msgstr "Południe"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "Popołudnie — pierwsza godzina"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "Popołudnie — druga godzina"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "Popołudnie — trzecia godzina"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:329
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "Popołudnie — czwarta godzina"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:338
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "Popołudnie — piąta godzina"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "Popołudnie — szósta godzina"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "Pierwsza straż — pierwsza godzina"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:381
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "Pierwsza straż — druga godzina"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:393
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "Pierwsza straż — trzecia godzina"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:405
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "Pierwsza straż — czwarta godzina"
 
 #: data/core/macros/special-notes.cfg:5
 msgid ""
@@ -4239,10 +4187,8 @@ msgid " This unit is capable of basic healing."
 msgstr " Jednostka posiada umiejętności leczenia."
 
 #: data/core/macros/special-notes.cfg:17
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid " This unit is capable of rapid healing."
-msgstr " Jednostka posiada umiejętności leczenia."
+msgstr " Jednostka posiada umiejętności szybkiego leczenia."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
@@ -4393,10 +4339,6 @@ msgstr ""
 "trafienia przeciwników, ale tylko podczas ataku."
 
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
-#| msgid ""
-#| " The unit has magical attacks, which always have a high chance of hitting "
-#| "an opponent."
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
@@ -4489,15 +4431,13 @@ msgstr "mechaniczna"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "elemental"
-msgstr "ukrywanie się"
+msgstr "żywiołak"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:53
-#, fuzzy
 msgid "female^elemental"
-msgstr "lojalna"
+msgstr "żywiołak"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:66
@@ -4581,15 +4521,13 @@ msgstr "Walczy normalnie nawet w niesprzyjających porach dnia lub nocy"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
-msgstr "Łącznie"
+msgstr "dziki"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
-msgstr "neutralna"
+msgstr "dzika"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
@@ -5128,8 +5066,6 @@ msgstr "Potwór"
 
 #. [race]: id=monster
 #: data/core/units.cfg:221
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "Potwór"
 
@@ -5153,8 +5089,6 @@ msgstr "Naga"
 
 #. [race]: id=naga
 #: data/core/units.cfg:231
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
 msgstr "Nagini"
 
@@ -5515,10 +5449,8 @@ msgstr "Wilk"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:311
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
-msgstr "Elfka"
+msgstr "Wilczyca"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:312
