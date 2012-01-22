@@ -78,7 +78,7 @@ namespace wb
 	, valid_(true)
 	{
 		// Construct and validate unit_
-		unit_map::iterator unit_itor = resources::units->find(cfg["underlying_id"]);
+		unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
 		if(unit_itor == resources::units->end())
 			throw action::ctor_err("suppose_dead: Invalid underlying_id");
 
@@ -163,7 +163,7 @@ namespace wb
 		config final_cfg = action::to_config();
 
 		final_cfg["type"]="suppose_dead";
-		final_cfg["underlying_id"]=static_cast<int>(unit_underlying_id_);
+		final_cfg["unit_"]=static_cast<int>(unit_underlying_id_);
 		final_cfg["unit_id_"]=unit_id_;
 
 		config loc_cfg;

@@ -98,7 +98,7 @@ move::move(config const& cfg, bool hidden)
 	, fake_unit_hidden_(false)
 {
 	// Construct and validate unit_
-	unit_map::iterator unit_itor = resources::units->find(cfg["underlying_id"]);
+	unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
 	if(unit_itor == resources::units->end())
 		throw action::ctor_err("move: Invalid underlying_id");
 	unit_underlying_id_ = unit_itor->underlying_id();
@@ -471,7 +471,7 @@ config move::to_config() const
 	config final_cfg = action::to_config();
 
 	final_cfg["type"]="move";
-	final_cfg["underlying_id"]=static_cast<int>(unit_underlying_id_);
+	final_cfg["unit_"]=static_cast<int>(unit_underlying_id_);
 //	final_cfg["movement_cost_"]=movement_cost_; //Unnecessary
 //	final_cfg["unit_id_"]=unit_id_; //Unnecessary
 
