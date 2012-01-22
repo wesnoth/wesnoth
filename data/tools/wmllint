@@ -1291,7 +1291,7 @@ def global_sanity_check(filename, lines):
                 if (in_scenario or in_multiplayer) and key == "id":
                     if in_person:
                         present.append(value)
-                    elif value in ('narrator', 'unit', 'second_unit') or (value and value[0] in ("$", "{")):
+                    elif value and value[0] in ("$", "{"):
                         continue
                     elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item:
                         ids = value.split(",")
