@@ -49,20 +49,21 @@ innym graczom.
 \fB\-\-bpp\fP\fI\ liczba\fP
 ustawia liczbę bitów na piksel. Przykład: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign \ [<id_campaign>]\fP
-goes directly to the campaign with id <id_campaign>. A selection
-menu will appear if no id was specified.  \fBNote:\fP When using this switch
-please ensure that you specify the data directory path as the final argument
-aswell, otherwise the game will take the campaign/scenario id as the data
-dir.
+\fB\-c, \-\-campaign \ [<id_kampanii>]\fP
+przechodzi bezpośrednio do kampanii o identyfikatorze
+<id_kampanii>. Jeśli identyfikator nie zostanie podany, zostanie
+wyświetlone menu wyboru. \fBUwaga:\fP używając tej opcji, należy koniecznie
+podać ścieżkę do katalogu danych jako ostatni argument — w przeciwnym razie
+gra uzna identyfikator kampanii lub scenariusza za katalog danych.
 .TP 
-\fB\-\-campaign\-difficulty <difficulty>\fP
-The difficulty of the specified campaign (1 to max). If none specified, the
-campaign difficulty selection widget will appear.
+\fB\-\-campaign\-difficulty <poziom_trudności>\fP
+Poziom trudności wskazanej kampanii (od 1 do wartości maksymalnej). Jeśli
+wartość nie zostanie podana, zostanie wyświetlone okno wyboru poziomu
+trudności kampanii.
 .TP 
-\fB\-\-campaign\-scenario <id_scenario>\fP
-The id of the scenario from the specified campaign. The default is the first
-scenario.
+\fB\-\-campaign\-scenario <id_scenariusza>\fP
+Identyfikator scenariusza ze wskazanej kampanii. Domyślnie wczytywany jest
+pierwszy scenariusz.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
 ustawia katalog konfiguracyjny użytkownika na \fIname\fP w ramach katalogu
