@@ -1,6 +1,6 @@
-Version 1.9.14+svn:
+Version 1.10.0:
  * Campaigns:
-   * Legend of Wesmere
+   * Legend of Wesmere:
      * Scenario 03: Fixed bug #19067: Control over Galtrid's side stays with the
        player after the arrival of Kalenz
      * Scenario 22: Fixed bug #19236: Cleodil was missing and no recall list
@@ -26,7 +26,7 @@ Version 1.9.14+svn:
  * Multiplayer:
    * Allow tab completion of player names in commands (bug #19284)
    * Fixed bug #19260: 'villages_value' -> 'village_value' in 5p_The_Wilderlands
-   * Fix eras other than the default breaking 2p_Hornshark_Island. If a player
+   * Fixed eras other than the default breaking 2p_Hornshark_Island. If a player
      has a faction not in the default era, a standard set of units (aimed at
      Khalifate) is used now.
    * Fixed bug #19083: allow attack to happen normally without causing OOS if
@@ -44,11 +44,13 @@ Version 1.9.14+svn:
      [replace_map] or [terrain_mask]
    * Disable wml menu items in linger mode without debug mode (bug #16262)
  * Whiteboard:
-   * Fixed bug #19222 : After 'delete planned action', the unit is almost invisible
-   * Fixed bug #19221 : Assert when a whiteboard move-attack wins a scenario
-   * Fixed bug #19142 : attacks can be simulated between units (for which this
+   * Fixed bug #18635: Percentage not displayed for units selected at their
+     future position
+   * Fixed bug #19142: attacks can be simulated between units (for which this
      shouldn't be possible)
-   * Fixed bug #18635: Percentage not displayed for units selected at their future position
+   * Fixed bug #19221: Assert when a whiteboard move-attack wins a scenario
+   * Fixed bug #19222: After 'delete planned action', the unit is almost
+     invisible
    * Fixed turn not finishing when moves were planned for future turns
  * Miscellaneous and bug fixes:
    * Fixed wmlindent writing CRLF end of lines on windows

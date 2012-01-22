@@ -2,9 +2,9 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
-Version 1.9.14+svn:
+Version 1.10.0:
  * Campaigns:
-   * Legend of Wesmere
+   * Legend of Wesmere:
      * Scenario 3: Fixed bug #19067: Control over Galtrid's side stays with the
        player after the arrival of Kalenz.
      * Scenario 22: Fixed bug #19236: Cleodil was missing and no recall list.
@@ -16,19 +16,21 @@ Version 1.9.14+svn:
 
  * Multiplayer:
    * Allow tab completion of player names in commands (bug #19284).
-   * Fix eras other than the default breaking 2p_Hornshark_Island. If a player
+   * Fixed eras other than the default breaking 2p_Hornshark_Island. If a player
      has a faction not in the default era, a standard set of units (aimed at
      Khalifate) is used now.
    * Fixed bug #19083: allow attack to happen normally without causing OOS if
      turn time runs out in attack selection dialog.
      
  * Whiteboard:
-   * Fixed bug #19222 : After 'delete planned action', the unit is almost invisible
-   * Fixed bug #19221 : Assert when a whiteboard move-attack wins a scenario
-   * Fixed bug #19142 : attacks can be simulated between units (for which this
-     shouldn't be possible)
-   * Fixed bug #18635: Percentage not displayed for units selected at their future position
-   * Fixed turn not finishing when moves were planned for future turns
+   * Fixed bug #18635: Percentage not displayed for units selected at their
+     future position.
+   * Fixed bug #19142: attacks can be simulated between units (for which this
+     shouldn't be possible).
+   * Fixed bug #19221: Assert when a whiteboard move-attack wins a scenario.
+   * Fixed bug #19222: After 'delete planned action', the unit is almost
+     invisible.
+   * Fixed turn not finishing when moves were planned for future turns.
 
 
 Version 1.9.14:
