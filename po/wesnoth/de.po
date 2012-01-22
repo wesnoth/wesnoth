@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:34+0100\n"
-"PO-Revision-Date: 2012-01-20 22:37+0100\n"
-"Last-Translator: Elias Pschernig <allefant@allefant.com>\n"
+"POT-Creation-Date: 2012-01-21 01:45+0100\n"
+"PO-Revision-Date: 2012-01-22 13:05+0100\n"
+"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de <>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -2613,7 +2613,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:72
-#, fuzzy
 msgid ""
 "Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
 "around them. If a unit moves into an enemy’s zone of control, it may not "
@@ -2621,11 +2620,13 @@ msgid ""
 "between them and still create a barrier to the enemy. Beware, though: "
 "skirmishers can pass through these gaps."
 msgstr ""
-"Einheiten kontrollieren alle Felder, die an ihr eigenes angrenzen. Wenn sich "
-"eine Eurer Einheiten in die Nähe einer gegnerischen Einheit begibt, kann sie "
-"sich in diesem Zug nicht weiter bewegen. Stufe-0-Einheiten sind zu schwach, "
-"um einen Bereich zu kontrollieren. Lediglich Plänkler habe die nötige "
-"Ausbildung, um kontrollierte Bereiche zu durchqueren."
+"Einheiten die mindestens der ersten Stufe angehören verfügen über eine "
+"<i>Kontrollzone</i>, welche die sechs Felder um sie herum abdeckt. Bewegt "
+"sich eine Einheit in die Kontrollzone eines Feindes, so kann sie sich in "
+"diesem Zug nicht weiter bewegen. Dadurch können Einheiten zwei Felder "
+"zwischen sich haben und damit dennoch eine Barriere für den Gegner bilden. "
+"Lediglich Plänkler habe die nötige Ausbildung, um kontrollierte Bereiche zu "
+"durchqueren."
 
 #. [tip]
 #: data/hardwired/tips.cfg:76
@@ -2671,12 +2672,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:88
-#, fuzzy
-#| msgid ""
-#| "On maps where <i>Shroud</i> or <i>Fog of war</i> has been enabled, all "
-#| "units’ sightlines are limited by their maximum movement. If you have some "
-#| "valuable but slow units, keep at least one fast unit with them so that "
-#| "you are not caught out by a surprise attack."
 msgid ""
 "On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
 "units’ sightlines are limited by their maximum movement. If you have some "
@@ -2685,8 +2680,10 @@ msgid ""
 msgstr ""
 "Auf Karten, für die der <i>Nebel des Krieges</i> oder der <i>Schleier der "
 "Finsternis</i> eingeschaltet wurde, ist die Sichtweite einer Einheit durch "
-"ihre Bewegungsreichweite beschränkt. Behaltet dies im Hinterkopf, wenn Ihr "
-"Eure Späher für ein bestimmtes Gelände auswählt."
+"ihre Bewegungsreichweite beschränkt. Falls ihr langsame aber bedeutende "
+"Einheiten habt, so solltet Ihr in der Nähe eine schnelle Einheit "
+"positionieren, so dass ihr nicht durch einen Überraschungsangriff "
+"überrumpelt werdet."
 
 #. [tip]
 #: data/hardwired/tips.cfg:92
@@ -3520,10 +3517,8 @@ msgid "addon_type^(unknown)"
 msgstr "(unbekannt)"
 
 #: src/addon/manager.cpp:481
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting terms"
-msgstr "Empfange Erweiterungsliste"
+msgstr "Empfange Nutzungsbedingungen"
 
 #: src/addon/manager.cpp:486
 msgid "The server responded with an error: \"$error|\""
@@ -3547,10 +3542,8 @@ msgid "Response"
 msgstr "Antwort"
 
 #: src/addon/manager.cpp:554
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting the addon to be deleted"
-msgstr "Empfange Erweiterungsliste"
+msgstr "Veranlasse Löschung der Erweiterung"
 
 #: src/addon/manager.cpp:580
 msgid "Downloading add-on: $addon_title|..."
@@ -4736,13 +4729,13 @@ msgid "Send an emotion or personal action in chat."
 msgstr "Sendet eine Emotion oder eine persönliche Handlung im Gespräch."
 
 #: src/menu_events.cpp:2362
-#, fuzzy
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
 msgstr ""
-"Sendet eine private Nachricht. Ihr könnt keine Nachrichten an Spieler "
-"senden, die keine Fraktion im Spiel kontrollieren."
+"Sendet eine private Nachricht. Ihr könnt keine privaten Nachrichten an "
+"Spieler senden, die sich in einer Partie befinden, in der Ihr gerade "
+"mitspielt oder ein Beobachter seid."
 
 #: src/menu_events.cpp:2364
 msgid "<nickname> <message>"
@@ -6126,9 +6119,8 @@ msgid "Level: "
 msgstr "Stufe: "
 
 #: src/reports.cpp:240
-#, fuzzy
 msgid "No advancement"
-msgstr "Stufenaufstiege"
+msgstr "Keine Stufenaufstiege"
 
 #: src/reports.cpp:242
 msgid "Advances to:"
@@ -6251,9 +6243,8 @@ msgid "Slowed: "
 msgstr "Verlangsamt: "
 
 #: src/reports.cpp:618
-#, fuzzy
 msgid "Attacks: "
-msgstr "Angreifer"
+msgstr "Angriffe: "
 
 #: src/reports.cpp:620
 msgid "Base attacks: "
@@ -6272,9 +6263,8 @@ msgid "Damage type: "
 msgstr "Schadenstyp: "
 
 #: src/reports.cpp:636
-#, fuzzy
 msgid "Damage versus: "
-msgstr "Schadenstyp: "
+msgstr "Schaden gegen: "
 
 #: src/reports.cpp:680
 msgid "Accuracy:"
