@@ -1,6 +1,10 @@
 Version 1.10.0+svn:
  * Language and i18n:
    * Updated translations:
+ * Miscellaneous and bug fixes:
+   * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
+     platforms using XDG layout (no compiled-in preferences path override,
+     bug #19318)
 
 Version 1.10.0:
  * Campaigns:

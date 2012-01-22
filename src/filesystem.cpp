@@ -63,6 +63,7 @@ BPath be_path;
 #include "loadscreen.hpp"
 #include "scoped_resource.hpp"
 #include "serialization/string_utils.hpp"
+#include "version.hpp"
 
 static lg::log_domain log_filesystem("filesystem");
 #define DBG_FS LOG_STREAM(debug, log_filesystem)
@@ -501,6 +502,23 @@ static std::string user_data_dir, user_config_dir, cache_dir;
 
 static void setup_user_data_dir();
 
+static const std::string& get_version_path_suffix()
+{
+	static std::string suffix;
+
+	// We only really need to generate this once since
+	// the version number cannot change during runtime.
+
+	if(suffix.empty()) {
+		std::ostringstream s;
+		s << game_config::wesnoth_version.major_version() << '.'
+		  << game_config::wesnoth_version.minor_version();
+		suffix = s.str();
+	}
+
+	return suffix;
+}
+
 void set_preferences_dir(std::string path)
 {
 #ifdef _WIN32
@@ -537,7 +555,7 @@ void set_preferences_dir(std::string path)
 	if (path.empty()) path = PREFERENCES_DIR;
 #endif
 
-	std::string path2 = ".wesnoth" + game_config::version.substr(0,3);
+	std::string path2 = ".wesnoth" + get_version_path_suffix();
 
 #ifdef _X11
 	const char *home_str = getenv("HOME");
@@ -553,7 +571,7 @@ void set_preferences_dir(std::string path)
 			user_data_dir += "/.local/share";
 		} else user_data_dir = xdg_data;
 		user_data_dir += "/wesnoth/";
-		user_data_dir += game_config::version.substr(0,3);
+		user_data_dir += get_version_path_suffix();
 		create_directory_if_missing_recursive(user_data_dir);
 		game_config::preferences_dir = user_data_dir;
 	} else {
