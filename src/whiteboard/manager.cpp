@@ -912,70 +912,64 @@ bool manager::allow_end_turn()
 
 bool manager::execute_all_actions()
 {
-	if(viewer_actions()->turn_size(0) == 0)
+	if(viewer_actions()->empty() || viewer_actions()->turn_size(0) == 0)
 	{
-		//LOG_WB << "\"Execute All\" called with empty queue.\n";
 		//No actions to execute, job done.
 		return true;
 	}
 
-	if(can_enable_execution_hotkeys())
+	assert(can_enable_execution_hotkeys());
+
+	erase_temp_move();
+	validate_viewer_actions();
+
+	// Build unit map once to ensure spent gold and other calculations are refreshed
+	set_planned_unit_map();
+	assert(has_planned_unit_map());
+	set_real_unit_map();
+
+	//exception-safety: Finalizer sets executing_actions to false on destruction
+	variable_finalizer<bool> finally(executing_actions_, false);
+	executing_actions_ = true;
+	executing_all_actions_ = true;
+
+	side_actions_ptr sa = viewer_actions();
+
+	if (resources::whiteboard->has_planned_unit_map())
 	{
-		erase_temp_move();
-		validate_viewer_actions();
-
-		// Build unit map once to ensure spent gold and other calculations are refreshed
-		set_planned_unit_map();
-		assert(has_planned_unit_map());
-		set_real_unit_map();
-
-		//exception-safety: Finalizer sets executing_actions to false on destruction
-		variable_finalizer<bool> finally(executing_actions_, false);
-		executing_actions_ = true;
-		executing_all_actions_ = true;
-
-		side_actions_ptr sa = viewer_actions();
-
-		if (resources::whiteboard->has_planned_unit_map())
-		{
-			ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
-		}
-
-		//LOG_WB << "Before executing all actions, " << *sa << "\n";
-
-		while (sa->turn_begin(0) != sa->turn_end(0))
-		{
-			bool action_completed;
-			try {
-				action_completed = sa->execute(sa->begin());
-			} catch (end_level_exception&) { //satisfy the gods of WML
-				executing_all_actions_ = false;
-				throw;
-			} catch (end_turn_exception&) { //satisfy the gods of WML
-				executing_all_actions_ = false;
-				throw;
-			}
-			// Interrupt if an attack is waiting for a random seed from the server
-			if ( rand_rng::has_new_seed_callback())
-			{
-				//leave executing_all_actions_ to true, we'll resume once attack completes
-				events::commands_disabled++; //to be decremented by continue_execute_all()
-				return false;
-			}
-			// Interrupt on incomplete action
-			if (!action_completed)
-			{
-				executing_all_actions_ = false;
-				return false;
-			}
-		}
-		executing_all_actions_ = false;
-		return true;
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
-	else
+
+	//LOG_WB << "Before executing all actions, " << *sa << "\n";
+
+	while (sa->turn_begin(0) != sa->turn_end(0))
 	{
-		return false;
+		bool action_completed;
+		try {
+			action_completed = sa->execute(sa->begin());
+		} catch (end_level_exception&) { //satisfy the gods of WML
+			executing_all_actions_ = false;
+			throw;
+		} catch (end_turn_exception&) { //satisfy the gods of WML
+			executing_all_actions_ = false;
+			throw;
+		}
+		// Interrupt if an attack is waiting for a random seed from the server
+		if ( rand_rng::has_new_seed_callback())
+		{
+			//leave executing_all_actions_ to true, we'll resume once attack completes
+			events::commands_disabled++; //to be decremented by continue_execute_all()
+			return false;
+		}
+		// Interrupt on incomplete action
+		if (!action_completed)
+		{
+			executing_all_actions_ = false;
+			return false;
+		}
 	}
+	executing_all_actions_ = false;
+	return true;
 }
 
 void manager::continue_execute_all()

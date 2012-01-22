@@ -151,8 +151,8 @@ public:
 
 	/** Executes first action in the queue for current side */
 	void contextual_execute();
-	/** Executes all actions in the queue in sequence
-	 *  @return true if the action queue is empty when the method returns */
+	/** Executes all actions for the current turn in sequence
+	 *  @return true if the there are no more actions left for this turn when the method returns */
 	bool execute_all_actions();
 	/** Called by the game controller to let the whiteboard continue executing all actions
 	 *  if it stopped to wait for an attack to complete on reception of its random seed from server */
