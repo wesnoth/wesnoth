@@ -583,7 +583,7 @@ function wml_actions.modify_unit(cfg)
 		wml_actions.unstore_unit { variable = unit_path }
 	end
 
-	wml_actions.store_unit { {"filter", filter}, variable = unit_variable, kill = true }
+	wml_actions.store_unit { {"filter", filter}, variable = unit_variable }
 	local max_index = wesnoth.get_variable(unit_variable .. ".length") - 1
 
 	local this_unit = start_var_scope("this_unit")
