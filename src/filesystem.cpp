@@ -502,6 +502,7 @@ static std::string user_data_dir, user_config_dir, cache_dir;
 
 static void setup_user_data_dir();
 
+#ifndef _WIN32
 static const std::string& get_version_path_suffix()
 {
 	static std::string suffix;
@@ -518,6 +519,7 @@ static const std::string& get_version_path_suffix()
 
 	return suffix;
 }
+#endif
 
 void set_preferences_dir(std::string path)
 {
