@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-08 18:12+0100\n"
-"PO-Revision-Date: 2012-01-14 20:27+0200\n"
+"POT-Creation-Date: 2012-01-21 01:45+0100\n"
+"PO-Revision-Date: 2012-01-21 23:23+0200\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -27,13 +27,13 @@ msgid "Underground"
 msgstr "Maan alla"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:820
 #: data/core/macros/abilities.cfg:582
 msgid "berserk"
 msgstr "hurmos"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:823
 #: data/core/macros/abilities.cfg:584
 msgid ""
 "Berserk:\n"
@@ -45,13 +45,13 @@ msgstr ""
 "jompikumpi osapuoli kuolee tai taistelu on jatkunut 30 kierrosta."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:836
 #: data/core/macros/abilities.cfg:668
 msgid "magical"
 msgstr "maaginen"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:839
 #: data/core/macros/abilities.cfg:670
 msgid ""
 "Magical:\n"
@@ -63,13 +63,13 @@ msgstr ""
 "yksikön puolustuskyvystä."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:851
 #: data/core/macros/abilities.cfg:717
 msgid "firststrike"
 msgstr "ensi-isku"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:854
 #: data/core/macros/abilities.cfg:719
 msgid ""
 "First Strike:\n"
@@ -238,17 +238,12 @@ msgstr "Uusi Manner"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
-#, fuzzy
-#| msgid ""
-#| "New Continent -- The great continent to the east of <ref>dst='morogor' "
-#| "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
-#| "flight of Galun."
 msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
-"Uusi manner sijaitsee <ref>dst='morogor' text='Morogorista'</ref> itään. Sen "
-"olemassaoloa ei tiedetty ennen Galunin lentoa."
+"Uusi Manner sijaitsee <ref>dst='morogor' text='Morogorista'</ref> itään. Sen "
+"olemassaoloa ei tiedetty ennen Galunin parvea."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
@@ -286,19 +281,13 @@ msgstr "Suora tie"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:56
-#, fuzzy
-#| msgid ""
-#| "'The drakish tradition of perpetual expansion and conquest. This term is "
-#| "mostly used by the members of the <ref>dst='spiral_path' text='Spiral "
-#| "Path'</ref>."
 msgid ""
 "The drakish tradition of perpetual expansion and conquest. This term is "
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
-"'Draakkien perinteinen jatkuva laajentaminen ja valloittaminen. Tätä termiä "
-"käyttävät yleensä <ref>dst='spiral_path' text='Spiraalin tien'</ref> "
-"seuraajat."
+"Draakkien perinteinen jatkuva laajentaminen ja valloittaminen. Yleensä "
+"<ref>dst='spiral_path' text='Spiraalin tien'</ref> seuraajat käyttävät tätä."
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
@@ -340,12 +329,6 @@ msgstr "Kirjuri"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
-#, fuzzy
-#| msgid ""
-#| "A Recorder is a Drakish scrollkeeper whose has mastered the drakish "
-#| "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
-#| "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: "
-#| "they recruit their members from all of the other castes."
 msgid ""
 "A Recorder is a Drakish scrollkeeper who has mastered the drakish "
 "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
@@ -354,7 +337,7 @@ msgid ""
 msgstr ""
 "Draakkikirjuri on omaksunut <ref>dst='drakish_script' text='Draakkien "
 "kirjoitukset'</ref>. Kirjurit ovat ainoita, joiden <ref>dst='caste' "
-"text='kasti'</ref> ei määräydy biologisen muodon mukaan. He värväävät "
+"text='kasti'</ref> ei määräydy biologisen alkuperän mukaan. He värväävät "
 "jäseniään kaikista muista kasteista."
 
 #. [topic]: id=laying
@@ -1366,19 +1349,6 @@ msgstr "Värväys ja kutsuminen"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1391,7 +1361,7 @@ msgid ""
 "recruitment, along with their gold cost. Click on a unit to see its "
 "statistics, then press the recruit button to recruit it."
 msgstr ""
-"Jokainen osapuoli aloittaa yhdellä johtajalla linnakkeessa. Taistelun "
+"Jokainen osapuoli aloittaa yhdellä johtajalla linnakkeessaan. Taistelun "
 "alussa, ja ajoittain sen aikana, sinun täytyy värvätä <ref>dst='..units' "
 "text='yksiköitä'</ref> armeijaasi. Värvätäksesi, johtajasi (esimerkiksi "
 "Konrad kampanjassa Valtaistuimen perillinen) tulee olla "
@@ -1405,15 +1375,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1424,11 +1385,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jos klikkasit oikealla hiirennäppäimellä heksaa ja valitsit värvää, yksikkö "
-"värväytyy siihen heksaan. Muutoin se värvätään heksaan lähellä johtajasi "
-"linnaketta. Voit värvätä vain sen verran yksiköitä, kuin sinulla on vapaita "
-"heksoja linnassasi, etkä voi käyttää värväykseen enempää kultaa, kuin "
-"sinulla on."
+"Jos klikkasit oikealla hiirennäppäimellä heksaa, ja valitsit värvää, yksikkö "
+"värväytyy siihen heksaan. Muutoin se värvätään vapaaseen heksaan lähellä "
+"johtajasi linnaketta. Voit värvätä vain sen verran yksiköitä, kuin sinulla "
+"on vapaita heksoja linnassasi, etkä voi käyttää värväykseen enempää kultaa, "
+"kuin sinulla on."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
@@ -3054,17 +3015,6 @@ msgstr "linna"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#| "Nearly all units receive a considerable bonus to their defense by being "
-#| "stationed in a castle, and all units receive full movement in a castle. "
-#| "Stationing units in a castle represents its defensive capability. Without "
-#| "a unit in each wall hex, an enemy can simply sneak into the castle "
-#| "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#| "\n"
-#| "Most units have about 60% defense in a castle.\n"
-#| "\n"
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -3076,11 +3026,11 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
-"Linnat ovat monenlaisia pysyviä linnoitusrakennelmia. Lähes kaikki yksiköt "
-"saavat huomattavaa puolustuksellista etua linnassa, ja kaikki yksiköt "
-"liikkuvat linnassa vaivatta. Yksikön asettaminen linnaan edustaa linnan "
-"puolustuksellista kykyä – ilman yksiköitä linnan ulkoreunalla vihollinen voi "
-"esteettä livahtaa linnaan ja saada saman puolustuksellisen hyödyn.\n"
+"Linnat ovat monenlaisia, pysyviä linnoitusrakennelmia. Lähes kaikki yksiköt "
+"ovat linnassa kohtalaisen hyvin suojattuja, ja kaikki yksiköt voivatvaivatta "
+"liikkua niissä. Yksikön asettaminen linnaan edustaa linnan puolustuksellista "
+"kykyä – ilman yksiköitä linnan ulkoreunalla vihollinen voi esteettä livahtaa "
+"sinne ja saada saman puolustuksellisen hyödyn.\n"
 "\n"
 "Useimpien yksiköiden puolustus linnassa on 60%.\n"
 "\n"
@@ -4345,7 +4295,7 @@ msgstr "Iltapäivä — Ensimmäinen Tunti"
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
 msgid "Afternoon — Second Hour"
-msgstr "Iltapäivä — toinen tunti"
+msgstr "Iltapäivä — Toinen Tunti"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
@@ -4365,7 +4315,7 @@ msgstr "Iltapäivä — Viides Tunti"
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Sixth Hour"
-msgstr "Iltapäivä — kuudes tunti"
+msgstr "Iltapäivä — Kuudes Tunti"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
@@ -4759,8 +4709,6 @@ msgstr "villi"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
-#, fuzzy
-#| msgid "Receive only 50% defense in land-based villages"
 msgid "Receives only 50% defense in land-based villages"
 msgstr "Saa vain 50% puolustuksen maalla sijaitsevissa kylissä"
 
@@ -5852,7 +5800,7 @@ msgstr "Susi"
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:311
 msgid "race+female^Wolf"
-msgstr "Haltia"
+msgstr "Susi"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:312

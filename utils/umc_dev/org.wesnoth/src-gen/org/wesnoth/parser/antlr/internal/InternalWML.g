@@ -337,7 +337,7 @@ ruleWMLKey returns [EObject current=null]
 )
 
 )
-)+)
+))
 ;
 finally {
 	myHiddenTokenState.restore();

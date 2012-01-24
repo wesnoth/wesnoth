@@ -141,10 +141,10 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEolSL_COMMENTTerminalRuleCall_4_0_1 = (RuleCall)cEolAlternatives_4_0.eContents().get(1);
 		
 		//WMLKey hidden(WS):
-		//	name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol+=(EOL | SL_COMMENT)+;
+		//	name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol+=(EOL | SL_COMMENT);
 		public ParserRule getRule() { return rule; }
 
-		//name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol+=(EOL | SL_COMMENT)+
+		//name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol+=(EOL | SL_COMMENT)
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -180,7 +180,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		//WMLKeyValue
 		public RuleCall getValuesWMLKeyValueParserRuleCall_3_3_0() { return cValuesWMLKeyValueParserRuleCall_3_3_0; }
 
-		//eol+=(EOL | SL_COMMENT)+
+		//eol+=(EOL | SL_COMMENT)
 		public Assignment getEolAssignment_4() { return cEolAssignment_4; }
 
 		//EOL | SL_COMMENT
@@ -734,7 +734,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLKey hidden(WS):
-	//	name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol+=(EOL | SL_COMMENT)+;
+	//	name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol+=(EOL | SL_COMMENT);
 	public WMLKeyElements getWMLKeyAccess() {
 		return (pWMLKey != null) ? pWMLKey : (pWMLKey = new WMLKeyElements());
 	}

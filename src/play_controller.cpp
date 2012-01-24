@@ -1185,7 +1185,8 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 		// Remove WML commands if they would not be allowed here
 		if(*i == "wml") {
 			if(!context_menu || gui_->viewing_team() != gui_->playing_team()
-			|| events::commands_disabled || !teams_[gui_->viewing_team()].is_human()) {
+			|| events::commands_disabled || !teams_[gui_->viewing_team()].is_human()
+			|| (linger_ && !game_config::debug)){
 				i = items.erase(i);
 				continue;
 			}

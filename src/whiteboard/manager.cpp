@@ -230,7 +230,8 @@ void manager::set_invert_behavior(bool invert)
 
 bool manager::can_enable_execution_hotkeys() const
 {
-	return can_enable_modifier_hotkeys() && viewer_side() == resources::controller->current_side();
+	return can_enable_modifier_hotkeys() && viewer_side() == resources::controller->current_side()
+			&& viewer_actions()->turn_size(0) > 0;
 }
 
 bool manager::can_enable_modifier_hotkeys() const
@@ -306,11 +307,25 @@ void manager::pre_delete_action(action_ptr action)
 			&& boost::dynamic_pointer_cast<move>(action)
 			&& viewer_actions()->count_actions_of(action->get_unit()) == 1)
 	{
-		//but first, check that the unit's still around and that it's the same one
-		unit_map::iterator unit_it =
-				resources::units->find(boost::static_pointer_cast<move>(action)->get_dest_hex());
-		if (unit_it != resources::units->end() && &*unit_it == action->get_unit()) {
-			action->get_unit()->set_standing(true);
+		action->get_unit()->set_standing(true);
+	}
+}
+
+void manager::post_delete_action(action_ptr action)
+{
+	// The fake unit representing the destination of a chain of planned moves should have the regular animation.
+	// If the last remaining action of the unit that owned this move is a move as well,
+	// adjust its appearance accordingly.
+
+	side_actions_ptr side_actions = resources::teams->at(action->team_index()).get_side_actions();
+
+	side_actions::iterator action_it = side_actions->find_last_action_of(action->get_unit());
+	if (action_it != side_actions->end())
+	{
+		if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action_it))
+		{
+			if (move->get_fake_unit())
+				move->get_fake_unit()->set_standing(true);
 		}
 	}
 }
@@ -596,6 +611,8 @@ void manager::create_temp_move()
 	 * (This section has only one return path.)
 	 */
 
+	temp_move_unit_underlying_id_ = selected_unit->underlying_id();
+
 	//@todo: May be appropriate to replace these separate components by a temporary
 	//      wb::move object
 
@@ -672,6 +689,7 @@ void manager::erase_temp_move()
 	move_arrows_.clear();
 	fake_units_.clear();
 	route_.reset();
+	temp_move_unit_underlying_id_ = 0;
 }
 
 void manager::save_temp_move()
@@ -712,6 +730,11 @@ void manager::save_temp_move()
 		LOG_WB << *viewer_actions() << "\n";
 		print_help_once();
 	}
+}
+
+unit_map::iterator manager::get_temp_move_unit() const
+{
+	return resources::units->find(temp_move_unit_underlying_id_);
 }
 
 void manager::save_temp_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice)
@@ -889,72 +912,64 @@ bool manager::allow_end_turn()
 
 bool manager::execute_all_actions()
 {
-	if(viewer_actions()->empty())
-		return true;
-
-	if(can_enable_execution_hotkeys())
+	if(viewer_actions()->empty() || viewer_actions()->turn_size(0) == 0)
 	{
-		erase_temp_move();
-		validate_viewer_actions();
-
-		// Build unit map once to ensure spent gold and other calculations are refreshed
-		set_planned_unit_map();
-		assert(has_planned_unit_map());
-		set_real_unit_map();
-
-		//exception-safety: Finalizer sets executing_actions to false on destruction
-		variable_finalizer<bool> finally(executing_actions_, false);
-		executing_actions_ = true;
-		executing_all_actions_ = true;
-
-		side_actions_ptr sa = viewer_actions();
-
-		if (sa->empty())
-		{
-			WRN_WB << "\"Execute All\" attempt with empty queue.\n";
-			return true;
-		}
-
-		if (resources::whiteboard->has_planned_unit_map())
-		{
-			ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
-		}
-
-		//LOG_WB << "Before executing all actions, " << *sa << "\n";
-
-		while (sa->begin() != sa->end())
-		{
-			bool action_completed;
-			try {
-				action_completed = sa->execute(sa->begin());
-			} catch (end_level_exception&) { //satisfy the gods of WML
-				executing_all_actions_ = false;
-				throw;
-			} catch (end_turn_exception&) { //satisfy the gods of WML
-				executing_all_actions_ = false;
-				throw;
-			}
-			// Interrupt if an attack is waiting for a random seed from the server
-			if ( rand_rng::has_new_seed_callback())
-			{
-				//leave executing_all_actions_ to true, we'll resume once attack completes
-				events::commands_disabled++; //to be decremented by continue_execute_all()
-				return false;
-			}
-			// Interrupt on incomplete action
-			if (!action_completed)
-			{
-				executing_all_actions_ = false;
-				return false;
-			}
-		}
-		executing_all_actions_ = false;
+		//No actions to execute, job done.
 		return true;
 	}
-	else
+
+	assert(can_enable_execution_hotkeys());
+
+	erase_temp_move();
+	validate_viewer_actions();
+
+	// Build unit map once to ensure spent gold and other calculations are refreshed
+	set_planned_unit_map();
+	assert(has_planned_unit_map());
+	set_real_unit_map();
+
+	//exception-safety: Finalizer sets executing_actions to false on destruction
+	variable_finalizer<bool> finally(executing_actions_, false);
+	executing_actions_ = true;
+	executing_all_actions_ = true;
+
+	side_actions_ptr sa = viewer_actions();
+
+	if (resources::whiteboard->has_planned_unit_map())
 	{
-		return false;
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
+
+	//LOG_WB << "Before executing all actions, " << *sa << "\n";
+
+	while (sa->turn_begin(0) != sa->turn_end(0))
+	{
+		bool action_completed;
+		try {
+			action_completed = sa->execute(sa->begin());
+		} catch (end_level_exception&) { //satisfy the gods of WML
+			executing_all_actions_ = false;
+			throw;
+		} catch (end_turn_exception&) { //satisfy the gods of WML
+			executing_all_actions_ = false;
+			throw;
+		}
+		// Interrupt if an attack is waiting for a random seed from the server
+		if ( rand_rng::has_new_seed_callback())
+		{
+			//leave executing_all_actions_ to true, we'll resume once attack completes
+			events::commands_disabled++; //to be decremented by continue_execute_all()
+			return false;
+		}
+		// Interrupt on incomplete action
+		if (!action_completed)
+		{
+			executing_all_actions_ = false;
+			return false;
+		}
+	}
+	executing_all_actions_ = false;
+	return true;
 }
 
 void manager::continue_execute_all()
@@ -1117,17 +1132,13 @@ void manager::options_dlg()
 
 void manager::set_planned_unit_map()
 {
-	if (wait_for_side_init_) {
-		LOG_WB << "Not building planned unit map: waiting for side init.\n";
+	if (!can_modify_game_state()) {
+		LOG_WB << "Not building planned unit map: cannot modify game state now.\n";
 		return;
 	}
 	//any more than one reference means a lock on unit map was requested
 	if(!unit_map_lock_.unique()) {
 		LOG_WB << "Not building planned unit map: unit map locked.\n";
-		return;
-	}
-	if (executing_actions_) {
-		LOG_WB << "Not building planned unit map: action is executing.\n";
 		return;
 	}
 	if (planned_unit_map_active_) {

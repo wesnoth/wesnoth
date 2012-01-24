@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-05 16:25+0100\n"
-"PO-Revision-Date: 2011-04-11 14:48+0100\n"
+"POT-Creation-Date: 2012-01-21 01:45+0100\n"
+"PO-Revision-Date: 2012-01-21 11:15+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "Language: \n"
@@ -29,17 +29,13 @@ msgstr "4g — Nowa Ziemia"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. Recommended starting gold=100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land. Use map settings. The recommended starting gold is 100."
 msgstr ""
 "Walka o przetrwanie dla 4 graczy; ten scenariusz pozwala konstruować budynki "
-"i przekształcać krajobraz. Zaznacz \"Używaj ustawień mapy\". Rekomendowane "
-"ustawienie początkowego złota - 100 sztuk."
+"i przekształcać krajobraz. Używaj ustawień mapy. Zalecane złoto początkowe: "
+"100 sztuk."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:24
@@ -126,16 +122,12 @@ msgstr ""
 
 #. [message]: type=Peasant
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:591
-#, fuzzy
-#| msgid ""
-#| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
-#| "rescue them?"
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
 msgstr ""
-"Przysięgam, widziałem kogoś uwięzionego w sieci pająka. Chyba powinniśmy im "
-"pomóc?"
+"Przysięgam, że widziałem kogoś uwięzionego w sieci pająka. Chyba powinniśmy "
+"mu pomóc?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:613
@@ -404,41 +396,29 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of agriculture"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Podziel się wiedzą o rolnictwie"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of mining"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of mining"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Podziel się wiedzą o górnictwie"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
-#, fuzzy
-#| msgid ""
-#| "$player_name\n"
-#| "Share knowledge of warfare"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Podziel się technologią wojenną"
 
 #. [message]: speaker=unit
@@ -574,13 +554,6 @@ msgstr "Badania"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:144
-#, fuzzy
-#| msgid ""
-#| "We are currently studying $player_$side_number|.research.current_target|. "
-#| "To which end would you have our scholars devote their minds?\n"
-#| "\n"
-#| "Our farms produce $player_$side_number|.farming.gold|g\n"
-#| "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgid ""
 "We are currently studying $player_$side_number|.research."
 "target_language_name|. To which end would you have our scholars devote their "
@@ -589,11 +562,11 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
-"Obecny cen badań to $player_$side_number|.research.current_target|.\n"
-" Czym powinni zająć się nasi uczeni?\n"
+"Obecny cen badań to $player_$side_number|.research.target_language_name|. "
+"Czym powinni zająć się nasi uczeni?\n"
 "\n"
-"Nasze farmy produkują $player_$side_number|.farming.gold|zł\n"
-"Nasze kopalnie produkują $player_$side_number|.mining.gold|zł\n"
+"Nasze farmy dają $player_$side_number|.farming.gold| szt. złota\n"
+"Nasze kopalnie dają $player_$side_number|.mining.gold| szt. złota\n"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
@@ -602,20 +575,14 @@ msgstr "Kontynuuj jak dotąd"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:167
-#, fuzzy
-#| msgid ""
-#| "Agriculture\n"
-#| "Farmers produce +1 gold\n"
-#| "Study Progress: $player_$side_number|.farming.progress|/$player_"
-#| "$side_number|.farming.target"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
-"Rolnictwo\n"
-"Farmerzy produkują +1 sztuk złota\n"
+"<span color='green'>Agriculture</span>\n"
+"Rolnicy dają +1 sztuk złota\n"
 "Postęp badań: $player_$side_number|.farming.progress|/$player_$side_number|."
 "farming.target"
 

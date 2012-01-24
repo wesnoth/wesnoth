@@ -40,7 +40,7 @@ public:
 	move(size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	move(config const&, bool hidden); // For deserialization
-	virtual ~move();
+	virtual ~move(){}
 
 	virtual std::ostream& print(std::ostream& s) const;
 
@@ -49,7 +49,7 @@ public:
 	virtual void execute(bool& success, bool& complete);
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
-	virtual unit* get_unit() const { return unit_; }
+	virtual unit* get_unit() const;
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
@@ -95,7 +95,7 @@ protected:
 
 	void calculate_move_cost();
 
-	unit* unit_;
+	size_t unit_underlying_id_;
 	std::string unit_id_;
 	boost::scoped_ptr<pathfind::marked_route> route_;
 	int movement_cost_;

@@ -94,9 +94,10 @@ rende più prolisso il log.
 .
 .TP 
 \fBallow_remote_shutdown\fP
-If set to \fBno\fP (default), shut_down and restart requests are ignored unless
-they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
-/query by an administrator.
+Se impostato su \fBno\fP (default), le richieste di spegnimento e ripartenza
+vengono ignorate a meno che non provengano dal socket. Impostalo a \fByes\fP
+per poter spengere remotamente il server con una /query di un
+amministratore.
 .TP 
 \fBban_save_file\fP
 Percorso completo o relativo ad un file (compresso con gzip) che il server
@@ -137,10 +138,11 @@ messaggi (valore predefinito: \fB10\fP secondi).
 Il messaggio del giorno.
 .TP 
 \fBnew_room_policy\fP
-Determines who can create new rooms on the server. Available values are
-\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
-respectively to everyone, registered users, admin users or disables new room
-creation. Default value is \fBeveryone\fP.
+Stabilisce chi possa creare nuove stanze sul server. Valori possibli sono
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP e \fBnobody\fP per concedere i permessi
+rispettivamente a tutti, ad utenti registrati, ad utenti amministratori o
+per disabilitare la creazione di nuove stanze. Il valore di default è
+\fBeveryone\fP.
 .TP 
 \fBpasswd\fP
 La password da usare per ottenere i privilegi di amministratore (con
@@ -274,8 +276,9 @@ viene usata la 25.
 .
 .SH "STATO DI USCITA"
 .
-Normal exit status is 0 when the server was properly shutdown. An exit
-status of 2 indicates an error with the command line options.
+Quando il server viene spento correttamente, lo stato di uscita è 0. Un
+stato di uscita pari a 2 indica un errore con le opzioni della linea di
+comando.
 .
 .SH AUTORE
 .

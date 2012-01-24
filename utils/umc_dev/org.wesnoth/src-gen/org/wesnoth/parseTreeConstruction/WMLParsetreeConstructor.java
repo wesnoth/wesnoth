@@ -601,11 +601,11 @@ protected class WMLTag_RightSquareBracketKeyword_7 extends KeywordToken  {
 /************ begin Rule WMLKey ****************
  *
  * WMLKey hidden(WS):
- * 	name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol+=(EOL | SL_COMMENT)+;
+ * 	name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol+=(EOL | SL_COMMENT);
  *
  **/
 
-// name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol+=(EOL | SL_COMMENT)+
+// name=ID "=" values+=WMLKeyValue* (EOL? "+" EOL? values+=WMLKeyValue+)* eol+=(EOL | SL_COMMENT)
 protected class WMLKey_Group extends GroupToken {
 	
 	public WMLKey_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -829,7 +829,7 @@ protected class WMLKey_ValuesAssignment_3_3 extends AssignmentToken  {
 }
 
 
-// eol+=(EOL | SL_COMMENT)+
+// eol+=(EOL | SL_COMMENT)
 protected class WMLKey_EolAssignment_4 extends AssignmentToken  {
 	
 	public WMLKey_EolAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -844,10 +844,9 @@ protected class WMLKey_EolAssignment_4 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new WMLKey_EolAssignment_4(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new WMLKey_Group_3(lastRuleCallOrigin, this, 1, inst);
-			case 2: return new WMLKey_ValuesAssignment_2(lastRuleCallOrigin, this, 2, inst);
-			case 3: return new WMLKey_EqualsSignKeyword_1(lastRuleCallOrigin, this, 3, inst);
+			case 0: return new WMLKey_Group_3(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new WMLKey_ValuesAssignment_2(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new WMLKey_EqualsSignKeyword_1(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
 	}

@@ -41,7 +41,7 @@ namespace wb {
 		virtual ~suppose_dead();
 
 		/** Return the unit targeted by this action. Null if unit doesn't exist. */
-		virtual unit* get_unit() const { return unit_; }
+		virtual unit* get_unit() const;
 		/** @return null pointer */
 		virtual fake_unit_ptr get_fake_unit() { return fake_unit_ptr(); }
 		/** Return the location at which this action was planned. */
@@ -77,7 +77,7 @@ namespace wb {
 			return boost::static_pointer_cast<suppose_dead>(action::shared_from_this());
 		}
 
-		unit* unit_;
+		size_t unit_underlying_id_;
 		std::string unit_id_;
 		map_location loc_;
 

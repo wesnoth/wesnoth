@@ -1297,16 +1297,9 @@ rule__WMLKey__Group__4__Impl
     }
 :
 (
-(
 { before(grammarAccess.getWMLKeyAccess().getEolAssignment_4()); }
 (rule__WMLKey__EolAssignment_4)
 { after(grammarAccess.getWMLKeyAccess().getEolAssignment_4()); }
-)
-(
-{ before(grammarAccess.getWMLKeyAccess().getEolAssignment_4()); }
-(rule__WMLKey__EolAssignment_4)*
-{ after(grammarAccess.getWMLKeyAccess().getEolAssignment_4()); }
-)
 )
 
 ;

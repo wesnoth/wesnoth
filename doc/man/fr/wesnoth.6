@@ -25,7 +25,7 @@ wesnoth \- Bataille pour Wesnoth, un jeu fantasy de stratégie tour par tour
 .
 .SH SYNOPSIS
 .
-\fBwesnoth\fP [\fIOPTIONS\fP] [\fICHEMIN_DE_DATA\fP]
+\fBwesnoth\fP [\fIOPTIONS\fP] [\fICHEMIN_VERS_DONNEES\fP]
 .
 .SH DESCRIPTION
 .
@@ -48,20 +48,21 @@ scénarios ou vos campagnes et partagez\-les avec le reste du monde.
 \fB\-\-bpp\fP\fI\ nombre\fP
 Définit la valeur de bits par pixel (couleurs). Exemple\ : \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign \ [<id_campaign>]\fP
-goes directly to the campaign with id <id_campaign>. A selection
-menu will appear if no id was specified.  \fBNote:\fP When using this switch
-please ensure that you specify the data directory path as the final argument
-aswell, otherwise the game will take the campaign/scenario id as the data
-dir.
+\fB\-c, \-\-campaign \ [<id_campagne>]\fP
+Va directement à la campagne qui a pour identifiant
+<id_campagne>. Le menu de sélection de campagne apparaîtra si l'id
+n'est pas spécifié.  \fBNote\ :\fP Lorsque vous utilisez cette option,
+assurez\-vous d'avoir spécifié le chemin vers le dossier de données en
+argument final, sinon le jeu prendra l'identifiant campagne/scénario comme
+répertoire de données.
 .TP 
-\fB\-\-campaign\-difficulty <difficulty>\fP
-The difficulty of the specified campaign (1 to max). If none specified, the
-campaign difficulty selection widget will appear.
+\fB\-\-campaign\-difficulty <difficulté>\fP
+La difficulté de la campagne spécifiée (de 1 à max). Si la difficulté n'est
+pas spécifiée, le menu de sélection de difficulté apparaîtra.
 .TP 
-\fB\-\-campaign\-scenario <id_scenario>\fP
-The id of the scenario from the specified campaign. The default is the first
-scenario.
+\fB\-\-campaign\-scenario <id_scénario>\fP
+L'identifiant du scénario de la campagne spécifiée. La valeur par défaut est
+le premier scénario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ nom\fP
 Définit le répertoire de configuration de l'utilisateur à \fInom\fP dans $HOME

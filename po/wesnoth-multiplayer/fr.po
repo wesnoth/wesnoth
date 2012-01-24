@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2010-05-28 12:04+0100\n"
-"Last-Translator: Guigou <guillaume.guigou@cnfpt.fr>\n"
+"POT-Creation-Date: 2012-01-22 15:00+0100\n"
+"PO-Revision-Date: 2012-01-13 07:12+0100\n"
+"Last-Translator: Gérard Bodin <bodin.gnork@gmail.com>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -39,16 +39,18 @@ msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
+"<span foreground='#%02x%02x%02x'>Camp %d</span>:  Score de revenu = %d  "
+"Score d'unités = %d  Or = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:126
 msgid "Grand total: <b>%d</b>"
-msgstr ""
+msgstr "Total général : <b>%d</b>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:136
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr ""
+msgstr "<span foreground='%s'>Le camp %d</span> est en tête."
 
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:160
@@ -104,10 +106,8 @@ msgstr "Morts-vivants"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
-#, fuzzy
-#| msgid "2p — The Freelands"
 msgid "2p — Aethermaw"
-msgstr "2j - Les Pays Libres"
+msgstr "2j - Aethermaw"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -125,6 +125,19 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"Il y a très longtemps, la Grande Mage Sulla fut emprisonnée dans "
+"l'Aethermaw, par un nexus d'énergie magique donc la nature chaotique pouvait "
+"l'empêcher de s'enfuir. Au cours des siècles, cependant, Sulla a adapté "
+"petit à petit ses pouvoirs au maelstrom désordonné qu'est l'Aethermaw et a "
+"maintenant commencé à projeter son influence dans le plan matériel, attirant "
+"vers elle des régions entières de centaines de mondes, de réalités et de "
+"périodes temporelles différentes. Elle mène des expériences avec ces "
+"morceaux disparates de cosmos, en les manipulant, en les fusionnant et en "
+"les faisant aller et venir entre l'Aethermaw et leur place d'origine. Sulla "
+"finira peut-être un jour par maîtriser complètement le pouvoir de "
+"l'Aethermaw et se libérer de ses liens. Mais en attendant, elle continue de "
+"s'amuser en organisant des combats entre des mortels assez malchanceux pour "
+"tomber entre ses mains. Conçu par Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -187,12 +200,12 @@ msgid "teamname^South"
 msgstr "Sud"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:277
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr ""
+msgstr "Aethermaw - créé by Doc Paterson"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:291
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:302
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle.\n"
@@ -209,17 +222,32 @@ msgid ""
 "unite the two halves of the battlefield. The process will be complete by the "
 "end of turn 6.</span>\n"
 msgstr ""
+"La Grande Mage Sulla a déplacé vos armées dans ce nexus bizarre et vous "
+"demande de la distraire en combattant.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>Note :</span>\n"
+"\n"
+"<span color='green'>Les unités ne peuvent pas entrer dans un hexagone "
+"contenant un amas de pierres. Elles peuvent cependant y être recrutées et en "
+"sortir.</span>\n"
+"\n"
+"<span color='green'>À partir du tour 4, la Grande Mage Sulla commencera à "
+"réunir les deux moitiés du champ de bataille, ce qu'elle terminera à la fin "
+"du tour 6.</span>\n"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:304
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:321
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:332
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "L'Aethermaw gronde."
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
 msgid "2p — Arcanclave Citadel"
-msgstr ""
+msgstr "2j - La Citadelle d'Arcanclave"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
@@ -243,6 +271,26 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
+"Il a très longtemps, de nombreux siècles avant le règne des Haldric, et bien "
+"au-delà des limites les plus à l'est de la Forêt de Lintanir, de grandes et "
+"terribles guerres avaient lieu. Les archives parlent d'un puissant mage de "
+"combat, un brillant tacticien et maître des arts de l'arcane, à qui ses "
+"disciples avaient donné le titre de Hardi. Lors de la bataille d'Arcanclave, "
+"Hardi et ses armées combattirent une race sauvage de sorciers-démons connus "
+"sous le nom de Kah Ruuk. Encerclé par des dizaines de milliers de Kah Ruuk, "
+"Hardi fit appel à sa magie pour invoquer un puissant élémental de terre "
+"(qui, pour des raisons inconnues, avait une dette envers Hardi). L'élémental "
+"éleva de grandes pierres des profondeurs de la terre et les assembla, en "
+"quelques instants, en murs et en remparts d'une imposante forteresse. Des "
+"milliers de Kah Ruuk périrent dans l'assaut de la Citadelle d'Arcanclave, et "
+"Hardi et ses hommes furent les vainqueurs de ce jour. Plus d'un millier "
+"d'années plus tard, la Reine-Guerrière Cynsaun la Première conduisit un "
+"groupe de nécromanciens dans les ruines de la Citadelle d'Arcanclave et, au "
+"cours des années qui ont suivi, a transformé la région en un bastion "
+"militaire. On dit que plusieurs artefacts puissants, des restes du règne du "
+"Grand Mage Hardi, sont peut-être toujours cachés, perdus quelque part entre "
+"les murs de granit et d'obsidienne de la Citadelle d'Arcanclave. Conçu par "
+"Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -573,6 +621,8 @@ msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
 msgstr ""
+"On dirait que personne ne connaît l'histoire de cette courageuse araignée.\n"
+"(inscrit par GagnantA)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:168
@@ -580,6 +630,9 @@ msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
 msgstr ""
+"L'histoire de ce voleur des grands chemins malchanceux n'a pas encore été "
+"racontée.\n"
+"(inscrit par GagnantB)"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:176
@@ -765,14 +818,6 @@ msgstr "2j - Prévisions funestes (Survie)"
 
 #. [multiplayer]: id=multiplayer_2p_Dark_Forecast
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly AI spawned units. Victory is achieved by "
-#| "surviving all enemy waves. During the course of play, the terrain will "
-#| "change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use map settings for the scenario to work right."
 msgid ""
 "Dark Forecast is a survival scenario for solitaire or two-player team-based "
 "play against randomly-spawned AI units. Victory is achieved by surviving and "
@@ -850,9 +895,8 @@ msgstr "Humains"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1386
-#, fuzzy
 msgid "Death of your leader"
-msgstr "Mort des chefs de votre camp."
+msgstr "Mort de votre chef"
 
 #. [then]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1387
@@ -860,24 +904,26 @@ msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
+"Comme votre équipe n'a qu'un seul chef, les vagues ennemies seront moins "
+"fortes."
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1390
-#, fuzzy
 msgid "Death of both of your team’s leaders"
-msgstr "Mort des chefs de votre camp."
+msgstr "Mort des deux chefs de votre camp"
 
 #. [else]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1391
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
+"Comme votre équipe a deux chefs, les vagues ennemies seront à pleine "
+"puissance."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1412
-#, fuzzy
 msgid "Survive and defeat all enemy waves"
-msgstr "Survivre à toutes les attaques ennemies."
+msgstr "Survivre à toutes les attaques ennemies"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1432
@@ -886,7 +932,6 @@ msgstr "Prévisions funestes : un scénario aléatoire de survie"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1452
-#, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -910,32 +955,28 @@ msgid ""
 "• WML implementation"
 msgstr ""
 "Votre but est de survivre à toutes les vagues ennemies générées et de tuer "
-"le super-ennemi final.\n"
+"les super-ennemis finaux.\n"
 "\n"
 "Les vagues d'ennemis sont générées aléatoirement et changeront à chaque "
 "partie.\n"
 "\n"
+"Elles apparaîtront sur les côtés nord, sud et ouest de la carte (le plus "
+"souvent du côté ouest), à intervalles à peu près réguliers.\n"
 "\n"
-"Elles apparaîtront sur les côtés nord, sud et ouest de la carte (plus "
-"probablement du côté ouest), à intervalles à peu près réguliers.\n"
-"\n"
-"\n"
-"Le temps changera lui aussi de façon aléatoire, modifiant l'aspect de la "
-"carte.\n"
+"Le temps changera lui aussi de façon aléatoire, ce qui modifiera la "
+"configuration de la carte.\n"
 "\n"
 "\n"
+"<b>Prévisions funestes a été créé par :</b>\n"
 "\n"
-"<span color='red'>Prévisions funestes a été conçu par :</span>\n"
+"<span color='green'>jb :</span>\n"
+"- Conception de la carte, du scénario et des vagues d'ennemis\n"
 "\n"
-"<span color='green'>jb</span>\n"
-"- Concept de la carte, du scénario et des vagues d'ennemis\n"
-"\n"
-"<span color='green'>Rhuvaen</span>\n"
+"<span color='green'>Rhuvaen :</span>\n"
 "- Implémentation WML"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:1457
-#, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Voici donc cette vallée maudite ; nous allons la conquérir."
 
@@ -1053,16 +1094,12 @@ msgstr "2j - Hameaux"
 
 #. [multiplayer]: id=multiplayer_Hamlets
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Warfare transforms the simple farms and villages of a peaceful region "
-#| "into a subtly parceled battlefield."
 msgid ""
 "Warfare transforms the simple farms and villages of a peaceful region into a "
 "subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
 "La guerre transforme les fermes et les villages d'une région paisible en un "
-"champ de bataille subtilement divisé."
+"champ de bataille subtilement divisé. Conçu par Doc Paterson."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:24
@@ -1075,103 +1112,108 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"Les joueurs doivent conclure d'étranges alliances avec les habitants des "
+"lieux, afin de survivre sur cette île des plus mystérieuses. Conçu par Doc "
+"Paterson."
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:90
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:164
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:203
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:275
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:325
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:101
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:181
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:222
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:297
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:351
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:487
 msgid "Big Baby Bo"
-msgstr ""
+msgstr "Gros Bébé Bo"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:103
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:115
 msgid "Rawffus the Dim"
-msgstr ""
+msgstr "Rawffus le Sombre"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:152
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:168
 msgid "Kolbur"
-msgstr ""
+msgstr "Kolbur"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:177
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:195
 msgid "Vilhelm Viskitynnyri"
-msgstr ""
+msgstr "Vilhelm Viskitynnyri"
 
 #. [unit]: type=Woodsman, id=Clockwork Boy
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:236
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:248
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:623
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:635
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:257
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:269
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:717
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:729
 msgid "Clockwork Boy"
-msgstr ""
+msgstr "Horloger le jeune"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:298
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:322
 msgid "Neki the Brutal"
-msgstr ""
+msgstr "Neki le Brutal"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:338
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:365
 msgid "Drowsk Calbeht"
-msgstr ""
+msgstr "Drowsk Calbeht"
 
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:398
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:428
 msgid "Rzrrt the Dauntless"
-msgstr ""
+msgstr "Rzrrt le Hardi"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:437
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:469
 msgid "Sorrek, Chosen of Death"
-msgstr ""
+msgstr "Sorrek, Élu de la Mort"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:477
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:551
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:590
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:662
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:712
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:561
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:641
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:682
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:757
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:811
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:947
 msgid "Big Baby Dro"
-msgstr ""
+msgstr "Gros Bébé Dro"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:490
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:575
 msgid "Gawffus the Dim"
-msgstr ""
+msgstr "Gawffus le Sombre"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:539
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:628
 msgid "Rublok"
-msgstr ""
+msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:564
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:655
 msgid "Ulysses Mantyjuuri"
-msgstr ""
+msgstr "Ulysse Mantyjuuri"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:685
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:782
 msgid "Neki the Brute"
-msgstr ""
+msgstr "Neki la Brute"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:725
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:825
 msgid "Claiomh Dubh"
-msgstr ""
+msgstr "Claiomh Dubh"
 
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:784
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:888
 msgid "Tyxrrn the Dauntless"
-msgstr ""
+msgstr "Tyxrrn le Hardi"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:823
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:929
 msgid "Rukhos, Chosen of Death"
-msgstr ""
+msgstr "Rukhos, Élu de la Mort"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
@@ -1219,7 +1261,7 @@ msgstr ""
 #. [effect]: type=arcane
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
 msgid "evil eye"
-msgstr ""
+msgstr "œil maléfique"
 
 #. [trait]: id=remove_hp
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:23
@@ -1328,12 +1370,12 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
 msgid "2p — Thousand Stings Garrison"
-msgstr ""
+msgstr "2j - La Garnison des Mille Dards"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
 msgid "A strange place. Designed by Doc Paterson"
-msgstr ""
+msgstr "Un étrange endroit. Conçu par Doc Paterson"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1402,10 +1444,8 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:148
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:149
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:150
-#, fuzzy
-#| msgid "statue"
 msgid "Statue"
-msgstr "statue"
+msgstr "Statue"
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1745,14 +1785,13 @@ msgstr "4j - Les Châteaux assiégés"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
-#, fuzzy
 msgid ""
 "36X36 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
-"Une carte de 40x30, pour 4 joueurs, où 4 châteaux forts se font face au "
-"confluent de deux rivières. Conçue pour jouer en solo ou 2 contre 2. Il y a "
-"environ 45 villages."
+"Une carte de 36X36 pour 4 joueurs, où 4 châteaux forts se font face au "
+"confluent de deux rivières. Conçue pour jouer à 2 contre 2 ou chacun pour "
+"soi. Il y a environ 45 villages."
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
@@ -1882,15 +1921,13 @@ msgstr "Défenseur"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:426
-#, fuzzy
 msgid "Survive all enemy attacks"
-msgstr "Survivre à toutes les attaques ennemies."
+msgstr "Survivre à toutes les attaques ennemies"
 
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:432
-#, fuzzy
 msgid "Death of your team leaders"
-msgstr "Mort des chefs de votre camp."
+msgstr "Mort des chefs de votre camp"
 
 #. [note]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:437
@@ -1986,10 +2023,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
-#, fuzzy
-#| msgid "6p — Hexcake"
 msgid "6p — Volcano"
-msgstr "6j - Hexagone"
+msgstr "6j - Le Volcan"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
@@ -1997,6 +2032,8 @@ msgid ""
 "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
+"Une bataille à 3 contre 3 pour le contrôle des cendres d'un royaume détruit "
+"depuis longtemps par une éruption volcanique. Il y a 36 villages."
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-06 11:47+0100\n"
-"PO-Revision-Date: 2012-01-02 13:25+0100\n"
+"POT-Creation-Date: 2012-01-21 01:34+0100\n"
+"PO-Revision-Date: 2012-01-20 18:48+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "Language: hu\n"
@@ -30,13 +30,13 @@ msgid "Underground"
 msgstr "Föld alatt"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:820
 #: data/core/macros/abilities.cfg:582
 msgid "berserk"
 msgstr "dühöngés"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:823
 #: data/core/macros/abilities.cfg:584
 msgid ""
 "Berserk:\n"
@@ -49,13 +49,13 @@ msgstr ""
 "ütésváltásig."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:836
 #: data/core/macros/abilities.cfg:668
 msgid "magical"
 msgstr "mágikus"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:839
 #: data/core/macros/abilities.cfg:670
 msgid ""
 "Magical:\n"
@@ -67,13 +67,13 @@ msgstr ""
 "megtámadott egységnek milyen a védekezése."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:851
 #: data/core/macros/abilities.cfg:717
 msgid "firststrike"
 msgstr "első ütés"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:854
 #: data/core/macros/abilities.cfg:719
 msgid ""
 "First Strike:\n"
@@ -246,18 +246,12 @@ msgstr "Újvilág"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
-#, fuzzy
-#| msgid ""
-#| "New Continent -- The great continent to the east of <ref>dst='morogor' "
-#| "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
-#| "flight of Galun."
 msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
-"Újvilág – A <ref>dst='morogor' text='Morogor'</ref>-szigetcsoporttól keletre "
-"lévő nagy kontinens. A perzsekények egészen Galun repüléséig nem tudtak a "
-"létezéséről. "
+"A <ref>dst='morogor' text='Morogor'</ref>-szigetcsoporttól keletre lévő nagy "
+"kontinens. A perzsekények egészen Galun repüléséig nem tudtak a létezéséről. "
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
@@ -1099,7 +1093,7 @@ msgstr ""
 "vívott csaták zajától hangos. A felvidéki tündék messze keleten élnek, ahol "
 "a hírek szerint egy hatalmas birodalmuk van.\n"
 "\n"
-"    • Notable cities:\n"
+"    • Jelentős városok:\n"
 "          ◦ Barag Gor, az Ork Tanács székhelye.\n"
 "          ◦ Bitok\n"
 "          ◦ Borstep\n"
@@ -1392,19 +1386,6 @@ msgstr "Toborzás és visszahívás"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1432,15 +1413,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -2576,7 +2548,7 @@ msgstr ""
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:400
 msgid "Feral"
-msgstr "Szilaj"
+msgstr "Kóbor"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:401
@@ -2587,7 +2559,7 @@ msgid ""
 "of base terrain."
 msgstr ""
 "Az értelemmel rendelkező lények lakóhelyeit a kevésbé okos vadállatok nem "
-"képesek egykönnyen fedezékként használni, emiatt a <italic>text='szilaj'</"
+"képesek egykönnyen fedezékként használni, emiatt a <italic>text='kóbor'</"
 "italic> jellemvonású egységek legfeljebb 50%-os védelmet kapnak minden "
 "szárazföldi faluban, annak tereptípusától függetlenül."
 
@@ -3123,17 +3095,6 @@ msgstr "Várkastély"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#| "Nearly all units receive a considerable bonus to their defense by being "
-#| "stationed in a castle, and all units receive full movement in a castle. "
-#| "Stationing units in a castle represents its defensive capability. Without "
-#| "a unit in each wall hex, an enemy can simply sneak into the castle "
-#| "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#| "\n"
-#| "Most units have about 60% defense in a castle.\n"
-#| "\n"
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -3147,9 +3108,9 @@ msgid ""
 msgstr ""
 "A <italic>text='várkastélyok'</italic> állandó jellegű erődítményeket "
 "jelölnek. Szinte minden egység jelentős védekezési előnyre tesz szert, ha "
-"egy várkastélyban tartózkodik, és minden egység gyorsan tud itt haladni. Egy "
-"vár védelmi erejét az adja, hogy egységek állomásoznak benne. Ha azonban a "
-"falaknál nem állnak minden mezőn egységek, az ellenség könnyen besurranhat "
+"egy várkastélyban tartózkodik, és a legtöbb egység gyorsan tud itt haladni. "
+"Egy vár védelmi erejét az adja, hogy egységek állomásoznak benne. Ha azonban "
+"a falaknál nem állnak minden mezőn egységek, az ellenség könnyen besurranhat "
 "anélkül, hogy bármilyen ellenállásba ütközne, így pedig szert tehet "
 "ugyanarra a védekezési többletre, mint a bent lévők.\n"
 "\n"
@@ -4840,12 +4801,12 @@ msgstr ""
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
 msgid "feral"
-msgstr "szilaj"
+msgstr "kóbor"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
 msgid "female^feral"
-msgstr "szilaj"
+msgstr "kóbor"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192

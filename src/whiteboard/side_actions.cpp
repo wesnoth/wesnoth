@@ -141,7 +141,9 @@ bool side_actions::execute(side_actions::iterator position)
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
 
-	if(actions_.empty() || !validate_iterator(position) || position.turn_num_ > 0)
+	assert(position.turn_num_ == 0); //can't execute actions from future turns
+
+	if(actions_.empty() || !validate_iterator(position))
 		return false;
 
 	LOG_WB << "Before execution, " << *this << "\n";
@@ -678,7 +680,9 @@ side_actions::iterator side_actions::safe_erase(iterator const& itor)
 {
 	action_ptr action = *itor;
 	resources::whiteboard->pre_delete_action(action); //misc cleanup
-	return raw_erase(itor);
+	iterator return_itor = raw_erase(itor);
+	resources::whiteboard->post_delete_action(action);
+	return return_itor;
 }
 
 void side_actions::execute_net_cmd(net_cmd const& cmd)

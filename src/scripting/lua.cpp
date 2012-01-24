@@ -1493,6 +1493,8 @@ static int intf_require(lua_State *L)
  */
 static int intf_highlight_hex(lua_State *L)
 {
+	ERR_LUA << "wesnoth.highlight_hex is deprecated, use wesnoth.select_hex\n";
+
 	int x = luaL_checkinteger(L, 1) - 1;
 	int y = luaL_checkinteger(L, 2) - 1;
 	const map_location loc(x, y);
@@ -2689,14 +2691,25 @@ static int intf_compare_versions(lua_State* L)
 }
 
 /**
- * Selects the given location on the map.
+ * Selects and highlights the given location on the map.
  * - Args 1,2: location.
+ * - Args 3,4: booleans
  */
 static int intf_select_hex(lua_State *L)
 {
-	int x = luaL_checkinteger(L, 1) - 1;
-	int y = luaL_checkinteger(L, 2) - 1;
-	resources::screen->select_hex(map_location(x, y));
+	const int x = luaL_checkinteger(L, 1) - 1;
+	const int y = luaL_checkinteger(L, 2) - 1;
+
+	map_location loc(x, y);
+	if(!resources::game_map->on_board(loc)) return luaL_argerror(L, 1, "not on board");
+	bool highlight = true;
+	if(!lua_isnoneornil(L, 3))
+		highlight = lua_toboolean(L, 3);
+	const bool fire_event = lua_toboolean(L, 4);
+	resources::controller->get_mouse_handler_base().select_hex(
+		map_location(x, y), false, highlight, fire_event);
+	if(highlight)
+		resources::screen->highlight_hex(loc);
 	return 0;
 }
 

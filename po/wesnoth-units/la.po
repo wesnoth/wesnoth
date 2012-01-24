@@ -5,6 +5,7 @@
 # Current Translators:
 #   Michael Babich (Aethaeryn) <michaelbabich7@gmail.com> - Maintainer
 #   Thomas Hockings (Deusite) <elprofesh@gmail.com>
+#   Drakefriend
 #
 # Former Translators:
 #   Mark Polo (mpolo) <markpolo@gmail.com>
@@ -13,13 +14,14 @@ msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2011-12-18 20:31+0100\n"
+"PO-Revision-Date: 2012-01-15 10:10+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
 "Language: la\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Virtaal 0.6.1\n"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
@@ -263,7 +265,6 @@ msgstr ""
 "Etsi iactus ex his 'fustibus tonitrus' complura momenta temporis requiret ad "
 "parandum, Nani dicunt eventus dignos mora esse."
 
-# runa + posse
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord prerevelation, race=dwarf
@@ -308,7 +309,7 @@ msgstr "unda tenebrarum"
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
 msgid "Blood Bat"
-msgstr "Vespertilio Sanguineus"
+msgstr "Vespertilio Cruentus"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:20
@@ -318,9 +319,9 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
-"Vespertiliones Sanguinei sic nominant ob ruborem, quem nonnulli ut signum "
-"cibi deliciae designant. Bestiae celerem sunt et cruorem pugnatorum "
-"exhaurire possunt, quibus partem salutis amissae adipiscantur."
+"Vespertiliones Cruenti sic nominant ob ruborem, quem nonnulli ut signum cibi "
+"deliciae designant. Bestiae celeres sunt et cruorem pugnatorum exhaurire "
+"possunt, quibus partem salutis amissae adipiscantur."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -352,7 +353,7 @@ msgid ""
 "Bats, gaining the ability to drain not merely the blood but the very life "
 "energy of their victims."
 msgstr ""
-"Saevissimus, praedatorissimus et prosperissimus Vespertilio Sanguineus "
+"Saevissimus, praedatorissimus et prosperissimus Vespertilionum Cruentorum "
 "Vespertilio Hirudo factus est, percipiens non solum cruorem sed etiam vero "
 "animam victimae."
 
@@ -363,15 +364,14 @@ msgstr "Vespertilio Hirudo"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:20
-#, fuzzy
 msgid ""
 "Vampire bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
-"Vespertiliones Vampirici sunt bestiae volantes immortuae qui mordentes "
-"victimas oppugnant. Etsi dentes non potentes sunt, iis salutem victimarum "
-"exhauriunt cum sanguine et salus Vespertilionibus datur.\n"
+"Vespertiliones Hirudines bestiae volantes sunt qui mordentes victimas "
+"oppugnant. Etsi dentes non potentes sunt, salutem cruoremque victimarum "
+"exhauriunt ut salus Vespertilionibus detur.\n"
 "\n"
 "Nota Praecipua:"
 
@@ -386,7 +386,7 @@ msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
-"Rates, remis velisve gubernantes, usui hominibus sunt causa paulum et in "
+"Rates, remis velisve gubernatae, usui hominibus sunt causa paulum et in "
 "brevi eundi, ubi magnae naves navigare non possunt."
 
 #. [unit_type]: id=Galleon, race=mechanical
@@ -397,7 +397,7 @@ msgstr "Navis Longa"
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:21
 msgid "Galleons are blue-water ships built for trade and transport."
-msgstr "Naves Onerariae pelagi sunt, mercaturae transferentique aedificatae."
+msgstr "Naves Longae pelagi sunt, mercaturae transferentique aedificatae."
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
@@ -814,6 +814,7 @@ msgid ""
 "he carves into his weapons and armor deflect the blows of his enemies."
 msgstr ""
 
+# Nanus Bacchans?
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
@@ -898,7 +899,6 @@ msgid ""
 "deftly thrown axes can rival the power and accuracy of a human archer."
 msgstr ""
 
-# runa + facere
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:4
 msgid "Dwarvish Runesmith"
@@ -983,9 +983,7 @@ msgid ""
 msgstr ""
 "Nani genus vetustum pugnatorum potentum sunt. Nani Saevi ferocissimi eorum "
 "sunt in pugna: oppugnant sine mora usque ad mortem proprium aut mortem "
-"hostis, neglegentes vulnera propria.\n"
-"\n"
-"Nota Praecipua:"
+"hostis, neglegentes vulnera propria."
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
@@ -1088,9 +1086,7 @@ msgstr ""
 "atroci.\n"
 "\n"
 "Hoc nonnumquam dictum est ultio pro fratribus mortuis in proelio. Etsi ratio "
-"non sic inventa est, descriptio haec non parum diligens est.\n"
-"\n"
-"Nota Praecipua:"
+"non sic inventa est, descriptio haec non parum diligens est."
 
 #. [female]
 #: data/core/units/elves/Avenger.cfg:166
@@ -1117,9 +1113,7 @@ msgstr ""
 "sequuntur unum parum qui experientia certaminis habet. Dissedet multum cum "
 "hominibus, quibus ductus saepe mixtura mobilis vi et minarum est. Coniunctio "
 "voluntatis accipere sapientiam ducum et inclinationis eligere duces dignos "
-"est vis tacitus dryadalum.\n"
-"\n"
-"Nota Praecipua: "
+"est vis tacitus dryadalum."
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
@@ -1163,9 +1157,7 @@ msgstr ""
 "minitantur verberare.\n"
 "\n"
 "Ingenium principale eorum est sanatio, et propter hanc facultatum druidae "
-"dryadalum a populo venerantur.\n"
-"\n"
-"Nota Praecipua:"
+"dryadalum a populo venerantur."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Druid.cfg:40 data/core/units/elves/Enchantress.cfg:38
@@ -1323,11 +1315,8 @@ msgstr ""
 "Una res quae confert ad peritiam dryadalum cum arcu est visus perclarus "
 "eorum. Dryadalis qui arte sagittariorum exercitur scopos ferire potest quos "
 "homines non videre possunt, etiam noctu, et sagittam alteram onerare quasi "
-"simul ac prima volare sita est.\n"
-"\n"
-"Peritia pretium unicum habet: carentia exercitationis cum gladio.\n"
-"\n"
-"Nota Praecipua:"
+"simul ac prima volare sita est.Peritia pretium unicum habet: carentia "
+"exercitationis cum gladio."
 
 #. [attack]: type=pierce
 #: data/core/units/elves/Marksman.cfg:72
@@ -1362,9 +1351,7 @@ msgstr ""
 "in rebus militaribus, satis ut fastidio talium rerum respondeat. Dryadales "
 "meminerunt res clarius quam homines et saepe intuire possunt quod necesse "
 "est alios docere. Certe in occasionibus infrequentibus in quibus dryadalis "
-"mentem in bellum intendit, ratio belli eventa est opus domini.\n"
-"\n"
-"Nota Praecipua:"
+"mentem in bellum intendit, ratio belli eventa est opus domini."
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
@@ -1411,9 +1398,7 @@ msgstr ""
 "Etsi homo multos annos in silva habitat, semper sentiet se hospem esse in "
 "loco ad quem non pertinet. Contrarium est dryadalibus. Dryadalis qui "
 "doctrinae silvarum studet fit dominus idoneus earum et una cum satis "
-"peritiae arcus et gladii fiunt implementa potentia belli.\n"
-"\n"
-"Nota·Praecipua:"
+"peritiae arcus et gladii fiunt implementa potentia belli."
 
 #. [female]
 #: data/core/units/elves/Ranger.cfg:163
@@ -1489,9 +1474,7 @@ msgstr ""
 "certamine advocare possunt. Hostes qui in silvis errant mox se inveniant "
 "inlaqueatos a radicibus ipsis in quibus stant, et sic fiunt minus minaces.\n"
 "\n"
-"Facultates medicinales dryadalum sunt quoque notae, et utiles in proelio.\n"
-"\n"
-"Nota Praecipua:"
+"Facultates medicinales dryadalum sunt quoque notae, et utiles in proelio."
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
@@ -1510,9 +1493,7 @@ msgstr ""
 "Fabula est olim dryadalis sagittam comprimit, eam ex aere una propria "
 "iaculans. Testamentum est ad peritiam dryadalum talem fabulam credibilem "
 "esse. Manuballistarii Tecti Dryadales artis sagittariorum simpliciter "
-"dominantur.\n"
-"\n"
-"Nota Praecipua:"
+"dominantur."
 
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:156
@@ -1536,9 +1517,7 @@ msgstr ""
 "Devotio ad partem nymphalem eius aliquando mutat virginem dryadalem in "
 "creatura amborum mundorum. Ductae a natura vix comprehensa, hae "
 "procuratrices formosae silvarum dryadalum exemplum maximum sunt gratiae et "
-"mysteriae populi earum.\n"
-"\n"
-"Nota Praecipua:"
+"mysteriae populi earum."
 
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:41 data/core/units/elves/Sylph.cfg:40
@@ -1596,7 +1575,6 @@ msgstr "Lupes Dirus"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:21
-#, fuzzy
 msgid ""
 "‘Dire wolves’ differ from the common variety only in size and color. They "
 "typically stand taller than a horse at the shoulder, and have an appetite to "
@@ -1609,17 +1587,15 @@ msgid ""
 "the orcish assassins, making a swipe from these beasts’ paws into a most "
 "deadly stroke."
 msgstr ""
-"'Lupi diri' differunt a lupis vulgis tantum in magnitudine et colore. "
-"Altiores sunt quam umerus equi et fames habent par. Tantum insanus eis "
-"libenter obviam it, sed coboli magno pretio privato eos domare possunt, si "
-"ita oportet dicere.\n"
+"'Lupi diri' a lupis mediocribus tantum in magnitudine et colore differunt. "
+"Altiores sunt quam umerus equi, et fames habent par. Tantum insanus eis "
+"libenter obviam eat, sed orcules, quod magno stetit, equitando eos domare "
+"possunt.\n"
 "\n"
-"Ungues lupi non commune videntur periculosi, sed quia bestia tam magna est, "
-"sunt densiores et longiores quam clavi ferrei. Lupites eorum venenum in "
-"ungues anteriores ungunt, non dissimile veneno sicariorum orcorum, ergo "
-"laceratio unguibus eorum ictus acerbissimus est.\n"
-"\n"
-"Nota Praecipua:"
+"Ungues lupi non in commune videntur periculosi, sed quia bestia tam magna "
+"est, densiores et longiores clavis ferreis sunt. Lupites eorum in ungues "
+"anteriores venenum similem eo sicariorum orcum ungunt, laceratio ita unguium "
+"in ictum acerbissimum vertitur."
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
@@ -1628,19 +1604,15 @@ msgstr "Orculis Infigens"
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:20
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy’s battle "
 "line. Those who manage to survive their first few battles equip themselves "
 "with a long spear to compensate for their short reach, and better armor to "
 "guard their diminutive frames."
 msgstr ""
-"Cobalis utuntur orci ut pabulum aciei primi inimicorum. Cobali qui supersunt "
-"nescio quomodo semper se armant ut ita pergant. Hasta multo maior eos iuvat "
-"compensare brachiis brevibus, et armatura melior iuvat protegere formas "
-"exiguas eorum.\n"
-"\n"
-"Nota Praecipua:"
+"Orces orculibus ut pabulum aciei primi sint utuntur. Qui supersunt nescio "
+"quomodo semper se armant ut ita pergant. Hasta maior eos iuvat ut brevia "
+"brachia compensent, et armatura melior iuvat ut exiguas formas defendant."
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:4
@@ -1649,7 +1621,6 @@ msgstr "Robur Lupitum"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:20
-#, fuzzy
 msgid ""
 "The Goblin ‘Knights’ have little in common with the men who share that "
 "title, and the title is bestowed in mockery by their enemies. The similarity "
@@ -1659,13 +1630,12 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
-"Lupites 'Ordinis' Cobalorum paulum habent in comune cum hominis huius "
-"tituli. Re vera hic titulus tantum ab inimicis datur. Sunt flos lupitum, "
-"sicut equites ordinis flos equitum sunt, sed promovuntur ob eventum in "
-"incursione temeraria aut in facto de natura similiter vili.\n"
+"‘Robur’ Lupitum a quibus titulum habent magno differunt. Re vera hic titulus "
+"tantum ab hostibus ludo datur, sed flos lupitum sunt, fortasse ob successu "
+"incursionis temerariae producati.\n"
 "\n"
-"Lupi eorum aluntur ut fortes et rapidi sint, et satis periculosi sunt in "
-"certamine."
+"Lupi eorum aluntur ut fortes et rapidi sint, et satis periculosi in "
+"certamine sunt."
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
@@ -1674,18 +1644,15 @@ msgstr "Expilator Orculium"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:19
-#, fuzzy
 msgid ""
 "Some Goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
 "their foes, and also carry nets to wreak havoc against those attempting to "
 "rally for defense or reprisal."
 msgstr ""
-"Nonnulli coboli lupos educant ne timeant ignem. In incusionibus hi coboli in "
-"partibus subsidiariis funguntur; cremant domus et agros hostis et retia "
-"gerunt quae vastationem efficiunt in defensoribus aut ulciscoribus.\n"
-"\n"
-"Nota Praecipua:"
+"Nonnulli orculium lupos educant ne ignem timeant. Dum vastant illi exercitui "
+"funguntur; cremant domus et agros hostis et retia gerunt, quae vastationem "
+"defendentibus ulciscentibusve efficiunt."
 
 #. [attack]: type=fire
 #: data/core/units/goblins/Pillager.cfg:55
@@ -1717,9 +1684,7 @@ msgstr ""
 "Portatores vexilli insoliti sunt inter cobalos. Cobalus qui proelia satis "
 "supervivit ut veteranus nominatur iam rarus est, sed etiam rarius est si "
 "cobali alii hunc statutem veterani verentur. Stimuli furiosi Adrigentis "
-"iuniores in proelio durat ut ante mortum saevius et longius pugnent.\n"
-"\n"
-"Nota Praecipua:"
+"iuniores in proelio durat ut ante mortum saevius et longius pugnent."
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
@@ -2099,9 +2064,7 @@ msgstr ""
 "Periti in ludo rudium (qui apparent nobiles sed non semper sunt) quoque "
 "scorpionem parvam secum ferunt absconditam sub pallium. Etsi lente "
 "oneraturae et dictae ignominiosae, valde utiles sunt. Qui longe in ordinibus "
-"vivere vult saepe tribuit concessiones ad utilitatem et superessendam.\n"
-"\n"
-"Nota Praecipua:"
+"vivere vult saepe tribuit concessiones ad utilitatem et superessendam."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Duelist.cfg:85
@@ -2138,9 +2101,7 @@ msgstr ""
 "Gerentes sicam et gladium levem, lanistae leves sunt pedi et utiles in "
 "sitibus multis ubi pares armatae incommodum habent. Delectantur, saepe ad "
 "verbum, saltando in circulos circum milites ut pedites armatos, irridentes "
-"pretium solutum armatura gravi eorum.\n"
-"\n"
-"Nota Praecipua:"
+"pretium solutum armatura gravi eorum."
 
 #. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
@@ -2156,9 +2117,7 @@ msgid ""
 msgstr ""
 "Duces magni exercituum hominum Legati regiones magnas aut magni momenti "
 "protegere debent in regnis humanis quibus serviunt. Peritia et experientia "
-"eorum satis est ut hae ordina egerant.\n"
-"\n"
-"Nota Praecipua:"
+"eorum satis est ut hae ordina egerant."
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
@@ -2176,9 +2135,7 @@ msgid ""
 msgstr ""
 "Gradus Imperatoris inter aestimatissimos in exercitu humanitatis est, et qui "
 "eum fert multas probationes ignis superavit, virtutem nonnullum monstrans in "
-"proelio et facultatem rationis belli.\n"
-"\n"
-"Nota Praecipua:"
+"proelio et facultatem rationis belli."
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
@@ -2211,11 +2168,9 @@ msgstr ""
 "versutum est in certamine, praesertim contra equites.\n"
 "\n"
 "Sed bipennis carior insignite est fabricare quam hasta, et in manibus "
-"novitii minus efficax. In exercitibus Occidiseptenrionis mox est haec tela "
-"tantum dolatis veteranis dare, qui se demonstraverunt peritiam habere ut eis "
-"recte utantur in campo belli.\n"
-"\n"
-"Nota Praecipua:"
+"novitii minus efficax. In exercitibus Vesnotei mox est haec tela tantum "
+"dolatis veteranis dare, qui se demonstraverunt peritiam habere ut eis recte "
+"utantur in campo belli."
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
@@ -2294,9 +2249,7 @@ msgstr ""
 "occidunt. Nonnulli tamen ingenium naturale cum eis habent. Hi pilati "
 "beneficium magnum sunt exercitui, quia ad peritiam in concursu additur "
 "facultatem proelii a longe. Saepe pilas in hostes iacere possunt sine metu "
-"ultionis, et nihilo minus terram in concursu tenere.\n"
-"\n"
-"Nota Praecipua:"
+"ultionis, et nihilo minus terram in concursu tenere."
 
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
@@ -2311,9 +2264,7 @@ msgid ""
 "soldiers, coordinating their attacks."
 msgstr ""
 "Educati cum gladio et scorpione, Centuriones greges parvas militum humanorum "
-"ducunt, Oppugnationes eorum ordinantes.\n"
-"\n"
-"Nota Praecipua:"
+"ducunt, Oppugnationes eorum ordinantes."
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
@@ -2391,9 +2342,7 @@ msgstr ""
 "Luxiuriam saepe habent eligendi magistratum et liberi sunt ad terram "
 "pervagandam si volunt. Saepe inveniuntur praefecti custodum castelli vel "
 "magistri academiae militaris, honores ubi natura eorum immodesta non tantum "
-"accipitur sed etiam fortasse utilis est.\n"
-"\n"
-"Nota Praecipua:"
+"accipitur sed etiam fortasse utilis est."
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
@@ -2411,13 +2360,11 @@ msgid ""
 "of pikemen is the bane of any cavalry charge, and with proper discipline and "
 "tactics, pikemen can also hold most other infantry at bay."
 msgstr ""
-"Hastati bonae spei in exercitibus Occidiseptentrionis saepe promoventur ad "
-"dolatos, gerentes arma multo superiora quam armatura quae reciperunt cum "
-"conscripti sunt. Dolo multo longior est quam hasta et aliis rationibus belli "
-"eget. Acies dolatorum perniciosa est equitibus incurrentibus, et cum "
-"disciplina idonea dolati plurimis peditibus praestare possunt.\n"
-"\n"
-"Nota Praecipua:"
+"Hastati bonae spei in exercitibus Vesnotei saepe promoventur ad dolatos, "
+"gerentes arma multo superiora quam armatura quae reciperunt cum conscripti "
+"sunt. Dolo multo longior est quam hasta et aliis rationibus belli eget. "
+"Acies dolatorum perniciosa est equitibus incurrentibus, et cum disciplina "
+"idonea dolati plurimis peditibus praestare possunt."
 
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:65
@@ -2442,13 +2389,12 @@ msgid ""
 "reliability and mastery of close combat are their best assets, for which "
 "they are well-renowned."
 msgstr ""
-"Bucellarii ex optimis gladiatoribus in Occidiseptentrione eliguntur. "
-"Serviunt nobilibus altioribus ut praetoriani vel signum statutis "
-"redemptorum. Vis praecipuus bucellariorum collocatur in Capitolio ut "
-"custodes castelli et familiae regalis. Quod superiores eos fidedignos "
-"putant, mittuntur saepe praeter mercennarios in missiones magnae "
-"significatio. Fiducia et peritia in concursu bona optima sunt eorum, ob quas "
-"bene cognoscuntur."
+"Bucellarii ex optimis gladiatoribus in Vesnote eliguntur. Serviunt nobilibus "
+"altioribus ut praetoriani vel signum statutis redemptorum. Vis praecipuus "
+"bucellariorum collocatur in Capitolio ut custodes castelli et familiae "
+"regalis. Quod superiores eos fidedignos putant, mittuntur saepe praeter "
+"mercennarios in missiones magnae significatio. Fiducia et peritia in "
+"concursu bona optima sunt eorum, ob quas bene cognoscuntur."
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
@@ -2518,9 +2464,7 @@ msgstr ""
 "hastae faciliores sunt factu, et etiam sine capite geri possunt, quamquam "
 "plurimi id emere possunt. Induentes armaturam ex corio et forse gerentes "
 "scutum et nonnullas pilas, pars magna formant in plurimis exercitibus. Saepe "
-"in acie priori collocantur quasi sine exercitatione.\n"
-"\n"
-"Nota Praecipua:"
+"in acie priori collocantur quasi sine exercitatione."
 
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
@@ -2586,9 +2530,7 @@ msgstr ""
 "instrumentum ad fines tales saepe caret fide necessaria ut dominetur.\n"
 "\n"
 "Fragiles corporis et carens omni consuetudine in certamine, artes magorum "
-"tamen valde utiles in proelio.\n"
-"\n"
-"Nota Praecipua:"
+"tamen valde utiles in proelio."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage.cfg:51
@@ -2632,9 +2574,7 @@ msgstr ""
 "plerique non adsentiantur.\n"
 "\n"
 "Etsi non experimenta sunt in certamini, si necesse est, Magus Princeps totam "
-"potestatem artis sui expedire potest, quod non minori aestimari debet.\n"
-"\n"
-"Nota Praecipua:"
+"potestatem artis sui expedire potest, quod non minori aestimari debet."
 
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Arch.cfg:90
@@ -2695,9 +2635,7 @@ msgstr ""
 "omnibus paribus.\n"
 "\n"
 "Etsi bellatores omnino non sunt, applicatio artis ad proelium saepe infundit "
-"reverentiam in aliis militibus.\n"
-"\n"
-"Nota Praecipua:"
+"reverentiam in aliis militibus."
 
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:132
@@ -2735,9 +2673,7 @@ msgstr ""
 "\n"
 "Fragiles formae et indocti in rationibus belli, 'Magi Rubri' multas "
 "praestigias habent in manicis, e.g. globi ignis qui nomen vulgus eorum "
-"coagmentaverunt.\n"
-"\n"
-"Nota Praecipua:"
+"coagmentaverunt."
 
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:132
@@ -2793,10 +2729,7 @@ msgstr ""
 "es.\n"
 "\n"
 "Magi argentei physice solleriores sunt quam alii magi, et peritiae eorum "
-"certae sunt in proelio, si dux magum cogere potest eis uti.\n"
-"\n"
-"Nota Praecipua: Magi Argenti se modulantur ad naturam magicam et repugnant "
-"optime damnum physicale."
+"certae sunt in proelio, si dux magum cogere potest eis uti."
 
 #. [female]
 #: data/core/units/humans/Mage_Silver.cfg:283
@@ -2829,10 +2762,7 @@ msgstr ""
 "per mundum, ministrantes aegros et laesos.\n"
 "\n"
 "Etsi non educati in certamine, socius potens sunt contra unum inimicum. Si "
-"necesse est, possunt advocare potentiam lucis ut inmortuos ex mundo "
-"expellat.\n"
-"\n"
-"Nota Praecipua:"
+"necesse est, possunt advocare potentiam lucis ut inmortuos ex mundo expellat."
 
 #. [attack]: type=arcane
 #: data/core/units/humans/Mage_White.cfg:117
@@ -2868,9 +2798,7 @@ msgstr ""
 "noctis eliminent.\n"
 "\n"
 "Sequentes regulas severas pietatis et honoris, hi homines assidue laborant "
-"ut vitam et ordinem mundo turbato in quo vivunt praebant.\n"
-"\n"
-"Nota Praecipua:"
+"ut vitam et ordinem mundo turbato in quo vivunt praebant."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Mage_of_Light.cfg:111
@@ -2938,9 +2866,7 @@ msgstr ""
 "rapere. Periti certaminis cum sica et insolite leves pede, hi minaces "
 "omnibus instrumentis utuntur ut victimas silenter occidant - cultri venenosi "
 "a procul vel sica in tergo. Funesti noctu, aliquantulum incommodi sunt in "
-"proeliis diurnis sub sole.\n"
-"\n"
-"Nota Praecipua:"
+"proeliis diurnis sub sole."
 
 #. [attack]: type=blade
 #: data/core/units/humans/Outlaw_Assassin.cfg:52
@@ -3063,9 +2989,7 @@ msgstr ""
 "multos momentos ingratos consumerunt emicantes per turbas et evadentes illos "
 "qui eos male volunt. Haec peritiae valde utiles sunt in pugna. Magistri cum "
 "cultro, atque cultros ad amussim iacere possunt. Horae longae pergrassatae "
-"noctu eos relinquunt commodiores pugnantes in tenebris.\n"
-"\n"
-"Nota·Praecipua:"
+"noctu eos relinquunt commodiores pugnantes in tenebris."
 
 #. [female]
 #: data/core/units/humans/Outlaw_Rogue.cfg:153
@@ -3110,9 +3034,7 @@ msgstr ""
 "audax est facere, qui ars eorum saepe ingreditur in gestos illicitos. Fures "
 "habent multas peritias et ex necessitate leves sunt pede et gerunt bonum "
 "cultrum. Beate utuntur rationibus belli minus honestis in certamine, quia "
-"'pugnam iustam' non aestimant.\n"
-"\n"
-"Nota·Praecipua:"
+"'pugnam iustam' non aestimant."
 
 #. [female]
 #: data/core/units/humans/Outlaw_Thief.cfg:377
@@ -3305,9 +3227,7 @@ msgstr ""
 "fruitur in populo. Hac facultate in artibus multiplicis utuntur, ex quibus "
 "homines nondum de multis somniaverunt. Usus evidens in bello vetatur in "
 "proeliis contra genus earum - haec potestas pars maior est protectionis "
-"populi contra monstra ex gurgite natantia.\n"
-"\n"
-"Nota Praecipua:"
+"populi contra monstra ex gurgite natantia."
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Enchantress.cfg:45
@@ -3368,9 +3288,7 @@ msgstr ""
 "Scutis eminentibus Hoplomachi Nerei florem custodum regni aquosi formant. "
 "Arma potentia et disciplina rigida eos aciem stabilem tenere contra furores "
 "proelii permittunt. Tempore desperationis et in terra hoc facere possunt, "
-"sedminus bene longe quam creatura cum cruribus.\n"
-"\n"
-"Nota Praecipua:"
+"sedminus bene longe quam creatura cum cruribus."
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
@@ -3412,9 +3330,7 @@ msgstr ""
 "monstrant partem nymphalem naturae earum.\n"
 "\n"
 "Quamquam fragiles sunt, potestas aquae eas formidolosas efficit in "
-"certamine, nam aquam ipsam vocare possunt ut inimicos percutiat.\n"
-"\n"
-"Nota Praecipua:"
+"certamine, nam aquam ipsam vocare possunt ut inimicos percutiat."
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
@@ -3475,9 +3391,7 @@ msgstr ""
 "nereae quae eum servant, nam ingeniosiores sunt. Eae constituerunt pacem et "
 "vitam in mundum ferre et artes sanationis studiare. Diligentia earum et "
 "pietas facultates animi eis praebent, quibus populum a monstris "
-"supernaturalibus protegunt.\n"
-"\n"
-"Nota Praecipua:"
+"supernaturalibus protegunt."
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:4
@@ -3505,10 +3419,7 @@ msgstr ""
 "quasi ut extensio nereiae ipsius.\n"
 "\n"
 "Intentiones sescenti huius potestatis rare in mentem incolentium terrae "
-"veniunt. Ii saltem eam mirantur.\n"
-"\n"
-"Nota Praecipua: sirenis oppugnationes magicales sunt et semper "
-"probabilitatem bonam habent feriendi."
+"veniunt. Ii saltem eam mirantur."
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:41
@@ -3585,9 +3496,7 @@ msgid ""
 msgstr ""
 "Sepiae bestiae ingentes maris sunt. Possunt praedas brachiis fortibus "
 "adripere aut atramentum venenosum ex procul spuere. Via optima superandi "
-"occursum beluarum harum est in terra remanere.\n"
-"\n"
-"Nota Praecipua:"
+"occursum beluarum harum est in terra remanere."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Cuttle_Fish.cfg:49
@@ -3619,6 +3528,14 @@ msgid ""
 "Battling a dragon is said to be the pinnacle of danger itself, fit only for "
 "fools, or the bravest of knights."
 msgstr ""
+"Dragones sunt bestiae fabulosae. Perrari sunt, et, nisi historia oppidorum "
+"urbiumque ab eis solis destructorum, non perscriberentur. Fabulae de "
+"devastiones draconum assiduissime describuntur: fortitudinem, celeritatem "
+"magnum, calliditatem praeter naturam, praesertimque ignem immensum qui intus "
+"ardet.\n"
+"\n"
+"Draconi pugnare columen periculi esse dicitur, aptum modo stultis aut "
+"virilissimis equitum."
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:31
@@ -3654,7 +3571,7 @@ msgstr "ungues ignis"
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
 msgid "Giant Mudcrawler"
-msgstr "Ingens Caenirepens"
+msgstr "Caenirepens Ingens"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:19
@@ -3709,9 +3626,7 @@ msgid ""
 "man needs little explanation."
 msgstr ""
 "Scorpio vulgaris satis est periculosa - scorpio cum magnitudine hominis non "
-"meret explicationem.\n"
-"\n"
-"Nota Praecipua:"
+"meret explicationem."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:24
@@ -3738,9 +3653,7 @@ msgid ""
 msgstr ""
 "Araneae Ingentes vagari in profundis Knalgae dicuntur, vorantes victimas "
 "multas. Possunt mordere prope invenenantes hostes et araneo ex procul "
-"oppugnare lentifacientes eos.\n"
-"\n"
-"Nota Praecipua:"
+"oppugnare lentifacientes eos."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Spider.cfg:37
@@ -3813,9 +3726,7 @@ msgid ""
 "below the waves."
 msgstr ""
 "Bracchia ex Gurgite membra sunt aliquod monstrum maiorem quod sub undis "
-"latet.\n"
-"\n"
-"Nota Praecipua:"
+"latet."
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
@@ -4050,7 +3961,6 @@ msgstr "Sicarius Orcium"
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:23
-#, fuzzy
 msgid ""
 "Though some consider it cowardly to use, poison is a weapon favored by orcs, "
 "especially those weak of frame. Orcish assassins, who use it on throwing "
@@ -4058,13 +3968,11 @@ msgid ""
 "nimble. Though rarely the ones who deal the killing blow, their tactics are "
 "a considerable aid to their larger and more brutal kin."
 msgstr ""
-"Etsi nonnulli usum veneni ignavum esse putant, orci favent veneno ut telo, "
-"praesertim debiliorum formae. Sicarii orcorum, qui eo in cultris iactis "
-"utuntur, de more sunt aliquantum fragiles, sed mire agiles. Rare sunt qui "
-"occidunt inimicos, sed rationes belli eorum subsidium magnum sunt fratribus "
-"eorum saevioribus et maioribus.\n"
-"\n"
-"Nota Praecipua:"
+"Etsi nonnulli usum veneni ignavum esse putant, orces veneno ut telo favent, "
+"praesertim illi formae debilis. Sicarii orcum, qui eo in cultris iaciendi "
+"utuntur, apud orces fragiles sunt, sed mire agiles. Etsi raro sunt qui "
+"hostem occidant, rationes belli usui magnum sunt fratribus saevioribus et "
+"maioribus."
 
 #. [attack]: type=blade
 #: data/core/units/orcs/Assassin.cfg:50 data/core/units/orcs/Slayer.cfg:48
@@ -4092,15 +4000,14 @@ msgstr "Orx Gregarius"
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:20
-#, fuzzy
 msgid ""
 "Orcish Grunts form the core of the orcish forces. Although slower than human "
 "or elven fighters, Grunts can deliver much more powerful blows, and take "
 "more hits before falling."
 msgstr ""
-"Manipulares Orcorum nucleum gregium orcorum formant. Quamquam lentiores "
-"pugnatoribus hominum dryadalumve sunt, ictos multo potentiores intendere "
-"possunt, et plures ictos pati priusquam conciderint."
+"Gregarii nucleus gregium orcium sunt. Quamquam lentiores pugnatoribus "
+"hominum dryadaliumve sunt, ictus multo potentiores intendere possunt, et "
+"plures ictuum pati priusquam conciderint."
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:4
@@ -4109,7 +4016,6 @@ msgstr "Dux Orcium"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:20
-#, fuzzy
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a crossbow out of necessity, but are much more skilled "
@@ -4117,12 +4023,9 @@ msgid ""
 "certain rapport with their kin, especially goblins, and can inspire them to "
 "fight with uncharacteristic boldness."
 msgstr ""
-"Duces Orcorum principes sunt tribus eorum. Sententias magni momenti faciunt "
-"et populum in proelium ducunt. Arcum gerunt ex necessitate, sed peritiores "
-"sunt gladio; pugnatores potentes omnino sunt. Peritiae ductus naturales eos "
-"faciunt pretiosos valde in proelio:si perditur Dux, ita proelium.\n"
-"\n"
-"Nota Praecipua:"
+"Orces maxime callidi duces catervarum fieri solent. Arcum ex necessitate "
+"gerunt, sed peritiores sunt gladio. Illi bellatores sunt, sed quoque gentem, "
+"praesertim orcules, tangunt et eos ad audaciam insuetam movere possunt."
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
@@ -4152,7 +4055,6 @@ msgstr "Occisor Orcium"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:22
-#, fuzzy
 msgid ""
 "The larger or more skilled orcish assassins are called ‘Slayers’ by their "
 "enemies. Slayers are fast on their feet, and quite nimble in combat, "
@@ -4160,13 +4062,10 @@ msgid ""
 "poison, is a vicious tool, and its common use on the battlefield is often "
 "the real cause of orcish supremacy."
 msgstr ""
-"Maiores et peritiores sicarii orcorum ab inimicis 'Interfectores' "
-"nominantur, quamquam distinctio nonnihil inclara est. Interfectores rapidi "
-"sunt pedi et agiles in certamine, quia non induunt armaturam. Telum electum "
-"eorum, venenum, implementum saevum est, et usus eius in campo proelio causa "
-"vera est dominationis orcorum.\n"
-"\n"
-"Nota Praecipua:"
+"Maiores peritioresvel sicarii orcium ab hostibus ‘Occisores’ nominantur. "
+"Occisores rapidi sunt pedibus et agiles in certamine, quia non armaturam "
+"induunt. Telum electum eorum, venenum, instrumentum saevum est, et saepe "
+"usus suetus in acie causa vera dominationis orcium est."
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
@@ -4210,13 +4109,12 @@ msgstr "Orx Bellipotens"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:19
-#, fuzzy
 msgid ""
 "Only orcs with both great cunning and unsurpassed strength can become "
 "Warlords. Masters of the sword, and even possessing some skill with the bow, "
 "these beast-warriors lead their brethren with iron will and iron hand."
 msgstr ""
-"Tantum Orci magna cum astutia et singulari cum vi Domini Belli fieri "
+"Tantum orces magna cum astutia et singulari cum vi Bellipotentes fieri "
 "possunt. Periti gladio et facilitatem nonnullam arcu possidentes, hi "
 "pugnatores bestiales fratres manu ferrea ducunt."
 
@@ -4227,15 +4125,14 @@ msgstr "Bellator Orcium"
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:18
-#, fuzzy
 msgid ""
 "Having mastered the art of dual-sword fighting, Orcish Warriors are highly "
 "respected among the Orcs, and highly feared by their foes. Their only "
 "weakness is their inability to wield the bow."
 msgstr ""
-"Periti artis pugnandi duobus gladiis, Bellatores Orcorum aestimati maiores "
-"sunt inter Orcos et ab hostibus maxime metuti. Infirmitas unica eorum est "
-"carentia facultate arcus."
+"Periti artis pugnandi duobus gladiis, Bellatores Orcium inter Orces valde "
+"honorati sunt et ab hostibus maxime metuti sunt. Sed, quae infirmitas unica "
+"est, arcum intendere non possunt."
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
@@ -4354,9 +4251,7 @@ msgstr ""
 "Si troglodyta, ingeniosus in potentia vitae, aetatem et sapientiam pares "
 "conficit, fit extraordinarius, bestia quam meminerunt in generationes. Gesta "
 "eorum potentiae et astutiae fons sunt plurimarum fabularum de troglodytae; "
-"spectaculum fabularum caro factarum non diminuit magnificentiam eorum.\n"
-"\n"
-"Nota Praecipua:"
+"spectaculum fabularum caro factarum non diminuit magnificentiam eorum."
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:4
@@ -4372,9 +4267,7 @@ msgid ""
 "of their ilk revere them as heroes."
 msgstr ""
 "Nonnulli troglodytae nati sunt cum nimio vi et fortitudine generis sui. In "
-"societate in qua potentia rectum facit, socii stirpis eos heroes appellant.\n"
-"\n"
-"Nota Praecipua:"
+"societate in qua potentia rectum facit, socii stirpis eos heroes appellant."
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
@@ -4394,10 +4287,7 @@ msgstr ""
 "Cogitatio iacendi saxum in certamine certe in mentem plurium troglodytarum "
 "venit, et nonnulli ea ut tela sustulerunt. Quia saxa tam magna non facilia "
 "sunt inventu, Iactores de more ea ferunt in sacco super humeros. Ex corium "
-"sacci quoque fundus fiat.\n"
-"\n"
-"Nota Praecipua: etsi incommoda sunt, saxa iacta ab iis monstris multo "
-"funestiora sunt quam ulla sagitta, si possunt ferire."
+"sacci quoque fundus fiat."
 
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:4
@@ -4419,9 +4309,7 @@ msgstr ""
 "nec potestatem qui cogit vim insolitum et fortitudinem eorum. Troglodytus "
 "adultus immanet super hominem; atque sine telis minae sint in certamine. "
 "Fustes magni quibus in pugnis utuntur agunt ut extensiones bracchiorum "
-"eorum; troglodytae eis utuntur ad praedam in obsequium cogere.\n"
-"\n"
-"Nota Praecipua:"
+"eorum; troglodytae eis utuntur ad praedam in obsequium cogere."
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
@@ -4435,6 +4323,9 @@ msgid ""
 "or tough as other trolls, their true power lies in their fire magic, which "
 "they use to blast enemies with gouts of flame."
 msgstr ""
+"Flamines duces mystici Troglodytarum sunt. Non tam fortes sunt nec robusti "
+"quam Troglodytae ceteres, sed verum ingenium ignis magicus est, quo ad "
+"hostes amburendum utuntur."
 
 #. [attack]: type=fire
 #: data/core/units/trolls/Troll_Shaman.cfg:41
@@ -4464,9 +4355,7 @@ msgstr ""
 "armaturam asperam et gerentes malleos ferreos. Putantur socii orcorum origo "
 "et fabri eorum esse, quia investigationes in cavernis troglodytarum nullam "
 "evidentiam inveniunt utendi implementa, nec certe fabrorum. Si troglodytae "
-"iam pericolosi sunt in certamine, troglodyta armata plene terrens est.\n"
-"\n"
-"Nota Praecipua:"
+"iam pericolosi sunt in certamine, troglodyta armata plene terrens est."
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:4
@@ -4486,9 +4375,7 @@ msgstr ""
 "Est oxymoron dicere troglodytam catulum, quia corpora eorum iam robustiora "
 "sunt quam hominum adultorum. Inepti sunt et nondum recte ambulant, sed "
 "repunt in quattuor membris, sed vis crudus stirpis omnibus incommodis "
-"compensat.\n"
-"\n"
-"Nota Praecipua:"
+"compensat."
 
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:4
@@ -4505,6 +4392,11 @@ msgid ""
 "flesh straight from their foes. Once their enemy is defeated, they eat the "
 "rest of the body, gaining strength in the process."
 msgstr ""
+"Abominamentum bestia e metis hominorum primordiis est. Abominamentum "
+"dissimiliter monstris mortivoracibusque non satis patiens ut mortem praedae "
+"veneno exspectent ante eam adesam, oris igitur immensis aggrediuntur, carnem "
+"recta ex hoste lacerare conantes. Simul is victus erit, reliquias devoratura "
+"erint ut valescant."
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
@@ -4530,9 +4422,7 @@ msgstr ""
 "quae repit nuda ut in die in quo natus est et se ex carne mortuorum "
 "ingurgitat.\n"
 "\n"
-"Propter talia facta necromantium condemnatum est maximo cum odio.\n"
-"\n"
-"Nota praecipua:"
+"Propter talia facta necromantium condemnatum est maximo cum odio."
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
@@ -4541,6 +4431,7 @@ msgstr "Mortivorax"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:19
+#, fuzzy
 msgid ""
 "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -4551,6 +4442,11 @@ msgid ""
 "— a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
 msgstr ""
+"Mortivorax, vel ‘devorator mortuorum’, monstrosum turgidumque est, homini "
+"vix similis. Putridum videtur, sed mobilis est, morbifer, pudridus, "
+"paedidus. Sed abhorrentissima proprietas mortivoracium, ut visibilis fert si "
+"malificium sentire potes: de hominibus vivis facti sunt - incognita est, cur "
+"haec fiat, sed certe terribilissime est."
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/core/units/undead/Corpse_Soulless.cfg:6
@@ -4591,9 +4487,7 @@ msgid ""
 msgstr ""
 "Cadavera Ambulantia corpora sunt mortuorum, reanimata a magica tenebrosa. "
 "Etsi debiles sunt in proelio, hi immortui maledictionem suam ad interfectos "
-"extendere possunt, exercitum immortuorum augentes.\n"
-"\n"
-"Nota Praecipua:"
+"extendere possunt, exercitum immortuorum augentes."
 
 # fraudator<callens?
 #. [unit_type]: id=Ancient Lich, race=undead
@@ -4603,15 +4497,12 @@ msgstr "Mortifuga Antiquus"
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:25
-#, fuzzy
 msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death."
 msgstr ""
-"Animatio huius ordinis est nuntius temporis antiqui. Qui Ossibus Magi "
-"Vetustis obviam it sane peiora temet quam mortem.\n"
-"\n"
-"Nota Praecipua:"
+"Animatum huius loci est nuntius temporis antiqui. Quisque Motifugae Antiquo "
+"obviam it sane timorem peiorem morte tenet."
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
@@ -4642,7 +4533,6 @@ msgstr ""
 "\n"
 "In hac conditione, telum unicum eorum est ars quam se obstringunt discere.\n"
 "\n"
-"Nota Praecipua:"
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
@@ -4727,7 +4617,7 @@ msgid ""
 "question can be raised at all, testifies to the magnitude of what their "
 "order has achieved."
 msgstr ""
-"Repraesentatio physica finis magicae nigrae est Ossa Magi: investigatio "
+"Repraesentatio physica finis magicae nigrae est mortifuga: investigatio "
 "immortalitatis. Quamquam multa sacrificantur in resurrectione, fiens ossa "
 "magna mortem fraudat terroris eius. Quia mens remanet et spiritus sequitur, "
 "etsi corpus perditur.\n"
@@ -4736,7 +4626,6 @@ msgstr ""
 "incertum aut tandum diu. Sed consideratio ipsa tributum fert magnitudini "
 "eventus consecuti.\n"
 "\n"
-"Nota Praecipua:"
 
 #. [unit_type]: id=Necromancer, race=human
 #: data/core/units/undead/Necromancer.cfg:4
@@ -4755,18 +4644,17 @@ msgid ""
 "This ability, in all aspects, is the first step towards cheating death of "
 "its ultimate prize."
 msgstr ""
-"Unus·ex·circulis·maximis·illius·quod·appellatur·'magica·negra'·est·ars·necromantiae,"
-"·facultas·terribilis·reanimandi·mortuos·cum·vita·ficta."
-"·Inventum·erat·cum·ramis·terribilibus·et·causa·fuit·condemnationis·humanitatis·magicae·negrae,"
-"·quia·armamentarium·novum·immane·dedit·metui.\n"
+"Unus ex circulis maximis illius quod·appellatur 'magica negra' est ars "
+"necromantiae, facultas terribilis reanimandi mortuos cum vita ficta. "
+"Inventum erat cum ramis terribilibus et causa fuit condemnationis "
+"humanitatis magicae negrae, quia armamentarium novum immane dedit metui.\n"
 "\n"
-"Haec·facultas,·in·omni·aspectu,"
-"·gradus·primus·est·fraudens·mortem·a·pretio·ultimo."
-"·Est·gradus·maximus·potestatis·quem·magus·tenebrarum·attingere·potest·priusquam·comprensionem·humanitatis·ipsius·perserit,"
-"·sed·pallescet·ante·potestatem·funestam·qua·utuntur·Ossa·Magorum."
-"·Atque·corpora·mortalia·eorum·fortiora·facta·sunt·a·magica·discrepans·a·forma·putrificans·et·debilis·Ossium·Magi.\n"
-"\n"
-"Nota·Praecipua:"
+"Haec facultas, in omni aspectu, gradus primus est fraudens mortem a pretio "
+"ultimo. Est gradus maximus potestatis quem magus tenebrarum attingere potest "
+"priusquam comprensionem humanitatis ipsius perserit, sed pallescet ante "
+"potestatem funestam qua utuntur Ossa Magorum. Atque corpora mortalia eorum "
+"fortiora facta sunt a magica discrepans a forma putrificans et·debilis "
+"Ossium Magi."
 
 #. [attack]: type=impact
 #: data/core/units/undead/Necromancer.cfg:39
@@ -4796,9 +4684,7 @@ msgstr ""
 "Potentissimi sagittariorum inmortuorum sunt qui ipsi sagittarii in vita "
 "erunt. Errant per campos proelii, ducti a memoria peritiae prioris suae, "
 "nescientes et nil morentes quod prositum, qui hostes sint. Coguntur tantum a "
-"malitia natu ex angore existentiae suae vacuae et interruptae.\n"
-"\n"
-"Nota Praecipua:"
+"malitia natu ex angore existentiae suae vacuae et interruptae."
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
@@ -4820,9 +4706,7 @@ msgstr ""
 "prendunt. Arma idonea haec potentiae vitae datur; coniectores praesertim "
 "saepe armamentarium vere turpe praebiti sunt. Pharetrae eorum non sagittis "
 "ligneis implentur, sed ossibus victimarum earum. Nominati simpliciter "
-"'Coniectores Ossium' ab hostibus infelicibus, hi nefas terrent omnes vivos.\n"
-"\n"
-"Nota Praecipua:"
+"'Coniectores Ossium' ab hostibus infelicibus, hi nefas terrent omnes vivos."
 
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
@@ -4858,9 +4742,7 @@ msgstr ""
 "Fabulae narrantur ut nonnumquam pugnatores et imperatores fortissimi qui "
 "odio et sensu proditionis maledicti sunt in hunc mundum Duces Ossium "
 "regressi essent. Gerunt ipsa arma quae vivens gerebant et imperant Inmortuis "
-"in investigatione ultionis.\n"
-"\n"
-"Nota Praecipua:"
+"in investigatione ultionis."
 
 # Mortiferrum? A pun on mortifer
 #. [unit_type]: id=Deathblade, race=undead
@@ -4878,12 +4760,10 @@ msgid ""
 "monsters are much faster than the rest of their kind, both on foot and with "
 "their blades."
 msgstr ""
-"In vita nefas quae 'Laminae Mortis' dicuntur periti erant certaminis, miles "
+"In vita nefas quae 'Ferra Mortis' dicuntur periti erant certaminis, miles "
 "sollers et funesti. Domini novi fere hoc animadvertant et eis tela dant "
 "idonea peritiae eorum. Quamquam fragiles sunt, hae bestiae multo celeriores "
-"sunt quam reliqui generis sui et pede et lamina.\n"
-"\n"
-"Nota Praecipua:"
+"sunt quam reliqui generis sui et pede et lamina."
 
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
@@ -4900,13 +4780,11 @@ msgid ""
 "for a peace bought only by strength of arms. And so they struggle; both "
 "unthinking, and unrelenting."
 msgstr ""
-"Reliquiae ingentes olim bellatorum fabulosorum, Draugri corda adversariorum "
-"terrent. Non moventur malevolentia sed semper in somno inmortuitatis "
-"devinciuntur, perambulantes proelia memoriae suae et propter liberationem "
-"desperate pugnant, propter pacem quae tantum vi armis fertur. Memoria "
-"hostium et causa pugnae eorum iampridem in oblivione deflorescuntur.\n"
-"\n"
-"Nota Praecipua:"
+"Reliquiae ingentes olim bellatorum fabulosorum, Vindices animat corda "
+"adversariorum terrent. Non moventur malevolentia sed semper in somno "
+"inmortuitatis devinciuntur, perambulantes proelia memoriae suae et propter "
+"liberationem desperate pugnant, propter pacem quae tantum vi armis fertur. "
+"Memoria hostium et causa pugnae eorum iampridem in oblivione deflorescuntur."
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
@@ -4924,13 +4802,11 @@ msgid ""
 "powerful tool in combat: a fearless warrior that feels no pain and will "
 "fight to the bitter end."
 msgstr ""
-"Revenientes sunt bellatores olim magni quibus vita falsa datur ut rursus "
-"pugnent. Memoria temporis vitae eorum iam perditur. Atque venefici qui eos "
-"excitaverunt tantum coniecturas facere possunt de historia eorum. Neglectis "
-"talibus interrogationibus Reveniens instrumentum potens est in proelio: "
-"bellator sine metu qui dolorem non sentit et usque ad finem pugnabit.\n"
-"\n"
-"Nota Praecipua:"
+"Bellatores olim magni quibus vita falsa datur ut rursus pugnent. Memoria "
+"temporis vitae eorum iam perditur. Atque venefici qui eos excitaverunt "
+"tantum coniecturas facere possunt de historia eorum. Neglectis talibus "
+"interrogationibus Reveniens instrumentum potens est in proelio: bellator "
+"sine metu qui dolorem non sentit et usque ad finem pugnabit."
 
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:4
@@ -4949,9 +4825,7 @@ msgstr ""
 "Ossa sunt pungnatores qui in proelio interfecti et artibus tenebrosis relati "
 "sunt. Quasi sine mente et immoti in propositis, non timent nec dolorem nec "
 "mortem, et praesentia eorum ispa saepe absterret eos qui dominum eorum "
-"provocare volunt.\n"
-"\n"
-"Nota Praecipua:"
+"provocare volunt."
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
@@ -4971,9 +4845,7 @@ msgstr ""
 "Sagittarius osseus differt paulum ab 'ossibus' quae eum saepe comitantur - "
 "peccatum est contra naturam: bellator excitatus ex mortuis ad rursus "
 "pugnandum. In manibus domini eorum, hi milites quidlibet facient ut opera "
-"eorum attingant, nam mors mortuis nullum pavorem continet.\n"
-"\n"
-"Nota Praecipua:"
+"eorum attingant, nam mors mortuis nullum pavorem continet."
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
@@ -4994,9 +4866,7 @@ msgstr ""
 "\n"
 "Inlaqueatus in integumento fascinationum vilium spiritus est ut ventus in "
 "velis navis. Machinatio quae ex hoc carcere resultat est servus fidelis, qui "
-"ad omne opus ligari potest quod dominus vult.\n"
-"\n"
-"Nota Praecipua:"
+"ad omne opus ligari potest quod dominus vult."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Spirit_Ghost.cfg:142
@@ -5021,9 +4891,7 @@ msgid ""
 msgstr ""
 "Nescitur cur hae creaturae personatae sint, et nemo vultum a persona opertum "
 "vidit et vixit. Hae formae terribiles rare a viventis videntur, et qui "
-"superest et de eis loquitur, otio carebat ad studiandum hostem.\n"
-"\n"
-"Nota·Praecipua:"
+"superest et de eis loquitur, otio carebat ad studiandum hostem."
 
 #. [unit_type]: id=Shadow, race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
@@ -5044,9 +4912,7 @@ msgstr ""
 "tenebras. Usque ab hac die, umbrae mundi terrorem hominibus continent, etsi "
 "homines nesciunt cur.\n"
 "\n"
-"Mortuorum evocatur facile respondere potest ad hac interrogationem.\n"
-"\n"
-"Nota·Praecipua:"
+"Mortuorum evocatur facile respondere potest ad hac interrogationem."
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
@@ -5071,9 +4937,7 @@ msgstr ""
 "\n"
 "Creatio horum non est gestum humilem; periculum verum cum uni obviam eas "
 "adest: saepe sunt tantum praenuntii potentia periculosioris quae eos "
-"sequentur.\n"
-"\n"
-"Nota Praecipua:"
+"sequentur."
 
 #. [attack]: type=arcane
 #: data/core/units/undead/Spirit_Spectre.cfg:59
@@ -5102,9 +4966,7 @@ msgstr ""
 "credentia longe est a veritate.\n"
 "\n"
 "Propterea domini idolonorum dant eis instrumentum per quod magicae "
-"renovantur quae eos animant ex vita minarum eorum.\n"
-"\n"
-"Nota Praecipua:"
+"renovantur quae eos animant ex vita minarum eorum."
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:4
@@ -5130,9 +4992,7 @@ msgstr ""
 "nescio quomodo raptam. Tantum terra nuda erat in loco eius. Agricola miser "
 "numquam idem erat posthac.\n"
 "\n"
-"Occursi tales sunt nuntia unica de Vosiis Vetustis.\n"
-"\n"
-"Nota Praecipua:"
+"Occursi tales sunt nuntia unica de Vosiis Vetustis."
 
 #. [attack]: type=impact
 #: data/core/units/wose/Ancient.cfg:104 data/core/units/wose/Elder.cfg:103
@@ -5168,9 +5028,7 @@ msgstr ""
 "fraudatur.\n"
 "\n"
 "Vosia non sunt omnino bellatores, sed potentia eorum capax est violentiae, "
-"si quis iram eorum excitat.\n"
-"\n"
-"Nota Praecipua:"
+"si quis iram eorum excitat."
 
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:4
@@ -5200,9 +5058,7 @@ msgstr ""
 "naturalis.\n"
 "\n"
 "Vosia non sunt omnino bellicosa, sed vim magnam possidunt. Sed non habent "
-"consuetudinem motu, et lenta sunt.\n"
-"\n"
-"Nota Praecipua:"
+"consuetudinem motu, et lenta sunt."
 
 #~ msgid "Arif"
 #~ msgstr "Arif"

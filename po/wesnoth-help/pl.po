@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-06 11:47+0100\n"
-"PO-Revision-Date: 2010-08-26 13:19+0100\n"
+"POT-Creation-Date: 2012-01-21 01:45+0100\n"
+"PO-Revision-Date: 2012-01-22 14:16+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "Language: \n"
@@ -28,13 +28,13 @@ msgid "Underground"
 msgstr "Podziemie"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:820
 #: data/core/macros/abilities.cfg:582
 msgid "berserk"
 msgstr "berserk"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:823
 #: data/core/macros/abilities.cfg:584
 msgid ""
 "Berserk:\n"
@@ -46,13 +46,13 @@ msgstr ""
 "wymiany 30 ciosów i to zarówno podczas ataku, jak i obrony."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:836
 #: data/core/macros/abilities.cfg:668
 msgid "magical"
 msgstr "magiczny"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:839
 #: data/core/macros/abilities.cfg:670
 msgid ""
 "Magical:\n"
@@ -64,13 +64,13 @@ msgstr ""
 "obronnych atakowanego."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:851
 #: data/core/macros/abilities.cfg:717
 msgid "firststrike"
 msgstr "pierwszy cios"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:854
 #: data/core/macros/abilities.cfg:719
 msgid ""
 "First Strike:\n"
@@ -154,7 +154,7 @@ msgstr ""
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
-msgstr ""
+msgstr "<ref>dst='..geography' text='Geografia'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
@@ -443,9 +443,8 @@ msgstr ""
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
-#, fuzzy
 msgid "Swarm"
-msgstr "rój"
+msgstr "Rój"
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:140
@@ -456,9 +455,8 @@ msgstr ""
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
-#, fuzzy
 msgid "Swarming"
-msgstr "rój"
+msgstr "Rój"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -571,9 +569,8 @@ msgstr ""
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:31
-#, fuzzy
 msgid "Great Ocean"
-msgstr "Wielkie drzewo"
+msgstr "Wielki Ocena"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
@@ -600,9 +597,8 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
-#, fuzzy
 msgid "Green Isle"
-msgstr "Zielony"
+msgstr "Zielona Wyspa"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
@@ -651,9 +647,8 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
-#, fuzzy
 msgid "Kingdom of Wesnoth"
-msgstr "-- Księga Wesnoth"
+msgstr "Królestwo Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:95
@@ -967,7 +962,6 @@ msgstr "Omówienie"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:120
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -980,12 +974,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Bitwa o Wesnoth to turowa gra strategiczna osadzona w świecie fantasy, która "
-"nieco różni się od podobnych gier tego typu. Podczas gdy inne gry nadmiernie "
-"komplikują zasady i samą rozgrywkę, Bitwa o Wesnoth stawia na prostotę tych "
-"elementów. To jednak wcale nie czyni gry prostą - z przejrzystych zasad "
-"wyłania się bogactwo możliwych strategii. By zacząć grać trzeba niewiele, "
-"lecz by osiągnąć mistrzostwo, trzeba nie lada umiejętności."
+"<italic>text='Bitwa o Wesnoth'</italic> to turowa gra strategiczna osadzona "
+"w świecie fantasy, która nieco różni się od podobnych gier tego typu. "
+"Podczas gdy inne gry nadmiernie komplikują zasady i samą rozgrywkę, "
+"<italic>text='Bitwa o Wesnoth'</italic> stawia na prostotę tych elementów. "
+"To jednak wcale nie czyni gry prostą — z przejrzystych zasad wyłania się "
+"bogactwo możliwych strategii. Każdy bez trudu rozpocznie grę, ale trzeba nie "
+"lada umiejętności, by osiągnąć mistrzostwo."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:132
@@ -994,7 +989,6 @@ msgstr "Podstawy gry"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:133
-#, fuzzy
 msgid ""
 "These pages outline all you need to know to play <italic>text='Battle for "
 "Wesnoth'</italic>. They cover how to play and the basic mechanics behind the "
@@ -1002,15 +996,15 @@ msgid ""
 "come across new aspects of the game. For more detailed information on "
 "special situations and exceptions, please follow the links included."
 msgstr ""
-"Te strony przedstawiają wszystko, co należy wiedzieć, by grać w Bitwę o "
-"Wesnoth. Omówione zostały podstawowe mechanizmy i sposoby gry. Wraz z "
-"postępem rozgrywki pojawiać się tu będą kolejne informacje dotyczące nowych "
-"aspektów gry. Bardziej szczegółowe wyjaśnienia specjalnych sytuacji i "
-"wyjątków od reguł można znaleźć pod odpowiednimi odsyłaczami."
+"Te strony przedstawiają wszystko, co należy wiedzieć, by grać w "
+"<italic>text='Bitwę o Wesnoth'</italic>. Omówione zostały podstawowe "
+"mechanizmy i sposoby gry. Wraz z postępem rozgrywki pojawiać się tu będą "
+"kolejne informacje dotyczące nowych aspektów gry. Bardziej szczegółowe "
+"wyjaśnienia specjalnych sytuacji i wyjątków od reguł można znaleźć pod "
+"odpowiednimi odsyłaczami."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:135
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1024,12 +1018,12 @@ msgstr ""
 "\n"
 "\n"
 "Swoją przygodę z grą najlepiej zacząć od kliknięcia przycisku "
-"<italic>text=Samouczek</italic> w menu głównym gry. Zostaniesz wtedy "
-"przeniesiony do interaktywnego samouczka, gdzie poznasz podstawy gry. "
-"Następnie zalecamy zagrać w kampanię Następca Tronu - w tym celu kliknij "
-"przycisk <italic>text=Kampania</italic>, a następnie <italic>text='Następca "
-"Tronu'</italic>. Ponieważ Bitwa o Wesnoth może być dość trudna, powinieneś "
-"zacząć od poziomu trudności<italic>text=Łatwy</italic>."
+"<bold>text='Samouczek'</bold> w menu głównym gry. Zostanie uruchomiony "
+"interaktywny samouczek, w którym poznasz podstawy gry. Następnie zalecamy "
+"zagrać w kampanię Następca Tronu — w tym celu kliknij przycisk "
+"<bold>text='Kampania'</bold>, a następnie <italic>text='Następca tronu'</"
+"italic>. Ponieważ <italic>text='Bitwa o Wesnoth'</italic> bywa z początku "
+"trudna, najlepiej zacząć od najłatwiejszego poziomu trudności."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:138
@@ -1053,7 +1047,6 @@ msgstr "O grze"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:144
-#, fuzzy
 msgid ""
 "The game takes place over a series of battles, called "
 "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
@@ -1063,17 +1056,16 @@ msgid ""
 "other people connected to that network. If your computer has a connection to "
 "the Internet, you can play against other people across the Internet."
 msgstr ""
-"Gra rozgrywa się na przestrzeni serii bitew zwanych scenariuszami. W każdym "
-"scenariuszu twoi żołnierze stawiają czoła wojsku jednego lub więcej "
-"przeciwników. Możesz grać przeciwko komputerowi lub przeciw przyjaciołom, "
-"którzy kolejno wykonują swoje tury siedząc przy tym samym komputerze. Jeśli "
-"twój komputer znajduje się w sieci, możesz grać przeciwko innym graczom "
-"podłączonym do niej. Jeśli twój komputer ma połączenie z Internetem, możesz "
-"grać z graczami z całego świata."
+"Gra rozgrywa się na przestrzeni serii bitew zwanych "
+"<italic>text='scenariuszami'</italic>. W każdym scenariuszu twoi żołnierze "
+"stawiają czoła wojsku jednego lub więcej przeciwników. Możesz grać przeciwko "
+"komputerowi lub przeciw znajomym, którzy kolejno wykonują swoje tury siedząc "
+"przy tym samym komputerze. Jeśli komputer należy do sieci lokalnej, możesz "
+"grać przeciwko innym graczom w tej sieci. Jeśli masz połączenie z "
+"Internetem, możesz grać z użytkownikami z całego świata."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:146
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1084,10 +1076,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kampanie składają się z wielu połączonych ze sobą scenariuszy, "
-"opowiadających pewną historię. W kampanii często musisz grać ostrożniej, "
-"zachowując najlepszych żołnierzy tak, by można ich było użyć w kolejnych "
-"scenariuszach kampanii."
+"<italic>text='Kampanie'</italic> składają się z wielu połączonych ze sobą "
+"scenariuszy, opowiadających pewną historię. W kampanii często musisz grać "
+"ostrożniej, zachowując najlepszych żołnierzy, aby można ich było użyć w "
+"kolejnych scenariuszach kampanii."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:152
@@ -1096,7 +1088,6 @@ msgstr "Zwycięstwo i porażka"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:153
-#, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. Usually you will achieve victory by killing "
@@ -1107,15 +1098,14 @@ msgid ""
 msgstr ""
 "Dokładnie czytaj cele misji, wyświetlane w oknie dialogowym na początku "
 "każdego scenariusza. Zwycięstwo wymaga najczęściej zabicia wszystkich "
-"przywódców wroga, a porażka następuje w wyniku śmierci Twojego przywódcy. "
-"Nierzadko trafiają się jednak scenariusze, w których zwycięstwo wymaga "
-"osiągnięcia innych celów, na przykład doprowadzenia przywódcy w określone "
-"miejsce, uratowania kogoś, rozwiązania zagadki lub przetrwania w oblężeniu "
-"określonej liczby tur."
+"przywódców wroga, a śmierć twojego przywódcy oznacza porażkę. Nierzadko "
+"trafiają się jednak scenariusze, w których zwycięstwo wymaga osiągnięcia "
+"innych celów, na przykład doprowadzenia przywódcy w określone miejsce, "
+"uratowania kogoś, rozwiązania zagadki lub przetrwania w oblężeniu określonej "
+"liczby tur."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1126,10 +1116,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Po zwycięstwie w scenariuszu, mapa zostanie wyszarzona, a etykieta przycisku "
-"\"Zakończ turę\" zmieni się na \"Kończ scenariusz\". W tym stanie gry możesz "
-"zmienić opcje zapisu gry lub (w przypadku gier wieloosobowych) rozmawiać z "
-"innymi graczami, a potem kliknąć przycisk, by przejść dalej."
+"Po zwycięstwie w scenariuszu mapa zostanie wyszarzona, a etykieta przycisku "
+"<bold>text='Zakończ turę'</bold> zmieni się na <bold>text='Kończ "
+"scenariusz'</bold>. W tym stanie gry możesz zmienić opcje zapisu gry lub (w "
+"przypadku gier wieloosobowych) rozmawiać z innymi graczami, a dopiero potem "
+"kliknąć ten przycisk, aby przejść dalej."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:162
@@ -1138,7 +1129,6 @@ msgstr "Rekrutacja i przywoływanie"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1151,29 +1141,20 @@ msgid ""
 "recruitment, along with their gold cost. Click on a unit to see its "
 "statistics, then press the recruit button to recruit it."
 msgstr ""
-"Każda ze stron rozpoczyna z przywódcą, który znajduje się w twierdzy. Na "
+"Na początku scenariusza każda ze stron ma jednego przywódcę w twierdzy. Na "
 "początku bitwy oraz podczas jej trwania będziesz rekrutować <ref>dst='.."
 "units' text='jednostki'</ref> do swojej armii. Aby rekrutować jednostki, "
-"twój przywódca (na przykład Konrad w kampanii Następca Tronu) musi znajdować "
-"się w <ref>dst='terrain_castle' text='zamku'</ref>, na polu twierdzy. Można "
-"wtedy rekrutować jednostki wybierając z menu opcję Rekrutuj lub klikając "
-"prawym przyciskiem myszy na polu zamku i wybierając opcję "
-"<italic>text=Rekrutuj</italic>. Spowoduje to pojawienie się menu rekrutacji "
-"z listą dostępnych jednostek i ich kosztem. Kliknij na jednostkę, by "
-"zobaczyć jej statystyki, a następnie kliknij przycisk Rekrutuj, by powołać "
-"wybraną jednostkę do swojej armii."
+"twój przywódca (na przykład Konrad w kampanii <italic>text='Następca tronu'</"
+"italic>) musi znajdować się w <ref>dst='terrain_castle' text='zamku'</ref>, "
+"na polu twierdzy. Można wtedy rekrutować jednostki wybierając z menu opcję "
+"<bold>text='Rekrutuj'</bold> lub klikając pole zamku prawym przyciskiem "
+"myszy i wybierając opcję <bold>text='Rekrutuj'</bold>. Spowoduje to "
+"wyświetlenie menu rekrutacji z listą dostępnych jednostek i ich kosztem. "
+"Kliknij jednostkę, aby zobaczyć jej statystyki, a następnie kliknij przycisk "
+"rekrutacji, aby dołączyć jednostkę do swojej armii."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1192,7 +1173,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1202,7 +1182,7 @@ msgstr ""
 "\n"
 "\n"
 "Rekrutowane jednostki mają po dwie losowe <ref>dst='..traits_section' "
-"text='Cechy'</ref>, które wpływają na ich statystyki."
+"text='cechy'</ref>, które wpływają na ich statystyki."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
@@ -1222,7 +1202,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1232,10 +1211,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jednostki wymagają złota nie tylko w chwili rekrutacji lub przywołania - "
-"kosztuje również ich utrzymanie podczas gry. Zobacz temat "
-"<ref>dst='income_and_upkeep' text='Dochód i utrzymanie'</ref>, by dowiedzieć "
-"się więcej."
+"Jednostki wymagają złota nie tylko w chwili rekrutacji lub przywołania — "
+"kosztuje również ich utrzymanie. Zobacz temat <ref>dst='income_and_upkeep' "
+"text='Dochód i utrzymanie'</ref>, aby dowiedzieć się więcej."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:178
@@ -1253,16 +1231,14 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
-#, fuzzy
 msgid " green if it hasn’t moved this turn,"
-msgstr "zielona, jeśli jednostka nie ruszyła się w tej turze,"
+msgstr " zielona, jeśli jednostka nie ruszyła się w tej turze;"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:181
-#, fuzzy
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-"żółta, jeśli ruszyła się, ale nadal może przemieszczać się lub atakować albo"
+" żółta, jeśli ruszyła się, ale nadal może przemieszczać się lub atakować;"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:182
@@ -1272,16 +1248,14 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
-#, fuzzy
 msgid " blue if the unit is an ally you do not control."
 msgstr ""
-"Niebieska kula oznacza sojuszniczą jednostkę, nad którą nie masz kontroli."
+" niebieska, jeśli to jednostka sojusznicza, nad którą nie masz kontroli."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:184
-#, fuzzy
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr "Wrogie jednostki nie mają kuli nad swoim paskiem energii."
+msgstr " Wrogie jednostki nie mają kuli nad swoim paskiem energii."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:191
@@ -1290,7 +1264,6 @@ msgstr "Punkty życia i doświadczenie"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:192
-#, fuzzy
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1298,10 +1271,11 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
-"Każda jednostka ma pewną liczbę punktów życia (PŻ). Jeśli ich liczba spadnie "
-"poniżej 1, jednostka ginie. Każda jednostka ma także pewną liczbę punktów "
-"doświadczenia (PD). Świeżo rekrutowane jednostki nie mają punktów "
-"doświadczenia, ale mogą je zdobyć podczas walki."
+"Każda jednostka ma pewną liczbę punktów życia <italic>text='punktów życia'</"
+"italic> (PŻ). Jeśli ich liczba spadnie poniżej 1, jednostka ginie. Każda "
+"jednostka ma także pewną liczbę <italic>text='punktów doświadczenia'</"
+"italic> (PD). Świeżo rekrutowane jednostki nie mają punktów doświadczenia, "
+"ale mogą je zdobyć podczas walki."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:196
@@ -1335,7 +1309,6 @@ msgstr "Ruchy"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:205
-#, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -1350,24 +1323,24 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"Przemieszczanie jednostek w Bitwie o Wesnoth jest proste. Kliknij na "
-"jednostkę, którą chcesz przemieścić, a następnie na heks, na który chcesz, "
-"by się udała. Gdy jednostka jest zaznaczona, wszystkie możliwe pola, do "
-"których dana jednostka może dojść w tej turze, zostaną podświetlone, a "
-"pozostałe pola zostaną zaciemnione. Przesuwanie myszy nad podświetlonymi "
-"polami powoduje wyświetlanie współczynnika obrony, jaki jednostka miałaby, "
-"gdyby weszła na dane pole. Przesuwanie myszy nad zaciemnionymi polami "
-"powoduje dodatkowo wyświetlanie liczby tur potrzebnych do ich osiągnięcia, a "
-"kliknięcie sprawi, że jednostka zacznie się przemieszczać w kierunku "
-"wybranego pola możliwie najkrótsza drogą w tej i kolejnych turach. Jeśli nie "
-"wyczerpiesz wszystkich punktów ruchu jednostki, może ona kontynuować "
-"przemieszczanie się. Wykonanie ataku wyczerpuje możliwości ruchu jednostki. "
-"Zakończenie ruchu w wiosce, której nie jesteś właścicielem, również "
-"wyczerpuje możliwości ruchu jednostki, choć nadal może ona atakować."
+"Przemieszczanie jednostek w <italic>text='Bitwie o Wesnoth'</italic> jest "
+"proste. Kliknij jednostkę, którą chcesz przemieścić, a następnie pole, na "
+"które jednostka ma się ruszyć. Gdy jednostka jest wybrana, wszystkie możliwe "
+"pola, do których może ona dotrzeć w tej turze, zostaną podświetlone, a "
+"pozostałe pola zaciemnione. Umieszczenie wskaźnika myszy na jednym z "
+"podświetlonych pól spowoduje wyświetlenie współczynnika obrony, jaki "
+"jednostka będzie mieć, jeśli stanie w tym miejscu. Umieszczenie wskaźnika "
+"myszy nad polem zaciemnionym spowoduje dodatkowo wyświetlenie liczby tur "
+"potrzebnych na dotarcie w to miejsce, a kliknięcie pola sprawi, że jednostka "
+"zacznie się przemieszczać w jego kierunku możliwie najkrótszą drogą w tej i "
+"kolejnych turach. Jeśli nie wyczerpiesz wszystkich punktów ruchu jednostki, "
+"może ona kontynuować przemieszczanie się. Wykonanie ataku wyczerpuje "
+"możliwości ruchu jednostki. Zakończenie ruchu w wiosce, która nie należy do "
+"ciebie, również wyczerpuje możliwości ruchu jednostki, choć nadal może ona "
+"zaatakować."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1385,16 +1358,15 @@ msgstr ""
 "\n"
 "Każda jednostka ma pewną liczbę punktów ruchu, zużywanych podczas "
 "przechodzenia na inne pole w ilości zależnej od typu terenu. Na przykład "
-"wejście na  łąkę prawie zawsze kosztuje 1 punkt. Koszt ruchu na danym typie "
-"terenu zależy od jednostki - w lasach elfy tracą tylko jeden punkt ruchu, "
+"wejście na łąkę prawie zawsze kosztuje 1 punkt. Koszt ruchu na danym typie "
+"terenu zależy od jednostki — w lasach elfy tracą tylko jeden punkt ruchu, "
 "ludzie i orki 2, zaś jeźdźcy 3. Aby dowiedzieć się, ile punktów kosztuje "
 "jednostkę poruszanie się po różnych typach terenu, kliknij ją prawym "
-"przyciskiem myszy, wybierz 'Opis jednostki', a następnie spójrz na "
-"<italic>text='Modyfikatory terenu'</italic>."
+"przyciskiem myszy, wybierz <bold>text='Opis jednostki'</bold> i spójrz na "
+"<bold>text='Modyfikatory terenu'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1408,12 +1380,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Inną rzeczą, którą należy brać pod uwagę podczas przemieszczania jednostek, "
-"są Strefy kontroli (ZOC). Każda jednostka tworzy strefę kontroli na "
-"przylegających do niej polach i każdy przeciwnik, który się na nich "
-"znajdzie, kończy swój ruch. Opanowanie zasad stref kontroli jest ważne, "
-"ponieważ tylko jednostki z umiejętnością <ref>dst='ability_skirmisher' "
-"text='harcownik'</ref> potrafią je ignorować."
+"Inną rzeczą, którą trzeba brać pod uwagę podczas ruszania jednostek, są "
+"<italic>text='strefy kontroli'</italic>. Każda jednostka roztacza strefę "
+"kontroli na przylegających do niej polach i każdy przeciwnik, który się na "
+"nich znajdzie, kończy swój ruch. Odpowiednie wykorzystywanie stref kontroli "
+"jest ważnym elementem gry, ponieważ tylko jednostki z umiejętnością "
+"<ref>dst='ability_skirmisher' text='harcownik'</ref> potrafią je ignorować."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
@@ -1437,7 +1409,6 @@ msgstr "Całun i Mgła wojny"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:221
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1460,27 +1431,30 @@ msgid ""
 "bold> (or the end of your turn) and thereby preserve your ability to undo "
 "movement."
 msgstr ""
-"Podczas rozgrywania niektórych scenariuszy części mapy będą przed Tobą "
-"ukryte. Istnieją dwa mechanizmy, które mogą być użyte niezależnie od siebie. "
-"W miejscu zakrytym Całunem zarówno jednostki, jak i teren, stają się "
-"niewidoczne. Jednak gdy zostanie on odkryty, zawsze będziesz już widzieć "
-"wszystko, co się tam dzieje. Mgła wojny ukrywa przed tobą wyłącznie "
-"jednostki oraz posiadaczy wiosek (innych niż Ty i Twoi sojusznicy). Mgła "
-"wojny jest tymczasowo odkrywana przez Twoje jednostki, ale powraca po ich "
-"odejściu. Zarówno Całun, jak i Mgła wojny są usuwane przez jednostki. Każda "
-"jednostka odkrywa miejsca przyległe do pól, które znajdują się w zasięgu "
-"jednego jej ruchu (strefy kontroli i jednostki przeciwnika nie są "
-"uwzględniane).\n"
+"Podczas rozgrywania niektórych scenariuszy części mapy będą przed tobą "
+"ukryte. Istnieją dwa mechanizmy ukrywania, które mogą być stosowane wspólnie "
+"lub niezależnie od siebie. W miejscu zakrytym <italic>text='całunem'</"
+"italic> zarówno jednostki, jak i teren, stają się niewidoczne. Jednak gdy "
+"zostanie on odkryty, zawsze będziesz już widzieć wszystko, co się tam "
+"dzieje. Z kolei <italic>text='mgła wojny'</italic> ukrywa przed tobą "
+"wyłącznie jednostki oraz właścicieli wiosek (innych niż ty i twoi "
+"sojusznicy). Mgła wojny jest tymczasowo odkrywana przez twoje jednostki, ale "
+"powraca po ich odejściu. Zarówno całun, jak i mgła wojny, są usuwane przez "
+"jednostki. Każda jednostka odkrywa miejsca przyległe do pól, które znajdują "
+"się w zasięgu jednego jej ruchu (bez względu na strefy kontroli i jednostki "
+"przeciwnika).\n"
 "\n"
-"Na ogół możliwe jest cofnięcie ruchu jednostki, pod warunkiem, że nie miało "
-"miejsca zdarzenie z elementem losowym, na przykład walka lub rekrutacja. "
-"Zbadanie przed jednostkę ukrytego terenu poprzez odsłonięcie Całunu lub Mgły "
-"wojny również uniemożliwi cofnięcie ruchu. Istnieje możliwość włączenia w "
-"menu Działania opcji 'Opóźniaj odsłanianie całunu'. Po włączeniu tej opcji, "
-"jednostki nie będą odsłaniać Całunu ani Mgły wojny aż do wystąpienia "
-"zdarzenia z elementem losowym lub ręcznej aktualizacji za pomocą komendy "
-"'Odsłoń całun teraz' (lub końca tury), co pozwoli zachować możliwość "
-"cofnięcia ruchu."
+"Zazwyczaj możliwe jest cofnięcie ruchu jednostki, pod warunkiem, że nie "
+"miało miejsca zdarzenie z elementem losowym, na przykład walka lub "
+"rekrutacja (większość rekrutowanych jednostek ma losowe przypisywane cechy). "
+"Zbadanie przed jednostkę ukrytego terenu poprzez odsłonięcie całunu lub mgły "
+"wojny również uniemożliwi cofnięcie ruchu. Istnieje możliwość włączenia "
+"opcji <bold>text='Opóźniaj odsłanianie całunu'</bold> w menu "
+"<bold>text='Działania'</bold>. Po włączeniu tej opcji jednostki nie będą "
+"odsłaniać całunu ani mgły wojny aż do następnego zdarzenia z elementem "
+"losowym, ręcznej aktualizacji poleceniem <bold>text='Odsłoń całun teraz'</"
+"bold> lub zakończenia tury. Dzięki temu zachowujesz możliwość cofnięcia "
+"ruchu."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:228
@@ -1489,7 +1463,6 @@ msgstr "Walka"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:229
-#, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -1502,19 +1475,20 @@ msgid ""
 "as swords, axes or fangs; and <italic>text='ranged'</italic>, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"Walka w Bitwie o Wesnoth zawsze odbywa się między jednostkami znajdującymi "
-"się na sąsiednich heksach. Kliknij na twojej jednostce, a następnie na "
-"przeciwniku, którego chcesz zaatakować: twoja jednostka przemieści się w "
-"jego kierunku, a gdy znajdą się obok siebie rozpocznie się walka. Atakujący "
-"i obrońca wymieniają ciosy do czasu, gdy każdy zużyje przydzieloną mu liczbę "
-"ataków. Atakujący wybiera broń, którą chce atakować, a obrońca odpowiada "
-"jednym ze swoich ataków tego samego typu. Istnieją dwa typy ataków: wręcz, "
-"czyli za pomocą broni w rodzaju mieczy, toporów lub kłów, oraz na odległość, "
-"czyli na przykład z użyciem łuków, włóczni lub kul ognia."
+"Walka w <italic>text='Bitwie o Wesnoth'</italic> zawsze odbywa się między "
+"jednostkami znajdującymi się na sąsiadujących polach. Kliknij swoją "
+"jednostkę, a następnie jednostkę przeciwnika, którą chcesz zaatakować: twoja "
+"jednostka przemieści się w jego kierunku, a gdy znajdą się obok siebie "
+"rozpocznie się walka. Atakujący i obrońca wymieniają ciosy do czasu, gdy "
+"każdy zużyje przydzieloną mu liczbę ciosów. Atakujący wybiera broń, której "
+"chce użyć, a obrońca odpowiada jednym ze swoich ataków tego samego typu. "
+"Istnieją dwa typy ataków: <italic>text='wręcz'</italic>, czyli zazwyczaj za "
+"pomocą broni w rodzaju mieczy, toporów lub kłów, oraz <italic>text='na "
+"odległość'</italic>, czyli na przykład z użyciem łuków, włóczni lub kul "
+"ognia."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:231
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1522,11 +1496,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Kolejność i liczba ataków'</header>"
+"<header>text='Kolejność i liczba ciosów'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1541,16 +1514,16 @@ msgstr ""
 "\n"
 "\n"
 "Atakujący zadaje cios jako pierwszy, a następnie broniący się odpowiada. "
-"Każdy atak albo trafia i zadaje pewne obrażenia, albo chybia, nie "
+"Każdy cios albo trafia i zadaje pewne obrażenia, albo chybia, nie "
 "wyrządzając tym samym żadnej szkody. Wymiana ciosów trwa do momentu, gdy "
 "obie jednostki zużyją wszystkie swoje ataki. Liczba ciosów, jakie może zadać "
-"jednostka, jest różna - na przykład elficki wojownik wykonujący mieczem atak "
-"5-4 może zadać 4 cięcia po 5 obrażeń, podczas gdy ork rębacz z atakiem 9-2 "
-"zada tylko 2 ciosy (ale po 9 obrażeń)."
+"jednostka, jest różna — na przykład elficki wojownik wykonujący mieczem atak "
+"5-4 może zadać 4 cięcia po 5 punktów obrażeń, podczas gdy ork rębacz z "
+"atakiem 9-2 zadaje tylko 2 ciosy, ale po 9 punktów obrażeń na każde "
+"trafienie."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:235
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1562,7 +1535,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1576,18 +1548,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Szansa trafienia jednostki zależy od jej umiejętności obrony w terenie, na "
-"którym się znajduje. Szansa jest widoczna na panelu statusu, sprawdzić można "
-"ją też w <italic>text='modyfikatorach terenu'</italic> widocznych po "
-"kliknięciu prawym przyciskiem myszy na jednostce i wybraniu pozycji 'Opis "
-"jednostki'. Na przykład współczynnik obrony elfów w lasach wynosi 70%, co "
-"oznacza, że jednostka je atakująca ma tylko 30% szans na trafienie. Szansa, "
+"Szansa trafienia jednostki zależy od jej umiejętności obrony w "
+"<italic>text='terenie'</italic>, na którym się znajduje. Szansa jest "
+"widoczna na panelu statusu, sprawdzić można ją też w "
+"<bold>text='modyfikatorach terenu'</bold> widocznych po kliknięciu jednostki "
+"prawym przyciskiem myszy i wybraniu opcji <bold>text='Opis jednostki'</"
+"bold>. Na przykład współczynnik obrony elfów w lasach zazwyczaj wynosi 70%, "
+"co oznacza, że jednostka atakująca ma tylko 30% szans na trafienie. Szansa, "
 "że broniący się elf trafi atakującego, również zależy od typu terenu, na "
 "którym atakujący się znajduje."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1601,8 +1573,9 @@ msgstr ""
 "Istnieją dwa wyjątki od tej reguły: <ref>dst='weaponspecial_magical' "
 "text='ataki magiczne'</ref> i <ref>dst='weaponspecial_marksman' "
 "text='strzelcy wyborowi'</ref>. Ataki magiczne zawsze mają szansę trafienia "
-"70% bez względu na teren, zaś strzelcy wyborowi zawsze mają w ataku szansę "
-"trafienia co najmniej 60%, również niezależnie od terenu."
+"dokładnie 70% bez względu na teren, zaś strzelcy wyborowi zawsze mają "
+"podczas własnego ataku szansę trafienia co najmniej 60%, również niezależnie "
+"od terenu."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
@@ -1617,7 +1590,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1631,17 +1603,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Każdy celny cios zadaje podstawową ilość obrażeń, zależną od typu ataku. Na "
-"przykład elficki wojownik wykonujący mieczem atak 5-4 zadaje bazowo 5 "
-"punktów obrażeń. Liczba ta jest zazwyczaj modyfikowana przez dwa czynniki: "
+"Każdy celny cios zadaje bazowe obrażenia zależne od typu ataku. Na przykład "
+"elficki wojownik wykonujący mieczem atak 5-4 zadaje bazowo 5 punktów "
+"obrażeń. Liczba ta jest zazwyczaj modyfikowana przez dwa czynniki: "
 "<ref>dst='damage_types_and_resistance' text='odporność'</ref> i "
 "<ref>dst='time_of_day' text='porę dnia'</ref>. Aby zobaczyć, jak panujące "
-"warunki zmieniają podstawowe obrażenia, wybierz w menu wyboru ataku opcję "
-"<italic>text='obliczenia obrażeń'</italic>."
+"warunki modyfikują obrażenia bazowe, wybierz w menu wyboru ataku opcję "
+"<bold>text='Obliczenia obrażeń'</bold>."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1665,7 +1636,6 @@ msgstr "Rodzaje obrażeń i odporność"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:252
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -1674,15 +1644,14 @@ msgid ""
 "italic>. Different units may have resistances which alter the damage which "
 "they take from certain damage types."
 msgstr ""
-"W Wesnoth istnieją trzy typy obrażeń związanych z atakami fizycznymi: cięte, "
-"kłute i obuchowe. Ponadto ataki magiczne mogą wywoływać obrażenia od ognia, "
-"chłodu lub energii astralnej. Różne rodzaje jednostek mogą posiadać "
-"odporności wpływające na ilość obrażeń otrzymywanych w wyniku określonych "
-"ataków."
+"W Wesnoth istnieją trzy typy obrażeń związanych z atakami fizycznymi: "
+"<italic>text='cięte, kłute i obuchowe'</italic>. Ponadto ataki magiczne mogą "
+"zadawać obrażenia od <italic>text='ognia, chłodu lub energii astralnej'</"
+"italic>. Różne rodzaje jednostek mogą posiadać odporności wpływające na "
+"ilość obrażeń otrzymywanych w wyniku określonych ataków."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1695,14 +1664,13 @@ msgstr ""
 "\n"
 "\n"
 "Odporności działają w bardzo prosty sposób: jeśli jednostka posiada 40% "
-"odporność na jakiś rodzaj obrażeń, to w wyniku ataku tego typu ucierpi o 40% "
-"mniej. Możliwe jest także, by jednostka miała słabość: jeśli posiada −100% "
-"odporności przeciwko pewnemu typowi ataku, to odniesie 100% więcej obrażeń w "
-"wyniku trafienia."
+"odporności na pewien rodzaj obrażeń, w wyniku ataku takiego typu ucierpi o "
+"40% mniej. Jednostki mogą też mieć słabości: −100% odporności przeciwko "
+"pewnemu typowi ataku oznacza, że w przypadku trafienia jednostka odniesie o "
+"100% większe obrażenia."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1712,8 +1680,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Na przykład Szkielety posiadają wysoką odporność na ataki sieczne i kłute, "
-"ale są wrażliwe na ataki obuchowe oraz ogniste i niezwykle wrażliwe na ataki "
+"Na przykład szkielety mają dużą odporność na ataki sieczne i kłute, ale są "
+"wrażliwe na ataki obuchowe i ogniste oraz niezwykle wrażliwe na ataki "
 "astralne."
 
 #. [topic]: id=damage_types_and_resistance
@@ -1737,7 +1705,6 @@ msgstr "Pora dnia"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1745,14 +1712,14 @@ msgid ""
 " Neutral units are unaffected by the time of day.\n"
 " Liminal units get −25% damage during both night and daytime."
 msgstr ""
-"Pora dnia wpływa na obrażenia zadawane przez jednostki następująco: -\n"
-" Praworządne jednostki zadają +25% obrażeń za dnia i −25% w nocy.\n"
-" Chaotyczne jednostki zadają +25% obrażeń w nocy i −25% za dnia.\n"
-" Pora dnia nie wpływa na jednostki neutralne."
+"Pora dnia wpływa na obrażenia zadawane przez jednostki następująco:\n"
+" Jednostki praworządne zadają +25% obrażeń za dnia i −25% w nocy.\n"
+" Jednostki chaotyczne zadają +25% obrażeń w nocy i −25% za dnia.\n"
+" Na jednostki neutralne pora dnia nie ma wpływu.\n"
+" Jednostki półmroczne zadają −25% obrażeń zarówno za dnia, jak i w nocy."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1762,9 +1729,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Aktualną porę dnia przedstawia rysunek znajdujący się pod minimapą na panelu "
-"statusu. W przypadku zwykłego cyklu dnia/nocy ranek i popołudnie uważane są "
-"za dzień, a pierwsza i druga straż za noc:\n"
+"Aktualną porę dnia przedstawia grafika pod minimapą na panelu statusu. W "
+"przypadku zwykłego cyklu dobowego ranek i popołudnie liczą się jako dzień, a "
+"pierwsza i druga straż jako noc:\n"
 
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
@@ -1854,7 +1821,6 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:291
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1871,16 +1837,17 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Choć większość jednostek ma trzy poziomy, to zdarzają się wyjątki. Niektóre "
-"(takie jak <ref>dst='unit_Mage' text='magowie'</ref>) mogą mieć cztery. Gdy "
-"jednostka osiągnie maksymalny poziom, może uzyskać Awans Po Ostatnim "
-"Poziomie (APOP). APOP zmienia jednostkę za każdym razem, gdy osiąga ona "
-"wymagany poziom doświadczenia, jednak jednostka pozostaje na tym samym "
-"poziomie. Typowym wpływem APOP na jednostkę jest podniesienie maksymalnej "
-"liczby PŻ o 3 i pełne uzdrowienie. Pierwszy APOP jest na ogół osiągany po "
-"zdobyciu 150PD (120PD w przypadku jednostek inteligentnych). Zdobywanie "
-"kolejnych awansów jest jednak coraz trudniejsze i na ogół bardziej korzystne "
-"jest awansowanie jednostek na niższych poziomach."
+"Choć większość jednostek ma trzy poziomy, to zdarzają się wyjątki — na "
+"przykład <ref>dst='unit_Mage' text='magowie'</ref> mogą mieć cztery. Gdy "
+"jednostka osiągnie swój maksymalny poziom, może przy kolejnych awansach "
+"otrzymywać już tylko <italic>text='awans po ostatnim poziomie'</italic> "
+"(APOP). APOP modyfikuje jednostkę za każdym razem, gdy zgromadzi ona "
+"wymaganą ilość doświadczenia, ale poziom już nie ulega zmianie. Typowym "
+"wpływem APOP na jednostkę jest zwiększenie maksymalnej liczby PŻ o 3 i pełne "
+"uzdrowienie. Pierwszy APOP jest zazwyczaj osiągany po zdobyciu 150 PD (120 "
+"PD w przypadku jednostek inteligentnych). Zdobywanie kolejnych awansów staje "
+"się jednak coraz trudniejsze i na ogół bardziej korzystne jest awansowanie "
+"jednostek na niższych poziomach."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:298
@@ -1905,7 +1872,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:301
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1914,19 +1880,19 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Odpoczywanie: Jednostka, która się nie poruszy, nie zaatakuje i nie zostanie "
-"zaatakowana odzyska w następnej turze 2PŻ."
+"<italic>text='Odpoczynek'</italic>: jednostka, która się nie poruszy, nie "
+"zaatakuje i nie zostanie zaatakowana, odzyska w następnej turze 2 PŻ."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Villages'</italic>: A unit which starts a turn in a village "
 "will heal 8HP."
 msgstr ""
 "\n"
-"Wioski: jednostka, która rozpoczyna turę w wiosce, odzyska 8PŻ."
+"<italic>text='Wioski'</italic>: jednostka, która rozpoczyna turę w wiosce, "
+"odzyskuje 8 PŻ."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1941,7 +1907,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Healing units'</italic>: Units with the "
@@ -1951,15 +1916,14 @@ msgid ""
 "from causing that unit damage."
 msgstr ""
 "\n"
-"Jednostki leczące: Jednostki z umiejętnością <ref>dst='ability_heals +4' "
-"text='leczenia'</ref> leczą sąsiadujące jednostki sojusznicze, zazwyczaj o "
-"<ref>dst='ability_heals +4' text='4PŻ'</ref> lub <ref>dst='ability_heals +8' "
-"text='8PŻ'</ref> na turę, lub zapobiegają utracie sił przez jednostkę "
-"zatrutą."
+"<italic>text='Jednostki leczące'</italic>: jednostki ze zdolnością "
+"<ref>dst='ability_heals +4' text='leczenia'</ref> leczą sąsiadujące "
+"jednostki sojusznicze, zazwyczaj o <ref>dst='ability_heals +4' text='4 PŻ'</"
+"ref> lub <ref>dst='ability_heals +8' text='8 PŻ'</ref> na turę, lub "
+"zapobiegają utracie sił przez jednostkę zatrutą."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Curing units'</italic>: Units with the "
@@ -1968,10 +1932,10 @@ msgid ""
 "well)."
 msgstr ""
 "\n"
-"Jednostki uzdrawiające: Jednostki z umiejętnością <ref>dst='ability_cures' "
-"text='uzdrawiania'</ref> leczą z trucizny wszystkie sąsiadujące jednostki "
-"sojusznicze. Jeśli jednostka posiada również umiejętność leczenia, "
-"uzdrawianie ma pierwszeństwo przed leczeniem."
+"<italic>text='Jednostki uzdrawiające'</italic>: jednostki ze zdolnością "
+"<ref>dst='ability_cures' text='uzdrawiania'</ref> leczą z trucizny wszystkie "
+"sąsiadujące jednostki sojusznicze. Jeśli jednostka posiada również "
+"umiejętność leczenia, uzdrawianie ma pierwszeństwo przed leczeniem."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -1994,7 +1958,6 @@ msgstr "Dochód i utrzymanie"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:315
-#, fuzzy
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -2004,11 +1967,11 @@ msgstr ""
 "Aby grać w Wesnoth, nie wystarczy po prostu rekrutować jednostek i walczyć. "
 "Musisz również dbać o swoje złoto, szczególnie w kampaniach, gdzie możesz "
 "przenosić dodatkowe złoto z jednego scenariusza do następnego. Związane są z "
-"tym dwa pojęcia: dochód i utrzymanie."
+"tym dwa pojęcia: <italic>text='dochód'</italic> i <italic>text='utrzymanie'</"
+"italic>."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2022,14 +1985,14 @@ msgstr ""
 "\n"
 "\n"
 "Idea dochodu jest prosta. Podstawowy dochód wynosi 2 sztuki złota na turę, a "
-"za każdą kontrolowaną wioskę otrzymujesz każdej tury jedną sztukę złota. "
-"Zatem jeśli posiadasz dziesięć wiosek, w normalnych warunkach otrzymasz 12 "
-"sztuk złota. Od dochodu odejmowane są koszty utrzymania, co wyjaśniono "
-"poniżej."
+"za każdą kontrolowaną wioskę otrzymujesz każdej tury jedną dodatkową sztukę "
+"złota (twórcy scenariuszy mogą tę ilość modyfikować, ale w kampaniach prawie "
+"zawsze przypada jedna sztuka złota na wioskę). Zatem jeśli masz dziesięć "
+"wiosek, w normalnych warunkach otrzymasz co turę 12 sztuk złota. Od dochodu "
+"odejmowane są koszty utrzymania, co wyjaśniono poniżej."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2042,17 +2005,16 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Utrzymanie jest także dość proste. Każda jednostka wymaga każdej tury ilości "
-"złota równej jej poziomowi. Możesz utrzymać tyle jednostek (<italic>text='w "
-"przeliczeniu na poziomy'</italic>), ile masz wiosek, bez płacenia za ich "
-"utrzymanie. Dla każdego poziomu powyżej liczby kontrolowanych wiosek musisz "
-"co turę zapłacić jedną sztukę złota. Na przykład jeśli masz dwanaście "
-"jednostek pierwszego poziomu i dziesięć wiosek, to płacisz dwie sztuki złota "
-"w każdej turze."
+"Utrzymanie także nie jest skomplikowane. Każda jednostka wymaga co turę "
+"ilości złota równej jej poziomowi. Bez dodatkowego płacenia możesz utrzymać "
+"tyle jednostek (w przeliczeniu na poziomy), ile masz wiosek. Jeśli jednak "
+"suma poziomów wszystkich jednostek przekracza liczbę kontrolowanych wiosek, "
+"musisz co turę zapłacić różnicę w złocie. Na przykład jeśli masz dwanaście "
+"jednostek pierwszego poziomu i dziesięć wiosek, co turę będziesz płacić za "
+"utrzymanie dwie sztuki złota."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:321
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2062,13 +2024,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Koszty utrzymania są odejmowane od dochodu, więc w przypadku dwunastu "
-"jednostek i dziesięciu wiosek końcowy dochód wyniósłby 10 sztuk złota na "
-"turę."
+"Koszty utrzymania są odejmowane od dochodu, więc w przypadku posiadania "
+"jednostek o sumie poziomów 12 oraz 10 wiosek wynikowy dochód wyniósłby 10 "
+"sztuk złota na turę."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2080,12 +2041,14 @@ msgid ""
 "playing (such as Konrad) will almost always be a leader."
 msgstr ""
 "\n"
+"\n"
 "Od zwykłych reguł dotyczących utrzymania są dwa ważne wyjątki: jednostki z "
-"cechą Lojalna i przywódcy nigdy nie wymagają utrzymania. Jednostki, z "
+"cechą lojalna oraz przywódcy nigdy nie wymagają utrzymania. Jednostki, z "
 "którymi zaczynasz scenariusz (jak na przykład Delfador) lub jednostki, które "
-"dołączają do ciebie w jego trakcie (jak jeździec w drugim scenariuszu "
-"Następcy Tronu), będą zazwyczaj lojalne. Z kolei jednostka postaci, którą "
-"grasz (na przykład Konrada) będzie prawie zawsze przywódcą."
+"dołączają do ciebie w trakcie gry (takie jak jeździec w drugim scenariuszu "
+"<italic>text='Następcy tronu'</italic>), będą zazwyczaj mieć cechę "
+"<italic>text='lojalna'</italic>. Z kolei jednostka postaci, którą grasz (na "
+"przykład Konrada), będzie prawie zawsze przywódcą."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:329
@@ -2094,7 +2057,6 @@ msgstr "Podsumowanie"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2105,8 +2067,8 @@ msgstr ""
 "Na tym kończy się nauka podstaw Bitwy o Wesnoth. Możesz jeszcze poczytać o "
 "podstawach strategii lub zapoznać się z <ref>dst='..traits_section' "
 "text='cechami'</ref> i <ref>dst='..abilities_section' text='zdolnościami'</"
-"ref>, ale wiesz już wszystko, co potrzebne do rozegrania kampanii Następca "
-"Tronu. Baw się dobrze i powodzenia!"
+"ref>, ale wiesz już wszystko, co potrzebne do rozegrania kampanii "
+"<italic>text='Następca tronu'</italic>. Baw się dobrze i powodzenia!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:335
@@ -2120,7 +2082,6 @@ msgstr "Licencja"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:350
-#, fuzzy
 msgid ""
 "Most units have two traits. However, undead units are assigned the single "
 "trait <italic>text='undead'</italic>, and woses do not receive any traits. "
@@ -2128,13 +2089,12 @@ msgid ""
 "usually randomly assigned to a unit when it is recruited."
 msgstr ""
 "Większość jednostek ma dwie cechy, z wyjątkiem jednostek nieumarłych, do "
-"których przypisana jest cecha Nieumarły, oraz drzewców, które nie otrzymują "
-"żadnych cech. Cechy nieco modyfikują atrybuty jednostki i są zazwyczaj "
-"przydzielane losowo podczas rekrutacji."
+"których przypisana jest pojedyncza cecha <italic>text='nieumarła'</italic>, "
+"oraz drzewców, które nie otrzymują żadnych cech. Cechy nieco modyfikują "
+"atrybuty jednostki i są zazwyczaj przydzielane losowo podczas rekrutacji."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:352
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2152,7 +2112,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:356
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2182,7 +2141,6 @@ msgstr ""
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:365
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2195,12 +2153,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Inteligentne jednostki są bardzo użyteczne na początku kampanii, ponieważ "
-"mogą szybko awansować na dużo bardziej potrzebne jednostki wysokiego "
-"poziomu. W dalszej części kampanii nie są już tak użyteczne, ponieważ Awans "
-"Po Ostatnim Poziomie (APOP) nie stanowi tak poważnej zmiany, jak osiągnięcie "
-"kolejnego poziomu. Jeśli masz sporo jednostek na \"maksymalnym poziomie\", "
-"będziesz raczej przywoływać te z bardziej użytecznymi cechami."
+"Jednostki <italic>text='inteligentne'</italic> są bardzo przydatne na "
+"początku kampanii, ponieważ mogą szybko awansować na jednostki wyższych "
+"poziomów. W dalszej części kampanii nie są już tak użyteczne, ponieważ "
+"<italic>text='awans po ostatnim poziomie'</italic> nie stanowi tak poważnej "
+"zmiany, jak osiągnięcie kolejnego poziomu. Jeśli masz sporo jednostek na "
+"poziomie maksymalnym, może być wskazane przywoływanie tych spośród nich, "
+"które mają bardziej przydatne cechy."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:370
@@ -2209,17 +2168,15 @@ msgstr "Szybka"
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:371
-#, fuzzy
 msgid ""
 "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
 "HP than usual."
 msgstr ""
-"Szybkie jednostki mają 1 dodatkowy punkt ruchu, ale 5% mniej PŻ niż "
-"normalnie."
+"<italic>text='Szybkie'</italic> jednostki mają 1 dodatkowy punkt ruchu, ale "
+"za to 5% mniej PŻ."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:373
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2233,10 +2190,11 @@ msgstr ""
 "\n"
 "\n"
 "Szybkość jest najbardziej zauważalną cechą, szczególnie w przypadku "
-"powolnych jednostek, takich jak trolle lub ciężka piechota. Miej na uwadze, "
-"że jednostki z cechą \"szybka\" często mają znacznie zwiększoną mobilność w "
-"trudnym terenie. Pamiętaj również, że szybkie jednostki nie są tak "
-"wytrzymałe jak zwykłe, więc gorzej nadają się do utrzymywania pozycji."
+"powolnych jednostek, takich jak trolle lub ciężka piechota. Jednostki z "
+"cechą „szybka” są często znacznie bardziej mobilne w trudnym terenie, o czym "
+"warto pamiętać przy ich rozmieszczaniu. Pamiętaj jednak, że szybkie "
+"jednostki są mniej wytrzymałe, więc gorzej nadają się do utrzymywania "
+"kluczowych pozycji."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:378
@@ -2245,13 +2203,12 @@ msgstr "Wytrzymała"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:379
-#, fuzzy
 msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
 "than usual."
 msgstr ""
-"Wytrzymałe jednostki mają o 4 PŻ więcej niż normalnie, plus 1 PŻ za każdy "
-"poziom."
+"<italic>text='Wytrzymałe'</italic> jednostki mają o 4 PŻ więcej niż zwykle, "
+"plus 1 PŻ za każdy poziom."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:381
@@ -2280,17 +2237,15 @@ msgstr "Silna"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:387
-#, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 more HP."
 msgstr ""
-"Silne jednostki zadają w walce wręcz o 1 punkt obrażeń więcej i mają "
-"dodatkowy 1 PŻ."
+"<italic>text='Silne'</italic> jednostki zadają w walce wręcz o 1 punkt "
+"obrażeń więcej i mają dodatkowy 1 PŻ."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:389
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2302,10 +2257,10 @@ msgstr ""
 "\n"
 "\n"
 "Choć jest użyteczna dla każdej jednostki walczącej wręcz, siła najbardziej "
-"pomaga w przypadku tych jednostek, które zadają dużo ciosów, jak na przykład "
-"elficki wojownik. Silne jednostki mogą być bardzo cenne, gdy ten niewielki "
-"wzrost obrażeń stanowi o różnicy między zranieniem przeciwnika a zadaniem mu "
-"śmiertelnego ciosu."
+"pomaga w przypadku tych jednostek, które zadają wiele ciosów, jak na "
+"przykład elficki wojownik. Silne jednostki mogą być bardzo cenne, gdy tych "
+"kilka dodatkowych punktów obrażeń stanowi o różnicy między zranieniem "
+"przeciwnika a zadaniem mu śmiertelnego ciosu."
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:394
@@ -2321,9 +2276,8 @@ msgstr ""
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:400
-#, fuzzy
 msgid "Feral"
-msgstr "Łącznie"
+msgstr "Dzika"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:401
@@ -2341,19 +2295,17 @@ msgstr "Lojalna"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:407
-#, fuzzy
 msgid ""
 "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
 "upkeep cost at the end of every turn, which is equal to their level. Loyal "
 "units do not incur this cost."
 msgstr ""
-"Lojalne jednostki nie wymagają utrzymania. W przypadku większości jednostek "
-"trzeba każdej tury płacić koszt utrzymania równy ich poziomowi. Nie dotyczy "
-"to jednostek lojalnych."
+"<italic>text='Lojalne'</italic> jednostki nie mają żadnego kosztu "
+"utrzymania. W przypadku większości jednostek trzeba co turę płacić koszt "
+"utrzymania równy ich poziomowi, lecz jednostek lojalnych to nie dotyczy."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:409
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2367,8 +2319,8 @@ msgstr ""
 "\n"
 "\n"
 "Podczas kampanii pewne jednostki mogą z własnej woli przyłączyć się do armii "
-"gracza. Jednostki te posiadają cechę \"lojalna\". Choć wymagają zapłaty, by "
-"zostać przywołane, to nie trzeba ich utrzymywać i mogą okazać się "
+"gracza. Jednostki te posiadają cechę „lojalna”. Choć ich przywołanie może "
+"wymagać zapłaty, to nie trzeba płacić za ich utrzymanie, przez co bywają "
 "nieocenione podczas długich kampanii, w których brakuje złota. Cechy ta "
 "nigdy nie jest przydzielana rekrutowanym jednostkom, więc rozwiązanie "
 "jednostki lojalnej lub wysłanie jej na pewną śmierć raczej nie jest dobrym "
@@ -2381,16 +2333,14 @@ msgstr "Nieumarła"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:415
-#, fuzzy
 msgid ""
 "<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
 msgstr ""
-"Jednostki nieumarłe są odporne na truciznę oraz ataki z wyssaniem życia i "
-"zarazą."
+"<italic>text='Nieumarłe'</italic> jednostki są odporne na truciznę oraz "
+"ataki z wyssaniem życia i zarazą."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:417
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2401,7 +2351,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"\"Nieumarła\" jest na ogół jedyną cechą nieumarłych jednostek. Ponieważ są "
+"„Nieumarła” jest zazwyczaj jedyną cechą jednostek nieumarłych. Ponieważ są "
 "to ciała umarłych, które wskrzeszono, by znów walczyły, trucizna nie ma na "
 "nie żadnego wpływu. Czyni to je nieocenionymi w starciach z przeciwnikami, "
 "którzy używają w swoich atakach trucizny."
@@ -2413,17 +2363,15 @@ msgstr "Mechaniczne"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:423
-#, fuzzy
 msgid ""
 "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Jednostki mechaniczne są odporne na truciznę oraz ataki z wyssaniem życia i "
-"zarazą."
+"<italic>text='Mechaniczne'</italic> jednostki są odporne na truciznę oraz "
+"ataki z wyssaniem życia i zarazą."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:425
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2433,29 +2381,26 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jedyną cechą jednostek mechanicznych jest na ogół \"mechaniczna\". Ponieważ "
+"Jedyną cechą jednostek mechanicznych jest na ogół „mechaniczna”. Ponieważ "
 "jednostki mechaniczne nie są ożywione, są one odporne na wyssanie życia, "
 "truciznę i zarazę."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
-#, fuzzy
 msgid "trait^Elemental"
-msgstr "ukrywanie się"
+msgstr "Żywiołak"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:431
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
 msgstr ""
-"Jednostki mechaniczne są odporne na truciznę oraz ataki z wyssaniem życia i "
-"zarazą."
+"<italic>text='Żywiołaki'</italic> są odporne na truciznę oraz ataki z "
+"wyssaniem życia i zarazą."
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:433
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2465,9 +2410,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Jedyną cechą jednostek mechanicznych jest na ogół \"mechaniczna\". Ponieważ "
-"jednostki mechaniczne nie są ożywione, są one odporne na wyssanie życia, "
-"truciznę i zarazę."
+"Jedyną cechą żywiołaków jest na ogół „żywiołak”. Jako istoty energetyczne są "
+"one odporne na wyssanie życia, truciznę i zarazę."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
@@ -2476,16 +2420,15 @@ msgstr "Zręczna"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:439
-#, fuzzy
 msgid ""
 "<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
 "strike in ranged combat."
 msgstr ""
-"Zręczne jednostki zadają w walce na odległość o 1 punkt obrażeń więcej."
+"<italic>text='Zręczne'</italic> jednostki zadają o 1 punkt obrażeń więcej "
+"każdym trafieniem w walce na odległość."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:441
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2497,9 +2440,9 @@ msgstr ""
 "\n"
 "\n"
 "Zręczność jest cechą posiadaną tylko przez elfy, które znane są z niezwykłej "
-"gracji i wspaniałych umiejętności posługiwania się łukiem. Niektóre jednak "
-"posiadają talent jeszcze większy, niż ich bracia. Elfy te zadają każdą "
-"strzałą dodatkowy punkt obrażeń."
+"gracji i wspaniałych umiejętności posługiwania się łukiem. Niektóre elfy "
+"mają jednak wrodzone zdolności, dzięki którym są jeszcze zręczniejsze od "
+"swoich pobratymców. Elfy te zadają każdą strzałą dodatkowy punkt obrażeń."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:446
@@ -2517,7 +2460,6 @@ msgstr ""
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:449
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2527,10 +2469,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Zdrowe jednostki mają o 1PŻ więcej od pozostałych jednostek, plus dodatkowy "
-"1PŻ za każdy poziom. Gdy odpoczywają, odzyskują zwykłe 2PŻ po każdej turze, "
-"w której nie walczyły. Odnoszą też o jedną czwartą mniejsze obrażenia z "
-"powodu  zatrucia."
+"<italic>text='Zdrowe'</italic> jednostki mają o 1 PŻ więcej od pozostałych "
+"jednostek, plus dodatkowy 1 PŻ za każdy poziom. Odzyskują też zwykłe 2 PŻ po "
+"każdej turze, w której nie walczyły, a dodatkowo odnoszą o jedną czwartą "
+"mniejsze obrażenia z powodu zatrucia."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:454
@@ -2539,12 +2481,12 @@ msgstr "Tępy"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:455
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
 "experience required to advance."
 msgstr ""
-"Jednostki z cechą Tępy wymagają o 20% więcej doświadczenia, by awansować."
+"Jednostki z cechą <italic>text='tępy'</italic> potrzebują o 20% więcej "
+"doświadczenia, aby awansować."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:457
@@ -2567,10 +2509,11 @@ msgstr "Powolny"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:463
-#, fuzzy
 msgid ""
 "<italic>text='Slow'</italic> units have −1 movement but 5% more hitpoints."
-msgstr "Powolne jednostki mają o 1 punkt ruchu mniej, ale o 5% więcej PŻ."
+msgstr ""
+"<italic>text='Powolne'</italic> jednostki mają o 1 punkt ruchu mniej, ale o "
+"5% więcej PŻ."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:465
@@ -2593,30 +2536,26 @@ msgstr "Słaby"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:471
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
 "hitpoints and melee damage."
 msgstr ""
-"Jednostki z cechą słaba mają o 1 PŻ mniej i odnoszą o 1 punkt większe "
-"obrażenia w walce wręcz."
+"Jednostki z cechą <italic>text='słaba'</italic> mają o 1 PŻ mniej i zadają o "
+"1 punkt mniejsze obrażenia w walce wręcz."
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
-#, fuzzy
-#| msgid "trait^Undead"
 msgid "trait^Aged"
-msgstr "Nieumarła"
+msgstr "Wiekowa"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:477
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
 msgstr ""
-"Jednostki z cechą słaba mają o 1 PŻ mniej i odnoszą o 1 punkt większe "
-"obrażenia w walce wręcz."
+"Jednostki z cechą <italic>text='wiekowa'</italic> mają o 8 PŻ i 1 punkt "
+"ruchu mniej, a przy tym zadają o 1 punkt mniejsze obrażenia w walce wręcz."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:485
@@ -2637,7 +2576,6 @@ msgstr "Płaski"
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:497
-#, fuzzy
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild. Being open ground, grassland is "
@@ -2647,11 +2585,11 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"Łąki reprezentują otwarte równiny, w tym pola uprawne, pastwiska i tereny "
-"dzikie. Ponieważ jest to równy grunt, poruszanie się po łąkach jest bardzo "
-"łatwe, ale jednocześnie trudno jest się na nich bronić. Na łąkach zazwyczaj "
-"najlepiej sprawdza się kawaleria lub inne szybkie jednostki, które zyskują "
-"przewagę na otwartej przestrzeni.\n"
+"<italic>text='Łąki'</italic> reprezentują otwarte równiny, w tym pola "
+"uprawne, pastwiska i tereny dzikie. Ponieważ jest to równy grunt, poruszanie "
+"się po łąkach jest bardzo łatwe, ale jednocześnie trudno jest się na nich "
+"bronić. Na łąkach zazwyczaj najlepiej sprawdza się kawaleria lub inne "
+"szybkie jednostki, które zyskują przewagę na otwartej przestrzeni.\n"
 "\n"
 "Większość jednostek ma na łąkach obronę na poziomie od 30 do 40%."
 
@@ -2662,16 +2600,16 @@ msgstr "Droga"
 
 #. [topic]: id=terrain_road
 #: data/core/help.cfg:511
-#, fuzzy
 msgid ""
 "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
 "\n"
 msgstr ""
-"Drogi to ziemiste ścieżki ubite przez wielu przemieszczających się po nich "
-"podróżników. W grze drogi mają takie same własności jak "
-"<ref>dst='terrain_flat' text='równiny'</ref>."
+"<italic>text='Drogi'</italic> to ziemiste ścieżki ubite przez wielu "
+"przemieszczających się po nich podróżników. W grze drogi mają takie same "
+"własności jak <ref>dst='terrain_flat' text='równiny'</ref>.\n"
+"\n"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:518
@@ -2680,7 +2618,6 @@ msgstr "Las"
 
 #. [topic]: id=terrain_forest
 #: data/core/help.cfg:525
-#, fuzzy
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2698,11 +2635,11 @@ msgid ""
 "Dwarves generally receive only 30% defense in forests.\n"
 "\n"
 msgstr ""
-"Lasy reprezentują dowolny teren zarośnięty na tyle, by utrudnić "
-"przemieszczanie się. Choć spowalniają niemal każdego, lasy oferują "
-"większości jednostek lepsze możliwości obrony niż otwarta przestrzeń. "
-"Jedynie kawaleria ma takie trudności w poruszaniu się po lasach, że "
-"możliwość ukrycia się zupełnie traci na znaczeniu. Odstępstwem od tych "
+"<italic>text='Lasy'</italic> reprezentują dowolny teren zarośnięty na tyle, "
+"by utrudnić przemieszczanie się. Choć spowalniają niemal każdego, lasy "
+"oferują większości jednostek lepsze możliwości obrony niż otwarta "
+"przestrzeń. Jedynie kawaleria ma takie trudności w poruszaniu się po lasach, "
+"że możliwość ukrycia się zupełnie traci na znaczeniu. Odstępstwem od tych "
 "ogólnych prawidłowości są elfy. Nie tylko potrafią się one poruszać w lasach "
 "z normalną prędkością, ale także zyskują sporą premię do obrony. Innym "
 "wyjątkiem są krasnoludy, które wprawdzie potrafią się przedzierać przez lasy "
@@ -2710,7 +2647,7 @@ msgstr ""
 "terenie nie otrzymują żadnej premii do obrony.\n"
 "\n"
 "Większość jednostek ma w lasach obronę na poziomie 50%, ale kawaleria jest "
-"ograniczona do 40%. Z kolei elfy korzystają w nich z obrony od 60 do 70%, "
+"ograniczona do 30%. Z kolei elfy korzystają w nich z obrony od 60 do 70%, "
 "włącznie z jednostkami konnymi. Krasnoludy na ogół mają w lasach obronę "
 "zaledwie 30%.\n"
 "\n"
@@ -2722,7 +2659,6 @@ msgstr "Wzgórza"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:540
-#, fuzzy
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2735,16 +2671,17 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills.\n"
 "\n"
 msgstr ""
-"Wzgórza reprezentują każdy względnie nierówny teren ze sporą liczbą spadków "
-"i wzniesień, które umożliwiają schronienie się. Większość żołnierzy ma "
-"problemy z poruszaniem się na wzgórzach. Krasnoludy, trolle i orki znają je "
-"na tyle, że przemieszczają po nich bez utraty szybkości. Kawaleria ma na "
-"tyle duże trudności z jazdą w tym terenie, że możliwość ukrycia się "
-"całkowicie traci na znaczeniu.\n"
+"<italic>text='Wzgórza'</italic> reprezentują każdy względnie nierówny teren "
+"ze sporą liczbą spadków i wzniesień, które umożliwiają schronienie się. "
+"Większość żołnierzy ma problemy z poruszaniem się na wzgórzach. Krasnoludy, "
+"trolle i orki znają je na tyle, że przemieszczają po nich bez utraty "
+"szybkości. Kawaleria ma na tyle duże trudności z jazdą w tym terenie, że "
+"możliwość ukrycia się całkowicie traci na znaczeniu.\n"
 "\n"
 "Większość jednostek ma na wzgórzach obronę na poziomie 50%, lecz kawaleria "
 "jest ograniczona do 40%. Krasnoludy korzystają na wzgórzach z obrony na "
-"poziomie 60%."
+"poziomie 60%.\n"
+"\n"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:547
@@ -2753,7 +2690,6 @@ msgstr "Góry"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:552
-#, fuzzy
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move. By this nature, they provide a considerable "
@@ -2765,16 +2701,16 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
-"Góry są na tyle strome, że większość jednostek musi wspinać się na "
-"przeszkody, by móc się poruszać. Z natury zapewniają większości żołnierzy "
-"sporą premię do obrony, ale jednocześnie poważnie spowalniają "
-"przemieszczanie się. Większość jednostek kawalerii nie może wjechać na "
-"górzysty teren. Wyjątkami są jazda elfów i wilczy jeźdźcy goblinów. Góry są "
-"rodzimym terenem krasnoludów i trolli, więc nie mają one problemów z "
-"poruszaniem się w nich.\n"
+"<italic>text='Góry'</italic> są na tyle strome, że większość jednostek musi "
+"wspinać się na przeszkody, by móc się poruszać. Z natury zapewniają "
+"większości żołnierzy sporą premię do obrony, ale jednocześnie poważnie "
+"spowalniają przemieszczanie się. Większość jednostek kawalerii nie może "
+"wjechać na górzysty teren. Wyjątkami są jazda elfów i gobliny dosiadające "
+"wilków. Góry są rodzimym terenem krasnoludów i trolli, więc nie mają one "
+"problemów z poruszaniem się w nich.\n"
 "\n"
-"Większość jednostek posiada w górach obronę rzędu 60%, a krasnoludy "
-"korzystają z obrony 70%."
+"Większość jednostek ma w górach obronę rzędu 60%, a krasnoludy korzystają z "
+"obrony 70%."
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:559
@@ -2783,7 +2719,6 @@ msgstr "Bagno"
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:564
-#, fuzzy
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps slow "
 "down nearly everyone, and inhibit their ability to defend themselves. An "
@@ -2794,11 +2729,12 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
-"Bagna reprezentują różne rodzaje terenów podmokłych. Spowalniają one niemal "
-"każdego, ograniczając jednocześnie możliwości obrony. Wyjątki stanowią tu "
-"rasy z natury przystosowane do przemieszczania się w wodzie, które otrzymują "
-"pełne premie do ruchu i obrony. Jednostki żyjące na terenach podmokłych "
-"potrafią też dobrze wykorzystywać możliwości ukrywania się w nich.\n"
+"<italic>text='Bagna'</italic> reprezentują różne rodzaje terenów podmokłych. "
+"Spowalniają one niemal każdego, ograniczając jednocześnie możliwości obrony. "
+"Wyjątki stanowią tu rasy z natury przystosowane do przemieszczania się w "
+"wodzie, które otrzymują pełne premie do ruchu i obrony. Jednostki żyjące na "
+"terenach podmokłych potrafią też dobrze wykorzystywać możliwości ukrywania "
+"się w nich.\n"
 "\n"
 "Większość jednostek posiada na bagnach obronę na poziomie 30%, zaś mermeni, "
 "nagi i jaszczury zazwyczaj 60%."
@@ -2810,7 +2746,6 @@ msgstr "Płytka woda"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:576
-#, fuzzy
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2823,12 +2758,13 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
-"Płytka woda reprezentuje zbiornik na tyle głęboki, by woda sięgała "
-"człowiekowi mniej więcej do pasa, co wystarcza, by spowolnić niemal każdego "
-"i uczynić go podatnym na atak. Krasnoludy mają szczególne problemy, ponieważ "
-"w takich warunkach woda sięga im niemal do głowy. Wyjątkiem są rasy, których "
-"ciała przystosowane są do pływania. Poruszają się one w niej bez problemów i "
-"otrzymują sporą premię do obrony.\n"
+"<italic>text='Płytka woda'</italic> reprezentuje każdy zbiornik wodny na "
+"tyle głęboki, by woda sięgała człowiekowi mniej więcej do pasa, co "
+"wystarcza, by spowolnić niemal każdego i uczynić go podatnym na atak. "
+"Krasnoludy mają szczególne problemy, ponieważ w takich warunkach woda sięga "
+"im niemal po szyję. Wyjątkiem są rasy, których ciała przystosowane są do "
+"pływania — poruszają się one w płytkiej wodzie bez problemów i otrzymują "
+"sporą premię do obrony.\n"
 "\n"
 "Większość jednostek ma w płytkiej wodzie obronę na poziomie od 20 do 30%, "
 "podczas gdy nagi i mermeni korzystają z obrony 60%."
@@ -2840,7 +2776,6 @@ msgstr "Głęboka woda"
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:588
-#, fuzzy
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head. Most units cannot enter deep water: it is the domain "
@@ -2848,9 +2783,10 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
-"Głęboka woda reprezentuje zbiornik na tyle głęboki, że woda zakryłaby "
-"człowieka. Większość jednostek nie może wchodzić do głębokiej wody - jest "
-"ona domeną jednostek, które potrafią latać lub są wyśmienitymi pływakami.\n"
+"<italic>text='Głęboka woda'</italic> reprezentuje akwen na tyle głęboki, że "
+"woda zakryłaby człowieka. Większość jednostek nie może wchodzić do głębokiej "
+"wody — jest ona domeną jednostek, które potrafią latać lub są wyśmienitymi "
+"pływakami.\n"
 "\n"
 "Mermeni i nagi poruszają się w głębokiej wodzie bez problemów i mają tam "
 "obronę 50%."
@@ -2862,7 +2798,6 @@ msgstr "Zamarznięty"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:600
-#, fuzzy
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice. Most units are slowed down on it, and have a harder "
@@ -2871,10 +2806,10 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"Teren zamarznięty reprezentuje dowolny płaski obszar pokryty śniegiem lub "
-"lodem. Większość jednostek porusza się na nim wolniej i ma utrudnioną "
-"obronę. Jednostki pływające nie mogą pływać pod lodem (nawet jednostki "
-"zdolne oddychać pod wodą).\n"
+"<italic>text='Zamarznięty'</italic> teren reprezentuje dowolny płaski obszar "
+"pokryty śniegiem lub lodem. Większość jednostek porusza się na nim wolniej i "
+"ma utrudnioną obronę. Jednostki pływające nie mogą pływać pod lodem, nawet "
+"jeśli potrafią oddychać pod wodą.\n"
 "\n"
 "Większość jednostek ma na terenie zamarzniętym obronę na poziomie 20 do 40%."
 
@@ -2885,7 +2820,6 @@ msgstr "Zamek"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2897,12 +2831,13 @@ msgid ""
 "Most units have about 60% defense in a castle.\n"
 "\n"
 msgstr ""
-"Zamki to dowolny rodzaj stałej fortyfikacji. Niemal każda jednostka, która "
-"stacjonuje w zamku, otrzymuje sporą premię do obrony i może się w nim bez "
-"przeszkód poruszać. Utrzymywanie jednostek w zamku jest konieczne do "
-"zachowania jego zdolności obronnych. Jeśli nie każdy heks muru jest "
-"obsadzony jednostkami, wróg może po prostu wkraść się do zamku, zyskując "
-"taką samą premię do obrony jak każdy z obrońców.\n"
+"<italic>text='Zamki'</italic> obejmują wszelkiego rodzaju stałe "
+"fortyfikacje. Niemal każda jednostka, która stacjonuje w zamku, otrzymuje "
+"sporą premię do obrony i może się w nim bez przeszkód poruszać. Utrzymywanie "
+"jednostek w zamku jest konieczne do zachowania jego zdolności obronnych. "
+"Jeśli nie każde pole muru jest obsadzone jednostkami, wróg może po prostu "
+"wkraść się do zamku, zyskując taką samą premię do obrony, jak każdy z "
+"obrońców.\n"
 "\n"
 "Większość jednostek ma w zamku obronę rzędu 60%.\n"
 "\n"
@@ -2914,7 +2849,6 @@ msgstr "Piasek"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:628
-#, fuzzy
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -2923,10 +2857,10 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
-"Niestabilność piasków powoduje, że większość jednostek ma trudności z ich "
-"pokonywaniem, co czyni je łatwym celem. Wyjątkiem są rasy jaszczurze, które "
-"dzięki szerokim stopom i wężowatym ciałom przebywają piasek z dużo większą "
-"łatwością.\n"
+"Niestabilność <italic>text='piasków'</italic> sprawia, że większość "
+"jednostek ma trudności z ich pokonywaniem i jest na tym terenie łatwym "
+"celem. Wyjątkiem są rasy jaszczurze, które dzięki szerokim stopom i "
+"wężowatym ciałom przebywają piasek z dużo większą łatwością.\n"
 "\n"
 "Większość jednostek ma na piaskach obronę od 20 do 40%."
 
@@ -2937,14 +2871,13 @@ msgstr "Pustynia"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:638
-#, fuzzy
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
-"Pustynie różnią się nieco od piaszczystych wydm i plaż, ale dla potrzeb "
-"rozgrywki wszystkie te tereny działają identycznie - patrz "
+"<italic>text='Pustynie'</italic> różnią się nieco od piaszczystych wydm i "
+"plaż, ale dla potrzeb rozgrywki wszystkie te tereny są identyczne — patrz "
 "<ref>dst='terrain_sand' text='piasek'</ref>."
 
 #. [topic]: id=terrain_cave
@@ -2954,7 +2887,6 @@ msgstr "Jaskinia"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:650
-#, fuzzy
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass. Most units are wholly unfamiliar with the "
@@ -2966,14 +2898,14 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
-"Jaskinie reprezentują podziemne groty na tyle przestronne, że mogą się w "
-"nich poruszać jednostki. Dla większości jednostek ten typ terenu jest "
-"zupełnie obcy, przez co są one w nim wolniejsze, a ich zdolności obrony są "
-"osłabione. Krasnoludy i trolle zamieszkują jaskinie, więc nie mają problemów "
-"z poruszaniem się w nich. Dotyczy to w szczególności krasnoludów, które "
-"dzięki niewielkiemu wzrostowi mogą pokonywać przeszkody nie do przebycia dla "
-"innych ras. Jaskinie bywają też <ref>dst='terrain_illuminated_cave' "
-"text='oświetlone'</ref>.\n"
+"<italic>text='Jaskinie'</italic> reprezentują podziemne groty na tyle "
+"przestronne, że mogą się w nich poruszać jednostki. Dla większości jednostek "
+"ten typ terenu jest zupełnie obcy, przez co są one w nim wolniejsze, a ich "
+"zdolności obrony są osłabione. Krasnoludy i trolle zamieszkują jaskinie, "
+"więc nie mają problemów z poruszaniem się w nich. Dotyczy to w szczególności "
+"krasnoludów, które dzięki niewielkiemu wzrostowi mogą pokonywać przeszkody "
+"nie do przebycia dla innych ras. Jaskinie bywają też "
+"<ref>dst='terrain_illuminated_cave' text='oświetlone'</ref>.\n"
 "\n"
 "Większość jednostek otrzymuje w jaskiniach obronę na poziomie od 20 do 40%, "
 "a krasnoludy 50%."
@@ -2985,7 +2917,6 @@ msgstr "Kamienista jaskinia"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:662
-#, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -2999,13 +2930,14 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
-"Kamieniste jaskinie kształtowane są przez wodę i wiatr, które rzeźbią skałę "
-"przenoszonym materiałem erodującym. Poszarpana podziemna grota zmniejsza "
-"efektywność większości jednostek, ale podnosi ich obronę. Krasnoludy i "
-"trolle, które są głównymi mieszkańcami jaskiń, poruszają się w tym terenie "
-"ze względną łatwością. Ponadto krasnoludy dzięki swojemu małemu wzrostowi "
-"czerpią pełne korzyści z takiego ukształtowania terenu. Jaskinie bywają "
-"niekiedy <ref>dst='terrain_illuminated_cave' text='oświetlone'</ref>.\n"
+"<italic>text='Kamieniste jaskinie'</italic> kształtowane są przez wodę i "
+"wiatr, które rzeźbią skałę przenoszonym materiałem erodującym. Nierówna "
+"podziemna grota utrudnia większości jednostek poruszanie się, ale za to "
+"podnosi ich obronę. Krasnoludy i trolle, które są głównymi mieszkańcami "
+"jaskiń, poruszają się w tym terenie ze względną łatwością. Ponadto "
+"krasnoludy dzięki swojemu małemu wzrostowi czerpią pełne korzyści z takiego "
+"ukształtowania terenu. Jaskinie bywają niekiedy "
+"<ref>dst='terrain_illuminated_cave' text='oświetlone'</ref>.\n"
 "\n"
 "Większość jednostek ma w kamienistych jaskiniach obronę na poziomie 50%, zaś "
 "kawaleria ograniczona jest do 40%. Krasnoludy korzystają z obrony 60%."
@@ -3017,7 +2949,6 @@ msgstr "Oświetlona jaskinia"
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:672
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -3029,7 +2960,7 @@ msgstr ""
 "który padają przebijające się z powierzchni promienie światła rozpraszające "
 "ciemność. Zapewnia to praworządnym jednostkom premię do ataku i odbiera tę "
 "premię jednostkom chaotycznym. Pod innymi względami teren ten nie różni się "
-"od zwykłej jaskini."
+"od zwykłej <ref>dst='terrain_cave' text='jaskini'</ref>."
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:679
@@ -3038,7 +2969,6 @@ msgstr "Grzybowy gaj"
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:684
-#, fuzzy
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -3050,16 +2980,16 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"Grzybowe gaje to rozległe, podziemne lasy gigantycznych grzybów rosnących w "
-"wilgotnych ciemnościach. Większość jednostek ma problemy z przemierzaniem "
-"sprężystego podłoża składającego się z mniejszych grzybków, choć większe "
-"grzyby zapewniają dobrą osłonę. Jednostki konne zupełnie grzęzną w tym "
-"terenie, a w walce brakuje im swobody ruchu. Jednostki nieumarłych mają w "
-"swej naturze upodobanie do rozkładu i w grzybowych lasach całkiem nieźle "
-"dają sobie radę.\n"
+"<italic>text='Grzybowe gaje'</italic> to rozległe, podziemne lasy "
+"gigantycznych grzybów rosnących w wilgotnych ciemnościach. Większość "
+"jednostek ma problemy z przemierzaniem sprężystego podłoża składającego się "
+"z mniejszych grzybków, choć większe grzyby zapewniają dobrą osłonę. "
+"Jednostki konne zupełnie jednak grzęzną w tym terenie, a w walce brakuje im "
+"swobody ruchu. Jednostki nieumarłych mają w swej naturze upodobanie do "
+"rozkładu i w grzybowych lasach całkiem nieźle dają sobie radę.\n"
 "\n"
 "Większość jednostek ma w grzybowych gajach obronę na poziomie od 50% do 60%, "
-"podczas gdy kawaleria otrzymuje tylko 20%."
+"podczas gdy kawaleria otrzymuje zaledwie 20%."
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:691
@@ -3068,7 +2998,6 @@ msgstr "Wioska"
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:698
-#, fuzzy
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise. Almost all units, even cavalry, have an easy time navigating "
@@ -3081,12 +3010,12 @@ msgid ""
 "40%.\n"
 "\n"
 msgstr ""
-"Wioski reprezentują grupy budynków (zarówno ludzkich, jak i innych ras). "
-"Prawie wszystkie jednostki, nawet kawaleria, bez problemu poruszają się w "
-"wioskach, a większość jednostek ma zapewnioną premię do obrony podczas "
-"pobytu w wiosce. Wioski dają możliwość leczenia ran, dzięki czemu znajdujące "
-"się w nich jednostki odzyskują każdej tury osiem punktów życia albo zostają "
-"wyleczone z trucizny.\n"
+"<italic>text='Wioski'</italic> reprezentują skupiska budynków, wybudowanych "
+"zarówno przez ludzi, jak i inne rasy. Prawie wszystkie jednostki, nawet "
+"kawaleria, bez problemu poruszają się w wioskach, a większość jednostek ma "
+"zapewnioną premię do obrony podczas pobytu w wiosce. Wioski dają możliwość "
+"leczenia ran, dzięki czemu znajdujące się w nich jednostki odzyskują każdej "
+"tury osiem punktów życia albo zostają wyleczone z trucizny.\n"
 "\n"
 "Większość jednostek otrzymuje w wioskach współczynnik obrony na poziomie od "
 "50 do 60%, choć w przypadku kawalerii jest to tylko 40%.\n"
@@ -3099,7 +3028,6 @@ msgstr "Wodna wioska"
 
 #. [topic]: id=terrain_water_village
 #: data/core/help.cfg:712
-#, fuzzy
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -3111,14 +3039,14 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"W wodnych wioskach mieszkają mermeni i nagi. Choć stworzenia wodne czują się "
-"tam jak w domu, jednostki lądowe mają w takich wioskach duże trudności z "
-"poruszaniem się i obroną. Jak wszystkie wioski, również i te pozwalają "
-"leczyć rany wszystkim jednostkom, niezależnie od rasy. Każda jednostka "
-"stacjonująca w wiosce odzyska osiem punktów życia na turę lub zostanie "
-"uzdrowiona z trucizny.\n"
+"<italic>text='Wodne wioski'</italic> to domostwa mermenów i nag. Choć "
+"stworzenia wodne czują się tam jak w domu, jednostki lądowe mają w takich "
+"wioskach duże trudności z poruszaniem się i obroną. Jak wszystkie wioski, "
+"również i te pozwalają jednak leczyć rany wszystkim jednostkom, niezależnie "
+"od rasy. Każda jednostka stacjonująca w wiosce odzyska osiem punktów życia "
+"na turę lub zostanie uzdrowiona z trucizny.\n"
 "\n"
-"Mermeni i Nagi mają w wodnych wioskach obronę 60%, ale większość jednostek "
+"Mermeni i nagi mają w wodnych wioskach obronę 60%, ale większość jednostek "
 "lądowych ma obronę znacznie niższą."
 
 #. [topic]: id=terrain_unwalkable
@@ -3128,17 +3056,17 @@ msgstr "Nie do przejścia"
 
 #. [topic]: id=terrain_unwalkable
 #: data/core/help.cfg:722
-#, fuzzy
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
-"Teren nie do przejścia to każda przepaść lub rozpadlina, której (jak sama "
-"nazwa wskazuje) nie da się przejść po ziemi. Przepaście mają strome, często "
-"wręcz pionowe ściany, których przejście zajęłoby wiele dni. Z punktu "
-"widzenia rozgrywki teren tego typu mogą przekraczać tylko jednostki latające."
+"<italic>text='Teren nie do przejścia'</italic> to każda przepaść lub "
+"rozpadlina, której (jak sama nazwa wskazuje) nie da się przejść po ziemi. "
+"Przepaście mają strome, często wręcz pionowe ściany, których przejście "
+"zajęłoby wiele dni. Z punktu widzenia rozgrywki teren tego typu mogą "
+"przekraczać tylko jednostki latające."
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:729
@@ -3147,7 +3075,6 @@ msgstr "Lawa"
 
 #. [topic]: id=terrain_lava
 #: data/core/help.cfg:732
-#, fuzzy
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -3157,13 +3084,13 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
-"Niebezpieczeństwa związane z chodzeniem po lawie są dość oczywiste. Pod "
-"względem przemieszczania się odpowiada terenowi "
+"Niebezpieczeństwa związane z chodzeniem po <italic>text='lawie'</italic> są "
+"dość oczywiste. Pod względem przemieszczania się odpowiada terenowi "
 "<ref>dst='terrain_unwalkable' text='nie do przejścia'</ref> i tylko "
 "jednostki potrafiące latać na znacznej wysokości mogą ją przekraczać. Płynna "
 "magma wytwarza też jasny blask, który oświetla wszystko, co się nad nią "
 "znajduje. Zapewnia to premię do ataku jednostkom praworządnym i odbiera ją "
-"chaotycznym."
+"jednostkom chaotycznym."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:739
@@ -3194,7 +3121,6 @@ msgstr "Rafa"
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:754
-#, fuzzy
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand. This provides most land units with a more steady footing and "
@@ -3203,10 +3129,10 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"Rafy przybrzeżne to płycizny utworzone przez kamienie, koralowce i piasek. "
-"Zapewniają one pieszym jednostkom pewniejszy grunt pod nogami i lepszą "
-"obronę niż płytka woda, a większości ras wodnych dają wyjątkowo wysoki "
-"współczynnik obrony.\n"
+"<italic>text='Rafy przybrzeżne'</italic> to płycizny utworzone przez "
+"kamienie, koralowce i piasek. Zapewniają one pieszym jednostkom pewniejszy "
+"grunt pod nogami i lepszą obronę niż płytka woda, a większości ras wodnych "
+"dają wyjątkowo wysoki współczynnik obrony.\n"
 "\n"
 "Mermeni i nagi mają na rafach obronę 70%."
 
@@ -3217,7 +3143,6 @@ msgstr "Most"
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:767
-#, fuzzy
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -3231,17 +3156,17 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
-"Umiejętność budowania mostów pozwala na uwolnienie się od kaprysów natury, "
-"za których sprawą brody rzeczne pojawiają się i znikają wraz ze zmianą "
-"poziomu wód. Nie można też pogardzić luksusem przekraczania przeszkód "
-"wodnych suchą stopą, szczególnie w zimnych porach roku.\n"
+"Umiejętność budowania <italic>text='mostów'</italic> pozwala na uwolnienie "
+"się od kaprysów natury, za których sprawą brody rzeczne pojawiają się i "
+"znikają wraz ze zmianą poziomu wód. Nie można też pogardzić luksusem "
+"przekraczania przeszkód wodnych suchą stopą, szczególnie w zimnych porach "
+"roku.\n"
 "\n"
-"Dla tych, którzy poruszają się po lądzie lub morzu, na potrzeby rozgrywki "
-"most zawiera sobie najlepsze z obu tych światów i jest traktowany jak łąka "
-"lub płytka woda, w zależności od tego, który teren zapewnia najlepsze premie "
-"do ruchu oraz obrony jednostce, która zajmuje heks mostu. Należy pamiętać, "
-"że jednostki pływająca i piesza nie mogą jednocześnie zajmować tego samego "
-"pola mostu."
+"Dla jednostek chodzących i pływających most łączy zalety lądu i wody — dla "
+"potrzeb rozgrywki most jest traktowany jak łąka lub płytka woda, w "
+"zależności od tego, który teren zapewnia najlepsze premie do ruchu i obrony "
+"jednostce stojącej na polu mostu. Należy pamiętać, że jednostki pływająca i "
+"piesza nie mogą jednocześnie zajmować tego samego pola mostu."
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:774
@@ -3281,7 +3206,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:799
-#, fuzzy
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3292,7 +3216,7 @@ msgstr ""
 "\n"
 "Przełącz w tryb debugowania (nie działa w grze wieloosobowej). Patrz "
 "<ref>dst='debug_commands' text='Polecenia trybu debugowania'</ref>.\n"
-"Tryb debugowania można wyłączyć wychodząc z gry lub wpisując polecenie :"
+"Tryb debugowania można wyłączyć, wychodząc z gry lub wpisując polecenie :"
 "nodebug.\n"
 "\n"
 
@@ -3413,7 +3337,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3427,8 +3350,9 @@ msgstr ""
 "\n"
 "Zmiana kontrolera strony o podanym numerze na podanego użytkownika "
 "(pseudonim gracza lub obserwatora). Przynależność stron do graczy można "
-"sprawdzić w oknie dialogowym \"Ustawienia scenariusza\", wyświetlanym po "
-"kliknięciu przycisku \"więcej\" w oknie tabeli statusu (domyślnie Alt+S). "
+"sprawdzić w oknie dialogowym <bold>text='Ustawienia scenariusza'</bold>, "
+"wyświetlanym po kliknięciu przycisku <bold>text='Więcej'</bold> w oknie "
+"<bold>text='Tabela statusu'</bold> (domyślnie wyświetlanym skrótem Alt+s). "
 "Gospodarz może zmienić kontrolera dowolnej ze stron.\n"
 "\n"
 
@@ -3449,7 +3373,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:844
-#, fuzzy
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3457,8 +3380,11 @@ msgid ""
 "game.\n"
 "\n"
 msgstr ""
-"Wysyła prywatną wiadomość. Nie można ich wysyłać do graczy, którzy nie "
-"kontrolują strony w tej grze."
+"\n"
+"Wysyła użytkownikowi wiadomość prywatną. Podczas rozgrywki nie można wysyłać "
+"wiadomości prywatnych do graczy, którzy obecnie kontrolują stronę w tej "
+"samej grze.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:847
@@ -4113,7 +4039,7 @@ msgstr "Premia maks. PŻ +3, maks. PD +20%"
 #. [time]: id=indoors
 #: data/core/macros/schedules.cfg:70
 msgid "Indoors"
-msgstr ""
+msgstr "W pomieszczeniu"
 
 #. [time]: id=deep_underground
 #: data/core/macros/schedules.cfg:90
@@ -4123,124 +4049,112 @@ msgstr "Głębokie podziemie"
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:162
 msgid "Midnight"
-msgstr ""
+msgstr "Północ"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:174
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — pierwsza godzina"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:186
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — druga godzina"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:198
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — trzecia godzina"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:210
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — czwarta godzina"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:222
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — piąta godzina"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:234
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "Druga straż"
+msgstr "Druga straż — szósta godzina"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:257
 msgid "Morning — First Hour"
-msgstr ""
+msgstr "Ranek — pierwsza godzina"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:266
 msgid "Morning — Second Hour"
-msgstr ""
+msgstr "Ranek — druga godzina"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:275
 msgid "Morning — Third Hour"
-msgstr ""
+msgstr "Ranek — trzecia godzina"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:284
 msgid "Morning — Fourth Hour"
-msgstr ""
+msgstr "Ranek — czwarta godzina"
 
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:293
 msgid "Midday"
-msgstr ""
+msgstr "Południe"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Afternoon — First Hour"
-msgstr ""
+msgstr "Popołudnie — pierwsza godzina"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
 msgid "Afternoon — Second Hour"
-msgstr ""
+msgstr "Popołudnie — druga godzina"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
 msgid "Afternoon — Third Hour"
-msgstr ""
+msgstr "Popołudnie — trzecia godzina"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:329
 msgid "Afternoon — Fourth Hour"
-msgstr ""
+msgstr "Popołudnie — czwarta godzina"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:338
 msgid "Afternoon — Fifth Hour"
-msgstr ""
+msgstr "Popołudnie — piąta godzina"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Sixth Hour"
-msgstr ""
+msgstr "Popołudnie — szósta godzina"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
 msgid "First Watch — First Hour"
-msgstr ""
+msgstr "Pierwsza straż — pierwsza godzina"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:381
 msgid "First Watch — Second Hour"
-msgstr ""
+msgstr "Pierwsza straż — druga godzina"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:393
 msgid "First Watch — Third Hour"
-msgstr ""
+msgstr "Pierwsza straż — trzecia godzina"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:405
 msgid "First Watch — Fourth Hour"
-msgstr ""
+msgstr "Pierwsza straż — czwarta godzina"
 
 #: data/core/macros/special-notes.cfg:5
 msgid ""
@@ -4273,10 +4187,8 @@ msgid " This unit is capable of basic healing."
 msgstr " Jednostka posiada umiejętności leczenia."
 
 #: data/core/macros/special-notes.cfg:17
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid " This unit is capable of rapid healing."
-msgstr " Jednostka posiada umiejętności leczenia."
+msgstr " Jednostka posiada umiejętności szybkiego leczenia."
 
 #: data/core/macros/special-notes.cfg:20
 msgid ""
@@ -4427,10 +4339,6 @@ msgstr ""
 "trafienia przeciwników, ale tylko podczas ataku."
 
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
-#| msgid ""
-#| " The unit has magical attacks, which always have a high chance of hitting "
-#| "an opponent."
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
@@ -4523,15 +4431,13 @@ msgstr "mechaniczna"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "elemental"
-msgstr "ukrywanie się"
+msgstr "żywiołak"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:53
-#, fuzzy
 msgid "female^elemental"
-msgstr "lojalna"
+msgstr "żywiołak"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:66
@@ -4615,15 +4521,13 @@ msgstr "Walczy normalnie nawet w niesprzyjających porach dnia lub nocy"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
-msgstr "Łącznie"
+msgstr "dziki"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
-msgstr "neutralna"
+msgstr "dzika"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
@@ -5162,8 +5066,6 @@ msgstr "Potwór"
 
 #. [race]: id=monster
 #: data/core/units.cfg:221
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "Potwór"
 
@@ -5187,8 +5089,6 @@ msgstr "Naga"
 
 #. [race]: id=naga
 #: data/core/units.cfg:231
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
 msgstr "Nagini"
 
@@ -5549,10 +5449,8 @@ msgstr "Wilk"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:311
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
-msgstr "Elfka"
+msgstr "Wilczyca"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:312
@@ -5733,32 +5631,26 @@ msgstr "System pomocy Bitwy o Wesnoth"
 msgid "Parse error when parsing help text: "
 msgstr "Błąd podczas przetwarzania tekstu pomocy:"
 
-#, fuzzy
 #~| msgid "race^Human"
 #~ msgid "race^Khalifate Human"
 #~ msgstr "Człowiek"
 
-#, fuzzy
 #~| msgid "race+female^Human"
 #~ msgid "race+female^Khalifate Human"
 #~ msgstr "Człowiek"
 
-#, fuzzy
 #~| msgid "race+plural^Mechanical"
 #~ msgid "race+plural^Khalifate"
 #~ msgstr "Mechaniczne"
 
-#, fuzzy
 #~| msgid "race^Human"
 #~ msgid "race^Falcon"
 #~ msgstr "Człowiek"
 
-#, fuzzy
 #~| msgid "race+female^Human"
 #~ msgid "race+female^Falcon"
 #~ msgstr "Człowiek"
 
-#, fuzzy
 #~| msgid "race^Humans"
 #~ msgid "race^Falcons"
 #~ msgstr "Ludzie"

@@ -133,14 +133,16 @@ public class SimpleWMLParser
                 currentTag = ( WMLTag ) object;
                 currentTagName = currentTag.getName( );
 
-                if( currentTagName.equals( "scenario" ) ) {
-                    config_.IsScenario = true;
-                }
-                else if( currentTagName.equals( "campaign" ) ) {
-                    config_.IsCampaign = true;
-                }
-                else if( currentTagName.equals( "preproc_define" ) ) {
-                    addNewDefine( currentTag );
+                if( currentTagName != null ) {
+                    if( currentTagName.equals( "scenario" ) ) {
+                        config_.IsScenario = true;
+                    }
+                    else if( currentTagName.equals( "campaign" ) ) {
+                        config_.IsCampaign = true;
+                    }
+                    else if( currentTagName.equals( "preproc_define" ) ) {
+                        addNewDefine( currentTag );
+                    }
                 }
             }
             else if( object instanceof WMLKey ) {
@@ -160,11 +162,11 @@ public class SimpleWMLParser
                     }
                     else if( keyName.equals( "name" ) ) {
                         if( currentTagName.equals( "set_variable" )
-                            || currentTagName.equals( "set_variables" ) ) {
+                                || currentTagName.equals( "set_variables" ) ) {
                             handleSetVariable( object );
                         }
                         else if( currentTagName.equals( "clear_variable" )
-                            || currentTagName.equals( "clear_variables" ) ) {
+                                || currentTagName.equals( "clear_variables" ) ) {
                             handleUnsetVariable( object );
                         }
                         else if( currentTagName.equals( "event" ) ) {
@@ -267,6 +269,7 @@ public class SimpleWMLParser
             WMLMacroCall macro = ( WMLMacroCall ) context;
             if( macro.getParameters( ).size( ) > 0 ) {
                 variableName = WMLUtils.toString( macro.getParameters( )
+
                     .get( 0 ) );
             }
         }
@@ -284,8 +287,8 @@ public class SimpleWMLParser
 
         if( variableName == null ) {
             Logger.getInstance( ).logWarn(
-                "setVariable: couldn't get variable name from context: "
-                    + context );
+                "setVariable: couldn't get variable name from context:"
+                        + context );
         }
 
         WMLVariable variable = projectCache_.getVariables( ).get( variableName );
@@ -314,8 +317,8 @@ public class SimpleWMLParser
         String variableName = getVariableNameByContext( context );
         if( variableName == null ) {
             Logger.getInstance( ).logWarn(
-                "unsetVariable: couldn't get variable name from context: "
-                    + context );
+                "unsetVariable: couldn't get variable name from context:"
+                        + context );
         }
 
         WMLVariable variable = projectCache_.getVariables( ).get( variableName );

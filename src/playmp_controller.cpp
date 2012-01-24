@@ -279,7 +279,9 @@ void playmp_controller::play_human_turn(){
 				}
 				turn_data_->send_data();
 
-				throw end_turn_exception();
+				if (!rand_rng::has_new_seed_callback()) {
+					throw end_turn_exception();
+				}
 			}
 		}
 

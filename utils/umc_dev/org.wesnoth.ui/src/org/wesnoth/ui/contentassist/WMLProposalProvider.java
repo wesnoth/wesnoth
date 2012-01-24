@@ -341,15 +341,18 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             parentTag = ( WMLTag ) model.eContainer( );
         }
 
+        boolean appendEndBracket =
+            context.getCurrentNode( ) == null ||
+                ! context.getCurrentNode( ).getText( ).equals( "]" );
+
         if( parentTag != null ) {
             ICompositeNode node = NodeModelUtils.getNode( model );
 
             String parentIndent = ""; //$NON-NLS-1$
             if( context.getCurrentNode( ).getOffset( ) > 0 ) {
                 parentIndent = NodeModelUtils.findLeafNodeAtOffset( node,
-                    context.getCurrentNode( ).getOffset( ) -
-                        // if we have a non-rule proposal, subtract 1
-                        ( ruleProposal ? 0: 1 ) ).getText( );
+                    context.getCurrentNode( ).getTotalOffset( ) -
+                        ( appendEndBracket ? 1: 2 ) ).getText( );
             }
 
             // remove ugly new lines that break indentation
@@ -375,7 +378,8 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
                     if( toAdd ) {
                         acceptor.accept( createTagProposal( tag.asWMLTag( ),
-                            parentIndent, ruleProposal, context ) );
+                            parentIndent, ruleProposal, context,
+                            appendEndBracket ) );
                     }
                 }
             }
@@ -385,14 +389,15 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             WMLTag rootTag = schemaParser_.getTags( ).get( "root" ); //$NON-NLS-1$
             for( WMLTag tag: rootTag.getWMLTags( ) ) {
                 acceptor.accept( createTagProposal( tag,
-                    "", ruleProposal, context ) ); //$NON-NLS-1$
+                    "", ruleProposal, context, appendEndBracket ) ); //$NON-NLS-1$
             }
         }
 
         // parsed custom tags
         for( WMLTag tag: projectCache_.getWMLTags( ).values( ) ) {
-            acceptor
-                .accept( createTagProposal( tag, "", ruleProposal, context ) ); //$NON-NLS-1$
+            acceptor.accept(
+                createTagProposal( tag, "", ruleProposal, context, //$NON-NLS-1$
+                    appendEndBracket ) );
         }
     }
 
@@ -406,10 +411,12 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
      * @param ruleProposal
      *        Whether this is a proposal for an entire rule or not
      * @param context
+     * @param appendEndBracked
      * @return
      */
     private ICompletionProposal createTagProposal( WMLTag tag, String indent,
-        boolean ruleProposal, ContentAssistContext context )
+        boolean ruleProposal, ContentAssistContext context,
+        boolean appendEndBracked )
     {
         StringBuilder proposal = new StringBuilder( );
         if( ruleProposal ) {
@@ -423,7 +430,11 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
                     indent, key.getName( ) ) );
             }
         }
-        proposal.append( String.format( "%s[/%s", indent, tag.getName( ) ) ); //$NON-NLS-1$
+        proposal.append( String.format( "%s[/%s%s",//$NON-NLS-1$
+            indent,
+            tag.getName( ),
+            appendEndBracked ? "]": "" ) );
+
         return createCompletionProposal( proposal.toString( ), tag.getName( ),
             WML_TAG_IMAGE, context, TAG_PRIORITY );
     }

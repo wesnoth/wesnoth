@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-03 10:40+0100\n"
-"PO-Revision-Date: 2010-01-01 00:00+0300\n"
+"PO-Revision-Date: 2012-01-09 20:07+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "Language: Lithuanian\n"
@@ -116,6 +116,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Naudokite kairįjį/dešinįjį pelės klavišą priešakinio plano/fono vietovės "
+"piešimui. Laikykite Shift, kad pieštumėte tik bazinį sluoksnį. Ctrl"
+"+spragtelėjimas pasiima vietovę po žymekliu."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -135,6 +138,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Kairysis pelės mygtukas rodo žaidėjo pažymėjimą, dešinysis – išvalo. Skaičių "
+"klavišais pereinama į pradžios poziciją, alt + skaičius nustato atitinkamo "
+"žaidėjo pradžios poziciją po žymeklių, delete – išvalo."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -142,6 +148,9 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Spragtelėkite, kad įklijuotumėte, susimažinkite vaizdą, kad pasiektumėte "
+"didesnį tikslumą, kai įklijuojate didelius plotus. Naudokite redagavimo "
+"meniu iškarpinės transformavimui (pasukimui, atspindėjimui)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor.cfg:122
@@ -325,11 +334,11 @@ msgstr "Be papildomų pastangų neveiks."
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG: "
-msgstr ""
+msgstr "Priešakinis planas: "
 
 #: src/editor/editor_palettes.cpp:533
 msgid "BG: "
-msgstr ""
+msgstr "Fonas: "
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"

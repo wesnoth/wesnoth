@@ -9,15 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-03 10:40+0100\n"
-"PO-Revision-Date: 2011-11-19 15:11+0100\n"
-"Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
+"POT-Creation-Date: 2012-01-08 18:12+0100\n"
+"PO-Revision-Date: 2012-01-18 00:13+0100\n"
+"Last-Translator: Antonio \"Antro\" Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #. [terrain_type]: id=deep_water_gray
@@ -571,7 +571,7 @@ msgstr "Dirupo normale"
 #. [terrain_type]: id=chasm_earthy
 #: data/core/terrain.cfg:951
 msgid "Earthy Chasm"
-msgstr ""
+msgstr "Dirupo terroso"
 
 #. [terrain_type]: id=abyss
 #: data/core/terrain.cfg:962
@@ -595,21 +595,18 @@ msgstr "Vulcano"
 
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1009
-#, fuzzy
 msgid "Regular Impassable Mountains"
-msgstr "Montagne innevate invalicabili"
+msgstr "Montagne invalicabili"
 
 #. [terrain_type]: id=clouddesert
 #: data/core/terrain.cfg:1019
-#, fuzzy
 msgid "Desert Impassable Mountains"
-msgstr "Montagne innevate invalicabili"
+msgstr "Montagne invalicabili deserte"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:1029
-#, fuzzy
 msgid "Snowy Impassable Mountains"
-msgstr "Montagne innevate invalicabili"
+msgstr "Montagne invalicabili innevate"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_hewn
@@ -627,19 +624,18 @@ msgstr "Parete di caverna naturale"
 
 #. [terrain_type]: id=cavewall_hewn
 #: data/core/terrain.cfg:1051
-#, fuzzy
 msgid "Hewn Cave Wall"
-msgstr "Parete di caverna"
+msgstr "Parete di caverna artificiale"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1062
 msgid "Natural Earthy Cave Wall"
-msgstr "Parete naturale di caverna"
+msgstr "Parete di caverna terrosa naturale"
 
 #. [terrain_type]: id=cavewall_earthy_hewn
 #: data/core/terrain.cfg:1073
 msgid "Reinforced Earthy Cave Wall"
-msgstr "Parete rafforzata di caverna"
+msgstr "Parete di caverna terrosa rinforzata"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -654,7 +650,6 @@ msgstr "Parete di pietra illuminata"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1104
-#, fuzzy
 msgid "Impassable Overlay"
 msgstr "Invalicabile"
 
@@ -765,7 +760,7 @@ msgstr "Cottage in rovina"
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1267
 msgid "Human City"
-msgstr "Città degli uomini"
+msgstr "Città umana"
 
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1280
@@ -775,12 +770,12 @@ msgstr "Villaggio con mulino a vento"
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1293
 msgid "Snowy Human City"
-msgstr "Città degli uomini innevato"
+msgstr "Città umana innevata"
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1306
 msgid "Ruined Human City"
-msgstr "Città degli uomini in rovina"
+msgstr "Città umana in rovina"
 
 #. [terrain_type]: id=hill_village
 #: data/core/terrain.cfg:1319
@@ -794,9 +789,8 @@ msgstr "Villaggio di pietra nelle colline innevate"
 
 #. [terrain_type]: id=hill_village_ruin
 #: data/core/terrain.cfg:1345
-#, fuzzy
 msgid "Ruined Hill Stone Village"
-msgstr "Villaggio di pietra nelle colline"
+msgstr "Villaggio di pietra in rovina nelle colline"
 
 #. [terrain_type]: id=tropical_forest_village
 #: data/core/terrain.cfg:1358
@@ -855,7 +849,6 @@ msgstr "Villaggio nereide"
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1507
-#, fuzzy
 msgid "Village Overlay"
 msgstr "Castello"
 
@@ -899,12 +892,12 @@ msgstr "Castello degli orchi innevato"
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:1571
 msgid "Human Castle"
-msgstr "Castello degli uomini"
+msgstr "Castello umano"
 
 #. [terrain_type]: id=snow_castle
 #: data/core/terrain.cfg:1582
 msgid "Snowy Human Castle"
-msgstr "Castello degli uomini innevato"
+msgstr "Castello umano innevato"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1593
@@ -960,9 +953,8 @@ msgstr "Fortezza in accampamento"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:1695
-#, fuzzy
 msgid "Tall Encampment Keep"
-msgstr "Fortezza in accampamento"
+msgstr "Fortezza grande in accampamento"
 
 #. [terrain_type]: id=encampment_snow_keep
 #: data/core/terrain.cfg:1708
@@ -996,15 +988,13 @@ msgstr "Fortezza degli orchi innevata"
 
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:1747
-#, fuzzy
 msgid "Human Castle Keep"
-msgstr "Castello degli uomini"
+msgstr "Castello-fortezza umano"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:1760
-#, fuzzy
 msgid "Snowy Human Castle Keep"
-msgstr "Castello degli uomini innevato"
+msgstr "Castello-fortezza umana innevata"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:1773
@@ -1027,21 +1017,18 @@ msgstr "Fortezza in rovina"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1799
-#, fuzzy
 msgid "Ruined Human Castle Keep"
-msgstr "Castello-fortezza in rovina"
+msgstr "Castello-fortezza umana in rovina"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1812
-#, fuzzy
 msgid "Sunken Human Castle Keep"
-msgstr "Castello-fortezza inabissata"
+msgstr "Castello-fortezza umana inabissata"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1825
-#, fuzzy
 msgid "Swamp Human Castle Keep"
-msgstr "Castello-fortezza in palude"
+msgstr "Castello-fortezza umana in palude"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:1838
@@ -1109,7 +1096,6 @@ msgstr "Ponte di pietra base"
 #. [terrain_type]: id=bridgechasmdiag2
 #: data/core/terrain.cfg:2007 data/core/terrain.cfg:2018
 #: data/core/terrain.cfg:2030
-#, fuzzy
 msgid "Cave Chasm Bridge"
 msgstr "Ponte su dirupo"
 
@@ -1341,22 +1327,18 @@ msgstr "Scegli un livello di difficoltà:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
-#, fuzzy
-#| msgid "View Chat Log"
 msgid "Chat Log"
 msgstr "Mostra log della chat"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
-#, fuzzy
-#| msgid "Message:"
 msgid "Page:"
 msgstr "Messaggio:"
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:69
 msgid "Last"
-msgstr ""
+msgstr "Ultimo"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
@@ -1410,7 +1392,7 @@ msgstr "Data"
 #: data/gui/default/window/data_manage.cfg:266
 #: data/gui/default/window/data_manage.cfg:267
 msgid "Clear"
-msgstr ""
+msgstr "Pulisci"
 
 #. [button]: id=restore
 #: data/gui/default/window/data_manage.cfg:283
@@ -1426,75 +1408,56 @@ msgstr "Copia di sicurezza"
 
 #. [label]: id=title
 #: data/gui/default/window/edit_label.cfg:42
-#, fuzzy
-#| msgid "Set Label"
 msgid "Place Label"
 msgstr "Imposta etichetta"
 
 #. [label]
 #: data/gui/default/window/edit_label.cfg:72
-#, fuzzy
-#| msgid "Set Label"
 msgid "Label:"
-msgstr "Imposta etichetta"
+msgstr "Etichetta:"
 
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/default/window/edit_label.cfg:110
-#, fuzzy
-#| msgid "Team 1"
 msgid "Team only"
 msgstr "Squadra 1"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
-#, fuzzy
-#| msgid "Generate Map"
 msgid "Generate Random Map"
-msgstr "Genera mappa"
+msgstr "Genera mappa casuale"
 
 #. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:64
 #: data/gui/default/window/editor_generate_map.cfg:65
-#, fuzzy
-#| msgid "Map Generator"
 msgid "Next Generator"
 msgstr "Generatore di mappe"
 
 #. [button]: id=settings
 #: data/gui/default/window/editor_generate_map.cfg:87
 #: data/gui/default/window/editor_generate_map.cfg:88
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Settings"
 msgstr "Impostazioni dell’editor"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_generate_map.cfg:98
-#, fuzzy
-#| msgid "Generate Map"
 msgid "Generate"
 msgstr "Genera mappa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:126
-#, fuzzy
-#| msgid "Create New Map"
 msgid "New Map"
 msgstr "Crea nuova mappa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:54 src/mapgen_dialog.cpp:121
-#, fuzzy
-#| msgid "New width:"
 msgid "Width:"
-msgstr "Nuova larghezza:"
+msgstr "Larghezza:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:81 src/mapgen_dialog.cpp:122
-#, fuzzy
 msgid "Height:"
 msgstr "Altezza:"
 
@@ -1561,22 +1524,16 @@ msgstr "Impostazioni dell’editor"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:53
-#, fuzzy
-#| msgid "Time of day lighting preset"
 msgid "Time of day lighting preset:"
-msgstr "Preimpostazioni dell’illuminazione dell’ora del giorno"
+msgstr "Preimpostazioni dell’illuminazione dell’ora del giorno:"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
-#, fuzzy
-#| msgid "Custom lighting setting"
 msgid "Custom lighting settings"
 msgstr "Impostazioni d’illuminazione personalizzata"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:114
-#, fuzzy
-#| msgid "Auto-update map view"
 msgid "Automatically update map view"
 msgstr "Autoaggiornamento vista mappa"
 
@@ -2774,14 +2731,10 @@ msgstr ""
 "L’avvistamento di un’unità alleata interrompe il movimento della tua unità"
 
 #: src/game_preferences_display.cpp:369
-#, fuzzy
-#| msgid "Save replay on SP/MP victory or MP defeat"
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Salva i replay alla vittoria in SG/MG o sconfitta in MG"
 
 #: src/game_preferences_display.cpp:372
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Elimina i salvataggi automatici alla vittoria in SG/MG o sconfitta MG"
 
@@ -3212,7 +3165,7 @@ msgstr "Non è stata definita nessuna sezione state o draw."
 
 #: src/gui/widgets/tree_view_node.cpp:103
 msgid "Unknown builder id for tree view node."
-msgstr ""
+msgstr "Id sconosciuta per un nodo di vista ad albero"
 
 #: src/gui/widgets/window.cpp:924
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -3276,8 +3229,6 @@ msgid "Default Zoom"
 msgstr "Vista normale"
 
 #: src/hotkeys.cpp:66
-#, fuzzy
-#| msgid "Toggle Full screen"
 msgid "Toggle Full Screen"
 msgstr "Schermo intero"
 
@@ -3768,8 +3719,6 @@ msgid "Landform:"
 msgstr "Tipo di terreno:"
 
 #: src/mapgen_dialog.cpp:249
-#, fuzzy
-#| msgid "Roads Between Castles"
 msgid "Roads between castles"
 msgstr "Strade tra castelli"
 
@@ -3809,8 +3758,6 @@ msgid "Hotkey Settings"
 msgstr "Impostazioni dei tasti-scorciatoia"
 
 #: src/preferences_display.cpp:282 src/preferences_display.cpp:351
-#, fuzzy
-#| msgid "Press desired Hotkey (Esc cancels)"
 msgid "Press desired hotkey (Esc cancels)"
 msgstr "Premi il tasto-scorciatoia desiderato (Esc annulla)"
 
@@ -3832,15 +3779,10 @@ msgstr "Cambia la scorciatoia"
 
 #: src/preferences_display.cpp:394 src/preferences_display.cpp:402
 #: src/preferences_display.cpp:414
-#, fuzzy
-#| msgid "This Hotkey is already in use."
 msgid "This hotkey is already in use."
 msgstr "Questo tasto-scorciatoia è già in uso."
 
 #: src/preferences_display.cpp:429
-#, fuzzy
-#| msgid ""
-#| "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgid ""
 "Screenshot hotkeys should be combined with the Control, Alt or Meta "
 "modifiers to avoid problems."

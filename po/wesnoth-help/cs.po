@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-08 18:12+0100\n"
-"PO-Revision-Date: 2011-12-22 22:40+0100\n"
+"POT-Creation-Date: 2012-01-21 01:34+0100\n"
+"PO-Revision-Date: 2012-01-19 18:19+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
 "Language: cs\n"
@@ -35,13 +35,13 @@ msgid "Underground"
 msgstr "Podzemí"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:820
 #: data/core/macros/abilities.cfg:582
 msgid "berserk"
 msgstr "na život a na smrt"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:823
 #: data/core/macros/abilities.cfg:584
 msgid ""
 "Berserk:\n"
@@ -53,13 +53,13 @@ msgstr ""
 "útoků."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:836
 #: data/core/macros/abilities.cfg:668
 msgid "magical"
 msgstr "magické"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:839
 #: data/core/macros/abilities.cfg:670
 msgid ""
 "Magical:\n"
@@ -71,13 +71,13 @@ msgstr ""
 "možnosti cílové jednotky."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:851
 #: data/core/macros/abilities.cfg:717
 msgid "firststrike"
 msgstr "první úder"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:854
 #: data/core/macros/abilities.cfg:719
 msgid ""
 "First Strike:\n"
@@ -245,13 +245,8 @@ msgstr ""
 msgid "New Continent"
 msgstr "Nový kontnent"
 
-# | msgid ""
-# | "New Continent -- The great continent to the east of <ref>dst='morogor' "
-# | "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
-# | "flight of Galun."
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
-#, fuzzy
 msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
@@ -1224,7 +1219,6 @@ msgstr "Vítězství a prohry"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:153
-#, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. Usually you will achieve victory by killing "
@@ -1233,15 +1227,14 @@ msgid ""
 "designated point, say, or rescuing someone, or solving a puzzle, or holding "
 "out against a siege until a certain number of turns have elapsed."
 msgstr ""
-"Přečti si pozorně úkoly scénáře, které se ukáží na začátku. Obvykle stačí "
-"pro výhru porazit všechny nepřátele, zatímco porážku způsobí smrt tvého "
-"velitele. Některé scénáře však mohou mít i jiné úkoly, například dojít na "
-"určité místo, někoho zachránit, vyřešit hádanku, nebo pouze přežít útok "
-"početní převahy určitý počet kol."
+"Přečti si pozorně <bold>text='úkoly scénáře'</bold>, které se ukáží na "
+"začátku. Obvykle stačí pro výhru porazit všechny nepřátele, zatímco porážku "
+"způsobí smrt tvého velitele. Některé scénáře však mohou mít i jiné úkoly, "
+"například dojít na určité místo, někoho zachránit, vyřešit hádanku, nebo "
+"pouze přežít útok početní převahy po určitý počet kol."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1253,19 +1246,17 @@ msgstr ""
 "\n"
 "\n"
 "Když vyhrajete scénář, mapa zešedne a tlačítko „<bold>text='Ukonči kolo'</"
-"bold>“ se změní na „<bold>text='Ukončit scénář'</bold>“. Můžete stále měnit "
-"nastavení nebo komunikovat se spoluhráči (ve hře více hráčů) před potvrzením "
-"konce hry tímto tlačítkem."
+"bold>“ se změní na „<bold>text='Ukončit scénář'</bold>“. Před potvrzením "
+"konce hry tímto tlačítkem můžete ještě měnit nastavení nebo komunikovat se "
+"spoluhráči (ve hře více hráčů)."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:162
 msgid "Recruiting and Recalling"
 msgstr "Verbování a přivolávání"
 
-# pův.: "hlásce"
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1281,25 +1272,16 @@ msgstr ""
 "Každá ze stran začíná hrát s jedním vůdcem umístěným na hradě. Na začátku "
 "každé bitvy i během ní budete verbovat <ref>dst='..units' text='jednotky'</"
 "ref> do své armády. Pro verbování je nutné mít umístěného vůdce (např. v "
-"tažení <italic>text='Dědic trůnu'</italic> jím je Konrád) v tvrzi "
+"tažení <italic>text='Dědic trůnu'</italic> jím je Konrád) ve tvrzi "
 "<ref>dst='terrain_castle' text='hradu'</ref>. Pak můžete verbovat nováčky "
 "buď pomocí volby menu „<bold>text='Naverbuj'</bold>“ nebo pravým klikem na "
 "příslušný čtverec a volbou <bold>text='Naverbuj'</bold>. To vyvolá menu "
 "verbování, které obsahuje seznam dostupných posil i jejich cenu. Kliknutím "
-"na jednotku uvidíte její statistiku, pak klikněte na tlačítko Ok čímž ji "
-"naverbujete."
+"na jednotku uvidíte její statistiku, pak klikněte na tlačítko <b>Ok</b>, "
+"čímž ji naverbujete."
 
-# | msgid ""
-# | "\n"
-# | "\n"
-# | "If you right-clicked on a castle hex and selected recruit, the new unit "
-# | "will appear in that square. Otherwise, it will appear in a free square "
-# | "near the keep. You may only recruit as many units as you have free hexes "
-# | "in your castle, and you cannot spend more gold than you actually have on "
-# | "recruiting."
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1311,13 +1293,13 @@ msgstr ""
 "\n"
 "\n"
 "Pokud kliknete pravým tlačítkem myši na volné políčko hradu a vyberete "
-"\"Naverbuj\", pak se nová jednotka objeví právě zde. Jinak se objeví ve "
-"volném čtverci vašeho hradu. Nemůžete utratit více peněz než máte v době "
-"verbování k dispozici."
+"„<b>Naverbuj</b>“, pak se nová jednotka objeví právě zde. Jinak se objeví ve "
+"volném poli vašeho hradu. Nemůžete zaráz naverbovat více jednotek, než má "
+"hrad políček, a nemůžete také utratit více peněz, než máte v době verbování "
+"k dispozici."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1327,7 +1309,7 @@ msgstr ""
 "\n"
 "\n"
 "Naverbované jednotky přicházejí se dvěma náhodnými <ref>dst='.."
-"traits_section' text='Vlastnostmi'</ref>, jež upravují jejích statistiku."
+"traits_section' text='vlastnostmi'</ref>, jež upravují jejích statistiku."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
@@ -1483,7 +1465,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1507,11 +1488,10 @@ msgstr ""
 "jezdci 3 body. Kolik bodů jednotlivé jednotky požadují při vstupu na "
 "příslušný terén zjistíte, když kliknete pravým tlačítkem myši na jednotku, "
 "zvolíte <bold>text='popis jednotky'</bold> a podíváte se na "
-"<bold>text='Terénní činitele'</bold>."
+"<bold>text='terénní modifikátory'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1525,12 +1505,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Další věcí, kterou je třeba při pohybu mít na paměti je Oblast kontroly. "
-"Každá jednotka vytváří oblast kontroly na políčkách které jí bezprostředně "
-"obklopují a jakmile na ně vstoupí jakákoliv cizí jednotka, ihned ukončí svůj "
-"pohyb. Naučit se používat tyto oblasti pro svůj prospěch je důležitou částí "
-"Wesnothu, protože pouze jednotky s vlastností <ref>dst='ability_skirmisher' "
-"text='průbojnost'</ref> mohou tyto oblasti ignorovat."
+"Další věcí, kterou je třeba při pohybu mít na paměti je <italic>text='oblast "
+"kontroly'</italic>. Každá jednotka vytváří oblast kontroly na políčkách "
+"které jí bezprostředně obklopují a jakmile na ně vstoupí jakákoliv cizí "
+"jednotka, ihned ukončí svůj pohyb. Naučit se používat tyto oblasti pro svůj "
+"prospěch je důležitou částí Wesnothu, protože pouze jednotky s vlastností "
+"<ref>dst='ability_skirmisher' text='průbojnost'</ref> mohou tyto oblasti "
+"ignorovat."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
@@ -1554,7 +1535,6 @@ msgstr "Zahalení tmou a Mlha"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:221
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1578,23 +1558,25 @@ msgid ""
 "movement."
 msgstr ""
 "V některých scénářích jsou části mapy skryty. Mají to na svědomí dva "
-"mechanismy, které jsou použity buď samostatně nebo i dohromady. Zahalení "
-"tmou skrývá na políčku jak terén, tak jednotky. Jakmile je ale jednou "
-"políčko odhaleno, zůstává odhaleno napořád. Mlha skrývá pouze jednotky a "
-"vlastnictví vesnic (jiných než vlastních nebo spojeneckých). Mlha ustupuje "
-"pouze dočasně, a to tehdy, když máte poblíž vlastní jednotku. Jakmile "
-"jednotka odejde, mlha znovu políčko zahalí. Jak Mlhu, tak Zahalení tmou tedy "
-"odstraňují jednotky, a to svým pohybem. Jednotka odhalí políčka ve "
-"vzdálenosti jednoho tahu; na odstranění nemají vliv oblasti kontroly ani "
-"cizí jednotky.\n"
+"mechanismy, které jsou použity buď samostatně nebo i dohromady. "
+"<italic>text='Zahalení tmou'</italic> skrývá na políčku jak terén, tak "
+"jednotky. Jakmile je ale jednou políčko odhaleno, zůstává odhaleno napořád. "
+"<italic>text='Mlha'</italic> skrývá pouze jednotky a vlastnictví vesnic "
+"(jiných než vlastních nebo spojeneckých). Mlha ustupuje pouze dočasně, a to "
+"tehdy, když máte poblíž vlastní jednotku. Jakmile jednotka odejde, mlha "
+"znovu políčko zahalí. Jak mlhu, tak zahalení tmou tedy odstraňují jednotky, "
+"a to svou přítomností. Jednotka odhalí políčka ve vzdálenosti jednoho tahu; "
+"na odstranění nemají vliv oblasti kontroly ani cizí jednotky.\n"
 "\n"
 "Běžně je možné vrátit pohyb jednotky, pokud pokud nedošlo k akci vyžadující "
-"náhodný výsledek - např. boj, verbování. Poznávání terénu skrytého zahalením "
-"tmou či mlhou také znemožňuje vracení hry. Můžete však zapnout volbu „Pozdrž "
-"překreslování mlhy“ v menu „Akce“. Tato volba způsobí, že pohyb jednotek "
-"neodstraňuje zahalení tmou a mlhu, dokud nedojde k náhodnému jevu nebo "
-"ručnímu odhalení volbou „Obnov mlhu“ z menu „Akce“ (nebo koncem kola). Tak "
-"budete moci vracet pohyb i při použití mlhy nebo zahalení tmou."
+"náhodný výsledek — např. boj, verbování. Poznávání terénu skrytého zahalením "
+"tmou či mlhou také znemožňuje vracení hry. Můžete však zapnout volbu "
+"„<bold>text='Pozdrž překreslování mlhy'</bold>“ v menu „<bold>text='Akce'</"
+"bold>“. Tato volba způsobí, že pohyb jednotek neodstraňuje zahalení tmou a "
+"mlhu, dokud nedojde k náhodnému jevu nebo ručnímu odhalení volbou "
+"„<bold>text='Obnov mlhu'</bold>“ z menu „<bold>text='Akce'</bold>“ (nebo "
+"koncem kola). Tak budete moci vracet pohyb i při použití mlhy nebo zahalení "
+"tmou."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:228
@@ -1673,7 +1655,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1689,15 +1670,14 @@ msgstr ""
 "\n"
 "Každá jednotka má určitou šanci být zasažena, která závisí na vlastnostech "
 "terénu na kterém se nachází. To se ukazuje na stavovém panelu a můžete ji "
-"také nalézt, když kliknete pravým tlačítkem na jednotku, vyberete Popis "
-"jednotky a podíváte se na <italic>text='Vlastnosti terénu'</italic>. Např. "
-"většina elfů má obrannou výhodu 70% v lese, takže útočící jednotky mají "
-"pouze 30% šanci jejich zásahu. Naopak šance zásahu útočníka elfem záleží na "
-"terénu na kterém se nachází útočník."
+"také nalézt, když kliknete pravým tlačítkem na jednotku, vyberete "
+"<bold>text='Popis jednotky'</bold> a podíváte se na <bold>text='Vlastnosti "
+"terénu'</bold>. Např. většina elfů má v lese obrannou výhodu 70%, takže "
+"útočící jednotky mají pouze 30% šanci jejich zásahu. Naopak šance zásahu "
+"útočníka elfem záleží na terénu, na kterém se nachází útočník."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1709,9 +1689,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Z tohoto pravidla vybočují 2 výjimky: <ref>dst='weaponspecial_magical' "
-"text='Útoky magií'</ref> a <ref>dst='weaponspecial_marksman' text='Střelnou "
-"zbraní'</ref>. Útoky magií mají vždy 70% šanci na úspěch, nezáležíce na "
+"Z tohoto pravidla vybočují 2 výjimky: útoky <ref>dst='weaponspecial_magical' "
+"text='magií'</ref> a <ref>dst='weaponspecial_marksman' text='střelnou "
+"zbraní'</ref>. Magické útoky mají vždy 70% šanci na úspěch, nezáležíce na "
 "terénu a když jsou použity při útoku. Odstřelovači mají vždy alespoň 60% "
 "šanci na úspěch a také nezáleží na terénu."
 
@@ -1728,7 +1708,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1742,17 +1721,15 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Každý útok, který zasáhne cíl, způsobí nějaké základní poškození závisející "
-"na typu útoku. Např. Elfí bojovník s útokem 5-4 způsobí základní poškození "
-"5. To je obvykle určeno dvěma věcmi: <ref>dst='damage_types_and_resistance' "
-"text='Odolností'</ref> a <ref>dst='time_of_day' text='Denní dobou'</ref>. "
-"Pokud se chcete podívat jak je základní poškození ovlivněno okolnostmi, pak "
-"se podívejte v nabídce výběr útoku na <italic>text='Výpočty poškození'</"
-"italic>."
+"Každý úder, který zasáhne cíl, způsobí základní poškození závisející na typu "
+"útoku. Např. Elfí bojovník s útokem 5–4 způsobí základní poškození 5. To je "
+"obvykle dále upraveno dvěma věcmi: <ref>dst='damage_types_and_resistance' "
+"text='odolností'</ref> a <ref>dst='time_of_day' text='denní dobou'</ref>. "
+"Pokud chcete zjistit jak je základní poškození ovlivněno okolnostmi, pak se "
+"podívejte v nabídce výběr útoku na <bold>text='Výpočty poškození'</bold>."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1766,8 +1743,8 @@ msgstr ""
 "Několik jednotek má speciální <ref>dst'..=abilities_section' "
 "text='schopnosti'</ref>, které ovlivňují poškození během boje. Nejběžnější z "
 "nich je schopnost <ref>dst='weaponspecial_charge' text='výpadu'</ref>, která "
-"zvyšuje poškození jak útočníka, tak obránce, pokud útočí jednotka s touto "
-"schopností."
+"zdvojnásobuje poškození jak útočníka, tak obránce, pokud útočí jednotka s "
+"touto schopností."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:251
@@ -2048,7 +2025,6 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
-#, fuzzy
 msgid ""
 "\n"
 "<italic>text='Healing units'</italic>: Units with the "
@@ -2062,7 +2038,8 @@ msgstr ""
 "<ref>dst='ability_heals +4' text='léčení'</ref> mohou léčit či chránit před "
 "jedy způsobujícími poškození. Budou vyléčeny pouze ty jednotky, které se "
 "nacházejí v těsné blízkosti a jsou na stejné straně jako léčitel a to pouze "
-"o 4 nebo 8 HP na jednotku."
+"o <ref>dst='ability_heals +4' text='4'</ref> nebo <ref>dst='ability_heals "
+"+8' text='8'</ref> HP na jednotku, podle schopností léčitele."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
@@ -2946,19 +2923,8 @@ msgstr ""
 msgid "Castle"
 msgstr "Hrad"
 
-# | msgid ""
-# | "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-# | "Nearly all units receive a considerable bonus to their defense by being "
-# | "stationed in a castle, and all units receive full movement in a castle. "
-# | "Stationing units in a castle represents its defensive capability. Without "
-# | "a unit in each wall hex, an enemy can simply sneak into the castle "
-# | "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-# | "\n"
-# | "Most units have about 60% defense in a castle.\n"
-# | "\n"
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2972,10 +2938,10 @@ msgid ""
 msgstr ""
 "<italic>text='Hradem'</italic> je jakýkoliv druh stálého opevnění. Téměř "
 "všechny jednotky umístěné ve hradě získávají důležitý obranný bonus a "
-"všechny jednotky tu jsou schopny maximálního pohybu. Umístění jednotek na "
-"hrad reprezentuje obranné schopnosti opevnění. Pokud nejsou na hradbách "
-"umístěny jednotky, do hradu se mohou bez boje vplížit i nepřátelé, čímž "
-"získají stejný obranný bonus jako kdokoliv uvnitř.\n"
+"většina jednotek tu je schopna maximálního pohybu. Umístění jednotek na hrad "
+"reprezentuje obranné schopnosti opevnění. Pokud nejsou na hradbách umístěny "
+"jednotky, do hradu se mohou bez boje vplížit i nepřátelé, čímž získají "
+"stejný obranný bonus jako kdokoliv uvnitř.\n"
 "\n"
 "Většina jednotek získává 60% obranný bonus.\n"
 "\n"
@@ -3462,7 +3428,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3477,8 +3442,9 @@ msgstr ""
 "Změní vlastníka strany (číslo strany jako <i>side</i>) na uživatele nebo "
 "pozorovatele (jméno hráče nebo pozorovatele jako <i>username</i>). Která "
 "strana patří kterému hráči lze snadno zjistit v dialogu „Nastavení scénáře“ "
-"- dostanete se tam tlačítkem „Více“ v „Přehledové tabulce“ (při výchozím "
-"nastavení alt+s). Hostitel může změnit vlastníka jakékoliv strany.\n"
+"- dostanete se tam tlačítkem „<bold>text='Více'</bold>“ v "
+"„<bold>text='Přehledové tabulce'</bold>“ (při výchozím nastavení alt+s). "
+"Hostitel může změnit vlastníka jakékoliv strany.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3499,7 +3465,6 @@ msgstr ""
 # původně byla logika opačně !!!???
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:844
-#, fuzzy
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -5194,6 +5159,9 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
+"Termín „monstrum“ zahrnuje mnohé odpudivé tvory, přebývající v jeskyních, "
+"divočině, hlubinách oceánu a dalších odlehlých místech světa. Většinou "
+"vystupují pouze v příbězích a snech obyvatel Wesnothu."
 
 # Nágy? Hadí lid?
 #. [race]: id=naga

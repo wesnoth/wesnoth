@@ -113,7 +113,7 @@ public:
 	 *
 	 * @param data		          The mapdata to load.
 	 */
-	void read(const std::string& data);
+	void read(const std::string& data, const bool allow_invalid = true);
 
 	std::string write() const;
 

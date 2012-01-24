@@ -95,7 +95,10 @@ public:
 	void on_gamestate_change();
 	void on_viewer_change(size_t team_index);
 	void on_change_controller(int side, team& t);
-	void pre_delete_action(action_ptr action); //< Handles various cleanup right before deleting an action
+	/** Handles various cleanup right before removing an action from the queue */
+	void pre_delete_action(action_ptr action);
+	/** Handles various cleanup right after removing an action from the queue */
+	void post_delete_action(action_ptr action);
 
 	/** Called by replay_network_sender to add whiteboard data to the outgoing network packets */
 	void send_network_data();
@@ -129,6 +132,8 @@ public:
 	/** Creates a move action for the current side, and erases the temp move.
 	 *  The move action is inserted at the end of the queue, to be executed last. */
 	void save_temp_move();
+	/** @return an iterator to the unit that owns the temp move, resources::units->end() if there's none. */
+	unit_map::iterator get_temp_move_unit() const;
 
 	/** Creates an attack or attack-move action for the current side */
 	void save_temp_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice);
@@ -146,8 +151,8 @@ public:
 
 	/** Executes first action in the queue for current side */
 	void contextual_execute();
-	/** Executes all actions in the queue in sequence
-	 *  @return true if the action queue is empty when the method returns */
+	/** Executes all actions for the current turn in sequence
+	 *  @return true if the there are no more actions left for this turn when the method returns */
 	bool execute_all_actions();
 	/** Called by the game controller to let the whiteboard continue executing all actions
 	 *  if it stopped to wait for an attack to complete on reception of its random seed from server */
@@ -222,6 +227,7 @@ private:
 
 	std::vector<arrow_ptr> move_arrows_;
 	std::vector<fake_unit_ptr> fake_units_;
+	size_t temp_move_unit_underlying_id_;
 
 	boost::scoped_ptr<CKey> key_poller_;
 

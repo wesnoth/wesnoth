@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-08 18:12+0100\n"
-"PO-Revision-Date: 2012-01-12 17:52+0200\n"
-"Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
+"PO-Revision-Date: 2012-01-21 07:23+0100\n"
+"Last-Translator: Pyrophorus <l.sebilleauATfree.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -167,13 +167,11 @@ msgstr "Pavés ordinaires"
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:237
-#, fuzzy
 msgid "Clean Gray Cobbles"
-msgstr "Pavés gris propres"
+msgstr "Pavés gris entretenus"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:247
-#, fuzzy
 msgid "Overgrown Cobbles"
 msgstr "Pavés envahis par la végétation"
 
@@ -244,21 +242,18 @@ msgstr "Petits champignons"
 
 #. [terrain_type]: id=mushrooms_farm
 #: data/core/terrain.cfg:373
-#, fuzzy
 msgid "Mushroom Farm"
-msgstr "Culture de champignons"
+msgstr "Champ de champignons"
 
 #. [terrain_type]: id=desert_plants
 #: data/core/terrain.cfg:382
-#, fuzzy
 msgid "Desert Plants"
-msgstr "Plantes dans le désert"
+msgstr "Plantes désertiques avec os"
 
 #. [terrain_type]: id=desert_plants_sans_bones
 #: data/core/terrain.cfg:391
-#, fuzzy
 msgid "Desert Plants without Bones"
-msgstr "Plantes dans le désert sans os"
+msgstr "Plantes désertiques sans os"
 
 #. [terrain_type]: id=windmill
 #: data/core/terrain.cfg:400
@@ -272,7 +267,6 @@ msgstr "Clôture"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:418
-#, fuzzy
 msgid "Stones with Sand Drifts"
 msgstr "Pierres avec des tas de sable"
 
@@ -523,7 +517,6 @@ msgstr "Sol de caverne"
 
 #. [terrain_type]: id=cave_earthy
 #: data/core/terrain.cfg:836
-#, fuzzy
 msgid "Earthy Cave Floor"
 msgstr "Sol de caverne terreux"
 
@@ -577,7 +570,6 @@ msgstr "Gouffre ordinaire"
 
 #. [terrain_type]: id=chasm_earthy
 #: data/core/terrain.cfg:951
-#, fuzzy
 msgid "Earthy Chasm"
 msgstr "Gouffre terreux"
 
@@ -637,13 +629,11 @@ msgstr "Mur de caverne taillé"
 
 #. [terrain_type]: id=cavewall_earthy
 #: data/core/terrain.cfg:1062
-#, fuzzy
 msgid "Natural Earthy Cave Wall"
 msgstr "Mur de caverne terreux naturel"
 
 #. [terrain_type]: id=cavewall_earthy_hewn
 #: data/core/terrain.cfg:1073
-#, fuzzy
 msgid "Reinforced Earthy Cave Wall"
 msgstr "Mur de caverne terreux renforcé"
 
@@ -658,11 +648,12 @@ msgstr "Mur de pierre"
 msgid "Lit Stone Wall"
 msgstr "Mur de pierre éclairé"
 
+# Compte tenu du fait que ces chaînes sont destinées à être affichées dans l'éditeur de cartes, il me semble important de faire court. Si l'utilisateur ne sait pas à quoi sert une surcouche, ce n'est pas dans le libellé qu'il va l'apprendre.
+# Laurent
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1104
-#, fuzzy
 msgid "Impassable Overlay"
-msgstr "Chevauchement infranchissable"
+msgstr "Surcouche infranchissable"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
@@ -718,21 +709,20 @@ msgstr "Vide"
 msgid "Village"
 msgstr "Village"
 
+# Adobe est un terme technique (qui n'est pas anglais mais espagnol). Je pense qu'il ne faudrait pas le traduire.
+# Laurent
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1131
-#, fuzzy
 msgid "Adobe Village"
 msgstr "Village en argile"
 
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1144
-#, fuzzy
 msgid "Desert Tent Village"
 msgstr "Village en tente du désert"
 
 #. [terrain_type]: id=camp_village
 #: data/core/terrain.cfg:1157
-#, fuzzy
 msgid "Tent Village"
 msgstr "Village en tente"
 
@@ -778,7 +768,6 @@ msgstr "Cité humaine"
 
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1280
-#, fuzzy
 msgid "Windmill Village"
 msgstr "Village à moulin à vent"
 
@@ -864,9 +853,8 @@ msgstr "Village ondin"
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1507
-#, fuzzy
 msgid "Village Overlay"
-msgstr "Chevauchement de village"
+msgstr "Surcouche village"
 
 #. [terrain_type]: id=encampment
 #. [terrain_type]: id=encampment_snow
@@ -968,10 +956,10 @@ msgstr "Château du désert en ruine"
 msgid "Encampment Keep"
 msgstr "Tente de commandement"
 
-# Benoît : « Donjon » ça va pas avec campement, et c'est une tente...
+# Il y a un problème avec ces différentes traductions de 'keep': on perd de vue qu'il s'agit d'abord du seul type d'endroit où le leader peut recruter.
+# Laurent
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:1695
-#, fuzzy
 msgid "Tall Encampment Keep"
 msgstr "Tente de commandement surélevée"
 
@@ -1063,12 +1051,12 @@ msgstr "Donjon du désert en ruine"
 #. [terrain_type]: id=castle_overlay
 #: data/core/terrain.cfg:1865
 msgid "Castle Overlay"
-msgstr "Chevauchement de château"
+msgstr "Surcouche château"
 
 #. [terrain_type]: id=keep_overlay
 #: data/core/terrain.cfg:1877
 msgid "Keep Overlay"
-msgstr "Chevauchement de donjon"
+msgstr "Surcouche donjon"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -3051,16 +3039,14 @@ msgid "No stack defined."
 msgstr "Aucune pile définie."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:46
-#, fuzzy
 msgid "No nodes defined for a tree view."
-msgstr "Pas de nœuds définis pour une vue dans l'arborescence."
+msgstr "Pas de nœuds définis dans l'arborescence."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:86
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[node]identifiant « root » réservé pour l'implémentation."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
-#, fuzzy
 msgid "No node defined."
 msgstr "Aucun nœud défini."
 
@@ -3190,7 +3176,6 @@ msgid "No state or draw section defined."
 msgstr "Aucun état ou zone de dessin défini."
 
 #: src/gui/widgets/tree_view_node.cpp:103
-#, fuzzy
 msgid "Unknown builder id for tree view node."
 msgstr "Identifiant du constructeur inconnu pour un nœud de l'arborescence."
 
@@ -3377,8 +3362,6 @@ msgid "Play Replay"
 msgstr "Jouer le film"
 
 #: src/hotkeys.cpp:101
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Reset Replay"
 msgstr "Réinitialiser le film"
 
@@ -3838,7 +3821,6 @@ msgid "There are no alternative video modes available"
 msgstr "Il n'y a pas d'autre mode vidéo disponible"
 
 #: src/preferences_display.cpp:561
-#, fuzzy
 msgid " (widescreen)"
 msgstr " (écran large)"
 
@@ -3886,22 +3868,20 @@ msgstr ""
 "renseignée."
 
 #: src/wml_exception.cpp:111
-#, fuzzy
 msgid ""
 "The key '$key' is deprecated and support will be removed in version "
 "$removal_version."
 msgstr ""
-"La clef « $key » est obsolète et ne sera plus maintenu à partir de la "
+"La clef « $key » est obsolète et ne sera plus maintenue à partir de la "
 "version $removal_version."
 
 #: src/wml_exception.cpp:130
-#, fuzzy
 msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-"La clef « $deprecated_key » a été remplacé par « $key ». « $deprecated_key » "
-"ne sera plus maintenu à partir de la version $removal_version."
+"La clef « $deprecated_key » a été remplacée par « $key ». « $deprecated_key "
+"» ne sera plus maintenue à partir de la version $removal_version."
 
 #~ msgid "Resize map"
 #~ msgstr "Redimensionner la carte"

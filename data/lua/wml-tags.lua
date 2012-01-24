@@ -357,16 +357,7 @@ end
 function wml_actions.select_unit(cfg)
 	local u = wesnoth.get_units(cfg)[1]
 	if not u then return end
-	local fire_event = cfg.fire_event
-	local highlight = cfg.highlight
-	if highlight == nil then highlight = true end
-
-	wesnoth.select_hex(u.x, u.y)
-
-	if highlight then wesnoth.highlight_hex(u.x, u.y) end
-	if fire_event then
-		wesnoth.fire_event("select", u.x, u.y)
-	end
+	wesnoth.select_hex(u.x, u.y, cfg.highlight, cfg.fire_event)
 end
 
 function wml_actions.unit_overlay(cfg)
@@ -592,7 +583,7 @@ function wml_actions.modify_unit(cfg)
 		wml_actions.unstore_unit { variable = unit_path }
 	end
 
-	wml_actions.store_unit { {"filter", filter}, variable = unit_variable, kill = true }
+	wml_actions.store_unit { {"filter", filter}, variable = unit_variable }
 	local max_index = wesnoth.get_variable(unit_variable .. ".length") - 1
 
 	local this_unit = start_var_scope("this_unit")

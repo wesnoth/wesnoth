@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
-"POT-Creation-Date: 2012-01-03 10:55+0100\n"
-"PO-Revision-Date: 2010-01-27 18:05+0100\n"
+"POT-Creation-Date: 2012-01-08 18:11+0100\n"
+"PO-Revision-Date: 2012-01-20 13:03+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -268,12 +268,11 @@ msgstr ""
 # type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject>
 #: /src/wesnoth/doc/manual/manual.en.xml:90
-#, fuzzy
 msgid ""
 "<imageobject> <imagedata fileref=\"images/main-menu-1.9.4.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/main-menu-1.5.11.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/main-menu-1.9.4.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><simpara><inlinemediaobject><textobject><phrase>
@@ -676,12 +675,11 @@ msgstr "Po kliknięciu przycisku \"Gra z innymi\" dostępnych jest kilka opcji:"
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: /src/wesnoth/doc/manual/manual.en.xml:314
-#, fuzzy
 msgid ""
 "<imageobject> <imagedata fileref=\"images/multiplayer-1.9.4.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/multiplayer-1.5.11.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/multiplayer-1.9.4.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -861,12 +859,11 @@ msgstr "Ekran gry"
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: /src/wesnoth/doc/manual/manual.en.xml:379
-#, fuzzy
 msgid ""
 "<imageobject> <imagedata fileref=\"images/game-screen-1.9.4.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/game-screen-1.5.7.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/game-screen-1.9.4.jpg\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><section><title>
@@ -894,12 +891,11 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: /src/wesnoth/doc/manual/manual.en.xml:390
-#, fuzzy
 msgid ""
 "<imageobject> <imagedata fileref=\"images/top_pane-1.9.4.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/top_pane-1.5.7.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/top_pane-1.9.4.jpg\"/> </"
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
@@ -991,12 +987,11 @@ msgstr "Typ bieżącego pola"
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: /src/wesnoth/doc/manual/manual.en.xml:459
-#, fuzzy
 msgid ""
 "<imageobject> <imagedata fileref=\"images/right_pane-1.9.4.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/right_pane-1.5.7.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/right_pane-1.9.4.jpg\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1067,7 +1062,6 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:498
-#, fuzzy
 msgid ""
 "The first thing you will probably want to do is recruit your first unit. "
 "Press <literal>Ctrl+r</literal> (or right click on an empty castle hex and "
@@ -1080,8 +1074,8 @@ msgid ""
 "won."
 msgstr ""
 "Twoją pierwszą czynnością będzie zapewne rekrutowanie pierwszej jednostki. "
-"Naciśnij <literal>Ctrl-R</literal> (lub kliknij prawym przyciskiem myszy "
-"puste pole zamku i wybierz \"Rekrutuj\"), by rekrutować jednostkę wybraną z "
+"Naciśnij <literal>Ctrl+r</literal> (lub kliknij prawym przyciskiem myszy "
+"puste pole zamku i wybierz \"Rekrutuj\"), aby rekrutować jednostkę wybraną z "
 "listy jednostek aktualnie dostępnych. Każdy rekrut zajmuje jedno wolne pole "
 "zamku. Gdy zamek zostanie zapełniony, dalsze rekrutowanie będzie możliwe "
 "dopiero po odsunięciu jednostek z jego pól. Przywódca Twojego przeciwnika "
@@ -1267,13 +1261,16 @@ msgid ""
 "instead of the control key when you are using MacOSX. You can change most "
 "hotkeys to your taste using the Preferences menu."
 msgstr ""
+"Podano tu domyślne klawisze sterowania. Konfiguracja klawiszy może być inna "
+"w zależności od platformy. Na przykład w systemie Mac OS X klawisz Ctrl "
+"często będzie zastępowany klawiszem Command. Większość skrótów można "
+"zmieniać stosownie do upodobań w menu Preferencje."
 
 # type: Content of: <book><chapter><section><table><title>
 #. type: Content of: <book><chapter><section><table><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:577
-#, fuzzy
 msgid "General controls and hotkeys"
-msgstr "Sterowanie i klawisze skrótów"
+msgstr "Ogólne sterowanie i klawisze skrótów"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1320,9 +1317,8 @@ msgstr "Kliknięcie prawym przyciskiem"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:611
-#, fuzzy
 msgid "Context menu, cancel action"
-msgstr "Menu główne, anuluj działanie"
+msgstr "Menu kontekstowe, anuluj działanie"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1351,9 +1347,8 @@ msgstr "Opuść grę, opuść menu, anuluj komunikat"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:638
-#, fuzzy
 msgid "Ctrl+s"
-msgstr "Ctrl-r"
+msgstr "Ctrl+s"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1364,9 +1359,8 @@ msgstr "Zapisz grę"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:646
-#, fuzzy
 msgid "Ctrl+o"
-msgstr "Ctrl-r"
+msgstr "Ctrl+o"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1377,9 +1371,8 @@ msgstr "Wczytaj grę"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:654
-#, fuzzy
 msgid "Ctrl+p"
-msgstr "Ctrl-r"
+msgstr "Ctrl+p"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1391,9 +1384,8 @@ msgstr "Do menu Preferencje"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:662
-#, fuzzy
 msgid "Ctrl+q"
-msgstr "Ctrl-r"
+msgstr "Ctrl+q"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1405,9 +1397,8 @@ msgstr "Opuść grę"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:670
-#, fuzzy
 msgid "Ctrl+f"
-msgstr "Ctrl-r"
+msgstr "Ctrl+f"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1418,9 +1409,8 @@ msgstr "Przełącz między pełnym ekranem a oknem"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:678
-#, fuzzy
 msgid "Ctrl+Alt+m"
-msgstr "Ctrl-alt-m"
+msgstr "Ctrl+Alt+m"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1469,23 +1459,20 @@ msgstr "Przywróć domyślne zbliżenie"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:716
-#, fuzzy
 msgid "Ctrl+e"
-msgstr "Ctrl-r"
+msgstr "Ctrl+e"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:719
-#, fuzzy
 msgid "Toggle ellipses"
-msgstr "Przełącz siatkę"
+msgstr "Przełącz elipsy"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:724
-#, fuzzy
 msgid "Ctrl+g"
-msgstr "Ctrl-r"
+msgstr "Ctrl+g"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1496,9 +1483,8 @@ msgstr "Przełącz siatkę"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:738
-#, fuzzy
 msgid "Ctrl+a"
-msgstr "Ctrl-r"
+msgstr "Ctrl+a"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1509,20 +1495,20 @@ msgstr "Przełącz tryb przyspieszony"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:746
 msgid "Holding Shift"
-msgstr ""
+msgstr "Przytrzymany Shift"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:749
 msgid ""
 "Toggle between accelerated and normal game mode while pressed (temporary!)"
 msgstr ""
+"Gdy wciśnięty, przełącza między grą przyspieszoną a zwykłą (tymczasowe)"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:760
-#, fuzzy
 msgid "Ctrl+j"
-msgstr "Ctrl-r"
+msgstr "Ctrl+j"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1545,7 +1531,7 @@ msgstr "Pokaż statystyki"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:776
 msgid "Alt+s"
-msgstr ""
+msgstr "Alt+s"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1556,7 +1542,7 @@ msgstr "Pokaż tabelę statusu"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:784
 msgid "Alt+u"
-msgstr ""
+msgstr "Alt+u"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1579,9 +1565,8 @@ msgstr "Przesuń do przywódcy"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:812
-#, fuzzy
 msgid "Shift+s"
-msgstr "Shift-Spacja"
+msgstr "Shift+s"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1592,14 +1577,13 @@ msgstr "Odsłoń całun teraz"
 #. type: Content of: <book><chapter><section><table><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:825
 msgid "Unit and turn specific hotkeys"
-msgstr ""
+msgstr "Skróty jednostek i tur"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:832
-#, fuzzy
 msgid "Ctrl+r"
-msgstr "Ctrl-r"
+msgstr "Ctrl+r"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1611,9 +1595,8 @@ msgstr "Rekrutuj jednostkę"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:840
-#, fuzzy
 msgid "Ctrl+Alt+r"
-msgstr "Ctrl-alt-r"
+msgstr "Ctrl+Alt+r"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1624,7 +1607,7 @@ msgstr "Powtórz ostatnią rekrutację"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:848
 msgid "Alt+r"
-msgstr ""
+msgstr "Alt+r"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1636,9 +1619,8 @@ msgstr "Przywołaj jednostkę"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:862
-#, fuzzy
 msgid "Ctrl+n"
-msgstr "Ctrl-r"
+msgstr "Ctrl+n"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1655,9 +1637,8 @@ msgstr "d"
 # type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:873
-#, fuzzy
 msgid "Show the description of the currently selected unit"
-msgstr "Obrona i koszt ruchu aktualnie wybranej jednostki na zaznaczonym polu"
+msgstr "Pokaż opis aktualnie wybranej jednostki"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1713,9 +1694,8 @@ msgstr "Przejdź do następnej jednostki, która nadal może się ruszyć"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:916
-#, fuzzy
 msgid "Shift+n"
-msgstr "Shift-Spacja"
+msgstr "Shift+n"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1726,9 +1706,8 @@ msgstr "Przejdź do poprzedniej jednostki, która nadal może się ruszyć"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:930
-#, fuzzy
 msgid "Ctrl+v"
-msgstr "Ctrl-r"
+msgstr "Ctrl+v"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1741,9 +1720,8 @@ msgstr ""
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:938
-#, fuzzy
 msgid "Ctrl+b"
-msgstr "Ctrl-r"
+msgstr "Ctrl+b"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1779,9 +1757,8 @@ msgstr "Zakończ turę jednostki i przejdź do następnej, która może się rus
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:968
-#, fuzzy
 msgid "Shift+Space"
-msgstr "Shift-Spacja"
+msgstr "Shift+Spacja"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1792,9 +1769,8 @@ msgstr "Rozkaż wybranej jednostce utrzymać pozycję (kończy jej ruch)"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:976
-#, fuzzy
 msgid "Ctrl+Space"
-msgstr "Ctrl-Spacja"
+msgstr "Ctrl+Spacja"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1806,87 +1782,84 @@ msgstr "Zakończ turę tego gracza"
 #. type: Content of: <book><chapter><section><table><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:989
 msgid "Whiteboard specific hotkeys"
-msgstr ""
+msgstr "Skróty planowania"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:996
 msgid "p"
-msgstr ""
+msgstr "p"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:999
-#, fuzzy
 msgid "Toggle planning mode"
-msgstr "Przełącz tryb przyspieszony"
+msgstr "Przełącz tryb planowania"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1004
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1007
 msgid "Execute planned action"
-msgstr ""
+msgstr "Wykonaj zaplanowane działanie"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1012
 msgid "h"
-msgstr ""
+msgstr "h"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1015
 msgid "Delete planned action"
-msgstr ""
+msgstr "Usuń zaplanowane działanie"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1020
 msgid "Page Down"
-msgstr ""
+msgstr "Page Down"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1023
 msgid "Move action down in the queue"
-msgstr ""
+msgstr "Przesuń działanie w dół kolejki"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1028
 msgid "Page Up"
-msgstr ""
+msgstr "Page Up"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1031
 msgid "Move action up in the queue"
-msgstr ""
+msgstr "Przesuń działanie w górę kolejki"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1036
-#, fuzzy
 msgid "Ctrl+y"
-msgstr "Ctrl-r"
+msgstr "Ctrl+y"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1039
 msgid "Execute all actions"
-msgstr ""
+msgstr "Wykonaj wszystkie działania"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1044
 msgid "i"
-msgstr ""
+msgstr "i"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1047
 msgid "Suppose dead"
-msgstr ""
+msgstr "Uznaj za martwą"
 
 #. type: Content of: <book><chapter><section><table><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1057
-#, fuzzy
 msgid "Multiplayer specific hotkeys"
-msgstr "Okno gry wieloosobowej"
+msgstr "Skróty gry wieloosobowej"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1903,9 +1876,8 @@ msgstr "Wyślij wiadomość do innego gracza (gra wieloosobowa)"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1072
-#, fuzzy
 msgid "Ctrl+m"
-msgstr "Ctrl-r"
+msgstr "Ctrl+m"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1916,7 +1888,7 @@ msgstr "Wyślij wiadomość do swoich sojuszników (gra wieloosobowa)"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1080
 msgid "Alt+m"
-msgstr ""
+msgstr "Alt+m"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1927,7 +1899,7 @@ msgstr "Wyślij wiadomość do wszystkich graczy (gra wieloosobowa)"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1088
 msgid "Alt+c"
-msgstr ""
+msgstr "Alt+c"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1938,27 +1910,25 @@ msgstr "Pokaż zapis rozmów"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1096
-#, fuzzy
 msgid "Ctrl+x"
-msgstr "Ctrl-r"
+msgstr "Ctrl+x"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1099
 msgid "Clear messages"
-msgstr ""
+msgstr "Wyczyść komunikaty"
 
 #. type: Content of: <book><chapter><section><table><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1109
 #: /src/wesnoth/doc/manual/manual.en.xml:1193
 msgid "Miscellaneous hotkeys"
-msgstr ""
+msgstr "Różne skróty"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1116
-#, fuzzy
 msgid "Ctrl+c"
-msgstr "Ctrl-r"
+msgstr "Ctrl+c"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1981,7 +1951,7 @@ msgstr "Szukaj (wyszukiwanie etykiety lub jednostki według nazwy)"
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1132
 msgid "Alt+l"
-msgstr ""
+msgstr "Alt+l"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -1992,9 +1962,8 @@ msgstr "Ustaw etykietę tekstową wybranego pola"
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1140
-#, fuzzy
 msgid "Ctrl+l"
-msgstr "Ctrl-r"
+msgstr "Ctrl+l"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -2019,37 +1988,35 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1162
-#, fuzzy
 msgid "F5"
-msgstr "5"
+msgstr "F5"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1165
 #: /src/wesnoth/doc/manual/manual.en.xml:1219
 msgid "Refresh Cache"
-msgstr ""
+msgstr "Odśwież pamięć podręczną"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1170
-#, fuzzy
 msgid "Shift+c"
-msgstr "Shift-Spacja"
+msgstr "Shift+c"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1173
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "Utwórz jednostkę (debugowanie)"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1178
 msgid "f"
-msgstr ""
+msgstr "f"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1181
 msgid "Run AI formula"
-msgstr ""
+msgstr "Wykonaj formułę AI"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1187
@@ -2057,28 +2024,29 @@ msgid ""
 "Some keys on MacOSX require more than replacing Ctrl by Cmd. Here is a list "
 "of those:"
 msgstr ""
+"Niektóre skróty w systemie Mac OS X wymagają większych zmian niż zamiana "
+"klawiszy Ctrl i Cmd:"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1200
 msgid "Cmd+w"
-msgstr ""
+msgstr "Cmd+w"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1208
 msgid "Cmd+,"
-msgstr ""
+msgstr "Cmd+,"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1216
-#, fuzzy
 msgid "Ctrl+F5"
-msgstr "Ctrl-r"
+msgstr "Ctrl+F5"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1224
 msgid "Option+Space"
-msgstr ""
+msgstr "Option+Spacja"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1233
@@ -2087,58 +2055,60 @@ msgid ""
 "provided by the Pandora. If you are using a Pandora, these keys differ from "
 "the lists above:"
 msgstr ""
+"Niektóre skróty zostały nieco zmienione, aby lepiej wykorzystywać elementy "
+"sterujące Pandory. Jeśli grasz na Pandorze, następujące klawisze będą się "
+"różnić od podanych:"
 
 # type: Content of: <book><chapter><section><table><title>
 #. type: Content of: <book><chapter><section><table><title>
 #: /src/wesnoth/doc/manual/manual.en.xml:1240
-#, fuzzy
 msgid "Pandora specific controls and hotkeys"
-msgstr "Sterowanie i klawisze skrótów"
+msgstr "Pandora &#8212; sterowanie i klawisze skrótów"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1247
 msgid "D-Pad"
-msgstr ""
+msgstr "Pad kierunkowy"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1255
 msgid "GamingButton A"
-msgstr ""
+msgstr "Przycisk A"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1263
 msgid "GamingButton B"
-msgstr ""
+msgstr "Przycisk B"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1271
 msgid "GamingButton X"
-msgstr ""
+msgstr "Przycisk X"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1279
 msgid "GamingButton Y"
-msgstr ""
+msgstr "Przycisk Y"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1287
 msgid "Alt+GamingButton Y"
-msgstr ""
+msgstr "Alt+przycisk Y"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1290
 msgid "Move action down queue"
-msgstr ""
+msgstr "Przesuń działanie w dół kolejki"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1295
 msgid "Alt+GamingButton X"
-msgstr ""
+msgstr "Alt+przycisk X"
 
 #. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1298
 msgid "Move action up queue"
-msgstr ""
+msgstr "Przesuń działanie w górę kolejki"
 
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
@@ -2165,12 +2135,11 @@ msgstr "Rekrutacja i przywoływanie"
 # type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
 #: /src/wesnoth/doc/manual/manual.en.xml:1315
-#, fuzzy
 msgid ""
 "<imageobject> <imagedata fileref=\"images/recruit-1.9.4.jpg\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/recruit-1.5.7.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/recruit-1.9.4.jpg\"/> </"
 "imageobject>"
 
 # type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
@@ -2226,7 +2195,6 @@ msgstr "Utrzymanie"
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1343
-#, fuzzy
 msgid ""
 "Each unit also has an upkeep cost. The upkeep cost is generally equal to the "
 "level of the unit, unless the unit has the \"Loyal\" trait (<link linkend="
@@ -2327,13 +2295,6 @@ msgstr "Charakter"
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1373
-#, fuzzy
-#| msgid ""
-#| "Every unit has an alignment: lawful, neutral, or chaotic. Alignment "
-#| "affects how units perform at different times of day. Neutral units are "
-#| "unaffected by the time of day. Lawful units do more damage during the day "
-#| "and less at night. Chaotic units do more damage at night and less during "
-#| "the day."
 msgid ""
 "Every unit has an alignment: lawful, neutral, chaotic, or liminal. Alignment "
 "affects how units perform at different times of day. Neutral units are "
@@ -2341,11 +2302,12 @@ msgid ""
 "and less at night. Chaotic units do more damage at night and less during the "
 "day. Liminal units do less damage during both night and daytime."
 msgstr ""
-"Każda jednostka ma określony charakter: praworządny, neutralny lub "
-"chaotyczny. Od charakteru jednostki zależy wpływ pory dnia na jej zdolności "
-"bojowe. Na jednostki neutralne pora dnia nie ma wpływu. Jednostki "
+"Każda jednostka ma określony charakter: praworządny, neutralny, chaotyczny "
+"lub półmroczny. Od charakteru jednostki zależy wpływ pory dnia na jej "
+"zdolności bojowe. Na jednostki neutralne pora dnia nie ma wpływu. Jednostki "
 "praworządne zadają więcej obrażeń za dnia, a mniej nocą, natomiast jednostki "
-"chaotyczne odwrotnie: zadają więcej obrażeń nocą, a mniej w świetle dnia."
+"chaotyczne odwrotnie: zadają więcej obrażeń nocą, a mniej w świetle dnia. "
+"Jednostki półmroczne zadają mniej obrażeń zarówno nocą, jak i za dnia."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -2362,16 +2324,12 @@ msgstr ""
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:1381
-#, fuzzy
-#| msgid ""
-#| "The following table shows the effects of different times of the day on "
-#| "the damage dealt by lawful and chaotic units:"
 msgid ""
 "The following table shows the effects of different times of the day on the "
 "damage dealt by lawful, chaotic, and liminal units:"
 msgstr ""
 "Poniższa tabela przedstawia wpływ pory dnia na obrażenia zadawane przez "
-"jednostki praworządne i chaotyczne:"
+"jednostki praworządne, chaotyczne i półmroczne:"
 
 # type: Content of: <book><chapter><section><section><table><title>
 #. type: Content of: <book><chapter><section><section><table><title>
@@ -2412,7 +2370,7 @@ msgstr "Chaotyczny"
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:1413
 msgid "Liminal"
-msgstr ""
+msgstr "Półmroczna"
 
 # type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -3772,13 +3730,12 @@ msgstr "Czerwone jabłko"
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth/doc/manual/manual.en.xml:2321
-#, fuzzy
 msgid ""
 "If you control the unit, but it can no longer move or attack, or the user "
 "ended the unit&#8217;s turn"
 msgstr ""
-"Jednostka pod Twoją kontrolą, która w tej turze wykorzystała już wszystkie "
-"punktu ruchu"
+"Jednostka pod Twoją kontrolą, która nie może już się ruszyć ani zaatakować, "
+"lub jednostka użytkownika, który zakończył turę"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
@@ -3884,7 +3841,6 @@ msgstr "Walka"
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2379
-#, fuzzy
 msgid ""
 "If you move next to an enemy unit, you may attack it. Click on your unit "
 "that is next to an enemy unit, and click on the enemy you want to attack – "
@@ -3893,16 +3849,15 @@ msgid ""
 "swords, are melee weapons, and some weapons, such as bows, are ranged "
 "weapons."
 msgstr ""
-"Jeśli ustawisz swoją jednostkę obok wrogiej, będzie można ją zaatakować. "
-"Kliknij swoją jednostkę, a następnie stojącego obok niej wroga, którego "
-"chcesz zaatakować - pojawi się okienko z opcjami walki. Każda jednostka ma "
-"jedną lub więcej broni, którymi może atakować. Niektóre bronie, takie jak "
-"miecze, służą do walki wręcz, a inne, takie jak łuki, do walki na odległość."
+"Stojąc obok jednostki wroga, możesz ją zaatakować. Kliknij swoją jednostkę, "
+"a następnie stojącego obok niej wroga, którego chcesz zaatakować &#8212; "
+"pojawi się okienko z opcjami walki. Każda jednostka ma jedną lub więcej "
+"broni, którymi może atakować. Niektóre bronie, takie jak miecze, służą do "
+"walki wręcz, a inne, takie jak łuki, do walki na odległość."
 
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2385
-#, fuzzy
 msgid ""
 "If you attack with a melee weapon, the enemy you attack will be able to "
 "strike back at you with a melee weapon. If you attack with a ranged weapon, "
@@ -3913,8 +3868,8 @@ msgstr ""
 "Jeśli atakujesz wręcz, twój przeciwnik będzie mógł kontratakować wyłącznie "
 "wręcz. Jeśli zaatakujesz na odległość, przeciwnik będzie musiał odpowiedzieć "
 "atakiem na odległość. Jeżeli przeciwnik nie posiada broni tego samego typu, "
-"jakiego użyłeś do zaatakowania go, nie będzie mógł odpowiedzieć uderzeniem i "
-"nie zada ci w tej walce żadnych obrażeń."
+"jakiego użyłeś do zaatakowania go, nie będzie mógł kontratakować i nie zada "
+"ci w tej walce żadnych obrażeń."
 
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
@@ -4647,14 +4602,6 @@ msgstr "Pora dnia"
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2682
-#, fuzzy
-#| msgid ""
-#| "Remember that Lawful units like humans fight better at daytime and "
-#| "Chaotic units like orcs or undead fight better at night. Ideally you want "
-#| "to first meet the enemy when you are strong and/or he is weak. When the "
-#| "enemy has its strong time, it often pays off to strengthen your lines and "
-#| "hold a favorable defensive position. When its weak time is about to "
-#| "arise, your advance will push forth."
 msgid ""
 "Remember that Lawful units like humans fight better at daytime, Chaotic "
 "units like orcs or undead fight better at night, and Liminal units fight "
@@ -4665,7 +4612,8 @@ msgid ""
 msgstr ""
 "Pamiętaj, że jednostki praworządne (na przykład ludzie) walczą lepiej za "
 "dnia, a chaotyczne (na przykład orki lub nieumarli) lepiej spisują się w "
-"nocy. Idealna pora na pierwsze starcie z przeciwnikiem to taka, gdy Twoje "
+"nocy. Dla jednostek półmrocznych najkorzystniejsze są świt i zmierzch. "
+"Idealna pora na pierwsze starcie z przeciwnikiem to taka, gdy Twoje "
 "jednostki są silniejsze, a jego jednostki słabsze. W porze sprzyjającej "
 "przeciwnikowi często najkorzystniej jest wzmocnić linię obrony i utrzymywać "
 "pozycję sprzyjającą obronie. Gdy zbliża się pora osłabiająca wroga, czas "
@@ -4832,7 +4780,6 @@ msgstr "Na początku scenariusza"
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2761
-#, fuzzy
 msgid ""
 "First, read the scenario objectives. Sometimes you do not have to kill enemy "
 "leaders; instead it is enough that you survive for a certain number of "
@@ -5058,7 +5005,6 @@ msgstr "Więcej ogólnych wskazówek"
 # type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
 #: /src/wesnoth/doc/manual/manual.en.xml:2902
-#, fuzzy
 msgid ""
 "After slaughtering scenarios (where you take lots of punishment) there are "
 "usually \"breathing room\" scenarios where you can rather easily gain some "

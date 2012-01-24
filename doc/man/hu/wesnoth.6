@@ -48,32 +48,33 @@ nagy közösségéhez! Hozd létre a saját egységeidet, pályáidat, hadjárat
 \fB\-\-bpp\fP\fI\ szám\fP
 meghatározza az egy képpontra jutó bitek számát. Példa: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign \ [<id_campaign>]\fP
-goes directly to the campaign with id <id_campaign>. A selection
-menu will appear if no id was specified.  \fBNote:\fP When using this switch
-please ensure that you specify the data directory path as the final argument
-aswell, otherwise the game will take the campaign/scenario id as the data
-dir.
+\fB\-c, \-\-campaign \ [<hadjárat_azonosító>]\fP
+rögtön betölti a <hadjárat_azonosító> helyén megadott azonosítóhoz
+tartozó hadjáratot. Ha nincs azonosító megadva, akkor egy választómenü fog
+megjelenni. \fBMegjegyzés:\fP ha ezt a kapcsolót használod, akkor ügyelj arra,
+hogy az adatmappához tartozó útvonalat utolsó paraméterként add meg,
+különben a játék a hadjárat/küldetés azonosítót is az adatmappának fogja
+tartani.
 .TP 
-\fB\-\-campaign\-difficulty <difficulty>\fP
-The difficulty of the specified campaign (1 to max). If none specified, the
-campaign difficulty selection widget will appear.
+\fB\-\-campaign\-difficulty <nehézség>\fP
+A megadott hadjárat nehézségi foka (1\-től egészen a max\-ig). Ha nincs
+megadva, akkor megjelenik a nehézségválasztó menü.
 .TP 
-\fB\-\-campaign\-scenario <id_scenario>\fP
-The id of the scenario from the specified campaign. The default is the first
-scenario.
+\fB\-\-campaign\-scenario <küldetés_azonosító>\fP
+A megadott hadjáraton belüli küldetés azonosítója. Alapértelmezetten az első
+küldetés.
 .TP 
 \fB\-\-config\-dir\fP\fI\ név\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.  You can also specify an absolute path for
-the configuration directory outside the $HOME or "My Documents\eMy Games"
+a felhasználói beállítások könyvtárát \fInév\fP\-re állítja a $HOME könyvtárban
+vagy Windows alatt a "Dokumentumok\eJátékok" könyvtárban. Abszolút útvonal
+is megadható.
 .TP 
 \fB\-\-config\-path\fP
 kiírja a játék felhasználói beállításait tartalmazó könyvtár nevét, majd
 kilép.
 .TP 
-\fB\-\-data\-dir <directory>\fP
-overrides the data directory with the one specified
+\fB\-\-data\-dir <könyvtár>\fP
+a megadott könyvtárra módosítja az alapértelmezett adatkönyvtárat.
 .TP 
 \fB\-d, \-\-debug\fP
 kibővített parancssori beállításokat tesz lehetővé a játékban (további
@@ -81,8 +82,8 @@ információkért a parancssori módról lásd a Wikit a
 http://www.wesnoth.org/CommandMode címen).
 .TP 
 \fB\-e,\ \-\-editor\fP\fI\ fájl\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-l \-\-load\fP
+közvetlenül indítja a játékon belüli térképszerkesztőt. Ha a \fIfájl\fP változó
+meg van adva, akkor egyenértékű az \fB\-l \-\-load\fP opcióval.
 .TP 
 \fB\-\-fps\fP
 a képernyő sarkában megjeleníti az aktuális képkockák számát másodpercenként
@@ -95,12 +96,12 @@ kitömörít egy gzip formátumú fájlt, majd .gz kiterjesztés nélkül
 eltárolja. A \fIbemeneti_fájl.gz\fP ezután törlődik.
 .TP 
 \fB\-\-gzip\fP\fI\ bemeneti_fájl\fP
-gzip formátumba tömörít egy fájlt, \fIbemeneti fájl\fP.gz\-ként eltárolja, és
-törli az eredeti \fIbemeneti fájl\fP fájlt.
+gzip formátumba tömörít egy fájlt, \fIbemeneti_fájl\fP.gz\-ként eltárolja, és
+törli az eredeti \fIbemeneti_fájl\fP fájlt.
 .TP 
 \fB\-h, \-\-help\fP
 megjeleníti a parancssori lehetőségek rövid leírását az alapértelmezett
-kimenetre, majd kilép.
+kimeneten, majd kilép.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ fájl\fP
 betölti a \fIfájl\fP elmentést az alapértelmezett mentések könyvtárból. Ha az
@@ -109,22 +110,22 @@ térképszerkesztőt a \fIfájl\fP elmentésben található térképpel. Ha az e
 útvonal egy könyvtárra mutat, a szerkesztő egy térképbetöltési
 párbeszédablakot fog nyitni.
 .TP 
-\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+\fB\-\-log\-\fP\fIszint\fP\fB=\fP\fItartomány1\fP\fB,\fP\fItartomány2\fP\fB,\fP\fI...\fP
 beállítja a naplózási tartomány szintjét. Az \fBall\fP minden naplózási
 tartományra illeszkedik. Beállítható szintek: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Alapértelmezettként az \fBerror\fP szint van beállítva.
 .TP 
-\fB\-\-logdomains\ [filter]\fP
-lists defined log domains (only the ones containing \fBfilter\fP if used) and
-exits
+\fB\-\-logdomains\ [szűrő]\fP
+kilistázza a létező naplózási tartományokat (a \fBszűrő\fP\-nek megfelelően, ha
+az meg van adva) és kilép
 .TP 
 \fB\-\-max\-fps\fP
-a másodpercenkénti képkockák száma, ennek értéke 1 és 1000 között kell
-legyen, alapértelmezetten \fB50\fP.
+a másodpercenkénti képkockák legmagasabb értéke, ennek értéke 1 és 1000
+között kell legyen, alapértelmezetten \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
 a játékot többjátékos üzemmódban indítja el. A \fB\-\-multiplayer\fP kapcsolóval
 használható egyéb opciókat bővebben lásd később. Kizárólag ezek az egyéb
-opciók követhetik a \fB\-\-multiplayer\-\-\fP kapcsolót.
+opciók követhetik a \fB\-\-multiplayer\fP kapcsolót.
 .TP 
 \fB\-\-no\-delay\fP
 a játékot minden késleltetés nélkül indítja el grafikai teljesítménymérés
@@ -143,27 +144,28 @@ a játékot hangok nélkül indítja el.
 \fB\-\-path\fP
 kiírja a játék adatkönyvtárának nevét, majd kilép.
 .TP 
-\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
-preprocesses a specified file/folder. The file(s) will be written in
-specified target directory: a plain cfg file and a processed cfg file. If a
-folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macroses from the data/core/macros will be
-preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
-extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  If 'SKIP_CORE' is in the define
-list the data/core won't be preprocessed.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result\fP or
-\fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+\fB\-\-preprocess, \-p[=<szabály1>,<szabály2>,...] <fájl/könyvtár> <cél_könyvtár>\fP
+előzetesen feldolgozza a megadott fájlt vagy könyvtárat. A fájlok a megadott
+célkönyvtárba kerülnek kiírásra: egy egyszerű cfg fájl és a feldolgozott cfg
+fájl. Ha bemenetként könyvtár van megadva, akkor az ismert
+feldolgozószabályok alapján rekurzívan kerül bejárásra. A data/core/macros
+könyvtárban lévő alapértelmezett makrók a megadottak előtt kerülnek
+feldolgozásra. A \fBszabály1,szabály2,...\fP szabályok közvetlenül a fájlok
+feldolgozása előtt adódnak a feldolgozási sorhoz. Megadásukhoz figyeljünk az
+előttük lévő „=” jelre. Ha a „SKIP_CORE” benne van a feldolgozási sorban,
+akkor a data/core könyvtár nem kerül feldolgozásra. Példa: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/eredmény\fP vagy
+\fB\-p=MULTIPLAYER,SAJAT_HADJARAT ~/wesnoth/ data/campaign/camp ~/eredmény\fP
 .TP 
-\fB\-\-preprocess\-input\-macros <source file>\fP
-used only by the '\-\-preprocess' command.  Specifies a file that contains
-[preproc_define]s to be included before preprocessing.
+\fB\-\-preprocess\-input\-macros <forrásfájl>\fP
+kizárólag a „\-\-preprocess” parancs használja. Egy fájlt ad meg, ami
+[preproc_define] szabályokat tartalmaz az előzetes feldolgozáshoz.
 .TP 
-\fB\-\-preprocess\-output\-macros [<target file>]\fP
-used only by the '\-\-preprocess' command.  Will output all preprocessed
-macros in the target file. If the file is not specified the output will be
-file '_MACROS_.cfg' in the target directory of preprocess's command.  This
-switch should be typed before the \-\-preprocess command.
+\fB\-\-preprocess\-output\-macros [<célfájl>]\fP
+Kizárólag a „\-\-preprocess” parancs használja. Kilistázza a célfájlban lévő
+összes feldolgozott makrót. Ha a célfájl nincs megadva, akkor a preprocess
+parancsban megadott célkönyvtárban lévő „_MACROS_.cfg” fájl lesz az
+alapértelmezett. Ezt a kapcsolót a \-\-preprocess parancs előtt kell kiadni.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 beállítja a képernyő felbontását. Példa: \fB\-r 800x600\fP
@@ -174,13 +176,13 @@ beállításokban elsőként megadott kiszolgálóhoz csatlakozik. Például:
 \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-\-strict\-validation\fP
-validation errors are treated as fatal errors.
+az érvényességi hibákat végzetes hibaként kezeli.
 .TP 
 \fB\-t, \-\-test\fP
-elindítja a játékot, és betölt egy kis teszthadjáratot.
+elindítja a játékot és betölt egy kis teszthadjáratot.
 .TP 
 \fB\-\-validcache\fP
-feltételezi, hogy a gyorsítótár érvényes (veszélyes).
+feltételezi, hogy a gyorsítótár érvényes. (veszélyes)
 .TP 
 \fB\-v, \-\-version\fP
 kiírja a játék verziószámát, majd kilép.
@@ -211,8 +213,8 @@ megadja az adott csapat irányítóját. Lehetséges értékek: \fBhuman\fP (emb
 .TP 
 \fB\-\-era=\fP\fIérték\fP
 ezzel az opcióval kiválaszthatod, hogy melyik korszakban szeretnél játszani
-az \fBAlapértelmezett\fP korszak helyett. A korszakot egy azonosítóval adhatod
-meg. A korszakok leírásai a \fBdata/multiplayer/eras.cfg\fP fájlban
+a \fBDefault\fP (alapértelmezett) korszak helyett. A korszakot egy azonosítóval
+adhatod meg. A korszakok leírásai a \fBdata/multiplayer/eras.cfg\fP fájlban
 találhatóak.
 .TP 
 \fB\-\-exit\-at\-end\fP
@@ -269,7 +271,8 @@ közösségi portált: http://wesnoth.fsf.hu/
 .
 .SH "SZERZŐI JOGOK"
 .
-Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+A szerzői jogok \(co 2003\-2011 David White\-ot
+<davidnwhite@verizon.net> illetik meg
 .br
 Ez egy szabad szoftver; terjeszthető illetve módosítható a GNU Általános
 Közreadási Feltételek dokumentumában \- 2. vagy későbbi verzió \- leírtak

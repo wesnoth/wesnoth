@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-08 18:12+0100\n"
-"PO-Revision-Date: 2012-01-08 20:40+0200\n"
+"POT-Creation-Date: 2012-01-21 01:34+0100\n"
+"PO-Revision-Date: 2012-01-21 14:15+0200\n"
 "Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
@@ -30,13 +30,13 @@ msgid "Underground"
 msgstr "Sous terre"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:819
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:820
 #: data/core/macros/abilities.cfg:582
 msgid "berserk"
 msgstr "fureur berserk"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:822
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:823
 #: data/core/macros/abilities.cfg:584
 msgid ""
 "Berserk:\n"
@@ -48,13 +48,13 @@ msgstr ""
 "de l'un des deux protagonistes ou jusqu'à un maximum de 30 tours."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:836
 #: data/core/macros/abilities.cfg:668
 msgid "magical"
 msgstr "magique"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:839
 #: data/core/macros/abilities.cfg:670
 msgid ""
 "Magical:\n"
@@ -66,13 +66,13 @@ msgstr ""
 "la capacité défensive de l'ennemi."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:851
 #: data/core/macros/abilities.cfg:717
 msgid "firststrike"
 msgstr "initiative"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:853
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:854
 #: data/core/macros/abilities.cfg:719
 msgid ""
 "First Strike:\n"
@@ -152,80 +152,69 @@ msgstr ""
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
-#, fuzzy
 msgid "Encyclopedia"
 msgstr "Encyclopédie"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
 msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgstr "<ref>dst='..geography' text='Géographie'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
-#, fuzzy
 msgid "Caste"
 msgstr "Caste"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:8
-#, fuzzy
 msgid ""
 "One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
 "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
 "Fighter'</ref>."
 msgstr ""
 "Une des formes alternatives du dracan : soit un <ref>dst='unit_Drake "
-"Clasher' text='cogneur'</ref> soit un <ref>dst='unit_Drake Fighter' "
-"text='combattant'</ref>."
+"Clasher' text='Cogneur'</ref> soit un <ref>dst='unit_Drake Fighter' "
+"text='Combattant dracan'</ref>."
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
-#, fuzzy
 msgid "Aerie"
-msgstr "Château céleste"
+msgstr "Nid de dragon"
 
-# cf. "Breeding Pen"
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
-#, fuzzy
 msgid ""
 "A very large castle-like structure that is home to a <ref>dst='flight' "
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
-"Une sorte de château qui abrite une <ref>dst='flight' text='horde'</ref>. "
-"C'est là que se trouvent leurs <ref>dst='breeding_pen' text='nids'</ref>."
+"Une sorte de très grand château qui abrite un <ref>dst='flight' "
+"text='escadron'</ref>. C'est là que se trouvent leurs "
+"<ref>dst='breeding_pen' text='nids de reproduction'</ref>."
 
-# "nid" pour "breeding pen" car il s'agit d'une espèce volante, mais sans conviction - GB
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
-#, fuzzy
 msgid "Breeding Pen"
-msgstr "Nid"
+msgstr "Nid de reproduction"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
-#, fuzzy
 msgid ""
 "The portion of an <ref>dst='aerie' text='aerie'</ref> where the nonsentient "
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
 "text='Dominant'</ref>’s eye."
 msgstr ""
-"La partie du <ref>dst='aerie' text='château céleste'</ref> où les "
-"<ref>dst='breeder' text='pondeuses'</ref> insensibles vivent sous le regard "
+"La partie de du<ref>dst='aerie' text='nid de dragon'</ref> où les "
+"<ref>dst='breeder' text='pondeuses'</ref> indolentes vivent sous le regard "
 "du <ref>dst='dominant' text='dominant'</ref>."
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
-#, fuzzy
 msgid "Breeding Cycle"
 msgstr "Cycle de ponte"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:26
-#, fuzzy
 msgid ""
 "The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
 "next."
@@ -235,13 +224,11 @@ msgstr ""
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
-#, fuzzy
 msgid "World Ocean"
 msgstr "Océan Mondial"
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:32
-#, fuzzy
 msgid ""
 "The World Ocean is the name of the open seas that surround the archipelago "
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
@@ -254,29 +241,25 @@ msgstr ""
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
-#, fuzzy
 msgid "New Continent"
-msgstr "Nouveau-Continent"
+msgstr "Nouveau Continent"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
-#, fuzzy
 msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
-"Nouveau-Continent : le vaste continent qui s'étend à l'est de Morogor. Son "
-"existence était inconnue des dracans jusqu'au vol de Galun."
+"Le vaste continent qui s'étend à l'est de <ref>dst='morogor' text='Morogor'</"
+"ref>. Son existence était inconnue des dracans jusqu'au vol de Galun."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
-#, fuzzy
 msgid "Abyss"
 msgstr "Abysse"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:44
-#, fuzzy
 msgid ""
 "In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
 "falls off the world-disc."
@@ -286,49 +269,43 @@ msgstr ""
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
-#, fuzzy
 msgid "Spiral Path"
 msgstr "Voie de la Spirale"
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:50
-#, fuzzy
 msgid ""
 "A quasi-secret organization among the drakes devoted to avoiding a "
 "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
 "Path'</ref>"
 msgstr ""
 "Une organisation dracane presque secrète qui cherche à empêcher une ultime "
-"guerre malthusienne. Voir aussi <ref>dst='straight_path' text='Voie Droite'</"
-"ref>"
+"guerre malthusienne. Voir aussi <ref>dst='straight_path' text='Le droit "
+"chemin'</ref>"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:55
-#, fuzzy
 msgid "Straight Path"
-msgstr "Voie Droite"
+msgstr "Le droit chemin"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:56
-#, fuzzy
 msgid ""
 "The drakish tradition of perpetual expansion and conquest. This term is "
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
-"'La tradition dracane de conquête et d'expansion perpétuelle. Ce terme est "
+"La tradition dracane de conquête et d'expansion perpétuelle. Ce terme est "
 "surtout utilisé par les membres de la <ref>dst='spiral_path' text='Voie de "
 "la Spirale'</ref>."
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
-#, fuzzy
 msgid "Dominant"
 msgstr "Dominant"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
-#, fuzzy
 msgid ""
 "The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
 "leader, the only drake in the tribe that is allowed to reproduce with the "
@@ -342,31 +319,27 @@ msgstr ""
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
-#, fuzzy
 msgid "Vulcaniad"
 msgstr "Vulcaniade"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
-#, fuzzy
 msgid ""
 "The (irregular) period between consecutive eruptions of "
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
 "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
 msgstr ""
 "La période (irrégulière) qui sépare deux éruptions consécutives du "
-"<ref>dst='mount_morogor' text='mont Morogor'</ref>. C'est la base du "
-"calendrier <ref>dst='long_count' text='long'</ref>."
+"<ref>dst='mount_morogor' text='mont Morogor'</ref>. C'est la base de "
+"l'<ref>dst='long_count' text='ancien calendrier'</ref>."
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
-#, fuzzy
 msgid "Recorder"
 msgstr "Greffier"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
-#, fuzzy
 msgid ""
 "A Recorder is a Drakish scrollkeeper who has mastered the drakish "
 "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
@@ -381,33 +354,28 @@ msgstr ""
 
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
-#, fuzzy
 msgid "Laying"
 msgstr "Ponte"
 
 #. [topic]: id=laying
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
-#, fuzzy
 msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
 msgstr ""
 "L'aboutissement du <ref>dst='breeding_cycle' text='cycle de ponte'</ref>."
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
-#, fuzzy
 msgid "Hatching"
 msgstr "Éclosion"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
-#, fuzzy
 msgid "Hatchling"
 msgstr "Nouveau-né"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
-#, fuzzy
 msgid ""
 "A young drake that has not yet seen another generation hatch. The younger of "
 "the current generation of hatchlings are the most aggressive is the behavior "
@@ -415,35 +383,31 @@ msgid ""
 msgstr ""
 "Un jeune dracan qui n'a pas encore vu l'éclosion de la génération suivante. "
 "Les plus jeunes de cette nouvelle génération ont le comportement le plus "
-"agressif de la <ref>dst='flight' text='horde'</ref>."
+"agressif de l'<ref>dst='flight' text='escadron'</ref>."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
-#, fuzzy
 msgid "Fledgling"
-msgstr "Jeune dracan"
+msgstr "Dragonet"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
-#, fuzzy
 msgid ""
 "A young drake that has seen another generation hatch. If the "
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
-"Un jeune dracan qui n'a pas vu l'éclosion d'une génération suivante. Si la "
-"<ref>dst='flight' text='horde'</ref> peut se permettre de perdre une "
-"génération, ils commencent l'<ref>dst='swarming' text='essaimage'</ref>."
+"Un jeune dracan qui a vu l'éclosion d'une génération. Si l'<ref>dst='flight' "
+"text='escadron'</ref> peut se permettre de perdre une génération, ils "
+"commencent l'<ref>dst='swarming' text='essaimage'</ref>."
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
-#, fuzzy
 msgid "Breeder"
 msgstr "Pondeuse"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:104
-#, fuzzy
 msgid ""
 "The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> that "
 "become breeders have to be handled with extra care. The number of breeders "
@@ -460,13 +424,11 @@ msgstr ""
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:109
-#, fuzzy
 msgid "Egg, Drake"
 msgstr "Œuf dracan"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:110
-#, fuzzy
 msgid ""
 "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid "
@@ -478,31 +440,28 @@ msgstr ""
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
-#, fuzzy
 msgid "Flight"
-msgstr "Horde"
+msgstr "Escadron"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
-#, fuzzy
 msgid ""
 "Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
-"Tribu de dracans, vivant dans un <ref>dst='aerie' text='château céleste'</"
-"ref> et contrôlant un terrain de chasse. Chaque tribu dispose d'un dominant, "
-"qui attribue des droits d'accouplement."
+"Tribu de dracans, vivant dans un <ref>dst='aerie' text='nid de dragon'</ref> "
+"et contrôlant un terrain de chasse. Chaque tribu dispose d'un "
+"<ref>dst='dominant' text='dominant'</ref>, qui attribue des droits "
+"d'accouplement."
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:121
-#, fuzzy
 msgid "Aspirant"
 msgstr "Aspirant"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
-#, fuzzy
 msgid ""
 "Male drake that has passed through a hormonal metamorphosis that makes him "
 "able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
@@ -510,33 +469,30 @@ msgid ""
 "drake is involved."
 msgstr ""
 "Dracan mâle ayant subi une métamorphose hormonale lui permettant de "
-"s'accoupler avec les pondeuses. La sécretion de l'hormone est causée par la "
-"chasse et les faits d'armes auxquels le dracan participe."
+"s'accoupler avec les <ref>dst='breeder' text='pondeuses'</ref>. La sécretion "
+"de l'hormone est causée par la chasse et les faits d'armes auxquels le "
+"dracan participe."
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:127
-#, fuzzy
 msgid "Ascendant"
 msgstr "Ascendant"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
-#, fuzzy
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
-"Le nom dracan pour un véritable <ref>dst='unit_Fire Dragon' text='dragon'</"
-"ref>."
+"La véritable appellation des dracan est <ref>dst='unit_Fire Dragon' "
+"text='dragon'</ref>."
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
-#, fuzzy
 msgid "Intendant"
 msgstr "Intendant"
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:134
-#, fuzzy
 msgid ""
 "One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
 "<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of each "
@@ -554,49 +510,42 @@ msgstr ""
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
-#, fuzzy
 msgid "Swarm"
 msgstr "Essaim"
 
-# Référence ôtée car inexistante - GB
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:140
-#, fuzzy
 msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
-"Ensemble de dracans qui ont quitté le château céleste pour en fonder un "
-"nouveau."
+"Les <ref>dst='swarmlings' text='essaimeurs'</ref> sont ceux qui quittent "
+"le<ref>dst='aerie' text='nid de dragon'</ref> pour en fonder un nouveau."
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
-#, fuzzy
 msgid "Swarming"
 msgstr "Essaimage"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
-#, fuzzy
 msgid ""
 " The <ref>dst='flight' text='flight'</ref> for a new drake <ref>dst='aerie' "
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
-"La <ref>dst='flight' text='horde'</ref> formée pour la fondation d'un "
-"nouveau <ref>dst='aerie' text='château céleste'</ref> à chaque "
+"L'<ref>dst='flight' text='escadron'</ref> formé pour la fondation d'un "
+"nouveau <ref>dst='aerie' text='nid de dragon'</ref> à chaque "
 "<ref>dst='breeding_cycle' text='cycle de ponte'</ref>. Voir <ref>dst='swarm' "
-"text='Essaim'</ref>"
+"text='essaim'</ref>"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
-#, fuzzy
 msgid "Runners"
 msgstr "Coureurs"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:152
-#, fuzzy
 msgid "Drakish term for escaped slaves hunted as game."
 msgstr ""
 "Terme dracan désignant des esclaves ayant pris la fuite et dont la chasse "
@@ -604,45 +553,40 @@ msgstr ""
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
-#, fuzzy
 msgid "Mount Morogor"
 msgstr "Mont Morogor"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
-#, fuzzy
 msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
-"Montagne volcanique sur l'île centrale de l'archipel <ref>dst='morogor' "
+"Montagne volcanique sur l'île centrale de l'archipel de <ref>dst='morogor' "
 "text='Morogor'</ref>."
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
-#, fuzzy
 msgid "Long Count"
-msgstr "Calendrier long"
+msgstr "Ancien Calendrier"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
-#, fuzzy
 msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
-"Le calendrier dracan rythmé par les <ref>dst='vulcaniad' text='vulcaniades'</"
-"ref> et les <ref>dst=breeding_cycle text='cycles de ponte'</ref>."
+"Le calendrier dracan est rythmé par les <ref>dst='vulcaniad' "
+"text='vulcaniades'</ref> et les <ref>dst=breeding_cycle text='cycles de "
+"ponte'</ref>."
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
-#, fuzzy
 msgid "Long Pig"
 msgstr "Long Pig"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:170
-#, fuzzy
 msgid ""
 "South Seas pidgin for human meat, used to translate a Drakish word with the "
 "same meaning."
@@ -652,13 +596,11 @@ msgstr ""
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
-#, fuzzy
 msgid "Ceramics"
 msgstr "Céramique"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
-#, fuzzy
 msgid ""
 "The drakes work metal, but are are masters in the craftsmanship of making "
 "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
@@ -671,13 +613,11 @@ msgstr ""
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:181
-#, fuzzy
 msgid "Drakish, script"
 msgstr "Dracan, écriture"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
-#, fuzzy
 msgid ""
 "The scripted language of the drakes. Stored on <ref>dst='ceramic' "
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
@@ -689,13 +629,11 @@ msgstr ""
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:187
-#, fuzzy
 msgid "Drakish, language"
 msgstr "Dracan, langage"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:188
-#, fuzzy
 msgid "The language spoken by the drakes."
 msgstr "La langue parlée par les dracans."
 
@@ -703,53 +641,46 @@ msgstr "La langue parlée par les dracans."
 #. [topic]: id=..geography
 #: data/core/encyclopedia/geography.cfg:11
 #: data/core/encyclopedia/geography.cfg:18
-#, fuzzy
 msgid "Geography"
 msgstr "Géographie"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:25
-#, fuzzy
 msgid "Arkan-thoria"
 msgstr "Arkan-thoria"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
-#, fuzzy
 msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
 "Une rivière qui prend sa source dans les <ref>dst='heart_mountains' "
-"text='montagnes Heart'</ref> et qui se jette à l'est dans la Listra."
+"text='montagnes centrales'</ref> et qui se jette à l'est dans la Listra."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:31
-#, fuzzy
 msgid "Great Ocean"
 msgstr "Grand Océan"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
-#, fuzzy
 msgid ""
 "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
 "and all rivers eventually flow to it. Far to the west in the the Great Ocean "
 "is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
-"S'étend à l'ouest du <ref>dst='great_continent' text='continent'</ref> et "
-"tous les fleuves s'y jettent. Loin vers l'ouest dans le Grand Océan se "
+"S'étend à l'ouest du <ref>dst='great_continent' text='grand continent'</ref> "
+"et tous les fleuves s'y jettent. Loin vers l'ouest dans le Grand Océan se "
 "trouve l'immense archipel appelé <ref>dst='morogor' text='Morogor'</ref>."
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:37
-#, fuzzy
 msgid "Morogor"
 msgstr "Morogor"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:40
-#, fuzzy
 msgid ""
 "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
 "Ocean'</ref> west of the <ref>dst='green_isle' text='Green Isle'</ref> and "
@@ -766,13 +697,11 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
-#, fuzzy
 msgid "Green Isle"
 msgstr "Île Verte"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
-#, fuzzy
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
@@ -780,13 +709,11 @@ msgstr ""
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
-#, fuzzy
 msgid "Old Continent"
 msgstr "Vieux Continent"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
-#, fuzzy
 msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
@@ -796,13 +723,11 @@ msgstr ""
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:57
-#, fuzzy
 msgid "Great Continent"
 msgstr "Grand Continent"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:58
-#, fuzzy
 msgid ""
 "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
@@ -814,13 +739,11 @@ msgstr ""
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:63
-#, fuzzy
 msgid "Irdya"
 msgstr "Irdya"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:64
-#, fuzzy
 msgid ""
 "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref> is situated is ‘Irdya’. This term is, however, only "
@@ -828,19 +751,17 @@ msgid ""
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
 "Le nom du monde dans lequel le royaume de <ref>dst='kingdom_wesnoth' "
-"text='Wesnoth'</ref> est situé est « Irdya ». Ce terme est cependant "
-"rarement utilisé dans l'ère décrite par la carte principale. Normalement on "
+"text='Wesnoth'</ref> est situé s'appelle « Irdya ». Ce terme est cependant "
+"rarement utilisé dans l'aire décrite par la carte principale. Normalement on "
 "dit juste « le monde » ou, poétiquement, « le grand monde vert »."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
-#, fuzzy
 msgid "Kingdom of Wesnoth"
 msgstr "Royaume de Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:95
-#, fuzzy
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -955,13 +876,11 @@ msgstr ""
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:100
-#, fuzzy
 msgid "Elensefar"
 msgstr "Elensefar"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
-#, fuzzy
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -979,12 +898,12 @@ msgid ""
 "          ◦ <ref>dst='great_river' text='Great River'</ref>: It is very wide "
 "at this point, and only ships can cross it."
 msgstr ""
-"Elensefar est parfois une province de <ref>dst='kingdom_wesnoth' "
-"text='Wesnoth'</ref>, parfois un pays indépendant et parfois lié en "
-"fédération avec Wesnoth. Ses frontières sont le Grand Fleuve au nord, une "
+"Elensefar est parfois une province du <ref>dst='kingdom_wesnoth' "
+"text='royaume de Wesnoth'</ref>, parfois un pays indépendant et parfois lié "
+"en fédération avec Wesnoth. Ses frontières sont le Grand Fleuve au nord, une "
 "ligne changeante de démarcation avec Wesnoth à l'est, la Baie des Perles au "
-"sud et l'<ref>dst='great_ocean' text='océan'</ref> à l'ouest. Plus "
-"d'information est disponible dans l'Histoire de Wesnoth.\n"
+"sud et le<ref>dst='great_ocean' text='grand océan'</ref> à l'ouest. Plus "
+"d'information disponible dans l'Histoire de Wesnoth.\n"
 "\n"
 "    • Cités remarquables :\n"
 "          ◦ Elensefar : La capitale, située sur une île dans le delta du "
@@ -997,14 +916,12 @@ msgstr ""
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:112
-#, fuzzy
 msgid "Northlands"
 msgstr "Terres du Nord"
 
 # "Long-Repos" : cf. campagne Héritier du Trône pour le choix de la traduction
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:130
-#, fuzzy
 msgid ""
 "There is no government of the Northlands. Various groups of orcs, dwarves, "
 "barbarian men and even elves populate the region. The northern and eastern "
@@ -1088,13 +1005,11 @@ msgstr ""
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
-#, fuzzy
 msgid "Southwest Elven Lands"
 msgstr "Terres elfes du Sud-Ouest"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
-#, fuzzy
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -1111,7 +1026,7 @@ msgstr ""
 "Les Bois Elfes sont distincts de ceux du Nord, et n'ont que de sporadiques "
 "relations avec eux et la plupart des autres pays. Ses frontières sont le "
 "Marais Glauque au nord-est, le désert (absent de la carte) au sud et "
-"l'<ref>dst='great_ocean' text='Océan'</ref> à l'ouest.\n"
+"le<ref>dst='great_ocean' text='grand océan'</ref> à l'ouest.\n"
 "\n"
 "    • Cités remarquables\n"
 "          ◦ Aucune cité connue\n"
@@ -1122,13 +1037,11 @@ msgstr ""
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:146
-#, fuzzy
 msgid "Heart Mountains"
-msgstr "Montagnes Heart"
+msgstr "Montagnes Centrales"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:147
-#, fuzzy
 msgid ""
 "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
@@ -1140,13 +1053,11 @@ msgstr ""
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
-#, fuzzy
 msgid "Far North"
-msgstr "Extrême-Nord"
+msgstr "Grand Nord"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:176
-#, fuzzy
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref>dst='heart_mountains' text='Heart "
@@ -1182,8 +1093,8 @@ msgid ""
 msgstr ""
 "Froid, dur et inaccessible, l'Extrême-Nord est la terre ancestrale des Clans "
 "orcs. Il est situé au nord des <ref>dst='heart_mountains' text='Montagnes "
-"Heart'</ref>, que les orcs appellent Haggid-Dargor et dont ils réclament la "
-"propriété (sans mérite). Plus à l'est sont les Tribus Libres de la Steppe "
+"Centrales'</ref>, que les orcs appellent Haggid-Dargor et dont ils réclament "
+"la propriété (sans mérite). Plus à l'est sont les Tribus Libres de la Steppe "
 "Sauvage, qui ont échappé au contrôle des Clans et qui vagabondent avec des "
 "barbares humains sauvages en se heurtant aux Hauts Elfes des Plaines du Nord "
 "(connus comme Elfes du Nord dans les terres humaines). Les Hauts Elfes eux-"
@@ -1316,7 +1227,6 @@ msgstr "Aperçu"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:120
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1331,10 +1241,11 @@ msgstr ""
 "\n"
 "« Bataille pour Wesnoth » est un jeu de stratégie d'<italic>text='heroic "
 "fantasy'</italic> quelque peu inhabituel parmi les jeux récents du même "
-"type. Alors que les autres s'avèrent toujours plus complexes, « Bataille "
-"pour Wesnoth » vise la simplicité et la jouabilité sans être simpliste pour "
-"autant : ses règles simples révèlent une vraie richesse stratégique, ce qui "
-"en fait un jeu facile à apprendre mais difficile à maîtriser."
+"type. Alors que les autres s'avèrent toujours plus complexes, "
+"<italic>text='Bataille pour Wesnoth'</italic> vise la simplicité et la "
+"jouabilité sans être simpliste pour autant : ses règles simples révèlent une "
+"vraie richesse stratégique, ce qui en fait un jeu facile à apprendre mais "
+"difficile à maîtriser."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:132
@@ -1358,7 +1269,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:135
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1372,10 +1282,10 @@ msgstr ""
 "\n"
 "\n"
 "Pour commencer, l'idéal est de cliquer sur le bouton "
-"<italic>text='Didacticiel'</italic> du menu principal : un apprentissage "
+"<bold>text='Didacticiel'</bold> du menu principal. Un apprentissage "
 "interactif vous enseignera les bases de Wesnoth. Après, il est recommandé de "
-"commencer par la campagne « L'Héritier du trône » : sélectionnez "
-"<italic>text='Campagne'</italic> puis <italic>text='L\\'Héritier du trône'</"
+"commencer par la campagne L'Héritier du trône : sélectionnez "
+"<bold>text='Campagne'</bold> puis <italic>text='L\\'Héritier du trône'</"
 "italic>. Comme le jeu peut sembler plutôt ardu au début, vous pourriez "
 "commencer en mode <italic>text='Débutant'</italic>."
 
@@ -1401,7 +1311,6 @@ msgstr "À propos du jeu"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:144
-#, fuzzy
 msgid ""
 "The game takes place over a series of battles, called "
 "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
@@ -1420,7 +1329,6 @@ msgstr ""
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:146
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1443,7 +1351,6 @@ msgstr "Victoire et défaite"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:153
-#, fuzzy
 msgid ""
 "Pay careful attention to the <bold>text='Objectives'</bold> pop-up box at "
 "the beginning of each scenario. Usually you will achieve victory by killing "
@@ -1483,7 +1390,6 @@ msgstr "Recruter et rappeler"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1510,15 +1416,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1537,7 +1434,6 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1595,37 +1491,33 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
-#, fuzzy
 msgid " green if it hasn’t moved this turn,"
-msgstr "- vert si elle ne s'est pas encore déplacée pendant ce tour,"
+msgstr "vert si elle ne s'est pas encore déplacée pendant ce tour,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:181
-#, fuzzy
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-"- jaune si elle a déjà bougé, mais pourrait encore se déplacer ou attaquer,"
+"jaune si elle a déjà bougé, mais pourrait encore se déplacer ou attaquer,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:182
-#, fuzzy
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
-"- rouge si elle ne peut plus se déplacer ni attaquer, ou si le joueur a mis "
-"fin à son tour ;"
+"rouge si elle ne peut plus se déplacer ni attaquer, ou si le joueur a mis "
+"fin à son tour."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
-#, fuzzy
 msgid " blue if the unit is an ally you do not control."
-msgstr "- bleu si l'unité est sous le contrôle d'un allié."
+msgstr " bleu si l'unité est sous le contrôle d'un allié."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:184
-#, fuzzy
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr "Les unités ennemies n'ont pas d'orbe."
+msgstr ""
+"Les unités ennemies n'ont pas d'orbe au dessus de leur barre de point de vie."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:191
@@ -1634,7 +1526,6 @@ msgstr "Points de vie et expérience"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:192
-#, fuzzy
 msgid ""
 "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). If "
 "the hitpoints of a unit drop below 1, the unit dies. Each unit also has a "
@@ -1707,7 +1598,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1731,8 +1621,7 @@ msgstr ""
 "qu'un point, la plupart des unités humaines et orcs en consomment deux, "
 "alors que les cavaliers en dépensent trois. Vous pouvez connaître ce nombre "
 "avec un clic-droit sur une unité, en choisissant « Description de l'unité », "
-"puis en consultant la rubrique <italic>text='Modificateurs de terrain'</"
-"italic>."
+"puis en consultant la rubrique <bold>text='Modificateurs de terrain'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
@@ -1779,7 +1668,6 @@ msgstr "Voile et brouillard de guerre"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:221
-#, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The "
@@ -1900,7 +1788,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1914,18 +1801,18 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Chaque unité a une probabilité d'être touchée qui dépend du terrain sur "
-"lequel elle se tient. C'est affiché dans le panneau d'état ou peut être "
-"trouvé par un clic-droit sur une unité, en choisissant « Description de "
-"l'unité » puis en consultant la rubrique <italic>text='Modificateurs de "
-"terrain'</italic>. Par exemple, les elfes ont une défense de 70 % en forêt, "
-"ce qui signifie qu'une unité les attaquant n'a que 30 % de chance de les "
-"atteindre. Inversement, la probabilité pour l'elfe de toucher son assaillant "
-"dépend du terrain sur lequel ce dernier se trouve."
+"Chaque unité a une probabilité d'être touchée qui dépend du "
+"<italic>text='terrain'</italic> sur lequel elle se tient. C'est affiché dans "
+"le panneau d'état ou peut être trouvé par un clic-droit sur une unité, en "
+"choisissant <bold>text='Description de l\\'unité'</bold> puis en consultant "
+"la rubrique <bold>text='Modificateurs de terrain'</bold>. Par exemple, les "
+"elfes ont une défense de 70 % en forêt, ce qui signifie qu'une unité les "
+"attaquant n'a que 30 % de chance de les atteindre. Inversement, la "
+"probabilité pour l'elfe de toucher son assaillant dépend du terrain sur "
+"lequel ce dernier se trouve."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1957,7 +1844,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1976,8 +1862,8 @@ msgstr ""
 "de dégâts comme base. Cela est généralement modifié par deux éléments : "
 "<ref>dst='damage_types_and_resistance' text='la résistance'</ref> et "
 "<ref>dst='time_of_day' text='le moment de la journée'</ref>. Pour voir "
-"l'influence de ces paramètres, sélectionnez <italic>text='Calcul des "
-"dégâts'</italic> pendant le choix de l'attaque."
+"l'influence de ces paramètres, sélectionnez <bold>text='Calcul des dégâts'</"
+"bold> pendant le choix de l'attaque."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
@@ -2005,7 +1891,6 @@ msgstr "Types de dégâts et résistance"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:252
-#, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <italic>text='blade, pierce, and impact damage'</italic>. "
@@ -2015,14 +1900,14 @@ msgid ""
 "they take from certain damage types."
 msgstr ""
 "Dans Wesnoth, il y a trois types de dégât habituellement associés aux "
-"attaques physiques : tranchant, perforant et contondant. Trois autres types "
-"de dégât sont communément associés aux attaques enchantées : feu, froid et "
-"arcane. Les unités ont différentes résistances qui modifient la quantité de "
-"dégâts reçus par les différents types d'attaques."
+"attaques physiques : <italic>text='tranchant, perforant et contondant'</"
+"italic>. Trois autres types de dégât sont communément associés aux attaques "
+"enchantées : <italic>text='feu, froid et arcane'</italic>. Les unités ont "
+"différentes résistances qui modifient la quantité de dégâts reçus par les "
+"différents types d'attaques."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2043,7 +1928,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2078,7 +1962,6 @@ msgstr "Moment de la journée"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -2095,7 +1978,6 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2347,7 +2229,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:317
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2368,7 +2249,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2405,7 +2285,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2432,7 +2311,6 @@ msgstr "Conclusion"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:330
-#, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
 "basic strategy, or familiarize yourself with <ref>dst='..traits_section' "
@@ -2459,7 +2337,6 @@ msgstr "Licence"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:350
-#, fuzzy
 msgid ""
 "Most units have two traits. However, undead units are assigned the single "
 "trait <italic>text='undead'</italic>, and woses do not receive any traits. "
@@ -2519,7 +2396,6 @@ msgstr ""
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:365
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2555,7 +2431,6 @@ msgstr ""
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:373
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2615,7 +2490,6 @@ msgstr "Fort"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:387
-#, fuzzy
 msgid ""
 "<italic>text='Strong'</italic> units do 1 more damage for every successful "
 "strike in melee combat, and have 1 more HP."
@@ -2625,7 +2499,6 @@ msgstr ""
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:389
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2653,13 +2526,11 @@ msgstr "La lumière et l'obscurité n'ont aucun effet sur ces braves."
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:400
-#, fuzzy
 msgid "Feral"
 msgstr "Sauvage"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:401
-#, fuzzy
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
@@ -2689,7 +2560,6 @@ msgstr ""
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:409
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2724,7 +2594,6 @@ msgstr ""
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:417
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2771,13 +2640,11 @@ msgstr ""
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:430
-#, fuzzy
 msgid "trait^Elemental"
 msgstr "Élémental"
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:431
-#, fuzzy
 msgid ""
 "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
 "plague."
@@ -2787,7 +2654,6 @@ msgstr ""
 
 #. [topic]: id=traits_elemental
 #: data/core/help.cfg:433
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2817,7 +2683,6 @@ msgstr ""
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:441
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2924,7 +2789,6 @@ msgstr "Faible"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:471
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='weak'</italic> get a −1 increment in "
 "hitpoints and melee damage."
@@ -2934,14 +2798,11 @@ msgstr ""
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:476
-#, fuzzy
-#| msgid "trait^Undead"
 msgid "trait^Aged"
 msgstr "Âgé"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:477
-#, fuzzy
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
@@ -3186,7 +3047,6 @@ msgstr "Gelé"
 
 #. [topic]: id=terrain_frozen
 #: data/core/help.cfg:600
-#, fuzzy
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice. Most units are slowed down on it, and have a harder "
@@ -3210,17 +3070,6 @@ msgstr "Château"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#| "Nearly all units receive a considerable bonus to their defense by being "
-#| "stationed in a castle, and all units receive full movement in a castle. "
-#| "Stationing units in a castle represents its defensive capability. Without "
-#| "a unit in each wall hex, an enemy can simply sneak into the castle "
-#| "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#| "\n"
-#| "Most units have about 60% defense in a castle.\n"
-#| "\n"
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -3234,7 +3083,7 @@ msgid ""
 msgstr ""
 "Les <italic>text='châteaux'</italic> incluent tous les genres de "
 "fortifications permanentes. Presque toutes les unités y reçoivent un bonus "
-"défensif considérable, et toutes les unités s'y déplacent au maximum de "
+"défensif considérable, et la majorité des unités s'y déplacent au maximum de "
 "leurs capacités. Les unités dans un château constituent sa garnison. Un "
 "hexagone libre permet à un ennemi de s'introduire facilement dans le château "
 "et d'obtenir un bonus de défense identique à celui des troupes à "
@@ -3250,7 +3099,6 @@ msgstr "Sable"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:628
-#, fuzzy
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -3273,7 +3121,6 @@ msgstr "Désert"
 
 #. [topic]: id=terrain_desert
 #: data/core/help.cfg:638
-#, fuzzy
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
@@ -3290,7 +3137,6 @@ msgstr "Caverne"
 
 #. [topic]: id=terrain_cave
 #: data/core/help.cfg:650
-#, fuzzy
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass. Most units are wholly unfamiliar with the "
@@ -3321,7 +3167,6 @@ msgstr "Caverne accidentée"
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:662
-#, fuzzy
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -3355,7 +3200,6 @@ msgstr "Caverne éclairée"
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:672
-#, fuzzy
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -3744,7 +3588,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
-#, fuzzy
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3758,10 +3601,10 @@ msgstr ""
 "\n"
 "Donne le contrôle du camp (écrire ici le numéro de camp) au joueur (écrire "
 "ici le pseudonyme de l'utilisateur ou de l'observateur). Vous pouvez "
-"regarder à qui appartient un camp dans la fenêtre « Paramètres du "
-"Scénario » (appuyez sur le bouton « Suite » de la fenêtre d'état pour y "
-"accéder (alt+s par défaut)). L'hôte peut changer le contrôle de n'importe "
-"quel camp.\n"
+"regarder à qui appartient un camp dans la fenêtre <bold>text='Paramètres du "
+"Scénario'</bold> (appuyez sur le bouton <bold>text='Suite'</bold> de la "
+"<bold>text='fenêtre d\\'état'</bold> pour y accéder (alt+s par défaut)). "
+"L'hôte peut changer le contrôle de n'importe quel camp.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3781,7 +3624,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:844
-#, fuzzy
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3789,8 +3631,11 @@ msgid ""
 "game.\n"
 "\n"
 msgstr ""
-"Envoie un message privé. Vous ne pouvez pas envoyer de messages privés aux "
-"joueurs qui contrôlent un camp dans une partie où vous êtes."
+"\n"
+"Envoie un message privé à un utilisateur. Vous ne pouvez pas envoyer de "
+"messages privés aux joueurs qui contrôlent un camp dans une partie où vous "
+"êtes.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:847
@@ -4369,7 +4214,7 @@ msgstr ""
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:681
 msgid "swarm"
-msgstr "déferlement"
+msgstr "essaim"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:683
@@ -4443,7 +4288,6 @@ msgstr "Bonus de PV max +3, XP max +20 %"
 
 #. [time]: id=indoors
 #: data/core/macros/schedules.cfg:70
-#, fuzzy
 msgid "Indoors"
 msgstr "Intérieur"
 
@@ -4454,141 +4298,113 @@ msgstr "Abysses souterrains"
 
 #. [time]: id=midnight_hour
 #: data/core/macros/schedules.cfg:162
-#, fuzzy
 msgid "Midnight"
 msgstr "Minuit"
 
 #. [time]: id=second_watch_hour1
 #: data/core/macros/schedules.cfg:174
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — First Hour"
-msgstr "Deuxième quart"
+msgstr "Deuxième quart - Première heure"
 
 #. [time]: id=second_watch_hour2
 #: data/core/macros/schedules.cfg:186
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Second Hour"
-msgstr "Deuxième quart"
+msgstr "Deuxième quart - Deuxième heure"
 
 #. [time]: id=second_watch_hour3
 #: data/core/macros/schedules.cfg:198
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Third Hour"
-msgstr "Deuxième quart"
+msgstr "Deuxième quart - Troisième heure"
 
 #. [time]: id=second_watch_hour4
 #: data/core/macros/schedules.cfg:210
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fourth Hour"
-msgstr "Deuxième quart"
+msgstr "Deuxième quart - Quatrième heure"
 
 #. [time]: id=second_watch_hour5
 #: data/core/macros/schedules.cfg:222
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Fifth Hour"
-msgstr "Deuxième quart"
+msgstr "Deuxième quart - Cinquième heure"
 
 #. [time]: id=second_watch_hour6
 #: data/core/macros/schedules.cfg:234
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Watch — Sixth Hour"
-msgstr "Deuxième quart"
+msgstr "Deuxième quart -  Sixième heure"
 
 #. [time]: id=morning_hour1
 #: data/core/macros/schedules.cfg:257
-#, fuzzy
 msgid "Morning — First Hour"
-msgstr "Matin, première heure"
+msgstr "Matin - Première heure"
 
 #. [time]: id=morning_hour2
 #: data/core/macros/schedules.cfg:266
-#, fuzzy
 msgid "Morning — Second Hour"
-msgstr "Matin, deuxième heure"
+msgstr "Matin - Deuxième heure"
 
 #. [time]: id=morning_hour3
 #: data/core/macros/schedules.cfg:275
-#, fuzzy
 msgid "Morning — Third Hour"
-msgstr "Matin, troisième heure"
+msgstr "Matin- Troisième heure"
 
 #. [time]: id=morning_hour4
 #: data/core/macros/schedules.cfg:284
-#, fuzzy
 msgid "Morning — Fourth Hour"
-msgstr "Matin, quatrième heure"
+msgstr "Matin - Quatrième heure"
 
 #. [time]: id=midday_hour
 #: data/core/macros/schedules.cfg:293
-#, fuzzy
 msgid "Midday"
 msgstr "Midi"
 
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:302
-#, fuzzy
 msgid "Afternoon — First Hour"
-msgstr "Après-midi, première heure"
+msgstr "Après-midi - Première heure"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
-#, fuzzy
 msgid "Afternoon — Second Hour"
-msgstr "Après-midi, deuxième heure"
+msgstr "Après-midi - Deuxième heure"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
-#, fuzzy
 msgid "Afternoon — Third Hour"
-msgstr "Après-midi, troisième heure"
+msgstr "Après-midi - Troisième heure"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:329
-#, fuzzy
 msgid "Afternoon — Fourth Hour"
-msgstr "Après-midi, quatrième heure"
+msgstr "Après-midi - Quatrième heure"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:338
-#, fuzzy
 msgid "Afternoon — Fifth Hour"
-msgstr "Après-midi, cinquième heure"
+msgstr "Après-mid - Cinquième heure"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
-#, fuzzy
 msgid "Afternoon — Sixth Hour"
-msgstr "Après-midi, sixième heure"
+msgstr "Après-midi - Sixième heure"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
-#, fuzzy
 msgid "First Watch — First Hour"
-msgstr "Premier quart, première heure"
+msgstr "Premier quart - Première heure"
 
 #. [time]: id=first_watch_hour2
 #: data/core/macros/schedules.cfg:381
-#, fuzzy
 msgid "First Watch — Second Hour"
-msgstr "Premier quart, deuxième heure"
+msgstr "Premier quart - Deuxième heure"
 
 #. [time]: id=first_watch_hour3
 #: data/core/macros/schedules.cfg:393
-#, fuzzy
 msgid "First Watch — Third Hour"
-msgstr "Premier quart, troisième heure"
+msgstr "Premier quart - Troisième heure"
 
 #. [time]: id=first_watch_hour4
 #: data/core/macros/schedules.cfg:405
-#, fuzzy
 msgid "First Watch — Fourth Hour"
-msgstr "Premier quart, quatrième heure"
+msgstr "Premier quart - Quatrième heure"
 
 #: data/core/macros/special-notes.cfg:5
 msgid ""
@@ -4863,13 +4679,11 @@ msgstr "mécanique"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "elemental"
 msgstr "élémental"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:53
-#, fuzzy
 msgid "female^elemental"
 msgstr "élémentale"
 
@@ -4955,19 +4769,16 @@ msgstr "Combat sans malus lors des périodes défavorables de jour ou de nuit"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
 msgstr "sauvage"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
 msgstr "sauvage"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "Receives only 50% defense in land-based villages"
 msgstr "Reçoit seulement 50% de défense dans les villages terrestres"
 
@@ -5028,7 +4839,6 @@ msgstr "Chauves-souris"
 
 #. [race]: id=bats
 #: data/core/units.cfg:45
-#, fuzzy
 msgid ""
 "Bats come in many shapes and sizes, and most are fairly harmless, feeding on "
 "insects and other small animals. The larger and more vicious breeds are "
@@ -5061,7 +4871,6 @@ msgstr "Dracans"
 
 #. [race]: id=drake
 #: data/core/units.cfg:69
-#, fuzzy
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5326,7 +5135,6 @@ msgstr "Elfes"
 
 #. [race]: id=elf
 #: data/core/units.cfg:122
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5422,7 +5230,6 @@ msgstr "Gobelins"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:137
-#, fuzzy
 msgid ""
 "Goblins are, despite their appearance, born as siblings to the orcs and "
 "members of the same race. While other races usually bear children singly or "
@@ -5600,7 +5407,6 @@ msgstr "Mécaniques"
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:199
-#, fuzzy
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5629,7 +5435,6 @@ msgstr "Ondins"
 
 #. [race]: id=merman
 #: data/core/units.cfg:212
-#, fuzzy
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5659,8 +5464,6 @@ msgstr "Monstre"
 
 #. [race]: id=monster
 #: data/core/units.cfg:221
-#, fuzzy
-#| msgid "race^Monster"
 msgid "race+female^Monster"
 msgstr "Monstre"
 
@@ -5671,7 +5474,6 @@ msgstr "Monstres"
 
 #. [race]: id=monster
 #: data/core/units.cfg:223
-#, fuzzy
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5688,8 +5490,6 @@ msgstr "Naga"
 
 #. [race]: id=naga
 #: data/core/units.cfg:231
-#, fuzzy
-#| msgid "race^Nagani"
 msgid "race^Nagini"
 msgstr "Naga"
 
@@ -5700,7 +5500,6 @@ msgstr "Nagas"
 
 #. [race]: id=naga
 #: data/core/units.cfg:233
-#, fuzzy
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -5748,7 +5547,6 @@ msgstr "Ogres"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:244
-#, fuzzy
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6070,8 +5868,6 @@ msgstr "Loup"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:311
-#, fuzzy
-#| msgid "race+female^Elf"
 msgid "race+female^Wolf"
 msgstr "Louve"
 
@@ -6254,27 +6050,21 @@ msgstr "Aide de « Bataille pour Wesnoth »"
 msgid "Parse error when parsing help text: "
 msgstr "Erreur d'analyse lors de la lecture du texte d'aide :"
 
-#~| msgid "race^Human"
 #~ msgid "race^Khalifate Human"
 #~ msgstr "Humain"
 
-#~| msgid "race+female^Human"
 #~ msgid "race+female^Khalifate Human"
 #~ msgstr "Humaine"
 
-#~| msgid "race+plural^Mechanical"
 #~ msgid "race+plural^Khalifate"
 #~ msgstr "Mécaniques"
 
-#~| msgid "race^Human"
 #~ msgid "race^Falcon"
 #~ msgstr "Humain"
 
-#~| msgid "race+female^Human"
 #~ msgid "race+female^Falcon"
 #~ msgstr "Humaine"
 
-#~| msgid "race^Humans"
 #~ msgid "race^Falcons"
 #~ msgstr "Humains"
 

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-08 18:12+0100\n"
-"PO-Revision-Date: 2011-12-22 22:50+0100\n"
+"PO-Revision-Date: 2012-01-19 16:26+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -1190,7 +1190,6 @@ msgstr "Server:"
 #. [button]: id=update_addons
 #: data/gui/default/window/addon_connect.cfg:145
 #: data/gui/default/window/addon_connect.cfg:146
-#, fuzzy
 msgid "Update Add-ons"
 msgstr "Aktualizace rozšíření"
 
@@ -1278,14 +1277,13 @@ msgstr "žádné"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
-#, fuzzy
 msgid "Uninstall Add-ons"
-msgstr "Aktualizace rozšíření"
+msgstr "Odinstalace rozšíření"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
 msgid "Choose the add-ons you want to remove."
-msgstr ""
+msgstr "Vyber rozšíření k odstranění."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
@@ -1341,9 +1339,8 @@ msgstr "Vyber si obtížnost:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
-#, fuzzy
 msgid "Chat Log"
-msgstr "Ukaž záznam rozhovoru"
+msgstr "Záznam rozhovoru"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
@@ -1375,7 +1372,7 @@ msgstr "Další"
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
 msgid "Manage Data"
-msgstr ""
+msgstr "Správa dat"
 
 #. [label]: id=lblChoose
 #: data/gui/default/window/data_manage.cfg:89
@@ -1524,9 +1521,8 @@ msgstr "Kopírovat terén na okraji"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
-#, fuzzy
 msgid "Choose Player"
-msgstr "Vyber si hru pro nahrání"
+msgstr "Vyber hráče"
 
 #. [label]: id=message
 #: data/gui/default/window/editor_set_starting_position.cfg:70
@@ -1572,7 +1568,7 @@ msgstr "Modrá:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:231
 msgid "Allow multiple maps to be open simultaneously"
-msgstr ""
+msgstr "Povolit současné otevření více map"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
@@ -1820,7 +1816,7 @@ msgstr "Hry"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
 msgid "Assign sides to players at random"
-msgstr ""
+msgstr "Přiřadí hráčům strany náhodně"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:177
@@ -2048,7 +2044,7 @@ msgstr "Přezdívka"
 #. [label]
 #: data/gui/default/window/mp_change_control.cfg:194
 msgid "Change Control"
-msgstr "Změň klávesovou zkratku"
+msgstr "Změň"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
@@ -2189,7 +2185,7 @@ msgstr "Vytvoř hru"
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
-msgstr ""
+msgstr "Nastav heslo, které musí hráči znát pro přidání se ke hře."
 
 #. [label]
 #: data/gui/default/window/mp_create_game_set_password.cfg:90
@@ -2305,7 +2301,7 @@ msgstr "Nápověda"
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:147
 msgid "Show Battle for Wesnoth help"
-msgstr "Zobrazí nápovědu Bitvy o Wesnoth"
+msgstr "Zobrazit nápovědu Bitvy o Wesnoth"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:163
@@ -2320,7 +2316,7 @@ msgstr "Zobrazit další tip"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:223
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "Spustí výcvik, umožňující seznámení se hrou"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -2337,11 +2333,10 @@ msgstr "Tažení"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:224
 msgid "Start a new single player campaign"
-msgstr ""
+msgstr "Spustí nové tažení pro jednoho hráče"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:225
-#, fuzzy
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -2356,9 +2351,8 @@ msgstr "Načíst hru"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
-#, fuzzy
 msgid "Load a saved game"
-msgstr "Načtená hra"
+msgstr "Načíst uloženou hru"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
@@ -2368,7 +2362,7 @@ msgstr "Rozšíření"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
+msgstr "Stažení balíčků map, ér, tažení apod. vytvořených komunitou"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
@@ -2378,7 +2372,7 @@ msgstr "Editor map"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
 msgid "Start the map editor"
-msgstr ""
+msgstr "Spustit editor map"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:229
@@ -2388,7 +2382,7 @@ msgstr "Změnit používaný jazyk"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:230
 msgid "Configure the game’s settings"
-msgstr ""
+msgstr "Konfigurovat nastavení hry"
 
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #. [grid]
@@ -2399,7 +2393,7 @@ msgstr "Poděkování"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:231
 msgid "View the credits"
-msgstr ""
+msgstr "Zobrazit poděkování"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:232
@@ -2413,7 +2407,6 @@ msgstr "Útok!"
 
 #. [label]
 #: data/gui/default/window/unit_attack.cfg:263
-#, fuzzy
 msgid "Attack enemy"
 msgstr "Napadni nepřítele"
 
@@ -2564,15 +2557,15 @@ msgstr "Zobrazuj plovoucí popisky"
 
 #: src/game_preferences_display.cpp:194
 msgid "Turn dialog"
-msgstr "Dialog Ano/Ne"
+msgstr "Dialog tahu"
 
 #: src/game_preferences_display.cpp:195
 msgid "Enable planning mode on start"
-msgstr ""
+msgstr "Spouštět hru v plánovacím módu"
 
 #: src/game_preferences_display.cpp:196
 msgid "Hide allies’ plans by default"
-msgstr ""
+msgstr "Skrývat plány spojenců jako výchozí stav"
 
 #: src/game_preferences_display.cpp:197
 msgid "Turn bell"
@@ -2644,9 +2637,8 @@ msgstr "Animovat mapu"
 
 #: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
 #: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
-#, fuzzy
 msgid "Volume:"
-msgstr "Hlasitost zvuků:"
+msgstr "Hlasitost:"
 
 #: src/game_preferences_display.cpp:224
 msgid "Scroll speed:"
@@ -2731,15 +2723,15 @@ msgstr "Rychlost pohybu a boje jednotek"
 
 #: src/game_preferences_display.cpp:342
 msgid "Play short random animations for idle units"
-msgstr ""
+msgstr "Přehrávat krátké náhodné animace pro nečinné jednotky"
 
 #: src/game_preferences_display.cpp:345
 msgid "Continuously animate standing units in the battlefield"
-msgstr ""
+msgstr "Neustálá animace jednotek na bitevním poli"
 
 #: src/game_preferences_display.cpp:348
 msgid "Display animated terrain graphics"
-msgstr ""
+msgstr "Animovaný terén"
 
 #: src/game_preferences_display.cpp:354
 msgid "Set the frequency of unit idle animations"
@@ -2847,11 +2839,11 @@ msgstr "Zobraz dialog na začátku tvého kola"
 
 #: src/game_preferences_display.cpp:416
 msgid "Activates Planning Mode on game start"
-msgstr ""
+msgstr "Start nových her se zapnutým plánovacím módem"
 
 #: src/game_preferences_display.cpp:419
 msgid "Hides allies’ Planning Mode plans in multiplayer games"
-msgstr ""
+msgstr "Skrýt plánovací mód spojenců ve hrách více hráčů"
 
 #: src/game_preferences_display.cpp:422
 msgid "Play a bell sound at the beginning of your turn"
@@ -2937,9 +2929,8 @@ msgid "Advanced section^Advanced"
 msgstr "Pokročilé nastavení"
 
 #: src/game_preferences_display.cpp:1292
-#, fuzzy
 msgid "Choose Theme"
-msgstr "Vyber si hru pro nahrání"
+msgstr "Vyber téma"
 
 #: src/game_preferences_display.cpp:1307
 msgid "New theme will take effect on next new or loaded game."
@@ -3015,7 +3006,7 @@ msgstr "Počet sloupců se liší."
 
 #: src/gui/auxiliary/window_builder/control.cpp:49
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr ""
+msgstr "Nalezen grafický prvek s nápovědou bez bublinkové nápovědy."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:47
 #: src/gui/auxiliary/window_builder/listbox.cpp:58
@@ -3050,7 +3041,7 @@ msgstr "Nebyl definován žádný zásobník."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:46
 msgid "No nodes defined for a tree view."
-msgstr ""
+msgstr "Nebyly definovány žádné uzly pro stromový seznam."
 
 # Vzorná kryptohláška!
 #: src/gui/auxiliary/window_builder/tree_view.cpp:86
@@ -3186,7 +3177,7 @@ msgstr "Není definován stav či region vykreslení."
 
 #: src/gui/widgets/tree_view_node.cpp:103
 msgid "Unknown builder id for tree view node."
-msgstr ""
+msgstr "Neznámé id pro uzel stromového seznamu."
 
 #: src/gui/widgets/window.cpp:924
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
@@ -3405,11 +3396,11 @@ msgstr "Přeskočit animaci"
 
 #: src/hotkeys.cpp:113
 msgid "Toggle Planning Mode"
-msgstr "Přepne plánovací mód"
+msgstr "Přepnout plánovací mód"
 
 #: src/hotkeys.cpp:114
 msgid "Execute Planned Action"
-msgstr "Provede naplánovnou akci"
+msgstr "Proveď naplánovanou akci"
 
 #: src/hotkeys.cpp:115
 msgid "Execute All Actions"
@@ -3421,15 +3412,15 @@ msgstr "Smazat plánované akce"
 
 #: src/hotkeys.cpp:117
 msgid "Move Action Up Queue"
-msgstr ""
+msgstr "Posunout akci ve frontě nahoru"
 
 #: src/hotkeys.cpp:118
 msgid "Move Action Down Queue"
-msgstr ""
+msgstr "Posunout akci ve frontě dolů"
 
 #: src/hotkeys.cpp:119
 msgid "Suppose Dead"
-msgstr ""
+msgstr "Předpokládat smrt"
 
 #: src/hotkeys.cpp:121
 msgid "Quit to Desktop"
@@ -3456,9 +3447,8 @@ msgid "Save Map As"
 msgstr "Ulož mapu jako"
 
 #: src/hotkeys.cpp:130
-#, fuzzy
 msgid "Save All Maps"
-msgstr "Ulož mapu"
+msgstr "Ulož všechny mapy"
 
 #: src/hotkeys.cpp:131
 msgid "Revert All Changes"
@@ -3641,7 +3631,6 @@ msgid "Custom Command"
 msgstr "Uživatelský příkaz"
 
 #: src/hotkeys.cpp:208
-#, fuzzy
 msgid "Run Formula"
 msgstr "Proveď vzorec"
 
@@ -3655,17 +3644,15 @@ msgstr "Obnov WML"
 
 #: src/hotkeys.cpp:220
 msgid "Next Tip of the Day"
-msgstr "Zobrazit další tip"
+msgstr "Zobrazí další tip"
 
 #: src/hotkeys.cpp:227
-#, fuzzy
 msgid "Previous Tip of the Day"
-msgstr "Předešlá jednotka"
+msgstr "Zobrazí předchozí tip"
 
 #: src/hotkeys.cpp:234
-#, fuzzy
 msgid "Start Tutorial"
-msgstr "Výcvik"
+msgstr "Spustí Výcvik"
 
 #: src/hotkeys.cpp:241
 msgid "Start Campaign"
@@ -3690,7 +3677,7 @@ msgstr "Zobraz poděkování"
 
 #: src/hotkeys.cpp:277
 msgid "Show Helptip"
-msgstr ""
+msgstr "Zobrazovat bublinovou nápovědu"
 
 #: src/hotkeys.cpp:875 src/hotkeys.cpp:1220
 msgid "Do you really want to quit?"
@@ -3800,11 +3787,11 @@ msgstr "Klávesová zkratka"
 
 #: src/preferences_display.cpp:313
 msgid "Change Hotkey"
-msgstr "Změň klávesovou zkratku"
+msgstr "Změň"
 
 #: src/preferences_display.cpp:316
 msgid "Clear Hotkey"
-msgstr "Odeber klávesovou zkratku"
+msgstr "Odeber"
 
 #: src/preferences_display.cpp:394 src/preferences_display.cpp:402
 #: src/preferences_display.cpp:414
@@ -3828,7 +3815,6 @@ msgid "There are no alternative video modes available"
 msgstr "Žádné jiné grafické módy nejsou k dispozici."
 
 #: src/preferences_display.cpp:561
-#, fuzzy
 msgid " (widescreen)"
 msgstr " (širokoúhlé)"
 

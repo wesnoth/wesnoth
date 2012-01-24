@@ -282,7 +282,7 @@ void aspect_attacks::do_attack_analysis(
 					}
 
 					// No surround bonus if target is skirmisher
-					if (!itor->get_ability_bool("skirmisker"))
+					if (!itor->get_ability_bool("skirmisher"))
 						surround_bonus = 1.2;
 				}
 
@@ -373,7 +373,7 @@ int aspect_attacks::rate_terrain(const unit& u, const map_location& loc)
 	const int neutral_village_value = 10;
 	const int enemy_village_value = 15;
 
-	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerates",loc) == false) {
+	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate",loc) == false) {
 		rating += healing_value;
 	}
 

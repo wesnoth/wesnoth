@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2010-04-11 12:47+0100\n"
+"PO-Revision-Date: 2012-01-21 10:44+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -31,7 +31,7 @@ msgstr "WESNOTH"
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2011"
-msgstr ""
+msgstr "2011"
 
 # type: TH
 #. type: TH
@@ -134,7 +134,7 @@ msgstr "ustawia liczbę bitów na piksel. Przykład: B<--bpp 32>"
 #: ../../doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr ""
+msgstr "B<-c, --campaign \\ [E<lt>id_kampaniiE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
@@ -145,12 +145,17 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
+"przechodzi bezpośrednio do kampanii o identyfikatorze E<lt>id_kampaniiE<gt>. "
+"Jeśli identyfikator nie zostanie podany, zostanie wyświetlone menu wyboru. "
+"B<Uwaga:> używając tej opcji, należy koniecznie podać ścieżkę do katalogu "
+"danych jako ostatni argument — w przeciwnym razie gra uzna identyfikator "
+"kampanii lub scenariusza za katalog danych."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
 #, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr ""
+msgstr "B<--campaign-difficulty E<lt>poziom_trudnościE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -158,12 +163,15 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"Poziom trudności wskazanej kampanii (od 1 do wartości maksymalnej). Jeśli "
+"wartość nie zostanie podana, zostanie wyświetlone okno wyboru poziomu "
+"trudności kampanii."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>id_scenariuszaE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -171,6 +179,8 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
+"Identyfikator scenariusza ze wskazanej kampanii. Domyślnie wczytywany jest "
+"pierwszy scenariusz."
 
 # type: TP
 #. type: TP
@@ -182,10 +192,6 @@ msgstr "B<--config-dir>I<\\ name>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
-#, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -193,7 +199,9 @@ msgid ""
 "Games\""
 msgstr ""
 "ustawia katalog konfiguracyjny użytkownika na I<name> w ramach katalogu "
-"$HOME lub (w przypadku systemów Windows) \"My Documents\\eMy Games\"."
+"$HOME lub (w przypadku systemów Windows) \"My Documents\\eMy Games\". Można "
+"też podać ścieżkę bezwzględną katalogu konfiguracyjnego poza katalogiem "
+"$HOME lub \"My Documents\\eMy Games\"."
 
 # type: TP
 #. type: TP
@@ -213,12 +221,12 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:70
 #, no-wrap
 msgid "B<--data-dir E<lt>directoryE<gt>>"
-msgstr ""
+msgstr "B<--data-dir E<lt>katalogE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:73
 msgid "overrides the data directory with the one specified"
-msgstr ""
+msgstr "używa podanego katalogu danych zamiast domyślnego."
 
 # type: TP
 #. type: TP
@@ -247,16 +255,12 @@ msgstr "B<-e,\\ --editor>I<\\ plik>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:83
-#, fuzzy
-#| msgid ""
-#| "start the in-game map editor directly. If I<file> is specified, "
-#| "equivalent to B<-e --load>"
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
 msgstr ""
 "bezpośrednio uruchamia wbudowany edytor map. Jeśli podano parametr I<plik>, "
-"działanie opcji jest równoważne B<-e --load>"
+"działanie opcji jest równoważne B<-l --load>"
 
 # type: TP
 #. type: TP
@@ -381,10 +385,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:126
-#, fuzzy, no-wrap
-#| msgid "B<--logdomains>"
+#, no-wrap
 msgid "B<--logdomains\\ [filter]>"
-msgstr "B<--logdomains>"
+msgstr "B<--logdomains\\ [filtr]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:131
@@ -392,6 +395,8 @@ msgid ""
 "lists defined log domains (only the ones containing B<filter> if used) and "
 "exits"
 msgstr ""
+"wypisuje zdefiniowane domeny debugowania (jeśli podano wartość parametru "
+"B<filter> — tylko domeny zawierające tę wartość) i kończy pracę."
 
 # type: TP
 #. type: TP
@@ -502,7 +507,7 @@ msgstr "wyświetla nazwę katalogu z danymi gry i kończy działanie."
 #: ../../doc/man/wesnoth.6:159
 #, no-wrap
 msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr ""
+msgstr "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>plik/folderE<gt> E<lt>katalog docelowyE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:173
@@ -518,12 +523,22 @@ msgid ""
 "campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
 "data/campaign/camp ~/result>"
 msgstr ""
+"wykonuje wstępne przetworzenie wskazanego pliku/folderu. W podanym katalogu "
+"docelowym zostaną zapisane dwa pliki: zwykły plik cfg i przetworzony plik "
+"cfg. Jeśli zostanie podany folder, jego przetwarzanie wstępne będzie się "
+"odbywać rekurencyjnie na podstawie znanych reguł preprocesora. Makra wspólne "
+"z katalogu data/core/macros zostaną przetworzone przed wskazanymi zasobami.  "
+"B<define1,define2,...>: wskazane tu definicje dodatkowe zostaną przetworzone "
+"przed plikami. Jeśli są podawane, muszą być poprzedzone znakiem „=”. Jeśli "
+"lista definicji zawiera „SKIP_CORE”, zasoby z data/core nie będą wstępnie "
+"przetwarzane. Przykład: B<-p ~/wesnoth/data/campaigns/tutorial ~/wynik> lub "
+"B<-p=MULTIPLAYER,MOJA_KAMPANIA ~/wesnoth/data/campaign/camp ~/wynik>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:173
 #, no-wrap
 msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
-msgstr ""
+msgstr "B<--preprocess-input-macros E<lt>plik źródłowyE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:177
@@ -531,12 +546,14 @@ msgid ""
 "used only by the '--preprocess' command.  Specifies a file that contains "
 "[preproc_define]s to be included before preprocessing."
 msgstr ""
+"używane tylko przez polecenie --preprocess. Określa plik zawierający bloki "
+"[preproc_define], które mają być dołączone przed przetworzeniem wstępnym."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:177
 #, no-wrap
 msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
-msgstr ""
+msgstr "B<--preprocess-output-macros [E<lt>plik docelowyE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:183
@@ -546,6 +563,11 @@ msgid ""
 "file '_MACROS_.cfg' in the target directory of preprocess's command.  This "
 "switch should be typed before the --preprocess command."
 msgstr ""
+"używane tylko przez polecenie --preprocess. Wypisuje do pliku docelowego "
+"wszystkie wstępnie przetworzone makra. Jeśli plik nie zostanie określony, "
+"dane wyjściowe zostaną umieszczone w pliku „_MACROS_.cfg” w katalogu "
+"docelowym polecenia --preprocess. Opcję należy podać przed poleceniem --"
+"preprocess."
 
 # type: TP
 #. type: TP
@@ -582,12 +604,12 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:191
 #, no-wrap
 msgid "B<--strict-validation>"
-msgstr ""
+msgstr "B<--strict-validation>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:194
 msgid "validation errors are treated as fatal errors."
-msgstr ""
+msgstr "błędy sprawdzenie poprawności są traktowane jako błędy krytyczne."
 
 # type: TP
 #. type: TP
@@ -914,12 +936,9 @@ msgstr "PRAWA AUTORSKIE"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2009 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-20011 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -944,10 +963,8 @@ msgstr "ZOBACZ TAKŻE"
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:297
-#, fuzzy
-#| msgid "wesnothd"
 msgid "B<wesnothd>(6)."
-msgstr "wesnothd"
+msgstr "B<wesnothd>(6)."
 
 # type: TH
 #. type: TH
@@ -1848,43 +1865,11 @@ msgstr ""
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:286
-#, fuzzy
-#| msgid "wesnoth"
 msgid "B<wesnoth>(6)."
-msgstr "wesnoth"
+msgstr "B<wesnoth>(6)."
 
-# type: TP
-#~ msgid "B<--smallgui>"
-#~ msgstr "B<--smallgui>"
+#~ msgid "B<--new-syntax>"
+#~ msgstr "B<--new-syntax>"
 
-# type: Plain text
-#~ msgid ""
-#~ "allows to use screen resolutions down to 800x480 and resizes a few "
-#~ "interface elements."
-#~ msgstr ""
-#~ "umożliwia korzystanie z niskich rozdzielczości ekranu (do 800x480) i "
-#~ "zmienia rozmiary niektórych elementów interfejsu."
-
-# type: TH
-#~ msgid "2009"
-#~ msgstr "2009"
-
-# type: TP
-#~ msgid "B<-c, --campaign>"
-#~ msgstr "B<-c, --campaign>"
-
-# type: Plain text
-#~ msgid "goes directly to the campaign selection menu."
-#~ msgstr "powoduje przejście bezpośrednio do menu wyboru kampanii."
-
-# type: Plain text
-#~ msgid "Dumps a list of all log domains and exits."
-#~ msgstr "dokonuje zrzutu wszystkich domen dzienników i kończy działanie."
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#~ msgid "enables the new campaign syntax parsing."
+#~ msgstr "włącza analizę nowej składni kampanii."
