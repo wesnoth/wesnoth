@@ -5,6 +5,9 @@ Version 1.10.0+svn:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
      bug #19318)
+   * Fixed unit sound animation timings wherever the {SOUND:SLOW} and
+     {SOUND:POISON} macros, and several macros from animation-utils2.cfg are used
+     (see bug #19274)
 
 Version 1.10.0:
  * Campaigns:
