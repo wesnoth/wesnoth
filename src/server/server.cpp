@@ -1125,6 +1125,9 @@ void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple
 	if(simple_wml::node* whisper = doc->child("whisper")) {
 		handle_whisper(socket, *whisper);
 	}
+	if(simple_wml::node* query = doc->child("query")) {
+		handle_query(socket, *query);
+	}
 }
 
 void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
@@ -1152,6 +1155,91 @@ void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 		send_to_player(receiver_iter->second, cwhisper);
 		// TODO: Refuse to send from an observer to a game he observes
 	}
+}
+
+void server::handle_query(socket_ptr socket, simple_wml::node& query)
+{
+	PlayerMap::left_iterator iter = player_connections_.left.find(socket);
+	if(iter == player_connections_.left.end())
+		return;
+	
+	wesnothd::player& player = iter->info;
+
+	const std::string command(query["type"].to_string());
+	std::ostringstream response;
+	const std::string& help_msg = "Available commands are: adminmsg <msg>, help, games, metrics,"
+			" motd, netstats [all], requests, sample, stats, status, wml.";
+	// Commands a player may issue.
+	if (command == "status") {
+		response << process_command(command + " " + player.name(), player.name());
+	} else if (command.find("adminmsg") == 0
+			|| command == "games"
+			|| command == "metrics"
+			|| command == "motd"
+			|| command == "netstats"
+			|| command == "netstats all"
+			|| command == "requests"
+			|| command == "sample"
+			|| command == "stats"
+			|| command == "status " + player.name()
+			|| command == "wml")
+	{
+		response << process_command(command, player.name());
+	} else if (player.is_moderator()) {
+		if (command == "signout") {
+			LOG_SERVER << "Admin signed out: IP: "
+				<< socket->remote_endpoint().address().to_string() << "\tnick: "
+				<< player.name() << std::endl;
+			player.set_moderator(false);
+			// This string is parsed by the client!
+			response << "You are no longer recognized as an administrator.";
+			if(user_handler_) {
+				user_handler_->set_is_moderator(player.name(), false);
+			}
+		} else {
+			LOG_SERVER << "Admin Command: type: " << command
+				<< "\tIP: "<< socket->remote_endpoint().address().to_string()
+				<< "\tnick: "<< player.name() << std::endl;
+			response << process_command(command, player.name());
+			LOG_SERVER << response.str() << std::endl;
+		}
+	} else if (command == "help" || command.empty()) {
+		response << help_msg;
+	} else if (command == "admin" || command.find("admin ") == 0) {
+		if (admin_passwd_.empty()) {
+			simple_wml::document server_response;
+			simple_wml::node& msg = server_response.root().add_child("message");
+			msg.set_attr("sender", "server");
+			msg.set_attr("message", "No password set.");
+			send_to_player(socket, server_response);
+			return;
+		}
+		std::string passwd;
+		if (command.size() >= 6) passwd = command.substr(6);
+		if (passwd == admin_passwd_) {
+			LOG_SERVER << "New Admin recognized: IP: "
+				<< socket->remote_endpoint().address().to_string() << "\tnick: "
+				<< player.name() << std::endl;
+			player.set_moderator(true);
+			// This string is parsed by the client!
+			response << "You are now recognized as an administrator.";
+			if (user_handler_) {
+				user_handler_->set_is_moderator(player.name(), true);
+			}
+		} else {
+			WRN_SERVER << "FAILED Admin attempt with password: '" << passwd << "'\tIP: "
+				<< socket->remote_endpoint().address().to_string() << "\tnick: "
+				<< player.name() << std::endl;
+			response << "Error: wrong password";
+		}
+	} else {
+		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
+	}
+	simple_wml::document server_response;
+	simple_wml::node& msg = server_response.root().add_child("message");
+	msg.set_attr("sender", "server");
+	msg.set_attr_dup("message", response.str().c_str());
+	send_to_player(socket, server_response);
 }
 
 void server::send_to_player(socket_ptr socket, simple_wml::document& doc)
