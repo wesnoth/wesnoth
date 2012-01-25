@@ -1131,14 +1131,16 @@ static DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, 
 
 static DBusConnection *get_dbus_connection()
 {
+	if (preferences::get("disable_notifications", false)) {
+		return NULL;
+	}
+
 	static bool initted = false;
 	static DBusConnection *connection = NULL;
+
 	if (!initted)
 	{
 		initted = true;
-		if (preferences::get("disable_notifications", false)) {
-			return NULL;
-		}
 		if (getenv("KDE_SESSION_VERSION")) {
 			// This variable is defined for KDE 4 only.
 			kde_style = true;
