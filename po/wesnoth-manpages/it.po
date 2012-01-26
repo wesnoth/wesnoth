@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2012-01-17 23:04+0100\n"
-"Last-Translator: Antonio \"Antro\" Rosella <arosella@yahoo.com>\n"
+"PO-Revision-Date: 2012-01-26 12:54+0100\n"
+"Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -135,7 +135,7 @@ msgstr "imposta il numero di bit per pixel. Esempio: B<--bpp 32>"
 #: ../../doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
+msgstr "B<-c, --campaign \\ [E<lt>id_campagnaE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
@@ -146,7 +146,7 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
-"salta direttamente alla campagna con identificatore E<lt>id_campaignE<gt>. "
+"salta direttamente alla campagna con identificatore E<lt>id_campagnaE<gt>. "
 "Se non si specifica un identificatore, comparirà un menù dal quale sarà "
 "possibile selezionare una campagna. B<Nota:> Quando si usa questo switch, "
 "verifica attentamente di aver messo come ultimo parametro la directory dei "
@@ -157,7 +157,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:54
 #, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+msgstr "B<--campaign-difficulty E<lt>difficoltàE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -165,6 +165,8 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"La difficoltà di una specifica campagna (da 1 a max). Se non specificato, "
+"comparirà il widget per la selezione della difficoltà."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
@@ -527,6 +529,8 @@ msgid ""
 "used only by the '--preprocess' command.  Specifies a file that contains "
 "[preproc_define]s to be included before preprocessing."
 msgstr ""
+"usato soltanto dal comando “-preprocess”. Specifica il file che contiene i "
+"[preproc_define] che devono essere inclusi prima del preprocessing."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:177
@@ -542,6 +546,11 @@ msgid ""
 "file '_MACROS_.cfg' in the target directory of preprocess's command.  This "
 "switch should be typed before the --preprocess command."
 msgstr ""
+"usato soltanto dal comando “-preprocess”. Stamperà tutte le macro "
+"preprocessate nel file destinazione. Se il file non viene specificato verrà "
+"utilizzato il file “_MACROS.cfg” nella directory destinazione del comando di "
+"preprocess. Questo parametro deve essere immesso prima del comando -"
+"preprocess. "
 
 # type: TP
 #. type: TP
@@ -582,7 +591,7 @@ msgstr "B<--strict-validation>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:194
 msgid "validation errors are treated as fatal errors."
-msgstr ""
+msgstr "errori di validazione sono trattati come errori fatali."
 
 # type: TP
 #. type: TP
@@ -1688,6 +1697,11 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);>"
 msgstr ""
+"( per user_handler=forum) Il nome della tabella nella quale il demone "
+"wesnothd salverà i suoi dati degli utenti. Questa tabella deve essere creata "
+"manualmente, i.e: B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+"PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
 # type: TP
 #. type: TP
@@ -1713,6 +1727,8 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[mail]> Configura un server SMTP attraverso il quale l'utente può inviare "
+"e-mail. Attualmente utilizzato soltanto dallo user_handler sample."
 
 # type: TP
 #. type: TP
