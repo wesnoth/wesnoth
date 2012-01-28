@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2012-01-26 12:54+0100\n"
-"Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
+"PO-Revision-Date: 2012-01-27 22:40+0100\n"
+"Last-Translator: Antonio \"Antro\" Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -180,6 +180,8 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
+"L’identificatore dello scenario della campagna specificata. Il default è il "
+"primo scenario. "
 
 # type: TP
 #. type: TP
@@ -357,6 +359,10 @@ msgid ""
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
+"carica il salvataggio I<file> dalla directory standard dei salvataggi. Se "
+"usato insime alle optioni B<-e> o B<--editor>, lancia l’editor con aperta la "
+"mappa del I<file>. Se è una directory, l'editor lancerà una finestra di "
+"dialogo con un elenco di mappe caricabili. "
 
 # type: TP
 #. type: TP
@@ -390,6 +396,8 @@ msgid ""
 "lists defined log domains (only the ones containing B<filter> if used) and "
 "exits"
 msgstr ""
+"fornisce un elenco dei log domains definiti ( soltanto quelli contenenti "
+"B<filter>, se usata) e termina."
 
 # type: TP
 #. type: TP
@@ -516,6 +524,17 @@ msgid ""
 "campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
 "data/campaign/camp ~/result>"
 msgstr ""
+"pre-processa uno specificato file/cartella. Il/I file saranno riscritti "
+"nella directory destinazione specificata: un file cfg piatto e un file cfg "
+"processato. Se viene specificata una cartella, sarà pre-processata "
+"ricorsivamente in base alle regole di pre-processing note. Le macro comuni "
+"per data/core/macros salanno pre-processate prima delle risorse specificate. "
+"B<define1,define2,...> - gli attributi di definizione addizionali verranno "
+"aggiunto prima di pre-processare il file. Se vuoi aggiungerli devono essere "
+"preceduti dal carattere «=». Se «SKIP_CORE» è definito nella lista, data/"
+"core non saranno pre-processati. Esempio: B<-p ~/wesnoth/data/campaigns/"
+"tutorial ~/result> o B<-p=MULTIPLAYER,MIA_CAMPAGNA ~/wesnoth/data/campaign/"
+"camp ~/result>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:173
@@ -1290,6 +1309,10 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/socket/wesnothd/socket>)."
 msgstr ""
+"Il path della fifo alla quale inviare i comandi del server (come in /"
+"query ... per wesnoth). Se non diversamente specificato invia allo standard "
+"utilizzato come path al momento della compilazione del sorgente (default: B</"
+"var/run/socket/wesnothd/socket>)."
 
 # type: TP
 #. type: TP
@@ -1407,6 +1430,9 @@ msgid ""
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
+"Il comando che il server utilizza per lanciare un muovo processo server "
+"cramite il comando B<restart>. Può essere inviato soltanto tramite la fifo. "
+"Per dettagli, vedi i setaggi di B<allow_remote_shutdown>."
 
 # type: TP
 #. type: TP
@@ -1485,6 +1511,12 @@ msgid ""
 "anything real you are insane). The default value is B<forum>. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"Il nome dello user handler da utilizzare. Attualmente gli user handler "
+"disponibili sono B<forum> (per connettere wesnothd ad un forum con database "
+"phpbb) e  B<sample> (una implementazione di esempio di una interfaccia user "
+"handler; Usarla per qualcosa di real è semplicemente una cosa da pazzi). il "
+"valore di default è B<forum>. Va anche aggiunto una sezione B<[user_handler]"
+">, vedi sotto."
 
 # type: SS
 #. type: SS
@@ -1586,6 +1618,12 @@ msgid ""
 "Example: B<time=\"1D12h30m\"> results in a ban time of 1 day, 12 hours and "
 "30 minutes."
 msgstr ""
+"Definizione del formato per la rappresentazione del periodo. Il formato è %d"
+"[%s[%d%s[...]]] dove %s sono s (secondi), m (minuti), h (ore), D (giorni), M "
+"(mesi) o Y (anni) e %d è un numero. Se non vengono specificati modificatori "
+"ri tempo, il valore si assume essere espresso in minuti (m). Ad esempio: "
+"B<time=\"1D12h30m\"> ha come risultato un periodo di messa al bando di 1 "
+"giorno, 12 ore e 30 minutei."
 
 # type: Plain text
 #. type: Plain text
@@ -1608,6 +1646,11 @@ msgid ""
 "[user_handler]> section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
+"B<[user_handler]> Configura lo user handler. Diverse parole chiavi sono "
+"disponibili a seconda dello user handler selezionato con la chiave "
+"B<user_handler>. Se non è presente una sezione B<[user_handler]> nella "
+"configurazione il server verrà lanciato sena un servizio di registrazione "
+"del nick."
 
 # type: TP
 #. type: TP
@@ -1679,6 +1722,9 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"(per user_handler=forum) Il nome della tabella nella quale il vostro forum "
+"phpbb salva i dati degli utenti. Di solito questo valore è E<lt>table-"
+"prefixE<gt>_users (i.e. phpbb3_users)."
 
 # type: TP
 #. type: TP
