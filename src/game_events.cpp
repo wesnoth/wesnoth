@@ -2148,7 +2148,9 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 		mref->filter_location = cfg.child("filter_location").get_config();
 	}
 	if(cfg.has_child("command")) {
-		config* new_command = new config(cfg.child("command").get_config());
+		const vconfig& cmd = cfg.child("command");
+		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
+		config* new_command = new config(delayed ? cmd.get_config() : cmd.get_parsed_config());
 		wmi_command_changes.push_back(wmi_command_change(id, new_command));
 	}
 }
