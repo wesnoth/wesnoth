@@ -2153,6 +2153,40 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	}
 }
 
+WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
+{
+	const std::string ids = cfg["id"].str();
+	foreach(const std::string& id, utils::split(ids, ',', utils::STRIP_SPACES)) {
+		if(id.empty()) {
+			WRN_NG << "[clear_menu_item] has been passed an empty id=, ignoring\n";
+			continue;
+		}
+
+		std::map<std::string, wml_menu_item*>& menu_items = resources::state_of_game->wml_menu_items;
+		if(menu_items.find(id) == menu_items.end()) {
+			WRN_NG << "trying to remove non existant menu item, ignoring\n";
+			continue;
+		}
+
+		std::vector<wmi_command_change>::iterator wcc = wmi_command_changes.begin();
+		while(wcc != wmi_command_changes.end()) {
+			if(wcc->first != id) {
+				++wcc;
+				continue;
+			}
+			delete wcc->second;
+			wcc->second = NULL;
+			wcc = wmi_command_changes.erase(wcc);
+		}
+		event_handlers.remove_event_handler(id);
+
+		wml_menu_item*& mi = menu_items[id];
+		delete mi;
+		mi = NULL;
+		menu_items.erase(id);
+	}
+}
+
 struct unstore_unit_advance_choice: mp_sync::user_choice
 {
 	int nb_options;
