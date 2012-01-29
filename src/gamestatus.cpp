@@ -1001,6 +1001,7 @@ void game_state::write_config(config_writer& out, bool write_variables) const
 
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		name(),
+		event_id(id),
 		image(),
 		description(),
 		needs_select(false),

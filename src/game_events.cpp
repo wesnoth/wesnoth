@@ -2979,6 +2979,12 @@ static void commit_wmi_commands() {
 		wml_menu_item*& mref = resources::state_of_game->wml_menu_items[wcc.first];
 		const bool has_current_handler = !mref->command.empty();
 
+		config::attribute_value event_id = (*wcc.second)["id"];
+		if(event_id.empty()) {
+			event_id = mref->event_id;
+			if(!event_id.empty())
+				(*wcc.second)["id"] = event_id;
+		}
 		mref->command = *(wcc.second);
 		mref->command["name"] = mref->name;
 		mref->command["first_time_only"] = false;
