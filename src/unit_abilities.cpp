@@ -120,13 +120,13 @@ static bool affects_side(const config& cfg, const std::vector<team>& teams, size
 }
 
 
-bool unit::get_ability_bool(const std::string& ability, const map_location& loc) const
+bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
 {
 	if (const config &abilities = cfg_.child("abilities"))
 	{
-		foreach (const config &i, abilities.child_range(ability)) {
-			if (ability_active(ability, i, loc) &&
-			    ability_affects_self(ability, i, loc))
+		foreach (const config &i, abilities.child_range(tag_name)) {
+			if (ability_active(tag_name, i, loc) &&
+			    ability_affects_self(tag_name, i, loc))
 				return true;
 		}
 	}
@@ -141,10 +141,10 @@ bool unit::get_ability_bool(const std::string& ability, const map_location& loc)
 		const config &adj_abilities = it->cfg_.child("abilities");
 		if (!adj_abilities)
 			continue;
-		foreach (const config &j, adj_abilities.child_range(ability)) {
+		foreach (const config &j, adj_abilities.child_range(tag_name)) {
 			if (unit_abilities::affects_side(j, teams_manager::get_teams(), side(), it->side()) &&
-			    it->ability_active(ability, j, adjacent[i]) &&
-			    ability_affects_adjacent(ability,  j, i, loc))
+			    it->ability_active(tag_name, j, adjacent[i]) &&
+			    ability_affects_adjacent(tag_name,  j, i, loc))
 				return true;
 		}
 	}
@@ -152,15 +152,15 @@ bool unit::get_ability_bool(const std::string& ability, const map_location& loc)
 
 	return false;
 }
-unit_ability_list unit::get_abilities(const std::string& ability, const map_location& loc) const
+unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
 	unit_ability_list res;
 
 	if (const config &abilities = cfg_.child("abilities"))
 	{
-		foreach (const config &i, abilities.child_range(ability)) {
-			if (ability_active(ability, i, loc) &&
-			    ability_affects_self(ability, i, loc))
+		foreach (const config &i, abilities.child_range(tag_name)) {
+			if (ability_active(tag_name, i, loc) &&
+			    ability_affects_self(tag_name, i, loc))
 				res.cfgs.push_back(std::pair<const config *, map_location>(&i, loc));
 		}
 	}
@@ -175,10 +175,10 @@ unit_ability_list unit::get_abilities(const std::string& ability, const map_loca
 		const config &adj_abilities = it->cfg_.child("abilities");
 		if (!adj_abilities)
 			continue;
-		foreach (const config &j, adj_abilities.child_range(ability)) {
+		foreach (const config &j, adj_abilities.child_range(tag_name)) {
 			if (unit_abilities::affects_side(j, teams_manager::get_teams(), side(), it->side()) &&
-			    it->ability_active(ability, j, adjacent[i]) &&
-			    ability_affects_adjacent(ability, j, i, loc))
+			    it->ability_active(tag_name, j, adjacent[i]) &&
+			    ability_affects_adjacent(tag_name, j, i, loc))
 				res.cfgs.push_back(std::pair<const config *, map_location>(&j, adjacent[i]));
 		}
 	}
