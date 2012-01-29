@@ -3429,8 +3429,8 @@ namespace game_events {
 	{
 		DBG_EH << "committing new event handlers, number of pump_instances: " <<
 			pump_manager::count() << "\n";
-		commit_wmi_commands();
 		event_handlers.commit_buffer();
+		commit_wmi_commands();
 		// Dialogs can only be shown if the display is not locked
 		if (!resources::screen->video().update_locked()) {
 			show_wml_errors();
