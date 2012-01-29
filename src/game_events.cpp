@@ -3026,9 +3026,6 @@ static void commit_wmi_commands() {
 		mref->command["first_time_only"] = false;
 
 		if(has_current_handler) {
-			if(is_empty_command) {
-				mref->command.add_child("allow_undo");
-			}
 			foreach(game_events::event_handler& hand, event_handlers) {
 				if(hand.is_menu_item() && hand.matches_name(mref->name)) {
 					LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
