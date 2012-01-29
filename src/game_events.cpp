@@ -2160,13 +2160,13 @@ WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
 	const std::string ids = cfg["id"].str();
 	foreach(const std::string& id, utils::split(ids, ',', utils::STRIP_SPACES)) {
 		if(id.empty()) {
-			WRN_NG << "[clear_menu_item] has been passed an empty id=, ignoring\n";
+			WRN_NG << "[clear_menu_item] has been given an empty id=, ignoring\n";
 			continue;
 		}
 
 		std::map<std::string, wml_menu_item*>& menu_items = resources::state_of_game->wml_menu_items;
 		if(menu_items.find(id) == menu_items.end()) {
-			WRN_NG << "trying to remove non existant menu item, ignoring\n";
+			WRN_NG << "trying to remove a non-existent menu item, ignoring\n";
 			continue;
 		}
 
