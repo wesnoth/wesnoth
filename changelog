@@ -10,6 +10,9 @@ Version 1.11.0-svn:
        upgraded
  * Language and i18n:
    * Updated translations: French, Indonesian, Italian, Latin, Spanish
+ * WML engine:
+   * new action tag: [clear_menu_item] id=...
+   * new key: [set_menu_item][command]delayed_variable_substitution=yes|no
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
