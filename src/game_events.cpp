@@ -1411,7 +1411,24 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			}
 		}
 
-		int choice = state_of_game->rng().get_next_random() % num_choices;
+		/*
+		 * Choice gets a value in the range [0..32768).
+		 * So need to add a second set of random values when a value
+		 * outside the range is requested.
+		 */
+		if(num_choices > 0x3fffffff) {
+			WRN_NG << "Requested random number with an upper bound of "
+					<< num_choices
+					<< " however the maximum number generated will be "
+					<< 0x3fffffff
+					<< ".\n";
+		}
+		int choice = state_of_game->rng().get_next_random();
+		if(num_choices >= 32768) {
+			choice <<= 15;
+			choice += state_of_game->rng().get_next_random();
+		}
+		choice %= num_choices;
 		int tmp = 0;
 		for(size_t i = 0; i < ranges.size(); ++i) {
 			tmp += (ranges[i].second - ranges[i].first) + 1;

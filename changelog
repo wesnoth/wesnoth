@@ -15,6 +15,7 @@ Version 1.11.0-svn:
    * new key: [set_menu_item][command]delayed_variable_substitution=yes|no
    * Removed support for the deprecated "colour=", "debug_border_colour=",
      and [colour_adjust]
+   * Fixed bug #18996: Increase random number generation range.
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
