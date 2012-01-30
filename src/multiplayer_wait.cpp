@@ -266,7 +266,6 @@ void wait::join_game(bool observe)
 			if (possible_sides.first == possible_sides.second) {
 				set_result(QUIT);
 				throw config::error(_("No multiplayer sides found"));
-				return;
 			}
 
 			int color = side_num;
