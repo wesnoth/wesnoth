@@ -3,8 +3,8 @@ SVNCHECKOUTPATH=/usr/src/svn-checkouts/
 
 echo update started at `date` >> $HOME/g.w.o-updates.log
 
-#update the 1.8 checkout
-cd $SVNCHECKOUTPATH/1.8/
+#update the 1.10 checkout
+cd $SVNCHECKOUTPATH/1.10/
 #svn cleanup
 svn -q up
 
