@@ -57,7 +57,10 @@ public:
 protected:
 	handler(const bool auto_join=true);
 	virtual ~handler();
-	virtual std::vector<handler*> handler_members() {std::vector<handler*> h; return h;}
+	virtual std::vector<handler*> handler_members()
+	{
+		return std::vector<handler*>();
+	}
 
 private:
 	int unicode_;
