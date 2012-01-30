@@ -18,6 +18,7 @@
 
 #include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
 #include "foreach.hpp"
+#include "formula_string_utils.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
@@ -514,13 +515,19 @@ void loadgame::check_version_compatibility()
 	    save_version != game_config::test_version &&
 	    wesnoth_version != game_config::test_version)
 	{
-		gui2::show_message(gui_.video(), "", _("This save is from a version too old to be loaded."));
+		const std::string message = _("This save is from an old, unsupported version ($version_number|) and cannot be loaded.");
+		utils::string_map symbols;
+		symbols["version_number"] = save_version.str();
+		gui2::show_error_message(gui_.video(), utils::interpolate_variables_into_string(message, &symbols));
 		throw load_game_cancelled_exception();
 	}
 
 	int res = gui2::twindow::OK;
 	if(preferences::confirm_load_save_from_different_version()) {
-		res = gui2::show_message(gui_.video(), "", _("This save is from a different version of the game. Do you want to try to load it?"),
+		const std::string message = _("This save is from a different version of the game ($version_number|). Do you wish to try to load it?");
+		utils::string_map symbols;
+		symbols["version_number"] = save_version.str();
+		res = gui2::show_message(gui_.video(), _("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
 			gui2::tmessage::yes_no_buttons);
 	}
 
