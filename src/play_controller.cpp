@@ -749,7 +749,6 @@ void play_controller::finish_side_turn(){
 void play_controller::finish_turn()
 {
 	const std::string turn_num = str_cast(turn());
-	const std::string side_num = str_cast(player_number_);
 	game_events::fire("turn end");
 	game_events::fire("turn " + turn_num + " end");
 }
