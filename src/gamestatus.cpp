@@ -891,7 +891,7 @@ protected:
 			"current_player", "countdown_time", "action_bonus_count",
 			"flag", "flag_icon", "objectives", "objectives_changed",
 			"disallow_observers", "allow_player", "no_leader",
-			"hidden", "music", "color", "colour", "ai_config", "gold",
+			"hidden", "music", "color", "ai_config", "gold",
 			"start_gold", "team_rgb", "village_gold", "recall_cost",
 			"controller", "persistent", "share_view",
 			"share_maps", "recruit", "fog", "shroud", "shroud_data",

@@ -38,7 +38,7 @@ tbuilder_control::tbuilder_control(const config& cfg)
 	, use_tooltip_on_label_overflow(true)
 #ifndef LOW_MEM
 	, debug_border_mode(cfg["debug_border_mode"])
-	, debug_border_color(decode_color(cfg["debug_border_colour"]))
+	, debug_border_color(decode_color(cfg["debug_border_color"]))
 #endif
 {
 	if(definition.empty()) {
