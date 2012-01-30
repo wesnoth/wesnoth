@@ -40,15 +40,13 @@
 # ("foo addwd bar", "foo added bar"),
 # # conversion added in 1.9.8+svn
 # ("fooba foo", "foobar foo"),
+#
+# NOTE:
+# Those "textdomain" entries are *only* a hint and don't influence the files on
+# which pofix will be applied. All replacements will always be applied on *ALL*
+# files!
 
 stringfixes = {
-
-"1.8-announcement" : (
-# conversion added shortly before 1.8.0, might be relevant for the 1.10.0 announcement
-("WML events an AI components", "WML events and AI components"),
-("1.7.3", "1.7.13"),
-("/tags/1.8/", "/tags/1.8.0/"),
-),
 
 "1.10-announcement" : (
 ("roleplaying", "role-playing"),
