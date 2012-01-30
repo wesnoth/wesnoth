@@ -112,13 +112,12 @@ bool component::delete_child(const path_element &child)
 
 std::vector<component*> component::get_children(const std::string &type)
 {
-	std::vector<component*> components;
 	property_handler_map::iterator i = property_handlers_.find(type);
 	if (i!=property_handlers_.end()) {
 		return i->second->handle_get_children();
 	}
 
-	return components;
+	return std::vector<component*>();
 }
 
 
