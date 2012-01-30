@@ -498,8 +498,6 @@ void hotkey_item::set_hat(int joystick, int hat, int value)
 
 void hotkey_item::set_key(int character, int keycode, bool shift, bool ctrl, bool alt, bool cmd)
 {
-	const std::string keyname = SDL_GetKeyName(SDLKey(keycode));
-
 	LOG_G << "setting hotkey: char=" << lexical_cast<std::string>(character)
 		   << " keycode="  << lexical_cast<std::string>(keycode) << " "
 		   << (shift ? "shift," : "")
