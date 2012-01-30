@@ -456,7 +456,6 @@ bool game_controller::play_multiplayer_mode()
 	state_.snapshot = config();
 
 	config level = lvl;
-	std::vector<config*> story;
 
 	const config &era_cfg = game_config().find_child("era","id",era);
 	if (!era_cfg) {
