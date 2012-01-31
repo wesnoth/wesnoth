@@ -963,7 +963,7 @@ bool game_controller::play_multiplayer()
 					, gui::OK_CANCEL);
 				bool checked = preferences::mp_server_warning_disabled() != 1;
 
-				d.add_option(_("Don’t show again"), checked, gui::dialog::BUTTON_CHECKBOX_LEFT);
+				d.add_option(_("Do not show again"), checked, gui::dialog::BUTTON_CHECKBOX_LEFT);
 				start_server = d.show();
 				if (start_server == 0)
 					preferences::set_mp_server_warning_disabled(d.option_checked()?2:1);
