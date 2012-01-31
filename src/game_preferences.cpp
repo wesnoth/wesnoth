@@ -581,7 +581,7 @@ void set_turns(int value)
 
 bool skip_mp_replay()
 {
-	return preferences::get("skip_mp_replay", true);
+	return preferences::get("skip_mp_replay", false);
 }
 
 void set_skip_mp_replay(bool value)
