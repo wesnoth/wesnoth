@@ -49,6 +49,7 @@
 #include "scripting/lua.hpp"
 #include "statistics.hpp"
 #include "wml_exception.hpp"
+#include "gui/dialogs/mp_host_game_prompt.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -956,18 +957,8 @@ bool game_controller::play_multiplayer()
 
 			}
 
-			if (res == 2 && preferences::mp_server_warning_disabled() < 2)
-			{
-				gui::dialog d(disp(), _("Do you really want to start the server?"),
-					_("The server will run in a background process until all users have disconnected.")
-					, gui::OK_CANCEL);
-				bool checked = preferences::mp_server_warning_disabled() != 1;
-
-				d.add_option(_("Do not show again"), checked, gui::dialog::BUTTON_CHECKBOX_LEFT);
-				start_server = d.show();
-				if (start_server == 0)
-					preferences::set_mp_server_warning_disabled(d.option_checked()?2:1);
-
+			if (res == 2 && preferences::mp_server_warning_disabled() < 2) {
+				start_server = !gui2::tmp_host_game_prompt::execute(disp().video());
 			}
 		} while (start_server);
 		if (res < 0) {
