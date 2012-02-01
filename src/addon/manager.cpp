@@ -673,7 +673,7 @@ namespace {
 		}
 		else if(icon.find("units/") != std::string::npos && icon.find_first_of('~') == std::string::npos) {
 			// a hack to prevent magenta icons, because they look awful
-			WRN_CFG << "remote add-on '" << addon_name << "' has an icon without TC/RC specification\n";
+			LOG_CFG << "remote add-on '" << addon_name << "' has an icon without TC/RC specification\n";
 			icon.append("~RC(magenta>red)");
 		}
 	}
