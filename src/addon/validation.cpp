@@ -18,10 +18,24 @@
 #include "addon/validation.hpp"
 #include "config.hpp"
 #include "foreach.hpp"
+#include "marked-up_text.hpp"
 
 #include <cstring>
 
 const unsigned short default_campaignd_port = 15002;
+
+namespace {
+	const std::string illegal_markup_chars = "*`~{^}|@#<&";
+
+	inline bool starts_with_text_markup_char(const std::string& str)
+	{
+		if(str.empty()) {
+			return false;
+		}
+
+		return illegal_markup_chars.find(str[0]) != std::string::npos;
+	}
+}
 
 static bool two_dots(char a, char b)
 {
@@ -35,11 +49,18 @@ bool addon_name_legal(const std::string& name)
 	   std::find(name.begin(),name.end(),'\\') != name.end() ||
 	   std::find(name.begin(),name.end(),':') != name.end() ||
 	   std::find(name.begin(),name.end(),'~') != name.end() ||
-	   std::adjacent_find(name.begin(),name.end(),two_dots) != name.end()) {
+	   std::adjacent_find(name.begin(),name.end(),two_dots) != name.end() ||
+	   starts_with_text_markup_char(name)
+	) {
 		return false;
 	} else {
 		return true;
 	}
+}
+
+bool addon_title_legal(const std::string& title)
+{
+	return !starts_with_text_markup_char(title);
 }
 
 bool check_names_legal(const config& dir)

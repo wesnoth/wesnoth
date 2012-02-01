@@ -1,4 +1,7 @@
 Version 1.11.0-svn:
+ * Add-ons server:
+   * Reject add-ons with names or titles that begin with a WML text format
+     markup character (any of *, `, ~, {, ^, }, |, @, #, <, &)
  * Campaigns:
    * Son of the Black Eye:
      * Removed Al'Brock and Flar'Tar death as defeat condition in objectives in

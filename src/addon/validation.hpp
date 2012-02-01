@@ -56,6 +56,8 @@ ADDON_TYPE get_addon_type(const std::string& str);
 
 /** Checks whether an add-on name is legal or not. */
 bool addon_name_legal(const std::string& name);
+/** Checks whether an add-on title is legal or not. */
+bool addon_title_legal(const std::string& title);
 /** Probes an add-on archive for illegal names. */
 bool check_names_legal(const config& dir);
 
