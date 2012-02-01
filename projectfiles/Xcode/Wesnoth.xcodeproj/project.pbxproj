@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */; };
 		4944F4071354FB410027E614 /* game_errors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F4041354FB410027E614 /* game_errors.cpp */; };
 		4944F4081354FB410027E614 /* lua_jailbreak_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F4051354FB410027E614 /* lua_jailbreak_exception.cpp */; };
 		4944F4091354FB410027E614 /* portrait.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F4061354FB410027E614 /* portrait.cpp */; };
@@ -976,6 +977,8 @@
 
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_host_game_prompt.cpp; sourceTree = "<group>"; };
+		1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_host_game_prompt.hpp; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Wesnoth_Prefix.pch */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp; fileEncoding = 4; includeInIndex = 0; name = Wesnoth_Prefix.pch; path = "Mac Sources/Wesnoth_Prefix.pch"; sourceTree = "<group>"; };
 		4944F4041354FB410027E614 /* game_errors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_errors.cpp; sourceTree = "<group>"; };
 		4944F4051354FB410027E614 /* lua_jailbreak_exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_jailbreak_exception.cpp; sourceTree = "<group>"; };
@@ -3057,6 +3060,8 @@
 		B5A9BCA20ECA805A002BE442 /* dialogs */ = {
 			isa = PBXGroup;
 			children = (
+				1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */,
+				1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */,
 				F4D5DF37149CE9B500294046 /* chat_log.cpp */,
 				F4D5DF38149CE9B500294046 /* chat_log.hpp */,
 				F4728DAF145A59CF00F0E1E1 /* editor_set_starting_position.cpp */,
@@ -3865,6 +3870,7 @@
 				F4728DB1145A59CF00F0E1E1 /* editor_set_starting_position.cpp in Sources */,
 				F4FBD76A145D93370083CA67 /* uninstall_list.cpp in Sources */,
 				F4D5DF39149CE9B500294046 /* chat_log.cpp in Sources */,
+				1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
