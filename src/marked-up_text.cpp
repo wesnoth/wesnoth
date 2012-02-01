@@ -33,8 +33,8 @@
 namespace font {
 
 // NOTE: if you add more markup characters below, you'll need to update
-// the list in addon/validation.cpp to blacklist them for add-on names
-// and titles.
+// the list in campaign_server.cpp (illegal_markup_chars) to blacklist
+// them for add-on names and titles.
 
 const char LARGE_TEXT='*', SMALL_TEXT='`',
 		   BOLD_TEXT='~',  NORMAL_TEXT='{',
