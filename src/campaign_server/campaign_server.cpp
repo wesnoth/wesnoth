@@ -71,6 +71,14 @@ static void exit_sigterm(int signal) {
 }
 
 namespace {
+	// Markup characters recognized by GUI1 code. These must be
+	// the same as the constants defined in marked-up_text.cpp.
+	const std::string illegal_markup_chars = "*`~{^}|@#<&";
+
+	inline bool is_text_markup_char(char c)
+	{
+		return illegal_markup_chars.find(c) != std::string::npos;
+	}
 
 	config construct_message(const std::string& msg)
 	{
@@ -406,9 +414,15 @@ namespace {
 						} else if (!addon_name_legal(upload["name"])) {
 							LOG_CS << "Upload aborted - invalid add-on name.\n";
 							network::send_data(construct_error("Add-on rejected: The name of the add-on is invalid."), sock);
+						} else if (is_text_markup_char(upload["name"].str()[0])) {
+							LOG_CS << "Upload aborted - add-on name starts with an illegal formatting character.\n";
+							network::send_data(construct_error("Add-on rejected: The name of the add-on starts with an illegal formatting character."), sock);
 						} else if (upload["title"].empty()) {
 							LOG_CS << "Upload aborted - no add-on title specified.\n";
 							network::send_data(construct_error("Add-on rejected: You did not specify the title of the add-on in the pbl file!"), sock);
+						} else if (is_text_markup_char(upload["title"].str()[0])) {
+							LOG_CS << "Upload aborted - add-on title starts with an illegal formatting character.\n";
+							network::send_data(construct_error("Add-on rejected: The title of the add-on starts with an illegal formatting character."), sock);
 						} else if (get_addon_type(upload["type"]) == ADDON_UNKNOWN) {
 							LOG_CS << "Upload aborted - unknown add-on type specified.\n";
 							network::send_data(construct_error("Add-on rejected: You did not specify a known type for the add-on in the pbl file! (See PblWML: wiki.wesnoth.org/PblWML)"), sock);
