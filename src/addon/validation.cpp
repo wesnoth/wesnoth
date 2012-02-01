@@ -25,6 +25,8 @@
 const unsigned short default_campaignd_port = 15002;
 
 namespace {
+	// Markup characters recognized by GUI1 code. These must be
+	// the same as the constants defined in marked-up_text.cpp.
 	const std::string illegal_markup_chars = "*`~{^}|@#<&";
 
 	inline bool starts_with_text_markup_char(const std::string& str)
