@@ -14,6 +14,8 @@
    See the COPYING file for more details.
 */
 
+#include <boost/iostreams/filter/gzip.hpp>
+
 #include "savegame.hpp"
 
 #include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
@@ -361,8 +363,17 @@ config& save_index::load()
 {
 	if(save_index_loaded == false) {
 		try {
-			scoped_istream stream = istream_file(get_save_index_file());
-			read(save_index_cfg, *stream);
+			const std::string &filename = get_save_index_file();
+			scoped_istream stream = istream_file(filename);
+			if(is_gzip_file(filename)) {
+				try {
+					read_gz(save_index_cfg, *stream);
+				} catch (boost::iostreams::gzip_error&) {
+					read(save_index_cfg, *stream);
+				}
+			} else {
+			  read(save_index_cfg, *stream);
+			}
 		} catch(io_exception& e) {
 			ERR_SAVE << "error reading save index: '" << e.what() << "'\n";
 		} catch(config::error&) {
@@ -401,7 +412,11 @@ void save_index::write_save_index()
 	log_scope("write_save_index()");
 	try {
 		scoped_ostream stream = ostream_file(get_save_index_file());
-		write(*stream, load());
+		if (preferences::compress_saves()) {
+		  write_gz(*stream, load());
+		} else {
+		  write(*stream, load());
+		}
 	} catch(io_exception& e) {
 		ERR_SAVE << "error writing to save index file: '" << e.what() << "'\n";
 	}
