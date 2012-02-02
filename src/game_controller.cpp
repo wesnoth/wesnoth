@@ -585,7 +585,7 @@ bool game_controller::load_game()
 	savegame::loadgame load(disp(), game_config(), state_);
 
 	try {
-		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders);
+		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::difficulty);
 
 		cache_.clear_defines();
 		game_config::scoped_preproc_define dificulty_def(state_.classification().difficulty);
@@ -838,6 +838,8 @@ bool game_controller::new_campaign()
 
 	state_.classification().campaign_define = campaign["define"].str();
 	state_.classification().campaign_xtra_defines = utils::split(campaign["extra_defines"]);
+	state_.classification().campaign_difficulties = utils::split(campaign["difficulties"]);
+	state_.classification().campaign_difficulty_descriptions = utils::split(campaign["difficulty_descriptions"], ';');
 
 	return true;
 }

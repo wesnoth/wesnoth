@@ -92,9 +92,11 @@ REGISTER_DIALOG(game_load)
 
 tgame_load::tgame_load(const config& cache_config)
 	: txtFilter_(register_text("txtFilter", true))
+	, chk_reselect_difficulty_(register_bool("reselect_difficulty", true))
 	, chk_show_replay_(register_bool("show_replay", true))
 	, chk_cancel_orders_(register_bool("cancel_orders", true))
 	, filename_()
+	, reselect_difficulty_(false)
 	, show_replay_(false)
 	, cancel_orders_(false)
 	, games_()
@@ -217,6 +219,7 @@ bool tgame_load::filter_text_changed(ttext_* textbox, const std::string& text)
 
 void tgame_load::post_show(twindow& window)
 {
+	reselect_difficulty_ = chk_reselect_difficulty_->get_widget_value(window);
 	show_replay_ = chk_show_replay_->get_widget_value(window);
 	cancel_orders_ = chk_cancel_orders_->get_widget_value(window);
 }
