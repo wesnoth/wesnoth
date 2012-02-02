@@ -215,7 +215,6 @@
 		B552D92510869477002D8F86 /* distributor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92210869477002D8F86 /* distributor.cpp */; };
 		B552D92D108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */; };
 		B552D92F108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */; };
-		B552D95E108CBE36002D8F86 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B552D95D108CBE36002D8F86 /* CoreServices.framework */; };
 		B553B6BA12189C5900CC8C58 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
 		B553B6BB12189C5900CC8C58 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
 		B559986C0EC616B3008DD061 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = B559986B0EC616B3008DD061 /* SDLMain.m */; };
@@ -362,7 +361,6 @@
 		B5599E8E0EC64CF2008DD061 /* SDL_mixer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55999240EC61F59008DD061 /* SDL_mixer.framework */; };
 		B5599E9C0EC68BF2008DD061 /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599E9B0EC68BF2008DD061 /* SDL_ttf.framework */; };
 		B5599ECC0EC74DDD008DD061 /* libpango-1.0.0.2101.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599ECA0EC74DDD008DD061 /* libpango-1.0.0.2101.2.dylib */; };
-		B5599EE10EC754E4008DD061 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599EE00EC754E4008DD061 /* Carbon.framework */; };
 		B5599FBF0EC8F748008DD061 /* libpangocairo-1.0.0.2101.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599FBA0EC8F748008DD061 /* libpangocairo-1.0.0.2101.2.dylib */; };
 		B5599FCB0EC8FBCB008DD061 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599FC90EC8FBCB008DD061 /* libfreetype.6.dylib */; };
 		B559A0110EC8FE2E008DD061 /* action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599FF70EC8FE2E008DD061 /* action.cpp */; };
@@ -637,7 +635,6 @@
 		B597C6010FACD6CA00CE81F5 /* map_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559A0090EC8FE2E008DD061 /* map_context.cpp */; };
 		B597C6030FACD6CA00CE81F5 /* unit_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999790EC62181008DD061 /* unit_display.cpp */; };
 		B597C65A0FACDDE800CE81F5 /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999450EC62181008DD061 /* button.cpp */; };
-		B597C6F20FACDE1100CE81F5 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599EE00EC754E4008DD061 /* Carbon.framework */; };
 		B597C6F30FACDE1100CE81F5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		B597C71D0FACE4A600CE81F5 /* slider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559995C0EC62181008DD061 /* slider.cpp */; };
 		B597C7270FACE67E00CE81F5 /* scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999580EC62181008DD061 /* scrollbar.cpp */; };
@@ -809,7 +806,6 @@
 		B5BB6BCB0F89408500444FBF /* SDL_net.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55999230EC61F59008DD061 /* SDL_net.framework */; };
 		B5BB6BCD0F8940A000444FBF /* network_worker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999D60EC62181008DD061 /* network_worker.cpp */; };
 		B5BB6BCF0F8940C400444FBF /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A940EC62181008DD061 /* filesystem.cpp */; };
-		B5BB6C660F8940E500444FBF /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599EE00EC754E4008DD061 /* Carbon.framework */; };
 		B5BB6C670F8940FF00444FBF /* thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559998B0EC62181008DD061 /* thread.cpp */; };
 		B5BB6C6F0F8941CD00444FBF /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; };
 		B5BB6C710F8941F000444FBF /* tstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999810EC62181008DD061 /* tstring.cpp */; };
@@ -904,6 +900,8 @@
 		F480CD4914035038007175D6 /* error_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3914035038007175D6 /* error_container.cpp */; };
 		F480CD4B14035038007175D6 /* sourceparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3C14035038007175D6 /* sourceparser.cpp */; };
 		F480CD4C14035038007175D6 /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3E14035038007175D6 /* tag.cpp */; };
+		F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
+		F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D5DF39149CE9B500294046 /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5DF37149CE9B500294046 /* chat_log.cpp */; };
 		F4E4E0B11367241E001C7528 /* suppose_dead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */; };
 		F4E4E0B41367244F001C7528 /* image_modifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0B21367244F001C7528 /* image_modifications.cpp */; };
@@ -1210,7 +1208,6 @@
 		B552D92310869477002D8F86 /* distributor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = distributor.hpp; sourceTree = "<group>"; };
 		B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ca_testing_move_to_targets.cpp; sourceTree = "<group>"; };
 		B552D92B108694BB002D8F86 /* ca_testing_move_to_targets.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ca_testing_move_to_targets.hpp; sourceTree = "<group>"; };
-		B552D95D108CBE36002D8F86 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		B553B6B812189C5900CC8C58 /* utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utility.cpp; sourceTree = "<group>"; };
 		B553B6B912189C5900CC8C58 /* utility.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utility.hpp; sourceTree = "<group>"; };
 		B559986A0EC616B3008DD061 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDLMain.h; path = "Mac Sources/SDLMain.h"; sourceTree = "<group>"; };
@@ -1494,7 +1491,6 @@
 		B5599E360EC64BC4008DD061 /* libgobject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libgobject.framework; path = lib/libgobject.framework; sourceTree = "<group>"; };
 		B5599E9B0EC68BF2008DD061 /* SDL_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_ttf.framework; path = lib/SDL_ttf.framework; sourceTree = "<group>"; };
 		B5599ECA0EC74DDD008DD061 /* libpango-1.0.0.2101.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpango-1.0.0.2101.2.dylib"; path = "lib/libpango-1.0.0.2101.2.dylib"; sourceTree = "<group>"; };
-		B5599EE00EC754E4008DD061 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B5599FBA0EC8F748008DD061 /* libpangocairo-1.0.0.2101.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpangocairo-1.0.0.2101.2.dylib"; path = "lib/libpangocairo-1.0.0.2101.2.dylib"; sourceTree = "<group>"; };
 		B5599FC90EC8FBCB008DD061 /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = lib/libfreetype.6.dylib; sourceTree = "<group>"; };
 		B5599FF70EC8FE2E008DD061 /* action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = action.cpp; sourceTree = "<group>"; };
@@ -1926,6 +1922,7 @@
 		F480CD3D14035038007175D6 /* sourceparser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sourceparser.hpp; sourceTree = "<group>"; };
 		F480CD3E14035038007175D6 /* tag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tag.cpp; sourceTree = "<group>"; };
 		F480CD3F14035038007175D6 /* tag.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tag.hpp; sourceTree = "<group>"; };
+		F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		F4D5DF37149CE9B500294046 /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
 		F4D5DF38149CE9B500294046 /* chat_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_log.hpp; sourceTree = "<group>"; };
 		F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = suppose_dead.cpp; sourceTree = "<group>"; };
@@ -1957,20 +1954,19 @@
 				B5599E390EC64BC4008DD061 /* libgobject.framework in Frameworks */,
 				B5599E9C0EC68BF2008DD061 /* SDL_ttf.framework in Frameworks */,
 				B5599ECC0EC74DDD008DD061 /* libpango-1.0.0.2101.2.dylib in Frameworks */,
-				B5599EE10EC754E4008DD061 /* Carbon.framework in Frameworks */,
 				B5599FBF0EC8F748008DD061 /* libpangocairo-1.0.0.2101.2.dylib in Frameworks */,
 				B5599FCB0EC8FBCB008DD061 /* libfreetype.6.dylib in Frameworks */,
 				B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */,
 				B513B22A0ED36BFB0006E551 /* libpixman-1.0.dylib in Frameworks */,
 				B578E1A50ED5BEF600DE80D6 /* libgmodule.framework in Frameworks */,
 				B508D13F10013BF900B12852 /* Growl.framework in Frameworks */,
-				B552D95E108CBE36002D8F86 /* CoreServices.framework in Frameworks */,
 				F4EF0D4C13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */,
 				F4755E2C1458C192009F13BD /* libboost_program_optionsw.dylib in Frameworks */,
 				F4EF0D5613AD4E35003C701D /* libboost_regexw.dylib in Frameworks */,
 				F4EF0D5713AD4E35003C701D /* libboost_systemw.dylib in Frameworks */,
 				F4EF0D5C13AD4E6D003C701D /* libboost_threadw.dylib in Frameworks */,
 				F4448F3C13C547FF003B6442 /* libpng12.0.dylib in Frameworks */,
+				F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1992,7 +1988,6 @@
 				B597C5280FACD58400CE81F5 /* SDL_image.framework in Frameworks */,
 				B597C5290FACD58400CE81F5 /* SDL_net.framework in Frameworks */,
 				B597C52A0FACD58400CE81F5 /* SDL_mixer.framework in Frameworks */,
-				B597C6F20FACDE1100CE81F5 /* Carbon.framework in Frameworks */,
 				B597C6F30FACDE1100CE81F5 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2001,9 +1996,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */,
 				B5BB6BC80F89407D00444FBF /* SDL.framework in Frameworks */,
 				B5BB6BCB0F89408500444FBF /* SDL_net.framework in Frameworks */,
-				B5BB6C660F8940E500444FBF /* Carbon.framework in Frameworks */,
 				B5BB6C740F89420600444FBF /* libintl.framework in Frameworks */,
 				F4EF0D4D13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */,
 			);
@@ -2026,9 +2021,8 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked System Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B552D95D108CBE36002D8F86 /* CoreServices.framework */,
-				B5599EE00EC754E4008DD061 /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */,
 			);
 			name = "Linked System Frameworks";
 			sourceTree = "<group>";
