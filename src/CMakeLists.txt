@@ -317,6 +317,7 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 set(wesnoth-main_SRC
 	about.cpp
 	actions.cpp
+	addon/client.cpp
 	addon/manager.cpp
 	addon/validation.cpp
 	ai/actions.cpp
