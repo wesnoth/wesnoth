@@ -84,7 +84,9 @@ void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!subtitle_.empty()) {
-		find_widget<tlabel>(&window, "subtitle", false).set_label(subtitle_);
+		tlabel& subtitle_label = find_widget<tlabel>(&window, "subtitle", false);
+		subtitle_label.set_label(subtitle_);
+		subtitle_label.set_use_markup(true);
 	}
 
 	pump_monitor.window_ = window;
