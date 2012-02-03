@@ -902,6 +902,7 @@
 		F480CD4C14035038007175D6 /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3E14035038007175D6 /* tag.cpp */; };
 		F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
+		F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DECA14DCA1D000CAFF31 /* client.cpp */; };
 		F4D5DF39149CE9B500294046 /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5DF37149CE9B500294046 /* chat_log.cpp */; };
 		F4E4E0B11367241E001C7528 /* suppose_dead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */; };
 		F4E4E0B41367244F001C7528 /* image_modifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0B21367244F001C7528 /* image_modifications.cpp */; };
@@ -1923,6 +1924,7 @@
 		F480CD3E14035038007175D6 /* tag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tag.cpp; sourceTree = "<group>"; };
 		F480CD3F14035038007175D6 /* tag.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tag.hpp; sourceTree = "<group>"; };
 		F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		F4D2DECA14DCA1D000CAFF31 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
 		F4D5DF37149CE9B500294046 /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
 		F4D5DF38149CE9B500294046 /* chat_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_log.hpp; sourceTree = "<group>"; };
 		F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = suppose_dead.cpp; sourceTree = "<group>"; };
@@ -2559,6 +2561,7 @@
 		B52EE9A81213640400CFBDAB /* addon */ = {
 			isa = PBXGroup;
 			children = (
+				F4D2DECA14DCA1D000CAFF31 /* client.cpp */,
 				B52EE9A91213640400CFBDAB /* manager.cpp */,
 				B52EE9AA1213640400CFBDAB /* manager.hpp */,
 				B52EE9AB1213640400CFBDAB /* validation.cpp */,
@@ -3865,6 +3868,7 @@
 				F4FBD76A145D93370083CA67 /* uninstall_list.cpp in Sources */,
 				F4D5DF39149CE9B500294046 /* chat_log.cpp in Sources */,
 				1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */,
+				F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
