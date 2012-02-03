@@ -53,6 +53,17 @@ static lg::log_domain log_network("network");
 #define ERR_NET LOG_STREAM(err , log_network)
 #define LOG_NET LOG_STREAM(info, log_network)
 
+namespace {
+	std::string get_pbl_file_path(const std::string& addon_name)
+	{
+		const std::string& parentd = get_addon_campaigns_dir();
+		// Cope with old-style or new-style file organization
+		const std::string exterior = parentd + "/" + addon_name + ".pbl";
+		const std::string interior = parentd + "/" + addon_name + "/_server.pbl";
+		return file_exists(exterior) ? exterior : interior;
+	}
+}
+
 bool have_addon_in_vcs_tree(const std::string& addon_name)
 {
 	static const std::string parentd = get_addon_campaigns_dir();
@@ -70,26 +81,15 @@ bool have_addon_pbl_info(const std::string& addon_name)
 		file_exists(parentd+"/"+addon_name+"/_server.pbl");
 }
 
-bool get_addon_info(const std::string& addon_name, config& cfg)
+void get_addon_info(const std::string& addon_name, config& cfg)
 {
-	const std::string parentd = get_addon_campaigns_dir();
-
-	// Cope with old-style or new-style file organization
-	const std::string exterior = parentd + "/" + addon_name + ".pbl";
-	const std::string interior = parentd + "/" + addon_name + "/_server.pbl";
-	const bool is_old_style = file_exists(exterior);
-	const std::string pbl_file = (is_old_style ? exterior : interior);
-
-	scoped_istream stream = istream_file(pbl_file);
+	scoped_istream stream = istream_file(get_pbl_file_path(addon_name));
 	read(cfg, *stream);
-	return is_old_style;
 }
 
-void set_addon_info(const std::string& addon_name, const config& cfg, const bool is_old_style)
+void set_addon_info(const std::string& addon_name, const config& cfg)
 {
-	const std::string parentd = get_addon_campaigns_dir();
-	scoped_ostream stream = ostream_file(parentd + "/" + addon_name + "/_server.pbl");
-	if(is_old_style) stream = ostream_file(parentd + "/" + addon_name + ".pbl");
+	scoped_ostream stream = ostream_file(get_pbl_file_path(addon_name));
 	write(*stream, cfg);
 }
 
@@ -501,7 +501,7 @@ namespace {
 		}
 
 		config cfg;
-		const bool is_old_style = get_addon_info(addon,cfg);
+		get_addon_info(addon,cfg);
 
 		std::string passphrase = cfg["passphrase"];
 		// generate a random passphrase and write it to disk
@@ -512,7 +512,7 @@ namespace {
 				passphrase[n] = 'a' + (rand()%26);
 			}
 			cfg["passphrase"] = passphrase;
-			set_addon_info(addon,cfg,is_old_style);
+			set_addon_info(addon,cfg);
 		}
 
 		cfg["name"] = addon;
