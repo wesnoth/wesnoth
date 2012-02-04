@@ -28,6 +28,11 @@ Version 1.11.0-svn:
    * Removed support for the deprecated "colour=", "debug_border_colour=",
      and [colour_adjust]
    * Fixed bug #18996: Increase random number generation range.
+ * Unit changes and balancing:
+   * New extra_define ENABLE_WOLF_ADVANCEMENT to optionally enable Wolves
+     advancement to Great Wolves and Direwolves
+   * New extra_define ENABLE_TROLL_SHAMAN to optionally enable Troll Whelps
+     advancement to Troll Shamans (not in multiplayer)
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
@@ -41,11 +46,6 @@ Version 1.11.0-svn:
    * Implemented feature request for difficulty changing during campaigns.
      The feature is still gui2 only and thus still hidden per default.
      (see bug #10978)
- * Unit changes and balancing:
-   * New extra_define ENABLE_WOLF_ADVANCEMENT to optionally enable Wolves
-     advancement to Great Wolves and Direwolves
-   * New extra_define ENABLE_TROLL_SHAMAN to optionally enable Troll Whelps
-     advancement to Troll Shamans (not in multiplayer)
 
 Version 1.10.0:
  * Campaigns:
