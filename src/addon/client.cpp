@@ -14,8 +14,6 @@
    See the COPYING file for more details.
 */
 
-#include "addon/client.hpp"
-
 #include "addon/manager.hpp"
 #include "addon/validation.hpp"
 #include "display.hpp"
@@ -24,6 +22,8 @@
 #include "gui/dialogs/message.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+
+#include "addon/client.hpp"
 
 static lg::log_domain log_addons_client("addons-client");
 #define ERR_ADDONS LOG_STREAM(err ,  log_addons_client)

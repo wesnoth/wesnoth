@@ -17,7 +17,6 @@
 #include "global.hpp"
 
 #include "addon/manager.hpp"
-#include "addon/client.hpp"
 #include "dialogs.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
@@ -41,6 +40,7 @@
 #include "version.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
+#include "addon/client.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
