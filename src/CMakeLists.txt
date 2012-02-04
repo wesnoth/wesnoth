@@ -244,7 +244,10 @@ endif(UPDATE_REVISION)
 set(libwesnoth-lua_STAT_SRC
 	lua_jailbreak_exception.cpp
 	lua/lapi.c
+        lua/lbitlib.c
 	lua/lcode.c
+        lua/lcorolib.c
+        lua/lctype.c
 	lua/ldebug.c
 	lua/ldo.c
 	lua/ldump.c

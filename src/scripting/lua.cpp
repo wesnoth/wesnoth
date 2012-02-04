@@ -328,7 +328,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 	}
 
 	// First convert the children (integer indices).
-	for (int i = 1, i_end = lua_objlen(L, index); i <= i_end; ++i)
+	for (int i = 1, i_end = lua_rawlen(L, index); i <= i_end; ++i)
 	{
 		lua_rawgeti(L, index, i);
 		if (!lua_istable(L, -1)) return_misformed();
@@ -504,8 +504,7 @@ __attribute__((sentinel))
 #endif
 static bool luaW_getglobal(lua_State *L, ...)
 {
-	lua_pushvalue(L, LUA_GLOBALSINDEX);
-
+	lua_pushglobaltable(L);
 	va_list ap;
 	va_start(ap, L);
 	while (const char *s = va_arg(ap, const char *))
@@ -862,7 +861,7 @@ static int impl_vconfig_collect(lua_State *L)
 		std::vector<std::string> vector; \
 		char const* message = "table with unnamed indices holding strings expected"; \
 		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message); \
-		unsigned length = lua_objlen(L, 3); \
+		unsigned length = lua_rawlen(L, 3); \
 		for (unsigned i = 1; i <= length; ++i) { \
 			lua_rawgeti(L, 3, i); \
 			char const* string = lua_tostring(L, 4); \
@@ -1454,8 +1453,7 @@ static int intf_require(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 
 	// Check if there is already an entry.
-	lua_pushstring(L, "wesnoth");
-	lua_rawget(L, LUA_GLOBALSINDEX);
+	luaW_getglobal(L, "wesnoth", NULL);
 	lua_pushstring(L, "package");
 	lua_rawget(L, -2);
 	lua_pushvalue(L, 1);
@@ -3067,7 +3065,7 @@ static int intf_set_dialog_callback(lua_State *L)
 	lua_pushlightuserdata(L
 			, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);
-	int n = lua_objlen(L, -1) + 1;
+	int n = lua_rawlen(L, -1) + 1;
 	m[w] = n;
 	lua_pushvalue(L, 1);
 	lua_rawseti(L, -2, n);
@@ -3448,13 +3446,12 @@ LuaKernel::LuaKernel(const config &cfg)
 	};
 	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)
 	{
-		lua_pushcfunction(L, lib->func);
-		lua_pushstring(L, lib->name);
-		lua_call(L, 1, 0);
+		luaL_requiref(L, lib->name, lib->func, 1);
+		lua_pop(L, 1);  /* remove lib */
 	}
 
 	// Put some callback functions in the scripting environment.
-	static luaL_reg const callbacks[] = {
+	static luaL_Reg const callbacks[] = {
 		{ "add_known_unit",           &intf_add_known_unit           },
 		{ "add_modification",         &intf_add_modification         },
 		{ "add_tile_overlay",         &intf_add_tile_overlay         },
@@ -3971,6 +3968,7 @@ bool LuaKernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
 	return true;
 }
 
+
 /**
  * Runs a script from a unit filter.
  * The script is an already compiled function given by its name.
@@ -3983,8 +3981,7 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	if (!ui.valid()) return false;
 
 	// Get the user filter by name.
-	lua_pushstring(L, name);
-	lua_rawget(L, LUA_GLOBALSINDEX);
+	luaW_getglobal(L, name, NULL);
 
 	// Pass the unit as argument.
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());

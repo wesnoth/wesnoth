@@ -15,6 +15,13 @@ The following changes were done
  - ?????: initial import of 5.2.0
              5.2.0
              Makefile removed
+	     scons project edited
+ - ?????: fixed compilation
+             lua_objlen => lua_rawlen
+	     added luaL_typerror back
+	     luaL_reg => luaL_Reg
+	     reenabled luaL_register (LUA_COMPAT_MODULE)
+             updated the way libraries are opened
 
 =========================================================================
 Old notes for 5.1.4 :

@@ -11,6 +11,10 @@
 #include <limits.h>
 #include <stddef.h>
 
+/*
+ * Wesnoth definitions for compatability
+ */
+#define LUA_COMPAT_MODULE
 
 /*
 ** ==================================================================
