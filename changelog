@@ -33,6 +33,9 @@ Version 1.11.0-svn:
      advancement to Great Wolves and Direwolves
    * New extra_define ENABLE_TROLL_SHAMAN to optionally enable Troll Whelps
      advancement to Troll Shamans (not in multiplayer)
+ * Whiteboard
+   * Fixed bug #19369 : Using planning mode can cause losing ability to move my units
+   * Fixed bug #19408 : Crash shortly after executing invalid multi-turn move
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
