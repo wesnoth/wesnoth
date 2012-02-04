@@ -218,7 +218,14 @@
 */
 #if defined(LUA_LIB) || defined(lua_c)
 #include <stdio.h>
-#define luai_writestring(s,l)	fwrite((s), sizeof(char), (l), stdout)
+inline void fwrite_wrapper(const void * ptr, size_t size, size_t count, FILE * stream ) {
+	size_t i = fwrite(ptr, size, count, stream);
+	if (i != count * size) {
+		puts("error in fwrite by lua, unexpected amount of bytes written");
+	}
+}
+
+#define luai_writestring(s,l)	fwrite_wrapper((s), sizeof(char), (l), stdout)
 #define luai_writeline()	(luai_writestring("\n", 1), fflush(stdout))
 #endif
 

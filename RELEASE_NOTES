@@ -19,7 +19,10 @@ The old flowers on grassland terrain (Ggf) has been removed in favour of ^Efm, i
 Maps containing the old terrain will no longer load.
 [/section]
 
-[section="Another Change"]
+[section="Lua updated to 5.2"]
+Lua interpreter was updated to 5.2
+Some of the changes are not compatible, but still work due to the compatibility mode. The compatibility mode would be disabled after several minor releases, so it's best to rework the code according to http://www.lua.org/manual/5.2/manual.html#8
+Some of the changes in interpreter are not compatible but don't have a compatibility mode.
 [/section]
 
 [section="Another Change"]
