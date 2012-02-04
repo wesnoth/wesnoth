@@ -362,17 +362,14 @@ config save_index::save_index_cfg;
 config& save_index::load()
 {
 	if(save_index_loaded == false) {
+		const std::string filename = get_save_index_file();
 		try {
-			const std::string &filename = get_save_index_file();
 			scoped_istream stream = istream_file(filename);
-			if(is_gzip_file(filename)) {
-				try {
-					read_gz(save_index_cfg, *stream);
-				} catch (boost::iostreams::gzip_error&) {
-					read(save_index_cfg, *stream);
-				}
-			} else {
-			  read(save_index_cfg, *stream);
+			try {
+				read_gz(save_index_cfg, *stream);
+			} catch (boost::iostreams::gzip_error&) {
+				stream->seekg(0);
+				read(save_index_cfg, *stream);
 			}
 		} catch(io_exception& e) {
 			ERR_SAVE << "error reading save index: '" << e.what() << "'\n";
@@ -380,7 +377,6 @@ config& save_index::load()
 			ERR_SAVE << "error parsing save index config file\n";
 			save_index_cfg.clear();
 		}
-
 		save_index_loaded = true;
 	}
 

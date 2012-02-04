@@ -271,7 +271,7 @@ std::string get_prefs_file()
 
 std::string get_save_index_file()
 {
-	return "/wesnoth-userdata/save_index.gz";
+	return "/wesnoth-userdata/save_index";
 }
 
 std::string get_saves_dir()
@@ -289,7 +289,7 @@ std::string get_prefs_file()
 
 std::string get_save_index_file()
 {
-	return get_user_data_dir() + "/save_index.gz";
+	return get_user_data_dir() + "/save_index";
 }
 
 std::string get_saves_dir()

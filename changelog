@@ -46,6 +46,9 @@ Version 1.11.0-svn:
    * Implemented feature request for difficulty changing during campaigns.
      The feature is still gui2 only and thus still hidden per default.
      (see bug #10978)
+   * The saved games cache file is now save_index instead of save_index.gz, and
+     it is compressed when the Compressed Saves option is enabled in Advanced
+     Preferences (patch #3115)
 
 Version 1.10.0:
  * Campaigns:
