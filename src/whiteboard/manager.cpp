@@ -873,10 +873,10 @@ void manager::on_save_action(unit const* u) const
 
 void manager::contextual_execute()
 {
+	validate_viewer_actions();
 	if (can_enable_execution_hotkeys())
 	{
 		erase_temp_move();
-		validate_viewer_actions();
 
 		//For exception-safety, this struct sets executing_actions_ to false on destruction.
 		variable_finalizer<bool> finally(executing_actions_, false);
@@ -912,6 +912,7 @@ bool manager::allow_end_turn()
 
 bool manager::execute_all_actions()
 {
+	validate_viewer_actions();
 	if(viewer_actions()->empty() || viewer_actions()->turn_size(0) == 0)
 	{
 		//No actions to execute, job done.
@@ -921,7 +922,6 @@ bool manager::execute_all_actions()
 	assert(can_enable_execution_hotkeys());
 
 	erase_temp_move();
-	validate_viewer_actions();
 
 	// Build unit map once to ensure spent gold and other calculations are refreshed
 	set_planned_unit_map();
@@ -984,10 +984,10 @@ void manager::continue_execute_all()
 
 void manager::contextual_delete()
 {
+	validate_viewer_actions();
 	if (can_enable_modifier_hotkeys())
 	{
 		erase_temp_move();
-		validate_viewer_actions();
 
 		action_ptr action;
 		side_actions::iterator it;
@@ -1019,9 +1019,9 @@ void manager::contextual_delete()
 
 void manager::contextual_bump_up_action()
 {
+	validate_viewer_actions();
 	if(can_enable_reorder_hotkeys())
 	{
-		validate_viewer_actions();
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
 		{
@@ -1032,9 +1032,9 @@ void manager::contextual_bump_up_action()
 
 void manager::contextual_bump_down_action()
 {
+	validate_viewer_actions();
 	if(can_enable_reorder_hotkeys())
 	{
-		validate_viewer_actions();
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
 		{
