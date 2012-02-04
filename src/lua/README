@@ -11,6 +11,26 @@ The bugfix patches can be downloaded from http://www.lua.org/bugs.html .
 
 See the COPYRIGHT file for the license of the files in this directory.
 
+The following changes were done
+ - ?????: initial import of 5.2.0
+             5.2.0
+             Makefile removed
+
+=========================================================================
+Old notes for 5.1.4 :
+Current version is 5.1.4 patch 2. This directory contains only the files
+from the src/ original directory.
+
+The Lua source is imported in the repository in order to ensure that it
+is compiled with the same C++ compiler used for Wesnoth. That way, Lua no
+longer relies on setjmp/longjmp and it won't conflict with Wesnoth C++
+exceptions.
+
+The original source can be downloaded from http://www.lua.org/ftp/ .
+The bugfix patches can be downloaded from http://www.lua.org/bugs.html .
+
+See the COPYRIGHT file for the license of the files in this directory.
+
 The following commits were applied:
 - 44911: initial import of 5.1.4
 - 44912: bugfix patch 2
