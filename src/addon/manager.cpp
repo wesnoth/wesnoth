@@ -973,6 +973,8 @@ namespace {
 		bool display_again = false;
 		int index = -1;
 
+		preferences::set_campaign_server(remote_address);
+
 		try {
 			addons_client client(disp, remote_address);
 
