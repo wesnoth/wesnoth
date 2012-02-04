@@ -916,6 +916,7 @@ bool manager::execute_all_actions()
 	if(viewer_actions()->empty() || viewer_actions()->turn_size(0) == 0)
 	{
 		//No actions to execute, job done.
+		executing_all_actions_ = false;
 		return true;
 	}
 
