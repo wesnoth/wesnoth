@@ -12,9 +12,12 @@
 #include <stddef.h>
 
 /*
- * Wesnoth definitions for compatability
+ * Wesnoth definitions for compatibility
  */
 #define LUA_COMPAT_MODULE
+
+// todo: remove after 1.11.2
+#define LUA_COMPAT_ALL
 
 /*
 ** ==================================================================
