@@ -742,11 +742,6 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
 {
 	t_terrain result;
 
-	// Need to store the orginal string for the error handling.
-	// This has been made to avoid the assertion failure
-	// which happens often and is not too user friendly.
-	const std::string input(str);
-
 	// Strip the spaces around us
 	const std::string& whitespace = " \t";
 	str.erase(0, str.find_first_not_of(whitespace));
