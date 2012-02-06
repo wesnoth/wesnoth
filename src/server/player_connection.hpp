@@ -17,11 +17,19 @@
 #define SERVER_PLAYER_CONNECTION_HPP_INCLUDED
 
 #include "simple_wml.hpp"
+#include "player.hpp"
 
 #include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/bimap/bimap.hpp>
+#include <boost/bimap/unordered_set_of.hpp>
 
 typedef boost::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
+
+typedef boost::bimaps::bimap<
+		boost::bimaps::unordered_set_of<socket_ptr>, 
+		boost::bimaps::unordered_set_of<std::string>,
+		boost::bimaps::with_info<wesnothd::player> > PlayerMap;
 
 void send_to_player(socket_ptr socket, simple_wml::document& doc);
 
