@@ -381,16 +381,23 @@ void save_preview_pane::draw_contents()
 
 	int ypos = area.y;
 
-	const unit_type *leader = unit_types.find(summary["leader"]);
-	if (leader)
+	bool have_leader_image = false;
+	const std::string& leader_image = summary["leader_image"].str();
+
+	if(!leader_image.empty() && image::exists(leader_image))
 	{
 #ifdef LOW_MEM
-		const surface image(image::get_image(leader->image()));
+		const surface& image(image::get_image(leader_image));
 #else
-		const surface image(image::get_image(leader->image() + "~RC(" + leader->flag_rgb() + ">1)"));
+		// NOTE: assuming magenta for TC here. This is what's used in all of
+		// mainline, so the compromise should be good enough until we add more
+		// summary fields to help with this and deciding the side color range.
+		const surface& image(image::get_image(leader_image + "~RC(magenta>1)"));
 #endif
 
-		if(image != NULL) {
+		have_leader_image = !image.null();
+
+		if(have_leader_image) {
 			SDL_Rect image_rect = create_rect(area.x, area.y, image->w, image->h);
 			ypos += image_rect.h + save_preview_border;
 
@@ -437,7 +444,9 @@ void save_preview_pane::draw_contents()
 	}
 
 	if(map_surf != NULL) {
-		SDL_Rect map_rect = create_rect(area.x
+		// Align the map to the left when the leader image is missing.
+		const int map_x = have_leader_image ? area.x + area.w - map_surf->w : area.x;
+		SDL_Rect map_rect = create_rect(map_x
 				, area.y
 				, map_surf->w
 				, map_surf->h);

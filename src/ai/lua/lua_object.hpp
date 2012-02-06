@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2011 by Dmitry Kovalenko <nephro.wes@gmail.com>
+   Copyright (C) 2011 - 2012 by Dmitry Kovalenko <nephro.wes@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -115,7 +115,7 @@ template <>
 inline boost::shared_ptr< std::vector<std::string> > lua_object< std::vector<std::string> >::to_type(lua_State *L, int n)
 {
 	boost::shared_ptr< std::vector<std::string> > v = boost::shared_ptr< std::vector<std::string> >(new std::vector<std::string>());
-	int l = lua_objlen(L, n);
+	int l = lua_rawlen(L, n);
 	for (int i = 1; i < l + 1; ++i)
 	{
 		lua_pushinteger(L, i);
@@ -152,7 +152,7 @@ inline boost::shared_ptr<std::vector<target> > lua_object< std::vector<target> >
 {
 	boost::shared_ptr<std::vector<target> > targets = boost::shared_ptr<std::vector<target> >(new std::vector<target>());
 	std::back_insert_iterator< std::vector<target> > tg(*targets);
-	int l = lua_objlen(L, n);
+	int l = lua_rawlen(L, n);
 
 	for (int i = 1; i <= l; ++i)
 	{

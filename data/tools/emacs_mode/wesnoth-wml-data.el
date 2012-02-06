@@ -351,7 +351,7 @@
  ("widget" nil nil)
  ("schema"
   ("widget" "resolution_definition" "control_definition" "state_definition" "settings" "row" "gui" "grid" "column" "unit_type" "units" "toplevel" "topic" "theme" "textdomain" "section" "resolution" "race" "portrait" "partialresolution" "movetype" "lua" "hotkey" "help" "game_config" "fonts" "font" "entry" "campaign" "binary_path" "ais" "ai" "advanced_preference" "description" "about" "root")
-  ("use_tooltip_on_label_overflow" "tooltip" "linked_group" "label" "help" "definition" "debug_border_mode" "debug_border_colour" "_grid" "description" "_foreground" "_background" "top_border" "right_border" "left_border" "bottom_border" "_resolution" "wrap" "valign" "halign" "border" "unsigned" "variation_name" "alignments" "sort_topics_type" "side_of_screen" "hexlist" "flag_image_type" "inherit" "id" "about_preference_type" "images" "pathlist" "path" "boolean" "float" "integer" "tstring" "string" "identifierlist" "identifier"))
+  ("use_tooltip_on_label_overflow" "tooltip" "linked_group" "label" "help" "definition" "debug_border_mode" "debug_border_color" "_grid" "description" "_foreground" "_background" "top_border" "right_border" "left_border" "bottom_border" "_resolution" "wrap" "valign" "halign" "border" "unsigned" "variation_name" "alignments" "sort_topics_type" "side_of_screen" "hexlist" "flag_image_type" "inherit" "id" "about_preference_type" "images" "pathlist" "path" "boolean" "float" "integer" "tstring" "string" "identifierlist" "identifier"))
  ("resolution_definition" nil
   ("text_font_style" "window_width" "window_height" "text_font_size" "text_extra_width" "text_extra_height" "min_width" "min_height" "max_width" "max_height" "default_width" "default_height"))
  ("control_definition" nil

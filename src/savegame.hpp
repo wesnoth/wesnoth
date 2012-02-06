@@ -105,7 +105,8 @@ public:
 	void load_game(
 			  const std::string& filename
 			, const bool show_replay
-			, const bool cancel_orders);
+			, const bool cancel_orders
+			, const std::string& difficulty);
 	/** Loading a game from within the multiplayer-create dialog. */
 	void load_multiplayer_game();
 	/** Populates the level-config for multiplayer from the loaded savegame information. */
@@ -131,9 +132,11 @@ private:
 
 	game_state& gamestate_; /** Primary output information. */
 	std::string filename_; /** Name of the savefile to be loaded. */
+	std::string difficulty_; /** The difficulty the save is meant to be loaded with. */
 	config load_config_; /** Config information of the savefile to be loaded. */
 	bool show_replay_; /** State of the "show_replay" checkbox in the load-game dialog. */
 	bool cancel_orders_; /** State of the "cancel_orders" checkbox in the load-game dialog. */
+	bool select_difficulty_; /** State of the "reselect_difficulty" checkbox in the load-game dialog. */
 };
 
 /** The base class for all savegame stuff */

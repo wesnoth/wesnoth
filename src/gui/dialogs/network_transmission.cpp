@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2011 Sergey Popov <loonycyborg@gmail.com>
+   Copyright (C) 2011 - 2012 Sergey Popov <loonycyborg@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -84,7 +84,9 @@ void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!subtitle_.empty()) {
-		find_widget<tlabel>(&window, "subtitle", false).set_label(subtitle_);
+		tlabel& subtitle_label = find_widget<tlabel>(&window, "subtitle", false);
+		subtitle_label.set_label(subtitle_);
+		subtitle_label.set_use_markup(true);
 	}
 
 	pump_monitor.window_ = window;

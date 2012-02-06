@@ -14,10 +14,13 @@
    See the COPYING file for more details.
 */
 
+#include <boost/iostreams/filter/gzip.hpp>
+
 #include "savegame.hpp"
 
 #include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
 #include "foreach.hpp"
+#include "formula_string_utils.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
@@ -25,6 +28,7 @@
 #include "gui/dialogs/game_load.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
@@ -358,16 +362,21 @@ config save_index::save_index_cfg;
 config& save_index::load()
 {
 	if(save_index_loaded == false) {
+		const std::string filename = get_save_index_file();
 		try {
-			scoped_istream stream = istream_file(get_save_index_file());
-			read(save_index_cfg, *stream);
+			scoped_istream stream = istream_file(filename);
+			try {
+				read_gz(save_index_cfg, *stream);
+			} catch (boost::iostreams::gzip_error&) {
+				stream->seekg(0);
+				read(save_index_cfg, *stream);
+			}
 		} catch(io_exception& e) {
 			ERR_SAVE << "error reading save index: '" << e.what() << "'\n";
 		} catch(config::error&) {
 			ERR_SAVE << "error parsing save index config file\n";
 			save_index_cfg.clear();
 		}
-
 		save_index_loaded = true;
 	}
 
@@ -399,7 +408,11 @@ void save_index::write_save_index()
 	log_scope("write_save_index()");
 	try {
 		scoped_ostream stream = ostream_file(get_save_index_file());
-		write(*stream, load());
+		if (preferences::compress_saves()) {
+		  write_gz(*stream, load());
+		} else {
+		  write(*stream, load());
+		}
 	} catch(io_exception& e) {
 		ERR_SAVE << "error writing to save index file: '" << e.what() << "'\n";
 	}
@@ -410,6 +423,7 @@ loadgame::loadgame(display& gui, const config& game_config, game_state& gamestat
 	, gui_(gui)
 	, gamestate_(gamestate)
 	, filename_()
+	, difficulty_()
 	, load_config_()
 	, show_replay_(false)
 	, cancel_orders_(false)
@@ -424,6 +438,31 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 		load_dialog.show(gui_.video());
 
 		if (load_dialog.get_retval() == gui2::twindow::OK){
+			if (load_dialog.reselect_difficulty()) {
+
+				config cfg_summary;
+				std::string dummy;
+
+				try {
+					manager::load_summary(load_dialog.filename(), cfg_summary, &dummy);
+				} catch(game::load_game_failed&) {
+					cfg_summary["corrupt"] = "yes";
+				}
+
+				const std::string difficulty_descriptions = cfg_summary["campaign_difficulty_descriptions"];
+				const std::string difficulties = cfg_summary["campaign_difficulties"];
+
+				std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
+				std::vector<std::string> difficulty_list = utils::split(difficulties, ',');
+
+				gui2::tcampaign_difficulty difficulty_dlg(difficulty_options);
+				difficulty_dlg.show(gui_.video());
+
+				if (difficulty_dlg.get_retval() != gui2::twindow::OK)
+					return;
+
+				difficulty_ = difficulty_list[difficulty_dlg.selected_index()];
+			}
 			filename_ = load_dialog.filename();
 			show_replay_ = load_dialog.show_replay();
 			cancel_orders_ = load_dialog.cancel_orders();
@@ -444,15 +483,17 @@ void loadgame::load_game()
 	show_dialog(false, false);
 
 	if(filename_ != "")
-		throw game::load_game_exception(filename_, show_replay_, cancel_orders_);
+		throw game::load_game_exception(filename_, show_replay_, cancel_orders_, difficulty_);
 }
 
 void loadgame::load_game(
 		  const std::string& filename
 		, const bool show_replay
-		, const bool cancel_orders)
+		, const bool cancel_orders
+		, const std::string& difficulty)
 {
 	filename_ = filename;
+	difficulty_ = difficulty;
 
 	if (filename_.empty()){
 		show_dialog(show_replay, cancel_orders);
@@ -480,10 +521,15 @@ void loadgame::load_game(
         }
 	}
 
+	if (!difficulty_.empty())
+		load_config_["difficulty"] = difficulty_;
+
 	gamestate_.classification().difficulty = load_config_["difficulty"].str();
 	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();
 	gamestate_.classification().campaign_type = load_config_["campaign_type"].str();
 	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
+	gamestate_.classification().campaign_difficulties = utils::split(load_config_["campaign_difficulties"]);
+	gamestate_.classification().campaign_difficulty_descriptions = utils::split(load_config_["campaign_difficulty_descriptions"], ';');
 	gamestate_.classification().version = load_config_["version"].str();
 
 	check_version_compatibility();
@@ -514,13 +560,19 @@ void loadgame::check_version_compatibility()
 	    save_version != game_config::test_version &&
 	    wesnoth_version != game_config::test_version)
 	{
-		gui2::show_message(gui_.video(), "", _("This save is from a version too old to be loaded."));
+		const std::string message = _("This save is from an old, unsupported version ($version_number|) and cannot be loaded.");
+		utils::string_map symbols;
+		symbols["version_number"] = save_version.str();
+		gui2::show_error_message(gui_.video(), utils::interpolate_variables_into_string(message, &symbols));
 		throw load_game_cancelled_exception();
 	}
 
 	int res = gui2::twindow::OK;
 	if(preferences::confirm_load_save_from_different_version()) {
-		res = gui2::show_message(gui_.video(), "", _("This save is from a different version of the game. Do you want to try to load it?"),
+		const std::string message = _("This save is from a different version of the game ($version_number|). Do you wish to try to load it?");
+		utils::string_map symbols;
+		symbols["version_number"] = save_version.str();
+		res = gui2::show_message(gui_.video(), _("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
 			gui2::tmessage::yes_no_buttons);
 	}
 
@@ -893,6 +945,9 @@ void savegame::extract_summary_data_from_save(config& out)
 	out["parent"] = gamestate_.classification().parent;
 	out["campaign"] = gamestate_.classification().campaign;
 	out["campaign_type"] = gamestate_.classification().campaign_type;
+	out["campaign_difficulties"] = utils::join<std::vector<std::string> >(gamestate_.classification().campaign_difficulties, ",");
+	out["campaign_difficulty_descriptions"] = utils::join<std::vector<std::string> >
+		(gamestate_.classification().campaign_difficulty_descriptions, ";");
 	out["scenario"] = gamestate_.classification().scenario;
 	out["difficulty"] = gamestate_.classification().difficulty;
 	out["version"] = gamestate_.classification().version;

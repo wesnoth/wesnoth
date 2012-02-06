@@ -34,7 +34,7 @@
 #include <sstream>
 
 #define sha_rotl(n,x)		( ((x) << (n)) | ((x) >> (32-(n))) )
-#define sha_ch(x,y,z)		( ((x) & (y)) | ((!(x)) & (z)) )
+#define sha_ch(x,y,z)		( ((x) & (y)) | ((~(x)) & (z)) )
 #define sha_parity(x,y,z)	( (x) ^ (y) ^ (z) )
 #define sha_maj(x,y,z)		( ((x) & (y)) | ((x) & (z)) | ((y) & (z)) )
 
@@ -68,7 +68,7 @@ sha1_hash::sha1_hash(const std::string& str)
 			for (i = 63; i > bytes_left; i--) {
 				block[i]=0; // pad our block with zeros
 			}
-			if (bytes_left < 60) { // enough space to store the length
+			if (bytes_left < 56) { // enough space to store the length
 				// put the length at the end of the block
 				block[60] = ssz >> 24;
 #ifdef _MSC_VER

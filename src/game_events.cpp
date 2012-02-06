@@ -893,15 +893,6 @@ WML_HANDLER_FUNCTION(color_adjust, /*event_info*/, cfg)
 	color_adjust(cfg);
 }
 
-//Function handling old name
-///@deprecated 1.9.2 'colour_adjust' instead of 'color_adjust'
-//deprecation message added 1.9.10
-WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
-{
-	WRN_NG << "[colour_adjust] is deprecated, use [color_adjust]\n";
-	color_adjust(cfg);
-}
-
 WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
@@ -1420,7 +1411,24 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			}
 		}
 
-		int choice = state_of_game->rng().get_next_random() % num_choices;
+		/*
+		 * Choice gets a value in the range [0..32768).
+		 * So need to add a second set of random values when a value
+		 * outside the range is requested.
+		 */
+		if(num_choices > 0x3fffffff) {
+			WRN_NG << "Requested random number with an upper bound of "
+					<< num_choices
+					<< " however the maximum number generated will be "
+					<< 0x3fffffff
+					<< ".\n";
+		}
+		int choice = state_of_game->rng().get_next_random();
+		if(num_choices >= 32768) {
+			choice <<= 15;
+			choice += state_of_game->rng().get_next_random();
+		}
+		choice %= num_choices;
 		int tmp = 0;
 		for(size_t i = 0; i < ranges.size(); ++i) {
 			tmp += (ranges[i].second - ranges[i].first) + 1;
@@ -2148,8 +2156,44 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 		mref->filter_location = cfg.child("filter_location").get_config();
 	}
 	if(cfg.has_child("command")) {
-		config* new_command = new config(cfg.child("command").get_config());
+		const vconfig& cmd = cfg.child("command");
+		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
+		config* new_command = new config(delayed ? cmd.get_config() : cmd.get_parsed_config());
 		wmi_command_changes.push_back(wmi_command_change(id, new_command));
+	}
+}
+
+WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
+{
+	const std::string ids = cfg["id"].str();
+	foreach(const std::string& id, utils::split(ids, ',', utils::STRIP_SPACES)) {
+		if(id.empty()) {
+			WRN_NG << "[clear_menu_item] has been given an empty id=, ignoring\n";
+			continue;
+		}
+
+		std::map<std::string, wml_menu_item*>& menu_items = resources::state_of_game->wml_menu_items;
+		if(menu_items.find(id) == menu_items.end()) {
+			WRN_NG << "trying to remove a non-existent menu item, ignoring\n";
+			continue;
+		}
+
+		std::vector<wmi_command_change>::iterator wcc = wmi_command_changes.begin();
+		while(wcc != wmi_command_changes.end()) {
+			if(wcc->first != id) {
+				++wcc;
+				continue;
+			}
+			delete wcc->second;
+			wcc->second = NULL;
+			wcc = wmi_command_changes.erase(wcc);
+		}
+		event_handlers.remove_event_handler(id);
+
+		wml_menu_item*& mi = menu_items[id];
+		delete mi;
+		mi = NULL;
+		menu_items.erase(id);
 	}
 }
 
@@ -2979,14 +3023,17 @@ static void commit_wmi_commands() {
 		wml_menu_item*& mref = resources::state_of_game->wml_menu_items[wcc.first];
 		const bool has_current_handler = !mref->command.empty();
 
+		config::attribute_value event_id = (*wcc.second)["id"];
+		if(event_id.empty()) {
+			event_id = mref->event_id;
+			if(!event_id.empty())
+				(*wcc.second)["id"] = event_id;
+		}
 		mref->command = *(wcc.second);
 		mref->command["name"] = mref->name;
 		mref->command["first_time_only"] = false;
 
 		if(has_current_handler) {
-			if(is_empty_command) {
-				mref->command.add_child("allow_undo");
-			}
 			foreach(game_events::event_handler& hand, event_handlers) {
 				if(hand.is_menu_item() && hand.matches_name(mref->name)) {
 					LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
@@ -3389,8 +3436,8 @@ namespace game_events {
 	{
 		DBG_EH << "committing new event handlers, number of pump_instances: " <<
 			pump_manager::count() << "\n";
-		commit_wmi_commands();
 		event_handlers.commit_buffer();
+		commit_wmi_commands();
 		// Dialogs can only be shown if the display is not locked
 		if (!resources::screen->video().update_locked()) {
 			show_wml_errors();

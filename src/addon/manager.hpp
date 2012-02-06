@@ -49,7 +49,7 @@ bool have_addon_in_vcs_tree(const std::string& addon_name);
  * @param cfg                     A config object to store the add-on's
  *                                properties.
  */
-bool get_addon_info(const std::string& addon_name, class config& cfg);
+void get_addon_info(const std::string& addon_name, class config& cfg);
 
 /**
  * Sets the publish information for an add-on
@@ -58,7 +58,7 @@ bool get_addon_info(const std::string& addon_name, class config& cfg);
  * @param cfg                     A config object from which the add-on's
  *                                properties are copied.
  */
-void set_addon_info(const std::string& addon_name, const class config& cfg, const bool is_old_style);
+void set_addon_info(const std::string& addon_name, const class config& cfg);
 
 /** Returns a list of local add-ons that can be published. */
 std::vector<std::string> available_addons();

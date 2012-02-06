@@ -46,7 +46,7 @@ msgstr ""
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:91
 msgid "(Easy)"
-msgstr "(facile)"
+msgstr "(Facile)"
 
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:91
@@ -56,7 +56,7 @@ msgstr "Soldat"
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:92
 msgid "(Normal)"
-msgstr "(normal)"
+msgstr "(Normal)"
 
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:92
@@ -66,7 +66,7 @@ msgstr "Seigneur"
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:93
 msgid "(Hard)"
-msgstr "(difficile)"
+msgstr "(Difficile)"
 
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:93
@@ -2654,12 +2654,12 @@ msgstr "des guerriers expérimentés"
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:255
 msgid "$left_behind_{NAME} and $l3_store_{NAME}[$i].name"
-msgstr "$left_behind et $l3_selector_store[$i].name"
+msgstr "$left_behind_{NAME} et $l3_store_{NAME}[$i].name"
 
 #. [set_variable]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:261
 msgid "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
-msgstr "$left_behind|, $l3_selector_store[$i].name"
+msgstr "$left_behind_{NAME}|, $l3_store_{NAME}[$i].name"
 
 #. [objective]: condition=win
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:377
@@ -2754,8 +2754,8 @@ msgid ""
 "Before Kalenz left the Ka’lian he had ordered $left_behind_kalenz to stay "
 "and guard it."
 msgstr ""
-"Avant que Kalenz ne laisse Ka'lian, il avait ordonné à $left_behind de "
-"rester en arrière et d'y monter la garde."
+"Avant que Kalenz ne laisse Ka'lian, il avait ordonné à $left_behind_kalenz "
+"de rester en arrière et d'y monter la garde."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:463
@@ -2763,8 +2763,8 @@ msgid ""
 "Before Landar left the Ka’lian he had ordered $left_behind_landar to stay "
 "and guard it."
 msgstr ""
-"Avant que Kalenz ne laisse le Ka'lian, il avait ordonné à $left_behind de "
-"rester en arrière et d'y monter la garde."
+"Avant que Kalenz ne laisse le Ka'lian, il avait ordonné à "
+"$left_behind_landar de rester en arrière et d'y monter la garde."
 
 #. [side]: type=Gryphon, id=Gryphon Leader
 #. [side]

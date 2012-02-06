@@ -30,6 +30,7 @@ public:
 	explicit tgame_load(const config& cache_config);
 
 	const std::string& filename() const { return filename_; }
+	bool reselect_difficulty() const { return reselect_difficulty_; }
 	bool show_replay() const { return show_replay_; }
 	bool cancel_orders() const { return cancel_orders_; }
 
@@ -54,10 +55,12 @@ private:
 	void fill_game_list(twindow& window, std::vector<savegame::save_info>& games);
 
 	tfield_text* txtFilter_;
+	tfield_bool* chk_reselect_difficulty_;
 	tfield_bool* chk_show_replay_;
 	tfield_bool* chk_cancel_orders_;
 
 	std::string filename_;
+	bool reselect_difficulty_;
 	bool show_replay_;
 	bool cancel_orders_;
 

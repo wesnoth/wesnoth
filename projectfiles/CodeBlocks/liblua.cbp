@@ -44,10 +44,20 @@
 		<Unit filename="..\..\src\lua\lbaselib.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="..\..\src\lua\lbitlib.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="..\..\src\lua\lcode.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="..\..\src\lua\lcode.h" />
+		<Unit filename="..\..\src\lua\lcorolib.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\src\lua\lctype.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\..\src\lua\lctype.h" />
 		<Unit filename="..\..\src\lua\ldblib.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -132,6 +142,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="..\..\src\lua\lua.h" />
+		<Unit filename="..\..\src\lua\lua.hpp" />
 		<Unit filename="..\..\src\lua\luac.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -149,9 +160,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="..\..\src\lua\lzio.h" />
-		<Unit filename="..\..\src\lua\print.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

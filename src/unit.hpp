@@ -298,12 +298,20 @@ public:
 			const attack_type* attack=NULL,const attack_type* second_attack = NULL,
 			int swing_num =0) const;
 
-	bool get_ability_bool(const std::string& ability, const map_location& loc) const;
-	bool get_ability_bool(const std::string &ability) const
-	{ return get_ability_bool(ability, loc_); }
-	unit_ability_list get_abilities(const std::string &ability, const map_location& loc) const;
-	unit_ability_list get_abilities(const std::string &ability) const
-	{ return get_abilities(ability, loc_); }
+	/**
+	 * Returns true if the unit is currently under effect by an ability with this given TAG NAME.
+	 * This means that the ability could be owned by the unit itself, or by an adjacent unit.
+	 */
+	bool get_ability_bool(const std::string& tag_name, const map_location& loc) const;
+	/**
+	 * Returns true if the unit is currently under effect by an ability with this given TAG NAME.
+	 * This means that the ability could be owned by the unit itself, or by an adjacent unit.
+	 */
+	bool get_ability_bool(const std::string &tag_name) const
+	{ return get_ability_bool(tag_name, loc_); }
+	unit_ability_list get_abilities(const std::string &tag_name, const map_location& loc) const;
+	unit_ability_list get_abilities(const std::string &tag_name) const
+	{ return get_abilities(tag_name, loc_); }
 	/** Tuple of: neutral ability name, gendered ability name, description */
 	std::vector<boost::tuple<t_string,t_string,t_string> > ability_tooltips(bool force_active = false) const;
 	std::vector<std::string> get_ability_list() const;

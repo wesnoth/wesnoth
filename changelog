@@ -1,6 +1,45 @@
-Version 1.10.0+svn:
+Version 1.11.0-svn:
+ * Add-ons server:
+   * Reject add-ons with names or titles that begin with a WML text format
+     markup character (any of *, `, ~, {, ^, }, |, @, #, <, &)
+ * Campaigns:
+   * Son of the Black Eye:
+     * Removed Al'Brock and Flar'Tar death as defeat condition in objectives in
+       Civil War
+   * Tutorial:
+     * Fixed bug #19316: Narrator messages are now translated.
+   * Under the Burning Suns:
+     * Made it so that Kaleh gets the default AMLA after he's been fully
+       upgraded
+   * Descent into Darkness:
+     * Fix most possible cases for Darken Volk becoming "stuck"
+       in 09_A_Small_Favor3.
  * Language and i18n:
-   * Updated translations: Italian
+   * Updated translations: French, Indonesian, Italian, Latin, Norwegian,
+     Spanish
+ * Lua API:
+   * Upgraded Lua from 5.1.4 to 5.2.0
+ * Terrain:
+   * New tropical forest images
+   * New palm forest terrain
+   * Deprecated flowers (Ggf) and Volcano (Qv) removed - use Gg^Ef and Mv
+     respectively
+ * WML engine:
+   * new action tag: [clear_menu_item] id=...
+   * new key: [set_menu_item][command]delayed_variable_substitution=yes|no
+   * Removed support for the deprecated "colour=", "debug_border_colour=",
+     and [colour_adjust]
+   * Fixed bug #18996: Increase random number generation range.
+ * Unit changes and balancing:
+   * New extra_define ENABLE_WOLF_ADVANCEMENT to optionally enable Wolves
+     advancement to Great Wolves and Direwolves
+   * New extra_define ENABLE_TROLL_SHAMAN to optionally enable Troll Whelps
+     advancement to Troll Shamans (not in multiplayer)
+ * User interface:
+   * Restored leader unit image in Load Game dialog (bug #18683)
+ * Whiteboard
+   * Fixed bug #19369 : Using planning mode can cause losing ability to move my units
+   * Fixed bug #19408 : Crash shortly after executing invalid multi-turn move
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
@@ -8,6 +47,15 @@ Version 1.10.0+svn:
    * Fixed unit sound animation timings wherever the {SOUND:SLOW} and
      {SOUND:POISON} macros, and several macros from animation-utils2.cfg are used
      (see bug #19274)
+   * Restart is no longer required to toggle desktop notifications
+   * Display the savegame version when warning the user about unsupported or
+     mismatched versions (bug #7243)
+   * Implemented feature request for difficulty changing during campaigns.
+     The feature is still gui2 only and thus still hidden per default.
+     (see bug #10978)
+   * The saved games cache file is now save_index instead of save_index.gz, and
+     it is compressed when the Compressed Saves option is enabled in Advanced
+     Preferences (patch #3115)
 
 Version 1.10.0:
  * Campaigns:

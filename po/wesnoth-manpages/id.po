@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2011-11-24 17:33+0700\n"
+"PO-Revision-Date: 2012-01-27 22:40+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -121,22 +121,12 @@ msgstr "set nilai BitsPerPixel. Contoh: B<--bpp 32>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
+#, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
+msgstr "B<-c, --campaign \\ [E<lt>id_kampanyeE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy
-#| msgid ""
-#| "goes directly to the campaign based on the parameters.  The difficulty is "
-#| "a number between 1 and current campaign's difficulties number.  The "
-#| "default difficulty is 1.  The scenario must be one of the campaign's "
-#| "child scenarios. The default scenario is campaign's first scenario.  "
-#| "B<Note: When using this switch please ensure that you specify the data "
-#| "directory path as the final argument> aswell, otherwise the game will "
-#| "take the campaign/scenario id as the data dir."
 msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified.  B<Note:> When using this switch "
@@ -144,20 +134,17 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
-"pergi langsung ke kampanye berdasarkan parameter-parameter. Kesulitan adalah "
-"nomor antara 1 dan nomor kesulitan kampanye saat ini. Kesulitan standar "
-"adalah 1. Skenario harus menjadi salah satu dari skenario-skenario anak "
-"kampanye. Skenario standar adalah skenario pertama kampanye. B<Note: Bila "
-"menggunakan tombol ini pastikan bahwa anda menentukan path direktori data "
-"sebagai argument akhir> juga, jika tidak permainan akan mengambil id "
-"kampanye/skenario sebagai data dir."
+"pergi langsung ke kampanye dengan id E<lt>id_kampanyeE<gt>. Sebuah menu "
+"pilihan akan muncul jika tidak ada id ditentukan. B<Note:> Bila menggunakan "
+"tombol ini pastikan bahwa anda menentukan path direktori data sebagai "
+"argument akhir juga, jika tidak permainan akan mengambil id kampanye/"
+"skenario sebagai data dir."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr "B<--data-dir E<lt>directoriE<gt>>"
+msgstr "B<--campaign-difficulty E<lt>kesulitanE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -165,12 +152,14 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"Kesulitan dari kampanye yang ditentukan (1 sampai maks).  Jika tidak "
+"ditentukan, pilihan kesulitan kampanye widget akan muncul."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>id_skenarioE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
@@ -178,6 +167,8 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
+"Id skenario dari kampanye yang ditentukan. Standarnya adalah skenario "
+"pertama."
 
 # type: TP
 #. type: TP

@@ -71,6 +71,9 @@ function wml_actions.item(cfg)
 end
 
 function wml_actions.remove_item(cfg)
+	if #cfg == 0 and not cfg.x and not cfg.y then
+		helper.wml_error "Empty [remove_item] is no longer supported."
+	end
 	local locs = wesnoth.get_locations(cfg)
 	for i, loc in ipairs(locs) do
 		remove_overlay(loc[1], loc[2], cfg.image)

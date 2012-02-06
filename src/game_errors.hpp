@@ -65,17 +65,20 @@ public:
 	load_game_exception(
 			  const std::string& game_
 			, const bool show_replay_
-			, const bool cancel_orders_)
+			, const bool cancel_orders_
+			, const std::string& difficulty_)
 		: tlua_jailbreak_exception()
 	{
 		game = game_;
 		show_replay = show_replay_;
 		cancel_orders = cancel_orders_;
+		difficulty = difficulty_;
 	}
 
 	static std::string game;
 	static bool show_replay;
 	static bool cancel_orders;
+	static std::string difficulty;
 
 private:
 

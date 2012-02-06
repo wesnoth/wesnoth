@@ -1778,8 +1778,6 @@ void attack::perform()
 	const int attacker_side = a_.get_unit().side();
 	const int defender_side = d_.get_unit().side();
 
-	static const std::string poison_string("poison");
-
 	LOG_NG << "Fight: (" << a_.loc_ << ") vs (" << d_.loc_ << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
 
 	// Play the pre-fight animation

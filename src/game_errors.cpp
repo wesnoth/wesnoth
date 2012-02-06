@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2011 by mark de wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2012 by mark de wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,3 +18,4 @@
 std::string game::load_game_exception::game;
 bool game::load_game_exception::show_replay;
 bool game::load_game_exception::cancel_orders;
+std::string game::load_game_exception::difficulty;

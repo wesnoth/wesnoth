@@ -244,7 +244,10 @@ endif(UPDATE_REVISION)
 set(libwesnoth-lua_STAT_SRC
 	lua_jailbreak_exception.cpp
 	lua/lapi.c
+        lua/lbitlib.c
 	lua/lcode.c
+        lua/lcorolib.c
+        lua/lctype.c
 	lua/ldebug.c
 	lua/ldo.c
 	lua/ldump.c
@@ -317,6 +320,7 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 set(wesnoth-main_SRC
 	about.cpp
 	actions.cpp
+	addon/client.cpp
 	addon/manager.cpp
 	addon/validation.cpp
 	ai/actions.cpp
@@ -489,6 +493,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/mp_connect.cpp
 	gui/dialogs/mp_create_game.cpp
 	gui/dialogs/mp_create_game_set_password.cpp
+	gui/dialogs/mp_host_game_prompt.cpp
 	gui/dialogs/mp_login.cpp
 	gui/dialogs/mp_method_selection.cpp
 	gui/dialogs/network_transmission.cpp

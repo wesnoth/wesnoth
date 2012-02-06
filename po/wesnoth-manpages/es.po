@@ -6,12 +6,14 @@
 # Roberto Romero <sildurin@gmail.com>, 2006, 2007.
 # Sergi March <sergi.march@gmail.com>, 2008.
 # Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2008, 2009, 2012.
+# Aelonin <quianaaelonin@gmail.com>, 2012.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2012-01-07 20:49-0300\n"
-"Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
+"PO-Revision-Date: 2012-01-26 19:23+0100\n"
+"Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -107,7 +109,7 @@ msgstr ""
 "unidad tiene sus propias ventajas y desventajas; para ganar, despliegue sus "
 "fuerzas de la mejor forma posible, evitando que sus enemigos tengan la "
 "oportunidad de hacer lo mismo. Según las unidades van ganando experiencia, "
-"adquieren nuevas habilidades y se vuelven más poderosas. Juege en su propio "
+"adquieren nuevas habilidades y se vuelven más poderosas. Juegue en su propio "
 "idioma y pruebe su habilidad contra un inteligente adversario controlado por "
 "el ordenador, o únase a la gran comunidad de jugadores en línea de Wesnoth. "
 "Cree sus propias unidades personalizadas, escenarios o campañas, y "
@@ -148,10 +150,10 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
-"va directamente a la campña especificada con el identificador "
+"va directamente a la campaña especificada con el identificador "
 "E<lt>id_de_campañaE<gt>. Un menú de selección aparecerá si no especifica un "
-"id. B<Nota:> Al usar esta opción, asegúrese de especificar la ruta de acceso "
-"a los datos como el argumento final también, de otro modo el juego "
+"id. B<Nota:> Al usar esta opción, asegúrese de especificar tanto la ruta de "
+"acceso a los datos como el argumento final, de otro modo, el juego "
 "interpretará el identificador de escenario o campaña como tal."
 
 #. type: TP
@@ -166,7 +168,7 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
-"el nivel de dificultad de la campaña especificada (de 1 al máximo). Si no "
+"El nivel de dificultad de la campaña especificada (de 1 al máximo). Si no "
 "especifica ninguno, aparecerá el diálogo de selección de nivel de dificultad."
 
 #. type: TP
@@ -181,7 +183,7 @@ msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
 msgstr ""
-"el identificador del escenario de la campaña especificada. El valor por "
+"El identificador del escenario de la campaña especificada. El valor por "
 "defecto es el escenario inicial."
 
 # type: TP
@@ -200,8 +202,8 @@ msgid ""
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\""
 msgstr ""
-"establece el directorio de configuración del usuario como I<name> bajo $HOME "
-"o \"Mis documentos\\eMis juegos\" en Windows. También es posible especificar "
+"establece el directorio de configuración del usuario como I<name> en $HOME o "
+"\"Mis documentos\\eMis juegos\" en Windows. También es posible especificar "
 "una ruta absoluta fuera de $HOME o \"Mis documentos\\eMis juegos\"."
 
 # type: TP
@@ -277,7 +279,7 @@ msgid ""
 "displays the number of frames per second the game is currently running at, "
 "in a corner of the screen."
 msgstr ""
-"muestra el número de cuadros por segundo a los que se está ejecutando el "
+"muestra el número de fotogramas por segundo a los que se está ejecutando el "
 "juego actualmente, en una esquina de la pantalla."
 
 # type: TP
@@ -307,7 +309,7 @@ msgid ""
 "decompresses a file which should be in gzip format and stores it without "
 "the .gz suffix. The I<infile.gz> will be removed."
 msgstr ""
-"Descomprime un archivo que debería estar en formato gzip y lo almacena sin "
+"descomprime un archivo que debería estar en formato gzip y lo almacena sin "
 "el sufijo .gz. El I<archivo_de_entrada.gz> será eliminado."
 
 # type: TP
@@ -408,13 +410,14 @@ msgid "B<--max-fps>"
 msgstr "B<--max-fps>"
 
 # type: Plain text
+# Darkmage→Mirar comentarios previos.
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:136
 msgid ""
 "the number of frames per second the game can show, the value should be "
 "between the 1 and 1000, the default is B<50>."
 msgstr ""
-"el número de cuadros por segundo que el juego puede mostrar, el valor "
+"el número de fotogramas por segundo que el juego puede mostrar, el valor "
 "debería estar entre 1 y 1000, por defecto es B<50>."
 
 # type: TP
@@ -434,7 +437,7 @@ msgid ""
 msgstr ""
 "inicia una partida multijugador. Existen opciones adicionales que pueden "
 "usarse junto con B<--multiplayer> como se explica más abajo. Sólo es posible "
-"utilizar éstas opciones adicionales luego de B<--multiplayer>."
+"utilizar dichas opciones tras B<--multiplayer>."
 
 # type: TP
 #. type: TP
@@ -952,7 +955,7 @@ msgid ""
 "published by the Free Software Foundation.  There is NO warranty; not even "
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 msgstr ""
-"Esto es Software Libre; este software está licenciado bajo la GPL versión 2, "
+"Esto es Software Libre; este software está licenciado bajo GPL versión 2, "
 "tal y como ha sido publicada por la Free Software Foundation.  No existe "
 "NINGUNA garantía; ni siquiera para SU USO COMERCIAL o ADECUACIÓN A UN "
 "PROPÓSITO PARTICULAR."
@@ -996,7 +999,7 @@ msgstr "Servidor de partidas multijugador para La batalla por Wesnoth"
 #: ../../doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
 msgstr ""
-"wesnothd - Servidor de partidas multijuador para La batalla por B<Wesnoth>"
+"wesnothd - Servidor de partidas multijugador para La batalla por B<Wesnoth>"
 
 # type: Plain text
 #. type: Plain text
@@ -1546,7 +1549,7 @@ msgstr "B<host>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:183
 msgid "The address of the server to redirect to."
-msgstr "La dirección del servidor de destino de la redirección."
+msgstr "La dirección del servidor destino de la redirección."
 
 # type: TP
 #. type: TP
@@ -1618,7 +1621,7 @@ msgid ""
 "Example: B<time=\"1D12h30m\"> results in a ban time of 1 day, 12 hours and "
 "30 minutes."
 msgstr ""
-"La definición del intevalo de tiempo. El formato es %d[%s[%d%s[...]]] donde "
+"La definición del intervalo de tiempo. El formato es %d[%s[%d%s[...]]] donde "
 "el modificador %s es s (segundos), m (minutos), h (horas), D (días), M "
 "(meses) o Y (años) y %d es un número. De estar ausente el modificador, se "
 "asumen minutos (m). Ejemplo: B<time=\"1D12h30m\"> resulta en una duración de "

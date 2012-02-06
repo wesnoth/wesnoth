@@ -49,6 +49,7 @@
 #include "scripting/lua.hpp"
 #include "statistics.hpp"
 #include "wml_exception.hpp"
+#include "gui/dialogs/mp_host_game_prompt.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -235,6 +236,14 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 			else
 				multiplayer_server_ = "";
 		}
+	}
+	if (cmdline_opts_.username) {
+		preferences::disable_preferences_save();
+		preferences::set_login(*cmdline_opts_.username);
+	}
+	if (cmdline_opts_.password) {
+		preferences::disable_preferences_save();
+		preferences::set_password(*cmdline_opts_.password);
 	}
 	if (cmdline_opts_.smallgui)
 		game_config::small_gui = true;
@@ -456,7 +465,6 @@ bool game_controller::play_multiplayer_mode()
 	state_.snapshot = config();
 
 	config level = lvl;
-	std::vector<config*> story;
 
 	const config &era_cfg = game_config().find_child("era","id",era);
 	if (!era_cfg) {
@@ -585,7 +593,7 @@ bool game_controller::load_game()
 	savegame::loadgame load(disp(), game_config(), state_);
 
 	try {
-		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders);
+		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::difficulty);
 
 		cache_.clear_defines();
 		game_config::scoped_preproc_define dificulty_def(state_.classification().difficulty);
@@ -838,6 +846,8 @@ bool game_controller::new_campaign()
 
 	state_.classification().campaign_define = campaign["define"].str();
 	state_.classification().campaign_xtra_defines = utils::split(campaign["extra_defines"]);
+	state_.classification().campaign_difficulties = utils::split(campaign["difficulties"]);
+	state_.classification().campaign_difficulty_descriptions = utils::split(campaign["difficulty_descriptions"], ';');
 
 	return true;
 }
@@ -957,18 +967,8 @@ bool game_controller::play_multiplayer()
 
 			}
 
-			if (res == 2 && preferences::mp_server_warning_disabled() < 2)
-			{
-				gui::dialog d(disp(), _("Do you really want to start the server?"),
-					_("The server will run in a background process until all users have disconnected.")
-					, gui::OK_CANCEL);
-				bool checked = preferences::mp_server_warning_disabled() != 1;
-
-				d.add_option(_("Don’t show again"), checked, gui::dialog::BUTTON_CHECKBOX_LEFT);
-				start_server = d.show();
-				if (start_server == 0)
-					preferences::set_mp_server_warning_disabled(d.option_checked()?2:1);
-
+			if (res == 2 && preferences::mp_server_warning_disabled() < 2) {
+				start_server = !gui2::tmp_host_game_prompt::execute(disp().video());
 			}
 		} while (start_server);
 		if (res < 0) {

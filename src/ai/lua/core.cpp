@@ -576,7 +576,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 
 	lua_setfield(L, -2, "side");//stack size is 2 [- 1: new table; -2 ai as string]
 
-	static luaL_reg const callbacks[] = {
+	static luaL_Reg const callbacks[] = {
 		{ "attack", 			&cfun_ai_execute_attack			},
 		// Move maps
 		{ "get_dstsrc", 		&cfun_ai_get_dstsrc			},
@@ -619,7 +619,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ NULL, NULL }
 	};
 
-	for (const luaL_reg *p = callbacks; p->name; ++p) {
+	for (const luaL_Reg *p = callbacks; p->name; ++p) {
 		lua_pushlightuserdata(L, engine);
 		lua_pushcclosure(L, p->func, 1);
 		lua_setfield(L, -2, p->name);
@@ -634,7 +634,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);   //stack size is now 2  [-1: ais_table -2: f]
 	// Push the function in the table so that it is not collected.
-	size_t length_ai = lua_objlen(L, -1);//length of ais_table
+	size_t length_ai = lua_rawlen(L, -1);//length of ais_table
 	lua_pushvalue(L, -2); //stack size is now 3: [-1: ai_context  -2: ais_table  -3: ai_context]
 	lua_rawseti(L, -2, length_ai + 1);// ais_table[length+1]=ai_context.  stack size is now 2 [-1: ais_table  -2: ai_context]
 	lua_pop(L, 2);
@@ -657,7 +657,7 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&aisKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);   //stack size is now 2  [-1: ais_table -2: f]
 	// Push the function in the table so that it is not collected.
-	size_t length = lua_objlen(L, -1);//length of ais_table
+	size_t length = lua_rawlen(L, -1);//length of ais_table
 	lua_pushvalue(L, -2); //stack size is now 3: [-1: f  -2: ais_table  -3: f]
 	lua_rawseti(L, -2, length + 1);// ais_table[length+1]=f.  stack size is now 2 [-1: ais_table  -2: f]
 	lua_remove(L, -1);//stack size is now 1 [-1: f]
