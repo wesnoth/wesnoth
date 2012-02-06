@@ -130,6 +130,9 @@ static void verify(const unit_map& units, const config& cfg) {
 replay recorder;
 
 chat_msg::chat_msg(const config &cfg)
+	: color_()
+	, nick_()
+	, text_(cfg["message"].str())
 {
 	const std::string& team_name = cfg["team_name"];
 	if(team_name == "")
@@ -138,7 +141,6 @@ chat_msg::chat_msg(const config &cfg)
 	} else {
 		nick_ = str_cast("*")+cfg["id"].str()+"*";
 	}
-	text_ = cfg["message"].str();
 	int side = lexical_cast_default<int>(cfg["side"],0);
 	LOG_REPLAY << "side in message: " << side << std::endl;
 	if (side==0) {
