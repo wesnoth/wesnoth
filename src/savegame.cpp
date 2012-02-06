@@ -427,6 +427,7 @@ loadgame::loadgame(display& gui, const config& game_config, game_state& gamestat
 	, load_config_()
 	, show_replay_(false)
 	, cancel_orders_(false)
+	, select_difficulty_(false)
 {}
 
 void loadgame::show_dialog(bool show_replay, bool cancel_orders)
