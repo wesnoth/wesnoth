@@ -82,10 +82,6 @@ private:
 	void handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
 	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
 	void handle_query(socket_ptr socket, simple_wml::node& query);
-	typedef std::map<socket_ptr, std::deque<boost::shared_ptr<simple_wml::document> > > SendQueue;
-	SendQueue send_queue_;
-	void send_to_player(socket_ptr socket, simple_wml::document& doc);
-	void handle_send_to_player(socket_ptr socket);
 	void remove_player(socket_ptr socket);
 
 	const network::manager net_manager_;

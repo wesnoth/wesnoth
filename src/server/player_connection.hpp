@@ -16,9 +16,15 @@
 #ifndef SERVER_PLAYER_CONNECTION_HPP_INCLUDED
 #define SERVER_PLAYER_CONNECTION_HPP_INCLUDED
 
+#include "simple_wml.hpp"
+
 #include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>
 
 typedef boost::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
+
+void send_to_player(socket_ptr socket, simple_wml::document& doc);
+
+void send_server_message(socket_ptr socket, const std::string& message);
 
 #endif

@@ -1144,11 +1144,7 @@ void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 
 	PlayerMap::right_iterator receiver_iter = player_connections_.right.find(whisper["receiver"].to_string());
 	if(receiver_iter == player_connections_.right.end()) {
-		simple_wml::document server_response;
-		simple_wml::node& msg = server_response.root().add_child("message");
-		msg.set_attr("sender", "server");
-		msg.set_attr_dup("message", ("Can't find '" + whisper["receiver"].to_string() + "'.").c_str());
-		send_to_player(socket, server_response);
+		send_server_message(socket, "Can't find '" + whisper["receiver"].to_string() + "'.");
 	} else {
 		simple_wml::document cwhisper;
 		whisper.copy_into(cwhisper.root().add_child("whisper"));
@@ -1207,11 +1203,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		response << help_msg;
 	} else if (command == "admin" || command.find("admin ") == 0) {
 		if (admin_passwd_.empty()) {
-			simple_wml::document server_response;
-			simple_wml::node& msg = server_response.root().add_child("message");
-			msg.set_attr("sender", "server");
-			msg.set_attr("message", "No password set.");
-			send_to_player(socket, server_response);
+			send_server_message(socket, "No password set.");
 			return;
 		}
 		std::string passwd;
@@ -1235,38 +1227,47 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 	} else {
 		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
 	}
-	simple_wml::document server_response;
-	simple_wml::node& msg = server_response.root().add_child("message");
-	msg.set_attr("sender", "server");
-	msg.set_attr_dup("message", response.str().c_str());
-	send_to_player(socket, server_response);
+	send_server_message(socket, response.str());
 }
 
-void server::send_to_player(socket_ptr socket, simple_wml::document& doc)
+typedef std::map<socket_ptr, std::deque<boost::shared_ptr<simple_wml::document> > > SendQueue;
+SendQueue send_queue;
+void handle_send_to_player(socket_ptr socket);
+
+void send_to_player(socket_ptr socket, simple_wml::document& doc)
 {
-	SendQueue::iterator iter = send_queue_.find(socket);
-	if(iter == send_queue_.end()) {
-		send_queue_[socket];
+	SendQueue::iterator iter = send_queue.find(socket);
+	if(iter == send_queue.end()) {
+		send_queue[socket];
 		async_send_doc(socket, doc,
-			boost::bind(&server::handle_send_to_player, this, _1),
-			boost::bind(&server::handle_send_to_player, this, _1)
+			handle_send_to_player,
+			handle_send_to_player
 		);
 	} else {
-		send_queue_[socket].push_back(boost::shared_ptr<simple_wml::document>(doc.clone()));
+		send_queue[socket].push_back(boost::shared_ptr<simple_wml::document>(doc.clone()));
 	}
 }
 
-void server::handle_send_to_player(socket_ptr socket)
+void handle_send_to_player(socket_ptr socket)
 {
-	if(send_queue_[socket].empty()) {
-		send_queue_.erase(socket);
+	if(send_queue[socket].empty()) {
+		send_queue.erase(socket);
 	} else {
-		async_send_doc(socket, *(send_queue_[socket].front()),
-			boost::bind(&server::handle_send_to_player, this, _1),
-			boost::bind(&server::handle_send_to_player, this, _1)
+		async_send_doc(socket, *(send_queue[socket].front()),
+			handle_send_to_player,
+			handle_send_to_player
 		);
-		send_queue_[socket].pop_front();
+		send_queue[socket].pop_front();
 	}
+}
+
+void send_server_message(socket_ptr socket, const std::string& message)
+{
+	simple_wml::document server_message;
+	simple_wml::node& msg = server_message.root().add_child("message");
+	msg.set_attr("sender", "server");
+	msg.set_attr_dup("message", message.c_str());
+	send_to_player(socket, server_message);
 }
 
 void server::remove_player(socket_ptr socket)
