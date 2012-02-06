@@ -24,19 +24,17 @@
 #include "player.hpp"
 #include "room_manager.hpp"
 #include "simple_wml.hpp"
+#include "player_connection.hpp"
 
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_array.hpp>
 #include <boost/bimap/bimap.hpp>
 #include <boost/bimap/unordered_set_of.hpp>
-#include <boost/asio.hpp>
 
 class server
 {
 public:
-	typedef boost::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
-
 	server(int port, const std::string& config_file, size_t min_threads,size_t max_threads);
 	void run();
 private:
@@ -76,7 +74,7 @@ private:
 
 	void login(socket_ptr socket);
 	void handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
-	void send_password_request(server::socket_ptr socket, const std::string& msg,
+	void send_password_request(socket_ptr socket, const std::string& msg,
 		const std::string& user, const char* error_code = "", bool force_confirmation = false);
 	
 	void add_player(socket_ptr socket, const wesnothd::player&);

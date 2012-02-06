@@ -147,7 +147,7 @@ static void exit_sigterm(int signal) {
 	exit(128 + SIGTERM);
 }
 
-void async_send_error(server::socket_ptr socket, const std::string& msg, const char* error_code = "");
+void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code = "");
 
 namespace {
 
@@ -166,7 +166,7 @@ void send_doc(simple_wml::document& doc, network::connection connection, std::st
 	}
 }
 
-bool check_error(const boost::system::error_code& error, server::socket_ptr socket)
+bool check_error(const boost::system::error_code& error, socket_ptr socket)
 {
 	if(error) {
 		ERR_SERVER << socket->remote_endpoint().address().to_string() << "\t" << error.message() << "\n";
@@ -180,7 +180,7 @@ struct HandleDoc
 {
 	Handler handler;
 	ErrorHandler error_handler;
-	server::socket_ptr socket;
+	socket_ptr socket;
 	union DataSize
 	{
 		boost::uint32_t size;
@@ -189,12 +189,12 @@ struct HandleDoc
 	boost::shared_ptr<DataSize> data_size;
 	boost::shared_ptr<simple_wml::document> doc;
 	boost::shared_array<char> buffer;
-	HandleDoc(server::socket_ptr socket, Handler handler, ErrorHandler error_handler, boost::uint32_t size, boost::shared_ptr<simple_wml::document> doc) :
+	HandleDoc(socket_ptr socket, Handler handler, ErrorHandler error_handler, boost::uint32_t size, boost::shared_ptr<simple_wml::document> doc) :
 		handler(handler), error_handler(error_handler), socket(socket), data_size(new DataSize), doc(doc)
 	{
 		data_size->size = htonl(size);
 	}
-	HandleDoc(server::socket_ptr socket, Handler handler, ErrorHandler error_handler) :
+	HandleDoc(socket_ptr socket, Handler handler, ErrorHandler error_handler) :
 		handler(handler), error_handler(error_handler), socket(socket), data_size(new DataSize)
 	{
 	}
@@ -209,7 +209,7 @@ struct HandleDoc
 };
 
 template<typename Handler, typename ErrorHandler>
-void async_send_doc(server::socket_ptr socket, simple_wml::document& doc, Handler handler, ErrorHandler error_handler)
+void async_send_doc(socket_ptr socket, simple_wml::document& doc, Handler handler, ErrorHandler error_handler)
 {
 	try {
 		boost::shared_ptr<simple_wml::document> doc_ptr(doc.clone());
@@ -225,17 +225,17 @@ void async_send_doc(server::socket_ptr socket, simple_wml::document& doc, Handle
 	}
 }
 
-void null_handler(server::socket_ptr)
+void null_handler(socket_ptr)
 {
 }
 
 template<typename Handler>
-void async_send_doc(server::socket_ptr socket, simple_wml::document& doc, Handler handler)
+void async_send_doc(socket_ptr socket, simple_wml::document& doc, Handler handler)
 {
 	async_send_doc(socket, doc, handler, null_handler);
 }
 
-void async_send_doc(server::socket_ptr socket, simple_wml::document& doc)
+void async_send_doc(socket_ptr socket, simple_wml::document& doc)
 {
 	async_send_doc(socket, doc, null_handler, null_handler);
 }
@@ -244,7 +244,7 @@ template<typename Handler, typename ErrorHandler>
 struct HandleReceiveDoc : public HandleDoc<Handler, ErrorHandler>
 {
 	std::size_t buf_size;
-	HandleReceiveDoc(server::socket_ptr socket, Handler handler, ErrorHandler error_handler) :
+	HandleReceiveDoc(socket_ptr socket, Handler handler, ErrorHandler error_handler) :
 		HandleDoc<Handler, ErrorHandler>(socket, handler, error_handler)
 	{
 	}
@@ -274,14 +274,14 @@ struct HandleReceiveDoc : public HandleDoc<Handler, ErrorHandler>
 };
 
 template<typename Handler, typename ErrorHandler>
-void async_receive_doc(server::socket_ptr socket, Handler handler, ErrorHandler error_handler)
+void async_receive_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler)
 {
 	HandleReceiveDoc<Handler, ErrorHandler> handle_receive_doc(socket, handler, error_handler);
 	async_read(*socket, boost::asio::buffer(handle_receive_doc.data_size->buf, 4), handle_receive_doc);
 }
 
 template<typename Handler>
-void async_receive_doc(server::socket_ptr socket, Handler handler)
+void async_receive_doc(socket_ptr socket, Handler handler)
 {
 	async_receive_doc(socket, handler, null_handler);
 }
@@ -561,7 +561,7 @@ void server::send_error(network::connection sock, const char* msg, const char* e
 	send_doc(doc, sock, "error");
 }
 
-void async_send_error(server::socket_ptr socket, const std::string& msg, const char* error_code)
+void async_send_error(socket_ptr socket, const std::string& msg, const char* error_code)
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr_dup("message", msg.c_str());
@@ -583,7 +583,7 @@ void server::send_warning(network::connection sock, const char* msg, const char*
 	send_doc(doc, sock, "warning");
 }
 
-void async_send_warning(server::socket_ptr socket, const std::string& msg, const char* warning_code)
+void async_send_warning(socket_ptr socket, const std::string& msg, const char* warning_code)
 {
 	simple_wml::document doc;
 	doc.root().add_child("warning").set_attr_dup("message", msg.c_str());
@@ -1067,7 +1067,7 @@ void server::handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 	}
 }
 
-void server::send_password_request(server::socket_ptr socket, const std::string& msg,
+void server::send_password_request(socket_ptr socket, const std::string& msg,
 	const std::string& user, const char* error_code, bool force_confirmation)
 {
 	std::string salt = user_handler_->create_salt();
