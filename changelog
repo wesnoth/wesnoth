@@ -31,8 +31,8 @@ Version 1.11.0-svn:
      and [colour_adjust]
    * Fixed bug #18996: Increase random number generation range.
    * Made it possible to disable the credits screen at the end of a campaign
-     by specifying end_credits=no in the final [endlevel] action, or in
-     [scenario] or [campaign] (defaults to yes)
+     by specifying end_credits=no in the final [endlevel] action, or in the
+     [campaign] definition (defaults to yes)
  * Unit changes and balancing:
    * New extra_define ENABLE_WOLF_ADVANCEMENT to optionally enable Wolves
      advancement to Great Wolves and Direwolves
