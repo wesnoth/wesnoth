@@ -636,6 +636,7 @@ set(libwesnoth-game_STAT_SRC
 	image.cpp
 	image_modifications.cpp
 	joystick.cpp
+	game_end_exceptions.cpp
 	key.cpp
 	language.cpp
 	loadscreen.cpp
