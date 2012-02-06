@@ -2424,6 +2424,10 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 			end_of_campaign_text_delay.to_int(state_of_game->classification().end_text_duration);
 	}
 
+	if(cfg.has_attribute("end_credits")) {
+		state_of_game->classification().end_credits = cfg["end_credits"].to_bool(true);
+	}
+
 
 	std::string result = cfg["result"];
 	VALIDATE_WITH_DEV_MESSAGE(

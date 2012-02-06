@@ -1271,7 +1271,9 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 		if(result == VICTORY && (state_.classification().campaign_type.empty() || state_.classification().campaign_type != "multiplayer")) {
 			preferences::add_completed_campaign(state_.classification().campaign);
 			the_end(disp(), state_.classification().end_text, state_.classification().end_text_duration);
-			about::show_about(disp(),state_.classification().campaign);
+			if(state_.classification().end_credits) {
+				about::show_about(disp(),state_.classification().campaign);
+			}
 		}
 
 		clear_loaded_game();

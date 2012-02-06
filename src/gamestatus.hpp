@@ -62,6 +62,7 @@ public:
 	std::string scenario;                            /**< the scenario being played */
 	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
 	std::string completion;                          /**< running. victory, or defeat */
+	bool end_credits;                                /**< whether to show the standard credits at the end */
 	std::string end_text;                            /**< end-of-campaign text */
 	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
 	std::string difficulty; /**< The difficulty level the game is being played on. */

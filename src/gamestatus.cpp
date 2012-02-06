@@ -75,6 +75,7 @@ game_classification::game_classification():
 	scenario(),
 	next_scenario(),
 	completion(),
+	end_credits(true),
 	end_text(),
 	end_text_duration(),
 	difficulty("NORMAL")
@@ -96,6 +97,7 @@ game_classification::game_classification(const config& cfg):
 	scenario(cfg["scenario"]),
 	next_scenario(cfg["next_scenario"]),
 	completion(cfg["completion"]),
+	end_credits(cfg["end_credits"].to_bool(true)),
 	end_text(cfg["end_text"]),
 	end_text_duration(cfg["end_text_duration"]),
 	difficulty(cfg["difficulty"].empty() ? "NORMAL" : cfg["difficulty"].str())
@@ -117,6 +119,7 @@ game_classification::game_classification(const game_classification& gc):
 	scenario(gc.scenario),
 	next_scenario(gc.next_scenario),
 	completion(gc.completion),
+	end_credits(gc.end_credits),
 	end_text(gc.end_text),
 	end_text_duration(gc.end_text_duration),
 	difficulty(gc.difficulty)
@@ -141,6 +144,7 @@ config game_classification::to_config() const
 	cfg["scenario"] = scenario;
 	cfg["next_scenario"] = next_scenario;
 	cfg["completion"] = completion;
+	cfg["end_credits"] = end_credits;
 	cfg["end_text"] = end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);
 	cfg["difficulty"] = difficulty;
@@ -354,6 +358,7 @@ void game_state::write_snapshot(config& cfg) const
 	cfg["random_seed"] = rng_.get_random_seed();
 	cfg["random_calls"] = rng_.get_random_calls();
 
+	cfg["end_credits"] = classification_.end_credits;
 	cfg["end_text"] = classification_.end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(classification_.end_text_duration);
 
