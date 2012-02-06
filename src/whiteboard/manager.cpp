@@ -67,6 +67,7 @@ manager::manager():
 		route_(),
 		move_arrows_(),
 		fake_units_(),
+		temp_move_unit_underlying_id_(0),
 		key_poller_(new CKey),
 		hidden_unit_hexes_(),
 		net_buffer_(resources::teams->size()),
