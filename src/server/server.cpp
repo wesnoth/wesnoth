@@ -456,6 +456,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	games_(),
 	not_logged_in_(),
 	rooms_(players_),
+	room_list_(player_connections_),
 	input_(),
 	config_file_(config_file),
 	cfg_(read_config()),
@@ -1128,6 +1129,14 @@ void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple
 	if(simple_wml::node* query = doc->child("query")) {
 		handle_query(socket, *query);
 	}
+
+	// Lobby
+	if(simple_wml::node* room_join = doc->child("room_join")) {
+		handle_room_join(socket, *room_join);
+	}
+	if(simple_wml::node* room_part = doc->child("room_part")) {
+		handle_room_part(socket, *room_part);
+	}
 }
 
 void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
@@ -1228,6 +1237,18 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
 	}
 	send_server_message(socket, response.str());
+}
+
+void server::handle_room_join(socket_ptr socket, simple_wml::node& room_join)
+{
+	std::string room_name = room_join.attr("room").to_string();
+	room_list_.enter_room(room_name, socket);
+}
+
+void server::handle_room_part(socket_ptr socket, simple_wml::node& room_part)
+{
+	std::string room_name = room_part.attr("room").to_string();
+	room_list_.leave_room(room_name, socket);
 }
 
 typedef std::map<socket_ptr, std::deque<boost::shared_ptr<simple_wml::document> > > SendQueue;

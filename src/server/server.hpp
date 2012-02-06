@@ -25,12 +25,11 @@
 #include "room_manager.hpp"
 #include "simple_wml.hpp"
 #include "player_connection.hpp"
+#include "rooms.hpp"
 
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_array.hpp>
-#include <boost/bimap/bimap.hpp>
-#include <boost/bimap/unordered_set_of.hpp>
 
 class server
 {
@@ -82,6 +81,8 @@ private:
 	void handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
 	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
 	void handle_query(socket_ptr socket, simple_wml::node& query);
+	void handle_room_join(socket_ptr socket, simple_wml::node& room_join);
+	void handle_room_part(socket_ptr socket, simple_wml::node& room_join);
 	void remove_player(socket_ptr socket);
 
 	const network::manager net_manager_;
@@ -126,16 +127,13 @@ private:
 	wesnothd::player_map players_;
 	std::set<network::connection> ghost_players_;
 
-	typedef boost::bimaps::bimap<
-		boost::bimaps::unordered_set_of<socket_ptr>, 
-		boost::bimaps::unordered_set_of<std::string>,
-		boost::bimaps::with_info<wesnothd::player> > PlayerMap;
 	PlayerMap player_connections_;
 
 	std::vector<wesnothd::game*> games_;
 	std::set<network::connection> not_logged_in_;
 
 	wesnothd::room_manager rooms_;
+	RoomList room_list_;
 
 	/** server socket/fifo. */
 	boost::scoped_ptr<input_stream> input_;
