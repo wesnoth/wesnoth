@@ -1113,6 +1113,16 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 				}
 			}
 
+			const std::string& start_name = gamestate_.classification().label;
+			if(savegame::manager::save_game_exists(start_name, preferences::compress_saves())) {
+				if(preferences::compress_saves()) {
+					newsaves.push_back(start_name + ".gz");
+				} else {
+					newsaves.push_back(start_name);
+				}
+				newitems.push_back(_("Back to Start"));
+			}
+
 			// Make sure list doesn't get too long: keep top two,
 			// midpoint and bottom.
 			trim_items(newitems);
