@@ -465,17 +465,26 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 			cfg_summary["corrupt"] = "yes";
 		}
 
+		if ( (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true))
+			|| (!cfg_summary["turn"].empty()) )
+			return;
+
 		const std::string difficulty_descriptions = cfg_summary["campaign_difficulty_descriptions"];
 		const std::string difficulties = cfg_summary["campaign_difficulties"];
 
 		std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
 		std::vector<std::string> difficulty_list = utils::split(difficulties, ',');
 
+		if (difficulty_options.empty())
+			return;
+
 		gui2::tcampaign_difficulty difficulty_dlg(difficulty_options);
 		difficulty_dlg.show(gui_.video());
 
-		if (difficulty_dlg.get_retval() != gui2::twindow::OK)
+		if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
+			filename_ = "";
 			return;
+		}
 
 		difficulty_ = difficulty_list[difficulty_dlg.selected_index()];
 	}
