@@ -175,7 +175,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_ai_moves_button_(disp.video(), _("Skip AI moves"), gui::button::TYPE_CHECK),
 	  interrupt_when_ally_sighted_button_(disp.video(), _("Interrupt move when an ally is sighted"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show grid"), gui::button::TYPE_CHECK),
-	  save_replays_button_(disp.video(), _("Save replay at the end of scenarios"), gui::button::TYPE_CHECK),
+	  save_replays_button_(disp.video(), _("Save replays at the end of scenarios"), gui::button::TYPE_CHECK),
 	  delete_saves_button_(disp.video(), _("Delete auto-saves at the end of scenarios"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button1_(disp.video(), _("Do not show lobby joins"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button2_(disp.video(), _("Show lobby joins of friends only"), gui::button::TYPE_CHECK),
