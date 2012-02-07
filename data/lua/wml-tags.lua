@@ -232,7 +232,7 @@ function wml_actions.wml_action(cfg)
 		helper.wml_error "[wml_action] missing required name= attribute."
 	local code = cfg.lua_function or
 		helper.wml_error "[wml_action] missing required lua_function= attribute."
-	local bytecode, message = loadstring(code)
+	local bytecode, message = load(code)
 	if not bytecode then
 		helper.wml_error("[wml_action] failed to compile Lua code: " .. message)
 	end
@@ -244,7 +244,7 @@ end
 
 function wml_actions.lua(cfg)
 	local cfg = helper.shallow_literal(cfg)
-	local bytecode, message = loadstring(cfg.code or "")
+	local bytecode, message = load(cfg.code or "")
 	if not bytecode then error("~lua:" .. message, 0) end
 	bytecode(helper.get_child(cfg, "args"))
 end
