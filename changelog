@@ -21,6 +21,12 @@ Version 1.11.0-svn:
    * Fix an accidental terrain type change in Isar's Cross
  * Lua API:
    * Upgraded Lua from 5.1.4 to 5.2.0
+   * new: field wesnoth.game_config.mp_debug
+   * new: setter for wesnoth.sides[i].color
+   * Deprecated the following functions from the wesnoth table,
+     all of which have better replacements:
+     get_side, get_side_count, get_unit_type_ids, get_unit_type,
+     register_wml_action
  * Terrain:
    * New tropical forest images
    * New palm forest terrain
