@@ -633,7 +633,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 
 	gui::dialog lmenu(disp,
 			  _("Load Game"),
-			  _("Choose the game to load"), gui::NULL_DIALOG);
+			  "", gui::NULL_DIALOG);
 	lmenu.set_basic_behavior(gui::OK_CANCEL);
 
 	gui::menu::basic_sorter sorter;
@@ -650,7 +650,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 		lmenu.add_option(_("Show replay"), false,
 			// use smallgui layout as default, otherwise the load screen glitches at low res!
 			//game_config::small_gui ? gui::dialog::BUTTON_CHECKBOX : gui::dialog::BUTTON_STANDARD);
-			gui::dialog::BUTTON_CHECKBOX,
+			gui::dialog::BUTTON_CHECKBOX_LEFT,
 			_("Play the embedded replay from the saved game if applicable")
 			);
 	}
@@ -658,7 +658,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 		lmenu.add_option(_("Cancel orders"), false,
 			// use smallgui layout as default, otherwise the load screen glitches at low res!
 			//game_config::small_gui ? gui::dialog::BUTTON_STANDARD : gui::dialog::BUTTON_EXTRA);
-			gui::dialog::BUTTON_STANDARD,
+			gui::dialog::BUTTON_CHECKBOX_LEFT,
 			_("Cancel any pending unit movements in the saved game")
 			);
 	}
