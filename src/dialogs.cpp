@@ -650,18 +650,23 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 		lmenu.add_option(_("Show replay"), false,
 			// use smallgui layout as default, otherwise the load screen glitches at low res!
 			//game_config::small_gui ? gui::dialog::BUTTON_CHECKBOX : gui::dialog::BUTTON_STANDARD);
-			gui::dialog::BUTTON_CHECKBOX);
+			gui::dialog::BUTTON_CHECKBOX,
+			_("Play the embedded replay from the saved game if applicable")
+			);
 	}
 	if(cancel_orders != NULL) {
 		lmenu.add_option(_("Cancel orders"), false,
 			// use smallgui layout as default, otherwise the load screen glitches at low res!
 			//game_config::small_gui ? gui::dialog::BUTTON_STANDARD : gui::dialog::BUTTON_EXTRA);
-			gui::dialog::BUTTON_STANDARD);
+			gui::dialog::BUTTON_STANDARD,
+			_("Cancel any pending unit movements in the saved game")
+			);
 	}
 	if(select_difficulty != NULL) {
 		lmenu.add_option(_("Reselect difficulty"), false,
-
-			gui::dialog::BUTTON_CHECKBOX);
+			gui::dialog::BUTTON_CHECKBOX,
+			_("Change campaign difficulty before loading")
+			);
 	}
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("OK"),0,false), gui::dialog::BUTTON_STANDARD);
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("Cancel"),1,true), gui::dialog::BUTTON_STANDARD);
