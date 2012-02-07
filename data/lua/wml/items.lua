@@ -95,10 +95,6 @@ function wml_actions.store_items(cfg)
 	end
 end
 
--- [removeitem] is deprecated, so print a WML error and call [remove_item]
--- Remove after 1.9.3
-wml_actions.removeitem = helper.deprecate("Usage of [removeitem] is deprecated; support will be removed in 1.9.3. Use [remove_item] instead.", wml_actions.remove_item)
-
 local methods = { remove = remove_overlay }
 
 function methods.place_image(x, y, name)

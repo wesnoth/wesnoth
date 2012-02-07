@@ -33,6 +33,7 @@ Version 1.11.0-svn:
    * Made it possible to disable the credits screen at the end of a campaign
      by specifying end_credits=no in the final [endlevel] action, or in the
      [campaign] definition (defaults to yes)
+   * Removed support for the deprecated [removeitem]
  * Unit changes and balancing:
    * New extra_define ENABLE_WOLF_ADVANCEMENT to optionally enable Wolves
      advancement to Great Wolves and Direwolves
