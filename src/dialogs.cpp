@@ -586,7 +586,7 @@ std::string format_time_summary(time_t t)
 
 } // end anon namespace
 
-std::string load_game_dialog(display& disp, const config& game_config, bool* show_replay, bool* cancel_orders)
+std::string load_game_dialog(display& disp, const config& game_config, bool* select_difficulty, bool* show_replay, bool* cancel_orders)
 {
 	std::vector<savegame::save_info> games;
 	{
@@ -658,6 +658,11 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 			//game_config::small_gui ? gui::dialog::BUTTON_STANDARD : gui::dialog::BUTTON_EXTRA);
 			gui::dialog::BUTTON_STANDARD);
 	}
+	if(select_difficulty != NULL) {
+		lmenu.add_option(_("Reselect difficulty"), false,
+
+			gui::dialog::BUTTON_CHECKBOX);
+	}
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("OK"),0,false), gui::dialog::BUTTON_STANDARD);
 	lmenu.add_button(new gui::standard_dialog_button(disp.video(),_("Cancel"),1,true), gui::dialog::BUTTON_STANDARD);
 
@@ -688,6 +693,9 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sho
 	}
 	if (cancel_orders != NULL) {
 		*cancel_orders = lmenu.option_checked(option_index++);
+	}
+	if (select_difficulty != NULL) {
+		*select_difficulty = lmenu.option_checked(option_index++);
 	}
 
 	return games[res].name;

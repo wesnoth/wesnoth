@@ -434,48 +434,50 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 {
 	//FIXME: Integrate the load_game dialog into this class
 	//something to watch for the curious, but not yet ready to go
+	bool select_difficulty = false;
 	if (gui2::new_widgets){
 		gui2::tgame_load load_dialog(game_config_);
 		load_dialog.show(gui_.video());
 
-		if (load_dialog.get_retval() == gui2::twindow::OK){
-			if (load_dialog.reselect_difficulty()) {
+		if (load_dialog.get_retval() == gui2::twindow::OK) {
+			select_difficulty = load_dialog.reselect_difficulty();
 
-				config cfg_summary;
-				std::string dummy;
-
-				try {
-					manager::load_summary(load_dialog.filename(), cfg_summary, &dummy);
-				} catch(game::load_game_failed&) {
-					cfg_summary["corrupt"] = "yes";
-				}
-
-				const std::string difficulty_descriptions = cfg_summary["campaign_difficulty_descriptions"];
-				const std::string difficulties = cfg_summary["campaign_difficulties"];
-
-				std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
-				std::vector<std::string> difficulty_list = utils::split(difficulties, ',');
-
-				gui2::tcampaign_difficulty difficulty_dlg(difficulty_options);
-				difficulty_dlg.show(gui_.video());
-
-				if (difficulty_dlg.get_retval() != gui2::twindow::OK)
-					return;
-
-				difficulty_ = difficulty_list[difficulty_dlg.selected_index()];
-			}
 			filename_ = load_dialog.filename();
 			show_replay_ = load_dialog.show_replay();
 			cancel_orders_ = load_dialog.cancel_orders();
 		}
-	}
-	else
-	{
+	} else {
 		bool show_replay_dialog = show_replay;
 		bool cancel_orders_dialog = cancel_orders;
-		filename_ = dialogs::load_game_dialog(gui_, game_config_, &show_replay_dialog, &cancel_orders_dialog);
+		filename_ = dialogs::load_game_dialog(gui_, game_config_, &select_difficulty, &show_replay_dialog, &cancel_orders_dialog);
 		show_replay_ = show_replay_dialog;
 		cancel_orders_ = cancel_orders_dialog;
+	}
+
+	if (select_difficulty) {
+
+		config cfg_summary;
+		std::string dummy;
+
+		try {
+			manager::load_summary(filename_, cfg_summary, &dummy);
+		} catch(game::load_game_failed&) {
+			cfg_summary["corrupt"] = "yes";
+		}
+
+		const std::string difficulty_descriptions = cfg_summary["campaign_difficulty_descriptions"];
+		const std::string difficulties = cfg_summary["campaign_difficulties"];
+
+		std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
+		std::vector<std::string> difficulty_list = utils::split(difficulties, ',');
+
+		gui2::tcampaign_difficulty difficulty_dlg(difficulty_options);
+		difficulty_dlg.show(gui_.video());
+
+		if (difficulty_dlg.get_retval() != gui2::twindow::OK)
+			return;
+
+		difficulty_ = difficulty_list[difficulty_dlg.selected_index()];
 	}
 }
 
