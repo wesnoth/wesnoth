@@ -360,7 +360,7 @@ end
 function helper.deprecate(msg, f)
 	return function(...)
 		if msg then
-			wesnoth.message("WML warning", msg)
+			wesnoth.message("warning", msg)
 			-- trigger the message only once
 			msg = nil
 		end
