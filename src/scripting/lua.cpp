@@ -1882,6 +1882,7 @@ static int impl_game_config_get(lua_State *L)
 	return_int_attrib("last_turn", resources::tod_manager->number_of_turns());
 	return_string_attrib("version", game_config::version);
 	return_bool_attrib("debug", game_config::debug);
+	return_bool_attrib("mp_debug", game_config::mp_debug);
 	return 0;
 }
 
