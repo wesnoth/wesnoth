@@ -1591,6 +1591,7 @@ static int impl_side_set(lua_State *L)
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
 	modify_string_attrib("controller", t.change_controller(value));
+	modify_string_attrib("color", t.set_color(value));
 
 	if (strcmp(m, "recruit") == 0) {
 		t.set_recruits(std::set<std::string>());
