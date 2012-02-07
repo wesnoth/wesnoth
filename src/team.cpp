@@ -798,7 +798,7 @@ std::string team::get_side_color_index(int side)
 	size_t index = size_t(side-1);
 
 	if(teams != NULL && index < teams->size()) {
-		const std::string side_map = (*teams)[index].map_color_to();
+		const std::string side_map = (*teams)[index].color();
 		if(!side_map.empty()) {
 			return side_map;
 		}

@@ -252,7 +252,6 @@ public:
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
 	bool get_disallow_observers() const {return info_.disallow_observers; };
-	std::string map_color_to() const { return info_.color; };
 	bool no_leader() const { return info_.no_leader; }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }

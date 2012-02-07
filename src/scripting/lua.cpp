@@ -1551,7 +1551,7 @@ static int impl_side_get(lua_State *L)
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
 	return_string_attrib("name", t.name());
-	return_string_attrib("color", t.map_color_to());
+	return_string_attrib("color", t.color());
 	return_cstring_attrib("controller", t.controller_string());
 
 	if (strcmp(m, "recruit") == 0) {
