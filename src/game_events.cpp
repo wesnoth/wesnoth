@@ -1025,6 +1025,13 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		if (ai.first != ai.second) {
 			ai::manager::modify_active_ai_config_old_for_side(side_num,ai);
 		}
+		// Change team color
+		config::attribute_value color = cfg["color"];
+		if(!color.empty()) {
+			teams[team_index].set_color(color);
+			resources::screen->recalculate_minimap();
+			resources::screen->invalidate_all();
+		}
 		// Add shared view to current team
 		config::attribute_value share_view = cfg["share_view"];
 		if (!share_view.empty()){

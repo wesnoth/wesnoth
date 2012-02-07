@@ -200,6 +200,7 @@ public:
 	team_info::CONTROLLER controller() const { return info_.controller; }
 	char const *controller_string() const { return info_.controller_string(); }
 	const std::string& color() const { return info_.color; }
+	void set_color(const std::string& color) { info_.color = color; }
 	bool is_human() const { return info_.controller == team_info::HUMAN; }
 	bool is_human_ai() const { return info_.controller == team_info::HUMAN_AI; }
 	bool is_network_human() const { return info_.controller == team_info::NETWORK; }
