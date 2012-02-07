@@ -377,10 +377,10 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	sort_list_by_group_button_.set_help_string(_("Sort the player list in the lobby by player groups"));
 
 	iconize_list_button_.set_check(iconize_list());
-	iconize_list_button_.set_help_string(_("Show icons in front of the player names in the lobby."));
+	iconize_list_button_.set_help_string(_("Show icons in front of the player names in the lobby"));
 
 	remember_pw_button_.set_check(remember_password());
-	remember_pw_button_.set_help_string(_("Uncheck to delete the saved password (on exit)."));
+	remember_pw_button_.set_help_string(_("Uncheck to delete the saved password (on exit)"));
 
 	int lj = lobby_joins();
 	show_lobby_joins_button1_.set_check(lj == SHOW_NONE);
@@ -393,7 +393,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	new_lobby_button_.set_check(new_lobby());
 	new_lobby_button_.set_help_string(_("Use New Lobby Interface"));
 
-	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host LAN games."));
+	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host LAN games"));
 	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
 	friends_back_button_.set_help_string(_("Back to the multiplayer options"));
 	friends_add_friend_button_.set_help_string(_("Add this username to your friends list"));
