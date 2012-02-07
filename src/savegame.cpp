@@ -434,13 +434,12 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 {
 	//FIXME: Integrate the load_game dialog into this class
 	//something to watch for the curious, but not yet ready to go
-	bool select_difficulty = false;
 	if (gui2::new_widgets){
 		gui2::tgame_load load_dialog(game_config_);
 		load_dialog.show(gui_.video());
 
 		if (load_dialog.get_retval() == gui2::twindow::OK) {
-			select_difficulty = load_dialog.reselect_difficulty();
+			select_difficulty_ = load_dialog.reselect_difficulty();
 
 			filename_ = load_dialog.filename();
 			show_replay_ = load_dialog.show_replay();
@@ -449,70 +448,76 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 	} else {
 		bool show_replay_dialog = show_replay;
 		bool cancel_orders_dialog = cancel_orders;
-		filename_ = dialogs::load_game_dialog(gui_, game_config_, &select_difficulty, &show_replay_dialog, &cancel_orders_dialog);
+		filename_ = dialogs::load_game_dialog(gui_, game_config_, &select_difficulty_, &show_replay_dialog, &cancel_orders_dialog);
 		show_replay_ = show_replay_dialog;
 		cancel_orders_ = cancel_orders_dialog;
 	}
-
-	if (select_difficulty) {
-
-		config cfg_summary;
-		std::string dummy;
-
-		try {
-			manager::load_summary(filename_, cfg_summary, &dummy);
-		} catch(game::load_game_failed&) {
-			cfg_summary["corrupt"] = "yes";
-		}
-
-		if ( cfg_summary["corrupt"].to_bool() || (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true))
-			|| (!cfg_summary["turn"].empty()) )
-			return;
-
-		const config::const_child_itors &campaigns = game_config_.child_range("campaign");
-		std::vector<std::string> difficulty_descriptions;
-		std::vector<std::string> difficulties;
-		foreach (const config &campaign, campaigns)
-		{
-			if (campaign["id"] == cfg_summary["campaign"]) {
-				difficulty_descriptions = utils::split(campaign["difficulty_descriptions"], ';');
-				difficulties = utils::split(campaign["difficulties"]);
-
-				break;
-			}
-		}
-
-		if (difficulty_descriptions.empty())
-			return;
-
-		gui2::tcampaign_difficulty difficulty_dlg(difficulty_descriptions);
-		difficulty_dlg.show(gui_.video());
-
-		if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
-			filename_ = "";
-			return;
-		}
-
-		difficulty_ = difficulties[difficulty_dlg.selected_index()];
-	}
 }
+
+void loadgame::show_difficulty_dialog()
+{
+	config cfg_summary;
+	std::string dummy;
+
+	try {
+		manager::load_summary(filename_, cfg_summary, &dummy);
+	} catch(game::load_game_failed&) {
+		cfg_summary["corrupt"] = "yes";
+	}
+
+	if ( cfg_summary["corrupt"].to_bool() || (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true))
+		|| (!cfg_summary["turn"].empty()) )
+		return;
+
+	const config::const_child_itors &campaigns = game_config_.child_range("campaign");
+	std::vector<std::string> difficulty_descriptions;
+	std::vector<std::string> difficulties;
+	foreach (const config &campaign, campaigns)
+	{
+		if (campaign["id"] == cfg_summary["campaign"]) {
+			difficulty_descriptions = utils::split(campaign["difficulty_descriptions"], ';');
+			difficulties = utils::split(campaign["difficulties"]);
+
+			break;
+		}
+	}
+
+	if (difficulty_descriptions.empty())
+		return;
+
+	gui2::tcampaign_difficulty difficulty_dlg(difficulty_descriptions);
+	difficulty_dlg.show(gui_.video());
+
+	if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
+		filename_ = "";
+		return;
+	}
+
+	difficulty_ = difficulties[difficulty_dlg.selected_index()];
+}
+
 
 void loadgame::load_game()
 {
 	show_dialog(false, false);
 
+//	if (select_difficulty_)
+//		show_difficulty_dialog();
+
 	if(filename_ != "")
-		throw game::load_game_exception(filename_, show_replay_, cancel_orders_, difficulty_);
+		throw game::load_game_exception(filename_, show_replay_, cancel_orders_, select_difficulty_, difficulty_);
 }
 
 void loadgame::load_game(
 		  const std::string& filename
 		, const bool show_replay
 		, const bool cancel_orders
+		, const bool select_difficulty
 		, const std::string& difficulty)
 {
 	filename_ = filename;
 	difficulty_ = difficulty;
+	select_difficulty_ = select_difficulty;
 
 	if (filename_.empty()){
 		show_dialog(show_replay, cancel_orders);
@@ -524,6 +529,9 @@ void loadgame::load_game(
 
 	if (filename_.empty())
 		throw load_game_cancelled_exception();
+
+	if (select_difficulty_)
+		show_difficulty_dialog();
 
 	std::string error_log;
 	manager::read_save_file(filename_, load_config_, &error_log);

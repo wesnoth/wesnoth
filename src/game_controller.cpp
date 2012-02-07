@@ -593,7 +593,7 @@ bool game_controller::load_game()
 	savegame::loadgame load(disp(), game_config(), state_);
 
 	try {
-		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::difficulty);
+		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty);
 
 		cache_.clear_defines();
 		game_config::scoped_preproc_define dificulty_def(state_.classification().difficulty);

@@ -106,6 +106,7 @@ public:
 			  const std::string& filename
 			, const bool show_replay
 			, const bool cancel_orders
+			, const bool select_difficulty
 			, const std::string& difficulty);
 	/** Loading a game from within the multiplayer-create dialog. */
 	void load_multiplayer_game();
@@ -122,6 +123,8 @@ public:
 private:
 	/** Display the load-game dialog. */
 	void show_dialog(bool show_replay, bool cancel_orders);
+	/** Display the difficulty dialog. */
+	void show_difficulty_dialog();
 	/** Check if the version of the savefile is compatible with the current version. */
 	void check_version_compatibility();
 	/** Copy era information into the snapshot. */
