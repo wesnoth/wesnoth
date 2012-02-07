@@ -53,8 +53,6 @@ public:
 	std::string campaign_type;                       /**< Type of the game - campaign, multiplayer etc. */
 	std::string campaign_define;                     /**< If there is a define the campaign uses to customize data */
 	std::vector<std::string> campaign_xtra_defines;  /**< more customization of data */
-	std::vector<std::string> campaign_difficulties;  /**< The defines of the campaign's difficulties. */
-	std::vector<std::string> campaign_difficulty_descriptions;  /**< The campaign's difficulty descriptions. */
 
 	std::string campaign;                            /**< the campaign being played */
 	std::string history;                             /**< ancestral IDs */

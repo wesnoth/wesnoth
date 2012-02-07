@@ -547,8 +547,6 @@ void loadgame::load_game(
 	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();
 	gamestate_.classification().campaign_type = load_config_["campaign_type"].str();
 	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
-	gamestate_.classification().campaign_difficulties = utils::split(load_config_["campaign_difficulties"]);
-	gamestate_.classification().campaign_difficulty_descriptions = utils::split(load_config_["campaign_difficulty_descriptions"], ';');
 	gamestate_.classification().version = load_config_["version"].str();
 
 	check_version_compatibility();
@@ -964,9 +962,6 @@ void savegame::extract_summary_data_from_save(config& out)
 	out["parent"] = gamestate_.classification().parent;
 	out["campaign"] = gamestate_.classification().campaign;
 	out["campaign_type"] = gamestate_.classification().campaign_type;
-	out["campaign_difficulties"] = utils::join<std::vector<std::string> >(gamestate_.classification().campaign_difficulties, ",");
-	out["campaign_difficulty_descriptions"] = utils::join<std::vector<std::string> >
-		(gamestate_.classification().campaign_difficulty_descriptions, ";");
 	out["scenario"] = gamestate_.classification().scenario;
 	out["difficulty"] = gamestate_.classification().difficulty;
 	out["version"] = gamestate_.classification().version;

@@ -846,8 +846,6 @@ bool game_controller::new_campaign()
 
 	state_.classification().campaign_define = campaign["define"].str();
 	state_.classification().campaign_xtra_defines = utils::split(campaign["extra_defines"]);
-	state_.classification().campaign_difficulties = utils::split(campaign["difficulties"]);
-	state_.classification().campaign_difficulty_descriptions = utils::split(campaign["difficulty_descriptions"], ';');
 
 	return true;
 }

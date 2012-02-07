@@ -67,8 +67,6 @@ game_classification::game_classification():
 	campaign_type(),
 	campaign_define(),
 	campaign_xtra_defines(),
-	campaign_difficulties(),
-	campaign_difficulty_descriptions(),
 	campaign(),
 	history(),
 	abbrev(),
@@ -89,8 +87,6 @@ game_classification::game_classification(const config& cfg):
 	campaign_type(cfg["campaign_type"].empty() ? "scenario" : cfg["campaign_type"].str()),
 	campaign_define(cfg["campaign_define"]),
 	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
-	campaign_difficulties(utils::split(cfg["campaign_difficulties"])),
-	campaign_difficulty_descriptions(utils::split(cfg["campaign_difficulty_descriptions"], ';')),
 	campaign(cfg["campaign"]),
 	history(cfg["history"]),
 	abbrev(cfg["abbrev"]),
@@ -111,8 +107,6 @@ game_classification::game_classification(const game_classification& gc):
 	campaign_type(gc.campaign_type),
 	campaign_define(gc.campaign_define),
 	campaign_xtra_defines(gc.campaign_xtra_defines),
-	campaign_difficulties(gc.campaign_difficulties),
-	campaign_difficulty_descriptions(gc.campaign_difficulty_descriptions),
 	campaign(gc.campaign),
 	history(gc.history),
 	abbrev(gc.abbrev),
@@ -136,8 +130,6 @@ config game_classification::to_config() const
 	cfg["campaign_type"] = campaign_type;
 	cfg["campaign_define"] = campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
-	cfg["campaign_difficulties"] = utils::join<std::vector<std::string> >(campaign_difficulties, ",");
-	cfg["campaign_difficulty_descriptions"] = utils::join<std::vector<std::string> >(campaign_difficulty_descriptions, ";");
 	cfg["campaign"] = campaign;
 	cfg["history"] = history;
 	cfg["abbrev"] = abbrev;
@@ -350,8 +342,6 @@ void game_state::write_snapshot(config& cfg) const
 
 	cfg["campaign_define"] = classification_.campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(classification_.campaign_xtra_defines);
-	cfg["campaign_difficulties"] = utils::join<std::vector<std::string> >(classification_.campaign_difficulties, ",");
-	cfg["campaign_difficulty_descriptions"] = utils::join<std::vector<std::string> >(classification_.campaign_difficulty_descriptions, ";");
 	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
 	cfg["can_end_turn"] = can_end_turn_;
 
@@ -396,8 +386,6 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["label"] = cfg_save["label"];
 	cfg_summary["parent"] = cfg_save["parent"];
 	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
-	cfg_summary["campaign_difficulties"] = cfg_save["campaign_difficulties"];
-	cfg_summary["campaign_difficulty_descriptions"] = cfg_save["campaign_difficulty_descriptions"];
 	cfg_summary["scenario"] = cfg_save["scenario"];
 	cfg_summary["campaign"] = cfg_save["campaign"];
 	cfg_summary["difficulty"] = cfg_save["difficulty"];
