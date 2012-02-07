@@ -465,20 +465,27 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 			cfg_summary["corrupt"] = "yes";
 		}
 
-		if ( (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true))
+		if ( cfg_summary["corrupt"].to_bool() || (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true))
 			|| (!cfg_summary["turn"].empty()) )
 			return;
 
-		const std::string difficulty_descriptions = cfg_summary["campaign_difficulty_descriptions"];
-		const std::string difficulties = cfg_summary["campaign_difficulties"];
+		const config::const_child_itors &campaigns = game_config_.child_range("campaign");
+		std::vector<std::string> difficulty_descriptions;
+		std::vector<std::string> difficulties;
+		foreach (const config &campaign, campaigns)
+		{
+			if (campaign["id"] == cfg_summary["campaign"]) {
+				difficulty_descriptions = utils::split(campaign["difficulty_descriptions"], ';');
+				difficulties = utils::split(campaign["difficulties"]);
 
-		std::vector<std::string> difficulty_options = utils::split(difficulty_descriptions, ';');
-		std::vector<std::string> difficulty_list = utils::split(difficulties, ',');
+				break;
+			}
+		}
 
-		if (difficulty_options.empty())
+		if (difficulty_descriptions.empty())
 			return;
 
-		gui2::tcampaign_difficulty difficulty_dlg(difficulty_options);
+		gui2::tcampaign_difficulty difficulty_dlg(difficulty_descriptions);
 		difficulty_dlg.show(gui_.video());
 
 		if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
@@ -486,7 +493,7 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 			return;
 		}
 
-		difficulty_ = difficulty_list[difficulty_dlg.selected_index()];
+		difficulty_ = difficulties[difficulty_dlg.selected_index()];
 	}
 }
 
