@@ -501,9 +501,6 @@ void loadgame::load_game()
 {
 	show_dialog(false, false);
 
-//	if (select_difficulty_)
-//		show_difficulty_dialog();
-
 	if(filename_ != "")
 		throw game::load_game_exception(filename_, show_replay_, cancel_orders_, select_difficulty_, difficulty_);
 }
