@@ -68,7 +68,7 @@ end
 --! @param vars key/value pairs that need changing.
 --! @note Usable only during WML actions.
 function helper.modify_unit(filter, vars)
-	wesnoth.fire("store_unit", {
+	wml_actions.store_unit({
 		[1] = { "filter", filter },
 		variable = "LUA_modify_unit",
 		kill = true
@@ -78,7 +78,7 @@ function helper.modify_unit(filter, vars)
 		for k, v in pairs(vars) do
 			wesnoth.set_variable(u .. '.' .. k, v)
 		end
-		wesnoth.fire("unstore_unit", {
+		wml_actions.unstore_unit({
 			variable = u,
 			find_vacant = false
 		})
@@ -89,7 +89,7 @@ end
 --! Fakes the move of a unit satisfying the given @a filter to position @a x, @a y.
 --! @note Usable only during WML actions.
 function helper.move_unit_fake(filter, to_x, to_y)
-	wesnoth.fire("store_unit", {
+	wml_actions.store_unit({
 		[1] = { "filter", filter },
 		variable = "LUA_move_unit",
 		kill = false
@@ -97,7 +97,7 @@ function helper.move_unit_fake(filter, to_x, to_y)
 	local from_x = wesnoth.get_variable("LUA_move_unit.x")
 	local from_y = wesnoth.get_variable("LUA_move_unit.y")
 
-	wesnoth.fire("scroll_to", { x=from_x, y=from_y })
+	wml_actions.scroll_to({ x=from_x, y=from_y })
 
 	if to_x < from_x then
 		wesnoth.set_variable("LUA_move_unit.facing", "sw")
@@ -107,14 +107,14 @@ function helper.move_unit_fake(filter, to_x, to_y)
 	wesnoth.set_variable("LUA_move_unit.x", to_x)
 	wesnoth.set_variable("LUA_move_unit.y", to_y)
 
-	wesnoth.fire("kill", {
+	wml_actions.kill({
 		x = from_x,
 		y = from_y,
 		animate = false,
 		fire_event = false
 	})
 
-	wesnoth.fire("move_unit_fake", {
+	wml_actions.move_unit_fake({
 		type      = "$LUA_move_unit.type",
 		gender    = "$LUA_move_unit.gender",
 		variation = "$LUA_move_unit.variation",
@@ -123,8 +123,8 @@ function helper.move_unit_fake(filter, to_x, to_y)
 		y         = from_y .. ',' .. to_y
 	})
 
-	wesnoth.fire("unstore_unit", { variable="LUA_move_unit", find_vacant=true })
-	wesnoth.fire("redraw")
+	wml_actions.unstore_unit({ variable="LUA_move_unit", find_vacant=true })
+	wml_actions.redraw({})
 	wesnoth.set_variable("LUA_move_unit")
 end
 
@@ -272,7 +272,7 @@ function helper.get_user_choice(attr, options)
 				code = string.format("wesnoth.__user_choice_helper(%d)", k)
 			}}}}}})
 	end
-	wesnoth.fire("message", msg)
+	wml_actions.message(msg)
 	wesnoth.__user_choice_helper = nil
 	return result
 end
