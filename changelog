@@ -47,6 +47,8 @@ Version 1.11.0-svn:
    * Implemented ~BLEND(r,g,b,o) image path function, which blends the image
      with a specified RGB color according to certain opacity (factor or
      percentage) (feature/bug #11590)
+   * [find_path] now returns a "hexes" key instead of a "length" key inside
+     the output array
  * Unit changes and balancing:
    * New extra_define ENABLE_WOLF_ADVANCEMENT to optionally enable Wolves
      advancement to Great Wolves and Direwolves

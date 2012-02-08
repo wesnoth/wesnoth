@@ -1062,14 +1062,14 @@ function wml_actions.find_path(cfg)
 		end
 
 		if cost >= 42424242 then -- it's the high value returned for unwalkable or busy terrains
-			wesnoth.set_variable ( string.format("%s", variable), { length = 0 } ) -- set only length, nil all other values
+			wesnoth.set_variable ( string.format("%s", variable), { hexes = 0 } ) -- set only length, nil all other values
 		return end
 
 		if not allow_multiple_turns and turns > 1 then -- location cannot be reached in one turn
-			wesnoth.set_variable ( string.format("%s", variable), { length = 0 } )
+			wesnoth.set_variable ( string.format("%s", variable), { hexes = 0 } )
 		return end -- skip the cycles below
 
-		wesnoth.set_variable ( string.format( "%s", variable ), { length = current_distance, from_x = unit.x, from_y = unit.y, to_x = current_location[1], to_y = current_location[2], movement_cost = cost, required_turns = turns } )
+		wesnoth.set_variable ( string.format( "%s", variable ), { hexes = current_distance, from_x = unit.x, from_y = unit.y, to_x = current_location[1], to_y = current_location[2], movement_cost = cost, required_turns = turns } )
 
 		for index, path_loc in ipairs(path) do
 			local sub_path, sub_cost = wesnoth.find_path( unit, path_loc[1], path_loc[2], { max_cost = max_cost, ignore_units = ignore_units, ignore_teleport = ignore_teleport, viewing_side = viewing_side } )
