@@ -299,6 +299,26 @@ private:
 };
 
 /**
+ * Color blending (BLEND) modification
+ */
+class blend_modification : public modification
+{
+public:
+	blend_modification(int r, int g, int b, float a)
+		: r_(r), g_(g), b_(b), a_(a)
+	{}
+	virtual surface operator()(const surface& src) const;
+	int get_r() const;
+	int get_g() const;
+	int get_b() const;
+	float get_a() const;
+
+private:
+	int r_, g_, b_;
+	float a_;
+};
+
+/**
  * Gaussian-like blur (BL) modification.
  */
 class bl_modification : public modification

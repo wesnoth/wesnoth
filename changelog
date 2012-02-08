@@ -44,6 +44,9 @@ Version 1.11.0-svn:
    * Added [modify_side] color= attribute, which changes a side's team color
      range (feature/bug #18772)
    * Removed support for the deprecated [removeitem]
+   * Implemented ~BLEND(r,g,b,o) image path function, which blends the image
+     with a specified RGB color according to certain opacity (factor or
+     percentage) (feature/bug #11590)
  * Unit changes and balancing:
    * New extra_define ENABLE_WOLF_ADVANCEMENT to optionally enable Wolves
      advancement to Great Wolves and Direwolves
