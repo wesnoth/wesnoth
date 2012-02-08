@@ -256,7 +256,7 @@ private:
 #pragma warning (push)
 #pragma warning (disable:4701)
 #endif
-void show_hotkeys_dialog (display & disp, config *save_config)
+void show_hotkeys_dialog(display & disp)
 {
 	log_scope ("show_hotkeys_dialog");
 
@@ -315,8 +315,6 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 	gui::button clear_button (disp.video(), _("Clear Hotkey"));
 	clear_button.set_location(xpos + width - clear_button.width () - font::relative_size(30),ypos + font::relative_size(80));
-//	gui::button save_button (disp.video(), _("Save Hotkeys"));
-//	save_button.set_location(xpos + width - save_button.width () - font::relative_size(30),ypos + font::relative_size(130));
 
 	escape_handler esc_hand;
 
@@ -324,11 +322,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 		if (close_button.pressed() || esc_hand.escape_pressed())
 		{
-			if (save_config == NULL) {
-				save_hotkeys();
-			} else {
-				hotkey::save_hotkeys(*save_config);
-			}
+			save_hotkeys();
 			break;
 		}
 
@@ -432,13 +426,6 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 				}
 			}
 		}
-//		if (save_button.pressed()) {
-//			if (save_config == NULL) {
-//				save_hotkeys();
-//			} else {
-//				hotkey::save_hotkeys(*save_config);
-//			}
-//		}
 
 		if (clear_button.pressed()) {
 			// clear hotkey

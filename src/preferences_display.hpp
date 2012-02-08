@@ -77,7 +77,7 @@ namespace preferences {
 
 	// If prefs is non-null, save the hotkeys in that config
 	// instead of the default.
-	void show_hotkeys_dialog (display & disp, config *prefs=NULL);
+	void show_hotkeys_dialog(display & disp);
 } // end namespace preferences
 
 #endif
