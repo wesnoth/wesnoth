@@ -178,7 +178,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	id_(base.id_+"^"+overlay.id_),
 	name_(overlay.name_),
 	editor_name_(overlay.editor_name_),
-	description_(overlay.description_),
+	description_(overlay.description()),
 	number_(t_translation::t_terrain(base.number_.base, overlay.number_.overlay)),
 	mvt_type_(overlay.mvt_type_),
 	def_type_(overlay.def_type_),
@@ -202,6 +202,10 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	editor_default_base_(),
 	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_)
 {
+	
+	if(description_.empty()) {
+		description_ = base.description();
+	}
 
 	if(overlay.height_adjust_set_) {
 		height_adjust_set_ = true;
