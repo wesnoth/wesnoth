@@ -476,7 +476,7 @@ void loadgame::show_difficulty_dialog()
 	{
 		if (campaign["id"] == cfg_summary["campaign"]) {
 			difficulty_descriptions = utils::split(campaign["difficulty_descriptions"], ';');
-			difficulties = utils::split(campaign["difficulties"]);
+			difficulties = utils::split(campaign["difficulties"], ',');
 
 			break;
 		}
@@ -485,12 +485,21 @@ void loadgame::show_difficulty_dialog()
 	if (difficulty_descriptions.empty())
 		return;
 
-	gui2::tcampaign_difficulty difficulty_dlg(difficulty_descriptions);
+	int default_difficulty = -1;
+	for (size_t i = 0; i < difficulties.size(); i++) {
+		if (difficulties[i] == cfg_summary["difficulty"]) {
+			default_difficulty = i;
+			break;
+		}
+	}
+
+	//default_difficulty = 2;
+
+	gui2::tcampaign_difficulty difficulty_dlg(difficulty_descriptions, default_difficulty);
 	difficulty_dlg.show(gui_.video());
 
 	if (difficulty_dlg.get_retval() != gui2::twindow::OK) {
-		filename_ = "";
-		return;
+		throw load_game_cancelled_exception();
 	}
 
 	difficulty_ = difficulties[difficulty_dlg.selected_index()];
