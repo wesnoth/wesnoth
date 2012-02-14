@@ -3953,6 +3953,11 @@ stringfixes = {
 ("of on-line players", "of online players"),
 ),
 
+# conversion added in 1.10.0+svn
+"wesnoth-tutorial" : (
+("$unit.type", "$unit.language_name"),
+),
+
 }
 
 # Speak, if all argument files are newer than this timestamp
