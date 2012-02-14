@@ -127,7 +127,6 @@ namespace game_events
 
 	/** Gets a vector of sides from side= attribute in a given config node.
      * Promotes consistent behaviour.
-     * Default side, when in doubt is currently side 1.
 	*/
 	std::vector<int> get_sides_vector(const vconfig& cfg);
 

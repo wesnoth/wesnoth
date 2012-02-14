@@ -525,16 +525,6 @@ namespace game_events {
 			return filter.get_teams();
 		}
 
-		if (sides.blank()) {
-			//To deprecate the current default (side=1), require one of the currently two ways
-			//of specifying a side - putting inline side= or [filter_side].
-			put_wml_message("error", "empty side= and no [filter_side] is deprecated, use either side=1 or [filter_side]");
-			std::vector<int> result;
-			result.push_back(1); // we make sure the current default is maintained
-			return result;
-		}
-		// uncomment if the decision will be made to make [filter_side] the only & final syntax for specifying sides
-		// put_wml_message("error","specifying side via inline side= is deprecated, use [filter_side] ");
 		side_filter filter(sides.str());
 		return filter.get_teams();
 	}
