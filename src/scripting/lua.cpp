@@ -3192,27 +3192,19 @@ static int intf_match_side(lua_State *L)
 
 /**
  * Returns a proxy table array for all sides matching the given SSF.
- * - Arg 1: SSF (without a tag)
- * - Arg 2: hidden optional argument, SSF with outer [filter_side] tag, for backwards-compatibility
- * - Arg 3: hidden optional boolean: whether only inline side= is allowed (as opposed to also [filter_side])
+ * - Arg 1: SSF
  * - Ret 1: proxy table array
  */
 static int intf_get_sides(lua_State* L)
 {
 	std::vector<int> sides;
-	if(lua_isnoneornil(L, 2)) {
-		const vconfig ssf = luaW_checkvconfig(L, 1, true);
-		if (ssf.null()) {
-			for(unsigned side_number = 1; side_number <= resources::teams->size(); ++side_number) {
-				sides.push_back(side_number);
-			}
-		}
-		else sides = game_events::get_sides_vector(ssf, true);
-	}
-	else {
-		const vconfig ssf_with_filter_tag = luaW_checkvconfig(L, 2);
-		const bool only_side = lua_toboolean(L, 3);
-		sides = game_events::get_sides_vector(ssf_with_filter_tag, false, only_side);
+	const vconfig ssf = luaW_checkvconfig(L, 1, true);
+	if(ssf.null()){
+		for(unsigned side_number = 1; side_number <= resources::teams->size(); ++side_number)
+			sides.push_back(side_number);
+	} else {
+		side_filter filter(ssf);
+		sides = filter.get_teams();
 	}
 
 	//keep this stack in the loop:
