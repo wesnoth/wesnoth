@@ -21,11 +21,6 @@
 #define WB_MANAGER_HPP_
 
 #include "side_actions.hpp"
-#include "typedefs.hpp"
-
-#include "config.hpp"
-#include "map_location.hpp"
-#include "network.hpp"
 
 #include <boost/noncopyable.hpp>
 
