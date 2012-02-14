@@ -52,6 +52,11 @@ stringfixes = {
 ("roleplaying", "role-playing"),
 ),
 
+# conversion added in 1.11.0-svn
+"wesnoth-tutorial" : (
+("$unit.type", "$unit.language_name"),
+),
+
 }
 
 # Speak, if all argument files are newer than this timestamp
