@@ -3,6 +3,9 @@ Version 1.11.0-svn:
    * Reject add-ons with names or titles that begin with a WML text format
      markup character (any of *, `, ~, {, ^, }, |, @, #, <, &)
  * Campaigns:
+   * Descent into Darkness:
+     * Fix most possible cases for Darken Volk becoming "stuck"
+       in 09_A_Small_Favor3.
    * Son of the Black Eye:
      * Removed Al'Brock and Flar'Tar death as defeat condition in objectives in
        Civil War
@@ -13,15 +16,9 @@ Version 1.11.0-svn:
    * Under the Burning Suns:
      * Made it so that Kaleh gets the default AMLA after he's been fully
        upgraded
-   * Descent into Darkness:
-     * Fix most possible cases for Darken Volk becoming "stuck"
-       in 09_A_Small_Favor3.
  * Language and i18n:
    * Updated translations: French, Indonesian, Italian, Latin, Norwegian,
      Spanish
- * Multiplayer:
-   * Fix an accidental terrain type change in Isar's Cross
-   * Fix attacker side being human in 6p_Team_Survival
  * Lua API:
    * Upgraded Lua from 5.1.4 to 5.2.0
    * new: field wesnoth.game_config.mp_debug
@@ -30,28 +27,14 @@ Version 1.11.0-svn:
      all of which have better replacements:
      get_side, get_side_count, get_unit_type_ids, get_unit_type,
      register_wml_action
+ * Multiplayer:
+   * Fix an accidental terrain type change in Isar's Cross
+   * Fix attacker side being human in 6p_Team_Survival
  * Terrain:
    * New tropical forest images
    * New palm forest terrain
    * Deprecated flowers (Ggf) and Volcano (Qv) removed - use Gg^Ef and Mv
      respectively
- * WML engine:
-   * new action tag: [clear_menu_item] id=...
-   * new key: [set_menu_item][command]delayed_variable_substitution=yes|no
-   * Removed support for the deprecated "colour=", "debug_border_colour=",
-     and [colour_adjust]
-   * Fixed bug #18996: Increase random number generation range.
-   * Made it possible to disable the credits screen at the end of a campaign
-     by specifying end_credits=no in the final [endlevel] action, or in the
-     [campaign] definition (defaults to yes)
-   * Added [modify_side] color= attribute, which changes a side's team color
-     range (feature/bug #18772)
-   * Removed support for the deprecated [removeitem]
-   * Implemented ~BLEND(r,g,b,o) image path function, which blends the image
-     with a specified RGB color according to certain opacity (factor or
-     percentage) (feature/bug #11590)
-   * [find_path] now returns a "hexes" key instead of a "length" key inside
-     the output array
  * Unit changes and balancing:
    * New extra_define ENABLE_WOLF_ADVANCEMENT to optionally enable Wolves
      advancement to Great Wolves and Direwolves
@@ -69,6 +52,23 @@ Version 1.11.0-svn:
  * Whiteboard
    * Fixed bug #19369 : Using planning mode can cause losing ability to move my units
    * Fixed bug #19408 : Crash shortly after executing invalid multi-turn move
+ * WML engine:
+   * new action tag: [clear_menu_item] id=...
+   * new key: [set_menu_item][command]delayed_variable_substitution=yes|no
+   * Removed support for the deprecated "colour=", "debug_border_colour=",
+     and [colour_adjust]
+   * Fixed bug #18996: Increase random number generation range.
+   * Made it possible to disable the credits screen at the end of a campaign
+     by specifying end_credits=no in the final [endlevel] action, or in the
+     [campaign] definition (defaults to yes)
+   * Added [modify_side] color= attribute, which changes a side's team color
+     range (feature/bug #18772)
+   * Removed support for the deprecated [removeitem]
+   * Implemented ~BLEND(r,g,b,o) image path function, which blends the image
+     with a specified RGB color according to certain opacity (factor or
+     percentage) (feature/bug #11590)
+   * [find_path] now returns a "hexes" key instead of a "length" key inside
+     the output array
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
