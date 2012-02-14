@@ -252,7 +252,8 @@ private:
 void load_descriptions();
 
 void set_hotkey_tag_name(const std::string& name);
-void load_hotkeys(const config& cfg);
+void load_hotkeys(const config& cfg, bool set_as_default = false);
+void reset_default_hotkeys();
 void save_hotkeys(config& cfg);
 
 hotkey_item& get_hotkey(HOTKEY_COMMAND id);

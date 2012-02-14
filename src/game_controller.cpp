@@ -305,7 +305,7 @@ bool game_controller::init_config(const bool force)
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 
-	hotkey::load_hotkeys(game_config());
+	hotkey::load_hotkeys(game_config(), true);
 	paths_manager_.set_paths(game_config());
 	::init_textdomains(game_config());
 	about::set_about(game_config());

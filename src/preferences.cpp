@@ -33,6 +33,7 @@
 #include "serialization/parser.hpp"
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
+#include <boost/concept_check.hpp>
 
 static lg::log_domain log_filesystem("filesystem");
 #define ERR_FS LOG_STREAM(err, log_filesystem)
@@ -700,11 +701,20 @@ void _set_color_cursors(bool value)
 	color_cursors = value;
 }
 
-void load_hotkeys() {
+void load_hotkeys()
+{
 	hotkey::load_hotkeys(prefs);
 }
-void save_hotkeys() {
+
+void save_hotkeys()
+{
 	hotkey::save_hotkeys(prefs);
+}
+
+void clear_hotkeys()
+{
+	hotkey::reset_default_hotkeys();
+	prefs.clear_children("hotkey");
 }
 
 void add_alias(const std::string &alias, const std::string &command)
