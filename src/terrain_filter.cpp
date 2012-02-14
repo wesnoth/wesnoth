@@ -23,12 +23,15 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "resources.hpp"
+#include "side_filter.hpp"
+#include "team.hpp"
 #include "terrain_filter.hpp"
 #include "tod_manager.hpp"
 #include "variable.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
+#define WRN_NG LOG_STREAM(warn, log_engine)
 
 terrain_filter::~terrain_filter()
 {
@@ -248,9 +251,29 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 
 	//allow filtering on owner (for villages)
-	const t_string& t_owner_side = cfg_["owner_side"];
-	const std::string& owner_side = t_owner_side;
-	if(!owner_side.empty()) {
+	const std::string owner_side = cfg_["owner_side"].str();
+	const vconfig& filter_side = cfg_.child("filter_side");
+	if(!filter_side.null()) {
+		if(!owner_side.empty()) {
+			WRN_NG << "duplicate side information in a SLF, ignoring inline owner_side=\n";
+		}
+		if(!resources::game_map->is_village(loc))
+			return false;
+		side_filter ssf(filter_side);
+		const std::vector<int>& sides = ssf.get_teams();
+		bool found = false;
+		if(sides.empty() && village_owner(loc, *resources::teams) == -1)
+			found = true;
+		foreach(const int side, sides) {
+			if(resources::teams->at(side - 1).owns_village(loc)) {
+				found = true;
+				break;
+			}
+		}
+		if(!found)
+			return false;
+	}
+	else if(!owner_side.empty()) {
 		const int side_index = lexical_cast_default<int>(owner_side,0) - 1;
 		if(village_owner(loc, *resources::teams) != side_index) {
 			return false;
