@@ -514,27 +514,21 @@ namespace game_events {
 		lg::wml_error << message << '\n';
 	}
 
-	std::vector<int> get_sides_vector(const vconfig& cfg, const bool only_ssf, const bool only_side)
+	std::vector<int> get_sides_vector(const vconfig& cfg)
 	{
-		if(only_ssf) {
-			side_filter filter(cfg);
-			return filter.get_teams();
-		}
-
 		const config::attribute_value sides = cfg["side"];
 		const vconfig &ssf = cfg.child("filter_side");
 
-		if (!ssf.null() && !only_side) {
+		if (!ssf.null()) {
 			if(!sides.empty()) { WRN_NG << "ignoring duplicate side filter information (inline side=)\n"; }
 			side_filter filter(ssf);
 			return filter.get_teams();
 		}
 
 		if (sides.blank()) {
-			if(only_side) put_wml_message("error", "empty side= is deprecated, use side=1");
 			//To deprecate the current default (side=1), require one of the currently two ways
 			//of specifying a side - putting inline side= or [filter_side].
-			else put_wml_message("error", "empty side= and no [filter_side] is deprecated, use either side=1 or [filter_side]");
+			put_wml_message("error", "empty side= and no [filter_side] is deprecated, use either side=1 or [filter_side]");
 			std::vector<int> result;
 			result.push_back(1); // we make sure the current default is maintained
 			return result;
