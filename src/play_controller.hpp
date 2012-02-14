@@ -21,7 +21,6 @@
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
 #include "help.hpp"
-#include "map.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "persist_manager.hpp"
