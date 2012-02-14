@@ -7,7 +7,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerWorkingDirectory>..\..\</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>--debug --log-debug=scripting/lua</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>--debug</LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (fast)|Win32'">
     <LocalDebuggerWorkingDirectory>..\..\</LocalDebuggerWorkingDirectory>

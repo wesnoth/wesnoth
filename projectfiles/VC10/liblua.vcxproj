@@ -52,7 +52,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <DisableSpecificWarnings>4127;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
@@ -89,10 +89,22 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
+    <ClCompile Include="..\..\src\lua\lbitlib.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
+    </ClCompile>
     <ClCompile Include="..\..\src\lua\lcode.c">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\src\lua\lcorolib.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\src\lua\lctype.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\ldblib.c">
@@ -257,17 +269,12 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
-    <ClCompile Include="..\..\src\lua\print.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\lua\lapi.h" />
     <ClInclude Include="..\..\src\lua\lauxlib.h" />
     <ClInclude Include="..\..\src\lua\lcode.h" />
+    <ClInclude Include="..\..\src\lua\lctype.h" />
     <ClInclude Include="..\..\src\lua\ldebug.h" />
     <ClInclude Include="..\..\src\lua\ldo.h" />
     <ClInclude Include="..\..\src\lua\lfunc.h" />
@@ -283,6 +290,7 @@
     <ClInclude Include="..\..\src\lua\ltable.h" />
     <ClInclude Include="..\..\src\lua\ltm.h" />
     <ClInclude Include="..\..\src\lua\lua.h" />
+    <ClInclude Include="..\..\src\lua\lua.hpp" />
     <ClInclude Include="..\..\src\lua\luaconf.h" />
     <ClInclude Include="..\..\src\lua\lualib.h" />
     <ClInclude Include="..\..\src\lua\lundump.h" />
