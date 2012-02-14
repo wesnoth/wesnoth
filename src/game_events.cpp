@@ -925,7 +925,20 @@ WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 {
-	std::vector<int> sides = game_events::get_sides_vector(cfg);
+	const vconfig& filter_side = cfg.child("filter_side");
+	std::vector<int> sides;
+	if(!filter_side.null()) {
+		WRN_NG << "[modify_ai][filter_side] is deprecated, use only an inline SSF\n";
+		if(!cfg["side"].str().empty()) {
+			ERR_NG << "duplicate side information in [modify_ai]\n";
+			return;
+		}
+		side_filter ssf(filter_side);
+		sides = ssf.get_teams();
+	} else {
+		side_filter ssf(cfg);
+		sides = ssf.get_teams();
+	}
 	foreach (const int &side_num, sides)
 	{
 		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
