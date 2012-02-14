@@ -956,10 +956,6 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	std::string shroud_data = cfg["shroud_data"];
 	const config& parsed = cfg.get_parsed_config();
 	const config::const_child_itors &ai = parsed.child_range("ai");
-	/**
-	 * @todo also allow client to modify a side's color if it is possible
-	 * to change it on the fly without causing visual glitches
-	 */
 	std::string switch_ai = cfg["switch_ai"];
 
 	std::vector<int> sides = game_events::get_sides_vector(cfg);
