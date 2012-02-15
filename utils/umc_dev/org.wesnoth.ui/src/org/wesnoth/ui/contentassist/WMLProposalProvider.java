@@ -25,7 +25,8 @@ import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
@@ -340,64 +341,59 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
         else if( model.eContainer( ) instanceof WMLTag ) {
             parentTag = ( WMLTag ) model.eContainer( );
         }
+        INode currentNode = context.getCurrentNode( );
 
-        boolean appendEndBracket =
-            context.getCurrentNode( ) == null ||
-                ! context.getCurrentNode( ).getText( ).equals( "]" );
+        if( currentNode == null ) {
+            return;
+        }
+
+        boolean appendEndBracket = ! currentNode.getText( ).equals( "]" );
+
+        WMLTag sourceTag = null;
+        String indent = "";
+        // find the just previous leaf node (which contains the indent)
+        ILeafNode leafNode = NodeModelUtils.findLeafNodeAtOffset(
+            NodeModelUtils.getNode( model ),
+            currentNode.getTotalOffset( ) - 1 - context.getPrefix( ).length( ) );
+
+        if( leafNode != null ) {
+            indent = leafNode.getText( );
+        }
 
         if( parentTag != null ) {
-            ICompositeNode node = NodeModelUtils.getNode( model );
-
-            String parentIndent = ""; //$NON-NLS-1$
-            if( context.getCurrentNode( ).getOffset( ) > 0 ) {
-                parentIndent = NodeModelUtils.findLeafNodeAtOffset( node,
-                    context.getCurrentNode( ).getTotalOffset( ) -
-                        ( appendEndBracket ? 1: 2 ) ).getText( );
-            }
-
-            // remove ugly new lines that break indentation
-            parentIndent = parentIndent.replace( "\r", "" ).replace( "\n", "" ); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-
-            WMLTag tagChildren = schemaParser_.getTags( ).get(
-                parentTag.getName( ) );
-            if( tagChildren != null ) {
-                boolean toAdd = true;
-                for( WMLTag tag: tagChildren.getWMLTags( ) ) {
-                    // skip forbidden tags
-                    if( tag.is_Forbidden( ) ) {
-                        continue;
-                    }
-
-                    toAdd = true;
-
-                    // check only non-repeatable tags
-                    if( ! tag.is_Repeatable( ) ) {
-                        toAdd = ( WMLUtils.getTagByName( parentTag,
-                            tag.getName( ) ) == null );
-                    }
-
-                    if( toAdd ) {
-                        acceptor.accept( createTagProposal( tag.asWMLTag( ),
-                            parentIndent, ruleProposal, context,
-                            appendEndBracket ) );
-                    }
-                }
-            }
+            sourceTag = schemaParser_.getTags( ).get( parentTag.getName( ) );
         }
         else // we are at the root
         {
-            WMLTag rootTag = schemaParser_.getTags( ).get( "root" ); //$NON-NLS-1$
-            for( WMLTag tag: rootTag.getWMLTags( ) ) {
-                acceptor.accept( createTagProposal( tag,
-                    "", ruleProposal, context, appendEndBracket ) ); //$NON-NLS-1$
+            sourceTag = schemaParser_.getTags( ).get( "root" ); //$NON-NLS-1$
+        }
+
+        // remove new lines from the indent
+        indent = indent.replaceAll( "\\r|\\n", "" ); //$NON-NLS-1$ //$NON-NLS-2$ 
+
+        if( sourceTag != null ) {
+            for( WMLTag tag: sourceTag.getWMLTags( ) ) {
+                // skip forbidden tags
+                if( tag.is_Forbidden( ) ) {
+                    continue;
+                }
+
+                // check that non-repeatable tags aren't suggested again
+                if( ! tag.is_Repeatable( ) && parentTag != null ) {
+                    if( WMLUtils.getTagByName( parentTag, tag.getName( ) ) != null ) {
+                        return;
+                    }
+                }
+
+                acceptor.accept( createTagProposal( tag, indent, ruleProposal,
+                    context, appendEndBracket ) );
             }
         }
 
         // parsed custom tags
         for( WMLTag tag: projectCache_.getWMLTags( ).values( ) ) {
-            acceptor.accept(
-                createTagProposal( tag, "", ruleProposal, context, //$NON-NLS-1$
-                    appendEndBracket ) );
+            acceptor.accept( createTagProposal( tag, "", ruleProposal, context, //$NON-NLS-1$
+                appendEndBracket ) );
         }
     }
 
