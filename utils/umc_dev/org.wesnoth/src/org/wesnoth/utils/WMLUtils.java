@@ -206,6 +206,6 @@ public class WMLUtils
     private static String toCleanedUpText( EObject obj )
     {
         return NodeModelUtils.getNode( obj ).getText( )
-            .replaceFirst( "(\\n|\\r| )+", "" );
+            .replaceFirst( "(\\n|\\r|\\t| )+", "" );
     }
 }
