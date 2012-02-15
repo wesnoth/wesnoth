@@ -50,6 +50,7 @@ $langs['sv'] = 'Swedish';
 $langs['tl'] = 'Filipino';
 $langs['tr'] = 'Turkish';
 $langs['vi'] = 'Vietnamese';
+$langs['uk'] = 'Ukrainian';
 $langs['zh_CN'] = 'Chinese';
 $langs['zh_TW'] = 'Chinese (Taiwan)';
 ?>
