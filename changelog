@@ -36,6 +36,8 @@ Version 1.11.0-svn:
    * Deprecated flowers (Ggf) and Volcano (Qv) removed - use Gg^Efm and Mv
      respectively
    * Fix bridge/rail transitions to each other
+   * Add new rail terrain type; no existing unit can move on it, so their
+     move/defense values are unchanged
  * Unit changes and balancing:
    * New extra_define ENABLE_WOLF_ADVANCEMENT to optionally enable Wolves
      advancement to Great Wolves and Direwolves
