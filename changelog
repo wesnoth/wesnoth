@@ -14,6 +14,7 @@ Version 1.10.0+svn:
      * Made it so that Kaleh gets the default AMLA after he's been fully
        upgraded
  * Language and i18n:
+   * New translation: Ukrainian
    * Updated translations: French, Indonesian, Italian, Latin, Norwegian,
      Portuguese (Brazil), Spanish
  * Multiplayer:
@@ -26,9 +27,8 @@ Version 1.10.0+svn:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
      bug #19318)
-   * Fixed unit sound animation timings wherever the {SOUND:SLOW} and
-     {SOUND:POISON} macros, and several macros from animation-utils2.cfg are used
-     (see bug #19274)
+   * Fixed unit sound animation timings wherever {SOUND:SLOW}, {SOUND:POISON},
+     and several macros from animation-utils2.cfg are used (see bug #19274)
    * Restart is no longer required to toggle desktop notifications
    * Show base terrain description if none for overlay (bug #19411)
    * Fix bridge/rail transitions to each other
