@@ -746,6 +746,7 @@ function wml_actions.harm_unit(cfg)
 			local secondary_attack = helper.get_child(cfg, "secondary_attack")
 			local harmer_filter = helper.get_child(cfg, "filter_second")
 			local experience = cfg.experience
+			local resistance_multiplier = tonumber(cfg.resistance_multiplier) or 1 
 			if harmer_filter then harmer = wesnoth.get_units(harmer_filter)[1] end
 			-- end of block to support $this_unit
 
@@ -775,7 +776,7 @@ function wml_actions.harm_unit(cfg)
 				end
 			end
 
-			local function calculate_damage( base_damage, alignment, tod_bonus, resistance )
+			local function calculate_damage( base_damage, alignment, tod_bonus, resistance, modifier )
 				local damage_multiplier = 100
 				if alignment == "lawful" then
 					damage_multiplier = damage_multiplier + tod_bonus
@@ -785,7 +786,8 @@ function wml_actions.harm_unit(cfg)
 					damage_multiplier = damage_multiplier - math.abs( tod_bonus )
 				else -- neutral, do nothing
 				end
-				damage_multiplier = damage_multiplier * resistance -- at this point, a resistance_modifier can be added, as asked by fendrin
+				local resistance_modified = resistance * modifier
+				damage_multiplier = damage_multiplier * resistance_modified
 				local damage = round_damage( base_damage, damage_multiplier, 10000 ) -- if harmer.status.slowed, this may be 20000 ?
 				return damage
 			end
@@ -793,7 +795,8 @@ function wml_actions.harm_unit(cfg)
 			local damage = calculate_damage( amount,
 							 ( cfg.alignment or "neutral" ),
 							 wesnoth.get_time_of_day( { unit_to_harm.x, unit_to_harm.y, true } ).lawful_bonus,
-							 wesnoth.unit_resistance( unit_to_harm, cfg.damage_type or "dummy" )
+							 wesnoth.unit_resistance( unit_to_harm, cfg.damage_type or "dummy" ),
+							 resistance_multiplier
 						       )
 
 			if unit_to_harm.hitpoints <= damage then

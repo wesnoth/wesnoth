@@ -82,6 +82,7 @@ Version 1.11.0-svn:
      backwards compatibility for inline owner_side= at the cost of
      confusing syntax (due to (possible) duplicate side information).
      This also adds SSF support in [store_villages].
+   * Added support for resistance_multiplier= key in [harm_unit]
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
