@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.EObjectAtOffsetHelper;
 import org.eclipse.xtext.resource.XtextResource;
@@ -205,7 +207,19 @@ public class WMLUtils
 
     private static String toCleanedUpText( EObject obj )
     {
-        return NodeModelUtils.getNode( obj ).getText( )
+        return getTextWithoutHiddenTokens( obj )
             .replaceFirst( "(\\n|\\r|\\t| )+", "" );
+    }
+
+    private static String getTextWithoutHiddenTokens( EObject obj )
+    {
+        ICompositeNode node = NodeModelUtils.getNode( obj );
+        INode rootNode = node.getRootNode( );
+        if( rootNode != null ) {
+            int offset = node.getOffset( );
+            int length = node.getLength( );
+            return rootNode.getText( ).substring( offset, offset + length );
+        }
+        return null;
     }
 }
