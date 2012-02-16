@@ -30,22 +30,16 @@
 #include "default/ai.hpp"
 
 #include "../callable_objects.hpp"
-#include "../dialogs.hpp"
 #include "../formula.hpp"
 #include "../formula_callable.hpp"
 #include "../formula_function.hpp"
 #include "../formula_fwd.hpp"
 #include "../game_display.hpp"
-#include "../game_end_exceptions.hpp"
 #include "../game_events.hpp"
-#include "../game_preferences.hpp"
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../resources.hpp"
-#include "../replay.hpp"
-#include "../statistics.hpp"
 #include "../tod_manager.hpp"
-#include "../unit_display.hpp"
 
 static lg::log_domain log_ai("ai/general");
 #define DBG_AI LOG_STREAM(debug, log_ai)
