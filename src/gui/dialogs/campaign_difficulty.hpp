@@ -26,7 +26,7 @@ namespace gui2 {
 class tcampaign_difficulty : public tdialog
 {
 public:
-	tcampaign_difficulty(
+	explicit tcampaign_difficulty(
 			  const std::vector<std::string>& items
 			, const int default_difficulty = -1);
 
