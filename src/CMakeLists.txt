@@ -862,6 +862,23 @@ set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}sc
 
 install(TARGETS schema_validator DESTINATION ${BINDIR})
 
+set(wesmage_SRC
+	wesmage/wesmage.cpp
+	wesmage/exit.cpp
+	wesmage/filter.cpp
+	wesmage/options.cpp
+	tools/dummy_video.cpp
+	tools/exploder_utils.cpp
+	sdl_utils.cpp
+	loadscreen_empty.cpp
+)
+
+add_executable(wesmage ${wesmage_SRC})
+target_link_libraries(wesmage wesnoth-core png ${tools-external-libs})
+set_target_properties(wesmage PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesmage${BINARY_SUFFIX})
+
+install(TARGETS wesmage DESTINATION ${BINDIR})
+
 endif(ENABLE_TOOLS)
 ########### Unit tests ###############
 
