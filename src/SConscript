@@ -543,6 +543,18 @@ test_utils_sources = Split("""
     tests/utils/fake_display.cpp
     """)
 
+wesmage_sources = Split("""
+    wesmage/wesmage.cpp
+    wesmage/exit.cpp
+    wesmage/filter.cpp
+    wesmage/options.cpp
+    tools/dummy_video.cpp
+    tools/exploder_utils.cpp
+    sdl_utils.cpp
+    loadscreen_empty.cpp
+    """)
+client_env.WesnothProgram("wesmage", wesmage_sources + [libwesnoth_core], have_client_prereqs, OBJPREFIX = "wesmage_", LIBS = ["$LIBS", "png"])
+
 libtest_utils = test_env.Library("test_utils", test_utils_sources)
 
 test_sources = Split("""
