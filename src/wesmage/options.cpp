@@ -39,7 +39,7 @@ toptions::toptions()
  * * If the text of the description doesn't fit at a single line it split at
  *   space and continues on the next line, obviously indented again.
  */
-void
+static void
 print_option(
 		  std::ostream& stream
 		, const std::string& option
