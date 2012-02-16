@@ -252,14 +252,14 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 
 	//allow filtering on owner (for villages)
 	const std::string owner_side = cfg_["owner_side"].str();
-	const vconfig& filter_side = cfg_.child("filter_side");
-	if(!filter_side.null()) {
+	const vconfig& filter_owner = cfg_.child("filter_owner");
+	if(!filter_owner.null()) {
 		if(!owner_side.empty()) {
 			WRN_NG << "duplicate side information in a SLF, ignoring inline owner_side=\n";
 		}
 		if(!resources::game_map->is_village(loc))
 			return false;
-		side_filter ssf(filter_side);
+		side_filter ssf(filter_owner);
 		const std::vector<int>& sides = ssf.get_teams();
 		bool found = false;
 		if(sides.empty() && village_owner(loc, *resources::teams) == -1)
