@@ -471,7 +471,9 @@ void part_ui::wait_for_input()
 
 	last_key_ = true;
 	skip_ = true;
-	while (!handle_interface()) {}
+	while (!handle_interface()) {
+		disp_.delay(20);
+	}
 }
 
 bool part_ui::handle_interface()
