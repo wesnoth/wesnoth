@@ -28,13 +28,16 @@
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/addon_list.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
+#include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/data_manage.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/editor_generate_map.hpp"
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/dialogs/editor_resize_map.hpp"
+#include "gui/dialogs/editor_set_starting_position.hpp"
 #include "gui/dialogs/editor_settings.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
@@ -366,12 +369,15 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	/* The tdialog classes. */
 	test<gui2::taddon_connect>();
 	test<gui2::taddon_list>();
+	test<gui2::tcampaign_difficulty>();
 	test<gui2::tcampaign_selection>();
+//	test<gui2::tchat_log>(); /** @todo ENABLE */
 	test<gui2::tdata_manage>();
 	test<gui2::tedit_label>();
 	test<gui2::teditor_generate_map>();
 	test<gui2::teditor_new_map>();
 	test<gui2::teditor_resize_map>();
+	test<gui2::teditor_set_starting_position>();
 	test<gui2::teditor_settings>();
 	test<gui2::tfolder_create>();
 	test<gui2::tformula_debugger>();
@@ -412,6 +418,13 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	 */
 	list.erase(
 			std::remove(list.begin(), list.end(), "unit_attack")
+			, list.end());
+	/*
+	 * The chat log unit test are disabled for now, they calling parameters
+	 * don't allow 'NULL's needs to be fixed.
+	 */
+	list.erase(
+			std::remove(list.begin(), list.end(), "chat_log")
 			, list.end());
 
 	// Test size() instead of empty() to get the number of offenders
@@ -461,6 +474,17 @@ struct twrapper<gui2::taddon_list>
 };
 
 template<>
+struct twrapper<gui2::tcampaign_difficulty>
+{
+	static gui2::tcampaign_difficulty* create()
+	{
+		static std::vector<std::string> items;
+
+		return new gui2::tcampaign_difficulty(items);
+	}
+};
+
+template<>
 struct twrapper<gui2::tcampaign_selection>
 {
 	static gui2::tcampaign_selection* create()
@@ -470,6 +494,18 @@ struct twrapper<gui2::tcampaign_selection>
 		static std::vector<config> campaigns(ci.first, ci.second);
 
 		return new gui2::tcampaign_selection(campaigns);
+	}
+};
+
+template<>
+struct twrapper<gui2::tchat_log>
+{
+	static gui2::tchat_log* create()
+	{
+		static config cfg;
+		static vconfig vcfg(cfg);
+
+		return new gui2::tchat_log(vcfg, NULL);
 	}
 };
 
@@ -664,6 +700,17 @@ struct twrapper<gui2::teditor_new_map>
 		static int width;
 		static int height;
 		return new gui2::teditor_new_map(width, height);
+	}
+};
+
+template<>
+struct twrapper<gui2::teditor_set_starting_position>
+{
+	static gui2::teditor_set_starting_position* create()
+	{
+		static std::vector<map_location> locations;
+
+		return new gui2::teditor_set_starting_position(0, 0, locations);
 	}
 };
 
