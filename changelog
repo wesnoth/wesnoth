@@ -79,7 +79,7 @@ Version 1.11.0-svn:
      SSF instead
    * Action tags [modify_side], [place_shroud] and [remove_shroud] now default
      to "all sides" instead of side=1 if left empty.
-   * Introduce support for [filter_side]<SSF> in SLFs. For villages. Keeps
+   * Introduce support for [filter_owner]<SSF> in SLFs. For villages. Keeps
      backwards compatibility for inline owner_side= at the cost of
      confusing syntax (due to (possible) duplicate side information).
      This also adds SSF support in [store_villages].
