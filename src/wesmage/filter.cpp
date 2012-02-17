@@ -103,7 +103,7 @@ struct tregister_filter
 #define REGISTER(name, description)                                           \
 	tregister_filter register_filter_##name(std::make_pair(                   \
 			  #name                                                           \
-			, tfilter(#name, #name""description, boost::bind(name, _1, _2))));
+			, tfilter(#name, #name description, boost::bind(name, _1, _2))));
 
 static void
 scale(surface& surf, const std::string& parameters)
