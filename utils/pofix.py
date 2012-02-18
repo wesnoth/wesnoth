@@ -888,6 +888,9 @@ stringfixes = {
 ("news of Asheviere's orders reached", "news of Asheviere’s orders reached"),
 ("youngest of Garard's nephews, thereby", "youngest of Garard’s nephews, thereby"),
 ("sadly as Asheviere's reign of", "sadly as Asheviere’s reign of"),
+
+# fix added in 1.10.0+svn
+("Second, who you most", "Second, whom you most"),
 ),
 
 "wesnoth-l" : (
