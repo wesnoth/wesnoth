@@ -983,7 +983,7 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
     if campaign:
         title = campaign.get_text_val("name", translation = html.translate)
     else:
-        title = html.translate("Units", "wesnoth")
+        title = html.translate("Units", "wesnoth-help")
     if not title:
         title = cid
 
@@ -1060,7 +1060,7 @@ def html_postprocess_file(filename, isocode, batchlist):
     for i in range(2):
         
         campaigns = cids[i]
-        campaigns.sort(key = lambda x: x[2])
+        campaigns.sort(key = lambda x: "A" if x[1] == "mainline" else "B" + x[2])
 
         for campaign in campaigns:
             addon, cname, campname, lang = campaign

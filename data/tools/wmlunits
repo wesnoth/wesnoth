@@ -106,7 +106,7 @@ def list_contents():
         
         if addon == "mainline":
             # Fake mainline campaign to have an overview of the mainline units
-            append(info, "mainline", "", name = "Units", domain = "wesnoth")
+            append(info, "mainline", "", name = "Units", domain = "wesnoth-help")
         
         for campaign in campaigns:
             cid = campaign.get_text_val("id")

@@ -119,7 +119,6 @@ class ImageCollector:
                 pass
 
             no_tc = image.no_tc
-            no_tc = True
             
             ipath = os.path.normpath(image.ipath)
             cdir = os.path.normpath(options.config_dir + "/data/add-ons")
