@@ -892,8 +892,8 @@ private:
 		const std::string type = args()[0]->evaluate(variables,add_debug_info(fdb,0,"get_unit_type:name")).as_string();
 
 		const unit_type *ut = unit_types.find(type);
-		if (!ut)
-			return  variant( new unit_type_callable(*ut));
+		if (ut)
+			return variant(new unit_type_callable(*ut));
 
 		return variant();
 	}
