@@ -64,7 +64,7 @@ REGISTER_DIALOG(chat_log)
 class tchat_log::model {
 public:
 	model(const vconfig &c, replay *r)
-		: cfg(c), chat_log_history(r->build_chat_log()), page(0), page_number(), previous_page(), next_page()
+		: cfg(c), msg_label(NULL), chat_log_history(r->build_chat_log()), page(0), page_number(), previous_page(), next_page()
 	{
 		LOG_CHAT_LOG << "entering tchat_log::model...\n";
 		LOG_CHAT_LOG << "finished tchat_log::model...\n";
