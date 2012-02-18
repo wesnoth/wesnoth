@@ -53,9 +53,9 @@ include(SearchForStuff)
 
 #Path options
 set(BINDIR "bin" CACHE STRING "Where to install binaries")
-set(MANDIR "man" CACHE STRING "Where to install manpages")
 set(DATAROOTDIR "${CMAKE_INSTALL_PREFIX}/share" CACHE STRING "Sets the root of data directories to a non-default location")
 set(DOCDIR "${DATAROOTDIR}/doc/wesnoth" CACHE STRING "Sets the doc directory to a non-default location.")
+set(MANDIR "${DATAROOTDIR}/man" CACHE STRING "Where to install manpages")
 set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the read-only architecture-independent game data")
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}" CACHE STRING "change the dir where binaries are placed right at compile time")
 set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
