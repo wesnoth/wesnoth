@@ -132,9 +132,168 @@ static lg::log_domain log_engine("engine");
 
 namespace savegame {
 
+class save_index_class
+{
+public:
+	void rebuild(const std::string& name) {
+		std::string filename = name;
+		replace_space2underbar(filename);
+		time_t modified = file_create_time(get_saves_dir() + "/" + filename);
+		rebuild(name, modified);
+	}
+	void rebuild(const std::string& name, const time_t& modified) {
+		log_scope("load_summary_from_file");
+		config& summary = data(name);
+		try {
+			config full;
+			std::string dummy;
+			read_save_file(name, full, &dummy);
+			::extract_summary_from_config(full, summary);
+		} catch(game::load_game_failed&) {
+			summary["corrupt"] = true;
+		}
+		summary["mod_time"] = str_cast(static_cast<int>(modified));
+		write_save_index();
+	}
+	void set_modified(const std::string& name, const time_t& modified) {
+		modified_[name] = modified;
+	}
+	config& get(const std::string& name) {
+		config& result = data(name);
+		time_t m = modified_[name];
+		config::attribute_value& mod_time = result["mod_time"];
+		if (mod_time.empty() || static_cast<time_t>(mod_time.to_int()) != m) {
+			rebuild(name, m);
+		}
+		return result;
+	}
+public:
+	void write_save_index() {
+		log_scope("write_save_index()");
+		try {
+			scoped_ostream stream = ostream_file(get_save_index_file());
+			if (preferences::compress_saves()) {
+			  write_gz(*stream, data());
+			} else {
+			  write(*stream, data());
+			}
+		} catch(io_exception& e) {
+			ERR_SAVE << "error writing to save index file: '" << e.what() << "'\n";
+		}
+	}
+
+public:
+	save_index_class() : loaded_(false) {}
+private:
+	config& data(const std::string& name) {
+		std::string save = name;
+		/*
+		 * All saves are .gz files now so make sure we use that name when opening
+		 * a file. If not some parts of the code use the name with and some parts
+		 * without the .gz suffix.
+		 */
+		if(save.length() < 3 || save.substr(save.length() - 3) != ".gz") {
+			save += ".gz";
+		}
+	
+		config& cfg = data();
+		if (config& sv = cfg.find_child("save", "save", save)) {
+			return sv;
+		}
+	
+		config& res = cfg.add_child("save");
+		res["save"] = save;
+		return res;
+	}
+	config& data() {
+		if(loaded_ == false) {
+			try {
+				scoped_istream stream = istream_file(get_save_index_file());
+				try {
+					read_gz(data_, *stream);
+				} catch (boost::iostreams::gzip_error&) {
+					stream->seekg(0);
+					read(data_, *stream);
+				}
+			} catch(io_exception& e) {
+				ERR_SAVE << "error reading save index: '" << e.what() << "'\n";
+			} catch(config::error&) {
+				ERR_SAVE << "error parsing save index config file\n";
+				data_.clear();
+			}	
+			loaded_ = true;
+		}
+		return data_;
+	}
+private:
+	bool loaded_;
+	config data_;
+	std::map< std::string, time_t > modified_;
+} save_index_manager;
+
+class filename_filter {
+public:
+	filename_filter(const std::string& filter) : filter_(filter) {
+	}
+	bool operator()(const std::string& filename) const {
+		return filename.end() == std::search(filename.begin(), filename.end(),
+						     filter_.begin(), filter_.end());
+	}
+private:
+	std::string filter_;
+};
+
+class create_save_info {
+public:
+	create_save_info(const std::string* d = NULL) : dir(d ? *d : get_saves_dir()) {
+	}
+	save_info operator()(const std::string& filename) const {
+		std::string name = filename;
+		replace_underbar2space(name);
+		time_t modified = file_create_time(dir + "/" + filename);
+		save_index_manager.set_modified(name, modified);
+		return save_info(name, modified);
+	}
+	const std::string dir;
+};
+
+/** Get a list of available saves. */
+std::vector<save_info> get_saves_list(const std::string* dir, const std::string* filter)
+{
+	create_save_info creator(dir);
+	
+	std::vector<std::string> filenames;
+	get_files_in_dir(creator.dir,&filenames);
+
+	if (filter) {
+		filenames.erase(std::remove_if(filenames.begin(), filenames.end(),
+					       filename_filter(*filter)));
+	}
+
+	std::vector<save_info> result;
+	std::transform(filenames.begin(), filenames.end(),
+		       std::back_inserter(result), creator);
+	return result;
+}
+
+save_info::save_info(const std::string& n, const time_t& m) : name_(n), modified_(m) {
+}
+
+const std::string& save_info::name() const {
+	return name_;
+}
+
+const time_t& save_info::modified() const {
+	return modified_;
+}
+
+const config& save_info::summary() const {
+	return save_index_manager.get(name());
+}
+
 const std::string save_info::format_time_local() const{
 	char time_buf[256] = {0};
-	tm* tm_l = localtime(&time_modified);
+	tm* tm_l = localtime(&modified());
 	if (tm_l) {
 		const size_t res = strftime(time_buf,sizeof(time_buf),
 			(preferences::use_twelve_hour_clock_format() ? _("%a %b %d %I:%M %p %Y") : _("%a %b %d %H:%M %Y")),
@@ -143,7 +302,7 @@ const std::string save_info::format_time_local() const{
 			time_buf[0] = 0;
 		}
 	} else {
-		LOG_SAVE << "localtime() returned null for time " << time_modified << ", save " << name;
+		LOG_SAVE << "localtime() returned null for time " << this->modified() << ", save " << name();
 	}
 
 	return time_buf;
@@ -151,7 +310,7 @@ const std::string save_info::format_time_local() const{
 
 const std::string save_info::format_time_summary() const
 {
-	time_t t = time_modified;
+	time_t t = modified();
 	time_t curtime = time(NULL);
 	const struct tm* timeptr = localtime(&curtime);
 	if(timeptr == NULL) {
@@ -205,32 +364,26 @@ const std::string save_info::format_time_summary() const
 	return buf;
 }
 
-/**
- * A structure for comparing to save_info objects based on their modified time.
- * If the times are equal, will order based on the name.
- */
-struct save_info_less_time {
-	bool operator()(const save_info& a, const save_info& b) const {
-		if (a.time_modified > b.time_modified) {
-		        return true;
-		} else if (a.time_modified < b.time_modified) {
-			return false;
+bool save_info_less_time::operator() (const save_info& a, const save_info& b) const {
+	if (a.modified() > b.modified()) {
+		return true;
+	} else if (a.modified() < b.modified()) {
+		return false;
 		// Special funky case; for files created in the same second,
 		// a replay file sorts less than a non-replay file.  Prevents
 		// a timing-dependent bug where it may look like, at the end
 		// of a scenario, the replay and the autosave for the next
 		// scenario are displayed in the wrong order.
-		} else if (a.name.find(_(" replay"))==std::string::npos && b.name.find(_(" replay"))!=std::string::npos) {
-			return true;
-		} else if (a.name.find(_(" replay"))!=std::string::npos && b.name.find(_(" replay"))==std::string::npos) {
-			return false;
-		} else {
-			return  a.name > b.name;
-		}
+	} else if (a.name().find(_(" replay"))==std::string::npos && b.name().find(_(" replay"))!=std::string::npos) {
+		return true;
+	} else if (a.name().find(_(" replay"))!=std::string::npos && b.name().find(_(" replay"))==std::string::npos) {
+		return false;
+	} else {
+		return  a.name() > b.name();
 	}
-};
+}
 
-void manager::read_save_file(const std::string& name, config& cfg, std::string* error_log)
+void read_save_file(const std::string& name, config& cfg, std::string* error_log)
 {
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
@@ -272,16 +425,7 @@ void manager::read_save_file(const std::string& name, config& cfg, std::string* 
 	}
 }
 
-void manager::load_summary(const std::string& name, config& cfg_summary, std::string* error_log){
-	log_scope("load_game_summary");
-
-	config cfg;
-	read_save_file(name,cfg,error_log);
-
-	::extract_summary_from_config(cfg, cfg_summary);
-}
-
-bool manager::save_game_exists(const std::string& name, const bool compress_saves)
+bool save_game_exists(const std::string& name, bool compress_saves)
 {
 	std::string fname = name;
 	replace_space2underbar(fname);
@@ -293,129 +437,42 @@ bool manager::save_game_exists(const std::string& name, const bool compress_save
 	return file_exists(get_saves_dir() + "/" + fname);
 }
 
-std::vector<save_info> manager::get_saves_list(const std::string *dir, const std::string* filter)
-{
-	// Don't use a reference, it seems to break on arklinux with GCC-4.3.
-	const std::string saves_dir = (dir) ? *dir : get_saves_dir();
-
-	std::vector<std::string> saves;
-	get_files_in_dir(saves_dir,&saves);
-
-	std::vector<save_info> res;
-	for(std::vector<std::string>::iterator i = saves.begin(); i != saves.end(); ++i) {
-		if(filter && std::search(i->begin(), i->end(), filter->begin(), filter->end()) == i->end()) {
-			continue;
-		}
-
-		const time_t modified = file_create_time(saves_dir + "/" + *i);
-
-		replace_underbar2space(*i);
-		res.push_back(save_info(*i,modified));
-	}
-
-	std::sort(res.begin(),res.end(),save_info_less_time());
-
-	return res;
-}
-
-void manager::clean_saves(const std::string &label)
+void clean_saves(const std::string& label)
 {
 	std::vector<save_info> games = get_saves_list();
 	std::string prefix = label + "-" + _("Auto-Save");
 	std::cerr << "Cleaning saves with prefix '" << prefix << "'\n";
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); ++i) {
-		if (i->name.compare(0, prefix.length(), prefix) == 0) {
-			std::cerr << "Deleting savegame '" << i->name << "'\n";
-			delete_game(i->name);
+		if (i->name().compare(0, prefix.length(), prefix) == 0) {
+			std::cerr << "Deleting savegame '" << i->name() << "'\n";
+			delete_game(i->name());
 		}
 	}
 }
 
-void manager::remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
+void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
 {
 	const std::string auto_save = _("Auto-Save");
 	int countdown = autosavemax;
 	if (countdown == infinite_auto_saves)
 		return;
 
-	std::vector<save_info> games = get_saves_list(NULL, &auto_save);
+	std::vector<save_info> games = get_saves_list(&auto_save);
 	for (std::vector<save_info>::iterator i = games.begin(); i != games.end(); ++i) {
 		if (countdown-- <= 0) {
-			LOG_SAVE << "Deleting savegame '" << i->name << "'\n";
-			delete_game(i->name);
+			LOG_SAVE << "Deleting savegame '" << i->name() << "'\n";
+			delete_game(i->name());
 		}
 	}
 }
 
-void manager::delete_game(const std::string& name)
+void delete_game(const std::string& name)
 {
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
 
 	remove((get_saves_dir() + "/" + name).c_str());
 	remove((get_saves_dir() + "/" + modified_name).c_str());
-}
-
-bool save_index::save_index_loaded = false;
-config save_index::save_index_cfg;
-
-config& save_index::load()
-{
-	if(save_index_loaded == false) {
-		const std::string filename = get_save_index_file();
-		try {
-			scoped_istream stream = istream_file(filename);
-			try {
-				read_gz(save_index_cfg, *stream);
-			} catch (boost::iostreams::gzip_error&) {
-				stream->seekg(0);
-				read(save_index_cfg, *stream);
-			}
-		} catch(io_exception& e) {
-			ERR_SAVE << "error reading save index: '" << e.what() << "'\n";
-		} catch(config::error&) {
-			ERR_SAVE << "error parsing save index config file\n";
-			save_index_cfg.clear();
-		}
-		save_index_loaded = true;
-	}
-
-	return save_index_cfg;
-}
-
-config& save_index::save_summary(std::string save)
-{
-	/*
-	 * All saves are .gz files now so make sure we use that name when opening
-	 * a file. If not some parts of the code use the name with and some parts
-	 * without the .gz suffix.
-	 */
-	if(save.length() < 3 || save.substr(save.length() - 3) != ".gz") {
-		save += ".gz";
-	}
-
-	config& cfg = load();
-	if (config &sv = cfg.find_child("save", "save", save))
-		return sv;
-
-	config &res = cfg.add_child("save");
-	res["save"] = save;
-	return res;
-}
-
-void save_index::write_save_index()
-{
-	log_scope("write_save_index()");
-	try {
-		scoped_ostream stream = ostream_file(get_save_index_file());
-		if (preferences::compress_saves()) {
-		  write_gz(*stream, load());
-		} else {
-		  write(*stream, load());
-		}
-	} catch(io_exception& e) {
-		ERR_SAVE << "error writing to save index file: '" << e.what() << "'\n";
-	}
 }
 
 loadgame::loadgame(display& gui, const config& game_config, game_state& gamestate)
@@ -456,14 +513,9 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 
 void loadgame::show_difficulty_dialog()
 {
-	config cfg_summary;
-	std::string dummy;
-
-	try {
-		manager::load_summary(filename_, cfg_summary, &dummy);
-	} catch(game::load_game_failed&) {
-		cfg_summary["corrupt"] = "yes";
-	}
+	create_save_info creator;
+	save_info info = creator(filename_);
+	const config& cfg_summary = info.summary();
 
 	if ( cfg_summary["corrupt"].to_bool() || (cfg_summary["replay"].to_bool() && !cfg_summary["snapshot"].to_bool(true))
 		|| (!cfg_summary["turn"].empty()) )
@@ -540,7 +592,7 @@ void loadgame::load_game(
 		show_difficulty_dialog();
 
 	std::string error_log;
-	manager::read_save_file(filename_, load_config_, &error_log);
+	read_save_file(filename_, load_config_, &error_log);
 
 	if(!error_log.empty()) {
         try {
@@ -637,7 +689,7 @@ void loadgame::load_multiplayer_game()
 		cursor::setter cur(cursor::WAIT);
 		log_scope("load_game");
 
-		manager::read_save_file(filename_, load_config_, &error_log);
+		read_save_file(filename_, load_config_, &error_log);
 		copy_era(load_config_);
 
 		gamestate_ = game_state(load_config_);
@@ -800,7 +852,7 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, const 
 bool savegame::check_overwrite(CVideo& video)
 {
 	std::string filename = filename_;
-	if (manager::save_game_exists(filename, compress_saves_)) {
+	if (save_game_exists(filename, compress_saves_)) {
 		std::stringstream message;
 		message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename;
 		int retval = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::tmessage::yes_no_buttons);
@@ -932,20 +984,11 @@ void savegame::write_game(config_writer &out) const
 
 void savegame::finish_save_game(const config_writer &out)
 {
-	std::string name = gamestate_.classification().label;
-	replace_space2underbar(name);
-	std::string fname(get_saves_dir() + "/" + name);
-
 	try {
 		if(!out.good()) {
 			throw game::save_game_failed(_("Could not write to file"));
 		}
-
-		config& summary = save_index::save_summary(gamestate_.classification().label);
-		extract_summary_data_from_save(summary);
-		const int mod_time = static_cast<int>(file_create_time(fname));
-		summary["mod_time"] = str_cast(mod_time);
-		save_index::write_save_index();
+		save_index_manager.rebuild(gamestate_.classification().label);
 	} catch(io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
@@ -961,72 +1004,6 @@ scoped_ostream savegame::open_save_game(const std::string &label)
 		return scoped_ostream(ostream_file(get_saves_dir() + "/" + name));
 	} catch(io_exception& e) {
 		throw game::save_game_failed(e.what());
-	}
-}
-
-void savegame::extract_summary_data_from_save(config& out)
-{
-	const bool has_replay = gamestate_.replay_data.empty() == false;
-	bool has_snapshot(gamestate_.snapshot.child("side"));
-
-	out["replay"] = has_replay;
-	out["snapshot"] = has_snapshot;
-
-	out["label"] = gamestate_.classification().label;
-	out["parent"] = gamestate_.classification().parent;
-	out["campaign"] = gamestate_.classification().campaign;
-	out["campaign_type"] = gamestate_.classification().campaign_type;
-	out["scenario"] = gamestate_.classification().scenario;
-	out["difficulty"] = gamestate_.classification().difficulty;
-	out["version"] = gamestate_.classification().version;
-	out["corrupt"] = "";
-
-	if(has_snapshot) {
-		out["turn"] = gamestate_.snapshot["turn_at"];
-		if(gamestate_.snapshot["turns"] != "-1") {
-			out["turn"] = out["turn"].str() + "/" + gamestate_.snapshot["turns"].str();
-		}
-	}
-
-	// Find the first human leader so we can display their icon in the load menu.
-
-	/** @todo Ideally we should grab all leaders if there's more than 1 human player? */
-	std::string leader;
-
-	bool shrouded = false;
-
-	const config& snapshot = has_snapshot ? gamestate_.snapshot : gamestate_.starting_pos;
-	foreach (const config &side, snapshot.child_range("side"))
-	{
-		if (side["controller"] != "human") {
-			continue;
-		}
-		if (side["shroud"].to_bool()) {
-			shrouded = true;
-		}
-
-		foreach (const config &u, side.child_range("unit"))
-		{
-			if (u["canrecruit"].to_bool()) {
-				leader = u["id"].str();
-				break;
-			}
-		}
-	}
-
-	out["leader"] = leader;
-	out["map_data"] = "";
-
-	if(!shrouded) {
-		if(has_snapshot) {
-			if (!gamestate_.snapshot.find_child("side", "shroud", "yes")) {
-				out["map_data"] = gamestate_.snapshot["map_data"];
-			}
-		} else if(has_replay) {
-			if (!gamestate_.starting_pos.find_child("side", "shroud", "yes")) {
-				out["map_data"] = gamestate_.starting_pos["map_data"];
-			}
-		}
 	}
 }
 
@@ -1079,7 +1056,7 @@ void autosave_savegame::autosave(const bool disable_autosave, const int autosave
 
 	save_game_automatic(gui_.video());
 
-	manager::remove_old_auto_saves(autosave_max, infinite_autosaves);
+	remove_old_auto_saves(autosave_max, infinite_autosaves);
 }
 
 void autosave_savegame::create_filename()

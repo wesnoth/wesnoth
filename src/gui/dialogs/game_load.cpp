@@ -133,7 +133,7 @@ void tgame_load::pre_show(CVideo& /*video*/, twindow& window)
 
 	{
 		cursor::setter cur(cursor::WAIT);
-		games_ = savegame::manager::get_saves_list();
+		games_ = savegame::get_saves_list();
 	}
 	fill_game_list(window, games_);
 
@@ -157,7 +157,7 @@ void tgame_load::fill_game_list(twindow& window
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = game.name;
+		item["label"] = game.name();
 		data.insert(std::make_pair("filename", item));
 
 		item["label"] = game.format_time_summary();
@@ -239,28 +239,21 @@ void tgame_load::display_savegame(twindow& window)
 		preview_pane.set_visible(twidget::VISIBLE);
 
 		savegame::save_info& game = games_[selected_row];
-		filename_ = game.name;
+		filename_ = game.name();
 
-		config cfg_summary;
-		std::string dummy;
-
-		try {
-			savegame::manager::load_summary(game.name, cfg_summary, &dummy);
-		} catch(game::load_game_failed&) {
-			cfg_summary["corrupt"] = "yes";
-		}
+		const config& summary = game.summary();
 
 		find_widget<timage>(&window, "imgLeader", false).
-				set_label(cfg_summary["leader_image"]);
+				set_label(summary["leader_image"]);
 
 		find_widget<tminimap>(&window, "minimap", false).
-				set_map_data(cfg_summary["map_data"]);
+				set_map_data(summary["map_data"]);
 
-		find_widget<tlabel>(&window, "lblScenario", false).set_label(game.name);
+		find_widget<tlabel>(&window, "lblScenario", false).set_label(game.name());
 
 		std::stringstream str;
 		str << game.format_time_local();
-		evaluate_summary_string(str, cfg_summary);
+		evaluate_summary_string(str, summary);
 
 		find_widget<tlabel>(&window, "lblSummary", false).set_label(str.str());
 
@@ -344,7 +337,7 @@ void tgame_load::delete_button_callback(twindow& window)
 		}
 
 		// Delete the file
-		savegame::manager::delete_game(games_[index].name);
+		savegame::delete_game(games_[index].name());
 
 		// Remove it from the list of saves
 		games_.erase(games_.begin() + index);

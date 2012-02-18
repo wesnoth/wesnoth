@@ -31,66 +31,47 @@ struct illegal_filename_exception {};
 namespace savegame {
 
 /** Filename and modification date for a file list */
-struct save_info {
-	save_info(const std::string& n, time_t t) : name(n), time_modified(t) {}
-	std::string name;
-	time_t time_modified;
-
+class save_info {
+private:
+	friend class create_save_info;
+private:
+	save_info(const std::string& name, const time_t& modified);
+public:
+	const std::string& name()     const;
+	const time_t&      modified() const;
+public:
 	const std::string format_time_summary() const;
 	const std::string format_time_local() const;
+	const config& summary() const;
+private:
+	std::string name_;
+	time_t modified_;
 };
 
 /**
-Container for a couple of savefile manipulating methods.
-Note: You are not supposed to instantiate this class.
-*/
-class manager
-{
-public:
-	/** Read summary information out of an existing savefile. */
-	static void load_summary(const std::string& name, config& cfg_summary, std::string* error_log);
-	/** Read the complete config information out of a savefile. */
-	static void read_save_file(const std::string& name, config& cfg, std::string* error_log);
-
-	/** Returns true if there is already a savegame with that name. */
-	static bool save_game_exists(const std::string& name, const bool compress_saves);
-	/** Get a list of available saves. */
-	static std::vector<save_info> get_saves_list(const std::string *dir = NULL, const std::string* filter = NULL);
-
-	/** Delete all autosaves of a certain scenario. */
-	static void clean_saves(const std::string &label);
-	/** Remove autosaves that are no longer needed (according to the autosave policy in the preferences). */
-	static void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves);
-	/** Delete a savegame. */
-	static void delete_game(const std::string& name);
-
-private:
-	/** Default-Constructor (don't instantiate this class) */
-	manager() {}
+ * A structure for comparing to save_info objects based on their modified time.
+ * If the times are equal, will order based on the name.
+ */
+struct save_info_less_time {
+	bool operator()(const save_info& a, const save_info& b) const;
 };
 
-/**
-Container for methods dealing with the save_index file.
-Note: You are not supposed to instantiate this class.
-*/
-class save_index
-{
-public:
-	/** Determines/Adds the "save"-child of the summary config. */
-	static config& save_summary(std::string save);
-	/** Update the save_index file with changed savegame information. */
-	static void write_save_index();
+std::vector<save_info> get_saves_list(const std::string* dir = NULL, const std::string* filter = NULL);
 
-private:
-	/** Default-Constructor (don't instantiate this class) */
-	save_index() {}
+/** Read the complete config information out of a savefile. */
+void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 
-	/** Read the complete config information out of the save_index file. */
-	static config& load();
+/** Returns true if there is already a savegame with that name. */
+bool save_game_exists(const std::string& name, bool compress_saves);
 
-	static bool save_index_loaded; /** Tells, if the save_index config has been already loaded. */
-	static config save_index_cfg; /** save_index config (who would have guessed that ;-). */
-};
+/** Delete all autosaves of a certain scenario. */
+void clean_saves(const std::string& label);
+
+/** Remove autosaves that are no longer needed (according to the autosave policy in the preferences). */
+void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves);
+
+/** Delete a savegame. */
+void delete_game(const std::string& name);
 
 /** The class for loading a savefile. */
 class loadgame
@@ -215,8 +196,7 @@ private:
 	void finish_save_game(const config_writer &out);
 	/** Throws game::save_game_failed. */
 	scoped_ostream open_save_game(const std::string &label);
-	/** Read the summary data from a savegame to display this information in the load-game dialog. */
-	void extract_summary_data_from_save(config& out);
+	friend class save_info;
 
 	game_state& gamestate_;
 

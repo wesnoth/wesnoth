@@ -396,7 +396,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// need to change this test.
 		if (res == VICTORY || (io_type != IO_NONE && res == DEFEAT)) {
 			if (preferences::delete_saves())
-				savegame::manager::clean_saves(gamestate.classification().label);
+				savegame::clean_saves(gamestate.classification().label);
 
 			if (preferences::save_replays() && end_level.replay_save) {
 				savegame::replay_savegame save(gamestate, preferences::compress_saves());
@@ -606,7 +606,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 	if (gamestate.classification().campaign_type == "scenario"){
 		if (preferences::delete_saves())
-			savegame::manager::clean_saves(gamestate.classification().label);
+			savegame::clean_saves(gamestate.classification().label);
 	}
 	return VICTORY;
 }

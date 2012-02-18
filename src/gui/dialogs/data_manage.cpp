@@ -83,7 +83,7 @@ void tdata_manage::pre_show(CVideo& /*video*/, twindow& window)
 
 	{
 		cursor::setter cur(cursor::WAIT);
-		games_ = savegame::manager::get_saves_list();
+		games_ = savegame::get_saves_list();
 	}
 	fill_game_list(window, games_);
 
@@ -105,7 +105,7 @@ void tdata_manage::fill_game_list(twindow& window
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = game.name;
+		item["label"] = game.name();
 		data.insert(std::make_pair("filename", item));
 
 		item["label"] = game.format_time_summary();
@@ -179,7 +179,7 @@ void tdata_manage::delete_button_callback(twindow& window)
 		}
 
 		// Delete the file
-		savegame::manager::delete_game(games_[index].name);
+		savegame::delete_game(games_[index].name());
 
 		// Remove it from the list of saves
 		games_.erase(games_.begin() + index);
