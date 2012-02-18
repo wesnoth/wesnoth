@@ -122,9 +122,10 @@ predefiniti (usati in mancanza di specifiche diverse) sono:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/socket/wesnothd/socket\fP).
+Il path della fifo alla quale inviare i comandi del server (come in /query
+\&... per wesnoth). Se non diversamente specificato invia allo standard
+utilizzato come path al momento della compilazione del sorgente (default:
+\fB/var/run/socket/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Il numero di messaggi permessi in un periodo di \fBmessages_time_period\fP
@@ -154,9 +155,9 @@ dimenticare la barra «/» alla fine!). In assenza di modifiche, vale «», che
 significa la directory da cui è stato eseguito wesnothd.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-\fBrestart\fP command. (Can only be issued via the fifo. See the
-\fBallow_remote_shutdown\fP setting.)
+Il comando che il server utilizza per lanciare un muovo processo server
+cramite il comando \fBrestart\fP. Può essere inviato soltanto tramite la
+fifo. Per dettagli, vedi i setaggi di \fBallow_remote_shutdown\fP.
 .TP 
 \fBroom_save_file\fP
 Percorso del file in cui memorizzare le informazioni sulle stanze. Questo
@@ -175,11 +176,12 @@ accettare. I caratteri jolly \fB*\fP e \fB?\fP sono ammessi (il valore predefini
 Esempio: \fBversions_accepted="*"\fP accetta tutte le stringhe di versione.
 .TP  
 \fBuser_handler\fP
-The name of the user handler to use. Currently available user handlers are
-\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
-sample implementation of the user handler interface, if you use this on
-anything real you are insane). The default value is \fBforum\fP. You must also
-add a \fB[user_handler]\fP section, see below.
+Il nome dello user handler da utilizzare. Attualmente gli user handler
+disponibili sono \fBforum\fP (per connettere wesnothd ad un forum con database
+phpbb) e  \fBsample\fP (una implementazione di esempio di una interfaccia user
+handler; Usarla per qualcosa di real è semplicemente una cosa da pazzi). il
+valore di default è \fBforum\fP. Va anche aggiunto una sezione
+\fB[user_handler]\fP, vedi sotto.
 .
 .SS "Tag globali:"
 .
@@ -207,11 +209,12 @@ messa al bando temporanei.
 Il nome usato per fare riferimento al periodo di messa al bando.
 .TP 
 \fBperiodo\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
-minutes.
+Definizione del formato per la rappresentazione del periodo. Il formato è
+%d[%s[%d%s[...]]] dove %s sono s (secondi), m (minuti), h (ore), D (giorni),
+M (mesi) o Y (anni) e %d è un numero. Se non vengono specificati
+modificatori ri tempo, il valore si assume essere espresso in minuti (m). Ad
+esempio: \fBtime="1D12h30m"\fP ha come risultato un periodo di messa al bando
+di 1 giorno, 12 ore e 30 minutei.
 .RE
 .P
 \fB[proxy]\fP Un tag che indica al server di fare da proxy e di inoltrare le
@@ -219,10 +222,11 @@ richieste dei client connessi al server specificato. Accetta le stesse
 parole chiave di \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service.
+\fB[user_handler]\fP Configura lo user handler. Diverse parole chiavi sono
+disponibili a seconda dello user handler selezionato con la chiave
+\fBuser_handler\fP. Se non è presente una sezione \fB[user_handler]\fP nella
+configurazione il server verrà lanciato sena un servizio di registrazione
+del nick.
 .RS
 .TP  
 \fBdb_host\fP
@@ -238,24 +242,24 @@ run without any nick registration service.
 (per user_handler=forum) La password di questo utente
 .TP  
 \fBdb_users_table\fP
-(for user_handler=forum) The name of the table in which your phpbb forums
-saves its user data. Most likely this will be <table\-prefix>_users
-(e.g. phpbb3_users).
+(per user_handler=forum) Il nome della tabella nella quale il vostro forum
+phpbb salva i dati degli utenti. Di solito questo valore è
+<table\-prefix>_users (i.e. phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually, e.g.:
-\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
-user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
-NOT NULL DEFAULT 0);\fP
+( per user_handler=forum) Il nome della tabella nella quale il demone
+wesnothd salverà i suoi dati degli utenti. Questa tabella deve essere creata
+manualmente, i.e: \fBCREATE TABLE <table\-name>(username VARCHAR(255)
+PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
+user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
 .TP  
 \fBuser_expiration\fP
 (per user_handler=sample) Il tempo dopo cui un nome registrato scade (in
 giorni).
 .RE
 .P
-\fB[mail]\fP Configures an SMTP server through which the user handler can send
-mail. Currently only used by the sample user handler.
+\fB[mail]\fP Configura un server SMTP attraverso il quale l'utente può inviare
+e\-mail. Attualmente utilizzato soltanto dallo user_handler sample.
 .RS
 .TP  
 \fBserver\fP

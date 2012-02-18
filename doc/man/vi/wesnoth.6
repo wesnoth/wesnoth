@@ -1,0 +1,266 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2011 wesnoth "Trận chiến giành Wesnoth"
+.
+.SH TÊN
+wesnoth \- Trận chiến giành wesnoth, là trò chơi chiến thuật dựa trên lượt đi
+theo phong cách thần thoại
+.
+.SH "BẢNG TÓM TẮT"
+.
+\fBwesnoth\fP [\fITÙY CHỌN\fP] [\fIĐƯỜNG DẪN_ĐẾN_DỮ LIỆU\fP]
+.
+.SH "MÔ TẢ"
+.
+Trận chiến giành \fBWesnoth\fP là trò chơi chiến thuật dựa trên lượt đi theo
+phong cách thần thoại.
+
+Đánh bạo tất cả kẻ thù sử dụng đơn vị lính nòng cốt được tuyển chọn tốt,
+quản lý nguồn tài nguyên của bạn bao gồm vàng và các ngôi làng. Mỗi đơn vị
+lính đều có điểm mạnh và điểm yếu riêng; để chiến thắng, triển khai lực
+lượng của bạn để có lợi nhất trong khi ngăn cản đối phương làm tương tự. Khi
+đơn vị lính thu được kinh nghiệm, chúng đạt được những khả năng mới và trở
+nên mạnh mẽ hơn. Chơi bằng chính ngôn ngữ của bạn và thử thách khả năng khi
+đối đầu với đối phương đầy mưu mẹo được điều khiển bởi máy tính, hay tham
+gia vào cộng đồng rộng lớn Wesnoth của người chơi mạng. Từ tạo đơn vị lính,
+màn chơi hay chiến dịch của chính bạn và chia sẽ với những người khác.
+.
+.SH "TÙY CHỌN"
+.
+.TP 
+\fB\-\-bpp\fP\fI\ số\fP
+đặt giá trị bit trên mỗi điểm ảnh. Ví dụ: \fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign \ [<id_campaign>]\fP
+goes directly to the campaign with id <id_campaign>. A selection
+menu will appear if no id was specified.  \fBNote:\fP When using this switch
+please ensure that you specify the data directory path as the final argument
+aswell, otherwise the game will take the campaign/scenario id as the data
+dir.
+.TP 
+\fB\-\-campaign\-difficulty <difficulty>\fP
+The difficulty of the specified campaign (1 to max). If none specified, the
+campaign difficulty selection widget will appear.
+.TP 
+\fB\-\-campaign\-scenario <id_scenario>\fP
+The id of the scenario from the specified campaign. The default is the first
+scenario.
+.TP 
+\fB\-\-config\-dir\fP\fI\ tên\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games"
+.TP 
+\fB\-\-config\-path\fP
+in đường dẫn của thư mục chứa thiết lập người dùng và toát.
+.TP 
+\fB\-\-data\-dir <directory>\fP
+overrides the data directory with the one specified
+.TP 
+\fB\-d, \-\-debug\fP
+bật tùy chọn cho chế độ lệnh bổ sung trong trò chơi (vào trang wiki ở địa
+chỉ http://www.wesnoth.org/wiki/CommandMode để biết thêm chi tiết về chế độ
+lệnh).
+.TP 
+\fB\-e,\ \-\-editor\fP\fI\ tập tin\fP
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-l \-\-load\fP
+.TP 
+\fB\-\-fps\fP
+hiển thị số khung hình mỗi giây trò chơi hiện giờ đang chạy, ở góc màn hình.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+chạy trò chơi ở toàn màn hình.
+.TP 
+\fB\-\-gunzip\fP\fI\ sắp xếp.gz\fP
+giải nén một tập tin ở định dạng gzip và lưu mà không để đuôi
+\&.gz. \fIinfile.gz\fP sẽ bị bỏ đi .
+.TP 
+\fB\-\-gzip\fP\fI\ sắp xếp\fP
+nén một tập tin ở định dạng gzip, lưu nó dưới tên \fIinfile\fP.gz và bỏ
+\fIinfile\fP.
+.TP 
+\fB\-h, \-\-help\fP
+hiển thị một tóm tắt về tùy chọn dòng lệnh cho tiêu chuẩn đầu ra, và thoát.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ tập tin\fP
+tải bản lưu trò chơi \fIfile\fP từ thư mục lưu trò chơi chuẩn. Nếu tùy chọn
+\fB\-e\fP hoặc \fB\-\-editor\fP cũng được sử dụng, chạy trình sửa bản đồ với bản đồ
+từ tập tin \fIfile\fP mở sẵn. Nếu đó là một thư mục, trình sửa bản đồ sẽ chạy
+với hộp thoại tải bản đồ mở sẵn.
+.TP 
+\fB\-\-log\-\fP\fIcấp\fP\fB=\fP\fImiền 1\fP\fB,\fP\fImiền 2\fP\fB,\fP\fI...\fP
+đặt mức độ của miền dăng nhập. \fBall\fP có thể phù hợp với bất cứ miền đăng
+nhập nào. Các mức có sẵn: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Theo
+mặc định sử dụng mức \fBerror\fP.
+.TP 
+\fB\-\-logdomains\ [filter]\fP
+lists defined log domains (only the ones containing \fBfilter\fP if used) and
+exits
+.TP 
+\fB\-\-max\-fps\fP
+Số khung hình mỗi giây trò chơi có thể thể hiện, giá trị nên nằm giữa 1 và
+1000, mặc định là \fB50\fP.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+chạy một trò chơi nhiều người chơi. Có những tùy choinj bổ sung có thể dùng
+chung với \fB\-m, \-\-multiplayer\fP như giải thích bên dưới. Chỉ những tùy chọn
+này mới có thể theo sau \fB\-\-multiplayer\fP.
+.TP 
+\fB\-\-no\-delay\fP
+chạy trò chơi mà không có hoãn để kiểm nghiệm đồ họa. tùy chọn được bật sẵn
+bởi \fB\-\-nogui\fP.
+.TP 
+\fB\-\-nocache\fP
+tắt lưu trữ dữ liệu của trò chơi.
+.TP 
+\fB\-\-nomusic\fP
+chạy trò chơi không có nhạc.
+.TP 
+\fB\-\-nosound\fP
+chạy trò chơi không có âm thanh và nhạc.
+.TP 
+\fB\-\-path\fP
+in tên của đường dẫn chứa dữ liệu trò chơi và thoát.
+.TP 
+\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
+preprocesses a specified file/folder. The file(s) will be written in
+specified target directory: a plain cfg file and a processed cfg file. If a
+folder is specified, it will be preprocessed recursively based on the known
+preprocessor rules. The common macroses from the data/core/macros will be
+preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
+extra defines will be added before processing the files. If you want to add
+them you must add the '=' character before.  If 'SKIP_CORE' is in the define
+list the data/core won't be preprocessed.  Example: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result\fP or
+\fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+.TP 
+\fB\-\-preprocess\-input\-macros <source file>\fP
+used only by the '\-\-preprocess' command.  Specifies a file that contains
+[preproc_define]s to be included before preprocessing.
+.TP 
+\fB\-\-preprocess\-output\-macros [<target file>]\fP
+used only by the '\-\-preprocess' command.  Will output all preprocessed
+macros in the target file. If the file is not specified the output will be
+file '_MACROS_.cfg' in the target directory of preprocess's command.  This
+switch should be typed before the \-\-preprocess command.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolotion\ \fP\fIX\fP\fBx\fP\fIY\fP
+đặt dồ phân giải màn hình. Ví dụ: \fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [chủ]\fP
+kết nối đến máy chủ được chỉ định trước nếu có, còn không kết nối đến máy
+chủ đầu tiên trong phần tùy chọn. Ví dụ: \fB\-\-server server.wesnoth.org\fP
+.TP 
+\fB\-\-strict\-validation\fP
+validation errors are treated as fatal errors.
+.TP 
+\fB\-t, \-\-test\fP
+chạy trò chơi trong màn chơi nhỏ thử nghiệm.
+.TP 
+\fB\-\-validcache\fP
+giả sử bộ nhớ hợp lệ. (nguy hiểm)
+.TP 
+\fB\-v, \-\-version\fP
+hiện phiên bản và toát.
+.TP 
+\fB\-w, \-\-windowed\fP
+chạy trò chơi trong chế độ cửa sổ.
+.TP 
+\fB\-\-with\-replay\fP
+phát lại trò chơi với tùy chọn \fB\-\-load\fP.
+.
+.SH "Tùy chọn cho \-\-multiplayer"
+.
+Các tùy chọn cho phe cụ thể trong nhiều người chơi được đánh dấu bằng
+\fInumber\fP. \fInumber\fP phải được thay thế bằng số hiệu của phe. Thường là 1
+hoặc 2 nhưng phụ thuộc vào số người chơi có thể có ở màn chơi đã chọn.
+.TP 
+\fB\-\-ai_config\fP\fIsố\fP\fB=\fP\fIgiá trị\fP
+chọn một tập tin tùy thích để dùng cho phe máy điều khiển này.
+.TP 
+\fB\-\-algorithm\fP\fIsố\fP\fB=\fP\fIgiá trị\fP
+chọn một thuật toán không chuẩn để sử dụng bởi phe máy điều khiển này. Giá
+trị có sẵn: \fBidle_ai\fP and \fBsample_ai\fP.
+.TP 
+\fB\-\-controller\fP\fIsố\fP\fB=\fP\fIgiá trị\fP
+chọn người điều khiển cho phe này. Giá trị có sẵn: \fBhuman\fP và \fBai\fP.
+.TP 
+\fB\-\-era=\fP\fIgiá trị\fP
+sử dụng tùy chọn này để chơi sử dụng một thời đại đã chọn thay vì thời đại
+\fBDefault\fP. Thời đại được chọn bởi một số nhận diện. Thời đại được mô tả
+trong tập tin \fBdata/multiplayer/eras.cfg\fP.
+.TP 
+\fB\-\-exit\-at\-end\fP
+thoát một khi màng chơi kết thúc mà không hiện hộp thoại thắng/thua cần
+người chơi phải nhấn nút đồng ý. Đây của sử dùng cho việc kiểm nghiệm có thể
+lập trình được.
+.TP 
+\fB\-\-nogui\fP
+chạy trò chơi không có giao diện người dùng. Phải hiện lên trước khi
+\fB\-\-multiplayer\fP để cả hiệu quả mong muốn.
+.TP 
+\fB\-\-parm\fP\fIsố\fP\fB=\fP\fItên\fP\fB:\fP\fIgiá trị\fP
+đặt thông số bổ sung cho phe này. Thông số này phụ thuộc và tùy chọn sử dụng
+với \fB\-\-controller\fP và \fB\-\-algorithm\fP. Nó chỉ hưu ích với ai đang tự thiết
+kế trí tuệ máy (AI) của riêng mình. (chưa có tư liệu hoàn chỉnh)
+.TP 
+\fB\-\-scenario=\fP\fIgiá trị\fP
+chọn một màn nhiều người chơi bởi số nhận diện. Số nhận diện của màn chơi
+mặc định là \fBmultiplayer_The_Freelands\fP.
+.TP 
+\fB\-\-side\fP\fIsố\fP\fB=\fP\fIgiá trị\fP
+chọn một liên minh của thời đại hiện thời cho phe này. Liên minh được chọn
+bởi một số nhận diện. Liên minh được mô tả trong tập tin
+data/multiplayer.cfg.
+.TP 
+\fB\-\-turns=\fP\fIgiá trị\fP
+đặt số lượt đi cho màn chơi đã chọn. Mặc định là \fB50\fP.
+.
+.SH "TÌNH TRẠNG THOÁT"
+.
+Tình trạng thoát bình thường là 0. Tình trạng thoát 1 biểu thị một lỗi khởi
+tạo (SDL, đoạn phim, phông chữ, vân vân). Tình trạng thoát 2 biểu thị một
+lỗi với tùy chọn dòng lệnh.
+.
+.SH "TÁC GIẢ"
+.
+Viết bởi David White <davidnwhite@verizon.net>.
+.br
+Chỉnh sửa bởi Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> và Soliton <soliton.de@gmail.com>.
+.br
+Trang hướng dẫn này vốn được viết bởi Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+Truy cập trang chủ chính thức: http://www.wesnoth.org/
+.
+.SH "BẢN QUYỀN"
+.
+Copyright \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+Đây là Phần mềm Tự do; được cấp phép GPL phiên bản 2, được công bố bởi Free
+Software Foundation (Tổ chức phần mềm tự do). KHÔNG có sự đảm bảo; kể cả cho
+KHẢ NĂNG ĐEM LẠI LỢI NHUẬN HAY LỢI ÍCH CHO MỘT MỤC ĐÍCH CỤ THỂ.
+.
+.SH "Cũng xem"
+.
+\fBwesnothd\fP(6).
