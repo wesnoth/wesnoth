@@ -52,8 +52,13 @@ stringfixes = {
 ("roleplaying", "role-playing"),
 ),
 
-# conversion added in 1.11.0-svn
+"wesnoth-httt" : (
+# fix added in 1.10.0+svn
+("Second, who you most", "Second, whom you most"),
+),
+
 "wesnoth-tutorial" : (
+# conversion added in 1.11.0-svn
 ("$unit.type", "$unit.language_name"),
 ),
 
