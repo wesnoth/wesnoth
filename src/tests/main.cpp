@@ -22,6 +22,8 @@
 #include <boost/test/detail/unit_test_parameters.hpp>
 #include <boost/test/results_reporter.hpp>
 
+#include <fstream>
+
 #include "SDL.h"
 
 #include "filesystem.hpp"
@@ -56,9 +58,15 @@ static void exception_translator_game(const game::error& e)
 	throw "game::error: " + e.message;
 }
 
+std::ofstream reporter;
+
 struct wesnoth_global_fixture {
 	wesnoth_global_fixture()
 	{
+		reporter.open("boost_test_result.xml");
+		assert( reporter.is_open() );
+		
+		boost::unit_test::results_reporter::set_stream(reporter);
 //		lg::set_log_domain_severity("all",3);
 		game_config::path = get_cwd();
 
@@ -77,7 +85,6 @@ struct wesnoth_global_fixture {
 			boost::unit_test::unit_test_log.set_threshold_level( boost::unit_test::log_messages );
 		if (boost::unit_test::runtime_config::report_level() == boost::unit_test::INV_REPORT_LEVEL)
 			boost::unit_test::results_reporter::set_level(boost::unit_test::SHORT_REPORT);
-
 		boost::unit_test::unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
 		boost::unit_test::unit_test_monitor.register_exception_translator<network::error>(&exception_translator_network);
 		boost::unit_test::unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
