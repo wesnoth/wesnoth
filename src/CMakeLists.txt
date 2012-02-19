@@ -887,6 +887,7 @@ if(ENABLE_TESTS)
 	add_definitions(-DBOOST_TEST_DYN_LINK)
 
 	set(test_SRC
+		tests/floating_point_emulation.cpp
 		tests/main.cpp
 		tests/utils/fake_display.cpp 
 		tests/utils/fake_event_source.cpp 
