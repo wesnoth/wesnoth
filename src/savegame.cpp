@@ -273,6 +273,7 @@ std::vector<save_info> get_saves_list(const std::string* dir, const std::string*
 	std::vector<save_info> result;
 	std::transform(filenames.begin(), filenames.end(),
 		       std::back_inserter(result), creator);
+	std::sort(result.begin(),result.end(),save_info_less_time());
 	return result;
 }
 
