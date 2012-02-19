@@ -80,6 +80,8 @@ class Translation:
                 self.catalog[textdomain].add_fallback(self.dummy)
             except IOError:
                 self.catalog[textdomain] = self.dummy
+            except AttributeError:
+                self.catalog[textdomain] = self.dummy
             except IndexError:
                 # not sure why, but this happens within the
                 # gettext.translation call sometimes
@@ -438,7 +440,12 @@ class HTMLOutput:
 
         write("</div>\n")
 
-    def pic(self, u, x):
+    def pic(self, u, x, recursion = 0):
+        if recursion >= 4:
+            error_message(
+                "Warning: Cannot find image for unit %s(%s).\n" % (
+                u.get_text_val("id"), x.name))
+            return None, None
         image = self.wesnoth.get_unit_value(x, "image")
         portrait = x.get_all(tag="portrait")
         if not portrait:
@@ -452,9 +459,9 @@ class HTMLOutput:
                 baseunit = self.wesnoth.get_base_unit(u)
                 if baseunit:
                     female = baseunit.get_all(tag="female")
-                    return self.pic(u, female[0])
+                    return self.pic(u, female[0], recursion = recursion + 1)
                 else:
-                    return self.pic(u, u)
+                    return self.pic(u, u, recursion = recursion + 1)
             error_message(
                 "Warning: Missing image for unit %s(%s).\n" % (
                 u.get_text_val("id"), x.name))
