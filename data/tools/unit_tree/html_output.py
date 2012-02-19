@@ -922,7 +922,8 @@ class HTMLOutput:
         already = {}
         for tstring, t in terrains.items():
             tid = t.get_text_val("id")
-            if tid in ["off_map", "off_map2", "fog", "shroud", "impassable", "void"]: continue
+            if tid in ["off_map", "off_map2", "fog", "shroud", "impassable",
+                "void", "rails"]: continue
             if t.get_all(att="aliasof"): continue
             if tid in already: continue
             already[tid] = 1
