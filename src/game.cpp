@@ -582,12 +582,6 @@ static int do_gameloop(int argc, char** argv)
 	}
 }
 
-#ifndef DISABLE_POOL_ALLOC
-extern "C" {
-void init_custom_malloc();
-}
-#endif
-
 
 #ifdef __native_client__
 int wesnoth_main(int argc, char** argv)
@@ -618,9 +612,7 @@ int main(int argc, char** argv)
 		execv(argv[0], argv);
 	}
 #endif
-#ifndef DISABLE_POOL_ALLOC
-	init_custom_malloc();
-#endif
+
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);

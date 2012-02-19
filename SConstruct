@@ -80,7 +80,6 @@ opts.AddVariables(
     BoolVariable('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False),
     BoolVariable('forum_user_handler', 'Enable forum user handler in wesnothd', False),
     BoolVariable('use_network_ana', 'Use the new network api', False),
-    BoolVariable('pool_alloc', 'Enable custom pool malloc', False),
     ('server_gid', 'group id of the user who runs wesnothd', ""),
     ('server_uid', 'user id of the user who runs wesnothd', ""),
     BoolVariable('strict', 'Set to strict compilation', False),
@@ -424,9 +423,6 @@ for env in [test_env, client_env, env]:
 
     if env['internal_data']:
         env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
-
-    if env["PLATFORM"] == "win32":
-        env["pool_alloc"] = False
 
     if have_X:
         env.Append(CPPDEFINES = "_X11")

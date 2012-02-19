@@ -1310,11 +1310,7 @@
     <ClCompile Include="..\..\src\formula_function.cpp" />
     <ClCompile Include="..\..\src\formula_string_utils.cpp" />
     <ClCompile Include="..\..\src\formula_tokenizer.cpp" />
-    <ClCompile Include="..\..\src\game.cpp">
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug (fast)|Win32'">DISABLE_POOL_ALLOC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">DISABLE_POOL_ALLOC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">DISABLE_POOL_ALLOC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
+    <ClCompile Include="..\..\src\game.cpp" />
     <ClCompile Include="..\..\src\game_controller.cpp" />
     <ClCompile Include="..\..\src\game_controller_abstract.cpp" />
     <ClCompile Include="..\..\src\game_controller_new.cpp" />

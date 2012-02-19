@@ -35,11 +35,6 @@ libwesnoth_core_sources = Split("""
     serialization/validator.cpp
     tools/schema/tag.cpp
     """)
-if env["pool_alloc"]:
-    libwesnoth_core_sources.extend(Split("""
-        malloc.c
-        poolalloc.c
-        """))
 
 libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
 
@@ -483,7 +478,7 @@ def WesnothProgram(env, target, source, can_build, **kw):
 for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
-game_cpp = client_env.Object("game.cpp", EXTRA_DEFINE = not env["pool_alloc"] and "DISABLE_POOL_ALLOC" or None);
+game_cpp = client_env.Object("game.cpp");
 
 wesnoth_objects = [game_cpp, libwesnoth_extras, libwesnoth_core, libwesnoth_sdl,
                    libwesnoth, env["wesnoth_res"]]

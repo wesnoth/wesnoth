@@ -76,7 +76,6 @@ option(ENABLE_SERVER "Enable compilation of server" ON)
 option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
-option(ENABLE_POOL_ALLOC "Enable custom pool malloc" OFF)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 
@@ -149,10 +148,6 @@ set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
 if(NOT WIN32)
 	add_definitions(-DWESNOTH_PATH=\\\"${DATADIR}\\\")
 endif(NOT WIN32)
-
-if(NOT ENABLE_POOL_ALLOC OR WIN32)
-	add_definitions(-DDISABLE_POOL_ALLOC)
-endif(NOT ENABLE_POOL_ALLOC OR WIN32)
 
 if(X11_FOUND)
 	add_definitions(-D_X11)

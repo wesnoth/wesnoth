@@ -223,14 +223,6 @@ set(libwesnoth-core_STAT_SRC
 	${REVISION_FILE}
 )
 
-if(ENABLE_POOL_ALLOC AND NOT WIN32)
-	set(libwesnoth-core_STAT_SRC
-		${libwesnoth-core_STAT_SRC}
-		malloc.c
-		poolalloc.c
-	)
-endif(ENABLE_POOL_ALLOC AND NOT WIN32)
-
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
 add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
