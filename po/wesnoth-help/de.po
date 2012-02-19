@@ -4,13 +4,14 @@
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012
 #  Gerfried Fuchs <rhonda@deb.at>, 2005, 2006, 2010
+#  Marcel Miebach <marcel_miebach AT gmx DOT de>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:45+0100\n"
-"PO-Revision-Date: 2012-01-21 16:53+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"POT-Creation-Date: 2012-02-18 14:42+0100\n"
+"PO-Revision-Date: 2012-02-19 01:04+0100\n"
+"Last-Translator: Marcel Miebach <marcel_miebach AT gmx DOT de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -174,11 +175,14 @@ msgid ""
 "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
 "Fighter'</ref>."
 msgstr ""
+"Eine der verschiedenen Varianten des Draken: Entweder ein "
+"<ref>dst='unit_Drake Clasher' text='Drakenschmetterer'</ref> oder ein "
+"<ref>dst='unit_Drake Fighter' text='Drakenkämpfer'</ref>."
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
 msgid "Aerie"
-msgstr ""
+msgstr "Bau"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
@@ -187,11 +191,14 @@ msgid ""
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
+"Ein sehr großes, schlossähnliches Gebilde, welches die Heimat eines "
+"<ref>dst='flight' text='Schwarms'</ref> darstellt. Es enthält außerdem die "
+"<ref>dst='breeding_pen' text='Brutstätte'</ref> des Schwarms."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
 msgid "Breeding Pen"
-msgstr ""
+msgstr "Brutstätte"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
@@ -200,25 +207,31 @@ msgid ""
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
 "text='Dominant'</ref>’s eye."
 msgstr ""
+"Der Bereich des <ref>dst='aerie' text='Baus'</ref>, in dem die "
+"<ref>dst='breeder' text='Brutmütter'</ref> unter den wachsamen Augen des "
+"<ref>dst='dominant' text='Herrschers'</ref> leben."
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
 msgid "Breeding Cycle"
-msgstr ""
+msgstr "Brutzyklus"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:26
+#, fuzzy
+#| msgid ""
+#| "The time that passes between one <ref>dst='egg' text='egg'</ref> laying "
+#| "to the next."
 msgid ""
 "The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
 "next."
 msgstr ""
+"Die Zeit, die zwischen zwei <ref>dst='egg' text='Ei'</ref>ablagen vergeht."
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
-#, fuzzy
-#| msgid "Great Ocean"
 msgid "World Ocean"
-msgstr "Der Große Ozean"
+msgstr "Der Weltenozean"
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:32
@@ -227,13 +240,15 @@ msgid ""
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
 "the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
 msgstr ""
+"Der Weltenozean ist der Name des offenen Meeres, der die Inselgruppe "
+"<ref>dst='morogor' text='Morogor'</ref> umgibt. Die Draken glauben, dass er "
+"am <ref>dst='abyss' text='Abgrund'</ref> endet, einem riesigen, tödlichen "
+"Wasserfall."
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
-#, fuzzy
-#| msgid "Great Continent"
 msgid "New Continent"
-msgstr "Der Große Kontinent"
+msgstr "Der Neue Kontinent"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
@@ -241,11 +256,14 @@ msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
+"Der große Kontinent östlich der Inselkette <ref>dst='morogor' "
+"text='Morogor'</ref>. Seine Existenz war den Draken bis zum Schwarm von "
+"Galun unbekannt."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
 msgid "Abyss"
-msgstr ""
+msgstr "Der Abgrund"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:44
@@ -253,11 +271,13 @@ msgid ""
 "In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
 "falls off the world-disc."
 msgstr ""
+"In der Kosmologie der Draken ein riesiger, tödlicher Wasserfall, an dem die "
+"Wassermassen des Ozeans über die Ränder der Erdscheibe strömen."
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
 msgid "Spiral Path"
-msgstr ""
+msgstr "Der Gewundene Weg"
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:50
@@ -266,11 +286,14 @@ msgid ""
 "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
 "Path'</ref>"
 msgstr ""
+"Eine nur halbwegs geheime Organisation von Draken, die sich dem Ziel widmen, "
+"einen endgültigen malthusianischen Krieg zu verhindern. Siehe auch den "
+"<ref>dst='straight_path' text='Direkten Weg'</ref>."
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:55
 msgid "Straight Path"
-msgstr ""
+msgstr "Der Direkte Weg"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:56
@@ -279,11 +302,14 @@ msgid ""
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
+"Die drakische Tradition der unaufhörlichen Ausbreitung und Eroberung. Dieser "
+"Ausdruck wird überwiegend von Mitgliedern des <ref>dst='spiral_path' "
+"text='Gewundenen Weges'</ref> verwendet."
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
 msgid "Dominant"
-msgstr ""
+msgstr "Herrscher"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
@@ -293,11 +319,16 @@ msgid ""
 "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
 "privileges on others."
 msgstr ""
+"Der <ref>dst='aspirant' text='Anwärter'</ref>, der sich als drakischer "
+"Anführer herauskristallisiert. Er ist der einzige Drake des Stammes, dem es "
+"erlaubt ist, sich mit den <ref>dst='breeder' text='Brutmüttern'</ref> zu "
+"paaren. In seltenen Fällen kann es vorkommen, dass er dieses Recht an andere "
+"Draken weitergibt."
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
 msgid "Vulcaniad"
-msgstr ""
+msgstr "Vulkaniade"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
@@ -306,11 +337,15 @@ msgid ""
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
 "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
 msgstr ""
+"Der (unregelmäßige) Zeitraum zwischen aufeinanderfolgenden Eruptionen des "
+"<ref>dst='mount_morogor' text='Morogorberges'</ref>. Der Kalender der "
+"<ref>dst='long_count' text='Langen Zählung'</ref> basiert auf diesem "
+"Zeitraum."
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
 msgid "Recorder"
-msgstr ""
+msgstr "Chronist"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
@@ -320,27 +355,32 @@ msgid ""
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
 msgstr ""
+"Ein Chronist ist ein drakischer Wissenshüter. Er ist ein Experte der "
+"<ref>dst='drakish_script' text='drakischen Schrift</ref>. Chronisten sind "
+"die einzige <ref>dst='caste' text='Kaste'</ref> der Draken, deren Mitglieder "
+"nicht durch biologische Aspekte bestimmt werden: Sie setzen sich aus den "
+"Mitgliedern aller anderen Kasten zusammen."
 
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
 msgid "Laying"
-msgstr ""
+msgstr "Ablage"
 
 #. [topic]: id=laying
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
 msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr ""
+msgstr "Ein Abschnitt des <ref>dst='breeding_cycle' text='Brutzyklus'</ref>."
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
 msgid "Hatching"
-msgstr ""
+msgstr "Brutzeit"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
 msgid "Hatchling"
-msgstr ""
+msgstr "Brütling"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
@@ -349,11 +389,15 @@ msgid ""
 "the current generation of hatchlings are the most aggressive is the behavior "
 "of the <ref>dst='flight' text='flight'</ref>."
 msgstr ""
+"Ein Drake, der zur Brut der jüngsten Generation gehört. Es ist eine den "
+"Draken angeborene Verhaltensweise, dass die jüngsten Brütlinge der aktuellen "
+"Generation zu den aggressivsten Mitgliedern des <ref>dst='flight' "
+"text='Schwarms'</ref> zu zählen sind."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
 msgid "Fledgling"
-msgstr ""
+msgstr "Jüngling"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
@@ -362,11 +406,15 @@ msgid ""
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
+"Ein junger Drake, der bereits die Brut einer weiteren Generation miterlebt "
+"hat. Falls der <ref>dst='flight' text='Schwarm'</ref> den Verlust einer "
+"Generation verkraften kann, beginnen sie mit dem <ref>dst='swarming' "
+"text='Schwärmen'</ref>."
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
 msgid "Breeder"
-msgstr ""
+msgstr "Brutmutter"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:104
@@ -377,11 +425,18 @@ msgid ""
 "take care of their food for themselves when laying. Drake breeders become "
 "fertile after the next <ref>dst='hatching' text='hatching'</ref>."
 msgstr ""
+"Der weibliche Drake. Sie sind sehr selten, daher müssen <ref>dst='egg' "
+"text='Eier'</ref>, aus denen Brutmütter schlüpfen, besonders behutsam "
+"gepflegt werden. Begrenzt ist die Anzahl der Brutmütter zudem durch die "
+"Anzahl der männlichen Draken, da die weiblichen Draken sich während der "
+"Ablage nicht selbst um ihre Nahrung kümmern können. Drakische Brutmütter "
+"erreichen ihre Fruchtbarkeit nach der nächsten <ref>dst='hatching' "
+"text='Brutzeit'</ref>."
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:109
 msgid "Egg, Drake"
-msgstr ""
+msgstr "Ei, Drake"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:110
@@ -390,11 +445,15 @@ msgid ""
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid "
 "and to some extent the ambient temperature."
 msgstr ""
+"Die <ref>dst=caste text='Kaste'</ref>, zu der ein <ref>dst='hatchling' "
+"text='Brütling'</ref> gehören wird, ist vorherbestimmt durch die Zeit in der "
+"das Ei gelegt wurde und in einem gewissen Maß auch von der zu dieser Zeit "
+"vorherrschenden Umgebungstemperatur."
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
 msgid "Flight"
-msgstr ""
+msgstr "Schwarm"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
@@ -403,11 +462,14 @@ msgid ""
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
+"Stamm der Draken, der von einem <ref>dst='aerie' text='Bau'</ref> aus ein "
+"Jagdgebiet kontrolliert. Jeder Stamm hat einen <ref>dst='dominant' "
+"text='Herrscher'</ref>, der über die Paarungsprivilegien gebietet."
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:121
 msgid "Aspirant"
-msgstr ""
+msgstr "Anwärter"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
@@ -417,22 +479,28 @@ msgid ""
 "secretion of the hormone is caused by hunt and combat actions in which the "
 "drake is involved."
 msgstr ""
+"Männlicher Drake, der eine hormonelle Metamporphose durchlebt hat, die ihn "
+"in die Lage versetzt, sich mit einer <ref>dst='breeder' text='Brutmutter'</"
+"ref> zu paaren. Die Aussonderung des Hormons wird durch die Jagd- und "
+"Kampfhandlungen ausgelöst, in die der Drake verwickelt ist."
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:127
 msgid "Ascendant"
-msgstr ""
+msgstr "Aufgestiegener"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
+"Der drakische Name für einen wahren <ref>dst='unit_Fire Dragon' "
+"text='Drachen'</ref>."
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
 msgid "Intendant"
-msgstr ""
+msgstr "Intendant"
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:134
@@ -444,6 +512,12 @@ msgid ""
 "likeliest to be granted mating privileges, especially after a notable "
 "service."
 msgstr ""
+"Einer der <ref>dst='aspirant' text='Anwärter'</ref> Leutnants eines "
+"<ref>dst='dominant' text='Herrschers'</ref>. Traditionell untersteht ihm "
+"jeweils einer aus jeder <ref>dst=caste text='Kaste'</ref> außer der eigenen. "
+"Zusätzlich werden »Intendanten« gelegentlich für spezielle Aufgaben ernannt. "
+"Intendanten sind, insbesondere wenn sie eine bedeutende Aufgabe erfüllt "
+"haben, die wahrscheinlichsten Draken, die eine Paarungserlaubnis bekommen."
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
@@ -456,11 +530,14 @@ msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
+"Die <ref>dst='swarmlings' text='Schwarmlinge'</ref>, die den "
+"<ref>dst='aerie' text='Bau'</ref> verlassen haben um einen Eigenen zu "
+"gründen."
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
 msgid "Swarming"
-msgstr ""
+msgstr "Das Schwärmen"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -469,21 +546,26 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
+"Die Bildung eines <ref>dst='flight' text='Schwarms'</ref> für einen neuen "
+"Draken<ref>dst='aerie' text='bau'</ref>, die sich in jedem "
+"<ref>dst='breeding_cycle' text='Brutzyklus'</ref> wiederholt. Siehe "
+"<ref>dst='swarm' 'Schwarm'</ref>"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
 msgid "Runners"
-msgstr ""
+msgstr "Läufer"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:152
 msgid "Drakish term for escaped slaves hunted as game."
 msgstr ""
+"Drakischer Ausdruck für spielerisch gejagte Sklaven, die entflohen sind."
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
 msgid "Mount Morogor"
-msgstr ""
+msgstr "Der Morogorberg"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
@@ -491,11 +573,13 @@ msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Vulkanischer Berg auf der Hauptinsel der Inselkette <ref>dst='morogor' "
+"text='Morogor'</ref>."
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
 msgid "Long Count"
-msgstr ""
+msgstr "Die Lange Zählung"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
@@ -503,11 +587,13 @@ msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
+"Der drakische Kalender, basierend auf <ref>dst='vulcaniad' "
+"text='Vulkaniaden'</ref> und <ref>dst=breeding_cycle text='Brutzyklen'</ref>."
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
 msgid "Long Pig"
-msgstr ""
+msgstr "Langes Schwein"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:170
@@ -515,11 +601,14 @@ msgid ""
 "South Seas pidgin for human meat, used to translate a Drakish word with the "
 "same meaning."
 msgstr ""
+"Ein in den südlichen Meeren verbreiteter, umgangssprachlicher Ausdruck für "
+"menschliches Fleisch. Es wird als Übersetzung eines gleichbedeutenden, "
+"drakischen Wortes verwendet."
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
 msgid "Ceramics"
-msgstr ""
+msgstr "Keramiken"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
@@ -528,11 +617,15 @@ msgid ""
 "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
 "generate the amount of heat to cure the pieces to full strength."
 msgstr ""
+"Die Draken verarbeiten zwar auch Metall, wahre Meister sind sie aber in der "
+"Herstellung von Keramiken aller Art. Nur die <ref>dst='unit_Drake Burner' "
+"text='Flammendraken'</ref> sind in der Lage, genügend Hitze zu erzeugen, um "
+"Ton und Lehm vollständig aushärten zu lassen."
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:181
 msgid "Drakish, script"
-msgstr ""
+msgstr "Drakisch, Schrift"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
@@ -541,16 +634,19 @@ msgid ""
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
 "text='Recorder'</ref> vocation."
 msgstr ""
+"Die niedergeschriebene Sprache der Draken. Festgehalten auf "
+"<ref>dst='ceramic' text='Keramik'</ref>tafeln von Mitgliedern der "
+"<ref>dst='recorder' text='Chronisten'</ref>kaste."
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:187
 msgid "Drakish, language"
-msgstr ""
+msgstr "Drakisch, Sprache"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:188
 msgid "The language spoken by the drakes."
-msgstr ""
+msgstr "Die gesprochene Sprache der Draken."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -562,7 +658,7 @@ msgstr "Geographie"
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:25
 msgid "Arkan-thoria"
-msgstr "Arkan-thoria"
+msgstr "Arkan-Thoria"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
@@ -570,6 +666,8 @@ msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
+"Ein Fluss, der im <ref>dst='heart_mountains' text='Erzgebirge'</ref> "
+"entspringt und in östlicher Richtung in die Listra mündet."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:31
@@ -583,6 +681,10 @@ msgid ""
 "and all rivers eventually flow to it. Far to the west in the the Great Ocean "
 "is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Alle Flüsse münden in diesen westlich des <ref>dst='great_continent' "
+"text='Großen Kontinents'</ref> gelegenen Ozean. Weit im Westen des Großen "
+"Ozeans erstreckt sich die gewaltige Inselgruppe <ref>dst='morogor' "
+"text='Morogor'</ref>."
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:37
@@ -598,17 +700,25 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
+"Eine Inselkette, die sich irgendwo im <ref>dst='great_ocean' text='Großen "
+"Ozean'</ref>, westlich der <ref>dst='green_isle' text='Grünen Insel'</ref> "
+"und östlich des <ref>dst=old_continent text='Alten Kontinents'</ref> "
+"befindet.\n"
+"Sie ist größtenteils von <ref>dst='..race_drake' text='Draken'</ref> "
+"besiedelt.\n"
+"Die Hauptinsel der Inselkette wird auch »Morogor« genannt."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
 msgid "Green Isle"
-msgstr "Grüne Insel"
+msgstr "Die Grüne Insel"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Eine größere Insel im <ref>dst='great_ocean' text='Großen Ozean'</ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
@@ -621,6 +731,8 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Liegt westlich von <ref>dst='morogor' text='Morogor'</ref> jenseits des "
+"<ref>dst='great_ocean' text='Großen Ozeans'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:57
@@ -634,6 +746,9 @@ msgid ""
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Der Kontinent, auf dem das <ref>dst='kingdom_wesnoth' text='Königreich "
+"Wesnoth'</ref> liegt. Die westliche Küste grenzt an den "
+"<ref>dst='great_ocean' text='Großen Ozean'</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:63
@@ -648,6 +763,11 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
+"Der Name der Welt, in der sich das Königreich von <ref>dst='kingdom_wesnoth' "
+"text='Wesnoth'</ref> befindet, ist »Irdya«. Diese Bezeichnung wird "
+"allerdings in der Epoche, in der die Haupthandlung stattfindet, kaum "
+"verwendet. Die Leute nennen sie normalerweise nur „die Welt“ oder - poetisch "
+"ausgedrückt - „die weite grüne Welt“."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
@@ -789,7 +909,7 @@ msgstr ""
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr ""
+msgstr "Die Südwestlichen Elfenländer"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
@@ -810,7 +930,7 @@ msgstr ""
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:146
 msgid "Heart Mountains"
-msgstr "Erzgebierge"
+msgstr "Erzgebirge"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:147
@@ -819,11 +939,14 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
+"Eine nahezu unpassierbare Barriere zwischen dem Land am "
+"<ref>dst='arkan_thoria' text='Fluss'</ref> und den <ref>dst='far_north' "
+"text='nördlichen Ebenen'</ref>."
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
 msgid "Far North"
-msgstr ""
+msgstr "Der Weite Norden"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:176
@@ -4698,6 +4821,13 @@ msgid ""
 "especially when encountered in groups. Typically nocturnal, they are often "
 "kept (and occasionally tamed) by those who share their love of the night."
 msgstr ""
+"Fledermäuse kommen in vielerlei Gestalt vor und sind zum größten Teil "
+"harmlose Geschöpfe, die Insekten und anderes Kleingetier fressen. Die "
+"größeren und bösartigeren Rassen sind jedoch dafür bekannt, für Menschen und "
+"andere Völker sowie deren Vieh eine ernstzunehmende Bedrohung darzustellen – "
+"insbesondere wenn sie in Gruppen angetroffen werden. Die üblicherweise "
+"nachtaktiven Tiere werden häufig von denjenigen gefangen (und zuweilen sogar "
+"gezähmt), die deren Liebe zur Nacht teilen."
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
@@ -5243,6 +5373,11 @@ msgid ""
 "intelligent being. Most mechanical things neither move nor think on their "
 "own, but some do so as a result of magical enchantment."
 msgstr ""
+"<italic>text='Kriegsgerät'</italic> beschreibt ein weder auf natürlichem "
+"Wege noch durch nekromantische Einflüsse animiertes Artefakt, das von einem "
+"intelligenten Lebewesen erschaffen wurde.Die meisten Kriegsgeräte können "
+"sich weder selbstständig bewegen noch denken. Einigen ist dies als Resultat "
+"einer magische Verzauberung jedoch möglich."
 
 #. [race]: id=merman
 #: data/core/units.cfg:208
@@ -5295,6 +5430,10 @@ msgid ""
 "wilderness, ocean depths, and other climes of the world. They figure largely "
 "in the tales and nightmares of its denizens, as well."
 msgstr ""
+"Der Begriff »Monster« fasst viele abscheuliche Bestien zusammen, die in "
+"Höhlen, in der Wildnis, in den Meerestiefen und in anderen Gefilden der Welt "
+"herumgeistern. Außerdem treten sie überwiegend in den Märchen und Alpträumen "
+"ihrer Bewohner auf."
 
 #. [race]: id=naga
 #: data/core/units.cfg:230
