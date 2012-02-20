@@ -30,6 +30,8 @@
 
 #include <cmath>
 
+#include "global.hpp"
+
 #define FLOATING_POINT_EMULATION_RANGE_CHECK do {} while(0)
 
 namespace floating_point_emulation {
