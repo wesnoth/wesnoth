@@ -11,8 +11,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-manual_1.5\n"
-"POT-Creation-Date: 2012-02-18 13:14+0100\n"
-"PO-Revision-Date: 2012-01-03 09:49+0100\n"
+"POT-Creation-Date: 2012-02-18 14:42+0100\n"
+"PO-Revision-Date: 2012-02-20 11:02+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "Language: hu\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.4\n"
 
 # type: Attribute 'lang' of: <book>
 #. type: Attribute 'lang' of: <book>
@@ -2141,13 +2141,6 @@ msgstr "Terv előrehozása a listán"
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth-1.10/doc/manual/manual.en.xml:1307
-#, fuzzy
-#| msgid ""
-#| "Each side is given some amount of gold to begin with, and receives 2 gold "
-#| "pieces per turn, plus 2 more gold pieces for every village that side "
-#| "controls. In a campaign, starting gold is the greater of 80% of the gold "
-#| "you ended the previous scenario with, and a minimum amount defined by the "
-#| "scenario, which is typically lower as the difficulty level increases."
 msgid ""
 "Each side is given some amount of gold to begin with, and receives 2 gold "
 "pieces per turn, plus 2 more gold pieces for every village that side "
@@ -2157,13 +2150,14 @@ msgid ""
 "scenario played. The exact percentage depends on the scenario and is usually "
 "displayed as part of the scenario objectives."
 msgstr ""
-"Minden játékos azonos mennyiségű aranyat kap kezdéskor. Az alapbevétel "
-"körönként 2 arany, melyhez minden elfoglalt falu után további 2 arany "
-"adódik. A hadjáratokban a kezdéskor kapott arany az előző küldetés végén a "
-"kincstáradban lévő arany legalább 80%-a, de egy előre meghatározott "
-"minimális összeget akkor is kapsz, ha nem volt annyi aranyad. A minimális "
-"kezdőösszeg általában a hadjárat nehézségi szintjének növekedésével "
-"párhuzamosan csökken."
+"Minden játékos azonos mennyiségű aranyat kap kezdéskor, valamintkörönként 2 "
+"arany bevételt, amelyhez minden elfoglalt falu után további 2 arany adódik. "
+"A hadjáratokban a kezdéskor egy előre beállított minimális összegű aranyat "
+"kapsz, amely kezdőösszeg rendszerint a hadjárat nehézségi szintjének "
+"növekedésével párhuzamosan csökken. Ehhez általában még hozzáadódik a "
+"korábbi pálya végén összegyűjtött aranyad egy bizonyos százaléka. A "
+"továbbviteli arány az adott pálya beállításain múlik, és legtöbbször a pálya "
+"céljainak leírásában is megtalálható."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth-1.10/doc/manual/manual.en.xml:1315
