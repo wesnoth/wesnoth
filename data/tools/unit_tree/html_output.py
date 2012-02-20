@@ -213,7 +213,7 @@ class HTMLOutput:
                 breadth += tree.breadth
 
         thelist = groups.keys()
-        thelist.sort()
+        thelist.sort(key = lambda x: grouper.group_name(x))
 
         rows_count = breadth + len(thelist)
         # Create empty grid.

@@ -218,6 +218,9 @@ def process_campaign_or_era(addon, cid, define, batchlist):
         else:
             wesnoth.parser.parse_text("{core}{~add-ons}", "SKIP_CORE," + define)
             wesnoth.add_units(cid)
+    
+    if addon == "mainline" and cid == "mainline":
+        write_animation_statistics(wesnoth)
 
     wesnoth.add_binary_paths(addon, image_collector)
 
@@ -325,9 +328,9 @@ def write_unit_ids_UNUSED():
     f.write("</body></html>")
     f.close()
 
-def write_animation_statistics_UNUSED():
+def write_animation_statistics(wesnoth):
     # Write animation statistics
-    f = MyFile(os.path.join(options.output, "animations.html"), "w")
+    f = html_output.MyFile(os.path.join(options.output, "animations.html"), "w")
     animations.write_table(f, wesnoth)
     f.close()
 
