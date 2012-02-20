@@ -1,7 +1,7 @@
-# #-#-#-#-#  wesnoth-editor.cpp.pot (wesnoth VERSION)  #-#-#-#-#
-# Ukrainian translations for wesnoth package.
+# #-#-#-#-#  wesnoth-editor.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
+# Ukrainian translations for PACKAGE package.
 # Copyright (C) 2012 Wesnoth development team
-# This file is distributed under the same license as the wesnoth package.
+# This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2012.
 #
 msgid ""
@@ -24,92 +24,92 @@ msgstr ""
 #. [brush]
 #: data/core/editor/brushes.cfg:5
 msgid "Single Hex"
-msgstr ""
+msgstr "Одиночне поле"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:15
 msgid "Radius 1 Hex"
-msgstr ""
+msgstr "Радіус 1 поле"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:25
 msgid "Radius 2 Hex"
-msgstr ""
+msgstr "Радіус 2 поля"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr ""
+msgstr "Діагональ Пн.Зх.-Пд.Сх."
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
 msgid "all"
-msgstr ""
+msgstr "все"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:16
 msgid "water"
-msgstr ""
+msgstr "вода"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:23
 msgid "flat"
-msgstr ""
+msgstr "рівнина"
 
 #. [editor_group]: id=desert
 #: data/core/editor/terrain-groups.cfg:30
 msgid "desert"
-msgstr ""
+msgstr "пустеля"
 
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
 msgid "embellishments"
-msgstr ""
+msgstr "прикраси"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:44
 msgid "forest"
-msgstr ""
+msgstr "ліс"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:51
 msgid "frozen"
-msgstr ""
+msgstr "мерзлота"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:58
 msgid "rough"
-msgstr ""
+msgstr "нерівності"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:65
 msgid "cave"
-msgstr ""
+msgstr "печери"
 
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "obstacle"
-msgstr ""
+msgstr "перешкоди"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:79
 msgid "village"
-msgstr ""
+msgstr "село"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:86
 msgid "castle"
-msgstr ""
+msgstr "замок"
 
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:93
 msgid "bridge"
-msgstr ""
+msgstr "міст"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:100
 msgid "special"
-msgstr ""
+msgstr "особливе"
 
 #. [editor_tool_hint]: id=editor-tool-paint
 #. [editor_tool_hint]: id=editor-tool-fill
@@ -121,6 +121,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Використовуйте ліву/праву кнопку миші, щоб малювати передній/задній "
+"ландшафт. Тримайте Shift щоб малювати лише на базовому шарі. Ctrl+клік "
+"вибирає ландшаф, по якому ви клікнете."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -129,6 +132,9 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
+"Ліва кнопка миші служить для вибору, права - для відміни. Утримуйте Shift і "
+"клікніть по клітинці, щоб вибрати клітинки з таким же ландшафтом ('чарівна "
+"паличка')."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -138,6 +144,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Лівий клік мишою щоб обрати гравця, правий клік мишою, щоб стерти. Цифрові "
+"клавіші переміщують до початкових позицій, Alt+цифрова клавиша встановлює "
+"відповідну початкову позицію під курсором, Delete стирає."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -145,134 +154,145 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
+"Клацніть мишою для вставки, зменшуйте великі області перед вставкою, для "
+"більшоїточності. Використовуйте меню «Редагування» для того, щоб змінити "
+"(повернути,  відобразити) вміст буферу обміну."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor.cfg:122
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 #. [menu]: id=menu-editor-edit
 #: data/themes/editor.cfg:133
 msgid "Edit"
-msgstr ""
+msgstr "Редагування"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:143
 msgid "Map"
-msgstr ""
+msgstr "Карта"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:153
 msgid "Window"
-msgstr ""
+msgstr "Вікно"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:272
 msgid "villages"
-msgstr ""
+msgstr "села"
 
 #: src/editor/editor_controller.cpp:132
 msgid "Quit Editor"
-msgstr ""
+msgstr "Вихід з редактора"
 
 #: src/editor/editor_controller.cpp:286
 msgid "Fatal error"
-msgstr ""
+msgstr "Фатальна помилка"
 
 #: src/editor/editor_controller.cpp:311 src/editor/editor_controller.cpp:1098
 msgid "(New Map)"
-msgstr ""
+msgstr "(Нова Карта)"
 
 #: src/editor/editor_controller.cpp:317
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Ви точно хочете вийти?"
 
 #: src/editor/editor_controller.cpp:319
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
+"Ви точно хочете вийти? Зміни, внесені після останнього збереження будуть "
+"втрачені."
 
 #: src/editor/editor_controller.cpp:321
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
+"Ви точно хочете вийти? Наступні карти були змінені, і всі зміни, внесені "
+"післяостаннього їх збереження будуть втрачені:"
 
 #: src/editor/editor_controller.cpp:326
 msgid "Quit"
-msgstr ""
+msgstr "Вийти"
 
 #: src/editor/editor_controller.cpp:391
 msgid "No editor time-of-day found."
-msgstr ""
+msgstr "Редактора часу доби не знайдено."
 
 #: src/editor/editor_controller.cpp:412
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
+"Ви дійсно хочете відкинути всі зміни, які внесли від часу останнього "
+"збереження карти?"
 
 #: src/editor/editor_controller.cpp:412
 msgid "Unsaved Changes"
-msgstr ""
+msgstr "Незбережені зміни"
 
 #: src/editor/editor_controller.cpp:434
 msgid "Choose a Map to Open"
-msgstr ""
+msgstr "Оберіть, яку карту відкрити"
 
 #: src/editor/editor_controller.cpp:468
 msgid "Save the Map As"
-msgstr ""
+msgstr "Зберегти карту як"
 
 #: src/editor/editor_controller.cpp:471
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Файл вже існує. Перезаписати його?"
 
 #: src/editor/editor_controller.cpp:488
 msgid "No random map generators found."
-msgstr ""
+msgstr "Генератора випадкових карт не знайдено."
 
 #: src/editor/editor_controller.cpp:501 src/editor/editor_controller.cpp:505
 msgid "Map creation failed."
-msgstr ""
+msgstr "Невдалося створити карту."
 
 #: src/editor/editor_controller.cpp:520
 msgid "Choose a Mask to Apply"
-msgstr ""
+msgstr "Оберіть, яку маску застосувати"
 
 #: src/editor/editor_controller.cpp:527
 msgid "Error loading mask"
-msgstr ""
+msgstr "Помилка при завантаженні маски"
 
 #: src/editor/editor_controller.cpp:542
 msgid "Choose Target Map"
-msgstr ""
+msgstr "Оберіть цільову карту"
 
 #: src/editor/editor_controller.cpp:549 src/editor/editor_controller.cpp:739
 msgid "Error loading map"
-msgstr ""
+msgstr "Помилка при завантаженні карти"
 
 #: src/editor/editor_controller.cpp:653 src/editor/editor_controller.cpp:695
 msgid "This map is already open."
-msgstr ""
+msgstr "Ця карта вже відкрита."
 
 #: src/editor/editor_controller.cpp:674
 msgid "Map saved."
-msgstr ""
+msgstr "Карту збережено."
 
 #: src/editor/editor_controller.cpp:718
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Вбудовані в карту дані завантажено"
 
 #: src/editor/editor_controller.cpp:719 src/editor/editor_controller.cpp:733
 msgid "Map loaded from scenario"
-msgstr ""
+msgstr "Карту завантажено з сценарію"
 
 #: src/editor/editor_controller.cpp:729
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Завантажено по посиланню файл карти:\n"
+"$new"
 
 #: src/editor/editor_controller.cpp:1128
 msgid "Undo"
@@ -280,82 +300,84 @@ msgstr ""
 
 #: src/editor/editor_controller.cpp:1130
 msgid "Can’t Undo"
-msgstr ""
+msgstr "Скасувати"
 
 #: src/editor/editor_controller.cpp:1134
 msgid "Redo"
-msgstr ""
+msgstr "Повторити"
 
 #: src/editor/editor_controller.cpp:1136
 msgid "Can’t Redo"
-msgstr ""
+msgstr "Неможу повторити"
 
 #: src/editor/editor_controller.cpp:1141
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
+msgstr "Автооновлення переходів ландшафтів: Так"
 
 #: src/editor/editor_controller.cpp:1144
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "Автооновлення переходів ландшафтів: Частково"
 
 #: src/editor/editor_controller.cpp:1148
 msgid "Auto-update Terrain Transitions: No"
-msgstr ""
+msgstr "Автооновлення переходів ландшафтів: Ні"
 
 #: src/editor/editor_map.cpp:150
 msgid "Player"
-msgstr ""
+msgstr "Гравець"
 
 #: src/editor/editor_map.cpp:257
 msgid "The size of the target map is different from the current map"
-msgstr ""
+msgstr "Розмір цільової карти відрізняється від розміру поточної"
 
 #: src/editor/editor_palettes.cpp:503
 msgid "(non-core)"
-msgstr ""
+msgstr "(не базові)"
 
 #: src/editor/editor_palettes.cpp:504
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "Просто так в грі не буде працювати"
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG: "
-msgstr ""
+msgstr "ПП:"
 
 #: src/editor/editor_palettes.cpp:533
 msgid "BG: "
-msgstr ""
+msgstr "Фон"
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"
-msgstr ""
+msgstr "Файл не знайдено"
 
 #: src/editor/map_context.cpp:85
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
+"Файл карти схожий на сценарій, але значення map_data не вказує на існуючий "
+"файл"
 
 #: src/editor/map_context.cpp:100
 msgid "Empty map file"
-msgstr ""
+msgstr "Файл карти порожній"
 
 #: src/editor/map_context.cpp:220
 msgid "Could not save into scenario"
-msgstr ""
+msgstr "Неможливо зберегти в сценарію"
 
 #: src/editor/map_context.cpp:227
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Неможливо зберегти карту: $msg"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
 msgid "player^None"
-msgstr ""
+msgstr "Нема"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "Гравець $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"
-msgstr ""
+msgstr "Власні налаштування"
