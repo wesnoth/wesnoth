@@ -223,7 +223,6 @@ wesnoth_sources = Split("""
     formula_function.cpp
     formula_string_utils.cpp
     formula_tokenizer.cpp
-    game.cpp
     game_controller.cpp
     game_controller_abstract.cpp
     game_controller_new.cpp
@@ -479,7 +478,7 @@ def WesnothProgram(env, target, source, can_build, **kw):
 for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
-wesnoth_objects = [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl,
+wesnoth_objects = ["game.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth_sdl,
                    libwesnoth, env["wesnoth_res"]]
 if env["host"] in ["x86_64-nacl", "i686-nacl"]:
     wesnoth_objects += [SConscript("nacl/SConscript")]
