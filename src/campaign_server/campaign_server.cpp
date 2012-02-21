@@ -443,51 +443,8 @@ namespace {
 							network::send_data(construct_error("Add-on rejected: The add-on contains an illegal file or directory name."
 									" File or directory names may not contain any of the following characters: '/ \\ : ~'"), sock);
 						} else if (campaign && (*campaign)["passphrase"].str() != upload["passphrase"]) {
-							// the user password failed, now test for the master password, in master password
-							// mode the upload behaves different since it's only intended to update translations.
-							// In a later version the translations will be separated from the addon.
-							LOG_CS << "Upload is admin upload.\n";
-							if (!campaigns()["master_password"].empty()
-							    && campaigns()["master_password"].str() == upload["passphrase"])
-							{
-								std::string message = "Add-on accepted.";
-
-								if (!version_info(upload["version"]).good()) {
-									message += "\n#Note: The version you specified is invalid. This addon will be ignored for automatic update checks.";
-								}
-
-								std::string filename = (*campaign)["filename"];
-								data["title"] = (*campaign)["title"];
-								data["name"] = "";
-								data["campaign_name"] = (*campaign)["name"];
-								data["author"] = (*campaign)["author"];
-								data["description"] = (*campaign)["description"];
-								data["version"] = (*campaign)["version"];
-								data["timestamp"] = (*campaign)["timestamp"];
-								data["icon"] = (*campaign)["icon"];
-								data["translate"] = (*campaign)["translate"];
-								data["type"] = (*campaign)["type"];
-								(*campaign).clear_children("translation");
-								find_translations(data, *campaign);
-
-								add_license(data);
-								{
-									scoped_ostream campaign_file = ostream_file(filename);
-									config_writer writer(*campaign_file, true, compress_level_);
-									writer.write(data);
-								}
-//								write_compressed(*campaign_file, *data);
-
-								(*campaign)["size"] = lexical_cast<std::string>(
-										file_size(filename));
-								scoped_ostream cfgfile = ostream_file(file_);
-								write(*cfgfile, cfg_);
-								network::send_data(construct_message(message), sock);
-
-							} else {
-								LOG_CS << "Upload aborted - incorrect passphrase.\n";
-								network::send_data(construct_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect."), sock);
-							}
+							LOG_CS << "Upload aborted - incorrect passphrase.\n";
+							network::send_data(construct_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect."), sock);
 						} else {
 							LOG_CS << "Upload is owner upload.\n";
 							std::string message = "Add-on accepted.";
