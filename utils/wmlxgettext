@@ -22,8 +22,14 @@ GetOptions ('directory=s' => \$toplevel,
 
 $domain = $initialdomain unless defined $domain;
 
-our $module = dirname ($0) . "/wmltrans.pm";
-eval "require \"$module\";";
+our $localdir;
+BEGIN {
+    use File::Spec::Functions qw(rel2abs);
+    $localdir = dirname ($0);
+    $localdir = rel2abs($localdir);
+}
+use lib "$localdir";
+require "wmltrans.pm";
 
 ## extract strings with their refs and node info into %messages
 
