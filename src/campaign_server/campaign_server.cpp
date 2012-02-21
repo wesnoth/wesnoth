@@ -435,6 +435,9 @@ namespace {
 						} else if (upload["description"].empty()) {
 							LOG_CS << "Upload aborted - no add-on description specified.\n";
 							network::send_data(construct_error("Add-on rejected: You did not specify a description of the add-on in the pbl file!"), sock);
+						} else if (upload["email"].empty()) {
+							LOG_CS << "Upload aborted - no add-on email specified.\n";
+							network::send_data(construct_error("Add-on rejected: You did not specify your email address in the pbl file!"), sock);
 						} else if (!check_names_legal(data)) {
 							LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
 							network::send_data(construct_error("Add-on rejected: The add-on contains an illegal file or directory name."
