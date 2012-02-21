@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-21 01:45+0100\n"
-"PO-Revision-Date: 2012-01-21 23:23+0200\n"
+"PO-Revision-Date: 2012-02-21 04:17+0200\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
 #: data/core/macros/schedules.cfg:78
 msgid "Underground"
-msgstr "Maan alla"
+msgstr "ikMaan alla"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:820
@@ -183,8 +183,8 @@ msgid ""
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
-"Suuri, linnamainen rakennus, jossa <ref>dst='flight' text='parvi'</ref> "
-"asuu. Sisältää <ref>dst='breeding_pen' text='siitoskarsinat'</ref>."
+"Suuri, linnamainen rakennus, jossa <ref>dst='flight' text='draakkilentue'</"
+"ref> asuu. Sisältää <ref>dst='breeding_pen' text='siitoskarsinat'</ref>."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
@@ -243,7 +243,7 @@ msgid ""
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
 "Uusi Manner sijaitsee <ref>dst='morogor' text='Morogorista'</ref> itään. Sen "
-"olemassaoloa ei tiedetty ennen Galunin parvea."
+"olemassaoloa ei tiedetty ennen Galunin lentuetta."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
@@ -367,7 +367,10 @@ msgid ""
 "A young drake that has not yet seen another generation hatch. The younger of "
 "the current generation of hatchlings are the most aggressive is the behavior "
 "of the <ref>dst='flight' text='flight'</ref>."
-msgstr "Nuori draakki, joka ei ole nähnyt toisen sukupolven kuoriutumista."
+msgstr ""
+"Nuori draakki, joka ei ole nähnyt toisen sukupolven kuoriutumista. He ovat "
+"yleensä <ref>dst='flight' text='lentueensa'</ref> aggressiivisimpia "
+"yksilöitä."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
@@ -382,8 +385,8 @@ msgid ""
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
 "Nuori draakki, joka on nähnyt toisen sukupolven kuoriutumisen. Jos "
-"<ref>dst='flight' text='parvi'</ref> voi menettää sukupolven, he aloittavat "
-"<ref>dst='swarming' text='parveilun'</ref>."
+"<ref>dst='flight' text='lentue'</ref> voi menettää yhden sukupolven, he "
+"aloittavat <ref>dst='swarming' text='parveilun'</ref>."
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
@@ -425,7 +428,7 @@ msgstr ""
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
 msgid "Flight"
-msgstr "Parvi"
+msgstr "Lentue"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
@@ -516,9 +519,9 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
-"<ref>dst='flight' text='Parvi'</ref>, joka suuntaa uutta <ref>dst='aerie' "
-"text='pesää'</ref> kohti, toistuen joka <ref>dst='breeding_cycle' "
-"text='munintakaudella'</ref>."
+"<ref>dst='flight' text='Lentue'</ref> suuntaa uutta <ref>dst='aerie' "
+"text='pesää'</ref> kohti. Lento uusitaan joka <ref>dst='breeding_cycle' "
+"text='munintakaudella'</ref>. Katso myös <ref>dst='swarm' text='parvi'</ref>"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
