@@ -19,10 +19,37 @@
  *
  * Depending on some compiler switches the code can use floating point code or
  * fixed point code. The code is still work-in-progress.
+ *
+ * At the moment three emulation modi are supported:
+ * * A 32-bit signed integer, shifted 8 bits.
+ * * A @c double, not shifted.
+ * * A @c double, shifted 8 bits (for debugging).
+ *
+ * There are several define's to control the compilation.
+ *
+ * FLOATING_POINT_EMULATION_USE_SCALED_INT
+ * When this macro is defined the @ref tfloat is defined as the 32-bit scaled
+ * integer. If not the @tfloat is defined as a @c double, whether or not the
+ * value is shifted depends on @c FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK.
+ *
+ * FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK
+ * This macro can only be defined if @c FLOATING_POINT_EMULATION_USE_SCALED_INT
+ * is not defined. This macro shifts the @c doubles so it can be checked
+ * against the range of the scaled int. (It would have been possible to scale
+ * the validation range as well, but this feels easier to check.)
+ *
+ * FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK_THROW
+ * This macro can only be defined if
+ * @c FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK is defined. Instead of
+ * printing a warning and then go on it throws an exception if the range check
+ * fails. This is intended to aid debugging and should not be enabled in
+ * production code.
  */
 
 #ifndef FLOATING_POINT_EMULATION_HPP_INCLUDED
 #define FLOATING_POINT_EMULATION_HPP_INCLUDED
+
+#include "global.hpp"
 
 #include <SDL_types.h>
 
@@ -30,9 +57,51 @@
 
 #include <cmath>
 
-#include "global.hpp"
+//#define FLOATING_POINT_EMULATION_USE_SCALED_INT
 
-#define FLOATING_POINT_EMULATION_RANGE_CHECK do {} while(0)
+//#define FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK
+//#define FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK_THROW
+
+#ifdef FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK_THROW
+#ifndef FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK
+#error FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK_THROW requires            \
+	FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK
+#endif
+#include <stdexcept>
+#define FLOATING_POINT_EMULATION_RANGE_CHECK_THROW                           \
+	do {                                                                     \
+		throw std::range_error("");                                          \
+	} while(0)
+#else
+#define FLOATING_POINT_EMULATION_RANGE_CHECK_THROW                           \
+	do {                                                                     \
+	} while(0)
+#endif
+
+#ifdef FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK
+#ifdef FLOATING_POINT_EMULATION_USE_SCALED_INT
+#error FLOATING_POINT_EMULATION_USE_SCALED_INT and                           \
+	FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK are mutually exclusive.
+#endif
+#include <iostream>
+#define FLOATING_POINT_EMULATION_RANGE_CHECK                                 \
+	do {                                                                     \
+		if(value_ >= 2147483648.0) {                                         \
+			std::cerr << "Positive overflow »" << value_                     \
+					<< "« as double »" << to_double() <<"« .\n";             \
+			FLOATING_POINT_EMULATION_RANGE_CHECK_THROW;                      \
+		}                                                                    \
+		if(value_ < -2147483648.0) {                                         \
+			std::cerr << "Negative overflow »" << value_                     \
+					<< "« as double »" << to_double() <<"« .\n";             \
+			FLOATING_POINT_EMULATION_RANGE_CHECK_THROW;                      \
+		}                                                                    \
+	} while(0)
+#else
+#define FLOATING_POINT_EMULATION_RANGE_CHECK                                 \
+	do {                                                                     \
+	} while(0)
+#endif
 
 namespace floating_point_emulation {
 
@@ -676,6 +745,15 @@ floor(tfloat<T, S> lhs)
 
 } // namespace floating_point_emulation
 
-typedef floating_point_emulation::tfloat<double, 0> tfloat;
+
+#ifdef FLOATING_POINT_EMULATION_USE_SCALED_INT
+typedef floating_point_emulation::tfloat<Sint32, 8> tfloat;
+#else
+#ifdef FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK
+	typedef floating_point_emulation::tfloat<double, 8> tfloat;
+#else
+	typedef floating_point_emulation::tfloat<double, 0> tfloat;
+#endif
+#endif
 
 #endif
