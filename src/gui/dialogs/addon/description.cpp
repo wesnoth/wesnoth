@@ -80,17 +80,17 @@ REGISTER_DIALOG(addon_description)
 taddon_description::taddon_description(const addon_info& addon)
 {
 	register_label("image", true, addon.icon);
-	register_label("title", true, addon.name);
+	register_label("title", true, addon.title);
 	register_label("version", true, addon.version);
 	register_label("author", true, addon.author);
-	register_label("size", true, addon.sizestr);
+	register_label("size", true, size_display_string(addon.size));
 	if(!addon.description.empty()) {
 		register_label("description", true, addon.description);
 	}
 
 	std::string languages;
 
-	foreach(const std::string& lc, addon.translations) {
+	foreach(const std::string& lc, addon.locales) {
 		const std::string& langlabel = langcode_to_string(lc);
 		if(!langlabel.empty()) {
 			if(!languages.empty()) {

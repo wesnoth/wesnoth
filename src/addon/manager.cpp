@@ -342,13 +342,13 @@ namespace {
 	class display_description : public gui::dialog_button_action
 	{
 		display& disp_;
-		std::vector<addon_info> infov_;
+		std::vector<addon_info> addons_;
 		gui::filter_textbox* filter_;
 
 	public:
-		display_description(display& disp, std::vector<addon_info> const& infov, gui::filter_textbox* filter)
+		display_description(display& disp, std::vector<addon_info> const& addons, gui::filter_textbox* filter)
 			: disp_(disp)
-			, infov_(infov)
+			, addons_(addons)
 			, filter_(filter)
 		{}
 
@@ -359,9 +359,9 @@ namespace {
 			if(menu_selection < 0) { return gui::CONTINUE_DIALOG; }
 			size_t const uchoice = static_cast<size_t>(menu_selection);
 
-			if(uchoice < infov_.size()) {
+			if(uchoice < addons_.size()) {
 				gui2::taddon_description::display(
-						  infov_[uchoice]
+						  addons_[uchoice]
 						, disp_.video());
 			}
 
@@ -409,21 +409,6 @@ namespace {
 			} else {
 				i = dirs.erase(i);
 			}
-		}
-	}
-
-	/**
-	 * Creates a more human-readable representation of a file size.
-	 *
-	 * @returns        Representation of file size in the biggest byte multiply
-	 *                 possible.
-	 */
-	static std::string format_file_size(double size)
-	{
-		if(size > 0.0) {
-			return utils::si_string(size, true, _("unit_byte^B"));
-		} else {
-			return "";
 		}
 	}
 
@@ -579,7 +564,7 @@ namespace {
 					const std::string& type = c["type"];
 					const std::string& name = c["name"];
 					int size = c["size"];
-					std::string sizef = format_file_size(size);
+					std::string sizef = size_display_string(size);
 					const std::string& version = remote_version_map[name];
 
 					std::string author = c["author"];
@@ -780,7 +765,7 @@ namespace {
 
 			const std::string& name = c["name"];
 			int size = c["size"];
-			std::string sizef = format_file_size(size);
+			std::string sizef = size_display_string(size);
 			const std::string& oldver = safe_local_versions[i];
 			const std::string& newver = remote_version_map[name];
 
@@ -992,6 +977,8 @@ namespace {
 				return;
 			}
 
+			std::vector<addon_info> parsed_list;
+
 			// column contents
 			std::vector<std::string> addons, titles, versions, uploads, types, options, options_to_filter, descriptions;
 			std::vector<int> sizes;
@@ -1007,28 +994,32 @@ namespace {
 
 			std::vector< std::string > delete_options;
 
-			std::vector< addon_info > infos;
-
 			foreach(const config &c, addon_cfgs)
 			{
+				parsed_list.push_back(c);
+
 				const std::string& name = c["name"];
+
+				// Fix icons in the parsed list itself so
+				// other codepaths can use the fix. This really
+				// needs to be hidden through a method of addon_info
+				// instead.
+				std::string icon = c["icon"];
+				do_addon_icon_fixups(icon, name);
+
+				parsed_list.back().icon = icon;
+
 				const std::string& downloads = c["downloads"].str();
 				int size = c["size"];
-				std::string sizef = format_file_size(size);
+				std::string sizef = size_display_string(size);
 				const std::string& type_str = c["type"];
 				const ADDON_TYPE type = get_addon_type(type_str);
 				const std::string& type_label_str = get_translatable_addon_type(type);
-
-				addon_info inf;
-
-				inf.sizestr = sizef;
 
 				addons.push_back(name);
 				versions.push_back(c["version"]);
 				uploads.push_back(c["uploads"]);
 				descriptions.push_back(c["description"]);
-
-				inf.description = c["description"].str();
 
 				types.push_back(type_str);
 
@@ -1043,20 +1034,10 @@ namespace {
 				}
 				titles.push_back(title);
 
-				inf.name = title;
-
 				std::string version = c["version"], author = c["author"];
-
-				inf.version = version;
-				inf.author = author;
 
 				//add negative sizes to reverse the sort order
 				sizes.push_back(-size);
-
-				std::string icon = c["icon"];
-				do_addon_icon_fixups(icon, name);
-
-				inf.icon = icon;
 
 				std::string text_columns =
 					title + COLUMN_SEPARATOR +
@@ -1083,13 +1064,6 @@ namespace {
 					sizef + COLUMN_SEPARATOR;
 
 				options.push_back(text_columns);
-
-				config::const_child_itors const& linguas = c.child_range("translation");
-				for(config::const_child_iterator i = linguas.first; i != linguas.second; ++i) {
-					inf.translations.push_back((*i)["language"]);
-				}
-
-				infos.push_back(inf);
 			}
 
 			foreach(const std::string& pub, publish_options) {
@@ -1134,7 +1108,7 @@ namespace {
 				_("Filter: "), options, options_to_filter, 1, addon_dialog, 300);
 				addon_dialog.set_textbox(filter);
 
-				display_description description_helper(disp, infos, filter);
+				display_description description_helper(disp, parsed_list, filter);
 
 				gui::dialog_button* description = new gui::dialog_button(disp.video(), _("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
 				addon_dialog.add_button(description, gui::dialog::BUTTON_EXTRA);

@@ -313,6 +313,7 @@ set(wesnoth-main_SRC
 	about.cpp
 	actions.cpp
 	addon/client.cpp
+	addon/info.cpp
 	addon/manager.cpp
 	addon/validation.cpp
 	ai/actions.cpp
