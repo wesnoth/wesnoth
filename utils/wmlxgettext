@@ -68,7 +68,7 @@ foreach my $file (@ARGV) {
     }
 
     # skip other # lines as comments
-    next LINE if m/^\s*\#/ and !defined $str;
+    next LINE if m/^\s*\#/ and !defined $str and not m/#\s*wmlxgettext/;
 
     if (!defined $str and m/^(?:[^\"]*?)((?:_\s*)?)\"([^\"]*(?:\"\"[^\"]*)*)\"(.*)/) {
       # single-line quoted string
