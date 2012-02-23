@@ -351,14 +351,12 @@ void gamemap::write(config& cfg) const
 		starting_positions[i] = position;
 	}
 
-
 	cfg["border_size"] = border_size_;
 	cfg["usage"] = (usage_ == IS_MAP ? "map" : "mask");
 
 	std::ostringstream s;
-	s << "\"" << t_translation::write_game_map(tiles_, starting_positions) << "\"" ;
+	s << t_translation::write_game_map(tiles_, starting_positions);
 	cfg["data"] = s.str();
-
 }
 
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int ypos, bool border)
