@@ -85,7 +85,7 @@ map_context::map_context(const config& game_config, const std::string& filename)
 
 		map_ = editor_map(game_config, file);
 		return;
-	} catch (config::error& e) {
+	} catch (config::error&) {
 	}
 
 	boost::regex re("map_data\\s*=\\s*\"(.+?)\"");
