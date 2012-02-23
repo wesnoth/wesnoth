@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "POT-Creation-Date: 2012-01-06 12:00+0100\n"
-"PO-Revision-Date: 2011-11-14 21:55+0800\n"
+"PO-Revision-Date: 2012-02-19 14:15+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
 "translation-cn>\n"
@@ -77,7 +77,6 @@ msgstr "韦诺之战（Battle for B<Wesnoth>）是一个奇幻回合制策略游
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:42
-#, fuzzy
 msgid ""
 "Defeat all enemy leaders using a well-chosen cadre of troops, taking care to "
 "manage your resources of gold and villages. All units have their own "
@@ -113,22 +112,12 @@ msgstr "设定每象素占多少位。例如：B<--bpp 32>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
-#, fuzzy, no-wrap
-#| msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
+#, no-wrap
 msgid "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
-msgstr "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
+msgstr "B<-c, --campaign \\ [E<lt>id_campaignE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy
-#| msgid ""
-#| "goes directly to the campaign based on the parameters.  The difficulty is "
-#| "a number between 1 and current campaign's difficulties number.  The "
-#| "default difficulty is 1.  The scenario must be one of the campaign's "
-#| "child scenarios. The default scenario is campaign's first scenario.  "
-#| "B<Note: When using this switch please ensure that you specify the data "
-#| "directory path as the final argument> aswell, otherwise the game will "
-#| "take the campaign/scenario id as the data dir."
 msgid ""
 "goes directly to the campaign with id E<lt>id_campaignE<gt>. A selection "
 "menu will appear if no id was specified.  B<Note:> When using this switch "
@@ -136,17 +125,15 @@ msgid ""
 "aswell, otherwise the game will take the campaign/scenario id as the data "
 "dir."
 msgstr ""
-"按照所给出的参数，直接进入战役中。难度（difficulty）是一个介于1和当前战役最大"
-"难度值之间的数字。默认难度是1。场景（scenario）必须是战役中的子场景之一。默认"
-"场景是战役中的第一个场景。 B<注意： 当使用本开关选项时，请确保将数据目录的路"
-"径作为最后一个参数给出>，否则游戏会将战役或者场景的ID作为数据目录名。"
+"直接进入ID为 E<lt>id_campaignE<gt> 的战役中。如果没有指定ID，则将出现一个选择"
+"菜单。B<注意：>当使用本开关选项时，请确保将数据目录的路径作为最后一个参数给"
+"出，否则游戏会将战役或者场景的ID作为数据目录名。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--data-dir E<lt>directoryE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr "B<--data-dir E<lt>directoryE<gt>>"
+msgstr "B<--campaign-difficulty E<lt>难度E<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -154,19 +141,21 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"指定战役的难度（从1到该战役的最大难度）。如果没有指定，那么战役难度选择界面会"
+"出现。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
-msgstr ""
+msgstr "B<--campaign-scenario E<lt>id_scenarioE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:60
 msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
-msgstr ""
+msgstr "指定战役中的场景ID。默认为第一个场景。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:60
@@ -1585,9 +1574,3 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
-
-#~ msgid "B<--new-syntax>"
-#~ msgstr "B<--new-syntax>"
-
-#~ msgid "enables the new campaign syntax parsing."
-#~ msgstr "启用新的战役语法。"
