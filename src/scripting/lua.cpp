@@ -3804,7 +3804,7 @@ void LuaKernel::initialize()
 
 static char const *handled_file_tags[] = {
 	"color_palette", "color_range", "era", "event", "generator",
-	"label", "lua", "menu_item", "music", "side", "sound_source", "story",
+	"label", "lua", "map", "menu_item", "music", "side", "sound_source", "story",
 	"terrain_graphics", "time", "time_area", "tunnel", "variables", "endlevel",
 	"display",
 	//TODO: These are only needed for MP campaigns and only for subsequent scenarios, see bug #18883
