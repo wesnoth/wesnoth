@@ -91,7 +91,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	level_(level),
 	teams_(),
 	gamestate_(state_of_game),
-	map_(game_config, level["map_data"]),
+	map_(game_config, level),
 	units_(),
 	undo_stack_(),
 	redo_stack_(),
@@ -708,7 +708,10 @@ config play_controller::to_config() const
 	}
 
 	//write out the current state of the map
-	cfg["map_data"] = map_.write();
+
+	config& map = cfg.add_child("map");
+	map_.write(map);
+
 	cfg.merge_with(pathfind_manager_->to_config());
 
 	config display;

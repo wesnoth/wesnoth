@@ -90,7 +90,7 @@ size_t cave_map_generator::translate_y(size_t y) const
 std::string cave_map_generator::create_map(const std::vector<std::string>& args)
 {
 	const config res = create_scenario(args);
-	return res["map_data"];
+	return res["data"];
 }
 
 config cave_map_generator::create_scenario(const std::vector<std::string>& /*args*/)
@@ -121,8 +121,10 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& /*arg
 
 	LOG_NG << "outputting map....\n";
 
-	res_["map_data"] = gamemap::default_map_header +
-		t_translation::write_game_map(map_, starting_positions_);
+	config& map = res_.add_child("map");
+	map["data"] = t_translation::write_game_map(map_, starting_positions_);
+	map["usage"] = "map";
+	map["border_size"] = 1;
 
 	LOG_NG << "returning result...\n";
 

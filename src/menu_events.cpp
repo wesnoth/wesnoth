@@ -614,7 +614,12 @@ void menu_handler::save_map()
 	// Try to save the map, if it fails we reset the filename.
 	if (res == 0) {
 		try {
-			write_file(input_name, map_.write());
+			config file;
+			config& map = file.add_child("map");
+			map_.write(map);
+			std::stringstream str;
+			str << file;
+			write_file(input_name, str.str());
 			gui2::show_transient_message(gui_->video(), "", _("Map saved."));
 		} catch (io_exception& e) {
 			utils::string_map symbols;

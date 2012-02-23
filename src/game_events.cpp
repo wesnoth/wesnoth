@@ -1717,10 +1717,21 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 {
 	map_location loc = cfg_to_loc(cfg, 1, 1);
 
-	gamemap mask(*resources::game_map);
+	gamemap mask_map(*resources::game_map);
+
+	//config level;
+	std::string mask = cfg["mask"];
+	std::string usage = "mask";
+	int border_size = 0;
+
+	if (mask.empty()) {
+		usage = cfg["usage"].str();
+		border_size = cfg["border_size"];
+		mask = cfg["data"].str();
+	}
 
 	try {
-		mask.read(cfg["mask"], false);
+		mask_map.read(mask, false, border_size, usage);
 	} catch(incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
 		return;
@@ -1729,7 +1740,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 		return;
 	}
 	bool border = cfg["border"].to_bool();
-	resources::game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y, border);
+	resources::game_map->overlay(mask_map, cfg.get_parsed_config(), loc.x, loc.y, border);
 	screen_needs_rebuild = true;
 }
 

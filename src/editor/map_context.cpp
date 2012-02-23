@@ -23,6 +23,7 @@
 #include "../gettext.hpp"
 #include "../map_exception.hpp"
 #include "../map_label.hpp"
+#include "../serialization/parser.hpp"
 #include "../wml_exception.hpp"
 
 #include "formula_string_utils.hpp"
@@ -70,7 +71,24 @@ map_context::map_context(const config& game_config, const std::string& filename)
 	if (!file_exists(filename) || is_directory(filename)) {
 		throw editor_map_load_exception(filename, _("File not found"));
 	}
+
 	std::string map_string = read_file(filename);
+
+	if (map_string.empty()) {
+		std::string message = _("Empty file");
+		throw editor_map_load_exception(filename, message);
+	}
+
+	boost::regex reg("[map]");
+	boost::smatch mym;
+	if (boost::regex_search(map_string, mym, reg, boost::regex_constants::match_not_dot_null)) {
+		config file;
+		::read(file, map_string);
+
+		map_ = editor_map(game_config, file);
+		return;
+	}
+
 	boost::regex re("map_data\\s*=\\s*\"(.+?)\"");
 	boost::smatch m;
 	if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
@@ -100,6 +118,7 @@ map_context::map_context(const config& game_config, const std::string& filename)
 		std::string message = _("Empty map file");
 		throw editor_map_load_exception(filename, message);
 	}
+
 	map_ = editor_map::from_string(game_config, map_string); //throws on error
 }
 
@@ -202,10 +221,15 @@ void map_context::reset_starting_position_labels(display& disp)
 
 bool map_context::save()
 {
-	std::string data = map_.write();
+	config data;
+	config& map = data.add_child("map");
+	map_.write(map);
+
 	try {
 		if (!is_embedded()) {
-			write_file(get_filename(), data);
+			std::stringstream ss;
+			ss << data;
+			write_file(get_filename(), ss.str());
 		} else {
 			std::string map_string = read_file(get_filename());
 			boost::regex re("(.*map_data\\s*=\\s*\")(.+?)(\".*)");

@@ -322,17 +322,16 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				//level_ = scenario;
 				//merge carryover information into the newly generated scenario
 				config temp(scenario2);
+				ERR_GUI_D << scenario2.debug();
 				write_players(gamestate, temp, false, true);
 				gamestate.starting_pos = temp;
 				scenario = &scenario2;
 			}
+
 			std::string map_data = (*scenario)["map_data"];
-			if(map_data.empty() && (*scenario)["map"] != "") {
-				map_data = read_map((*scenario)["map"]);
-			}
 
 			// If the map should be randomly generated
-			if(map_data.empty() && (*scenario)["map_generation"] != "") {
+			if ( (*scenario).child_or_empty("map").empty() && map_data.empty() && (*scenario)["map_generation"] != "") {
 				const cursor::setter cursor_setter(cursor::WAIT);
 				map_data = random_generate_map((*scenario)["map_generation"],scenario->child("generator"));
 
@@ -341,7 +340,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// it will not ask for the map to be generated again on reload
 				static config new_level;
 				new_level = *scenario;
-				new_level["map_data"] = map_data;
+				config& map = new_level.add_child("map");
+				map["data"] = map_data;
 				scenario = &new_level;
 
 				//merge carryover information into the scenario
@@ -504,14 +504,12 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 					static config scenario2;
 					scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
+					//TODO comment or remove
 					//level_ = scenario;
 					gamestate.starting_pos = scenario2;
 					scenario = &scenario2;
 				}
 				std::string map_data = (*scenario)["map_data"];
-				if(map_data.empty() && (*scenario)["map"] != "") {
-					map_data = read_map((*scenario)["map"]);
-				}
 
 				// If the map should be randomly generated
 				if(map_data.empty() && (*scenario)["map_generation"] != "") {
@@ -523,7 +521,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					// it will not ask for the map to be generated again on reload
 					static config new_level;
 					new_level = *scenario;
-					new_level["map_data"] = map_data;
+					config& map = new_level.add_child("map");
+					map["data"] = map_data;
 					scenario = &new_level;
 
 					gamestate.starting_pos = new_level;

@@ -37,7 +37,6 @@ static lg::log_domain log_config("config");
 #define LOG_G LOG_STREAM(info, lg::general)
 #define DBG_G LOG_STREAM(debug, lg::general)
 
-const std::string gamemap::default_map_header = "usage=map\nborder_size=1\n\n";
 const gamemap::tborder gamemap::default_border = gamemap::SINGLE_TILE_BORDER;
 
 const t_translation::t_list& gamemap::underlying_mvt_terrain(t_translation::t_terrain terrain) const
@@ -147,7 +146,7 @@ gamemap::gamemap(const config& cfg, const std::string& data):
 		h_(-1),
 		total_width_(0),
 		total_height_(0),
-		border_size_(NO_BORDER),
+		border_size_(gamemap::SINGLE_TILE_BORDER),
 		usage_(IS_MAP)
 {
 	DBG_G << "loading map: '" << data << "'\n";
@@ -157,13 +156,50 @@ gamemap::gamemap(const config& cfg, const std::string& data):
 	read(data);
 }
 
+gamemap::gamemap(const config& cfg, const config& level):
+		tiles_(1),
+		terrainList_(),
+		tcodeToTerrain_(),
+		villages_(),
+		borderCache_(),
+		terrainFrequencyCache_(),
+		w_(-1),
+		h_(-1),
+		total_width_(0),
+		total_height_(0),
+		border_size_(gamemap::SINGLE_TILE_BORDER),
+		usage_(IS_MAP)
+{
+	DBG_G << "loading map: '" << level.debug() << "'\n";
+	const config::const_child_itors &terrains = cfg.child_range("terrain_type");
+	create_terrain_maps(terrains, terrainList_, tcodeToTerrain_);
+
+	const config& map_child = level.child_or_empty("map");
+
+	if (map_child.empty()) {
+		const std::string& map_data = level["map_data"];
+		if (!map_data.empty()) {
+			read(map_data);
+		} else {
+			w_ = 0;
+			h_ = 0;
+			total_width_ = 0;
+			total_height_ = 0;
+		}
+	} else {
+		read(map_child["data"], true, map_child["border_size"], map_child["usage"]);
+	}
+}
+
 gamemap::~gamemap()
 {
 }
 
-void gamemap::read(const std::string& data, const bool allow_invalid)
-{
+void gamemap::read(const std::string& data, const bool allow_invalid, int border_size, std::string usage) {
+
 	// Initial stuff
+	border_size_ = border_size;
+	set_usage(usage);
 	tiles_.clear();
 	villages_.clear();
 	std::fill(startingPositions_, startingPositions_ +
@@ -178,56 +214,12 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 		if(allow_invalid) return;
 	}
 
-	// Test whether there is a header section
-	size_t header_offset = data.find("\n\n");
-	if(header_offset == std::string::npos) {
-		// For some reason Windows will fail to load a file with \r\n
-		// lineending properly no problems on Linux with those files.
-		// This workaround fixes the problem the copy later will copy
-		// the second \r\n to the map, but that's no problem.
-		header_offset = data.find("\r\n\r\n");
-	}
-	const size_t comma_offset = data.find(",");
-	// The header shouldn't contain commas, so if the comma is found
-	// before the header, we hit a \n\n inside or after a map.
-	// This is no header, so don't parse it as it would be.
-	VALIDATE(
-		!(header_offset == std::string::npos || comma_offset < header_offset),
-		_("A map without a header is not supported"));
+	int offset = read_header(data);
 
-	std::string header_str(std::string(data, 0, header_offset + 1));
-	config header;
-	::read(header, header_str);
-
-	border_size_ = header["border_size"];
-	const std::string usage = header["usage"];
-
-	utils::string_map symbols;
-	symbols["border_size_key"] = "border_size";
-	symbols["usage_key"] = "usage";
-	symbols["usage_val"] = usage;
-	const std::string msg = "'$border_size_key|' should be "
-		"'$border_size_val|' when '$usage_key| = $usage_val|'";
-
-	if(usage == "map") {
-		usage_ = IS_MAP;
-		symbols["border_size_val"] = "1";
-		VALIDATE(border_size_ == 1, vgettext(msg.c_str(), symbols));
-	} else if(usage == "mask") {
-		usage_ = IS_MASK;
-		symbols["border_size_val"] = "0";
-		VALIDATE(border_size_ == 0, vgettext(msg.c_str(), symbols));
-	} else if(usage == "") {
-		throw incorrect_map_format_error("Map has a header but no usage");
-	} else {
-		std::string msg = "Map has a header but an unknown usage:" + usage;
-		throw incorrect_map_format_error(msg.c_str());
-	}
-
-	const std::string& map = std::string(data, header_offset + 2);
+	const std::string& data_only = std::string(data, offset);
 
 	try {
-		tiles_ = t_translation::read_game_map(map, starting_positions);
+		tiles_ = t_translation::read_game_map(data_only, starting_positions);
 
 	} catch(t_translation::error& e) {
 		// We re-throw the error but as map error.
@@ -291,7 +283,62 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 	}
 }
 
-std::string gamemap::write() const
+void gamemap::set_usage(const std::string& usage)
+{
+	utils::string_map symbols;
+	symbols["border_size_key"] = "border_size";
+	symbols["usage_key"] = "usage";
+	symbols["usage_val"] = usage;
+	const std::string msg = "'$border_size_key|' should be "
+		"'$border_size_val|' when '$usage_key| = $usage_val|'";
+
+	if(usage == "map") {
+		usage_ = IS_MAP;
+		symbols["border_size_val"] = "1";
+		VALIDATE(border_size_ == 1, vgettext(msg.c_str(), symbols));
+	} else if(usage == "mask") {
+		usage_ = IS_MASK;
+		symbols["border_size_val"] = "0";
+		VALIDATE(border_size_ == 0, vgettext(msg.c_str(), symbols));
+	} else if(usage == "") {
+		throw incorrect_map_format_error("Map has a header but no usage");
+	} else {
+		std::string msg = "Map has a header but an unknown usage:" + usage;
+		throw incorrect_map_format_error(msg.c_str());
+	}
+}
+
+int gamemap::read_header(const std::string& data)
+{
+	// Test whether there is a header section
+	size_t header_offset = data.find("\n\n");
+	if(header_offset == std::string::npos) {
+		// For some reason Windows will fail to load a file with \r\n
+		// lineending properly no problems on Linux with those files.
+		// This workaround fixes the problem the copy later will copy
+		// the second \r\n to the map, but that's no problem.
+		header_offset = data.find("\r\n\r\n");
+	}
+	const size_t comma_offset = data.find(",");
+	// The header shouldn't contain commas, so if the comma is found
+	// before the header, we hit a \n\n inside or after a map.
+	// This is no header, so don't parse it as it would be.
+
+	if (!(!(header_offset == std::string::npos || comma_offset < header_offset)))
+		return 0;
+
+	std::string header_str(std::string(data, 0, header_offset + 1));
+	config header;
+	::read(header, header_str);
+
+	border_size_ = header["border_size"];
+	set_usage(header["usage"]);
+
+	return header_offset + 2;
+}
+
+
+void gamemap::write(config& cfg) const
 {
 	// Convert the starting positions to a map
 	std::map<int, t_translation::coordinate> starting_positions;
@@ -304,12 +351,14 @@ std::string gamemap::write() const
 		starting_positions[i] = position;
 	}
 
-	// Let the low level convertor do the conversion
+
+	cfg["border_size"] = border_size_;
+	cfg["usage"] = (usage_ == IS_MAP ? "map" : "mask");
+
 	std::ostringstream s;
-	s << "border_size=" << border_size_ << "\nusage="
-		<< (usage_ == IS_MAP ? "map" : "mask") << "\n\n"
-		<< t_translation::write_game_map(tiles_, starting_positions);
-	return s.str();
+	s << "\"" << t_translation::write_game_map(tiles_, starting_positions) << "\"" ;
+	cfg["data"] = s.str();
+
 }
 
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int ypos, bool border)

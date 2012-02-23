@@ -449,16 +449,15 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	cfg_summary["leader"] = leader;
 	cfg_summary["leader_image"] = leader_image;
-	cfg_summary["map_data"] = "";
 
 	if(!shrouded) {
 		if(has_snapshot) {
 			if (!cfg_snapshot.find_child("side", "shroud", "yes")) {
-				cfg_summary["map_data"] = cfg_snapshot["map_data"];
+				cfg_summary.add_child("map", cfg_snapshot.child_or_empty("map"));
 			}
 		} else if(has_replay) {
 			if (!cfg_replay_start.find_child("side","shroud","yes")) {
-				cfg_summary["map_data"] = cfg_replay_start["map_data"];
+				cfg_summary.add_child("map", cfg_replay_start.child_or_empty("map"));
 			}
 		}
 	}

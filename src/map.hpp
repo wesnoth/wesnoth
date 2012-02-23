@@ -98,24 +98,30 @@ public:
 	 * Loads a map, with the given terrain configuration.
 	 *
 	 * Data should be a series of lines, with each character representing one
-	 * hex on the map.  Starting locations are represented by numbers, and will
-	 * be of type keep.
+	 * hex on the map.  Starting locations are represented by numbers.
 	 *
 	 * @param cfg the game config.
 	 * @param data the map data to load.
 	 */
 	gamemap(const config &cfg, const std::string &data); //throw(incorrect_map_format_error)
 
-	virtual ~gamemap();
 
 	/**
-	 * Reads a map
+	 * Loads a map, from the [map] wml config in @level.
 	 *
-	 * @param data		          The mapdata to load.
+	 * Data should be a series of lines, with each character representing one
+	 * hex on the map.  Starting locations are represented by numbers
+	 *
+	 * @param cfg the game confg.
+	 * @param level the scenario config to load from.
 	 */
-	void read(const std::string& data, const bool allow_invalid = true);
+	gamemap(const config &cfg, const config &level); //throw(incorrect_map_format_error)
 
-	std::string write() const;
+	virtual ~gamemap();
+
+	void read(const std::string& data, const bool allow_invalid = true, const int border_size = 1, const std::string usage = "map");
+
+	void write(config&) const;
 
 	/** Overlays another map onto this one at the given position. */
 	void overlay(const gamemap& m, const config& rules, int x=0, int y=0, bool border=false);
@@ -221,12 +227,6 @@ public:
 	/** Returns the usage of the map. */
 	tusage get_usage() const { return usage_; }
 
-	/**
-	 * The default map header, needed for maps created with
-	 * terrain_translation::write_game_map().
-	 */
-	static const std::string default_map_header;
-
 	/** The default border style for a map. */
 	static const tborder default_border;
 
@@ -255,6 +255,16 @@ protected:
 	void clear_border_cache() { borderCache_.clear(); }
 
 private:
+
+	void set_usage(const std::string& usage);
+
+	/**
+	 * Reads the header of a map which is saved in the deprecated map_data format.
+	 *
+	 * @param data		          The mapdata to load.
+	 */
+	int read_header(const std::string& data);
+
 	int num_starting_positions() const
 		{ return sizeof(startingPositions_)/sizeof(*startingPositions_); }
 

@@ -717,7 +717,8 @@ void loadgame::fill_mplevel_config(config& level){
 	// If we have a start of scenario MP campaign scenario the snapshot
 	// is empty the starting position contains the wanted info.
 	const config& start_data = !gamestate_.snapshot.empty() ? gamestate_.snapshot : gamestate_.starting_pos;
-	level["map_data"] = start_data["map_data"];
+
+	level.add_child("map", start_data.child_or_empty("map"));
 	level["id"] = start_data["id"];
 	level["name"] = start_data["name"];
 	level["completion"] = start_data["completion"];

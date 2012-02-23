@@ -80,6 +80,8 @@ public:
 	/**
 	 * Create an editor map from a map data string
 	 */
+	editor_map(const config& terrain_cfg, const config& level);
+
 	editor_map(const config& terrain_cfg, const std::string& data);
 
 	/**
