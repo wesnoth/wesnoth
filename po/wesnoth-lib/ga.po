@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-02-18 13:15+0100\n"
-"PO-Revision-Date: 2011-10-21 14:01-0800\n"
+"POT-Creation-Date: 2012-02-18 14:42+0100\n"
+"PO-Revision-Date: 2012-02-21 15:26-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -844,10 +844,8 @@ msgstr "Baile Bogaigh"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1492
-#, fuzzy
-#| msgid "Swamp Merfolk Village"
 msgid "Merfolk Village"
-msgstr "Baile Bogaigh Mara"
+msgstr "Baile Luchta Mara"
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1507
@@ -1084,10 +1082,8 @@ msgstr "Droichead Adhmaid"
 #. [terrain_type]: id=rotbridgediag2
 #: data/core/terrain.cfg:1931 data/core/terrain.cfg:1943
 #: data/core/terrain.cfg:1955
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Rotting Bridge"
-msgstr "Droichead Adhmaid"
+msgstr "Droichead ag Lobhadh"
 
 #. [terrain_type]: id=stone_bridge
 #: data/core/terrain.cfg:1969 data/core/terrain.cfg:1981
@@ -1270,10 +1266,8 @@ msgstr "Nialas"
 
 #. [label]
 #: data/gui/default/window/addon_uninstall_list.cfg:51
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Uninstall Add-ons"
-msgstr "Nuashonraigh Forlíontáin"
+msgstr "Díshuiteáil forlíontáin"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
@@ -1334,22 +1328,18 @@ msgstr "Roghnaigh leibhéal deacrachta:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
-#, fuzzy
-#| msgid "View Chat Log"
 msgid "Chat Log"
-msgstr "Féach Loga Comhrá"
+msgstr "Loga Comhrá"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
-#, fuzzy
-#| msgid "Message:"
 msgid "Page:"
-msgstr "Teachtaireacht:"
+msgstr "Leathanach:"
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:69
 msgid "Last"
-msgstr ""
+msgstr "Deireanach"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
@@ -1519,10 +1509,8 @@ msgstr "Cóipeáil tír-raon ciumhaise"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_set_starting_position.cfg:50
-#, fuzzy
-#| msgid "Choose theme"
 msgid "Choose Player"
-msgstr "Roghnaigh an téama"
+msgstr "Roghnaigh Imreoir"
 
 #. [label]: id=message
 #: data/gui/default/window/editor_set_starting_position.cfg:70
@@ -1537,22 +1525,16 @@ msgstr "Socruithe Eagarthóra"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:53
-#, fuzzy
-#| msgid "Time of day lighting preset"
 msgid "Time of day lighting preset:"
-msgstr "Réamhshocrú soilsiú tráth an lae"
+msgstr "Réamhshocrú soilsithe tráth an lae:"
 
 #. [toggle_button]: id=custom_tod_toggle
 #: data/gui/default/window/editor_settings.cfg:104
-#, fuzzy
-#| msgid "Custom lighting setting"
 msgid "Custom lighting settings"
-msgstr "Soilsiú saincheaptha roghnach"
+msgstr "Socruithe saincheaptha soilsithe"
 
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:114
-#, fuzzy
-#| msgid "Auto-update map view"
 msgid "Automatically update map view"
 msgstr "Uath-nuashonraigh amharc léarscáile"
 
@@ -1808,10 +1790,8 @@ msgstr "Roghnaigh do rogha béarla:"
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
 #: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
-#, fuzzy
-#| msgid "Change language"
 msgid "Change Language"
-msgstr "Athraigh teanga an chomhéadain"
+msgstr "Athraigh Teanga"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:109
@@ -1825,8 +1805,9 @@ msgstr "Sann foirne d'imreoirí go randamach"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:177
+#, fuzzy
 msgid "Requires a password to join"
-msgstr ""
+msgstr "Sábháil pasfhocal go sorcuithe (glan téacs)"
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
@@ -1870,7 +1851,7 @@ msgstr "Sórtáil imreoirí:"
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:313
 msgid "Friends first, ignored people last"
-msgstr ""
+msgstr "Cairde ar dtús, daoine díbeartacha deireanach"
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:321
@@ -2043,8 +2024,6 @@ msgstr "Foireann"
 
 #. [label]: id=nick_title
 #: data/gui/default/window/mp_change_control.cfg:73
-#, fuzzy
-#| msgid "Nick"
 msgid "Nickname"
 msgstr "Leasainm"
 
@@ -2461,11 +2440,11 @@ msgstr "imreoir"
 
 #: src/game_preferences.cpp:837
 msgid "%H:%M"
-msgstr ""
+msgstr "%H:%M"
 
 #: src/game_preferences.cpp:840
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/game_preferences_display.cpp:173
 msgid "Full screen"
@@ -2521,16 +2500,12 @@ msgid "Iconize lobby list"
 msgstr "Iócánaigh Liosta Forhalla"
 
 #: src/game_preferences_display.cpp:186
-#, fuzzy
-#| msgid "Save password to preferences (clear text)"
 msgid "Save password to preferences (plain text)"
-msgstr "Sábháil pasfhocal do socruithe (glan téacs)"
+msgstr "Sábháil pasfhocal go socruithe (glan téacs)"
 
 #: src/game_preferences_display.cpp:187
-#, fuzzy
-#| msgid "Set path to wesnothd"
 msgid "Set Path to wesnothd"
-msgstr "Socraigh cosán go wesnothd"
+msgstr "Socraigh Cosán go wesnothd"
 
 #: src/game_preferences_display.cpp:188
 msgid "Friends List"
@@ -2558,7 +2533,7 @@ msgstr "Dialóg Seala"
 
 #: src/game_preferences_display.cpp:195
 msgid "Enable planning mode on start"
-msgstr ""
+msgstr "Cumasaigh mód pleanála i dtosach"
 
 #: src/game_preferences_display.cpp:196
 msgid "Hide allies’ plans by default"
@@ -2628,7 +2603,7 @@ msgstr "Taispeáin beochan aonaid díomhaoin"
 #, fuzzy
 #| msgid "Show Unit Idle Animations"
 msgid "Show unit standing animations"
-msgstr "Taispeáin na haonaid ina Seasamh"
+msgstr "Taispeáin Beochan Aonaid Díomhaoin"
 
 #: src/game_preferences_display.cpp:217
 msgid "Animate map"
@@ -2730,7 +2705,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:348
 msgid "Display animated terrain graphics"
-msgstr ""
+msgstr "Taispeán grafaice tír-raonta beoite"
 
 #: src/game_preferences_display.cpp:354
 msgid "Set the frequency of unit idle animations"
@@ -2785,10 +2760,8 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr ""
 
 #: src/game_preferences_display.cpp:394
-#, fuzzy
-#| msgid "Use new lobby interface"
 msgid "Use New Lobby Interface"
-msgstr "Úsáid an comhéadan forhalla nua"
+msgstr "Úsáid an Comhéadan Forhalla Nua"
 
 #: src/game_preferences_display.cpp:396
 msgid "Find and set path to MP server to host LAN games."
@@ -2796,7 +2769,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:397
 msgid "View and edit your friends and ignores list"
-msgstr ""
+msgstr "Féach ar agus cuir in eagar do líosta carad agus díbeartach"
 
 #: src/game_preferences_display.cpp:398
 msgid "Back to the multiplayer options"
@@ -2925,10 +2898,8 @@ msgid "Advanced section^Advanced"
 msgstr "Ard-Tosaiocht"
 
 #: src/game_preferences_display.cpp:1292
-#, fuzzy
-#| msgid "Choose theme"
 msgid "Choose Theme"
-msgstr "Roghnaigh an téama"
+msgstr "Roghnaigh Téama"
 
 #: src/game_preferences_display.cpp:1307
 msgid "New theme will take effect on next new or loaded game."
@@ -2961,9 +2932,8 @@ msgid "Image doesn't fit on canvas."
 msgstr "Ní oireann an íomhá seo ar an gcanbhás."
 
 #: src/gui/auxiliary/canvas.cpp:1302
-#, fuzzy
 msgid "Text has a font size of 0."
-msgstr "Bain feidhm as chló saincheaptha do réimsí téasc"
+msgstr "Tá clómhéid 0 ag téacs."
 
 #: src/gui/auxiliary/canvas.cpp:1371
 msgid "Text doesn't start on canvas."
@@ -2997,11 +2967,12 @@ msgstr ""
 #: src/gui/auxiliary/window_builder.cpp:527
 #, fuzzy
 msgid "A row must have a column."
-msgstr "Ní foláir nó go bhfuil tú an Tallan clúiteach."
+msgstr "Tá ort logáil isteach i dtosach."
 
 #: src/gui/auxiliary/window_builder.cpp:528
+#, fuzzy
 msgid "Number of columns differ."
-msgstr ""
+msgstr "B<--algorithm>I<number>B<=>I<value>"
 
 #: src/gui/auxiliary/window_builder/control.cpp:49
 msgid "Found a widget with a helptip and without a tooltip."
@@ -3059,13 +3030,11 @@ msgstr "Feachtas: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:305
 msgid "Test scenario"
-msgstr ""
+msgstr "Misean tástála"
 
 #: src/gui/dialogs/game_load.cpp:313
-#, fuzzy
-#| msgid "replay"
 msgid "Replay"
-msgstr "athfhéachaint"
+msgstr "Athfhéachaint"
 
 #: src/gui/dialogs/game_load.cpp:315
 msgid "Turn"
@@ -3145,7 +3114,7 @@ msgstr "Lódáil Cluiche..."
 #: src/gui/dialogs/network_transmission.cpp:55
 #: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1178
 msgid "unit_byte^B"
-msgstr ""
+msgstr "B"
 
 #: src/gui/dialogs/title_screen.cpp:296
 msgid "Version "
@@ -3194,10 +3163,8 @@ msgid "Right Mouse Click"
 msgstr "Cnaipe Luiche ar Dheis"
 
 #: src/hotkeys.cpp:55
-#, fuzzy
-#| msgid "Animate map"
 msgid "Animate Map"
-msgstr "Ainmnigh Léarscáil"
+msgstr "Beoigh Léarscáil"
 
 #: src/hotkeys.cpp:56
 msgid "Next Unit"
@@ -3240,8 +3207,6 @@ msgid "Default Zoom"
 msgstr "Zúmáil Réamhshocrú"
 
 #: src/hotkeys.cpp:66
-#, fuzzy
-#| msgid "Toggle Full screen"
 msgid "Toggle Full Screen"
 msgstr "Scoránaigh Lánscáileán"
 
@@ -3298,10 +3263,8 @@ msgid "Toggle Grid"
 msgstr "Scoránaigh Greille"
 
 #: src/hotkeys.cpp:82
-#, fuzzy
-#| msgid "Mouse scrolling"
 msgid "Mouse Scrolling"
-msgstr "Scrollú Luch"
+msgstr "Scrollú Luiche"
 
 #: src/hotkeys.cpp:83
 msgid "Status Table"
@@ -3332,16 +3295,12 @@ msgid "Statistics"
 msgstr "Staitistic"
 
 #: src/hotkeys.cpp:92
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Pause Network Game"
-msgstr "Óstáil Cluiche Gréasánach"
+msgstr "Sos Cluiche Líonra"
 
 #: src/hotkeys.cpp:93
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid "Continue Network Game"
-msgstr "Óstáil Cluiche Gréasánach"
+msgstr "Lean ar aghaidh Cluiche Líonra"
 
 #: src/hotkeys.cpp:95
 msgid "Set Team Label"
@@ -3364,22 +3323,16 @@ msgid "Best Possible Enemy Moves"
 msgstr ""
 
 #: src/hotkeys.cpp:100
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Play Replay"
-msgstr "Sábháil Athfhéachaint"
+msgstr "Seinn Athfhéachaint"
 
 #: src/hotkeys.cpp:101
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Reset Replay"
-msgstr "Sábháil Athfhéachaint"
+msgstr "Athshocraigh Athfhéachaint"
 
 #: src/hotkeys.cpp:102
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Stop Replay"
-msgstr "Sábháil Athfhéachaint"
+msgstr "Stad Athfhéachaint"
 
 #: src/hotkeys.cpp:103
 msgid "Next Turn"
@@ -3642,10 +3595,8 @@ msgid "Custom Command"
 msgstr "Ordú saincheaptha"
 
 #: src/hotkeys.cpp:208
-#, fuzzy
-#| msgid "Run AI formula"
 msgid "Run Formula"
-msgstr "Rith foirmle IS"
+msgstr "Rith Foirmle"
 
 #: src/hotkeys.cpp:209
 msgid "Clear Messages"
@@ -3668,40 +3619,28 @@ msgid "Start Tutorial"
 msgstr "Tosaigh teagaisc"
 
 #: src/hotkeys.cpp:241
-#, fuzzy
-#| msgid "Start a campaign"
 msgid "Start Campaign"
-msgstr "Tosaigh feachtas"
+msgstr "Tosaigh Feachtas"
 
 #: src/hotkeys.cpp:248
-#, fuzzy
-#| msgid "Start a multiplayer game"
 msgid "Start Multiplayer Game"
-msgstr "Tosaigh cluiche ilimreora"
+msgstr "Tosaigh Cluiche Ilimreora"
 
 #: src/hotkeys.cpp:255
-#, fuzzy
-#| msgid "Manage addons"
 msgid "Manage Add-ons"
-msgstr "Bainistigh forlíontáin"
+msgstr "Bainistigh Forlíontáin"
 
 #: src/hotkeys.cpp:262
-#, fuzzy
-#| msgid "Start the editor"
 msgid "Start Editor"
-msgstr "Tosaigh an t-eagarthóir"
+msgstr "Tosaigh Eagarthóir"
 
 #: src/hotkeys.cpp:269
-#, fuzzy
-#| msgid "Show the credits"
 msgid "Show Credits"
-msgstr "Féach ar na chreidiúna"
+msgstr "Taispeáin na Teidil Creidiúna"
 
 #: src/hotkeys.cpp:277
-#, fuzzy
-#| msgid "Show the helptip"
 msgid "Show Helptip"
-msgstr "Taispeáin an leid chabhrach"
+msgstr "Taispeáin Leid Chabhrach"
 
 #: src/hotkeys.cpp:875 src/hotkeys.cpp:1220
 msgid "Do you really want to quit?"
@@ -3758,10 +3697,8 @@ msgid "Landform:"
 msgstr "Tírghné:"
 
 #: src/mapgen_dialog.cpp:249
-#, fuzzy
-#| msgid "Roads Between Castles"
 msgid "Roads between castles"
-msgstr "Bóithre idir Caisleáin"
+msgstr "Bóithre idir Chaisleáin"
 
 #: src/mapgen_dialog.cpp:306
 msgid "/1000 tiles"
@@ -3827,7 +3764,7 @@ msgstr ""
 
 #: src/preferences_display.cpp:429
 msgid "Warning"
-msgstr ""
+msgstr "Rabhadh"
 
 #: src/preferences_display.cpp:530
 msgid "There are no alternative video modes available"

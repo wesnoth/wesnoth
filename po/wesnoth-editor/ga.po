@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-03 10:40+0100\n"
-"PO-Revision-Date: 2011-06-06 16:17-0800\n"
+"POT-Creation-Date: 2012-02-18 14:42+0100\n"
+"PO-Revision-Date: 2012-02-18 12:50-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -69,7 +69,7 @@ msgstr "breáthú"
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:44
 msgid "forest"
-msgstr "foraois"
+msgstr "coill"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:51
@@ -89,7 +89,7 @@ msgstr "uaimh"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "obstacle"
-msgstr "constaicí"
+msgstr "constaic"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:79
@@ -169,11 +169,11 @@ msgstr "Fuinneog"
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:272
 msgid "villages"
-msgstr "baillte"
+msgstr "bailte"
 
 #: src/editor/editor_controller.cpp:132
 msgid "Quit Editor"
-msgstr "Eagarthóir a Fhágáil"
+msgstr "Scoir Eagarthóir"
 
 #: src/editor/editor_controller.cpp:286
 msgid "Fatal error"
@@ -205,13 +205,13 @@ msgstr "Dún"
 
 #: src/editor/editor_controller.cpp:391
 msgid "No editor time-of-day found."
-msgstr "Níor bhfuair é trath-an-lae eagarthóra."
+msgstr "Níor thángthas ar trath-an-lae eagarthóra."
 
 #: src/editor/editor_controller.cpp:412
 #, fuzzy
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr "An dteastaíonn uait cuileáil "
+msgstr "An dteastaíonn uait"
 
 #: src/editor/editor_controller.cpp:412
 msgid "Unsaved Changes"
@@ -219,23 +219,23 @@ msgstr "Athruithe Neamhshábháilte"
 
 #: src/editor/editor_controller.cpp:434
 msgid "Choose a Map to Open"
-msgstr "Roghnaigh Léarscáil chun Oscailt"
+msgstr "Roghnaigh Léarscáil le hOscailt"
 
 #: src/editor/editor_controller.cpp:468
 msgid "Save the Map As"
-msgstr "Cuir i dtaisce Léarscáil Mar"
+msgstr "Cuir an Léarscáil i dtaisce Mar"
 
 #: src/editor/editor_controller.cpp:471
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "An comhad ann cheana. Forscríobh?"
+msgstr "An comhad ann cheana féin . An dteastaíonn uait forscríobh?"
 
 #: src/editor/editor_controller.cpp:488
 msgid "No random map generators found."
-msgstr "Ní bhfuair é gineadóirí léarscáile randamach."
+msgstr "Níor thángthas ar gineadóirí léarscáile randamach."
 
 #: src/editor/editor_controller.cpp:501 src/editor/editor_controller.cpp:505
 msgid "Map creation failed."
-msgstr "Cruthú léarscáile theipte."
+msgstr "Theip an cruthú léarscáile"
 
 #: src/editor/editor_controller.cpp:520
 msgid "Choose a Mask to Apply"
@@ -255,7 +255,7 @@ msgstr "Earraíd i lódáil an léarscáil"
 
 #: src/editor/editor_controller.cpp:653 src/editor/editor_controller.cpp:695
 msgid "This map is already open."
-msgstr "Tá an léarscáil ar oscailt ann cheann."
+msgstr "Tá an léarscáil ar oscailt cheana féin."
 
 #: src/editor/editor_controller.cpp:674
 msgid "Map saved."
@@ -263,7 +263,7 @@ msgstr "Léarscáil sábháilte."
 
 #: src/editor/editor_controller.cpp:718
 msgid "Loaded embedded map data"
-msgstr ""
+msgstr "Sábháladh sonraí léarscáile leabaithe"
 
 #: src/editor/editor_controller.cpp:719 src/editor/editor_controller.cpp:733
 msgid "Map loaded from scenario"
@@ -274,14 +274,16 @@ msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
+"Sábháladh comhad léarscáile atá tagartha:\n"
+"$new"
 
 #: src/editor/editor_controller.cpp:1128
 msgid "Undo"
-msgstr "Cealaithe"
+msgstr "Cealaigh"
 
 #: src/editor/editor_controller.cpp:1130
 msgid "Can’t Undo"
-msgstr "Ní Fhéadfainn Cealaithe"
+msgstr "Ní Fhéadfainn Cealú"
 
 #: src/editor/editor_controller.cpp:1134
 msgid "Redo"
@@ -289,7 +291,7 @@ msgstr "Athdhéan"
 
 #: src/editor/editor_controller.cpp:1136
 msgid "Can’t Redo"
-msgstr "Ní Fhéadfainn Athdhéan"
+msgstr "Ní Fhéadfainn Athdhéanamh"
 
 #: src/editor/editor_controller.cpp:1141
 msgid "Auto-update Terrain Transitions: Yes"
@@ -329,7 +331,7 @@ msgstr "Cúlionad: "
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"
-msgstr "Níor fhuair é an comhad"
+msgstr "Níor thángthas ar an gcomhad sin."
 
 #: src/editor/map_context.cpp:85
 msgid ""
@@ -350,14 +352,12 @@ msgid "Could not save the map: $msg"
 msgstr ""
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:84
-#, fuzzy
-#| msgid "(Player)^None"
 msgid "player^None"
-msgstr "Nialas"
+msgstr "Imreoir ar bith"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:96
 msgid "Player $player_number"
-msgstr ""
+msgstr "Imreoir $player_number"
 
 #: src/gui/dialogs/editor_settings.cpp:148
 msgid "Custom setting"

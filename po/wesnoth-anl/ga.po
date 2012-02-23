@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2011-05-20 14:43-0800\n"
+"POT-Creation-Date: 2012-02-18 14:42+0100\n"
+"PO-Revision-Date: 2012-02-18 14:11-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -167,7 +167,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:698
 msgid "I have fallen, but all is not lost!"
-msgstr ""
+msgstr "Theip orm, ach níl gach rud caillte!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:711
@@ -177,17 +177,17 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:724
 msgid "Comrades, avenge me!"
-msgstr "Bain díoltas, a compánaigh!"
+msgstr "Bain díoltas, a chompánaigh!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:737
 msgid "Do not fear, there is hope for us still!"
-msgstr ""
+msgstr "Ná bíodh eagla ort, tá dóchas ann dúinn go fóill!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:34
 msgid "The chest contains $oc_treasure gold."
-msgstr "Seo cófra coinníonn $oc_treasure óir."
+msgstr "Coinníonn an cófra seo $oc_treasure píosa óir."
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
@@ -199,7 +199,7 @@ msgstr "Fill ar an roghchlár"
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:125
 msgid "Peasants"
-msgstr "Tuathánach"
+msgstr "Tuathánaigh"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:19
@@ -307,7 +307,7 @@ msgstr "Inneachair"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:111
 msgid "A New Land — Help"
-msgstr "An Tìr Nua — Inneachair"
+msgstr "An Tír Nua — Inneachair"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
@@ -348,16 +348,12 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:250
-#, fuzzy
-#| msgid ""
-#| "<span color='green'>Donate Funds</span>\n"
-#| "Give 20 gold to another player"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"<span color='green'>Bronn Airgid</span>\n"
-"Tabhair déirc 20 píosa óir do imreoir eile."
+"<span color='green'>$player_name</span>\n"
+"Comhrionn eolas ar talmhaíocht"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
@@ -368,16 +364,12 @@ msgstr ""
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
-#, fuzzy
-#| msgid ""
-#| "<span color='green'>Donate Funds</span>\n"
-#| "Give 20 gold to another player"
 msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of warfare"
 msgstr ""
-"<span color='green'>Bronn Airgid</span>\n"
-"Tabhair déirc 20 píosa óir do imreoir eile."
+"<span color='green'>$player_name</span>\n"
+"Comhrionn eolas ar cogaíocht"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:293
@@ -389,7 +381,7 @@ msgstr "Roghanna Taidhleoireachta"
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:296
 msgid "What shall I do?"
-msgstr "Cad é a dhéanfaidh mé?"
+msgstr "Cad a dhéanfaidh mé?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:302
@@ -404,7 +396,7 @@ msgid ""
 "Give 20 gold to another player"
 msgstr ""
 "<span color='green'>Bronn Airgid</span>\n"
-"Tabhair déirc 20 píosa óir do imreoir eile."
+"Tabhair 20 píosa óir d'imreoir eile."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:333
@@ -489,7 +481,7 @@ msgstr ""
 #. [set_menu_item]: id=anl_oversee_research
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:89
 msgid "Oversee Research"
-msgstr ""
+msgstr "Maoirsigh Taighde"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:138
@@ -510,7 +502,7 @@ msgstr ""
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
 msgid "Continue as before"
-msgstr ""
+msgstr "Lean mar a bhí tú"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:167
@@ -520,13 +512,17 @@ msgid ""
 "Study Progress: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 msgstr ""
+"<span color='green'>Talmhaíocht</span>\n"
+"Táirgeann feirmeoirí +1 p. óir\n"
+"Dul Chun Cinn Staidéir: $player_$side_number|.farming.progress|/$player_"
+"$side_number|.farming.target"
 
 #. [command]
 #. [research]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:169
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:102
 msgid "agriculture"
-msgstr "talmhaìocht"
+msgstr "talmhaíocht"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:178
@@ -536,6 +532,10 @@ msgid ""
 "Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
 "mining.target"
 msgstr ""
+"<span color='green'>Mianadóireacht</span>\n"
+"Táirgeann mianadóirí +1 p. óir\n"
+"Dul Chun Cinn Staidéir: $player_$side_number|.mining.progress|/$player_"
+"$side_number|.mining.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:180
@@ -562,8 +562,8 @@ msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
-"Tá na feirmeacha $player_$side_number|.name| ag táigthe $player_"
-"$side_number|.farming.gold píosa óir anois."
+"Táirgeann na feirmeacha $player_$side_number|.name| $player_$side_number|."
+"farming.gold píosa óir anois."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:279
@@ -571,8 +571,8 @@ msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
-"Tá na mianaigh $player_$side_number|.name|’s ag táirgthe $player_"
-"$side_number|.mining.gold píosa óir anois."
+"Táirgeann na mianaigh $player_$side_number|.name| $player_$side_number|."
+"mining.gold píosa óir anois."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:306
@@ -594,17 +594,17 @@ msgstr ""
 #. [set_menu_item]: id=anl_get_to_work
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:6
 msgid "Get to Work!"
-msgstr ""
+msgstr "Bí ag obair!"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:50
 msgid "What shall I do my liege?"
-msgstr "Cad é a dhéanfaidh mé, mo fhlaith?"
+msgstr "Cad a dhéanfaidh mé, a fhlaith?"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
 msgid "Convert to Grassland"
-msgstr ""
+msgstr "Athraigh ina Thalamh Féaraigh"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:69
@@ -692,7 +692,7 @@ msgstr "Costas: 3p. ór"
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:297
 msgid "Make a Ford"
-msgstr "Déan an t-Áth"
+msgstr "Déan áth"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:323
