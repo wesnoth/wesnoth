@@ -319,10 +319,10 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 				static config scenario2;
 				scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
+				//TODO comment or remove
 				//level_ = scenario;
 				//merge carryover information into the newly generated scenario
 				config temp(scenario2);
-				ERR_GUI_D << scenario2.debug();
 				write_players(gamestate, temp, false, true);
 				gamestate.starting_pos = temp;
 				scenario = &scenario2;
