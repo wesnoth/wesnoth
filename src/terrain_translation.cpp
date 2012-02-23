@@ -406,7 +406,7 @@ std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_
 			if(x != 0) {
 				str << ", ";
 			}
-			str << number_to_string_(map[x][y], starting_position, 12);
+			str << number_to_string_(map[x][y], starting_position);
 		}
 
 		str << "\n";
