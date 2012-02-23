@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
-"POT-Creation-Date: 2012-02-18 13:14+0100\n"
-"PO-Revision-Date: 2011-10-07 17:18-0500\n"
+"POT-Creation-Date: 2012-02-18 14:42+0100\n"
+"PO-Revision-Date: 2012-02-22 21:36-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -2079,13 +2079,6 @@ msgstr "Move action up queue"
 # type: Content of: <book><chapter><section><simpara>
 #. type: Content of: <book><chapter><section><simpara>
 #: /src/wesnoth-1.10/doc/manual/manual.en.xml:1307
-#, fuzzy
-#| msgid ""
-#| "Each side is given some amount of gold to begin with, and receives 2 gold "
-#| "pieces per turn, plus 2 more gold pieces for every village that side "
-#| "controls. In a campaign, starting gold is the greater of 80% of the gold "
-#| "you ended the previous scenario with, and a minimum amount defined by the "
-#| "scenario, which is typically lower as the difficulty level increases."
 msgid ""
 "Each side is given some amount of gold to begin with, and receives 2 gold "
 "pieces per turn, plus 2 more gold pieces for every village that side "
@@ -2097,9 +2090,11 @@ msgid ""
 msgstr ""
 "Each side is given some amount of gold to begin with, and receives 2 gold "
 "pieces per turn, plus 2 more gold pieces for every village that side "
-"controls. In a campaign, starting gold is the greater of 80% of the gold you "
-"ended the previous scenario with, and a minimum amount defined by the "
-"scenario, which is typically lower as the difficulty level increases."
+"controls. In a campaign, starting gold is a minimum amount defined by the "
+"scenario, which is typically lower as the difficulty level increases. In "
+"addition, you often get a percentage of gold to carry over from the last "
+"scenario played. The exact percentage depends on the scenario and is usually "
+"displayed as part of the scenario objectives."
 
 #. type: Content of: <book><chapter><section><section><title>
 #: /src/wesnoth-1.10/doc/manual/manual.en.xml:1315
@@ -4939,17 +4934,3 @@ msgid ""
 msgstr ""
 "Advanced units have higher upkeep than lower level units (1 gp per level), "
 "loyal units are an exception."
-
-# type: Content of: <book><chapter><section><variablelist><varlistentry><term>
-#~ msgid "Envelope"
-#~ msgstr "Envelope"
-
-# type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
-#~ msgid ""
-#~ "Click this button (the icon of an envelope) to open a dialog where you "
-#~ "can enable or disable summary uploads which will help us to better "
-#~ "balance campaigns. All data submitted will be anonymous."
-#~ msgstr ""
-#~ "Click this button (the icon of an envelope) to open a dialog where you "
-#~ "can enable or disable summary uploads which will help us to better "
-#~ "balance campaigns. All data submitted will be anonymous."
