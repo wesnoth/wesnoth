@@ -124,7 +124,7 @@ config cave_map_generator::create_scenario(const std::vector<std::string>& /*arg
 	config& map = res_.add_child("map");
 	map["data"] = t_translation::write_game_map(map_, starting_positions_);
 	map["usage"] = "map";
-	map["border_size"] = 1;
+	map["border_size"] = gamemap::default_border;
 
 	LOG_NG << "returning result...\n";
 
