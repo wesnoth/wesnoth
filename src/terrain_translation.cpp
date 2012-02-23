@@ -101,7 +101,6 @@ namespace t_translation {
 	 *                              position given it's padded to 4 chars else
 	 *                              padded to 7 chars.
 	 */
-	static std::string number_to_string_(t_terrain terrain, const int start_position, const size_t min_size);
 	static std::string number_to_string_(t_terrain terrain, const int start_position = -1);
 
 	/**
@@ -409,7 +408,8 @@ std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_
 			str << number_to_string_(map[x][y], starting_position);
 		}
 
-		str << "\n";
+		if (y < map[0].size() -1)
+			str << "\n";
 	}
 
 	return str.str();
