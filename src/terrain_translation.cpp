@@ -821,16 +821,6 @@ static std::string number_to_string_(t_terrain terrain, const int start_position
 	return result;
 }
 
-static std::string number_to_string_(t_terrain terrain, const int start_position, const size_t min_size)
-{
-	std::string result = number_to_string_(terrain, start_position);
-	if(result.size() < min_size) {
-		result.resize(min_size, ' ');
-	}
-
-	return result;
-}
-
 static t_terrain string_to_builder_number_(std::string str)
 {
 	// Strip the spaces around us
