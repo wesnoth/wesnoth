@@ -587,17 +587,17 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			_("Filter: "), options, filter_options, 1, dlg, 300);
 		dlg.set_textbox(filter_box);
 
+		description_display_action description_helper(disp, option_ids, addons, filter_box);
+		gui::dialog_button* description_button = new gui::dialog_button(disp.video(),
+			_("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
+		dlg.add_button(description_button, gui::dialog::BUTTON_EXTRA);
+
 		gui::dialog_button* update_all_button = NULL;
 		if(updates_only) {
 			update_all_button = new gui::dialog_button(disp.video(), _("Update All"),
 				gui::button::TYPE_PRESS, update_all_value);
 			dlg.add_button(update_all_button, gui::dialog::BUTTON_EXTRA);
 		}
-
-		description_display_action description_helper(disp, option_ids, addons, filter_box);
-		gui::dialog_button* description_button = new gui::dialog_button(disp.video(),
-			_("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
-		dlg.add_button(description_button, gui::dialog::BUTTON_EXTRA);
 
 		// Focus the menu on the previous selection.
 		std::vector<std::string>::iterator it = !last_addon_id.empty() ?
