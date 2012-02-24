@@ -315,6 +315,7 @@ set(wesnoth-main_SRC
 	addon/client.cpp
 	addon/info.cpp
 	addon/manager.cpp
+	addon/manager_ui.cpp
 	addon/validation.cpp
 	ai/actions.cpp
 	ai/composite/ai.cpp

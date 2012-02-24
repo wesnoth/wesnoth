@@ -20,6 +20,8 @@
 #include "gui/dialogs/network_transmission.hpp"
 #include "network_asio.hpp"
 
+struct addon_info;
+
 /**
  * Add-ons (campaignd) client class.
  *
@@ -91,9 +93,7 @@ public:
 	 * from there again, since there isn't any way to request info for a
 	 * single entry atm.
 	 */
-	bool install_addon(config& archive_cfg, const std::string& id, const std::string& title,
-	                   const std::string& type_str, const std::string& uploads_str,
-	                   const std::string& version_str);
+	bool install_addon(config& archive_cfg, const addon_info& info);
 
 	/**
 	 * Requests the specified add-on to be uploaded.

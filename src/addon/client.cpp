@@ -14,6 +14,7 @@
    See the COPYING file for more details.
 */
 
+#include "addon/info.hpp"
 #include "addon/manager.hpp"
 #include "addon/validation.hpp"
 #include "display.hpp"
@@ -68,6 +69,8 @@ bool addons_client::request_addons_list(config& cfg)
 	cfg.clear();
 
 	config response_buf;
+
+	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness */
 
 	this->send_simple_request("request_campaign_list", response_buf);
 	this->wait_for_transfer_done(_("Downloading list of add-ons..."));
@@ -201,10 +204,10 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 	return !this->update_last_error(archive_cfg);
 }
 
-bool addons_client::install_addon(config& archive_cfg, const std::string& id, const std::string& title, const std::string& type_str, const std::string& uploads_str, const std::string& version_str)
+bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 {
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = title;
+	i18n_symbols["addon_title"] = info.title;
 
 	if(!check_names_legal(archive_cfg)) {
 		gui2::show_error_message(disp_.video(),
@@ -216,24 +219,20 @@ bool addons_client::install_addon(config& archive_cfg, const std::string& id, co
 
 	// Add local version information before unpacking
 
-	config* maindir = &archive_cfg.find_child("dir", "name", id);
+	config* maindir = &archive_cfg.find_child("dir", "name", info.id);
 	if(!*maindir) {
-		LOG_ADDONS << "downloaded add-on '" << id << "' is missing its directory in the archive; creating it\n";
+		LOG_ADDONS << "downloaded add-on '" << info.id << "' is missing its directory in the archive; creating it\n";
 		maindir = &archive_cfg.add_child("dir");
-		(*maindir)["name"] = id;
+		(*maindir)["name"] = info.id;
 	}
 
-	LOG_ADDONS << "generating version info for add-on '" << id << "'\n";
+	LOG_ADDONS << "generating version info for add-on '" << info.id << "'\n";
 
 	utils::string_map vars;
 
-	vars["uploads"] = uploads_str;
-	vars["version"] = version_str;
-	if(type_str.empty()) {
-		vars["type"] = "unknown";
-	} else {
-		vars["type"] = type_str;
-	}
+	vars["uploads"] = str_cast(info.uploads);
+	vars["version"] = info.version.str();
+	vars["type"] = get_addon_type_string(info.type);
 
 	static const std::string info_file_template =
 		"#\n"
@@ -253,11 +252,11 @@ bool addons_client::install_addon(config& archive_cfg, const std::string& id, co
 
 	maindir->add_child("file", file);
 
-	LOG_ADDONS << "unpacking " << id << '\n';
+	LOG_ADDONS << "unpacking " << info.id << '\n';
 
 	// Remove any previously installed versions
-	if(!remove_local_addon(id)) {
-		WRN_ADDONS << "failed to uninstall previous version of " << id << "; the add-on may not work properly!\n";
+	if(!remove_local_addon(info.id)) {
+		WRN_ADDONS << "failed to uninstall previous version of " << info.id << "; the add-on may not work properly!\n";
 	}
 
 	unarchive_addon(archive_cfg);

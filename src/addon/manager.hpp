@@ -60,11 +60,23 @@ void get_addon_info(const std::string& addon_name, class config& cfg);
  */
 void set_addon_info(const std::string& addon_name, const class config& cfg);
 
+/**
+ * Replaces underscores to dress up file or dirnames as add-on titles.
+ *
+ * @todo In the future we should store more local information about add-ons and use
+ *       this only as a fallback; it could be desirable to fetch translated names as well
+ *       somehow.
+ */
+std::string make_addon_title(const std::string& id);
+
 /** Returns a list of local add-ons that can be published. */
 std::vector<std::string> available_addons();
 
 /** Retrieves the names of all installed add-ons. */
 std::vector<std::string> installed_addons();
+
+/** Chekc whether the specified add-on is currently installed. */
+bool is_addon_installed(const std::string& addon_name);
 
 /** Archives an add-on into a config object for campaignd transactions. */
 void archive_addon(const std::string& addon_name, class config& cfg);
