@@ -78,6 +78,13 @@ struct addon_tracking_info
 	version_info installed_version;
 };
 
+inline const addon_info& addon_at(const std::string& id, const addons_list& addons)
+{
+	addons_list::const_iterator it = addons.find(id);
+	assert(it != addons.end());
+	return it->second;
+}
+
 bool get_addons_list(addons_client& client, addons_list& list)
 {
 	list.clear();
@@ -205,7 +212,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 	std::vector<int> sort_sizes;
 	
 	foreach(const std::string& dep, missing_deps) {
-		const addon_info& addon = (*addons.find(dep)).second;
+		const addon_info& addon = addon_at(dep, addons);
 
 		const std::string& display_size = size_display_string(addon.size);
 		const std::string& display_type = get_translatable_addon_type(addon.type);
@@ -252,7 +259,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 	std::vector<std::string> failed_titles;
 
 	foreach(const std::string& dep, missing_deps) {
-		const addon_info& addon = (*addons.find(dep)).second;
+		const addon_info& addon = addon_at(dep, addons);
 
 		config archive;
 
@@ -650,7 +657,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	}
 
 	foreach(const std::string& id, ids_to_install) {
-		const addon_info& addon = (*addons.find(id)).second;
+		const addon_info& addon = addon_at(id, addons);
 
 		if(!(do_check_before_overwriting_addon(disp.video(), id) && do_resolve_addon_dependencies(disp, client, addons, addon, wml_changed))) {
 			// Just do nothing and leave.
