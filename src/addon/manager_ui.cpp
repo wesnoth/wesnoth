@@ -205,7 +205,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 	std::vector<int> sort_sizes;
 	
 	foreach(const std::string& dep, missing_deps) {
-		const addon_info& addon = addons.at(dep);
+		const addon_info& addon = (*addons.find(dep)).second;
 
 		const std::string& display_size = size_display_string(addon.size);
 		const std::string& display_type = get_translatable_addon_type(addon.type);
@@ -252,7 +252,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 	std::vector<std::string> failed_titles;
 
 	foreach(const std::string& dep, missing_deps) {
-		const addon_info& addon = addons.at(dep);
+		const addon_info& addon = (*addons.find(dep)).second;
 
 		config archive;
 
@@ -650,7 +650,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	}
 
 	foreach(const std::string& id, ids_to_install) {
-		const addon_info& addon = addons.at(id);
+		const addon_info& addon = (*addons.find(id)).second;
 
 		if(!(do_check_before_overwriting_addon(disp.video(), id) && do_resolve_addon_dependencies(disp, client, addons, addon, wml_changed))) {
 			// Just do nothing and leave.
