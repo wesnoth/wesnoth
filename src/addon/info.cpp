@@ -54,9 +54,9 @@ namespace {
 				continue;
 			}
 
-			resolve_deps_recursive(addons, dep, dest);
-
 			dest.insert(dep);
+
+			resolve_deps_recursive(addons, dep, dest);
 		}
 	}
 }
