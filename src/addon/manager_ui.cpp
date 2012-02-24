@@ -371,7 +371,7 @@ void get_addon_tracking_info(const addon_info& addon, addon_tracking_info& t)
 				t.state = ADDON_INSTALLED_OUTDATED;
 			}
 		} catch(version_info::not_sane_exception const&) {
-			ERR_AC << "local add-on " << id << " has invalid or missing version info, skipping from updates check...\n";
+			LOG_AC << "local add-on " << id << " has invalid or missing version info, skipping from updates check...\n";
 			t.state = ADDON_NOT_TRACKED;
 		}
 	} else {
