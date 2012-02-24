@@ -16,7 +16,6 @@
 
 #include "addon/manager_ui.hpp"
 
-#include "addon/client.hpp"
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
 #include "dialogs.hpp"
@@ -33,6 +32,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
+#include "addon/client.hpp"
 
 static lg::log_domain log_config("config");
 static lg::log_domain log_network("network");
