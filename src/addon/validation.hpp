@@ -35,6 +35,9 @@ extern const unsigned short default_campaignd_port;
  * at the moment, in the future it could be used for
  * directory allocation too, removing the need for
  * the ADDON_GROUP constants (TODO).
+ *
+ * @note If you change the order or content of these, you'll also need
+ * to update the @a addon_type_strings table found in validation.cpp.
  */
 enum ADDON_TYPE {
 	ADDON_UNKNOWN,		/**< a.k.a. anything. */
@@ -49,10 +52,12 @@ enum ADDON_TYPE {
 	//ADDON_MOD,			// Modification of the game for SP and/or MP.
 	//ADDON_GUI,			// GUI add-ons/themes.
 	ADDON_MEDIA,		/**< Miscellaneous content/media (unit packs, terrain packs, music packs, etc.). */
-	ADDON_OTHER		/**< an add-on that fits in no other category */
+	ADDON_OTHER,		/**< an add-on that fits in no other category */
+	ADDON_TYPES_COUNT
 };
 
 ADDON_TYPE get_addon_type(const std::string& str);
+std::string get_addon_type_string(ADDON_TYPE type);
 
 /** Checks whether an add-on name is legal or not. */
 bool addon_name_legal(const std::string& name);
