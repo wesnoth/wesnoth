@@ -789,7 +789,7 @@ namespace {
 						author + COLUMN_SEPARATOR +
 						type + COLUMN_SEPARATOR +
 						sizef + COLUMN_SEPARATOR;
-					options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR + text_columns);
+					options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR + font::NULL_MARKUP + text_columns);
 					filtered_opts.push_back(text_columns);
 				}
 
@@ -977,7 +977,7 @@ namespace {
 				newver + COLUMN_SEPARATOR +
 				author + COLUMN_SEPARATOR +
 				sizef + COLUMN_SEPARATOR;
-			options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR + text_columns);
+			options.push_back(IMAGE_PREFIX + icon + COLUMN_SEPARATOR + font::NULL_MARKUP + text_columns);
 			filtered_opts.push_back(text_columns);
 		}
 
@@ -1237,7 +1237,7 @@ namespace {
 
 				text_columns =
 					IMAGE_PREFIX + icon + COLUMN_SEPARATOR +
-					title + COLUMN_SEPARATOR +
+					font::NULL_MARKUP + title + COLUMN_SEPARATOR +
 					version + COLUMN_SEPARATOR +
 					author + COLUMN_SEPARATOR +
 					type_label_str + COLUMN_SEPARATOR +
