@@ -79,7 +79,7 @@ REGISTER_DIALOG(addon_description)
 
 taddon_description::taddon_description(const addon_info& addon)
 {
-	register_label("image", true, addon.icon);
+	register_label("image", true, addon.display_icon());
 	register_label("title", true, addon.title);
 	register_label("version", true, addon.version);
 	register_label("author", true, addon.author);
