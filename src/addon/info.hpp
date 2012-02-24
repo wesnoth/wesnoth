@@ -21,8 +21,14 @@
 
 #include "addon/validation.hpp"
 
+#include <set>
+
+struct addon_info;
+typedef std::map<std::string, addon_info> addons_list;
+
 struct addon_info
 {
+	std::string id;
 	std::string title;
 	std::string description;
 
@@ -40,29 +46,36 @@ struct addon_info
 
 	std::vector<std::string> locales;
 
+	std::vector<std::string> depends;
+	// std::vector<addon_dependency> conflicts, recommends, replaces;
+
 	addon_info()
-		: title(), description(), icon()
+		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
+		, depends()
 	{}
 
 	addon_info(const addon_info& o)
-		: title(o.title), description(o.description), icon(o.icon)
+		: id(o.id), title(o.title), description(o.description), icon(o.icon)
 		, version(o.version), author(o.author), size(o.size)
 		, downloads(o.downloads), uploads(o.uploads), type(o.type)
 		, locales(o.locales)
+		, depends(o.depends)
 	{}
 
 	addon_info(const config& cfg)
-		: title(), description(), icon()
+		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
+		, depends()
 	{
 		this->read(cfg);
 	}
 
 	addon_info& operator=(const addon_info& o) {
 		if(this != &o) {
+			this->id = o.id;
 			this->title = o.title;
 			this->description = o.description;
 			this->icon = o.icon;
@@ -73,12 +86,31 @@ struct addon_info
 			this->uploads = o.uploads;
 			this->type = o.type;
 			this->locales = o.locales;
+			this->depends = o.depends;
 		}
 		return *this;
 	}
 
 	void read(const config& cfg);
+
+	/** Get an icon path fixed for display (e.g. when TC is missing, or the image doesn't exist). */
+	std::string display_icon() const;
+
+	/**
+	 * Resolve an add-ons' dependency tree in a recursive fashion.
+	 *
+	 * The returned vector contains the list of resolved dependencies for this
+	 * and any other add-ons.
+	 *
+	 * @param addons     The add-ons list.
+	 * @param addon_info The add-on at the top of the dependency tree.
+	 *
+	 * @todo Tag resolved dependencies with information about where they come from,
+	 *       and implement more dependency tiers.
+	 */
+	std::set<std::string> resolve_dependencies(const addons_list& addons) const;
 };
+
 
 /**
  * Get a human-readable representation of the specified byte count.
