@@ -565,11 +565,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		//
 
 		const std::string dlg_title(!updates_only ? _("Get Add-ons") : _("Update Add-ons"));
-		// TODO: do we really need this notably obvious text description?
-		//const std::string dlg_msg(!updates_only ? _("Choose the add-on to download.") : _("Select an add-on to update."));
-		const std::string dlg_msg = "";
 
-		gui::dialog dlg(disp, dlg_title, dlg_msg, gui::OK_CANCEL);
+		gui::dialog dlg(disp, dlg_title, "", gui::OK_CANCEL);
 
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_alpha_sort(4);
