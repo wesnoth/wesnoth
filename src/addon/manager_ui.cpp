@@ -220,8 +220,9 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		// Add negative sizes to reverse the sort order.
 		sort_sizes.push_back(-addon.size);
 
+		// NOTE: NULL_MARKUP used to escape abuse of formatting chars in add-on titles
 		options.push_back(IMAGE_PREFIX + display_icon + sep +
-			display_title + sep + display_version + sep +
+			font::NULL_MARKUP + display_title + sep + display_version + sep +
 			display_author + sep + display_type + sep +
 			display_size);
 	}
@@ -516,7 +517,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			utils::truncate_as_wstring(display_version, 12);
 		}
 
-		row = IMAGE_PREFIX + display_icon + sep + display_title + sep;
+		// NOTE: NULL_MARKUP used to escape abuse of formatting chars in add-on titles
+		row = IMAGE_PREFIX + display_icon + sep + font::NULL_MARKUP + display_title + sep;
 		if(updates_only) {
 			row += display_old_version + sep;
 		}
