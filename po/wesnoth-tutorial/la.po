@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-02-18 13:15+0100\n"
+"POT-Creation-Date: 2012-02-18 14:42+0100\n"
 "PO-Revision-Date: 2011-12-18 20:58+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -154,7 +154,7 @@ msgid ""
 "<big>You have selected Li’sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
-"<big>Lisarem eligisti.\n"
+"<big>Lisarem eligisti.</big>\n"
 "Loca illustrantur quo movere potest."
 
 #. [event]
@@ -1563,14 +1563,19 @@ msgstr "Progredere actores alios viculos captum, tum <b>Fini Vicem</b>"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1140
+#, fuzzy
+#| msgid ""
+#| "No other units can reach that orc. I hope my $unit.type survives its "
+#| "counter-attack! I’d better grab more villages and move everyone closer "
+#| "for next turn."
 msgid ""
 "No other units can reach that orc. I hope my $unit.language_name survives "
 "its counter-attack! I’d better grab more villages and move everyone closer "
 "for next turn."
 msgstr ""
-"Nulli actores orcem illum attingere possunt. Certamem eius $unit."
-"language_name supersit! Debeo plures viculorum capere et omnes propius causa "
-"vicis secundae movere."
+"Nulli actores orcem illum attingere possunt. Certamem eius $unit.type "
+"supersit! Debeo plures viculorum capere et omnes propius causa vicis "
+"secundae movere."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1141
@@ -1928,10 +1933,10 @@ msgid ""
 "Delfador are characters from <i>Heir to the Throne</i>."
 msgstr ""
 "Orces vicisti! Velis militias ordinis tironis: exempli gratia <i>Legio "
-"Austri</i>, <i>Adventus Orcium</i>, <i>Fabula Duorum Fratrum</i> aut "
-"<i>Heres Solii</i> nomine conari. <i>Legio Austri</i> praecipue ut militia "
-"tironi designatus est. Conradus, Lisaris et Delfadoris personae ab <i>Herede "
-"Solii</i> sunt. "
+"Australis</i>, <i>Adventus Orcium</i>, <i>Fabula Duorum Fratrum</i> aut "
+"<i>Heres Regni</i> nomine conari. <i>Legio Australis</i> praecipue ut "
+"militia tironi designatus est. Conradus, Lisaris et Delfadoris personae ab "
+"<i>Herede Regni</i> sunt. "
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
