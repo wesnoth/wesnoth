@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2012-01-21 15:39-0500\n"
-"Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
+"PO-Revision-Date: 2012-02-17 15:49-0500\n"
+"Last-Translator: Eirik Westcoat <eirikvw@aim.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
 "MIME-Version: 1.0\n"
@@ -105,6 +105,7 @@ msgstr "hamor"
 #. [unit_type]: id=Dwarvish Masked Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:19
 #: data/core/units/dwarves/Guardsman.cfg:19
+#, fuzzy
 msgid ""
 "The dwarven race has always been famed for its sturdiness of build, and many "
 "of their warriors outfit themselves to take advantage of this. Dwarven "
@@ -112,6 +113,11 @@ msgid ""
 "role is to hold the line, and to take a heavy toll on those who try to break "
 "it. As the line marches forward, they act to secure its hard-won advance."
 msgstr ""
+"Se dƿeorgisc cynn is a gefræge for his bodiges fæstnesse, and manig hira "
+"ƿigende gesyrƿaþ him to nimanne freme þisre. Dƿeorgisc ƿeardesmenn farað in "
+"beadƿe mid torrscieldum and garum. Oftost is hira dæl þa linan to ƿeardianne "
+"and of þæm þe fandiað brecan hie, to abædanne pislice. Sƿa seo line færð "
+"forð, ƿyrcað hie hire heard-geƿunnen forþgang gefæstenian."
 
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:30
@@ -147,6 +153,7 @@ msgid "spear"
 msgstr "gar"
 
 # Do you wish to avoid words that potentially are drawn from latin? Maybe "daroþ" would be better here, if it is not being used elsewhere to refer to a different item.
+# --Do we need to translate "dart" anywhere? Daroþ would be better for that, I think.
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:39
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:47
@@ -261,13 +268,13 @@ msgid ""
 msgstr ""
 
 # Espreon sayeth: "I'm not sure about this one... My sources say that 'stormsæ' should be used for 'stormy sea', so... blargh"
+# --changed to "cieles hrið" = tempest of chill
 #. [attack]: type=cold
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:44
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:60
 #: data/core/units/undead/Necro_Lich.cfg:60
-#, fuzzy
 msgid "chill tempest"
-msgstr "ciele stormsæ"
+msgstr "cieles hrið"
 
 #. [attack]: type=arcane
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:56
@@ -544,14 +551,16 @@ msgstr ""
 msgid "ram"
 msgstr ""
 
+# As discussed, literally meaning "Three-pronged," and better than a calque of þreoteð.
 #. [attack]: type=pierce
 #. [attack]: type=blade
 #: data/core/units/drakes/Enforcer.cfg:65
 #: data/core/units/merfolk/Fighter.cfg:36
 #: data/core/units/merfolk/Triton.cfg:37 data/core/units/merfolk/Triton.cfg:45
 #: data/core/units/merfolk/Warrior.cfg:35
+#, fuzzy
 msgid "trident"
-msgstr ""
+msgstr "þreotind"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
@@ -646,8 +655,9 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:43
 #: data/core/units/drakes/Hurricane.cfg:128 data/core/units/drakes/Sky.cfg:127
+#, fuzzy
 msgid "slam"
-msgstr ""
+msgstr "tobeatan"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
@@ -776,8 +786,9 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dwarves/Berserker.cfg:43
 #: data/core/units/dwarves/Ulfserker.cfg:44
+#, fuzzy
 msgid "berserker frenzy"
-msgstr ""
+msgstr "beraserca ƿodnes"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
@@ -895,8 +906,9 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
+#, fuzzy
 msgid "Dwarvish Thunderer"
-msgstr ""
+msgstr "Dƿeorgisc Þunra"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
@@ -1465,9 +1477,8 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/goblins/Pillager.cfg:55
-#, fuzzy
 msgid "torch"
-msgstr "leohtfæt"
+msgstr "blysa"
 
 #. [attack]: type=impact
 #: data/core/units/goblins/Pillager.cfg:64
@@ -1492,11 +1503,11 @@ msgid ""
 msgstr ""
 
 # Espreon sayeth: "Hmmm, not sure on 'æscmann' for this one. My sources point to something more... nautical, like a pirate or a sailor... and these guys aren't very nautical so... yeah.. If possible, maybe use something that sounds more pathetic since goblin spearmen are pathetic level naught units."
+# --changed to speremann. garmann would sound too dignified for this unit.
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
-#, fuzzy
 msgid "Goblin Spearman"
-msgstr "Puca Æscmann"
+msgstr "Puca Speremann"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:21
@@ -1596,15 +1607,14 @@ msgstr ""
 msgid "longsword"
 msgstr "langsƿeord"
 
-# Espreon sayeth: "I'd prefer not to have conflicting terms..."
+# Agreed, there should not be overlap. But beyond that, it seems there are many different OE terms for lance, spear, javelin that could well be interchangeable. It would just be a matter of preference and consistency mostly.
 #. [attack]: type=pierce
 #: data/core/units/humans/Horse_Grand_Knight.cfg:45
 #: data/core/units/humans/Horse_Knight.cfg:44
 #: data/core/units/humans/Horse_Lancer.cfg:36
 #: data/core/units/humans/Horse_Paladin.cfg:61
-#, fuzzy
 msgid "lance"
-msgstr "gar"
+msgstr "gafeluc"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
@@ -1668,9 +1678,8 @@ msgstr ""
 # Espreon sayeth: "Lots of consideration needs to be put in the names of the units of this unit tree."
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
-#, fuzzy
 msgid "Horseman"
-msgstr "Eoredmann"
+msgstr "Horsmann"
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:21
@@ -1721,7 +1730,7 @@ msgid ""
 msgstr ""
 
 # TODO: do research on this
-#  
+#
 # Espreon sayeth: "Hmmm, although the only extensive etymology I've seen for 'crossbow' says that 'crossbow' is a compound of 'cross' (as in rood) and 'bow', so this should work, but who knows?"
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -2438,7 +2447,6 @@ msgid ""
 "especially under cover of darkness."
 msgstr ""
 
-# Espreon sayeth: "Where'd ya get this one? Bosworth-Toller isn't sure on this one and it implies 'sceptre', so... hmmm..."
 #. [attack]: type=impact
 #: data/core/units/humans/Outlaw_Footpad.cfg:38
 #: data/core/units/humans/Outlaw_Ruffian.cfg:36
@@ -2446,9 +2454,8 @@ msgstr ""
 #: data/core/units/merfolk/Entangler.cfg:26
 #: data/core/units/merfolk/Netcaster.cfg:37
 #: data/core/units/trolls/Troll.cfg:37
-#, fuzzy
 msgid "club"
-msgstr "casebill"
+msgstr "batt"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:176
@@ -2576,10 +2583,12 @@ msgid ""
 "of superior forces."
 msgstr ""
 
+# Espreon sayeth: "Hmmm, B-T seems to associate this term with 'tridens', so I'll keep this one fuzzied for now..."
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:37 data/core/units/humans/Peasant.cfg:46
+#, fuzzy
 msgid "pitchfork"
-msgstr ""
+msgstr "forcel"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
@@ -2722,8 +2731,9 @@ msgstr ""
 #: data/core/units/merfolk/Enchantress.cfg:45
 #: data/core/units/merfolk/Initiate.cfg:48
 #: data/core/units/merfolk/Siren.cfg:53
+#, fuzzy
 msgid "water spray"
-msgstr ""
+msgstr "ƿæter ræsc"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
@@ -2916,11 +2926,10 @@ msgid ""
 "tridents, they are a bane to any who dare enter their waters."
 msgstr ""
 
-# Espreon sayeth: "I'd just love to know the morphemes of this word!"
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
-msgstr "Ƿasescite"
+msgstr "Cudele"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
@@ -2934,8 +2943,9 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Cuttle_Fish.cfg:49
 #: data/core/units/monsters/Tentacle.cfg:62
+#, fuzzy
 msgid "tentacle"
-msgstr ""
+msgstr "fondelið"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Cuttle_Fish.cfg:60
@@ -2976,8 +2986,9 @@ msgstr "tægel"
 
 #. [unit_type]: id=Fire Guardian, race=monster
 #: data/core/units/monsters/Fire_Guardian.cfg:4
+#, fuzzy
 msgid "Fire Guardian"
-msgstr ""
+msgstr "Fyr Ƿearda"
 
 #. [unit_type]: id=Fire Guardian, race=monster
 #: data/core/units/monsters/Fire_Guardian.cfg:28
@@ -3099,8 +3110,9 @@ msgstr ""
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
+#, fuzzy
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "Bancofalic Ƿyrm"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
@@ -3119,15 +3131,19 @@ msgstr "ceace"
 
 #. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
+#, fuzzy
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "Fondelið þæs Deopes"
 
 #. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:22
+#, fuzzy
 msgid ""
 "Tentacles of the Deep are the appendages of some greater monster that lurks "
 "below the waves."
 msgstr ""
+"Fondeliðu þæs Deopes beoð þa liðu sumes greatran fifles þe lutað beneoðan "
+"þæm yðum."
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
@@ -3574,7 +3590,7 @@ msgstr ""
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
-msgstr ""
+msgstr "Great Eoten"
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:18
@@ -3589,7 +3605,7 @@ msgstr ""
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
-msgstr ""
+msgstr "Eoten Hæleþ"
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:17
@@ -3602,7 +3618,7 @@ msgstr ""
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
-msgstr ""
+msgstr "Eoten Stantorfa"
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:19
@@ -3617,7 +3633,7 @@ msgstr ""
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
-msgstr ""
+msgstr "Eoten"
 
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:17
@@ -3651,7 +3667,7 @@ msgstr "lig blæst"
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
-msgstr ""
+msgstr "Eoten Ƿigend"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:19
@@ -3669,7 +3685,7 @@ msgstr ""
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
-msgstr ""
+msgstr "Eoten Hƿelp"
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:19
@@ -3932,8 +3948,9 @@ msgstr ""
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
+#, fuzzy
 msgid "Bone Shooter"
-msgstr ""
+msgstr "Ban Sceotend"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:17
@@ -4036,8 +4053,9 @@ msgstr ""
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
+#, fuzzy
 msgid "Skeleton Archer"
-msgstr ""
+msgstr "Bancofa Scytta"
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:18
@@ -4071,8 +4089,9 @@ msgstr "hropan"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
+#, fuzzy
 msgid "Nightgaunt"
-msgstr ""
+msgstr "Nihthlanca"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:19

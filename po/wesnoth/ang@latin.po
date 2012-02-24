@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-02-18 13:15+0100\n"
-"PO-Revision-Date: 2012-01-21 14:45-0500\n"
+"POT-Creation-Date: 2012-02-18 14:42+0100\n"
+"PO-Revision-Date: 2012-02-24 02:58-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
@@ -1793,12 +1793,12 @@ msgstr "$name|burh,$name|ham,$name|tun,$swamp|burh,$swamp|ham,$swamp|tun"
 #. [language]
 #: data/english.cfg:43
 msgid "melee"
-msgstr ""
+msgstr "neahfeoht"
 
 #. [language]
 #: data/english.cfg:44
 msgid "ranged"
-msgstr ""
+msgstr "feorfeoht"
 
 #. [language]
 #: data/english.cfg:47
@@ -1842,19 +1842,17 @@ msgstr ""
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
-#, fuzzy
-#| msgid "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
 msgid ""
 "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
 "Junicode-Regular.ttf"
-msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
+msgstr ""
+"DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,"
+"Junicode-Regular.ttf"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
-#, fuzzy
-#| msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
 msgid "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
-msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
+msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
@@ -2505,10 +2503,11 @@ msgstr "Geatan"
 msgid "Cancel"
 msgstr ""
 
+# If we decide this is too long, we could either go with "oferfeor" or "oferlang", but consistency is golden, so blargh.
 #. [language]
 #: data/scenario-test.cfg:3157
 msgid "very long"
-msgstr ""
+msgstr "oferfeorfeoht"
 
 #. [language]
 #: data/scenario-test.cfg:3158
@@ -3205,7 +3204,7 @@ msgstr ""
 
 #: src/dialogs.cpp:514
 msgid "Difficulty: "
-msgstr ""
+msgstr "Earfoðnes: "
 
 #: src/dialogs.cpp:516
 msgid "Version: "
@@ -3397,11 +3396,11 @@ msgstr ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:205 src/multiplayer_lobby.cpp:447
 msgid "Unknown era: $era_id"
-msgstr ""
+msgstr "Ungecnaƿenu ieldu: $era_id"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:210 src/multiplayer_lobby.cpp:451
 msgid "Unknown era"
-msgstr ""
+msgstr "Ungecnaƿenu ieldu"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:266 src/multiplayer_lobby.cpp:513
 msgid "Remote scenario"
@@ -3831,7 +3830,7 @@ msgstr ""
 
 #: src/menu_events.cpp:1565 src/multiplayer_wait.cpp:131
 msgid "Gender: "
-msgstr ""
+msgstr "Gecynd: "
 
 #: src/menu_events.cpp:1858
 msgid "Search"
@@ -4607,7 +4606,6 @@ msgid "Reserved"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:762
-#, fuzzy
 msgid "--give--"
 msgstr "--giefan--"
 
@@ -4817,11 +4815,11 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:224
 msgid "No eras found."
-msgstr ""
+msgstr "Nana ielda gefunden."
 
 #: src/multiplayer_create.cpp:225
 msgid "No eras found"
-msgstr ""
+msgstr "Nana ielda gefunden"
 
 #: src/multiplayer_create.cpp:238
 msgid "$login|’s game"
@@ -4887,7 +4885,7 @@ msgstr ""
 
 #: src/multiplayer_lobby.cpp:159
 msgid " (Unknown Era)"
-msgstr ""
+msgstr " (Ungecnaƿenu Ieldu)"
 
 #: src/multiplayer_lobby.cpp:552 src/multiplayer_lobby.cpp:891
 msgid "Password Required"
