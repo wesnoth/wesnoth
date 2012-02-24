@@ -97,13 +97,12 @@ struct addon_info
 	std::string display_icon() const;
 
 	/**
-	 * Resolve an add-ons' dependency tree in a recursive fashion.
+	 * Resolve an add-on's dependency tree in a recursive fashion.
 	 *
 	 * The returned vector contains the list of resolved dependencies for this
-	 * and any other add-ons.
+	 * and any other add-ons upon which it depends.
 	 *
 	 * @param addons     The add-ons list.
-	 * @param addon_info The add-on at the top of the dependency tree.
 	 *
 	 * @todo Tag resolved dependencies with information about where they come from,
 	 *       and implement more dependency tiers.
