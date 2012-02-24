@@ -89,7 +89,7 @@ void unarchive_addon(const class config& cfg);
  *
  * @param disp game_display instance to draw on.
  */
-void manage_addons(class game_display& disp);
+void manage_addons(class display& disp);
 
 /** Refreshes the per-session cache of add-on's version information structs. */
 void refresh_addon_version_info_cache();

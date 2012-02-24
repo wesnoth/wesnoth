@@ -389,7 +389,7 @@ namespace {
 		}
 	}
 
-	void uninstall_local_addons(game_display& disp, bool* should_reload_cfg)
+	void uninstall_local_addons(display& disp, bool* should_reload_cfg)
 	{
 		static const std::string list_lead = "\n\n";
 		static const std::string list_sep = "\n";
@@ -497,7 +497,7 @@ namespace {
 
 } // end unnamed namespace 4
 
-void manage_addons(game_display& disp)
+void manage_addons(display& disp)
 {
 	int res;
 	bool do_refresh = false;
