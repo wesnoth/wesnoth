@@ -2,6 +2,7 @@
 # Copyright (C) 2004, 2005, 2006, 2007, 2008 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
+#
 # David Martínez Moreno <ender@debian.org>, 2004-2006.
 # Pío Sierra <pio@piosierra.com>, 2005.
 # Terpor <terpor@gmail.com>, 2005.
@@ -15,15 +16,14 @@
 # Ignacio R. Morelle <shikadilord@users.sourceforge.net>, 2008, 2009.
 # Gustavo Gingins <gusgins@gmail.com>, 2009.
 # Alvin Eloy Luna Castro <alvineloy@gmail.com>, 2011.
-# Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2011.
+# Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2011, 2012.
 # Aelonin <quianaaelonin@gmail.com>, 2011, 2012.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-02-18 13:15+0100\n"
-"PO-Revision-Date: 2012-01-20 20:51-0500\n"
+"POT-Creation-Date: 2012-02-18 14:42+0100\n"
+"PO-Revision-Date: 2012-02-24 02:06-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
 "Language: es\n"
@@ -31,6 +31,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.2\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -55,7 +56,7 @@ msgstr "Desplazar con clic del botón medio"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
 msgid "Keep scrolling when mouse leaves window"
-msgstr "Continuar desplazamiento cuando el cursor abandona la ventana"
+msgstr "Continuar desplazando si el cursor abandona la ventana"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
@@ -93,12 +94,10 @@ msgstr "Aceptar únicamente susurros de amigos"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:78
 msgid "Auto-open whisper windows in lobby"
-msgstr "Abrir automáticamente ventanas de susurros en la sala de entrada"
+msgstr "Abrir automáticamente susurros en la sala de entrada"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:85
-#, fuzzy
-#| msgid "Group players in lobby"
 msgid "Group players in lobby"
 msgstr "Agrupar jugadores en sala de entrada"
 
@@ -178,7 +177,7 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:165
 msgid "Joystick support"
-msgstr "Soporte de joystick"
+msgstr "Soporte para joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:172
@@ -230,47 +229,53 @@ msgstr "Soporte de joystick: número del eje para despl. del cursor vertical"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:262
 msgid "Joystick: deadzone of the cursor stick"
-msgstr ""
+msgstr "Joystick: zona muerta del bastón de control"
 
+# No entiendo la diferencia entre esta cadena y su siguiente.
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:272
+#, fuzzy
 msgid "Joystick: number of the mouse X-axis joystick"
-msgstr ""
+msgstr "Joystick: número del eje X del cursor en el joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:282
 msgid "Joystick: number of the mouse X-axis"
-msgstr ""
+msgstr "Joystick: número del eje X del cursor"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:292
+#, fuzzy
 msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr ""
+msgstr "Joystick: número del eje Y del cursor en el joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:302
 msgid "Joystick: number of the mouse Y-axis"
-msgstr ""
+msgstr "Joystick: número del eje Y del cursor"
 
+# Las comillas inglesas se usan en castellano con expresiones extranjeras.
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:312
 msgid "Joystick: deadzone of the mouse stick"
-msgstr ""
+msgstr "Joystick: zona muerta del «trackpoint»"
 
+# Las palabras extranjeras en comillas angulares deben ser en tipo itálico, pero el diálogo de preferencias no es un diálogo GUI2, así... blargh...
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:322
+#, fuzzy
 msgid "Joystick: number of the thrust axis joystick"
-msgstr ""
+msgstr "Joystick: número del eje para el propulsor «thruster» del joystick"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:332
 msgid "Joystick: number of the thrust axis"
-msgstr ""
+msgstr "Joystick: número del eje para el propulsor «thruster»"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:342
 msgid "Joystick: deadzone of the thruster"
-msgstr ""
+msgstr "Joystick: zona muerta del propulsor «thruster»"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
@@ -581,10 +586,8 @@ msgstr "Traducción al turco"
 
 #. [about]
 #: data/core/about.cfg:2753
-#, fuzzy
-#| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
-msgstr "Traducción al rumano"
+msgstr "Traducción al ucraniano"
 
 #. [about]
 #: data/core/about.cfg:2760
@@ -783,7 +786,7 @@ msgstr ""
 "Objetivo: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
 "Comportamiento: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"currently_doing_behavior_description"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:652
@@ -2895,7 +2898,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:157 data/hardwired/tips.cfg:205
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "<i>― El pergamino de Chantal, 516DAñW</i>"
+msgstr "<i>― El pergamino de Chantal, 516AñW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
@@ -2946,9 +2949,9 @@ msgid ""
 "lower-level units instead."
 msgstr ""
 "En lugar de subir de nivel, las unidades de alto nivel ganan una "
-"bonificación de «<i>avance sobre el máximo nivel</i>» (AMLA por sus siglas "
-"en inglés), lo que usualmente eleva el máximo de los puntos de vida (PV) de "
-"dicha unidad a 3 puntos y le sana por completo. Esto es menor que el "
+"bonificación de «<i>Avance Sobre el Máximo Nivel</i>» (ASMN; AMLA por sus "
+"siglas en inglés), lo que usualmente eleva el máximo de los puntos de vida "
+"(PV) de dicha unidad a 3 puntos y le sana por completo. Esto es menor que el "
 "beneficio obtenido por subir un nivel, por lo tanto es más útil subir de "
 "nivel a las unidades más débiles."
 
@@ -3821,8 +3824,10 @@ msgstr "No tiene ningún complemento instalado."
 #: src/addon/manager.cpp:1416
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] "¿Está seguro de que desea eliminar el complemento «$addon|»?"
-msgstr[1] "¿Está seguro de que desea eliminar los complementos «$addon|»?"
+msgstr[0] ""
+"¿Está seguro de que desea eliminar el siguiente complemento instalado?"
+msgstr[1] ""
+"¿Está seguro de que desea eliminar los siguientes complementos instalados?"
 
 #: src/addon/manager.cpp:1442
 msgid ""

@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-02-18 13:15+0100\n"
-"PO-Revision-Date: 2012-01-02 05:15+0100\n"
+"POT-Creation-Date: 2012-02-18 14:42+0100\n"
+"PO-Revision-Date: 2012-02-11 00:15+0100\n"
 "Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
 "Language: es\n"
@@ -46,16 +46,18 @@ msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
+"<span foreground='#%02x%02x%02x'>Bando %d</span>:  Puntuación de ingresos = "
+"%d  Puntuación de unidades = %d  Oro = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:126
 msgid "Grand total: <b>%d</b>"
-msgstr ""
+msgstr "Resultado total: <b>%d</b>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:136
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr ""
+msgstr "El <span foreground='%s'>bando %d</span> tiene la ventaja."
 
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:160
@@ -110,13 +112,13 @@ msgid "Undead"
 msgstr "No muertos"
 
 # Sustituír aethermaw
+# Darkmage: Yo propongo algo por el estilo de "entrañas del éter"; quizá «entérañas» (mezclando ambas palabras)
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
-#, fuzzy
-#| msgid "2p — The Freelands"
 msgid "2p — Aethermaw"
-msgstr "2 jug. — Aethermaw"
+msgstr "2 jug. — Énterañas"
 
+# Aethermaw... humm... tiene que haber una posible traducción...
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
 msgid ""
@@ -133,6 +135,19 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"Tiempo ha, la gran maga Sulla, fue encerrada en las Énterañas, un nexo cuyas "
+"energías místicas, caóticas en su naturaleza, son capaces de evitar que "
+"escape. Sin embargo, con el paso de centurias, armonizó sus capacidades con "
+"la vorágine de desconcierto que forma las Énterañas, y con eso ha comenzado "
+"a exhibir su domino en el plano material, anclando a sí regiones completas "
+"de cientos de mundos diferentes; de múltiples realidades y eras. Sulla "
+"experimenta con estos dispares fragmentos del cosmos manipulándolos, "
+"mezclándolos, y enviándolos de ida y vuelta entre las Énterañas y su origen. "
+"Quizá llegue el día en el que, habiendo dominado las Énterañas, Sulla rompa "
+"sus grilletes. Pero mientras se acerca dicho momento, ella seguirá "
+"entreteniéndose preparando escaramuzas entre las criaturas mortales que con "
+"su nefasta suerte hallan sido arrastrados a sus profundidades. Diseñado por "
+"Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -197,10 +212,8 @@ msgstr "Sur"
 # Sustituír aethermaw
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
-#, fuzzy
-#| msgid "Designed by Doc Paterson."
 msgid "Aethermaw — Created by Doc Paterson"
-msgstr "Aethermaw — Diseñado por Doc Paterson."
+msgstr "Énterañas — Diseñado por Doc Paterson."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:302
@@ -220,18 +233,35 @@ msgid ""
 "unite the two halves of the battlefield. The process will be complete by the "
 "end of turn 6.</span>\n"
 msgstr ""
+"La gran maga Sulla ha traído a vuestras tropas a este nexo tan estrafalario, "
+"y os exige que la entretengáis batallando entre vos.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"<span color='red'>Nota:</span>\n"
+"\n"
+"<span color='green'>Ninguna unidad podrá moverse a un hexágono con pedestal. "
+"Sin embargo, podrán ser reclutadas en, y moverse desde, dichos hexágonos.</"
+"span>\n"
+"\n"
+"<span color='green'>Con el comienzo del turno 4, la gran maga Sulla "
+"comenzará a unir ambas mitades del campo de batalla. Dicho proceso "
+"finalizará a la vez que el turno 6.</span>\n"
 
+# Hum, ruge, relacionado con animales como leones, es usado también cuando el estómago hace ruidos al estar hambriendo, creo que es la traducción más adecuada.
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:332
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "Las énterañas rugen."
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
 msgid "2p — Arcanclave Citadel"
 msgstr "2 jug. — Ciudadela de Arcanclave"
 
+# ¿Entonces respetamos a "Dauntless" o le cambiamos el nombre?
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
 msgid ""
@@ -254,6 +284,25 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
+"Hace tiempo, innumerables siglos antes de la era de Haldric, y mucho más "
+"allá de las lindes orientales del bosque Lintanir, se disputaron terribles e "
+"inmensas guerras. Los registros refieren a un poderoso mago de combate, un "
+"brillante táctico practicante de las artes de lo arcano, por sus seguidores "
+"conocido como el Valeroso. Durante la batalla de Arcanclave, el Valeroso y "
+"sus ejércitos contendieron contra la salvaje raza de demonios hechiceros "
+"conocidos como los Kah Ruuk. Rodeado por cientos de miles de Kah Ruuk, el "
+"Valeroso, con su magia, invocó a un poderoso elemental de tierra (el cual, "
+"por razones ignotas, estaba en deuda con el Valeroso). El elemental alzó "
+"rocas masivas de las profundidades de la tierra, reformándolas, en meros "
+"instantes, en las murallas y almenas de una colosal fortaleza. Miles de Kah "
+"Ruuk perecieron en su intento de irrumpir en la ciudadela de Arcanclave, el "
+"Valeroso y sus hombres salieron victoriosos. Más de cien años después, la "
+"reina guerrera Cysaun primera expulsó a una banda de nigromantes de las "
+"ruinas de la ciudadela de Arcanclave, y, en años posteriores, hizo de la "
+"zona un bastión militar. Se rumorea de la existencia de bastantes artefactos "
+"poderosos que, restos del reinado del gran mago el Valeroso, permanecen "
+"ocultos, perdidos en algún lugar entre las murallas de granito y obsidiana "
+"de la ciudadela de Arcanclave. Diseñado por Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -1091,6 +1140,9 @@ msgid ""
 "Players must forge strange alliances with the local inhabitants, in order to "
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
+"Los jugadores habrán de establecer insólitas alianzas con los habitantes "
+"nativos para poder sobrevivir en esta isla tan singular. Diseñado por Doc "
+"Paterson."
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
@@ -1101,12 +1153,12 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:351
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:487
 msgid "Big Baby Bo"
-msgstr ""
+msgstr "El niño grande Bo"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:115
 msgid "Rawffus the Dim"
-msgstr ""
+msgstr "Rawfuss el Obtuso"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:168
@@ -1116,7 +1168,7 @@ msgstr "Kolbur"
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:195
 msgid "Vilhelm Viskitynnyri"
-msgstr ""
+msgstr "Vilhelm Viskitynnyri"
 
 #. [unit]: type=Woodsman, id=Clockwork Boy
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:257
@@ -1124,27 +1176,28 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:717
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:729
 msgid "Clockwork Boy"
-msgstr ""
+msgstr "El chico mecánico"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:322
 msgid "Neki the Brutal"
-msgstr ""
+msgstr "Neki el brutal"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:365
 msgid "Drowsk Calbeht"
-msgstr ""
+msgstr "Drowsk Calbeht"
 
+# Hum, tomamos un juego de palabras para mantener el mensaje de la cadena lo mejor posible. (Gracias, Espreon)
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:428
 msgid "Rzrrt the Dauntless"
-msgstr ""
+msgstr "Rzrrt de Dauntless"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:469
 msgid "Sorrek, Chosen of Death"
-msgstr ""
+msgstr "Sorrek, mano izquierda de la Muerte"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:561
@@ -1154,42 +1207,42 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:811
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:947
 msgid "Big Baby Dro"
-msgstr ""
+msgstr "El niño grande Dro"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:575
 msgid "Gawffus the Dim"
-msgstr ""
+msgstr "Gawffus el Obtuso"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:628
 msgid "Rublok"
-msgstr ""
+msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:655
 msgid "Ulysses Mantyjuuri"
-msgstr ""
+msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:782
 msgid "Neki the Brute"
-msgstr ""
+msgstr "Neki el basto"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:825
 msgid "Claiomh Dubh"
-msgstr ""
+msgstr "Claiomh Dubh"
 
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:888
 msgid "Tyxrrn the Dauntless"
-msgstr ""
+msgstr "Tyxrrn de Dauntless"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:929
 msgid "Rukhos, Chosen of Death"
-msgstr ""
+msgstr "Rukhos, mano derecha de la Muerte"
 
 #. [multiplayer]: id=multiplayer_Howling_Ghost_Badlands
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:5
