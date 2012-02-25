@@ -83,13 +83,13 @@ bool have_addon_pbl_info(const std::string& addon_name)
 		file_exists(parentd+"/"+addon_name+"/_server.pbl");
 }
 
-void get_addon_info(const std::string& addon_name, config& cfg)
+void get_addon_pbl_info(const std::string& addon_name, config& cfg)
 {
 	scoped_istream stream = istream_file(get_pbl_file_path(addon_name));
 	read(cfg, *stream);
 }
 
-void set_addon_info(const std::string& addon_name, const config& cfg)
+void set_addon_pbl_info(const std::string& addon_name, const config& cfg)
 {
 	scoped_ostream stream = ostream_file(get_pbl_file_path(addon_name));
 	write(*stream, cfg);

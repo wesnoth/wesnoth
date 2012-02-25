@@ -104,7 +104,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	response_message.clear();
 
 	config cfg;
-	get_addon_info(id, cfg);
+	get_addon_pbl_info(id, cfg);
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = cfg["title"];
@@ -121,7 +121,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 			passphrase[n] = 'a' + (rand()%26);
 		}
 		cfg["passphrase"] = passphrase;
-		set_addon_info(id, cfg);
+		set_addon_pbl_info(id, cfg);
 
 		LOG_ADDONS << "automatically generated an initial passphrase for " << id << '\n';
 	}
@@ -155,7 +155,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	response_message.clear();
 
 	config cfg;
-	get_addon_info(id, cfg);
+	get_addon_pbl_info(id, cfg);
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = cfg["title"];
