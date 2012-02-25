@@ -2185,7 +2185,7 @@ WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
 
 		std::map<std::string, wml_menu_item*>& menu_items = resources::state_of_game->wml_menu_items;
 		if(menu_items.find(id) == menu_items.end()) {
-			WRN_NG << "trying to remove a non-existent menu item, ignoring\n";
+			WRN_NG << "trying to remove non-existent menu item '" << id << "', ignoring\n";
 			continue;
 		}
 
