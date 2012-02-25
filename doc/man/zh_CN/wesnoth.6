@@ -1,0 +1,207 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2011 wesnoth 韦诺之战
+.
+.SH 命名
+wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制的奇幻策略游戏
+.
+.SH 摘要
+.
+\fBwesnoth\fP [\fI选项\fP] [\fI数据路径\fP]
+.
+.SH 描述
+.
+韦诺之战（Battle for \fBWesnoth\fP）是一个奇幻回合制策略游戏。
+
+用精心挑选的部队打败所有的敌军领袖，管理好您的金币和村庄。所有单位都有自己的优势和缺陷：要取得胜利，必须发挥出您的部队的优势，同时阻止您的对手这么做。随着单位获得经验，他们会学会新的技能，变得更强大。使用您的语言进行游戏，通过与聪明的计算机对手对抗来测试自己的技能，当然也可以加入韦诺的在线玩家大社区。您还可以创建自己的单位，场景和战役，并与其他玩家分享。
+.
+.SH 选项
+.
+.TP 
+\fB\-\-bpp\fP\fI\ number\fP
+设定每象素占多少位。例如：\fB\-\-bpp 32\fP
+.TP 
+\fB\-c, \-\-campaign \ [<id_campaign>]\fP
+直接进入ID为 <id_campaign>
+的战役中。如果没有指定ID，则将出现一个选择菜单。\fB注意：\fP当使用本开关选项时，请确保将数据目录的路径作为最后一个参数给出，否则游戏会将战役或者场景的ID作为数据目录名。
+.TP 
+\fB\-\-campaign\-difficulty <难度>\fP
+指定战役的难度（从1到该战役的最大难度）。如果没有指定，那么战役难度选择界面会出现。
+.TP 
+\fB\-\-campaign\-scenario <id_scenario>\fP
+指定战役中的场景ID。默认为第一个场景。
+.TP 
+\fB\-\-config\-dir\fP\fI\ name\fP
+设置用户配置目录为$HOME或者Windows下“我的文档\我的游戏（My Documents\eMy
+Games）”下的\fIname\fP目录。也可以为配置目录指定一条绝对路径，此路径可以在$HOME或者“My Documents\eMy Games”之外。
+.TP 
+\fB\-\-config\-path\fP
+输出用户配置目录的路径并退出。
+.TP 
+\fB\-\-data\-dir <directory>\fP
+使用指定的目录作为数据目录
+.TP 
+\fB\-d, \-\-debug\fP
+在游戏中启用附加的命令模式选项。（关于命令模式的更多信息请参阅wiki页面：http://www.wesnoth.org/wiki/CommandMode）
+.TP 
+\fB\-e,\ \-\-editor\fP\fI\ file\fP
+直接启动游戏内置的地图编辑器。如果指定了\fIfile\fP，则和\fB\-e \-\-load\fP等价。
+.TP 
+\fB\-\-fps\fP
+在屏幕的一角显示游戏当前的每秒帧数（FPS）。
+.TP 
+\fB\-f, \-\-fullscreen\fP
+使用全屏模式运行游戏。
+.TP 
+\fB\-\-gunzip\fP\fI\ infile.gz\fP
+解压缩gzip文件，解压后去掉.gz后缀。文件\fIinfile.gz\fP将被删除。
+.TP 
+\fB\-\-gzip\fP\fI\ infile\fP
+将\fIinfile\fP压缩为gzip格式文件，文件名为\fIinfile\fP.gz。文件\fIinfile\fP将被删除。
+.TP 
+\fB\-h, \-\-help\fP
+在标准输出上显示命令行选项的概述，并退出。
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+从默认游戏存档目录读取存档\fIfile\fP。如果与 \fB\-e\fP 或 \fB\-\-editor\fP
+选项同时使用，启动地图编辑器并打开\fIfile\fP所对应的地图。如果是一个目录，则编辑器启动后自动打开读取地图对话框并定位到该目录。
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\ \fBdebug\fP。默认的级别是\fBerror\fP。
+.TP 
+\fB\-\-logdomains\ [filter]\fP
+列出游戏中定义的日志域（如果使用了\fBfilter\fP则只列出饱含该字符串的日志域）而后退出
+.TP 
+\fB\-\-max\-fps\fP
+游戏每秒能显示的帧数，这个值应该在1和1000之间，默认为\fB50\fP。
+.TP 
+\fB\-m, \-\-multiplayer\fP
+启动一个多人游戏。有更多选项可以与\fB\-\-multiplayer\fP一起使用，详见下述。只有这些选项可以跟在 \fB\-\-multiplayer\fP之后。
+.TP 
+\fB\-\-no\-delay\fP
+无任何延迟地运行游戏，以执行图形性能基准测试。使用 \fB\-\-nogui\fP 选项时会自动启用本选项。
+.TP 
+\fB\-\-nocache\fP
+禁止建立游戏数据的缓存。
+.TP 
+\fB\-\-nomusic\fP
+以无音乐的方式启动游戏。
+.TP 
+\fB\-\-nosound\fP
+以无音乐和音效的方式启动游戏。
+.TP 
+\fB\-\-path\fP
+显示游戏数据目录的名称并退出。
+.TP 
+\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
+预处理所指定的文件/文件夹。这些文件将被写入所指定的目标目录：包括一个普通的cfg文件和一个处理过的cfg文件。如果指定的是个文件夹，那么将根据已知的预处理器规则递归地预处理之。data/core/macros中的常用宏会在指定的资源之前被预处理。\fBdefine1,define2,...\fP——这些额外的定义将在预处理之前生效。如果想要添加这些定义，必须在前面加上“=”字符。如果“SKIP_CORE”在定义列表中，那么data/core不会被预处理。例如：
+\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result\fP 或者
+\fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+.TP 
+\fB\-\-preprocess\-input\-macros <source file>\fP
+仅供“\-\-preprocess“命令使用。用于指定一个包含了[preproce_defines]区块的文件，其中的定义将在预处理开始前生效。
+.TP 
+\fB\-\-preprocess\-output\-macros [<target file>]\fP
+仅供“\-\-preprocess”命令使用。将会输出目标文件中所有经过了预处理的宏。如果没有指定文件，那么目标文件将是preprocess命令所指定的目标目录中的“_MACROS_.cfg”。这个开关选项必须出现在\-\-preprocess命令之前。
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+设定屏幕分辨率。例如：\fB\-r 800x600\fP
+.TP 
+\fB\-s,\ \-\-server\ [host]\fP
+如果指定了主机的话，连接到指定的主机。否则，连接到首选项中的第一个服务器。例如：\fB\-\-server server.wesnoth.org\fP
+.TP 
+\fB\-\-strict\-validation\fP
+将验证错误视为致命错误。
+.TP 
+\fB\-t, \-\-test\fP
+使用一个小测试场景启动游戏。
+.TP 
+\fB\-\-validcache\fP
+假定缓存是有效的。（因此不进行缓存验证，危险）
+.TP 
+\fB\-v, \-\-version\fP
+显示版本号并退出。
+.TP 
+\fB\-w, \-\-windowed\fP
+使用窗口模式进入游戏。
+.TP 
+\fB\-\-with\-replay\fP
+通过和\fB\-\-load\fP选项一起使用，播放游戏录像。
+.
+.SH \-\-multiplayer的额外选项
+.
+多人游戏中特定于某一个阵营的选项用\fInumber\fP标记。\fInumber\fP要用代表某个阵营的数字替换。这个数字一般是1或者2，不过这取决于所选定场景中的玩家数量。
+.TP 
+\fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
+为该阵营的AI控制者选择一个配置文件来读取。
+.TP 
+\fB\-\-algorithm\fP\fInumber\fP\fB=\fP\fIvalue\fP
+为该阵营的AI控制者选择一个非标准的AI算法。可选值有：\fBidle_ai\fP和\fBsample_ai\fP。
+.TP 
+\fB\-\-controller\fP\fInumber\fP\fB=\fP\fIvalue\fP
+选择该阵营的控制者。可选值有：\fBhuman\fP和\fBai\fP。
+.TP 
+\fB\-\-era=\fP\fIvalue\fP
+使用这个选项来选择一个时代以代替\fB默认\fP时代。所选时代由id确定。时代信息在\fBdata/multiplayer/eras.cfg\fP文件中描述。
+.TP 
+\fB\-\-exit\-at\-end\fP
+当场景结束时直接退出游戏而不显示需要用户点击“确认”按钮的胜利/失败对话框。这个选项也可以用来进行脚本化的性能基准测试。
+.TP 
+\fB\-\-nogui\fP
+启动游戏，但不启用图形用户界面（GUI）。此选项必须在\fB\-\-multiplayer\fP之前使用才有效。
+.TP 
+\fB\-\-parm\fP\fInumber\fP\fB=\fP\fIname\fP\fB:\fP\fIvalue\fP
+为该阵营设定附加参数。这个参数依赖于\fB\-\-controller\fP和\fB\-\-algorithm\fP的配置情况。这个选项应该只对自己设计AI的人比较有用。（目前还没有完整的文档）
+.TP 
+\fB\-\-scenario=\fP\fIvalue\fP
+通过id选择多人游戏地图。默认地图id是\fBmultiplayer_The_Freelands\fP。
+.TP 
+\fB\-\-side\fP\fInumber\fP\fB=\fP\fIvalue\fP
+为当前阵营选择当前时代中的一个派系。所选派系由id决定。派系在文件data/multiplayer.cfg文件中描述。
+.TP 
+\fB\-\-turns=\fP\fIvalue\fP
+设置所选场景的回合数限制。默认值为\fB50\fP。
+.
+.SH 退出状态码
+.
+正常退出时的状态码为0。状态码1代表发生了（SDL、视频、字体等）初始化错误。状态码2代表命令行选项中有错误。
+.
+.SH 作者
+.
+由David White <davidnwhite@verizon.net> 编写。
+.br
+经Nils Kneuper <crazy\-ivanovic@gmx.net>，ott <ott@gaon.net> 和
+Soliton <soliton.de@gmail.com> 编辑。
+.br
+这个手册页最初由 Cyril Bouthors <cyril@bouthors.org> 编写。
+.br
+请访问官方主页：http://www.wesnoth.org/
+以及Wesnoth中文爱好者主页：http://www.wesnoth.cn
+.
+.SH 版权
+.
+版权所有 \(co 2003\-2011 David White <davidnwhite@verizon.net>
+.br
+这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
+.
+.SH 参见
+.
+\fBwesnothd\fP(6).
