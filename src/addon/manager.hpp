@@ -57,15 +57,6 @@ void get_addon_pbl_info(const std::string& addon_name, class config& cfg);
  */
 void set_addon_pbl_info(const std::string& addon_name, const class config& cfg);
 
-/**
- * Replaces underscores to dress up file or dirnames as add-on titles.
- *
- * @todo In the future we should store more local information about add-ons and use
- *       this only as a fallback; it could be desirable to fetch translated names as well
- *       somehow.
- */
-std::string make_addon_title(const std::string& id);
-
 /** Returns a list of local add-ons that can be published. */
 std::vector<std::string> available_addons();
 

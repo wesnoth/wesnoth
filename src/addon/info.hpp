@@ -128,4 +128,13 @@ void read_addons_list(const config& cfg, addons_list& dest);
  */
 std::string size_display_string(double size);
 
+/**
+ * Replaces underscores to dress up file or dirnames as add-on titles.
+ *
+ * @todo In the future we should store more local information about add-ons and use
+ *       this only as a fallback; it could be desirable to fetch translated names as well
+ *       somehow.
+ */
+std::string make_addon_title(const std::string& id);
+
 #endif

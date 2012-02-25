@@ -400,10 +400,3 @@ const version_info& get_addon_version_info(const std::string& addon)
 	std::map< std::string, version_info >::iterator entry = version_info_cache.find(addon);
 	return entry != version_info_cache.end() ? entry->second : nil;
 }
-
-std::string make_addon_title(const std::string& id)
-{
-	std::string ret(id);
-	std::replace(ret.begin(), ret.end(), '_', ' ');
-	return ret;
-}

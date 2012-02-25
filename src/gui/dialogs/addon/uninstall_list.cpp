@@ -15,7 +15,7 @@
 
 #include "gui/dialogs/addon/uninstall_list.hpp"
 
-#include "addon/manager.hpp"
+#include "addon/info.hpp"
 #include "foreach.hpp"
 #include "gui/widgets/grid.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

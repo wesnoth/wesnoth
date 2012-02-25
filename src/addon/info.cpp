@@ -162,3 +162,10 @@ std::string size_display_string(double size)
 		return "";
 	}
 }
+
+std::string make_addon_title(const std::string& id)
+{
+	std::string ret(id);
+	std::replace(ret.begin(), ret.end(), '_', ' ');
+	return ret;
+}
