@@ -109,8 +109,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = cfg["title"];
 	if(i18n_symbols["addon_title"].empty()) {
-		// TODO: prettify if .title is missing in the .pbl!
-		i18n_symbols["addon_title"] = id;
+		i18n_symbols["addon_title"] = make_addon_title(id);
 	}
 
 	std::string passphrase = cfg["passphrase"];
@@ -161,8 +160,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = cfg["title"];
 	if(i18n_symbols["addon_title"].empty()) {
-		// TODO: prettify if .title is missing in the .pbl!
-		i18n_symbols["addon_title"] = id;
+		i18n_symbols["addon_title"] = make_addon_title(id);
 	}
 
 	config request_buf, response_buf;
