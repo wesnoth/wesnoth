@@ -887,6 +887,7 @@ if(ENABLE_TESTS)
 		tests/utils/fake_event_source.cpp 
 		tests/utils/game_config_manager.cpp
 		tests/utils/play_scenario.cpp
+		tests/test_addons.cpp
 		tests/test_commandline_options.cpp
 		tests/test_config_cache.cpp
 		tests/test_formula_ai.cpp
