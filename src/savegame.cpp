@@ -478,6 +478,8 @@ void delete_game(const std::string& name)
 
 	remove((get_saves_dir() + "/" + name).c_str());
 	remove((get_saves_dir() + "/" + modified_name).c_str());
+
+	save_index_manager.remove(name);
 }
 
 loadgame::loadgame(display& gui, const config& game_config, game_state& gamestate)
