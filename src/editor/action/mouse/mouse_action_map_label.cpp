@@ -1,4 +1,4 @@
-/* $Id: mouse_action_map_label.cpp 49182 2011-04-12 02:32:34Z fendrin $ */
+/* $Id$ */
 /*
    Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
