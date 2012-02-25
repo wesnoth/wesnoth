@@ -19,8 +19,6 @@
 #include "config.hpp"
 #include "foreach.hpp"
 
-#include <cstring>
-
 const unsigned short default_campaignd_port = 15002;
 
 namespace {
@@ -31,19 +29,11 @@ namespace {
 	};
 }
 
-static bool two_dots(char a, char b)
-{
-	return a == '.' && b == '.';
-}
-
 bool addon_name_legal(const std::string& name)
 {
-	if(name == "" || strlen(name.c_str()) == 0 || name == "." ||
-	   std::find(name.begin(),name.end(),'/') != name.end() ||
-	   std::find(name.begin(),name.end(),'\\') != name.end() ||
-	   std::find(name.begin(),name.end(),':') != name.end() ||
-	   std::find(name.begin(),name.end(),'~') != name.end() ||
-	   std::adjacent_find(name.begin(),name.end(),two_dots) != name.end()) {
+	if(name.empty() || name == "." ||
+	   name.find_first_of("/:\\~") != std::string::npos ||
+	   name.find("..") != std::string::npos) {
 		return false;
 	} else {
 		return true;
