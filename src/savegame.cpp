@@ -155,6 +155,10 @@ public:
 		summary["mod_time"] = str_cast(static_cast<int>(modified));
 		write_save_index();
 	}
+	void remove(const std::string& name) {
+		config& root = data();
+		root.remove_attribute(name);
+	}
 	void set_modified(const std::string& name, const time_t& modified) {
 		modified_[name] = modified;
 	}
@@ -990,7 +994,7 @@ void savegame::finish_save_game(const config_writer &out)
 		if(!out.good()) {
 			throw game::save_game_failed(_("Could not write to file"));
 		}
-		save_index_manager.rebuild(gamestate_.classification().label);
+		save_index_manager.remove(gamestate_.classification().label);
 	} catch(io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
