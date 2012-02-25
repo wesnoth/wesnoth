@@ -147,46 +147,6 @@ inline std::string auto_addon_title(const addon_info& addon)
 	}
 }
 
-/**
- * Strip the ".cfg" extension.
- *
- * @param files      List of files in the add-ons directory.
- * @param dirs       List of subdirectories in the add-ons directory.
- * @param parent_dir Path to the add-ons directory.
- */
-void prepare_addons_list_for_display(std::vector<std::string>& files, std::vector<std::string>& dirs, const std::string& parent_dir)
-{
-	std::vector<std::string>::iterator i = files.begin();
-	while(i != files.end())
-	{
-		const std::string::size_type pos = i->rfind(".cfg", i->size());
-		if(pos == std::string::npos) {
-			i = files.erase(i);
-		} else {
-			i->erase(pos);
-			// remove it from the directory list too
-			for(std::vector<std::string>::iterator j = dirs.begin(); j != dirs.end() ; ++j) {
-				if (*i == *j) {
-					dirs.erase(j);
-					break;
-				}
-			};
-			++i;
-		}
-	}
-	// process items of type Addon/_main.cfg too
-	i = dirs.begin();
-	while(i != dirs.end())
-	{
-		if (file_exists(parent_dir + *i + "/_main.cfg")) {
-			files.push_back(*i);
-			++i;
-		} else {
-			i = dirs.erase(i);
-		}
-	}
-}
-
 /** Warns the user about unresolved dependencies and installs them if they choose to do so. */
 bool do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon, bool& wml_changed)
 {
@@ -801,13 +761,7 @@ bool uninstall_local_addons(display& disp)
 	static const std::string list_lead = "\n\n";
 	static const std::string list_sep = "\n";
 
-	std::vector<std::string> addons;
-	std::vector<std::string> addon_dirs;
-
-	const std::string parentdir = get_addon_campaigns_dir() + "/";
-
-	get_files_in_dir(parentdir, &addons, &addon_dirs, FILE_NAME_ONLY);
-	prepare_addons_list_for_display(addons, addon_dirs, parentdir);
+	const std::vector<std::string>& addons = installed_addons();
 
 	if(addons.empty()) {
 		gui2::show_error_message(disp.video(),
