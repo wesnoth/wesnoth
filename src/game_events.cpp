@@ -1879,7 +1879,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 	}
 	//TODO I don't know about that error throwing. Sometimes a unit is just not available,
 	//the designer needs to check with [have_unit] or fetch the recall event.
-	ERR_NG << "Trying to recall unit failed!\n";
+	ERR_NG << "A [recall] tag with the following content failed:\n" << cfg.get_config().debug();
 }
 
 WML_HANDLER_FUNCTION(object, event_info, cfg)
