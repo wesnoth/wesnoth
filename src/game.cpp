@@ -17,6 +17,7 @@
 
 #include "about.hpp"
 #include "addon/manager.hpp"
+#include "addon/manager_ui.hpp"
 #include "commandline_options.hpp"
 #include "game_controller.hpp"
 #include "game_controller_new.hpp"
@@ -554,9 +555,7 @@ static int do_gameloop(int argc, char** argv)
 			help::show_help(game->disp());
 			continue;
 		} else if(res == gui2::ttitle_screen::GET_ADDONS) {
-			try {
-				manage_addons(game->disp());
-			} catch(config_changed_exception const&) {
+			if(manage_addons(game->disp())) {
 				game->reload_changed_game_config();
 			}
 			continue;

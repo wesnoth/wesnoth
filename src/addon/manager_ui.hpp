@@ -33,7 +33,14 @@ class display;
  */
 bool addons_manager_ui(display& disp, const std::string& remote_address, bool show_updates_only);
 
+/**
+ * Shows the add-ons server connection dialog, for access to the various management front-ends.
+ *
+ * @param disp Display object on which to render UI elements.
+ *
+ * @return @a true when one or more add-ons have been successfully installed or
+ *         removed, thus requiring a local WML cache refresh. @a false otherwise.
+ */
+bool manage_addons(display& disp);
 
 #endif
-
-

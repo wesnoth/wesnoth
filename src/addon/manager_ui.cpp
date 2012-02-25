@@ -26,6 +26,8 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon/description.hpp"
+#include "gui/dialogs/addon/uninstall_list.hpp"
+#include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
@@ -152,6 +154,46 @@ inline std::string auto_addon_title(const addon_info& addon)
 		return make_addon_title(addon.id);
 	} else {
 		return addon.title;
+	}
+}
+
+/**
+ * Strip the ".cfg" extension.
+ *
+ * @param files      List of files in the add-ons directory.
+ * @param dirs       List of subdirectories in the add-ons directory.
+ * @param parent_dir Path to the add-ons directory.
+ */
+void prepare_addons_list_for_display(std::vector<std::string>& files, std::vector<std::string>& dirs, const std::string& parent_dir)
+{
+	std::vector<std::string>::iterator i = files.begin();
+	while(i != files.end())
+	{
+		const std::string::size_type pos = i->rfind(".cfg", i->size());
+		if(pos == std::string::npos) {
+			i = files.erase(i);
+		} else {
+			i->erase(pos);
+			// remove it from the directory list too
+			for(std::vector<std::string>::iterator j = dirs.begin(); j != dirs.end() ; ++j) {
+				if (*i == *j) {
+					dirs.erase(j);
+					break;
+				}
+			};
+			++i;
+		}
+	}
+	// process items of type Addon/_main.cfg too
+	i = dirs.begin();
+	while(i != dirs.end())
+	{
+		if (file_exists(parent_dir + *i + "/_main.cfg")) {
+			files.push_back(*i);
+			++i;
+		} else {
+			i = dirs.erase(i);
+		}
 	}
 }
 
@@ -762,4 +804,134 @@ bool addons_manager_ui(display& disp, const std::string& remote_address, bool sh
 	}
 
 	return need_wml_cache_refresh;
+}
+
+bool uninstall_local_addons(display& disp)
+{
+	static const std::string list_lead = "\n\n";
+	static const std::string list_sep = "\n";
+
+	std::vector<std::string> addons;
+	std::vector<std::string> addon_dirs;
+
+	const std::string parentdir = get_addon_campaigns_dir() + "/";
+
+	get_files_in_dir(parentdir, &addons, &addon_dirs, FILE_NAME_ONLY);
+	prepare_addons_list_for_display(addons, addon_dirs, parentdir);
+
+	if(addons.empty()) {
+		gui2::show_error_message(disp.video(),
+			_("You have no add-ons installed."));
+		return false;
+	}
+
+	gui::menu::basic_sorter sorter;
+	sorter.set_alpha_sort(1);
+
+	int res;
+
+	std::vector<std::string> remove_ids, remove_names;
+
+	do {
+		gui2::taddon_uninstall_list dlg(addons);
+		dlg.show(disp.video());
+
+		remove_ids = dlg.selected_addons();
+		if(remove_ids.empty()) {
+			return false;
+		}
+
+		remove_names.clear();
+
+		foreach(const std::string& id, remove_ids) {
+			remove_names.push_back(make_addon_title(id));
+		}
+
+		const std::string confirm_message = _n(
+			"Are you sure you want to remove the following installed add-on?",
+			"Are you sure you want to remove the following installed add-ons?",
+			remove_ids.size()) + list_lead + utils::join(remove_names, list_sep);
+
+		res = gui2::show_message(disp.video()
+				, _("Confirm")
+				, confirm_message
+				, gui2::tmessage::yes_no_buttons);
+	} while (res != gui2::twindow::OK);
+
+	std::vector<std::string> failed_names, skipped_names, succeeded_names;
+
+	foreach(const std::string& id, remove_ids) {
+		const std::string& name = make_addon_title(id);
+
+		if(have_addon_pbl_info(id) || have_addon_in_vcs_tree(id)) {
+			skipped_names.push_back(name);
+		} else if(remove_local_addon(id)) {
+			succeeded_names.push_back(name);
+		} else {
+			failed_names.push_back(name);
+		}
+	}
+
+	if(!skipped_names.empty()) {
+		const std::string dlg_msg = _n(
+			"The following add-on appears to have publishing or version control information stored locally, and will not be removed:",
+			"The following add-ons appear to have publishing or version control information stored locally, and will not be removed:",
+			skipped_names.size());
+
+		gui2::show_error_message(
+			disp.video(), dlg_msg + list_lead + utils::join(skipped_names, list_sep));
+	}
+
+	if(!failed_names.empty()) {
+		gui2::show_error_message(disp.video(), _n(
+			"The following add-on could not be deleted properly:",
+			"The following add-ons could not be deleted properly:",
+			failed_names.size()) + list_lead + utils::join(failed_names, list_sep));
+	}
+
+	if(!succeeded_names.empty()) {
+		const std::string dlg_title =
+			_n("Add-on Deleted", "Add-ons Deleted", succeeded_names.size());
+		const std::string dlg_msg = _n(
+			"The following add-on was successfully deleted:",
+			"The following add-ons were successfully deleted:",
+			succeeded_names.size());
+
+		gui2::show_transient_message(
+			disp.video(), dlg_title,
+			dlg_msg + list_lead + utils::join(succeeded_names, list_sep));
+
+		return true;
+	}
+
+	return false;
+}
+
+bool manage_addons(display& disp)
+{
+	static const int addon_download  = 0;
+	// NOTE: the following two values are also known by WML, so don't change them.
+	static const int addon_uninstall = 2;
+	static const int addon_update    = 3;  
+
+	std::string host_name = preferences::campaign_server();
+	const bool have_addons = !installed_addons().empty();
+
+	gui2::taddon_connect addon_dlg(host_name, have_addons, have_addons);
+	addon_dlg.show(disp.video());
+	int res = addon_dlg.get_retval();
+
+	if(res == gui2::twindow::OK) {
+		res = addon_download;
+	}
+
+	switch(res) {
+		case addon_update:
+		case addon_download:
+			return addons_manager_ui(disp, host_name, res == addon_update);
+		case addon_uninstall:
+			return uninstall_local_addons(disp);
+		default:
+			return false;
+	}
 }
