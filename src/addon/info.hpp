@@ -95,6 +95,17 @@ struct addon_info
 
 	void write(config& cfg) const;
 
+	/**
+	 * Get a title or automatic title for display.
+	 *
+	 * If the real @a title is empty, the returned value is the @a id with
+	 * underscores replaced with blanks.
+	 *
+	 * @todo FIXME: Is it even possible for the add-ons server to provide untitled
+	 *       add-ons in its reply anymore? Titles seem to be required at upload time.
+	 */
+	std::string display_title() const;
+
 	/** Get an icon path fixed for display (e.g. when TC is missing, or the image doesn't exist). */
 	std::string display_icon() const;
 

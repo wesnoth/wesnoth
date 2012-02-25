@@ -136,17 +136,6 @@ std::string get_translatable_addon_type(ADDON_TYPE type)
 	}
 }
 
-// FIXME: is it even possible for the add-ons server to provide untitled
-// add-ons in its reply anymore? Titles seem to be required at upload time.
-inline std::string auto_addon_title(const addon_info& addon)
-{
-	if(addon.title.empty()) {
-		return make_addon_title(addon.id);
-	} else {
-		return addon.title;
-	}
-}
-
 /** Warns the user about unresolved dependencies and installs them if they choose to do so. */
 bool do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon, bool& wml_changed)
 {
@@ -211,7 +200,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		const std::string& display_icon = addon.display_icon();
 		const std::string& display_version = addon.version.str();
 
-		std::string display_title = auto_addon_title(addon);
+		std::string display_title = addon.display_title();
 		utils::truncate_as_wstring(display_title, 20);
 		std::string display_author = addon.author;
 		utils::truncate_as_wstring(display_author, 16);
@@ -483,7 +472,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 		std::string display_version = addon.version.str();
 		std::string display_old_version = tracking[addon.id].installed_version;
-		std::string display_title = auto_addon_title(addon);
+		std::string display_title = addon.display_title();
 		std::string display_author = addon.author;
 
 		// Add negative sizes to reverse the sort order.

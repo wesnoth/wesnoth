@@ -15,6 +15,7 @@
 
 #include "addon/info.hpp"
 
+#include "addon/manager.hpp"
 #include "foreach.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
@@ -101,6 +102,15 @@ void addon_info::write(config& cfg) const
 	}
 
 	cfg["dependencies"] = utils::join(this->depends);
+}
+
+std::string addon_info::display_title() const
+{
+	if(this->title.empty()) {
+		return make_addon_title(this->id);
+	} else {
+		return this->title;
+	}
 }
 
 std::string addon_info::display_icon() const
