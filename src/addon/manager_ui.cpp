@@ -825,9 +825,6 @@ bool uninstall_local_addons(display& disp)
 		return false;
 	}
 
-	gui::menu::basic_sorter sorter;
-	sorter.set_alpha_sort(1);
-
 	int res;
 
 	std::vector<std::string> remove_ids, remove_names;
