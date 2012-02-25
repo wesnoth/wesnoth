@@ -83,6 +83,26 @@ void addon_info::read(const config& cfg)
 	this->depends = utils::split(cfg["dependencies"].str());
 }
 
+void addon_info::write(config& cfg) const
+{
+	cfg["id"] = this->id;
+	cfg["title"] = this->title;
+	cfg["description"] = this->description;
+	cfg["icon"] = this->icon;
+	cfg["version"] = this->version.str();
+	cfg["author"] = this->author;
+	cfg["size"] = this->size;
+	cfg["downloads"] = this->downloads;
+	cfg["uploads"] = this->uploads;
+	cfg["type"] = this->type;
+
+	foreach(const std::string& locale_id, this->locales) {
+		cfg.add_child("translation")["language"] = locale_id;
+	}
+
+	cfg["dependencies"] = utils::join(this->depends);
+}
+
 std::string addon_info::display_icon() const
 {
 	std::string ret = icon;

@@ -93,6 +93,8 @@ struct addon_info
 
 	void read(const config& cfg);
 
+	void write(config& cfg) const;
+
 	/** Get an icon path fixed for display (e.g. when TC is missing, or the image doesn't exist). */
 	std::string display_icon() const;
 
