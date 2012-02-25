@@ -112,6 +112,13 @@ struct addon_info
 	std::set<std::string> resolve_dependencies(const addons_list& addons) const;
 };
 
+/**
+ * Parse the specified add-ons list WML into an actual addons_list object.
+ *
+ * @param cfg  Add-ons list WML, currently a [campaigns] node from a server response.
+ * @param dest Target addons_list object. It will be cleared first.
+ */
+void read_addons_list(const config& cfg, addons_list& dest);
 
 /**
  * Get a human-readable representation of the specified byte count.

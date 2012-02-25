@@ -138,6 +138,22 @@ std::set<std::string> addon_info::resolve_dependencies(const addons_list& addons
 	return deps;
 }
 
+void read_addons_list(const config& cfg, addons_list& dest)
+{
+	dest.clear();
+
+	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness */
+	const config::const_child_itors &addon_cfgs = cfg.child_range("campaign");
+	foreach(const config& addon_cfg, addon_cfgs) {
+		const std::string& id = addon_cfg["name"].str();
+		if(dest.find(id) != dest.end()) {
+			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them\n";
+			continue;
+		}
+		dest[id].read(addon_cfg);
+	}
+}
+
 std::string size_display_string(double size)
 {
 	if(size > 0.0) {

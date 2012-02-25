@@ -98,17 +98,7 @@ bool get_addons_list(addons_client& client, addons_list& list)
 		return false;
 	}
 
-	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness */
-	const config::const_child_itors &addon_cfgs = cfg.child_range("campaign");
-
-	foreach(const config& addon_cfg, addon_cfgs) {
-		const std::string& id = addon_cfg["name"].str();
-		if(list.find(id) != list.end()) {
-			ERR_AC << "add-ons server list has multiple entries for '" << id << "', not good; ignoring them\n";
-			continue;
-		}
-		list[id].read(addon_cfg);
-	}
+	read_addons_list(cfg, list);
 
 	return true;
 }
