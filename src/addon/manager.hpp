@@ -25,8 +25,6 @@ class config;
 #include <vector>
 #include <utility>
 
-typedef std::pair< std::string, ADDON_TYPE > addon_list_item;
-
 bool remove_local_addon(const std::string& addon);
 
 /**
