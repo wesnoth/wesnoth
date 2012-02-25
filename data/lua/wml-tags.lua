@@ -746,7 +746,7 @@ function wml_actions.harm_unit(cfg)
 			local secondary_attack = helper.get_child(cfg, "secondary_attack")
 			local harmer_filter = helper.get_child(cfg, "filter_second")
 			local experience = cfg.experience
-			local resistance_multiplier = tonumber(cfg.resistance_multiplier) or 1 
+			local resistance_multiplier = tonumber(cfg.resistance_multiplier) or 1
 			if harmer_filter then harmer = wesnoth.get_units(harmer_filter)[1] end
 			-- end of block to support $this_unit
 
