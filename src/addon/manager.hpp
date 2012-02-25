@@ -26,7 +26,6 @@ class config;
 #include <utility>
 
 typedef std::pair< std::string, ADDON_TYPE > addon_list_item;
-class config_changed_exception {};
 
 bool remove_local_addon(const std::string& addon);
 
