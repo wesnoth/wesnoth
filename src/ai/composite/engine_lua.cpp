@@ -34,7 +34,7 @@
 #include "../../scripting/lua.hpp"
 #include "../../util.hpp"
 #include "../../unit.hpp"
-#include <unit_map.hpp>
+#include "../../unit_map.hpp"
 
 
 namespace ai {
