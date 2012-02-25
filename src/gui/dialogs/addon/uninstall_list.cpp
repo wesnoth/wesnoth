@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/addon/uninstall_list.hpp"
 
+#include "addon/manager.hpp"
 #include "foreach.hpp"
 #include "gui/widgets/grid.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -27,16 +28,6 @@
 #include "gui/widgets/window.hpp"
 
 #include <algorithm>
-
-namespace {
-	std::string make_addon_name(const std::string& id)
-	{
-		std::string r(id);
-		std::replace(r.begin(), r.end(), '_', ' ');
-		return r;
-	}
-
-}
 
 namespace gui2 {
 
@@ -51,7 +42,7 @@ void taddon_uninstall_list::pre_show(CVideo& /*video*/, twindow& window)
 	this->selections_.clear();
 
 	foreach(const std::string& id, this->ids_) {
-		this->names_.push_back(make_addon_name(id));
+		this->names_.push_back(make_addon_title(id));
 		this->selections_[id] = false;
 
 		std::map<std::string, string_map> data;
