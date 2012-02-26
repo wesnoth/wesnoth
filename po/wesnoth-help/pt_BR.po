@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:34+0100\n"
-"PO-Revision-Date: 2011-05-03 12:03-0300\n"
-"Last-Translator: Diego Inácio Goergen <thegoergen@gmail.com>\n"
+"POT-Creation-Date: 2012-01-22 15:00+0100\n"
+"PO-Revision-Date: 2012-02-14 20:57-0300\n"
+"Last-Translator: kaao <bruno_macabeus_aquino@yahoo.com.br>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -628,13 +628,10 @@ msgstr "Ilha Verde"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
-#, fuzzy
-#| msgid ""
-#| "A bigger island lying in the <ref>dst='great_ocean' text='great ocean'</"
-#| "ref>."
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
-msgstr "Uma grande ilha no <ref>dst='great_ocean' text='Grande Oceano'</ref>."
+msgstr ""
+"A maior ilha localizada no <ref>dst='great_ocean' text='Grande Oceano'</ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
@@ -857,6 +854,8 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
+"Montanhas praticamente impassáveis entre<ref>dst='arkan_thoria' text='Arkan-"
+"thoria'</ref> e <ref>dst='far_north' text='Northern Plains'</ref>."
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
@@ -1307,6 +1306,8 @@ msgstr ""
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
+" vermelho se você não pode se mover e atacar, ou se o usuário terminou a vez "
+"de sua unidade"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
@@ -1771,13 +1772,6 @@ msgstr "Hora do Dia"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
-#| " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-#| " Liminal units get +25% damage during twilight.\n"
-#| " Neutral units are unaffected by the time of day."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1790,8 +1784,7 @@ msgstr ""
 "noite.\n"
 " Unidades Caóticas fazem +25% de dano durante a noite, e −25% durante o "
 "dia.\n"
-" Liminal units fazem +25% de dano durante os crepúsculos (amanhecer e "
-"entardecer).\n"
+" Unidades Liminal fazem -25% de dano o dia e a noite.\n"
 " Unidades Neutras não são afetadas pela hora do dia."
 
 #. [topic]: id=time_of_day
@@ -2618,16 +2611,12 @@ msgstr "Mortos-Vivos"
 
 #. [topic]: id=traits_aged
 #: data/core/help.cfg:477
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='weak'</italic> get a −1 increment in "
-#| "hitpoints and melee damage."
 msgid ""
 "Units with trait <italic>text='aged'</italic> get a −8 increment in "
 "hitpoints and a −1 increment in movement and melee damage."
 msgstr ""
-"As unidades com a característica \"Fraco\" recebem -1 em pontos de vida (HP) "
-"e no dano corpo a corpo."
+"As unidades com a característica <italic>text='Fraco'</italic> recebem -8 em "
+"pontos de vida (HP) e -1 no dano corpo a corpo e movimento."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:485
@@ -4432,16 +4421,12 @@ msgstr ""
 "distância, mas apenas quando ela ataca."
 
 #: data/core/macros/special-notes.cfg:77
-#, fuzzy
-#| msgid ""
-#| " The unit has magical attacks, which always have a high chance of hitting "
-#| "an opponent."
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
 msgstr ""
-"Os ataques à distância desta unidade são mágicos, e sempre têm uma alta "
-"chance de acertar um oponente."
+"Os ataques desta unidade são mágicos, e sempre têm uma alta chance de "
+"acertar um oponente."
 
 #: data/core/macros/special-notes.cfg:80
 msgid ""
@@ -4629,10 +4614,8 @@ msgstr ""
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
-#, fuzzy
-#| msgid "Receive only 40% defense in land-based villages"
 msgid "Receives only 50% defense in land-based villages"
-msgstr "Recebe apenas 40% de defesa nas vilas"
+msgstr "Recebe apenas 50% de defesa nas vilas"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:208
@@ -4667,7 +4650,7 @@ msgstr "ineficaz"
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:256
 msgid "aged"
-msgstr ""
+msgstr "Fraco"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:257
@@ -5188,22 +5171,16 @@ msgstr "Construtos"
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:199
-#, fuzzy
-#| msgid ""
-#| "Animated neither by natural life nor by necromancy, the term ”mechanical” "
-#| "describes a created artifact of an intelligent being. Most mechanical "
-#| "things neither move nor think on their own, but some do so as a result of "
-#| "magical enchantment."
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
 "intelligent being. Most mechanical things neither move nor think on their "
 "own, but some do so as a result of magical enchantment."
 msgstr ""
-"Seres animados nem por vida natural nem por necromancia, o termo \"mecânico"
-"\" descreve um artefato criado por um ser inteligente. Muitas coisas "
-"mecânicas nem se movem nem possuem inteligência própria, mas muitos fazem "
-"algumas coisas devido à magia."
+"Seres animados nem por vida natural nem por necromancia, o "
+"<italic>text='mecânico'</italic> descreve um artefato criado por um ser "
+"inteligente. Muitas coisas mecânicas nem se movem nem possuem inteligência "
+"própria, mas muitos fazem algumas coisas devido à magia."
 
 #. [race]: id=merman
 #: data/core/units.cfg:208
@@ -5717,36 +5694,3 @@ msgstr "Ajuda para Battle for Wesnoth"
 #: src/help.cpp:3216
 msgid "Parse error when parsing help text: "
 msgstr "Erro de formato ao ler o texto de ajuda: "
-
-#, fuzzy
-#~| msgid "race^Human"
-#~ msgid "race^Khalifate Human"
-#~ msgstr "Humano"
-
-#, fuzzy
-#~| msgid "race+female^Human"
-#~ msgid "race+female^Khalifate Human"
-#~ msgstr "Humana"
-
-#, fuzzy
-#~| msgid "race+plural^Mechanical"
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "Construtos"
-
-#, fuzzy
-#~| msgid "race^Human"
-#~ msgid "race^Falcon"
-#~ msgstr "Humano"
-
-#, fuzzy
-#~| msgid "race+female^Human"
-#~ msgid "race+female^Falcon"
-#~ msgstr "Humana"
-
-#, fuzzy
-#~| msgid "race^Humans"
-#~ msgid "race^Falcons"
-#~ msgstr "Humanos"
-
-#~ msgid "<header>text='Race specific topics'</header>"
-#~ msgstr "<header>text='Tópicos específicos de raças'</header>"

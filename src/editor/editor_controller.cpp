@@ -504,6 +504,8 @@ void editor_controller::generate_map_dialog()
 		if (map_string.empty()) {
 			gui2::show_transient_message(gui().video(), "", _("Map creation failed."));
 		} else {
+		//	config map;
+		//	map["data"] = map_string;
 			editor_map new_map(game_config_, map_string);
 			editor_action_whole_map a(new_map);
 			perform_refresh(a);

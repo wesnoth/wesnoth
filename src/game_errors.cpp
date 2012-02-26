@@ -18,4 +18,5 @@
 std::string game::load_game_exception::game;
 bool game::load_game_exception::show_replay;
 bool game::load_game_exception::cancel_orders;
+bool game::load_game_exception::select_difficulty;
 std::string game::load_game_exception::difficulty;

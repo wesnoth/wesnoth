@@ -21,7 +21,6 @@
 #define WB_MOVE_HPP_
 
 #include "action.hpp"
-#include "map_location.hpp"
 
 struct temporary_unit_mover;
 

@@ -67,7 +67,7 @@ void show_objectives(const config &level, const std::string &objectives);
  * the game in show_replay. If show_replay is NULL, then the user will not be
  * asked if they want to show a replay.
  */
-std::string load_game_dialog(display& disp, const config& terrain_config, bool* show_replay, bool* cancel_orders);
+std::string load_game_dialog(display& disp, const config& terrain_config, bool* select_difficulty, bool* show_replay, bool* cancel_orders);
 
 /** Show unit-stats in a side-pane to unit-list, recall-list, etc. */
 class unit_preview_pane : public gui::preview_pane

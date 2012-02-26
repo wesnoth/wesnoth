@@ -514,33 +514,17 @@ namespace game_events {
 		lg::wml_error << message << '\n';
 	}
 
-	std::vector<int> get_sides_vector(const vconfig& cfg, const bool only_ssf, const bool only_side)
+	std::vector<int> get_sides_vector(const vconfig& cfg)
 	{
-		if(only_ssf) {
-			side_filter filter(cfg);
-			return filter.get_teams();
-		}
-
 		const config::attribute_value sides = cfg["side"];
 		const vconfig &ssf = cfg.child("filter_side");
 
-		if (!ssf.null() && !only_side) {
+		if (!ssf.null()) {
 			if(!sides.empty()) { WRN_NG << "ignoring duplicate side filter information (inline side=)\n"; }
 			side_filter filter(ssf);
 			return filter.get_teams();
 		}
 
-		if (sides.blank()) {
-			if(only_side) put_wml_message("error", "empty side= is deprecated, use side=1");
-			//To deprecate the current default (side=1), require one of the currently two ways
-			//of specifying a side - putting inline side= or [filter_side].
-			else put_wml_message("error", "empty side= and no [filter_side] is deprecated, use either side=1 or [filter_side]");
-			std::vector<int> result;
-			result.push_back(1); // we make sure the current default is maintained
-			return result;
-		}
-		// uncomment if the decision will be made to make [filter_side] the only & final syntax for specifying sides
-		// put_wml_message("error","specifying side via inline side= is deprecated, use [filter_side] ");
 		side_filter filter(sides.str());
 		return filter.get_teams();
 	}
@@ -931,7 +915,20 @@ WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 {
-	std::vector<int> sides = game_events::get_sides_vector(cfg);
+	const vconfig& filter_side = cfg.child("filter_side");
+	std::vector<int> sides;
+	if(!filter_side.null()) {
+		WRN_NG << "[modify_ai][filter_side] is deprecated, use only an inline SSF\n";
+		if(!cfg["side"].str().empty()) {
+			ERR_NG << "duplicate side information in [modify_ai]\n";
+			return;
+		}
+		side_filter ssf(filter_side);
+		sides = ssf.get_teams();
+	} else {
+		side_filter ssf(cfg);
+		sides = ssf.get_teams();
+	}
 	foreach (const int &side_num, sides)
 	{
 		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
@@ -949,10 +946,6 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	std::string shroud_data = cfg["shroud_data"];
 	const config& parsed = cfg.get_parsed_config();
 	const config::const_child_itors &ai = parsed.child_range("ai");
-	/**
-	 * @todo also allow client to modify a side's color if it is possible
-	 * to change it on the fly without causing visual glitches
-	 */
 	std::string switch_ai = cfg["switch_ai"];
 
 	std::vector<int> sides = game_events::get_sides_vector(cfg);
@@ -1024,6 +1017,13 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		// Override AI parameters
 		if (ai.first != ai.second) {
 			ai::manager::modify_active_ai_config_old_for_side(side_num,ai);
+		}
+		// Change team color
+		config::attribute_value color = cfg["color"];
+		if(!color.empty()) {
+			teams[team_index].set_color(color);
+			resources::screen->recalculate_minimap();
+			resources::screen->invalidate_all();
 		}
 		// Add shared view to current team
 		config::attribute_value share_view = cfg["share_view"];
@@ -1717,10 +1717,21 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 {
 	map_location loc = cfg_to_loc(cfg, 1, 1);
 
-	gamemap mask(*resources::game_map);
+	gamemap mask_map(*resources::game_map);
+
+	//config level;
+	std::string mask = cfg["mask"];
+	std::string usage = "mask";
+	int border_size = 0;
+
+	if (mask.empty()) {
+		usage = cfg["usage"].str();
+		border_size = cfg["border_size"];
+		mask = cfg["data"].str();
+	}
 
 	try {
-		mask.read(cfg["mask"], false);
+		mask_map.read(mask, false, border_size, usage);
 	} catch(incorrect_map_format_error&) {
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
 		return;
@@ -1729,7 +1740,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 		return;
 	}
 	bool border = cfg["border"].to_bool();
-	resources::game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y, border);
+	resources::game_map->overlay(mask_map, cfg.get_parsed_config(), loc.x, loc.y, border);
 	screen_needs_rebuild = true;
 }
 
@@ -1868,7 +1879,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 	}
 	//TODO I don't know about that error throwing. Sometimes a unit is just not available,
 	//the designer needs to check with [have_unit] or fetch the recall event.
-	ERR_NG << "Trying to recall unit failed!\n";
+	ERR_NG << "A [recall] tag with the following content failed:\n" << cfg.get_config().debug();
 }
 
 WML_HANDLER_FUNCTION(object, event_info, cfg)
@@ -2174,7 +2185,7 @@ WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
 
 		std::map<std::string, wml_menu_item*>& menu_items = resources::state_of_game->wml_menu_items;
 		if(menu_items.find(id) == menu_items.end()) {
-			WRN_NG << "trying to remove a non-existent menu item, ignoring\n";
+			WRN_NG << "trying to remove non-existent menu item '" << id << "', ignoring\n";
 			continue;
 		}
 
@@ -2422,6 +2433,10 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	if (!end_of_campaign_text_delay.empty()) {
 		state_of_game->classification().end_text_duration =
 			end_of_campaign_text_delay.to_int(state_of_game->classification().end_text_duration);
+	}
+
+	if(cfg.has_attribute("end_credits")) {
+		state_of_game->classification().end_credits = cfg["end_credits"].to_bool(true);
 	}
 
 

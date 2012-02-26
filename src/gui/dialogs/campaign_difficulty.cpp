@@ -62,8 +62,12 @@ namespace gui2 {
 
 REGISTER_DIALOG(campaign_difficulty)
 
-tcampaign_difficulty::tcampaign_difficulty(const std::vector<std::string>& items)
-	: index_(-1), items_()
+tcampaign_difficulty::tcampaign_difficulty(
+		  const std::vector<std::string>& items
+		, const int default_difficulty)
+	: index_(-1)
+	, items_()
+	, default_difficulty_(default_difficulty)
 {
 	foreach(const std::string& it, items) {
 		items_.push_back(tlegacy_menu_item(it));

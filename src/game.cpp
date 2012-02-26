@@ -17,6 +17,7 @@
 
 #include "about.hpp"
 #include "addon/manager.hpp"
+#include "addon/manager_ui.hpp"
 #include "commandline_options.hpp"
 #include "game_controller.hpp"
 #include "game_controller_new.hpp"
@@ -554,9 +555,7 @@ static int do_gameloop(int argc, char** argv)
 			help::show_help(game->disp());
 			continue;
 		} else if(res == gui2::ttitle_screen::GET_ADDONS) {
-			try {
-				manage_addons(game->disp());
-			} catch(config_changed_exception const&) {
+			if(manage_addons(game->disp())) {
 				game->reload_changed_game_config();
 			}
 			continue;
@@ -581,12 +580,6 @@ static int do_gameloop(int argc, char** argv)
 		}
 	}
 }
-
-#ifndef DISABLE_POOL_ALLOC
-extern "C" {
-void init_custom_malloc();
-}
-#endif
 
 
 #ifdef __native_client__
@@ -618,9 +611,7 @@ int main(int argc, char** argv)
 		execv(argv[0], argv);
 	}
 #endif
-#ifndef DISABLE_POOL_ALLOC
-	init_custom_malloc();
-#endif
+
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);

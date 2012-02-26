@@ -22,7 +22,6 @@
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
-#include "action.hpp"
 #include "utility.hpp"
 #include "visitor.hpp"
 

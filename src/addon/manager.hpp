@@ -25,9 +25,6 @@ class config;
 #include <vector>
 #include <utility>
 
-typedef std::pair< std::string, ADDON_TYPE > addon_list_item;
-class config_changed_exception {};
-
 bool remove_local_addon(const std::string& addon);
 
 /**
@@ -49,7 +46,7 @@ bool have_addon_in_vcs_tree(const std::string& addon_name);
  * @param cfg                     A config object to store the add-on's
  *                                properties.
  */
-void get_addon_info(const std::string& addon_name, class config& cfg);
+void get_addon_pbl_info(const std::string& addon_name, class config& cfg);
 
 /**
  * Sets the publish information for an add-on
@@ -58,7 +55,7 @@ void get_addon_info(const std::string& addon_name, class config& cfg);
  * @param cfg                     A config object from which the add-on's
  *                                properties are copied.
  */
-void set_addon_info(const std::string& addon_name, const class config& cfg);
+void set_addon_pbl_info(const std::string& addon_name, const class config& cfg);
 
 /** Returns a list of local add-ons that can be published. */
 std::vector<std::string> available_addons();
@@ -66,18 +63,14 @@ std::vector<std::string> available_addons();
 /** Retrieves the names of all installed add-ons. */
 std::vector<std::string> installed_addons();
 
+/** Chekc whether the specified add-on is currently installed. */
+bool is_addon_installed(const std::string& addon_name);
+
 /** Archives an add-on into a config object for campaignd transactions. */
 void archive_addon(const std::string& addon_name, class config& cfg);
 
 /** Unarchives an add-on from campaignd's retrieved config object. */
 void unarchive_addon(const class config& cfg);
-
-/**
- * Shows the game add-ons manager dialog.
- *
- * @param disp game_display instance to draw on.
- */
-void manage_addons(class game_display& disp);
 
 /** Refreshes the per-session cache of add-on's version information structs. */
 void refresh_addon_version_info_cache();

@@ -84,9 +84,12 @@
 		<Unit filename="..\..\src\actions.hpp" />
 		<Unit filename="..\..\src\addon\client.cpp" />
 		<Unit filename="..\..\src\addon\client.hpp" />
+		<Unit filename="..\..\src\addon\info.cpp" />
 		<Unit filename="..\..\src\addon\info.hpp" />
 		<Unit filename="..\..\src\addon\manager.cpp" />
 		<Unit filename="..\..\src\addon\manager.hpp" />
+		<Unit filename="..\..\src\addon\manager_ui.cpp" />
+		<Unit filename="..\..\src\addon\manager_ui.hpp" />
 		<Unit filename="..\..\src\addon\validation.cpp" />
 		<Unit filename="..\..\src\addon\validation.hpp" />
 		<Unit filename="..\..\src\ai\actions.cpp" />
@@ -253,9 +256,7 @@
 		<Unit filename="..\..\src\formula_string_utils.hpp" />
 		<Unit filename="..\..\src\formula_tokenizer.cpp" />
 		<Unit filename="..\..\src\formula_tokenizer.hpp" />
-		<Unit filename="..\..\src\game.cpp">
-			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
-		</Unit>
+		<Unit filename="..\..\src\game.cpp" />
 		<Unit filename="..\..\src\game_config.cpp" />
 		<Unit filename="..\..\src\game_config.hpp" />
 		<Unit filename="..\..\src\game_controller.cpp" />
@@ -266,6 +267,7 @@
 		<Unit filename="..\..\src\game_controller_new.hpp" />
 		<Unit filename="..\..\src\game_display.cpp" />
 		<Unit filename="..\..\src\game_display.hpp" />
+		<Unit filename="..\..\src\game_end_exceptions.cpp" />
 		<Unit filename="..\..\src\game_end_exceptions.hpp" />
 		<Unit filename="..\..\src\game_errors.cpp" />
 		<Unit filename="..\..\src\game_errors.hpp" />
@@ -640,10 +642,6 @@
 		<Unit filename="..\..\src\lua\lzio.h" />
 		<Unit filename="..\..\src\lua_jailbreak_exception.cpp" />
 		<Unit filename="..\..\src\lua_jailbreak_exception.hpp" />
-		<Unit filename="..\..\src\malloc.c">
-			<Option compilerVar="CC" />
-			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
-		</Unit>
 		<Unit filename="..\..\src\map.cpp" />
 		<Unit filename="..\..\src\map.hpp" />
 		<Unit filename="..\..\src\map_create.cpp" />
@@ -712,10 +710,6 @@
 		<Unit filename="..\..\src\playsingle_controller.hpp" />
 		<Unit filename="..\..\src\playturn.cpp" />
 		<Unit filename="..\..\src\playturn.hpp" />
-		<Unit filename="..\..\src\poolalloc.c">
-			<Option compilerVar="CC" />
-			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
-		</Unit>
 		<Unit filename="..\..\src\portrait.cpp" />
 		<Unit filename="..\..\src\portrait.hpp" />
 		<Unit filename="..\..\src\preferences.cpp" />

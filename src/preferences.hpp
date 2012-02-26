@@ -116,6 +116,7 @@ namespace preferences {
 	// Proxies for preferences_dialog
 	void load_hotkeys();
 	void save_hotkeys();
+	void clear_hotkeys();
 
 	void add_alias(const std::string& alias, const std::string& command);
 	const config &get_alias();

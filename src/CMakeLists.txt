@@ -223,14 +223,6 @@ set(libwesnoth-core_STAT_SRC
 	${REVISION_FILE}
 )
 
-if(ENABLE_POOL_ALLOC AND NOT WIN32)
-	set(libwesnoth-core_STAT_SRC
-		${libwesnoth-core_STAT_SRC}
-		malloc.c
-		poolalloc.c
-	)
-endif(ENABLE_POOL_ALLOC AND NOT WIN32)
-
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
 add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
@@ -321,7 +313,9 @@ set(wesnoth-main_SRC
 	about.cpp
 	actions.cpp
 	addon/client.cpp
+	addon/info.cpp
 	addon/manager.cpp
+	addon/manager_ui.cpp
 	addon/validation.cpp
 	ai/actions.cpp
 	ai/composite/ai.cpp
@@ -636,6 +630,7 @@ set(libwesnoth-game_STAT_SRC
 	image.cpp
 	image_modifications.cpp
 	joystick.cpp
+	game_end_exceptions.cpp
 	key.cpp
 	language.cpp
 	loadscreen.cpp
@@ -861,6 +856,23 @@ set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}sc
 
 install(TARGETS schema_validator DESTINATION ${BINDIR})
 
+set(wesmage_SRC
+	wesmage/wesmage.cpp
+	wesmage/exit.cpp
+	wesmage/filter.cpp
+	wesmage/options.cpp
+	tools/dummy_video.cpp
+	tools/exploder_utils.cpp
+	sdl_utils.cpp
+	loadscreen_empty.cpp
+)
+
+add_executable(wesmage ${wesmage_SRC})
+target_link_libraries(wesmage wesnoth-core png ${tools-external-libs})
+set_target_properties(wesmage PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesmage${BINARY_SUFFIX})
+
+install(TARGETS wesmage DESTINATION ${BINDIR})
+
 endif(ENABLE_TOOLS)
 ########### Unit tests ###############
 
@@ -869,11 +881,13 @@ if(ENABLE_TESTS)
 	add_definitions(-DBOOST_TEST_DYN_LINK)
 
 	set(test_SRC
+		tests/floating_point_emulation.cpp
 		tests/main.cpp
 		tests/utils/fake_display.cpp 
 		tests/utils/fake_event_source.cpp 
 		tests/utils/game_config_manager.cpp
 		tests/utils/play_scenario.cpp
+		tests/test_addons.cpp
 		tests/test_commandline_options.cpp
 		tests/test_config_cache.cpp
 		tests/test_formula_ai.cpp

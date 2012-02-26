@@ -411,11 +411,12 @@ config default_map_generator::create_scenario(const std::vector<std::string>& ar
 
 	std::map<map_location,std::string> labels;
 	DBG_NG << "generating map...\n";
+	config& map = res.add_child("map");
 	try{
-		res["map_data"] = generate_map(args,&labels);
+		map["data"] = generate_map(args,&labels);
 	}
 	catch (mapgen_exception& exc){
-		res["map_data"] = "";
+		map["data"] = "";
 		res["error_message"] = exc.message;
 	}
 	DBG_NG << "done generating map..\n";

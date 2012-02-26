@@ -200,6 +200,7 @@ public:
 	team_info::CONTROLLER controller() const { return info_.controller; }
 	char const *controller_string() const { return info_.controller_string(); }
 	const std::string& color() const { return info_.color; }
+	void set_color(const std::string& color) { info_.color = color; }
 	bool is_human() const { return info_.controller == team_info::HUMAN; }
 	bool is_human_ai() const { return info_.controller == team_info::HUMAN_AI; }
 	bool is_network_human() const { return info_.controller == team_info::NETWORK; }
@@ -251,7 +252,6 @@ public:
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
 	bool get_disallow_observers() const {return info_.disallow_observers; };
-	std::string map_color_to() const { return info_.color; };
 	bool no_leader() const { return info_.no_leader; }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }

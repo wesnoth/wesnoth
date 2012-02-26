@@ -3,59 +3,117 @@ Version 1.11.0-svn:
    * Reject add-ons with names or titles that begin with a WML text format
      markup character (any of *, `, ~, {, ^, }, |, @, #, <, &)
  * Campaigns:
+   * Descent into Darkness:
+     * Fix most possible cases for Darken Volk becoming "stuck"
+       in 09_A_Small_Favor3.
    * Son of the Black Eye:
      * Removed Al'Brock and Flar'Tar death as defeat condition in objectives in
        Civil War
    * Tutorial:
      * Fixed bug #19316: Narrator messages are now translated.
+     * Replacd $unit.type by $unit.language_name to make a string completely
+       translateable
    * Under the Burning Suns:
      * Made it so that Kaleh gets the default AMLA after he's been fully
        upgraded
-   * Descent into Darkness:
-     * Fix most possible cases for Darken Volk becoming "stuck"
-       in 09_A_Small_Favor3.
  * Language and i18n:
-   * Updated translations: French, Indonesian, Italian, Latin, Norwegian,
-     Spanish
+   * New translations: Ukrainian
+   * Updated translations: Chinese (Simplified), Dutch, Finnish, French,
+     Galician, German, Hungarian, Indonesian, Irish, Italian, Latin, Norwegian,
+     Old English, Polish, Portuguese (Brazil), Spanish
  * Lua API:
    * Upgraded Lua from 5.1.4 to 5.2.0
+   * new: field wesnoth.game_config.mp_debug
+   * new: setter for wesnoth.sides[i].color
+   * Deprecated the following functions from the wesnoth table,
+     all of which have better replacements:
+     get_side, get_side_count, get_unit_type_ids, get_unit_type,
+     register_wml_action
+ * Multiplayer:
+   * Fix an accidental terrain type change in Isar's Cross
+   * Fix attacker side being human in 6p_Team_Survival (bug #19400)
+ * Music and sound effects:
+   * Replaced some of the wolf hit sounds with lower-pitched ones
  * Terrain:
+   * New Syntax for terrain maps
    * New tropical forest images
    * New palm forest terrain
-   * Deprecated flowers (Ggf) and Volcano (Qv) removed - use Gg^Ef and Mv
+   * Deprecated flowers (Ggf) and Volcano (Qv) removed - use Gg^Efm and Mv
      respectively
+   * Fix bridge/rail transitions to each other
+   * Add new rail terrain type; no existing unit can move on it, so their
+     move/defense values are unchanged
+ * Unit changes and balancing:
+   * New extra_define ENABLE_WOLF_ADVANCEMENT to optionally enable Wolves
+     advancement to Great Wolves and Direwolves
+   * New extra_define ENABLE_TROLL_SHAMAN to optionally enable Troll Whelps
+     advancement to Troll Shamans (not in multiplayer)
+   * Lowered General's experience to 150 when extra_define DISABLE_GRAND_MARSHAL
+     is used
+ * User interface:
+   * Restored leader unit image in Load Game dialog (bug #18683)
+   * Added a "Back to Start" option to the game menu to load the current
+     scenario's start save if it is available (feature/bug #18027)
+   * Added tooltips to Load Game dialog (feature/bug #18249)
+   * Added a Reset All button to Hotkey Settings dialog in preferences
+     (feature/bug #3797)
+   * Fixed excessive idle CPU usage in story screens without story text
+   * Map editor now displays invisible overlay terrains on main map
+   * Made add-ons with markup characters at the start of their titles
+     display normally in the add-ons management dialogs (e.g. without
+     colors)
+ * Whiteboard
+   * Fixed bug #19369: Using planning mode can cause losing ability to move my units
+   * Fixed bug #19408: Crash shortly after executing invalid multi-turn move
  * WML engine:
    * new action tag: [clear_menu_item] id=...
    * new key: [set_menu_item][command]delayed_variable_substitution=yes|no
    * Removed support for the deprecated "colour=", "debug_border_colour=",
      and [colour_adjust]
    * Fixed bug #18996: Increase random number generation range.
- * Unit changes and balancing:
-   * New extra_define ENABLE_WOLF_ADVANCEMENT to optionally enable Wolves
-     advancement to Great Wolves and Direwolves
-   * New extra_define ENABLE_TROLL_SHAMAN to optionally enable Troll Whelps
-     advancement to Troll Shamans (not in multiplayer)
- * User interface:
-   * Restored leader unit image in Load Game dialog (bug #18683)
- * Whiteboard
-   * Fixed bug #19369 : Using planning mode can cause losing ability to move my units
-   * Fixed bug #19408 : Crash shortly after executing invalid multi-turn move
+   * Made it possible to disable the credits screen at the end of a campaign
+     by specifying end_credits=no in the final [endlevel] action, or in the
+     [campaign] definition (defaults to yes)
+   * Added [modify_side] color= attribute, which changes a side's team color
+     range (feature/bug #18772)
+   * Removed support for the deprecated [removeitem]
+   * Implemented ~BLEND(r,g,b,o) image path function, which blends the image
+     with a specified RGB color according to certain opacity (factor or
+     percentage) (feature/bug #11590)
+   * [find_path] now returns a "hexes" key instead of a "length" key inside
+     the output array
+   * Introduce inline SSF support in action tags [allow_recruit], [disallow_recruit],
+     [set_recruit], [gold] and [modify_ai]
+   * [gold][filter_side] and [modify_ai][filter_side] are deprecated, use inline
+     SSF instead
+   * Action tags [modify_side], [place_shroud] and [remove_shroud] now default
+     to "all sides" instead of side=1 if left empty.
+   * Introduce support for [filter_owner]<SSF> in SLFs. For villages. Keeps
+     backwards compatibility for inline owner_side= at the cost of
+     confusing syntax (due to (possible) duplicate side information).
+     This also adds SSF support in [store_villages].
+   * Added support for resistance_multiplier= key in [harm_unit]
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
      bug #19318)
-   * Fixed unit sound animation timings wherever the {SOUND:SLOW} and
-     {SOUND:POISON} macros, and several macros from animation-utils2.cfg are used
-     (see bug #19274)
+   * Fixed unit sound animation timings wherever {SOUND:SLOW}, {SOUND:POISON},
+     and several macros from animation-utils2.cfg are used (see bug #19274)
    * Restart is no longer required to toggle desktop notifications
    * Display the savegame version when warning the user about unsupported or
      mismatched versions (bug #7243)
    * Implemented feature request for difficulty changing during campaigns.
-     The feature is still gui2 only and thus still hidden per default.
      (see bug #10978)
    * The saved games cache file is now save_index instead of save_index.gz, and
      it is compressed when the Compressed Saves option is enabled in Advanced
      Preferences (patch #3115)
+   * Show base terrain description if none for overlay (bug #19411)
+   * Added wesmage tool to test SDL image manipulation functions.
+   * Fixed: A possible NULL-pointer deference in get_unit_type_function.
+   * Changed: Default man installation directory now confirms to FHS.
+   * Added: New floating point emulation code.
+   * Make Wolf Rider and Wolf raise their heads if and only if unit is
+     submerged: forums.wesnoth.org/viewtopic.php?f=4&t=36212
 
 Version 1.10.0:
  * Campaigns:
@@ -671,6 +729,7 @@ Version 1.9.7:
    * new function wesnoth.get_time_of_day
    * new functions os.clock, os.date, os.time and os.difftime
  * Multiplayer:
+   * Random leader is default selection when picking faction
    * New "Shuffle sides" option in MP creation list, allowing to randomize
      player to side assignment (patch #1937 by Quetzalcoatl)
  * User interface:

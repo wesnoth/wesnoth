@@ -32,12 +32,10 @@
 
 #include "action.hpp"
 #include "side_actions.hpp"
-#include "typedefs.hpp"
 
 #include "foreach.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "team.hpp"
 
 #include <boost/noncopyable.hpp>
 

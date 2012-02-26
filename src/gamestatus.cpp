@@ -67,14 +67,13 @@ game_classification::game_classification():
 	campaign_type(),
 	campaign_define(),
 	campaign_xtra_defines(),
-	campaign_difficulties(),
-	campaign_difficulty_descriptions(),
 	campaign(),
 	history(),
 	abbrev(),
 	scenario(),
 	next_scenario(),
 	completion(),
+	end_credits(true),
 	end_text(),
 	end_text_duration(),
 	difficulty("NORMAL")
@@ -88,14 +87,13 @@ game_classification::game_classification(const config& cfg):
 	campaign_type(cfg["campaign_type"].empty() ? "scenario" : cfg["campaign_type"].str()),
 	campaign_define(cfg["campaign_define"]),
 	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
-	campaign_difficulties(utils::split(cfg["campaign_difficulties"])),
-	campaign_difficulty_descriptions(utils::split(cfg["campaign_difficulty_descriptions"], ';')),
 	campaign(cfg["campaign"]),
 	history(cfg["history"]),
 	abbrev(cfg["abbrev"]),
 	scenario(cfg["scenario"]),
 	next_scenario(cfg["next_scenario"]),
 	completion(cfg["completion"]),
+	end_credits(cfg["end_credits"].to_bool(true)),
 	end_text(cfg["end_text"]),
 	end_text_duration(cfg["end_text_duration"]),
 	difficulty(cfg["difficulty"].empty() ? "NORMAL" : cfg["difficulty"].str())
@@ -109,14 +107,13 @@ game_classification::game_classification(const game_classification& gc):
 	campaign_type(gc.campaign_type),
 	campaign_define(gc.campaign_define),
 	campaign_xtra_defines(gc.campaign_xtra_defines),
-	campaign_difficulties(gc.campaign_difficulties),
-	campaign_difficulty_descriptions(gc.campaign_difficulty_descriptions),
 	campaign(gc.campaign),
 	history(gc.history),
 	abbrev(gc.abbrev),
 	scenario(gc.scenario),
 	next_scenario(gc.next_scenario),
 	completion(gc.completion),
+	end_credits(gc.end_credits),
 	end_text(gc.end_text),
 	end_text_duration(gc.end_text_duration),
 	difficulty(gc.difficulty)
@@ -133,14 +130,13 @@ config game_classification::to_config() const
 	cfg["campaign_type"] = campaign_type;
 	cfg["campaign_define"] = campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
-	cfg["campaign_difficulties"] = utils::join<std::vector<std::string> >(campaign_difficulties, ",");
-	cfg["campaign_difficulty_descriptions"] = utils::join<std::vector<std::string> >(campaign_difficulty_descriptions, ";");
 	cfg["campaign"] = campaign;
 	cfg["history"] = history;
 	cfg["abbrev"] = abbrev;
 	cfg["scenario"] = scenario;
 	cfg["next_scenario"] = next_scenario;
 	cfg["completion"] = completion;
+	cfg["end_credits"] = end_credits;
 	cfg["end_text"] = end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(end_text_duration);
 	cfg["difficulty"] = difficulty;
@@ -346,14 +342,13 @@ void game_state::write_snapshot(config& cfg) const
 
 	cfg["campaign_define"] = classification_.campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(classification_.campaign_xtra_defines);
-	cfg["campaign_difficulties"] = utils::join<std::vector<std::string> >(classification_.campaign_difficulties, ",");
-	cfg["campaign_difficulty_descriptions"] = utils::join<std::vector<std::string> >(classification_.campaign_difficulty_descriptions, ";");
 	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
 	cfg["can_end_turn"] = can_end_turn_;
 
 	cfg["random_seed"] = rng_.get_random_seed();
 	cfg["random_calls"] = rng_.get_random_calls();
 
+	cfg["end_credits"] = classification_.end_credits;
 	cfg["end_text"] = classification_.end_text;
 	cfg["end_text_duration"] = str_cast<unsigned int>(classification_.end_text_duration);
 
@@ -391,8 +386,6 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["label"] = cfg_save["label"];
 	cfg_summary["parent"] = cfg_save["parent"];
 	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
-	cfg_summary["campaign_difficulties"] = cfg_save["campaign_difficulties"];
-	cfg_summary["campaign_difficulty_descriptions"] = cfg_save["campaign_difficulty_descriptions"];
 	cfg_summary["scenario"] = cfg_save["scenario"];
 	cfg_summary["campaign"] = cfg_save["campaign"];
 	cfg_summary["difficulty"] = cfg_save["difficulty"];
@@ -456,16 +449,15 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	cfg_summary["leader"] = leader;
 	cfg_summary["leader_image"] = leader_image;
-	cfg_summary["map_data"] = "";
 
 	if(!shrouded) {
 		if(has_snapshot) {
 			if (!cfg_snapshot.find_child("side", "shroud", "yes")) {
-				cfg_summary["map_data"] = cfg_snapshot["map_data"];
+				cfg_summary.add_child("map", cfg_snapshot.child_or_empty("map"));
 			}
 		} else if(has_replay) {
 			if (!cfg_replay_start.find_child("side","shroud","yes")) {
-				cfg_summary["map_data"] = cfg_replay_start["map_data"];
+				cfg_summary.add_child("map", cfg_replay_start.child_or_empty("map"));
 			}
 		}
 	}

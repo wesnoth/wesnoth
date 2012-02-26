@@ -42,7 +42,7 @@ static lg::log_domain log_engine("engine");
 config map_generator::create_scenario(const std::vector<std::string>& args)
 {
 	config res;
-	res["map_data"] = create_map(args);
+	res["data"] = create_map(args);
 	return res;
 }
 
@@ -353,7 +353,7 @@ static std::string output_map(const terrain_map& terrain,
 		itor->second.y -= begin_y;
 	}
 
-	return gamemap::default_map_header + t_translation::write_game_map(map, starting_positions);
+	return t_translation::write_game_map(map, starting_positions);
 }
 
 namespace {

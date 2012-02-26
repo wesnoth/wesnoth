@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:34+0100\n"
-"PO-Revision-Date: 2011-12-30 18:34+0800\n"
+"POT-Creation-Date: 2012-02-18 14:42+0100\n"
+"PO-Revision-Date: 2012-02-19 14:06+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
 "translation-cn>\n"
@@ -233,17 +233,12 @@ msgstr "新大陆"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
-#, fuzzy
-#| msgid ""
-#| "New Continent -- The great continent to the east of <ref>dst='morogor' "
-#| "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
-#| "flight of Galun."
 msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
-"新大陆——位于<ref>dst='morogor' text='莫罗戈'</ref>东方的大陆。在伽朗部落之"
-"前，其存在并不为龙人们所知。"
+"位于<ref>dst='morogor' text='莫罗戈'</ref>东方的大陆。在伽朗部落到达之前，其"
+"存在并不为龙人们所知。"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
@@ -284,7 +279,7 @@ msgid ""
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
-"永不停止扩张和征服的龙人传统。这个术语通常是由<ref>dst='spiral_path' text=灵"
+"永不停止扩张与征服的龙人传统。这个术语通常是由<ref>dst='spiral_path' text=灵"
 "魂之路'</ref>的成员们使用的。"
 
 #. [topic]: id=dominant
@@ -1296,19 +1291,6 @@ msgstr "征募与召回"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1324,22 +1306,13 @@ msgstr ""
 "游戏开始时，每一方都有一位领袖在城堡主楼里。在战斗开始时，以及战斗过程中，您"
 "可能需要为您的部队征募<ref>dst='..units' text='单位'</ref>。要想征募单位，您"
 "的领袖（例如<italic>text='王座之承'</italic>战役中的科纳德）必须位于"
-"<ref>dst='terrain_castle' text='城堡'</ref>的主楼上。而后您将可以在菜单中选"
-"择 <bold>text='征募'</bold>或右键点击城堡内的一个六角格并选择<bold>text='征"
-"募'</bold>。此时会弹出征募菜单，其中列出了所有可以征募的单位和所需金币数。点"
-"击一个单位可以查看其能力数据，然后点击征募按钮就可将其征募。"
+"<ref>dst='terrain_castle' text='城堡'</ref>的主楼上。而后您将可以在菜单中选择"
+"<bold>text='征募'</bold>或右键点击城堡内的一个六角格并选择<bold>text='征募'</"
+"bold>。此时会弹出征募菜单，其中列出了所有可以征募的单位和所需金币数。点击一个"
+"单位可以查看其能力数据，然后点击征募按钮就可将其征募。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1351,8 +1324,8 @@ msgstr ""
 "\n"
 "\n"
 "如果您是右击城堡里的六角格后选择征募的，那么新的单位将出现在该格内。否则，新"
-"兵将出现在主楼旁的某一个空地块里。您最多只能征募与城堡内空格数相同个数的单"
-"位，并且在招募时，您的总花费却不能超出您所拥有的金币数量。"
+"兵将出现在主楼旁的某一个空格里。您最多只能征募与城堡内空格数相同个数的单位，"
+"并且在招募时，您的总花费不能超出您所拥有的金币数量。"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
@@ -2864,17 +2837,6 @@ msgstr "城堡"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#| "Nearly all units receive a considerable bonus to their defense by being "
-#| "stationed in a castle, and all units receive full movement in a castle. "
-#| "Stationing units in a castle represents its defensive capability. Without "
-#| "a unit in each wall hex, an enemy can simply sneak into the castle "
-#| "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#| "\n"
-#| "Most units have about 60% defense in a castle.\n"
-#| "\n"
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "

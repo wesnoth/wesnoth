@@ -26,10 +26,13 @@
 #include "construct_dialog.hpp"
 #include "display.hpp"
 #include "foreach.hpp"
+#include "formatter.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/widgets/window.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -250,13 +253,30 @@ public:
 private:
 	bool escape_pressed_;
 };
+
+void repopulate_hotkeys_menu(std::vector<std::string>& menu_items)
+{
+	menu_items.clear();;
+
+	std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
+
+	foreach(const hotkey::hotkey_item& hi, hotkeys) {
+		if(hi.hidden() || !hi.is_in_active_scope())
+			continue;
+
+		menu_items.push_back((formatter() << hi.get_description() << COLUMN_SEPARATOR << font::NULL_MARKUP << hi.get_name()).str());
+	}
+
+	menu_items.push_back((formatter() << HEADING_PREFIX << _("Action") << COLUMN_SEPARATOR << _("Binding")).str());
+}
+
 } // end anonymous namespace
 
 #ifdef _MSC_VER
 #pragma warning (push)
 #pragma warning (disable:4701)
 #endif
-void show_hotkeys_dialog (display & disp, config *save_config)
+void show_hotkeys_dialog(display & disp)
 {
 	log_scope ("show_hotkeys_dialog");
 
@@ -282,27 +302,11 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 					     font::NORMAL_COLOR,_("Press desired hotkey (Esc cancels)"),
 					     0, 0);
 
-	std::vector<std::string> menu_items;
-
-	std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
-	for(std::vector<hotkey::hotkey_item>::iterator i = hotkeys.begin(); i != hotkeys.end(); ++i) {
-		if(i->hidden() || !i->is_in_active_scope())
-			continue;
-		std::stringstream str,name;
-		name << i->get_description();
-		str << name.str();
-		str << COLUMN_SEPARATOR;
-		// This trick allows to display chars identical to markup characters
-		str << font::NULL_MARKUP << i->get_name();
-		menu_items.push_back(str.str());
-	}
-
-	std::ostringstream heading;
-	heading << HEADING_PREFIX << _("Action") << COLUMN_SEPARATOR << _("Binding");
-	menu_items.push_back(heading.str());
-
 	gui::menu::basic_sorter sorter;
 	sorter.set_alpha_sort(0).set_alpha_sort(1);
+
+	std::vector<std::string> menu_items;
+	repopulate_hotkeys_menu(menu_items);
 
 	gui::menu menu_(disp.video(), menu_items, false, height - font::relative_size(10), -1, &sorter, &gui::menu::bluebg_style);
 	menu_.sort_by(0);
@@ -310,13 +314,14 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	menu_.set_width(font::relative_size(500));
 	menu_.set_location(xpos + font::relative_size(10), ypos + font::relative_size(10));
 
-	gui::button change_button (disp.video(), _("Change Hotkey"));
-	change_button.set_location(xpos + width - change_button.width () - font::relative_size(30),ypos + font::relative_size(30));
+	gui::button change_button(disp.video(), _("Change Hotkey"));
+	change_button.set_location(xpos + width - change_button.width () - font::relative_size(30), ypos + font::relative_size(30));
 
-	gui::button clear_button (disp.video(), _("Clear Hotkey"));
-	clear_button.set_location(xpos + width - clear_button.width () - font::relative_size(30),ypos + font::relative_size(80));
-//	gui::button save_button (disp.video(), _("Save Hotkeys"));
-//	save_button.set_location(xpos + width - save_button.width () - font::relative_size(30),ypos + font::relative_size(130));
+	gui::button clear_button(disp.video(), _("Clear Hotkey"));
+	clear_button.set_location(xpos + width - clear_button.width () - font::relative_size(30), ypos + font::relative_size(60));
+
+	gui::button reset_button(disp.video(), _("Reset All"));
+	reset_button.set_location(xpos + width - reset_button.width() - font::relative_size(30), ypos + font::relative_size(90));
 
 	escape_handler esc_hand;
 
@@ -324,11 +329,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 		if (close_button.pressed() || esc_hand.escape_pressed())
 		{
-			if (save_config == NULL) {
-				save_hotkeys();
-			} else {
-				hotkey::save_hotkeys(*save_config);
-			}
+			save_hotkeys();
 			break;
 		}
 
@@ -432,19 +433,26 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 				}
 			}
 		}
-//		if (save_button.pressed()) {
-//			if (save_config == NULL) {
-//				save_hotkeys();
-//			} else {
-//				hotkey::save_hotkeys(*save_config);
-//			}
-//		}
 
 		if (clear_button.pressed()) {
 			// clear hotkey
 			hotkey::hotkey_item& newhk = hotkey::get_visible_hotkey(menu_.selection());
 			newhk.clear_hotkey();
 			menu_.change_item(menu_.selection(), 1, font::NULL_MARKUP + newhk.get_name());
+		}
+
+		if (reset_button.pressed()) {
+			const int res = gui2::show_message(
+				disp.video(), _("Reset Hotkeys"),
+				_("This will reset all hotkeys to their default values. Do you want to continue?"), gui2::tmessage::yes_no_buttons);
+
+			if(res != gui2::twindow::CANCEL) {
+				clear_hotkeys();
+				repopulate_hotkeys_menu(menu_items);
+				menu_.set_items(menu_items);
+
+				gui2::show_transient_message(disp.video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."));
+			}
 		}
 
 		menu_.process();

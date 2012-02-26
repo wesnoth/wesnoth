@@ -15,6 +15,7 @@
 
 #include "color_range.hpp"
 #include "config.hpp"
+#include "display.hpp"
 #include "foreach.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
@@ -339,6 +340,32 @@ int cs_modification::get_b() const
 	return b_;
 }
 
+surface blend_modification::operator()(const surface& src) const
+{
+	return blend_surface(src, a_, display::rgb(r_, g_, b_));
+
+}
+
+int blend_modification::get_r() const
+{
+	return r_;
+}
+
+int blend_modification::get_g() const
+{
+	return g_;
+}
+
+int blend_modification::get_b() const
+{
+	return b_;
+}
+
+float blend_modification::get_a() const
+{
+	return a_;
+}
+
 surface bl_modification::operator()(const surface& src) const
 {
 	return blur_alpha_surface(src, depth_);
@@ -584,6 +611,36 @@ REGISTER_MOD_PARSER(CS, args)
 	}
 
 	return new cs_modification(r, g, b);
+}
+
+// Color blending
+REGISTER_MOD_PARSER(BLEND, args)
+{
+	const std::vector<std::string>& params = utils::split(args, ',');
+
+	if(params.size() != 4) {
+		ERR_DP << "~BLEND() requires exactly 4 arguments\n";
+		return NULL;
+	}
+
+	float opacity = 0.0f;
+	const std::string& opacity_str = params[3];
+	const std::string::size_type p100_pos = opacity_str.find('%');
+
+	if(p100_pos == std::string::npos)
+		opacity = lexical_cast_default<float>(opacity_str);
+	else {
+		// make multiplier
+		const std::string& parsed_field = opacity_str.substr(0, p100_pos);
+		opacity = lexical_cast_default<float>(parsed_field);
+		opacity /= 100.0f;
+	}
+
+	return new blend_modification(
+		lexical_cast_default<int>(params[0]),
+		lexical_cast_default<int>(params[1]),
+		lexical_cast_default<int>(params[2]),
+		opacity);
 }
 
 // Crop/slice

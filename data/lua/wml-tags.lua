@@ -1,9 +1,5 @@
 --! #textdomain wesnoth
 
--- Backward-compatibility hack to avoid executing the file twice due to
--- old preload events. (To be removed in 1.11.) The hack assumes this
--- file is the first one to be executed.
-if wesnoth.package["lua/helper.lua"] then return end
 
 function wesnoth.game_events.on_load(cfg)
 	if #cfg == 0 then return end
@@ -60,7 +56,16 @@ end
 function wml_actions.gold(cfg)
 	local amount = tonumber(cfg.amount) or
 		helper.wml_error "[gold] missing required amount= attribute."
-	for index, team in ipairs(wesnoth.get_sides(nil, cfg, false)) do
+	local sides = cfg.side
+	local filter_side = helper.get_child(cfg, "filter_side")
+	if filter_side then
+		wesnoth.message("warning", "[gold][filter_side] is deprecated, use only an inline SSF")
+		if sides then helper.wml_error("duplicate side information in [gold]") end
+		sides = wesnoth.get_sides(filter_side)
+	else
+		sides = wesnoth.get_sides(cfg)
+	end
+	for index, team in ipairs(sides) do
 		team.gold = team.gold + amount
 	end
 end
@@ -123,7 +128,7 @@ function wml_actions.fire_event(cfg)
 end
 
 function wml_actions.allow_recruit(cfg)
-	for index, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
+	for index, team in ipairs(wesnoth.get_sides(cfg)) do
 		local v = team.recruit
 		for type in string.gmatch(cfg.type, "[^%s,][^,]*") do
 			table.insert(v, type)
@@ -146,7 +151,7 @@ function wml_actions.allow_extra_recruit(cfg)
 end
 
 function wml_actions.disallow_recruit(cfg)
-	for index, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
+	for index, team in ipairs(wesnoth.get_sides(cfg)) do
 		local v = team.recruit
 		for w in string.gmatch(cfg.type, "[^%s,][^,]*") do
 			for i, r in ipairs(v) do
@@ -178,7 +183,7 @@ end
 
 function wml_actions.set_recruit(cfg)
 	local recruit = cfg.recruit or helper.wml_error("[set_recruit] missing required recruit= attribute")
-	for index, team in ipairs(wesnoth.get_sides(nil, cfg, true)) do
+	for index, team in ipairs(wesnoth.get_sides(cfg)) do
 		local v = {}
 		for w in string.gmatch(recruit, "[^%s,][^,]*") do
 			table.insert(v, w)
@@ -232,7 +237,7 @@ function wml_actions.wml_action(cfg)
 		helper.wml_error "[wml_action] missing required name= attribute."
 	local code = cfg.lua_function or
 		helper.wml_error "[wml_action] missing required lua_function= attribute."
-	local bytecode, message = loadstring(code)
+	local bytecode, message = load(code)
 	if not bytecode then
 		helper.wml_error("[wml_action] failed to compile Lua code: " .. message)
 	end
@@ -244,7 +249,7 @@ end
 
 function wml_actions.lua(cfg)
 	local cfg = helper.shallow_literal(cfg)
-	local bytecode, message = loadstring(cfg.code or "")
+	local bytecode, message = load(cfg.code or "")
 	if not bytecode then error("~lua:" .. message, 0) end
 	bytecode(helper.get_child(cfg, "args"))
 end
@@ -555,7 +560,8 @@ function wml_actions.modify_unit(cfg)
 	local function handle_unit(unit_num)
 		local children_handled = {}
 		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
-		wesnoth.set_variable("this_unit", wesnoth.get_variable(unit_path))
+		local this_unit = wesnoth.get_variable(unit_path)
+		wesnoth.set_variable("this_unit", this_unit)
 		handle_attributes(cfg, unit_path, true)
 
 		for current_index, current_table in ipairs(helper.shallow_parsed(cfg)) do
@@ -580,6 +586,7 @@ function wml_actions.modify_unit(cfg)
 			if cfg.type ~= "" then wesnoth.set_variable(unit_path .. ".advances_to", cfg.type) end
 			wesnoth.set_variable(unit_path .. ".experience", wesnoth.get_variable(unit_path .. ".max_experience"))
 		end
+		wml_actions.kill({ id = this_unit.id, animate = false })
 		wml_actions.unstore_unit { variable = unit_path }
 	end
 
@@ -741,6 +748,7 @@ function wml_actions.harm_unit(cfg)
 			local secondary_attack = helper.get_child(cfg, "secondary_attack")
 			local harmer_filter = helper.get_child(cfg, "filter_second")
 			local experience = cfg.experience
+			local resistance_multiplier = tonumber(cfg.resistance_multiplier) or 1
 			if harmer_filter then harmer = wesnoth.get_units(harmer_filter)[1] end
 			-- end of block to support $this_unit
 
@@ -770,7 +778,7 @@ function wml_actions.harm_unit(cfg)
 				end
 			end
 
-			local function calculate_damage( base_damage, alignment, tod_bonus, resistance )
+			local function calculate_damage( base_damage, alignment, tod_bonus, resistance, modifier )
 				local damage_multiplier = 100
 				if alignment == "lawful" then
 					damage_multiplier = damage_multiplier + tod_bonus
@@ -780,7 +788,8 @@ function wml_actions.harm_unit(cfg)
 					damage_multiplier = damage_multiplier - math.abs( tod_bonus )
 				else -- neutral, do nothing
 				end
-				damage_multiplier = damage_multiplier * resistance -- at this point, a resistance_modifier can be added, as asked by fendrin
+				local resistance_modified = resistance * modifier
+				damage_multiplier = damage_multiplier * resistance_modified
 				local damage = round_damage( base_damage, damage_multiplier, 10000 ) -- if harmer.status.slowed, this may be 20000 ?
 				return damage
 			end
@@ -788,7 +797,8 @@ function wml_actions.harm_unit(cfg)
 			local damage = calculate_damage( amount,
 							 ( cfg.alignment or "neutral" ),
 							 wesnoth.get_time_of_day( { unit_to_harm.x, unit_to_harm.y, true } ).lawful_bonus,
-							 wesnoth.unit_resistance( unit_to_harm, cfg.damage_type or "dummy" )
+							 wesnoth.unit_resistance( unit_to_harm, cfg.damage_type or "dummy" ),
+							 resistance_multiplier
 						       )
 
 			if unit_to_harm.hitpoints <= damage then
@@ -1066,14 +1076,14 @@ function wml_actions.find_path(cfg)
 		end
 
 		if cost >= 42424242 then -- it's the high value returned for unwalkable or busy terrains
-			wesnoth.set_variable ( string.format("%s", variable), { length = 0 } ) -- set only length, nil all other values
+			wesnoth.set_variable ( string.format("%s", variable), { hexes = 0 } ) -- set only length, nil all other values
 		return end
 
 		if not allow_multiple_turns and turns > 1 then -- location cannot be reached in one turn
-			wesnoth.set_variable ( string.format("%s", variable), { length = 0 } )
+			wesnoth.set_variable ( string.format("%s", variable), { hexes = 0 } )
 		return end -- skip the cycles below
 
-		wesnoth.set_variable ( string.format( "%s", variable ), { length = current_distance, from_x = unit.x, from_y = unit.y, to_x = current_location[1], to_y = current_location[2], movement_cost = cost, required_turns = turns } )
+		wesnoth.set_variable ( string.format( "%s", variable ), { hexes = current_distance, from_x = unit.x, from_y = unit.y, to_x = current_location[1], to_y = current_location[2], movement_cost = cost, required_turns = turns } )
 
 		for index, path_loc in ipairs(path) do
 			local sub_path, sub_cost = wesnoth.find_path( unit, path_loc[1], path_loc[2], { max_cost = max_cost, ignore_units = ignore_units, ignore_teleport = ignore_teleport, viewing_side = viewing_side } )

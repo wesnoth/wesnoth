@@ -53,8 +53,6 @@ public:
 	std::string campaign_type;                       /**< Type of the game - campaign, multiplayer etc. */
 	std::string campaign_define;                     /**< If there is a define the campaign uses to customize data */
 	std::vector<std::string> campaign_xtra_defines;  /**< more customization of data */
-	std::vector<std::string> campaign_difficulties;  /**< The defines of the campaign's difficulties. */
-	std::vector<std::string> campaign_difficulty_descriptions;  /**< The campaign's difficulty descriptions. */
 
 	std::string campaign;                            /**< the campaign being played */
 	std::string history;                             /**< ancestral IDs */
@@ -62,6 +60,7 @@ public:
 	std::string scenario;                            /**< the scenario being played */
 	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
 	std::string completion;                          /**< running. victory, or defeat */
+	bool end_credits;                                /**< whether to show the standard credits at the end */
 	std::string end_text;                            /**< end-of-campaign text */
 	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
 	std::string difficulty; /**< The difficulty level the game is being played on. */

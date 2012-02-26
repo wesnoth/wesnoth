@@ -307,7 +307,7 @@ class GitHub(object):
         repos = self._github_api_request(request)
 
         version_suffix = "-{0}".format(self.version)
-        return [(repo["name"][:-len(version_suffix)], repo["git_url"])
+        return [(repo["name"][:-len(version_suffix)], repo["ssh_url"])
                 for repo in repos if repo["name"].endswith(version_suffix)]
 
     def _github_repos_create(self, name):

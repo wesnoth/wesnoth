@@ -71,9 +71,6 @@ function wml_actions.item(cfg)
 end
 
 function wml_actions.remove_item(cfg)
-	if #cfg == 0 and not cfg.x and not cfg.y then
-		helper.wml_error "Empty [remove_item] is no longer supported."
-	end
 	local locs = wesnoth.get_locations(cfg)
 	for i, loc in ipairs(locs) do
 		remove_overlay(loc[1], loc[2], cfg.image)
@@ -97,10 +94,6 @@ function wml_actions.store_items(cfg)
 		until true
 	end
 end
-
--- [removeitem] is deprecated, so print a WML error and call [remove_item]
--- Remove after 1.9.3
-wml_actions.removeitem = helper.deprecate("Usage of [removeitem] is deprecated; support will be removed in 1.9.3. Use [remove_item] instead.", wml_actions.remove_item)
 
 local methods = { remove = remove_overlay }
 

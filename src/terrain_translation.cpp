@@ -101,7 +101,6 @@ namespace t_translation {
 	 *                              position given it's padded to 4 chars else
 	 *                              padded to 7 chars.
 	 */
-	static std::string number_to_string_(t_terrain terrain, const int start_position, const size_t min_size);
 	static std::string number_to_string_(t_terrain terrain, const int start_position = -1);
 
 	/**
@@ -406,10 +405,11 @@ std::string write_game_map(const t_map& map, std::map<int, coordinate> starting_
 			if(x != 0) {
 				str << ", ";
 			}
-			str << number_to_string_(map[x][y], starting_position, 12);
+			str << number_to_string_(map[x][y], starting_position);
 		}
 
-		str << "\n";
+		if (y < map[0].size() -1)
+			str << "\n";
 	}
 
 	return str.str();
@@ -742,11 +742,6 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
 {
 	t_terrain result;
 
-	// Need to store the orginal string for the error handling.
-	// This has been made to avoid the assertion failure
-	// which happens often and is not too user friendly.
-	const std::string input(str);
-
 	// Strip the spaces around us
 	const std::string& whitespace = " \t";
 	str.erase(0, str.find_first_not_of(whitespace));
@@ -821,16 +816,6 @@ static std::string number_to_string_(t_terrain terrain, const int start_position
 			// no layer, stop
 			break;
 		}
-	}
-
-	return result;
-}
-
-static std::string number_to_string_(t_terrain terrain, const int start_position, const size_t min_size)
-{
-	std::string result = number_to_string_(terrain, start_position);
-	if(result.size() < min_size) {
-		result.resize(min_size, ' ');
 	}
 
 	return result;

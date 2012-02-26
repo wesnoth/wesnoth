@@ -175,8 +175,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  show_ai_moves_button_(disp.video(), _("Skip AI moves"), gui::button::TYPE_CHECK),
 	  interrupt_when_ally_sighted_button_(disp.video(), _("Interrupt move when an ally is sighted"), gui::button::TYPE_CHECK),
 	  show_grid_button_(disp.video(), _("Show grid"), gui::button::TYPE_CHECK),
-	  save_replays_button_(disp.video(), _("Save replay on SP/MP victory or MP defeat"), gui::button::TYPE_CHECK),
-	  delete_saves_button_(disp.video(), _("Delete auto-saves on SP/MP victory or MP defeat"), gui::button::TYPE_CHECK),
+	  save_replays_button_(disp.video(), _("Save replays at the end of scenarios"), gui::button::TYPE_CHECK),
+	  delete_saves_button_(disp.video(), _("Delete auto-saves at the end of scenarios"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button1_(disp.video(), _("Do not show lobby joins"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button2_(disp.video(), _("Show lobby joins of friends only"), gui::button::TYPE_CHECK),
 	  show_lobby_joins_button3_(disp.video(), _("Show all lobby joins"), gui::button::TYPE_CHECK),
@@ -366,10 +366,10 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	interrupt_when_ally_sighted_button_.set_help_string(_("Sighting an allied unit interrupts your unit’s movement"));
 
 	save_replays_button_.set_check(save_replays());
-	save_replays_button_.set_help_string(_("Save Replay on SP/MP Victory or MP Defeat"));
+	save_replays_button_.set_help_string(_("Saves replays of games on victory in all modes and defeat in multiplayer"));
 
 	delete_saves_button_.set_check(delete_saves());
-	delete_saves_button_.set_help_string(_("Delete Auto-Saves on SP/MP Victory or MP Defeat"));
+	delete_saves_button_.set_help_string(_("Deletes previous auto-saves on victory in all modes and defeat in multiplayer"));
 	show_grid_button_.set_check(grid());
 	show_grid_button_.set_help_string(_("Overlay a grid onto the map"));
 
@@ -377,10 +377,10 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	sort_list_by_group_button_.set_help_string(_("Sort the player list in the lobby by player groups"));
 
 	iconize_list_button_.set_check(iconize_list());
-	iconize_list_button_.set_help_string(_("Show icons in front of the player names in the lobby."));
+	iconize_list_button_.set_help_string(_("Show icons in front of the player names in the lobby"));
 
 	remember_pw_button_.set_check(remember_password());
-	remember_pw_button_.set_help_string(_("Uncheck to delete the saved password (on exit)."));
+	remember_pw_button_.set_help_string(_("Uncheck to delete the saved password (on exit)"));
 
 	int lj = lobby_joins();
 	show_lobby_joins_button1_.set_check(lj == SHOW_NONE);
@@ -393,7 +393,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	new_lobby_button_.set_check(new_lobby());
 	new_lobby_button_.set_help_string(_("Use New Lobby Interface"));
 
-	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host LAN games."));
+	mp_server_search_button_.set_help_string(_("Find and set path to MP server to host LAN games"));
 	friends_list_button_.set_help_string(_("View and edit your friends and ignores list"));
 	friends_back_button_.set_help_string(_("Back to the multiplayer options"));
 	friends_add_friend_button_.set_help_string(_("Add this username to your friends list"));

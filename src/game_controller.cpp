@@ -305,7 +305,7 @@ bool game_controller::init_config(const bool force)
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 
-	hotkey::load_hotkeys(game_config());
+	hotkey::load_hotkeys(game_config(), true);
 	paths_manager_.set_paths(game_config());
 	::init_textdomains(game_config());
 	about::set_about(game_config());
@@ -593,7 +593,7 @@ bool game_controller::load_game()
 	savegame::loadgame load(disp(), game_config(), state_);
 
 	try {
-		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::difficulty);
+		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders, game::load_game_exception::select_difficulty, game::load_game_exception::difficulty);
 
 		cache_.clear_defines();
 		game_config::scoped_preproc_define dificulty_def(state_.classification().difficulty);
@@ -846,8 +846,6 @@ bool game_controller::new_campaign()
 
 	state_.classification().campaign_define = campaign["define"].str();
 	state_.classification().campaign_xtra_defines = utils::split(campaign["extra_defines"]);
-	state_.classification().campaign_difficulties = utils::split(campaign["difficulties"]);
-	state_.classification().campaign_difficulty_descriptions = utils::split(campaign["difficulty_descriptions"], ';');
 
 	return true;
 }
@@ -1271,7 +1269,9 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 		if(result == VICTORY && (state_.classification().campaign_type.empty() || state_.classification().campaign_type != "multiplayer")) {
 			preferences::add_completed_campaign(state_.classification().campaign);
 			the_end(disp(), state_.classification().end_text, state_.classification().end_text_duration);
-			about::show_about(disp(),state_.classification().campaign);
+			if(state_.classification().end_credits) {
+				about::show_about(disp(),state_.classification().campaign);
+			}
 		}
 
 		clear_loaded_game();

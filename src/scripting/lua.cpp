@@ -1551,7 +1551,7 @@ static int impl_side_get(lua_State *L)
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
 	return_string_attrib("name", t.name());
-	return_string_attrib("color", t.map_color_to());
+	return_string_attrib("color", t.color());
 	return_cstring_attrib("controller", t.controller_string());
 
 	if (strcmp(m, "recruit") == 0) {
@@ -1591,6 +1591,7 @@ static int impl_side_set(lua_State *L)
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
 	modify_string_attrib("controller", t.change_controller(value));
+	modify_string_attrib("color", t.set_color(value));
 
 	if (strcmp(m, "recruit") == 0) {
 		t.set_recruits(std::set<std::string>());
@@ -1882,6 +1883,7 @@ static int impl_game_config_get(lua_State *L)
 	return_int_attrib("last_turn", resources::tod_manager->number_of_turns());
 	return_string_attrib("version", game_config::version);
 	return_bool_attrib("debug", game_config::debug);
+	return_bool_attrib("mp_debug", game_config::mp_debug);
 	return 0;
 }
 
@@ -3190,27 +3192,19 @@ static int intf_match_side(lua_State *L)
 
 /**
  * Returns a proxy table array for all sides matching the given SSF.
- * - Arg 1: SSF (without a tag)
- * - Arg 2: hidden optional argument, SSF with outer [filter_side] tag, for backwards-compatibility
- * - Arg 3: hidden optional boolean: whether only inline side= is allowed (as opposed to also [filter_side])
+ * - Arg 1: SSF
  * - Ret 1: proxy table array
  */
 static int intf_get_sides(lua_State* L)
 {
 	std::vector<int> sides;
-	if(lua_isnoneornil(L, 2)) {
-		const vconfig ssf = luaW_checkvconfig(L, 1, true);
-		if (ssf.null()) {
-			for(unsigned side_number = 1; side_number <= resources::teams->size(); ++side_number) {
-				sides.push_back(side_number);
-			}
-		}
-		else sides = game_events::get_sides_vector(ssf, true);
-	}
-	else {
-		const vconfig ssf_with_filter_tag = luaW_checkvconfig(L, 2);
-		const bool only_side = lua_toboolean(L, 3);
-		sides = game_events::get_sides_vector(ssf_with_filter_tag, false, only_side);
+	const vconfig ssf = luaW_checkvconfig(L, 1, true);
+	if(ssf.null()){
+		for(unsigned side_number = 1; side_number <= resources::teams->size(); ++side_number)
+			sides.push_back(side_number);
+	} else {
+		side_filter filter(ssf);
+		sides = filter.get_teams();
 	}
 
 	//keep this stack in the loop:
@@ -3810,7 +3804,7 @@ void LuaKernel::initialize()
 
 static char const *handled_file_tags[] = {
 	"color_palette", "color_range", "era", "event", "generator",
-	"label", "lua", "menu_item", "music", "side", "sound_source", "story",
+	"label", "lua", "map", "menu_item", "music", "side", "sound_source", "story",
 	"terrain_graphics", "time", "time_area", "tunnel", "variables", "endlevel",
 	"display",
 	//TODO: These are only needed for MP campaigns and only for subsequent scenarios, see bug #18883

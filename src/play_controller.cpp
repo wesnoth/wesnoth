@@ -91,7 +91,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	level_(level),
 	teams_(),
 	gamestate_(state_of_game),
-	map_(game_config, level["map_data"]),
+	map_(game_config, level),
 	units_(),
 	undo_stack_(),
 	redo_stack_(),
@@ -708,7 +708,10 @@ config play_controller::to_config() const
 	}
 
 	//write out the current state of the map
-	cfg["map_data"] = map_.write();
+
+	config& map = cfg.add_child("map");
+	map_.write(map);
+
 	cfg.merge_with(pathfind_manager_->to_config());
 
 	config display;
@@ -773,7 +776,7 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 		unsigned i = static_cast<unsigned>(index);
 		if(i < savenames_.size() && !savenames_[i].empty()) {
 			// Load the game by throwing load_game_exception
-			throw game::load_game_exception(savenames_[i],false,false,"");
+			throw game::load_game_exception(savenames_[i],false,false,false,"");
 
 		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
 			if(gamestate_.last_selected.valid() && wml_commands_[i]->needs_select) {
@@ -1103,14 +1106,24 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 			std::vector<std::string> newsaves;
 			for (unsigned int turn = this->turn(); turn != 0; turn--) {
 				std::string name = gamestate_.classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
-				if (savegame::manager::save_game_exists(name, preferences::compress_saves())) {
+				if (savegame::save_game_exists(name, preferences::compress_saves())) {
 					if(preferences::compress_saves()) {
 						newsaves.push_back(name + ".gz");
 					} else {
 						newsaves.push_back(name);
 					}
-					newitems.push_back(_("Back to turn ") + lexical_cast<std::string>(turn));
+					newitems.push_back(_("Back to Turn ") + lexical_cast<std::string>(turn));
 				}
+			}
+
+			const std::string& start_name = gamestate_.classification().label;
+			if(savegame::save_game_exists(start_name, preferences::compress_saves())) {
+				if(preferences::compress_saves()) {
+					newsaves.push_back(start_name + ".gz");
+				} else {
+					newsaves.push_back(start_name);
+				}
+				newitems.push_back(_("Back to Start"));
 			}
 
 			// Make sure list doesn't get too long: keep top two,

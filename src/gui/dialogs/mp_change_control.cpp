@@ -17,6 +17,7 @@
 #include "gui/dialogs/mp_change_control.hpp"
 
 #include "gui/dialogs/helper.hpp"
+#include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -36,7 +37,6 @@
 #include <vector>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
-#include <gui/widgets/button.hpp>
 
 static lg::log_domain log_gui("gui/dialogs/mp_change_control");
 #define ERR_GUI LOG_STREAM(err, log_gui)

@@ -285,6 +285,8 @@ const struct {
 std::vector<hotkey::hotkey_item> hotkeys_;
 hotkey::hotkey_item null_hotkey_;
 
+config default_hotkeys_cfg_;
+
 std::string hotkey_tag_name = "hotkey";
 
 std::vector<bool> scope_active_(hotkey::SCOPE_COUNT, false);
@@ -598,7 +600,7 @@ void set_hotkey_tag_name(const std::string& name)
 	hotkey_tag_name = name;
 }
 
-void load_hotkeys(const config& cfg)
+void load_hotkeys(const config& cfg, bool set_as_default)
 {
 	foreach (const config &hk, cfg.child_range(hotkey_tag_name))
 	{
@@ -606,6 +608,23 @@ void load_hotkeys(const config& cfg)
 		if(h.get_id() != HOTKEY_NULL) {
 			h.load_from_config(hk);
 		}
+	}
+
+	if(set_as_default) {
+		default_hotkeys_cfg_ = cfg;
+	}
+}
+
+void reset_default_hotkeys()
+{
+	foreach(hotkey_item& hi, hotkeys_) {
+		hi.clear_hotkey();
+	}
+
+	if(!default_hotkeys_cfg_.empty()) {
+		load_hotkeys(default_hotkeys_cfg_);
+	} else {
+		ERR_G << "no default hotkeys set yet; all hotkeys are now unassigned!\n";
 	}
 }
 

@@ -21,6 +21,8 @@
 #include "global.hpp"
 
 #include "sdl_utils.hpp"
+
+#include "floating_point_emulation.hpp"
 #include "video.hpp"
 
 #include <algorithm>
@@ -475,31 +477,31 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 		const Uint32* const src_pixels = src_lock.pixels();
 		Uint32* const dst_pixels = dst_lock.pixels();
 
-		double xratio = double(surf->w) / w;
-		double yratio = double(surf->h) / h;
+		tfloat xratio = tfloat(surf->w) / w;
+		tfloat yratio = tfloat(surf->h) / h;
 
-		double ysrc = 0.0;
+		tfloat ysrc;
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
-			double xsrc = 0.0;
+			tfloat xsrc;
 			for(int xdst = 0; xdst != w; ++xdst, xsrc += xratio) {
-				double red = 0.0, green = 0.0, blue = 0.0, alpha = 0.0;
+				tfloat red, green, blue, alpha;
 
-				double summation = 0.0;
+				tfloat summation;
 
 				// We now have a rectangle, (xsrc,ysrc,xratio,yratio)
 				// which we want to derive the pixel from
-				for(double xloc = xsrc; xloc < xsrc+xratio; xloc += 1.0) {
-					const double xsize = std::min<double>(std::floor(xloc+1.0)-xloc,xsrc+xratio-xloc);
-					for(double yloc = ysrc; yloc < ysrc+yratio; yloc += 1.0) {
-						const int xsrcint = std::max<int>(0,std::min<int>(src->w-1,static_cast<int>(xsrc)));
-						const int ysrcint = std::max<int>(0,std::min<int>(src->h-1,static_cast<int>(ysrc)));
+				for(tfloat xloc = xsrc; xloc < xsrc+xratio; xloc += 1) {
+					const tfloat xsize = std::min<tfloat>(floor(xloc + 1)-xloc,xsrc+xratio-xloc);
+					for(tfloat yloc = ysrc; yloc < ysrc+yratio; yloc += 1) {
+						const int xsrcint = std::max<int>(0,std::min<int>(src->w-1,xsrc.to_int()));
+						const int ysrcint = std::max<int>(0,std::min<int>(src->h-1,ysrc.to_int()));
 
-						const double ysize = std::min<double>(std::floor(yloc+1.0)-yloc,ysrc+yratio-yloc);
+						const tfloat ysize = std::min<tfloat>(floor(yloc+1)-yloc,ysrc+yratio-yloc);
 
 						Uint8 r,g,b,a;
 
 						SDL_GetRGBA(src_pixels[ysrcint*src->w + xsrcint],src->format,&r,&g,&b,&a);
-						double value = xsize * ysize;
+						tfloat value = xsize * ysize;
 						summation += value;
 						if (!a) continue;
 						value *= a;
@@ -510,15 +512,20 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 					}
 				}
 
-				if (alpha != 0.0) {
-					double factor = 1 / alpha;
+				if (alpha != 0) {
+					tfloat factor = 1 / alpha;
 					alpha = alpha / summation + 0.5;
 					red = red * factor + 0.5;
 					green = green * factor + 0.5;
 					blue = blue * factor + 0.5;
 				}
 
-				dst_pixels[ydst*dst->w + xdst] = SDL_MapRGBA(dst->format,Uint8(red),Uint8(green),Uint8(blue),Uint8(alpha));
+				dst_pixels[ydst*dst->w + xdst] = SDL_MapRGBA(
+						  dst->format
+						, red.to_int()
+						, green.to_int()
+						, blue.to_int()
+						, alpha.to_int());
 			}
 		}
 	}

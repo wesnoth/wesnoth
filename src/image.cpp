@@ -1035,7 +1035,6 @@ void precache_file_existence(const std::string& subdir)
 	for(std::vector<std::string>::const_iterator p = paths.begin();
 			 p != paths.end(); ++p) {
 
-		const std::string dir = *p + "/" + subdir;
 		precache_file_existence_internal(*p, subdir);
 	}
 }

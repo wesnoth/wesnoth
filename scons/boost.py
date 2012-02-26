@@ -12,8 +12,11 @@ def find_boost(env):
         env["boostdir"] = join(prefix, "include")
         env["boostlibdir"] = join(prefix, "lib")
         if not env.get("boost_suffix"):
-            if glob(join(prefix, "lib", "libboost_*-mt.*")):
-                env["boost_suffix"] = "-mt"
+            for libdir in ["lib", "lib64"]:
+                if glob(join(prefix, libdir, "libboost_*-mt.*")):
+                    env["boost_suffix"] = "-mt"
+                    env["boostlibdir"] = join(prefix, libdir)
+                    break
             else:
                 env["boost_suffix"] = ""
         return

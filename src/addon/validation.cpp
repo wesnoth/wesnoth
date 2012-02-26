@@ -19,23 +19,21 @@
 #include "config.hpp"
 #include "foreach.hpp"
 
-#include <cstring>
-
 const unsigned short default_campaignd_port = 15002;
 
-static bool two_dots(char a, char b)
-{
-	return a == '.' && b == '.';
+namespace {
+	const std::string addon_type_strings[] = {
+		"unknown", "campaign", "scenario", "campaign_mp", "scenario_mp",
+		"map_pack", "era", "faction", /* "mod", "gui", */ "media", "other",
+		""
+	};
 }
 
 bool addon_name_legal(const std::string& name)
 {
-	if(name == "" || strlen(name.c_str()) == 0 || name == "." ||
-	   std::find(name.begin(),name.end(),'/') != name.end() ||
-	   std::find(name.begin(),name.end(),'\\') != name.end() ||
-	   std::find(name.begin(),name.end(),':') != name.end() ||
-	   std::find(name.begin(),name.end(),'~') != name.end() ||
-	   std::adjacent_find(name.begin(),name.end(),two_dots) != name.end()) {
+	if(name.empty() || name == "." ||
+	   name.find_first_of("/:\\~") != std::string::npos ||
+	   name.find("..") != std::string::npos) {
 		return false;
 	} else {
 		return true;
@@ -58,30 +56,22 @@ ADDON_TYPE get_addon_type(const std::string& str)
 {
 	if (str.empty())
 		return ADDON_UNKNOWN;
-	else if (str == "campaign")
-		return ADDON_SP_CAMPAIGN;
-	else if (str == "scenario")
-		return ADDON_SP_SCENARIO;
-	else if (str == "era")
-		return ADDON_MP_ERA;
-	else if (str == "faction")
-		return ADDON_MP_FACTION;
-	else if (str == "map_pack")
-		return ADDON_MP_MAPS;
-	else if (str == "scenario_mp")
-		return ADDON_MP_SCENARIO;
-	else if (str == "campaign_mp")
-		return ADDON_MP_CAMPAIGN;
-	else if (str == "media")
-		return ADDON_MEDIA;
-// 	else if (str == "mod")
-// 		return ADDON_MOD;
-// 	else if (str == "gui")
-// 		return ADDON_GUI;
-	else if (str == "other")
-		return ADDON_OTHER;
-	else
-		return ADDON_UNKNOWN;
+
+	unsigned addon_type_num = 0;
+
+	while(++addon_type_num != ADDON_TYPES_COUNT) {
+		if(str == addon_type_strings[addon_type_num])  {
+			return ADDON_TYPE(addon_type_num);
+		}
+	}
+
+	return ADDON_UNKNOWN;
+}
+
+std::string get_addon_type_string(ADDON_TYPE type)
+{
+	assert(type != ADDON_TYPES_COUNT);
+	return addon_type_strings[type];
 }
 
 namespace {

@@ -42,9 +42,16 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 }
 
 editor_map::editor_map(const config& terrain_cfg)
-	: gamemap(terrain_cfg, gamemap::default_map_header)
+	: gamemap(terrain_cfg, "")
 	, selection_()
 {
+}
+
+editor_map::editor_map(const config& terrain_cfg, const config& level)
+	: gamemap(terrain_cfg, level)
+	, selection_()
+{
+	sanity_check();
 }
 
 editor_map::editor_map(const config& terrain_cfg, const std::string& data)
@@ -68,8 +75,7 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 }
 
 editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
-	: gamemap(terrain_cfg, gamemap::default_map_header + t_translation::write_game_map(
-		t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
+	: gamemap(terrain_cfg, t_translation::write_game_map(t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
 	, selection_()
 {
 	sanity_check();

@@ -589,6 +589,58 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\addon\info.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug (fast)|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath="..\..\src\addon\info.hpp"
 				>
 			</File>
@@ -646,6 +698,62 @@
 			</File>
 			<File
 				RelativePath="..\..\src\addon\manager.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\addon\manager_ui.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug (fast)|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\addon\manager_ui.hpp"
 				>
 			</File>
 			<File
@@ -13275,7 +13383,119 @@
 			Name="Tests"
 			>
 			<File
+				RelativePath="..\..\src\tests\floating_point_emulation.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug (fast)|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_with_VLD|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath="..\..\src\tests\main.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug (fast)|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_with_VLD|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\tests\test_addons.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -15052,6 +15272,10 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\floating_point_emulation.hpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\floating_textbox.cpp"
 			>
 		</File>
@@ -15130,54 +15354,6 @@
 		<File
 			RelativePath="..\..\src\game.cpp"
 			>
-			<FileConfiguration
-				Name="Debug|Win32"
-				>
-				<Tool
-					Name="VCCLCompilerTool"
-					PreprocessorDefinitions="DISABLE_POOL_ALLOC"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Release|Win32"
-				>
-				<Tool
-					Name="VCCLCompilerTool"
-					PreprocessorDefinitions="DISABLE_POOL_ALLOC"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug (fast)|Win32"
-				>
-				<Tool
-					Name="VCCLCompilerTool"
-					PreprocessorDefinitions="DISABLE_POOL_ALLOC"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Debug_with_VLD|Win32"
-				>
-				<Tool
-					Name="VCCLCompilerTool"
-					PreprocessorDefinitions="DISABLE_POOL_ALLOC"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Test_Debug|Win32"
-				>
-				<Tool
-					Name="VCCLCompilerTool"
-					PreprocessorDefinitions="DISABLE_POOL_ALLOC"
-				/>
-			</FileConfiguration>
-			<FileConfiguration
-				Name="Test_Release|Win32"
-				>
-				<Tool
-					Name="VCCLCompilerTool"
-					PreprocessorDefinitions="DISABLE_POOL_ALLOC"
-				/>
-			</FileConfiguration>
 		</File>
 		<File
 			RelativePath="..\..\src\game_config.hpp"
@@ -15213,6 +15389,10 @@
 		</File>
 		<File
 			RelativePath="..\..\src\game_display.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\game_end_exceptions.cpp"
 			>
 		</File>
 		<File

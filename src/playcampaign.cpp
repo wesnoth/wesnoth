@@ -319,6 +319,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 				static config scenario2;
 				scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
+				//TODO comment or remove
 				//level_ = scenario;
 				//merge carryover information into the newly generated scenario
 				config temp(scenario2);
@@ -326,13 +327,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				gamestate.starting_pos = temp;
 				scenario = &scenario2;
 			}
+
 			std::string map_data = (*scenario)["map_data"];
-			if(map_data.empty() && (*scenario)["map"] != "") {
-				map_data = read_map((*scenario)["map"]);
-			}
 
 			// If the map should be randomly generated
-			if(map_data.empty() && (*scenario)["map_generation"] != "") {
+			if ( (*scenario).child_or_empty("map").empty() && map_data.empty() && (*scenario)["map_generation"] != "") {
 				const cursor::setter cursor_setter(cursor::WAIT);
 				map_data = random_generate_map((*scenario)["map_generation"],scenario->child("generator"));
 
@@ -341,7 +340,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				// it will not ask for the map to be generated again on reload
 				static config new_level;
 				new_level = *scenario;
-				new_level["map_data"] = map_data;
+				config& map = new_level.add_child("map");
+				map["data"] = map_data;
 				scenario = &new_level;
 
 				//merge carryover information into the scenario
@@ -396,7 +396,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// need to change this test.
 		if (res == VICTORY || (io_type != IO_NONE && res == DEFEAT)) {
 			if (preferences::delete_saves())
-				savegame::manager::clean_saves(gamestate.classification().label);
+				savegame::clean_saves(gamestate.classification().label);
 
 			if (preferences::save_replays() && end_level.replay_save) {
 				savegame::replay_savegame save(gamestate, preferences::compress_saves());
@@ -504,14 +504,12 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 					static config scenario2;
 					scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
+					//TODO comment or remove
 					//level_ = scenario;
 					gamestate.starting_pos = scenario2;
 					scenario = &scenario2;
 				}
 				std::string map_data = (*scenario)["map_data"];
-				if(map_data.empty() && (*scenario)["map"] != "") {
-					map_data = read_map((*scenario)["map"]);
-				}
 
 				// If the map should be randomly generated
 				if(map_data.empty() && (*scenario)["map_generation"] != "") {
@@ -523,7 +521,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					// it will not ask for the map to be generated again on reload
 					static config new_level;
 					new_level = *scenario;
-					new_level["map_data"] = map_data;
+					config& map = new_level.add_child("map");
+					map["data"] = map_data;
 					scenario = &new_level;
 
 					gamestate.starting_pos = new_level;
@@ -606,7 +605,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 	if (gamestate.classification().campaign_type == "scenario"){
 		if (preferences::delete_saves())
-			savegame::manager::clean_saves(gamestate.classification().label);
+			savegame::clean_saves(gamestate.classification().label);
 	}
 	return VICTORY;
 }
