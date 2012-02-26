@@ -22,13 +22,27 @@ GetOptions ('directory=s' => \$toplevel,
 
 $domain = $initialdomain unless defined $domain;
 
-sub raw2postring {
+sub wml2postring {
   my $str = shift;
 
-  $str =~ s/\"\"/\\\"/mg;
-  $str =~ s/^(.*)$/"$1\\n"/mg;
-  $str =~ s/\n$/\n"\\n"/mg;
-  $str =~ s/\\n\"$/\"\n/g;
+  $str =~ s/\"\"/\\\"/mg; # "" -> \"
+  $str =~ s/^(.*)$/"$1\\n"/mg; # Surround with doublequotes and add final escaped newline
+  $str =~ s/\n$/\n"\\n"/mg; # Split the string around newlines: "foo\nbar" -> "foo\n" LF "bar"
+  $str =~ s/\\n\"$/\"\n/g; # Remove final escaped newline and add newline after last line
+
+  return $str;
+}
+
+sub lua2postring {
+  my $str = shift;
+  my $quote = shift;
+
+  if ($quote eq "'") {
+    $str =~ s/"/\\"/g;
+  }
+  $str =~ s/^(.*)$/"$1\\n"/mg; # Surround with doublequotes and add final escaped newline
+  $str =~ s/\n$/\n"\\n"/mg; # Split the string around newlines: "foo\nbar" -> "foo\n" LF "bar"
+  $str =~ s/\\n\"$/\"\n/g; # Remove final escaped newline and add newline after last line
 
   return $str;
 }
@@ -81,7 +95,7 @@ sub read_wml_file {
 
       # if translatable and in the requested domain
       if ($translatable and $domainstack[0] eq $domain) {
-        my $msg = raw2postring($2);
+        my $msg = wml2postring($2);
         push @{$messages{$msg}}, "$file:$.";
         push @{$nodeinfostack[-1][1]}, $msg if $valid_wml;
 
@@ -110,7 +124,7 @@ sub read_wml_file {
       $str .= $1;
 
       if ($translatable and $domainstack[0] eq $domain) {
-        my $msg = "\"\"\n" . raw2postring($str);
+        my $msg = "\"\"\n" . wml2postring($str);
         push @{$messages{$msg}}, "$file:$line" ;
         push @{$nodeinfostack[-1][1]}, $msg if $valid_wml;
       }
@@ -132,12 +146,12 @@ sub read_wml_file {
 
 ### probably not needed ###
 #      # magic handling of weapon descriptions
-#      push @{$messages{raw2postring($2)}},  "$file:$."
+#      push @{$messages{wml2postring($2)}},  "$file:$."
 #	if $readingattack and
 #	  ($1 eq 'name' or $1 eq 'type' or $1 eq 'special');
 #
 #      # magic handling of unit abilities
-#      push @{$messages{raw2postring($2)}},  "$file:$."
+#      push @{$messages{wml2postring($2)}},  "$file:$."
 #	if $1 eq 'ability';
 
     } elsif (m,\[attack\],) {
@@ -198,10 +212,61 @@ sub read_wml_file {
   }
 }
 
+sub read_lua_file {
+  my ($file) = @_;
+  our (%messages,%nodeinfo);
+  my ($str, $translatable, $line);
+  my $curdomain = $initialdomain;
+  open (FILE, "<$file") or die "cannot read from $file";
+  LINE: while (<FILE>) {
+    #TODO: po comments
+    #if (m/--\s*po:
+
+    # skip comments unless told not to
+    next LINE if m/^\s*--/ and not defined $str and not m/--\s*wmlxgettext/;
+
+    # change the textdomain
+    if (m/textdomain "([^"]+)"(.*)/) {
+      $curdomain = $1;
+
+      # process rest of the line
+      $_ = $2 . "\n";
+      redo LINE;
+    }
+
+    # Single-line quoted string
+    # TODO: support [[long strings]]
+    # TODO: get 'singlequotes' to work
+    if (not defined $str and m/^(?:[^"]*?)((?:_\s*)?)\s*(")([^"]*(?:\\"[^"]*)*)"(.*)/) {
+      # $1 = underscore or not
+      # $2 = quote (double or single)
+      # $3 = string
+      # $4 = rest
+      my $translatable = ($1 ne '');
+      my $rest = $4;
+
+      if ($translatable and $curdomain eq $domain) {
+        my $msg = lua2postring($3, $2);
+        push @{$messages{$msg}}, "$file:$.";
+        #TODO: add real metadata here
+        #push @{$nodeinfo{$msg}}, ["lua", [], []];
+      }
+
+      # process rest of the line
+      $_ = $rest . "\n";
+      redo LINE;
+    }
+  }
+}
+
 our (%messages,%nodeinfo);
 chdir $toplevel;
 foreach my $file (@ARGV) {
+  if ($file =~ m/\.lua$/i) {
+    read_lua_file($file);
+  } else {
     read_wml_file($file);
+  }
 }
 
 ## index strings by their location in the source so we can sort them
