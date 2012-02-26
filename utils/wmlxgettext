@@ -42,14 +42,14 @@ sub possible_node_info {
   }
 }
 
-our ($str,$translatable,$line,%messages,%nodeinfo);
-chdir $toplevel;
-foreach my $file (@ARGV) {
-  open (FILE, "<$file") or die "cannot read from $file";
+sub read_wml_file {
+  my ($file) = @_;
+  our ($str,$translatable,$line,%messages,%nodeinfo);
   my $readingattack = 0;
   my @nodeinfostack = (["top", [], [], []]); # dummy top node
   my @domainstack = ($initialdomain);
   my $valid_wml = 1;
+  open (FILE, "<$file") or die "cannot read from $file";
  LINE: while (<FILE>) {
     # record a #define scope
     if (m/\#define/) {
@@ -195,6 +195,12 @@ foreach my $file (@ARGV) {
     warn "WML seems invalid for $file, node info extraction forfeited ".
          "past the error point";
   }
+}
+
+our ($str,$translatable,$line,%messages,%nodeinfo);
+chdir $toplevel;
+foreach my $file (@ARGV) {
+    read_wml_file($file);
 }
 
 ## index strings by their location in the source so we can sort them
