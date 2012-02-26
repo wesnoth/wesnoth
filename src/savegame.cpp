@@ -154,7 +154,6 @@ public:
 		}
 		summary["mod_time"] = str_cast(static_cast<int>(modified));
 		write_save_index();
-		set_modified(name, modified);
 	}
 	void remove(const std::string& name) {
 		config& root = data();
@@ -969,22 +968,13 @@ void savegame::write_game_to_disk(const std::string& filename)
 	{
 		config_writer out(ss, compress_saves_);
 		write_game(out);
-		if(!out.good()) {
-			throw game::save_game_failed(_("Could not write to file"));
-		}
+		finish_save_game(out);
 	}
-	{
-		scoped_ostream os(open_save_game(filename_));
-		(*os) << ss.str();
+	scoped_ostream os(open_save_game(filename_));
+	(*os) << ss.str();
 
-		if (!os->good()) {
-			throw game::save_game_failed(_("Could not write to file"));
-		}
-	}
-	try {
-		save_index_manager.rebuild(gamestate_.classification().label);
-	} catch(io_exception& e) {
-		throw game::save_game_failed(e.what());
+	if (!os->good()) {
+		throw game::save_game_failed(_("Could not write to file"));
 	}
 }
 
@@ -999,6 +989,18 @@ void savegame::write_game(config_writer &out) const
 	out.open_child("statistics");
 	statistics::write_stats(out);
 	out.close_child("statistics");
+}
+
+void savegame::finish_save_game(const config_writer &out)
+{
+	try {
+		if(!out.good()) {
+			throw game::save_game_failed(_("Could not write to file"));
+		}
+		save_index_manager.remove(gamestate_.classification().label);
+	} catch(io_exception& e) {
+		throw game::save_game_failed(e.what());
+	}
 }
 
 // Throws game::save_game_failed
