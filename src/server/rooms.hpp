@@ -42,12 +42,17 @@ class RoomList : public boost::noncopyable
 		boost::bimaps::with_info<room_ptr>
 	> RoomMap;
 	RoomMap room_map_;
-	PlayerMap player_connections_;
+	PlayerMap& player_connections_;
+
+	room_ptr make_room(const std::string& room_name);
 	public:
 	RoomList(PlayerMap& player_connections);
 
 	void enter_room(const std::string& room_name, socket_ptr socket);
 	void leave_room(const std::string& room_name, socket_ptr socket);
+
+	void send_to_room(const std::string& room_name, simple_wml::document& doc, socket_ptr exclude = socket_ptr()) const;
+	void send_server_message(const std::string& room_name, const std::string& message, socket_ptr exclude = socket_ptr()) const;
 };
 
 #endif
