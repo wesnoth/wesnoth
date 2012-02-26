@@ -131,7 +131,7 @@ class TagNode:
 
         If no elements are found an empty list is returned.
         """
-        if len(kw) == 1 and "tag" in kw:
+        if len(kw) == 1 and "tag" in kw and kw["tag"]:
             return self.speedy_tags.get(kw["tag"], [])
 
         r = []
@@ -140,10 +140,10 @@ class TagNode:
             for k, v in kw.items():
                 if k == "tag":
                    if not isinstance(sub, TagNode): ok = False
-                   elif v == "" or not sub.name == v: ok = False
+                   elif v != "" and sub.name != v: ok = False
                 elif k == "att":
                    if not isinstance(sub, AttributeNode): ok = False
-                   elif v == "" or not sub.name == v: ok = False
+                   elif v != "" and sub.name != v: ok = False
             if ok:
                 r.append(sub)
         return r
@@ -195,8 +195,10 @@ class Parser:
             configured to use the desired data and config directories.
         """
         self.wesnoth_exe = wesnoth_exe
-        self.config_dir = config_dir
-        self.data_dir = data_dir
+        self.config_dir = None
+        if config_dir: self.config_dir = os.path.abspath(config_dir)
+        self.data_dir = None
+        if data_dir: self.data_dir = os.path.abspath(data_dir)
         self.keep_temp_dir = None
         self.temp_dir = None
         self.no_preprocess = no_preprocess
@@ -437,7 +439,7 @@ class Parser:
 
         for rawline in open(input, "rb"):
             self.parser_line += 1
-            # Everything from þ to newline is the command.
+            # Everything from chr(254) to newline is the command.
             compos = rawline.find(command_marker_byte)
             if compos >= 0:
                 self.parse_line_without_commands(rawline[:compos])

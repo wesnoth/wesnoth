@@ -105,7 +105,7 @@ if __name__ == "__main__":
     if not ":" in address:
         address += ":" + str(port)
 
-    def get(name, version, uploads, cdir):
+    def get(name, version, uploads, dependencies, cdir):
         mythread = cs.get_campaign_raw_async(name)
 
         pcounter = 0
@@ -134,8 +134,13 @@ if __name__ == "__main__":
             info = os.path.join(dirname, "_info.cfg")
             try:
                 f = file(info, "w")
-                f.write("[info]\nversion=\"%s\"\nuploads=\"%s\"\n[/info]\n" %
-                    (version, uploads))
+                infowml = """[info]
+version="%s"
+uploads="%s"
+dependencies="%s"
+[/info]"""
+                f.write(infowml %
+                    (version, uploads, dependencies))
                 f.close()
             except OSError:
                 pass
@@ -227,20 +232,21 @@ if __name__ == "__main__":
                 type = campaign.get_text_val("type", "")
                 version = campaign.get_text_val("version", "")
                 uploads = campaign.get_text_val("uploads", "")
+                dependencies = campaign.get_text_val("dependencies", "")
                 if re.escape(options.download).replace("\\_", "_") == options.download:
                     if name == options.download:
-                        fetchlist.append((name, version, uploads))
+                        fetchlist.append((name, version, uploads, dependencies))
                 elif not options.type or options.type == type:
                     if re.search(options.download, name):
-                        fetchlist.append((name, version, uploads))
+                        fetchlist.append((name, version, uploads, dependencies))
 
-        for name, version, uploads in fetchlist:
+        for name, version, uploads, dependencies in fetchlist:
             info = os.path.join(options.campaigns_dir, name, "_info.cfg")
             local_uploads, local_version = get_info(info)
             if uploads != local_uploads:
                 # The uploads > local_uploads likely means a server reset
                 if version != local_version or uploads > local_uploads:
-                    get(name, version, uploads, options.campaigns_dir)
+                    get(name, version, uploads, dependencies, options.campaigns_dir)
                 else:
                     print "Not downloading", name, \
                         "as the version already is", local_version, \
@@ -360,6 +366,7 @@ if __name__ == "__main__":
                 info = os.path.join(d, "_info.cfg")
                 sversion = campaigns[dirname].get_text_val("version", "")
                 srev = campaigns[dirname].get_text_val("uploads", "")
+                sdeps = campaigns[dirname].get_text_val("dependencies", "")
                 if os.path.exists(info):
                     lrev, lversion = get_info(info)
                     if not srev:
@@ -375,17 +382,17 @@ if __name__ == "__main__":
                             (lrev, srev))
                         if srev > lrev: # server reset?
                             if options.update:
-                                get(dirname, sversion, srev, cdir)
+                                get(dirname, sversion, srev, sdeps, cdir)
                     else:
                         sys.stdout.write(" * " + dirname + " - you have " +
                             "revision " + lrev + " but revision " + srev +
                             " is available.\n")
-                        if options.update: get(dirname, sversion, srev, cdir)
+                        if options.update: get(dirname, sversion, srev, sdeps, cdir)
                 else:
                     sys.stdout.write(" ? " + dirname +
                         " - is installed but has no " +
                         "version info.\n")
-                    if options.update: get(dirname, sversion, srev, cdir)
+                    if options.update: get(dirname, sversion, srev, sdeps, cdir)
             else:
                 sys.stdout.write(" - %s - is installed but not on server.\n" %
                     dirname)
