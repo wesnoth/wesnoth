@@ -217,10 +217,12 @@ sub read_lua_file {
   our (%messages,%nodeinfo);
   my ($str, $translatable, $line, $quote);
   my $curdomain = $initialdomain;
+  my $metadata = undef;
   open (FILE, "<$file") or die "cannot read from $file";
   LINE: while (<FILE>) {
-    #TODO: po comments
-    #if (m/--\s*po:
+    if (defined $metadata and m/--\s*po:\s*(.*)$/) {
+      push @{@{$metadata}[2]}, $1;
+    }
 
     # skip comments unless told not to
     next LINE if m/^\s*--/ and not defined $str and not m/--\s*wmlxgettext/;
@@ -248,8 +250,7 @@ sub read_lua_file {
       if ($translatable and $curdomain eq $domain) {
         my $msg = lua2postring($3, $2);
         push @{$messages{$msg}}, "$file:$.";
-        #TODO: add real metadata here
-        #push @{$nodeinfo{$msg}}, ["lua", [], []];
+        push @{$nodeinfo{$msg}}, $metadata if defined $metadata;
       }
 
       # process rest of the line
@@ -280,7 +281,7 @@ sub read_lua_file {
       if ($translatable and $curdomain eq $domain) {
         my $msg = "\"\"\n" . lua2postring($str, $quote);
         push @{$messages{$msg}}, "$file:$line";
-        #TODO: metadata
+        push @{$nodeinfo{$msg}}, $metadata if defined $metadata;
       }
       $str = undef;
       $translatable = undef;
@@ -294,6 +295,10 @@ sub read_lua_file {
     # Middle of multiline quoted string
     elsif (defined $str) {
       $str .= $_;
+    }
+    # Function or WML tag
+    elsif (m/function\s+([a-zA-Z0-9_.]+)\s*\(/ or m/([a-zA-Z0-9_.]+)\s*=\s*function/) {
+      $metadata = ["lua", [$1], []];
     }
   }
 }
