@@ -38,14 +38,19 @@ RoomList::RoomList(PlayerMap& player_connections) : lobby_(room_ptr(new Room("lo
 
 void RoomList::enter_room(const std::string& room_name, socket_ptr socket)
 {
+	RoomMap::right_iterator existing_room_iter = room_map_.right.find(room_name);
 	bool inserted;
 	RoomMap::iterator iter;
 	boost::tie(iter, inserted) = room_map_.insert(RoomMap::value_type(socket, room_name));
 	if(inserted) {
 		if(room_name == "lobby")
 			iter->info = lobby_;
-		else
-			iter->info = room_ptr(new Room(room_name));
+		else {
+			if(existing_room_iter == room_map_.right.end())
+				iter->info = room_ptr(new Room(room_name));
+			else
+				iter->info = existing_room_iter->info;
+		}
 	}
 }
 
