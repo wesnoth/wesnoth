@@ -1311,6 +1311,7 @@ void server::remove_player(socket_ptr socket)
 	LOG_SERVER << ip << "\t" << iter->info.name()
 		<< "\twas logged off" << "\n";
 
+	room_list_.remove_player(socket);
 	player_connections_.left.erase(iter);
 }
 

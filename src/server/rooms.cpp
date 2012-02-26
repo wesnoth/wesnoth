@@ -68,6 +68,12 @@ void RoomList::leave_room(const std::string& room_name, socket_ptr socket)
 	room_map_.erase(RoomMap::value_type(socket, room_name));
 }
 
+void RoomList::remove_player(socket_ptr socket)
+{
+	std::pair<RoomMap::left_iterator, RoomMap::left_iterator> range = room_map_.left.equal_range(socket);
+	room_map_.left.erase(range.first, range.second);
+}
+
 void RoomList::send_to_room(const std::string& room_name, simple_wml::document& doc, socket_ptr exclude) const
 {
 	foreach(const RoomMap::right_value_type& value, room_map_.right.equal_range(room_name)) {
