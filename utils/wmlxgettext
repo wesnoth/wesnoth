@@ -22,14 +22,16 @@ GetOptions ('directory=s' => \$toplevel,
 
 $domain = $initialdomain unless defined $domain;
 
-our $localdir;
-BEGIN {
-    use File::Spec::Functions qw(rel2abs);
-    $localdir = dirname ($0);
-    $localdir = rel2abs($localdir);
+sub raw2postring {
+  my $str = shift;
+
+  $str =~ s/\"\"/\\\"/mg;
+  $str =~ s/^(.*)$/"$1\\n"/mg;
+  $str =~ s/\n$/\n"\\n"/mg;
+  $str =~ s/\\n\"$/\"\n/g;
+
+  return $str;
 }
-use lib "$localdir";
-require "wmltrans.pm";
 
 ## extract strings with their refs and node info into %messages
 
