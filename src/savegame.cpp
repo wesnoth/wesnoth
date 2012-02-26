@@ -154,6 +154,7 @@ public:
 		}
 		summary["mod_time"] = str_cast(static_cast<int>(modified));
 		write_save_index();
+		set_modified(name, modified);
 	}
 	void remove(const std::string& name) {
 		config& root = data();
