@@ -44,7 +44,8 @@ sub possible_node_info {
 
 sub read_wml_file {
   my ($file) = @_;
-  our ($str,$translatable,$line,%messages,%nodeinfo);
+  our (%messages,%nodeinfo);
+  my ($str, $translatable, $line);
   my $readingattack = 0;
   my @nodeinfostack = (["top", [], [], []]); # dummy top node
   my @domainstack = ($initialdomain);
@@ -197,7 +198,7 @@ sub read_wml_file {
   }
 }
 
-our ($str,$translatable,$line,%messages,%nodeinfo);
+our (%messages,%nodeinfo);
 chdir $toplevel;
 foreach my $file (@ARGV) {
     read_wml_file($file);
