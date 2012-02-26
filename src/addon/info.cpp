@@ -134,6 +134,32 @@ std::string addon_info::display_icon() const
 	return ret;
 }
 
+std::string addon_info::display_type() const
+{
+	switch (type) {
+	case ADDON_SP_CAMPAIGN:
+		return _("addon_type^Campaign");
+	case ADDON_SP_SCENARIO:
+		return _("addon_type^Scenario");
+	case ADDON_MP_ERA:
+		return _("addon_type^MP era");
+	case ADDON_MP_FACTION:
+		return _("addon_type^MP faction");
+	case ADDON_MP_MAPS:
+		return _("addon_type^MP map-pack");
+	case ADDON_MP_SCENARIO:
+		return _("addon_type^MP scenario");
+	case ADDON_MP_CAMPAIGN:
+		return _("addon_type^MP campaign");
+	case ADDON_MEDIA:
+		return _("addon_type^Resources");
+	case ADDON_OTHER:
+		return _("addon_type^Other");
+	default:
+		return _("addon_type^(unknown)");
+	}
+}
+
 std::set<std::string> addon_info::resolve_dependencies(const addons_list& addons) const
 {
 	std::set<std::string> deps;

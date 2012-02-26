@@ -103,39 +103,6 @@ bool get_addons_list(addons_client& client, addons_list& list)
 	return true;
 }
 
-/**
- * Return a short string describing an add-on's type.
- *
- * @param type Numerical add-on type.
- *
- * @return     A string, translated to the current locale.
- */
-std::string get_translatable_addon_type(ADDON_TYPE type)
-{
-	switch (type) {
-	case ADDON_SP_CAMPAIGN:
-		return _("addon_type^Campaign");
-	case ADDON_SP_SCENARIO:
-		return _("addon_type^Scenario");
-	case ADDON_MP_ERA:
-		return _("addon_type^MP era");
-	case ADDON_MP_FACTION:
-		return _("addon_type^MP faction");
-	case ADDON_MP_MAPS:
-		return _("addon_type^MP map-pack");
-	case ADDON_MP_SCENARIO:
-		return _("addon_type^MP scenario");
-	case ADDON_MP_CAMPAIGN:
-		return _("addon_type^MP campaign");
-	case ADDON_MEDIA:
-		return _("addon_type^Resources");
-	case ADDON_OTHER:
-		return _("addon_type^Other");
-	default:
-		return _("addon_type^(unknown)");
-	}
-}
-
 /** Warns the user about unresolved dependencies and installs them if they choose to do so. */
 bool do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon, bool& wml_changed)
 {
@@ -196,7 +163,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		const addon_info& addon = addon_at(dep, addons);
 
 		const std::string& display_size = size_display_string(addon.size);
-		const std::string& display_type = get_translatable_addon_type(addon.type);
+		const std::string& display_type = addon.display_type();
 		const std::string& display_icon = addon.display_icon();
 		const std::string& display_version = addon.version.str();
 
@@ -466,7 +433,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		}
 
 		const std::string& display_size = size_display_string(addon.size);
-		const std::string& display_type = get_translatable_addon_type(addon.type);
+		const std::string& display_type = addon.display_type();
 		const std::string& display_down = str_cast(addon.downloads);
 		const std::string& display_icon = addon.display_icon();
 

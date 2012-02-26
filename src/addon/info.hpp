@@ -109,6 +109,9 @@ struct addon_info
 	/** Get an icon path fixed for display (e.g. when TC is missing, or the image doesn't exist). */
 	std::string display_icon() const;
 
+	/** Get an add-on type identifier for display in the user's language. */
+	std::string display_type() const;
+
 	/**
 	 * Resolve an add-on's dependency tree in a recursive fashion.
 	 *
