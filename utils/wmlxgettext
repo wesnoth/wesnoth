@@ -111,7 +111,7 @@ sub read_wml_file {
 
       if ($translatable and $domainstack[0] eq $domain) {
         my $msg = "\"\"\n" . raw2postring($str);
-        push @{$messages{$msg}}, "$file:$." ;
+        push @{$messages{$msg}}, "$file:$line" ;
         push @{$nodeinfostack[-1][1]}, $msg if $valid_wml;
       }
       $str = undef;
