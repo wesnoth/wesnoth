@@ -158,6 +158,7 @@ public:
 	void remove(const std::string& name) {
 		config& root = data();
 		root.remove_attribute(name);
+		write_save_index();
 	}
 	void set_modified(const std::string& name, const time_t& modified) {
 		modified_[name] = modified;
