@@ -23,6 +23,7 @@
 #include "../gettext.hpp"
 #include "../map_exception.hpp"
 #include "../map_label.hpp"
+#include "../serialization/binary_or_text.hpp"
 #include "../serialization/parser.hpp"
 #include "../wml_exception.hpp"
 
@@ -227,7 +228,8 @@ bool map_context::save()
 	try {
 		if (!is_embedded()) {
 			std::stringstream ss;
-			ss << data;
+			config_writer writer(ss, false);
+			writer.write(data);
 			write_file(get_filename(), ss.str());
 		} else {
 			std::string map_string = read_file(get_filename());
