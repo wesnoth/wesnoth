@@ -215,7 +215,7 @@ sub read_wml_file {
 sub read_lua_file {
   my ($file) = @_;
   our (%messages,%nodeinfo);
-  my ($str, $translatable, $line);
+  my ($str, $translatable, $line, $quote);
   my $curdomain = $initialdomain;
   open (FILE, "<$file") or die "cannot read from $file";
   LINE: while (<FILE>) {
@@ -255,6 +255,45 @@ sub read_lua_file {
       # process rest of the line
       $_ = $rest . "\n";
       redo LINE;
+    }
+    # Begin multiline quoted string
+    elsif (not defined $str and m/^(?:[^"]*?)((?:_\s*)?)\s*(")([^"]*(?:\\"[^"]*)*)/) {
+      # $1 = underscore or not
+      # $2 = quote (double or single)
+      # $3 = string
+      $translatable = ($1 ne '');
+      $quote = $2;
+      $str = $3;
+      $line = $.;
+    }
+    # End multiline quoted string
+    elsif (m/([^"]*(?:\\"[^"]*)*)(")(.*)/) {
+      # $1 = string
+      # $2 = quote (double or single)
+      # $3 = rest
+      die "end of string without a start in $file" if not defined $str;
+
+      $str .= $1;
+      my $rest = $3;
+
+      # TODO: ensure $quote eq $2 when this matches
+      if ($translatable and $curdomain eq $domain) {
+        my $msg = "\"\"\n" . lua2postring($str, $quote);
+        push @{$messages{$msg}}, "$file:$line";
+        #TODO: metadata
+      }
+      $str = undef;
+      $translatable = undef;
+      $line = undef;
+      $quote = undef;
+
+      # process rest of the line
+      $_ = $rest . "\n";
+      redo LINE;
+    }
+    # Middle of multiline quoted string
+    elsif (defined $str) {
+      $str .= $_;
     }
   }
 }
