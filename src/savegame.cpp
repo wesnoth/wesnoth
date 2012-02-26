@@ -968,6 +968,7 @@ void savegame::write_game_to_disk(const std::string& filename)
 	{
 		config_writer out(ss, compress_saves_);
 		write_game(out);
+		finish_save_game(out);
 	}
 	{
 		scoped_ostream os(open_save_game(filename_));
@@ -977,7 +978,6 @@ void savegame::write_game_to_disk(const std::string& filename)
 			throw game::save_game_failed(_("Could not write to file"));
 		}
 	}
-	finish_save_game(out);
 }
 
 void savegame::write_game(config_writer &out) const
@@ -999,7 +999,7 @@ void savegame::finish_save_game(const config_writer &out)
 		if(!out.good()) {
 			throw game::save_game_failed(_("Could not write to file"));
 		}
-		save_index_manager.rebuild(gamestate_.classification().label);
+		save_index_manager.remove(gamestate_.classification().label);
 	} catch(io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
