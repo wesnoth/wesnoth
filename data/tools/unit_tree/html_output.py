@@ -344,8 +344,8 @@ class HTMLOutput:
                 if racename == "-":
                     write(" -<br/>")
                 else:
-                    write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
-                        racename, racename))
+                    write(" <a href=\"%s#%s\">%s</a><br/>" % (
+                        self.target, racename, racename))
 
             write("</div></li>\n")
         else:
@@ -391,12 +391,13 @@ class HTMLOutput:
                 got_menu = True
                 c = self.campaign
                 if c == "units": c = "mainline"
-                link = "../%s/%s.html" % (self.isocode, c)
                 write("<a href=\"%s#%s\">%s</a><br/>" % (
-                    link, r, r))
+                    self.target, r, r))
                 for uid in races[r]:
                     un = self.wesnoth.unit_lookup[uid]
-                    link = "../%s/%s.html" % (self.isocode, uid)
+                    if "mainline" in un.campaigns: addon = "mainline"
+                    else: addon = self.addon
+                    link = "../../%s/%s/%s.html" % (addon, self.isocode, uid)
                     name = self.wesnoth.get_unit_value(un,
                         "name", translation=self.translation.translate)
                     if not name:
@@ -752,7 +753,10 @@ class HTMLOutput:
             punit = self.wesnoth.unit_lookup[pid]
             if unit.campaigns[0] == "mainline" and punit.campaigns[0] != "mainline":
                 continue
-            link = "../%s/%s.html" % (self.isocode, pid)
+            
+            if "mainline" in unit.campaigns[0]: addon = "mainline"
+            else: addon = self.addon
+            link = "../../%s/%s/%s.html" % (addon, self.isocode, pid)
             name = self.wesnoth.get_unit_value(punit, "name",
                 translation=self.translation.translate)
             write("\n<a href=\"%s\">%s</a>" % (link, name))
@@ -761,9 +765,11 @@ class HTMLOutput:
         write("<td>%s" % _("Advances to: ", "wesnoth-help"))
         write("</td><td>\n")
         for cid in self.forest.get_children(uid):
-            link = "../%s/%s.html" % (self.isocode, cid)
             try:
                 cunit = self.wesnoth.unit_lookup[cid]
+                if "mainline" in cunit.campaigns[0]: addon = "mainline"
+                else: addon = self.addon
+                link = "../../%s/%s/%s.html" % (addon, self.isocode, cid)
                 if unit.campaigns[0] == "mainline" and cunit.campaigns[0] != "mainline":
                     continue
                 name = self.wesnoth.get_unit_value(cunit, "name",
@@ -772,6 +778,7 @@ class HTMLOutput:
                 error_message("Warning: Unit %s not found.\n" % cid)
                 name = cid
                 if unit.campaigns[0] == "mainline": continue
+                link = self.target
             write("\n<a href=\"%s\">%s</a>" % (link, name))
         write("</td>\n")
         write("</tr>\n")
@@ -997,6 +1004,8 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
 
     n = html.write_units_tree(grouper, title)
     
+    output.close()
+    
     return n
 
 def generate_era_report(addon, isocode, era, wesnoth):
@@ -1018,6 +1027,8 @@ def generate_era_report(addon, isocode, era, wesnoth):
 
     ename = era.get_text_val("name", translation = html.translate)
     n = html.write_units_tree(grouper, ename)
+    
+    output.close()
     
     return n
 
@@ -1043,9 +1054,10 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
         output = MyFile(filename, "w")
         html.target = "%s.html" % uid
         html.write_unit_report(output, unit)
+        output.close()
         
 def html_postprocess_file(filename, isocode, batchlist):
-    
+
     print("postprocessing " + filename)
     
     chtml = u""
@@ -1105,12 +1117,13 @@ def html_postprocess_file(filename, isocode, batchlist):
         if i == 0 and eids[1]:
             ehtml += u"-<br/>\n"
             
-    f = open(filename, "rb")
+    f = open(filename, "r+b")
     html = f.read().decode("utf8")
     html = html.replace(u"PLACE CAMPAIGNS HERE\n", chtml)
     html = html.replace(u"PLACE ERAS HERE\n", ehtml)
+    f.seek(0)
+    f.write(html.encode("utf8"))
     f.close()
-    open(filename, "wb").write(html.encode("utf8"))
 
 def html_postprocess_all(batchlist):
     for isocode, filename in all_written_html_files:
