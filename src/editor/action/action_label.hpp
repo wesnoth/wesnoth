@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2010 - 2012 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 #ifndef EDITOR_ACTION_LABEL_HPP
 #define EDITOR_ACTION_LABEL_HPP
 
-#include "action.hpp"
+#include "../action.hpp"
 
 #include "../../map.hpp"
 #include "../../map_label.hpp"

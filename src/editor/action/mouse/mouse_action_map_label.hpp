@@ -16,7 +16,7 @@
 #ifndef EDITOR_MOUSE_ACTION_MAP_LABEL_HPP
 #define EDITOR_MOUSE_ACTION_MAP_LABEL_HPP
 
-#include "mouse_action.hpp"
+#include "../../mouse_action.hpp"
 
 class CKey;
 
@@ -36,6 +36,11 @@ public:
 	editor_action* click_left(editor_display& disp, int x, int y);
 
 	/**
+	 * Drag operation. A click should have occurred earlier. Defaults to no action.
+	 */
+	editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
+
+	/**
 	 * Left click displays a dialog that is used for entering the label string.
 	 */
 	editor_action* up_left(editor_display& disp, int x, int y);
@@ -46,16 +51,6 @@ public:
 	 * Right click erases the label under the mouse.
 	 */
 	editor_action* up_right(editor_display& disp, int x, int y);
-
-	/**
-	 * Drag operation. A click should have occured earlier. Defaults to no action.
-	 */
-	editor_action* drag_left(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
-
-	/**
-	 * TODO
-	 */
-	editor_action* drag_end(editor_display& disp, int x, int y);
 
 	virtual void set_mouse_overlay(editor_display& disp);
 

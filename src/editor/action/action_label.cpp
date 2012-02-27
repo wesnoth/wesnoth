@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2010 - 2012 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -34,7 +34,7 @@ editor_action_label* editor_action_label::clone() const
 editor_action* editor_action_label::perform(map_context& mc) const
 {
 	std::auto_ptr<editor_action> undo;
-	const terrain_label *old_label = mc.get_map().get_game_labels().get_label(loc_);
+	const terrain_label *old_label = mc.get_map().get_map_labels().get_label(loc_);
 	if (old_label) {
 		undo.reset(new editor_action_label(loc_, old_label->text(), old_label->team_name(), old_label->color()
 				, old_label->visible_in_fog(), old_label->visible_in_shroud(), old_label->immutable()) );
@@ -48,15 +48,8 @@ editor_action* editor_action_label::perform(map_context& mc) const
 
 void editor_action_label::perform_without_undo(map_context& mc) const
 {
-	terrain_label *old_label = mc.get_map().get_game_labels().get_label(loc_);
-
-	if (old_label) {
-		//old_label->set_text(text_);
-		old_label->update_info(text_, team_name_, color_, visible_shroud_, visible_fog_, immutable_);
-	} else {
-		mc.get_map().get_game_labels().set_label(loc_, text_, team_name_, color_, visible_fog_, visible_shroud_, immutable_);
-		mc.set_needs_labels_reset();
-	}
+	mc.get_map().get_map_labels()
+			.set_label(loc_, text_, team_name_, color_, visible_fog_, visible_shroud_, immutable_);
 }
 
 editor_action_label_delete* editor_action_label_delete::clone() const
@@ -68,29 +61,18 @@ editor_action* editor_action_label_delete::perform(map_context& mc) const
 {
 	std::auto_ptr<editor_action> undo;
 
-	//	std::vector<terrain_label> deleted = mc.get_map().get_game_labels().get_label(loc_);
-	const terrain_label* deleted = mc.get_map().get_game_labels().get_label(loc_);
+	const terrain_label* deleted = mc.get_map().get_map_labels().get_label(loc_);
 
-	editor_action_chain* undo_chain = new editor_action_chain();
-
-	//TODO
-	//for (std::vector<terrain_label>::const_iterator it = deleted.begin(); it != deleted.end(); it++) {
-	//	ERR_ED << it->text();
-	undo_chain->append_action(new editor_action_label(loc_, deleted->text(), deleted->team_name()
+	undo.reset(new editor_action_label(loc_, deleted->text(), deleted->team_name()
 			, deleted->color(), deleted->visible_in_fog(), deleted->visible_in_shroud(), deleted->immutable()));
-	//}
 
-	undo.reset(undo_chain);
-	mc.set_needs_labels_reset();
 	perform_without_undo(mc);
 	return undo.release();
 }
 
 void editor_action_label_delete::perform_without_undo(map_context& mc) const
 {
-	const terrain_label* deleted = mc.get_map().get_game_labels().get_label(loc_);
-	mc.get_map().get_game_labels().delete_labels(loc_);
-	delete deleted;
+	mc.get_map().get_map_labels().set_label(loc_, "");
 }
 
 
