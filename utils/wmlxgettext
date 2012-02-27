@@ -228,7 +228,7 @@ sub read_lua_file {
     next LINE if m/^\s*--/ and not defined $str and not m/--\s*wmlxgettext/;
 
     # change the textdomain
-    if (m/textdomain "([^"]+)"(.*)/) {
+    if (m/textdomain\s*\(?\s*"([^"]+)"(.*)/) {
       $curdomain = $1;
 
       # process rest of the line
