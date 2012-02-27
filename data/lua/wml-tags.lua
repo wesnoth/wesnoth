@@ -555,7 +555,8 @@ function wml_actions.modify_unit(cfg)
 	local function handle_unit(unit_num)
 		local children_handled = {}
 		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
-		wesnoth.set_variable("this_unit", wesnoth.get_variable(unit_path))
+		local this_unit = wesnoth.get_variable(unit_path)
+		wesnoth.set_variable("this_unit", this_unit)
 		handle_attributes(cfg, unit_path, true)
 
 		for current_index, current_table in ipairs(helper.shallow_parsed(cfg)) do
@@ -580,6 +581,7 @@ function wml_actions.modify_unit(cfg)
 			if cfg.type ~= "" then wesnoth.set_variable(unit_path .. ".advances_to", cfg.type) end
 			wesnoth.set_variable(unit_path .. ".experience", wesnoth.get_variable(unit_path .. ".max_experience"))
 		end
+		wml_actions.kill({ id = this_unit.id, animate = false })
 		wml_actions.unstore_unit { variable = unit_path }
 	end
 
