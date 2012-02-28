@@ -170,7 +170,7 @@ void terrain_palette::adjust_size() {
 	terrain_start_ = size_specs_.palette_y + button_palette_padding;
 	const size_t space_for_terrains = size_specs_.palette_h;
 
-	uint fitting = 1;
+	unsigned fitting = 1;
 	terrain_width_ = 1;
 	terrain_size_ = 72;
 	while (fitting < num_terrains()) {
