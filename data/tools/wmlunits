@@ -159,7 +159,9 @@ def list_contents():
     parse("{core}{campaigns}", "SKIP_CORE")
     info["campaigns"] = list_campaigns("mainline")
 
-    addons = os.listdir(options.addons)
+    addons = []
+    if options.addons:
+        addons = os.listdir(options.addons)
     for i, addon in enumerate(addons):
         if not os.path.isdir(options.addons + "/" + addon): continue
         sys.stdout.write("%4d/%4d " % (1 + i, len(addons)) + addon + " ... ")
@@ -414,7 +416,7 @@ if __name__ == '__main__':
             languages.append(isocode)
         languages.sort()
     else:
-        languages = [options.language]
+        languages = options.language.split(",")
         
     if options.list:
         list_contents()

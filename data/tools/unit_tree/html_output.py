@@ -155,7 +155,6 @@ class HTMLOutput:
         self.is_era = is_era
         self.verbose = verbose
         self.target = "index.html"
-        self.mainline = False
         self.wesnoth = wesnoth
         self.forest = None
         self.translation = Translation(options.transdir, isocode)
@@ -420,8 +419,7 @@ class HTMLOutput:
             labb = lang
             underscore = labb.find("_")
             if underscore > 0: labb = labb[:underscore]
-            
-            if self.mainline:
+            if self.addon == "mainline":
                 write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
                     languages[lang], lang, self.target,
                         labb))
@@ -1019,9 +1017,6 @@ def generate_era_report(addon, isocode, era, wesnoth):
     output = MyFile(os.path.join(path, "%s.html" % eid), "w")
     html = HTMLOutput(isocode, output, addon, eid, True, wesnoth)
     html.target = "%s.html" % eid
-    
-    #if eid in wesnoth.is_mainline_era:
-    #    html.mainline = True
     
     grouper = GroupByFaction(wesnoth, eid)
 
