@@ -14,9 +14,6 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-//TODO
-#include "wml_separators.hpp"
-
 #include "asserts.hpp"
 #include "action.hpp"
 #include "editor_controller.hpp"
@@ -44,6 +41,7 @@
 #include "../preferences_display.hpp"
 #include "../rng.hpp"
 #include "../sound.hpp"
+#include "../wml_separators.hpp"
 
 #include "formula_string_utils.hpp"
 
@@ -1187,7 +1185,7 @@ void editor_controller::expand_terrain_groups_menu(std::vector<std::string>& ite
 				std::string img = terrain_groups[mci].icon;
 				std::stringstream str;
 				std::string postfix = (palette_->active_group() == terrain_groups[mci].id) ? "-pressed.png" : ".png";
-				str << IMAGE_PREFIX << "images/buttons/" << img << postfix << COLUMN_SEPARATOR << groupname;
+				str << IMAGE_PREFIX << "buttons/" << img << postfix << COLUMN_SEPARATOR << groupname;
 				groups.push_back(str.str());
 			}
 			items.insert(items.begin() + i, groups.begin(), groups.end());

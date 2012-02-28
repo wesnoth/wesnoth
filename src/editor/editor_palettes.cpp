@@ -243,7 +243,7 @@ const config terrain_palette::active_terrain_report()
 	config& report = cfg.add_child("element");
 	for (size_t i = 0 ; i < terrain_groups_.size(); i++) {
 		if (terrain_groups_[i].id == active_group_) {
-			report["image"] = "images/buttons/" + terrain_groups_[i].icon + "-pressed.png";
+			report["image"] = "buttons/" + terrain_groups_[i].icon + "-pressed.png";
 			report["tooltip"] = terrain_groups_[i].name;
 		}
 	}
