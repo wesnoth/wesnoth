@@ -25,14 +25,14 @@
 
 
 namespace {
-	const size_t default_terrain_size = 72;
+	const size_t default_terrain_size_ = 72;
 	const size_t default_palette_width = 2;
 }
 
 namespace editor {
 
 size_specs::size_specs()
-	: default_terrain_size(default_terrain_size)
+	: default_terrain_size(default_terrain_size_)
 	, terrain_padding(2)
 	, default_terrain_space(default_terrain_size + terrain_padding)
 	, default_terrain_width(default_palette_width)
