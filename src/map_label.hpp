@@ -32,15 +32,18 @@ public:
 	typedef std::map<map_location, terrain_label *> label_map;
 	typedef std::map<std::string,label_map> team_label_map;
 
+	map_labels(const map_labels&);
 	map_labels(const display& disp, const team*);
 	~map_labels();
+
+	void operator=(const map_labels&);
 
 	void write(config& res) const;
 	void read(const config &cfg);
 
-	const terrain_label* get_label(const map_location& loc, const std::string& team_name);
+	const terrain_label* get_label(const map_location& loc, const std::string& team_name) const;
 	// search a team-only label, if fails then try public labels
-	const terrain_label* get_label(const map_location& loc);
+	const terrain_label* get_label(const map_location& loc) const;
 	const terrain_label* set_label(const map_location& loc,
 							   const t_string& text,
 							   const std::string& team = "",
@@ -65,10 +68,9 @@ public:
 	void set_team(const team*);
 
 	void clear_all();
+
 private:
 	void clear_map(label_map &, bool);
-	map_labels(const map_labels&);
-	void operator=(const map_labels&);
 
 	const display& disp_;
 	const team* team_;

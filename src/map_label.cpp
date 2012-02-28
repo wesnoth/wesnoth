@@ -36,9 +36,25 @@ map_labels::map_labels(const display &disp, const team *team) :
 {
 }
 
+map_labels::map_labels(const map_labels& other) :
+	disp_(other.disp_), team_(other.team_), labels_()
+{
+	config cfg;
+	other.write(cfg);
+	read(cfg);
+}
+
 map_labels::~map_labels()
 {
 	clear_all();
+}
+
+void map_labels::operator=(const map_labels& other) {
+	team_ = other.team_;
+
+	config cfg;
+	other.write(cfg);
+	read(cfg);
 }
 
 void map_labels::write(config& res) const
@@ -68,7 +84,7 @@ void map_labels::read(const config &cfg)
 	recalculate_labels();
 }
 
-const terrain_label* map_labels::get_label(const map_location& loc, const std::string& team_name)
+const terrain_label* map_labels::get_label(const map_location& loc, const std::string& team_name) const
 {
 	team_label_map::const_iterator label_map = labels_.find(team_name);
 	if (label_map != labels_.end()) {
@@ -79,7 +95,7 @@ const terrain_label* map_labels::get_label(const map_location& loc, const std::s
 	return NULL;
 }
 
-const terrain_label* map_labels::get_label(const map_location& loc)
+const terrain_label* map_labels::get_label(const map_location& loc) const
 {
 	const terrain_label* res = get_label(loc, team_name());
 	// no such team label, we try global label, except if it's what we just did
