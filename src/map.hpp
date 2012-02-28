@@ -121,7 +121,7 @@ public:
 
 	void read(const std::string& data, const bool allow_invalid = true, const int border_size = 1, const std::string usage = "map");
 
-	void write(config&) const;
+	virtual void write(config&) const;
 
 	/** Overlays another map onto this one at the given position. */
 	void overlay(const gamemap& m, const config& rules, int x=0, int y=0, bool border=false);
