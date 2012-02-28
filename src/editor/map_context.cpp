@@ -27,6 +27,7 @@
 #include "../serialization/parser.hpp"
 #include "../wml_exception.hpp"
 
+
 #include "formula_string_utils.hpp"
 
 #include <boost/regex.hpp>
@@ -53,11 +54,11 @@ map_context::map_context(const editor_map& map)
 {
 }
 
-map_context::map_context(const config& game_config, const std::string& filename)
+map_context::map_context(const config& game_config, const std::string& filename, const display& disp)
 	: filename_(filename)
 	, map_data_key_()
 	, embedded_(false)
-	, map_(game_config)
+	, map_(game_config, disp)
 	, undo_stack_()
 	, redo_stack_()
 	, actions_since_save_(0)
@@ -84,12 +85,12 @@ map_context::map_context(const config& game_config, const std::string& filename)
 		config file;
 		::read(file, map_string);
 
-		map_ = editor_map(game_config, file);
+		map_ = editor_map(game_config, file, disp);
 		return;
 	} catch (config::error&) {
 	}
 
-	boost::regex re("map_data\\s*=\\s*\"(.+?)\"");
+	boost::regex re("data\\s*=\\s*\"(.+?)\"");
 	boost::smatch m;
 	if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
 		boost::regex re2("\\{(.+?)\\}");
@@ -119,7 +120,7 @@ map_context::map_context(const config& game_config, const std::string& filename)
 		throw editor_map_load_exception(filename, message);
 	}
 
-	map_ = editor_map::from_string(game_config, map_string); //throws on error
+	map_ = editor_map::from_string(game_config, map_string, disp); //throws on error
 }
 
 map_context::~map_context()
@@ -221,9 +222,17 @@ void map_context::reset_starting_position_labels(display& disp)
 
 bool map_context::save()
 {
+	//TODO the return value of this method does not need to be bool.
+	//We either return true or there is an exception thrown.
+
 	config data;
-	config& map = data.add_child("map");
-	map_.write(map);
+	map_.write(data);
+
+	std::stringstream ss;
+	{
+		config_writer out(ss, false);
+		out.write(data);
+	}
 
 	try {
 		if (!is_embedded()) {
@@ -233,16 +242,27 @@ bool map_context::save()
 			write_file(get_filename(), ss.str());
 		} else {
 			std::string map_string = read_file(get_filename());
-			boost::regex re("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
+			boost::regex re("(.*)(map_data\\s*=\\s*\".+?\")(.*)");
 			boost::smatch m;
 			if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
-				std::stringstream ss;
-				ss << m[1];
-				ss << data;
-				ss << m[3];
-				write_file(get_filename(), ss.str());
+				std::stringstream ss2;
+				ss2 << m[1];
+				ss2 << ss.str();
+				ss2 << m[3];
+				write_file(get_filename(), ss2.str());
 			} else {
-				throw editor_map_save_exception(_("Could not save into scenario"));
+				//TODO that reg expression is still not working.
+				boost::regex re_maptag("(.*)([map].+?)([/map].*)");
+				boost::smatch match_maptag;
+				if (boost::regex_search(map_string, match_maptag, re_maptag, boost::regex_constants::match_not_dot_null)) {
+					std::stringstream ss3;
+					ss3 << match_maptag[1];
+					ss3 << ss.str();
+					ss3 << match_maptag[3];
+					write_file(get_filename(), ss3.str());
+				} else {
+					throw editor_map_save_exception(_("Could not save into scenario"));
+				}
 			}
 		}
 		clear_modified();

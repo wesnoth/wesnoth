@@ -55,6 +55,13 @@ class editor_map;
 
 std::string get_left_button_function();
 
+enum menu_type {
+	MAP,
+	TERRAIN,
+	AREA,
+	SIDE
+};
+
 /**
  * The editor_controller class containts the mouse and keyboard event handling
  * routines for the editor. It also serves as the main editor class with the
@@ -231,6 +238,9 @@ class editor_controller : public controller_base,
 		/** Menu expanding for open maps list */
 		void expand_open_maps_menu(std::vector<std::string>& items);
 
+		/** Menu expanding for open maps list */
+		void expand_terrain_groups_menu(std::vector<std::string>& items);
+
 		/** controller_base override */
 		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 
@@ -316,6 +326,10 @@ class editor_controller : public controller_base,
 		void editor_settings_dialog_redraw_callback(int r, int g, int b);
 
 	private:
+
+		//TODO
+		editor::menu_type active_menu_;
+
 		/** init the display object and general set-up */
 		void init_gui(CVideo& video);
 

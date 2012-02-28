@@ -164,7 +164,7 @@ const terrain_builder::tile& terrain_builder::tilemap::operator[] (const map_loc
 terrain_builder::terrain_builder(const config& level,
 		const gamemap* m, const std::string& offmap_image) :
 	map_(m),
-	tile_map_(map().w(), map().h()),
+	tile_map_(m ? map().w() : 0, m ? map().h() :0),
 	terrain_by_type_()
 {
 	image::precache_file_existence("terrain/");
@@ -182,7 +182,8 @@ terrain_builder::terrain_builder(const config& level,
 	// parse local rules
 	parse_config(level);
 
-	build_terrains();
+	if (m)
+		build_terrains();
 }
 
 void terrain_builder::flush_local_rules()

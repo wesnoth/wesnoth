@@ -41,30 +41,36 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 	return editor_map_load_exception(filename, msg);
 }
 
-editor_map::editor_map(const config& terrain_cfg)
+editor_map::editor_map(const config& terrain_cfg, const display& disp)
 	: gamemap(terrain_cfg, "")
 	, selection_()
+	, labels_(disp, NULL)
 {
 }
 
-editor_map::editor_map(const config& terrain_cfg, const config& level)
+editor_map::editor_map(const config& terrain_cfg, const config& level, const display& disp)
 	: gamemap(terrain_cfg, level)
 	, selection_()
+	, labels_(disp, NULL)
 {
+	labels_.read(level);
+	//labels_.disp().re
+	//labels_.disp().d
 	sanity_check();
 }
 
-editor_map::editor_map(const config& terrain_cfg, const std::string& data)
+editor_map::editor_map(const config& terrain_cfg, const std::string& data, const display& disp)
 	: gamemap(terrain_cfg, data)
 	, selection_()
+	, labels_(disp, NULL)
 {
 	sanity_check();
 }
 
-editor_map editor_map::from_string(const config& terrain_cfg, const std::string& data)
+editor_map editor_map::from_string(const config& terrain_cfg, const std::string& data, const display& disp)
 {
 	try {
-		return editor_map(terrain_cfg, data);
+		return editor_map(terrain_cfg, data, disp);
 	} catch (incorrect_map_format_error& e) {
 		throw wrap_exc("format", e.message, "");
 	} catch (twml_exception& e) {
@@ -74,16 +80,18 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 	}
 }
 
-editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler)
+editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler, const display& disp)
 	: gamemap(terrain_cfg, t_translation::write_game_map(t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
 	, selection_()
+	, labels_(disp, NULL)
 {
 	sanity_check();
 }
 
-editor_map::editor_map(const gamemap& map)
+editor_map::editor_map(const gamemap& map, const display& disp)
 	: gamemap(map)
 	, selection_()
+	, labels_(disp, NULL)
 {
 	sanity_check();
 }
@@ -257,12 +265,12 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 	sanity_check();
 }
 
-gamemap editor_map::mask_to(const gamemap& target) const
+editor_map editor_map::mask_to(const editor_map& target) const
 {
 	if (target.w() != w() || target.h() != h()) {
 		throw editor_action_exception(_("The size of the target map is different from the current map"));
 	}
-	gamemap mask(target);
+	editor_map mask(target);
 	map_location iter;
 	for (iter.x = -border_size(); iter.x < w() + border_size(); ++iter.x) {
 		for (iter.y = -border_size(); iter.y < h() + border_size(); ++iter.y) {
@@ -392,6 +400,10 @@ void editor_map::shrink_bottom(int count)
 	total_height_ -= count;
 }
 
-
+void editor_map::write(config& cfg) const {
+	config& map = cfg.add_child("map");
+	gamemap::write(map);
+	labels_.write(cfg);
+}
 
 } //end namespace editor

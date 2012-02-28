@@ -19,6 +19,7 @@
 #include "editor_common.hpp"
 
 #include "../map.hpp"
+#include "../map_label.hpp"
 
 #include <deque>
 
@@ -75,31 +76,31 @@ public:
 	/**
 	 * Empty map constructor
 	 */
-	explicit editor_map(const config& terrain_cfg);
+	explicit editor_map(const config& terrain_cfg, const display& disp);
 
 	/**
 	 * Create an editor map from a map data string
 	 */
-	editor_map(const config& terrain_cfg, const config& level);
+	editor_map(const config& terrain_cfg, const config& level, const display& disp);
 
-	editor_map(const config& terrain_cfg, const std::string& data);
+	editor_map(const config& terrain_cfg, const std::string& data, const display& disp);
 
 	/**
 	 * Wrapper around editor_map(cfg, data) that catches possible exceptions
 	 * and wraps them in a editor_map_load_exception
 	 */
-	static editor_map from_string(const config& terrain_cfg, const std::string& data);
+	static editor_map from_string(const config& terrain_cfg, const std::string& data, const display& disp);
 
 	/**
 	 * Create an editor map with the given dimensions and filler terrain
 	 */
-	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler);
+	editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler, const display& disp);
 
 	/**
 	 * Create an editor_map by upgrading an existing gamemap. The map data is
-	 * copied. Marked "explicit" to avoid potentially harmful autmatic conversions.
+	 * copied. Marked "explicit" to avoid potentially harmful automatic conversions.
 	 */
-	explicit editor_map(const gamemap& map);
+	explicit editor_map(const gamemap& map, const display& disp);
 
 	/**
 	 * editor_map destructor
@@ -117,6 +118,14 @@ public:
 	 * @return a contiguous set of locations that will always contain at least the starting element
 	 */
 	std::set<map_location> get_contiguous_terrain_tiles(const map_location& start) const;
+
+	/**
+	 * @return the map labels of the map
+	 */
+	map_labels& get_map_labels() { return labels_; };
+
+
+	const map_labels& get_map_labels() const { return labels_; };
 
 	/**
 	 * Set labels for staring positions in the given display object.
@@ -177,13 +186,15 @@ public:
 	 * A sort-of diff operation returning a mask that, when applied to the current editor_map,
 	 * will transform it into the target map.
 	 */
-	gamemap mask_to(const gamemap& target) const;
+	editor_map mask_to(const editor_map& target) const;
 
 	/**
 	 * A precondition to several map operations
 	 * @return true if this map has the same dimensions as the other map
 	 */
 	bool same_size_as(const gamemap& other) const;
+
+	void write(config&) const;
 
 protected:
 	t_translation::t_list clone_column(int x, t_translation::t_terrain filler);
@@ -202,6 +213,14 @@ protected:
 	 * The selected hexes
 	 */
 	std::set<map_location> selection_;
+
+private:
+
+	/**
+	 * The labels of this map _context.
+	 */
+	map_labels labels_;
+
 };
 
 

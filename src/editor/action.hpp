@@ -416,7 +416,7 @@ class editor_action_apply_mask : public editor_action
 class editor_action_create_mask : public editor_action
 {
 	public:
-		editor_action_create_mask(const gamemap& target)
+		editor_action_create_mask(const editor_map& target)
 		: target_(target)
 		{
 		}
@@ -424,7 +424,7 @@ class editor_action_create_mask : public editor_action
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "create_mask"; }
 	private:
-		gamemap target_;
+		editor_map target_;
 };
 
 /**

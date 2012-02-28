@@ -17,13 +17,14 @@
 #define EDITOR_MAP_CONTEXT_HPP_INCLUDED
 
 #include "editor_map.hpp"
+#include "map_label.hpp"
 
 #include <boost/utility.hpp>
 
 namespace editor {
 
 /**
- * This class wraps around a map to provide a conscise interface for the editor to work with.
+ * This class wraps around a map to provide a concise interface for the editor to work with.
  * The actual map object can change rapidly (be assigned to), the map context persists
  * data (like the undo stacks) in this case. The functionality is here, not in editor_controller
  * as e.g. the undo stack is part of the map, not the editor as a whole. This might allow many
@@ -47,7 +48,7 @@ public:
 	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
-	map_context(const config& game_config, const std::string& filename);
+	map_context(const config& game_config, const std::string& filename, const display& disp);
 
 	/**
 	 * Map context destructor
@@ -121,6 +122,8 @@ public:
 	void add_changed_location(const std::set<map_location>& locs);
 	void set_everything_changed();
 	bool everything_changed() const;
+
+	void set_labels(display& disp);
 
 	void clear_starting_position_labels(display& disp);
 
@@ -225,6 +228,7 @@ protected:
 	 * The map object of this map_context.
 	 */
 	editor_map map_;
+
 
 	/**
 	 * Container type used to store actions in the undo and redo stacks

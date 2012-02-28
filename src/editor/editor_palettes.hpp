@@ -36,11 +36,11 @@ std::string get_selected_terrain();
  */
 struct terrain_group
 {
-	terrain_group(const config& cfg, display& gui);
+	terrain_group(const config& cfg);
 
 	std::string id;
 	t_string name;
-	gui::button button;
+	std::string icon;
     bool core;
 };
 
@@ -74,6 +74,16 @@ public:
 	 */
 	void set_group(const std::string& id);
 
+	void set_group(size_t index);
+
+	size_t active_group_index();
+
+	std::string active_group() {return active_group_;};
+
+	const config active_terrain_report();
+
+	const std::vector<terrain_group>& get_groups() const { return terrain_groups_; };
+
 	/** Return the currently selected foreground terrain. */
 	t_translation::t_terrain selected_fg_terrain() const;
 	/** Return the currently selected background terrain. */
@@ -106,11 +116,11 @@ public:
 	 */
 	void adjust_size();
 
-	/** Sets the tooltips used in the palette */
-	void load_tooltips();
-
 private:
 	void draw_old(bool);
+
+	int terrain_width_;
+	int terrain_size_;
 
 	/**
 	 * To be called when a mouse click occurs.
@@ -146,6 +156,8 @@ private:
 	/** A copy from the terrain_map_->second for the current active group. */
 	t_translation::t_list terrains_;
 
+	std::string active_group_;
+
 	/**
 	 * The editor_groups as defined in editor-groups.cfg.
 	 *
@@ -156,16 +168,7 @@ private:
 
     std::set<t_translation::t_terrain> non_core_terrains_;
 
-	/**
-	 * The group buttons behave like a radio group.
-	 *
-	 * This one points to the selected button, this value should not be 0
-	 * otherwise things will fail. Thus should be set in constructor.
-	 */
-	gui::button *checked_group_btn_;
-
-	gui::button top_button_, bot_button_;
-	size_t button_x_, top_button_y_, bot_button_y_;
+	size_t button_x_; //, top_button_y_, bot_button_y_;
 	size_t nterrains_, nmax_terrains_, terrain_start_;
 	t_translation::t_terrain& selected_fg_terrain_;
 	t_translation::t_terrain& selected_bg_terrain_;

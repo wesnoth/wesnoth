@@ -25,6 +25,8 @@
 #include "gettext.hpp"
 #include "util.hpp"
 
+#include "resources.hpp"
+
 namespace editor {
 
 int editor_action::next_id_ = 1;
@@ -399,7 +401,7 @@ editor_action_create_mask* editor_action_create_mask::clone() const
 }
 void editor_action_create_mask::perform_without_undo(map_context& mc) const
 {
-	mc.get_map() = editor_map(mc.get_map().mask_to(target_));
+	mc.get_map() = mc.get_map().mask_to(target_);
 	mc.set_needs_terrain_rebuild();
 }
 

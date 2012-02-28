@@ -14,12 +14,16 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
+//TODO
+#include "wml_separators.hpp"
+
 #include "asserts.hpp"
 #include "action.hpp"
 #include "editor_controller.hpp"
 #include "editor_palettes.hpp"
 #include "editor_preferences.hpp"
 #include "mouse_action.hpp"
+#include "action/mouse/mouse_action_map_label.hpp"
 
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/dialogs/editor_generate_map.hpp"
@@ -91,7 +95,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, rng_setter_(NULL)
 	, map_contexts_()
 	, current_context_index_(0)
-	, gui_(NULL)
+	, gui_(new editor_display(video, NULL, get_theme(game_config, "editor"), config()))
 	, map_generators_()
 	, tods_()
 	, size_specs_()
@@ -115,11 +119,11 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, default_dir_(preferences::editor::default_dir())
 {
 	create_default_context();
+	init_gui(video);
 
 	if (default_dir_.empty()) {
 		default_dir_ = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
 	}
-	init_gui(video);
 	init_brushes(game_config);
 	init_mouse_actions(game_config);
 	init_map_generators(game_config);
@@ -150,10 +154,12 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	}
 }
 
-void editor_controller::init_gui(CVideo& video)
+void editor_controller::init_gui(CVideo& /*video*/)
 {
-	const config &theme_cfg = get_theme(game_config_, "editor");
-	gui_.reset(new editor_display(video, get_map(), theme_cfg, config()));
+	//TODO
+	//const config &theme_cfg = get_theme(game_config_, "editor");
+	//gui_.reset(new editor_display(video, &(get_map()), theme_cfg, config()));
+	gui_->change_map(&get_map());
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
@@ -168,6 +174,7 @@ void editor_controller::init_sidebar(const config& game_config)
 	adjust_sizes(gui(), *size_specs_);
 	palette_.reset(new terrain_palette(gui(), *size_specs_, game_config,
 		foreground_terrain_, background_terrain_));
+	gui_->set_terrain_report(palette_->active_terrain_report());
 	brush_bar_.reset(new brush_bar(gui(), *size_specs_, brushes_, &brush_));
 }
 
@@ -194,6 +201,8 @@ void editor_controller::init_mouse_actions(const config& game_config)
 		new mouse_action_select(&brush_, key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
 		new mouse_action_starting_position(key_)));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
+		new mouse_action_map_label(key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
 		new mouse_action_paste(clipboard_, key_)));
 	foreach (const theme::menu& menu, gui().get_theme().menus()) {
@@ -257,11 +266,11 @@ void editor_controller::init_music(const config& game_config)
 }
 
 
-void editor_controller::load_tooltips()
-{
-	// Tooltips for the groups
-	palette_->load_tooltips();
-}
+//void editor_controller::load_tooltips()
+//{
+//	// Tooltips for the groups
+//	palette_->load_tooltips();
+//}
 
 editor_controller::~editor_controller()
 {
@@ -339,11 +348,11 @@ int editor_controller::add_map_context(map_context* mc)
 void editor_controller::create_default_context()
 {
 	if(saved_windows_.empty()) {
-		map_context* mc = new map_context(editor_map(game_config_, 44, 33, t_translation::GRASS_LAND));
+		map_context* mc = new map_context(editor_map(game_config_, 44, 33, t_translation::GRASS_LAND, get_display()));
 		add_map_context(mc);
 	} else {
 		foreach(const std::string& filename, saved_windows_) {
-			map_context* mc = new map_context(game_config_, filename);
+			map_context* mc = new map_context(game_config_, filename, get_display());
 			add_map_context(mc);
 		}
 		saved_windows_.clear();
@@ -506,7 +515,7 @@ void editor_controller::generate_map_dialog()
 		} else {
 		//	config map;
 		//	map["data"] = map_string;
-			editor_map new_map(game_config_, map_string);
+			editor_map new_map(game_config_, map_string, get_display());
 			editor_action_whole_map a(new_map);
 			perform_refresh(a);
 		}
@@ -522,7 +531,7 @@ void editor_controller::apply_mask_dialog()
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose a Mask to Apply"));
 	if (res == 0) {
 		try {
-			map_context mask(game_config_, fn);
+			map_context mask(game_config_, fn, get_display());
 			editor_action_apply_mask a(mask.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
@@ -544,7 +553,7 @@ void editor_controller::create_mask_to_dialog()
 	int res = dialogs::show_file_chooser_dialog(gui(), fn, _("Choose Target Map"));
 	if (res == 0) {
 		try {
-			map_context map(game_config_, fn);
+			map_context map(game_config_, fn, get_display());
 			editor_action_create_mask a(map.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
@@ -706,7 +715,7 @@ void editor_controller::load_map(const std::string& filename, bool new_context)
 	if (new_context && check_switch_open_map(filename)) return;
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)") << "\n";
 	try {
-		util::unique_ptr<map_context> mc(new map_context(game_config_, filename));
+		util::unique_ptr<map_context> mc(new map_context(game_config_, filename, get_display()));
 		if (mc->get_filename() != filename) {
 			if (new_context && check_switch_open_map(mc->get_filename())) return;
 		}
@@ -756,7 +765,7 @@ void editor_controller::revert_map()
 
 void editor_controller::new_map(int width, int height, t_translation::t_terrain fill, bool new_context)
 {
-	editor_map m(game_config_, width, height, fill);
+	editor_map m(game_config_, width, height, fill, get_display());
 	if (new_context) {
 		int new_id = add_map_context(new map_context(m));
 		switch_context(new_id);
@@ -826,11 +835,22 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_NULL:
 			if (index >= 0) {
 				unsigned i = static_cast<unsigned>(index);
-				if (i < map_contexts_.size()) {
-					return true;
+
+				switch (active_menu_) {
+					case editor::MAP:
+						if (i < map_contexts_.size()) {
+							return true;
+						}
+						return false;
+					case editor::TERRAIN:
+					case editor::AREA:
+					case editor::SIDE:
+						return true;
 				}
 			}
 			return false;
+		case HOTKEY_EDITOR_TERRAIN_GROUPS:
+			return true;
 		case HOTKEY_ZOOM_IN:
 		case HOTKEY_ZOOM_OUT:
 		case HOTKEY_ZOOM_DEFAULT:
@@ -872,6 +892,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+		case HOTKEY_EDITOR_TOOL_LABEL:
 			return true; //tool selection always possible
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
@@ -918,6 +939,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
+		case HOTKEY_EDITOR_TOOL_LABEL:
+			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
@@ -925,7 +948,18 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
 			return gui_->get_draw_terrain_codes() ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_NULL:
-			return index == current_context_index_ ? ACTION_ON : ACTION_OFF;
+			switch (active_menu_) {
+				case editor::MAP:
+					return index == current_context_index_ ? ACTION_ON : ACTION_OFF;
+				case editor::TERRAIN:
+					//return (size_t)index == palette_->active_group() ? ACTION_ON : ACTION_OFF;
+					return ACTION_STATELESS;
+				case editor::AREA:
+				case editor::SIDE:
+					return ACTION_ON;
+			}
+		case HOTKEY_EDITOR_TERRAIN_GROUPS:
+			return ACTION_ON;
 		default:
 			return command_executor::get_action_state(command, index);
 	}
@@ -937,14 +971,35 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 	using namespace hotkey;
 	switch (command) {
 		case HOTKEY_NULL:
-			if (index >= 0) {
-				unsigned i = static_cast<unsigned>(index);
-				if (i < map_contexts_.size()) {
-					switch_context(index);
-					return true;
+			switch (active_menu_) {
+			case MAP:
+				if (index >= 0) {
+					unsigned i = static_cast<unsigned>(index);
+					if (i < map_contexts_.size()) {
+						switch_context(index);
+						return true;
+					}
 				}
+				return false;
+			case TERRAIN:
+				palette_->set_group(index);
+				get_display().set_terrain_report(palette_->active_terrain_report());
+				return true;
+			case SIDE:
+			case AREA:
+				return true;
 			}
-			return false;
+		case HOTKEY_EDITOR_TERRAIN_GROUPS:
+			//TODO
+		//	if (index >= 0) {
+		//		unsigned i = static_cast<unsigned>(index);
+		//		if (i < 80)
+					//TODO
+			//		palette_->set_group(index);
+				//	get_display().set_terrain_image(palette_->active_image());
+					return true;
+		//	}
+		//	return false;
 		case HOTKEY_QUIT_GAME:
 			quit_confirm(EXIT_NORMAL);
 			return true;
@@ -975,6 +1030,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+		case HOTKEY_EDITOR_TOOL_LABEL:
 			hotkey_set_mouse_action(command);
 			return true;
 		case HOTKEY_EDITOR_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
@@ -1090,6 +1146,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 
 void editor_controller::expand_open_maps_menu(std::vector<std::string>& items)
 {
+	active_menu_ = editor::MAP;
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "editor-switch-map") {
 			items.erase(items.begin() + i);
@@ -1111,6 +1168,34 @@ void editor_controller::expand_open_maps_menu(std::vector<std::string>& items)
 		}
 	}
 }
+
+void editor_controller::expand_terrain_groups_menu(std::vector<std::string>& items)
+{
+	active_menu_ = editor::TERRAIN;
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] == "editor-terrain-groups") {
+			items.erase(items.begin() + i);
+			std::vector<std::string> groups;
+
+			const std::vector<terrain_group>& terrain_groups = palette_->get_groups();
+
+			for (size_t mci = 0; mci < terrain_groups.size(); ++mci) {
+				std::string groupname = terrain_groups[mci].name;
+				if (groupname.empty()) {
+					groupname = _("(Unknown Group)");
+				}
+				std::string img = terrain_groups[mci].icon;
+				std::stringstream str;
+				std::string postfix = (palette_->active_group() == terrain_groups[mci].id) ? "-pressed.png" : ".png";
+				str << IMAGE_PREFIX << "images/buttons/" << img << postfix << COLUMN_SEPARATOR << groupname;
+				groups.push_back(str.str());
+			}
+			items.insert(items.begin() + i, groups.begin(), groups.end());
+			break;
+		}
+	}
+}
+
 
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
@@ -1158,6 +1243,10 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	}
 	if (!items.empty() && items.front() == "editor-switch-map") {
 		expand_open_maps_menu(items);
+		context_menu = true; //FIXME hack to display a one-item menu
+	}
+	if (!items.empty() && items.front() == "editor-terrain-groups") {
+		expand_terrain_groups_menu(items);
 		context_menu = true; //FIXME hack to display a one-item menu
 	}
 	command_executor::show_menu(items, xloc, yloc, context_menu, gui());
@@ -1325,7 +1414,7 @@ void editor_controller::display_redraw_callback(display&)
 	palette_->draw(true);
 	brush_bar_->draw(true);
 	//display::redraw_everything removes our custom tooltips so reload them
-	load_tooltips();
+//	load_tooltips();
 	gui().invalidate_all();
 }
 

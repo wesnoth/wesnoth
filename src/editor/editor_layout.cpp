@@ -25,17 +25,17 @@
 
 
 namespace {
-	const size_t default_terrain_size = 36;
-	const size_t default_palette_width = 3;
+	const size_t default_terrain_size = 72;
+	const size_t default_palette_width = 2;
 }
 
 namespace editor {
 
 size_specs::size_specs()
-	: terrain_size(default_terrain_size)
+	: default_terrain_size(default_terrain_size)
 	, terrain_padding(2)
-	, terrain_space(terrain_size + terrain_padding)
-	, terrain_width(default_palette_width)
+	, default_terrain_space(default_terrain_size + terrain_padding)
+	, default_terrain_width(default_palette_width)
 	, palette_x(0)
 	, palette_y(0)
 	, palette_h(20)
@@ -49,11 +49,11 @@ size_specs::size_specs()
 void adjust_sizes(const display &disp, size_specs &sizes) {
 	/** @todo Hardcoded coordinates for brush selection, make it themeable. */
 	sizes.brush_x = disp.map_outside_area().w + 10;
-	sizes.brush_y = 212;
+	sizes.brush_y = 242;
 	/** @todo Hardcoded coordinates for terrain palette, make it themeable. */
-	sizes.palette_x = disp.map_outside_area().w + 16;
-	sizes.palette_y = sizes.brush_y + 72;
-	sizes.palette_w = sizes.terrain_space * default_palette_width;
+	sizes.palette_x = disp.map_outside_area().w + 8;
+	sizes.palette_y = sizes.brush_y + 92;
+	sizes.palette_w = 165 ;//sizes.terrain_space * default_palette_width;
 	sizes.palette_h = disp.h() - sizes.palette_y;
 }
 

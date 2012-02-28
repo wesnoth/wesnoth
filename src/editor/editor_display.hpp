@@ -24,7 +24,7 @@ namespace editor {
 class editor_display : public display
 {
 public:
-	editor_display(CVideo& video, const editor_map& map, const config& theme_cfg,
+	editor_display(CVideo& video, const editor_map* map, const config& theme_cfg,
 			const config& level);
 
 	bool in_editor() const { return true; }
@@ -36,6 +36,8 @@ public:
 	const editor_map& map() const { return static_cast<const editor_map&>(get_map()); }
 	void rebuild_terrain(const map_location &loc);
 	void set_toolbar_hint(const std::string& value) { toolbar_hint_ = value; }
+
+	void set_terrain_report(const config terrain_report) {terrain_report_ = terrain_report;};
 
 protected:
 	void pre_draw();
@@ -51,6 +53,9 @@ protected:
 
 	std::set<map_location> brush_locations_;
 	std::string toolbar_hint_;
+
+private:
+	config terrain_report_;
 };
 
 } //end namespace editor
