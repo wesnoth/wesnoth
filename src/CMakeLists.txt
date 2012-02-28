@@ -171,6 +171,8 @@ if(MSVC)
 	SOURCE_GROUP("src ai testing" REGULAR_EXPRESSION "ai/testing/.*")
 	SOURCE_GROUP("src campaign_server" REGULAR_EXPRESSION "campaign_server/.*")
 	SOURCE_GROUP("src editor" REGULAR_EXPRESSION "editor/.*")
+	SOURCE_GROUP("src editor action" REGULAR_EXPRESSION "editor/action/.*")
+	SOURCE_GROUP("src editor action mouse" REGULAR_EXPRESSION "editor/action/mouse/.*")
 	SOURCE_GROUP("src gui" REGULAR_EXPRESSION "gui/.*")
 	SOURCE_GROUP("src gui auxiliary" REGULAR_EXPRESSION "gui/auxiliary/.*")
 	SOURCE_GROUP("src gui auxiliary event" REGULAR_EXPRESSION "gui/auxiliary/event/.*")
@@ -363,6 +365,8 @@ set(wesnoth-main_SRC
 	config_cache.cpp
 	controller_base.cpp
 	dialogs.cpp
+        editor/action/action_label.cpp
+        editor/action/mouse/mouse_action_map_label.cpp
 	editor/action.cpp
 	editor/brush.cpp
 	editor/editor_controller.cpp
