@@ -2197,7 +2197,7 @@ void display::refresh_report(std::string const &report_name, const config &_repo
 		// If the rectangle is present, and we are blitting text,
 		// then we need to backup the surface.
 		// (Images generally won't need backing up,
-		// unless they are transperant, but that is done later).
+		// unless they are transparent, but that is done later).
 		if (rect.w > 0 && rect.h > 0) {
 			surf.assign(get_surface_portion(screen_.getSurface(), rect));
 			if (reportSurfaces_[report_name] == NULL) {
