@@ -397,8 +397,8 @@ void terrain_palette::draw(bool force) {
 				}
 			}
 
-			if(static_cast<unsigned>(base_image->w) != terrain_size_ ||
-			   static_cast<unsigned>(base_image->h) != terrain_size_) {
+			if(base_image->w != terrain_size_ ||
+			   base_image->h != terrain_size_) {
 
 				base_image.assign(scale_surface(base_image,
 				   terrain_size_, terrain_size_));
@@ -419,8 +419,8 @@ void terrain_palette::draw(bool force) {
 			}
 		}
 
-		if(static_cast<unsigned>(image->w) != terrain_size_ ||
-			static_cast<unsigned>(image->h) != terrain_size_) {
+		if(image->w != terrain_size_ ||
+			image->h != terrain_size_) {
 
 			image.assign(scale_surface(image,
 				terrain_size_, terrain_size_));
