@@ -93,6 +93,31 @@ std::string join(T const &v, const std::string& s = ",")
 }
 
 /**
+ * Generates a new string containing a bullet list.
+ *
+ * List items are preceded by the bullet string and a blank; all but
+ * the last item are followed by a newline.
+ *
+ * @param v A container with elements.
+ * @param bullet The leading bullet string.
+ */
+template<typename T>
+std::string bullet_list(const T& v, const std::string& bullet = unicode_bullet)
+{
+	std::ostringstream str;
+
+	for(typename T::const_iterator i = v.begin(); i != v.end(); ++i) {
+		if(i != v.begin()) {
+			str << '\n';
+		}
+
+		str << bullet << ' ' << *i;
+	}
+
+	return str.str();
+}
+
+/**
  * This function is identical to split(), except it does not split
  * when it otherwise would if the previous character was identical to the parameter 'quote'.
  * i.e. it does not split quoted commas.
