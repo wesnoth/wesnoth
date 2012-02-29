@@ -79,6 +79,12 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 	const char separator = 0 , std::string const &left="(",
 	std::string const &right=")",int flags = REMOVE_EMPTY | STRIP_SPACES);
 
+/**
+ * Generates a new string joining container items in a list.
+ *
+ * @param v A container with elements.
+ * @param s List delimiter.
+ */
 template <typename T>
 std::string join(T const &v, const std::string& s = ",")
 {
