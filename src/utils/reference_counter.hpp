@@ -24,9 +24,6 @@
 #include <limits>
 #include <boost/static_assert.hpp>
 
-//debug
-#include <iostream> //std::cerr
-
 namespace n_ref_counter {
 
 
