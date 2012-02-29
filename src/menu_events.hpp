@@ -19,7 +19,6 @@
 
 #include "global.hpp"
 #include "chat_events.hpp"
-#include "show_dialog.hpp"
 #include "floating_textbox.hpp"
 #include "unit_map.hpp"
 
