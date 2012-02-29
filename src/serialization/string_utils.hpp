@@ -43,6 +43,7 @@ extern const std::string unicode_en_dash;
 extern const std::string unicode_em_dash;
 extern const std::string unicode_figure_dash;
 extern const std::string unicode_multiplication_sign;
+extern const std::string unicode_bullet;
 
 bool isnewline(const char c);
 bool portable_isspace(const char c);
