@@ -66,7 +66,6 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	, active_group_()
 	, terrain_groups_()
 	, non_core_terrains_()
-//	, checked_group_btn_(0)
 	, button_x_()
 	, nterrains_()
 	, nmax_terrains_()
@@ -150,15 +149,15 @@ void terrain_palette::adjust_size() {
 
 	// Values for the group buttons fully hardcoded for now
 	/** @todo will be fixed later */
-	const size_t group_button_height   = 24;
-	const size_t group_button_padding  =  2;
-	const size_t group_buttons_per_row =  6;
+//	const size_t group_button_height   = 24;
+//	const size_t group_button_padding  =  2;
+//	const size_t group_buttons_per_row =  6;
 
 	// Determine number of theme button rows
-	size_t group_rows = terrain_groups_.size() / group_buttons_per_row;
-	if(terrain_groups_.size() % group_buttons_per_row != 0) {
-		++group_rows;
-	}
+//	size_t group_rows = terrain_groups_.size() / group_buttons_per_row;
+//	if(terrain_groups_.size() % group_buttons_per_row != 0) {
+//		++group_rows;
+//	}
 
 	SDL_Rect rect = create_rect(size_specs_.palette_x
 			, size_specs_.palette_y
@@ -171,8 +170,8 @@ void terrain_palette::adjust_size() {
 	const size_t space_for_terrains = size_specs_.palette_h;
 
 	unsigned fitting = 1;
-	terrain_width_ = 1;
-	terrain_size_ = 72;
+	terrain_width_ = size_specs_.default_terrain_width - 1;
+	terrain_size_ = size_specs_.default_terrain_size;
 	while (fitting < num_terrains()) {
 		terrain_width_++;
 		terrain_size_ = size_specs_.palette_w / terrain_width_ - size_specs_.terrain_padding;
@@ -187,18 +186,18 @@ void terrain_palette::adjust_size() {
 		static_cast<unsigned> (space_for_terrains / (terrain_size_ + size_specs_.terrain_padding) *
 		terrain_width_);
 	nterrains_ = std::min<int>(terrains_fitting, nmax_terrains_);
-	size_t top = size_specs_.palette_y;
-	size_t left = size_specs_.palette_x + 2;
-	for(size_t i = 0; i < terrain_groups_.size(); ++i) {
-		if (terrain_map_[terrain_groups_[i].id].empty())
-			continue;
-		if(i % group_buttons_per_row == (group_buttons_per_row - 1)) {
-			left = size_specs_.palette_x + 2;
-			top += group_button_height + group_button_padding;
-		} else {
-			left += group_button_height + group_button_padding;
-		}
-	}
+//	size_t top = size_specs_.palette_y;
+//	size_t left = size_specs_.palette_x + 2;
+//	for(size_t i = 0; i < terrain_groups_.size(); ++i) {
+//		if (terrain_map_[terrain_groups_[i].id].empty())
+//			continue;
+//		if(i % group_buttons_per_row == (group_buttons_per_row - 1)) {
+//			left = size_specs_.palette_x + 2;
+//			top += group_button_height + group_button_padding;
+//		} else {
+//			left += group_button_height + group_button_padding;
+//		}
+//	}
 
 	set_dirty();
 }
@@ -243,8 +242,9 @@ const config terrain_palette::active_terrain_report()
 	config& report = cfg.add_child("element");
 	for (size_t i = 0 ; i < terrain_groups_.size(); i++) {
 		if (terrain_groups_[i].id == active_group_) {
+			std::string groupname = terrain_groups_[i].name;
 			report["image"] = "buttons/" + terrain_groups_[i].icon + "-pressed.png";
-			report["tooltip"] = terrain_groups_[i].name;
+			report["tooltip"] = groupname;
 		}
 	}
 	return cfg;
