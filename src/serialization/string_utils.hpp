@@ -101,14 +101,15 @@ std::string join(T const &v, const std::string& s = ",")
 /**
  * Generates a new string containing a bullet list.
  *
- * List items are preceded by the bullet string and a blank; all but
- * the last item are followed by a newline.
+ * List items are preceded by the indentation blanks, a bullet string and
+ * another blank; all but the last item are followed by a newline.
  *
  * @param v A container with elements.
+ * @param indent Number of indentation blanks.
  * @param bullet The leading bullet string.
  */
 template<typename T>
-std::string bullet_list(const T& v, const std::string& bullet = unicode_bullet)
+std::string bullet_list(const T& v, size_t indent = 4, const std::string& bullet = unicode_bullet)
 {
 	std::ostringstream str;
 
@@ -117,7 +118,7 @@ std::string bullet_list(const T& v, const std::string& bullet = unicode_bullet)
 			str << '\n';
 		}
 
-		str << bullet << ' ' << *i;
+		str << std::string(indent, ' ') << bullet << ' ' << *i;
 	}
 
 	return str.str();
