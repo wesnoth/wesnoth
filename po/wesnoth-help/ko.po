@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:34+0100\n"
-"PO-Revision-Date: 2011-11-30 15:07+0900\n"
+"POT-Creation-Date: 2012-02-25 15:51+0100\n"
+"PO-Revision-Date: 2012-02-28 17:17+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -1687,12 +1687,6 @@ msgstr "시간대"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
-#, fuzzy
-#| msgid ""
-#| "The time of day affects the damage of certain units as follows:\n"
-#| " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
-#| " Chaotic units get +25% damage at night, and −25% in daytime.\n"
-#| " Neutral units are unaffected by the time of day."
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1703,7 +1697,8 @@ msgstr ""
 "시간대는 유닛들의 데미지에 영향을 줍니다:\n"
 " 주행성 유닛들은 낮에 주는 데미지가 25% 증가하고, 밤에는 25% 감소합니다.\n"
 " 야행성 유닛들은 밤에 주는 데미지가 25% 증가하고, 낮에는 25% 감소합니다.\n"
-" 시간대 중립 유닛들은 시간대의 영향을 받지 않습니다."
+" 시간대 중립 유닛들은 시간대의 영향을 받지 않습니다.\n"
+" Liminal units get −25% damage during both night and daytime."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
@@ -2540,7 +2535,7 @@ msgid ""
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
 "<italic>text='초원'</italic>은 경작지나 목초지 혹은 황야 같은 모든 평야 지대"
-"를 대표합니다. 탁 트인 지형인 초원은 이동하기도 쉽지만 스스로를 방어하기도 어"
+"를 대표합니다. 탁 트인 지형인 초원은 이동하기는 쉽지만 스스로를 방어하기는 어"
 "려운 지형입니다. 보통 초원에서 가장 뛰어난 능력을 발휘하는 유닛은 기병과 같"
 "이 개활지에서 유리한 매우 빠른 유닛들입니다.\n"
 "\n"
@@ -2966,6 +2961,10 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"단단한 돌벽이나, 너무도 높고 가팔라 항상 구름에 싸여있는 산악과 같이 아무리 "
+"굳게 마음먹은 여행자라도 넘어설 수 없는 장애물입니다. 심지어 날아다니는 생물"
+"들도 이런 엄청난 높이에 있는 뾰족한 꼭대기를 볼 수 없으며, 아무리 사나운 트롤"
+"이라도 두꺼운 돌벽을 뚫고 지나갈 수는 없습니다."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:790
@@ -4251,17 +4250,17 @@ msgstr ""
 #. [race]: id=drake
 #: data/core/units.cfg:54
 msgid "race^Drake"
-msgstr ""
+msgstr "반룡"
 
 #. [race]: id=drake
 #: data/core/units.cfg:55
 msgid "race+female^Drake"
-msgstr ""
+msgstr "반룡"
 
 #. [race]: id=drake
 #: data/core/units.cfg:56
 msgid "race^Drakes"
-msgstr ""
+msgstr "반룡족"
 
 #. [race]: id=drake
 #: data/core/units.cfg:69
@@ -4502,8 +4501,8 @@ msgstr ""
 "기 때문이다.\n"
 "\n"
 "고블린들은 진짜 오크들의 강인한 힘이 필요한 예외적인 일들을 빼면 오크들에게 "
-"필요한 모든 노동을 담당한다. 오크들이 빈둥댈 수 있는 것은 고블린들의 능력을 "
-"증명하는 것이기도 하다."
+"필요한 모든 노동을 담당한다. 오크들이 빈둥댈 수 있다는 사실은 한편으로 고블린"
+"들의 능력을 증명한다."
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:150
