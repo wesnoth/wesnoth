@@ -765,7 +765,7 @@ class HTMLOutput:
         for cid in self.forest.get_children(uid):
             try:
                 cunit = self.wesnoth.unit_lookup[cid]
-                if "mainline" in cunit.campaigns[0]: addon = "mainline"
+                if "mainline" in cunit.campaigns: addon = "mainline"
                 else: addon = self.addon
                 link = "../../%s/%s/%s.html" % (addon, self.isocode, cid)
                 if unit.campaigns[0] == "mainline" and cunit.campaigns[0] != "mainline":
