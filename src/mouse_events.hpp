@@ -18,7 +18,6 @@
 #define MOUSE_EVENTS_H_INCLUDED
 
 #include "game_display.hpp"
-#include "random.hpp"
 #include "mouse_handler_base.hpp"
 
 class tod_manager;
