@@ -134,7 +134,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		broken_deps_report += "\n";
 
 		foreach(const std::string& broken_dep_id, broken_deps) {
-			broken_deps_report += "\n" + make_addon_title(broken_dep_id);
+			broken_deps_report += "\n" + utils::unicode_bullet + " " + make_addon_title(broken_dep_id);
 		}
 
 		if(gui2::show_message(disp.video(), _("Broken Dependencies"), broken_deps_report, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {
@@ -231,7 +231,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		const std::string& failed_deps_report = _n(
 			"The following dependency could not be installed. Do you still wish to continue?",
 			"The following dependencies could not be installed. Do you still wish to continue?",
-			failed_titles.size()) + std::string("\n\n") + utils::join(failed_titles, "\n");
+			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
 
 		return gui2::show_message(disp.video(), _("Dependencies Installation Failed"), failed_deps_report, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK;
 	}
@@ -653,7 +653,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			"The following add-ons could not be downloaded or installed successfully:",
 			failed_titles.size());
 
-		gui2::show_message(disp.video(), msg_title, msg_text + std::string("\n\n") + utils::join(failed_titles, "\n"), gui2::tmessage::ok_button);
+		gui2::show_message(disp.video(), msg_title, msg_text + std::string("\n\n") + utils::bullet_list(failed_titles), gui2::tmessage::ok_button);
 	}
 }
 } // end anonymous namespace
@@ -714,8 +714,7 @@ bool addons_manager_ui(display& disp, const std::string& remote_address, bool sh
 
 bool uninstall_local_addons(display& disp)
 {
-	static const std::string list_lead = "\n\n";
-	static const std::string list_sep = "\n";
+	const std::string list_lead = "\n\n";
 
 	const std::vector<std::string>& addons = installed_addons();
 
@@ -747,7 +746,7 @@ bool uninstall_local_addons(display& disp)
 		const std::string confirm_message = _n(
 			"Are you sure you want to remove the following installed add-on?",
 			"Are you sure you want to remove the following installed add-ons?",
-			remove_ids.size()) + list_lead + utils::join(remove_names, list_sep);
+			remove_ids.size()) + list_lead + utils::bullet_list(remove_names);
 
 		res = gui2::show_message(disp.video()
 				, _("Confirm")
@@ -776,14 +775,14 @@ bool uninstall_local_addons(display& disp)
 			skipped_names.size());
 
 		gui2::show_error_message(
-			disp.video(), dlg_msg + list_lead + utils::join(skipped_names, list_sep));
+			disp.video(), dlg_msg + list_lead + utils::bullet_list(skipped_names));
 	}
 
 	if(!failed_names.empty()) {
 		gui2::show_error_message(disp.video(), _n(
 			"The following add-on could not be deleted properly:",
 			"The following add-ons could not be deleted properly:",
-			failed_names.size()) + list_lead + utils::join(failed_names, list_sep));
+			failed_names.size()) + list_lead + utils::bullet_list(failed_names));
 	}
 
 	if(!succeeded_names.empty()) {
@@ -796,7 +795,7 @@ bool uninstall_local_addons(display& disp)
 
 		gui2::show_transient_message(
 			disp.video(), dlg_title,
-			dlg_msg + list_lead + utils::join(succeeded_names, list_sep));
+			dlg_msg + list_lead + utils::bullet_list(succeeded_names));
 
 		return true;
 	}
