@@ -24,13 +24,13 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "gui/widgets/settings.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
 #include "sound.hpp"
 #include "video.hpp" // non_interactive()
 #include "serialization/parser.hpp"
+#include "util.hpp"
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #include <boost/concept_check.hpp>
