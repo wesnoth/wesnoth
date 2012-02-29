@@ -18,6 +18,7 @@
 
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
+#include "addon/state.hpp"
 #include "dialogs.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
@@ -53,32 +54,6 @@ static lg::log_domain log_addons_client("addons-client");
 #define DBG_AC  LOG_STREAM(debug, log_addons_client)
 
 namespace {
-
-/** Defines various add-on installation statuses. */
-enum ADDON_STATUS {
-	/** Add-on is not installed. */
-	ADDON_NONE,
-	/** Version in the server matches local installation. */
-	ADDON_INSTALLED,
-	/** Version in the server is newer than local installation. */
-	ADDON_INSTALLED_UPGRADABLE,
-	/** Version in the server is older than local installation. */
-	ADDON_INSTALLED_OUTDATED,
-	/** Dependencies not satisfied.
-	 *  @todo This option isn't currently implemented! */
-	ADDON_INSTALLED_BROKEN,
-	/** No tracking information available. */
-	ADDON_NOT_TRACKED
-};
-
-/** Stores additional status information about add-ons. */
-struct addon_tracking_info
-{
-	ADDON_STATUS state;
-	bool can_publish;
-	bool in_version_control;
-	version_info installed_version;
-};
 
 inline const addon_info& addon_at(const std::string& id, const addons_list& addons)
 {
@@ -300,41 +275,6 @@ void do_remote_addon_publish(CVideo& video, addons_client& client, const std::st
 	}
 }
 
-/**
- * Get information about an (optionally installed) add-on compared against the add-ons server.
- *
- * @param addon The add-ons server entry information.
- * @param t     The local tracking status information.
- */
-void get_addon_tracking_info(const addon_info& addon, addon_tracking_info& t)
-{
-	const std::string& id = addon.id;
-
-	t.can_publish = have_addon_pbl_info(id);
-	t.in_version_control = have_addon_in_vcs_tree(id);
-	t.installed_version = version_info();
-
-	if(is_addon_installed(id)) {
-		try {
-			t.installed_version = get_addon_version_info(id);
-			const version_info& remote_version = addon.version;
-
-			if(remote_version == t.installed_version) {
-				t.state = ADDON_INSTALLED;
-			} else if(remote_version > t.installed_version) {
-				t.state = ADDON_INSTALLED_UPGRADABLE;
-			} else /* if(remote_version < t.installed_version) */ {
-				t.state = ADDON_INSTALLED_OUTDATED;
-			}
-		} catch(version_info::not_sane_exception const&) {
-			LOG_AC << "local add-on " << id << " has invalid or missing version info, skipping from updates check...\n";
-			t.state = ADDON_NOT_TRACKED;
-		}
-	} else {
-		t.state = ADDON_NONE;
-	}
-}
-
 /** GUI1 support class handling the button used to display add-on descriptions. */
 class description_display_action : public gui::dialog_button_action
 {
@@ -420,7 +360,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 	foreach(const addons_list::value_type& entry, addons) {
 		const addon_info& addon = entry.second;
-		get_addon_tracking_info(addon, tracking[addon.id]);
+		tracking[addon.id] = get_addon_tracking_info(addon);
 
 		if(updates_only && tracking[addon.id].state != ADDON_INSTALLED_UPGRADABLE) {
 			continue;
