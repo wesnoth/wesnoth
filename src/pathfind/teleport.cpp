@@ -29,7 +29,7 @@ namespace {
 }
 
 // This constructor is *only* meant for loading from saves
-pathfind::teleport_group::teleport_group(const config& cfg) : cfg_(cfg), reversed_(utils::string_bool(cfg["reversed"], false)), id_(cfg["id"])
+pathfind::teleport_group::teleport_group(const config& cfg) : cfg_(cfg), reversed_(cfg["reversed"].to_bool(false)), id_(cfg["id"])
 {
 	assert(cfg.has_attribute("id"));
 	assert(cfg.has_attribute("reversed"));
@@ -86,7 +86,7 @@ const std::string& pathfind::teleport_group::get_teleport_id() const {
 }
 
 bool pathfind::teleport_group::always_visible() const {
-	return utils::string_bool(cfg_["always_visible"], false);
+	return cfg_["always_visible"].to_bool(false);
 }
 
 config pathfind::teleport_group::to_config() const {

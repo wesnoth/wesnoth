@@ -755,7 +755,7 @@ WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
 
 WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
 {
-	const bool remove = utils::string_bool(cfg["remove"], false);
+	const bool remove = cfg["remove"].to_bool(false);
 	if (remove) {
 		const std::vector<std::string> ids = utils::split(cfg["id"]);
 		foreach(const std::string &id, ids) {
@@ -770,7 +770,7 @@ WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
 		pathfind::teleport_group tunnel(cfg, false);
 		resources::tunnels->add(tunnel);
 
-		if (utils::string_bool(cfg["bidirectional"], true)) {
+		if(cfg["bidirectional"].to_bool(true)) {
 			tunnel = pathfind::teleport_group(cfg, true);
 			resources::tunnels->add(tunnel);
 		}

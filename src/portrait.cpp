@@ -17,7 +17,6 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "serialization/string_utils.hpp"
 #include "util.hpp"
 #include "wml_exception.hpp"
 
@@ -42,7 +41,7 @@ tportrait::tportrait(const config& cfg) :
 	image(cfg["image"]),
 	side(get_side(cfg["side"])),
 	size(lexical_cast_default<unsigned>(cfg["size"])),
-	mirror(utils::string_bool(cfg["mirror"]))
+	mirror(cfg["mirror"].to_bool())
 {
 	VALIDATE(!image.empty(), missing_mandatory_wml_key("portrait", "image"));
 	VALIDATE(size != 0,  missing_mandatory_wml_key("portrait", "size"));
