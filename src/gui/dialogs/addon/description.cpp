@@ -18,6 +18,8 @@
 #include "gui/dialogs/addon/description.hpp"
 
 #include "foreach.hpp"
+#include "formula_string_utils.hpp"
+#include "gettext.hpp"
 #include "gui/widgets/settings.hpp"
 #include "language.hpp"
 
@@ -31,6 +33,75 @@ namespace {
 		}
 
 		return "";
+	}
+
+	std::string describe_addon_state_info(const addon_tracking_info& state)
+	{
+		std::string s;
+
+		utils::string_map i18n_symbols;
+		i18n_symbols["local_version"] = state.installed_version.str();
+
+		switch(state.state) {
+		case ADDON_NONE:
+			if(!state.can_publish) {
+				s += _("addon_state^Not installed");
+			} else {
+				s += _("addon_state^Published");
+			}
+			break;
+		case ADDON_INSTALLED:
+			s += "<span color='green'>";
+			if(!state.can_publish) {
+				s += _("addon_state^Installed");
+			} else {
+				s += _("addon_state^Published");
+			}
+			s += "</span>";
+			break;
+		case ADDON_INSTALLED_UPGRADABLE:
+			s += "<span color='yellow'>";
+			{
+				const char* const vstr = !state.can_publish
+					? _("addon_state^Installed, server updated ($local_version|)")
+					: _("addon_state^Published, server updated ($local_version|)");
+				s += utils::interpolate_variables_into_string(vstr, &i18n_symbols);
+			}
+			s += "</span>";
+			break;
+		case ADDON_INSTALLED_OUTDATED:
+			s += "<span color='orange'>";
+			{
+				const char* const vstr = !state.can_publish
+					? _("addon_state^Installed, server outdated ($local_version|)")
+					: _("addon_state^Published, server outdated ($local_version|)");
+				s += utils::interpolate_variables_into_string(vstr, &i18n_symbols);
+			}
+			s += "</span>";
+			break;
+		case ADDON_INSTALLED_BROKEN:
+			s += "<span color='red'>";
+			if(!state.can_publish) {
+				s += _("addon_state^Installed, broken");
+			} else {
+				s += _("addon_state^Published, broken");
+			}
+			s += "</span>";
+			break;
+		default:
+			if(!state.can_publish) {
+				s += "<span color='red'>";
+				s += _("addon_state^Not tracked");
+			} else {
+				// Published add-ons often don't have local status information,
+				// hence untracked. This should be considered normal.
+				s += "<span color='green'>";
+				s += _("addon_state^Published");
+			}
+			s += "</span>";
+		}
+
+		return s;
 	}
 }
 
@@ -55,6 +126,9 @@ namespace gui2 {
  * version & & control & m &
  *         Label for displaying the add-on version number. $
  *
+ * status & & control & m &
+ *         Label for displaying the current installation/upgradability status. $
+ *
  * author & & control & m &
  *         Label for displaying the add-on author/maintainer name. $
  *
@@ -77,11 +151,12 @@ namespace gui2 {
 
 REGISTER_DIALOG(addon_description)
 
-taddon_description::taddon_description(const addon_info& addon)
+taddon_description::taddon_description(const addon_info& addon, const addon_tracking_info& state)
 {
 	register_label("image", true, addon.display_icon());
 	register_label("title", true, addon.title);
 	register_label("version", true, addon.version);
+	register_label("status", true, describe_addon_state_info(state), true);
 	register_label("author", true, addon.author);
 	register_label("size", true, size_display_string(addon.size));
 	if(!addon.description.empty()) {

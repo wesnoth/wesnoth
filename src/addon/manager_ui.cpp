@@ -281,11 +281,12 @@ class description_display_action : public gui::dialog_button_action
 	display& disp_;
 	std::vector<std::string> display_ids_;
 	addons_list addons_;
+	std::map<std::string, addon_tracking_info> tracking_;
 	gui::filter_textbox* filter_;
 
 public:
-	description_display_action(display& disp, const std::vector<std::string>& display_ids, const addons_list& addons, gui::filter_textbox* filter)
-		: disp_(disp) , display_ids_(display_ids), addons_(addons), filter_(filter)
+	description_display_action(display& disp, const std::vector<std::string>& display_ids, const addons_list& addons, const std::map<std::string, addon_tracking_info>& tracking, gui::filter_textbox* filter)
+		: disp_(disp) , display_ids_(display_ids), addons_(addons), tracking_(tracking), filter_(filter)
 	{}
 
 	virtual gui::dialog_button_action::RESULT button_pressed(int filter_choice)
@@ -297,7 +298,9 @@ public:
 
 		const size_t choice = static_cast<size_t>(menu_selection);
 		if(choice < display_ids_.size()) {
-			gui2::taddon_description::display(addons_[display_ids_[choice]], disp_.video());
+			const std::string& id = display_ids_[choice];
+			assert(tracking_.find(id) != tracking_.end());
+			gui2::taddon_description::display(addons_[id], tracking_[id], disp_.video());
 		}
 
 		return gui::CONTINUE_DIALOG;
@@ -484,7 +487,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			_("Filter: "), options, filter_options, 1, dlg, 300);
 		dlg.set_textbox(filter_box);
 
-		description_display_action description_helper(disp, option_ids, addons, filter_box);
+		description_display_action description_helper(disp, option_ids, addons, tracking, filter_box);
 		gui::dialog_button* description_button = new gui::dialog_button(disp.video(),
 			_("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
 		dlg.add_button(description_button, gui::dialog::BUTTON_EXTRA);
