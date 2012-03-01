@@ -25,6 +25,8 @@
 		49DA0D2F13550E9B000AFEBD /* walker_grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D2C13550E9B000AFEBD /* walker_grid.cpp */; };
 		49DA0D3013550E9B000AFEBD /* walker_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D2D13550E9B000AFEBD /* walker_widget.cpp */; };
 		49DA0D3613550F27000AFEBD /* ca_global_fallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D3513550F27000AFEBD /* ca_global_fallback.cpp */; };
+		620EC87114FEEE5F006BBD1F /* dep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620EC87014FEEE5F006BBD1F /* dep.cpp */; };
+		620EC87414FEEE6D006BBD1F /* state.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620EC87214FEEE6D006BBD1F /* state.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		B504B94C1284C06B00261FE9 /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B504B94A1284C06B00261FE9 /* tips.cpp */; };
 		B504B94D1284C06B00261FE9 /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B504B94A1284C06B00261FE9 /* tips.cpp */; };
@@ -1002,6 +1004,10 @@
 		49DA0D2C13550E9B000AFEBD /* walker_grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = walker_grid.cpp; path = iterator/walker_grid.cpp; sourceTree = "<group>"; };
 		49DA0D2D13550E9B000AFEBD /* walker_widget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = walker_widget.cpp; path = iterator/walker_widget.cpp; sourceTree = "<group>"; };
 		49DA0D3513550F27000AFEBD /* ca_global_fallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ca_global_fallback.cpp; sourceTree = "<group>"; };
+		620EC86E14FEEE4A006BBD1F /* dep.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = dep.hpp; sourceTree = "<group>"; };
+		620EC87014FEEE5F006BBD1F /* dep.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dep.cpp; sourceTree = "<group>"; };
+		620EC87214FEEE6D006BBD1F /* state.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = state.cpp; sourceTree = "<group>"; };
+		620EC87314FEEE6D006BBD1F /* state.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = state.hpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Wesnoth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wesnoth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B504B94A1284C06B00261FE9 /* tips.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tips.cpp; sourceTree = "<group>"; };
@@ -2581,6 +2587,10 @@
 		B52EE9A81213640400CFBDAB /* addon */ = {
 			isa = PBXGroup;
 			children = (
+				620EC87214FEEE6D006BBD1F /* state.cpp */,
+				620EC87314FEEE6D006BBD1F /* state.hpp */,
+				620EC87014FEEE5F006BBD1F /* dep.cpp */,
+				620EC86E14FEEE4A006BBD1F /* dep.hpp */,
 				F419A31014F8868A002F9ADC /* manager_ui.cpp */,
 				F419A31114F8868A002F9ADC /* manager_ui.hpp */,
 				F419A2C014F5BCFE002F9ADC /* client.hpp */,
@@ -3924,6 +3934,8 @@
 				F419A31214F8868A002F9ADC /* manager_ui.cpp in Sources */,
 				F4B8C38A14FD3CA400CF5A88 /* action_label.cpp in Sources */,
 				F4B8C38B14FD3CA400CF5A88 /* mouse_action_map_label.cpp in Sources */,
+				620EC87114FEEE5F006BBD1F /* dep.cpp in Sources */,
+				620EC87414FEEE6D006BBD1F /* state.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
