@@ -351,7 +351,7 @@ public:
 	}
 };
 
-void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, bool& updates_only, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed)
+void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, bool& updates_only, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, std::string& filter_text)
 {
 	stay_in_ui = false;
 
@@ -538,6 +538,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 		gui::filter_textbox* filter_box = new gui::filter_textbox(disp.video(),
 			_("Filter: "), options, filter_options, 1, dlg, 300);
+		filter_box->set_text(filter_text);
 		dlg.set_textbox(filter_box);
 
 		description_display_action description_helper(disp, option_ids, addons, tracking, filter_box);
@@ -572,6 +573,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		// Execute the dialog.
 		//
 		result = filter_box->get_index(dlg.show());
+
+		filter_text = filter_box->text();
 	}
 
 	const bool update_everything = updates_only && result == update_all_value;
@@ -672,6 +675,7 @@ bool addons_manager_ui(display& disp, const std::string& remote_address, bool sh
 	bool stay_in_manager_ui = false;
 	bool need_wml_cache_refresh = false;
 	std::string last_addon_id;
+	std::string filter_text;
 
 	preferences::set_campaign_server(remote_address);
 
@@ -695,7 +699,7 @@ bool addons_manager_ui(display& disp, const std::string& remote_address, bool sh
 				bool prev_updates_only;
 				do {
 					prev_updates_only = show_updates_only;
-					show_addons_manager_dialog(disp, client, addons, show_updates_only, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh);
+					show_addons_manager_dialog(disp, client, addons, show_updates_only, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh, filter_text);
 				} while(prev_updates_only != show_updates_only);
 			} catch(const addons_client::user_exit&) {
 				// Don't do anything; just go back to the addons manager UI
