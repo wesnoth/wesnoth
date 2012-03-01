@@ -63,8 +63,8 @@ namespace {
 			s += "<span color='yellow'>";
 			{
 				const char* const vstr = !state.can_publish
-					? _("addon_state^Installed, server updated ($local_version|)")
-					: _("addon_state^Published, server updated ($local_version|)");
+					? _("addon_state^Installed ($local_version|), can be upgraded")
+					: _("addon_state^Published ($local_version|), can be upgraded");
 				s += utils::interpolate_variables_into_string(vstr, &i18n_symbols);
 			}
 			s += "</span>";
@@ -73,8 +73,8 @@ namespace {
 			s += "<span color='orange'>";
 			{
 				const char* const vstr = !state.can_publish
-					? _("addon_state^Installed, server outdated ($local_version|)")
-					: _("addon_state^Published, server outdated ($local_version|)");
+					? _("addon_state^Installed ($local_version|), outdated in the server")
+					: _("addon_state^Published ($local_version|), outdated in the server");
 				s += utils::interpolate_variables_into_string(vstr, &i18n_symbols);
 			}
 			s += "</span>";
