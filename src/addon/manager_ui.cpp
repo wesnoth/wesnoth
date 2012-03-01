@@ -36,6 +36,9 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
+
+#include <boost/scoped_ptr.hpp>
+
 #include "addon/client.hpp"
 
 static lg::log_domain log_config("config");
@@ -82,6 +85,8 @@ bool get_addons_list(addons_client& client, addons_list& list)
 /** Warns the user about unresolved dependencies and installs them if they choose to do so. */
 bool do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon, bool& wml_changed)
 {
+	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
+
 	// TODO: We don't currently check for the need to upgrade. I'll probably
 	// work on that when implementing dependency tiers later.
 
@@ -99,6 +104,8 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 			}
 		}
 	}
+
+	cursor_setter.reset();
 
 	if(!broken_deps.empty()) {
 		std::string broken_deps_report;
@@ -134,6 +141,8 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 
 	std::vector<std::string> options(1, header);
 	std::vector<int> sort_sizes;
+
+	cursor_setter.reset(new cursor::setter(cursor::WAIT));
 	
 	foreach(const std::string& dep, missing_deps) {
 		const addon_info& addon = addon_at(dep, addons);
@@ -175,6 +184,8 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 			return true;
 		}
 	}
+
+	cursor_setter.reset();
 
 	//
 	// Install dependencies now.
@@ -396,6 +407,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	// information.
 	//
 
+	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
+
 	foreach(const addons_list::value_type& entry, addons) {
 		const addon_info& addon = entry.second;
 		tracking[addon.id] = get_addon_tracking_info(addon);
@@ -547,6 +560,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		if(it != option_ids.end()) {
 			addons_list_menu->move_selection(std::distance(option_ids.begin(), it));
 		}
+
+		cursor_setter.reset();
 
 		//
 		// Execute the dialog.
