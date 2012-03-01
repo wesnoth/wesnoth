@@ -17,6 +17,7 @@
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
 #include "addon/validation.hpp"
+#include "cursor.hpp"
 #include "display.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
@@ -205,6 +206,8 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 
 bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 {
+	const cursor::setter cursor_setter(cursor::WAIT);
+
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = info.title;
 
