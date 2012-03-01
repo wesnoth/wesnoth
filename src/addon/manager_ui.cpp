@@ -117,7 +117,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		broken_deps_report += "\n";
 
 		foreach(const std::string& broken_dep_id, broken_deps) {
-			broken_deps_report += "\n" + utils::unicode_bullet + " " + make_addon_title(broken_dep_id);
+			broken_deps_report += "\n    " + utils::unicode_bullet + " " + make_addon_title(broken_dep_id);
 		}
 
 		if(gui2::show_message(disp.video(), _("Broken Dependencies"), broken_deps_report, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {
