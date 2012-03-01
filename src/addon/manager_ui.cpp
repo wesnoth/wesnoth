@@ -30,6 +30,7 @@
 #include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
@@ -307,9 +308,43 @@ public:
 	}
 };
 
-void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, bool updates_only, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed)
+/** GUI1 support class handling the view mode selection button. */
+class switch_view_mode_action : public gui::dialog_button_action
+{
+	CVideo& video_;
+	bool& updates_only_;
+
+public:
+	switch_view_mode_action(CVideo& video, bool& updates_only)
+		: video_(video), updates_only_(updates_only)
+	{}
+
+	virtual gui::dialog_button_action::RESULT button_pressed(int)
+	{
+		gui2::tsimple_item_selector::list_type dlg_items;
+		dlg_items.push_back(_("All add-ons"));
+		dlg_items.push_back(_("Upgradable add-ons"));
+
+		gui2::tsimple_item_selector dlg(
+			_("View Mode"),
+			_("Choose an add-ons list view mode."),
+			dlg_items);
+
+		const bool prev_updates_only = updates_only_;
+
+		dlg.set_selected_index(updates_only_ ? 1 : 0);
+		dlg.show(video_);
+		updates_only_ = dlg.selected_index() == 1;
+
+		return prev_updates_only == updates_only_ ? gui::CONTINUE_DIALOG : gui::CLOSE_DIALOG;
+	}
+};
+
+void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, bool& updates_only, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed)
 {
 	stay_in_ui = false;
+
+	const bool prev_updates_only = updates_only;
 
 	// Currently installed add-ons, which we'll need to check when updating.
 	// const std::vector<std::string>& installed_addons_list = installed_addons();
@@ -499,6 +534,11 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			dlg.add_button(update_all_button, gui::dialog::BUTTON_EXTRA);
 		}
 
+		switch_view_mode_action view_mode_helper(disp.video(), updates_only);
+		gui::dialog_button* view_mode_button = new gui::dialog_button(disp.video(),
+			_("View Mode"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &view_mode_helper);
+		dlg.add_button(view_mode_button, gui::dialog::BUTTON_EXTRA_LEFT);
+
 		// Focus the menu on the previous selection.
 		std::vector<std::string>::iterator it = !last_addon_id.empty() ?
 			std::find(option_ids.begin(), option_ids.end(), last_addon_id) :
@@ -515,12 +555,18 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	}
 
 	const bool update_everything = updates_only && result == update_all_value;
-	if(result < 0 && !update_everything) {
+	const bool change_view = prev_updates_only != updates_only;
+	if(result < 0 && !(update_everything || change_view)) {
 		// User canceled the dialog.
 		return;
 	}
 
 	stay_in_ui = true;
+
+	if(change_view) {
+		// The caller will run this function again.
+		return;
+	}
 
 	if(!updates_only) {
 		if(result >= int(option_ids.size() + can_publish_ids.size())) {
@@ -624,7 +670,13 @@ bool addons_manager_ui(display& disp, const std::string& remote_address, bool sh
 			}
 
 			try {
-				show_addons_manager_dialog(disp, client, addons, show_updates_only, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh);
+				// Don't reconnect when only show_updates_only has
+				// changed to switch between view modes.
+				bool prev_updates_only;
+				do {
+					prev_updates_only = show_updates_only;
+					show_addons_manager_dialog(disp, client, addons, show_updates_only, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh);
+				} while(prev_updates_only != show_updates_only);
 			} catch(const addons_client::user_exit&) {
 				// Don't do anything; just go back to the addons manager UI
 				// if the user cancels a download or other network operation
