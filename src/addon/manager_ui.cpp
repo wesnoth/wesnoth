@@ -670,8 +670,9 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 }
 } // end anonymous namespace
 
-bool addons_manager_ui(display& disp, const std::string& remote_address, bool show_updates_only)
+bool addons_manager_ui(display& disp, const std::string& remote_address)
 {
+	bool show_updates_only = false;
 	bool stay_in_manager_ui = false;
 	bool need_wml_cache_refresh = false;
 	std::string last_addon_id;
@@ -827,7 +828,6 @@ bool manage_addons(display& disp)
 	static const int addon_download  = 0;
 	// NOTE: the following two values are also known by WML, so don't change them.
 	static const int addon_uninstall = 2;
-	static const int addon_update    = 3;  
 
 	std::string host_name = preferences::campaign_server();
 	const bool have_addons = !installed_addons().empty();
@@ -841,9 +841,8 @@ bool manage_addons(display& disp)
 	}
 
 	switch(res) {
-		case addon_update:
 		case addon_download:
-			return addons_manager_ui(disp, host_name, res == addon_update);
+			return addons_manager_ui(disp, host_name);
 		case addon_uninstall:
 			return uninstall_local_addons(disp);
 		default:
