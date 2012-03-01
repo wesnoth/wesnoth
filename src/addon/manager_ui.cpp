@@ -498,6 +498,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			gui2::show_error_message(disp.video(), _("There are no add-ons available for download from this server."));
 		} else if(updates_only) {
 			gui2::show_transient_message(disp.video(), _("Add-ons Manager"), _("All add-ons are up to date."));
+			updates_only = false;
 		}
 
 		return;
