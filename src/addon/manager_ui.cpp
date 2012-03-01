@@ -180,12 +180,12 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 			gui::dialog::max_menu_width, NULL, &addon_style, false);
 		dlg.set_menu(addon_menu);
 
+		cursor_setter.reset();
+
 		if(dlg.show() < 0) {
 			return true;
 		}
 	}
-
-	cursor_setter.reset();
 
 	//
 	// Install dependencies now.
