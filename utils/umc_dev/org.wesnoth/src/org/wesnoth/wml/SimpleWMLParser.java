@@ -21,6 +21,7 @@ import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
@@ -115,6 +116,7 @@ public class SimpleWMLParser
         TreeIterator< EObject > itor = root_.eAllContents( );
         WMLTag currentTag = null;
         String currentTagName = "";
+        String textdomain = "";
 
         // clear previous parsed info
         config_.getWMLTags( ).clear( );
@@ -146,7 +148,7 @@ public class SimpleWMLParser
                 }
             }
             else if( object instanceof WMLKey ) {
-                if( currentTag != null ) {
+                if( currentTag != null && currentTagName != null ) {
                     WMLKey key = ( WMLKey ) object;
                     String keyName = key.getName( );
 
@@ -205,6 +207,58 @@ public class SimpleWMLParser
 
                 config_.getWMLTags( ).putAll( luaParser.getTags( ) );
             }
+            else if( object instanceof WMLMacroDefine ) {
+                addNewDefine( ( WMLMacroDefine ) object, textdomain );
+            }
+            else if( object instanceof WMLTextdomain ) {
+                textdomain = ( ( WMLTextdomain ) object ).getName( );
+                if( textdomain == null ) {
+                    textdomain = "";
+                }
+            }
+        }
+    }
+
+    /**
+     * Creates a new define from a macro define
+     * 
+     * @param object
+     */
+    private void addNewDefine( WMLMacroDefine object, String textdomain )
+    {
+        ICompositeNode node = NodeModelUtils.getNode( object );
+        if( node == null ) {
+            return;
+        }
+
+        try {
+            String defineHeader = object.getName( ).replaceAll( "\\r|\\n|\\t", "" );
+            int firstSpaceIndex = defineHeader.indexOf( ' ' ) + 1;
+            int defineNameEndIndex = defineHeader.indexOf( ' ', firstSpaceIndex + 1 );
+
+            String name = defineHeader.substring( firstSpaceIndex, defineNameEndIndex );
+
+            int linenum = node.getTotalStartLine( );
+            String location = currentFileLocation_;
+
+            String[] splittedArgs = defineHeader.substring( defineNameEndIndex + 1 ).split( " " );
+            List< String > args = new ArrayList< String >( );
+            for( String arg: splittedArgs ) {
+                args.add( arg );
+            }
+
+            StringBuffer value = new StringBuffer( );
+            for( WMLValuedExpression expression: object.getExpressions( ) ) {
+                ICompositeNode expressionNode = NodeModelUtils.getNode( expression );
+                if( expressionNode != null ) {
+                    value.append( expressionNode.getText( ) );
+                }
+            }
+
+            Define define = new Define( name, value.toString( ), textdomain, linenum, location, args );
+            defines_.put( name, define );
+        } catch( Exception e ) {
+            // some formatting exceptions. We don't care 'bout em.
         }
     }
 
