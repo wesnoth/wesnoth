@@ -163,7 +163,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
         if( model != null ) {
             addTagProposals( model, false, context, acceptor );
-
         }
     }
 
@@ -193,6 +192,11 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     private void addMacroCallProposals( EObject model, boolean ruleProposal,
         ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
+        INode currentNode = context.getCurrentNode( );
+
+        boolean appendEndBrace = currentNode != null && ! currentNode.getText( ).equals( "}" );
+
+
         for( Entry< String, Define > define: projectCache_.getDefines( )
             .entrySet( ) ) {
             StringBuilder proposal = new StringBuilder( 10 );
@@ -204,7 +208,10 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             for( String arg: define.getValue( ).getArguments( ) ) {
                 proposal.append( " " + arg ); //$NON-NLS-1$
             }
-            proposal.append( "}" ); //$NON-NLS-1$
+
+            if( appendEndBrace ) {
+                proposal.append( "}" ); //$NON-NLS-1$
+            }
 
             acceptor.accept( createCompletionProposal( proposal.toString( ),
                 define.getKey( ), MACRO_CALL_IMAGE, context,
