@@ -1,4 +1,14 @@
 Version 1.11.0-svn:
+ * Add-ons client:
+   * The Update Add-ons dialog has been replaced with an alternate view mode
+     for the main Add-ons Manager
+   * Add-ons with broken/unavailable dependencies are reported to the user
+   * The add-on dependencies prompt reports all recursively-resolved
+     dependencies, not just the direct dependencies
+   * Add-on installation/upgradability status is reported through the
+     add-on Description dialog
+   * The Add-ons Manager filter textbox is preserved during the same
+     connection (i.e. while installing multiple add-ons)
  * Add-ons server:
    * Reject add-ons with names or titles that begin with a WML text format
      markup character (any of *, `, ~, {, ^, }, |, @, #, <, &)
