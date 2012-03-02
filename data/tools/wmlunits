@@ -103,11 +103,7 @@ def list_contents():
     def list_campaigns(addon):
         campaigns = local.wesnoth.parser.get_all(tag = "campaign")
         info = []
-        
-        if addon == "mainline":
-            # Fake mainline campaign to have an overview of the mainline units
-            append(info, "mainline", "", name = "Units", domain = "wesnoth-help")
-        
+
         for campaign in campaigns:
             cid = campaign.get_text_val("id")
             append(info, cid, campaign.get_text_val("define"), c = campaign)
@@ -131,11 +127,9 @@ def list_contents():
                 return info.get_text_val("version") + "*" + info.get_text_val("uploads")
         except wmlparser2.WMLError as e:
             print(e)
-    
+
     try: os.makedirs(options.output + "/mainline")
     except OSError: pass
-    
-    print("mainline")
 
     try:
         batchlist = yaml.load(open(options.list))
@@ -149,15 +143,23 @@ def list_contents():
         batchlist[-1]["name"] = name
         return batchlist[-1]
 
+    print("mainline")
+
     info = search("mainline")
     info["version"] = "mainline"
     info["parsed"] = "false"
-    
+
     parse("{core}{multiplayer/eras.cfg}", "SKIP_CORE")
     info["eras"] = list_eras("mainline")
 
-    parse("{core}{campaigns}", "SKIP_CORE")
-    info["campaigns"] = list_campaigns("mainline")
+    # Fake mainline campaign to have an overview of the mainline units
+    info["campaigns"] = []
+    append(info["campaigns"], "mainline", "", name = "Units", domain = "wesnoth-help")
+        
+    if not options.addons_only:
+
+        parse("{core}{campaigns}", "SKIP_CORE")
+        info["campaigns"] += list_campaigns("mainline")
 
     addons = []
     if options.addons:
@@ -198,6 +200,8 @@ def list_contents():
 
 def process_campaign_or_era(addon, cid, define, batchlist):
     n = 0
+    
+    print(addon + ": " + cid)
 
     wesnoth = helpers.WesnothList(
         options.wesnoth,
@@ -275,6 +279,14 @@ def batch_process():
         try: os.makedirs(d)
         except OSError: pass
         logname = d + "/error.log"
+        
+        def err(mess):
+            ef = open(logname, "a")
+            ef.write(str(mess))
+            ef.close()
+
+        html_output.write_error = err
+        
         try:
             if not worked:
                 print(name + " not found")
@@ -287,6 +299,8 @@ def batch_process():
 
             for campaign in addon.get("campaigns", []):
                 cid = campaign["id"]
+                if cid == None: cid = campaign["define"]
+                if cid == None: cid = name
                 n = process_campaign_or_era(name, cid, campaign["define"], batchlist)
                 campaign["units"] = n
             
@@ -376,6 +390,8 @@ if __name__ == '__main__':
         help = "List available eras and campaigns.")
     op.add_option("-B", "--batch",
         help = "Batch process the given list.")
+    op.add_option("-A", "--addons-only", action = "store_true",
+        help = "Do only process addons (for debugging).")
     op.add_option("-v", "--verbose", action = "store_true")
     options, args = op.parse_args()
     

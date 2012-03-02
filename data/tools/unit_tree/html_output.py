@@ -37,7 +37,7 @@ error_only_once = {}
 def error_message(message):
     if message in error_only_once: return
     error_only_once[message] = 1
-    sys.stderr.write(message)
+    write_error(message)
 
 helpers.error_message = error_message
 
@@ -99,7 +99,7 @@ class GroupByRace:
 
     def unitfilter(self, unit):
         if not self.campaign: return True
-        return self.campaign == unit.campaigns[0]
+        return self.campaign in unit.campaigns
 
     def groups(self, unit):
         return [unit.race]
@@ -578,7 +578,7 @@ class HTMLOutput:
                                 crown = u" ♚"
 
                         uaddon = "mainline"
-                        if u.campaigns[0] != "mainline": uaddon = self.addon
+                        if "mainline" not in u.campaigns: uaddon = self.addon
                         link = "../../%s/%s/%s.html" % (uaddon, self.isocode, uid)
                         write("<div class=\"i\"><a href=\"%s\" title=\"id=%s\">%s</a>" % (
                             link, uid, u"i"))
@@ -749,7 +749,7 @@ class HTMLOutput:
         write("</td><td>\n")
         for pid in self.forest.get_parents(uid):
             punit = self.wesnoth.unit_lookup[pid]
-            if unit.campaigns[0] == "mainline" and punit.campaigns[0] != "mainline":
+            if "mainline" in unit.campaigns and "mainline" not in punit.campaigns:
                 continue
             
             if "mainline" in unit.campaigns: addon = "mainline"
@@ -768,14 +768,14 @@ class HTMLOutput:
                 if "mainline" in cunit.campaigns: addon = "mainline"
                 else: addon = self.addon
                 link = "../../%s/%s/%s.html" % (addon, self.isocode, cid)
-                if unit.campaigns[0] == "mainline" and cunit.campaigns[0] != "mainline":
+                if "mainline" in unit.campaigns and "mainline" not in cunit.campaigns:
                     continue
                 name = self.wesnoth.get_unit_value(cunit, "name",
                     translation=self.translation.translate)
             except KeyError:
                 error_message("Warning: Unit %s not found.\n" % cid)
                 name = cid
-                if unit.campaigns[0] == "mainline": continue
+                if "mainline" in unit.campaigns: continue
                 link = self.target
             write("\n<a href=\"%s\">%s</a>" % (link, name))
         write("</td>\n")
@@ -1037,7 +1037,7 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     html.analyze_units(grouper)
 
     for uid, unit in wesnoth.unit_lookup.items():
-        if unit.campaigns[0] == "mainline" and addon != "mainline": continue
+        if "mainline" in unit.campaigns and addon != "mainline": continue
         filename = os.path.join(path, "%s.html" % uid)
 
         # We probably can come up with something better.
