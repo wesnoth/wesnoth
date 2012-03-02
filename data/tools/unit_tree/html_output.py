@@ -236,6 +236,8 @@ class HTMLOutput:
             nodes.sort(by_name)
             for node in nodes:
                 level = node.unit.level
+                if level < 0: level = 0
+                if level > 5: level = 5
                 rows[x][level] = (1, node.breadth, node)
                 for i in range(1, node.breadth):
                     rows[x + i][level] = (0, 0, node)

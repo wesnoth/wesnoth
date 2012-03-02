@@ -10,7 +10,7 @@ Run without arguments to see usage.
 try: import psyco; psyco.full()
 except ImportError: pass
   
-import sys, os, glob, shutil, urllib2, optparse
+import sys, os, glob, shutil, urllib2, optparse, traceback
 import subprocess, yaml
 
 import wesnoth.wmlparser2 as wmlparser2
@@ -308,6 +308,9 @@ def batch_process():
             ef = open(logname, "a")
             ef.write(str(e))
             ef.close()
+            print("    " + name + " failed")
+        except Exception as e:
+            traceback.print_exc()
             print("    " + name + " failed")
         finally:
             if name != "mainline":
