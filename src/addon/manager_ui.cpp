@@ -59,6 +59,45 @@ static lg::log_domain log_addons_client("addons-client");
 
 namespace {
 
+enum VIEW_MODE
+{
+	VIEW_ALL,
+	VIEW_UPGRADABLE,
+	VIEW_NOT_INSTALLED,
+	VIEW_MODE_COUNT
+};
+
+std::string view_mode_display_label(VIEW_MODE m)
+{
+	switch(m) {
+	case VIEW_NOT_INSTALLED:
+		return _("addons_view^Not Installed");
+	case VIEW_UPGRADABLE:
+		return _("addons_view^Upgradable");
+	default:
+		return _("addons_view^All Add-ons");
+	}
+}
+
+VIEW_MODE do_choose_view_mode(CVideo& video, VIEW_MODE initial)
+{
+	gui2::tsimple_item_selector::list_type dlg_items;
+	for(int k = 0; k != VIEW_MODE_COUNT; ++k) {
+		const VIEW_MODE v = VIEW_MODE(k);
+		dlg_items.push_back(view_mode_display_label(v));
+	}
+
+	gui2::tsimple_item_selector dlg(
+		_("View Mode"),
+		_("Choose an add-ons list view mode."),
+		dlg_items);
+
+	dlg.set_selected_index(initial);
+	dlg.show(video);
+
+	return VIEW_MODE(dlg.selected_index());
+}
+
 inline const addon_info& addon_at(const std::string& id, const addons_list& addons)
 {
 	addons_list::const_iterator it = addons.find(id);
@@ -323,39 +362,32 @@ public:
 class switch_view_mode_action : public gui::dialog_button_action
 {
 	CVideo& video_;
-	bool& updates_only_;
+	VIEW_MODE& view_;
 
 public:
-	switch_view_mode_action(CVideo& video, bool& updates_only)
-		: video_(video), updates_only_(updates_only)
+	switch_view_mode_action(CVideo& video, VIEW_MODE& view)
+		: video_(video), view_(view)
 	{}
 
 	virtual gui::dialog_button_action::RESULT button_pressed(int)
 	{
-		gui2::tsimple_item_selector::list_type dlg_items;
-		dlg_items.push_back(_("All add-ons"));
-		dlg_items.push_back(_("Upgradable add-ons"));
-
-		gui2::tsimple_item_selector dlg(
-			_("View Mode"),
-			_("Choose an add-ons list view mode."),
-			dlg_items);
-
-		const bool prev_updates_only = updates_only_;
-
-		dlg.set_selected_index(updates_only_ ? 1 : 0);
-		dlg.show(video_);
-		updates_only_ = dlg.selected_index() == 1;
-
-		return prev_updates_only == updates_only_ ? gui::CONTINUE_DIALOG : gui::CLOSE_DIALOG;
+		const VIEW_MODE previous_view = view_;
+		view_ = do_choose_view_mode(video_, view_);
+		// Close the manager dialog only if the user picked a new view mode.
+		return previous_view == view_ ? gui::CONTINUE_DIALOG : gui::CLOSE_DIALOG;
 	}
 };
 
-void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, bool& updates_only, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, std::string& filter_text)
+void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, VIEW_MODE& view, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, std::string& filter_text)
 {
 	stay_in_ui = false;
 
-	const bool prev_updates_only = updates_only;
+	const VIEW_MODE prev_view = view;
+	assert(prev_view != VIEW_MODE_COUNT);
+
+	const bool updates_only = view == VIEW_UPGRADABLE;
+
+	const bool show_publish_delete = !updates_only;
 
 	// Currently installed add-ons, which we'll need to check when updating.
 	// const std::vector<std::string>& installed_addons_list = installed_addons();
@@ -413,9 +445,11 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		const addon_info& addon = entry.second;
 		tracking[addon.id] = get_addon_tracking_info(addon);
 
-		if(updates_only && tracking[addon.id].state != ADDON_INSTALLED_UPGRADABLE) {
+		const ADDON_STATUS state = tracking[addon.id].state;
+
+		if((view == VIEW_UPGRADABLE && state != ADDON_INSTALLED_UPGRADABLE) ||
+		   (view == VIEW_NOT_INSTALLED && state != ADDON_NONE))
 			continue;
-		}
 
 		option_ids.push_back(addon.id);
 
@@ -477,7 +511,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		options.push_back(row);
 	}
 
-	if(!updates_only) {
+	if(show_publish_delete) {
 		// Enter publish and remote deletion options
 		foreach(const std::string& pub_id, can_publish_ids) {
 			static const std::string publish_icon = "icons/icon-addon-publish.png";
@@ -502,7 +536,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			} else {
 				gui2::show_transient_message(disp.video(), _("Add-ons Manager"), _("All add-ons are up to date."));
 			}
-			updates_only = false;
+			view = VIEW_ALL;
 		}
 
 		return;
@@ -553,7 +587,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			dlg.add_button(update_all_button, gui::dialog::BUTTON_EXTRA);
 		}
 
-		switch_view_mode_action view_mode_helper(disp.video(), updates_only);
+		switch_view_mode_action view_mode_helper(disp.video(), view);
 		gui::dialog_button* view_mode_button = new gui::dialog_button(disp.video(),
 			_("View Mode"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &view_mode_helper);
 		dlg.add_button(view_mode_button, gui::dialog::BUTTON_EXTRA_LEFT);
@@ -578,7 +612,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	}
 
 	const bool update_everything = updates_only && result == update_all_value;
-	const bool change_view = prev_updates_only != updates_only;
+	const bool change_view = prev_view != view;
+
 	if(result < 0 && !(update_everything || change_view)) {
 		// User canceled the dialog.
 		return;
@@ -591,7 +626,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		return;
 	}
 
-	if(!updates_only) {
+	if(show_publish_delete) {
 		if(result >= int(option_ids.size() + can_publish_ids.size())) {
 			// Handle remote deletion.
 			const std::string& id = can_delete_ids[result - int(option_ids.size() + can_publish_ids.size())];
@@ -672,7 +707,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 bool addons_manager_ui(display& disp, const std::string& remote_address)
 {
-	bool show_updates_only = false;
+	VIEW_MODE view = VIEW_ALL;
 	bool stay_in_manager_ui = false;
 	bool need_wml_cache_refresh = false;
 	std::string last_addon_id;
@@ -695,13 +730,12 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 			}
 
 			try {
-				// Don't reconnect when only show_updates_only has
-				// changed to switch between view modes.
-				bool prev_updates_only;
+				// Don't reconnect when switching between view modes.
+				VIEW_MODE previous_view;
 				do {
-					prev_updates_only = show_updates_only;
-					show_addons_manager_dialog(disp, client, addons, show_updates_only, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh, filter_text);
-				} while(prev_updates_only != show_updates_only);
+					previous_view = view;
+					show_addons_manager_dialog(disp, client, addons, view, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh, filter_text);
+				} while(previous_view != view);
 			} catch(const addons_client::user_exit&) {
 				// Don't do anything; just go back to the addons manager UI
 				// if the user cancels a download or other network operation
