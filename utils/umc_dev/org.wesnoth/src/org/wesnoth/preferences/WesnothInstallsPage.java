@@ -102,8 +102,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
         }
 
         List< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
-        params.add( new ReplaceableParameter(
-            "$$home_path", System.getProperty( "user.home" ) ) ); //$NON-NLS-1$ //$NON-NLS-2$
+        params.add( new ReplaceableParameter( "$$home_path", System.getProperty( "user.home" ) ) ); //$NON-NLS-1$ //$NON-NLS-2$
 
         wesnothExecutablePaths_ = StringUtils.getLines( TemplateProvider
             .getInstance( )
@@ -327,6 +326,7 @@ public class WesnothInstallsPage extends AbstractPreferencePage
             false, 1, 1 ) );
 
         cmbVersion_.add( "1.9.x" ); //$NON-NLS-1$
+        cmbVersion_.add( "1.10.x" ); //$NON-NLS-1$
         cmbVersion_.add( "trunk" ); //$NON-NLS-1$
         cmbVersion_.select( 0 );
 
