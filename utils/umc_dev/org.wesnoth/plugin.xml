@@ -703,11 +703,11 @@
                   name="separator3"
                   visible="true">
             </separator>
-            <command
+            <!--<command
                   commandId="org.wesnoth.commands.test"
                   label="Test (FOR DEBUG ONLY!!)"
                   style="push">
-            </command>
+            </command>-->
          </menu>
       </menuContribution>
    </extension>
@@ -800,7 +800,7 @@
             value="true">
       </persistent>
    </extension>
-   <!--
+   
    <extension
          point="org.eclipse.ui.activities">
       <activity
@@ -846,6 +846,7 @@
     <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.team.internal.ccvs*"> </activityPatternBinding>
     <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.search.*"> </activityPatternBinding>
     <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ant.*"> </activityPatternBinding>
+    <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.pde.*"> </activityPatternBinding>
    </extension>
    <extension
          point="org.eclipse.ui.startup">
@@ -853,7 +854,7 @@
             class="org.wesnoth.product.ActionWiper">
       </startup>
    </extension>
-   -->
+   
    <extension
          point="org.eclipse.core.contenttype.contentTypes">
       <content-type
