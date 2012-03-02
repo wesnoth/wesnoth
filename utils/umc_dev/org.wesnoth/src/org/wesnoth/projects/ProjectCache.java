@@ -208,8 +208,7 @@ public class ProjectCache implements Serializable
      */
     public boolean saveCache( )
     {
-        ResourceUtils
-            .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
+        ResourceUtils.createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
 
         FileOutputStream outputStream = null;
         ObjectOutputStream serializer = null;
@@ -257,7 +256,7 @@ public class ProjectCache implements Serializable
             return;
         }
 
-        defines_ = Define.readDefines( definesFile_.getAbsolutePath( ) );
+        defines_.putAll( Define.readDefines( definesFile_.getAbsolutePath( ) ) );
         definesTimestamp_ = definesFile_.lastModified( );
     }
 

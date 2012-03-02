@@ -385,6 +385,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
                 SimpleWMLParser parser = new SimpleWMLParser( file, config,
                     projectCache_ );
                 parser.parse( );
+                projectCache_.getDefines( ).putAll( parser.getDefines( ) );
 
                 monitor.worked( 10 );
 
