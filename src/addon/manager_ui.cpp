@@ -589,7 +589,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 		switch_view_mode_action view_mode_helper(disp.video(), view);
 		gui::dialog_button* view_mode_button = new gui::dialog_button(disp.video(),
-			_("View Mode"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &view_mode_helper);
+			view_mode_display_label(view), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &view_mode_helper);
 		dlg.add_button(view_mode_button, gui::dialog::BUTTON_EXTRA_LEFT);
 
 		// Focus the menu on the previous selection.
