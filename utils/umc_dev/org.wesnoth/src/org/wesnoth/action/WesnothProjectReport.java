@@ -15,8 +15,11 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.action.IAction;
 
 import org.wesnoth.Messages;
+import org.wesnoth.projects.ProjectCache;
+import org.wesnoth.projects.ProjectUtils;
 import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.WorkspaceUtils;
+import org.wesnoth.wml.WMLConfig;
 
 /**
  * Shows a simple project report.
@@ -43,27 +46,44 @@ public class WesnothProjectReport extends ObjectActionDelegate
      */
     private String getReportForContainer( IContainer container )
     {
-        int[] statistics = new int[3];
+        IProject project = container.getProject( );
+        ProjectCache cache = ProjectUtils.getCacheForProject( project );
 
-        File scenariosFolder = new File( container.getLocation( ).toOSString( )
-            + "/scenarios" ); //$NON-NLS-1$
-        if( scenariosFolder.exists( ) ) {
-            statistics[0] = scenariosFolder.listFiles( ).length;
+        String campaignId = "none"; //$NON-NLS-1$
+        for( WMLConfig config: cache.getWMLConfigs( ).values( ) ) {
+            if( ! config.IsCampaign ) {
+                continue;
+            }
+
+            campaignId = ( config.CampaignId == null ? "invalid": config.CampaignId ); //$NON-NLS-1$
         }
 
-        File mapsFolder = new File( container.getLocation( ).toOSString( )
-            + "/maps" ); //$NON-NLS-1$
+        StringBuffer scenarios = new StringBuffer( );
+        for( WMLConfig config: cache.getWMLConfigs( ).values( ) ) {
+            if( ! config.IsScenario ) {
+                continue;
+            }
+
+            if( scenarios.length( ) != 0 ) {
+                scenarios.append( ", " ); //$NON-NLS-1$
+            }
+
+            scenarios.append( config.ScenarioId == null ? "invalid": config.ScenarioId ); //$NON-NLS-1$
+        }
+
+        int mapsCount = 0;
+        File mapsFolder = new File( container.getLocation( ).toOSString( ) + "/maps" ); //$NON-NLS-1$
         if( mapsFolder.exists( ) ) {
-            statistics[1] = mapsFolder.listFiles( ).length;
+            mapsCount = mapsFolder.listFiles( ).length;
         }
 
-        File unitsFolder = new File( container.getLocation( ).toOSString( )
-            + "/units" ); //$NON-NLS-1$
+        int unitsCount = 0;
+        File unitsFolder = new File( container.getLocation( ).toOSString( ) + "/units" ); //$NON-NLS-1$
         if( unitsFolder.exists( ) ) {
-            statistics[2] = unitsFolder.listFiles( ).length;
+            unitsCount = unitsFolder.listFiles( ).length;
         }
 
-        return String.format( Messages.WesnothProjectReport_4, statistics[0],
-            statistics[1], statistics[2] );
+        return String.format( Messages.WesnothProjectReport_4, campaignId,
+            scenarios.toString( ), mapsCount, unitsCount );
     }
 }
