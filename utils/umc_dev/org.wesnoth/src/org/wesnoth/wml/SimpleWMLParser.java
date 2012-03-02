@@ -162,11 +162,11 @@ public class SimpleWMLParser
                     }
                     else if( keyName.equals( "name" ) ) {
                         if( currentTagName.equals( "set_variable" )
-                                || currentTagName.equals( "set_variables" ) ) {
+                            || currentTagName.equals( "set_variables" ) ) {
                             handleSetVariable( object );
                         }
                         else if( currentTagName.equals( "clear_variable" )
-                                || currentTagName.equals( "clear_variables" ) ) {
+                            || currentTagName.equals( "clear_variables" ) ) {
                             handleUnsetVariable( object );
                         }
                         else if( currentTagName.equals( "event" ) ) {
@@ -228,19 +228,19 @@ public class SimpleWMLParser
         for( WMLKey key: currentTag.getWMLKeys( ) ) {
             String keyName = key.getName( );
             if( keyName.equals( "name" ) ) {
-                defineName = key.getValue( );
+                defineName = getUnquotedString( key.getValue( ) );
             }
             else if( keyName.equals( "value" ) ) {
-                value = key.getValue( );
+                value = getUnquotedString( key.getValue( ) );
             }
             else if( keyName.equals( "textdomain" ) ) {
-                textdomain = key.getValue( );
+                textdomain = getUnquotedString( key.getValue( ) );
             }
             else if( keyName.equals( "linenum" ) ) {
-                linenum = Integer.valueOf( key.getValue( ) );
+                linenum = Integer.valueOf( getUnquotedString( key.getValue( ) ) );
             }
             else if( keyName.equals( "location" ) ) {
-                location = key.getValue( );
+                location = getUnquotedString( key.getValue( ) );
             }
         }
 
@@ -248,13 +248,28 @@ public class SimpleWMLParser
         for( WMLTag arg: currentTag.getWMLTags( ) ) {
             for( WMLKey key: arg.getWMLKeys( ) ) {
                 if( key.getName( ).equals( "name" ) ) {
-                    args.add( key.getValue( ) );
+                    args.add( getUnquotedString( key.getValue( ) ) );
                 }
             }
         }
 
         defines_.put( defineName, new Define( defineName, value, textdomain,
             linenum, location, args ) );
+    }
+
+    private static String getUnquotedString( String str )
+    {
+        int startIndex = 0;
+        int endIndex = str.length( );
+
+        if( str.charAt( 0 ) == '"' ) {
+            startIndex = 1;
+        }
+        if( str.charAt( endIndex - 1 ) == '"' ) {
+            endIndex--;
+        }
+
+        return str.substring( startIndex, endIndex );
     }
 
     private String getVariableNameByContext( EObject context )
@@ -288,7 +303,7 @@ public class SimpleWMLParser
         if( variableName == null ) {
             Logger.getInstance( ).logWarn(
                 "setVariable: couldn't get variable name from context:"
-                        + context );
+                    + context );
         }
 
         WMLVariable variable = projectCache_.getVariables( ).get( variableName );
@@ -318,7 +333,7 @@ public class SimpleWMLParser
         if( variableName == null ) {
             Logger.getInstance( ).logWarn(
                 "unsetVariable: couldn't get variable name from context:"
-                        + context );
+                    + context );
         }
 
         WMLVariable variable = projectCache_.getVariables( ).get( variableName );
