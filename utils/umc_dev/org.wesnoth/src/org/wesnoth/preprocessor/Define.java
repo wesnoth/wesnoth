@@ -141,13 +141,19 @@ public class Define
     public String toString( )
     {
         StringBuilder res = new StringBuilder( );
-        res.append( "[preproc_define]" ); //$NON-NLS-1$
-        res.append( "\tname=\"" + name_ + "\"" );
-        res.append( "\tvalue=\"" + value_ + "\"" );
-        res.append( "\ttextdomain=\"" + textdomain_ + "\"" );
-        res.append( "\tlinenum=\"" + lineNum_ + "\"" );
-        res.append( "\tlocation=\"" + location_ + "\"" );
-        res.append( "[/preproc_define]" ); //$NON-NLS-1$
+        res.append( "[preproc_define]\n" ); //$NON-NLS-1$
+        res.append( "\tname=\"" + name_ + "\"\n" );
+        res.append( "\tvalue=\"" + value_ + "\"\n" );
+        res.append( "\ttextdomain=\"" + textdomain_ + "\"\n" );
+        res.append( "\tlinenum=\"" + lineNum_ + "\"\n" );
+        res.append( "\tlocation=\"" + location_ + "\"\n" );
+        for( String argument: args_ ) {
+            res.append( "\t[argument]\n" );
+            res.append( "\t\tname=\"" + argument + "\"\n" );
+            res.append( "\t[/argument]\n" );
+        }
+
+        res.append( "[/preproc_define]\n" ); //$NON-NLS-1$
         return res.toString( );
     }
 
