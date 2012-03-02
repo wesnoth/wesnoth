@@ -113,7 +113,10 @@ public class SimpleWMLParser
      */
     public void parse( )
     {
-        TreeIterator< EObject > itor = root_.eAllContents( );
+        if( root_ == null ) {
+            return;
+        }
+
         WMLTag currentTag = null;
         String currentTagName = "";
         String textdomain = "";
@@ -123,6 +126,8 @@ public class SimpleWMLParser
         config_.getEvents( ).clear( );
         defines_.clear( );
 
+
+        TreeIterator< EObject > itor = root_.eAllContents( );
         // nothing to parse!
         if( ! itor.hasNext( ) ) {
             return;
