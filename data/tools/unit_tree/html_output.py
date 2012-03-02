@@ -752,7 +752,7 @@ class HTMLOutput:
             if unit.campaigns[0] == "mainline" and punit.campaigns[0] != "mainline":
                 continue
             
-            if "mainline" in unit.campaigns[0]: addon = "mainline"
+            if "mainline" in unit.campaigns: addon = "mainline"
             else: addon = self.addon
             link = "../../%s/%s/%s.html" % (addon, self.isocode, pid)
             name = self.wesnoth.get_unit_value(punit, "name",
