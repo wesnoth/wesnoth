@@ -344,8 +344,7 @@ public class ResourceUtils
             File antFile = new File( path );
             createNewFile( antFile.getAbsolutePath( ) );
             FileWriter writer = new FileWriter( antFile );
-            writer.write( TemplateProvider.getInstance( ).getProcessedTemplate(
-                "build_xml", params ) ); //$NON-NLS-1$
+            writer.write( TemplateProvider.getInstance( ).getProcessedTemplate( "build_xml", params ) ); //$NON-NLS-1$
             writer.close( );
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
@@ -596,8 +595,7 @@ public class ResourceUtils
             int lineNumber = Integer.parseInt( line.substring( pivotIndex
                 + pivot.length( ),
                 line.indexOf( ":", pivotIndex + pivot.length( ) + 1 ) ) ); //$NON-NLS-1$
-            String message = line.substring( line.indexOf(
-                " ", pivotIndex + pivot.length( ) + 1 ) ); //$NON-NLS-1$
+            String message = line.substring( line.indexOf( " ", pivotIndex + pivot.length( ) + 1 ) ); //$NON-NLS-1$
 
             // Get the file
             IFile file = ResourcesPlugin.getWorkspace( ).getRoot( )

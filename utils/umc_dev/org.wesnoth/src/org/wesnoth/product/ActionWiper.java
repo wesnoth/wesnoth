@@ -25,8 +25,7 @@ import org.wesnoth.Messages;
  */
 public class ActionWiper implements IStartup, IPerspectiveListener
 {
-    private static final String[] ACTIONS_2_WIPE = new String[] {
-        "org.eclipse.search.searchActionSet", //$NON-NLS-1$
+    private static final String[] ACTIONS_2_WIPE = new String[] { "org.eclipse.search.searchActionSet", //$NON-NLS-1$
         "org.eclipse.debug.ui.breakpointActionSet", //$NON-NLS-1$
         "org.eclipse.debug.ui.debugActionSet", //$NON-NLS-1$
         "org.eclipse.debug.ui.launchActionSet", //$NON-NLS-1$

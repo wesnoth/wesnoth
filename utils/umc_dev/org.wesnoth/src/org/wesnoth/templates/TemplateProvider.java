@@ -261,8 +261,7 @@ public class TemplateProvider
                         .getInstance( )
                         .logError(
                             String
-                                .format(
-                                    "error parsing 'structure template' (%s) on line %s", //$NON-NLS-1$
+                                .format( "error parsing 'structure template' (%s) on line %s", //$NON-NLS-1$
                                     structureTemplate, line ) );
                     continue;
                 }

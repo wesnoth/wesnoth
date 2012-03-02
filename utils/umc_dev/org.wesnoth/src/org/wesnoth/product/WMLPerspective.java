@@ -41,20 +41,17 @@ public class WMLPerspective implements IPerspectiveFactory
         layout.setEditorAreaVisible( true );
 
         // Place navigator and outline to left of editor area.
-        IFolderLayout left = layout.createFolder(
-            "left", IPageLayout.LEFT, ( float ) 0.26, editorArea ); //$NON-NLS-1$
+        IFolderLayout left = layout.createFolder( "left", IPageLayout.LEFT, ( float ) 0.26, editorArea ); //$NON-NLS-1$
         left.addView( WesnothProjectsExplorer.ID_PROJECTS_EXPLORER );
 
-        IFolderLayout bottom = layout.createFolder(
-            "bottom", IPageLayout.BOTTOM, 0.76f, editorArea ); //$NON-NLS-1$
+        IFolderLayout bottom = layout.createFolder( "bottom", IPageLayout.BOTTOM, 0.76f, editorArea ); //$NON-NLS-1$
         bottom.addView( IPageLayout.ID_PROBLEM_VIEW );
         bottom.addView( IPageLayout.ID_PROGRESS_VIEW );
         bottom.addView( IConsoleConstants.ID_CONSOLE_VIEW );
         bottom.addView( AddonsView.ID_ADDONS_VIEW );
         bottom.addView( "org.eclipse.pde.runtime.LogView" ); //$NON-NLS-1$
 
-        IFolderLayout right = layout.createFolder(
-            "right", IPageLayout.RIGHT, 0.68f, editorArea ); //$NON-NLS-1$
+        IFolderLayout right = layout.createFolder( "right", IPageLayout.RIGHT, 0.68f, editorArea ); //$NON-NLS-1$
         right.addView( IPageLayout.ID_OUTLINE );
 
         layout.addPerspectiveShortcut( ID_WMLPERSPECTIVE );

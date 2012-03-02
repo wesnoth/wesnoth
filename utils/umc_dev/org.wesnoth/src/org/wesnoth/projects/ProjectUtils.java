@@ -296,14 +296,10 @@ public class ProjectUtils
                         .normalizePath( paths.getAddonsDir( ) ) ) ) {
 
                     ArrayList< ReplaceableParameter > param = new ArrayList< ReplaceableParameter >( );
-                    param.add( new ReplaceableParameter(
-                        "$$project_name", handle.getName( ) ) ); //$NON-NLS-1$
-                    param.add( new ReplaceableParameter(
-                        "$$project_dir_name", handle.getName( ) ) ); //$NON-NLS-1$
-                    ResourceUtils.createFile( handle,
-                        "build.xml", //$NON-NLS-1$
-                        TemplateProvider.getInstance( ).getProcessedTemplate(
-                            "build_xml", param ), true ); //$NON-NLS-1$
+                    param.add( new ReplaceableParameter( "$$project_name", handle.getName( ) ) ); //$NON-NLS-1$
+                    param.add( new ReplaceableParameter( "$$project_dir_name", handle.getName( ) ) ); //$NON-NLS-1$
+                    ResourceUtils.createFile( handle, "build.xml", //$NON-NLS-1$
+                        TemplateProvider.getInstance( ).getProcessedTemplate( "build_xml", param ), true ); //$NON-NLS-1$
                 }
             }
             monitor.worked( 10 );

@@ -9,7 +9,7 @@ import org.wesnoth.wml.WMLRoot;
 
 /**
  * customization of the default outline structure
- *
+ * 
  */
 public class WMLOutlineTreeProvider extends DefaultOutlineTreeProvider
 {

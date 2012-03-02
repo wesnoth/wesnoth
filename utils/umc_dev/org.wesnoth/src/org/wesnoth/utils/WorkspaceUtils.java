@@ -351,8 +351,7 @@ public class WorkspaceUtils
 
         if( ! checkPathsAreSet( Preferences.getDefaultInstallName( ), false ) ) {
             PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
-                WesnothPlugin.getShell( ),
-                "org.wesnoth.preferences.InstallsPage", null, null ); //$NON-NLS-1$
+                WesnothPlugin.getShell( ), "org.wesnoth.preferences.InstallsPage", null, null ); //$NON-NLS-1$
             pref.open( );
             if( ! checkPathsAreSet( Preferences.getDefaultInstallName( ), true ) ) {
                 GUIUtils.showErrorMessageBox( Messages.WorkspaceUtils_7 );
@@ -411,8 +410,7 @@ public class WorkspaceUtils
                             .showInfoMessageBox( Messages.WorkspaceUtils_25 );
                     }
                     else {
-                        Logger.getInstance( ).log(
-                            "setupWorkspace was successful", //$NON-NLS-1$
+                        Logger.getInstance( ).log( "setupWorkspace was successful", //$NON-NLS-1$
                             Messages.WorkspaceUtils_29 );
                     }
                 } catch( Exception e ) {

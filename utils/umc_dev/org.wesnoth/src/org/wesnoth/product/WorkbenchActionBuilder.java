@@ -390,8 +390,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
             coolBar.setContextMenuManager( coolbarPopupMenuManager );
             IMenuService menuService = ( IMenuService ) window
                 .getService( IMenuService.class );
-            menuService.populateContributionManager( coolbarPopupMenuManager,
-                "popup:windowCoolbarContextMenu" ); //$NON-NLS-1$
+            menuService.populateContributionManager( coolbarPopupMenuManager, "popup:windowCoolbarContextMenu" ); //$NON-NLS-1$
         }
         coolBar.add( new GroupMarker( IIDEActionConstants.GROUP_FILE ) );
         { // File Group
@@ -709,8 +708,7 @@ public class WorkbenchActionBuilder extends ActionBarAdvisor
     {
         {
             String openText = IDEWorkbenchMessages.Workbench_openPerspective;
-            MenuManager changePerspMenuMgr = new MenuManager( openText,
-                "openPerspective" ); //$NON-NLS-1$
+            MenuManager changePerspMenuMgr = new MenuManager( openText, "openPerspective" ); //$NON-NLS-1$
             IContributionItem changePerspMenuItem = ContributionItemFactory.PERSPECTIVES_SHORTLIST
                 .create( getWindow( ) );
             changePerspMenuMgr.add( changePerspMenuItem );

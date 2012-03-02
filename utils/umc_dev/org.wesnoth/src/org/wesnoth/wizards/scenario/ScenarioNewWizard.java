@@ -193,12 +193,9 @@ public class ScenarioNewWizard extends WizardTemplate
         ArrayList< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
 
         // common variables (sp + mp)
-        params.add( new ReplaceableParameter(
-            "$$scenario_id", page0_.getScenarioId( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$next_scenario_id", page0_.getNextScenarioId( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$scenario_name", page0_.getScenarioName( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$scenario_id", page0_.getScenarioId( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$next_scenario_id", page0_.getNextScenarioId( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$scenario_name", page0_.getScenarioName( ) ) ); //$NON-NLS-1$
 
         String mapData = ""; //$NON-NLS-1$
         if( ! page0_.getMapData( ).isEmpty( ) ) {
@@ -218,8 +215,7 @@ public class ScenarioNewWizard extends WizardTemplate
             }
         }
         params.add( new ReplaceableParameter( "$$map_data", mapData ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$turns_number", String.valueOf( page0_.getTurnsNumber( ) ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$turns_number", String.valueOf( page0_.getTurnsNumber( ) ) ) ); //$NON-NLS-1$
 
         String startingGold = ""; //$NON-NLS-1$
         if( page1_ != null ) {
@@ -232,8 +228,7 @@ public class ScenarioNewWizard extends WizardTemplate
             .add( new ReplaceableParameter( "$$starting_gold", startingGold ) ); //$NON-NLS-1$
 
         // multiplayer only variables
-        params.add( new ReplaceableParameter(
-            "$$allow_new_game", page2_.getAllowNewGame( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$allow_new_game", page2_.getAllowNewGame( ) ) ); //$NON-NLS-1$
 
         String template = TemplateProvider
             .getInstance( )

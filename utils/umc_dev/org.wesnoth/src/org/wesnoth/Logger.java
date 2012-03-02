@@ -224,8 +224,7 @@ public class Logger
             try {
                 writer
                     .write( String
-                        .format(
-                            "%s | %d | %s\n", //$NON-NLS-1$
+                        .format( "%s | %d | %s\n", //$NON-NLS-1$
                             new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" ).format( new Date( ) ), //$NON-NLS-1$
                             severity, message ) );
                 writer.flush( );
