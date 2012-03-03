@@ -64,6 +64,11 @@ namespace {
 		const std::string interior = parentd + "/" + addon_name + "/_server.pbl";
 		return file_exists(exterior) ? exterior : interior;
 	}
+
+	inline std::string get_info_file_path(const std::string& addon_name)
+	{
+		return get_addon_campaigns_dir() + "/" + addon_name + "/_info.cfg";
+	}
 }
 
 bool have_addon_in_vcs_tree(const std::string& addon_name)
@@ -351,44 +356,43 @@ namespace {
 
 void refresh_addon_version_info_cache()
 {
-	if(version_info_cache.empty() != true)
-		version_info_cache.clear();
+	version_info_cache.clear();
 
-	LOG_CFG << "probing add-ons and refreshing version information cache...\n";
+	LOG_CFG << "refreshing add-on versions cache\n";
 
 	const std::vector<std::string>& addons = installed_addons();
 	if(addons.empty()) {
-		LOG_CFG << "no add-ons found\n";
 		return;
 	}
-	static const std::string parentd = get_addon_campaigns_dir();
-	std::vector<std::string> addon_info_files;
-	foreach(std::string const& dir, addons)
-		addon_info_files.push_back(parentd+"/"+dir+"/_info.cfg");
 
-	size_t i = 0;
+	std::vector<std::string> addon_info_files(addons.size());
 
-	foreach(std::string const& info_file, addon_info_files) {
+	std::transform(addons.begin(), addons.end(),
+	               addon_info_files.begin(), get_info_file_path);
+
+	for(size_t i = 0; i < addon_info_files.size(); ++i) {
 		assert(i < addons.size());
 
-		std::string const& addon = addons[i];
-		++i;
+		const std::string& addon = addons[i];
+		const std::string& info_file = addon_info_files[i];
 
 		if(file_exists(info_file)) {
 			scoped_istream stream = istream_file(info_file);
+
 			config cfg;
 			read(cfg, *stream);
 
-			config const &info_cfg = cfg.child("info");
-			if (!info_cfg) {
+			const config& info_cfg = cfg.child("info");
+			if(!info_cfg) {
 				continue;
 			}
-			std::string const version = info_cfg["version"];
-			LOG_CFG << "caching add-on version info: " << addon << " [" << version << "]\n";
-			version_info_cache.insert(std::make_pair(addon, version_info(version)));
-		}
-		// Don't print the warning if the user is clearly the author
-		else if (!have_addon_pbl_info(addon) && !have_addon_in_vcs_tree(addon)) {
+
+			const std::string& version = info_cfg["version"].str();
+			LOG_CFG << "cached add-on version: " << addon << " [" << version << "]\n";
+
+			version_info_cache[addon] = version;
+		} else if (!have_addon_pbl_info(addon) && !have_addon_in_vcs_tree(addon)) {
+			// Don't print the warning if the user is clearly the author
 			WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info\n";
 		}
 	}
