@@ -143,9 +143,9 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	std::string win_locale(locale, 0, 2);
 	#include "language_win32.ii"
 	if(category == LC_MESSAGES) {
-		std::string env = "LANG=" + locale;
-		_putenv(env.c_str());
 		SetEnvironmentVariable("LANG", win_locale.c_str());
+		std::string env = "LANGUAGE=" + locale;
+		_putenv(env.c_str());
 		return;
 	}
 	locale = win_locale;
