@@ -44,3 +44,10 @@ when finished building.
 10. To be able to execute the program, copy all *.dll files from your
 installation folder of the most recent official windows wesnoth development
 release into wesnoth_root/.
+
+note:
+Executables created by this built system cannot easily be shared with
+other computers due to the currently set -march=native option.
+If you happen to meet such a problem, try removing it. (right-click
+projects wesnoth and wesnothd>project settings>project's build options
+>other options)
