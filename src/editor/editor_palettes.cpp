@@ -457,7 +457,7 @@ void terrain_palette::draw(bool force) {
 					<< "</span>";
 		}
 		tooltips::add_tooltip(dstrect, tooltip_text.str());
-		if (((int)counter) % terrain_width_ == terrain_width_ - 1)
+		if (static_cast<int>(counter) % terrain_width_ == terrain_width_ - 1)
 			y += terrain_size_ + size_specs_.terrain_padding;
 	}
 	update_rect(loc);
