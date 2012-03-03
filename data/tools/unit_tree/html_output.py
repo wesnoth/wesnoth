@@ -134,10 +134,12 @@ class GroupByFaction:
 
     def group_name(self, group):
         era = self.wesnoth.era_lookup[group[0]]
-        faction = era.faction_lookup[group[1]]
-        name = T(faction, "name")
-        name = name[name.rfind("=") + 1:]
-        #name = T(era, "name") + " / " + name
+        if group[1]:
+            faction = era.faction_lookup[group[1]]
+            name = T(faction, "name")
+            name = name[name.rfind("=") + 1:]
+        else:
+            name = "factionless"
         return name
 
 global_htmlout = None
@@ -174,6 +176,7 @@ class HTMLOutput:
         forest = self.forest = helpers.UnitForest()
         units_added = {}
         for uid, u in self.wesnoth.unit_lookup.items():
+
             if grouper.unitfilter(u):
                 forest.add_node(helpers.UnitNode(u))
                 units_added[uid] = u
@@ -548,7 +551,8 @@ class HTMLOutput:
                         try:
                             eid, fid = un.data
                             era = self.wesnoth.era_lookup[eid]
-                            ms = era.faction_lookup[fid]
+                            if fid:
+                                ms = era.faction_lookup[fid]
                         except TypeError:
                             pass
                         racename = un.name

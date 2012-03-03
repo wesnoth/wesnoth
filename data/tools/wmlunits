@@ -201,7 +201,7 @@ def list_contents():
 def process_campaign_or_era(addon, cid, define, batchlist):
     n = 0
     
-    print(addon + ": " + cid)
+    print(addon + ": " + cid + " " + define)
 
     wesnoth = helpers.WesnothList(
         options.wesnoth,
@@ -209,6 +209,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
         options.data_dir,
         options.transdir)
     wesnoth.batchlist = batchlist
+    wesnoth.cid = cid
     
     wesnoth.parser.parse_text("{core/units.cfg}", "NORMAL")
     wesnoth.add_units("mainline")

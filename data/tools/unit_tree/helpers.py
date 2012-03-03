@@ -352,6 +352,15 @@ class WesnothList:
                     if not eid in unit.eras:
                         unit.eras.append(eid)
                     unit.factions.append((eid, fid))
+        
+        # as a special case, add units from this addon but with no faction
+        for unit in self.unit_lookup.values():
+            if unit.campaigns[0] == self.cid:
+                if not unit.factions:
+                    if not eid in unit.eras:
+                        unit.eras.append(eid)
+                    unit.factions.append((eid, None))
+        
 
     def get_base_unit(self, unit):
         b = unit.get_all(tag = "base_unit")
