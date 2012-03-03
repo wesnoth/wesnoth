@@ -18,6 +18,7 @@
 #define ADDON_MANAGER_HPP_INCLUDED
 
 class config;
+class version_info;
 
 #include "addon/validation.hpp"
 
@@ -83,6 +84,6 @@ void manage_addons(class game_display& disp);
 void refresh_addon_version_info_cache();
 
 /** Returns a particular installed add-on's version information. */
-const class version_info& get_addon_version_info(const std::string& addon);
+version_info get_addon_version_info(const std::string& addon);
 
 #endif /* !ADDON_MANAGEMENT_HPP_INCLUDED */

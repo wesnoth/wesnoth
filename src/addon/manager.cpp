@@ -1562,7 +1562,7 @@ void refresh_addon_version_info_cache()
 	}
 }
 
-const version_info& get_addon_version_info(const std::string& addon)
+version_info get_addon_version_info(const std::string& addon)
 {
 	static const version_info nil(0,0,0,false);
 	std::map< std::string, version_info >::iterator entry = version_info_cache.find(addon);
