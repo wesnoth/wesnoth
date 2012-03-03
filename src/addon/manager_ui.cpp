@@ -703,9 +703,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		gui2::show_message(disp.video(), msg_title, msg_text + std::string("\n\n") + utils::bullet_list(failed_titles), gui2::tmessage::ok_button);
 	}
 }
-} // end anonymous namespace
 
-static bool addons_manager_ui(display& disp, const std::string& remote_address)
+bool addons_manager_ui(display& disp, const std::string& remote_address)
 {
 	VIEW_MODE view = VIEW_ALL;
 	bool stay_in_manager_ui = false;
@@ -766,7 +765,7 @@ static bool addons_manager_ui(display& disp, const std::string& remote_address)
 	return need_wml_cache_refresh;
 }
 
-static bool uninstall_local_addons(display& disp)
+bool uninstall_local_addons(display& disp)
 {
 	const std::string list_lead = "\n\n";
 
@@ -856,6 +855,8 @@ static bool uninstall_local_addons(display& disp)
 
 	return false;
 }
+
+} // end anonymous namespace
 
 bool manage_addons(display& disp)
 {
