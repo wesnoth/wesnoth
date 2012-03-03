@@ -705,7 +705,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 }
 } // end anonymous namespace
 
-bool addons_manager_ui(display& disp, const std::string& remote_address)
+static bool addons_manager_ui(display& disp, const std::string& remote_address)
 {
 	VIEW_MODE view = VIEW_ALL;
 	bool stay_in_manager_ui = false;
@@ -766,7 +766,7 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 	return need_wml_cache_refresh;
 }
 
-bool uninstall_local_addons(display& disp)
+static bool uninstall_local_addons(display& disp)
 {
 	const std::string list_lead = "\n\n";
 
