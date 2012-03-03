@@ -99,7 +99,7 @@ class GroupByRace:
 
     def unitfilter(self, unit):
         if not self.campaign: return True
-        return self.campaign in unit.campaigns
+        return unit.campaigns and self.campaign == unit.campaigns[0]
 
     def groups(self, unit):
         return [unit.race]
