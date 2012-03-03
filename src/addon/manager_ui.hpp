@@ -22,18 +22,6 @@
 class display;
 
 /**
- * Displays the add-ons download dialog.
- *
- * @param disp              Display object on which to render the dialog.
- * @param remote_address    Address of the add-ons server host.
- * @param show_updates_only Whether to display only add-ons updated in the server.
- *
- * @return @a true when one or more add-ons have been successfully installed,
- *         requiring a local WML cache refresh. @a false otherwise.
- */
-bool addons_manager_ui(display& disp, const std::string& remote_address, bool show_updates_only);
-
-/**
  * Shows the add-ons server connection dialog, for access to the various management front-ends.
  *
  * @param disp Display object on which to render UI elements.
