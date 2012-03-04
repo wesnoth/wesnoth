@@ -47,6 +47,7 @@ def main(folder):
         total_n += n
 
         name = f[len(folder) + 1:]
+        error_name = os.path.join(name, "error.log")
         w('<tr><td>')
         w(name)
         w('</td><td>')
@@ -54,7 +55,7 @@ def main(folder):
         w('</td><td>')
         if os.path.exists(error_log):
             total_error_logs += 1
-            w('<a href="%s">error.log</a>' % error_log)
+            w('<a href="%s">error.log</a>' % error_name)
         w("</td></tr>")
         
     w("<tr><td>")
