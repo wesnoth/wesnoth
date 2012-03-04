@@ -148,11 +148,9 @@ if __name__ == "__main__":
         # Download the addon.
         extract(server,  addon, temp_dir)
 
-        # If the directory in svn doesn't exist we need to create and commit it.
-        message = "wescamp.py automatic update"
-
         github = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass)
 
+        # If the checkout doesn't exist we need to create it.
         if(os.path.isdir(wescamp_dir + "/" + addon) == False):
 
             logging.info("Checking out '%s'.",
