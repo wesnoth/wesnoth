@@ -130,13 +130,13 @@ if __name__ == "__main__":
                         add-ons.wesnoth.org:15005.
     addon               The name of the addon.
     temp_dir            The directory where the unpacked campaign can be stored.
-    svn_dir             The directory containing a checkout of wescamp.
+    wescamp_dir         The directory containing a checkout of wescamp.
     """
-    def upload(server, addon, temp_dir, svn_dir):
+    def upload(server, addon, temp_dir, wescamp_dir):
 
         logging.debug("upload addon to wescamp server = '%s' addon = '%s' "
-            + "temp_dir = '%s' svn_dir = '%s'",
-            server, addon, temp_dir, svn_dir)
+            + "temp_dir = '%s' wescamp_dir = '%s'",
+            server, addon, temp_dir, wescamp_dir)
 
         # Is the addon in the list with campaigns to be translated.
         campaigns = list_addons(server, True)
@@ -151,12 +151,12 @@ if __name__ == "__main__":
         # If the directory in svn doesn't exist we need to create and commit it.
         message = "wescamp.py automatic update"
 
-        github = libgithub.GitHub(svn_dir, git_version, userpass=git_userpass)
+        github = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass)
 
-        if(os.path.isdir(svn_dir + "/" + addon) == False):
+        if(os.path.isdir(wescamp_dir + "/" + addon) == False):
 
-            logging.info("Creating directory in svn '%s'.",
-                svn_dir + "/" + addon)
+            logging.info("Checking out '%s'.",
+                wescamp_dir + "/" + addon)
 
             if not github.addon_exists(addon):
                 github.create_addon(addon)
@@ -184,7 +184,7 @@ if __name__ == "__main__":
                         add-ons.wesnoth.org:15005.
     addon               The name of the addon.
     temp_dir            The directory where the unpacked campaign can be stored.
-    svn_dir             The directory containing a checkout of wescamp.
+    wescamp_dir         The directory containing a checkout of wescamp.
     password            The master upload password.
     stamp               Only upload if the timestamp is equal to this value
                         if None it's ignored. This is needed to avoid an upload
@@ -194,11 +194,11 @@ if __name__ == "__main__":
     returns             if stamp is used it returns False if the upload failed
                         due to a newer version on the server, True otherwise.
     """
-    def download(server, addon, temp_dir, svn_dir, password, stamp = None):
+    def download(server, addon, temp_dir, wescamp_dir, password, stamp = None):
 
         logging.debug("download addon from wescamp server = '%s' addon = '%s' "
-            + "temp_dir = '%s' svn_dir = '%s' password is not shown",
-            server, addon, temp_dir, svn_dir)
+            + "temp_dir = '%s' wescamp_dir = '%s' password is not shown",
+            server, addon, temp_dir, wescamp_dir)
 
         # update the wescamp checkout for the translation,
         addon_obj = libgithub.GitHub(wescamp, git_version, userpass=git_userpass).addon(addon)
@@ -207,7 +207,7 @@ if __name__ == "__main__":
         # doesn't mean no changes to the translations.
         addon_obj.update()
 
-        # test whether the svn has a translations dir, if not we can stop
+        # test whether the checkout has a translations dir, if not we can stop
         if(os.path.isdir(wescamp + "/"
             + addon + "/" + addon + "/translations") == False):
 
@@ -223,11 +223,11 @@ if __name__ == "__main__":
         shutil.copytree(source, dest)
 
         # If it is the old format with the addon.cfg copy that as well.
-        svn_cfg = wescamp + "/" + addon + "/" + addon + ".cfg"
+        wescamp_cfg = wescamp + "/" + addon + "/" + addon + ".cfg"
         temp_cfg = temp_dir + "/" + addon + ".cfg"
-        if(os.path.isfile(svn_cfg)):
+        if(os.path.isfile(wescamp_cfg)):
             logging.debug("Found old format config file")
-            shutil.copy(svn_cfg, temp_cfg)
+            shutil.copy(wescamp_cfg, temp_cfg)
 
         # We don't test for changes, just upload the stuff.
         # NOTE wml.put_campaign tests whether the addon.cfg exists so
@@ -256,12 +256,12 @@ if __name__ == "__main__":
             else:
                 return False
 
-    def erase(addon, svn_dir):
+    def erase(addon, wescamp_dir):
 
-        logging.debug("Erase addon from wescamp addon = '%s' svn_dir = '%s'",
-            addon, svn_dir)
+        logging.debug("Erase addon from wescamp addon = '%s' wescamp_dir = '%s'",
+            addon, wescamp_dir)
 
-        addon_obj = libgithub.GitHub(svn_dir, git_version, userpass=git_userpass).addon(addon)
+        addon_obj = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass).addon(addon)
 
         # Note: this is probably not implemented, as it would destroy a repository, including the history.
         addon_obj.erase()
