@@ -34,6 +34,12 @@
     	     <fileset dir="${buildDirectory}/repository"/>
         </move>
 
+		<signjar alias="wesnoth" keystore="keystore" storepass="${storePass}" keypass="${keyPass}">
+		  <path>
+			<fileset dir="${updatesDir}" includes="**/org.wesnoth*.jar" />
+		  </path>
+		</signjar>
+
         <!-- remove non-wesnoth plugins -->
         <delete>
             <fileset dir="${updatesDir}/plugins">
