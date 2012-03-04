@@ -89,7 +89,7 @@ public class WMLSemanticHighlightingCalculator implements
 
                 toColor.add( Pair.create(
                     getFirstFeatureNode( current,
-                        WmlPackage.Literals.WML_EXPRESSION__NAME ),
+                        WmlPackage.Literals.WML_PREPROC_IF__END_NAME ),
                     WMLHighlightingConfiguration.RULE_WML_IF ) );
             }
             else if( current instanceof WMLMacroDefine ) {
@@ -98,12 +98,10 @@ public class WMLSemanticHighlightingCalculator implements
                         WmlPackage.Literals.WML_EXPRESSION__NAME ),
                     WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE ) );
 
-                toColor.add( Pair
-                    .create(
-                        getFirstFeatureNode(
-                            current,
-                            WmlPackage.Literals.WML_MACRO_DEFINE__END_NAME ),
-                        WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE ) );
+                toColor.add( Pair.create(
+                    getFirstFeatureNode( current,
+                        WmlPackage.Literals.WML_MACRO_DEFINE__END_NAME ),
+                    WMLHighlightingConfiguration.RULE_WML_MACRO_DEFINE ) );
             }
 
             // check if we have any information specific information for
