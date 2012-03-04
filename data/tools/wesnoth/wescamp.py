@@ -382,7 +382,8 @@ if __name__ == "__main__":
         help = "Username and password for github in the user:pass format")
 
     optionparser.add_option("-c", "--checkout", action = "store_true",
-        help = "Create a new branch checkout directory")
+        help = "Create a new branch checkout directory. "
+        + "Can also be used to update existing checkout directories.")
 
     options, args = optionparser.parse_args()
 
