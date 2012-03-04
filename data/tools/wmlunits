@@ -17,6 +17,7 @@ import wesnoth.wmlparser2 as wmlparser2
 import unit_tree.helpers as helpers
 import unit_tree.animations as animations
 import unit_tree.html_output as html_output
+import unit_tree.overview
 
 def copy_images():
     print("Recolorizing pictures.")
@@ -264,6 +265,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
                     break
         
         html_output.generate_single_unit_reports(addon, isocode, wesnoth)
+
     return n
 
 def batch_process():
@@ -322,7 +324,13 @@ def batch_process():
 
         yaml.safe_dump(batchlist, open(options.batch, "w"),
             encoding = "utf-8", default_flow_style = False)
-    
+        
+        try:
+            unit_tree.overview.write_addon_overview(os.path.join(options.output,
+                name), addon)
+        except Exception as e:
+            pass
+
     html_output.html_postprocess_all(batchlist)
 
 def write_unit_ids_UNUSED():
@@ -402,6 +410,7 @@ if __name__ == '__main__':
     
     html_output.options = options
     helpers.options = options
+    unit_tree.overview.options = options
 
     if not options.output:
         op.print_help()
@@ -444,6 +453,8 @@ if __name__ == '__main__':
     
     if options.batch:
         batch_process()
+        
+        unit_tree.overview.main(options.output)
 
         if not options.nocopy:
             copy_images()

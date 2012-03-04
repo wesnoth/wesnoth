@@ -318,6 +318,15 @@ table.overview td + td {
     text-align: right;
 }
 
-table.overview a {
+table.overview a.error {
     color: red;
+}
+
+div.overview {
+    margin: 0 auto;
+    background-color: #E7D9C0;
+    max-width: 66em;
+    width: auto;
+    border-radius: 1em 1em 1em 1em;
+    border: solid 1px white;
 }

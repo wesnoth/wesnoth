@@ -20,6 +20,16 @@ html_header = '''
 </head>
 <body><div>'''.strip()
 
+top_bar = '''
+<div class="header">
+<a href="http://www.wesnoth.org">
+<img src="%(path)swesnoth-logo.jpg" alt="Wesnoth logo"/>
+</a>
+</div>
+<div class="topnav">
+<a href="%(path)sindex.html">Wesnoth Units database</a>
+</div>'''.strip()
+
 html_footer = '''
 <div id="footer">
 <p>%(generation_note)s</p>
@@ -283,16 +293,11 @@ class HTMLOutput:
         languages = self.wesnoth.languages_found
         langlist = languages.keys()
         langlist.sort()
+        
+        write(top_bar % {"path" : "../../"})
 
         write("""
-        <div class="header">
-        <a href="http://www.wesnoth.org">
-        <img src="../../wesnoth-logo.jpg" alt="Wesnoth logo"/>
-        </a>
-        </div>
-        <div class="topnav">
-        <a href="../../index.html">Wesnoth Units database</a>
-        </div>
+        
 
         <div class="navbar">
         """)
@@ -450,6 +455,10 @@ class HTMLOutput:
         write("</tr>")
         write("</table>")
         write("</div></li>\n")
+        
+        write("<li><div>&nbsp;</div></li>")
+        write("<li><div>&nbsp;</div></li>")
+        write('<li><a class="unitmenu" href="../../overview.html">Overview</a></li>')
 
         write("</ul>\n")
 
