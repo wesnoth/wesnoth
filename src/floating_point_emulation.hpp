@@ -61,11 +61,13 @@
 #define FLOATING_POINT_EMULATION_HPP_INCLUDED
 
 #include "global.hpp"
+#include "util.hpp"
 
 #include <SDL_types.h>
 
 #include <boost/utility/enable_if.hpp>
 
+#include <cassert>
 #include <cmath>
 
 //#define FLOATING_POINT_EMULATION_USE_SCALED_INT
@@ -98,20 +100,26 @@
 #endif
 #include <iostream>
 #define FLOATING_POINT_EMULATION_RANGE_CHECK                                 \
+	FLOATING_POINT_EMULATION_RANGE_CHECK_OBJECT((*this))
+
+#define FLOATING_POINT_EMULATION_RANGE_CHECK_OBJECT(object)                  \
 	do {                                                                     \
-		if(value_ >= 2147483648.0) {                                         \
-			std::cerr << "Positive overflow »" << value_                     \
-					<< "« as double »" << to_double() <<"« .\n";             \
+		if(object.value_ >= 2147483648.0) {                                  \
+			std::cerr << "Positive overflow »" << object.value_              \
+					<< "« as double »" << object.to_double() <<"« .\n";      \
 			FLOATING_POINT_EMULATION_RANGE_CHECK_THROW;                      \
 		}                                                                    \
-		if(value_ < -2147483648.0) {                                         \
-			std::cerr << "Negative overflow »" << value_                     \
-					<< "« as double »" << to_double() <<"« .\n";             \
+		if(object.value_ < -2147483648.0) {                                  \
+			std::cerr << "Negative overflow »" << object.value_              \
+					<< "« as double »" << object.to_double() <<"« .\n";      \
 			FLOATING_POINT_EMULATION_RANGE_CHECK_THROW;                      \
 		}                                                                    \
 	} while(0)
 #else
 #define FLOATING_POINT_EMULATION_RANGE_CHECK                                 \
+	do {                                                                     \
+	} while(0)
+#define FLOATING_POINT_EMULATION_RANGE_CHECK_OBJECT(object)                  \
 	do {                                                                     \
 	} while(0)
 #endif
@@ -235,6 +243,9 @@ struct ttracer
 #endif
 
 namespace floating_point_emulation {
+
+template<class T, unsigned S>
+class tfloat;
 
 namespace detail {
 
@@ -363,6 +374,291 @@ struct tfloor<Sint32, S>
 	}
 };
 
+/**
+ * Shift arithmetically left.
+ *
+ * Shifting of floating point values doesn't exist so it's emulated by a
+ * multiplication. This function allows @ref tidiv::idiv() to contain generic
+ * code.
+ *
+ * @param lhs                     The value to `shift'.
+ * @param rhs                     The number of bits to `shift'.
+ */
+inline void
+sal(double& lhs, unsigned rhs)
+{
+	lhs *= (1 << rhs);
+}
+
+/**
+ * Shift arithmetically left.
+ *
+ * @param lhs                     The value to shift.
+ * @param rhs                     The number of bits to shift.
+ */
+inline void
+sal(Sint32& lhs, unsigned rhs)
+{
+	lhs <<= rhs;
+}
+
+/**
+ * Shift arithmetically right.
+ *
+ * Shifting of floating point values doesn't exist so it's emulated by a
+ * division. This function allows @ref tidiv::idiv() to contain generic
+ * code.
+ *
+ * @param lhs                     The value to `shift'.
+ * @param rhs                     The number of bits to `shift'.
+ */
+inline void
+sar(double& lhs, unsigned rhs)
+{
+	lhs /= (1 << rhs);
+}
+
+/**
+ * Shift arithmetically right.
+ *
+ * @param lhs                     The value to shift.
+ * @param rhs                     The number of bits to shift.
+ */
+inline void
+sar(Sint32& lhs, unsigned rhs)
+{
+	lhs >>= rhs;
+}
+
+template<class T, unsigned S>
+struct tidiv
+{
+	static tfloat<T, S>&
+	idiv(tfloat<T, S>& lhs, tfloat<T, S> rhs)
+	{
+		detail::tscale<T, S>::up(lhs.value_);
+		FLOATING_POINT_EMULATION_RANGE_CHECK_OBJECT(lhs);
+		lhs.value_ /= rhs.value_;
+		FLOATING_POINT_EMULATION_RANGE_CHECK_OBJECT(lhs);
+		return lhs;
+	}
+};
+
+template<class T>
+struct tidiv<T, 8>
+{
+	static tfloat<T, 8>&
+	idiv(tfloat<T, 8>& lhs, tfloat<T, 8> rhs);
+};
+
+/**
+ * An optimised version of the division operator.
+ *
+ * This version is optimised to maintain the highest numeric stability when
+ * dividing.
+ *
+ * As documented at operator/():
+ * THIS * RHS = this * sf * rhs * sf = result * sf * sf = RESULT * sf
+ *
+ * THIS   this * sf   this
+ * ---- = --------- = ---- = result
+ *  RHS    rhs * sf    rhs
+ *
+ * Thus in order to get RESULT there needs to be multiplied by sf:
+ *
+ *          THIS
+ * RESULT = ---- * sf
+ *           RHS
+ *
+ * Since multiplication is associative this can also be written as:
+ *
+ *           sf   THIS
+ * RESULT =  -- * ---- * 2
+ *            2    RHS
+ *
+ * And as
+ *
+ *           (sf / 2) * THIS
+ * RESULT =  --------------- * 2
+ *                       RHS
+ *
+ * Thus it is possible to try to get the dividend as large as possible before
+ * the division and thus loose less precision.
+ *
+ * Another option to get the proper result is:
+ *
+ *                THIS
+ * RESULT = ----------
+ *          (RHS / sf)
+ *
+ * Obviously dumping the last bits of the divisor will loose a lot of
+ * precision, except if these bits contain zeros.
+ *
+ * It's also possible to do a combination of these ways and thus generating an
+ * algorithm like:
+ * * Try to shift the dividend up by as many bits as possible without overflow.
+ * * Try to shift the divisor down by as many bits as possible without loosing
+ *   resolution.
+ * * divide.
+ * * shift the result up by the required number of bits.
+ *
+ * The code has some other optimisations as well. On a 2-complement system
+ * there are additional tests required for negative and positive values, to
+ * remove these branches, the code uses a temporary value which contains the
+ * positive value.
+ *
+ * @note The shifted double also uses this version in order to test overflows.
+ *
+ * @todo The function needs more branch-prediction markers.
+ *
+ * @todo The function is too large to inline and needs to be separated in more
+ * functions, where the unlikely cases are not inlined but a function call.
+ */
+template<class T>
+inline tfloat<T, 8>&
+tidiv<T, 8>::idiv(tfloat<T, 8>& lhs, tfloat<T, 8> rhs)
+{
+	/* The interval has been determined empirically. */
+	FLOATING_POINT_EMULATION_TRACER_ENTRY(100000);
+
+	/* Division of zero is a NOP, so bail out directly. */
+	if(lhs.value_ == 0) {
+		FLOATING_POINT_EMULATION_TRACER_COUNT("lhs.value_ == 0");
+		return lhs;
+	}
+
+	/*
+	 * Test whether any high bit of the dividend is set.
+	 *
+	 * If the original value is smaller than 1 << 15 then the shifted
+	 * value is smaller than 1 << 31, which can be done without any risk. This
+	 * value is also quite likely to happen, so the case is optimized.
+	 */
+
+	Uint32 lhs_value = abs(lhs.value_);
+	if(LIKELY(lhs_value <= 0x007FFFFFu)) {
+		FLOATING_POINT_EMULATION_TRACER_COUNT("lhs_value <= 0x007FFFFFu");
+		sal(lhs.value_, 8);
+		FLOATING_POINT_EMULATION_RANGE_CHECK_OBJECT(lhs);
+
+		lhs.value_ /= rhs.value_;
+		FLOATING_POINT_EMULATION_RANGE_CHECK_OBJECT(lhs);
+		return lhs;
+	}
+
+	/***********************************************************************/
+
+	/*
+	 * Shift the dividend up.
+	 *
+	 * The code is based upon the Linux kernel
+	 * http://lxr.linux.no/#linux+v3.2.6/include/asm-generic/bitops/fls.h
+	 */
+
+	/*
+	 * Will contain the offset from the MSB to the MSB set.
+	 *
+	 * The range returned should be [0, 8), the values outside this range
+	 * should have been handled before. We don't look at the MSB since it
+	 * `contains' the sign, except for the maximum negative value, where we
+	 * can't shift at all).
+	 */
+	int dividend_high_bit = 0;
+
+	if(UNLIKELY(lhs.value_ == static_cast<int>(0x80000000))) {
+		/*
+		 * Do nothing dividend_high_bit is already 0.
+		 *
+		 * The reason for this way of the if is to allow for a trace marker.
+		 */
+		FLOATING_POINT_EMULATION_TRACER_COUNT("lhs.value_ == 0x80000000");
+	} else {
+		if(!(lhs_value & 0x78000000u)) {
+			FLOATING_POINT_EMULATION_TRACER_COUNT("!(lhs_value & 0x78000000u)");
+			lhs_value <<= 4;
+			dividend_high_bit += 4;
+		}
+		if(!(lhs_value & 0x60000000u)) {
+			FLOATING_POINT_EMULATION_TRACER_COUNT("!(lhs_value & 0x60000000u)");
+			lhs_value <<= 2;
+			dividend_high_bit += 2;
+		}
+		if(!(lhs_value & 0x40000000u)) {
+			FLOATING_POINT_EMULATION_TRACER_COUNT("!(lhs_value & 0x40000000u)");
+			dividend_high_bit += 1;
+		}
+	}
+
+	assert(dividend_high_bit >= 0);
+	assert(dividend_high_bit < 8);
+
+	sal(lhs.value_, dividend_high_bit);
+	FLOATING_POINT_EMULATION_RANGE_CHECK_OBJECT(lhs);
+
+	int shifted = dividend_high_bit;
+
+	/***********************************************************************/
+
+	if(shifted < 8) {
+		/*
+		 * Shift the divisor down.
+		 *
+		 * Code adapted from the algorithm used above.
+		 *
+		 * This test is only required if we didn't already shift the wanted
+		 * number of positions.
+		 */
+
+		Uint32 rhs_value = abs(rhs.value_);
+
+		/*
+		 * Will contain the offset from bit 0 of the LSB set. Since we're only
+		 * interested in values in the range [0-8] the value is saturated at 8.
+		 */
+		int divisor_low_bit = 0;
+
+		if(!(rhs_value & 0xffu)) {
+			FLOATING_POINT_EMULATION_TRACER_COUNT("!(rhs_value & 0xffu)");
+			divisor_low_bit = 8;
+		} else {
+			if(!(rhs_value & 0xfu)) {
+				FLOATING_POINT_EMULATION_TRACER_COUNT("!(rhs_value & 0xfu)");
+				divisor_low_bit += 4;
+				rhs_value >>= 4;
+			}
+			if(!(rhs_value & 0x3u)) {
+				FLOATING_POINT_EMULATION_TRACER_COUNT("!(rhs_value & 0x3u)");
+				divisor_low_bit += 2;
+				rhs_value >>= 2;
+			}
+			if(!(rhs_value & 0x1u)) {
+				FLOATING_POINT_EMULATION_TRACER_COUNT("!(rhs_value & 0x1u)");
+				divisor_low_bit += 1;
+			}
+		}
+		assert(divisor_low_bit >= 0);
+		assert(divisor_low_bit <= 8);
+
+		divisor_low_bit = std::min(8 - shifted, divisor_low_bit);
+
+		sar(rhs.value_, divisor_low_bit);
+		FLOATING_POINT_EMULATION_RANGE_CHECK_OBJECT(rhs);
+
+		shifted += divisor_low_bit;
+	}
+
+	/***********************************************************************/
+
+	lhs.value_ /= rhs.value_;
+	FLOATING_POINT_EMULATION_RANGE_CHECK_OBJECT(lhs);
+
+	/* Make the final shift adjustment. */
+	sal(lhs.value_, 8 - shifted);
+	FLOATING_POINT_EMULATION_RANGE_CHECK_OBJECT(lhs);
+
+	return lhs;
+}
+
 } // namespace detail
 
 /**
@@ -381,6 +677,7 @@ struct tfloor<Sint32, S>
 template<class T, unsigned S>
 class tfloat
 {
+	template<class TT, unsigned SS> friend class detail::tidiv;
 public:
 
 	/***** ***** Types. ***** *****/
@@ -595,13 +892,9 @@ public:
 	 *           RHS
 	 */
 	tfloat&
-	operator/=(tfloat rhs)
+	operator/=(const tfloat rhs)
 	{
-		detail::tscale<T, S>::up(value_);
-		FLOATING_POINT_EMULATION_RANGE_CHECK;
-		value_ /= rhs.value_;
-		FLOATING_POINT_EMULATION_RANGE_CHECK;
-		return *this;
+		return detail::tidiv<T, S>::idiv(*this, rhs);
 	}
 
 	/**
@@ -931,7 +1224,6 @@ floor(tfloat<T, S> lhs)
 }
 
 } // namespace floating_point_emulation
-
 
 #ifdef FLOATING_POINT_EMULATION_USE_SCALED_INT
 typedef floating_point_emulation::tfloat<Sint32, 8> tfloat;
