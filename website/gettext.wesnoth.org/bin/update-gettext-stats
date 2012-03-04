@@ -14,10 +14,9 @@ cd $SVNCHECKOUTPATH/trunk/
 svn -q up
 
 #update the wescamp checkout
-cd $SVNCHECKOUTPATH/wescamp-i18n/
-for checkout in `find . -maxdepth 2 -mindepth 2`;do
-    (cd $checkout; git pull)
-done
+cd $SVNCHECKOUTPATH/trunk/
+./data/tools/wesnoth/wescamp.py -scampaigns.wesnoth.org -p15002 -w$SVNCHECKOUTPATH/wescamp-i18n/branch-1.10 -c -g
+#TODO: add another line for 1.12 when the add-on server is up
 
 #update the website checkout
 cd $SVNCHECKOUTPATH/website/
