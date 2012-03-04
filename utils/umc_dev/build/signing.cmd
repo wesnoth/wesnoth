@@ -5,18 +5,26 @@ REM cn = common name
 REM ou = organizational unit
 REM o = organization
 REM c = Country
-SET PLUGIN_VERSION=1.0.3
+IF "%~1"=="" goto usage
+IF "%~2"=="" goto usage
+IF "%~3"=="" goto usage
 IF EXIST keystore (
 echo deleting previous keystore file
 DEL keystore
 )
 echo generating key...
-keytool.exe -genkey -dname "cn=Battle for Wesnoth, ou=Wesnoth, o=Wesnoth" -alias wesnoth -keypass %1 -keystore keystore -storepass %2 -validity 1095
+keytool.exe -genkey -dname "cn=Battle for Wesnoth, ou=Wesnoth, o=Wesnoth" -alias wesnoth -keypass %~2 -keystore keystore -storepass %~3 -validity 1095
 echo signing feature
-jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/features/org.wesnoth_%PLUGIN_VERSION%.jar wesnoth
-echo signing org.wesnoth_%PLUGIN_VERSION%.jar
-jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/plugins/org.wesnoth_%PLUGIN_VERSION%.jar wesnoth
-echo signing org.wesnoth.ui_%PLUGIN_VERSION%.jar
-jarsigner.exe -keystore keystore -storepass %2 -keypass %1 ../update_site/plugins/org.wesnoth.ui_%PLUGIN_VERSION%.jar wesnoth
+jarsigner.exe -keystore keystore -keypass %~2 -storepass %~3 %~1/features/org.wesnoth.*.jar wesnoth
+echo signing core
+jarsigner.exe -keystore keystore -keypass %~2 -storepass %~3 %~1/plugins/org.wesnoth_*.jar wesnoth
+echo signing ui
+jarsigner.exe -keystore keystore -keypass %~2 -storepass %~3 %~1/plugins/org.wesnoth.ui_*.jar wesnoth
 echo finished.
+goto end
+
+:usage
+echo Usage: %~0 ^<updates directory^> ^<keypass^> ^<storepass^>
+
+:end
 @pause
