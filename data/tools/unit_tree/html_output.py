@@ -102,11 +102,11 @@ class GroupByRace:
         return unit.campaigns and self.campaign == unit.campaigns[0]
 
     def groups(self, unit):
-        return [unit.race]
+        return [T(unit.race, "plural_name")]
 
     def group_name(self, group):
         if not group: return "None"
-        return T(group, "plural_name")
+        return group
 
 class GroupByNothing:
     def __init__(self):
@@ -176,11 +176,10 @@ class HTMLOutput:
         forest = self.forest = helpers.UnitForest()
         units_added = {}
         for uid, u in self.wesnoth.unit_lookup.items():
-
             if grouper.unitfilter(u):
                 forest.add_node(helpers.UnitNode(u))
                 units_added[uid] = u
-        
+
         #print("    %d/%d units" % (len(units_added), len(self.wesnoth.unit_lookup)))
 
         # Always add any child units, even if they have been filtered out..
@@ -199,7 +198,18 @@ class HTMLOutput:
                         forest.add_node(helpers.UnitNode(au))
                         new_units_added[auid] = au
             units_added = new_units_added
-
+        
+        # Also add parent units
+        added = True
+        while added:
+            added = False
+            for uid, u in self.wesnoth.unit_lookup.items():
+                if uid in forest.lookup: continue
+                for auid in u.advance:
+                    if auid in forest.lookup:
+                        forest.add_node(helpers.UnitNode(u))
+                        added = True
+                        break
 
         forest.update()
 
@@ -210,6 +220,7 @@ class HTMLOutput:
         for tree in forest.trees.values():
             u = tree.unit
             ugroups = grouper.groups(u)
+
             for group in ugroups:
                 groups[group] = groups.get(group, []) + [tree]
                 breadth += tree.breadth
@@ -548,13 +559,14 @@ class HTMLOutput:
                         # Find the current multiplayer side so we can show the
                         # little crowns..
                         ms = None
-                        try:
-                            eid, fid = un.data
-                            era = self.wesnoth.era_lookup[eid]
-                            if fid:
-                                ms = era.faction_lookup[fid]
-                        except TypeError:
-                            pass
+                        if self.is_era:
+                            try:
+                                eid, fid = un.data
+                                era = self.wesnoth.era_lookup[eid]
+                                if fid:
+                                    ms = era.faction_lookup[fid]
+                            except TypeError:
+                                pass
                         racename = un.name
                         attributes += " class=\"raceheader\""
                         write("<td%s>" % attributes)

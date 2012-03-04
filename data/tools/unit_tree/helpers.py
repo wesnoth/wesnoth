@@ -331,6 +331,26 @@ class WesnothList:
 
         return len(newunits)
 
+    def check_units(self):
+        """
+        Once all units have been added, do some checking.
+        """
+        
+        # handle advancefrom tags
+        for uid, unit in self.unit_lookup.items():
+            for advancefrom in unit.get_all(tag = "advancefrom"):
+                fromid = advancefrom.get_text_val("unit")
+                if fromid:
+                    try:
+                        fromunit = self.unit_lookup[fromid]
+                    except KeyError:
+                        error_message(
+                            "Error: Unit '%s' references non-existant [advancefrom] unit '%s'" % (
+                                uid, fromid))
+                        continue
+                    if uid not in fromunit.advance:
+                        fromunit.advance.append(uid)
+
     def find_unit_factions(self):
         for unit in self.unit_lookup.values():
             unit.factions = []

@@ -243,6 +243,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
 
     wesnoth.add_languages(languages)
     wesnoth.add_terrains()
+    wesnoth.check_units()
 
     for isocode in languages:
         
