@@ -481,7 +481,7 @@
          </action>
          <menu
                icon="icons/wesnoth-icon_16.png"
-               id="org.wesnoth.popupMenus.wmltoolsCfgMenu"
+               id="wmltoolsCfgMenu"
                label="WML Tools"
                path="_wesnoth">
             <groupMarker
@@ -490,21 +490,24 @@
          </menu>
          <action
                class="org.wesnoth.action.RunWMLLintOnSelection"
+               enablesFor="1"
                id="org.wesnoth.popupMenus.wmllintOnFile"
                label="Run &quot;wmllint&quot; on this file"
-               menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
+               menubarPath="wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
          </action>
          <action
                class="org.wesnoth.action.RunWMLScopeOnSelection"
+               enablesFor="1"
                id="org.wesnoth.popupMenus.wmlscope"
                label="Run &quot;wmlscope&quot; on this file"
-               menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
+               menubarPath="wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
          </action>
          <action
                class="org.wesnoth.action.RunWMLIndentOnSelection"
+               enablesFor="1"
                id="org.wesnoth.popupMenus.wmlindent"
                label="Run &quot;wmlindent&quot; on this file"
-               menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
+               menubarPath="wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
          </action>
          <visibility>
                <objectState
@@ -534,7 +537,7 @@
          </action>
          <menu
                icon="icons/wesnoth-icon_16.png"
-               id="org.wesnoth.popupMenus.wmltoolsContainerMenu"
+               id="wmltoolsContainerMenu"
                label="WML Tools"
                path="_wesnoth">
             <groupMarker
@@ -543,21 +546,24 @@
          </menu>
          <action
                class="org.wesnoth.action.RunWMLScopeOnSelection"
+               enablesFor="1"
                id="org.wesnoth.popupMenus.wmlscopeOnContainer"
                label="Run &quot;wmlscope&quot; on the container"
-               menubarPath="plugin.wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
+               menubarPath="wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
          </action>
          <action
                class="org.wesnoth.action.RunWMLIndentOnSelection"
+               enablesFor="1"
                id="org.wesnoth.popupMenus.wmlindentOnContainer"
                label="Run &quot;wmlindent&quot; on the container"
-               menubarPath="plugin.wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
+               menubarPath="wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
          </action>
          <action
                class="org.wesnoth.action.RunWMLLintOnSelection"
+               enablesFor="1"
                id="org.wesnoth.popupMenus.wmllintOnContainer"
                label="Run &quot;wmllint&quot; on the container"
-               menubarPath="plugin.wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
+               menubarPath="wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
          </action>
          <visibility>
                <objectState
