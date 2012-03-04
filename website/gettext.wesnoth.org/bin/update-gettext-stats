@@ -16,7 +16,7 @@ svn -q up
 #update the wescamp checkout
 cd $SVNCHECKOUTPATH/trunk/
 echo "wescamp.py output" >> $HOME/g.w.o-updates.log
-./data/tools/wesnoth/wescamp.py -scampaigns.wesnoth.org -p15002 -w$SVNCHECKOUTPATH/wescamp-i18n/branch-1.10 -c -g >> $HOME/g.w.o-updates.log
+./data/tools/wesnoth/wescamp.py -scampaigns.wesnoth.org -p15002 -w$SVNCHECKOUTPATH/wescamp-i18n/branch-1.10 -C -g >> $HOME/g.w.o-updates.log
 echo "wescamp.py exited with exit code $?" >> $HOME/g.w.o-updates.log
 #TODO: add another line for 1.12 when the add-on server is up
 
