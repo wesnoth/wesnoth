@@ -220,6 +220,10 @@ public class ProjectCache implements Serializable
     private boolean saveDefines( )
     {
         try {
+            if( ! definesFile_.exists( ) ) {
+                definesFile_.createNewFile( );
+            }
+
             FileWriter writer = new FileWriter( definesFile_ );
 
             try {
