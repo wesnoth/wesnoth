@@ -269,15 +269,16 @@ if __name__ == "__main__":
     wescamp             The directory where all checkouts should be stored.
     wesnoth_version     The wesnoth version we should checkout add-ons for.
     userpass            Authentication data. Shouldn't be needed.
+    readonly            Makes a read-only checkout that doesn't require authentication.
     """
-    def checkout(wescamp, wesnoth_version, userpass=None):
+    def checkout(wescamp, wesnoth_version, userpass=None, readonly=False):
 
         logging.debug("checking out add-ons from wesnoth version = '%s' to directory '%s'", wesnoth_version, wescamp)
 
         github = libgithub.GitHub(wescamp, git_version, userpass=git_userpass)
 
         for addon in github.list_addons():
-            addon_obj = github.addon(addon)
+            addon_obj = github.addon(addon, readonly=readonly)
             addon_obj.update()
 
 
@@ -341,6 +342,10 @@ if __name__ == "__main__":
 
     optionparser.add_option("-c", "--checkout", action = "store_true",
         help = "Create a new branch checkout directory. "
+        + "Can also be used to update existing checkout directories.")
+
+    optionparser.add_option("-C", "--checkout-readonly", action = "store_true",
+        help = "Create a read-only branch checkout directory. "
         + "Can also be used to update existing checkout directories.")
 
     options, args = optionparser.parse_args()
@@ -574,14 +579,14 @@ if __name__ == "__main__":
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
 
-    elif(options.checkout != None):
+    elif(options.checkout != None or options.checkout_readonly != None):
 
         if(wescamp == None):
             logging.error("No wescamp checkout specified.")
             sys.exit(2)
 
         try:
-            checkout(wescamp, git_version, userpass=git_userpass)
+            checkout(wescamp, git_version, userpass=git_userpass, readonly=(options.checkout_readonly != None))
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)

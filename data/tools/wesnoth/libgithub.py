@@ -211,15 +211,18 @@ class GitHub(object):
 
         return changed
 
-    def addon(self, name):
+    def addon(self, name, readonly=False):
         """Returns an add-on object for the given name.
+
+        name: Name of the add-on.
+        readonly: If set, and the add-on needs to be freshly cloned, use a read-only protocol
 
         Raises libgithub.Error if no such add-on exists.
         """
         logging.debug("Generating add-on object for {0}".format(name))
         if not os.path.isdir(self._absolute_path(name)):
             logging.debug("Add-on {0} not found locally, checking github.".format(name))
-            github_list = self._github_repos_list()
+            github_list = self._github_repos_list(readonly=readonly)
             matches = filter(lambda x: x[0] == name, github_list)
             if matches:
                 repo = matches[0]
@@ -297,8 +300,10 @@ class GitHub(object):
         """
         return os.listdir(self.directory)
 
-    def _github_repos_list(self):
+    def _github_repos_list(self, readonly=False):
         """Get a list of repositories.
+
+        readonly: Should the tuples have ssh urls or readonly urls.
 
         Returns a list of tuples that contain the add-on name and the url.
         """
@@ -307,7 +312,7 @@ class GitHub(object):
         repos = self._github_api_request(request)
 
         version_suffix = "-{0}".format(self.version)
-        return [(repo["name"][:-len(version_suffix)], repo["ssh_url"])
+        return [(repo["name"][:-len(version_suffix)], repo["git_url"] if readonly else repo["ssh_url"])
                 for repo in repos if repo["name"].endswith(version_suffix)]
 
     def _github_repos_create(self, name):
