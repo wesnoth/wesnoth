@@ -27,9 +27,6 @@ import wmldata as wmldata
 #import CampaignClient as libwml
 import wesnoth.campaignserver_client as libwml
 
-#import the svn library
-import wesnoth.libsvn as libsvn
-
 #import the github library
 import wesnoth.libgithub as libgithub
 
@@ -404,9 +401,6 @@ if __name__ == "__main__":
 
         try:
             addons = list_addons(server, options.list_translatable)
-        except libsvn.error, e:
-            print "[ERROR svn] " + str(e)
-            sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
@@ -432,9 +426,6 @@ if __name__ == "__main__":
 
         try:
             upload(server, options.upload, target, wescamp)
-        except libsvn.error, e:
-            print "[ERROR svn] " + str(e)
-            sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
@@ -464,9 +455,6 @@ if __name__ == "__main__":
                 # Create a new temp dir for every upload.
                 tmp = tempdir()
                 upload(server, k, tmp.path, wescamp)
-            except libsvn.error, e:
-                print "[ERROR svn] in addon '" + k + "'" + str(e)
-                error = True
             except libgithub.Error, e:
                 print "[ERROR github] in addon '" + k + "'" + str(e)
                 error = True
@@ -493,9 +481,6 @@ if __name__ == "__main__":
 
         try:
             download(server, options.download, target, wescamp, password)
-        except libsvn.error, e:
-            print "[ERROR svn] " + str(e)
-            sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
@@ -559,9 +544,6 @@ if __name__ == "__main__":
                             + "the campaign server and isn't uploaded "
                             + "force another full sync cycle", k)
 
-            except libsvn.error, e:
-                print "[ERROR svn] in addon '" + k + "'" + str(e)
-                error = True
             except libgithub.Error, e:
                 print "[ERROR github] in addon '" + k + "'" + str(e)
                 error = True
@@ -584,9 +566,6 @@ if __name__ == "__main__":
 
         try:
             erase(options.erase, wescamp)
-        except libsvn.error, e:
-            print "[ERROR svn] " + str(e)
-            sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
