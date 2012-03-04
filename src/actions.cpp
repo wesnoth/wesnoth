@@ -2253,27 +2253,25 @@ namespace {
 				const bool res = tm.clear_shroud(adj[i]) | tm.clear_fog(adj[i]);
 
 				if(res) {
-					if(res) {
-						result = true;
-						// If we're near the corner it might be the corner also needs to be cleared
-						// this always happens at the lower left corner and depending on the with
-						// at the upper or lower right corner.
-						if(adj[i].x == 0 && adj[i].y == map.h() - 1) { // Lower left corner
-							const map_location corner(-1 , map.h());
-							tm.clear_shroud(corner);
-							tm.clear_fog(corner);
-						} else if(map.w() % 2 && adj[i].x == map.w() - 1 && adj[i].y == map.h() - 1) { // Lower right corner
-							const map_location corner(map.w() , map.h());
-							tm.clear_shroud(corner);
-							tm.clear_fog(corner);
-						} else if(!(map.w() % 2) && adj[i].x == map.w() - 1 && adj[i].y == 0) { // Upper right corner
-							const map_location corner(map.w() , -1);
-							tm.clear_shroud(corner);
-							tm.clear_fog(corner);
-						}
-						if(cleared) {
-							cleared->push_back(adj[i]);
-						}
+					result = true;
+					// If we're near the corner it might be the corner also needs to be cleared
+					// this always happens at the lower left corner and depending on the with
+					// at the upper or lower right corner.
+					if(adj[i].x == 0 && adj[i].y == map.h() - 1) { // Lower left corner
+						const map_location corner(-1 , map.h());
+						tm.clear_shroud(corner);
+						tm.clear_fog(corner);
+					} else if(map.w() % 2 && adj[i].x == map.w() - 1 && adj[i].y == map.h() - 1) { // Lower right corner
+						const map_location corner(map.w() , map.h());
+						tm.clear_shroud(corner);
+						tm.clear_fog(corner);
+					} else if(!(map.w() % 2) && adj[i].x == map.w() - 1 && adj[i].y == 0) { // Upper right corner
+						const map_location corner(map.w() , -1);
+						tm.clear_shroud(corner);
+						tm.clear_fog(corner);
+					}
+					if(cleared) {
+						cleared->push_back(adj[i]);
 					}
 				}
 			}
