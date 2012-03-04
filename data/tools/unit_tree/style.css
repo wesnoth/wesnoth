@@ -297,3 +297,27 @@ div.unit-column-right {
     width: 20em;
     float: right;
 }
+
+table.overview {
+    margin: 1em;
+    border-spacing: 0px;
+    border: 1px solid #000000;
+}
+
+table.overview th {
+    text-align: center;
+    padding: 1em;
+    border-bottom: 2px solid #000000;
+}
+
+table.overview td {
+    border-bottom: 1px solid #000000;
+}
+
+table.overview td + td {
+    text-align: right;
+}
+
+table.overview a {
+    color: red;
+}
