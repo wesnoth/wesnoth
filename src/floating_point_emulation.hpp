@@ -25,6 +25,12 @@
  * * A @c double, not shifted.
  * * A @c double, shifted 8 bits (for debugging).
  *
+ * In the comments some conventions are used:
+ * - lowercase variables are unscaled values
+ * - UPPERCASE VARIABLES are scaled values
+ * - the variable `sf' is the scale factor
+ * - the variable `result' and `RESULT' are the result of a calculation
+ *
  * There are several define's to control the compilation.
  *
  * FLOATING_POINT_EMULATION_USE_SCALED_INT
@@ -393,6 +399,17 @@ public:
 
 	/***** Mul *****/
 
+	/**
+	 * Multiply
+	 *
+	 * Keep in mind that:
+	 *
+	 * THIS * RHS = this * sf * rhs * sf = result * sf * sf = RESULT * sf
+	 *
+	 * Thus in order to get RESULT there needs to be divided by sf:
+	 *
+	 * RESULT = THIS * RHS / sf
+	 */
 	tfloat&
 	operator*=(const tfloat rhs)
 	{
@@ -403,6 +420,13 @@ public:
 		return *this;
 	}
 
+	/**
+	 * Multiply
+	 *
+	 * No extra adjustment needed since:
+	 *
+	 * RESULT = THIS * rhs
+	 */
 	tfloat&
 	operator*=(const int rhs)
 	{
@@ -411,6 +435,13 @@ public:
 		return *this;
 	}
 
+	/**
+	 * Multiply
+	 *
+	 * No extra adjustment needed since:
+	 *
+	 * RESULT = THIS * rhs
+	 */
 	tfloat&
 	operator*=(const double rhs)
 	{
@@ -421,6 +452,23 @@ public:
 
 	/***** Div *****/
 
+	/**
+	 * Divide
+	 *
+	 * Keep in mind that:
+	 *
+	 * THIS * RHS = this * sf * rhs * sf = result * sf * sf = RESULT * sf
+	 *
+	 * THIS   this * sf   this
+	 * ---- = --------- = ---- = result
+	 *  RHS    rhs * sf    rhs
+	 *
+	 * Thus in order to get RESULT there needs to be mulitplied by sf:
+	 *
+	 *          THIS
+	 * RESULT = ---- * sf
+	 *           RHS
+	 */
 	tfloat&
 	operator/=(tfloat rhs)
 	{
@@ -431,6 +479,13 @@ public:
 		return *this;
 	}
 
+	/**
+	 * Divide
+	 *
+	 * No extra adjustment needed since:
+	 *
+	 * RESULT = THIS / rhs
+	 */
 	tfloat&
 	operator/=(const int rhs)
 	{
@@ -439,6 +494,13 @@ public:
 		return *this;
 	}
 
+	/**
+	 * Divide
+	 *
+	 * No extra adjustment needed since:
+	 *
+	 * RESULT = THIS / rhs
+	 */
 	tfloat&
 	operator/=(const double rhs)
 	{
