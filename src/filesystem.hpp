@@ -63,6 +63,7 @@ std::string get_dir(const std::string &dir);
 
 // The location of various important files:
 std::string get_prefs_file();
+std::string get_default_prefs_file();
 std::string get_save_index_file();
 std::string get_saves_dir();
 std::string get_intl_dir();

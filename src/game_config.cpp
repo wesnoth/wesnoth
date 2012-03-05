@@ -160,6 +160,12 @@ namespace game_config
 #endif
 #endif
 
+#ifdef DEFAULT_PREFS_PATH
+	std::string default_preferences_path = DEFAULT_PREFS_PATH;
+#else
+	std::string default_preferences_path = "";
+#endif
+
 	std::string preferences_dir = "";
 
 	std::vector<server_info> server_list;
