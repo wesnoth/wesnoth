@@ -21,7 +21,7 @@
 #ifndef EDITOR_PALETTES_H_INCLUDED
 #define EDITOR_PALETTES_H_INCLUDED
 
-#include "../display.hpp"
+#include "editor_display.hpp"
 #include "brush.hpp"
 #include "editor_layout.hpp"
 
@@ -47,7 +47,7 @@ struct terrain_group
 /** Palette where the terrain to be drawn can be selected. */
 class terrain_palette : public gui::widget {
 public:
-	terrain_palette(display &gui, const size_specs &sizes,
+	terrain_palette(editor_display &gui, const size_specs &sizes,
 					const config& cfg,
 					t_translation::t_terrain& fore,
 					t_translation::t_terrain& back);
@@ -141,7 +141,7 @@ private:
 	void update_report();
 
 	const size_specs &size_specs_;
-	display &gui_;
+	editor_display &gui_;
 	unsigned int tstart_;
 
 	/**
