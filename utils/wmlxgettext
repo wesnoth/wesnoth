@@ -96,7 +96,7 @@ sub read_wml_file {
       # if translatable and in the requested domain
       if ($translatable and $domainstack[0] eq $domain) {
         my $msg = wml2postring($2);
-        push @{$messages{$msg}}, "$file:$.";
+        push @{$messages{$msg}}, [$file, $.];
         push @{$nodeinfostack[-1][1]}, $msg if $valid_wml;
 
       } elsif (not $translatable and m/(\S+)\s*=\s*\"([^\"]*)\"/) {
@@ -125,7 +125,7 @@ sub read_wml_file {
 
       if ($translatable and $domainstack[0] eq $domain) {
         my $msg = "\"\"\n" . wml2postring($str);
-        push @{$messages{$msg}}, "$file:$line" ;
+        push @{$messages{$msg}}, [$file, $line];
         push @{$nodeinfostack[-1][1]}, $msg if $valid_wml;
       }
       $str = undef;
@@ -174,7 +174,7 @@ sub read_wml_file {
           $valid_wml = 0;
           last;
         }
-        my ($openname, $messages, $metadata, $comments) = @{pop @nodeinfostack};
+        my ($openname, $nodemessages, $metadata, $comments) = @{pop @nodeinfostack};
         if ($nodename ne $openname) {
           warn "expected closed node \'$openname\' ".
                "got \'$nodename\' at $file:$.";
@@ -186,8 +186,8 @@ sub read_wml_file {
           $metadata = $nodeinfostack[-1][2];
         }
         #print STDERR "$ind<<< $.: $nodename\n";
-        #print STDERR "==> $file:$.: $nodename: @{$metadata}\n" if @{$messages};
-        for my $msg (@{$messages}) {
+        #print STDERR "==> $file:$.: $nodename: @{$metadata}\n" if @{$nodemessages};
+        for my $msg (@{$nodemessages}) {
           push @{$nodeinfo{$msg}}, [$nodename, $metadata, $comments];
         }
       } else { # opening node
@@ -249,7 +249,7 @@ sub read_lua_file {
 
       if ($translatable and $curdomain eq $domain) {
         my $msg = lua2postring($3, $2);
-        push @{$messages{$msg}}, "$file:$.";
+        push @{$messages{$msg}}, [$file, $.];
         push @{$nodeinfo{$msg}}, $metadata if defined $metadata;
       }
 
@@ -280,7 +280,7 @@ sub read_lua_file {
       # TODO: ensure $quote eq $2 when this matches
       if ($translatable and $curdomain eq $domain) {
         my $msg = "\"\"\n" . lua2postring($str, $quote);
-        push @{$messages{$msg}}, "$file:$line";
+        push @{$messages{$msg}}, [$file, $line];
         push @{$nodeinfo{$msg}}, $metadata if defined $metadata;
       }
       $str = undef;
@@ -318,7 +318,7 @@ foreach my $file (@ARGV) {
 our @revmessages;
 foreach my $key (keys %messages) {
   foreach my $line (@{$messages{$key}}) {
-    my ($file, $lineno) = split /:/, $line;
+    my ($file, $lineno) = @{$line};
     push @revmessages, [ $file, $lineno, $key ];
   }
 }
@@ -357,6 +357,7 @@ foreach my $occurence (@revmessages) {
   if (defined $messages{$key}) {
     if (defined $nodeinfo{$key}) {
       my %added;
+      my @lines;
       for my $info (@{$nodeinfo{$key}}) {
         my ($name, $data, $comments) = @{$info};
         my $desc = join(", ", @{$data});
@@ -364,14 +365,27 @@ foreach my $occurence (@revmessages) {
         # Add only unique node info strings.
         if (not defined $added{$nodestr}) {
             $added{$nodestr} = 1;
-            printf "#. %s\n", $nodestr;
+            push @lines, [sprintf("#. %s\n", $nodestr), []];
         }
         foreach my $comment (@{$comments}) {
-            printf "#. $comment\n";
+            push @{@{$lines[-1]}[1]}, sprintf("#. $comment\n");
+        }
+      }
+      for my $line (sort { @{$a}[0] cmp @{$b}[0] } @lines) {
+        my ($tag, $comments) = @{$line};
+        print $tag;
+        foreach my $comment (@{$comments}) {
+          print $comment;
         }
       }
     }
-    printf "#: %s\n", join(" ", @{$messages{$key}});
+    my @msgs = sort { $a->[0] cmp $b->[0] or $a->[1] <=> $b->[1] } @{$messages{$key}};
+    my @msgsfmt;
+    foreach my $msg (@msgs) {
+      my ($file, $line) = @{$msg};
+      push @msgsfmt, "$file:$line";
+    }
+    printf "#: %s\n", join(" ", @msgsfmt);
     print "msgid $key";
     print "msgstr \"\"\n\n";
 
