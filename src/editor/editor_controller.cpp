@@ -154,9 +154,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 
 void editor_controller::init_gui(CVideo& /*video*/)
 {
-	//TODO
-	//const config &theme_cfg = get_theme(game_config_, "editor");
-	//gui_.reset(new editor_display(video, &(get_map()), theme_cfg, config()));
 	gui_->change_map(&get_map());
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
@@ -848,6 +845,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			}
 			return false;
 		case HOTKEY_EDITOR_TERRAIN_GROUPS:
+		case HOTKEY_EDITOR_TERRAIN_LEFTSCROLL:
+		case HOTKEY_EDITOR_TERRAIN_RIGHTSCROLL:
 			return true;
 		case HOTKEY_ZOOM_IN:
 		case HOTKEY_ZOOM_OUT:
@@ -956,6 +955,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 				case editor::SIDE:
 					return ACTION_ON;
 			}
+			//TODO
 		case HOTKEY_EDITOR_TERRAIN_GROUPS:
 			return ACTION_ON;
 		default:
@@ -988,16 +988,13 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				return true;
 			}
 		case HOTKEY_EDITOR_TERRAIN_GROUPS:
-			//TODO
-		//	if (index >= 0) {
-		//		unsigned i = static_cast<unsigned>(index);
-		//		if (i < 80)
-					//TODO
-			//		palette_->set_group(index);
-				//	get_display().set_terrain_image(palette_->active_image());
-					return true;
-		//	}
-		//	return false;
+			return true;
+		case HOTKEY_EDITOR_TERRAIN_LEFTSCROLL:
+			palette_->scroll_left();
+			return true;
+		case HOTKEY_EDITOR_TERRAIN_RIGHTSCROLL:
+			palette_->scroll_right();
+			return true;
 		case HOTKEY_QUIT_GAME:
 			quit_confirm(EXIT_NORMAL);
 			return true;

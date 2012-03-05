@@ -54,11 +54,11 @@ public:
 
 	const gamemap& map() const { return gui_.get_map(); }
 
-	/** Scroll the terrain-palette up one step if possible. */
-	void scroll_up();
+	/** Scroll the terrain-palette left one step if possible. */
+	void scroll_left();
 
-	/** Scroll the terrain-palette down one step if possible. */
-	void scroll_down();
+	/** Scroll the terrain-palette right one step if possible. */
+	void scroll_right();
 
 	/** Scroll the terrain-palette to the top. */
 	void scroll_top();
@@ -104,7 +104,6 @@ public:
 	void draw(bool force=false);
 	virtual void draw();
 	virtual void handle_event(const SDL_Event& event);
-	void set_dirty(bool dirty=true);
 
 	/** Return the number of terrains in the palette. */
 	size_t num_terrains() const;
@@ -168,7 +167,6 @@ private:
 
     std::set<t_translation::t_terrain> non_core_terrains_;
 
-	size_t button_x_; //, top_button_y_, bot_button_y_;
 	size_t nterrains_, nmax_terrains_, terrain_start_;
 	t_translation::t_terrain& selected_fg_terrain_;
 	t_translation::t_terrain& selected_bg_terrain_;

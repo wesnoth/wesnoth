@@ -34,10 +34,10 @@ struct size_specs {
 	 * adjust_sizes().
 	 */
 	size_specs();
-	size_t default_terrain_size;
+	size_t terrain_size;
 	size_t terrain_padding;
-	size_t default_terrain_space;
-	size_t default_terrain_width;
+	size_t terrain_space;
+	size_t terrain_width;
 	size_t palette_x;
 	size_t palette_y;
 	size_t palette_h;
@@ -45,6 +45,7 @@ struct size_specs {
 	size_t brush_x;
 	size_t brush_y;
 	size_t brush_padding;
+	size_t brush_width;
 };
 
 /** Adjust the internal size specifications to fit the display. */

@@ -46,8 +46,8 @@ static bool is_valid_terrain(t_translation::t_terrain c) {
 }
 
 terrain_group::terrain_group(const config& cfg):
-	id(cfg["id"]), name(cfg["name"].t_str()), icon(cfg["icon"]),
-	core(cfg["core"].to_bool())
+	id(cfg["id"]), name(cfg["name"].t_str()),
+	icon(cfg["icon"]), core(cfg["core"].to_bool())
 {
 }
 
@@ -56,17 +56,13 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 								 t_translation::t_terrain& fore,
 								 t_translation::t_terrain& back)
 	: gui::widget(gui.video())
-	, terrain_width_(1)
-	, terrain_size_(72)
 	, size_specs_(sizes)
 	, gui_(gui)
 	, tstart_(0)
 	, terrain_map_()
 	, terrains_()
-	, active_group_()
 	, terrain_groups_()
 	, non_core_terrains_()
-	, button_x_()
 	, nterrains_()
 	, nmax_terrains_()
 	, terrain_start_()
@@ -139,77 +135,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		ERR_ED << "No terrain found.\n";
 	}
 	update_report();
-}
-
-void terrain_palette::adjust_size() {
-
-	scroll_top();
-	const size_t button_height = 24;
-	const size_t button_palette_padding = 4;
-
-	// Values for the group buttons fully hardcoded for now
-	/** @todo will be fixed later */
-//	const size_t group_button_height   = 24;
-//	const size_t group_button_padding  =  2;
-//	const size_t group_buttons_per_row =  6;
-
-	// Determine number of theme button rows
-//	size_t group_rows = terrain_groups_.size() / group_buttons_per_row;
-//	if(terrain_groups_.size() % group_buttons_per_row != 0) {
-//		++group_rows;
-//	}
-
-	SDL_Rect rect = create_rect(size_specs_.palette_x
-			, size_specs_.palette_y
-			, size_specs_.palette_w
-			, size_specs_.palette_h);
-
-	set_location(rect);
-	button_x_ = size_specs_.palette_x + size_specs_.palette_w/2 - button_height/2;
-	terrain_start_ = size_specs_.palette_y + button_palette_padding;
-	const size_t space_for_terrains = size_specs_.palette_h;
-
-	unsigned fitting = 1;
-	terrain_width_ = size_specs_.default_terrain_width - 1;
-	terrain_size_ = size_specs_.default_terrain_size;
-	while (fitting < num_terrains()) {
-		terrain_width_++;
-		terrain_size_ = size_specs_.palette_w / terrain_width_ - size_specs_.terrain_padding;
-		terrain_size_ = (terrain_size_ > 72) ? 72 : terrain_size_;
-		fitting = ((space_for_terrains )/ (terrain_size_ + size_specs_.terrain_padding)) * terrain_width_;
-	}
-
-	rect.y = terrain_start_;
-	rect.h = space_for_terrains;
-	bg_register(rect);
-	const unsigned terrains_fitting =
-		static_cast<unsigned> (space_for_terrains / (terrain_size_ + size_specs_.terrain_padding) *
-		terrain_width_);
-	nterrains_ = std::min<int>(terrains_fitting, nmax_terrains_);
-//	size_t top = size_specs_.palette_y;
-//	size_t left = size_specs_.palette_x + 2;
-//	for(size_t i = 0; i < terrain_groups_.size(); ++i) {
-//		if (terrain_map_[terrain_groups_[i].id].empty())
-//			continue;
-//		if(i % group_buttons_per_row == (group_buttons_per_row - 1)) {
-//			left = size_specs_.palette_x + 2;
-//			top += group_button_height + group_button_padding;
-//		} else {
-//			left += group_button_height + group_button_padding;
-//		}
-//	}
-
-	set_dirty();
-}
-
-void terrain_palette::set_dirty(bool dirty) {
-	widget::set_dirty(dirty);
-}
-
-void terrain_palette::scroll_top() {
-	tstart_ = 0;
-	bg_restore();
-	set_dirty();
+	//adjust_size();
 }
 
 void terrain_palette::set_group(const std::string& id)
@@ -243,11 +169,72 @@ const config terrain_palette::active_terrain_report()
 	for (size_t i = 0 ; i < terrain_groups_.size(); i++) {
 		if (terrain_groups_[i].id == active_group_) {
 			std::string groupname = terrain_groups_[i].name;
-			report["image"] = "buttons/" + terrain_groups_[i].icon + "-pressed.png";
+			report["image"] = "buttons/" + terrain_groups_[i].icon + ".png";
 			report["tooltip"] = groupname;
 		}
 	}
 	return cfg;
+}
+
+void terrain_palette::adjust_size() {
+	scroll_top();
+
+	SDL_Rect rect = create_rect(size_specs_.palette_x
+			, size_specs_.palette_y
+			, size_specs_.palette_w
+			, size_specs_.palette_h);
+
+	set_location(rect);
+	terrain_start_ = size_specs_.palette_y;
+	const size_t space_for_terrains = size_specs_.palette_h;
+	rect.y = terrain_start_;
+	rect.h = space_for_terrains;
+	bg_register(rect);
+	const unsigned terrains_fitting =
+		static_cast<unsigned> (space_for_terrains / size_specs_.terrain_space) *
+		size_specs_.terrain_width;
+	nterrains_ = std::min<int>(terrains_fitting, nmax_terrains_);
+
+	set_dirty();
+}
+
+void terrain_palette::scroll_right() {
+	if(tstart_ + nterrains_ + size_specs_.terrain_width <= num_terrains()) {
+		tstart_ += size_specs_.terrain_width;
+		bg_restore();
+		set_dirty();
+	}
+	else if (tstart_ + nterrains_ + (num_terrains() % size_specs_.terrain_width) <= num_terrains()) {
+		tstart_ += num_terrains() % size_specs_.terrain_width;
+		bg_restore();
+		set_dirty();
+	}
+}
+
+void terrain_palette::scroll_left() {
+	unsigned int decrement = size_specs_.terrain_width;
+	if (tstart_ + nterrains_ == num_terrains() && num_terrains() % size_specs_.terrain_width != 0) {
+		decrement = num_terrains() % size_specs_.terrain_width;
+	}
+	if(tstart_ >= decrement) {
+		bg_restore();
+		set_dirty();
+		tstart_ -= decrement;
+	}
+}
+
+void terrain_palette::scroll_top() {
+	tstart_ = 0;
+	bg_restore();
+	set_dirty();
+}
+
+void terrain_palette::scroll_bottom() {
+	unsigned int old_start = num_terrains();
+	while (old_start != tstart_) {
+		old_start = tstart_;
+		scroll_right();
+	}
 }
 
 t_translation::t_terrain terrain_palette::selected_fg_terrain() const
@@ -284,7 +271,6 @@ void terrain_palette::swap()
 	set_dirty();
 	update_report();
 }
-
 
 std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t)
 {
@@ -343,6 +329,12 @@ void terrain_palette::handle_event(const SDL_Event& event) {
 		if (mouse_button_event.button == SDL_BUTTON_RIGHT) {
 			right_mouse_click(mousex, mousey);
 		}
+		if (mouse_button_event.button == SDL_BUTTON_WHEELUP) {
+			scroll_left();
+		}
+		if (mouse_button_event.button == SDL_BUTTON_WHEELDOWN) {
+			scroll_right();
+		}
 	}
 	if (mouse_button_event.type == SDL_MOUSEBUTTONUP) {
 		if (mouse_button_event.button == SDL_BUTTON_LEFT) {
@@ -351,14 +343,15 @@ void terrain_palette::handle_event(const SDL_Event& event) {
 }
 
 void terrain_palette::draw(bool force) {
-
 	if (!dirty() && !force) {
 		return;
 	}
-
-	adjust_size();
-
+	unsigned int starting = tstart_;
+	unsigned int ending = starting + nterrains_;
 	surface screen = gui_.video().getSurface();
+	if(ending > num_terrains()){
+		ending = num_terrains();
+	}
 	const SDL_Rect &loc = location();
 	int y = terrain_start_;
 	SDL_Rect palrect;
@@ -367,15 +360,16 @@ void terrain_palette::draw(bool force) {
 	palrect.w = size_specs_.palette_w;
 	palrect.h = size_specs_.palette_h;
 	tooltips::clear_tooltips(palrect);
-	for(unsigned int counter = 0; counter < terrains_.size(); counter++){
+	for(unsigned int counter = starting; counter < ending; counter++){
 		const t_translation::t_terrain terrain = terrains_[counter];
 		const t_translation::t_terrain base_terrain = map().get_terrain_info(terrain).default_base();
 
+		const int counter_from_zero = counter - starting;
 		SDL_Rect dstrect;
-		dstrect.x = loc.x + (counter % terrain_width_) * (terrain_size_ + size_specs_.terrain_padding);
+		dstrect.x = loc.x + (counter_from_zero % size_specs_.terrain_width) * size_specs_.terrain_space;
 		dstrect.y = y;
-		dstrect.w = terrain_size_;
-		dstrect.h = terrain_size_;
+		dstrect.w = size_specs_.terrain_size;
+		dstrect.h = size_specs_.terrain_size;
 
 		// Reset the tile background
 		bg_restore(dstrect);
@@ -397,11 +391,11 @@ void terrain_palette::draw(bool force) {
 				}
 			}
 
-			if(base_image->w != terrain_size_ ||
-			   base_image->h != terrain_size_) {
+			if(static_cast<unsigned>(base_image->w) != size_specs_.terrain_size ||
+			   static_cast<unsigned>(base_image->h) != size_specs_.terrain_size) {
 
 				base_image.assign(scale_surface(base_image,
-				   terrain_size_, terrain_size_));
+				   size_specs_.terrain_size, size_specs_.terrain_size));
 			}
 
 			sdl_blit(base_image, NULL, screen, &dstrect);
@@ -419,11 +413,11 @@ void terrain_palette::draw(bool force) {
 			}
 		}
 
-		if(image->w != terrain_size_ ||
-			image->h != terrain_size_) {
+		if(static_cast<unsigned>(image->w) != size_specs_.terrain_size ||
+			static_cast<unsigned>(image->h) != size_specs_.terrain_size) {
 
 			image.assign(scale_surface(image,
-				terrain_size_, terrain_size_));
+				size_specs_.terrain_size, size_specs_.terrain_size));
 		}
 
 		sdl_blit(image, NULL, screen, &dstrect);
@@ -442,7 +436,12 @@ void terrain_palette::draw(bool force) {
 		else {
 			color = SDL_MapRGB(screen->format,0x00,0x00,0x00);
 		}
+
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
+		/* TODO The call above overdraws the border of the terrain image.
+		   The following call is doing better but causing other drawing glitches.
+		   draw_rectangle(dstrect.x -1, dstrect.y -1, image->w +2, image->h +2, color, screen);
+		*/
 
 		bool is_core = non_core_terrains_.find(terrain) == non_core_terrains_.end();
 		tooltip_text << map().get_terrain_editor_string(terrain);
@@ -457,8 +456,8 @@ void terrain_palette::draw(bool force) {
 					<< "</span>";
 		}
 		tooltips::add_tooltip(dstrect, tooltip_text.str());
-		if (static_cast<int>(counter) % terrain_width_ == terrain_width_ - 1)
-			y += terrain_size_ + size_specs_.terrain_padding;
+		if (counter_from_zero % size_specs_.terrain_width == size_specs_.terrain_width - 1)
+			y += size_specs_.terrain_space;
 	}
 	update_rect(loc);
 	set_dirty(false);
@@ -466,11 +465,10 @@ void terrain_palette::draw(bool force) {
 
 int terrain_palette::tile_selected(const int x, const int y) const {
 	for(unsigned int i = 0; i != nterrains_; i++) {
-
-		const int px = size_specs_.palette_x + (i % terrain_width_) * (terrain_size_ + size_specs_.terrain_padding);
-		const int py = terrain_start_ + (i / terrain_width_) * (terrain_size_ + size_specs_.terrain_padding);
-		const int pw = (terrain_size_ + size_specs_.terrain_padding);
-		const int ph = (terrain_size_ + size_specs_.terrain_padding);
+		const int px = size_specs_.palette_x + (i % size_specs_.terrain_width) * size_specs_.terrain_space;
+		const int py = terrain_start_ + (i / size_specs_.terrain_width) * size_specs_.terrain_space;
+		const int pw = size_specs_.terrain_space;
+		const int ph = size_specs_.terrain_space;
 
 		if(x > px && x < px + pw && y > py && y < py + ph) {
 			return i;
@@ -496,8 +494,8 @@ size_(30) {
 }
 
 void brush_bar::adjust_size() {
-	set_location(size_specs_.brush_x, size_specs_.brush_y);
-	set_measurements(size_ * brushes_.size() + (brushes_.size() - 1) * size_specs_.brush_padding, size_);
+	set_location(size_specs_.brush_x -1, size_specs_.brush_y -1);
+	set_measurements(size_ * brushes_.size() + (brushes_.size() -1) * (size_specs_.brush_padding) + 2, (size_ +2));
 	set_dirty();
 }
 
@@ -574,6 +572,8 @@ void brush_bar::draw(bool force) {
 		const Uint32 color = i == selected_brush_size() ?
 			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
 			SDL_MapRGB(screen->format,0x00,0x00,0x00);
+		//TODO look at the todo above
+		//draw_rectangle(dstrect.x -1, dstrect.y -1, image->w +2, image->h+2, color, screen);
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 		x += image->w + size_specs_.brush_padding;
 	}
