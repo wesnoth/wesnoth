@@ -663,6 +663,7 @@ set(libwesnoth-game_STAT_SRC
 	terrain_translation.cpp
 	text.cpp
 	time_of_day.cpp
+	tracer.cpp
 	video.cpp
 	theme.cpp
 	widgets/button.cpp
@@ -805,6 +806,7 @@ set(exploder_SRC
 	tools/exploder_composer.cpp
 	tools/dummy_video.cpp
 	sdl_utils.cpp
+	tracer.cpp
 	loadscreen_empty.cpp
 )
 
@@ -820,6 +822,7 @@ set(cutter_SRC
 	tools/exploder_cutter.cpp
 	tools/dummy_video.cpp
 	sdl_utils.cpp
+	tracer.cpp
 	loadscreen_empty.cpp
 )
 
@@ -870,6 +873,7 @@ set(wesmage_SRC
 	tools/dummy_video.cpp
 	tools/exploder_utils.cpp
 	sdl_utils.cpp
+	tracer.cpp
 	loadscreen_empty.cpp
 )
 

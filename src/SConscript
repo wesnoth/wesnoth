@@ -149,6 +149,7 @@ libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campa
 
 libwesnoth_sdl_sources = Split("""
     sdl_utils.cpp
+    tracer.cpp
     """)
 libwesnoth_sdl = client_env.Library("wesnoth_sdl", libwesnoth_sdl_sources)
 
@@ -558,6 +559,7 @@ wesmage_sources = Split("""
     tools/dummy_video.cpp
     tools/exploder_utils.cpp
     sdl_utils.cpp
+    tracer.cpp
     loadscreen_empty.cpp
     """)
 client_env.WesnothProgram("wesmage", wesmage_sources + [libwesnoth_core], have_client_prereqs, OBJPREFIX = "wesmage_", LIBS = ["$LIBS", "png"])
