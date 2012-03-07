@@ -113,7 +113,7 @@ def main(folder):
                 if line.startswith("skipped 'data/core'"): return ""
                 if line.startswith("preprocessing specified resource:"): return ""
 
-                mo = re.match(r"0 /tmp/wmlparser_.*?/(.*)\.plain", line)
+                mo = re.match(r"\d+ /tmp(?:/wmlparser_.*?/|/)(.*\.cfg).*", line)
                 if mo:
                     source.append("/tmp/" + mo.group(1))
                     return ""
@@ -121,8 +121,8 @@ def main(folder):
                 mo = re.match(".*--preprocess-defines(.*)", line)
                 if mo: return "Defines: " + mo.group(1) + "<br />"
                 
-                if source:
-                    line = line.replace(source[-1], "WML")
+                for s in source:
+                    line = line.replace(s, "WML")
                 
                 line = line.replace("included from WML:1", "")
                 rows = line.replace("included from", "\n&nbsp;included from").splitlines()
