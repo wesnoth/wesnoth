@@ -330,3 +330,22 @@ div.overview {
     border-radius: 1em 1em 1em 1em;
     border: solid 1px white;
 }
+
+div.portrait {
+    height: 200px;
+}
+
+div.portrait div {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.25;
+}
+
+div.portrait img {
+    position: absolute;
+    height: 200px;
+}

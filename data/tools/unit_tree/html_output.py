@@ -750,6 +750,7 @@ class HTMLOutput:
             if not fportrait: fportrait = portrait
             write('<img src="%s" alt="(image)" />\n' % mimage)
             write('<img src="%s" alt="(image)" />\n' % fimage)
+            image = mimage
         else:
             image, portrait = self.pic(unit, unit)
             write('<img src="%s" alt="(image)" />\n' % image)
@@ -848,14 +849,14 @@ class HTMLOutput:
             if not icon:
                 icon = "attacks/%s.png" % aid
 
-            image = image_collector.add_image_check(self.addon,
+            image_add = image_collector.add_image_check(self.addon,
                 icon, no_tc = True)
-            if not image.ipath:
+            if not image_add.ipath:
                 error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                     icon, uid))
                 icon = os.path.join(pics_location, "unit$elves-wood$shaman.png")
             else:
-                icon = os.path.join(pics_location, image.id_name)
+                icon = os.path.join(pics_location, image_add.id_name)
             write("<td><img src=\"%s\" alt=\"(image)\"/></td>" % icon)
 
             write("<td><b>%s</b>" % aname)
@@ -930,14 +931,22 @@ class HTMLOutput:
         write('</div>')
         write('<div class="unit-column-right">')
 
-        if portrait:
-            write('<div class="portrait">')
-            if female:
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % fportrait)
+        for si in range(2):
+            if si and not female: break
+            if si:
+                sportrait = fportrait
+                simage = fimage
             else:
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
-            write('</div>\n')
+                simage = image
+                sportrait = portrait
+
+            style = "background-image: url(%s);" % simage
+
+            write('<div class="portrait">')
+            write('<div style="%s">&nbsp;</div>' % style)
+            if portrait:
+                write('<img src="%s" alt="(portrait)" />\n' % sportrait)
+            write('</div>')
 
         # Write info about movement costs and terrain defense.
         write("<h2>" + _("Terrain", "wesnoth-help") + "</h2>\n")
