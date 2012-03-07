@@ -200,12 +200,12 @@ private:
 		if(save.length() < 3 || save.substr(save.length() - 3) != ".gz") {
 			save += ".gz";
 		}
-	
+
 		config& cfg = data();
 		if (config& sv = cfg.find_child("save", "save", save)) {
 			return sv;
 		}
-	
+
 		config& res = cfg.add_child("save");
 		res["save"] = save;
 		return res;
@@ -225,7 +225,7 @@ private:
 			} catch(config::error&) {
 				ERR_SAVE << "error parsing save index config file\n";
 				data_.clear();
-			}	
+			}
 			loaded_ = true;
 		}
 		return data_;
@@ -266,7 +266,7 @@ public:
 std::vector<save_info> get_saves_list(const std::string* dir, const std::string* filter)
 {
 	create_save_info creator(dir);
-	
+
 	std::vector<std::string> filenames;
 	get_files_in_dir(creator.dir,&filenames);
 
