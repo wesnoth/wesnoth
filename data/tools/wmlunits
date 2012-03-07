@@ -9,1260 +9,340 @@ Run without arguments to see usage.
 # Makes things faster on 32-bit systems
 try: import psyco; psyco.full()
 except ImportError: pass
-
-import sys, os, re, glob, shutil, copy, urllib2, gc, optparse, gettext
-import time
+  
+import sys, os, glob, shutil, urllib2, optparse, traceback
+import subprocess, yaml
 
 import wesnoth.wmlparser2 as wmlparser2
 import unit_tree.helpers as helpers
 import unit_tree.animations as animations
-
-html_header = '''
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href=\"%(path)sstyle.css\" type=\"text/css\"/>
-<script type="text/javascript" src="%(path)s/menu.js"></script>
-<title>%(title)s</title>
-</head>
-<body><div>'''.strip()
-
-html_footer = '''
-<div id="footer">
-<p>%(generation_note)s</p>
-<p><a href="http://wiki.wesnoth.org/Site_Map">Site map</a></p>
-<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2012 The Battle for Wesnoth</p>
-<p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
-</div>
-</div>
-</body></html>
-'''.strip()
-
-error_only_once = {}
-def error_message(message):
-    if message in error_only_once: return
-    error_only_once[message] = 1
-    sys.stderr.write(message)
-
-helpers.error_message = error_message
-
-def reset_errors():
-    error_only_once = {}
-
-class Translation:
-    def __init__(self, localedir, langcode):
-        self.catalog = {}
-        self.localedir = localedir
-        self.langcode = langcode
-        class Dummy:
-            def ugettext(self, x):
-                if not x: return ""
-                caret = x.find("^")
-                if caret < 0: return x
-                return x[caret + 1:]
-        self.dummy = Dummy()
-
-    def translate(self, string, textdomain):
-        if textdomain not in self.catalog:
-            try:
-                self.catalog[textdomain] = gettext.translation(
-                    textdomain, self.localedir, [self.langcode])
-                self.catalog[textdomain].add_fallback(self.dummy)
-            except IOError:
-                self.catalog[textdomain] = self.dummy
-            except IndexError:
-                # not sure why, but this happens within the
-                # gettext.translation call sometimes
-                self.catalog[textdomain] = self.dummy
-
-        r = self.catalog[textdomain].ugettext(string)
-
-        return r
-
-class GroupByRace:
-    def __init__(self, wesnoth, campaign):
-        self.wesnoth = wesnoth
-        self.campaign = campaign
-
-    def unitfilter(self, unit):
-        if not self.campaign: return True
-        return self.campaign in unit.campaigns
-
-    def groups(self, unit):
-        return [unit.race]
-
-    def group_name(self, group):
-        if not group: return "None"
-        return T(group, "plural_name")
-
-class GroupByFaction:
-    def __init__(self, wesnoth, era):
-        self.wesnoth = wesnoth
-        self.era = era
-
-    def unitfilter(self, unit):
-        return self.era in unit.eras
-
-    def groups(self, unit):
-        return [x for x in unit.factions if x[0] == self.era]
-
-    def group_name(self, group):
-        era = self.wesnoth.era_lookup[group[0]]
-        faction = era.faction_lookup[group[1]]
-        name = T(faction, "name")
-        name = name[name.rfind("=") + 1:]
-        #name = T(era, "name") + " / " + name
-        return name
-
-global_htmlout = None
-def T(tag, att):
-    return tag.get_text_val(att, translation=global_htmlout.translate)
-
-class HTMLOutput:
-    def __init__(self, isocode, output, campaign, wesnoth, verbose=False):
-        global global_htmlout
-        self.output = output
-        self.campaign = campaign
-        self.verbose = verbose
-        self.target = "index.html"
-        self.mainline = False
-        self.wesnoth = wesnoth
-        self.forest = None
-        self.translation = Translation(options.transdir, isocode)
-        self.isocode = isocode
-        global_htmlout = self
-
-    def translate(self, string, domain):
-        return self.translation.translate(string, domain)
-
-    def analyze_units(self, grouper):
-        """
-        This takes all units belonging to a campaign, then groups them either
-        by race or faction, and creates an advancements tree out of it.
-        """
-
-        # Build an advancement tree forest of all units.
-        forest = self.forest = helpers.UnitForest()
-        units_added = {}
-        for uid, u in self.wesnoth.unit_lookup.items():
-            if grouper.unitfilter(u):
-                forest.add_node(helpers.UnitNode(u))
-                units_added[uid] = u
-
-        # Always add any child units, even if they have been filtered out..
-        while units_added:
-            new_units_added = {}
-            for uid, u in units_added.items():
-                for auid in u.advance:
-                    if not auid in units_added:
-                        try:
-                            au = self.wesnoth.unit_lookup[auid]
-                        except KeyError:
-                            error_message(
-                                "Warning: Unit %s not found as advancement of %s\n" %
-                                (auid, repr(uid)))
-                            continue
-                        forest.add_node(helpers.UnitNode(au))
-                        new_units_added[auid] = au
-            units_added = new_units_added
-
-
-        forest.update()
-
-        # Partition trees by race/faction of first unit.
-        groups = {}
-        breadth = 0
-
-        for tree in forest.trees.values():
-            u = tree.unit
-            ugroups = grouper.groups(u)
-            for group in ugroups:
-                groups[group] = groups.get(group, []) + [tree]
-                breadth += tree.breadth
-
-        thelist = groups.keys()
-        thelist.sort()
-
-        rows_count = breadth + len(thelist)
-        # Create empty grid.
-        rows = []
-        for j in range(rows_count):
-            column = []
-            for i in range(6):
-                column.append((1, 1, None))
-            rows.append(column)
-
-        # Sort advancement trees by name of first unit and place into the grid.
-        def by_name(t1, t2):
-            u1 = t1.unit
-            u2 = t2.unit
-
-            u1name = T(u1, "name")
-            u2name = T(u2, "name")
-            return cmp(u1name, u2name)
-
-        def grid_place(nodes, x):
-            nodes.sort(by_name)
-            for node in nodes:
-                level = node.unit.level
-                rows[x][level] = (1, node.breadth, node)
-                for i in range(1, node.breadth):
-                    rows[x + i][level] = (0, 0, node)
-                grid_place(node.children, x)
-                x += node.breadth
-            return x
-
-        x = 0
-        for group in thelist:
-            node = helpers.GroupNode(group)
-            node.name = grouper.group_name(group)
-
-            rows[x][0] = (6, 1, node)
-            for i in range(1, 6):
-                rows[x][i] = (0, 0, None)
-            nodes = groups[group]
-            x += 1
-            x = grid_place(nodes, x)
-
-        self.unitgrid = rows
-
-    def write_navbar(self, report_type):
-        def write(x): self.output.write(x)
-
-        languages = find_languages()
-        langlist = languages.keys()
-        langlist.sort()
-
-        write("""
-        <div class="header">
-        <a href="http://www.wesnoth.org">
-        <img src="../wesnoth-logo.jpg" alt="Wesnoth logo"/>
-        </a>
-        </div>
-        <div class="topnav">
-        <a href="../index.html">Wesnoth Units database</a>
-        </div>
-
-        <div class="navbar">
-        """)
-
-        write("<ul class=\"navbar\">")
-
-        def abbrev(name):
-            abbrev = name[0]
-            word_seperators = [" ", "_", "+", "(", ")"]
-            for i in range(1, len(name)):
-                if name[i] in ["+", "(", ")"] or name[i - 1] in word_seperators and name[i] not in word_seperators:
-                    abbrev += name[i]
-            return abbrev
-
-        def add_menu(id, name, class2=""):
-            write("""<li class="popuptrigger"
-                onclick="toggle_menu(this, '""" + id + """', 2)"
-                onmouseover="toggle_menu(this, '""" + id + """', 1)"
-                onmouseout="toggle_menu(this, '""" + id + """', 0)">""")
-            write('<a class="' + class2 + '">' + name + "</a>")
-            write('<div class="popupmenu" id="' + id + '">')
-            write("<div>" + name + "</div>")
-
-        # Campaigns
-        x = self.translate("addon_type^Campaign", "wesnoth")
-        add_menu("campaigns_menu", x)
-
-        cids = [[], []]
-        for cid in self.wesnoth.campaign_lookup.keys():
-            if cid in self.wesnoth.is_mainline_campaign:
-                cids[0].append(cid)
-            else:
-                cids[1].append(cid)
-
-        for i in range(2):
-            cnames = cids[i]
-            cnames.sort()
-            if i == 0:
-                cnames = ["mainline"] + cnames
-            for cname in cnames:
-                lang = self.isocode
-                if cname == "mainline":
-                    campname = self.translate("Units", "wesnoth-manual")
-                    campabbrev = campname
-                else:
-                    if not cname in self.wesnoth.is_mainline_campaign:
-                        lang = "en_US" # only mainline campaigns have translations right now
-                    campname = T(self.wesnoth.campaign_lookup[cname], "name")
-                    if not campname:
-                        campname = cname
-                    campabbrev = campname
-                    #campabbrev = T(self.wesnoth.campaign_lookup[cname], "abbrev")
-                    #if not campabbrev:
-                    #    campabbrev = abbrev(campname)
-
-                write(" <a title=\"%s\" href=\"../%s/%s.html\">%s</a><br/>\n" % (
-                    campname, lang, cname, campabbrev))
-            if i == 0 and cids[1]:
-                write("-<br/>\n")
-        write("</div></li>\n")
-
-        # Eras
-        x = self.translate("Era", "wesnoth")
-        add_menu("eras_menu", x)
-
-        eids = [[], []]
-        for eid in self.wesnoth.era_lookup.keys():
-            if eid in self.wesnoth.is_mainline_era:
-                eids[0].append(eid)
-            else:
-                eids[1].append(eid)
-        for i in range(2):
-            lang = self.isocode
-            if i == 1: lang = "en_US" # only mainline translations
-            eranames = [(T(self.wesnoth.era_lookup[eid], "name"),
-                eid) for eid in eids[i]]
-            eranames.sort()
-            for eraname, eid in eranames:
-                write(" <a title=\"%s\" href=\"../%s/%s.html\">%s</a><br/>" % (
-                    eraname, lang, eid, eraname))#abbrev(eraname)))
-            if i == 0 and eids[1]:
-                write("-<br/>\n")
-        write("</div></li>\n")
-
-        # Races / Factions
-
-        if self.campaign == "mainline" or self.campaign == "units":
-            x = self.translate("Race", "wesnoth-lib")
-            add_menu("races_menu", x)
-
-            write("<a href=\"mainline.html\">%s</a><br/>\n" % (
-                self.translate("all", "wesnoth-editor")))
-
-            r = {}, {}
-            for u in self.wesnoth.unit_lookup.values():
-                if self.campaign not in u.campaigns: continue
-
-                race = u.race
-                racename = T(race, "plural_name")
-                m = 1
-                if u and u.campaigns[0] in self.wesnoth.is_mainline_campaign:
-                    m = 0
-                if u.campaigns[0] == "mainline":
-                    m = 0
-                r[m][racename] = race.get_text_val("id")
-            racenames = sorted(r[0].items())
-            if r[1].items():
-                racenames += [("-", "-")] + sorted(r[1].items())
-
-            for racename, rid in racenames:
-                if racename == "-":
-                    write(" -<br/>")
-                else:
-                    write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
-                        racename, racename))
-
-            write("</div></li>\n")
-        else:
-            x = self.translate("Factions", "wesnoth-help")
-            add_menu("races_menu", x)
-
-            for row in self.unitgrid:
-                for column in range(6):
-                    hspan, vspan, un = row[column]
-                    if not un: continue
-                    if isinstance(un, helpers.GroupNode):
-                        html = "../%s/%s.html" % (
-                            self.isocode, self.campaign)
-                        write(" <a href=\"%s#%s\">%s</a><br/>" % (
-                            html, un.name, un.name))
-
-            write("</div></li>\n")
-
-        # Add entries for the races also to the navbar itself.
-        if 1:
-            camp = self.campaign
-            if camp == "units": camp = "mainline"
-            class Entry: pass
-            races = {}
-
-            for uid, u in self.wesnoth.unit_lookup.items():
-                if camp not in u.campaigns: continue
-                if u.race:
-                    racename = T(u.race, "plural_name")
-                else:
-                    racename = "none"
-                runits = races.get(racename, [])
-                runits.append(uid)
-                races[racename] = runits
-
-            racelist = sorted(races.keys())
-            got_menu = False
-            menuid = 0
-            for r in racelist:
-                if got_menu: write("</div></li>\n")
-                add_menu("units_menu" + str(menuid), r, "unitmenu")
-                menuid += 1
-                got_menu = True
-                link = "../%s/%s.html" % (self.isocode, camp)
-                write("<a href=\"%s#%s\">%s</a><br/>" % (
-                    link, r, r))
-                for uid in races[r]:
-                    un = self.wesnoth.unit_lookup[uid]
-                    link = "../%s/%s.html" % (self.isocode, uid)
-                    name = self.wesnoth.get_unit_value(un,
-                        "name", translation=self.translation.translate)
-                    if not name:
-                        error_message("Warning: Unit uid=" + uid + " has no name.\n")
-                        name = uid
-                    write("<a href=\"" + link + "\">" + name + "</a><br />")
-
-            if got_menu: write("</div></li>\n")
-
-        # Languages
-        x = self.translate("Language", "wesnoth")
-        add_menu("languages_menu", x)
-        col = 0
-        maxcol = len(langlist) - 1
-        write("<table>")
-        write("<tr>")
-        for lang in langlist:
-            col += 1
-            write("<td>")
-            labb = lang
-            underscore = labb.find("_")
-            if underscore > 0: labb = labb[:underscore]
-            
-            if self.mainline:
-                write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
-                    languages[lang], lang, self.target,
-                        labb))
-            else:
-                write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
-                    languages[lang], lang, "mainline.html",
-                        labb))    
-            write("</td>")
-            if col % 5 == 0:
-                if col < maxcol: write("</tr><tr>")
-
-        write("</tr>")
-        write("</table>")
-        write("</div></li>\n")
-
-        write("</ul>\n")
-
-        write("</div>\n")
-
-    def pic(self, u, x):
-        image = self.wesnoth.get_unit_value(x, "image")
-        portrait = x.get_all(tag="portrait")
-        if not portrait:
-            bu = self.wesnoth.get_base_unit(u)
-            if bu:
-                portrait = bu.get_all(tag="portrait")
-        if portrait:
-            portrait = portrait[0].get_text_val("image")
-        if not image:
-            if x.name == "female":
-                baseunit = self.wesnoth.get_base_unit(u)
-                if baseunit:
-                    female = baseunit.get_all(tag="female")
-                    return self.pic(u, female[0])
-                else:
-                    return self.pic(u, u)
-            error_message(
-                "Warning: Missing image for unit %s(%s).\n" % (
-                u.get_text_val("id"), x.name))
-            return None, None
-        picname = image_collector.add_image(u.campaigns[0], image)
-        image = os.path.join("../pics", picname)
-        if portrait:
-            picname = image_collector.add_image(u.campaigns[0], portrait,
-                no_tc=True)
-            portrait = os.path.join("../pics", picname)
-        return image, portrait
-
-    def get_abilities(self, u):
-        anames = []
-        already = {}
-        for abilities in u.get_all(tag="abilities"):
-            try: c = abilities.get_all()
-            except AttributeError: c = []
-            for ability in c:
-                id = ability.get_text_val("id")
-                if id in already: continue
-                already[id] = True
-                name = T(ability, "name")
-                if not name: name = id
-                if not name: name = ability.name
-                anames.append(name)
-        return anames
-
-    def get_recursive_attacks(self, this_unit):
-
-        def copy_attributes(copy_from, copy_to):
-            for c in copy_from.data:
-                if isinstance(c, wmlparser2.AttributeNode):
-                    copy_to.data.append(c)
-
-        # Use attacks of base_units as base, if we have one.
-        base_unit = self.wesnoth.get_base_unit(this_unit)
-        attacks = []
-        if base_unit:
-            attacks = copy.deepcopy(self.get_recursive_attacks(base_unit))
-
-        base_attacks_count = len(attacks)
-        for i, attack in enumerate(this_unit.get_all(tag="attack")):
-            # Attack merging is order based.
-            if i < base_attacks_count:
-                copy_attributes(attack, attacks[i])
-            else:
-                attacks.append(attack)
-
-        return attacks
-
-    def write_units(self):
-        def write(x): self.output.write(x)
-        def _(x, c="wesnoth"): return self.translate(x, c)
-        rows = self.unitgrid
-        write("<table class=\"units\">\n")
-        write("<colgroup>")
-        for i in range(6):
-            write("<col class=\"col%d\" />" % i)
-        write("</colgroup>")
-
-        pic = image_collector.add_image("mainline",
-            "../../../images/misc/leader-crown.png", no_tc=True)
-        crownimage = os.path.join("../pics", pic)
-        ms = None
-        for row in range(len(rows)):
-            write("<tr>\n")
-            for column in range(6):
-                hspan, vspan, un = rows[row][column]
-                if vspan:
-                    attributes = ""
-                    if hspan == 1 and vspan == 1:
-                        pass
-                    elif hspan == 1:
-                        attributes += " rowspan=\"%d\"" % vspan
-                    elif vspan == 1:
-                        attributes += " colspan=\"%d\"" % hspan
-
-                    if un and isinstance(un, helpers.GroupNode):
-                        # Find the current multiplayer side so we can show the
-                        # little crowns..
-                        ms = None
-                        try:
-                            eid, fid = un.data
-                            era = self.wesnoth.era_lookup[eid]
-                            ms = era.faction_lookup[fid]
-                        except TypeError:
-                            pass
-                        racename = un.name
-                        attributes += " class=\"raceheader\""
-                        write("<td%s>" % attributes)
-                        write("<a name=\"%s\">%s</a>" % (racename, racename))
-                        write("</td>\n")
-                    elif un:
-                        u = un.unit
-                        attributes += " class=\"unitcell\""
-                        write("<td%s>" % attributes)
-
-                        uid = u.get_text_val("id")
-                        def uval(name):
-                            return self.wesnoth.get_unit_value(u, name,
-                                translation=self.translation.translate)
-                        name = uval("name")
-                        cost = uval("cost")
-                        hp = uval("hitpoints")
-                        mp = uval("movement")
-                        xp = uval("experience")
-                        level = uval("level")
-
-                        crown = ""
-                        if ms:
-                            if un.id in ms.units:
-                                crown = u" ♟"
-                            if un.id in ms.is_leader:
-                                crown = u" ♚"
-
-                        link = "../%s/%s.html" % (self.isocode, uid)
-                        write("<div class=\"i\"><a href=\"%s\" title=\"id=%s\">%s</a>" % (
-                            link, uid, u"i"))
-                        write("</div>")
-                        write("<div class=\"l\">L%s%s</div>" % (level, crown))
-                        write("<a href=\"%s\">%s</a><br/>" % (link, name))
-
-                        write('<div class="pic">')
-                        image, portrait = self.pic(u, u)
-
-                        write('<a href=\"%s\">' % link)
-
-                        if crown == u" ♚":
-                            write('<div style="background: url(%s)">' % image)
-                            write('<img src="%s" alt="(image)" />' % crownimage)
-                            write("</div>")
-                        else:
-                            write('<img src="%s" alt="(image)" />' % image)
-
-                        write('</a>\n</div>\n')
-                        write("<div class=\"attributes\">")
-                        write("%s%s<br />" % (_("Cost: ", "wesnoth-help"), cost))
-                        write("%s%s<br />" % (_("HP: "), hp))
-                        write("%s%s<br />" % (_("MP: "), mp))
-                        write("%s%s<br />" % (_("XP: "), xp))
-
-                        # Write info about abilities.
-                        anames = self.get_abilities(u)
-                        if anames:
-                            write("\n<div style=\"clear:both\">")
-                            write(", ".join(anames))
-                            write("</div>")
-
-                        # Write info about attacks.
-                        write("\n<div style=\"clear:both\">")
-                        attacks = self.get_recursive_attacks(u)
-                        for attack in attacks:
-
-                            n = T(attack, "number")
-                            x = T(attack, "damage")
-                            x = "%s - %s" % (x, n)
-                            write("%s " % x)
-
-                            r = T(attack, "range")
-                            t = T(attack, "type")
-                            write("%s (%s)" % (_(r), _(t)))
-
-                            s = []
-                            specials = attack.get_all(tag="specials")
-                            if specials:
-                                for special in specials[0].get_all(tag=""):
-                                    sname = T(special, "name")
-                                    if sname:
-                                        s.append(sname)
-                                s = ", ".join(s)
-                                if s: write(" (%s)" % s)
-                            write("<br />")
-                        write("</div>")
-
-                        write("</div>")
-                        write("</td>\n")
-                    else:
-                        write("<td class=\"empty\"></td>")
-            write("</tr>\n")
-        write("</table>\n")
-
-    def write_units_tree(self, grouper, title):
-        self.output.write(html_header % {"path": "../",
-            "title": title})
-
-        self.analyze_units(grouper)
-        self.write_navbar("units_tree")
-
-        self.output.write("<div class=\"main\">")
-
-        self.output.write("<h1>%s</h1>" % title)
-
-        self.write_units()
-
-        self.output.write('<div id="clear" style="clear:both;"></div>')
-        self.output.write("</div>")
-
-        self.output.write(html_footer % {
-            "generation_note": "generated on " + time.ctime()})
-
-    def write_unit_report(self, output, unit):
-        def write(x): self.output.write(x)
-        def _(x, c="wesnoth"): return self.translate(x, c)
-
-        def find_attr(what, key):
-            if unit.movetype:
-                mtx = unit.movetype.get_all(tag=what)
-                mty = None
-                if mtx:
-                    mty = mtx[0].get_text_val(key)
-            x = unit.get_all(tag=what)
-            y = None
-            if x:
-                y = x[0].get_text_val(key,
-                translation=self.translation.translate)
-            if y:
-                return True, y
-            if unit.movetype and mty != None:
-                return False, mty
-            return False, "-"
-
-        def uval(name):
-            return self.wesnoth.get_unit_value(unit, name,
-                translation=self.translation.translate)
-
-        # Write unit name, picture and description.
-        uid = unit.get_text_val("id")
-        uname = uval("name")
-        display_name = uname
-
-        self.output = output
-        write(html_header % {"path": "../",
-            "title": display_name})
-        self.write_navbar("unit_report")
-
-        self.output.write("<div class=\"main\">")
-
-        female = unit.get_all(tag="female")
-        if female:
-            fname = T(female[0], "name")
-            if fname and fname != uname:
-                display_name += "<br/>" + fname
-
-        write('<div class="unit-columns">')
-
-        write('<div class="unit-column-left">')
-
-        write("<h1>%s</h1>\n" % display_name)
-
-        write('<div class="pic">')
-        if female:
-            mimage, portrait = self.pic(unit, unit)
-            fimage, fportrait = self.pic(unit, female[0])
-            if not fimage: fimage = mimage
-            if not fportrait: fportrait = portrait
-            write('<img src="%s" alt="(image)" />\n' % mimage)
-            write('<img src="%s" alt="(image)" />\n' % fimage)
-        else:
-            image, portrait = self.pic(unit, unit)
-            write('<img src="%s" alt="(image)" />\n' % image)
-        write('</div>\n')
-
-        description = uval("description")
-
-        # TODO: what is unit_description?
-        if not description: description = uval("unit_description")
-        if not description: description = "-"
-        write("<p>%s</p>\n" % re.sub("\n", "\n<br />", description))
-
-        # Base info.
-        hp = uval("hitpoints")
-        mp = uval("movement")
-        xp = uval("experience")
-        level = uval("level")
-        alignment = uval("alignment")
-
-        write("<h2>Information</h2>\n")
-        write("<table class=\"unitinfo\">\n")
-        write("<tr>\n")
-        write("<td>%s" % _("Advances from: ", "wesnoth-help"))
-        write("</td><td>\n")
-        for pid in self.forest.get_parents(uid):
-            punit = self.wesnoth.unit_lookup[pid]
-            if unit.campaigns[0] == "mainline" and punit.campaigns[0] != "mainline":
-                continue
-            link = "../%s/%s.html" % (self.isocode, pid)
-            name = self.wesnoth.get_unit_value(punit, "name",
-                translation=self.translation.translate)
-            write("\n<a href=\"%s\">%s</a>" % (link, name))
-        write("</td>\n")
-        write("</tr><tr>\n")
-        write("<td>%s" % _("Advances to: ", "wesnoth-help"))
-        write("</td><td>\n")
-        for cid in self.forest.get_children(uid):
-            link = "../%s/%s.html" % (self.isocode, cid)
-            try:
-                cunit = self.wesnoth.unit_lookup[cid]
-                if unit.campaigns[0] == "mainline" and cunit.campaigns[0] != "mainline":
-                    continue
-                name = self.wesnoth.get_unit_value(cunit, "name",
-                    translation=self.translation.translate)
-            except KeyError:
-                error_message("Warning: Unit %s not found.\n" % cid)
-                name = cid
-                if unit.campaigns[0] == "mainline": continue
-            write("\n<a href=\"%s\">%s</a>" % (link, name))
-        write("</td>\n")
-        write("</tr>\n")
-
-        for val, text in [
-            ("cost", _("Cost: ", "wesnoth-help")),
-            ("hitpoints", _("HP: ")),
-            ("movement", _("Movement", "wesnoth-help") + ": "),
-            ("experience", _("XP: ")),
-            ("level", _("Level") + ": "),
-            ("alignment", _("Alignment: ")),
-            ("id", "ID")]:
-            write("<tr>\n")
-            write("<td>%s</td>" % text)
-            x = uval(val)
-            if val == "alignment": x = _(x)
-            write("<td class=\"val\">%s</td>" % x)
-            write("</tr>\n")
-
-        # Write info about abilities.
-        anames = self.get_abilities(unit)
-
-        write("<tr>\n")
-        write("<td>%s</td>" % _("Abilities: ", "wesnoth-help"))
-        write("<td class=\"val\">" + (", ".join(anames)) + "</td>")
-        write("</tr>\n")
-
-        write("</table>\n")
-
-        # Write info about attacks.
-        write("<h2>" + _("unit help^Attacks", "wesnoth-help") + " <small>(damage - count)</small></h2> \n")
-        write("<table class=\"unitinfo attacks\">\n")
-        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
-        attacks = self.get_recursive_attacks(unit)
-        for attack in attacks:
-            write("<tr>")
-
-            aid = attack.get_text_val("name")
-            aname = T(attack, "description")
-
-            icon = attack.get_text_val("icon")
-            if not icon:
-                icon = "attacks/%s.png" % aid
-
-            picname, error = image_collector.add_image_check(
-                unit.campaigns[0], icon, no_tc=True)
-            if error:
-                error_message("Error: No attack icon '%s' found for '%s'.\n" % (
-                    icon, uid))
-            icon = os.path.join("../pics", picname)
-            write("<td><img src=\"%s\" alt=\"(image)\"/></td>" % icon)
-
-            write("<td><b>%s</b>" % aname)
-
-            r = T(attack, "range")
-            write("<br/>%s</td>" % _(r))
-
-            n = attack.get_text_val("number")
-            x = attack.get_text_val("damage")
-            x = "%s - %s" % (x, n)
-            write("<td><i>%s</i>" % x)
-
-            t = T(attack, "type")
-            write("<br/>%s</td>" % _(t))
-
-            s = []
-            specials = attack.get_all(tag="specials")
-            if specials:
-                for special in specials[0].get_all(tag=""):
-                    sname = T(special, "name")
-                    if sname:
-                        s.append(sname)
-                    else:
-                        error_message(
-                            "Warning: Weapon special %s has no name for %s.\n" % (
-                            special.name, uid))
-            s = "<br/>".join(s)
-            write("<td>%s</td>" % s)
-
-
-            write("</tr>")
-        write("</table>\n")
-
-        # Write info about resistances.
-        resistances = [
-            ("blade", "attacks/sword-human.png"),
-            ("pierce", "attacks/spear.png"),
-            ("impact", "attacks/club.png"),
-            ("fire", "attacks/fireball.png"),
-            ("cold", "attacks/iceball.png"),
-            ("arcane", "attacks/faerie-fire.png")]
-
-        write("<h2>%s</h2>\n" % _("Resistances: ").strip(" :"))
-        write("<table class=\"unitinfo resistances\">\n")
-        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /><col class="col5" /><col class="col6" /><col class="col7" /></colgroup>')
-        write("<tr>\n")
-
-        write("</tr>\n")
-        row = 0
-        for rid, ricon in resistances:
-            special, r = find_attr("resistance", rid)
-            if r == "-": r = 100
-            try: r = "<i>%d%%</i>" % (100 - int(r))
-            except ValueError:
-                error_message("Warning: Invalid resistance %s for %s.\n" % (
-                    r, uid))
-            rcell = "td"
-            if special: rcell += ' class="special"'
-            if row % 2 == 0: write("<tr>\n")
-            else: write("<td></td>")
-            picname = image_collector.add_image("mainline", ricon,
-                no_tc=True)
-            icon = os.path.join("../pics", picname)
-            write("<td><img src=\"%s\" alt=\"(icon)\" /></td>\n" % (icon, ))
-            write("<th>%s</th><td class=\"num\">%s</td>\n" % (_(rid), r))
-            if row % 2 == 1: write("</tr>\n")
-            row += 1
-        write("</table>\n")
-
-        # end left column
-        write('</div>')
-        write('<div class="unit-column-right">')
-
-        if portrait:
-            write('<div class="portrait">')
-            if female:
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % fportrait)
-            else:
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
-            write('</div>\n')
-
-        # Write info about movement costs and terrain defense.
-        write("<h2>" + _("Terrain", "wesnoth-help") + "</h2>\n")
-        write("<table class=\"unitinfo terrain\">\n")
-        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
-
-        write("<tr><th colspan=\"2\"></th><th colspan=\"2\">%s</th></tr>\n" % (
-            _("Movement Cost", "wesnoth-help")))
-        write("<tr><th colspan=\"2\">%s</th><th></th><th class=\"numheader\">%s</th></tr>\n" % (
-            _("Terrain", "wesnoth-help"), _("Defense", "wesnoth-help")))
-
-        terrains = self.wesnoth.terrain_lookup
-        terrainlist = []
-        already = {}
-        for tstring, t in terrains.items():
-            tid = t.get_text_val("id")
-            if tid in ["off_map", "off_map2", "fog", "shroud", "impassable", "void"]: continue
-            if t.get_all(att="aliasof"): continue
-            if tid in already: continue
-            already[tid] = 1
-            name = T(t, "name")
-            ticon = t.get_text_val("symbol_image")
-            if tid == "flat": ticon = "grass/green-symbol"
-            elif tid == "frozen": ticon = "frozen/ice"
-            elif tid == "unwalkable": ticon = "unwalkable/lava"
-            elif tid == "village": ticon = "village/human-tile"
-            elif tid == "forest": ticon = "forest/pine-tile"
-            terrainlist.append((name, tid, ticon))
-        terrainlist.sort()
-
-        for tname, tid, ticon in terrainlist:
-            not_from_race, c = find_attr("movement_costs", tid)
-
-            ccell = "td"
-            if c == "99": ccell += ' class="grayed"'
-            dcell = "td"
-            not_from_race, d = find_attr("defense", tid)
-
-            if d == "-": d = 100
-            try: d = "%d%%" % (100 - int(d))
-            except ValueError:
-                error_message("Warning: Invalid defense %s for %s.\n" % (
-                    d, uid))
-
-            write("<tr>\n")
-            picname = image_collector.add_image("mainline",
-                "terrain/" + ticon + ".png", no_tc=True)
-            icon = os.path.join("../pics", picname)
-            write("<td><img src=\"%s\"  alt=\"(icon)\" /></td>\n" % (icon, ))
-            write("<td>%s</td><%s><i>%s</i></td><%s class=\"num\"><i>%s</i></td>\n" % (
-                tname, ccell, c, dcell, d))
-            write("</tr>\n")
-        write("</table>\n")
-
-        write('</div>') # right column
-
-        write('</div>') # columns parent
-
-        self.output.write('<div id="clear" style="clear:both;"></div>')
-        write('</div>') # main
-
-        self.output.write(html_footer % {
-            "generation_note": "generated on " + time.ctime()})
-
-languages_found = {}
-def find_languages():
-    """
-    Returns a dictionary mapping isocodes to languages.
-    """
-    global languages
-    if languages_found: return languages_found
-    parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
-        options.data_dir, no_preprocess=False)
-    parser.parse_text("{languages}")
-
-    for locale in parser.get_all(tag="locale"):
-        isocode = locale.get_text_val("locale")
-        name = locale.get_text_val("name")
-        if isocode == "ang_GB":
-            continue
-        languages_found[isocode] = name
-    return languages_found
-
-class MyFile:
-    """
-    I don't understand why this is needed..
-    """
-    def __init__(self, filename, mode):
-        self.f = open(filename, mode)
-    def write(self, x):
-        x = x.encode("utf8")
-        self.f.write(x)
-    def close(self):
-        self.f.close()
-
-def generate_campaign_report(out_path, isocode, campaign, wesnoth):
-    path=os.path.join(out_path, isocode)
-    if not os.path.isdir(path): os.mkdir(path)
-    output = MyFile(os.path.join(path, "%s.html" % campaign), "w")
-    html = HTMLOutput(isocode, output, campaign, wesnoth)
-    html.target = "%s.html" % campaign
-    grouper = GroupByRace(wesnoth, campaign)
-
-    if campaign == "mainline":
-        title = html.translate("Units", "wesnoth-help")
-        html.mainline = True
-    else:
-        title = wesnoth.campaign_lookup[campaign].get_text_val("name",
-            translation=html.translate)
-        if not title:
-            title = campaign
-
-    html.write_units_tree(grouper, title)
-
-def generate_era_report(out_path, isocode, eid, wesnoth):
-    path = os.path.join(out_path, isocode)
-    if not os.path.isdir(path): os.mkdir(path)
-    
-    output = MyFile(os.path.join(path, "%s.html" % eid), "w")
-    html = HTMLOutput(isocode, output, eid, wesnoth)
-    html.target = "%s.html" % eid
-    
-    if eid in wesnoth.is_mainline_era:
-        html.mainline = True
-    
-    grouper = GroupByFaction(wesnoth, eid)
-    era = wesnoth.era_lookup[eid]
-    ename = era.get_text_val("name", translation=html.translate)
-    html.write_units_tree(grouper, ename)
-
-def generate_single_unit_reports(out_path, isocode, wesnoth):
-
-    odir = os.path.join(out_path, isocode)
-    if not os.path.isdir(odir):
-        os.mkdir(odir)
-
-    html = HTMLOutput(isocode, None, "units", wesnoth)
-    grouper = GroupByRace(wesnoth, None)
-    html.analyze_units(grouper)
-
-    for uid, unit in wesnoth.unit_lookup.items():
-        if isocode != "en_US" and not uid in wesnoth.is_mainline_unit: continue
-        output = MyFile(os.path.join(odir, "%s.html" % uid), "w")
-        html.target = "%s.html" % uid
-        html.mainline = uid in wesnoth.is_mainline_unit
-        html.write_unit_report(output, unit)
-
-def write_index(out_path):
-    output = MyFile(os.path.join(out_path, "index.html"), "w")
-    output.write("""
-    <html><head>
-    <meta http-equiv="refresh" content="0;url=en_US/mainline.html">
-    </head>
-    <body>
-    <a href="en_US/mainline.html">Redirecting to Wesnoth units database...</a>
-    </body>
-    </html>
-    """)
+import unit_tree.html_output as html_output
+import unit_tree.overview
 
 def copy_images():
-    if not options.nocopy:
-        print("Recolorizing pictures.")
-        image_collector.copy_and_color_images(options.output)
-        shutil.copy2(os.path.join(image_collector.datadir,
-            "data/tools/unit_tree/style.css"), options.output)
-        shutil.copy2(os.path.join(image_collector.datadir,
-            "data/tools/unit_tree/menu.js"), options.output)
-        for grab in [
-            "http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg",
-            "http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg",
-            "http://www.wesnoth.org/mw/skins/glamdrol/navbg.png"]:
-            local = os.path.join(options.output, grab[grab.rfind("/") + 1:])
-            if not os.path.exists(local):
-                print "Fetching", grab
-                url = urllib2.urlopen(grab)
-                file(local, "w").write(url.read())
+    print("Recolorizing pictures.")
+    image_collector.copy_and_color_images(options.output)
+    shutil.copy2(os.path.join(image_collector.datadir,
+        "data/tools/unit_tree/style.css"), options.output)
+    shutil.copy2(os.path.join(image_collector.datadir,
+        "data/tools/unit_tree/menu.js"), options.output)
+    for grab in [
+        "http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg",
+        "http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg",
+        "http://www.wesnoth.org/mw/skins/glamdrol/navbg.png"]:
+        local = os.path.join(options.output, grab[grab.rfind("/") + 1:])
+        if not os.path.exists(local):
+            print "Fetching", grab
+            url = urllib2.urlopen(grab)
+            file(local, "w").write(url.read())
 
-def parse_game():
-    stuff = helpers.WesnothList(
+def shell(com):
+    #print(com)
+    p = subprocess.Popen(com, stdout = subprocess.PIPE,
+        stderr = subprocess.PIPE, shell = True)
+    out, err = p.communicate()
+    #if out: sys.stdout.write(out)
+    #if err: sys.stdout.write(err)
+
+    return p.returncode
+
+def bash(name):
+    return "'" + name.replace("'", "'\\''") + "'"
+
+def move(f, t, name):
+
+    if os.path.exists(f + "/" + name + ".cfg"):
+        com = "mv " + f + "/" + bash(name + ".cfg") + " " + t + "/"
+        shell(com)
+
+    com = "mv " + f + "/" + bash(name) + " " + t + "/"
+    return shell(com)
+
+def list_contents():
+    class Empty: pass
+    local = Empty()
+
+    mainline_eras = set()
+    filename = options.list
+    
+    def append(info, id, define, c = None, name = None, domain = None):
+        info.append({})
+        info[-1]["id"]= id
+        info[-1]["define"] = define
+        if c:
+            info[-1]["name"] = c.get_text_val("name")
+        else:
+            info[-1]["name"] = name
+        info[-1]["units"] = "?"
+        info[-1]["translations"] = {}
+        
+        info[-1]["translations"] = {}
+        for isocode in languages:
+            translation = html_output.Translation(options.transdir, isocode)
+            def translate(string, domain):
+                return translation.translate(string, domain)
+            if c:
+                info[-1]["translations"][isocode] = c.get_text_val("name",
+                    translation = translate)
+            else:
+                info[-1]["translations"][isocode] = translate(name, domain)
+
+    def list_eras(addon):
+        eras = local.wesnoth.parser.get_all(tag = "era")
+        if addon != "mainline":
+            eras = [x for x in eras if not x.get_text_val("id") in mainline_eras]
+        info = []
+        for era in eras:
+            eid = era.get_text_val("id")
+            if addon == "mainline":
+                mainline_eras.add(eid)
+            append(info, eid, "MULTIPLAYER", c = era)
+            
+
+        return info
+    
+    def list_campaigns(addon):
+        campaigns = local.wesnoth.parser.get_all(tag = "campaign")
+        info = []
+
+        for campaign in campaigns:
+            cid = campaign.get_text_val("id")
+            append(info, cid, campaign.get_text_val("define"), c = campaign)
+
+        return info
+
+    def parse(wml, defines):
+        local.wesnoth = helpers.WesnothList(
+            options.wesnoth,
+            options.config_dir,
+            options.data_dir,
+            options.transdir)
+        local.wesnoth.parser.parse_text(wml, defines)
+    
+    def get_version(addon):
+        try:
+            parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
+                options.data_dir, no_preprocess = False)
+            parser.parse_file(options.config_dir + "/data/add-ons/" + addon + "/_info.cfg")
+            for info in parser.get_all(tag = "info"):
+                return info.get_text_val("version") + "*" + info.get_text_val("uploads")
+        except wmlparser2.WMLError as e:
+            print(e)
+
+    try: os.makedirs(options.output + "/mainline")
+    except OSError: pass
+
+    try:
+        batchlist = yaml.load(open(options.list))
+    except IOError:
+        batchlist = []
+    
+    def search(name):
+        for info in batchlist:
+            if info and info["name"] == name: return info
+        batchlist.append({})
+        batchlist[-1]["name"] = name
+        return batchlist[-1]
+
+    print("mainline")
+
+    info = search("mainline")
+    info["version"] = "mainline"
+    info["parsed"] = "false"
+
+    parse("{core}{multiplayer/eras.cfg}", "SKIP_CORE")
+    info["eras"] = list_eras("mainline")
+
+    # Fake mainline campaign to have an overview of the mainline units
+    info["campaigns"] = []
+    append(info["campaigns"], "mainline", "", name = "Units", domain = "wesnoth-help")
+        
+    if not options.addons_only:
+
+        parse("{core}{campaigns}", "SKIP_CORE")
+        info["campaigns"] += list_campaigns("mainline")
+
+    addons = []
+    if options.addons:
+        addons = os.listdir(options.addons)
+    for i, addon in enumerate(addons):
+        if not os.path.isdir(options.addons + "/" + addon): continue
+        sys.stdout.write("%4d/%4d " % (1 + i, len(addons)) + addon + " ... ")
+        sys.stdout.flush()
+        d = options.output + "/" + addon
+        logname = d + "/error.log"
+        try: os.makedirs(d)
+        except OSError: pass
+        move(options.addons, options.config_dir + "/data/add-ons", addon)
+        try:
+            info = search(addon)
+
+            version = get_version(addon)
+            if info.get("version", "") == version and info.get("parsed", False) == True:
+                sys.stdout.write("up to date\n")
+                continue
+            info["parsed"] = False
+            
+            parse("{core}{multiplayer}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
+            info["eras"] = list_eras(addon)
+            info["campaigns"] = list_campaigns(addon)
+            info["version"] = version
+            sys.stdout.write("ok\n")
+        except wmlparser2.WMLError as e:
+            ef = open(logname, "w")
+            ef.write("<PARSE ERROR>\n")
+            ef.write(str(e))
+            ef.write("</PARSE ERROR>\n")
+            ef.close()
+            sys.stdout.write("failed\n")
+        finally:
+            move(options.config_dir + "/data/add-ons", options.addons, addon)
+        
+    yaml.safe_dump(batchlist, open(filename, "w"),
+        encoding = "utf-8", default_flow_style = False)
+
+def process_campaign_or_era(addon, cid, define, batchlist):
+    n = 0
+    
+    print(addon + ": " + cid + " " + define)
+
+    wesnoth = helpers.WesnothList(
         options.wesnoth,
         options.config_dir,
         options.data_dir,
         options.transdir)
-
-    def p(x): sys.stdout.write(x); sys.stdout.flush()
-    def pn(x): print(x)
-
-    # Parse some stuff we may need.
-    p("Parsing terrains ... ")
-    n = stuff.add_terrains()
-    pn("%d terrains found." % n)
-
-    p("Parsing mainline eras ... ")
-    n = stuff.add_mainline_eras()
-    pn("%d mainline eras found." % n)
-    stuff.is_mainline_era = {}
-    for c in stuff.era_lookup.keys():
-        stuff.is_mainline_era[c] = True
-
-    stuff.is_mainline_campaign = {}
-    if options.campaigns:
-        p("Parsing mainline campaigns ... ")
-        n = stuff.add_mainline_campaigns()
-        pn("%d mainline campaigns found." % n)
-        for c in stuff.campaign_lookup.keys():
-            stuff.is_mainline_campaign[c] = True
-
-    # Parse all unit data
-    # This reads in units.cfg, giving us all the mainline units (and races).
-    p("Parsing mainline units ... ")
-    n = stuff.add_mainline_units()
-    pn("%d mainline units found." % n)
-
-    # Now we read each mainline campaign in turn to get its units.
-    cnames = stuff.campaign_lookup.keys()
-    for cname in cnames:
-        p("    Parsing %s units ... " % cname)
-        n = stuff.add_campaign_units(cname, image_collector)
-        pn("%d units found." % n)
-        if not n:
-            del stuff.campaign_lookup[cname]
-
-    mainline_campaigns = set(stuff.campaign_lookup.keys())
-
-    stuff.is_mainline_unit = {}
-    for uid in stuff.unit_lookup.keys():
-        stuff.is_mainline_unit[uid] = True
-
-    if options.addons:
-        p("Parsing addons ... ")
-        n = stuff.add_addons(image_collector)
-        pn("%d campaigns, %d eras, %d multiplayer units found." % n)
-
-        # Now we read each addon campaign in turn to get its units.
-        cnames = stuff.campaign_lookup.keys()
-        for cname in cnames:
-            if cname in mainline_campaigns: continue
-            campaign = stuff.campaign_lookup[cname]
-            p("    Parsing %s units ... " % cname)
-            n = stuff.add_addon_campaign_units(cname, image_collector)
-            pn("%d units found." % n)
-            if not n:
-                del stuff.campaign_lookup[cname]
-
-    stuff.find_unit_factions()
-
-    return stuff
-
-def generate_report(stuff, isocode):
-    """
-    We output:
-    * All mainline units sorted by race
-    * Each mainline era's units sorted by faction
-    * Each mainline campaign's units sorted by race
-    * Each addon era's units sorted by faction
-    * Each addon campaign's units sorted by race
-    """
-
-    if not isocode: return
-
-    print "Generating report for %s." % (isocode)
-    reset_errors()
-
-    # Report generation
-    write_index(options.output)
-
-    campaigns = stuff.campaign_lookup.keys()
-
-    generate_campaign_report(options.output, isocode, "mainline", stuff)
-
-    for campaign in campaigns:
-        if isocode != "en_US" and not campaign in stuff.is_mainline_campaign: continue
-        generate_campaign_report(options.output, isocode, campaign, stuff)
-
-    for eid in stuff.era_lookup.keys():
-        if isocode != "en_US" and not eid in stuff.is_mainline_era: continue
-        generate_era_report(options.output, isocode, eid, stuff)
-
-    # Single unit reports.
-    generate_single_unit_reports(options.output, isocode, stuff)
-
-if __name__ == '__main__':
-
-    # We change the process name to "wmlunits"
-    try:
-        import ctypes
-        libc = ctypes.CDLL("libc.so.6")
-        libc.prctl(15, "wmlunits", 0, 0, 0)
-    except: # oh well...
-        pass
-
-    global options
-    global image_collector
-
-    gc.disable()
-
-    op = optparse.OptionParser()
-    op.add_option("-C", "--config-dir",
-        help="Specify the user configuration dir (wesnoth --config-path).")
-    op.add_option("-D", "--data-dir",
-        help="Specify the wesnoth data dir (wesnoth --path).")
-    op.add_option("-l", "--language", default="all",
-        help="Specify a language to use. Else outputs is produced for all languages.")
-    op.add_option("-o", "--output",
-        help="Specify the output directory.")
-    op.add_option("-n", "--nocopy", action="store_true",
-        help="No copying of files. By default all images are copied to the output dir.")
-    op.add_option("-w", "--wesnoth",
-        help="Specify the wesnoth executable to use. Whatever data " +
-        "and config paths that executable is configured for will be " +
-        "used to find game files and addons.")
-    op.add_option("-t", "--transdir",
-        help="Specify the directory with gettext message catalogues. " +
-        "Defaults to ./translations.", default="translations")
-    op.add_option("-c", "--campaigns", action="store_true",
-        help="Include units from mainline campaigns.")
-    op.add_option("-a", "--addons", action="store_true",
-        help="Include also addon units (from all installed eras and campaigns). " +
-        "Note that some add-ons may try to modify stock units but such changes are " +
-        "not reflected in this version of wmlunits.")
-    options, args = op.parse_args()
-
-    if not options.output:
-        op.print_help()
-        sys.exit(-1)
-
-    options.output = os.path.expanduser(options.output)
-
-    if not options.wesnoth:
-        options.wesnoth = "wesnoth"
-
-    if not options.transdir:
-        options.transdir = os.getcwd()
-
-    if options.language == "all":
-        languages = find_languages().keys()
-        languages.sort()
+    wesnoth.batchlist = batchlist
+    wesnoth.cid = cid
+    
+    wesnoth.parser.parse_text("{core/units.cfg}", "NORMAL")
+    wesnoth.add_units("mainline")
+    
+    if define == "MULTIPLAYER":
+        wesnoth.parser.parse_text("{core}{multiplayer}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
+        wesnoth.add_units(cid)
     else:
-        languages = [options.language]
+        if addon == "mainline":
+            if cid != "mainline":
+                wesnoth.parser.parse_text("{campaigns}", "NORMAL," + define)
+                wesnoth.add_units(cid)
+        else:
+            wesnoth.parser.parse_text("{core}{~add-ons}", "SKIP_CORE," + define)
+            wesnoth.add_units(cid)
+    
+    if addon == "mainline" and cid == "mainline":
+        write_animation_statistics(wesnoth)
 
-    image_collector = helpers.ImageCollector(options.wesnoth,
-        options.config_dir, options.data_dir)
+    wesnoth.add_binary_paths(addon, image_collector)
 
-    wesnoth = parse_game()
+    if define == "MULTIPLAYER":
+        eras = wesnoth.parser.get_all(tag = "era")
+        for era in eras:
+            wesnoth.add_era(era)
+        wesnoth.find_unit_factions()
+    else:
+        campaigns = wesnoth.parser.get_all(tag = "campaign")
+        for campaign in campaigns:
+            wesnoth.add_campaign(campaign)
 
-    # Generate output dir.
-    if not os.path.isdir(options.output):
-        os.mkdir(options.output)
+    wesnoth.add_languages(languages)
+    wesnoth.add_terrains()
+    wesnoth.check_units()
 
-    # Store rid and id for each unit so we have it easier.
-    for u in wesnoth.unit_lookup.values():
-        r = u.race
-        if r: r = r.get_text_val("id", "none")
-        else: r = "none"
-        u.rid = r
-        u.id = u.get_text_val("id")
+    for isocode in languages:
+        
+        if addon != "mainline" and isocode != "en_US": continue
+        
+        if define == "MULTIPLAYER":
+            for era in wesnoth.era_lookup.values():
+                if era.get_text_val("id") == cid:
+                    n = html_output.generate_era_report(addon, isocode, era, wesnoth)
+                    break
+        else:
+            if cid == "mainline":
+                n = html_output.generate_campaign_report(addon, isocode, None, wesnoth)
 
+            for campaign in wesnoth.campaign_lookup.values():
+                if campaign.get_text_val("id") == cid:
+                    n = html_output.generate_campaign_report(addon, isocode, campaign, wesnoth)
+                    break
+        
+        html_output.generate_single_unit_reports(addon, isocode, wesnoth)
+
+    return n
+
+def batch_process():
+    batchlist = yaml.load(open(options.batch))
+    for addon in batchlist:
+        name = addon["name"]
+        
+        if not options.reparse and addon.get("parsed", False) == True: continue
+        
+        if name == "mainline":
+            worked = True
+        else:
+            worked = (move(options.addons, options.config_dir + "/data/add-ons", name) == 0)
+        d = options.output + "/" + name
+        try: os.makedirs(d)
+        except OSError: pass
+        logname = d + "/error.log"
+        
+        def err(mess):
+            ef = open(logname, "a")
+            ef.write(str(mess))
+            ef.close()
+
+        html_output.write_error = err
+        
+        try:
+            if not worked:
+                print(name + " not found")
+                continue
+            
+            for era in addon.get("eras", []):
+                eid = era["id"]
+                n = process_campaign_or_era(name, eid, era["define"], batchlist)
+                era["units"] = n
+
+            for campaign in addon.get("campaigns", []):
+                cid = campaign["id"]
+                if cid == None: cid = campaign["define"]
+                if cid == None: cid = name
+                n = process_campaign_or_era(name, cid, campaign["define"], batchlist)
+                campaign["units"] = n
+            
+        except wmlparser2.WMLError as e:
+            ef = open(logname, "a")
+            ef.write("<WML ERROR>\n")
+            ef.write(str(e))
+            ef.write("</WML ERROR>\n")
+            ef.close()
+            print("    " + name + " failed")
+        except Exception as e:
+            traceback.print_exc()
+            print("    " + name + " failed")
+            ef = open(logname, "a")
+            ef.write("<INTERNAL ERROR>\n")
+            ef.write("please report as bug")
+            ef.write("</INTERNAL ERROR>\n")
+            ef.close()
+        finally:
+            if name != "mainline":
+                move(options.config_dir + "/data/add-ons", options.addons, name)
+                
+        addon["parsed"] = True
+
+        yaml.safe_dump(batchlist, open(options.batch, "w"),
+            encoding = "utf-8", default_flow_style = False)
+        
+        try:
+            unit_tree.overview.write_addon_overview(os.path.join(options.output,
+                name), addon)
+        except Exception as e:
+            pass
+
+    html_output.html_postprocess_all(batchlist)
+
+def write_unit_ids_UNUSED():
     # Write a list with all unit ids, just for fun.
     uids = wesnoth.unit_lookup.keys()
     def by_race(u1, u2):
@@ -1286,14 +366,107 @@ if __name__ == '__main__':
     f.write("</body></html>")
     f.close()
 
+def write_animation_statistics(wesnoth):
     # Write animation statistics
-    f = MyFile(os.path.join(options.output, "animations.html"), "w")
+    f = html_output.MyFile(os.path.join(options.output, "animations.html"), "w")
     animations.write_table(f, wesnoth)
     f.close()
 
-    # Now finally lets do the unit reports in all languages.
-    for isocode in languages:
-        generate_report(wesnoth, isocode)
+if __name__ == '__main__':
 
-    if not options.nocopy:
-        copy_images()
+    # We change the process name to "wmlunits"
+    try:
+        import ctypes
+        libc = ctypes.CDLL("libc.so.6")
+        libc.prctl(15, "wmlunits", 0, 0, 0)
+    except: # oh well...
+        pass
+
+    global options
+    global image_collector
+
+    op = optparse.OptionParser()
+    op.add_option("-C", "--config-dir",
+        help="Specify the user configuration dir (wesnoth --config-path).")
+    op.add_option("-D", "--data-dir",
+        help="Specify the wesnoth data dir (wesnoth --path).")
+    op.add_option("-l", "--language", default="all",
+        help="Specify a language to use. Else outputs is produced for all languages.")
+    op.add_option("-o", "--output",
+        help="Specify the output directory.")
+    op.add_option("-n", "--nocopy", action="store_true",
+        help="No copying of files. By default all images are copied to the output dir.")
+    op.add_option("-w", "--wesnoth",
+        help="Specify the wesnoth executable to use. Whatever data " +
+        "and config paths that executable is configured for will be " +
+        "used to find game files and addons.")
+    op.add_option("-t", "--transdir",
+        help="Specify the directory with gettext message catalogues. " +
+        "Defaults to ./translations.", default="translations")
+    op.add_option("-r", "--reparse", action="store_true",
+        help="Reparse everything.")
+    op.add_option("-a", "--addons",
+        help="Specify path to a folder with all addons. This should be " +
+        "outside the user config folder.")
+    op.add_option("-L", "--list",
+        help = "List available eras and campaigns.")
+    op.add_option("-B", "--batch",
+        help = "Batch process the given list.")
+    op.add_option("-A", "--addons-only", action = "store_true",
+        help = "Do only process addons (for debugging).")
+    op.add_option("-v", "--verbose", action = "store_true")
+    options, args = op.parse_args()
+    
+    html_output.options = options
+    helpers.options = options
+    unit_tree.overview.options = options
+
+    if not options.output:
+        op.print_help()
+        sys.exit(-1)
+
+    options.output = os.path.expanduser(options.output)
+
+    if not options.wesnoth:
+        options.wesnoth = "wesnoth"
+
+    if not options.transdir:
+        options.transdir = os.getcwd()
+
+    image_collector = helpers.ImageCollector(options.wesnoth,
+        options.config_dir, options.data_dir)
+    html_output.image_collector = image_collector
+
+    # Generate output dir.
+    if not os.path.isdir(options.output):
+        os.mkdir(options.output)
+        
+    if options.language == "all":
+        languages = []
+        parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
+            options.data_dir, no_preprocess = False)
+        parser.parse_text("{languages}")
+
+        for locale in parser.get_all(tag="locale"):
+            isocode = locale.get_text_val("locale")
+            name = locale.get_text_val("name")
+            if isocode == "ang_GB":
+                continue
+            languages.append(isocode)
+        languages.sort()
+    else:
+        languages = options.language.split(",")
+        
+    if options.list:
+        list_contents()
+    
+    if options.batch:
+        batch_process()
+        
+        unit_tree.overview.main(options.output)
+
+        if not options.nocopy:
+            copy_images()
+    
+    html_output.write_index(options.output)
+
