@@ -165,27 +165,38 @@ local function generate_objectives(cfg)
 	return string.sub(tostring(objectives), 1, -2)
 end
 
+local function remove_ssf_info_from(cfg)
+	cfg.side = nil
+	cfg.team_name = nil
+	for i, v in ipairs(cfg) do
+		if v[1] == "has_unit" or v[1] == "enemy_of" or v[1] == "allied_with" then
+			table.remove(cfg, i)
+		end
+	end
+end
+
 function wml_actions.objectives(cfg)
 	cfg = helper.parsed(cfg)
-	local side = cfg.side or 0
+
+	local sides = wesnoth.get_sides(cfg)
 	local silent = cfg.silent
 
-	-- Save the objectives in a WML variable in case they have to be regenerated later.
-	cfg.side = nil
+	remove_ssf_info_from(cfg)
 	cfg.silent = nil
-	scenario_objectives[side] = cfg
 
-	-- Generate objectives for the given sides
 	local objectives = generate_objectives(cfg)
-	if side == 0 then
-		for side, team in ipairs(wesnoth.sides) do
+	local function set_objectives(sides, save)
+		for i, team in ipairs(sides) do
+			if save then scenario_objectives[team.side] = cfg end
 			team.objectives = objectives
 			team.objectives_changed = not silent
 		end
+	end
+	if #sides == #wesnoth.sides or #sides == 0 then
+		scenario_objectives[0] = cfg
+		set_objectives(wesnoth.sides)
 	else
-		local team = wesnoth.sides[side]
-		team.objectives = objectives
-		team.objectives_changed = not silent
+		set_objectives(sides, true)
 	end
 end
 
