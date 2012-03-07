@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import glob, os, sys, time
+import glob, os, sys, time, re
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 import html_output
 
@@ -73,6 +73,7 @@ def main(folder):
         if f.endswith("/pics"): continue
         
         error_log = os.path.abspath(os.path.join(f, "error.log"))
+        error_html = os.path.abspath(os.path.join(f, "error.html"))
         
         try:
             n = len(os.listdir(os.path.join(f, "en_US")))
@@ -82,15 +83,69 @@ def main(folder):
         total_n += n
 
         name = f[len(folder):].lstrip("/")
-        error_name = os.path.join(name, "error.log")
+        error_name = os.path.join(name, "error.html")
         w('<tr><td>')
         w('<a href="' + os.path.join(name, "index.html") + '">' + name + '</a>')
         w('</td><td>')
         w(str(n))
         w('</td><td>')
         if os.path.exists(error_log):
+            
+            text = open(error_log).read()
+            error_kind = "warnings"
+            if "<INTERNAL ERROR>" in text:
+                error_kind = "internal error"
+            elif "<WML ERROR>" in text:
+                error_kind = "wml error"
+            elif "<PARSE ERROR>" in text:
+                error_kind = "parse error"
+                
+            source = []
+            
+            def postprocess(line):
+                if line == "WMLError:": return ""
+                if line == "?": return ""
+                if line == "Preprocessor error:": return ""
+                if line.startswith("Automatically found a possible data directory"): return ""
+                if line.startswith("Overriding data directory with"): return ""
+                if line == "'SKIP_CORE' defined.": return ""
+                if re.match("added .* defines.", line): return ""
+                if line.startswith("skipped 'data/core'"): return ""
+                if line.startswith("preprocessing specified resource:"): return ""
+
+                mo = re.match(r"0 /tmp/wmlparser_.*?/(.*)\.plain", line)
+                if mo:
+                    source.append("/tmp/" + mo.group(1))
+                    return ""
+
+                mo = re.match(".*--preprocess-defines(.*)", line)
+                if mo: return "Defines: " + mo.group(1) + "<br />"
+                
+                if source:
+                    line = line.replace(source[-1], "WML")
+                
+                line = line.replace("included from WML:1", "")
+                rows = line.replace("included from", "\n&nbsp;included from").splitlines()
+                out = ""
+                for row in rows:
+                    row = row.strip()
+                    out += row + "<br />"
+                return out
+            
+            htmlerr = open(error_html, "w")
+            htmlerr.write("<html><body>")
+            for line in text.splitlines():
+                line = line.strip()
+                if line in ["<INTERNAL ERROR>", "<WML ERROR>", "<PARSE ERROR>"]:
+                    htmlerr.write("<p>")
+                elif line in ["</INTERNAL ERROR>", "</WML ERROR>", "</PARSE ERROR>"]:
+                    htmlerr.write("</p>")
+                else:
+                    htmlerr.write(postprocess(line))
+            htmlerr.write("</body></html>")
+            
             total_error_logs += 1
-            w('<a class="error" href="%s">error.log</a>' % error_name)
+            w('<a class="error" href="%s">%s</a>' % (error_name, error_kind))
         w("</td></tr>")
         
         count += 1

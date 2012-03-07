@@ -190,7 +190,9 @@ def list_contents():
             sys.stdout.write("ok\n")
         except wmlparser2.WMLError as e:
             ef = open(logname, "w")
+            ef.write("<PARSE ERROR>\n")
             ef.write(str(e))
+            ef.write("</PARSE ERROR>\n")
             ef.close()
             sys.stdout.write("failed\n")
         finally:
@@ -310,12 +312,19 @@ def batch_process():
             
         except wmlparser2.WMLError as e:
             ef = open(logname, "a")
+            ef.write("<WML ERROR>\n")
             ef.write(str(e))
+            ef.write("</WML ERROR>\n")
             ef.close()
             print("    " + name + " failed")
         except Exception as e:
             traceback.print_exc()
             print("    " + name + " failed")
+            ef = open(logname, "a")
+            ef.write("<INTERNAL ERROR>\n")
+            ef.write("please report as bug")
+            ef.write("</INTERNAL ERROR>\n")
+            ef.close()
         finally:
             if name != "mainline":
                 move(options.config_dir + "/data/add-ons", options.addons, name)
