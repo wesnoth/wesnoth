@@ -38,6 +38,12 @@ def write_addon_overview(folder, addon):
             w('<li><a href="' + cpath + '">' + campaign["name"] + '</a></li>')
         w("</ul>")
     
+    w("<div>")
+    if os.path.exists(os.path.join(folder, "error.log")):
+        w('<p><b>Warnings or errors were found: <a href="error.html"/>log</a></b></p>')
+    w('<p><a href="../overview.html">back to overview</a></p>')
+    w("</div>")
+    
     w('</div> <!-- overview -->')
     
     w(html_output.html_footer % locals())
@@ -68,6 +74,7 @@ def main(folder):
     count = 0
     total_n = 0
     total_error_logs = 0
+    total_lines = 0
     for f in sorted(glob.glob(os.path.join(folder, "*"))):
         if not os.path.isdir(f): continue
         if f.endswith("/pics"): continue
@@ -134,6 +141,7 @@ def main(folder):
             
             htmlerr = open(error_html, "w")
             htmlerr.write("<html><body>")
+            lines_count = 0
             for line in text.splitlines():
                 line = line.strip()
                 if line in ["<INTERNAL ERROR>", "<WML ERROR>", "<PARSE ERROR>"]:
@@ -141,11 +149,15 @@ def main(folder):
                 elif line in ["</INTERNAL ERROR>", "</WML ERROR>", "</PARSE ERROR>"]:
                     htmlerr.write("</p>")
                 else:
-                    htmlerr.write(postprocess(line))
+                    err_html = postprocess(line)
+                    lines_count += err_html.count("<br")
+                    htmlerr.write(err_html)
             htmlerr.write("</body></html>")
             
+            total_lines += lines_count
+            
             total_error_logs += 1
-            w('<a class="error" href="%s">%s</a>' % (error_name, error_kind))
+            w('<a class="error" href="%s">%s (%d lines)</a>' % (error_name, error_kind, lines_count))
         w("</td></tr>")
         
         count += 1
@@ -155,7 +167,7 @@ def main(folder):
     w("</td><td>")
     w(str(total_n))
     w("</td><td>")
-    w(str(total_error_logs))
+    w(str(total_error_logs) + " (" + str(total_lines) + " lines)")
     w("</td></tr>")
 
     w("</table>")

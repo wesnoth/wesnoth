@@ -81,9 +81,11 @@ class ImageCollector:
             return image
             
         def make_name(x):
+            x = x.strip("./ ")
             if x.startswith(options.config_dir): x = x[len(options.config_dir):]
-            if x.startswith("data/core/"): x = x[len("data/core/"):]
-            if x.startswith("images/"): x = x[len("images/"):]
+            if x.startswith(options.data_dir): x = x[len(options.data_dir):]
+            x = x.strip("./ ")
+            if x.startswith("data"): x = x[len("data"):]
             x = x.strip("./ ")
             y = ""
             for c in x:

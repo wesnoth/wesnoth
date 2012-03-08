@@ -490,7 +490,11 @@ class HTMLOutput:
                 "Warning: Missing image for unit %s(%s).\n" % (
                 u.get_text_val("id"), x.name))
             return None, None
-        picname = image_collector.add_image(self.addon, image)
+        icpic = image_collector.add_image_check(self.addon, image)
+        if not icpic.ipath:
+            error_message("Warning: No picture %s for unit %s.\n" %
+                (image, u.get_text_val("id")))
+        picname = icpic.id_name
         image = os.path.join(pics_location, picname)
         if portrait:
             picname = image_collector.add_image(self.addon, portrait,
