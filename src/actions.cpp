@@ -1041,6 +1041,8 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 	chance_to_hit(0),
 	damage(0),
 	slow_damage(0),
+	drain_percent(0),
+	drain_constant(0),
 	num_blows(0),
 	swarm_min(0),
 	swarm_max(0),
@@ -1125,12 +1127,27 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 		// Resistance modifier.
 		damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc);
 
-		// Compute both the normal and slowed damage. For the record,
-		// drain = normal damage / 2 and slow_drain = slow_damage / 2.
+		// Compute both the normal and slowed damage.
 		damage = round_damage(base_damage, damage_multiplier, 10000);
 		slow_damage = round_damage(base_damage, damage_multiplier, 20000);
 		if (is_slowed)
 			damage = slow_damage;
+
+		// Compute drain amounts only if draining is possible.
+		if(drains) {
+			unit_ability_list drain_specials = weapon->get_specials("drains");
+
+			// Compute the drain percent (with 50% as the base for backward compatibility)
+			unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
+			drain_percent = drain_percent_effects.get_composite_value();
+		}
+
+		// Add heal_on_hit (the drain constant)
+		unit_ability_list heal_on_hit_specials = weapon->get_specials("heal_on_hit");
+		unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos);
+		drain_constant += heal_on_hit_effects.get_composite_value();
+
+		drains = drain_constant || drain_percent;
 
 		// Compute the number of blows and handle swarm.
 		unit_ability_list swarm_specials = weapon->get_specials("swarm");
@@ -1180,6 +1197,8 @@ void battle_context_unit_stats::dump() const
 	printf("chance_to_hit:	%d\n", chance_to_hit);
 	printf("damage:		%d\n", damage);
 	printf("slow_damage:	%d\n", slow_damage);
+	printf("drain_percent:	%d\n", drain_percent);
+	printf("drain_constant:	%d\n", drain_constant);
 	printf("num_blows:	%d\n", num_blows);
 	printf("swarm_min:	%d\n", swarm_min);
 	printf("swarm_max:	%d\n", swarm_max);
@@ -1229,6 +1248,10 @@ class attack
 
 		std::string dump();
 	};
+
+	void unit_killed(unit_info &, unit_info &,
+		const battle_context_unit_stats *&, const battle_context_unit_stats *&,
+		bool);
 
 	battle_context *bc_;
 	const battle_context_unit_stats *a_stats_;
@@ -1481,6 +1504,17 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 		}
 	}
 
+	int damage_done = std::min<int>(defender.get_unit().hitpoints(), attacker.damage_);
+
+	int drains_damage = 0;
+	if (hits && attacker_stats->drains) {
+		drains_damage = damage_done * attacker_stats->drain_percent / 100 + attacker_stats->drain_constant;
+		// don't drain so much that the attacker gets more than his maximum hitpoints
+		drains_damage = std::min<int>(drains_damage, attacker.get_unit().max_hitpoints() - attacker.get_unit().hitpoints());
+		// if drain is negative, don't allow drain to kill the attacker
+		drains_damage = std::max<int>(drains_damage, 1 - attacker.get_unit().hitpoints());
+	}
+
 	if (update_display_)
 	{
 		std::ostringstream float_text;
@@ -1505,18 +1539,9 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 
 		unit_display::unit_attack(attacker.loc_, defender.loc_, damage,
 			*attacker_stats->weapon, defender_stats->weapon,
-			abs_n, float_text.str(), attacker_stats->drains, "");
+			abs_n, float_text.str(), drains_damage, "");
 	}
 
-	int drains_damage = 0;
-	if (attacker_stats->drains) {
-		// don't drain so much that the attacker gets more than his maximum hitpoints
-		drains_damage = std::min<int>(damage / 2, attacker.get_unit().max_hitpoints() - attacker.get_unit().hitpoints());
-		// don't drain more than the defenders remaining hitpoints
-		drains_damage = std::min<int>(drains_damage, defender.get_unit().hitpoints() / 2);
-	}
-
-	int damage_done = std::min<int>(defender.get_unit().hitpoints(), attacker.damage_);
 	bool dies = defender.get_unit().take_hit(damage);
 	LOG_NG << "defender took " << damage << (dies ? " and died\n" : "\n");
 	if (attacker_turn) {
@@ -1581,98 +1606,23 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	}
 	refresh_bc();
 
+	bool attacker_dies = false;
 	if (drains_damage > 0) {
 		attacker.get_unit().heal(drains_damage);
+	} else if(drains_damage < 0) {
+		attacker_dies = attacker.get_unit().take_hit(-drains_damage);
 	}
 
-	if (dies)
-	{
-		attacker.xp_ = game_config::kill_xp(defender.get_unit().level());
-		defender.xp_ = 0;
-		resources::screen->invalidate(attacker.loc_);
-
-		game_events::entity_location death_loc(defender.loc_, defender.id_);
-		game_events::entity_location attacker_loc(attacker.loc_, attacker.id_);
-		std::string undead_variation = defender.get_unit().undead_variation();
-		fire_event("attack_end");
-		refresh_bc();
-
-		// get weapon info for last_breath and die events
-		config dat;
-		config a_weapon_cfg = attacker_stats->weapon && attacker.valid() ?
-			attacker_stats->weapon->get_cfg() : config();
-		config d_weapon_cfg = defender_stats->weapon && defender.valid() ?
-			defender_stats->weapon->get_cfg() : config();
-		if (a_weapon_cfg["name"].empty())
-			a_weapon_cfg["name"] = "none";
-		if (d_weapon_cfg["name"].empty())
-			d_weapon_cfg["name"] = "none";
-		dat.add_child("first",  d_weapon_cfg);
-		dat.add_child("second", a_weapon_cfg);
-
-		game_events::fire("last breath", death_loc, attacker_loc, dat);
-		refresh_bc();
-
-		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
-			// WML has invalidated the dying unit, abort
-			return false;
-		}
-
-		if (!attacker.valid()) {
-			unit_display::unit_die(defender.loc_, defender.get_unit(),
-				NULL, defender_stats->weapon);
-		} else {
-			unit_display::unit_die(defender.loc_, defender.get_unit(),
-				attacker_stats->weapon, defender_stats->weapon,
-				attacker.loc_, &attacker.get_unit());
-		}
-
-		game_events::fire("die", death_loc, attacker_loc, dat);
-		refresh_bc();
-
-		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
-			// WML has invalidated the dying unit, abort
-			return false;
-		}
-
-		units_.erase(defender.loc_);
-
-		if (attacker.valid() && attacker_stats->plagues)
-		{
-			// plague units make new units on the target hex
-			LOG_NG << "trying to reanimate " << attacker_stats->plague_type << '\n';
-			const unit_type *reanimator =
-				unit_types.find(attacker_stats->plague_type);
-			if (reanimator)
-			{
-				LOG_NG << "found unit type:" << reanimator->id() << '\n';
-				unit newunit(reanimator, attacker.get_unit().side(),
-					true, unit_race::MALE);
-				newunit.set_attacks(0);
-				newunit.set_movement(0);
-				// Apply variation
-				if (undead_variation != "null")
-				{
-					config mod;
-					config &variation = mod.add_child("effect");
-					variation["apply_to"] = "variation";
-					variation["name"] = undead_variation;
-					newunit.add_modification("variation",mod);
-					newunit.heal_all();
-				}
-				units_.add(death_loc, newunit);
-				preferences::encountered_units().insert(newunit.type_id());
-				if (update_display_) {
-					resources::screen->invalidate(death_loc);
-				}
-			}
-		}
-		else
-		{
-			LOG_NG << "unit not reanimated\n";
-		}
-
+	if (dies) {
+		unit_killed(attacker, defender, attacker_stats, defender_stats, false);
 		update_fog = true;
+	}
+	if (attacker_dies) {
+		unit_killed(defender, attacker, defender_stats, attacker_stats, true);
+		*(attacker_turn ? &update_att_fog_ : &update_def_fog_) = true;
+	}
+
+	if(dies) {
 		update_minimap_ = true;
 		return false;
 	}
@@ -1703,8 +1653,104 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 		}
 	}
 
+	// Delay until here so that poison and slow go through
+	if(attacker_dies) {
+		update_minimap_ = true;
+		return false;
+	}
+
 	--attacker.n_attacks_;
 	return true;
+}
+
+void attack::unit_killed(unit_info& attacker, unit_info& defender,
+	const battle_context_unit_stats *&attacker_stats, const battle_context_unit_stats *&defender_stats,
+	bool drain_killed)
+{
+	attacker.xp_ = game_config::kill_xp(defender.get_unit().level());
+	defender.xp_ = 0;
+	resources::screen->invalidate(attacker.loc_);
+
+	game_events::entity_location death_loc(defender.loc_, defender.id_);
+	game_events::entity_location attacker_loc(attacker.loc_, attacker.id_);
+	std::string undead_variation = defender.get_unit().undead_variation();
+	fire_event("attack_end");
+	refresh_bc();
+
+	// get weapon info for last_breath and die events
+	config dat;
+	config a_weapon_cfg = attacker_stats->weapon && attacker.valid() ?
+		attacker_stats->weapon->get_cfg() : config();
+	config d_weapon_cfg = defender_stats->weapon && defender.valid() ?
+		defender_stats->weapon->get_cfg() : config();
+	if (a_weapon_cfg["name"].empty())
+		a_weapon_cfg["name"] = "none";
+	if (d_weapon_cfg["name"].empty())
+		d_weapon_cfg["name"] = "none";
+	dat.add_child("first",  d_weapon_cfg);
+	dat.add_child("second", a_weapon_cfg);
+
+	game_events::fire("last breath", death_loc, attacker_loc, dat);
+	refresh_bc();
+
+	if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
+		// WML has invalidated the dying unit, abort
+		return;
+	}
+
+	if (!attacker.valid()) {
+		unit_display::unit_die(defender.loc_, defender.get_unit(),
+			NULL, defender_stats->weapon);
+	} else {
+		unit_display::unit_die(defender.loc_, defender.get_unit(),
+			attacker_stats->weapon, defender_stats->weapon,
+			attacker.loc_, &attacker.get_unit());
+	}
+
+	game_events::fire("die", death_loc, attacker_loc, dat);
+	refresh_bc();
+
+	if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
+		// WML has invalidated the dying unit, abort
+		return;
+	}
+
+	units_.erase(defender.loc_);
+
+	if (attacker.valid() && attacker_stats->plagues && !drain_killed)
+	{
+		// plague units make new units on the target hex
+		LOG_NG << "trying to reanimate " << attacker_stats->plague_type << '\n';
+		const unit_type *reanimator =
+			unit_types.find(attacker_stats->plague_type);
+		if (reanimator)
+		{
+			LOG_NG << "found unit type:" << reanimator->id() << '\n';
+			unit newunit(reanimator, attacker.get_unit().side(),
+				true, unit_race::MALE);
+			newunit.set_attacks(0);
+			newunit.set_movement(0);
+			// Apply variation
+			if (undead_variation != "null")
+			{
+				config mod;
+				config &variation = mod.add_child("effect");
+				variation["apply_to"] = "variation";
+				variation["name"] = undead_variation;
+				newunit.add_modification("variation",mod);
+				newunit.heal_all();
+			}
+			units_.add(death_loc, newunit);
+			preferences::encountered_units().insert(newunit.type_id());
+			if (update_display_) {
+				resources::screen->invalidate(death_loc);
+			}
+		}
+	}
+	else
+	{
+		LOG_NG << "unit not reanimated\n";
+	}
 }
 
 void attack::perform()

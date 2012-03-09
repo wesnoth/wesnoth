@@ -301,7 +301,7 @@ void unit_die(const map_location& loc, unit& loser,
 void unit_attack(
                  const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
-		  int swing,std::string hit_text,bool drain,std::string att_text)
+		  int swing,std::string hit_text,int drain_amount,std::string att_text)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() ||
@@ -342,7 +342,7 @@ void unit_attack(
 	}
 
 	std::string text_2 ;
-	if(drain && damage) text_2 = lexical_cast<std::string>(std::min<int>(damage,defender.hitpoints())/2);
+	if(drain_amount) text_2 = lexical_cast<std::string>(drain_amount > 0 ? drain_amount : -drain_amount);
 	if(!att_text.empty()) {
 		text_2.insert(text_2.begin(),att_text.size()/2,' ');
 		text_2 = text_2 + "\n" + att_text;
@@ -358,8 +358,8 @@ void unit_attack(
 	}
 	animator.add_animation(&attacker, "attack", att->get_location(),
 		def->get_location(), damage, true,  text_2,
-		display::rgb(0, 255, 0), hit_type, &attack, secondary_attack,
-		swing);
+		(drain_amount >= 0) ? display::rgb(0, 255, 0) : display::rgb(255, 0, 0),
+		hit_type, &attack, secondary_attack, swing);
 
 	// note that we take an anim from the real unit, we'll use it later
 	const unit_animation *defender_anim = def->choose_animation(*disp,

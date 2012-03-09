@@ -90,7 +90,7 @@ void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_typ
  */
 void unit_attack(const map_location& a, const map_location& b, int damage,
 	const attack_type& attack, const attack_type* secondary_attack,
-	int swing, std::string hit_text, bool drain, std::string att_text);
+	int swing, std::string hit_text, int drain_amount, std::string att_text);
 
 
 void unit_recruited(const map_location& loc,

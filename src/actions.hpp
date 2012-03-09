@@ -154,6 +154,8 @@ struct battle_context_unit_stats
 	unsigned int chance_to_hit;	/**< Effective chance to hit as a percentage (all factors accounted for). */
 	int damage;				/**< Effective damage of the weapon (all factors accounted for). */
 	int slow_damage;		/**< Effective damage if unit becomes slowed (== damage, if already slowed) */
+	int drain_percent;		/**< Percentage of damage recovered as health */
+	int drain_constant;		/**< Base HP drained regardless of damage dealt */
 	unsigned int num_blows;	/**< Effective number of blows, takes swarm into account. */
 	unsigned int swarm_min;	/**< Minimum number of blows with swarm (equal to num_blows if swarm isn't used). */
 	unsigned int swarm_max;	/**< Maximum number of blows with swarm (equal to num_blows if swarm isn't used). */
