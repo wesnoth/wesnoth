@@ -23,6 +23,9 @@
 #include "map_context.hpp"
 #include "map_fragment.hpp"
 
+#include "palette/common_palette.hpp"
+#include "brush_bar.hpp"
+
 #include "../controller_base.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../tooltips.hpp"
@@ -409,7 +412,16 @@ class editor_controller : public controller_base,
 		boost::scoped_ptr<size_specs> size_specs_;
 
 		/** The terrain palette */
-		boost::scoped_ptr<terrain_palette> palette_;
+		//boost::scoped_ptr<common_palette> palette_;
+
+		/** The terrain palette */
+		boost::scoped_ptr<terrain_palette> terrain_palette_;
+
+//		/** The unit palette */
+//		boost::scoped_ptr<unit_palette> unit_palette_;
+
+		/** The item palette */
+//		boost::scoped_ptr<item_palette> palette_;
 
 		/** The brush selector */
 		boost::scoped_ptr<brush_bar> brush_bar_;

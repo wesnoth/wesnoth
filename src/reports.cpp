@@ -18,7 +18,7 @@
 #include "actions.hpp"
 #include "attack_prediction.hpp"
 #include "editor/editor_controller.hpp"
-#include "editor/editor_palettes.hpp"
+#include "editor/palette/terrain_palettes.hpp"
 #include "font.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"

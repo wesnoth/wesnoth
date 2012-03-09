@@ -218,12 +218,14 @@ wesnoth_sources = Split("""
     dialogs.cpp
     editor/action.cpp
     editor/brush.cpp
+    editor/brush_bar.cpp
     editor/editor_controller.cpp
     editor/editor_display.cpp
     editor/editor_layout.cpp
     editor/editor_main.cpp
     editor/editor_map.cpp
-    editor/editor_palettes.cpp
+    editor/palette/editor_palettes.cpp
+    editor/palette/terrain_palettes.cpp
     editor/editor_preferences.cpp
     editor/map_context.cpp
     editor/map_fragment.cpp

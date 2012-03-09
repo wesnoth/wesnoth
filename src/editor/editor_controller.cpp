@@ -17,7 +17,9 @@
 #include "asserts.hpp"
 #include "action.hpp"
 #include "editor_controller.hpp"
-#include "editor_palettes.hpp"
+
+#include "palette/terrain_palettes.hpp"
+#include "brush_bar.hpp"
 #include "editor_preferences.hpp"
 #include "mouse_action.hpp"
 #include "action/mouse/mouse_action_map_label.hpp"
@@ -97,7 +99,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, map_generators_()
 	, tods_()
 	, size_specs_()
-	, palette_()
+	, terrain_palette_()
 	, brush_bar_()
 	, prefs_disp_manager_(NULL)
 	, tooltip_manager_(video)
@@ -123,10 +125,10 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 		default_dir_ = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
 	}
 	init_brushes(game_config);
+	init_sidebar(game_config);
 	init_mouse_actions(game_config);
 	init_map_generators(game_config);
 	init_tods(game_config);
-	init_sidebar(game_config);
 	init_music(game_config);
 	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);
 	rng_.reset(new rand_rng::rng());
@@ -167,9 +169,9 @@ void editor_controller::init_sidebar(const config& game_config)
 {
 	size_specs_.reset(new size_specs());
 	adjust_sizes(gui(), *size_specs_);
-	palette_.reset(new terrain_palette(gui(), *size_specs_, game_config,
+	terrain_palette_.reset(new terrain_palette(gui(), *size_specs_, game_config,
 		foreground_terrain_, background_terrain_));
-	gui_->set_terrain_report(palette_->active_terrain_report());
+	terrain_palette_->setup(game_config);
 	brush_bar_.reset(new brush_bar(gui(), *size_specs_, brushes_, &brush_));
 }
 
@@ -189,17 +191,20 @@ void editor_controller::init_brushes(const config& game_config)
 void editor_controller::init_mouse_actions(const config& game_config)
 {
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT,
-		new mouse_action_paint(foreground_terrain_, background_terrain_, &brush_, key_)));
+		new mouse_action_paint(foreground_terrain_, background_terrain_, &brush_, key_, terrain_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL,
-		new mouse_action_fill(foreground_terrain_, background_terrain_, key_)));
+		new mouse_action_fill(foreground_terrain_, background_terrain_, key_, terrain_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT,
-		new mouse_action_select(&brush_, key_)));
+		new mouse_action_select(&brush_, key_, NULL)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
 		new mouse_action_starting_position(key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
 		new mouse_action_map_label(key_)));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
 		new mouse_action_paste(clipboard_, key_)));
+
+	mouse_action_ = mouse_actions_[hotkey::HOTKEY_EDITOR_TOOL_PAINT];
+
 	foreach (const theme::menu& menu, gui().get_theme().menus()) {
 		if (menu.items().size() == 1) {
 			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey(menu.items().front()).get_id();
@@ -260,12 +265,6 @@ void editor_controller::init_music(const config& game_config)
 	sound::commit_music_changes();
 }
 
-
-//void editor_controller::load_tooltips()
-//{
-//	// Tooltips for the groups
-//	palette_->load_tooltips();
-//}
 
 editor_controller::~editor_controller()
 {
@@ -508,8 +507,6 @@ void editor_controller::generate_map_dialog()
 		if (map_string.empty()) {
 			gui2::show_transient_message(gui().video(), "", _("Map creation failed."));
 		} else {
-		//	config map;
-		//	map["data"] = map_string;
 			editor_map new_map(game_config_, map_string, get_display());
 			editor_action_whole_map a(new_map);
 			perform_refresh(a);
@@ -980,8 +977,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				}
 				return false;
 			case TERRAIN:
-				palette_->set_group(index);
-				get_display().set_terrain_report(palette_->active_terrain_report());
+				mouse_action_->get_palette()->set_group(index);
 				return true;
 			case SIDE:
 			case AREA:
@@ -990,10 +986,12 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TERRAIN_GROUPS:
 			return true;
 		case HOTKEY_EDITOR_TERRAIN_LEFTSCROLL:
-			palette_->scroll_left();
+			if (mouse_action_->get_palette())
+				mouse_action_->get_palette()->scroll_up();
 			return true;
 		case HOTKEY_EDITOR_TERRAIN_RIGHTSCROLL:
-			palette_->scroll_right();
+			if (mouse_action_->get_palette())
+				mouse_action_->get_palette()->scroll_down();
 			return true;
 		case HOTKEY_QUIT_GAME:
 			quit_confirm(EXIT_NORMAL);
@@ -1010,7 +1008,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			editor_settings_dialog();
 			return true;
 		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
-			palette_->swap();
+			mouse_action_->get_palette()->swap();
 			set_mouseover_overlay();
 			return true;
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
@@ -1170,9 +1168,12 @@ void editor_controller::expand_terrain_groups_menu(std::vector<std::string>& ite
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "editor-terrain-groups") {
 			items.erase(items.begin() + i);
-			std::vector<std::string> groups;
 
-			const std::vector<terrain_group>& terrain_groups = palette_->get_groups();
+			if (!mouse_action_->get_palette())
+				return;
+
+			std::vector<std::string> groups;
+			const std::vector<item_group>& terrain_groups = mouse_action_->get_palette()->get_groups();
 
 			for (size_t mci = 0; mci < terrain_groups.size(); ++mci) {
 				std::string groupname = terrain_groups[mci].name;
@@ -1181,7 +1182,7 @@ void editor_controller::expand_terrain_groups_menu(std::vector<std::string>& ite
 				}
 				std::string img = terrain_groups[mci].icon;
 				std::stringstream str;
-				std::string postfix = (palette_->active_group() == terrain_groups[mci].id) ? "-pressed.png" : ".png";
+				std::string postfix = (mouse_action_->get_palette()->active_group_index() == mci) ? "-pressed.png" : ".png";
 				str << IMAGE_PREFIX << "buttons/" << img << postfix << COLUMN_SEPARATOR << groupname;
 				groups.push_back(str.str());
 			}
@@ -1380,6 +1381,7 @@ void editor_controller::redraw_toolbar()
 		if (a.second->toolbar_button() != NULL) {
 			SDL_Rect r = a.second->toolbar_button()->location(gui().screen_area());
 			SDL_Rect outline = create_rect(r.x - 2, r.y - 2, r.h + 4, r.w + 4);
+			//TODO comment or remove
 			//outline = intersect_rects(r, gui().screen_area());
 			surface screen = gui().video().getSurface();
 			Uint32 color;
@@ -1404,12 +1406,13 @@ void editor_controller::refresh_image_cache()
 void editor_controller::display_redraw_callback(display&)
 {
 	adjust_sizes(gui(), *size_specs_);
-	palette_->adjust_size();
+	if (mouse_action_->get_palette()) {
+		mouse_action_->get_palette()->adjust_size();
+		mouse_action_->get_palette()->draw(true);
+	}
 	brush_bar_->adjust_size();
-	palette_->draw(true);
 	brush_bar_->draw(true);
-	//display::redraw_everything removes our custom tooltips so reload them
-//	load_tooltips();
+
 	gui().invalidate_all();
 }
 
@@ -1479,7 +1482,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = get_mouse_action()->click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	palette_->draw(true);
+	terrain_palette_->draw(true);
 	return false;
 }
 
@@ -1507,7 +1510,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = get_mouse_action()->click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	palette_->draw(true);
+	terrain_palette_->draw(true);
 	return false;
 }
 
