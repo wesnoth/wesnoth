@@ -12,7 +12,7 @@ class CampaignClient:
     # First port listed will be used as default.
     portmap = (("15002", "1.10.x"), ("15002", "1.9.x"), ("15004", "trunk"), ("15001", "1.8.x"), ("15003", "1.6.x"), ("15005", "1.4.x"))
 
-    def __init__(self, address = None):
+    def __init__(self, address = None, quiet=False):
         """
         Return a new connection to the campaign server at the given address.
         """
@@ -28,6 +28,7 @@ class CampaignClient:
         self.args = None
         self.cs = None
         self.verbose = False
+        self.quiet = quiet
 
         if address != None:
             s = address.split(":")
@@ -41,12 +42,14 @@ class CampaignClient:
             self.error = False
             addr = socket.getaddrinfo(self.host, self.port, socket.AF_INET,
                 socket.SOCK_STREAM, socket.IPPROTO_TCP)[0]
-            sys.stderr.write("Opening socket to %s" % address)
+            if not self.quiet:
+                sys.stderr.write("Opening socket to %s" % address)
             bfwv = dict(self.portmap).get(str(self.port))
-            if bfwv:
-                sys.stderr.write(" for " + bfwv + "\n")
-            else:
-                sys.stderr.write("\n")
+            if not self.quiet:
+                if bfwv:
+                    sys.stderr.write(" for " + bfwv + "\n")
+                else:
+                    sys.stderr.write("\n")
             self.sock = socket.socket(addr[0], addr[1], addr[2])
             self.sock.connect(addr[4])
             self.sock.send(struct.pack("!l", 0))
@@ -55,8 +58,9 @@ class CampaignClient:
             except socket.error:
                 connection_num = struct.pack("!l", -1)
                 self.error = True
-            sys.stderr.write("Connected as %d.\n" % struct.unpack(
-                "!l", connection_num))
+            if not self.quiet:
+                sys.stderr.write("Connected as %d.\n" % struct.unpack(
+                    "!l", connection_num))
 
     def async_cancel(self):
         """
@@ -65,12 +69,13 @@ class CampaignClient:
         self.canceled = True
 
     def __del__(self):
-        if self.canceled:
-            sys.stderr.write("Canceled socket.\n")
-        elif self.error:
-            sys.stderr.write("Unexpected disconnection.\n")
-        else:
-            sys.stderr.write("Closing socket.\n")
+        if not self.quiet:
+            if self.canceled:
+                sys.stderr.write("Canceled socket.\n")
+            elif self.error:
+                sys.stderr.write("Unexpected disconnection.\n")
+            else:
+                sys.stderr.write("Closing socket.\n")
         try:
             self.sock.shutdown(2)
         except socket.error:
@@ -111,7 +116,8 @@ class CampaignClient:
 
         self.length = l = struct.unpack("!i", packet)[0]
 
-        sys.stderr.write("Receiving %d bytes.\n" % self.length)
+        if not self.quiet:
+            sys.stderr.write("Receiving %d bytes.\n" % self.length)
 
         packet = ""
         while len(packet) < l and not self.canceled:
@@ -123,7 +129,8 @@ class CampaignClient:
         if self.canceled:
             return None
 
-        sys.stderr.write("Received %d bytes.\n" % len(packet))
+        if not self.quiet:
+            sys.stderr.write("Received %d bytes.\n" % len(packet))
 
         if packet.startswith("\x1F\x8B"):
             if self.verbose:
@@ -353,7 +360,8 @@ class CampaignClient:
         if cfgfile:
             data.insert(put_file(name + ".cfg", file(cfgfile)))
 
-        sys.stderr.write("Adding directory %s as %s.\n" % (directory, name))
+        if not self.quiet:
+            sys.stderr.write("Adding directory %s as %s.\n" % (directory, name))
         data.insert(put_dir(name, directory))
 
         packet = self.make_packet(request)
@@ -436,8 +444,9 @@ class CampaignClient:
             contents = f.get_text("contents")
             if not contents:
                 contents = ""
-                sys.stderr.write("File %s is empty.\n" % name)
-                sys.stderr.write(f.debug(write = False) + "\n")
+                if not self.quiet:
+                    sys.stderr.write("File %s is empty.\n" % name)
+                    sys.stderr.write(f.debug(write = False) + "\n")
             if contents:
                 contents = contents.get_value()
             if verbose:
