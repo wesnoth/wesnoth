@@ -15,6 +15,7 @@ except ImportError:
     import json
 import shutil
 import subprocess
+import tempfile
 import urllib2
 
 
@@ -91,10 +92,10 @@ class Addon(object):
         """
         logging.debug("Committing and pushing add-on {0}".format(self.name))
 
-        tmpname = os.tmpnam()
-        tmpfile = open(tmpname, "w")
+        tmpfile = tempfile.NamedTemporaryFile(delete=False)
         tmpfile.write(message)
         tmpfile.close()
+        tmpname = tmpfile.name
         self._execute(["git", "commit", "-F", tmpname], check_error=True)
         os.remove(tmpname)
         # Apparently, push writes to stderr on success
