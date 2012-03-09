@@ -186,6 +186,7 @@ class HTMLOutput:
         forest = self.forest = helpers.UnitForest()
         units_added = {}
         for uid, u in self.wesnoth.unit_lookup.items():
+            if u.hidden: continue
             if grouper.unitfilter(u):
                 forest.add_node(helpers.UnitNode(u))
                 units_added[uid] = u
@@ -1077,6 +1078,7 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     html.analyze_units(grouper)
 
     for uid, unit in wesnoth.unit_lookup.items():
+        if unit.hidden: continue
         if "mainline" in unit.campaigns and addon != "mainline": continue
         filename = os.path.join(path, "%s.html" % uid)
 
