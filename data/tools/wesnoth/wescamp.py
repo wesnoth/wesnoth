@@ -48,6 +48,7 @@ class tempdir:
 if __name__ == "__main__":
     git_version = None
     git_userpass = None
+    quiet_libwml = True
 
     """Download an addon from the server.
 
@@ -62,7 +63,7 @@ if __name__ == "__main__":
         logging.debug("extract addon server = '%s' addon = '%s' path = '%s'",
             server, addon, path)
 
-        wml = libwml.CampaignClient(server)
+        wml = libwml.CampaignClient(server, quiet_libwml)
         data = wml.get_campaign(addon)
         wml.unpackdir(data, path)
 
@@ -79,7 +80,7 @@ if __name__ == "__main__":
         logging.debug("list addons server = '%s' translatable_only = %s",
             server, translatable_only)
 
-        wml = libwml.CampaignClient(server)
+        wml = libwml.CampaignClient(server, quiet_libwml)
         data = wml.list_campaigns()
 
         # Item [0] hardcoded seems to work
@@ -110,7 +111,7 @@ if __name__ == "__main__":
         logging.debug("get_timestamp server = '%s' addon = %s",
             server, addon)
 
-        wml = libwml.CampaignClient(server)
+        wml = libwml.CampaignClient(server, quiet_libwml)
         data = wml.list_campaigns()
 
         # Item [0] hardcoded seems to work
@@ -230,7 +231,7 @@ if __name__ == "__main__":
         # We don't test for changes, just upload the stuff.
         # NOTE wml.put_campaign tests whether the addon.cfg exists so
         # send it unconditionally.
-        wml = libwml.CampaignClient(server)
+        wml = libwml.CampaignClient(server, quiet_libwml)
         ignore = {}
         stuff = {}
         stuff["passphrase"] = password
@@ -326,8 +327,11 @@ if __name__ == "__main__":
     optionparser.add_option("-w", "--wescamp-checkout",
         help = "The directory containing the wescamp checkout root. ['']")
 
-    optionparser.add_option("-v", "--verbose", action = "store_true",
+    optionparser.add_option("-v", "--verbose", action = "store_const", const="verbose", dest="verbosity",
         help = "Show more verbose output. [FALSE]")
+
+    optionparser.add_option("-q", "--quiet", action = "store_const", const="quiet", dest="verbosity",
+        help = "Show less verbose output. [FALSE]")
 
     optionparser.add_option("-P", "--password",
         help = "The master password for the addon server. ['']")
@@ -350,8 +354,12 @@ if __name__ == "__main__":
 
     options, args = optionparser.parse_args()
 
-    if(options.verbose):
+    if(options.verbosity == "verbose"):
         logging.basicConfig(level=logging.DEBUG,
+            format='[%(levelname)s] %(message)s')
+        quiet_libwml = False
+    elif(options.verbosity == "quiet"):
+        logging.basicConfig(level=logging.WARN,
             format='[%(levelname)s] %(message)s')
     else:
         logging.basicConfig(level=logging.INFO,
