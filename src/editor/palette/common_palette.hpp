@@ -35,6 +35,9 @@ struct item_group
 class common_palette {
 
 public:
+
+	virtual ~common_palette() {}
+
 	virtual void set_group(size_t index) = 0;
 
 	virtual size_t active_group_index() = 0;
