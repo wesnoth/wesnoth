@@ -3084,66 +3084,6 @@
 					>
 				</File>
 			</Filter>
-			<Filter
-				Name="Editor"
-				>
-				<File
-					RelativePath="..\..\src\editor\action.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\action_base.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\brush.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\editor_common.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\editor_controller.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\editor_display.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\editor_layout.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\editor_main.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\editor_map.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\editor_palettes.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\editor_preferences.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\map_context.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\map_fragment.hpp"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\editor\mouse_action.hpp"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<Filter
 			Name="Editor"
@@ -3201,6 +3141,14 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\src\editor\action.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\editor\action_base.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\editor\brush.cpp"
 				>
 				<FileConfiguration
@@ -3251,6 +3199,70 @@
 						ObjectFile="$(IntDir)\Editor\"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\editor\brush.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\editor\brush_bar.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Editor\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Editor\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug (fast)|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Editor\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Editor\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Editor\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Editor\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\editor\brush_bar.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\editor\editor_common.hpp"
+				>
 			</File>
 			<File
 				RelativePath="..\..\src\editor\editor_controller.cpp"
@@ -3305,6 +3317,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\src\editor\editor_controller.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\editor\editor_display.cpp"
 				>
 				<FileConfiguration
@@ -3355,6 +3371,10 @@
 						ObjectFile="$(IntDir)\Editor\"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\editor\editor_display.hpp"
+				>
 			</File>
 			<File
 				RelativePath="..\..\src\editor\editor_layout.cpp"
@@ -3409,6 +3429,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\src\editor\editor_layout.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\editor\editor_main.cpp"
 				>
 				<FileConfiguration
@@ -3459,6 +3483,10 @@
 						ObjectFile="$(IntDir)\Editor\"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\editor\editor_main.hpp"
+				>
 			</File>
 			<File
 				RelativePath="..\..\src\editor\editor_map.cpp"
@@ -3513,56 +3541,8 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\editor\editor_palettes.cpp"
+				RelativePath="..\..\src\editor\editor_map.hpp"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Editor\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Editor\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug (fast)|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Editor\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug_with_VLD|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Editor\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Test_Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Editor\"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Test_Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ObjectFile="$(IntDir)\Editor\"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\editor\editor_preferences.cpp"
@@ -3617,6 +3597,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\src\editor\editor_preferences.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\editor\map_context.cpp"
 				>
 				<FileConfiguration
@@ -3667,6 +3651,10 @@
 						ObjectFile="$(IntDir)\Editor\"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\editor\map_context.hpp"
+				>
 			</File>
 			<File
 				RelativePath="..\..\src\editor\map_fragment.cpp"
@@ -3721,6 +3709,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\src\editor\map_fragment.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\editor\mouse_action.cpp"
 				>
 				<FileConfiguration
@@ -3771,6 +3763,10 @@
 						ObjectFile="$(IntDir)\Editor\"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\editor\mouse_action.hpp"
+				>
 			</File>
 			<Filter
 				Name="Action"
@@ -3891,6 +3887,122 @@
 						>
 					</File>
 				</Filter>
+			</Filter>
+			<Filter
+				Name="Palette"
+				>
+				<File
+					RelativePath="..\..\src\editor\palette\editor_palettes.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug (fast)|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\editor\palette\editor_palettes.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\editor\palette\terrain_palettes.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug (fast)|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\editor\palette\terrain_palettes.hpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
