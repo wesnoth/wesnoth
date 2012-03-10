@@ -105,8 +105,8 @@ private:
 
 	// Move this much from src to dst.  Returns true if anything transferred.
 	void xfer(unsigned dst_plane, unsigned src_plane,
-			  int row_dst, int col_dst,
-			  int row_src, int col_src,
+			  unsigned row_dst, unsigned col_dst,
+			  unsigned row_src, unsigned col_src,
 			  double prob);
 
 	// Shift columns on this plane (b taking damage).  Returns min col.
@@ -256,8 +256,8 @@ void prob_matrix::dump() const
 
 // xfer, shift_cols and shift_rows use up most of our time.  Careful!
 void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
-					   int row_dst, int col_dst,
-					   int row_src, int col_src,
+					   unsigned row_dst, unsigned col_dst,
+					   unsigned row_src, unsigned col_src,
 					   double prob)
 {
 	double &src = val(src_plane, row_src, col_src);
@@ -266,14 +266,10 @@ void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
 		src -= diff;
 
 		// This is here for drain.
-		if (col_dst >= (signed) cols_)
-			col_dst = (signed) cols_ - 1;
-		else if (col_dst < 0)
-			col_dst = 0;
-		if (row_dst >= (signed) rows_)
-			row_dst = (signed) rows_ - 1;
-		else if (row_dst < 0)
-			row_dst = 0;
+		if (col_dst >= cols_)
+			col_dst = cols_ - 1;
+		if (row_dst >= rows_)
+			row_dst = rows_ - 1;
 
 		val(dst_plane, row_dst, col_dst) += diff;
 
@@ -294,8 +290,8 @@ void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
 void prob_matrix::shift_cols(unsigned dst, unsigned src,
 							 unsigned damage, double prob, int drain_constant, int drain_percent)
 {
-	int row, col;
-	int drainmax = (drain_percent*((signed) damage)/100+drain_constant);
+	unsigned int row, col;
+	int drainmax = (drain_percent*(static_cast<signed>(damage))/100+drain_constant);
 
 	if(drain_constant || drain_percent) {
 		debug(("Drains %i (%i%% of %i plus %i)\n", drainmax, drain_percent, damage, drain_constant));
@@ -305,23 +301,27 @@ void prob_matrix::shift_cols(unsigned dst, unsigned src,
 		damage = cols_ - 1;
 
 	// Killing blows can have strange drain amounts, so handle them first
-	for (row = min_row_[src] + 1; row < (signed) rows_; row++) {
+	for (row = min_row_[src] + 1; row < rows_; row++) {
 		// These are all going to die (move to col 0).
-		for (col = 1; (unsigned) col <= damage; ++col)
-			xfer(dst, src, std::max(row+(drain_percent*col/100+drain_constant), 1), 0, row, col, prob);
+		for (col = 1; col <= damage; ++col) {
+			int newrow = std::max(static_cast<signed>(row)+(drain_percent*static_cast<signed>(col)/100+drain_constant), 1);
+			xfer(dst, src, static_cast<unsigned>(newrow), 0, row, col, prob);
+		}
 	}
 
 	// Loop downwards if we drain positive, but upwards if we drain negative,
 	// so we write behind us (for when src == dst).
 	if(drainmax > 0) {
-		for (row = rows_ - 1; row > (signed) min_row_[src]; row--) {
-			for (col = damage+1; (unsigned) col < cols_; ++col)
-				xfer(dst, src, std::max(row+drainmax, 1), col - damage, row, col, prob);
+		for (row = rows_ - 1; row > min_row_[src]; row--) {
+			int newrow = std::max(static_cast<signed>(row)+drainmax, 1);
+			for (col = damage+1; col < cols_; ++col)
+				xfer(dst, src, static_cast<unsigned>(newrow), col - damage, row, col, prob);
 		}
 	} else {
-		for (row = min_row_[src] + 1; (unsigned) row < rows_; row++) {
-			for (col = damage+1; (unsigned) col < cols_; ++col)
-				xfer(dst, src, std::max(row+drainmax, 1), col - damage, row, col, prob);
+		for (row = min_row_[src] + 1; row < rows_; row++) {
+			int newrow = std::max(static_cast<signed>(row)+drainmax, 1);
+			for (col = damage+1; col < cols_; ++col)
+				xfer(dst, src, static_cast<unsigned>(newrow), col - damage, row, col, prob);
 		}
 	}
 }
@@ -329,8 +329,8 @@ void prob_matrix::shift_cols(unsigned dst, unsigned src,
 void prob_matrix::shift_rows(unsigned dst, unsigned src,
 							 unsigned damage, double prob, int drain_constant, int drain_percent)
 {
-	int row, col;
-	int drainmax = (drain_percent*((signed) damage)/100+drain_constant);
+	unsigned int row, col;
+	int drainmax = (drain_percent*(static_cast<signed>(damage))/100+drain_constant);
 
 	if(drain_constant || drain_percent) {
 		debug(("Drains %i (%i%% of %i plus %i)\n", drainmax, drain_percent, damage, drain_constant));
@@ -340,23 +340,27 @@ void prob_matrix::shift_rows(unsigned dst, unsigned src,
 		damage = rows_ - 1;
 
 	// Killing blows can have strange drain amounts, so handle them first
-	for (col = min_col_[src] + 1; (unsigned) col < cols_; col++) {
+	for (col = min_col_[src] + 1; col < cols_; col++) {
 		// These are all going to die (move to row 0).
-		for (row = 1; row <= (signed) damage; ++row)
-			xfer(dst, src, 0, std::max(col+(drain_percent*row/100+drain_constant), 1), row, col, prob);
+		for (row = 1; row <= damage; ++row) {
+			int newcol = std::max(static_cast<signed>(col)+(drain_percent*static_cast<signed>(row)/100+drain_constant), 1);
+			xfer(dst, src, 0, static_cast<unsigned>(newcol), row, col, prob);
+		}
 	}
 
 	// Loop downwards if we drain positive, but upwards if we drain negative,
 	// so we write behind us (for when src == dst).
 	if(drainmax > 0) {
-		for (col = cols_ - 1; col > (signed) min_col_[src]; col--) {
-			for (row = damage+1; (unsigned) row < rows_; ++row)
-				xfer(dst, src, row - damage, std::max(col+drainmax, 1), row, col, prob);
+		for (col = cols_ - 1; col > min_col_[src]; col--) {
+			int newcol = std::max(static_cast<signed>(col)+drainmax, 1);
+			for (row = damage+1; row < rows_; ++row)
+				xfer(dst, src, row - damage, static_cast<unsigned>(newcol), row, col, prob);
 		}
 	} else {
-		for (col = min_col_[src] + 1; (unsigned) col < cols_; col++) {
-			for (row = damage+1; (unsigned) row < rows_; ++row)
-				xfer(dst, src, row - damage, std::max(col+drainmax, 1), row, col, prob);
+		for (col = min_col_[src] + 1; col < cols_; col++) {
+			int newcol = std::max(static_cast<signed>(col)+drainmax, 1);
+			for (row = damage+1; row < rows_; ++row)
+				xfer(dst, src, row - damage, static_cast<unsigned>(newcol), row, col, prob);
 		}
 	}
 }
@@ -395,12 +399,13 @@ void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double h
 		if (min_row_[src] < min_row_[dst])
 			min_row_[dst] = min_row_[src];
 
-		int drain_worst = std::min<int>(a_drain_percent*((signed) actual_damage)/100+a_drain_constant, a_drain_constant);
+		int drain_worst = std::min<int>(a_drain_percent*(static_cast<signed>(actual_damage))/100+a_drain_constant, a_drain_constant);
 		if(drain_worst < 0) {
-			if((unsigned) -drain_worst >= min_row_[dst])
+			unsigned int max_drain_damage = static_cast<unsigned>(-drain_worst);
+			if(max_drain_damage >= min_row_[dst])
 				min_row_[dst] = 0;
 			else
-				min_row_[dst] += drain_worst;
+				min_row_[dst] -= max_drain_damage;
 		}
 	}
 }
@@ -486,10 +491,10 @@ double prob_matrix::dead_prob() const
 	for (p = 0; p < 4; ++p) {
 		if (!plane_[p])
 			continue;
-		// Don't count 0,0 twice
+		// We might count 0,0 twice, but that is always 0 anyway.
 		for (row = min_row_[p]; row < rows_; ++row)
 			prob += val(p, row, 0);
-		for (col = min_col_[p]?min_col_[p]:1; col < cols_; ++col)
+		for (col = min_col_[p]; col < cols_; ++col)
 			prob += val(p, 0, col);
 	}
 	return prob;
@@ -529,12 +534,13 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 		if (min_col_[src] < min_col_[dst])
 			min_col_[dst] = min_col_[src];
 
-		int drain_worst = std::min<int>(b_drain_percent*((signed) actual_damage)/100+b_drain_constant, b_drain_constant);
+		int drain_worst = std::min<int>(b_drain_percent*(static_cast<signed>(actual_damage))/100+b_drain_constant, b_drain_constant);
 		if(drain_worst < 0) {
-			if((unsigned) -drain_worst >= min_col_[dst])
+			unsigned int max_drain_damage = static_cast<unsigned>(-drain_worst);
+			if(max_drain_damage >= min_col_[dst])
 				min_col_[dst] = 0;
 			else
-				min_col_[dst] += drain_worst;
+				min_col_[dst] -= max_drain_damage;
 		}
 	}
 }
