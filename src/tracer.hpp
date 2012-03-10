@@ -21,11 +21,14 @@
 #ifndef TRACER_HPP_INCLUDED
 #define TRACER_HPP_INCLUDED
 
+#include <boost/noncopyable.hpp>
+
 #include <map>
 #include <string>
 
 /** Helper structure for gathering the tracing statistics. */
 struct ttracer
+	: private boost::noncopyable
 {
 	/**
 	 * Helper structure to print the tracing statistics.
@@ -36,6 +39,7 @@ struct ttracer
 	 * the scope is left. (This makes it easier to write the tracing macros.)
 	 */
 	struct tprint
+		: private boost::noncopyable
 	{
 		explicit tprint(const ttracer* const tracer__);
 
