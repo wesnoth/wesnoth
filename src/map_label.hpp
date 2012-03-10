@@ -36,7 +36,7 @@ public:
 	map_labels(const display& disp, const team*);
 	~map_labels();
 
-	void operator=(const map_labels&);
+	map_labels& operator=(const map_labels&);
 
 	void write(config& res) const;
 	void read(const config &cfg);

@@ -49,12 +49,16 @@ map_labels::~map_labels()
 	clear_all();
 }
 
-void map_labels::operator=(const map_labels& other) {
-	team_ = other.team_;
+map_labels& map_labels::operator=(const map_labels& other)
+{
+	if(this != &other) {
+		team_ = other.team_;
 
-	config cfg;
-	other.write(cfg);
-	read(cfg);
+		config cfg;
+		other.write(cfg);
+		read(cfg);
+	}
+	return *this;
 }
 
 void map_labels::write(config& res) const
