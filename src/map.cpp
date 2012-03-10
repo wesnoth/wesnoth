@@ -304,7 +304,7 @@ void gamemap::set_usage(const std::string& usage)
 		throw incorrect_map_format_error("Map has a header but no usage");
 	} else {
 		std::string msg = "Map has a header but an unknown usage:" + usage;
-		throw incorrect_map_format_error(msg.c_str());
+		throw incorrect_map_format_error(msg);
 	}
 }
 
