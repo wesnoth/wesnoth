@@ -49,10 +49,13 @@ struct ttracer
 		const ttracer* const tracer;
 	};
 
-	ttracer();
+	explicit ttracer(const char* const function__);
 
 	/** The total number of runs. */
 	int run;
+
+	/** The function being traced. */
+	const char* const function;
 
 	/**
 	 * The tracer counters.
@@ -77,9 +80,15 @@ struct ttracer
  *
  * @param interval                The interval between printing the statistics.
  */
-#define	TRACER_ENTRY(interval)                      \
-	static ttracer tracer;                                                   \
+#ifdef __GNUC__
+#define TRACER_ENTRY(interval)                                               \
+	static ttracer tracer(__PRETTY_FUNCTION__);                              \
 	ttracer::tprint print((++tracer.run % interval) == 0 ? &tracer : NULL)
+#else
+#define TRACER_ENTRY(interval)                                               \
+	static ttracer tracer(__FUNCTION__);                                     \
+	ttracer::tprint print((++tracer.run % interval) == 0 ? &tracer : NULL)
+#endif
 
 /**
  * A trace count point.
@@ -88,7 +97,7 @@ struct ttracer
  *
  * @param marker                  A string with the name of the marker.
  */
-#define TRACER_COUNT(marker)                        \
+#define TRACER_COUNT(marker)                                                 \
 	do {                                                                     \
 		++tracer.counters[std::make_pair(__LINE__, marker)];                 \
 	} while(0)

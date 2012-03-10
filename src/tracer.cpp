@@ -31,7 +31,7 @@ ttracer::tprint::~tprint()
 		return;
 	}
 
-	std::cerr << "Run statistics:\n"
+	std::cerr << "Run statistics for " << tracer->function << ":\n"
 			<< "Runs:\t" << std::dec << tracer->run << "\n";
 
 	typedef std::pair<std::pair<int, std::string>, int> thack;
@@ -58,8 +58,9 @@ ttracer::tprint::~tprint()
 	std::cerr.setf(original_flag, std::ios_base::adjustfield);
 }
 
-ttracer::ttracer()
+ttracer::ttracer(const char* const function__)
 	: run(0)
+	, function(function__)
 	, counters()
 {
 }
