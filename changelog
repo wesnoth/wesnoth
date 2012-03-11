@@ -128,6 +128,11 @@ Version 1.11.0-svn:
    * Fixed bug #19498: [modify_unit] duplicating units if x,y changed
    * Added inline SLF support in [scroll_to], by using the first matching location
    * Introduce inline SSF support in [objectives] and [show_objectives]
+   * The [drain] weapon special now supports value=, multiply=, divide=, add= and sub=
+   * Added [heal_on_hit] for healing/harming the user by a fixed amount
+   * Drained HP amounts can now be negative.  Trigger this by setting
+	 a negative value in the [drain] or [heal_on_hit] weapon special.
+   * Negative drain amounts will not take a unit below 1 health.
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
@@ -686,11 +691,6 @@ Version 1.9.9:
    * Added support for 24 hour ToD.
    * Added WML validation system based on schema validation.
    * Enabled validation for GUI WML.
-   * The [drain] weapon special now supports value=, multiply=, divide=, add= and sub=
-   * Added [heal_on_hit] for healing/harming the user by a fixed amount
-   * Drained HP amounts can now be negative.  Trigger this by setting
-	 a negative value in the [drain] or [heal_on_hit] weapon special.
-   * Negative drain amounts will not take a unit below 1 health.
  * Miscellaneous and bug fixes:
    * Teach wmllint to fix deprecated implicit side=1 in [store_gold], [gold]
      [remove_shroud], [place_shroud], [modify_side], [modify_ai] actions
