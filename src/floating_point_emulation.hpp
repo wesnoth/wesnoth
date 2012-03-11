@@ -732,7 +732,13 @@ public:
 	operator*=(const tfloat rhs)
 	{
 		value_ *= rhs.value_;
-		FLOATING_POINT_EMULATION_RANGE_CHECK;
+
+		/*
+		 * There is no need to check the range at this point. The specialised
+		 * version makes a short trip to 64-bit value, so overflowing is not
+		 * possible.
+		 */
+
 		detail::tscale<T, S>::down(value_);
 		FLOATING_POINT_EMULATION_RANGE_CHECK;
 		return *this;
@@ -962,6 +968,25 @@ operator!=(const double lhs, const tfloat<T, S> rhs)
 /***** ***** Math operators. ***** *****/
 
 /***** Mul *****/
+
+/**
+ * Multiply
+ *
+ * Specialised for the Sint32 with a shift of 8.
+ *
+ * Instead of figuring out the optimal shift before multiplying simply multiply
+ * as a 64-bit value and then perform the shift. This is rather cheap on the
+ * Pandora and also keeps the code short on that platform (only two extra
+ * instructions on the ARM v7; a `logical shift right' instruction followed by
+ * a `logical left shifted or' instruction.)
+ */
+template<>
+inline tfloat<Sint32, 8>&
+tfloat<Sint32, 8>::operator*=(const tfloat<Sint32, 8> rhs)
+{
+	value_ = (static_cast<Sint64>(value_) * rhs.value_) >> 8;
+	return *this;
+}
 
 template<class T, unsigned S>
 inline tfloat<T, S>
