@@ -209,7 +209,11 @@ struct tscale<Sint32, S, typename boost::enable_if_c<S != 0>::type>
 	static Sint32
 	down(Sint32& value)
 	{
-		value /= (1 << S);
+		if(value > 0) {
+			value >>= S;
+		} else {
+			value = -((-value) >> S);
+		}
 		return value;
 	}
 
