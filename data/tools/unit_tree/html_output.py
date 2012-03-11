@@ -992,7 +992,13 @@ class HTMLOutput:
             not_from_race, d = find_attr("defense", tid)
 
             if d == "-": d = 100
-            try: d = "%d%%" % (100 - int(d))
+
+            try:
+                d = int(d)
+                # negative defense has something to do with best defense if
+                # there's multiple terrain types
+                if d < 0: d = -d
+                d = "%d%%" % (100 - d)
             except ValueError:
                 error_message("Warning: Invalid defense %s for %s.\n" % (
                     d, uid))
