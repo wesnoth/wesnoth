@@ -68,7 +68,7 @@ size_t editor_palette<Item>::active_group_index()
 		if (groups_[i].id == active_group_)
 			return i;
 	}
-	return -1;
+	return static_cast<size_t>(-1);
 }
 template size_t editor_palette<t_translation::t_terrain>::active_group_index();
 template size_t editor_palette<unit_type>::active_group_index();
