@@ -147,9 +147,7 @@ void terrain_palette::draw_item(SDL_Rect& dstrect, const t_translation::t_terrai
 			}
 		}
 
-		if(static_cast<unsigned>(base_image->w) != item_size_ ||
-				static_cast<unsigned>(base_image->h) != item_size_) {
-
+		if(base_image->w != item_size_ || base_image->h != item_size_) {
 			base_image.assign(scale_surface(base_image,
 					item_size_, item_size_));
 		}
@@ -169,9 +167,7 @@ void terrain_palette::draw_item(SDL_Rect& dstrect, const t_translation::t_terrai
 		}
 	}
 
-	if(static_cast<unsigned>(image->w) != item_size_ ||
-			static_cast<unsigned>(image->h) != item_size_) {
-
+	if(image->w != item_size_ || image->h != item_size_) {
 		image.assign(scale_surface(image,
 				item_size_, item_size_));
 	}

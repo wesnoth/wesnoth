@@ -100,9 +100,7 @@ void unit_palette::draw_item(SDL_Rect& dstrect, const unit_type& u, std::strings
 		}
 	}
 
-	if(static_cast<unsigned>(image->w) != item_size_ ||
-			static_cast<unsigned>(image->h) != item_size_) {
-
+	if(image->w != item_size_ || image->h != item_size_) {
 		image.assign(scale_surface(image,
 				item_size_, item_size_));
 	}
