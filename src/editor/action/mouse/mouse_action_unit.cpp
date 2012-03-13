@@ -1,4 +1,4 @@
-/* $Id: mouse_action_unit.cpp 49182 2011-04-12 02:32:34Z fendrin $ */
+/* $Id$ */
 /*
 
    Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>

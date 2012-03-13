@@ -1,4 +1,4 @@
-/* $Id: mouse_action_unit.hpp 49122 2011-04-09 06:39:56Z fendrin $ */
+/* $Id$ */
 /*
    Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
