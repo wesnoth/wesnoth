@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-21 01:34+0100\n"
-"PO-Revision-Date: 2011-07-21 19:34+0300\n"
-"Last-Translator: Ushkin N\n"
+"PO-Revision-Date: 2012-01-21 16:21+0400\n"
+"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.0.50.1, po-mode 2.2+0.4\n"
+"X-Generator: Emacs 23.2.1, po-mode 2.2+0.4\n"
 
 #. [campaign]: id=Northern_Rebirth
 #: data/campaigns/Northern_Rebirth/_main.cfg:9
@@ -259,7 +259,6 @@ msgstr ""
 #. [part]
 #. tyrant -> Queen Asheviere from Heir to the Throne.
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:45
-#, fuzzy
 msgid ""
 "Word quickly spread among the humans that this hero was none other than "
 "Prince Konrad of Wesnoth, faring to the ruins of Knalga to retrieve the "
@@ -268,7 +267,7 @@ msgid ""
 msgstr ""
 "Меж людей быстро разошёлся слух, что героем тем был никто иной, как принц "
 "Конрад Веснотский, рвавшийся к развалинам Кналга, чтобы добыть Огненный "
-"Скипетр и спасти родной край от тирании; и они замерли как вкопанные, не "
+"Скипетр и спасти родной край от тирана; и они замерли как вкопанные, не "
 "силах пошевелиться от восхищения. "
 
 #. [part]
@@ -1826,7 +1825,7 @@ msgstr ""
 #. [message]: role=Supporter
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:455
 msgid "Tallin! Get hold of yourself!"
-msgstr ""
+msgstr "Таллин! Держись же!"
 
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:459
@@ -2016,7 +2015,7 @@ msgstr "Геттель"
 #. [side]: type=Death Knight, id=Tervor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:103
 msgid "Tervor"
-msgstr ""
+msgstr "Тервор"
 
 #. [side]: type=Death Knight, id=Author
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:127
@@ -2837,7 +2836,6 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1634
-#, fuzzy
 msgid ""
 "Well, if you don’t mind me saying — that certainly isn’t the state of "
 "affairs now. Knalga lies in ruins, orcs ravage the surface, and these dark "
@@ -2888,9 +2886,8 @@ msgstr "Должен ли этот воин взять Жезл Правосуд
 
 #. [option]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1678
-#, fuzzy
 msgid "rod of justice^Take it"
-msgstr "жезл правосудия"
+msgstr "Берём!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1682
@@ -2978,9 +2975,8 @@ msgstr "жезл правосудия"
 
 #. [option]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1802
-#, fuzzy
 msgid "rod of justice^Leave it"
-msgstr "жезл правосудия"
+msgstr "Не берём!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:1828
@@ -3209,19 +3205,13 @@ msgstr "Прошу прощения. Кстати, а какой сейчас г
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2175
-#, fuzzy
-#| msgid "Uh... 534YW..."
 msgid "Uh... 534..."
-msgstr "Э... 534 год Веснота..."
+msgstr "Э... 534..."
 
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2179
-#, fuzzy
-#| msgid "Huh?! Can’t be, the last year I remember it was 14,318AD!"
 msgid "Huh?! Can’t be, the last year I remember it was 14,318!"
-msgstr ""
-"Ого!? Не может быть — последний год, который я помню — 14318 год после "
-"Заката!"
+msgstr "Ого!? Не может быть — последний год, который я помню — 14318!"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_The_Pursuit.cfg:2183
@@ -4758,7 +4748,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:95
-#, fuzzy
 msgid ""
 "The last time any dwarf set eyes on Konrad was when he set out to the "
 "eastern tunnels in search of the Sceptre of Fire, so he could claim his "
@@ -4769,7 +4758,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:99
-#, fuzzy
 msgid ""
 "Geez, what a fool’s quest. Everyone in these Northlands knows that the "
 "Sceptre is long gone."
@@ -6312,7 +6300,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/08b_Ray_of_Hope.cfg:99
-#, fuzzy
 msgid ""
 "Well, that certainly isn’t the state of affairs now. Knalga lies in ruins, "
 "orcs ravish the surface, and dark and evil creatures haunt the underground "
@@ -10371,15 +10358,3 @@ msgstr "Он, конечно, был настоящий сумасшедший, 
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:59
 msgid "Arthian"
 msgstr "Арфьян"
-
-#~ msgid "Trevor"
-#~ msgstr "Тревор"
-
-#~ msgid "Take it"
-#~ msgstr "Берём"
-
-#~ msgid "Leave it"
-#~ msgstr "Не берём"
-
-#~ msgid "Tallin, are you OK?!"
-#~ msgstr "Таллин, ты в порядке?"
