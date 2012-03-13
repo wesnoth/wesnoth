@@ -131,13 +131,16 @@ local function generate_objectives(cfg)
 	end
 
 	for note in helper.child_range(cfg, "note") do
-		local note_bullet = note.bullet or bullet
-		local r = note.red or 255
-		local g = note.green or 255
-		local b = note.blue or 255
+		local show_if = helper.get_child(note, "show_if")
+		if not show_if or wesnoth.eval_conditional(show_if) then
+			local note_bullet = note.bullet or bullet
+			local r = note.red or 255
+			local g = note.green or 255
+			local b = note.blue or 255
 
-		if note.description then
-			notes = notes .. color_prefix(r, g, b) .. note_bullet .. "<small>" .. note.description .. "</small></span>\n"
+			if note.description then
+				notes = notes .. color_prefix(r, g, b) .. note_bullet .. "<small>" .. note.description .. "</small></span>\n"
+			end
 		end
 	end
 
