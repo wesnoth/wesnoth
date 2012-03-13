@@ -17,42 +17,62 @@
 
 #include "editor_palettes.hpp"
 
-#include "../../gettext.hpp"
-#include "../../tooltips.hpp"
-#include "../../marked-up_text.hpp"
+#include "foreach.hpp"
+#include "gettext.hpp"
+#include "marked-up_text.hpp"
+#include "tooltips.hpp"
+
+#include "editor/action/mouse/mouse_action.hpp"
 
 namespace editor {
 
 template<class Item>
 void editor_palette<Item>::set_group(const std::string& id)
 {
+	assert(!id.empty());
+
+	bool found = false;
+	foreach (const item_group& group, groups_) {
+		if (group.id == id)
+			found = true;
+	}
+	assert(found);
+
 	active_group_ = id;
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found.\n";
+		ERR_ED << "No items found in group with the id: '" << id << "'.\n";
 	}
 	gui_.set_terrain_report(active_group_report());
 	scroll_top();
 }
 template void editor_palette<t_translation::t_terrain>::set_group(const std::string& id);
+template void editor_palette<unit_type>::set_group(const std::string& id);
+template void editor_palette<void*>::set_group(const std::string& id);
 
 template<class Item>
 void editor_palette<Item>::set_group(size_t index)
 {
+	assert(groups_.size() > index);
 	set_group(groups_[index].id);
 }
 template void editor_palette<t_translation::t_terrain>::set_group(size_t index);
+template void editor_palette<unit_type>::set_group(size_t index);
+template void editor_palette<void*>::set_group(size_t index);
 
-template<class Item> size_t editor_palette<Item>::active_group_index()
+template<class Item>
+size_t editor_palette<Item>::active_group_index()
 {
+	assert(!active_group_.empty());
 	for (size_t i = 0 ; i < groups_.size(); i++) {
 		if (groups_[i].id == active_group_)
 			return i;
 	}
-	return 0;
+	return -1;
 }
 template size_t editor_palette<t_translation::t_terrain>::active_group_index();
-
+template size_t editor_palette<unit_type>::active_group_index();
+template size_t editor_palette<void*>::active_group_index();
 
 template<class Item>
 const config editor_palette<Item>::active_group_report()
@@ -69,7 +89,8 @@ const config editor_palette<Item>::active_group_report()
 	return cfg;
 }
 template const config editor_palette<t_translation::t_terrain>::active_group_report();
-
+template const config editor_palette<unit_type>::active_group_report();
+template const config editor_palette<void*>::active_group_report();
 
 template<class Item>
 void editor_palette<Item>::adjust_size()
@@ -84,50 +105,58 @@ void editor_palette<Item>::adjust_size()
 	set_location(rect);
 	palette_start_ = size_specs_.palette_y;
 	const size_t space_for_items = size_specs_.palette_h;
-	rect.y = items_start_;
-	rect.h = space_for_items;
+//TODO
+//	rect.y = items_start_;
+//	rect.h = space_for_items;
 	bg_register(rect);
 	const unsigned items_fitting =
-		static_cast<unsigned> (space_for_items / size_specs_.terrain_space) *
-		size_specs_.terrain_width;
+		static_cast<unsigned> (space_for_items / item_space_) *
+		item_width_;
 	nitems_ = std::min<int>(items_fitting, nmax_items_);
 
 	set_dirty();
 }
 template void editor_palette<t_translation::t_terrain>::adjust_size();
+template void editor_palette<unit_type>::adjust_size();
+template void editor_palette<void*>::adjust_size();
 
 template<class Item>
 void editor_palette<Item>::scroll_down()
 {
+	//TODO
 	SDL_Rect rect = create_rect(size_specs_.palette_x
 			, size_specs_.palette_y
 			, size_specs_.palette_w
 			, size_specs_.palette_h);
 
-	if(items_start_ + nitems_ + size_specs_.terrain_width <= num_items()) {
-		items_start_ += size_specs_.terrain_width;
+	if(items_start_ + nitems_ + item_width_ <= num_items()) {
+		items_start_ += item_width_;
 		bg_restore(rect);
 		set_dirty();
 	}
-	else if (items_start_ + nitems_ + (num_items() % size_specs_.terrain_width) <= num_items()) {
-		items_start_ += num_items() % size_specs_.terrain_width;
+	else if (items_start_ + nitems_ + (num_items() % item_width_) <= num_items()) {
+		items_start_ += num_items() % item_width_;
 		bg_restore(rect);
 		set_dirty();
 	}
 }
 template void editor_palette<t_translation::t_terrain>::scroll_down();
+template void editor_palette<unit_type>::scroll_down();
+template void editor_palette<void*>::scroll_down();
 
 template<class Item>
 void editor_palette<Item>::scroll_up()
 {
+	//TODO
 	SDL_Rect rect = create_rect(size_specs_.palette_x
 			, size_specs_.palette_y
 			, size_specs_.palette_w
 			, size_specs_.palette_h);
 
-	unsigned int decrement = size_specs_.terrain_width;
-	if (items_start_ + nitems_ == num_items() && num_items() % size_specs_.terrain_width != 0) {
-		decrement = num_items() % size_specs_.terrain_width;
+	unsigned int decrement = item_width_;
+	//TODO here is a bug.
+	if (items_start_ + nitems_ == num_items() && num_items() % item_width_ != 0) {
+		decrement = num_items() % item_width_;
 	}
 	if(items_start_ >= decrement) {
 		bg_restore(rect);
@@ -136,10 +165,13 @@ void editor_palette<Item>::scroll_up()
 	}
 }
 template void editor_palette<t_translation::t_terrain>::scroll_up();
+template void editor_palette<unit_type>::scroll_up();
+template void editor_palette<void*>::scroll_up();
 
 template<class Item>
 void editor_palette<Item>::scroll_top()
 {
+	//TODO
 	SDL_Rect rect = create_rect(size_specs_.palette_x
 			, size_specs_.palette_y
 			, size_specs_.palette_w
@@ -149,7 +181,8 @@ void editor_palette<Item>::scroll_top()
 	bg_restore(rect);
 	set_dirty();
 }
-template void editor_palette<t_translation::t_terrain>::scroll_top();
+//TODO
+//template void editor_palette<t_translation::t_terrain>::scroll_top();
 
 template<class Item>
 void editor_palette<Item>::scroll_bottom()
@@ -161,67 +194,90 @@ void editor_palette<Item>::scroll_bottom()
 	}
 }
 template void editor_palette<t_translation::t_terrain>::scroll_bottom();
+template void editor_palette<unit_type>::scroll_bottom();
+template void editor_palette<void*>::scroll_bottom();
 
 template<class Item>
-void editor_palette<Item>::select_fg_item(Item item)
+void editor_palette<Item>::select_fg_item(std::string item_id)
 {
-	if (selected_fg_item_ != item) {
+	if (selected_fg_item_ != item_id) {
 		set_dirty();
-		selected_fg_item_ = item;
-		update_report();
+		selected_fg_item_ = item_id;
+		//TODO
+		//update_report();
 	}
 }
-template void editor_palette<t_translation::t_terrain>::select_fg_item(t_translation::t_terrain terrain);
+template void editor_palette<t_translation::t_terrain>::select_fg_item(std::string terrain_id);
+template void editor_palette<unit_type>::select_fg_item(std::string unit_id);
+template void editor_palette<void*>::select_fg_item(std::string unit_id);
 
 template<class Item>
-void editor_palette<Item>::select_bg_item(Item item)
+void editor_palette<Item>::select_bg_item(std::string item_id)
 {
-	if (selected_bg_item_ != item) {
+	if (selected_bg_item_ != item_id) {
 		set_dirty();
-		selected_bg_item_ = item;
-		update_report();
+		selected_bg_item_ = item_id;
+		//TODO
+		//update_report();
 	}
 }
-template void editor_palette<t_translation::t_terrain>::select_bg_item(t_translation::t_terrain terrain);
+template void editor_palette<t_translation::t_terrain>::select_bg_item(std::string terrain_id);
+template void editor_palette<unit_type>::select_bg_item(std::string unit_id);
+template void editor_palette<void*>::select_bg_item(std::string unit_id);
 
 template<class Item>
 void editor_palette<Item>::swap()
 {
 	std::swap(selected_fg_item_, selected_bg_item_);
 	set_dirty();
-	update_report();
+	//TODO
+	//update_report();
 }
 template void editor_palette<t_translation::t_terrain>::swap();
+template void editor_palette<unit_type>::swap();
+template void editor_palette<void*>::swap();
 
 template<class Item>
-void editor_palette<Item>::left_mouse_click(const int mousex, const int mousey) {
+void editor_palette<Item>::left_mouse_click(const int mousex, const int mousey)
+{
 	int tselect = tile_selected(mousex, mousey);
 	if(tselect >= 0 && (items_start_+tselect) < active_group().size()) {
-		select_fg_item(item_map_[active_group()[items_start_+tselect]]);
+		select_fg_item(active_group()[items_start_+tselect]);
 		gui_.invalidate_game_status();
 	}
 }
-template void editor_palette<t_translation::t_terrain>::left_mouse_click(const int mousex, const int mousey);
+//TODO
+//template void editor_palette<t_translation::t_terrain>::left_mouse_click(const int mousex, const int mousey);
+
 
 template<class Item>
-void editor_palette<Item>::right_mouse_click(const int mousex, const int mousey) {
+void editor_palette<Item>::right_mouse_click(const int mousex, const int mousey)
+{
 	int tselect = tile_selected(mousex, mousey);
 	if(tselect >= 0 && (items_start_+tselect) < active_group().size()) {
-		select_bg_item(item_map_[active_group()[items_start_+tselect]]);
+		select_bg_item(active_group()[items_start_+tselect]);
 		gui_.invalidate_game_status();
 	}
 }
-template void editor_palette<t_translation::t_terrain>::right_mouse_click(const int mousex, const int mousey);
+//TODO
+//template void editor_palette<t_translation::t_terrain>::right_mouse_click(const int mousex, const int mousey);
 
 template<class Item>
-size_t editor_palette<Item>::num_items() {
+size_t editor_palette<Item>::num_items()
+{
 	size_t size = group_map_[active_group_].size();
 	return size;
 }
-template size_t editor_palette<t_translation::t_terrain>::num_items();
+//TODO
+//template size_t editor_palette<t_translation::t_terrain>::num_items();
 
 template<class Item>
 void editor_palette<Item>::handle_event(const SDL_Event& event) {
+
+	if ((**active_mouse_action_).get_palette() != this) {
+		return;
+	}
+
 	if (event.type == SDL_MOUSEMOTION) {
 		// If the mouse is inside the palette, give it focus.
 		if (point_in_rect(event.button.x, event.button.y, location())) {
@@ -270,12 +326,16 @@ void editor_palette<Item>::handle_event(const SDL_Event& event) {
 	}
 }
 template void editor_palette<t_translation::t_terrain>::handle_event(const SDL_Event& event);
+template void editor_palette<unit_type>::handle_event(const SDL_Event& event);
+template void editor_palette<void*>::handle_event(const SDL_Event& event);
 
 template<class Item>
-void editor_palette<Item>::draw(bool force) {
-	if (!dirty() && !force) {
+void editor_palette<Item>::draw(bool force)
+{
+	if ( (!dirty() && !force) || ((**active_mouse_action_).get_palette() != this) ) {
 		return;
 	}
+
 	unsigned int starting = items_start_;
 	unsigned int ending = starting + nitems_;
 
@@ -294,10 +354,10 @@ void editor_palette<Item>::draw(bool force) {
 
 		const int counter_from_zero = counter - starting;
 		SDL_Rect dstrect;
-		dstrect.x = loc.x + (counter_from_zero % size_specs_.terrain_width) * size_specs_.terrain_space;
+		dstrect.x = loc.x + (counter_from_zero % item_width_) * item_space_;
 		dstrect.y = y;
-		dstrect.w = size_specs_.terrain_size;
-		dstrect.h = size_specs_.terrain_size;
+		dstrect.w = item_size_;
+		dstrect.h = item_size_;
 
 		// Reset the tile background
 		bg_restore(dstrect);
@@ -305,19 +365,24 @@ void editor_palette<Item>::draw(bool force) {
 		std::stringstream tooltip_text;
 
 		const std::string item_id = active_group()[counter];
-		const Item& item = item_map_[item_id];
 
-		draw_item(dstrect, item, tooltip_text);
+		typedef std::map<std::string, Item> item_map_wurscht;
+
+		typename item_map_wurscht::iterator item = item_map_.find(item_id);
+
+		draw_item(dstrect, (*item).second, tooltip_text);
 
 		surface screen = gui_.video().getSurface();
 		Uint32 color;
-		if (item == selected_bg_item() && item == selected_fg_item()) {
+
+		if (get_id((*item).second) == selected_bg_item_
+		&& get_id((*item).second) == selected_fg_item_) {
 			color = SDL_MapRGB(screen->format,0xFF,0x00,0xFF);
 		}
-		else if (item == selected_bg_item()) {
+		else if (get_id((*item).second) == selected_bg_item_) {
 			color = SDL_MapRGB(screen->format,0x00,0x00,0xFF);
 		}
-		else if (item == selected_fg_item()) {
+		else if (get_id((*item).second) == selected_fg_item_) {
 			color = SDL_MapRGB(screen->format,0xFF,0x00,0x00);
 		}
 		else {
@@ -330,7 +395,7 @@ void editor_palette<Item>::draw(bool force) {
 		   draw_rectangle(dstrect.x -1, dstrect.y -1, image->w +2, image->h +2, color, screen);
 		*/
 
-		bool is_core = non_core_items_.find(get_id(item)) == non_core_items_.end();
+		bool is_core = non_core_items_.find(get_id((*item).second)) == non_core_items_.end();
 		if (!is_core) {
 			tooltip_text << " "
 					<< font::span_color(font::BAD_COLOR)
@@ -339,21 +404,24 @@ void editor_palette<Item>::draw(bool force) {
 					<< "</span>";
 		}
 		tooltips::add_tooltip(dstrect, tooltip_text.str());
-		if (counter_from_zero % size_specs_.terrain_width == size_specs_.terrain_width - 1)
-			y += size_specs_.terrain_space;
+		if (counter_from_zero % item_width_ == item_width_ - 1)
+			y += item_space_;
 	}
 	update_rect(loc);
 	set_dirty(false);
 }
 template void editor_palette<t_translation::t_terrain>::draw(bool force);
+template void editor_palette<unit_type>::draw(bool force);
+template void editor_palette<void*>::draw(bool force);
 
 template<class Item>
-int editor_palette<Item>::tile_selected(const int x, const int y) const {
+int editor_palette<Item>::tile_selected(const int x, const int y) const
+{
 	for(unsigned int i = 0; i != nitems_; i++) {
-		const int px = size_specs_.palette_x + (i % size_specs_.terrain_width) * size_specs_.terrain_space;
-		const int py = palette_start_ + (i / size_specs_.terrain_width) * size_specs_.terrain_space;
-		const int pw = size_specs_.terrain_space;
-		const int ph = size_specs_.terrain_space;
+		const int px = size_specs_.palette_x + (i % item_width_) * item_space_;
+		const int py = palette_start_ + (i / item_width_) * item_space_;
+		const int pw = item_space_;
+		const int ph = item_space_;
 
 		if(x > px && x < px + pw && y > py && y < py + ph) {
 			return i;

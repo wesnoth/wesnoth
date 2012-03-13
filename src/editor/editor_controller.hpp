@@ -16,15 +16,17 @@
 #ifndef EDITOR_EDITOR_CONTROLLER_HPP_INCLUDED
 #define EDITOR_EDITOR_CONTROLLER_HPP_INCLUDED
 
-#include "action_base.hpp"
-#include "brush.hpp"
+#include "action/action_base.hpp"
+#include "palette/brush.hpp"
 #include "editor_display.hpp"
 #include "editor_main.hpp"
-#include "map_context.hpp"
-#include "map_fragment.hpp"
+#include "map/map_context.hpp"
+#include "map/map_fragment.hpp"
 
+#include "palette/empty_palette.hpp"
 #include "palette/common_palette.hpp"
-#include "brush_bar.hpp"
+#include "palette/unit_palette.hpp"
+#include "palette/brush_bar.hpp"
 
 #include "../controller_base.hpp"
 #include "../mouse_handler_base.hpp"
@@ -330,9 +332,6 @@ class editor_controller : public controller_base,
 
 	private:
 
-		//TODO
-		editor::menu_type active_menu_;
-
 		/** init the display object and general set-up */
 		void init_gui(CVideo& video);
 
@@ -389,6 +388,8 @@ class editor_controller : public controller_base,
 		 */
 		void redo();
 
+		editor::menu_type active_menu_;
+
 		boost::scoped_ptr<rand_rng::rng> rng_;
 
 		boost::scoped_ptr<rand_rng::set_random_generator> rng_setter_;
@@ -412,14 +413,15 @@ class editor_controller : public controller_base,
 		boost::scoped_ptr<size_specs> size_specs_;
 
 		/** The terrain palette */
-		//boost::scoped_ptr<common_palette> palette_;
-
-		/** The terrain palette */
 		boost::scoped_ptr<terrain_palette> terrain_palette_;
 
-//		/** The unit palette */
-//		boost::scoped_ptr<unit_palette> unit_palette_;
+		/** The unit palette */
+		boost::scoped_ptr<unit_palette> unit_palette_;
 
+		/** The empty palette */
+		boost::scoped_ptr<empty_palette> empty_palette_;
+
+		//TODO
 		/** The item palette */
 //		boost::scoped_ptr<item_palette> palette_;
 
@@ -454,12 +456,6 @@ class editor_controller : public controller_base,
 
 		/** Toolbar-requires-redraw flag */
 		bool toolbar_dirty_;
-
-		/** Palette's active fg tereain */
-		t_translation::t_terrain foreground_terrain_;
-
-		/** Palette's active fg tereain */
-		t_translation::t_terrain background_terrain_;
 
 		/** Clipboard map_fragment -- used for copy-paste. */
 		map_fragment clipboard_;

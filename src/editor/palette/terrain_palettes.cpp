@@ -113,6 +113,9 @@ void terrain_palette::setup(const config& cfg)
 
 	}
 
+	select_fg_item("grassland");
+	select_bg_item("mountains");
+
 	// Set the default group
 	set_group("all");
 
@@ -144,11 +147,11 @@ void terrain_palette::draw_item(SDL_Rect& dstrect, const t_translation::t_terrai
 			}
 		}
 
-		if(static_cast<unsigned>(base_image->w) != size_specs_.terrain_size ||
-				static_cast<unsigned>(base_image->h) != size_specs_.terrain_size) {
+		if(static_cast<unsigned>(base_image->w) != item_size_ ||
+				static_cast<unsigned>(base_image->h) != item_size_) {
 
 			base_image.assign(scale_surface(base_image,
-					size_specs_.terrain_size, size_specs_.terrain_size));
+					item_size_, item_size_));
 		}
 
 		sdl_blit(base_image, NULL, screen, &dstrect);
@@ -166,11 +169,11 @@ void terrain_palette::draw_item(SDL_Rect& dstrect, const t_translation::t_terrai
 		}
 	}
 
-	if(static_cast<unsigned>(image->w) != size_specs_.terrain_size ||
-			static_cast<unsigned>(image->h) != size_specs_.terrain_size) {
+	if(static_cast<unsigned>(image->w) != item_size_ ||
+			static_cast<unsigned>(image->h) != item_size_) {
 
 		image.assign(scale_surface(image,
-				size_specs_.terrain_size, size_specs_.terrain_size));
+				item_size_, item_size_));
 	}
 
 	sdl_blit(image, NULL, screen, &dstrect);
@@ -183,9 +186,9 @@ void terrain_palette::draw_item(SDL_Rect& dstrect, const t_translation::t_terrai
 
 terrain_palette::terrain_palette(editor_display &gui, const size_specs &sizes,
 								 const config& cfg,
-								 t_translation::t_terrain& fore,
-								 t_translation::t_terrain& back)
-	:	editor_palette<t_translation::t_terrain>(gui, sizes, cfg, fore, back)
+								 mouse_action** active_mouse_action)
+//TODO avoid magic numbers
+	:	editor_palette<t_translation::t_terrain>(gui, sizes, cfg, 36, 4, active_mouse_action)
 {
 }
 

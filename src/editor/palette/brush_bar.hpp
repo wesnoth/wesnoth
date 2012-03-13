@@ -21,9 +21,9 @@
 #ifndef BRUSH_BAR_H_INCLUDED
 #define BRUSH_BAR_H_INCLUDED
 
-#include "../display.hpp"
+#include "../../display.hpp"
 #include "brush.hpp"
-#include "editor_layout.hpp"
+#include "palette_layout.hpp"
 
 namespace editor {
 

@@ -16,11 +16,12 @@
 #ifndef EDITOR_MOUSE_ACTION_HPP
 #define EDITOR_MOUSE_ACTION_HPP
 
-#include "editor/action_base.hpp"
-#include "editor/editor_map.hpp"
+#include "editor/action/action_base.hpp"
+#include "editor/map/editor_map.hpp"
 #include "theme.hpp"
 #include "editor/palette/editor_palettes.hpp"
 #include "editor/palette/terrain_palettes.hpp"
+#include "editor/palette/empty_palette.hpp"
 
 class CKey;
 
@@ -36,7 +37,7 @@ namespace editor {
 class mouse_action
 {
 public:
-	mouse_action(const CKey& key, common_palette* const palette = NULL)
+	mouse_action(const CKey& key, common_palette* const palette)
 		: previous_move_hex_()
 		, key_(key)
 		, toolbar_button_(NULL)
@@ -161,7 +162,7 @@ private:
 class brush_drag_mouse_action : public mouse_action
 {
 public:
-	brush_drag_mouse_action(const brush* const * const brush, const CKey& key, terrain_palette* const palette)
+	brush_drag_mouse_action(const brush* const * const brush, const CKey& key, common_palette* const palette)
 		: mouse_action(key, palette)
 		, previous_drag_hex_()
 		, brush_(brush)
@@ -245,12 +246,10 @@ private:
 class mouse_action_paint : public brush_drag_mouse_action
 {
 public:
-	mouse_action_paint(t_translation::t_terrain& terrain_left,
-		t_translation::t_terrain& terrain_right,
+	mouse_action_paint(
 		const brush* const * const brush, const CKey& key, terrain_palette* const palette)
 	: brush_drag_mouse_action(brush, key, palette)
-	, terrain_left_(terrain_left)
-	, terrain_right_(terrain_right)
+	, terrain_palette_(palette)
 	{
 	}
 
@@ -277,8 +276,11 @@ public:
 	void set_mouse_overlay(editor_display& disp);
 
 protected:
-	t_translation::t_terrain& terrain_left_;
-	t_translation::t_terrain& terrain_right_;
+
+	terrain_palette* const terrain_palette_;
+
+	//t_translation::t_terrain& terrain_left_;
+	//t_translation::t_terrain& terrain_right_;
 };
 
 /**
@@ -287,7 +289,7 @@ protected:
 class mouse_action_select : public brush_drag_mouse_action
 {
 public:
-	mouse_action_select(const brush* const * const brush, const CKey& key, terrain_palette* const palette)
+	mouse_action_select(const brush* const * const brush, const CKey& key, empty_palette* const palette)
 	: brush_drag_mouse_action(brush, key, palette)
 	{
 	}
@@ -321,8 +323,8 @@ public:
 class mouse_action_paste : public mouse_action
 {
 public:
-	mouse_action_paste(const map_fragment& paste, const CKey& key)
-	: mouse_action(key), paste_(paste)
+	mouse_action_paste(const map_fragment& paste, const CKey& key, common_palette* const palette)
+	: mouse_action(key, palette), paste_(paste)
 	{
 	}
 
@@ -358,11 +360,13 @@ protected:
 class mouse_action_fill : public mouse_action
 {
 public:
-	mouse_action_fill(t_translation::t_terrain& terrain_left,
-		t_translation::t_terrain& terrain_right, const CKey& key, terrain_palette* const palette)
-	: mouse_action(key, palette)
-	, terrain_left_(terrain_left)
-	, terrain_right_(terrain_right)
+	mouse_action_fill(
+		//	t_translation::t_terrain& terrain_left, t_translation::t_terrain& terrain_right,
+			const CKey& key, terrain_palette* const terrain_palette)
+	: mouse_action(key, terrain_palette)
+	, terrain_palette_(terrain_palette)
+//	, terrain_left_(terrain_left)
+//	, terrain_right_(terrain_right)
 	{
 	}
 
@@ -384,8 +388,9 @@ public:
 	virtual void set_mouse_overlay(editor_display& disp);
 
 protected:
-	t_translation::t_terrain& terrain_left_;
-	t_translation::t_terrain& terrain_right_;
+	terrain_palette* terrain_palette_;
+	//t_translation::t_terrain& terrain_left_;
+	//t_translation::t_terrain& terrain_right_;
 };
 
 /**
@@ -394,8 +399,8 @@ protected:
 class mouse_action_starting_position : public mouse_action
 {
 public:
-	mouse_action_starting_position(const CKey& key)
-	: mouse_action(key), click_(false)
+	mouse_action_starting_position(const CKey& key, empty_palette* const palette)
+	: mouse_action(key, palette), click_(false)
 	{
 	}
 

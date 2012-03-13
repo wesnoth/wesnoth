@@ -15,14 +15,16 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "asserts.hpp"
-#include "action.hpp"
+#include "editor/action/action.hpp"
 #include "editor_controller.hpp"
 
 #include "palette/terrain_palettes.hpp"
-#include "brush_bar.hpp"
+#include "palette/empty_palette.hpp"
+#include "palette/brush_bar.hpp"
 #include "editor_preferences.hpp"
-#include "mouse_action.hpp"
+#include "editor/action/mouse/mouse_action.hpp"
 #include "action/mouse/mouse_action_map_label.hpp"
+#include "action/mouse/mouse_action_unit.hpp"
 
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/dialogs/editor_generate_map.hpp"
@@ -100,6 +102,8 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, tods_()
 	, size_specs_()
 	, terrain_palette_()
+	, unit_palette_()
+	, empty_palette_()
 	, brush_bar_()
 	, prefs_disp_manager_(NULL)
 	, tooltip_manager_(video)
@@ -112,8 +116,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, mouse_action_hints_()
 	, mouse_action_(NULL)
 	, toolbar_dirty_(true)
-	, foreground_terrain_(t_translation::MOUNTAIN)
-	, background_terrain_(t_translation::GRASS_LAND)
 	, clipboard_()
 	, auto_update_transitions_(preferences::editor::auto_update_transitions())
 	, default_dir_(preferences::editor::default_dir())
@@ -130,28 +132,28 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	init_map_generators(game_config);
 	init_tods(game_config);
 	init_music(game_config);
-	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);
 	rng_.reset(new rand_rng::rng());
 	rng_setter_.reset(new rand_rng::set_random_generator(rng_.get()));
 	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
 	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 	image::set_color_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
-	theme& theme = gui().get_theme();
-	const theme::menu* default_tool_menu = NULL;
-	foreach (const theme::menu& m, theme.menus()) {
-		if (m.get_id() == "draw_button_editor") {
-			default_tool_menu = &m;
-			break;
-		}
-	}
+//	TODO enable if you can say what the purpose of the code is.
+//	theme& theme = gui().get_theme();
+//	const theme::menu* default_tool_menu = NULL;
+//	foreach (const theme::menu& m, theme.menus()) {
+//		if (m.get_id() == "draw_button_editor") {
+//			default_tool_menu = &m;
+//			break;
+//		}
+//	}
 	refresh_all();
 	events::raise_draw_event();
-	if (default_tool_menu != NULL) {
-		const SDL_Rect& menu_loc = default_tool_menu->location(get_display().screen_area());
-		show_menu(default_tool_menu->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false);
-		return;
-	}
+//	if (default_tool_menu != NULL) {
+//		const SDL_Rect& menu_loc = default_tool_menu->location(get_display().screen_area());
+//		show_menu(default_tool_menu->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false);
+//		return;
+//	}
 }
 
 void editor_controller::init_gui(CVideo& /*video*/)
@@ -169,9 +171,12 @@ void editor_controller::init_sidebar(const config& game_config)
 {
 	size_specs_.reset(new size_specs());
 	adjust_sizes(gui(), *size_specs_);
-	terrain_palette_.reset(new terrain_palette(gui(), *size_specs_, game_config,
-		foreground_terrain_, background_terrain_));
+	terrain_palette_.reset(new terrain_palette(gui(), *size_specs_, game_config, &mouse_action_));
 	terrain_palette_->setup(game_config);
+	unit_palette_.reset(new unit_palette(gui(), *size_specs_, game_config, &mouse_action_));
+    unit_palette_->setup(game_config);
+    empty_palette_.reset(new empty_palette(gui(), *size_specs_, game_config, &mouse_action_));
+
 	brush_bar_.reset(new brush_bar(gui(), *size_specs_, brushes_, &brush_));
 }
 
@@ -191,19 +196,19 @@ void editor_controller::init_brushes(const config& game_config)
 void editor_controller::init_mouse_actions(const config& game_config)
 {
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT,
-		new mouse_action_paint(foreground_terrain_, background_terrain_, &brush_, key_, terrain_palette_.get())));
+		new mouse_action_paint(&brush_, key_, terrain_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL,
-		new mouse_action_fill(foreground_terrain_, background_terrain_, key_, terrain_palette_.get())));
+		new mouse_action_fill(key_, terrain_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT,
-		new mouse_action_select(&brush_, key_, NULL)));
+		new mouse_action_select(&brush_, key_, empty_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
-		new mouse_action_starting_position(key_)));
+		new mouse_action_starting_position(key_, empty_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
-		new mouse_action_map_label(key_)));
+		new mouse_action_map_label(key_, empty_palette_.get())));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_UNIT,
+		new mouse_action_unit(key_, unit_palette_.get())));
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
-		new mouse_action_paste(clipboard_, key_)));
-
-	mouse_action_ = mouse_actions_[hotkey::HOTKEY_EDITOR_TOOL_PAINT];
+		new mouse_action_paste(clipboard_, key_, empty_palette_.get())));
 
 	foreach (const theme::menu& menu, gui().get_theme().menus()) {
 		if (menu.items().size() == 1) {
@@ -221,6 +226,8 @@ void editor_controller::init_mouse_actions(const config& game_config)
 			mouse_action_hints_.insert(std::make_pair(i->first, c["text"]));
 		}
 	}
+
+	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);
 }
 
 void editor_controller::init_map_generators(const config& game_config)
@@ -264,7 +271,6 @@ void editor_controller::init_music(const config& game_config)
 	}
 	sound::commit_music_changes();
 }
-
 
 editor_controller::~editor_controller()
 {
@@ -567,7 +573,8 @@ void editor_controller::resize_map_dialog()
 	if(gui2::teditor_resize_map::execute(w, h, dir, copy, gui().video())) {
 
 		if (w != get_map().w() || h != get_map().h()) {
-			t_translation::t_terrain fill = background_terrain_;
+			t_translation::t_terrain fill = terrain_palette_->selected_bg_item();
+					//background_terrain_;
 			if (copy) {
 				fill = t_translation::NONE_TERRAIN;
 			}
@@ -887,6 +894,8 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 		case HOTKEY_EDITOR_TOOL_LABEL:
+			//TODO unit selection is not always possible
+		case HOTKEY_EDITOR_TOOL_UNIT:
 			return true; //tool selection always possible
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
@@ -934,7 +943,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_LABEL:
-			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
+		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 			return is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
@@ -946,14 +955,13 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 				case editor::MAP:
 					return index == current_context_index_ ? ACTION_ON : ACTION_OFF;
 				case editor::TERRAIN:
+					//TODO
 					//return (size_t)index == palette_->active_group() ? ACTION_ON : ACTION_OFF;
 					return ACTION_STATELESS;
 				case editor::AREA:
 				case editor::SIDE:
 					return ACTION_ON;
 			}
-			//TODO
-		case HOTKEY_EDITOR_TERRAIN_GROUPS:
 			return ACTION_ON;
 		default:
 			return command_executor::get_action_state(command, index);
@@ -980,7 +988,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				mouse_action_->get_palette()->set_group(index);
 				return true;
 			case SIDE:
+				//TODO
 			case AREA:
+				//TODO
 				return true;
 			}
 		case HOTKEY_EDITOR_TERRAIN_GROUPS:
@@ -1024,6 +1034,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 		case HOTKEY_EDITOR_TOOL_LABEL:
+		case HOTKEY_EDITOR_TOOL_UNIT:
 			hotkey_set_mouse_action(command);
 			return true;
 		case HOTKEY_EDITOR_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
@@ -1162,6 +1173,7 @@ void editor_controller::expand_open_maps_menu(std::vector<std::string>& items)
 	}
 }
 
+//TODO rename in expand_palette_groups_menu
 void editor_controller::expand_terrain_groups_menu(std::vector<std::string>& items)
 {
 	active_menu_ = editor::TERRAIN;
@@ -1229,6 +1241,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 				case preferences::editor::TransitionUpdateMode::off:
 				default:
 					hotkey::get_hotkey(*i).set_description(_("Auto-update Terrain Transitions: No"));
+					break;
 			}
 		} else if(!can_execute_command(command)
 		|| (context_menu && !in_context_menu(command))) {
@@ -1281,7 +1294,7 @@ void editor_controller::copy_selection()
 void editor_controller::cut_selection()
 {
 	copy_selection();
-	perform_refresh(editor_action_paint_area(get_map().selection(), background_terrain_));
+	perform_refresh(editor_action_paint_area(get_map().selection(), terrain_palette_->selected_bg_item()));
 }
 
 void editor_controller::export_selection_coords()
@@ -1304,7 +1317,7 @@ void editor_controller::export_selection_coords()
 
 void editor_controller::fill_selection()
 {
-	perform_refresh(editor_action_paint_area(get_map().selection(), foreground_terrain_));
+	perform_refresh(editor_action_paint_area(get_map().selection(), terrain_palette_->selected_fg_item()));
 }
 
 void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
@@ -1312,6 +1325,10 @@ void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::iterator i = mouse_actions_.find(command);
 	if (i != mouse_actions_.end()) {
 		mouse_action_ = i->second;
+		terrain_palette_->adjust_size();
+		unit_palette_->adjust_size();
+		empty_palette_->adjust_size();
+		mouse_action_->get_palette()->draw(true);
 		set_mouseover_overlay();
 		redraw_toolbar();
 		left_button_function = hotkey::get_hotkey(command).get_description();
@@ -1336,7 +1353,6 @@ void editor_controller::update_mouse_action_highlights()
 	map_location hex_clicked = gui().hex_clicked_on(x,y);
 	get_mouse_action()->update_brush_highlights(gui(), hex_clicked);
 }
-
 
 events::mouse_handler_base& editor_controller::get_mouse_handler_base()
 {
@@ -1406,13 +1422,19 @@ void editor_controller::refresh_image_cache()
 void editor_controller::display_redraw_callback(display&)
 {
 	adjust_sizes(gui(), *size_specs_);
+
+	terrain_palette_->adjust_size();
+	unit_palette_->adjust_size();
+	empty_palette_->adjust_size();
+
 	if (mouse_action_->get_palette()) {
-		mouse_action_->get_palette()->adjust_size();
+		//mouse_action_->get_palette()->adjust_size();
 		mouse_action_->get_palette()->draw(true);
 	}
 	brush_bar_->adjust_size();
 	brush_bar_->draw(true);
 
+	redraw_toolbar();
 	gui().invalidate_all();
 }
 
@@ -1428,7 +1450,8 @@ void editor_controller::redo()
 	refresh_after_action();
 }
 
-void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool update, map_location /*new_loc*/)
+void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
+		bool update, map_location /*new_loc*/)
 {
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
@@ -1445,8 +1468,7 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool u
 		}
 		//Partial means that the mouse action has modified the
 		//last undo action and the controller shouldn't add
-		//anything to the undo stack (hence a different
-		//perform_ call)
+		//anything to the undo stack (hence a different perform_ call)
 		if (a != NULL) {
 			boost::scoped_ptr<editor_action> aa(a);
 			if (partial) {
@@ -1482,7 +1504,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 	LOG_ED << "Left click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = get_mouse_action()->click_left(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	terrain_palette_->draw(true);
+	mouse_action_->get_palette()->draw(true);
 	return false;
 }
 
@@ -1510,7 +1532,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	LOG_ED << "Right click action " << hex_clicked.x << " " << hex_clicked.y << "\n";
 	editor_action* a = get_mouse_action()->click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
-	terrain_palette_->draw(true);
+	mouse_action_->get_palette()->draw(true);
 	return false;
 }
 

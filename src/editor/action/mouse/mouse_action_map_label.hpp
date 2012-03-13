@@ -16,7 +16,8 @@
 #ifndef EDITOR_MOUSE_ACTION_MAP_LABEL_HPP
 #define EDITOR_MOUSE_ACTION_MAP_LABEL_HPP
 
-#include "../../mouse_action.hpp"
+#include "mouse_action.hpp"
+#include "editor/palette/empty_palette.hpp"
 
 class CKey;
 
@@ -28,8 +29,8 @@ namespace editor {
 class mouse_action_map_label : public mouse_action
 {
 public:
-	mouse_action_map_label(const CKey& key)
-	: mouse_action(key), click_(false), clicked_on_(), last_draged_(), tmp_label_(NULL)
+	mouse_action_map_label(const CKey& key, empty_palette* const pallete)
+	: mouse_action(key, pallete), click_(false), clicked_on_(), last_draged_(), tmp_label_(NULL)
 	  {
 	  }
 

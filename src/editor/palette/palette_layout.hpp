@@ -29,15 +29,16 @@ namespace editor {
 /** Size specifications for the map editor. */
 struct size_specs {
 	/**
-	 * Initialize the values to dummie-values that will avoid floating point
+	 * Initialize the values to dummy-values that will avoid floating point
 	 * errors if calculations are made before the sizes are adjusted through
 	 * adjust_sizes().
 	 */
 	size_specs();
-	size_t terrain_size;
-	size_t terrain_padding;
-	size_t terrain_space;
-	size_t terrain_width;
+	//TODO
+//	size_t terrain_size;
+//	size_t terrain_padding;
+//	size_t terrain_space;
+//	size_t terrain_width;
 	size_t palette_x;
 	size_t palette_y;
 	size_t palette_h;
@@ -49,7 +50,7 @@ struct size_specs {
 };
 
 /** Adjust the internal size specifications to fit the display. */
-void adjust_sizes(const display &disp, size_specs &sizes);
+void adjust_sizes(const display &disp, size_specs &sizes);//, size_t item_size, size_t item_width);
 
 }
 

@@ -15,10 +15,10 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "brush.hpp"
-#include "editor_common.hpp"
+#include "editor/editor_common.hpp"
 
-#include "../foreach.hpp"
-#include "../pathutils.hpp"
+#include "foreach.hpp"
+#include "pathutils.hpp"
 
 namespace editor {
 

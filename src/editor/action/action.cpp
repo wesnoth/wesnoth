@@ -19,8 +19,8 @@
  */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "editor/action.hpp"
-#include "editor/map_context.hpp"
+#include "editor/action/action.hpp"
+#include "editor/map/map_context.hpp"
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "util.hpp"

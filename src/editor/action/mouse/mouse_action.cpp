@@ -14,14 +14,14 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "action.hpp"
-#include "brush.hpp"
-#include "editor_display.hpp"
+#include "editor/action/action.hpp"
+#include "editor/palette/brush.hpp"
+#include "../../editor_display.hpp"
 #include "mouse_action.hpp"
 
-#include "../construct_dialog.hpp"
-#include "../gettext.hpp"
-#include "../gui/dialogs/editor_set_starting_position.hpp"
+#include "construct_dialog.hpp"
+#include "gettext.hpp"
+#include "gui/dialogs/editor_set_starting_position.hpp"
 
 namespace editor {
 
@@ -255,8 +255,10 @@ const brush& brush_drag_mouse_action::get_brush()
 editor_action* mouse_action_paint::click_left(editor_display& disp, int x, int y)
 {
 	if (has_ctrl_modifier()) {
-		map_location hex = disp.hex_clicked_on(x, y);
-		terrain_left_ = disp.map().get_terrain(hex);
+//		map_location hex = disp.hex_clicked_on(x, y);
+//		TODO
+//		terrain_left_ = disp.map().get_terrain(hex);
+//		terrain_palette_->select_fg_item( (disp.map().get_terrain(hex)).id()    );
 		return NULL;
 	} else {
 		return brush_drag_mouse_action::click_left(disp, x, y);
@@ -266,8 +268,9 @@ editor_action* mouse_action_paint::click_left(editor_display& disp, int x, int y
 editor_action* mouse_action_paint::click_right(editor_display& disp, int x, int y)
 {
 	if (has_ctrl_modifier()) {
-		map_location hex = disp.hex_clicked_on(x, y);
-		terrain_right_ = disp.map().get_terrain(hex);
+//		map_location hex = disp.hex_clicked_on(x, y);
+//		TODO
+//		terrain_right_ = disp.map().get_terrain(hex);
 		return NULL;
 	} else {
 		return brush_drag_mouse_action::click_right(disp, x, y);
@@ -278,19 +281,22 @@ editor_action* mouse_action_paint::click_perform_left(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
 	if (has_ctrl_modifier()) return NULL;
-	return new editor_action_chain(new editor_action_paint_area(hexes, terrain_left_, has_shift_modifier()));
+	return new editor_action_chain(new editor_action_paint_area(
+			hexes, terrain_palette_->selected_fg_item(), has_shift_modifier()));
 }
 
 editor_action* mouse_action_paint::click_perform_right(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
 	if (has_ctrl_modifier()) return NULL;
-	return new editor_action_chain(new editor_action_paint_area(hexes, terrain_right_, has_shift_modifier()));
+	return new editor_action_chain(new editor_action_paint_area(
+			hexes, terrain_palette_->selected_bg_item(), has_shift_modifier()));
 }
 
 void mouse_action_paint::set_mouse_overlay(editor_display& disp)
 {
-	set_terrain_mouse_overlay(disp, terrain_left_, terrain_right_);
+	set_terrain_mouse_overlay(disp, terrain_palette_->selected_fg_item(),
+			terrain_palette_->selected_bg_item());
 }
 
 
@@ -370,7 +376,6 @@ void mouse_action_paste::set_mouse_overlay(editor_display& disp)
 	disp.set_mouseover_hex_overlay(NULL); //TODO
 }
 
-
 std::set<map_location> mouse_action_fill::affected_hexes(
 	editor_display& disp, const map_location& hex)
 {
@@ -381,12 +386,14 @@ editor_action* mouse_action_fill::click_left(editor_display& disp, int x, int y)
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (has_ctrl_modifier()) {
-		terrain_left_ = disp.map().get_terrain(hex);
+		//TODO
+		//terrain_left_ = disp.map().get_terrain(hex);
 		return NULL;
 	} else {
 		//TODO only take the base terrain into account when searching for contiguous terrain when painting base only
 		//or use a different key modifier for that
-		editor_action_fill* a = new editor_action_fill(hex, terrain_left_, has_shift_modifier());
+		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_->selected_fg_item(),
+				has_shift_modifier());
 		return a;
 	}
 }
@@ -395,23 +402,23 @@ editor_action* mouse_action_fill::click_right(editor_display& disp, int x, int y
 {
 	map_location hex = disp.hex_clicked_on(x, y);
 	if (has_ctrl_modifier()) {
-		map_location hex = disp.hex_clicked_on(x, y);
-		terrain_right_ = disp.map().get_terrain(hex);
+		//TODO
+		//terrain_right_ = disp.map().get_terrain(hex);
 		return NULL;
 	} else {
 		//TODO only take the base terrain into account when searching for contiguous terrain when painting base only
 		//or use a different key modifier for that
-		editor_action_fill* a = new editor_action_fill(hex, terrain_right_, has_shift_modifier());
+		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_->selected_bg_item(),
+				has_shift_modifier());
 		return a;
 	}
 }
 
 void mouse_action_fill::set_mouse_overlay(editor_display& disp)
 {
-	set_terrain_mouse_overlay(disp, terrain_left_, terrain_right_);
+	set_terrain_mouse_overlay(disp, terrain_palette_->selected_fg_item(),
+			terrain_palette_->selected_bg_item());
 }
-
-
 
 editor_action* mouse_action_starting_position::up_left(editor_display& disp, int x, int y)
 {
@@ -486,8 +493,6 @@ void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);
 	disp.set_mouseover_hex_overlay(image);
 }
-
-
 
 
 } //end namespace editor

@@ -22,7 +22,7 @@
 
 #include "brush_bar.hpp"
 
-#include "../sound.hpp"
+#include "sound.hpp"
 
 
 namespace editor {

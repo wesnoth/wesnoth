@@ -27,7 +27,7 @@
 #ifndef EDITOR_ACTION_LABEL_HPP
 #define EDITOR_ACTION_LABEL_HPP
 
-#include "../action.hpp"
+#include "editor/action/action.hpp"
 
 #include "../../map.hpp"
 #include "../../map_label.hpp"

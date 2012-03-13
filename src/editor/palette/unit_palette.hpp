@@ -26,45 +26,24 @@ namespace editor {
 
 //std::string get_selected_terrain();
 
-/**
- * Stores the info about the data in editor-groups.cfg in a nice format.
- *
- *  Helper struct which for some reason can't be moved to the cpp file.
- */
-//struct terrain_group
-//{
-//	terrain_group();
-//	terrain_group(const config& cfg);
-//
-//	std::string id;
-//	t_string name;
-//	std::string icon;
-//   bool core;
-//};
-
 /** Palette where the terrain to be drawn can be selected. */
-class unit_palette : public editor_palette<t_translation::t_terrain, terrain_group> {
+class unit_palette : public editor_palette<unit_type> {
 public:
+
 	unit_palette(editor_display &gui, const size_specs &sizes,
 					const config& cfg,
-					t_translation::t_terrain& fore,
-					t_translation::t_terrain& back);
-
-	virtual const std::vector<t_translation::t_terrain>& get_items();
+					mouse_action** active_mouse_action);
+	//				unit_type& fore,
+	//				unit_type& back);
 
 	virtual void setup(const config& cfg);
 
 private:
+	virtual const std::string& get_id(const unit_type& terrain);
 
-	virtual const std::string& get_id(const t_translation::t_terrain& terrain);
-	virtual const std::string& get_id(const terrain_group& group);
+	virtual void draw_item(SDL_Rect& dstrect, const unit_type& terrain, std::stringstream& tooltip_text);
 
-	virtual void draw_item(SDL_Rect& dstrect, const t_translation::t_terrain& terrain);
-
-	virtual void update_report();
-
-	/** Return a string representing the terrain and the underlying ones. */
-	std::string get_terrain_string(const t_translation::t_terrain);
+//	virtual void update_report();
 
 };
 

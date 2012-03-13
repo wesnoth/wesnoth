@@ -16,7 +16,7 @@
 #ifndef EDITOR_BRUSH_HPP_INCLUDED
 #define EDITOR_BRUSH_HPP_INCLUDED
 
-#include "editor_map.hpp"
+#include "../map/editor_map.hpp"
 
 namespace editor {
 

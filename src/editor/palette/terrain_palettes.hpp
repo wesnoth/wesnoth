@@ -33,8 +33,7 @@ class terrain_palette : public editor_palette<t_translation::t_terrain> {
 public:
 	terrain_palette(editor_display &gui, const size_specs &sizes,
 					const config& cfg,
-					t_translation::t_terrain& fore,
-					t_translation::t_terrain& back);
+					mouse_action** active_mouse_action);
 
 	const gamemap& map() const { return gui_.get_map(); }
 

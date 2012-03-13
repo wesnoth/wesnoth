@@ -216,22 +216,25 @@ wesnoth_sources = Split("""
     config_cache.cpp
     controller_base.cpp
     dialogs.cpp
-    editor/action.cpp
-    editor/brush.cpp
-    editor/brush_bar.cpp
-    editor/editor_controller.cpp
-    editor/editor_display.cpp
-    editor/editor_layout.cpp
-    editor/editor_main.cpp
-    editor/editor_map.cpp
+    editor/action/action.cpp
+    editor/action/action_unit.cpp
+    editor/action/action_label.cpp
+    editor/action/mouse/mouse_action.cpp
+    editor/action/mouse/mouse_action_map_label.cpp
+    editor/action/mouse/mouse_action_unit.cpp
+    editor/map/editor_map.cpp
+    editor/map/map_context.cpp
+    editor/map/map_fragment.cpp
     editor/palette/editor_palettes.cpp
     editor/palette/terrain_palettes.cpp
+    editor/palette/unit_palette.cpp
+    editor/palette/palette_layout.cpp
+    editor/palette/brush.cpp
+    editor/palette/brush_bar.cpp
+    editor/editor_controller.cpp
+    editor/editor_display.cpp
+    editor/editor_main.cpp
     editor/editor_preferences.cpp
-    editor/map_context.cpp
-    editor/map_fragment.cpp
-    editor/mouse_action.cpp
-    editor/action/mouse/mouse_action_map_label.cpp
-    editor/action/action_label.cpp
     filechooser.cpp
     floating_textbox.cpp
     formula.cpp

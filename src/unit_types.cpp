@@ -605,7 +605,7 @@ unit_type::unit_type(const unit_type& o) :
 unit_type::unit_type(config &cfg) :
 	cfg_(cfg),
 	id_(cfg["id"]),
-	type_name_(),
+	type_name_(cfg["name"].t_str()),
 	description_(),
 	hitpoints_(0),
 	level_(0),
@@ -614,7 +614,7 @@ unit_type::unit_type(config &cfg) :
 	cost_(0),
 	usage_(),
 	undead_variation_(),
-	image_(),
+	image_(cfg["image"].str()),
 	icon_(),
 	small_profile_(),
 	big_profile_(),

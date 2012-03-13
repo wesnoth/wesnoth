@@ -21,7 +21,7 @@
 
 #include "editor/action/action_label.hpp"
 
-#include "editor/map_context.hpp"
+#include "editor/map/map_context.hpp"
 
 
 namespace editor {

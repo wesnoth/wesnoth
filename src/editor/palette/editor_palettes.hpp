@@ -17,7 +17,7 @@
 #define EDITOR_PALETTES_H_INCLUDED
 
 #include "../editor_display.hpp"
-#include "../editor_layout.hpp"
+#include "palette_layout.hpp"
 #include "common_palette.hpp"
 
 namespace editor {
@@ -25,17 +25,18 @@ namespace editor {
 template<class Item>
 class editor_palette: public gui::widget, public common_palette{
 public:
-	editor_palette(editor_display &gui, const size_specs &sizes, const config& /*cfg*/,
-			Item& fore, Item& back)
-	: gui::widget(gui.video())
-	, size_specs_(sizes)
-	, gui_(gui)
-	, palette_start_(0)
-	, item_map_()
-	, selected_fg_item_(fore)
-	, selected_bg_item_(back)
-{
-}
+	editor_palette(editor_display &gui, const size_specs &sizes, const config& /*cfg*/
+			, size_t item_size, size_t item_width, mouse_action** active_mouse_action)
+    //TODO
+	//		  Item& fore, Item& back)
+	: gui::widget(gui.video()),
+	gui_(gui), size_specs_(sizes),   item_size_(item_size), item_width_(item_width),
+	item_space_(item_size + 3), palette_start_(0),item_map_(), active_mouse_action_(active_mouse_action)
+	{};
+	//TODO
+	//, selected_fg_item_(fore)
+	//, selected_bg_item_(back)
+
 	virtual void set_group(size_t index);
 
 	std::vector<item_group>& get_groups() { return groups_; };
@@ -98,9 +99,12 @@ protected:
 	virtual void set_group(const std::string& id);
 	const std::vector<std::string>& active_group() { return group_map_[active_group_]; };
 
-	/** Return the currently selected foreground item. */
-	Item selected_fg_item() const { return selected_fg_item_; };
+public:
+	/** Return the currently selected foreground/background item. */
+	const Item& selected_fg_item() const { return item_map_.find(selected_fg_item_)->second; };
+	const Item& selected_bg_item() const { return item_map_.find(selected_bg_item_)->second; };
 
+protected:
 	/**
 	 * The editor_groups as defined in editor-groups.cfg.
 	 *
@@ -113,22 +117,31 @@ protected:
 
 private:
 	/** Return the currently selected background item. */
-	Item selected_bg_item() const { return selected_bg_item_; };
+//	Item selected_bg_item() const { return selected_bg_item_; };
 
 	virtual void swap();
 
+protected:
 	/** Select a foreground item. */
-	virtual void select_fg_item(Item);
-	virtual void select_bg_item(Item);
+	virtual void select_fg_item(std::string item_id);
+	virtual void select_bg_item(std::string item_id);
+
+private:
 
 	/** Return the number of terrains in the palette. */
 	size_t num_items();
 
 	void draw_old(bool);
 
-	int item_width_;
-	int item_size_;
+protected:
+	editor_display &gui_;
+	const size_specs &size_specs_;
 
+	int item_size_;
+	int item_width_;
+	int item_space_;
+
+protected:
 	/**
 	 * To be called when a mouse click occurs.
 	 *
@@ -142,11 +155,11 @@ private:
 	int tile_selected(const int x, const int y) const;
 
 	/** Update the report with the currently selected items. */
+/*
 	virtual void update_report() = 0;
+*/
 
 protected:
-	const size_specs &size_specs_;
-	editor_display &gui_;
 
 private:
 	unsigned int palette_start_;
@@ -160,8 +173,10 @@ protected:
 
 private:
 	std::string active_group_;
-	Item& selected_fg_item_;
-	Item& selected_bg_item_;
+	std::string selected_fg_item_;
+	std::string selected_bg_item_;
+
+    mouse_action** active_mouse_action_;
 };
 
 

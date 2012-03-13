@@ -14,18 +14,18 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "action.hpp"
+#include "editor/action/action.hpp"
 #include "map_context.hpp"
 
-#include "../display.hpp"
-#include "../filesystem.hpp"
-#include "../foreach.hpp"
-#include "../gettext.hpp"
-#include "../map_exception.hpp"
-#include "../map_label.hpp"
-#include "../serialization/binary_or_text.hpp"
-#include "../serialization/parser.hpp"
-#include "../wml_exception.hpp"
+#include "display.hpp"
+#include "filesystem.hpp"
+#include "foreach.hpp"
+#include "gettext.hpp"
+#include "map_exception.hpp"
+#include "map_label.hpp"
+#include "serialization/binary_or_text.hpp"
+#include "serialization/parser.hpp"
+#include "wml_exception.hpp"
 
 
 #include "formula_string_utils.hpp"

@@ -16,10 +16,10 @@
 #ifndef EDITOR_EDITOR_MAP_HPP_INCLUDED
 #define EDITOR_EDITOR_MAP_HPP_INCLUDED
 
-#include "editor_common.hpp"
+#include "../editor_common.hpp"
 
-#include "../map.hpp"
-#include "../map_label.hpp"
+#include "../../map.hpp"
+#include "../../map_label.hpp"
 
 #include <deque>
 

@@ -20,8 +20,9 @@
  * Set various sizes for the screen-layout of the map editor.
  */
 
+#include "palette_layout.hpp"
+
 #include "display.hpp"
-#include "editor_layout.hpp"
 
 
 namespace {
@@ -33,11 +34,12 @@ namespace {
 namespace editor {
 
 size_specs::size_specs()
-	: terrain_size(default_terrain_size)
-	, terrain_padding(0)
-	, terrain_space(0)
-	, terrain_width(default_terrain_width)
-	, palette_x(0)
+	: palette_x(0)
+//TODO
+//	, terrain_size(default_terrain_size)
+//	, terrain_padding(0)
+//	, terrain_space(1)
+//	, terrain_width(default_terrain_width)
 	, palette_y(0)
 	, palette_h(20)
 	, palette_w(10)
@@ -50,15 +52,19 @@ size_specs::size_specs()
 
 void adjust_sizes(const display &disp, size_specs &sizes) {
 	/** @todo Hardcoded coordinates for brush selection, make them themeable. */
+	//TODO
+//	sizes.terrain_size  = item_size;
+//	sizes.terrain_width = item_width;
 	sizes.brush_x = disp.map_outside_area().w + 12;
 	sizes.brush_y = (disp.h() >= 768) ? 340 : 270;
 	/** @todo Hardcoded coordinates for terrain palette, make them themeable. */
 	sizes.palette_x = disp.map_outside_area().w + 12;
 	sizes.palette_y = sizes.brush_y + 33;
-	sizes.palette_w = sizes.terrain_space * sizes.terrain_width;
+	sizes.palette_w = 174; // sizes.terrain_space * sizes.terrain_width;
 	sizes.palette_h = disp.h() - sizes.palette_y;
-	sizes.terrain_padding = (disp.h() >= 768) ? 3 : 1;
-	sizes.terrain_space = sizes.terrain_size + sizes.terrain_padding;
+	//TODO
+//	sizes.terrain_padding = (disp.h() >= 768) ? 3 : 1;
+//	sizes.terrain_space = sizes.terrain_size + sizes.terrain_padding;
 }
 
 } // end namespace editor

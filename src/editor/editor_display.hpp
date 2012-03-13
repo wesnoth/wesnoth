@@ -16,7 +16,7 @@
 #ifndef EDITOR_EDITOR_DISPLAY_HPP_INCLUDED
 #define EDITOR_EDITOR_DISPLAY_HPP_INCLUDED
 
-#include "editor_map.hpp"
+#include "map/editor_map.hpp"
 #include "../display.hpp"
 
 namespace editor {
