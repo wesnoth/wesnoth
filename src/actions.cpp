@@ -1258,6 +1258,7 @@ class attack
 	const battle_context_unit_stats *d_stats_;
 
 	int abs_n_attack_, abs_n_defend_;
+	// update_att_fog_ is not used, other than making some code simpler.
 	bool update_att_fog_, update_def_fog_, update_minimap_;
 
 	unit_info a_, d_;
@@ -1293,7 +1294,6 @@ void attack::fire_event(const std::string& n)
 		return;
 	}
 	const int defender_side = d_.get_unit().side();
-	const int attacker_side = a_.get_unit().side();
 	game_events::fire(n, game_events::entity_location(a_.loc_, a_.id_),
 		game_events::entity_location(d_.loc_, d_.id_), ev_data);
 
@@ -1302,7 +1302,6 @@ void attack::fire_event(const std::string& n)
 	refresh_bc();
 	if(!a_.valid() || !d_.valid() || !(*resources::teams)[a_.get_unit().side() - 1].is_enemy(d_.get_unit().side())) {
 		if (update_display_){
-			recalculate_fog(attacker_side);
 			recalculate_fog(defender_side);
 			resources::screen->recalculate_minimap();
 			resources::screen->draw(true, true);
@@ -1821,7 +1820,6 @@ void attack::perform()
 
 	bool defender_strikes_first = (d_stats_->firststrike && !a_stats_->firststrike);
 	unsigned int rounds = std::max<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;
-	const int attacker_side = a_.get_unit().side();
 	const int defender_side = d_.get_unit().side();
 
 	LOG_NG << "Fight: (" << a_.loc_ << ") vs (" << d_.loc_ << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
@@ -1863,14 +1861,6 @@ void attack::perform()
 	}
 
 	// TODO: if we knew the viewing team, we could skip some of these display update
-	if (update_att_fog_ && (*resources::teams)[attacker_side - 1].uses_fog())
-	{
-		recalculate_fog(attacker_side);
-		if (update_display_) {
-			resources::screen->invalidate_all();
-			resources::screen->recalculate_minimap();
-		}
-	}
 	if (update_def_fog_ && (*resources::teams)[defender_side - 1].uses_fog())
 	{
 		recalculate_fog(defender_side);
@@ -2379,6 +2369,16 @@ namespace {
 
 }
 
+/**
+ * Function that recalculates the fog of war.
+ *
+ * This is used at the end of a turn and for the defender at the end of
+ * combat. As a back-up, it is also called when clearing shroud at the
+ * beginning of a turn.
+ * This function does nothing if the indicated side does not use fog.
+ *
+ * @param[in] side The side whose fog will be recalculated.
+ */
 void recalculate_fog(int side)
 {
 	team &tm = (*resources::teams)[side - 1];
@@ -2402,7 +2402,18 @@ void recalculate_fog(int side)
 	game_events::pump();
 }
 
-bool clear_shroud(int side)
+/**
+ * Function that will clear shroud (and fog) based on current unit positions.
+ *
+ * This will not re-fog hexes unless reset_fog is set to true.
+ * This function will do nothing if the side uses neither shroud nor fog.
+ *
+ * @param[in] side	The side whose shroud (and fog) will be cleared.
+ * @param[in] reset_fog	If set to true, the fog will also be recalculated
+ *			(refogging hexes that can no longer be seen).
+ * @returns true if some shroud/fog is actually cleared away.
+ */
+bool clear_shroud(int side, bool reset_fog)
 {
 	team &tm = (*resources::teams)[side - 1];
 	if (!tm.uses_shroud() && !tm.uses_fog())
@@ -2423,7 +2434,7 @@ bool clear_shroud(int side)
 	// don't want to pump it here
 	game_events::pump();
 
-	if (tm.uses_fog()) {
+	if ( reset_fog ) {
 		recalculate_fog(side);
 	}
 

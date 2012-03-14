@@ -98,6 +98,7 @@ Version 1.11.0-svn:
    * Made add-ons with markup characters at the start of their titles
      display normally in the add-ons management dialogs (e.g. without
      colors)
+   * Re-fogging does not occur in the middle of the player's turn.
  * Whiteboard
    * Fixed bug #19369: Using planning mode can cause losing ability to move my units
    * Fixed bug #19408: Crash shortly after executing invalid multi-turn move
@@ -138,6 +139,7 @@ Version 1.11.0-svn:
 	 a negative value in the [drain] or [heal_on_hit] weapon special.
    * Negative drain amounts will not take a unit below 1 health.
    * Added [show_if] support to [objectives] [note]
+   * New tags: [lift_fog] and [reset_fog].
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,

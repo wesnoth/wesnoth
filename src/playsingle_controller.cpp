@@ -97,9 +97,6 @@ void playsingle_controller::init_gui(){
 	update_locker lock_display(gui_->video(),recorder.is_skipping());
 	events::raise_draw_event();
 	gui_->draw();
-	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		::clear_shroud(t - teams_.begin() + 1);
-	}
 }
 
 void playsingle_controller::recruit(){
@@ -843,7 +840,7 @@ void playsingle_controller::play_ai_turn(){
 	turn_data.sync_network();
 
 	gui_->recalculate_minimap();
-	::clear_shroud(player_number_);
+	recalculate_fog(player_number_);
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();

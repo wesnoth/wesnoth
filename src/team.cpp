@@ -279,6 +279,7 @@ team::team() :
 	villages_(),
 	shroud_(),
 	fog_(),
+	fog_clearer_(),
 	auto_shroud_updates_(true),
 	info_(),
 	countdown_time_(0),
@@ -525,6 +526,10 @@ bool team::fogged(const map_location& loc) const
 {
 	if(shrouded(loc)) return true;
 
+	// Check for an override of fog.
+	if ( fog_clearer_.count(loc) > 0 )
+		return false;
+
 	if(!teams)
 		return fog_.value(loc.x+1,loc.y+1);
 
@@ -589,6 +594,24 @@ bool team::copy_ally_shroud()
 
 	return shroud_.copy_from(ally_shroud(*teams));
 }
+
+/**
+ * Removes the record of hexes that were cleared of fog via WML.
+ * @param[in] hexes	The hexes to no longer keep clear.
+ */
+void team::remove_fog_override(const std::set<map_location> &hexes)
+{
+	// Take a set difference.
+	std::vector<map_location> result(fog_clearer_.size());
+	std::vector<map_location>::iterator result_end =
+		std::set_difference(fog_clearer_.begin(), fog_clearer_.end(),
+				    hexes.begin(), hexes.end(), result.begin());
+
+	// Put the result into fog_clearer_.
+	fog_clearer_.clear();
+	fog_clearer_.insert(result.begin(), result_end);
+}
+
 
 int team::nteams()
 {

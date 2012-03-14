@@ -716,17 +716,19 @@ namespace {
 
 static void toggle_shroud(const bool remove, const vconfig& cfg)
 {
+	// Filter the sides.
 	std::vector<int> sides = game_events::get_sides_vector(cfg);
 	size_t index;
+
+	// Filter the locations.
+	std::set<map_location> locs;
+	const terrain_filter filter(cfg, *resources::units);
+	filter.get_locations(locs, true);
 
 	foreach (const int &side_num, sides)
 	{
 		index = side_num - 1;
 		team &t = (*resources::teams)[index];
-		std::set<map_location> locs;
-		terrain_filter filter(cfg, *resources::units);
-		filter.restrict_size(game_config::max_loop);
-		filter.get_locations(locs, true);
 
 		foreach (map_location const &loc, locs)
 		{
@@ -751,6 +753,45 @@ WML_HANDLER_FUNCTION(remove_shroud, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
 {
 	toggle_shroud(false,cfg );
+}
+
+/* Implements the lifting and resetting of fog via WML.
+ */
+static void toggle_fog(const bool clear, const vconfig& cfg)
+{
+	// Filter the sides.
+	const vconfig &ssf = cfg.child("filter_side");
+	const side_filter s_filter(ssf.null() ? vconfig::empty_vconfig() : ssf);
+	const std::vector<int> sides = s_filter.get_teams();
+
+	// Filter the locations.
+	std::set<map_location> locs;
+	const terrain_filter t_filter(cfg, *resources::units);
+	t_filter.get_locations(locs, true);
+
+	// Loop through sides.
+	foreach (const int &side_num, sides)
+	{
+		team &t = (*resources::teams)[side_num-1];
+		if ( clear )
+			t.add_fog_override(locs);
+		else
+			t.remove_fog_override(locs);
+	}
+
+	// Flag a screen update.
+	resources::screen->recalculate_minimap();
+	resources::screen->invalidate_all();
+}
+
+WML_HANDLER_FUNCTION(lift_fog, /*event_info*/, cfg)
+{
+	toggle_fog(true, cfg);
+}
+
+WML_HANDLER_FUNCTION(reset_fog, /*event_info*/,cfg)
+{
+	toggle_fog(false, cfg);
 }
 
 WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
