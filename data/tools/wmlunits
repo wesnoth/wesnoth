@@ -18,6 +18,7 @@ import unit_tree.helpers as helpers
 import unit_tree.animations as animations
 import unit_tree.html_output as html_output
 import unit_tree.overview
+import unit_tree.wiki_output as wiki_output
 
 def copy_images():
     print("Recolorizing pictures.")
@@ -415,32 +416,36 @@ if __name__ == '__main__':
     op.add_option("-A", "--addons-only", action = "store_true",
         help = "Do only process addons (for debugging).")
     op.add_option("-v", "--verbose", action = "store_true")
+    op.add_option("-W", "--wiki", action = "store_true",
+        help = "write wikified units list to stdout")
     options, args = op.parse_args()
     
     html_output.options = options
     helpers.options = options
     unit_tree.overview.options = options
+    wiki_output.options = options
 
-    if not options.output:
+    if not options.output and not options.wiki:
         op.print_help()
         sys.exit(-1)
 
-    options.output = os.path.expanduser(options.output)
+    if options.output:
+        options.output = os.path.expanduser(options.output)
 
     if not options.wesnoth:
         options.wesnoth = "wesnoth"
 
     if not options.transdir:
         options.transdir = os.getcwd()
+    
+    if options.wiki:
+        wiki_output.main()
+        sys.exit(0)
 
     image_collector = helpers.ImageCollector(options.wesnoth,
         options.config_dir, options.data_dir)
     html_output.image_collector = image_collector
 
-    # Generate output dir.
-    if not os.path.isdir(options.output):
-        os.mkdir(options.output)
-        
     if options.language == "all":
         languages = []
         parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
@@ -456,6 +461,11 @@ if __name__ == '__main__':
         languages.sort()
     else:
         languages = options.language.split(",")
+        
+    if options.output:
+        # Generate output dir.
+        if not os.path.isdir(options.output):
+            os.mkdir(options.output)
         
     if options.list:
         list_contents()
