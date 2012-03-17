@@ -361,13 +361,13 @@ scale_surface_down(surface& dst, const surface& src, const int w_dst, const int 
 
 					++samples;
 
-					Uint8 r,g,b,a;
-					SDL_GetRGBA(src_pixels[y_src * w_src + x_src], src->format, &r, &g, &b, &a);
+					const Uint32 pixel = src_pixels[y_src * w_src + x_src];
+					const Uint8 a = pixel >> 24;
 					if(a) {
 						a_sum += a;
-						r_sum += r * a;
-						g_sum += g * a;
-						b_sum += b * a;
+						r_sum += a * static_cast<Uint8>(pixel >> 16);
+						g_sum += a * static_cast<Uint8>(pixel >> 8);
+						b_sum += a * static_cast<Uint8>(pixel);
 					}
 				}
 			}
@@ -390,12 +390,11 @@ scale_surface_down(surface& dst, const surface& src, const int w_dst, const int 
 				}
 			}
 
-			dst_pixels[y_dst * w_dst + x_dst] = SDL_MapRGBA(
-					  dst->format
-					, r_sum
-					, g_sum
-					, b_sum
-					, a_sum);
+			dst_pixels[y_dst * w_dst + x_dst] =
+					  static_cast<Uint8>(a_sum) << 24
+					| static_cast<Uint8>(r_sum) << 16
+					| static_cast<Uint8>(g_sum) << 8
+					| static_cast<Uint8>(b_sum);
 		}
 	}
 }
