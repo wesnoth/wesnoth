@@ -29,7 +29,11 @@ tokenizer::tokenizer(std::istream& in) :
 	textdomain_(PACKAGE),
 	file_(),
 	token_(),
-	in_(in)
+	in_(in),
+	cache_(),
+	cache_size_(0),
+	cache_offset_(0),
+	read_eof_(false)
 {
 	for (int c = 0; c < 128; ++c)
 	{
@@ -44,6 +48,7 @@ tokenizer::tokenizer(std::istream& in) :
 		char_types_[c] = t;
 	}
 	in_.exceptions(std::ios_base::badbit);
+	fill_cache();
 	next_char_fast();
 }
 

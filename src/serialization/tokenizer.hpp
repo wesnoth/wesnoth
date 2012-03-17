@@ -102,14 +102,46 @@ private:
 		next_char_fast();
 	}
 
+	/**
+	 * Fills the cache.
+	 *
+	 * @warning This function must be called before @ref peek_char(). (Not
+	 * required before @ref next_char_fast(), but it can't hurt.) It must also
+	 * be called after consuming a character from the cache.
+	 */
+	void fill_cache()
+	{
+		if(UNLIKELY(cache_offset_ >= cache_size_)) {
+			/*
+			 * This does not only test for the EOF, but also makes sure the
+			 * data is available in the buffer. Without it readsome will read
+			 * nothing, after its first call, even if the EOF has not been
+			 * reached.
+			 */
+			if(UNLIKELY(in_.rdbuf()->sgetc() == EOF)) {
+				read_eof_ = true;
+			} else {
+				cache_offset_ = 0;
+				cache_size_ = in_.readsome(cache_, sizeof(cache_));
+			}
+		}
+	}
+
 	void next_char_fast()
 	{
 		do {
-			if (LIKELY(in_.good())) {
-				current_ = in_.get();
-			} else {
+			if(UNLIKELY(read_eof_)) {
 				current_ = EOF;
-				return;
+			} else {
+				/*
+				 * The data needs to be casted to an unsigned value before it
+				 * is promoted to an int. The char might be signed and contain
+				 * a negative value, resulting in a negative result, and cause
+				 * problems. (Using gcc on x86 has this issue.)
+				 */
+				current_ = static_cast<unsigned char>(cache_[cache_offset_]);
+				++cache_offset_;
+				fill_cache();
 			}
 		} while (UNLIKELY(current_ == '\r'));
 #if 0
@@ -133,7 +165,12 @@ private:
 
 	int peek_char() const
 	{
-		return in_.peek();
+		if(UNLIKELY(read_eof_)) {
+			return EOF;
+		} else {
+			/* See next_char_fast() */
+			return static_cast<unsigned char>(cache_[cache_offset_]);
+		}
 	}
 
 	enum
@@ -179,6 +216,34 @@ private:
 #endif
 	std::istream &in_;
 	char char_types_[128];
+
+	/**
+	 * Read cache.
+	 *
+	 * Reading from @ref std::istream isn't to fast, especially not a byte at a
+	 * time. This cache is used to buffer x bytes at a time. The size of the
+	 * buffer is determined experimentally.
+	 */
+	char cache_[1024];
+
+	/**
+	 * The size of @ref cache_.
+	 *
+	 * When buffering the data there might be less data in the stream as in the
+	 * buffer. This variable contains the exact size of the buffer.
+	 */
+	unsigned cache_size_;
+
+	/**
+	 * The offset of the current character in the buffer.
+	 *
+	 * @ref cache_[cache_offset_] is the current character, and can be peaked
+	 * or consumed.
+	 */
+	unsigned cache_offset_;
+
+	/** Is the end of file reached? */
+	bool read_eof_;
 };
 
 #endif
