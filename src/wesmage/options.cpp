@@ -108,6 +108,7 @@ print_help(const int exit_status)
 "The FILE is the name of the input file to be converted.\n"
 "OPTIONS:\n"
 "-o, --output FILE       The name of the output file to be written.\n"
+"-n, --dry-run           No output is written.\n"
 "-f, --filter FILTER     Filters to be applied to the image. See FILTERS.\n"
 "-h, --help              Show this help and terminate the programme.\n"
 "\n"
@@ -147,6 +148,7 @@ toptions::parse(int argc, char* argv[])
 	toptions& result = singleton(false);
 
 	bool help = false;
+	bool dry_run = false;
 
 	/* argv[0] is the name of the programme, not a command-line argument. */
 	for(int i = 1; i < argc; ++i) {
@@ -154,6 +156,8 @@ toptions::parse(int argc, char* argv[])
 
 		if(option == "-h" || option == "--help") {
 			help = true;
+		} else if(option == "-n" || option == "--dry-run") {
+			dry_run = true;
 		} else if(option == "-o" || option == "--output") {
 			++i;
 			VALIDATE_NOT_PAST_END;
@@ -182,12 +186,17 @@ toptions::parse(int argc, char* argv[])
 		print_help(EXIT_SUCCESS);
 	}
 
+	if(dry_run && !result.output_filename.empty()) {
+		std::cerr << "Error: Dry run with an output file is not allowed.\n";
+		print_help(EXIT_FAILURE);
+	}
+
 	if(result.input_filename.empty()) {
 		std::cerr << "Error: Input filename omitted.\n";
 		print_help(EXIT_FAILURE);
 	}
 
-	if(result.output_filename.empty()) {
+	if(result.output_filename.empty() && !dry_run) {
 		std::cerr << "Error: Output filename omitted.\n";
 		print_help(EXIT_FAILURE);
 	}

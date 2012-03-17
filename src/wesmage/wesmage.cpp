@@ -49,7 +49,9 @@ main(int argc, char* argv[])
 			filter_apply(surf, filter);
 		}
 
-		save_image(surf, options.output_filename);
+		if(!options.output_filename.empty()) {
+			save_image(surf, options.output_filename);
+		}
 
 	} catch(const texit& exit) {
 		return exit.status;
