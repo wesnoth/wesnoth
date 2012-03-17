@@ -374,7 +374,7 @@ scale_surface_down(surface& dst, const surface& src, const int w_dst, const int 
 
 			if(a_sum) {
 
-				const int adjustment = (a_sum + (a_sum > 1)) >> 1;
+				const int adjustment = (a_sum | 1) >> 1;
 				r_sum += adjustment;
 				g_sum += adjustment;
 				b_sum += adjustment;
@@ -385,7 +385,7 @@ scale_surface_down(surface& dst, const surface& src, const int w_dst, const int 
 
 				assert(samples == (x_src_next - x_src) * (y_src_next - y_src));
 				if(samples != 1) {
-					a_sum += (samples + 1) >> 1;
+					a_sum += (samples | 1) >> 1;
 					a_sum /= samples;
 				}
 			}
