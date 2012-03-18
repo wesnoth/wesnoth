@@ -66,9 +66,9 @@
 #include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/multi_page.hpp"
+#include "gui/widgets/selectable.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/window.hpp"
@@ -2917,9 +2917,9 @@ static int intf_set_dialog_value(lua_State *L)
 		else
 			return luaL_argerror(L, 1, "out of bounds");
 	}
-	else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w))
+	else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w))
 	{
-		b->set_value(lua_toboolean(L, 1));
+		s->set_value(lua_toboolean(L, 1));
 	}
 	else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w))
 	{
@@ -2973,8 +2973,8 @@ static int intf_get_dialog_value(lua_State *L)
 		lua_pushinteger(L, l->get_selected_row() + 1);
 	} else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w)) {
 		lua_pushinteger(L, l->get_selected_page() + 1);
-	} else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w)) {
-		lua_pushboolean(L, b->get_value());
+	} else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w)) {
+		lua_pushboolean(L, s->get_value());
 	} else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w)) {
 		lua_pushstring(L, t->get_value().c_str());
 	} else if (gui2::tslider *s = dynamic_cast<gui2::tslider *>(w)) {
@@ -3043,6 +3043,8 @@ static int intf_set_dialog_callback(lua_State *L)
 									  &tdialog_callback_wrapper::forward
 									, wrapper
 									, w));
+	} else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w)) {
+		s->set_callback_state_change(&dialog_callback);
 	}
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	else if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w)) {
@@ -3058,9 +3060,7 @@ static int intf_set_dialog_callback(lua_State *L)
 		l->set_callback_value_change(&dialog_callback);
 	}
 #endif
-	  else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w)) {
-		b->set_callback_state_change(&dialog_callback);
-	} else
+	else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
 	lua_pushlightuserdata(L
