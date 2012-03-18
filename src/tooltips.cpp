@@ -33,12 +33,13 @@ static const int text_width = 400;
 
 struct tooltip
 {
-	tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act = "")
-	: rect(r), message(msg), action(act)
+	tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act = "", bool use_markup = false)
+	: rect(r), message(msg), action(act), markup(use_markup)
 	{}
 	SDL_Rect rect;
 	std::string message;
 	std::string action;
+	bool markup;
 };
 
 std::vector<tooltip> tips;
@@ -72,6 +73,7 @@ static void show_tooltip(const tooltip& tip)
 	unsigned int border = 10;
 
 	font::floating_label flabel(tip.message);
+	flabel.use_markup(tip.markup);
 	flabel.set_font_size(font_size);
 	flabel.set_color(font::NORMAL_COLOR);
 	flabel.set_clip_rect(area);
@@ -137,7 +139,7 @@ void clear_tooltips(const SDL_Rect& rect)
 	}
 }
 
-void add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action)
+void add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action, bool use_markup)
 {
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ++i) {
 		if(rects_overlap(i->rect,rect)) {
@@ -146,7 +148,7 @@ void add_tooltip(const SDL_Rect& rect, const std::string& message, const std::st
 		}
 	}
 
-	tips.push_back(tooltip(rect, message, action));
+	tips.push_back(tooltip(rect, message, action, use_markup));
 	current_tooltip = tips.end();
 }
 

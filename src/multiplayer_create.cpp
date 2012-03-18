@@ -475,7 +475,7 @@ void create::process_event()
 				}
 
 				if (!level["description"].empty()) {
-					tooltips::add_tooltip(minimap_rect_, level["description"]);
+					tooltips::add_tooltip(minimap_rect_, level["description"], "", false);
 				}
 			}
 		} else {
