@@ -86,7 +86,7 @@ struct paths
 	// viewing_team is usually current team, except for Show Enemy Moves etc.
 	paths(gamemap const &map,
 	      unit_map const &units,
-	      map_location const &loc, std::vector<team> const &teams,
+	      const unit& u, std::vector<team> const &teams,
 	      bool force_ignore_zocs, bool allow_teleport,
 		 const team &viewing_team, int additional_turns = 0,
 		 bool see_all = false, bool ignore_units = false);

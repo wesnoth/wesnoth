@@ -2334,7 +2334,7 @@ namespace {
 			return false;
 		}
 
-		pathfind::paths p(*resources::game_map, *resources::units, loc, *resources::teams, true, false, tm, 0, false, true);
+		pathfind::paths p(*resources::game_map, *resources::units, *u, *resources::teams, true, false, tm, 0, false, true);
 		foreach (const pathfind::paths::step &dest, p.destinations) {
 			clear_shroud_loc(tm, dest.curr, &cleared_locations);
 		}

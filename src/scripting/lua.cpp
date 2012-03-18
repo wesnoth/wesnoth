@@ -1502,7 +1502,7 @@ static int intf_highlight_hex(lua_State *L)
 	unit_map::const_unit_iterator i = resources::units->find(loc);
 	if(i != resources::units->end()) {
 		resources::screen->highlight_reach(pathfind::paths(
-			*resources::game_map, *resources::units, loc, *resources::teams, false,
+			*resources::game_map, *resources::units, *i, *resources::teams, false,
 			(*i).get_ability_bool("teleport"), resources::teams->front()));
 	}
 
@@ -2157,18 +2157,17 @@ static int intf_find_path(lua_State *L)
 static int intf_find_reach(lua_State *L)
 {
 	int arg = 1;
-	map_location src;
 	unit_map &units = *resources::units;
 	const unit *u = NULL;
 
 	if (lua_isuserdata(L, arg))
 	{
 		u = luaW_checkunit(L, 1);
-		src = u->get_location();
 		++arg;
 	}
 	else
 	{
+		map_location src;
 		src.x = luaL_checkinteger(L, arg) - 1;
 		++arg;
 		src.y = luaL_checkinteger(L, arg) - 1;
@@ -2213,7 +2212,7 @@ static int intf_find_reach(lua_State *L)
 	}
 
 	team &viewing_team = teams[(viewing_side ? viewing_side : u->side()) - 1];
-	pathfind::paths res(map, units, src, teams, ignore_units, !ignore_teleport,
+	pathfind::paths res(map, units, *u, teams, ignore_units, !ignore_teleport,
 		viewing_team, additional_turns, see_all, ignore_units);
 
 	int nb = res.destinations.size();

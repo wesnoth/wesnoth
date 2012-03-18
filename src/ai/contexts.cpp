@@ -349,7 +349,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		}
 		res.insert(std::pair<map_location,pathfind::paths>(
 			un_it->get_location(), pathfind::paths(*resources::game_map,
-			units, un_it->get_location(), *resources::teams, false,
+			units, *un_it, *resources::teams, false,
 			true, current_team(), 0, see_all)));
 	}
 
@@ -919,7 +919,7 @@ bool readonly_context_impl::leader_can_reach_keep() const
 
 	// Find where the leader can move
 	const pathfind::paths leader_paths(*resources::game_map, *resources::units,
-		leader->get_location(), *resources::teams, false, true, current_team());
+		*leader, *resources::teams, false, true, current_team());
 
 	return leader_paths.destinations.contains(start_pos);
 }
