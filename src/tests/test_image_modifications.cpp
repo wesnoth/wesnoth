@@ -694,8 +694,8 @@ BOOST_AUTO_TEST_CASE(test_o_modification_decoding_percent_args)
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
-	BOOST_CHECK(mod->get_opacity() > 0.44);
-	BOOST_CHECK(mod->get_opacity() < 0.46);
+	BOOST_CHECK(mod->get_opacity() > 0.44f);
+	BOOST_CHECK(mod->get_opacity() < 0.46f);
 
 	delete mod;
 }
@@ -714,8 +714,8 @@ BOOST_AUTO_TEST_CASE(test_o_modification_decoding_fraction_args)
 	// The dynamic_cast returns NULL if the argument doesn't match the type
 	BOOST_REQUIRE(mod != NULL);
 
-	BOOST_CHECK(mod->get_opacity() > 0.33);
-	BOOST_CHECK(mod->get_opacity() < 0.35);
+	BOOST_CHECK(mod->get_opacity() > 0.33f);
+	BOOST_CHECK(mod->get_opacity() < 0.35f);
 
 	delete mod;
 }
