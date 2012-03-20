@@ -174,6 +174,7 @@ if(MSVC)
 	SOURCE_GROUP("src editor action" REGULAR_EXPRESSION "editor/action/.*")
 	SOURCE_GROUP("src editor action mouse" REGULAR_EXPRESSION "editor/action/mouse/.*")
 	SOURCE_GROUP("src editor palette" REGULAR_EXPRESSION "editor/palette/.*")
+	SOURCE_GROUP("src editor toolkit" REGULAR_EXPRESSION "editor/toolkit/.*")
         SOURCE_GROUP("src editor map" REGULAR_EXPRESSION "editor/map/.*")
 	SOURCE_GROUP("src gui" REGULAR_EXPRESSION "gui/.*")
 	SOURCE_GROUP("src gui auxiliary" REGULAR_EXPRESSION "gui/auxiliary/.*")
@@ -378,8 +379,9 @@ set(wesnoth-main_SRC
 	editor/map/editor_map.cpp
 	editor/map/map_context.cpp
 	editor/map/map_fragment.cpp
-	editor/palette/brush.cpp
-        editor/palette/brush_bar.cpp
+        editor/palette/palette_manager.cpp
+	editor/toolkit/brush.cpp
+        editor/toolkit/brush_bar.cpp
         editor/palette/editor_palettes.cpp
         editor/palette/palette_layout.cpp
         editor/palette/terrain_palettes.cpp
@@ -388,6 +390,8 @@ set(wesnoth-main_SRC
 	editor/editor_display.cpp
 	editor/editor_main.cpp
 	editor/editor_preferences.cpp
+        editor/toolkit/editor_toolkit.cpp
+        editor/map/context_manager.cpp
 	filechooser.cpp
 	floating_textbox.cpp
 	formula.cpp
