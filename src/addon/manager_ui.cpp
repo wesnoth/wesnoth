@@ -33,6 +33,7 @@
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
+#include "help.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
@@ -591,6 +592,9 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		gui::dialog_button* view_mode_button = new gui::dialog_button(disp.video(),
 			view_mode_display_label(view), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &view_mode_helper);
 		dlg.add_button(view_mode_button, gui::dialog::BUTTON_EXTRA_LEFT);
+
+		help::help_button* help_button = new help::help_button(disp, "managing_addons");
+		dlg.add_button(help_button, gui::dialog::BUTTON_HELP);
 
 		// Focus the menu on the previous selection.
 		std::vector<std::string>::iterator it = !last_addon_id.empty() ?
