@@ -721,6 +721,16 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 
 	try {
 		do {
+			if(need_wml_cache_refresh) {
+				// The version info cache has gone stale because we installed/upgraded
+				// an add-on in the previous iteration. Normally this cache is refreshed
+				// along with all other caches, but we don't want to do all that here.
+				// Thus, we refresh this specific cache when required, so that add-ons
+				// are properly reported as installed/upgraded before leaving the
+				// manager UI.
+				refresh_addon_version_info_cache();
+			}
+
 			// TODO: don't create a new client instance each time we return to the UI,
 			// but for that we need to make sure any pending network operations are canceled
 			// whenever addons_client throws user_exit even before it gets destroyed
