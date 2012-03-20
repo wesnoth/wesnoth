@@ -38,10 +38,11 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 		editor_controller editor(game_conf, video);
 		if (!filename.empty()) {
 			if (is_directory(filename)) {
-				editor.set_default_dir(filename);
-				editor.load_map_dialog(true);
+//TODO
+				//			editor.set_default_dir(filename);
+				editor.context_manager_->load_map_dialog(true);
 			} else {
-				editor.load_map(filename, false);
+				editor.context_manager_->load_map(filename, false);
 			}
 		}
 		if(take_screenshot) {
@@ -54,9 +55,12 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 		ERR_ED << "Editor exception in editor::start: " << e.what() << "\n";
 		throw;
 	}
+	//TODO
+	/*
 	if (editor_action::get_instance_count() != 0) {
 		ERR_ED << "Possibly leaked " << editor_action::get_instance_count() << " action objects\n";
 	}
+	*/
 	return e;
 }
 
