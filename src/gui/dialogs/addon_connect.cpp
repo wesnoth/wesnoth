@@ -37,10 +37,7 @@ namespace gui2 {
  *         This text contains the name of the server to connect to. $
  *
  * & 2 & button & o &
- *         This button closes the dialog and starts the addon manager. $
- *
- * & 3 & button & o &
- *         This button closes the dialog and starts the update routine. $
+ *         This button closes the dialog to display a dialog for removing installed add-ons. $
  *
  * @end{table}
  */
