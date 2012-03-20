@@ -15,7 +15,7 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/action/action.hpp"
-#include "editor/palette/brush.hpp"
+#include "editor/toolkit/brush.hpp"
 #include "../../editor_display.hpp"
 #include "mouse_action.hpp"
 
@@ -282,7 +282,7 @@ editor_action* mouse_action_paint::click_perform_left(
 {
 	if (has_ctrl_modifier()) return NULL;
 	return new editor_action_chain(new editor_action_paint_area(
-			hexes, terrain_palette_->selected_fg_item(), has_shift_modifier()));
+			hexes, terrain_palette_.selected_fg_item(), has_shift_modifier()));
 }
 
 editor_action* mouse_action_paint::click_perform_right(
@@ -290,13 +290,13 @@ editor_action* mouse_action_paint::click_perform_right(
 {
 	if (has_ctrl_modifier()) return NULL;
 	return new editor_action_chain(new editor_action_paint_area(
-			hexes, terrain_palette_->selected_bg_item(), has_shift_modifier()));
+			hexes, terrain_palette_.selected_bg_item(), has_shift_modifier()));
 }
 
 void mouse_action_paint::set_mouse_overlay(editor_display& disp)
 {
-	set_terrain_mouse_overlay(disp, terrain_palette_->selected_fg_item(),
-			terrain_palette_->selected_bg_item());
+	set_terrain_mouse_overlay(disp, terrain_palette_.selected_fg_item(),
+			terrain_palette_.selected_bg_item());
 }
 
 
@@ -392,7 +392,7 @@ editor_action* mouse_action_fill::click_left(editor_display& disp, int x, int y)
 	} else {
 		//TODO only take the base terrain into account when searching for contiguous terrain when painting base only
 		//or use a different key modifier for that
-		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_->selected_fg_item(),
+		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_.selected_fg_item(),
 				has_shift_modifier());
 		return a;
 	}
@@ -408,7 +408,7 @@ editor_action* mouse_action_fill::click_right(editor_display& disp, int x, int y
 	} else {
 		//TODO only take the base terrain into account when searching for contiguous terrain when painting base only
 		//or use a different key modifier for that
-		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_->selected_bg_item(),
+		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_.selected_bg_item(),
 				has_shift_modifier());
 		return a;
 	}
@@ -416,8 +416,8 @@ editor_action* mouse_action_fill::click_right(editor_display& disp, int x, int y
 
 void mouse_action_fill::set_mouse_overlay(editor_display& disp)
 {
-	set_terrain_mouse_overlay(disp, terrain_palette_->selected_fg_item(),
-			terrain_palette_->selected_bg_item());
+	set_terrain_mouse_overlay(disp, terrain_palette_.selected_fg_item(),
+			terrain_palette_.selected_bg_item());
 }
 
 editor_action* mouse_action_starting_position::up_left(editor_display& disp, int x, int y)

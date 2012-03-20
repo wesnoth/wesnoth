@@ -29,8 +29,8 @@ namespace editor {
 class mouse_action_unit : public mouse_action
 {
 public:
-	mouse_action_unit(const CKey& key, unit_palette* const palette)
-	: mouse_action(key, palette), click_(false), start_hex_()
+	mouse_action_unit(const CKey& key, unit_palette& palette)
+	: mouse_action(palette, key), click_(false), start_hex_()
 	{
 	}
 

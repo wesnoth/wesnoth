@@ -29,8 +29,8 @@ namespace editor {
 class mouse_action_map_label : public mouse_action
 {
 public:
-	mouse_action_map_label(const CKey& key, empty_palette* const pallete)
-	: mouse_action(key, pallete), click_(false), clicked_on_(), last_draged_(), tmp_label_(NULL)
+	mouse_action_map_label(const CKey& key, empty_palette& palette)
+	: mouse_action(palette, key), click_(false), clicked_on_(), last_draged_(), tmp_label_(NULL)
 	  {
 	  }
 

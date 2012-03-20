@@ -37,7 +37,7 @@ namespace editor {
 class mouse_action
 {
 public:
-	mouse_action(const CKey& key, common_palette* const palette)
+	mouse_action(common_palette& palette, const CKey& key)
 		: previous_move_hex_()
 		, key_(key)
 		, toolbar_button_(NULL)
@@ -113,9 +113,9 @@ public:
 	const theme::menu* toolbar_button() const { return toolbar_button_; }
 
 	/**
-	 * Getter for the (possibly NULL) associated palette.
+	 * Getter for the associated palette.
 	 */
-	common_palette* get_palette() { return palette_; }
+	common_palette& get_palette() { return palette_; }
 
 	/**
 	 * Set the mouse overlay for this action. Defaults to an empty overlay.
@@ -153,7 +153,7 @@ private:
 	/**
 	 * Pointer to an associated palette, if such exists
 	 */
-	common_palette* const palette_;
+	common_palette& palette_;
 };
 
 /**
@@ -162,8 +162,8 @@ private:
 class brush_drag_mouse_action : public mouse_action
 {
 public:
-	brush_drag_mouse_action(const brush* const * const brush, const CKey& key, common_palette* const palette)
-		: mouse_action(key, palette)
+	brush_drag_mouse_action(common_palette& palette, const brush* const * const brush, const CKey& key)
+		: mouse_action(palette, key)
 		, previous_drag_hex_()
 		, brush_(brush)
 	{
@@ -247,8 +247,8 @@ class mouse_action_paint : public brush_drag_mouse_action
 {
 public:
 	mouse_action_paint(
-		const brush* const * const brush, const CKey& key, terrain_palette* const palette)
-	: brush_drag_mouse_action(brush, key, palette)
+		const brush* const * const brush, const CKey& key, terrain_palette& palette)
+	: brush_drag_mouse_action(palette, brush, key)
 	, terrain_palette_(palette)
 	{
 	}
@@ -277,7 +277,7 @@ public:
 
 protected:
 
-	terrain_palette* const terrain_palette_;
+	const terrain_palette& terrain_palette_;
 
 	//t_translation::t_terrain& terrain_left_;
 	//t_translation::t_terrain& terrain_right_;
@@ -289,8 +289,8 @@ protected:
 class mouse_action_select : public brush_drag_mouse_action
 {
 public:
-	mouse_action_select(const brush* const * const brush, const CKey& key, empty_palette* const palette)
-	: brush_drag_mouse_action(brush, key, palette)
+	mouse_action_select(const brush* const * const brush, const CKey& key, empty_palette& palette)
+	: brush_drag_mouse_action(palette, brush, key)
 	{
 	}
 
@@ -323,8 +323,8 @@ public:
 class mouse_action_paste : public mouse_action
 {
 public:
-	mouse_action_paste(const map_fragment& paste, const CKey& key, common_palette* const palette)
-	: mouse_action(key, palette), paste_(paste)
+	mouse_action_paste(const map_fragment& paste, const CKey& key, common_palette& palette)
+	: mouse_action(palette, key), paste_(paste)
 	{
 	}
 
@@ -362,8 +362,8 @@ class mouse_action_fill : public mouse_action
 public:
 	mouse_action_fill(
 		//	t_translation::t_terrain& terrain_left, t_translation::t_terrain& terrain_right,
-			const CKey& key, terrain_palette* const terrain_palette)
-	: mouse_action(key, terrain_palette)
+			const CKey& key, terrain_palette& terrain_palette)
+	: mouse_action(terrain_palette, key)
 	, terrain_palette_(terrain_palette)
 //	, terrain_left_(terrain_left)
 //	, terrain_right_(terrain_right)
@@ -388,7 +388,7 @@ public:
 	virtual void set_mouse_overlay(editor_display& disp);
 
 protected:
-	terrain_palette* terrain_palette_;
+	const terrain_palette& terrain_palette_;
 	//t_translation::t_terrain& terrain_left_;
 	//t_translation::t_terrain& terrain_right_;
 };
@@ -399,8 +399,8 @@ protected:
 class mouse_action_starting_position : public mouse_action
 {
 public:
-	mouse_action_starting_position(const CKey& key, empty_palette* const palette)
-	: mouse_action(key, palette), click_(false)
+	mouse_action_starting_position(const CKey& key, empty_palette& palette)
+	: mouse_action(palette, key), click_(false)
 	{
 	}
 
