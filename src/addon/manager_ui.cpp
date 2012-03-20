@@ -594,7 +594,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			view_mode_display_label(view), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &view_mode_helper);
 		dlg.add_button(view_mode_button, gui::dialog::BUTTON_EXTRA_LEFT);
 
-		help::help_button* help_button = new help::help_button(disp, "managing_addons");
+		help::help_button* help_button = new help::help_button(disp, "installing_addons");
 		dlg.add_button(help_button, gui::dialog::BUTTON_HELP);
 
 		// Focus the menu on the previous selection.
