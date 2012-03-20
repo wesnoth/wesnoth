@@ -458,6 +458,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			can_delete_ids.push_back(addon.id);
 		}
 
+		const std::string& display_sep = sep + get_addon_status_gui1_color_markup(state);
 		const std::string& display_size = size_display_string(addon.size);
 		const std::string& display_type = addon.display_type();
 		const std::string& display_down = str_cast(addon.downloads);
@@ -499,13 +500,13 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		}
 
 		// NOTE: NULL_MARKUP used to escape abuse of formatting chars in add-on titles
-		row = IMAGE_PREFIX + display_icon + sep + font::NULL_MARKUP + display_title + sep;
+		row = IMAGE_PREFIX + display_icon + display_sep + font::NULL_MARKUP + display_title + display_sep;
 		if(updates_only) {
-			row += display_old_version + sep;
+			row += display_old_version + display_sep;
 		}
-		row += display_version + sep + display_author + sep;
+		row += display_version + display_sep + display_author + display_sep;
 		if(!updates_only) {
-			row += display_type + sep + display_down + sep;
+			row += display_type + display_sep + display_down + display_sep;
 		}
 		row += display_size;
 

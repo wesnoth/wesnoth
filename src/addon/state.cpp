@@ -52,3 +52,21 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 
 	return t;
 }
+
+std::string get_addon_status_gui1_color_markup(ADDON_STATUS status)
+{
+	switch(status) {
+	case ADDON_INSTALLED:
+		return "@";
+	case ADDON_INSTALLED_UPGRADABLE:
+		return "<255,255,0>";
+	case ADDON_INSTALLED_OUTDATED:
+		return "<255,127,0>";
+	case ADDON_INSTALLED_BROKEN:
+		return "#";
+	default:
+		;
+	}
+
+	return "";
+}

@@ -35,6 +35,8 @@ enum ADDON_STATUS {
 	ADDON_NOT_TRACKED
 };
 
+std::string get_addon_status_gui1_color_markup(ADDON_STATUS status);
+
 /** Stores additional status information about add-ons. */
 struct addon_tracking_info
 {
