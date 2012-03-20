@@ -3,10 +3,17 @@
    Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
+<<<<<<< .mine
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License,
+  or (at your option) any later version.
+=======
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
+>>>>>>> .r53570
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY.
 
@@ -14,7 +21,7 @@
 */
 
 /**
- * Manage the terrain-palette in the editor.
+ * Terrain-palette in the editor.
  */
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
@@ -60,7 +67,16 @@ void terrain_palette::setup(const config& cfg)
 	foreach (const config &g, cfg.child_range("editor_group"))
 	{
 		if (group_names.find(g["id"]) == group_names.end()) {
-			groups_.push_back(item_group(g));
+			config item;
+
+			config cfg;
+			cfg["id"] = g["id"];
+			cfg["name"] = g["name"];
+
+			cfg["icon"] = "buttons/" + g["icon"].t_str() + ".png";
+			cfg["core"] = "yes";
+			groups_.push_back(item_group(cfg));
+
 			group_names.insert(groups_.back().id);
 		}
 	}

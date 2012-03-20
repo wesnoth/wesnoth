@@ -41,18 +41,6 @@ void unit_palette::update_report()
 
 void unit_palette::setup(const config& /*cfg*/)
 {
-
-	foreach (const race_map::value_type &i, unit_types.races())
-	{
-		config cfg;
-		cfg["id"] = i.second.id();
-		cfg["name"] = i.second.plural_name();
-		//TODO
-		//cfg["icon"] = i.second.
-		cfg["core"] = "yes";
-		groups_.push_back(item_group(cfg));
-	}
-
 	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
 		item_map_.insert(std::pair<std::string, unit_type>(i.second.id(), i.second));
@@ -68,6 +56,19 @@ void unit_palette::setup(const config& /*cfg*/)
 			non_core_items_.insert(i.second.id());
 		}
 	}
+
+	foreach (const race_map::value_type &i, unit_types.races())
+	{
+		config cfg;
+		cfg["id"] = i.second.id();
+		cfg["name"] = i.second.plural_name();
+		//TODO
+		std::string& tmp = group_map_[i.second.id()][0];
+		cfg["icon"] = item_map_.find(tmp)->second.image();
+		cfg["core"] = "yes";
+		groups_.push_back(item_group(cfg));
+	}
+
 
 	//TODO
 	//move "invalid" items to the end

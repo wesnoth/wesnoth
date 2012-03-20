@@ -23,48 +23,51 @@
 namespace editor {
 
 template<class Item>
-class editor_palette: public gui::widget, public common_palette{
+class editor_palette : public common_palette {
 public:
 	editor_palette(editor_display &gui, const size_specs &sizes, const config& /*cfg*/
 			, size_t item_size, size_t item_width, mouse_action** active_mouse_action)
     //TODO
 	//		  Item& fore, Item& back)
-	: gui::widget(gui.video()),
+	:
 	gui_(gui), size_specs_(sizes),   item_size_(item_size), item_width_(item_width),
-	item_space_(item_size + 3), palette_start_(0),item_map_(), active_mouse_action_(active_mouse_action)
-	{};
+	item_space_(item_size + 3), palette_y_(sizes.palette_y), palette_x_(sizes.palette_x),
+	item_map_(), active_mouse_action_(active_mouse_action)
+	{
+		//TODO
+		//adjust_size(size_specs_);
+	};
 	//TODO
 	//, selected_fg_item_(fore)
 	//, selected_bg_item_(back)
 
-	virtual void set_group(size_t index);
+	void set_group(size_t index);
 
-	std::vector<item_group>& get_groups() { return groups_; };
+	const std::vector<item_group>& get_groups() const { return groups_; };
 
-	virtual size_t active_group_index();
+	size_t active_group_index();
 
-	/** Scroll the editor-palette up one step if possible. */
-	virtual void scroll_up();
+	virtual void draw(bool);
 
-	/** Scroll the editor-palette down one step if possible. */
-	virtual void scroll_down();
+	bool left_mouse_click(const int, const int);
+	bool right_mouse_click(const int, const int);
 
-	/**
-	 * Draw the palette.
-	 *
-	 * If force is true everything will be redrawn,
-	 * even though it is not invalidated.
-	 */
-	virtual void draw(bool force=false);
-	virtual void draw() { draw(false); };
-	virtual void handle_event(const SDL_Event& event);
+	/** Scroll the editor-palette to the top. */
+	void scroll_top();
+
+	/** Scroll the editor-palette to the bottom. */
+	void scroll_bottom();
 
 	/**
 	 * Update the size of this widget.
 	 *
 	 * Use if the size_specs have changed.
 	 */
-	virtual void adjust_size();
+	void adjust_size(const size_specs& size);
+
+	/** Return the number of the tile that is at coordinates (x, y) in the panel. */
+	int tile_selected(const int x, const int y) const;
+
 
 private:
 
@@ -75,19 +78,12 @@ private:
 	/** Setup the internal data structure. */
 	virtual void setup(const config& cfg) = 0;
 
-
-	/** Scroll the editor-palette to the top. */
-	void scroll_top();
-
-	/** Scroll the editor-palette to the bottom. */
-	void scroll_bottom();
-
-
-
 	virtual const std::string& active_group_id() {return active_group_;};
 
-
 	virtual const config active_group_report();
+
+	bool scroll_up();
+	bool scroll_down();
 
 protected:
 	/**
@@ -104,6 +100,10 @@ public:
 	const Item& selected_fg_item() const { return item_map_.find(selected_fg_item_)->second; };
 	const Item& selected_bg_item() const { return item_map_.find(selected_bg_item_)->second; };
 
+	void set_start_item(size_t index) { items_start_ = index; };
+
+	size_t start_num(void) { return items_start_; };
+
 protected:
 	/**
 	 * The editor_groups as defined in editor-groups.cfg.
@@ -113,13 +113,11 @@ protected:
 	 */
 	std::vector<item_group> groups_;
 
-
-
 private:
 	/** Return the currently selected background item. */
 //	Item selected_bg_item() const { return selected_bg_item_; };
 
-	virtual void swap();
+	void swap();
 
 protected:
 	/** Select a foreground item. */
@@ -129,7 +127,7 @@ protected:
 private:
 
 	/** Return the number of terrains in the palette. */
-	size_t num_items();
+	size_t num_items(); //{ return item_map_.size(); };
 
 	void draw_old(bool);
 
@@ -142,17 +140,6 @@ protected:
 	int item_space_;
 
 protected:
-	/**
-	 * To be called when a mouse click occurs.
-	 *
-	 * Check if the coordinates is a terrain that may be chosen,
-	 * and select the terrain if that is the case.
-	 */
-	void left_mouse_click(const int mousex, const int mousey);
-	void right_mouse_click(const int mousex, const int mousey);
-
-	/** Return the number of the tile that is at coordinates (x, y) in the panel. */
-	int tile_selected(const int x, const int y) const;
 
 	/** Update the report with the currently selected items. */
 /*
@@ -162,7 +149,8 @@ protected:
 protected:
 
 private:
-	unsigned int palette_start_;
+	unsigned int palette_y_;
+	unsigned int palette_x_;
 
 protected:
 	std::map<std::string, std::vector<std::string> > group_map_;
