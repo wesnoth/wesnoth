@@ -735,8 +735,12 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += era_label_.height() + border_size;
 	era_combo_.set_location(xpos, ypos);
 	ypos += era_combo_.height() + border_size;
-	password_button_.set_location(xpos, ypos);
-	ypos += password_button_.height() + border_size;
+	if(!local_players_only_) {
+		password_button_.set_location(xpos, ypos);
+		ypos += password_button_.height() + border_size;
+	} else {
+		password_button_.hide(true);
+	}
 
 #ifdef MP_VISION_OPTIONAL
 	vision_combo_.set_location(xpos, ypos);
