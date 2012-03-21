@@ -74,7 +74,7 @@ bool editor_palette<Item>::scroll_down()
 	bool end_reached = (!(items_start_ + nitems_ + item_width_ <= num_items()));
 
 	// move downwards
-	if(end_reached) {
+	if(!end_reached) {
 		items_start_ += item_width_;
 		return true;
 	}
