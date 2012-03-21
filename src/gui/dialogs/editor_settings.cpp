@@ -133,6 +133,15 @@ void teditor_settings::update_tod_display(twindow& window)
 	window.undraw();
 
 	if(display_) {
+		// NOTE: We only really want to re-render the gamemap tiles here.
+		// Redrawing everything is a significantly more expensive task.
+		// At this time, tiles are the only elements on which ToD tint is
+		// meant to have a visible effect. This is very strongly tied to
+		// the image caching mechanism.
+		//
+		// If this ceases to be the case in the future, you'll need to call
+		// redraw_everything() instead.
+
 		// invalidate all tiles so they are redrawn with the new ToD tint next
 		display_->invalidate_all();
 		// redraw tiles
