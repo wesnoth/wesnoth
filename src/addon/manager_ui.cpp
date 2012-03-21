@@ -96,7 +96,9 @@ VIEW_MODE do_choose_view_mode(CVideo& video, VIEW_MODE initial)
 	dlg.set_selected_index(initial);
 	dlg.show(video);
 
-	return VIEW_MODE(dlg.selected_index());
+	const int result = dlg.selected_index();
+
+	return result != -1 ? VIEW_MODE(result) : initial;
 }
 
 inline const addon_info& addon_at(const std::string& id, const addons_list& addons)
