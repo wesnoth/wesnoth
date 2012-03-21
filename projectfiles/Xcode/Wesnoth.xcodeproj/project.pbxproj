@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */; };
 		4944F4071354FB410027E614 /* game_errors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F4041354FB410027E614 /* game_errors.cpp */; };
-		4944F4081354FB410027E614 /* lua_jailbreak_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F4051354FB410027E614 /* lua_jailbreak_exception.cpp */; };
 		4944F4091354FB410027E614 /* portrait.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F4061354FB410027E614 /* portrait.cpp */; };
 		4944F40B1354FB610027E614 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40A1354FB610027E614 /* drawing.cpp */; };
 		4944F40D1354FB760027E614 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40C1354FB760027E614 /* drawing.cpp */; };
@@ -908,6 +907,7 @@
 		F4D2DEDF14DED86800CAFF31 /* lbitlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DEDB14DED86800CAFF31 /* lbitlib.c */; };
 		F4D2DEE014DED86800CAFF31 /* lcorolib.c in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DEDC14DED86800CAFF31 /* lcorolib.c */; };
 		F4D2DEE114DED86800CAFF31 /* lctype.c in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DEDD14DED86800CAFF31 /* lctype.c */; };
+		F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419E44413354E620031448A /* lua_jailbreak_exception.cpp */; };
 		F4D5DF39149CE9B500294046 /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5DF37149CE9B500294046 /* chat_log.cpp */; };
 		F4E4E0B11367241E001C7528 /* suppose_dead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */; };
 		F4E4E0B41367244F001C7528 /* image_modifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0B21367244F001C7528 /* image_modifications.cpp */; };
@@ -985,7 +985,6 @@
 		1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_host_game_prompt.hpp; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Wesnoth_Prefix.pch */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp; fileEncoding = 4; includeInIndex = 0; name = Wesnoth_Prefix.pch; path = "Mac Sources/Wesnoth_Prefix.pch"; sourceTree = "<group>"; };
 		4944F4041354FB410027E614 /* game_errors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_errors.cpp; sourceTree = "<group>"; };
-		4944F4051354FB410027E614 /* lua_jailbreak_exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_jailbreak_exception.cpp; sourceTree = "<group>"; };
 		4944F4061354FB410027E614 /* portrait.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = portrait.cpp; sourceTree = "<group>"; };
 		4944F40A1354FB610027E614 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing.cpp; sourceTree = "<group>"; };
 		4944F40C1354FB760027E614 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing.cpp; sourceTree = "<group>"; };
@@ -2186,7 +2185,6 @@
 				B52EE8821213585300CFBDAB /* tod_manager.cpp */,
 				B52EE8831213585300CFBDAB /* tod_manager.hpp */,
 				B5A5E3AD12132C790047782D /* lua */,
-				4944F4051354FB410027E614 /* lua_jailbreak_exception.cpp */,
 				B55BE02C11234AAB00154E6C /* pathfind */,
 				B5B469221071185800327599 /* mp_game_settings.cpp */,
 				B5B469231071185800327599 /* mp_game_settings.hpp */,
@@ -3918,7 +3916,6 @@
 				B5CE470D12A0422800D665EE /* old_markup.cpp in Sources */,
 				B5DBABF312AFF7F200B5B8DC /* mp_create_game_set_password.cpp in Sources */,
 				4944F4071354FB410027E614 /* game_errors.cpp in Sources */,
-				4944F4081354FB410027E614 /* lua_jailbreak_exception.cpp in Sources */,
 				4944F4091354FB410027E614 /* portrait.cpp in Sources */,
 				4944F40B1354FB610027E614 /* drawing.cpp in Sources */,
 				4944F40D1354FB760027E614 /* drawing.cpp in Sources */,
@@ -3981,6 +3978,7 @@
 				6295C3D7150FC9EB0077D8C5 /* palette_layout.cpp in Sources */,
 				6295C3D8150FC9EB0077D8C5 /* terrain_palettes.cpp in Sources */,
 				6295C3D9150FC9EB0077D8C5 /* unit_palette.cpp in Sources */,
+				F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
