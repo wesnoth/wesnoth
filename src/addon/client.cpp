@@ -211,7 +211,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 	if(!check_names_legal(archive_cfg)) {
 		gui2::show_error_message(disp_.video(),
 			vgettext("The add-on <i>$addon_title</i> has an invalid file or directory "
-				"and cannot be installed.", i18n_symbols));
+				"name and cannot be installed.", i18n_symbols));
 		return false;
 	}
 
