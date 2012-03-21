@@ -555,9 +555,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		// Set-up the actual GUI1 dialog and its children.
 		//
 
-		const std::string dlg_title(!updates_only ? _("Get Add-ons") : _("Update Add-ons"));
-
-		gui::dialog dlg(disp, dlg_title, "", gui::OK_CANCEL);
+		gui::dialog dlg(disp, _("Add-ons Manager"), "", gui::OK_CANCEL);
 
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_alpha_sort(4);
