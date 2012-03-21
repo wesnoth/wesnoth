@@ -53,9 +53,13 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 	return t;
 }
 
-std::string get_addon_status_gui1_color_markup(ADDON_STATUS status)
+std::string get_addon_status_gui1_color_markup(const addon_tracking_info& info)
 {
-	switch(status) {
+	if(info.can_publish || info.in_version_control) {
+		return "<127,127,127>";
+	}
+
+	switch(info.state) {
 	case ADDON_INSTALLED:
 		return "@";
 	case ADDON_INSTALLED_UPGRADABLE:

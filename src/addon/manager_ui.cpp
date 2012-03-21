@@ -458,7 +458,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			can_delete_ids.push_back(addon.id);
 		}
 
-		const std::string& display_sep = sep + get_addon_status_gui1_color_markup(state);
+		const std::string& display_sep = sep + get_addon_status_gui1_color_markup(tracking[addon.id]);
 		const std::string& display_size = size_display_string(addon.size);
 		const std::string& display_type = addon.display_type();
 		const std::string& display_down = str_cast(addon.downloads);
