@@ -69,7 +69,7 @@ void palette_manager::adjust_size()
 
 void palette_manager::scroll_down()
 {
-	bool scrolled = (*mouse_action_)->get_palette().scroll_down();
+	bool scrolled = active_palette().scroll_down();
 
 	if (scrolled) {
 
@@ -85,7 +85,7 @@ void palette_manager::scroll_down()
 
 void palette_manager::scroll_up()
 {
-	bool scrolled_up = (*mouse_action_)->get_palette().scroll_up();
+	bool scrolled_up = active_palette().scroll_up();
 	if(scrolled_up) {
 
 		SDL_Rect rect = create_rect(size_specs_.palette_x
