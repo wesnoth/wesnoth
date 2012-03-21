@@ -43,17 +43,18 @@ private:
 class tgame_save_message : public tdialog
 {
 public:
-	tgame_save_message(const std::string& title
-			, const std::string& filename
+	tgame_save_message(
+			  std::string& filename
+			, const std::string& title
 			, const std::string& message);
 
 	static bool execute(
-			  const std::string& title
-			, const std::string& filename
+			  std::string& filename
+			, const std::string& title
 			, const std::string& message
 			, CVideo& video)
 	{
-		return tgame_save_message(title, filename, message).show(video);
+		return tgame_save_message(filename, title, message).show(video);
 	}
 
 private:
@@ -67,18 +68,18 @@ class tgame_save_oos : public tdialog
 public:
 	tgame_save_oos(
 			  bool& ignore_all
+			, std::string& filename
 			, const std::string& title
-			, const std::string& filename
 			, const std::string& message);
 
 	static bool execute(
 			  bool& ignore_all
+			, std::string& filename
 			, const std::string& title
-			, const std::string& filename
 			, const std::string& message
 			, CVideo& video)
 	{
-		return tgame_save_oos(ignore_all, title, filename, message).show(video);
+		return tgame_save_oos(ignore_all, filename, title, message).show(video);
 	}
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */

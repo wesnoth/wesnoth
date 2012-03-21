@@ -847,7 +847,7 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, const 
 		res = dlg.get_retval();
 	}
 	else if (dialog_type == gui::YES_NO){
-		gui2::tgame_save_message dlg(title_, filename, message);
+		gui2::tgame_save_message dlg(filename, title_, message);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}
@@ -1091,7 +1091,7 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, co
 	std::string filename = this->filename();
 
 	if (!ignore_all){
-		gui2::tgame_save_oos dlg(ignore_all, title(), filename, message);
+		gui2::tgame_save_oos dlg(ignore_all, filename, title(), message);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}
