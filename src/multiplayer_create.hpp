@@ -30,7 +30,7 @@ namespace mp {
 class create : public mp::ui
 {
 public:
-	create(game_display& dist, const config& game_config, chat& c, config& gamelist);
+	create(game_display& dist, const config& game_config, chat& c, config& gamelist, bool local_players_only);
 	~create();
 
 	mp_game_settings& get_parameters();
@@ -42,6 +42,8 @@ protected:
 	virtual void hide_children(bool hide=true);
 
 private:
+
+	bool local_players_only_;
 
 	tooltips::manager tooltip_manager_;
 	int map_selection_;

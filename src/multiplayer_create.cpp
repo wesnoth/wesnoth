@@ -52,9 +52,10 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 
 namespace mp {
 
-create::create(game_display& disp, const config &cfg, chat& c, config& gamelist) :
+create::create(game_display& disp, const config &cfg, chat& c, config& gamelist, bool local_players_only) :
 	ui(disp, _("Create Game"), cfg, c, gamelist),
 
+	local_players_only_(local_players_only),
 	tooltip_manager_(disp.video()),
 	map_selection_(-1),
 	mp_countdown_init_time_(270),

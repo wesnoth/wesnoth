@@ -532,7 +532,7 @@ static void enter_create_mode(game_display& disp, const config& game_config, mp:
 			int num_turns;
 
 			{
-				mp::create ui(disp, game_config, chat, gamelist);
+				mp::create ui(disp, game_config, chat, gamelist, local_players_only);
 				run_lobby_loop(disp, ui);
 				res = ui.get_result();
 				params = ui.get_parameters();
