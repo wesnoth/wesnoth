@@ -277,8 +277,7 @@ bool do_check_before_overwriting_addon(CVideo& video, const std::string& addon_i
 
 	utils::string_map symbols;
 	symbols["addon"] = make_addon_title(addon_id); // FIXME: need the real title!
-	const std::string& text = utils::interpolate_variables_into_string(
-		_("You seem to be the author of '$addon|'. Downloading it again from the server will overwrite any changes you have made since the last upload, and it may also delete your pbl file. Do you really wish to continue?"), &symbols);
+	const std::string& text = vgettext("You seem to be the author of '$addon|'. Downloading it again from the server will overwrite any changes you have made since the last upload, and it may also delete your pbl file. Do you really wish to continue?", symbols);
 
 	return gui2::show_message(video, _("Confirm"), text, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK;
 }
@@ -288,8 +287,7 @@ void do_remote_addon_delete(CVideo& video, addons_client& client, const std::str
 {
 	utils::string_map symbols;
 	symbols["addon"] = make_addon_title(addon_id); // FIXME: need the real title!
-	const std::string& text = utils::interpolate_variables_into_string(
-		_("Deleting '$addon|' will permanently erase its download and upload counts on the add-ons server. Do you really wish to continue?"), &symbols);
+	const std::string& text = vgettext("Deleting '$addon|' will permanently erase its download and upload counts on the add-ons server. Do you really wish to continue?", symbols);
 
 	const int res = gui2::show_message(
 		video, _("Confirm"), text, gui2::tmessage::yes_no_buttons);
