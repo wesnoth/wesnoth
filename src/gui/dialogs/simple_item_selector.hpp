@@ -37,7 +37,7 @@ public:
 
 	/**
 	 * Returns the selected item index after displaying.
-	 * @return -1 or the originally set index if the dialog was cancelled.
+	 * @return -1 if the dialog was cancelled.
 	 */
 	int selected_index() const         { return index_;  }
 
