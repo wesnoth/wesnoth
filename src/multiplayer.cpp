@@ -463,7 +463,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config, mp::c
 
 static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool local_players_only = false);
 
-static void enter_connect_mode(game_display& disp, const config& game_config,
+static bool enter_connect_mode(game_display& disp, const config& game_config,
 		mp::chat& chat, config& gamelist, const mp_game_settings& params,
 		const int num_turns, mp::controller default_controller, bool local_players_only = false)
 {
@@ -503,45 +503,54 @@ static void enter_connect_mode(game_display& disp, const config& game_config,
 	case mp::ui::QUIT:
 	default:
 		network::send_data(config("refresh_lobby"), 0);
-		break;
+		return false;
 	}
+
+	return true;
 }
 
 static void enter_create_mode(game_display& disp, const config& game_config, mp::chat& chat, config& gamelist, mp::controller default_controller, bool local_players_only)
 {
 	DBG_MP << "entering create mode" << std::endl;
-	if (gui2::new_widgets) {
 
-		gui2::tmp_create_game dlg(game_config);
+	bool connect_canceled;
 
-		dlg.show(disp.video());
+	do {
+		connect_canceled = false;
 
-		network::send_data(config("refresh_lobby"), 0);
-	} else {
+		if (gui2::new_widgets) {
 
-		mp::ui::result res;
-		mp_game_settings params;
-		int num_turns;
+			gui2::tmp_create_game dlg(game_config);
 
-		{
-			mp::create ui(disp, game_config, chat, gamelist);
-			run_lobby_loop(disp, ui);
-			res = ui.get_result();
-			params = ui.get_parameters();
-			num_turns = ui.num_turns();
-		}
+			dlg.show(disp.video());
 
-		switch (res) {
-		case mp::ui::CREATE:
-			enter_connect_mode(disp, game_config, chat, gamelist, params, num_turns, default_controller, local_players_only);
-			break;
-		case mp::ui::QUIT:
-		default:
-			//update lobby content
 			network::send_data(config("refresh_lobby"), 0);
-			break;
+		} else {
+
+			mp::ui::result res;
+			mp_game_settings params;
+			int num_turns;
+
+			{
+				mp::create ui(disp, game_config, chat, gamelist);
+				run_lobby_loop(disp, ui);
+				res = ui.get_result();
+				params = ui.get_parameters();
+				num_turns = ui.num_turns();
+			}
+
+			switch (res) {
+			case mp::ui::CREATE:
+				connect_canceled = !enter_connect_mode(disp, game_config, chat, gamelist, params, num_turns, default_controller, local_players_only);
+				break;
+			case mp::ui::QUIT:
+			default:
+				//update lobby content
+				network::send_data(config("refresh_lobby"), 0);
+				break;
+			}
 		}
-	}
+	} while(connect_canceled);
 }
 
 static void do_preferences_dialog(game_display& disp, const config& game_config)
