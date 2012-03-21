@@ -489,7 +489,8 @@ void load_settings()
 		scoped_istream stream = preprocess_file(get_wml_location("gui/default.cfg"), &preproc);
 
 		read(cfg, *stream, &validator);
-	} catch(config::error&) {
+	} catch(config::error& e) {
+		ERR_GUI_P << e.what() << '\n';
 		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
 	}
 	catch(const abstract_validator::error& e){
