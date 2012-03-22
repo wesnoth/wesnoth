@@ -244,7 +244,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	sort_advanced_preferences();
 
 	// FIXME: this box should be vertically centered on the screen, but is not
-	set_measurements(465, disp_.video().gety() < 600 ? 407 : 425);
+	set_measurements(465, 400);
 
 
 	sound_button_.set_check(sound_on());
@@ -521,8 +521,8 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	const int right_border = font::relative_size(10);
 	const int horizontal_padding = 25;
-	// please also check 800x600 resolution if you change these spacings
-	const int top_border = disp_.video().gety() < 600 ? 10 : 28;
+	// please also check 800x480 resolution if you change these spacings
+	const int top_border = 10;
 	const int bottom_border = 10;
 	const int short_interline = 21;
 	const int item_interline = 40;
