@@ -416,6 +416,7 @@ class HTMLOutput:
                     self.target, r, r))
                 for uid in races[r]:
                     un = self.wesnoth.unit_lookup[uid]
+                    if un.hidden: continue
                     if "mainline" in un.campaigns: addon = "mainline"
                     else: addon = self.addon
                     link = "../../%s/%s/%s.html" % (addon, self.isocode, uid)
