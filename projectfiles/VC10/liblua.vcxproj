@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_with_VLD|Win32">
+      <Configuration>Debug_with_VLD</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
@@ -16,6 +20,10 @@
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
@@ -27,6 +35,9 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -41,6 +52,8 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -50,11 +63,11 @@
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <OpenMPSupport>true</OpenMPSupport>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <DisableSpecificWarnings>4127;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -64,206 +77,296 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
+      <OpenMPSupport>true</OpenMPSupport>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <OpenMPSupport>true</OpenMPSupport>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\lua\lapi.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lauxlib.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lbaselib.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lbitlib.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lcode.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lcorolib.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lctype.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\ldblib.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\ldebug.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\ldo.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\ldump.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lfunc.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lgc.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\linit.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\liolib.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\llex.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lmathlib.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lmem.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\loadlib.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lobject.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lopcodes.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\loslib.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lparser.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lstate.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lstring.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lstrlib.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\ltable.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\ltablib.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\ltm.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lua.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\luac.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lundump.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lvm.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\lzio.c">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(IntDir)Lua\</ObjectFileName>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Lua\</ObjectFileName>
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Lua\</ObjectFileName>

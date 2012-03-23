@@ -20,7 +20,16 @@
     <ClCompile Include="..\..\src\lua\lbaselib.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\lua\lbitlib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\lua\lcode.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\lua\lcorolib.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\lua\lctype.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\lua\ldblib.c">
@@ -104,15 +113,6 @@
     <ClCompile Include="..\..\src\lua\lzio.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\lua\lbitlib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\lua\lcorolib.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\lua\lctype.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\lua\lapi.h">
@@ -122,6 +122,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\lua\lcode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\lua\lctype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\lua\ldebug.h">
@@ -169,6 +172,9 @@
     <ClInclude Include="..\..\src\lua\lua.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\lua\lua.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\lua\luaconf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -183,12 +189,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\lua\lzio.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\lua\lua.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\lua\lctype.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

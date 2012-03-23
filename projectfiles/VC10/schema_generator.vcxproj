@@ -15,21 +15,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4A16638B-127B-4AE8-8E0B-4B211B96F976}</ProjectGuid>
-    <RootNamespace>wesnothlib</RootNamespace>
+    <ProjectGuid>{9FDDFD0B-C23F-47DB-97F7-7BDCA3E754D9}</ProjectGuid>
+    <RootNamespace>schema_generator</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -48,106 +48,81 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\wesnothlib\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\..\..\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <BuildLog>
-      <Path>$(IntDir)BuildLog.htm</Path>
-    </BuildLog>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_DEBUG;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <OpenMPSupport>true</OpenMPSupport>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <DisableSpecificWarnings>4127;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>libintl.lib;SDL.lib;SDL_image.lib;SDL_ttf.lib;SDL_mixer.lib;SDL_net.lib;cairo.lib;winmm.lib;ws2_32.lib;SDLmain.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;$(IntDir)liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <BuildLog>
-      <Path>$(IntDir)BuildLog-wesnothlib.htm</Path>
-    </BuildLog>
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <OpenMPSupport>true</OpenMPSupport>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>libintl.lib;SDL.lib;SDL_image.lib;SDL_ttf.lib;SDL_mixer.lib;SDL_net.lib;cairo.lib;winmm.lib;ws2_32.lib;SDLmain.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;$(IntDir)liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">
-    <BuildLog>
-      <Path>$(IntDir)BuildLog.htm</Path>
-    </BuildLog>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_DEBUG;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <OpenMPSupport>true</OpenMPSupport>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <DisableSpecificWarnings>4127;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>libintl.lib;SDL.lib;SDL_image.lib;SDL_ttf.lib;SDL_mixer.lib;SDL_net.lib;cairo.lib;winmm.lib;ws2_32.lib;SDLmain.lib;pango-1.0.lib;pangocairo-1.0.lib;gobject-2.0.lib;glib-2.0.lib;$(IntDir)liblua.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\serialization\binary_or_text.cpp" />
-    <ClCompile Include="..\..\src\serialization\parser.cpp" />
-    <ClCompile Include="..\..\src\serialization\preprocessor.cpp" />
-    <ClCompile Include="..\..\src\serialization\schema_validator.cpp" />
-    <ClCompile Include="..\..\src\serialization\string_utils.cpp" />
-    <ClCompile Include="..\..\src\serialization\tokenizer.cpp" />
-    <ClCompile Include="..\..\src\serialization\validator.cpp" />
-    <ClCompile Include="..\..\src\color_range.cpp" />
-    <ClCompile Include="..\..\src\config.cpp" />
-    <ClCompile Include="..\..\src\filesystem.cpp" />
-    <ClCompile Include="..\..\src\game_config.cpp" />
-    <ClCompile Include="..\..\src\gettext.cpp" />
-    <ClCompile Include="..\..\src\loadscreen_empty.cpp" />
-    <ClCompile Include="..\..\src\log.cpp" />
-    <ClCompile Include="..\..\src\network.cpp" />
-    <ClCompile Include="..\..\src\network_worker.cpp" />
-    <ClCompile Include="..\..\src\thread.cpp" />
-    <ClCompile Include="..\..\src\tstring.cpp" />
-    <ClCompile Include="..\..\src\version.cpp" />
+    <ClCompile Include="..\..\src\tools\schema\error_container.cpp" />
+    <ClCompile Include="..\..\src\tools\schema\schema_generator.cpp" />
+    <ClCompile Include="..\..\src\tools\schema\sourceparser.cpp" />
+    <ClCompile Include="..\..\src\tools\schema\tag.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\serialization\binary_or_text.hpp" />
-    <ClInclude Include="..\..\src\serialization\parser.hpp" />
-    <ClInclude Include="..\..\src\serialization\preprocessor.hpp" />
-    <ClInclude Include="..\..\src\serialization\schema_validator.hpp" />
-    <ClInclude Include="..\..\src\serialization\string_utils.hpp" />
-    <ClInclude Include="..\..\src\serialization\tokenizer.hpp" />
-    <ClInclude Include="..\..\src\serialization\validator.hpp" />
-    <ClInclude Include="..\..\src\about.hpp" />
-    <ClInclude Include="..\..\src\config.hpp" />
-    <ClInclude Include="..\..\src\filesystem.hpp" />
-    <ClInclude Include="..\..\src\game_config.hpp" />
-    <ClInclude Include="..\..\src\gettext.hpp" />
-    <ClInclude Include="..\..\src\global.hpp" />
-    <ClInclude Include="..\..\src\log.hpp" />
-    <ClInclude Include="..\..\src\map.hpp" />
-    <ClInclude Include="..\..\src\network.hpp" />
-    <ClInclude Include="..\..\src\network_worker.hpp" />
-    <ClInclude Include="..\..\src\scoped_resource.hpp" />
-    <ClInclude Include="..\..\src\thread.hpp" />
-    <ClInclude Include="..\..\src\tstring.hpp" />
-    <ClInclude Include="..\..\src\version.hpp" />
-    <ClInclude Include="..\..\src\wesconfig.h" />
+    <ClInclude Include="..\..\src\tools\schema\error_container.hpp" />
+    <ClInclude Include="..\..\src\tools\schema\sourceparser.hpp" />
+    <ClInclude Include="..\..\src\tools\schema\tag.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="wesnothlib.vcxproj">
+      <Project>{4a16638b-127b-4ae8-8e0b-4b211b96f976}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
