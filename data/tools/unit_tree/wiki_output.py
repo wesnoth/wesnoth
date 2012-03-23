@@ -28,6 +28,8 @@ def main():
     campaigns = wesnoth.parser.get_all(tag = "campaign")
     for campaign in campaigns:
         define = campaign.get_text_val("define")
+        ed = campaign.get_text_val("extra_defines")
+        if ed: define += "," + ed
         name = campaign.get_text_val("name", translation = translated.translate)
         sys.stderr.write("Parsing " + name + "...\n")
         campaign.name = name

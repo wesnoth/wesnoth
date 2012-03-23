@@ -108,7 +108,10 @@ def list_contents():
 
         for campaign in campaigns:
             cid = campaign.get_text_val("id")
-            append(info, cid, campaign.get_text_val("define"), c = campaign)
+            d = campaign.get_text_val("define")
+            d2 = campaign.get_text_val("extra_defines")
+            if d2: d += "," + d2
+            append(info, cid, d, c = campaign)
 
         return info
 
