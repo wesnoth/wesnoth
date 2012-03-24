@@ -26,6 +26,7 @@
 toptions::toptions()
 	: input_filename()
 	, output_filename()
+	, filters()
 {
 }
 
