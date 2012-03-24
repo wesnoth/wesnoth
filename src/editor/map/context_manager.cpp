@@ -66,9 +66,13 @@ private:
 };
 
 context_manager::context_manager(editor_display& gui, const config& game_config)
-: gui_(gui), game_config_(game_config) , default_dir_(preferences::editor::default_dir()),
-  map_generators_(), current_context_index_(0),
-  auto_update_transitions_(preferences::editor::auto_update_transitions())
+	: gui_(gui)
+	, game_config_(game_config)
+	, default_dir_(preferences::editor::default_dir())
+	, map_generators_()
+	, current_context_index_(0)
+	, auto_update_transitions_(preferences::editor::auto_update_transitions())
+	, map_contexts_()
 {
 	if (default_dir_.empty()) {
 		default_dir_ = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
