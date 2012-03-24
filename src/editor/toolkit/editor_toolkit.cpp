@@ -10,10 +10,18 @@
 
 namespace editor {
 
-editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key, const config& game_config) :
-	gui_(gui), key_(key), toolbar_dirty_(true)
-	, mouse_action_(NULL), mouse_actions_(), mouse_action_hints_()
-	, brush_(NULL), brushes_(), brush_bar_(NULL)
+editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key, const config& game_config)
+	: gui_(gui)
+	, key_(key)
+	, palette_manager_()
+	, size_specs_()
+	, toolbar_dirty_(true)
+	, mouse_action_(NULL)
+	, mouse_actions_()
+	, mouse_action_hints_()
+	, brush_(NULL)
+	, brushes_()
+	, brush_bar_(NULL)
 {
 	init_brushes(game_config);
 	init_sidebar(game_config);
