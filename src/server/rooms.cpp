@@ -107,3 +107,12 @@ void RoomList::send_server_message(const std::string& room_name, const std::stri
 	msg.set_attr_dup("message", message.c_str());
 	send_to_room(room_name, server_message, exclude);
 }
+
+Room& RoomList::room(const std::string& room_name)
+{
+	RoomMap::right_iterator iter = room_map_.right.find(room_name);
+	if(iter == room_map_.right.end())
+		throw std::runtime_error("Room '" + room_name + "' doesn't exist");
+	
+	return *(iter->info);
+}
