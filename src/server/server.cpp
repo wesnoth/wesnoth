@@ -1106,6 +1106,11 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 	send_to_player(socket, games_and_users_list_);
 	read_from_player(socket);
 	room_list_.enter_room("lobby", socket);
+
+	// Send other players in the lobby the update that the player has joined
+	simple_wml::document diff;
+	make_add_diff(games_and_users_list_.root(), NULL, "user", diff);
+	room_list_.send_to_room("lobby", diff, socket);
 }
 
 void server::read_from_player(socket_ptr socket)
@@ -1319,8 +1324,13 @@ void server::remove_player(socket_ptr socket)
 	const simple_wml::node::child_list& users = games_and_users_list_.root().children("user");
 	const size_t index = std::find(users.begin(), users.end(), iter->info.config_address()) - users.begin();
 
+	// Notify other players in lobby
+	simple_wml::document diff;
+	if(make_delete_diff(games_and_users_list_.root(), NULL, "user",
+		iter->info.config_address(), diff)) {
+		room_list_.send_to_room("lobby", diff, socket);
+	}
 	games_and_users_list_.root().remove_child("user", index);
-	/* TODO: send diff */
 
 	LOG_SERVER << ip << "\t" << iter->info.name()
 		<< "\twas logged off" << "\n";
