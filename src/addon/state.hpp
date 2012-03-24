@@ -38,6 +38,14 @@ enum ADDON_STATUS {
 /** Stores additional status information about add-ons. */
 struct addon_tracking_info
 {
+	addon_tracking_info()
+		: state(ADDON_NONE)
+		, can_publish(false)
+		, in_version_control(false)
+		, installed_version()
+	{
+	}
+
 	ADDON_STATUS state;
 	bool can_publish;
 	bool in_version_control;
