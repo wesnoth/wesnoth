@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-02-18 13:15+0100\n"
+"POT-Creation-Date: 2012-03-24 18:11+0100\n"
 "PO-Revision-Date: 2010-12-11 23:31+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -1953,6 +1953,20 @@ msgstr "経験値の修正"
 msgid "Time limit"
 msgstr "時間制限"
 
+#. [row]
+#. [button]: id=join_global
+#: data/gui/default/window/lobby_main.cfg:195
+#: data/gui/default/window/lobby_main.cfg:692
+msgid "Join"
+msgstr "参加"
+
+#. [row]
+#. [button]: id=observe_global
+#: data/gui/default/window/lobby_main.cfg:198
+#: data/gui/default/window/lobby_main.cfg:698
+msgid "Observe"
+msgstr "観戦"
+
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:305
 msgid "Sort players:"
@@ -2055,16 +2069,6 @@ msgstr "更新"
 #: data/gui/default/window/mp_create_game.cfg:41
 msgid "Create Game"
 msgstr "ゲームを作成"
-
-#. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:692
-msgid "Join"
-msgstr "参加"
-
-#. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:698
-msgid "Observe"
-msgstr "観戦"
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:704

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-02-18 13:15+0100\n"
+"POT-Creation-Date: 2012-03-24 18:11+0100\n"
 "PO-Revision-Date: 2011-12-26 13:33+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -1847,6 +1847,20 @@ msgstr "Modifikator iskustva"
 msgid "Time limit"
 msgstr "Vremensko ograničenje"
 
+#. [row]
+#. [button]: id=join_global
+#: data/gui/default/window/lobby_main.cfg:195
+#: data/gui/default/window/lobby_main.cfg:692
+msgid "Join"
+msgstr "Pridruži se"
+
+#. [row]
+#. [button]: id=observe_global
+#: data/gui/default/window/lobby_main.cfg:198
+#: data/gui/default/window/lobby_main.cfg:698
+msgid "Observe"
+msgstr "Posmatraj"
+
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:305
 msgid "Sort players:"
@@ -1949,16 +1963,6 @@ msgstr "Osveži"
 #: data/gui/default/window/mp_create_game.cfg:41
 msgid "Create Game"
 msgstr "Napravi partiju"
-
-#. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:692
-msgid "Join"
-msgstr "Pridruži se"
-
-#. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:698
-msgid "Observe"
-msgstr "Posmatraj"
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:704

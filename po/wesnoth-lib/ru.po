@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-02-18 13:15+0100\n"
+"POT-Creation-Date: 2012-03-24 18:11+0100\n"
 "PO-Revision-Date: 2011-12-06 10:33+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: ZumZoom\n"
@@ -1854,6 +1854,20 @@ msgstr "Модификатор опыта"
 msgid "Time limit"
 msgstr "Лимит времени"
 
+#. [row]
+#. [button]: id=join_global
+#: data/gui/default/window/lobby_main.cfg:195
+#: data/gui/default/window/lobby_main.cfg:692
+msgid "Join"
+msgstr "Подключиться"
+
+#. [row]
+#. [button]: id=observe_global
+#: data/gui/default/window/lobby_main.cfg:198
+#: data/gui/default/window/lobby_main.cfg:698
+msgid "Observe"
+msgstr "Наблюдать"
+
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:305
 msgid "Sort players:"
@@ -1956,16 +1970,6 @@ msgstr "Обновить"
 #: data/gui/default/window/mp_create_game.cfg:41
 msgid "Create Game"
 msgstr "Создать игру"
-
-#. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:692
-msgid "Join"
-msgstr "Подключиться"
-
-#. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:698
-msgid "Observe"
-msgstr "Наблюдать"
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:704

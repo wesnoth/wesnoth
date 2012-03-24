@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ga\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-02-18 14:42+0100\n"
+"POT-Creation-Date: 2012-03-24 18:11+0100\n"
 "PO-Revision-Date: 2012-02-21 15:26-0800\n"
 "Last-Translator: Carson Callis aka Mountian_King <tree_rings@rocketmail."
 "com>\n"
@@ -1843,6 +1843,20 @@ msgstr "Mionathraitheoir taithí"
 msgid "Time limit"
 msgstr "Teorainn ama"
 
+#. [row]
+#. [button]: id=join_global
+#: data/gui/default/window/lobby_main.cfg:195
+#: data/gui/default/window/lobby_main.cfg:692
+msgid "Join"
+msgstr "Téigh isteach"
+
+#. [row]
+#. [button]: id=observe_global
+#: data/gui/default/window/lobby_main.cfg:198
+#: data/gui/default/window/lobby_main.cfg:698
+msgid "Observe"
+msgstr "Comhlíon"
+
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:305
 msgid "Sort players:"
@@ -1945,16 +1959,6 @@ msgstr "Athnuaigh"
 #: data/gui/default/window/mp_create_game.cfg:41
 msgid "Create Game"
 msgstr "Cruthaigh Cluiche"
-
-#. [button]: id=join_global
-#: data/gui/default/window/lobby_main.cfg:692
-msgid "Join"
-msgstr "Téigh isteach"
-
-#. [button]: id=observe_global
-#: data/gui/default/window/lobby_main.cfg:698
-msgid "Observe"
-msgstr "Comhlíon"
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:704
