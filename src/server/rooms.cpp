@@ -59,7 +59,23 @@ void RoomList::enter_room(const std::string& room_name, socket_ptr socket)
 			else
 				iter->info = existing_room_iter->info;
 		}
-		send_server_message(room_name, player_connections_.left.at(socket) + " enters room '" + room_name + "'");
+		simple_wml::document room_join;
+		simple_wml::node& msg = room_join.root().add_child("room_join");
+		msg.set_attr_dup("player", player_connections_.left.at(iter->left).c_str());
+		msg.set_attr_dup("room", room_name.c_str());
+		send_to_room(room_name, room_join, socket);
+
+		fill_member_list(room_name, msg);
+		send_to_player(socket, room_join);
+	}
+}
+
+void RoomList::fill_member_list(const std::string room_name, simple_wml::node& root)
+{
+	simple_wml::node& members = root.add_child("members");
+	foreach(const RoomMap::right_value_type& value, room_map_.right.equal_range(room_name)) {
+		simple_wml::node& member = members.add_child("member");
+		member.set_attr_dup("name", player_connections_.left.at(value.second).c_str());
 	}
 }
 

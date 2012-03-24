@@ -54,6 +54,9 @@ class RoomList : public boost::noncopyable
 
 	void send_to_room(const std::string& room_name, simple_wml::document& doc, socket_ptr exclude = socket_ptr()) const;
 	void send_server_message(const std::string& room_name, const std::string& message, socket_ptr exclude = socket_ptr()) const;
+
+	private:
+	void fill_member_list(const std::string room_name, simple_wml::node& root);
 };
 
 #endif
