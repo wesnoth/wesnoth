@@ -23,10 +23,14 @@
 class Room : public boost::noncopyable
 {
 	std::string name_;
+	std::string topic_;
 
 	public:
 	Room(const std::string& name);
 	~Room();
+
+	const std::string& topic() const { return topic_; }
+	void set_topic(const std::string& topic) { topic_ = topic; }
 };
 
 typedef boost::shared_ptr<Room> room_ptr;
@@ -54,6 +58,8 @@ class RoomList : public boost::noncopyable
 
 	void send_to_room(const std::string& room_name, simple_wml::document& doc, socket_ptr exclude = socket_ptr()) const;
 	void send_server_message(const std::string& room_name, const std::string& message, socket_ptr exclude = socket_ptr()) const;
+
+	Room& room(const std::string& room_name);
 
 	private:
 	void fill_member_list(const std::string room_name, simple_wml::node& root);

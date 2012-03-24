@@ -1146,6 +1146,9 @@ void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple
 	if(simple_wml::node* room_part = doc->child("room_part")) {
 		handle_room_part(socket, *room_part);
 	}
+	if(simple_wml::node* room_query = doc->child("room_query")) {
+		handle_room_query(socket, *room_query);
+	}
 }
 
 void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
@@ -1268,6 +1271,30 @@ void server::handle_room_part(socket_ptr socket, simple_wml::node& room_part)
 {
 	std::string room_name = room_part.attr("room").to_string();
 	room_list_.leave_room(room_name, socket);
+}
+
+void server::handle_room_query(socket_ptr socket, simple_wml::node& room_query)
+{
+	simple_wml::document doc;
+	simple_wml::node& response = doc.root().add_child("room_query_response");
+	simple_wml::node* query;
+
+	std::string room_name = room_query.attr("room").to_string();
+	if(room_name.empty()) room_name = "lobby";
+	Room& room = room_list_.room(room_name);
+
+	query = room_query.child("topic");
+	if(query != NULL) {
+		if(query->attr("value").empty()) {
+			response.set_attr_dup("topic", room.topic().c_str());
+			send_to_player(socket, doc);
+		} else {
+			room.set_topic(query->attr("value").to_string());
+			send_server_message(socket, "Room topic changed.");
+		}
+		return;
+	}
+	send_server_message(socket, "Unknown room query type");
 }
 
 typedef std::map<socket_ptr, std::deque<boost::shared_ptr<simple_wml::document> > > SendQueue;

@@ -84,6 +84,7 @@ private:
 	void handle_message(socket_ptr socket, simple_wml::node& message);
 	void handle_room_join(socket_ptr socket, simple_wml::node& room_join);
 	void handle_room_part(socket_ptr socket, simple_wml::node& room_join);
+	void handle_room_query(socket_ptr socket, simple_wml::node& room_query);
 	void remove_player(socket_ptr socket);
 
 	const network::manager net_manager_;
