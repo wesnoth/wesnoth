@@ -170,13 +170,14 @@ struct comp {
 }
 
 static void find_routes(const gamemap& map, const unit_map& /*units*/,
-		const unit& u, const map_location& loc,
+		const unit& u,
 		int move_left, pathfind::paths::dest_vect &destinations,
 		std::vector<team> const &teams,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
 		const team &viewing_team,
 		bool see_all, bool ignore_units)
 {
+	const map_location loc = u.get_location();
 	const team& current_team = teams[u.side() - 1];
 	pathfind::teleport_map teleports;
 	if (allow_teleport) {
@@ -347,23 +348,17 @@ bool pathfind::paths::dest_vect::contains(const map_location &loc) const
 }
 
 pathfind::paths::paths(gamemap const &map, unit_map const &units,
-		map_location const &loc, std::vector<team> const &teams,
+		const unit& u, std::vector<team> const &teams,
 		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team,
 		int additional_turns, bool see_all, bool ignore_units)
 	: destinations()
 {
-	const unit_map::const_iterator i = units.find(loc);
-	if(i == units.end()) {
-		ERR_PF << "paths::paths() -- unit not found\n";
+	if (u.side() < 1 || u.side() > int(teams.size())) {
 		return;
 	}
 
-	if (i->side() < 1 || i->side() > int(teams.size())) {
-		return;
-	}
-
-	find_routes(map, units, *i, loc,
-		i->movement_left(), destinations, teams, force_ignore_zoc,
+	find_routes(map, units, u,
+		u.movement_left(), destinations, teams, force_ignore_zoc,
 		allow_teleport,additional_turns,viewing_team,
 		see_all, ignore_units);
 }

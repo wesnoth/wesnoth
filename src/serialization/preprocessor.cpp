@@ -21,6 +21,7 @@
 
 #include "global.hpp"
 
+#include "buffered_istream.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "foreach.hpp"
@@ -434,7 +435,18 @@ class preprocessor_data: preprocessor
 		int stack_pos;
 		int linenum;
 	};
-	scoped_istream in_; /**< Input stream. */
+
+	/**
+	 * Manages the lifetime of the @ref std::istream pointer we own.
+	 *
+	 * Since @ref in_ uses the stream as well this object must be created
+	 * before @ref in_ and destroyed after @ref in_ is destroyed.
+	 */
+	scoped_istream in_scope_;
+
+	/** Input stream. */
+	buffered_istream in_;
+
 	std::string directory_;
 	/** Buffer for delayed input processing. */
 	std::vector< std::string > strings_;
@@ -538,7 +550,8 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 	std::string const &directory, std::string const &domain,
 	std::map<std::string, std::string> *defines) :
 	preprocessor(t),
-	in_(i),
+	in_scope_(i),
+	in_(*i),
 	directory_(directory),
 	strings_(),
 	local_defines_(defines),
@@ -637,22 +650,22 @@ void preprocessor_data::pop_token()
 void preprocessor_data::skip_spaces()
 {
 	for(;;) {
-		int c = in_->peek();
-		if (!in_->good() || (c != ' ' && c != '\t'))
+		int c = in_.peek();
+		if (in_.eof() || (c != ' ' && c != '\t'))
 			return;
-		in_->get();
+		in_.get();
 	}
 }
 
 void preprocessor_data::skip_eol()
 {
 	for(;;) {
-		int c = in_->get();
+		int c = in_.get();
 		if (c == '\n') {
 			++linenum_;
 			return;
 		}
-		if (!in_->good())
+		if (in_.eof())
 			return;
 	}
 }
@@ -661,12 +674,12 @@ std::string preprocessor_data::read_word()
 {
 	std::string res;
 	for(;;) {
-		int c = in_->peek();
+		int c = in_.peek();
 		if (c == preprocessor_streambuf::traits_type::eof() || utils::portable_isspace(c)) {
 			// DBG_CF << "(" << res << ")\n";
 			return res;
 		}
-		in_->get();
+		in_.get();
 		res += static_cast<char>(c);
 	}
 }
@@ -675,12 +688,12 @@ std::string preprocessor_data::read_line()
 {
 	std::string res;
 	for(;;) {
-		int c = in_->get();
+		int c = in_.get();
 		if (c == '\n') {
 			++linenum_;
 			return res;
 		}
-		if (!in_->good())
+		if (in_.eof())
 			return res;
 		if (c != '\r')
 			res += static_cast<char>(c);
@@ -690,8 +703,8 @@ std::string preprocessor_data::read_line()
 std::string preprocessor_data::read_rest_of_line()
 {
 	std::string res;
-	while(in_->good() && in_->peek() != '\n') {
-		int c = in_->get();
+	while(!in_.eof() && in_.peek() != '\n') {
+		int c = in_.get();
 		if (c != '\r')
 			res += static_cast<char>(c);
 	}
@@ -744,9 +757,9 @@ void preprocessor_data::conditional_skip(bool skip)
 
 bool preprocessor_data::get_chunk()
 {
-	char c = in_->get();
+	char c = in_.get();
 	token_desc &token = tokens_.back();
-	if (!in_->good()) {
+	if (in_.eof()) {
 		// The end of file was reached.
 		// Make sure we don't have any incomplete tokens.
 		char const *s;
@@ -770,8 +783,8 @@ bool preprocessor_data::get_chunk()
 	if (c == '\376') {
 		std::string buffer(1, c);
 		for(;;) {
-			char d = in_->get();
-			if (!in_->good() || d == '\n')
+			char d = in_.get();
+			if (in_.eof() || d == '\n')
 				break;
 			buffer += d;
 		}
@@ -780,12 +793,12 @@ bool preprocessor_data::get_chunk()
 		put(buffer);
 	} else if (token.type == token_desc::VERBATIM) {
 		put(c);
-		if (c == '>' && in_->peek() == '>') {
-			put(in_->get());
+		if (c == '>' && in_.peek() == '>') {
+			put(in_.get());
 			pop_token();
 		}
-	} else if (c == '<' && in_->peek() == '<') {
-		in_->get();
+	} else if (c == '<' && in_.peek() == '<') {
+		in_.get();
 		push_token(token_desc::VERBATIM);
 		put('<');
 		put('<');
@@ -821,9 +834,9 @@ bool preprocessor_data::get_chunk()
 			int found_enddef = 0;
 			std::string buffer;
 			for(;;) {
-				if (!in_->good())
+				if (in_.eof())
 					break;
-				char d = in_->get();
+				char d = in_.get();
 				if (d == '\n')
 					++linenum_;
 				buffer += d;

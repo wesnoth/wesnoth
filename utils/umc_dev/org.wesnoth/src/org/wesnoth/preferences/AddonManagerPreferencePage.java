@@ -39,6 +39,7 @@ public class AddonManagerPreferencePage extends AbstractPreferencePage
     public final static Map< String, String > ADDON_SERVER_PORTS       = new HashMap< String, String >( );
 
     static {
+        ADDON_SERVER_PORTS.put( "15002", "1.10.x" ); //$NON-NLS-1$ //$NON-NLS-2$
         ADDON_SERVER_PORTS.put( "15002", "1.9.x" ); //$NON-NLS-1$ //$NON-NLS-2$
         ADDON_SERVER_PORTS.put( "15001", "1.8.x" ); //$NON-NLS-1$ //$NON-NLS-2$
         ADDON_SERVER_PORTS.put( "15003", "1.6.x" ); //$NON-NLS-1$ //$NON-NLS-2$
@@ -81,8 +82,7 @@ public class AddonManagerPreferencePage extends AbstractPreferencePage
         portsRegex.append( "(" ); //$NON-NLS-1$
         for( Entry< String, String > item: ADDON_SERVER_PORTS.entrySet( ) ) {
             portsRegex.append( item.getKey( ) + "|" ); //$NON-NLS-1$
-            ports.append( String.format(
-                "\t%s - %s\n", item.getKey( ), item.getValue( ) ) ); //$NON-NLS-1$
+            ports.append( String.format( "\t%s - %s\n", item.getKey( ), item.getValue( ) ) ); //$NON-NLS-1$
         }
         portsRegex.deleteCharAt( portsRegex.length( ) - 1 );
         portsRegex.append( ")*" ); //$NON-NLS-1$

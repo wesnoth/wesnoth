@@ -151,29 +151,22 @@ public class FactionNewWizard extends WizardTemplate
     {
         ArrayList< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
 
-        params.add( new ReplaceableParameter(
-            "$$faction_id", page0_.getFactionId( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$faction_name", page0_.getFactionName( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$faction_type", page0_.getType( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$faction_id", page0_.getFactionId( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$faction_name", page0_.getFactionName( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$faction_type", page0_.getType( ) ) ); //$NON-NLS-1$
         params
             .add( new ReplaceableParameter( "$$leader", page0_.getLeader( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$random_leader", page0_.getRandomLeader( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$terrain_liked", page0_.getTerrainLiked( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$random_leader", page0_.getRandomLeader( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$terrain_liked", page0_.getTerrainLiked( ) ) ); //$NON-NLS-1$
 
         params
-            .add( new ReplaceableParameter(
-                "$$random_faction", String.valueOf( page1_.getIsRandomFaction( ) ) ) ); //$NON-NLS-1$
+            .add( new ReplaceableParameter( "$$random_faction", String.valueOf( page1_.getIsRandomFaction( ) ) ) ); //$NON-NLS-1$
         params
             .add( new ReplaceableParameter( "$$choices", page1_.getChoices( ) ) ); //$NON-NLS-1$
         params
             .add( new ReplaceableParameter( "$$except", page1_.getExcept( ) ) ); //$NON-NLS-1$
 
-        String template = TemplateProvider.getInstance( ).getProcessedTemplate(
-            "faction", params ); //$NON-NLS-1$
+        String template = TemplateProvider.getInstance( ).getProcessedTemplate( "faction", params ); //$NON-NLS-1$
 
         if( template == null ) {
             Logger.getInstance( ).log( "'faction' template not found", //$NON-NLS-1$

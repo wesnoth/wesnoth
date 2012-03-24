@@ -56,6 +56,7 @@ namespace game_config
 
 	extern std::string path;
 	extern std::string preferences_dir;
+	extern std::string default_preferences_path;
 
 	struct server_info {
 		server_info() : name(""), address("") { }

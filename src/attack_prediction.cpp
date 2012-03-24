@@ -62,11 +62,11 @@ struct prob_matrix
 
 	// A hits B.
 	void receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
-						bool a_slows, bool a_drains);
+						bool a_slows, int a_drain_constant, int a_drain_percent);
 
 	// B hits A.  Why can't they just get along?
 	void receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
-						bool b_slows, bool b_drains);
+						bool b_slows, int b_drain_constant, int b_drain_percent);
 
 	void forced_levelup_a();
 	void conditional_levelup_a();
@@ -111,11 +111,11 @@ private:
 
 	// Shift columns on this plane (b taking damage).  Returns min col.
 	void shift_cols(unsigned dst, unsigned src,
-					unsigned damage, double prob, bool drain);
+					unsigned damage, double prob, int drain_constant, int drain_percent);
 
 	// Shift rows on this plane (a taking damage).  Returns new min row.
 	void shift_rows(unsigned dst, unsigned src,
-					unsigned damage, double prob, bool drain);
+					unsigned damage, double prob, int drain_constant, int drain_percent);
 
 	/** @todo FIXME: rename using _ at end. */
 	unsigned int rows_, cols_;
@@ -288,47 +288,87 @@ void prob_matrix::xfer(unsigned dst_plane, unsigned src_plane,
 }
 
 void prob_matrix::shift_cols(unsigned dst, unsigned src,
-							 unsigned damage, double prob, bool drain)
+							 unsigned damage, double prob, int drain_constant, int drain_percent)
 {
 	unsigned int row, col;
-	unsigned int shift = drain ? 1 : 31; // Avoids a branch.
+	int drainmax = (drain_percent*(static_cast<signed>(damage))/100+drain_constant);
+
+	if(drain_constant || drain_percent) {
+		debug(("Drains %i (%i%% of %i plus %i)\n", drainmax, drain_percent, damage, drain_constant));
+	}
 
 	if (damage >= cols_)
 		damage = cols_ - 1;
 
-	// Loop backwards so we write drain behind us, for when src == dst.
-	for (row = rows_ - 1; row > min_row_[src]; row--) {
+	// Killing blows can have strange drain amounts, so handle them first
+	for (row = min_row_[src] + 1; row < rows_; row++) {
 		// These are all going to die (move to col 0).
-		for (col = 1; col <= damage; ++col)
-			xfer(dst, src, row+(col>>shift), 0, row, col, prob);
-		for (col = damage+1; col < cols_; ++col)
-			xfer(dst, src, row+(damage>>shift), col - damage, row, col, prob);
+		for (col = 1; col <= damage; ++col) {
+			int newrow = std::max(static_cast<signed>(row)+(drain_percent*static_cast<signed>(col)/100+drain_constant), 1);
+			xfer(dst, src, static_cast<unsigned>(newrow), 0, row, col, prob);
+		}
+	}
+
+	// Loop downwards if we drain positive, but upwards if we drain negative,
+	// so we write behind us (for when src == dst).
+	if(drainmax > 0) {
+		for (row = rows_ - 1; row > min_row_[src]; row--) {
+			int newrow = std::max(static_cast<signed>(row)+drainmax, 1);
+			for (col = damage+1; col < cols_; ++col)
+				xfer(dst, src, static_cast<unsigned>(newrow), col - damage, row, col, prob);
+		}
+	} else {
+		for (row = min_row_[src] + 1; row < rows_; row++) {
+			int newrow = std::max(static_cast<signed>(row)+drainmax, 1);
+			for (col = damage+1; col < cols_; ++col)
+				xfer(dst, src, static_cast<unsigned>(newrow), col - damage, row, col, prob);
+		}
 	}
 }
 
 void prob_matrix::shift_rows(unsigned dst, unsigned src,
-							 unsigned damage, double prob, bool drain)
+							 unsigned damage, double prob, int drain_constant, int drain_percent)
 {
 	unsigned int row, col;
-	unsigned int shift = drain ? 1 : 31; // Avoids a branch.
+	int drainmax = (drain_percent*(static_cast<signed>(damage))/100+drain_constant);
+
+	if(drain_constant || drain_percent) {
+		debug(("Drains %i (%i%% of %i plus %i)\n", drainmax, drain_percent, damage, drain_constant));
+	}
 
 	if (damage >= rows_)
 		damage = rows_ - 1;
 
-	// Loop downwards so if we drain, we write behind us.
-	for (col = cols_ - 1; col > min_col_[src]; col--) {
+	// Killing blows can have strange drain amounts, so handle them first
+	for (col = min_col_[src] + 1; col < cols_; col++) {
 		// These are all going to die (move to row 0).
-		for (row = 1; row <= damage; ++row)
-			xfer(dst, src, 0, col+(row>>shift), row, col, prob);
-		for (row = damage+1; row < rows_; ++row)
-			xfer(dst, src, row - damage, col+(damage>>shift), row, col, prob);
+		for (row = 1; row <= damage; ++row) {
+			int newcol = std::max(static_cast<signed>(col)+(drain_percent*static_cast<signed>(row)/100+drain_constant), 1);
+			xfer(dst, src, 0, static_cast<unsigned>(newcol), row, col, prob);
+		}
+	}
+
+	// Loop downwards if we drain positive, but upwards if we drain negative,
+	// so we write behind us (for when src == dst).
+	if(drainmax > 0) {
+		for (col = cols_ - 1; col > min_col_[src]; col--) {
+			int newcol = std::max(static_cast<signed>(col)+drainmax, 1);
+			for (row = damage+1; row < rows_; ++row)
+				xfer(dst, src, row - damage, static_cast<unsigned>(newcol), row, col, prob);
+		}
+	} else {
+		for (col = min_col_[src] + 1; col < cols_; col++) {
+			int newcol = std::max(static_cast<signed>(col)+drainmax, 1);
+			for (row = damage+1; row < rows_; ++row)
+				xfer(dst, src, row - damage, static_cast<unsigned>(newcol), row, col, prob);
+		}
 	}
 }
 
 // Shift prob_matrix to reflect probability 'hit_chance'
 // that damage (up to) 'damage' is done to 'b'.
 void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double hit_chance,
-								 bool a_slows, bool a_drains)
+								 bool a_slows, int a_drain_constant, int a_drain_percent)
 {
 	int src, dst;
 
@@ -351,13 +391,22 @@ void prob_matrix::receive_blow_b(unsigned damage, unsigned slow_damage, double h
 		else
 			actual_damage = damage;
 
-		shift_cols(dst, src, actual_damage, hit_chance, a_drains);
+		shift_cols(dst, src, actual_damage, hit_chance, a_drain_constant, a_drain_percent);
 		if (min_col_[src] < damage)
 			min_col_[dst] = 0;
 		else if (min_col_[src] - damage < min_col_[dst])
 			min_col_[dst] = min_col_[src] - damage;
 		if (min_row_[src] < min_row_[dst])
 			min_row_[dst] = min_row_[src];
+
+		int drain_worst = std::min<int>(a_drain_percent*(static_cast<signed>(actual_damage))/100+a_drain_constant, a_drain_constant);
+		if(drain_worst < 0) {
+			unsigned int max_drain_damage = static_cast<unsigned>(-drain_worst);
+			if(max_drain_damage >= min_row_[dst])
+				min_row_[dst] = 0;
+			else
+				min_row_[dst] -= max_drain_damage;
+		}
 	}
 }
 
@@ -454,7 +503,7 @@ double prob_matrix::dead_prob() const
 // Shift matrix to reflect probability 'hit_chance'
 // that damage (up to) 'damage' is done to 'a'.
 void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
-								 bool b_slows, bool b_drains)
+								 bool b_slows, int b_drain_constant, int b_drain_percent)
 {
 	int src, dst;
 
@@ -477,13 +526,22 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 		else
 			actual_damage = damage;
 
-		shift_rows(dst, src, actual_damage, hit_chance, b_drains);
+		shift_rows(dst, src, actual_damage, hit_chance, b_drain_constant, b_drain_percent);
 		if (min_row_[src] < damage)
 			min_row_[dst] = 0;
 		else if (min_row_[src] - damage < min_row_[dst])
 			min_row_[dst] = min_row_[src] - damage;
 		if (min_col_[src] < min_col_[dst])
 			min_col_[dst] = min_col_[src];
+
+		int drain_worst = std::min<int>(b_drain_percent*(static_cast<signed>(actual_damage))/100+b_drain_constant, b_drain_constant);
+		if(drain_worst < 0) {
+			unsigned int max_drain_damage = static_cast<unsigned>(-drain_worst);
+			if(max_drain_damage >= min_col_[dst])
+				min_col_[dst] = 0;
+			else
+				min_col_[dst] -= max_drain_damage;
+		}
 	}
 }
 
@@ -811,13 +869,13 @@ void combatant::complex_fight(combatant &opp, unsigned rounds, bool levelup_cons
 			if (i < hit_chances_.size()) {
 				debug(("A strikes\n"));
 				m.receive_blow_b(a_damage, a_slow_damage, hit_chances_[i],
-								 u_.slows && !opp.u_.is_slowed, u_.drains);
+								 u_.slows && !opp.u_.is_slowed, u_.drain_constant, u_.drain_percent);
 				m.dump();
 			}
 			if (i < opp.hit_chances_.size()) {
 				debug(("B strikes\n"));
 				m.receive_blow_a(b_damage, b_slow_damage, opp.hit_chances_[i],
-								 opp.u_.slows && !u_.is_slowed, opp.u_.drains);
+								 opp.u_.slows && !u_.is_slowed, opp.u_.drain_constant, opp.u_.drain_percent);
 				m.dump();
 			}
 		}

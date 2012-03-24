@@ -18,7 +18,7 @@
 #include "actions.hpp"
 #include "attack_prediction.hpp"
 #include "editor/editor_controller.hpp"
-#include "editor/editor_palettes.hpp"
+#include "editor/palette/terrain_palettes.hpp"
 #include "font.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
@@ -1193,6 +1193,7 @@ REPORT_GENERATOR(selected_terrain)
 		return text_report(selected_terrain);
 }
 
+/* TODO this is unused
 REPORT_GENERATOR(edit_left_button_function)
 {
 	const std::string left_button_function = editor::get_left_button_function();
@@ -1201,6 +1202,7 @@ REPORT_GENERATOR(edit_left_button_function)
 	else
 		return text_report(left_button_function);
 }
+*/
 
 REPORT_GENERATOR(editor_tool_hint)
 {

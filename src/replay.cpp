@@ -37,7 +37,6 @@
 #include "resources.hpp"
 #include "rng.hpp"
 #include "statistics.hpp"
-#include "wesconfig.h"
 #include "whiteboard/manager.hpp"
 
 #include <boost/bind.hpp>

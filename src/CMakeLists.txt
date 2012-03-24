@@ -171,6 +171,11 @@ if(MSVC)
 	SOURCE_GROUP("src ai testing" REGULAR_EXPRESSION "ai/testing/.*")
 	SOURCE_GROUP("src campaign_server" REGULAR_EXPRESSION "campaign_server/.*")
 	SOURCE_GROUP("src editor" REGULAR_EXPRESSION "editor/.*")
+	SOURCE_GROUP("src editor action" REGULAR_EXPRESSION "editor/action/.*")
+	SOURCE_GROUP("src editor action mouse" REGULAR_EXPRESSION "editor/action/mouse/.*")
+	SOURCE_GROUP("src editor palette" REGULAR_EXPRESSION "editor/palette/.*")
+	SOURCE_GROUP("src editor toolkit" REGULAR_EXPRESSION "editor/toolkit/.*")
+        SOURCE_GROUP("src editor map" REGULAR_EXPRESSION "editor/map/.*")
 	SOURCE_GROUP("src gui" REGULAR_EXPRESSION "gui/.*")
 	SOURCE_GROUP("src gui auxiliary" REGULAR_EXPRESSION "gui/auxiliary/.*")
 	SOURCE_GROUP("src gui auxiliary event" REGULAR_EXPRESSION "gui/auxiliary/event/.*")
@@ -316,6 +321,7 @@ set(wesnoth-main_SRC
 	addon/info.cpp
 	addon/manager.cpp
 	addon/manager_ui.cpp
+	addon/state.cpp
 	addon/validation.cpp
 	ai/actions.cpp
 	ai/composite/ai.cpp
@@ -363,18 +369,28 @@ set(wesnoth-main_SRC
 	config_cache.cpp
 	controller_base.cpp
 	dialogs.cpp
-	editor/action.cpp
-	editor/brush.cpp
+	editor/action/action.cpp
+        editor/action/action_label.cpp
+        editor/action/action_unit.cpp
+	editor/action/mouse/mouse_action.cpp
+        editor/action/mouse/mouse_action_map_label.cpp
+        editor/action/mouse/mouse_action_unit.cpp
+	editor/map/editor_map.cpp
+	editor/map/map_context.cpp
+	editor/map/map_fragment.cpp
+        editor/palette/palette_manager.cpp
+	editor/toolkit/brush.cpp
+        editor/toolkit/brush_bar.cpp
+        editor/palette/editor_palettes.cpp
+        editor/palette/palette_layout.cpp
+        editor/palette/terrain_palettes.cpp
+        editor/palette/unit_palette.cpp
 	editor/editor_controller.cpp
 	editor/editor_display.cpp
-	editor/editor_layout.cpp
 	editor/editor_main.cpp
-	editor/editor_map.cpp
-	editor/editor_palettes.cpp
 	editor/editor_preferences.cpp
-	editor/map_context.cpp
-	editor/map_fragment.cpp
-	editor/mouse_action.cpp
+        editor/toolkit/editor_toolkit.cpp
+        editor/map/context_manager.cpp
 	filechooser.cpp
 	floating_textbox.cpp
 	formula.cpp
@@ -657,6 +673,7 @@ set(libwesnoth-game_STAT_SRC
 	terrain_translation.cpp
 	text.cpp
 	time_of_day.cpp
+	tracer.cpp
 	video.cpp
 	theme.cpp
 	widgets/button.cpp
@@ -799,6 +816,7 @@ set(exploder_SRC
 	tools/exploder_composer.cpp
 	tools/dummy_video.cpp
 	sdl_utils.cpp
+	tracer.cpp
 	loadscreen_empty.cpp
 )
 
@@ -814,6 +832,7 @@ set(cutter_SRC
 	tools/exploder_cutter.cpp
 	tools/dummy_video.cpp
 	sdl_utils.cpp
+	tracer.cpp
 	loadscreen_empty.cpp
 )
 
@@ -864,6 +883,7 @@ set(wesmage_SRC
 	tools/dummy_video.cpp
 	tools/exploder_utils.cpp
 	sdl_utils.cpp
+	tracer.cpp
 	loadscreen_empty.cpp
 )
 

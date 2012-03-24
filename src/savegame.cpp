@@ -188,7 +188,12 @@ public:
 	}
 
 public:
-	save_index_class() : loaded_(false) {}
+	save_index_class()
+		: loaded_(false)
+		, data_()
+		, modified_()
+   {
+   }
 private:
 	config& data(const std::string& name) {
 		std::string save = name;
@@ -200,12 +205,12 @@ private:
 		if(save.length() < 3 || save.substr(save.length() - 3) != ".gz") {
 			save += ".gz";
 		}
-	
+
 		config& cfg = data();
 		if (config& sv = cfg.find_child("save", "save", save)) {
 			return sv;
 		}
-	
+
 		config& res = cfg.add_child("save");
 		res["save"] = save;
 		return res;
@@ -225,7 +230,7 @@ private:
 			} catch(config::error&) {
 				ERR_SAVE << "error parsing save index config file\n";
 				data_.clear();
-			}	
+			}
 			loaded_ = true;
 		}
 		return data_;
@@ -266,7 +271,7 @@ public:
 std::vector<save_info> get_saves_list(const std::string* dir, const std::string* filter)
 {
 	create_save_info creator(dir);
-	
+
 	std::vector<std::string> filenames;
 	get_files_in_dir(creator.dir,&filenames);
 
@@ -847,7 +852,7 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, const 
 		res = dlg.get_retval();
 	}
 	else if (dialog_type == gui::YES_NO){
-		gui2::tgame_save_message dlg(title_, filename, message);
+		gui2::tgame_save_message dlg(filename, title_, message);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}
@@ -1091,7 +1096,7 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, co
 	std::string filename = this->filename();
 
 	if (!ignore_all){
-		gui2::tgame_save_oos dlg(ignore_all, title(), filename, message);
+		gui2::tgame_save_oos dlg(ignore_all, filename, title(), message);
 		dlg.show(video);
 		res = dlg.get_retval();
 	}

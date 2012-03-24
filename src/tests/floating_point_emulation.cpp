@@ -976,6 +976,73 @@ test_floor()
 
 template<class T, unsigned S>
 static void
+test_divide_range_optimizations()
+{
+
+	/* Basic test for division. */
+	{
+		floating_point_emulation::tfloat<T, S> f(0), g(2);
+		f /= g;
+		BOOST_CHECK_EQUAL(f, 0);
+	}
+
+	/*
+	 * Test the entire positive range with the second last bit set.
+	 *
+	 * Dividing by an int so the divisor_low_bit will always be 8.
+	 */
+
+	for(int i = 1; i < 23; ++i) {
+		floating_point_emulation::tfloat<T, S> f((1 << i) + 2. / 256.), g(2);
+		f /= g;
+		BOOST_CHECK_EQUAL(f, (1 << (i - 1)) + 1. / 256.);
+	}
+
+	/*
+	 * Test the entire negative range with the second last bit set.
+	 *
+	 * Dividing by an int so the divisor_low_bit will always be 8.
+	 */
+
+	for(int i = 1; i < 23; ++i) {
+		floating_point_emulation::tfloat<T, S> f(-((1 << i) + 2. / 256.)), g(2);
+		f /= g;
+		BOOST_CHECK_EQUAL(f, -((1 << (i - 1)) + 1. / 256.));
+	}
+
+	/* Test the maximum negative value. */
+
+	{
+		floating_point_emulation::tfloat<T, S> f(-(1 << 23)), g(2);
+		f /= g;
+		BOOST_CHECK_EQUAL(f, -(1 << 22));
+	}
+
+	/* Test the the positive range for all cases of divisor_low_bit. */
+
+	for(int i = 1; i <= 8; ++i) {
+		floating_point_emulation::tfloat<T, S> f((1 << 22) + (1 << (22 - i)));
+		floating_point_emulation::tfloat<T, S> g(1. + 1. / (1 << i));
+		f /= g;
+		BOOST_CHECK_EQUAL(
+				  f
+				, ((1 << 22) + (1 << (22 - i))) / (1. + 1. / (1 << i)));
+	}
+
+	/* Test the the negative range for all cases of divisor_low_bit. */
+
+	for(int i = 1; i <= 8; ++i) {
+		floating_point_emulation::tfloat<T, S> f((1 << 22) + (1 << (22 - i)));
+		floating_point_emulation::tfloat<T, S> g(- 1. - 1. / (1 << i));
+		f /= g;
+		BOOST_CHECK_EQUAL(
+				  f
+				, ((1 << 22) + (1 << (22 - i))) / (- 1. - 1. / (1 << i)));
+	}
+}
+
+template<class T, unsigned S>
+static void
 test()
 {
 	test_create<T, S>();
@@ -994,6 +1061,8 @@ test()
 	test_to_int<T, S>();
 	test_to_double<T, S>();
 	test_floor<T, S>();
+
+	test_divide_range_optimizations<T, S>();
 }
 
 BOOST_AUTO_TEST_CASE(test_floating_point_emulation)
@@ -1005,4 +1074,22 @@ BOOST_AUTO_TEST_CASE(test_floating_point_emulation)
 	test<tfloat::value_type, tfloat::shift>();
 }
 
+/*
+ * Instanciate some functions.
+ *
+ * This allows to check the assembly output of the function, which can be
+ * useful to see what really happens.
+ */
+
+void
+instanciate_idiv(
+		  floating_point_emulation::tfloat<Sint32, 8>& f
+		, const floating_point_emulation::tfloat<Sint32, 8> g);
+void
+instanciate_idiv(
+		  floating_point_emulation::tfloat<Sint32, 8>& f
+		, const floating_point_emulation::tfloat<Sint32, 8> g)
+{
+	f /= g;
+}
 

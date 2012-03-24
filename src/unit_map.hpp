@@ -190,11 +190,14 @@ public:
 			return  i_->unit; }
 		reference operator*() const {
 			tank_->self_check();
+#if 0
+			// debug!
 			if(!valid()){
 				if(!tank_){std::cerr<<"tank is NULL"<<"\n";}
 				if(i_==the_end()){std::cerr<<"i_ is the end"<<"\n";}
 				if(i_->unit==NULL){std::cerr<<"i_ unit is NULL with uid="<<i_->deleted_uid<<"\n";}
 			}
+#endif
 			assert(valid());
 			return *i_->unit; }
 

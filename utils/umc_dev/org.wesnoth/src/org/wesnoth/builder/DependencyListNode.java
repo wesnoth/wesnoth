@@ -45,8 +45,7 @@ public class DependencyListNode implements Serializable
      * Index
      */
     public static final QualifiedName PDL_INDEX        = new QualifiedName(
-                                                           WesnothPlugin.ID_PLUGIN,
-                                                           "pdl_index" );       //$NON-NLS-1$
+                                                           WesnothPlugin.ID_PLUGIN, "pdl_index" ); //$NON-NLS-1$
 
     private DependencyListNode        previous_;
     private DependencyListNode        next_;

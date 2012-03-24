@@ -52,9 +52,10 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 
 namespace mp {
 
-create::create(game_display& disp, const config &cfg, chat& c, config& gamelist) :
+create::create(game_display& disp, const config &cfg, chat& c, config& gamelist, bool local_players_only) :
 	ui(disp, _("Create Game"), cfg, c, gamelist),
 
+	local_players_only_(local_players_only),
 	tooltip_manager_(disp.video()),
 	map_selection_(-1),
 	mp_countdown_init_time_(270),
@@ -475,7 +476,7 @@ void create::process_event()
 				}
 
 				if (!level["description"].empty()) {
-					tooltips::add_tooltip(minimap_rect_, level["description"]);
+					tooltips::add_tooltip(minimap_rect_, level["description"], "", false);
 				}
 			}
 		} else {
@@ -734,8 +735,12 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += era_label_.height() + border_size;
 	era_combo_.set_location(xpos, ypos);
 	ypos += era_combo_.height() + border_size;
-	password_button_.set_location(xpos, ypos);
-	ypos += password_button_.height() + border_size;
+	if(!local_players_only_) {
+		password_button_.set_location(xpos, ypos);
+		ypos += password_button_.height() + border_size;
+	} else {
+		password_button_.hide(true);
+	}
 
 #ifdef MP_VISION_OPTIONAL
 	vision_combo_.set_location(xpos, ypos);

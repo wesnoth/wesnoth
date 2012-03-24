@@ -134,6 +134,17 @@ void connection::transfer(const config& request, config& response)
 		);
 }
 
+void connection::cancel()
+{
+	if(socket_.is_open()) {
+		boost::system::error_code ec;
+		socket_.cancel(ec);
+		if(ec) {
+			WRN_NW << "Failed to cancel network operations: " << ec.message() << "\n";
+		}
+	}
+}
+
 std::size_t connection::is_write_complete(
 		const boost::system::error_code& ec,
 		std::size_t bytes_transferred

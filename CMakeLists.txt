@@ -60,6 +60,7 @@ set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}" CACHE STRING "change the dir where binaries are placed right at compile time")
 set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
+set(DEFAULT_PREFS_FILE "" CACHE STRING "Set system wide preferences file")
 
 #Game options
 option(ENABLE_FRIBIDI "Enable FriBIDi support" ON)
@@ -170,6 +171,15 @@ add_definitions(-DFIFODIR=\\\"${FIFO_DIR}\\\")
 if(PREFERENCES_DIR)
 	add_definitions(-DPREFERENCES_DIR=\\\"${PREFERENCES_DIR}\\\")
 endif(PREFERENCES_DIR)
+
+
+if(DEFAULT_PREFS_FILE)
+	add_definitions(-DDEFAULT_PREFS_PATH=\\\"${DEFAULT_PREFS_FILE}\\\")
+	
+	if(NOT DEFAULT_PREFS_FILE MATCHES "^/")
+		add_definitions(-DHAS_RELATIVE_DEFPREF)
+	endif(NOT DEFAULT_PREFS_FILE MATCHES "^/")
+endif(DEFAULT_PREFS_FILE)
 
 if(ENABLE_LOW_MEM)
 	add_definitions(-DLOW_MEM)

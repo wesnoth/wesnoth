@@ -73,6 +73,7 @@ opts.AddVariables(
     BoolVariable('nls','enable compile/install of gettext message catalogs',True),
     PathVariable('prefix', 'autotools-style installation prefix', "/usr/local", PathVariable.PathAccept),
     PathVariable('prefsdir', 'user preferences directory', "", PathVariable.PathAccept),
+    PathVariable('default_prefs_file', 'default preferences file name', "", PathVariable.PathAccept),
     PathVariable('destdir', 'prefix to add to all installation paths.', "/", PathVariable.PathAccept),
     BoolVariable('prereqs','abort if prerequisites cannot be detected',True),
     ('program_suffix', 'suffix to append to names of installed programs',"$version_suffix"),

@@ -81,26 +81,20 @@ public class EmptyProjectNewWizard extends WizardTemplate
     {
         List< ReplaceableParameter > params = new ArrayList< ReplaceableParameter >( );
 
-        params.add( new ReplaceableParameter(
-            "$$campaign_name", page1_.getCampaignName( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$campaign_name", page1_.getCampaignName( ) ) ); //$NON-NLS-1$
         params
             .add( new ReplaceableParameter( "$$author", page1_.getAuthor( ) ) ); //$NON-NLS-1$
         params
             .add( new ReplaceableParameter( "$$version", page1_.getVersion( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$description", page1_.getPBLDescription( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$description", page1_.getPBLDescription( ) ) ); //$NON-NLS-1$
         params
             .add( new ReplaceableParameter( "$$icon", page1_.getIconPath( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter( "$$email", page1_.getEmail( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$passphrase", page1_.getPassphrase( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$translations_dir", page1_.getTranslationDir( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$passphrase", page1_.getPassphrase( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$translations_dir", page1_.getTranslationDir( ) ) ); //$NON-NLS-1$
 
-        params.add( new ReplaceableParameter(
-            "$$project_name", page0_.getProjectName( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$project_dir_name", page0_.getProjectName( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$project_name", page0_.getProjectName( ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$project_dir_name", page0_.getProjectName( ) ) ); //$NON-NLS-1$
         params.add( new ReplaceableParameter( "$$type", page1_.getType( ) ) ); //$NON-NLS-1$
 
         return params;

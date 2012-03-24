@@ -20,6 +20,16 @@ html_header = '''
 </head>
 <body><div>'''.strip()
 
+top_bar = '''
+<div class="header">
+<a href="http://www.wesnoth.org">
+<img src="%(path)swesnoth-logo.jpg" alt="Wesnoth logo"/>
+</a>
+</div>
+<div class="topnav">
+<a href="%(path)sindex.html">Wesnoth Units database</a>
+</div>'''.strip()
+
 html_footer = '''
 <div id="footer">
 <p>%(generation_note)s</p>
@@ -37,7 +47,7 @@ error_only_once = {}
 def error_message(message):
     if message in error_only_once: return
     error_only_once[message] = 1
-    sys.stderr.write(message)
+    write_error(message)
 
 helpers.error_message = error_message
 
@@ -99,14 +109,14 @@ class GroupByRace:
 
     def unitfilter(self, unit):
         if not self.campaign: return True
-        return self.campaign == unit.campaigns[0]
+        return unit.campaigns and self.campaign == unit.campaigns[0]
 
     def groups(self, unit):
-        return [unit.race]
+        return [T(unit.race, "plural_name")]
 
     def group_name(self, group):
         if not group: return "None"
-        return T(group, "plural_name")
+        return group
 
 class GroupByNothing:
     def __init__(self):
@@ -134,10 +144,12 @@ class GroupByFaction:
 
     def group_name(self, group):
         era = self.wesnoth.era_lookup[group[0]]
-        faction = era.faction_lookup[group[1]]
-        name = T(faction, "name")
-        name = name[name.rfind("=") + 1:]
-        #name = T(era, "name") + " / " + name
+        if group[1]:
+            faction = era.faction_lookup[group[1]]
+            name = T(faction, "name")
+            name = name[name.rfind("=") + 1:]
+        else:
+            name = "factionless"
         return name
 
 global_htmlout = None
@@ -155,7 +167,6 @@ class HTMLOutput:
         self.is_era = is_era
         self.verbose = verbose
         self.target = "index.html"
-        self.mainline = False
         self.wesnoth = wesnoth
         self.forest = None
         self.translation = Translation(options.transdir, isocode)
@@ -175,10 +186,11 @@ class HTMLOutput:
         forest = self.forest = helpers.UnitForest()
         units_added = {}
         for uid, u in self.wesnoth.unit_lookup.items():
+            if u.hidden: continue
             if grouper.unitfilter(u):
                 forest.add_node(helpers.UnitNode(u))
                 units_added[uid] = u
-        
+
         #print("    %d/%d units" % (len(units_added), len(self.wesnoth.unit_lookup)))
 
         # Always add any child units, even if they have been filtered out..
@@ -197,7 +209,18 @@ class HTMLOutput:
                         forest.add_node(helpers.UnitNode(au))
                         new_units_added[auid] = au
             units_added = new_units_added
-
+        
+        # Also add parent units
+        added = True
+        while added:
+            added = False
+            for uid, u in self.wesnoth.unit_lookup.items():
+                if uid in forest.lookup: continue
+                for auid in u.advance:
+                    if auid in forest.lookup:
+                        forest.add_node(helpers.UnitNode(u))
+                        added = True
+                        break
 
         forest.update()
 
@@ -208,6 +231,7 @@ class HTMLOutput:
         for tree in forest.trees.values():
             u = tree.unit
             ugroups = grouper.groups(u)
+
             for group in ugroups:
                 groups[group] = groups.get(group, []) + [tree]
                 breadth += tree.breadth
@@ -237,6 +261,8 @@ class HTMLOutput:
             nodes.sort(by_name)
             for node in nodes:
                 level = node.unit.level
+                if level < 0: level = 0
+                if level > 5: level = 5
                 rows[x][level] = (1, node.breadth, node)
                 for i in range(1, node.breadth):
                     rows[x + i][level] = (0, 0, node)
@@ -268,16 +294,11 @@ class HTMLOutput:
         languages = self.wesnoth.languages_found
         langlist = languages.keys()
         langlist.sort()
+        
+        write(top_bar % {"path" : "../../"})
 
         write("""
-        <div class="header">
-        <a href="http://www.wesnoth.org">
-        <img src="../../wesnoth-logo.jpg" alt="Wesnoth logo"/>
-        </a>
-        </div>
-        <div class="topnav">
-        <a href="../../index.html">Wesnoth Units database</a>
-        </div>
+        
 
         <div class="navbar">
         """)
@@ -344,8 +365,8 @@ class HTMLOutput:
                 if racename == "-":
                     write(" -<br/>")
                 else:
-                    write(" <a href=\"mainline.html#%s\">%s</a><br/>" % (
-                        racename, racename))
+                    write(" <a href=\"%s#%s\">%s</a><br/>" % (
+                        self.target, racename, racename))
 
             write("</div></li>\n")
         else:
@@ -391,12 +412,14 @@ class HTMLOutput:
                 got_menu = True
                 c = self.campaign
                 if c == "units": c = "mainline"
-                link = "../%s/%s.html" % (self.isocode, c)
                 write("<a href=\"%s#%s\">%s</a><br/>" % (
-                    link, r, r))
+                    self.target, r, r))
                 for uid in races[r]:
                     un = self.wesnoth.unit_lookup[uid]
-                    link = "../%s/%s.html" % (self.isocode, uid)
+                    if un.hidden: continue
+                    if "mainline" in un.campaigns: addon = "mainline"
+                    else: addon = self.addon
+                    link = "../../%s/%s/%s.html" % (addon, self.isocode, uid)
                     name = self.wesnoth.get_unit_value(un,
                         "name", translation=self.translation.translate)
                     if not name:
@@ -419,8 +442,7 @@ class HTMLOutput:
             labb = lang
             underscore = labb.find("_")
             if underscore > 0: labb = labb[:underscore]
-            
-            if self.mainline:
+            if self.addon == "mainline":
                 write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
                     languages[lang], lang, self.target,
                         labb))
@@ -435,6 +457,10 @@ class HTMLOutput:
         write("</tr>")
         write("</table>")
         write("</div></li>\n")
+        
+        write("<li><div>&nbsp;</div></li>")
+        write("<li><div>&nbsp;</div></li>")
+        write('<li><a class="unitmenu" href="../../overview.html">Overview</a></li>')
 
         write("</ul>\n")
 
@@ -466,7 +492,11 @@ class HTMLOutput:
                 "Warning: Missing image for unit %s(%s).\n" % (
                 u.get_text_val("id"), x.name))
             return None, None
-        picname = image_collector.add_image(self.addon, image)
+        icpic = image_collector.add_image_check(self.addon, image)
+        if not icpic.ipath:
+            error_message("Warning: No picture %s for unit %s.\n" %
+                (image, u.get_text_val("id")))
+        picname = icpic.id_name
         image = os.path.join(pics_location, picname)
         if portrait:
             picname = image_collector.add_image(self.addon, portrait,
@@ -544,12 +574,14 @@ class HTMLOutput:
                         # Find the current multiplayer side so we can show the
                         # little crowns..
                         ms = None
-                        try:
-                            eid, fid = un.data
-                            era = self.wesnoth.era_lookup[eid]
-                            ms = era.faction_lookup[fid]
-                        except TypeError:
-                            pass
+                        if self.is_era:
+                            try:
+                                eid, fid = un.data
+                                era = self.wesnoth.era_lookup[eid]
+                                if fid:
+                                    ms = era.faction_lookup[fid]
+                            except TypeError:
+                                pass
                         racename = un.name
                         attributes += " class=\"raceheader\""
                         write("<td%s>" % attributes)
@@ -579,7 +611,7 @@ class HTMLOutput:
                                 crown = u" ♚"
 
                         uaddon = "mainline"
-                        if u.campaigns[0] != "mainline": uaddon = self.addon
+                        if "mainline" not in u.campaigns: uaddon = self.addon
                         link = "../../%s/%s/%s.html" % (uaddon, self.isocode, uid)
                         write("<div class=\"i\"><a href=\"%s\" title=\"id=%s\">%s</a>" % (
                             link, uid, u"i"))
@@ -724,6 +756,7 @@ class HTMLOutput:
             if not fportrait: fportrait = portrait
             write('<img src="%s" alt="(image)" />\n' % mimage)
             write('<img src="%s" alt="(image)" />\n' % fimage)
+            image = mimage
         else:
             image, portrait = self.pic(unit, unit)
             write('<img src="%s" alt="(image)" />\n' % image)
@@ -750,9 +783,12 @@ class HTMLOutput:
         write("</td><td>\n")
         for pid in self.forest.get_parents(uid):
             punit = self.wesnoth.unit_lookup[pid]
-            if unit.campaigns[0] == "mainline" and punit.campaigns[0] != "mainline":
+            if "mainline" in unit.campaigns and "mainline" not in punit.campaigns:
                 continue
-            link = "../%s/%s.html" % (self.isocode, pid)
+            
+            if "mainline" in unit.campaigns: addon = "mainline"
+            else: addon = self.addon
+            link = "../../%s/%s/%s.html" % (addon, self.isocode, pid)
             name = self.wesnoth.get_unit_value(punit, "name",
                 translation=self.translation.translate)
             write("\n<a href=\"%s\">%s</a>" % (link, name))
@@ -761,17 +797,20 @@ class HTMLOutput:
         write("<td>%s" % _("Advances to: ", "wesnoth-help"))
         write("</td><td>\n")
         for cid in self.forest.get_children(uid):
-            link = "../%s/%s.html" % (self.isocode, cid)
             try:
                 cunit = self.wesnoth.unit_lookup[cid]
-                if unit.campaigns[0] == "mainline" and cunit.campaigns[0] != "mainline":
+                if "mainline" in cunit.campaigns: addon = "mainline"
+                else: addon = self.addon
+                link = "../../%s/%s/%s.html" % (addon, self.isocode, cid)
+                if "mainline" in unit.campaigns and "mainline" not in cunit.campaigns:
                     continue
                 name = self.wesnoth.get_unit_value(cunit, "name",
                     translation=self.translation.translate)
             except KeyError:
                 error_message("Warning: Unit %s not found.\n" % cid)
                 name = cid
-                if unit.campaigns[0] == "mainline": continue
+                if "mainline" in unit.campaigns: continue
+                link = self.target
             write("\n<a href=\"%s\">%s</a>" % (link, name))
         write("</td>\n")
         write("</tr>\n")
@@ -816,14 +855,14 @@ class HTMLOutput:
             if not icon:
                 icon = "attacks/%s.png" % aid
 
-            image = image_collector.add_image_check(self.addon,
+            image_add = image_collector.add_image_check(self.addon,
                 icon, no_tc = True)
-            if not image.ipath:
+            if not image_add.ipath:
                 error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                     icon, uid))
                 icon = os.path.join(pics_location, "unit$elves-wood$shaman.png")
             else:
-                icon = os.path.join(pics_location, image.id_name)
+                icon = os.path.join(pics_location, image_add.id_name)
             write("<td><img src=\"%s\" alt=\"(image)\"/></td>" % icon)
 
             write("<td><b>%s</b>" % aname)
@@ -898,14 +937,22 @@ class HTMLOutput:
         write('</div>')
         write('<div class="unit-column-right">')
 
-        if portrait:
-            write('<div class="portrait">')
-            if female:
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % fportrait)
+        for si in range(2):
+            if si and not female: break
+            if si:
+                sportrait = fportrait
+                simage = fimage
             else:
-                write('<img width="200" src="%s" alt="(portrait)" />\n' % portrait)
-            write('</div>\n')
+                simage = image
+                sportrait = portrait
+
+            style = "background-image: url(%s);" % simage
+
+            write('<div class="portrait">')
+            write('<div style="%s">&nbsp;</div>' % style)
+            if portrait:
+                write('<img src="%s" alt="(portrait)" />\n' % sportrait)
+            write('</div>')
 
         # Write info about movement costs and terrain defense.
         write("<h2>" + _("Terrain", "wesnoth-help") + "</h2>\n")
@@ -946,7 +993,13 @@ class HTMLOutput:
             not_from_race, d = find_attr("defense", tid)
 
             if d == "-": d = 100
-            try: d = "%d%%" % (100 - int(d))
+
+            try:
+                d = int(d)
+                # negative defense has something to do with best defense if
+                # there's multiple terrain types
+                if d < 0: d = -d
+                d = "%d%%" % (100 - d)
             except ValueError:
                 error_message("Warning: Invalid defense %s for %s.\n" % (
                     d, uid))
@@ -997,6 +1050,8 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
 
     n = html.write_units_tree(grouper, title)
     
+    output.close()
+    
     return n
 
 def generate_era_report(addon, isocode, era, wesnoth):
@@ -1011,13 +1066,12 @@ def generate_era_report(addon, isocode, era, wesnoth):
     html = HTMLOutput(isocode, output, addon, eid, True, wesnoth)
     html.target = "%s.html" % eid
     
-    #if eid in wesnoth.is_mainline_era:
-    #    html.mainline = True
-    
     grouper = GroupByFaction(wesnoth, eid)
 
     ename = era.get_text_val("name", translation = html.translate)
     n = html.write_units_tree(grouper, ename)
+    
+    output.close()
     
     return n
 
@@ -1031,7 +1085,8 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     html.analyze_units(grouper)
 
     for uid, unit in wesnoth.unit_lookup.items():
-        if unit.campaigns[0] == "mainline" and addon != "mainline": continue
+        if unit.hidden: continue
+        if "mainline" in unit.campaigns and addon != "mainline": continue
         filename = os.path.join(path, "%s.html" % uid)
 
         # We probably can come up with something better.
@@ -1043,9 +1098,10 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
         output = MyFile(filename, "w")
         html.target = "%s.html" % uid
         html.write_unit_report(output, unit)
+        output.close()
         
 def html_postprocess_file(filename, isocode, batchlist):
-    
+
     print("postprocessing " + filename)
     
     chtml = u""
@@ -1105,12 +1161,13 @@ def html_postprocess_file(filename, isocode, batchlist):
         if i == 0 and eids[1]:
             ehtml += u"-<br/>\n"
             
-    f = open(filename, "rb")
+    f = open(filename, "r+b")
     html = f.read().decode("utf8")
     html = html.replace(u"PLACE CAMPAIGNS HERE\n", chtml)
     html = html.replace(u"PLACE ERAS HERE\n", ehtml)
+    f.seek(0)
+    f.write(html.encode("utf8"))
     f.close()
-    open(filename, "wb").write(html.encode("utf8"))
 
 def html_postprocess_all(batchlist):
     for isocode, filename in all_written_html_files:

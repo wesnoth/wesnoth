@@ -21,6 +21,7 @@ import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.parser.IParser;
@@ -112,15 +113,21 @@ public class SimpleWMLParser
      */
     public void parse( )
     {
-        TreeIterator< EObject > itor = root_.eAllContents( );
+        if( root_ == null ) {
+            return;
+        }
+
         WMLTag currentTag = null;
         String currentTagName = "";
+        String textdomain = "";
 
         // clear previous parsed info
         config_.getWMLTags( ).clear( );
         config_.getEvents( ).clear( );
         defines_.clear( );
 
+
+        TreeIterator< EObject > itor = root_.eAllContents( );
         // nothing to parse!
         if( ! itor.hasNext( ) ) {
             return;
@@ -146,7 +153,7 @@ public class SimpleWMLParser
                 }
             }
             else if( object instanceof WMLKey ) {
-                if( currentTag != null ) {
+                if( currentTag != null && currentTagName != null ) {
                     WMLKey key = ( WMLKey ) object;
                     String keyName = key.getName( );
 
@@ -162,11 +169,11 @@ public class SimpleWMLParser
                     }
                     else if( keyName.equals( "name" ) ) {
                         if( currentTagName.equals( "set_variable" )
-                                || currentTagName.equals( "set_variables" ) ) {
+                            || currentTagName.equals( "set_variables" ) ) {
                             handleSetVariable( object );
                         }
                         else if( currentTagName.equals( "clear_variable" )
-                                || currentTagName.equals( "clear_variables" ) ) {
+                            || currentTagName.equals( "clear_variables" ) ) {
                             handleUnsetVariable( object );
                         }
                         else if( currentTagName.equals( "event" ) ) {
@@ -205,6 +212,58 @@ public class SimpleWMLParser
 
                 config_.getWMLTags( ).putAll( luaParser.getTags( ) );
             }
+            else if( object instanceof WMLMacroDefine ) {
+                addNewDefine( ( WMLMacroDefine ) object, textdomain );
+            }
+            else if( object instanceof WMLTextdomain ) {
+                textdomain = ( ( WMLTextdomain ) object ).getName( );
+                if( textdomain == null ) {
+                    textdomain = "";
+                }
+            }
+        }
+    }
+
+    /**
+     * Creates a new define from a macro define
+     * 
+     * @param object
+     */
+    private void addNewDefine( WMLMacroDefine object, String textdomain )
+    {
+        ICompositeNode node = NodeModelUtils.getNode( object );
+        if( node == null ) {
+            return;
+        }
+
+        try {
+            String defineHeader = object.getName( ).replaceAll( "\\r|\\n|\\t", "" );
+            int firstSpaceIndex = defineHeader.indexOf( ' ' ) + 1;
+            int defineNameEndIndex = defineHeader.indexOf( ' ', firstSpaceIndex + 1 );
+
+            String name = defineHeader.substring( firstSpaceIndex, defineNameEndIndex );
+
+            int linenum = node.getTotalStartLine( );
+            String location = currentFileLocation_;
+
+            String[] splittedArgs = defineHeader.substring( defineNameEndIndex + 1 ).split( " " );
+            List< String > args = new ArrayList< String >( );
+            for( String arg: splittedArgs ) {
+                args.add( arg );
+            }
+
+            StringBuffer value = new StringBuffer( );
+            for( WMLValuedExpression expression: object.getExpressions( ) ) {
+                ICompositeNode expressionNode = NodeModelUtils.getNode( expression );
+                if( expressionNode != null ) {
+                    value.append( expressionNode.getText( ) );
+                }
+            }
+
+            Define define = new Define( name, value.toString( ), textdomain, linenum, location, args );
+            defines_.put( name, define );
+        } catch( Exception e ) {
+            // some formatting exceptions. We don't care 'bout em.
         }
     }
 
@@ -228,19 +287,19 @@ public class SimpleWMLParser
         for( WMLKey key: currentTag.getWMLKeys( ) ) {
             String keyName = key.getName( );
             if( keyName.equals( "name" ) ) {
-                defineName = key.getValue( );
+                defineName = getUnquotedString( key.getValue( ) );
             }
             else if( keyName.equals( "value" ) ) {
-                value = key.getValue( );
+                value = getUnquotedString( key.getValue( ) );
             }
             else if( keyName.equals( "textdomain" ) ) {
-                textdomain = key.getValue( );
+                textdomain = getUnquotedString( key.getValue( ) );
             }
             else if( keyName.equals( "linenum" ) ) {
-                linenum = Integer.valueOf( key.getValue( ) );
+                linenum = Integer.valueOf( getUnquotedString( key.getValue( ) ) );
             }
             else if( keyName.equals( "location" ) ) {
-                location = key.getValue( );
+                location = getUnquotedString( key.getValue( ) );
             }
         }
 
@@ -248,13 +307,28 @@ public class SimpleWMLParser
         for( WMLTag arg: currentTag.getWMLTags( ) ) {
             for( WMLKey key: arg.getWMLKeys( ) ) {
                 if( key.getName( ).equals( "name" ) ) {
-                    args.add( key.getValue( ) );
+                    args.add( getUnquotedString( key.getValue( ) ) );
                 }
             }
         }
 
         defines_.put( defineName, new Define( defineName, value, textdomain,
             linenum, location, args ) );
+    }
+
+    private static String getUnquotedString( String str )
+    {
+        int startIndex = 0;
+        int endIndex = str.length( );
+
+        if( str.charAt( 0 ) == '"' ) {
+            startIndex = 1;
+        }
+        if( str.charAt( endIndex - 1 ) == '"' ) {
+            endIndex--;
+        }
+
+        return str.substring( startIndex, endIndex );
     }
 
     private String getVariableNameByContext( EObject context )
@@ -288,7 +362,7 @@ public class SimpleWMLParser
         if( variableName == null ) {
             Logger.getInstance( ).logWarn(
                 "setVariable: couldn't get variable name from context:"
-                        + context );
+                    + context );
         }
 
         WMLVariable variable = projectCache_.getVariables( ).get( variableName );
@@ -318,7 +392,7 @@ public class SimpleWMLParser
         if( variableName == null ) {
             Logger.getInstance( ).logWarn(
                 "unsetVariable: couldn't get variable name from context:"
-                        + context );
+                    + context );
         }
 
         WMLVariable variable = projectCache_.getVariables( ).get( variableName );

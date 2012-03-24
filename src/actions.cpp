@@ -1041,6 +1041,8 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 	chance_to_hit(0),
 	damage(0),
 	slow_damage(0),
+	drain_percent(0),
+	drain_constant(0),
 	num_blows(0),
 	swarm_min(0),
 	swarm_max(0),
@@ -1125,12 +1127,27 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 		// Resistance modifier.
 		damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc);
 
-		// Compute both the normal and slowed damage. For the record,
-		// drain = normal damage / 2 and slow_drain = slow_damage / 2.
+		// Compute both the normal and slowed damage.
 		damage = round_damage(base_damage, damage_multiplier, 10000);
 		slow_damage = round_damage(base_damage, damage_multiplier, 20000);
 		if (is_slowed)
 			damage = slow_damage;
+
+		// Compute drain amounts only if draining is possible.
+		if(drains) {
+			unit_ability_list drain_specials = weapon->get_specials("drains");
+
+			// Compute the drain percent (with 50% as the base for backward compatibility)
+			unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
+			drain_percent = drain_percent_effects.get_composite_value();
+		}
+
+		// Add heal_on_hit (the drain constant)
+		unit_ability_list heal_on_hit_specials = weapon->get_specials("heal_on_hit");
+		unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos);
+		drain_constant += heal_on_hit_effects.get_composite_value();
+
+		drains = drain_constant || drain_percent;
 
 		// Compute the number of blows and handle swarm.
 		unit_ability_list swarm_specials = weapon->get_specials("swarm");
@@ -1180,6 +1197,8 @@ void battle_context_unit_stats::dump() const
 	printf("chance_to_hit:	%d\n", chance_to_hit);
 	printf("damage:		%d\n", damage);
 	printf("slow_damage:	%d\n", slow_damage);
+	printf("drain_percent:	%d\n", drain_percent);
+	printf("drain_constant:	%d\n", drain_constant);
 	printf("num_blows:	%d\n", num_blows);
 	printf("swarm_min:	%d\n", swarm_min);
 	printf("swarm_max:	%d\n", swarm_max);
@@ -1230,11 +1249,16 @@ class attack
 		std::string dump();
 	};
 
+	void unit_killed(unit_info &, unit_info &,
+		const battle_context_unit_stats *&, const battle_context_unit_stats *&,
+		bool);
+
 	battle_context *bc_;
 	const battle_context_unit_stats *a_stats_;
 	const battle_context_unit_stats *d_stats_;
 
 	int abs_n_attack_, abs_n_defend_;
+	// update_att_fog_ is not used, other than making some code simpler.
 	bool update_att_fog_, update_def_fog_, update_minimap_;
 
 	unit_info a_, d_;
@@ -1270,7 +1294,6 @@ void attack::fire_event(const std::string& n)
 		return;
 	}
 	const int defender_side = d_.get_unit().side();
-	const int attacker_side = a_.get_unit().side();
 	game_events::fire(n, game_events::entity_location(a_.loc_, a_.id_),
 		game_events::entity_location(d_.loc_, d_.id_), ev_data);
 
@@ -1279,7 +1302,6 @@ void attack::fire_event(const std::string& n)
 	refresh_bc();
 	if(!a_.valid() || !d_.valid() || !(*resources::teams)[a_.get_unit().side() - 1].is_enemy(d_.get_unit().side())) {
 		if (update_display_){
-			recalculate_fog(attacker_side);
 			recalculate_fog(defender_side);
 			resources::screen->recalculate_minimap();
 			resources::screen->draw(true, true);
@@ -1481,6 +1503,17 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 		}
 	}
 
+	int damage_done = std::min<int>(defender.get_unit().hitpoints(), attacker.damage_);
+
+	int drains_damage = 0;
+	if (hits && attacker_stats->drains) {
+		drains_damage = damage_done * attacker_stats->drain_percent / 100 + attacker_stats->drain_constant;
+		// don't drain so much that the attacker gets more than his maximum hitpoints
+		drains_damage = std::min<int>(drains_damage, attacker.get_unit().max_hitpoints() - attacker.get_unit().hitpoints());
+		// if drain is negative, don't allow drain to kill the attacker
+		drains_damage = std::max<int>(drains_damage, 1 - attacker.get_unit().hitpoints());
+	}
+
 	if (update_display_)
 	{
 		std::ostringstream float_text;
@@ -1505,18 +1538,9 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 
 		unit_display::unit_attack(attacker.loc_, defender.loc_, damage,
 			*attacker_stats->weapon, defender_stats->weapon,
-			abs_n, float_text.str(), attacker_stats->drains, "");
+			abs_n, float_text.str(), drains_damage, "");
 	}
 
-	int drains_damage = 0;
-	if (attacker_stats->drains) {
-		// don't drain so much that the attacker gets more than his maximum hitpoints
-		drains_damage = std::min<int>(damage / 2, attacker.get_unit().max_hitpoints() - attacker.get_unit().hitpoints());
-		// don't drain more than the defenders remaining hitpoints
-		drains_damage = std::min<int>(drains_damage, defender.get_unit().hitpoints() / 2);
-	}
-
-	int damage_done = std::min<int>(defender.get_unit().hitpoints(), attacker.damage_);
 	bool dies = defender.get_unit().take_hit(damage);
 	LOG_NG << "defender took " << damage << (dies ? " and died\n" : "\n");
 	if (attacker_turn) {
@@ -1581,98 +1605,23 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	}
 	refresh_bc();
 
+	bool attacker_dies = false;
 	if (drains_damage > 0) {
 		attacker.get_unit().heal(drains_damage);
+	} else if(drains_damage < 0) {
+		attacker_dies = attacker.get_unit().take_hit(-drains_damage);
 	}
 
-	if (dies)
-	{
-		attacker.xp_ = game_config::kill_xp(defender.get_unit().level());
-		defender.xp_ = 0;
-		resources::screen->invalidate(attacker.loc_);
-
-		game_events::entity_location death_loc(defender.loc_, defender.id_);
-		game_events::entity_location attacker_loc(attacker.loc_, attacker.id_);
-		std::string undead_variation = defender.get_unit().undead_variation();
-		fire_event("attack_end");
-		refresh_bc();
-
-		// get weapon info for last_breath and die events
-		config dat;
-		config a_weapon_cfg = attacker_stats->weapon && attacker.valid() ?
-			attacker_stats->weapon->get_cfg() : config();
-		config d_weapon_cfg = defender_stats->weapon && defender.valid() ?
-			defender_stats->weapon->get_cfg() : config();
-		if (a_weapon_cfg["name"].empty())
-			a_weapon_cfg["name"] = "none";
-		if (d_weapon_cfg["name"].empty())
-			d_weapon_cfg["name"] = "none";
-		dat.add_child("first",  d_weapon_cfg);
-		dat.add_child("second", a_weapon_cfg);
-
-		game_events::fire("last breath", death_loc, attacker_loc, dat);
-		refresh_bc();
-
-		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
-			// WML has invalidated the dying unit, abort
-			return false;
-		}
-
-		if (!attacker.valid()) {
-			unit_display::unit_die(defender.loc_, defender.get_unit(),
-				NULL, defender_stats->weapon);
-		} else {
-			unit_display::unit_die(defender.loc_, defender.get_unit(),
-				attacker_stats->weapon, defender_stats->weapon,
-				attacker.loc_, &attacker.get_unit());
-		}
-
-		game_events::fire("die", death_loc, attacker_loc, dat);
-		refresh_bc();
-
-		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
-			// WML has invalidated the dying unit, abort
-			return false;
-		}
-
-		units_.erase(defender.loc_);
-
-		if (attacker.valid() && attacker_stats->plagues)
-		{
-			// plague units make new units on the target hex
-			LOG_NG << "trying to reanimate " << attacker_stats->plague_type << '\n';
-			const unit_type *reanimator =
-				unit_types.find(attacker_stats->plague_type);
-			if (reanimator)
-			{
-				LOG_NG << "found unit type:" << reanimator->id() << '\n';
-				unit newunit(reanimator, attacker.get_unit().side(),
-					true, unit_race::MALE);
-				newunit.set_attacks(0);
-				newunit.set_movement(0);
-				// Apply variation
-				if (undead_variation != "null")
-				{
-					config mod;
-					config &variation = mod.add_child("effect");
-					variation["apply_to"] = "variation";
-					variation["name"] = undead_variation;
-					newunit.add_modification("variation",mod);
-					newunit.heal_all();
-				}
-				units_.add(death_loc, newunit);
-				preferences::encountered_units().insert(newunit.type_id());
-				if (update_display_) {
-					resources::screen->invalidate(death_loc);
-				}
-			}
-		}
-		else
-		{
-			LOG_NG << "unit not reanimated\n";
-		}
-
+	if (dies) {
+		unit_killed(attacker, defender, attacker_stats, defender_stats, false);
 		update_fog = true;
+	}
+	if (attacker_dies) {
+		unit_killed(defender, attacker, defender_stats, attacker_stats, true);
+		*(attacker_turn ? &update_att_fog_ : &update_def_fog_) = true;
+	}
+
+	if(dies) {
 		update_minimap_ = true;
 		return false;
 	}
@@ -1703,8 +1652,104 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 		}
 	}
 
+	// Delay until here so that poison and slow go through
+	if(attacker_dies) {
+		update_minimap_ = true;
+		return false;
+	}
+
 	--attacker.n_attacks_;
 	return true;
+}
+
+void attack::unit_killed(unit_info& attacker, unit_info& defender,
+	const battle_context_unit_stats *&attacker_stats, const battle_context_unit_stats *&defender_stats,
+	bool drain_killed)
+{
+	attacker.xp_ = game_config::kill_xp(defender.get_unit().level());
+	defender.xp_ = 0;
+	resources::screen->invalidate(attacker.loc_);
+
+	game_events::entity_location death_loc(defender.loc_, defender.id_);
+	game_events::entity_location attacker_loc(attacker.loc_, attacker.id_);
+	std::string undead_variation = defender.get_unit().undead_variation();
+	fire_event("attack_end");
+	refresh_bc();
+
+	// get weapon info for last_breath and die events
+	config dat;
+	config a_weapon_cfg = attacker_stats->weapon && attacker.valid() ?
+		attacker_stats->weapon->get_cfg() : config();
+	config d_weapon_cfg = defender_stats->weapon && defender.valid() ?
+		defender_stats->weapon->get_cfg() : config();
+	if (a_weapon_cfg["name"].empty())
+		a_weapon_cfg["name"] = "none";
+	if (d_weapon_cfg["name"].empty())
+		d_weapon_cfg["name"] = "none";
+	dat.add_child("first",  d_weapon_cfg);
+	dat.add_child("second", a_weapon_cfg);
+
+	game_events::fire("last breath", death_loc, attacker_loc, dat);
+	refresh_bc();
+
+	if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
+		// WML has invalidated the dying unit, abort
+		return;
+	}
+
+	if (!attacker.valid()) {
+		unit_display::unit_die(defender.loc_, defender.get_unit(),
+			NULL, defender_stats->weapon);
+	} else {
+		unit_display::unit_die(defender.loc_, defender.get_unit(),
+			attacker_stats->weapon, defender_stats->weapon,
+			attacker.loc_, &attacker.get_unit());
+	}
+
+	game_events::fire("die", death_loc, attacker_loc, dat);
+	refresh_bc();
+
+	if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
+		// WML has invalidated the dying unit, abort
+		return;
+	}
+
+	units_.erase(defender.loc_);
+
+	if (attacker.valid() && attacker_stats->plagues && !drain_killed)
+	{
+		// plague units make new units on the target hex
+		LOG_NG << "trying to reanimate " << attacker_stats->plague_type << '\n';
+		const unit_type *reanimator =
+			unit_types.find(attacker_stats->plague_type);
+		if (reanimator)
+		{
+			LOG_NG << "found unit type:" << reanimator->id() << '\n';
+			unit newunit(reanimator, attacker.get_unit().side(),
+				true, unit_race::MALE);
+			newunit.set_attacks(0);
+			newunit.set_movement(0);
+			// Apply variation
+			if (undead_variation != "null")
+			{
+				config mod;
+				config &variation = mod.add_child("effect");
+				variation["apply_to"] = "variation";
+				variation["name"] = undead_variation;
+				newunit.add_modification("variation",mod);
+				newunit.heal_all();
+			}
+			units_.add(death_loc, newunit);
+			preferences::encountered_units().insert(newunit.type_id());
+			if (update_display_) {
+				resources::screen->invalidate(death_loc);
+			}
+		}
+	}
+	else
+	{
+		LOG_NG << "unit not reanimated\n";
+	}
 }
 
 void attack::perform()
@@ -1775,7 +1820,6 @@ void attack::perform()
 
 	bool defender_strikes_first = (d_stats_->firststrike && !a_stats_->firststrike);
 	unsigned int rounds = std::max<unsigned int>(a_stats_->rounds, d_stats_->rounds) - 1;
-	const int attacker_side = a_.get_unit().side();
 	const int defender_side = d_.get_unit().side();
 
 	LOG_NG << "Fight: (" << a_.loc_ << ") vs (" << d_.loc_ << ") ATT: " << a_stats_->weapon->name() << " " << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-" << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)" << (defender_strikes_first ? " defender first-strike" : "") << "\n";
@@ -1817,14 +1861,6 @@ void attack::perform()
 	}
 
 	// TODO: if we knew the viewing team, we could skip some of these display update
-	if (update_att_fog_ && (*resources::teams)[attacker_side - 1].uses_fog())
-	{
-		recalculate_fog(attacker_side);
-		if (update_display_) {
-			resources::screen->invalidate_all();
-			resources::screen->recalculate_minimap();
-		}
-	}
 	if (update_def_fog_ && (*resources::teams)[defender_side - 1].uses_fog())
 	{
 		recalculate_fog(defender_side);
@@ -2253,27 +2289,25 @@ namespace {
 				const bool res = tm.clear_shroud(adj[i]) | tm.clear_fog(adj[i]);
 
 				if(res) {
-					if(res) {
-						result = true;
-						// If we're near the corner it might be the corner also needs to be cleared
-						// this always happens at the lower left corner and depending on the with
-						// at the upper or lower right corner.
-						if(adj[i].x == 0 && adj[i].y == map.h() - 1) { // Lower left corner
-							const map_location corner(-1 , map.h());
-							tm.clear_shroud(corner);
-							tm.clear_fog(corner);
-						} else if(map.w() % 2 && adj[i].x == map.w() - 1 && adj[i].y == map.h() - 1) { // Lower right corner
-							const map_location corner(map.w() , map.h());
-							tm.clear_shroud(corner);
-							tm.clear_fog(corner);
-						} else if(!(map.w() % 2) && adj[i].x == map.w() - 1 && adj[i].y == 0) { // Upper right corner
-							const map_location corner(map.w() , -1);
-							tm.clear_shroud(corner);
-							tm.clear_fog(corner);
-						}
-						if(cleared) {
-							cleared->push_back(adj[i]);
-						}
+					result = true;
+					// If we're near the corner it might be the corner also needs to be cleared
+					// this always happens at the lower left corner and depending on the with
+					// at the upper or lower right corner.
+					if(adj[i].x == 0 && adj[i].y == map.h() - 1) { // Lower left corner
+						const map_location corner(-1 , map.h());
+						tm.clear_shroud(corner);
+						tm.clear_fog(corner);
+					} else if(map.w() % 2 && adj[i].x == map.w() - 1 && adj[i].y == map.h() - 1) { // Lower right corner
+						const map_location corner(map.w() , map.h());
+						tm.clear_shroud(corner);
+						tm.clear_fog(corner);
+					} else if(!(map.w() % 2) && adj[i].x == map.w() - 1 && adj[i].y == 0) { // Upper right corner
+						const map_location corner(map.w() , -1);
+						tm.clear_shroud(corner);
+						tm.clear_fog(corner);
+					}
+					if(cleared) {
+						cleared->push_back(adj[i]);
 					}
 				}
 			}
@@ -2300,7 +2334,7 @@ namespace {
 			return false;
 		}
 
-		pathfind::paths p(*resources::game_map, *resources::units, loc, *resources::teams, true, false, tm, 0, false, true);
+		pathfind::paths p(*resources::game_map, *resources::units, *u, *resources::teams, true, false, tm, 0, false, true);
 		foreach (const pathfind::paths::step &dest, p.destinations) {
 			clear_shroud_loc(tm, dest.curr, &cleared_locations);
 		}
@@ -2335,6 +2369,16 @@ namespace {
 
 }
 
+/**
+ * Function that recalculates the fog of war.
+ *
+ * This is used at the end of a turn and for the defender at the end of
+ * combat. As a back-up, it is also called when clearing shroud at the
+ * beginning of a turn.
+ * This function does nothing if the indicated side does not use fog.
+ *
+ * @param[in] side The side whose fog will be recalculated.
+ */
 void recalculate_fog(int side)
 {
 	team &tm = (*resources::teams)[side - 1];
@@ -2358,7 +2402,18 @@ void recalculate_fog(int side)
 	game_events::pump();
 }
 
-bool clear_shroud(int side)
+/**
+ * Function that will clear shroud (and fog) based on current unit positions.
+ *
+ * This will not re-fog hexes unless reset_fog is set to true.
+ * This function will do nothing if the side uses neither shroud nor fog.
+ *
+ * @param[in] side	The side whose shroud (and fog) will be cleared.
+ * @param[in] reset_fog	If set to true, the fog will also be recalculated
+ *			(refogging hexes that can no longer be seen).
+ * @returns true if some shroud/fog is actually cleared away.
+ */
+bool clear_shroud(int side, bool reset_fog)
 {
 	team &tm = (*resources::teams)[side - 1];
 	if (!tm.uses_shroud() && !tm.uses_fog())
@@ -2379,7 +2434,7 @@ bool clear_shroud(int side)
 	// don't want to pump it here
 	game_events::pump();
 
-	if (tm.uses_fog()) {
+	if ( reset_fog ) {
 		recalculate_fog(side);
 	}
 

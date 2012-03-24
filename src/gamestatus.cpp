@@ -407,7 +407,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	//foreach (const config &p, cfg_save.child_range("player"))
 	//{
-	//	if (utils::string_bool(p["canrecruit"], false)) {
+	//	if (p["canrecruit"].to_bool(false))) {
 	//		leader = p["save_id"];
 	//	}
 	//}

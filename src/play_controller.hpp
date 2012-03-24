@@ -171,7 +171,6 @@ protected:
 	void place_sides_in_preferred_locations();
 	virtual void finish_side_turn();
 	void finish_turn();
-	bool clear_shroud();
 	bool enemies_visible() const;
 
 	void enter_textbox();

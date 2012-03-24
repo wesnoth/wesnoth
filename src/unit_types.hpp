@@ -175,6 +175,7 @@ public:
 	 * @note @a cfg is not copied, so it has to point to some permanent
 	 *       storage, that is, a child of unit_type_data::unit_cfg.
 	 */
+	unit_type();
 	unit_type(config &cfg);
 	unit_type(const unit_type& o);
 
@@ -279,7 +280,7 @@ public:
 
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 
-	const std::string& race() const { return race_->id(); }
+	const std::string race() const { return cfg_["race"]; } //race_->id(); }
 	bool hide_help() const;
 
     enum BUILD_STATUS {NOT_BUILT, CREATED, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};

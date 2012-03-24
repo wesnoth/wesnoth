@@ -43,6 +43,7 @@ extern const std::string unicode_en_dash;
 extern const std::string unicode_em_dash;
 extern const std::string unicode_figure_dash;
 extern const std::string unicode_multiplication_sign;
+extern const std::string unicode_bullet;
 
 bool isnewline(const char c);
 bool portable_isspace(const char c);
@@ -78,6 +79,12 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 	const char separator = 0 , std::string const &left="(",
 	std::string const &right=")",int flags = REMOVE_EMPTY | STRIP_SPACES);
 
+/**
+ * Generates a new string joining container items in a list.
+ *
+ * @param v A container with elements.
+ * @param s List delimiter.
+ */
 template <typename T>
 std::string join(T const &v, const std::string& s = ",")
 {
@@ -89,6 +96,32 @@ std::string join(T const &v, const std::string& s = ",")
         }
 
         return str.str();
+}
+
+/**
+ * Generates a new string containing a bullet list.
+ *
+ * List items are preceded by the indentation blanks, a bullet string and
+ * another blank; all but the last item are followed by a newline.
+ *
+ * @param v A container with elements.
+ * @param indent Number of indentation blanks.
+ * @param bullet The leading bullet string.
+ */
+template<typename T>
+std::string bullet_list(const T& v, size_t indent = 4, const std::string& bullet = unicode_bullet)
+{
+	std::ostringstream str;
+
+	for(typename T::const_iterator i = v.begin(); i != v.end(); ++i) {
+		if(i != v.begin()) {
+			str << '\n';
+		}
+
+		str << std::string(indent, ' ') << bullet << ' ' << *i;
+	}
+
+	return str.str();
 }
 
 /**

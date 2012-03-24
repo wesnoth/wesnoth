@@ -12,6 +12,7 @@ import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -149,8 +150,7 @@ public class ProjectCache implements Serializable
      */
     public void loadCache( )
     {
-        ResourceUtils
-            .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
+        ResourceUtils.createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
 
         FileInputStream inputStream = null;
         ObjectInputStream deserializer = null;
@@ -203,40 +203,66 @@ public class ProjectCache implements Serializable
      * Saves:
      * - properties
      * - existing scenarios
+     * - the defines
      * 
      * @return True if the cache was sucessfully saved, false otherwise.
      */
     public boolean saveCache( )
     {
-        ResourceUtils
-            .createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
+        return serializeCacheToFile( ) && saveDefines( );
+    }
 
-        FileOutputStream outputStream = null;
-        ObjectOutputStream serializer = null;
+    /**
+     * Saves th defines in the defines file for the project
+     * 
+     * @return
+     */
+    private boolean saveDefines( )
+    {
         try {
-            outputStream = new FileOutputStream( wesnothFile_ );
-            serializer = new ObjectOutputStream( outputStream );
-            serializer.writeObject( this );
+            if( ! definesFile_.exists( ) ) {
+                definesFile_.createNewFile( );
+            }
 
-            serializer.close( );
+            FileWriter writer = new FileWriter( definesFile_ );
 
-            outputStream.close( );
+            try {
+                for( Define define: defines_.values( ) ) {
+                    writer.write( define.toString( ) );
+                    writer.write( "\n" );
+                }
+            } finally {
+                writer.close( );
+            }
+        } catch( Exception e ) {
+            Logger.getInstance( ).logException( e );
+        }
+        return false;
+    }
+
+    /**
+     * Serializes the current ProjectCache instance to the file
+     * 
+     * @return
+     */
+    private boolean serializeCacheToFile( )
+    {
+        ResourceUtils.createWesnothFile( wesnothFile_.getAbsolutePath( ), false );
+
+        try {
+            FileOutputStream outputStream = new FileOutputStream( wesnothFile_ );
+            ObjectOutputStream serializer = new ObjectOutputStream( outputStream );
+            try {
+                serializer.writeObject( this );
+            } finally {
+                serializer.close( );
+                outputStream.close( );
+            }
+
             return true;
         } catch( Exception e ) {
             Logger.getInstance( ).logException( e );
             return false;
-        } finally {
-            try {
-                if( serializer != null ) {
-                    serializer.close( );
-                }
-
-                if( outputStream != null ) {
-                    outputStream.close( );
-                }
-            } catch( IOException e ) {
-                Logger.getInstance( ).logException( e );
-            }
         }
     }
 
@@ -257,7 +283,7 @@ public class ProjectCache implements Serializable
             return;
         }
 
-        defines_ = Define.readDefines( definesFile_.getAbsolutePath( ) );
+        defines_.putAll( Define.readDefines( definesFile_.getAbsolutePath( ) ) );
         definesTimestamp_ = definesFile_.lastModified( );
     }
 

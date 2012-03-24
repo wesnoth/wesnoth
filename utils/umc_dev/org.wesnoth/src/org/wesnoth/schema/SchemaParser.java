@@ -108,8 +108,7 @@ public class SchemaParser
     public void parseSchemaFile( boolean force, String schemaPath )
     {
         if( parsingDone_ && ! force ) {
-            Logger.getInstance( ).log(
-                "schema not parsed since there is already in cache." ); //$NON-NLS-1$
+            Logger.getInstance( ).log( "schema not parsed since there is already in cache." ); //$NON-NLS-1$
             return;
         }
 

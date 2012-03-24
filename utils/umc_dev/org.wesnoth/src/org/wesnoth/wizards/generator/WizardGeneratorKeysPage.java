@@ -122,8 +122,7 @@ public class WizardGeneratorKeysPage extends WizardPageTemplate
                             return;
                         }
 
-                        if( ( txt.getText( ).isEmpty( ) && ( txt.getData(
-                            "card" ).toString( ).equals( "1" ) ) ) || // cardinality //$NON-NLS-1$ //$NON-NLS-2$
+                        if( ( txt.getText( ).isEmpty( ) && ( txt.getData( "card" ).toString( ).equals( "1" ) ) ) || // cardinality //$NON-NLS-1$ //$NON-NLS-2$
                             ! txt.getText( ).matches(
                                 txt.getData( "valType" ).toString( ) ) // regex //$NON-NLS-1$
                         ) {

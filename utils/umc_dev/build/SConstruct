@@ -23,7 +23,9 @@ opts.AddVariables(
     PathVariable( "updatesdir", "The directory that should contain the updates for the plugin",
                 os.getcwd() , PathVariable.PathAccept ),
     PathVariable( "binariesdir", "The directory that should contain the binaries for the plugin",
-                os.getcwd() , PathVariable.PathAccept )
+                os.getcwd() , PathVariable.PathAccept ),
+    PathVariable( "storepass", "The store pass for signing the jars", "", PathVariable.PathAccept ),
+    PathVariable( "keypass", "The key pass for signing the jars", "", PathVariable.PathAccept )
 )
 env = Environment( options = opts )
 opts.Save( '.scons-option-cache', env )
@@ -32,6 +34,16 @@ eclipse_dir = env[ "eclipsedir" ]
 updates_dir = env[ "updatesdir" ]
 binaries_dir = env[ "binariesdir" ]
 
+store_pass = env["storepass"]
+if len(store_pass) == 0:
+   print "Please specify the 'storepass' variable"
+   Return()
+
+key_pass = env["keypass"]
+if len(key_pass) == 0:
+   print "Please specify the 'keypass' variable"
+   Return()
+
 temp_build_dir = os.environ[ "TMP" ] + "/umcdev_build"
 
 print "Clearing temporary build dir ( " + temp_build_dir + " ) ..."
@@ -39,6 +51,9 @@ if os.path.exists( temp_build_dir ):
     shutil.rmtree( temp_build_dir )
 
 os.makedirs( temp_build_dir )
+
+# copy the keystore to target
+shutil.copyfile( 'keystore', temp_build_dir + '/keystore' )
 
 # now, we need to find 2 things:
 # 1) file: org.eclipse.equinox.launcher_*.jar
@@ -79,6 +94,8 @@ subprocess.call( [
     "-Ddeltapack=" + eclipse_dir,
     "-Declipse.pdebuild.scripts=" + pde_build_dir + "/scripts",
     "-Declipse.pdebuild.templates=" + pde_build_dir + "/templates",
+	"-DstorePass=" + store_pass,
+	"-DkeyPass=" + key_pass,
     "-buildfile", "build.xml" ] )
 
 # Some cleanup

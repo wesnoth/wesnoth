@@ -19,11 +19,12 @@
 
 namespace editor {
 
-editor_display::editor_display(CVideo& video, const editor_map& map,
+editor_display::editor_display(CVideo& video, const editor_map* map,
 		const config& theme_cfg, const config& level)
-	: display(video, &map, theme_cfg, level)
+	: display(video, map, theme_cfg, level)
 	, brush_locations_()
 	, toolbar_hint_()
+	, terrain_report_()
 {
 	clear_screen();
 }
@@ -112,6 +113,8 @@ void editor_display::draw_sidebar()
 	refresh_report("villages", element);
 	text = toolbar_hint_;
 	refresh_report("editor_tool_hint", element);
+
+	refresh_report("terrain_image", terrain_report_);
 }
 
 } //end namespace editor

@@ -540,7 +540,7 @@ void play_controller::init_gui(){
 	gui_->update_tod();
 
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		::clear_shroud(t - teams_.begin() + 1);
+		clear_shroud(t - teams_.begin() + 1, true);
 	}
 }
 
@@ -646,7 +646,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
 	if (!recorder.is_skipping()){
-		::clear_shroud(team_index + 1);
+		clear_shroud(team_index + 1, true);
 		gui_->invalidate_all();
 	}
 
@@ -1061,7 +1061,7 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 				// if it's not the unit's turn, we reset its moves
 				unit_movement_resetter move_reset(*u, u->side() != player_number_);
 
-				mouse_handler_.set_current_paths(pathfind::paths(map_, units_, u->get_location(),
+				mouse_handler_.set_current_paths(pathfind::paths(map_, units_, *u,
 				                       teams_,false,true, teams_[gui_->viewing_team()],
 				                       mouse_handler_.get_path_turns()));
 

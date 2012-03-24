@@ -43,14 +43,14 @@ tokenizer::tokenizer(std::istream& in) :
 		}
 		char_types_[c] = t;
 	}
-	in_.exceptions(std::ios_base::badbit);
+	in_.stream().exceptions(std::ios_base::badbit);
 	next_char_fast();
 }
 
 tokenizer::~tokenizer()
 {
-	in_.clear(std::ios_base::goodbit);
-	in_.exceptions(std::ios_base::goodbit);
+	in_.stream().clear(std::ios_base::goodbit);
+	in_.stream().exceptions(std::ios_base::goodbit);
 }
 
 const token &tokenizer::next_token()

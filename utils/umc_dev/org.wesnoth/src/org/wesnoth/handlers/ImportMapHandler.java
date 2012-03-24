@@ -29,8 +29,7 @@ public class ImportMapHandler extends AbstractHandler
     {
         IFolder selectedFolder = WorkspaceUtils.getSelectedFolder( );
         if( selectedFolder == null ) {
-            Logger.getInstance( ).log(
-                "no directory selected (importMapHandler)", //$NON-NLS-1$
+            Logger.getInstance( ).log( "no directory selected (importMapHandler)", //$NON-NLS-1$
                 Messages.ImportMapHandler_1 );
             return null;
         }

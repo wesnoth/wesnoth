@@ -18,6 +18,7 @@
 
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
+#include "addon/state.hpp"
 #include "dialogs.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
@@ -29,11 +30,16 @@
 #include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
+#include "help.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
+
+#include <boost/scoped_ptr.hpp>
+
 #include "addon/client.hpp"
 
 static lg::log_domain log_config("config");
@@ -54,31 +60,46 @@ static lg::log_domain log_addons_client("addons-client");
 
 namespace {
 
-/** Defines various add-on installation statuses. */
-enum ADDON_STATUS {
-	/** Add-on is not installed. */
-	ADDON_NONE,
-	/** Version in the server matches local installation. */
-	ADDON_INSTALLED,
-	/** Version in the server is newer than local installation. */
-	ADDON_INSTALLED_UPGRADABLE,
-	/** Version in the server is older than local installation. */
-	ADDON_INSTALLED_OUTDATED,
-	/** Dependencies not satisfied.
-	 *  @todo This option isn't currently implemented! */
-	ADDON_INSTALLED_BROKEN,
-	/** No tracking information available. */
-	ADDON_NOT_TRACKED
+enum VIEW_MODE
+{
+	VIEW_ALL,
+	VIEW_UPGRADABLE,
+	VIEW_NOT_INSTALLED,
+	VIEW_MODE_COUNT
 };
 
-/** Stores additional status information about add-ons. */
-struct addon_tracking_info
+std::string view_mode_display_label(VIEW_MODE m)
 {
-	ADDON_STATUS state;
-	bool can_publish;
-	bool in_version_control;
-	version_info installed_version;
-};
+	switch(m) {
+	case VIEW_NOT_INSTALLED:
+		return _("addons_view^Not Installed");
+	case VIEW_UPGRADABLE:
+		return _("addons_view^Upgradable");
+	default:
+		return _("addons_view^All Add-ons");
+	}
+}
+
+VIEW_MODE do_choose_view_mode(CVideo& video, VIEW_MODE initial)
+{
+	gui2::tsimple_item_selector::list_type dlg_items;
+	for(int k = 0; k != VIEW_MODE_COUNT; ++k) {
+		const VIEW_MODE v = VIEW_MODE(k);
+		dlg_items.push_back(view_mode_display_label(v));
+	}
+
+	gui2::tsimple_item_selector dlg(
+		_("View Mode"),
+		_("Choose an add-ons list view mode."),
+		dlg_items);
+
+	dlg.set_selected_index(initial);
+	dlg.show(video);
+
+	const int result = dlg.selected_index();
+
+	return result != -1 ? VIEW_MODE(result) : initial;
+}
 
 inline const addon_info& addon_at(const std::string& id, const addons_list& addons)
 {
@@ -106,6 +127,8 @@ bool get_addons_list(addons_client& client, addons_list& list)
 /** Warns the user about unresolved dependencies and installs them if they choose to do so. */
 bool do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon, bool& wml_changed)
 {
+	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
+
 	// TODO: We don't currently check for the need to upgrade. I'll probably
 	// work on that when implementing dependency tiers later.
 
@@ -124,6 +147,8 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		}
 	}
 
+	cursor_setter.reset();
+
 	if(!broken_deps.empty()) {
 		std::string broken_deps_report;
 
@@ -134,7 +159,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		broken_deps_report += "\n";
 
 		foreach(const std::string& broken_dep_id, broken_deps) {
-			broken_deps_report += "\n" + make_addon_title(broken_dep_id);
+			broken_deps_report += "\n    " + utils::unicode_bullet + " " + make_addon_title(broken_dep_id);
 		}
 
 		if(gui2::show_message(disp.video(), _("Broken Dependencies"), broken_deps_report, gui2::tmessage::yes_no_buttons) != gui2::twindow::OK) {
@@ -158,6 +183,8 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 
 	std::vector<std::string> options(1, header);
 	std::vector<int> sort_sizes;
+
+	cursor_setter.reset(new cursor::setter(cursor::WAIT));
 	
 	foreach(const std::string& dep, missing_deps) {
 		const addon_info& addon = addon_at(dep, addons);
@@ -195,6 +222,8 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 			gui::dialog::max_menu_width, NULL, &addon_style, false);
 		dlg.set_menu(addon_menu);
 
+		cursor_setter.reset();
+
 		if(dlg.show() < 0) {
 			return true;
 		}
@@ -231,7 +260,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		const std::string& failed_deps_report = _n(
 			"The following dependency could not be installed. Do you still wish to continue?",
 			"The following dependencies could not be installed. Do you still wish to continue?",
-			failed_titles.size()) + std::string("\n\n") + utils::join(failed_titles, "\n");
+			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
 
 		return gui2::show_message(disp.video(), _("Dependencies Installation Failed"), failed_deps_report, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK;
 	}
@@ -248,8 +277,7 @@ bool do_check_before_overwriting_addon(CVideo& video, const std::string& addon_i
 
 	utils::string_map symbols;
 	symbols["addon"] = make_addon_title(addon_id); // FIXME: need the real title!
-	const std::string& text = utils::interpolate_variables_into_string(
-		_("You seem to be the author of '$addon|'. Downloading it again from the server will overwrite any changes you have made since the last upload, and it may also delete your pbl file. Do you really wish to continue?"), &symbols);
+	const std::string& text = vgettext("You seem to be the author of '$addon|'. Downloading it again from the server will overwrite any changes you have made since the last upload, and it may also delete your pbl file. Do you really wish to continue?", symbols);
 
 	return gui2::show_message(video, _("Confirm"), text, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK;
 }
@@ -259,8 +287,7 @@ void do_remote_addon_delete(CVideo& video, addons_client& client, const std::str
 {
 	utils::string_map symbols;
 	symbols["addon"] = make_addon_title(addon_id); // FIXME: need the real title!
-	const std::string& text = utils::interpolate_variables_into_string(
-		_("Deleting '$addon|' will permanently erase its download and upload counts on the add-ons server. Do you really wish to continue?"), &symbols);
+	const std::string& text = vgettext("Deleting '$addon|' will permanently erase its download and upload counts on the add-ons server. Do you really wish to continue?", symbols);
 
 	const int res = gui2::show_message(
 		video, _("Confirm"), text, gui2::tmessage::yes_no_buttons);
@@ -300,52 +327,18 @@ void do_remote_addon_publish(CVideo& video, addons_client& client, const std::st
 	}
 }
 
-/**
- * Get information about an (optionally installed) add-on compared against the add-ons server.
- *
- * @param addon The add-ons server entry information.
- * @param t     The local tracking status information.
- */
-void get_addon_tracking_info(const addon_info& addon, addon_tracking_info& t)
-{
-	const std::string& id = addon.id;
-
-	t.can_publish = have_addon_pbl_info(id);
-	t.in_version_control = have_addon_in_vcs_tree(id);
-	t.installed_version = version_info();
-
-	if(is_addon_installed(id)) {
-		try {
-			t.installed_version = get_addon_version_info(id);
-			const version_info& remote_version = addon.version;
-
-			if(remote_version == t.installed_version) {
-				t.state = ADDON_INSTALLED;
-			} else if(remote_version > t.installed_version) {
-				t.state = ADDON_INSTALLED_UPGRADABLE;
-			} else /* if(remote_version < t.installed_version) */ {
-				t.state = ADDON_INSTALLED_OUTDATED;
-			}
-		} catch(version_info::not_sane_exception const&) {
-			LOG_AC << "local add-on " << id << " has invalid or missing version info, skipping from updates check...\n";
-			t.state = ADDON_NOT_TRACKED;
-		}
-	} else {
-		t.state = ADDON_NONE;
-	}
-}
-
 /** GUI1 support class handling the button used to display add-on descriptions. */
 class description_display_action : public gui::dialog_button_action
 {
 	display& disp_;
 	std::vector<std::string> display_ids_;
 	addons_list addons_;
+	std::map<std::string, addon_tracking_info> tracking_;
 	gui::filter_textbox* filter_;
 
 public:
-	description_display_action(display& disp, const std::vector<std::string>& display_ids, const addons_list& addons, gui::filter_textbox* filter)
-		: disp_(disp) , display_ids_(display_ids), addons_(addons), filter_(filter)
+	description_display_action(display& disp, const std::vector<std::string>& display_ids, const addons_list& addons, const std::map<std::string, addon_tracking_info>& tracking, gui::filter_textbox* filter)
+		: disp_(disp) , display_ids_(display_ids), addons_(addons), tracking_(tracking), filter_(filter)
 	{}
 
 	virtual gui::dialog_button_action::RESULT button_pressed(int filter_choice)
@@ -357,16 +350,45 @@ public:
 
 		const size_t choice = static_cast<size_t>(menu_selection);
 		if(choice < display_ids_.size()) {
-			gui2::taddon_description::display(addons_[display_ids_[choice]], disp_.video());
+			const std::string& id = display_ids_[choice];
+			assert(tracking_.find(id) != tracking_.end());
+			gui2::taddon_description::display(addons_[id], tracking_[id], disp_.video());
 		}
 
 		return gui::CONTINUE_DIALOG;
 	}
 };
 
-void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, bool updates_only, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed)
+/** GUI1 support class handling the view mode selection button. */
+class switch_view_mode_action : public gui::dialog_button_action
+{
+	CVideo& video_;
+	VIEW_MODE& view_;
+
+public:
+	switch_view_mode_action(CVideo& video, VIEW_MODE& view)
+		: video_(video), view_(view)
+	{}
+
+	virtual gui::dialog_button_action::RESULT button_pressed(int)
+	{
+		const VIEW_MODE previous_view = view_;
+		view_ = do_choose_view_mode(video_, view_);
+		// Close the manager dialog only if the user picked a new view mode.
+		return previous_view == view_ ? gui::CONTINUE_DIALOG : gui::CLOSE_DIALOG;
+	}
+};
+
+void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, VIEW_MODE& view, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, std::string& filter_text)
 {
 	stay_in_ui = false;
+
+	const VIEW_MODE prev_view = view;
+	assert(prev_view != VIEW_MODE_COUNT);
+
+	const bool updates_only = view == VIEW_UPGRADABLE;
+
+	const bool show_publish_delete = !updates_only;
 
 	// Currently installed add-ons, which we'll need to check when updating.
 	// const std::vector<std::string>& installed_addons_list = installed_addons();
@@ -418,13 +440,17 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	// information.
 	//
 
+	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
+
 	foreach(const addons_list::value_type& entry, addons) {
 		const addon_info& addon = entry.second;
-		get_addon_tracking_info(addon, tracking[addon.id]);
+		tracking[addon.id] = get_addon_tracking_info(addon);
 
-		if(updates_only && tracking[addon.id].state != ADDON_INSTALLED_UPGRADABLE) {
+		const ADDON_STATUS state = tracking[addon.id].state;
+
+		if((view == VIEW_UPGRADABLE && state != ADDON_INSTALLED_UPGRADABLE) ||
+		   (view == VIEW_NOT_INSTALLED && state != ADDON_NONE))
 			continue;
-		}
 
 		option_ids.push_back(addon.id);
 
@@ -432,6 +458,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			can_delete_ids.push_back(addon.id);
 		}
 
+		const std::string& display_sep = sep + get_addon_status_gui1_color_markup(tracking[addon.id]);
 		const std::string& display_size = size_display_string(addon.size);
 		const std::string& display_type = addon.display_type();
 		const std::string& display_down = str_cast(addon.downloads);
@@ -473,30 +500,38 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		}
 
 		// NOTE: NULL_MARKUP used to escape abuse of formatting chars in add-on titles
-		row = IMAGE_PREFIX + display_icon + sep + font::NULL_MARKUP + display_title + sep;
+		row = IMAGE_PREFIX + display_icon + display_sep + font::NULL_MARKUP + display_title + display_sep;
 		if(updates_only) {
-			row += display_old_version + sep;
+			row += display_old_version + display_sep;
 		}
-		row += display_version + sep + display_author + sep;
+		row += display_version + display_sep + display_author + display_sep;
 		if(!updates_only) {
-			row += display_type + sep + display_down + sep;
+			row += display_type + display_sep + display_down + display_sep;
 		}
 		row += display_size;
 
 		options.push_back(row);
 	}
 
-	if(!updates_only) {
+	if(show_publish_delete) {
+		utils::string_map i18n_syms;
+
 		// Enter publish and remote deletion options
 		foreach(const std::string& pub_id, can_publish_ids) {
+			i18n_syms["addon_title"] = make_addon_title(pub_id);
+
 			static const std::string publish_icon = "icons/icon-addon-publish.png";
-			const std::string text = _("Publish add-on: ") + make_addon_title(pub_id);
+			const std::string& text = vgettext("Publish: $addon_title", i18n_syms);
+
 			options.push_back(IMAGE_PREFIX + publish_icon + COLUMN_SEPARATOR + font::GOOD_TEXT + text);
 			filter_options.push_back(text);
 		}
 		foreach(const std::string& del_id, can_delete_ids) {
+			i18n_syms["addon_title"] = make_addon_title(del_id);
+
 			static const std::string delete_icon = "icons/icon-addon-delete.png";
-			const std::string text = _("Delete add-on: ") + make_addon_title(del_id);
+			const std::string& text = vgettext("Delete: $addon_title", i18n_syms);
+
 			options.push_back(IMAGE_PREFIX + delete_icon + COLUMN_SEPARATOR + font::BAD_TEXT + text);
 			filter_options.push_back(text);
 		}
@@ -506,7 +541,12 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		if(!updates_only && can_publish_ids.empty() && can_delete_ids.empty()) {
 			gui2::show_error_message(disp.video(), _("There are no add-ons available for download from this server."));
 		} else if(updates_only) {
-			gui2::show_transient_message(disp.video(), _("Add-ons Manager"), _("All add-ons are up to date."));
+			if(installed_addons().empty()) {
+				gui2::show_transient_message(disp.video(), _("Add-ons Manager"), _("There are no add-ons installed."));
+			} else {
+				gui2::show_transient_message(disp.video(), _("Add-ons Manager"), _("All add-ons are up to date."));
+			}
+			view = VIEW_ALL;
 		}
 
 		return;
@@ -521,9 +561,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		// Set-up the actual GUI1 dialog and its children.
 		//
 
-		const std::string dlg_title(!updates_only ? _("Get Add-ons") : _("Update Add-ons"));
-
-		gui::dialog dlg(disp, dlg_title, "", gui::OK_CANCEL);
+		gui::dialog dlg(disp, _("Add-ons Manager"), "", gui::OK_CANCEL);
 
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_alpha_sort(4);
@@ -542,9 +580,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 		gui::filter_textbox* filter_box = new gui::filter_textbox(disp.video(),
 			_("Filter: "), options, filter_options, 1, dlg, 300);
+		filter_box->set_text(filter_text);
 		dlg.set_textbox(filter_box);
 
-		description_display_action description_helper(disp, option_ids, addons, filter_box);
+		description_display_action description_helper(disp, option_ids, addons, tracking, filter_box);
 		gui::dialog_button* description_button = new gui::dialog_button(disp.video(),
 			_("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
 		dlg.add_button(description_button, gui::dialog::BUTTON_EXTRA);
@@ -556,6 +595,14 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			dlg.add_button(update_all_button, gui::dialog::BUTTON_EXTRA);
 		}
 
+		switch_view_mode_action view_mode_helper(disp.video(), view);
+		gui::dialog_button* view_mode_button = new gui::dialog_button(disp.video(),
+			view_mode_display_label(view), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &view_mode_helper);
+		dlg.add_button(view_mode_button, gui::dialog::BUTTON_EXTRA_LEFT);
+
+		help::help_button* help_button = new help::help_button(disp, "installing_addons");
+		dlg.add_button(help_button, gui::dialog::BUTTON_HELP);
+
 		// Focus the menu on the previous selection.
 		std::vector<std::string>::iterator it = !last_addon_id.empty() ?
 			std::find(option_ids.begin(), option_ids.end(), last_addon_id) :
@@ -565,21 +612,32 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			addons_list_menu->move_selection(std::distance(option_ids.begin(), it));
 		}
 
+		cursor_setter.reset();
+
 		//
 		// Execute the dialog.
 		//
 		result = filter_box->get_index(dlg.show());
+
+		filter_text = filter_box->text();
 	}
 
 	const bool update_everything = updates_only && result == update_all_value;
-	if(result < 0 && !update_everything) {
+	const bool change_view = prev_view != view;
+
+	if(result < 0 && !(update_everything || change_view)) {
 		// User canceled the dialog.
 		return;
 	}
 
 	stay_in_ui = true;
 
-	if(!updates_only) {
+	if(change_view) {
+		// The caller will run this function again.
+		return;
+	}
+
+	if(show_publish_delete) {
 		if(result >= int(option_ids.size() + can_publish_ids.size())) {
 			// Handle remote deletion.
 			const std::string& id = can_delete_ids[result - int(option_ids.size() + can_publish_ids.size())];
@@ -653,21 +711,32 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			"The following add-ons could not be downloaded or installed successfully:",
 			failed_titles.size());
 
-		gui2::show_message(disp.video(), msg_title, msg_text + std::string("\n\n") + utils::join(failed_titles, "\n"), gui2::tmessage::ok_button);
+		gui2::show_message(disp.video(), msg_title, msg_text + std::string("\n\n") + utils::bullet_list(failed_titles), gui2::tmessage::ok_button);
 	}
 }
-} // end anonymous namespace
 
-bool addons_manager_ui(display& disp, const std::string& remote_address, bool show_updates_only)
+bool addons_manager_ui(display& disp, const std::string& remote_address)
 {
+	VIEW_MODE view = VIEW_ALL;
 	bool stay_in_manager_ui = false;
 	bool need_wml_cache_refresh = false;
 	std::string last_addon_id;
+	std::string filter_text;
 
 	preferences::set_campaign_server(remote_address);
 
 	try {
 		do {
+			if(need_wml_cache_refresh) {
+				// The version info cache has gone stale because we installed/upgraded
+				// an add-on in the previous iteration. Normally this cache is refreshed
+				// along with all other caches, but we don't want to do all that here.
+				// Thus, we refresh this specific cache when required, so that add-ons
+				// are properly reported as installed/upgraded before leaving the
+				// manager UI.
+				refresh_addon_version_info_cache();
+			}
+
 			// TODO: don't create a new client instance each time we return to the UI,
 			// but for that we need to make sure any pending network operations are canceled
 			// whenever addons_client throws user_exit even before it gets destroyed
@@ -681,7 +750,12 @@ bool addons_manager_ui(display& disp, const std::string& remote_address, bool sh
 			}
 
 			try {
-				show_addons_manager_dialog(disp, client, addons, show_updates_only, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh);
+				// Don't reconnect when switching between view modes.
+				VIEW_MODE previous_view;
+				do {
+					previous_view = view;
+					show_addons_manager_dialog(disp, client, addons, view, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh, filter_text);
+				} while(previous_view != view);
 			} catch(const addons_client::user_exit&) {
 				// Don't do anything; just go back to the addons manager UI
 				// if the user cancels a download or other network operation
@@ -714,8 +788,7 @@ bool addons_manager_ui(display& disp, const std::string& remote_address, bool sh
 
 bool uninstall_local_addons(display& disp)
 {
-	static const std::string list_lead = "\n\n";
-	static const std::string list_sep = "\n";
+	const std::string list_lead = "\n\n";
 
 	const std::vector<std::string>& addons = installed_addons();
 
@@ -747,7 +820,7 @@ bool uninstall_local_addons(display& disp)
 		const std::string confirm_message = _n(
 			"Are you sure you want to remove the following installed add-on?",
 			"Are you sure you want to remove the following installed add-ons?",
-			remove_ids.size()) + list_lead + utils::join(remove_names, list_sep);
+			remove_ids.size()) + list_lead + utils::bullet_list(remove_names);
 
 		res = gui2::show_message(disp.video()
 				, _("Confirm")
@@ -776,14 +849,14 @@ bool uninstall_local_addons(display& disp)
 			skipped_names.size());
 
 		gui2::show_error_message(
-			disp.video(), dlg_msg + list_lead + utils::join(skipped_names, list_sep));
+			disp.video(), dlg_msg + list_lead + utils::bullet_list(skipped_names));
 	}
 
 	if(!failed_names.empty()) {
 		gui2::show_error_message(disp.video(), _n(
 			"The following add-on could not be deleted properly:",
 			"The following add-ons could not be deleted properly:",
-			failed_names.size()) + list_lead + utils::join(failed_names, list_sep));
+			failed_names.size()) + list_lead + utils::bullet_list(failed_names));
 	}
 
 	if(!succeeded_names.empty()) {
@@ -796,7 +869,7 @@ bool uninstall_local_addons(display& disp)
 
 		gui2::show_transient_message(
 			disp.video(), dlg_title,
-			dlg_msg + list_lead + utils::join(succeeded_names, list_sep));
+			dlg_msg + list_lead + utils::bullet_list(succeeded_names));
 
 		return true;
 	}
@@ -804,12 +877,13 @@ bool uninstall_local_addons(display& disp)
 	return false;
 }
 
+} // end anonymous namespace
+
 bool manage_addons(display& disp)
 {
 	static const int addon_download  = 0;
 	// NOTE: the following two values are also known by WML, so don't change them.
 	static const int addon_uninstall = 2;
-	static const int addon_update    = 3;  
 
 	std::string host_name = preferences::campaign_server();
 	const bool have_addons = !installed_addons().empty();
@@ -823,9 +897,8 @@ bool manage_addons(display& disp)
 	}
 
 	switch(res) {
-		case addon_update:
 		case addon_download:
-			return addons_manager_ui(disp, host_name, res == addon_update);
+			return addons_manager_ui(disp, host_name);
 		case addon_uninstall:
 			return uninstall_local_addons(disp);
 		default:

@@ -24,13 +24,13 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "gui/widgets/settings.hpp"
 #include "hotkeys.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
 #include "sound.hpp"
 #include "video.hpp" // non_interactive()
 #include "serialization/parser.hpp"
+#include "util.hpp"
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #include <boost/concept_check.hpp>
@@ -55,8 +55,19 @@ namespace preferences {
 
 base_manager::base_manager()
 {
+#ifdef DEFAULT_PREFS_PATH
+	scoped_istream stream = istream_file(get_default_prefs_file());
+	read(prefs, *stream);
+	
+	config user_prefs;
+	stream = istream_file(get_prefs_file());
+	read(user_prefs, *stream);
+	
+	prefs.merge_with(user_prefs);
+#else
 	scoped_istream stream = istream_file(get_prefs_file());
 	read(prefs, *stream);
+#endif
 }
 
 base_manager::~base_manager()

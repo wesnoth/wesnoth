@@ -27,9 +27,6 @@ import wmldata as wmldata
 #import CampaignClient as libwml
 import wesnoth.campaignserver_client as libwml
 
-#import the svn library
-import wesnoth.libsvn as libsvn
-
 #import the github library
 import wesnoth.libgithub as libgithub
 
@@ -49,9 +46,9 @@ class tempdir:
         logging.debug("removed tempdir '%s'", self.path)
 
 if __name__ == "__main__":
-    use_git = False
     git_version = None
     git_userpass = None
+    quiet_libwml = True
 
     """Download an addon from the server.
 
@@ -66,7 +63,7 @@ if __name__ == "__main__":
         logging.debug("extract addon server = '%s' addon = '%s' path = '%s'",
             server, addon, path)
 
-        wml = libwml.CampaignClient(server)
+        wml = libwml.CampaignClient(server, quiet_libwml)
         data = wml.get_campaign(addon)
         wml.unpackdir(data, path)
 
@@ -83,7 +80,7 @@ if __name__ == "__main__":
         logging.debug("list addons server = '%s' translatable_only = %s",
             server, translatable_only)
 
-        wml = libwml.CampaignClient(server)
+        wml = libwml.CampaignClient(server, quiet_libwml)
         data = wml.list_campaigns()
 
         # Item [0] hardcoded seems to work
@@ -114,7 +111,7 @@ if __name__ == "__main__":
         logging.debug("get_timestamp server = '%s' addon = %s",
             server, addon)
 
-        wml = libwml.CampaignClient(server)
+        wml = libwml.CampaignClient(server, quiet_libwml)
         data = wml.list_campaigns()
 
         # Item [0] hardcoded seems to work
@@ -134,13 +131,13 @@ if __name__ == "__main__":
                         add-ons.wesnoth.org:15005.
     addon               The name of the addon.
     temp_dir            The directory where the unpacked campaign can be stored.
-    svn_dir             The directory containing a checkout of wescamp.
+    wescamp_dir         The directory containing a checkout of wescamp.
     """
-    def upload(server, addon, temp_dir, svn_dir):
+    def upload(server, addon, temp_dir, wescamp_dir):
 
         logging.debug("upload addon to wescamp server = '%s' addon = '%s' "
-            + "temp_dir = '%s' svn_dir = '%s'",
-            server, addon, temp_dir, svn_dir)
+            + "temp_dir = '%s' wescamp_dir = '%s'",
+            server, addon, temp_dir, wescamp_dir)
 
         # Is the addon in the list with campaigns to be translated.
         campaigns = list_addons(server, True)
@@ -152,47 +149,28 @@ if __name__ == "__main__":
         # Download the addon.
         extract(server,  addon, temp_dir)
 
-        # If the directory in svn doesn't exist we need to create and commit it.
-        message = "wescamp.py automatic update"
+        github = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass)
 
-        if use_git:
-            github = libgithub.GitHub(svn_dir, git_version, userpass=git_userpass)
+        # If the checkout doesn't exist we need to create it.
+        if(os.path.isdir(wescamp_dir + "/" + addon) == False):
 
-        if(os.path.isdir(svn_dir + "/" + addon) == False):
+            logging.info("Checking out '%s'.",
+                wescamp_dir + "/" + addon)
 
-            logging.info("Creating directory in svn '%s'.",
-                svn_dir + "/" + addon)
-
-            if use_git:
-                if not github.addon_exists(addon):
-                    github.create_addon(addon)
-            else:
-                svn = libsvn.SVN(svn_dir)
-
-                # Don't update we're in the root and if we update the status of all
-                # other campaigns is lost and no more updates are executed.
-                os.mkdir(svn_dir + "/" + addon)
-                res = svn.add(addon)
-                res = svn.commit("wescamp_client: adding directory for initial "
-                    + "inclusion of addon '" + addon + "'", [addon])
+            if not github.addon_exists(addon):
+                github.create_addon(addon)
 
         # Update the directory
-        if use_git:
-            addon_obj = github.addon(addon)
-            addon_obj.update()
-        else:
-            svn = libsvn.SVN(svn_dir + "/" + addon)
-            svn.update()
+        addon_obj = github.addon(addon)
+        addon_obj.update()
         # Translation needs to be prevented from the campaign to overwrite
         # the ones in wescamp.
         # The other files are present in wescamp and shouldn't be deleted.
         ignore_list = ["translations", "po", "campaign.def",
             "config.status", "Makefile"]
-        if(addon_obj.sync_from(temp_dir, ignore_list)
-            if use_git
-            else svn.copy_to_svn(temp_dir, ignore_list)):
+        if(addon_obj.sync_from(temp_dir, ignore_list)):
 
-            (addon_obj if use_git else svn).commit("wescamp_client: automatic update of addon '"
+            addon_obj.commit("wescamp_client: automatic update of addon '"
                 + addon + "'")
             logging.info("New version of addon '%s' uploaded.", addon)
         else:
@@ -205,7 +183,7 @@ if __name__ == "__main__":
                         add-ons.wesnoth.org:15005.
     addon               The name of the addon.
     temp_dir            The directory where the unpacked campaign can be stored.
-    svn_dir             The directory containing a checkout of wescamp.
+    wescamp_dir         The directory containing a checkout of wescamp.
     password            The master upload password.
     stamp               Only upload if the timestamp is equal to this value
                         if None it's ignored. This is needed to avoid an upload
@@ -215,26 +193,20 @@ if __name__ == "__main__":
     returns             if stamp is used it returns False if the upload failed
                         due to a newer version on the server, True otherwise.
     """
-    def download(server, addon, temp_dir, svn_dir, password, stamp = None):
+    def download(server, addon, temp_dir, wescamp_dir, password, stamp = None):
 
         logging.debug("download addon from wescamp server = '%s' addon = '%s' "
-            + "temp_dir = '%s' svn_dir = '%s' password is not shown",
-            server, addon, temp_dir, svn_dir)
+            + "temp_dir = '%s' wescamp_dir = '%s' password is not shown",
+            server, addon, temp_dir, wescamp_dir)
 
         # update the wescamp checkout for the translation,
-        if use_git:
-            addon_obj = libgithub.GitHub(wescamp, git_version, userpass=git_userpass).addon(addon)
-        else:
-            svn = libsvn.SVN(wescamp + "/" + addon)
+        addon_obj = libgithub.GitHub(wescamp, git_version, userpass=git_userpass).addon(addon)
 
         # The result of the update can be ignored, no changes when updating
         # doesn't mean no changes to the translations.
-        if use_git:
-            addon_obj.update()
-        else:
-            svn.update()
+        addon_obj.update()
 
-        # test whether the svn has a translations dir, if not we can stop
+        # test whether the checkout has a translations dir, if not we can stop
         if(os.path.isdir(wescamp + "/"
             + addon + "/" + addon + "/translations") == False):
 
@@ -245,25 +217,21 @@ if __name__ == "__main__":
                 return True
 
         # Export the entire addon data dir.
-        if use_git:
-            source = os.path.join(wescamp, addon, addon)
-            dest = os.path.join(temp_dir, addon)
-            shutil.copytree(source, dest)
-        else:
-            svn_addon = libsvn.SVN(wescamp + "/" + addon + "/" + addon)
-            svn_addon.export(temp_dir + "/" + addon)
+        source = os.path.join(wescamp, addon, addon)
+        dest = os.path.join(temp_dir, addon)
+        shutil.copytree(source, dest)
 
         # If it is the old format with the addon.cfg copy that as well.
-        svn_cfg = wescamp + "/" + addon + "/" + addon + ".cfg"
+        wescamp_cfg = wescamp + "/" + addon + "/" + addon + ".cfg"
         temp_cfg = temp_dir + "/" + addon + ".cfg"
-        if(os.path.isfile(svn_cfg)):
+        if(os.path.isfile(wescamp_cfg)):
             logging.debug("Found old format config file")
-            shutil.copy(svn_cfg, temp_cfg)
+            shutil.copy(wescamp_cfg, temp_cfg)
 
         # We don't test for changes, just upload the stuff.
         # NOTE wml.put_campaign tests whether the addon.cfg exists so
         # send it unconditionally.
-        wml = libwml.CampaignClient(server)
+        wml = libwml.CampaignClient(server, quiet_libwml)
         ignore = {}
         stuff = {}
         stuff["passphrase"] = password
@@ -287,39 +255,31 @@ if __name__ == "__main__":
             else:
                 return False
 
-    def erase(addon, svn_dir):
+    def erase(addon, wescamp_dir):
 
-        logging.debug("Erase addon from wescamp addon = '%s' svn_dir = '%s'",
-            addon, svn_dir)
+        logging.debug("Erase addon from wescamp addon = '%s' wescamp_dir = '%s'",
+            addon, wescamp_dir)
 
-        if use_git:
-            addon_obj = libgithub.GitHub(svn_dir, git_version, userpass=git_userpass).addon(addon)
+        addon_obj = libgithub.GitHub(wescamp_dir, git_version, userpass=git_userpass).addon(addon)
 
-            # Note: this is probably not implemented, as it would destroy a repository, including the history.
-            addon_obj.erase()
-        else:
-            svn = libsvn.SVN(svn_dir)
-
-            svn.update(None, [addon])
-
-            svn.remove(addon)
-
-            svn.commit("Erasing addon " + addon)
+        # Note: this is probably not implemented, as it would destroy a repository, including the history.
+        addon_obj.erase()
 
     """Checkout all add-ons of one wesnoth version from wescamp.
 
     wescamp             The directory where all checkouts should be stored.
     wesnoth_version     The wesnoth version we should checkout add-ons for.
     userpass            Authentication data. Shouldn't be needed.
+    readonly            Makes a read-only checkout that doesn't require authentication.
     """
-    def checkout(wescamp, wesnoth_version, userpass=None):
+    def checkout(wescamp, wesnoth_version, userpass=None, readonly=False):
 
         logging.debug("checking out add-ons from wesnoth version = '%s' to directory '%s'", wesnoth_version, wescamp)
 
         github = libgithub.GitHub(wescamp, git_version, userpass=git_userpass)
 
         for addon in github.list_addons():
-            addon_obj = github.addon(addon)
+            addon_obj = github.addon(addon, readonly=readonly)
             addon_obj.update()
 
 
@@ -367,8 +327,11 @@ if __name__ == "__main__":
     optionparser.add_option("-w", "--wescamp-checkout",
         help = "The directory containing the wescamp checkout root. ['']")
 
-    optionparser.add_option("-v", "--verbose", action = "store_true",
+    optionparser.add_option("-v", "--verbose", action = "store_const", const="verbose", dest="verbosity",
         help = "Show more verbose output. [FALSE]")
+
+    optionparser.add_option("-q", "--quiet", action = "store_const", const="quiet", dest="verbosity",
+        help = "Show less verbose output. [FALSE]")
 
     optionparser.add_option("-P", "--password",
         help = "The master password for the addon server. ['']")
@@ -382,12 +345,21 @@ if __name__ == "__main__":
         help = "Username and password for github in the user:pass format")
 
     optionparser.add_option("-c", "--checkout", action = "store_true",
-        help = "Create a new branch checkout directory")
+        help = "Create a new branch checkout directory. "
+        + "Can also be used to update existing checkout directories.")
+
+    optionparser.add_option("-C", "--checkout-readonly", action = "store_true",
+        help = "Create a read-only branch checkout directory. "
+        + "Can also be used to update existing checkout directories.")
 
     options, args = optionparser.parse_args()
 
-    if(options.verbose):
+    if(options.verbosity == "verbose"):
         logging.basicConfig(level=logging.DEBUG,
+            format='[%(levelname)s] %(message)s')
+        quiet_libwml = False
+    elif(options.verbosity == "quiet"):
+        logging.basicConfig(level=logging.WARN,
             format='[%(levelname)s] %(message)s')
     else:
         logging.basicConfig(level=logging.INFO,
@@ -422,16 +394,17 @@ if __name__ == "__main__":
     password = options.password
 
     if(options.git):
-        use_git = True
-        git_userpass = options.github_login
-        if not wescamp:
-            logging.error("No wescamp checkout specified. Needed for git usage.")
-            sys.exit(2)
-        try:
-            git_version = wescamp.split("-")[-1].strip("/").split("/")[-1]
-        except:
-            logging.error("Wescamp directory path does not end in a version suffix. Currently needed for git usage.")
-            sys.exit(2)
+        pass
+        #TODO: warning of not being needed any more
+    git_userpass = options.github_login
+    if not wescamp:
+        logging.error("No wescamp checkout specified. Needed for git usage.")
+        sys.exit(2)
+    try:
+        git_version = wescamp.split("-")[-1].strip("/").split("/")[-1]
+    except:
+        logging.error("Wescamp directory path does not end in a version suffix. Currently needed for git usage.")
+        sys.exit(2)
 
     # List the addons on the server and optional filter on translatable
     # addons.
@@ -439,9 +412,6 @@ if __name__ == "__main__":
 
         try:
             addons = list_addons(server, options.list_translatable)
-        except libsvn.error, e:
-            print "[ERROR svn] " + str(e)
-            sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
@@ -467,9 +437,6 @@ if __name__ == "__main__":
 
         try:
             upload(server, options.upload, target, wescamp)
-        except libsvn.error, e:
-            print "[ERROR svn] " + str(e)
-            sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
@@ -499,9 +466,6 @@ if __name__ == "__main__":
                 # Create a new temp dir for every upload.
                 tmp = tempdir()
                 upload(server, k, tmp.path, wescamp)
-            except libsvn.error, e:
-                print "[ERROR svn] in addon '" + k + "'" + str(e)
-                error = True
             except libgithub.Error, e:
                 print "[ERROR github] in addon '" + k + "'" + str(e)
                 error = True
@@ -528,9 +492,6 @@ if __name__ == "__main__":
 
         try:
             download(server, options.download, target, wescamp, password)
-        except libsvn.error, e:
-            print "[ERROR svn] " + str(e)
-            sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
@@ -594,9 +555,6 @@ if __name__ == "__main__":
                             + "the campaign server and isn't uploaded "
                             + "force another full sync cycle", k)
 
-            except libsvn.error, e:
-                print "[ERROR svn] in addon '" + k + "'" + str(e)
-                error = True
             except libgithub.Error, e:
                 print "[ERROR github] in addon '" + k + "'" + str(e)
                 error = True
@@ -619,9 +577,6 @@ if __name__ == "__main__":
 
         try:
             erase(options.erase, wescamp)
-        except libsvn.error, e:
-            print "[ERROR svn] " + str(e)
-            sys.exit(1)
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)
@@ -632,18 +587,14 @@ if __name__ == "__main__":
             print "Unexpected error occured: " + str(e)
             sys.exit(e[0])
 
-    elif(options.checkout != None):
+    elif(options.checkout != None or options.checkout_readonly != None):
 
         if(wescamp == None):
             logging.error("No wescamp checkout specified.")
             sys.exit(2)
 
-        if not use_git:
-            logging.error("The checkout option is for git only. If you're still using svn for some reason, you can use svn co.")
-            sys.exit(2)
-
         try:
-            checkout(wescamp, git_version, userpass=git_userpass)
+            checkout(wescamp, git_version, userpass=git_userpass, readonly=(options.checkout_readonly != None))
         except libgithub.Error, e:
             print "[ERROR github] " + str(e)
             sys.exit(1)

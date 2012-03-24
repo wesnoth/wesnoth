@@ -142,11 +142,9 @@ public class EraNewWizard extends WizardTemplate
         params.add( new ReplaceableParameter( "$$era_id", page0_.getEraID( ) ) ); //$NON-NLS-1$
         params
             .add( new ReplaceableParameter( "$$era_name", page0_.getEraName( ) ) ); //$NON-NLS-1$
-        params.add( new ReplaceableParameter(
-            "$$require_era", String.valueOf( page0_.getRequiresEra( ) ) ) ); //$NON-NLS-1$
+        params.add( new ReplaceableParameter( "$$require_era", String.valueOf( page0_.getRequiresEra( ) ) ) ); //$NON-NLS-1$
 
-        String template = TemplateProvider.getInstance( ).getProcessedTemplate(
-            "era", params ); //$NON-NLS-1$
+        String template = TemplateProvider.getInstance( ).getProcessedTemplate( "era", params ); //$NON-NLS-1$
 
         if( template == null ) {
             Logger.getInstance( ).log( "'era' template not found", //$NON-NLS-1$

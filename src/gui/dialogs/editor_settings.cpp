@@ -127,10 +127,28 @@ void teditor_settings::update_tod_display(twindow& window)
 			, custom_tod_green_field_->get_widget_value(window)
 			, custom_tod_blue_field_->get_widget_value(window));
 
+	// Prevent a floating slice of window appearing alone over the
+	// theme UI sidebar after redrawing tiles and before we have a
+	// chance to redraw the rest of this window.
+	window.undraw();
+
 	if(display_) {
-		display_->redraw_everything();
+		// NOTE: We only really want to re-render the gamemap tiles here.
+		// Redrawing everything is a significantly more expensive task.
+		// At this time, tiles are the only elements on which ToD tint is
+		// meant to have a visible effect. This is very strongly tied to
+		// the image caching mechanism.
+		//
+		// If this ceases to be the case in the future, you'll need to call
+		// redraw_everything() instead.
+
+		// invalidate all tiles so they are redrawn with the new ToD tint next
+		display_->invalidate_all();
+		// redraw tiles
+		display_->draw();
 	}
 
+	// Redraw this window again.
 	window.set_dirty(true);
 }
 

@@ -6,7 +6,7 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
     <Filter Include="Serialization">
-      <UniqueIdentifier>{cdc7f323-509b-419a-8b40-00ca39a7922c}</UniqueIdentifier>
+      <UniqueIdentifier>{b37c458f-d370-4cd8-829c-17b6b86670cf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,10 +19,16 @@
     <ClCompile Include="..\..\src\serialization\preprocessor.cpp">
       <Filter>Serialization</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\serialization\schema_validator.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\serialization\string_utils.cpp">
       <Filter>Serialization</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\serialization\tokenizer.cpp">
+      <Filter>Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\serialization\validator.cpp">
       <Filter>Serialization</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\color_range.cpp" />
@@ -30,19 +36,13 @@
     <ClCompile Include="..\..\src\filesystem.cpp" />
     <ClCompile Include="..\..\src\game_config.cpp" />
     <ClCompile Include="..\..\src\gettext.cpp" />
+    <ClCompile Include="..\..\src\loadscreen_empty.cpp" />
     <ClCompile Include="..\..\src\log.cpp" />
     <ClCompile Include="..\..\src\network.cpp" />
     <ClCompile Include="..\..\src\network_worker.cpp" />
     <ClCompile Include="..\..\src\thread.cpp" />
     <ClCompile Include="..\..\src\tstring.cpp" />
-    <ClCompile Include="..\..\src\util.cpp" />
     <ClCompile Include="..\..\src\version.cpp" />
-    <ClCompile Include="..\..\src\serialization\schema_validator.cpp">
-      <Filter>Serialization</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\serialization\validator.cpp">
-      <Filter>Serialization</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp">
@@ -54,10 +54,16 @@
     <ClInclude Include="..\..\src\serialization\preprocessor.hpp">
       <Filter>Serialization</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\serialization\schema_validator.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\serialization\string_utils.hpp">
       <Filter>Serialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\serialization\tokenizer.hpp">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\serialization\validator.hpp">
       <Filter>Serialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\about.hpp" />
@@ -73,14 +79,7 @@
     <ClInclude Include="..\..\src\scoped_resource.hpp" />
     <ClInclude Include="..\..\src\thread.hpp" />
     <ClInclude Include="..\..\src\tstring.hpp" />
-    <ClInclude Include="..\..\src\util.hpp" />
     <ClInclude Include="..\..\src\version.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
-    <ClInclude Include="..\..\src\serialization\schema_validator.hpp">
-      <Filter>Serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\serialization\validator.hpp">
-      <Filter>Serialization</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

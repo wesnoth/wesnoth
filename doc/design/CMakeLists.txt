@@ -40,5 +40,17 @@ if(ENABLE_DESIGN_DOCUMENTS)
 	DEFAULT_PDF
 	MANGLE_TARGET_NAMES
 	)
+	ADD_LATEX_DOCUMENT(
+		umcd.tex
+	INPUTS
+		#
+		# LaTeX files
+		#
+		umcd/abstract.tex
+		umcd/communication_protocol.tex
+		umcd/introduction.tex
+	DEFAULT_PDF
+	MANGLE_TARGET_NAMES
+	)
 endif(ENABLE_DESIGN_DOCUMENTS)
 

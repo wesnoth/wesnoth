@@ -128,7 +128,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     {
         super.completeWMLKey_Name( model, assignment, context, acceptor );
 
-        addKeyNameProposals( model, context, acceptor );
+        if( model != null ) {
+            addKeyNameProposals( model, context, acceptor );
+        }
     }
 
     @Override
@@ -137,7 +139,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     {
         super.complete_WMLKeyValue( model, ruleCall, context, acceptor );
 
-        addKeyValueProposals( model, context, acceptor );
+        if( model != null ) {
+            addKeyValueProposals( model, context, acceptor );
+        }
     }
 
     @Override
@@ -146,7 +150,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     {
         super.complete_WMLTag( model, ruleCall, context, acceptor );
 
-        addTagProposals( model, true, context, acceptor );
+        if( model != null ) {
+            addTagProposals( model, true, context, acceptor );
+        }
     }
 
     @Override
@@ -155,7 +161,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     {
         super.completeWMLTag_Name( model, assignment, context, acceptor );
 
-        addTagProposals( model, false, context, acceptor );
+        if( model != null ) {
+            addTagProposals( model, false, context, acceptor );
+        }
     }
 
     @Override
@@ -165,7 +173,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     {
         super.completeWMLMacroCall_Name( model, assignment, context, acceptor );
 
-        addMacroCallProposals( model, false, context, acceptor );
+        if( model != null ) {
+            addMacroCallProposals( model, false, context, acceptor );
+        }
     }
 
     @Override
@@ -174,12 +184,19 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
     {
         super.complete_WMLMacroCall( model, ruleCall, context, acceptor );
 
-        addMacroCallProposals( model, true, context, acceptor );
+        if( model != null ) {
+            addMacroCallProposals( model, true, context, acceptor );
+        }
     }
 
     private void addMacroCallProposals( EObject model, boolean ruleProposal,
         ContentAssistContext context, ICompletionProposalAcceptor acceptor )
     {
+        INode currentNode = context.getCurrentNode( );
+
+        boolean appendEndBrace = currentNode != null && ! currentNode.getText( ).equals( "}" );
+
+
         for( Entry< String, Define > define: projectCache_.getDefines( )
             .entrySet( ) ) {
             StringBuilder proposal = new StringBuilder( 10 );
@@ -191,7 +208,10 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
             for( String arg: define.getValue( ).getArguments( ) ) {
                 proposal.append( " " + arg ); //$NON-NLS-1$
             }
-            proposal.append( "}" ); //$NON-NLS-1$
+
+            if( appendEndBrace ) {
+                proposal.append( "}" ); //$NON-NLS-1$
+            }
 
             acceptor.accept( createCompletionProposal( proposal.toString( ),
                 define.getKey( ), MACRO_CALL_IMAGE, context,

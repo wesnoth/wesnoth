@@ -37,10 +37,7 @@ namespace gui2 {
  *         This text contains the name of the server to connect to. $
  *
  * & 2 & button & o &
- *         This button closes the dialog and starts the addon manager. $
- *
- * & 3 & button & o &
- *         This button closes the dialog and starts the update routine. $
+ *         This button closes the dialog to display a dialog for removing installed add-ons. $
  *
  * @end{table}
  */
@@ -58,16 +55,13 @@ taddon_connect::taddon_connect(std::string& host_name
 
 void taddon_connect::pre_show(CVideo& /*video*/, twindow& window)
 {
-	find_widget<tbutton>(&window, "update_addons", false)
-			.set_active(allow_updates_);
-
 	find_widget<tbutton>(&window, "remove_addons", false)
 			.set_active(allow_remove_);
 }
 
 void taddon_connect::post_show(twindow& window)
 {
-	if(get_retval() == twindow::OK || get_retval() == 3) {
+	if(get_retval() == twindow::OK) {
 		ttext_box& host_widget =
 				find_widget<ttext_box>(&window, "host_name", false);
 

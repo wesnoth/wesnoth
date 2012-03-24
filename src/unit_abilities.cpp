@@ -882,17 +882,15 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		effect_list_.push_back(set_effect);
 	}
 
-	int multiplier = 1;
-	int divisor = 1;
+	float multiplier = 1.0f;
+	float divisor = 1.0f;
 	std::map<std::string,individual_effect>::const_iterator e, e_end;
 	for (e = values_mul.begin(), e_end = values_mul.end(); e != e_end; ++e) {
-		multiplier *= e->second.value;
-		divisor *= 100;
+		multiplier *= e->second.value/100.0f;		
 		effect_list_.push_back(e->second);
 	}
 	for (e = values_div.begin(), e_end = values_div.end(); e != e_end; ++e) {
-		multiplier *= 100;
-		divisor *= e->second.value;
+		divisor *= e->second.value/100.0f;
 		effect_list_.push_back(e->second);
 	}
 	int addition = 0;
@@ -901,7 +899,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		effect_list_.push_back(e->second);
 	}
 
-	composite_value_ = (value_set + addition) * multiplier / divisor;
+	composite_value_ = int((value_set + addition) * multiplier / divisor);
 }
 
 } // end namespace unit_abilities

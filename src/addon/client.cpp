@@ -17,6 +17,7 @@
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
 #include "addon/validation.hpp"
+#include "cursor.hpp"
 #include "display.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
@@ -62,7 +63,7 @@ addons_client::addons_client(display& disp, const std::string& address)
 	conn_ = new network_asio::connection(host_, port_);
 
 	this->wait_for_transfer_done(
-		utils::interpolate_variables_into_string(_("Connecting to $server_address|..."), &i18n_symbols));
+		vgettext("Connecting to $server_address|...", i18n_symbols));
 }
 
 bool addons_client::request_addons_list(config& cfg)
@@ -137,8 +138,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	LOG_ADDONS << "sending " << id << '\n';
 
 	this->send_request(request_buf, response_buf);
-	this->wait_for_transfer_done(utils::interpolate_variables_into_string(
-		_("Sending add-on <i>$addon_title</i>..."), &i18n_symbols
+	this->wait_for_transfer_done(vgettext("Sending add-on <i>$addon_title</i>...", i18n_symbols
 	));
 
 	if(const config& message_cfg = response_buf.child("message")) {
@@ -172,8 +172,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	LOG_ADDONS << "requesting server to delete " << id << '\n';
 
 	this->send_request(request_buf, response_buf);
-	this->wait_for_transfer_done(utils::interpolate_variables_into_string(
-		_("Removing add-on <i>$addon_title</i> from the server..."), &i18n_symbols
+	this->wait_for_transfer_done(vgettext("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols
 	));
 
 	if(const config& message_cfg = response_buf.child("message")) {
@@ -197,22 +196,22 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 	LOG_ADDONS << "downloading " << id << '\n';
 
 	this->send_request(request_buf, archive_cfg);
-	this->wait_for_transfer_done(utils::interpolate_variables_into_string(
-		_("Downloading add-on <i>$addon_title</i>..."), &i18n_symbols));
+	this->wait_for_transfer_done(vgettext("Downloading add-on <i>$addon_title</i>...", i18n_symbols));
 
 	return !this->update_last_error(archive_cfg);
 }
 
 bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 {
+	const cursor::setter cursor_setter(cursor::WAIT);
+
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = info.title;
 
 	if(!check_names_legal(archive_cfg)) {
 		gui2::show_error_message(disp_.video(),
-			utils::interpolate_variables_into_string(
-				_("The add-on <i>$addon_title</i> has an invalid file or directory "
-				  "and cannot be installed."), &i18n_symbols));
+			vgettext("The add-on <i>$addon_title</i> has an invalid file or directory "
+				"name and cannot be installed.", i18n_symbols));
 		return false;
 	}
 

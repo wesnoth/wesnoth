@@ -56,12 +56,12 @@ tgame_save::tgame_save(std::string& filename, const std::string& title)
 REGISTER_DIALOG(game_save_message)
 
 tgame_save_message::tgame_save_message(
-		const std::string& title
-		, const std::string& filename
+		  std::string& filename
+		, const std::string& title
 		, const std::string& message)
 {
 	register_label("lblTitle", true, title);
-	register_label("txtFilename", false, filename);
+	register_text("txtFilename", false, filename, true);
 	register_label("lblMessage", true, message);
 }
 
@@ -69,12 +69,12 @@ REGISTER_DIALOG(game_save_oos)
 
 tgame_save_oos::tgame_save_oos(
 		  bool& ignore_all
+		, std::string& filename
 		, const std::string& title
-		, const std::string& filename
 		, const std::string& message)
 {
 	register_label("lblTitle", true, title);
-	register_label("txtFilename", false, filename);
+	register_text("txtFilename", false, filename, true);
 	register_label("lblMessage", true, message);
 	register_bool("ignore_all", true, ignore_all);
 

@@ -248,6 +248,10 @@ public:
 
 	bool knows_about_team(size_t index, bool is_multiplayer) const;
 	bool copy_ally_shroud();
+	/// Records hexes that were cleared of fog via WML.
+	void add_fog_override(const std::set<map_location> &hexes) { fog_clearer_.insert(hexes.begin(), hexes.end()); }
+	/// Removes the record of hexes that were cleared of fog via WML.
+	void remove_fog_override(const std::set<map_location> &hexes);
 
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
@@ -297,6 +301,8 @@ private:
 	std::set<map_location> villages_;
 
 	shroud_map shroud_, fog_;
+	/// Stores hexes that have been cleared of fog via WML.
+	std::set<map_location> fog_clearer_;
 
 	bool auto_shroud_updates_;
 

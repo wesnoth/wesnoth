@@ -60,6 +60,14 @@ if env["PLATFORM"] != "win32":
     if filesystem_env['prefsdir']:
         filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR='\"$prefsdir\"'")
 
+if env['default_prefs_file']:
+    client_env.Append(CPPDEFINES = "DEFAULT_PREFS_PATH='\"$default_prefs_file\"'")
+    
+    game_config_env['default_prefs_file'] = env['default_prefs_file']
+    game_config_env.Append(CPPDEFINES = "DEFAULT_PREFS_PATH='\"$default_prefs_file\"'")
+    if not os.path.isabs(env['default_prefs_file']):
+        filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_DEFPREF")
+
 libwesnoth_core_sources.extend([
     game_config_env.Object("game_config.cpp"),
     filesystem_env.Object("filesystem.cpp")
@@ -141,6 +149,7 @@ libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campa
 
 libwesnoth_sdl_sources = Split("""
     sdl_utils.cpp
+    tracer.cpp
     """)
 libwesnoth_sdl = client_env.Library("wesnoth_sdl", libwesnoth_sdl_sources)
 
@@ -158,6 +167,7 @@ wesnoth_sources = Split("""
     addon/info.cpp
     addon/manager.cpp
     addon/manager_ui.cpp
+    addon/state.cpp
     addon/validation.cpp
     ai/actions.cpp
     ai/composite/ai.cpp
@@ -205,18 +215,28 @@ wesnoth_sources = Split("""
     config_cache.cpp
     controller_base.cpp
     dialogs.cpp
-    editor/action.cpp
-    editor/brush.cpp
+    editor/action/action.cpp
+    editor/action/action_unit.cpp
+    editor/action/action_label.cpp
+    editor/action/mouse/mouse_action.cpp
+    editor/action/mouse/mouse_action_map_label.cpp
+    editor/action/mouse/mouse_action_unit.cpp
+    editor/map/editor_map.cpp
+    editor/map/map_context.cpp
+    editor/map/map_fragment.cpp
+    editor/map/context_manager.cpp
+    editor/palette/editor_palettes.cpp
+    editor/palette/terrain_palettes.cpp
+    editor/palette/unit_palette.cpp
+    editor/palette/palette_layout.cpp
+    editor/palette/palette_manager.cpp
+    editor/toolkit/brush.cpp
+    editor/toolkit/brush_bar.cpp
     editor/editor_controller.cpp
     editor/editor_display.cpp
-    editor/editor_layout.cpp
     editor/editor_main.cpp
-    editor/editor_map.cpp
-    editor/editor_palettes.cpp
     editor/editor_preferences.cpp
-    editor/map_context.cpp
-    editor/map_fragment.cpp
-    editor/mouse_action.cpp
+    editor/toolkit/editor_toolkit.cpp
     filechooser.cpp
     floating_textbox.cpp
     formula.cpp
@@ -547,6 +567,7 @@ wesmage_sources = Split("""
     tools/dummy_video.cpp
     tools/exploder_utils.cpp
     sdl_utils.cpp
+    tracer.cpp
     loadscreen_empty.cpp
     """)
 client_env.WesnothProgram("wesmage", wesmage_sources + [libwesnoth_core], have_client_prereqs, OBJPREFIX = "wesmage_", LIBS = ["$LIBS", "png"])

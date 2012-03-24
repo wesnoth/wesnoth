@@ -14,6 +14,14 @@ import sys, os, time, re, getopt
 from wesnoth.wmltools import *
 from wesnoth.wmliterator import *
 
+# Disable the script so people don't accidentally use it and wonder why it doesn't do what they expect
+sys.stderr.write("""You probably want to use 'utils/wmlxgettext' instead
+This script was intended as a replacement but is not currently used
+It does not generate the same results as the perl version anymore\n""")
+# In case we're called by some big script that either swallows or swamps stderr
+print "This is not the wmlxgettext script you're looking for"
+sys.exit(1)
+
 # Code swiped from wmllint: probably should live in the wesnoth module
 
 vctypes = (".svn", ".git")

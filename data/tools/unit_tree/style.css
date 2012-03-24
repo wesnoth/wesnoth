@@ -297,3 +297,56 @@ div.unit-column-right {
     width: 20em;
     float: right;
 }
+
+table.overview {
+    border-spacing: 0px;
+    border: 1px solid #000000;
+}
+
+table.overview th {
+    text-align: center;
+    padding: 1em;
+    border-bottom: 2px solid #000000;
+}
+
+table.overview td {
+    border-bottom: 1px solid #000000;
+}
+
+table.overview td + td {
+    text-align: right;
+}
+
+table.overview a.error {
+    color: red;
+}
+
+div.overview {
+    margin: 0 auto;
+    background-color: #E7D9C0;
+    max-width: 60em;
+    width: auto;
+    border-radius: 1em 1em 1em 1em;
+    border: solid 1px white;
+    font-style: sans-serif;
+    padding: 1em;
+}
+
+div.portrait {
+    height: 200px;
+}
+
+div.portrait div {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.25;
+}
+
+div.portrait img {
+    position: absolute;
+    height: 200px;
+}

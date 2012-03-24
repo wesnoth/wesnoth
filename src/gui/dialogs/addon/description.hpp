@@ -19,6 +19,7 @@
 #include "gui/dialogs/dialog.hpp"
 
 #include "addon/info.hpp"
+#include "addon/state.hpp"
 
 namespace gui2 {
 
@@ -31,12 +32,12 @@ public:
 	 *
 	 * @param addon               The information about the addon to show.
 	 */
-	explicit taddon_description(const addon_info& addon);
+	taddon_description(const addon_info& addon, const addon_tracking_info& state);
 
 	/** The display function see @ref tdialog for more information. */
-	static void display(const addon_info& addon, CVideo& video)
+	static void display(const addon_info& addon, const addon_tracking_info& state, CVideo& video)
 	{
-		taddon_description(addon).show(video);
+		taddon_description(addon, state).show(video);
 	}
 
 private:

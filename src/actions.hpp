@@ -154,6 +154,8 @@ struct battle_context_unit_stats
 	unsigned int chance_to_hit;	/**< Effective chance to hit as a percentage (all factors accounted for). */
 	int damage;				/**< Effective damage of the weapon (all factors accounted for). */
 	int slow_damage;		/**< Effective damage if unit becomes slowed (== damage, if already slowed) */
+	int drain_percent;		/**< Percentage of damage recovered as health */
+	int drain_constant;		/**< Base HP drained regardless of damage dealt */
 	unsigned int num_blows;	/**< Effective number of blows, takes swarm into account. */
 	unsigned int swarm_min;	/**< Minimum number of blows with swarm (equal to num_blows if swarm isn't used). */
 	unsigned int swarm_max;	/**< Maximum number of blows with swarm (equal to num_blows if swarm isn't used). */
@@ -410,15 +412,11 @@ size_t move_unit(move_unit_spectator* move_spectator,
 				bool continue_move = false, bool should_clear_shroud=true, bool is_replay=false,
 				bool* units_sighted_result = NULL);
 
-/** Function which recalculates the fog. */
+/// Function that recalculates the fog of war.
 void recalculate_fog(int side);
 
-/**
- * Function which will clear shroud away for the @a side
- * based on current unit positions.
- * Returns true if some shroud is actually cleared away.
- */
-bool clear_shroud(int side);
+/// Function that will clear shroud (and fog) based on current unit positions.
+bool clear_shroud(int side, bool reset_fog=false);
 
 /**
  * Function to apply pending shroud changes in the undo stack.

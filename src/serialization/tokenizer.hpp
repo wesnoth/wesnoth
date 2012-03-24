@@ -17,7 +17,7 @@
 #ifndef TOKENIZER_H_INCLUDED
 #define TOKENIZER_H_INCLUDED
 
-#include "util.hpp"
+#include "buffered_istream.hpp"
 
 #include <istream>
 #include <string>
@@ -105,12 +105,7 @@ private:
 	void next_char_fast()
 	{
 		do {
-			if (LIKELY(in_.good())) {
-				current_ = in_.get();
-			} else {
-				current_ = EOF;
-				return;
-			}
+			current_ = in_.get();
 		} while (UNLIKELY(current_ == '\r'));
 #if 0
 			/// @todo disabled untill campaign server is fixed
@@ -131,7 +126,7 @@ private:
 #endif
 	}
 
-	int peek_char() const
+	int peek_char()
 	{
 		return in_.peek();
 	}
@@ -177,7 +172,7 @@ private:
 #ifdef DEBUG
 	token previous_token_;
 #endif
-	std::istream &in_;
+	buffered_istream in_;
 	char char_types_[128];
 };
 

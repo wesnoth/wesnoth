@@ -24,7 +24,6 @@
 #include "map_location.hpp"
 #include "variable.hpp"
 #include "serialization/binary_or_text.hpp"
-#include "serialization/string_utils.hpp"
 #include "boost/shared_ptr.hpp"
 
 class scoped_wml_variable;
