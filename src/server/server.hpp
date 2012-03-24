@@ -81,6 +81,7 @@ private:
 	void handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple_wml::document> doc);
 	void handle_whisper(socket_ptr socket, simple_wml::node& whisper);
 	void handle_query(socket_ptr socket, simple_wml::node& query);
+	void handle_message(socket_ptr socket, simple_wml::node& message);
 	void handle_room_join(socket_ptr socket, simple_wml::node& room_join);
 	void handle_room_part(socket_ptr socket, simple_wml::node& room_join);
 	void remove_player(socket_ptr socket);

@@ -1131,6 +1131,9 @@ void server::handle_read_from_player(socket_ptr socket, boost::shared_ptr<simple
 	}
 
 	// Lobby
+	if(simple_wml::node* message = doc->child("message")) {
+		handle_message(socket, *message);
+	}
 	if(simple_wml::node* room_join = doc->child("room_join")) {
 		handle_room_join(socket, *room_join);
 	}
@@ -1237,6 +1240,16 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		response << "Error: unrecognized query: '" << command << "'\n" << help_msg;
 	}
 	send_server_message(socket, response.str());
+}
+
+void server::handle_message(socket_ptr socket, simple_wml::node& message)
+{
+	std::string room_name = message.attr("room").to_string();
+	if(room_name.empty())
+		room_name = "lobby";
+	simple_wml::document relay_message;
+	message.copy_into(relay_message.root().add_child("message"));
+	room_list_.send_to_room(room_name, relay_message, socket);
 }
 
 void server::handle_room_join(socket_ptr socket, simple_wml::node& room_join)
