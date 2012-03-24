@@ -1106,6 +1106,7 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 	player_connections_.insert(PlayerMap::value_type(socket, player.name(), player));
 	send_to_player(socket, games_and_users_list_);
 	read_from_player(socket);
+	room_list_.enter_room("lobby", socket);
 }
 
 void server::read_from_player(socket_ptr socket)
