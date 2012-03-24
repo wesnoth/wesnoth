@@ -30,7 +30,11 @@ class mouse_action_unit : public mouse_action
 {
 public:
 	mouse_action_unit(const CKey& key, unit_palette& palette)
-	: mouse_action(palette, key), click_(false), start_hex_()
+		: mouse_action(palette, key)
+		, click_(false)
+		, start_hex_()
+		, old_direction_(map_location::NORTH)
+		, new_direction_(map_location::NORTH)
 	{
 	}
 
