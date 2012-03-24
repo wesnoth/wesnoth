@@ -29,10 +29,24 @@ public:
 			, size_t item_size, size_t item_width, mouse_action** active_mouse_action)
     //TODO
 	//		  Item& fore, Item& back)
-	:
-	gui_(gui), size_specs_(sizes),   item_size_(item_size), item_width_(item_width),
-	item_space_(item_size + 3), palette_y_(sizes.palette_y), palette_x_(sizes.palette_x),
-	item_map_(), active_mouse_action_(active_mouse_action)
+		: groups_()
+		, gui_(gui)
+		, size_specs_(sizes)
+		, item_size_(item_size)
+		, item_width_(item_width)
+		, item_space_(item_size + 3)
+		, palette_y_(sizes.palette_y)
+		, palette_x_(sizes.palette_x)
+		, group_map_()
+		, item_map_()
+		, nitems_(0)
+		, nmax_items_(0)
+		, items_start_(0)
+		, non_core_items_()
+		, active_group_()
+		, selected_fg_item_()
+		, selected_bg_item_()
+		, active_mouse_action_(active_mouse_action)
 	{
 		//TODO
 		//adjust_size(size_specs_);
