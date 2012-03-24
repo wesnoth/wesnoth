@@ -188,7 +188,12 @@ public:
 	}
 
 public:
-	save_index_class() : loaded_(false) {}
+	save_index_class()
+		: loaded_(false)
+		, data_()
+		, modified_()
+   {
+   }
 private:
 	config& data(const std::string& name) {
 		std::string save = name;
