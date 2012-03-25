@@ -153,6 +153,39 @@ REGISTER(brighten,
 		"colour channel is multiplied by this value. Value less than zero "
 		"are set to zero. The alpha channel is not modified.");
 
+static void
+blend(surface& surf, const std::string& parameters)
+{
+	float amount;
+	unsigned colour;
+	const int count = sscanf(parameters.c_str(), "%f,%x", &amount, &colour);
+
+	if(count != 2) {
+		std::cerr << "Error: Arguments to blend »"
+				<< parameters
+				<< "« are not compatible.\n";
+
+		throw texit(EXIT_FAILURE);
+	}
+
+	surf = blend_surface(surf, amount, colour);
+}
+REGISTER(blend,
+"|Blends an image with another colour."
+"|amount"
+	"|float"
+	"|The amount every pixel needs to be blended with its original value. "
+	    "The formula is:\n"
+		"result = amount * colour + (1 - amount) * original\n"
+		"The value needs to be in the range [0, 1]."
+"|colour"
+	"|unsigned"
+	"|The colour to blend with. The value should be given as 32-bit "
+		"hexadecimal value. The first fields should look like AARRGGBB, "
+		"where AA is the alpha channel, RR is the red channel, GG is the "
+		"green channel and BB is the blue channel. (Note the alpha channel "
+		"is ignored.");
+
 void
 filter_apply(surface& surf, const std::string& filter)
 {

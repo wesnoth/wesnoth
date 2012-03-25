@@ -287,7 +287,29 @@ surface blur_alpha_surface(const surface &surf, int depth = 1, bool optimize=tru
 
 /** Cuts a rectangle from a surface. */
 surface cut_surface(const surface &surf, SDL_Rect const &r);
-surface blend_surface(const surface &surf, double amount, Uint32 color, bool optimize=true);
+
+/**
+ * Blends a surface with a colour.
+ *
+ * Every pixel in the surface will be blended with the @p color given. The
+ * final colour of a pixel is amount * @p color + (1 - amount) * original.
+ *
+ * @param surf                    The surface to blend.
+ * @param amount                  The amount of the new colour is determined by
+ *                                @p color. Must be a number in the range
+ *                                [0, 1].
+ * @param color                   The colour to blend width, note its alpha
+ *                                channel is ignored.
+ * @param optimize                Should the return surface be RLE optimized.
+ *
+ * @return                        The blended surface.
+ */
+surface blend_surface(
+		  const surface &surf
+		, double amount
+		, Uint32 color
+		, bool optimize = true);
+
 surface flip_surface(const surface &surf, bool optimize=true);
 surface flop_surface(const surface &surf, bool optimize=true);
 surface create_compatible_surface(const surface &surf, int width = -1, int height = -1);
