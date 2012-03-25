@@ -68,6 +68,10 @@ public:
 
 	/** The filters to apply to the input file. */
 	std::vector<std::string> filters;
+
+	/** Display the time that applying the filters took. */
+	bool time;
+
 private:
 
 	/**

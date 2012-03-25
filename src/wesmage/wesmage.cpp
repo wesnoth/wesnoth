@@ -26,6 +26,7 @@
 
 #include <SDL_image.h>
 
+#include <ctime>
 #include <iostream>
 
 int
@@ -45,8 +46,32 @@ main(int argc, char* argv[])
 			return EXIT_FAILURE;
 		}
 
+		clock_t begin = std::clock();
+		clock_t end = std::clock();
+		if(options.time) {
+			while(begin == (end = std::clock())) {
+				/* DO NOTHING */
+			}
+			std::cout << "Clock resolution "
+					<< end - begin
+					<< " ticks, using " << CLOCKS_PER_SEC << " ticks/second.\n"
+					<< "This give resolution of about "
+					<<static_cast<double>(end - begin) / CLOCKS_PER_SEC
+					<< " seconds.\n";
+			begin = std::clock();
+		}
+
 		BOOST_FOREACH(const std::string& filter, options.filters) {
 			filter_apply(surf, filter);
+		}
+
+		end = std::clock();
+		if(options.time) {
+			std::cout << "Applying the filters took "
+					<<  end - begin
+					<< " ticks, "
+					<< static_cast<double>(end - begin) / CLOCKS_PER_SEC
+					<< " seconds.\n";
 		}
 
 		if(!options.output_filename.empty()) {

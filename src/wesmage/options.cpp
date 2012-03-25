@@ -21,12 +21,14 @@
 
 #include <cassert>
 #include <cstdlib>
+#include <ctime>
 #include <iostream>
 
 toptions::toptions()
 	: input_filename()
 	, output_filename()
 	, filters()
+	, time(false)
 {
 }
 
@@ -110,6 +112,8 @@ print_help(const int exit_status)
 "OPTIONS:\n"
 "-o, --output FILE       The name of the output file to be written.\n"
 "-n, --dry-run           No output is written.\n"
+"-t, --time              Show the time it took to apply the filters.\n"
+"                        The resolution of the time depends on the platform.\n"
 "-f, --filter FILTER     Filters to be applied to the image. See FILTERS.\n"
 "-h, --help              Show this help and terminate the programme.\n"
 "\n"
@@ -159,6 +163,8 @@ toptions::parse(int argc, char* argv[])
 			help = true;
 		} else if(option == "-n" || option == "--dry-run") {
 			dry_run = true;
+		} else if(option == "-t" || option == "--time") {
+			result.time = true;
 		} else if(option == "-o" || option == "--output") {
 			++i;
 			VALIDATE_NOT_PAST_END;
@@ -200,6 +206,14 @@ toptions::parse(int argc, char* argv[])
 	if(result.output_filename.empty() && !dry_run) {
 		std::cerr << "Error: Output filename omitted.\n";
 		print_help(EXIT_FAILURE);
+	}
+
+	if(result.time && (std::clock() == -1)) {
+		std::cerr
+			<< "Error: No timing available on your platform, "
+			<< "option disabled.\n";
+
+		result.time = false;
 	}
 
 	/*
