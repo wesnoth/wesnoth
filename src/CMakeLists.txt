@@ -918,6 +918,7 @@ if(ENABLE_TESTS)
 		tests/test_team.cpp
 		tests/test_unit_map.cpp
 		tests/test_util.cpp
+		tests/test_sdl_utils.cpp
 		tests/test_serialization.cpp
 		tests/test_version.cpp
 		tests/gui/iterator.cpp
@@ -947,5 +948,23 @@ if(ENABLE_TESTS)
 	set_target_properties(test
 		PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}test${BINARY_SUFFIX}
 	)
+
+	if(ENABLE_TOOLS)
+		# This tool is used to create the images for the sdl_utils unit test.
+		# Due to its unique nature the programme is never installed.
+		set(create_images_SRC
+			tests/create_images.cpp
+			tools/dummy_video.cpp
+			tools/exploder_utils.cpp
+			sdl_utils.cpp
+			tracer.cpp
+			loadscreen_empty.cpp
+		)
+
+		add_executable(create_images ${create_images_SRC})
+		target_link_libraries(create_images wesnoth-core png ${tools-external-libs})
+		set_target_properties(create_images PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}create_images${BINARY_SUFFIX})
+	endif(ENABLE_TOOLS)
+
 endif(ENABLE_TESTS)
 
