@@ -601,6 +601,17 @@ test_sources.extend(test_env.Object("tests/test_config_cache.cpp"))
 
 test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libwesnoth_extras, libtest_utils], have_test_prereqs)
 
+create_images_sources = Split("""
+    tests/create_images.cpp
+    tools/dummy_video.cpp
+    tools/exploder_utils.cpp
+    sdl_utils.cpp
+    tracer.cpp
+    loadscreen_empty.cpp
+""")
+
+env.WesnothProgram("create_images", create_images_sources + [libwesnoth_core], have_server_prereqs, OBJPREFIX = "create_images_", LIBS = ["$LIBS", "png"])
+
 if env["svnrev"] != "" and env["svnrev"] != "exported":
     revision_define = "#define REVISION \"%s\"\n" % env["svnrev"]
     env.Command("#/src/revision.hpp", Value(env["svnrev"]), Action(
