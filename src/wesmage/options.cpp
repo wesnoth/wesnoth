@@ -64,7 +64,11 @@ print_option(
 	}
 
 	while(!description.empty()) {
-		if(description.size() <= description_length) {
+		size_t eol = description.find('\n');
+		if(eol <= description_length) {
+			stream << description.substr(0, eol);
+			description.erase(0, eol + 1);
+		} else if(description.size() <= description_length) {
 			stream << description;
 			description.clear();
 		} else {
