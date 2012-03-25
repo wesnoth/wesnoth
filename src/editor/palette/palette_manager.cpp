@@ -1,4 +1,4 @@
-/* $Id: editor_palettes.cpp 53522 2012-03-13 18:19:16Z fendrin $ */
+/* $Id$ */
 /*
    Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
