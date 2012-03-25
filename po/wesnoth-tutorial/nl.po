@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
+"POT-Creation-Date: 2012-03-25 14:42+0200\n"
 "PO-Revision-Date: 2010-06-23 23:03+0100\n"
 "Last-Translator: Koen Vervloesem <koen@vervloesem.eu>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -1658,14 +1658,15 @@ msgstr ""
 #. [then]
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1141
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1152
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1165
 #, fuzzy
 msgid "Advance other units and capture villages, then <b>End Turn</b>"
 msgstr ""
 "Beweeg andere eenheden naar voren en neem dorpen in, beëindig dan je beurt."
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1144
+#. [then]
+#. The unit with unit type $unit.language_name is male.
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1151
 #, fuzzy
 msgid ""
 "No other units can reach that orc. I hope my $unit.language_name survives "
@@ -1677,7 +1678,20 @@ msgstr ""
 "andere eenheden dichterbij zetten voor de volgende beurt."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1145
+#. The unit with unit type $unit.language_name is female.
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1155
+#, fuzzy
+msgid ""
+"female^No other units can reach that orc. I hope my $unit.language_name "
+"survives its counter-attack! I’d better grab more villages and move everyone "
+"closer for next turn."
+msgstr ""
+"Geen andere eenheden kunnen de ork bereiken. Ik hoop dat mijn boogschutter "
+"zijn tegenaanval overleeft! Ik kan maar het beste meer dorpen innemen en "
+"andere eenheden dichterbij zetten voor de volgende beurt."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1158
 #, fuzzy
 msgid ""
 "Yes. If your Shaman stands just behind that unit on the bridge, she will "
@@ -1687,12 +1701,12 @@ msgstr ""
 "begin van de volgende beurt genezen."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1146
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1159
 msgid "Move your Shaman onto the bridge to stand behind your other unit"
 msgstr "Zet de sjamaan op de brug, achter je andere eenheid"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1192
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1205
 msgid ""
 "Be careful: if you stand on the bridge you are exposed to attack from "
 "multiple directions!"
@@ -1701,7 +1715,7 @@ msgstr ""
 "aangevallen!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1205
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1218
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit! Cancel, and wait for them to "
@@ -1712,7 +1726,7 @@ msgstr ""
 "wacht tot ze jou aanvallen!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1215
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1228
 #, fuzzy
 msgid ""
 "Don’t forget about your Fighter in the east; you can move him south to that "
@@ -1722,7 +1736,7 @@ msgstr ""
 "verplaatsen, naar dat laatste dorp bij het kanaal."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1220
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1233
 #, fuzzy
 msgid ""
 "We need to occupy that village, otherwise they will take it next turn! Move "
@@ -1733,7 +1747,7 @@ msgstr ""
 "gewonde eenheid erin zodat hij kan herstellen, dood dan die ork!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1232
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
 #, fuzzy
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
@@ -1747,13 +1761,13 @@ msgstr ""
 "overdag sterker. Elfen zijn neutraal: dag en nacht beïnvloeden hen niet."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1233
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1246
 #, fuzzy
 msgid "<big>Time of Day</big>"
 msgstr "<big>Welkom in Wesnoth!</big>"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1248
 #, fuzzy
 msgid ""
 "\n"
@@ -1765,7 +1779,7 @@ msgstr ""
 "kaartje rechtsboven om een beschrijving van de tijd van de dag te zien."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1255
 #, fuzzy
 msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
@@ -1777,12 +1791,12 @@ msgstr ""
 "eenheid)."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1249
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1262
 msgid "Defend here"
 msgstr "Verdedig hier"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1250
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
 #, fuzzy
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
@@ -1792,12 +1806,12 @@ msgstr ""
 "het moeilijk zijn om ze weer kwijt te raken!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1256
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
 msgid "<big>Tracking Unused Units</big>"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1258
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1271
 #, fuzzy
 msgid ""
 "\n"
@@ -1814,12 +1828,12 @@ msgstr ""
 "beëindigen."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1276
 msgid "<big>Victory Conditions</big>"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1265
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1278
 msgid ""
 "\n"
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
@@ -1828,12 +1842,12 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1270
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1283
 msgid "<big>Recruit the Right Unit Types</big>"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1272
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1285
 #, fuzzy
 msgid ""
 "\n"
@@ -1844,7 +1858,7 @@ msgstr ""
 "boogschutters zijn effectief tegen de grunten, wolfruiters en hun leider."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1290
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1303
 #, fuzzy
 msgid ""
 "Stay near the keep! You need to be on a keep to recruit more units, and I "
@@ -1855,7 +1869,7 @@ msgstr ""
 "beschikking stelt!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1304
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1317
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -1864,7 +1878,7 @@ msgstr ""
 "dorp herstelt hem elke beurt en geeft hem een goede verdediging."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1315
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1328
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
@@ -1873,7 +1887,7 @@ msgstr ""
 "elke beurt en geeft hem een goede verdediging."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1327
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1340
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -1883,8 +1897,8 @@ msgstr ""
 "geval ik mis!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1363
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1379
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1376
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1392
 #, fuzzy
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
@@ -1896,7 +1910,7 @@ msgstr ""
 "zorgvuldig."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1428
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1441
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
@@ -1906,7 +1920,7 @@ msgstr ""
 "en spoedig zou zijn gepromoveerd tot rang 2."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1431
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1444
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
@@ -1916,7 +1930,7 @@ msgstr ""
 "dus ze zou spoedig zijn gepromoveerd tot rang 2."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1448
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1461
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least he was not one of our experienced "
@@ -1926,7 +1940,7 @@ msgstr ""
 "eenheden nog!"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1451
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least she was not one of our experienced "
@@ -1936,7 +1950,7 @@ msgstr ""
 "eenheden nog!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1466
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1479
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
@@ -1944,12 +1958,12 @@ msgstr ""
 "buiten het bereik van de vijand!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1467
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1480
 msgid "<big>Tracking Enemy Movement</big>"
 msgstr ""
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1469
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1482
 #, fuzzy
 msgid ""
 "\n"
@@ -1962,7 +1976,7 @@ msgstr ""
 "het Acties-menu te kiezen."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1473
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1486
 #, fuzzy
 msgid ""
 "Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
@@ -1972,7 +1986,7 @@ msgstr ""
 "name|."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1488
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1501
 #, fuzzy
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
@@ -1982,7 +1996,7 @@ msgstr ""
 "aan verwondingen toebrengen! Val met een groep eenheden overdag aan."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1509
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1522
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1995,7 +2009,7 @@ msgstr ""
 "moeilijk te raken vijanden te verdrijven."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1518
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1531
 #, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
@@ -2008,7 +2022,7 @@ msgstr ""
 "moeilijk te raken vijanden te verdrijven."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1534
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1547
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -2022,7 +2036,7 @@ msgstr ""
 "ze direct naast me staan."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1548
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1561
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -2037,7 +2051,7 @@ msgstr ""
 "zetten."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1563
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1576
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword, dealing 8 damage in 4 attacks."
@@ -2047,14 +2061,14 @@ msgstr ""
 "toebrengen."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1731
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1744
 #, fuzzy
 msgid "You took too long! We’ll never be rid of these orcs!"
 msgstr ""
 "Je hebt er te lang over gedaan! We zullen nooit van de orks verlost zijn!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1754
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1767
 #, fuzzy
 msgid ""
 "You have beaten the orcs! You may want to try some novice-level campaigns "

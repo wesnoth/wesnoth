@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
+"POT-Creation-Date: 2012-03-25 14:42+0200\n"
 "PO-Revision-Date: 2008-01-31 02:12+0200\n"
 "Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team: none\n"
@@ -1670,13 +1670,14 @@ msgstr ""
 #. [then]
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1141
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1152
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1165
 #, fuzzy
 msgid "Advance other units and capture villages, then <b>End Turn</b>"
 msgstr "Προώθησε άλλες μονάδες και κατέκτησε χωριά, τότε Τελείωσε τον Γύρο"
 
-#. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1144
+#. [then]
+#. The unit with unit type $unit.language_name is male.
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1151
 #, fuzzy
 msgid ""
 "No other units can reach that orc. I hope my $unit.language_name survives "
@@ -1688,7 +1689,20 @@ msgstr ""
 "μονάδες μου πιο κοντά τον επόμενο γύρο."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1145
+#. The unit with unit type $unit.language_name is female.
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1155
+#, fuzzy
+msgid ""
+"female^No other units can reach that orc. I hope my $unit.language_name "
+"survives its counter-attack! I’d better grab more villages and move everyone "
+"closer for next turn."
+msgstr ""
+"Καμιά άλλη μονάδα δεν φτάνει αυτόν τον Ορκ: Ελπίζω ο τοξότης να επιζήσει την "
+"αντεπίθεση! Καλα θα κάνω να πάρω περισσότερα χωριά, και να μετακινήσω τις "
+"μονάδες μου πιο κοντά τον επόμενο γύρο."
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1158
 #, fuzzy
 msgid ""
 "Yes. If your Shaman stands just behind that unit on the bridge, she will "
@@ -1698,13 +1712,13 @@ msgstr ""
 "γιατρέψει στην αρχή του επόμενου γύρου, όπως πριν."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1146
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1159
 #, fuzzy
 msgid "Move your Shaman onto the bridge to stand behind your other unit"
 msgstr "Μετακίνησε τον Σαμάνο στην γέφυρα πίσω από μια άλλη μονάδα"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1192
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1205
 msgid ""
 "Be careful: if you stand on the bridge you are exposed to attack from "
 "multiple directions!"
@@ -1713,7 +1727,7 @@ msgstr ""
 "πολλές πλευρές!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1205
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1218
 #, fuzzy
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
@@ -1725,7 +1739,7 @@ msgstr ""
 "επιτεθούν!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1215
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1228
 #, fuzzy
 msgid ""
 "Don’t forget about your Fighter in the east; you can move him south to that "
@@ -1735,7 +1749,7 @@ msgstr ""
 "στο τελευταίο χωριό δίπλα απ' το κανάλι."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1220
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1233
 #, fuzzy
 msgid ""
 "We need to occupy that village, otherwise they will take it next turn! Move "
@@ -1747,7 +1761,7 @@ msgstr ""
 "θεραπευτεί, και τότε σκότωσε αυτόν τον Ορκ!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1232
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
 #, fuzzy
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
@@ -1762,13 +1776,13 @@ msgstr ""
 "και νύχτα."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1233
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1246
 #, fuzzy
 msgid "<big>Time of Day</big>"
 msgstr "*Καλωσορίσατε στο Γουέσνοθ!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1248
 #, fuzzy
 msgid ""
 "\n"
@@ -1780,7 +1794,7 @@ msgstr ""
 "δεξιά, για να δεις μια περιγραφή της ώρας της μέρας."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1255
 #, fuzzy
 msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
@@ -1792,12 +1806,12 @@ msgstr ""
 "θεραπεύσουν 8 (το μέγιστο για κάθε μονάδα)."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1249
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1262
 msgid "Defend here"
 msgstr "Προστατέψου εδώ"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1250
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
 #, fuzzy
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
@@ -1807,12 +1821,12 @@ msgstr ""
 "δύσκολο να τους ξεφορτωθούμε!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1256
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
 msgid "<big>Tracking Unused Units</big>"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1258
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1271
 #, fuzzy
 msgid ""
 "\n"
@@ -1828,12 +1842,12 @@ msgstr ""
 "Όταν το 'N' δεν επιλέγει κάποια μονάδα, μπορείς να τελειώσεις τον γύρο σου."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1276
 msgid "<big>Victory Conditions</big>"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1265
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1278
 msgid ""
 "\n"
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
@@ -1842,12 +1856,12 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1270
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1283
 msgid "<big>Recruit the Right Unit Types</big>"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1272
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1285
 #, fuzzy
 msgid ""
 "\n"
@@ -1859,7 +1873,7 @@ msgstr ""
 "τους."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1290
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1303
 #, fuzzy
 msgid ""
 "Stay near the keep! You need to be on a keep to recruit more units, and I "
@@ -1870,7 +1884,7 @@ msgstr ""
 "το δικό του στρατόπεδο!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1304
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1317
 #, fuzzy
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
@@ -1880,7 +1894,7 @@ msgstr ""
 "νόμιζα: θα γιατρέυεται και θα έχει μια χαρά άμυνα εκεί που είναι."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1315
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1328
 #, fuzzy
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
@@ -1890,7 +1904,7 @@ msgstr ""
 "γιατρεύεται κάθε γύρο και θα έχει καλή άμυνα."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1327
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1340
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -1900,8 +1914,8 @@ msgstr ""
 "αστοχήσω!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1363
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1379
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1376
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1392
 #, fuzzy
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
@@ -1913,7 +1927,7 @@ msgstr ""
 "προσεκτικά την μονάδα που θα δώσει αυτό το χτύπημα!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1428
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1441
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
@@ -1923,7 +1937,7 @@ msgstr ""
 "εμπειρίας, το οποίο σημαίνει ότι θα αναβαθμιζόταν στο 2ο επίπεδο σύντομα."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1431
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1444
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
@@ -1933,7 +1947,7 @@ msgstr ""
 "εμπειρίας, το οποίο σημαίνει ότι θα αναβαθμιζόταν στο 2ο επίπεδο σύντομα."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1448
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1461
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least he was not one of our experienced "
@@ -1943,7 +1957,7 @@ msgstr ""
 "χάσουμε μία εμπειροπόλεμη μονάδα!"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1451
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least she was not one of our experienced "
@@ -1953,7 +1967,7 @@ msgstr ""
 "χάσουμε μία εμπειροπόλεμη μονάδα!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1466
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1479
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
@@ -1961,12 +1975,12 @@ msgstr ""
 "την εμβέλεια του εχθρού!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1467
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1480
 msgid "<big>Tracking Enemy Movement</big>"
 msgstr ""
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1469
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1482
 #, fuzzy
 msgid ""
 "\n"
@@ -1979,7 +1993,7 @@ msgstr ""
 "με την μια με την 'Εμφάνιση κινήσεων εχθρού' από το μενού 'Ενέργειες'."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1473
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1486
 #, fuzzy
 msgid ""
 "Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
@@ -1989,7 +2003,7 @@ msgstr ""
 "user_description|."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1488
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1501
 #, fuzzy
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
@@ -1999,7 +2013,7 @@ msgstr ""
 "πολλές μονάδες μαζί, κατά τη διάρκεια της μέρας."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1509
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1522
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -2012,7 +2026,7 @@ msgstr ""
 "δύσκολες εχθρικές μονάδες."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1518
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1531
 #, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
@@ -2025,7 +2039,7 @@ msgstr ""
 "δύσκολες εχθρικές μονάδες."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1534
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1547
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -2039,7 +2053,7 @@ msgstr ""
 "είναι δίπλα μου."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1548
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1561
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -2053,7 +2067,7 @@ msgstr ""
 "ζημιά. Τοποθέτησέ με σωστά."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1563
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1576
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -2063,13 +2077,13 @@ msgstr ""
 "Είμαι σχετικά καλός με το σπαθί: 4 επιθέσεις με 8 ζημιά η καθε μια τους."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1731
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1744
 #, fuzzy
 msgid "You took too long! We’ll never be rid of these orcs!"
 msgstr "Παίρνει πολλύ ώρα. Ποτέ δεν θα ξεφορτωθούμε αυτά τα Ορκ!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1754
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1767
 #, fuzzy
 msgid ""
 "You have beaten the orcs! You may want to try some novice-level campaigns "
