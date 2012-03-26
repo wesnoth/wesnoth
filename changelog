@@ -68,6 +68,8 @@ Version 1.11.0-svn:
      get_side, get_side_count, get_unit_type_ids, get_unit_type,
      register_wml_action
    * Changed: Extended support for toggle_button.
+   * Fixed: wesnoth.find_reach does no longer replace a passed private lua
+     proxy unit with the on-map unit at the same location
  * Multiplayer:
    * Fix an accidental terrain type change in Isar's Cross
    * Fix attacker side being human in 6p_Team_Survival (bug #19400)
