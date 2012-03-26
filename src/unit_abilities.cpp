@@ -882,15 +882,23 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		effect_list_.push_back(set_effect);
 	}
 
-	float multiplier = 1.0f;
-	float divisor = 1.0f;
+	/* Do multiplication with floating point values rather than integers
+	 * We want two places of precision for each multiplier
+	 * Using integers multiplied by 100 to keep precision causes overflow
+	 *   after 3-4 abilities for 32-bit values and ~8 for 64-bit
+	 * Avoiding the overflow by dividing after each step introduces rounding errors
+	 *   that may vary depending on the order effects are applied
+	 * As the final values are likely <1000 (always true for mainline), loss of less significant digits is not an issue
+	 */
+	double multiplier = 1.0;
+	double divisor = 1.0;
 	std::map<std::string,individual_effect>::const_iterator e, e_end;
 	for (e = values_mul.begin(), e_end = values_mul.end(); e != e_end; ++e) {
-		multiplier *= e->second.value/100.0f;		
+		multiplier *= e->second.value/100.0;		
 		effect_list_.push_back(e->second);
 	}
 	for (e = values_div.begin(), e_end = values_div.end(); e != e_end; ++e) {
-		divisor *= e->second.value/100.0f;
+		divisor *= e->second.value/100.0;
 		effect_list_.push_back(e->second);
 	}
 	int addition = 0;
