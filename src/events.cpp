@@ -36,8 +36,6 @@
 namespace events
 {
 
-void raise_help_string_event(int mousex, int mousey);
-
 namespace {
 
 struct context
