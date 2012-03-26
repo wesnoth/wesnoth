@@ -309,6 +309,96 @@ surface stretch_surface_vertical(
 	return optimize ? create_optimized_surface(dst) : dst;
 }
 
+#ifdef PANDORA
+static void
+scale_surface_down(surface& dst, const surface& src, const int w_dst, const int h_dst)
+{
+	const_surface_lock src_lock(src);
+	surface_lock dst_lock(dst);
+
+	const Uint32* const src_pixels = src_lock.pixels();
+	Uint32* const dst_pixels = dst_lock.pixels();
+
+	int y_dst = 0;       // The current y in the destination surface
+
+	int y_src = 0;       // The current y in the source surface
+	int y_src_next = 0;  // The next y in the source surface
+	int y_step = 0;      // The y stepper
+	int h_src = src->h;  // The height of the source surface
+
+	for( ; y_dst != h_dst; ++y_dst, y_src = y_src_next) {
+
+		y_step += h_src;
+		do {
+			++y_src_next;
+			y_step -= h_dst;
+		} while(y_step >= h_dst);
+
+		int x_dst = 0;       // The current x in the destination surface
+
+		int x_src = 0;       // The current x in the source surface
+		int x_src_next = 0;  // The next x in the source surface
+		int x_step = 0;      // The x stepper
+		int w_src = src->w;  // The width of the source surface
+
+		for( ; x_dst != w_dst; ++x_dst, x_src = x_src_next) {
+
+			x_step += w_src;
+			do {
+				++x_src_next;
+				x_step -= w_dst;
+			} while(x_step >= w_dst);
+
+			int r_sum = 0, g_sum = 0, b_sum = 0, a_sum = 0;
+			int samples = 0;
+
+			// We now have a rectangle, (xsrc,ysrc,xratio,yratio)
+			// which we want to derive the pixel from
+			for(int x = x_src; x < x_src_next; ++x) {
+				for(int y = y_src; y < y_src_next; ++y) {
+
+					++samples;
+
+					const Uint32 pixel = src_pixels[y_src * w_src + x_src];
+					const Uint8 a = pixel >> 24;
+					if(a) {
+						a_sum += a;
+						r_sum += a * static_cast<Uint8>(pixel >> 16);
+						g_sum += a * static_cast<Uint8>(pixel >> 8);
+						b_sum += a * static_cast<Uint8>(pixel);
+					}
+				}
+			}
+
+			if(a_sum) {
+
+				const int adjustment = (a_sum | 1) >> 1;
+				r_sum += adjustment;
+				g_sum += adjustment;
+				b_sum += adjustment;
+
+				r_sum /= a_sum;
+				g_sum /= a_sum;
+				b_sum /= a_sum;
+
+				assert(samples == (x_src_next - x_src) * (y_src_next - y_src));
+				if(samples != 1) {
+					a_sum += (samples | 1) >> 1;
+					a_sum /= samples;
+				}
+			}
+
+			dst_pixels[y_dst * w_dst + x_dst] =
+					  static_cast<Uint8>(a_sum) << 24
+					| static_cast<Uint8>(r_sum) << 16
+					| static_cast<Uint8>(g_sum) << 8
+					| static_cast<Uint8>(b_sum);
+		}
+	}
+}
+
+#endif
+
 // NOTE: Don't pass this function 0 scaling arguments.
 surface scale_surface(const surface &surf, int w, int h, bool optimize)
 {
@@ -469,6 +559,9 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 	}
 	else
 	{
+#ifdef PANDORA
+		scale_surface_down(dst, src, w, h);
+#else
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
@@ -521,6 +614,7 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 				dst_pixels[ydst*dst->w + xdst] = SDL_MapRGBA(dst->format,Uint8(red),Uint8(green),Uint8(blue),Uint8(alpha));
 			}
 		}
+#endif
 	}
 
 	return optimize ? create_optimized_surface(dst) : dst;
