@@ -71,13 +71,16 @@ std::vector<int> side_filter::get_teams() const
 
 static bool check_side_number(const team &t, const std::string &str)
 {
-		std::vector<std::string> list = utils::split(str);
-		std::string side_number = str_cast(t.side());
-		if (std::find(list.begin(),list.end(),side_number)==list.end())
-		{
-			return false;
+		std::vector<std::pair<int,int> > ranges = utils::parse_ranges(str);
+		int side_number = t.side();
+
+		std::vector<std::pair<int,int> >::const_iterator range, range_end = ranges.end();
+		for (range = ranges.begin(); range != range_end; ++range) {
+			if(side_number >= range->first && side_number <= range->second) {
+				return true;
+			}
 		}
-		return true;
+		return false;
 }
 
 bool side_filter::match_internal(const team &t) const
