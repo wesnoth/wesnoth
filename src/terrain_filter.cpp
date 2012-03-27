@@ -151,6 +151,27 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			return false;
 	}
 
+	// Allow filtering on visibility to a side
+	if (cfg_.has_child("filter_vision")) {
+		const vconfig::child_list& vis_filt = cfg_.get_children("filter_vision");
+		vconfig::child_list::const_iterator i, i_end = vis_filt.end();
+		for (i = vis_filt.begin(); i != i_end; ++i) {
+			bool visible = (*i)["visible"].to_bool(true);
+			bool respect_fog = (*i)["respect_fog"].to_bool(true);
+
+			side_filter ssf(*i);
+			std::vector<int> sides = ssf.get_teams();
+
+			foreach(const int side, sides) {
+				const team &viewing_team = resources::teams->at(side - 1);
+				bool viewer_sees = respect_fog ? !viewing_team.fogged(loc) : !viewing_team.shrouded(loc);
+				if (visible != viewer_sees) {
+					return false;
+				}
+			}
+		}
+	}
+
 	//Allow filtering on adjacent locations
 	if(cfg_.has_child("filter_adjacent_location")) {
 		map_location adjacent[6];
