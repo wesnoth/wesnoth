@@ -520,6 +520,8 @@ linechanges = (
         # Changes just before 1.9.2
         ("[removeitem]", "[remove_item]"),
         ("[/removeitem]", "[/remove_item]"),
+        # Changes just before 1.11.0
+        ("viewing_side", "side")
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
