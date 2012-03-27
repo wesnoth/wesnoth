@@ -157,6 +157,14 @@ Version 1.11.0-svn:
    * Added [show_if] support to [objectives] [note]
    * New tags: [lift_fog] and [reset_fog]
    * Using more than 4 multiply effects no longer wraps to negative integers
+   * Added: support for ranges of sides in SSF
+   * The [filter_vision] tag of the SUF now uses a SSF
+     (viewing_side= still works, but is deprecated and
+     should be renamed to side=)
+     Semantics for empty side information changes from
+     "all enemy sides" to "all sides"
+   * [filter_vision] now works in location filters as well as unit filters,
+     and has an additional key (respect_fog) for locations
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
