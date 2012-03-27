@@ -1478,6 +1478,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			bool visible = (*i)["visible"].to_bool(true);
 			std::set<int> viewers;
 			if (i->has_attribute("viewing_side")) {
+				ERR_NG << "[filter_vision]viewing_side= is deprecated, use side=\n";
 				std::vector<std::pair<int,int> > ranges = utils::parse_ranges((*i)["viewing_side"]);
 				std::vector<std::pair<int,int> >::const_iterator range, range_end = ranges.end();
 				for (range = ranges.begin(); range != range_end; ++range) {
@@ -1488,13 +1489,10 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 					}
 				}
 			} else {
-				//if viewing_side is not defined, default to all enemies
-				const team& my_team = teams_manager::get_teams()[this->side()-1];
-				for (size_t i = 1; i <= teams_manager::get_teams().size(); ++i) {
-					if (my_team.is_enemy(i)) {
-						viewers.insert(i);
-					}
-				}
+				// Use standard side filter
+				side_filter ssf(*i);
+				std::vector<int> sides = ssf.get_teams();
+				viewers.insert(sides.begin(), sides.end());
 			}
 			if (viewers.empty()) {
 				return false;
