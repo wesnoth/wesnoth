@@ -777,7 +777,6 @@ static void toggle_fog(const bool clear, const vconfig& cfg)
 			t.add_fog_override(locs);
 		else
 			t.remove_fog_override(locs);
-		recalculate_fog(side_num);
 	}
 
 	// Flag a screen update.
