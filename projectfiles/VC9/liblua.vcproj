@@ -19,7 +19,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)\liblua"
 			ConfigurationType="4"
 			CharacterSet="1"
 			>
@@ -111,7 +111,7 @@
 				EnableFunctionLevelLinking="true"
 				OpenMP="true"
 				UsePrecompiledHeader="0"
-				WarningLevel="3"
+				WarningLevel="0"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -145,7 +145,7 @@
 		<Configuration
 			Name="Debug_with_VLD|Win32"
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)\liblua"
 			ConfigurationType="4"
 			CharacterSet="1"
 			>
@@ -174,7 +174,7 @@
 				RuntimeLibrary="3"
 				OpenMP="true"
 				UsePrecompiledHeader="0"
-				WarningLevel="4"
+				WarningLevel="0"
 				DebugInformationFormat="4"
 			/>
 			<Tool
