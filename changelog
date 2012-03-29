@@ -166,6 +166,9 @@ Version 1.11.0-svn:
      "all enemy sides" to "all sides"
    * [filter_vision] now works in location filters as well as unit filters,
      and has an additional key (respect_fog) for locations
+   * Support for [object]unit_type= and [object]unit_gender= has been
+     removed, use [object][filter]type= respectively [object][filter]gender=
+     instead
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
