@@ -29,6 +29,9 @@
 #include <cassert>
 #include <cstring>
 #include <iostream>
+#ifdef PANDORA
+#include "neon.hpp"
+#endif
 
 surface_lock::surface_lock(surface &surf) : surface_(surf), locked_(false)
 {
@@ -1479,25 +1482,54 @@ surface blend_surface(const surface &surf, double amount, Uint32 color, bool opt
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w*surf->h;
 
-		Uint8 red, green, blue, alpha;
-		SDL_GetRGBA(color,nsurf->format,&red,&green,&blue,&alpha);
+		Uint8 ratio = amount * 255;
+		const Uint16 red   = ratio * static_cast<Uint8>(color >> 16);
+		const Uint16 green = ratio * static_cast<Uint8>(color >> 8);
+		const Uint16 blue  = ratio * static_cast<Uint8>(color);
 
-		red   = Uint8(red   * amount);
-		green = Uint8(green * amount);
-		blue  = Uint8(blue  * amount);
+		ratio = 255 - ratio;
 
-		amount = 1.0 - amount;
+#ifdef PANDORA
+		/*
+		 * Use an optimised version of the generic algorithm. The optimised
+		 * version processes 8 pixels a time. If the number of pixels is not an
+		 * exact multiple of 8 it falls back to the generic algorithm to handle
+		 * the last pixels.
+		 */
+		uint16x8_t vred = vdupq_n_u16(red);
+		uint16x8_t vgreen = vdupq_n_u16(green);
+		uint16x8_t vblue = vdupq_n_u16(blue);
 
+		uint8x8_t vratio = vdup_n_u8(ratio);
+
+		const int div = (nsurf->w * surf->h) / 8;
+		for(int i = 0; i < div; ++i, beg += 8) {
+			uint8x8x4_t rgba = vld4_u8(reinterpret_cast<Uint8*>(beg));
+
+			uint16x8_t b = vmull_u8(rgba.val[0], vratio);
+			uint16x8_t g = vmull_u8(rgba.val[1], vratio);
+			uint16x8_t r = vmull_u8(rgba.val[2], vratio);
+
+			b = vaddq_u16(b, vblue);
+			g = vaddq_u16(g, vgreen);
+			r = vaddq_u16(r, vred);
+
+			rgba.val[0] = vshrn_n_u16(b, 8);
+			rgba.val[1] = vshrn_n_u16(g, 8);
+			rgba.val[2] = vshrn_n_u16(r, 8);
+
+			vst4_u8(reinterpret_cast<Uint8*>(beg), rgba);
+		}
+#endif
 		while(beg != end) {
-			Uint8 r, g, b, a;
-			a = (*beg) >> 24;
-			r = (*beg) >> 16;
-			g = (*beg) >> 8;
-			b = (*beg);
+			Uint8 a = (*beg) >> 24;
+			Uint8 r = (*beg) >> 16;
+			Uint8 g = (*beg) >> 8;
+			Uint8 b = (*beg);
 
-			r = Uint8(r * amount) + red;
-			g = Uint8(g * amount) + green;
-			b = Uint8(b * amount) + blue;
+			r = (r * ratio + red) >> 8;
+			g = (g * ratio + green) >> 8;
+			b = (b * ratio + blue) >> 8;
 
 			*beg = (a << 24) | (r << 16) | (g << 8) | b;
 
