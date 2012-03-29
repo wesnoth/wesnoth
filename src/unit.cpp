@@ -2336,25 +2336,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 	std::vector<t_string> effects_description;
 	foreach (const config &effect, mod.child_range("effect"))
 	{
-		// See if the effect only applies to certain unit types
-		const std::string &type_filter = effect["unit_type"];
-		if(type_filter.empty() == false) {
-			const std::vector<std::string>& types = utils::split(type_filter);
-			if(std::find(types.begin(),types.end(),type_id()) == types.end()) {
-				continue;
-			}
-		}
-		// See if the effect only applies to certain genders
-		const std::string &gender_filter = effect["unit_gender"];
-		if(gender_filter.empty() == false) {
-			const std::string& gender = gender_string(gender_);
-			const std::vector<std::string>& genders = utils::split(gender_filter);
-			if(std::find(genders.begin(),genders.end(),gender) == genders.end()) {
-				continue;
-			}
-		}
-		/** @todo The above two filters can be removed in 1.7 they're covered by the SUF. */
-		// Apply SUF. (Filtering on location is probably a bad idea though.)
+		// Apply SUF.
 		if (const config &afilter = effect.child("filter"))
 			if (!matches_filter(vconfig(afilter), loc_)) continue;
 
