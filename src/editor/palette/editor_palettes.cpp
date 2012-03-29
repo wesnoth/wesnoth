@@ -104,11 +104,11 @@ void editor_palette<Item>::set_group(const std::string& id)
 	if(active_group().empty()) {
 		ERR_ED << "No items found in group with the id: '" << id << "'.\n";
 	}
-	gui_.set_terrain_report(active_group_report());
+	gui_.set_palette_report(active_group_report());
 }
 template void editor_palette<t_translation::t_terrain>::set_group(const std::string& id);
 template void editor_palette<unit_type>::set_group(const std::string& id);
-template void editor_palette<void*>::set_group(const std::string& id);
+//template void editor_palette<void*>::set_group(const std::string& id);
 
 template<class Item>
 void editor_palette<Item>::set_group(size_t index)
@@ -118,7 +118,7 @@ void editor_palette<Item>::set_group(size_t index)
 }
 template void editor_palette<t_translation::t_terrain>::set_group(size_t index);
 template void editor_palette<unit_type>::set_group(size_t index);
-template void editor_palette<void*>::set_group(size_t index);
+//template void editor_palette<void*>::set_group(size_t index);
 
 template<class Item>
 size_t editor_palette<Item>::active_group_index()
@@ -134,7 +134,7 @@ size_t editor_palette<Item>::active_group_index()
 }
 template size_t editor_palette<t_translation::t_terrain>::active_group_index();
 template size_t editor_palette<unit_type>::active_group_index();
-template size_t editor_palette<void*>::active_group_index();
+//template size_t editor_palette<void*>::active_group_index();
 
 template<class Item>
 const config editor_palette<Item>::active_group_report()
@@ -152,7 +152,7 @@ const config editor_palette<Item>::active_group_report()
 }
 template const config editor_palette<t_translation::t_terrain>::active_group_report();
 template const config editor_palette<unit_type>::active_group_report();
-template const config editor_palette<void*>::active_group_report();
+//template const config editor_palette<void*>::active_group_report();
 
 template<class Item>
 void editor_palette<Item>::adjust_size(const size_specs& size)
@@ -167,52 +167,38 @@ void editor_palette<Item>::adjust_size(const size_specs& size)
 }
 template void editor_palette<t_translation::t_terrain>::adjust_size(const size_specs& size);
 template void editor_palette<unit_type>::adjust_size(const size_specs& size);
-template void editor_palette<void*>::adjust_size(const size_specs& size);
-
+//template void editor_palette<void*>::adjust_size(const size_specs& size);
 
 template<class Item>
 void editor_palette<Item>::select_fg_item(std::string item_id)
 {
 	if (selected_fg_item_ != item_id) {
 		selected_fg_item_ = item_id;
-		//TODO
-		//set_dirty();
-		//update_report();
 	}
 }
 template void editor_palette<t_translation::t_terrain>::select_fg_item(std::string terrain_id);
 template void editor_palette<unit_type>::select_fg_item(std::string unit_id);
-template void editor_palette<void*>::select_fg_item(std::string unit_id);
-
-
+//template void editor_palette<void*>::select_fg_item(std::string unit_id);
 
 template<class Item>
 void editor_palette<Item>::select_bg_item(std::string item_id)
 {
 	if (selected_bg_item_ != item_id) {
 		selected_bg_item_ = item_id;
-		//TODO
-		//set_dirty();
-		//update_report();
 	}
 }
 template void editor_palette<t_translation::t_terrain>::select_bg_item(std::string terrain_id);
 template void editor_palette<unit_type>::select_bg_item(std::string unit_id);
-template void editor_palette<void*>::select_bg_item(std::string unit_id);
-
+//template void editor_palette<void*>::select_bg_item(std::string unit_id);
 
 template<class Item>
 void editor_palette<Item>::swap()
 {
 	std::swap(selected_fg_item_, selected_bg_item_);
-	//TODO
-	//set_dirty();
-	//update_report();
 }
 template void editor_palette<t_translation::t_terrain>::swap();
 template void editor_palette<unit_type>::swap();
-template void editor_palette<void*>::swap();
-
+//template void editor_palette<void*>::swap();
 
 template<class Item>
 size_t editor_palette<Item>::num_items()
@@ -241,10 +227,6 @@ void editor_palette<Item>::draw(bool)
 		dstrect.y = y;
 		dstrect.w = item_size_;
 		dstrect.h = item_size_;
-
-		//TODO
-		//Reset the tile background
-		//bg_restore(dstrect);
 
 		std::stringstream tooltip_text;
 
@@ -294,7 +276,7 @@ void editor_palette<Item>::draw(bool)
 }
 template void editor_palette<t_translation::t_terrain>::draw(bool);
 template void editor_palette<unit_type>::draw(bool);
-template void editor_palette<void*>::draw(bool);
+//template void editor_palette<void*>::draw(bool);
 
 template<class Item>
 int editor_palette<Item>::tile_selected(const int x, const int y) const

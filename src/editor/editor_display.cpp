@@ -24,7 +24,7 @@ editor_display::editor_display(CVideo& video, const editor_map* map,
 	: display(video, map, theme_cfg, level)
 	, brush_locations_()
 	, toolbar_hint_()
-	, terrain_report_()
+	, palette_report_()
 {
 	clear_screen();
 }
@@ -114,7 +114,7 @@ void editor_display::draw_sidebar()
 	text = toolbar_hint_;
 	refresh_report("editor_tool_hint", element);
 
-	refresh_report("terrain_image", terrain_report_);
+	refresh_report("terrain_image", palette_report_);
 }
 
 } //end namespace editor

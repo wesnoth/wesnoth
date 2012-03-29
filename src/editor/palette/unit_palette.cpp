@@ -75,6 +75,10 @@ void unit_palette::setup(const config& /*cfg*/)
 	//std::stable_partition(items.begin(), items.end(), is_valid_terrain);
 
 	// Set the default group
+
+	select_fg_item("Elvish Fighter");
+	select_bg_item("Elvish Archer");
+
 	set_group("human");
 
 	if(active_group().empty()) {

@@ -75,7 +75,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	context_manager_->get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 	image::set_color_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
-//  TODO enable if you can say what the purpose of the code is.
+//  TODO enable if you can say what the purpose of the code is. I think it is old stuff and deserves to be removed.
 /*	theme& theme = gui().get_theme();
 	const theme::menu* default_tool_menu = NULL;
 	foreach (const theme::menu& m, theme.menus()) {
@@ -85,9 +85,9 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 		}
 	}*/
 
+	gui().redraw_everything();
 	//TODO
-//	toolkit_->adjust_size();
-	events::raise_draw_event();
+    //events::raise_draw_event();
 /*  TODO enable if you can say what the purpose of the code is.
 	if (default_tool_menu != NULL) {
 		const SDL_Rect& menu_loc = default_tool_menu->location(get_display().screen_area());
@@ -95,7 +95,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 		return;
 	}
 */
-
 }
 
 void editor_controller::init_gui()
@@ -167,26 +166,17 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 
 void editor_controller::quit_confirm(EXIT_STATUS mode)
 {
-	std::vector<std::string> modified;
-	foreach (map_context* mc, context_manager_->map_contexts_) {
-		if (mc->modified()) {
-			if (!mc->get_filename().empty()) {
-				modified.push_back(mc->get_filename());
-			} else {
-				modified.push_back(_("(New Map)"));
-			}
-		}
-	}
+	std::string modified;
+	size_t amount = context_manager_->modified_maps(modified);
+
 	std::string message;
-	if (modified.empty()) {
+	if (amount == 0) {
 		message = _("Do you really want to quit?");
-	} else if (modified.size() == 1) {
+	} else if (amount == 1) {
 		message = _("Do you really want to quit? Changes in the map since the last save will be lost.");
 	} else {
 		message = _("Do you really want to quit? The following maps were modified and all changes since the last save will be lost:");
-		foreach (std::string& str, modified) {
-			message += "\n" + str;
-		}
+		message += modified;
 	}
 	const int res = gui2::show_message(gui().video(), _("Quit"), message, gui2::tmessage::yes_no_buttons);
 	if(res != gui2::twindow::CANCEL) {
@@ -227,7 +217,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 
 				switch (active_menu_) {
 					case editor::MAP:
-						if (i < context_manager_->map_contexts_.size()) {
+						if (i < context_manager_->open_maps()) {
 							return true;
 						}
 						return false;
@@ -406,8 +396,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 			//TODO rename that hotkey
 		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
-			//TODO
-//			mouse_action_->get_palette()->swap();
+			toolkit_->palette_manager_->active_palette().swap();
 			toolkit_->set_mouseover_overlay();
 			return true;
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
@@ -470,7 +459,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_SELECTION_FILL:
 			//TODO
-//			fill_selection();
+            //fill_selection();
 			return true;
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			context_manager_->perform_refresh(editor_action_shuffle_area(
@@ -653,7 +642,7 @@ void editor_controller::cut_selection()
 {
 	copy_selection();
 	//TODO
-	//perform_refresh(editor_action_paint_area(get_map().selection(), terrain_palette_->selected_bg_item()));
+	//context_manager_->perform_refresh(editor_action_paint_area(get_map().selection(), selected_bg_terrain()));
 }
 
 void editor_controller::export_selection_coords()
@@ -690,8 +679,6 @@ void editor_controller::perform_refresh_delete(editor_action* action, bool drag_
 	}
 }
 
-
-
 void editor_controller::refresh_image_cache()
 {
 	image::flush_cache();
@@ -701,6 +688,8 @@ void editor_controller::refresh_image_cache()
 void editor_controller::display_redraw_callback(display&)
 {
 	toolkit_->adjust_size();
+	//TODO
+	//seems not to be needed and speeds up drawing?
 	//gui().invalidate_all();
 }
 

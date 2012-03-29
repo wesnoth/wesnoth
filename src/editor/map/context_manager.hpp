@@ -25,6 +25,9 @@ namespace editor {
 
 class context_manager {
 
+public:
+	size_t  modified_maps(std::string& modified);
+
 private:
 	editor_display& gui_;
 
@@ -44,6 +47,8 @@ public:
 	int auto_update_transitions_;
 
 public:
+
+	size_t open_maps(void) { return map_contexts_.size(); };
 
 	/**
 	 * Peform an action on the current map_context, then refresh the display.
@@ -160,9 +165,11 @@ public:
 	/** Switches the context to the one under the specified index. */
 	void switch_context(const int index);
 
+private:
 	/** The currently opened map context object */
 	std::vector<map_context*> map_contexts_;
 
+public:
 	/**
 	 * Save the map under a given filename.
 	 * @return true on success

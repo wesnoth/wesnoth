@@ -43,17 +43,9 @@ public:
 
 	virtual ~common_palette() {}
 
+	//event handling
 	virtual bool left_mouse_click(const int x, const int y) = 0;
 	virtual bool right_mouse_click(const int x, const int y) = 0;
-
-	virtual void set_group(size_t index) = 0;
-
-	virtual void set_start_item(size_t index) = 0;
-
-	//TODO
-//	virtual size_t active_group_index() = 0;
-
-	virtual const std::vector<item_group>& get_groups() const = 0;
 
 	/** Scroll the editor-palette up one step if possible. */
 	virtual bool scroll_up() = 0;
@@ -61,16 +53,24 @@ public:
 	/** Scroll the editor-palette down one step if possible. */
 	virtual bool scroll_down() = 0;
 
-	virtual void swap() = 0;
-
+	//drawing
 	virtual void adjust_size(const size_specs& size) = 0;
-
 	virtual void draw(bool) = 0;
 
-	virtual size_t num_items() = 0;
+	//group
+	virtual void set_group(size_t index) = 0;
+	virtual void next_group() = 0;
+	virtual void prev_group() = 0;
+	virtual const config active_group_report() = 0;
+	virtual const std::vector<item_group>& get_groups() const = 0;
 
+    //item
+	virtual size_t num_items() = 0;
 	virtual size_t start_num() = 0;
+	virtual void set_start_item(size_t index) = 0;
+	virtual void swap() = 0;
 };
+
 
 }
 

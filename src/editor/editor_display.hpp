@@ -37,7 +37,7 @@ public:
 	void rebuild_terrain(const map_location &loc);
 	void set_toolbar_hint(const std::string& value) { toolbar_hint_ = value; }
 
-	void set_terrain_report(const config terrain_report) {terrain_report_ = terrain_report;};
+	void set_palette_report(const config palette_report) {palette_report_ = palette_report;};
 
 protected:
 	void pre_draw();
@@ -55,7 +55,7 @@ protected:
 	std::string toolbar_hint_;
 
 private:
-	config terrain_report_;
+	config palette_report_;
 };
 
 } //end namespace editor

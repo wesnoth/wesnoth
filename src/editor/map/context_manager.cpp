@@ -65,6 +65,23 @@ private:
 	bool refreshed_;
 };
 
+size_t context_manager::modified_maps(std::string& message) {
+	std::vector<std::string> modified;
+	foreach (map_context* mc, map_contexts_) {
+		if (mc->modified()) {
+			if (!mc->get_filename().empty()) {
+				modified.push_back(mc->get_filename());
+			} else {
+				modified.push_back(_("(New Map)"));
+			}
+		}
+	}
+	foreach (std::string& str, modified) {
+		message += "\n" + str;
+	}
+	return modified.size();
+}
+
 context_manager::context_manager(editor_display& gui, const config& game_config)
 	: gui_(gui)
 	, game_config_(game_config)
@@ -257,10 +274,9 @@ void context_manager::resize_map_dialog()
 	if(gui2::teditor_resize_map::execute(w, h, dir, copy, gui_.video())) {
 
 		if (w != get_map().w() || h != get_map().h()) {
-			//TODO
-	//		t_translation::t_terrain fill = palette_manager_->selected_bg_item();
+	        t_translation::t_terrain fill = get_selected_bg_terrain();
 			if (copy) {
-		//		fill = t_translation::NONE_TERRAIN;
+				fill = t_translation::NONE_TERRAIN;
 			}
 			int x_offset = get_map().w() - w;
 			int y_offset = get_map().h() - h;
@@ -303,9 +319,8 @@ void context_manager::resize_map_dialog()
 					x_offset = 0;
 					break;
 			}
-			//TODO
-			//editor_action_resize_map a(w, h, x_offset, y_offset, fill);
-			//perform_refresh(a);
+			editor_action_resize_map a(w, h, x_offset, y_offset, fill);
+			perform_refresh(a);
 		}
 	}
 }

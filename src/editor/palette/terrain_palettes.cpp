@@ -26,9 +26,16 @@
 
 namespace {
 	static std::string selected_terrain;
+	static t_translation::t_terrain bg_terrain;
 }
 
+
+
 namespace editor {
+
+t_translation::t_terrain get_selected_bg_terrain() {
+	return bg_terrain;
+}
 
 std::string get_selected_terrain()
 {
@@ -45,6 +52,11 @@ void terrain_palette::update_report()
 	msg << _("FG: ") << map().get_terrain_editor_string(selected_fg_item())
 		<< '\n' << _("BG: ") << map().get_terrain_editor_string(selected_fg_item());
 	selected_terrain = msg.str();
+}
+
+void terrain_palette::select_bg_item(std::string item_id) {
+	editor_palette::select_bg_item(item_id);
+	bg_terrain = selected_bg_item();
 }
 
 void terrain_palette::setup(const config& cfg)
@@ -122,8 +134,9 @@ void terrain_palette::setup(const config& cfg)
 
 	}
 
-	select_fg_item("grassland");
-	select_bg_item("mountains");
+	// Set the default terrain
+	select_fg_item("mountains");
+	select_bg_item("grassland");
 
 	// Set the default group
 	set_group("all");
@@ -132,7 +145,7 @@ void terrain_palette::setup(const config& cfg)
 		ERR_ED << "No items found.\n";
 	}
 
-	update_report();
+//	update_report();
 }
 
 void terrain_palette::draw_item(SDL_Rect& dstrect, const t_translation::t_terrain& terrain, std::stringstream& tooltip_text) {

@@ -27,6 +27,7 @@ namespace editor {
 
 std::string get_selected_terrain();
 
+t_translation::t_terrain get_selected_bg_terrain();
 
 /** Palette where the terrain to be drawn can be selected. */
 class terrain_palette : public editor_palette<t_translation::t_terrain> {
@@ -40,6 +41,8 @@ public:
 	virtual void setup(const config& cfg);
 
 private:
+
+	virtual void select_bg_item(std::string item_id);
 
 	virtual const std::string& get_id(const t_translation::t_terrain& terrain);
 

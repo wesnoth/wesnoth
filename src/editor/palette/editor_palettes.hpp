@@ -27,8 +27,6 @@ class editor_palette : public common_palette {
 public:
 	editor_palette(editor_display &gui, const size_specs &sizes, const config& /*cfg*/
 			, size_t item_size, size_t item_width, mouse_action** active_mouse_action)
-    //TODO
-	//		  Item& fore, Item& back)
 		: groups_()
 		, gui_(gui)
 		, size_specs_(sizes)
@@ -48,29 +46,24 @@ public:
 		, selected_bg_item_()
 		, active_mouse_action_(active_mouse_action)
 	{
-		//TODO
-		//adjust_size(size_specs_);
 	};
-	//TODO
-	//, selected_fg_item_(fore)
-	//, selected_bg_item_(back)
 
 	void set_group(size_t index);
 
 	const std::vector<item_group>& get_groups() const { return groups_; };
 
-	size_t active_group_index();
 
 	virtual void draw(bool);
 
 	bool left_mouse_click(const int, const int);
 	bool right_mouse_click(const int, const int);
 
-	/** Scroll the editor-palette to the top. */
-	void scroll_top();
-
-	/** Scroll the editor-palette to the bottom. */
-	void scroll_bottom();
+	void next_group() {
+		set_group( (active_group_index() +1) % (groups_.size() -1) );
+	};
+	void prev_group() {
+		set_group( (active_group_index() -1) % (groups_.size() -1) );
+	};
 
 	/**
 	 * Update the size of this widget.
@@ -79,11 +72,23 @@ public:
 	 */
 	void adjust_size(const size_specs& size);
 
+
+
 	/** Return the number of the tile that is at coordinates (x, y) in the panel. */
 	int tile_selected(const int x, const int y) const;
 
+	bool scroll_up();
+	bool scroll_down();
 
 private:
+
+	size_t active_group_index();
+
+	/** Scroll the editor-palette to the top. */
+	void scroll_top();
+
+	/** Scroll the editor-palette to the bottom. */
+	void scroll_bottom();
 
 	virtual void draw_item(SDL_Rect& dstrect, const Item& item, std::stringstream& tooltip) = 0;
 
@@ -94,10 +99,9 @@ private:
 
 	virtual const std::string& active_group_id() {return active_group_;};
 
+public:
 	virtual const config active_group_report();
 
-	bool scroll_up();
-	bool scroll_down();
 
 protected:
 	/**
@@ -140,8 +144,8 @@ protected:
 
 private:
 
-	/** Return the number of terrains in the palette. */
-	size_t num_items(); //{ return item_map_.size(); };
+	/** Return the number of items in the palette. */
+	size_t num_items();
 
 	void draw_old(bool);
 

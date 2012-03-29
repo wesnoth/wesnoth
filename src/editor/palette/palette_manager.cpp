@@ -28,15 +28,14 @@ palette_manager::palette_manager(editor_display& gui, const size_specs &sizes, c
 		: gui::widget(gui.video()),
 		  gui_(gui),
 		  size_specs_(sizes),
-		  palette_start_(0),
+		  palette_start_(sizes.palette_y),
 		  mouse_action_(active_mouse_action),
 		  terrain_palette_(new terrain_palette(gui, sizes, cfg, active_mouse_action)),
 		  unit_palette_(new unit_palette(gui,sizes,cfg,active_mouse_action)),
 		  empty_palette_(new empty_palette(gui,sizes,cfg,active_mouse_action))
 {
-	terrain_palette_->setup(cfg);
 	unit_palette_->setup(cfg);
-	set_dirty();
+	terrain_palette_->setup(cfg);
 }
 
 void palette_manager::set_group(size_t index)
@@ -57,13 +56,8 @@ void palette_manager::adjust_size()
 	set_location(rect);
 	palette_start_ = size_specs_.palette_y;
 
-//TODO
-//	rect.y = items_start_;
-//	rect.h = space_for_items;
 	bg_register(rect);
-
-	(*mouse_action_)->get_palette().adjust_size(size_specs_);
-
+	active_palette().adjust_size(size_specs_);
 	set_dirty();
 }
 
@@ -133,12 +127,7 @@ void palette_manager::draw(bool force)
 
 	const SDL_Rect &loc = location();
 
-	SDL_Rect palrect;
-	palrect.x = loc.x;
-	palrect.y = palette_start_;
-	palrect.w = size_specs_.palette_w;
-	palrect.h = size_specs_.palette_h;
-	tooltips::clear_tooltips(palrect);
+	tooltips::clear_tooltips(loc);
 
 	active_palette().draw(force);
 
@@ -172,6 +161,11 @@ void palette_manager::handle_event(const SDL_Event& event) {
 		if (mouse_button_event.button == SDL_BUTTON_LEFT) {
 			left_mouse_click(mousex, mousey);
 		}
+		/* TODO
+		if (mouse_button_event.button == SDL_BUTTON_MIDDLE) {
+			middle_mouse_click(mousex, mousey);
+		}
+		*/
 		if (mouse_button_event.button == SDL_BUTTON_RIGHT) {
 			right_mouse_click(mousex, mousey);
 		}
@@ -182,14 +176,12 @@ void palette_manager::handle_event(const SDL_Event& event) {
 			scroll_down();
 		}
 		if (mouse_button_event.button == SDL_BUTTON_WHEELLEFT) {
-			//TODO
-//			set_group( (active_palette().active_group_index() -1) % (groups_.size() -1) );
-//			gui_.set_terrain_report(active_group_report());
+			active_palette().prev_group();
+			scroll_top();
 		}
 		if (mouse_button_event.button == SDL_BUTTON_WHEELRIGHT) {
-			//TODO
-//			set_group( (active_palette().active_group_index() +1) % (groups_.size() -1) );
-//			gui_.set_terrain_report(active_group_report());
+			active_palette().next_group();
+			scroll_top();
 		}
 	}
 	if (mouse_button_event.type == SDL_MOUSEBUTTONUP) {
@@ -201,8 +193,7 @@ void palette_manager::handle_event(const SDL_Event& event) {
 
 void palette_manager::left_mouse_click(const int mousex, const int mousey)
 {
-	if (
-	active_palette().left_mouse_click(mousex, mousey) ) {
+	if ( active_palette().left_mouse_click(mousex, mousey) ) {
 		set_dirty();
 		gui_.invalidate_game_status();
 	}
@@ -210,8 +201,7 @@ void palette_manager::left_mouse_click(const int mousex, const int mousey)
 
 void palette_manager::right_mouse_click(const int mousex, const int mousey)
 {
-	if (
-	active_palette().right_mouse_click(mousex, mousey) ) {
+	if ( active_palette().right_mouse_click(mousex, mousey) ) {
 		set_dirty();
 		gui_.invalidate_game_status();
 	}

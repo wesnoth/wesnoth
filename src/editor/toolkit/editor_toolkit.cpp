@@ -40,7 +40,6 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key, const confi
 	init_brushes(game_config);
 	init_sidebar(game_config);
 	init_mouse_actions(game_config);
-	palette_manager_->adjust_size();
 }
 
 editor_toolkit::~editor_toolkit()
@@ -75,14 +74,58 @@ void editor_toolkit::init_sidebar(const config& game_config)
 	palette_manager_.reset(new palette_manager(gui_, *size_specs_, game_config, &mouse_action_));
 }
 
+void editor_toolkit::init_mouse_actions(const config& game_config)
+{
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT,
+		new mouse_action_paint(&brush_, key_, *palette_manager_->terrain_palette_.get())));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL,
+		new mouse_action_fill(key_, *palette_manager_->terrain_palette_.get())));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT,
+		new mouse_action_select(&brush_, key_, *palette_manager_->empty_palette_.get())));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
+		new mouse_action_starting_position(key_, *palette_manager_->empty_palette_.get())));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
+		new mouse_action_map_label(key_, *palette_manager_->empty_palette_.get())));
+	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_UNIT,
+		new mouse_action_unit(key_, *palette_manager_->unit_palette_.get())));
+
+	//TODO
+//	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
+//		new mouse_action_paste(clipboard_, key_, *palette_manager_->empty_palette_.get())));
+
+	foreach (const theme::menu& menu, gui_.get_theme().menus()) {
+		if (menu.items().size() == 1) {
+			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey(menu.items().front()).get_id();
+			mouse_action_map::iterator i = mouse_actions_.find(hk);
+			if (i != mouse_actions_.end()) {
+				i->second->set_toolbar_button(&menu);
+			}
+		}
+	}
+	foreach (const config &c, game_config.child_range("editor_tool_hint")) {
+		mouse_action_map::iterator i =
+			mouse_actions_.find(hotkey::get_hotkey(c["id"]).get_id());
+		if (i != mouse_actions_.end()) {
+			mouse_action_hints_.insert(std::make_pair(i->first, c["text"]));
+		}
+	}
+
+	mouse_action_ = (mouse_actions_.find(hotkey::HOTKEY_EDITOR_TOOL_PAINT))->second;
+	set_mouseover_overlay();
+}
+
+
 void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 {
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::iterator i = mouse_actions_.find(command);
 	if (i != mouse_actions_.end()) {
 		mouse_action_ = i->second;
-		//TODO is the draw call needed?
 		palette_manager_->adjust_size();
-		palette_manager_->draw(true);
+
+		//TODO make active_palette() privat again.
+		//palette_manager_->switch_palette();
+		gui_.set_palette_report(palette_manager_->active_palette().active_group_report());
+
 		set_mouseover_overlay();
 		redraw_toolbar();
 		gui_.invalidate_game_status();
@@ -96,7 +139,7 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 void editor_toolkit::fill_selection()
 {
 	//TODO
-	/*
+/*
 	perform_refresh(editor_action_paint_area(get_map().selection(),
 			toolkit_->terrain_palette_->selected_fg_item()));
 			*/
@@ -171,44 +214,6 @@ void editor_toolkit::redraw_toolbar()
 		}
 	}
 	toolbar_dirty_ = false;
-}
-
-void editor_toolkit::init_mouse_actions(const config& game_config)
-{
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT,
-		new mouse_action_paint(&brush_, key_, *palette_manager_->terrain_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_FILL,
-		new mouse_action_fill(key_, *palette_manager_->terrain_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_SELECT,
-		new mouse_action_select(&brush_, key_, *palette_manager_->empty_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
-		new mouse_action_starting_position(key_, *palette_manager_->empty_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
-		new mouse_action_map_label(key_, *palette_manager_->empty_palette_.get())));
-	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_UNIT,
-		new mouse_action_unit(key_, *palette_manager_->unit_palette_.get())));
-
-//	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
-//		new mouse_action_paste(clipboard_, key_, *palette_manager_->empty_palette_.get())));
-
-	foreach (const theme::menu& menu, gui_.get_theme().menus()) {
-		if (menu.items().size() == 1) {
-			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey(menu.items().front()).get_id();
-			mouse_action_map::iterator i = mouse_actions_.find(hk);
-			if (i != mouse_actions_.end()) {
-				i->second->set_toolbar_button(&menu);
-			}
-		}
-	}
-	foreach (const config &c, game_config.child_range("editor_tool_hint")) {
-		mouse_action_map::iterator i =
-			mouse_actions_.find(hotkey::get_hotkey(c["id"]).get_id());
-		if (i != mouse_actions_.end()) {
-			mouse_action_hints_.insert(std::make_pair(i->first, c["text"]));
-		}
-	}
-
-	hotkey_set_mouse_action(hotkey::HOTKEY_EDITOR_TOOL_PAINT);
 }
 
 

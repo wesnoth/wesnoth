@@ -41,16 +41,8 @@ private:
 
 	virtual void draw_item(SDL_Rect& /*dstrect*/, const unit_type& /*terrain*/,
 			std::stringstream& /*tooltip_text*/) {};
-
-//	virtual void update_report();
-
 };
 
-/*
-empty_palette::empty_palette(editor_display &gui, const size_specs &sizes, const config& cfg,
-		mouse_action** active_mouse_action)
-	: editor_palette<void*>(gui, sizes, cfg, 0, 0, active_mouse_action) {};
-*/
 
 }
 #endif

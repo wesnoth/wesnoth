@@ -83,7 +83,7 @@ public:
 //	int tile_selected(const int x, const int y) const;
 
 
-private:
+public:
 
 	common_palette& active_palette(); //{ return (*mouse_action_)->get_palette(); };
 
