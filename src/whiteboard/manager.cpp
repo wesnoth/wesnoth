@@ -23,6 +23,7 @@
 #include "highlight_visitor.hpp"
 #include "mapbuilder.hpp"
 #include "move.hpp"
+#include "recall.hpp"
 #include "recruit.hpp"
 #include "side_actions.hpp"
 #include "utility.hpp"
@@ -266,9 +267,12 @@ bool manager::allow_leader_to_move(unit const& leader) const
 	//Look for planned recruits that depend on this leader
 	foreach(action_const_ptr action, *viewer_actions())
 	{
-		if(recruit_const_ptr recruit = boost::dynamic_pointer_cast<class recruit const>(action))
+		recruit_const_ptr recruit = boost::dynamic_pointer_cast<class recruit const>(action);
+		recall_const_ptr recall = boost::dynamic_pointer_cast<class recall const>(action);
+		if(recruit || recall)
 		{
-			if (can_recruit_on(*resources::game_map, leader.get_location(), recruit->get_recruit_hex()))
+			map_location const target_hex = recruit?recruit->get_recruit_hex():recall->get_recall_hex();
+			if (can_recruit_on(*resources::game_map, leader.get_location(), target_hex))
 				return false;
 		}
 	}
