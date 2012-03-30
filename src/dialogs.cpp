@@ -330,7 +330,8 @@ public:
 
 	void draw_contents();
 	void set_selection(int index) {
-		index_ = textbox_.get_index(index);
+		int res = textbox_.get_index(index);
+		index_ = (res >= 0) ? res : index_;
 		set_dirty();
 	}
 

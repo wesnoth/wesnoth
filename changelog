@@ -119,6 +119,7 @@ Version 1.11.0-svn:
    * Re-fogging does not occur in the middle of the player's turn.
    * Fixed provided saved game filenames being ignored when requesting to
      save a MP game due to a network or OOS error (bug #19562)
+   * Fixed bug #19538: Filters matching 0 saved games cause crash
  * Whiteboard
    * Fixed bug #19369: Using planning mode can cause losing ability to move my units
    * Fixed bug #19408: Crash shortly after executing invalid multi-turn move
