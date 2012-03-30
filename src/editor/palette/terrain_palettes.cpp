@@ -62,7 +62,7 @@ void terrain_palette::update_report()
 }
 
 void terrain_palette::select_bg_item(std::string item_id) {
-	editor_palette::select_bg_item(item_id);
+	editor_palette<t_translation::t_terrain>::select_bg_item(item_id);
 	bg_terrain = selected_bg_item();
 }
 
