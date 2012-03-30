@@ -2387,10 +2387,13 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				} else if(apply_to == "new_attack") {
 					attacks_.push_back(attack_type(effect));
 				} else if(apply_to == "remove_attacks") {
-					for(std::vector<attack_type>::iterator a = attacks_.begin(); a != attacks_.end(); ++a) {
-						if (a->matches_filter(effect, false)) {
-							attacks_.erase(a--);
+					std::vector<attack_type>::iterator a = attacks_.begin();
+					while(a != attacks_.end()) {
+						if(a->matches_filter(effect, false)) {
+							a = attacks_.erase(a);
+							continue;
 						}
+						++a;
 					}
 				} else if(apply_to == "attack") {
 
