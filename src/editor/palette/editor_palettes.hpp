@@ -48,6 +48,9 @@ public:
 	{
 	};
 
+	/** Menu expanding for palette group list */
+	void expand_palette_groups_menu(std::vector<std::string>& items);
+
 	void set_group(size_t index);
 
 	const std::vector<item_group>& get_groups() const { return groups_; };
@@ -77,8 +80,8 @@ public:
 	/** Return the number of the tile that is at coordinates (x, y) in the panel. */
 	int tile_selected(const int x, const int y) const;
 
-	bool scroll_up();
-	bool scroll_down();
+	virtual bool scroll_up();
+	virtual bool scroll_down();
 
 private:
 

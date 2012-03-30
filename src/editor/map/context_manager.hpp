@@ -1,54 +1,81 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+ Copyright (C) 2003 - 2012 by David White <dave@whitevine.net>
+ Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
-*/
+ See the COPYING file for more details.
+ */
 
 #ifndef CONTEXT_MANAGER_HPP_INCLUDED
 #define CONTEXT_MANAGER_HPP_INCLUDED
 
 #include "editor/map/map_context.hpp"
 #include "editor/editor_preferences.hpp"
+#include "editor/map/map_fragment.hpp"
 
 #include "mapgen.hpp"
+
+#include "hotkeys.hpp"
 
 namespace editor {
 
 class context_manager {
 
 public:
-	size_t  modified_maps(std::string& modified);
 
-private:
-	editor_display& gui_;
+	void set_update_transitions_hotkey(hotkey::HOTKEY_COMMAND i);
 
-	const config& game_config_;
+	size_t modified_maps(std::string& modified);
 
-	/** Default directory for map load/save as dialogs */
-	std::string default_dir_;
+	//TODO move implementation
+	bool toggle_update_transitions() {
+		//TODO move to context_manager and make the member privat
+		auto_update_transitions_ = (auto_update_transitions_ + 1)
+				% preferences::editor::TransitionUpdateMode::count;
+		preferences::editor::set_auto_update_transitions(
+				auto_update_transitions_);
+		if (auto_update_transitions_
+				!= preferences::editor::TransitionUpdateMode::on) {
+			return true;
+		}
+		return false;
+	}
+	;
 
-	/** Available random map generators */
-	std::vector<map_generator*> map_generators_;
+	bool clipboard_empty() {
+		return clipboard_.empty();
+	}
+	;
 
-public:
+	map_fragment& get_clipboard() {
+		return clipboard_;
+	}
+	;
+
+	/** Fill the selection with the foreground terrain */
+	void fill_selection();
+
 	/** Index into the map_contexts_ array */
-	int current_context_index_;
-
-	/** Flag to rebuild terrain on every terrain change */
-	int auto_update_transitions_;
+	int current_context_index() {
+		return current_context_index_;
+	}
+	;
 
 public:
+	context_manager(editor_display& gui, const config& game_config);
+	~context_manager();
 
-	size_t open_maps(void) { return map_contexts_.size(); };
+	size_t open_maps(void) {
+		return map_contexts_.size();
+	}
+	;
 
 	/**
 	 * Peform an action on the current map_context, then refresh the display.
@@ -65,24 +92,15 @@ public:
 	/** Save the map, open dialog if not named yet. */
 	void save_map();
 
-	context_manager(editor_display& gui, const config& game_config);
-	~context_manager();
-
-	editor_display& gui() { return gui_; };
+	editor_display& gui() {
+		return gui_;
+	}
+	;
 
 	/**
 	 * Refresh everything, i.e. invalidate all hexes and redraw them. Does *not* reload the map.
 	 */
 	void refresh_all();
-
-
-	/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
-	void set_default_dir(const std::string& str);
-
-	/**
-	 * Replace the current map context and refresh accordingly
-	 */
-	void replace_map_context(map_context* new_mc);
 
 	/** Display an apply mask dialog and process user input. */
 	void apply_mask_dialog();
@@ -108,21 +126,6 @@ public:
 	/** Display a load map dialog and process user input. */
 	void resize_map_dialog();
 
-	/** init available random map generators */
-	void init_map_generators(const config& game_config);
-
-	/**
-	 * Refresh the display after an action has been performed.
-	 * The map context contains details of what needs to be refreshed.
-	 */
-	void refresh_after_action(bool drag_part = false);
-
-	/**
-	 * Shows an are-you-sure dialog if the map was modified.
-	 * @return true if the user confirmed or the map was not modified, false otherwise
-	 */
-	bool confirm_discard();
-
 	size_t size() {
 		return map_contexts_.size();
 	}
@@ -132,14 +135,27 @@ public:
 		return *map_contexts_[current_context_index_];
 	}
 
+private:
+
+	/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
+	void set_default_dir(const std::string& str);
+
+	/**
+	 * Replace the current map context and refresh accordingly
+	 */
+	void replace_map_context(map_context* new_mc);
+	/** init available random map generators */
+	void init_map_generators(const config& game_config);
+
+	/**
+	 * Shows an are-you-sure dialog if the map was modified.
+	 * @return true if the user confirmed or the map was not modified, false otherwise
+	 */
+	bool confirm_discard();
+
 	/** Get the current map context object - const version */
 	const map_context& get_map_context() const {
 		return *map_contexts_[current_context_index_];
-	}
-
-	/** Get the map from the current map context object */
-	editor_map& get_map() {
-		return get_map_context().get_map();
 	}
 
 	/** Get the map from the current map context object - const version*/
@@ -159,6 +175,18 @@ public:
 	 */
 	void create_default_context();
 
+public:
+	/**
+	 * Refresh the display after an action has been performed.
+	 * The map context contains details of what needs to be refreshed.
+	 */
+	void refresh_after_action(bool drag_part = false);
+
+	/** Get the map from the current map context object */
+	editor_map& get_map() {
+		return get_map_context().get_map();
+	}
+
 	/** Closes the active map context. Switches to a valid context afterward or creates a dummy one. */
 	void close_current_context();
 
@@ -166,10 +194,6 @@ public:
 	void switch_context(const int index);
 
 private:
-	/** The currently opened map context object */
-	std::vector<map_context*> map_contexts_;
-
-public:
 	/**
 	 * Save the map under a given filename.
 	 * @return true on success
@@ -209,6 +233,7 @@ public:
 	 */
 	bool check_switch_open_map(const std::string& fn);
 
+public:
 	/**
 	 * Load a map given the filename
 	 */
@@ -224,6 +249,30 @@ public:
 	 * This is necessary to avoid issues with parts of the map being cached in the display class.
 	 */
 	void reload_map();
+
+private:
+
+	editor_display& gui_;
+
+	const config& game_config_;
+
+	/** Default directory for map load/save as dialogs */
+	std::string default_dir_;
+
+	/** Available random map generators */
+	std::vector<map_generator*> map_generators_;
+
+	int current_context_index_;
+
+	/** Flag to rebuild terrain on every terrain change */
+	int auto_update_transitions_;
+
+
+	/** The currently opened map context object */
+	std::vector<map_context*> map_contexts_;
+
+	/** Clipboard map_fragment -- used for copy-paste. */
+	map_fragment clipboard_;
 
 };
 

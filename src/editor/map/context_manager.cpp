@@ -65,6 +65,21 @@ private:
 	bool refreshed_;
 };
 
+void context_manager::set_update_transitions_hotkey(hotkey::HOTKEY_COMMAND i) {
+	switch (auto_update_transitions_) {
+		case preferences::editor::TransitionUpdateMode::on:
+			hotkey::get_hotkey(i).set_description(_("Auto-update Terrain Transitions: Yes"));
+			break;
+		case preferences::editor::TransitionUpdateMode::partial:
+			hotkey::get_hotkey(i).set_description(_("Auto-update Terrain Transitions: Partial"));
+			break;
+		case preferences::editor::TransitionUpdateMode::off:
+		default:
+			hotkey::get_hotkey(i).set_description(_("Auto-update Terrain Transitions: No"));
+			break;
+	}
+}
+
 size_t context_manager::modified_maps(std::string& message) {
 	std::vector<std::string> modified;
 	foreach (map_context* mc, map_contexts_) {
@@ -90,6 +105,7 @@ context_manager::context_manager(editor_display& gui, const config& game_config)
 	, current_context_index_(0)
 	, auto_update_transitions_(preferences::editor::auto_update_transitions())
 	, map_contexts_()
+    , clipboard_()
 {
 	if (default_dir_.empty()) {
 		default_dir_ = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
@@ -429,6 +445,15 @@ void context_manager::create_default_context()
 		}
 		saved_windows_.clear();
 	}
+}
+
+void context_manager::fill_selection()
+{
+	//TODO
+
+	perform_refresh(editor_action_paint_area(get_map().selection(),
+			get_selected_bg_terrain()));
+
 }
 
 void context_manager::close_current_context()

@@ -64,8 +64,6 @@ public:
 	 */
 	bool is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const;
 
-	/** Fill the selection with the foreground terrain */
-	void fill_selection();
 
 	/** Get the current mouse action */
  	mouse_action* get_mouse_action() { return mouse_action_; };
@@ -77,15 +75,14 @@ public:
 	/** Cycle to the next brush. */
 	void cycle_brush();
 
+	palette_manager* get_palette_manager() { return palette_manager_.get(); };
+
 private:
 
 	editor_display& gui_;
 
 	const CKey& key_;
 
-//Palette
-
-public:
 	/** TODO */
 	boost::scoped_ptr<palette_manager> palette_manager_;
 

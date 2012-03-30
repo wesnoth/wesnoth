@@ -24,7 +24,43 @@
 
 #include "editor/action/mouse/mouse_action.hpp"
 
+#include "wml_separators.hpp"
+
 namespace editor {
+
+//TODO move to the palette
+template<class Item>
+void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& items)
+{
+	//TODO
+	//active_menu_ = editor::PALETTE;
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] == "editor-palette-groups") {
+			items.erase(items.begin() + i);
+
+			std::vector<std::string> groups;
+			const std::vector<item_group>& item_groups = get_groups();
+
+			for (size_t mci = 0; mci < item_groups.size(); ++mci) {
+				std::string groupname = item_groups[mci].name;
+				if (groupname.empty()) {
+					groupname = _("(Unknown Group)");
+				}
+				std::string img = item_groups[mci].icon;
+				std::stringstream str;
+				//TODO
+				//std::string postfix = ".png"; //(toolkit_->active_group_index() == mci) ? "-pressed.png" : ".png";
+				//str << IMAGE_PREFIX << "buttons/" << img << postfix << COLUMN_SEPARATOR << groupname;
+				str << IMAGE_PREFIX << img << COLUMN_SEPARATOR << groupname;
+				groups.push_back(str.str());
+			}
+			items.insert(items.begin() + i, groups.begin(), groups.end());
+			break;
+		}
+	}
+}
+template void editor_palette<t_translation::t_terrain>::expand_palette_groups_menu(std::vector<std::string>& items);
+template void editor_palette<unit_type>::expand_palette_groups_menu(std::vector<std::string>& items);
 
 template<class Item>
 bool editor_palette<Item>::left_mouse_click(const int mousex, const int mousey)

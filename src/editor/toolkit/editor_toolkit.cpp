@@ -136,15 +136,6 @@ void editor_toolkit::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 
 }
 
-void editor_toolkit::fill_selection()
-{
-	//TODO
-/*
-	perform_refresh(editor_action_paint_area(get_map().selection(),
-			toolkit_->terrain_palette_->selected_fg_item()));
-			*/
-}
-
 bool editor_toolkit::is_mouse_action_set(hotkey::HOTKEY_COMMAND command) const
 {
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::const_iterator i = mouse_actions_.find(command);

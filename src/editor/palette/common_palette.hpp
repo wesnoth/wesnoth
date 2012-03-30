@@ -64,6 +64,9 @@ public:
 	virtual const config active_group_report() = 0;
 	virtual const std::vector<item_group>& get_groups() const = 0;
 
+	/** Menu expanding for palette group list */
+	virtual void expand_palette_groups_menu(std::vector<std::string>& items) = 0;
+
     //item
 	virtual size_t num_items() = 0;
 	virtual size_t start_num() = 0;

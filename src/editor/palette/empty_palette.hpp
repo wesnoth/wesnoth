@@ -36,6 +36,9 @@ public:
 	// think about removing it
 	virtual void setup(const config& /*cfg*/) {};
 
+	bool scroll_up() { return false; };
+	bool scroll_down() { return false; };
+
 private:
 	virtual const std::string& get_id(const unit_type& /*terrain*/) { return empty_string; };
 

@@ -108,9 +108,6 @@ class editor_controller : public controller_base,
 		/** command_executor override */
 		bool execute_command(hotkey::HOTKEY_COMMAND command, int index = -1);
 
-		/** Menu expanding for palette group list */
-		void expand_palette_groups_menu(std::vector<std::string>& items);
-
 		/** controller_base override */
 		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 
@@ -232,10 +229,6 @@ class editor_controller : public controller_base,
 		/** Quit main loop flag */
 		bool do_quit_;
 		EXIT_STATUS quit_mode_;
-
-		/** Clipboard map_fragment -- used for copy-paste. */
-		map_fragment clipboard_;
-
 
 };
 

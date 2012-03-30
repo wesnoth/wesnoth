@@ -20,6 +20,8 @@
 #include "editor/action/action.hpp"
 #include "editor_controller.hpp"
 
+#include "editor/palette/terrain_palettes.hpp"
+
 #include "editor/action/mouse/mouse_action.hpp"
 
 #include "editor_preferences.hpp"
@@ -36,8 +38,6 @@
 #include "../preferences_display.hpp"
 #include "../rng.hpp"
 #include "../sound.hpp"
-
-#include "wml_separators.hpp"
 
 #include <boost/bind.hpp>
 
@@ -63,7 +63,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, floating_label_manager_(NULL)
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
-	, clipboard_()
 {
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_));
@@ -86,8 +85,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	}*/
 
 	gui().redraw_everything();
-	//TODO
-    //events::raise_draw_event();
+    events::raise_draw_event();
 /*  TODO enable if you can say what the purpose of the code is.
 	if (default_tool_menu != NULL) {
 		const SDL_Rect& menu_loc = default_tool_menu->location(get_display().screen_area());
@@ -260,7 +258,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 		case HOTKEY_EDITOR_BRUSH_NEXT:
 		case HOTKEY_EDITOR_TOOL_NEXT:
-		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
+		case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
 			return true; //editor hotkeys we can always do
 		case HOTKEY_EDITOR_MAP_SAVE:
 		case HOTKEY_EDITOR_MAP_SAVE_ALL:
@@ -288,12 +286,12 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_SELECTION_GENERATE:
 			return false; //not implemented
 		case HOTKEY_EDITOR_PASTE:
-			return !clipboard_.empty();
+			return !context_manager_->clipboard_empty();
 		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
 		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW:
 		case HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL:
 		case HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL:
-			return !clipboard_.empty();
+			return !context_manager_->clipboard_empty();
 		case HOTKEY_EDITOR_SELECT_ALL:
 		case HOTKEY_EDITOR_SELECT_INVERSE:
 		case HOTKEY_EDITOR_SELECT_NONE:
@@ -333,7 +331,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case HOTKEY_NULL:
 			switch (active_menu_) {
 				case editor::MAP:
-					return index == context_manager_->current_context_index_ ? ACTION_ON : ACTION_OFF;
+					return index == context_manager_->current_context_index() ? ACTION_ON : ACTION_OFF;
 				case editor::PALETTE:
 					return ACTION_STATELESS;
 				case editor::AREA:
@@ -363,7 +361,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 				}
 				return false;
 			case PALETTE:
-				toolkit_->palette_manager_->set_group(index);
+				toolkit_->get_palette_manager()->set_group(index);
 				return true;
 			case SIDE:
 				//TODO
@@ -375,10 +373,10 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_PALETTE_GROUPS:
 			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
-			toolkit_->palette_manager_->scroll_up();
+			toolkit_->get_palette_manager()->scroll_up();
 			return true;
 		case HOTKEY_EDITOR_PALETTE_DOWNSCROLL:
-			toolkit_->palette_manager_->scroll_down();
+			toolkit_->get_palette_manager()->scroll_down();
 			return true;
 		case HOTKEY_QUIT_GAME:
 			quit_confirm(EXIT_NORMAL);
@@ -394,9 +392,8 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 		case HOTKEY_EDITOR_SETTINGS:
 			editor_settings_dialog();
 			return true;
-			//TODO rename that hotkey
-		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
-			toolkit_->palette_manager_->active_palette().swap();
+		case HOTKEY_EDITOR_PALETTE_ITEM_SWAP:
+			toolkit_->get_palette_manager()->active_palette().swap();
 			toolkit_->set_mouseover_overlay();
 			return true;
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
@@ -419,19 +416,19 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			toolkit_->hotkey_set_mouse_action(command);
 			return true;
 		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
-			clipboard_.rotate_60_cw();
+			context_manager_->get_clipboard().rotate_60_cw();
 			toolkit_->update_mouse_action_highlights();
 			return true;
 		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW:
-			clipboard_.rotate_60_ccw();
+			context_manager_->get_clipboard().rotate_60_ccw();
 			toolkit_->update_mouse_action_highlights();
 			return true;
 		case HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL:
-			clipboard_.flip_horizontal();
+			context_manager_->get_clipboard().flip_horizontal();
 			toolkit_->update_mouse_action_highlights();
 			return true;
 		case HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL:
-			clipboard_.flip_vertical();
+			context_manager_->get_clipboard().flip_vertical();
 			toolkit_->update_mouse_action_highlights();
 			return true;
 		case HOTKEY_EDITOR_BRUSH_NEXT:
@@ -459,7 +456,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_SELECTION_FILL:
 			//TODO
-            //fill_selection();
+            context_manager_->fill_selection();
 			return true;
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			context_manager_->perform_refresh(editor_action_shuffle_area(
@@ -499,13 +496,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			context_manager_->resize_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS:
-			//TODO move to context_manager and make the member privat
-			context_manager_->auto_update_transitions_ = (context_manager_->auto_update_transitions_ + 1)
-				% preferences::editor::TransitionUpdateMode::count;
-			preferences::editor::set_auto_update_transitions(context_manager_->auto_update_transitions_);
-			if (context_manager_->auto_update_transitions_ != preferences::editor::TransitionUpdateMode::on) {
+			if (context_manager_->toggle_update_transitions())
 				return true;
-			} // else intentionally fall through
+			// else intentionally fall through
 		case HOTKEY_EDITOR_UPDATE_TRANSITIONS:
 			context_manager_->refresh_all();
 			return true;
@@ -530,35 +523,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 	}
 }
 
-//TODO move to the palette
-void editor_controller::expand_palette_groups_menu(std::vector<std::string>& items)
-{
-	active_menu_ = editor::PALETTE;
-	for (unsigned int i = 0; i < items.size(); ++i) {
-		if (items[i] == "editor-palette-groups") {
-			items.erase(items.begin() + i);
 
-			std::vector<std::string> groups;
-			const std::vector<item_group>& item_groups = toolkit_->get_mouse_action()->get_palette().get_groups();
-
-			for (size_t mci = 0; mci < item_groups.size(); ++mci) {
-				std::string groupname = item_groups[mci].name;
-				if (groupname.empty()) {
-					groupname = _("(Unknown Group)");
-				}
-				std::string img = item_groups[mci].icon;
-				std::stringstream str;
-				//TODO
-				//std::string postfix = ".png"; //(toolkit_->active_group_index() == mci) ? "-pressed.png" : ".png";
-				//str << IMAGE_PREFIX << "buttons/" << img << postfix << COLUMN_SEPARATOR << groupname;
-				str << IMAGE_PREFIX << img << COLUMN_SEPARATOR << groupname;
-				groups.push_back(str.str());
-			}
-			items.insert(items.begin() + i, groups.begin(), groups.end());
-			break;
-		}
-	}
-}
 
 void editor_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
@@ -586,18 +551,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 				hotkey::get_hotkey(*i).set_description(_("Can’t Redo"));
 			}
 		} else if (command == hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS) {
-			switch (context_manager_->auto_update_transitions_) {
-				case preferences::editor::TransitionUpdateMode::on:
-					hotkey::get_hotkey(*i).set_description(_("Auto-update Terrain Transitions: Yes"));
-					break;
-				case preferences::editor::TransitionUpdateMode::partial:
-					hotkey::get_hotkey(*i).set_description(_("Auto-update Terrain Transitions: Partial"));
-					break;
-				case preferences::editor::TransitionUpdateMode::off:
-				default:
-					hotkey::get_hotkey(*i).set_description(_("Auto-update Terrain Transitions: No"));
-					break;
-			}
+			context_manager_->set_update_transitions_hotkey(command);
 		} else if(!can_execute_command(command)
 		|| (context_menu && !in_context_menu(command))) {
 			i = items.erase(i);
@@ -612,7 +566,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	}
 	if (!items.empty() && items.front() == "editor-palette-groups") {
 		active_menu_ = editor::PALETTE;
-		expand_palette_groups_menu(items);
+		toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(items);
 		context_menu = true; //FIXME hack to display a one-item menu
 	}
 	command_executor::show_menu(items, xloc, yloc, context_menu, gui());
@@ -633,16 +587,15 @@ void editor_controller::toggle_grid()
 void editor_controller::copy_selection()
 {
 	if (!context_manager_->get_map().selection().empty()) {
-		clipboard_ = map_fragment(context_manager_->get_map(), context_manager_->get_map().selection());
-		clipboard_.center_by_mass();
+		context_manager_->get_clipboard() = map_fragment(context_manager_->get_map(), context_manager_->get_map().selection());
+		context_manager_->get_clipboard().center_by_mass();
 	}
 }
 
 void editor_controller::cut_selection()
 {
 	copy_selection();
-	//TODO
-	//context_manager_->perform_refresh(editor_action_paint_area(get_map().selection(), selected_bg_terrain()));
+	context_manager_->perform_refresh(editor_action_paint_area(context_manager_->get_map().selection(), get_selected_bg_terrain()));
 }
 
 void editor_controller::export_selection_coords()
@@ -688,8 +641,7 @@ void editor_controller::refresh_image_cache()
 void editor_controller::display_redraw_callback(display&)
 {
 	toolkit_->adjust_size();
-	//TODO
-	//seems not to be needed and speeds up drawing?
+	//TODO seems not to be needed and slows down the drawing?
 	//gui().invalidate_all();
 }
 
