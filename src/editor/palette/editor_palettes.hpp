@@ -24,7 +24,9 @@ namespace editor {
 
 template<class Item>
 class editor_palette : public common_palette {
+
 public:
+
 	editor_palette(editor_display &gui, const size_specs &sizes, const config& /*cfg*/
 			, size_t item_size, size_t item_width, mouse_action** active_mouse_action)
 		: groups_()
@@ -48,13 +50,16 @@ public:
 	{
 	};
 
+	void set_start_item(size_t index) { items_start_ = index; };
+
+	size_t start_num(void) { return items_start_; };
+
 	/** Menu expanding for palette group list */
 	void expand_palette_groups_menu(std::vector<std::string>& items);
 
 	void set_group(size_t index);
 
 	const std::vector<item_group>& get_groups() const { return groups_; };
-
 
 	virtual void draw(bool);
 
@@ -75,16 +80,23 @@ public:
 	 */
 	void adjust_size(const size_specs& size);
 
+	virtual bool scroll_up();
+	virtual bool scroll_down();
 
+	virtual const config active_group_report();
+
+	void swap();
+
+	/** Return the currently selected foreground/background item. */
+	const Item& selected_fg_item() const { return item_map_.find(selected_fg_item_)->second; };
+	const Item& selected_bg_item() const { return item_map_.find(selected_bg_item_)->second; };
+
+private:
 
 	/** Return the number of the tile that is at coordinates (x, y) in the panel. */
 	int tile_selected(const int x, const int y) const;
 
-	virtual bool scroll_up();
-	virtual bool scroll_down();
-
-private:
-
+	/** TODO */
 	size_t active_group_index();
 
 	/** Scroll the editor-palette to the top. */
@@ -102,9 +114,10 @@ private:
 
 	virtual const std::string& active_group_id() {return active_group_;};
 
-public:
-	virtual const config active_group_report();
+	/** Return the number of items in the palette. */
+	size_t num_items();
 
+	void draw_old(bool);
 
 protected:
 	/**
@@ -116,16 +129,10 @@ protected:
 	virtual void set_group(const std::string& id);
 	const std::vector<std::string>& active_group() { return group_map_[active_group_]; };
 
-public:
-	/** Return the currently selected foreground/background item. */
-	const Item& selected_fg_item() const { return item_map_.find(selected_fg_item_)->second; };
-	const Item& selected_bg_item() const { return item_map_.find(selected_bg_item_)->second; };
+	/** Select a foreground item. */
+	virtual void select_fg_item(std::string item_id);
+	virtual void select_bg_item(std::string item_id);
 
-	void set_start_item(size_t index) { items_start_ = index; };
-
-	size_t start_num(void) { return items_start_; };
-
-protected:
 	/**
 	 * The editor_groups as defined in editor-groups.cfg.
 	 *
@@ -134,40 +141,12 @@ protected:
 	 */
 	std::vector<item_group> groups_;
 
-private:
-	/** Return the currently selected background item. */
-//	Item selected_bg_item() const { return selected_bg_item_; };
-
-	void swap();
-
-protected:
-	/** Select a foreground item. */
-	virtual void select_fg_item(std::string item_id);
-	virtual void select_bg_item(std::string item_id);
-
-private:
-
-	/** Return the number of items in the palette. */
-	size_t num_items();
-
-	void draw_old(bool);
-
-protected:
 	editor_display &gui_;
 	const size_specs &size_specs_;
 
 	int item_size_;
 	int item_width_;
 	int item_space_;
-
-protected:
-
-	/** Update the report with the currently selected items. */
-/*
-	virtual void update_report() = 0;
-*/
-
-protected:
 
 private:
 	unsigned int palette_y_;

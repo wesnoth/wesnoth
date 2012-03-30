@@ -1184,6 +1184,7 @@ REPORT_GENERATOR(observers)
 	return image_report(game_config::images::observer, str.str());
 }
 
+/* TODO unused
 REPORT_GENERATOR(selected_terrain)
 {
 	const std::string selected_terrain = editor::get_selected_terrain();
@@ -1192,6 +1193,7 @@ REPORT_GENERATOR(selected_terrain)
 	else
 		return text_report(selected_terrain);
 }
+*/
 
 /* TODO this is unused
 REPORT_GENERATOR(edit_left_button_function)

@@ -25,9 +25,15 @@
 
 namespace editor {
 
-std::string get_selected_terrain();
+//TODO
+//std::string get_selected_terrain();
 
+t_translation::t_terrain get_selected_fg_terrain();
 t_translation::t_terrain get_selected_bg_terrain();
+
+//Those could be moved inside the class.
+void set_selected_fg_terrain(t_translation::t_terrain terrain);
+void set_selected_bg_terrain(t_translation::t_terrain terrain);
 
 /** Palette where the terrain to be drawn can be selected. */
 class terrain_palette : public editor_palette<t_translation::t_terrain> {
