@@ -700,7 +700,7 @@ bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, m
 				&& !resources::whiteboard->allow_leader_to_move(*u))
 		{
 			gui2::show_transient_message(gui_->video(), "",
-					_("You cannot move your leader away from the keep with some planned recruits left."));
+					_("You cannot move your leader away from the keep with some planned recruits or recalls left."));
 
 			if(next_unit)
 				*next_unit = steps.front();
