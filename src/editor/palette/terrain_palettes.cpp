@@ -44,11 +44,6 @@ t_translation::t_terrain get_selected_bg_terrain() {
 	return bg_terrain;
 }
 
-std::string get_selected_terrain()
-{
-	return selected_terrain;
-}
-
 static bool is_valid_terrain(t_translation::t_terrain c) {
 	return !(c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
 }
