@@ -182,21 +182,6 @@ public:
 		}
 	}
 
-	bool has_seen(unsigned int index) const {
-		if(!uses_shroud() && !uses_fog()) return true;
-		if(index < seen_.size()) {
-			return seen_[index];
-		} else {
-			return false;
-		}
-	}
-	void see(unsigned int index) {
-		if(index >= seen_.size()) {
-			seen_.resize(index+1);
-		}
-		seen_[index] = true;
-	}
-
 	team_info::CONTROLLER controller() const { return info_.controller; }
 	char const *controller_string() const { return info_.controller_string(); }
 	const std::string& color() const { return info_.color; }
@@ -316,8 +301,6 @@ private:
 	bool calculate_enemies(size_t index) const;
 	bool calculate_is_enemy(size_t index) const;
 	mutable std::vector<bool> enemies_;
-
-	mutable std::vector<bool> seen_;
 
 	mutable std::vector<const shroud_map*> ally_shroud_, ally_fog_;
 

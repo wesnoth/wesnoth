@@ -286,7 +286,6 @@ team::team() :
 	action_bonus_count_(0),
 	recall_list_(),
 	enemies_(),
-	seen_(),
 	ally_shroud_(),
 	ally_fog_(),
 	planned_actions_()

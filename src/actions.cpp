@@ -2487,7 +2487,6 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		foreach (const unit &u, units) {
 			if (!tm->fogged(u.get_location())) {
 				known_units.insert(u.get_location());
-				tm->see(u.side() - 1);
 			}
 		}
 	}
@@ -2804,7 +2803,6 @@ size_t move_unit(move_unit_spectator *move_spectator,
 			}
 
 			DBG_NG << "processed...\n";
-			tm->see(u->side() - 1);
 		}
 
 		// The message we display is different depending on
@@ -2968,7 +2966,6 @@ void apply_shroud_changes(undo_list &undos, int side)
 			{
 				unit_map::const_iterator new_unit = units.find(*sight_it);
 				assert(new_unit != units.end());
-				tm.see(new_unit->side() - 1);
 
 				game_events::raise("sighted", *sight_it, actual_location);
 				sighted_event = true;
@@ -2978,7 +2975,6 @@ void apply_shroud_changes(undo_list &undos, int side)
 			{
 				unit_map::const_iterator new_unit = units.find(*sight_it);
 				assert(new_unit != units.end());
-				tm.see(new_unit->side() - 1);
 
 				game_events::raise("sighted", *sight_it, actual_location);
 				sighted_event = true;
