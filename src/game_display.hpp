@@ -46,8 +46,10 @@ public:
 	static game_display* create_dummy_display(CVideo& video);
 
 	~game_display();
-	static game_display* get_singleton() { return (game_display*)singleton_ ;}
-
+	static game_display* get_singleton()
+	{
+		return static_cast<game_display*>(singleton_);
+	}
 
 	/**
 	 * Update lighting settings.
