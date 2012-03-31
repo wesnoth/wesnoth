@@ -40,7 +40,7 @@ void twml_message_::set_input(const std::string& caption,
 	has_input_ = true;
 	input_caption_ = caption;
 	input_text_ = text;
-	input_maximum_lenght_ = maximum_length;
+	input_maximum_length_ = maximum_length;
 }
 
 void twml_message_::set_option_list(
@@ -85,7 +85,7 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 		caption.set_label(input_caption_);
 		caption.set_use_markup(true);
 		input.set_value(*input_text_);
-		input.set_maximum_length(input_maximum_lenght_);
+		input.set_maximum_length(input_maximum_length_);
 		window.keyboard_capture(&input);
 		window.set_click_dismiss(false);
 		window.set_escape_disabled(true);

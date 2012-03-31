@@ -39,7 +39,7 @@ public:
 		, has_input_(false)
 		, input_caption_("")
 		, input_text_(NULL)
-		, input_maximum_lenght_(0)
+		, input_maximum_length_(0)
 		, option_list_()
 		, chosen_option_(NULL)
 	{
@@ -89,7 +89,7 @@ private:
 	std::string* input_text_;
 
 	/** The maximum length of the input text. */
-	unsigned input_maximum_lenght_;
+	unsigned input_maximum_length_;
 
 	/** The list of options the user can choose. */
 	std::vector<std::string> option_list_;
