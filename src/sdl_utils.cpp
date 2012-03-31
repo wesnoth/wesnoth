@@ -23,6 +23,7 @@
 #include "sdl_utils.hpp"
 
 #include "floating_point_emulation.hpp"
+#include "neon.hpp"
 #include "video.hpp"
 
 #include <algorithm>
@@ -1488,6 +1489,38 @@ surface blend_surface(
 		const Uint16 blue  = ratio * static_cast<Uint8>(color);
 		ratio = 256 - ratio;
 
+#ifdef PANDORA
+		/*
+		 * Use an optimised version of the generic algorithm. The optimised
+		 * version processes 8 pixels a time. If the number of pixels is not an
+		 * exact multiple of 8 it falls back to the generic algorithm to handle
+		 * the last pixels.
+		 */
+		uint16x8_t vred = vdupq_n_u16(red);
+		uint16x8_t vgreen = vdupq_n_u16(green);
+		uint16x8_t vblue = vdupq_n_u16(blue);
+
+		uint8x8_t vratio = vdup_n_u8(ratio);
+
+		const int div = (nsurf->w * surf->h) / 8;
+		for(int i = 0; i < div; ++i, beg += 8) {
+			uint8x8x4_t rgba = vld4_u8(reinterpret_cast<Uint8*>(beg));
+
+			uint16x8_t b = vmull_u8(rgba.val[0], vratio);
+			uint16x8_t g = vmull_u8(rgba.val[1], vratio);
+			uint16x8_t r = vmull_u8(rgba.val[2], vratio);
+
+			b = vaddq_u16(b, vblue);
+			g = vaddq_u16(g, vgreen);
+			r = vaddq_u16(r, vred);
+
+			rgba.val[0] = vshrn_n_u16(b, 8);
+			rgba.val[1] = vshrn_n_u16(g, 8);
+			rgba.val[2] = vshrn_n_u16(r, 8);
+
+			vst4_u8(reinterpret_cast<Uint8*>(beg), rgba);
+		}
+#endif
 		while(beg != end) {
 			Uint8 a = static_cast<Uint8>(*beg >> 24);
 			Uint8 r = (ratio * static_cast<Uint8>(*beg >> 16) + red)   >> 8;

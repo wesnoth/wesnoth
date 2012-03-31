@@ -202,6 +202,8 @@ Version 1.11.0-svn:
    * Changed: Add a small cache for reading files, giving a minor improvement.
    * Added: Helper tool to create images for unit tests.
    * Added: Image manipulation unit tests.
+   * Changed: Rewrote the surface blending algorithm, and improving its speed
+     using NEON intrinsics on processors supporting NEON (the Pandora).
 
 Version 1.10.0:
  * Campaigns:
