@@ -48,7 +48,7 @@
 
 #else
 
-#include <inttypes.h>
+#include <boost/cstdint.hpp>
 
 /***** ***** ***** ***** types ***** ***** ***** *****/
 
