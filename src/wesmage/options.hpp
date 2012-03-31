@@ -72,6 +72,13 @@ public:
 	/** Display the time that applying the filters took. */
 	bool time;
 
+	/**
+	 * The number of times the filter has to be applied.
+	 *
+	 * This feature is for performance testing only.
+	 */
+	int count;
+
 private:
 
 	/**

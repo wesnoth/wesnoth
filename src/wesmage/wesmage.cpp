@@ -46,6 +46,15 @@ main(int argc, char* argv[])
 			return EXIT_FAILURE;
 		}
 
+		std::vector<surface> surfaces;
+		if(options.count != 1) {
+			for(int i = 1; i < options.count; ++i) {
+				// make_neutral_surface make a deep-copy of the image.
+				surfaces.push_back(make_neutral_surface(surf));
+			}
+		}
+		surfaces.push_back(surf);
+
 		clock_t begin = std::clock();
 		clock_t end = std::clock();
 		if(options.time) {
@@ -61,8 +70,10 @@ main(int argc, char* argv[])
 			begin = std::clock();
 		}
 
-		BOOST_FOREACH(const std::string& filter, options.filters) {
-			filter_apply(surf, filter);
+		for(int i = 0; i < options.count; ++i) {
+			BOOST_FOREACH(const std::string& filter, options.filters) {
+				filter_apply(surfaces[i], filter);
+			}
 		}
 
 		end = std::clock();
@@ -75,7 +86,7 @@ main(int argc, char* argv[])
 		}
 
 		if(!options.output_filename.empty()) {
-			save_image(surf, options.output_filename);
+			save_image(surfaces[0], options.output_filename);
 		}
 
 	} catch(const texit& exit) {

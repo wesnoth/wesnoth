@@ -29,6 +29,7 @@ toptions::toptions()
 	, output_filename()
 	, filters()
 	, time(false)
+	, count(1)
 {
 }
 
@@ -118,6 +119,9 @@ print_help(const int exit_status)
 "-n, --dry-run           No output is written.\n"
 "-t, --time              Show the time it took to apply the filters.\n"
 "                        The resolution of the time depends on the platform.\n"
+"-c, --count COUNT       The number of times the filter needs to be applied.\n"
+"                        This feature is mainly for timing an algorithm and\n"
+"                        is applied on a new image every iteration.\n"
 "-f, --filter FILTER     Filters to be applied to the image. See FILTERS.\n"
 "-h, --help              Show this help and terminate the programme.\n"
 "\n"
@@ -169,6 +173,27 @@ toptions::parse(int argc, char* argv[])
 			dry_run = true;
 		} else if(option == "-t" || option == "--time") {
 			result.time = true;
+		} else if(option == "-c" || option == "--count") {
+			++i;
+			VALIDATE_NOT_PAST_END;
+
+			char* end;
+			result.count = strtol(argv[i], &end, 10);
+			if(*end || result.count <= 0) {
+				std::cerr << "Error: Parameter of count »"
+						<< argv[i]
+						<< "« should be a positive number.\n";
+				print_help(EXIT_FAILURE);
+			}
+		} else if(option.substr(0, 2) == "-c") {
+			char* end;
+			result.count = strtol(option.substr(2).c_str(), &end, 10);
+			if(*end || result.count <= 0) {
+				std::cerr << "Error: Parameter of count »"
+						<< option.substr(2).c_str()
+						<< "« should be a positive number.\n";
+				print_help(EXIT_FAILURE);
+			}
 		} else if(option == "-o" || option == "--output") {
 			++i;
 			VALIDATE_NOT_PAST_END;
