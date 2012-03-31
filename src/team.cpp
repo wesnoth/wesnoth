@@ -302,11 +302,20 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	info_.read(cfg);
 
 	fog_.set_enabled(cfg["fog"].to_bool());
+	fog_.read(cfg["fog_data"]);
 	shroud_.set_enabled(cfg["shroud"].to_bool());
 	shroud_.read(cfg["shroud_data"]);
 
 	LOG_NG << "team::team(...): team_name: " << info_.team_name
 	       << ", shroud: " << uses_shroud() << ", fog: " << uses_fog() << ".\n";
+
+	// Load the WML-cleared fog.
+	const config &fog_override = cfg.child("fog_override");
+	if ( fog_override ) {
+		const std::vector<map_location> fog_vector =
+			parse_location_range(fog_override["x"], fog_override["y"], true);
+		fog_clearer_.insert(fog_vector.begin(), fog_vector.end());
+	}
 
 	// To ensure some minimum starting gold,
 	// gold is the maximum of 'gold' and what is given in the config file
@@ -348,6 +357,9 @@ void team::write(config& cfg) const
 	}
 
 	cfg["shroud_data"] = shroud_.write();
+	cfg["fog_data"] = fog_.write();
+	if ( !fog_clearer_.empty() )
+		write_location_range(fog_clearer_, cfg.add_child("fog_override"));
 
 	cfg["countdown_time"] = countdown_time_;
 	cfg["action_bonus_count"] = action_bonus_count_;

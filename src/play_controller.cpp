@@ -540,7 +540,7 @@ void play_controller::init_gui(){
 	gui_->update_tod();
 
 	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		clear_shroud(t - teams_.begin() + 1, true);
+		clear_shroud(t - teams_.begin() + 1);
 	}
 }
 
@@ -646,7 +646,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
 	if (!recorder.is_skipping()){
-		clear_shroud(team_index + 1, true);
+		clear_shroud(team_index + 1, !loading_game_);
 		gui_->invalidate_all();
 	}
 
