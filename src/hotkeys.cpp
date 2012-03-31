@@ -110,13 +110,20 @@ const struct {
 	  N_("Team 1"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip Animation"), false, hotkey::SCOPE_GAME },
 	// Whiteboard commands
-	{ hotkey::HOTKEY_WB_TOGGLE, "wbtoggle", N_("Toggle Planning Mode"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_EXECUTE_ACTION, "wbexecuteaction", N_("Execute Planned Action"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS, "wbexecuteallactions", N_("Execute All Actions"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_DELETE_ACTION, "wbdeleteaction", N_("Delete Planned Action"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("Move Action Up Queue"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("Move Action Down Queue"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("Suppose Dead"), false, hotkey::SCOPE_GAME },
+	// TRANSLATORS: whiteboard menu entry: toggle planning mode
+	{ hotkey::HOTKEY_WB_TOGGLE, "wbtoggle", N_("whiteboard^Planning Mode"), false, hotkey::SCOPE_GAME },
+	// TRANSLATORS: whiteboard menu entry: execute planned action
+	{ hotkey::HOTKEY_WB_EXECUTE_ACTION, "wbexecuteaction", N_("whiteboard^Execute Action"), false, hotkey::SCOPE_GAME },
+	// TRANSLATORS: whiteboard menu entry: execute all planned actions
+	{ hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS, "wbexecuteallactions", N_("whiteboard^Execute All Actions"), false, hotkey::SCOPE_GAME },
+	// TRANSLATORS: whiteboard menu entry: delete planned action
+	{ hotkey::HOTKEY_WB_DELETE_ACTION, "wbdeleteaction", N_("whiteboard^Delete Action"), false, hotkey::SCOPE_GAME },
+	// TRANSLATORS: whiteboard menu entry: move planned action up queue
+	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("whiteboard^Move Action Up"), false, hotkey::SCOPE_GAME },
+	// TRANSLATORS: whiteboard menu entry: move planned action down queue
+	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("whiteboard^Move Action Down"), false, hotkey::SCOPE_GAME },
+	// TRANSLATORS: whiteboard menu entry: plan as if unit was dead
+	{ hotkey::HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("whiteboard^Suppose Dead"), false, hotkey::SCOPE_GAME },
 
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR },
 	{ hotkey::HOTKEY_EDITOR_CLOSE_MAP, "editor-close-map", N_("Close Map"), false, hotkey::SCOPE_EDITOR },
