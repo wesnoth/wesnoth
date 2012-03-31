@@ -268,11 +268,6 @@ void team::team_info::write(config& cfg) const
 	cfg.add_child("ai",ai::manager::to_config(side));
 }
 
-void team::merge_shroud_map_data(const std::string& shroud_data)
-{
-	shroud_.merge(shroud_data);
-}
-
 team::team() :
 	savegame_config(),
 	gold_(0),

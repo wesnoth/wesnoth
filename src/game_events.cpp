@@ -756,8 +756,11 @@ WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
 }
 
 /* Implements the lifting and resetting of fog via WML.
+ * Setting reset to true causes the current fog to be discarded, which causes
+ * all tiles to be fogged for the specified teams (normally only used when
+ * clear is false).
  */
-static void toggle_fog(const bool clear, const vconfig& cfg)
+static void toggle_fog(const bool clear, const vconfig& cfg, const bool reset=false)
 {
 	// Filter the sides.
 	const vconfig &ssf = cfg.child("filter_side");
@@ -777,6 +780,9 @@ static void toggle_fog(const bool clear, const vconfig& cfg)
 			t.add_fog_override(locs);
 		else
 			t.remove_fog_override(locs);
+		// Should this side reset fog?
+		if ( reset )
+			t.refog();
 	}
 
 	// Flag a screen update.
@@ -792,6 +798,7 @@ WML_HANDLER_FUNCTION(lift_fog, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(reset_fog, /*event_info*/,cfg)
 {
 	toggle_fog(false, cfg);
+	toggle_fog(false, cfg, cfg["reset_view"].to_bool(false));
 }
 
 WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
@@ -980,6 +987,8 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 {
 	std::vector<team> &teams = *resources::teams;
 
+	bool invalidate_screen = false;
+
 	std::string team_name = cfg["team_name"];
 	std::string user_team_name = cfg["user_team_name"];
 	std::string controller = cfg["controller"];
@@ -1031,10 +1040,17 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		config::attribute_value shroud = cfg["shroud"];
 		if (!shroud.empty()) {
 			teams[team_index].set_shroud(shroud.to_bool(true));
+			invalidate_screen = true;
+		}
+		// Reset shroud
+		if ( cfg["reset_maps"].to_bool(false) ) {
+			teams[team_index].reshroud();
+			invalidate_screen = true;
 		}
 		// Merge shroud data
 		if (!shroud_data.empty()) {
 			teams[team_index].merge_shroud_map_data(shroud_data);
+			invalidate_screen = true;
 		}
 		// Set whether team is hidden in status table
 		config::attribute_value hidden = cfg["hidden"];
@@ -1045,6 +1061,12 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		config::attribute_value fog = cfg["fog"];
 		if (!fog.empty()) {
 			teams[team_index].set_fog(fog.to_bool(true));
+			invalidate_screen = true;
+		}
+		// Reset fog
+		if ( cfg["reset_view"].to_bool(false) ) {
+			teams[team_index].refog();
+			invalidate_screen = true;
 		}
 		// Set income per village
 		config::attribute_value village_gold = cfg["village_gold"];
@@ -1063,16 +1085,14 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		config::attribute_value color = cfg["color"];
 		if(!color.empty()) {
 			teams[team_index].set_color(color);
-			resources::screen->recalculate_minimap();
-			resources::screen->invalidate_all();
+			invalidate_screen = true;
 		}
 		// Add shared view to current team
 		config::attribute_value share_view = cfg["share_view"];
 		if (!share_view.empty()){
 			teams[team_index].set_share_view(share_view.to_bool(true));
 			team::clear_caches();
-			resources::screen->recalculate_minimap();
-			resources::screen->invalidate_all();
+			invalidate_screen = true;
 		}
 		// Add shared maps to current team
 		// IMPORTANT: this MUST happen *after* share_view is changed
@@ -1080,10 +1100,15 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		if (!share_maps.empty()){
 			teams[team_index].set_share_maps(share_maps.to_bool(true));
 			team::clear_caches();
-			resources::screen->recalculate_minimap();
-			resources::screen->invalidate_all();
+			invalidate_screen = true;
 		}
 
+	}
+
+	// Flag an update of the screen, if needed.
+	if ( invalidate_screen ) {
+		resources::screen->recalculate_minimap();
+		resources::screen->invalidate_all();
 	}
 }
 

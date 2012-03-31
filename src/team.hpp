@@ -224,12 +224,13 @@ public:
 	bool clear_shroud(const map_location& loc) { return shroud_.clear(loc.x+1,loc.y+1); }
 	void place_shroud(const map_location& loc) { shroud_.place(loc.x+1,loc.y+1); }
 	bool clear_fog(const map_location& loc) { return fog_.clear(loc.x+1,loc.y+1); }
+	void reshroud() { shroud_.reset(); }
 	void refog() { fog_.reset(); }
 	void set_shroud(bool shroud) { shroud_.set_enabled(shroud); }
 	void set_fog(bool fog) { fog_.set_enabled(fog); }
 
 	/** Merge a WML shroud map with the shroud data of this player. */
-	void merge_shroud_map_data(const std::string& shroud_data);
+	void merge_shroud_map_data(const std::string& shroud_data) { shroud_.merge(shroud_data); }
 
 	bool knows_about_team(size_t index, bool is_multiplayer) const;
 	bool copy_ally_shroud();
