@@ -29,6 +29,31 @@
 #include <ctime>
 #include <iostream>
 
+static clock_t
+get_begin_time()
+{
+	clock_t begin = std::clock();
+	clock_t end = std::clock();
+
+	while(begin == (end = std::clock())) {
+		/* DO NOTHING */
+	}
+	std::cout << "Clock resolution "
+			<< end - begin
+			<< " ticks, using " << CLOCKS_PER_SEC << " ticks/second.\n"
+			<< "This give resolution of about "
+			<<static_cast<double>(end - begin) / CLOCKS_PER_SEC
+			<< " seconds.\n";
+
+	/* IO might be slow so wait until the next value. */
+	begin = std::clock();
+	while(begin == (end = std::clock())) {
+		/* DO NOTHING */
+	}
+
+	return begin;
+}
+
 int
 main(int argc, char* argv[])
 {
@@ -55,20 +80,7 @@ main(int argc, char* argv[])
 		}
 		surfaces.push_back(surf);
 
-		clock_t begin = std::clock();
-		clock_t end = std::clock();
-		if(options.time) {
-			while(begin == (end = std::clock())) {
-				/* DO NOTHING */
-			}
-			std::cout << "Clock resolution "
-					<< end - begin
-					<< " ticks, using " << CLOCKS_PER_SEC << " ticks/second.\n"
-					<< "This give resolution of about "
-					<<static_cast<double>(end - begin) / CLOCKS_PER_SEC
-					<< " seconds.\n";
-			begin = std::clock();
-		}
+		const clock_t begin = options.time ? get_begin_time() : 0;
 
 		for(int i = 0; i < options.count; ++i) {
 			BOOST_FOREACH(const std::string& filter, options.filters) {
@@ -76,8 +88,8 @@ main(int argc, char* argv[])
 			}
 		}
 
-		end = std::clock();
 		if(options.time) {
+			const clock_t end = std::clock();
 			std::cout << "Applying the filters took "
 					<<  end - begin
 					<< " ticks, "
