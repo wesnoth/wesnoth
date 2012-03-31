@@ -23,8 +23,6 @@ class config;
 #include "terrain.hpp"
 #include "map_location.hpp"
 
-#define MAX_MAP_AREA	65536
-
 /**
  * Encapsulates the map of the game.
  *

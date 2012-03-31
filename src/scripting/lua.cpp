@@ -3123,8 +3123,7 @@ static int intf_get_locations(lua_State *L)
 	vconfig filter = luaW_checkvconfig(L, 1);
 
 	std::set<map_location> res;
-	terrain_filter t_filter(filter, *resources::units);
-	t_filter.restrict_size(game_config::max_loop);
+	const terrain_filter t_filter(filter, *resources::units);
 	t_filter.get_locations(res, true);
 
 	lua_createtable(L, res.size(), 0);
@@ -3159,8 +3158,7 @@ static int intf_match_location(lua_State *L)
 		return 1;
 	}
 
-	terrain_filter t_filter(filter, *resources::units);
-	t_filter.restrict_size(game_config::max_loop);
+	const terrain_filter t_filter(filter, *resources::units);
 	lua_pushboolean(L, t_filter.match(map_location(x, y)));
 	return 1;
 }

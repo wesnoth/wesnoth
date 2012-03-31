@@ -26,8 +26,6 @@ class variable_set;
 #include <set>
 #include <boost/unordered_map.hpp>
 
-#define MAX_MAP_AREA	65536
-
 /**
  * Encapsulates the map of the game.
  *

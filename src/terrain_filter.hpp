@@ -16,6 +16,7 @@
 #ifndef TERRAIN_FILTER_H_INCLUDED
 #define TERRAIN_FILTER_H_INCLUDED
 
+#include "game_config.hpp"
 #include "pathutils.hpp"
 #include "terrain_translation.hpp"
 #include "variable.hpp"
@@ -37,7 +38,7 @@ public:
 #endif
 
 	terrain_filter(const vconfig& cfg,
-		const unit_map& units, const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA);
+		const unit_map& units, const bool flat_tod=false, const size_t max_loop=game_config::max_loop);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~terrain_filter();
