@@ -122,7 +122,7 @@ const struct {
 	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("whiteboard^Move Action Up"), false, hotkey::SCOPE_GAME },
 	// TRANSLATORS: whiteboard menu entry: move planned action down queue
 	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("whiteboard^Move Action Down"), false, hotkey::SCOPE_GAME },
-	// TRANSLATORS: whiteboard menu entry: plan as if unit was dead
+	// TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 	{ hotkey::HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("whiteboard^Suppose Dead"), false, hotkey::SCOPE_GAME },
 
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR },
