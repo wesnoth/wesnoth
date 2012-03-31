@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
+"POT-Creation-Date: 2012-03-31 10:45+0200\n"
 "PO-Revision-Date: 2009-02-27 22:16+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: none\n"
@@ -1566,7 +1566,7 @@ msgstr "Generer"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:126
+#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:133
 msgid "New Map"
 msgstr "Nytt kart"
 
@@ -1593,7 +1593,7 @@ msgstr "Lag nytt kart"
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:35
 #: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:179
 msgid "Resize Map"
 msgstr "Endre kartstørrelse "
 
@@ -1639,7 +1639,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:124
+#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:131
 msgid "Editor Settings"
 msgstr "Innstillinger for kartverktøy"
 
@@ -1768,8 +1768,8 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:875
-#: src/hotkeys.cpp:1220
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:882
+#: src/hotkeys.cpp:1227
 msgid "Quit"
 msgstr "Avslutt"
 
@@ -1928,7 +1928,7 @@ msgstr "Velg ditt foretrukne språk:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
-#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
+#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:211
 #, fuzzy
 #| msgid "Change language"
 msgid "Change Language"
@@ -2462,7 +2462,7 @@ msgstr "Velg"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:202
+#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:209
 msgid "Help"
 msgstr "Hjelp"
 
@@ -3325,7 +3325,7 @@ msgid "Load Game..."
 msgstr "Last inn spill..."
 
 #: src/gui/dialogs/network_transmission.cpp:55
-#: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1178
+#: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1185
 msgid "unit_byte^B"
 msgstr ""
 
@@ -3428,7 +3428,7 @@ msgstr "Standard panorering"
 msgid "Toggle Full Screen"
 msgstr "Fullskjerm av/på"
 
-#: src/hotkeys.cpp:67 src/hotkeys.cpp:1172
+#: src/hotkeys.cpp:67 src/hotkeys.cpp:1179
 msgid "Screenshot"
 msgstr "Øyeblikksbilde"
 
@@ -3452,7 +3452,7 @@ msgstr "Gi enheten nytt navn"
 msgid "Save Replay"
 msgstr "Lagre Opptak"
 
-#: src/hotkeys.cpp:74 src/hotkeys.cpp:128
+#: src/hotkeys.cpp:74 src/hotkeys.cpp:135
 msgid "Save Map"
 msgstr "Lagre kart"
 
@@ -3590,315 +3590,322 @@ msgstr "Lag 1"
 msgid "Skip Animation"
 msgstr "Utelat animasjon"
 
-#: src/hotkeys.cpp:113
-msgid "Toggle Planning Mode"
-msgstr ""
-
+#. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:114
-msgid "Execute Planned Action"
+msgid "whiteboard^Planning Mode"
 msgstr ""
 
-#: src/hotkeys.cpp:115
-msgid "Execute All Actions"
-msgstr ""
-
+#. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkeys.cpp:116
-msgid "Delete Planned Action"
+msgid "whiteboard^Execute Action"
 msgstr ""
 
-#: src/hotkeys.cpp:117
-msgid "Move Action Up Queue"
-msgstr ""
-
+#. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:118
-msgid "Move Action Down Queue"
+msgid "whiteboard^Execute All Actions"
 msgstr ""
 
-#: src/hotkeys.cpp:119
-msgid "Suppose Dead"
+#. TRANSLATORS: whiteboard menu entry: delete planned action
+#: src/hotkeys.cpp:120
+msgid "whiteboard^Delete Action"
 msgstr ""
 
-#: src/hotkeys.cpp:121
+#. TRANSLATORS: whiteboard menu entry: move planned action up queue
+#: src/hotkeys.cpp:122
+msgid "whiteboard^Move Action Up"
+msgstr ""
+
+#. TRANSLATORS: whiteboard menu entry: move planned action down queue
+#: src/hotkeys.cpp:124
+msgid "whiteboard^Move Action Down"
+msgstr ""
+
+#. TRANSLATORS: whiteboard menu entry: plan as if unit was dead
+#: src/hotkeys.cpp:126
+msgid "whiteboard^Suppose Dead"
+msgstr ""
+
+#: src/hotkeys.cpp:128
 msgid "Quit to Desktop"
 msgstr "Gå til skrivebord"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:129
 msgid "Close Map"
 msgstr "Lukk kart"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:130
 msgid "Switch Map"
 msgstr "Bytt kart"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:132
 msgid "Partial Undo"
 msgstr "Delvis omgjøring"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:134
 msgid "Load Map"
 msgstr "Last inn kart"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:136
 msgid "Save Map As"
 msgstr "Lagre kart som"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:137
 #, fuzzy
 msgid "Save All Maps"
 msgstr "Lagre kart"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:138
 msgid "Revert All Changes"
 msgstr "omgjør alle endringer"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:139
 msgid "Map Information"
 msgstr "Kart informasjon"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:141
 #, fuzzy
 #| msgid "Swap fore- and background terrains"
 msgid "Swap Foreground/Background Terrains"
 msgstr "Bytt for- og bakgrunnsterreng"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:142
 msgid "Next Tool"
 msgstr "Neste verktøy"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:143
 msgid "Paint Tool"
 msgstr "Maleverktøy"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:144
 msgid "Fill Tool"
 msgstr "Fyllverktøy"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:145
 msgid "Selection Tool"
 msgstr "Valgverktøy"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:147
 msgid "Set Starting Positions Tool"
 msgstr "Sett startposisjon verktøy"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:148
 msgid "Next Brush"
 msgstr "Neste pensel"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:149
 msgid "Default Brush"
 msgstr "Standard pensel"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:150
 msgid "Cut"
 msgstr "Klipp ut"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:151
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:152
 msgid "Paste"
 msgstr "Lim inn"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:153
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr ""
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:155
 msgid "Select All"
 msgstr "Velg alt/alle"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:157
 msgid "Select Inverse"
 msgstr "Velg invers"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:159
 msgid "Select None"
 msgstr "Velg Ingen"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:161
 msgid "Rotate Clipboard Clockwise"
 msgstr "Roter Clipboard med klokken"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:163
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Roter Clipboard mot klokken"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:165
 msgid "Flip Clipboard Horizontally"
 msgstr "Flipp Clipboard horisontalt"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:167
 msgid "Flip Clipboard Vertically"
 msgstr "Flipp Clipboard vertikalt"
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:169
 msgid "Rotate Selection"
 msgstr "Roter valg"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:171
 msgid "Flip Selection"
 msgstr "Flipp valg"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:173
 msgid "Fill Selection"
 msgstr "Velg fyll"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:175
 msgid "Generate Tiles In Selection"
 msgstr "Genrer felter i valg"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:177
 msgid "Randomize Tiles In Selection"
 msgstr "Randomiser valgte felter"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:181
 msgid "Rotate Map"
 msgstr "roter kart"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:183
 msgid "Generate Map"
 msgstr "Generer kart"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:185
 msgid "Apply a Mask"
 msgstr "Bruk en maskering"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:187
 msgid "Create Mask"
 msgstr "Opprett maskering"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:189
 msgid "Refresh Display"
 msgstr "Oppfrisk Visning"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:191
 msgid "Update Terrain Transitions"
 msgstr "Oppdater terrengoverganger"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:193
 msgid "Auto-update Terrain Transitions"
 msgstr "Auto-oppdater terrengoverganger"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:195
 msgid "Refresh Image Cache"
 msgstr "Oppfrisk bildebank"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:197
 msgid "Draw Hex Coordinates"
 msgstr "Skriv Hex-koordinater"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:199
 msgid "Draw Terrain Codes"
 msgstr "Tegn terrengkoder"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:203
 msgid "Delay Shroud Updates"
 msgstr "Forsink skoddeoppdateringer"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:204
 msgid "Update Shroud Now"
 msgstr "Oppdater skodde"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:205
 msgid "Continue Move"
 msgstr "Fortsett forflytning"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:206
 msgid "Find Label or Unit"
 msgstr "Finn merkelapp eller enhet"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:207
 msgid "Speak to Ally"
 msgstr "Melding til allierte"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:208
 msgid "Speak to All"
 msgstr "Melding til alle"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:210
 msgid "View Chat Log"
 msgstr "Se meldingslogg"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:213
 msgid "Enter User Command"
 msgstr "Oppgi brukerkommando"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:214
 msgid "Custom Command"
 msgstr "Brukerdefinert kommando"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:215
 #, fuzzy
 #| msgid "Run AI formula"
 msgid "Run Formula"
 msgstr "Kjør AI-formel"
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:216
 msgid "Clear Messages"
 msgstr "Fjern meldinger"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:220
 #, fuzzy
 msgid "Refresh WML"
 msgstr "Oppfrisk Visning"
 
-#: src/hotkeys.cpp:220
+#: src/hotkeys.cpp:227
 msgid "Next Tip of the Day"
 msgstr ""
 
-#: src/hotkeys.cpp:227
+#: src/hotkeys.cpp:234
 #, fuzzy
 msgid "Previous Tip of the Day"
 msgstr "Forrige enhet"
 
-#: src/hotkeys.cpp:234
+#: src/hotkeys.cpp:241
 #, fuzzy
 msgid "Start Tutorial"
 msgstr "Opplæring"
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:248
 #, fuzzy
 msgid "Start Campaign"
 msgstr "Felttog"
 
-#: src/hotkeys.cpp:248
+#: src/hotkeys.cpp:255
 #, fuzzy
 #| msgid "Multiplayer"
 msgid "Start Multiplayer Game"
 msgstr "Gruppespill"
 
-#: src/hotkeys.cpp:255
+#: src/hotkeys.cpp:262
 #, fuzzy
 msgid "Manage Add-ons"
 msgstr "Oppdater tilleggspakker"
 
-#: src/hotkeys.cpp:262
+#: src/hotkeys.cpp:269
 #, fuzzy
 msgid "Start Editor"
 msgstr "Kartbehandler"
 
-#: src/hotkeys.cpp:269
+#: src/hotkeys.cpp:276
 #, fuzzy
 #| msgid "Credits"
 msgid "Show Credits"
 msgstr "Medvirkende"
 
-#: src/hotkeys.cpp:277
+#: src/hotkeys.cpp:284
 #, fuzzy
 msgid "Show Helptip"
 msgstr "spiller"
 
-#: src/hotkeys.cpp:875 src/hotkeys.cpp:1220
+#: src/hotkeys.cpp:882 src/hotkeys.cpp:1227
 msgid "Do you really want to quit?"
 msgstr "Vil du virkelig avslutte?"
 
-#: src/hotkeys.cpp:1172
+#: src/hotkeys.cpp:1179
 msgid "Map-Screenshot"
 msgstr "Kart-skjermbilde"
 
-#: src/hotkeys.cpp:1179 src/hotkeys.cpp:1181
+#: src/hotkeys.cpp:1186 src/hotkeys.cpp:1188
 msgid "Screenshot done"
 msgstr "Skjermbilde tatt"
 

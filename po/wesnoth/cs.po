@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
+"POT-Creation-Date: 2012-03-31 10:45+0200\n"
 "PO-Revision-Date: 2012-01-19 17:58+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
@@ -3201,8 +3201,8 @@ msgstr "Ukončit scénář"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:238
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
-#: data/themes/widescreen.cfg:266 src/menu_events.cpp:216 src/unit.cpp:2450
-#: src/unit.cpp:2621
+#: data/themes/widescreen.cfg:266 src/menu_events.cpp:216 src/unit.cpp:2453
+#: src/unit.cpp:2624
 msgid "HP"
 msgstr "Životů"
 
@@ -5195,9 +5195,13 @@ msgid "prompt^Command:"
 msgstr "Příkaz:"
 
 #: src/mouse_events.cpp:703
+#, fuzzy
+#| msgid ""
+#| "You cannot move your leader away from the keep with some planned recruits "
+#| "left."
 msgid ""
-"You cannot move your leader away from the keep with some planned recruits "
-"left."
+"You cannot move your leader away from the keep with some planned recruits or "
+"recalls left."
 msgstr "Pokud má vůdce naplánováno verbování, nelze jím pohnout z tvrze."
 
 #: src/mouse_events.cpp:834 src/mouse_events.cpp:914
@@ -6497,27 +6501,27 @@ msgstr "Hodnota „border_size“ by měla ležet mezi 0,0 a 0,5."
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Neznámá jednotka „$type|“ při vytváření vlastností."
 
-#: src/unit.cpp:2409 src/unit.cpp:2610 src/unit.cpp:2686
+#: src/unit.cpp:2412 src/unit.cpp:2613 src/unit.cpp:2689
 msgid " and "
 msgstr " a "
 
-#: src/unit.cpp:2420
+#: src/unit.cpp:2423
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2481
+#: src/unit.cpp:2484
 msgid "moves"
 msgstr "kroků"
 
-#: src/unit.cpp:2496 src/unit.cpp:2634
+#: src/unit.cpp:2499 src/unit.cpp:2637
 msgid "XP to advance"
 msgstr "zkušenostních bodů k postupu"
 
-#: src/unit.cpp:2627
+#: src/unit.cpp:2630
 msgid " move"
 msgstr " krok"
 
-#: src/unit.cpp:2642
+#: src/unit.cpp:2645
 msgid "$effect_description per level"
 msgstr "$effect_description na úroveň"
 
@@ -6582,23 +6586,23 @@ msgstr "šerá"
 msgid "female^neutral"
 msgstr "neutrální"
 
-#: src/whiteboard/manager.cpp:1085
+#: src/whiteboard/manager.cpp:1089
 msgid "SHOW ALL allies’ plans"
 msgstr "ZOBRAZIT VŠECHNY plány spojenců"
 
-#: src/whiteboard/manager.cpp:1086
+#: src/whiteboard/manager.cpp:1090
 msgid "HIDE ALL allies’ plans"
 msgstr "SKRÝT VŠECHNY plány spojenců"
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1104
 msgid "Show plans for $player"
 msgstr "Ukaž plány pro hráče $player"
 
-#: src/whiteboard/manager.cpp:1102
+#: src/whiteboard/manager.cpp:1106
 msgid "Hide plans for $player"
 msgstr "Skryj plány pro hráče $player"
 
-#: src/whiteboard/manager.cpp:1105
+#: src/whiteboard/manager.cpp:1109
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
 

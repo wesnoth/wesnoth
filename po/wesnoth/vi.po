@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
+"POT-Creation-Date: 2012-03-31 10:45+0200\n"
 "PO-Revision-Date: 2011-08-17 08:23+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -3236,8 +3236,8 @@ msgstr "Kết thúc màn"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:238
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
-#: data/themes/widescreen.cfg:266 src/menu_events.cpp:216 src/unit.cpp:2450
-#: src/unit.cpp:2621
+#: data/themes/widescreen.cfg:266 src/menu_events.cpp:216 src/unit.cpp:2453
+#: src/unit.cpp:2624
 msgid "HP"
 msgstr "Máu"
 
@@ -5236,9 +5236,13 @@ msgid "prompt^Command:"
 msgstr "Lệnh:"
 
 #: src/mouse_events.cpp:703
+#, fuzzy
+#| msgid ""
+#| "You cannot move your leader away from the keep with some planned recruits "
+#| "left."
 msgid ""
-"You cannot move your leader away from the keep with some planned recruits "
-"left."
+"You cannot move your leader away from the keep with some planned recruits or "
+"recalls left."
 msgstr ""
 "Bạn không thể di chuyển chỉ huy khỏi pháo đài khi vẫn còn lệnh tuyển quân."
 
@@ -6549,27 +6553,27 @@ msgstr "border_size nên nằm giữa 0.0 và 0.5."
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Kiểu đơn vị '$type|' không xác định khi tạo đặc điểm"
 
-#: src/unit.cpp:2409 src/unit.cpp:2610 src/unit.cpp:2686
+#: src/unit.cpp:2412 src/unit.cpp:2613 src/unit.cpp:2689
 msgid " and "
 msgstr " và "
 
-#: src/unit.cpp:2420
+#: src/unit.cpp:2423
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2481
+#: src/unit.cpp:2484
 msgid "moves"
 msgstr "di chuyển"
 
-#: src/unit.cpp:2496 src/unit.cpp:2634
+#: src/unit.cpp:2499 src/unit.cpp:2637
 msgid "XP to advance"
 msgstr "KN để nâng cấp"
 
-#: src/unit.cpp:2627
+#: src/unit.cpp:2630
 msgid " move"
 msgstr " di chuyển"
 
-#: src/unit.cpp:2642
+#: src/unit.cpp:2645
 msgid "$effect_description per level"
 msgstr "$effect_description mỗi cấp độ"
 
@@ -6629,27 +6633,27 @@ msgstr "trung gian"
 msgid "female^neutral"
 msgstr "trung lập"
 
-#: src/whiteboard/manager.cpp:1085
+#: src/whiteboard/manager.cpp:1089
 msgid "SHOW ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1086
+#: src/whiteboard/manager.cpp:1090
 msgid "HIDE ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1104
 #, fuzzy
 #| msgid "Show replay"
 msgid "Show plans for $player"
 msgstr "Hiện phát lại"
 
-#: src/whiteboard/manager.cpp:1102
+#: src/whiteboard/manager.cpp:1106
 #, fuzzy
 #| msgid "Replace with $player"
 msgid "Hide plans for $player"
 msgstr "Thay thế bằng $player"
 
-#: src/whiteboard/manager.cpp:1105
+#: src/whiteboard/manager.cpp:1109
 msgid "Whiteboard Options"
 msgstr ""
 

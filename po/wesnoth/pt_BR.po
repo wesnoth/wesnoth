@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
+"POT-Creation-Date: 2012-03-31 10:45+0200\n"
 "PO-Revision-Date: 2011-10-10 22:59-0300\n"
 "Last-Translator: Filipe Borges <fqborges@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -3257,8 +3257,8 @@ msgstr "Terminar o Cenário"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:238
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
-#: data/themes/widescreen.cfg:266 src/menu_events.cpp:216 src/unit.cpp:2450
-#: src/unit.cpp:2621
+#: data/themes/widescreen.cfg:266 src/menu_events.cpp:216 src/unit.cpp:2453
+#: src/unit.cpp:2624
 msgid "HP"
 msgstr "HP"
 
@@ -5271,9 +5271,13 @@ msgid "prompt^Command:"
 msgstr "Comando:"
 
 #: src/mouse_events.cpp:703
+#, fuzzy
+#| msgid ""
+#| "You cannot move your leader away from the keep with some planned recruits "
+#| "left."
 msgid ""
-"You cannot move your leader away from the keep with some planned recruits "
-"left."
+"You cannot move your leader away from the keep with some planned recruits or "
+"recalls left."
 msgstr ""
 "Você não pode mover seu líder de um forte quando há ações de <b>recrutar</b> "
 "planejadas."
@@ -6607,29 +6611,29 @@ msgstr "border_size deve estar entre 0.0 e 0.5."
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Tipo de unidade desconhecido '$type|' enquanto gerava características"
 
-#: src/unit.cpp:2409 src/unit.cpp:2610 src/unit.cpp:2686
+#: src/unit.cpp:2412 src/unit.cpp:2613 src/unit.cpp:2689
 msgid " and "
 msgstr " e "
 
-#: src/unit.cpp:2420
+#: src/unit.cpp:2423
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2481
+#: src/unit.cpp:2484
 #, fuzzy
 #| msgid "Moves"
 msgid "moves"
 msgstr "Movimento"
 
-#: src/unit.cpp:2496 src/unit.cpp:2634
+#: src/unit.cpp:2499 src/unit.cpp:2637
 msgid "XP to advance"
 msgstr "XP para avançar"
 
-#: src/unit.cpp:2627
+#: src/unit.cpp:2630
 msgid " move"
 msgstr " movimento"
 
-#: src/unit.cpp:2642
+#: src/unit.cpp:2645
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 
@@ -6691,23 +6695,23 @@ msgstr "Liminar"
 msgid "female^neutral"
 msgstr "neutra"
 
-#: src/whiteboard/manager.cpp:1085
+#: src/whiteboard/manager.cpp:1089
 msgid "SHOW ALL allies’ plans"
 msgstr "MOSTRAR planos de TODOS aliados"
 
-#: src/whiteboard/manager.cpp:1086
+#: src/whiteboard/manager.cpp:1090
 msgid "HIDE ALL allies’ plans"
 msgstr "ESCONDER planos de TODOS aliados"
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1104
 msgid "Show plans for $player"
 msgstr "Mostrar planos para $player"
 
-#: src/whiteboard/manager.cpp:1102
+#: src/whiteboard/manager.cpp:1106
 msgid "Hide plans for $player"
 msgstr "Esconder planos de $player"
 
-#: src/whiteboard/manager.cpp:1105
+#: src/whiteboard/manager.cpp:1109
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
 

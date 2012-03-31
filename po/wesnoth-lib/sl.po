@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
+"POT-Creation-Date: 2012-03-31 10:45+0200\n"
 "PO-Revision-Date: 2010-10-03 10:36+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -1575,7 +1575,7 @@ msgstr "Ustvari"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:126
+#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:133
 msgid "New Map"
 msgstr "Nova karta"
 
@@ -1602,7 +1602,7 @@ msgstr "Ustvari novo karto"
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:35
 #: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:179
 msgid "Resize Map"
 msgstr "Spremeni velikost karte"
 
@@ -1649,7 +1649,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:124
+#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:131
 msgid "Editor Settings"
 msgstr "Nastavitve urejevalnika"
 
@@ -1770,8 +1770,8 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:875
-#: src/hotkeys.cpp:1220
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:882
+#: src/hotkeys.cpp:1227
 msgid "Quit"
 msgstr "Končaj"
 
@@ -1925,7 +1925,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
-#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
+#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:211
 #, fuzzy
 #| msgid "Change language"
 msgid "Change Language"
@@ -2438,7 +2438,7 @@ msgstr "Izberi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:202
+#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:209
 msgid "Help"
 msgstr "Pomoč"
 
@@ -3327,7 +3327,7 @@ msgid "Load Game..."
 msgstr "Naloži igro ..."
 
 #: src/gui/dialogs/network_transmission.cpp:55
-#: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1178
+#: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1185
 msgid "unit_byte^B"
 msgstr ""
 
@@ -3434,7 +3434,7 @@ msgid "Toggle Full Screen"
 msgstr "Celozaslonski način"
 
 # Zaslonska slika, zaslonski posnetek
-#: src/hotkeys.cpp:67 src/hotkeys.cpp:1172
+#: src/hotkeys.cpp:67 src/hotkeys.cpp:1179
 #, fuzzy
 msgid "Screenshot"
 msgstr "Posnetek zaslona"
@@ -3460,7 +3460,7 @@ msgstr "Preimenuj enoto"
 msgid "Save Replay"
 msgstr "Shrani posnetek"
 
-#: src/hotkeys.cpp:74 src/hotkeys.cpp:128
+#: src/hotkeys.cpp:74 src/hotkeys.cpp:135
 msgid "Save Map"
 msgstr "Shrani karto"
 
@@ -3604,334 +3604,341 @@ msgstr "Ekipa 1"
 msgid "Skip Animation"
 msgstr "Preskoči animacijo"
 
-#: src/hotkeys.cpp:113
-msgid "Toggle Planning Mode"
-msgstr ""
-
+#. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:114
-msgid "Execute Planned Action"
+msgid "whiteboard^Planning Mode"
 msgstr ""
 
-#: src/hotkeys.cpp:115
-msgid "Execute All Actions"
-msgstr ""
-
+#. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkeys.cpp:116
-msgid "Delete Planned Action"
+msgid "whiteboard^Execute Action"
 msgstr ""
 
-#: src/hotkeys.cpp:117
-msgid "Move Action Up Queue"
-msgstr ""
-
+#. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:118
-msgid "Move Action Down Queue"
+msgid "whiteboard^Execute All Actions"
 msgstr ""
 
-#: src/hotkeys.cpp:119
-msgid "Suppose Dead"
+#. TRANSLATORS: whiteboard menu entry: delete planned action
+#: src/hotkeys.cpp:120
+msgid "whiteboard^Delete Action"
 msgstr ""
 
-#: src/hotkeys.cpp:121
+#. TRANSLATORS: whiteboard menu entry: move planned action up queue
+#: src/hotkeys.cpp:122
+msgid "whiteboard^Move Action Up"
+msgstr ""
+
+#. TRANSLATORS: whiteboard menu entry: move planned action down queue
+#: src/hotkeys.cpp:124
+msgid "whiteboard^Move Action Down"
+msgstr ""
+
+#. TRANSLATORS: whiteboard menu entry: plan as if unit was dead
+#: src/hotkeys.cpp:126
+msgid "whiteboard^Suppose Dead"
+msgstr ""
+
+#: src/hotkeys.cpp:128
 #, fuzzy
 msgid "Quit to Desktop"
 msgstr "Izhod na namizje"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:129
 msgid "Close Map"
 msgstr "Zapri karto"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:130
 msgid "Switch Map"
 msgstr "Zamenjaj karto"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:132
 msgid "Partial Undo"
 msgstr "Delna razveljavitev"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:134
 msgid "Load Map"
 msgstr "Naloži karto"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:136
 msgid "Save Map As"
 msgstr "Shrani karto kot"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:137
 #, fuzzy
 msgid "Save All Maps"
 msgstr "Shrani karto"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:138
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:139
 msgid "Map Information"
 msgstr "Podatki o karti"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:141
 msgid "Swap Foreground/Background Terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:142
 #, fuzzy
 msgid "Next Tool"
 msgstr "Naslednja poteza"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:143
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:144
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:145
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Izberi vse"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:147
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:148
 #, fuzzy
 msgid "Next Brush"
 msgstr "Naslednja poteza"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:149
 #, fuzzy
 msgid "Default Brush"
 msgstr "Privzeta povečava"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:150
 msgid "Cut"
 msgstr "Izreži"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:151
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:152
 msgid "Paste"
 msgstr "Prilepi"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:153
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr ""
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:155
 msgid "Select All"
 msgstr "Izberi vse"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:157
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:159
 #, fuzzy
 msgid "Select None"
 msgstr "Izberi vse"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:161
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:163
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:165
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:167
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:169
 #, fuzzy
 msgid "Rotate Selection"
 msgstr "Zapolni izbor"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:171
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Zapolni izbor"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:173
 #, fuzzy
 msgid "Fill Selection"
 msgstr "Zapolni izbor"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:175
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Zapolni izbor"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:177
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:181
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Naloži karto"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:183
 msgid "Generate Map"
 msgstr "Ustvari mapo"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:185
 msgid "Apply a Mask"
 msgstr "Uveljavi masko"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:187
 msgid "Create Mask"
 msgstr "Ustvari masko"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:189
 msgid "Refresh Display"
 msgstr "Osveži prikaz"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:191
 msgid "Update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:193
 msgid "Auto-update Terrain Transitions"
 msgstr ""
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:195
 #, fuzzy
 msgid "Refresh Image Cache"
 msgstr "Posodobi slikovni predpomnilnik"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:197
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:199
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Nariši teren"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:203
 #, fuzzy
 msgid "Delay Shroud Updates"
 msgstr "Zakasnitev posodobitve koprene"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:204
 #, fuzzy
 msgid "Update Shroud Now"
 msgstr "Posodobi kopreno"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:205
 #, fuzzy
 msgid "Continue Move"
 msgstr "Nadaljuj premik"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:206
 #, fuzzy
 msgid "Find Label or Unit"
 msgstr "Najdi oznako ali enoto"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:207
 #, fuzzy
 msgid "Speak to Ally"
 msgstr "Govori zaveznikom"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:208
 #, fuzzy
 msgid "Speak to All"
 msgstr "Govori vsem"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:210
 #, fuzzy
 msgid "View Chat Log"
 msgstr "Oglej si dnevnik pogovorov"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:213
 #, fuzzy
 msgid "Enter User Command"
 msgstr "Vnesite svoj ukaz"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:214
 msgid "Custom Command"
 msgstr "Ukaz po meri"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:215
 msgid "Run Formula"
 msgstr ""
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:216
 #, fuzzy
 msgid "Clear Messages"
 msgstr "Počisti oznake"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:220
 #, fuzzy
 msgid "Refresh WML"
 msgstr "Osveži"
 
-#: src/hotkeys.cpp:220
+#: src/hotkeys.cpp:227
 msgid "Next Tip of the Day"
 msgstr ""
 
-#: src/hotkeys.cpp:227
+#: src/hotkeys.cpp:234
 #, fuzzy
 msgid "Previous Tip of the Day"
 msgstr "Prejšnja enota"
 
-#: src/hotkeys.cpp:234
+#: src/hotkeys.cpp:241
 #, fuzzy
 msgid "Start Tutorial"
 msgstr "Vodič"
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:248
 #, fuzzy
 msgid "Start Campaign"
 msgstr "Igraj kampanjo"
 
-#: src/hotkeys.cpp:248
+#: src/hotkeys.cpp:255
 #, fuzzy
 #| msgid "Multiplayer"
 msgid "Start Multiplayer Game"
 msgstr "Večigralstvo"
 
-#: src/hotkeys.cpp:255
+#: src/hotkeys.cpp:262
 #, fuzzy
 msgid "Manage Add-ons"
 msgstr "Posodobi dodatke"
 
-#: src/hotkeys.cpp:262
+#: src/hotkeys.cpp:269
 #, fuzzy
 msgid "Start Editor"
 msgstr "Urejevalnik"
 
-#: src/hotkeys.cpp:269
+#: src/hotkeys.cpp:276
 #, fuzzy
 #| msgid "Credits"
 msgid "Show Credits"
 msgstr "Zasluge"
 
-#: src/hotkeys.cpp:277
+#: src/hotkeys.cpp:284
 #, fuzzy
 msgid "Show Helptip"
 msgstr "igralec"
 
-#: src/hotkeys.cpp:875 src/hotkeys.cpp:1220
+#: src/hotkeys.cpp:882 src/hotkeys.cpp:1227
 msgid "Do you really want to quit?"
 msgstr "Ali res želite končati?"
 
-#: src/hotkeys.cpp:1172
+#: src/hotkeys.cpp:1179
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Posnetek zaslona"
 
-#: src/hotkeys.cpp:1179 src/hotkeys.cpp:1181
+#: src/hotkeys.cpp:1186 src/hotkeys.cpp:1188
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Posnetek zaslona"

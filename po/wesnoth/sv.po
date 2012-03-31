@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
+"POT-Creation-Date: 2012-03-31 10:45+0200\n"
 "PO-Revision-Date: 2011-09-13 14:03+0100\n"
 "Last-Translator: Andreas Tyrberg <tyrberg.andreas@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -3244,8 +3244,8 @@ msgstr "Avsluta scenariot"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:238
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
-#: data/themes/widescreen.cfg:266 src/menu_events.cpp:216 src/unit.cpp:2450
-#: src/unit.cpp:2621
+#: data/themes/widescreen.cfg:266 src/menu_events.cpp:216 src/unit.cpp:2453
+#: src/unit.cpp:2624
 msgid "HP"
 msgstr "HP"
 
@@ -5260,9 +5260,13 @@ msgid "prompt^Command:"
 msgstr "Kommando:"
 
 #: src/mouse_events.cpp:703
+#, fuzzy
+#| msgid ""
+#| "You cannot move your leader away from the keep with some planned recruits "
+#| "left."
 msgid ""
-"You cannot move your leader away from the keep with some planned recruits "
-"left."
+"You cannot move your leader away from the keep with some planned recruits or "
+"recalls left."
 msgstr ""
 "Du kan inte flytta din ledare från kärntornet medan du fortfarande har "
 "rekryteringar eller återkallelser planerade."
@@ -6589,27 +6593,27 @@ msgstr "border_size ska vara mellan 0.0 och 0.5."
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Okänt truppslag '$type|' under generering av karaktärsdrag"
 
-#: src/unit.cpp:2409 src/unit.cpp:2610 src/unit.cpp:2686
+#: src/unit.cpp:2412 src/unit.cpp:2613 src/unit.cpp:2689
 msgid " and "
 msgstr " och "
 
-#: src/unit.cpp:2420
+#: src/unit.cpp:2423
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2481
+#: src/unit.cpp:2484
 msgid "moves"
 msgstr "förflyttning"
 
-#: src/unit.cpp:2496 src/unit.cpp:2634
+#: src/unit.cpp:2499 src/unit.cpp:2637
 msgid "XP to advance"
 msgstr "EP till befordran"
 
-#: src/unit.cpp:2627
+#: src/unit.cpp:2630
 msgid " move"
 msgstr " förflyttning"
 
-#: src/unit.cpp:2642
+#: src/unit.cpp:2645
 msgid "$effect_description per level"
 msgstr "$effect_description per nivå"
 
@@ -6671,23 +6675,23 @@ msgstr "perifer"
 msgid "female^neutral"
 msgstr "neutral"
 
-#: src/whiteboard/manager.cpp:1085
+#: src/whiteboard/manager.cpp:1089
 msgid "SHOW ALL allies’ plans"
 msgstr "VISA ALL alierad planering"
 
-#: src/whiteboard/manager.cpp:1086
+#: src/whiteboard/manager.cpp:1090
 msgid "HIDE ALL allies’ plans"
 msgstr "DÖLJ ALL allierad planering"
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1104
 msgid "Show plans for $player"
 msgstr "Visa planering $player genomför"
 
-#: src/whiteboard/manager.cpp:1102
+#: src/whiteboard/manager.cpp:1106
 msgid "Hide plans for $player"
 msgstr "Dölj planering genomför $player"
 
-#: src/whiteboard/manager.cpp:1105
+#: src/whiteboard/manager.cpp:1109
 msgid "Whiteboard Options"
 msgstr ""
 

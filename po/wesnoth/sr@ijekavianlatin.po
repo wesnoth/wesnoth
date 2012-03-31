@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
+"POT-Creation-Date: 2012-03-31 10:45+0200\n"
 "PO-Revision-Date: 2012-02-18 17:25+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -3213,8 +3213,8 @@ msgstr "Kraj"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:214 data/themes/dfool.cfg:238
 #: data/themes/experimental.cfg:188 data/themes/widescreen.cfg:246
-#: data/themes/widescreen.cfg:266 src/menu_events.cpp:216 src/unit.cpp:2450
-#: src/unit.cpp:2621
+#: data/themes/widescreen.cfg:266 src/menu_events.cpp:216 src/unit.cpp:2453
+#: src/unit.cpp:2624
 msgid "HP"
 msgstr "UP"
 
@@ -5233,9 +5233,13 @@ msgid "prompt^Command:"
 msgstr "naredba:"
 
 #: src/mouse_events.cpp:703
+#, fuzzy
+#| msgid ""
+#| "You cannot move your leader away from the keep with some planned recruits "
+#| "left."
 msgid ""
-"You cannot move your leader away from the keep with some planned recruits "
-"left."
+"You cannot move your leader away from the keep with some planned recruits or "
+"recalls left."
 msgstr "Ne možete pomeriti vođa sa kule dok ima još planiranih unajmljivanja."
 
 #: src/mouse_events.cpp:834 src/mouse_events.cpp:914
@@ -6535,27 +6539,27 @@ msgstr "border_size treba da je između 0,0 i 0,5."
 msgid "Unknown unit type '$type|' while generating traits"
 msgstr "Nepoznat tip jedinice ‘$type|’ pri stvaranju osobina"
 
-#: src/unit.cpp:2409 src/unit.cpp:2610 src/unit.cpp:2686
+#: src/unit.cpp:2412 src/unit.cpp:2613 src/unit.cpp:2689
 msgid " and "
 msgstr " i "
 
-#: src/unit.cpp:2420
+#: src/unit.cpp:2423
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/unit.cpp:2481
+#: src/unit.cpp:2484
 msgid "moves"
 msgstr "kretnji"
 
-#: src/unit.cpp:2496 src/unit.cpp:2634
+#: src/unit.cpp:2499 src/unit.cpp:2637
 msgid "XP to advance"
 msgstr "IP za napredovanje"
 
-#: src/unit.cpp:2627
+#: src/unit.cpp:2630
 msgid " move"
 msgstr " pokret"
 
-#: src/unit.cpp:2642
+#: src/unit.cpp:2645
 msgid "$effect_description per level"
 msgstr "$effect_description po nivou"
 
@@ -6621,22 +6625,22 @@ msgstr "dvojstvena"
 msgid "female^neutral"
 msgstr "neutralna"
 
-#: src/whiteboard/manager.cpp:1085
+#: src/whiteboard/manager.cpp:1089
 msgid "SHOW ALL allies’ plans"
 msgstr "PRIKAŽI SVE planove saveznika"
 
-#: src/whiteboard/manager.cpp:1086
+#: src/whiteboard/manager.cpp:1090
 msgid "HIDE ALL allies’ plans"
 msgstr "SAKRIJ SVE planove saveznika"
 
-#: src/whiteboard/manager.cpp:1100
+#: src/whiteboard/manager.cpp:1104
 msgid "Show plans for $player"
 msgstr "Prikaži planove igrača $player"
 
-#: src/whiteboard/manager.cpp:1102
+#: src/whiteboard/manager.cpp:1106
 msgid "Hide plans for $player"
 msgstr "Sakrij planove igrača $player"
 
-#: src/whiteboard/manager.cpp:1105
+#: src/whiteboard/manager.cpp:1109
 msgid "Whiteboard Options"
 msgstr "Opcije blokčeta"

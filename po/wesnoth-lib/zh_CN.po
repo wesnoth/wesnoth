@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-25 14:42+0200\n"
+"POT-Creation-Date: 2012-03-31 10:45+0200\n"
 "PO-Revision-Date: 2012-02-19 14:08+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -1447,7 +1447,7 @@ msgstr "生成"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:126
+#: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:133
 msgid "New Map"
 msgstr "新地图"
 
@@ -1474,7 +1474,7 @@ msgstr "创建新地图"
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:35
 #: data/gui/default/window/editor_resize_map.cfg:270
-#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
+#: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:179
 msgid "Resize Map"
 msgstr "改变地图大小"
 
@@ -1520,7 +1520,7 @@ msgstr "哪位玩家应在此开始游戏？"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:124
+#: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:131
 msgid "Editor Settings"
 msgstr "编辑器设置"
 
@@ -1637,8 +1637,8 @@ msgstr "执行轨迹"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:234
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:875
-#: src/hotkeys.cpp:1220
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:882
+#: src/hotkeys.cpp:1227
 msgid "Quit"
 msgstr "退出"
 
@@ -1790,7 +1790,7 @@ msgstr "选择你偏好的语言："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/language_selection.cfg:128
-#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:204
+#: data/gui/default/window/language_selection.cfg:129 src/hotkeys.cpp:211
 msgid "Change Language"
 msgstr "改变语言"
 
@@ -2281,7 +2281,7 @@ msgstr "选择"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:202
+#: data/gui/default/window/title_screen.cfg:146 src/hotkeys.cpp:209
 msgid "Help"
 msgstr "帮助"
 
@@ -3114,7 +3114,7 @@ msgid "Load Game..."
 msgstr "读取游戏..."
 
 #: src/gui/dialogs/network_transmission.cpp:55
-#: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1178
+#: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1185
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -3212,7 +3212,7 @@ msgstr "默认缩放比例"
 msgid "Toggle Full Screen"
 msgstr "开/关全屏显示"
 
-#: src/hotkeys.cpp:67 src/hotkeys.cpp:1172
+#: src/hotkeys.cpp:67 src/hotkeys.cpp:1179
 msgid "Screenshot"
 msgstr "屏幕截图"
 
@@ -3236,7 +3236,7 @@ msgstr "单位重命名"
 msgid "Save Replay"
 msgstr "保存录像"
 
-#: src/hotkeys.cpp:74 src/hotkeys.cpp:128
+#: src/hotkeys.cpp:74 src/hotkeys.cpp:135
 msgid "Save Map"
 msgstr "保存地图"
 
@@ -3361,300 +3361,319 @@ msgstr "第一团队"
 msgid "Skip Animation"
 msgstr "略过动画"
 
-#: src/hotkeys.cpp:113
-msgid "Toggle Planning Mode"
+#. TRANSLATORS: whiteboard menu entry: toggle planning mode
+#: src/hotkeys.cpp:114
+#, fuzzy
+#| msgid "Toggle Planning Mode"
+msgid "whiteboard^Planning Mode"
 msgstr "开关计划模式"
 
-#: src/hotkeys.cpp:114
-msgid "Execute Planned Action"
-msgstr "执行计划行动"
-
-#: src/hotkeys.cpp:115
-msgid "Execute All Actions"
+#. TRANSLATORS: whiteboard menu entry: execute planned action
+#: src/hotkeys.cpp:116
+#, fuzzy
+#| msgid "Execute All Actions"
+msgid "whiteboard^Execute Action"
 msgstr "执行全部行动"
 
-#: src/hotkeys.cpp:116
-msgid "Delete Planned Action"
-msgstr "删除计划行动"
+#. TRANSLATORS: whiteboard menu entry: execute all planned actions
+#: src/hotkeys.cpp:118
+#, fuzzy
+#| msgid "Execute All Actions"
+msgid "whiteboard^Execute All Actions"
+msgstr "执行全部行动"
 
-#: src/hotkeys.cpp:117
-msgid "Move Action Up Queue"
+#. TRANSLATORS: whiteboard menu entry: delete planned action
+#: src/hotkeys.cpp:120
+msgid "whiteboard^Delete Action"
+msgstr ""
+
+#. TRANSLATORS: whiteboard menu entry: move planned action up queue
+#: src/hotkeys.cpp:122
+#, fuzzy
+#| msgid "Move Action Up Queue"
+msgid "whiteboard^Move Action Up"
 msgstr "将此行动在队列中前移"
 
-#: src/hotkeys.cpp:118
-msgid "Move Action Down Queue"
+#. TRANSLATORS: whiteboard menu entry: move planned action down queue
+#: src/hotkeys.cpp:124
+#, fuzzy
+#| msgid "Move Action Down Queue"
+msgid "whiteboard^Move Action Down"
 msgstr "将此行动在队列中后移"
 
-#: src/hotkeys.cpp:119
-msgid "Suppose Dead"
+#. TRANSLATORS: whiteboard menu entry: plan as if unit was dead
+#: src/hotkeys.cpp:126
+#, fuzzy
+#| msgid "Suppose Dead"
+msgid "whiteboard^Suppose Dead"
 msgstr "认为已死亡"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:128
 msgid "Quit to Desktop"
 msgstr "退出到桌面"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:129
 msgid "Close Map"
 msgstr "关闭地图"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:130
 msgid "Switch Map"
 msgstr "切换地图"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:132
 msgid "Partial Undo"
 msgstr "部分撤销"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:134
 msgid "Load Map"
 msgstr "读取地图"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:136
 msgid "Save Map As"
 msgstr "地图另存为"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:137
 msgid "Save All Maps"
 msgstr "保存所有地图"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:138
 msgid "Revert All Changes"
 msgstr "取消所有更改"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:139
 msgid "Map Information"
 msgstr "地图信息"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:141
 msgid "Swap Foreground/Background Terrains"
 msgstr "交换前景／背景地形"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:142
 msgid "Next Tool"
 msgstr "下一工具"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:143
 msgid "Paint Tool"
 msgstr "绘图工具"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:144
 msgid "Fill Tool"
 msgstr "填充工具"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:145
 msgid "Selection Tool"
 msgstr "选择工具"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:147
 msgid "Set Starting Positions Tool"
 msgstr "设置起始点工具"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:148
 msgid "Next Brush"
 msgstr "下一笔刷"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:149
 msgid "Default Brush"
 msgstr "默认笔刷"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:150
 msgid "Cut"
 msgstr "剪切"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:151
 msgid "Copy"
 msgstr "复制"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:152
 msgid "Paste"
 msgstr "粘贴"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:153
 msgid "Export Selected Coordinates to System Clipboard"
 msgstr "导出所选坐标至系统剪贴板"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:155
 msgid "Select All"
 msgstr "全选"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:157
 msgid "Select Inverse"
 msgstr "反选"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:159
 msgid "Select None"
 msgstr "取消选择"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:161
 msgid "Rotate Clipboard Clockwise"
 msgstr "顺时针旋转剪贴板"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:163
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "逆时针旋转剪贴板"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:165
 msgid "Flip Clipboard Horizontally"
 msgstr "水平翻转剪贴板"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:167
 msgid "Flip Clipboard Vertically"
 msgstr "垂直翻转剪贴板"
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:169
 msgid "Rotate Selection"
 msgstr "旋转选定区域"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:171
 msgid "Flip Selection"
 msgstr "翻转选定区域"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:173
 msgid "Fill Selection"
 msgstr "填充选定区域"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:175
 msgid "Generate Tiles In Selection"
 msgstr "在选定区域内生成区块"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:177
 msgid "Randomize Tiles In Selection"
 msgstr "在选定区域内打乱区块"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:181
 msgid "Rotate Map"
 msgstr "旋转地图"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:183
 msgid "Generate Map"
 msgstr "生成地图"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:185
 msgid "Apply a Mask"
 msgstr "应用遮罩"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:187
 msgid "Create Mask"
 msgstr "创建遮罩"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:189
 msgid "Refresh Display"
 msgstr "刷新显示"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:191
 msgid "Update Terrain Transitions"
 msgstr "刷新地形过渡"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:193
 msgid "Auto-update Terrain Transitions"
 msgstr "自动刷新地形过渡"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:195
 msgid "Refresh Image Cache"
 msgstr "刷新图像缓存"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:197
 msgid "Draw Hex Coordinates"
 msgstr "绘制六角格坐标"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:199
 msgid "Draw Terrain Codes"
 msgstr "绘制地形编码"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:203
 msgid "Delay Shroud Updates"
 msgstr "暂缓更新黑幕"
 
 # personally i like the original translation阴影区域, gonna discuss about this
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:204
 msgid "Update Shroud Now"
 msgstr "立即刷新黑幕"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:205
 msgid "Continue Move"
 msgstr "继续移动"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:206
 msgid "Find Label or Unit"
 msgstr "查找标签或单位"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:207
 msgid "Speak to Ally"
 msgstr "与盟友聊天"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:208
 msgid "Speak to All"
 msgstr "与所有人聊天"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:210
 msgid "View Chat Log"
 msgstr "察看聊天纪录"
 
-#: src/hotkeys.cpp:206
+#: src/hotkeys.cpp:213
 msgid "Enter User Command"
 msgstr "输入用户命令"
 
-#: src/hotkeys.cpp:207
+#: src/hotkeys.cpp:214
 msgid "Custom Command"
 msgstr "自定义命令"
 
-#: src/hotkeys.cpp:208
+#: src/hotkeys.cpp:215
 msgid "Run Formula"
 msgstr "运行AI公式"
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:216
 msgid "Clear Messages"
 msgstr "清除所有信息"
 
-#: src/hotkeys.cpp:213
+#: src/hotkeys.cpp:220
 msgid "Refresh WML"
 msgstr "刷新WML"
 
-#: src/hotkeys.cpp:220
+#: src/hotkeys.cpp:227
 msgid "Next Tip of the Day"
 msgstr "下一条每日提示"
 
-#: src/hotkeys.cpp:227
+#: src/hotkeys.cpp:234
 msgid "Previous Tip of the Day"
 msgstr "前一条每日提示"
 
-#: src/hotkeys.cpp:234
+#: src/hotkeys.cpp:241
 msgid "Start Tutorial"
 msgstr "开始教程"
 
-#: src/hotkeys.cpp:241
+#: src/hotkeys.cpp:248
 msgid "Start Campaign"
 msgstr "开始战役"
 
-#: src/hotkeys.cpp:248
+#: src/hotkeys.cpp:255
 msgid "Start Multiplayer Game"
 msgstr "开始多人游戏"
 
-#: src/hotkeys.cpp:255
+#: src/hotkeys.cpp:262
 msgid "Manage Add-ons"
 msgstr "管理附加组件"
 
-#: src/hotkeys.cpp:262
+#: src/hotkeys.cpp:269
 msgid "Start Editor"
 msgstr "启动编辑器"
 
-#: src/hotkeys.cpp:269
+#: src/hotkeys.cpp:276
 msgid "Show Credits"
 msgstr "显示制作者名单"
 
-#: src/hotkeys.cpp:277
+#: src/hotkeys.cpp:284
 msgid "Show Helptip"
 msgstr "显示帮助提示"
 
-#: src/hotkeys.cpp:875 src/hotkeys.cpp:1220
+#: src/hotkeys.cpp:882 src/hotkeys.cpp:1227
 msgid "Do you really want to quit?"
 msgstr "您真的想退出吗？"
 
-#: src/hotkeys.cpp:1172
+#: src/hotkeys.cpp:1179
 msgid "Map-Screenshot"
 msgstr "地图-屏幕截图"
 
-#: src/hotkeys.cpp:1179 src/hotkeys.cpp:1181
+#: src/hotkeys.cpp:1186 src/hotkeys.cpp:1188
 msgid "Screenshot done"
 msgstr "屏幕截图完成"
 
@@ -3831,3 +3850,9 @@ msgid ""
 msgstr ""
 "主键“$deprecated_key”已被重命名为“$key”，对“$deprecated_key”的支持将在版本 "
 "$removal_version 中移除。"
+
+#~ msgid "Execute Planned Action"
+#~ msgstr "执行计划行动"
+
+#~ msgid "Delete Planned Action"
+#~ msgstr "删除计划行动"
