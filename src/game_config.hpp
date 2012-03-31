@@ -127,6 +127,7 @@ namespace game_config
 	/**
 	 * The maximum number of hexes on a map and items in an array and also used
 	 * as maximum in wml loops.
+	 * WARNING : This should not be set to less than the max map area
 	 */
 	extern const size_t max_loop;
 
