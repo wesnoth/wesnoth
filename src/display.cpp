@@ -73,10 +73,15 @@ namespace {
 
 int display::last_zoom_ = SmallZoom;
 
-display::display(CVideo& video, const gamemap* map, const config& theme_cfg, const config& level) :
+display::display(unit_map* units, CVideo& video, const gamemap* map, const std::vector<team>* t,const config& theme_cfg, const config& level) :
+	units_(units),
+	exclusive_unit_draw_requests_(),
 	screen_(video),
 	map_(map),
+	currentTeam_(0),
+	teams_(t),
 	viewpoint_(NULL),
+	energy_bar_rects_(),
 	xpos_(0),
 	ypos_(0),
 	theme_(theme_cfg, screen_area()),
@@ -113,6 +118,7 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	keys_(),
 	animate_map_(true),
 	local_tod_light_(false),
+	activeTeam_(0),
 	drawing_buffer_(),
 	map_screenshot_(false),
 	fps_handle_(0),
@@ -130,6 +136,8 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	, do_reverse_memcpy_workaround_(false)
 #endif
 {
+	singleton_ = this;
+
 	read(level.child_or_empty("display"));
 
 	if(non_interactive()
@@ -162,6 +170,149 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 
 display::~display()
 {
+	singleton_ = NULL;
+}
+
+struct is_energy_color {
+	bool operator()(Uint32 color) const { return (color&0xFF000000) > 0x10000000 &&
+	                                              (color&0x00FF0000) < 0x00100000 &&
+												  (color&0x0000FF00) < 0x00001000 &&
+												  (color&0x000000FF) < 0x00000010; }
+};
+
+
+const SDL_Rect& display::calculate_energy_bar(surface surf)
+{
+	const std::map<surface,SDL_Rect>::const_iterator i = energy_bar_rects_.find(surf);
+	if(i != energy_bar_rects_.end()) {
+		return i->second;
+	}
+
+	int first_row = -1, last_row = -1, first_col = -1, last_col = -1;
+
+	surface image(make_neutral_surface(surf));
+
+	const_surface_lock image_lock(image);
+	const Uint32* const begin = image_lock.pixels();
+
+	for(int y = 0; y != image->h; ++y) {
+		const Uint32* const i1 = begin + image->w*y;
+		const Uint32* const i2 = i1 + image->w;
+		const Uint32* const itor = std::find_if(i1,i2,is_energy_color());
+		const int count = std::count_if(itor,i2,is_energy_color());
+
+		if(itor != i2) {
+			if(first_row == -1) {
+				first_row = y;
+			}
+
+			first_col = itor - i1;
+			last_col = first_col + count;
+			last_row = y;
+		}
+	}
+
+	const SDL_Rect res = create_rect(first_col
+			, first_row
+			, last_col-first_col
+			, last_row+1-first_row);
+	energy_bar_rects_.insert(std::pair<surface,SDL_Rect>(surf,res));
+	return calculate_energy_bar(surf);
+}
+
+
+
+void display::draw_bar(const std::string& image, int xpos, int ypos,
+		const map_location& loc, size_t height, double filled,
+		const SDL_Color& col, fixed_t alpha)
+{
+
+	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
+	height = static_cast<size_t>(height*get_zoom_factor());
+
+	surface surf(image::get_image(image,image::SCALED_TO_HEX));
+
+	// We use UNSCALED because scaling (and bilinear interpolaion)
+	// is bad for calculate_energy_bar.
+	// But we will do a geometric scaling later.
+	surface bar_surf(image::get_image(image));
+	if(surf == NULL || bar_surf == NULL) {
+		return;
+	}
+
+	// calculate_energy_bar returns incorrect results if the surface colors
+	// have changed (for example, due to bilinear interpolaion)
+	const SDL_Rect& unscaled_bar_loc = calculate_energy_bar(bar_surf);
+
+	SDL_Rect bar_loc;
+	if (surf->w == bar_surf->w && surf->h == bar_surf->h)
+	  bar_loc = unscaled_bar_loc;
+	else {
+	  const fixed_t xratio = fxpdiv(surf->w,bar_surf->w);
+	  const fixed_t yratio = fxpdiv(surf->h,bar_surf->h);
+	  const SDL_Rect scaled_bar_loc = create_rect(
+			    fxptoi(unscaled_bar_loc. x * xratio)
+			  , fxptoi(unscaled_bar_loc. y * yratio + 127)
+			  , fxptoi(unscaled_bar_loc. w * xratio + 255)
+			  , fxptoi(unscaled_bar_loc. h * yratio + 255));
+	  bar_loc = scaled_bar_loc;
+	}
+
+	if(height > bar_loc.h) {
+		height = bar_loc.h;
+	}
+
+	//if(alpha != ftofxp(1.0)) {
+	//	surf.assign(adjust_surface_alpha(surf,alpha));
+	//	if(surf == NULL) {
+	//		return;
+	//	}
+	//}
+
+	const size_t skip_rows = bar_loc.h - height;
+
+	SDL_Rect top = create_rect(0, 0, surf->w, bar_loc.y);
+	SDL_Rect bot = create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
+	bot.h = surf->w - bot.y;
+
+	drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos, ypos, surf, top);
+	drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos, ypos + top.h, surf, bot);
+
+	size_t unfilled = static_cast<size_t>(height * (1.0 - filled));
+
+	if(unfilled < height && alpha >= ftofxp(0.3)) {
+		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
+		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
+		SDL_Rect filled_area = create_rect(0, 0, bar_loc.w, height-unfilled);
+		sdl_fill_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
+		drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
+	}
+}
+
+
+bool display::add_exclusive_draw(const map_location& loc, unit& unit)
+{
+	if (loc.valid() && exclusive_unit_draw_requests_.find(loc) == exclusive_unit_draw_requests_.end())
+	{
+		exclusive_unit_draw_requests_[loc] = unit.id();
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+std::string display::remove_exclusive_draw(const map_location& loc)
+{
+	std::string id = "";
+	if(loc.valid())
+	{
+		id = exclusive_unit_draw_requests_[loc];
+		//id will be set to the default "" string by the [] operator if the map doesn't have anything for that loc.
+		exclusive_unit_draw_requests_.erase(loc);
+	}
+	return id;
 }
 
 const time_of_day & display::get_time_of_day(const map_location& /*loc*/) const
@@ -222,6 +373,17 @@ void display::change_map(const gamemap* m)
 	map_ = m;
 	builder_->change_map(m);
 }
+
+void display::change_units(unit_map* umap)
+{
+	units_ = umap;
+}
+
+void display::change_teams(const std::vector<team>* teams)
+{
+	teams_ = teams;
+}
+
 
 const SDL_Rect& display::max_map_area() const
 {
@@ -1438,6 +1600,38 @@ void display::draw_minimap()
                    box_color, screen);
 }
 
+void display::draw_minimap_units()
+{
+	double xscaling = 1.0 * minimap_location_.w / get_map().w();
+	double yscaling = 1.0 * minimap_location_.h / get_map().h();
+
+	for(unit_map::const_iterator u = units_->begin(); u != units_->end(); ++u) {
+		if (fogged(u->get_location()) ||
+		    ((*teams_)[currentTeam_].is_enemy(u->side()) &&
+		     u->invisible(u->get_location())) ||
+			 u->get_hidden()) {
+			continue;
+		}
+
+		int side = u->side();
+		const SDL_Color col = team::get_minimap_color(side);
+		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
+
+		double u_x = u->get_location().x * xscaling;
+		double u_y = (u->get_location().y + (is_odd(u->get_location().x) ? 1 : -1)/4.0) * yscaling;
+ 		// use 4/3 to compensate the horizontal hexes imbrication
+		double u_w = 4.0 / 3.0 * xscaling;
+		double u_h = yscaling;
+
+		SDL_Rect r = create_rect(minimap_location_.x + round_double(u_x)
+				, minimap_location_.y + round_double(u_y)
+				, round_double(u_w)
+				, round_double(u_h));
+
+		sdl_fill_rect(video().getSurface(), &r, mapped_col);
+	}
+}
+
 bool display::scroll(int xmove, int ymove)
 {
 	const int orig_x = xpos_;
@@ -2010,6 +2204,15 @@ void display::draw_invalidated() {
 		}
 	}
 	invalidated_hexes_ += invalidated_.size();
+
+	foreach (const map_location& loc, invalidated_) {
+		unit_map::iterator u_it = units_->find(loc);
+		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
+		if (u_it != units_->end()
+				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
+			u_it->redraw_unit();
+	}
+
 }
 
 void display::draw_hex(const map_location& loc) {
@@ -2024,10 +2227,10 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos,
 			get_terrain_images(loc,tod.id, image_type, BACKGROUND));
 
-		 drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
 			get_terrain_images(loc,tod.id,image_type, FOREGROUND));
 
-	// Draw the grid, if that's been enabled
+		// Draw the grid, if that's been enabled
 		if(grid_ && on_map && !off_map_tile) {
 			static const image::locator grid_top(game_config::images::grid_top);
 			drawing_buffer_add(LAYER_GRID_TOP, loc, xpos, ypos,
@@ -2458,6 +2661,24 @@ void display::invalidate_animations()
 			invalidate_animations_location(loc);
 		}
 	}
+
+	foreach (unit& u, *units_) {
+		u.refresh();
+	}
+	std::vector<unit*> unit_list;
+	foreach (unit &u, *units_) {
+		unit_list.push_back(&u);
+	}
+	bool new_inval;
+	do {
+		new_inval = false;
+#ifdef _OPENMP
+#pragma omp parallel for reduction(|:new_inval) shared(unit_list) schedule(guided)
+#endif //_OPENMP
+		for(int i=0; i < static_cast<int>(unit_list.size()); i++) {
+			new_inval |=  unit_list[i]->invalidate(unit_list[i]->get_location());
+		}
+	}while(new_inval);
 }
 
 void display::add_arrow(arrow& arrow)
@@ -2505,3 +2726,6 @@ void display::read(const config& cfg)
 	color_adjust_.g = cfg["color_adjust_green"].to_int(0);
 	color_adjust_.b = cfg["color_adjust_blue_"].to_int(0);
 }
+
+display *display::singleton_ = NULL;
+

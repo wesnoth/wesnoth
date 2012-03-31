@@ -24,7 +24,7 @@
 #include "unit_types.hpp"
 #include "unit_map.hpp"
 
-class game_display;
+class display;
 class game_state;
 class vconfig;
 class team;
@@ -290,7 +290,7 @@ public:
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
 	const unit_race* race() const { return race_; }
 
-	const unit_animation* choose_animation(const game_display& disp,
+	const unit_animation* choose_animation(const display& disp,
 		       	const map_location& loc, const std::string& event,
 		       	const map_location& second_loc = map_location::null_location,
 			const int damage=0,

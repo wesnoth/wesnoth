@@ -58,9 +58,60 @@ class gamemap;
 class display
 {
 public:
-	display(CVideo& video, const gamemap* map, const config& theme_cfg,
-			const config& level);
+	display(unit_map* units, CVideo& video, const gamemap* map, const std::vector<team>* t,
+			const config& theme_cfg, const config& level);
 	virtual ~display();
+	static display* get_singleton() { return singleton_ ;}
+
+	//TODO sort
+
+	bool show_everything() const { return !viewpoint_; }
+
+	const std::vector<team>& get_teams() {return *teams_;}
+
+	/** The playing team is the team whose turn it is. */
+	size_t playing_team() const { return activeTeam_; }
+
+	bool team_valid() const { return currentTeam_ < teams_->size(); }
+
+	/** The viewing team is the team currently viewing the game. */
+	size_t viewing_team() const { return currentTeam_; }
+	int viewing_side() const { return currentTeam_ + 1; }
+
+	/**
+	 * Cancels all the exclusive draw requests.
+	 */
+	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
+	unit_map& get_units() {return *units_;}
+	const unit_map& get_const_units() const {return *units_;}
+
+	/**
+	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
+	 * multiple units (one real, multiple temporary) can end up stacked, such as with the whiteboard.
+	 * @param loc The location of the unit requesting exclusivity.
+	 * @param unit The unit requesting exlusivity.
+	 * @return false if there's already an exclusive draw request for this location.
+	 */
+	bool add_exclusive_draw(const map_location& loc, unit& unit);
+	/**
+	 * Cancels an exclusive draw request.
+	 * @return The id of the unit whose exclusive draw request was canceled, or else
+	 *         the empty string if there was no exclusive draw request for this location.
+	 */
+	std::string remove_exclusive_draw(const map_location& loc);
+
+	void draw_bar(const std::string& image, int xpos, int ypos,
+			const map_location& loc, size_t height, double filled,
+			const SDL_Color& col, fixed_t alpha);
+
+
+
+
+
+
+
+
+
 
 	/**
 	 * Updates internals that cache map size. This should be called when the map
@@ -69,6 +120,8 @@ public:
 	void reload_map();
 
 	void change_map(const gamemap* m);
+	void change_teams(const std::vector<team>* teams);
+	void change_units(unit_map* units);
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
@@ -291,8 +344,7 @@ public:
 
 	void refresh_report(std::string const &report_name, const config &);
 
-	// Will be overridden in the display subclass
-	virtual void draw_minimap_units() {};
+	void draw_minimap_units();
 
 	/** Function to invalidate all tiles. */
 	void invalidate_all();
@@ -488,7 +540,23 @@ public:
 private:
 	void read(const config& cfg);
 
+	/**
+	 * Finds the start and end rows on the energy bar image.
+	 *
+	 * White pixels are substituted for the color of the energy.
+	 */
+	const SDL_Rect& calculate_energy_bar(surface surf);
+
+
 protected:
+	//TODO sort
+	unit_map* units_;
+
+	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
+	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
+	exclusive_unit_draw_requests_t exclusive_unit_draw_requests_;
+
+
 	/** Clear the screen contents */
 	void clear_screen();
 
@@ -569,7 +637,10 @@ protected:
 
 	CVideo& screen_;
 	const gamemap* map_;
+	size_t currentTeam_;
+	const std::vector<team>* teams_;
 	const team *viewpoint_;
+	std::map<surface,SDL_Rect> energy_bar_rects_;
 	int xpos_, ypos_;
 	theme theme_;
 	int zoom_;
@@ -710,6 +781,10 @@ public:
 		SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
 
 protected:
+
+	//TODO sort
+	size_t activeTeam_;
+
 	/**
 	 * In order to render a hex properly it needs to be rendered per row. On
 	 * this row several layers need to be drawn at the same time. Mainly the
@@ -871,6 +946,9 @@ private:
 	/** Flag for bug #17573 - this is set in the constructor **/
 	bool do_reverse_memcpy_workaround_;
 #endif
+
+protected:
+	static display * singleton_;
 };
 
 #endif

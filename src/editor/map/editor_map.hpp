@@ -20,6 +20,9 @@
 
 #include "../../map.hpp"
 #include "../../map_label.hpp"
+#include "unit_map.hpp"
+#include "tod_manager.hpp"
+#include "gamestatus.hpp"
 
 #include <deque>
 
@@ -72,6 +75,29 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 class editor_map : public gamemap
 {
 public:
+
+	/** Get the team from the current map context object */
+	std::vector<team>& get_teams() {
+		return teams_;
+	}
+
+	/** Get the unit map from the current map context object */
+	unit_map& get_units() {
+		return units_;
+	}
+
+	const unit_map& get_units() const {
+		return units_;
+	}
+
+	tod_manager& get_time_manager() {
+		return tod_manager_;
+	}
+
+	game_state& get_game_state() {
+		return state_;
+	}
+
 
 	/**
 	 * Empty map constructor
@@ -217,9 +243,20 @@ protected:
 private:
 
 	/**
-	 * The labels of this map _context.
+	 * The labels of this map.
 	 */
 	map_labels labels_;
+
+	/**
+	 * TODO
+	 */
+	unit_map units_;
+
+	std::vector<team> teams_;
+
+	tod_manager tod_manager_;
+
+	game_state state_;
 
 };
 

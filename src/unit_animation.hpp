@@ -20,7 +20,7 @@
 #include "unit_frame.hpp"
 
 class attack_type;
-class game_display;
+class display;
 class unit;
 
 class unit_animation
@@ -35,7 +35,7 @@ class unit_animation
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
 		static void add_anims( std::vector<unit_animation> & animations, const config & cfg);
 
-		int matches(const game_display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int value2 =0) const;
+		int matches(const display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int value2 =0) const;
 
 
 		const unit_frame& get_last_frame() const{ return unit_anim_.get_last_frame() ; };

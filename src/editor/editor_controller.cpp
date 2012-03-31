@@ -39,6 +39,8 @@
 #include "../rng.hpp"
 #include "../sound.hpp"
 
+#include "halo.hpp"
+
 #include <boost/bind.hpp>
 
 namespace {
@@ -54,7 +56,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	, active_menu_(editor::MAP)
 	, rng_(NULL)
 	, rng_setter_(NULL)
-	, gui_(new editor_display(video, NULL, get_theme(game_config, "editor"), config()))
+	, gui_(new editor_display(NULL, video, NULL, NULL, get_theme(game_config, "editor"), config()))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_()
@@ -98,12 +100,15 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 void editor_controller::init_gui()
 {
 	gui_->change_map(&context_manager_->get_map());
+	gui_->change_units(&context_manager_->get_map().get_units());
+	gui_->change_teams(&context_manager_->get_map().get_teams());
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
 	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
 	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());
+	halo_manager_.reset(new halo::manager(*gui_));
 }
 
 void editor_controller::init_tods(const config& game_config)
@@ -272,9 +277,9 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 		case HOTKEY_EDITOR_TOOL_LABEL:
-			//TODO unit selection is not always possible
+			return true;
 		case HOTKEY_EDITOR_TOOL_UNIT:
-			return true; //tool selection always possible
+			return !context_manager_->get_map().get_teams().empty();
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
 		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:

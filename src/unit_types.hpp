@@ -77,7 +77,7 @@ public:
 	//this function returns a random animation out of the possible
 	//animations for this attack. It will not return the same attack
 	//each time.
-	const unit_animation* animation(const game_display& disp, const map_location& loc,const unit* my_unit,const unit_animation::hit_type hit,const attack_type* secondary_attack,int swing_num,int damage) const;
+	const unit_animation* animation(const display& disp, const map_location& loc,const unit* my_unit,const unit_animation::hit_type hit,const attack_type* secondary_attack,int swing_num,int damage) const;
 private:
 	config cfg_;
 	t_string description_;

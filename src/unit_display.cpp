@@ -31,7 +31,7 @@
 
 static void teleport_unit_between( const map_location& a, const map_location& b, unit& temp_unit)
 {
-	game_display* disp = game_display::get_singleton();
+	display* disp = display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->video().faked() || (disp->fogged(a) && disp->fogged(b))) {
 		return;
 	}
@@ -65,7 +65,7 @@ static void teleport_unit_between( const map_location& a, const map_location& b,
 
 static void move_unit_between(const map_location& a, const map_location& b, unit& temp_unit,unsigned int step_num,unsigned int step_left)
 {
-	game_display* disp = game_display::get_singleton();
+	display* disp = display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->video().faked() || (disp->fogged(a) && disp->fogged(b))) {
 		return;
 	}
@@ -231,7 +231,7 @@ void reset_helpers(const unit *attacker,const unit *defender);
 void unit_draw_weapon(const map_location& loc, unit& attacker,
 		const attack_type* attack,const attack_type* secondary_attack, const map_location& defender_loc,unit* defender)
 {
-	game_display* disp = game_display::get_singleton();
+	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
 		return;
 	}
@@ -247,7 +247,7 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 		const attack_type* primary_attack,const attack_type* secondary_attack, const map_location& secondary_loc,unit* secondary_unit)
 {
-	game_display* disp = game_display::get_singleton();
+	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(primary_loc) || preferences::show_combat() == false) {
 		return;
 	}
@@ -277,7 +277,7 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 void unit_die(const map_location& loc, unit& loser,
 		const attack_type* attack,const attack_type* secondary_attack, const map_location& winner_loc,unit* winner)
 {
-	game_display* disp = game_display::get_singleton();
+	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() || disp->fogged(loc) || preferences::show_combat() == false) {
 		return;
 	}
@@ -303,7 +303,7 @@ void unit_attack(
                  const attack_type& attack, const attack_type* secondary_attack,
 		  int swing,std::string hit_text,int drain_amount,std::string att_text)
 {
-	game_display* disp = game_display::get_singleton();
+	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() ||
 			(disp->fogged(a) && disp->fogged(b)) || preferences::show_combat() == false) {
 		return;
@@ -412,7 +412,7 @@ void unit_attack(
 // private helper function, set all helpers to default position
 void reset_helpers(const unit *attacker,const unit *defender)
 {
-	game_display* disp = game_display::get_singleton();
+	display* disp = display::get_singleton();
 	unit_map& units = disp->get_units();
 	if(attacker) {
 		unit_ability_list leaders = attacker->get_abilities("leadership");

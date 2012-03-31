@@ -46,7 +46,7 @@ public:
 	static game_display* create_dummy_display(CVideo& video);
 
 	~game_display();
-	static game_display* get_singleton() { return singleton_ ;}
+	static game_display* get_singleton() { return (game_display*)singleton_ ;}
 
 
 	/**
@@ -157,7 +157,6 @@ protected:
 	 */
 	void invalidate_animations_location(const map_location& loc);
 
-	virtual void draw_minimap_units();
 
 public:
 	/** A temporary unit that can be placed on the map.
@@ -208,25 +207,7 @@ private:
 	int remove_temporary_unit(unit *u);
 public:
 
-	/**
-	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
-	 * multiple units (one real, multiple temporary) can end up stacked, such as with the whiteboard.
-	 * @param loc The location of the unit requesting exclusivity.
-	 * @param unit The unit requesting exlusivity.
-	 * @return false if there's already an exclusive draw request for this location.
-	 */
-	bool add_exclusive_draw(const map_location& loc, unit& unit);
-	/**
-	 * Cancels an exclusive draw request.
-	 * @return The id of the unit whose exclusive draw request was canceled, or else
-	 *         the empty string if there was no exclusive draw request for this location.
-	 */
-	std::string remove_exclusive_draw(const map_location& loc);
 
-	/**
-	 * Cancels all the exclusive draw requests.
-	 */
-	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
 
 	/** Set the attack direction indicator. */
 	void set_attack_indicator(const map_location& src, const map_location& dst);
@@ -275,13 +256,10 @@ public:
 	 */
 	void set_team(size_t team, bool observe=false);
 	void set_playing_team(size_t team);
-	const std::vector<team>& get_teams() {return teams_;}
 
-	unit_map& get_units() {return units_;}
-	const unit_map& get_const_units() const {return units_;}
 
 	const map_location &displayed_unit_hex() const { return displayedUnitHex_; }
-	bool show_everything() const { return !viewpoint_; }
+
 
 	/**
 	 * annotate hex with number, useful for debugging or UI prototype
@@ -289,15 +267,11 @@ public:
 	static int& debug_highlight(const map_location& loc);
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
-	/** The viewing team is the team currently viewing the game. */
-	size_t viewing_team() const { return currentTeam_; }
-	int viewing_side() const { return currentTeam_ + 1; }
 
 	/** The playing team is the team whose turn it is. */
-	size_t playing_team() const { return activeTeam_; }
 	int playing_side() const { return activeTeam_ + 1; }
 
-	bool team_valid() const { return currentTeam_ < teams_.size(); }
+
 	std::string current_team_name() const;
 
 	void add_observer(const std::string& name) { observers_.insert(name); }
@@ -311,9 +285,7 @@ public:
 	void begin_game();
 
 	virtual bool in_game() const { return in_game_; }
-	void draw_bar(const std::string& image, int xpos, int ypos,
-		const map_location& loc, size_t height, double filled,
-		const SDL_Color& col, fixed_t alpha);
+
 
 	/**
 	 * Sets the linger mode for the display.
@@ -340,32 +312,18 @@ private:
 	// This surface must be freed by the caller
 	surface get_flag(const map_location& loc);
 
-	unit_map& units_;
-
 	/// collection of units destined to be drawn but not put into the unit map
 	std::deque<unit*> fake_units_;
-
-	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
-	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
-	exclusive_unit_draw_requests_t exclusive_unit_draw_requests_;
 
 	// Locations of the attack direction indicator's parts
 	map_location attack_indicator_src_;
 	map_location attack_indicator_dst_;
 
-	/**
-	 * Finds the start and end rows on the energy bar image.
-	 *
-	 * White pixels are substituted for the color of the energy.
-	 */
-	const SDL_Rect& calculate_energy_bar(surface surf);
-	std::map<surface,SDL_Rect> energy_bar_rects_;
+
 
 	pathfind::marked_route route_;
 
 	const tod_manager& tod_manager_;
-
-	const std::vector<team>& teams_;
 
 	const config& level_;
 
@@ -388,7 +346,7 @@ private:
 
 	overlay_map overlays_;
 
-	size_t currentTeam_, activeTeam_;
+
 
 	double sidebarScaling_;
 
@@ -425,7 +383,7 @@ private:
 	/** Animated flags for each team */
 	std::vector<animated<image::locator> > flags_;
 
-	static game_display * singleton_;
+
 };
 
 #endif

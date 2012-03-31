@@ -19,10 +19,11 @@
 #include "map_location.hpp"
 #include "font.hpp"
 #include "tstring.hpp"
+#include "team.hpp"
 
 class config;
 class display;
-class team;
+//class team;
 class terrain_label;
 
 

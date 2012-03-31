@@ -19,9 +19,9 @@
 
 namespace editor {
 
-editor_display::editor_display(CVideo& video, const editor_map* map,
-		const config& theme_cfg, const config& level)
-	: display(video, map, theme_cfg, level)
+editor_display::editor_display(unit_map* units, CVideo& video, const editor_map* map,
+		const std::vector<team>* t, const config& theme_cfg, const config& level)
+	: display(units, video, map, t, theme_cfg, level)
 	, brush_locations_()
 	, toolbar_hint_()
 	, palette_report_()

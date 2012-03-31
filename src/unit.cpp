@@ -1743,7 +1743,7 @@ const surface unit::still_image(bool scaled) const
 
 void unit::set_standing(bool with_bars)
 {
-	game_display *disp = game_display::get_singleton();
+	display *disp = display::get_singleton();
 	if (preferences::show_standing_animations()&& !incapacitated()) {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, "standing"),
 			with_bars,  "", 0, STATE_STANDING);
@@ -1755,28 +1755,28 @@ void unit::set_standing(bool with_bars)
 
 void unit::set_ghosted(bool with_bars)
 {
-	game_display *disp = game_display::get_singleton();
+	display *disp = display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, "ghosted"),
 			with_bars);
 }
 
 void unit::set_disabled_ghosted(bool with_bars)
 {
-	game_display *disp = game_display::get_singleton();
+	display *disp = display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, "disabled_ghosted"),
 			with_bars);
 }
 
 void unit::set_idling()
 {
-	game_display *disp = game_display::get_singleton();
+	display *disp = display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, "idling"),
 		true, "", 0, STATE_FORGET);
 }
 
 void unit::set_selecting()
 {
-	const game_display *disp =  game_display::get_singleton();
+	const display *disp =  display::get_singleton();
 	if (preferences::show_standing_animations() && !get_state(STATE_PETRIFIED)) {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, "selected"),
 			true, "", 0, STATE_FORGET);
@@ -1789,7 +1789,7 @@ void unit::set_selecting()
 void unit::start_animation(int start_time, const unit_animation *animation,
 	bool with_bars,  const std::string &text, Uint32 text_color, STATE state)
 {
-	const game_display * disp =  game_display::get_singleton();
+	const display * disp =  display::get_singleton();
 	state_ = state;
 	if (!animation) {
 		if (state != STATE_STANDING)
@@ -1823,7 +1823,7 @@ void unit::set_facing(map_location::DIRECTION dir) {
 
 void unit::redraw_unit()
 {
-	game_display &disp = *game_display::get_singleton();
+	display &disp = *display::get_singleton();
 	const gamemap &map = disp.get_map();
 
 	if ( hidden_ || !is_visible_to_team(disp.get_teams()[disp.viewing_team()],disp.show_everything(),map) )
@@ -2000,6 +2000,7 @@ void unit::redraw_unit()
 				}
 			}
 		}
+
 		assert(orb_img != NULL);
 		surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
 		if (orb != NULL) {
@@ -2068,7 +2069,7 @@ bool unit::invalidate(const map_location &loc)
 	// Very early calls, anim not initialized yet
 	if(get_animation()) {
 		frame_parameters params;
-		const game_display * disp =  game_display::get_singleton();
+		const display * disp =  display::get_singleton();
 		const gamemap & map = disp->get_map();
 		const t_translation::t_terrain terrain = map.get_terrain(loc);
 		const terrain_type& terrain_info = map.get_terrain_info(terrain);
@@ -2698,7 +2699,7 @@ std::string unit::absolute_image() const {
 	return cfg_["image_icon"].empty() ? cfg_["image"] : cfg_["image_icon"];
 }
 
-const unit_animation* unit::choose_animation(const game_display& disp, const map_location& loc,const std::string& event,
+const unit_animation* unit::choose_animation(const display& disp, const map_location& loc,const std::string& event,
 		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
 		const attack_type* attack, const attack_type* second_attack, int swing_num) const
 {
@@ -2912,7 +2913,7 @@ void unit::refresh()
 		set_standing();
 		return;
 	}
-	game_display &disp = *game_display::get_singleton();
+	display &disp = *display::get_singleton();
 	if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_ ||
 	    !disp.tile_nearly_on_screen(loc_) || incapacitated())
 	{

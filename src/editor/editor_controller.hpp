@@ -48,6 +48,10 @@ namespace preferences {
 	struct display_manager;
 } // namespace preferences
 
+namespace halo {
+	struct manager;
+} // namespace halo
+
 namespace editor {
 
 class editor_map;
@@ -210,9 +214,12 @@ class editor_controller : public controller_base,
 
 		boost::scoped_ptr<rand_rng::set_random_generator> rng_setter_;
 
+		unit_map units_;
+
 		/** The display object used and owned by the editor. */
 		boost::scoped_ptr<editor_display> gui_;
 
+		std::vector<team> teams_;
 
 		/** Pre-defined time of day lighting settings for the settings dialog */
 		std::vector<time_of_day> tods_;
@@ -225,6 +232,8 @@ class editor_controller : public controller_base,
 		boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;
 		tooltips::manager tooltip_manager_;
 		boost::scoped_ptr<font::floating_label_context> floating_label_manager_;
+
+		boost::scoped_ptr<halo::manager> halo_manager_;
 
 		/** Quit main loop flag */
 		bool do_quit_;

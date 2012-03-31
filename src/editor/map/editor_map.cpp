@@ -52,10 +52,27 @@ editor_map::editor_map(const config& terrain_cfg, const config& level, const dis
 	: gamemap(terrain_cfg, level)
 	, selection_()
 	, labels_(disp, NULL)
+	, units_()
+	, teams_()
+	, tod_manager_(level)
 {
 	labels_.read(level);
-	//labels_.disp().re
-	//labels_.disp().d
+
+	foreach (const config& side, level.child_range("side"))
+	{
+		team t;
+		t.build(side, *this, 100);
+		//this is done because we don't count as observer is there is a human controller
+		t.change_controller("null");
+		//TODO alternative? : gamestatus::teambuilder
+
+		teams_.push_back(t);
+		foreach (const config &a_unit, side.child_range("unit")) {
+			map_location loc(a_unit, NULL);
+			units_.add(loc, unit(a_unit, true));
+		}
+	}
+
 	sanity_check();
 }
 

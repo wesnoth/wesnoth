@@ -24,8 +24,8 @@ namespace editor {
 class editor_display : public display
 {
 public:
-	editor_display(CVideo& video, const editor_map* map, const config& theme_cfg,
-			const config& level);
+	editor_display(unit_map* units, CVideo& video, const editor_map* map,
+			const std::vector<team>* t, const config& theme_cfg, const config& level);
 
 	bool in_editor() const { return true; }
 

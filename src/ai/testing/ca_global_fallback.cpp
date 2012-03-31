@@ -53,15 +53,15 @@ static lg::log_domain log_ai_testing_ca_global_fallback("ai/ca/global_fallback")
 
 static void display_label(int /*side*/, const map_location& location, const std::string& text, bool surrounded)
 {
-                game_display* gui = game_display::get_singleton();
-		std::string team_name;
+	display* gui = display::get_singleton();
+	std::string team_name;
 
-		SDL_Color color = int_to_color(team::get_side_rgb(surrounded ? 2 : 1 ) );//@fixme: for tests
+	SDL_Color color = int_to_color(team::get_side_rgb(surrounded ? 2 : 1 ) );//@fixme: for tests
 
-		const terrain_label *res;
-		res = gui->labels().set_label(location, text, team_name, color);
-		if (res)
-			recorder.add_label(res);
+	const terrain_label *res;
+	res = gui->labels().set_label(location, text, team_name, color);
+	if (res)
+		recorder.add_label(res);
 }
 
 

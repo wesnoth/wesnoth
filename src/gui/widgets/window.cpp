@@ -420,7 +420,7 @@ void twindow::update_screen_size()
 		settings::gamemap_width = settings::screen_width;
 		settings::gamemap_height = settings::screen_height;
 
-		game_display* display = game_display::get_singleton();
+		display* display = display::get_singleton();
 		if(display) {
 			const unsigned w = display->map_outside_area().w;
 			const unsigned h = display->map_outside_area().h;

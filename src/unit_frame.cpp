@@ -516,7 +516,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		// you need to add a '/n'
 		// if (tmp_offset) std::cout << (int)(tmp_offset*100) << ",";
 
-	int d2 = game_display::get_singleton()->hex_size() / 2;
+	int d2 = display::get_singleton()->hex_size() / 2;
 	if(first_time ) {
 		// stuff sthat should be done only once per frame
 		if(!current_data.sound.empty()  ) {
@@ -621,7 +621,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 }
 std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val) const
 {
-	game_display* disp = game_display::get_singleton();
+	display* disp = display::get_singleton();
 	const int xsrc = disp->get_location_x(src);
 	const int ysrc = disp->get_location_y(src);
 	const int xdst = disp->get_location_x(dst);

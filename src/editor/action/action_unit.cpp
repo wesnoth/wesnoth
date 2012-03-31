@@ -42,13 +42,11 @@ editor_action* editor_action_unit::perform(map_context& mc) const
 	return undo.release();
 }
 
-void editor_action_unit::perform_without_undo(map_context& /*mc*/) const
+void editor_action_unit::perform_without_undo(map_context& mc) const
 {
-	/*
-	mc.get_units().add(loc_,u_);
-	mc.get_units().find(loc_)->set_location(loc_);
+	mc.get_map().get_units().add(loc_,u_);
+	mc.get_map().get_units().find(loc_)->set_location(loc_);
 	mc.add_changed_location(loc_);
-	*/
 }
 
 
@@ -57,13 +55,13 @@ editor_action_unit_delete* editor_action_unit_delete::clone() const
 	return new editor_action_unit_delete(*this);
 }
 
-editor_action* editor_action_unit_delete::perform(map_context& /*mc*/) const
+editor_action* editor_action_unit_delete::perform(map_context& mc) const
 {
 	std::auto_ptr<editor_action> undo;
-//	boost::scoped_ptr<editor_action> undo;
+	//boost::scoped_ptr<editor_action> undo;
 
-	/*
-	unit_map& units = mc.get_units();
+
+	unit_map& units = mc.get_map().get_units();
 	unit_map::const_unit_iterator unit_it = units.find(loc_);
 
 	if (unit_it != units.end()) {
@@ -71,21 +69,19 @@ editor_action* editor_action_unit_delete::perform(map_context& /*mc*/) const
 		perform_without_undo(mc);
 		return undo.release();
 	} else { return NULL; }
-    */
+
 
 	return NULL; //can't be reached
 }
 
-void editor_action_unit_delete::perform_without_undo(map_context& /*mc*/) const
+void editor_action_unit_delete::perform_without_undo(map_context& mc) const
 {
-	/*
-	unit_map& units = mc.get_units();
+	unit_map& units = mc.get_map().get_units();
 	if (!units.erase(loc_)) {
 		ERR_ED << "Could not delete unit on " << loc_.x << "/" << loc_.y << "\n";
 	} else {
 		mc.add_changed_location(loc_);
 	}
-	*/
 }
 
 
@@ -102,18 +98,18 @@ editor_action* editor_action_unit_replace::perform(map_context& mc) const
 	return undo.release();
 }
 
-void editor_action_unit_replace::perform_without_undo(map_context& /*mc*/) const
+void editor_action_unit_replace::perform_without_undo(map_context& mc) const
 {
-	//unit_map& units = mc.get_map().get_units();
-	//units.move(loc_, new_loc_);
-	//unit::clear_status_caches();
+	unit_map& units = mc.get_map().get_units();
+	units.move(loc_, new_loc_);
+	unit::clear_status_caches();
 
-	//unit& u = *units.find(new_loc_);
+	unit& u = *units.find(new_loc_);
 	//TODO do we still need set_standing?
-	//u.set_standing();
+	u.set_standing();
 
-	//mc.add_changed_location(loc_);
-	//mc.add_changed_location(new_loc_);
+	mc.add_changed_location(loc_);
+	mc.add_changed_location(new_loc_);
 
 	/* @todo
 	  if (mc.get_map().is_village(new_loc_)) {
@@ -140,17 +136,15 @@ editor_action* editor_action_unit_facing::perform(map_context& mc) const
 	return undo.release();
 }
 
-void editor_action_unit_facing::perform_without_undo(map_context& /*mc*/) const
+void editor_action_unit_facing::perform_without_undo(map_context& mc) const
 {
-	/*
-	unit_map& units = mc.get_units();
-	unit_map::const_unit_iterator unit_it = units.find(loc_);
+	unit_map& units = mc.get_map().get_units();
+	unit_map::unit_iterator unit_it = units.find(loc_);
 
 	if (unit_it != units.end()) {
 		unit_it->set_facing(new_direction_);
 		unit_it->set_standing();
 	}
-	*/
 }
 
 

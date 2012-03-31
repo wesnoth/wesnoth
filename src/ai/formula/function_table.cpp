@@ -1257,7 +1257,7 @@ private:
         }
 
         void display_label(const map_location& location, const std::string& text) const {
-                game_display* gui = game_display::get_singleton();
+                display* gui = display::get_singleton();
 		std::string team_name;
 
 		SDL_Color color = int_to_color(team::get_side_rgb(ai_.get_side()));

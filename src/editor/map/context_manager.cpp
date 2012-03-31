@@ -57,7 +57,16 @@ public:
 	}
 	void refresh() {
 		ec_.gui().change_map(&ec_.get_map());
+		resources::game_map = &ec_.get_map();
+		ec_.gui().change_units(&ec_.get_map().get_units());
+		resources::units = &ec_.get_map().get_units();
+		// TODO register the tod_manager with the gui?
+		resources::tod_manager = &ec_.get_map().get_time_manager();
+		ec_.gui().change_teams(&ec_.get_map().get_teams());
+		resources::teams = &ec_.get_map().get_teams();
 		ec_.reload_map();
+
+		resources::state_of_game = &ec_.get_map().get_game_state();
 	}
 private:
 	context_manager& ec_;

@@ -59,21 +59,15 @@ std::map<map_location,fixed_t> game_display::debugHighlights_;
 game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		const tod_manager& tod, const std::vector<team>& t,
 		const config& theme_cfg, const config& level) :
-		display(video, &map, theme_cfg, level),
-		units_(units),
+		display(&units, video, &map, &t, theme_cfg, level),
 		fake_units_(),
-		exclusive_unit_draw_requests_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
-		energy_bar_rects_(),
 		route_(),
 		tod_manager_(tod),
-		teams_(t),
 		level_(level),
 		displayedUnitHex_(),
 		overlays_(),
-		currentTeam_(0),
-		activeTeam_(0),
 		sidebarScaling_(1.0),
 		first_turn_(true),
 		in_game_(false),
@@ -85,18 +79,17 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		game_mode_(RUNNING),
 		flags_()
 {
-	singleton_ = this;
 
 	// Inits the flag list and the team colors used by ~TC
-	flags_.reserve(teams_.size());
+	flags_.reserve(teams_->size());
 
 	std::vector<std::string> side_colors;
-	side_colors.reserve(teams_.size());
+	side_colors.reserve(teams_->size());
 
-	for(size_t i = 0; i != teams_.size(); ++i) {
+	for(size_t i = 0; i != teams_->size(); ++i) {
 		std::string side_color = team::get_side_color_index(i+1);
 		side_colors.push_back(side_color);
-		std::string flag = teams_[i].flag();
+		std::string flag = (*teams_)[i].flag();
 		std::string old_rgb = game_config::flag_rgb;
 		std::string new_rgb = side_color;
 
@@ -151,7 +144,6 @@ game_display::~game_display()
 {
 	// SDL_FreeSurface(minimap_);
 	prune_chat_messages(true);
-	singleton_ = NULL;
 }
 
 void game_display::new_turn()
@@ -217,15 +209,15 @@ void game_display::highlight_hex(map_location hex)
 {
 	wb::future_map future; //< Lasts for whole method.
 
-	const unit *u = get_visible_unit(hex, teams_[viewing_team()], !viewpoint_);
+	const unit *u = get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = get_visible_unit(mouseoverHex_, teams_[viewing_team()], !viewpoint_);
+		u = get_visible_unit(mouseoverHex_, (*teams_)[viewing_team()], !viewpoint_);
 		if (u) {
 			// mouse moved from unit hex to non-unit hex
-			if (units_.count(selectedHex_)) {
+			if (units_->count(selectedHex_)) {
 				displayedUnitHex_ = selectedHex_;
 				invalidate_unit();
 			}
@@ -244,7 +236,7 @@ void game_display::display_unit_hex(map_location hex)
 
 	wb::future_map future; //< Lasts for whole method.
 
-	const unit *u = get_visible_unit(hex, teams_[viewing_team()], !viewpoint_);
+	const unit *u = get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -263,7 +255,7 @@ void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scrol
 {
 	unit_map::const_iterator leader = units.find_leader(side);
 
-	if(leader != units_.end()) {
+	if(leader != units_->end()) {
 		// YogiHH: I can't see why we need another key_handler here,
 		// therefore I will comment it out :
 		/*
@@ -295,14 +287,6 @@ void game_display::draw_invalidated()
 			temp_unit->redraw_unit();
 	}
 
-	foreach (const map_location& loc, invalidated_) {
-		unit_map::iterator u_it = units_.find(loc);
-		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
-		if (u_it != units_.end()
-				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
-			u_it->redraw_unit();
-	}
-
 }
 
 void game_display::post_commit()
@@ -324,7 +308,7 @@ void game_display::draw_hex(const map_location& loc)
 
 	if(on_map && loc == mouseoverHex_) {
 		tdrawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
-		if( get_visible_unit(loc, teams_[viewing_team()] ) != NULL ) {
+		if( get_visible_unit(loc, (*teams_)[viewing_team()] ) != NULL ) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
 		}
 		drawing_buffer_add( hex_top_layer,
@@ -338,7 +322,7 @@ void game_display::draw_hex(const map_location& loc)
 		std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
 		for( ; overlays.first != overlays.second; ++overlays.first) {
 			if ((overlays.first->second.team_name == "" ||
-			overlays.first->second.team_name.find(teams_[playing_team()].team_name()) != std::string::npos)
+			overlays.first->second.team_name.find((*teams_)[playing_team()].team_name()) != std::string::npos)
 			&& !(is_fogged && !overlays.first->second.visible_in_fog))
 			{
 				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos,
@@ -431,7 +415,7 @@ void game_display::draw_sidebar()
 	draw_report("report_clock");
 	draw_report("report_countdown");
 
-	if(teams_.empty()) {
+	if(teams_->empty()) {
 		return;
 	}
 
@@ -448,104 +432,6 @@ void game_display::draw_sidebar()
 	}
 }
 
-void game_display::draw_minimap_units()
-{
-	double xscaling = 1.0 * minimap_location_.w / get_map().w();
-	double yscaling = 1.0 * minimap_location_.h / get_map().h();
-
-	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
-		if (fogged(u->get_location()) ||
-		    (teams_[currentTeam_].is_enemy(u->side()) &&
-		     u->invisible(u->get_location())) ||
-			 u->get_hidden()) {
-			continue;
-		}
-
-		int side = u->side();
-		const SDL_Color col = team::get_minimap_color(side);
-		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
-
-		double u_x = u->get_location().x * xscaling;
-		double u_y = (u->get_location().y + (is_odd(u->get_location().x) ? 1 : -1)/4.0) * yscaling;
- 		// use 4/3 to compensate the horizontal hexes imbrication
-		double u_w = 4.0 / 3.0 * xscaling;
-		double u_h = yscaling;
-
-		SDL_Rect r = create_rect(minimap_location_.x + round_double(u_x)
-				, minimap_location_.y + round_double(u_y)
-				, round_double(u_w)
-				, round_double(u_h));
-
-		sdl_fill_rect(video().getSurface(), &r, mapped_col);
-	}
-}
-
-void game_display::draw_bar(const std::string& image, int xpos, int ypos,
-		const map_location& loc, size_t height, double filled,
-		const SDL_Color& col, fixed_t alpha)
-{
-
-	filled = std::min<double>(std::max<double>(filled,0.0),1.0);
-	height = static_cast<size_t>(height*get_zoom_factor());
-
-	surface surf(image::get_image(image,image::SCALED_TO_HEX));
-
-	// We use UNSCALED because scaling (and bilinear interpolaion)
-	// is bad for calculate_energy_bar.
-	// But we will do a geometric scaling later.
-	surface bar_surf(image::get_image(image));
-	if(surf == NULL || bar_surf == NULL) {
-		return;
-	}
-
-	// calculate_energy_bar returns incorrect results if the surface colors
-	// have changed (for example, due to bilinear interpolaion)
-	const SDL_Rect& unscaled_bar_loc = calculate_energy_bar(bar_surf);
-
-	SDL_Rect bar_loc;
-	if (surf->w == bar_surf->w && surf->h == bar_surf->h)
-	  bar_loc = unscaled_bar_loc;
-	else {
-	  const fixed_t xratio = fxpdiv(surf->w,bar_surf->w);
-	  const fixed_t yratio = fxpdiv(surf->h,bar_surf->h);
-	  const SDL_Rect scaled_bar_loc = create_rect(
-			    fxptoi(unscaled_bar_loc. x * xratio)
-			  , fxptoi(unscaled_bar_loc. y * yratio + 127)
-			  , fxptoi(unscaled_bar_loc. w * xratio + 255)
-			  , fxptoi(unscaled_bar_loc. h * yratio + 255));
-	  bar_loc = scaled_bar_loc;
-	}
-
-	if(height > bar_loc.h) {
-		height = bar_loc.h;
-	}
-
-	//if(alpha != ftofxp(1.0)) {
-	//	surf.assign(adjust_surface_alpha(surf,alpha));
-	//	if(surf == NULL) {
-	//		return;
-	//	}
-	//}
-
-	const size_t skip_rows = bar_loc.h - height;
-
-	SDL_Rect top = create_rect(0, 0, surf->w, bar_loc.y);
-	SDL_Rect bot = create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
-	bot.h = surf->w - bot.y;
-
-	drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos, ypos, surf, top);
-	drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos, ypos + top.h, surf, bot);
-
-	size_t unfilled = static_cast<size_t>(height * (1.0 - filled));
-
-	if(unfilled < height && alpha >= ftofxp(0.3)) {
-		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
-		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
-		SDL_Rect filled_area = create_rect(0, 0, bar_loc.w, height-unfilled);
-		sdl_fill_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
-		drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
-	}
-}
 
 void game_display::set_game_mode(const tgame_mode game_mode)
 {
@@ -565,8 +451,8 @@ void game_display::draw_movement_info(const map_location& loc)
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
 		const unit_map::const_iterator un =
 				resources::whiteboard->get_temp_move_unit().valid() ?
-						resources::whiteboard->get_temp_move_unit() : units_.find(route_.steps.front());
-		if(un != units_.end()) {
+						resources::whiteboard->get_temp_move_unit() : units_->find(route_.steps.front());
+		if(un != units_->end()) {
 			// Display the def% of this terrain
 			int def =  100 - un->defense_modifier(get_map().get_terrain(loc));
 			std::stringstream def_text;
@@ -612,7 +498,7 @@ void game_display::draw_movement_info(const map_location& loc)
 	{
 		const unit_map::const_iterator selectedUnit = find_visible_unit(selectedHex_,resources::teams->at(currentTeam_));
 		const unit_map::const_iterator mouseoveredUnit = find_visible_unit(mouseoverHex_,resources::teams->at(currentTeam_));
-		if(selectedUnit != units_.end() && mouseoveredUnit == units_.end()) {
+		if(selectedUnit != units_->end() && mouseoveredUnit == units_->end()) {
 			// Display the def% of this terrain
 			int def =  100 - selectedUnit->defense_modifier(get_map().get_terrain(loc));
 			std::stringstream def_text;
@@ -652,8 +538,8 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 
 	// Check which footsteps images of game_config we will use
 	int move_cost = 1;
-	const unit_map::const_iterator u = units_.find(route_.steps.front());
-	if(u != units_.end()) {
+	const unit_map::const_iterator u = units_->find(route_.steps.front());
+	if(u != units_->end()) {
 		move_cost = u->movement_cost(get_map().get_terrain(loc));
 	}
 	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
@@ -711,9 +597,9 @@ surface game_display::get_flag(const map_location& loc)
 		return surface(NULL);
 	}
 
-	for(size_t i = 0; i != teams_.size(); ++i) {
-		if(teams_[i].owns_village(loc) &&
-		  (!fogged(loc) || !teams_[currentTeam_].is_enemy(i+1)))
+	for(size_t i = 0; i != teams_->size(); ++i) {
+		if((*teams_)[i].owns_village(loc) &&
+		  (!fogged(loc) || !(*teams_)[currentTeam_].is_enemy(i+1)))
 		{
 			flags_[i].update_last_draw_time();
 			const image::locator &image_flag = animate_map_ ?
@@ -828,57 +714,11 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	font::add_floating_label(flabel);
 }
 
-struct is_energy_color {
-	bool operator()(Uint32 color) const { return (color&0xFF000000) > 0x10000000 &&
-	                                              (color&0x00FF0000) < 0x00100000 &&
-												  (color&0x0000FF00) < 0x00001000 &&
-												  (color&0x000000FF) < 0x00000010; }
-};
-
-const SDL_Rect& game_display::calculate_energy_bar(surface surf)
-{
-	const std::map<surface,SDL_Rect>::const_iterator i = energy_bar_rects_.find(surf);
-	if(i != energy_bar_rects_.end()) {
-		return i->second;
-	}
-
-	int first_row = -1, last_row = -1, first_col = -1, last_col = -1;
-
-	surface image(make_neutral_surface(surf));
-
-	const_surface_lock image_lock(image);
-	const Uint32* const begin = image_lock.pixels();
-
-	for(int y = 0; y != image->h; ++y) {
-		const Uint32* const i1 = begin + image->w*y;
-		const Uint32* const i2 = i1 + image->w;
-		const Uint32* const itor = std::find_if(i1,i2,is_energy_color());
-		const int count = std::count_if(itor,i2,is_energy_color());
-
-		if(itor != i2) {
-			if(first_row == -1) {
-				first_row = y;
-			}
-
-			first_col = itor - i1;
-			last_col = first_col + count;
-			last_row = y;
-		}
-	}
-
-	const SDL_Rect res = create_rect(first_col
-			, first_row
-			, last_col-first_col
-			, last_row+1-first_row);
-	energy_bar_rects_.insert(std::pair<surface,SDL_Rect>(surf,res));
-	return calculate_energy_bar(surf);
-}
-
 void game_display::invalidate_animations_location(const map_location& loc) {
 	if (get_map().is_village(loc)) {
 		const int owner = player_teams::village_owner(loc);
 		if (owner >= 0 && flags_[owner].need_update()
-		&& (!fogged(loc) || !teams_[currentTeam_].is_enemy(owner+1))) {
+		&& (!fogged(loc) || !(*teams_)[currentTeam_].is_enemy(owner+1))) {
 			invalidate(loc);
 		}
 	}
@@ -887,16 +727,10 @@ void game_display::invalidate_animations_location(const map_location& loc) {
 void game_display::invalidate_animations()
 {
 	display::invalidate_animations();
-	foreach (unit& u, units_) {
-		u.refresh();
-	}
 	foreach(unit* temp_unit, fake_units_) {
 		temp_unit->refresh();
 	}
 	std::vector<unit*> unit_list;
-	foreach (unit &u, units_) {
-		unit_list.push_back(&u);
-	}
 	foreach (unit *u, fake_units_) {
 		unit_list.push_back(u);
 	}
@@ -980,31 +814,6 @@ int game_display::remove_temporary_unit(unit *u)
 	return removed;
 }
 
-bool game_display::add_exclusive_draw(const map_location& loc, unit& unit)
-{
-	if (loc.valid() && exclusive_unit_draw_requests_.find(loc) == exclusive_unit_draw_requests_.end())
-	{
-		exclusive_unit_draw_requests_[loc] = unit.id();
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-std::string game_display::remove_exclusive_draw(const map_location& loc)
-{
-	std::string id = "";
-	if(loc.valid())
-	{
-		id = exclusive_unit_draw_requests_[loc];
-		//id will be set to the default "" string by the [] operator if the map doesn't have anything for that loc.
-		exclusive_unit_draw_requests_.erase(loc);
-	}
-	return id;
-}
-
 void game_display::set_attack_indicator(const map_location& src, const map_location& dst)
 {
 	if (attack_indicator_src_ != src || attack_indicator_dst_ != dst) {
@@ -1067,8 +876,8 @@ void game_display::remove_single_overlay(const map_location& loc, const std::str
 
 void game_display::parse_team_overlays()
 {
-	const team& curr_team = teams_[playing_team()];
-	const team& prev_team = teams_[playing_team()-1 < teams_.size() ? playing_team()-1 : teams_.size()-1];
+	const team& curr_team = (*teams_)[playing_team()];
+	const team& prev_team = (*teams_)[playing_team()-1 < teams_->size() ? playing_team()-1 : teams_->size()-1];
 	foreach (const game_display::overlay_map::value_type i, overlays_) {
 		const overlay& ov = i.second;
 		if (!ov.team_name.empty() &&
@@ -1084,7 +893,7 @@ std::string game_display::current_team_name() const
 {
 	if (team_valid())
 	{
-		return teams_[currentTeam_].team_name();
+		return (*teams_)[currentTeam_].team_name();
 	}
 	return std::string();
 }
@@ -1294,12 +1103,12 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 
 void game_display::set_team(size_t teamindex, bool show_everything)
 {
-	assert(teamindex < teams_.size());
+	assert(teamindex < teams_->size());
 	currentTeam_ = teamindex;
 	if (!show_everything)
 	{
-		labels().set_team(&teams_[teamindex]);
-		viewpoint_ = &teams_[teamindex];
+		labels().set_team(&(*teams_)[teamindex]);
+		viewpoint_ = &(*teams_)[teamindex];
 	}
 	else
 	{
@@ -1313,7 +1122,7 @@ void game_display::set_team(size_t teamindex, bool show_everything)
 
 void game_display::set_playing_team(size_t teamindex)
 {
-	assert(teamindex < teams_.size());
+	assert(teamindex < teams_->size());
 	activeTeam_ = teamindex;
 	invalidate_game_status();
 }
@@ -1481,5 +1290,5 @@ void game_display::prune_chat_messages(bool remove_all)
 	}
 }
 
-game_display *game_display::singleton_ = NULL;
+
 

@@ -87,6 +87,11 @@ public:
 
 	common_palette& active_palette(); //{ return (*mouse_action_)->get_palette(); };
 
+	//TODO
+//	terrain_palette* terrain_palette() { return terrain_palette_; };
+//	unit_palette* unit_palette() { return unit_palette_; };
+//	empty_palette* empty_palette() { return empty_palette_; };
+
 private:
 
 	editor_display& gui_;
