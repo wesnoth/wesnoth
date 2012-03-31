@@ -306,9 +306,9 @@ surface cut_surface(const surface &surf, SDL_Rect const &r);
  */
 surface blend_surface(
 		  const surface &surf
-		, double amount
-		, Uint32 color
-		, bool optimize = true);
+		, const double amount
+		, const Uint32 color
+		, const bool optimize = true);
 
 surface flip_surface(const surface &surf, bool optimize=true);
 surface flop_surface(const surface &surf, bool optimize=true);

@@ -1460,8 +1460,11 @@ surface cut_surface(const surface &surf, SDL_Rect const &r)
 
 	return res;
 }
-
-surface blend_surface(const surface &surf, double amount, Uint32 color, bool optimize)
+surface blend_surface(
+		  const surface &surf
+		, const double amount
+		, const Uint32 color
+		, const bool optimize)
 {
 	if(surf== NULL) {
 		return NULL;
@@ -1479,25 +1482,17 @@ surface blend_surface(const surface &surf, double amount, Uint32 color, bool opt
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w*surf->h;
 
-		Uint8 red, green, blue, alpha;
-		SDL_GetRGBA(color,nsurf->format,&red,&green,&blue,&alpha);
-
-		red   = Uint8(red   * amount);
-		green = Uint8(green * amount);
-		blue  = Uint8(blue  * amount);
-
-		amount = 1.0 - amount;
+		Uint16 ratio = amount * 256;
+		const Uint16 red   = ratio * static_cast<Uint8>(color >> 16);
+		const Uint16 green = ratio * static_cast<Uint8>(color >> 8);
+		const Uint16 blue  = ratio * static_cast<Uint8>(color);
+		ratio = 256 - ratio;
 
 		while(beg != end) {
-			Uint8 r, g, b, a;
-			a = (*beg) >> 24;
-			r = (*beg) >> 16;
-			g = (*beg) >> 8;
-			b = (*beg);
-
-			r = Uint8(r * amount) + red;
-			g = Uint8(g * amount) + green;
-			b = Uint8(b * amount) + blue;
+			Uint8 a = static_cast<Uint8>(*beg >> 24);
+			Uint8 r = (ratio * static_cast<Uint8>(*beg >> 16) + red)   >> 8;
+			Uint8 g = (ratio * static_cast<Uint8>(*beg >> 8)  + green) >> 8;
+			Uint8 b = (ratio * static_cast<Uint8>(*beg)       + blue)  >> 8;
 
 			*beg = (a << 24) | (r << 16) | (g << 8) | b;
 
