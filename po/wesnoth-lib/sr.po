@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-03-31 10:45+0200\n"
-"PO-Revision-Date: 2011-12-26 13:33+0100\n"
+"PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
 "Language: sr\n"
@@ -3391,50 +3391,38 @@ msgstr "Прескочи анимацију"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:114
-#, fuzzy
-#| msgid "Toggle Planning Mode"
 msgid "whiteboard^Planning Mode"
 msgstr "Режим планирања"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkeys.cpp:116
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute Action"
-msgstr "Изврши све радње"
+msgstr "Изврши радњу"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:118
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute All Actions"
 msgstr "Изврши све радње"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:120
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "Обриши радњу"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:122
-#, fuzzy
-#| msgid "Move Action Up Queue"
 msgid "whiteboard^Move Action Up"
-msgstr "Помери радњу нагоре у реду"
+msgstr "Помери радњу нагоре"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:124
-#, fuzzy
-#| msgid "Move Action Down Queue"
 msgid "whiteboard^Move Action Down"
-msgstr "Помери радњу надоле у реду"
+msgstr "Помери радњу надоле"
 
 #. TRANSLATORS: whiteboard menu entry: plan as if unit was dead
 #: src/hotkeys.cpp:126
-#, fuzzy
-#| msgid "Suppose Dead"
 msgid "whiteboard^Suppose Dead"
-msgstr "Претпостави мртво"
+msgstr "Претпостави мртвом"
 
 #: src/hotkeys.cpp:128
 msgid "Quit to Desktop"
@@ -3884,9 +3872,3 @@ msgid ""
 msgstr ""
 "Кључ ‘$deprecated_key’ је преименован у ‘$key’. Подршка за ‘$deprecated_key’ "
 "биће уклоњена у издању $removal_version."
-
-#~ msgid "Execute Planned Action"
-#~ msgstr "Изврши планирану радњу"
-
-#~ msgid "Delete Planned Action"
-#~ msgstr "Обриши планирану радњу"
