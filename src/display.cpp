@@ -232,7 +232,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos,
 
 	surface surf(image::get_image(image,image::SCALED_TO_HEX));
 
-	// We use UNSCALED because scaling (and bilinear interpolaion)
+	// We use UNSCALED because scaling (and bilinear interpolation)
 	// is bad for calculate_energy_bar.
 	// But we will do a geometric scaling later.
 	surface bar_surf(image::get_image(image));
@@ -241,7 +241,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos,
 	}
 
 	// calculate_energy_bar returns incorrect results if the surface colors
-	// have changed (for example, due to bilinear interpolaion)
+	// have changed (for example, due to bilinear interpolation)
 	const SDL_Rect& unscaled_bar_loc = calculate_energy_bar(bar_surf);
 
 	SDL_Rect bar_loc;
@@ -591,8 +591,8 @@ map_location display::minimap_location_on(int x, int y)
 		return map_location();
 	}
 
-	// we transfom the coordinates from minimap to the full map image
-	// probably more adjustements to do (border, minimap shift...)
+	// we transform the coordinates from minimap to the full map image
+	// probably more adjustments to do (border, minimap shift...)
 	// but the mouse and human capacity to evaluate the rectangle center
 	// is not pixel precise.
 	int px = (x - minimap_location_.x) * get_map().w()*hex_width() / minimap_location_.w;
@@ -853,7 +853,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 
 	if(terrains != NULL) {
 		// Cache the offmap name.
-		// Since it is themabel it can change,
+		// Since it is themeabel it can change,
 		// so don't make it static.
 		const std::string off_map_name = "terrain/" + theme_.border().tile_image;
 		for(std::vector<animated<image::locator> >::const_iterator it =
@@ -1416,7 +1416,7 @@ void display::draw_wrap(bool update, bool force)
 			SDL_Delay(wait_time);
 		}
 
-		// Set the theortical next draw time
+		// Set the theoretical next draw time
 		nextDraw_ += time_between_draws;
 
 		// If the next draw already should have been finished,
@@ -1436,7 +1436,6 @@ void display::delay(unsigned int milliseconds) const
 
 const theme::menu* display::menu_pressed()
 {
-
 	for(std::vector<gui::button>::iterator i = buttons_.begin(); i != buttons_.end(); ++i) {
 		if(i->pressed()) {
 			const size_t index = i - buttons_.begin();
@@ -1809,9 +1808,6 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 		}
 		t_prev = t;
 
-		//std::cout << t << " " << hypot(x_old, y_old) << "\n";
-
-		/** @todo Those values might need some fine-tuning: */
 		const double accel_time = 0.3 / turbo_speed(); // seconds until full speed is reached
 		const double decel_time = 0.4 / turbo_speed(); // seconds from full speed to stop
 
@@ -1910,7 +1906,6 @@ void display::scroll_to_tiles(const std::vector<map_location>& locs,
 			miny = miny_new;
 			maxx = maxx_new;
 			maxy = maxy_new;
-
 		}
 	}
 	//if everything is fogged or the locs list is empty
@@ -2134,9 +2129,9 @@ void display::draw(bool update,bool force) {
 	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
 	// these new invalidations can not cause any propagation because
 	// if a hex was invalidated last turn but not this turn, then
-	// * case of no unit in neighbour hex=> no propagation
+	// * case of no unit in neighbor hex=> no propagation
 	// * case of unit in hex but was there last turn=>its hexes are invalidated too
-	// * case of unit inhex not there last turn => it moved, so was invalidated previously
+	// * case of unit in hex not there last turn => it moved, so was invalidated previously
 	if(!get_map().empty()) {
 		//int simulate_delay = 0;
 
@@ -2330,7 +2325,6 @@ image::TYPE display::get_image_type(const map_location& /*loc*/) {
 void display::draw_sidebar() {
 
 }
-
 
 void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 {
@@ -2648,20 +2642,6 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 
 void display::invalidate_animations()
 {
-	new_animation_frame();
-	animate_map_ = preferences::animate_map();
-	if (!animate_map_) return;
-
-	foreach (const map_location &loc, get_visible_hexes())
-	{
-		if (shrouded(loc)) continue;
-		if (builder_->update_animation(loc)) {
-			invalidate(loc);
-		} else {
-			invalidate_animations_location(loc);
-		}
-	}
-
 	foreach (unit& u, *units_) {
 		u.refresh();
 	}
@@ -2679,6 +2659,20 @@ void display::invalidate_animations()
 			new_inval |=  unit_list[i]->invalidate(unit_list[i]->get_location());
 		}
 	}while(new_inval);
+
+	new_animation_frame();
+	animate_map_ = preferences::animate_map();
+	if (!animate_map_) return;
+
+	foreach (const map_location &loc, get_visible_hexes())
+	{
+		if (shrouded(loc)) continue;
+		if (builder_->update_animation(loc)) {
+			invalidate(loc);
+		} else {
+			invalidate_animations_location(loc);
+		}
+	}
 }
 
 void display::add_arrow(arrow& arrow)
