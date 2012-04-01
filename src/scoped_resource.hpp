@@ -118,19 +118,19 @@ public:
 
 /**
 * A helper policy for scoped_ptr.
-* It will call the delete operator on a pointer, and assign the pointer to 0
+* It will call the delete operator on a pointer, and assign the pointer to NULL
 */
 struct delete_item {
 	template<typename T>
-	void operator()(T*& p) const { delete p; p = 0; }
+	void operator()(T*& p) const { delete p; p = NULL; }
 };
 /**
 * A helper policy for scoped_array.
-* It will call the delete[] operator on a pointer, and assign the pointer to 0
+* It will call the delete[] operator on a pointer, and assign the pointer to NULL
 */
 struct delete_array {
 	template<typename T>
-	void operator()(T*& p) const { delete [] p; p = 0; }
+	void operator()(T*& p) const { delete [] p; p = NULL; }
 };
 
 /**
