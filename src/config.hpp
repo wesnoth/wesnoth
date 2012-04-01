@@ -100,7 +100,7 @@ public:
 	{ return this != &invalid; }
 #else
 	operator safe_bool() const
-	{ return this != &invalid ? &safe_bool_impl::nonnull : 0; }
+	{ return this != &invalid ? &safe_bool_impl::nonnull : NULL; }
 #endif
 
 	typedef std::vector<config*> child_list;
