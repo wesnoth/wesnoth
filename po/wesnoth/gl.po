@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-03-31 10:45+0200\n"
-"PO-Revision-Date: 2012-03-19 18:21+0100\n"
+"PO-Revision-Date: 2012-04-01 10:13+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -175,7 +175,7 @@ msgstr "Empregar o formato de 12 horas para o reloxo."
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:149
 msgid "Confirm loading of saves from a different version"
-msgstr "Pedir confirmación ao cargar partidas de versións distintas do xogo."
+msgstr "Avisar ao ao cargar partidas doutras versións"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:156
@@ -2837,7 +2837,7 @@ msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
 msgstr ""
-"Se te atacan dende varias frontes, pode ser unha boa idea enviar unidades "
+"Se te atacan desde varias frontes, pode ser unha boa idea enviar unidades "
 "prescindíbeis en varias direccións para atrasar ás unidades inimigas."
 
 #. [tip]
@@ -2876,7 +2876,7 @@ msgid ""
 "even capture an enemy’s keep and use that."
 msgstr ""
 "Os <i>líderes</i> poden recrutar e reincorporar unidades dende calquera "
-"torre de castelo, non só dende a torre na que comezan. Pode que ás veces os "
+"torre de castelo, non só desde a torre na que comezan. Pode que ás veces os "
 "teus aliados estean dispostos a cederche a súa torre para que recrutes nela, "
 "ou podes capturar a torre dun inimigo e facer uso dela."
 
@@ -3147,7 +3147,7 @@ msgid ""
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
 "Cando unha unidade forte estea seriamente ferida, envíaa a curarse a unha "
-"vila á que se tarde varias quendas en chegar dende a batalla. Así poderá "
+"vila á que se tarde varias quendas en chegar desde a batalla. Así poderá "
 "recuperarse tranquilamente (dez puntos de vida por rolda) sen ocupar as "
 "vilas para as unidades da fronte de batalla."
 
@@ -5059,7 +5059,7 @@ msgstr "Definir a orde que vai executar o atallo de orde personalizado."
 #: src/menu_events.cpp:2590
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
-"Abre un diálogo dende o que cambiar os controis dos bandos nas partidas con "
+"Abre un diálogo desde o que cambiar os controis dos bandos nas partidas con "
 "varios xogadores."
 
 #: src/menu_events.cpp:2594
@@ -5343,15 +5343,12 @@ msgid "prompt^Command:"
 msgstr "Orde:"
 
 #: src/mouse_events.cpp:703
-#, fuzzy
-#| msgid ""
-#| "You cannot move your leader away from the keep with some planned recruits "
-#| "left."
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr ""
-"Non podes sacar ao líder da torre se tes planeado recrutar máis unidades."
+"Non podes sacar ao líder da torre se planificaches recrutar ou reincorporar "
+"máis unidades."
 
 #: src/mouse_events.cpp:834 src/mouse_events.cpp:914
 msgid "Attack Enemy"
