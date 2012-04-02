@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-22 15:00+0100\n"
-"PO-Revision-Date: 2011-12-31 12:07+0300\n"
+"PO-Revision-Date: 2012-04-02 21:49+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language: \n"
@@ -5099,10 +5099,16 @@ msgid "prompt^Command:"
 msgstr "Käsk:"
 
 #: src/mouse_events.cpp:703
+#, fuzzy
+#| msgid ""
+#| "You cannot move your leader away from the keep with some planned recruits "
+#| "or recalls left."
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits "
 "left."
-msgstr "Pealik ei tohiks kindlusest lahkuda, kui on kavas värvata veel üksusi."
+msgstr ""
+"Pealik ei tohiks kindlusest lahkuda, kui kavas on veel üksusi värvata või "
+"tagasi kutsuda."
 
 #: src/mouse_events.cpp:834 src/mouse_events.cpp:914
 msgid "Attack Enemy"
@@ -6480,6 +6486,10 @@ msgstr "Peida plaanid mängija $player eest"
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr "Tahvli sätted"
+
+#~| msgid "Romanian Translation"
+#~ msgid "Ukrainian Translation"
+#~ msgstr "Ukrainakeelne tõlge"
 
 #~ msgid "Custom lighting for local time of day areas (uses more memory)"
 #~ msgstr "Kohandatud valgustus kohaliku päevaaja jaoks (vajab rohkem mälu)"
