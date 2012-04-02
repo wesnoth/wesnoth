@@ -502,13 +502,21 @@ static void push_map_location(lua_State *L, const map_location& ml)
 
 static void push_move_map(lua_State *L, const move_map& m)
 {
+	lua_createtable(L, 0, 0); // the main table
+	
+	if (m.empty()) 
+	{
+		return;
+	}
+	
 	move_map::const_iterator it = m.begin();
 
 	int index = 1;
 
-	lua_createtable(L, 0, 0); // the main table
 
-	do {
+
+	do 
+	{
 		map_location key = it->first;
 
 		push_map_location(L, key);
@@ -540,7 +548,7 @@ static int cfun_ai_get_dstsrc(lua_State *L)
 
 static int cfun_ai_get_srcdst(lua_State *L)
 {
-	move_map src_dst = get_readonly_context(L).get_dstsrc();
+	move_map src_dst = get_readonly_context(L).get_srcdst();
 	push_move_map(L, src_dst);
 	return 1;
 }
@@ -554,7 +562,7 @@ static int cfun_ai_get_enemy_dstsrc(lua_State *L)
 
 static int cfun_ai_get_enemy_srcdst(lua_State *L)
 {
-	move_map enemy_src_dst = get_readonly_context(L).get_enemy_dstsrc();
+	move_map enemy_src_dst = get_readonly_context(L).get_enemy_srcdst();
 	push_move_map(L, enemy_src_dst);
 	return 1;
 }
