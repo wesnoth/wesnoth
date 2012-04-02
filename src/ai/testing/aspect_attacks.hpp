@@ -52,7 +52,7 @@ public:
 protected:
 	boost::shared_ptr<attacks_vector> analyze_targets() const;
 
-	static void do_attack_analysis(const map_location& loc,
+	void do_attack_analysis(const map_location& loc,
 	                const move_map& srcdst, const move_map& dstsrc,
 			const move_map& fullmove_srcdst, const move_map& fullmove_dstsrc,
 	                const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
@@ -60,11 +60,8 @@ protected:
 	                std::vector<map_location>& units,
 	                std::vector<attack_analysis>& result,
 			attack_analysis& cur_analysis,
-			 const team &current_team,
-			 const readonly_context *ai_obj);
+			 const team &current_team) const;
 	static int rate_terrain(const unit& u, const map_location& loc);
-	double power_projection(const map_location& loc, const move_map& dstsrc) const;
-	static double power_projection2(const map_location& loc, const move_map& dstsrc);
 	config filter_own_;
 	config filter_enemy_;
 };

@@ -964,7 +964,6 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 	map_location locs[6];
 	get_adjacent_tiles(loc,locs);
 
-	const int lawful_bonus = resources::tod_manager->get_time_of_day().lawful_bonus;
 	gamemap& map_ = *resources::game_map;
 	unit_map& units_ = *resources::units;
 
@@ -1006,6 +1005,13 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 
 			const unit& un = *u;
 
+			// The unit might play on the next turn
+			int attack_turn = resources::tod_manager->turn();
+			if(un.side() < get_side()) {
+				++attack_turn;
+			}
+			// Considering the unit location would be too slow, we only apply the bonus granted by the global ToD
+			const int lawful_bonus = resources::tod_manager->get_time_of_day(attack_turn).lawful_bonus;
 			int tod_modifier = 0;
 			if(un.alignment() == unit_type::LAWFUL) {
 				tod_modifier = lawful_bonus;

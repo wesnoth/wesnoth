@@ -110,7 +110,7 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 			analysis.support = 0.0;
 			do_attack_analysis(j->get_location(), srcdst, dstsrc,
 				fullmove_srcdst, fullmove_dstsrc, enemy_srcdst, enemy_dstsrc,
-				adjacent,used_locations,unit_locs,*res,analysis, current_team(), this);
+				adjacent,used_locations,unit_locs,*res,analysis, current_team());
 		}
 	}
 	return res;
@@ -127,9 +127,8 @@ void aspect_attacks::do_attack_analysis(
 	                 std::vector<map_location>& units,
 	                 std::vector<attack_analysis>& result,
 					 attack_analysis& cur_analysis,
-					 const team &current_team,
-					 const readonly_context *ai_obj
-	                )
+					 const team &current_team
+	                ) const
 {
 	// This function is called fairly frequently, so interact with the user here.
 
@@ -297,10 +296,10 @@ void aspect_attacks::do_attack_analysis(
 
 			// Find out how vulnerable we are to attack from enemy units in this hex.
 			//FIXME: suokko's r29531 multiplied this by a constant 1.5. ?
-			const double vulnerability = power_projection2(tiles[j],enemy_dstsrc);//?
+			const double vulnerability = power_projection(tiles[j],enemy_dstsrc);//?
 
 			// Calculate how much support we have on this hex from allies.
-			const double support = power_projection2(tiles[j], fullmove_dstsrc);//?
+			const double support = power_projection(tiles[j], fullmove_dstsrc);//?
 
 			// If this is a position with equal defense to another position,
 			// but more vulnerability then we don't want to use it.
@@ -340,14 +339,12 @@ void aspect_attacks::do_attack_analysis(
 			cur_analysis.support += best_support;
 
 			cur_analysis.is_surrounded = is_surrounded;
-			if (ai_obj!=NULL) {
-			   cur_analysis.analyze(map_, units_, *ai_obj, dstsrc, srcdst, enemy_dstsrc, ai_obj->get_aggression());
-			}
+			cur_analysis.analyze(map_, units_, *this, dstsrc, srcdst, enemy_dstsrc, get_aggression());
 			result.push_back(cur_analysis);
 			used_locations[cur_position] = true;
 			do_attack_analysis(loc,srcdst,dstsrc,fullmove_srcdst,fullmove_dstsrc,enemy_srcdst,enemy_dstsrc,
 		                   tiles,used_locations,
-		                   units,result,cur_analysis, current_team, ai_obj);
+		                   units,result,cur_analysis, current_team);
 			used_locations[cur_position] = false;
 
 
@@ -404,216 +401,6 @@ config aspect_attacks::to_config() const
 	}
 	return cfg;
 }
-
-double aspect_attacks::power_projection(const map_location& loc, const move_map& dstsrc) const
-{
-	map_location used_locs[6];
-	int ratings[6];
-	int num_used_locs = 0;
-
-	map_location locs[6];
-	get_adjacent_tiles(loc,locs);
-
-	const int lawful_bonus = resources::tod_manager->get_time_of_day().lawful_bonus;
-	gamemap& map_ = *resources::game_map;
-	unit_map& units_ = *resources::units;
-
-	int res = 0;
-
-	bool changed = false;
-	for (int i = 0;; ++i) {
-		if (i == 6) {
-			if (!changed) break;
-			// Loop once again, in case a unit found a better spot
-			// and freed the place for another unit.
-			changed = false;
-			i = 0;
-		}
-
-		if (map_.on_board(locs[i]) == false) {
-			continue;
-		}
-
-		const t_translation::t_terrain terrain = map_[locs[i]];
-
-		typedef move_map::const_iterator Itor;
-		typedef std::pair<Itor,Itor> Range;
-		Range its = dstsrc.equal_range(locs[i]);
-
-		map_location* const beg_used = used_locs;
-		map_location* end_used = used_locs + num_used_locs;
-
-		int best_rating = 0;
-		map_location best_unit;
-
-		for(Itor it = its.first; it != its.second; ++it) {
-			const unit_map::const_iterator u = units_.find(it->second);
-
-			// Unit might have been killed, and no longer exist
-			if(u == units_.end()) {
-				continue;
-			}
-
-			const unit &un = *u;
-
-			int tod_modifier = 0;
-			if(un.alignment() == unit_type::LAWFUL) {
-				tod_modifier = lawful_bonus;
-			} else if(un.alignment() == unit_type::CHAOTIC) {
-				tod_modifier = -lawful_bonus;
-			} else if(un.alignment() == unit_type::LIMINAL) {
-				tod_modifier = -(abs(lawful_bonus));
-			}
-
-			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
-			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
-			int most_damage = 0;
-			foreach (const attack_type &att, un.attacks())
-			{
-				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
-				if (damage > most_damage) {
-					most_damage = damage;
-				}
-			}
-
-			int village_bonus = map_.is_village(terrain) ? 3 : 2;
-			int defense = 100 - un.defense_modifier(terrain);
-			int rating = hp * defense * most_damage * village_bonus / 200;
-			if(rating > best_rating) {
-				map_location *pos = std::find(beg_used, end_used, it->second);
-				// Check if the spot is the same or better than an older one.
-				if (pos == end_used || rating >= ratings[pos - beg_used]) {
-					best_rating = rating;
-					best_unit = it->second;
-				}
-			}
-		}
-
-		if (!best_unit.valid()) continue;
-		map_location *pos = std::find(beg_used, end_used, best_unit);
-		int index = pos - beg_used;
-		if (index == num_used_locs)
-			++num_used_locs;
-		else if (best_rating == ratings[index])
-			continue;
-		else {
-			// The unit was in another spot already, so remove its older rating
-			// from the final result, and require a new run to fill its old spot.
-			res -= ratings[index];
-			changed = true;
-		}
-		used_locs[index] = best_unit;
-		ratings[index] = best_rating;
-		res += best_rating;
-	}
-
-	return res / 100000.;
-}
-double aspect_attacks::power_projection2(const map_location& loc, const move_map& dstsrc)
-{
-	map_location used_locs[6];
-	int ratings[6];
-	int num_used_locs = 0;
-
-	map_location locs[6];
-	get_adjacent_tiles(loc,locs);
-
-	const int lawful_bonus = resources::tod_manager->get_time_of_day().lawful_bonus;
-	gamemap& map_ = *resources::game_map;
-	unit_map& units_ = *resources::units;
-
-	int res = 0;
-
-	bool changed = false;
-	for (int i = 0;; ++i) {
-		if (i == 6) {
-			if (!changed) break;
-			// Loop once again, in case a unit found a better spot
-			// and freed the place for another unit.
-			changed = false;
-			i = 0;
-		}
-
-		if (map_.on_board(locs[i]) == false) {
-			continue;
-		}
-
-		const t_translation::t_terrain terrain = map_[locs[i]];
-
-		typedef move_map::const_iterator Itor;
-		typedef std::pair<Itor,Itor> Range;
-		Range its = dstsrc.equal_range(locs[i]);
-
-		map_location* const beg_used = used_locs;
-		map_location* end_used = used_locs + num_used_locs;
-
-		int best_rating = 0;
-		map_location best_unit;
-
-		for(Itor it = its.first; it != its.second; ++it) {
-			const unit_map::const_iterator u = units_.find(it->second);
-
-			// Unit might have been killed, and no longer exist
-			if(u == units_.end()) {
-				continue;
-			}
-
-			const unit &un = *u;
-
-			int tod_modifier = 0;
-			if(un.alignment() == unit_type::LAWFUL) {
-				tod_modifier = lawful_bonus;
-			} else if(un.alignment() == unit_type::CHAOTIC) {
-				tod_modifier = -lawful_bonus;
-			} else if(un.alignment() == unit_type::LIMINAL) {
-				tod_modifier = -(abs(lawful_bonus));
-			}
-
-			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
-			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
-			int most_damage = 0;
-			foreach (const attack_type &att, un.attacks())
-			{
-				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
-				if (damage > most_damage) {
-					most_damage = damage;
-				}
-			}
-
-			int village_bonus = map_.is_village(terrain) ? 3 : 2;
-			int defense = 100 - un.defense_modifier(terrain);
-			int rating = hp * defense * most_damage * village_bonus / 200;
-			if(rating > best_rating) {
-				map_location *pos = std::find(beg_used, end_used, it->second);
-				// Check if the spot is the same or better than an older one.
-				if (pos == end_used || rating >= ratings[pos - beg_used]) {
-					best_rating = rating;
-					best_unit = it->second;
-				}
-			}
-		}
-
-		if (!best_unit.valid()) continue;
-		map_location *pos = std::find(beg_used, end_used, best_unit);
-		int index = pos - beg_used;
-		if (index == num_used_locs)
-			++num_used_locs;
-		else if (best_rating == ratings[index])
-			continue;
-		else {
-			// The unit was in another spot already, so remove its older rating
-			// from the final result, and require a new run to fill its old spot.
-			res -= ratings[index];
-			changed = true;
-		}
-		used_locs[index] = best_unit;
-		ratings[index] = best_rating;
-		res += best_rating;
-	}
-
-	return res / 100000.;
-}
-
 
 } // end of namespace testing_ai_default
 
