@@ -213,13 +213,13 @@ static int cfun_ai_execute_attack(lua_State *L)
 
 	int attacker_weapon = -1;//-1 means 'select what is best'
 	double aggression = context.get_aggression();//use the aggression from the context
+	
+	if (!lua_isnoneornil(L, index) &&  attacker_weapon != -1) {
+		attacker_weapon = lua_tointeger(L, index) - 1; // Done for consistency of the Lua style 
+	}
 
 	if (!lua_isnoneornil(L, index+1) && lua_isnumber(L,index+1)) {
 		aggression = lua_tonumber(L, index+1);
-	}
-
-	if (!lua_isnoneornil(L, index) &&  attacker_weapon != -1) {
-		attacker_weapon = lua_tointeger(L, index) - 1; // Done for consistency of the Lua style 
 	}
 
 	ai::attack_result_ptr attack_result = ai::actions::execute_attack_action(side,true,attacker,defender,attacker_weapon,aggression);
