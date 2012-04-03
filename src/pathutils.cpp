@@ -75,7 +75,8 @@ void get_tiles_radius(const map_location& a, size_t radius,
 }
 
 void get_tiles_radius(gamemap const &map, std::vector<map_location> const &locs,
-                      size_t radius, std::set<map_location> &res, xy_pred *pred)
+                      size_t radius, std::set<map_location> &res, bool with_border,
+                      xy_pred *pred)
 {
 	typedef std::set<map_location> location_set;
 	location_set not_visited(locs.begin(), locs.end()), must_visit, filtered_out;
@@ -89,11 +90,13 @@ void get_tiles_radius(gamemap const &map, std::vector<map_location> const &locs,
 			get_adjacent_tiles(*it, adj);
 			for(size_t i = 0; i != 6; ++i) {
 				map_location const &loc = adj[i];
-				if(map.on_board(loc) && !res.count(loc) && !filtered_out.count(loc)) {
-					if(!pred || (*pred)(loc)) {
-						must_visit.insert(loc);
-					} else {
-						filtered_out.insert(loc);
+				if ( with_border ? map.on_board_with_border(loc) :
+				                   map.on_board(loc) ) {
+					if ( !res.count(loc) && !filtered_out.count(loc) ) {
+						if ( !pred || (*pred)(loc) )
+							must_visit.insert(loc);
+						else
+							filtered_out.insert(loc);
 					}
 				}
 			}

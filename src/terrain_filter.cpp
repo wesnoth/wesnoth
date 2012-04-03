@@ -321,7 +321,7 @@ bool terrain_filter::match(const map_location& loc) const
 	}
 	if(cfg_.has_child("filter_radius")) {
 		terrain_filter r_filter(cfg_.child("filter_radius"), *this);
-		get_tiles_radius(*resources::game_map, loc_vec, radius, hexes, &r_filter);
+		get_tiles_radius(*resources::game_map, loc_vec, radius, hexes, false, &r_filter);
 	} else {
 		get_tiles_radius(*resources::game_map, loc_vec, radius, hexes);
 	}
@@ -420,7 +420,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		const vconfig::child_list& adj_cfgs = cfg_.get_children("filter_adjacent_location");
 		for (unsigned i = 0; i < adj_cfgs.size(); ++i) {
 			std::set<map_location> adj_set;
-			/* GCC-3.3 doesn't like operator[] so use at which has the same result */
+			/* GCC-3.3 doesn't like operator[] so use at(), which has the same result */
 			terrain_filter(adj_cfgs.at(i), *this).get_locations(adj_set, with_border);
 			cache_.adjacent_matches->push_back(adj_set);
 			if(i >= max_loop_ && i+1 < adj_cfgs.size()) {
@@ -504,9 +504,9 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		std::copy(xy_set.begin(),xy_set.end(),std::inserter(xy_vector,xy_vector.end()));
 		if(cfg_.has_child("filter_radius")) {
 			terrain_filter r_filter(cfg_.child("filter_radius"), *this);
-			get_tiles_radius(*resources::game_map, xy_vector, radius, locs, &r_filter);
+			get_tiles_radius(*resources::game_map, xy_vector, radius, locs, with_border, &r_filter);
 		} else {
-			get_tiles_radius(*resources::game_map, xy_vector, radius, locs);
+			get_tiles_radius(*resources::game_map, xy_vector, radius, locs, with_border);
 		}
 	} else {
 		std::copy(xy_set.begin(),xy_set.end(),std::inserter(locs,locs.end()));
