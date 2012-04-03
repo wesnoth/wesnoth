@@ -218,8 +218,8 @@ static int cfun_ai_execute_attack(lua_State *L)
 		aggression = lua_tonumber(L, index+1);
 	}
 
-	if (!lua_isnoneornil(L, index)) {
-		attacker_weapon = lua_tointeger(L, index);
+	if (!lua_isnoneornil(L, index) &&  attacker_weapon != -1) {
+		attacker_weapon = lua_tointeger(L, index) - 1; // Done for consistency of the Lua style 
 	}
 
 	ai::attack_result_ptr attack_result = ai::actions::execute_attack_action(side,true,attacker,defender,attacker_weapon,aggression);
@@ -351,15 +351,19 @@ static int cfun_ai_get_avoid(lua_State *L)
 	for (int i = 0; it != locs.end(); ++it, ++i)
 	{
 		lua_pushinteger(L, i + 1); // Index for the map location
-		lua_createtable(L, 2, 0); // Table for a single map location
+		
+		push_map_location(L, *it);
+		
+		// Deprecated
+		//lua_createtable(L, 2, 0); // Table for a single map location
 
-		lua_pushstring(L, "x");
-		lua_pushinteger(L, it->x);
-		lua_settable(L, -3);
+		//lua_pushstring(L, "x");
+		//lua_pushinteger(L, it->x + 1);
+		//lua_settable(L, -3);
 
-		lua_pushstring(L, "y");
-		lua_pushinteger(L, it->y);
-		lua_settable(L, -3);
+		//lua_pushstring(L, "y");
+		//lua_pushinteger(L, it->y + 1);
+		//lua_settable(L, -3);
 
 		lua_settable(L, -3);
 	}
