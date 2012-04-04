@@ -95,7 +95,7 @@ void addon_info::write(config& cfg) const
 	cfg["size"] = this->size;
 	cfg["downloads"] = this->downloads;
 	cfg["uploads"] = this->uploads;
-	cfg["type"] = this->type;
+	cfg["type"] = get_addon_type_string(this->type);
 
 	foreach(const std::string& locale_id, this->locales) {
 		cfg.add_child("translation")["language"] = locale_id;
@@ -108,7 +108,7 @@ void addon_info::write_minimal(config& cfg) const
 {
 	cfg["version"] = this->version.str();
 	cfg["uploads"] = this->uploads;
-	cfg["type"] = this->type;
+	cfg["type"] = get_addon_type_string(this->type);
 }
 
 std::string addon_info::display_title() const
