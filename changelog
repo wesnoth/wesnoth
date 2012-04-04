@@ -184,6 +184,8 @@ Version 1.11.0-svn:
    * Support for [object]unit_type= and [object]unit_gender= has been
      removed, use [object][filter]type= respectively [object][filter]gender=
      instead
+   * Border hexes are included when using radius= in the SLF of [remove_shroud]
+     and [place_shroud] (they were already included for directly matched hexes).
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
