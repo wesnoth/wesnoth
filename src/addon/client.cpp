@@ -226,12 +226,6 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 
 	LOG_ADDONS << "generating version info for add-on '" << info.id << "'\n";
 
-	utils::string_map vars;
-
-	vars["uploads"] = str_cast(info.uploads);
-	vars["version"] = info.version.str();
-	vars["type"] = get_addon_type_string(info.type);
-
 	std::ostringstream info_contents;
 	config wml;
 
