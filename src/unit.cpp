@@ -156,7 +156,6 @@ unit::unit(const unit& o):
            overlays_(o.overlays_),
 
            role_(o.role_),
-           ai_special_(o.ai_special_),
            attacks_(o.attacks_),
            facing_(o.facing_),
 
@@ -236,7 +235,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	state_(STATE_STANDING),
 	overlays_(),
 	role_(cfg["role"]),
-	ai_special_(cfg["ai_special"]),
 	attacks_(),
 	facing_(map_location::NDIRECTIONS),
 	trait_names_(),
@@ -445,7 +443,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		}
 	}
 	if(cfg["ai_special"] == "guardian") {
-		set_state("guardian", true);
+		set_state(STATE_GUARDIAN, true);
 	}
 
 	// Remove animations from private cfg, they're not needed there now
@@ -597,7 +595,6 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	state_(STATE_STANDING),
 	overlays_(),
 	role_(),
-	ai_special_(),
 	attacks_(),
 	facing_(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS)),
 	trait_names_(),
@@ -1071,7 +1068,6 @@ void unit::end_turn()
 }
 void unit::new_scenario()
 {
-	ai_special_ = "";
 
 	// Set the goto-command to be going to no-where
 	goto_ = map_location();
@@ -1101,6 +1097,7 @@ void unit::new_scenario()
 	set_state(STATE_SLOWED, false);
 	set_state(STATE_POISONED, false);
 	set_state(STATE_PETRIFIED, false);
+	set_state(STATE_GUARDIAN, false);
 }
 
 void unit::heal(int amount)
@@ -1172,8 +1169,7 @@ std::map<std::string, unit::state_t> unit::get_known_boolean_state_names()
 	known_boolean_state_names_map.insert(std::make_pair("uncovered", STATE_UNCOVERED));
 	known_boolean_state_names_map.insert(std::make_pair("not_moved",STATE_NOT_MOVED));
 	known_boolean_state_names_map.insert(std::make_pair("unhealable",STATE_UNHEALABLE));
-	//not sure if "guardian" is a yes/no state.
-	//known_boolean_state_names_map.insert(std::make_pair("guardian",STATE_GUARDIAN));
+	known_boolean_state_names_map.insert(std::make_pair("guardian",STATE_GUARDIAN));
 	return known_boolean_state_names_map;
 }
 
@@ -1419,7 +1415,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	config::attribute_value cfg_ai_special = cfg["ai_special"];
-	if (!cfg_ai_special.blank() && cfg_ai_special.str() != ai_special_) {
+	if (!cfg_ai_special.blank() && ((cfg_ai_special.str() == "guardian" ? true : false)  != get_state(STATE_GUARDIAN))) {
 		return false;
 	}
 
@@ -1638,7 +1634,6 @@ void unit::write(config& cfg) const
 	cfg["variation"] = variation_;
 
 	cfg["role"] = role_;
-	cfg["ai_special"] = ai_special_;
 	cfg["flying"] = flying_;
 
 	config status_flags;

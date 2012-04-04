@@ -171,7 +171,7 @@ public:
 	bool get_state(const std::string& state) const;
 	void set_state(const std::string &state, bool value);
 	enum state_t { STATE_SLOWED = 0, STATE_POISONED, STATE_PETRIFIED,
-		STATE_UNCOVERED, STATE_NOT_MOVED, STATE_UNHEALABLE, STATE_UNKNOWN = -1 };
+		STATE_UNCOVERED, STATE_NOT_MOVED, STATE_UNHEALABLE, STATE_GUARDIAN, STATE_UNKNOWN = -1 };
 	void set_state(state_t state, bool value);
 	bool get_state(state_t state) const;
 	static state_t get_known_boolean_state_id(const std::string &state);
@@ -190,8 +190,6 @@ public:
 	void set_role(const std::string& role) { role_ = role; }
 	const std::string &get_role() const { return role_; }
 
-	void assign_ai_special(const std::string& s) { ai_special_ = s;}
-            std::string get_ai_special() const { return(ai_special_); }
 	const std::vector<attack_type>& attacks() const { return attacks_; }
 	std::vector<attack_type>& attacks() { return attacks_; }
 
@@ -436,7 +434,6 @@ private:
 	std::vector<std::string> overlays_;
 
 	std::string role_;
-	std::string ai_special_;
 	std::vector<attack_type> attacks_;
 	map_location::DIRECTION facing_;
 
