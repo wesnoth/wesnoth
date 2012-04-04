@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-22 15:00+0100\n"
-"PO-Revision-Date: 2012-02-19 14:08+0800\n"
+"PO-Revision-Date: 2012-04-04 18:51+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
 "translation-cn>\n"
@@ -35,7 +35,7 @@ msgstr "灰色深水"
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:30
 msgid "Medium Deep Water"
-msgstr "中等的深水"
+msgstr "中等深水"
 
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:40
@@ -3358,30 +3358,42 @@ msgid "Skip Animation"
 msgstr "略过动画"
 
 #: src/hotkeys.cpp:113
+#, fuzzy
+#| msgid "whiteboard^Planning Mode"
 msgid "Toggle Planning Mode"
-msgstr "开关计划模式"
+msgstr "计划模式"
 
 #: src/hotkeys.cpp:114
+#, fuzzy
+#| msgid "whiteboard^Execute All Actions"
 msgid "Execute Planned Action"
-msgstr "执行计划行动"
+msgstr "执行全部行动"
 
 #: src/hotkeys.cpp:115
+#, fuzzy
+#| msgid "whiteboard^Execute All Actions"
 msgid "Execute All Actions"
 msgstr "执行全部行动"
 
 #: src/hotkeys.cpp:116
 msgid "Delete Planned Action"
-msgstr "删除计划行动"
+msgstr ""
 
 #: src/hotkeys.cpp:117
+#, fuzzy
+#| msgid "whiteboard^Move Action Up"
 msgid "Move Action Up Queue"
-msgstr "将此行动在队列中前移"
+msgstr "将行动前移"
 
 #: src/hotkeys.cpp:118
+#, fuzzy
+#| msgid "whiteboard^Move Action Down"
 msgid "Move Action Down Queue"
-msgstr "将此行动在队列中后移"
+msgstr "将行动后移"
 
 #: src/hotkeys.cpp:119
+#, fuzzy
+#| msgid "whiteboard^Suppose Dead"
 msgid "Suppose Dead"
 msgstr "认为已死亡"
 
@@ -3827,3 +3839,9 @@ msgid ""
 msgstr ""
 "主键“$deprecated_key”已被重命名为“$key”，对“$deprecated_key”的支持将在版本 "
 "$removal_version 中移除。"
+
+#~ msgid "whiteboard^Execute Action"
+#~ msgstr "执行行动"
+
+#~ msgid "whiteboard^Delete Action"
+#~ msgstr "删除行动"
