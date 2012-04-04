@@ -235,7 +235,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 		"# of version information on installed add-ons. DO NOT EDIT!\n"
 		"#\n";
 
-	info.write(wml.add_child("info"));
+	info.write_minimal(wml.add_child("info"));
 	write(info_contents, wml);
 
 	config file;

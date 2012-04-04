@@ -96,6 +96,16 @@ struct addon_info
 	void write(config& cfg) const;
 
 	/**
+	 * Write only minimal WML used for state tracking (_info.cfg) files.
+	 *
+	 * This currently only includes the add-on type, upload count,
+	 * and version number.
+	 *
+	 * @param cfg Target WML config object.
+	 */
+	void write_minimal(config& cfg) const;
+
+	/**
 	 * Get a title or automatic title for display.
 	 *
 	 * If the real @a title is empty, the returned value is the @a id with

@@ -104,6 +104,13 @@ void addon_info::write(config& cfg) const
 	cfg["dependencies"] = utils::join(this->depends);
 }
 
+void addon_info::write_minimal(config& cfg) const
+{
+	cfg["version"] = this->version.str();
+	cfg["uploads"] = this->uploads;
+	cfg["type"] = this->type;
+}
+
 std::string addon_info::display_title() const
 {
 	if(this->title.empty()) {
