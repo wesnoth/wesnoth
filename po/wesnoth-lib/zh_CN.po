@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-03-31 10:45+0200\n"
-"PO-Revision-Date: 2012-02-19 14:08+0800\n"
+"PO-Revision-Date: 2012-04-04 18:51+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
 "translation-cn>\n"
@@ -35,7 +35,7 @@ msgstr "灰色深水"
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:30
 msgid "Medium Deep Water"
-msgstr "中等的深水"
+msgstr "中等深水"
 
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:40
@@ -3363,48 +3363,36 @@ msgstr "略过动画"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:114
-#, fuzzy
-#| msgid "Toggle Planning Mode"
 msgid "whiteboard^Planning Mode"
-msgstr "开关计划模式"
+msgstr "计划模式"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkeys.cpp:116
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute Action"
-msgstr "执行全部行动"
+msgstr "执行行动"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:118
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute All Actions"
 msgstr "执行全部行动"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:120
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "删除行动"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:122
-#, fuzzy
-#| msgid "Move Action Up Queue"
 msgid "whiteboard^Move Action Up"
-msgstr "将此行动在队列中前移"
+msgstr "将行动前移"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:124
-#, fuzzy
-#| msgid "Move Action Down Queue"
 msgid "whiteboard^Move Action Down"
-msgstr "将此行动在队列中后移"
+msgstr "将行动后移"
 
 #. TRANSLATORS: whiteboard menu entry: plan as if unit was dead
 #: src/hotkeys.cpp:126
-#, fuzzy
-#| msgid "Suppose Dead"
 msgid "whiteboard^Suppose Dead"
 msgstr "认为已死亡"
 
@@ -3850,9 +3838,3 @@ msgid ""
 msgstr ""
 "主键“$deprecated_key”已被重命名为“$key”，对“$deprecated_key”的支持将在版本 "
 "$removal_version 中移除。"
-
-#~ msgid "Execute Planned Action"
-#~ msgstr "执行计划行动"
-
-#~ msgid "Delete Planned Action"
-#~ msgstr "删除计划行动"
