@@ -342,7 +342,7 @@ static int cfun_ai_get_avoid(lua_State *L)
 {
 	std::set<map_location> locs;
 	terrain_filter avoid = get_readonly_context(L).get_avoid();
-	avoid.get_locations(locs, true); // is it true here?
+	avoid.get_locations(locs);
 
 	int sz = locs.size();
 	lua_createtable(L, sz, 0); // create a table that we'll use as an array
