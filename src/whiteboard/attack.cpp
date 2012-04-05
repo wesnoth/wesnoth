@@ -110,7 +110,9 @@ void attack::invalidate()
 void attack::execute(bool& success, bool& complete)
 {
 	if (!valid_) {
-		complete = false;
+		success = false;
+		//Setting complete to true signifies to side_actions to delete the planned action: nothing more to do with it.
+		complete = true;
 		return;
 	}
 
@@ -122,7 +124,8 @@ void attack::execute(bool& success, bool& complete)
 		move::execute(m_success,m_complete);
 		if(!m_success) {
 			//Move failed for some reason, so don't attack.
-			complete = false;
+			success = false;
+			complete = true;
 			return;
 		}
 	}

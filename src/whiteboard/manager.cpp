@@ -950,9 +950,9 @@ bool manager::execute_all_actions()
 
 	while (sa->turn_begin(0) != sa->turn_end(0))
 	{
-		bool action_completed;
+		bool action_successful;
 		try {
-			action_completed = sa->execute(sa->begin());
+			action_successful = sa->execute(sa->begin());
 		} catch (end_level_exception&) { //satisfy the gods of WML
 			executing_all_actions_ = false;
 			throw;
@@ -968,7 +968,7 @@ bool manager::execute_all_actions()
 			return false;
 		}
 		// Interrupt on incomplete action
-		if (!action_completed)
+		if (!action_successful)
 		{
 			executing_all_actions_ = false;
 			return false;
