@@ -568,6 +568,13 @@ protected:
 	virtual void pre_draw() {}
 
 	/**
+	 * Called at the very end of each draw() call.
+	 * Derived classes can use this to add extra actions after redrawing
+	 * invalidated hexes takes place. No action here by default.
+	 */
+	virtual void post_draw() {}
+
+	/**
 	 * Get the clipping rectangle for drawing.
 	 * Virtual since the editor might use a slightly different approach.
 	 */

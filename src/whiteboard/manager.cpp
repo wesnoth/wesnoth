@@ -304,16 +304,8 @@ void manager::on_finish_side_turn(int side)
 	LOG_WB << "on_finish_side_turn()\n";
 }
 
-void manager::pre_delete_action(action_ptr action)
+void manager::pre_delete_action(action_ptr)
 {
-	//If we're deleting the last planned move of a unit, reset it to normal animation
-	if (action->is_valid()
-			&& action->get_unit()
-			&& boost::dynamic_pointer_cast<move>(action)
-			&& viewer_actions()->count_actions_of(action->get_unit()) == 1)
-	{
-		action->get_unit()->set_standing(true);
-	}
 }
 
 void manager::post_delete_action(action_ptr action)
@@ -455,6 +447,60 @@ static void draw_numbers(map_location const& hex, side_actions::numbers_t number
 				number_text, font_size, color, x_in_hex, y_in_hex);
 		x_offset += x_offset_base;
 		y_offset += y_offset_base;
+	}
+}
+
+
+namespace
+{
+	//Helper struct that finds all units teams whose planned actions are currently visible
+	//Only used by manager::pre_draw() and post_draw()
+	struct move_owners_finder
+		: private enable_visit_all<move_owners_finder>, public visitor
+	{
+		friend class enable_visit_all<move_owners_finder>;
+
+	public:
+		move_owners_finder(){
+			move_owners_.clear();
+			//Thanks to the default pre_visit_team, will only visit visible side_actions
+			visit_all_actions();
+		}
+
+		std::set<unit*> get_move_owners() {
+			return move_owners_;
+		}
+
+		using enable_visit_all<move_owners_finder>::visit_all;
+
+	private:
+		virtual void visit(move_ptr move) {
+			move_owners_.insert(move->get_unit());
+		}
+		virtual void visit(attack_ptr){}
+		virtual void visit(recruit_ptr){}
+		virtual void visit(recall_ptr){}
+		virtual void visit(suppose_dead_ptr){}
+
+		std::set<unit*> move_owners_;
+	};
+}
+
+void manager::pre_draw()
+{
+	std::set<unit*> move_owners = move_owners_finder().get_move_owners();
+	foreach(unit* unit, move_owners)
+	{
+		ghost_owner_unit(unit);
+	}
+}
+
+void manager::post_draw()
+{
+	std::set<unit*> move_owners = move_owners_finder().get_move_owners();
+	foreach(unit* unit, move_owners)
+	{
+		unghost_owner_unit(unit);
 	}
 }
 
@@ -729,9 +775,6 @@ void manager::save_temp_move()
 		}
 		erase_temp_move();
 
-		//@todo rework this once I combine mapbuilder and verifier
-		ghost_owner_unit(u);
-
 		LOG_WB << *viewer_actions() << "\n";
 		print_help_once();
 	}
@@ -751,13 +794,10 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
 		map_location source_hex;
-		bool attack_move;
 
 		if (route_ && !route_->steps.empty())
 		{
 			//attack-move
-			attack_move = true;
-
 			assert(move_arrows_.size() == 1);
 			assert(fake_units_.size() == 1);
 			move_arrow = move_arrows_.front();
@@ -771,8 +811,6 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 		else
 		{
 			//simple attack
-			attack_move = false;
-
 			move_arrow.reset(new arrow);
 			source_hex = attacker_loc;
 			route_.reset(new pathfind::marked_route);
@@ -782,11 +820,6 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 
 		unit* attacking_unit = future_visible_unit(source_hex);
 		assert(attacking_unit);
-
-		if (attack_move) {
-			//@todo rework this once I combine mapbuilder and verifier
-			ghost_owner_unit(attacking_unit);
-		}
 
 		on_save_action(attacking_unit);
 

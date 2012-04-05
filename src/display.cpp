@@ -2151,6 +2151,7 @@ void display::draw(bool update,bool force) {
 		//SDL_Delay(2*simulate_delay + rand() % 20);
 	}
 	draw_wrap(update, force);
+	post_draw();
 }
 
 map_labels& display::labels()

@@ -140,8 +140,13 @@ public:
 protected:
 	/**
 	 * game_display pre_draw does specific things related e.g. to unit rendering
+	 * and calls the whiteboard pre-draw method.
 	 */
 	void pre_draw();
+	/**
+	 * Calls the whiteboard's post-draw method.
+	 */
+	void post_draw();
 
 	void draw_invalidated();
 
