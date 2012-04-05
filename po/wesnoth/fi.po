@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-22 15:00+0100\n"
-"PO-Revision-Date: 2012-02-21 04:50+0200\n"
+"PO-Revision-Date: 2012-04-04 14:02+0300\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -5166,12 +5166,16 @@ msgid "prompt^Command:"
 msgstr "Komento:"
 
 #: src/mouse_events.cpp:703
+#, fuzzy
+#| msgid ""
+#| "You cannot move your leader away from the keep with some planned recruits "
+#| "or recalls left."
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits "
 "left."
 msgstr ""
-"Johtaja on pidettävä linnakkeessa niin kauan, kuin suunniteltuja värväyksiä "
-"on jäljellä."
+"Niin kauan kun suunniteltuja värväyksiä tai kutsumisia on tekemättä, "
+"johtajaa ei voi siirtää pois linnakkeesta."
 
 #: src/mouse_events.cpp:834 src/mouse_events.cpp:914
 msgid "Attack Enemy"
@@ -6294,7 +6298,7 @@ msgstr "Odottamaton sulkeva tagi"
 #: src/serialization/parser.cpp:208
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
 msgstr ""
-"Löytynyt virheellinen sulkeva tagi $tag2 tagille $tag (avattu paikassa $pos)"
+"Löytynyt virheellinen sulkeva tagi $tag2 tagille $tag1 (avattu paikassa $pos)"
 
 #: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
 msgid "Empty variable name"
@@ -6562,7 +6566,6 @@ msgstr "Piilota pelaajan $player suunnitelmat"
 msgid "Whiteboard Options"
 msgstr "Valkotaulun asetukset"
 
-#~| msgid "Romanian Translation"
 #~ msgid "Ukrainian Translation"
 #~ msgstr "Ukrainankielen käännös"
 
