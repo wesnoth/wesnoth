@@ -65,7 +65,7 @@ namespace wb {
 			virtual map_location get_numbering_hex() const { return loc_; }
 
 			virtual void set_valid(bool valid);
-			virtual bool is_valid() { return valid_; }
+			virtual bool is_valid() const { return valid_; }
 
 			virtual config to_config() const;
 	//	}	End Inherits from action

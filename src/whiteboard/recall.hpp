@@ -66,7 +66,7 @@ public:
 	 * display (and avoid any change to the game state) accordingly
 	 */
 	virtual void set_valid(bool valid) { valid_ = valid; }
-	virtual bool is_valid() { return valid_; }
+	virtual bool is_valid() const { return valid_; }
 
 	virtual config to_config() const;
 

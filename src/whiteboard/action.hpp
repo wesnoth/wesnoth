@@ -81,7 +81,7 @@ public:
 	 * display (and avoid any change to the game state) accordingly
 	 */
 	virtual void set_valid(bool valid) = 0;
-	virtual bool is_valid() = 0;
+	virtual bool is_valid() const = 0;
 
 	/** Constructs and returns a config object representing this object. */
 	virtual config to_config() const;
