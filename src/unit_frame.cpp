@@ -706,16 +706,16 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 
 			const SDL_Rect r = create_rect(my_x, my_y, w, h);
 			// check if our underlying hexes are invalidated
-			// if we need to update ourselve because we changed, invalidate our hexes
+			// if we need to update ourselves because we changed, invalidate our hexes
 			// and return whether or not our hexs was invalidated
-			// invalidate ouself to be called at redraw time
+			// invalidate ourself to be called at redraw time
 			result.insert(src);
 			display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
 			result.insert(underlying_hex.begin(),underlying_hex.end());
 		} else {
 			// we have no "redraw surface" but we still need to invalidate our own hex
 			// in case we have a halo and/or sound that needs a redraw
-			// invalidate ouself to be called at redraw time
+			// invalidate ourself to be called at redraw time
 			result.insert(src);
 			result.insert(dst);
 		}
@@ -776,7 +776,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.halo_y = current_val.halo_y?current_val.halo_y:animation_val.halo_y;
 	result.halo_y += engine_val.halo_y;
 
-        result.halo_mod = current_val.halo_mod +animation_val.halo_mod;
+	result.halo_mod = current_val.halo_mod +animation_val.halo_mod;
 	result.halo_mod += engine_val.halo_mod;
 
 	assert(engine_val.duration == 0);
