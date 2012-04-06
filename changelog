@@ -216,6 +216,7 @@ Version 1.11.0-svn:
    * Added: Image manipulation unit tests.
    * Changed: Rewrote the surface blending algorithm, and improving its speed
      using NEON intrinsics on processors supporting NEON (the Pandora).
+   * Fixed bug #19503: "maximum auto saves" setting now works correctly.
 
 Version 1.10.0:
  * Campaigns:
