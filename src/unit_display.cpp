@@ -183,7 +183,7 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 
 		if(!invisible) {
 			if (!disp->tile_fully_on_screen(path[i]) || !disp->tile_fully_on_screen(path[i+1])) {
-				// prevent the unit from dissappearing if we scroll here with i == 0
+				// prevent the unit from disappearing if we scroll here with i == 0
 				temp_unit.set_location(path[i]);
 				disp->invalidate(temp_unit.get_location());
 				// scroll in as much of the remaining path as possible
