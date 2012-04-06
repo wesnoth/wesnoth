@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-21 01:34+0100\n"
-"PO-Revision-Date: 2012-02-22 20:42-0500\n"
+"PO-Revision-Date: 2012-03-29 21:21-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -71,13 +71,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
-msgstr "hælaþ +4"
+msgstr "hælþ +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
-msgstr "hælaþ +4"
+msgstr "hælþ +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
@@ -96,13 +96,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
-msgstr "hælaþ +8"
+msgstr "hælþ +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
 msgid "female^heals +8"
-msgstr "hælaþ +8"
+msgstr "hælþ +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
@@ -967,8 +967,9 @@ msgstr ""
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:143
+#, fuzzy
 msgid "About the Game"
-msgstr ""
+msgstr "Ymbe þæt Gamen"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:144
@@ -1442,7 +1443,7 @@ msgstr "Morgen"
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:274 data/core/macros/schedules.cfg:26
 msgid "Afternoon"
-msgstr "Middæg"
+msgstr "Ofernon"
 
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
@@ -2288,7 +2289,7 @@ msgstr ""
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:669
 msgid "Illuminated Cave"
-msgstr "Geleohted Scræf"
+msgstr "Gebirht Scræf"
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:672
@@ -2392,8 +2393,9 @@ msgstr ""
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:739
+#, fuzzy
 msgid "River Ford"
-msgstr ""
+msgstr "Ea Ford"
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:742
@@ -2760,7 +2762,7 @@ msgstr "stedefæst"
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:99
 msgid "female^steadfast"
-msgstr "stedefæstu"
+msgstr "stedefæst"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:101
@@ -2820,12 +2822,12 @@ msgstr ""
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
 msgid "illuminates"
-msgstr "leohtaþ"
+msgstr "gebirhteþ"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:364
 msgid "female^illuminates"
-msgstr "leohtaþ"
+msgstr "gebirhteþ"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:368
@@ -2859,12 +2861,12 @@ msgstr ""
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:417 data/core/macros/abilities.cfg:419
 msgid "ambush"
-msgstr "sætung"
+msgstr "sæt"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:418 data/core/macros/abilities.cfg:420
 msgid "female^ambush"
-msgstr "sætung"
+msgstr "sæt"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:424 data/core/macros/abilities.cfg:428
@@ -2880,8 +2882,9 @@ msgstr ""
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:444
 #: data/core/macros/abilities.cfg:449
+#, fuzzy
 msgid "nightstalk"
-msgstr ""
+msgstr "nihtstealcung"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:448 data/core/macros/abilities.cfg:454
@@ -2896,8 +2899,9 @@ msgstr ""
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:450
+#, fuzzy
 msgid "female^nightstalk"
-msgstr ""
+msgstr "nihtstealcung"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:469 data/core/macros/abilities.cfg:475
@@ -3006,7 +3010,7 @@ msgstr ""
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:632
 msgid "slows"
-msgstr "aslæƿaþ"
+msgstr "aslæƿeþ"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:634
@@ -3106,7 +3110,7 @@ msgstr ""
 #. [time]: id=indoors
 #: data/core/macros/schedules.cfg:70
 msgid "Indoors"
-msgstr ""
+msgstr "Inne"
 
 #. [time]: id=deep_underground
 #: data/core/macros/schedules.cfg:90
@@ -3177,32 +3181,32 @@ msgstr "Middæg"
 #. [time]: id=afternoon_hour1
 #: data/core/macros/schedules.cfg:302
 msgid "Afternoon — First Hour"
-msgstr "Middæg — Forme Tid"
+msgstr "Ofernon — Forme Tid"
 
 #. [time]: id=afternoon_hour2
 #: data/core/macros/schedules.cfg:311
 msgid "Afternoon — Second Hour"
-msgstr "Middæg — Oðeru Tid"
+msgstr "Ofernon — Oðeru Tid"
 
 #. [time]: id=afternoon_hour3
 #: data/core/macros/schedules.cfg:320
 msgid "Afternoon — Third Hour"
-msgstr "Middæg — Þridde Tid"
+msgstr "Ofernon — Þridde Tid"
 
 #. [time]: id=afternoon_hour4
 #: data/core/macros/schedules.cfg:329
 msgid "Afternoon — Fourth Hour"
-msgstr "Middæg — Feorðe Tid"
+msgstr "Ofernon — Feorðe Tid"
 
 #. [time]: id=afternoon_hour5
 #: data/core/macros/schedules.cfg:338
 msgid "Afternoon — Fifth Hour"
-msgstr "Middæg — Fifte Tid"
+msgstr "Ofernon — Fifte Tid"
 
 #. [time]: id=afternoon_hour6
 #: data/core/macros/schedules.cfg:347
 msgid "Afternoon — Sixth Hour"
-msgstr "Middæg — Sixte Tid"
+msgstr "Ofernon — Sixte Tid"
 
 #. [time]: id=first_watch_hour1
 #: data/core/macros/schedules.cfg:369
@@ -3456,7 +3460,7 @@ msgstr "strang"
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:67
 msgid "female^strong"
-msgstr "strangu"
+msgstr "strang"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:84
@@ -3476,7 +3480,7 @@ msgstr "sƿift"
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:99
 msgid "female^quick"
-msgstr "sƿiftu"
+msgstr "sƿift"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:115
@@ -3536,7 +3540,7 @@ msgstr "ƿilde"
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
 msgid "female^feral"
-msgstr "ƿildeu"
+msgstr "ƿildu"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
@@ -3551,7 +3555,7 @@ msgstr "ƿac"
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:209
 msgid "female^weak"
-msgstr "ƿacu"
+msgstr "ƿac"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:226
@@ -3561,7 +3565,7 @@ msgstr "slaƿ"
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:227
 msgid "female^slow"
-msgstr "slaƿu"
+msgstr "slaƿ"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:243
@@ -3925,17 +3929,17 @@ msgstr ""
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:185
 msgid "race^Saurian"
-msgstr ""
+msgstr "Aðexmann"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:186
 msgid "race+female^Saurian"
-msgstr ""
+msgstr "Aðexmann"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:187
 msgid "race^Saurians"
-msgstr ""
+msgstr "Aðexmenn"
 
 #. [race]: id=mechanical
 #: data/core/units.cfg:197
@@ -3956,7 +3960,6 @@ msgid ""
 "own, but some do so as a result of magical enchantment."
 msgstr ""
 
-# Mereƿer and Mereƿif due to the attestation of the latter... perhaps?
 #. [race]: id=merman
 #: data/core/units.cfg:208
 msgid "race^Merman"
@@ -4349,7 +4352,7 @@ msgstr ""
 
 #: src/help.cpp:1407
 msgid "Race: "
-msgstr ""
+msgstr "Cynn: "
 
 #: src/help.cpp:1414
 msgid "Abilities: "
