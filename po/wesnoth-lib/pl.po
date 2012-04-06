@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-01-21 01:45+0100\n"
-"PO-Revision-Date: 2012-01-21 10:40+0100\n"
+"POT-Creation-Date: 2012-01-22 15:00+0100\n"
+"PO-Revision-Date: 2012-04-04 19:46+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "Language: \n"
@@ -3375,30 +3375,40 @@ msgid "Skip Animation"
 msgstr "Pomiń animacje"
 
 #: src/hotkeys.cpp:113
+#, fuzzy
+#| msgid "whiteboard^Planning Mode"
 msgid "Toggle Planning Mode"
-msgstr "Przełącz tryb planowania"
+msgstr "Tryb planowania"
 
 #: src/hotkeys.cpp:114
 msgid "Execute Planned Action"
 msgstr "Wykonaj zaplanowanie działanie"
 
 #: src/hotkeys.cpp:115
+#, fuzzy
+#| msgid "Execute Planned Action"
 msgid "Execute All Actions"
-msgstr "Wykonaj wszystkie działania"
+msgstr "Wykonaj zaplanowanie działanie"
 
 #: src/hotkeys.cpp:116
 msgid "Delete Planned Action"
 msgstr "Usuń zaplanowane działanie"
 
 #: src/hotkeys.cpp:117
+#, fuzzy
+#| msgid "whiteboard^Move Action Up"
 msgid "Move Action Up Queue"
-msgstr "Przesuń działanie w górę kolejki"
+msgstr "Przesuń działanie w górę"
 
 #: src/hotkeys.cpp:118
+#, fuzzy
+#| msgid "whiteboard^Move Action Down"
 msgid "Move Action Down Queue"
-msgstr "Przesuń działanie w dół kolejki"
+msgstr "Przesuń działanie w dół"
 
 #: src/hotkeys.cpp:119
+#, fuzzy
+#| msgid "whiteboard^Suppose Dead"
 msgid "Suppose Dead"
 msgstr "Uznaj za martwą"
 
@@ -3851,6 +3861,17 @@ msgid ""
 msgstr ""
 "Nazwa klucza „$deprecated_key” została zmieniona na „$key”. Obsługa klucza "
 "„$deprecated_key” zostanie usunięta w wersji $removal_version."
+
+#~| msgid "Execute All Actions"
+#~ msgid "whiteboard^Execute Action"
+#~ msgstr "Wykonaj działanie"
+
+#~| msgid "Execute All Actions"
+#~ msgid "whiteboard^Execute All Actions"
+#~ msgstr "Wykonaj wszystkie działania"
+
+#~ msgid "whiteboard^Delete Action"
+#~ msgstr "Usuń działanie"
 
 #~ msgid "Resize map"
 #~ msgstr "Zmień rozmiar mapy"
