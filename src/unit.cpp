@@ -1828,7 +1828,7 @@ void unit::redraw_unit()
 	game_display &disp = *game_display::get_singleton();
 	const gamemap &map = disp.get_map();
 	
-	if ( hidden_ || !is_visible_to_team(disp.get_teams()[disp.viewing_team()],false,map) )
+	if ( hidden_ || !is_visible_to_team(disp.get_teams()[disp.viewing_team()],disp.show_everything(),map) )
 	{
 		clear_haloes();
 		if(anim_) {
