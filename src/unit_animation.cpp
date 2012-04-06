@@ -1012,11 +1012,10 @@ void unit_animator::add_animation(unit* animated_unit
 	tmp.animation = animated_unit->choose_animation(*disp,src,event,dst,value,hit_type,attack,second_attack,value2);
 	if(!tmp.animation) return;
 
-
-
 	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
 	animated_units_.push_back(tmp);
 }
+
 void unit_animator::add_animation(unit* animated_unit
 		, const unit_animation* anim
 		, const map_location &src
@@ -1034,11 +1033,10 @@ void unit_animator::add_animation(unit* animated_unit
 	tmp.animation = anim;
 	if(!tmp.animation) return;
 
-
-
 	start_time_ = std::max<int>(start_time_,tmp.animation->get_begin_time());
 	animated_units_.push_back(tmp);
 }
+
 void unit_animator::replace_anim_if_invalid(unit* animated_unit
 		, const std::string& event
 		, const map_location &src
@@ -1069,6 +1067,7 @@ void unit_animator::replace_anim_if_invalid(unit* animated_unit
 		add_animation(animated_unit,event,src,dst,value,with_bars,text,text_color,hit_type,attack,second_attack,value2);
 	}
 }
+
 void unit_animator::start_animations()
 {
 	int begin_time = INT_MAX;
@@ -1102,6 +1101,7 @@ bool unit_animator::would_end() const
 	}
 	return finished;
 }
+
 void unit_animator::wait_until(int animation_time) const
 {
 	display*disp = display::get_singleton();
@@ -1120,6 +1120,7 @@ void unit_animator::wait_until(int animation_time) const
 	disp->delay(std::max<int>(0,end_tick - SDL_GetTicks() +5));
 	new_animation_frame();
 }
+
 void unit_animator::wait_for_end() const
 {
 	if (game_config::no_delay) return;
@@ -1134,6 +1135,7 @@ void unit_animator::wait_for_end() const
 		}
 	}
 }
+
 int unit_animator::get_animation_time() const{
 	return animated_units_[0].my_unit->get_animation()->get_animation_time() ;
 }
@@ -1144,33 +1146,36 @@ int unit_animator::get_animation_time_potential() const{
 
 int unit_animator::get_end_time() const
 {
-        int end_time = INT_MIN;
-        for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
-	       if(anim->my_unit->get_animation()) {
-                end_time = std::max<int>(end_time,anim->my_unit->get_animation()->get_end_time());
-	       }
-        }
-        return end_time;
+	int end_time = INT_MIN;
+	for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
+		if(anim->my_unit->get_animation()) {
+			end_time = std::max<int>(end_time,anim->my_unit->get_animation()->get_end_time());
+		}
+	}
+	return end_time;
 }
+
 void unit_animator::pause_animation()
 {
-        for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
-	       if(anim->my_unit->get_animation()) {
-                anim->my_unit->get_animation()->pause_animation();
-	       }
-        }
+	for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
+		if(anim->my_unit->get_animation()) {
+			anim->my_unit->get_animation()->pause_animation();
+		}
+	}
 }
+
 void unit_animator::restart_animation()
 {
-        for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
-	       if(anim->my_unit->get_animation()) {
-                anim->my_unit->get_animation()->restart_animation();
-	       }
-        }
+	for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
+		if(anim->my_unit->get_animation()) {
+			anim->my_unit->get_animation()->restart_animation();
+		}
+	}
 }
+
 void unit_animator::set_all_standing()
 {
-        for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
+	for(std::vector<anim_elem>::iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
 		anim->my_unit->set_standing();
-        }
+	}
 }
