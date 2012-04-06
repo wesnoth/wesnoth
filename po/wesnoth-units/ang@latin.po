@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-12-15 10:39+0100\n"
-"PO-Revision-Date: 2012-02-17 15:49-0500\n"
+"PO-Revision-Date: 2012-03-29 17:42-0500\n"
 "Last-Translator: Eirik Westcoat <eirikvw@aim.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n==2 ? 1 : 2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
@@ -351,10 +351,13 @@ msgstr "Bat"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:18
+#, fuzzy
 msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
+"Forþascofen gereðrum oþþe lytlum seglum, man brycþ batas scorta fyrla and in "
+"undeopum to faranne hƿær miclu scipu ne magon liðan."
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
@@ -3040,10 +3043,13 @@ msgstr "Great Ræt"
 
 #. [unit_type]: id=Giant Rat, race=monster
 #: data/core/units/monsters/Giant_Rat.cfg:18
+#, fuzzy
 msgid ""
 "Given an adequate supply of food, some rats can grow to truly impressive "
 "sizes. They can also grow quite aggressive."
 msgstr ""
+"Mid genoge fodre, sume rætas magon ƿeaxan to soþe sƿiþlice micelnesse. Hie "
+"magon eac ƿeorðan sƿiðe andƿraþe."
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
@@ -3099,14 +3105,17 @@ msgstr ""
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
+#, fuzzy
 msgid "Sea Serpent"
-msgstr ""
+msgstr "Sædraca"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:22
+#, fuzzy
 msgid ""
 "Sea Serpents are gigantic monsters, capable of capsizing boats by themselves."
 msgstr ""
+"Sædracan sind ungefoglice fiflas þe magon ahƿilfan batas mid him sylfum."
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
@@ -3147,8 +3156,9 @@ msgstr ""
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
+#, fuzzy
 msgid "Water Serpent"
-msgstr ""
+msgstr "Ƿæterdraca"
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:39
@@ -3170,10 +3180,13 @@ msgstr "Ƿulf"
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:18
 #: data/core/units/monsters/Wolf_Great.cfg:18
+#, fuzzy
 msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a wolf pack can kill even the strongest man in minutes."
 msgstr ""
+"Ƿulfas sind andƿraþe deoras þe huntiað on floccum. Þēah unmihtig ana, "
+"ƿulfflocc mæg cƿellan hraðe efen þone mihtigostan mann."
 
 #. [unit_type]: id=Direwolf, race=wolf
 #: data/core/units/monsters/Wolf_Dire.cfg:4
