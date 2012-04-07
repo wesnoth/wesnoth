@@ -1923,12 +1923,16 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 	bool has_leader = resources::units->find_leader(side).valid();
 	bool grants_timebonus = false;
 
+	int old_owner_side = 0;
 	// We strip the village off all other sides, unless it is held by an ally
 	// and we don't have a leader (and thus can't occupy it)
 	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
 		int i_side = i - teams.begin() + 1;
 		if (!t || has_leader || t->is_enemy(i_side)) {
-			i->lose_village(loc);
+			if(i->owns_village(loc)) {
+				old_owner_side = i_side;
+				i->lose_village(loc);
+			}
 			if (side != i_side && action_timebonus) {
 				grants_timebonus = true;
 			}
@@ -1946,7 +1950,7 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 		if (resources::screen != NULL) {
 			resources::screen->invalidate(loc);
 		}
-		return t->get_village(loc, village_owner(loc, *resources::teams) + 1);
+		return t->get_village(loc, old_owner_side);
 	}
 
 	return false;
