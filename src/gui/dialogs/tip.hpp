@@ -23,7 +23,7 @@ class t_string;
 
 namespace gui2 {
 
-class tpoint;
+struct tpoint;
 
 namespace tip {
 
