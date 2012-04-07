@@ -192,7 +192,7 @@ inline PangoAlignment tformula<PangoAlignment>::execute(
 
 template<class T>
 inline T tformula<T>::execute(
-		const game_logic::map_formula_callable& variables) const
+		const game_logic::map_formula_callable& /*variables*/) const
 {
 	// Every type needs its own execute function avoid instantiation of the
 	// default execute.
