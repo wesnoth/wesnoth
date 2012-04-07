@@ -219,6 +219,7 @@ Version 1.11.0-svn:
    * Changed: Rewrote the surface blending algorithm, and improving its speed
      using NEON intrinsics on processors supporting NEON (the Pandora).
    * Fixed bug #19503: "maximum auto saves" setting now works correctly.
+   * Fixed: A preprocessor bug looking beyond the end of a buffer.
 
 Version 1.10.0:
  * Campaigns:

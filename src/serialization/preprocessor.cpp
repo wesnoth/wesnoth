@@ -311,6 +311,9 @@ int preprocessor_streambuf::underflow()
 	}
 	// Update the internal state and data pointers
 	out_buffer_ = buffer_.str();
+	if(out_buffer_.empty()) {
+		return EOF;
+	}
 	char *begin = &*out_buffer_.begin();
 	unsigned bs = out_buffer_.size();
 	setg(begin, begin + sz, begin + bs);
