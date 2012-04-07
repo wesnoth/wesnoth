@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-22 15:00+0100\n"
-"PO-Revision-Date: 2012-04-04 14:11+0300\n"
+"PO-Revision-Date: 2012-04-07 02:20+0300\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -504,8 +504,8 @@ msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
-"Parveilijat, jotka ovat lähteneet <ref>dst='aerie' text='pesästä'</ref> "
-"löytääkseen uuden."
+"<ref>dst='swarmlings' text='Parveilijat'</ref>, jotka ovat lähteneet "
+"<ref>dst='aerie' text='pesästä'</ref> löytääkseen uuden."
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
@@ -1839,11 +1839,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Joillakin yksiköillä on <ref>dst='abilities_section' text='erikoistaitoja'</"
-"ref>, jotka vaikuttavat niiden taistelussa tekemään vahinkoon. Yksi näistä "
-"on <ref>dst='weaponspecial_charge' text='rynnäkkö'</ref>, joka "
-"kaksinkertaistaa sekä hyökkääjän että puolustajan tekemän vahingon, kun "
-"rynnäköivä yksikkö hyökkää."
+"Joillakin yksiköillä on <ref>dst='..abilities_section' "
+"text='erikoistaitoja'</ref>, jotka vaikuttavat niiden taistelussa tekemään "
+"vahinkoon. Yksi näistä on <ref>dst='weaponspecial_charge' text='rynnäkkö'</"
+"ref>, joka kaksinkertaistaa sekä hyökkääjän että puolustajan tekemän "
+"vahingon, kun rynnäköivä yksikkö hyökkää."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:251
@@ -2133,8 +2133,8 @@ msgstr ""
 "\n"
 "<italic>text='Hoivaavat yksiköt'</italic>: Yksiköt, joilla on erikoistaito "
 "<ref>dst='ability_heals +4' text='hoivaa'</ref>, voivat hoivata viereisiään "
-"ystävällisiä yksiköitä yleensä 4 tai 8 EP per vuoro, tai estää myrkyn "
-"vaikutuksen."
+"ystävällisiä yksiköitä yleensä 4 tai <ref>dst='ability_heals +8' text='8 "
+"EP'</ref> per vuoro, tai estää myrkyn vaikutuksen."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
@@ -3152,7 +3152,7 @@ msgstr ""
 "maanpinnalta, läpäisten pelottavan pimeyden. Valo antaa hyökkäysetua "
 "lainkuuliaisille yksiköille ja poistaa vastaavan edun kaoottisilta "
 "yksiköiltä. Muuten tämä maasto on täysin samanlainen kuin tavallinen "
-"luolamaasto."
+"<ref>dst='terrain_cave' text='luolamaasto'</ref>."
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:679
@@ -5993,7 +5993,7 @@ msgstr "Tulkintavirhe aputekstissä: "
 #~ "Komentoja voi antaa joko komentolinjan tai keskustelulinjan kautta. "
 #~ "Komentolinjalla komennon eteen tulee ':' (kuten esimerkissä). "
 #~ "Keskustelulinjalla komennon eteen tulee '/'. Muista avata keskustelulinja "
-#~ "ensin painamalla 'm'-näppäintä."
+#~ "ensin painamalla 'm'-näppäintä.\n"
 
 #, fuzzy
 #~| msgid "race^Human"
