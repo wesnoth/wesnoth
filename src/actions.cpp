@@ -256,9 +256,10 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 	bool animate = temp_cfg["animate"].to_bool();
 	temp_cfg.remove_attribute("animate");
 
-	std::vector<unit>::iterator recall_list_element = std::find_if(team_.recall_list().begin(), team_.recall_list().end(), boost::bind(&unit::matches_id, _1, id));
+	std::vector<unit> &recall_list = team_.recall_list();
+	std::vector<unit>::iterator recall_list_element = std::find_if(recall_list.begin(), recall_list.end(), boost::bind(&unit::matches_id, _1, id));
 
-	if(recall_list_element==team_.recall_list().end()) {
+	if ( recall_list_element == recall_list.end() ) {
 		//make a temporary unit
 		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, resources::state_of_game, vcfg));
 		map_location loc = find_location(temp_cfg, temp_unit.get());
@@ -266,16 +267,16 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 			if(add_to_recall_) {
 				//add to recall list
 				unit *new_unit = temp_unit.get();
-				team_.recall_list().push_back(*new_unit);
-				DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << (*new_unit).side() << "\n";
-				preferences::encountered_units().insert((*new_unit).type_id());
+				recall_list.push_back(*new_unit);
+				DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit->side() << "\n";
+				preferences::encountered_units().insert(new_unit->type_id());
 			}
 		} else {
 			unit *new_unit = temp_unit.get();
 			//add temporary unit to map
 			assert( resources::units->find(loc) == resources::units->end() );
 			resources::units->add(loc, *new_unit);
-			LOG_NG << "inserting unit for side " << (*new_unit).side() << "\n";
+			LOG_NG << "inserting unit for side " << new_unit->side() << "\n";
 			post_create(loc,*(resources::units->find(loc)),animate);
 		}
 	} else {
@@ -286,11 +287,10 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 			return;
 		} else {
 			resources::units->add(loc, *recall_list_element);
-			LOG_NG << "inserting unit from recall list for side " << (*recall_list_element).side()<< " with id="<< id << "\n";
+			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id << "\n";
 			post_create(loc,*(resources::units->find(loc)),animate);
 			//if id is not empty, delete units with this ID from recall list
-			std::vector<unit> &r = team_.recall_list();
-			r.erase(std::remove_if(r.begin(),r.end(),boost::bind(&unit::matches_id, _1, id)), r.end());
+			recall_list.erase(std::remove_if(recall_list.begin(),recall_list.end(),boost::bind(&unit::matches_id, _1, id)), recall_list.end());
 		}
 	}
 }
