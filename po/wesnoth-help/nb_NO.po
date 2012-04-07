@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
+"POT-Creation-Date: 2012-04-07 12:14+0200\n"
 "PO-Revision-Date: 2009-04-05 10:50+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -3122,7 +3122,18 @@ msgid "General commands"
 msgstr "Generelle kommandoer"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:795
+#. [topic]: id=mp_commands
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:794 data/core/help.cfg:834 data/core/help.cfg:866
+msgid ""
+"These commands can either be issued via the command line by prefixing them "
+"with ':' (as shown here) or via the chat by prefixing them with '/' (press "
+"'m' first to open the chat line).\n"
+"\n"
+msgstr ""
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:797
 #, fuzzy
 msgid ""
 "\n"
@@ -3133,7 +3144,7 @@ msgstr ""
 "Visk ut meldinger."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:799
+#: data/core/help.cfg:801
 #, fuzzy
 msgid ""
 "\n"
@@ -3147,7 +3158,7 @@ msgstr ""
 "Feilsøkingsmodus slåes av når du avslutter spillet."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:802
+#: data/core/help.cfg:804
 #, fuzzy
 msgid ""
 "\n"
@@ -3164,7 +3175,7 @@ msgstr ""
 "som skal kontrollere gies kontrollen til spiller '1'."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:805
+#: data/core/help.cfg:807
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3172,7 +3183,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:808
+#: data/core/help.cfg:810
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3180,7 +3191,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:811
+#: data/core/help.cfg:813
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3188,7 +3199,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:814
+#: data/core/help.cfg:816
 #, fuzzy
 msgid ""
 "\n"
@@ -3199,7 +3210,7 @@ msgstr ""
 "Åpne menyen for temvalg."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:817
+#: data/core/help.cfg:819
 #, fuzzy
 msgid ""
 "\n"
@@ -3210,7 +3221,7 @@ msgstr ""
 "Avslutt scenariet (uten meldingsboks)."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:820
+#: data/core/help.cfg:822
 #, fuzzy
 msgid ""
 "\n"
@@ -3221,7 +3232,7 @@ msgstr ""
 "Lagre spillet (uten meldingsboks)."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:821
+#: data/core/help.cfg:823
 #, fuzzy
 msgid ""
 "\n"
@@ -3231,21 +3242,12 @@ msgstr ""
 "Lagre og avslutt scenariet (uten meldingsboks)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:829
+#: data/core/help.cfg:831
 msgid "Multiplayer commands"
 msgstr "Gruppespillkommandoer"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:832
-msgid ""
-"These commands can either be issued via the command line by prefixing them "
-"with ':' (as shown here) or via the chat by prefixing them with '/' (press "
-"'m' first to open the chat line).\n"
-"\n"
-msgstr ""
-
-#. [topic]: id=mp_commands
-#: data/core/help.cfg:835
+#: data/core/help.cfg:837
 #, fuzzy
 msgid ""
 "\n"
@@ -3259,7 +3261,7 @@ msgstr ""
 "nytt."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:838
+#: data/core/help.cfg:840
 #, fuzzy
 msgid ""
 "\n"
@@ -3278,7 +3280,7 @@ msgstr ""
 "Eksempel: \"control 2 YbeRn00b\""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:841
+#: data/core/help.cfg:843
 #, fuzzy
 msgid ""
 "\n"
@@ -3292,7 +3294,7 @@ msgstr ""
 "hvis de ønsker."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:844
+#: data/core/help.cfg:846
 #, fuzzy
 msgid ""
 "\n"
@@ -3306,7 +3308,7 @@ msgstr ""
 "'/whisper [brukernavn] [melding]'"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:847
+#: data/core/help.cfg:849
 #, fuzzy
 msgid ""
 "\n"
@@ -3319,7 +3321,7 @@ msgstr ""
 "liste over alle brukere som er dempet."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:850
+#: data/core/help.cfg:852
 #, fuzzy
 msgid ""
 "\n"
@@ -3330,7 +3332,7 @@ msgstr ""
 "Slå demping av observatører av/på."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:853
+#: data/core/help.cfg:855
 #, fuzzy
 msgid ""
 "\n"
@@ -3343,7 +3345,7 @@ msgstr ""
 "nytt."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:854
+#: data/core/help.cfg:856
 #, fuzzy
 msgid ""
 "\n"
@@ -3355,13 +3357,13 @@ msgstr ""
 "liste over alle brukere som er dempet."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:861
+#: data/core/help.cfg:863
 #, fuzzy
 msgid "Debug mode commands"
 msgstr "Generelle kommandoer"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:865
+#: data/core/help.cfg:869
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3370,7 +3372,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:868
+#: data/core/help.cfg:872
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3378,7 +3380,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:871
+#: data/core/help.cfg:875
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3386,7 +3388,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:874
+#: data/core/help.cfg:878
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3394,7 +3396,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:877
+#: data/core/help.cfg:881
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3402,7 +3404,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:880
+#: data/core/help.cfg:884
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3410,7 +3412,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:883
+#: data/core/help.cfg:887
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3418,7 +3420,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:886
+#: data/core/help.cfg:890
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3426,7 +3428,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:889
+#: data/core/help.cfg:893
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3435,7 +3437,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:890
+#: data/core/help.cfg:894
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"

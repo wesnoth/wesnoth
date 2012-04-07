@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
+"POT-Creation-Date: 2012-04-07 12:14+0200\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -3369,7 +3369,22 @@ msgid "General commands"
 msgstr "Opšte naredbe"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:795
+#. [topic]: id=mp_commands
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:794 data/core/help.cfg:834 data/core/help.cfg:866
+msgid ""
+"These commands can either be issued via the command line by prefixing them "
+"with ':' (as shown here) or via the chat by prefixing them with '/' (press "
+"'m' first to open the chat line).\n"
+"\n"
+msgstr ""
+"Ove naredbe moguće je izdati ili kroz komandnu liniju uz prefiks ‘:’ (kao "
+"što je dato ovde) ili kroz ćaskanje uz prefiks ‘/’ (prvo pritisnite ‘m’ da "
+"otvorite liniju za ćaskanje).\n"
+"\n"
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:797
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3379,7 +3394,7 @@ msgstr ""
 "čisti poruke u ćaskanju.\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:799
+#: data/core/help.cfg:801
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3394,7 +3409,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:802
+#: data/core/help.cfg:804
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3413,7 +3428,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:805
+#: data/core/help.cfg:807
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -3424,7 +3439,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:808
+#: data/core/help.cfg:810
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3435,7 +3450,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:811
+#: data/core/help.cfg:813
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3446,7 +3461,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:814
+#: data/core/help.cfg:816
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3457,7 +3472,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:817
+#: data/core/help.cfg:819
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3468,7 +3483,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:820
+#: data/core/help.cfg:822
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3479,7 +3494,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:821
+#: data/core/help.cfg:823
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3488,25 +3503,12 @@ msgstr ""
 "napušta scenario uz upisivanje pozicije (bez pitanja)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:829
+#: data/core/help.cfg:831
 msgid "Multiplayer commands"
 msgstr "Višeigračke naredbe"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:832
-msgid ""
-"These commands can either be issued via the command line by prefixing them "
-"with ':' (as shown here) or via the chat by prefixing them with '/' (press "
-"'m' first to open the chat line).\n"
-"\n"
-msgstr ""
-"Ove naredbe moguće je izdati ili kroz komandnu liniju uz prefiks ‘:’ (kao "
-"što je dato ovde) ili kroz ćaskanje uz prefiks ‘/’ (prvo pritisnite ‘m’ da "
-"otvorite liniju za ćaskanje).\n"
-"\n"
-
-#. [topic]: id=mp_commands
-#: data/core/help.cfg:835
+#: data/core/help.cfg:837
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3521,7 +3523,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:838
+#: data/core/help.cfg:840
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3541,7 +3543,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:841
+#: data/core/help.cfg:843
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3556,7 +3558,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:844
+#: data/core/help.cfg:846
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3570,7 +3572,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:847
+#: data/core/help.cfg:849
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3583,7 +3585,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:850
+#: data/core/help.cfg:852
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3594,7 +3596,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:853
+#: data/core/help.cfg:855
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3607,7 +3609,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:854
+#: data/core/help.cfg:856
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3618,12 +3620,12 @@ msgstr ""
 "se spisak utišanih posmatrača."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:861
+#: data/core/help.cfg:863
 msgid "Debug mode commands"
 msgstr "Ispravljačke naredbe"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:865
+#: data/core/help.cfg:869
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3635,7 +3637,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:868
+#: data/core/help.cfg:872
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3646,7 +3648,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:871
+#: data/core/help.cfg:875
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3657,7 +3659,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:874
+#: data/core/help.cfg:878
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3668,7 +3670,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:877
+#: data/core/help.cfg:881
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3679,7 +3681,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:880
+#: data/core/help.cfg:884
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3690,7 +3692,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:883
+#: data/core/help.cfg:887
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3701,7 +3703,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:886
+#: data/core/help.cfg:890
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3712,7 +3714,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:889
+#: data/core/help.cfg:893
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3725,7 +3727,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:890
+#: data/core/help.cfg:894
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
