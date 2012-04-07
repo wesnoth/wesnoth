@@ -372,9 +372,9 @@ bool team::get_village(const map_location& loc, const int owner_side, const bool
 
 void team::lose_village(const map_location& loc)
 {
-	if(owns_village(loc)) {
-		villages_.erase(villages_.find(loc));
-	}
+	const std::set<map_location>::const_iterator vil = villages_.find(loc);
+	assert(vil != villages_.end());
+	villages_.erase(vil);
 }
 
 void team::set_recruits(const std::set<std::string>& recruits)
