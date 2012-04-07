@@ -11,17 +11,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-03-24 18:11+0100\n"
-"PO-Revision-Date: 2011-12-06 11:42+0200\n"
-"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
-"Language-Team: ZumZoom\n"
+"POT-Creation-Date: 2012-03-31 10:45+0200\n"
+"PO-Revision-Date: 2012-04-06 16:36+0400\n"
+"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.6.1\n"
+"X-Generator: Emacs 24.0.94.1, po-mode 2.2+0.4\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
@@ -174,14 +174,12 @@ msgid ""
 msgstr ""
 "Один из вариантов форм дрейков: может быть как <ref>dst='unit_Drake Clasher' "
 "text='Боец дрейков'</ref> или <ref>dst='unit_Drake Fighter' text='Солдат "
-"дрейков'</ref>.Один из вариантов форм дрейков: может быть как "
-"<ref>dst='unit_Drake Clasher' text='Боец дрейков'</ref> или "
-"<ref>dst='unit_Drake Fighter' text='Солдат дрейков'</ref>."
+"дрейков'</ref>."
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
 msgid "Aerie"
-msgstr "Орлиное гнездо"
+msgstr "Гнездо"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
@@ -190,11 +188,13 @@ msgid ""
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
+"Огромное строение навроде замка, дом <ref>dst='flight' text='стаи'</ref>. "
+"Там находятся <ref>dst='breeding_pen' text='загоны для размножения'</ref>."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
 msgid "Breeding Pen"
-msgstr ""
+msgstr "Загон для размножения"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
@@ -203,11 +203,14 @@ msgid ""
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
 "text='Dominant'</ref>’s eye."
 msgstr ""
+"Часть <ref>dst='aerie' text='гнезда'</ref> где живут немыслящие "
+"<ref>dst='breeder' text='размножители'</ref> под присмотром "
+"<ref>dst='dominant' text='доминанта'</ref>."
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
 msgid "Breeding Cycle"
-msgstr ""
+msgstr "Цикл размножения"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:26
@@ -215,6 +218,8 @@ msgid ""
 "The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
 "next."
 msgstr ""
+"Время, которое проходит между двумя откладками <ref>dst='egg' text='яиц'</"
+"ref>."
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
@@ -228,6 +233,10 @@ msgid ""
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
 "the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
 msgstr ""
+"Мировой океан — общее название морей, которые окружают архипелаг "
+"<ref>dst='morogor' text='Морогор'</ref>. По дрэйкским поверьям, он "
+"заканчивается <ref>dst='abyss' text='Бездной'</ref>, широким и смертельно "
+"опасным водопадом."
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
@@ -236,20 +245,12 @@ msgstr "Новый континент"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
-#, fuzzy
-#| msgid ""
-#| "New Continent -- The great continent to the east of <ref>dst='morogor' "
-#| "text='Morogor'</ref>. Its existence is unknown to the drakes until the "
-#| "flight of Galun."
 msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
-"Новый континент— великий континент к востоку от <ref>dst='morogor' "
-"text='Морогора'</ref>. О его существовании не знали дрейки вплоть до битвы "
-"за Галун.Новый континент— великий континент к востоку от <ref>dst='morogor' "
-"text='Морогора'</ref>. О его существовании не знали дрейки вплоть до битвы "
-"за Галун."
+"Новый большой континент к востоку от <ref>dst='morogor' text='Морогора'</"
+"ref>. О его существовании не знали дрейки вплоть до полётов Галуна."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
@@ -263,8 +264,7 @@ msgid ""
 "falls off the world-disc."
 msgstr ""
 "В учении о Дрейках описывался как огромный и смертельный водопад стекающий с "
-"земного диска.В учении о Дрейках описывался как огромный и смертельный "
-"водопад стекающий с земного диска."
+"земного диска."
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
@@ -280,9 +280,7 @@ msgid ""
 msgstr ""
 "Квази-секретная организация среди дрейков посвятивщих себя предотвращению "
 "последней войны за Малтусиан. См. также <ref>dst='straight_path' "
-"text='Прямой путь'</ref>Квази-секретная организация среди дрейков "
-"посвятивщих себя предотвращению последней войны за Малтусиан. См. также "
-"<ref>dst='straight_path' text='Прямой путь'</ref>"
+"text='Прямой путь'</ref>"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:55
@@ -297,14 +295,12 @@ msgid ""
 "ref>."
 msgstr ""
 "Вечная традиция дрейков расширения и захвата. Так обычно говорят члены "
-"<ref>dst='spiral_path' text='Спирального пути'</ref>.Вечная традиция дрейков "
-"расширения и захвата. Так обычно говорят члены <ref>dst='spiral_path' "
-"text='Спирального пути'</ref>."
+"<ref>dst='spiral_path' text='Спирального пути'</ref>."
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
 msgid "Dominant"
-msgstr ""
+msgstr "Доминант"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
@@ -314,11 +310,15 @@ msgid ""
 "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
 "privileges on others."
 msgstr ""
+"<ref>dst='aspirant' text='Аспирант'</ref>, ставший лидером дрэйков. "
+"Единственный дрэйк во всём племени, которому позволено оплодотворять "
+"<ref>dst='breeder' text='размножителей'</ref>. Изредка он уступает эту "
+"привилегию другим."
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
 msgid "Vulcaniad"
-msgstr ""
+msgstr "Вулканиада"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
@@ -327,11 +327,14 @@ msgid ""
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
 "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
 msgstr ""
+"(Непостоянный) период между последовательными извержениями "
+"<ref>dst='mount_morogor' text='горы Морогор'</ref>. На нём основан календарь "
+"<ref>dst='long_count' text='Долгого Счисления'</ref>."
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
 msgid "Recorder"
-msgstr ""
+msgstr "Хранитель"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
@@ -341,22 +344,26 @@ msgid ""
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
 msgstr ""
+"Хранитель — летописец дрэйков, который обучился <ref>dst='drakish_script' "
+"text='письму'</ref>. Это единственная <ref>dst='caste' text='каста'</ref> "
+"дрэйков, которая не определяется биологией: они набирают своих членов из "
+"всех других каст."
 
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
 msgid "Laying"
-msgstr ""
+msgstr "Откладка"
 
 #. [topic]: id=laying
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
 msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr ""
+msgstr "Часть <ref>dst='breeding_cycle' text='цикла размножение'</ref>."
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
 msgid "Hatching"
-msgstr ""
+msgstr "Вылупление"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
@@ -370,6 +377,9 @@ msgid ""
 "the current generation of hatchlings are the most aggressive is the behavior "
 "of the <ref>dst='flight' text='flight'</ref>."
 msgstr ""
+"Молодой дрэйк, который ещё не видел, как вылупляется следующее поколение. "
+"Молодёжь нынешнего поколения — самые агрессивные из <ref>dst='flight' "
+"text='стаи'</ref>."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
@@ -383,11 +393,14 @@ msgid ""
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
+"Молодой дрэйк, который уже застал вылупление следующего поколения. Если "
+"<ref>dst='flight' text='стая'</ref> может себе позволить потерять поколение, "
+"они начинают <ref>dst='swarming' text='роиться'</ref>."
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
 msgid "Breeder"
-msgstr ""
+msgstr "Разможитель"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:104
@@ -398,11 +411,16 @@ msgid ""
 "take care of their food for themselves when laying. Drake breeders become "
 "fertile after the next <ref>dst='hatching' text='hatching'</ref>."
 msgstr ""
+"Самка дрэйков. Они очень редки, поскольку <ref>dst='egg' text='яйца'</ref>, "
+"из которых вылупятся размножители, приходится усиленно оберегать. Количество "
+"размножителей также ограничено количеством прочих дрэйков, поскольку они не "
+"могут добывать себе пищу во время откладки яиц. Размножители могут плодиться "
+"после следующей <ref>dst='hatching' text='откладки'</ref>."
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:109
 msgid "Egg, Drake"
-msgstr ""
+msgstr "Яйцо дрэйка"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:110
@@ -411,11 +429,14 @@ msgid ""
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid "
 "and to some extent the ambient temperature."
 msgstr ""
+"<ref>dst=caste text='Каста'</ref>, в которой окажется <ref>dst='hatchling' "
+"text='птенец'</ref> определяется временем, когда отложено яйцо, и, до "
+"некоторой степени температурой окружения."
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
 msgid "Flight"
-msgstr ""
+msgstr "Стая"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
@@ -424,11 +445,14 @@ msgid ""
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
+"Племя дрэйков, которое живёт в <ref>dst='aerie' text='гнезде'</ref>, и "
+"держит охотничьи угодья. В каждом племени есть один <ref>dst='dominant' "
+"text='доминант'</ref>, который присваивает себе привилегию спаривания."
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:121
 msgid "Aspirant"
-msgstr ""
+msgstr "Аспирант"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
@@ -438,17 +462,22 @@ msgid ""
 "secretion of the hormone is caused by hunt and combat actions in which the "
 "drake is involved."
 msgstr ""
+"Самцы дрэйков, которые достигли полового созревания и способны спариваться с "
+"<ref>dst='breeder' text='размножителями'</ref>. Созревание происходит за "
+"счёт гормонов, которые выделяются во время охоты и битв."
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:127
 msgid "Ascendant"
-msgstr ""
+msgstr "Предок"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
+"Дрэйкское название для настоящих <ref>dst='unit_Fire Dragon' "
+"text='драконов'</ref>."
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
@@ -465,6 +494,12 @@ msgid ""
 "likeliest to be granted mating privileges, especially after a notable "
 "service."
 msgstr ""
+"Один из <ref>dst='aspirant' text='аспирантов'</ref>, приближенных к "
+"<ref>dst='dominant' text='доминанту'</ref>. Традиционно он выбирает по "
+"одному из каждой <ref>dst=caste text='касты'</ref>, кроме собственной. Кроме "
+"того, иногда назначаются дополнительные «интенданты» для особых поручений. У "
+"интендантов самые большие шансы удостоиться привилегии спаривания, например, "
+"в награду за службу."
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
@@ -477,6 +512,8 @@ msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
+"<ref>dst='swarmlings' text='Роящиеся'</ref>, покинувшие <ref>dst='aerie' "
+"text='гнездо'</ref>, чтобы основать новое."
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
@@ -490,21 +527,25 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
+"<ref>dst='flight' text='Стая'</ref> для нового <ref>dst='aerie' "
+"text='гнезда'</ref> дрэйков, которая возникает после каждого "
+"<ref>dst='breeding_cycle' text='цикла размножения'</ref>. См. "
+"<ref>dst='swarm' text='Рой'</ref>"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
 msgid "Runners"
-msgstr ""
+msgstr "Бегуны"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:152
 msgid "Drakish term for escaped slaves hunted as game."
-msgstr ""
+msgstr "Дрэйкское название бежавших рабов, на которых охотятся для забавы."
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
 msgid "Mount Morogor"
-msgstr ""
+msgstr "Гора Морогор"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
@@ -512,11 +553,13 @@ msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Вулкан на центральном острове архипелага <ref>dst='morogor' text='Морогор'</"
+"ref>."
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
 msgid "Long Count"
-msgstr ""
+msgstr "Длинное счисление"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
@@ -524,23 +567,25 @@ msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
+"Дрэйкский календарь, основанный на <ref>dst='vulcaniad' text='Вулканиадах'</"
+"ref> и <ref>dst=breeding_cycle text='циклах размножения'</ref>."
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
 msgid "Long Pig"
-msgstr ""
+msgstr "Длинная свинка"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:170
 msgid ""
 "South Seas pidgin for human meat, used to translate a Drakish word with the "
 "same meaning."
-msgstr ""
+msgstr "На южном наречии — человеческое мясо; перевод с дрэйкского языка."
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
 msgid "Ceramics"
-msgstr ""
+msgstr "Керамика"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
@@ -549,11 +594,14 @@ msgid ""
 "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
 "generate the amount of heat to cure the pieces to full strength."
 msgstr ""
+"Дрэйки работают с металлом, но есть и мастера по работе с керамикой. Только "
+"у <ref>dst='unit_Drake Burner' text='поджигателей'</ref> хватает тепла, "
+"необходимого для обжига."
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:181
 msgid "Drakish, script"
-msgstr ""
+msgstr "Дрэйкская письменность"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
@@ -562,16 +610,19 @@ msgid ""
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
 "text='Recorder'</ref> vocation."
 msgstr ""
+"Письменный язык дрэйков. Дрэйки, служащие <ref>dst='recorder' "
+"text='хранителями'</ref>, пишут на <ref>dst='ceramic' text='керамических</"
+"ref> пластинках."
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:187
 msgid "Drakish, language"
-msgstr ""
+msgstr "Дрэйкский язык"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:188
 msgid "The language spoken by the drakes."
-msgstr ""
+msgstr "Язык, на котором говорят дрэйки."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -606,6 +657,9 @@ msgid ""
 "and all rivers eventually flow to it. Far to the west in the the Great Ocean "
 "is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Лежит к западу от <ref>dst='great_continent' text='континента'</ref>; в него "
+"с конце концов впадают все реки. Далеко на западе Великого океана расположен "
+"огромный архипелаг <ref>dst='morogor' text='Морогор'</ref>."
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:37
@@ -621,6 +675,11 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
+"Архипелаг, расположенный где-то в <ref>dst='great_ocean' text='Великом "
+"океане'</ref> к западу от <ref>dst='green_isle' text='Зелёного острова'</"
+"ref> и к востоку от <ref>dst=old_continent text='Старого континента'</ref>.\n"
+"В основном населён <ref>dst='..race_drake' text='дрэйками'</ref>.\n"
+"Центральный остров архипелага также называется «Морогор»."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
@@ -637,7 +696,7 @@ msgstr ""
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
 msgid "Old Continent"
-msgstr ""
+msgstr "Старый континент"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
@@ -645,11 +704,13 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Лежит к западу от <ref>dst='morogor' text='Морогора'</ref> посреди "
+"<ref>dst='great_ocean' text='Великого океана'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:57
 msgid "Great Continent"
-msgstr ""
+msgstr "Большой континент"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:58
@@ -658,11 +719,14 @@ msgid ""
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Континент, на котором находится <ref>dst='kingdom_wesnoth' text='Королевство "
+"Веснот'</ref>. Западное побережье омывается <ref>dst='great_ocean' "
+"text='Великим Океаном'</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:63
 msgid "Irdya"
-msgstr ""
+msgstr "Ирдия"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:64
@@ -672,6 +736,10 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
+"Мир, где находится королевство <ref>dst='kingdom_wesnoth' text='Веснот'</"
+"ref>, называется «Ирдией». Это название, впрочем, редко упоминается во "
+"эпоху, к которой относится наша главная карта. Обитатели обычно говорят "
+"«мир» или, поэтично, «большой зелёный мир»."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
@@ -735,6 +803,59 @@ msgid ""
 "south of Aldril. It receives drainage from the Brown Hills and feeds into "
 "the Great River. (Not shown on the main map.)"
 msgstr ""
+"Королевство Веснот расположено не севере центральной части "
+"<ref>dst='great_continent' text='Большого континента'</ref>. В нём "
+"происходит действие большинства основных кампаний. На севере оно ограничено "
+"Великой рекой, на западе — побережьем Великого океана, на "
+"<ref>dst='southwest_elven_lands' text='юго-западе'</ref> — Этенским лесом, а "
+"на юго-востоке — Горькой трясиной (нижний правый угол карты).\n"
+"\n"
+"За рекой Этен, к югу от форта Тан, лежит веснотская пограничная область. На "
+"юге (за пределами карты), она ограничена глухими чащами; Этенский лес можно "
+"считать их северным продолжением.\n"
+"\n"
+"    • Значительные города:\n"
+"          ◦ Велдин: столица Веснота.\n"
+"          ◦ Алдрил: город в Жемчужной бухте.\n"
+"          ◦ Черноводье: город к югу от Жемчужной бухты.\n"
+"          ◦ Карцин: лежит между Седым лесом и Великой рекой.\n"
+"          ◦ Дан’Тонк: крупнейший город в стране, к северо-западу от "
+"Велдина.\n"
+"          ◦ Сорадок: северная застава Веснота, контролирует слияние Великой "
+"реки и реки Велдин.\n"
+"          ◦ Форт Тан: южная застава, контролирует пересечение дороги между "
+"севером и югом с рекой Этен.\n"
+"          ◦ Таф: важный город к северу от Дан’Тонка, позволяет держать под "
+"контролем дикие земли вокруг восточных склонов Бурых холмов и к север от "
+"переправы Абез.\n"
+"\n"
+"    • Заметные особенности ландшафта:\n"
+"          ◦ Грифонья гора: дом легендарных грифонов\n"
+"          ◦ Переправа Абез: мелководье на Великой реке, обычно её "
+"контролируют войска Веснота\n"
+"          ◦ Река Велдин: южное ответвление Великой реки\n"
+"          ◦ Большая Центральная равнина: область, ограниченная Велдином, "
+"Дан’Тонком и фортом Тан, житница Веснота и дом для большинства его жителей\n"
+"          ◦ Низкие холмы: холмистая местность, ограничевающая Большую "
+"Центральную равнину, дом многих веснотских домашних животных и "
+"сельскохозяйственных растений\n"
+"          ◦ Бурые холмы: Пустоши вокруг Грифоньей горы; малонаселённые и "
+"порой весьма опасные.\n"
+"          ◦ Конные луга: возвышенность к югу от Великой реки, окружённая "
+"Глиновым лесом с запада и рекой Велдин на востоке; южная часть переходит в "
+"Центральную равнину. Дом могушественных Кланов; здесь выращивают лучших "
+"веснотских лошадей.\n"
+"          ◦ Холмы Восточного Рубежа: протяжённая гряда к Югу от Великой реки "
+"и к западу от реки Велдин. В северной части, ближайшей к реке Велдин, порой "
+"селятся веснотцы, но королевство едва успевает за ними следить, так что "
+"бандитизм процветает.\n"
+"          ◦ Глинов лес: иногда Королевский лес; назван в честь одного из "
+"сыновей Хальдрика II\n"
+"          ◦ Седой лес: большой лес посреди диких веснотских земель, лежит "
+"между Карцином и Алдрилом; большинство считает, что он проклят\n"
+"          ◦ Зелёная трясина: большое болота посреди диких веснотских земель, "
+"к югу от Алдрила. Вбирает в себя потоки с Бурых холмов, вода из неё стекает "
+"в Великую реку. (На карте не показана.)"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:100
@@ -760,11 +881,24 @@ msgid ""
 "          ◦ <ref>dst='great_river' text='Great River'</ref>: It is very wide "
 "at this point, and only ships can cross it."
 msgstr ""
+"Эленсефар — когда провинция <ref>dst='kingdom_wesnoth' text='Веснота'</ref>, "
+"когда независимое государство, когда часть федерации с Веснотом. На севере "
+"ограничен Великой рекой, на востоке — едва очерченной границей с Веснотом, "
+"на юге — Жемчужной бухтой, на западе <ref>dst='great_ocean' text='океаном'</"
+"ref>. Больше можно узнать из истории Веснота.\n"
+"\n"
+"    • Значительные города:\n"
+"          ◦ Эленсефар: столица, расположен на острове в дельте "
+"<ref>dst='great_river' text='Великой реки'</ref>\n"
+"          ◦ Карцин: город на границе с Веснотом, спорная земля\n"
+"    • Заметные особенности ландшафта:\n"
+"          ◦ <ref>dst='great_river' text='Великая река'</ref>: в этих местах "
+"очень широка; переплыть её можно только на корабле."
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:112
 msgid "Northlands"
-msgstr ""
+msgstr "Север"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:130
@@ -809,11 +943,47 @@ msgid ""
 "          ◦ Great River: The origin of this river is somewhere in the east "
 "of the northern lands"
 msgstr ""
+"Север — ничейная земля. Населена группами орков, гномов, людей-варваров, а "
+"порой и эльфов. Северная и восточная граница не определена, на юге ограничен "
+"<ref>dst='great_river' text='Великой рекой'</ref>, а на западе — "
+"<ref>dst='great_ocean' text='Великим океаном'</ref>.\n"
+"\n"
+"    • Значительные города:\n"
+"          ◦ Гламдрол: столица орочьего племени\n"
+"          ◦ Ромир: ещё одна орочья столица\n"
+"          ◦ Весмер: здесь расположен Ка-лиан — эльфийский Совет\n"
+"          ◦ Гномьи Врата: смешанная человеческо-гномья область неподалёку от "
+"Кналга, на юге гор Сердца. Крупный торговый центра.\n"
+"          ◦ Даллбен и Делвин: человеческие деревни; построены поселенцами, "
+"которые пересекли Великую реку во времена Золотого века Веснота. Ныне "
+"заброшены. Лесистую местность к северо-востоку от Эленсефара, где находились "
+"эти деревни, люди называли провинцией Аннувин; эльфам же она была известна "
+"как Весмер.\n"
+"\n"
+"    • Заметные особенности ландшафта:\n"
+"          ◦ Горы Сердца: Практически непроходимый хребет между речной "
+"долиной и Северными равнинами.\n"
+"          ◦ Сердечные Клыки: особенно неприступная местность с высокими "
+"пиками к юго-западу от озера Вруг и к северу от леса Весмер. Самая "
+"негостеприимная и опасная часть гор Сердца; живут здесь только отшельники, "
+"безумцы и маги.\n"
+"          ◦ Болото Ужаса: огромная трясина между горами Сердца и Великой "
+"рекой. Печально знаменитое, опасное место.\n"
+"          ◦ Озеро Вруг: большое горное озеро; река, которая из него вытекает "
+"-- единственный проход через Северные горы.\n"
+"          ◦ Аркан-Тория: река, которая вытекает из озера Вруг. Это "
+"эльфийское название; люди зовут её Лонглиер.\n"
+"          ◦ Река Листра: северный приток Великой реки; в неё впадает Аркан-"
+"Тория.\n"
+"          ◦ Лес Линтанир: самая южная часть Большого Северного леса. "
+"Восточные и северные границы этой огромной рощи известны только эльфам. Люди "
+"лишь изредка добираются до их столицы, Элензирии.\n"
+"          ◦ Великая река: где-то в северных землях затерялся исток этой реки"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr ""
+msgstr "Южные эльфийские земли"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
@@ -830,6 +1000,17 @@ msgid ""
 "the southwest—much farther than is charted—and is home to <ref>dst='.."
 "race_elf' text='elves'</ref>."
 msgstr ""
+"Лесные эльфы отделены от северных и лишь изредка имеют дело с ними и "
+"большинством других народов. На северо-востоке эта земля выходит к Зелёной "
+"трясине, на юге — к пустыне (не показана), на западе — к "
+"<ref>dst='great_ocean' text='Океану'</ref>.\n"
+"\n"
+"    • Значительные города\n"
+"          ◦ Не известны\n"
+"    • Заметные особенности ландшафта:\n"
+"          ◦ Этенский лес: крупнейший южные лес — он простирается на юго-"
+"запад намного дальше, чем показано на карте. Здесь живут <ref>dst='.."
+"race_elf' text='эльфы'</ref>."
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:146
@@ -843,11 +1024,13 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
+"Почти непроходимый барьер между <ref>dst='arkan_thoria' text='речной'</ref> "
+"долиной и <ref>dst='far_north' text='Северной равниной'</ref>."
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
 msgid "Far North"
-msgstr ""
+msgstr "Дальний Север"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:176
@@ -884,6 +1067,37 @@ msgid ""
 "          ◦ River Bork\n"
 "          ◦ Wild Steppe"
 msgstr ""
+"Холодный, суровый и неприступный Дальний Север -- историческая родина "
+"Оркского Кланната. Он лежит к северу от <ref>dst='heart_mountains' text='гор "
+"Сердца'</ref>, которые орки зовут Наггид-Даргор и (без всяких оснований) "
+"считают своими. На востоке поселились Свободные племена Дикой степи, который "
+"откололись от Кланната и бродят вместе с людьми-варварами, дерутся с Высшими "
+"эльфами Северных равнин (в людских землях они известны как Северные эльфы). "
+"Сами же Высшие эльфы живут дальше к востоку, где по слухам у них большое "
+"королевство.\n"
+"\n"
+"    • Значительные города:\n"
+"          ◦ Бараг Гор, родной город орочьего Совета\n"
+"          ◦ Биток\n"
+"          ◦ Борстеп\n"
+"          ◦ Грисби\n"
+"          ◦ Кастелфранк\n"
+"          ◦ Лмариг\n"
+"          ◦ Мелмог\n"
+"          ◦ Престим\n"
+"          ◦ Тиригаз\n"
+"          ◦ Фарзи\n"
+"          ◦ Фестог\n"
+"    • Заметные особенности ландшафта:\n"
+"          ◦ Болото Отчаяния\n"
+"          ◦ Горы Дорт\n"
+"          ◦ Горы Хааг\n"
+"          ◦ Зелёный лес\n"
+"          ◦ Лес Безмолвия\n"
+"          ◦ Лес Телиен\n"
+"          ◦ Река Умф\n"
+"          ◦ Река Борк\n"
+"          ◦ Дикая Степь"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -1043,12 +1257,11 @@ msgstr ""
 "\n"
 "Лучше всего начать с обучения. Выбрав пункт <bold>text='Обучение'</bold> в "
 "главном меню, Вы начнете обучающую кампанию, которая поможется освоится в "
-"игре. После завершения обучения рекомендуем сыграть в кампанию "
-"<italic>text='Наследник Престола'</italic>. Для этого нажмите кнопку "
-"<bold>text='Кампания'</bold> в главном меню, а затем выберите кампанию "
-"<italic>text='Наследник Престола'</italic>. Поначалу, <italic>text='Битва за "
-"Веснот'</italic> может оказаться трудной, поэтому начинать лучше с "
-"<italic>text='Лёгкого'</italic> уровня сложности."
+"игре. После завершения обучения рекомендуем сыграть в кампанию Наследник "
+"Престола. Для этого нажмите кнопку <bold>text='Кампания'</bold> в главном "
+"меню, а затем выберите кампанию <italic>text='Наследник Престола'</italic>. "
+"Поначалу, <italic>text='Битва за Веснот'</italic> может оказаться трудной, "
+"поэтому начинать лучше с <italic>text='Лёгкого'</italic> уровня сложности."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:138
@@ -1059,8 +1272,8 @@ msgid ""
 "encounter new <ref>dst='..abilities_section' text='abilities'</ref> for the "
 "first time."
 msgstr ""
-"Играя, помните, что можно навести на любой объект (например, на информацию в "
-"строке статуса) указатель мыши, и тогда появится краткое описание этого "
+"Играя, помните, что можно навести указатель мыши на любой объект — например, "
+"на информацию в строке статуса — и тогда появится краткое описание этого "
 "объекта. Это особенно полезно при изучении новых <ref>dst='.."
 "abilities_section' text='способностей'</ref>."
 
@@ -1119,12 +1332,12 @@ msgid ""
 "designated point, say, or rescuing someone, or solving a puzzle, or holding "
 "out against a siege until a certain number of turns have elapsed."
 msgstr ""
-"Внимательно читайте <italic>text='список задач'</italic> во всплывающем окне "
-"в начале каждого сценария. Чаще всего, чтобы победить, Вы должны будете "
-"убить всех вражеских лидеров, а поражение Вам засчитывается, лишь если убит "
-"Ваш лидер. Но в некоторых сценариях могут быть другие задачи — например, "
-"довести вашего лидера до определённого места, или спасти кого-то, или "
-"разгадать загадку, или продержаться в течение определённого количества ходов."
+"Внимательно читайте <bold>text='Список задач'</bold> во всплывающем окне в "
+"начале каждого сценария. Чаще всего, чтобы победить, Вы должны будете убить "
+"всех вражеских лидеров, а поражение Вам засчитывается, лишь если убит Ваш "
+"лидер. Но в некоторых сценариях могут быть другие задачи — например, довести "
+"вашего лидера до определённого места, или спасти кого-то, или разгадать "
+"загадку, или продержаться в течение определённого количества ходов."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
@@ -1150,19 +1363,6 @@ msgstr "Вербовка и Призыв"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
-#, fuzzy
-#| msgid ""
-#| "Each side begins with one leader in their keep. At the start of any "
-#| "battle, and at times during it, you will need to recruit <ref>dst='.."
-#| "units' text='units'</ref> into your army. To recruit, you must have your "
-#| "leader (for instance, Konrad in the <italic>text='Heir to the Throne'</"
-#| "italic> campaign) on the keep square of a <ref>dst='terrain_castle' "
-#| "text='castle'</ref>. Then you may recruit by either choosing "
-#| "<bold>text='Recruit'</bold> from the menu or right-clicking on a hex and "
-#| "selecting <bold>text='Recruit'</bold>. This brings up the recruit menu, "
-#| "which lists units available for recruitment, along with their gold cost. "
-#| "Click on a unit to see its statistics, then press the recruit button to "
-#| "recruit it."
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref>dst='..units' "
@@ -1180,23 +1380,14 @@ msgstr ""
 "text='бойцов'</ref> для своей армии. Чтобы вербовать бойцов, ваш лидер "
 "(например, Конрад в кампании <italic>text='Наследник престола'</italic>) "
 "должен находиться в цитадели <ref>dst='terrain_castle' text='замка'</ref>. "
-"Вы можете вербовать бойцов, выбрав пункт <italic>text='Вербовать'</italic> в "
+"Вы можете вербовать бойцов, выбрав пункт <bold>text='Вербовать'</bold> в "
 "меню или кликнув правой кнопкой мыши по цитадели и выбрав пункт "
-"<italic>text='Вербовать'</italic>. Появится меню вербовки со списком "
-"доступных бойцов и их стоимостью. Выделив бойца, слева появится информация о "
-"нём. Чтобы завербовать выделенного бойца, нажмите кнопку «Вербовать»."
+"<bold>text='Вербовать'</bold>. Появится меню вербовки со списком доступных "
+"бойцов и их стоимостью. Выделив бойца, слева появится информация о нём. "
+"Чтобы завербовать выделенного бойца, нажмите кнопку «Вербовать»."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "\n"
 "\n"
@@ -1272,13 +1463,13 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
 msgid " green if it hasn’t moved this turn,"
-msgstr "зеленый, если боец еще не совершал хода,"
+msgstr " зеленый, если боец еще не совершал хода,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:181
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
-"желтый, если он уже ходил, но все еще может двигаться дальше или атаковать, "
+" желтый, если он уже ходил, но все еще может двигаться дальше или атаковать, "
 "или"
 
 #. [topic]: id=orbs
@@ -1286,9 +1477,8 @@ msgstr ""
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
-" красный, если отряд не может передвигатся или атаковать. Или игрок завершил "
-"ход для отряда. красный, если отряд не может передвигатся или атаковать. Или "
-"игрок завершил ход для отряда."
+" красный, если боец не может передвигатся или атаковать, или игрок завершил "
+"ход бойца."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
@@ -1298,7 +1488,7 @@ msgstr " синий, если боец — ваш союзник, которым
 #. [topic]: id=orbs
 #: data/core/help.cfg:184
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr "Бойцы противника не имеют шара над полоской здоровья."
+msgstr " Бойцы противника не имеют шара над полоской здоровья."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:191
@@ -1364,16 +1554,17 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
-"Делать ходы в Весноте проще простого: выберите бойца, который должен сделать "
-"ход, а затем выберите поле, на которое он должен перейти. Все поля, до "
-"которых выбранный боец может добраться за один ход, будут подсвечены. Наведя "
-"мышь на подсвеченное поле, Вы увидите рейтинг защиты, который боец получит "
-"на этом поле. При наведении мыши на затенённое поле также отобразится "
-"количество ходов, за которое боец дойдет до него. Если вы кликнете на поле, "
-"боец отправится к нему по кратчайшему пути. Если вы истратили не все очки "
-"передвижения за раз, то бойца можно передвинуть снова. На атаку уходят все "
-"оставшиеся очки передвижения. Закончив движение в чужой деревне, боец теряет "
-"все оставшиеся очки, но все еще может атаковать."
+"Делать ходы в <italic>text='Битве за Веснот'</italic> проще простого: "
+"выберите бойца, который должен сделать ход, а затем выберите поле, на "
+"которое он должен перейти. Все поля, до которых выбранный боец может "
+"добраться за один ход, будут подсвечены. Наведя мышь на подсвеченное поле, "
+"Вы увидите рейтинг защиты, который боец получит на этом поле. При наведении "
+"мыши на затенённое поле также отобразится количество ходов, за которое боец "
+"дойдет до него. Если вы кликнете на поле, боец отправится к нему по "
+"кратчайшему пути. Если вы истратили не все очки передвижения за раз, то "
+"бойца можно передвинуть снова. На атаку уходят все оставшиеся очки "
+"передвижения. Закончив движение в чужой деревне, боец теряет все оставшиеся "
+"очки, но все еще может атаковать."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
@@ -1400,7 +1591,7 @@ msgstr ""
 "два очка, а всадникам — три. Чтобы узнать, сколько очков движения боец "
 "потратит на ход в определённой местности, нажмите по нему правой кнопкой, "
 "выберите <bold>text='Описание бойца'</bold> и загляните в пункт "
-"<italic>text='Модификаторы местности'</italic>."
+"<bold>text='Модификаторы местности'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
@@ -1420,7 +1611,7 @@ msgstr ""
 "Делая ход, нужно помнить о зонах контроля. Каждый боец создает соседних с "
 "собой полях <italic>text='зону контроля'</italic>, и любой противник, "
 "вступивший на одно из этих полей, немедленно заканчивает движение. Понимать, "
-"как извлекать из управления зонами контроля пользу — важная часть Веснота;  "
+"как извлекать из управления зонами контроля пользу — важная часть Веснота; "
 "только <ref>dst='ability_skirmisher' text='неуловимые'</ref> могут их "
 "игнорировать."
 
@@ -1513,9 +1704,10 @@ msgstr ""
 "когда они окажутся рядом, начнётся бой. Атакующий и защищающийся "
 "обмениваются ударами, пока каждый не израсходует предусмотренное для него "
 "количество ударов. Атакующий выбирает оружие для атаки, а защищающийся "
-"отвечает оружием того же типа. Существует два типа атак: ближний, где обычно "
-"пукскают в ход мечи, топоры или клыки; и дальний, в котором используют луки, "
-"дротики и огненные шары."
+"отвечает оружием того же типа. Существует два типа атак: "
+"<italic>text='ближний'</italic>, где обычно пукскают в ход мечи, топоры или "
+"клыки; и <italic>text='дальний'</italic>, в котором используют луки, дротики "
+"и огненные шары."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:231
@@ -1547,8 +1739,8 @@ msgstr ""
 "наносит определенное количество ущерба. Так продолжается до тех пор, пока "
 "оба не израсходуют все свои атаки. Число атак у разных бойцов различно; "
 "например, эльфийский воин с атакой 5-4 может атаковать 4 раза, нанося при "
-"этом 5 единиц урона при попадании, а пехотинцы орков  с атакой 9-2 могут "
-"нанести всего лишь 2 удара (но с уроном 9 за каждый успешный удар)."
+"этом 5 единиц урона при попадании, а пехотинцы орков с атакой 9-2 могут "
+"ударить лишь дважды (но с уроном 9 за каждый успешный удар)."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:235
@@ -1578,7 +1770,7 @@ msgstr ""
 "\n"
 "Шанс попасть по бойцу зависит от местности, на которой он стоит. Его можно "
 "узнать, если нажать на него правой кнопки мыши, выбрать <bold>text='Описание "
-"бойца'</bold> и просмотреть <italic>text='Модификаторы местности'</italic>. "
+"бойца'</bold> и просмотреть <bold>text='Модификаторы местности'</bold>. "
 "Например, многие эльфы в лесу имеют рейтинг защищенности 70%, что означает, "
 "что шанс противника попасть в него равен лишь 30%. И наоборот, шанс эльфа "
 "попасть по атакующему зависит от типа местности, на которой стоит атакующий."
@@ -1633,7 +1825,7 @@ msgstr ""
 "единиц. Это число меняют две вещи: <ref>dst='damage_types_and_resistance' "
 "text='сопротивляемость'</ref> и <ref>dst='time_of_day' text='время суток'</"
 "ref>. Чтобы увидеть, как меняется базовый урон в текущих условиях, нажмите "
-"кнопку <italic>text='Вычисление повреждений'</italic> в окне атаки."
+"кнопку <bold>text='Вычисление повреждений'</bold> в окне атаки."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
@@ -2004,8 +2196,10 @@ msgstr ""
 "\n"
 "С доходом всё просто. Ваш основной доход равняется 2 золотым монетам за ход. "
 "C каждой деревни под вашим контролем вы дополнительно получаете одну монету "
-"за ход. Если у Вас десять деревень, то вы будете получать 12 золотых монет "
-"за ход. Содержание будет вычитаться из дохода, как показано ниже."
+"за ход (Это, в принципе, настраивается, но в кампаниях почти всегда одна "
+"монета с деревни). Если у Вас десять деревень, то вы будете получать 12 "
+"золотых монет за ход. Содержание будет вычитаться из дохода, как показано "
+"ниже."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
@@ -2055,6 +2249,7 @@ msgid ""
 "usually have the <italic>text='loyal'</italic> trait. The unit you are "
 "playing (such as Konrad) will almost always be a leader."
 msgstr ""
+"\n"
 "\n"
 "В содержании есть два важных исключения: лидеры и бойцы с особенностью "
 "«верный» никогда не будут требовать содержания. Бойцы, с которыми вы "
@@ -2138,7 +2333,7 @@ msgstr ""
 "\n"
 "У бойцов бывают и другие особенности: <ref>dst='traits_dextrous' "
 "text='меткий'</ref>, <ref>dst='traits_loyal' text='верный'</ref>, "
-"<ref>dst='traits_undead' text='мертвец'</ref> .\n"
+"<ref>dst='traits_undead' text='мертвец'</ref>.\n"
 "\n"
 
 #. [topic]: id=traits_intelligent
@@ -2169,10 +2364,10 @@ msgstr ""
 "\n"
 "<italic>text='Умные'</italic> бойцы очень полезны в начале кампании, так как "
 "могут быстро продвинуться на следующий уровень. Далее в ходе кампании они не "
-"так полезны, так как улучшение после максимального уровня (УПМУ) не столь "
-"значительно, как продвижение на следующий уровень. Если у Вас много бойцов "
-"«высшего уровня», вам, возможно, стоит призвать бойцов с более полезными "
-"особенностями."
+"так полезны, так как <italic>text='улучшение после максимального уровня'</"
+"italic> (УПМУ) не столь значительно, как продвижение на следующий уровень. "
+"Если у Вас много бойцов «высшего уровня», вам, возможно, стоит призвать "
+"бойцов с более полезными особенностями."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:370
@@ -2219,7 +2414,7 @@ msgid ""
 "<italic>text='Resilient'</italic> units have 4 HP plus 1 HP per level more "
 "than usual."
 msgstr ""
-"<italic>text='Выносливые'</italic> бойцы имеют 4 дополнительных ЗД  + 1 ЗД "
+"<italic>text='Выносливые'</italic> бойцы имеют 4 дополнительных ЗД плюс 1 ЗД "
 "на каждый уровень больше, чем обычно."
 
 #. [topic]: id=traits_resilient
@@ -2822,17 +3017,6 @@ msgstr "Замок"
 
 #. [topic]: id=terrain_castle
 #: data/core/help.cfg:614
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#| "Nearly all units receive a considerable bonus to their defense by being "
-#| "stationed in a castle, and all units receive full movement in a castle. "
-#| "Stationing units in a castle represents its defensive capability. Without "
-#| "a unit in each wall hex, an enemy can simply sneak into the castle "
-#| "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#| "\n"
-#| "Most units have about 60% defense in a castle.\n"
-#| "\n"
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification. "
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2845,10 +3029,11 @@ msgid ""
 "\n"
 msgstr ""
 "<italic>text='Замки'</italic> — это любые постоянных укреплений. Практически "
-"все бойцы в замках хорошо защищаются, кроме того, все бойцы получают полный "
-"запас движения. Чтобы защищать замок, заполните его бойцами. Если не на всех "
-"полях вдоль стен замка стоят бойцы, враги смогут беспрепятственно пробраться "
-"внутрь и получить те же преимущества в защите, что и защитники замка.\n"
+"все бойцы в замках хорошо защищаются, кроме того, большинство ходят по замку "
+"на полной скорости. Чтобы защищать замок, заполните его бойцами. Если не на "
+"всех полях вдоль стен замка стоят бойцы, враги смогут беспрепятственно "
+"пробраться внутрь и получить те же преимущества в защите, что и защитники "
+"замка.\n"
 "\n"
 "Большинство бойцов имеет около 60% защиты в замке.\n"
 "\n"
@@ -2942,11 +3127,11 @@ msgid ""
 msgstr ""
 "<italic>text='Каменистые пещеры'</italic> образованы под воздействием воды и "
 "ветра, выводящими более легкие частицы из камней. Узкие каменистые проходы "
-"замедляют движение большинства соединений, но увеличивают защищенность. "
-"Гномы и тролли, живущие главным образом в пещерах, тратят относительно мало "
-"времени в ориентировке на местности. Гномы из-за своих небольших размеров "
-"имеют полное превосходство в передвижении по подобной местности. Иногда "
-"пещеры могут <ref>dst='terrain_illuminated_cave' text='освещаться'</ref>\n"
+"замедляют движение большинства бойцов, но увеличивают защищенность. Гномы и "
+"тролли, живущие главным образом в пещерах, тратят относительно мало времени "
+"в ориентировке на местности. Гномы из-за своих небольших размеров имеют "
+"полное превосходство в передвижении по подобной местности. Иногда пещеры "
+"могут <ref>dst='terrain_illuminated_cave' text='освещаться'</ref>\n"
 "\n"
 "Большинство бойцов имеют около 50% защищенности в каменистых пещерах, когда "
 "как кавалерия ограничена 40%. Гномы в каменистых пещерах получают 60%."
@@ -3329,6 +3514,10 @@ msgid ""
 "'m' first to open the chat line).\n"
 "\n"
 msgstr ""
+"Эти команды можно вводить в командной строке, предварив их многоточием (:), "
+"как показано здесь, или в чат, предварив их слэшем (/). Чтобы открыть строку "
+"чата, нажмите «m».\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:835
@@ -3342,7 +3531,7 @@ msgstr ""
 "\n"
 "Выбросить и забанить игрока по IP-адресу в многопользовательской игре. "
 "Применимо и к игрокам, которые находятся на сервере, но не играют. (конечно, "
-"тогда их не выбросит).\n"
+"тогда их не выбросит.)\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3361,8 +3550,9 @@ msgstr ""
 "Сменить управляющего игрока (впишите здесь номер фракции) на пользователя "
 "(впишите здесь ник игрока или наблюдателя). Вы можете узнать, какой фракции "
 "какой игрок принадлежит, в диалоге  <bold>text='Настройки сценария'</bold> "
-"(чтобы попасть туда, нажмите кнопку <bold>text='More'</bold> в «Панели "
-"Состояния» (по умолчанию Alt+s). Хост может менять игроков любой стороны.\n"
+"(чтобы попасть туда, нажмите кнопку <bold>text='More'</bold> в "
+"<bold>text=«Панели Состояния»</bold> (по умолчанию Alt+s). Хост может менять "
+"игроков любой стороны.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3377,7 +3567,7 @@ msgstr ""
 "\n"
 "Выбросить игрока из игры. Он сможет вернуться назад. Если вы просто хотите "
 "сменить управляющего фракцией (фракциями), лучше используйте команду :"
-"control\n"
+"control.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -4229,7 +4419,7 @@ msgid ""
 " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" Способности Неуловимого позволяют этому бойцу игнорировать зоны контроля "
+" Способности неуловимого позволяют этому бойцу игнорировать зоны контроля "
 "врагов и беспрепятственно проходить мимо них."
 
 #: data/core/macros/special-notes.cfg:38
@@ -4326,14 +4516,14 @@ msgid ""
 "enemies, but only on the attack."
 msgstr ""
 " Высокая точность стрельбы этого бойца дает высокие шансы поразить мишень, "
-"но лишь при атаке. "
+"но лишь при атаке."
 
 #: data/core/macros/special-notes.cfg:77
 msgid ""
 " This unit has magical attacks, which always have a high chance of hitting "
 "an opponent."
 msgstr ""
-"Этот боец атакует магией, которая всегда с высокой вероятностью поражает "
+" Этот боец атакует магией, которая всегда с высокой вероятностью поражает "
 "противника."
 
 #: data/core/macros/special-notes.cfg:80
@@ -4404,7 +4594,7 @@ msgstr "мертвец"
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 #: data/core/macros/traits.cfg:54
 msgid "Immune to drain, poison, and plague"
-msgstr "Устойчив к отравлению, высасыванию и чуме."
+msgstr "Устойчив к отравлению, высасыванию и чуме"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
@@ -4675,6 +4865,63 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
+"Дрэйки — большие, крылатые, огнедышащие твари, напоминающие подлинных "
+"драконов. Средний рост взрослого дрэйка — около трёх метров; весят они "
+"зачастую больше, чем человек и лошадь вместе взятые. Кожа состоит из твёрдых "
+"чешуек, отражающих большинство физических атак, кроме колющих и атак "
+"холодом. Большинство дрэйков способны летать и быстро перемещаться на "
+"дальние расстояния. Однако, их большой веса и объёма несколько ограничивает "
+"их способности, они довольно бездарные летуны. Где возможно, они пользуются "
+"особенностями местности, вроде холмов, гор и деревьев, как стартовыми "
+"площадками, чтобы набрать большую скорость и высоту. К счастью для своих "
+"врагов, они довольно неуклюжи и на удивление медлительны в бою. Вкупе с "
+"большим размером это делает их лёгкой мишенью для тех, кто осмелится на них "
+"напасть.\n"
+"\n"
+"Дрэйки — потомственные волшебники, саму их жизнь поддерживает таинственный "
+"внутренний огонь. В этом легко убедиться, когда кто-нибудь из них гибнет в "
+"бою; его внутренний огонь высвобождается, сжигая останки в пепел. Их "
+"внутренний огонь — их главная слабость; из-за него они очень уязвимы к "
+"холоду. Несмотря на волшебную природу, управлять магией они не способны. "
+"Волшебство, заключённое в теле дрэйков, даёт из жизнь и позволяет изрыгать "
+"огонь, но ничего другого с этой магией они делать не умеют.\n"
+"\n"
+"<header>text='Общество'</header>\n"
+"Дрэйки — раса довольно воинственная, их общества лучше всего описываются "
+"выражением «развитое военное община». Ядро племени составляет небольшая "
+"группа опытных воинов во главе с всеми уважаемым — или просто внушающим "
+"страх — <ref>dst='dominant' text='доминантом'</ref>, который правит общиной "
+"железной рукой. Каждый дрэйк должен заслужить место в строгой иерархии, "
+"подчиняться тем, кто выше и командовать теми, кто ниже. Попасть в элиту "
+"можно только одним способом — вызвать вышестоящего на поединок и победить "
+"его; так же устанавливается и иерархия внутри самой элиты. Любой обмана "
+"собрата недопустим и рассматривается как трусость.\n"
+"\n"
+"Из-за воинственной природы и чувства территории, они яростно отстаивают свои "
+"земли; однако они очень редко завоёвывают или вторгаются в земли, занятные "
+"другими крупными расами. Как правило они селятся на незанятой земле, "
+"объявляя её своей. Питаются они во время охотничьих забав в низинах вокруг "
+"их дома; впрочем, птенцы и дрэйки низших каст не брезгуют и мхами и "
+"лишайниками, которые выращивают в глубине пещер. Единственная технология, "
+"ценимая дрэйками — кузнечное дело, изготовление брони и оружия. Никто "
+"никогда не слышал, чтобы у них была какая-то ещё культура или наука. Зато в "
+"кузнечном деле с ними не сравнится почти никто, разве что мастера из гномьих "
+"цехов.\n"
+"\n"
+"Дрэйки вылупляются из яиц и как правило живут по 20-30 лет. Лучшим способом "
+"покинуть этот мир для дрэйка — умереть в бою. В отличие от других рас, "
+"дрэйки к старости становятся агрессивнее и безрассуднее; возможно, для того, "
+"чтобы заслужить место в легендах своего народа.\n"
+"\n"
+"<header>text='География'</header>\n"
+"Дрэйки родом с вулканического архипелага <ref>dst='morogor' text='Морогор'</"
+"ref>, лежащего в водах <ref>dst='great_ocean' text='Великого океана'</ref>. "
+"Однако их становилось всё больше, многие их родные острова оказывались "
+"затоплены, и колонии дрэйков переселились на <ref>dst='great_continent' "
+"text='Большой континент'</ref>. Дрэйки обычно строят дома в горных пещерах "
+"рядом с вулканами для защиты яиц, птенцов и кузниц. Они предпочитают тепло, "
+"но внутренний огонь позволяет им переносить даже весьма холодный климат, что "
+"позволяет им селиться даже в горах с Дальнем Севере."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:90
@@ -5033,7 +5280,7 @@ msgstr ""
 "состоят в союзе с Королевством Веснота, но действуют независимо и "
 "поддерживают свой суверенитет. Некоторые считают их данниками Королевства, "
 "посылающими туда продукты и солдат в обмен на защиту. Другие же говорят, что "
-"они имеют равные права  с западной частью Веснота. В любом случае, восточные "
+"они имеют равные права с западной частью Веснота. В любом случае, восточные "
 "провинции не имеют призывной армии, подобной западным. Обучение бою является "
 "неотъемлемой частью жизни членов клана; родители с малолетства обучают детей "
 "конной езде, умению обращаться с мечом и луком. В целом, воины Клана менее "
@@ -5349,7 +5596,7 @@ msgstr ""
 "\n"
 "Известны орки, которые доживали до 50-60 лет, но мало какой орк проживает "
 "более двадцати-тридцати лет, погибая либо на войне, либо от рук "
-"соплеменников. Старые орки  -это обычно шаманы, наверное, потому, что "
+"соплеменников. Старые орки -это обычно шаманы, наверное, потому, что "
 "соплеменники считают шаманов достойными доверия и нейтральными. "
 "Происхождение этого обычая неясно, потому что шаманы мало что дают орочьему "
 "обществу, кроме советов, а орки обычно не любят принимать советы. Шаманы "
@@ -5701,34 +5948,3 @@ msgstr "Помощь по игре Битва за Веснот"
 #: src/help.cpp:3216
 msgid "Parse error when parsing help text: "
 msgstr "Синтаксическая ошибка при загрузке помощи: "
-
-#~ msgid "race^Khalifate Human"
-#~ msgstr "Человек Халифата"
-
-#~ msgid "race+female^Khalifate Human"
-#~ msgstr "Человек Халифата"
-
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "Люди Халифата"
-
-#~ msgid "This race does not have a description yet."
-#~ msgstr "Пока у этой расы нет описания."
-
-#~ msgid "race^Falcon"
-#~ msgstr "Сокол"
-
-#~ msgid "race+female^Falcon"
-#~ msgstr "Соколица"
-
-#~ msgid "race^Falcons"
-#~ msgstr "Соколы"
-
-#~ msgid "<header>text='Race specific topics'</header>"
-#~ msgstr "<header>text='Об отдельных расах'</header>"
-
-#, fuzzy
-#~ msgid ""
-#~ " red if it has finished its turn (might still be able to move or attack)."
-#~ msgstr ""
-#~ "красный, если он закончил ход (но, может быть, ещё может двигаться или "
-#~ "атаковать)"

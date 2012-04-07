@@ -15,16 +15,16 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-03-31 10:45+0200\n"
-"PO-Revision-Date: 2011-12-06 10:33+0200\n"
-"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
-"Language-Team: ZumZoom\n"
+"PO-Revision-Date: 2012-04-06 15:19+0400\n"
+"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.6.1\n"
+"X-Generator: Emacs 24.0.94.1, po-mode 2.2+0.4\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -668,7 +668,7 @@ msgstr "Непроходимая местность"
 #: data/core/terrain.cfg:1115 data/core/terrain.cfg:2046
 #: data/core/terrain.cfg:2056
 msgid "Void"
-msgstr "пусто"
+msgstr "Пустота"
 
 #. [terrain_type]: id=desert_village
 #. [terrain_type]: id=camp_village
@@ -1336,29 +1336,25 @@ msgstr "Выберите уровень сложности:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
-#, fuzzy
-#| msgid "View Chat Log"
 msgid "Chat Log"
-msgstr "Смотреть лог чата"
+msgstr "Лог чата"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
-#, fuzzy
-#| msgid "Message:"
 msgid "Page:"
-msgstr "Сообщение:"
+msgstr "Страница:"
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:69
 msgid "Last"
-msgstr ""
+msgstr "В конец"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
 #: data/gui/default/window/chat_log.cfg:79
 #: data/gui/default/window/title_screen.cfg:162
 msgid "Previous"
-msgstr "Предыдущий"
+msgstr "Назад"
 
 #. [button]: id=next_tod
 #. [button]: id=next_page
@@ -1368,7 +1364,7 @@ msgstr "Предыдущий"
 #: data/gui/default/window/editor_settings.cfg:80
 #: data/gui/default/window/title_screen.cfg:177
 msgid "Next"
-msgstr "Следующий"
+msgstr "Вперёд"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
@@ -2070,7 +2066,7 @@ msgstr "Ваши списки друзей/игнора"
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:170
 msgid "Add as Friend"
-msgstr "добавить в качестве друга"
+msgstr "Добавить в друзья"
 
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:185
@@ -2090,7 +2086,7 @@ msgstr "Причина:"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:323
 msgid "Time:"
-msgstr "Время"
+msgstr "Время:"
 
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:374
@@ -2106,7 +2102,7 @@ msgstr "Забанить"
 #: data/gui/default/window/mp_connect.cfg:60
 #: data/gui/default/window/mp_server_list.cfg:69
 msgid "You will now connect to the multiplayer server."
-msgstr "Сейчас подключимся к мультиплеерному серверу"
+msgstr "Сейчас подключимся к мультиплеерному серверу."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:158
@@ -2155,7 +2151,7 @@ msgstr "Играть на карте:"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:339
 msgid "Number of turns"
-msgstr "Количество ходов:"
+msgstr "Количество ходов"
 
 #. [slider]: id=turn_count
 #: data/gui/default/window/mp_create_game.cfg:362
@@ -2187,7 +2183,6 @@ msgstr "Создать игру"
 msgid ""
 "Set the password that people wanting to join your game as players must enter."
 msgstr ""
-"Устанавливает пароль, который должны ввести желающие присоединиться к игре."
 "Устанавливает пароль, который должны ввести желающие присоединиться к игре."
 
 #. [label]
@@ -2419,7 +2414,7 @@ msgstr "Создать бойца (Отладка!)"
 #. [label]
 #: data/gui/default/window/unit_create.cfg:67
 msgid "Gender:"
-msgstr "Пол"
+msgstr "Пол:"
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:77
@@ -2454,7 +2449,7 @@ msgstr "Ошибка создания каталога."
 
 #: src/game_preferences.cpp:315
 msgid "No server has been defined."
-msgstr "Сервер не определён"
+msgstr "Сервер не определён."
 
 #: src/game_preferences.cpp:395
 msgid "player"
@@ -2466,7 +2461,7 @@ msgstr "%H:%M"
 
 #: src/game_preferences.cpp:840
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/game_preferences_display.cpp:173
 msgid "Full screen"
@@ -2490,11 +2485,15 @@ msgstr "Показывать сетку"
 
 #: src/game_preferences_display.cpp:178
 msgid "Save replay on SP/MP victory or MP defeat"
-msgstr "Сохранять повторы"
+msgstr ""
+"Сохранять повторы побед (одиночная игра и мультиплеер) и поражений (только "
+"мультиплеер)"
 
 #: src/game_preferences_display.cpp:179
 msgid "Delete auto-saves on SP/MP victory or MP defeat"
-msgstr "Автоматически удалять автосохранения"
+msgstr ""
+"Автоматически удалять автосохранения побед (одиночная игра и мультиплеер) и "
+"поражений (только мультиплеер)"
 
 #: src/game_preferences_display.cpp:180
 msgid "Do not show lobby joins"
@@ -2538,7 +2537,7 @@ msgstr "Параметры многопользовательской игры"
 
 #: src/game_preferences_display.cpp:190
 msgid "Add As Friend"
-msgstr "добавить в качестве друга"
+msgstr "Добавить в друзья"
 
 #: src/game_preferences_display.cpp:191
 msgid "Add As Ignore"
@@ -2715,11 +2714,11 @@ msgstr "Скорость движения и битвы"
 
 #: src/game_preferences_display.cpp:342
 msgid "Play short random animations for idle units"
-msgstr "Проигрывать короткую случайную анимацию для стоящих отрядов"
+msgstr "Проигрывать короткую случайную анимацию для стоящих бойцов"
 
 #: src/game_preferences_display.cpp:345
 msgid "Continuously animate standing units in the battlefield"
-msgstr "Непрерывно анимировать стоящие отряды на поле боя"
+msgstr "Непрерывно анимировать стоящих бойцов на поле боя"
 
 #: src/game_preferences_display.cpp:348
 msgid "Display animated terrain graphics"
@@ -2744,14 +2743,14 @@ msgstr "Прервать движение вашего бойца при вст�
 #: src/game_preferences_display.cpp:369
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr ""
-"Сохранять повторы при победе в соло/мультиплеере и при проигрыше в "
-"мультиплеере"
+"Сохранять повторы побед (одиночная игра и мультиплеер) и поражений (только "
+"мультиплеер)"
 
 #: src/game_preferences_display.cpp:372
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr ""
-"Автоматически удалять автосохранения при победе в соло/мультиплеере и "
-"проигрыше в мультиплеере"
+"Автоматически удалять автосохранения побед (одиночная игра и мультиплеер) и "
+"поражений (только мультиплеер)"
 
 #: src/game_preferences_display.cpp:374
 msgid "Overlay a grid onto the map"
@@ -2767,7 +2766,7 @@ msgstr "Показывать иконки напротив игроков в х�
 
 #: src/game_preferences_display.cpp:383
 msgid "Uncheck to delete the saved password (on exit)."
-msgstr "Отключите — тогда пароль будет удалён при выходе."
+msgstr "Отключите — тогда пароль будет удалён (при выходе)."
 
 #: src/game_preferences_display.cpp:387
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -2789,7 +2788,7 @@ msgstr "Использовать новый интерфейс холла"
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 "Найти и указать путь к МП-серверу, который будет хостить игры в локальной "
-"сети"
+"сети."
 
 #: src/game_preferences_display.cpp:397
 msgid "View and edit your friends and ignores list"
@@ -2897,7 +2896,7 @@ msgstr "друг"
 
 #: src/game_preferences_display.cpp:1125
 msgid "ignored"
-msgstr "Игнор"
+msgstr "в игноре"
 
 #: src/game_preferences_display.cpp:1129
 msgid "(empty list)"
@@ -2938,7 +2937,7 @@ msgstr "Неизвестная тема. Попробуйте поменять �
 
 #: src/game_preferences_display.cpp:1354
 msgid "Find $filename server binary to host networked games"
-msgstr "Найти сервер $filename, на котором будут хоститься сетевые игры."
+msgstr "Найти сервер $filename, на котором будут хоститься сетевые игры"
 
 #: src/gui/auxiliary/canvas.cpp:596
 msgid "Line doesn't fit on canvas."
@@ -3002,7 +3001,7 @@ msgstr "Количество столбцов различается."
 
 #: src/gui/auxiliary/window_builder/control.cpp:49
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr "Найден элемент управления с подсказкой но без всплывающей подсказки"
+msgstr "Найден элемент управления с подсказкой но без всплывающей подсказки."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:47
 #: src/gui/auxiliary/window_builder/listbox.cpp:58
@@ -3078,11 +3077,11 @@ msgstr "Сложность: "
 
 #: src/gui/dialogs/game_load.cpp:324
 msgid "Version: "
-msgstr "Версия:"
+msgstr "Версия: "
 
 #: src/gui/dialogs/lobby_main.cpp:230
 msgid "whisper to $receiver"
-msgstr "Послать шёпот $receiver-у"
+msgstr "шептать пользователю $receiver"
 
 #: src/gui/dialogs/lobby_main.cpp:662
 msgid "Games: showing $num_shown out of $num_total"
@@ -3143,7 +3142,7 @@ msgstr "Загрузить игру..."
 #: src/gui/dialogs/network_transmission.cpp:55
 #: src/gui/dialogs/network_transmission.cpp:57 src/hotkeys.cpp:1185
 msgid "unit_byte^B"
-msgstr "b"
+msgstr "B"
 
 #: src/gui/dialogs/title_screen.cpp:296
 msgid "Version "
@@ -3155,7 +3154,7 @@ msgstr "Версия"
 
 #: src/gui/widgets/helper.cpp:137
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Обязательный виджет '$id' не определён"
+msgstr "Обязательный виджет '$id' не определён."
 
 #: src/gui/widgets/settings.cpp:440
 msgid ""
@@ -3168,7 +3167,7 @@ msgstr "GUI по умолчанию не определён."
 
 #: src/gui/widgets/settings.cpp:536
 msgid "No state or draw section defined."
-msgstr "Не определёно состояние или секция отрисовки"
+msgstr "Не определёно состояние или секция отрисовки."
 
 #: src/gui/widgets/tree_view_node.cpp:103
 msgid "Unknown builder id for tree view node."
@@ -3389,48 +3388,36 @@ msgstr "Пропустить анимацию"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkeys.cpp:114
-#, fuzzy
-#| msgid "Toggle Planning Mode"
 msgid "whiteboard^Planning Mode"
-msgstr "Переключить режим планирования"
+msgstr "Режим планирования"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkeys.cpp:116
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute Action"
-msgstr "Выполнить все действия"
+msgstr "Выполнить действие"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkeys.cpp:118
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute All Actions"
 msgstr "Выполнить все действия"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkeys.cpp:120
 msgid "whiteboard^Delete Action"
-msgstr ""
+msgstr "Удалить действие"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkeys.cpp:122
-#, fuzzy
-#| msgid "Move Action Up Queue"
 msgid "whiteboard^Move Action Up"
 msgstr "Сдвинуть действие вперед"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkeys.cpp:124
-#, fuzzy
-#| msgid "Move Action Down Queue"
 msgid "whiteboard^Move Action Down"
 msgstr "Сдвинуть действие назад"
 
 #. TRANSLATORS: whiteboard menu entry: plan as if unit was dead
 #: src/hotkeys.cpp:126
-#, fuzzy
-#| msgid "Suppose Dead"
 msgid "whiteboard^Suppose Dead"
 msgstr "Планирую убить"
 
@@ -3766,7 +3753,7 @@ msgstr "Остров"
 
 #: src/marked-up_text.cpp:443
 msgid "The maximum text width is less than 1."
-msgstr "Максимальная ширина текста меньше 1"
+msgstr "Максимальная ширина текста меньше 1."
 
 #: src/preferences_display.cpp:123 src/preferences_display.cpp:179
 msgid ""
@@ -3835,7 +3822,7 @@ msgstr "Выберите разрешение"
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
-msgstr "Найдена  со строкой из более чем 4 символов, это: "
+msgstr "Найдена местность со строкой из более чем 4 символов, это: "
 
 #: src/text.cpp:719
 msgid "The text contains invalid markup: "
@@ -3878,294 +3865,4 @@ msgid ""
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
 "Клавиша '$deprecated_key' переименована в '$key'. Она будет удалена в версии "
-"$removal_version.Клавиша '$deprecated_key' переименована в '$key'. Она будет "
-"удалена в версии $removal_version."
-
-#~ msgid "Execute Planned Action"
-#~ msgstr "Выполнить запланированное действие"
-
-#~ msgid "Delete Planned Action"
-#~ msgstr "Удалить запланированное действие"
-
-#~ msgid "Resize map"
-#~ msgstr "Изменить размер карты"
-
-#~ msgid "Allow more than one map to be open at the same time (MDI)"
-#~ msgstr "Открывать более одной карты (MDI)"
-
-#~ msgid "Show Unit Idle Animations"
-#~ msgstr "Показывать анимацию стоящих бойцов"
-
-#~ msgid "Stop"
-#~ msgstr "Стоп"
-
-#~ msgid "Play"
-#~ msgstr "Воспоризвести"
-
-#~ msgid "Reset"
-#~ msgstr "Сброс"
-
-#~ msgid "Close Window"
-#~ msgstr "Закрыть окно"
-
-#~ msgid "Shallow Merfolk Village"
-#~ msgstr "Деревня водяных на мелководье"
-
-#~ msgid "Saved preference:"
-#~ msgstr "Сохраненная настройка:"
-
-#~ msgid "Add waypoint"
-#~ msgstr "Добавить точку пути"
-
-#~ msgid "$completed KiB/$total KiB"
-#~ msgstr "$completed Кбайт/$total Кбайт"
-
-#~ msgid "Aquatic Village"
-#~ msgstr "Деревня водяных"
-
-#~ msgid "Sunken Keep"
-#~ msgstr "Затопленная цитадель"
-
-#~ msgid "Swamp Keep"
-#~ msgstr "Болотная цитадель"
-
-#~ msgid "Add to friends list"
-#~ msgstr "Добавить в список друзей"
-
-#~ msgid "Add to ignores list"
-#~ msgstr "Добавить в список игнорируемых"
-
-#~ msgid "Send a private message"
-#~ msgstr "Отправить приватное сообщение"
-
-#~ msgid "Name: "
-#~ msgstr "Имя: "
-
-#~ msgid "Enable scroll tracking of unit actions"
-#~ msgstr "Прокручивать карту, показывая действия бойцов"
-
-#~ msgid "Reverse Time Graphics"
-#~ msgstr "Обратить отображение времени"
-
-#~ msgid "Music Volume:"
-#~ msgstr "Громкость музыки:"
-
-#~ msgid "UI Sound Volume:"
-#~ msgstr "Громкость звуков интерфейса:"
-
-#~ msgid "Bell Volume:"
-#~ msgstr "Громкость сигнала:"
-
-#~ msgid ""
-#~ "Should the map view scroll to a unit when an action or move is animated."
-#~ msgstr ""
-#~ "Будет ли карта смещаться, чтобы держать в фокусе перемещения или другие "
-#~ "действия отряда"
-
-#~ msgid "Choose whether the sun moves left-to-right or right-to-left"
-#~ msgstr "Выберите передвижение солнца, слева направо или справа налево"
-
-#, fuzzy
-#~ msgid "Select unit:"
-#~ msgstr "Сбросить выбор"
-
-#~ msgid "Generate name"
-#~ msgstr "Случайно создать имя"
-
-#~ msgid "Screenshot failed"
-#~ msgstr "Скриншот не удался"
-
-#~ msgid "Mushroom Grove Lit"
-#~ msgstr "Освещённая грибная роща"
-
-#, fuzzy
-#~ msgid "Impassable Regular Mountains"
-#~ msgstr "Непроходимые пустынные горы"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "Непроходимые пустынные горы"
-
-#, fuzzy
-#~ msgid "Castle Human Keep"
-#~ msgstr "Цитадель замка"
-
-#, fuzzy
-#~ msgid "Snowy Castle Keep"
-#~ msgstr "Цитадель замка"
-
-#, fuzzy
-#~ msgid "Deep Water Medium"
-#~ msgstr "Глубокая вода"
-
-#, fuzzy
-#~ msgid "Deep Water Tropical"
-#~ msgstr "Глубокая вода"
-
-#~ msgid "Snow Forest"
-#~ msgstr "Снежный лес"
-
-#~ msgid "User-Command#2"
-#~ msgstr "Команда пользователя №2"
-
-#~ msgid "User-Command#3"
-#~ msgstr "Команда пользователя №3"
-
-#~ msgid "None"
-#~ msgstr "Ничего"
-
-#~ msgid "Fort"
-#~ msgstr "Форт"
-
-#~ msgid "Ruin"
-#~ msgstr "Руины"
-
-#~ msgid "Elven Keep"
-#~ msgstr "Укрытие эльфов"
-
-#~ msgid "Savanna"
-#~ msgstr "Саванна"
-
-#~ msgid "River Ford"
-#~ msgstr "Брод"
-
-#~ msgid "Wall"
-#~ msgstr "Стена"
-
-#~ msgid ""
-#~ "mouseover^Use new lobby interface (only works after a manual reconnect to "
-#~ "the server)"
-#~ msgstr ""
-#~ "Использовать новый интерфейс холла (заработает только после ручного "
-#~ "переподключения к серверу)"
-
-#~ msgid "Window not defined."
-#~ msgstr "Окно не определено."
-
-#~ msgid "Could not get image for terrain: $terrain."
-#~ msgstr "Не могу найти изображения для местности $terrain."
-
-#~ msgid "Error creating or aquiring an image."
-#~ msgstr "Ошибка при создании или получении изображения."
-
-#~ msgid "Save The Map"
-#~ msgstr "Сохранить карту"
-
-#~ msgid "Adjust Gamma"
-#~ msgstr "Настроить гамму"
-
-#~ msgid "Gamma:"
-#~ msgstr "Гамма:"
-
-#~ msgid "Change the brightness of the display"
-#~ msgstr "Изменить яркость"
-
-#, fuzzy
-#~ msgid "Change username"
-#~ msgstr "Вставить имя"
-
-#, fuzzy
-#~ msgid "No scrollbar defined."
-#~ msgstr "Сервер не определён"
-
-#~ msgid "Your modifications to the map will be lost. Continue?"
-#~ msgstr "Ваши изменения карты будут потеряны. Продолжить?"
-
-#~ msgid "Generate New Map"
-#~ msgstr "Создать новую карту"
-
-#~ msgid "Random Generator Settings"
-#~ msgstr "Настройки случайного генератора"
-
-#~ msgid "Map creation failed."
-#~ msgstr "Ошибка создания карты."
-
-#~ msgid "Video Mode"
-#~ msgstr "Видеорежимы"
-
-#~ msgid "X offset:"
-#~ msgstr "Смещение X:"
-
-#~ msgid "Y offset:"
-#~ msgstr "Смещение Y:"
-
-#~ msgid "Smart expand"
-#~ msgstr "умное расширение"
-
-#~ msgid "X-Axis"
-#~ msgstr "Ось X"
-
-#~ msgid "Y-Axis"
-#~ msgstr "Ось Y"
-
-#~ msgid "Flip around (this may change the dimensions of the map):"
-#~ msgstr "Перевернуть (это может изменить размеры карты):"
-
-#~ msgid "Save As"
-#~ msgstr "Сохранить как"
-
-#~ msgid "Set Player's keep"
-#~ msgstr "Установить укрытие игрока"
-
-#~ msgid "Flood Fill"
-#~ msgstr "Заполнить поле"
-
-#~ msgid "Flip Map"
-#~ msgstr "Перевернуть карту"
-
-#~ msgid "Draw Terrain"
-#~ msgstr "Рисовать местность"
-
-#~ msgid "Delay transition updates"
-#~ msgstr "Задержать обновление пелены"
-
-#~ msgid "Cave Lit"
-#~ msgstr "Освещенная пещера"
-
-#~ msgid "Rockbound Cave Lit"
-#~ msgstr "Освещённая каменистая пещера"
-
-#~ msgid "Invalid terrain found probably an 1.2 terrain format, terrain = "
-#~ msgstr ""
-#~ "Обнаружена неизвестная местность, предположительно в формате 1.2, "
-#~ "местность = "
-
-#, fuzzy
-#~ msgid "No default window defined."
-#~ msgstr "Сервер не определён"
-
-#, fuzzy
-#~ msgid "No default button defined."
-#~ msgstr "Сервер не определён"
-
-#, fuzzy
-#~ msgid "No layer or draw section defined."
-#~ msgstr "Сервер не определён"
-
-#, fuzzy
-#~ msgid "No default label defined."
-#~ msgstr "Сервер не определён"
-
-#~ msgid "Save replays on SP victory or SP/MP defeat."
-#~ msgstr ""
-#~ "Сохранять повторы при победе в одно-/многопользовательской игре,  или "
-#~ "поражении во многопользовательской."
-
-#~ msgid "Automatically delete saves on SP victory or SP/MP defeat"
-#~ msgstr ""
-#~ "Автоматически удалять автосохранения при победе в одно-/"
-#~ "многопользовательской игре, или поражении во многопользовательской."
-
-#~ msgid "Save Hotkeys"
-#~ msgstr "Сохранить"
-
-#~ msgid "Save replays at scenario end."
-#~ msgstr "Сохранять повтор в конце сценария"
-
-#~ msgid "Advanced Mode"
-#~ msgstr "Продвинутый режим"
-
-#~ msgid "Normal Mode"
-#~ msgstr "Нормальный режим"
-
-#~ msgid "Dwarven keep"
-#~ msgstr "Укрытие гномов"
+"$removal_version."

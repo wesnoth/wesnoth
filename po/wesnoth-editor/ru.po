@@ -18,19 +18,19 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-03 10:40+0100\n"
-"PO-Revision-Date: 2011-12-06 11:31+0200\n"
-"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
+"PO-Revision-Date: 2012-04-06 16:06+0400\n"
+"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.4\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
@@ -350,11 +350,11 @@ msgstr "В игре не заработает без дополнительно�
 
 #: src/editor/editor_palettes.cpp:532
 msgid "FG: "
-msgstr "ПП:"
+msgstr "ПП: "
 
 #: src/editor/editor_palettes.cpp:533
 msgid "BG: "
-msgstr "ФОН:"
+msgstr "ФОН: "
 
 #: src/editor/map_context.cpp:71
 msgid "File not found"
@@ -366,7 +366,7 @@ msgid ""
 "an existing file"
 msgstr ""
 "Файл карты похож на сценарий, но значение map_data не указывает на "
-"существующий файл."
+"существующий файл"
 
 #: src/editor/map_context.cpp:100
 msgid "Empty map file"
@@ -461,7 +461,7 @@ msgstr "Настройка произвольных параметров"
 #~ msgstr "Битва за Веснот: Редактор карт"
 
 #~ msgid "None"
-#~ msgstr "нет"
+#~ msgstr "Нет"
 
 #~ msgid "Which Player?"
 #~ msgstr "Какой игрок?"
@@ -486,4 +486,4 @@ msgstr "Настройка произвольных параметров"
 #~ msgstr "Ошибка: Недопустимые символы в названии файла."
 
 #~ msgid " maximum="
-#~ msgstr "максимум="
+#~ msgstr " максимум="

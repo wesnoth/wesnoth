@@ -13,15 +13,16 @@ msgstr ""
 "Project-Id-Version: wesnoth.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2011-10-12 17:07+0200\n"
-"Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
-"Language-Team:  <ru@li.org>\n"
+"PO-Revision-Date: 2012-04-07 04:15+0400\n"
+"Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Emacs 24.0.94.1, po-mode 2.2+0.4\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -55,7 +56,7 @@ msgstr ""
 msgid "Right-click on your leader during your turn for help"
 msgstr ""
 "Помощь можно получить, если на своём ходу кликнуть правой кнопкой мыши на "
-"своём лидере."
+"своём лидере"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:34
@@ -100,16 +101,16 @@ msgstr ""
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
-"Вы·уничтожили·грибной·рудник.·Доход·орков·на·юго-"
-"западе·сократился·на·10·золотых."
+"Вы уничтожили грибной рудник. Доход орков на юго-западе сократился на 10 "
+"золотых."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:476
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
-"Вы·уничтожили·грибной·рудник.·Доход·мертвецов·на·юго-"
-"востоке·сократился·на·10·золотых."
+"Вы уничтожили грибной рудник. Доход мертвецов на юго-востоке сократился на "
+"10 золотых."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:585
@@ -208,7 +209,7 @@ msgstr "Не бойся! Нам еще есть, на что надеяться!
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_general_macros.cfg:34
 msgid "The chest contains $oc_treasure gold."
-msgstr "В сундуке золото — $oc_treasure"
+msgstr "В сундуке золото — $oc_treasure|."
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:5
@@ -246,8 +247,8 @@ msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
 "in mining, farming and recruitment."
 msgstr ""
-"Mages are your wise men. They can study at universities, pursuing advances "
-"in mining, farming and recruitment."
+"Маги — это ваши мудрецы они могут заниматься наукой в университетах, "
+"изыскивая улучшения в горном деле, сельском хозяйстве и вербовке."
 
 #. [message]: speaker=narrator
 #. [option]: speaker=narrator
@@ -398,7 +399,7 @@ msgid ""
 "Share knowledge of agriculture"
 msgstr ""
 "<span color='green'>$player_name</span>\n"
-"Поделиться знаниями в области сельского хозяйства."
+"Поделиться знаниями в области сельского хозяйства"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:257
@@ -407,7 +408,7 @@ msgid ""
 "Share knowledge of mining"
 msgstr ""
 "<span color='green'>$player_name</span>\n"
-"Поделиться знаниями в области горного дела."
+"Поделиться знаниями в области горного дела"
 
 #. [set_variable]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:264
@@ -416,7 +417,7 @@ msgid ""
 "Share knowledge of warfare"
 msgstr ""
 "<span color='green'>$player_name</span>\n"
-"Поделиться знаниями в области ведения военных действий."
+"Поделиться знаниями в области ведения военных действий"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:293
@@ -480,7 +481,7 @@ msgid ""
 msgstr ""
 "<span color='green'>Проведите переговоры с Гномами</span>\n"
 "Это позволит вам вербовать гномов-бойцов\n"
-"Прогресс:·$player_$side_number|.leader_option_1.progress|/$player_"
+"Прогресс: $player_$side_number|.leader_option_1.progress|/$player_"
 "$side_number|.leader_option_1.target"
 
 #. [option]: speaker=unit
@@ -491,10 +492,10 @@ msgid ""
 "Negotiation Progress: $player_$side_number|.leader_option_2.progress|/"
 "$player_$side_number|.leader_option_2.target"
 msgstr ""
-"<span color='green'>Проведите·переговоры·с·Эльфами</span>\n"
-"Это·позволит·вам·вербовать·эльфов-бойцов\n"
-"Прогресс: $player_$side_number|.leader_option_1.progress|/$player_"
-"$side_number|.leader_option_1.target"
+"<span color='green'>Проведите переговоры с Эльфами</span>\n"
+"Это позволит вам вербовать эльфов-бойцов\n"
+"Прогресс: $player_$side_number|.leader_option_2.progress|/$player_"
+"$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:538
@@ -559,11 +560,11 @@ msgid ""
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
 msgstr ""
-"На данный момент мы изучаем·$player_$side_number|.research."
-"target_language_name|.·Чему наши ученые должны посвятить свои умы?\n"
+"На данный момент мы изучаем $player_$side_number|.research."
+"target_language_name|. Чему наши ученые должны посвятить свои умы?\n"
 "\n"
-"Our·farms·produce·$player_$side_number|.farming.gold|g\n"
-"Our·mines·produce·$player_$side_number|.mining.gold|g\n"
+"Фермы приносят нам $player_$side_number|.farming.gold| золотых\n"
+"Шахты приносят нам $player_$side_number|.mining.gold| золотых\n"
 
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:148
@@ -580,7 +581,7 @@ msgid ""
 msgstr ""
 "<span color='green'>Сельское хозяйство</span>\n"
 "Фермеры приносят один золотой\n"
-"Прогресс обучения:·$player_$side_number|.farming.progress|/$player_"
+"Прогресс обучения: $player_$side_number|.farming.progress|/$player_"
 "$side_number|.farming.target"
 
 #. [command]
@@ -599,8 +600,8 @@ msgid ""
 "mining.target"
 msgstr ""
 "<span color='green'>Горное дело</span>\n"
-"Горняки·приносят·один золотой\n"
-"Прогресс обучения:·$player_$side_number|.mining.progress|/$player_"
+"Горняки приносят один золотой\n"
+"Прогресс обучения: $player_$side_number|.mining.progress|/$player_"
 "$side_number|.mining.target"
 
 #. [command]
@@ -618,7 +619,7 @@ msgid ""
 msgstr ""
 "<span color='green'>Военное дело</span>\n"
 "Позволяет вам вербовать бойцов нового типа\n"
-"Прогресс обучения:·$player_$side_number|.warfare.progress|/$player_"
+"Прогресс обучения: $player_$side_number|.warfare.progress|/$player_"
 "$side_number|.warfare.target"
 
 #. [command]
@@ -632,7 +633,7 @@ msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
-"Теперь фермы игрока $player_$side_number|.name|производят·золота — $player_"
+"Теперь фермы игрока $player_$side_number|.name|производят золота — $player_"
 "$side_number|.farming.gold."
 
 #. [message]: speaker=narrator
@@ -641,7 +642,7 @@ msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
-"Теперь рудники игрока $player_$side_number|.name|·производят золота·- "
+"Теперь рудники игрока $player_$side_number|.name| производят золота - "
 "$player_$side_number|.mining.gold."
 
 #. [message]: speaker=narrator
@@ -822,7 +823,7 @@ msgstr "Основать университет"
 #. [option]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:547
 msgid "Clear the Ground"
-msgstr "Clear the Ground"
+msgstr "Очистите землю"
 
 #~ msgid "User Map"
 #~ msgstr "Пользовательская карта"
