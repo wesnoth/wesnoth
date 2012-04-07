@@ -191,6 +191,7 @@ Version 1.11.0-svn:
      and [place_shroud] (they were already included for directly matched hexes).
    * Retrofitted CLEAR_FOG and UNCLEAR_FOG macros to make use of [lift_fog] and [reset_fog]
    * Replaced variable i by TRANSFORM_UNIT_i in macro TRANSFORM_UNIT
+   * Fix $owner_side in capture events fired due to unit movement
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
