@@ -220,6 +220,8 @@ Version 1.11.0-svn:
      using NEON intrinsics on processors supporting NEON (the Pandora).
    * Fixed bug #19503: "maximum auto saves" setting now works correctly.
    * Fixed: A preprocessor bug looking beyond the end of a buffer.
+   * Fixed: Binding a temporary in the network code, possibly causing
+     crashing.
 
 Version 1.10.0:
  * Campaigns:
