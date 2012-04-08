@@ -461,8 +461,9 @@ namespace
 		friend class enable_visit_all<move_owners_finder>;
 
 	public:
-		move_owners_finder(){
-			move_owners_.clear();
+		move_owners_finder()
+			: move_owners_()
+		{
 			//Thanks to the default pre_visit_team, will only visit visible side_actions
 			visit_all_actions();
 		}
