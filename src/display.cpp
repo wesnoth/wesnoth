@@ -552,8 +552,10 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 	double tile_width = hex_width();
 	double tile_size = hex_size();
 	double border = theme_.border().size;
-	// the "-0.25" is for the horizontal imbrication of hexes (1/4 overlaps).
-	res.left = static_cast<int>(std::floor(-border + x / tile_width - 0.25));
+	// we minus 18, because it's how many pixels overlap of each two nearby
+	// hexes, and dividing it by tile width becomes horizontal imbrication.
+	// in this case 18/54 = 0.(3)
+	res.left = static_cast<int>(std::floor(-border + (x-18) / tile_width));
 	// we remove 1 pixel of the rectangle dimensions
 	// (the rounded division take one pixel more than needed)
 	res.right = static_cast<int>(std::floor(-border + (x + r.w-1) / tile_width));
