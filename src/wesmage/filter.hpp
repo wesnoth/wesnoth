@@ -63,7 +63,7 @@ struct tfilter_description
 	std::string name;
 
 	/**
-	 * Description of the filter. 
+	 * Description of the filter.
 	 *
 	 * Shortly describes what the filter does.
 	 */

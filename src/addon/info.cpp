@@ -37,7 +37,7 @@ namespace {
 			LOG_AC << "resolve_deps_recursive(): " << base_id << " not in add-ons list\n";
 			return;
 		}
-		
+
 		const std::vector<std::string>& base_deps = it->second.depends;
 
 		if(base_deps.empty()) {

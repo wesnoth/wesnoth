@@ -185,7 +185,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 	std::vector<int> sort_sizes;
 
 	cursor_setter.reset(new cursor::setter(cursor::WAIT));
-	
+
 	foreach(const std::string& dep, missing_deps) {
 		const addon_info& addon = addon_at(dep, addons);
 
@@ -406,7 +406,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 	// UI markup.
 	const std::string sep(1, COLUMN_SEPARATOR);
-	
+
 	// List and list filter control contents.
 	std::vector<std::string> options, filter_options;
 	std::string header;

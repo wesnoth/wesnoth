@@ -69,7 +69,7 @@ public:
 	editor_action* up_right(editor_display& disp, int x, int y);
 
 	/**
-	 * 
+	 *
 	 */
 	editor_action* drag_right(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 

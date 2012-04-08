@@ -205,7 +205,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	if(description_.empty()) {
 		description_ = base.description();
 	}
-	
+
 	if(overlay.height_adjust_set_) {
 		height_adjust_set_ = true;
 		height_adjust_ = overlay.height_adjust_;

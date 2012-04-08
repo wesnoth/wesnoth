@@ -894,7 +894,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	double divisor = 1.0;
 	std::map<std::string,individual_effect>::const_iterator e, e_end;
 	for (e = values_mul.begin(), e_end = values_mul.end(); e != e_end; ++e) {
-		multiplier *= e->second.value/100.0;		
+		multiplier *= e->second.value/100.0;
 		effect_list_.push_back(e->second);
 	}
 	for (e = values_div.begin(), e_end = values_div.end(); e != e_end; ++e) {

@@ -213,9 +213,9 @@ static int cfun_ai_execute_attack(lua_State *L)
 
 	int attacker_weapon = -1;//-1 means 'select what is best'
 	double aggression = context.get_aggression();//use the aggression from the context
-	
+
 	if (!lua_isnoneornil(L, index + 1) &&  attacker_weapon != -1) {
-		attacker_weapon = lua_tointeger(L, index + 1) - 1; // Done for consistency of the Lua style 
+		attacker_weapon = lua_tointeger(L, index + 1) - 1; // Done for consistency of the Lua style
 	}
 
 	if (!lua_isnoneornil(L, index) && lua_isnumber(L,index)) {
@@ -351,9 +351,9 @@ static int cfun_ai_get_avoid(lua_State *L)
 	for (int i = 0; it != locs.end(); ++it, ++i)
 	{
 		lua_pushinteger(L, i + 1); // Index for the map location
-		
+
 		push_map_location(L, *it);
-		
+
 		// Deprecated
 		//lua_createtable(L, 2, 0); // Table for a single map location
 
@@ -507,19 +507,19 @@ static void push_map_location(lua_State *L, const map_location& ml)
 static void push_move_map(lua_State *L, const move_map& m)
 {
 	lua_createtable(L, 0, 0); // the main table
-	
-	if (m.empty()) 
+
+	if (m.empty())
 	{
 		return;
 	}
-	
+
 	move_map::const_iterator it = m.begin();
 
 	int index = 1;
 
 
 
-	do 
+	do
 	{
 		map_location key = it->first;
 
