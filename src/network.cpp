@@ -375,7 +375,7 @@ private:
 
 void connect_operation::check_error()
 {
-	if(error_.empty()) {
+	if(!error_.empty()) {
 		throw error(error_);
 	}
 }
