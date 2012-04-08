@@ -523,7 +523,15 @@ static void push_move_map(lua_State *L, const move_map& m)
 	{
 		map_location key = it->first;
 
-		push_map_location(L, key);
+		//push_map_location(L, key); // deprecated
+		
+		// This should be factored out. The same function is defined in data/lua/location_set.lua
+		// At this point, it is not clear, where this(hashing) function can be placed
+		// Implemented it this way, to test the new version of the data structure
+		// as requested from the users of LuaAI <Nephro>
+		int hashed_index = (key.x + 1) * 16384 + (key.y + 1) + 2000;		
+		lua_pushinteger(L, hashed_index);
+		
 		lua_createtable(L, 0, 0);
 
 		while (key == it->first) {
