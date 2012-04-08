@@ -358,7 +358,7 @@ namespace {
 class connect_operation : public threading::async_operation
 {
 public:
-	connect_operation(const std::string& host, int port) : host_(host), port_(port), error_(NULL), connect_(0)
+	connect_operation(const std::string& host, int port) : host_(host), port_(port), error_(), connect_(0)
 	{}
 
 	void check_error();
@@ -369,13 +369,13 @@ public:
 private:
 	std::string host_;
 	int port_;
-	const char* error_;
+	std::string error_;
 	network::connection connect_;
 };
 
 void connect_operation::check_error()
 {
-	if(error_ != NULL) {
+	if(error_.empty()) {
 		throw error(error_);
 	}
 }
@@ -406,7 +406,6 @@ void connect_operation::run()
 				: N_("Could not connect to host.");
 		return;
 	}
-
 	_TCPsocket* raw_sock = reinterpret_cast<_TCPsocket*>(sock);
 #ifdef TCP_NODELAY
 	//set TCP_NODELAY to 0 because SDL_Net turns it off, causing packet
@@ -434,14 +433,14 @@ void connect_operation::run()
 	flags |= FNDELAY;
 #endif
 	if (fcntl(raw_sock->channel, F_SETFL, flags) == -1) {
-		error_ = ("Could not make socket non-blocking: " + std::string(strerror(errno))).c_str();
+		error_ = "Could not make socket non-blocking: " + std::string(strerror(errno));
 		SDLNet_TCP_Close(sock);
 		return;
 	}
 #else
 	int on = 1;
 	if (setsockopt(raw_sock->channel, SOL_SOCKET, SO_NONBLOCK, &on, sizeof(int)) < 0) {
-		error_ = ("Could not make socket non-blocking: " + std::string(strerror(errno))).c_str();
+		error_ = "Could not make socket non-blocking: " + std::string(strerror(errno));
 		SDLNet_TCP_Close(sock);
 		return;
 	}
