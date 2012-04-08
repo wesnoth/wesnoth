@@ -557,9 +557,6 @@ void manager::draw_hex(const map_location& hex)
 
 void manager::on_mouseover_change(const map_location& hex)
 {
-	foreach(map_location const& hex, hidden_unit_hexes_)
-		resources::screen->remove_exclusive_draw(hex);
-	hidden_unit_hexes_.clear();
 
 	map_location selected_hex = resources::controller->get_mouse_handler_base().get_selected_hex();
 	bool hex_has_unit;
@@ -718,12 +715,9 @@ void manager::create_temp_move()
 
 				unit_display::move_unit(path, *fake_unit, *resources::teams,
 						false); //get facing right
+				fake_unit->invalidate(fake_unit->get_location());
 				fake_unit->set_location(*curr_itor);
 				fake_unit->set_ghosted(true);
-
-				//if destination is over another unit, temporarily hide it
-				resources::screen->add_exclusive_draw(fake_unit->get_location(), *fake_unit);
-				hidden_unit_hexes_.push_back(fake_unit->get_location());
 			}
 			else //zero-hex path -- don't bother drawing a fake unit
 				fake_unit.reset();
@@ -731,6 +725,9 @@ void manager::create_temp_move()
 			prev_itor = curr_itor;
 		}
 	}
+	//in case path shortens on next step and one ghosted unit has to be removed
+	int ind = fake_units_.size() - 1;
+	fake_units_[ind]->invalidate(fake_units_[ind]->get_location());
 	//toss out old arrows and fake units
 	move_arrows_.resize(turn+1);
 	fake_units_.resize(turn+1);
