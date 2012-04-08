@@ -355,7 +355,7 @@ void game_display::draw_hex(const map_location& loc)
 	{
 		// Footsteps indicating a movement path
 		const std::vector<surface>& footstepImages = footsteps_images(loc);
-		if (footstepImages.size() != 0) {
+		if (!footstepImages.empty()) {
 			drawing_buffer_add(LAYER_FOOTSTEPS, loc, xpos, ypos, footstepImages);
 		}
 	}
