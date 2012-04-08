@@ -546,6 +546,7 @@ static void push_move_map(lua_State *L, const move_map& m)
 static int cfun_ai_get_dstsrc(lua_State *L)
 {
 	move_map dst_src = get_readonly_context(L).get_dstsrc();
+	get_readonly_context(L).set_dst_src_valid_lua();
 	push_move_map(L, dst_src);
 	return 1;
 }
@@ -553,6 +554,7 @@ static int cfun_ai_get_dstsrc(lua_State *L)
 static int cfun_ai_get_srcdst(lua_State *L)
 {
 	move_map src_dst = get_readonly_context(L).get_srcdst();
+	get_readonly_context(L).set_src_dst_valid_lua();
 	push_move_map(L, src_dst);
 	return 1;
 }
@@ -560,6 +562,7 @@ static int cfun_ai_get_srcdst(lua_State *L)
 static int cfun_ai_get_enemy_dstsrc(lua_State *L)
 {
 	move_map enemy_dst_src = get_readonly_context(L).get_enemy_dstsrc();
+	get_readonly_context(L).set_dst_src_enemy_valid_lua();
 	push_move_map(L, enemy_dst_src);
 	return 1;
 }
@@ -567,7 +570,36 @@ static int cfun_ai_get_enemy_dstsrc(lua_State *L)
 static int cfun_ai_get_enemy_srcdst(lua_State *L)
 {
 	move_map enemy_src_dst = get_readonly_context(L).get_enemy_srcdst();
+	get_readonly_context(L).set_src_dst_enemy_valid_lua();
 	push_move_map(L, enemy_src_dst);
+	return 1;
+}
+
+static int cfun_ai_is_dst_src_valid(lua_State *L) 
+{	
+	bool valid = get_readonly_context(L).is_dst_src_valid_lua();
+	lua_pushboolean(L, valid);
+	return 1;
+}
+
+static int cfun_ai_is_dst_src_enemy_valid(lua_State *L) 
+{	
+	bool valid = get_readonly_context(L).is_dst_src_enemy_valid_lua();
+	lua_pushboolean(L, valid);
+	return 1;
+}
+
+static int cfun_ai_is_src_dst_valid(lua_State *L) 
+{	
+	bool valid = get_readonly_context(L).is_src_dst_valid_lua();
+	lua_pushboolean(L, valid);
+	return 1;
+}
+
+static int cfun_ai_is_src_dst_enemy_valid(lua_State *L) 
+{	
+	bool valid = get_readonly_context(L).is_src_dst_enemy_valid_lua();
+	lua_pushboolean(L, valid);
 	return 1;
 }
 
@@ -620,6 +652,12 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ "get_village_value",		&cfun_ai_get_village_value		},
 		{ "get_villages_per_scout",	&cfun_ai_get_villages_per_scout		},
 		// End of aspects
+		// Validation/cache functions
+		{ "is_dst_src_valid",		&cfun_ai_is_dst_src_valid		},
+		{ "is_dst_src_enemy_valid",	&cfun_ai_is_dst_src_enemy_valid		},
+		{ "is_src_dst_valid",		&cfun_ai_is_src_dst_valid		},
+		{ "is_src_dst_enemy_valid",	&cfun_ai_is_src_dst_enemy_valid		},
+		// End of validation functions
 		{ "move",             		&cfun_ai_execute_move_partial		},
 		{ "move_full",        		&cfun_ai_execute_move_full        	},
 		{ "recall",          		&cfun_ai_execute_recall           	},

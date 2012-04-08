@@ -168,8 +168,12 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		leader_aggression_(),
 		leader_goal_(),
 		leader_value_(),
-		move_maps_enemy_valid_(false),
+		move_maps_enemy_valid_(false),		
 		move_maps_valid_(false),
+		dst_src_valid_lua_(false),
+		dst_src_enemy_valid_lua_(false),
+		src_dst_valid_lua_(false),
+		src_dst_enemy_valid_lua_(false),
 		number_of_possible_recruits_to_force_recruit_(),
 		passive_leader_(),
 		passive_leader_shares_keep_(),
@@ -816,7 +820,25 @@ int readonly_context_impl::get_villages_per_scout() const
 	return 0;
 }
 
+bool readonly_context_impl::is_dst_src_valid_lua() const
+{
+	return dst_src_valid_lua_;
+}
 
+bool readonly_context_impl::is_dst_src_enemy_valid_lua() const
+{
+	return dst_src_enemy_valid_lua_;
+}
+
+bool readonly_context_impl::is_src_dst_valid_lua() const
+{
+	return src_dst_valid_lua_;
+}
+
+bool readonly_context_impl::is_src_dst_enemy_valid_lua() const
+{
+	return src_dst_enemy_valid_lua_;
+}
 
 void readonly_context_impl::invalidate_defensive_position_cache() const
 {
@@ -840,6 +862,12 @@ void readonly_context_impl::invalidate_move_maps() const
 {
 	move_maps_valid_ = false;
 	move_maps_enemy_valid_ = false;
+	
+	dst_src_valid_lua_ = false;
+	dst_src_enemy_valid_lua_ = false;
+	
+	src_dst_valid_lua_ = false;
+	src_dst_enemy_valid_lua_ = false;
 }
 
 
@@ -1100,6 +1128,25 @@ void readonly_context_impl::recalculate_move_maps_enemy() const
 	move_maps_enemy_valid_ = true;
 }
 
+void readonly_context_impl::set_dst_src_valid_lua()
+{
+	dst_src_valid_lua_ = true;
+}
+
+void readonly_context_impl::set_dst_src_enemy_valid_lua()
+{
+	dst_src_enemy_valid_lua_ = true;
+}
+
+void readonly_context_impl::set_src_dst_valid_lua()
+{
+	src_dst_valid_lua_ = true;
+}
+
+void readonly_context_impl::set_src_dst_enemy_valid_lua()
+{
+	src_dst_enemy_valid_lua_ = true;
+}
 
 const map_location& readonly_context_impl::suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths){
 	if (resources::game_map->is_keep(leader_location)) {

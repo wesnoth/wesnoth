@@ -326,7 +326,14 @@ public:
 
 	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const = 0;
 
-
+	virtual bool is_dst_src_valid_lua() const = 0;
+	
+	virtual bool is_dst_src_enemy_valid_lua() const = 0;
+	
+	virtual bool is_src_dst_valid_lua() const = 0;
+	
+	virtual bool is_src_dst_enemy_valid_lua() const = 0;
+	
 	virtual void invalidate_defensive_position_cache() const = 0;
 
 
@@ -366,7 +373,12 @@ public:
 
 
 	virtual void recalculate_move_maps_enemy() const = 0;
-
+	
+	virtual void set_src_dst_valid_lua() = 0;
+	virtual void set_src_dst_enemy_valid_lua() = 0;
+	virtual void set_dst_src_valid_lua() = 0;
+	virtual void set_dst_src_enemy_valid_lua() = 0;
+	
 	/** get most suitable keep for leader - nearest free that can be reached in 1 turn, if none - return nearest occupied that can be reached in 1 turn, if none - return nearest keep, if none - return null_location */
 	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) = 0;
 
@@ -833,7 +845,26 @@ public:
 	{
 		return target_->is_active(time_of_day, turns);
 	}
+	
+	virtual bool is_dst_src_valid_lua() const
+	{
+		return target_->is_dst_src_valid_lua();
+	}
+	
+	virtual bool is_dst_src_enemy_valid_lua() const
+	{
+		return target_->is_dst_src_enemy_valid_lua();
+	}
 
+	virtual bool is_src_dst_valid_lua() const
+	{
+		return target_->is_src_dst_valid_lua();
+	}
+	
+	virtual bool is_src_dst_enemy_valid_lua() const
+	{
+		return target_->is_src_dst_enemy_valid_lua();
+	}
 
 	virtual void invalidate_defensive_position_cache() const
 	{
@@ -881,7 +912,26 @@ public:
 	{
 		target_->recalculate_move_maps_enemy();
 	}
-
+	
+	virtual void set_dst_src_valid_lua() 
+	{
+		target_->set_dst_src_valid_lua();
+	}
+	
+	virtual void set_dst_src_enemy_valid_lua() 
+	{
+		target_->set_dst_src_enemy_valid_lua();
+	}
+	
+	virtual void set_src_dst_valid_lua() 
+	{
+		target_->set_src_dst_valid_lua();
+	}
+	
+	virtual void set_src_dst_enemy_valid_lua() 
+	{
+		target_->set_src_dst_enemy_valid_lua();
+	}	
 
 	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths )
 	{
@@ -1312,7 +1362,14 @@ public:
 
 	virtual bool is_active(const std::string &time_of_day, const std::string &turns) const;
 
+	virtual bool is_dst_src_valid_lua() const;
 
+	virtual bool is_dst_src_enemy_valid_lua() const;
+	
+	virtual bool is_src_dst_valid_lua() const;
+
+	virtual bool is_src_dst_enemy_valid_lua() const;
+	
 	virtual void invalidate_defensive_position_cache() const;
 
 
@@ -1348,7 +1405,14 @@ public:
 
 	void on_create();
 
-
+	virtual void set_dst_src_valid_lua();
+	
+	virtual void set_dst_src_enemy_valid_lua();
+	
+	virtual void set_src_dst_valid_lua();
+	
+	virtual void set_src_dst_enemy_valid_lua();
+	
 	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths );
 
 
@@ -1390,6 +1454,10 @@ private:
 	aspect_type< double >::typesafe_ptr leader_value_;
 	mutable bool move_maps_enemy_valid_;
 	mutable bool move_maps_valid_;
+	mutable bool dst_src_valid_lua_;
+	mutable bool dst_src_enemy_valid_lua_;
+	mutable bool src_dst_valid_lua_;
+	mutable bool src_dst_enemy_valid_lua_;
 	aspect_type<double>::typesafe_ptr number_of_possible_recruits_to_force_recruit_;
 	aspect_type<bool>::typesafe_ptr passive_leader_;
 	aspect_type<bool>::typesafe_ptr passive_leader_shares_keep_;

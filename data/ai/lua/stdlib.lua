@@ -2,16 +2,70 @@
 
 return {
 
-init = function(ai)
+	init = function(ai)
+		
+		-- Initialize the cache system for LuaAI context
+		local cache = wesnoth.require("ai/lua/cache.lua")
+		cache.init(ai)
+		
+		-- Validator section
+		function ai.dst_src_validator()
+			if not ai.is_dst_src_valid() then
+				ai.cache["dstsrc"] = nil
+				return false
+			end
+			
+			return true
+		end
+		
+		function ai.dst_src_enemy_validator() 
+			if not ai.is_dst_src_enemy_valid() then
+				ai.cache["enemy_dstsrc"] = nil				
+				return false
+			end
+			
+			return true
+		end
+		
+		function ai.src_dst_validator() 
+			if not ai.is_src_dst_valid() then
+				ai.cache["srcdst"] = nil				
+				return false
+			end
+			
+			return true
+		end
+		
+		function ai.src_dst_enemy_validator() 
+			if not ai.is_src_dst_enemy_valid() then
+				ai.cache["enemy_srcdst"] = nil				
+				return false
+			end
+			
+			return true
+		end		
+		
+		-- End of validator section
+		
+		-- Proxy function section
+		
+		function ai.get_cached_dstsrc()	
+			return ai.get_cached_item("dstsrc", "get_dstsrc", "dst_src_validator")
+		end
 
---! ===========================
+		function ai.get_cached_srcdst()
+			return ai.get_cached_item("srcdst", "get_srcdst", "dst_src_enemy_validator")
+		end
+		
+		function ai.get_cached_enemy_dstsrc()
+			return ai.get_cached_item("enemy_dstsrc", "get_enemy_dstsrc", "src_dst_validator")
+		end
 
---! say hello to player via a message
-function ai.say_hello()
-       wesnoth.message(string.format("Hello from Lua AI which controls side %d! It's turn %d.", ai.side, wesnoth.current.turn))
-end
-
---! ===========================
-end
+		function ai.get_cached_enemy_srcdst()
+			return ai.get_cached_item("enemy_srcdst", "get_enemy_srcdst", "src_dst_enemy_validator")
+		end
+		
+		-- End of proxy function section
+	end
 }
 
