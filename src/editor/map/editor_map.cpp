@@ -45,6 +45,10 @@ editor_map::editor_map(const config& terrain_cfg, const display& disp)
 	: gamemap(terrain_cfg, "")
 	, selection_()
 	, labels_(disp, NULL)
+	, units_()
+	, teams_()
+	, tod_manager_()
+	, state_()
 {
 }
 
@@ -55,6 +59,7 @@ editor_map::editor_map(const config& terrain_cfg, const config& level, const dis
 	, units_()
 	, teams_()
 	, tod_manager_(level)
+	, state_()
 {
 	labels_.read(level);
 
@@ -80,6 +85,10 @@ editor_map::editor_map(const config& terrain_cfg, const std::string& data, const
 	: gamemap(terrain_cfg, data)
 	, selection_()
 	, labels_(disp, NULL)
+	, units_()
+	, teams_()
+	, tod_manager_()
+	, state_()
 {
 	sanity_check();
 }
@@ -97,10 +106,23 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 	}
 }
 
-editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, t_translation::t_terrain filler, const display& disp)
-	: gamemap(terrain_cfg, t_translation::write_game_map(t_translation::t_map(width + 2, t_translation::t_list(height + 2, filler))))
+editor_map::editor_map(
+		  const config& terrain_cfg
+		, size_t width
+		, size_t height
+		, t_translation::t_terrain filler
+		, const display& disp)
+	: gamemap(
+			  terrain_cfg
+			, t_translation::write_game_map(t_translation::t_map(
+				  width + 2
+				, t_translation::t_list(height + 2, filler))))
 	, selection_()
 	, labels_(disp, NULL)
+	, units_()
+	, teams_()
+	, tod_manager_()
+	, state_()
 {
 	sanity_check();
 }
@@ -109,6 +131,10 @@ editor_map::editor_map(const gamemap& map, const display& disp)
 	: gamemap(map)
 	, selection_()
 	, labels_(disp, NULL)
+	, units_()
+	, teams_()
+	, tod_manager_()
+	, state_()
 {
 	sanity_check();
 }
