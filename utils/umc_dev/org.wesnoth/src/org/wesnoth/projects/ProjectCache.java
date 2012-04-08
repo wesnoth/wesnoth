@@ -221,7 +221,7 @@ public class ProjectCache implements Serializable
     {
         try {
             if( ! definesFile_.exists( ) ) {
-                definesFile_.createNewFile( );
+                ResourceUtils.createNewFile( definesFile_.getAbsolutePath( ) );
             }
 
             FileWriter writer = new FileWriter( definesFile_ );
