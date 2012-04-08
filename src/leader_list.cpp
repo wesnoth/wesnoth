@@ -91,7 +91,6 @@ void leader_list_manager::update_leader_list(int side_index)
 	}
 
 	const std::string default_leader = side["type"];
-	const std::string random_leader = "random";
 	size_t default_index = 0;
 
 	std::vector<std::string>::const_iterator itor;
@@ -107,10 +106,7 @@ void leader_list_manager::update_leader_list(int side_index)
 		leaders_.push_back(default_leader);
 	}
 
-	if (default_leader != random_leader) {
-		leaders_.push_back(random_leader);
-	}
-
+	leaders_.push_back("random");
 	populate_leader_combo(default_index);
 }
 
