@@ -353,6 +353,10 @@ public class WMLTools
                             location, false, stdout, stderr );
                         break;
                 }
+                if( toolInvoker_ == null ) {
+                    return Status.CANCEL_STATUS;
+                }
+
                 monitor.worked( 50 );
                 // need to fill up to '1000' worked
                 // we will add 1 for each 2 lines of output (for each file)
