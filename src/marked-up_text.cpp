@@ -378,7 +378,7 @@ inline bool no_break_after(const wchar_t ch)
 		 * don't break after these Chinese characters
 		 * contains left side of different kinds of brackets and quotes
 		 */
-		ch == 0x3014 || ch == 0x3016 || ch == 0x301a || ch == 0x300a || ch == 0x300c ||
+		ch == 0x3014 || ch == 0x3016 || ch == 0x301a ||
 		ch == 0x300e || ch == 0x3010 || ch == 0x301d;
 }
 
