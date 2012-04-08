@@ -80,6 +80,16 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
         WesnothInstallsUtils.fillComboWithInstalls( cmbInstalls_ );
     }
 
+    protected void updatePageIsComplete( )
+    {
+        if( cmbInstalls_.getText( ).isEmpty( ) ) {
+            setErrorMessage( "Please select a valid Wesnoth Install." );
+            return;
+        }
+
+        setMessage( null );
+    }
+
     /**
      * Returns true if the project needs a {@code build.xml} file.
      * 
@@ -164,5 +174,12 @@ public class WizardProjectPageTemplate extends WizardNewProjectCreationPage
 
         monitor.done( );
         return currentProject;
+    }
+
+    @Override
+    public boolean isPageComplete( )
+    {
+        updatePageIsComplete( );
+        return super.isPageComplete( ) && ! cmbInstalls_.getText( ).isEmpty( );
     }
 }
