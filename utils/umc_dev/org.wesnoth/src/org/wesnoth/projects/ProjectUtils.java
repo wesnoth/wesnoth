@@ -31,6 +31,7 @@ import org.wesnoth.preferences.Preferences;
 import org.wesnoth.preferences.Preferences.Paths;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
+import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.views.WesnothProjectsExplorer;
@@ -106,6 +107,11 @@ public class ProjectUtils
     {
         ProjectCache cache = getCacheForProject( project );
         Paths paths = Preferences.getPaths( cache.getInstallName( ) );
+
+        if( ! paths.isValid( ) ) {
+            return false;
+        }
+
         IFolder coreLibrary = project
             .getFolder( WesnothProjectsExplorer.CORE_LIBRARY_NAME );
 
@@ -115,17 +121,15 @@ public class ProjectUtils
                 if( coreLibrary.exists( ) ) {
                     // the new Core Library will point to the same location.
                     // Skip it then.
-                    if( coreLibrary.getLocation( ).equals(
-                        paths.getCoreDirPath( ) ) ) {
+                    if( coreLibrary.getLocation( ).equals( paths.getCoreDirPath( ) ) ) {
                         return true;
                     }
 
                     coreLibrary.delete( true, new NullProgressMonitor( ) );
                 }
 
-                coreLibrary
-                    .createLink( paths.getCoreDirPath( ), updateFlags,
-                        new NullProgressMonitor( ) );
+                coreLibrary.createLink( paths.getCoreDirPath( ), updateFlags,
+                    new NullProgressMonitor( ) );
 
                 coreLibrary.setDerived( true, new NullProgressMonitor( ) );
             } catch( CoreException e ) {
@@ -135,10 +139,10 @@ public class ProjectUtils
         }
         else {
             Logger.getInstance( ).log(
-                "Couldn't create link on:" + paths.getCoreDir( )
-                    + "; project: " + project.getName( ),
-                "Cannot create the Wesnoth Core Library folder for project "
-                    + project.getName( ) + "!" );
+                "Couldn't create link on:" + paths.getCoreDir( ) //$NON-NLS-1$
+                    + "; project: " + project.getName( ), //$NON-NLS-1$
+                "Cannot create the Wesnoth Core Library folder for project " //$NON-NLS-1$
+                    + project.getName( ) + "!" ); //$NON-NLS-1$
             return false;
         }
 
@@ -237,6 +241,11 @@ public class ProjectUtils
             return - 1;
         }
 
+        if( installName.isEmpty( ) ) {
+            GUIUtils.showErrorMessageBox( Messages.ProjectUtils_7 );
+            return - 1;
+        }
+
         try {
             String projectPath = null;
 
@@ -251,7 +260,7 @@ public class ProjectUtils
                 // project is in workspace
                 projectPath = ResourcesPlugin.getWorkspace( ).getRoot( )
                     .getLocation( ).toOSString( )
-                    + "/" + handle.getProject( ).getName( );
+                    + "/" + handle.getProject( ).getName( ); //$NON-NLS-1$
             }
 
             monitor.subTask( Messages.ProjectUtils_0 );

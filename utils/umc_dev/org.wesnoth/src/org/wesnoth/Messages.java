@@ -164,6 +164,7 @@ public class Messages extends NLS
     public static String        ProjectUtils_0;
     public static String        ProjectUtils_4;
     public static String        ProjectUtils_6;
+    public static String ProjectUtils_7;
     public static String        ResourceUtils_5;
     public static String        ScenarioNewWizard_0;
     public static String        ScenarioNewWizard_2;

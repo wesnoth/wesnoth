@@ -189,9 +189,8 @@ public class WesnothInstallsUtils
             }
 
             if( GUIUtils
-                .showMessageBox( String.format(
-                    Messages.WesnothInstallsUtils_1, resource
-                        .getProject( ).getName( ) ),
+                .showMessageBox( String.format( Messages.WesnothInstallsUtils_1,
+                    resource.getProject( ).getName( ) ),
                     SWT.ICON_QUESTION | SWT.YES | SWT.NO ) == SWT.NO ) {
                 return false; // no hope :(
             }

@@ -315,6 +315,11 @@ public class Preferences extends AbstractPreferenceInitializer
             installName_ = installName;
         }
 
+        public boolean isValid( )
+        {
+            return installName_ != null && ! installName_.isEmpty( );
+        }
+
         /**
          * Returns the install name associated with this instance
          * 
