@@ -789,8 +789,13 @@ static std::string number_to_string_(t_terrain terrain, const int start_position
 		result = str_cast(start_position) + " ";
 	}
 
+	/*
+	 * The initialisation of tcode is done to make gcc-4.7 happy. Otherwise it
+	 * some uninitialised fields might be used. Its analysis are wrong, but
+	 * initialise to keep it happy.
+	 */
+	unsigned char tcode[9] = {0};
 	// Insert the terrain tcode
-	unsigned char tcode[9];
 	tcode[0] = ((terrain.base & 0xFF000000) >> 24);
 	tcode[1] = ((terrain.base & 0x00FF0000) >> 16);
 	tcode[2] = ((terrain.base & 0x0000FF00) >> 8);
