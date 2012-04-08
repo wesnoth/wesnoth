@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
 		}
 		else if (val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
-					<< " [-hV] [-s <schema_file>] ]\n"
+					<< " [-hV] [-i <input_file>] [-s <schema_file>]\n"
 					<< " -h, --help\t\t\t"
 					<< "Shows this usage message.\n"
 					<< " -s, --schema <schema_file>\t"
