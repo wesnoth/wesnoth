@@ -1417,7 +1417,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	config::attribute_value cfg_ai_special = cfg["ai_special"];
-	if (!cfg_ai_special.blank() && ((cfg_ai_special.str() == "guardian" ? true : false)  != get_state(STATE_GUARDIAN))) {
+	if (!cfg_ai_special.blank() && ((cfg_ai_special.str() == "guardian")  != get_state(STATE_GUARDIAN))) {
 		return false;
 	}
 
