@@ -39,8 +39,6 @@
 #include "statistics.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/bind.hpp>
-
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
 #define LOG_REPLAY LOG_STREAM(info, log_replay)
@@ -977,8 +975,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			map_location loc(child, resources::state_of_game);
 			map_location from(child.child_or_empty("from"), resources::state_of_game);
 
-			std::vector<unit>::iterator recall_unit = std::find_if(current_team.recall_list().begin(),
-				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id));
+			std::vector<unit>::iterator recall_unit =
+				find_if_matches_id(current_team.recall_list(), unit_id);
 
 			if (recall_unit != current_team.recall_list().end()) {
 				statistics::recall_unit(*recall_unit);
@@ -995,8 +993,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		else if (const config &child = cfg->child("disband"))
 		{
 			const std::string& unit_id = child["value"];
-			std::vector<unit>::iterator disband_unit = std::find_if(current_team.recall_list().begin(),
-				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id));
+			std::vector<unit>::iterator disband_unit =
+				find_if_matches_id(current_team.recall_list(), unit_id);
 
 			if(disband_unit != current_team.recall_list().end()) {
 				current_team.recall_list().erase(disband_unit);

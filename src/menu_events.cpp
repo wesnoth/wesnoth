@@ -65,8 +65,6 @@
 #include "whiteboard/manager.hpp"
 #include "widgets/combo.hpp"
 
-#include <boost/bind.hpp>
-
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -123,7 +121,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		std::vector<unit>& recall_list = (*resources::teams)[u.side() -1].recall_list();
 		assert(!recall_list.empty());
 		std::vector<unit>::iterator dismissed_unit =
-				std::find_if(recall_list.begin(), recall_list.end(), boost::bind(&unit::matches_id, _1, u.id()));
+				find_if_matches_id(recall_list, u.id());
 		assert(dismissed_unit != recall_list.end());
 		recall_list.erase(dismissed_unit);
 		recorder.add_disband(dismissed_unit->id());
@@ -1029,10 +1027,7 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 	team &current_team = teams_[side_num - 1];
 	std::vector<unit>& recall_list_team = current_team.recall_list();
 
-	wb::unit_comparator_predicate comparator(un);
-
-	std::vector<unit>::iterator it = std::find_if(recall_list_team.begin(),
-			recall_list_team.end(), comparator);
+	std::vector<unit>::iterator it = find_if_matches_id(recall_list_team, un.id());
 	if (it == recall_list_team.end())
 	{
 		ERR_NG << "menu_handler::do_recall(): Unit doesn't exist in recall list.\n";
@@ -1200,8 +1195,8 @@ void menu_handler::redo(int side_num)
 		} else {
 			//redo a dismissal
 			recorder.add_disband(action.affected_unit.id());
-			std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(),
-				current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, action.affected_unit.id()));
+			std::vector<unit>::iterator unit_it =
+				find_if_matches_id(current_team.recall_list(), action.affected_unit.id());
 			current_team.recall_list().erase(unit_it);
 			resources::whiteboard->on_gamestate_change();
 		}
@@ -1220,8 +1215,8 @@ void menu_handler::redo(int side_num)
 			if(msg.empty()) {
 				unit un = action.affected_unit;
 				//remove the unit from the recall list
-				std::vector<unit>::iterator unit_it = std::find_if(current_team.recall_list().begin(),
-					current_team.recall_list().end(), boost::bind(&unit::matches_id, _1, action.affected_unit.id()));
+				std::vector<unit>::iterator unit_it =
+					find_if_matches_id(current_team.recall_list(), action.affected_unit.id());
 				assert(unit_it != current_team.recall_list().end());
 				current_team.recall_list().erase(unit_it);
 

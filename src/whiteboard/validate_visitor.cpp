@@ -261,8 +261,7 @@ void validate_visitor::visit(recall_ptr recall)
 	if (recall->is_valid())
 	{
 		const std::vector<unit>& recalls = (*resources::teams)[team_index].recall_list();
-		if (std::find_if(recalls.begin(), recalls.end(),
-				unit_comparator_predicate(*recall->temp_unit_)) == recalls.end())
+		if ( find_if_matches_id(recalls, recall->temp_unit_->id()) == recalls.end() )
 		{
 			recall->set_valid(false);
 			LOG_WB << " Validate visitor: Planned recall invalid since unit is not in recall list anymore.\n";

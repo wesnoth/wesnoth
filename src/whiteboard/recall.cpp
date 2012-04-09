@@ -134,8 +134,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 
 	//temporarily remove unit from recall list
 	std::vector<unit>& recalls = resources::teams->at(team_index()).recall_list();
-	std::vector<unit>::iterator it = std::find_if(recalls.begin(), recalls.end(),
-					unit_comparator_predicate(*temp_unit_));
+	std::vector<unit>::iterator it = find_if_matches_id(recalls, temp_unit_->id());
 	assert(it != recalls.end());
 	recalls.erase(it);
 

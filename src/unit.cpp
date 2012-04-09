@@ -38,6 +38,8 @@
 #include "side_filter.hpp"
 #include "play_controller.hpp"
 
+#include <boost/bind.hpp>
+
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
 #define LOG_UT LOG_STREAM(info, log_unit)
@@ -2854,6 +2856,48 @@ unit_movement_resetter::~unit_movement_resetter()
 	u_.movement_ = moves_;
 }
 
+bool unit::matches_id(const std::string& unit_id) const
+{
+        return id_ == unit_id;
+}
+
+/**
+ * Used to find units in vectors by their ID. (Convenience wrapper)
+ * @returns what std::find_if() returns.
+ */
+std::vector<unit>::iterator find_if_matches_id(
+		std::vector<unit> &unit_list, // Not const so we can get a non-const iterator to return.
+		const std::string &unit_id)
+{
+	return std::find_if(unit_list.begin(), unit_list.end(),
+	                    boost::bind(&unit::matches_id, _1, unit_id));
+}
+
+/**
+ * Used to find units in vectors by their ID. (Convenience wrapper; const version)
+ * @returns what std::find_if() returns.
+ */
+std::vector<unit>::const_iterator find_if_matches_id(
+		const std::vector<unit> &unit_list,
+		const std::string &unit_id)
+{
+	return std::find_if(unit_list.begin(), unit_list.end(),
+	                    boost::bind(&unit::matches_id, _1, unit_id));
+}
+
+/**
+ * Used to erase units from vectors by their ID. (Convenience wrapper)
+ * @returns what std::vector<>::erase() returns.
+ */
+std::vector<unit>::iterator erase_if_matches_id(
+		std::vector<unit> &unit_list,
+		const std::string &unit_id)
+{
+	return unit_list.erase(std::remove_if(unit_list.begin(), unit_list.end(),
+	                                      boost::bind(&unit::matches_id, _1, unit_id)),
+	                       unit_list.end());
+}
+
 int side_units(int side)
 {
 	int res = 0;
@@ -3127,7 +3171,3 @@ std::string get_checksum(const unit& u) {
 	return wcfg.hash();
 }
 
-bool unit::matches_id(const std::string& unit_id) const
-{
-	return id_ == unit_id;
-}

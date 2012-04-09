@@ -39,8 +39,6 @@
 #include "tod_manager.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <boost/bind.hpp>
-
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -257,7 +255,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 	temp_cfg.remove_attribute("animate");
 
 	std::vector<unit> &recall_list = team_.recall_list();
-	std::vector<unit>::iterator recall_list_element = std::find_if(recall_list.begin(), recall_list.end(), boost::bind(&unit::matches_id, _1, id));
+	std::vector<unit>::iterator recall_list_element = find_if_matches_id(recall_list, id);
 
 	if ( recall_list_element == recall_list.end() ) {
 		//make a temporary unit
@@ -290,7 +288,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id << "\n";
 			post_create(loc,*(resources::units->find(loc)),animate);
 			//if id is not empty, delete units with this ID from recall list
-			recall_list.erase(std::remove_if(recall_list.begin(),recall_list.end(),boost::bind(&unit::matches_id, _1, id)), recall_list.end());
+			erase_if_matches_id(recall_list, id);
 		}
 	}
 }

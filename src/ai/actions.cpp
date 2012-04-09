@@ -49,8 +49,6 @@
 #include "../statistics.hpp"
 #include "../team.hpp"
 
-#include <boost/bind.hpp>
-
 namespace ai {
 
 static lg::log_domain log_ai_actions("ai/actions");
@@ -536,7 +534,7 @@ recall_result::recall_result(side_number side,
 
 bool recall_result::test_available_for_recalling(const team &my_team)
 {
-	const std::vector<unit>::const_iterator rec = std::find_if(my_team.recall_list().begin(), my_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id_));
+	const std::vector<unit>::const_iterator rec = find_if_matches_id(my_team.recall_list(), unit_id_);
 	if (rec == my_team.recall_list().end()) {
 		set_error(E_NOT_AVAILABLE_FOR_RECALLING);
 		return false;
@@ -669,7 +667,7 @@ void recall_result::do_execute()
 
 	const events::command_disabler disable_commands;
 
-	std::vector<unit>::iterator rec = std::find_if(my_team.recall_list().begin(), my_team.recall_list().end(), boost::bind(&unit::matches_id, _1, unit_id_));
+	std::vector<unit>::iterator rec = find_if_matches_id(my_team.recall_list(), unit_id_);
 
 	assert(rec != my_team.recall_list().end());
 
