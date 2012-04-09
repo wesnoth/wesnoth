@@ -59,7 +59,7 @@ static char const aisKey     = 0;
 namespace ai {
 
 static void push_map_location(lua_State *L, const map_location& ml);
-static void push_attack_analysis(lua_State *L, const attack_analysis&);
+static void push_attack_analysis(lua_State *L, attack_analysis&);
 
 void lua_ai_context::init(lua_State *L)
 {
@@ -508,9 +508,40 @@ static int cfun_ai_get_villages_per_scout(lua_State *L)
 }
 // End of aspect section
 
-static void push_attack_analysis(lua_State *L, const attack_analysis& aa)
+static int cfun_attack_rating(lua_State *L) 
+{
+	int top = lua_gettop(L);
+	// the attack_analysis table should be on top of the stack
+	lua_getfield(L, -1, "att_ptr"); // [-2: attack_analysis; -1: pointer to attack_analysis object in c++]
+	// now the pointer to our attack_analysis C++ object is on top
+	attack_analysis* aa_ptr = static_cast< attack_analysis * >(lua_touserdata(L, -1)); 
+	
+	//[-2: attack_analysis; -1: pointer to attack_analysis object in c++]
+	
+	double aggression = get_readonly_context(L).get_aggression(); 
+	
+	double rating = aa_ptr->rating(aggression, get_readonly_context(L));
+	
+	lua_settop(L, top);
+	
+	lua_pushnumber(L, rating);
+	return 1;
+}
+
+static void push_attack_analysis(lua_State *L, attack_analysis& aa)
 {
 	lua_newtable(L);
+	
+	// Pushing a pointer to the current object 
+	lua_pushstring(L, "att_ptr");
+	lua_pushlightuserdata(L, &aa);
+	lua_rawset(L, -3);
+	
+	// Registering callback function for the rating method
+	lua_pushstring(L, "rating");
+	lua_pushlightuserdata(L, &get_engine(L));
+	lua_pushcclosure(L, &cfun_attack_rating, 1);
+	lua_rawset(L, -3);
 	
 	lua_pushstring(L, "target");	
 	push_map_location(L, aa.target);	
