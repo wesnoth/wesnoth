@@ -2858,37 +2858,45 @@ bool movement_events(const map_location &initial_loc, const map_location &final_
 /**
  * Shows messages (on the screen) as a result of movement.
  *
- * @param final_loc[in]		The final location of the movement.
  * @param stops[in]		The flags raised while moving.
  * @param cut_short[in]		true if movement did not make it to the end of the plotted path.
  * @param current_team[in]	The moving team.
  * @param spectator[out]	Told of seen friends and enemies.
  */
-void movement_feedback( const map_location &final_loc, const movement_surprises &stops,
-			bool move_cut_short, const team &current_team,
-			move_unit_spectator *spectator)
+void movement_feedback(const movement_surprises &stops, bool move_cut_short,
+                       const team &current_team, move_unit_spectator *spectator)
 {
 	// Alias some resources.
 	const unit_map &units = *resources::units;
 	game_display &disp = *resources::screen;
 
 	bool redraw = false;
+	bool playing_team_is_viewing = disp.playing_team() == disp.viewing_team()
+	                               ||  disp.show_everything();
 
 	// Ambush feedback?
-	if ( stops.ambush_stop && !disp.fogged(final_loc) ) {
-		disp.announce(stops.ambushed_string, font::BAD_COLOR);
-		redraw = true;
+	if ( stops.ambush_stop ) {
+		// Suppress the message for observers if the ambusher(s) cannot be seen.
+		bool show_message = playing_team_is_viewing;
+		foreach (const map_location &ambush, stops.ambushers) {
+			if ( !disp.fogged(ambush) )
+				show_message = true;
+		}
+		if ( show_message ) {
+			disp.announce(stops.ambushed_string, font::BAD_COLOR);
+			redraw = true;
+		}
 	}
 
 	// Failed teleport feedback?
-	if ( stops.teleport_failed ) {
+	if ( playing_team_is_viewing  &&  stops.teleport_failed ) {
 		std::string teleport_string = _("Failed teleport! Exit not empty");
 		disp.announce(teleport_string, font::BAD_COLOR);
 		redraw = true;
 	}
 
 	// Sighted units feedback?
-	if ( !stops.seen_units.empty() ) {
+	if ( playing_team_is_viewing  &&  !stops.seen_units.empty() ) {
 		// Count the number of allies and enemies sighted.
 		int nfriends = 0, nenemies = 0;
 		foreach (const map_location &loc, stops.seen_units) {
@@ -3116,7 +3124,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	}
 
 	// On-screen messages/feedback.
-	movement_feedback(final_loc, stops, steps.size() < route.size(), tm, move_spectator);
+	movement_feedback(stops, steps.size() < route.size(), tm, move_spectator);
 
 	return steps.size();
 }
