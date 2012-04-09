@@ -217,6 +217,10 @@ public:
 		{ return mini_map_.location(screen); }
 	const SDL_Rect& unit_image_location(const SDL_Rect& screen) const
 		{ return unit_image_.location(screen); }
+	const SDL_Rect& palette_location(const SDL_Rect& screen) const
+		{ return palette_.location(screen); }
+	const SDL_Rect& brush_bar_location(const SDL_Rect& screen) const
+		{ return brush_bar_.location(screen); }
 
     static void set_known_themes(const config* cfg);
     static std::vector<std::string> get_known_themes();
@@ -246,7 +250,7 @@ private:
 
 	std::map<std::string,status_item> status_;
 
-	object main_map_, mini_map_, unit_image_;
+	object main_map_, mini_map_, unit_image_, palette_, brush_bar_;
 
 	tborder border_;
 };
