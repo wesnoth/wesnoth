@@ -59,6 +59,7 @@ static char const aisKey     = 0;
 namespace ai {
 
 static void push_map_location(lua_State *L, const map_location& ml);
+static void push_attack_analysis(lua_State *L, const attack_analysis&);
 
 void lua_ai_context::init(lua_State *L)
 {
@@ -338,6 +339,22 @@ static int cfun_ai_get_attack_depth(lua_State *L)
 	return 1;
 }
 
+static int cfun_ai_get_attacks(lua_State *L)
+{
+	ai::attacks_vector attacks = get_readonly_context(L).get_attacks();
+	lua_createtable(L, attacks.size(), 0);
+	int table_index = lua_gettop(L);
+	
+	ai::attacks_vector::iterator it = attacks.begin();	
+	for (int i = 1; it != attacks.end(); it++, i++) 
+	{
+		push_attack_analysis(L, *it);
+		
+		lua_rawseti(L, table_index, i);
+	}
+	return 1;
+}
+
 static int cfun_ai_get_avoid(lua_State *L)
 {
 	std::set<map_location> locs;
@@ -491,6 +508,71 @@ static int cfun_ai_get_villages_per_scout(lua_State *L)
 }
 // End of aspect section
 
+static void push_attack_analysis(lua_State *L, const attack_analysis& aa)
+{
+	lua_newtable(L);
+	
+	lua_pushstring(L, "target");	
+	push_map_location(L, aa.target);	
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "target_value");
+	lua_pushnumber(L, aa.target_value);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "avg_losses");
+	lua_pushnumber(L, aa.avg_losses);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "chance_to_kill");
+	lua_pushnumber(L, aa.chance_to_kill);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "avg_damage_inflicted");
+	lua_pushnumber(L, aa.avg_damage_inflicted);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "target_starting_damage");
+	lua_pushinteger(L, aa.target_starting_damage);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "avg_damage_taken");
+	lua_pushnumber(L, aa.avg_damage_taken);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "resources_used");
+	lua_pushnumber(L, aa.resources_used);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "terrain_quality");
+	lua_pushnumber(L, aa.alternative_terrain_quality);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "alternative_terrain_quality");
+	lua_pushnumber(L, aa.alternative_terrain_quality);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "vulnerability");
+	lua_pushnumber(L, aa.vulnerability);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "support");
+	lua_pushnumber(L, aa.support);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "leader_threat");
+	lua_pushboolean(L, aa.leader_threat);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "uses_leader");
+	lua_pushboolean(L, aa.uses_leader);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "is_surrounded");
+	lua_pushboolean(L, aa.is_surrounded);
+	lua_rawset(L, -3);
+}
+
 static void push_map_location(lua_State *L, const map_location& ml)
 {
 	lua_createtable(L, 2, 0);
@@ -643,6 +725,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ "get_aggression", 		&cfun_ai_get_aggression           	},
 		{ "get_avoid", 			&cfun_ai_get_avoid			},
 		{ "get_attack_depth",		&cfun_ai_get_attack_depth		},
+		{ "get_attacks",		&cfun_ai_get_attacks			},
 		{ "get_caution", 		&cfun_ai_get_caution			},
 		{ "get_grouping",		&cfun_ai_get_grouping			},
 		{ "get_leader_aggression", 	&cfun_ai_get_leader_aggression		},
