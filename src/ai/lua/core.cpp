@@ -528,6 +528,32 @@ static int cfun_attack_rating(lua_State *L)
 	return 1;
 }
 
+static void push_movements(lua_State *L, const std::vector< std::pair < map_location, map_location > > & moves)
+{
+	lua_createtable(L, moves.size(), 0);
+	
+	int table_index = lua_gettop(L);
+	
+	std::vector< std::pair < map_location, map_location > >::const_iterator move = moves.begin();
+	
+	for (int i = 1; move != moves.end(); move++, i++)
+	{
+		lua_createtable(L, 2, 0); // Creating a table for a pair of map_location's
+		
+		lua_pushstring(L, "first");
+		push_map_location(L, move->first);
+		lua_rawset(L, -3);
+		
+		lua_pushstring(L, "second");
+		push_map_location(L, move->second);
+		lua_rawset(L, -3);
+	
+		lua_rawseti(L, table_index, i); // setting  the pair as an element of the movements table
+	}	
+	
+	
+}
+
 static void push_attack_analysis(lua_State *L, attack_analysis& aa)
 {
 	lua_newtable(L);
@@ -541,6 +567,10 @@ static void push_attack_analysis(lua_State *L, attack_analysis& aa)
 	lua_pushstring(L, "rating");
 	lua_pushlightuserdata(L, &get_engine(L));
 	lua_pushcclosure(L, &cfun_attack_rating, 1);
+	lua_rawset(L, -3);
+	
+	lua_pushstring(L, "movements");
+	push_movements(L, aa.movements);
 	lua_rawset(L, -3);
 	
 	lua_pushstring(L, "target");	
