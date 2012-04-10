@@ -756,11 +756,13 @@ WML_HANDLER_FUNCTION(place_shroud, /*event_info*/,cfg)
 }
 
 /* Implements the lifting and resetting of fog via WML.
- * Setting reset to true causes the current fog to be discarded, which causes
- * all tiles to be fogged for the specified teams (normally only used when
- * clear is false).
+ * Keeping affect_normal_fog as false causes only the fog override to be affected.
+ * Otherwise, fog lifting will be implemented similar to normal sight (cannot be
+ * individually reset and ends at the end of the turn), and fog resetting will, in
+ * addition to removing overrides, extend the specified teams' normal fog to all
+ * hexes.
  */
-static void toggle_fog(const bool clear, const vconfig& cfg, const bool reset=false)
+static void toggle_fog(const bool clear, const vconfig& cfg, const bool affect_normal_fog=false)
 {
 	// Filter the sides.
 	const vconfig &ssf = cfg.child("filter_side");
@@ -776,13 +778,20 @@ static void toggle_fog(const bool clear, const vconfig& cfg, const bool reset=fa
 	foreach (const int &side_num, sides)
 	{
 		team &t = (*resources::teams)[side_num-1];
-		if ( clear )
+		if ( !clear )
+		{
+			// Extend fog.
+			t.remove_fog_override(locs);
+			if ( affect_normal_fog )
+				t.refog();
+		}
+		else if ( !affect_normal_fog )
+			// Force the locations clear of fog.
 			t.add_fog_override(locs);
 		else
-			t.remove_fog_override(locs);
-		// Should this side reset fog?
-		if ( reset )
-			t.refog();
+			// Simply clear fog from the locations.
+			foreach (const map_location &hex, locs)
+				t.clear_fog(hex);
 	}
 
 	// Flag a screen update.
@@ -792,12 +801,11 @@ static void toggle_fog(const bool clear, const vconfig& cfg, const bool reset=fa
 
 WML_HANDLER_FUNCTION(lift_fog, /*event_info*/, cfg)
 {
-	toggle_fog(true, cfg);
+	toggle_fog(true, cfg, !cfg["multiturn"].to_bool(false));
 }
 
-WML_HANDLER_FUNCTION(reset_fog, /*event_info*/,cfg)
+WML_HANDLER_FUNCTION(reset_fog, /*event_info*/, cfg)
 {
-	toggle_fog(false, cfg);
 	toggle_fog(false, cfg, cfg["reset_view"].to_bool(false));
 }
 
