@@ -183,7 +183,7 @@ static int ai_execute_move(lua_State *L, bool remove_movement)
 	if (lua_isboolean(L, index)) {
 		unreach_is_ok = lua_toboolean(L, index);
 	}
-ai::move_result_ptr move_result = ai::actions::execute_move_action(side,true,from,to,remove_movement, unreach_is_ok);
+	ai::move_result_ptr move_result = ai::actions::execute_move_action(side,true,from,to,remove_movement, unreach_is_ok);
 	return transform_ai_action(L,move_result);
 }
 
@@ -218,7 +218,11 @@ static int cfun_ai_execute_attack(lua_State *L)
 	if (!lua_isnoneornil(L, index + 1) &&  attacker_weapon != -1) {
 		attacker_weapon = lua_tointeger(L, index + 1) - 1; // Done for consistency of the Lua style
 	}
-
+	
+	//TODO: Right now, aggression is used by the attack execution functions to determine the weapon to be used.
+	// If a decision is made to expand the function that determines the weapon, this block must be refactored
+	// to parse aggression if a single int is on the stack, or create a table of parameters, if a table is on the
+	// stack.
 	if (!lua_isnoneornil(L, index) && lua_isnumber(L,index)) {
 		aggression = lua_tonumber(L, index);
 	}
