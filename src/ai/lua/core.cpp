@@ -540,11 +540,11 @@ static void push_movements(lua_State *L, const std::vector< std::pair < map_loca
 	{
 		lua_createtable(L, 2, 0); // Creating a table for a pair of map_location's
 		
-		lua_pushstring(L, "first");
+		lua_pushstring(L, "src");
 		push_map_location(L, move->first);
 		lua_rawset(L, -3);
 		
-		lua_pushstring(L, "second");
+		lua_pushstring(L, "dst");
 		push_map_location(L, move->second);
 		lua_rawset(L, -3);
 	
