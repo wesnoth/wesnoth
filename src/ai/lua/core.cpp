@@ -774,10 +774,10 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 	static luaL_Reg const callbacks[] = {
 		{ "attack", 			&cfun_ai_execute_attack			},
 		// Move maps
-		{ "get_dstsrc", 		&cfun_ai_get_dstsrc			},
-		{ "get_srcdst", 		&cfun_ai_get_srcdst			},
-		{ "get_enemy_dstsrc", 		&cfun_ai_get_enemy_dstsrc		},
-		{ "get_enemy_srcdst", 		&cfun_ai_get_enemy_srcdst		},
+		{ "get_new_dstsrc", 		&cfun_ai_get_dstsrc			},
+		{ "get_new_srcdst", 		&cfun_ai_get_srcdst			},
+		{ "get_new_enemy_dstsrc", 	&cfun_ai_get_enemy_dstsrc		},
+		{ "get_new_enemy_srcdst", 	&cfun_ai_get_enemy_srcdst		},
 		// End of move maps
 		// Goals and targets
 		{ "get_targets",		&cfun_ai_get_targets			},

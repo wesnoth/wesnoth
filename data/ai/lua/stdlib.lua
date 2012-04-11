@@ -49,20 +49,20 @@ return {
 		
 		-- Proxy function section
 		
-		function ai.get_cached_dstsrc()	
-			return ai.get_cached_item("dstsrc", "get_dstsrc", "dst_src_validator")
+		function ai.get_dstsrc()	
+			return ai.get_cached_item("dstsrc", "get_new_dstsrc", "dst_src_validator")
 		end
 
-		function ai.get_cached_srcdst()
-			return ai.get_cached_item("srcdst", "get_srcdst", "dst_src_enemy_validator")
+		function ai.get_srcdst()
+			return ai.get_cached_item("srcdst", "get_new_srcdst", "dst_src_enemy_validator")
 		end
 		
-		function ai.get_cached_enemy_dstsrc()
-			return ai.get_cached_item("enemy_dstsrc", "get_enemy_dstsrc", "src_dst_validator")
+		function ai.get_enemy_dstsrc()
+			return ai.get_cached_item("enemy_dstsrc", "get_new_enemy_dstsrc", "src_dst_validator")
 		end
 
-		function ai.get_cached_enemy_srcdst()
-			return ai.get_cached_item("enemy_srcdst", "get_enemy_srcdst", "src_dst_enemy_validator")
+		function ai.get_enemy_srcdst()
+			return ai.get_cached_item("enemy_srcdst", "get_new_enemy_srcdst", "src_dst_enemy_validator")
 		end
 		
 		-- End of proxy function section
