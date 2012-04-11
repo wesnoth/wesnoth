@@ -17,18 +17,18 @@
 
 namespace resources
 {
-	game_display *screen;
-	soundsource::manager *soundsources;
-	gamemap *game_map;
-	unit_map *units;
-	std::vector<team> *teams;
-	game_state *state_of_game;
-	LuaKernel *lua_kernel;
-	play_controller *controller;
-	::tod_manager *tod_manager;
-	pathfind::manager *tunnels;
-	wb::manager *whiteboard;
-	std::vector<undo_action> *undo_stack;
-	std::vector<undo_action> *redo_stack;
-	persist_manager *persist;
+	game_display *screen = NULL;
+	soundsource::manager *soundsources = NULL;
+	gamemap *game_map = NULL;
+	unit_map *units = NULL;
+	std::vector<team> *teams = NULL;
+	game_state *state_of_game = NULL;
+	LuaKernel *lua_kernel = NULL;
+	play_controller *controller = NULL;
+	::tod_manager *tod_manager = NULL;
+	pathfind::manager *tunnels = NULL;
+	wb::manager *whiteboard = NULL;
+	std::vector<undo_action> *undo_stack = NULL;
+	std::vector<undo_action> *redo_stack = NULL;
+	persist_manager *persist = NULL;
 }

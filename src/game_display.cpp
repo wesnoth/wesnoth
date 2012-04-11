@@ -266,7 +266,9 @@ void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scrol
 }
 
 void game_display::pre_draw() {
-	resources::whiteboard->pre_draw();
+	if (resources::whiteboard) {
+		resources::whiteboard->pre_draw();
+	}
 	process_reachmap_changes();
 	/**
 	 * @todo FIXME: must modify changed, but best to do it at the
@@ -277,7 +279,9 @@ void game_display::pre_draw() {
 
 
 void game_display::post_draw() {
-	resources::whiteboard->post_draw();
+	if (resources::whiteboard) {
+		resources::whiteboard->post_draw();
+	}
 }
 
 void game_display::draw_invalidated()
