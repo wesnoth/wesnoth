@@ -4,18 +4,19 @@ return {
 	init = function(ai)
 		
 		ai.cache = {}
+		ai.cache.data = {}
 
-		function ai.update_cache(item, getter)
-			ai.cache[item] = ai[getter]()
-			return ai.cache[item]
+		function ai.cache.update_cache(item, getter)
+			ai.cache.data[item] = ai.cache[getter]()
+			return ai.cache.data[item]
 		end
 
-		function ai.get_cached_item(item, getter, validator)
-			if not ai.cache[item] or not ai[validator]() then
-				local result = ai.update_cache(item, getter)
+		function ai.cache.get_cached_item(item, getter, validator)
+			if not ai.cache.data[item] or not ai.cache[validator]() then
+				local result = ai.cache.update_cache(item, getter)
 				return result
 			end
-			return ai.cache[item]
+			return ai.cache.data[item]
 
 		end
 	end
