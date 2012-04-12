@@ -1054,6 +1054,29 @@ void unit::new_turn()
 	attacks_left_ = max_attacks_;
 	set_state(STATE_UNCOVERED, false);
 
+	bool rebuild_from_type = false;
+	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
+		const std::string& mod_name = ModificationTypes[i];
+		for (int j = modifications_.child_count(mod_name) - 1; j >= 0; --j)
+		{
+			const config &mod = modifications_.child(mod_name, j);
+			const std::string& duration = mod["duration"];
+			if (duration == "turn") {
+				if (const config::attribute_value *v = mod.get("prev_type")) {
+					type_ = v->str();
+				}
+				modifications_.remove_child(mod_name, j);
+				rebuild_from_type = true;
+			}
+		}
+	}
+	if(rebuild_from_type) {
+		int old_hp = hit_points_;
+		advance_to(type());
+		if(hit_points_ > old_hp)
+			hit_points_ = old_hp;
+	}
+
 	if (hold_position_) {
 		end_turn_ = true;
 	}
