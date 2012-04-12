@@ -368,4 +368,16 @@ function helper.deprecate(msg, f)
 	end
 end
 
+function helper.round( number )
+	-- code converted from util.hpp, round_portable function
+	-- round half away from zero method
+	if number >= 0 then
+		number = math.floor( number + 0.5 )
+	else
+		number = math.ceil ( number - 0.5 )
+	end
+
+	return number
+end
+
 return helper
