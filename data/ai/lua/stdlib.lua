@@ -8,9 +8,28 @@ return {
 		local cache = wesnoth.require("ai/lua/cache.lua")
 		cache.init(ai)
 		
+		-- Hiding of get_new_* and is_*_valid methods
+		local to_hide = {
+			[1] = "get_new_src_dst",
+			[2] = "get_new_dst_src",
+			[3] = "get_new_enemy_src_dst",
+			[4] = "get_new_enemy_dst_src",
+			[5] = "is_enemy_dst_src_valid",
+			[6] = "is_dst_src_valid",
+			[7] = "is_src_dst_valid",
+			[8] = "is_enemy_src_dst_valid"
+		}
+		
+		for i, v in ipairs(to_hide) do
+			ai.cache[v] = ai[v]
+			ai[v] = nil
+		end
+		
+		-- End of hiding get_new_* methods		
+		
 		-- Validator section
 		function ai.cache.dst_src_validator()
-			if not ai.is_dst_src_valid() then
+			if not ai.cache.is_dst_src_valid() then
 				ai.cache.data["dst_src"] = nil
 				return false
 			end
@@ -18,8 +37,8 @@ return {
 			return true
 		end
 		
-		function ai.cache.dst_src_enemy_validator() 
-			if not ai.is_dst_src_enemy_valid() then
+		function ai.cache.enemy_dst_src_validator() 
+			if not ai.cache.is_enemy_dst_src_valid() then
 				ai.cache.data["enemy_dst_src"] = nil				
 				return false
 			end
@@ -28,7 +47,7 @@ return {
 		end
 		
 		function ai.cache.src_dst_validator() 
-			if not ai.is_src_dst_valid() then
+			if not ai.cache.is_src_dst_valid() then
 				ai.cache.data["src_dst"] = nil				
 				return false
 			end
@@ -36,8 +55,8 @@ return {
 			return true
 		end
 		
-		function ai.cache.src_dst_enemy_validator() 
-			if not ai.is_src_dst_enemy_valid() then
+		function ai.cache.enemy_src_dst_validator() 
+			if not ai.cache.is_enemy_src_dst_valid() then
 				ai.cache.data["enemy_src_dst"] = nil				
 				return false
 			end
@@ -47,21 +66,6 @@ return {
 		
 		-- End of validator section
 		
-		-- Hiding of get_new_* methods
-		local to_hide = {
-			[1] = "get_new_src_dst",
-			[2] = "get_new_dst_src",
-			[3] = "get_new_enemy_src_dst",
-			[4] = "get_new_enemy_dst_src"
-		}
-		
-		for i, v in ipairs(to_hide) do
-			ai.cache[v] = ai[v]
-			ai[v] = nil
-		end
-		
-		-- End of hiding get_new_* methods
-		
 		-- Proxy function section
 		
 		function ai.get_dst_src()	
@@ -69,7 +73,7 @@ return {
 		end
 
 		function ai.get_src_dst()
-			return ai.cache.get_cached_item("src_dst", "get_new_src_dst", "dst_src_enemy_validator")
+			return ai.cache.get_cached_item("src_dst", "get_new_src_dst", "enemy_dst_src_validator")
 		end
 		
 		function ai.get_enemy_dst_src()
@@ -77,7 +81,7 @@ return {
 		end
 
 		function ai.get_enemy_src_dst()
-			return ai.cache.get_cached_item("enemy_src_dst", "get_new_enemy_src_dst", "src_dst_enemy_validator")
+			return ai.cache.get_cached_item("enemy_src_dst", "get_new_enemy_src_dst", "enemy_src_dst_validator")
 		end
 		
 		-- End of proxy function section

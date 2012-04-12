@@ -810,9 +810,9 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		// End of aspects
 		// Validation/cache functions
 		{ "is_dst_src_valid",		&cfun_ai_is_dst_src_valid		},
-		{ "is_dst_src_enemy_valid",	&cfun_ai_is_dst_src_enemy_valid		},
+		{ "is_enemy_dst_src_valid",	&cfun_ai_is_dst_src_enemy_valid		},
 		{ "is_src_dst_valid",		&cfun_ai_is_src_dst_valid		},
-		{ "is_src_dst_enemy_valid",	&cfun_ai_is_src_dst_enemy_valid		},
+		{ "is_enemy_src_dst_valid",	&cfun_ai_is_src_dst_enemy_valid		},
 		// End of validation functions
 		{ "move",             		&cfun_ai_execute_move_partial		},
 		{ "move_full",        		&cfun_ai_execute_move_full        	},
