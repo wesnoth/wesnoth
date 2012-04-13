@@ -177,14 +177,38 @@ struct comp {
 };
 }
 
-static void find_routes(const gamemap& map, const unit& u,
+/**
+ * Creates a list of routes that a unit can traverse from the provided location.
+ * (This is called when creating pathfind::paths and descendent classes.)
+ *
+ * @param map[in]              The gamemap to use (for identifying terrain).
+ * @param units[in]            Currently unused.
+ * @param u[in]                The unit whose moves and movement type will be used.
+ * @param loc[in]              The location at which to begin the routes.
+ * @param move_left[in]        The number of movement points left for the current turn.
+ * @param destinations[out]    The traversable routes.
+ * @param edges[out]           The hexes (possibly off-map) adjacent to those in
+ *                             destinations. (It is permissible for this to contain
+ *                             some hexes that are also in destinations.)
+ * @param teams[in]            The teams of the game (for recognizing enemies).
+ * @param force_ignore_zoc[in] Set to true to completely ignore zones of control.
+ * @param allow_teleport[in]   Set to true to consider teleportation abilities.
+ * @param turns_left[in]       The number of additional turns of movement to use,
+ *                             in addition to the current turn.
+ * @param viewing_team[in]     Usually the current team, except for "show enemy
+ *                             moves", etc. Relevant if allowing teleports or
+ *                             if not ignoring units.
+ * @param see_all[in]          Set to true to remove unit visibility from consideration.
+ * @param ignore_units[in]     Set to true if units should never obstruct paths
+ *                             (implies ignoring ZoC as well).
+ */
+static void find_routes(const gamemap& map, const unit& u, const map_location& loc,
 		int move_left, pathfind::paths::dest_vect &destinations,
-		const team &current_team,
+		std::set<map_location> *edges, const team &current_team,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
 		const team &viewing_team,
 		bool see_all, bool ignore_units)
 {
-	const map_location loc = u.get_location();
 	pathfind::teleport_map teleports;
 	if (allow_teleport) {
 	  teleports = pathfind::get_teleport_locations(u, viewing_team, see_all, ignore_units);
@@ -219,7 +243,11 @@ static void find_routes(const gamemap& map, const unit& u,
 		std::copy(allowed_teleports.begin(), allowed_teleports.end(), locs.begin() + 6);
 		get_adjacent_tiles(n.curr, &locs[0]);
 		for (int i = locs.size(); i-- > 0; ) {
-			if (!locs[i].valid(map.w(), map.h())) continue;
+			if (!locs[i].valid(map.w(), map.h())) {
+				if ( edges != NULL )
+					edges->insert(locs[i]);
+				continue;
+			}
 
 			if (locs[i] == n.curr) continue;
 
@@ -245,15 +273,22 @@ static void find_routes(const gamemap& map, const unit& u,
 				t.turns_left--;
 			}
 
-			if (t.movement_left < move_cost || t.turns_left < 0) continue;
+			if (t.movement_left < move_cost || t.turns_left < 0) {
+				if ( edges != NULL )
+					edges->insert(t.curr);
+				continue;
+			}
 
 			t.movement_left -= move_cost;
 
 			if (!ignore_units) {
 				const unit *v =
 					get_visible_unit(locs[i], viewing_team, see_all);
-				if (v && current_team.is_enemy(v->side()))
+				if (v && current_team.is_enemy(v->side())) {
+					if ( edges != NULL )
+						edges->insert(t.curr);
 					continue;
+				}
 
 				if (!force_ignore_zocs && t.movement_left > 0
 				    && pathfind::enemy_zoc(current_team, locs[i], viewing_team, see_all)
@@ -353,6 +388,22 @@ bool pathfind::paths::dest_vect::contains(const map_location &loc) const
 	return find(loc) != end();
 }
 
+/**
+ * Construct a list of paths for the specified unit.
+ *
+ * This function is used for several purposes, including showing a unit's
+ * potential moves and generating currently possible paths.
+ * @param map              The gamemap to use (for identifying terrain).
+ * @param units            The unit_map to use (for identifying units).
+ * @param u                The unit whose moves and movement type will be used.
+ * @param teams            The teams of the game (for recognizing enemies).
+ * @param force_ignore_zoc Set to true to completely ignore zones of control.
+ * @param allow_teleport   Set to true to consider teleportation abilities.
+ * @param viewing_team     Usually the current team, except for "show enemy moves", etc.
+ * @param additional_turns The number of turns to account for, in addition to the current.
+ * @param see_all          Set to true to remove unit visibility from consideration.
+ * @param ignore_units     Set to true if units should never obstruct paths (implies ignoring ZoC as well).
+ */
 pathfind::paths::paths(gamemap const &map, unit_map const &/*units*/,
 		const unit& u, std::vector<team> const &teams,
 		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team,
@@ -363,9 +414,52 @@ pathfind::paths::paths(gamemap const &map, unit_map const &/*units*/,
 		return;
 	}
 
-	find_routes(map, u, u.movement_left(), destinations, teams[u.side()-1],
-	            force_ignore_zoc, allow_teleport, additional_turns,
-	            viewing_team, see_all, ignore_units);
+	find_routes(map, u, u.get_location(), u.movement_left(), destinations, NULL,
+	            teams[u.side()-1], force_ignore_zoc, allow_teleport,
+	            additional_turns, viewing_team, see_all, ignore_units);
+}
+
+/**
+ * Virtual destructor to support child classes.
+ */
+pathfind::paths::~paths()
+{
+}
+
+/**
+ * Constructs a list of vision paths for a unit.
+ *
+ * This is used to construct a list of hexes that the indicated unit can see.
+ * It differs from pathfinding in that it will only ever go out one turn,
+ * and that it will also collect a set of border hexes (the "one hex beyond"
+ * movement to which vision extends).
+ * @param map        The gamemap to use (for identifying terrain).
+ * @param viewer     The unit doing the viewing.
+ * @param loc        The location from which the viewing occurs
+ *                   (does not have to be the unit's location).
+ * @param full_move  Usually this will be true, but if false, the unit's current
+ *                   movement will be used instead of its maximum moves.
+ */
+pathfind::vision_path::vision_path(gamemap const &map, const unit& viewer,
+                                   map_location const &loc, bool full_move)
+	: paths(), edges()
+{
+	const team & viewer_team = (*resources::teams)[viewer.side()-1];
+	const int sight_range = full_move ? viewer.total_movement() :
+	                                    viewer.movement_left();
+
+	// Finding routes: ignore ZoC, disallow teleports, zero turns left,
+	// (viewing team), see all, and ignore units.
+	// (The "see all" setting does not currently matter since teleports are
+	// not allowed and units are ignored. If something changes to make it
+	// significant, I might have incorrectly guessed the appropriate value.)
+	find_routes(map, viewer, loc, sight_range, destinations, &edges,
+	            viewer_team, true, false, 0, viewer_team, true, true);
+}
+
+/// Default destructor
+pathfind::vision_path::~vision_path()
+{
 }
 
 pathfind::marked_route pathfind::mark_route(const plain_route &rt)

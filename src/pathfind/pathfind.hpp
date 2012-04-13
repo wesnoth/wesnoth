@@ -76,20 +76,15 @@ struct paths
 	{
 	}
 
-	// Construct a list of paths for the unit at loc.
-	// - force_ignore_zocs: find the path ignoring ZOC entirely,
-	//                     if false, will use the unit on the loc's ability
-	// - allow_teleport: indicates whether the paths should include teleportation (false for sight)
-	// - additional_turns: if 0, paths for how far the unit can move this turn will be calculated.
-	//                     If 1, paths for how far the unit can move by the end of next turn
-	//                     will be calculated, and so forth.
-	// viewing_team is usually current team, except for Show Enemy Moves etc.
+	/// Construct a list of paths for the specified unit.
 	paths(gamemap const &map,
 	      unit_map const &/*units*/, // Not used
 	      const unit& u, std::vector<team> const &teams,
 	      bool force_ignore_zocs, bool allow_teleport,
-		 const team &viewing_team, int additional_turns = 0,
-		 bool see_all = false, bool ignore_units = false);
+	      const team &viewing_team, int additional_turns = 0,
+	      bool see_all = false, bool ignore_units = false);
+	/// Virtual destructor (default processing).
+	virtual ~paths();
 
 	struct step
 	{
@@ -106,6 +101,20 @@ struct paths
 		std::vector<map_location> get_path(const const_iterator &) const;
 	};
 	dest_vect destinations;
+};
+
+/**
+ * A refinement of paths for use when calculating vision.
+ */
+struct vision_path : public paths
+{
+	/// Construct a list of seen hexes for a unit.
+	vision_path(gamemap const &map, const unit& viewer,
+	            map_location const &loc, bool full_move=true);
+	virtual ~vision_path();
+
+	/// The edges are the non-destination hexes bordering the destinations.
+	std::set<map_location> edges;
 };
 
 /** Structure which holds a single route between one location and another. */

@@ -2271,46 +2271,57 @@ int combat_modifier(const map_location &loc,
 
 namespace {
 
+	/**
+	 * Clears shroud from a single location.
+	 *
+	 * In a few cases, this will also clear corner hexes that otherwise would
+	 * not normally get cleared.
+	 * @param tm       The team whose fog/shroud is affected.
+	 * @param loc      The location to clear.
+	 * @param cleared  If loc is cleared, it gets added to this vector.
+	 * @return true if the specified location was fogged or shrouded.
+	 */
 	bool clear_shroud_loc(team &tm,
 			const map_location& loc,
 			std::vector<map_location>* cleared)
 	{
 		gamemap &map = *resources::game_map;
 		bool result = false;
-		map_location adj[7];
-		get_adjacent_tiles(loc,adj);
-		adj[6] = loc;
-		bool on_board_loc = map.on_board(loc);
-		for(int i = 0; i != 7; ++i) {
 
-			// We clear one past the edge of the board, so that the half-hexes
-			// at the edge can also be cleared of fog/shroud.
-			if (on_board_loc || map.on_board_with_border(adj[i])) {
-				// Both functions should be executed so don't use || which
-				// uses short-cut evaluation.
-				const bool res = tm.clear_shroud(adj[i]) | tm.clear_fog(adj[i]);
+		// We clear one past the edge of the board, so that the half-hexes
+		// at the edge can also be cleared of fog/shroud.
+		if ( map.on_board_with_border(loc)) {
+			// Both functions should be executed so don't use || which
+			// uses short-cut evaluation.
+			result = tm.clear_shroud(loc) | tm.clear_fog(loc);
 
-				if(res) {
-					result = true;
-					// If we're near the corner it might be the corner also needs to be cleared
-					// this always happens at the lower left corner and depending on the with
-					// at the upper or lower right corner.
-					if(adj[i].x == 0 && adj[i].y == map.h() - 1) { // Lower left corner
-						const map_location corner(-1 , map.h());
-						tm.clear_shroud(corner);
-						tm.clear_fog(corner);
-					} else if(map.w() % 2 && adj[i].x == map.w() - 1 && adj[i].y == map.h() - 1) { // Lower right corner
-						const map_location corner(map.w() , map.h());
-						tm.clear_shroud(corner);
-						tm.clear_fog(corner);
-					} else if(!(map.w() % 2) && adj[i].x == map.w() - 1 && adj[i].y == 0) { // Upper right corner
-						const map_location corner(map.w() , -1);
-						tm.clear_shroud(corner);
-						tm.clear_fog(corner);
-					}
-					if(cleared) {
-						cleared->push_back(adj[i]);
-					}
+			if ( result ) {
+				// If we are near a corner, the corner might also need to be cleared.
+				// This happens at the lower-left corner and at either the upper- or
+				// lower- right corner (depending on the width).
+
+				// Lower-left corner:
+				if ( loc.x == 0  &&  loc.y == map.h()-1 ) {
+					const map_location corner(-1, map.h());
+					tm.clear_shroud(corner);
+					tm.clear_fog(corner);
+				}
+				// Lower-right corner, odd width:
+				else if ( is_odd(map.w())  &&  loc.x == map.w()-1  &&  loc.y == map.h()-1 ) {
+					const map_location corner(map.w(), map.h());
+					tm.clear_shroud(corner);
+					tm.clear_fog(corner);
+				}
+				// Upper-right corner, even width:
+				else if ( is_even(map.w())  &&  loc.x == map.w()-1  &&  loc.y == 0) {
+					const map_location corner(map.w(), -1);
+					tm.clear_shroud(corner);
+					tm.clear_fog(corner);
+				}
+
+				// Add the specified location to the feedback vector.
+				if(cleared) {
+					cleared->push_back(loc);
 				}
 			}
 		}
@@ -2336,9 +2347,13 @@ namespace {
 			return false;
 		}
 
-		pathfind::paths p(*resources::game_map, *resources::units, *u, *resources::teams, true, false, tm, 0, false, true);
-		foreach (const pathfind::paths::step &dest, p.destinations) {
+		// Clear the fog.
+		pathfind::vision_path sight(*resources::game_map, *u, loc);
+		foreach (const pathfind::paths::step &dest, sight.destinations) {
 			clear_shroud_loc(tm, dest.curr, &cleared_locations);
+		}
+		foreach (const map_location &dest, sight.edges) {
+			clear_shroud_loc(tm, dest, &cleared_locations);
 		}
 
 		// clear_shroud_loc is supposed not introduce repetition in cleared_locations
