@@ -50,9 +50,9 @@ map_location find_vacant_tile(const gamemap& map,
 			     	   VACANT_TILE_TYPE vacancy=VACANT_ANY,
                                    const unit* pass_check=NULL);
 
-/** Function which determines if a given location is in an enemy zone of control. */
-bool enemy_zoc(std::vector<team> const &teams, map_location const &loc,
-               team const &viewing_team, int side, bool see_all=false);
+/** Determines if a given location is in an enemy zone of control. */
+bool enemy_zoc(team const &current_team, map_location const &loc,
+               team const &viewing_team, bool see_all=false);
 
 
 struct cost_calculator
@@ -85,7 +85,7 @@ struct paths
 	//                     will be calculated, and so forth.
 	// viewing_team is usually current team, except for Show Enemy Moves etc.
 	paths(gamemap const &map,
-	      unit_map const &units,
+	      unit_map const &/*units*/, // Not used
 	      const unit& u, std::vector<team> const &teams,
 	      bool force_ignore_zocs, bool allow_teleport,
 		 const team &viewing_team, int additional_turns = 0,

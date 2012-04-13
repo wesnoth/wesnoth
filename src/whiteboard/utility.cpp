@@ -117,9 +117,10 @@ int path_cost(std::vector<map_location> const& path, unit const& u)
 	if(path.size() < 2)
 		return 0;
 
+	team const& u_team = resources::teams->at(u.side()-1);
 	map_location const& dest = path.back();
-	if((resources::game_map->is_village(dest) && !resources::teams->at(u.side()-1).owns_village(dest))
-			|| pathfind::enemy_zoc(*resources::teams,dest,resources::teams->at(u.side()-1),u.side()))
+	if ( (resources::game_map->is_village(dest) && !u_team.owns_village(dest))
+	     || pathfind::enemy_zoc(u_team, dest, u_team) )
 		return u.total_movement();
 
 	int result = 0;

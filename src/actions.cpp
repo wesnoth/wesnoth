@@ -2513,9 +2513,8 @@ std::vector<map_location>::const_iterator known_movement_end(
 	// Alias some resources.
 	const gamemap &map = *resources::game_map;
 	const unit_map &units = *resources::units;
-	const std::vector<team> &teams = *resources::teams;
 	const int current_side = mover_it->side();
-	const team &current_team = teams[current_side-1];
+	const team &current_team = (*resources::teams)[current_side-1];
 
 	// This loop will end with step pointing one element beyond
 	// where the unit thinks it will stop.
@@ -2538,7 +2537,7 @@ std::vector<map_location>::const_iterator known_movement_end(
 
 		// Check for being unable to leave this hex.
 		if ( !mover_it->get_ability_bool("skirmisher", *step)  &&
-		      pathfind::enemy_zoc(teams, *step, current_team, current_side) ) {
+		      pathfind::enemy_zoc(current_team, *step, current_team) ) {
 			zoc_stop = *step;
 		}
 	}

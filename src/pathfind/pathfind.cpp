@@ -93,22 +93,30 @@ map_location pathfind::find_vacant_tile(const gamemap& map,
 	return map_location();
 }
 
-bool pathfind::enemy_zoc(std::vector<team> const &teams,
-	map_location const &loc, team const &viewing_team, int side, bool see_all)
+/**
+ * Determines if a given location is in an enemy zone of control.
+ *
+ * @param current_team  The moving team (only ZoC of enemies of this team are considered).
+ * @param loc           The location to check.
+ * @param viewing_team  Only units visible to this team are considered.
+ * @param see_all       If true, all units are considered (and viewing_team is ignored).
+ *
+ * @return true iff a visible enemy exerts zone of control over loc.
+ */
+bool pathfind::enemy_zoc(team const &current_team, map_location const &loc,
+                         team const &viewing_team, bool see_all)
 {
+	// Check the adjacent tiles.
 	map_location locs[6];
-	const team &current_team = teams[side-1];
 	get_adjacent_tiles(loc,locs);
 	for (int i = 0; i != 6; ++i)
 	{
 		const unit *u = get_visible_unit(locs[i], viewing_team, see_all);
-		if (u && u->side() != side && current_team.is_enemy(u->side()) &&
-		    u->emits_zoc())
-		{
+		if ( u  &&  current_team.is_enemy(u->side())  &&  u->emits_zoc() )
 			return true;
-		}
 	}
 
+	// No adjacent tiles had an enemy exerting ZoC over loc.
 	return false;
 }
 
@@ -169,16 +177,14 @@ struct comp {
 };
 }
 
-static void find_routes(const gamemap& map, const unit_map& /*units*/,
-		const unit& u,
+static void find_routes(const gamemap& map, const unit& u,
 		int move_left, pathfind::paths::dest_vect &destinations,
-		std::vector<team> const &teams,
+		const team &current_team,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
 		const team &viewing_team,
 		bool see_all, bool ignore_units)
 {
 	const map_location loc = u.get_location();
-	const team& current_team = teams[u.side() - 1];
 	pathfind::teleport_map teleports;
 	if (allow_teleport) {
 	  teleports = pathfind::get_teleport_locations(u, viewing_team, see_all, ignore_units);
@@ -250,7 +256,7 @@ static void find_routes(const gamemap& map, const unit_map& /*units*/,
 					continue;
 
 				if (!force_ignore_zocs && t.movement_left > 0
-				    && pathfind::enemy_zoc(teams, locs[i], viewing_team, u.side(), see_all)
+				    && pathfind::enemy_zoc(current_team, locs[i], viewing_team, see_all)
 						&& !u.get_ability_bool("skirmisher", locs[i])) {
 					t.movement_left = 0;
 				}
@@ -347,7 +353,7 @@ bool pathfind::paths::dest_vect::contains(const map_location &loc) const
 	return find(loc) != end();
 }
 
-pathfind::paths::paths(gamemap const &map, unit_map const &units,
+pathfind::paths::paths(gamemap const &map, unit_map const &/*units*/,
 		const unit& u, std::vector<team> const &teams,
 		bool force_ignore_zoc, bool allow_teleport, const team &viewing_team,
 		int additional_turns, bool see_all, bool ignore_units)
@@ -357,10 +363,9 @@ pathfind::paths::paths(gamemap const &map, unit_map const &units,
 		return;
 	}
 
-	find_routes(map, units, u,
-		u.movement_left(), destinations, teams, force_ignore_zoc,
-		allow_teleport,additional_turns,viewing_team,
-		see_all, ignore_units);
+	find_routes(map, u, u.movement_left(), destinations, teams[u.side()-1],
+	            force_ignore_zoc, allow_teleport, additional_turns,
+	            viewing_team, see_all, ignore_units);
 }
 
 pathfind::marked_route pathfind::mark_route(const plain_route &rt)
@@ -412,7 +417,7 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt)
 			}
 		}
 
-		zoc = enemy_zoc((*resources::teams), *(i + 1), viewing_team,u.side())
+		zoc = enemy_zoc(unit_team, *(i + 1), viewing_team)
 					&& !u.get_ability_bool("skirmisher", *(i+1));
 
 		if (zoc) {
@@ -495,7 +500,7 @@ double pathfind::shortest_path_calculator::cost(const map_location& loc, const d
 
 	// check ZoC
 	if (!ignore_unit_ && remaining_movement != terrain_cost
-	    && enemy_zoc(teams_, loc, viewing_team_, unit_.side(), see_all_)
+	    && enemy_zoc(teams_[unit_.side()-1], loc, viewing_team_, see_all_)
 			&& !unit_.get_ability_bool("skirmisher", loc)) {
 		// entering ZoC cost all remaining MP
 		move_cost += remaining_movement;
