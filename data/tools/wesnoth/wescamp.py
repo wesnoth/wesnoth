@@ -356,14 +356,17 @@ if __name__ == "__main__":
 
     if(options.verbosity == "verbose"):
         logging.basicConfig(level=logging.DEBUG,
-            format='[%(levelname)s] %(message)s')
+            format='[%(levelname)s] %(message)s',
+            stream=sys.stdout)
         quiet_libwml = False
     elif(options.verbosity == "quiet"):
         logging.basicConfig(level=logging.WARN,
-            format='[%(levelname)s] %(message)s')
+            format='[%(levelname)s] %(message)s',
+            stream=sys.stdout)
     else:
         logging.basicConfig(level=logging.INFO,
-            format='[%(levelname)s] %(message)s')
+            format='[%(levelname)s] %(message)s',
+            stream=sys.stdout)
 
     server = "localhost"
     if(options.server != None):
