@@ -736,6 +736,11 @@ void manager::create_temp_move()
 void manager::erase_temp_move()
 {
 	move_arrows_.clear();
+	foreach(fake_unit_ptr const& tmp, fake_units_) {
+		if(tmp) {
+			tmp->invalidate(tmp->get_location());
+		}
+	}
 	fake_units_.clear();
 	route_.reset();
 	temp_move_unit_underlying_id_ = 0;
