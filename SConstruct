@@ -523,7 +523,7 @@ else:
     env["localedir"] = "$datadir/$localedirname"
         
 pythontools = Split("wmlscope wmllint wmlindent wesnoth_addon_manager")
-pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py libsvn.py __init__.py")
+pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py __init__.py")
 
 def CopyFilter(fn):
     "Filter out data-tree things that shouldn't be installed."
