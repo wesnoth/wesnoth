@@ -19,10 +19,9 @@ This utility provides two tools
 * update the translations in a campaign (in the packed campaign)
 """
 
-import sys, os, optparse, tempfile, shutil, logging, socket
+import sys, os.path, optparse, tempfile, shutil, logging, socket
 # in case the wesnoth python package has not been installed
 sys.path.append("data/tools")
-import wmldata as wmldata
 
 #import CampaignClient as libwml
 import wesnoth.campaignserver_client as libwml
