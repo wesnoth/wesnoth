@@ -2646,6 +2646,19 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 
 void display::invalidate_animations()
 {
+	new_animation_frame();
+	animate_map_ = preferences::animate_map();
+	if (animate_map_) {
+		foreach (const map_location &loc, get_visible_hexes())
+		{
+			if (shrouded(loc)) continue;
+			if (builder_->update_animation(loc)) {
+				invalidate(loc);
+			} else {
+				invalidate_animations_location(loc);
+			}
+		}
+	}
 	foreach (unit& u, *units_) {
 		u.refresh();
 	}
@@ -2663,20 +2676,6 @@ void display::invalidate_animations()
 			new_inval |=  unit_list[i]->invalidate(unit_list[i]->get_location());
 		}
 	}while(new_inval);
-
-	new_animation_frame();
-	animate_map_ = preferences::animate_map();
-	if (!animate_map_) return;
-
-	foreach (const map_location &loc, get_visible_hexes())
-	{
-		if (shrouded(loc)) continue;
-		if (builder_->update_animation(loc)) {
-			invalidate(loc);
-		} else {
-			invalidate_animations_location(loc);
-		}
-	}
 }
 
 void display::add_arrow(arrow& arrow)
