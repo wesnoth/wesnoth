@@ -69,7 +69,7 @@ class Addon(object):
                 try:
                     os.remove(os.path.join(self._get_dir(), item))
                 except:
-                    logging.warn("Failed to remove {0}".format(item))
+                    logging.error("Failed to remove {0}".format(item))
 
         if out.find("Already up-to-date.") != -1:
             return False
@@ -81,10 +81,10 @@ class Addon(object):
         elif out.find("CONFLICT") != -1:
             #This means that a conflicting local commit was done
             #Its author will have to fix it
-            logging.warn("CONFLICT in add-on {0}. Please mer".format(self.name))
+            logging.error("CONFLICT in add-on {0}. Please mer".format(self.name))
             return False
         elif err.find("local changes") != -1:
-            logging.warn("Found local changes in add-on {0}.".format(self.name))
+            logging.error("Found local changes in add-on {0}.".format(self.name))
             # If this is a read-write repo, leave the files be
             # If it's read-only, they're not supposed to be here
             if self.readonly:
@@ -102,13 +102,13 @@ class Addon(object):
             return False
         elif err.find("Untracked working tree") != -1:
             if self.readonly:
-                logging.warn("Untracked files blocking pull. Attempting to remove...")
+                logging.error("Untracked files blocking pull. Attempting to remove...")
                 remove_untracked()
             else:
-                logging.warn("Untracked files blocking pull. Please remove.")
+                logging.error("Untracked files blocking pull. Please remove.")
             return False
         else:
-            logging.warn("Unknown pull result in add-on {0}:\n{1}".format(self.name, out))
+            logging.error("Unknown pull result in add-on {0}:\nOut: {1}\nErr: {2}".format(self.name, out, err))
             return False
 
     def sync_from(self, src, exclude):
