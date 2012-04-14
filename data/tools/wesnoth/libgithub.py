@@ -31,17 +31,19 @@ class Addon(object):
 
     Each Addon object belongs to GitHub object and should not be created manually.
     """
-    def __init__(self, github, name):
+    def __init__(self, github, name, readonly):
         """Initialize an Addon object.
 
         Do NOT use this constructor directly.
 
         github: Parent GitHub object that created this object.
         name: Name of the add-on that this object represents.
+        readonly: Whether the add-on has been checked out over git: instead of ssh:
         """
-        logging.debug("Addon created with name {0} and version {1}".format(name, github.version))
+        logging.debug("Addon created with name {0} and version {1}{2}".format(name, github.version, ". It is read-only" if readonly else ""))
         self.github = github
         self.name = name
+        self.readonly = readonly
 
     def erase(self):
         """Erase this add-on.
@@ -59,8 +61,55 @@ class Addon(object):
         logging.debug("Updating add-on {0}".format(self.name))
         # Stuff gets printed to stderr on a checkout of a fresh (empty) repository
         out, err = self._execute(["git", "pull"], check_error=False)
-        #TODO: make this less hacky
-        return len(out.split("\n")) > 2
+
+
+        def remove_untracked():
+            untracked = [line.replace("?? ","",1) for line in self._status() if line.find("??") != -1]
+            for item in untracked:
+                try:
+                    os.remove(os.path.join(self._get_dir(), item))
+                except:
+                    logging.warn("Failed to remove {0}".format(item))
+
+        if out.find("Already up-to-date.") != -1:
+            return False
+        elif out.find("Fast-forward") != -1:
+            return True
+        elif out.find("Merge made by recursive.") != -1:
+            logging.warn("Merge done in add-on {0}.".format(self.name))
+            return True
+        elif out.find("CONFLICT") != -1:
+            #This means that a conflicting local commit was done
+            #Its author will have to fix it
+            logging.warn("CONFLICT in add-on {0}. Please mer".format(self.name))
+            return False
+        elif err.find("local changes") != -1:
+            logging.warn("Found local changes in add-on {0}.".format(self.name))
+            # If this is a read-write repo, leave the files be
+            # If it's read-only, they're not supposed to be here
+            if self.readonly:
+                logging.warn("Attempting to fix.")
+                # Get rid of local modifications
+                self._execute(["git", "reset", "--hard"], check_error=False)
+
+                status = self._status()
+                untracked = [line for line in status if line.find("??") != -1]
+                # I don't want to recursively delete directories
+                if len(untracked) > 0:
+                    logging.warn("Untracked files found. Attempting to remove...")
+                    remove_untracked()
+
+            return False
+        elif err.find("Untracked working tree") != -1:
+            if self.readonly:
+                logging.warn("Untracked files blocking pull. Attempting to remove...")
+                remove_untracked()
+            else:
+                logging.warn("Untracked files blocking pull. Please remove.")
+            return False
+        else:
+            logging.warn("Unknown pull result in add-on {0}:\n{1}".format(self.name, out))
+            return False
 
     def sync_from(self, src, exclude):
         """Synchronises add-on from another directory.
@@ -230,7 +279,7 @@ class GitHub(object):
                 self._clone(repo[0], repo[1])
             else:
                 raise Error("No such add-on found")
-        return Addon(self, name)
+        return Addon(self, name, readonly)
 
     def create_addon(self, name):
         """Creates a new add-on on github.
