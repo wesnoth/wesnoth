@@ -1116,6 +1116,10 @@ void readonly_context_impl::recalculate_move_maps() const
 		}
 	}
 	move_maps_valid_ = true;
+	
+	// invalidate lua cache
+	dst_src_valid_lua_ = false;
+	src_dst_valid_lua_ = false;
 }
 
 
@@ -1126,6 +1130,10 @@ void readonly_context_impl::recalculate_move_maps_enemy() const
 	enemy_possible_moves_ = moves_map();
 	calculate_possible_moves(enemy_possible_moves_,enemy_srcdst_,enemy_dstsrc_,true);
 	move_maps_enemy_valid_ = true;
+	
+	// invalidate lua cache
+	dst_src_enemy_valid_lua_ = false;
+	src_dst_enemy_valid_lua_ = false;
 }
 
 void readonly_context_impl::set_dst_src_valid_lua()

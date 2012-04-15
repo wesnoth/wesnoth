@@ -2,7 +2,7 @@
 
 return {
 
-	init = function(ai)
+	init = function(ai, dbg)
 		
 		-- Initialize the cache system for LuaAI context
 		local cache = wesnoth.require("ai/lua/cache.lua")
@@ -85,6 +85,11 @@ return {
 		end
 		
 		-- End of proxy function section
+		
+		if dbg then
+			local debug = wesnoth.require("ai/lua/debug.lua")
+			debug.init(ai)
+		end
 	end
 }
 

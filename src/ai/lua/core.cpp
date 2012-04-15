@@ -798,6 +798,18 @@ static int cfun_ai_is_src_dst_enemy_valid(lua_State *L)
 	return 1;
 }
 
+static int cfun_ai_recalculate_move_maps(lua_State *L)
+{
+	get_readonly_context(L).recalculate_move_maps();
+	return 1;
+}
+
+static int cfun_ai_recalculate_move_maps_enemy(lua_State *L)
+{
+	get_readonly_context(L).recalculate_move_maps_enemy();
+	return 1;
+}
+
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
 	int res_ai = luaL_loadstring(L, code);//stack size is now 1 [ -1: ai_context]
@@ -822,6 +834,8 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ "get_new_src_dst", 		&cfun_ai_get_srcdst			},
 		{ "get_new_enemy_dst_src", 	&cfun_ai_get_enemy_dstsrc		},
 		{ "get_new_enemy_src_dst", 	&cfun_ai_get_enemy_srcdst		},
+		{ "recalculate_move_maps",	&cfun_ai_recalculate_move_maps		},
+		{ "recalculate_enemy_move_maps",&cfun_ai_recalculate_move_maps_enemy	},
 		// End of move maps
 		// Goals and targets
 		{ "get_targets",		&cfun_ai_get_targets			},
