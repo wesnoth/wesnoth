@@ -167,7 +167,7 @@ static int cfun_ai_get_suitable_keep(lua_State *L)
 	}
 }
 
-static int ai_execute_move(lua_State *L, bool remove_movement)
+static int ai_move(lua_State *L, bool exec, bool remove_movement)
 {
 	int index = 1;
 	if (false) {
@@ -183,21 +183,26 @@ static int ai_execute_move(lua_State *L, bool remove_movement)
 	if (lua_isboolean(L, index)) {
 		unreach_is_ok = lua_toboolean(L, index);
 	}
-	ai::move_result_ptr move_result = ai::actions::execute_move_action(side,true,from,to,remove_movement, unreach_is_ok);
+	ai::move_result_ptr move_result = ai::actions::execute_move_action(side,exec,from,to,remove_movement, unreach_is_ok);
 	return transform_ai_action(L,move_result);
 }
 
 static int cfun_ai_execute_move_full(lua_State *L)
 {
-	return ai_execute_move(L, true);
+	return ai_move(L, true, true);
 }
 
 static int cfun_ai_execute_move_partial(lua_State *L)
 {
-	return ai_execute_move(L, false);
+	return ai_move(L, true, false);
 }
 
-static int cfun_ai_execute_attack(lua_State *L)
+static int cfun_ai_check_move(lua_State *L)
+{
+	return ai_move(L, false, false);
+}
+
+static int ai_attack(lua_State *L, bool exec)
 {
 	int index = 1;
 	if (false) {
@@ -227,11 +232,21 @@ static int cfun_ai_execute_attack(lua_State *L)
 		aggression = lua_tonumber(L, index);
 	}
 
-	ai::attack_result_ptr attack_result = ai::actions::execute_attack_action(side,true,attacker,defender,attacker_weapon,aggression);
+	ai::attack_result_ptr attack_result = ai::actions::execute_attack_action(side,exec,attacker,defender,attacker_weapon,aggression);
 	return transform_ai_action(L,attack_result);
 }
 
-static int ai_execute_stopunit_select(lua_State *L, bool remove_movement, bool remove_attacks)
+static int cfun_ai_execute_attack(lua_State *L)
+{
+	return ai_attack(L, true);
+}
+
+static int cfun_ai_check_attack(lua_State *L)
+{
+	return ai_attack(L, false);
+}
+
+static int ai_stopunit_select(lua_State *L, bool exec, bool remove_movement, bool remove_attacks)
 {
 	int index = 1;
 	if (false) {
@@ -243,26 +258,31 @@ static int ai_execute_stopunit_select(lua_State *L, bool remove_movement, bool r
 	map_location loc;
 	if (!to_map_location(L, index, loc)) goto error_call_destructors;
 
-	ai::stopunit_result_ptr stopunit_result = ai::actions::execute_stopunit_action(side,true,loc,remove_movement,remove_attacks);
+	ai::stopunit_result_ptr stopunit_result = ai::actions::execute_stopunit_action(side,exec,loc,remove_movement,remove_attacks);
 	return transform_ai_action(L,stopunit_result);
 }
 
 static int cfun_ai_execute_stopunit_moves(lua_State *L)
 {
-	return ai_execute_stopunit_select(L, true, false);
+	return ai_stopunit_select(L, true, true, false);
 }
 
 static int cfun_ai_execute_stopunit_attacks(lua_State *L)
 {
-	return ai_execute_stopunit_select(L, false, true);
+	return ai_stopunit_select(L, true, false, true);
 }
 
 static int cfun_ai_execute_stopunit_all(lua_State *L)
 {
-	return ai_execute_stopunit_select(L, true, true);
+	return ai_stopunit_select(L, true, true, true);
 }
 
-static int cfun_ai_execute_recruit(lua_State *L)
+static int cfun_ai_check_stopunit(lua_State *L)
+{
+	return ai_stopunit_select(L, false, true, true);
+}
+
+static int ai_recruit(lua_State *L, bool exec)
 {
 	const char *unit_name = luaL_checkstring(L, 1);
 	int side = get_readonly_context(L).get_side();
@@ -273,11 +293,21 @@ static int cfun_ai_execute_recruit(lua_State *L)
 	}
 	//TODO fendrin: talk to Crab about the from argument.
 	map_location from = map_location::null_location;
-	ai::recruit_result_ptr recruit_result = ai::actions::execute_recruit_action(side,true,std::string(unit_name),where,from);
+	ai::recruit_result_ptr recruit_result = ai::actions::execute_recruit_action(side,exec,std::string(unit_name),where,from);
 	return transform_ai_action(L,recruit_result);
 }
 
-static int cfun_ai_execute_recall(lua_State *L)
+static int cfun_ai_execute_recruit(lua_State *L)
+{
+	return ai_recruit(L, true);
+}
+
+static int cfun_ai_check_recruit(lua_State *L)
+{
+	return ai_recruit(L, false);
+}
+
+static int ai_recall(lua_State *L, bool exec) 
 {
 	const char *unit_id = luaL_checkstring(L, 1);
 	int side = get_readonly_context(L).get_side();
@@ -288,8 +318,18 @@ static int cfun_ai_execute_recall(lua_State *L)
 	}
 	//TODO fendrin: talk to Crab about the from argument.
 	map_location from = map_location::null_location;
-	ai::recall_result_ptr recall_result = ai::actions::execute_recall_action(side,true,std::string(unit_id),where,from);
+	ai::recall_result_ptr recall_result = ai::actions::execute_recall_action(side,exec,std::string(unit_id),where,from);
 	return transform_ai_action(L,recall_result);
+}
+
+static int cfun_ai_execute_recall(lua_State *L)
+{
+	return ai_recall(L, true);
+}
+
+static int cfun_ai_check_recall(lua_State *L)
+{
+	return ai_recall(L, false);
 }
 
 // Goals and targets
@@ -822,6 +862,13 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		{ "stopunit_attacks",		&cfun_ai_execute_stopunit_attacks 	},
 		{ "stopunit_moves",   		&cfun_ai_execute_stopunit_moves 	},
 		{ "suitable_keep",   		&cfun_ai_get_suitable_keep		},
+		{ "check_recall",		&cfun_ai_check_recall			},
+		{ "check_move",			&cfun_ai_check_move			},
+		{ "check_stopunit",		&cfun_ai_check_stopunit			},
+		{ "check_attack",		&cfun_ai_check_attack			},
+		{ "check_recruit",		&cfun_ai_check_recruit			},
+		//{ "",},
+		//{ "",},
 		{ NULL, NULL }
 	};
 
