@@ -67,7 +67,11 @@ class Addon(object):
             untracked = [line.replace("?? ","",1) for line in self._status() if line.find("??") != -1]
             for item in untracked:
                 try:
-                    os.remove(os.path.join(self._get_dir(), item))
+                    path = os.path.join(self._get_dir(), item)
+                    if item.endswith("/"):
+                        shutil.rmtree(path)
+                    else:
+                        os.remove(path)
                 except:
                     logging.error("Failed to remove {0}".format(item))
 
