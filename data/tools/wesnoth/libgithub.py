@@ -106,10 +106,10 @@ class Addon(object):
             return False
         elif err.find("Untracked working tree") != -1:
             if self.readonly:
-                logging.error("Untracked files blocking pull. Attempting to remove...")
+                logging.error("Untracked files blocking pull of {0}. Attempting to remove...".format(self.name))
                 remove_untracked()
             else:
-                logging.error("Untracked files blocking pull. Please remove.")
+                logging.error("Untracked files blocking pull of {0}. Please remove.".format(self.name))
             return False
         else:
             logging.error("Unknown pull result in add-on {0}:\nOut: {1}\nErr: {2}".format(self.name, out, err))
