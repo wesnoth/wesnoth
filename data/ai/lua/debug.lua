@@ -1,9 +1,14 @@
 --! #textdomain wesnoth
 
-return { -- TODO: Disable the ability to register this library
-	 -- if wesnoth started without -d argument
+return {
+	
 	init = function(ai)
 		
+		if (not wesnoth.is_debug_mode()) then
+			wesnoth.message("LuaAI Error", "The LuaAI debug library is only available in debug mode")
+			return
+		end
+	
 		ai.debug = {}
 	
 		function ai.debug.get_dst_src()
@@ -27,4 +32,5 @@ return { -- TODO: Disable the ability to register this library
 		end
 	
 	end
+	
 }

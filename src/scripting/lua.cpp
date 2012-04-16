@@ -1981,6 +1981,17 @@ static int intf_debug(lua_State* L)
 }
 
 /**
+ * Returns a bool value indicating whether the
+ * game is launched in debug mode
+ * - Ret 1: bool
+ */
+static int intf_is_debug_mode(lua_State *L)
+{
+	lua_pushboolean(L, game_config::debug);
+	return 1;
+}
+
+/**
  * Removes all messages from the chat window.
  */
 static int intf_clear_messages(lua_State*)
@@ -3479,6 +3490,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
 		{ "highlight_hex",            &intf_highlight_hex            },
+		{ "is_debug_mode",            &intf_is_debug_mode            },
 		{ "is_enemy",                 &intf_is_enemy                 },
 		{ "match_location",           &intf_match_location           },
 		{ "match_side",               &intf_match_side               },
