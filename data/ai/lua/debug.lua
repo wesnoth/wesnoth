@@ -4,7 +4,7 @@ return {
 	
 	init = function(ai)
 		
-		if (not wesnoth.is_debug_mode()) then
+		if (not wesnoth.game_config.debug) then
 			wesnoth.message("LuaAI Error", "The LuaAI debug library is only available in debug mode")
 			return
 		end
