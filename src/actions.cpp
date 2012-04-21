@@ -2281,9 +2281,8 @@ namespace {
 	 * @param cleared  If loc is cleared, it gets added to this vector.
 	 * @return true if the specified location was fogged or shrouded.
 	 */
-	bool clear_shroud_loc(team &tm,
-			const map_location& loc,
-			std::vector<map_location>* cleared)
+	bool clear_shroud_loc(team &tm, const map_location& loc,
+	                      std::vector<map_location>* cleared)
 	{
 		gamemap &map = *resources::game_map;
 		bool result = false;
@@ -2330,52 +2329,55 @@ namespace {
 	}
 
 	/**
-	 * Returns true if some shroud is cleared.
-	 * seen_units will return new units that have been seen by this unit.
-	 * If known_units is NULL, seen_units can be NULL and will not be changed.
+	 * Clears shroud (and fog) around the provided location for @a view_team as
+	 * if a unit with @a viewer's sight range was standing there.
+	 * (This uses a team parameter instead of a side since it is assumed that
+	 * the caller already checked for fog or shroud being in use. Hence the
+	 * caller has the team readily available.)
+	 * 
+	 * @a seen_units will return new units that have been seen by this unit.
+	 * If @a known_units is NULL, @a seen_units will not be changed (so might as
+	 * well also be NULL).
+	 * If @ known_units is not NULL, but does not contain @ viewer's actual
+	 * location, then it could be possible for a unit to see itself in the case
+	 * where @ viewer managed to end up on a fogged/shrouded location.
+	 *
+	 * @returns true if some shroud (or fog) is cleared.
 	 */
-	bool clear_shroud_unit(const map_location &loc, int side,
-			const std::set<map_location>* known_units = NULL,
-			std::set<map_location>* seen_units = NULL,
-			std::set<map_location>* petrified_units = NULL)
+	bool clear_shroud_unit(const map_location &view_loc, const unit &viewer,
+	                       team &view_team,
+	                       const std::set<map_location>* known_units = NULL,
+	                       std::set<map_location>* seen_units = NULL,
+	                       std::set<map_location>* petrified_units = NULL)
 	{
 		std::vector<map_location> cleared_locations;
-		team &tm = (*resources::teams)[side - 1];
-
-		const unit_map::const_iterator u = resources::units->find(loc);
-		if (!u.valid()) {
-			return false;
-		}
 
 		// Clear the fog.
-		pathfind::vision_path sight(*resources::game_map, *u, loc);
+		pathfind::vision_path sight(*resources::game_map, viewer, view_loc);
 		foreach (const pathfind::paths::step &dest, sight.destinations) {
-			clear_shroud_loc(tm, dest.curr, &cleared_locations);
+			clear_shroud_loc(view_team, dest.curr, &cleared_locations);
 		}
 		foreach (const map_location &dest, sight.edges) {
-			clear_shroud_loc(tm, dest, &cleared_locations);
+			clear_shroud_loc(view_team, dest, &cleared_locations);
 		}
 
-		// clear_shroud_loc is supposed not introduce repetition in cleared_locations
-		for(std::vector<map_location>::const_iterator it =
-				cleared_locations.begin(); it != cleared_locations.end(); ++it) {
-
-			const unit_map::const_iterator sighted = resources::units->find(*it);
-			if (sighted.valid() &&
-			    (!sighted->invisible(*it)
-			     || !tm.is_enemy(sighted->side())))
-			{
-				//check if we know this unit, but we always know ourself
-				//just in case we managed to move on a fogged hex (teleport)
-				if(seen_units != NULL && known_units != NULL
-						&& known_units->count(*it) == 0 && *it != loc) {
-					if (!(sighted->get_state(unit::STATE_PETRIFIED)))
+		// Does the caller want a list of discovered units?
+		if ( seen_units != NULL && known_units != NULL ) {
+			// Loop through the uncovered locations.
+			foreach (const map_location & seen_loc, cleared_locations) {
+				// Skip known units.
+				if ( known_units->count(seen_loc) == 0 ) {
+					// Is there a visible unit here?
+					const unit_map::const_iterator sighted = resources::units->find(seen_loc);
+					if ( sighted.valid()  &&  
+					    (!view_team.is_enemy(sighted->side()) ||
+					     !sighted->invisible(seen_loc)) )
 					{
-						seen_units->insert(*it);
-					}
-					else if (petrified_units != NULL)
-					{
-						petrified_units->insert(*it);
+						// Add this unit to the appropriate list.
+						if ( !sighted->get_state(unit::STATE_PETRIFIED) )
+							seen_units->insert(seen_loc);
+						else if ( petrified_units != NULL )
+							petrified_units->insert(seen_loc);
 					}
 				}
 			}
@@ -2405,11 +2407,10 @@ void recalculate_fog(int side)
 
 	tm.refog();
 
-	foreach (unit &u, *resources::units)
+	foreach (const unit &u, *resources::units)
 	{
 		if (u.side() == side) {
-			const unit_movement_resetter move_resetter(u);
-			clear_shroud_unit(u.get_location(), side);
+			clear_shroud_unit(u.get_location(), u, tm);
 		}
 	}
 
@@ -2438,11 +2439,10 @@ bool clear_shroud(int side, bool reset_fog)
 
 	bool result = false;
 
-	foreach (unit &u, *resources::units)
+	foreach (const unit &u, *resources::units)
 	{
 		if (u.side() == side) {
-			const unit_movement_resetter move_resetter(u);
-			result |= clear_shroud_unit(u.get_location(), side);
+			result |= clear_shroud_unit(u.get_location(), u, tm);
 		}
 	}
 
@@ -2609,7 +2609,7 @@ std::vector<map_location>::const_iterator surprise_movement_end(
 	const gamemap &map = *resources::game_map;
 	unit_map &units = *resources::units;
 	const int current_side = mover_it->side();
-	const team &current_team = (*resources::teams)[current_side-1];
+	team &current_team = (*resources::teams)[current_side-1];
 	game_display &disp = *resources::screen;
 
 	// The set of units currently seen by the moving side:
@@ -2617,9 +2617,8 @@ std::vector<map_location>::const_iterator surprise_movement_end(
 	// (Only needed if we will be clearing fog/shroud.)
 	if ( fog_shroud ) {
 		foreach (const unit &u, units) {
-			if ( !current_team.fogged(u.get_location()) ) {
+			if ( u.side() == current_side  ||  !current_team.fogged(u.get_location()) )
 				known_units.insert(u.get_location());
-			}
 		}
 	}
 
@@ -2658,15 +2657,10 @@ std::vector<map_location>::const_iterator surprise_movement_end(
 		if ( fog_shroud ) {
 			DBG_NG << "Checking for units from " << (step->x+1) << "," << (step->y+1) << ".\n";
 
-			// Create a temporary copy of our unit with full movement.
-			unit temp_unit(*mover_it);
-			temp_unit.set_movement(mover_it->total_movement());
-			// Swap this temp unit with whatever might be in the hex.
-			// It will swap back when this code block ends.
-			const temporary_unit_placer unit_placer(units, *step, temp_unit);
 			// Clear the fog/shroud.
-			flags.display_changed |= clear_shroud_unit(*step, current_side, &known_units,
-							     &flags.seen_units, &flags.petrified_units);
+			flags.display_changed |=
+					clear_shroud_unit(*step, *mover_it, current_team, &known_units,
+					                  &flags.seen_units, &flags.petrified_units);
 
 			if ( !skip_sight && !flags.sighted_something ) {
 				// Check whether a unit was sighted and should interrupt movement.
@@ -3198,9 +3192,8 @@ void apply_shroud_changes(undo_list &undos, int side)
 
 	std::set<map_location> known_units;
 	foreach (const unit &u, units) {
-		if (!tm.fogged(u.get_location())) {
+		if ( u.side() == side  ||  !tm.fogged(u.get_location()) )
 			known_units.insert(u.get_location());
-		}
 	}
 
 	bool cleared_shroud = false;  // for further optimization
@@ -3220,32 +3213,15 @@ void apply_shroud_changes(undo_list &undos, int side)
 		if(unit_itor == units.end())
 			continue;
 
-		//copy the actual unit and reset the copy's current moves
-		//to calculate the visible area correctly
-		unit temp_unit(*unit_itor);
-		const unit_movement_resetter move_resetter(temp_unit);
-		//store the unit's current actual location for raising the sighted events since
-		//unit_itor will be invalid during that step of the loop when we hit this location
+		// Cache the unit's current actual location for raising the sighted events.
 		const map_location actual_location = unit_itor->get_location();
 
 		std::vector<map_location>::const_iterator step;
 		for(step = un->route.begin(); step != un->route.end(); ++step) {
-
-			// we skip places where there is now a unit on the path we moved
-			//Doing this skip is critical since it may miss some situations in which
-			//shroud would have been updated.
-			//Doing it not is also problematic since any units there gets replaced with the
-			//temp_unit for the cause of that loop step - we'll see
-			//if (*step != unit_itor->get_location() && units.find(*step) != units.end()) continue;
-
-			// We have to swap out any unit that is already in the hex,
-			// so we can put our unit there, then we'll swap back at the end.
-			const temporary_unit_placer unit_placer(units, *step, temp_unit);
-
 			// Clear the shroud, and collect new seen_units
 			std::set<map_location> seen_units;
 			std::set<map_location> petrified_units;
-			cleared_shroud |= clear_shroud_unit(*step, side,
+			cleared_shroud |= clear_shroud_unit(*step, *unit_itor, tm,
 				&known_units,&seen_units,&petrified_units);
 
 			// Fire sighted events
