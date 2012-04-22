@@ -38,10 +38,10 @@ static lg::log_domain log_loadscreen("loadscreen");
 #define LOG_LS LOG_STREAM(info, log_loadscreen)
 #define ERR_DP LOG_STREAM(err, log_display)
 
-loadscreen::global_loadscreen_manager* loadscreen::global_loadscreen_manager::manager = 0;
+loadscreen::global_loadscreen_manager* loadscreen::global_loadscreen_manager::manager = NULL;
 
 loadscreen::global_loadscreen_manager::global_loadscreen_manager(CVideo& screen)
-  : owns(global_loadscreen == 0)
+  : owns(global_loadscreen == NULL)
 {
 	if(owns) {
 		manager = this;
@@ -59,11 +59,11 @@ void loadscreen::global_loadscreen_manager::reset()
 {
 	if(owns) {
 		owns = false;
-		manager = 0;
+		manager = NULL;
 		assert(global_loadscreen);
 		global_loadscreen->clear_screen();
 		delete global_loadscreen;
-		global_loadscreen = 0;
+		global_loadscreen = NULL;
 	}
 }
 
