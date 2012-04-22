@@ -67,7 +67,7 @@ void loadscreen::global_loadscreen_manager::reset()
 	}
 }
 
-loadscreen::loadscreen(CVideo &screen, const int &percent):
+loadscreen::loadscreen(CVideo &screen, const int percent):
 	screen_(screen),
 	textarea_(),
 	logo_surface_(image::get_image("misc/logo.png")),

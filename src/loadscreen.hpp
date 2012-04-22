@@ -25,7 +25,7 @@ class CVideo;
 class loadscreen {
 	public:
 		// Preferred constructor
-		explicit loadscreen(CVideo &screen, const int &percent = 0);
+		explicit loadscreen(CVideo &screen, const int percent = 0);
 		// Keep default copy constructor
 		// Keep default copy assignment
 		// Destructor, dumps the counter values to stderr
