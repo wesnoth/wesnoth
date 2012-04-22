@@ -3252,7 +3252,6 @@ void apply_shroud_changes(undo_list &undos, int side)
 	// if (!cleared_shroud) return;
 
 	// render shroud/fog cleared before pumping events
-	// we don't refog yet to avoid hiding sighted stuff
 	if (sighted_event) {
 		disp.invalidate_unit();
 		disp.invalidate_all();
@@ -3262,7 +3261,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 
 	game_events::pump();
 
-	// refog and invalidate stuff
+	// Update shroud (WML might have changed something) and invalidate stuff.
 	disp.invalidate_unit();
 	disp.invalidate_game_status();
 	clear_shroud(side);
