@@ -470,7 +470,7 @@ namespace
 			visit_all_actions();
 		}
 
-		std::set<size_t> get_units_owning_moves() {
+		std::set<size_t> const& get_units_owning_moves() {
 			return move_owners_;
 		}
 
@@ -494,7 +494,7 @@ namespace
 
 void manager::pre_draw()
 {
-	units_owning_moves_.swap(move_owners_finder().get_units_owning_moves());
+	units_owning_moves_ = move_owners_finder().get_units_owning_moves();
 	foreach(size_t unit_id, units_owning_moves_)
 	{
 		unit_map::iterator unit_iter = resources::units->find(unit_id);
