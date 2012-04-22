@@ -194,19 +194,15 @@ void move::accept(visitor& v)
 void move::execute(bool& success, bool& complete)
 {
 	if (!valid_) {
-		success = complete = false;
+		success = false;
+		//Setting complete to true signifies to side_actions to delete the planned action.
+		complete = true;
 		return;
 	}
 
 	if (get_source_hex() == get_dest_hex()) {
 		//zero-hex move, used by attack subclass
 		success = complete = true;
-		return;
-	}
-
-	//Ensure destination hex is free
-	if (get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != NULL) {
-		success = complete = false;
 		return;
 	}
 
@@ -242,7 +238,8 @@ void move::execute(bool& success, bool& complete)
 	if (final_location == route_->steps.front())
 	{
 		LOG_WB << "Move execution resulted in zero movement.\n";
-		success = complete = false;
+		success = false;
+		complete = true;
 	}
 	else if (final_location.valid() &&
 			(unit_it = resources::units->find(final_location)) != resources::units->end()
@@ -266,6 +263,8 @@ void move::execute(bool& success, bool& complete)
 		}
 		else // Move was interrupted, probably by enemy unit sighted
 		{
+			success = false;
+
 			LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "), analyzing\n";
 			std::vector<map_location>::iterator start_new_path;
 			bool found = false;
@@ -285,19 +284,20 @@ void move::execute(bool& success, bool& complete)
 				//FIXME: probably better to use the new calculate_new_route instead of doing this
 				route_->steps = new_path;
 				arrow_->set_path(new_path);
-				success = complete = false;
+				complete = false;
 			}
 			else //Unit ended up in location outside path, likely due to a WML event
 			{
 				WRN_WB << "Unit ended up in location outside path during move execution.\n";
-				success = complete = true;
+				complete = true;
 			}
 		}
 	}
 	else //Unit disappeared from the map, likely due to a WML event
 	{
 		WRN_WB << "Unit disappeared from map during move execution.\n";
-		success = complete = true;
+		success = false;
+		complete = true;
 	}
 
 	if(!complete)

@@ -158,9 +158,10 @@ bool side_actions::execute(side_actions::iterator position)
 	}
 
 	bool action_successful;
-	bool should_erase;
+	// Determines whether action should be deleted. Interrupted moves return action_complete == false.
+	bool action_complete;
 	try	{
-		 action->execute(action_successful,should_erase);
+		 action->execute(action_successful,action_complete);
 	} catch (end_turn_exception&) {
 		synced_erase(position);
 		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
@@ -174,7 +175,7 @@ bool side_actions::execute(side_actions::iterator position)
 
 	std::stringstream ss;
 	ss << "After " << (action_successful? "successful": "failed") << " execution ";
-	if(should_erase)
+	if(action_complete)
 	{
 		ss << "with deletion, ";
 		synced_erase(position);

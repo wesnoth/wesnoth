@@ -93,6 +93,11 @@ validate_visitor::VALIDITY validate_visitor::evaluate_move_validity(move_ptr m_p
 	if (m.unit_id_ != unit_it->id() || m.unit_underlying_id_ != unit_it->underlying_id())
 		return WORTHLESS;
 
+	//If the path has at least two hexes (it can have less with the attack subclass), ensure destination hex is free
+	if (m.get_route().steps.size() >= 2 && get_visible_unit(m.get_dest_hex(),resources::teams->at(viewer_team())) != NULL) {
+		return WORTHLESS;
+	}
+
 	//check that the path is good
 	if (m.get_source_hex() != m.get_dest_hex()) //skip zero-hex move used by attack subclass
 	{
@@ -160,25 +165,34 @@ void validate_visitor::visit(attack_ptr attack)
 	resources::screen->invalidate(attack->get_dest_hex());
 	resources::screen->invalidate(attack->target_hex_);
 
-	//Verify that the target hex is still valid
-	//and Verify that the target hex isn't empty
-	if (!attack->target_hex_.valid()
-			|| resources::units->find(attack->target_hex_) == resources::units->end())
+	if  (
+			// Verify that the unit that planned this attack exists
+			attack->get_unit()
+			// Verify that the target hex is still valid
+			&& attack->target_hex_.valid()
+			// Verify that the target hex isn't empty
+			&& resources::units->find(attack->target_hex_) != resources::units->end()
+			// Verify that the attacking unit has attacks left
+			&& attack->get_unit()->attacks_left() > 0
+			// Verify that the attacker and target are enemies
+			&& (*resources::teams)[attack->get_unit()->side() - 1].is_enemy(resources::units->find(attack->target_hex_)->side())
+
+			//@todo: (maybe) verify that the target hex contains the same unit that before,
+			// comparing for example the unit ID
+		)
 	{
-		if(viewer_team() == attack->team_index()) //< Don't mess with any other team's queue -- only our own
+		//All checks pass, so call the visitor on the superclass
+		visit(boost::static_pointer_cast<move>(attack));
+	}
+	else
+		{
+		attack->set_valid(false);
+
+		if (viewer_team() == attack->team_index()) //< Don't mess with any other team's queue -- only our own
 		{
 			LOG_WB << "Worthless invalid attack detected, adding to actions_to_erase_.\n";
 			actions_to_erase_.insert(attack);
 		}
-	}
-	else //All checks pass, so call the visitor on the superclass
-	{
-		//@todo: verify that the target hex contains the same unit that before,
-		// comparing for example the unit ID
-
-		//@todo: Verify that the target unit is our enemy
-
-		visit(boost::static_pointer_cast<move>(attack));
 	}
 }
 

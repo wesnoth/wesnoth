@@ -22,8 +22,6 @@
 
 #include "typedefs.hpp"
 
-#include "map_location.hpp"
-
 namespace wb
 {
 

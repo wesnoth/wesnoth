@@ -20,9 +20,6 @@
 #ifndef WB_ACTION_HPP_
 #define WB_ACTION_HPP_
 
-#include "config.hpp"
-#include "map_location.hpp"
-
 #include "typedefs.hpp"
 
 namespace wb {

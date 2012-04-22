@@ -21,7 +21,6 @@
 #define WB_SUPPOSE_DEAD_HPP_
 
 #include "action.hpp"
-#include "map_location.hpp"
 
 namespace wb {
 
