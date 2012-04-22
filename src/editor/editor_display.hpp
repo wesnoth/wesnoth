@@ -37,7 +37,7 @@ public:
 	void rebuild_terrain(const map_location &loc);
 	void set_toolbar_hint(const std::string& value) { toolbar_hint_ = value; }
 
-	void set_palette_report(const config palette_report) {palette_report_ = palette_report;};
+	void set_palette_report(const config& palette_report) {palette_report_ = palette_report;};
 
 protected:
 	void pre_draw();
