@@ -210,7 +210,6 @@ void move::execute(bool& success, bool& complete)
 
 	set_arrow_brightness(ARROW_BRIGHTNESS_HIGHLIGHTED);
 	hide_fake_unit();
-	unghost_owner_unit(get_unit());
 
 	events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
 	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), side_number());
@@ -304,13 +303,6 @@ void move::execute(bool& success, bool& complete)
 	{
 		set_arrow_brightness(ARROW_BRIGHTNESS_STANDARD);
 		show_fake_unit();
-		ghost_owner_unit(get_unit());
-	}
-
-	//if unit has other moves besides this one, set it back to ghosted visuals
-	//@todo handle this in a more centralized fashion
-	if (resources::teams->at(team_index()).get_side_actions()->count_actions_of(get_unit()) > 1) {
-		ghost_owner_unit(get_unit());
 	}
 }
 

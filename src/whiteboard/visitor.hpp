@@ -75,6 +75,8 @@ protected:
 private:
 	void visit_all_helper( const bool reverse)
 	{
+		assert(resources::teams != NULL);
+
 		Derived* const new_this = static_cast<Derived*>(this);
 
 		//Determine how many turns' worth of plans there are

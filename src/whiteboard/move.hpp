@@ -76,7 +76,7 @@ public:
 	virtual map_location get_numbering_hex() const;
 
 	virtual void set_valid(bool valid);
-	virtual bool is_valid() { return valid_; }
+	virtual bool is_valid() const { return valid_; }
 
 	virtual config to_config() const;
 

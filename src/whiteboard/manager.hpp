@@ -111,8 +111,17 @@ public:
 	/** Whether the planned unit map is currently applied */
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
 
+
 	/**
-	 * Callback from the display when drawing hexes, to allow the whiteboard to
+	 * Called from the display before drawing.
+	 */
+	void pre_draw();
+	/**
+	 * Called from the display after drawing.
+	 */
+	void post_draw();
+	/**
+	 * Called from the display when drawing hexes, to allow the whiteboard to
 	 * add visual elements. Some visual elements such as arrows and fake units
 	 * are not handled through this function, but separately registered with the display.
 	 */
@@ -233,6 +242,9 @@ private:
 
 	///team_plans_hidden_[i] = whether or not to hide actions from teams[i].
 	std::vector<bool> team_plans_hidden_;
+
+	///used to keep track of units owning planned moves for visual ghosting/unghosting
+	std::set<size_t> units_owning_moves_;
 };
 
 /** Applies the planned unit map for the duration of the struct's life.

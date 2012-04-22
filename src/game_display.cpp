@@ -274,12 +274,22 @@ void game_display::scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scrol
 }
 
 void game_display::pre_draw() {
+	if (resources::whiteboard) {
+	resources::whiteboard->pre_draw();
+	}
 	process_reachmap_changes();
 	/**
 	 * @todo FIXME: must modify changed, but best to do it at the
 	 * floating_label level
 	 */
 	prune_chat_messages();
+}
+
+
+void game_display::post_draw() {
+	if (resources::whiteboard) {
+	resources::whiteboard->post_draw();
+	}
 }
 
 void game_display::draw_invalidated()
