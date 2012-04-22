@@ -75,9 +75,7 @@ protected:
 private:
 	void visit_all_helper( const bool reverse)
 	{
-		if( resources::teams == NULL ){
-			return; //< Early abort
-		}
+		assert(resources::teams != NULL);
 
 		Derived* const new_this = static_cast<Derived*>(this);
 

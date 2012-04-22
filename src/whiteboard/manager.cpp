@@ -136,6 +136,7 @@ void manager::print_help_once()
 bool manager::can_modify_game_state() const
 {
 	if(wait_for_side_init_
+					|| resources::teams == NULL
 					|| executing_actions_
 					|| is_observer()
 					|| resources::controller->is_linger_mode())
@@ -494,12 +495,15 @@ namespace
 
 void manager::pre_draw()
 {
-	units_owning_moves_ = move_owners_finder().get_units_owning_moves();
-	foreach(size_t unit_id, units_owning_moves_)
+	if (can_modify_game_state() && has_actions())
 	{
-		unit_map::iterator unit_iter = resources::units->find(unit_id);
-		assert(unit_iter.valid());
-		ghost_owner_unit(&*unit_iter);
+		units_owning_moves_ = move_owners_finder().get_units_owning_moves();
+		foreach(size_t unit_id, units_owning_moves_)
+		{
+			unit_map::iterator unit_iter = resources::units->find(unit_id);
+			assert(unit_iter.valid());
+			ghost_owner_unit(&*unit_iter);
+		}
 	}
 }
 
