@@ -137,6 +137,7 @@ Version 1.11.0-svn:
    * Fixed bug #19538: Filters matching 0 saved games cause crash
    * Clicking a unit does not reveal adjacent hidden units (bug #19381).
  * Whiteboard
+   * Partly fixed bug #19626: segfaults on window resize
    * Fixed bug #19369: Using planning mode can cause losing ability to move my units
    * Fixed bug #19408: Crash shortly after executing invalid multi-turn move
    * Fixed bug #19581: Leader can still move after a planned recall

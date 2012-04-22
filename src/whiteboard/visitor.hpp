@@ -75,6 +75,10 @@ protected:
 private:
 	void visit_all_helper( const bool reverse)
 	{
+		if( resources::teams == NULL ){
+			return; //< Early abort
+		}
+
 		Derived* const new_this = static_cast<Derived*>(this);
 
 		//Determine how many turns' worth of plans there are
