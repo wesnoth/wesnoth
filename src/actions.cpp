@@ -2295,6 +2295,9 @@ namespace {
 			result = tm.clear_shroud(loc) | tm.clear_fog(loc);
 
 			if ( result ) {
+				// Do not count clearing the map border as part of the return value.
+				result = map.on_board(loc);
+
 				// If we are near a corner, the corner might also need to be cleared.
 				// This happens at the lower-left corner and at either the upper- or
 				// lower- right corner (depending on the width).
@@ -2317,12 +2320,12 @@ namespace {
 					tm.clear_shroud(corner);
 					tm.clear_fog(corner);
 				}
-
-				// Add the specified location to the feedback vector.
-				if(cleared) {
-					cleared->push_back(loc);
-				}
 			}
+		}
+
+		// Add the specified location to the feedback vector?
+		if ( result && cleared ) {
+			cleared->push_back(loc);
 		}
 
 		return result;
