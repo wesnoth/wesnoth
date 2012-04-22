@@ -242,6 +242,9 @@ private:
 
 	///team_plans_hidden_[i] = whether or not to hide actions from teams[i].
 	std::vector<bool> team_plans_hidden_;
+
+	///used to keep track of units owning planned moves for visual ghosting/unghosting
+	std::set<size_t> units_owning_moves_;
 };
 
 /** Applies the planned unit map for the duration of the struct's life.

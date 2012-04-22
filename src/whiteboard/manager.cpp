@@ -23,6 +23,7 @@
 #include "highlight_visitor.hpp"
 #include "mapbuilder.hpp"
 #include "move.hpp"
+#include "attack.hpp"
 #include "recall.hpp"
 #include "recruit.hpp"
 #include "side_actions.hpp"
@@ -72,7 +73,8 @@ manager::manager():
 		key_poller_(new CKey),
 		hidden_unit_hexes_(),
 		net_buffer_(resources::teams->size()),
-		team_plans_hidden_(resources::teams->size(),preferences::hide_whiteboard())
+		team_plans_hidden_(resources::teams->size(),preferences::hide_whiteboard()),
+		units_owning_moves_()
 {
 	LOG_WB << "Manager initialized.\n";
 }
@@ -468,41 +470,49 @@ namespace
 			visit_all_actions();
 		}
 
-		std::set<unit*> get_move_owners() {
+		std::set<size_t> get_units_owning_moves() {
 			return move_owners_;
 		}
 
-		using enable_visit_all<move_owners_finder>::visit_all;
-
 	private:
 		virtual void visit(move_ptr move) {
-			move_owners_.insert(move->get_unit());
+			move_owners_.insert(move->get_unit()->underlying_id());
 		}
-		virtual void visit(attack_ptr){}
+		virtual void visit(attack_ptr attack) {
+			//also add attacks if they have an associated move
+			if (boost::static_pointer_cast<move>(attack)->get_route().steps.size() >= 2) {
+				move_owners_.insert(attack->get_unit()->underlying_id());
+			}
+		}
 		virtual void visit(recruit_ptr){}
 		virtual void visit(recall_ptr){}
 		virtual void visit(suppose_dead_ptr){}
 
-		std::set<unit*> move_owners_;
+		std::set<size_t> move_owners_;
 	};
 }
 
 void manager::pre_draw()
 {
-	std::set<unit*> move_owners = move_owners_finder().get_move_owners();
-	foreach(unit* unit, move_owners)
+	units_owning_moves_.swap(move_owners_finder().get_units_owning_moves());
+	foreach(size_t unit_id, units_owning_moves_)
 	{
-		ghost_owner_unit(unit);
+		unit_map::iterator unit_iter = resources::units->find(unit_id);
+		assert(unit_iter.valid());
+		ghost_owner_unit(&*unit_iter);
 	}
 }
 
 void manager::post_draw()
 {
-	std::set<unit*> move_owners = move_owners_finder().get_move_owners();
-	foreach(unit* unit, move_owners)
+	foreach(size_t unit_id, units_owning_moves_)
 	{
-		unghost_owner_unit(unit);
+		unit_map::iterator unit_iter = resources::units->find(unit_id);
+		if (unit_iter.valid()) { 
+			unghost_owner_unit(&*unit_iter);
+		}
 	}
+	units_owning_moves_.clear();
 }
 
 namespace
