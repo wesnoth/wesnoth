@@ -22,6 +22,8 @@ Version 1.10.2+svn:
    * Fix $owner_side in capture events fired due to unit movement
  * Miscellaneous and bug fixes:
    * Fixed: A preprocessor bug looking beyond the end of a buffer.
+   * Fixed: Binding a temporary in the network code, possibly causing
+     crashing.
 
 Version 1.10.2:
  * Campaigns:
