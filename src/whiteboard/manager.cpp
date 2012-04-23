@@ -970,11 +970,15 @@ bool manager::allow_end_turn()
 
 bool manager::execute_all_actions()
 {
+	//exception-safety: finalizers set variables to false on destruction
+	//i.e. when method exits naturally or exception is thrown
+	variable_finalizer<bool> finalize_executing_actions(executing_actions_, false);
+	variable_finalizer<bool> finalize_executing_all_actions(executing_all_actions_, false);
+
 	validate_viewer_actions();
 	if(viewer_actions()->empty() || viewer_actions()->turn_size(0) == 0)
 	{
 		//No actions to execute, job done.
-		executing_all_actions_ = false;
 		return true;
 	}
 
@@ -987,8 +991,6 @@ bool manager::execute_all_actions()
 	assert(has_planned_unit_map());
 	set_real_unit_map();
 
-	//exception-safety: Finalizer sets executing_actions to false on destruction
-	variable_finalizer<bool> finally(executing_actions_, false);
 	executing_actions_ = true;
 	executing_all_actions_ = true;
 
@@ -1003,31 +1005,23 @@ bool manager::execute_all_actions()
 
 	while (sa->turn_begin(0) != sa->turn_end(0))
 	{
-		bool action_successful;
-		try {
-			action_successful = sa->execute(sa->begin());
-		} catch (end_level_exception&) { //satisfy the gods of WML
-			executing_all_actions_ = false;
-			throw;
-		} catch (end_turn_exception&) { //satisfy the gods of WML
-			executing_all_actions_ = false;
-			throw;
-		}
+		bool action_successful = sa->execute(sa->begin());
+
 		// Interrupt if an attack is waiting for a random seed from the server
 		if ( rand_rng::has_new_seed_callback())
 		{
 			//leave executing_all_actions_ to true, we'll resume once attack completes
+			finalize_executing_all_actions.clear();
+
 			events::commands_disabled++; //to be decremented by continue_execute_all()
 			return false;
 		}
 		// Interrupt on incomplete action
 		if (!action_successful)
 		{
-			executing_all_actions_ = false;
 			return false;
 		}
 	}
-	executing_all_actions_ = false;
 	return true;
 }
 
