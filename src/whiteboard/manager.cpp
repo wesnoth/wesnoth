@@ -497,13 +497,13 @@ void manager::pre_draw()
 {
 	if (can_modify_game_state() && has_actions())
 	{
-	units_owning_moves_ = move_owners_finder().get_units_owning_moves();
-	foreach(size_t unit_id, units_owning_moves_)
-	{
-		unit_map::iterator unit_iter = resources::units->find(unit_id);
-		assert(unit_iter.valid());
-		ghost_owner_unit(&*unit_iter);
-	}
+		units_owning_moves_ = move_owners_finder().get_units_owning_moves();
+		foreach(size_t unit_id, units_owning_moves_)
+		{
+			unit_map::iterator unit_iter = resources::units->find(unit_id);
+			assert(unit_iter.valid());
+			ghost_owner_unit(&*unit_iter);
+		}
 	}
 }
 
@@ -514,7 +514,7 @@ void manager::post_draw()
 		unit_map::iterator unit_iter = resources::units->find(unit_id);
 		if (unit_iter.valid()) { 
 			unghost_owner_unit(&*unit_iter);
-	}
+		}
 	}
 	units_owning_moves_.clear();
 }

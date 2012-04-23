@@ -185,7 +185,7 @@ void validate_visitor::visit(attack_ptr attack)
 		visit(boost::static_pointer_cast<move>(attack));
 	}
 	else
-		{
+	{
 		attack->set_valid(false);
 
 		if (viewer_team() == attack->team_index()) //< Don't mess with any other team's queue -- only our own
