@@ -284,6 +284,9 @@ bool manager::allow_leader_to_move(unit const& leader) const
 
 void manager::on_init_side()
 {
+	//Turn should never start with action auto-execution already enabled!
+	assert(!executing_all_actions_ && !executing_actions_);
+
 	update_plan_hiding(); //< validates actions
 	wait_for_side_init_ = false;
 	LOG_WB << "on_init_side()\n";
