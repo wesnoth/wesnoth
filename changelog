@@ -17,6 +17,8 @@ Version 1.11.0-svn:
    * Delfadors Memoirs:
      * Showdown in the Northern Swamp: added to conditional notes in objectives
        about who should kill Iliah-Malal
+   * Dead Water:
+	 * Changed uses of "ai turn" to "side # turn" ("[event]name=ai turn" breaks replays)
    * Descent into Darkness:
      * Fix most possible cases for Darken Volk becoming "stuck"
        in 09_A_Small_Favor3.
@@ -67,6 +69,9 @@ Version 1.11.0-svn:
    * Improved performance of the Editor Settings ToD lighting controls
  * Engine:
     *  Fixed bug #19599: Engine keeps redundant unit.ai_special_ information.
+   * Unit refresh now occurs on first turn of the game (fixes bug #19656)
+	 This includes healing, poison, movement and attack recovery, and
+	 expiration of [object]duration=turn.
  * Graphics:
      * New graphics for the Spectre.
  * Language and i18n:
