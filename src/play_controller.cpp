@@ -608,17 +608,22 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 	if(current_team.is_human() && !is_replay) {
 		update_gui_to_player(player_number_ - 1);
 	}
-	// We want to work out if units for this player should get healed,
-	// and the player should get income now.
-	// Healing/income happen if it's not the first turn of processing,
-	// or if we are loading a game.
-	if (!loading_game_ && turn() > 1) {
+
+	// Calculate healing, poison, etc., unless we are loading a game.
+	if (!loading_game_) {
 		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
 			if (i->side() == player_number_) {
 				i->new_turn();
 			}
 		}
 
+		calculate_healing(player_number_, !skip_replay_);
+		reset_resting(units_, player_number_);
+	}
+
+	// Calculate the player's income, provided we are not loading
+	// a game and it is not the first turn of play.
+	if (!loading_game_ && turn() > 1) {
 		current_team.new_turn();
 
 		// If the expense is less than the number of villages owned,
@@ -628,9 +633,6 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		if(expense > 0) {
 			current_team.spend_gold(expense);
 		}
-
-		calculate_healing(player_number_, !skip_replay_);
-		reset_resting(units_, player_number_);
 	}
 
 	if (!loading_game_) {
