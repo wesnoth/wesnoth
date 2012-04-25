@@ -20,6 +20,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <csignal>
 
 #ifdef _MSC_VER
 #define BREAKPOINT() __debugbreak()
@@ -28,6 +29,10 @@
 #elif defined(__GNUG__) && (defined(__i386__) || defined(__x86_64__)) \
   && !defined(__native_client__)
 #define BREAKPOINT() asm("int3")
+#define WES_HALT() do { BREAKPOINT(); abort(); } while (false)
+
+#elif defined(SIGTRAP)
+#define BREAKPOINT() do{ ::std::raise(SIGTRAP); } while (0)
 #define WES_HALT() do { BREAKPOINT(); abort(); } while (false)
 
 #else
