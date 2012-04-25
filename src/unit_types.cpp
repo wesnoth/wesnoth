@@ -1145,9 +1145,9 @@ void unit_type_data::set_config(config &cfg)
 	foreach (config &ut, cfg.child_range("unit_type"))
 	{
 		std::string id = ut["id"];
-		if (const config &bu = ut.child("base_unit"))
+		while (const config &bu = ut.child("base_unit"))
 		{
-			// Derive a new unit type from an existing base unit id
+			// Derive a new unit type from existing base unit and its ancestors.
 			config merge_cfg = find_config(bu["id"]);
 			ut.clear_children("base_unit");
 			merge_cfg.merge_with(ut);
