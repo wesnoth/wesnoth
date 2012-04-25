@@ -415,13 +415,6 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 			do_replay(player_number_);
 
 			finish_side_turn();
-
-			// This is necessary for replays in order to show possible movements.
-			foreach (unit &u, units_) {
-				if (u.side() != player_number_) {
-					u.new_turn();
-				}
-			}
 		}
 
 		player_number_++;
@@ -433,6 +426,13 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 			player_number_ = 1;
 			current_turn_++;
 			gui_->new_turn();
+		}
+
+		// This is necessary for replays in order to show possible movements.
+		foreach (unit &u, units_) {
+			if (u.side() == player_number_) {
+				u.new_turn();
+			}
 		}
 
 		update_teams();
