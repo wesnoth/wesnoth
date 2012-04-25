@@ -409,11 +409,8 @@ public:
 		y_ = origin.y;
 	}
 
-	// Setting the screen locations doesn't dirty the widget.
-	void set_x(const int x) { x_ = x; }
 	int get_x() const { return x_; }
 
-	void set_y(const int y) { y_ = y; }
 	int get_y() const { return y_; }
 
 	void set_visible(const tvisible visible);
