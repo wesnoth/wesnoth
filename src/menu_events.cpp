@@ -95,19 +95,19 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		//we warn the player about it
 		std::stringstream message;
 		if (u.loyal()) {
-			message << _("My lord, this unit is loyal and requires no upkeep! ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+			message << _("This unit is loyal and requires no upkeep.") << ' ' << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
 					: _("Do you really want to dismiss her?"));
 		} else if(u.level() > 1) {
-			message << _("My lord, this unit is an experienced one, having advanced levels! ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+			message << _("This unit is an experienced one, having advanced levels.") << ' ' << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
 					: _("Do you really want to dismiss her?"));
 
 		} else if(u.experience() > u.max_experience()/2) {
-			message << _("My lord, this unit is close to advancing a level! ") << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
+			message << _("This unit is close to advancing a level.") << ' ' << (u.gender() == unit_race::MALE ? _("Do you really want to dismiss him?")
 					: _("Do you really want to dismiss her?"));
 		}
 
 		if(!message.str().empty()) {
-			const int res = gui2::show_message(disp_.video(), "", message.str(), gui2::tmessage::yes_no_buttons);
+			const int res = gui2::show_message(disp_.video(), _("Dismiss Unit"), message.str(), gui2::tmessage::yes_no_buttons);
 			if(res == gui2::twindow::CANCEL) {
 				return gui::CONTINUE_DIALOG;
 			}
