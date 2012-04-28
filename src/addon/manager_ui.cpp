@@ -26,6 +26,7 @@
 #include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/addon/description.hpp"
 #include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/addon_connect.hpp"
@@ -33,6 +34,7 @@
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/widgets/settings.hpp"
 #include "help.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -743,6 +745,21 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 			addons_client client(disp, remote_address);
 
 			addons_list addons;
+
+			if(gui2::new_widgets) {
+				config cfg;
+				client.request_addons_list(cfg);
+				if(!cfg) {
+					gui2::show_error_message(
+							disp.video()
+							, _("An error occurred while downloading the "
+								"add-ons list from the server."));
+					return need_wml_cache_refresh;
+				}
+				gui2::taddon_list dlg(cfg);
+				dlg.show(disp.video());
+				return need_wml_cache_refresh;
+			}
 
 			if(!get_addons_list(client, addons)) {
 				gui2::show_error_message(disp.video(), _("An error occurred while downloading the add-ons list from the server."));
