@@ -149,6 +149,8 @@ Version 1.11.0-svn:
      save a MP game due to a network or OOS error (bug #19562)
    * Fixed bug #19538: Filters matching 0 saved games cause crash
    * Clicking a unit does not reveal adjacent hidden units (bug #19381).
+   * Simultaneous ambush, sighted and teleport failed messages will no longer
+     cover each other up
  * Whiteboard
    * Fixed bug #19626: segfaults on window resize
    * Fixed bug #19369: Using planning mode can cause losing ability to move my units

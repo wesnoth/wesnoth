@@ -2883,6 +2883,10 @@ void movement_feedback(const movement_surprises &stops, bool move_cut_short,
 	bool playing_team_is_viewing = disp.playing_team() == disp.viewing_team()
 	                               ||  disp.show_everything();
 
+	// Multiple messages may be displayed simultaneously
+	// this variable is used to keep them from overlapping
+	std::string message_prefix = "";
+
 	// Ambush feedback?
 	if ( stops.ambush_stop ) {
 		// Suppress the message for observers if the ambusher(s) cannot be seen.
@@ -2892,7 +2896,8 @@ void movement_feedback(const movement_surprises &stops, bool move_cut_short,
 				show_message = true;
 		}
 		if ( show_message ) {
-			disp.announce(stops.ambushed_string, font::BAD_COLOR);
+			disp.announce(message_prefix+stops.ambushed_string, font::BAD_COLOR);
+			message_prefix += " \n";
 			redraw = true;
 		}
 	}
@@ -2900,7 +2905,8 @@ void movement_feedback(const movement_surprises &stops, bool move_cut_short,
 	// Failed teleport feedback?
 	if ( playing_team_is_viewing  &&  stops.teleport_failed ) {
 		std::string teleport_string = _("Failed teleport! Exit not empty");
-		disp.announce(teleport_string, font::BAD_COLOR);
+		disp.announce(message_prefix+teleport_string, font::BAD_COLOR);
+		message_prefix += " \n";
 		redraw = true;
 	}
 
@@ -2954,18 +2960,23 @@ void movement_feedback(const movement_surprises &stops, bool move_cut_short,
 			msg_color = font::BAD_COLOR;
 		}
 
-		// Suggest "continue move"?
-		if ( move_cut_short && stops.sighted_something && !stops.ambush_stop && !resources::whiteboard->is_executing_actions() ) {
-			// See if the "Continue Move" action has an associated hotkey
-			const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
-			if(!hk.null()) {
-				symbols["hotkey"] = hk.get_name();
-				message += "\n" + vgettext("(press $hotkey to keep moving)", symbols);
-			}
-		}
-
-		disp.announce(message, msg_color);
+		disp.announce(message_prefix+message, msg_color);
+		message_prefix += " \n";
 		redraw = true;
+	}
+
+	// Suggest "continue move"?
+	if ( move_cut_short && stops.sighted_something && !stops.ambush_stop && !resources::whiteboard->is_executing_actions() ) {
+		// See if the "Continue Move" action has an associated hotkey
+		const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
+		if(!hk.null()) {
+			utils::string_map symbols;
+			symbols["hotkey"] = hk.get_name();
+			std::string message = vgettext("(press $hotkey to keep moving)", symbols);
+			disp.announce(message_prefix+message, font::NORMAL_COLOR);
+			message_prefix += " \n";
+			redraw = true;
+		}
 	}
 
 	// Update the screen.
