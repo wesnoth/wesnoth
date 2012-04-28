@@ -2337,7 +2337,7 @@ namespace {
 	 * (This uses a team parameter instead of a side since it is assumed that
 	 * the caller already checked for fog or shroud being in use. Hence the
 	 * caller has the team readily available.)
-	 * 
+	 *
 	 * @a seen_units will return new units that have been seen by this unit.
 	 * If @a known_units is NULL, @a seen_units will not be changed (so might as
 	 * well also be NULL).
@@ -2372,7 +2372,7 @@ namespace {
 				if ( known_units->count(seen_loc) == 0 ) {
 					// Is there a visible unit here?
 					const unit_map::const_iterator sighted = resources::units->find(seen_loc);
-					if ( sighted.valid()  &&  
+					if ( sighted.valid()  &&
 					    (!view_team.is_enemy(sighted->side()) ||
 					     !sighted->invisible(seen_loc)) )
 					{
