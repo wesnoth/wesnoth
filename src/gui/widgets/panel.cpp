@@ -55,9 +55,33 @@ void tpanel::impl_draw_background(surface& frame_buffer)
 	canvas(0).blit(frame_buffer, get_rect());
 }
 
+void tpanel::impl_draw_background(
+		  surface& frame_buffer
+		, int x_offset
+		, int y_offset)
+{
+	DBG_GUI_D << LOG_HEADER
+			<< " size " << get_rect()
+			<< ".\n";
+
+	canvas(0).blit(
+			  frame_buffer
+			, calculate_blitting_rectangle(x_offset, y_offset));
+}
+
 void tpanel::impl_draw_foreground(surface& frame_buffer)
 {
 	canvas(1).blit(frame_buffer, get_rect());
+}
+
+void tpanel::impl_draw_foreground(
+		  surface& frame_buffer
+		, int x_offset
+		, int y_offset)
+{
+	canvas(1).blit(
+			  frame_buffer
+			, calculate_blitting_rectangle(x_offset, y_offset));
 }
 
 tpoint tpanel::border_space() const

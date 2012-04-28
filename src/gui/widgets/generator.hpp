@@ -259,6 +259,10 @@ public:
 
 	/** Inherited from twidget. */
 	virtual void impl_draw_children(surface& frame_buffer) = 0;
+	virtual void impl_draw_children(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset) = 0;
 
 protected:
 

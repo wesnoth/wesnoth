@@ -318,9 +318,19 @@ public:
 protected:
 	/** Inherited from twidget. */
 	void impl_draw_background(surface& frame_buffer);
+	void impl_draw_background(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset);
 
 	/** Inherited from twidget. */
 	void impl_draw_foreground(surface& /*frame_buffer*/) { /* do nothing */ }
+	void impl_draw_foreground(
+			  surface& /*frame_buffer*/
+			, int /*x_offset*/
+			, int /*y_offset*/)
+	{ /* do nothing */ }
+
 private:
 
 	/**

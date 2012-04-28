@@ -812,6 +812,18 @@ public:
 	}
 
 	/** Inherited from tgenerator_. */
+	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+	{
+		assert(this->get_visible() == twidget::VISIBLE);
+
+		foreach(titem* item, items_) {
+			if(item->grid.get_visible() == twidget::VISIBLE && item->shown) {
+				item->grid.draw_children(frame_buffer, x_offset, y_offset);
+			}
+		}
+	}
+
+	/** Inherited from tgenerator_. */
 	void child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack)
 	{

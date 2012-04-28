@@ -453,14 +453,48 @@ public:
 #endif
 
 	/**
+	 * Calculates the blitting rectangle of the widget.
+	 *
+	 * The blitting rectangle is to entire widget rectangle, but offsetted for
+	 * drawing position.
+	 *
+	 * @param x_offset            The x offset when drawn.
+	 * @param y_offset            The y offset when drawn.
+	 *
+	 * @returns                   The drawing rectangle.
+	 */
+	SDL_Rect calculate_blitting_rectangle(
+			  const int x_offset
+			, const int y_offset);
+
+	/**
+	 * Calculates the clipping rectangle of the widget.
+	 *
+	 * The clipping rectangle is used then the @ref drawing_action_ is
+	 * @ref PARTLY_DRAWN. Since the drawing can be offsetted it also needs
+	 * offset paramters.
+	 *
+	 * @param x_offset            The x offset when drawn.
+	 * @param y_offset            The y offset when drawn.
+	 *
+	 * @returns                   The clipping rectangle.
+	 */
+	SDL_Rect calculate_clipping_rectangle(
+			  const int x_offset
+			, const int y_offset);
+
+	/**
 	 * Draws the background of a widget.
 	 *
 	 * Subclasses should override impl_draw_background instead of changing
 	 * this function.
 	 *
 	 * @param frame_buffer        The surface to draw upon.
+	 * @param x_offset            The x offset in the @p frame_buffer to draw.
+	 * @param y_offset            The y offset in the @p frame_buffer to draw.
 	 */
 	void draw_background(surface& frame_buffer);
+	void draw_background(surface& frame_buffer, int x_offset, int y_offset);
 
 	/**
 	 * Draws the children of a widget.
@@ -471,8 +505,11 @@ public:
 	 * this function.
 	 *
 	 * @param frame_buffer        The surface to draw upon.
+	 * @param x_offset            The x offset in the @p frame_buffer to draw.
+	 * @param y_offset            The y offset in the @p frame_buffer to draw.
 	 */
 	void draw_children(surface& frame_buffer);
+	void draw_children(surface& frame_buffer, int x_offset, int y_offset);
 
 	/**
 	 * Draws the foreground of the widgt.
@@ -484,8 +521,11 @@ public:
 	 * this function.
 	 *
 	 * @param frame_buffer        The surface to draw upon.
+	 * @param x_offset            The x offset in the @p frame_buffer to draw.
+	 * @param y_offset            The y offset in the @p frame_buffer to draw.
 	 */
 	void draw_foreground(surface& frame_buffer);
+	void draw_foreground(surface& frame_buffer, int x_offset, int y_offset);
 
 	/**
 	 * Allows a widget to update its children.
@@ -638,8 +678,10 @@ private:
 	unsigned debug_border_color_;
 
 	void draw_debug_border(surface& frame_buffer);
+	void draw_debug_border(surface& frame_buffer, int x_offset, int y_offset);
 #else
 	void draw_debug_border(surface&) {}
+	void draw_debug_border(surface&, int, int) {}
 #endif
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -654,12 +696,30 @@ private:
 
 	/** See draw_background(). */
 	virtual void impl_draw_background(surface& /*frame_buffer*/) {}
+	virtual void impl_draw_background(
+			  surface& /*frame_buffer*/
+			, int /*x_offset*/
+			, int /*y_offset*/)
+	{
+	}
 
 	/** See draw_children. */
 	virtual void impl_draw_children(surface& /*frame_buffer*/) {}
+	virtual void impl_draw_children(
+			surface& /*frame_buffer*/
+			, int /*x_offset*/
+			, int /*y_offset*/)
+	{
+	}
 
 	/** See draw_foreground. */
 	virtual void impl_draw_foreground(surface& /*frame_buffer*/) {}
+	virtual void impl_draw_foreground(
+			  surface& /*frame_buffer*/
+			, int /*x_offset*/
+			, int /*y_offset*/)
+	{
+	}
 
 	/** (Will be) inherited from event::tdispatcher. */
 	virtual bool is_at(const tpoint& coordinate) const

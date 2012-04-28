@@ -693,7 +693,14 @@ void twindow::draw()
 
 		// Now find the widgets that are dirty.
 		std::vector<twidget*> call_stack;
-		populate_dirty_list(*this, call_stack);
+		if(!new_widgets) {
+			populate_dirty_list(*this, call_stack);
+		} else {
+			/* Force to update and redraw the entire screen */
+			dirty_list_.clear();
+			dirty_list_.push_back(std::vector<twidget*>(1, this));
+			update_rect(screen_area());
+		}
 	}
 
 	if(dirty_list_.empty()) {
@@ -774,24 +781,46 @@ void twindow::draw()
 		SDL_Rect rect = get_rect();
 		sdl_blit(restorer_, 0, frame_buffer, &rect);
 
-		// Background.
-		for(std::vector<twidget*>::iterator itor = item.begin();
-				itor != item.end(); ++itor) {
+		if(new_widgets) {
+			// Background.
+			for(std::vector<twidget*>::iterator itor = item.begin();
+					itor != item.end(); ++itor) {
 
-			(**itor).draw_background(frame_buffer);
-		}
+				(**itor).draw_background(frame_buffer, 0, 0);
+			}
 
-		// Children.
-		if(!item.empty()) {
-			item.back()->draw_children(frame_buffer);
-		}
+			// Children.
+			if(!item.empty()) {
+				item.back()->draw_children(frame_buffer, 0, 0);
+			}
 
-		// Foreground.
-		for(std::vector<twidget*>::reverse_iterator ritor = item.rbegin();
-				ritor != item.rend(); ++ritor) {
+			// Foreground.
+			for(std::vector<twidget*>::reverse_iterator ritor = item.rbegin();
+					ritor != item.rend(); ++ritor) {
 
-			(**ritor).draw_foreground(frame_buffer);
-			(**ritor).set_dirty(false);
+				(**ritor).draw_foreground(frame_buffer, 0, 0);
+				(**ritor).set_dirty(false);
+			}
+		} else {
+			// Background.
+			for(std::vector<twidget*>::iterator itor = item.begin();
+					itor != item.end(); ++itor) {
+
+				(**itor).draw_background(frame_buffer);
+			}
+
+			// Children.
+			if(!item.empty()) {
+				item.back()->draw_children(frame_buffer);
+			}
+
+			// Foreground.
+			for(std::vector<twidget*>::reverse_iterator ritor = item.rbegin();
+					ritor != item.rend(); ++ritor) {
+
+				(**ritor).draw_foreground(frame_buffer);
+				(**ritor).set_dirty(false);
+			}
 		}
 
 		update_rect(dirty_rect);

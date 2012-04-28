@@ -430,6 +430,7 @@ private:
 
 	/** Inherited from twidget. */
 	void impl_draw_children(surface& frame_buffer);
+	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset);
 
 };
 

@@ -124,6 +124,17 @@ void tcontainer_::impl_draw_children(surface& frame_buffer)
 	grid_.draw_children(frame_buffer);
 }
 
+void tcontainer_::impl_draw_children(
+		  surface& frame_buffer
+		, int x_offset
+		, int y_offset)
+{
+	assert(get_visible() == twidget::VISIBLE
+			&& grid_.get_visible() == twidget::VISIBLE);
+
+	grid_.draw_children(frame_buffer, x_offset, y_offset);
+}
+
 void tcontainer_::layout_children()
 {
 	grid_.layout_children();

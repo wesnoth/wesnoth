@@ -251,6 +251,26 @@ void twidget::set_visible_area(const SDL_Rect& area)
 	}
 }
 
+SDL_Rect twidget::calculate_blitting_rectangle(
+		  const int x_offset
+		, const int y_offset)
+{
+	SDL_Rect result = get_rect();
+	result.x += x_offset;
+	result.y += y_offset;
+	return result;
+}
+
+SDL_Rect twidget::calculate_clipping_rectangle(
+		  const int x_offset
+		, const int y_offset)
+{
+	SDL_Rect result = clip_rect_;
+	result.x += x_offset;
+	result.y += y_offset;
+	return result;
+}
+
 void twidget::draw_background(surface& frame_buffer)
 {
 	assert(visible_ == VISIBLE);
@@ -262,6 +282,23 @@ void twidget::draw_background(surface& frame_buffer)
 	} else {
 		draw_debug_border(frame_buffer);
 		impl_draw_background(frame_buffer);
+	}
+}
+
+void twidget::draw_background(surface& frame_buffer, int x_offset, int y_offset)
+{
+	assert(visible_ == VISIBLE);
+
+	if(drawing_action_ == PARTLY_DRAWN) {
+		const SDL_Rect clipping_rectangle =
+				calculate_clipping_rectangle(x_offset, y_offset);
+
+		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
+		draw_debug_border(frame_buffer, x_offset, y_offset);
+		impl_draw_background(frame_buffer, x_offset, y_offset);
+	} else {
+		draw_debug_border(frame_buffer, x_offset, y_offset);
+		impl_draw_background(frame_buffer, x_offset, y_offset);
 	}
 }
 
@@ -277,6 +314,21 @@ void twidget::draw_children(surface& frame_buffer)
 	}
 }
 
+void twidget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
+{
+	assert(visible_ == VISIBLE);
+
+	if(drawing_action_ == PARTLY_DRAWN) {
+		const SDL_Rect clipping_rectangle =
+				calculate_clipping_rectangle(x_offset, y_offset);
+
+		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
+		impl_draw_children(frame_buffer, x_offset, y_offset);
+	} else {
+		impl_draw_children(frame_buffer, x_offset, y_offset);
+	}
+}
+
 void twidget::draw_foreground(surface& frame_buffer)
 {
 	assert(visible_ == VISIBLE);
@@ -289,12 +341,52 @@ void twidget::draw_foreground(surface& frame_buffer)
 	}
 }
 
+void twidget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
+{
+	assert(visible_ == VISIBLE);
+
+	if(drawing_action_ == PARTLY_DRAWN) {
+		const SDL_Rect clipping_rectangle =
+				calculate_clipping_rectangle(x_offset, y_offset);
+
+		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
+		impl_draw_foreground(frame_buffer, x_offset, y_offset);
+	} else {
+		impl_draw_foreground(frame_buffer, x_offset, y_offset);
+	}
+}
+
 #ifndef LOW_MEM
 void twidget::draw_debug_border(surface& frame_buffer)
 {
 	SDL_Rect r = drawing_action_ == PARTLY_DRAWN
 		? clip_rect_
 		: get_rect();
+	switch(debug_border_mode_) {
+		case 0:
+			/* DO NOTHING */
+			break;
+		case 1:
+			draw_rectangle(r.x, r.y, r.w, r.h
+					, debug_border_color_, frame_buffer);
+			break;
+		case 2:
+			sdl_fill_rect(frame_buffer, &r, debug_border_color_);
+			break;
+		default:
+			assert(false);
+	}
+}
+
+void twidget::draw_debug_border(
+		  surface& frame_buffer
+		, int x_offset
+		, int y_offset)
+{
+	SDL_Rect r = drawing_action_ == PARTLY_DRAWN
+		? calculate_clipping_rectangle(x_offset, y_offset)
+		: calculate_blitting_rectangle(x_offset, y_offset);
+
 	switch(debug_border_mode_) {
 		case 0:
 			/* DO NOTHING */

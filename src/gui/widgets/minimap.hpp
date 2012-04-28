@@ -87,6 +87,10 @@ private:
 
 	/** Inherited from tcontrol. */
 	void impl_draw_background(surface& frame_buffer);
+	void impl_draw_background(
+			  surface& frame_buffer
+			, int x_offset
+			, int y_offset);
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;

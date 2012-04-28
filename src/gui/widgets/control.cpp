@@ -335,6 +335,21 @@ void tcontrol::impl_draw_background(surface& frame_buffer)
 	canvas(get_state()).blit(frame_buffer, get_rect());
 }
 
+void tcontrol::impl_draw_background(
+		  surface& frame_buffer
+		, int x_offset
+		, int y_offset)
+{
+	DBG_GUI_D << LOG_HEADER
+			<< " label '" << debug_truncate(label_)
+			<< "' size " << get_rect()
+			<< ".\n";
+
+	canvas(get_state()).blit(
+			  frame_buffer
+			, calculate_blitting_rectangle(x_offset, y_offset));
+}
+
 tpoint tcontrol::get_best_text_size(
 		  const tpoint& minimum_size
 		, const tpoint& maximum_size) const

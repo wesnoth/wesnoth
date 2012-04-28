@@ -232,6 +232,31 @@ void tminimap::impl_draw_background(surface& frame_buffer)
 	}
 }
 
+void tminimap::impl_draw_background(
+		  surface& frame_buffer
+		, int x_offset
+		, int y_offset)
+{
+	if (!terrain_) return;
+	assert(terrain_);
+
+	DBG_GUI_D << LOG_HEADER
+			<< " size " << calculate_blitting_rectangle(x_offset, y_offset)
+			<< ".\n";
+
+	if(map_data_.empty()) {
+		return;
+	}
+
+	SDL_Rect rect = calculate_blitting_rectangle(x_offset, y_offset);
+	assert(rect.w > 0 && rect.h > 0);
+
+	const ::surface surf = get_image(rect.w, rect.h);
+	if(surf) {
+		sdl_blit(surf, NULL, frame_buffer, &rect);
+	}
+}
+
 const std::string& tminimap::get_control_type() const
 {
 	static const std::string type = "minimap";

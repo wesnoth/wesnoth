@@ -496,6 +496,22 @@ void ttree_view_node::impl_draw_children(surface& frame_buffer)
 	}
 }
 
+void ttree_view_node::impl_draw_children(
+		  surface& frame_buffer
+		, int x_offset
+		, int y_offset)
+{
+	grid_.draw_children(frame_buffer, x_offset, y_offset);
+
+	if(is_folded()) {
+		return;
+	}
+
+	foreach(ttree_view_node& node, children_) {
+		node.impl_draw_children(frame_buffer, x_offset, y_offset);
+	}
+}
+
 void ttree_view_node::signal_handler_left_button_click(
 		const event::tevent event)
 {

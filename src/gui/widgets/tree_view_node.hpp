@@ -251,6 +251,7 @@ private:
 	void set_visible_area(const SDL_Rect& area);
 
 	void impl_draw_children(surface& frame_buffer);
+	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset);
 
 	// FIXME rename to icon
 	void signal_handler_left_button_click(const event::tevent event);

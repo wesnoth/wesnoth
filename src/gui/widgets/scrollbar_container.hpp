@@ -455,6 +455,7 @@ private:
 
 	/** Inherited from tcontainer_. */
 	void impl_draw_children(surface& frame_buffer);
+	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset);
 
 	/** Inherited from tcontainer_. */
 	void child_populate_dirty_list(twindow& caller,
