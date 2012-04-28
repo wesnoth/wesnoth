@@ -409,6 +409,20 @@ public:
 		y_ = origin.y;
 	}
 
+	/**
+	 * Moves a widget.
+	 *
+	 * This function can be used to move the widget without dirtying it.
+	 *
+	 * @todo Implement the function to all inherited classes.
+	 *
+	 * @param x_offset            The amount of pixels to move the widget in
+	 *                            the x direction.
+	 * @param y_offset            The amount of pixels to move the widget in
+	 *                            the y direction.
+	 */
+	virtual void move(const int x_offset, const int y_offset);
+
 	int get_x() const { return x_; }
 
 	int get_y() const { return y_; }

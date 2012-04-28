@@ -156,6 +156,12 @@ SDL_Rect twidget::get_dirty_rect() const
 			: clip_rect_;
 }
 
+void twidget::move(const int x_offset, const int y_offset)
+{
+	x_ += x_offset;
+	y_ += y_offset;
+}
+
 twindow* twidget::get_window()
 {
 	// Go up into the parent tree until we find the top level
