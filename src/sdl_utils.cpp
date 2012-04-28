@@ -1536,6 +1536,91 @@ surface blend_surface(
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
+
+// Rotates a surface 180 degrees.
+surface rotate_180_surface(const surface &surf, bool optimize)
+{
+	/// @todo This function needs an associated image path function.
+
+	if ( surf == NULL )
+		return NULL;
+
+	// Work with a "neutral" (unoptimized) surface.
+	surface nsurf(make_neutral_surface(surf));
+
+	if ( nsurf == NULL ) {
+		std::cerr << "could not make neutral surface...\n";
+		return NULL;
+	}
+
+	{// Code block to limit the scope of the surface lock.
+		surface_lock lock(nsurf);
+		Uint32* const pixels = lock.pixels();
+
+		// Swap pixels in the upper half of the image with
+		// those in the lower half.
+		for (int y=0; y != nsurf->h/2; ++y) {
+			for(int x=0; x != nsurf->w; ++x) {
+				const int index1 = y*nsurf->w + x;
+				const int index2 = (nsurf->h-y)*nsurf->w - x - 1;
+				std::swap(pixels[index1],pixels[index2]);
+			}
+		}
+
+		if ( is_odd(nsurf->h) ) {
+			// The middle row still needs to be processed.
+			for (int x=0; x != nsurf->w/2; ++x) {
+				const int index1 = (nsurf->h/2)*nsurf->w + x;
+				const int index2 = (nsurf->h/2)*nsurf->w + (nsurf->w - x - 1);
+				std::swap(pixels[index1],pixels[index2]);
+			}
+		}
+	}
+
+	return optimize ? create_optimized_surface(nsurf) : nsurf;
+}
+
+
+// Rotates a surface 90 degrees, either clockwise or counter-clockwise.
+surface rotate_90_surface(const surface &surf, bool clockwise, bool optimize)
+{
+	/// @todo This function needs an associated image path function.
+
+	if ( surf == NULL )
+		return NULL;
+
+	// Work with "neutral" (unoptimized) surfaces.
+	surface dst(create_neutral_surface(surf->h, surf->w)); // Flipped dimensions.
+	surface src(make_neutral_surface(surf));
+
+	if ( src == NULL  ||  dst == NULL ) {
+		std::cerr << "could not make neutral surface...\n";
+		return NULL;
+	}
+
+	{// Code block to limit the scope of the surface locks.
+		const_surface_lock src_lock(src);
+		surface_lock dst_lock(dst);
+
+		const Uint32* const src_pixels = src_lock.pixels();
+		Uint32* const dst_pixels = dst_lock.pixels();
+
+		// Copy the pixels.
+		for ( int y = 0; y != src->h; ++y ) {
+			for ( int x = 0; x != src->w; ++x ) {
+				const int src_index = y*src->w + x;
+				const int dst_index = clockwise ?
+				                          x*dst->w + (dst->w-1-y) :
+				                          (dst->h-1-x)*dst->w + y;
+				dst_pixels[dst_index] = src_pixels[src_index];
+			}
+		}
+	}
+
+	return optimize ? create_optimized_surface(dst) : dst;
+}
+
+
 surface flip_surface(const surface &surf, bool optimize)
 {
 	if(surf == NULL) {

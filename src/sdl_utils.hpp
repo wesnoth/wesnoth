@@ -310,6 +310,27 @@ surface blend_surface(
 		, const Uint32 color
 		, const bool optimize = true);
 
+/**
+ * Rotates a surface 180 degrees.
+ *
+ * @param surf                    The surface to rotate.
+ * @param optimize                Should the return surface be RLE optimized.
+ *
+ * @return                        The rotated surface.
+ */ 
+surface rotate_180_surface(const surface &surf, bool optimize=true);
+/**
+ * Rotates a surface 90 degrees.
+ *
+ * @param surf                    The surface to rotate.
+ * @param clockwize               Whether the rotation should be clockwise (true)
+ *                                or counter-clockwise (false).
+ * @param optimize                Should the return surface be RLE optimized.
+ *
+ * @return                        The rotated surface.
+ */ 
+surface rotate_90_surface(const surface &surf, bool clockwise, bool optimize=true);
+
 surface flip_surface(const surface &surf, bool optimize=true);
 surface flop_surface(const surface &surf, bool optimize=true);
 surface create_compatible_surface(const surface &surf, int width = -1, int height = -1);
