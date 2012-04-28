@@ -27,6 +27,7 @@
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
+#include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "wml_exception.hpp"
 
@@ -98,6 +99,12 @@ twidget* tbuilder_listbox::build() const
 	}
 	return widget;
 #else
+	if(new_widgets) {
+		tpane *widget = new tpane();
+		widget->set_id(id);
+		return widget;
+	}
+
 	tlistbox *widget = new tlistbox(
 			true, true, tgenerator_::vertical_list, true);
 

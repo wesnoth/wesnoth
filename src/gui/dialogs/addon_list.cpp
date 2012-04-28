@@ -23,6 +23,7 @@
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
+#include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -64,41 +65,47 @@ REGISTER_DIALOG(addon_list)
 
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
+	if(new_widgets) {
+		tpane& pane = find_widget<tpane>(&window, "addons", false);
+		assert(&pane);
 
-	/**
-	 * @todo do we really want to keep the length limit for the various
-	 * items?
-	 */
-	foreach(const config &c, cfg_.child_range("campaign")) {
-		std::map<std::string, string_map> data;
-		string_map item;
+	} else {
+		tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
 
-		item["label"] = c["icon"];
-		data.insert(std::make_pair("icon", item));
+		/**
+		 * @todo do we really want to keep the length limit for the various
+		 * items?
+		 */
+		foreach(const config &c, cfg_.child_range("campaign")) {
+			std::map<std::string, string_map> data;
+			string_map item;
 
-		std::string tmp = c["name"];
-		utils::truncate_as_wstring(tmp, 20);
-		item["label"] = tmp;
-		data.insert(std::make_pair("name", item));
+			item["label"] = c["icon"];
+			data.insert(std::make_pair("icon", item));
 
-		tmp = c["version"].str();
-		utils::truncate_as_wstring(tmp, 12);
-		item["label"] = tmp;
-		data.insert(std::make_pair("version", item));
+			std::string tmp = c["name"];
+			utils::truncate_as_wstring(tmp, 20);
+			item["label"] = tmp;
+			data.insert(std::make_pair("name", item));
 
-		tmp = c["author"].str();
-		utils::truncate_as_wstring(tmp, 16);
-		item["label"] = tmp;
-		data.insert(std::make_pair("author", item));
+			tmp = c["version"].str();
+			utils::truncate_as_wstring(tmp, 12);
+			item["label"] = tmp;
+			data.insert(std::make_pair("version", item));
 
-		item["label"] = c["downloads"];
-		data.insert(std::make_pair("downloads", item));
+			tmp = c["author"].str();
+			utils::truncate_as_wstring(tmp, 16);
+			item["label"] = tmp;
+			data.insert(std::make_pair("author", item));
 
-		item["label"] = c["size"];
-		data.insert(std::make_pair("size", item));
+			item["label"] = c["downloads"];
+			data.insert(std::make_pair("downloads", item));
 
-		list.add_row(data);
+			item["label"] = c["size"];
+			data.insert(std::make_pair("size", item));
+
+			list.add_row(data);
+		}
 	}
 }
 
