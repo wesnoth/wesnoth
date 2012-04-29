@@ -17,6 +17,7 @@
 #define GUI_AUXILIARY_WINDOW_BUILDER_HPP_INCLUDED
 
 #include "gui/auxiliary/formula.hpp"
+#include "gui/widgets/grid.hpp"
 #include "reference_counted_object.hpp"
 
 #include <boost/function.hpp>
@@ -29,8 +30,6 @@ class CVideo;
 
 namespace gui2 {
 
-class twidget;
-class tgrid;
 class twindow;
 
 /**
@@ -109,8 +108,8 @@ public:
 	/** The widgets per grid cell. */
 	std::vector<tbuilder_widget_ptr> widgets;
 
-	twidget* build() const;
-	twidget* build(tgrid* grid) const;
+	tgrid* build() const;
+	tgrid* build(tgrid* grid) const;
 };
 
 typedef boost::intrusive_ptr<tbuilder_grid> tbuilder_grid_ptr;

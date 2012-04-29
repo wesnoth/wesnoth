@@ -542,12 +542,12 @@ tbuilder_gridcell::tbuilder_gridcell(const config& cfg) :
 {
 }
 
-twidget* tbuilder_grid::build() const
+tgrid* tbuilder_grid::build() const
 {
 	return build(new tgrid());
 }
 
-twidget* tbuilder_grid::build (tgrid* grid) const
+tgrid* tbuilder_grid::build (tgrid* grid) const
 {
 	grid->set_id(id);
 	grid->set_linked_group(linked_group);
