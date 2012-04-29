@@ -67,7 +67,37 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 {
 	if(new_widgets) {
 		tpane& pane = find_widget<tpane>(&window, "addons", false);
-		assert(&pane);
+
+		foreach(const config &campaign, cfg_.child_range("campaign")) {
+			std::map<std::string, string_map> data;
+			string_map item;
+
+			item["label"] = campaign["icon"];
+			data.insert(std::make_pair("icon", item));
+
+			std::string tmp = campaign["name"];
+			utils::truncate_as_wstring(tmp, 20);
+			item["label"] = tmp;
+			data.insert(std::make_pair("name", item));
+
+			tmp = campaign["version"].str();
+			utils::truncate_as_wstring(tmp, 12);
+			item["label"] = tmp;
+			data.insert(std::make_pair("version", item));
+
+			tmp = campaign["author"].str();
+			utils::truncate_as_wstring(tmp, 16);
+			item["label"] = tmp;
+			data.insert(std::make_pair("author", item));
+
+			item["label"] = campaign["downloads"];
+			data.insert(std::make_pair("downloads", item));
+
+			item["label"] = campaign["size"];
+			data.insert(std::make_pair("size", item));
+
+			pane.create_item(data);
+		}
 
 	} else {
 		tlistbox& list = find_widget<tlistbox>(&window, "addons", false);

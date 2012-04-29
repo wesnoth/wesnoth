@@ -100,7 +100,7 @@ twidget* tbuilder_listbox::build() const
 	return widget;
 #else
 	if(new_widgets) {
-		tpane *widget = new tpane();
+		tpane *widget = new tpane(list_builder);
 		widget->set_id(id);
 		return widget;
 	}
