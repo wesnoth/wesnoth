@@ -63,13 +63,7 @@ void tpane::place(const tpoint& origin, const tpoint& size)
 	DBG_GUI_L << LOG_HEADER << '\n';
 	twidget::place(origin, size);
 
-	unsigned y = 0;
-
-	BOOST_FOREACH(titem& item, items_) {
-		DBG_GUI_L << LOG_HEADER << " offset " << y << '\n';
-		item.grid->place(tpoint(0, y), item.grid->get_best_size());
-		y += item.grid->get_height();
-	}
+	place_children();
 }
 
 void tpane::impl_draw_children(
@@ -97,13 +91,8 @@ void tpane::sort(const tcompare_functor& compare_functor)
 {
 	items_.sort(compare_functor);
 
-	unsigned y = 0;
 
-	BOOST_FOREACH(titem& item, items_) {
-		DBG_GUI_L << LOG_HEADER << " offset " << y << '\n';
-		item.grid->place(tpoint(0, y), item.grid->get_best_size());
-		y += item.grid->get_height();
-	}
+	place_children();
 }
 
 void tpane::request_reduce_width(const unsigned /*maximum_width*/)
@@ -126,6 +115,21 @@ iterator::twalker_* tpane::create_walker()
 	 * @todo Implement properly.
 	 */
 	return NULL;
+}
+
+void tpane::place_children()
+{
+	unsigned y = 0;
+
+	BOOST_FOREACH(titem& item, items_) {
+		if(item.grid->get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
+		DBG_GUI_L << LOG_HEADER << " offset " << y << '\n';
+		item.grid->place(tpoint(0, y), item.grid->get_best_size());
+		y += item.grid->get_height();
+	}
 }
 
 } // namespace gui2

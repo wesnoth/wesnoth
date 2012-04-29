@@ -101,6 +101,9 @@ private:
 
 	/** The id generator for the items. */
 	unsigned item_id_generator_;
+
+	/** Places the children on the pane. */
+	void place_children();
 };
 
 } // namespace gui2
