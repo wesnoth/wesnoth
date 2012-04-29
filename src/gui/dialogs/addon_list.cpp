@@ -171,6 +171,9 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 
 			data.insert(std::make_pair("size", item));
 
+			item["label"] = campaign["description"];
+			data.insert(std::make_pair("description", item));
+
 			/***** Determine the tags for the campaign. *****/
 
 			std::map<std::string, std::string> tags;
