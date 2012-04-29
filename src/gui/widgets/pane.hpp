@@ -45,6 +45,8 @@ public:
 		boost::function<bool(const titem&, const titem&)>
 		tcompare_functor;
 
+	typedef boost::function<bool(const titem&)> tfilter_functor;
+
 	explicit tpane(const tbuilder_grid_ptr item_builder);
 
 	/**
@@ -79,6 +81,17 @@ public:
 	 * @param compare_functor     The functor to use to sort the items.
 	 */
 	void sort(const tcompare_functor& compare_functor);
+
+	/**
+	 * Filters the contents of the pane.
+	 *
+	 * if the @p filter_functor returns @c true the item shown, else it's
+	 * hidden.
+	 *
+	 * @param filter_functor      The functor to determine whether an item
+	 *                            should be shown or hidden.
+	 */
+	void filter(const tfilter_functor& filter_functor);
 
 private:
 	/** Inherited from twidget. */

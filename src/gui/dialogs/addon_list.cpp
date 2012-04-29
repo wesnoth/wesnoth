@@ -119,6 +119,20 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 					, &pane
 					, descending_size_functor));
 
+		/***** ***** Init the filter text box. ***** *****/
+
+		ttext_box& filter_box =
+				find_widget<ttext_box>(&window, "filter", false);
+
+		tpane::tfilter_functor filter_functor =
+				boost::bind(&contains, _1, "filter", boost::cref(filter_box));
+
+		connect_signal_notify_modified(
+				  filter_box
+				, boost::bind(
+					  &tpane::filter
+					, &pane
+					, filter_functor));
 
 		/***** ***** Fill the listbox. ***** *****/
 
@@ -162,6 +176,16 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 			std::map<std::string, std::string> tags;
 			tags.insert(std::make_pair("name", campaign["name"]));
 			tags.insert(std::make_pair("size", campaign["size"]));
+
+			std::stringstream filter;
+			filter << campaign["version"] << '\n'
+					<< campaign["author"] << '\n'
+					<< campaign["type"] << '\n'
+					<< campaign["description"];
+
+			tags.insert(std::make_pair(
+					  "filter"
+					, utils::lowercase(filter.str())));
 
 			/***** Add the campaign. *****/
 

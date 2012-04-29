@@ -91,6 +91,17 @@ void tpane::sort(const tcompare_functor& compare_functor)
 {
 	items_.sort(compare_functor);
 
+	place_children();
+}
+
+void tpane::filter(const tfilter_functor& filter_functor)
+{
+	BOOST_FOREACH(titem& item, items_) {
+		item.grid->set_visible(
+				filter_functor(item)
+					? twidget::VISIBLE
+					: twidget::INVISIBLE);
+	}
 
 	place_children();
 }
