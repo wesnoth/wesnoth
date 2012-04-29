@@ -700,28 +700,32 @@ void team::shroud_map::reset()
 
 bool team::shroud_map::value(int x, int y) const
 {
-	if(enabled_ == false || x < 0 || y < 0)
+	if ( !enabled_ )
 		return false;
 
-	if(x >= static_cast<int>(data_.size()))
+	// Locations for which we have no data are assumed to still be covered.
+	if ( x < 0  ||  x >= static_cast<int>(data_.size()) )
+		return true;
+	if ( y < 0  ||  y >= static_cast<int>(data_[x].size()) )
 		return true;
 
-	if(y >= static_cast<int>(data_[x].size()))
-		return true;
-
-	if(data_[x][y])
-		return false;
-	else
-		return true;
+	// data_ stores whether or not a location has been cleared, while
+	// we want to return whether or not a location is covered.
+	return !data_[x][y];
 }
 
 bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, int x, int y) const
 {
-	if(enabled_ == false || x < 0 || y < 0)
+	if ( !enabled_ )
 		return false;
 
-	for(std::vector<const shroud_map*>::const_iterator i = maps.begin(); i != maps.end(); ++i) {
-		if((*i)->enabled_ == true && (*i)->value(x,y) == false)
+	// A quick abort:
+	if ( x < 0  ||  y < 0 )
+		return true;
+
+	// A tile is uncovered if it is uncovered on any shared map.
+	foreach (const shroud_map * const shared_map, maps) {
+		if ( shared_map->enabled_  &&  !shared_map->value(x,y) )
 			return false;
 	}
 	return true;
