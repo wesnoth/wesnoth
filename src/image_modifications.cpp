@@ -129,11 +129,16 @@ surface fl_modification::operator()(const surface& src) const
 {
 	surface ret = src;
 
-	if(horiz_) {
+	if ( horiz_  && vert_ ) {
+		// Slightly faster than doing both a flip and a flop.
+		ret = rotate_180_surface(ret);
+	}
+
+	else if(horiz_) {
 		ret = flip_surface(ret);
 	}
 
-	if(vert_) {
+	else if(vert_) {
 		ret = flop_surface(ret);
 	}
 
