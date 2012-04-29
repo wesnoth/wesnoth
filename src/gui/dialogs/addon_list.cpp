@@ -18,6 +18,7 @@
 #include "gui/dialogs/addon_list.hpp"
 
 #include "foreach.hpp"
+#include "gettext.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -28,6 +29,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "map_utils.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <boost/bind.hpp>
 
@@ -178,7 +180,11 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 			item["label"] = campaign["downloads"];
 			data.insert(std::make_pair("downloads", item));
 
-			item["label"] = campaign["size"];
+			item["label"] = utils::si_string(
+					  campaign["size"]
+					, true
+					, _("unit_byte^B"));
+
 			data.insert(std::make_pair("size", item));
 
 			/***** Determine the tags for the campaign. *****/
