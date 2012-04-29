@@ -18,8 +18,8 @@
  * Define the common log macros for the gui toolkit.
  */
 
-#ifndef GUI_AUXILIRY_LOG_HPP_INCLUDED
-#define GUI_AUXILIRY_LOG_HPP_INCLUDED
+#ifndef GUI_AUXILIARY_LOG_HPP_INCLUDED
+#define GUI_AUXILIARY_LOG_HPP_INCLUDED
 
 #include "../../log.hpp"
 
