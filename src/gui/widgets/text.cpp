@@ -157,6 +157,7 @@ void ttext_::paste_selection(const bool mouse)
 
 	update_canvas();
 	set_dirty();
+	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
 
 void  ttext_::set_selection_start(const size_t selection_start)
@@ -241,6 +242,7 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 	} else if(selection_start_){
 		delete_char(true);
 	}
+	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
 
 void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
@@ -253,6 +255,7 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 	} else if (selection_start_ < text_.get_length()) {
 		delete_char(false);
 	}
+	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
 
 void ttext_::handle_key_default(
@@ -263,6 +266,7 @@ void ttext_::handle_key_default(
 	if(unicode >= 32 && unicode != 127) {
 		handled = true;
 		insert_char(unicode);
+		fire(event::NOTIFY_MODIFIED, *this, NULL);
 	}
 }
 

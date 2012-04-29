@@ -31,6 +31,12 @@ namespace gui2 {
  *
  * All other text classes should inherit from this base class.
  *
+ * The NOTIFY_MODIFIED event is send when the text is modified.
+ *
+ * @todo Validate whether the NOTIFY_MODIFIED is always fired properly. The
+ * current implementation is added for some quick testing so some cases might
+ * be forgotten.
+ *
  * Common signal handlers:
  * - connect_signal_pre_key_press
  */
