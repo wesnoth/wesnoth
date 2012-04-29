@@ -736,9 +736,7 @@ void twindow::draw()
 		dirty_list_.push_back(std::vector<twidget*>(1, this));
 		update_rect(screen_area());
 #else
-		if(!new_widgets) {
-			clip_rect_setter clip(frame_buffer, &dirty_rect);
-		}
+		clip_rect_setter clip(frame_buffer, &dirty_rect);
 #endif
 
 		/*
