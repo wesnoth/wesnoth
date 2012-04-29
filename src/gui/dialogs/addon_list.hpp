@@ -36,18 +36,6 @@ public:
 
 private:
 
-	static bool
-	sort_by_name(
-			  const tpane::titem& lhs
-			, const tpane::titem& rhs
-			, const bool ascending);
-
-	static bool
-	sort_by_size(
-			  const tpane::titem& lhs
-			, const tpane::titem& rhs
-			, const bool ascending);
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 

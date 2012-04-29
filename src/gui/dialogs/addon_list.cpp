@@ -19,6 +19,7 @@
 
 #include "foreach.hpp"
 #include "gettext.hpp"
+#include "gui/auxiliary/filter.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
@@ -28,7 +29,6 @@
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "map_utils.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/bind.hpp>
@@ -69,36 +69,6 @@ namespace gui2 {
 
 REGISTER_DIALOG(addon_list)
 
-bool
-taddon_list::sort_by_name(
-		  const tpane::titem& lhs
-		, const tpane::titem& rhs
-		, const bool ascending)
-{
-	if(ascending) {
-		return at(lhs.tags, "name") < at(rhs.tags, "name");
-	} else {
-		return at(lhs.tags, "name") > at(rhs.tags, "name");
-	}
-}
-
-bool
-taddon_list::sort_by_size(
-		  const tpane::titem& lhs
-		, const tpane::titem& rhs
-		, const bool ascending)
-{
-	if(ascending) {
-		return
-			  lexical_cast<int>(at(lhs.tags, "size"))
-			< lexical_cast<int>(at(rhs.tags, "size"));
-	} else {
-		return
-			  lexical_cast<int>(at(lhs.tags, "size"))
-			> lexical_cast<int>(at(rhs.tags, "size"));
-	}
-}
-
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 {
 	if(new_widgets) {
@@ -109,16 +79,16 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 
 
 		tpane::tcompare_functor ascending_name_functor =
-				boost::bind(&taddon_list::sort_by_name, _1, _2, true);
+				boost::bind(&sort<std::string>, _1, _2, "name", true);
 
 		tpane::tcompare_functor descending_name_functor =
-				boost::bind(&taddon_list::sort_by_name, _1, _2, false);
+				boost::bind(&sort<std::string>, _1, _2, "name", false);
 
 		tpane::tcompare_functor ascending_size_functor =
-				boost::bind(&taddon_list::sort_by_size, _1, _2, true);
+				boost::bind(&sort<int>, _1, _2, "size", true);
 
 		tpane::tcompare_functor descending_size_functor =
-				boost::bind(&taddon_list::sort_by_size, _1, _2, false);
+				boost::bind(&sort<int>, _1, _2, "size", false);
 
 
 		connect_signal_mouse_left_click(
