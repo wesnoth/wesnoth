@@ -29,18 +29,22 @@ tpane::tpane(const tbuilder_grid_ptr item_builder)
 	: twidget()
 	, items_()
 	, item_builder_(item_builder)
+	, item_id_generator_(0)
 {
 }
 
-void tpane::create_item(const std::map<std::string, string_map>& item_data)
+unsigned tpane::create_item(
+		  const std::map<std::string, string_map>& item_data
+		, const std::map<std::string, std::string>& tags)
 {
-	items_.push_back(item_builder_->build());
-	items_.back()->set_parent(this);
+	titem item = { item_id_generator_++, tags, item_builder_->build() };
+
+	item.grid->set_parent(this);
 
 	typedef std::pair<std::string, string_map> hack ;
 	BOOST_FOREACH(const hack& data, item_data) {
 		tcontrol* control = find_widget<tcontrol>(
-				  items_.back()
+				  item.grid
 				, data.first
 				, false
 				, false);
@@ -49,6 +53,9 @@ void tpane::create_item(const std::map<std::string, string_map>& item_data)
 			control->set_members(data.second);
 		}
 	}
+
+	items_.push_back(item);
+	return item.id;
 }
 
 void tpane::place(const tpoint& origin, const tpoint& size)
@@ -58,10 +65,10 @@ void tpane::place(const tpoint& origin, const tpoint& size)
 
 	unsigned y = 0;
 
-	BOOST_FOREACH(tgrid* grid, items_) {
+	BOOST_FOREACH(titem& item, items_) {
 		DBG_GUI_L << LOG_HEADER << " offset " << y << '\n';
-		grid->place(tpoint(0, y), grid->get_best_size());
-		y += grid->get_height();
+		item.grid->place(tpoint(0, y), item.grid->get_best_size());
+		y += item.grid->get_height();
 	}
 }
 
@@ -72,17 +79,30 @@ void tpane::impl_draw_children(
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
-	BOOST_FOREACH(tgrid* grid, items_) {
-		grid->draw_children(frame_buffer, x_offset, y_offset);
+	BOOST_FOREACH(titem& item, items_) {
+		item.grid->draw_children(frame_buffer, x_offset, y_offset);
 	}
 }
 
 void tpane::child_populate_dirty_list(twindow& caller,
 			const std::vector<twidget*>& call_stack)
 {
-	BOOST_FOREACH(tgrid* grid, items_) {
+	BOOST_FOREACH(titem& item, items_) {
 		std::vector<twidget*> child_call_stack = call_stack;
-		grid->populate_dirty_list(caller, child_call_stack);
+		item.grid->populate_dirty_list(caller, child_call_stack);
+	}
+}
+
+void tpane::sort(const tcompare_functor& compare_functor)
+{
+	items_.sort(compare_functor);
+
+	unsigned y = 0;
+
+	BOOST_FOREACH(titem& item, items_) {
+		DBG_GUI_L << LOG_HEADER << " offset " << y << '\n';
+		item.grid->place(tpoint(0, y), item.grid->get_best_size());
+		y += item.grid->get_height();
 	}
 }
 

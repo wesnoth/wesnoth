@@ -18,6 +18,7 @@
 #include "gui/dialogs/addon_list.hpp"
 
 #include "foreach.hpp"
+#include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -26,6 +27,9 @@
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "map_utils.hpp"
+
+#include <boost/bind.hpp>
 
 namespace gui2 {
 
@@ -63,12 +67,93 @@ namespace gui2 {
 
 REGISTER_DIALOG(addon_list)
 
+bool
+taddon_list::sort_by_name(
+		  const tpane::titem& lhs
+		, const tpane::titem& rhs
+		, const bool ascending)
+{
+	if(ascending) {
+		return at(lhs.tags, "name") < at(rhs.tags, "name");
+	} else {
+		return at(lhs.tags, "name") > at(rhs.tags, "name");
+	}
+}
+
+bool
+taddon_list::sort_by_size(
+		  const tpane::titem& lhs
+		, const tpane::titem& rhs
+		, const bool ascending)
+{
+	if(ascending) {
+		return
+			  lexical_cast<int>(at(lhs.tags, "size"))
+			< lexical_cast<int>(at(rhs.tags, "size"));
+	} else {
+		return
+			  lexical_cast<int>(at(lhs.tags, "size"))
+			> lexical_cast<int>(at(rhs.tags, "size"));
+	}
+}
+
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 {
 	if(new_widgets) {
+
+		/***** ***** Init buttons. ***** *****/
+
 		tpane& pane = find_widget<tpane>(&window, "addons", false);
 
+
+		tpane::tcompare_functor ascending_name_functor =
+				boost::bind(&taddon_list::sort_by_name, _1, _2, true);
+
+		tpane::tcompare_functor descending_name_functor =
+				boost::bind(&taddon_list::sort_by_name, _1, _2, false);
+
+		tpane::tcompare_functor ascending_size_functor =
+				boost::bind(&taddon_list::sort_by_size, _1, _2, true);
+
+		tpane::tcompare_functor descending_size_functor =
+				boost::bind(&taddon_list::sort_by_size, _1, _2, false);
+
+
+		connect_signal_mouse_left_click(
+				  find_widget<tbutton>(&window, "sort_name_ascending", false)
+				, boost::bind(
+					  &tpane::sort
+					, &pane
+					, ascending_name_functor));
+
+		connect_signal_mouse_left_click(
+				  find_widget<tbutton>(&window, "sort_name_descending", false)
+				, boost::bind(
+					  &tpane::sort
+					, &pane
+					, descending_name_functor));
+
+		connect_signal_mouse_left_click(
+				  find_widget<tbutton>(&window, "sort_size_ascending", false)
+				, boost::bind(
+					  &tpane::sort
+					, &pane
+					, ascending_size_functor));
+
+		connect_signal_mouse_left_click(
+				  find_widget<tbutton>(&window, "sort_size_descending", false)
+				, boost::bind(
+					  &tpane::sort
+					, &pane
+					, descending_size_functor));
+
+
+		/***** ***** Fill the listbox. ***** *****/
+
 		foreach(const config &campaign, cfg_.child_range("campaign")) {
+
+			/***** Determine the data for the widgets. *****/
+
 			std::map<std::string, string_map> data;
 			string_map item;
 
@@ -96,7 +181,15 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 			item["label"] = campaign["size"];
 			data.insert(std::make_pair("size", item));
 
-			pane.create_item(data);
+			/***** Determine the tags for the campaign. *****/
+
+			std::map<std::string, std::string> tags;
+			tags.insert(std::make_pair("name", campaign["name"]));
+			tags.insert(std::make_pair("size", campaign["size"]));
+
+			/***** Add the campaign. *****/
+
+			pane.create_item(data, tags);
 		}
 
 	} else {

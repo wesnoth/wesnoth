@@ -19,6 +19,10 @@
 #include "gui/widgets/widget.hpp"
 #include "gui/auxiliary/window_builder.hpp"
 
+#include <boost/function.hpp>
+
+#include <list>
+
 namespace gui2 {
 
 class tgrid;
@@ -27,6 +31,20 @@ class tpane
 	: public twidget
 {
 public:
+
+	struct titem
+	{
+
+		unsigned id;
+		std::map<std::string, std::string> tags;
+
+		tgrid* grid;
+	};
+
+	typedef
+		boost::function<bool(const titem&, const titem&)>
+		tcompare_functor;
+
 	explicit tpane(const tbuilder_grid_ptr item_builder);
 
 	/**
@@ -37,7 +55,9 @@ public:
 	 *
 	 * @param label               The text on the label.
 	 */
-	void create_item(const std::map<std::string, string_map>& item_data);
+	unsigned create_item(
+			  const std::map<std::string, string_map>& item_data
+			, const std::map<std::string, std::string>& tags);
 
 	/** Inherited from twidget. */
 	void place(const tpoint& origin, const tpoint& size);
@@ -53,6 +73,13 @@ public:
 	/** Inherited from twidget. */
 	void request_reduce_width(const unsigned maximum_width);
 
+	/**
+	 * Sorts the contents of the pane.
+	 *
+	 * @param compare_functor     The functor to use to sort the items.
+	 */
+	void sort(const tcompare_functor& compare_functor);
+
 private:
 	/** Inherited from twidget. */
 	tpoint calculate_best_size() const;
@@ -67,10 +94,13 @@ public:
 private:
 
 	/** The items in the pane. */
-	std::vector<tgrid*> items_;
+	std::list<titem> items_;
 
 	/** The builer for the items in the list. */
 	tbuilder_grid_ptr item_builder_;
+
+	/** The id generator for the items. */
+	unsigned item_id_generator_;
 };
 
 } // namespace gui2
