@@ -43,6 +43,7 @@
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
 		62D24F321519987400350848 /* context_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F311519987400350848 /* context_manager.cpp */; };
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
+		62E48250154D865E001DD4FC /* pane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62E4824E154D865E001DD4FC /* pane.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		B504B94C1284C06B00261FE9 /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B504B94A1284C06B00261FE9 /* tips.cpp */; };
 		B504B94D1284C06B00261FE9 /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B504B94A1284C06B00261FE9 /* tips.cpp */; };
@@ -1043,6 +1044,8 @@
 		62D24F311519987400350848 /* context_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = context_manager.cpp; sourceTree = "<group>"; };
 		62D24F331519994300350848 /* palette_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = palette_manager.hpp; sourceTree = "<group>"; };
 		62D24F341519995200350848 /* palette_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = palette_manager.cpp; sourceTree = "<group>"; };
+		62E4824E154D865E001DD4FC /* pane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pane.cpp; sourceTree = "<group>"; };
+		62E4824F154D865E001DD4FC /* pane.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pane.hpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Wesnoth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wesnoth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B504B94A1284C06B00261FE9 /* tips.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tips.cpp; sourceTree = "<group>"; };
@@ -3257,6 +3260,8 @@
 		B5A9BCCC0ECA805A002BE442 /* widgets */ = {
 			isa = PBXGroup;
 			children = (
+				62E4824E154D865E001DD4FC /* pane.cpp */,
+				62E4824F154D865E001DD4FC /* pane.hpp */,
 				F419E484133550FB0031448A /* drawing.cpp */,
 				F419E485133550FB0031448A /* drawing.hpp */,
 				B52EE8991213590500CFBDAB /* list.cpp */,
@@ -3999,6 +4004,7 @@
 				62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */,
 				62D24F321519987400350848 /* context_manager.cpp in Sources */,
 				62D24F351519995200350848 /* palette_manager.cpp in Sources */,
+				62E48250154D865E001DD4FC /* pane.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
