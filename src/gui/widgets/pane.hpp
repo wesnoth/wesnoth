@@ -66,6 +66,9 @@ public:
 	void place(const tpoint& origin, const tpoint& size);
 
 	/** Inherited from twidget. */
+	void layout_init(const bool full_initialization);
+
+	/** Inherited from twidget. */
 	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset);
 
 	/** Inherited from twidget. */

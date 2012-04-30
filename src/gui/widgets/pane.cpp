@@ -141,6 +141,17 @@ void tpane::place(const tpoint& origin, const tpoint& size)
 	place_children();
 }
 
+void tpane::layout_init(const bool full_initialization)
+{
+	DBG_GUI_D << LOG_HEADER << '\n';
+
+	twidget::layout_init(full_initialization);
+
+	BOOST_FOREACH(titem& item, items_) {
+		item.grid->layout_init(full_initialization);
+	}
+}
+
 void tpane::impl_draw_children(
 		  surface& frame_buffer
 		, int x_offset
