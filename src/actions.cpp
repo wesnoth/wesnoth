@@ -2585,7 +2585,7 @@ std::vector<map_location>::const_iterator known_movement_end(
  *				This does not account for things that set
  *				movement to zero (such as being ambushed).
  * @param[in,out]  flags	For returning data to the caller. (It is "in"
- *				only because the caller is responisible for
+ *				only because the caller is responsible for
  *				initializing this with the default constructor.)
  * @param[in]      fog_shroud	Set to true to cause fog and shroud to be
  *				cleared along the path (up to where we stop).
