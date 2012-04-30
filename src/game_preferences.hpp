@@ -160,6 +160,9 @@ namespace preferences {
 	int village_gold();
 	void set_village_gold(int value);
 
+	int village_support();
+	void set_village_support(int value);
+
 	int xp_modifier();
 	void set_xp_modifier(int value);
 

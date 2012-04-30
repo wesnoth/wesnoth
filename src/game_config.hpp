@@ -31,6 +31,7 @@ namespace game_config
 {
 	extern int base_income;
 	extern int village_income;
+	extern int village_support;
 	extern int poison_amount;
 	extern int rest_heal_amount;
 	extern int recall_cost;

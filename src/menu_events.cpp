@@ -508,13 +508,14 @@ void menu_handler::scenario_settings_table(int selected)
 			<< _("scenario settings^Start\nGold")       << COLUMN_SEPARATOR
 			<< _("scenario settings^Base\nIncome")      << COLUMN_SEPARATOR
 			<< _("scenario settings^Gold Per\nVillage") << COLUMN_SEPARATOR
+			<< _("scenario settings^Support Per\nVillage") << COLUMN_SEPARATOR
 			<< _("scenario settings^Fog")               << COLUMN_SEPARATOR
 			<< _("scenario settings^Shroud");
 
 	gui::menu::basic_sorter sorter;
 	sorter.set_redirect_sort(0,1).set_alpha_sort(1).set_numeric_sort(2)
 		  .set_numeric_sort(3).set_numeric_sort(4).set_numeric_sort(5)
-		  .set_alpha_sort(6).set_alpha_sort(7);
+		  .set_numeric_sort(6).set_alpha_sort(7).set_alpha_sort(8);
 
 	std::vector<std::string> items;
 	std::vector<bool> leader_bools;
@@ -558,6 +559,7 @@ void menu_handler::scenario_settings_table(int selected)
 			<< teams_[n].start_gold() << COLUMN_SEPARATOR
 			<< teams_[n].base_income() << COLUMN_SEPARATOR
 			<< teams_[n].village_gold() << COLUMN_SEPARATOR
+			<< teams_[n].village_support() << COLUMN_SEPARATOR
 			<< (teams_[n].uses_fog()    ? _("yes") : _("no")) << COLUMN_SEPARATOR
 			<< (teams_[n].uses_shroud() ? _("yes") : _("no")) << COLUMN_SEPARATOR;
 

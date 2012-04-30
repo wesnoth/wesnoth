@@ -1002,6 +1002,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	std::string controller = cfg["controller"];
 	std::string recruit_str = cfg["recruit"];
 	std::string shroud_data = cfg["shroud_data"];
+	std::string village_support = cfg["village_support"];
 	const config& parsed = cfg.get_parsed_config();
 	const config::const_child_itors &ai = parsed.child_range("ai");
 	std::string switch_ai = cfg["switch_ai"];
@@ -1080,6 +1081,10 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		config::attribute_value village_gold = cfg["village_gold"];
 		if (!village_gold.empty()) {
 			teams[team_index].set_village_gold(village_gold);
+		}
+		// Set support (unit levels supported per village, for upkeep purposes)
+		if (!village_support.empty()) {
+			teams[team_index].set_village_support(lexical_cast_default<int>(village_support, game_config::village_support));
 		}
 		// Redeploy ai from location (this ignores current AI parameters)
 		if (!switch_ai.empty()) {

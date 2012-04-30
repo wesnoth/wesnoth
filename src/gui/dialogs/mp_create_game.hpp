@@ -57,6 +57,7 @@ private:
 	tfield_integer
 		*turns_,
 		*gold_,
+		*support_,
 		*experience_;
 
 public:

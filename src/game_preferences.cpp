@@ -653,6 +653,16 @@ void set_village_gold(int value)
 	preferences::set("mp_village_gold", value);
 }
 
+int village_support()
+{
+	return settings::get_village_support(preferences::get("mp_village_support"));
+}
+
+void set_village_support(int value)
+{
+	preferences::set("mp_village_support", lexical_cast<std::string>(value));
+}
+
 int xp_modifier()
 {
 	return settings::get_xp_modifier(preferences::get("mp_xp_modifier"));

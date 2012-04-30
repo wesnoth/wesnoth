@@ -37,6 +37,7 @@ namespace game_config
 {
 	int base_income = 2;
 	int village_income = 1;
+	int village_support = 1;
 	int poison_amount= 8;
 	int rest_heal_amount= 2;
 	int recall_cost = 20;
@@ -174,6 +175,7 @@ namespace game_config
 	{
 		base_income = v["base_income"].to_int(2);
 		village_income = v["village_income"].to_int(1);
+		village_support = v["village_support"].to_int(1);
 		poison_amount = v["poison_amount"].to_int(8);
 		rest_heal_amount = v["rest_heal_amount"].to_int(2);
 		recall_cost = v["recall_cost"].to_int(20);

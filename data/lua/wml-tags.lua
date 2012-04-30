@@ -948,6 +948,7 @@ function wml_actions.store_side(cfg)
 				hidden = t.hidden,
 				income = t.total_income,
 				village_gold = t.village_gold,
+				village_support = t.village_support,
 				name = t.name,
 				team_name = t.team_name,
 				user_team_name = t.user_team_name,

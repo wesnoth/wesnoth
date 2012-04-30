@@ -45,6 +45,11 @@ int get_village_gold(const std::string& value)
 	return lexical_cast_in_range<int>(value, 2, 1, 5);
 }
 
+int get_village_support(const std::string& value)
+{
+	return lexical_cast_in_range<int>(value, 1, 0, 4);
+}
+
 int get_xp_modifier(const std::string& value)
 {
 	return lexical_cast_in_range<int>(value, 70, 30, 200);

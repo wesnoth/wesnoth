@@ -1876,6 +1876,7 @@ static int impl_game_config_get(lua_State *L)
 	// Find the corresponding attribute.
 	return_int_attrib("base_income", game_config::base_income);
 	return_int_attrib("village_income", game_config::village_income);
+	return_int_attrib("village_support", game_config::village_support);
 	return_int_attrib("poison_amount", game_config::poison_amount);
 	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
 	return_int_attrib("recall_cost", game_config::recall_cost);
@@ -1900,6 +1901,7 @@ static int impl_game_config_set(lua_State *L)
 	// Find the corresponding attribute.
 	modify_int_attrib("base_income", game_config::base_income = value);
 	modify_int_attrib("village_income", game_config::village_income = value);
+	modify_int_attrib("village_support", game_config::village_support = value);
 	modify_int_attrib("poison_amount", game_config::poison_amount = value);
 	modify_int_attrib("rest_heal_amount", game_config::rest_heal_amount = value);
 	modify_int_attrib("recall_cost", game_config::recall_cost = value);

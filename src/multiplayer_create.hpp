@@ -74,6 +74,8 @@ private:
 	gui::slider countdown_action_bonus_slider_;
 	gui::slider village_gold_slider_;
 	gui::label village_gold_label_;
+	gui::slider village_support_slider_;
+	gui::label village_support_label_;
 	gui::slider xp_modifier_slider_;
 	gui::label xp_modifier_label_;
 

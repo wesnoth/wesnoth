@@ -78,6 +78,8 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	countdown_action_bonus_slider_(disp.video()),
 	village_gold_slider_(disp.video()),
 	village_gold_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
+	village_support_slider_(disp.video()),
+	village_support_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	xp_modifier_slider_(disp.video()),
 	xp_modifier_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	name_entry_label_(disp.video(), _("Name of game:"), font::SIZE_PLUS, font::LOBBY_COLOR),
@@ -184,6 +186,11 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	village_gold_slider_.set_value(preferences::village_gold());
 	village_gold_slider_.set_help_string(_("The amount of income each village yields per turn"));
 
+	village_support_slider_.set_min(0);
+	village_support_slider_.set_max(4);
+	village_support_slider_.set_value(preferences::village_support());
+	village_support_slider_.set_help_string(_("The number of unit levels each village can support"));
+
 	xp_modifier_slider_.set_min(30);
 	xp_modifier_slider_.set_max(200);
 	xp_modifier_slider_.set_value(preferences::xp_modifier());
@@ -274,6 +281,7 @@ create::~create()
 		preferences::set_turns(num_turns_);
 		preferences::set_random_start_time(parameters_.random_start_time);
 		preferences::set_village_gold(parameters_.village_gold);
+		preferences::set_village_support(parameters_.village_support);
 		preferences::set_xp_modifier(parameters_.xp_modifier);
 	}
 }
@@ -315,6 +323,7 @@ mp_game_settings& create::get_parameters()
 	parameters_.mp_countdown_action_bonus = mp_countdown_action_bonus_val;
 	parameters_.mp_countdown = countdown_game_.checked();
 	parameters_.village_gold = village_gold_slider_.value();
+	parameters_.village_support = village_support_slider_.value();
 	parameters_.xp_modifier = xp_modifier_slider_.value();
 	parameters_.use_map_settings = use_map_settings_.checked();
 	parameters_.random_start_time = random_start_time_.checked();
@@ -423,6 +432,12 @@ void create::process_event()
 	buf.str("");
 	buf << _("Village gold: ") << village_gold;
 	village_gold_label_.set_text(buf.str());
+
+	// Unit levels supported per village
+	const int village_support = village_support_slider_.value();
+	buf.str("");
+	buf << _("Village Support: ") << village_support;
+	village_support_label_.set_text(buf.str());
 
 	// Experience modifier
 	const int xpmod = xp_modifier_slider_.value();
@@ -598,6 +613,10 @@ void create::process_event()
 				settings::get_village_gold(cfg["village_gold"]) :
 				preferences::village_gold());
 
+			village_support_slider_.set_value(map_settings ?
+				settings::get_village_support(cfg["village_support"]) :
+				preferences::village_support());
+
 			fog_game_.set_check(map_settings ?
 				cfg["fog"].to_bool(true) :
 				preferences::fog());
@@ -610,6 +629,7 @@ void create::process_event()
 		// Set the widget states
 		turns_slider_.enable(!map_settings);
 		village_gold_slider_.enable(!map_settings);
+		village_support_slider_.enable(!map_settings);
 		xp_modifier_slider_.enable(!map_settings);
 		random_start_time_.enable(!map_settings);
 		fog_game_.enable(!map_settings);
@@ -639,6 +659,8 @@ void create::hide_children(bool hide)
 
 	village_gold_slider_.hide(hide);
 	village_gold_label_.hide(hide);
+	village_support_slider_.hide(hide);
+	village_support_label_.hide(hide);
 	xp_modifier_slider_.hide(hide);
 	xp_modifier_label_.hide(hide);
 
@@ -776,6 +798,12 @@ void create::layout_children(const SDL_Rect& rect)
 	village_gold_slider_.set_width(ca.w - xpos);
 	village_gold_slider_.set_location(xpos, ypos);
 	ypos += village_gold_slider_.height() + border_size;
+
+	village_support_label_.set_location(xpos, ypos);
+	ypos += village_support_label_.height() + border_size;
+	village_support_slider_.set_width(ca.w - xpos);
+	village_support_slider_.set_location(xpos, ypos);
+	ypos += village_support_slider_.height() + border_size;
 
 	xp_modifier_label_.set_location(xpos, ypos);
 	ypos += xp_modifier_label_.height() + border_size;

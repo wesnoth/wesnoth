@@ -68,6 +68,10 @@ tmp_create_game::tmp_create_game(const config& cfg) :
 		true,
 		preferences::village_gold ,
 		preferences::set_village_gold)),
+	support_(register_integer("village_support",
+		false,
+		preferences::village_support ,
+		preferences::set_village_support)),
 	experience_(register_integer("experience_modifier",
 		true,
 		preferences::xp_modifier ,
@@ -166,6 +170,7 @@ void tmp_create_game::update_map_settings(twindow& window)
 
 	turns_->widget_set_enabled(window, !use_map_settings, false);
 	gold_->widget_set_enabled(window, !use_map_settings, false);
+	support_->widget_set_enabled(window, !use_map_settings, false);
 	experience_->widget_set_enabled(window, !use_map_settings, false);
 
 	if(use_map_settings) {
@@ -178,6 +183,7 @@ void tmp_create_game::update_map_settings(twindow& window)
 
 			turns_->set_widget_value(window, ::settings::get_turns((*scenario_)["turns"]));
 			gold_->set_widget_value(window, ::settings::get_village_gold(side["village_gold"]));
+			support_->set_widget_value(window, ::settings::get_village_support(side["village_support"]));
 			experience_->set_widget_value(window, ::settings::get_xp_modifier((*scenario_)["experience_modifier"]));
 		}
 		// No scenario selected just leave the state unchanged for now.
@@ -191,6 +197,7 @@ void tmp_create_game::update_map_settings(twindow& window)
 
 		turns_->set_widget_value(window, preferences::turns());
 		gold_->set_widget_value(window, preferences::village_gold());
+		support_->set_widget_value(window, preferences::village_support());
 		experience_->set_widget_value(window, preferences::xp_modifier());
 	}
 }

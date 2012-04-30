@@ -60,6 +60,18 @@ namespace settings {
 	int get_village_gold(const std::string& value);
 
 	/**
+	 *  Gets the village unit level support.
+	 *  If no valid value supplied, it will return a default.
+	 *  The value is also range checked.
+	 *  When out of bounds, it will be set to the nearest bound.
+	 *
+	 *  @param value        string containing the village support
+	 *
+	 *  @returns            the village support
+	 */
+	int get_village_support(const std::string& value);
+
+	/**
 	 *  Gets the xp modifier.
 	 *  If no valid value supplied, it will return a default.
 	 *  The value is also range checked.

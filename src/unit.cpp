@@ -3041,7 +3041,7 @@ team_data calculate_team_data(const team& tm, int side)
 	res.units = side_units(side);
 	res.upkeep = side_upkeep(side);
 	res.villages = tm.villages().size();
-	res.expenses = std::max<int>(0,res.upkeep - res.villages);
+	res.expenses = std::max<int>(0,res.upkeep - tm.support());
 	res.net_income = tm.total_income() - res.expenses;
 	res.gold = tm.gold();
 	res.teamname = tm.user_team_name();

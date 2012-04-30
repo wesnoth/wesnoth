@@ -57,6 +57,7 @@ team::team_info::team_info() :
 	gold_add(false),
 	income(0),
 	income_per_village(0),
+	support_per_village(1),
 	minimum_recruit_price(0),
 	recall_cost(0),
 	can_recruit(),
@@ -167,6 +168,12 @@ void team::team_info::read(const config &cfg)
 	income_per_village = cfg["village_gold"].to_int(game_config::village_income);
 	recall_cost = cfg["recall_cost"].to_int(game_config::recall_cost);
 
+	const std::string& village_support = cfg["village_support"];
+	if(village_support.empty())
+		support_per_village = game_config::village_support;
+	else
+		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
+
 	std::string control = cfg["controller"];
 	//by default, persistence of a team is set depending on the controller
 	persistent = true;
@@ -237,6 +244,7 @@ void team::team_info::write(config& cfg) const
 	cfg["countdown_time"]= countdown_time;
 	cfg["action_bonus_count"]= action_bonus_count;
 	cfg["village_gold"] = income_per_village;
+	cfg["village_support"] = support_per_village;
 	cfg["recall_cost"] = recall_cost;
 	cfg["disallow_observers"] = disallow_observers;
 	cfg["allow_player"] = allow_player;

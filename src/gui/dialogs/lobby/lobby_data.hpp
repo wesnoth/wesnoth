@@ -122,6 +122,7 @@ struct game_info
 	std::string era_short;
 
 	std::string gold;
+	std::string support;
 	std::string xp;
 	std::string vision;
 	std::string status; //vacant slots or turn info

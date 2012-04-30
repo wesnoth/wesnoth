@@ -715,6 +715,9 @@ config connect::side::get_config() const
 		res["share_view"] =  parent_->params_.share_view;
 		if(!parent_->params_.use_map_settings || res["village_gold"].empty())
 			res["village_gold"] = parent_->params_.village_gold;
+		if(!parent_->params_.use_map_settings || res["village_support"].empty())
+			res["village_support"] = lexical_cast<std::string>(parent_->params_.village_support);
+
 	}
 
 	if(parent_->params_.use_map_settings && enabled_) {

@@ -68,6 +68,7 @@ public:
 		bool gold_add;
 		int income;
 		int income_per_village;
+		int support_per_village;
 		mutable int minimum_recruit_price;
 		int recall_cost;
 		std::set<std::string> can_recruit;
@@ -138,6 +139,13 @@ public:
 	void set_village_gold(int income) { info_.income_per_village = income; }
 	void set_recall_cost(int cost) { info_.recall_cost = cost; }
 	int total_income() const { return base_income() + villages_.size() * info_.income_per_village; }
+	/** @return The number of unit levels each village can support,
+	    i.e. how much upkeep each village can bear. */
+	int village_support() const { return info_.support_per_village; }
+	/** @param support The number of unit levels each village can support */
+	void set_village_support(int support) { info_.support_per_village = support; }
+	/** Calculate total support capacity, based on support_per_village. */
+	int support() const { return villages_.size()*village_support(); }
 	void new_turn() { gold_ += total_income(); }
 	void get_shared_maps();
 	void set_gold(int amount) { gold_ = amount; }
