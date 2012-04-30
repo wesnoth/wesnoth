@@ -210,7 +210,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 		if(description != NULL) {
 			int inc_acc = lexical_cast<int>(increase_accuracy);
-			// Help xgettext with a directive to recognise the string as a non C printf-like string
+			// Help xgettext with a directive to recognize the string as a non C printf-like string
 			// xgettext:no-c-format
 			desc << utils::signed_value(inc_acc) << _("% accuracy");
 		}
@@ -280,6 +280,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent) :
 	moveCosts_(),
+	visionCosts_(),
 	defenseMods_(),
 	parent_(parent),
 	cfg_()
@@ -299,6 +300,9 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 	if (const config &movement_costs = cfg.child("movement_costs"))
 		cfg_.add_child("movement_costs", movement_costs);
 
+	if (const config &vision_costs = cfg.child("vision_costs"))
+		cfg_.add_child("vision_costs", vision_costs);
+
 	if (const config &defense = cfg.child("defense"))
 		cfg_.add_child("defense", defense);
 
@@ -306,7 +310,7 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 		cfg_.add_child("resistance", resistance);
 }
 
-unit_movement_type::unit_movement_type(): moveCosts_(), defenseMods_(), parent_(NULL), cfg_()
+unit_movement_type::unit_movement_type(): moveCosts_(), visionCosts_(), defenseMods_(), parent_(NULL), cfg_()
 {}
 
 std::string unit_movement_type::name() const
@@ -413,7 +417,7 @@ int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
 	bool result_found = false;
 	int res = impassable;
 
-	if (const config& movement_costs = cfg.child("movement_costs"))	{
+	if (cfg) {
 		if (underlying.size() != 1) {
 			ERR_CF << "Terrain '" << terrain << "' has "
 				<< underlying.size() << " underlying names - 0 expected.\n";
@@ -423,7 +427,7 @@ int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
 		}
 
 		const std::string& id = map.get_terrain_info(underlying.front()).id();
-		if (const config::attribute_value *val = movement_costs.get(id)) {
+		if (const config::attribute_value *val = cfg.get(id)) {
 			res = *val;
 			result_found = true;
 		}
@@ -563,6 +567,7 @@ unit_type::unit_type(const unit_type& o) :
 	hitpoints_(o.hitpoints_),
 	level_(o.level_),
 	movement_(o.movement_),
+	vision_(o.vision_),
 	max_attacks_(o.max_attacks_),
 	cost_(o.cost_),
 	usage_(o.usage_),
@@ -610,6 +615,7 @@ unit_type::unit_type(config &cfg) :
 	hitpoints_(0),
 	level_(0),
 	movement_(0),
+	vision_(-1),
 	max_attacks_(0),
 	cost_(0),
 	usage_(),
@@ -772,6 +778,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	hitpoints_ = cfg["hitpoints"].to_int(1);
 	level_ = cfg["level"];
 	movement_ = cfg["movement"].to_int(1);
+	vision_ = cfg["vision"].to_int(-1);
 	max_attacks_ = cfg["attacks"].to_int(1);
 	cost_ = cfg["cost"].to_int(1);
 	usage_ = cfg_["usage"].str();

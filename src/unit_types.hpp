@@ -136,7 +136,9 @@ public:
 
 	std::string name() const;
 	int movement_cost(const gamemap &map, t_translation::t_terrain terrain) const
-	{ return movement_cost_internal(moveCosts_, cfg_, parent_, map, terrain); }
+	{ return movement_cost_internal(moveCosts_, cfg_.child("movement_costs"), parent_, map, terrain); }
+	int vision_cost(const gamemap &map, t_translation::t_terrain terrain) const
+	{ return movement_cost_internal(visionCosts_, cfg_.child("vision_costs"), parent_, map, terrain); }
 	int defense_modifier(const gamemap &map, t_translation::t_terrain terrain) const
 	{ return defense_modifier_internal(defenseMods_, cfg_, parent_, map, terrain); }
 	const defense_range &defense_range_modifier(const gamemap &map, t_translation::t_terrain terrain) const
@@ -154,6 +156,7 @@ public:
 	const unit_movement_type* get_parent() const { return parent_; }
 private:
 	mutable std::map<t_translation::t_terrain, int> moveCosts_;
+	mutable std::map<t_translation::t_terrain, int> visionCosts_;
 	mutable defense_cache defenseMods_;
 
 	const unit_movement_type* parent_;
@@ -225,6 +228,7 @@ public:
 	int hitpoints() const { return hitpoints_; }
 	int level() const { return level_; }
 	int movement() const { return movement_; }
+	int vision() const { return vision_; }
 	int max_attacks() const { return max_attacks_; }
 	int cost() const { return cost_; }
 	const std::string& usage() const { return usage_; }
@@ -302,6 +306,7 @@ private:
     int hitpoints_;
     int level_;
     int movement_;
+    int vision_;
     int max_attacks_;
     int cost_;
     std::string usage_;

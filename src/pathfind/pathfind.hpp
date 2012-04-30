@@ -110,7 +110,7 @@ struct vision_path : public paths
 {
 	/// Construct a list of seen hexes for a unit.
 	vision_path(gamemap const &map, const unit& viewer,
-	            map_location const &loc, bool full_move=true);
+	            map_location const &loc);
 	virtual ~vision_path();
 
 	/// The edges are the non-destination hexes bordering the destinations.

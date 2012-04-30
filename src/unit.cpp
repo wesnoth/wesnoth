@@ -140,6 +140,8 @@ unit::unit(const unit& o):
            movement_(o.movement_),
            max_movement_(o.max_movement_),
            movement_costs_(o.movement_costs_),
+           vision_(o.vision_),
+           vision_costs_(o.vision_costs_),
            defense_mods_(o.defense_mods_),
            hold_position_(o.hold_position_),
            end_turn_(o.end_turn_),
@@ -222,6 +224,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	movement_(0),
 	max_movement_(0),
 	movement_costs_(),
+	vision_(-1),
+	vision_costs_(),
 	defense_mods_(),
 	hold_position_(false),
 	end_turn_(false),
@@ -421,6 +425,15 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
+	//adjust the unit_type's vision costs if this config has its own defined
+	cfg_range = cfg.child_range("vision_costs");
+	if(cfg_range.first != cfg_range.second) {
+		config &target = cfg_.child_or_add("vision_costs");
+		do {
+			target.append(*cfg_range.first);
+		} while(++cfg_range.first != cfg_range.second);
+	}
+
 	//adjust the unit_type's resistance if this config has its own defined
 	cfg_range = cfg.child_range("resistance");
 	if(cfg_range.first != cfg_range.second) {
@@ -512,7 +525,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		"side", "underlying_id", "overlays", "facing", "race",
 		"level", "undead_variation", "max_attacks",
 		"attacks_left", "alpha", "zoc", "flying", "cost",
-		"max_hitpoints", "max_moves", "max_experience",
+		"max_hitpoints", "max_moves", "vision", "max_experience",
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
 		"experience", "resting", "unrenamable", "alignment",
 		"canrecruit", "extra_recruit", "x", "y", "placement",
@@ -582,6 +595,8 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	movement_(0),
 	max_movement_(0),
 	movement_costs_(),
+	vision_(-1),
+	vision_costs_(),
 	defense_mods_(),
 	hold_position_(false),
 	end_turn_(false),
@@ -789,6 +804,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	// Clear modification-related caches
 	modification_descriptions_.clear();
 	movement_costs_.clear();
+	vision_costs_.clear();
 	defense_mods_.clear();
 
 	// Clear the stored config and replace it with the one from the unit type,
@@ -848,6 +864,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	hit_points_ = t->hitpoints();
 	max_hit_points_ = t->hitpoints();
 	max_movement_ = t->movement();
+	vision_ = t->vision();
 	emit_zoc_ = t->has_zoc();
 	attacks_ = t->attacks();
 	unit_value_ = t->cost();
@@ -1623,7 +1640,7 @@ void unit::write(config& cfg) const
 
 	//support for unit formulas in [ai] and unit-specific variables in [ai] [vars]
 
-        if ( has_formula() || has_loop_formula() || (formula_vars_ && formula_vars_->empty() == false) ) {
+	if ( has_formula() || has_loop_formula() || (formula_vars_ && formula_vars_->empty() == false) ) {
 
 		config &ai = cfg.add_child("ai");
 
@@ -1641,18 +1658,18 @@ void unit::write(config& cfg) const
 		{
 			config &ai_vars = ai.add_child("vars");
 
-                    std::string str;
-                    for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
-                    {
-                            i->second.serialize_to_string(str);
-                            if (!str.empty())
-                            {
+			std::string str;
+			for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
+			{
+				i->second.serialize_to_string(str);
+				if (!str.empty())
+				{
 					ai_vars[i->first] = str;
-                                    str.clear();
-                            }
-                    }
-            }
-        }
+					str.clear();
+				}
+			}
+		}
+	}
 
 	cfg["gender"] = gender_string(gender_);
 
@@ -1694,6 +1711,7 @@ void unit::write(config& cfg) const
 
 	cfg["moves"] = movement_;
 	cfg["max_moves"] = max_movement_;
+	cfg["vision"] = vision_;
 
 	cfg["resting"] = resting_;
 
@@ -2136,7 +2154,23 @@ int unit::movement_cost(const t_translation::t_terrain terrain) const
 {
 	assert(resources::game_map != NULL);
 	const int res = movement_cost_internal(movement_costs_,
-			cfg_, NULL, *resources::game_map, terrain);
+			cfg_.child("movement_costs"), NULL, *resources::game_map, terrain);
+
+	if (res == unit_movement_type::UNREACHABLE) {
+		return res;
+	} else if(get_state(STATE_SLOWED)) {
+		return res*2;
+	}
+	return res;
+}
+
+int unit::vision_cost(const t_translation::t_terrain terrain) const
+{
+	if (cfg_.child_count("vision_costs") == 0) return movement_cost(terrain);
+
+	assert(resources::game_map != NULL);
+	const int res = movement_cost_internal(vision_costs_,
+			cfg_.child("vision_costs"), NULL, *resources::game_map, terrain);
 
 	if (res == unit_movement_type::UNREACHABLE) {
 		return res;
@@ -2521,6 +2555,12 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
 					}
 					movement_costs_.clear();
+				} else if (apply_to == "vision_costs") {
+							config &mv = cfg_.child_or_add("vision_costs");
+							if (const config &ap = effect.child("vision_costs")) {
+								mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
+							}
+							vision_costs_.clear();
 				} else if (apply_to == "defense") {
 					config &def = cfg_.child_or_add("defense");
 					if (const config &ap = effect.child("defense")) {
@@ -3181,7 +3221,7 @@ std::string get_checksum(const unit& u) {
 		child.recursive_clear_value("name");
 	}
 
-	const std::string child_keys[] = {"advance_from", "defense", "movement_costs", "resistance", ""};
+	const std::string child_keys[] = {"advance_from", "defense", "movement_costs", "vision_costs" "resistance", ""};
 
 	for (int i = 0; !child_keys[i].empty(); ++i)
 	{

@@ -146,6 +146,7 @@ public:
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
 	int total_movement() const { return max_movement_; }
 	int movement_left() const { return (movement_ == 0 || incapacitated()) ? 0 : movement_; }
+	int vision() const { return vision_ < 0 ? max_movement_ : vision_; }
 	void set_hold_position(bool value) { hold_position_ = value; }
 	bool hold_position() const { return hold_position_; }
 	void set_user_end_turn(bool value=true) { end_turn_ = value; }
@@ -238,6 +239,7 @@ public:
 	bool is_fearless() const { return is_fearless_; }
 	bool is_healthy() const { return is_healthy_; }
 	int movement_cost(const t_translation::t_terrain terrain) const;
+	int vision_cost(const t_translation::t_terrain terrain) const;
 	int defense_modifier(t_translation::t_terrain terrain) const;
 	int resistance_against(const std::string& damage_name,bool attacker,const map_location& loc) const;
 	int resistance_against(const attack_type& damage_type,bool attacker,const map_location& loc) const
@@ -415,6 +417,8 @@ private:
 	int movement_;
 	int max_movement_;
 	mutable std::map<t_translation::t_terrain, int> movement_costs_; // movement cost cache
+	int vision_;
+	mutable std::map<t_translation::t_terrain, int> vision_costs_; // view cost cache
 	mutable defense_cache defense_mods_; // defense modifiers cache
 	bool hold_position_;
 	bool end_turn_;

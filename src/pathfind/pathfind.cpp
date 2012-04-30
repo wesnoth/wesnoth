@@ -179,7 +179,7 @@ struct comp {
 
 /**
  * Creates a list of routes that a unit can traverse from the provided location.
- * (This is called when creating pathfind::paths and descendent classes.)
+ * (This is called when creating pathfind::paths and descendant classes.)
  *
  * @param map[in]              The gamemap to use (for identifying terrain).
  * @param units[in]            Currently unused.
@@ -201,20 +201,21 @@ struct comp {
  * @param see_all[in]          Set to true to remove unit visibility from consideration.
  * @param ignore_units[in]     Set to true if units should never obstruct paths
  *                             (implies ignoring ZoC as well).
+ * @param vision[in]           Set if the move_costs or the vision_costs are used.
  */
 static void find_routes(const gamemap& map, const unit& u, const map_location& loc,
 		int move_left, pathfind::paths::dest_vect &destinations,
 		std::set<map_location> *edges, const team &current_team,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
 		const team &viewing_team,
-		bool see_all, bool ignore_units)
+		bool see_all, bool ignore_units, bool vision)
 {
 	pathfind::teleport_map teleports;
 	if (allow_teleport) {
 	  teleports = pathfind::get_teleport_locations(u, viewing_team, see_all, ignore_units);
 	}
 
-	const int total_movement = u.total_movement();
+	const int total_movement = move_left;
 
 	search_counter += 2;
 	if (search_counter == 0) search_counter = 2;
@@ -265,7 +266,8 @@ static void find_routes(const gamemap& map, const unit& u, const map_location& l
 			// Thus, 'src-..-n-next' can't be shorter.
 			if (next_visited) continue;
 
-			const int move_cost = u.movement_cost(map[locs[i]]);
+			const int move_cost =
+					vision ? u.vision_cost(map[locs[i]]) : u.movement_cost(map[locs[i]]);
 
 			node t = node(n.movement_left, n.turns_left, n.curr, locs[i]);
 			if (t.movement_left < move_cost) {
@@ -416,7 +418,7 @@ pathfind::paths::paths(gamemap const &map, unit_map const &/*units*/,
 
 	find_routes(map, u, u.get_location(), u.movement_left(), destinations, NULL,
 	            teams[u.side()-1], force_ignore_zoc, allow_teleport,
-	            additional_turns, viewing_team, see_all, ignore_units);
+	            additional_turns, viewing_team, see_all, ignore_units, false);
 }
 
 /**
@@ -437,16 +439,13 @@ pathfind::paths::~paths()
  * @param viewer     The unit doing the viewing.
  * @param loc        The location from which the viewing occurs
  *                   (does not have to be the unit's location).
- * @param full_move  Usually this will be true, but if false, the unit's current
- *                   movement will be used instead of its maximum moves.
  */
 pathfind::vision_path::vision_path(gamemap const &map, const unit& viewer,
-                                   map_location const &loc, bool full_move)
+                                   map_location const &loc)
 	: paths(), edges()
 {
 	const team & viewer_team = (*resources::teams)[viewer.side()-1];
-	const int sight_range = full_move ? viewer.total_movement() :
-	                                    viewer.movement_left();
+	const int sight_range = viewer.vision();
 
 	// Finding routes: ignore ZoC, disallow teleports, zero turns left,
 	// (viewing team), see all, and ignore units.
@@ -454,7 +453,7 @@ pathfind::vision_path::vision_path(gamemap const &map, const unit& viewer,
 	// not allowed and units are ignored. If something changes to make it
 	// significant, I might have incorrectly guessed the appropriate value.)
 	find_routes(map, viewer, loc, sight_range, destinations, &edges,
-	            viewer_team, true, false, 0, viewer_team, true, true);
+			viewer_team, true, false, 0, viewer_team, true, true, true);
 }
 
 /// Default destructor
