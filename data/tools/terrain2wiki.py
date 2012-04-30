@@ -68,7 +68,7 @@ def parse_terrain(data):
 """ % (
 "http://svn.gna.org/svn/wesnoth/trunk/data/core/images/terrain/%s.png" % (content['editor_image'] if 'editor_image' in content else content['symbol_image']),
 content['editor_name'][4:-1] if 'editor_name' in content else content['name'][4:-1],
-content['string'].replace("# wmllint: ignore", ""),
+content['string'].replace("# wmllint: ignore", "").replace("|", "&brvbar;"),
 content['aliasof'] if 'aliasof' in content else "",
 content['editor_group'])
 
