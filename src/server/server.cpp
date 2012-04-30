@@ -166,10 +166,20 @@ void send_doc(simple_wml::document& doc, network::connection connection, std::st
 	}
 }
 
+std::string client_address(socket_ptr socket)
+{
+	boost::system::error_code error;
+	std::string result = socket->remote_endpoint(error).address().to_string();
+	if(error)
+		return "<unknown address>";
+	else
+		return result;
+}
+
 bool check_error(const boost::system::error_code& error, socket_ptr socket)
 {
 	if(error) {
-		ERR_SERVER << socket->remote_endpoint().address().to_string() << "\t" << error.message() << "\n";
+		ERR_SERVER << client_address(socket) << "\t" << error.message() << "\n";
 		return true;
 	}
 	return false;
@@ -797,7 +807,7 @@ void server::accept_connection(const boost::system::error_code& error, socket_pt
 		return;
 	}
 
-	const std::string ip = socket->remote_endpoint().address().to_string();
+	const std::string ip = client_address(socket);
 
 	const std::string reason = is_ip_banned(ip);
 	if (!reason.empty()) {
@@ -831,7 +841,7 @@ void server::handle_handshake(const boost::system::error_code& error, socket_ptr
 		return;
 
 	if(strcmp((const char*)handshake.get(), "\0\0\0\0") != 0) {
-		ERR_SERVER << socket->remote_endpoint().address().to_string() << "\tincorrect handshake\n";
+		ERR_SERVER << client_address(socket) << "\tincorrect handshake\n";
 		return;
 	}
 	async_write(
@@ -870,18 +880,18 @@ void server::read_version(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 			if (utils::wildcard_string_match(version_str, *accepted_it)) break;
 		}
 		if(accepted_it != accepted_versions_.end()) {
-			LOG_SERVER << socket->remote_endpoint().address().to_string()
+			LOG_SERVER << client_address(socket)
 				<< "\tplayer joined using accepted version " << version_str
 				<< ":\ttelling them to log in.\n";
 			async_send_doc(socket, login_response_, boost::bind(&server::login, this, _1));
 			return;
 		} else {
-			LOG_SERVER << socket->remote_endpoint().address().to_string()
+			LOG_SERVER << client_address(socket)
 				<< "\tplayer joined using unknown version " << version_str
 				<< ":\trejecting them\n";
 		}
 	} else {
-		LOG_SERVER << socket->remote_endpoint().address().to_string()
+		LOG_SERVER << client_address(socket)
 			<< "\tclient didn't send its version: rejecting\n";
 	}
 }
@@ -1023,7 +1033,7 @@ void server::handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 					}
 
 					// Log the failure
-					LOG_SERVER << socket->remote_endpoint().address().to_string() << "\t"
+					LOG_SERVER << client_address(socket) << "\t"
 							<< "Login attempt with incorrect password for nickname '" << username << "'.\n";
 					return;
 				}
@@ -1061,7 +1071,7 @@ void server::handle_login(socket_ptr socket, boost::shared_ptr<simple_wml::docum
 				user_handler_ && user_handler_->user_is_moderator(username))
 			)
 		);
-		LOG_SERVER << socket->remote_endpoint().address().to_string() << "\t" << username
+		LOG_SERVER << client_address(socket) << "\t" << username
 			<< "\thas logged on" << (registered ? " to a registered account" : "") << "\n";
 	} else {
 		async_send_error(socket, "You must login first.", MP_MUST_LOGIN);
@@ -1205,7 +1215,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 	} else if (player.is_moderator()) {
 		if (command == "signout") {
 			LOG_SERVER << "Admin signed out: IP: "
-				<< socket->remote_endpoint().address().to_string() << "\tnick: "
+				<< client_address(socket) << "\tnick: "
 				<< player.name() << std::endl;
 			player.set_moderator(false);
 			// This string is parsed by the client!
@@ -1215,7 +1225,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 			}
 		} else {
 			LOG_SERVER << "Admin Command: type: " << command
-				<< "\tIP: "<< socket->remote_endpoint().address().to_string()
+				<< "\tIP: "<< client_address(socket)
 				<< "\tnick: "<< player.name() << std::endl;
 			response << process_command(command, player.name());
 			LOG_SERVER << response.str() << std::endl;
@@ -1231,7 +1241,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		if (command.size() >= 6) passwd = command.substr(6);
 		if (passwd == admin_passwd_) {
 			LOG_SERVER << "New Admin recognized: IP: "
-				<< socket->remote_endpoint().address().to_string() << "\tnick: "
+				<< client_address(socket) << "\tnick: "
 				<< player.name() << std::endl;
 			player.set_moderator(true);
 			// This string is parsed by the client!
@@ -1241,7 +1251,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 			}
 		} else {
 			WRN_SERVER << "FAILED Admin attempt with password: '" << passwd << "'\tIP: "
-				<< socket->remote_endpoint().address().to_string() << "\tnick: "
+				<< client_address(socket) << "\tnick: "
 				<< player.name() << std::endl;
 			response << "Error: wrong password";
 		}
@@ -1339,7 +1349,7 @@ void send_server_message(socket_ptr socket, const std::string& message)
 
 void server::remove_player(socket_ptr socket)
 {
-	std::string ip = socket->remote_endpoint().address().to_string();
+	std::string ip = client_address(socket);
 
 	if(socket->is_open())
 		socket->close();
