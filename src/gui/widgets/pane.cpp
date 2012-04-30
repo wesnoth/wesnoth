@@ -25,6 +25,81 @@
 
 namespace gui2 {
 
+/**
+ * Helper to implement private functions without modifying the header.
+ *
+ * The class is a helper to avoid recompilation and only has static
+ * functions. It also facilitates to create duplicates of functions for a const
+ * and a non-const member function.
+ */
+struct tpane_implementation
+{
+	/**
+	 * Implementation for the wrappers for
+	 * [const] twidget* tpane::find_at(const tpoint&, const bool) [const].
+	 *
+	 * @tparam W                  A pointer to the pane.
+	 */
+	template<class W>
+	static typename tconst_clone<twidget, W>::pointer
+	find_at(
+			  W pane
+			, tpoint coordinate
+			, const bool must_be_active
+			)
+	{
+
+		/*
+		 * First test whether the mouse is at the pane.
+		 */
+		if(pane->twidget::find_at(coordinate, must_be_active) != pane) {
+			return NULL;
+		}
+
+		/*
+		 * The widgets are placed at coordinate 0,0 so adjust the offset to
+		 * that coordinate system.
+		 */
+		coordinate.x -= pane->get_x();
+		coordinate.y -= pane->get_y();
+
+		typedef typename tconst_clone<tpane::titem, W>::reference thack;
+		BOOST_FOREACH(thack item, pane->items_) {
+
+			/*
+			 * If the adjusted coordinate is in the item's grid let the grid
+			 * resolve the coordinate.
+			 */
+			const SDL_Rect rect = item.grid->get_rect();
+			if(
+					   coordinate.x >= rect.x
+					&& coordinate.y >= rect.y
+					&& coordinate.x < rect.x + rect.w
+					&& coordinate.y < rect.y + rect.h) {
+
+				return item.grid->find_at(coordinate, must_be_active);
+			}
+
+			/*
+			 * No hit then adjust the coordinate with the size of the widget
+			 * that did not hit it. This is required since every item's grid
+			 * has its own coodinate systeme starting at 0,0.
+			 */
+			coordinate.y -= rect.h;
+
+			/*
+			 * If the position to test is outside our virtual area, we bail out.
+			 */
+			if(coordinate.y < 0) {
+				return NULL;
+			}
+		}
+
+		return NULL;
+	}
+};
+
+
 tpane::tpane(const tbuilder_grid_ptr item_builder)
 	: twidget()
 	, items_()
@@ -110,9 +185,29 @@ void tpane::request_reduce_width(const unsigned /*maximum_width*/)
 {
 }
 
+twidget* tpane::find_at(
+		  const tpoint& coordinate
+		, const bool must_be_active)
+{
+	return tpane_implementation::find_at(
+			  this
+			, coordinate
+			, must_be_active);
+}
+
+const twidget* tpane::find_at(
+		  const tpoint& coordinate
+		, const bool must_be_active) const
+{
+	return tpane_implementation::find_at(
+			  this
+			, coordinate
+			, must_be_active);
+}
+
 tpoint tpane::calculate_best_size() const
 {
-	return tpoint(100, 100);
+	return tpoint(500, 500);
 }
 
 bool tpane::disable_click_dismiss() const
