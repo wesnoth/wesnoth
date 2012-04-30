@@ -91,7 +91,7 @@ void tpane::sort(const tcompare_functor& compare_functor)
 {
 	items_.sort(compare_functor);
 
-	place_children();
+	set_origin_children();
 }
 
 void tpane::filter(const tfilter_functor& filter_functor)
@@ -103,7 +103,7 @@ void tpane::filter(const tfilter_functor& filter_functor)
 					: twidget::INVISIBLE);
 	}
 
-	place_children();
+	set_origin_children();
 }
 
 void tpane::request_reduce_width(const unsigned /*maximum_width*/)
@@ -139,6 +139,21 @@ void tpane::place_children()
 
 		DBG_GUI_L << LOG_HEADER << " offset " << y << '\n';
 		item.grid->place(tpoint(0, y), item.grid->get_best_size());
+		y += item.grid->get_height();
+	}
+}
+
+void tpane::set_origin_children()
+{
+	unsigned y = 0;
+
+	BOOST_FOREACH(titem& item, items_) {
+		if(item.grid->get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
+		DBG_GUI_L << LOG_HEADER << " offset " << y << '\n';
+		item.grid->set_origin(tpoint(0, y));
 		y += item.grid->get_height();
 	}
 }

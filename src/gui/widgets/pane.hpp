@@ -117,6 +117,15 @@ private:
 
 	/** Places the children on the pane. */
 	void place_children();
+
+	/**
+	 * Moves the children on the pane.
+	 *
+	 * After certain operations, e.g. sorting the child widgets need to be
+	 * placed again. This function does so, but avoids dirtying the widget so
+	 * redrawing doesn't involve re-rendering the entire widget.
+	 */
+	void set_origin_children();
 };
 
 } // namespace gui2
