@@ -102,6 +102,9 @@ Version 1.11.0-svn:
      proxy unit with the on-map unit at the same location
    * new: helper.round function
  * Multiplayer:
+   * A New Land:
+     * Made it so that the "Elvish Shaman" option in the elvish unit selection
+       menu gets translated. Fixes bug #19677.
    * Fix an accidental terrain type change in Isar's Cross
    * Fix attacker side being human in 6p_Team_Survival (bug #19400)
    * Ignore Pango markup in map descriptions (bug #19210)
@@ -164,7 +167,7 @@ Version 1.11.0-svn:
    * Fixed bug #19615: Can see part of opponents' planned moves in local multiplayer game
  * WML engine:
    * new key: [untit]/[unit_type] vision=<number>, decouples movement and sight range.
-   * new tag: [movement_type] [vision_costs], used for calculating sight range if present.   	
+   * new tag: [movement_type] [vision_costs], used for calculating sight range if present.
    * new action tag: [clear_menu_item] id=...
    * new key: [set_menu_item][command]delayed_variable_substitution=yes|no
    * Removed support for the deprecated "colour=", "debug_border_colour=",
