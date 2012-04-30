@@ -166,7 +166,7 @@ Version 1.11.0-svn:
    * Fixed bug #19618: Problems with ending turn with impossible moves
    * Fixed bug #19615: Can see part of opponents' planned moves in local multiplayer game
  * WML engine:
-   * new key: [untit]/[unit_type] vision=<number>, decouples movement and sight range.
+   * new key: [unit]/[unit_type] vision=<number>, decouples movement and sight range.
    * new tag: [movement_type] [vision_costs], used for calculating sight range if present.
    * new action tag: [clear_menu_item] id=...
    * new key: [set_menu_item][command]delayed_variable_substitution=yes|no
