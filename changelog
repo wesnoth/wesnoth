@@ -73,12 +73,12 @@ Version 1.11.0-svn:
    * Map label placement tool
    * Improved performance of the Editor Settings ToD lighting controls
  * Engine:
-    *  Fixed bug #19599: Engine keeps redundant unit.ai_special_ information.
+   * Fixed bug #19599: Engine keeps redundant unit.ai_special_ information.
    * Unit refresh now occurs on first turn of the game (fixes bug #19656)
-	 This includes healing, poison, movement and attack recovery, and
-	 expiration of [object]duration=turn.
+     This includes healing, poison, movement and attack recovery, and
+     expiration of [object]duration=turn.
  * Graphics:
-     * New graphics for the Spectre.
+   * New graphics for the Spectre.
  * Language and i18n:
    * Fixed two untranslatable strings in the "new" MP lobby
    * Fixed an untranslatable string in the Multiplayer Commands help topic
