@@ -21,9 +21,9 @@ Version 1.10.2+svn:
    * A New Land:
      * Made it so that the "Elvish Shaman" option in the elvish unit selection
        menu gets translated. Fixes bug #19677.
- * Whiteboard
-   * Fixed bug #19613 : Multiple attacks after planning attacks in whiteboard
-   * Fixed bug #19619 : In local games, units keep ghosted appearance during opponent's turn
+ * Whiteboard:
+   * Fixed bug #19613: Multiple attacks after planning attacks in whiteboard
+   * Fixed bug #19619: In local games, units keep ghosted appearance during opponent's turn
    * Fixed bug #19618: Problems with ending turn with impossible moves
    * Fixed bug #19615: Can see part of opponents' planned moves in local multiplayer game
  * WML engine:
@@ -98,10 +98,10 @@ Version 1.10.1:
    * Fixed excessive idle CPU usage in story screens without story text
    * Made add-ons with markup characters at the start of their titles
      display normally in the add-ons management dialogs (e.g. without colors)
- * Whiteboard
-   * Fixed bug #19369 : Using planning mode can cause losing ability to move my
+ * Whiteboard:
+   * Fixed bug #19369: Using planning mode can cause losing ability to move my
      units
-   * Fixed bug #19408 : Crash shortly after executing invalid multi-turn move
+   * Fixed bug #19408: Crash shortly after executing invalid multi-turn move
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
