@@ -112,6 +112,17 @@ public:
 	 */
 	tpoint get_config_maximum_size() const;
 
+	/**
+	 * Returns the number of characters per line.
+	 *
+	 * This value is used to call @ref ttext::set_characters_per_line
+	 * (indirectly).
+	 *
+	 * @returns                   The characters per line. This implementation
+	 *                            always returns 0.
+	 */
+	virtual unsigned get_characters_per_line() const;
+
 	/** Inherited from twidget. */
 	/** @todo Also handle the tooltip state if shrunken_ &&
 	 * use_tooltip_on_label_overflow_. */

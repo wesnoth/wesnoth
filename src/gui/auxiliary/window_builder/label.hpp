@@ -33,6 +33,8 @@ struct tbuilder_label
 
 	bool wrap;
 
+	unsigned characters_per_line;
+
 	PangoAlignment text_alignment;
 };
 

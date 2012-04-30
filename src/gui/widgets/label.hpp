@@ -29,11 +29,15 @@ public:
 		: tcontrol(COUNT)
 		, state_(ENABLED)
 		, can_wrap_(false)
+		, characters_per_line_(0)
 	{
 	}
 
 	/** Inherited from twidget. */
-	bool can_wrap() const { return can_wrap_; }
+	bool can_wrap() const;
+
+	/** Inherited from tcontrol. */
+	unsigned get_characters_per_line() const;
 
 	/** Inherited from tcontrol. */
 	void set_active(const bool active)
@@ -51,6 +55,8 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_can_wrap(const bool wrap) { can_wrap_ = wrap; }
+
+	void set_characters_per_line(const unsigned set_characters_per_line);
 
 private:
 
@@ -73,6 +79,13 @@ private:
 
 	/** Holds the label can wrap or not. */
 	bool can_wrap_;
+
+	/**
+	 * The maximum number of characters per line.
+	 *
+	 * The maximum is not an exact maximum, it uses the average character width.
+	 */
+	unsigned characters_per_line_;
 
 	/** Inherited from tcontrol. */
 	const std::string& get_control_type() const;

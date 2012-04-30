@@ -1236,6 +1236,9 @@ private:
 	/** The maximum width for the text. */
 	tformula<int> maximum_width_;
 
+	/** The number of characters per line. */
+	unsigned characters_per_line_;
+
 	/** The maximum height for the text. */
 	tformula<int> maximum_height_;
 };
@@ -1252,6 +1255,7 @@ ttext::ttext(const config& cfg)
 	, text_(cfg["text"])
 	, text_markup_(cfg["text_markup"], false)
 	, maximum_width_(cfg["maximum_width"], -1)
+	, characters_per_line_(cfg["text_characters_per_line"])
 	, maximum_height_(cfg["maximum_height"], -1)
 {
 
@@ -1334,7 +1338,8 @@ void ttext::draw(surface& canvas
 			.set_ellipse_mode(variables.has_key("text_wrap_mode")
 				? static_cast<PangoEllipsizeMode>
 					(variables.query_value("text_wrap_mode").as_int())
-				: PANGO_ELLIPSIZE_END);
+				: PANGO_ELLIPSIZE_END)
+			.set_characters_per_line(characters_per_line_);
 
 	surface surf = text_renderer.render();
 	if(surf->w == 0) {

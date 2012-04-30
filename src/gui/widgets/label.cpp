@@ -27,6 +27,21 @@ namespace gui2 {
 
 REGISTER_WIDGET(label)
 
+bool tlabel::can_wrap() const
+{
+	return can_wrap_ || characters_per_line_ != 0;
+}
+
+unsigned tlabel::get_characters_per_line() const
+{
+	return characters_per_line_;
+}
+
+void tlabel::set_characters_per_line(const unsigned characters_per_line)
+{
+	characters_per_line_ = characters_per_line;
+}
+
 void tlabel::set_state(const tstate state)
 {
 	if(state != state_) {

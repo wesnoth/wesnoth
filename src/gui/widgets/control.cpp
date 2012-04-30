@@ -147,6 +147,11 @@ tpoint tcontrol::get_config_maximum_size() const
 	return result;
 }
 
+unsigned tcontrol::get_characters_per_line() const
+{
+	return 0;
+}
+
 void tcontrol::layout_init(const bool full_initialization)
 {
 	// Inherited.
@@ -306,6 +311,9 @@ void tcontrol::update_canvas()
 		canvas.set_variable("text_maximum_height", variant(max_height));
 		canvas.set_variable("text_wrap_mode", variant(can_wrap()
 			? PANGO_ELLIPSIZE_NONE : PANGO_ELLIPSIZE_END));
+		canvas.set_variable(
+				  "text_characters_per_line"
+				, variant(get_characters_per_line()));
 	}
 }
 
@@ -378,6 +386,13 @@ tpoint tcontrol::get_best_text_size(
 		renderer_.set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
 	}
 
+	renderer_.set_characters_per_line(get_characters_per_line());
+	if(get_characters_per_line() != 0 && !can_wrap()) {
+		WRN_GUI_L << LOG_HEADER
+				<< " Limited the number of characters per line, "
+				<< "but wrapping is not set, output may not be as expected.\n";
+	}
+
 	DBG_GUI_L << LOG_HEADER
 			<< " label '" << debug_truncate(label_)
 			<< "' status: "
@@ -385,6 +400,7 @@ tpoint tcontrol::get_best_text_size(
 			<< " maximum_size " << maximum_size
 			<< " text_maximum_width_ " << text_maximum_width_
 			<< " can_wrap " << can_wrap()
+			<< " characters_per_line " << get_characters_per_line()
 			<< " truncated " << renderer_.is_truncated()
 			<< " renderer size " << renderer_.get_size()
 			<< ".\n";
