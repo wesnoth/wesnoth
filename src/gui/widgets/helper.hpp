@@ -20,6 +20,9 @@
 
 #include <pango/pango-layout.h>
 
+#include <boost/type_traits.hpp>
+#include <boost/utility/enable_if.hpp>
+
 #include <string>
 
 struct surface;
@@ -176,6 +179,68 @@ struct tconst_duplicator<const T, U>
 {
 	/** The type to use, const U. */
 	typedef const U type;
+};
+
+/**
+ * Helper struct to clone the constness of one type to another.
+ *
+ * It's function is similar to the @ref tconst_duplicator, but a bit more
+ * flexible.
+ *
+ * @warning It seems @c *this in a const member function is not a const object,
+ * use @c this, which is a pointer to a const object.
+ *
+ * @tparam D                      The destination type, it should have no
+ *                                cv-qualifier and not be a pointer or
+ *                                reference.
+ * @tparam S                      The source type, this type may be a pointer
+ *                                or reference and obviously is allowed to have
+ *                                a cv-qualifier, although @c volatile has no
+ *                                effect.
+ * @tparam E                      The enable parameter for
+ *                                @ref boost::enable_if.
+ */
+template<
+	  class D
+	, class S
+	, typename E = void
+	>
+struct tconst_clone
+{
+	/** The destination type, possibly const qualified. */
+	typedef D type;
+
+	/** A reference to the destination type, possibly const qualified. */
+	typedef D& reference;
+
+	/** A pointer to the destination type, possibly const qualified. */
+	typedef D* pointer;
+};
+
+/**
+ * The specialised version of @ref tconst_clone.
+ *
+ * This version is used when the @p S is const-qualified.
+ */
+template<
+	  class D
+	, class S
+	>
+struct tconst_clone<
+	  D
+	, S
+	, typename boost::enable_if<
+		boost::is_const<
+			typename boost::remove_pointer<
+				typename boost::remove_reference<S>::type
+				>::type
+			>
+		>::type
+	>
+{
+	typedef const D type;
+	typedef const D& reference;
+	typedef const D* pointer;
 };
 
 /** Returns the current mouse position. */
