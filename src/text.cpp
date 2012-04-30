@@ -100,6 +100,7 @@ ttext::ttext() :
 	font_style_(STYLE_NORMAL),
 	foreground_color_(0xFFFFFFFF), // solid white
 	maximum_width_(-1),
+	characters_per_line_(0),
 	maximum_height_(-1),
 	ellipse_mode_(PANGO_ELLIPSIZE_END),
 	alignment_(PANGO_ALIGN_LEFT),
@@ -388,6 +389,18 @@ ttext& ttext::set_maximum_width(int width)
 	return *this;
 }
 
+ttext& ttext::set_characters_per_line(const unsigned characters_per_line)
+{
+	if(characters_per_line != characters_per_line_) {
+		characters_per_line_ = characters_per_line;
+
+		calculation_dirty_ = true;
+		surface_dirty_ = true;
+	}
+
+	return *this;
+}
+
 ttext& ttext::set_maximum_height(int height, bool multiline)
 {
 	if(height <= 0) {
@@ -513,6 +526,27 @@ void ttext::recalculate(const bool force) const
 			pango_attr_list_unref(attribute_list);
 		}
 
+		int maximum_width = 0;
+		if(characters_per_line_ != 0) {
+			PangoFont* f = pango_font_map_load_font(
+					  pango_cairo_font_map_get_default()
+					, context_
+					, font.get());
+
+			PangoFontMetrics* m = pango_font_get_metrics(f, NULL);
+
+			int w = pango_font_metrics_get_approximate_char_width(m);
+			w *= characters_per_line_;
+
+			maximum_width = ceil(pango_units_to_double(w));
+		} else {
+			maximum_width = maximum_width_;
+		}
+
+		if(maximum_width_ != -1) {
+			maximum_width = std::min(maximum_width, maximum_width_);
+		}
+
 		/*
 		 * See set_maximum_width for some more background info as well.
 		 * In order to fix the problem first set a width which seems to render
@@ -523,36 +557,36 @@ void ttext::recalculate(const bool force) const
 		 */
 		int hack = 4;
 		do {
-			pango_layout_set_width(layout_, maximum_width_ == -1
+			pango_layout_set_width(layout_, maximum_width == -1
 					? -1
-					: (maximum_width_ + hack) * PANGO_SCALE);
+					: (maximum_width + hack) * PANGO_SCALE);
 			pango_layout_get_pixel_extents(layout_, NULL, &rect_);
 
 			DBG_GUI_L << "ttext::" << __func__
 					<< " text '" << gui2::debug_truncate(text_)
-					<< "' maximum_width " << maximum_width_
+					<< "' maximum_width " << maximum_width
 					<< " hack " << hack
 					<< " width " << rect_.x + rect_.width
 					<< ".\n";
 
 			--hack;
-		} while(maximum_width_ != -1
-				&& hack >= 0 && rect_.x + rect_.width > maximum_width_);
+		} while(maximum_width != -1
+				&& hack >= 0 && rect_.x + rect_.width > maximum_width);
 
 		DBG_GUI_L << "ttext::" << __func__
 				<< " text '" << gui2::debug_truncate(text_)
 				<< "' font_size " << font_size_
 				<< " markedup_text " << markedup_text_
 				<< " font_style " << std::hex << font_style_ << std::dec
-				<< " maximum_width " << maximum_width_
+				<< " maximum_width " << maximum_width
 				<< " maximum_height " << maximum_height_
 				<< " result " <<  rect_
 				<< ".\n";
-		if(maximum_width_ != -1 && rect_.x + rect_.width > maximum_width_) {
+		if(maximum_width != -1 && rect_.x + rect_.width > maximum_width) {
 			DBG_GUI_L << "ttext::" << __func__
 					<< " text '" << gui2::debug_truncate(text_)
 					<< " ' width " << rect_.x + rect_.width
-					<< " greater as the wanted maximum of " << maximum_width_
+					<< " greater as the wanted maximum of " << maximum_width
 					<< ".\n";
 		}
 	}

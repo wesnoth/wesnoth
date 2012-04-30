@@ -187,6 +187,8 @@ public:
 
 	ttext& set_maximum_width(int width);
 
+	ttext& set_characters_per_line(const unsigned characters_per_line);
+
 	ttext& set_maximum_height(int height, bool multiline = true);
 
 	ttext& set_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
@@ -225,8 +227,28 @@ private:
 	 *
 	 * Values less or equal to 0 mean no maximum and are internally stored as
 	 * -1, since that's the value pango uses for it.
+	 *
+	 * @see @ref characters_per_line_.
 	 */
 	int maximum_width_;
+
+	/**
+	 * The number of characters per line.
+	 *
+	 * This can be used as an alternative of @ref maximum_width_. The user can
+	 * select a number of characters on a line for wrapping. When the value is
+	 * non-zero it determines the maximum width based on the average character
+	 * width.
+	 *
+	 * If both @ref maximum_width_ and @ref characters_per_line_ are set the
+	 * minimum of the two will be the maximum.
+	 *
+	 * @note Long lines are often harder to read, setting this value can
+	 * automatically wrap on a number of characters regardless of the font
+	 * size. Often 66 characters is considered the optimal value for a one
+	 * column text.
+	 */
+	unsigned characters_per_line_;
 
 	/**
 	 * The maximum height of the text.
