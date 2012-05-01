@@ -2505,6 +2505,7 @@ struct movement_surprises {
 		sighted_stop(false),
 		teleport_failed(false),
 		event_stop(false),
+		event_mutated(false),
 		display_changed(false),
 		sighted_something(false),
 		block_undo(false),
@@ -3416,7 +3417,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	int orig_village_owner = -1;
 	int action_time_bonus = 0;
 	if(ui != units.end()) {
-		stops.event_mutated = movement_events(initial_loc, final_loc, stops, should_clear_shroud,
+		stops.event_mutated |= movement_events(initial_loc, final_loc, stops, should_clear_shroud,
 								 orig_village_owner, action_time_bonus);
 		//NOTE: an wml event may have removed the unit pointed by ui
 		ui = units.find(final_loc);
