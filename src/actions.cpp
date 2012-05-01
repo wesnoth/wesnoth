@@ -3123,7 +3123,7 @@ std::vector<map_location>::const_iterator make_a_move(const std::vector<map_loca
  * @returns true if events might have changed the game state.
  */
 bool movement_events(const map_location &initial_loc, const map_location &final_loc,
-		     const movement_surprises &stops, bool fog_shroud,
+		     const movement_surprises &/*stops*/, bool /*fog_shroud*/,
 		     int &orig_village_owner, int &action_time_bonus)
 {
 	// Alias some resources.
