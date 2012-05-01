@@ -521,7 +521,8 @@ linechanges = (
         ("[removeitem]", "[remove_item]"),
         ("[/removeitem]", "[/remove_item]"),
         # Changes just before 1.11.0
-        ("viewing_side", "side")
+        ("viewing_side", "side"),
+        ("duration=level", "duration=scenario") # Note: this may be removed after 1.11.2, so an actual duration=level can be implemented
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
