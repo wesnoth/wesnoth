@@ -155,8 +155,8 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		std::string broken_deps_report;
 
 		broken_deps_report = _n(
-			"The selected add-on has the following dependency, which is not currently installed and is not available from the server. Do you wish to continue?",
-			"The selected add-on has the following dependencies, which are not currently installed and are not available from the server. Do you wish to continue?",
+			"The selected add-on has the following dependency, which is not currently installed or available from the server. Do you wish to continue?",
+			"The selected add-on has the following dependencies, which are not currently installed or available from the server. Do you wish to continue?",
 			broken_deps.size());
 		broken_deps_report += "\n";
 
