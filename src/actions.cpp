@@ -2351,7 +2351,8 @@ namespace {
 	                       team &view_team,
 	                       const std::set<map_location>* known_units = NULL,
 	                       std::set<map_location>* seen_units = NULL,
-	                       std::set<map_location>* petrified_units = NULL)
+	                       std::set<map_location>* petrified_units = NULL,
+	                       bool invalidate_display = false)
 	{
 		std::vector<map_location> cleared_locations;
 
@@ -2362,6 +2363,21 @@ namespace {
 		}
 		foreach (const map_location &dest, sight.edges) {
 			clear_shroud_loc(view_team, dest, &cleared_locations);
+		}
+
+		if(invalidate_display) {
+			// Invalidate the newly cleared tiles and all adjacent tiles
+			// so that fog and shroud draw correctly
+			game_display &disp = *resources::screen;
+			foreach (const map_location & seen_loc, cleared_locations) {
+				disp.invalidate(seen_loc);
+
+				map_location adjacent[6];
+				get_adjacent_tiles(seen_loc, adjacent);
+				for ( int i = 0; i != 6; ++i ) {
+					disp.invalidate(adjacent[i]);
+				}
+			}
 		}
 
 		// Does the caller want a list of discovered units?
@@ -2472,6 +2488,8 @@ struct movement_surprises {
 	bool ambush_stop;
 	bool sighted_stop;
 	bool teleport_failed;
+	bool event_stop;
+	bool event_mutated;
 	// Information uncovered:
 	bool display_changed;
 	bool sighted_something;
@@ -2480,21 +2498,247 @@ struct movement_surprises {
 	std::string ambushed_string;
 	std::vector<map_location> ambushers;
 	std::set<map_location> seen_units;
-	std::set<map_location> petrified_units;
 
 	/// Constructor:
 	movement_surprises () :
 		ambush_stop(false),
 		sighted_stop(false),
 		teleport_failed(false),
+		event_stop(false),
 		display_changed(false),
 		sighted_something(false),
 		block_undo(false),
 		ambushed_string(),
 		ambushers(),
-		seen_units(),
-		petrified_units()
+		seen_units()
 	{}
+};
+
+/// Handles animating unit movement in controllable stages
+class unit_mover
+{
+	unit_map& m_;
+	bool movement_started_;
+	const bool show_move_;
+	const std::vector<map_location> &route_;
+	std::vector<map_location>::const_iterator loc_;
+	map_location displaced_;
+
+	/**
+	 * Places a temporary unit on the display when constructed,
+	 * and removes it when destructed.  The real unit will be
+	 * hidden during that period.
+	 */
+	class animation_unit_placer
+	{
+		unit &ui_;
+		bool was_hidden_;
+
+	public:
+		/// The temporary unit available for use while this class
+		/// is in scope
+		game_display::fake_unit temp_unit;
+
+		/**
+		 * Creates a temporary unit, hides the real unit, and places
+		 * the temporary unit on the display.
+		 *
+		 * @param ui[in]	The real unit to base the temporary unit on
+		 */
+		animation_unit_placer(unit &ui) :
+			ui_(ui),
+			was_hidden_(ui.get_hidden()),
+			temp_unit(ui)
+		{
+			ui_.set_hidden(true);
+			temp_unit.set_standing(false);
+			temp_unit.set_hidden(false);
+			temp_unit.place_on_game_display(resources::screen);
+		}
+
+		/**
+		 * Removes the temporary unit from the display,
+		 * and returns the real unit that it was based
+		 * on to its previous hidden/shown state.
+		 */
+		~animation_unit_placer()
+		{
+			temp_unit.remove_from_game_display();
+			ui_.set_hidden(was_hidden_);
+		}
+	};
+
+	/**
+	 * Empties a tile by displacing the occupying
+	 * unit to a nearby tile. This can be reversed
+	 * by a subsequent call to undisplace().
+	 *
+	 * This fails silently if there is no acceptable
+	 * tile to move the unit to.
+	 */
+	void displace(const map_location &from) {
+		game_display &disp = *resources::screen;
+
+		unit_map::iterator displaced_unit = m_.find(from);
+		if(displaced_unit != m_.end()) {
+			displaced_ = pathfind::find_vacant_tile(
+				*resources::game_map,
+				m_,
+				from,
+				pathfind::VACANT_ANY,
+				&*displaced_unit);
+			m_.move(from, displaced_);
+
+			disp.invalidate_unit_after_move(from, displaced_);
+			disp.invalidate(from);
+			disp.invalidate(displaced_);
+			m_.find(displaced_)->set_standing();
+		}
+	}
+
+	/**
+	 * Returns the displaced unit to the tile it came from.
+	 *
+	 * This fails silently if the tile is already occupied.
+	 */
+	void undisplace() {
+		game_display &disp = *resources::screen;
+
+		if(displaced_ != map_location::null_location)
+		{
+			m_.move(displaced_, *loc_);
+
+			disp.invalidate_unit_after_move(displaced_, *loc_);
+			disp.invalidate(displaced_);
+			disp.invalidate(*loc_);
+			m_.find(*loc_)->set_standing();
+
+			displaced_ = map_location::null_location;
+		}
+	}
+public:
+	/**
+	 * Constructor
+	 *
+	 * @param route[in]		the path to follow
+	 * @param show_move[in]	whether or not the move is shown to the player
+	 */
+	unit_mover(const std::vector<map_location> &route, bool show_move) :
+		m_(*resources::units),
+		movement_started_(false),
+		show_move_(show_move),
+		route_(route),
+		loc_(route.begin()),
+		displaced_(map_location::null_location)
+	{}
+
+	/**
+	 * Displays the unit's starting animation, if necessary.
+	 * This will be called by continue_movement() as needed.
+	 */
+	void start_movement()
+	{
+		if(movement_started_)
+			return;
+		movement_started_ = true;
+
+		std::vector<team> &teams = *resources::teams;
+
+		unit_map::iterator ui = m_.find(*loc_);
+		if(ui == m_.end())
+			return;
+
+		if(show_move_)
+		{
+			// show the movement start animation
+			team &tm = teams[ui->side() - 1];
+
+			animation_unit_placer placer(*ui);
+
+			unit_display::move_unit_start(route_, placer.temp_unit, tm);
+		}
+	}
+
+	/**
+	 * Moves the unit to a later position in the route. This
+	 * should usually by the next tile, but does not have to be.
+	 *
+	 * @param dest[in]	An iterator into the route provided to the constructor,
+	 *			indicating which location to move the unit to.
+	 *			This location must always be later in the route than
+	 *			the unit's current position.
+	 */
+	void continue_movement(const std::vector<map_location>::const_iterator dest)
+	{
+		start_movement();
+
+		std::vector<team> &teams = *resources::teams;
+		game_display &disp = *resources::screen;
+
+		assert(loc_ < dest);
+		assert(dest < route_.end());
+
+		unit *ui = m_.extract(*loc_);
+
+		undisplace();
+
+		if(ui && show_move_)
+		{
+			// show the movement animation
+			team &tm = teams[ui->side() - 1];
+
+			animation_unit_placer placer(*ui);
+
+			for(std::vector<map_location>::const_iterator step = loc_; step != dest; ++step) {
+				unit_display::move_unit_step(route_, step - route_.begin(), placer.temp_unit, tm);
+			}
+		}
+		if(ui)
+		{
+			displace(*dest);
+
+			// move the real unit
+			ui->set_location(*dest);
+			m_.insert(ui);
+			ui->set_facing((dest-1)->get_relative_dir(*dest));
+			ui->set_standing();
+			disp.invalidate_unit_after_move(*loc_, *dest);
+			disp.invalidate(*loc_);
+			disp.invalidate(*dest);
+		}
+
+		loc_ = dest;
+	}
+
+	/**
+	 * Ends the unit's animation, displaying the unit's movement
+	 * end animation if necessary and returning any displaced unit
+	 * to the field.
+	 */
+	~unit_mover()
+	{
+		if(!movement_started_)
+			return;
+
+		unit_map::iterator ui = m_.find(*loc_);
+
+		if(ui != m_.end() && show_move_)
+		{
+			// show the movement finish animation
+			animation_unit_placer placer(*ui);
+
+			std::vector<map_location> steps(route_.begin(),loc_+1);
+			unit_display::move_unit_finish(steps, placer.temp_unit);
+		}
+
+		if(m_.count(*loc_) == 0)
+		{
+			// Apparently the moving unit was removed by an event
+			// while over an occupied tile.  Put the displaced
+			// unit back where it was.
+			undisplace();
+		}
+	}
 };
 
 
@@ -2587,10 +2831,6 @@ std::vector<map_location>::const_iterator known_movement_end(
  * @param[in,out]  flags	For returning data to the caller. (It is "in"
  *				only because the caller is responsible for
  *				initializing this with the default constructor.)
- * @param[in]      fog_shroud	Set to true to cause fog and shroud to be
- *				cleared along the path (up to where we stop).
- * @param[in]      skip_sight	Set to true to avoid looking for units as the
- *				fog/shroud is cleared. (Used for continued moves.)
  * @param[in]      ignore_invis	Set to true to avoid stopping movement due to
  *				revealed units. (Used for replays.)
  * @param[out]     spectator	If not NULL, this will be told which unit
@@ -2605,8 +2845,8 @@ std::vector<map_location>::const_iterator surprise_movement_end(
 	const std::vector<map_location>::const_iterator &route_begin,
 	const std::vector<map_location>::const_iterator &route_end,
 	const unit_map::const_iterator &mover_it, int &moves_left,
-	movement_surprises &flags, bool fog_shroud, bool skip_sight,
-	bool ignore_invis, move_unit_spectator *spectator)
+	movement_surprises &flags, bool ignore_invis,
+	move_unit_spectator *spectator)
 {
 	// Alias some resources.
 	const gamemap &map = *resources::game_map;
@@ -2615,22 +2855,12 @@ std::vector<map_location>::const_iterator surprise_movement_end(
 	team &current_team = (*resources::teams)[current_side-1];
 	game_display &disp = *resources::screen;
 
-	// The set of units currently seen by the moving side:
-	std::set<map_location> known_units;
-	// (Only needed if we will be clearing fog/shroud.)
-	if ( fog_shroud ) {
-		foreach (const unit &u, units) {
-			if ( u.side() == current_side  ||  !current_team.fogged(u.get_location()) )
-				known_units.insert(u.get_location());
-		}
-	}
-
 	// This loop will end with step pointing one element beyond
 	// where the unit will stop.
 	std::vector<map_location>::const_iterator step;
 	for ( step = route_begin+1; step != route_end; ++step) {
 		// Check if we need to stop in the previous hex.
-		if ( flags.ambush_stop || flags.sighted_stop ) {
+		if ( flags.ambush_stop ) {
 			if ( !ignore_invis )
 				break;
 		}
@@ -2656,33 +2886,6 @@ std::vector<map_location>::const_iterator surprise_movement_end(
 			}
 		}
 
-		// We can enter this hex. Take a look around.
-		if ( fog_shroud ) {
-			DBG_NG << "Checking for units from " << (step->x+1) << "," << (step->y+1) << ".\n";
-
-			// Clear the fog/shroud.
-			flags.display_changed |=
-					clear_shroud_unit(*step, *mover_it, current_team, &known_units,
-					                  &flags.seen_units, &flags.petrified_units);
-
-			if ( !skip_sight && !flags.sighted_something ) {
-				// Check whether a unit was sighted and should interrupt movement.
-				if ( preferences::interrupt_when_ally_sighted() ) {
-					// Interrupt if any unit was sighted.
-					flags.sighted_something = !flags.seen_units.empty();
-				} else {
-					// Check whether any sighted unit is an enemy
-					std::set<map_location>::const_iterator it;
-					for ( it = flags.seen_units.begin(); it != flags.seen_units.end(); ++it ) {
-						if ( current_team.is_enemy(units.find(*it)->side()) ) {
-							flags.sighted_something = true;
-							break;
-						}
-					}
-				}
-			}
-		}//if (fog_shroud)
-
 		// See if we are stopped in this hex.
 		// First check: something adjacent might stop us.
 		map_location adjacent[6];
@@ -2694,7 +2897,6 @@ std::vector<map_location>::const_iterator surprise_movement_end(
 			     current_team.is_enemy(neighbor_it->side()) &&
 			     neighbor_it->invisible(neighbor_it->get_location()) ) {
 				// Ambushed!
-				neighbor_it->set_state(unit::STATE_UNCOVERED, true); // In case we have to backtrack to find an empty hex.
 				flags.ambushers.push_back(adjacent[i]);
 				flags.ambush_stop = true;
 				if ( spectator!=NULL )
@@ -2710,16 +2912,6 @@ std::vector<map_location>::const_iterator surprise_movement_end(
 					flags.ambushed_string = (*hide_it->first)["alert"].str();
 				}
 			}
-		}
-		// Second check: Is this a reasonable stop if a unit was sighted?
-		if ( flags.sighted_something ) {
-			// We can reasonably stop if the hex is empty and not an unowned village.
-			flags.sighted_stop = units.count(*step) == 0 &&
-					   (!map.is_village(*step) || current_team.owns_village(*step));
-			// Slight hack: do not consider this a stop due to sighting
-			// if there are no more locations in the path.
-			if ( step+1 == route_end )
-				flags.sighted_stop = false;
 		}
 	}//for (loop through expected move for this turn)
 
@@ -2751,51 +2943,165 @@ std::vector<map_location>::const_iterator surprise_movement_end(
 /**
  * Performs a move, once the move is determined "allowable".
  *
- * There is no checking if the move is valid. The unit's remaining
- * movement is set to the specified value, regardless of terrain
- * traversed. Invisible enemies adjacent to the end location are
- * displayed, but no other consequences of the move implemented.
+ * In the process, updates unit movement and shroud, and fires
+ * exit_hex, sighted and enter_hex events (in that order).  No
+ * checks are made to prevent the unit from moving past or through
+ * enemy units.
  *
- * @param steps[in]		the path to follow
- * @param to_move[in]		the unit to move
- * @param show[in]		whether or not the move is shown to the player
- * @param moves_left[in]	what to set the unit's movement to after moving
- * @param facing[in]		the facing to give the unit after the move (optional)
+ * @param steps[in]				the path to follow
+ * @param show[in]				whether or not the move is shown to the player
+ * @param flags[in,out]			For returning data to the caller. (It is "in"
+ *				only because the caller is responsible for
+ *				initializing this with the default constructor.)
+ * @param fog_shroud[in]		Set to true to cause fog and shroud to be
+ *				cleared along the path (up to where we stop).
+ * @param skip_sight[in]		Set to true to avoid looking for units as the
+ *				fog/shroud is cleared. (Used for continued moves.)
+ * @param empty_movement[in]	whether or not to set the unit's movement
+ *				points to zero at the end of the move
  *
- * @result An iterator pointing to the moved unit.
+ * @returns An iterator (into the provided interval) pointing one past where the
+ *	    unit stopped.
  */
-unit_map::iterator make_a_move( const std::vector<map_location> &steps, unit &to_move,
-				bool show, int moves_left)
+std::vector<map_location>::const_iterator make_a_move(const std::vector<map_location> &steps, bool show,
+	movement_surprises &flags, bool fog_shroud, bool skip_sight, bool empty_movement)
 {
 	// Some convenient aliases:
+	gamemap &map = *resources::game_map;
 	unit_map &units = *resources::units;
 	game_display &disp = *resources::screen;
-	const map_location &start = to_move.get_location();
-	const map_location &finish = steps.back();
 
-	// Display the move.
-	unit_display::move_unit(steps, to_move, *resources::teams, show);
+	std::string exit_hex_str("exit_hex");
+	std::string enter_hex_str("enter_hex");
 
-	// After showing the unit move, but before moving the real unit,
-	// invalidate adjacent hexes in case they contain invisible units
+	// Store the moving side. If WML changes the unit's side,
+	// finish the move on behalf of the original side.
+	const int current_side = units.find(steps.front())->side();
+	team &current_team = (*resources::teams)[current_side-1];
+
+	// The set of units currently seen by the moving side:
+	std::set<map_location> known_units;
+	// (Only needed if we will be clearing fog/shroud.)
+	if ( fog_shroud ) {
+		foreach (const unit &u, units) {
+			if ( u.side() == current_side  ||  !current_team.fogged(u.get_location()) )
+				known_units.insert(u.get_location());
+		}
+	}
+
+	unit_mover mover(steps, show);
+
+	std::vector<map_location>::const_iterator
+		from = steps.begin(),
+		to,
+		stopped = steps.end();
+
+	for(to = from + 1; to != steps.end(); ++from, ++to) {
+		game_events::raise(exit_hex_str, *from, *to);
+		if(game_events::pump() || units.find(*from) == units.end()) {
+			stopped = from;
+			break;
+		}
+
+		bool sighted_can_stop = false;
+		if ( fog_shroud ) {
+			// We can reasonably stop if the hex is empty and not an unowned village.
+			// We also don't "stop" if already at the end of the route.
+			sighted_can_stop = units.count(*to) == 0 &&
+					   (!map.is_village(*to) || current_team.owns_village(*to)) &&
+					   to+1 != steps.end();
+		}
+
+		unit_map::iterator ui = units.find(*from);
+		int moves_left = ui->movement_left() - ui->movement_cost(map[*to]);
+		if(moves_left < 0) {
+			stopped = from;
+			break;
+		}
+		mover.continue_movement(to);
+		if(empty_movement && to+1 == steps.end()) {
+			moves_left = 0;
+		}
+		ui->set_movement(moves_left);
+
+		// We can enter this hex. Take a look around.
+		if ( fog_shroud ) {
+			DBG_NG << "Checking for units from " << (to->x+1) << "," << (to->y+1) << ".\n";
+
+			std::set<map_location> seen_units;
+			std::set<map_location> petrified_units;
+
+			// Clear the fog/shroud.
+			flags.display_changed |=
+					clear_shroud_unit(*to, *ui, current_team, &known_units,
+					                  &seen_units, &petrified_units, true);
+
+			{	// Fire sighted events
+				std::set<map_location>::iterator sight_it;
+				const std::string sighted_str("sighted");
+				const map_location loc = ui->get_location();
+				foreach (const map_location &here, seen_units) {
+					game_events::raise(sighted_str, here, loc);
+					flags.seen_units.insert(here);
+				}
+				foreach (const map_location &here, petrified_units) {
+					game_events::raise(sighted_str, here, loc);
+				}
+				// Pump these events at the same time as enter_hex
+			}
+
+			if ( !skip_sight && !flags.sighted_something ) {
+				// Check whether a unit was sighted and should interrupt movement.
+				if ( preferences::interrupt_when_ally_sighted() ) {
+					// Interrupt if any unit was sighted.
+					flags.sighted_something = !flags.seen_units.empty();
+				} else {
+					// Check whether any sighted unit is an enemy
+					std::set<map_location>::const_iterator it;
+					for ( it = flags.seen_units.begin(); it != flags.seen_units.end(); ++it ) {
+						if ( current_team.is_enemy(units.find(*it)->side()) ) {
+							flags.sighted_something = true;
+							break;
+						}
+					}
+				}
+			}
+		}//if (fog_shroud)
+
+		game_events::raise(enter_hex_str, *to, *from);
+		if(game_events::pump() || units.find(*to) == units.end()) {
+			stopped = to;
+			break;
+		}
+
+		// Check if we need to stop due to a unit sighting
+		if(fog_shroud && flags.sighted_something && sighted_can_stop) {
+			flags.sighted_stop = true;
+			stopped = to;
+			break;
+		}
+	}
+
+	if(stopped != steps.end() && !flags.sighted_stop) {
+		flags.event_mutated = true;
+		flags.event_stop = (stopped+1 != steps.end());
+	}
+
+	if(stopped == steps.end())
+		--stopped;
+
+	// Invalidate adjacent hexes in case they contain invisible units
 	// that will be revealed.
 	map_location adjacent[6];
-	get_adjacent_tiles(finish, adjacent);
+	get_adjacent_tiles(*stopped, adjacent);
 	for ( int i = 0; i != 6; ++i ) {
 		disp.invalidate(adjacent[i]);
 	}
 
-	// Move the real unit.
-	units.move(start, finish);
-	unit::clear_status_caches();
-	unit_map::iterator after_move = units.find(finish);
-
 	// Update the unit's status.
-	after_move->set_movement(moves_left);
-	after_move->set_standing();
-	disp.invalidate_unit_after_move(start, finish);
+	unit::clear_status_caches();
 
-	return after_move;
+	return stopped;
 }
 
 
@@ -2825,22 +3131,6 @@ bool movement_events(const map_location &initial_loc, const map_location &final_
 	const std::vector<team> &teams = *resources::teams;
 
 	bool event_mutated = false;
-
-	// Sighted events?
-	if ( fog_shroud )
-	{
-		const std::string sighted_str("sighted");
-
-		// Raise events for each sighted unit.
-		foreach (const map_location &here, stops.seen_units) {
-			game_events::raise(sighted_str, here, final_loc);
-		}
-		foreach (const map_location &here, stops.petrified_units) {
-			game_events::raise(sighted_str, here, final_loc);
-		}
-		// Process these events.
-		event_mutated |= game_events::pump();
-	}
 
 	// Village capturing.
 	if ( map.is_village(final_loc) && units.count(final_loc) != 0 ) { // Sighted events might have affected the moving unit.
@@ -2888,7 +3178,7 @@ void movement_feedback(const movement_surprises &stops, bool move_cut_short,
 	std::string message_prefix = "";
 
 	// Ambush feedback?
-	if ( stops.ambush_stop ) {
+	if ( stops.ambush_stop && !stops.event_stop) {
 		// Suppress the message for observers if the ambusher(s) cannot be seen.
 		bool show_message = playing_team_is_viewing;
 		foreach (const map_location &ambush, stops.ambushers) {
@@ -2903,7 +3193,7 @@ void movement_feedback(const movement_surprises &stops, bool move_cut_short,
 	}
 
 	// Failed teleport feedback?
-	if ( playing_team_is_viewing  &&  stops.teleport_failed ) {
+	if ( playing_team_is_viewing  &&  stops.teleport_failed && !stops.event_stop ) {
 		std::string teleport_string = _("Failed teleport! Exit not empty");
 		disp.announce(message_prefix+teleport_string, font::BAD_COLOR);
 		message_prefix += " \n";
@@ -2966,7 +3256,7 @@ void movement_feedback(const movement_surprises &stops, bool move_cut_short,
 	}
 
 	// Suggest "continue move"?
-	if ( move_cut_short && stops.sighted_something && !stops.ambush_stop && !resources::whiteboard->is_executing_actions() ) {
+	if ( move_cut_short && stops.sighted_something && !stops.ambush_stop && !stops.event_stop && !resources::whiteboard->is_executing_actions() ) {
 		// See if the "Continue Move" action has an associated hotkey
 		const hotkey::hotkey_item& hk = hotkey::get_hotkey(hotkey::HOTKEY_CONTINUE_MOVE);
 		if(!hk.null()) {
@@ -3066,12 +3356,27 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	// See how far along the planned path we can actually move.
 	movement_surprises stops;
 	step = surprise_movement_end(route.begin(), step, ui, moves_left, stops,
-				     should_clear_shroud, continue_move, is_replay,
-				     move_spectator);
+				     is_replay, move_spectator);
 
 	// Create a copy of the subroute we can traverse.
 	std::vector<map_location> steps(route.begin(), step);
-	const map_location &final_loc = steps.empty() ? initial_loc : steps.back();
+	map_location final_loc = initial_loc;
+
+	if ( steps.size() >= 2 ) {
+		// Actually move the unit.
+		const std::vector<map_location>::const_iterator stopped = make_a_move(steps, show_move, stops, should_clear_shroud, continue_move || is_replay, stops.ambush_stop || zoc_stop == steps.back());
+		ui = units.find(*stopped);
+		final_loc = *stopped;
+
+		// If an event stopped movement, then the replay needs to
+		// know where the unit tried to go, to trigger the same events.
+		// However, if a sighted event stopped movement, then
+		// record only the movement that actually happened.
+		if (stops.sighted_stop)
+			steps.resize((stopped+1) - steps.begin());
+		if ( move_recorder )
+			move_recorder->add_movement(steps);
+	}
 
 	// Real return values are known now.
 	if ( units_sighted_result != NULL )
@@ -3080,35 +3385,29 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		*next_unit = final_loc;
 
 	// If we stopped early because of sighted units, record the interrupted move.
-	if ( stops.sighted_stop && !stops.ambush_stop )
-		ui->set_interrupted_move(route.back());
-	else
-		ui->set_interrupted_move(map_location());
+	if(ui != units.end()) {
+		if ( stops.sighted_stop && !stops.ambush_stop && !stops.event_mutated )
+			ui->set_interrupted_move(route.back());
+		else
+			ui->set_interrupted_move(map_location());
+	}
 
 	// If we reached the end of the route, or were interrupted, clear the "goto" order.
-	if ( steps.size() == route.size() || stops.ambush_stop || stops.sighted_something ) {
+	if ( ui != units.end() && (steps.size() == route.size() || stops.ambush_stop || stops.sighted_something || stops.event_mutated) ) {
 		if ( move_spectator == NULL )
 			ui->set_goto(map_location());
 	}
 
-	// Mark the fog/shroud to be updated.
-	if ( stops.display_changed )
-		disp.invalidate_all();
-
-	if ( steps.size() >= 2 ) {
-		// Actually move the unit.
-		ui = make_a_move(steps, *ui, show_move, moves_left);
-		if ( move_recorder )
-			move_recorder->add_movement(steps);
-	}
 	// Backup: in case we had to backtrack after being ambushed:
-	foreach (const map_location &ambush, stops.ambushers) {
-		disp.invalidate(ambush);
+	if(!stops.event_stop) {
+		foreach (const map_location &ambush, stops.ambushers) {
+			const unit_map::iterator ambusher = units.find(ambush);
+			if(units.end() != ambusher) {
+				ambusher->set_state(unit::STATE_UNCOVERED, true);
+			}
+			disp.invalidate(ambush);
+		}
 	}
-
-	// Zero out remaining movement if warranted.
-	if ( stops.ambush_stop || zoc_stop == final_loc )
-		ui->set_movement(0);
 
 	// Show the final move animation step.
 	disp.draw();
@@ -3116,21 +3415,21 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	// Process WML events.
 	int orig_village_owner = -1;
 	int action_time_bonus = 0;
-	bool event_mutated = movement_events(initial_loc, final_loc, stops, should_clear_shroud,
-		     			     orig_village_owner, action_time_bonus);
-	//NOTE: an wml event may have removed the unit pointed by ui
-	unit_map::iterator maybe_ui = units.find(final_loc);
-	// and always disable the previous iterator
-	ui = units.end();
+	if(ui != units.end()) {
+		stops.event_mutated = movement_events(initial_loc, final_loc, stops, should_clear_shroud,
+								 orig_village_owner, action_time_bonus);
+		//NOTE: an wml event may have removed the unit pointed by ui
+		ui = units.find(final_loc);
+	}
 	disp.recalculate_minimap();
 	disp.draw();
 
 	// Record keeping.
 	if ( move_spectator != NULL )
-		move_spectator->set_unit(maybe_ui);
+		move_spectator->set_unit(ui);
 
 	if ( undo_stack != NULL ) {
-		if ( event_mutated || stops.block_undo || maybe_ui == units.end() ||
+		if ( stops.event_mutated || stops.block_undo || ui == units.end() ||
 		    (resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) )
 		{
 			apply_shroud_changes(*undo_stack, team_num + 1);
@@ -3138,7 +3437,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		} else {
 			// MP_COUNTDOWN: added param
 			undo_stack->push_back(
-				undo_action(*maybe_ui, steps, starting_moves,
+				undo_action(*ui, steps, starting_moves,
 						action_time_bonus, orig_village_owner, orig_dir));
 		}
 	}

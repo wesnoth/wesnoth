@@ -55,6 +55,11 @@ namespace unit_display
 void move_unit(const std::vector<map_location>& path, unit& u,
 	const std::vector<team>& teams, bool animate=true,
 	map_location::DIRECTION dir=map_location::NDIRECTIONS);
+void move_unit_start(const std::vector<map_location>& path, unit& temp_unit,
+	const team& tm);
+void move_unit_step(const std::vector<map_location>& path, size_t i,
+	unit& temp_unit, const team& tm);
+void move_unit_finish(const std::vector<map_location>& path, unit& temp_unit);
 
 /**
  * Play a pre-fight animation

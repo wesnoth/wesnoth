@@ -136,9 +136,6 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 		return;
 	}
 
-	bool invisible = teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
-		u.invisible(path[0]);
-
 	bool was_hidden = u.get_hidden();
 	// Original unit is usually hidden (but still on map, so count is correct)
 	game_display::fake_unit temp_unit(u);
@@ -146,6 +143,35 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 	temp_unit.set_standing(false);
 	temp_unit.set_hidden(false);
 	temp_unit.place_on_game_display(disp);
+
+	move_unit_start(path, temp_unit, teams[temp_unit.side()-1]);
+
+	for(size_t i = 0; i+1 < path.size(); ++i) {
+		move_unit_step(path, i, temp_unit, teams[temp_unit.side()-1]);
+	}
+
+	move_unit_finish(path, temp_unit);
+
+	temp_unit.remove_from_game_display();
+
+	u.set_facing(dir);
+	u.set_hidden(was_hidden);
+}
+
+void move_unit_start(const std::vector<map_location>& path, unit& temp_unit,
+		const team& tm)
+{
+	game_display* disp = game_display::get_singleton();
+	assert(!path.empty());
+	assert(disp);
+	if(!disp || disp->video().update_locked() || disp->video().faked())
+		return;
+	// One hex path (strange), nothing to do
+	if(path.size() == 1)
+		return;
+
+	bool invisible = tm.is_enemy(int(disp->viewing_team()+1)) &&
+		temp_unit.invisible(path[0]);
 	if(!invisible) {
 		// Scroll to the path, but only if it fully fits on screen.
 		// If it does not fit we might be able to do a better scroll later.
@@ -170,52 +196,73 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 	temp_unit.set_location(path[0]);
 	disp->invalidate(temp_unit.get_location());
 	temp_unit.set_facing(path[0].get_relative_dir(path[1]));
+
 	unit_animator animator;
 	animator.add_animation(&temp_unit,"pre_movement",path[0],path[1]);
 	animator.start_animations();
 	animator.wait_for_end();
+}
 
-	for(size_t i = 0; i+1 < path.size(); ++i) {
+void move_unit_step(const std::vector<map_location>& path, size_t i,
+		unit& temp_unit, const team& tm)
+{
+	game_display* disp = game_display::get_singleton();
+	assert(path.size() > i+1);
+	assert(disp);
+	if(!disp || disp->video().update_locked() || disp->video().faked())
+		return;
+	// already reached end of path - this should never happen
+	if(path.size() <= i+1)
+		return;
 
-		invisible = teams[temp_unit.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
-				temp_unit.invisible(path[i]) &&
-				temp_unit.invisible(path[i+1]);
+	bool invisible = tm.is_enemy(int(disp->viewing_team()+1)) &&
+			temp_unit.invisible(path[i]) &&
+			temp_unit.invisible(path[i+1]);
+	if(invisible)
+		return;
 
-		if(!invisible) {
-			if (!disp->tile_fully_on_screen(path[i]) || !disp->tile_fully_on_screen(path[i+1])) {
-				// prevent the unit from disappearing if we scroll here with i == 0
-				temp_unit.set_location(path[i]);
-				disp->invalidate(temp_unit.get_location());
-				// scroll in as much of the remaining path as possible
-				std::vector<map_location> remaining_path;
-				for(size_t j = i; j < path.size(); ++j) {
-					remaining_path.push_back(path[j]);
-				}
-				temp_unit.get_animation()->pause_animation();
-				disp->scroll_to_tiles(remaining_path,
-							game_display::ONSCREEN, true,false,0.0,false);
-				temp_unit.get_animation()->restart_animation();
-			}
-
-			if(tiles_adjacent(path[i], path[i+1])) {
-				move_unit_between(path[i],path[i+1],temp_unit,i,path.size()-2-i);
-			} else if (path[i] != path[i+1]) {
-				teleport_unit_between(path[i],path[i+1],temp_unit);
-			} else {
-				continue; // no move needed
-			}
+	if (!disp->tile_fully_on_screen(path[i]) || !disp->tile_fully_on_screen(path[i+1])) {
+		// prevent the unit from disappearing if we scroll here with i == 0
+		temp_unit.set_location(path[i]);
+		disp->invalidate(temp_unit.get_location());
+		// scroll in as much of the remaining path as possible
+		std::vector<map_location> remaining_path;
+		for(size_t j = i; j < path.size(); ++j) {
+			remaining_path.push_back(path[j]);
 		}
+		temp_unit.get_animation()->pause_animation();
+		disp->scroll_to_tiles(remaining_path,
+					game_display::ONSCREEN, true,false,0.0,false);
+		temp_unit.get_animation()->restart_animation();
 	}
+
+	if(tiles_adjacent(path[i], path[i+1])) {
+		move_unit_between(path[i],path[i+1],temp_unit,i,path.size()-2-i);
+	} else if (path[i] != path[i+1]) {
+		teleport_unit_between(path[i],path[i+1],temp_unit);
+	} else {
+		// no move needed
+	}
+}
+
+void move_unit_finish(const std::vector<map_location>& path, unit& temp_unit)
+{
+	game_display* disp = game_display::get_singleton();
+	assert(!path.empty());
+	assert(disp);
+	if(!disp || disp->video().update_locked() || disp->video().faked())
+		return;
+	// One hex path (strange), nothing to do
+	if(path.size() == 1)
+		return;
+
 	temp_unit.set_location(path[path.size() - 1]);
 	temp_unit.set_facing(path[path.size()-2].get_relative_dir(path[path.size()-1]));
-	animator.clear();
+
+	unit_animator animator;
 	animator.add_animation(&temp_unit,"post_movement",path[path.size()-1],map_location::null_location);
 	animator.start_animations();
 	animator.wait_for_end();
-	temp_unit.remove_from_game_display();
-
-	u.set_facing(dir);
-	u.set_hidden(was_hidden);
 
 	events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
 	if (mousehandler) {
