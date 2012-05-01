@@ -34,7 +34,7 @@
 class server
 {
 public:
-	server(int port, const std::string& config_file, size_t min_threads,size_t max_threads);
+	server(int port, bool keep_alive, const std::string& config_file, size_t min_threads,size_t max_threads);
 	void run();
 private:
 	void send_error(network::connection sock, const char* msg, const char* error_code ="") const;

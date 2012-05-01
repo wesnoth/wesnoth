@@ -450,7 +450,7 @@ namespace {
 }
 
 
-server::server(int port, const std::string& config_file, size_t min_threads,
+server::server(int port, bool keep_alive, const std::string& config_file, size_t min_threads,
 		size_t max_threads) :
 	io_service_(),
 	acceptor_(io_service_),
@@ -507,6 +507,7 @@ server::server(int port, const std::string& config_file, size_t min_threads,
 	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::tcp::v4(), port);
 	acceptor_.open(endpoint.protocol());
 	acceptor_.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+	acceptor_.set_option(boost::asio::ip::tcp::acceptor::keep_alive(keep_alive));
 	acceptor_.bind(endpoint);
 	acceptor_.listen();
 	serve();
@@ -3513,6 +3514,7 @@ void server::update_game_in_lobby(const wesnothd::game* g, network::connection e
 
 int main(int argc, char** argv) {
 	int port = 15000;
+	bool keep_alive = false;
 	size_t min_threads = 5;
 	size_t max_threads = 0;
 
@@ -3564,6 +3566,8 @@ int main(int argc, char** argv) {
 			}
 		} else if ((val == "--port" || val == "-p") && arg+1 != argc) {
 			port = atoi(argv[++arg]);
+		} else if (val == "--keepalive") {
+			keep_alive = true;
 		} else if (val == "--help" || val == "-h") {
 			std::cout << "usage: " << argv[0]
 				<< " [-dvV] [-c path] [-m n] [-p port] [-t n]\n"
@@ -3575,6 +3579,7 @@ int main(int argc, char** argv) {
 				<< "                             'all' can be used to match any debug domain.\n"
 				<< "                             Available levels: error, warning, info, debug.\n"
 				<< "  -p, --port <port>          Binds the server to the specified port.\n"
+				<< "  --keepalive                Enable TCP keepalive.\n"
 				<< "  -t, --threads <n>          Uses n worker threads for network I/O (default: 5).\n"
 				<< "  -v  --verbose              Turns on more verbose logging.\n"
 				<< "  -V, --version              Returns the server version.\n";
@@ -3618,7 +3623,7 @@ int main(int argc, char** argv) {
 	network::set_raw_data_only();
 
 	try {
-		server(port, config_file, min_threads, max_threads).run();
+		server(port, keep_alive, config_file, min_threads, max_threads).run();
 	} catch(network::error& e) {
 		ERR_SERVER << "Caught network error while server was running. Aborting.: "
 			<< e.message << "\n";
