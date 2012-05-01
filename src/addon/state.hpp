@@ -35,6 +35,11 @@ enum ADDON_STATUS {
 	ADDON_NOT_TRACKED
 };
 
+inline bool is_installed_addon_status(ADDON_STATUS s)
+{
+	return s >= ADDON_INSTALLED && s <= ADDON_INSTALLED_BROKEN;
+}
+
 /** Stores additional status information about add-ons. */
 struct addon_tracking_info
 {

@@ -65,6 +65,7 @@ namespace {
 enum VIEW_MODE
 {
 	VIEW_ALL,
+	VIEW_INSTALLED,
 	VIEW_UPGRADABLE,
 	VIEW_NOT_INSTALLED,
 	VIEW_MODE_COUNT
@@ -77,6 +78,8 @@ std::string view_mode_display_label(VIEW_MODE m)
 		return _("addons_view^Not Installed");
 	case VIEW_UPGRADABLE:
 		return _("addons_view^Upgradable");
+	case VIEW_INSTALLED:
+		return _("addons_view^Installed");
 	default:
 		return _("addons_view^All Add-ons");
 	}
@@ -451,7 +454,9 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		const ADDON_STATUS state = tracking[addon.id].state;
 
 		if((view == VIEW_UPGRADABLE && state != ADDON_INSTALLED_UPGRADABLE) ||
-		   (view == VIEW_NOT_INSTALLED && state != ADDON_NONE))
+		   (view == VIEW_NOT_INSTALLED && state != ADDON_NONE) ||
+		   (view == VIEW_INSTALLED && !is_installed_addon_status(state))
+		)
 			continue;
 
 		option_ids.push_back(addon.id);
