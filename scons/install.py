@@ -59,6 +59,7 @@ def InstallBinary(env, source):
         return source
 
     binary = source[0].name
+    binary = binary.split("-")[0]
     installdir = env.subst(os.path.join(env["destdir"], env["bindir"].lstrip("/")))
     env.Alias("install-" + binary, 
         env.InstallAs(os.path.join(installdir, binary + env["program_suffix"]), source)
