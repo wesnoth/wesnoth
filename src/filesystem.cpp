@@ -886,9 +886,6 @@ file_tree_checksum::file_tree_checksum(const config& cfg) :
 	sum_size(lexical_cast_default<size_t>(cfg["size"])),
 	modified(lexical_cast_default<time_t>(cfg["modified"]))
 {
-	ERR_FS << "nfiles: " << nfiles << std::endl;
-	ERR_FS << "sum_ize: " << sum_size << std::endl;
-	ERR_FS << "modified: " << modified << std::endl;
 }
 
 void file_tree_checksum::write(config& cfg) const
