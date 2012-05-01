@@ -94,6 +94,30 @@ To lexical_cast_default(From a, To def=To())
 }
 
 template<>
+size_t lexical_cast<size_t, const std::string&>(const std::string& a);
+
+template<>
+size_t lexical_cast<size_t, const char*>(const char* a);
+
+template<>
+size_t lexical_cast_default<size_t, const std::string&>(const std::string& a, size_t def);
+
+template<>
+size_t lexical_cast_default<size_t, const char*>(const char* a, size_t def);
+
+template<>
+time_t lexical_cast<time_t, const std::string&>(const std::string& a);
+
+template<>
+time_t lexical_cast<time_t, const char*>(const char* a);
+
+template<>
+time_t lexical_cast_default<time_t, const std::string&>(const std::string& a, time_t def);
+
+template<>
+time_t lexical_cast_default<time_t, const char*>(const char* a, time_t def);
+
+template<>
 int lexical_cast<int, const std::string&>(const std::string& a);
 
 template<>

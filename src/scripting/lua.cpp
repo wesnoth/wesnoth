@@ -177,6 +177,12 @@ struct luaW_pushscalar_visitor : boost::static_visitor<>
 	{ lua_pushboolean(L, b); }
 	void operator()(double d) const
 	{ lua_pushnumber(L, d); }
+	void operator()(size_t s) const
+	{ lua_pushnumber(L,s); }
+	void operator()(time_t t) const
+	{ lua_pushnumber(L,t); }
+	void operator()(int i) const
+	{ lua_pushnumber(L,i); }
 	void operator()(std::string const &s) const
 	{ lua_pushstring(L, s.c_str()); }
 	void operator()(t_string const &s) const

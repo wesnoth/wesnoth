@@ -172,7 +172,7 @@ public:
 	 */
 	class attribute_value
 	{
-		typedef boost::variant<boost::blank, bool, double, std::string, t_string> value_type;
+		typedef boost::variant<boost::blank, bool, int, time_t, size_t,double, std::string, t_string> value_type;
 		value_type value;
 
 	public:
@@ -188,6 +188,8 @@ public:
 		attribute_value &operator=(bool v);
 		attribute_value &operator=(int v);
 		attribute_value &operator=(double v);
+		attribute_value &operator=(size_t v);
+		attribute_value &operator=(time_t v);
 
 		attribute_value &operator=(const char *v)
 		{ return operator=(std::string(v)); }

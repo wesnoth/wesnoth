@@ -34,7 +34,7 @@
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
-
+#define DBG_CF LOG_STREAM(debug, log_config)
 config::attribute_value::attribute_value()
 	: value()
 {
@@ -63,10 +63,21 @@ config::attribute_value &config::attribute_value::operator=(bool v)
 
 config::attribute_value &config::attribute_value::operator=(int v)
 {
-	value = double(v);
+	value = v;
 	return *this;
 }
 
+config::attribute_value &config::attribute_value::operator=(size_t v)
+{
+	value = v;
+	return *this;
+}
+
+config::attribute_value &config::attribute_value::operator=(time_t v)
+{
+	value = v;
+	return *this;
+}
 config::attribute_value &config::attribute_value::operator=(double v)
 {
 	value = v;
@@ -103,13 +114,21 @@ bool config::attribute_value::to_bool(bool def) const
 
 int config::attribute_value::to_int(int def) const
 {
-	if (const double *p = boost::get<const double>(&value)) return int(*p);
+	const int* i = boost::get<const int>(&value);
+	if(i != NULL)
+	{
+		return *i;
+	}
 	return def;
 }
 
 double config::attribute_value::to_double(double def) const
 {
-	if (const double *p = boost::get<const double>(&value)) return *p;
+	const double* d = boost::get<const double>(&value);;
+	if(d != NULL)
+	{
+		return *d;;
+	}
 	return def;
 }
 
@@ -124,6 +143,12 @@ struct config_attribute_str_visitor : boost::static_visitor<std::string>
 	}
 	std::string operator()(double d) const
 	{ return str_cast(d); }
+	std::string operator()(size_t s) const
+	{ return str_cast(s); }
+	std::string operator()(int i) const
+	{ return str_cast(i); }
+	std::string operator()(time_t t) const
+	{ return str_cast(t); }
 	std::string operator()(std::string const &s) const
 	{ return s; }
 	std::string operator()(t_string const &s) const

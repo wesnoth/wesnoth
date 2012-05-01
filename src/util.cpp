@@ -21,7 +21,120 @@
 #include "util.hpp"
 
 #include <cstdlib>
+template<>
+size_t lexical_cast<size_t, const std::string&>(const std::string& a)
+{
+	char* endptr;
+	size_t res = strtoul(a.c_str(), &endptr, 10);
 
+	if (a.empty() || *endptr != '\0') {
+		throw bad_lexical_cast();
+	} else {
+		return res;
+	}
+}
+
+template<>
+size_t lexical_cast<size_t, const char*>(const char* a)
+{
+	char* endptr;
+	size_t res = strtoul(a, &endptr, 10);
+
+	if (*a == '\0' || *endptr != '\0') {
+		throw bad_lexical_cast();
+	} else {
+		return res;
+	}
+}
+template<>
+size_t lexical_cast_default<size_t, const std::string&>(const std::string& a, size_t def)
+{
+	if(a.empty()) {
+		return def;
+	}
+
+	char* endptr;
+	size_t res = strtoul(a.c_str(), &endptr, 10);
+
+	if (*endptr != '\0') {
+		return def;
+	} else {
+		return res;
+	}
+}
+template<>
+size_t lexical_cast_default<size_t, const char*>(const char* a, size_t def)
+{
+	if(*a == '\0') {
+		return def;
+	}
+
+	char* endptr;
+	size_t res = strtoul(a, &endptr, 10);
+
+	if (*endptr != '\0') {
+		return def;
+	} else {
+		return res;
+	}
+}
+template<>
+time_t lexical_cast<time_t, const std::string&>(const std::string& a)
+{
+	char* endptr;
+	time_t res = strtol(a.c_str(), &endptr, 10);
+
+	if (a.empty() || *endptr != '\0') {
+		throw bad_lexical_cast();
+	} else {
+		return res;
+	}
+}
+
+template<>
+time_t lexical_cast<time_t, const char*>(const char* a)
+{
+	char* endptr;
+	time_t res = strtol(a, &endptr, 10);
+
+	if (*a == '\0' || *endptr != '\0') {
+		throw bad_lexical_cast();
+	} else {
+		return res;
+	}
+}
+template<>
+time_t lexical_cast_default<time_t, const std::string&>(const std::string& a, time_t def)
+{
+	if(a.empty()) {
+		return def;
+	}
+
+	char* endptr;
+	time_t res = strtol(a.c_str(), &endptr, 10);
+
+	if (*endptr != '\0') {
+		return def;
+	} else {
+		return res;
+	}
+}
+template<>
+time_t lexical_cast_default<time_t, const char*>(const char* a, time_t def)
+{
+	if(*a == '\0') {
+		return def;
+	}
+
+	char* endptr;
+	time_t res = strtol(a, &endptr, 10);
+
+	if (*endptr != '\0') {
+		return def;
+	} else {
+		return res;
+	}
+}
 template<>
 int lexical_cast<int, const std::string&>(const std::string& a)
 {
