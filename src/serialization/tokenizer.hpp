@@ -18,7 +18,7 @@
 #define TOKENIZER_H_INCLUDED
 
 #include "buffered_istream.hpp"
-
+#include <boost/iostreams/filter/gzip.hpp>
 #include <istream>
 #include <string>
 
@@ -105,7 +105,11 @@ private:
 	void next_char_fast()
 	{
 		do {
-			current_ = in_.get();
+			try {
+				current_ = in_.get();
+			} catch(boost::iostreams::gzip_error e) {
+				current_ = EOF;
+			}
 		} while (UNLIKELY(current_ == '\r'));
 #if 0
 			/// @todo disabled untill campaign server is fixed
