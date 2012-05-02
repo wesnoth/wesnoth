@@ -22,12 +22,14 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/listbox.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
+#include "gui/widgets/grid.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/pane.hpp"
+#include "gui/widgets/viewport.hpp"
 #include "gui/widgets/settings.hpp"
 #include "wml_exception.hpp"
 
@@ -100,9 +102,31 @@ twidget* tbuilder_listbox::build() const
 	return widget;
 #else
 	if(new_widgets) {
-		tpane *widget = new tpane(list_builder);
-		widget->set_id(id);
-		return widget;
+
+		tpane *pane = new tpane(list_builder);
+		pane->set_id(id);
+
+		tviewport *viewport = new tviewport();
+
+		tgrid* grid = new tgrid();
+		grid->set_rows_cols(1, 2);
+		grid->set_child(
+				  pane
+				, 0
+				, 0
+				, tgrid::VERTICAL_GROW_SEND_TO_CLIENT
+					| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
+				, tgrid::BORDER_ALL);
+
+		grid->set_child(
+				  viewport
+				, 0
+				, 1
+				, tgrid::VERTICAL_GROW_SEND_TO_CLIENT
+					| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
+				, tgrid::BORDER_ALL);
+
+		return grid;
 	}
 
 	tlistbox *widget = new tlistbox(

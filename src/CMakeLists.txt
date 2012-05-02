@@ -550,6 +550,7 @@ set(wesnoth-main_SRC
 	gui/widgets/tree_view.cpp
 	gui/widgets/tree_view_node.cpp
 	gui/widgets/vertical_scrollbar.cpp
+	gui/widgets/viewport.cpp
 	gui/widgets/widget.cpp
 	gui/widgets/window.cpp
 	halo.cpp
