@@ -249,3 +249,53 @@ double lexical_cast_default<double, const char*>(const char* a, double def)
 	}
 }
 
+template<>
+float lexical_cast<float, const std::string&>(const std::string& a)
+{
+	char* endptr;
+	float res = strtof(a.c_str(), &endptr);
+
+	if (a.empty() || *endptr != '\0') {
+		throw bad_lexical_cast();
+	} else {
+		return res;
+	}
+}
+
+template<>
+float lexical_cast<float, const char*>(const char* a)
+{
+	char* endptr;
+	float res = strtof(a, &endptr);
+
+	if (*a == '\0' || *endptr != '\0') {
+		throw bad_lexical_cast();
+	} else {
+		return res;
+	}
+}
+template<>
+float lexical_cast_default<float, const std::string&>(const std::string& a, float def)
+{
+	char* endptr;
+	float res = strtof(a.c_str(), &endptr);
+
+	if (a.empty() || *endptr != '\0') {
+		return def;;
+	} else {
+		return res;
+	}
+}
+
+template<>
+float lexical_cast_default<float, const char*>(const char* a, float def)
+{
+	char* endptr;
+	float res = strtof(a, &endptr);
+
+	if (*a == '\0' || *endptr != '\0') {
+		return def;
+	} else {
+		return res;
+	}
+}

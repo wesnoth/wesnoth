@@ -141,6 +141,18 @@ double lexical_cast_default<double, const std::string&>(const std::string& a, do
 template<>
 double lexical_cast_default<double, const char*>(const char* a, double def);
 
+template<>
+float lexical_cast<float, const std::string&>(const std::string& a);
+
+template<>
+float lexical_cast<float, const char*>(const char* a);
+
+template<>
+float lexical_cast_default<float, const std::string&>(const std::string& a, float def);
+
+template<>
+float lexical_cast_default<float, const char*>(const char* a, float def);
+
 template<typename From>
 std::string str_cast(From a)
 {
