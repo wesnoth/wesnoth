@@ -127,7 +127,6 @@ libwesnoth_sources = Split("""
     widgets/scrollbar.cpp
     widgets/slider.cpp
     widgets/textbox.cpp
-    widgets/viewport.cpp
     widgets/widget.cpp
     wml_exception.cpp
     """)
@@ -394,6 +393,7 @@ wesnoth_sources = Split("""
     gui/widgets/tree_view.cpp
     gui/widgets/tree_view_node.cpp
     gui/widgets/vertical_scrollbar.cpp
+    gui/widgets/viewport.cpp
     gui/widgets/widget.cpp
     gui/widgets/window.cpp
     halo.cpp
