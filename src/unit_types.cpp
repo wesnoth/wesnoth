@@ -1156,7 +1156,7 @@ void unit_type_data::set_config(config &cfg)
 		{
 			// Derive a new unit type from existing base unit and its ancestors.
 			config merge_cfg = find_config(bu["id"]);
-			ut.clear_children("base_unit");
+			ut.remove_child("base_unit", 0);
 			merge_cfg.merge_with(ut);
 			ut.swap(merge_cfg);
 		}
