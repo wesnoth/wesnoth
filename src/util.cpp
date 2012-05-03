@@ -79,10 +79,10 @@ size_t lexical_cast_default<size_t, const char*>(const char* a, size_t def)
 	}
 }
 template<>
-time_t lexical_cast<time_t, const std::string&>(const std::string& a)
+long lexical_cast<long, const std::string&>(const std::string& a)
 {
 	char* endptr;
-	time_t res = strtol(a.c_str(), &endptr, 10);
+	long res = strtol(a.c_str(), &endptr, 10);
 
 	if (a.empty() || *endptr != '\0') {
 		throw bad_lexical_cast();
@@ -92,10 +92,10 @@ time_t lexical_cast<time_t, const std::string&>(const std::string& a)
 }
 
 template<>
-time_t lexical_cast<time_t, const char*>(const char* a)
+long lexical_cast<long, const char*>(const char* a)
 {
 	char* endptr;
-	time_t res = strtol(a, &endptr, 10);
+	long res = strtol(a, &endptr, 10);
 
 	if (*a == '\0' || *endptr != '\0') {
 		throw bad_lexical_cast();
@@ -104,14 +104,14 @@ time_t lexical_cast<time_t, const char*>(const char* a)
 	}
 }
 template<>
-time_t lexical_cast_default<time_t, const std::string&>(const std::string& a, time_t def)
+long lexical_cast_default<long, const std::string&>(const std::string& a, long def)
 {
 	if(a.empty()) {
 		return def;
 	}
 
 	char* endptr;
-	time_t res = strtol(a.c_str(), &endptr, 10);
+	long res = strtol(a.c_str(), &endptr, 10);
 
 	if (*endptr != '\0') {
 		return def;
@@ -120,14 +120,14 @@ time_t lexical_cast_default<time_t, const std::string&>(const std::string& a, ti
 	}
 }
 template<>
-time_t lexical_cast_default<time_t, const char*>(const char* a, time_t def)
+long lexical_cast_default<long, const char*>(const char* a, long def)
 {
 	if(*a == '\0') {
 		return def;
 	}
 
 	char* endptr;
-	time_t res = strtol(a, &endptr, 10);
+	long res = strtol(a, &endptr, 10);
 
 	if (*endptr != '\0') {
 		return def;

@@ -106,16 +106,16 @@ template<>
 size_t lexical_cast_default<size_t, const char*>(const char* a, size_t def);
 
 template<>
-time_t lexical_cast<time_t, const std::string&>(const std::string& a);
+long lexical_cast<long, const std::string&>(const std::string& a);
 
 template<>
-time_t lexical_cast<time_t, const char*>(const char* a);
+long lexical_cast<long, const char*>(const char* a);
 
 template<>
-time_t lexical_cast_default<time_t, const std::string&>(const std::string& a, time_t def);
+long lexical_cast_default<long, const std::string&>(const std::string& a, long def);
 
 template<>
-time_t lexical_cast_default<time_t, const char*>(const char* a, time_t def);
+long lexical_cast_default<long, const char*>(const char* a, long def);
 
 template<>
 int lexical_cast<int, const std::string&>(const std::string& a);
