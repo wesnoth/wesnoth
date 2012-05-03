@@ -73,7 +73,7 @@ config::attribute_value &config::attribute_value::operator=(size_t v)
 	return *this;
 }
 
-config::attribute_value &config::attribute_value::operator=(time_t v)
+config::attribute_value &config::attribute_value::operator=(long v)
 {
 	value = v;
 	return *this;
@@ -147,7 +147,7 @@ struct config_attribute_str_visitor : boost::static_visitor<std::string>
 	{ return str_cast(s); }
 	std::string operator()(int i) const
 	{ return str_cast(i); }
-	std::string operator()(time_t t) const
+	std::string operator()(long t) const
 	{ return str_cast(t); }
 	std::string operator()(std::string const &s) const
 	{ return s; }
