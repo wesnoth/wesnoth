@@ -513,7 +513,7 @@ void create::process_event()
 		regenerate_map_.hide(generator_ == NULL);
 
 		const std::string& map_data = parameters_.scenario_data["map_data"];
-
+		parameters_.hash = parameters_.scenario_data.hash();
 		util::unique_ptr<gamemap> map;
 		try {
 			map.reset(new gamemap(game_config(), map_data));
