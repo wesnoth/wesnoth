@@ -265,6 +265,10 @@ Version 1.11.0-svn:
    * Fixed bug #19658: In replays, units sometimes refresh movement when it is not their turn
    * Added: Enabled BREAKPOINT and WES_HALT macros on the Pandora.
    * Fixed bug #19678: Escape the pipe-symbol in the wiki: TerrainCodeTableWML.
+   * Fixed bug #19469: Missing scenario hash results in Remote scenario always
+     added to game description
+   * Fixed bug #19322: Empty sides not being listed at the status table
+   * Fixed bug #19681: Use the created cache instead of rebuilding it all the time
 
 Version 1.10.0:
  * Campaigns:
