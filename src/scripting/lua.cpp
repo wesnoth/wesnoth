@@ -179,7 +179,7 @@ struct luaW_pushscalar_visitor : boost::static_visitor<>
 	{ lua_pushnumber(L, d); }
 	void operator()(size_t s) const
 	{ lua_pushnumber(L,s); }
-	void operator()(time_t t) const
+	void operator()(long t) const
 	{ lua_pushnumber(L,t); }
 	void operator()(int i) const
 	{ lua_pushnumber(L,i); }

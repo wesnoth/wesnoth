@@ -426,7 +426,7 @@ struct write_key_val_visitor : boost::static_visitor<void>
 	{ int i = d; if (d == i) out_ << i; else out_ << d; }
 	void operator()(size_t s) const
 	{ out_ << s; }
-	void operator()(time_t t) const
+	void operator()(long t) const
 	{ out_ << t; }
 	void operator()(int i) const
 	{ out_ << i; }
