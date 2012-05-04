@@ -172,7 +172,7 @@ public:
 	 */
 	class attribute_value
 	{
-		typedef boost::variant<boost::blank, bool, int, long, size_t,double, std::string, t_string> value_type;
+		typedef boost::variant<boost::blank, bool, double, std::string, t_string> value_type;
 		value_type value;
 
 	public:
@@ -198,6 +198,7 @@ public:
 
 		bool to_bool(bool def = false) const;
 		int to_int(int def = 0) const;
+		long to_long(long def = 0) const;
 		double to_double(double def = 0.) const;
 
 		bool blank() const;

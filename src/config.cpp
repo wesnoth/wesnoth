@@ -63,19 +63,19 @@ config::attribute_value &config::attribute_value::operator=(bool v)
 
 config::attribute_value &config::attribute_value::operator=(int v)
 {
-	value = v;
+	value = double(v);
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(size_t v)
 {
-	value = v;
+	value = double(v);
 	return *this;
 }
 
 config::attribute_value &config::attribute_value::operator=(long v)
 {
-	value = v;
+	value = double(v);
 	return *this;
 }
 config::attribute_value &config::attribute_value::operator=(double v)
@@ -114,14 +114,22 @@ bool config::attribute_value::to_bool(bool def) const
 
 int config::attribute_value::to_int(int def) const
 {
-	const int* i = boost::get<const int>(&value);
+	const double* i = boost::get<const double>(&value);
 	if(i != NULL)
 	{
-		return *i;
+		return int(*i);
 	}
 	return def;
 }
-
+long config::attribute_value::to_long(long def) const
+{
+	const double* i = boost::get<const double>(&value);
+	if (i != NULL)
+	{
+		return long(*i);
+	}
+	return def;
+}
 double config::attribute_value::to_double(double def) const
 {
 	const double* d = boost::get<const double>(&value);;
@@ -142,13 +150,14 @@ struct config_attribute_str_visitor : boost::static_visitor<std::string>
 		return b ? s_yes : s_no;
 	}
 	std::string operator()(double d) const
-	{ return str_cast(d); }
-	std::string operator()(size_t s) const
-	{ return str_cast(s); }
-	std::string operator()(int i) const
-	{ return str_cast(i); }
-	std::string operator()(long t) const
-	{ return str_cast(t); }
+	{
+		long i = static_cast<long>(d);
+		
+		if (static_cast<double>(i) == d)
+			return str_cast(i);
+		else
+			return str_cast(d);
+	}
 	std::string operator()(std::string const &s) const
 	{ return s; }
 	std::string operator()(t_string const &s) const
