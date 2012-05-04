@@ -402,7 +402,7 @@ void menu_handler::status_table(int selected)
 	//lack of information about the other sides But he see
 	//all names with in colors
 	for(size_t n = 0; n != teams_.size(); ++n) {
-		if(teams_[n].is_empty()||teams_[n].hidden()) {
+		if(teams_[n].hidden()) {
 			continue;
 		}
 		status_table_empty=false;
@@ -527,7 +527,7 @@ void menu_handler::scenario_settings_table(int selected)
 	bool fogged;
 
 	for(size_t n = 0; n != teams_.size(); ++n) {
-		if(teams_[n].is_empty()||teams_[n].hidden()) {
+		if(teams_[n].hidden()) {
 			continue;
 		}
 		settings_table_empty = false;
