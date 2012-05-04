@@ -1413,8 +1413,15 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	config::attribute_value cfg_race = cfg["race"];
-	if (!cfg_race.blank() && cfg_race.str() != race_->id()) {
-		return false;
+	if (!cfg_race.blank()) {
+		std::string race = cfg_race;
+
+		if(race != race_->id()) {
+			const std::vector<std::string>& vals = utils::split(race);
+			if(std::find(vals.begin(), vals.end(), race_->id()) == vals.end()) {
+				return false;
+			}
+		}
 	}
 
 	config::attribute_value cfg_gender = cfg["gender"];
