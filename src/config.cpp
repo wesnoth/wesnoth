@@ -123,14 +123,7 @@ struct config_attribute_str_visitor : boost::static_visitor<std::string>
 		return b ? s_yes : s_no;
 	}
 	std::string operator()(double d) const
-	{
-		long i = static_cast<long>(d);
-
-		if (static_cast<double>(i) == d)
-			return str_cast(i);
-		else
-			return str_cast(d);
-	}
+	{ return str_cast(d); }
 	std::string operator()(std::string const &s) const
 	{ return s; }
 	std::string operator()(t_string const &s) const
