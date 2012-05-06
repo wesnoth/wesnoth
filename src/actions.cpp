@@ -2445,9 +2445,9 @@ void recalculate_fog(int side)
  * This will not re-fog hexes unless reset_fog is set to true.
  * This function will do nothing if the side uses neither shroud nor fog.
  *
- * @param[in] side	The side whose shroud (and fog) will be cleared.
- * @param[in] reset_fog	If set to true, the fog will also be recalculated
- *			(refogging hexes that can no longer be seen).
+ * @param[in] side      The side whose shroud (and fog) will be cleared.
+ * @param[in] reset_fog If set to true, the fog will also be recalculated
+ *                      (refogging hexes that can no longer be seen).
  * @returns true if some shroud/fog is actually cleared away.
  */
 bool clear_shroud(int side, bool reset_fog)
@@ -2621,8 +2621,8 @@ public:
 	/**
 	 * Constructor
 	 *
-	 * @param route[in]		the path to follow
-	 * @param show_move[in]	whether or not the move is shown to the player
+	 * @param route[in]      the path to follow
+	 * @param show_move[in]  whether or not the move is shown to the player
 	 */
 	unit_mover(const std::vector<map_location> &route, bool show_move) :
 		m_(*resources::units),
@@ -2664,10 +2664,10 @@ public:
 	 * Moves the unit to a later position in the route. This
 	 * should usually by the next tile, but does not have to be.
 	 *
-	 * @param dest[in]	An iterator into the route provided to the constructor,
-	 *			indicating which location to move the unit to.
-	 *			This location must always be later in the route than
-	 *			the unit's current position.
+	 * @param dest[in]  An iterator into the route provided to the constructor,
+	 *                  indicating which location to move the unit to.
+	 *                  This location must always be later in the route than
+	 *                  the unit's current position.
 	 */
 	void continue_movement(const std::vector<map_location>::const_iterator dest)
 	{
@@ -2753,18 +2753,18 @@ public:
  * towards the front of the crowd even though the player knows the unit
  * cannot reach that far (because it cannot stop on another unit).
  *
- * @param[in]      route	The plotted path. Assumed not empty.
- * @param[in]      mover_it	The unit that will move along the path.
- * @param[in,out]  moves_left	The movement points the unit has remaining.
- *				This does not account for things that set movement
- *				to zero (such as entering a zone of control).
- * @param[out]     zoc_stop	The map location at which the unit enters an
- *				enemy's zone of control. May be the null location.
- * @param[in]      ignore_limit	Set to true to allow the unit to exceed its
- *				movement limit. (Used for replays.)
+ * @param[in]      route         The plotted path. Assumed not empty.
+ * @param[in]      mover_it      The unit that will move along the path.
+ * @param[in,out]  moves_left    The movement points the unit has remaining.
+ *                               This does not account for things that set movement
+ *                               to zero (such as entering a zone of control).
+ * @param[out]     zoc_stop      The map location at which the unit enters an
+ *                               enemy's zone of control. May be the null location.
+ * @param[in]      ignore_limit  Set to true to allow the unit to exceed its
+ *                               movement limit. (Used for replays.)
  * @returns An iterator (into @a route) pointing one past where the unit should stop.
  * @retval route.begin() if the unit cannot move (rather then route.begin()+1).
- *			 @a moves_left may be set to bogus data in this case.
+ *                       @a moves_left may be set to bogus data in this case.
  */
 std::vector<map_location>::const_iterator known_movement_end(
 	const std::vector<map_location> &route, const unit_map::const_iterator &mover_it,
@@ -2822,25 +2822,29 @@ std::vector<map_location>::const_iterator known_movement_end(
  * due to surprises (like ambushes or sighted units). It assumes the given interval
  * of the route has already been checked for known factors (like movement costs).
  *
- * @param[in]      route_begin	The beginning of the intended path.
- * @param[in]      route_end	The end of the intended path (one past the last
- *				hex). Assumed to not be route_begin.
- * @param[in]      mover_it	The unit that will move along the path.
- * @param[in,out]  moves_left	The movement points the unit has remaining.
- *				This does not account for things that set
- *				movement to zero (such as being ambushed).
- * @param[in,out]  flags	For returning data to the caller. (It is "in"
- *				only because the caller is responsible for
- *				initializing this with the default constructor.)
- * @param[in]      ignore_invis	Set to true to avoid stopping movement due to
- *				revealed units. (Used for replays.)
- * @param[out]     spectator	If not NULL, this will be told which unit
- *				ambushed, or blocked the teleport of, mover_it.
+ * @param[in]      route_begin   The beginning of the intended path.
+ * @param[in]      route_end     The end of the intended path (one past the last
+ *                               hex). Assumed to not be route_begin.
+ * @param[in]      mover_it      The unit that will move along the path.
+ * @param[in,out]  moves_left    The movement points the unit has remaining.
+ *                               This does not account for things that set
+ *                               movement to zero (such as being ambushed).
+ * @param[in,out]  flags         For returning data to the caller. (It is "in"
+ *                               only because the caller is responsible for
+ *                               initializing this with the default constructor.)
+ * @param[in]      fog_shroud    Set to true to cause fog and shroud to be
+ *                               cleared along the path (up to where we stop).
+ * @param[in]      skip_sight    Set to true to avoid looking for units as the
+ *                               fog/shroud is cleared. (Used for continued moves.)
+ * @param[in]      ignore_invis  Set to true to avoid stopping movement due to
+ *                               revealed units. (Used for replays.)
+ * @param[out]     spectator     If not NULL, this will be told which unit
+ *                               ambushed, or blocked the teleport of, mover_it.
  *
  * @returns An iterator (into the provided interval) pointing one past where the
- *	    unit should stop.
+ *          unit should stop.
  * @retval route.begin() if the unit cannot move (rather then route.begin()+1).
- *			 @a moves_left may be set to bogus data in this case.
+ *                       @a moves_left may be set to bogus data in this case.
  */
 std::vector<map_location>::const_iterator surprise_movement_end(
 	const std::vector<map_location>::const_iterator &route_begin,
@@ -2949,17 +2953,17 @@ std::vector<map_location>::const_iterator surprise_movement_end(
  * checks are made to prevent the unit from moving past or through
  * enemy units.
  *
- * @param steps[in]				the path to follow
- * @param show[in]				whether or not the move is shown to the player
- * @param flags[in,out]			For returning data to the caller. (It is "in"
- *				only because the caller is responsible for
- *				initializing this with the default constructor.)
- * @param fog_shroud[in]		Set to true to cause fog and shroud to be
- *				cleared along the path (up to where we stop).
- * @param skip_sight[in]		Set to true to avoid looking for units as the
- *				fog/shroud is cleared. (Used for continued moves.)
- * @param empty_movement[in]	whether or not to set the unit's movement
- *				points to zero at the end of the move
+ * @param steps[in]           The path to follow
+ * @param show[in]            Whether or not the move is shown to the player
+ * @param flags[in,out]       For returning data to the caller. (It is "in"
+ *                            only because the caller is responsible for
+ *                            initializing this with the default constructor.)
+ * @param fog_shroud[in]      Set to true to cause fog and shroud to be
+ *                            cleared along the path (up to where we stop).
+ * @param skip_sight[in]      Set to true to avoid looking for units as the
+ *                            fog/shroud is cleared. (Used for continued moves.)
+ * @param empty_movement[in]  Whether or not to set the unit's movement
+ *                            points to zero at the end of the move
  *
  * @returns An iterator (into the provided interval) pointing one past where the
  *	    unit stopped.
@@ -3109,16 +3113,16 @@ std::vector<map_location>::const_iterator make_a_move(const std::vector<map_loca
 /**
  * Handles the WML events triggered by movement (includes village capturing).
  *
- * @param initial_loc[in]	  The starting location of the movement (needed for "moveto").
- * @param final_loc[in]		  The final location of the movement (needed for everything).
- * @param stops[in]		  The flags raised while moving (needed for "sighted").
- * @param fog_shroud[in]	  Whether or not fog/shroud should be checked.
- * @param orig_village_owner[out] If the final location is a village and the sighted
- *				  event do not remove the capturer, this gets set to
- *				  the side that owned the village before this movement.
- *				  (Otherwise it remains unchanged.)
- * @param action_time_bonus[out]  If a village capture occurs, this gets set to 1.
- *				  (Otherwise it remains unchanged.)
+ * @param initial_loc[in]          The starting location of the movement (needed for "moveto").
+ * @param final_loc[in]            The final location of the movement (needed for everything).
+ * @param stops[in]                The flags raised while moving (needed for "sighted").
+ * @param fog_shroud[in]           Whether or not fog/shroud should be checked.
+ * @param orig_village_owner[out]  If the final location is a village and the sighted
+ *                                 event do not remove the capturer, this gets set to
+ *                                 the side that owned the village before this movement.
+ *                                 (Otherwise it remains unchanged.)
+ * @param action_time_bonus[out]   If a village capture occurs, this gets set to 1.
+ *                                 (Otherwise it remains unchanged.)
  *
  * @returns true if events might have changed the game state.
  */
@@ -3157,7 +3161,7 @@ bool movement_events(const map_location &initial_loc, const map_location &final_
 /**
  * Shows messages (on the screen) as a result of movement.
  *
- * @param stops[in]		The flags raised while moving.
+ * @param stops[in]         The flags raised while moving.
  * @param cut_short[in]		true if movement did not make it to the end of the plotted path.
  * @param current_team[in]	The moving team.
  * @param spectator[out]	Told of seen friends and enemies.
