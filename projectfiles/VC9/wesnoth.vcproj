@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="wesnoth"
 	ProjectGUID="{65ACA13F-5F5C-4768-A89A-ECF6C16F1512}"
 	RootNamespace="wesnoth"
@@ -43,10 +43,12 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA;_SECURE_SCL=0;HAS_ITERATOR_DEBUGGING=0"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				BufferSecurityCheck="false"
+				EnableEnhancedInstructionSet="2"
 				OpenMP="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="4"
@@ -4366,6 +4368,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\src\gui\widgets\clickable.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\widgets\container.cpp"
 					>
 					<FileConfiguration
@@ -5400,6 +5406,10 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath="..\..\src\gui\widgets\repeating_button.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\widgets\scroll_label.cpp"
 					>
 					<FileConfiguration
@@ -5852,6 +5862,10 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath="..\..\src\gui\widgets\stacked_widget.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\widgets\text.cpp"
 					>
 					<FileConfiguration
@@ -6241,6 +6255,14 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\vertical_scrollbar.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\viewport.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\viewport.hpp"
 					>
 				</File>
 				<File
