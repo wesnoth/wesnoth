@@ -106,10 +106,10 @@ twidget* tbuilder_listbox::build() const
 		tpane *pane = new tpane(list_builder);
 		pane->set_id(id);
 
-		tviewport *viewport = new tviewport();
 
 		tgrid* grid = new tgrid();
-		grid->set_rows_cols(1, 2);
+		grid->set_rows_cols(1, 1);
+#if 0
 		grid->set_child(
 				  pane
 				, 0
@@ -117,15 +117,16 @@ twidget* tbuilder_listbox::build() const
 				, tgrid::VERTICAL_GROW_SEND_TO_CLIENT
 					| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
 				, tgrid::BORDER_ALL);
-
+#else
+		tviewport *viewport = new tviewport(*pane);
 		grid->set_child(
 				  viewport
 				, 0
-				, 1
+				, 0
 				, tgrid::VERTICAL_GROW_SEND_TO_CLIENT
 					| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
 				, tgrid::BORDER_ALL);
-
+#endif
 		return grid;
 	}
 

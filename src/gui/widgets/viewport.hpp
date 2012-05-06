@@ -25,12 +25,40 @@ class tgrid;
 class tviewport
 	: public twidget
 {
+	friend struct tviewport_implementation;
 public:
 
-	tviewport();
+	explicit tviewport(twidget& widget);
+
+	/** Inherited from twidget. */
+	void place(const tpoint& origin, const tpoint& size);
+
+	/** Inherited from twidget. */
+	void layout_init(const bool full_initialization);
+
+	/** Inherited from twidget. */
+	void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset);
+
+	/** Inherited from twidget. */
+	void child_populate_dirty_list(twindow& caller,
+			const std::vector<twidget*>& call_stack);
 
 	/** Inherited from twidget. */
 	void request_reduce_width(const unsigned maximum_width);
+
+	/** Inherited from twidget. */
+	twidget* find_at(const tpoint& coordinate, const bool must_be_active);
+
+	/** Inherited from twidget. */
+	const twidget* find_at(
+			  const tpoint& coordinate
+			, const bool must_be_active) const;
+
+	/** Inherited from twidget. */
+	twidget* find(const std::string& id, const bool must_be_active);
+
+	/** Inherited from twidget. */
+	const twidget* find(const std::string& id, const bool must_be_active) const;
 
 private:
 	/** Inherited from twidget. */
@@ -44,6 +72,8 @@ public:
 	virtual iterator::twalker_* create_walker();
 
 private:
+
+	twidget& widget_;
 
 };
 
