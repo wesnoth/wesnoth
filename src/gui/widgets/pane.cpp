@@ -148,7 +148,9 @@ void tpane::layout_init(const bool full_initialization)
 	twidget::layout_init(full_initialization);
 
 	BOOST_FOREACH(titem& item, items_) {
-		item.grid->layout_init(full_initialization);
+		if(item.grid->get_visible() != twidget::INVISIBLE) {
+			item.grid->layout_init(full_initialization);
+		}
 	}
 }
 
@@ -160,7 +162,9 @@ void tpane::impl_draw_children(
 	DBG_GUI_D << LOG_HEADER << '\n';
 
 	BOOST_FOREACH(titem& item, items_) {
-		item.grid->draw_children(frame_buffer, x_offset, y_offset);
+		if(item.grid->get_visible() != twidget::INVISIBLE) {
+			item.grid->draw_children(frame_buffer, x_offset, y_offset);
+		}
 	}
 }
 
