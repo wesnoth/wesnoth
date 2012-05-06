@@ -125,10 +125,12 @@
 				EnableIntrinsicFunctions="true"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;_SECURE_SCL=0;HAS_ITERATOR_DEBUGGING=0"
 				MinimalRebuild="true"
 				RuntimeLibrary="2"
+				BufferSecurityCheck="false"
 				EnableFunctionLevelLinking="true"
+				EnableEnhancedInstructionSet="2"
 				OpenMP="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -208,10 +210,12 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_DEBUG;_SCL_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_DEBUG;_SCL_SECURE_NO_WARNINGS;_SECURE_SCL=0;HAS_ITERATOR_DEBUGGING=0"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="0"
 				RuntimeLibrary="2"
+				BufferSecurityCheck="false"
+				EnableEnhancedInstructionSet="2"
 				OpenMP="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -284,10 +288,12 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA;HAVE_VISUAL_LEAK_DETECTOR"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA;_SECURE_SCL=0;HAS_ITERATOR_DEBUGGING=0;HAVE_VISUAL_LEAK_DETECTOR"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				BufferSecurityCheck="false"
+				EnableEnhancedInstructionSet="2"
 				OpenMP="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="4"
@@ -361,10 +367,12 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA;MSVC_DO_UNIT_TESTS"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;DEBUG_LUA;_SECURE_SCL=0;HAS_ITERATOR_DEBUGGING=0;MSVC_DO_UNIT_TESTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
+				BufferSecurityCheck="false"
+				EnableEnhancedInstructionSet="2"
 				OpenMP="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="4"
@@ -443,10 +451,12 @@
 				EnableIntrinsicFunctions="true"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;MSVC_DO_UNIT_TESTS"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;_SECURE_SCL=0;HAS_ITERATOR_DEBUGGING=0;MSVC_DO_UNIT_TESTS"
 				MinimalRebuild="true"
 				RuntimeLibrary="2"
+				BufferSecurityCheck="false"
 				EnableFunctionLevelLinking="true"
+				EnableEnhancedInstructionSet="2"
 				OpenMP="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -5180,6 +5190,54 @@
 				<File
 					RelativePath="..\..\src\gui\widgets\pane.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug (fast)|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\pane.hpp"
@@ -6260,6 +6318,54 @@
 				<File
 					RelativePath="..\..\src\gui\widgets\viewport.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug (fast)|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\viewport.hpp"
