@@ -91,6 +91,7 @@ class connection
 		std::size_t bytes_transferred,
 		config& response
 		);
+	boost::uint32_t payload_size_;
 	std::size_t bytes_to_write_;
 	std::size_t bytes_written_;
 	std::size_t bytes_to_read_;

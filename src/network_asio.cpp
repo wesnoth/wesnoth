@@ -13,6 +13,7 @@
    See the COPYING file for more details.
 */
 
+#include <deque>
 #include <boost/bind.hpp>
 #include <boost/ref.hpp>
 #include <boost/cstdint.hpp>
@@ -120,11 +121,13 @@ void connection::transfer(const config& request, config& response)
 
 	std::ostream os(&write_buf_);
 	write_gz(os, request);
-	bytes_to_write_ = write_buf_.size();
+	bytes_to_write_ = write_buf_.size() + 4;
 	bytes_written_ = 0;
-	std::size_t size = htonl(bytes_to_write_);
-	boost::asio::write(socket_, boost::asio::buffer(reinterpret_cast<const char*>(&size), 4));
-	boost::asio::async_write(socket_, write_buf_,
+	payload_size_ = htonl(bytes_to_write_ - 4);
+	boost::asio::streambuf::const_buffers_type gzipped_data = write_buf_.data();
+	std::deque<boost::asio::const_buffer> bufs(gzipped_data.begin(), gzipped_data.end());
+	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
+	boost::asio::async_write(socket_, bufs,
 		boost::bind(&connection::is_write_complete, this, _1, _2),
 		boost::bind(&connection::handle_write, this, _1, _2)
 		);
@@ -166,6 +169,7 @@ void connection::handle_write(
 	)
 {
 	DBG_NW << "Written " << bytes_transferred << " bytes.\n";
+	write_buf_.consume(bytes_transferred);
 	if(ec)
 		throw system_error(ec);
 }
