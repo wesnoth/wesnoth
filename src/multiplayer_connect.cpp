@@ -160,7 +160,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 
 	std::vector<std::string>::const_iterator itor =
 			std::find(parent_->team_names_.begin(), parent_->team_names_.end(),
-			cfg["team_name"]);
+			cfg["team_name"].str());
 	if(itor == parent_->team_names_.end()) {
 		assert(!parent_->team_names_.empty());
 		team_ = 0;
@@ -1553,7 +1553,7 @@ void connect::lists_init()
 			}
 
 			std::vector<std::string>::const_iterator itor = std::find(team_names_.begin(),
-															team_names_.end(), team_name);
+				team_names_.end(), team_name.str());
 			if(itor == team_names_.end()) {
 				team_names_.push_back(team_name);
 				user_team_names_.push_back(user_team_name.t_str().to_serialized());
@@ -1575,7 +1575,7 @@ void connect::lists_init()
 				team_name = side_num;
 
 			std::vector<std::string>::const_iterator itor = std::find(map_team_names.begin(),
-															map_team_names.end(), team_name);
+				map_team_names.end(), team_name.str());
 			if(itor == map_team_names.end()) {
 				map_team_names.push_back(team_name);
 				team_name = lexical_cast<std::string>(map_team_names.size());

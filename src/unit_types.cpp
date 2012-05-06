@@ -158,7 +158,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 			config new_specials;
 			BOOST_FOREACH(const config::any_child &vp, specials.all_children_range()) {
 				std::vector<std::string>::const_iterator found_id =
-					std::find(dsl.begin(), dsl.end(), vp.cfg["id"]);
+					std::find(dsl.begin(), dsl.end(), vp.cfg["id"].str());
 				if (found_id == dsl.end()) {
 					new_specials.add_child(vp.key, vp.cfg);
 				}
