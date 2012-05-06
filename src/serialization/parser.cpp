@@ -391,6 +391,15 @@ void read_gz(config &cfg, std::istream &file, abstract_validator * validator)
 	filter.push(boost::iostreams::gzip_decompressor());
 	filter.push(file);
 
+	/*
+	 * It sometimes seems the file is not empty but still no real data.
+	 * Filter that case here. It might be previous test is no longer required
+	 * but simply keep it.
+	 */
+	if(filter.peek() == EOF) {
+		return;
+	}
+
 	parser(cfg, filter,validator)();
 }
 
