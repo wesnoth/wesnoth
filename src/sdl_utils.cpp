@@ -1540,8 +1540,6 @@ surface blend_surface(
 // Rotates a surface 180 degrees.
 surface rotate_180_surface(const surface &surf, bool optimize)
 {
-	/// @todo This function needs an associated image path function.
-
 	if ( surf == NULL )
 		return NULL;
 
@@ -1584,8 +1582,6 @@ surface rotate_180_surface(const surface &surf, bool optimize)
 // Rotates a surface 90 degrees, either clockwise or counter-clockwise.
 surface rotate_90_surface(const surface &surf, bool clockwise, bool optimize)
 {
-	/// @todo This function needs an associated image path function.
-
 	if ( surf == NULL )
 		return NULL;
 

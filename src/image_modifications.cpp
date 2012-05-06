@@ -145,6 +145,26 @@ surface fl_modification::operator()(const surface& src) const
 	return ret;
 }
 
+surface rotate_modification::operator()(const surface& src) const
+{
+	// Convert the number of degrees to the interval [0,360].
+	const int normalized = degrees_ >= 0 ?
+		degrees_ - 360*(degrees_/360) :
+		degrees_ + 360*(1 + (-degrees_)/360); // In case compilers disagree as to what -90/360 is.
+
+	switch ( normalized )
+	{
+		case 0:   return src;
+		case 90:  return rotate_90_surface(src, true);
+		case 180: return rotate_180_surface(src);
+		case 270: return rotate_90_surface(src, false);
+		case 360: return src;
+	}
+
+	// Other values are not supported. Ignore them.
+	return src;
+}
+
 surface gs_modification::operator()(const surface& src) const
 {
 	return greyscale_image(src);
@@ -585,6 +605,12 @@ REGISTER_MOD_PARSER(FL, args)
 	bool vert = (args.find("vert") != std::string::npos);
 
 	return new fl_modification(horiz, vert);
+}
+
+// Rotations
+REGISTER_MOD_PARSER(ROTATE, args)
+{
+	return new rotate_modification(lexical_cast_default<int>(args, 90));
 }
 
 // Grayscale

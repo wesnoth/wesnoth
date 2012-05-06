@@ -160,6 +160,29 @@ private:
 };
 
 /**
+ * Rotate (ROTATE) modification.
+ */
+class rotate_modification : public modification
+{
+public:
+	/**
+	 * Constructor.
+	 * @param amount  Amount of rotation (in degrees).
+	 *                Positive values are clockwise; negative are counter-clockwise.
+	 *                Only multiples of 90 are supported.
+	 */
+	rotate_modification(int degrees = 90)
+		: degrees_(degrees)
+	{}
+	virtual surface operator()(const surface& src) const;
+
+	bool no_op() const { return degrees_ % 360 == 0; }
+
+private:
+	int degrees_;
+};
+
+/**
  * Grayscale (GS) modification.
  */
 class gs_modification : public modification
