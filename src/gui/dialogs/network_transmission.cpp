@@ -66,10 +66,9 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 tnetwork_transmission::tnetwork_transmission(
 		  network_asio::connection& connection
 		, const std::string& title
-		, const std::string& subtitle
-		, bool track_upload)
+		, const std::string& subtitle)
 	: connection_(connection)
-	, pump_monitor(connection, track_upload)
+	, pump_monitor(connection, track_upload_)
 	, subtitle_(subtitle)
 {
 	register_label("title", true, title, false);

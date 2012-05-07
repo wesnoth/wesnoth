@@ -172,7 +172,7 @@ private:
 	 * will throw a @a user_exit exception if the user cancels the
 	 * transfer by canceling the status window.
 	 */
-	void wait_for_transfer_done(const std::string& status_message);
+	void wait_for_transfer_done(const std::string& status_message, bool track_upload = false);
 
 	bool update_last_error(config& response_cfg);
 };

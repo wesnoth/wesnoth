@@ -139,7 +139,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 
 	this->send_request(request_buf, response_buf);
 	this->wait_for_transfer_done(vgettext("Sending add-on <i>$addon_title</i>...", i18n_symbols
-	));
+	), true);
 
 	if(const config& message_cfg = response_buf.child("message")) {
 		response_message = message_cfg["message"].str();
@@ -293,7 +293,7 @@ void addons_client::send_simple_request(const std::string& request_string, confi
 	this->send_request(request, response);
 }
 
-void addons_client::wait_for_transfer_done(const std::string& status_message)
+void addons_client::wait_for_transfer_done(const std::string& status_message, bool track_upload)
 {
 	check_connected();
 
@@ -301,6 +301,7 @@ void addons_client::wait_for_transfer_done(const std::string& status_message)
 		stat_ = new gui2::tnetwork_transmission(*conn_, _("Add-ons Manager"), status_message);
 	} else {
 		stat_->set_subtitle(status_message);
+		stat_->set_track_upload(track_upload);
 	}
 
 	if(!stat_->show(disp_.video())) {
