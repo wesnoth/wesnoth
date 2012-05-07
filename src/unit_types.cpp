@@ -1152,8 +1152,25 @@ void unit_type_data::set_config(config &cfg)
 	foreach (config &ut, cfg.child_range("unit_type"))
 	{
 		std::string id = ut["id"];
+		std::vector<std::string> base_tree;
+		base_tree.push_back(id);
 		while (const config &bu = ut.child("base_unit"))
 		{
+			if (std::find(base_tree.begin(), base_tree.end(), bu["id"]) != base_tree.end()) {
+				// If you want to allow diamond-style inheritance, replace the config::error throw with a continue
+
+				std::stringstream ss;
+				ss << "[base_unit] recursion loop in [unit_type] ";
+				foreach(std::string &step, base_tree) {
+					ss << step << "->";
+				}
+				ss << bu["id"];
+				ERR_CF << ss.str() << '\n';
+				throw config::error(ss.str());
+			} else {
+				base_tree.push_back(bu["id"]);
+			}
+
 			// Derive a new unit type from existing base unit and its ancestors.
 			config merge_cfg = find_config(bu["id"]);
 			ut.remove_child("base_unit", 0);
