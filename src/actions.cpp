@@ -2276,13 +2276,25 @@ namespace {
 	 *
 	 * In a few cases, this will also clear corner hexes that otherwise would
 	 * not normally get cleared.
-	 * @param tm       The team whose fog/shroud is affected.
-	 * @param loc      The location to clear.
-	 * @param cleared  If loc is cleared, it gets added to this vector.
+	 * @param tm               The team whose fog/shroud is affected.
+	 * @param loc              The location to clear.
+	 * @param seen_units       If the location was cleared and contained a visible,
+	 *                         non-petrified unit, it gets added to this set.
+	 * @param petrified_units  If the location was cleared and contained a visible,
+	 *                         petrified unit, it gets added to this set.
+	 * @param known_units      These locations are excluded from being added to
+	 *                         seen_units and petrified_units.
+	 *                         If this is NULL, nothing gets stored in seen_units
+	 *                         and petrified_units.
+	 * @param invalidate       If set to true, the hexes will be marked for redrawing.
+	 *
 	 * @return true if the specified location was fogged or shrouded.
 	 */
 	bool clear_shroud_loc(team &tm, const map_location& loc,
-	                      std::vector<map_location>* cleared)
+	                      std::set<map_location>* seen_units = NULL,
+	                      std::set<map_location>* petrified_units = NULL,
+	                      const std::set<map_location>* known_units = NULL,
+	                      bool invalidate = false)
 	{
 		gamemap &map = *resources::game_map;
 		bool result = false;
@@ -2320,12 +2332,41 @@ namespace {
 					tm.clear_shroud(corner);
 					tm.clear_fog(corner);
 				}
+
+				// Possible screen invalidation.
+				if ( invalidate ) {
+					resources::screen->invalidate(loc);
+					// Need to also invalidate adjacent hexes to get rid of the
+					// "fog edge" graphics.
+					map_location adjacent[6];
+					get_adjacent_tiles(loc, adjacent);
+					for ( int i = 0; i != 6; ++i )
+						resources::screen->invalidate(adjacent[i]);
+				}
 			}
 		}
 
-		// Add the specified location to the feedback vector?
-		if ( result && cleared ) {
-			cleared->push_back(loc);
+		// Does the caller want a list of discovered units?
+		if ( result  &&  known_units  &&  (seen_units || petrified_units) ) {
+			// Allow known_units to override fogged().
+			if ( known_units->count(loc) == 0 ) {
+				// Is there a visible unit here?
+				const unit_map::const_iterator sighted = resources::units->find(loc);
+				if ( sighted.valid() ) {
+					if ( !tm.is_enemy(sighted->side()) ||
+					     !sighted->invisible(loc) )
+					{
+						// Add this unit to the appropriate list.
+						if ( !sighted->get_state(unit::STATE_PETRIFIED) )
+						{
+							if ( seen_units != NULL )
+								seen_units->insert(loc);
+						}
+						else if ( petrified_units != NULL )
+							petrified_units->insert(loc);
+					}
+				}
+			}
 		}
 
 		return result;
@@ -2354,55 +2395,20 @@ namespace {
 	                       std::set<map_location>* petrified_units = NULL,
 	                       bool invalidate_display = false)
 	{
-		std::vector<map_location> cleared_locations;
+		bool cleared_something = false;
 
 		// Clear the fog.
 		pathfind::vision_path sight(*resources::game_map, viewer, view_loc);
 		foreach (const pathfind::paths::step &dest, sight.destinations) {
-			clear_shroud_loc(view_team, dest.curr, &cleared_locations);
+			if ( clear_shroud_loc(view_team, dest.curr, seen_units, petrified_units, known_units, invalidate_display) )
+				cleared_something = true;
 		}
 		foreach (const map_location &dest, sight.edges) {
-			clear_shroud_loc(view_team, dest, &cleared_locations);
+			if ( clear_shroud_loc(view_team, dest, seen_units, petrified_units, known_units, invalidate_display) )
+				cleared_something = true;
 		}
 
-		if(invalidate_display) {
-			// Invalidate the newly cleared tiles and all adjacent tiles
-			// so that fog and shroud draw correctly
-			game_display &disp = *resources::screen;
-			foreach (const map_location & seen_loc, cleared_locations) {
-				disp.invalidate(seen_loc);
-
-				map_location adjacent[6];
-				get_adjacent_tiles(seen_loc, adjacent);
-				for ( int i = 0; i != 6; ++i ) {
-					disp.invalidate(adjacent[i]);
-				}
-			}
-		}
-
-		// Does the caller want a list of discovered units?
-		if ( seen_units != NULL && known_units != NULL ) {
-			// Loop through the uncovered locations.
-			foreach (const map_location & seen_loc, cleared_locations) {
-				// Skip known units.
-				if ( known_units->count(seen_loc) == 0 ) {
-					// Is there a visible unit here?
-					const unit_map::const_iterator sighted = resources::units->find(seen_loc);
-					if ( sighted.valid()  &&
-					    (!view_team.is_enemy(sighted->side()) ||
-					     !sighted->invisible(seen_loc)) )
-					{
-						// Add this unit to the appropriate list.
-						if ( !sighted->get_state(unit::STATE_PETRIFIED) )
-							seen_units->insert(seen_loc);
-						else if ( petrified_units != NULL )
-							petrified_units->insert(seen_loc);
-					}
-				}
-			}
-		}
-
-		return cleared_locations.empty() == false;
+		return cleared_something;
 	}
 
 }
