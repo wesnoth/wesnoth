@@ -3432,7 +3432,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		move_spectator->set_unit(ui);
 
 	if ( undo_stack != NULL ) {
-		if ( stops.event_mutated || stops.block_undo || ui == units.end() ||
+		if ( stops.event_mutated || stops.block_undo || stops.display_changed || ui == units.end() ||
 		    (resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) )
 		{
 			apply_shroud_changes(*undo_stack, team_num + 1);
