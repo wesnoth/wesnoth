@@ -38,6 +38,7 @@ namespace pathfind {
 class teleport_map;
 
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
+enum PATH_TYPE { MOVE, VISION, JAMMING };
 
 /**
  * Function which will find a location on the board that is
@@ -110,12 +111,27 @@ struct vision_path : public paths
 {
 	/// Construct a list of seen hexes for a unit.
 	vision_path(gamemap const &map, const unit& viewer,
-	            map_location const &loc);
+	            map_location const &loc, const std::map<map_location, int>& jamming_map);
 	virtual ~vision_path();
 
 	/// The edges are the non-destination hexes bordering the destinations.
 	std::set<map_location> edges;
 };
+
+/**
+ * A refinement of paths for use when calculating jamming.
+ */
+struct jamming_path : public paths
+{
+	/// Construct a list of jammed hexes for a unit.
+	jamming_path(gamemap const &map, const unit& jammer,
+	            map_location const &loc);
+	virtual ~jamming_path();
+
+	/// The edges are the non-destination hexes bordering the destinations.
+	//std::set<map_location> edges;
+};
+
 
 /** Structure which holds a single route between one location and another. */
 struct plain_route

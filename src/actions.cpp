@@ -2389,7 +2389,7 @@ namespace {
 	 * @returns true if some shroud (or fog) is cleared.
 	 */
 	bool clear_shroud_unit(const map_location &view_loc, const unit &viewer,
-	                       team &view_team,
+	                       team &view_team, const std::map<map_location, int>& jamming_map,
 	                       const std::set<map_location>* known_units = NULL,
 	                       std::set<map_location>* seen_units = NULL,
 	                       std::set<map_location>* petrified_units = NULL,
@@ -2398,11 +2398,12 @@ namespace {
 		bool cleared_something = false;
 
 		// Clear the fog.
-		pathfind::vision_path sight(*resources::game_map, viewer, view_loc);
+		pathfind::vision_path sight(*resources::game_map, viewer, view_loc, jamming_map);
 		foreach (const pathfind::paths::step &dest, sight.destinations) {
 			if ( clear_shroud_loc(view_team, dest.curr, seen_units, petrified_units, known_units, invalidate_display) )
 				cleared_something = true;
 		}
+		//TODO guard with game_config option
 		foreach (const map_location &dest, sight.edges) {
 			if ( clear_shroud_loc(view_team, dest, seen_units, petrified_units, known_units, invalidate_display) )
 				cleared_something = true;
@@ -2411,6 +2412,27 @@ namespace {
 		return cleared_something;
 	}
 
+}
+
+void calculate_jamming(int side, std::map<map_location, int>& jamming_map)
+{
+	team& viewer_tm = (*resources::teams)[side - 1];
+
+	foreach (const unit &u, *resources::units)
+	{
+		if (!viewer_tm.is_enemy(u.side())) continue;
+		if (u.jamming() < 1) continue;
+
+		int current = jamming_map[u.get_location()];
+		if (current < u.jamming()) jamming_map[u.get_location()] = u.jamming();
+
+		pathfind::jamming_path jamming(*resources::game_map, u, u.get_location());
+		foreach (const pathfind::paths::step& st, jamming.destinations) {
+			current = jamming_map[st.curr];
+			if (current < st.move_left) jamming_map[st.curr] = st.move_left;
+		}
+
+	}
 }
 
 /**
@@ -2432,10 +2454,12 @@ void recalculate_fog(int side)
 
 	tm.refog();
 
+	std::map<map_location, int> jamming_map;
+	calculate_jamming(side, jamming_map);
 	foreach (const unit &u, *resources::units)
 	{
 		if (u.side() == side) {
-			clear_shroud_unit(u.get_location(), u, tm);
+			clear_shroud_unit(u.get_location(), u, tm, jamming_map);
 		}
 	}
 
@@ -2464,10 +2488,12 @@ bool clear_shroud(int side, bool reset_fog)
 
 	bool result = false;
 
+	std::map<map_location, int> jamming_map;
+	calculate_jamming(side, jamming_map);
 	foreach (const unit &u, *resources::units)
 	{
 		if (u.side() == side) {
-			result |= clear_shroud_unit(u.get_location(), u, tm);
+			result |= clear_shroud_unit(u.get_location(), u, tm, jamming_map);
 		}
 	}
 
@@ -3043,8 +3069,10 @@ std::vector<map_location>::const_iterator make_a_move(const std::vector<map_loca
 			std::set<map_location> petrified_units;
 
 			// Clear the fog/shroud.
+			std::map<map_location, int> jamming_map;
+			calculate_jamming(current_side, jamming_map);
 			flags.display_changed |=
-					clear_shroud_unit(*to, *ui, current_team, &known_units,
+					clear_shroud_unit(*to, *ui, current_team, jamming_map, &known_units,
 					                  &seen_units, &petrified_units, true);
 
 			{	// Fire sighted events
@@ -3543,7 +3571,9 @@ void apply_shroud_changes(undo_list &undos, int side)
 			// Clear the shroud, and collect new seen_units
 			std::set<map_location> seen_units;
 			std::set<map_location> petrified_units;
-			cleared_shroud |= clear_shroud_unit(*step, *unit_itor, tm,
+			std::map<map_location, int> jamming_map;
+			calculate_jamming(side, jamming_map);
+			cleared_shroud |= clear_shroud_unit(*step, *unit_itor, tm, jamming_map,
 				&known_units,&seen_units,&petrified_units);
 
 			// Fire sighted events

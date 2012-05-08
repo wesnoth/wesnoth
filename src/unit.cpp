@@ -142,6 +142,8 @@ unit::unit(const unit& o):
            movement_costs_(o.movement_costs_),
            vision_(o.vision_),
            vision_costs_(o.vision_costs_),
+           jamming_(o.jamming_),
+           jamming_costs_(o.jamming_costs_),
            defense_mods_(o.defense_mods_),
            hold_position_(o.hold_position_),
            end_turn_(o.end_turn_),
@@ -226,6 +228,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	movement_costs_(),
 	vision_(-1),
 	vision_costs_(),
+	jamming_(0),
+	jamming_costs_(),
 	defense_mods_(),
 	hold_position_(false),
 	end_turn_(false),
@@ -434,6 +438,15 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		} while(++cfg_range.first != cfg_range.second);
 	}
 
+	//adjust the unit_type's jamming costs if this config has its own defined
+	cfg_range = cfg.child_range("jamming_costs");
+	if(cfg_range.first != cfg_range.second) {
+		config &target = cfg_.child_or_add("jamming_costs");
+		do {
+			target.append(*cfg_range.first);
+		} while(++cfg_range.first != cfg_range.second);
+	}
+
 	//adjust the unit_type's resistance if this config has its own defined
 	cfg_range = cfg.child_range("resistance");
 	if(cfg_range.first != cfg_range.second) {
@@ -525,7 +538,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		"side", "underlying_id", "overlays", "facing", "race",
 		"level", "undead_variation", "max_attacks",
 		"attacks_left", "alpha", "zoc", "flying", "cost",
-		"max_hitpoints", "max_moves", "vision", "max_experience",
+		"max_hitpoints", "max_moves", "vision", "jamming", "max_experience",
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
 		"experience", "resting", "unrenamable", "alignment",
 		"canrecruit", "extra_recruit", "x", "y", "placement",
@@ -597,6 +610,8 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	movement_costs_(),
 	vision_(-1),
 	vision_costs_(),
+	jamming_(0),
+	jamming_costs_(),
 	defense_mods_(),
 	hold_position_(false),
 	end_turn_(false),
@@ -805,6 +820,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	modification_descriptions_.clear();
 	movement_costs_.clear();
 	vision_costs_.clear();
+	jamming_costs_.clear();
 	defense_mods_.clear();
 
 	// Clear the stored config and replace it with the one from the unit type,
@@ -865,6 +881,7 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	max_hit_points_ = t->hitpoints();
 	max_movement_ = t->movement();
 	vision_ = t->vision();
+	jamming_ = t->jamming();
 	emit_zoc_ = t->has_zoc();
 	attacks_ = t->attacks();
 	unit_value_ = t->cost();
@@ -1719,6 +1736,7 @@ void unit::write(config& cfg) const
 	cfg["moves"] = movement_;
 	cfg["max_moves"] = max_movement_;
 	cfg["vision"] = vision_;
+	cfg["jamming"] = jamming_;
 
 	cfg["resting"] = resting_;
 
@@ -2187,6 +2205,22 @@ int unit::vision_cost(const t_translation::t_terrain terrain) const
 	return res;
 }
 
+int unit::jamming_cost(const t_translation::t_terrain terrain) const
+{
+//	if (cfg_.child_count("jamming_costs") == 0) return movement_cost(terrain);
+
+	assert(resources::game_map != NULL);
+	const int res = movement_cost_internal(jamming_costs_,
+			cfg_.child("jamming_costs"), NULL, *resources::game_map, terrain);
+
+	if (res == unit_movement_type::UNREACHABLE) {
+		return res;
+	} else if(get_state(STATE_SLOWED)) {
+		return res*2;
+	}
+	return res;
+}
+
 int unit::defense_modifier(t_translation::t_terrain terrain) const
 {
 	assert(resources::game_map != NULL);
@@ -2563,11 +2597,17 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					}
 					movement_costs_.clear();
 				} else if (apply_to == "vision_costs") {
-							config &mv = cfg_.child_or_add("vision_costs");
-							if (const config &ap = effect.child("vision_costs")) {
-								mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
-							}
-							vision_costs_.clear();
+					config &vi = cfg_.child_or_add("vision_costs");
+					if (const config &ap = effect.child("vision_costs")) {
+						mod_mdr_merge(vi, ap, !effect["replace"].to_bool());
+					}
+					vision_costs_.clear();
+				} else if (apply_to == "jamming_costs") {
+					config &jm = cfg_.child_or_add("jamming_costs");
+					if (const config &ap = effect.child("jamming_costs")) {
+						mod_mdr_merge(jm, ap, !effect["replace"].to_bool());
+					}
+					jamming_costs_.clear();
 				} else if (apply_to == "defense") {
 					config &def = cfg_.child_or_add("defense");
 					if (const config &ap = effect.child("defense")) {
@@ -3228,7 +3268,7 @@ std::string get_checksum(const unit& u) {
 		child.recursive_clear_value("name");
 	}
 
-	const std::string child_keys[] = {"advance_from", "defense", "movement_costs", "vision_costs" "resistance", ""};
+	const std::string child_keys[] = {"advance_from", "defense", "movement_costs", "vision_costs", "jamming_costs" "resistance", ""};
 
 	for (int i = 0; !child_keys[i].empty(); ++i)
 	{

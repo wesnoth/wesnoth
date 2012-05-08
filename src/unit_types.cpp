@@ -281,6 +281,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_type* parent) :
 	moveCosts_(),
 	visionCosts_(),
+	jammingCosts_(),
 	defenseMods_(),
 	parent_(parent),
 	cfg_()
@@ -303,6 +304,9 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 	if (const config &vision_costs = cfg.child("vision_costs"))
 		cfg_.add_child("vision_costs", vision_costs);
 
+	if (const config &jamming_costs = cfg.child("jamming_costs"))
+		cfg_.add_child("jamming_costs", jamming_costs);
+
 	if (const config &defense = cfg.child("defense"))
 		cfg_.add_child("defense", defense);
 
@@ -310,7 +314,7 @@ unit_movement_type::unit_movement_type(const config& cfg, const unit_movement_ty
 		cfg_.add_child("resistance", resistance);
 }
 
-unit_movement_type::unit_movement_type(): moveCosts_(), visionCosts_(), defenseMods_(), parent_(NULL), cfg_()
+unit_movement_type::unit_movement_type(): moveCosts_(), visionCosts_(), jammingCosts_(), defenseMods_(), parent_(NULL), cfg_()
 {}
 
 std::string unit_movement_type::name() const
@@ -568,6 +572,7 @@ unit_type::unit_type(const unit_type& o) :
 	level_(o.level_),
 	movement_(o.movement_),
 	vision_(o.vision_),
+	jamming_(o.jamming_),
 	max_attacks_(o.max_attacks_),
 	cost_(o.cost_),
 	usage_(o.usage_),
@@ -616,6 +621,7 @@ unit_type::unit_type(config &cfg) :
 	level_(0),
 	movement_(0),
 	vision_(-1),
+	jamming_(0),
 	max_attacks_(0),
 	cost_(0),
 	usage_(),
@@ -779,6 +785,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	level_ = cfg["level"];
 	movement_ = cfg["movement"].to_int(1);
 	vision_ = cfg["vision"].to_int(-1);
+	jamming_ = cfg["jamming"].to_int(0);
 	max_attacks_ = cfg["attacks"].to_int(1);
 	cost_ = cfg["cost"].to_int(1);
 	usage_ = cfg_["usage"].str();

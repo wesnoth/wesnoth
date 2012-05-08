@@ -343,7 +343,7 @@ public:
 	/// Display the topic.
 	void show_topic(const topic &t);
 
-	/// Return the ID that is crossreferenced at the (screen)
+	/// Return the ID that is cross-referenced at the (screen)
 	/// coordinates x, y. If no cross-reference is there, return the
 	/// empty string.
 	std::string ref_at(const int x, const int y);
@@ -1445,8 +1445,12 @@ public:
 
 		// Print some basic information such as HP and movement points.
 		ss << _("HP: ") << type_.hitpoints() << jump(30)
-		   << _("Moves: ") << type_.movement() << jump(30)
-		   << _("Cost: ") << type_.cost() << jump(30)
+		   << _("Moves: ") << type_.movement() << jump(30);
+		if (type_.vision() >= 0)
+			ss << _("Vision: ") << type_.vision() << jump(30);
+		if (type_.jamming() > 0)
+			ss << _("Jamming: ") << type_.jamming() << jump(30);
+		ss << _("Cost: ") << type_.cost() << jump(30)
 		   << _("Alignment: ")
 		   << "<ref>dst='time_of_day' text='"
 		   << type_.alignment_description(type_.alignment(), type_.genders().front())

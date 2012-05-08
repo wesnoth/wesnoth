@@ -157,6 +157,8 @@ public:
 private:
 	mutable std::map<t_translation::t_terrain, int> moveCosts_;
 	mutable std::map<t_translation::t_terrain, int> visionCosts_;
+	mutable std::map<t_translation::t_terrain, int> jammingCosts_;
+
 	mutable defense_cache defenseMods_;
 
 	const unit_movement_type* parent_;
@@ -229,6 +231,7 @@ public:
 	int level() const { return level_; }
 	int movement() const { return movement_; }
 	int vision() const { return vision_; }
+	int jamming() const {return jamming_; }
 	int max_attacks() const { return max_attacks_; }
 	int cost() const { return cost_; }
 	const std::string& usage() const { return usage_; }
@@ -307,6 +310,7 @@ private:
     int level_;
     int movement_;
     int vision_;
+    int jamming_;
     int max_attacks_;
     int cost_;
     std::string usage_;

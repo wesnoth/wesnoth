@@ -208,7 +208,7 @@ static void find_routes(const gamemap& map, const unit& u, const map_location& l
 		std::set<map_location> *edges, const team &current_team,
 		bool force_ignore_zocs, bool allow_teleport, int turns_left,
 		const team &viewing_team,
-		bool see_all, bool ignore_units, bool vision)
+		bool see_all, bool ignore_units, pathfind::PATH_TYPE type, const std::map<map_location, int>* jamming_map)
 {
 	pathfind::teleport_map teleports;
 	if (allow_teleport) {
@@ -266,22 +266,34 @@ static void find_routes(const gamemap& map, const unit& u, const map_location& l
 			// Thus, 'src-..-n-next' can't be shorter.
 			if (next_visited) continue;
 
-			const int move_cost =
-					vision ? u.vision_cost(map[locs[i]]) : u.movement_cost(map[locs[i]]);
+			int cost;
+			switch (type) {
+				case pathfind::MOVE:
+					cost = u.movement_cost(map[locs[i]]);
+					break;
+				case pathfind::VISION:
+					cost = u.vision_cost(map[locs[i]]);
+					if (jamming_map->count(locs[i]) == 1)
+						cost += (jamming_map->find(locs[i]))->second;
+					break;
+				case pathfind::JAMMING:
+					cost = u.vision_cost(map[locs[i]]);
+					break;
+			}
 
 			node t = node(n.movement_left, n.turns_left, n.curr, locs[i]);
-			if (t.movement_left < move_cost) {
+			if (t.movement_left < cost) {
 				t.movement_left = total_movement;
 				t.turns_left--;
 			}
 
-			if (t.movement_left < move_cost || t.turns_left < 0) {
+			if (t.movement_left < cost || t.turns_left < 0) {
 				if ( edges != NULL )
 					edges->insert(t.curr);
 				continue;
 			}
 
-			t.movement_left -= move_cost;
+			t.movement_left -= cost;
 
 			if (!ignore_units) {
 				const unit *v =
@@ -418,7 +430,7 @@ pathfind::paths::paths(gamemap const &map, unit_map const &/*units*/,
 
 	find_routes(map, u, u.get_location(), u.movement_left(), destinations, NULL,
 	            teams[u.side()-1], force_ignore_zoc, allow_teleport,
-	            additional_turns, viewing_team, see_all, ignore_units, false);
+	            additional_turns, viewing_team, see_all, ignore_units, pathfind::MOVE, NULL);
 }
 
 /**
@@ -441,7 +453,7 @@ pathfind::paths::~paths()
  *                   (does not have to be the unit's location).
  */
 pathfind::vision_path::vision_path(gamemap const &map, const unit& viewer,
-                                   map_location const &loc)
+                                   map_location const &loc, const std::map<map_location, int>& jamming_map)
 	: paths(), edges()
 {
 	const team & viewer_team = (*resources::teams)[viewer.side()-1];
@@ -453,11 +465,45 @@ pathfind::vision_path::vision_path(gamemap const &map, const unit& viewer,
 	// not allowed and units are ignored. If something changes to make it
 	// significant, I might have incorrectly guessed the appropriate value.)
 	find_routes(map, viewer, loc, sight_range, destinations, &edges,
-			viewer_team, true, false, 0, viewer_team, true, true, true);
+			viewer_team, true, false, 0, viewer_team, true, true, pathfind::VISION, &jamming_map);
+
 }
 
 /// Default destructor
 pathfind::vision_path::~vision_path()
+{
+}
+
+
+/**
+ * Constructs a list of jamming paths for a unit.
+ *
+ * This is used to construct a list of hexes that the indicated unit can jam.
+ * It differs from pathfinding in that it will only ever go out one turn.
+ * @param map        The gamemap to use (for identifying terrain).
+ * @param jammer     The unit doing the jamming.
+ * @param loc        The location from which the jamming occurs
+ *                   (does not have to be the unit's location).
+ */
+pathfind::jamming_path::jamming_path(gamemap const &map, const unit& jammer,
+                                   map_location const &loc)
+	: paths()//, edges()
+{
+	const team & jammer_team = (*resources::teams)[jammer.side()-1];
+
+	const int jamming_range = jammer.jamming();
+
+	// Finding routes: ignore ZoC, disallow teleports, zero turns left,
+	// (jamming team), see all, and ignore units.
+	// (The "see all" setting does not currently matter since teleports are
+	// not allowed and units are ignored. If something changes to make it
+	// significant, I might have incorrectly guessed the appropriate value.)
+	find_routes(map, jammer, loc, jamming_range, destinations, NULL,
+			jammer_team, true, false, 0, jammer_team, true, true, pathfind::JAMMING, NULL);
+}
+
+/// Default destructor
+pathfind::jamming_path::~jamming_path()
 {
 }
 
