@@ -19,6 +19,7 @@
 
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/grid.hpp"
+#include "gui/widgets/window.hpp"
 
 #define LOG_SCOPE_HEADER "tpane [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -56,15 +57,12 @@ struct tpane_implementation
 			return NULL;
 		}
 
-		/*
-		 * The widgets are placed at coordinate 0,0 so adjust the offset to
-		 * that coordinate system.
-		 */
-		coordinate.x -= pane->get_x();
-		coordinate.y -= pane->get_y();
-
 		typedef typename tconst_clone<tpane::titem, W>::reference thack;
 		BOOST_FOREACH(thack item, pane->items_) {
+
+			if(item.grid->get_visible() == twidget::INVISIBLE) {
+				continue;
+			}
 
 			/*
 			 * If the adjusted coordinate is in the item's grid let the grid
@@ -78,20 +76,6 @@ struct tpane_implementation
 					&& coordinate.y < rect.y + rect.h) {
 
 				return item.grid->find_at(coordinate, must_be_active);
-			}
-
-			/*
-			 * No hit then adjust the coordinate with the size of the widget
-			 * that did not hit it. This is required since every item's grid
-			 * has its own coodinate systeme starting at 0,0.
-			 */
-			coordinate.y -= rect.h;
-
-			/*
-			 * If the position to test is outside our virtual area, we bail out.
-			 */
-			if(coordinate.y < 0) {
-				return NULL;
 			}
 		}
 
@@ -137,6 +121,9 @@ void tpane::place(const tpoint& origin, const tpoint& size)
 {
 	DBG_GUI_L << LOG_HEADER << '\n';
 	twidget::place(origin, size);
+
+	assert(origin.x == 0);
+	assert(origin.y == 0);
 
 	place_children();
 }
