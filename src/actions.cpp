@@ -2413,27 +2413,27 @@ namespace {
 		return cleared_something;
 	}
 
-}
-
-static void calculate_jamming(int side, std::map<map_location, int>& jamming_map)
-{
-	team& viewer_tm = (*resources::teams)[side - 1];
-
-	foreach (const unit &u, *resources::units)
+	static void calculate_jamming(int side, std::map<map_location, int>& jamming_map)
 	{
-		if (!viewer_tm.is_enemy(u.side())) continue;
-		if (u.jamming() < 1) continue;
+		team& viewer_tm = (*resources::teams)[side - 1];
 
-		int current = jamming_map[u.get_location()];
-		if (current < u.jamming()) jamming_map[u.get_location()] = u.jamming();
+		foreach (const unit &u, *resources::units)
+		{
+			if (!viewer_tm.is_enemy(u.side())) continue;
+			if (u.jamming() < 1) continue;
 
-		pathfind::jamming_path jamming(*resources::game_map, u, u.get_location());
-		foreach (const pathfind::paths::step& st, jamming.destinations) {
-			current = jamming_map[st.curr];
-			if (current < st.move_left) jamming_map[st.curr] = st.move_left;
+			int current = jamming_map[u.get_location()];
+			if (current < u.jamming()) jamming_map[u.get_location()] = u.jamming();
+
+			pathfind::jamming_path jamming(*resources::game_map, u, u.get_location());
+			foreach (const pathfind::paths::step& st, jamming.destinations) {
+				current = jamming_map[st.curr];
+				if (current < st.move_left) jamming_map[st.curr] = st.move_left;
+			}
+	
 		}
-
 	}
+
 }
 
 /**
