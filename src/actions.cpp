@@ -2414,7 +2414,7 @@ namespace {
 
 }
 
-void calculate_jamming(int side, std::map<map_location, int>& jamming_map)
+static void calculate_jamming(int side, std::map<map_location, int>& jamming_map)
 {
 	team& viewer_tm = (*resources::teams)[side - 1];
 
