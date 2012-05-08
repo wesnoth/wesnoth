@@ -628,7 +628,7 @@ void config::merge_attributes(const config &cfg)
 
 		std::string key = v.first;
 		if (key.substr(0,7) == "add_to_") {
-			std::string add_to = key.substr(7,key.length());
+			std::string add_to = key.substr(7);
 			values[add_to] = values[add_to].to_int() + v.second.to_int();
 		} else
 			values[v.first] = v.second;
