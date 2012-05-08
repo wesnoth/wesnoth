@@ -157,7 +157,7 @@ const twidget* tviewport::find(
 
 tpoint tviewport::calculate_best_size() const
 {
-	return tpoint(500, 500);
+	return tpoint(800, 500);
 }
 
 bool tviewport::disable_click_dismiss() const
