@@ -279,9 +279,6 @@ static void find_routes(const gamemap& map, const unit& u, const map_location& l
 				case pathfind::JAMMING:
 					cost = u.vision_cost(map[locs[i]]);
 					break;
-				default:
-					assert(false);
-					break;
 			}
 
 			node t = node(n.movement_left, n.turns_left, n.curr, locs[i]);
