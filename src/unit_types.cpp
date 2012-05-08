@@ -1163,7 +1163,7 @@ void unit_type_data::set_config(config &cfg)
 		base_tree.push_back(id);
 		while (const config &bu = ut.child("base_unit"))
 		{
-			if (std::find(base_tree.begin(), base_tree.end(), bu["id"]) != base_tree.end()) {
+			if (std::find(base_tree.begin(), base_tree.end(), bu["id"].str()) != base_tree.end()) {
 				// If you want to allow diamond-style inheritance, replace the config::error throw with a continue
 
 				std::stringstream ss;
