@@ -2278,38 +2278,39 @@ namespace {
 	 * not normally get cleared.
 	 * @param tm               The team whose fog/shroud is affected.
 	 * @param loc              The location to clear.
+	 * @param viewer           The unit doing the viewing.
 	 * @param seen_units       If the location was cleared and contained a visible,
 	 *                         non-petrified unit, it gets added to this set.
 	 * @param petrified_units  If the location was cleared and contained a visible,
 	 *                         petrified unit, it gets added to this set.
 	 * @param known_units      These locations are excluded from being added to
 	 *                         seen_units and petrified_units.
-	 *                         If this is NULL, nothing gets stored in seen_units
-	 *                         and petrified_units.
 	 * @param invalidate       If set to true, the hexes will be marked for redrawing.
 	 *
-	 * @return true if the specified location was fogged or shrouded.
+	 * @return whether or not information was uncovered (i.e. returns true if
+	 *         the specified location was fogged/ shrouded under shared vision/maps).
 	 */
-	bool clear_shroud_loc(team &tm, const map_location& loc,
+	bool clear_shroud_loc(team &tm, const map_location& loc, const unit & viewer,
 	                      std::set<map_location>* seen_units = NULL,
 	                      std::set<map_location>* petrified_units = NULL,
 	                      const std::set<map_location>* known_units = NULL,
 	                      bool invalidate = false)
 	{
 		gamemap &map = *resources::game_map;
-		bool result = false;
+		// This counts as clearing a tile for the return value if it is on the
+		// board and currently fogged under shared vision. (No need to explicitly
+		// check for shrouded since shrouded implies fogged.)
+		bool was_fogged = tm.fogged(loc);
+		bool result = was_fogged && map.on_board(loc);
 
-		// We clear one past the edge of the board, so that the half-hexes
+		// Clear the border as well as the board, so that the half-hexes
 		// at the edge can also be cleared of fog/shroud.
 		if ( map.on_board_with_border(loc)) {
 			// Both functions should be executed so don't use || which
 			// uses short-cut evaluation.
-			result = tm.clear_shroud(loc) | tm.clear_fog(loc);
-
-			if ( result ) {
-				// Do not count clearing the map border as part of the return value.
-				result = map.on_board(loc);
-
+			// (This is different than the return value because shared vision does
+			// not apply here.)
+			if ( tm.clear_shroud(loc) | tm.clear_fog(loc) ) {
 				// If we are near a corner, the corner might also need to be cleared.
 				// This happens at the lower-left corner and at either the upper- or
 				// lower- right corner (depending on the width).
@@ -2332,24 +2333,26 @@ namespace {
 					tm.clear_shroud(corner);
 					tm.clear_fog(corner);
 				}
-
-				// Possible screen invalidation.
-				if ( invalidate ) {
-					resources::screen->invalidate(loc);
-					// Need to also invalidate adjacent hexes to get rid of the
-					// "fog edge" graphics.
-					map_location adjacent[6];
-					get_adjacent_tiles(loc, adjacent);
-					for ( int i = 0; i != 6; ++i )
-						resources::screen->invalidate(adjacent[i]);
-				}
 			}
 		}
 
+		// Possible screen invalidation.
+		if ( was_fogged  &&  invalidate ) {
+			resources::screen->invalidate(loc);
+			// Need to also invalidate adjacent hexes to get rid of the
+			// "fog edge" graphics.
+			map_location adjacent[6];
+			get_adjacent_tiles(loc, adjacent);
+			for ( int i = 0; i != 6; ++i )
+				resources::screen->invalidate(adjacent[i]);
+		}
+
 		// Does the caller want a list of discovered units?
-		if ( result  &&  known_units  &&  (seen_units || petrified_units) ) {
+		if ( result  &&  (seen_units || petrified_units) ) {
 			// Allow known_units to override fogged().
-			if ( known_units->count(loc) == 0 ) {
+			if ( loc != viewer.get_location()  &&
+			     (known_units == NULL  ||  known_units->count(loc) == 0) )
+			{
 				// Is there a visible unit here?
 				const unit_map::const_iterator sighted = resources::units->find(loc);
 				if ( sighted.valid() ) {
@@ -2380,13 +2383,9 @@ namespace {
 	 * caller has the team readily available.)
 	 *
 	 * @a seen_units will return new units that have been seen by this unit.
-	 * If @a known_units is NULL, @a seen_units will not be changed (so might as
-	 * well also be NULL).
-	 * If @ known_units is not NULL, but does not contain @ viewer's actual
-	 * location, then it could be possible for a unit to see itself in the case
-	 * where @ viewer managed to end up on a fogged/shrouded location.
 	 *
-	 * @returns true if some shroud (or fog) is cleared.
+	 * @return whether or not information was uncovered (i.e. returns true if any
+	 *         locations in visual range were fogged/shrouded under shared vision/maps).
 	 */
 	bool clear_shroud_unit(const map_location &view_loc, const unit &viewer,
 	                       team &view_team, const std::map<map_location, int>& jamming_map,
@@ -2400,12 +2399,14 @@ namespace {
 		// Clear the fog.
 		pathfind::vision_path sight(*resources::game_map, viewer, view_loc, jamming_map);
 		foreach (const pathfind::paths::step &dest, sight.destinations) {
-			if ( clear_shroud_loc(view_team, dest.curr, seen_units, petrified_units, known_units, invalidate_display) )
+			if ( clear_shroud_loc(view_team, dest.curr, viewer, seen_units,
+			                      petrified_units, known_units, invalidate_display) )
 				cleared_something = true;
 		}
 		//TODO guard with game_config option
 		foreach (const map_location &dest, sight.edges) {
-			if ( clear_shroud_loc(view_team, dest, seen_units, petrified_units, known_units, invalidate_display) )
+			if ( clear_shroud_loc(view_team, dest, viewer, seen_units,
+			                      petrified_units, known_units, invalidate_display) )
 				cleared_something = true;
 		}
 
@@ -2451,6 +2452,17 @@ void recalculate_fog(int side)
 
 	if (!tm.uses_fog())
 		return;
+
+	// The following lines will be useful at some point, but not yet.
+	// So they are commented out for now.
+	//std::set<map_location> visible_locs;
+	//// Loop through all units, looking for those that are visible.
+	//foreach (const unit &u, *resources::units) {
+	//	const map_location & u_location = u.get_location();
+	//
+	//	if ( !tm.fogged(u_location) )
+	//		visible_locs.insert(u_location);
+	//}
 
 	tm.refog();
 
@@ -3016,16 +3028,6 @@ std::vector<map_location>::const_iterator make_a_move(const std::vector<map_loca
 	const int current_side = units.find(steps.front())->side();
 	team &current_team = (*resources::teams)[current_side-1];
 
-	// The set of units currently seen by the moving side:
-	std::set<map_location> known_units;
-	// (Only needed if we will be clearing fog/shroud.)
-	if ( fog_shroud ) {
-		foreach (const unit &u, units) {
-			if ( u.side() == current_side  ||  !current_team.fogged(u.get_location()) )
-				known_units.insert(u.get_location());
-		}
-	}
-
 	unit_mover mover(steps, show);
 
 	std::vector<map_location>::const_iterator
@@ -3072,7 +3074,7 @@ std::vector<map_location>::const_iterator make_a_move(const std::vector<map_loca
 			std::map<map_location, int> jamming_map;
 			calculate_jamming(current_side, jamming_map);
 			flags.display_changed |=
-					clear_shroud_unit(*to, *ui, current_team, jamming_map, &known_units,
+					clear_shroud_unit(*to, *ui, current_team, jamming_map, NULL,
 					                  &seen_units, &petrified_units, true);
 
 			{	// Fire sighted events
@@ -3540,12 +3542,6 @@ void apply_shroud_changes(undo_list &undos, int side)
 	   7. fix up associated display stuff (done in a similar way to turn_info::undo())
 	*/
 
-	std::set<map_location> known_units;
-	foreach (const unit &u, units) {
-		if ( u.side() == side  ||  !tm.fogged(u.get_location()) )
-			known_units.insert(u.get_location());
-	}
-
 	bool cleared_shroud = false;  // for further optimization
 	bool sighted_event = false;
 
@@ -3574,7 +3570,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 			std::map<map_location, int> jamming_map;
 			calculate_jamming(side, jamming_map);
 			cleared_shroud |= clear_shroud_unit(*step, *unit_itor, tm, jamming_map,
-				&known_units,&seen_units,&petrified_units);
+			                                    NULL, &seen_units, &petrified_units);
 
 			// Fire sighted events
 			// Try to keep same order (petrified units after normal units)
