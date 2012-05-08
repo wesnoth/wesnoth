@@ -266,7 +266,7 @@ static void find_routes(const gamemap& map, const unit& u, const map_location& l
 			// Thus, 'src-..-n-next' can't be shorter.
 			if (next_visited) continue;
 
-			int cost;
+			int cost = 1;
 			switch (type) {
 				case pathfind::MOVE:
 					cost = u.movement_cost(map[locs[i]]);
@@ -278,6 +278,9 @@ static void find_routes(const gamemap& map, const unit& u, const map_location& l
 					break;
 				case pathfind::JAMMING:
 					cost = u.vision_cost(map[locs[i]]);
+					break;
+				default:
+					assert(false);
 					break;
 			}
 
