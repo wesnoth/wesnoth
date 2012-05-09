@@ -116,6 +116,31 @@ public:
 	/** Inherited from twidget. */
 	virtual iterator::twalker_* create_walker();
 
+
+	/**
+	 * Returns a grid in the pane.
+	 *
+	 * @param id                  The id of the item whose grid to return. The
+	 *                            id is the value returned by
+	 *                            @ref create_item().
+	 *
+	 * @returns                   The wanted grid.
+	 * @retval NULL               The id isn't associated with an item.
+	 */
+	tgrid* grid(const unsigned id);
+
+	/**
+	 * Returns a grid in the pane.
+	 *
+	 * @param id                  The id of the item whose grid to return. The
+	 *                            id is the value returned by
+	 *                            @ref create_item().
+	 *
+	 * @returns                   The wanted grid.
+	 * @retval NULL               The id isn't associated with an item.
+	 */
+	const tgrid* grid(const unsigned id) const;
+
 private:
 
 	/** The items in the pane. */

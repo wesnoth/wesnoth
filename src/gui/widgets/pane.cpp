@@ -81,6 +81,27 @@ struct tpane_implementation
 
 		return NULL;
 	}
+
+	/**
+	 * Implementation for the wrappers for
+	 * [const] tgrid* tpane::grid(const unsigned id) [const].
+	 *
+	 * @tparam W                  A pointer to the pane.
+	 */
+	template<class W>
+	static typename tconst_clone<tgrid, W>::pointer
+	grid(W pane, const unsigned id)
+	{
+		typedef typename tconst_clone<tpane::titem, W>::reference thack;
+		BOOST_FOREACH(thack item, pane->items_) {
+
+			if(item.id == id) {
+				return item.grid;
+			}
+		}
+
+		return NULL;
+	}
 };
 
 
@@ -223,6 +244,16 @@ iterator::twalker_* tpane::create_walker()
 	 * @todo Implement properly.
 	 */
 	return NULL;
+}
+
+tgrid* tpane::grid(const unsigned id)
+{
+	return tpane_implementation::grid(this, id);
+}
+
+const tgrid* tpane::grid(const unsigned id) const
+{
+	return tpane_implementation::grid(this, id);
 }
 
 void tpane::place_children()
