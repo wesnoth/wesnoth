@@ -36,6 +36,22 @@ public:
 
 private:
 
+	/**
+	 * Collapses the description of an addon.
+	 *
+	 * @param grid                The grid of the item whose description to
+	 *                            collapse.
+	 */
+	void collapse(tgrid& grid);
+
+	/**
+	 * Expands the description of an addon.
+	 *
+	 * @param grid                The grid of the item whose description to
+	 *                            expand.
+	 */
+	void expand(tgrid& grid);
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 

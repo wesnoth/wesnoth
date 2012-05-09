@@ -21,6 +21,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/filter.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -28,6 +29,7 @@
 #endif
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -68,6 +70,30 @@ namespace gui2 {
  */
 
 REGISTER_DIALOG(addon_list)
+
+void taddon_list::collapse(tgrid& grid)
+{
+	find_widget<ttoggle_button>(&grid, "expand", false)
+			.set_visible(twidget::VISIBLE);
+
+	find_widget<ttoggle_button>(&grid, "collapse", false)
+			.set_visible(twidget::INVISIBLE);
+
+	find_widget<tlabel>(&grid, "description", false)
+			.set_visible(twidget::INVISIBLE);
+}
+
+void taddon_list::expand(tgrid& grid)
+{
+	find_widget<ttoggle_button>(&grid, "expand", false)
+			.set_visible(twidget::INVISIBLE);
+
+	find_widget<ttoggle_button>(&grid, "collapse", false)
+			.set_visible(twidget::VISIBLE);
+
+	find_widget<tlabel>(&grid, "description", false)
+			.set_visible(twidget::VISIBLE);
+}
 
 void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 {
@@ -192,7 +218,33 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 
 			/***** Add the campaign. *****/
 
-			pane.create_item(data, tags);
+			const unsigned id = pane.create_item(data, tags);
+
+			tgrid* grid = pane.grid(id);
+			assert(grid);
+
+			ttoggle_button* collapse = find_widget<ttoggle_button>(
+					  grid
+					, "collapse"
+					, false
+					, false);
+
+			if(collapse) {
+				collapse->set_visible(twidget::INVISIBLE);
+				collapse->set_callback_state_change(boost::bind(
+						  &taddon_list::collapse
+						, this
+						, boost::ref(*grid)));
+
+				find_widget<ttoggle_button>(grid, "expand", false)
+						.set_callback_state_change(boost::bind(
+							  &taddon_list::expand
+							, this
+							, boost::ref(*grid)));
+
+				find_widget<tlabel>(grid, "description", false)
+						.set_visible(twidget::INVISIBLE);
+			}
 		}
 
 	} else {
