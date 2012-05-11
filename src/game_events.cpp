@@ -2182,6 +2182,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			if ( iun != resources::units->end()  &&  iun.valid() )
 				iun->invalidate(loc);
 		}
+		resources::screen->redraw_minimap();
 
 		if (fire_event) {
 			game_events::fire("die", death_loc, killer_loc);
