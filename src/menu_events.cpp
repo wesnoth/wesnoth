@@ -836,9 +836,9 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 			resources::undo_stack->push_back(undo_action(new_unit, loc, recruited_from, undo_action::RECRUIT));
 		}
 
-		gui_->recalculate_minimap();
+		gui_->redraw_minimap();
 		gui_->invalidate_game_status();
-		gui_->invalidate_all();
+		gui_->invalidate(loc);
 		recorder.add_checksum_check(loc);
 		return true;
 	}
@@ -1050,9 +1050,9 @@ bool menu_handler::do_recall(const unit& un, int side_num, const map_location& r
 	}
 
 	resources::redo_stack->clear();
-	gui_->recalculate_minimap();
+	gui_->redraw_minimap();
 	gui_->invalidate_game_status();
-	gui_->invalidate_all();
+	gui_->invalidate(recall_location);
 	recorder.add_checksum_check(recall_location);
 	return true;
 }
@@ -1164,19 +1164,12 @@ void menu_handler::undo(int side_num)
 		resources::whiteboard->on_gamestate_change();
 		gui_->draw();
 	}
+	recorder.undo();
 
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
-
-	recorder.undo();
-
-	const bool shroud_cleared = clear_shroud(side_num);
-
-	if(shroud_cleared) {
-		gui_->recalculate_minimap();
-	} else {
-		gui_->redraw_minimap();
-	}
+	clear_shroud(side_num);
+	gui_->redraw_minimap();
 }
 
 void menu_handler::redo(int side_num)

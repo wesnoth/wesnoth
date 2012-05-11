@@ -1301,7 +1301,7 @@ void attack::fire_event(const std::string& n)
 	if(!a_.valid() || !d_.valid() || !(*resources::teams)[a_.get_unit().side() - 1].is_enemy(d_.get_unit().side())) {
 		if (update_display_){
 			recalculate_fog(defender_side);
-			resources::screen->recalculate_minimap();
+			resources::screen->redraw_minimap();
 			resources::screen->draw(true, true);
 		}
 		fire_event("attack_end");
@@ -1861,15 +1861,13 @@ void attack::perform()
 	// TODO: if we knew the viewing team, we could skip some of these display update
 	if (update_def_fog_ && (*resources::teams)[defender_side - 1].uses_fog())
 	{
-		recalculate_fog(defender_side);
 		if (update_display_) {
-			resources::screen->invalidate_all();
-			resources::screen->recalculate_minimap();
+			recalculate_fog(defender_side);
 		}
 	}
 
 	if (update_minimap_ && update_display_) {
-		resources::screen->recalculate_minimap();
+		resources::screen->redraw_minimap();
 	}
 
 	if (a_.valid()) {
@@ -2285,7 +2283,6 @@ namespace {
 	 *                         petrified unit, it gets added to this set.
 	 * @param known_units      These locations are excluded from being added to
 	 *                         seen_units and petrified_units.
-	 * @param invalidate       If set to true, the hexes will be marked for redrawing.
 	 *
 	 * @return whether or not information was uncovered (i.e. returns true if
 	 *         the specified location was fogged/ shrouded under shared vision/maps).
@@ -2293,8 +2290,7 @@ namespace {
 	bool clear_shroud_loc(team &tm, const map_location& loc, const unit & viewer,
 	                      std::set<map_location>* seen_units = NULL,
 	                      std::set<map_location>* petrified_units = NULL,
-	                      const std::set<map_location>* known_units = NULL,
-	                      bool invalidate = false)
+	                      const std::set<map_location>* known_units = NULL)
 	{
 		gamemap &map = *resources::game_map;
 		// This counts as clearing a tile for the return value if it is on the
@@ -2337,7 +2333,7 @@ namespace {
 		}
 
 		// Possible screen invalidation.
-		if ( was_fogged  &&  invalidate ) {
+		if ( was_fogged ) {
 			resources::screen->invalidate(loc);
 			// Need to also invalidate adjacent hexes to get rid of the
 			// "fog edge" graphics.
@@ -2391,8 +2387,7 @@ namespace {
 	                       team &view_team, const std::map<map_location, int>& jamming_map,
 	                       const std::set<map_location>* known_units = NULL,
 	                       std::set<map_location>* seen_units = NULL,
-	                       std::set<map_location>* petrified_units = NULL,
-	                       bool invalidate_display = false)
+	                       std::set<map_location>* petrified_units = NULL)
 	{
 		bool cleared_something = false;
 
@@ -2400,20 +2395,36 @@ namespace {
 		pathfind::vision_path sight(*resources::game_map, viewer, view_loc, jamming_map);
 		foreach (const pathfind::paths::step &dest, sight.destinations) {
 			if ( clear_shroud_loc(view_team, dest.curr, viewer, seen_units,
-			                      petrified_units, known_units, invalidate_display) )
+			                      petrified_units, known_units) )
 				cleared_something = true;
 		}
 		//TODO guard with game_config option
 		foreach (const map_location &dest, sight.edges) {
 			if ( clear_shroud_loc(view_team, dest, viewer, seen_units,
-			                      petrified_units, known_units, invalidate_display) )
+			                      petrified_units, known_units) )
 				cleared_something = true;
 		}
 
 		return cleared_something;
 	}
 
-	static void calculate_jamming(int side, std::map<map_location, int>& jamming_map)
+	/**
+	 * Wrapper for the invalidations that should occur after fog or
+	 * shroud is cleared. (Needed in multiple places, so this makes
+	 * sure the same things are called each time.) This would be
+	 * called after one is done calling clear_shroud_unit().
+	 */
+	void invalidate_after_clearing_shroud()
+	{
+		resources::screen->invalidate_game_status();
+		resources::screen->recalculate_minimap();
+		resources::screen->labels().recalculate_shroud();
+		// The tiles are invalidated as they are cleared, so no need
+		// to invalidate them here.
+	}
+
+
+	void calculate_jamming(int side, std::map<map_location, int>& jamming_map)
 	{
 		team& viewer_tm = (*resources::teams)[side - 1];
 
@@ -2443,6 +2454,7 @@ namespace {
  * combat. As a back-up, it is also called when clearing shroud at the
  * beginning of a turn.
  * This function does nothing if the indicated side does not use fog.
+ * The display is invalidated as needed.
  *
  * @param[in] side The side whose fog will be recalculated.
  */
@@ -2465,6 +2477,9 @@ void recalculate_fog(int side)
 	//}
 
 	tm.refog();
+	// Invalidate the screen before clearing the shroud.
+	// This speeds up the invalidations within clear_shroud_unit().
+	resources::screen->invalidate_all();
 
 	std::map<map_location, int> jamming_map;
 	calculate_jamming(side, jamming_map);
@@ -2479,6 +2494,9 @@ void recalculate_fog(int side)
 	// clear_shroud_unit) and if it caches another old event, maybe the caller
 	// don't want to pump it here
 	game_events::pump();
+
+	// Update the screen.
+	invalidate_after_clearing_shroud();
 }
 
 /**
@@ -2486,6 +2504,7 @@ void recalculate_fog(int side)
  *
  * This will not re-fog hexes unless reset_fog is set to true.
  * This function will do nothing if the side uses neither shroud nor fog.
+ * The display is invalidated as needed.
  *
  * @param[in] side      The side whose shroud (and fog) will be cleared.
  * @param[in] reset_fog If set to true, the fog will also be recalculated
@@ -2515,11 +2534,14 @@ bool clear_shroud(int side, bool reset_fog)
 	game_events::pump();
 
 	if ( reset_fog ) {
+		// Note: This will not reveal any new tiles, so result is not affected.
+		// Note: This will call invalidate_after_clearing_shroud().
 		recalculate_fog(side);
 	}
-
-	resources::screen->labels().recalculate_labels();
-	resources::screen->labels().recalculate_shroud();
+	else if ( result ) {
+		// Update the screen.
+		invalidate_after_clearing_shroud();
+	}
 
 	return result;
 }
@@ -3075,7 +3097,7 @@ std::vector<map_location>::const_iterator make_a_move(const std::vector<map_loca
 			calculate_jamming(current_side, jamming_map);
 			flags.display_changed |=
 					clear_shroud_unit(*to, *ui, current_team, jamming_map, NULL,
-					                  &seen_units, &petrified_units, true);
+					                  &seen_units, &petrified_units);
 
 			{	// Fire sighted events
 				std::set<map_location>::iterator sight_it;
@@ -3460,7 +3482,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		//NOTE: an wml event may have removed the unit pointed by ui
 		ui = units.find(final_loc);
 	}
-	disp.recalculate_minimap();
+	disp.redraw_minimap();
 	disp.draw();
 
 	// Record keeping.
@@ -3596,25 +3618,21 @@ void apply_shroud_changes(undo_list &undos, int side)
 		}
 	}
 
-	// TODO: optimization: nothing cleared, so no sighted, and we can skip redraw
-	// if (!cleared_shroud) return;
-
-	// render shroud/fog cleared before pumping events
-	if (sighted_event) {
-		disp.invalidate_unit();
-		disp.invalidate_all();
-		disp.recalculate_minimap();
+	// Optimization: if nothing was cleared and there are no sighted events,
+	// then there is nothing to redraw. (Technically, "nothing was cleared"
+	// implies "no sighted events", but checking both is cheap.)
+	if ( cleared_shroud  || sighted_event ) {
+		// Update the display before pumping events.
+		invalidate_after_clearing_shroud();
 		disp.draw();
+
+		if ( sighted_event  &&  game_events::pump() ) {
+			// Updates in case WML changed stuff.
+			disp.invalidate_unit();
+			clear_shroud(side);
+			disp.draw();
+		}
 	}
-
-	game_events::pump();
-
-	// Update shroud (WML might have changed something) and invalidate stuff.
-	disp.invalidate_unit();
-	disp.invalidate_game_status();
-	clear_shroud(side);
-	disp.recalculate_minimap();
-	disp.invalidate_all();
 }
 
 bool backstab_check(const map_location& attacker_loc,

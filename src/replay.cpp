@@ -1176,12 +1176,9 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			}
 		}
 
-		//Check if we should refresh the shroud, and redraw the minimap/map tiles.
-		//This is needed for shared vision to work properly.
+		// Check if we should refresh the shroud.
+		// This is needed for shared vision to work properly.
 		if (fix_shroud && clear_shroud(side_num) && !recorder.is_skipping()) {
-			resources::screen->recalculate_minimap();
-			resources::screen->invalidate_game_status();
-			resources::screen->invalidate_all();
 			resources::screen->draw();
 		}
 
