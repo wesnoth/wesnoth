@@ -965,7 +965,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			current_team.spend_gold(u_type->cost());
 			LOG_REPLAY << "-> " << (current_team.gold()) << "\n";
-			fix_shroud = !get_replay_source().is_skipping();
+			fix_shroud = true;
 			check_checksums(*cfg);
 		}
 
@@ -983,7 +983,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				place_recruit(*recall_unit, loc, from, true, !get_replay_source().is_skipping());
 				current_team.recall_list().erase(recall_unit);
 				current_team.spend_gold(current_team.recall_cost());
-				fix_shroud = !get_replay_source().is_skipping();
+				fix_shroud = true;
 			} else {
 				replay::process_error("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n");
 			}
@@ -1146,7 +1146,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			if(get_replay_source().expected_advancements().empty()) {
 				resources::controller->check_victory();
 			}
-			fix_shroud = !get_replay_source().is_skipping();
+			fix_shroud = true;
 		}
 		else if (const config &child = cfg->child("fire_event"))
 		{
@@ -1178,8 +1178,9 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 		// Check if we should refresh the shroud.
 		// This is needed for shared vision to work properly.
-		if (fix_shroud && clear_shroud(side_num) && !recorder.is_skipping()) {
-			resources::screen->draw();
+		if ( fix_shroud  &&  !get_replay_source().is_skipping() ) {
+		     if ( clear_shroud(side_num)  &&  !recorder.is_skipping() ) /// @todo: Do we really want to check recorder here? Seems either redundant or the wrong thing to check.
+				resources::screen->draw();
 		}
 
 		if (const config &child = cfg->child("verify")) {
