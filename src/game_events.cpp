@@ -2132,8 +2132,6 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 
 	//Find all the dead units first, because firing events ruins unit_map iteration
 	std::vector<unit *> dead_men_walking;
-	// unit_map::iterator uit(resources::units->begin()), uend(resources::units->end());
-	// for(;uit!=uend; ++uit){
 	foreach(unit & u, *resources::units){
 		if(game_events::unit_matches_filter(u, cfg)){
 			dead_men_walking.push_back(&u);
@@ -2147,6 +2145,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		if(!secondary_unit) {
 			killer_loc = game_events::entity_location(*un);
 		}
+
 		if (cfg["fire_event"].to_bool())
 			{
 				// Prevent infinite recursion of 'die' events
@@ -2168,13 +2167,22 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		if (fire_event) {
 			game_events::fire("last breath", death_loc, killer_loc);
 		}
+
+		// Visual consequences of the kill.
 		if (cfg["animate"].to_bool()) {
 			resources::screen->scroll_to_tile(loc);
 			unit_map::iterator iun = resources::units->find(loc);
 			if (iun != resources::units->end() && iun.valid()) {
 				unit_display::unit_die(loc, *iun);
 			}
+		} else {
+			// Make sure the unit gets (fully) cleaned off the screen.
+			resources::screen->invalidate(loc);
+			unit_map::iterator iun = resources::units->find(loc);
+			if ( iun != resources::units->end()  &&  iun.valid() )
+				iun->invalidate(loc);
 		}
+
 		if (fire_event) {
 			game_events::fire("die", death_loc, killer_loc);
 			unit_map::iterator iun = resources::units->find(death_loc);
@@ -2183,7 +2191,6 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			}
 		}
 		else resources::units->erase(loc);
-
 	}
 
 	// If the filter doesn't contain positional information,
