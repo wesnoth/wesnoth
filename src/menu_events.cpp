@@ -1317,6 +1317,7 @@ void menu_handler::redo(int side_num)
 	}
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
+	gui_->redraw_minimap();
 }
 
 bool menu_handler::clear_shroud(int side_num)
