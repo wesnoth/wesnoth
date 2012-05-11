@@ -1099,7 +1099,6 @@ void menu_handler::undo(int side_num)
 			gui_->invalidate(action.recall_loc);
 			units_.erase(action.recall_loc);
 			resources::whiteboard->on_gamestate_change();
-			gui_->draw();
 		}
 	} else if(action.is_recruit()) {
 		// Undo a recruit action
@@ -1123,7 +1122,6 @@ void menu_handler::undo(int side_num)
 		gui_->invalidate(action.recall_loc);
 		units_.erase(action.recall_loc);
 		resources::whiteboard->on_gamestate_change();
-		gui_->draw();
 	} else {
 		// Undo a move action
 		const int starting_moves = action.starting_moves;
@@ -1162,14 +1160,13 @@ void menu_handler::undo(int side_num)
 
 		gui_->invalidate_unit_after_move(route.front(), route.back());
 		resources::whiteboard->on_gamestate_change();
-		gui_->draw();
 	}
 	recorder.undo();
 
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
-	clear_shroud(side_num);
 	gui_->redraw_minimap();
+	gui_->draw();
 }
 
 void menu_handler::redo(int side_num)
@@ -1219,7 +1216,6 @@ void menu_handler::redo(int side_num)
 				statistics::recall_unit(un);
 				current_team.spend_gold(current_team.recall_cost());
 				gui_->invalidate(loc);
-				gui_->draw();
 				recorder.add_checksum_check(loc);
 			} else {
 				recorder.undo();
@@ -1258,13 +1254,11 @@ void menu_handler::redo(int side_num)
 			place_recruit(new_unit, loc, from, false, true);
 			current_team.spend_gold(new_unit.type()->cost());
 			statistics::recruit_unit(new_unit);
+			gui_->invalidate(loc);
 
 			//MP_COUNTDOWN: restore recruitment bonus
 			current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
-			gui_->draw();
-			//gui_.invalidate_game_status();
-			//gui_.invalidate_all();
 			recorder.add_checksum_check(loc);
 		} else {
 			recorder.undo();
@@ -1306,12 +1300,13 @@ void menu_handler::redo(int side_num)
 
 		gui_->invalidate_unit_after_move(route.front(), route.back());
 		resources::whiteboard->on_gamestate_change();
-		gui_->draw();
 
 		recorder.add_movement(action_copy.route);
 	}
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
+	gui_->redraw_minimap();
+	gui_->draw();
 }
 
 bool menu_handler::clear_shroud(int side_num)
