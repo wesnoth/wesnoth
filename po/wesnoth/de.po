@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-04-07 12:14+0200\n"
+"POT-Creation-Date: 2012-05-11 22:06+0200\n"
 "PO-Revision-Date: 2012-04-04 20:05+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de <>\n"
@@ -527,67 +527,67 @@ msgid "Portuguese (Brazil) Translation"
 msgstr "(Brasilianisch-)Portugiesische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2467
+#: data/core/about.cfg:2470
 msgid "Romanian Translation"
 msgstr "Rumänische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2475
+#: data/core/about.cfg:2478
 msgid "Russian Translation"
 msgstr "Russische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2557
+#: data/core/about.cfg:2560
 msgid "Serbian Translation"
 msgstr "Serbische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2576
+#: data/core/about.cfg:2579
 msgid "Slovak Translation"
 msgstr "Slowakische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2605
+#: data/core/about.cfg:2608
 msgid "Slovenian Translation"
 msgstr "Slowenische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2621
+#: data/core/about.cfg:2624
 msgid "Spanish Translation"
 msgstr "Spanische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2702
+#: data/core/about.cfg:2705
 msgid "Swedish Translation"
 msgstr "Schwedische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2743
+#: data/core/about.cfg:2746
 msgid "Turkish Translation"
 msgstr "Türkische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2765
+#: data/core/about.cfg:2768
 msgid "Ukrainian Translation"
 msgstr "Ukrainische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2774
+#: data/core/about.cfg:2777
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencianische (südliches Katalonien) Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2787
+#: data/core/about.cfg:2790
 msgid "Vietnamese Translation"
 msgstr "Vietnamesische Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2806
+#: data/core/about.cfg:2809
 msgid "RACV’s Translation"
 msgstr "Valenzianische (nach der RACV) Übersetzung"
 
 #. [about]
-#: data/core/about.cfg:2813
+#: data/core/about.cfg:2816
 msgid "Bots"
 msgstr "Bots"
 
@@ -3437,43 +3437,43 @@ msgstr "Für den Angreifer wurde eine ungültige Waffe ausgewählt."
 msgid "An invalid defender weapon got selected."
 msgstr "Für den Verteidiger wurde eine ungültige Waffe ausgewählt."
 
-#: src/actions.cpp:2715
+#: src/actions.cpp:2719
 msgid "Ambushed!"
 msgstr "Hinterhalt!"
 
-#: src/actions.cpp:2722
+#: src/actions.cpp:2726
 msgid "Failed teleport! Exit not empty"
 msgstr "Teleportation fehlgeschlagen! Ziel ist besetzt."
 
-#: src/actions.cpp:2767
+#: src/actions.cpp:2771
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Verbündete Einheit gesichtet"
 msgstr[1] "$friends verbündete Einheiten gesichtet"
 
-#: src/actions.cpp:2770
+#: src/actions.cpp:2774
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Gegnerische Einheit gesichtet!"
 msgstr[1] "$enemies gegnerische Einheiten gesichtet!"
 
-#: src/actions.cpp:2775
+#: src/actions.cpp:2779
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "eine verbündete"
 msgstr[1] "$friends verbündete"
 
-#: src/actions.cpp:2776
+#: src/actions.cpp:2780
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "eine feindliche"
 msgstr[1] "$enemies feindliche"
 
-#: src/actions.cpp:2777
+#: src/actions.cpp:2781
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Einheiten gesichtet! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2786
+#: src/actions.cpp:2790
 msgid "(press $hotkey to keep moving)"
 msgstr "(Drückt $hotkey, um fortzufahren)"
 
@@ -5871,11 +5871,11 @@ msgstr "Der Client hat die Verbindung unterbrochen."
 msgid "Could not connect to host."
 msgstr "Es konnte keine Verbindung zum Server aufgebaut werden."
 
-#: src/network.cpp:572
+#: src/network.cpp:571
 msgid "Could not add socket to socket set"
 msgstr "Der Sockel konnte zum Sockelsatz nicht hinzugefügt werden."
 
-#: src/network.cpp:584
+#: src/network.cpp:583
 msgid "Could not send initial handshake"
 msgstr "Der Anfangshandschlag konnte nicht ausgeführt werden"
 
@@ -6666,22 +6666,22 @@ msgstr "zwielichtig"
 msgid "female^neutral"
 msgstr "neutral"
 
-#: src/whiteboard/manager.cpp:1089
+#: src/whiteboard/manager.cpp:1137
 msgid "SHOW ALL allies’ plans"
 msgstr "Pläne ALLER Verbündeten zeigen"
 
-#: src/whiteboard/manager.cpp:1090
+#: src/whiteboard/manager.cpp:1138
 msgid "HIDE ALL allies’ plans"
 msgstr "Pläne ALLER Verbündeten verbergen"
 
-#: src/whiteboard/manager.cpp:1104
+#: src/whiteboard/manager.cpp:1152
 msgid "Show plans for $player"
 msgstr "Pläne für Spieler $player anzeigen"
 
-#: src/whiteboard/manager.cpp:1106
+#: src/whiteboard/manager.cpp:1154
 msgid "Hide plans for $player"
 msgstr "Pläne für Spieler $player verbergen"
 
-#: src/whiteboard/manager.cpp:1109
+#: src/whiteboard/manager.cpp:1157
 msgid "Whiteboard Options"
 msgstr "Reißbrett Optionen"

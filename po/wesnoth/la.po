@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-04-07 12:14+0200\n"
+"POT-Creation-Date: 2012-05-11 22:06+0200\n"
 "PO-Revision-Date: 2012-01-15 09:33+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -544,69 +544,69 @@ msgid "Portuguese (Brazil) Translation"
 msgstr "Versio Lingua Lusitana Brasiliae"
 
 #. [about]
-#: data/core/about.cfg:2467
+#: data/core/about.cfg:2470
 msgid "Romanian Translation"
 msgstr "Versio Lingua Dacoromanica"
 
 #. [about]
-#: data/core/about.cfg:2475
+#: data/core/about.cfg:2478
 msgid "Russian Translation"
 msgstr "Versio Lingua Russica"
 
 #. [about]
-#: data/core/about.cfg:2557
+#: data/core/about.cfg:2560
 msgid "Serbian Translation"
 msgstr "Versio Lingua Serbica"
 
 #. [about]
-#: data/core/about.cfg:2576
+#: data/core/about.cfg:2579
 msgid "Slovak Translation"
 msgstr "Versio Lingua Slovaca"
 
 #. [about]
-#: data/core/about.cfg:2605
+#: data/core/about.cfg:2608
 msgid "Slovenian Translation"
 msgstr "Versio Lingua Slovena"
 
 #. [about]
-#: data/core/about.cfg:2621
+#: data/core/about.cfg:2624
 msgid "Spanish Translation"
 msgstr "Versio Lingua Hispanica"
 
 #. [about]
-#: data/core/about.cfg:2702
+#: data/core/about.cfg:2705
 msgid "Swedish Translation"
 msgstr "Versio Lingua Suecica"
 
 #. [about]
-#: data/core/about.cfg:2743
+#: data/core/about.cfg:2746
 msgid "Turkish Translation"
 msgstr "Versio Lingua Turcica"
 
 #. [about]
-#: data/core/about.cfg:2765
+#: data/core/about.cfg:2768
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Versio Lingua Dacoromanica"
 
 #. [about]
-#: data/core/about.cfg:2774
+#: data/core/about.cfg:2777
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Versio Lingua Valentiana (Lingua Catalana Australis)"
 
 #. [about]
-#: data/core/about.cfg:2787
+#: data/core/about.cfg:2790
 msgid "Vietnamese Translation"
 msgstr "Versio Lingua Vietnamica"
 
 #. [about]
-#: data/core/about.cfg:2806
+#: data/core/about.cfg:2809
 msgid "RACV’s Translation"
 msgstr "Versio Lingua RACV"
 
 #. [about]
-#: data/core/about.cfg:2813
+#: data/core/about.cfg:2816
 msgid "Bots"
 msgstr "Automata"
 
@@ -3321,43 +3321,43 @@ msgstr "Telum irritum pugnatori electum est."
 msgid "An invalid defender weapon got selected."
 msgstr "Telum irritum defensori electum est."
 
-#: src/actions.cpp:2715
+#: src/actions.cpp:2719
 msgid "Ambushed!"
 msgstr "Insidias!"
 
-#: src/actions.cpp:2722
+#: src/actions.cpp:2726
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2767
+#: src/actions.cpp:2771
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Actor socius visus"
 msgstr[1] "$friends actores socii visi "
 
-#: src/actions.cpp:2770
+#: src/actions.cpp:2774
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Actor hostium visus!"
 msgstr[1] "$enemies actores hostium visi!"
 
-#: src/actions.cpp:2775
+#: src/actions.cpp:2779
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "unus socius"
 msgstr[1] "$friends socii"
 
-#: src/actions.cpp:2776
+#: src/actions.cpp:2780
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "unus hostum"
 msgstr[1] "$enemies hostum"
 
-#: src/actions.cpp:2777
+#: src/actions.cpp:2781
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Actores visi! ($friendphrase, $enemyphrase)"
 
-#: src/actions.cpp:2786
+#: src/actions.cpp:2790
 msgid "(press $hotkey to keep moving)"
 msgstr "($hotkey premere ad pergendum)"
 
@@ -5736,12 +5736,12 @@ msgstr "Cliens disiungitur."
 msgid "Could not connect to host."
 msgstr "Non poteram cum hospite coniungere."
 
-#: src/network.cpp:572
+#: src/network.cpp:571
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "Non poteram portum ad congeriem portuum adiungere"
 
-#: src/network.cpp:584
+#: src/network.cpp:583
 #, fuzzy
 msgid "Could not send initial handshake"
 msgstr "Non potui mittere salutationem initialem"
@@ -6534,23 +6534,23 @@ msgstr "anceps"
 msgid "female^neutral"
 msgstr "media"
 
-#: src/whiteboard/manager.cpp:1089
+#: src/whiteboard/manager.cpp:1137
 msgid "SHOW ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1090
+#: src/whiteboard/manager.cpp:1138
 msgid "HIDE ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1104
+#: src/whiteboard/manager.cpp:1152
 msgid "Show plans for $player"
 msgstr "$player mentem ostendere"
 
-#: src/whiteboard/manager.cpp:1106
+#: src/whiteboard/manager.cpp:1154
 msgid "Hide plans for $player"
 msgstr "$player mentem celare"
 
-#: src/whiteboard/manager.cpp:1109
+#: src/whiteboard/manager.cpp:1157
 msgid "Whiteboard Options"
 msgstr ""
 

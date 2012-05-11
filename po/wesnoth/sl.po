@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-04-07 12:14+0200\n"
+"POT-Creation-Date: 2012-05-11 22:06+0200\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -537,69 +537,69 @@ msgid "Portuguese (Brazil) Translation"
 msgstr "Portugalski (Brazilija) prevod"
 
 #. [about]
-#: data/core/about.cfg:2467
+#: data/core/about.cfg:2470
 msgid "Romanian Translation"
 msgstr "Romunski prevod"
 
 #. [about]
-#: data/core/about.cfg:2475
+#: data/core/about.cfg:2478
 msgid "Russian Translation"
 msgstr "Ruski prevod"
 
 #. [about]
-#: data/core/about.cfg:2557
+#: data/core/about.cfg:2560
 msgid "Serbian Translation"
 msgstr "Srbski prevod"
 
 #. [about]
-#: data/core/about.cfg:2576
+#: data/core/about.cfg:2579
 msgid "Slovak Translation"
 msgstr "Slovaški prevod"
 
 #. [about]
-#: data/core/about.cfg:2605
+#: data/core/about.cfg:2608
 msgid "Slovenian Translation"
 msgstr "Slovenski prevod"
 
 #. [about]
-#: data/core/about.cfg:2621
+#: data/core/about.cfg:2624
 msgid "Spanish Translation"
 msgstr "Španski prevod"
 
 #. [about]
-#: data/core/about.cfg:2702
+#: data/core/about.cfg:2705
 msgid "Swedish Translation"
 msgstr "Švedski prevod"
 
 #. [about]
-#: data/core/about.cfg:2743
+#: data/core/about.cfg:2746
 msgid "Turkish Translation"
 msgstr "Turški prevod"
 
 #. [about]
-#: data/core/about.cfg:2765
+#: data/core/about.cfg:2768
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Romunski prevod"
 
 #. [about]
-#: data/core/about.cfg:2774
+#: data/core/about.cfg:2777
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencijski (južnokatalonski) prevod"
 
 #. [about]
-#: data/core/about.cfg:2787
+#: data/core/about.cfg:2790
 msgid "Vietnamese Translation"
 msgstr "Vietnamski prevod"
 
 #. [about]
-#: data/core/about.cfg:2806
+#: data/core/about.cfg:2809
 msgid "RACV’s Translation"
 msgstr "Valencijski (RACV) prevod"
 
 #. [about]
-#: data/core/about.cfg:2813
+#: data/core/about.cfg:2816
 #, fuzzy
 msgid "Bots"
 msgstr "IRC roboti"
@@ -3305,16 +3305,16 @@ msgstr "Izbrana je bila neveljavna era"
 msgid "An invalid defender weapon got selected."
 msgstr "Izbrana je bila neveljavna era"
 
-#: src/actions.cpp:2715
+#: src/actions.cpp:2719
 #, fuzzy
 msgid "Ambushed!"
 msgstr "Zaseda!"
 
-#: src/actions.cpp:2722
+#: src/actions.cpp:2726
 msgid "Failed teleport! Exit not empty"
 msgstr ""
 
-#: src/actions.cpp:2767
+#: src/actions.cpp:2771
 #, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
@@ -3323,7 +3323,7 @@ msgstr[1] "Zavezniške enote opažene!"
 msgstr[2] "Zavezniške enote opažene!"
 msgstr[3] "Zavezniške enote opažene!"
 
-#: src/actions.cpp:2770
+#: src/actions.cpp:2774
 #, fuzzy
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
@@ -3332,7 +3332,7 @@ msgstr[1] "Sovražne enote opažene!"
 msgstr[2] "Sovražne enote opažene!"
 msgstr[3] "Sovražne enote opažene!"
 
-#: src/actions.cpp:2775
+#: src/actions.cpp:2779
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
@@ -3340,7 +3340,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/actions.cpp:2776
+#: src/actions.cpp:2780
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
@@ -3348,12 +3348,12 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/actions.cpp:2777
+#: src/actions.cpp:2781
 #, fuzzy
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Enote opažene! ($friends zavezniških, $enemies sovražnih)"
 
-#: src/actions.cpp:2786
+#: src/actions.cpp:2790
 #, fuzzy
 msgid "(press $hotkey to keep moving)"
 msgstr "(za nadaljevanje pritisnite $hotkey)"
@@ -5885,12 +5885,12 @@ msgstr "Odjemalec je prekinil povezavo."
 msgid "Could not connect to host."
 msgstr "Ni se možno povezati z gostiteljem."
 
-#: src/network.cpp:572
+#: src/network.cpp:571
 #, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "Ni bilo mogoče dodati vtičnice"
 
-#: src/network.cpp:584
+#: src/network.cpp:583
 #, fuzzy
 msgid "Could not send initial handshake"
 msgstr "Ni bilo mogoče začeti rokovanja"
@@ -6752,26 +6752,26 @@ msgstr "zvesta"
 msgid "female^neutral"
 msgstr "nevtralna"
 
-#: src/whiteboard/manager.cpp:1089
+#: src/whiteboard/manager.cpp:1137
 msgid "SHOW ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1090
+#: src/whiteboard/manager.cpp:1138
 msgid "HIDE ALL allies’ plans"
 msgstr ""
 
-#: src/whiteboard/manager.cpp:1104
+#: src/whiteboard/manager.cpp:1152
 #, fuzzy
 msgid "Show plans for $player"
 msgstr "Pokaži posnetek igre"
 
-#: src/whiteboard/manager.cpp:1106
+#: src/whiteboard/manager.cpp:1154
 #, fuzzy
 #| msgid "Replace with $player"
 msgid "Hide plans for $player"
 msgstr "Zamenjaj z $player"
 
-#: src/whiteboard/manager.cpp:1109
+#: src/whiteboard/manager.cpp:1157
 msgid "Whiteboard Options"
 msgstr ""
 

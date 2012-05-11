@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-04-07 12:14+0200\n"
+"POT-Creation-Date: 2012-05-11 22:06+0200\n"
 "PO-Revision-Date: 2012-04-04 18:49+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -521,67 +521,67 @@ msgid "Portuguese (Brazil) Translation"
 msgstr "葡萄牙文（巴西）翻译"
 
 #. [about]
-#: data/core/about.cfg:2467
+#: data/core/about.cfg:2470
 msgid "Romanian Translation"
 msgstr "罗马尼亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2475
+#: data/core/about.cfg:2478
 msgid "Russian Translation"
 msgstr "俄文翻译"
 
 #. [about]
-#: data/core/about.cfg:2557
+#: data/core/about.cfg:2560
 msgid "Serbian Translation"
 msgstr "塞尔维亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2576
+#: data/core/about.cfg:2579
 msgid "Slovak Translation"
 msgstr "斯洛伐克文翻译"
 
 #. [about]
-#: data/core/about.cfg:2605
+#: data/core/about.cfg:2608
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2621
+#: data/core/about.cfg:2624
 msgid "Spanish Translation"
 msgstr "西班牙文翻译"
 
 #. [about]
-#: data/core/about.cfg:2702
+#: data/core/about.cfg:2705
 msgid "Swedish Translation"
 msgstr "瑞典文翻译"
 
 #. [about]
-#: data/core/about.cfg:2743
+#: data/core/about.cfg:2746
 msgid "Turkish Translation"
 msgstr "土耳其文翻译"
 
 #. [about]
-#: data/core/about.cfg:2765
+#: data/core/about.cfg:2768
 msgid "Ukrainian Translation"
 msgstr "乌克兰文翻译"
 
 #. [about]
-#: data/core/about.cfg:2774
+#: data/core/about.cfg:2777
 msgid "Valencian (southern Catalan) Translation"
 msgstr "瓦伦西亚文（南加泰罗尼亚）翻译"
 
 #. [about]
-#: data/core/about.cfg:2787
+#: data/core/about.cfg:2790
 msgid "Vietnamese Translation"
 msgstr "越南文翻译"
 
 #. [about]
-#: data/core/about.cfg:2806
+#: data/core/about.cfg:2809
 msgid "RACV’s Translation"
 msgstr "RACV的翻译"
 
 #. [about]
-#: data/core/about.cfg:2813
+#: data/core/about.cfg:2816
 msgid "Bots"
 msgstr "机器人"
 
@@ -3304,43 +3304,43 @@ msgstr "选中了无效的攻击武器。"
 msgid "An invalid defender weapon got selected."
 msgstr "所选防御武器无效。"
 
-#: src/actions.cpp:2715
+#: src/actions.cpp:2719
 msgid "Ambushed!"
 msgstr "遭到伏击！"
 
-#: src/actions.cpp:2722
+#: src/actions.cpp:2726
 msgid "Failed teleport! Exit not empty"
 msgstr "传送失败！出口阻塞"
 
-#: src/actions.cpp:2767
+#: src/actions.cpp:2771
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "发现友军单位"
 msgstr[1] "发现$friends个友军单位"
 
-#: src/actions.cpp:2770
+#: src/actions.cpp:2774
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "发现敌军单位！"
 msgstr[1] "发现$enemies个敌军单位！"
 
-#: src/actions.cpp:2775
+#: src/actions.cpp:2779
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 个友军"
 msgstr[1] "$friends 个友军"
 
-#: src/actions.cpp:2776
+#: src/actions.cpp:2780
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 个敌军"
 msgstr[1] "$enemies 个敌军"
 
-#: src/actions.cpp:2777
+#: src/actions.cpp:2781
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "发现单位！（$friendphrase，$enemyphrase）"
 
-#: src/actions.cpp:2786
+#: src/actions.cpp:2790
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey键继续移动）"
 
@@ -5627,11 +5627,11 @@ msgstr "客户端断开连接"
 msgid "Could not connect to host."
 msgstr "无法连接到主机。"
 
-#: src/network.cpp:572
+#: src/network.cpp:571
 msgid "Could not add socket to socket set"
 msgstr "无法向套接字集合中添加游戏要用的套接字"
 
-#: src/network.cpp:584
+#: src/network.cpp:583
 msgid "Could not send initial handshake"
 msgstr "不能发送最初的握手信息"
 
@@ -6383,22 +6383,22 @@ msgstr "边缘"
 msgid "female^neutral"
 msgstr "中立"
 
-#: src/whiteboard/manager.cpp:1089
+#: src/whiteboard/manager.cpp:1137
 msgid "SHOW ALL allies’ plans"
 msgstr "显示所有盟友的计划"
 
-#: src/whiteboard/manager.cpp:1090
+#: src/whiteboard/manager.cpp:1138
 msgid "HIDE ALL allies’ plans"
 msgstr "隐藏所有盟友的计划"
 
-#: src/whiteboard/manager.cpp:1104
+#: src/whiteboard/manager.cpp:1152
 msgid "Show plans for $player"
 msgstr "显示 $player 的计划"
 
-#: src/whiteboard/manager.cpp:1106
+#: src/whiteboard/manager.cpp:1154
 msgid "Hide plans for $player"
 msgstr "隐藏 $player 的计划"
 
-#: src/whiteboard/manager.cpp:1109
+#: src/whiteboard/manager.cpp:1157
 msgid "Whiteboard Options"
 msgstr "白板选项"
