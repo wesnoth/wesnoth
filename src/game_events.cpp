@@ -2060,16 +2060,26 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 							}
 					}
 			}
+
 		if (fire_event) {
 			game_events::fire("last breath", death_loc, killer_loc);
 		}
+
 		if (cfg["animate"].to_bool()) {
 			resources::screen->scroll_to_tile(loc);
 			unit_map::iterator iun = resources::units->find(loc);
 			if (iun != resources::units->end() && iun.valid()) {
 				unit_display::unit_die(loc, *iun);
 			}
+		} else {
+			// Make sure the unit gets (fully) cleaned off the screen.
+			resources::screen->invalidate(loc);
+			unit_map::iterator iun = resources::units->find(loc);
+			if ( iun != resources::units->end()  &&  iun.valid() )
+				iun->invalidate(loc);
 		}
+		resources::screen->redraw_minimap();
+
 		if (fire_event) {
 			game_events::fire("die", death_loc, killer_loc);
 			unit_map::iterator iun = resources::units->find(death_loc);
