@@ -351,7 +351,6 @@ public:
 					: config();
 			c.clear_children("ai");
 			c.clear_children("village");
-			c.remove_attribute("shroud_data");
 			model_.set_inspect_window_text(c.debug());
 			return;
 		}
