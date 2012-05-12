@@ -55,7 +55,7 @@ def parse_terrain(data):
         if i[0].startswith(" "):
             continue
         # Create a dictionnary of key and values
-        content = dict([v.split("=") for v in i])
+        content = dict([v.strip().split("=") for v in i])
         # Hidden things shouldn't be displayed
         if 'hidden' in content:
             continue
