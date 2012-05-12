@@ -566,8 +566,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		     !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 
-		gui().unhighlight_reach();
-
 		// If the whiteboard is active, it intercepts any unit movement
 		if (resources::whiteboard->is_active()) {
 				// Unselect the current hex, and create planned move for whiteboard
@@ -667,6 +665,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 {
 	// do not show footsteps during movement
 	gui().set_route(NULL);
+	gui().unhighlight_reach();
 
 	// do not keep the hex highlighted that we started from
 	selected_hex_ = map_location();

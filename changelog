@@ -159,7 +159,9 @@ Version 1.11.0-svn:
    * Clicking a unit does not reveal adjacent hidden units (bug #19381).
    * Simultaneous ambush, sighted and teleport failed messages will no longer
      cover each other up
-    * Added: A character limit width constrain for a text.
+   * Added: A character limit width constrain for a text
+   * Stop showing a unit's potential moves before moving in a move & attack,
+     rather than after (more consistent with regular movement)
  * Whiteboard:
    * Fixed bug #19626: segfaults on window resize
    * Fixed bug #19369: Using planning mode can cause losing ability to move my units
