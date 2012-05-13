@@ -162,8 +162,68 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 
 		/***** ***** Fill the listbox. ***** *****/
 
-		foreach(const config &campaign, cfg_.child_range("campaign")) {
+		tbutton* load_button = find_widget<tbutton>(
+				  &window
+				, "load_campaign"
+				, false
+				, false);
+		if(load_button) {
+			connect_signal_mouse_left_click(
+					  *load_button
+					, boost::bind(
+						  &taddon_list::load
+						, this
+						, boost::ref(pane)));
+			load(pane);
+		} else {
+			while(cfg_iterators_.first != cfg_iterators_.second) {
+				create_campaign(pane, *cfg_iterators_.first);
+				++cfg_iterators_.first;
+			}
+		}
 
+	} else {
+		tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
+
+		/**
+		 * @todo do we really want to keep the length limit for the various
+		 * items?
+		 */
+		foreach(const config &c, cfg_.child_range("campaign")) {
+			std::map<std::string, string_map> data;
+			string_map item;
+
+			item["label"] = c["icon"];
+			data.insert(std::make_pair("icon", item));
+
+			std::string tmp = c["name"];
+			utils::truncate_as_wstring(tmp, 20);
+			item["label"] = tmp;
+			data.insert(std::make_pair("name", item));
+
+			tmp = c["version"].str();
+			utils::truncate_as_wstring(tmp, 12);
+			item["label"] = tmp;
+			data.insert(std::make_pair("version", item));
+
+			tmp = c["author"].str();
+			utils::truncate_as_wstring(tmp, 16);
+			item["label"] = tmp;
+			data.insert(std::make_pair("author", item));
+
+			item["label"] = c["downloads"];
+			data.insert(std::make_pair("downloads", item));
+
+			item["label"] = c["size"];
+			data.insert(std::make_pair("size", item));
+
+			list.add_row(data);
+		}
+	}
+}
+
+void taddon_list::create_campaign(tpane& pane, const config& campaign)
+{
 			/***** Determine the data for the widgets. *****/
 
 			std::map<std::string, string_map> data;
@@ -245,46 +305,18 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 				find_widget<tlabel>(grid, "description", false)
 						.set_visible(twidget::INVISIBLE);
 			}
-		}
 
-	} else {
-		tlistbox& list = find_widget<tlistbox>(&window, "addons", false);
+}
 
-		/**
-		 * @todo do we really want to keep the length limit for the various
-		 * items?
-		 */
-		foreach(const config &c, cfg_.child_range("campaign")) {
-			std::map<std::string, string_map> data;
-			string_map item;
-
-			item["label"] = c["icon"];
-			data.insert(std::make_pair("icon", item));
-
-			std::string tmp = c["name"];
-			utils::truncate_as_wstring(tmp, 20);
-			item["label"] = tmp;
-			data.insert(std::make_pair("name", item));
-
-			tmp = c["version"].str();
-			utils::truncate_as_wstring(tmp, 12);
-			item["label"] = tmp;
-			data.insert(std::make_pair("version", item));
-
-			tmp = c["author"].str();
-			utils::truncate_as_wstring(tmp, 16);
-			item["label"] = tmp;
-			data.insert(std::make_pair("author", item));
-
-			item["label"] = c["downloads"];
-			data.insert(std::make_pair("downloads", item));
-
-			item["label"] = c["size"];
-			data.insert(std::make_pair("size", item));
-
-			list.add_row(data);
-		}
+void taddon_list::load(tpane& pane)
+{
+	if(cfg_iterators_.first != cfg_iterators_.second) {
+		create_campaign(pane, *cfg_iterators_.first);
+		++cfg_iterators_.first;
 	}
+
+	find_widget<tbutton>(pane.get_window(), "load_campaign", false)
+			.set_active(cfg_iterators_.first != cfg_iterators_.second);
 }
 
 } // namespace gui2

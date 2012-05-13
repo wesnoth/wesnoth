@@ -21,8 +21,11 @@
 #include "gui/widgets/pane.hpp"
 
 class config;
+#include "config.hpp" // needed for config::const_child_itors
 
 namespace gui2 {
+
+class pane;
 
 /** Shows the list of addons on the server. */
 class taddon_list
@@ -31,6 +34,7 @@ class taddon_list
 public:
 	explicit taddon_list(const config& cfg)
 		: cfg_(cfg)
+		, cfg_iterators_(cfg_.child_range("campaign"))
 	{
 	}
 
@@ -58,8 +62,29 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
+	/**
+	 * Creates a single campaign.
+	 *
+	 * @param pane                The pane to add the campaigns to.
+	 * @param campaign            A config object containing the campaign info
+	 *                            as send by campaignd.
+	 */
+	void create_campaign(tpane& pane, const config& campaign);
+
 	/** Config which contains the list with the campaigns. */
 	const config& cfg_;
+
+	/**
+	 * Debug iterators for testing with --new-widgets
+	 */
+	config::const_child_itors cfg_iterators_;
+
+	/**
+	 * Debug function to load a single campaign.
+	 *
+	 * @param pane                The pane to add the campaigns to.
+	 */
+	void load(tpane& pane);
 };
 
 } // namespace gui2
