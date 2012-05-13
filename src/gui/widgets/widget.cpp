@@ -227,7 +227,10 @@ void twidget::set_visible(const tvisible visible)
 	}
 
 	// Switching to or from invisible should invalidate the layout.
-	if(visible_ == INVISIBLE || visible == INVISIBLE) {
+	const bool need_resize = visible_ == INVISIBLE || visible == INVISIBLE;
+	visible_ = visible;
+
+	if(need_resize) {
 		if(new_widgets) {
 			event::tmessage message;
 			fire(event::REQUEST_PLACEMENT, *this, message);
@@ -240,8 +243,6 @@ void twidget::set_visible(const tvisible visible)
 	} else {
 		set_dirty();
 	}
-
-	visible_ = visible;
 }
 
 twidget::tdrawing_action twidget::get_drawing_action() const
