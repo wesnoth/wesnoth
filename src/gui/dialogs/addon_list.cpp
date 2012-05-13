@@ -86,7 +86,7 @@ void taddon_list::collapse(tgrid& grid)
 void taddon_list::expand(tgrid& grid)
 {
 	find_widget<ttoggle_button>(&grid, "expand", false)
-			.set_visible(twidget::INVISIBLE);
+			.set_visible(twidget::HIDDEN);
 
 	find_widget<ttoggle_button>(&grid, "collapse", false)
 			.set_visible(twidget::VISIBLE);
