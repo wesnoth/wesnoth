@@ -20,7 +20,7 @@ Version 1.11.0-svn:
      * Showdown in the Northern Swamp: added to conditional notes in objectives
        about who should kill Iliah-Malal
    * Dead Water:
-	 * Changed uses of "ai turn" to "side # turn" ("[event]name=ai turn" breaks replays)
+     * Changed uses of "ai turn" to "side # turn" ("[event]name=ai turn" breaks replays)
    * Descent into Darkness:
      * Fix most possible cases for Darken Volk becoming "stuck"
        in 09_A_Small_Favor3.
@@ -208,7 +208,7 @@ Version 1.11.0-svn:
    * The [drain] weapon special now supports value=, multiply=, divide=, add= and sub=
    * Added [heal_on_hit] for healing/harming the user by a fixed amount
    * Drained HP amounts can now be negative.  Trigger this by setting
-	 a negative value in the [drain] or [heal_on_hit] weapon special
+     a negative value in the [drain] or [heal_on_hit] weapon special
    * Negative drain amounts will not take a unit below 1 health
    * Added [show_if] support to [objectives] [note]
    * New tags: [lift_fog] and [reset_fog]
