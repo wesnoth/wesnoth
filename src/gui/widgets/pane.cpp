@@ -21,6 +21,8 @@
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
 
+#include <boost/bind.hpp>
+
 #define LOG_SCOPE_HEADER "tpane [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
@@ -111,6 +113,14 @@ tpane::tpane(const tbuilder_grid_ptr item_builder)
 	, item_builder_(item_builder)
 	, item_id_generator_(0)
 {
+	connect_signal<event::REQUEST_PLACEMENT>(
+			  boost::bind(
+				  &tpane::signal_handler_request_placement
+				, this
+				, _1
+				, _2
+				, _3)
+			, event::tdispatcher::back_pre_child);
 }
 
 unsigned tpane::create_item(
@@ -284,6 +294,39 @@ void tpane::set_origin_children()
 		item.grid->set_origin(tpoint(0, y));
 		y += item.grid->get_height();
 	}
+}
+
+void tpane::signal_handler_request_placement(
+		  tdispatcher& dispatcher
+		, const event::tevent event
+		, bool& handled)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	twidget* widget = dynamic_cast<twidget*>(&dispatcher);
+	if(widget) {
+		BOOST_FOREACH(titem& item, items_) {
+			if(item.grid->has_widget(widget)) {
+				if(item.grid->get_visible() != twidget::INVISIBLE) {
+
+					/*
+					 * By not calling init layout it uses its previous size
+					 * what seems to work properly when showing and hiding
+					 * items. Might fail with new items (haven't tested yet).
+					 */
+					item.grid->place(tpoint(0, 0), item.grid->get_best_size());
+				}
+				set_origin_children();
+				DBG_GUI_E << LOG_HEADER << ' ' << event << " handled.\n";
+				handled = true;
+				return;
+			}
+		}
+	}
+
+	DBG_GUI_E << LOG_HEADER << ' ' << event << " failed to handle.\n";
+	assert(false);
+	handled = false;
 }
 
 } // namespace gui2

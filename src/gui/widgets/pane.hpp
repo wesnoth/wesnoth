@@ -163,6 +163,13 @@ private:
 	 * redrawing doesn't involve re-rendering the entire widget.
 	 */
 	void set_origin_children();
+
+	/***** ***** ***** signal handlers ***** ****** *****/
+
+	void signal_handler_request_placement(
+			  tdispatcher& dispatcher
+			, const event::tevent event
+			, bool& handled);
 };
 
 } // namespace gui2
