@@ -296,6 +296,26 @@ void tpane::set_origin_children()
 	}
 }
 
+void tpane::place_or_set_origin_children()
+{
+	unsigned y = 0;
+
+	BOOST_FOREACH(titem& item, items_) {
+		if(item.grid->get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
+		DBG_GUI_L << LOG_HEADER << " offset " << y << '\n';
+		if(item.grid->get_size() != item.grid->get_best_size()) {
+			item.grid->place(tpoint(0, y), item.grid->get_best_size());
+		} else {
+			item.grid->set_origin(tpoint(0, y));
+		}
+		y += item.grid->get_height();
+	}
+
+}
+
 void tpane::signal_handler_request_placement(
 		  tdispatcher& dispatcher
 		, const event::tevent event
@@ -310,13 +330,22 @@ void tpane::signal_handler_request_placement(
 				if(item.grid->get_visible() != twidget::INVISIBLE) {
 
 					/*
+					 * This time we call init layout but also the linked widget
+					 * update this makes things work properly for the
+					 * addon_list. This code can use some more tuning,
+					 * polishing and testing.
+					 */
+					item.grid->layout_init(false);
+					get_window()->layout_linked_widgets();
+
+					/*
 					 * By not calling init layout it uses its previous size
 					 * what seems to work properly when showing and hiding
 					 * items. Might fail with new items (haven't tested yet).
 					 */
 					item.grid->place(tpoint(0, 0), item.grid->get_best_size());
 				}
-				set_origin_children();
+				place_or_set_origin_children();
 				DBG_GUI_E << LOG_HEADER << ' ' << event << " handled.\n";
 				handled = true;
 				return;

@@ -39,6 +39,7 @@ namespace gui2{
 
 class tdialog;
 class tdebug_layout_graph;
+class tpane;
 
 namespace event {
 	class tdistributor;
@@ -56,6 +57,7 @@ class twindow
 	friend twindow *build(CVideo &, const twindow_builder::tresolution *);
 	friend struct twindow_implementation;
 	friend class tinvalidate_layout_blocker;
+	friend class tpane;
 
 public:
 

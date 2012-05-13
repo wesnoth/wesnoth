@@ -164,6 +164,17 @@ private:
 	 */
 	void set_origin_children();
 
+	/**
+	 * Places or moves the children on the pane.
+	 *
+	 * If the child has its best size it's move else placed.
+	 *
+	 * @note It would probably be possible to merge all three placement
+	 * routines into one and using a flag for what to do: place, set_origin or
+	 * place_or_set_origin.
+	 */
+	void place_or_set_origin_children();
+
 	/***** ***** ***** signal handlers ***** ****** *****/
 
 	void signal_handler_request_placement(
