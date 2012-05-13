@@ -138,6 +138,11 @@ enum tevent {
 	                               * Request for somebody to show the helptip
 	                               * based on the data send.
 	                               */
+	, REQUEST_PLACEMENT           /**<
+	                               * Request for somebody to place the widget.
+	                               * This may also cause updating of more
+	                               * layoyt parts.
+	                               */
 };
 
 /**
@@ -239,6 +244,7 @@ typedef
 		boost::mpl::set<
 			  boost::mpl::int_<MESSAGE_SHOW_TOOLTIP>
 			, boost::mpl::int_<MESSAGE_SHOW_HELPTIP>
+			, boost::mpl::int_<REQUEST_PLACEMENT>
 		>
 		tset_event_message;
 

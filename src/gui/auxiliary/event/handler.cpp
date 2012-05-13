@@ -823,6 +823,7 @@ std::ostream& operator<<(std::ostream& stream, const tevent event)
 		case MESSAGE_SHOW_TOOLTIP   : stream << "message show tooltip"; break;
 		case SHOW_HELPTIP           : stream << "show helptip"; break;
 		case MESSAGE_SHOW_HELPTIP   : stream << "message show helptip"; break;
+		case REQUEST_PLACEMENT      : stream << "request placement"; break;
 	}
 
 	return stream;

@@ -674,6 +674,10 @@ private:
 			  const event::tevent event
 			, bool& handled
 			, event::tmessage& message);
+
+	void signal_handler_request_placement(
+			  const event::tevent event
+			, bool& handled);
 };
 
 } // namespace gui2

@@ -15,7 +15,9 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/auxiliary/event/message.hpp"
 #include "gui/auxiliary/log.hpp"
 
 namespace gui2 {
@@ -226,9 +228,14 @@ void twidget::set_visible(const tvisible visible)
 
 	// Switching to or from invisible should invalidate the layout.
 	if(visible_ == INVISIBLE || visible == INVISIBLE) {
-		twindow *window = get_window();
-		if(window) {
-			window->invalidate_layout();
+		if(new_widgets) {
+			event::tmessage message;
+			fire(event::REQUEST_PLACEMENT, *this, message);
+		} else {
+			twindow *window = get_window();
+			if(window) {
+				window->invalidate_layout();
+			}
 		}
 	} else {
 		set_dirty();

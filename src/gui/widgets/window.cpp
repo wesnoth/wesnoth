@@ -364,6 +364,14 @@ twindow::twindow(CVideo& video,
 				, _5)
 			, event::tdispatcher::back_pre_child);
 
+	connect_signal<event::REQUEST_PLACEMENT>(
+			  boost::bind(
+				  &twindow::signal_handler_request_placement
+				, this
+				, _2
+				, _3)
+			, event::tdispatcher::back_pre_child);
+
 	register_hotkey(hotkey::GLOBAL__HELPTIP, boost::bind(gui2::helptip));
 }
 
@@ -1377,6 +1385,17 @@ void twindow::signal_handler_message_show_helptip(
 			dynamic_cast<event::tmessage_show_helptip&>(message);
 
 	tip::show(video_, helptip_.id, request.message, request.location);
+
+	handled = true;
+}
+
+void twindow::signal_handler_request_placement(
+		  const event::tevent event
+		, bool& handled)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	invalidate_layout();
 
 	handled = true;
 }

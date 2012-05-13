@@ -37,7 +37,9 @@ namespace event {
  * class received to make sure the proper message type is send.
  *
  * This means all messages used in the events need to be derived from this
- * class.
+ * class. When a message needs no `content' it can send this class as message.
+ * This is done by:
+ * * @ref REQUEST_PLACEMENT
  */
 struct tmessage
 {
