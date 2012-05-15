@@ -547,6 +547,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	if(option_ids.empty()) {
 		if(!updates_only && can_publish_ids.empty() && can_delete_ids.empty()) {
 			gui2::show_error_message(disp.video(), _("There are no add-ons available for download from this server."));
+			return;
 		} else if(updates_only) {
 			if(installed_addons().empty()) {
 				gui2::show_transient_message(disp.video(), _("Add-ons Manager"), _("There are no add-ons installed."));
@@ -554,9 +555,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 				gui2::show_transient_message(disp.video(), _("Add-ons Manager"), _("All add-ons are up to date."));
 			}
 			view = VIEW_ALL;
+			return;
 		}
-
-		return;
 	}
 
 	int result;
