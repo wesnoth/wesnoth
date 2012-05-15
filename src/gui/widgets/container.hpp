@@ -97,7 +97,7 @@ public:
 
 	/** Inherited from twidget.*/
 	bool has_widget(const twidget* widget) const
-		{ return grid_.has_widget(widget); }
+		{ return twidget::has_widget(widget) || grid_.has_widget(widget); }
 
 	/** Inherited from twidget. */
 	void set_origin(const tpoint& origin);

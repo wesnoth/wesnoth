@@ -627,8 +627,12 @@ const twidget* tgrid::find(const std::string& id,
 
 bool tgrid::has_widget(const twidget* widget) const
 {
+	if(twidget::has_widget(widget)) {
+		return true;
+	}
+
 	foreach(const tchild& child, children_) {
-		if(child.widget() == /*->has_widget*/(widget)) {
+		if(child.widget()->has_widget(widget)) {
 			return true;
 		}
 	}
