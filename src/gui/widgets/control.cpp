@@ -26,6 +26,7 @@
 #include "gui/dialogs/tip.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/auxiliary/window_builder/control.hpp"
 #include "marked-up_text.hpp"
 
 #include <boost/bind.hpp>
@@ -52,6 +53,52 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	, text_alignment_(PANGO_ALIGN_LEFT)
 	, shrunken_(false)
 {
+	connect_signal<event::SHOW_TOOLTIP>(boost::bind(
+			  &tcontrol::signal_handler_show_tooltip
+			, this
+			, _2
+			, _3
+			, _5));
+
+	connect_signal<event::SHOW_HELPTIP>(boost::bind(
+			  &tcontrol::signal_handler_show_helptip
+			, this
+			, _2
+			, _3
+			, _5));
+
+	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(boost::bind(
+			  &tcontrol::signal_handler_notify_remove_tooltip
+			, this
+			, _2
+			, _3));
+}
+
+tcontrol::tcontrol(
+		  const implementation::tbuilder_control& builder
+		, const unsigned canvas_count)
+	: definition_(builder.definition)
+	, label_(builder.label)
+	, use_markup_(false)
+	, use_tooltip_on_label_overflow_(builder.use_tooltip_on_label_overflow)
+	, tooltip_(builder.tooltip)
+	, help_message_(builder.help)
+	, canvas_(canvas_count)
+	, config_(NULL)
+	, renderer_()
+	, text_maximum_width_(0)
+	, text_alignment_(PANGO_ALIGN_LEFT)
+	, shrunken_(false)
+{
+	set_id(builder.id);
+	set_linked_group(builder.linked_group);
+#ifndef LOW_MEM
+	set_debug_border_mode(builder.debug_border_mode);
+	set_debug_border_color(builder.debug_border_color);
+#endif
+
+	definition_load_configuration();
+
 	connect_signal<event::SHOW_TOOLTIP>(boost::bind(
 			  &tcontrol::signal_handler_show_tooltip
 			, this
@@ -240,14 +287,8 @@ void tcontrol::place(const tpoint& origin, const tpoint& size)
 void tcontrol::load_config()
 {
 	if(!config()) {
-		set_config(get_control(get_control_type(), definition_));
 
-		assert(canvas().size() == config()->state.size());
-		for(size_t i = 0; i < canvas().size(); ++i) {
-			canvas(i) = config()->state[i].canvas;
-		}
-
-		update_canvas();
+		definition_load_configuration();
 
 		load_config_extra();
 	}
@@ -359,6 +400,20 @@ void tcontrol::impl_draw_background(
 	canvas(get_state()).blit(
 			  frame_buffer
 			, calculate_blitting_rectangle(x_offset, y_offset));
+}
+
+void tcontrol::definition_load_configuration()
+{
+	assert(!config());
+
+	set_config(get_control(get_control_type(), definition_));
+
+	assert(canvas().size() == config()->state.size());
+	for(size_t i = 0; i < canvas().size(); ++i) {
+		canvas(i) = config()->state[i].canvas;
+	}
+
+	update_canvas();
 }
 
 tpoint tcontrol::get_best_text_size(

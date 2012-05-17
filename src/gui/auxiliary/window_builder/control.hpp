@@ -31,6 +31,7 @@ public:
 
 	tbuilder_control(const config& cfg);
 
+	/** @deprecated The control can initalise itself. */
 	void init_control(tcontrol* control) const;
 
 	/** Parameters for the control. */

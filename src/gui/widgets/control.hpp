@@ -22,13 +22,30 @@
 
 namespace gui2 {
 
+namespace implementation {
+	class tbuilder_control;
+} // namespace implementation
+
 /** Base class for all visible items. */
 class tcontrol : public virtual twidget
 {
 	friend class tdebug_layout_graph;
 public:
 
+	/** @deprecated Used the second overload. */
 	explicit tcontrol(const unsigned canvas_count);
+
+	/**
+	 * Constructor.
+	 *
+	 * @param builder             The builder object with the settings for the
+	 *                            object.
+	 *
+	 * @param canvas_count        The number of canvasses in the control.
+	 */
+	tcontrol(
+			  const implementation::tbuilder_control& builder
+			, const unsigned canvas_count);
 
 	/**
 	 * Sets the members of the control.
@@ -148,6 +165,8 @@ private:
 	 * determine sizes and drawing the widget this definition needs to be
 	 * loaded. The member definition_ contains the name of the definition and
 	 * function load the proper configuration.
+	 *
+	 * @depreciated @ref definition_load_configuration() is the replacement.
 	 */
 	void load_config();
 
@@ -332,6 +351,17 @@ private:
 	 * does nothing but classes can override it to implement custom behaviour.
 	 */
 	virtual void load_config_extra() {}
+
+	/**
+	 * Loads the configuration of the widget.
+	 *
+	 * Controls have their definition stored in a definition object. In order to
+	 * determine sizes and drawing the widget this definition needs to be
+	 * loaded. The member definition_ contains the name of the definition and
+	 * function load the proper configuration.
+	 */
+	void definition_load_configuration();
+
 public:
 	/**
 	 * Returns the control_type of the control.
