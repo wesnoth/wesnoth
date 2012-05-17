@@ -278,6 +278,8 @@ Version 1.11.0-svn:
    * Fix bug #19681: Cache is never valid
    * Added shroud_data to the inspection window (FR #19623).
    * Fixed: grids now recursively search for widgets by pointer.
+   * Fixed: Wrong current side number after side turns (bug #19735)
+     It also affected the lua field wesnoth.current.side
 
 Version 1.10.0:
  * Campaigns:
