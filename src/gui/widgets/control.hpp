@@ -362,6 +362,7 @@ protected:
 
 private:
 
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
 	/**
 	 * Initializes the control.
 	 *
@@ -370,6 +371,7 @@ private:
 	 * only once, this happens when set_definition is called.
 	 */
 	virtual void init() {}
+#endif
 
 	/**
 	 * Gets the best size for a text.
