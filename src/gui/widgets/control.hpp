@@ -30,8 +30,6 @@ public:
 
 	explicit tcontrol(const unsigned canvas_count);
 
-	virtual ~tcontrol() {}
-
 	/**
 	 * Sets the members of the control.
 	 *
