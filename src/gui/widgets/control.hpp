@@ -139,17 +139,28 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
+private:
+
 	/**
-	 * Inherited from twidget.
+	 * Loads the configuration of the widget.
 	 *
-	 * This function shouldn't be called directly it's called by set_definition().
-	 * All classes which use this class as base should call this function in
-	 * their constructor. Abstract classes shouldn't call this routine. The
-	 *
-	 * classes which call this routine should also define get_control_type().
+	 * Controls have their definition stored in a definition object. In order to
+	 * determine sizes and drawing the widget this definition needs to be
+	 * loaded. The member definition_ contains the name of the definition and
+	 * function load the proper configuration.
 	 */
 	void load_config();
 
+	/**
+	 * Uses the load function.
+	 *
+	 * @note This doesn't look really clean, but the final goal is refactor
+	 * more code and call load_config in the ctor, removing the use case for
+	 * the window. That however is a longer termine refactoring.
+	 */
+	friend class twindow;
+
+public:
 	/** Inherited from twidget. */
 	twidget* find_at(const tpoint& coordinate, const bool must_be_active)
 	{

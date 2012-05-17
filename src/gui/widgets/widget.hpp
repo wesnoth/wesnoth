@@ -57,16 +57,6 @@ public:
 
 	virtual ~twidget();
 
-	/**
-	 * Loads the configuration of the widget.
-	 *
-	 * Controls have their definition stored in a definition object. In order to
-	 * determine sizes and drawing the widget this definition needs to be
-	 * loaded. The member definition_ contains the name of the definition and
-	 * function load the proper configuration.
-	 */
-	virtual void load_config() {}
-
 	/***** ***** ***** ***** flags ***** ***** ***** *****/
 
 	/** Visibility settings done by the user. */
