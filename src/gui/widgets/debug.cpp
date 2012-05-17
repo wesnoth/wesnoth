@@ -185,7 +185,7 @@ void tdebug_layout_graph::generate_dot_file(
 	std::ofstream file(filename.c_str());
 
 	file << "//Basic layout graph for window id '" << window_->id()
-		<< "' using definition '" <<  window_->definition() << "'.\n"
+		<< "' using definition '" <<  window_->definition_ << "'.\n"
 		<< "digraph window {\n"
 		<< "\tnode [shape=record, style=filled, fillcolor=\"bisque\"];\n"
 		<< "\trankdir=LR;\n"
@@ -292,9 +292,6 @@ void tdebug_layout_graph::widget_generate_basic_info(
 		<< "id=" << widget->id() << '\n'
 		<< "</td></tr>" << '\n'
 		<< "<tr><td" << header_background << ">" << '\n'
-		<< "definition=" << widget->definition() << '\n'
-		<< "</td></tr>" << '\n'
-		<< "<tr><td" << header_background << ">" << '\n'
 		<< "address=" << widget << '\n'
 		<< "</td></tr>" << '\n'
 		<< "<tr><td" << header_background << ">" << '\n'
@@ -303,6 +300,9 @@ void tdebug_layout_graph::widget_generate_basic_info(
 		if(control) {
 			out << "<tr><td" << header_background << ">" << '\n'
 				<< "label=" << format_label(control->label()) << '\n'
+				<< "<tr><td" << header_background << ">" << '\n'
+				<< "definition=" << control->definition_ << '\n'
+				<< "</td></tr>" << '\n'
 				<< "</td></tr>\n";
 		}
 }

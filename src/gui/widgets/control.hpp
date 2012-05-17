@@ -183,7 +183,7 @@ public:
 	}
 
 	/**
-	 * Inherited from twidget.
+	 * Sets the definition.
 	 *
 	 * This function sets the definition of a control and should be called soon
 	 * after creating the object since a lot of internal functions depend on the
@@ -257,6 +257,15 @@ protected:
 	int get_text_maximum_height() const;
 
 private:
+	/**
+	 * The definition is the id of that widget class.
+	 *
+	 * Eg for a button it [button_definition]id. A button can have multiple
+	 * definitions which all look different but for the engine still is a
+	 * button.
+	 */
+	std::string definition_;
+
 	/** Contain the non-editable text associated with control. */
 	t_string label_;
 

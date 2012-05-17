@@ -39,7 +39,8 @@
 namespace gui2 {
 
 tcontrol::tcontrol(const unsigned canvas_count)
-	: label_()
+	: definition_("default")
+	, label_()
 	, use_markup_(false)
 	, use_tooltip_on_label_overflow_(true)
 	, tooltip_()
@@ -239,7 +240,7 @@ void tcontrol::place(const tpoint& origin, const tpoint& size)
 void tcontrol::load_config()
 {
 	if(!config()) {
-		set_config(get_control(get_control_type(), definition()));
+		set_config(get_control(get_control_type(), definition_));
 
 		assert(canvas().size() == config()->state.size());
 		for(size_t i = 0; i < canvas().size(); ++i) {
@@ -255,7 +256,7 @@ void tcontrol::load_config()
 void tcontrol::set_definition(const std::string& definition)
 {
 	assert(!config());
-	twidget::set_definition(definition);
+	definition_ = definition;
 	load_config();
 	assert(config());
 

@@ -361,18 +361,6 @@ public:
 	const std::string& id() const { return id_; }
 	void set_id(const std::string& id);
 
-	const std::string& definition() const { return definition_; }
-
-	/**
-	 * Sets the definition.
-	 *
-	 * This function should be set as soon as possible after creating the widget
-	 * and shouldn't be changed after showing the widget. If this is done
-	 * undefined things happen and the code doesn't enforce this rule.
-	 */
-	virtual void set_definition(const std::string& definition)
-		{ definition_ = definition; }
-
 	unsigned get_width() const { return w_; }
 	unsigned get_height() const { return h_; }
 
@@ -606,15 +594,6 @@ private:
 	 * window, eg a listbox can have the same id for every row.
 	 */
 	std::string id_;
-
-	/**
-	 * The definition is the id of that widget class.
-	 *
-	 * Eg for a button it [button_definition]id. A button can have multiple
-	 * definitions which all look different but for the engine still is a
-	 * button.
-	 */
-	std::string definition_;
 
 	/**
 	 * The parent widget, if the widget has a parent it contains a pointer to

@@ -24,7 +24,6 @@ namespace gui2 {
 
 twidget::twidget()
 	: id_("")
-	, definition_("default")
 	, parent_(NULL)
 	, x_(-1)
 	, y_(-1)
@@ -50,7 +49,7 @@ twidget::twidget()
 twidget::~twidget()
 {
 	DBG_GUI_LF << "widget destroy: " << static_cast<void*>(this)
-		<< " (id: " << id_ << ", definition: " << definition_ << ")\n";
+		<< " (id: " << id_ << ")\n";
 
 	twidget* p = parent();
 	while(p) {
