@@ -1250,6 +1250,7 @@ config mp_sync::get_user_choice(const std::string &name, const user_choice &uch,
 		/* process the side parameter and ensure it is within boundaries */
 		if (unsigned(side - 1) >= resources::teams->size())
 			side = resources::controller->current_side();
+		assert(1 <= side && side <= static_cast<int>(resources::teams->size()));
 
 		int active_side = side;
 		if ((*resources::teams)[active_side - 1].is_local() &&
