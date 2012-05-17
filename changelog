@@ -45,6 +45,8 @@ Version 1.10.2+svn:
      conversion of config_attribute
    * Fixed bug #16544: Fail to read `empty' cache files.
    * Added shroud_data to the inspection window (FR #19623).
+   * Fixed: Wrong current side number after side turns (bug #19735)
+     It also affected the lua field wesnoth.current.side
 
 Version 1.10.2:
  * Campaigns:
