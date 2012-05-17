@@ -605,6 +605,10 @@ void playsingle_controller::play_turn(bool save)
 		//if loading a savegame, network turns might not have reset this yet
 		loading_game_ = false;
 	}
+	//If the loop exits due to the last team having been processed,
+	//player_number_ will be 1 too high
+	if(player_number_ > static_cast<int>(teams_.size()))
+		player_number_ = teams_.size();
 
 	finish_turn();
 
