@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ang@latin\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-22 15:00+0100\n"
-"PO-Revision-Date: 2012-03-12 01:27-0500\n"
+"PO-Revision-Date: 2012-05-17 12:13-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Old English <http://wiki.wesnoth.org/OldEnglishTranslation>\n"
 "Language: ang@latin\n"
@@ -352,7 +352,7 @@ msgstr "Cinisc (Taiƿan) Geþeodnes"
 #. [about]
 #: data/core/about.cfg:1412
 msgid "Croatian Translation"
-msgstr ""
+msgstr "Croatisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1419
@@ -383,8 +383,9 @@ msgstr "Niƿe Englisc (on Scaƿes stæfrofe) Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1620
+#, fuzzy
 msgid "Esperanto Translation"
-msgstr ""
+msgstr "Esperantisc Geþeodnes"
 
 #. [about]
 #: data/core/about.cfg:1639
@@ -726,8 +727,9 @@ msgstr ""
 #. [then]
 #: data/core/macros/ai_controller.cfg:591
 #: data/core/macros/ai_controller.cfg:602
+#, fuzzy
 msgid "none set."
-msgstr ""
+msgstr "nane gesett."
 
 #. [do]
 #: data/core/macros/ai_controller.cfg:644
@@ -1537,8 +1539,9 @@ msgstr ""
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
+#, fuzzy
 msgid "This is the last scenario."
-msgstr ""
+msgstr "Þes is se latost capitol."
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -2422,19 +2425,21 @@ msgstr "geætredu"
 
 #: data/lua/wml-tags.lua:824 src/actions.cpp:1497
 msgid "female^slowed"
-msgstr "geaslæƿedu"
+msgstr "geforslæƿedu"
 
 #: data/lua/wml-tags.lua:824 src/actions.cpp:1497
 msgid "slowed"
-msgstr "geaslæƿed"
+msgstr "geforslæƿed"
 
 #: data/lua/wml-tags.lua:825 src/actions.cpp:1502
+#, fuzzy
 msgid "female^petrified"
-msgstr ""
+msgstr "forstanodu"
 
 #: data/lua/wml-tags.lua:825 src/actions.cpp:1502
+#, fuzzy
 msgid "petrified"
-msgstr ""
+msgstr "forstanod"
 
 #: data/lua/wml-tags.lua:826
 msgid "female^unhealable"
@@ -2520,8 +2525,9 @@ msgstr ""
 #. [menu]: id=button-endturn
 #: data/themes/default.cfg:156 data/themes/dfool.cfg:167
 #: data/themes/widescreen.cfg:188
+#, fuzzy
 msgid "End Scenario"
-msgstr ""
+msgstr "Capitol Endian"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
@@ -2559,7 +2565,7 @@ msgstr "þorpas"
 #: data/themes/default.cfg:251 data/themes/dfool.cfg:285
 #: data/themes/experimental.cfg:224 data/themes/widescreen.cfg:303
 msgid "units"
-msgstr ""
+msgstr "ƿihta"
 
 #. [label]: id=upkeep-icon
 #: data/themes/default.cfg:260 data/themes/dfool.cfg:294
@@ -2668,8 +2674,9 @@ msgstr ""
 
 #: src/about.cpp:208 src/menu_events.cpp:325 src/menu_events.cpp:352
 #: src/statistics_dialog.cpp:114
+#, fuzzy
 msgid "Close"
-msgstr ""
+msgstr "Tynan"
 
 #: src/actions.cpp:501
 msgid "You don’t have a leader to recall with."
@@ -2716,10 +2723,11 @@ msgid "Failed teleport! Exit not empty"
 msgstr ""
 
 #: src/actions.cpp:2767
+#, fuzzy
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Freondlice ƿihte geseƿen"
+msgstr[1] "$friends freondlica ƿihta geseƿen"
 
 #: src/actions.cpp:2770
 msgid "Enemy unit sighted!"
@@ -2757,7 +2765,7 @@ msgstr "Fyrd"
 
 #: src/addon/manager.cpp:442
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "Capitol"
 
 #: src/addon/manager.cpp:444
 msgid "addon_type^MP era"
@@ -2854,7 +2862,7 @@ msgstr ""
 #: src/addon/manager.cpp:749 src/addon/manager.cpp:935
 #: src/addon/manager.cpp:1164
 msgid "Author"
-msgstr ""
+msgstr "Frumƿyrhta"
 
 #: src/addon/manager.cpp:749 src/addon/manager.cpp:935
 #: src/addon/manager.cpp:1164
@@ -3115,7 +3123,7 @@ msgstr ""
 
 #: src/attack_prediction_display.cpp:249
 msgid "Slowed"
-msgstr "Geaslæƿed"
+msgstr "Geforslæƿed"
 
 #: src/attack_prediction_display.cpp:254 src/reports.cpp:802
 msgid "Total damage"
@@ -3387,11 +3395,11 @@ msgstr ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:274 src/multiplayer_lobby.cpp:520
 msgid "Unknown scenario: $scenario_id"
-msgstr ""
+msgstr "Uncuþ capitol: $scenario_id"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:279 src/multiplayer_lobby.cpp:524
 msgid "Unknown scenario"
-msgstr ""
+msgstr "Uncuþ capitol"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:285 src/multiplayer_lobby.cpp:529
 msgid "Reloaded game"
@@ -3629,7 +3637,7 @@ msgstr "Þorpas"
 
 #: src/menu_events.cpp:381
 msgid "status^Units"
-msgstr ""
+msgstr "Ƿihta"
 
 #: src/menu_events.cpp:382
 msgid "Upkeep"
@@ -3741,8 +3749,9 @@ msgid "Recruit"
 msgstr ""
 
 #: src/menu_events.cpp:744 src/menu_events.cpp:949
+#, fuzzy
 msgid "Select unit:"
-msgstr ""
+msgstr "Ƿihte ceosan:"
 
 #: src/menu_events.cpp:792
 msgid "You don’t have enough gold to recruit that unit"
@@ -3794,8 +3803,9 @@ msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
 #: src/menu_events.cpp:1458
+#, fuzzy
 msgid "Rename Unit"
-msgstr ""
+msgstr "Ƿihte Eftnaman"
 
 #: src/menu_events.cpp:1538
 msgid "Race"
@@ -4950,8 +4960,9 @@ msgid "Invalid Color"
 msgstr ""
 
 #: src/multiplayer_ui.cpp:425
+#, fuzzy
 msgid "Selected user: "
-msgstr ""
+msgstr "Gecoren brucend: "
 
 #: src/multiplayer_wait.cpp:129
 msgid "Leader: "
@@ -5074,7 +5085,7 @@ msgstr ""
 
 #: src/playcampaign.cpp:599
 msgid "Unknown scenario: '$scenario|'"
-msgstr ""
+msgstr "Uncuþ capitol: '$scenario|'"
 
 #: src/playmp_controller.cpp:92
 msgid "$name has taken control"
@@ -5252,7 +5263,7 @@ msgstr ""
 
 #: src/reports.cpp:309
 msgid "slowed: "
-msgstr "geaslæƿed: "
+msgstr "geforslæƿed: "
 
 #: src/reports.cpp:310
 msgid ""
@@ -5275,8 +5286,9 @@ msgid ""
 msgstr ""
 
 #: src/reports.cpp:317
+#, fuzzy
 msgid "petrified: "
-msgstr ""
+msgstr "forstanod: "
 
 #: src/reports.cpp:318
 msgid "This unit has been petrified. It may not move or attack."
@@ -5303,8 +5315,9 @@ msgid "Experience Modifier: "
 msgstr ""
 
 #: src/reports.cpp:493
+#, fuzzy
 msgid "Terrain: "
-msgstr ""
+msgstr "Land: "
 
 #: src/reports.cpp:511
 msgid "maximum^max."
@@ -5340,7 +5353,7 @@ msgstr "Ladscipe: "
 
 #: src/reports.cpp:614
 msgid "Slowed: "
-msgstr "Geaslæƿed: "
+msgstr "Geforslæƿed: "
 
 #: src/reports.cpp:618
 msgid "Attacks: "
@@ -5770,30 +5783,3 @@ msgstr ""
 #: src/whiteboard/manager.cpp:1103
 msgid "Whiteboard Options"
 msgstr ""
-
-#~ msgid "(Easy)"
-#~ msgstr "(Eaðe)"
-
-#~ msgid "Lord"
-#~ msgstr "Hlaford"
-
-#~ msgid "(Hard)"
-#~ msgstr "(Heard)"
-
-#~ msgid "High Lord"
-#~ msgstr "Heah Hlaford"
-
-#~ msgid "Enemies"
-#~ msgstr "Geƿinnan"
-
-#, fuzzy
-#~ msgid "B"
-#~ msgstr "B"
-
-#, fuzzy
-#~ msgid "MB"
-#~ msgstr "MB"
-
-#, fuzzy
-#~ msgid "GB"
-#~ msgstr "GB"
