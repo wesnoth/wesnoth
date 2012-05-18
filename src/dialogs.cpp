@@ -633,7 +633,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 			);
 	}
 	if(select_difficulty != NULL) {
-		lmenu.add_option(_("Reselect difficulty"), false,
+		lmenu.add_option(_("Change difficulty"), false,
 			gui::dialog::BUTTON_CHECKBOX,
 			_("Change campaign difficulty before loading")
 			);

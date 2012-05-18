@@ -120,7 +120,7 @@ private:
 	config load_config_; /** Config information of the savefile to be loaded. */
 	bool show_replay_; /** State of the "show_replay" checkbox in the load-game dialog. */
 	bool cancel_orders_; /** State of the "cancel_orders" checkbox in the load-game dialog. */
-	bool select_difficulty_; /** State of the "reselect_difficulty" checkbox in the load-game dialog. */
+	bool select_difficulty_; /** State of the "change_difficulty" checkbox in the load-game dialog. */
 };
 
 /** The base class for all savegame stuff */

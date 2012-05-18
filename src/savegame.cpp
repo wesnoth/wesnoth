@@ -510,7 +510,7 @@ void loadgame::show_dialog(bool show_replay, bool cancel_orders)
 		load_dialog.show(gui_.video());
 
 		if (load_dialog.get_retval() == gui2::twindow::OK) {
-			select_difficulty_ = load_dialog.reselect_difficulty();
+			select_difficulty_ = load_dialog.change_difficulty();
 
 			filename_ = load_dialog.filename();
 			show_replay_ = load_dialog.show_replay();
