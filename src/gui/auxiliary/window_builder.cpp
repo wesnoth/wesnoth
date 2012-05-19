@@ -198,6 +198,16 @@ twindow *build(CVideo &video, const std::string &type)
 	return window;
 }
 
+tbuilder_widget::tbuilder_widget(const config& cfg)
+	: id(cfg["id"])
+	, linked_group(cfg["linked_group"])
+#ifndef LOW_MEM
+	, debug_border_mode(cfg["debug_border_mode"])
+	, debug_border_color(decode_color(cfg["debug_border_color"]))
+#endif
+{
+}
+
 void register_builder_widget(const std::string& id
 		, boost::function<tbuilder_widget_ptr(config)> functor)
 {
@@ -427,8 +437,6 @@ twindow_builder::tresolution::ttip::ttip(const config& cfg)
 
 tbuilder_grid::tbuilder_grid(const config& cfg) :
 	tbuilder_widget(cfg),
-	id(cfg["id"]),
-	linked_group(cfg["linked_group"]),
 	rows(0),
 	cols(0),
 	row_grow_factor(),

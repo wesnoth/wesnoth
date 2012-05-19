@@ -46,11 +46,20 @@ struct tbuilder_widget
 	: public reference_counted_object
 {
 public:
-	explicit tbuilder_widget(const config& /*cfg*/) {}
+	explicit tbuilder_widget(const config& cfg);
 
+	virtual ~tbuilder_widget() {}
 
 	virtual twidget* build() const = 0;
-	virtual ~tbuilder_widget() {}
+
+	/** Parameters for the widget. */
+	std::string id;
+	std::string linked_group;
+
+#ifndef LOW_MEM
+	int debug_border_mode;
+	unsigned debug_border_color;
+#endif
 };
 
 typedef boost::intrusive_ptr<tbuilder_widget> tbuilder_widget_ptr;
@@ -90,8 +99,6 @@ struct tbuilder_grid
 public:
 	explicit tbuilder_grid(const config& cfg);
 
-	std::string id;
-	std::string linked_group;
 	unsigned rows;
 	unsigned cols;
 

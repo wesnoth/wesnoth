@@ -35,17 +35,11 @@ public:
 	void init_control(tcontrol* control) const;
 
 	/** Parameters for the control. */
-	std::string id;
 	std::string definition;
-	std::string linked_group;
 	t_string label;
 	t_string tooltip;
 	t_string help;
 	bool use_tooltip_on_label_overflow;
-#ifndef LOW_MEM
-	int debug_border_mode;
-	unsigned debug_border_color;
-#endif
 };
 
 } // namespace implementation
