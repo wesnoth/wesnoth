@@ -241,6 +241,7 @@ Version 1.11.0-svn:
    * Change [object]duration=level to [object]duration=scenario
    * The race attribute in SUFs can now take a comma-separated list
    * New image path function: ~ROTATE()
+   * Fixed some cases where [find_path] did not restore $this_unit
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
