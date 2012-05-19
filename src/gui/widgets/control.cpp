@@ -76,7 +76,8 @@ tcontrol::tcontrol(const unsigned canvas_count)
 
 tcontrol::tcontrol(
 		  const implementation::tbuilder_control& builder
-		, const unsigned canvas_count)
+		, const unsigned canvas_count
+		, const std::string& control_type)
 	: twidget(builder)
 	, definition_(builder.definition)
 	, label_(builder.label)
@@ -91,7 +92,7 @@ tcontrol::tcontrol(
 	, text_alignment_(PANGO_ALIGN_LEFT)
 	, shrunken_(false)
 {
-	definition_load_configuration();
+	definition_load_configuration(control_type);
 
 	connect_signal<event::SHOW_TOOLTIP>(boost::bind(
 			  &tcontrol::signal_handler_show_tooltip
@@ -282,7 +283,7 @@ void tcontrol::load_config()
 {
 	if(!config()) {
 
-		definition_load_configuration();
+		definition_load_configuration(get_control_type());
 
 		load_config_extra();
 	}
@@ -396,11 +397,11 @@ void tcontrol::impl_draw_background(
 			, calculate_blitting_rectangle(x_offset, y_offset));
 }
 
-void tcontrol::definition_load_configuration()
+void tcontrol::definition_load_configuration(const std::string& control_type)
 {
 	assert(!config());
 
-	set_config(get_control(get_control_type(), definition_));
+	set_config(get_control(control_type, definition_));
 
 	assert(canvas().size() == config()->state.size());
 	for(size_t i = 0; i < canvas().size(); ++i) {

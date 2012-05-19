@@ -45,7 +45,8 @@ public:
 	 */
 	tcontrol(
 			  const implementation::tbuilder_control& builder
-			, const unsigned canvas_count);
+			, const unsigned canvas_count
+			, const std::string& control_type);
 
 	/**
 	 * Sets the members of the control.
@@ -360,7 +361,7 @@ private:
 	 * loaded. The member definition_ contains the name of the definition and
 	 * function load the proper configuration.
 	 */
-	void definition_load_configuration();
+	void definition_load_configuration(const std::string& control_type);
 
 public:
 	/**
