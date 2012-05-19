@@ -77,7 +77,8 @@ tcontrol::tcontrol(const unsigned canvas_count)
 tcontrol::tcontrol(
 		  const implementation::tbuilder_control& builder
 		, const unsigned canvas_count)
-	: definition_(builder.definition)
+	: twidget(builder)
+	, definition_(builder.definition)
 	, label_(builder.label)
 	, use_markup_(false)
 	, use_tooltip_on_label_overflow_(builder.use_tooltip_on_label_overflow)
@@ -90,13 +91,6 @@ tcontrol::tcontrol(
 	, text_alignment_(PANGO_ALIGN_LEFT)
 	, shrunken_(false)
 {
-	set_id(builder.id);
-	set_linked_group(builder.linked_group);
-#ifndef LOW_MEM
-	set_debug_border_mode(builder.debug_border_mode);
-	set_debug_border_color(builder.debug_border_color);
-#endif
-
 	definition_load_configuration();
 
 	connect_signal<event::SHOW_TOOLTIP>(boost::bind(
