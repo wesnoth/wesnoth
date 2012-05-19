@@ -418,6 +418,9 @@ set(wesnoth-main_SRC
 	gui/auxiliary/iterator/walker_grid.cpp
 	gui/auxiliary/iterator/walker_widget.cpp
 	gui/auxiliary/log.cpp
+	gui/auxiliary/placer.cpp
+	gui/auxiliary/placer/horizontal_list.cpp
+	gui/auxiliary/placer/vertical_list.cpp
 	gui/auxiliary/old_markup.cpp
 	gui/auxiliary/timer.cpp
 	gui/auxiliary/tips.cpp
