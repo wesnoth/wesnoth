@@ -47,7 +47,7 @@ namespace {
 			if(!state.can_publish) {
 				s += _("addon_state^Not installed");
 			} else {
-				s += _("addon_state^Published");
+				s += _("addon_state^Published, not installed");
 			}
 			break;
 		case ADDON_INSTALLED:
