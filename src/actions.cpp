@@ -2582,7 +2582,7 @@ struct movement_surprises {
 };
 
 /// Handles animating unit movement in controllable stages
-class unit_mover
+class unit_mover : public boost::noncopyable
 {
 	unit_map& m_;
 	bool movement_started_;
@@ -2596,7 +2596,7 @@ class unit_mover
 	 * and removes it when destructed.  The real unit will be
 	 * hidden during that period.
 	 */
-	class animation_unit_placer
+	class animation_unit_placer : public boost::noncopyable
 	{
 		unit &ui_;
 		bool was_hidden_;
