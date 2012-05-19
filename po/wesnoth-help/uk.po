@@ -1,37 +1,37 @@
-# #-#-#-#-#  wesnoth-help.cpp.pot (wesnoth VERSION)  #-#-#-#-#
-# Ukrainian translations for wesnoth package.
+# #-#-#-#-#  wesnoth-help.cpp.pot (PACKAGE VERSION)  #-#-#-#-#
+# Ukrainian translations for PACKAGE package.
 # Copyright (C) 2012 Wesnoth development team
-# This file is distributed under the same license as the wesnoth package.
+# This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2012.
 #
+# Igor Paliychuk <mansonigor@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-04-07 12:14+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-05-18 12:28+0200\n"
+"PO-Revision-Date: 2012-05-02 17:54+0300\n"
+"Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"#-#-#-#-#  wesnoth-help.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
-"#-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
 #: data/core/macros/schedules.cfg:78
 msgid "Underground"
-msgstr ""
+msgstr "Підземелля"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:820
 #: data/core/macros/abilities.cfg:582
 msgid "berserk"
-msgstr ""
+msgstr "берсерк"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:823
@@ -41,12 +41,15 @@ msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
+"Берсерк:\n"
+"І у наступі і в обороні продовжує бій, поки один з бійців не загине, або "
+"доки не пройдуть 30 раундів бою."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:836
 #: data/core/macros/abilities.cfg:668
 msgid "magical"
-msgstr ""
+msgstr "магія"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:839
@@ -56,12 +59,15 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
 msgstr ""
+"Магія:\n"
+"Магія завжди потрапляє з вірогідністю 70%, незалежно від захисту того, хто "
+"обороняється."
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:851
 #: data/core/macros/abilities.cfg:717
 msgid "firststrike"
-msgstr ""
+msgstr "перший напад"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:854
@@ -70,18 +76,20 @@ msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
+"Перший напад:\n"
+"Боєць з цією атакою завжди завдає першого удару, навіть якщо захищається."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
-msgstr ""
+msgstr "зцілює +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
-msgstr ""
+msgstr "зцілює +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
@@ -95,18 +103,24 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Зцілює +4:\n"
+"Зцілює сусідніх дружніх бійців на початку свого ходу.\n"
+"\n"
+"Боєць отримує від цілителя до 4 ЗД за хід, або не втрачає здоров'я від "
+"отрути в поточному ходу.\n"
+"Отруєних бійців цілитель не лікує, шукайте село або лікаря."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
-msgstr ""
+msgstr "зцілює +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
 msgid "female^heals +8"
-msgstr ""
+msgstr "зцілює +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
@@ -121,22 +135,29 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Зцілює +8:\n"
+"Поєднання цілющих трав з відновлюючою магією зцілює бійців швидше, ніж це "
+"звичайно можливо на полі бою.\n"
+"\n"
+"Боєць отримує від цлителя до 8 ЗД за хід, або не втрачає здоров'я від отрути "
+"в поточному ходу.\n"
+"Отруєних бійців цілитель не лікує, шукайте село або лікаря."
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
 msgid "Encyclopedia"
-msgstr ""
+msgstr "Енциклопедія"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
 msgid "<ref>dst='..geography' text='Geography'</ref>"
-msgstr ""
+msgstr "<ref>dst='..geography' text='Географія'</ref>"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
 msgid "Caste"
-msgstr ""
+msgstr "Каста"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:8
@@ -145,11 +166,14 @@ msgid ""
 "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
 "Fighter'</ref>."
 msgstr ""
+"Один із варіантів назви касти дракончиків: це може бути як "
+"<ref>dst='unit_Drake Clasher' text='Боець'</ref> так і <ref>dst='unit_Drake "
+"Fighter' text='Дрейк Воїн'</ref>."
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
 msgid "Aerie"
-msgstr ""
+msgstr "Гніздо"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
@@ -158,11 +182,14 @@ msgid ""
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
+"Величезна подібна на замок споруда, дім <ref>dst='flight' text='зграї'</"
+"ref>. Там знаходяться <ref>dst='breeding_pen' text='загони для розмноження'</"
+"ref>."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
 msgid "Breeding Pen"
-msgstr ""
+msgstr "Загорода для розмноження"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
@@ -171,11 +198,14 @@ msgid ""
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
 "text='Dominant'</ref>’s eye."
 msgstr ""
+"Частина <ref>dst='aerie' text='гнізда'</ref> де живуть нечутливі "
+"<ref>dst='breeder' text='розплідниці'</ref> під наглядом <ref>dst='dominant' "
+"text='домінанта'</ref>."
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
 msgid "Breeding Cycle"
-msgstr ""
+msgstr "Цикл розмноження"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:26
@@ -183,11 +213,12 @@ msgid ""
 "The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
 "next."
 msgstr ""
+"Час, який проходить між двома відкладаннями <ref>dst=egg text='яєць'</ref>."
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
 msgid "World Ocean"
-msgstr ""
+msgstr "Світовий океан"
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:32
@@ -196,11 +227,15 @@ msgid ""
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
 "the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
 msgstr ""
+"Світовий океан - загальна назва морів, які оточують архіпелаг "
+"<ref>dst='morogor' text='Морогор'</ref>. Дрейки вважають, що він "
+"закінчується <ref>dst='abyss' text='Безоднею'</ref>, широким і смертельно "
+"небезпечним водоспадом."
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
 msgid "New Continent"
-msgstr ""
+msgstr "Новий континент"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
@@ -208,11 +243,13 @@ msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
+"Новий великий континент на схід від <ref>dst='morogor' text='Морогору'</"
+"ref>. Про його існування дрейки не знали аж до польоту Галуна."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
 msgid "Abyss"
-msgstr ""
+msgstr "Безодня"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:44
@@ -220,11 +257,13 @@ msgid ""
 "In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
 "falls off the world-disc."
 msgstr ""
+"У вченні дрейків описувалась як величезний і смертельний водоспад, що стікає "
+"із земного диску."
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
 msgid "Spiral Path"
-msgstr ""
+msgstr "Спіральний шлях"
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:50
@@ -233,11 +272,14 @@ msgid ""
 "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
 "Path'</ref>"
 msgstr ""
+"Напівсекретна організація дрейків, які присвятили себе запобіганню останній "
+"війні за Малтусіан. Див. також <ref>dst='straight_path' text='Прямий шлях'</"
+"ref>"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:55
 msgid "Straight Path"
-msgstr ""
+msgstr "Прямий шлях"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:56
@@ -246,11 +288,13 @@ msgid ""
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
+"Традиція дрейків неустанного розширення і захоплення. Цей термін зазвичай "
+"використовують члени <ref>dst='spiral_path' text='Спірального шляху'</ref>."
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
 msgid "Dominant"
-msgstr ""
+msgstr "Домінант"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
@@ -260,11 +304,14 @@ msgid ""
 "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
 "privileges on others."
 msgstr ""
+"<ref>dst='aspirant' text='Претендент'</ref>, є лідером дрейків, єдиний дрейк "
+"в усьому племені, якому дозволено запліднювати <ref>dst='breeder' "
+"text='розплідниць'</ref>. Зрідка він поступається цим привілеєм іншим."
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
 msgid "Vulcaniad"
-msgstr ""
+msgstr "Вулканіада"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
@@ -273,11 +320,14 @@ msgid ""
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
 "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
 msgstr ""
+"(Непостійний) період між послідовними виверженнями <ref>dst='mount_morogor' "
+"text='гори Морогор'</ref>. На ньому заснований календар "
+"<ref>dst='long_count' text='Довгого Числення'</ref>."
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
 msgid "Recorder"
-msgstr ""
+msgstr "Хранитель"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
@@ -287,27 +337,30 @@ msgid ""
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
 msgstr ""
+"Хранитель - літописець дрейків, який придумав їх <ref>dst='drakish_script' "
+"text='письмо'</ref>. Це єдина <ref>dst='caste' text='каста'</ref> дрейків, "
+"яка не визначається біологією: вони набирають своїх членів з усіх інших каст."
 
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
 msgid "Laying"
-msgstr ""
+msgstr "Відкладання"
 
 #. [topic]: id=laying
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
 msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr ""
+msgstr "Частина <ref>dst='breeding_cycle' text='циклу розмноження'</ref>."
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
 msgid "Hatching"
-msgstr ""
+msgstr "Вилуплення"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
 msgid "Hatchling"
-msgstr ""
+msgstr "Дитинча"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
@@ -316,11 +369,13 @@ msgid ""
 "the current generation of hatchlings are the most aggressive is the behavior "
 "of the <ref>dst='flight' text='flight'</ref>."
 msgstr ""
+"Молодий дрейк, який ще не бачив, як вилуплюється наступне покоління. Молодь "
+"нинішнього покоління - найагресивніші з <ref>dst='flight' text='зграї'</ref>."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
 msgid "Fledgling"
-msgstr ""
+msgstr "Пташеня"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
@@ -329,11 +384,14 @@ msgid ""
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
+"Молодий дрейк, який вже застав вилуплення наступного покоління. Якщо "
+"<ref>dst='flight' text='зграя'</ref> може собі дозволити втратити покоління, "
+"вони починають <ref>dst='swarming' text='роїння'</ref>."
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
 msgid "Breeder"
-msgstr ""
+msgstr "Розплідниця"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:104
@@ -344,11 +402,16 @@ msgid ""
 "take care of their food for themselves when laying. Drake breeders become "
 "fertile after the next <ref>dst='hatching' text='hatching'</ref>."
 msgstr ""
+"Самиця дрейків. Вони дуже рідкісні, оскільки <ref>dst='egg' text='яйця'</"
+"ref>, з яких вилупляються розплідниці, потребують особливого догляду. "
+"Кількість розплідниць також обмежена кількістю інших дрейков, оскільки вони "
+"не можуть добувати собі їжу під час відкладання яєць. Розплідниці можуть "
+"плодитися після наступного <ref>dst='hatching' text='відкладання'</ref>."
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:109
 msgid "Egg, Drake"
-msgstr ""
+msgstr "Яйце дрейка"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:110
@@ -357,11 +420,14 @@ msgid ""
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid "
 "and to some extent the ambient temperature."
 msgstr ""
+"<ref>dst=caste text='Каста'</ref>, до якої належатиме <ref>dst='hatchling' "
+"text='дитинча'</ref> визначається часом, коли відкладено яйце, і частково "
+"температурою оточення."
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
 msgid "Flight"
-msgstr ""
+msgstr "Зграя"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
@@ -370,11 +436,14 @@ msgid ""
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
+"Плем'я дрейків, яке живе в <ref>dst='aerie' text='гнізді'</ref>, і тримає "
+"мисливські угіддя. У кожному племені є один <ref>dst='dominant' "
+"text='домінант'</ref>, який має привілей спаровування."
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:121
 msgid "Aspirant"
-msgstr ""
+msgstr "Претендент"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
@@ -384,22 +453,26 @@ msgid ""
 "secretion of the hormone is caused by hunt and combat actions in which the "
 "drake is involved."
 msgstr ""
+"Самці дрейків, які досягли статевого дозрівання і здатні спарюватись з "
+"<ref>dst='breeder' text='розплідницею'</ref>. Дозрівання відбувається за "
+"рахунок гормонів, які виділяються під час полювання і битв."
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:127
 msgid "Ascendant"
-msgstr ""
+msgstr "Предок"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
+"Назва дрейків для істинних <ref>dst='unit_Fire Dragon' text='драконів'</ref>."
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
 msgid "Intendant"
-msgstr ""
+msgstr "Управитель"
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:134
@@ -411,11 +484,17 @@ msgid ""
 "likeliest to be granted mating privileges, especially after a notable "
 "service."
 msgstr ""
+"Один з <ref>dst='aspirant' text='претендентів'</ref>, наближених до "
+"<ref>dst='dominant' text='домінанта'</ref>. Традиційно домінант вибирає по "
+"одному з кожної <ref>dst=caste text='касти'</ref>, окрім власної. Крім того, "
+"іноді призначаються додаткові \"Управителі\" для особливих доручень. У "
+"управителів найбільші шанси отримати привілей спаровування, наприклад, в "
+"нагороду за службу."
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
 msgid "Swarm"
-msgstr ""
+msgstr "Рій"
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:140
@@ -423,11 +502,13 @@ msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
+"<ref>dst='swarmlings' text='Дрейки, що рояться'</ref>, що покинули "
+"<>dst='aerie' text='гніздо'</ref>, щоб заснувати нове."
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
 msgid "Swarming"
-msgstr ""
+msgstr "Роїння"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -436,21 +517,24 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
+" <ref>dst='flight' text='Зграя'</ref> нового <ref>dst='aerie' text='гнізда'</"
+"ref> дрейків, що виникає після кожного <ref>dst='breeding_cycle' text='циклу "
+"розмноження'</ref>. Див. <ref>dst='swarm' text='рій'</ref>"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
 msgid "Runners"
-msgstr ""
+msgstr "Бігуни"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:152
 msgid "Drakish term for escaped slaves hunted as game."
-msgstr ""
+msgstr "Назва дрейків для рабів, на яких полюють для забави."
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
 msgid "Mount Morogor"
-msgstr ""
+msgstr "Гора Морогор"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
@@ -458,11 +542,13 @@ msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Вулканічна гора на центральному острові архіпелагу <ref>dst='morogor' "
+"text='Морогор'</ref>."
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
 msgid "Long Count"
-msgstr ""
+msgstr "Довге Числення"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
@@ -470,23 +556,25 @@ msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
+"Календар дрейків, оснований на <ref>dst='vulcaniad' текст='Вулканіадах'</"
+"ref> і <ref>dst=breeding_cycle text='циклах розмноження'</ref>."
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
 msgid "Long Pig"
-msgstr ""
+msgstr "Довга свинка"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:170
 msgid ""
 "South Seas pidgin for human meat, used to translate a Drakish word with the "
 "same meaning."
-msgstr ""
+msgstr "На діалекті Південних морів - людське м'ясо; переклад з мови дрейків."
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
 msgid "Ceramics"
-msgstr ""
+msgstr "Кераміка"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
@@ -495,11 +583,14 @@ msgid ""
 "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
 "generate the amount of heat to cure the pieces to full strength."
 msgstr ""
+"Дрейки працюють з металом, але є і майстри по роботі з керамікою. Лише у "
+"<ref>dst='unit_Drake Burner' text='паліїв'</ref> вистачає полум'я, "
+"необхідного для випалення кераміки."
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:181
 msgid "Drakish, script"
-msgstr ""
+msgstr "Письмо дрейків"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
@@ -508,28 +599,30 @@ msgid ""
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
 "text='Recorder'</ref> vocation."
 msgstr ""
+"Письмо дрейків. Ним користуються <ref>dst='recorder' text='хранителі'</ref>, "
+"і записують текст на <ref>dst='ceramic' text='керамічних</ref> пластинах."
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:187
 msgid "Drakish, language"
-msgstr ""
+msgstr "Мова дрейків"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:188
 msgid "The language spoken by the drakes."
-msgstr ""
+msgstr "Мова, на якій говорять дрейки."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
 #: data/core/encyclopedia/geography.cfg:11
 #: data/core/encyclopedia/geography.cfg:18
 msgid "Geography"
-msgstr ""
+msgstr "Географія"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:25
 msgid "Arkan-thoria"
-msgstr ""
+msgstr "Аркан-торія"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:26
@@ -537,11 +630,13 @@ msgid ""
 "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
 "ref> and running east to the Listra."
 msgstr ""
+"Ріка, що бере свій початок в <ref>dst='heart_mountains' text='Горах Серця'</"
+"ref> і тече на схід, до Лістру."
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:31
 msgid "Great Ocean"
-msgstr ""
+msgstr "Великий океан"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:32
@@ -550,11 +645,14 @@ msgid ""
 "and all rivers eventually flow to it. Far to the west in the the Great Ocean "
 "is a huge archipelago called <ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Лежить на захід від <ref>dst='great_continent' text='континенту'</ref>; у "
+"нього впадають усі річки. Далеко на заході Великого океану розташований "
+"величезний архипелаг <ref>dst='morogor' text='Морогор'</ref>."
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:37
 msgid "Morogor"
-msgstr ""
+msgstr "Морогор"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:40
@@ -565,22 +663,29 @@ msgid ""
 "It is mostly inhabited by <ref>dst='..race_drake' text='drakes'</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
+"Архипелаг, розташований десь в <ref>dst='great_ocean' text='Великому "
+"океані'</ref> на захід від <ref>dst='green_isle' text='Зеленого острову'</"
+"ref> і на схід від <ref>dst=old_continent text='Старого континенту'</ref>.\n"
+"В основному заселений <ref>dst='..race_drake' text='дрейками'</ref>.\n"
+"Центральний острів архипелагу також називається \"Морогор\"."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:45
 msgid "Green Isle"
-msgstr ""
+msgstr "Зелений острів"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:46
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Великий острів, що лежить в <ref>dst='great_ocean' text='Великому океані'</"
+"ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
 msgid "Old Continent"
-msgstr ""
+msgstr "Старий континент"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
@@ -588,11 +693,13 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Лежить на захід від <ref>dst='morogor' text='Морогору'</ref> посеред "
+"<ref>dst='great_ocean' text='Великого океану'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:57
 msgid "Great Continent"
-msgstr ""
+msgstr "Великий континент"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:58
@@ -601,11 +708,14 @@ msgid ""
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Континент, на якому знаходиться <ref>dst='kingdom_wesnoth' text='Королівство "
+"Веснот'</ref>. ЙОго західне узбережжя омивається <ref>dst='great_ocean' "
+"text='Великим Океаном'</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:63
 msgid "Irdya"
-msgstr ""
+msgstr "Ірдія"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:64
@@ -615,11 +725,15 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
+"Світ, де знаходиться королівство <ref>dst='kingdom_wesnoth' text='Веснот'</"
+"ref>, називається \"Ірдія\". Ця назва, втім, рідко згадується в епоху, до "
+"якої відноситься головна карта. Мешканці зазвичай говорять \"світ\" або, "
+"поетично, \"великий зелений світ\"."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
 msgid "Kingdom of Wesnoth"
-msgstr ""
+msgstr "Королівство Веснот"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:95
@@ -678,11 +792,66 @@ msgid ""
 "south of Aldril. It receives drainage from the Brown Hills and feeds into "
 "the Great River. (Not shown on the main map.)"
 msgstr ""
+"Королівство Веснот розташоване не півночі центральної частини "
+"<ref>dst='great_continent' text='Великого континенту'</ref>. У ньому "
+"відбувається дія більшості основних кампаній. На півночі воно обмежене "
+"Великою річкою, на заході - узбережжям Великого океану, на "
+"<ref>dst='southwest_elven_lands' text='південному заході'</ref> - Етенським "
+"лісом, а на південному сході - Гіркою трясовиною (нижній правий кут основної "
+"карти).\n"
+"\n"
+"За річкою Етен, на південь від форту Тан, лежить веснотська прикордонна "
+"область. На півдні (за межами карти), вона обмежена глухою гущавиною; "
+"Етенский ліс можна вважати їх північним продовженням.\n"
+"\n"
+"    • Великі міста:\n"
+"          ◦ Велдін: столиця Весноту.\n"
+"          ◦ Алдріл: місто в бухті Перлин.\n"
+"          ◦ Чорноводдя: місто на південь від бухти Перлин.\n"
+"          ◦ Карцин: лежить між Сивим лісом і Великою річкою.\n"
+"          ◦ Дан'Тонк: найбільше місто в країні, розміщене в центрі країни, "
+"на північний захід від Велдіна.\n"
+"          ◦ Сорадок: північна застава Весноту, контролює злиття Великої "
+"річки і річки Велдін.\n"
+"          ◦ Форт Тан: південна застава, контролює перетин дороги між "
+"північчю і півднем з річкою Етен.\n"
+"          ◦ Тат: важливе місто на північ від Дан'Тонку, дозволяє тримати під "
+"контролем дикі землі навколо східних схилів Бурих пагорбів і на північ до "
+"переправи Абез.\n"
+"\n"
+"    • Помітні особливості ландшафту:\n"
+"          ◦ Гора Грифонів: дім легендарних грифонів\n"
+"          ◦ Переправа Абез: мілководдя на Великій річці, зазвичай його "
+"контролюють війська Весноту\n"
+"          ◦ Ріка Велдін: відгалуження Великої річки, тече на південь\n"
+"          ◦ Велика Центральна рівнина: область, обмежена Велдіном, "
+"Дан'Тонком і фортом Тан, тут знаходяться пшеничні поля Весноту і домівки "
+"більшості його жителів\n"
+"          ◦ Пагорби Дулатус: горбиста місцевість, що обмежує Велику "
+"Центральну рівнину, домівка багатьох веснотских домашніх тварин і "
+"сільськогосподарських рослин\n"
+"          ◦ Бурі пагорби: Пустки навкруги гори Грифонів; малонаселені і "
+"іноді дуже небезпечні.\n"
+"          ◦ Кінні луги: полонини на південь від Великої річки, оточені лісом "
+"Глин заході і рікою Велдін на сході; південна частина переходить в "
+"Центральну рівнину. Домівка могутніх Кланів; тут вирощують кращих "
+"веснотських коней.\n"
+"          ◦ Пагорби Східного Рубежу: протяжна гряда на південь від Великої "
+"річки і на захід від річки Велдін. У північній частині, найближеній до річки "
+"Велдін, іноді селяться веснотці, але королівство ледве встигає за ними "
+"стежити, так що бандитизм процвітає.\n"
+"          ◦ Ліс Глин: іноді його називають Королівським лісом, на честь "
+"одного з синів Хальдріка II\n"
+"          ◦ Сивий ліс: великий ліс посеред диких веснотських земель, лежить "
+"між Карцином і Алдрілом; його часто відвідують\n"
+"          ◦ Зелена трясовина: велике болото посеред диких веснотських "
+"земель, на південь від Алдрілу. Вбирає в себе потоки з Бурих пагорбів, вода "
+"з неї стікає у Велику річку. (На основній карті не показана.)"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:100
 msgid "Elensefar"
-msgstr ""
+msgstr "Еленсефар"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:107
@@ -703,11 +872,25 @@ msgid ""
 "          ◦ <ref>dst='great_river' text='Great River'</ref>: It is very wide "
 "at this point, and only ships can cross it."
 msgstr ""
+"Еленсефар в різні часи був і провінцією <ref>dst='kingdom_wesnoth' "
+"text='Весноту'</ref>, і незалежною державою, і частиною федерації з "
+"Веснотом. На півночі обмежений Великою річкою, на сході - ледве обкресленою "
+"межею з Веснотом, на півдні - бухтою Перлин, на заході "
+"<ref>dst='great_ocean' text='океаном'</ref>. Більше можна дізнатися з "
+"історії Весноту.\n"
+"\n"
+"    • Великі міста:\n"
+"          ◦ Еленсефар: столиця, розташоване на острові в гирлі "
+"<ref>dst='great_river' text='Великої річки'</ref>\n"
+"          ◦ Карцин: місто на межі з Веснотом, спірна земля\n"
+"    • Помітні особливості ландшафту:\n"
+"          ◦ <ref>dst='great_river' text='Велика річка'</ref>: в цих місцях "
+"вона дуже широка; перепливти її можна лише на кораблі."
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:112
 msgid "Northlands"
-msgstr ""
+msgstr "Північні землі"
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:130
@@ -752,11 +935,47 @@ msgid ""
 "          ◦ Great River: The origin of this river is somewhere in the east "
 "of the northern lands"
 msgstr ""
+"Північ - нічийна земля. Населена групами орків, гномів, людей-варварів, а "
+"іноді і ельфів. Північна і східна межі не визначені, на півдні обмежена "
+"<ref>dst='great_river' text='Великою річкою'</ref>, а на заході - "
+"<ref>dst='great_ocean' text='Великим океаном'</ref>.\n"
+"\n"
+"    • Великі міста:\n"
+"          ◦ Гламдрол: столиця племені орків\n"
+"          ◦ Ромір: ще одна столиця орків\n"
+"          ◦ Весмер: тут розташована Ка-ліан - ельфійська Рада\n"
+"          ◦ Брами Гномів: змішане місто людей та гномів в районі Кналга, на "
+"півдні гір Серця. Великий торговельний центр.\n"
+"          ◦ Даллбен і Дельвін: людські села, побудовані поселенцями, які "
+"перетнули Велику річку за часів Золотого століття Весноту. Нині покинуті. "
+"Лісисту місцевість на північний схід від Еленсефару, де знаходилися ці села, "
+"люди називали провінцією Аннувін; ельфам же вона була відома як Весмер.\n"
+"\n"
+"    • Помітні особливості ландшафту:\n"
+"          ◦ Гори Серця: Практично непрохідний хребет між річковою долиною і "
+"Північними рівнинами.\n"
+"          ◦ Сердечні Ікла: особливо неприступна місцевість з високими піками "
+"на південний захід від озера Вруг і на північ від лісу Весмер. Найбільш "
+"негостинна і небезпечна частина гір Серця; тут живуть лише відлюдники, "
+"божевільні і маги.\n"
+"          ◦ Болото Жаху: величезна трясовина між горами Серця і Великою "
+"річкою. Сумнозвісне, небезпечне місце.\n"
+"          ◦ Озеро Вруг: велике гірське озеро; річка, яка з нього витікає - "
+"єдиний прохід через Північні гори.\n"
+"          ◦ Аркан-торія: річка, яка витікає з озера Вруг. Це ельфійська "
+"назва, люди звуть її Лонглієр.\n"
+"          ◦ Ріка Лістра: південна притока Великої ріки; у неї впадає Аркан-"
+"торія.\n"
+"          ◦ Ліс Лінтанір: найпівденніша частина Великого Північного лісу. "
+"Східні і північні межі цього величезного гаю відомі лише ельфам. Люди лише "
+"зрідка добираються до їх столиці, Елензірії.\n"
+"          ◦ Велика річка: річка починає свій шлях десь на сході північних "
+"земель"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:135
 msgid "Southwest Elven Lands"
-msgstr ""
+msgstr "Південно-західні ельфійські землі"
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:141
@@ -773,11 +992,22 @@ msgid ""
 "the southwest—much farther than is charted—and is home to <ref>dst='.."
 "race_elf' text='elves'</ref>."
 msgstr ""
+"Лісові ельфи живуть окремо від північних і лише зрідка контактують з ними і "
+"більшістю інших народів. На північному сході ця земля виходить до Зеленої "
+"трясовини, на півдні - до пустелі (не показана), на заході - до "
+"<ref>dst='great_ocean' text='Океану'</ref>.\n"
+"\n"
+"    • Великі міста\n"
+"          ◦ Невідомі\n"
+"    • Помітні особливості ландшафту:\n"
+"          ◦ Етенский ліс: найбільший південний ліс - він тягнеться на "
+"південний захід набагато далі, ніж показано на карті. Тут живуть <ref>dst='.."
+"race_elf' text='ельфи'</ref>."
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:146
 msgid "Heart Mountains"
-msgstr ""
+msgstr "Гори Серця"
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:147
@@ -786,11 +1016,13 @@ msgid ""
 "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
 "Plains'</ref>."
 msgstr ""
+"Майже непрохідний бар'єр між <ref>dst='arkan_thoria' text='річковою'</ref> "
+"долиною та <ref>dst='far_north' text='Пінічною рівниною'</ref>."
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:152
 msgid "Far North"
-msgstr ""
+msgstr "Далека Північ"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:176
@@ -827,60 +1059,90 @@ msgid ""
 "          ◦ River Bork\n"
 "          ◦ Wild Steppe"
 msgstr ""
+"Холодна, сувора і неприступна Далека Північ - історична батьківщина Кланнату "
+"орків. Він лежить на північ від <ref>dst='heart_mountains' text='гір Серця'</"
+"ref>, які орки звуть Хаггід-Даргор і (без всяких підстав) вважають своїми. "
+"На сході оселилися Вільні племена Дикого степу, які відкололися від Кланнату "
+"і бродять разом з людьми-варварами, б'ються з Високими ельфами Північних "
+"рівнин (у людських землях вони відомі як Північні ельфи). Високі ельфи "
+"живуть далі на схід, де з чуток мають там велике королівство.\n"
+"\n"
+"    • Великі міста:\n"
+"          ◦ Бараг Гор, місто, де знаходиться Рада орків\n"
+"          ◦ Біток\n"
+"          ◦ Борстеп\n"
+"          ◦ Кастельфранк\n"
+"          ◦ Фарзі\n"
+"          ◦ Фестог\n"
+"          ◦ Грізбі\n"
+"          ◦ Лмаріг\n"
+"          ◦ Мелмог\n"
+"          ◦ Престім\n"
+"          ◦ Тірігаз\n"
+"    • Помітні особливості ландшафту:\n"
+"          ◦ Болото Відчаю\n"
+"          ◦ Гори Дорт\n"
+"          ◦ Горы Хааг\n"
+"          ◦ Зелений ліс\n"
+"          ◦ Тихий Ліс\n"
+"          ◦ Ліс Телієн\n"
+"          ◦ Ріка Умф\n"
+"          ◦ Ріка Борк\n"
+"          ◦ Дикий Степ"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
 #: data/core/help.cfg:10 data/core/help.cfg:78
 msgid "Introduction"
-msgstr ""
+msgstr "Вступ"
 
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:16 data/core/help.cfg:126
 msgid "Gameplay"
-msgstr ""
+msgstr "Геймплей"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:22 data/core/help.cfg:348
 msgid "Traits"
-msgstr ""
+msgstr "Особливості"
 
 #. [section]: id=units
 #. [topic]: id=..units
 #: data/core/help.cfg:31 data/core/help.cfg:84
 msgid "Units"
-msgstr ""
+msgstr "Бійці"
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:40 data/core/help.cfg:90
 msgid "Abilities"
-msgstr ""
+msgstr "Здібності"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:48 data/core/help.cfg:99
 msgid "Weapon Specials"
-msgstr ""
+msgstr "Особливості зброї"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:56 src/help.cpp:1298 src/help.cpp:1300
 msgid "Factions"
-msgstr ""
+msgstr "Фракції"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
 #: data/core/help.cfg:63 data/core/help.cfg:482
 msgid "Terrains"
-msgstr ""
+msgstr "Місцевості"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
 #: data/core/help.cfg:70 data/core/help.cfg:784
 msgid "Commands"
-msgstr ""
+msgstr "Команди"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:93
@@ -890,6 +1152,10 @@ msgid ""
 "will be listed under this topic as you encounter them.\n"
 "\n"
 msgstr ""
+"Певні бійці мають здібності, які безпосередньо впливають на інших бійців, "
+"або міняють взаємодію між іншими бійцями. Ці здібності будуть перелічені в "
+"цьому розділі в міру того, як ви їх зустрічатимете.\n"
+"\n"
 
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:102
@@ -898,11 +1164,14 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
+"Деякі типи зброї мають спеціальні властивості, що збільшують ефективність їх "
+"атак.\n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:109
 msgid "Unknown Unit"
-msgstr ""
+msgstr "Невідомий боєць"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:112
@@ -912,11 +1181,15 @@ msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"Цей боєць Вам доки невідомий. Ви повинні зустріти його в грі, щоб побачити "
+"його опис."
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:117
 msgid "Overview"
-msgstr ""
+msgstr "Огляд"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:120
@@ -930,11 +1203,19 @@ msgid ""
 "however — from these simple rules arise a wealth of strategy, making the "
 "game easy to learn but a challenge to master."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='Битва за Веснот'</italic> - це покрокова стратегічна гра в "
+"стилі фентезі, трохи несхожа на сучасні стратегічні ігри. В той час, як інші "
+"ігри ускладнюють правила і ігровий процес, <italic>text='Битва за Веснот'</"
+"italic>, навпаки, робить їх простішими. Це не робить гру простою, а навпаки "
+"- простота правил розкриває всі можливості статегічної гри, робить гру "
+"простою в навчанні та дає справжінй виклик досвідченим гравцям."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:132
 msgid "Fundamentals of Gameplay"
-msgstr ""
+msgstr "Основи Геймплею"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:133
@@ -945,6 +1226,11 @@ msgid ""
 "come across new aspects of the game. For more detailed information on "
 "special situations and exceptions, please follow the links included."
 msgstr ""
+"Ці сторінки містять все, що потрібно знати, щоб грати в <italic>text='Битву "
+"за Веснот'</italic>. Тут пояснюються правила і основи ігрового процесу. "
+"Кожного разу, коли Ви стикаєтеся з чимось новим, тут з'являється нова "
+"інформація. Детальнішу інформацію про особливі ситуації і виключення шукайте "
+"в посиланнях."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:135
@@ -958,6 +1244,15 @@ msgid ""
 "then <italic>text='Heir to the Throne'</italic>. As <italic>text='Battle for "
 "Wesnoth'</italic> can be quite challenging, you may wish to start on easy."
 msgstr ""
+"\n"
+"\n"
+"Краще всього почати з <bold>text='Навчання'</bold>, натиснувши відповідну "
+"кнопку в головному меню, Ви почнете навчальну кампанію, яка допоможе "
+"освоїться в грі. Після завершення навчання рекомендуємо зіграти в кампанію "
+"Спадкоємець Престолу. Для цього натисніть кнопку <bold>text='Кампанія'</"
+"bold> у головному меню, а потім виберіть кампанію <italic>text='Спадкоємець "
+"Престолу'</italic>. Якщо <italic>text='Битва за Веснот'</italic> здається "
+"вам важкою, можете почати з легкого рівня складності."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:138
@@ -968,11 +1263,15 @@ msgid ""
 "encounter new <ref>dst='..abilities_section' text='abilities'</ref> for the "
 "first time."
 msgstr ""
+"Граючи, пам'ятайте, що можна навести курсор миші на будь-який об'єкт - "
+"наприклад, на інформацію в рядку стану - і тоді з'явиться короткий опис "
+"цього об'єкту. Це особливо корисно при вивченні нових <ref>dst='.."
+"abilities_section' text='здібностей'</ref>."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:143
 msgid "About the Game"
-msgstr ""
+msgstr "Про Гру"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:144
@@ -985,6 +1284,13 @@ msgid ""
 "other people connected to that network. If your computer has a connection to "
 "the Internet, you can play against other people across the Internet."
 msgstr ""
+"Гра складається з ряду битв, які ми називаємо <italic>text='сценаріями'</"
+"italic>. У кожному сценарії ваші війська б'ються проти одного або кількох "
+"противників. Ви можете грати проти комп'ютера, або з друзями, роблячи ходи "
+"по черзі (граючи на одному комп'ютері). Якщо ваш комп'ютер під'єднаний до "
+"локальної мережі, ви також можете грати з іншими людьми в цій мережі. Якщо "
+"ваш комп'ютер під'єднаний до інтернету, ви можете грати з людьми зі всього "
+"світу."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:146
@@ -996,11 +1302,17 @@ msgid ""
 "more carefully, preserving your best troops so that they can be used again "
 "in later scenarios in the campaign."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='Кампанії'</italic> складаються з декількох сценаріїв, які "
+"йдуть один за одним, розповідаючи якусь історію. У кампаніях часто "
+"доводиться бути обережним і берегти кращих бійців, щоб знову використати їх "
+"в наступних сценаріях кампанії."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:152
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "Перемога і Поразка"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:153
@@ -1012,6 +1324,12 @@ msgid ""
 "designated point, say, or rescuing someone, or solving a puzzle, or holding "
 "out against a siege until a certain number of turns have elapsed."
 msgstr ""
+"Уважно читайте <bold>text='Перелік завдань'</bold> у спливаючому вікні на "
+"початку кожного сценарію. Найчастіше, щоб перемогти, Ви повинні будете убити "
+"усіх ворожих лідерів, а поразка Вам зараховується, лише якщо убитий Ваш "
+"лідер. Але в деяких сценаріях можуть бути інші завдання - наприклад, довести "
+"вашого лідера до певного місця, або врятувати когось, або розгадати загадку, "
+"або протриматися під осадою протягом певної кількості ходів."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:155
@@ -1023,11 +1341,17 @@ msgid ""
 "things like changing your save options or (if you are in a multiplayer game) "
 "chatting with other players before pressing that button to advance."
 msgstr ""
+"\n"
+"\n"
+"Після перемоги в сценарії карта стане сірою і кнопка <bold>text='Завершити "
+"хід'</bold> зміниться на <bold>text='Скінчити місію'</bold>. Перш ніж "
+"продовжити Ви зможете, наприклад, змінити параметри збереження, або "
+"поспілкуватися в чаті з іншими гравцями у мультиплеєрі."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:162
 msgid "Recruiting and Recalling"
-msgstr ""
+msgstr "Вербування і Заклик"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:163
@@ -1043,6 +1367,17 @@ msgid ""
 "recruitment, along with their gold cost. Click on a unit to see its "
 "statistics, then press the recruit button to recruit it."
 msgstr ""
+"Кожен гравець починає гру з одним лідером у своїй цитаделі. На початку і "
+"впродовж кожної битви Вам треба буде вербувати <ref>dst='..units' "
+"text='бійців'</ref> для своєї армії. Щоб вербувати бійців, ваш лідер "
+"(наприклад, Конрад в кампанії <italic>text='Спадкоємець престолу'</italic>) "
+"повинен знаходитися в цитаделі <ref>dst='terrain_castle' text='замку'</ref>. "
+"Тоді Ви можете <bold>text='Вербувати'</bold> бійців, вибравши відповідний "
+"пункт в меню, або клацнувши правою кнопкою миші по цитаделі і вибравши пункт "
+"<bold>text='Вербувати'</bold>. З'явиться меню вербування із списком "
+"доступних бійців і їх вартістю. Клацніть на бійця, щоб побачити його "
+"характеристику, а потім натисніть кнопку \"Вербувати\", щоб завербувати "
+"бійця."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:165
@@ -1054,6 +1389,13 @@ msgid ""
 "You may only recruit as many units as you have free hexes in your castle, "
 "and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
+"\n"
+"\n"
+"Якщо Ви натиснете правою кнопкою миші на полі замку і завербуєте бійця, він "
+"з'явиться на тому ж полі. Або він з'явиться на вільному полі поряд з вежею. "
+"Ви можете завербувати за хід стільки бійців, скільки є вільних полів у "
+"Вашому замку, і Ви не зможете витратити на вербування більше золота, ніж "
+"маєте."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:167
@@ -1063,6 +1405,10 @@ msgid ""
 "Recruited units come with two random <ref>dst='..traits_section' "
 "text='traits'</ref> which modify their statistics."
 msgstr ""
+"\n"
+"\n"
+"Завербовані бійці отримують дві випадкові <ref>dst='..traits_section' "
+"text='особливості'</ref>, які змінюють їх характеристики."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:169
@@ -1073,6 +1419,12 @@ msgid ""
 "Recalling costs a standard 20 gold and presents you with a list of all "
 "surviving units from previous scenarios."
 msgstr ""
+"\n"
+"\n"
+"У пізніших сценаріях ви можете також Закликати бійців, що вижили в "
+"попередніх битвах. Заклик завжди коштує 20 золотих монет: з меню заклику Ви "
+"зможете повернути на поле бою будь-якого бійця, що вижив в попередніх "
+"сценаріях."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -1083,11 +1435,16 @@ msgid ""
 "support. See <ref>dst='income_and_upkeep' text='income and upkeep'</ref> for "
 "more information."
 msgstr ""
+"\n"
+"\n"
+"Пам'ятайте, що бійці вимагають золота не лише при вербуванні або заклику: їм "
+"також потрібні гроші на утримання. Дивіться детально в розділі "
+"<ref>dst='income_and_upkeep' text='прибуток і утримання'</ref>."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:178
 msgid "Orbs"
-msgstr ""
+msgstr "Кулі"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:179
@@ -1095,37 +1452,42 @@ msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
+"Над смужкою здоров'я кожного бійця намальована куля. Для ваших бійців ця "
+"куля означає:"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:180
 msgid " green if it hasn’t moved this turn,"
-msgstr ""
+msgstr " зелений, якщо боєць не рухався цьому ходу,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:181
 msgid " yellow if it has moved, but could still move further or attack, or"
 msgstr ""
+" жовтий, якщо він рухався, але все ще може рухатися далі або нападати, або"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:182
 msgid ""
 " red if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
+" червоний, якщо боєць вже не може рухатись чи нападати, або гравець завершив "
+"хід бійця."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:183
 msgid " blue if the unit is an ally you do not control."
-msgstr ""
+msgstr " синій, якщо боєць - ваш союзник, яким ви не можете керувати."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:184
 msgid " Enemy units have no orb on top of their energy bar."
-msgstr ""
+msgstr " Бійці противника не мають кулі над смужкою здоров'я."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:191
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "Здоров'я та Досвід"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:192
@@ -1136,6 +1498,11 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
+"Кожен боєць має певну кількість <italic>text='одиниць життя'</italic> (ЗД). "
+"Якщо здоров'я бійця падає нижче 1, боєць гине. Кожен боєць також має певну "
+"кількість <italic>text='одиниць досвіду'</italic> (ДВ). Щойно завербовані "
+"новобранці не мають жодної одиниці досвіду, вони отримають досвід в битвах з "
+"ворогами."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:196
@@ -1144,6 +1511,8 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
+"Здоров'я і досвід зазначені на панелі стану за допомогою двох цифр (поточне "
+"і максимально можливе для цього бійця значения)."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:197
@@ -1153,11 +1522,15 @@ msgid ""
 "experience bar, which turns white as the unit is about to "
 "<ref>dst='experience_and_advancement' text='advance'</ref>."
 msgstr ""
+"Здоров'я також відображується смужкою поряд з бійцем, вона може бути "
+"зеленою, жовтою або червоною. У бійця, що має хоч би 1 одиницю досвіду, є "
+"синя смужка досвіду, яка біліє у міру того, як боєць наближається до "
+"<ref>dst='experience_and_advancement' text='просуванню'</ref>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:204
 msgid "Movement"
-msgstr ""
+msgstr "Рухи"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:205
@@ -1175,6 +1548,18 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
+"Рухатись в <italic>text='Битві за Веснот'</italic> простіше простого. "
+"Виберіть бійця, який повинен зробити хід, а потім виберіть поле, на яке він "
+"повинен перейти. Усі поля, до яких вибраний боєць може добратися за один "
+"хід, підсвічуватимуться. Навівши мишу на підсвічене поле, Ви побачите "
+"величину захисту, який боєць отримає на цьому полі. При наведенні миші на "
+"затінене поле також відобразиться кількість ходів, за яку боєць дійде до "
+"нього: якщо ви клацнете на полі, боєць відправиться до нього по найкоротшому "
+"шляху, в цьому на наступних необхідних ходах. Якщо ви витратили не всі очки "
+"пересування за раз, то бійця можна перемістити знову. Це корисно коли треба "
+"поміняти двох бійців місцями. При нападі використовуються всі вільні очки "
+"переміщення. Закінчивши рух в чужому селі, боєць також витрачає всі вільні "
+"очки, але все ще зможе нападати."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:207
@@ -1191,9 +1576,20 @@ msgid ""
 "it, selecting <bold>text='Unit Description'</bold>, and then looking at "
 "<bold>text='Terrain Modifiers'</bold>."
 msgstr ""
+"\n"
+"\n"
+"Кожнем боєць має певну кількість очків руху для переміщення на наступне "
+"поле. Ця кількість залежить від типу місцевості цього поля. Наприклад, для "
+"того, щоб перейти на луг, завжди потрібне 1 очко руху. Також кількість очок "
+"руху залежить від типу бійця - в лісі ельфи витрачають лише 1 очко руху, "
+"більшості ж людей і орків потрібно 2 очки, а вершникиам - 3. Щоб дізнатися, "
+"скільки очків руху боєць витратить на вхід в певну місцевість, натисніть по "
+"ньому правою кнопкою, виберіть <bold>text='Опис бійця'</bold> і загляньте в "
+"пункт <bold>text='Модифікатори місцевості'</bold>."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:209
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1205,6 +1601,13 @@ msgid ""
 "<ref>dst='ability_skirmisher' text='skirmishers'</ref> can ignore zones of "
 "control."
 msgstr ""
+"\n"
+"\n"
+"Роблячи хід, також треба пам'ятати про <italic>text='зони контролю'</"
+"italic>. Кожен боєць створює в сусідніх полях зону контролю, і будь-який "
+"противник, що вступив на одне з цих полів, негайно закінчує рух. Розуміти, "
+"як отримувати користь з зон контролю - важлива частина Весноту; лише "
+"<ref>dst='ability_skirmisher' text='невловимі'</ref> можуть їх ігнорувати."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:211
@@ -1215,11 +1618,16 @@ msgid ""
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
+"\n"
+"\n"
+"Щоб побачити куди противник може дійти протягом наступного ходу, натисніть "
+"Ctrl-v або Cmd-v. Ctrl-b або Cmd-b показують, куди ворог міг би дійти, якби "
+"ваших бійців не було на карті і вони не блокували б його переміщення."
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:218
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "Пелена та Туман Війни"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:221
@@ -1245,11 +1653,31 @@ msgid ""
 "bold> (or the end of your turn) and thereby preserve your ability to undo "
 "movement."
 msgstr ""
+"У деяких сценаріях частини карти будуть від вас приховані. Є два механізми, "
+"які можуть працювати окремо або разом. <italic>text='Пелена'</italic> "
+"приховує і карту, і бійців. Але розвідавши територію, ви завжди бачитимете "
+"це місце. <italic>text='Туман війни'</italic> приховує лише бійців і не дає "
+"побачити, хто володіє селами (за винятком Вас і союзників). Туман війни "
+"зникає на якийсь час, поки ваші бійці знаходяться неподалік, і знову "
+"повертається, коли вони йдуть. І пелена, і туман війни очищуються бійцями. "
+"Кожен боєць очищує місцевість на крок далі, ніж може дійти (при цьому не "
+"враховуються зони контролю бійців противника).\n"
+"\n"
+"Зазвичай ви можете скасувати переміщення бійця, якщо не сталося ніяких подій "
+"з випадковим результатом, як наприклад битва або вербування (оскільки при "
+"вербуванні більшість бійців отримують випадкові особливості). Але "
+"дослідження невідомих земель, що знімає пелену або туман війни, не можна "
+"скасувати. Можна ввімкнути параметр <bold>text='Затримувати оновлення "
+"пелени'</bold> з меню дій, і тим самим зберегти пелену або туман до тих пір, "
+"поки не станеться подія з випадковим результатом, або доки карта не буде "
+"оновлена вручну через пункт меню <bold>text='Оновити пелену зараз'</bold> "
+"(або коли скінчиться ваш хід). Таким чином це дозволить вам скасовувати "
+"переміщення."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:228
 msgid "Combat"
-msgstr ""
+msgstr "Битва"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:229
@@ -1273,6 +1701,9 @@ msgid ""
 "\n"
 "<header>text='Order and Number of Strikes'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Порядок і Кількість Атак'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:233
@@ -1287,6 +1718,15 @@ msgid ""
 "5 damage, while an orcish grunt with a 9–2 attack can only strike twice (but "
 "at 9 damage for each hit)."
 msgstr ""
+"\n"
+"\n"
+"Нападник завдає першого удару, потім відповідає той, що обороняється. Кожен "
+"удар наносить певну кількість збитку, або промахується взагалі. Так триває "
+"до тих пір, поки обоє не витратять усі свої атаки. Кількість атак у різних "
+"бійців коливається; наприклад ельфійський воїн з атакою 5-4 може напасти 4 "
+"рази, наносячи при цьому 5 одиниць шкоди при попаданні, а піхотинці орків з "
+"атакою 9-2 можуть напасти лише двічі (але з збитком 9 за кожний успішний "
+"удар)."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:235
@@ -1295,6 +1735,9 @@ msgid ""
 "\n"
 "<header>text='Chance to Hit'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='Шанс попадания'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
@@ -1309,6 +1752,15 @@ msgid ""
 "only a 30% chance of hitting. Conversely, the elf’s chance of hitting the "
 "attacker in return depends on what terrain the attacker is in."
 msgstr ""
+"\n"
+"\n"
+"Шанс потрапити в бійця залежить від <italic>text='місцевості'</italic>, на "
+"якій він стоїть. Це можна побачити на панелі стану, або якщо натиснути на "
+"бійця правою кнопкою миші, вибрати <bold>text='Опис бійця'</bold> і "
+"проглянути <bold>text='Модифікатори місцевості'</bold>. Наприклад, багато "
+"ельфів в лісі мають рівень захищеності 70%, що означає, що шанс противника "
+"потрапити в нього рівний лише 30%. І навпаки, шанс ельфа потрапити в "
+"нападника залежить від типу місцевості, на якій стоїть нападник."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:239
@@ -1321,6 +1773,13 @@ msgid ""
 "regardless of terrain, and, when used offensively, marksmen always have at "
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
+"\n"
+"\n"
+"З цього правила є два винятки: <ref>dst='weaponspecial_magical' "
+"text='магічні атаки'</ref> і <ref>dst='weaponspecial_marksman' "
+"text='снайпери'</ref>. Магічні атаки завжди мають шанс потрапляння 70%, "
+"незалежно від місцевості. Шанс порапляння снайпера завжди не нижчий 60%, "
+"незалежно від місцевості, але лише при нападі."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:241
@@ -1329,6 +1788,9 @@ msgid ""
 "\n"
 "<header>text=Damage</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text=Шкода</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:243
@@ -1343,6 +1805,14 @@ msgid ""
 "modified by the circumstances, select <bold>text='Damage Calculations'</"
 "bold> in the attack selection menu."
 msgstr ""
+"\n"
+"\n"
+"Кожна вдала атака наносить деяку базову шкоду, залежно від типу атаки. "
+"Наприклад, ельфійський воїн з атакою 5-4 наносить базову шкоду в 5 одиниць. "
+"Це число коригують дві речі: <ref>dst='damage_types_and_resistance' "
+"text='опірність'</ref> і <ref>dst='time_of_day' text='час доби'</ref>. Щоб "
+"побачити, як змінюється базова шкода в поточних умовах, натисніть кнопку "
+"<bold>text='Обчислення ушкоджень'</bold> у вікні вибору атаки."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:245
@@ -1358,7 +1828,7 @@ msgstr ""
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:251
 msgid "Damage Types and Resistance"
-msgstr ""
+msgstr "Типи шкоди і Опірність"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:252
@@ -1370,6 +1840,11 @@ msgid ""
 "italic>. Different units may have resistances which alter the damage which "
 "they take from certain damage types."
 msgstr ""
+"У Весноті є три типи нанесеної шкоди, що пов'язані з фізичним нападом: шкода "
+"від <italic>text='ріжучої, колючої та ударної'</italic> зброї. Також є три "
+"типи ушкоджень, пов'язаних з магічним нападом: напад <italic>text='вогнем, "
+"холодом і містичний напад'</italic>. Різні бійці мають різну опірність проти "
+"кожного типу атаки."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:254
@@ -1382,6 +1857,13 @@ msgid ""
 "unit has −100% resistance against a damage type, it will suffer 100% more "
 "damage when hit by that type."
 msgstr ""
+"\n"
+"\n"
+"Опірність працює дуже просто: якщо опірність бійця до якого-небудь типу "
+"атаки складає 40%, то він отримає на 40% менше ушкоджень від цієї атаки. "
+"Боєць також може бути нестійким до певних атак. Якщо він має −100% опірності "
+"проти якого-небудь типу атаки, то він отримає від цієї атаки на 100% більше "
+"ушкоджень."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:256
@@ -1392,6 +1874,11 @@ msgid ""
 "are vulnerable to impact and fire damage, and extremely vulnerable to arcane "
 "damage."
 msgstr ""
+"\n"
+"\n"
+"Наприклад, скелети мають високу опірність до ушкоджень ріжучою та колючою "
+"зброєю, але дуже вразливі до ударної зброї та вогню, а особливо вразливі до "
+"містичного нападу."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:258
@@ -1402,11 +1889,15 @@ msgid ""
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 msgstr ""
+"\n"
+"\n"
+"Якщо удар досягає мети, він завжди наносить принаймні 1 одиницю збитку. Так "
+"стається навіть якщо ворог має опірність 100% проти атаки відповідного типу."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:264
 msgid "Time of Day"
-msgstr ""
+msgstr "Час Доби"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:269
@@ -1417,6 +1908,11 @@ msgid ""
 " Neutral units are unaffected by the time of day.\n"
 " Liminal units get −25% damage during both night and daytime."
 msgstr ""
+"Час доби впливає на шкоду, що наносять певні бійці:\n"
+" Порядні бійці наносять +25% шкоди вдень і −25% вночі.\n"
+" Хаотичні бійці наносять +25% шкоди вночі і −25% вдень.\n"
+" На нейтральних бійців час доби не впливає.\n"
+" Тіньові бійці наносять −25% шкоди вдень і вночі."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:272
@@ -1427,6 +1923,11 @@ msgid ""
 "pane. For the usual day/night cycle, morning and afternoon count as day, "
 "first and second watch count as night:\n"
 msgstr ""
+"\n"
+"\n"
+"Поточний час доби можна подивитися під мінікартою на панелі стану. Для "
+"звичайного циклу дня/ночі ранок і полудень вважаються днем, перша і друга "
+"варта вважаються за ніч:\n"
 
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
@@ -1434,19 +1935,19 @@ msgstr ""
 #: data/core/help.cfg:272 data/core/macros/schedules.cfg:6
 #: data/core/macros/schedules.cfg:246
 msgid "Dawn"
-msgstr ""
+msgstr "Світанок"
 
 #. [time]: id=morning
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:273 data/core/macros/schedules.cfg:17
 msgid "Morning"
-msgstr ""
+msgstr "Ранок"
 
 #. [time]: id=afternoon
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:274 data/core/macros/schedules.cfg:26
 msgid "Afternoon"
-msgstr ""
+msgstr "День"
 
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
@@ -1454,19 +1955,19 @@ msgstr ""
 #: data/core/help.cfg:275 data/core/macros/schedules.cfg:35
 #: data/core/macros/schedules.cfg:358
 msgid "Dusk"
-msgstr ""
+msgstr "Вечір"
 
 #. [time]: id=first_watch
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:276 data/core/macros/schedules.cfg:46
 msgid "First Watch"
-msgstr ""
+msgstr "Перша варта"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:277 data/core/macros/schedules.cfg:58
 msgid "Second Watch"
-msgstr ""
+msgstr "Друга варта"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:279
@@ -1474,11 +1975,12 @@ msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
+"Пам'ятайте, що деякі сценарії відбуваються в підземеллі, де завжди ніч!"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:286
 msgid "Experience and Advancement"
-msgstr ""
+msgstr "Досвід і Просування"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:287
@@ -1488,6 +1990,10 @@ msgid ""
 "combat, however, it gains much more experience — 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
+"Якщо обидва бійці вижили в битві, вони отримують досвід, рівний рівню "
+"противника. Якщо боєць вбив противника, він отримує значно більше досвіду — "
+"4 за бійця 0-го рівня, 8 за бійця 1-го рівня, 16 за бійця 2-го рівня, 24 за "
+"бійця 3-го рівня, і так далі."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:289
@@ -1499,6 +2005,12 @@ msgid ""
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
+"\n"
+"\n"
+"Щоб перейти на новий рівень, бійцеві потрібна деяка кількість досвіду "
+"(бійцям з особливістю \"розумний\" - на 20% менше). Як тільки боєць набере "
+"необхідний досвід, він негайно отримує новий рівень і при цьому повністю "
+"зцілюється. Іноді Вам запропонують декілька варіантів просування на вибір."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:291
@@ -1516,11 +2028,23 @@ msgid ""
 "progressively harder for each AMLA the unit receives, and so it is usually "
 "more useful to try to advance your lower level units."
 msgstr ""
+"\n"
+"\n"
+"Більшість бійців мають три рівні розвитку. Деякі бійці (як, наприклад, "
+"<ref>dst='unit_Mage' text='маги'</ref>) можуть мати чотири. Після досягнення "
+"свого максимального рівня бійцеві стає доступне <italic>text='Поліпшення "
+"ПостМаксимального Рівня'</italic> (ППМР). ППМР модифікуватиме бійця кожного "
+"разу, коли він набирає встановлену кількість очків досвіду, але рівень його "
+"залишиться тим же. Типова дія ППМР на бійця полягає в підвищенні "
+"максимальної кількості HP на 3 і повному зціленні. Перше ППМР боєць зазвичай "
+"отримує досягнувши 150 ДВ (120 ДВ для розумних). Проте подальше отримання "
+"ППМР даватиметься все складніше і складніше, тому набагато корисніше "
+"просувати бійців нижчих рівнів."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:298
 msgid "Healing"
-msgstr ""
+msgstr "Зцілення"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:299
@@ -1531,6 +2055,12 @@ msgid ""
 "turn or not. Wesnoth offers several other ways for your units to heal, all "
 "of which take place at the beginning of your turn, before you take action."
 msgstr ""
+"У битві ваші бійці неминуче отримуватимуть ушкодження. Коли боєць "
+"<ref>dst='experience_and_advancement' text='переходить на новий рівень'</"
+"ref>, він повністю зціляються. Це відбувається після закінчення бою, "
+"незалежно від того, ваш зараз хід або ні. У Весноті є кілька способів "
+"підлікувати бійців, і всі вони здійснюються на початку ходу, до того, як ви "
+"почнете діяти."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:301
@@ -1540,6 +2070,10 @@ msgid ""
 "<italic>text='Resting'</italic>: A unit which neither moves, attacks, nor is "
 "attacked will heal 2 HP in its next turn."
 msgstr ""
+"\n"
+"\n"
+"<italic>text='Відпочинок'</italic>: боєць, який не рухався, не нападав і не "
+"був атакований, буде зцілений на 2 ЗД в наступному ході."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:302
@@ -1548,6 +2082,9 @@ msgid ""
 "<italic>text='Villages'</italic>: A unit which starts a turn in a village "
 "will heal 8HP."
 msgstr ""
+"\n"
+"<italic>text='Села'</italic>: боєць, який почав свій хід в селі, відновлює 8 "
+"ЗД."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:303
@@ -1556,6 +2093,9 @@ msgid ""
 "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 "(such as trolls) will automatically heal 8HP every turn."
 msgstr ""
+"\n"
+"<ref>dst='ability_regenerates' text='Регенерація'</ref>: деякі бійці "
+"(наприклад, тролі) можуть автоматично відновлювати 8 ЗД за хід."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:304
@@ -1567,6 +2107,12 @@ msgid ""
 "<ref>dst='ability_heals +8' text='8HP'</ref> per turn, or prevent Poison "
 "from causing that unit damage."
 msgstr ""
+"\n"
+"<italic>text='Цілителі'</italic>: бійці з умінням <ref>dst='ability_heals "
+"+4' text='зцілення'</ref> кожен хід зцілюватимуть союзників на суміжних "
+"полях на <ref>dst='ability_heals +4' text='4 ЗД'</ref> або "
+"<ref>dst='ability_heals +8' text='8 ЗД'</ref>, або стримуватимуть шкоду від "
+"отруєння."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:305
@@ -1577,6 +2123,10 @@ msgid ""
 "allied adjacent units (in preference to healing, if it has that ability as "
 "well)."
 msgstr ""
+"\n"
+"<italic>text='Лікарі'</italic>: бійці з умінням <ref>dst='ability_cures' "
+"text='лікування'</ref>, виліковуватимуть отруєння в усіх сусідніх бійців "
+"(замість зцілення, якщо у них є і це уміння)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -1587,11 +2137,16 @@ msgid ""
 "regeneration, healing and curing cannot combine with each other: the best "
 "option will be used. Finally, units heal fully between scenarios."
 msgstr ""
+"\n"
+"\n"
+"Відпочинок може поєднуватися з іншими формами відновлення, але села, "
+"регенерація, зцілення І лікування не можуть бути поєднані: буде вибраний "
+"кращий варіант. І нарешті, бійці повністю відновлюються між сценаріями."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:314
 msgid "Income and Upkeep"
-msgstr ""
+msgstr "Прибуток і Утримання"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:315
@@ -1601,6 +2156,10 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "<italic>text='income'</italic> and <italic>text='upkeep'</italic>."
 msgstr ""
+"У Весноті недостатньо просто завербувати бійців і битися. Вам треба "
+"слідкувати за кількістю золота, особливо в кампаніях, де ви можете перенести "
+"золото між сценаріями. Тут важливі два аспекти: <italic>text='прибуток'</"
+"italic> і <italic>text='утримання'</italic>."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:317
@@ -1614,6 +2173,13 @@ msgid ""
 "each turn. Your upkeep costs are subtracted from this income, as detailed "
 "below."
 msgstr ""
+"\n"
+"\n"
+"З прибутком усе просто. Ваш основний прибуток рівний 2 золотим за хід. C "
+"кожного села під вашим контролем ви додатково отримуєте одну монету за хід "
+"(Впинципі це можна змінити, але в кампаніях - майже завжди одна монета з "
+"села). Тому якщо у Вас десять сіл, то ви отримуватимете 12 золотих монет за "
+"хід. Утримання віднімається з прибутку, як описано нижче."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:319
