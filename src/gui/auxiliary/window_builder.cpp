@@ -272,8 +272,8 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	click_dismiss(cfg["click_dismiss"].to_bool()),
 	definition(cfg["definition"]),
 	linked_groups(),
-	tooltip(cfg.child_or_empty("tooltip")), /** @todo will be mandatory soon. */
-	helptip(cfg.child_or_empty("helptip")), /** @todo will be mandatory soon. */
+	tooltip(cfg.child_or_empty("tooltip")),
+	helptip(cfg.child_or_empty("helptip")),
 	grid(0)
 {
 /*WIKI
@@ -423,14 +423,6 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 twindow_builder::tresolution::ttip::ttip(const config& cfg)
 	: id(cfg["id"])
 {
-	/** @todo Remove for 1.9.7. */
-	if(id.empty()) {
-		lg::wml_error << "Window builder: parsing resolution tip with empty "
-				<< "'id' field. Will become mandatory in 1.9.7.\n";
-		id = "tooltip_large";
-		return;
-	}
-
 	VALIDATE(!id.empty()
 			, missing_mandatory_wml_key("[window][resolution][tip]", "id"));
 }
