@@ -112,6 +112,7 @@ tpane::tpane(const tbuilder_grid_ptr item_builder)
 	, items_()
 	, item_builder_(item_builder)
 	, item_id_generator_(0)
+	, placer_(tplacer_::build(tplacer_::vertical, 1))
 {
 	connect_signal<event::REQUEST_PLACEMENT>(
 			  boost::bind(
@@ -240,7 +241,8 @@ const twidget* tpane::find_at(
 
 tpoint tpane::calculate_best_size() const
 {
-	return tpoint(800, 500);
+	prepare_placement();
+	return placer_->get_size();
 }
 
 bool tpane::disable_click_dismiss() const
@@ -268,52 +270,65 @@ const tgrid* tpane::grid(const unsigned id) const
 
 void tpane::place_children()
 {
-	unsigned y = 0;
-
+	prepare_placement();
+	unsigned index = 0;
 	BOOST_FOREACH(titem& item, items_) {
 		if(item.grid->get_visible() == twidget::INVISIBLE) {
 			continue;
 		}
 
-		DBG_GUI_L << LOG_HEADER << " offset " << y << '\n';
-		item.grid->place(tpoint(0, y), item.grid->get_best_size());
-		y += item.grid->get_height();
+		const tpoint origin = placer_->get_origin(index);
+		item.grid->place(origin, item.grid->get_best_size());
+		++index;
 	}
 }
 
 void tpane::set_origin_children()
 {
-	unsigned y = 0;
-
+	prepare_placement();
+	unsigned index = 0;
 	BOOST_FOREACH(titem& item, items_) {
 		if(item.grid->get_visible() == twidget::INVISIBLE) {
 			continue;
 		}
 
-		DBG_GUI_L << LOG_HEADER << " offset " << y << '\n';
-		item.grid->set_origin(tpoint(0, y));
-		y += item.grid->get_height();
+		const tpoint origin = placer_->get_origin(index);
+		item.grid->set_origin(origin);
+		++index;
 	}
 }
 
 void tpane::place_or_set_origin_children()
 {
-	unsigned y = 0;
-
+	prepare_placement();
+	unsigned index = 0;
 	BOOST_FOREACH(titem& item, items_) {
 		if(item.grid->get_visible() == twidget::INVISIBLE) {
 			continue;
 		}
 
-		DBG_GUI_L << LOG_HEADER << " offset " << y << '\n';
+		const tpoint origin = placer_->get_origin(index);
 		if(item.grid->get_size() != item.grid->get_best_size()) {
-			item.grid->place(tpoint(0, y), item.grid->get_best_size());
+			item.grid->place(origin, item.grid->get_best_size());
 		} else {
-			item.grid->set_origin(tpoint(0, y));
+			item.grid->set_origin(origin);
 		}
-		y += item.grid->get_height();
+		++index;
 	}
+}
 
+void tpane::prepare_placement() const
+{
+	assert(placer_.get());
+	placer_->initialise();
+
+	BOOST_FOREACH(const titem& item, items_) {
+		if(item.grid->get_visible() == twidget::INVISIBLE) {
+			continue;
+		}
+
+		placer_->add_item(item.grid->get_best_size());
+	}
 }
 
 void tpane::signal_handler_request_placement(

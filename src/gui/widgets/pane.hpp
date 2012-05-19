@@ -18,6 +18,7 @@
 
 #include "gui/widgets/widget.hpp"
 #include "gui/auxiliary/window_builder.hpp"
+#include "gui/auxiliary/placer.hpp"
 
 #include <boost/function.hpp>
 
@@ -152,6 +153,9 @@ private:
 	/** The id generator for the items. */
 	unsigned item_id_generator_;
 
+	/** Helper to do the placement. */
+	std::auto_ptr<tplacer_> placer_;
+
 	/** Places the children on the pane. */
 	void place_children();
 
@@ -174,6 +178,9 @@ private:
 	 * place_or_set_origin.
 	 */
 	void place_or_set_origin_children();
+
+	/** Updates the placement for the child items. */
+	void prepare_placement() const;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
