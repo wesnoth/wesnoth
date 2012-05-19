@@ -1103,12 +1103,12 @@ msgstr "Міст через прівру в печері"
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:2047
 msgid "Off Map"
-msgstr "Поза мапою"
+msgstr "Поза картою"
 
 #. [terrain_type]: id=off_map2
 #: data/core/terrain.cfg:2057
 msgid "Experimental Fake Map Edge"
-msgstr "Експериментальний хибний край мапи"
+msgstr "Експериментальний хибний край карти"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
@@ -1425,7 +1425,7 @@ msgstr "Лише команда"
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
 msgid "Generate Random Map"
-msgstr "Генерувати випадкову мапу"
+msgstr "Генерувати випадкову карту"
 
 #. [button]: id=next_generator
 #: data/gui/default/window/editor_generate_map.cfg:64
@@ -1448,7 +1448,7 @@ msgstr "Створити"
 #. [label]
 #: data/gui/default/window/editor_new_map.cfg:35 src/hotkeys.cpp:126
 msgid "New Map"
-msgstr "Нова мапа"
+msgstr "Нова карта"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1466,7 +1466,7 @@ msgstr "Висота:"
 #: data/gui/default/window/editor_new_map.cfg:108
 #: data/gui/default/window/editor_new_map.cfg:109
 msgid "Create New Map"
-msgstr "Створити нову мапу"
+msgstr "Створити нову карту"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1475,7 +1475,7 @@ msgstr "Створити нову мапу"
 #: data/gui/default/window/editor_resize_map.cfg:270
 #: data/gui/default/window/editor_resize_map.cfg:271 src/hotkeys.cpp:172
 msgid "Resize Map"
-msgstr "Змінити розмір мапи"
+msgstr "Змінити розмір карти"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:54
@@ -1536,7 +1536,7 @@ msgstr "Спеціальні параметри освітленості"
 #. [toggle_button]: id=custom_tod_auto_refresh
 #: data/gui/default/window/editor_settings.cfg:114
 msgid "Automatically update map view"
-msgstr "Автоматично оновлювати мапу"
+msgstr "Автоматично оновлювати карту"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:135
@@ -1556,7 +1556,7 @@ msgstr "Синій:"
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:231
 msgid "Allow multiple maps to be open simultaneously"
-msgstr "Дозволити відкривати відразу декілька мап"
+msgstr "Дозволити відкривати відразу декілька карт"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
@@ -2112,7 +2112,7 @@ msgstr "Гравці: "
 #. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:167
 msgid "Map size: "
-msgstr "Розмір мапи:"
+msgstr "Розмір карти:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:185
@@ -2134,7 +2134,7 @@ msgstr "Введіть пароль"
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:254
 msgid "Map to play:"
-msgstr "Грати на мапі:"
+msgstr "Грати на карті:"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:339
@@ -2350,12 +2350,12 @@ msgstr "Завантажити кампанії, ери, або пакунки �
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
 msgid "Map Editor"
-msgstr "Редактор мап"
+msgstr "Редактор карт"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
 msgid "Start the map editor"
-msgstr "Запустити редактор мап"
+msgstr "Запустити редактор карт"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:229
@@ -2608,7 +2608,7 @@ msgstr "Анімувати нерухомих бійців"
 
 #: src/game_preferences_display.cpp:217
 msgid "Animate map"
-msgstr "Анімувати мапу"
+msgstr "Анімувати карту"
 
 #: src/game_preferences_display.cpp:219 src/game_preferences_display.cpp:220
 #: src/game_preferences_display.cpp:221 src/game_preferences_display.cpp:222
@@ -2673,7 +2673,7 @@ msgstr "Розмір буферу: "
 
 #: src/game_preferences_display.cpp:304
 msgid "Change the speed of scrolling around the map"
-msgstr "Змінити швидкість прокручування мапи"
+msgstr "Змінити швидкість прокручування карти"
 
 #: src/game_preferences_display.cpp:309 src/game_preferences_display.cpp:311
 msgid "Set the amount of chat lines shown"
@@ -2737,7 +2737,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:374
 msgid "Overlay a grid onto the map"
-msgstr "Показувати сітку на мапі"
+msgstr "Показувати сітку на карті"
 
 #: src/game_preferences_display.cpp:377
 msgid "Sort the player list in the lobby by player groups"
@@ -3173,7 +3173,7 @@ msgstr "Праве клацання мишею"
 
 #: src/hotkeys.cpp:55
 msgid "Animate Map"
-msgstr "Анімувати мапу"
+msgstr "Анімувати карту"
 
 #: src/hotkeys.cpp:56
 msgid "Next Unit"
@@ -3225,7 +3225,7 @@ msgstr "Знімок екрану"
 
 #: src/hotkeys.cpp:68
 msgid "Map Screenshot"
-msgstr "Знімок мапи"
+msgstr "Знімок карти"
 
 #: src/hotkeys.cpp:69
 msgid "Accelerated"
@@ -3245,7 +3245,7 @@ msgstr "Зберегти повтор"
 
 #: src/hotkeys.cpp:74 src/hotkeys.cpp:128
 msgid "Save Map"
-msgstr "Зберегти мапу"
+msgstr "Зберегти карту"
 
 #: src/hotkeys.cpp:76
 msgid "Recruit"
@@ -3353,7 +3353,7 @@ msgstr "Наступна сторона"
 
 #: src/hotkeys.cpp:106
 msgid "Full Map"
-msgstr "Повна мапа"
+msgstr "Повна карта"
 
 #: src/hotkeys.cpp:108
 msgid "Each Team"
@@ -3401,11 +3401,11 @@ msgstr "Вийти в ОС"
 
 #: src/hotkeys.cpp:122
 msgid "Close Map"
-msgstr "Закрити мапу"
+msgstr "Закрити карту"
 
 #: src/hotkeys.cpp:123
 msgid "Switch Map"
-msgstr "Перемкнути мапу"
+msgstr "Перемкнути карту"
 
 #: src/hotkeys.cpp:125
 msgid "Partial Undo"
@@ -3413,15 +3413,15 @@ msgstr "Часткова відміна"
 
 #: src/hotkeys.cpp:127
 msgid "Load Map"
-msgstr "Завантажити мапу"
+msgstr "Завантажити карту"
 
 #: src/hotkeys.cpp:129
 msgid "Save Map As"
-msgstr "Зберегти мапу як"
+msgstr "Зберегти карту як"
 
 #: src/hotkeys.cpp:130
 msgid "Save All Maps"
-msgstr "Зберегти всі мапи"
+msgstr "Зберегти всі карти"
 
 #: src/hotkeys.cpp:131
 msgid "Revert All Changes"
@@ -3429,7 +3429,7 @@ msgstr "Скасувати всі зміни"
 
 #: src/hotkeys.cpp:132
 msgid "Map Information"
-msgstr "Інформація про мапу"
+msgstr "Інформація про карту"
 
 #: src/hotkeys.cpp:134
 msgid "Swap Foreground/Background Terrains"
@@ -3529,11 +3529,11 @@ msgstr "Випадкові плитки у вибраному"
 
 #: src/hotkeys.cpp:174
 msgid "Rotate Map"
-msgstr "Обернути мапу"
+msgstr "Обернути карту"
 
 #: src/hotkeys.cpp:176
 msgid "Generate Map"
-msgstr "Згенерувати мапу"
+msgstr "Згенерувати карту"
 
 #: src/hotkeys.cpp:178
 msgid "Apply a Mask"
@@ -3657,7 +3657,7 @@ msgstr "Ви дійсно хочете вийти?"
 
 #: src/hotkeys.cpp:1172
 msgid "Map-Screenshot"
-msgstr "Знімок мапи"
+msgstr "Знімок карти"
 
 #: src/hotkeys.cpp:1179 src/hotkeys.cpp:1181
 msgid "Screenshot done"
@@ -3679,7 +3679,7 @@ msgstr "uk,ru"
 
 #: src/mapgen_dialog.cpp:113
 msgid "Map Generator"
-msgstr "Генератор мап"
+msgstr "Генератор карт"
 
 #: src/mapgen_dialog.cpp:120
 msgid "Players:"

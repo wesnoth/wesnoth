@@ -2592,7 +2592,7 @@ msgid ""
 "valuable but slow units, keep at least one fast unit with them so that you "
 "are not caught out by a surprise attack."
 msgstr ""
-"На мапах з <i>пеленою</i> чи <i>туманом війни</i> огляд бійця обмежений "
+"На картах з <i>пеленою</i> чи <i>туманом війни</i> огляд бійця обмежений "
 "клітинками, до яких він може дійти. Пам'ятаєте про це, і завжди тримаєте в "
 "команді важливих, але повільних бійців як мінімум одного швидкого бійця, щоб "
 "не бути захопленим зненацька раптовою атакою."
@@ -2965,7 +2965,7 @@ msgid ""
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
 "Коли сильний боєць важко поранений, відправте його до села, розташованого в "
-"декількох ходах від лінії фронту. Там він зможе швидко відновитися (10 HP за "
+"декількох ходах від лінії фронту. Там він зможе швидко відновитися (10 ЗД за "
 "хід), не займаючи села на передовій."
 
 #. [tip]
@@ -3137,7 +3137,7 @@ msgstr "Скінчити місію"
 #: data/themes/widescreen.cfg:266 src/menu_events.cpp:216 src/unit.cpp:2450
 #: src/unit.cpp:2621
 msgid "HP"
-msgstr "HP"
+msgstr "ЗД"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-xp
@@ -3147,7 +3147,7 @@ msgstr "HP"
 #: data/themes/widescreen.cfg:275 src/menu_events.cpp:218
 #: src/menu_events.cpp:889
 msgid "XP"
-msgstr "XP"
+msgstr "ДВ"
 
 #. [label]: id=gold-icon
 #: data/themes/default.cfg:233 data/themes/dfool.cfg:267
@@ -3736,7 +3736,7 @@ msgstr "Захищається"
 
 #: src/attack_prediction_display.cpp:124
 msgid "Expected Battle Result (HP)"
-msgstr "Очікуваний результат битви (HP)"
+msgstr "Очікуваний результат битви (ЗД)"
 
 #: src/attack_prediction_display.cpp:215
 msgid "Time of day"
@@ -3903,11 +3903,11 @@ msgstr "рівень"
 
 #: src/dialogs.cpp:840
 msgid "HP: "
-msgstr "HP: "
+msgstr "ЗД: "
 
 #: src/dialogs.cpp:843
 msgid "XP: "
-msgstr "XP: "
+msgstr "ДВ: "
 
 #: src/dialogs.cpp:847
 msgid "Moves: "
@@ -3974,7 +3974,7 @@ msgstr "Виникла помилка під час гри: "
 #: src/game_controller.cpp:1060 src/playcampaign.cpp:112
 #: src/playcampaign.cpp:379
 msgid "The game map could not be loaded: "
-msgstr "Не вдалось завантажити ігрову мапу: "
+msgstr "Не вдалось завантажити ігрову карту: "
 
 #: src/game_controller.cpp:1077 src/game_controller_abstract.cpp:99
 msgid "The Battle for Wesnoth"
@@ -4197,11 +4197,11 @@ msgstr "Починаю гру"
 
 #: src/map.cpp:196
 msgid "A map without a header is not supported"
-msgstr "Мапа без заголовка не підтримується"
+msgstr "Карта без заголовка не підтримується"
 
 #: src/mapgen.cpp:743
 msgid "Random maps with an odd width aren't supported."
-msgstr "Випадкові мапи з непарною шириною не підтримуються."
+msgstr "Випадкові карти з непарною шириною не підтримуються."
 
 #: src/mapgen.cpp:1007
 msgid ""
@@ -4354,19 +4354,19 @@ msgstr " < Назад"
 
 #: src/menu_events.cpp:602
 msgid "Save the Map As"
-msgstr "Зберегти мапу як"
+msgstr "Зберегти карту як"
 
 #: src/menu_events.cpp:606
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Мапа вже існує. Перезаписати її?"
+msgstr "Карта вже існує. Перезаписати її?"
 
 #: src/menu_events.cpp:618
 msgid "Map saved."
-msgstr "Мапу збережено."
+msgstr "Карту збережено."
 
 #: src/menu_events.cpp:622
 msgid "Could not save the map: $msg"
-msgstr "Не вдалось зберегти мапу: $msg"
+msgstr "Не вдалось зберегти карту: $msg"
 
 #: src/menu_events.cpp:653
 msgid "Message:"
@@ -5378,11 +5378,11 @@ msgstr "Ера:"
 
 #: src/multiplayer_create.cpp:86
 msgid "Map to play:"
-msgstr "Грати на мапі:"
+msgstr "Грати на карті:"
 
 #: src/multiplayer_create.cpp:87 src/multiplayer_lobby.cpp:288
 msgid "Use map settings"
-msgstr "Параметри мапи"
+msgstr "Параметри карти"
 
 #: src/multiplayer_create.cpp:88
 msgid "Random start time"
@@ -5464,7 +5464,7 @@ msgstr ""
 
 #: src/multiplayer_create.cpp:202
 msgid "The map is unknown until your units explore it"
-msgstr "Мапа невідома, поки Ваші бійці не дослідять її"
+msgstr "Карта невідома, поки Ваші бійці не дослідять її"
 
 #: src/multiplayer_create.cpp:205
 msgid "Allow users who are not playing to watch the game"
@@ -5480,7 +5480,7 @@ msgstr "Спільний вигляд"
 
 #: src/multiplayer_create.cpp:213
 msgid "Share Maps"
-msgstr "Спільні мапи"
+msgstr "Спільні карти"
 
 #: src/multiplayer_create.cpp:214
 msgid "Share None"
@@ -5504,7 +5504,7 @@ msgstr "Вибрана недійсна ера"
 
 #: src/multiplayer_create.cpp:351
 msgid "The map is invalid."
-msgstr "Мапа недійсна."
+msgstr "Карта недійсна."
 
 #: src/multiplayer_create.cpp:353
 msgid "You must enter a name."
@@ -6006,10 +6006,10 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Цей боєць отруєний. Він втрачатиме 8 HP кожен хід до тих пір, поки не "
+"Цей боєць отруєний. Він втрачатиме 8 ЗД кожен хід до тих пір, поки не "
 "вилікується в селі, або доки його не вилікує дружній лікар.\n"
 "\n"
-"Бійця не можна убити однією отрутою. Отрута не може знизити HP нижче за 1."
+"Бійця не можна убити однією отрутою. Отрута не може знизити ЗД нижче за 1."
 
 #: src/reports.cpp:317
 msgid "petrified: "
@@ -6421,7 +6421,7 @@ msgstr "ходи"
 
 #: src/unit.cpp:2496 src/unit.cpp:2634
 msgid "XP to advance"
-msgstr "XP для поліпшення"
+msgstr "ДВ для поліпшення"
 
 #: src/unit.cpp:2627
 msgid " move"
