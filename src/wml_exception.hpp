@@ -66,6 +66,21 @@ class display;
 		}                                                                 \
 	} while(0)
 
+#define FAIL(message)                                                     \
+	do {                                                                  \
+		wml_exception(NULL, __FILE__, __LINE__, __func__, message);       \
+	} while(0)
+
+#define FAIL_WITH_DEV_MESSAGE(message, dev_message)                       \
+	do {                                                                  \
+		wml_exception(NULL                                                \
+				, __FILE__                                                \
+				, __LINE__                                                \
+				, __func__                                                \
+				, message                                                 \
+				, dev_message);                                           \
+	} while(0)
+
 /**
  *  Helper function, don't call this directly.
  *
