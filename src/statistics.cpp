@@ -392,18 +392,18 @@ void stats::read(const config& cfg)
 		defends = read_battle_result_map(c);
 	}
 
-	recruit_cost = lexical_cast<long long>(cfg["recruit_cost"]);
-	recall_cost = lexical_cast<long long>(cfg["recall_cost"]);
+	recruit_cost = cfg["recruit_cost"].to_double();
+	recall_cost = cfg["recall_cost"].to_double();
 
-	damage_inflicted = lexical_cast<long long>(cfg["damage_inflicted"]);
-	damage_taken = lexical_cast<long long>(cfg["damage_taken"]);
-	expected_damage_inflicted = lexical_cast<long long>(cfg["expected_damage_inflicted"]);
-	expected_damage_taken = lexical_cast<long long>(cfg["expected_damage_taken"]);
+	damage_inflicted = cfg["damage_inflicted"].to_double();
+	damage_taken = cfg["damage_taken"].to_double();
+	expected_damage_inflicted = cfg["expected_damage_inflicted"].to_double();
+	expected_damage_taken = cfg["expected_damage_taken"].to_double();
 
-	turn_damage_inflicted = lexical_cast<long long>(cfg["turn_damage_inflicted"]);
-	turn_damage_taken = lexical_cast<long long>(cfg["turn_damage_taken"]);
-	turn_expected_damage_inflicted = lexical_cast<long long>(cfg["turn_expected_damage_inflicted"]);
-	turn_expected_damage_taken = lexical_cast<long long>(cfg["turn_expected_damage_taken"]);
+	turn_damage_inflicted = cfg["turn_damage_inflicted"].to_double();
+	turn_damage_taken = cfg["turn_damage_taken"].to_double();
+	turn_expected_damage_inflicted = cfg["turn_expected_damage_inflicted"].to_double();
+	turn_expected_damage_taken = cfg["turn_expected_damage_taken"].to_double();
 
 	save_id = cfg["save_id"].str();
 }
