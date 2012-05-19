@@ -73,8 +73,8 @@ namespace {
 			s += "<span color='orange'>";
 			{
 				const char* const vstr = !state.can_publish
-					? _("addon_state^Installed ($local_version|), outdated in the server")
-					: _("addon_state^Published ($local_version| installed), outdated in the server");
+					? _("addon_state^Installed ($local_version|), outdated on server")
+					: _("addon_state^Published ($local_version| installed), outdated on server");
 				s += utils::interpolate_variables_into_string(vstr, &i18n_symbols);
 			}
 			s += "</span>";
