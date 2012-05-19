@@ -38,6 +38,7 @@ tplacer_* tplacer_::build(
 		case horizontal :
 			return new implementation::tplacer_horizontal_list(parallel_items);
 		case vertical :
+		default:
 			return new implementation::tplacer_vertical_list(parallel_items);
 	};
 }
