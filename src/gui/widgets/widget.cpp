@@ -46,6 +46,30 @@ twidget::twidget()
 	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
 }
 
+twidget::twidget(const tbuilder_widget& builder)
+	: id_(builder.id)
+	, parent_(NULL)
+	, x_(-1)
+	, y_(-1)
+	, w_(0)
+	, h_(0)
+	, dirty_(true)
+	, visible_(VISIBLE)
+	, drawing_action_(DRAWN)
+	, clip_rect_()
+	, layout_size_(tpoint(0,0))
+	, linked_group_(builder.linked_group)
+#ifndef LOW_MEM
+	, debug_border_mode_(builder.debug_border_mode)
+	, debug_border_color_(builder.debug_border_color)
+#endif
+#ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
+	, last_best_size_(tpoint(0,0))
+#endif
+{
+	DBG_GUI_LF << "widget create: " << static_cast<void*>(this) << "\n";
+}
+
 twidget::~twidget()
 {
 	DBG_GUI_LF << "widget destroy: " << static_cast<void*>(this)

@@ -28,6 +28,7 @@
 
 namespace gui2 {
 
+class tbuilder_widget;
 class tdialog;
 class twindow;
 
@@ -53,7 +54,17 @@ class twidget
 	friend class twindow; // needed for modifying the layout_size.
 
 public:
+
+	/** @deprecated use the second overload. */
 	twidget();
+
+	/**
+	 * Constructor.
+	 *
+	 * @param builder             The builder object with the settings for the
+	 *                            object.
+	 */
+	explicit twidget(const tbuilder_widget& builder);
 
 	virtual ~twidget();
 
