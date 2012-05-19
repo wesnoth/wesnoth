@@ -56,15 +56,7 @@ struct addon_info
 		, depends()
 	{}
 
-	addon_info(const addon_info& o)
-		: id(o.id), title(o.title), description(o.description), icon(o.icon)
-		, version(o.version), author(o.author), size(o.size)
-		, downloads(o.downloads), uploads(o.uploads), type(o.type)
-		, locales(o.locales)
-		, depends(o.depends)
-	{}
-
-	addon_info(const config& cfg)
+	explicit addon_info(const config& cfg)
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
