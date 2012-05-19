@@ -427,6 +427,62 @@ sorted_addon_pointer_list sort_addons_list(addons_list& addons)
 	return res;
 }
 
+std::string describe_addon_status(const addon_tracking_info& state)
+{
+	std::string s = get_addon_status_gui1_color_markup(state);
+
+	utils::string_map i18n_symbols;
+	i18n_symbols["local_version"] = state.installed_version.str();
+
+	switch(state.state) {
+	case ADDON_NONE:
+		if(!state.can_publish) {
+			s += _("addon_state^Not installed");
+		} else {
+			s += _("addon_state^Published, not installed");
+		}
+		break;
+	case ADDON_INSTALLED:
+		if(!state.can_publish) {
+			s += _("addon_state^Installed");
+		} else {
+			s += _("addon_state^Published");
+		}
+		break;
+	case ADDON_INSTALLED_UPGRADABLE:
+		if(!state.can_publish) {
+			s += _("addon_state^Installed, upgradable");
+		} else {
+			s += _("addon_state^Published, upgradable");
+		}
+		break;
+	case ADDON_INSTALLED_OUTDATED:
+		if(!state.can_publish) {
+			s += _("addon_state^Installed, outdated on server");
+		} else {
+			s += _("addon_state^Published, outdated on server");
+		}
+		break;
+	case ADDON_INSTALLED_BROKEN:
+		if(!state.can_publish) {
+			s += _("addon_state^Installed, broken");
+		} else {
+			s += _("addon_state^Published, broken");
+		}
+		break;
+	default:
+		if(!state.can_publish) {
+			s += _("addon_state^Not tracked");
+		} else {
+			// Published add-ons often don't have local status information,
+			// hence untracked. This should be considered normal.
+			s += _("addon_state^Published");
+		}
+	}
+
+	return s;
+}
+
 void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, VIEW_MODE& view, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, std::string& filter_text)
 {
 	stay_in_ui = false;
@@ -511,11 +567,12 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			can_delete_ids.push_back(addon.id);
 		}
 
-		const std::string& display_sep = sep + get_addon_status_gui1_color_markup(tracking[addon.id]);
+		const std::string& display_sep = sep;
 		const std::string& display_size = size_display_string(addon.size);
 		const std::string& display_type = addon.display_type();
 		const std::string& display_down = str_cast(addon.downloads);
 		const std::string& display_icon = addon.display_icon();
+		const std::string& display_status = describe_addon_status(tracking[addon.id]);
 
 		std::string display_version = addon.version.str();
 		std::string display_old_version = tracking[addon.id].installed_version;
@@ -553,7 +610,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		}
 
 		// NOTE: NULL_MARKUP used to escape abuse of formatting chars in add-on titles
-		row = IMAGE_PREFIX + display_icon + display_sep + font::NULL_MARKUP + display_title + display_sep;
+		row = IMAGE_PREFIX + display_icon + display_sep + font::NULL_MARKUP + display_title + "\n" + font::color2markup(font::TITLE_COLOR) + font::SMALL_TEXT + display_status + display_sep;
 		if(updates_only) {
 			row += display_old_version + display_sep;
 		}

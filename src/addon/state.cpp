@@ -16,7 +16,9 @@
 #include "addon/state.hpp"
 
 #include "addon/manager.hpp"
+#include "font.hpp"
 #include "log.hpp"
+#include "marked-up_text.hpp"
 
 static lg::log_domain log_addons_client("addons-client");
 #define LOG_AC  LOG_STREAM(info, log_addons_client)
@@ -55,19 +57,17 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 
 std::string get_addon_status_gui1_color_markup(const addon_tracking_info& info)
 {
-	if(info.can_publish || info.in_version_control) {
-		return "<127,127,127>";
-	}
-
 	switch(info.state) {
 	case ADDON_INSTALLED:
-		return "@";
+		return std::string(1, font::GOOD_TEXT);
 	case ADDON_INSTALLED_UPGRADABLE:
-		return "<255,255,0>";
+		return font::color2markup(font::YELLOW_COLOR);
 	case ADDON_INSTALLED_OUTDATED:
 		return "<255,127,0>";
 	case ADDON_INSTALLED_BROKEN:
-		return "#";
+		return std::string(1, font::BAD_TEXT);
+	case ADDON_NOT_TRACKED:
+		return font::color2markup(font::GRAY_COLOR);
 	default:
 		;
 	}
