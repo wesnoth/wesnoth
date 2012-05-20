@@ -17,9 +17,6 @@
 #define GUI_WIDGETS_GRID_HPP_INCLUDED
 
 #include "gui/widgets/widget.hpp"
-#include "gui/widgets/control.hpp"
-
-#include <cassert>
 
 namespace gui2 {
 
