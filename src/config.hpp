@@ -253,6 +253,15 @@ public:
 	unsigned child_count(const std::string &key) const;
 
 	/**
+	 * Determine whether a config has a child or not.
+	 *
+	 * @param key                 The key of the child to find.
+	 *
+	 * @returns                   Whether a child is available.
+	 */
+	bool has_child(const std::string& key) const;
+
+	/**
 	 * Copies the first child with the given @a key, or an empty config if there is none.
 	 */
 	config child_or_empty(const std::string &key) const;

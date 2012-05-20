@@ -374,6 +374,13 @@ unsigned config::child_count(const std::string &key) const
 	return 0;
 }
 
+bool config::has_child(const std::string &key) const
+{
+	check_valid();
+
+	return children.find(key) != children.end();
+}
+
 config &config::child(const std::string& key, int n)
 {
 	check_valid();
