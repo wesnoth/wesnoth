@@ -26,6 +26,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
+#include "utils/const_clone.tpp"
 
 #include <cstdlib>
 #include <cstring>
@@ -35,6 +36,49 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
+
+struct tconfig_implementation
+{
+	/**
+	 * Implementation for the wrappers for
+	 * [const] config& child(const std::string& key, const std::string& parent);
+	 *
+	 * @tparam T                  A pointer to the config.
+	 */
+	template<class T>
+	static typename utils::tconst_clone<config, T>::reference
+	child(
+			  T config
+			, const std::string& key
+			, const std::string& parent)
+	{
+		config->check_valid();
+
+		assert(!parent.empty());
+		assert(parent[0] == '[');
+		assert(parent[parent.size() - 1] == ']');
+
+		if(config->has_child(key)) {
+			return *(config->children.find(key)->second.front());
+		}
+
+		/**
+		 * @todo Implement a proper wml_exception here.
+		 *
+		 * at the moment there seem to be dependency issues, which i don't want
+		 * to fix right now.
+		 */
+//		FAIL(missing_mandatory_wml_section(parent, key));
+
+		std::stringstream sstr;
+		sstr << "Mandatory WML child »[" << key << "]« missing in »"
+				<< parent << "«. Please report this bug.";
+
+		throw config::error(sstr.str());
+	}
+};
+
+
 config::attribute_value::attribute_value()
 	: value()
 {
@@ -389,6 +433,18 @@ config &config::child(const std::string& key, int n)
 	if (i == children.end()) return invalid;
 	if (n < 0) n = i->second.size() + n;
 	return  size_t(n) < i->second.size() ? *i->second[n] : invalid;
+}
+
+config& config::child(const std::string& key, const std::string& parent)
+{
+	return tconfig_implementation::child(this, key, parent);
+}
+
+const config& config::child(
+		  const std::string& key
+		, const std::string& parent) const
+{
+	return tconfig_implementation::child(this, key, parent);
 }
 
 config config::child_or_empty(const std::string& key) const

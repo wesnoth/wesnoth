@@ -41,6 +41,7 @@
 #include "wesconfig.h"
 
 class config;
+class tconfig_implementation;
 class vconfig;
 struct lua_State;
 
@@ -52,6 +53,7 @@ std::ostream &operator << (std::ostream &, const config &);
 class config
 {
 	friend bool operator==(const config& a, const config& b);
+	friend class tconfig_implementation;
 
 	static config invalid;
 
@@ -282,6 +284,40 @@ public:
 	 */
 	const config &child(const std::string& key, int n = 0) const
 	{ return const_cast<config *>(this)->child(key, n); }
+
+	/**
+	 * Returns a mandatory child node.
+	 *
+	 * If the child is not found a @ref wml_exception is thrown.
+	 *
+	 * @pre                       parent[0] == '['
+	 * @pre                       parent[parent.size() - 1] == ']'
+	 *
+	 * @param key                 The key of the child item to return.
+	 * @param parent              The section in which the child should reside.
+	 *                            This is only used for error reporting.
+	 *
+	 * @returns                   The wanted child node.
+	 */
+	config& child(const std::string& key, const std::string& parent);
+
+	/**
+	 * Returns a mandatory child node.
+	 *
+	 * If the child is not found a @ref wml_exception is thrown.
+	 *
+	 * @pre                       parent[0] == '['
+	 * @pre                       parent[parent.size() - 1] == ']'
+	 *
+	 * @param key                 The key of the child item to return.
+	 * @param parent              The section in which the child should reside.
+	 *                            This is only used for error reporting.
+	 *
+	 * @returns                   The wanted child node.
+	 */
+	const config& child(
+			  const std::string& key
+			, const std::string& parent) const;
 
 	config& add_child(const std::string& key);
 	config& add_child(const std::string& key, const config& val);
