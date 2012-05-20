@@ -50,17 +50,17 @@ Version 1.11.0-svn:
      * The Human Commander unit now uses the smallfoot movetype instead of woodland
 
  * Editor:
-     * New gui theme, fixes the editor being broken on low resolutions.
-       * Smaller font for displaying the terrain information.
-       * Less space between the map coordinates and the terrain information
-         (no need to display defense value)
-       * More width sidebar
-         * Features one more editing tool per row.
-         * Additional brush
-         * Button for default zoom switching.
-         * Space for a second row of editing tools.
-     * Terrain group selection from a menu, saving a lot of space.
-     * Map label placement tool
+   * New gui theme, fixes the editor being broken on low resolutions.
+     * Smaller font for displaying the terrain information.
+     * Less space between the map coordinates and the terrain information
+       (no need to display defense value)
+     * More width sidebar
+       * Features one more editing tool per row.
+       * Additional brush
+       * Button for default zoom switching.
+       * Space for a second row of editing tools.
+   * Terrain group selection from a menu, saving a lot of space.
+   * Map label placement tool
 
  * Help menu:
    * Added a new Add-ons section explaining add-on usage basics.
@@ -124,6 +124,7 @@ Version 1.11.0-svn:
    * Units can now have a new value ("vision") which is used for sight range instead of movement.
    * Vision range can have its own costs now.
    * Fixed: Out-of-sync message in EI::16_Weldyn_under_Attack (bug #19735)
+
 
 Version 1.10.0:
  * Campaigns:
