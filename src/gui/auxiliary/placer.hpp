@@ -25,6 +25,8 @@
 #ifndef GUI_AUXILIARY_PLACER_HPP_INCLUDED
 #define GUI_AUXILIARY_PLACER_HPP_INCLUDED
 
+#include "global.hpp"
+
 namespace gui2 {
 
 class tpoint;

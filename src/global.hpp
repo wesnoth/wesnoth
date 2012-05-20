@@ -35,6 +35,7 @@
 #pragma warning(disable: 4355)
 #pragma warning(disable: 4800)
 #pragma warning(disable: 4351)
+#pragma warning(disable: 4099)
 
 #endif //_MSC_VER
 
