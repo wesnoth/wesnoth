@@ -23,6 +23,7 @@ ENUM(vertical,                    "vertical");                                \
 
 #include "gui/auxiliary/placer.hpp"
 
+#include "asserts.hpp"
 #include "gui/auxiliary/placer/horizontal_list.hpp"
 #include "gui/auxiliary/placer/vertical_list.hpp"
 
@@ -39,9 +40,10 @@ tplacer_* tplacer_::build(
 		case horizontal :
 			return new implementation::tplacer_horizontal_list(parallel_items);
 		case vertical :
-		default:
 			return new implementation::tplacer_vertical_list(parallel_items);
 	};
+
+	UNREACHABLE_CODE;
 }
 
 tplacer_::~tplacer_()

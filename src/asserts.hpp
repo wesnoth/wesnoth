@@ -51,6 +51,13 @@
 
 #define FATAL_ERROR ERROR_LOG("FATAL ERROR")
 
+/**
+ * Marker for code that should be unreachable.
+ *
+ * This can be used to avoid compiler warnings and to detect logic errors in the code.
+ */
+#define UNREACHABLE_CODE ERROR_LOG("REACHED UNREACHABLE CODE")
+
 //helper macro for the simple operator cases defined below
 #define ASSERT_OP(a,op,b) ASSERT_LOG((a) op (b), #a " " #op " " #b " (" << (a) << " " #op " " << (b) << ")")
 
