@@ -18,6 +18,7 @@
 #include "gui/widgets/viewport.hpp"
 
 #include "gui/auxiliary/log.hpp"
+#include "utils/const_clone.tpp"
 
 #define LOG_SCOPE_HEADER "tviewport [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -40,7 +41,7 @@ struct tviewport_implementation
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template<class W>
-	static typename tconst_clone<twidget, W>::pointer
+	static typename utils::tconst_clone<twidget, W>::pointer
 	find_at(
 			  W viewport
 			, tpoint coordinate
@@ -66,7 +67,7 @@ struct tviewport_implementation
 	}
 
 	template<class W>
-	static typename tconst_clone<twidget, W>::pointer
+	static typename utils::tconst_clone<twidget, W>::pointer
 	find(
 			  W viewport
 			, const std::string& id

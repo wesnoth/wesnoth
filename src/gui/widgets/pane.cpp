@@ -20,6 +20,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
+#include "utils/const_clone.tpp"
 
 #include <boost/bind.hpp>
 
@@ -44,7 +45,7 @@ struct tpane_implementation
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template<class W>
-	static typename tconst_clone<twidget, W>::pointer
+	static typename utils::tconst_clone<twidget, W>::pointer
 	find_at(
 			  W pane
 			, tpoint coordinate
@@ -59,7 +60,7 @@ struct tpane_implementation
 			return NULL;
 		}
 
-		typedef typename tconst_clone<tpane::titem, W>::reference thack;
+		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
 		BOOST_FOREACH(thack item, pane->items_) {
 
 			if(item.grid->get_visible() == twidget::INVISIBLE) {
@@ -91,10 +92,10 @@ struct tpane_implementation
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template<class W>
-	static typename tconst_clone<tgrid, W>::pointer
+	static typename utils::tconst_clone<tgrid, W>::pointer
 	grid(W pane, const unsigned id)
 	{
-		typedef typename tconst_clone<tpane::titem, W>::reference thack;
+		typedef typename utils::tconst_clone<tpane::titem, W>::reference thack;
 		BOOST_FOREACH(thack item, pane->items_) {
 
 			if(item.id == id) {
