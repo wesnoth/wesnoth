@@ -19,6 +19,7 @@
 #include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/widgets/event_executor.hpp"
 #include "gui/widgets/helper.hpp"
+#include "utils/const_clone.tpp"
 #include "wml_exception.hpp"
 
 #include <boost/noncopyable.hpp>
@@ -778,7 +779,7 @@ template<class T> T* get_parent(twidget* widget)
  * @returns                   The widget with the id.
  */
 template<class T>
-T* find_widget(typename tconst_duplicator<T, twidget>::type* widget
+T* find_widget(typename utils::tconst_clone<twidget, T>::pointer widget
 		, const std::string& id
 		, const bool must_be_active
 		, const bool must_exist)
@@ -806,7 +807,7 @@ T* find_widget(typename tconst_duplicator<T, twidget>::type* widget
  * @returns                   The widget with the id.
  */
 template<class T>
-T& find_widget(typename tconst_duplicator<T, twidget>::type* widget
+T& find_widget(typename utils::tconst_clone<twidget, T>::pointer widget
 		, const std::string& id
 		, const bool must_be_active)
 {

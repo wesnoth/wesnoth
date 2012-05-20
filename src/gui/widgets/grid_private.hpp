@@ -34,6 +34,7 @@
 #include "gui/widgets/grid.hpp"
 
 #include "foreach.hpp"
+#include "utils/const_clone.tpp"
 
 namespace gui2 {
 
@@ -52,10 +53,10 @@ struct tgrid_implementation
 	 * @tparam W                  twidget or const twidget.
 	 */
 	template<class W>
-	static W* find_at(typename tconst_duplicator<W, tgrid>::type& grid,
+	static W* find_at(typename utils::tconst_clone<tgrid, W>::reference grid,
 			const tpoint& coordinate, const bool must_be_active)
 	{
-		typedef typename tconst_duplicator<W, tgrid::tchild>::type hack;
+		typedef typename utils::tconst_clone<tgrid::tchild, W>::type hack;
 		foreach(hack& child, grid.children_) {
 
 			W* widget = child.widget();
@@ -81,7 +82,7 @@ struct tgrid_implementation
 	 * @tparam W                  twidget or const twidget.
 	 */
 	template<class W>
-	static W* find(typename tconst_duplicator<W, tgrid>::type& grid,
+	static W* find(typename utils::tconst_clone<tgrid, W>::reference grid,
 				const std::string& id, const bool must_be_active)
 	{
 		// Inherited.
@@ -90,7 +91,7 @@ struct tgrid_implementation
 			return widget;
 		}
 
-		typedef typename tconst_duplicator<W, tgrid::tchild>::type hack;
+		typedef typename utils::tconst_clone<tgrid::tchild, W>::type hack;
 		foreach(hack& child, grid.children_) {
 
 			widget = child.widget();

@@ -254,7 +254,7 @@ public:
 
 	template<class W>
 	static W* find_at(
-			  typename tconst_duplicator<W, ttree_view_node>::type&
+			  typename utils::tconst_clone<ttree_view_node, W>::reference
 				tree_view_node
 			, const tpoint& coordinate, const bool must_be_active)
 	{
@@ -268,7 +268,7 @@ public:
 			return NULL;
 		}
 
-		typedef typename tconst_duplicator<W, ttree_view_node>::type thack;
+		typedef typename utils::tconst_clone<ttree_view_node, W>::type thack;
 		return find_at_aux<W>(tree_view_node.children_.begin(),
 				      tree_view_node.children_.end(),
 				      coordinate, must_be_active);

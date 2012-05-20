@@ -18,6 +18,8 @@
 
 #include "gui/widgets/scrollbar_container.hpp"
 
+#include "utils/const_clone.tpp"
+
 /**
  * @file
  * Helper for header for the scrollbar_container.
@@ -52,7 +54,7 @@ struct tscrollbar_container_implementation
 	 */
 	template<class W>
 	static W* find_at(
-			typename tconst_duplicator<W, tscrollbar_container>::type&
+			typename utils::tconst_clone<tscrollbar_container, W>::reference
 				scrollbar_container,
 			const tpoint& coordinate, const bool must_be_active)
 	{
@@ -80,7 +82,7 @@ struct tscrollbar_container_implementation
 	 */
 	template<class W>
 	static W* find(
-			typename tconst_duplicator<W, tscrollbar_container>::type&
+			typename utils::tconst_clone<tscrollbar_container, W>::reference
 				scrollbar_container,
 			const std::string& id, const bool must_be_active)
 	{
