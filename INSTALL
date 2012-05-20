@@ -92,7 +92,15 @@ you may wish to set prefix=/usr.
 
 The target 'all' is equivalent to 'wesnoth cutter exploder wesnothd campaignd'.
 
-So, for example, this builds the game and the campaign server while enabling debugging:
+So, for example, this builds the game and the server:
+
+    scons
+
+This installs binaries that were built before:
+
+    scons install
+
+This builds the game and the campaign server while enabling debugging:
 
     scons build=debug wesnoth campaignd 
 
