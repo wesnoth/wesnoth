@@ -135,6 +135,10 @@ std::string describe_addon_status(const addon_tracking_info& info)
 	case ADDON_NONE:
 		return info.can_publish ? _("addon_state^Published, not installed") : _("addon_state^Not installed");
 	case ADDON_INSTALLED:
+	case ADDON_NOT_TRACKED:
+		// Consider add-ons without version information as installed
+		// for the main display. Their Description info should elaborate
+		// on their status.
 		return font::GOOD_TEXT + std::string(
 			info.can_publish ? _("addon_state^Published") : _("addon_state^Installed"));
 	case ADDON_INSTALLED_UPGRADABLE:
@@ -146,12 +150,8 @@ std::string describe_addon_status(const addon_tracking_info& info)
 	case ADDON_INSTALLED_BROKEN:
 		return font::BAD_TEXT + std::string(
 			info.can_publish ? _("addon_state^Published, broken") : _("addon_state^Installed, broken"));
-	case ADDON_NOT_TRACKED:
 	default:
-		// Published add-ons often don't have local status information,
-		// hence untracked. This should be considered normal.
-		return font::color2markup(font::GRAY_COLOR) + std::string(
-			info.can_publish ? _("addon_state^Published") : _("addon_state^Not tracked"));
+		return font::color2markup(font::GRAY_COLOR) + _("addon_state^Unknown");
 	}
 }
 

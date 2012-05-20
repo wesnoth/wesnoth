@@ -59,6 +59,17 @@ namespace {
 			}
 			s += "</span>";
 			break;
+		case ADDON_NOT_TRACKED:
+			s += "<span color='green'>";
+			if(!state.can_publish) {
+				s += _("addon_state^Installed, not tracking local version");
+			} else {
+				// Published add-ons often don't have local status information,
+				// hence untracked. This should be considered normal.
+				s += _("addon_state^Published, not tracking local version");
+			}
+			s += "</span>";
+			break;
 		case ADDON_INSTALLED_UPGRADABLE:
 			s += "<span color='yellow'>";
 			{
@@ -89,15 +100,8 @@ namespace {
 			s += "</span>";
 			break;
 		default:
-			if(!state.can_publish) {
-				s += "<span color='red'>";
-				s += _("addon_state^Not tracked");
-			} else {
-				// Published add-ons often don't have local status information,
-				// hence untracked. This should be considered normal.
-				s += "<span color='green'>";
-				s += _("addon_state^Published");
-			}
+			s += "<span color='gray'>";
+			s += _("addon_state^Unknown");
 			s += "</span>";
 		}
 
