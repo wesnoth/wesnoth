@@ -23,9 +23,6 @@
 #include <boost/mpl/int.hpp>
 #include <boost/utility/enable_if.hpp>
 
-#include <SDL.h>
-
-#include <vector>
 #include <map>
 
 namespace gui2 {
