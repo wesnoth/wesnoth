@@ -131,78 +131,28 @@ bool get_addons_list(addons_client& client, addons_list& list)
 
 std::string describe_addon_status(const addon_tracking_info& info)
 {
-	std::string s;
-
-	switch(info.state) {
-	case ADDON_INSTALLED:
-		s = std::string(1, font::GOOD_TEXT);
-		break;
-	case ADDON_INSTALLED_UPGRADABLE:
-		s = font::color2markup(font::YELLOW_COLOR);
-		break;
-	case ADDON_INSTALLED_OUTDATED:
-		s = "<255,127,0>";
-		break;
-	case ADDON_INSTALLED_BROKEN:
-		s = std::string(1, font::BAD_TEXT);
-		break;
-	case ADDON_NOT_TRACKED:
-		s = font::color2markup(font::GRAY_COLOR);
-		break;
-	default:
-		;
-	}
-
-	utils::string_map i18n_symbols;
-	i18n_symbols["local_version"] = info.installed_version.str();
-
 	switch(info.state) {
 	case ADDON_NONE:
-		if(!info.can_publish) {
-			s += _("addon_state^Not installed");
-		} else {
-			s += _("addon_state^Published, not installed");
-		}
-		break;
+		return info.can_publish ? _("addon_state^Published, not installed") : _("addon_state^Not installed");
 	case ADDON_INSTALLED:
-		if(!info.can_publish) {
-			s += _("addon_state^Installed");
-		} else {
-			s += _("addon_state^Published");
-		}
-		break;
+		return font::GOOD_TEXT + std::string(
+			info.can_publish ? _("addon_state^Published") : _("addon_state^Installed"));
 	case ADDON_INSTALLED_UPGRADABLE:
-		if(!info.can_publish) {
-			s += _("addon_state^Installed, upgradable");
-		} else {
-			s += _("addon_state^Published, upgradable");
-		}
-		break;
+		return font::color2markup(font::YELLOW_COLOR) + std::string(
+			info.can_publish ? _("addon_state^Published, upgradable") : _("addon_state^Installed, upgradable"));
 	case ADDON_INSTALLED_OUTDATED:
-		if(!info.can_publish) {
-			s += _("addon_state^Installed, outdated on server");
-		} else {
-			s += _("addon_state^Published, outdated on server");
-		}
-		break;
+		return "<255,127,0>" + std::string(
+			info.can_publish ? _("addon_state^Published, outdated on server") : _("addon_state^Installed, outdated on server"));
 	case ADDON_INSTALLED_BROKEN:
-		if(!info.can_publish) {
-			s += _("addon_state^Installed, broken");
-		} else {
-			s += _("addon_state^Published, broken");
-		}
-		break;
+		return font::BAD_TEXT + std::string(
+			info.can_publish ? _("addon_state^Published, broken") : _("addon_state^Installed, broken"));
+	case ADDON_NOT_TRACKED:
 	default:
-		if(!info.can_publish) {
-			s += _("addon_state^Not tracked");
-		} else {
-			// Published add-ons often don't have local status information,
-			// hence untracked. This should be considered normal.
-			s += _("addon_state^Published");
-		}
+		// Published add-ons often don't have local status information,
+		// hence untracked. This should be considered normal.
+		return font::color2markup(font::GRAY_COLOR) + std::string(
+			info.can_publish ? _("addon_state^Published") : _("addon_state^Not tracked"));
 	}
-
-	return s;
 }
 
 /** Warns the user about unresolved dependencies and installs them if they choose to do so. */
