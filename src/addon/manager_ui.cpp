@@ -302,13 +302,31 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 /** Checks whether the given add-on has local .pbl or VCS information and asks before overwriting it. */
 bool do_check_before_overwriting_addon(CVideo& video, const std::string& addon_id)
 {
-	if(!have_addon_pbl_info(addon_id)) {
+	const bool pbl = have_addon_pbl_info(addon_id);
+	const bool vcs = have_addon_in_vcs_tree(addon_id);
+
+	if(!pbl && !vcs) {
 		return true;
 	}
 
 	utils::string_map symbols;
 	symbols["addon"] = make_addon_title(addon_id); // FIXME: need the real title!
-	const std::string& text = vgettext("You seem to be the author of '$addon|'. Downloading it again from the server will overwrite any changes you have made since the last upload, and it may also delete your pbl file. Do you really wish to continue?", symbols);
+	std::string text;
+	std::vector<std::string> extra_items;
+
+	text = vgettext("The add-on '$addon|' is already installed and contains additional content that will be permanently lost if you continue:", symbols);
+	text += "\n\n";
+
+	if(pbl) {
+		extra_items.push_back(_("Publishing information file (.pbl)"));
+	}
+
+	if(vcs) {
+		extra_items.push_back(_("Version control system (VCS) information"));
+	}
+
+	text += utils::bullet_list(extra_items) + "\n\n";
+	text += _("Do you really wish to continue?");
 
 	return gui2::show_message(video, _("Confirm"), text, gui2::tmessage::yes_no_buttons) == gui2::twindow::OK;
 }
