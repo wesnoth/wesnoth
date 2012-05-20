@@ -3,6 +3,21 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.11.0-svn:
+ * Add-ons client:
+   * The Update Add-ons dialog has been replaced with an alternate view mode
+     for the main Add-ons Manager.
+   * The Add-ons Manager now allows filtering add-ons by installation status
+     (all, installed, not installed, upgradable).
+   * Add-ons in the Add-ons Manager are initially sorted by title instead of
+     the order they were originally uploaded to the server.
+   * Add-ons with broken/unavailable dependencies are reported to the user.
+   * The add-on dependencies prompt reports all recursively-resolved
+     dependencies, not just the direct dependencies.
+   * Add-on installation, upgradability, and publish status is reported as a
+     footnote for every list entry, plus a field in the Description dialog.
+   * The Add-ons Manager filter textbox is preserved during the same
+     connection (i.e. while installing multiple add-ons).
+
  * Campaigns:
    * Added a note to all final scenarios, stating which one is the last scenario
    * Descent into Darkness:
@@ -48,6 +63,7 @@ Version 1.11.0-svn:
      * Map label placement tool
 
  * Help menu:
+   * Added a new Add-ons section explaining add-on usage basics.
    * Added more elaborate descriptions for the Units, Abilities and Weapon
      Specials sections, with the intent of reducing confusion when they are
      initially empty (feature request #13914).
