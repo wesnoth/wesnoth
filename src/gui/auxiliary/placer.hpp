@@ -123,7 +123,7 @@ public:
 
 } // namespace gui2
 
-#include "enumerate.tpp"
+#include "utils/enumerate.tpp"
 
 namespace gui2 {
 

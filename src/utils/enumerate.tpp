@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
  * Copyright (C) 2011 - 2012 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
