@@ -26,9 +26,10 @@ ENUM(vertical,                    "vertical");                                \
 #include "gui/auxiliary/placer/horizontal_list.hpp"
 #include "gui/auxiliary/placer/vertical_list.hpp"
 
-ENUM_DEFINE_STREAM_OPERATORS(::gui2::tplacer_::tgrow_direction)
 
 namespace gui2 {
+
+ENUM_DEFINE_STREAM_OPERATORS(::gui2::tplacer_::tgrow_direction)
 
 tplacer_* tplacer_::build(
 		  const tgrow_direction grow_direction

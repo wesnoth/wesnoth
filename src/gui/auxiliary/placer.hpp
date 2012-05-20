@@ -125,6 +125,10 @@ public:
 
 #include "enumerate.tpp"
 
+namespace gui2 {
+
 ENUM_DECLARE_STREAM_OPERATORS(::gui2::tplacer_::tgrow_direction)
+
+} // namespace gui2
 
 #endif
