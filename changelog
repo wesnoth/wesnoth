@@ -2,11 +2,15 @@ Version 1.11.0-svn:
  * Add-ons client:
    * The Update Add-ons dialog has been replaced with an alternate view mode
      for the main Add-ons Manager
+   * The Add-ons Manager now allows filtering add-ons by installation status
+     (all, installed, not installed, upgradable)
+   * Add-ons in the Add-ons Manager are initially sorted by title instead of
+     the order they were originally uploaded to the server
    * Add-ons with broken/unavailable dependencies are reported to the user
    * The add-on dependencies prompt reports all recursively-resolved
      dependencies, not just the direct dependencies
-   * Add-on installation/upgradability status is reported through the
-     add-on Description dialog
+   * Add-on installation, upgradability, and publish status is reported as a
+     footnote for every list entry, plus a field in the Description dialog
    * The Add-ons Manager filter textbox is preserved during the same
      connection (i.e. while installing multiple add-ons)
  * Add-ons server:
