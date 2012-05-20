@@ -111,6 +111,9 @@ class Addon(object):
             else:
                 logging.error("Untracked files blocking pull of {0}. Please remove.".format(self.name))
             return False
+        elif err.find("Your configuration specifies to merge with the ref 'master'") != -1:
+            logging.info("Pulled from still-empty (not initialized) repository {0}.".format(self.name))
+            return False
         else:
             logging.error("Unknown pull result in add-on {0}:\nOut: {1}\nErr: {2}".format(self.name, out, err))
             return False
