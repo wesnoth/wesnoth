@@ -55,22 +55,3 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 	return t;
 }
 
-std::string get_addon_status_gui1_color_markup(const addon_tracking_info& info)
-{
-	switch(info.state) {
-	case ADDON_INSTALLED:
-		return std::string(1, font::GOOD_TEXT);
-	case ADDON_INSTALLED_UPGRADABLE:
-		return font::color2markup(font::YELLOW_COLOR);
-	case ADDON_INSTALLED_OUTDATED:
-		return "<255,127,0>";
-	case ADDON_INSTALLED_BROKEN:
-		return std::string(1, font::BAD_TEXT);
-	case ADDON_NOT_TRACKED:
-		return font::color2markup(font::GRAY_COLOR);
-	default:
-		;
-	}
-
-	return "";
-}

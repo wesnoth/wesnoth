@@ -68,6 +68,4 @@ struct addon_tracking_info
  */
 addon_tracking_info get_addon_tracking_info(const addon_info& addon);
 
-std::string get_addon_status_gui1_color_markup(const addon_tracking_info& info);
-
 #endif

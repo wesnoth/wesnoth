@@ -129,6 +129,82 @@ bool get_addons_list(addons_client& client, addons_list& list)
 	return true;
 }
 
+std::string describe_addon_status(const addon_tracking_info& info)
+{
+	std::string s;
+
+	switch(info.state) {
+	case ADDON_INSTALLED:
+		s = std::string(1, font::GOOD_TEXT);
+		break;
+	case ADDON_INSTALLED_UPGRADABLE:
+		s = font::color2markup(font::YELLOW_COLOR);
+		break;
+	case ADDON_INSTALLED_OUTDATED:
+		s = "<255,127,0>";
+		break;
+	case ADDON_INSTALLED_BROKEN:
+		s = std::string(1, font::BAD_TEXT);
+		break;
+	case ADDON_NOT_TRACKED:
+		s = font::color2markup(font::GRAY_COLOR);
+		break;
+	default:
+		;
+	}
+
+	utils::string_map i18n_symbols;
+	i18n_symbols["local_version"] = info.installed_version.str();
+
+	switch(info.state) {
+	case ADDON_NONE:
+		if(!info.can_publish) {
+			s += _("addon_state^Not installed");
+		} else {
+			s += _("addon_state^Published, not installed");
+		}
+		break;
+	case ADDON_INSTALLED:
+		if(!info.can_publish) {
+			s += _("addon_state^Installed");
+		} else {
+			s += _("addon_state^Published");
+		}
+		break;
+	case ADDON_INSTALLED_UPGRADABLE:
+		if(!info.can_publish) {
+			s += _("addon_state^Installed, upgradable");
+		} else {
+			s += _("addon_state^Published, upgradable");
+		}
+		break;
+	case ADDON_INSTALLED_OUTDATED:
+		if(!info.can_publish) {
+			s += _("addon_state^Installed, outdated on server");
+		} else {
+			s += _("addon_state^Published, outdated on server");
+		}
+		break;
+	case ADDON_INSTALLED_BROKEN:
+		if(!info.can_publish) {
+			s += _("addon_state^Installed, broken");
+		} else {
+			s += _("addon_state^Published, broken");
+		}
+		break;
+	default:
+		if(!info.can_publish) {
+			s += _("addon_state^Not tracked");
+		} else {
+			// Published add-ons often don't have local status information,
+			// hence untracked. This should be considered normal.
+			s += _("addon_state^Published");
+		}
+	}
+
+	return s;
+}
+
 /** Warns the user about unresolved dependencies and installs them if they choose to do so. */
 bool do_resolve_addon_dependencies(display& disp, addons_client& client, const addons_list& addons, const addon_info& addon, bool& wml_changed)
 {
@@ -425,62 +501,6 @@ sorted_addon_pointer_list sort_addons_list(addons_list& addons)
 	}
 
 	return res;
-}
-
-std::string describe_addon_status(const addon_tracking_info& state)
-{
-	std::string s = get_addon_status_gui1_color_markup(state);
-
-	utils::string_map i18n_symbols;
-	i18n_symbols["local_version"] = state.installed_version.str();
-
-	switch(state.state) {
-	case ADDON_NONE:
-		if(!state.can_publish) {
-			s += _("addon_state^Not installed");
-		} else {
-			s += _("addon_state^Published, not installed");
-		}
-		break;
-	case ADDON_INSTALLED:
-		if(!state.can_publish) {
-			s += _("addon_state^Installed");
-		} else {
-			s += _("addon_state^Published");
-		}
-		break;
-	case ADDON_INSTALLED_UPGRADABLE:
-		if(!state.can_publish) {
-			s += _("addon_state^Installed, upgradable");
-		} else {
-			s += _("addon_state^Published, upgradable");
-		}
-		break;
-	case ADDON_INSTALLED_OUTDATED:
-		if(!state.can_publish) {
-			s += _("addon_state^Installed, outdated on server");
-		} else {
-			s += _("addon_state^Published, outdated on server");
-		}
-		break;
-	case ADDON_INSTALLED_BROKEN:
-		if(!state.can_publish) {
-			s += _("addon_state^Installed, broken");
-		} else {
-			s += _("addon_state^Published, broken");
-		}
-		break;
-	default:
-		if(!state.can_publish) {
-			s += _("addon_state^Not tracked");
-		} else {
-			// Published add-ons often don't have local status information,
-			// hence untracked. This should be considered normal.
-			s += _("addon_state^Published");
-		}
-	}
-
-	return s;
 }
 
 void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, VIEW_MODE& view, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, std::string& filter_text)
