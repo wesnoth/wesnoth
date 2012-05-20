@@ -430,9 +430,23 @@ config &config::child(const std::string& key, int n)
 	check_valid();
 
 	const child_map::const_iterator i = children.find(key);
-	if (i == children.end()) return invalid;
+	if (i == children.end()) {
+		DBG_CF << "The config object has no child named »"
+				<< key << "«.\n";
+
+		return invalid;
+	}
+
 	if (n < 0) n = i->second.size() + n;
-	return  size_t(n) < i->second.size() ? *i->second[n] : invalid;
+	if(size_t(n) < i->second.size()) {
+		return *i->second[n];
+	} else {
+		DBG_CF << "The config object has only »" << i->second.size()
+			<< "« children named »" << key
+			<< "«; request for the index »" << n << "« can not be honoured.\n";
+
+		return invalid;
+	}
 }
 
 config& config::child(const std::string& key, const std::string& parent)
@@ -730,16 +744,24 @@ config &config::find_child(const std::string &key, const std::string &name,
 	check_valid();
 
 	const child_map::iterator i = children.find(key);
-	if(i == children.end())
+	if(i == children.end()) {
+		DBG_CF << "Key »" << name << "« value »" << value
+				<< "« pair not found as child of key »" << key << "«.\n";
+
 		return invalid;
+	}
 
 	const child_list::iterator j = std::find_if(i->second.begin(),
 	                                            i->second.end(),
 	                                            config_has_value(name,value));
-	if(j != i->second.end())
+	if(j != i->second.end()) {
 		return **j;
-	else
+	} else {
+		DBG_CF << "Key »" << name << "« value »" << value
+				<< "« pair not found as child of key »" << key << "«.\n";
+
 		return invalid;
+	}
 }
 
 namespace {
