@@ -1065,41 +1065,43 @@ void menu_handler::undo(int side_num)
 	const events::command_disabler disable_commands;
 	team &current_team = teams_[side_num - 1];
 
-	resources::redo_stack->push_back(resources::undo_stack->back());
+	// Get the action to undo. (This will be placed on the redo stack, but
+	// only if the undo is successful.)
+	undo_action action = resources::undo_stack->back();
 	resources::undo_stack->pop_back();
-	undo_action& action = resources::redo_stack->back();
+
 	if (action.is_dismiss()) {
 		//undo a dismissal
 
 		if(!current_team.persistent()) {
 			ERR_NG << "trying to undo a dismissal for side " << side_num
 				<< ", which has no recall list!\n";
-		} else {
-			current_team.recall_list().push_back(action.affected_unit);
-			resources::whiteboard->on_gamestate_change();
+			return;
 		}
+		current_team.recall_list().push_back(action.affected_unit);
+		resources::whiteboard->on_gamestate_change();
 	} else if(action.is_recall()) {
 
 		if(!current_team.persistent()) {
 			ERR_NG << "trying to undo a recall for side " << side_num
 				<< ", which has no recall list!\n";
-		} else {
-			// Undo a recall action
-			if(units_.count(action.recall_loc) == 0) {
-				return;
-			}
-
-			const unit &un = *units_.find(action.recall_loc);
-			statistics::un_recall_unit(un);
-			current_team.spend_gold(-current_team.recall_cost());
-
-			current_team.recall_list().push_back(un);
-			// invalidate before erasing allow us
-			// to also do the overlapped hexes
-			gui_->invalidate(action.recall_loc);
-			units_.erase(action.recall_loc);
-			resources::whiteboard->on_gamestate_change();
+			return;
 		}
+		// Undo a recall action
+		if(units_.count(action.recall_loc) == 0) {
+			return;
+		}
+
+		const unit &un = *units_.find(action.recall_loc);
+		statistics::un_recall_unit(un);
+		current_team.spend_gold(-current_team.recall_cost());
+
+		current_team.recall_list().push_back(un);
+		// invalidate before erasing allow us
+		// to also do the overlapped hexes
+		gui_->invalidate(action.recall_loc);
+		units_.erase(action.recall_loc);
+		resources::whiteboard->on_gamestate_change();
 	} else if(action.is_recruit()) {
 		// Undo a recruit action
 		if(units_.count(action.recall_loc) == 0) {
@@ -1162,6 +1164,7 @@ void menu_handler::undo(int side_num)
 		resources::whiteboard->on_gamestate_change();
 	}
 	recorder.undo();
+	resources::redo_stack->push_back(action);
 
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
@@ -1177,52 +1180,55 @@ void menu_handler::redo(int side_num)
 	const events::command_disabler disable_commands;
 	team &current_team = teams_[side_num - 1];
 
-	resources::undo_stack->push_back(resources::redo_stack->back());
+	// Get the action to undo. (This will be placed on the undo stack, but
+	// only if the redo is successful.)
+	undo_action action = resources::redo_stack->back();
 	resources::redo_stack->pop_back();
-	undo_action& action = resources::undo_stack->back();
+
 	if (action.is_dismiss()) {
 		if(!current_team.persistent()) {
 			ERR_NG << "trying to redo a dismiss for side " << side_num
 				<< ", which has no recall list!\n";
-		} else {
-			//redo a dismissal
-			recorder.add_disband(action.affected_unit.id());
-			std::vector<unit>::iterator unit_it =
-				find_if_matches_id(current_team.recall_list(), action.affected_unit.id());
-			current_team.recall_list().erase(unit_it);
-			resources::whiteboard->on_gamestate_change();
+			return;
 		}
+		//redo a dismissal
+		recorder.add_disband(action.affected_unit.id());
+		std::vector<unit>::iterator unit_it =
+			find_if_matches_id(current_team.recall_list(), action.affected_unit.id());
+		current_team.recall_list().erase(unit_it);
+		resources::whiteboard->on_gamestate_change();
 	} else if(action.is_recall()) {
 		if(!current_team.persistent()) {
 			ERR_NG << "trying to redo a recall for side " << side_num
 				<< ", which has no recall list!\n";
-		} else {
-			// Redo recall
-
-			recorder.add_recall(action.affected_unit.id(), action.recall_loc, action.recall_from);
-			map_location loc = action.recall_loc;
-			map_location from = map_location::null_location;
-			const events::command_disabler disable_commands;
-			const std::string &msg = find_recall_location(side_num, loc, from, action.affected_unit);
-			if(msg.empty()) {
-				unit un = action.affected_unit;
-				//remove the unit from the recall list
-				std::vector<unit>::iterator unit_it =
-					find_if_matches_id(current_team.recall_list(), action.affected_unit.id());
-				assert(unit_it != current_team.recall_list().end());
-				current_team.recall_list().erase(unit_it);
-
-				place_recruit(un, loc, from, true, true);
-				statistics::recall_unit(un);
-				current_team.spend_gold(current_team.recall_cost());
-				gui_->invalidate(loc);
-				recorder.add_checksum_check(loc);
-			} else {
-				recorder.undo();
-				gui::dialog(*gui_,"",msg,gui::OK_ONLY).show();
-			}
-			resources::whiteboard->on_gamestate_change();
+			return;
 		}
+		// Redo recall
+
+		recorder.add_recall(action.affected_unit.id(), action.recall_loc, action.recall_from);
+		map_location loc = action.recall_loc;
+		map_location from = map_location::null_location;
+		const events::command_disabler disable_commands;
+		const std::string &msg = find_recall_location(side_num, loc, from, action.affected_unit);
+		if(msg.empty()) {
+			unit un = action.affected_unit;
+			//remove the unit from the recall list
+			std::vector<unit>::iterator unit_it =
+				find_if_matches_id(current_team.recall_list(), action.affected_unit.id());
+			assert(unit_it != current_team.recall_list().end());
+			current_team.recall_list().erase(unit_it);
+
+			place_recruit(un, loc, from, true, true);
+			statistics::recall_unit(un);
+			current_team.spend_gold(current_team.recall_cost());
+			gui_->invalidate(loc);
+			recorder.add_checksum_check(loc);
+		} else {
+			recorder.undo();
+			gui::dialog(*gui_,"",msg,gui::OK_ONLY).show();
+			return;
+		}
+		resources::whiteboard->on_gamestate_change();
 	} else if(action.is_recruit()) {
 		// Redo recruit action
 		map_location loc = action.recall_loc;
@@ -1263,6 +1269,7 @@ void menu_handler::redo(int side_num)
 		} else {
 			recorder.undo();
 			gui::dialog(*gui_,"",msg,gui::OK_ONLY).show();
+			return;
 		}
 		resources::whiteboard->on_gamestate_change();
 	} else {
@@ -1271,6 +1278,7 @@ void menu_handler::redo(int side_num)
 		std::vector<map_location> route = action.route;
 		unit_map::iterator u = units_.find(route.front());
 		if(u == units_.end()) {
+			ERR_NG << "Illegal movement 'redo'.\n";
 			assert(false);
 			return;
 		}
@@ -1303,6 +1311,8 @@ void menu_handler::redo(int side_num)
 
 		recorder.add_movement(action_copy.route);
 	}
+	resources::undo_stack->push_back(action);
+
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
 	gui_->redraw_minimap();
