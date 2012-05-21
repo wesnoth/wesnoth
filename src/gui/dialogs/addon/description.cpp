@@ -127,6 +127,9 @@ namespace gui2 {
  * title & & control & m &
  *         Dialog title label, corresponding to the add-on name. $
  *
+ * type & & control & m &
+ *         Label for displaying the add-on's type. $
+ *
  * version & & control & m &
  *         Label for displaying the add-on version number. $
  *
@@ -138,6 +141,9 @@ namespace gui2 {
  *
  * size & & control & m &
  *         Label for displaying the add-on package size. $
+ *
+ * downloads & & control & m &
+ *         Label for displaying the add-on's download count. $
  *
  * description & & control & m &
  *         Text label for displaying the add-on's description. The control can
@@ -162,7 +168,9 @@ taddon_description::taddon_description(const addon_info& addon, const addon_trac
 	register_label("version", true, addon.version);
 	register_label("status", true, describe_addon_state_info(state), true);
 	register_label("author", true, addon.author);
+	register_label("type", true, addon.display_type());
 	register_label("size", true, size_display_string(addon.size));
+	register_label("downloads", true, str_cast(addon.downloads));
 	if(!addon.description.empty()) {
 		register_label("description", true, addon.description);
 	}
