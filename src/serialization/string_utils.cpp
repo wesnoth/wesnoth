@@ -34,6 +34,8 @@ static lg::log_domain log_engine("engine");
 
 namespace utils {
 
+const std::string ellipsis = "...";
+
 const std::string unicode_minus = "−";
 const std::string unicode_en_dash = "–";
 const std::string unicode_em_dash = "—";
@@ -757,6 +759,17 @@ void truncate_as_wstring(std::string& str, const size_t size)
 	if(utf8_str.size() > size) {
 		utf8_str.resize(size);
 		str = utils::wstring_to_string(utf8_str);
+	}
+}
+
+void ellipsis_truncate(std::string& str, const size_t size)
+{
+	const size_t prev_size = str.length();
+
+	truncate_as_wstring(str, size);
+
+	if(str.length() != prev_size) {
+		str += ellipsis;
 	}
 }
 

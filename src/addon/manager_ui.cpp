@@ -589,10 +589,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		// Now we enter information for list row display.
 		// Three fields are truncated to accomodate for GUI1's limitations.
 
-		utils::truncate_as_wstring(display_author, 14);
-		if(display_author.length() < addon.author.length()) {
-			display_author += "...";
-		}
+		utils::ellipsis_truncate(display_author, 14);
 
 		// Word-wrap the title field to a limit of two lines.
 		display_title = font::word_wrap_text(display_title, font::SIZE_NORMAL, 150, -1, 2);

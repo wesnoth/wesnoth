@@ -279,6 +279,11 @@ utf8_string lowercase(const utf8_string&);
  */
 void truncate_as_wstring(std::string& str, const size_t size);
 
+/**
+ * Truncates a string to a given utf-8 character count and then appends an ellipsis.
+ */
+void ellipsis_truncate(std::string& str, const size_t size);
+
 }
 
 #endif
