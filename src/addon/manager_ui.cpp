@@ -225,10 +225,9 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		const std::string& display_icon = addon.display_icon();
 		const std::string& display_version = addon.version.str();
 
-		std::string display_title = addon.display_title();
-		utils::truncate_as_wstring(display_title, 20);
+		const std::string& display_title = font::word_wrap_text(addon.display_title(), font::SIZE_NORMAL, 150, -1, 2);
 		std::string display_author = addon.author;
-		utils::truncate_as_wstring(display_author, 16);
+		utils::ellipsis_truncate(display_author, 14);
 
 		// Add negative sizes to reverse the sort order.
 		sort_sizes.push_back(-addon.size);
