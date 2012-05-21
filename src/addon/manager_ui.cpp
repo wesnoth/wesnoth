@@ -299,8 +299,10 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 }
 
 /** Checks whether the given add-on has local .pbl or VCS information and asks before overwriting it. */
-bool do_check_before_overwriting_addon(CVideo& video, const std::string& addon_id)
+bool do_check_before_overwriting_addon(CVideo& video, const addon_info& addon)
 {
+	const std::string& addon_id = addon.id;
+
 	const bool pbl = have_addon_pbl_info(addon_id);
 	const bool vcs = have_addon_in_vcs_tree(addon_id);
 
@@ -309,7 +311,7 @@ bool do_check_before_overwriting_addon(CVideo& video, const std::string& addon_i
 	}
 
 	utils::string_map symbols;
-	symbols["addon"] = make_addon_title(addon_id); // FIXME: need the real title!
+	symbols["addon"] = addon.title;
 	std::string text;
 	std::vector<std::string> extra_items;
 
@@ -765,7 +767,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	foreach(const std::string& id, ids_to_install) {
 		const addon_info& addon = addon_at(id, addons);
 
-		if(!(do_check_before_overwriting_addon(disp.video(), id) && do_resolve_addon_dependencies(disp, client, addons, addon, wml_changed))) {
+		if(!(do_check_before_overwriting_addon(disp.video(), addon) && do_resolve_addon_dependencies(disp, client, addons, addon, wml_changed))) {
 			// Just do nothing and leave.
 			return;
 		}
