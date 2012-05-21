@@ -210,7 +210,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 	const std::string sep(1, COLUMN_SEPARATOR);
 	const std::string& header = (formatter() << HEADING_PREFIX << sep <<
 		_("Name") << sep << _("Version") << sep << _("Author") << sep <<
-		_("Type") << sep << _("Size")).str();
+		_("Size") << sep << _("Type")).str();
 
 	std::vector<std::string> options(1, header);
 	std::vector<int> sort_sizes;
@@ -235,8 +235,8 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 		// NOTE: NULL_MARKUP used to escape abuse of formatting chars in add-on titles
 		options.push_back(IMAGE_PREFIX + display_icon + sep +
 			font::NULL_MARKUP + display_title + sep + display_version + sep +
-			display_author + sep + display_type + sep +
-			display_size);
+			display_author + sep + display_size + sep +
+			display_type);
 	}
 
 	/* do */ {
@@ -516,14 +516,18 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	} else {
 		header += _("Version") + sep;
 	}
-	header += _("Author") + sep;
+	header += _("Author") + sep + _("Size");
 	// The Type and Downloads columns aren't displayed when updating because of
 	// display space constraints. Presumably, the user doesn't care about that
 	// information since the add-on is already installed.
+	//
+	// Type is also always displayed last so it can get automatically truncated
+	// if its translated contents don't fit, instead of truncating other, more
+	// important columns such as Size.
 	if(!updates_only) {
-		header += _("Type") + sep + _("Downloads") + sep;
+		header += sep + _("Downloads") + sep + _("Type");
 	}
-	header += _("Size"); // end of list header
+	// end of list header
 
 	options.push_back(header);
 	filter_options.push_back(header);
@@ -582,8 +586,8 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			row += display_old_version + sep;
 		}
 		row += display_version + sep + display_author + sep +
-			display_type + sep + display_down + sep +
-			display_size + sep + addon.description;
+			display_size + sep + display_down + sep +
+			display_type + sep + addon.description;
 
 		filter_options.push_back(row);
 
@@ -606,11 +610,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		if(updates_only) {
 			row += display_old_version + display_sep;
 		}
-		row += display_version + display_sep + display_author + display_sep;
+		row += display_version + display_sep + display_author + display_sep + display_size;
 		if(!updates_only) {
-			row += display_type + display_sep + display_down + display_sep;
+			row += display_sep + display_down + display_sep + display_type;
 		}
-		row += display_size;
 
 		options.push_back(row);
 	}
