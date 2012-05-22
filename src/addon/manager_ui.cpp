@@ -129,6 +129,9 @@ bool get_addons_list(addons_client& client, addons_list& list)
 	return true;
 }
 
+const std::string color_upgradable = font::color2markup(font::YELLOW_COLOR);
+const std::string color_outdated = "<255,127,0>";
+
 std::string describe_addon_status(const addon_tracking_info& info)
 {
 	switch(info.state) {
@@ -142,10 +145,10 @@ std::string describe_addon_status(const addon_tracking_info& info)
 		return font::GOOD_TEXT + std::string(
 			info.can_publish ? _("addon_state^Published") : _("addon_state^Installed"));
 	case ADDON_INSTALLED_UPGRADABLE:
-		return font::color2markup(font::YELLOW_COLOR) + std::string(
+		return color_upgradable + std::string(
 			info.can_publish ? _("addon_state^Published, upgradable") : _("addon_state^Installed, upgradable"));
 	case ADDON_INSTALLED_OUTDATED:
-		return "<255,127,0>" + std::string(
+		return color_outdated + std::string(
 			info.can_publish ? _("addon_state^Published, outdated on server") : _("addon_state^Installed, outdated on server"));
 	case ADDON_INSTALLED_BROKEN:
 		return font::BAD_TEXT + std::string(
@@ -603,6 +606,20 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		// truncate them then.
 		if(!updates_only) {
 			utils::truncate_as_wstring(display_version, 12);
+
+			if(state == ADDON_INSTALLED_UPGRADABLE || state == ADDON_INSTALLED_OUTDATED) {
+				utils::truncate_as_wstring(display_old_version, 12);
+
+				if(state == ADDON_INSTALLED_UPGRADABLE) {
+					display_version =
+						color_upgradable + display_old_version +
+						"\n" + color_upgradable + display_version;
+				} else {
+					display_version =
+						color_outdated + display_old_version +
+						"\n" + color_outdated + display_version;
+				}
+			}
 		}
 
 		// NOTE: NULL_MARKUP used to escape abuse of formatting chars in add-on titles
