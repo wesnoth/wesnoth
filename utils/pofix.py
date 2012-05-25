@@ -3199,6 +3199,9 @@ stringfixes = {
 # Kill the hyphens
 ("Mid-day", "Midday"),
 ("During the daytime (Dawn, Morning, Mid-day", "During the daytime (Dawn, Morning, Midday"),
+
+# Get rid of duplicate word
+("but we we are not broken yet", "but we are not broken yet"),
 ),
 
 "1.8-announcement" : (
