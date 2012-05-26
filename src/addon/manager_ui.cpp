@@ -686,11 +686,11 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		gui::dialog dlg(disp, _("Add-ons Manager"), "", gui::OK_CANCEL);
 
 		gui::menu::basic_sorter sorter;
-		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3).set_alpha_sort(4);
+		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3);
 		if(!updates_only) {
-			sorter.set_numeric_sort(5).set_position_sort(6, sort_sizes);
+			sorter.set_position_sort(4, sort_sizes).set_numeric_sort(5).set_alpha_sort(6);
 		} else {
-			sorter.set_position_sort(5, sort_sizes);
+			sorter.set_alpha_sort(4).set_position_sort(5, sort_sizes);
 		}
 
 		gui::menu::imgsel_style addon_style(gui::menu::bluebg_style);
