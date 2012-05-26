@@ -637,7 +637,13 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 			std::pair<int, int> coords(0, 0);
 
 			coords.first = dim.x + total_width - btn.width() - ButtonHPadding;
-			coords.second = top_buttons_y;
+			// As a special case, if there's only one button
+			// and a text box, try to align the button to it
+			if(top_buttons_.size() == 1 && use_textbox) {
+				coords.second = text_widget_y + (text_widget_height - btn.height())/2;
+			} else {
+				coords.second = top_buttons_y;
+			}
 
 			top_buttons_y += btn.height() + button_height_padding;
 
