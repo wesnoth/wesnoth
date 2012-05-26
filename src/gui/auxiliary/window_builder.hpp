@@ -77,6 +77,19 @@ typedef boost::intrusive_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
 void register_builder_widget(const std::string& id
 		, boost::function<tbuilder_widget_ptr(config)> functor);
 
+
+/**
+ * Create a widget builder.
+ *
+ * This object holds the instance builder for a single widget.
+ *
+ * @param cfg                     The config object holding the information
+ *                                regarding the widget instance.
+ *
+ * @returns                       The builder for the widget instance.
+ */
+tbuilder_widget_ptr create_builder_widget(const config& cfg);
+
 /**
  * Helper to generate a widget from a WML widget instance.
  *

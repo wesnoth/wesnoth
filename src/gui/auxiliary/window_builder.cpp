@@ -46,8 +46,6 @@
 
 namespace gui2 {
 
-namespace {
-
 static std::map<std::string, boost::function<tbuilder_widget_ptr(config)> >&
 builder_widget_lookup()
 {
@@ -55,71 +53,6 @@ builder_widget_lookup()
 			result;
 	return result;
 }
-
-tbuilder_widget_ptr create_builder_widget(const config& cfg)
-{
-	config::all_children_itors children = cfg.all_children_range();
-	size_t nb_children = std::distance(children.first, children.second);
-	VALIDATE(nb_children == 1, "Grid cell does not have exactly 1 child.");
-
-	typedef
-			std::pair<
-				  std::string
-				, boost::function<tbuilder_widget_ptr(config)> >
-			thack;
-	foreach(const thack& item, builder_widget_lookup()) {
-		if(item.first == "window" || item.first == "tooltip") {
-			continue;
-		}
-		if(const config &c = cfg.child(item.first)) {
-			return item.second(c);
-		}
-	}
-
-	if(const config &c = cfg.child("grid")) {
-		return new tbuilder_grid(c);
-	}
-/*
- * This is rather odd, when commented out the classes no longer seem to be in
- * the executable, no real idea why, except maybe of an overzealous optimizer
- * while linking. It seems that all these classes aren't explicitly
- * instantiated but only implicitly. Also when looking at the symbols in
- * libwesnoth-game.a the repeating button is there regardless of this #if but
- * in the final binary only if the #if is enabled.
- *
- * If this code is executed, which it will cause an assertion failure.
- */
-#if 1
-#define TRY(name)                                                          \
-	do {                                                                   \
-		if(const config &c = cfg.child(#name)) {                           \
-			tbuilder_widget_ptr p = new implementation::tbuilder_##name(c);\
-			assert(false);                                                 \
-		}                                                                  \
-	} while (0)
-
-	TRY(stacked_widget);
-	TRY(scrollbar_panel);
-	TRY(horizontal_scrollbar);
-	TRY(repeating_button);
-	TRY(vertical_scrollbar);
-	TRY(label);
-	TRY(image);
-	TRY(toggle_button);
-	TRY(slider);
-	TRY(scroll_label);
-	TRY(minimap);
-	TRY(button);
-	TRY(drawing);
-	TRY(password_box);
-#undef TRY
-#endif
-
-	std::cerr << cfg;
-	ERROR_LOG(false);
-}
-
-} // namespace
 
 /*WIKI
  * @page = GUIWidgetInstanceWML
@@ -212,6 +145,69 @@ void register_builder_widget(const std::string& id
 		, boost::function<tbuilder_widget_ptr(config)> functor)
 {
 	builder_widget_lookup().insert(std::make_pair(id, functor));
+}
+
+tbuilder_widget_ptr create_builder_widget(const config& cfg)
+{
+	config::all_children_itors children = cfg.all_children_range();
+	size_t nb_children = std::distance(children.first, children.second);
+	VALIDATE(nb_children == 1, "Grid cell does not have exactly 1 child.");
+
+	typedef
+			std::pair<
+				  std::string
+				, boost::function<tbuilder_widget_ptr(config)> >
+			thack;
+	foreach(const thack& item, builder_widget_lookup()) {
+		if(item.first == "window" || item.first == "tooltip") {
+			continue;
+		}
+		if(const config &c = cfg.child(item.first)) {
+			return item.second(c);
+		}
+	}
+
+	if(const config &c = cfg.child("grid")) {
+		return new tbuilder_grid(c);
+	}
+/*
+ * This is rather odd, when commented out the classes no longer seem to be in
+ * the executable, no real idea why, except maybe of an overzealous optimizer
+ * while linking. It seems that all these classes aren't explicitly
+ * instantiated but only implicitly. Also when looking at the symbols in
+ * libwesnoth-game.a the repeating button is there regardless of this #if but
+ * in the final binary only if the #if is enabled.
+ *
+ * If this code is executed, which it will cause an assertion failure.
+ */
+#if 1
+#define TRY(name)                                                          \
+	do {                                                                   \
+		if(const config &c = cfg.child(#name)) {                           \
+			tbuilder_widget_ptr p = new implementation::tbuilder_##name(c);\
+			assert(false);                                                 \
+		}                                                                  \
+	} while (0)
+
+	TRY(stacked_widget);
+	TRY(scrollbar_panel);
+	TRY(horizontal_scrollbar);
+	TRY(repeating_button);
+	TRY(vertical_scrollbar);
+	TRY(label);
+	TRY(image);
+	TRY(toggle_button);
+	TRY(slider);
+	TRY(scroll_label);
+	TRY(minimap);
+	TRY(button);
+	TRY(drawing);
+	TRY(password_box);
+#undef TRY
+#endif
+
+	std::cerr << cfg;
+	ERROR_LOG(false);
 }
 
 const std::string& twindow_builder::read(const config& cfg)
