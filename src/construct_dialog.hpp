@@ -184,7 +184,7 @@ private:
 
 class dialog {
 public:
-	enum BUTTON_LOCATION { BUTTON_STANDARD, BUTTON_EXTRA, BUTTON_EXTRA_LEFT, BUTTON_CHECKBOX, BUTTON_CHECKBOX_LEFT, BUTTON_HELP };
+	enum BUTTON_LOCATION { BUTTON_STANDARD, BUTTON_EXTRA, BUTTON_EXTRA_LEFT, BUTTON_CHECKBOX, BUTTON_CHECKBOX_LEFT, BUTTON_HELP, BUTTON_TOP };
 	struct dimension_measurements {
 		dimension_measurements();
 		int x, y;
@@ -310,6 +310,7 @@ private:
 	std::vector< std::pair<dialog_button*,BUTTON_LOCATION> > button_pool_;
 	std::vector<dialog_button*> standard_buttons_;
 	std::vector<dialog_button*> extra_buttons_;
+	std::vector<dialog_button*> top_buttons_;
 	std::vector<button*> frame_buttons_;
 	std::string topic_;
 	dialog_button *help_button_;

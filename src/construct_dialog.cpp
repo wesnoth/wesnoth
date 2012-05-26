@@ -201,6 +201,9 @@ void dialog::add_button(dialog_button *const btn, BUTTON_LOCATION loc)
 	case BUTTON_STANDARD:
 		standard_buttons_.push_back(btn);
 		break;
+	case BUTTON_TOP:
+		top_buttons_.push_back(btn);
+		break;
 	default:
 		break;
 	}
@@ -385,6 +388,12 @@ void dialog::update_widget_positions()
 		}
 	}
 	button_iterator b;
+	for(b = top_buttons_.begin(); b != top_buttons_.end(); ++b) {
+		dialog_button *btn = *b;
+		btn->join();
+		std::pair<int,int> coords = dim_.buttons.find(btn)->second;
+		btn->set_location(coords.first, coords.second);
+	}
 	for(b = extra_buttons_.begin(); b != extra_buttons_.end(); ++b) {
 		dialog_button *btn = *b;
 		btn->join();
@@ -443,6 +452,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 
 	int check_button_height = 0;
 	int left_check_button_height = 0;
+	int top_button_height = 0;
 	const int button_height_padding = 5;
 
 	for(button_pool_const_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
@@ -456,6 +466,9 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 		case BUTTON_EXTRA_LEFT:
 		case BUTTON_CHECKBOX_LEFT:
 			left_check_button_height += btn->height() + button_height_padding;
+			break;
+		case BUTTON_TOP:
+			top_button_height += btn->height() + button_height_padding;
 			break;
 		case BUTTON_STANDARD:
 		default:
@@ -521,8 +534,10 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 
 	const size_t text_and_image_height = image_height > total_text_height ? image_height : total_text_height;
 
+	const int top_widgets_height = std::max<int>(text_widget_height, top_button_height);
+
 	const int total_height = text_and_image_height + padding_height + menu_->height() +
-		text_widget_height + check_button_height;
+		top_widgets_height + check_button_height;
 
 	dim.interior.w = std::max<int>(total_width,above_left_preview_pane_width + above_right_preview_pane_width);
 	dim.interior.h = std::max<int>(total_height,static_cast<int>(preview_pane_height));
@@ -613,8 +628,25 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 		dim.label_y = dim.textbox.y;
 	}
 
+	if(top_buttons_.empty() == false) {
+		int top_buttons_y = text_widget_y;
+
+		for(button_const_iterator b = top_buttons_.begin(); b != top_buttons_.end(); ++b) {
+			const dialog_button& btn = **b;
+
+			std::pair<int, int> coords(0, 0);
+
+			coords.first = dim.x + total_width - btn.width() - ButtonHPadding;
+			coords.second = top_buttons_y;
+
+			top_buttons_y += btn.height() + button_height_padding;
+
+			dim.buttons[*b] = coords;
+		}
+	}
+
 	dim.menu_x = dim.x+image_width+left_padding+image_h_padding;
-	dim.menu_y = dim.y+top_padding+text_and_image_height+menu_hpadding+ (use_textbox ? text_widget_->location().h + top_padding : 0);
+	dim.menu_y = dim.y+top_padding+text_and_image_height+menu_hpadding+ std::max<int>(top_button_height - button_height_padding, (use_textbox ? text_widget_->location().h + top_padding : 0));
 
 	dim.message.x = dim.x + left_padding;
 	dim.message.y = dim.y + top_padding + caption_height;
@@ -632,7 +664,7 @@ dialog::dimension_measurements dialog::layout(int xloc, int yloc)
 	//set the position of any tick boxes. by default, they go right below the menu,
 	//slammed against the right side of the dialog
 	if(extra_buttons_.empty() == false) {
-		int options_y = text_widget_y + text_widget_height + menu_->height() + button_height_padding + menu_hpadding;
+		int options_y = text_widget_y + std::max<int>(text_widget_height, top_button_height) + menu_->height() + button_height_padding + menu_hpadding;
 		int options_left_y = options_y;
 		for(button_pool_const_iterator b = button_pool_.begin(); b != button_pool_.end(); ++b) {
 		dialog_button const *const btn = b->first;
