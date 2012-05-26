@@ -19,6 +19,7 @@
 
 #include "gui/auxiliary/log.hpp"
 #include "utils/const_clone.tpp"
+#include "gui/auxiliary/window_builder/viewport.hpp"
 
 #define LOG_SCOPE_HEADER "tviewport [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -84,8 +85,28 @@ struct tviewport_implementation
 
 tviewport::tviewport(twidget& widget)
 	: widget_(widget)
+	, owns_widget_(false)
 {
 	widget_.set_parent(this);
+}
+
+tviewport::tviewport(const implementation::tbuilder_viewport& builder)
+	: twidget(builder)
+	, widget_(*builder.widget->build())
+	, owns_widget_(true)
+{
+}
+
+tviewport::~tviewport()
+{
+	if(owns_widget_) {
+		delete &widget_;
+	}
+}
+
+tviewport* tviewport::build(const implementation::tbuilder_viewport& builder)
+{
+	return new tviewport(builder);
 }
 
 void tviewport::place(const tpoint& origin, const tpoint& size)

@@ -20,6 +20,10 @@
 
 namespace gui2 {
 
+namespace implementation {
+class tbuilder_viewport;
+} // namespace implementation
+
 class tgrid;
 
 class tviewport
@@ -28,7 +32,18 @@ class tviewport
 	friend struct tviewport_implementation;
 public:
 
+	/** @deprecated use the second overload. */
 	explicit tviewport(twidget& widget);
+
+private:
+
+	explicit tviewport(const implementation::tbuilder_viewport& builder);
+
+public:
+
+	static tviewport* build(const implementation::tbuilder_viewport& builder);
+
+	~tviewport();
 
 	/** Inherited from twidget. */
 	void place(const tpoint& origin, const tpoint& size);
@@ -74,6 +89,8 @@ public:
 private:
 
 	twidget& widget_;
+
+	bool owns_widget_;
 
 };
 

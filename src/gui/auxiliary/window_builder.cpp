@@ -37,6 +37,7 @@
 #include "gui/auxiliary/window_builder/button.hpp"
 #include "gui/auxiliary/window_builder/drawing.hpp"
 #include "gui/auxiliary/window_builder/password_box.hpp"
+#include "gui/auxiliary/window_builder/viewport.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -169,6 +170,10 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 
 	if(const config &c = cfg.child("grid")) {
 		return new tbuilder_grid(c);
+	}
+
+	if(const config& viewport = cfg.child("viewport")) {
+		return new implementation::tbuilder_viewport(viewport);
 	}
 /*
  * This is rather odd, when commented out the classes no longer seem to be in
