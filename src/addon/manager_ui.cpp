@@ -720,7 +720,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		switch_view_mode_action view_mode_helper(disp.video(), view);
 		gui::dialog_button* view_mode_button = new gui::dialog_button(disp.video(),
 			view_mode_display_label(view), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &view_mode_helper);
-		dlg.add_button(view_mode_button, gui::dialog::BUTTON_EXTRA_LEFT);
+		dlg.add_button(view_mode_button, gui::dialog::BUTTON_TOP);
 
 		help::help_button* help_button = new help::help_button(disp, "installing_addons");
 		dlg.add_button(help_button, gui::dialog::BUTTON_HELP);
