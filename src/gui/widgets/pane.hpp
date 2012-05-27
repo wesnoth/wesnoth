@@ -26,6 +26,10 @@
 
 namespace gui2 {
 
+namespace implementation {
+class tbuilder_pane;
+} // namespace implementation
+
 class tgrid;
 
 class tpane
@@ -49,7 +53,16 @@ public:
 
 	typedef boost::function<bool(const titem&)> tfilter_functor;
 
+	/** @deprecated Use the second overload. */
 	explicit tpane(const tbuilder_grid_ptr item_builder);
+
+private:
+
+	explicit tpane(const implementation::tbuilder_pane& builder);
+
+public:
+
+	static tpane* build(const implementation::tbuilder_pane& builder);
 
 	/**
 	 * Creates a new item.

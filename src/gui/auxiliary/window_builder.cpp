@@ -36,6 +36,7 @@
 #include "gui/auxiliary/window_builder/minimap.hpp"
 #include "gui/auxiliary/window_builder/button.hpp"
 #include "gui/auxiliary/window_builder/drawing.hpp"
+#include "gui/auxiliary/window_builder/pane.hpp"
 #include "gui/auxiliary/window_builder/password_box.hpp"
 #include "gui/auxiliary/window_builder/viewport.hpp"
 #endif
@@ -170,6 +171,10 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 
 	if(const config &c = cfg.child("grid")) {
 		return new tbuilder_grid(c);
+	}
+
+	if(const config& pane = cfg.child("pane")) {
+		return new implementation::tbuilder_pane(pane);
 	}
 
 	if(const config& viewport = cfg.child("viewport")) {

@@ -459,6 +459,7 @@ set(wesnoth-main_SRC
 	gui/auxiliary/window_builder/listbox.cpp
 	gui/auxiliary/window_builder/minimap.cpp
 	gui/auxiliary/window_builder/multi_page.cpp
+	gui/auxiliary/window_builder/pane.cpp
 	gui/auxiliary/window_builder/panel.cpp
 	gui/auxiliary/window_builder/password_box.cpp
 	gui/auxiliary/window_builder/progress_bar.cpp

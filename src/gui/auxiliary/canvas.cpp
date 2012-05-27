@@ -523,6 +523,19 @@ tline::tline(const config& cfg)
  *                                     several times until the entire surface
  *                                     is filled. The last images are
  *                                     truncated. $
+ *
+ *     grow_direction &                Determines how an image is resized.
+ *                                     Possible values:
+ *                                     @* scale        The image is scaled.
+ *                                     @* stretch      The first row or column
+ *                                     of pixels is copied over the entire
+ *                                     image. (Can only be used to scale resize
+ *                                     in one direction, else falls
+ *                                     back to scale.)
+ *                                     @* tile         The image is placed
+ *                                     several times until the entire surface
+ *                                     is filled. The last images are
+ *                                     truncated. $
  * @end{table}
  * @allow{type}{name="unsigned"}{value="^\d+$"}
  * @allow{type}{name="f_unsigned"}{value="^.+$"}
@@ -544,6 +557,7 @@ tline::tline(const config& cfg)
  * @allow{type}{name="border"}{value="^(top|bottom|left|right|all)?(,\s*(top|bottom|left|right|all))*$"}
  * @allow{type}{name="scrollbar_mode"}{value="^always|never|auto|initial_auto$"}
  * @allow{type}{name="resize_mode"}{value="^scale|stretch|tile$"}
+ * @allow{type}{name="grow_direction"}{value="^horizontal|vertical$"}
  *
  * @remove{type}{name="section"}
  * @remove{type}{name="config"}

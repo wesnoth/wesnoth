@@ -21,6 +21,7 @@
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/const_clone.tpp"
+#include "gui/auxiliary/window_builder/pane.hpp"
 
 #include <boost/bind.hpp>
 
@@ -107,7 +108,6 @@ struct tpane_implementation
 	}
 };
 
-
 tpane::tpane(const tbuilder_grid_ptr item_builder)
 	: twidget()
 	, items_()
@@ -123,6 +123,30 @@ tpane::tpane(const tbuilder_grid_ptr item_builder)
 				, _2
 				, _3)
 			, event::tdispatcher::back_pre_child);
+}
+
+tpane::tpane(const implementation::tbuilder_pane& builder)
+	: twidget(builder)
+	, items_()
+	, item_builder_(builder.item_definition)
+	, item_id_generator_(0)
+	, placer_(tplacer_::build(
+			  builder.grow_direction
+			, builder.parallel_items))
+{
+	connect_signal<event::REQUEST_PLACEMENT>(
+			  boost::bind(
+				  &tpane::signal_handler_request_placement
+				, this
+				, _1
+				, _2
+				, _3)
+			, event::tdispatcher::back_pre_child);
+}
+
+tpane* tpane::build(const implementation::tbuilder_pane& builder)
+{
+	return new tpane(builder);
 }
 
 unsigned tpane::create_item(
