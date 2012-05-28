@@ -431,6 +431,7 @@ set(wesnoth-main_SRC
 	gui/auxiliary/widget_definition/image.cpp
 	gui/auxiliary/widget_definition/label.cpp
 	gui/auxiliary/widget_definition/listbox.cpp
+	gui/auxiliary/widget_definition/matrix.cpp
 	gui/auxiliary/widget_definition/minimap.cpp
 	gui/auxiliary/widget_definition/multi_page.cpp
 	gui/auxiliary/widget_definition/panel.cpp
@@ -458,6 +459,7 @@ set(wesnoth-main_SRC
 	gui/auxiliary/window_builder/image.cpp
 	gui/auxiliary/window_builder/label.cpp
 	gui/auxiliary/window_builder/listbox.cpp
+	gui/auxiliary/window_builder/matrix.cpp
 	gui/auxiliary/window_builder/minimap.cpp
 	gui/auxiliary/window_builder/multi_page.cpp
 	gui/auxiliary/window_builder/pane.cpp
@@ -534,6 +536,7 @@ set(wesnoth-main_SRC
 	gui/widgets/label.cpp
 	gui/widgets/list.cpp
 	gui/widgets/listbox.cpp
+	gui/widgets/matrix.cpp
 	gui/widgets/minimap.cpp
 	gui/widgets/multi_page.cpp
 	gui/widgets/pane.cpp

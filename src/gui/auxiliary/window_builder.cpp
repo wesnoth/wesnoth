@@ -29,6 +29,7 @@
 #include "gui/auxiliary/window_builder/stacked_widget.hpp"
 #include "gui/auxiliary/window_builder/vertical_scrollbar.hpp"
 #include "gui/auxiliary/window_builder/label.hpp"
+#include "gui/auxiliary/window_builder/matrix.hpp"
 #include "gui/auxiliary/window_builder/image.hpp"
 #include "gui/auxiliary/window_builder/toggle_button.hpp"
 #include "gui/auxiliary/window_builder/slider.hpp"
@@ -215,6 +216,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(toggle_button);
 	TRY(slider);
 	TRY(scroll_label);
+	TRY(matrix);
 	TRY(minimap);
 	TRY(button);
 	TRY(drawing);
