@@ -22,6 +22,7 @@
 #include "gui/widgets/window.hpp"
 #include "utils/const_clone.tpp"
 #include "gui/auxiliary/window_builder/pane.hpp"
+#include "gui/auxiliary/event/message.hpp"
 
 #include <boost/bind.hpp>
 
@@ -171,6 +172,10 @@ unsigned tpane::create_item(
 	}
 
 	items_.push_back(item);
+
+	event::tmessage message;
+	fire(event::REQUEST_PLACEMENT, *this, message);
+
 	return item.id;
 }
 
