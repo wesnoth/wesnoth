@@ -342,6 +342,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				new_level = *scenario;
 				config& map = new_level.add_child("map");
 				map["data"] = map_data;
+				map["usage"] = "map";
+				map["border_size"] = 1;
 				scenario = &new_level;
 
 				//merge carryover information into the scenario
@@ -523,6 +525,8 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					new_level = *scenario;
 					config& map = new_level.add_child("map");
 					map["data"] = map_data;
+					map["usage"] = "map";
+					map["border_size"] = 1;
 					scenario = &new_level;
 
 					gamestate.starting_pos = new_level;
