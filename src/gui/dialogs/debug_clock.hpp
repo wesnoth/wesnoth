@@ -23,6 +23,7 @@
 namespace gui2 {
 
 class tcontrol;
+class tpane;
 class tprogress_bar;
 class tinteger_selector_;
 
@@ -39,6 +40,7 @@ public:
 		, hour_(NULL)
 		, minute_(NULL)
 		, second_(NULL)
+		, pane_(NULL)
 		, clock_(NULL)
 		, window_(NULL)
 		, signal_()
@@ -65,6 +67,8 @@ private:
 
 	/** An integer selector to display the seconds this minute. */
 	tinteger_selector_* second_;
+
+	tpane* pane_;
 
 	/** A widget that can display the time. */
 	tcontrol* clock_;

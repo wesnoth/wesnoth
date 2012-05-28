@@ -21,6 +21,7 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/pane.hpp"
 #include "gui/widgets/progress_bar.hpp"
 
 #include <boost/bind.hpp>
@@ -104,6 +105,8 @@ void tdebug_clock::pre_show(CVideo& /*video*/, twindow& window)
 		dynamic_cast<tcontrol*>(second_)->set_active(false);
 	}
 
+	pane_ = find_widget<tpane>(&window, "pane", false, false);
+
 	clock_ = find_widget<tcontrol>(&window, "clock", false, false);
 
 	window_ = &window;
@@ -159,6 +162,17 @@ void tdebug_clock::update_time(const bool force)
 			canvas.set_variable("second", variant(second_stamp));
 		}
 		clock_->set_dirty();
+	}
+
+	const std::map<std::string, std::string> tags;
+	std::map<std::string, string_map> item_data;
+	string_map item;
+
+	item["label"] = str_cast(second_stamp);
+	item_data.insert(std::make_pair("time", item));
+
+	if(pane_) {
+		pane_->create_item(item_data, tags);
 	}
 }
 
