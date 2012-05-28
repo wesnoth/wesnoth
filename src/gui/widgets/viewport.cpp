@@ -95,6 +95,7 @@ tviewport::tviewport(const implementation::tbuilder_viewport& builder)
 	, widget_(*builder.widget->build())
 	, owns_widget_(true)
 {
+	widget_.set_parent(this);
 }
 
 tviewport::~tviewport()
