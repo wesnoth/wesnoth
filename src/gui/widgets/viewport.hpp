@@ -16,6 +16,7 @@
 #ifndef GUI_WIDGETS_VIEWPORT_HPP_INCLUDED
 #define GUI_WIDGETS_VIEWPORT_HPP_INCLUDED
 
+#include "gui/auxiliary/window_builder.hpp"
 #include "gui/widgets/widget.hpp"
 
 namespace gui2 {
@@ -37,11 +38,15 @@ public:
 
 private:
 
-	explicit tviewport(const implementation::tbuilder_viewport& builder);
+	tviewport(
+			  const implementation::tbuilder_viewport& builder
+			, const tbuilder_widget::treplacements& replacements);
 
 public:
 
-	static tviewport* build(const implementation::tbuilder_viewport& builder);
+	static tviewport* build(
+			  const implementation::tbuilder_viewport& builder
+			, const tbuilder_widget::treplacements& replacements);
 
 	~tviewport();
 

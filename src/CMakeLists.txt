@@ -454,6 +454,7 @@ set(wesnoth-main_SRC
 	gui/auxiliary/window_builder/helper.cpp
 	gui/auxiliary/window_builder/horizontal_listbox.cpp
 	gui/auxiliary/window_builder/horizontal_scrollbar.cpp
+	gui/auxiliary/window_builder/instance.cpp
 	gui/auxiliary/window_builder/image.cpp
 	gui/auxiliary/window_builder/label.cpp
 	gui/auxiliary/window_builder/listbox.cpp

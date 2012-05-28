@@ -90,9 +90,11 @@ tviewport::tviewport(twidget& widget)
 	widget_.set_parent(this);
 }
 
-tviewport::tviewport(const implementation::tbuilder_viewport& builder)
+tviewport::tviewport(
+		  const implementation::tbuilder_viewport& builder
+		, const tbuilder_widget::treplacements& replacements)
 	: twidget(builder)
-	, widget_(*builder.widget->build())
+	, widget_(*builder.widget->build(replacements))
 	, owns_widget_(true)
 {
 	widget_.set_parent(this);
@@ -105,9 +107,11 @@ tviewport::~tviewport()
 	}
 }
 
-tviewport* tviewport::build(const implementation::tbuilder_viewport& builder)
+tviewport* tviewport::build(
+		  const implementation::tbuilder_viewport& builder
+		, const tbuilder_widget::treplacements& replacements)
 {
-	return new tviewport(builder);
+	return new tviewport(builder, replacements);
 }
 
 void tviewport::place(const tpoint& origin, const tpoint& size)

@@ -40,6 +40,7 @@
 #include "gui/auxiliary/window_builder/password_box.hpp"
 #include "gui/auxiliary/window_builder/viewport.hpp"
 #endif
+#include "gui/auxiliary/window_builder/instance.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "formula_string_utils.hpp"
@@ -173,6 +174,10 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 		return new tbuilder_grid(c);
 	}
 
+	if(const config &instance = cfg.child("instance")) {
+		return new implementation::tbuilder_instance(instance);
+	}
+
 	if(const config& pane = cfg.child("pane")) {
 		return new implementation::tbuilder_pane(pane);
 	}
@@ -180,6 +185,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	if(const config& viewport = cfg.child("viewport")) {
 		return new implementation::tbuilder_viewport(viewport);
 	}
+
 /*
  * This is rather odd, when commented out the classes no longer seem to be in
  * the executable, no real idea why, except maybe of an overzealous optimizer
@@ -545,6 +551,13 @@ tgrid* tbuilder_grid::build() const
 	return build(new tgrid());
 }
 
+twidget* tbuilder_grid::build(const treplacements& replacements) const
+{
+	tgrid* result = new tgrid();
+	build(*result, replacements);
+	return result;
+}
+
 tgrid* tbuilder_grid::build (tgrid* grid) const
 {
 	grid->set_id(id);
@@ -573,6 +586,39 @@ tgrid* tbuilder_grid::build (tgrid* grid) const
 	}
 
 	return grid;
+}
+
+void tbuilder_grid::build(tgrid& grid, const treplacements& replacements) const
+{
+	grid.set_id(id);
+	grid.set_linked_group(linked_group);
+	grid.set_rows_cols(rows, cols);
+
+	log_scope2(log_gui_general, "Window builder: building grid");
+
+	DBG_GUI_G << "Window builder: grid '" << id
+		<< "' has " << rows << " rows and "
+		<< cols << " columns.\n";
+
+	for(unsigned x = 0; x < rows; ++x) {
+		grid.set_row_grow_factor(x, row_grow_factor[x]);
+		for(unsigned y = 0; y < cols; ++y) {
+
+			if(x == 0) {
+				grid.set_column_grow_factor(y, col_grow_factor[y]);
+			}
+
+			DBG_GUI_G << "Window builder: adding child at "
+					<< x << ',' << y << ".\n";
+
+			grid.set_child(
+					  widgets[x * cols + y]->build(replacements)
+					, x
+					, y
+					, flags[x * cols + y]
+					, border_size[x * cols + y]);
+		}
+	}
 }
 
 } // namespace gui2

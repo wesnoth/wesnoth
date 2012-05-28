@@ -31,6 +31,10 @@ public:
 
 	tbuilder_control(const config& cfg);
 
+	using tbuilder_widget::build;
+
+	twidget* build(const treplacements& replacements) const;
+
 	/** @deprecated The control can initalise itself. */
 	void init_control(tcontrol* control) const;
 

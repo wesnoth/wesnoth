@@ -29,6 +29,8 @@ struct tbuilder_viewport
 
 	twidget* build() const;
 
+	twidget* build(const treplacements& replacements) const;
+
 	tbuilder_widget_ptr widget;
 
 };

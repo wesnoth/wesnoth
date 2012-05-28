@@ -67,6 +67,11 @@ void tbuilder_control::init_control(tcontrol* control) const
 #endif
 }
 
+twidget* tbuilder_control::build(const treplacements& /*replacements*/) const
+{
+	return build();
+}
+
 } // namespace implementation
 
 } // namespace gui2

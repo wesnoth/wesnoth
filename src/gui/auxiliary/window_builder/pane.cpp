@@ -35,6 +35,11 @@ tbuilder_pane::tbuilder_pane(const config& cfg)
 
 tpane* tbuilder_pane::build() const
 {
+	return build(treplacements());
+}
+
+tpane* tbuilder_pane::build(const treplacements& /*replacements*/) const
+{
 	return tpane::build(*this);
 }
 

@@ -22,6 +22,7 @@
 
 #include <boost/function.hpp>
 
+#include <map>
 #include <string>
 #include <vector>
 
@@ -46,11 +47,27 @@ struct tbuilder_widget
 	: public reference_counted_object
 {
 public:
+
+	/**
+	 * The replacements type is used to define replacement types.
+	 *
+	 * Certain widgets need to build a part of themselves upon instantiation
+	 * but at the time of the definition it's not yet known what exactly. By
+	 * using and `[instance]' widget this decision can be postponed until
+	 * instantiation.
+	 */
+	typedef std::map<
+		  std::string
+		, boost::intrusive_ptr<tbuilder_widget>
+		> treplacements;
+
 	explicit tbuilder_widget(const config& cfg);
 
 	virtual ~tbuilder_widget() {}
 
 	virtual twidget* build() const = 0;
+
+	virtual twidget* build(const treplacements& replacements) const = 0;
 
 	/** Parameters for the widget. */
 	std::string id;
@@ -129,7 +146,11 @@ public:
 	std::vector<tbuilder_widget_ptr> widgets;
 
 	tgrid* build() const;
+	twidget* build(const treplacements& replacements) const;
+
+
 	tgrid* build(tgrid* grid) const;
+	void build(tgrid& grid, const treplacements& replacements) const;
 };
 
 typedef boost::intrusive_ptr<tbuilder_grid> tbuilder_grid_ptr;

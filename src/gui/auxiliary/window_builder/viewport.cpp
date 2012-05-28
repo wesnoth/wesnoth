@@ -31,7 +31,12 @@ tbuilder_viewport::tbuilder_viewport(const config& cfg)
 
 twidget* tbuilder_viewport::build() const
 {
-	return  tviewport::build(*this);
+	return build(treplacements());
+}
+
+twidget* tbuilder_viewport::build(const treplacements& replacements) const
+{
+	return tviewport::build(*this, replacements);
 }
 
 } // namespace implementation

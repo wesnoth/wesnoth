@@ -13,32 +13,31 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_WINDOW_BUILDER_PANE_HPP_INCLUDED
-#define GUI_AUXILIARY_WINDOW_BUILDER_PANE_HPP_INCLUDED
+#ifndef GUI_AUXILIARY_WINDOW_BUILDER_INSTANCE_HPP_INCLUDED
+#define GUI_AUXILIARY_WINDOW_BUILDER_INSTANCE_HPP_INCLUDED
 
-#include "gui/auxiliary/placer.hpp"
-#include "gui/widgets/pane.hpp"
+#include "gui/auxiliary/window_builder.hpp"
 
 namespace gui2 {
 
-class tpane;
-
 namespace implementation {
 
-struct tbuilder_pane
+struct tbuilder_instance
 	: public tbuilder_widget
 {
-	explicit tbuilder_pane(const config& cfg);
+	explicit tbuilder_instance(const config& cfg);
 
-	tpane* build() const;
+	twidget* build() const;
 
-	tpane* build(const treplacements& replacements) const;
+	twidget* build(const treplacements& replacements) const;
 
-	tplacer_::tgrow_direction grow_direction;
-
-	unsigned parallel_items;
-
-	tbuilder_grid_ptr item_definition;
+	/**
+	 * Holds a copy of the cfg parameter in the constructor.
+	 *
+	 * This is used when instantiating a spacer, it can still use the
+	 * parameters orginally sent.
+	 */
+	config configuration;
 };
 
 } // namespace implementation
