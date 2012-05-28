@@ -180,7 +180,7 @@ const twidget* tviewport::find(
 
 tpoint tviewport::calculate_best_size() const
 {
-	return tpoint(800, 500);
+	return widget_.get_best_size();
 }
 
 bool tviewport::disable_click_dismiss() const
