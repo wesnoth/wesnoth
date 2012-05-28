@@ -70,7 +70,7 @@ public:
 	{
 	}
 
-	void set_active(bool active)
+	void set_active(const bool active)
 	{
 		STATE::set_active(active);
 	}
