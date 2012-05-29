@@ -62,50 +62,6 @@ static lg::log_domain log_addons_client("addons-client");
 
 namespace {
 
-enum VIEW_MODE
-{
-	VIEW_ALL,
-	VIEW_INSTALLED,
-	VIEW_UPGRADABLE,
-	VIEW_NOT_INSTALLED,
-	VIEW_MODE_COUNT
-};
-
-std::string view_mode_display_label(VIEW_MODE m)
-{
-	switch(m) {
-	case VIEW_NOT_INSTALLED:
-		return _("addons_view^Not Installed");
-	case VIEW_UPGRADABLE:
-		return _("addons_view^Upgradable");
-	case VIEW_INSTALLED:
-		return _("addons_view^Installed");
-	default:
-		return _("addons_view^All Add-ons");
-	}
-}
-
-VIEW_MODE do_choose_view_mode(CVideo& video, VIEW_MODE initial)
-{
-	gui2::tsimple_item_selector::list_type dlg_items;
-	for(int k = 0; k != VIEW_MODE_COUNT; ++k) {
-		const VIEW_MODE v = VIEW_MODE(k);
-		dlg_items.push_back(view_mode_display_label(v));
-	}
-
-	gui2::tsimple_item_selector dlg(
-		_("View Mode"),
-		_("Choose an add-ons list view mode."),
-		dlg_items);
-
-	dlg.set_selected_index(initial);
-	dlg.show(video);
-
-	const int result = dlg.selected_index();
-
-	return result != -1 ? VIEW_MODE(result) : initial;
-}
-
 inline const addon_info& addon_at(const std::string& id, const addons_list& addons)
 {
 	addons_list::const_iterator it = addons.find(id);
@@ -412,23 +368,58 @@ public:
 	}
 };
 
-/** GUI1 support class handling the view mode selection button. */
-class switch_view_mode_action : public gui::dialog_button_action
+/** Struct type for storing filter options. */
+struct addons_filter_state
+{
+	std::string keywords;
+	std::vector<bool> types;
+	ADDON_STATUS_FILTER status;
+	bool changed;
+
+	addons_filter_state()
+		: keywords()
+		, types(ADDON_TYPES_COUNT, true)
+		, status(FILTER_ALL)
+		, changed(false)
+	{}
+};
+
+/** GUI1 support class handling the filter options button. */
+class filter_options_action : public gui::dialog_button_action
 {
 	CVideo& video_;
-	VIEW_MODE& view_;
+	addons_filter_state& f_;
 
 public:
-	switch_view_mode_action(CVideo& video, VIEW_MODE& view)
-		: video_(video), view_(view)
+	filter_options_action(CVideo& video, addons_filter_state& filter)
+		: video_(video)
+		, f_(filter)
 	{}
 
 	virtual gui::dialog_button_action::RESULT button_pressed(int)
 	{
-		const VIEW_MODE previous_view = view_;
-		view_ = do_choose_view_mode(video_, view_);
-		// Close the manager dialog only if the user picked a new view mode.
-		return previous_view == view_ ? gui::CONTINUE_DIALOG : gui::CLOSE_DIALOG;
+		gui2::taddon_filter_options dlg;
+
+		dlg.set_displayed_status(f_.status);
+		dlg.set_displayed_types(f_.types);
+
+		dlg.show(video_);
+
+		const std::vector<bool> new_types = dlg.displayed_types();
+		const ADDON_STATUS_FILTER new_status = dlg.displayed_status();
+
+		assert(f_.types.size() == new_types.size());
+
+		if(std::equal(f_.types.begin(), f_.types.end(), new_types.begin()) && f_.status == new_status) {
+			// Close the manager dialog only if the filter options changed.
+			return gui::CONTINUE_DIALOG;
+		}
+
+		f_.types = new_types;
+		f_.status = new_status;
+		f_.changed = true;
+
+		return gui::CLOSE_DIALOG;
 	}
 };
 
@@ -475,14 +466,16 @@ sorted_addon_pointer_list sort_addons_list(addons_list& addons)
 	return res;
 }
 
-void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, VIEW_MODE& view, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, std::string& filter_text)
+void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, addons_filter_state& filter)
 {
 	stay_in_ui = false;
+	filter.changed = false;
 
-	const VIEW_MODE prev_view = view;
-	assert(prev_view != VIEW_MODE_COUNT);
+	const ADDON_STATUS_FILTER prev_view = filter.status;
+	assert(prev_view < FILTER_COUNT);
 
-	const bool updates_only = view == VIEW_UPGRADABLE;
+	const bool updates_only =
+		filter.status == FILTER_UPGRADABLE;
 
 	const bool show_publish_delete = !updates_only;
 
@@ -551,9 +544,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 		const ADDON_STATUS state = tracking[addon.id].state;
 
-		if((view == VIEW_UPGRADABLE && state != ADDON_INSTALLED_UPGRADABLE) ||
-		   (view == VIEW_NOT_INSTALLED && state != ADDON_NONE) ||
-		   (view == VIEW_INSTALLED && !is_installed_addon_status(state))
+		if((filter.status == FILTER_UPGRADABLE && state != ADDON_INSTALLED_UPGRADABLE) ||
+		   (filter.status == FILTER_NOT_INSTALLED && state != ADDON_NONE) ||
+		   (filter.status == FILTER_INSTALLED && !is_installed_addon_status(state)) ||
+		   (!filter.types[addon.type])
 		)
 			continue;
 
@@ -669,7 +663,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			} else {
 				gui2::show_transient_message(disp.video(), _("Add-ons Manager"), _("All add-ons are up to date."));
 			}
-			view = VIEW_ALL;
+			filter.status = FILTER_ALL;
 			return;
 		}
 	}
@@ -702,7 +696,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 		gui::filter_textbox* filter_box = new gui::filter_textbox(disp.video(),
 			_("Filter: "), options, filter_options, 1, dlg, 300);
-		filter_box->set_text(filter_text);
+		filter_box->set_text(filter.keywords);
 		dlg.set_textbox(filter_box);
 
 		description_display_action description_helper(disp, option_ids, addons, tracking, filter_box);
@@ -717,10 +711,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			dlg.add_button(update_all_button, gui::dialog::BUTTON_EXTRA);
 		}
 
-		switch_view_mode_action view_mode_helper(disp.video(), view);
-		gui::dialog_button* view_mode_button = new gui::dialog_button(disp.video(),
-			view_mode_display_label(view), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &view_mode_helper);
-		dlg.add_button(view_mode_button, gui::dialog::BUTTON_TOP);
+		filter_options_action filter_opts_helper(disp.video(), filter);
+		gui::dialog_button* filter_opts_button = new gui::dialog_button(disp.video(),
+			_("filter^Options"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &filter_opts_helper);
+		dlg.add_button(filter_opts_button, gui::dialog::BUTTON_TOP);
 
 		help::help_button* help_button = new help::help_button(disp, "installing_addons");
 		dlg.add_button(help_button, gui::dialog::BUTTON_HELP);
@@ -741,20 +735,19 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		//
 		result = filter_box->get_index(dlg.show());
 
-		filter_text = filter_box->text();
+		filter.keywords = filter_box->text();
 	}
 
 	const bool update_everything = updates_only && result == update_all_value;
-	const bool change_view = prev_view != view;
 
-	if(result < 0 && !(update_everything || change_view)) {
+	if(result < 0 && !(update_everything || filter.changed)) {
 		// User canceled the dialog.
 		return;
 	}
 
 	stay_in_ui = true;
 
-	if(change_view) {
+	if(filter.changed) {
 		// The caller will run this function again.
 		return;
 	}
@@ -839,11 +832,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 bool addons_manager_ui(display& disp, const std::string& remote_address)
 {
-	VIEW_MODE view = VIEW_ALL;
 	bool stay_in_manager_ui = false;
 	bool need_wml_cache_refresh = false;
 	std::string last_addon_id;
-	std::string filter_text;
+	addons_filter_state filter;
 
 	preferences::set_campaign_server(remote_address);
 
@@ -888,11 +880,9 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 
 			try {
 				// Don't reconnect when switching between view modes.
-				VIEW_MODE previous_view;
 				do {
-					previous_view = view;
-					show_addons_manager_dialog(disp, client, addons, view, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh, filter_text);
-				} while(previous_view != view);
+					show_addons_manager_dialog(disp, client, addons, last_addon_id, stay_in_manager_ui, need_wml_cache_refresh, filter);
+				} while(filter.changed);
 			} catch(const addons_client::user_exit&) {
 				// Don't do anything; just go back to the addons manager UI
 				// if the user cancels a download or other network operation
