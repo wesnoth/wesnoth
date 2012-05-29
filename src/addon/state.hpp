@@ -68,4 +68,19 @@ struct addon_tracking_info
  */
 addon_tracking_info get_addon_tracking_info(const addon_info& addon);
 
+/**
+ * Add-on installation status filters for the user interface.
+ *
+ * These are not currently an exact match with the @a ADDON_STATUS
+ * enum type in order to keep the UI aspect simple for the user.
+ * This might change later.
+ */
+enum ADDON_STATUS_FILTER {
+	FILTER_ALL,
+	FILTER_INSTALLED,
+	FILTER_UPGRADABLE,
+	FILTER_NOT_INSTALLED,
+	FILTER_COUNT
+};
+
 #endif
