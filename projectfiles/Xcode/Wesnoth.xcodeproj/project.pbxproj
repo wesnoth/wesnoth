@@ -24,6 +24,7 @@
 		49DA0D2F13550E9B000AFEBD /* walker_grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D2C13550E9B000AFEBD /* walker_grid.cpp */; };
 		49DA0D3013550E9B000AFEBD /* walker_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D2D13550E9B000AFEBD /* walker_widget.cpp */; };
 		49DA0D3613550F27000AFEBD /* ca_global_fallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D3513550F27000AFEBD /* ca_global_fallback.cpp */; };
+		620091C31575C784009AA2C9 /* filter_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620091C11575C784009AA2C9 /* filter_options.cpp */; };
 		620EC87414FEEE6D006BBD1F /* state.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 620EC87214FEEE6D006BBD1F /* state.cpp */; };
 		6216A91D1551CCF700E13C2D /* viewport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6216A91B1551CCF700E13C2D /* viewport.cpp */; };
 		62579C771573E682003089D5 /* matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62579C751573E682003089D5 /* matrix.cpp */; };
@@ -1013,6 +1014,10 @@
 		49DA0D2C13550E9B000AFEBD /* walker_grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = walker_grid.cpp; path = iterator/walker_grid.cpp; sourceTree = "<group>"; };
 		49DA0D2D13550E9B000AFEBD /* walker_widget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = walker_widget.cpp; path = iterator/walker_widget.cpp; sourceTree = "<group>"; };
 		49DA0D3513550F27000AFEBD /* ca_global_fallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ca_global_fallback.cpp; sourceTree = "<group>"; };
+		620091C11575C784009AA2C9 /* filter_options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = filter_options.cpp; path = addon/filter_options.cpp; sourceTree = "<group>"; };
+		620091C21575C784009AA2C9 /* filter_options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = filter_options.hpp; path = addon/filter_options.hpp; sourceTree = "<group>"; };
+		620091C51575C8CE009AA2C9 /* description.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = description.hpp; path = addon/description.hpp; sourceTree = "<group>"; };
+		620091C61575C8CE009AA2C9 /* uninstall_list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = uninstall_list.hpp; path = addon/uninstall_list.hpp; sourceTree = "<group>"; };
 		620EC87214FEEE6D006BBD1F /* state.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = state.cpp; sourceTree = "<group>"; };
 		620EC87314FEEE6D006BBD1F /* state.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = state.hpp; sourceTree = "<group>"; };
 		6216A91B1551CCF700E13C2D /* viewport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = viewport.cpp; sourceTree = "<group>"; };
@@ -2519,8 +2524,12 @@
 		49DA0CFB13550AC5000AFEBD /* addon */ = {
 			isa = PBXGroup;
 			children = (
+				620091C11575C784009AA2C9 /* filter_options.cpp */,
+				620091C21575C784009AA2C9 /* filter_options.hpp */,
 				F4FBD769145D93370083CA67 /* uninstall_list.cpp */,
+				620091C61575C8CE009AA2C9 /* uninstall_list.hpp */,
 				4944F4161354FBB20027E614 /* description.cpp */,
+				620091C51575C8CE009AA2C9 /* description.hpp */,
 			);
 			name = addon;
 			sourceTree = "<group>";
@@ -4089,6 +4098,7 @@
 				62579C7F1573E70C003089D5 /* matrix.cpp in Sources */,
 				62579C801573E70C003089D5 /* pane.cpp in Sources */,
 				62579C831573E797003089D5 /* matrix.cpp in Sources */,
+				620091C31575C784009AA2C9 /* filter_options.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
