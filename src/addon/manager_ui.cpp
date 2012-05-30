@@ -275,7 +275,7 @@ bool do_check_before_overwriting_addon(CVideo& video, const addon_info& addon)
 	std::string text;
 	std::vector<std::string> extra_items;
 
-	text = vgettext("The add-on '$addon|' is already installed and contains additional content that will be permanently lost if you continue:", symbols);
+	text = vgettext("The add-on '$addon|' is already installed and contains additional information that will be permanently lost if you continue:", symbols);
 	text += "\n\n";
 
 	if(pbl) {
