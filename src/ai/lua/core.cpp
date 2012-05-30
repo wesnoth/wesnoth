@@ -220,16 +220,19 @@ static int ai_attack(lua_State *L, bool exec)
 	int attacker_weapon = -1;//-1 means 'select what is best'
 	double aggression = context.get_aggression();//use the aggression from the context
 
-	if (!lua_isnoneornil(L, index + 1) &&  attacker_weapon != -1) {
-		attacker_weapon = lua_tointeger(L, index + 1) - 1; // Done for consistency of the Lua style
+	if (!lua_isnoneornil(L, index)) {
+		attacker_weapon = lua_tointeger(L, index); 
+		if (attacker_weapon != -1) {
+			attacker_weapon--;	// Done for consistency of the Lua style
+		}
 	}
 	
 	//TODO: Right now, aggression is used by the attack execution functions to determine the weapon to be used.
 	// If a decision is made to expand the function that determines the weapon, this block must be refactored
 	// to parse aggression if a single int is on the stack, or create a table of parameters, if a table is on the
 	// stack.
-	if (!lua_isnoneornil(L, index) && lua_isnumber(L,index)) {
-		aggression = lua_tonumber(L, index);
+	if (!lua_isnoneornil(L, index + 1) && lua_isnumber(L,index + 1)) {
+		aggression = lua_tonumber(L, index + 1);
 	}
 
 	ai::attack_result_ptr attack_result = ai::actions::execute_attack_action(side,exec,attacker,defender,attacker_weapon,aggression);
