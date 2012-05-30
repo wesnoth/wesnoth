@@ -469,6 +469,8 @@ sorted_addon_pointer_list sort_addons_list(addons_list& addons)
 
 void show_addons_manager_dialog(display& disp, addons_client& client, addons_list& addons, std::string& last_addon_id, bool& stay_in_ui, bool& wml_changed, addons_filter_state& filter)
 {
+	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
+
 	stay_in_ui = false;
 	filter.changed = false;
 
@@ -533,8 +535,6 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	// Prepare the add-ons list for display and get status
 	// information.
 	//
-
-	boost::scoped_ptr<cursor::setter> cursor_setter(new cursor::setter(cursor::WAIT));
 
 	const sorted_addon_pointer_list& sorted_addons = sort_addons_list(addons);
 
