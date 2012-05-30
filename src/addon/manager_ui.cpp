@@ -28,6 +28,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/addon/description.hpp"
+#include "gui/dialogs/addon/filter_options.hpp"
 #include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/message.hpp"
