@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-05-18 11:13+0200\n"
-"PO-Revision-Date: 2011-01-30 22:27+0800\n"
-"Last-Translator: 楊綮銘 <steven.sheep@hotmail.com>\n"
+"POT-Creation-Date: 2012-05-18 12:28+0200\n"
+"PO-Revision-Date: 2012-05-30 12:34+0800\n"
+"Last-Translator: sdfsf <sdfsf@sdfsdf.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -26,10 +26,8 @@ msgstr "壓縮存檔"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:11
-#, fuzzy
-#| msgid "Confirm deleting saves"
 msgid "Confirm deleting saves"
-msgstr "刪除儲存確認"
+msgstr "確認刪除存檔"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:18
@@ -43,14 +41,11 @@ msgstr "滾輪捲動畫面"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
-#, fuzzy
-#| msgid "Keep scrolling when mouse leaves window"
 msgid "Keep scrolling when mouse leaves window"
 msgstr "當滑鼠指標離開視窗時繼續捲動"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
-#, fuzzy
 msgid "Local time of day area lighting"
 msgstr "制定開始時間:"
 
@@ -71,10 +66,6 @@ msgstr "連線逾時"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:61
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of seconds to wait for a ping reply before timing out. Set to 0 to "
 "disable"
@@ -82,72 +73,58 @@ msgstr "等待幾秒鐘後默認逾時。預設為0。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:71
-#, fuzzy
-#| msgid "Accept whisper messages from friends only"
 msgid "Accept whispers from friends only"
 msgstr "只接收好友傳來的訊息"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:78
-#, fuzzy
-#| msgid "Auto-open whisper windows in lobby"
 msgid "Auto-open whisper windows in lobby"
 msgstr "在大廳自動打開訊息"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:85
-#, fuzzy
-#| msgid "Group players in lobby"
 msgid "Group players in lobby"
 msgstr "在大廳組隊"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:92
-#, fuzzy
-#| msgid "Lobby sounds"
 msgid "Lobby sounds"
 msgstr "大廳音效"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:99
-#, fuzzy
-#| msgid "Disable notifications"
 msgid "Disable notifications"
 msgstr "關閉提示。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:106
 msgid "Reverse time graphics"
-msgstr ""
+msgstr "反轉時間圖形"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Choose whether the sun moves left-to-right or right-to-left"
-msgstr ""
+msgstr "選擇太陽要從東邊升起還是西邊"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:114
 msgid "Follow unit actions"
-msgstr ""
+msgstr "跟隨單位行動"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
-msgstr ""
+msgstr "選擇當單位行動時，地圖是否跟隨移動"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:131
 msgid "Chat message aging"
-msgstr ""
+msgstr "聊天訊息過期"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:132
-#, fuzzy
-#| msgid ""
-#| "Number of seconds to wait for a ping reply before we time out. Disable "
-#| "with 0."
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable"
@@ -156,17 +133,17 @@ msgstr "等待幾秒鐘後默認逾時。預設為0。"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:142
 msgid "Use 12-hour clock format"
-msgstr ""
+msgstr "使用12小時制的時間格式"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:149
 msgid "Confirm loading of saves from a different version"
-msgstr ""
+msgstr "讀取不同版本的存檔時進行確認"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:156
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "在幫助中顯示所有的單位類型"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:157
@@ -174,101 +151,102 @@ msgid ""
 "Show all unit types in the help (requires restart). This does not alter the "
 "list of encountered units"
 msgstr ""
+"在幫助中顯示所有的單位類型(需要重新開啟)。這並不會改變您所遇到的單位清單。"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:165
 msgid "Joystick support"
-msgstr ""
+msgstr "遊戲搖桿支援"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:172
 msgid "Joystick: number of the scroll X-axis joystick"
-msgstr ""
+msgstr "搖桿：用於橫向捲軸的搖桿編號"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:182
 msgid "Joystick: number of the scroll X-axis"
-msgstr ""
+msgstr "搖桿：用於橫向捲軸的編號"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:192
 msgid "Joystick: number of the scroll Y-axis joystick"
-msgstr ""
+msgstr "搖桿：用於縱向捲軸的搖桿編號"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:202
 msgid "Joystick: number of the scroll Y-axis"
-msgstr ""
+msgstr "搖桿：用於橫向捲軸的編號"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:212
 msgid "Joystick: deadzone of the scrolling stick"
-msgstr ""
+msgstr "搖桿：無效的滾動區。"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:222
 msgid "Joystick: number of the cursor X-axis joystick"
-msgstr ""
+msgstr "搖桿：用於搖桿橫向橫向的游標編號"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:232
 msgid "Joystick: number of the cursor X-axis"
-msgstr ""
+msgstr "搖桿：用於橫向移動的游標編號。"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:242
 msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr ""
+msgstr "搖桿：用於搖桿橫向移動的游標編號"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:252
 msgid "Joystick: number of the cursor Y-axis"
-msgstr ""
+msgstr "搖桿：用於縱向移動的游標編號。"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:262
 msgid "Joystick: deadzone of the cursor stick"
-msgstr ""
+msgstr "搖桿：無效區的游標。"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:272
 msgid "Joystick: number of the mouse X-axis joystick"
-msgstr ""
+msgstr "搖桿：用於滑鼠橫向移動的搖桿編號"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:282
 msgid "Joystick: number of the mouse X-axis"
-msgstr ""
+msgstr "搖桿：用於滑鼠橫向移動的編號"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:292
 msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr ""
+msgstr "搖桿：用於滑鼠縱向移動的搖桿編號"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:302
 msgid "Joystick: number of the mouse Y-axis"
-msgstr ""
+msgstr "搖桿：用於滑鼠縱向移動的編號"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:312
 msgid "Joystick: deadzone of the mouse stick"
-msgstr ""
+msgstr "搖桿：無效區的滑鼠。"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:322
 msgid "Joystick: number of the thrust axis joystick"
-msgstr ""
+msgstr "搖桿：用於加速的搖桿編號。"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:332
 msgid "Joystick: number of the thrust axis"
-msgstr ""
+msgstr "搖桿：用於加速的編號。"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:342
 msgid "Joystick: deadzone of the thruster"
-msgstr ""
+msgstr "搖桿：用於加速搖桿無效區的大小。"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
@@ -469,7 +447,6 @@ msgstr "印度尼西亞語翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:2130
-#, fuzzy
 msgid "Irish Translation"
 msgstr "土耳其文翻譯團隊"
 
@@ -520,7 +497,6 @@ msgstr "挪威文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:2357
-#, fuzzy
 msgid "Old English Translation"
 msgstr "英文(英國)翻譯團隊"
 
@@ -581,8 +557,6 @@ msgstr "土耳其文翻譯團隊"
 
 #. [about]
 #: data/core/about.cfg:2771
-#, fuzzy
-#| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "羅馬尼亞語翻譯團隊"
 
@@ -613,7 +587,6 @@ msgstr "讓 $ally_leader.name ($ally_leader.side 陣營的指揮官) 移動到�
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
-#, fuzzy
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on a unit that belongs to it."
@@ -668,7 +641,6 @@ msgstr "重點攻擊..."
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:72
-#, fuzzy
 msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
@@ -712,7 +684,6 @@ msgstr "重點防禦..."
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:202
-#, fuzzy
 msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
@@ -768,7 +739,6 @@ msgstr "無設定。"
 
 #. [do]
 #: data/core/macros/ai_controller.cfg:644
-#, fuzzy
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -895,7 +865,6 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "毒素此刻正滲透到這個單位的全身。"
 
 #: data/core/macros/items.cfg:267
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
@@ -905,11 +874,11 @@ msgstr ""
 
 #: data/core/macros/items.cfg:268
 msgid "holy water^Take it"
-msgstr ""
+msgstr "拿走聖水"
 
 #: data/core/macros/items.cfg:269
 msgid "holy water^Leave it"
-msgstr ""
+msgstr "留下聖水"
 
 #: data/core/macros/items.cfg:270
 msgid "I am not suited to the use of this item! Let another take it."
@@ -922,7 +891,6 @@ msgstr "聖水"
 
 #. [object]
 #: data/core/macros/items.cfg:275
-#, fuzzy
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
@@ -992,12 +960,10 @@ msgid "Should $unit.name pick up the trident?"
 msgstr "讓$unit.name拿起三叉戟嗎？"
 
 #: data/core/macros/items.cfg:514
-#, fuzzy
 msgid "storm trident^Leave it"
 msgstr "風暴三叉戟"
 
 #: data/core/macros/items.cfg:514
-#, fuzzy
 msgid "storm trident^Take it"
 msgstr "風暴三叉戟"
 
@@ -1018,13 +984,10 @@ msgstr "風暴三叉戟"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:546
-#, fuzzy
-#| msgid "ruby of fire"
 msgid "sceptre of fire"
 msgstr "火之寶石"
 
 #: data/core/macros/names.cfg:18
-#, fuzzy
 msgid ""
 "Egar,Elch,Ga’ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
 "Garlin Ohn,Garrutin,Gart’lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
@@ -1047,7 +1010,6 @@ msgstr ""
 "Verath,Verditt,Verkon,Verlinn,Vermay,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:19
-#, fuzzy
 msgid ""
 "Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
@@ -1058,7 +1020,6 @@ msgstr ""
 "Valnitt,Velisp,Vellin Ka,Vushtin,Werra,Weshter,Wilniss"
 
 #: data/core/macros/names.cfg:23
-#, fuzzy
 msgid ""
 "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
 "Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
@@ -1149,7 +1110,6 @@ msgstr ""
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 
 #: data/core/macros/names.cfg:27
-#, fuzzy
 msgid ""
 "Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
 "Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
@@ -1268,7 +1228,6 @@ msgstr ""
 "Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 
 #: data/core/macros/names.cfg:28
-#, fuzzy
 msgid ""
 "Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
 "Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
@@ -1401,17 +1360,14 @@ msgstr ""
 "Vówien"
 
 #: data/core/macros/names.cfg:33
-#, fuzzy
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 msgstr "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 
 #: data/core/macros/names.cfg:34
-#, fuzzy
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
 msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:38
-#, fuzzy
 msgid ""
 "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
 "Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
@@ -1510,7 +1466,6 @@ msgstr ""
 "Yryrcyn"
 
 #: data/core/macros/names.cfg:39
-#, fuzzy
 msgid ""
 "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
 "Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
@@ -1681,9 +1636,82 @@ msgid ""
 "Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
 "Ziyad,Zubayr,Zuhayr"
 msgstr ""
+"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
+"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
+"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
+"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
+"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
+"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
+"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
+"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
+"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
+"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
+"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
+"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
+"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
+"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
+"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
+"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
+"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
+"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
+"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
+"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Bakri,Baligh,Bandar,Barakah,Barir,"
+"Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,"
+"Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,"
+"Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,"
+"Faʿiz,Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,"
+"Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,"
+"Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,"
+"Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,"
+"Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,"
+"Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,"
+"Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-"
+"Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,"
+"Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,"
+"Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal "
+"al-Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,"
+"Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,"
+"Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,"
+"Khalil al-Allah,Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,"
+"Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,"
+"Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,"
+"Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,"
+"Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,"
+"Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,"
+"Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,"
+"Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,"
+"Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,"
+"Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,"
+"Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,"
+"Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,"
+"Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,"
+"Najid,Najjar,Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,"
+"Nasim,Nasir,Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,"
+"Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-"
+"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,"
+"Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,"
+"Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,"
+"Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,"
+"Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,"
+"Saʿd,Saʿd al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,"
+"Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,"
+"Sajjad,Sakhr,Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,"
+"Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,"
+"Shahid,Shahin,Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,"
+"Sharif,Shawqi,Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,"
+"Sinan,Siraj,Siraj al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,"
+"Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,"
+"Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,"
+"Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,"
+"ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,"
+"Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,"
+"Walid,Walif,Waliy Allah,Waliy al-Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,"
+"Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,"
+"Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
+"Ziyad,Zubayr,Zuhayr"
 
 #: data/core/macros/names.cfg:47
-#, fuzzy
 msgid ""
 "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
 "Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
@@ -1708,7 +1736,6 @@ msgstr ""
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #: data/core/macros/names.cfg:51
-#, fuzzy
 msgid ""
 "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
 "Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
@@ -1727,7 +1754,6 @@ msgstr ""
 "Triton,Vizi,Vodnik,Vourukasa"
 
 #: data/core/macros/names.cfg:52
-#, fuzzy
 msgid ""
 "Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
 "Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
@@ -1740,7 +1766,6 @@ msgstr ""
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #: data/core/macros/names.cfg:56
-#, fuzzy
 msgid ""
 "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
 "Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
@@ -1757,7 +1782,6 @@ msgstr ""
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
 #: data/core/macros/names.cfg:57
-#, fuzzy
 msgid ""
 "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
 "Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
@@ -1776,7 +1800,6 @@ msgstr ""
 "Zsekp"
 
 #: data/core/macros/names.cfg:61
-#, fuzzy
 msgid ""
 "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
 "Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
@@ -1793,7 +1816,6 @@ msgstr ""
 "Urkark"
 
 #: data/core/macros/names.cfg:65
-#, fuzzy
 msgid ""
 "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
 "Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
@@ -1862,7 +1884,6 @@ msgstr ""
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #: data/core/macros/names.cfg:69
-#, fuzzy
 msgid ""
 "Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
 "Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
@@ -1875,7 +1896,6 @@ msgstr ""
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #: data/core/macros/names.cfg:73
-#, fuzzy
 msgid ""
 "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
 "Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
@@ -1904,7 +1924,6 @@ msgstr ""
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #: data/core/macros/names.cfg:77
-#, fuzzy
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
@@ -1914,7 +1933,6 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
-#, fuzzy
 msgid "Turns run out"
 msgstr "回合數： "
 
@@ -1931,7 +1949,6 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>（時效獎勵）</small>"
 
 #: data/core/macros/objective-utils.cfg:25
-#, fuzzy
 msgid "(early finish bonus)"
 msgstr "時效奬勵： "
 
@@ -1968,14 +1985,11 @@ msgid "Alternative objective:"
 msgstr "替代目標："
 
 #: data/core/macros/objective-utils.cfg:52
-#, fuzzy
 msgid "Bonus objective:"
 msgstr "替代目標："
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "This is the last scenario."
 msgstr "長程任務"
 
@@ -2106,12 +2120,6 @@ msgstr ""
 
 #. [language]
 #: data/english.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Lawful units fight better during the day, and worse at night.\n"
-#| "\n"
-#| "Day: +25% Damage\n"
-#| "Night: −25% Damage"
 msgid ""
 "Liminal units only reach their full strength during twilight.\n"
 "\n"
@@ -2293,7 +2301,6 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Fallback,Droid Sans Japanese,Junicode"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
-#, fuzzy
 msgid ""
 "Don’t neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be too weak to survive future battles."
@@ -2303,13 +2310,11 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:137
-#, fuzzy
 msgid "<i>― Great Mage Delfador, 516YW</i>"
 msgstr "- 迪法多 大法師，516YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:8
-#, fuzzy
 msgid ""
 "In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
 "highlight all the hexes your adversary can move to (assuming your units stay "
@@ -2336,13 +2341,11 @@ msgstr ""
 #: data/hardwired/tips.cfg:197 data/hardwired/tips.cfg:201
 #: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:229
 #: data/hardwired/tips.cfg:238
-#, fuzzy
 msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgstr "- 韋諾 戰術指南"
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
-#, fuzzy
 msgid ""
 "Units with the <i>Intelligent</i> trait need fewer experience points to "
 "level up. Early in a campaign, try to give killing blows to these units so "
@@ -2353,13 +2356,11 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:13
-#, fuzzy
 msgid "<i>― King Konrad, 536YW</i>"
 msgstr "- 康拉德 國王，536YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
-#, fuzzy
 msgid ""
 "The encircling tactic is very powerful, particularly against fast opponents. "
 "By placing two units on opposite sides of an enemy, their zones of control "
@@ -2371,13 +2372,11 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:129
-#, fuzzy
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
 msgstr "- Memoirs of Gweddry，627YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:20
-#, fuzzy
 msgid ""
 "You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
 "clicking on a castle tile. That will let you choose the precise hex you put "
@@ -2389,7 +2388,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:24
-#, fuzzy
 msgid ""
 "There are some helpful summary screens in the main menu: for instance, the "
 "<b>Status Table</b> will let you know how your enemies are doing, and how "
@@ -2399,7 +2397,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:28
-#, fuzzy
 msgid ""
 "Units with the <i>Quick</i> trait get an extra movement point per turn. This "
 "can be very important when moving through difficult terrain such as water or "
@@ -2411,13 +2408,11 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:105
 #: data/hardwired/tips.cfg:213 data/hardwired/tips.cfg:225
-#, fuzzy
 msgid "<i>― High Lord Kalenz, 470YW</i>"
 msgstr "- High Lord Kalenz，470YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:32
-#, fuzzy
 msgid ""
 "After you have played a few scenarios, read the <b>Gameplay</b> section in "
 "the <b>Help</b> screen carefully. Details become important as scenarios get "
@@ -2447,13 +2442,11 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:41
-#, fuzzy
 msgid "<i>― The Wesnoth Community</i>"
 msgstr "- 韋諾王國"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
@@ -2463,7 +2456,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
-#, fuzzy
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
 msgstr "- 皇家戰爭術語概略 -  第二冊，212YW"
@@ -2478,13 +2470,11 @@ msgstr "如果進攻的時間不對，再好的戰術也是白搭。"
 #: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:73
 #: data/hardwired/tips.cfg:125 data/hardwired/tips.cfg:133
 #: data/hardwired/tips.cfg:217
-#, fuzzy
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
 msgstr "- 戰術分析手冊- 第一冊 - 海德洛克二世，42YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
-#, fuzzy
 msgid ""
 "If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
 "know what you’re facing. In this case, long-range scouting units are worth "
@@ -2497,7 +2487,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:56
-#, fuzzy
 msgid ""
 "There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
 "<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
@@ -2511,7 +2500,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:60
-#, fuzzy
 msgid ""
 "The terrain occupied by your units is the main factor determining the chance "
 "that they will be hit. The defensive rating for the currently selected unit "
@@ -2523,7 +2511,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:64
-#, fuzzy
 msgid ""
 "Poisoned units will lose eight hitpoints every turn until they are one point "
 "from dying. They will then remain at death’s door until the poison is "
@@ -2537,7 +2524,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:68
-#, fuzzy
 msgid ""
 "You can reuse units from a previous scenario by selecting <b>Recall</b> from "
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
@@ -2548,7 +2534,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:72
-#, fuzzy
 msgid ""
 "Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
 "around them. If a unit moves into an enemy’s zone of control, it may not "
@@ -2562,7 +2547,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:76
-#, fuzzy
 msgid ""
 "The chance to hit a unit usually depends on how well that unit can defend "
 "itself in the terrain in which it is standing. However, magical attacks "
@@ -2575,7 +2559,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
 msgstr "- 戰術分析手冊- 第二冊 - 海德洛克二世，43YW"
 
@@ -2598,7 +2581,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:88
-#, fuzzy
 msgid ""
 "On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
 "units’ sightlines are limited by their maximum movement. If you have some "
@@ -2620,7 +2602,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:173
-#, fuzzy
 msgid "<i>― Sir Kaylan, 498YW</i>"
 msgstr "- Sir Kaylan，498YW"
 
@@ -2634,7 +2615,6 @@ msgstr "騎乘單位通常能抵禦劍刃或衝撃攻撃，但却易受穿刺攻
 
 #. [tip]
 #: data/hardwired/tips.cfg:97
-#, fuzzy
 msgid "<i>― Sir Kaylan, 502YW</i>"
 msgstr "- Sir Kaylan，502YW"
 
@@ -2680,13 +2660,11 @@ msgstr "別擔心撤退或重組；這通常是勝利的關鍵。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:117
-#, fuzzy
 msgid "<i>― Meneldur, 123YW</i>"
 msgstr "- Meneldur，123YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:120
-#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns "
@@ -2698,7 +2676,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:124
-#, fuzzy
 msgid ""
 "<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
 "not just the keep they start on. Sometimes your allies may be willing to "
@@ -2719,7 +2696,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:132
-#, fuzzy
 msgid ""
 "Units with the <i>Leadership</i> ability help lower-level adjacent units on "
 "the same side fight better. You can move these units slowly along your "
@@ -2740,25 +2716,21 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:140
-#, fuzzy
 msgid "Use lines of troops to screen your injured units while they recover."
 msgstr "用單位組成戰線，以掩護那些受傷害的單位，讓他們得到恢復。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:141
-#, fuzzy
 msgid "<i>― Princess Li’sar, 515YW</i>"
 msgstr "- 麗莎 公主，515YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:144
-#, fuzzy
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
 msgstr "在設定選單您可以查看快捷鍵列表。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:148
-#, fuzzy
 msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing <b>u</b>."
@@ -2782,13 +2754,11 @@ msgstr "用治療者來援護您的進攻部隊——他們不需要自己參加
 
 #. [tip]
 #: data/hardwired/tips.cfg:157 data/hardwired/tips.cfg:205
-#, fuzzy
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
 msgstr "- The Scroll of Chantal，516YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
-#, fuzzy
 msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
@@ -2797,13 +2767,11 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
-#, fuzzy
 msgid "<i>Arcane</i> attacks are very powerful against undead."
 msgstr "秘法攻撃會對不死族造成强大的傷害。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
-#, fuzzy
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
 msgstr "- Great Sage Dacyn，626YW"
 
@@ -2823,7 +2791,6 @@ msgstr "具有'衝鋒'攻撃的單位最好用來對付那些能一撃必殺的�
 
 #. [tip]
 #: data/hardwired/tips.cfg:176
-#, fuzzy
 msgid ""
 "Instead of leveling up, high-level units gain an <i>After Maximum Level "
 "Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
@@ -2837,7 +2804,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:180
-#, fuzzy
 msgid ""
 "Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
 "mouse pointer over any button or icon to get a description or explanation of "
@@ -2856,13 +2822,11 @@ msgstr "讓低等級單位完成最後一撃可以使它更快地升級"
 
 #. [tip]
 #: data/hardwired/tips.cfg:185
-#, fuzzy
 msgid "<i>― Queen Li’sar, 528YW</i>"
 msgstr "- 麗莎 女王，528YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
-#, fuzzy
 msgid ""
 "You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
@@ -2905,6 +2869,10 @@ msgid ""
 "to escape; slow enemies are almost immobilized, and your own units suffer "
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
+"<i>減速</i>技能非常有用，因為它的影響非常廣泛。不死族的<i>吸血</i>技能效果減"
+"半，<i>衝鋒</i>和<i>背刺</i>技能無效化，另外還可以削弱<i>狂暴</i>技能。行動快"
+"速的敵人將疲於奔命，速度緩慢的敵人幾乎無法移動，而你自己的單位所遭受到的反擊"
+"傷害減少，就可以趁機替他們補血。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:208
@@ -2914,6 +2882,9 @@ msgid ""
 "This gives you another try whenever your first devastating attack misses — "
 "as inevitably happens from time to time."
 msgstr ""
+"設法讓擁有强力攻擊但攻擊次數較少的单位，例如暗影術士、輕騎兵、半獸人蠻兵或者"
+"矮人火槍兵，使他們三兩成群。如此一來當第一下破壞性的攻擊失誤時，你會有再一次"
+"的機會，而無可避免地，失手是時常會發生的情形。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:212
@@ -2923,6 +2894,9 @@ msgid ""
 "leadership—or a strong or dextrous unit—whenever the extra point or two of "
 "damage makes a one-hit kill possible."
 msgstr ""
+"擁有三種或更多攻擊方式的單位，尤其是魔法攻擊的單位非常適合用來解决生命值只剩"
+"下很少的的敵人。當額外的一兩點傷害可能造成一擊必殺時，一定要使用領導技能，或"
+"使用一個強壯或者靈敏的单位。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:216
@@ -2931,6 +2905,8 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
+"不論其經驗值多少，在召回徵招清單中的任何單位之前請三思。有時候，花點額外的小"
+"錢來確定新上場的單位具有何種特質，是值得的。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:220
@@ -2939,11 +2915,13 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
+"當一個強壯的單位受重傷時，請把他送到距離戰場好幾個回合之遠的村莊裡治療。這樣"
+"一來他便可以安心恢復生命(每回合10點生命值)，而且不會與戰場前線相擠村莊。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:233
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
+msgstr "<i> - 納爾迦的哈梅爾領主</ i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:224
@@ -2952,6 +2930,9 @@ msgid ""
 "work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
 "<i>Charge</i> against a slowed opponent, the results can be impressive."
 msgstr ""
+"將多種特殊的技能組合起來運用將會是致命的。儘管要把這些技能組合起來使用需花點"
+"工夫，例如將<i>領導</i>、<i>照明</i>和<i>衝鋒</i>組合起來，它的效果絕對令人印"
+"象深刻！"
 
 #. [tip]
 #: data/hardwired/tips.cfg:228
@@ -2961,6 +2942,9 @@ msgid ""
 "your units extra experience. When deciding whether or not to finish a "
 "scenario early, weigh these factors against one another."
 msgstr ""
+"雖然提前完成任務目標會有一筆獎勵，同時也減少敵人殺掉你重要部隊的機會。但這也"
+"意味著，你將失去獲得額外經驗值的機會。在決定是否要提早完成任務前，請衡量這些"
+"因素。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:232
@@ -2971,6 +2955,9 @@ msgid ""
 "average. Plan for heavy losses, and take firm control of any hex where the "
 "land does favor you."
 msgstr ""
+"如果你的軍隊位於地圖上防禦薄弱的地點，那就轉移到那些讓敵人也有同樣劣勢的區"
+"域。千萬不要到你自己的不擅防禦而敵人卻擅長的地方。做好遭受重大攻擊的準備，同"
+"時也要牢牢掌握住那些提供你優勢的地形。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:237
@@ -2979,6 +2966,8 @@ msgid ""
 "if they occupy a village hex, they do not gain any defensive benefits from "
 "the village, although they will still be healed."
 msgstr ""
+"<i>野生</i>單位，例如蝙蝠和野生動物會避開村莊。就算牠們佔據了一個村莊的格子，"
+"也不能夠得到村莊帶來的任何閃避率加成，不過牠們仍然會得到治療。"
 
 #: data/lua/wml-tags.lua:824 src/actions.cpp:1492
 msgid "female^poisoned"
@@ -3001,12 +2990,10 @@ msgid "petrified"
 msgstr "石化"
 
 #: data/lua/wml-tags.lua:828
-#, fuzzy
 msgid "female^unhealable"
 msgstr "不死"
 
 #: data/lua/wml-tags.lua:828
-#, fuzzy
 msgid "unhealable"
 msgstr "無法行走的"
 
@@ -3020,22 +3007,21 @@ msgstr "失敗："
 
 #: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
-msgstr ""
+msgstr "帶走金幣："
 
 #: data/lua/wml/objectives.lua:53
 msgid "Notes:"
-msgstr ""
+msgstr "備註："
 
 #: data/lua/wml/objectives.lua:71
 msgid "(%d turns left)"
-msgstr ""
+msgstr "(剩下%d個回合)"
 
 #: data/lua/wml/objectives.lua:73
 msgid "(this turn left)"
-msgstr ""
+msgstr "(只剩下此回合)"
 
 #: data/lua/wml/objectives.lua:126
-#, fuzzy
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "沒有剩餘金幣帶到下一個任務。"
 
@@ -3057,11 +3043,10 @@ msgstr "取消"
 #. [language]
 #: data/scenario-test.cfg:3157
 msgid "very long"
-msgstr ""
+msgstr "非常長"
 
 #. [language]
 #: data/scenario-test.cfg:3158
-#, fuzzy
 msgid "electrical"
 msgstr "機械"
 
@@ -3229,8 +3214,6 @@ msgstr "視角"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:147
-#, fuzzy
-#| msgid "Skip Animation"
 msgid "Skip animation"
 msgstr "省略動畫"
 
@@ -3240,26 +3223,18 @@ msgid "Close"
 msgstr "關閉"
 
 #: src/actions.cpp:501
-#, fuzzy
-#| msgid "You don’t have a leader to recruit with."
 msgid "You don’t have a leader to recall with."
 msgstr "您没有領袖，無法征兵。"
 
 #: src/actions.cpp:506
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "None of your leaders is able to recall that unit."
 msgstr "您的領袖必須在主堡裏才能招募或召回單位。"
 
 #: src/actions.cpp:511
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr "您的領袖必須在主堡裏才能招募或召回單位。"
 
 #: src/actions.cpp:516
-#, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "城堡内没有空格，無法招募。"
 
@@ -3268,14 +3243,10 @@ msgid "You don’t have a leader to recruit with."
 msgstr "您没有領袖，無法征兵。"
 
 #: src/actions.cpp:591
-#, fuzzy
-#| msgid "You must have your leader on a keep to recruit or recall units."
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr "您的領袖必須在主堡裏才能招募或召回單位。"
 
 #: src/actions.cpp:596
-#, fuzzy
-#| msgid "There are no vacant castle tiles in which to recruit a unit."
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "城堡内没有空格，無法招募。"
 
@@ -3329,7 +3300,7 @@ msgstr "（按$hotkey鍵繼續移動）"
 
 #: src/addon/manager.cpp:423
 msgid "unit_byte^B"
-msgstr ""
+msgstr "B"
 
 #: src/addon/manager.cpp:440
 msgid "addon_type^Campaign"
@@ -3372,8 +3343,6 @@ msgid "addon_type^(unknown)"
 msgstr "（未知）"
 
 #: src/addon/manager.cpp:481
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting terms"
 msgstr "搜尋模組列表"
 
@@ -3399,8 +3368,6 @@ msgid "Response"
 msgstr "回應"
 
 #: src/addon/manager.cpp:554
-#, fuzzy
-#| msgid "Requesting list of add-ons"
 msgid "Requesting the addon to be deleted"
 msgstr "搜尋模組列表"
 
@@ -3409,7 +3376,6 @@ msgid "Downloading add-on: $addon_title|..."
 msgstr "正在下載模組:$addon_title|..."
 
 #: src/addon/manager.cpp:586 src/addon/manager.cpp:1135
-#, fuzzy
 msgid "Downloading..."
 msgstr "下載數"
 
@@ -3452,7 +3418,6 @@ msgid "Type"
 msgstr "類型"
 
 #: src/addon/manager.cpp:798
-#, fuzzy
 msgid "Install dependencies"
 msgstr "需求"
 
@@ -3462,22 +3427,22 @@ msgid ""
 msgid_plural ""
 "The selected add-on has the following dependencies. Do you want to install "
 "them?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "這個模組必須仰賴以下附加模組，您要安裝嗎？"
+msgstr[1] "這些模組必須仰賴以下附加模組，您要安裝嗎？"
 
 #: src/addon/manager.cpp:828
 msgid "Installation of a dependency failed"
-msgstr ""
+msgstr "附加模組安裝失敗"
 
 #: src/addon/manager.cpp:830
 msgid ""
 "While the add-on has been installed, a dependency is missing. Try to update "
 "the installed add-ons."
-msgstr ""
+msgstr "安裝模組的時候發現，有個額外模組已經無法使用。請更新已安裝的模組。"
 
 #: src/addon/manager.cpp:844
 msgid "Installation failed"
-msgstr ""
+msgstr "安裝失敗"
 
 #: src/addon/manager.cpp:846 src/addon/manager.cpp:1074
 msgid "The following add-on could not be downloaded or updated successfully:"
@@ -3531,14 +3496,14 @@ msgstr "全部更新"
 #: src/addon/manager.cpp:1039 src/addon/manager.cpp:1056
 #: src/addon/manager.cpp:1346
 msgid "Installation of some dependency failed"
-msgstr ""
+msgstr "有些附加模組安裝失敗"
 
 #: src/addon/manager.cpp:1041 src/addon/manager.cpp:1058
 #: src/addon/manager.cpp:1348
 msgid ""
 "While the add-on has been installed, some dependency is missing. Try to "
 "update the installed add-ons."
-msgstr ""
+msgstr "安裝的時候發現，有些附加模組已經無法使用。請更新已安裝的模組。"
 
 #: src/addon/manager.cpp:1072
 msgid "Update failed"
@@ -3562,6 +3527,8 @@ msgid ""
 "any changes you have made since the last upload and may delete your pbl "
 "file. Do you really wish to continue?"
 msgstr ""
+"您似乎是“$addon|”的作者。下载“$addon|”有可能覆盖您前一次上傳之後的所有設定，"
+"並可能删除您的pbl檔案。您真的希望繼續嗎？"
 
 #: src/addon/manager.cpp:1101 src/addon/manager.cpp:1328
 #: src/addon/manager.cpp:1421 src/multiplayer.cpp:264
@@ -3569,8 +3536,6 @@ msgid "Confirm"
 msgstr "確認"
 
 #: src/addon/manager.cpp:1128
-#, fuzzy
-#| msgid "Connecting to Server..."
 msgid "Connecting..."
 msgstr "正在連接到伺服器..."
 
@@ -3620,6 +3585,8 @@ msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
+"删除“$addon|”將永久移除其在附加模組伺服器上的下载與上傳統計數量。您真的希望繼"
+"續嗎？"
 
 #: src/addon/manager.cpp:1359
 msgid "Network communication error."
@@ -3640,8 +3607,6 @@ msgid "You have no add-ons installed."
 msgstr "您没有安裝任何模組。"
 
 #: src/addon/manager.cpp:1416
-#, fuzzy
-#| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "您確定要移除模組 '$addon|' ?"
@@ -3655,28 +3620,23 @@ msgid_plural ""
 "The following add-ons appear to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr[0] ""
+"這個模組似乎在本機中儲存了發布信息或是版本控制信息，因此將不會被移除："
 msgstr[1] ""
+"下列模組似乎在本機中儲存了發布信息或是版本控制信息，因此將不會被移除："
 
 #: src/addon/manager.cpp:1452
-#, fuzzy
-#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "無法移除模組:"
 msgstr[1] "無法移除模組:"
 
 #: src/addon/manager.cpp:1459
-#, fuzzy
-#| msgid "Add-on deleted"
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "模組已移除"
 msgstr[1] "模組已移除"
 
 #: src/addon/manager.cpp:1461
-#, fuzzy
-#| msgid "The following add-on had errors and could not be loaded:"
-#| msgid_plural "The following add-ons had errors and could not be loaded:"
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "以下附加模組有錯誤，無法讀取："
@@ -3747,8 +3707,6 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:454 src/savegame.cpp:136
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %H:%M %Y"
 
@@ -3769,8 +3727,6 @@ msgid "Tutorial"
 msgstr "教程"
 
 #: src/dialogs.cpp:499
-#, fuzzy
-#| msgid "Remote scenario"
 msgid "Test scenario"
 msgstr "長程任務"
 
@@ -3801,15 +3757,13 @@ msgstr "%H:%M"
 
 #: src/dialogs.cpp:550 src/reports.cpp:1217 src/savegame.cpp:176
 msgid "%I:%M %p"
-msgstr ""
+msgstr "%I:%M %p"
 
 #: src/dialogs.cpp:555 src/savegame.cpp:181
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
 #: src/dialogs.cpp:558 src/savegame.cpp:184
-#, fuzzy
-#| msgid "%A, %H:%M"
 msgid "%A, %I:%M %p"
 msgstr "%A, %H:%M"
 
@@ -3897,7 +3851,6 @@ msgid "File I/O Error while reading the game"
 msgstr "當讀取遊戲時發生文件I/O錯誤。"
 
 #: src/game_controller.cpp:633
-#, fuzzy
 msgid "File I/O Error while reading the game: '"
 msgstr "當讀取遊戲時發生文件I/O錯誤。"
 
@@ -3978,7 +3931,7 @@ msgstr "資訊:"
 
 #: src/game_events.cpp:2397
 msgid "Invalid value in the result key for [end_level]"
-msgstr ""
+msgstr "[end_level]的結果鍵值無效"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:205 src/multiplayer_lobby.cpp:447
 msgid "Unknown era: $era_id"
@@ -4009,9 +3962,6 @@ msgid "Turn "
 msgstr "回合"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:549
-#, fuzzy
-#| msgid "Vacant Slot:"
-#| msgid_plural "Vacant slots:"
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空位："
@@ -4099,42 +4049,34 @@ msgid "?"
 msgstr "？"
 
 #: src/loadscreen.cpp:222
-#, fuzzy
 msgid "Initializing user interface"
 msgstr "初始化隊伍"
 
 #: src/loadscreen.cpp:223
-#, fuzzy
 msgid "Loading game configuration"
 msgstr "載入遊戲配置。"
 
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
-#, fuzzy
 msgid "Verifying cache"
 msgstr "正在驗證暫存..."
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
-#, fuzzy
 msgid "Reading files and creating cache"
 msgstr "讀取資料並新增暫存..."
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
-#, fuzzy
 msgid "Reading unit files"
 msgstr "讀取單位資料..."
 
 #: src/loadscreen.cpp:227
-#, fuzzy
 msgid "Reinitialize fonts for the current language"
 msgstr "為當前語言重置字體。"
 
 #: src/loadscreen.cpp:228
-#, fuzzy
 msgid "Searching for installed add-ons"
 msgstr "搜尋已安裝模組。"
 
 #: src/loadscreen.cpp:229
-#, fuzzy
 msgid "Loading title screen"
 msgstr "讀取主畫面。"
 
@@ -4160,7 +4102,7 @@ msgstr "初始化顯示"
 
 #: src/loadscreen.cpp:238
 msgid "Building terrain rules"
-msgstr ""
+msgstr "正在建構地形"
 
 #: src/loadscreen.cpp:240
 msgid "Starting game"
@@ -4179,6 +4121,8 @@ msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
 msgstr ""
+"未找到合法的城堡位置。是不是因為山脈的格子太多或者太少了？（請檢察\"最大丘陵"
+"尺寸\"參數）"
 
 #: src/menu_events.cpp:100 src/menu_events.cpp:103 src/menu_events.cpp:107
 msgid "Do you really want to dismiss him?"
@@ -4385,7 +4329,7 @@ msgstr ""
 
 #: src/menu_events.cpp:879
 msgid "You currently can't recall at the highlighted location"
-msgstr ""
+msgstr "您不能在高亮的位置進行徵招。"
 
 #: src/menu_events.cpp:890
 msgid "Traits"
@@ -4406,7 +4350,6 @@ msgstr[0] "要徵召一個單位，您至少需要有1個金幣"
 msgstr[1] "要徵召一個單位，你至少需要有$cost個金幣"
 
 #: src/menu_events.cpp:1378
-#, fuzzy
 msgid "You cannot end your turn yet!"
 msgstr "回合結束時暫停"
 
@@ -4520,8 +4463,6 @@ msgstr "禁止並踢出一個玩家或觀察者。如果他不在遊戲中，則
 #: src/menu_events.cpp:2335 src/menu_events.cpp:2338 src/menu_events.cpp:2340
 #: src/menu_events.cpp:2342 src/menu_events.cpp:2344 src/menu_events.cpp:2371
 #: src/menu_events.cpp:2373 src/menu_events.cpp:2375 src/menu_events.cpp:2389
-#, fuzzy
-#| msgid "<nick>"
 msgid "<nickname>"
 msgstr "<暱稱>"
 
@@ -4549,7 +4490,7 @@ msgstr "禁止/不禁止所有觀察者發言。（切換）"
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
-msgstr ""
+msgstr "回報有濫用、違規等等事情的暱稱給管理員。"
 
 #: src/menu_events.cpp:2360
 msgid "<message>"
@@ -4560,7 +4501,6 @@ msgid "Send an emotion or personal action in chat."
 msgstr "在聊天中傳送表情符號或者個人動作。用法： /me <消息>"
 
 #: src/menu_events.cpp:2363
-#, fuzzy
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -4569,8 +4509,6 @@ msgstr ""
 "消息>"
 
 #: src/menu_events.cpp:2365
-#, fuzzy
-#| msgid "<nick> <message>"
 msgid "<nickname> <message>"
 msgstr "<暱稱> <訊息>"
 
@@ -4583,20 +4521,14 @@ msgid "Change the log level of a log domain."
 msgstr "更改日誌的級別。"
 
 #: src/menu_events.cpp:2371
-#, fuzzy
-#| msgid "Add a nick to your ignores list."
 msgid "Add a nickname to your ignores list."
 msgstr "將玩家列入您的黑名單。"
 
 #: src/menu_events.cpp:2373
-#, fuzzy
-#| msgid "Add a nick to your friends list."
 msgid "Add a nickname to your friends list."
 msgstr "加入您的好友名單。"
 
 #: src/menu_events.cpp:2375
-#, fuzzy
-#| msgid "Remove a nick from your ignores or friends list."
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "將玩家從您的好友名單或黑名單中去除。用法：/list remove <玩家id>"
 
@@ -4613,20 +4545,14 @@ msgid "<password> <email (optional)>"
 msgstr "<密碼> <Email (選擇性)>"
 
 #: src/menu_events.cpp:2382
-#, fuzzy
-#| msgid "Register your nick"
 msgid "Register your nickname"
 msgstr "註冊您的帳號"
 
 #: src/menu_events.cpp:2384
-#, fuzzy
-#| msgid "Drop your nick."
 msgid "Drop your nickname."
 msgstr "刪除您的帳號。"
 
 #: src/menu_events.cpp:2386
-#, fuzzy
-#| msgid "Update details for your nick. For possible details see '/details'."
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr "設定帳號資料。輸入/details可查看設定的内容。"
 
@@ -4635,14 +4561,10 @@ msgid "<detail> <value>"
 msgstr "<詳細資訊> <值>"
 
 #: src/menu_events.cpp:2389
-#, fuzzy
-#| msgid "Request information about a nick."
 msgid "Request information about a nickname."
 msgstr "查看一名玩家的資訊。"
 
 #: src/menu_events.cpp:2391
-#, fuzzy
-#| msgid "Request a list of details you can set for your registered nick."
 msgid "Request a list of details you can set for your registered nickname."
 msgstr "取得您註冊帳號的詳細資訊。"
 
@@ -4707,8 +4629,6 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "不轉換 開/關^[<陣營> [on/off]]"
 
 #: src/menu_events.cpp:2546
-#, fuzzy
-#| msgid "<side> <nick>"
 msgid "<side> <nickname>"
 msgstr "<side> <nick>"
 
@@ -4726,11 +4646,11 @@ msgstr "顯示螢幕刷新程序。"
 
 #: src/menu_events.cpp:2552
 msgid "Debug foreground terrain."
-msgstr ""
+msgstr "測試前景地形。"
 
 #: src/menu_events.cpp:2554
 msgid "Debug layers from terrain under the mouse."
-msgstr ""
+msgstr "測試滑鼠游標所指的地形圖層。"
 
 #: src/menu_events.cpp:2555
 msgid "Show fps."
@@ -4772,21 +4692,21 @@ msgstr "選擇下一個任務"
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
-msgstr ""
+msgstr "改變回合序數(還有時段)，如果不設定，則回合序數加一。"
 
 #: src/menu_events.cpp:2576
 msgid "[turn]"
-msgstr ""
+msgstr "[回合]"
 
 #: src/menu_events.cpp:2578
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
-msgstr ""
+msgstr "改變回合數上限，如果為-1，則回合數無上限。"
 
 #: src/menu_events.cpp:2578
 msgid "[limit]"
-msgstr ""
+msgstr "[時間限制]"
 
 #: src/menu_events.cpp:2580
 msgid "Turn debug mode on."
@@ -4814,7 +4734,7 @@ msgstr "自定指令的快捷鍵"
 
 #: src/menu_events.cpp:2591
 msgid "Invoke a dialog allowing changing control of MP sides."
-msgstr ""
+msgstr "彈出對話框，用於改變多人遊戲陣營的控制方。"
 
 #: src/menu_events.cpp:2595
 msgid "Launch the gamestate inspector"
@@ -4822,7 +4742,7 @@ msgstr "啟動遊戲狀態檢視器"
 
 #: src/menu_events.cpp:2597
 msgid "Manage persistence data"
-msgstr ""
+msgstr "管理持久的數據"
 
 #: src/menu_events.cpp:2599
 msgid "<name>[=<command>]"
@@ -4857,7 +4777,6 @@ msgid "Discover all units in help."
 msgstr "在說明中發現所有單位。"
 
 #: src/menu_events.cpp:2614
-#, fuzzy
 msgid "'Undiscover' all units in help."
 msgstr "在說明中發現所有單位。"
 
@@ -4891,11 +4810,11 @@ msgstr "顯示格狀地形編碼。"
 
 #: src/menu_events.cpp:2633
 msgid "Toggle planning mode."
-msgstr ""
+msgstr "開關計畫模式。"
 
 #: src/menu_events.cpp:2636
 msgid "Access whiteboard options dialog."
-msgstr ""
+msgstr "進入白板選項對話框。"
 
 #: src/menu_events.cpp:2679
 msgid "Unknown debug level: '$level'."
@@ -5008,7 +4927,6 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "無法改變固定方的控制權：'$side'。"
 
 #: src/menu_events.cpp:3312
-#, fuzzy
 msgid "Layers"
 msgstr "玩家： "
 
@@ -5050,7 +4968,6 @@ msgid "Variable not found"
 msgstr "未發現"
 
 #: src/menu_events.cpp:3548
-#, fuzzy
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -5058,7 +4975,7 @@ msgstr "無效陣營 '$alignment', 應該為守序、中立或混亂。"
 
 #: src/menu_events.cpp:3604
 msgid "Do you wish to clear all of your discovered units from help?"
-msgstr ""
+msgstr "你希望刪除\"幫助\"裡的所有單位嗎？"
 
 #: src/menu_events.cpp:3615
 msgid "Invalid unit type"
@@ -5069,12 +4986,10 @@ msgid "Invalid location"
 msgstr "無效位置"
 
 #: src/menu_events.cpp:3663
-#, fuzzy
 msgid "Planning mode activated!"
 msgstr "調試模式開啓！"
 
 #: src/menu_events.cpp:3666
-#, fuzzy
 msgid "Planning mode deactivated!"
 msgstr "調試模式關閉！"
 
@@ -5087,7 +5002,6 @@ msgid "prompt^Command:"
 msgstr "命令："
 
 #: src/mouse_events.cpp:702
-#, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -5129,16 +5043,14 @@ msgid ""
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
+"這個暱稱\"$nick\"尚未啟用。你必須使用電子郵件或直接請管理員來幫你啟用，否則無"
+"法取得此暱稱的使用權。"
 
 #: src/multiplayer.cpp:248
-#, fuzzy
-#| msgid "Do you want to save your game?"
 msgid "Do you want to continue?"
 msgstr "您想儲存遊戲嗎？"
 
 #: src/multiplayer.cpp:250
-#, fuzzy
-#| msgid "Warning: "
 msgid "Warning"
 msgstr "警告:"
 
@@ -5151,55 +5063,36 @@ msgid "You must login first."
 msgstr "您必須先登入。"
 
 #: src/multiplayer.cpp:337
-#, fuzzy
-#| msgid "The nick '$nick' is already taken."
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "此帳號名稱'$nick'已被註冊。"
 
 #: src/multiplayer.cpp:339
-#, fuzzy
-#| msgid ""
-#| "The nick '$nick' contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters, underscores and hyphens are allowed."
 msgstr "此帳號名稱'$nick'包含無效字元，只能與用數字與字母、底線和連字號。"
 
 #: src/multiplayer.cpp:343
-#, fuzzy
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "此帳號名稱'$nick'太長，帳號名稱必須小於18個字元。"
 
 #: src/multiplayer.cpp:346
-#, fuzzy
-#| msgid "The nick '$nick' is reserved and cannot be used by players."
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "此帳號名稱 '$nick'已被保留，無法被玩家使用。"
 
 #: src/multiplayer.cpp:348
-#, fuzzy
-#| msgid "The nick '$nick' is not registered on this server."
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "此帳號名稱'$nick'尚未在本伺服器註冊。"
 
 #: src/multiplayer.cpp:349
-#, fuzzy
-#| msgid " This server disallows unregistered nicks."
 msgid " This server disallows unregistered nicknames."
 msgstr "本伺服器無法註冊這個帳號名稱。"
 
 #: src/multiplayer.cpp:351 src/multiplayer.cpp:353
-#, fuzzy
-#| msgid "The nick '$nick' is registered on this server."
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "這個帳號'$nick'已經在這個伺服器上註冊。"
 
 #: src/multiplayer.cpp:354
-#, fuzzy
-#| msgid ""
-#| "WARNING: There is already a client using this nick, logging in will cause "
-#| "that client to be kicked!"
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -5216,7 +5109,7 @@ msgstr "您輸入的密碼錯誤。"
 
 #: src/multiplayer.cpp:362
 msgid "You have made too many login attempts."
-msgstr ""
+msgstr "你嘗試登入太多次了。"
 
 #: src/multiplayer_connect.cpp:100 src/multiplayer_connect.cpp:449
 #: src/multiplayer_connect.cpp:597
@@ -5303,7 +5196,6 @@ msgid "I’m Ready"
 msgstr "準備就緒"
 
 #: src/multiplayer_connect.cpp:1035
-#, fuzzy
 msgid "Add named local player"
 msgstr "單機匿名玩家"
 
@@ -5317,7 +5209,7 @@ msgstr "由於没有選擇陣營，本地圖無法使用。"
 
 #: src/multiplayer_connect.cpp:1116
 msgid "Enter a name for the new player"
-msgstr ""
+msgstr "輸入一個新玩家的名稱"
 
 #: src/multiplayer_connect.cpp:1117 src/reports.cpp:155 src/savegame.cpp:722
 msgid "Name: "
@@ -5348,7 +5240,6 @@ msgid "Waiting for players to join..."
 msgstr "等待玩家加入..."
 
 #: src/multiplayer_connect.cpp:1810
-#, fuzzy
 msgid "Waiting for players to choose factions..."
 msgstr "等待玩家加入..."
 
@@ -5390,7 +5281,7 @@ msgstr "觀察者"
 
 #: src/multiplayer_create.cpp:92
 msgid "Shuffle sides"
-msgstr ""
+msgstr "隨機分配陣營"
 
 #: src/multiplayer_create.cpp:95
 msgid "Regenerate"
@@ -5462,7 +5353,7 @@ msgstr "允許非玩家用户觀看遊戲"
 
 #: src/multiplayer_create.cpp:208
 msgid "Assign sides to players at random"
-msgstr ""
+msgstr "隨機將陣營分配給玩家"
 
 #: src/multiplayer_create.cpp:212
 msgid "Share View"
@@ -5593,7 +5484,6 @@ msgid "Friends in game"
 msgstr "好友在遊戲中"
 
 #: src/multiplayer_lobby.cpp:750
-#, fuzzy
 msgid "Search:"
 msgstr "搜索"
 
@@ -5703,7 +5593,6 @@ msgstr "不能發送初始化連接信息"
 
 #: src/network_manager_ana.cpp:650 src/network_manager_ana.cpp:667
 #: src/network_manager_ana.cpp:689
-#, fuzzy
 msgid "Could not connect to host"
 msgstr "無法連接到主機。"
 
@@ -5732,10 +5621,9 @@ msgstr "回到回合"
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
-msgstr ""
+msgstr "這款遊戲無法同步下去，再繼續下去也不會多好玩，您想儲存遊戲嗎？"
 
 #: src/play_controller.cpp:1363 src/replay_controller.cpp:322
-#, fuzzy
 msgid "Error details:"
 msgstr "錯誤："
 
@@ -5866,7 +5754,6 @@ msgid "The game is over."
 msgstr "本遊戲結束。"
 
 #: src/playsingle_controller.cpp:532
-#, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -5911,7 +5798,6 @@ msgid "$player has left the game. What do you want to do?"
 msgstr "$player 已經離開遊戲，您想做什麽？"
 
 #: src/replay_controller.cpp:321
-#, fuzzy
 msgid ""
 "The replay is corrupt/out of sync. It might not make much sense to continue. "
 "Do you want to save the game?"
@@ -5920,7 +5806,6 @@ msgstr ""
 "已無法進行遊戲。您要儲存此遊戲嗎？"
 
 #: src/reports.cpp:175
-#, fuzzy
 msgid "Type: "
 msgstr "類型"
 
@@ -5929,22 +5814,18 @@ msgid "Race: "
 msgstr "種族"
 
 #: src/reports.cpp:237
-#, fuzzy
 msgid "Level: "
 msgstr "等級"
 
 #: src/reports.cpp:240
-#, fuzzy
 msgid "No advancement"
 msgstr "升級"
 
 #: src/reports.cpp:242
-#, fuzzy
 msgid "Advances to:"
 msgstr "升級為： "
 
 #: src/reports.cpp:282
-#, fuzzy
 msgid "Trait: "
 msgstr "特質"
 
@@ -5997,7 +5878,6 @@ msgid "Alignment: "
 msgstr "攻撃屬性： "
 
 #: src/reports.cpp:369
-#, fuzzy
 msgid "Ability: "
 msgstr "能力： "
 
@@ -6010,106 +5890,88 @@ msgid "(Att / Def)"
 msgstr "（攻擊/防禦）"
 
 #: src/reports.cpp:442
-#, fuzzy
-#| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "經驗值修正： "
 
 #: src/reports.cpp:493
-#, fuzzy
 msgid "Terrain: "
 msgstr "地形"
 
 #: src/reports.cpp:511
 msgid "maximum^max."
-msgstr ""
+msgstr "最大。"
 
 #: src/reports.cpp:511
 msgid "minimum^min."
-msgstr ""
+msgstr "最小。"
 
 #: src/reports.cpp:516
-#, fuzzy
 msgid "Defense: "
 msgstr "閃避幾率"
 
 #: src/reports.cpp:599 src/reports.cpp:789 src/reports.cpp:801
-#, fuzzy
 msgid "Weapon: "
 msgstr "武器攻撃範圍："
 
 #: src/reports.cpp:600 src/reports.cpp:790
-#, fuzzy
 msgid "Damage: "
 msgstr "傷害"
 
 #: src/reports.cpp:604
-#, fuzzy
 msgid "Base damage: "
 msgstr "總傷害輸出"
 
 #: src/reports.cpp:606
-#, fuzzy
 msgid "Time of day: "
 msgstr "時刻"
 
 #: src/reports.cpp:610
-#, fuzzy
 msgid "Leadership: "
 msgstr "領導能力"
 
 #: src/reports.cpp:614
-#, fuzzy
 msgid "Slowed: "
 msgstr "减速： "
 
 #: src/reports.cpp:618
-#, fuzzy
 msgid "Attacks: "
 msgstr "攻撃者"
 
 #: src/reports.cpp:620
 msgid "Base attacks: "
-msgstr ""
+msgstr "基本攻擊："
 
 #: src/reports.cpp:622
-#, fuzzy
 msgid "Swarm: "
 msgstr "連撃"
 
 #: src/reports.cpp:634
-#, fuzzy
 msgid "Weapon range: "
 msgstr "武器攻撃範圍："
 
 #: src/reports.cpp:635
-#, fuzzy
 msgid "Damage type: "
 msgstr "傷害類型："
 
 #: src/reports.cpp:636
-#, fuzzy
 msgid "Damage versus: "
 msgstr "傷害類型："
 
 #: src/reports.cpp:680
-#, fuzzy
 msgid "Accuracy:"
 msgstr "% 精準度"
 
 #: src/reports.cpp:685
-#, fuzzy
 msgid "Parry:"
 msgstr "% 迴避"
 
 #: src/reports.cpp:702
-#, fuzzy
 msgid "Weapon special: "
 msgstr "專長"
 
 #: src/reports.cpp:772
 msgid "None"
-msgstr ""
+msgstr "未設定"
 
 #: src/reports.cpp:964
 msgid "Lawful units: "
@@ -6124,7 +5986,6 @@ msgid "Chaotic units: "
 msgstr "渾沌單位： "
 
 #: src/reports.cpp:967
-#, fuzzy
 msgid "Liminal units: "
 msgstr "守序單位： "
 
@@ -6256,75 +6117,75 @@ msgstr "在$pos處發生$error"
 
 #: src/serialization/string_utils.cpp:299
 msgid "prefix_milli^m"
-msgstr ""
+msgstr "m"
 
 #: src/serialization/string_utils.cpp:300
 msgid "prefix_micro^µ"
-msgstr ""
+msgstr "u"
 
 #: src/serialization/string_utils.cpp:301
 msgid "prefix_nano^n"
-msgstr ""
+msgstr "n"
 
 #: src/serialization/string_utils.cpp:302
 msgid "prefix_pico^p"
-msgstr ""
+msgstr "p"
 
 #: src/serialization/string_utils.cpp:303
 msgid "prefix_femto^f"
-msgstr ""
+msgstr "f"
 
 #: src/serialization/string_utils.cpp:304
 msgid "prefix_atto^a"
-msgstr ""
+msgstr "a"
 
 #: src/serialization/string_utils.cpp:305
 msgid "prefix_zepto^z"
-msgstr ""
+msgstr "z"
 
 #: src/serialization/string_utils.cpp:306
 msgid "prefix_yocto^y"
-msgstr ""
+msgstr "y"
 
 #: src/serialization/string_utils.cpp:318
 msgid "prefix_kibi^K"
-msgstr ""
+msgstr "K"
 
 #: src/serialization/string_utils.cpp:319
 msgid "prefix_kilo^k"
-msgstr ""
+msgstr "k"
 
 #: src/serialization/string_utils.cpp:321
 msgid "prefix_mega^M"
-msgstr ""
+msgstr "M"
 
 #: src/serialization/string_utils.cpp:322
 msgid "prefix_giga^G"
-msgstr ""
+msgstr "G"
 
 #: src/serialization/string_utils.cpp:323
 msgid "prefix_tera^T"
-msgstr ""
+msgstr "T"
 
 #: src/serialization/string_utils.cpp:324
 msgid "prefix_peta^P"
-msgstr ""
+msgstr "P"
 
 #: src/serialization/string_utils.cpp:325
 msgid "prefix_exa^E"
-msgstr ""
+msgstr "E"
 
 #: src/serialization/string_utils.cpp:326
 msgid "prefix_zetta^Z"
-msgstr ""
+msgstr "Z"
 
 #: src/serialization/string_utils.cpp:327
 msgid "prefix_yotta^Y"
-msgstr ""
+msgstr "Y"
 
 #: src/serialization/string_utils.cpp:341
 msgid "infix_binary^i"
-msgstr ""
+msgstr "i"
 
 #: src/statistics_dialog.cpp:70 src/statistics_dialog.cpp:126
 msgid "Recruits"
@@ -6457,7 +6318,6 @@ msgid "lawful"
 msgstr "守序"
 
 #: src/unit_types.cpp:976
-#, fuzzy
 msgid "liminal"
 msgstr "忠誠"
 
@@ -6474,7 +6334,6 @@ msgid "female^lawful"
 msgstr "守序"
 
 #: src/unit_types.cpp:977
-#, fuzzy
 msgid "female^liminal"
 msgstr "忠誠"
 
@@ -6484,84 +6343,68 @@ msgstr "中立"
 
 #: src/whiteboard/manager.cpp:1137
 msgid "SHOW ALL allies’ plans"
-msgstr ""
+msgstr "顯示所有隊友的計畫"
 
 #: src/whiteboard/manager.cpp:1138
 msgid "HIDE ALL allies’ plans"
-msgstr ""
+msgstr "隱藏所有隊友的計畫"
 
 #: src/whiteboard/manager.cpp:1152
-#, fuzzy
-#| msgid "Show replay"
 msgid "Show plans for $player"
 msgstr "顯示遊戲錄影"
 
 #: src/whiteboard/manager.cpp:1154
-#, fuzzy
-#| msgid "Replace with $player"
 msgid "Hide plans for $player"
 msgstr " $player 替換上陣"
 
 #: src/whiteboard/manager.cpp:1157
 msgid "Whiteboard Options"
-msgstr ""
+msgstr "白板選項"
 
-#, fuzzy
 #~| msgid "Easy"
 #~ msgid "(Easy)"
 #~ msgstr "簡單"
 
-#, fuzzy
 #~| msgid "Normal"
 #~ msgid "(Normal)"
 #~ msgstr "普通"
 
-#, fuzzy
 #~| msgid "Hard"
 #~ msgid "(Hard)"
 #~ msgstr "困難"
 
-#, fuzzy
 #~| msgid "Players: "
 #~ msgid "Players"
 #~ msgstr "玩家： "
 
-#, fuzzy
 #~| msgid "Enemy village"
 #~ msgid "Enemies"
 #~ msgstr "敵人(敵方)"
 
-#, fuzzy
 #~| msgid "Difficulty: "
 #~ msgid "Difficulty: Easy"
 #~ msgstr "難度： "
 
-#, fuzzy
 #~| msgid "Difficulty: "
 #~ msgid "Difficulty: Normal"
 #~ msgstr "難度： "
 
-#, fuzzy
 #~| msgid "Difficulty: "
 #~ msgid "Difficulty: Hard"
 #~ msgstr "難度： "
 
-#, fuzzy
 #~| msgid "Campaign: $campaign_name"
 #~ msgid "Main campaign define"
 #~ msgstr "戰役: $campaign_name"
 
-#, fuzzy
 #~| msgid "Campaign Design"
 #~ msgid "Extra campaign define"
 #~ msgstr "戰役設計"
 
-#, fuzzy
 #~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "多人對戰"
 
-#, fuzzy
 #~| msgid "Defeat enemy leader(s)"
 #~ msgid "Defeat enemy leader"
 #~ msgstr "擊敗敵人首領"
@@ -6594,7 +6437,6 @@ msgstr ""
 #~ msgid "Add-on '$addon|' deleted."
 #~ msgstr "模組'$addon|'已移除"
 
-#, fuzzy
 #~| msgid "Invalid location"
 #~ msgid "Invalid WML found"
 #~ msgstr "無效位置"
