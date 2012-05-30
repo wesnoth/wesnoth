@@ -665,6 +665,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 				gui2::show_transient_message(disp.video(), _("Add-ons Manager"), _("All add-ons are up to date."));
 			}
 			filter.status = FILTER_ALL;
+			filter.changed = true;
 			return;
 		}
 	}
