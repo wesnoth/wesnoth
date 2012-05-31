@@ -654,21 +654,12 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		}
 	}
 
-	if(option_ids.empty()) {
-		if(!updates_only && can_publish_ids.empty() && can_delete_ids.empty()) {
-			gui2::show_error_message(disp.video(), _("There are no add-ons available for download from this server."));
-			return;
-		} else if(updates_only) {
-			if(installed_addons().empty()) {
-				gui2::show_transient_message(disp.video(), _("Add-ons Manager"), _("There are no add-ons installed."));
-			} else {
-				gui2::show_transient_message(disp.video(), _("Add-ons Manager"), _("All add-ons are up to date."));
-			}
-			filter.status = FILTER_ALL;
-			filter.changed = true;
-			return;
-		}
-	}
+	// If the options vector is empty it means we don't have publish/delete
+	// entries to display, either because there are no add-ons on the server
+	// at all, or none match the selected criteria. In such cases, insert a
+	// message row informing the player of the situation.
+
+	const bool dummy_addons_list = options.size() == 1; // The header is always there.
 
 	int result;
 	// Magic constant assigned to the Update All button as its return value.
@@ -679,7 +670,15 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		// Set-up the actual GUI1 dialog and its children.
 		//
 
-		gui::dialog dlg(disp, _("Add-ons Manager"), "", gui::OK_CANCEL);
+		std::string dlg_message;
+
+		if(dummy_addons_list) {
+			dlg_message = addons.empty()
+				? _("There are no add-ons available for download from this server.")
+				: _("There are no add-ons matching the specified criteria on this server.");
+		}
+
+		gui::dialog dlg(disp, _("Add-ons Manager"), dlg_message, gui::OK_CANCEL);
 
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1).set_alpha_sort(2).set_alpha_sort(3);
@@ -696,8 +695,13 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			gui::dialog::max_menu_width, &sorter, &addon_style, false);
 		dlg.set_menu(addons_list_menu);
 
+		std::string filter_label;
+		if(!dummy_addons_list) {
+			filter_label = _("Filter: ");
+		}
+
 		gui::filter_textbox* filter_box = new gui::filter_textbox(disp.video(),
-			_("Filter: "), options, filter_options, 1, dlg, 300);
+			filter_label, options, filter_options, 1, dlg, 300);
 		filter_box->set_text(filter.keywords);
 		dlg.set_textbox(filter_box);
 
@@ -720,6 +724,16 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 		help::help_button* help_button = new help::help_button(disp, "installing_addons");
 		dlg.add_button(help_button, gui::dialog::BUTTON_HELP);
+
+		// Disable some buttons when there's nothing to display.
+		if(dummy_addons_list) {
+			filter_box->hide(true);
+			description_button->enable(false);
+			if(update_all_button) {
+				update_all_button->enable(false);
+			}
+			addons_list_menu->hide(true);
+		}
 
 		// Focus the menu on the previous selection.
 		std::vector<std::string>::iterator it = !last_addon_id.empty() ?
