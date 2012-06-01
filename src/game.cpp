@@ -138,6 +138,9 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	// don't update font as we already updating it in game ctor
 	//font_manager_.update_font_path();
 	}
+	if(cmdline_opts.debug_lua) {
+		game_config::debug_lua = true;
+	}
 	if(cmdline_opts.gunzip) {
 		const std::string input_file(*cmdline_opts.gunzip);
 		if(!is_gzip_file(input_file)) {

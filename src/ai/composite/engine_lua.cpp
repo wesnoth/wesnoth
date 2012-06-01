@@ -53,18 +53,16 @@ static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 
 typedef boost::shared_ptr< lua_object<int> > lua_int_obj;
 
-class lua_candidate_action_wrapper : public candidate_action {
-public:
-	lua_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx)
-		: candidate_action(context,cfg),evaluation_(cfg["evaluation"]),evaluation_action_handler_(),
-			execution_(cfg["execution"]),execution_action_handler_(),serialized_evaluation_state_()
+class lua_candidate_action_wrapper_base : public candidate_action {
+	
+public:		
+	lua_candidate_action_wrapper_base( rca_context &context, const config &cfg)
+		: candidate_action(context, cfg),evaluation_action_handler_(),execution_action_handler_(),serialized_evaluation_state_()
 	{
-		evaluation_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(evaluation_.c_str(),lua_ai_ctx));
-		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(execution_.c_str(),lua_ai_ctx));
+		// do nothing
 	}
 
-	virtual ~lua_candidate_action_wrapper() {}
-
+	virtual ~lua_candidate_action_wrapper_base() {}	
 
 	virtual double evaluate()
 	{
@@ -88,22 +86,42 @@ public:
 			execution_action_handler_->handle(serialized_evaluation_state_, false, l_obj);
 		}
 	}
+	
+	virtual config to_config() const {
+		config cfg = candidate_action::to_config();
+		cfg.add_child("state",serialized_evaluation_state_);
+		return cfg;
+	}
+	
+protected:	
+	boost::shared_ptr<lua_ai_action_handler> evaluation_action_handler_;	
+	boost::shared_ptr<lua_ai_action_handler> execution_action_handler_;
+	config serialized_evaluation_state_;	
+};
+
+class lua_candidate_action_wrapper : public lua_candidate_action_wrapper_base {
+	
+public:
+	lua_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx)
+		: lua_candidate_action_wrapper_base(context,cfg),evaluation_(cfg["evaluation"]),execution_(cfg["execution"])
+	{
+		evaluation_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(evaluation_.c_str(),lua_ai_ctx));
+		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(execution_.c_str(),lua_ai_ctx));
+	}
+
+	virtual ~lua_candidate_action_wrapper() {}	
 
 	virtual config to_config() const
 	{
-		config cfg = candidate_action::to_config();
+		config cfg = lua_candidate_action_wrapper_base::to_config();
 		cfg["evaluation"] = evaluation_;
-		cfg["execution"] = execution_;
-		cfg.add_child("state",serialized_evaluation_state_);
+		cfg["execution"] = execution_;		
 		return cfg;
 	}
 
 private:
-	std::string evaluation_;
-	boost::shared_ptr<lua_ai_action_handler> evaluation_action_handler_;
+	std::string evaluation_;	
 	std::string execution_;
-	boost::shared_ptr<lua_ai_action_handler> execution_action_handler_;
-	config serialized_evaluation_state_;
 };
 
 class lua_sticky_candidate_action_wrapper : public lua_candidate_action_wrapper {
@@ -120,7 +138,7 @@ public:
 	{
 		if (resources::units->find(bound_unit_->underlying_id()).valid())
 		{
-			return lua_candidate_action_wrapper::evaluate();
+			return lua_candidate_action_wrapper_base::evaluate();
 		}
 		else
 		{
@@ -131,7 +149,7 @@ public:
 
 	virtual void execute()
 	{
-		lua_candidate_action_wrapper::execute();
+		lua_candidate_action_wrapper_base::execute();
 		this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
 	}
 private:
