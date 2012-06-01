@@ -49,7 +49,7 @@ public:
 	boost::optional<std::string> data_dir;
 	/// True if --debug was given on the command line. Enables debug mode.
 	bool debug;
-	/// True if --debug_lua was given in the commandline. Enables some Lua debugging mechanisms.
+	/// True if --debug-lua was given in the commandline. Enables some Lua debugging mechanisms.
 	bool debug_lua;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	/// Non-empty if --debug-dot-domain was given on the command line.
