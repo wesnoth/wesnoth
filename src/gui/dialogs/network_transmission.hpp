@@ -35,6 +35,8 @@ class tnetwork_transmission : public tdialog
 {
 	network_asio::connection& connection_;
 
+	bool track_upload_;
+
 	class pump_monitor : public events::pump_monitor
 	{
 		network_asio::connection& connection_;
@@ -68,7 +70,6 @@ protected:
 	void post_show(twindow& window);
 
 private:
-	bool track_upload_;
 	/**
 	 * The subtitle for the dialog.
 	 *

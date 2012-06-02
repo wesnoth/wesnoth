@@ -68,6 +68,7 @@ tnetwork_transmission::tnetwork_transmission(
 		, const std::string& title
 		, const std::string& subtitle)
 	: connection_(connection)
+	, track_upload_(false)
 	, pump_monitor(connection, track_upload_)
 	, subtitle_(subtitle)
 {
