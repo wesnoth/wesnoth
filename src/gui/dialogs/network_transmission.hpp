@@ -51,7 +51,7 @@ class tnetwork_transmission : public tdialog
 		}
 
 		boost::optional<twindow&> window_;
-	} pump_monitor;
+	} pump_monitor_;
 public:
 
 	tnetwork_transmission(

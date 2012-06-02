@@ -69,7 +69,7 @@ tnetwork_transmission::tnetwork_transmission(
 		, const std::string& subtitle)
 	: connection_(connection)
 	, track_upload_(false)
-	, pump_monitor(connection, track_upload_)
+	, pump_monitor_(connection, track_upload_)
 	, subtitle_(subtitle)
 {
 	register_label("title", true, title, false);
@@ -89,13 +89,13 @@ void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
 		subtitle_label.set_use_markup(true);
 	}
 
-	pump_monitor.window_ = window;
+	pump_monitor_.window_ = window;
 
 }
 
 void tnetwork_transmission::post_show(twindow& /*window*/)
 {
-	pump_monitor.window_.reset();
+	pump_monitor_.window_.reset();
 	connection_.cancel();
 }
 
