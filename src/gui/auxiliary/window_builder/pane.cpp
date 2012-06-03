@@ -18,6 +18,7 @@
 #include "gui/auxiliary/window_builder/pane.hpp"
 
 #include "gettext.hpp"
+#include "gui/widgets/pane.hpp"
 
 namespace gui2 {
 
@@ -33,12 +34,12 @@ tbuilder_pane::tbuilder_pane(const config& cfg)
 	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
 }
 
-tpane* tbuilder_pane::build() const
+twidget* tbuilder_pane::build() const
 {
 	return build(treplacements());
 }
 
-tpane* tbuilder_pane::build(const treplacements& /*replacements*/) const
+twidget* tbuilder_pane::build(const treplacements& /*replacements*/) const
 {
 	return tpane::build(*this);
 }

@@ -17,11 +17,9 @@
 #define GUI_AUXILIARY_WINDOW_BUILDER_PANE_HPP_INCLUDED
 
 #include "gui/auxiliary/placer.hpp"
-#include "gui/widgets/pane.hpp"
+#include "gui/auxiliary/window_builder.hpp"
 
 namespace gui2 {
-
-class tpane;
 
 namespace implementation {
 
@@ -30,9 +28,9 @@ struct tbuilder_pane
 {
 	explicit tbuilder_pane(const config& cfg);
 
-	tpane* build() const;
+	twidget* build() const;
 
-	tpane* build(const treplacements& replacements) const;
+	twidget* build(const treplacements& replacements) const;
 
 	tplacer_::tgrow_direction grow_direction;
 
