@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2012-05-18 11:13+0200\n"
-"PO-Revision-Date: 2011-05-04 21:26+0900\n"
+"POT-Creation-Date: 2012-05-18 12:28+0200\n"
+"PO-Revision-Date: 2011-11-10 23:46+0900\n"
 "Last-Translator: 瀟湘夜雨\n"
-"Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
+"Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
 "Language: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -105,12 +105,12 @@ msgstr "アートワークとグラフィックスデザイン"
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:105
 msgid "Miscellaneous"
-msgstr "Miscellaneous"
+msgstr "その他"
 
 #. [entry]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:116
 msgid "And special thanks to everyone else who I forgot to mention."
-msgstr "And special thanks to everyone else who I forgot to mention."
+msgstr "そして、ここで言及し忘れた全ての貢献者に感謝します。"
 
 #. [scenario]: id=01_The_Morning_After
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:7
@@ -712,10 +712,10 @@ msgid ""
 "were scared by the falling rocks and fled into the night. It took all my "
 "skill to calm Yasi and keep him from running."
 msgstr ""
-"狩猟の一隊がちょうど昨日発ったばかりなので、この土地全体に岩が降っていなけれ"
-"ば馬の多くはおそらく生き残っているはずだ。ここに残ったわずかな馬達は降ってく"
-"る岩に怯えて、夜の闇に逃げていった。私の力では、このYasi をなだめて逃げ出さな"
-"いようおさえるのがやっとだった。"
+"狩猟の一隊がちょうど昨日出発したばかりなので、この土地全体に岩が降っていなけ"
+"れば馬の多くはおそらく生き残っているはずだ。ここに残ったわずかな馬達は降って"
+"くる岩に怯えて、夜の闇に逃げていった。私の力では、このYasi をなだめて逃げ出さ"
+"ないようおさえるのがやっとだった。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:897
@@ -2907,6 +2907,7 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2608
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2872
+#, fuzzy
 msgid ""
 "We have suffered losses, but we are not broken yet. We have saved most of "
 "our people tonight. But while elves who have fought with you in the past "
@@ -2923,13 +2924,14 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2617
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2881
+#, fuzzy
 msgid ""
-"We have suffered grievous losses, but we are not broken yet. Long will "
-"this slaughter be remembered by our people. Where was Eloh during the "
-"darkness? And I’m afraid that while elves who have fought with you in the "
-"past will gladly return, as the numbers of our people dwindle, it’s going to "
-"become more and more costly to recruit new warriors. It would be wise to "
-"stockpile gold against this eventuality."
+"We have suffered grievous losses, but we are not broken yet. Long will this "
+"slaughter be remembered by our people. Where was Eloh during the darkness? "
+"And I’m afraid that while elves who have fought with you in the past will "
+"gladly return, as the numbers of our people dwindle, it’s going to become "
+"more and more costly to recruit new warriors. It would be wise to stockpile "
+"gold against this eventuality."
 msgstr ""
 "あたし達は甚大な被害を受けたけど、まだ倒されたわけじゃないわ。この大虐殺はい"
 "つまでも語り継がれるでしょうね。あの暗闇の間、Eloh はどこに行ってしまってたの"
@@ -4401,24 +4403,18 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1719
-#, fuzzy
-#| msgid "Defeat Troll Leaders"
 msgid "Defeat troll leaders"
 msgstr "トロルのリーダーを倒す"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1735
-#, fuzzy
-#| msgid "Death of Zhul"
 msgid "Death of Fundin"
-msgstr "Zhul の死"
+msgstr "Fundin の死"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1739
-#, fuzzy
-#| msgid "Death of Nog"
 msgid "Death of Nori"
-msgstr "Nog の死"
+msgstr "Nori の死"
 
 #. [option]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1752
@@ -4436,24 +4432,18 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1784
-#, fuzzy
-#| msgid "Defeat Dwarf Leaders"
 msgid "Defeat dwarf leaders"
 msgstr "ドワーフのリーダーたちを倒す"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1800
-#, fuzzy
-#| msgid "Death of Zhul"
 msgid "Death of Thungar"
-msgstr "Zhul の死"
+msgstr "Thungar の死"
 
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1804
-#, fuzzy
-#| msgid "Death of Jarl"
 msgid "Death of Gnarl"
-msgstr "Jarl の死"
+msgstr "Gnarl の死"
 
 # %% 道を奪い取る　→　戦って主塔までの道を切り開けば　みたいな感じかな
 #. [message]: speaker=$explorer.id
@@ -8115,7 +8105,7 @@ msgid ""
 "Keratur, son of Tanuil. What in Eloh’s name are you doing here? How could "
 "you do this? We thought you were dead."
 msgstr ""
-"Tanuil が息子、Keratur じゃないか。一体ここで何をしているんだ？ どうしてこん"
+"Tanuil の息子、Keratur じゃないか。一体ここで何をしているんだ？ どうしてこん"
 "な真似を？ 私達はあなたが死んだとばかり思っていたのに。"
 
 #. [message]: speaker=Zhul
@@ -8158,7 +8148,7 @@ msgstr ""
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3668
 msgid "Kaleh, I think you should come up and see this."
-msgstr "Kaleh、此方へ来て、これを見ていただきたい。"
+msgstr "Kaleh、こちらへ来て、これを見ていただきたい。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3680
@@ -9161,10 +9151,10 @@ msgid ""
 "half-manned. They obviously didn’t expect any serious attack to come from "
 "this direction."
 msgstr ""
-"とにかく貴方は混乱の中に私達を放り込んでしまった。良い知らせもあるわ、貴方が"
-"思ってるほどには敵の前哨基地の防備は厚くないってことよ。あの駐屯地には通常の"
-"半分しか人が居ないようだったわ。此方側から攻められるなんて夢にも思ってなかっ"
-"たようね。"
+"とにかく、あなたは混乱の中にあたし達を放り込んでしまったの。良い知らせもある"
+"わ、あなたが思ってるほどには敵の前哨基地の防備は厚くないってことよ。あの駐屯"
+"地には通常の半分しか人が居ないようだったわ。こちら側から攻められるなんて夢に"
+"も思ってなかったようね。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4969
@@ -9791,8 +9781,8 @@ msgid ""
 "headed right for the human settlement. I hope nothing bad has happened to "
 "them."
 msgstr ""
-"彼らはが向かったのは真北よ。Esanoo の説明によると彼らは人間の集落の方へ向かっ"
-"たみたい。彼らに何事も無ければ良いけど。"
+"彼らが向かったのは真北よ。Esanoo の説明によると彼らは人間の集落の方へ向かった"
+"みたい。彼らに何事も無ければ良いけど。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:6129
@@ -9800,8 +9790,8 @@ msgid ""
 "Things are coming to a head. I’m worried about Tanstafaal and your merfolk "
 "friends. Time is of the essence, so let’s move out as soon as possible."
 msgstr ""
-"重要な局面だな。Transtafaal 達とあなた方 merfolk の友が心配だ。時間は限られて"
-"いる。すぐに出発するぞ。"
+"重要な局面だな。Tanstafaal 達とあなた方 マーマン族の仲間が心配だ。時間は限ら"
+"れている。すぐに出発するぞ。"
 
 #. [scenario]: id=09_Blood_is_Thicker_Than_Water
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:6
@@ -9843,14 +9833,14 @@ msgstr "Alastra"
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:379
 msgid "Rescue at least two merfolk by turn 16"
-msgstr "16T までに少なくとも2名の merfolk (マーマン)を救い出し"
+msgstr "16ターンになる前に少なくとも2名のマーマン族を救い出し"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:383
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:945
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2821
 msgid "Three merfolk must survive"
-msgstr "3名以上の merfolk を生き残らせよ"
+msgstr "3名以上のマーマン族を生き残らせよ"
 
 #. [unit]: type=Desert Fighter, id=Ulothanir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:421
@@ -9943,9 +9933,9 @@ msgstr ""
 "私の主人は、我々のうち一人が捕らえられたとき、我々が彼女の場所を漏らせないよ"
 "うにしたかったのです。それで、彼女は彼女がどこにいるかについて我々に話ません"
 "でした。しかし彼女は、彼女の隠れ場所を推測する為に、我々に単純な単語を教えま"
-"した。しかしそれをつなげ合わせるには、3人の merfolk が必要です。それで、彼女"
-"を見つけるためには、我々は私の同胞のうち、最低でも2人を救い出さなくてはなりま"
-"せん。私は、我々が同胞の全てを助けられることを期待していますけれども。"
+"した。しかしそれをつなげ合わせるには、マーマン族の者が3人必要です。それで、彼"
+"女を見つけるためには、我々は私の同胞のうち、最低でも2人を救い出さなくてはなり"
+"ません。私は、我々が同胞の全てを助けられることを期待していますけれども。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:507
@@ -10098,10 +10088,10 @@ msgid ""
 "set up camp here and push on north west as soon as possible. I just hope we "
 "can make it in time."
 msgstr ""
-"さぁ、私達が merfolk の友を助けるために、無駄にできる時間はない。人間は "
-"merfolk が2日後に生贄として捧げられると言っていた。私たちはここに野営地を準備"
-"し、出来るだけ早く北西へ向かった方がいいだろう。手遅れにならないうちにたどり"
-"着けることを祈る。"
+"さぁ、私達がマーマン族の仲間を助けるために、無駄にできる時間はない。人間は"
+"マーマン族が2日後に生贄として捧げられると言っていた。私たちはここに野営地を準"
+"備し、出来るだけ早く北西へ向かった方がいいだろう。手遅れにならないうちにたど"
+"り着けることを祈る。"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:651
@@ -10239,8 +10229,8 @@ msgstr ""
 "忠実な信仰者の1人だと思い、語りかけたのです。ところが、わらわの信頼は裏切られ"
 "ました。そなたらが虐殺した人間達はそなたらを助けようと思っていたのだ、少なく"
 "とも Kaleh が愚かにも攻撃をしかけるまでは。そして今も、Kelah はそなたらに邪悪"
-"な merfolk を助け、彼らの陰湿な計画を手伝わせようとしている。彼に付き従えば、"
-"merfolk の穢れた神に屈し、merfolk の神なぞに仕えることになるぞ。"
+"なマーマン族を助け、彼らの陰湿な計画を手伝わせようとしている。彼に付き従え"
+"ば、マーマン族の穢れた神に屈し、マーマン族の神なぞに仕えることになるぞ。"
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:798
@@ -10298,14 +10288,14 @@ msgid ""
 "threats; we elves have always been free to make our own choices. We are not "
 "slaves, and will not blindly follow either humans or some false god."
 msgstr ""
-"彼女はあの旅路の間、私達を導いというが、過酷な砂漠を越える旅で貴方達を守った"
-"のは誰だ？オークと戦ったのは？山々の下で貴方達を率いたのは？再び地上に連れ出"
-"したのは？今までの旅路の苦難全てに対抗してきたのは？私のはずだ。私は皆のため"
-"に旅路の全てにおいて尽くして来た。私の言葉が信じられないとしても、私の行動は"
-"信じて欲しい。私は我が民のために最善を尽くして来た、私自身の行動によって、"
-"だ。私はドワーフ達がそうであったように、merfolk も友と信じている。私は無情な"
-"言葉や脅しなどに屈しはしない。私達、エルフ族は常に自分自身の意思で選択してき"
-"たのだ！ 私達は奴隷ではない！そして人間や偽りの神に闇雲に従いはしない！"
+"彼女はあの旅路の間、私達を導いたというが、過酷な砂漠を越える旅で貴方達を守っ"
+"たのは誰だ？オークと戦ったのは？山々の下で貴方達を率いたのは？再び地上に連れ"
+"出したのは？今までの旅路の苦難全てに対抗してきたのは？私のはずだ。私は皆のた"
+"めに旅路の全てにおいて尽くして来た。私の言葉が信じられないとしても、私の行動"
+"は信じて欲しい。私は我が民のために最善を尽くして来た、私自身の行動によって、"
+"だ。私はドワーフ達がそうであったように、マーマン族も友と信じている。私は無情"
+"な言葉や脅しなどに屈しはしない。私達、エルフ族は常に自分自身の意思で選択して"
+"きたのだ！ 私達は奴隷ではない！そして人間や偽りの神に闇雲に従いはしない！"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:823
@@ -10350,14 +10340,14 @@ msgid ""
 "threats; we elves have always been free to make our own choices. We are not "
 "slaves, and will not blindly follow either the humans or some false god."
 msgstr ""
-"彼女はあの旅路の間、私達を導いというが、過酷な砂漠を越える旅で貴方達を守った"
-"のは誰だ？オークと戦ったのは？山々の下で貴方達を率いたのは？再び地上に連れ出"
-"したのは？今までの旅路の苦難全てに対抗してきたのは？私のはずだ。私は皆のため"
-"に旅路の全てにおいて尽くして来た。私の言葉が信じられないとしても、私の行動は"
-"信じて欲しい。私は我が民のために最善を尽くして来た、私自身の行動によって、"
-"だ。私はトロール達がそうであったように、merfolk も友と信じている。私は無情な"
-"言葉や脅しなどに屈しはしない。私達、エルフ族は常に自分自身の意思で選択してき"
-"たのだ！ 私達は奴隷ではない！そして人間や偽りの神に闇雲に従いはしない！"
+"彼女はあの旅路の間、私達を導いたというが、過酷な砂漠を越える旅で貴方達を守っ"
+"たのは誰だ？オークと戦ったのは？山々の下で貴方達を率いたのは？再び地上に連れ"
+"出したのは？今までの旅路の苦難全てに対抗してきたのは？私のはずだ。私は皆のた"
+"めに旅路の全てにおいて尽くして来た。私の言葉が信じられないとしても、私の行動"
+"は信じて欲しい。私は我が民のために最善を尽くして来た、私自身の行動によって、"
+"だ。私はトロール達がそうであったように、マーマン族も友と信じている。私は無情"
+"な言葉や脅しなどに屈しはしない。私達、エルフ族は常に自分自身の意思で選択して"
+"きたのだ！ 私達は奴隷ではない！そして人間や偽りの神に闇雲に従いはしない！"
 
 #. [message]: speaker=Tanstafaal
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:838
@@ -10469,7 +10459,7 @@ msgstr ""
 "ありがとう。あなた方が浅瀬において力になってくれると確信している。全ての正し"
 "い人々よ、私は必要以上の者を殺したくは無い。既にあまりに沢山の血が流されてい"
 "る。彼らを気絶させるのも、傷つけるのも、そして殺すのも最小限にするぞ。彼らに"
-"滅ぼされる前に、Transtafaal の狂気を止めなければならない！"
+"滅ぼされる前に、Tanstafaal の狂気を止めなければならない！"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:929
@@ -10524,8 +10514,8 @@ msgid ""
 "Esanoo said there were five merfolk left in his band. I think we have "
 "rescued them all!"
 msgstr ""
-"Esanoo は、彼の隊に生き残った5人の merfolk が居ると言ってたわ。彼ら全てを助け"
-"出せたようね！"
+"Esanoo は、彼の隊に生き残った5人のマーマン族が居ると言ってたわ。彼ら全てを助"
+"け出せたようね！"
 
 #. [message]: role=merfolk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1054
@@ -10547,7 +10537,7 @@ msgid ""
 "Curse them! The elves have freed the merfolk. We will be have our vengeance. "
 "Keep fighting, and execute plan C!"
 msgstr ""
-"呪われよ！ エルフどもが merfolk を解放してしまった。我々は報復する。戦い続け"
+"呪われよ！ エルフどもがマーマン族を解放してしまった。我々は報復する。戦い続け"
 "るがいい！ さぁ、C計画を実行するのだ！"
 
 #. [message]: speaker=Darius
@@ -10707,7 +10697,7 @@ msgid ""
 "Thank you for rescuing me. We’ll show those humans the true fury of the "
 "merfolk!"
 msgstr ""
-"助けてくれてありがとう。我々は人間たちに merfolk の真実の怒りを見せよう！"
+"助けてくれてありがとう。我々は人間たちにマーマン族の真実の怒りを見せよう！"
 
 #. [unit]: type=Merman Warrior, id=Nuvassa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1353
@@ -10822,9 +10812,9 @@ msgid ""
 "the location of their master. We should have protected the merfolk more "
 "carefully. Now our search is hopeless."
 msgstr ""
-"何てことだ、あまりに多くの merfolk を死なせてしまった！ もはや彼らの主人の位"
-"置を知るために必要な人数が残ってない。私達はより慎重に merfolk を守らなければ"
-"ならなかったのだ。探索の望みは尽きた。"
+"何てことだ、あまりに多くのマーマン族を死なせてしまった！ もはや彼らの主人の位"
+"置を知るために必要な人数が残ってない。私達はより慎重にマーマン族を守らなけれ"
+"ばならなかったのだ。探索の望みは尽きた。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1813
@@ -10833,9 +10823,9 @@ msgid ""
 "enough for them to divine the location of their master. We should have "
 "protected the merfolk more carefully. Now our search is hopeless."
 msgstr ""
-"あまりに多くの merfolk が死んだ！ たとえ残り全てを守りきっても、彼らの主人の"
-"居場所を知るのに十分な人数がいない。より慎重に merfolk を守るべきだったのだ。"
-"もう我々の探索に望みはない。"
+"あまりに多くのマーマン族が死んだ！ たとえ残り全てを守りきっても、彼らの主人の"
+"居場所を知るのに十分な人数がいない。より慎重にマーマン族を守るべきだったの"
+"だ。もう我々の探索に望みはない。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1863
@@ -10959,7 +10949,7 @@ msgid ""
 "Esanoo said there were five merfolk captured. We only found four. Where did "
 "they hide the last one? What horrible fate has befallen her?"
 msgstr ""
-"Esanoo は、捕らえられた5人の merfolk が居ると言っていたが、私達は4人を見つけ"
+"Esanoo は、捕らえられた5人のマーマン族が居ると言っていたが、私達は4人を見つけ"
 "ただけだ。彼らはどこに最後の一人を隠したのか？ どんな恐ろしい運命が彼女に起"
 "こったのだろう？"
 
@@ -11019,8 +11009,8 @@ msgid ""
 "We couldn’t save enough of the merfolk. We have failed. Now we shall never "
 "be able to meet the merfolk’s leader!"
 msgstr ""
-"私達は十分な人員の merfolk を生かすことができなかった。失敗したのだ。もう決し"
-"て merfolk の指導者に会えないだろう！"
+"私達は十分な人員のマーマン族を生かすことができなかった。失敗したのだ。もう決"
+"してマーマン族の指導者に会えないだろう！"
 
 #. [message]: speaker=Esanoo
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2185
@@ -11037,8 +11027,8 @@ msgid ""
 "The stinkin’ elves have freed some of the merfolk. And still they fight on. "
 "Execute plan B. And kill those merfolk!"
 msgstr ""
-"鼻持ちなら無いエルフどもが、merfolk の何匹かを解放してしまった！そして未だ戦"
-"い続けている。　B計画を実行せよ。解放された merfolk を殺せ！"
+"鼻持ちなら無いエルフどもが、マーマン族の何匹かを解放してしまった！そして未だ"
+"戦い続けている。　B計画を実行せよ。解放されたマーマン族を殺せ！"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2391
@@ -11260,8 +11250,8 @@ msgid ""
 "friends. If it is possible, I would like to meet with your master. Your "
 "conduct is a testament to your people, and I, at least, trust you."
 msgstr ""
-"感謝する。そして、私は merfolk という友人とした約束も忘れてはいない。可能であ"
-"るならば、あなたの主人と会いたい。あなた方の行為があなた方の民を信じる証拠と"
+"感謝する。そして、私はマーマン族の友人とした約束も忘れてはいない。可能である"
+"ならば、あなたの主人と会いたい。あなた方の行為があなた方の民を信じる証拠と"
 "なった。少なくとも、私はあなた方を信頼する。"
 
 #. [message]: role=merfolk
@@ -11289,7 +11279,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2676
 msgid "I could never forget what you did to those merfolk."
-msgstr "貴様が merfolk の友に何をしたか、私が忘れるわけがあるまい。"
+msgstr "貴様がマーマン達に何をしたか、私が忘れるわけがあるまい。"
 
 # 業務→儀式に。あと後半を呪文っぽく。
 #. [message]: speaker=Hekuba
@@ -11336,8 +11326,8 @@ msgid ""
 "Before I decide, I have just one question: How did you merfolk plan on "
 "bringing us to meet your master, if she dwells far beneath the sea?"
 msgstr ""
-"決断する前に、一つ質問させて頂きたい。あなたたち merfolk の主人が、海の下深く"
-"に住むのなら、どうやって私たちを会わせるつもりだったのですか？"
+"決断する前に、一つ質問させて頂きたい。あなたたちマーマン族の主人が、海の下深"
+"くに住むのなら、どうやって私たちを会わせるつもりだったのですか？"
 
 #. [message]: role=merfolk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2742
@@ -11400,8 +11390,9 @@ msgid ""
 "merfolk. If they believe that they can transport us safely across the "
 "waters, then I will put my life in their hands."
 msgstr ""
-"私達は既に多くの見知らぬ場所へ旅をし、生き残ってきた。それに、私は merfolk を"
-"信頼している。もし彼らが私達を海の向こうへ安全に運べるとに委ねるとしよう。"
+"私達は既に多くの見知らぬ場所へ旅をし、生き残ってきた。それに、私はマーマン族"
+"を信頼している。もし彼らが私達を海の向こうへ安全に運べると確信しているなら、"
+"それに運命を委ねるとしよう。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2762
@@ -11624,12 +11615,11 @@ msgstr ""
 "お前達に私を負かすことはできはしまい！ 私は今、女神によって祝福されているの"
 "だ！ Kaleh よ、最後には私が誰よりも強いことを証明してみせる！"
 
+# 【前-3】《俗》～に賛成で、～を支持して
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3115
 msgid "Oh Tanstafaal, I pity you. This battle was never about you."
-msgstr ""
-"あぁ Tanstfaal！ 気の毒に思う。この戦いは、決して貴方の起こした戦ではなかっ"
-"た。"
+msgstr "あぁ Tanstafaal！ あわれな。この戦いがあなたを支持するわけがない。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3133
@@ -11686,11 +11676,11 @@ msgid ""
 "Once we’ve escaped and are out of range of any counterattacks by the humans, "
 "we can load the rest of our people onto the ships."
 msgstr ""
-"いいぞ、早くここから離脱しよう。merfolk 達が操船の手助けをしてくれるだろう。"
+"いいぞ、早くここから離脱しよう。マーマン達が操船の手助けをしてくれるだろう。"
 "この血塗られた戦場から後退し、民の生き残りを召集する。ここから西の海岸線で落"
-"ち合おう。道に迷う心配はない、海岸線を離れずに行くし、merfolk も連絡員として"
-"助成してくれる。一旦、人間達が反撃できる戦域の外へ脱出すれば、船に残りの民を"
-"乗船させることができよう。"
+"ち合おう。道に迷う心配はない、海岸線を離れずに行くし、マーマン族の助けで相互"
+"に連絡することもできる。一旦、人間達が反撃できる戦域の外へ脱出すれば、船に残"
+"りの民を乗船させることができよう。"
 
 #. [message]: role=merfolk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:3196
@@ -11722,7 +11712,7 @@ msgstr "Melusand"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:137
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:146
 msgid "Merfolk Guard"
-msgstr "Merfolk の見張り"
+msgstr "マーマン族の見張り"
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:167
@@ -12002,7 +11992,7 @@ msgid ""
 "dark places. We are barely holding our own in the waters, but you saw how "
 "ill-suited we were when we went ashore."
 msgstr ""
-"我々 maerfolk に何が出来よう？ 我々は我々の魔法によって多くのことがわかりま"
+"我々 マーマン族 に何が出来よう？ 我々は我々の魔法によって多くのことがわかりま"
 "す。しかし我々には陸の住民達の領土を取り戻すための数も力もありません。そして"
 "海でさえも闇の力から自由ではないのです。我々は、闇に堕ちた地から忍び寄ってき"
 "たナーガと、彼らより遥かに邪悪なものに対して、生き残るためにもがき続けていま"
@@ -12058,7 +12048,7 @@ msgstr ""
 "の頂点が見えただけでした。最も高い岩場の頂点には、ある種の砦が建設されてい"
 "て、夜には時折、変な明りがそこから漏れているのが目撃されました。我々は建物を"
 "調査するために、ジャングルへ幾度か調査隊を派遣しましたが、帰った者は誰も居ま"
-"せんでした。間もなく沿岸で眠っている merfolk が夜のうちに消えてしまうようにな"
+"せんでした。間もなく沿岸で眠っているマーマンが夜のうちに消えてしまうようにな"
 "り、濃いジャングルへと続く血の痕跡だけが残っていました。我々の知りえない何か"
 "がジャングルに潜んでいた事は明らかでした。我々の司祭達は奇妙な存在を感じ取り"
 "ましたが、それが何か判別できませんでした。水晶で占おうとしていましたが闇の力"
@@ -12358,10 +12348,10 @@ msgid ""
 msgstr ""
 "Melusand の言っていた通りでしょうね。我々が来た道を通り、山の地下を戻ることは"
 "できません。人間たちは今頃、その経路をしっかりと守っていることでしょう。我々"
-"は merfolk に北方や、南方の海岸に連れ帰ることを頼む事が頼む事もできますが、私"
-"はこれらの土地をまったく知らないのです。我々はあてもなく荒野をさまようことに"
-"なるでしょう。あぁ、我々が Eloh のお導きを得てさえいれば……。今までにもまして"
-"彼女を待ち望みます。"
+"はマーマン族に北方や、南方の海岸に連れ帰ることを頼む事もできますが、私はこれ"
+"らの土地をまったく知らないのです。我々はあてもなく荒野をさまようことになるで"
+"しょう。あぁ、我々が Eloh のお導きを得てさえいれば……。今までにもまして彼女を"
+"待ち望みます。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:486
@@ -12515,9 +12505,9 @@ msgid ""
 msgstr ""
 "よし、決まりだ。ただ、この決定は全ての民の同意ではない。この遠征に加わる者は"
 "生きて帰れないかもしれない。そしてこの戦いは、子供や老人には居場所がないだろ"
-"う。戦えない者や恐れる者は、merfolk たちと後方に待機していてもらおう。もし私"
-"達が失敗した時には、彼らがここから遠く離れ、生き延びれる場所を見つけられるよ"
-"う、Melusand に頼んでみよう。"
+"う。戦えない者や恐れる者は、マーマン族の者たちと後方に待機していてもらおう。"
+"もし私達が失敗した時には、彼らがここから遠く離れ、生き延びれる場所を見つけら"
+"れるよう、Melusand に頼んでみよう。"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:572
@@ -12931,11 +12921,11 @@ msgid ""
 "island should be left relatively unguarded. I will pray for our success, "
 "with luck we shall all meet again."
 msgstr ""
-"そろそろ、分れを告げるべきでしょうね。あなた方が救った merfolk 達は島への道筋"
-"を示す手伝いをしてくれるでしょう。私は敵を牽制するために一族を指揮しなければ"
-"なりません。我々は次の長い夜の終わりに攻撃を開始します。夜明けまでには、目的"
-"の島は比較的無防備な状態になっているでしょう。私たちの成功を、そして再び生き"
-"て再開できる幸運を祈ります。"
+"そろそろ、別れを告げるべきでしょうね。あなた方が救ったマーマン族の者は島への"
+"道筋を示す手伝いをするでしょう。私は敵を牽制するために一族を指揮しなければな"
+"りません。我々は次の長い夜の終わりに攻撃を開始します。夜明けまでには、目的の"
+"島は比較的無防備な状態になっているでしょう。私たちの成功を、そして再び生きて"
+"再開できる幸運を祈ります。"
 
 #. [scenario]: id=11_Battle_for_Zocthanol_Isle
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:6
@@ -13056,9 +13046,9 @@ msgid ""
 "first. I don’t think I want to hack through the jungle until we have more "
 "elves at our side."
 msgstr ""
-"なるほど。南側の方が開けているように見えるし、南西に人間達の廃墟があると "
-"merfolk 達は述べていた。こちらを先に探索して方が良さそうだ。民と合流し戦力を"
-"増強するまで、密林を突き進むのは止めた方が良いだろう。"
+"なるほど。南側の方が開けているように見えるし、南西に人間達の廃墟があると マー"
+"マン達は述べていた。こちらを先に探索して方が良さそうだ。民と合流し戦力を増強"
+"するまで、密林を突き進むのは止めた方が良いだろう。"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:608
@@ -13145,7 +13135,7 @@ msgid ""
 "our purposes. Now, I wonder where the merfolk are?"
 msgstr ""
 "砦を奪取したぞ。この城はやや崩壊しているが、私達の目的のために役立ってくれる"
-"だろう。さて、merfolk 達は何処に居るのだろう？"
+"だろう。さて、マーマン達は何処に居るのだろう？"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:841
@@ -13405,7 +13395,7 @@ msgstr ""
 #. [unit]: type=Merman Triton, id=Grateful Merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1481
 msgid "Grateful Merman"
-msgstr "Grateful Merman"
+msgstr "歓喜のマーマン"
 
 # So close to the water, but so far：マーマン的な言葉なのだろうか？
 #. [message]: speaker=Grateful Merman
@@ -13447,7 +13437,7 @@ msgid ""
 "We’ve run out of time! The forces that the merfolk helped distract have "
 "returned and will surely kill us all."
 msgstr ""
-"時間を掛け過ぎてしまった！merfolk 達が引き付けていた軍勢が戻ってくる、私達は"
+"時間を掛け過ぎてしまった！マーマン族が引き付けていた軍勢が戻ってくる、私達は"
 "誰も生き残れないだろう。"
 
 #. [message]: speaker=Eloh
@@ -13509,7 +13499,7 @@ msgid ""
 msgstr ""
 "私にはこの戦いを終わらせる義務がある、行かなければならない。その前に、この長"
 "い旅路に連れ添い私を信頼してくれた貴方達への感謝を申し上げる。もし私が勝利で"
-"きなければ、ここから逃げ merfolk 達と何処か安全で平和な地を探しに行ってほし"
+"きなければ、ここから逃げマーマン族と何処か安全で平和な地を探しに行ってほし"
 "い。私の最後の願いは、何が起ろうとも貴方達が長く実りある人生を送ってくれるこ"
 "となのだ。そして、この旅路で失われた者達の事を忘れないで欲しい……"
 
@@ -13601,7 +13591,7 @@ msgstr ""
 "なんて娘なの！心臓に悪いわ。まだまだ独り立ちさせられそうもないわね。Kaleh は"
 "一人前になりましたが、Nym には未だ私の保護が必要そうね。えぇ、私も行きましょ"
 "う。残りの者達は周囲を警戒していなさい、そしてもし３０分経っても私達が戻らな"
-"ければ merfolk 達と共に島から逃げなさい。"
+"ければ マーマン族と共に島から逃げなさい。"
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1730
@@ -14096,13 +14086,13 @@ msgid ""
 "could forget the price we paid..."
 msgstr ""
 "数日後には Melusand 自ら来てくれて、この島の浄化の様は奇跡だと断言してくれ"
-"た。我々はエルフと merfolk の間に協定を結び、平和と繁栄の元に共存していこうと"
-"誓い合った。Melusand はこの島を祝福してくれ、我が民の名誉を称えて'Quenoth "
-"島'と命名された。この奇妙な島にどのように順応すればよいか、merfolk 達は親切に"
+"た。我々はエルフとマーマン族の間に協定を結び、平和と繁栄の元に共存していこう"
+"と誓い合った。Melusand はこの島を祝福してくれ、我が民の名誉を称えて'Quenoth "
+"島'と命名された。この奇妙な島にどのように順応すればよいか、マーマン達は親切に"
 "教えてくれたものだ。それでも私は水に囲まれているのに慣れるのに苦労していた。"
 "かつての砂漠で水は金よりも貴重だったのだ。私には今もなお我が民のためにより良"
 "い故郷を思い描く事は難しかった。海の恵みと密林の果実に囲まれ食料が不足する事"
-"は無かったのだが。我々は本土の混沌から隔離されており、merfolk 達は水域を警戒"
+"は無かったのだが。我々は本土の混沌から隔離されており、マーマン族は水域を警戒"
 "してくれている。Melusand の言葉によると、今は平和と繁栄のための時間なのだ、"
 "と。我々の旅路では生き残れないという考えがよぎる事もあったし、何度も危険に直"
 "面してきた。ここに辿り着いた事が奇跡の様に思えてならない。我々の支払った代価"
@@ -14651,17 +14641,16 @@ msgid ""
 "and all that he did to aid us in our struggle."
 msgstr ""
 "私の命を救ったことで、Nog は彼の責務を果たしたと言うが、我々はしばらく留まっ"
-"て、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は Eloh と "
-"merfolk 達の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称えて何日"
-"も何日も祝っていた。その後で民の為の新しい住居の建設に取り掛かった。Nog は"
-"我々の建設工事を助けるために留まってくれ、誰よりも沢山働いてくれた。それから"
-"しばらくして彼は私の元に来て、彼の種族の元に帰らなければならないと告げた。"
-"我々と過ごした時間は素晴らしく夢の様だったと、我々の事を忘れはしないと、そし"
-"て彼の種族は彼を必要としていたので故郷へ帰らなければならないと、Nog は言って"
-"いた。彼は何時の日にか再び訪ねて来ると言っていたが、はたして私が生きているう"
-"ちに再び会えるだろうか。いずれにしても彼との思い出も彼の助力も心に銘記されて"
-"いる。彼の不変の忠誠心と彼が我々を助けるために奮闘してくれた全てを長く伝えて"
-"いこう。"
+"て、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は Eloh と マーマ"
+"ン族の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称えて何日も何日"
+"も祝っていた。その後で民の為の新しい住居の建設に取り掛かった。Nog は我々の建"
+"設工事を助けるために留まってくれ、誰よりも沢山働いてくれた。それからしばらく"
+"して彼は私の元に来て、彼の種族の元に帰らなければならないと告げた。我々と過ご"
+"した時間は素晴らしく夢の様だったと、我々の事を忘れはしないと、そして彼の種族"
+"は彼を必要としていたので故郷へ帰らなければならないと、Nog は言っていた。彼は"
+"何時の日にか再び訪ねて来ると言っていたが、はたして私が生きているうちに再び会"
+"えるだろうか。いずれにしても彼との思い出も彼の助力も心に銘記されている。彼の"
+"不変の忠誠心と彼が我々を助けるために奮闘してくれた全てを長く伝えていこう。"
 
 # トロル系との違いは、（And）afterwardsの前にAndがあるか無いかだけの違いか？
 #. [message]: speaker=Kaleh
@@ -14683,7 +14672,7 @@ msgid ""
 msgstr ""
 "私の命を救ったことで、Rogrimir は彼の責務を果たしたと言うが、我々はしばらく留"
 "まって、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は Eloh と "
-"merfolk 達の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称えて何日"
+"マーマン族の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称えて何日"
 "も何日も祝っていた。その後で民の為の新しい住居の建設に取り掛かった。Rogrimir "
 "は我々の建設工事を助けるために留まってくれ、誰よりも沢山働いてくれた。それか"
 "らしばらくして彼は私の元に来て、彼の種族の元に帰らなければならないと告げた。"
@@ -14712,17 +14701,16 @@ msgid ""
 "and all that he did to aid us in our struggle."
 msgstr ""
 "私の命を救ったことで、Jarl は彼の責務を果たしたと言うが、我々はしばらく留まっ"
-"て、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は Eloh と "
-"merfolk 達の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称えて何日"
-"も何日も祝っていた。その後で民の為の新しい住居の建設に取り掛かった。Jarl は"
-"我々の建設工事を助けるために留まってくれ、誰よりも沢山働いてくれた。それから"
-"しばらくして彼は私の元に来て、彼の種族の元に帰らなければならないと告げた。"
-"我々と過ごした時間は素晴らしく夢の様だったと、我々の事を忘れはしないと、そし"
-"て彼の種族は彼を必要としていたので故郷へ帰らなければならないと、Jarl は言って"
-"いた。彼は何時の日にか再び訪ねて来ると言っていたが、はたして私が生きているう"
-"ちに再び会えるだろうか。いずれにしても彼との思い出も彼の助力も心に銘記されて"
-"いる。彼の不変の忠誠心と彼が我々を助けるために奮闘してくれた全てを長く伝えて"
-"いこう。"
+"て、あの大いなる勝利の祝賀を楽しんでいくように説得した。我々は Eloh と マーマ"
+"ン族の神への感謝と新しい住処の美しさと自然の豊かさへの喜びを称えて何日も何日"
+"も祝っていた。その後で民の為の新しい住居の建設に取り掛かった。Jarl は我々の建"
+"設工事を助けるために留まってくれ、誰よりも沢山働いてくれた。それからしばらく"
+"して彼は私の元に来て、彼の種族の元に帰らなければならないと告げた。我々と過ご"
+"した時間は素晴らしく夢の様だったと、我々の事を忘れはしないと、そして彼の種族"
+"は彼を必要としていたので故郷へ帰らなければならないと、Jarl は言っていた。彼は"
+"何時の日にか再び訪ねて来ると言っていたが、はたして私が生きているうちに再び会"
+"えるだろうか。いずれにしても彼との思い出も彼の助力も心に銘記されている。彼の"
+"不変の忠誠心と彼が我々を助けるために奮闘してくれた全てを長く伝えていこう。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:467
@@ -14808,7 +14796,7 @@ msgstr ""
 "浄化されるようにあの要塞の中に木材と油を詰め込んで燃やすことにした。次いで"
 "我々は要塞を粉々に打ち壊した。私はその石片を将来の建築資材として保存しておき"
 "たい誘惑に駆られたが、それらにどのような禍禍しい魔法が残っているか分からな"
-"かったし、危険を冒す気にはならなかった。そこで、merfolk 達の助けをかり、要塞"
+"かったし、危険を冒す気にはならなかった。そこで、マーマン族の助けをかり、要塞"
 "の破片を沖合いに運び海底に投げ捨てる事とした。最後の石片を取り除くと、この付"
 "近には何も建てず何も育てない事とし、かつてこの地に居た邪悪とそれを打ち破るた"
 "めに命を捧げた全ての人を思い出させるように、剥き出しのままとすることに決定し"
@@ -15279,8 +15267,8 @@ msgid ""
 "Desert Scouts move swiftly across the sands. Their skill on horseback is "
 "virtually unmatched, although they do lack power in combat."
 msgstr ""
-"砂漠の斥候(Desert Scout)は迅速に砂漠を駆け抜けます。近接戦闘をするには力が足"
-"りないが、馬の背である割には巧みに弓をあやつります。"
+"砂漠の斥候(Desert Scout)は迅速に砂漠を駆け抜けます。近接戦闘をするには力不足"
+"ですが、馬の背である割には巧みに弓をあやつります。"
 
 #. [unit_type]: id=Desert Sentinel, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:33
@@ -16226,7 +16214,8 @@ msgstr ""
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:201
 msgid "Farewell Esanoo. You were my favorite of the merfolk."
-msgstr "さようなら、Esanoo。あなたは merfolk の中でもっとも親しい友だったわ。"
+msgstr ""
+"さようなら、Esanoo。あなたは マーマン族 の中でもっとも親しい友だったわ。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/utils/deaths.cfg:213
@@ -16259,12 +16248,11 @@ msgstr "脱水症状"
 msgid "refreshed"
 msgstr "リフレッシュ"
 
+# なぜ女性？
 #. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:36
-#, fuzzy
-#| msgid "female^Desert Hunter"
 msgid "female^stunned"
-msgstr "砂漠の女ハンター"
+msgstr "スタン"
 
 #. [set_variable]
 #: data/campaigns/Under_the_Burning_Suns/utils/kaleh-abilities.cfg:43
@@ -16918,10 +16906,10 @@ msgid ""
 "asked Nym where Esanoo had come from, but she wouldn’t answer, she just said "
 "that I had to see for myself."
 msgstr ""
-"第9章：Nym と Esanoo は私たちを北へ導いて行った。砂漠を渡り砂丘を越えて、"
-"merfolk の捕らわれている人間達の陣地へと。私は Nym に Esanoo が何処からきたの"
-"か尋ねたが、彼女は答えようとしなかった。ただ自分で見なければならないと言った"
-"だけだった。"
+"第9章：Nym と Esanoo は私たちを北へ導いて行った。砂漠を渡り砂丘を越えて、マー"
+"マン族の捕らわれている人間達の陣地へと。私は Nym に Esanoo が何処からきたのか"
+"尋ねたが、彼女は答えようとしなかった。ただ自分で見なければならないと言っただ"
+"けだった。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:165
@@ -16940,9 +16928,9 @@ msgstr ""
 "た。これまで一つの場所にこんなに沢山の水を見たことが無かったのだ。この時の驚"
 "嘆と衝撃はとても書き記す事など出来そうもない。水が金と同じ位貴重であった砂漠"
 "で育ってきた私の目に、その水が何マイルにも渡って続いているのが映ったのだか"
-"ら。その時同時に merfolk が何処からきたのかも理解できた。私は高地の山中や、非"
-"常に沢山の岩々の地下深くと不案内の土地を旅してきたが、この水の世界ほど私たち"
-"の民にとって異質なものはなかった。"
+"ら。その時同時に マーマン族が何処からきたのかも理解できた。私は高地の山中や、"
+"非常に沢山の岩々の地下深くと不案内の土地を旅してきたが、この水の世界ほど私た"
+"ちの民にとって異質なものはなかった。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:168
@@ -17069,11 +17057,11 @@ msgid ""
 "desert, with only the stars at night to guide my way. But without the "
 "merfolk’s help we would have been hopelessly lost."
 msgstr ""
-"第10章: merfolk の助けによって私たちの乗った船は海へと導かれていった。若いエ"
-"ルフ達の中には索具を登ったり船の舵を取ったりするのに熟達する者もいた。私はと"
-"言えば、たいていは船長室に篭り船酔いにかからぬようにしていた。海は広大な砂漠"
-"を、ただ星の光だけが道標だった砂漠を思い出させたが、 merfolk 達の助けが無けれ"
-"ば希望を失い道を見失っていた事だろう。"
+"第10章: マーマン族の助けによって私たちの乗った船は海へと導かれていった。若い"
+"エルフ達の中には索具を登ったり船の舵を取ったりするのに熟達する者もいた。私は"
+"と言えば、たいていは船長室に篭り船酔いにかからぬようにしていた。海は広大な砂"
+"漠を、ただ星の光だけが道標だった砂漠を思い出させたが、 マーマン族の助けが無け"
+"れば希望を失い道を見失っていた事だろう。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:204
@@ -17082,7 +17070,7 @@ msgid ""
 "ritual to determine the location of their master. Apparently it was a "
 "success, for they steered us straight towards the setting sun."
 msgstr ""
-"ある午後に3人の merfolk 達が彼らの主人の位置を求めるために、輪となって座り彼"
+"ある午後に3人の マーマン族が彼らの主人の位置を求めるために、輪となって座り彼"
 "らの儀式を執り行った。見たところ儀式は成功したようで、落日へまっすぐに向かう"
 "ようにと私たちを導いてくれた。"
 
@@ -17094,8 +17082,8 @@ msgid ""
 "merfolk pulled us to shore, none of us being very skilled with the oars."
 msgstr ""
 "その翌朝、私たちは目的地に到達した。そこは島とも言えない、ただ砂州が海面から"
-"突き出ているだけの場所だった。私達はボートを下ろし、merfolk に押して貰い海岸"
-"へと向かった。我々の誰もがオールの扱いに習熟してはいなかったのだ。"
+"突き出ているだけの場所だった。私達はボートを下ろし、マーマン族に押してもらい"
+"海岸へと向かった。我々の誰もがオールの扱いに習熟してはいなかったのだ。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:212
@@ -17104,9 +17092,9 @@ msgid ""
 "Standing alone on top of the sand was one of the oldest merfolk I have ever "
 "seen. She beckoned to us and we approached..."
 msgstr ""
-"砂州の周りには多くの merfolk の番人が居り、ただ一人、砂の上に立っていたのは、"
-"私が会った中で最も年経た merfolk だった。彼女は我々に手招きし、そして我々は近"
-"づいて行ったのだ……"
+"砂州の周りには多くの マーマン族の番人が居り、ただ一人、砂の上に立っていたの"
+"は、私が会った中で最も年経た マーマンだった。彼女は我々に手招きし、そして我々"
+"は近づいて行ったのだ……"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:221
@@ -17118,9 +17106,9 @@ msgid ""
 "menacing."
 msgstr ""
 "第11章：我々の乗った船は夜明け前の闇の帳の中を静かに滑るように進んでいった。"
-"時を同じくして merfolk 達も陽動攻撃のために進水しているだろう。事実、我々は不"
-"気味なほどに何の抵抗にも遭遇しなかった。我々の行く先には、その闇と脅威に満ち"
-"た大きな島がぼんやりと姿を現した。"
+"時を同じくしてマーマン族も陽動攻撃のために海を進んでいただろう。事実、我々は"
+"不気味なほどに何の抵抗にも遭遇しなかった。我々の行く先には、その闇と脅威に満"
+"ちた大きな島がぼんやりと姿を現した。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:225
@@ -17156,7 +17144,7 @@ msgid ""
 "those poor souls we left behind in our village and the many who have marked "
 "our path with their blood, they all shall be avenged."
 msgstr ""
-"それにしても Zhul の助言は的を射たものだ。もしこの旅が merfolk 達を助け "
+"それにしても Zhul の助言は的を射たものだ。もしこの旅が マーマン族を助け "
 "Yechnagoth を打倒する幸運をもたらすなら、我々の旅路にも意味があったと言うの"
 "だ。我々は砂漠の故郷を脅かしていたあらゆる恐怖や死から安全な新しい故郷を求め"
 "ていた、しかし今行おうとしている戦いの方が重要に思えるようになったのだ。時"
@@ -17191,8 +17179,8 @@ msgid ""
 "Chapter 12: True strength is not measured in might or knowledge, but in what "
 "you can do for those you love."
 msgstr ""
-"第１２章：真の力とは権力や知識で計れるものではない、貴方の愛する者達への行為"
-"に伴うものなのだ。"
+"第12章：真の力とは権力や知識で計れるものではない、貴方の愛する者達への行為に"
+"伴うものなのだ。"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:249
@@ -17315,9 +17303,6 @@ msgstr "長い夜（３）"
 msgid "The Long Dark (4)"
 msgstr "長い夜（４）"
 
-#~ msgid "By Moradin, I have fallen!"
-#~ msgstr "Moradin よ、お傍に逝きますぞ。俺も終わりか！"
-
 #~ msgid ""
 #~ "Desert Shamans focus on less violent ways to hinder the enemy. Their "
 #~ "entangling attack slows enemies down and reduces by one the number of "
@@ -17326,6 +17311,9 @@ msgstr "長い夜（４）"
 #~ "砂漠の呪術師(Desert Shaman)は敵を防ぐのに暴力的でない方法を好みます。彼女"
 #~ "らの扱う蔓は敵をもつれさせ、遅化することで攻撃力を減少させます。また、呪術"
 #~ "師達には基本的な治癒能力があります。"
+
+#~ msgid "By Moradin, I have fallen!"
+#~ msgstr "Moradin よ、お傍に逝きますぞ。俺も終わりか！"
 
 #~ msgid "Death of Kaleh, Nym or Zhul"
 #~ msgstr "Kaleh, Nym, Zhul のいずれかの死"
