@@ -96,7 +96,7 @@ class tmatrix
 
 private:
 
-	tmatrix(const implementation::tbuilder_matrix& builder);
+	explicit tmatrix(const implementation::tbuilder_matrix& builder);
 
 public:
 
