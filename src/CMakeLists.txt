@@ -212,8 +212,6 @@ set(libwesnoth-core_STAT_SRC
 	gettext.cpp
 	hash.cpp
 	log.cpp
-	map.cpp
-	map_location.cpp
 	md5.cpp
 	thread.cpp
 	tstring.cpp
@@ -567,6 +565,8 @@ set(wesnoth-main_SRC
 	help.cpp
 	intro.cpp
 	leader_list.cpp
+	map.cpp
+	map_location.cpp
 	menu_events.cpp
 	mouse_events.cpp
 	mouse_handler_base.cpp
