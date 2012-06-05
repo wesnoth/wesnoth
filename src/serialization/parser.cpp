@@ -142,7 +142,7 @@ void parser::operator()()
 		std::stringstream ss;
 		ss << elements.top().start_line << " " << elements.top().file;
 		error(lineno_string(i18n_symbols, ss.str(),
-				N_("Missing closing tag for tag $tag at $pos")));
+				N_("Missing closing tag for tag [$tag] at $pos")));
 	}
 }
 
@@ -205,7 +205,7 @@ void parser::parse_element()
 			std::stringstream ss;
 			ss << elements.top().start_line << " " << elements.top().file;
 			error(lineno_string(i18n_symbols, ss.str(),
-					N_("Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)")));
+					N_("Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)")));
 		}
 		if(validator_){
 			element & el= elements.top();
