@@ -109,7 +109,7 @@ public:
 		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(execution_.c_str(),lua_ai_ctx));
 	}
 
-	virtual ~lua_candidate_action_wrapper() {}	
+	virtual ~lua_candidate_action_wrapper() {}
 
 	virtual config to_config() const
 	{
@@ -122,6 +122,38 @@ public:
 private:
 	std::string evaluation_;	
 	std::string execution_;
+};
+
+class lua_candidate_action_wrapper_external : public lua_candidate_action_wrapper_base {
+public:
+	lua_candidate_action_wrapper_external(rca_context& context, const config& cfg, lua_ai_context &lua_ai_ctx)
+		: lua_candidate_action_wrapper_base(context,cfg), location_(cfg["location"]) 
+	{			
+		std::string eval_code;
+		std::string exec_code;
+		generate_code(eval_code, exec_code);
+		
+		evaluation_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(eval_code.c_str(),lua_ai_ctx));
+		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(exec_code.c_str(),lua_ai_ctx));
+	}
+	
+	virtual ~lua_candidate_action_wrapper_external() {}
+	
+	virtual config to_config() const
+	{
+		config cfg = lua_candidate_action_wrapper_base::to_config();
+		cfg["location"] = location_;	
+		return cfg;
+	}
+	
+private:
+	std::string location_;
+	
+	void generate_code(std::string& eval, std::string& exec) {
+		std::string code = "wesnoth.require(\"" + location_ + "\")";
+		eval = "return " + code + ".eval((...):ai())";
+		exec = code + ".exec((...):ai())";
+	}
 };
 
 class lua_sticky_candidate_action_wrapper : public lua_candidate_action_wrapper {
@@ -229,7 +261,11 @@ void engine_lua::do_parse_candidate_action_from_config( rca_context &context, co
 	candidate_action_ptr ca_ptr;
 	if (!cfg["sticky"].to_bool())
 	{
-		ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper(context,cfg,*lua_ai_context_));
+		if (cfg.has_attribute("location")) {
+			ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper_external(context,cfg,*lua_ai_context_));
+		} else {
+			ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper(context,cfg,*lua_ai_context_));			
+		}
 	}
 	else
 	{
