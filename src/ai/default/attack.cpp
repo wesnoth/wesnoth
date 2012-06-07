@@ -166,6 +166,10 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// add half of cost for poisoned unit so it might get chance to heal
 		avg_losses += cost * up->get_state(unit::STATE_POISONED) /2;
 
+		if (!bc->get_defender_stats().is_poisoned) {
+			avg_damage_inflicted += game_config::poison_amount * 2 * bc->get_defender_combatant().poisoned * (1 - prob_killed);
+		}
+
 		// Double reward to emphasize getting onto villages if they survive.
 		if (on_village) {
 			avg_damage_taken -= game_config::poison_amount*2 * prob_survived;
@@ -235,10 +239,10 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// It's likely to advance: only if we can kill with first blow.
 		chance_to_kill = first_chance_kill;
 		// Negative average damage (it will advance).
-		avg_damage_inflicted = defend_it->hitpoints() - defend_it->max_hitpoints();
+		avg_damage_inflicted += defend_it->hitpoints() - defend_it->max_hitpoints();
 	} else {
 		chance_to_kill = prev_def->hp_dist[0];
-		avg_damage_inflicted = defend_it->hitpoints() - prev_def->average_hp(map.gives_healing(defend_it->get_location()));
+		avg_damage_inflicted += defend_it->hitpoints() - prev_def->average_hp(map.gives_healing(defend_it->get_location()));
 	}
 
 	delete prev_bc;
