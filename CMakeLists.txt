@@ -80,6 +80,13 @@ option(ENABLE_NLS "Enable building of translations" ON)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 
+# The use of shared libraries makes compilation debug versions faster but
+# results in extra shared libraries. For installation this is not practical
+# since the libraries need to be given SONAMES and kept in sync. Therefore
+# installation is not supported for this option and will probably fail.
+set(ENABLE_SHARED_LIBRARIES OFF CACHE BOOL "Enables shared libraries, this option is meant for development only, installation is *NOT* supported")
+mark_as_advanced(on ENABLE_SHARED_LIBRARIES)
+
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_DESKTOP_ENTRY "enable installation of desktop entry files" ON)
 	set(ICONDIR "${DATAROOTDIR}/pixmaps" CACHE STRING "Sets the icon directory for desktop entry to a non-default location.")

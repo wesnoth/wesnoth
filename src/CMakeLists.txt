@@ -202,6 +202,16 @@ if(MSVC)
 endif(MSVC)
 
 
+
+########### Set Library mode ###############
+
+if(ENABLE_SHARED_LIBRARIES)
+	set(LIBRARY_TYPE SHARED)
+else(ENABLE_SHARED_LIBRARIES)
+	set(LIBRARY_TYPE STATIC)
+endif(ENABLE_SHARED_LIBRARIES)
+
+
 ########### libwesnoth-core ###############
 
 set(libwesnoth-core_STAT_SRC
@@ -228,7 +238,7 @@ set(libwesnoth-core_STAT_SRC
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
-add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
+add_library(wesnoth-core ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
 
 if(UPDATE_REVISION)
 	add_dependencies(wesnoth-core update_revision)
@@ -283,7 +293,7 @@ endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
-add_library(wesnoth-lua STATIC EXCLUDE_FROM_ALL ${libwesnoth-lua_STAT_SRC})
+add_library(wesnoth-lua ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-lua_STAT_SRC})
 
 
 ########### Old style cast flags ###############
@@ -711,7 +721,7 @@ endif(ENABLE_GAME AND ENABLE_TESTS)
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
-add_library(wesnoth-game STATIC EXCLUDE_FROM_ALL ${libwesnoth-game_STAT_SRC})
+add_library(wesnoth-game ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-game_STAT_SRC})
 
 if(ENABLE_GAME AND ENABLE_TESTS)
 	target_link_libraries(wesnoth-game
