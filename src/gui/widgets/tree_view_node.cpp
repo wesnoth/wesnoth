@@ -268,7 +268,6 @@ public:
 			return NULL;
 		}
 
-		typedef typename utils::tconst_clone<ttree_view_node, W>::type thack;
 		return find_at_aux<W>(tree_view_node.children_.begin(),
 				      tree_view_node.children_.end(),
 				      coordinate, must_be_active);
