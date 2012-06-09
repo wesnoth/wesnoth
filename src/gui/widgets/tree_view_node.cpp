@@ -268,7 +268,6 @@ public:
 			return NULL;
 		}
 
-		typedef typename tconst_duplicator<W, ttree_view_node>::type thack;
 		return find_at_aux<W>(tree_view_node.children_.begin(),
 				      tree_view_node.children_.end(),
 				      coordinate, must_be_active);
