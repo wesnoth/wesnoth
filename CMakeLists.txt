@@ -9,6 +9,8 @@
 # set minimum version
 cmake_minimum_required(VERSION 2.6.0)
 
+include(CheckCXXCompilerFlag)
+
 if(COMMAND cmake_policy)
 	cmake_policy(SET CMP0005 OLD)
 endif(COMMAND cmake_policy)
@@ -115,6 +117,13 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 		if(ENABLE_STRICT_COMPILATION)
 			# The current unit test code breaks strict aliasing with g++ 4.4.
 			set(STRICT_FLAGS "-Werror -Wno-strict-aliasing")
+
+			# This flag is/will be added in gcc-4.8 and fails with BOOST_STATIC_ASSERT
+			check_cxx_compiler_flag("-Wunused-local-typedefs" HAS_COMPILER_FLAG_WUNUSED_LOCAL_TYPEDEFS)
+			if(HAS_COMPILER_FLAG_WUNUSED_LOCAL_TYPEDEFS)
+				set(STRICT_FLAGS "${STRICT_FLAGS} -Wno-unused-local-typedefs")
+			endif(HAS_COMPILER_FLAG_WUNUSED_LOCAL_TYPEDEFS)
+
 		else(ENABLE_STRICT_COMPILATION)
 			set(STRICT_FLAGS "")
 		endif(ENABLE_STRICT_COMPILATION)
