@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-03 10:40+0100\n"
-"PO-Revision-Date: 2005-08-31 08:00+0300\n"
-"Last-Translator: santi <at@i.gr>\n"
+"PO-Revision-Date: 2012-06-09 08:56+0200\n"
+"Last-Translator: Evangelos Papakirikou <vpapakir@gmail.com>\n"
 "Language-Team:  <en@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -129,7 +129,7 @@ msgstr ""
 #. [terrain_type]: id=grass_dry
 #: data/core/terrain.cfg:175
 msgid "Dry Grass"
-msgstr ""
+msgstr "Ξερόχορτα"
 
 #. [terrain_type]: id=leaf_litter
 #: data/core/terrain.cfg:185
@@ -234,7 +234,7 @@ msgstr ""
 #. [terrain_type]: id=crater
 #: data/core/terrain.cfg:323
 msgid "Crater"
-msgstr ""
+msgstr "Κρατήρας"
 
 #. [terrain_type]: id=flowers_mixed
 #: data/core/terrain.cfg:337
@@ -250,7 +250,7 @@ msgstr ""
 #. [terrain_type]: id=stones_small
 #: data/core/terrain.cfg:355
 msgid "Stones"
-msgstr ""
+msgstr "Πέτρες"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:364
@@ -282,7 +282,7 @@ msgstr ""
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:409
 msgid "Fence"
-msgstr ""
+msgstr "Φράχτης"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:418
@@ -547,7 +547,7 @@ msgstr ""
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:816
 msgid "Beam of Light"
-msgstr ""
+msgstr "Ακτίνα φωτός"
 
 #. [terrain_type]: id=cave
 #. [terrain_type]: id=cave_earthy
@@ -608,7 +608,7 @@ msgstr ""
 #: data/core/terrain.cfg:939 data/core/terrain.cfg:950
 #: data/core/terrain.cfg:961 data/core/terrain.cfg:972
 msgid "Chasm"
-msgstr ""
+msgstr "Γκρεμός"
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:940
@@ -638,7 +638,7 @@ msgstr "Λάβα"
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:994
 msgid "Volcano"
-msgstr ""
+msgstr "Ηφαίστειο"
 
 #. [terrain_type]: id=cloud
 #: data/core/terrain.cfg:1009
@@ -1234,7 +1234,7 @@ msgstr ""
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:2130
 msgid "Frozen"
-msgstr ""
+msgstr "Παγωμένο"
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2144
@@ -1245,7 +1245,7 @@ msgstr "Αδιάβατα Βουνά"
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:2151
 msgid "Unwalkable"
-msgstr ""
+msgstr "Απάτητο"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=click_dismiss
@@ -1276,12 +1276,13 @@ msgstr "Συνεχίστε την κίνηση"
 #: data/gui/default/window/addon_connect.cfg:59
 msgid "You will now connect to a server to download add-ons."
 msgstr ""
+"Θα συνδεθείτε σε κάποιον εξυπηρετητή προκειμένου να μεταφορτωθούν πρόσθετα"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:89
 #: data/gui/default/window/mp_connect.cfg:90
 msgid "Server:"
-msgstr ""
+msgstr "Εξυπηρετητής:"
 
 #. [button]: id=update_addons
 #: data/gui/default/window/addon_connect.cfg:145
@@ -1303,7 +1304,7 @@ msgstr "Ακύρωση Αναίρεσης"
 #: data/gui/default/window/mp_connect.cfg:185
 #: data/gui/default/window/mp_connect.cfg:186
 msgid "Connect"
-msgstr ""
+msgstr "Σύνδεση"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1341,17 +1342,17 @@ msgstr "Ακύρωση"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
 msgid "Author:"
-msgstr ""
+msgstr "Συγγραφέας:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:118
 msgid "Version:"
-msgstr ""
+msgstr "Έκδοση:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:149
 msgid "Size:"
-msgstr ""
+msgstr "Μέγεθος:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:180
@@ -1362,12 +1363,12 @@ msgstr "Περιγραφή Μονάδας"
 #. [scroll_label]: id=description
 #: data/gui/default/window/addon_description.cfg:194
 msgid "No description available."
-msgstr ""
+msgstr "Δεν υπάρχει διαθέσιμη περιγραφή"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:212
 msgid "Translations:"
-msgstr ""
+msgstr "Μεταφράσεις:"
 
 #. [scroll_label]: id=translations
 #: data/gui/default/window/addon_description.cfg:226
@@ -1431,12 +1432,12 @@ msgstr "Εντάξει"
 #. [label]: id=title
 #: data/gui/default/window/campaign_difficulty.cfg:57
 msgid "Difficulty"
-msgstr ""
+msgstr "Δυσκολία"
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/campaign_difficulty.cfg:77
 msgid "Select difficulty level:"
-msgstr ""
+msgstr "Επιλέξτε επίπεδο δυσκολίας:"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:38
@@ -1448,7 +1449,7 @@ msgstr "Δείτε Ιστορικό Συζητήσεως"
 #. [label]
 #: data/gui/default/window/chat_log.cfg:56
 msgid "Page:"
-msgstr ""
+msgstr "Σελίδα:"
 
 #. [slider]: id=page_number
 #: data/gui/default/window/chat_log.cfg:69
@@ -1497,7 +1498,7 @@ msgstr ""
 #: data/gui/default/window/game_load.cfg:263
 #: data/gui/default/window/mp_server_list.cfg:104
 msgid "Name"
-msgstr ""
+msgstr "Όνομα"
 
 #. [label]: id=date
 #: data/gui/default/window/data_manage.cfg:177
@@ -1510,13 +1511,13 @@ msgstr "Επικόλληση"
 #: data/gui/default/window/data_manage.cfg:266
 #: data/gui/default/window/data_manage.cfg:267
 msgid "Clear"
-msgstr ""
+msgstr "Καθαρισμός"
 
 #. [button]: id=restore
 #: data/gui/default/window/data_manage.cfg:283
 #: data/gui/default/window/data_manage.cfg:284
 msgid "Restore"
-msgstr ""
+msgstr "Επαναφορά"
 
 #. [button]: id=backup
 #: data/gui/default/window/data_manage.cfg:300
@@ -1676,12 +1677,12 @@ msgstr "Ακύρωση Αναίρεσης"
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:161
 msgid "Green:"
-msgstr ""
+msgstr "Πράσινο:"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:187
 msgid "Blue:"
-msgstr ""
+msgstr "Μπλέ:"
 
 #. [toggle_button]: id=use_mdi
 #: data/gui/default/window/editor_settings.cfg:231
@@ -1693,13 +1694,13 @@ msgstr ""
 #: data/gui/default/window/editor_settings.cfg:272
 #: src/game_preferences_display.cpp:214
 msgid "Apply"
-msgstr ""
+msgstr "Εφαρμογή"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/default/window/folder_create.cfg:43 src/filechooser.cpp:82
 msgid "New Folder"
-msgstr ""
+msgstr "Νέος φάκελος"
 
 #. [label]
 #: data/gui/default/window/folder_create.cfg:72
@@ -1707,7 +1708,7 @@ msgstr ""
 #: data/gui/default/window/game_save_message.cfg:90
 #: data/gui/default/window/game_save_oos.cfg:93
 msgid "Name:"
-msgstr ""
+msgstr "Όνομα:"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:36
@@ -1717,7 +1718,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:59
 msgid "Welcome"
-msgstr ""
+msgstr "Καλωσήρθατε"
 
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:71
@@ -1863,7 +1864,7 @@ msgstr ""
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:145
 msgid "Ignore all"
-msgstr ""
+msgstr "Αγνόηση όλων"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
@@ -1908,24 +1909,24 @@ msgstr ""
 #: data/gui/default/window/gamestate_inspector.cfg:153
 #: data/gui/default/window/unit_create.cfg:131
 msgid "Type"
-msgstr ""
+msgstr "Τύπος"
 
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:214
 msgid "Variable"
-msgstr ""
+msgstr "Μεταβλητή"
 
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:41
 #: data/gui/default/window/title_screen.cfg:229
 msgid "Language"
-msgstr ""
+msgstr "Γλώσσα"
 
 #. [label]
 #: data/gui/default/window/language_selection.cfg:60
 msgid "Choose your preferred language:"
-msgstr ""
+msgstr "Επιλέξτε την γλώσσα της προτίμησης σας:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1938,7 +1939,7 @@ msgstr "'Αλλαξε τη γλώσσα"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:109
 msgid "Games"
-msgstr ""
+msgstr "Παιχνίδια"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:176
@@ -1983,7 +1984,7 @@ msgstr ""
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:186
 msgid "Time limit"
-msgstr ""
+msgstr "Χρονικό όριο"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:305
@@ -1999,7 +2000,7 @@ msgstr ""
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:321
 msgid "Alphabetically"
-msgstr ""
+msgstr "Αλφαβητικά"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:337
@@ -2026,7 +2027,7 @@ msgstr "Νέος Χάρτης"
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:479
 msgid "Rooms"
-msgstr ""
+msgstr "Δωμάτια"
 
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:497
@@ -2205,7 +2206,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:69
 msgid "Message:"
-msgstr ""
+msgstr "Μήνυμα:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:141
@@ -2231,7 +2232,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:271
 msgid "Reason:"
-msgstr ""
+msgstr "Αιτιολογία:"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:323
@@ -2266,7 +2267,7 @@ msgstr "Λίστα Μονάδων"
 #: data/gui/default/window/mp_create_game.cfg:70
 #: data/gui/default/window/mp_create_game.cfg:85
 msgid "Name of game:"
-msgstr ""
+msgstr "Όνομα παιχνιδιού:"
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:148
@@ -2310,7 +2311,7 @@ msgstr ""
 #. [slider]: id=turn_count
 #: data/gui/default/window/mp_create_game.cfg:362
 msgid "Unlimited"
-msgstr ""
+msgstr "Απεριόριστος"
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:380
@@ -2326,7 +2327,7 @@ msgstr ""
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/mp_create_game.cfg:501
 msgid "Random start time"
-msgstr ""
+msgstr "Τυχαία ώρα έναρξης"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:543
@@ -2370,7 +2371,7 @@ msgstr ""
 #. [button]: id=password_reminder
 #: data/gui/default/window/mp_login.cfg:258
 msgid "Password Reminder"
-msgstr ""
+msgstr "Υπενθύμιση κωδικού"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2396,7 +2397,7 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:146
 msgid "Join Official Server"
-msgstr ""
+msgstr "Σύνδεση στον επίσημο εξυπηρετητή"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:147
@@ -2406,7 +2407,7 @@ msgstr ""
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:157
 msgid "Join a different server"
-msgstr ""
+msgstr "Σύνδεση σε κάποιον άλλο εξυπηρετητή"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:166
@@ -2432,7 +2433,7 @@ msgstr ""
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:121
 msgid "Address"
-msgstr ""
+msgstr "Διεύθυνση"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_server_list.cfg:223
@@ -2454,12 +2455,12 @@ msgstr ""
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:163
 msgid "Show previous tip of the day"
-msgstr ""
+msgstr "Προβολή της προηγούμενης \"Συμβουλής της Ημέρας\""
 
 #. [button]: id=next_tip
 #: data/gui/default/window/title_screen.cfg:178
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "Προβολή της επόμενης \"Συμβουλής της Ημέρας\""
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:223
@@ -2506,7 +2507,7 @@ msgstr "Νέος Χάρτης"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
 msgid "Add-ons"
-msgstr ""
+msgstr "Πρόσθετα"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
@@ -2553,7 +2554,7 @@ msgstr "Έξοδος Παιχνιδιού"
 #. [button]: id=ok
 #: data/gui/default/window/unit_attack.cfg:195
 msgid "Attack"
-msgstr ""
+msgstr "Επίθεση"
 
 #. [label]
 #: data/gui/default/window/unit_attack.cfg:263
@@ -2581,7 +2582,7 @@ msgstr "Κάστρο"
 #. [toggle_button]: id=female_toggle
 #: data/gui/default/window/unit_create.cfg:87
 msgid "Female"
-msgstr ""
+msgstr "Θυληκό"
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:119
@@ -2595,11 +2596,11 @@ msgstr ""
 
 #: src/filechooser.cpp:80
 msgid "Delete File"
-msgstr ""
+msgstr "Διαγραφή αρχείου"
 
 #: src/filechooser.cpp:196
 msgid "Deletion of the file failed."
-msgstr ""
+msgstr "Η διαγραφή του αρχείου απέτυχε"
 
 #: src/filechooser.cpp:212
 msgid "Creation of the directory failed."
@@ -2607,7 +2608,7 @@ msgstr ""
 
 #: src/game_preferences.cpp:315
 msgid "No server has been defined."
-msgstr ""
+msgstr "Δεν έχει καθοριστεί κάποιος εξυπηρετητής"
 
 #: src/game_preferences.cpp:395
 msgid "player"
@@ -2684,7 +2685,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:188
 msgid "Friends List"
-msgstr ""
+msgstr "Λίστα φίλων"
 
 #: src/game_preferences_display.cpp:189
 msgid "Multiplayer Options"
@@ -2692,7 +2693,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:190
 msgid "Add As Friend"
-msgstr ""
+msgstr "Προσθήκη φίλου"
 
 #: src/game_preferences_display.cpp:191
 msgid "Add As Ignore"
@@ -2804,7 +2805,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:228
 msgid "Frequency:"
-msgstr ""
+msgstr "Συχνότητα:"
 
 #: src/game_preferences_display.cpp:251
 msgid "Sound effects on/off"
@@ -3035,7 +3036,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:765
 msgid "infinite"
-msgstr ""
+msgstr "άπειρο"
 
 #: src/game_preferences_display.cpp:950
 msgid "Chat lines: "
@@ -3089,7 +3090,7 @@ msgstr "Γιά προχωρημένους"
 
 #: src/game_preferences_display.cpp:1292
 msgid "Choose Theme"
-msgstr ""
+msgstr "Επιλογή θέματος"
 
 #: src/game_preferences_display.cpp:1307
 msgid "New theme will take effect on next new or loaded game."
