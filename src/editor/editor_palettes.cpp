@@ -140,7 +140,6 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		}
 
 	}
-	typedef std::pair<std::string, t_translation::t_list> map_pair;
 
 	// Set the default group
 	terrains_ = terrain_map_["all"];
