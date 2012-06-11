@@ -2668,6 +2668,7 @@ static int intf_play_sound(lua_State *L)
  * Scrolls to given tile.
  * - Args 1,2: location.
  * - Arg 3: boolean preventing scroll to fog.
+ * - Arg 4: boolean specifying whether to warp instantly.
  */
 static int intf_scroll_to_tile(lua_State *L)
 {
