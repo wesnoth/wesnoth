@@ -359,6 +359,14 @@ function wml_actions.scroll_to_unit(cfg)
 	wesnoth.scroll_to_tile(u.x, u.y, cfg.check_fogged, cfg.immediate)
 end
 
+function wml_actions.lock_view(cfg)
+	wesnoth.lock_view(true)
+end
+
+function wml_actions.unlock_view(cfg)
+	wesnoth.lock_view(false)
+end
+
 function wml_actions.select_unit(cfg)
 	local u = wesnoth.get_units(cfg)[1]
 	if not u then return end
