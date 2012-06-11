@@ -265,6 +265,9 @@ Version 1.11.0-svn:
    * New image path function: ~ROTATE()
    * Fixed some cases where [find_path] did not restore $this_unit
    * Added: Allow better error messages for missing WML children.
+   * [scroll_to] and [scroll_to_unit] now accept an optional boolean immediate=
+     attribute (defaults to false) specifying whether to ignore the scroll
+     speed setting in Preferences and instantly warp to the selected location
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,

@@ -350,13 +350,13 @@ end
 function wml_actions.scroll_to(cfg)
 	local loc = wesnoth.get_locations( cfg )[1]
 	if not loc then return end
-	wesnoth.scroll_to_tile( loc[1], loc[2], cfg.check_fogged )
+	wesnoth.scroll_to_tile(loc[1], loc[2], cfg.check_fogged, cfg.immediate)
 end
 
 function wml_actions.scroll_to_unit(cfg)
 	local u = wesnoth.get_units(cfg)[1]
 	if not u then return end
-	wesnoth.scroll_to_tile(u.x, u.y, cfg.check_fogged)
+	wesnoth.scroll_to_tile(u.x, u.y, cfg.check_fogged, cfg.immediate)
 end
 
 function wml_actions.select_unit(cfg)
