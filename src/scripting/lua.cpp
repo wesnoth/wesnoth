@@ -1533,6 +1533,27 @@ static int intf_is_enemy(lua_State *L)
 }
 
 /**
+ * Gets whether gamemap scrolling is disabled for the user.
+ * - Ret 1: boolean.
+ */
+static int intf_view_locked(lua_State *L)
+{
+	lua_pushboolean(L, resources::screen->view_locked());
+	return 1;
+}
+
+/**
+ * Sets whether gamemap scrolling is disabled for the user.
+ * - Arg 1: boolean, specifying the new locked/unlocked status.
+ */
+static int intf_lock_view(lua_State *L)
+{
+	bool lock = lua_toboolean(L, 1);
+	resources::screen->set_view_locked(lock);
+	return 0;
+}
+
+/**
  * Gets some data on a side (__index metamethod).
  * - Arg 1: full userdata containing the team.
  * - Arg 2: string containing the name of the property.
@@ -3493,6 +3514,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_village_owner",        &intf_get_village_owner        },
 		{ "highlight_hex",            &intf_highlight_hex            },
 		{ "is_enemy",                 &intf_is_enemy                 },
+		{ "lock_view",                &intf_lock_view                },
 		{ "match_location",           &intf_match_location           },
 		{ "match_side",               &intf_match_side               },
 		{ "match_unit",               &intf_match_unit               },
@@ -3523,6 +3545,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
 		{ "unit_resistance",          &intf_unit_resistance          },
+		{ "view_locked",              &intf_view_locked              },
 		{ NULL, NULL }
 	};
 	luaL_register(L, "wesnoth", callbacks);

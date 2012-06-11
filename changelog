@@ -125,6 +125,11 @@ Version 1.11.0-svn:
    * wesnoth.scroll_to_tile() now takes a fourth optional argument (boolean)
      specifying whether to ignore the scroll speed setting in Preferences and
      instantly warp to the given location
+   * Added wesnoth.lock_view(), taking a boolean argument specifying whether
+     to lock gamemap view scrolling (so the user cannot scroll, while WML/Lua
+     actions still can, i.e. for cutscenes), or unlock it
+   * Added wesnoth.view_locked(), returning a boolean true value if gamemap
+     view scrolling has been locked, and false otherwise
  * Multiplayer:
    * A New Land:
      * Made it so that the "Elvish Shaman" option in the elvish unit selection
