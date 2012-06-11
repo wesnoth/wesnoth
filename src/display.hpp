@@ -453,7 +453,7 @@ public:
 	 * Invalidation and redrawing will be scheduled.
 	 * @return true if the map actually moved.
 	 */
-	bool scroll(int xmov, int ymov);
+	bool scroll(int xmov, int ymov, bool force = false);
 
 	/**
 	 * Zooms the display by the specified amount.
@@ -467,13 +467,19 @@ public:
 	/** Sets the zoom amount to the default. */
 	void set_default_zoom();
 
+	bool view_locked() const { return view_locked_; }
+
+	/** Sets whether the map view is locked (e.g. so the user can't scroll away) */
+	void set_view_locked(bool value) { view_locked_ = value; };
+
 	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN, ONSCREEN_WARP };
 
 	/**
 	 * Scroll such that location loc is on-screen.
 	 * WARP jumps to loc; SCROLL uses scroll speed;
 	 * ONSCREEN only scrolls if x,y is offscreen
-	 * force : scroll even if preferences tell us not to
+	 * force : scroll even if preferences tell us not to,
+	 * or the view is locked.
 	 */
 	void scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,bool force = true);
 
@@ -649,6 +655,7 @@ protected:
 	const team *viewpoint_;
 	std::map<surface,SDL_Rect> energy_bar_rects_;
 	int xpos_, ypos_;
+	bool view_locked_;
 	theme theme_;
 	int zoom_;
 	static int last_zoom_;

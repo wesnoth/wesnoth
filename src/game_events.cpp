@@ -936,7 +936,7 @@ WML_HANDLER_FUNCTION(color_adjust, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
-	screen.scroll(cfg["x"], cfg["y"]);
+	screen.scroll(cfg["x"], cfg["y"], true);
 	screen.draw(true,true);
 }
 

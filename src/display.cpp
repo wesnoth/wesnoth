@@ -84,6 +84,7 @@ display::display(unit_map* units, CVideo& video, const gamemap* map, const std::
 	energy_bar_rects_(),
 	xpos_(0),
 	ypos_(0),
+	view_locked_(false),
 	theme_(theme_cfg, screen_area()),
 	zoom_(DefaultZoom),
 	builder_(new terrain_builder(level, map, theme_.border().tile_image)),
@@ -1634,8 +1635,12 @@ void display::draw_minimap_units()
 	}
 }
 
-bool display::scroll(int xmove, int ymove)
+bool display::scroll(int xmove, int ymove, bool force)
 {
+	if(view_locked_ && !force) {
+		return false;
+	}
+
 	const int orig_x = xpos_;
 	const int orig_y = ypos_;
 	xpos_ += xmove;
@@ -1769,7 +1774,7 @@ bool display::tile_nearly_on_screen(const map_location& loc) const
 
 void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force)
 {
-	if(!force && !preferences::scroll_to_action()) return;
+	if(!force && (view_locked_ || !preferences::scroll_to_action())) return;
 	if(screen_.update_locked()) {
 		return;
 	}
@@ -1784,7 +1789,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 	int ymove = ypos - ypos_;
 
 	if(scroll_type == WARP || scroll_type == ONSCREEN_WARP || turbo_speed() > 2.0 || preferences::scroll_speed() > 99) {
-		scroll(xmove,ymove);
+		scroll(xmove,ymove,true);
 		draw();
 		return;
 	}
@@ -1839,7 +1844,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 		int dx = x_new - x_old;
 		int dy = y_new - y_old;
 
-		scroll(dx,dy);
+		scroll(dx,dy,true);
 		x_old += dx;
 		y_old += dy;
 		draw();
@@ -2712,6 +2717,7 @@ void display::update_arrow(arrow & arrow)
 
 void display::write(config& cfg) const
 {
+	cfg["view_locked"] = view_locked_;
 	cfg["color_adjust_red"] = color_adjust_.r;
 	cfg["color_adjust_green"] = color_adjust_.g;
 	cfg["color_adjust_blue_"] = color_adjust_.b;
@@ -2719,6 +2725,7 @@ void display::write(config& cfg) const
 
 void display::read(const config& cfg)
 {
+	view_locked_ = cfg["view_locked"].to_bool(false);
 	color_adjust_.r = cfg["color_adjust_red"].to_int(0);
 	color_adjust_.g = cfg["color_adjust_green"].to_int(0);
 	color_adjust_.b = cfg["color_adjust_blue_"].to_int(0);
