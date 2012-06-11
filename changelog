@@ -122,6 +122,9 @@ Version 1.11.0-svn:
    * Fixed: wesnoth.find_reach does no longer replace a passed private lua
      proxy unit with the on-map unit at the same location
    * new: helper.round function
+   * wesnoth.scroll_to_tile() now takes a fourth optional argument (boolean)
+     specifying whether to ignore the scroll speed setting in Preferences and
+     instantly warp to the given location
  * Multiplayer:
    * A New Land:
      * Made it so that the "Elvish Shaman" option in the elvish unit selection

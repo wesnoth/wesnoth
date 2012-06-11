@@ -2674,8 +2674,9 @@ static int intf_scroll_to_tile(lua_State *L)
 	int x = luaL_checkinteger(L, 1) - 1;
 	int y = luaL_checkinteger(L, 2) - 1;
 	bool check_fogged = lua_toboolean(L, 3);
+	bool immediate = lua_toboolean(L, 4);
 	resources::screen->scroll_to_tile(map_location(x, y),
-		game_display::SCROLL, check_fogged);
+		immediate ? game_display::WARP : game_display::SCROLL, check_fogged);
 	return 0;
 }
 
