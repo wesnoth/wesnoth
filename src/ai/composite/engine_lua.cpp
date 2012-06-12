@@ -149,10 +149,10 @@ public:
 private:
 	std::string location_;
 	
-	void generate_code(std::string& eval, std::string& exec) {
+	void generate_code(std::string& eval, std::string& exec) {		
 		std::string code = "wesnoth.require(\"" + location_ + "\")";
-		eval = "return " + code + ".eval((...):ai())";
-		exec = code + ".exec((...):ai())";
+		eval = "return " + code + ":eval((...):get_ai())";
+		exec = code + ":exec((...):get_ai())";
 	}
 };
 
@@ -235,19 +235,26 @@ engine_lua::engine_lua( readonly_context &context, const config &cfg )
 	: engine(context,cfg)
 	, code_(cfg["code"])
 	, lua_ai_context_(resources::lua_kernel->create_lua_ai_context(
-		cfg["code"].str().c_str(), this))
+		get_engine_code(cfg).c_str(), this))
 {
 	name_ = "lua";
-
 	config data(cfg.child_or_empty("data"));
 	lua_ai_context_->set_persistent_data(data);
 }
 
+std::string engine_lua::get_engine_code(const config &cfg) const
+{
+	if (cfg.has_attribute("code")) {
+		return cfg["code"].str();
+	}
+	// If there is no engine defined we create a dummy engine
+	std::string code = "local ai = ... local m_ai = wesnoth.require(\"ai/lua/dummy_engine_lua.lua\") return m_ai.get_ai(ai)";
+	return code;
+}
 
 engine_lua::~engine_lua()
 {
 }
-
 
 void engine_lua::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
 	if (!cfg) {

@@ -157,7 +157,7 @@ public:
 	virtual engine_ptr get_new_instance( readonly_context &ai, const std::string& name ){
 		config cfg;
 		cfg["name"] = name;
-		cfg["engine"] = "cpp";
+		cfg["engine"] = "cpp"; // @Crab: what is the purpose of this line(neph)
 		return engine_ptr(new ENGINE(ai,cfg));
 	}
 };
