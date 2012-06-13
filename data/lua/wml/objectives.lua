@@ -204,6 +204,7 @@ function wml_actions.objectives(cfg)
 end
 
 function wml_actions.show_objectives(cfg)
+	local cfg0 = scenario_objectives[0]
 	local function local_show_objectives(sides)
 		local objectives0 = cfg0 and generate_objectives(cfg0)
 		for i, team in ipairs(sides) do
@@ -214,7 +215,6 @@ function wml_actions.show_objectives(cfg)
 		end
 	end
 	local sides = wesnoth.get_sides(cfg)
-	local cfg0 = scenario_objectives[0]
 	if #sides == 0 then
 		local_show_objectives(wesnoth.sides)
 	else
