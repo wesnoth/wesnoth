@@ -278,6 +278,7 @@ Version 1.11.0-svn:
    * Added [lock_view] and [unlock_view] WML actions, for locking and unlocking
      gamemap view scrolling (so the user cannot scroll, while WML/Lua actions
      still can, i.e. for cutscenes)
+   * Fixed CALL_FUNCTION macro (bug #19805)
  * Miscellaneous and bug fixes:
    * Fix wrong preferences path suffix (1.1 instead of 1.10) on Linux and other
      platforms using XDG layout (no compiled-in preferences path override,
