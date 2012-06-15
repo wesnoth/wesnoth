@@ -17,7 +17,7 @@
 
 #include "gui/auxiliary/placer/vertical_list.hpp"
 
-#include "gui/widgets/helper.hpp"
+#include "gui/lib/types/point.hpp"
 
 #include <cassert>
 #include <numeric>

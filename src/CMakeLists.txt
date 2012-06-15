@@ -313,6 +313,28 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 			COMPILE_FLAGS "-Wno-old-style-cast")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
+########### Helper libraries ###############
+
+# The main library is rather huge especially in debug mode, causing quite a bit
+# of overhead packing objects that haven't been changed for quite a while.
+# Attempting to solve the issue with several smaller libraries when adding new
+# files.
+
+##### Gui types
+
+# This library contains the basic types for the gui library.
+# - Public Enumerates
+# - Small structs
+set(wesnoth-gui_types_SRC
+	gui/lib/types/point.cpp
+)
+
+add_library(wesnoth-gui_types
+   	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-gui_types_SRC}
+)
+
 
 ########### Wesnoth main source files ###############
 
@@ -739,10 +761,12 @@ if(ENABLE_GAME)
 		)
 		set(wesnoth_LIB
 			wesnoth-game
+			wesnoth-gui_types
 		)
 	else(ENABLE_TESTS)
 		set(wesnoth_SRC
 			game.cpp
+			${wesnoth-gui_types_SRC}
 			${wesnoth-main_SRC}
 		)
 		set(wesnoth_LIB
@@ -950,20 +974,31 @@ if(ENABLE_TESTS)
 		tests/gui/visitor.cpp
 		tests/gui/test_save_dialog.cpp
 	)
-	if(NOT ENABLE_GAME)
+	if(ENABLE_GAME)
+		set(test_LIB
+			wesnoth-core
+			wesnoth-game
+			wesnoth-gui_types
+			wesnoth-lua
+		)
+	else(ENABLE_GAME)
 		set(test_SRC
 			${test_SRC}
+			${wesnoth-gui_types_SRC}
 			${wesnoth-main_SRC}
 		)
-	endif(NOT ENABLE_GAME)
+		set(test_LIB
+			wesnoth-core
+			wesnoth-game
+			wesnoth-lua
+		)
+	endif(ENABLE_GAME)
 
 	add_executable(test
 		${test_SRC}
 	)
 	target_link_libraries(test
-		wesnoth-core
-		wesnoth-game
-		wesnoth-lua
+		${test_LIB}
 		${game-external-libs}
 		boost_unit_test_framework
 	)

@@ -41,7 +41,7 @@
 
 #include "gui/auxiliary/event/dispatcher.hpp"
 #include "gui/widgets/event_executor.hpp"
-#include "gui/widgets/helper.hpp"
+#include "gui/lib/types/point.hpp"
 
 namespace gui2{
 

@@ -17,6 +17,7 @@
 #define GUI_WIDGETS_WIDGET_HPP_INCLUDED
 
 #include "gui/auxiliary/event/dispatcher.hpp"
+#include "gui/lib/types/point.hpp"
 #include "gui/widgets/event_executor.hpp"
 #include "gui/widgets/helper.hpp"
 #include "utils/const_clone.tpp"

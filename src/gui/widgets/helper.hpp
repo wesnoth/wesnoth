@@ -34,6 +34,8 @@ class map_formula_callable;
 
 namespace gui2 {
 
+class tpoint;
+
 /**
  * Initializes the gui subsystems.
  *
@@ -41,41 +43,6 @@ namespace gui2 {
  * used.
  */
 bool init();
-
-/** Holds a 2D point. */
-struct tpoint
-{
-	tpoint(const int x_, const int y_) :
-		x(x_),
-		y(y_)
-		{}
-
-	/** x coodinate. */
-	int x;
-
-	/** y coodinate. */
-	int y;
-
-	bool operator==(const tpoint& point) const { return x == point.x && y == point.y; }
-	bool operator!=(const tpoint& point) const { return x != point.x || y != point.y; }
-	bool operator<(const tpoint& point) const
-		{ return x < point.x || (x == point.x && y < point.y); }
-
-	bool operator<=(const tpoint& point) const
-		{ return x < point.x || (x == point.x && y <= point.y); }
-
-	tpoint operator+(const tpoint& point) const
-		{ return tpoint(x + point.x, y + point.y); }
-
-	tpoint& operator+=(const tpoint& point);
-
-	tpoint operator-(const tpoint& point) const
-		{ return tpoint(x - point.x, y - point.y); }
-
-	tpoint& operator-=(const tpoint& point);
-};
-
-std::ostream &operator<<(std::ostream &stream, const tpoint& point);
 
 /**
  * Creates a rectangle.
