@@ -16,6 +16,8 @@
 #ifndef GUI_WIDGETS_HELPER_HPP_INCLUDED
 #define GUI_WIDGETS_HELPER_HPP_INCLUDED
 
+#include "global.hpp"
+
 #include "SDL.h"
 
 #include <pango/pango-layout.h>
