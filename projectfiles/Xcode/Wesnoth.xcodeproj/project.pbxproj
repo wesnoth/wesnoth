@@ -911,6 +911,7 @@
 		F480CD4914035038007175D6 /* error_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3914035038007175D6 /* error_container.cpp */; };
 		F480CD4B14035038007175D6 /* sourceparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3C14035038007175D6 /* sourceparser.cpp */; };
 		F480CD4C14035038007175D6 /* tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD3E14035038007175D6 /* tag.cpp */; };
+		F4C5DD68158CFD5E0044F754 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4C5DD66158CFD5E0044F754 /* point.cpp */; };
 		F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DECA14DCA1D000CAFF31 /* client.cpp */; };
@@ -1996,6 +1997,8 @@
 		F480CD3D14035038007175D6 /* sourceparser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = sourceparser.hpp; sourceTree = "<group>"; };
 		F480CD3E14035038007175D6 /* tag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tag.cpp; sourceTree = "<group>"; };
 		F480CD3F14035038007175D6 /* tag.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tag.hpp; sourceTree = "<group>"; };
+		F4C5DD66158CFD5E0044F754 /* point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = point.cpp; sourceTree = "<group>"; };
+		F4C5DD67158CFD5E0044F754 /* point.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = point.hpp; sourceTree = "<group>"; };
 		F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		F4D2DECA14DCA1D000CAFF31 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
 		F4D2DEDB14DED86800CAFF31 /* lbitlib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lbitlib.c; sourceTree = "<group>"; };
@@ -3227,6 +3230,7 @@
 		B5A9BCA10ECA805A002BE442 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				F4C5DD64158CFD5E0044F754 /* lib */,
 				B597EC500FC08E0100CE81F5 /* auxiliary */,
 				B5A9BCA20ECA805A002BE442 /* dialogs */,
 				B5A9BCCC0ECA805A002BE442 /* widgets */,
@@ -3540,6 +3544,23 @@
 				F480CD3F14035038007175D6 /* tag.hpp */,
 			);
 			path = schema;
+			sourceTree = "<group>";
+		};
+		F4C5DD64158CFD5E0044F754 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				F4C5DD65158CFD5E0044F754 /* types */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		F4C5DD65158CFD5E0044F754 /* types */ = {
+			isa = PBXGroup;
+			children = (
+				F4C5DD66158CFD5E0044F754 /* point.cpp */,
+				F4C5DD67158CFD5E0044F754 /* point.hpp */,
+			);
+			path = types;
 			sourceTree = "<group>";
 		};
 		F4D5AFEF157120B30062EAFC /* placer */ = {
@@ -4099,6 +4120,7 @@
 				62579C801573E70C003089D5 /* pane.cpp in Sources */,
 				62579C831573E797003089D5 /* matrix.cpp in Sources */,
 				620091C31575C784009AA2C9 /* filter_options.cpp in Sources */,
+				F4C5DD68158CFD5E0044F754 /* point.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
