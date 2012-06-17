@@ -335,6 +335,23 @@ add_library(wesnoth-gui_types
 	${wesnoth-gui_types_SRC}
 )
 
+##### Gui event
+
+# This library contains the basic event handling for the gui library. It
+# converts the SDL events to internal events and allows other code to
+# connect to the events based on slots.
+set(wesnoth-gui_event_SRC
+	gui/auxiliary/event/dispatcher.cpp
+	gui/auxiliary/event/distributor.cpp
+	gui/auxiliary/event/handler.cpp
+)
+
+add_library(wesnoth-gui_event
+   	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-gui_event_SRC}
+)
+
 
 ##### GUI1 widgets
 
@@ -458,9 +475,6 @@ set(wesnoth-main_SRC
 	gamestatus.cpp
 	generic_event.cpp
 	gui/auxiliary/canvas.cpp
-	gui/auxiliary/event/dispatcher.cpp
-	gui/auxiliary/event/distributor.cpp
-	gui/auxiliary/event/handler.cpp
 	gui/auxiliary/iterator/iterator.cpp
 	gui/auxiliary/iterator/walker_grid.cpp
 	gui/auxiliary/iterator/walker_widget.cpp
@@ -775,12 +789,14 @@ if(ENABLE_GAME)
 		set(wesnoth_LIB
 			wesnoth-game
 			wesnoth-gui_types
+			wesnoth-gui_event
 			wesnoth-gui1_widgets
 		)
 	else(ENABLE_TESTS)
 		set(wesnoth_SRC
 			game.cpp
 			${wesnoth-gui_types_SRC}
+			${wesnoth-gui_event_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-main_SRC}
 		)
@@ -994,6 +1010,7 @@ if(ENABLE_TESTS)
 			wesnoth-core
 			wesnoth-game
 			wesnoth-gui_types
+			wesnoth-gui_event
 			wesnoth-gui1_widgets
 			wesnoth-lua
 		)
@@ -1001,6 +1018,7 @@ if(ENABLE_TESTS)
 		set(test_SRC
 			${test_SRC}
 			${wesnoth-gui_types_SRC}
+			${wesnoth-gui_event_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-main_SRC}
 		)
