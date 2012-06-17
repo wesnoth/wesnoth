@@ -370,6 +370,23 @@ add_library(wesnoth-gui_iterator
 )
 
 
+##### Gui placer
+
+# This library contains the basic placer for the gui library.
+# The placer is used is some widgets to determine how to place its content.
+set(wesnoth-gui_placer_SRC
+	gui/auxiliary/placer.cpp
+	gui/auxiliary/placer/horizontal_list.cpp
+	gui/auxiliary/placer/vertical_list.cpp
+)
+
+add_library(wesnoth-gui_placer
+   	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-gui_placer_SRC}
+)
+
+
 ##### GUI1 widgets
 
 # This library contains the widgets from gui1.
@@ -493,9 +510,6 @@ set(wesnoth-main_SRC
 	generic_event.cpp
 	gui/auxiliary/canvas.cpp
 	gui/auxiliary/log.cpp
-	gui/auxiliary/placer.cpp
-	gui/auxiliary/placer/horizontal_list.cpp
-	gui/auxiliary/placer/vertical_list.cpp
 	gui/auxiliary/old_markup.cpp
 	gui/auxiliary/timer.cpp
 	gui/auxiliary/tips.cpp
@@ -805,6 +819,7 @@ if(ENABLE_GAME)
 			wesnoth-gui_types
 			wesnoth-gui_event
 			wesnoth-gui_iterator
+			wesnoth-gui_placer
 			wesnoth-gui1_widgets
 		)
 	else(ENABLE_TESTS)
@@ -813,6 +828,7 @@ if(ENABLE_GAME)
 			${wesnoth-gui_types_SRC}
 			${wesnoth-gui_event_SRC}
 			${wesnoth-gui_iterator_SRC}
+			${wesnoth-gui_placer_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-main_SRC}
 		)
@@ -1028,6 +1044,7 @@ if(ENABLE_TESTS)
 			wesnoth-gui_types
 			wesnoth-gui_event
 			wesnoth-gui_iterator
+			wesnoth-gui_placer
 			wesnoth-gui1_widgets
 			wesnoth-lua
 		)
@@ -1037,6 +1054,7 @@ if(ENABLE_TESTS)
 			${wesnoth-gui_types_SRC}
 			${wesnoth-gui_event_SRC}
 			${wesnoth-gui_iterator_SRC}
+			${wesnoth-gui_placer_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-main_SRC}
 		)
