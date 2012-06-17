@@ -336,6 +336,23 @@ add_library(wesnoth-gui_types
 )
 
 
+##### GUI1 widgets
+
+# This library contains the widgets from gui1.
+set(wesnoth-gui1_widgets_SRC
+	widgets/combo.cpp
+	widgets/combo_drag.cpp
+	widgets/drop_target.cpp
+	widgets/scrollpane.cpp
+)
+
+add_library(wesnoth-gui1_widgets
+   	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-gui1_widgets_SRC}
+)
+
+
 ########### Wesnoth main source files ###############
 
 # Depending on whether the game or the game and the tests are build the main
@@ -666,10 +683,6 @@ set(wesnoth-main_SRC
 	whiteboard/suppose_dead.cpp
 	whiteboard/utility.cpp
 	whiteboard/validate_visitor.cpp
-	widgets/combo.cpp
-	widgets/combo_drag.cpp
-	widgets/drop_target.cpp
-	widgets/scrollpane.cpp
 	${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
 )
 
@@ -762,11 +775,13 @@ if(ENABLE_GAME)
 		set(wesnoth_LIB
 			wesnoth-game
 			wesnoth-gui_types
+			wesnoth-gui1_widgets
 		)
 	else(ENABLE_TESTS)
 		set(wesnoth_SRC
 			game.cpp
 			${wesnoth-gui_types_SRC}
+			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-main_SRC}
 		)
 		set(wesnoth_LIB
@@ -979,12 +994,14 @@ if(ENABLE_TESTS)
 			wesnoth-core
 			wesnoth-game
 			wesnoth-gui_types
+			wesnoth-gui1_widgets
 			wesnoth-lua
 		)
 	else(ENABLE_GAME)
 		set(test_SRC
 			${test_SRC}
 			${wesnoth-gui_types_SRC}
+			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-main_SRC}
 		)
 		set(test_LIB
