@@ -353,6 +353,23 @@ add_library(wesnoth-gui_event
 )
 
 
+##### Gui iterator
+
+# This library contains the basic iterator for the gui library.
+# It is used to create visitors for the GUI widget tree in a window.
+set(wesnoth-gui_iterator_SRC
+	gui/auxiliary/iterator/iterator.cpp
+	gui/auxiliary/iterator/walker_grid.cpp
+	gui/auxiliary/iterator/walker_widget.cpp
+)
+
+add_library(wesnoth-gui_iterator
+   	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-gui_iterator_SRC}
+)
+
+
 ##### GUI1 widgets
 
 # This library contains the widgets from gui1.
@@ -475,9 +492,6 @@ set(wesnoth-main_SRC
 	gamestatus.cpp
 	generic_event.cpp
 	gui/auxiliary/canvas.cpp
-	gui/auxiliary/iterator/iterator.cpp
-	gui/auxiliary/iterator/walker_grid.cpp
-	gui/auxiliary/iterator/walker_widget.cpp
 	gui/auxiliary/log.cpp
 	gui/auxiliary/placer.cpp
 	gui/auxiliary/placer/horizontal_list.cpp
@@ -790,6 +804,7 @@ if(ENABLE_GAME)
 			wesnoth-game
 			wesnoth-gui_types
 			wesnoth-gui_event
+			wesnoth-gui_iterator
 			wesnoth-gui1_widgets
 		)
 	else(ENABLE_TESTS)
@@ -797,6 +812,7 @@ if(ENABLE_GAME)
 			game.cpp
 			${wesnoth-gui_types_SRC}
 			${wesnoth-gui_event_SRC}
+			${wesnoth-gui_iterator_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-main_SRC}
 		)
@@ -1011,6 +1027,7 @@ if(ENABLE_TESTS)
 			wesnoth-game
 			wesnoth-gui_types
 			wesnoth-gui_event
+			wesnoth-gui_iterator
 			wesnoth-gui1_widgets
 			wesnoth-lua
 		)
@@ -1019,6 +1036,7 @@ if(ENABLE_TESTS)
 			${test_SRC}
 			${wesnoth-gui_types_SRC}
 			${wesnoth-gui_event_SRC}
+			${wesnoth-gui_iterator_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-main_SRC}
 		)
