@@ -387,6 +387,45 @@ add_library(wesnoth-gui_placer
 )
 
 
+##### Gui widget definition
+
+# This library contains the widget definitions for the gui library.
+# The widget definitions serialise the widget definition WML code into
+# its own structures. The definitions define the looks of the widgets.
+set(wesnoth-gui_widget_definition_SRC
+	gui/auxiliary/widget_definition.cpp
+	gui/auxiliary/widget_definition/button.cpp
+	gui/auxiliary/widget_definition/drawing.cpp
+	gui/auxiliary/widget_definition/horizontal_scrollbar.cpp
+	gui/auxiliary/widget_definition/image.cpp
+	gui/auxiliary/widget_definition/label.cpp
+	gui/auxiliary/widget_definition/listbox.cpp
+	gui/auxiliary/widget_definition/matrix.cpp
+	gui/auxiliary/widget_definition/minimap.cpp
+	gui/auxiliary/widget_definition/multi_page.cpp
+	gui/auxiliary/widget_definition/panel.cpp
+	gui/auxiliary/widget_definition/progress_bar.cpp
+	gui/auxiliary/widget_definition/repeating_button.cpp
+	gui/auxiliary/widget_definition/scroll_label.cpp
+	gui/auxiliary/widget_definition/scrollbar_panel.cpp
+	gui/auxiliary/widget_definition/slider.cpp
+	gui/auxiliary/widget_definition/spacer.cpp
+	gui/auxiliary/widget_definition/stacked_widget.cpp
+	gui/auxiliary/widget_definition/text_box.cpp
+	gui/auxiliary/widget_definition/toggle_button.cpp
+	gui/auxiliary/widget_definition/toggle_panel.cpp
+	gui/auxiliary/widget_definition/tree_view.cpp
+	gui/auxiliary/widget_definition/vertical_scrollbar.cpp
+	gui/auxiliary/widget_definition/window.cpp
+)
+
+add_library(wesnoth-gui_widget_definition
+   	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-gui_widget_definition_SRC}
+)
+
+
 ##### GUI1 widgets
 
 # This library contains the widgets from gui1.
@@ -513,30 +552,6 @@ set(wesnoth-main_SRC
 	gui/auxiliary/old_markup.cpp
 	gui/auxiliary/timer.cpp
 	gui/auxiliary/tips.cpp
-	gui/auxiliary/widget_definition.cpp
-	gui/auxiliary/widget_definition/button.cpp
-	gui/auxiliary/widget_definition/drawing.cpp
-	gui/auxiliary/widget_definition/horizontal_scrollbar.cpp
-	gui/auxiliary/widget_definition/image.cpp
-	gui/auxiliary/widget_definition/label.cpp
-	gui/auxiliary/widget_definition/listbox.cpp
-	gui/auxiliary/widget_definition/matrix.cpp
-	gui/auxiliary/widget_definition/minimap.cpp
-	gui/auxiliary/widget_definition/multi_page.cpp
-	gui/auxiliary/widget_definition/panel.cpp
-	gui/auxiliary/widget_definition/progress_bar.cpp
-	gui/auxiliary/widget_definition/repeating_button.cpp
-	gui/auxiliary/widget_definition/scroll_label.cpp
-	gui/auxiliary/widget_definition/scrollbar_panel.cpp
-	gui/auxiliary/widget_definition/slider.cpp
-	gui/auxiliary/widget_definition/spacer.cpp
-	gui/auxiliary/widget_definition/stacked_widget.cpp
-	gui/auxiliary/widget_definition/text_box.cpp
-	gui/auxiliary/widget_definition/toggle_button.cpp
-	gui/auxiliary/widget_definition/toggle_panel.cpp
-	gui/auxiliary/widget_definition/tree_view.cpp
-	gui/auxiliary/widget_definition/vertical_scrollbar.cpp
-	gui/auxiliary/widget_definition/window.cpp
 	gui/auxiliary/window_builder.cpp
 	gui/auxiliary/window_builder/button.cpp
 	gui/auxiliary/window_builder/control.cpp
@@ -820,6 +835,7 @@ if(ENABLE_GAME)
 			wesnoth-gui_event
 			wesnoth-gui_iterator
 			wesnoth-gui_placer
+			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
 		)
 	else(ENABLE_TESTS)
@@ -829,6 +845,7 @@ if(ENABLE_GAME)
 			${wesnoth-gui_event_SRC}
 			${wesnoth-gui_iterator_SRC}
 			${wesnoth-gui_placer_SRC}
+			${wesnoth-gui_widget_definition_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-main_SRC}
 		)
@@ -1045,6 +1062,7 @@ if(ENABLE_TESTS)
 			wesnoth-gui_event
 			wesnoth-gui_iterator
 			wesnoth-gui_placer
+			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
 			wesnoth-lua
 		)
@@ -1055,6 +1073,7 @@ if(ENABLE_TESTS)
 			${wesnoth-gui_event_SRC}
 			${wesnoth-gui_iterator_SRC}
 			${wesnoth-gui_placer_SRC}
+			${wesnoth-gui_widget_definition_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-main_SRC}
 		)
