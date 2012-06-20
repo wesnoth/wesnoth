@@ -63,6 +63,9 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_network("network");
 #define ERR_NET LOG_STREAM(err, log_network)
 
+static lg::log_domain log_enginerefac("enginerefac");
+#define LOG_RG LOG_STREAM(info, log_enginerefac)
+
 static bool less_campaigns_rank(const config &a, const config &b) {
 	return a["rank"].to_int(1000) < b["rank"].to_int(1000);
 }

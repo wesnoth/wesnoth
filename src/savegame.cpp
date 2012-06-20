@@ -48,6 +48,9 @@ static lg::log_domain log_engine("engine");
 #define LOG_SAVE LOG_STREAM(info, log_engine)
 #define ERR_SAVE LOG_STREAM(err, log_engine)
 
+static lg::log_domain log_ngrefac("ngrefac");
+#define LOG_RG LOG_STREAM(info, log_ngrefac)
+
 #ifdef _WIN32
 	#ifdef INADDR_ANY
 		#undef INADDR_ANY
@@ -689,6 +692,7 @@ void loadgame::set_gamestate()
 	int seed = load_config_["random_seed"].to_int(42);
 	unsigned calls = show_replay_ ? 0 : gamestate_.snapshot["random_calls"].to_int();
 	gamestate_.rng().seed_random(seed, calls);
+	LOG_RG << "after random "<<gamestate_.carryover_sides.get_all_sides().size()<<"\n";
 }
 
 void loadgame::load_multiplayer_game()
@@ -782,6 +786,7 @@ void loadgame::copy_era(config &cfg)
 savegame::savegame(game_state& gamestate, const bool compress_saves, const std::string& title)
 	: gamestate_(gamestate)
 	, snapshot_()
+	, carryover_bank_(gamestate.carryover_sides.to_config())
 	, filename_()
 	, title_(title)
 	, error_message_(_("The game could not be saved: "))
@@ -992,6 +997,7 @@ void savegame::write_game(config_writer &out) const
 	out.write_key_val("next_underlying_unit_id", lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id()));
 	gamestate_.write_config(out, false);
 	out.write_child("snapshot",snapshot_);
+	out.write_child("carryover_bank",carryover_bank_);
 	out.open_child("statistics");
 	statistics::write_stats(out);
 	out.close_child("statistics");

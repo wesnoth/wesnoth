@@ -119,6 +119,15 @@ public:
 	const end_level_data& get_end_level_data_const() const {
 		return end_level_data_;
 	}
+	const std::vector<team>& get_teams_const() const {
+		return teams_;
+	}
+	const gamemap& get_map_const() const{
+		return map_;
+	}
+	const tod_manager& get_tod_manager_const() const{
+			return tod_manager_;
+		}
 
 	/**
 	 * Checks to see if a side has won, and throws an end_level_exception.

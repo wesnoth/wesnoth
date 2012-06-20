@@ -46,6 +46,9 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
+static lg::log_domain log_enginerefac("enginerefac");
+#define LOG_RG LOG_STREAM(info, log_enginerefac)
+
 namespace {
 
 struct player_controller
@@ -67,6 +70,161 @@ struct player_controller
 typedef std::map<std::string, player_controller> controller_map;
 
 } // end anon namespace
+
+static const std::string default_gold_qty = "100";
+
+static void team_gold(config& level, game_state& gamestate)
+{
+	foreach (config &side_cfg, level.child_range("side")) {
+
+		LOG_RG <<"config gold before default " <<str_cast<int>(side_cfg["gold"])<<"\n";
+		std::string cfg_gold = side_cfg["gold"];
+		if(cfg_gold.empty()) {
+			cfg_gold = default_gold_qty;
+			side_cfg["gold"] = cfg_gold;
+		}
+		LOG_RG <<"config gold after default " <<str_cast<int>(side_cfg["gold"])<<"\n";
+
+		int gold = lexical_cast_default<int>(cfg_gold);
+
+		LOG_RG <<"sides size "<<str_cast<int>(gamestate.carryover_sides.get_all_sides().size())<<"\n";
+
+		carryover* side = gamestate.carryover_sides.get_side(side_cfg["save_id"]);
+		if(side != NULL ){
+			LOG_RG << "loading side " << side->to_string() << "\n";
+			side->transfer_all_gold_to(side_cfg, gold);
+		}
+
+	}
+}
+
+static void team_recall(config& level, game_state& gamestate){
+	foreach(config& side_cfg, level.child_range("side")){
+		carryover* side = gamestate.carryover_sides.get_side(side_cfg["save_id"]);
+
+		if(side == NULL ){ continue; }
+			std::string can_recruit_str = side->get_recruits(true);
+			side_cfg["previous_recruits"] = can_recruit_str;
+
+			std::vector<unit>::iterator i = side->get_recall_list().begin();
+			while( i != side->get_recall_list().end()){
+				LOG_RG<<"adding unit " << i->name() << " \n";
+				config& new_unit = side_cfg.add_child("unit");
+				i->write(new_unit);
+				i = side->get_recall_list().erase(i);
+			}
+	}
+}
+
+static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp){
+	bool has_next_scenario = !gamestate.classification().next_scenario.empty() &&
+			gamestate.classification().next_scenario != "null";
+
+	std::ostringstream report;
+	std::string title;
+
+	bool obs = is_observer();
+
+	if (obs) {
+		title = _("Scenario Report");
+	} else {
+		title = _("Victory");
+		report << "<b>" << _("You have emerged victorious!") << "</b>\n\n";
+	}
+
+	std::vector<team> teams = playcontroller.get_teams_const();
+	int persistent_teams = 0;
+	foreach (const team &t, teams) {
+		if (t.persistent()){
+			++persistent_teams;
+		}
+	}
+
+	const end_level_data& end_level = gamestate.carryover_sides.get_end_level();
+
+	if (persistent_teams > 0 && (has_next_scenario ||
+			gamestate.classification().campaign_type == "test"))
+	{
+		gamemap map = playcontroller.get_map_const();
+		int finishing_bonus_per_turn =
+				map.villages().size() * game_config::village_income +
+				game_config::base_income;
+		tod_manager tod = playcontroller.get_tod_manager_const();
+		int turns_left = std::max<int>(0, tod.number_of_turns() - tod.turn());
+		int finishing_bonus = (end_level.gold_bonus && turns_left > -1) ?
+				finishing_bonus_per_turn * turns_left : 0;
+
+
+		foreach (const team &t, teams)
+		{
+			if (!t.persistent()){
+				continue;
+			}
+			int carryover_gold = div100rounded((t.gold() + finishing_bonus) * end_level.carryover_percentage);
+			LOG_RG <<"carryover gold " << str_cast<int>(carryover_gold) <<"\n";
+			gamestate.carryover_sides.transfer_from(t, carryover_gold);
+
+			//TODO: remove if transfer method works
+			//			//find side with team's save_id if it exists
+//			carryover* side = gamestate.carryover_sides.get_side(t.save_id());
+//			//if side exists, update info
+//			if(side != NULL){
+//				side->update_carryover(t, carryover_gold);
+//				LOG_RG << "existing side " << side->to_string() << "\n";
+//			}
+//			//if side doesn't exist, add new side
+//			else{
+//				LOG_RG << "side doesn't exist \n";
+//				gamestate.carryover_sides.add_side(t, carryover_gold);
+//			}
+
+			// Only show the report for ourselves.
+			if (!t.is_human()){
+				continue;
+			}
+
+			if (persistent_teams > 1) {
+				report << "\n<b>" << t.current_player() << "</b>\n";
+			}
+
+			playcontroller.report_victory(report, carryover_gold, t.gold(), finishing_bonus_per_turn, turns_left, finishing_bonus);
+		}
+	}
+
+	if (end_level.carryover_report) {
+		gui2::show_transient_message(disp.video(), title, report.str(), "", true);
+	}
+}
+
+//TODO: remove if combining it in one transfer method with store_carryover works
+//static void store_recalls(game_state& gamestate, playsingle_controller& playcontroller){
+//	std::vector<team> teams = playcontroller.get_teams_const();
+//
+//	foreach (const team &t, teams)
+//	{
+//		if (!t.persistent()){
+//			continue;
+//		}
+//
+//		//find side with team's save_id if it exists
+//		carryover* side = gamestate.carryover_sides.get_side(t.save_id());
+//		//if side exists, update info
+//		if(side != NULL){
+//			side->add_recruits(t.recruits());
+//			LOG_RG << "existing side " << side->to_string() << "\n";
+//		}
+//		//if side doesn't exist, add new side
+//		else{
+//			gamestate.carryover_sides.add_side(t.save_id(), t.recruits());
+//			side = gamestate.carryover_sides.get_side(t.save_id());
+//		}
+//
+//		foreach(const unit& u, t.recall_list()){
+//			LOG_RG << "add unit " << u.name() << "\n";
+//			side->add_recall(u);
+//		}
+//	}
+//}
 
 void play_replay(display& disp, game_state& gamestate, const config& game_config,
 		CVideo& video)
@@ -123,12 +281,23 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	const int ticks = SDL_GetTicks();
 	int num_turns = (*level)["turns"].to_int(-1);
 
+	LOG_RG << "before level init "<< str_cast<int>((*level)["carryover_percentage"]) << "\n";
+
+	config init_level = *level;
+	team_gold(init_level, state_of_game);
+	team_recall(init_level, state_of_game);
+
+	LOG_RG << "after level init "<< str_cast<int>((*level)["carryover_percentage"]) << "\n";
+
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
-	playsingle_controller playcontroller(*level, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
+	playsingle_controller playcontroller(init_level, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 	end_level = playcontroller.get_end_level_data_const();
+	LOG_RG<< "carrover percentage before " << str_cast<int>(end_level.carryover_percentage) << "\n";
+	state_of_game.carryover_sides.set_end_level(end_level);
+	LOG_RG<< "carrover percentage after " << str_cast<int>(state_of_game.carryover_sides.get_end_level().carryover_percentage) << "\n";
 
 	if (res == DEFEAT) {
 		if (resources::persist != NULL)
@@ -137,6 +306,9 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 				    _("Defeat"),
 				    _("You have been defeated!")
 				    );
+	}
+	else{
+		store_carryover(state_of_game, playcontroller, disp);
 	}
 
 	if (!disp.video().faked() && res != QUIT && end_level.linger_mode)
@@ -155,16 +327,29 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 
 static LEVEL_RESULT playmp_scenario(const config& game_config,
-		config const* level, display& disp, game_state& state_of_game,
+		const config* level, display& disp, game_state& state_of_game,
 		const config::const_child_itors &story, bool skip_replay,
 		io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
 	int num_turns = (*level)["turns"].to_int(-1);
-	playmp_controller playcontroller(*level, state_of_game, ticks, num_turns,
+
+	LOG_RG << "before level init "<< str_cast<int>((*level)["carryover_percentage"]) << "\n";
+
+	config init_level = *level;
+	team_gold(init_level, state_of_game);
+	team_recall(init_level, state_of_game);
+
+	LOG_RG << "after level init "<< str_cast<int>((*level)["carryover_percentage"]) << "\n";
+
+	playmp_controller playcontroller(init_level, state_of_game, ticks, num_turns,
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 	end_level = playcontroller.get_end_level_data_const();
+	LOG_RG<< "carrover percentage before " << str_cast<int>(end_level.carryover_percentage) << "\n";
+	state_of_game.carryover_sides.set_end_level(end_level);
+	LOG_RG<< "carrover percentage" << str_cast<int>(state_of_game.carryover_sides.get_end_level().carryover_percentage) << "\n";
+
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())
 		io_type = IO_SERVER;
@@ -176,6 +361,9 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 				    _("Defeat"),
 				    _("You have been defeated!")
 				    );
+	}
+	else{
+		store_carryover(state_of_game, playcontroller, disp);
 	}
 
 	if (!disp.video().faked() && res != QUIT) {

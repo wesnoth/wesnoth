@@ -65,6 +65,9 @@ public:
 	virtual void force_end_level(LEVEL_RESULT res)
 	{ level_result_ = res; }
 	virtual void check_end_level();
+	void report_victory(std::ostringstream &report, int player_gold,
+			int remaining_gold, int finishing_bonus_per_turn,
+			int turns_left, int finishing_bonus);
 
 protected:
 	virtual void play_turn(bool save);
@@ -94,10 +97,6 @@ protected:
 	bool turn_over_;
 	bool skip_next_turn_;
 	LEVEL_RESULT level_result_;
-private:
-	void report_victory(std::ostringstream &report, int player_gold,
-		int remaining_gold, int finishing_bonus_per_turn,
-		int turns_left, int finishing_bonus);
 };
 
 

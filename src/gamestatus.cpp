@@ -60,6 +60,191 @@ static lg::log_domain log_engine_tc("engine/team_construction");
 #define LOG_NG_TC LOG_STREAM(info, log_engine_tc)
 #define DBG_NG_TC LOG_STREAM(debug, log_engine_tc)
 
+static lg::log_domain log_enginerefac("enginerefac");
+#define LOG_RG LOG_STREAM(info, log_enginerefac)
+
+carryover::carryover(const config& side)
+		: save_id_(side["save_id"])
+		, gold_(lexical_cast_default<int>(side["gold"]))
+		, add_(side["gold_add"].to_bool())
+		, color_(side["color"])
+		, current_player_(side["current_player"])
+		, name_(side["name"])
+		, previous_recruits_()
+		, recall_list_()
+{
+	std::string recruits = side["previous_recruits"];
+	std::size_t begin = 0;
+	std::size_t pos;
+	while(pos != recruits.npos){
+		pos = recruits.find(',', begin);
+		previous_recruits_.insert(recruits.substr(begin, pos-begin));
+		begin = pos + 1;
+	}
+
+	foreach(const config& u, side.child_range("unit")){
+		recall_list_.push_back(unit(u));
+	}
+}
+
+carryover::carryover(const team& t, const int gold, const bool add)
+		: save_id_(t.save_id())
+		, gold_(gold)
+		, add_ (add)
+		, color_(t.color())
+		, current_player_(t.current_player())
+		, name_(t.name())
+		, previous_recruits_(t.recruits())
+		, recall_list_(t.recall_list())
+		{}
+
+//TODO: remove
+//carryover::carryover(const std::string& save_id, const std::set<std::string>& recruits)
+//		: save_id_(save_id)
+//		, gold_()
+//		, add_()
+//		, color_()
+//		, current_player_()
+//		, name_()
+//		, previous_recruits_(recruits)
+//		, recall_list_()
+//		{}
+
+void carryover::transfer_all_gold_to(config& side_cfg, int gold){
+	if(gold_ == 0){
+		return;
+	}
+
+	if(add_){
+		side_cfg["gold"] = gold + gold_;
+	}
+	else{
+		side_cfg["gold"] = gold_;
+	}
+	gold_ = 0;
+}
+
+std::string carryover::get_recruits(bool erase){
+	std::stringstream can_recruit;
+	for(std::set<std::string>::iterator i = previous_recruits_.begin(); i != previous_recruits_.end(); i++){
+		can_recruit << *i << ",";
+		if(erase){
+			previous_recruits_.erase(i);
+		}
+	}
+	std::string can_recruit_str = can_recruit.str();
+	// Remove the trailing comma
+	if(can_recruit_str.empty() == false) {
+		can_recruit_str.resize(can_recruit_str.size()-1);
+	}
+	return can_recruit_str;
+}
+
+void carryover::update_carryover(const team& t, const int gold, const bool add){
+	gold_ += gold;
+	add_ = add;
+	color_ = t.color();
+	current_player_ = t.current_player();
+	name_ = t.name();
+	previous_recruits_.insert(t.recruits().begin(), t.recruits().end());
+	recall_list_.insert(recall_list_.end(), t.recall_list().begin(), t.recall_list().end());
+	LOG_RG << "gold after carryover store" << str_cast<int>(gold_) << "\n";
+}
+
+//TODO: remove
+//void carryover::add_recruits(const std::set<std::string>& recruits){
+//	previous_recruits_.insert(recruits.begin(), recruits.end());
+//}
+//
+//void carryover::add_recall(const unit& u){
+//	recall_list_.push_back(u);
+//}
+
+const std::string carryover::to_string(){
+	std::string side = "";
+	side.append("Side " + save_id_ + ": gold " + str_cast<int>(gold_) + " recruits " + get_recruits(false) + " units ");
+	foreach(const unit& u, recall_list_){
+		side.append(u.name() + ", ");
+	}
+	return side;
+}
+
+void carryover::to_config(config& cfg){
+	config& side = cfg.add_child("side");
+	side["save_id"] = save_id_;
+	side["gold"] = str_cast<int>(gold_);
+	side["add"] = add_;
+	side["color"] = color_;
+	side["current_player"] = current_player_;
+	side["name"] = name_;
+	side["previous_recruits"] = get_recruits(false);
+	foreach(unit& u, recall_list_){
+		config& unit_cfg = side.add_child("unit");
+		u.write(unit_cfg);
+	}
+}
+
+carryover_info::carryover_info(const config& cfg)
+	: carryover_sides_()
+	, end_level_()
+{
+	end_level_.read(cfg.child("end_level_data"));
+	foreach(const config& side, cfg.child_range("side")){
+		this->carryover_sides_.push_back(carryover(side));
+	}
+}
+
+std::vector<carryover>& carryover_info::get_all_sides() {
+	return carryover_sides_;
+}
+
+void carryover_info::add_side(const config& cfg) {
+	carryover_sides_.push_back(carryover(cfg));
+}
+
+//TODO: remove
+//void carryover_info::add_side(const team& t, const int gold, const bool add){
+//	carryover_sides_.push_back(carryover(t, gold, add));
+//}
+//
+//void carryover_info::add_side(const std::string& save_id, const std::set<std::string>& recruits) {
+//	carryover_sides_.push_back(carryover(save_id, recruits));
+//}
+
+const end_level_data& carryover_info::get_end_level() const{
+	return end_level_;
+}
+
+void carryover_info::transfer_from(const team& t, int carryover_gold){
+	foreach(carryover& side, carryover_sides_){
+		if(side.get_save_id() == t.save_id()){
+			side.update_carryover(t, carryover_gold, end_level_.carryover_add);
+			return;
+		}
+	}
+
+	carryover_sides_.push_back(carryover(t, carryover_gold, end_level_.carryover_add));
+}
+
+const config carryover_info::to_config() {
+	config cfg;
+	foreach(carryover& c, carryover_sides_){
+		c.to_config(cfg);
+	}
+	config& end_level = cfg.add_child("end_level_data");
+	end_level_.write(end_level);
+	return cfg;
+}
+
+carryover* carryover_info::get_side(std::string save_id){
+	foreach(carryover& side, carryover_sides_){
+		if(side.get_save_id() == save_id){
+			return &side;
+		}
+	}
+	return NULL;
+}
+
 game_classification::game_classification():
 	savegame_config(),
 	label(),
@@ -152,6 +337,7 @@ game_state::game_state()  :
 		starting_pos(),
 		snapshot(),
 		last_selected(map_location::null_location),
+		carryover_sides(),
 		rng_(),
 		variables_(),
 		temporaries_(),
@@ -251,6 +437,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		starting_pos(),
 		snapshot(),
 		last_selected(map_location::null_location),
+		carryover_sides(),
 		rng_(cfg),
 		variables_(),
 		temporaries_(),
@@ -322,6 +509,10 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		statistics::fresh_stats();
 		statistics::read_stats(stats);
 	}
+
+	const config& carryover_bank = cfg.child("carryover_bank");
+	this->carryover_sides = carryover_info(carryover_bank);
+
 }
 
 void game_state::write_snapshot(config& cfg) const
@@ -544,6 +735,7 @@ game_state::game_state(const game_state& state) :
 	starting_pos(state.starting_pos),
 	snapshot(state.snapshot),
 	last_selected(state.last_selected),
+	carryover_sides(state.carryover_sides),
 	rng_(state.rng_),
 	variables_(state.variables_),
 	temporaries_(), // Not sure why empty, copied from old code
@@ -579,7 +771,6 @@ void game_state::set_variables(const config& vars) {
 	variables_ = vars;
 }
 
-
 class team_builder {
 public:
 	team_builder(const config& side_cfg,
@@ -587,7 +778,7 @@ public:
 		     const config& level, gamemap& map, unit_map& units,
 		     bool snapshot, const config &starting_pos)
 		: gold_info_ngold_(0)
-		, gold_info_add_(false)
+//		, gold_info_add_(false)
 		, leader_configs_()
 		, level_(level)
 		, map_(map)
@@ -647,7 +838,7 @@ protected:
 	static const std::string default_gold_qty_;
 
 	int gold_info_ngold_;
-	bool gold_info_add_;
+//	bool gold_info_add_;
 	std::deque<config> leader_configs_;
 	const config &level_;
 	gamemap &map_;
@@ -688,7 +879,7 @@ protected:
 			throw game::load_game_failed("Map not found");
 		}
 
-		if(side_cfg_["controller"] == "human" ||
+		/*if(side_cfg_["controller"] == "human" ||
 		   side_cfg_["controller"] == "network" ||
 		   side_cfg_["controller"] == "network_ai" ||
 		   side_cfg_["controller"] == "human_ai" ||
@@ -715,12 +906,12 @@ protected:
 					player_exists_ = false;
 				}
 			}
-		}
+		}*/
 
 		DBG_NG_TC << "save id: "<< save_id_ <<std::endl;
 		DBG_NG_TC << "snapshot: "<< (player_exists_ ? "true" : "false") <<std::endl;
-		DBG_NG_TC << "player_cfg: "<< (player_cfg_==NULL ? "is null" : "is not null") <<std::endl;
-		DBG_NG_TC << "player_exists: "<< (player_exists_ ? "true" : "false") <<std::endl;
+		//DBG_NG_TC << "player_cfg: "<< (player_cfg_==NULL ? "is null" : "is not null") <<std::endl;
+		//DBG_NG_TC << "player_exists: "<< (player_exists_ ? "true" : "false") <<std::endl;
 
 		unit_configs_.clear();
 		seen_ids_.clear();
@@ -736,44 +927,46 @@ protected:
 	{
 		log_step("gold");
 
-		std::string gold = side_cfg_["gold"];
-		if(gold.empty()) {
-			gold = default_gold_qty_;
-		}
+		gold_info_ngold_ = side_cfg_["gold"];
 
-		DBG_NG_TC << "found gold: '" << gold << "'\n";
-
-		gold_info_ngold_ = lexical_cast_default<int>(gold);
-
-		/* This is the gold carry-over mechanism for subsequent campaign
-		   scenarios. Snapshots and replays are loaded from savegames and
-		   got their own gold information, which must not be altered here
-		*/
-
-		//true  - carryover gold is added to the start_gold.
-		//false - the max of the two is taken as start_gold.
-		gold_info_add_ = side_cfg_["gold_add"].to_bool();
-
-		if (use_player_cfg()) {
-			try {
-				int player_gold = (*player_cfg_)["gold"];
-				if (!player_exists_) {
-					//if we get the persistence information from [side], carryover gold is already sorted
-					gold_info_ngold_ = player_gold;
-					gold_info_add_ = (*player_cfg_)["gold_add"].to_bool();
-				} else if ((*player_cfg_)["gold_add"].to_bool()) {
-					gold_info_ngold_ +=  player_gold;
-					gold_info_add_ = true;
-				} else if(player_gold >= gold_info_ngold_) {
-					gold_info_ngold_ = player_gold;
-				}
-			} catch (config::error&) {
-				ERR_NG_TC << "player tag for " << save_id_ << " does not have gold information\n";
-			}
-		}
+//		std::string gold = side_cfg_["gold"];
+//		if(gold.empty()) {
+//			gold = default_gold_qty_;
+//		}
+//
+//		DBG_NG_TC << "found gold: '" << gold << "'\n";
+//
+//		gold_info_ngold_ = lexical_cast_default<int>(gold);
+//
+//		 This is the gold carry-over mechanism for subsequent campaign
+//		   scenarios. Snapshots and replays are loaded from savegames and
+//		   got their own gold information, which must not be altered here
+//
+//
+//		//true  - carryover gold is added to the start_gold.
+//		//false - the max of the two is taken as start_gold.
+//		gold_info_add_ = side_cfg_["gold_add"].to_bool();
+//
+//		if (use_player_cfg()) {
+//			try {
+//				int player_gold = (*player_cfg_)["gold"];
+//				if (!player_exists_) {
+//					//if we get the persistence information from [side], carryover gold is already sorted
+//					gold_info_ngold_ = player_gold;
+//					gold_info_add_ = (*player_cfg_)["gold_add"].to_bool();
+//				} else if ((*player_cfg_)["gold_add"].to_bool()) {
+//					gold_info_ngold_ +=  player_gold;
+//					gold_info_add_ = true;
+//				} else if(player_gold >= gold_info_ngold_) {
+//					gold_info_ngold_ = player_gold;
+//				}
+//			} catch (config::error&) {
+//				ERR_NG_TC << "player tag for " << save_id_ << " does not have gold information\n";
+//			}
+//		}
 
 		DBG_NG_TC << "set gold to '" << gold_info_ngold_ << "'\n";
-		DBG_NG_TC << "set gold add flag to '" << gold_info_add_ << "'\n";
+		//DBG_NG_TC << "set gold add flag to '" << gold_info_add_ << "'\n";
 	}
 
 
@@ -781,7 +974,7 @@ protected:
 	{
 		log_step("new team");
 		t_->build(side_cfg_, map_, gold_info_ngold_);
-		t_->set_gold_add(gold_info_add_);
+		//t_->set_gold_add(gold_info_add_);
 	}
 
 
