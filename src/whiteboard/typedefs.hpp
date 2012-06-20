@@ -29,12 +29,14 @@ static lg::log_domain log_whiteboard("whiteboard");
 #define LOG_WB LOG_STREAM_INDENT(info, log_whiteboard)
 #define DBG_WB LOG_STREAM_INDENT(debug, log_whiteboard)
 
+#include <deque>
+#include <ostream> //used for << operators
+
+#include <boost/enable_shared_from_this.hpp>
+#include <boost/make_shared.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
-#include <boost/enable_shared_from_this.hpp>
-#include <deque>
-#include <ostream> //used for << operators
 
 #include "game_display.hpp"
 

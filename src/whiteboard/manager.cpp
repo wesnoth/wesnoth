@@ -322,7 +322,7 @@ void manager::post_delete_action(action_ptr action)
 
 	side_actions_ptr side_actions = resources::teams->at(action->team_index()).get_side_actions();
 
-	side_actions::iterator action_it = side_actions->find_last_action_of(action->get_unit());
+	side_actions::iterator action_it = side_actions->find_last_action_of(*(action->get_unit()));
 	if (action_it != side_actions->end())
 	{
 		if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action_it))
@@ -943,7 +943,7 @@ void manager::contextual_execute()
 		side_actions::iterator it;
 		unit const* selected_unit = future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
 		if (selected_unit &&
-				(it = viewer_actions()->find_first_action_of(selected_unit)) != viewer_actions()->end())
+				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
 		{
 			executing_actions_ = true;
 			viewer_actions()->execute(it);
@@ -1046,7 +1046,7 @@ void manager::contextual_delete()
 		side_actions::iterator it;
 		unit const* selected_unit = future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
 		if (selected_unit &&
-				(it = viewer_actions()->find_first_action_of(selected_unit)) != viewer_actions()->end())
+				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
 		{
 			///@todo Shouldn't it be "find_last_action_of" instead of "find_first_action_of" above?
 			viewer_actions()->remove_action(it);
@@ -1105,7 +1105,8 @@ bool manager::has_actions() const
 bool manager::unit_has_actions(unit const* unit) const
 {
 	assert(!wait_for_side_init_);
-	return viewer_actions()->unit_has_actions(unit);
+	assert(unit != NULL);
+	return viewer_actions()->unit_has_actions(*unit);
 }
 
 int manager::get_spent_gold_for(int side)

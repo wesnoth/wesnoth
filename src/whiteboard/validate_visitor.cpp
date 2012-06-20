@@ -119,7 +119,7 @@ bool validate_visitor::no_previous_invalids(side_actions::iterator const& itor)
 {
 	if(itor == viewer_actions_.begin())
 		return true;
-	side_actions::iterator prev_action_of_unit = viewer_actions_.find_last_action_of((*itor)->get_unit(),itor-1);
+	side_actions::iterator prev_action_of_unit = viewer_actions_.find_last_action_of(*((*itor)->get_unit()),itor-1);
 	if(prev_action_of_unit == viewer_actions_.end())
 		return true;
 	return (*prev_action_of_unit)->is_valid();

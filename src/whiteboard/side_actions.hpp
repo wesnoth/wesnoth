@@ -20,6 +20,14 @@
 #ifndef WB_SIDE_ACTIONS_HPP_
 #define WB_SIDE_ACTIONS_HPP_
 
+#include <deque>
+
+#include <boost/multi_index/hashed_index.hpp>
+#include <boost/multi_index/mem_fun.hpp>
+#include <boost/multi_index/random_access_index.hpp>
+#include <boost/multi_index_container.hpp>
+
+#include "action.hpp"
 #include "typedefs.hpp"
 
 namespace wb
@@ -28,38 +36,260 @@ namespace wb
 class move;
 
 /**
+ * Datastructure holding the actions of a side on multiple turns.
+ *
+ * @invariant forall(t>0) if turn_size(t)==0 then turn_size(t+1)==0
+ */
+class side_actions_container
+{
+public:
+	//! Tag for action_set's random_access index.
+	struct chronological{};
+
+	//! Tag for action_set's hashed_non_unique index.
+	struct by_unit{};
+
+	///! Underlying container
+	typedef boost::multi_index::multi_index_container <
+		action_ptr,
+		boost::multi_index::indexed_by<
+			boost::multi_index::random_access<
+				boost::multi_index::tag< chronological > >,
+			boost::multi_index::hashed_non_unique<
+				boost::multi_index::tag< by_unit >,
+				boost::multi_index::const_mem_fun< action, size_t, &action::get_unit_id > >
+			>
+		> action_set;
+
+	typedef action_set::index<chronological>::type::iterator iterator;
+	typedef action_set::index<chronological>::type::const_iterator const_iterator;
+	typedef action_set::index<chronological>::type::reverse_iterator reverse_iterator;
+	typedef action_set::index<chronological>::type::const_reverse_iterator const_reverse_iterator;
+
+	typedef std::pair<iterator,iterator> range_t;
+	typedef std::pair<reverse_iterator,reverse_iterator> rrange_t;
+	typedef std::pair<const_iterator,const_iterator> crange_t;
+	typedef std::pair<const_reverse_iterator,const_reverse_iterator> crrange_t;
+
+	typedef std::deque<iterator> action_limits;
+
+
+	/**
+	 * Inserts an action at the specified position.
+	 *
+	 * The planned turn of the inserted action is the same as the planned turn of itor-1 before the insertion.
+	 * If itor==begin(), the new action will became the first action of the current turn.
+	 *
+	 * @param itor the iterator before which action will be inserted
+	 * @param action the action to insert
+	 * @return the inserted action's position
+	 * @retval end() when the action can't be inserted
+	 */
+	iterator insert(iterator position, action_ptr action);
+
+	/**
+	 * Queues an action to be executed last
+	 * @return The queued action's position
+	 * @retval end() when the action can't be inserted
+	 */
+	iterator queue(size_t turn_num, action_ptr action);
+
+	/**
+	 * Pushes an action in front of a given turn.
+	 * @return The inserted action's position
+	 */
+	iterator push_front(size_t turn, action_ptr action);
+
+	/**
+	 * Moves an action earlier in the execution order (i.e. at the front of the queue),
+	 * by one position.
+	 * @return The action's new position.
+	 */
+	iterator bump_earlier(iterator position);
+
+	/**
+	 * Moves an action later in the execution order (i.e. at the back of the queue),
+	 * by one position.
+	 * @return The action's new position.
+	 */
+	iterator bump_later(iterator position);
+
+	/**
+	 * Deletes the action at the specified position.
+	 * @return The position of the element after the one deleted, or end() if the queue is empty.
+	 */
+	iterator erase(iterator position);
+
+	/**
+	 * Deletes the action at the specified position.
+	 * @return last
+	 */
+	iterator erase(iterator first, iterator last);
+
+	/**
+	 * Empties the action queue.
+	 */
+	void clear() { actions_.clear(); turn_beginnings_.clear(); }
+
+	/**
+	 * Shift turn.
+	 *
+	 * @pre turn_size(0)==0
+	 * The turn 0 is deleted, the actions of turn n are moved to turn n-1.
+	 */
+	void turn_shift() { assert(turn_size(0)==0); turn_beginnings_.pop_front(); }
+
+	/**
+	 * Replaces the action at a given position with another action.
+	 */
+	bool replace(iterator it, action_ptr act){ return actions_.replace(it, act); }
+
+
+	/**
+	 * Returns a given index.
+	 */
+	template <typename T>
+	typename action_set::index<T>::type& get(){ return actions_.get<T>(); }
+	template <typename T>
+	typename action_set::index<T>::type const& get() const { return actions_.get<T>(); }
+
+	/**
+	 * Projects an iterator on a given index.
+	 */
+	template <typename T, typename U>
+	typename action_set::index<T>::type::iterator project(U it){ return actions_.project<T>(it); }
+	template <typename T, typename U>
+	typename action_set::index<T>::type::const_iterator project(U it) const { return actions_.project<T>(it); }
+
+	/**
+	 * Returns the iterator for the first (executed earlier) action within the actions queue.
+	 */
+	iterator begin(){ return actions_.get<chronological>().begin(); }
+	/// reverse version of the above
+	reverse_iterator rbegin(){ return actions_.get<chronological>().rbegin(); }
+	/// const versions of the above
+	const_iterator begin() const { return actions_.get<chronological>().cbegin(); }
+	/// const reverse versions of the above
+	const_reverse_iterator rbegin() const { return actions_.get<chronological>().crbegin(); }
+
+	/**
+	 * Returns the iterator for the position *after* the last executed action within the actions queue.
+	 */
+	iterator end(){ return actions_.get<chronological>().end(); }
+	/// reverse version of the above
+	reverse_iterator rend(){ return actions_.get<chronological>().rend(); }
+	/// const versions of the above
+	const_iterator end() const { return actions_.get<chronological>().cend(); }
+	/// const reverse versions of the above
+	const_reverse_iterator rend() const { return actions_.get<chronological>().crend(); }
+
+	/**
+	 * Indicates whether the action queue is empty.
+	 */
+	bool empty() const { return actions_.empty(); }
+
+	/**
+	 * Returns the number of actions in the action queue.
+	 */
+	size_t size() const { return actions_.size(); }
+
+	/**
+	 * Returns the number of turns that have plans.
+	 *
+	 * @note The current turn is counted. That is if num_turns()==0 then empty()==true.
+	 */
+	size_t num_turns() const { return turn_beginnings_.size(); }
+
+	/**
+	 * Returns the turn of it's planned execution.
+	 *
+	 * The value returned is the difference between the planned turn and the current turn.
+	 *
+	 * @retval 0 If the action is planned for the current turn.
+	 */
+	size_t get_turn(const_iterator it) const;
+
+	/**
+	 * Returns the position of a given iterator in its turn.
+	 */
+	size_t position_in_turn(const_iterator it) const;
+
+	/**
+	 * Returns the iterator for the first (executed earlier) action of a given turn within the actions queue.
+	 */
+	iterator turn_begin(size_t turn_num);
+	const_iterator turn_begin(size_t turn_num) const;
+	reverse_iterator turn_rbegin(size_t turn_num){ return reverse_iterator(turn_end(turn_num)); }
+	const_reverse_iterator turn_rbegin(size_t turn_num) const { return reverse_iterator(turn_end(turn_num)); }
+
+	/*
+	 * Returns the iterator for the position *after* the last executed action of a given turn within the actions queue.
+	 */
+	iterator turn_end(size_t turn_num){ return turn_begin(turn_num+1); }
+	const_iterator turn_end(size_t turn_num) const { return turn_begin(turn_num+1); }
+	reverse_iterator turn_rend(size_t turn_num){ return reverse_iterator(turn_begin(turn_num)); }
+	const_reverse_iterator turn_rend(size_t turn_num) const { return reverse_iterator(turn_begin(turn_num)); }
+
+	/**
+	 * Returns an iterator range corresponding to the requested turn.
+	 */
+	range_t iter_turn(size_t turn_num){ return range_t(turn_begin(turn_num),turn_end(turn_num)); }
+	rrange_t riter_turn(size_t turn_num){ return rrange_t(turn_rbegin(turn_num),turn_rend(turn_num)); }
+	crange_t iter_turn(size_t turn_num) const { return crange_t(turn_begin(turn_num),turn_end(turn_num)); }
+	crrange_t riter_turn(size_t turn_num) const { return crrange_t(turn_rbegin(turn_num),turn_rend(turn_num)); }
+
+	/** @return the number of actions planned for turn turn_num */
+	size_t turn_size(size_t turn_num) const { return turn_end(turn_num) - turn_begin(turn_num); }
+
+	/// Get the underlying action container
+	action_set const& actions() const { return actions_; }
+
+
+private:
+	/**
+	 * Binary search to find the occuring turn of the action pointed by an iterator.
+	 */
+	size_t get_turn_impl(size_t begin, size_t end, const_iterator it) const;
+
+	action_set actions_;
+
+	/**
+	 * Contains a list of iterator to the beginning of each turn.
+	 *
+	 * @invariant turn_beginnings_.front()==actions_.begin() || actions_.empty()
+	 */
+	action_limits turn_beginnings_;
+};
+
+
+/**
  * This internal whiteboard class holds the planned action queues for a team, and offers many
- * utility methods to create and manipulate them. It maintains an internal data structure
- * but mostly hides it by providing its own iterators, begin() and end() methods, etc.
+ * utility methods to create and manipulate them.
+ * It also provides an interface to the underlying side_actions_container.
  */
 class side_actions: public boost::enable_shared_from_this<side_actions>
 {
-	/**
-	 * Class invariant:
-	 *   actions_.empty() || !actions_.back().empty();
-	 */
-
-	typedef std::deque<action_queue> contents_t;
-
 public:
-	class iterator;
-	class const_iterator;
-	friend class iterator;
-	friend class const_iterator;
-	typedef std::reverse_iterator<iterator> reverse_iterator;
-	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+	typedef side_actions_container container;
+
+	typedef container::iterator iterator;
+	typedef container::const_iterator const_iterator;
+	typedef container::reverse_iterator reverse_iterator;
+	typedef container::const_reverse_iterator const_reverse_iterator;
+
+	typedef std::pair<iterator,iterator> range_t;
+	typedef std::pair<reverse_iterator,reverse_iterator> rrange_t;
+	typedef std::pair<const_iterator,const_iterator> crange_t;
+	typedef std::pair<const_reverse_iterator,const_reverse_iterator> crrange_t;
+
 
 	side_actions();
-	virtual ~side_actions();
 
 	///Must be called only once, right after the team that owns this side_actions is added to the teams vector
 	void set_team_index(size_t team_index);
 
 	///Returns the team index this action queue belongs to
 	size_t team_index() { assert(team_index_defined_); return team_index_; }
-
-	/// Get the underlying action container
-	contents_t const& actions() const { return actions_; }
 
 	struct numbers_t;
 	/** Gets called when display is drawing a hex to determine which numbers to draw on it */
@@ -78,103 +308,33 @@ public:
 	 */
 	bool execute(iterator position);
 
-	/**
-	 * Returns the iterator for the first (executed earlier) action within the actions queue.
-	 */
-	iterator begin();
-	/// reverse version of the above
-	reverse_iterator rbegin();
-	/// const versions of the above
-	const_iterator begin() const;
-	const_reverse_iterator rbegin() const;
-
-	/**
-	 * Returns the iterator for the position *after* the last executed action within the actions queue.
-	 */
-	iterator end();
-	/// reverse version of the above
-	reverse_iterator rend();
-	/// const versions of the above
-	const_iterator end() const;
-	const_reverse_iterator rend() const;
 
 	/**
 	 * Indicates whether the action queue is empty.
-	 * Since it's a queue of queues (one per turn), it can be empty of actions,
-	 * while still containing empty queues.
-	 * @todo devise a cleanup system to prevent the possibility of empty queues.
 	 */
 	bool empty() const { return actions_.empty(); }
 
 	/**
 	 * Returns the number of actions in the action queue.
 	 */
-	size_t size() const;
+	size_t size() const { return actions_.size(); }
 
 	///Returns the number of turns that have plans.
-	size_t num_turns() const {return actions_.size();}
-
-	///Returns an iterator to a specific turn queue.
-	iterator turn_begin(size_t turn_num);
-	iterator turn_end(size_t turn_num);
-	reverse_iterator turn_rbegin(size_t turn_num);
-	reverse_iterator turn_rend(size_t turn_num);
-
-	typedef std::pair<iterator,iterator> range_t;
-	typedef std::pair<reverse_iterator,reverse_iterator> rrange_t;
-	///Returns an iterator range corresponding to the requested turn.
-	range_t iter_turn(size_t turn_num);
-	rrange_t riter_turn(size_t turn_num);
+	size_t num_turns() const { return actions_.num_turns(); }
 
 	/** @return the number of actions planned for turn turn_num */
-	size_t turn_size(size_t turn_num) const {
-		if (num_turns() >= turn_num)
-			return actions_[turn_num].size();
-		else
-			return 0;
-	}
+	size_t turn_size(size_t turn_num) const { return actions_.turn_size(turn_num); }
+	size_t get_turn(const_iterator it) const { return actions_.get_turn(it); }
 
 	/**
 	 * Empties the action queue.
 	 */
-	void clear() { safe_clear(); }
+	void clear() { actions_.clear(); }
 
 	/** Sets whether or not the contents should be drawn on the screen. */
 	void hide();
 	void show();
 	bool hidden() const {return hidden_;}
-
-	/**
-	 * Queues a move to be executed last
-	 * @return The queued move's position
-	 */
-	iterator queue_move(size_t turn_num, unit& mover, const pathfind::marked_route& route,
-			arrow_ptr arrow, fake_unit_ptr fake_unit);
-
-	/**
-	 * Queues an attack or attack-move to be executed last
-	 * @return The queued attack's position
-	 */
-	iterator queue_attack(size_t turn_num, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
-			arrow_ptr arrow, fake_unit_ptr fake_unit);
-
-	/**
-	 * Queues a recruit to be executed last
-	 * @return The queued recruit's position
-	 */
-	iterator queue_recruit(size_t turn_num, const std::string& unit_name, const map_location& recruit_hex);
-
-	/**
-	 * Queues a recall to be executed last
-	 * @return The queued recall's position
-	 */
-	iterator queue_recall(size_t turn_num, const unit& unit, const map_location& recall_hex);
-
-	/**
-	 * Queues a suppose_dead to be executed last
-	 * @return The queued suppose_dead's position (an iterator to it)
-	 */
-	iterator queue_suppose_dead(size_t turn_num, unit& curr_unit, map_location const& loc);
 
 	/**
 	 * Inserts an action at the specified position. The begin() and end() functions might prove useful here.
@@ -212,31 +372,99 @@ public:
 	 * @param action The action whose position you're looking for
 	 * @return The action's position within the queue, or end() if action wasn't found.
 	 */
-	iterator get_position_of(action_ptr action);
+	iterator get_position_of(action_ptr action){ return std::find(begin(), end(), action); }
+
+	/**
+	 * Returns the iterator for the first (executed earlier) action within the actions queue.
+	 */
+	iterator begin(){ return actions_.begin(); }
+	/// reverse version of the above
+	reverse_iterator rbegin(){ return actions_.rbegin(); }
+	/// const versions of the above
+	const_iterator begin() const { return actions_.begin(); }
+	const_reverse_iterator rbegin() const { return actions_.rbegin(); }
+
+	/**
+	 * Returns the iterator for the position *after* the last executed action within the actions queue.
+	 */
+	iterator end(){ return actions_.end(); }
+	/// reverse version of the above
+	reverse_iterator rend(){ return actions_.rend(); }
+	/// const versions of the above
+	const_iterator end() const { return actions_.end(); }
+	const_reverse_iterator rend() const { return actions_.rend(); }
+
+	iterator turn_begin(size_t turn_num){ return actions_.turn_begin(turn_num); }
+	iterator turn_end(size_t turn_num){ return actions_.turn_end(turn_num); }
+	reverse_iterator turn_rbegin(size_t turn_num){ return actions_.turn_rbegin(turn_num); }
+	reverse_iterator turn_rend(size_t turn_num){ return actions_.turn_rend(turn_num); }
+	const_iterator turn_begin(size_t turn_num) const { return actions_.turn_begin(turn_num); }
+	const_iterator turn_end(size_t turn_num) const { return actions_.turn_end(turn_num); }
+	const_reverse_iterator turn_rbegin(size_t turn_num) const { return actions_.turn_rbegin(turn_num); }
+	const_reverse_iterator turn_rend(size_t turn_num) const { return actions_.turn_rend(turn_num); }
+
+	///Returns an iterator range corresponding to the requested turn.
+	range_t iter_turn(size_t turn_num){ return actions_.iter_turn(turn_num); }
+	rrange_t riter_turn(size_t turn_num){ return actions_.riter_turn(turn_num); }
+	crange_t iter_turn(size_t turn_num) const { return actions_.iter_turn(turn_num); }
+	crrange_t riter_turn(size_t turn_num) const { return actions_.riter_turn(turn_num); }
+
+
+	/**
+	 * Find the (chronologically) first action between the iterators between.first and between.second but after or equals to limit with respect to the predicate comp.
+	 *
+	 * This function makes sense when T is a non-chronological iterator.
+	 * If T is iterator, and Compare std::less<iterator>, this function returns limit if limit is in [between.first, between.second) and between.first otherwise.
+	 *
+	 * @param between the two iterators between which the action will be searched.
+	 * @param limit the lower bound to search from, that is the return value `it' will verify !comp(limit, it).
+	 * @param comp the predicate to compare with.
+	 * @return `it' so that for all values `x' in [between.first, between.second), chronologically, !comp(x, it) and !comp(it, limit).
+	 * @retval end() if no such action exist.
+	 */
+	template <typename T, typename Compare>
+	iterator find_first_action_of(std::pair<T,T> between, iterator limit, Compare comp);
+	template <typename T, typename Compare>
+	const_iterator find_first_action_of(std::pair<T,T> between, const_iterator limit, Compare comp) const;
 
 	/**
 	 * Finds the first action that belongs to this unit, starting the search at the specified position.
 	 * @return The position, or end() if not found.
 	 */
-	iterator find_first_action_of(unit const* unit, iterator start_position);
+	iterator find_first_action_of(unit const& unit, iterator start_position);
 	///Variant of this method that always start searching at the beginning of the queue
-	iterator find_first_action_of(unit const* unit);
+	iterator find_first_action_of(unit const& unit){ return find_first_action_of(unit, begin()); }
 
 	/**
 	 * Finds the last action that belongs to this unit, starting the search backwards from the specified position.
 	 * @return The position, or end() if not found.
 	 */
-	iterator find_last_action_of(unit const* unit, iterator start_position);
+	iterator find_last_action_of(unit const& unit, iterator start_position);
 	///Variant of the previous method that always start searching at the end of the queue
-	iterator find_last_action_of(unit const* unit);
+	iterator find_last_action_of(unit const& unit);
+	///const variant of the previous function
+	const_iterator find_last_action_of(unit const& unit, const_iterator start_position) const;
 
-	bool unit_has_actions(unit const* unit);
-	size_t count_actions_of(unit const* unit);
+	bool unit_has_actions(unit const& unit);
+	size_t count_actions_of(unit const& unit);
 
 	///Removes all invalid actions "attached" to the unit
 	void remove_invalid_of(unit const*);
 
-	///Determines the appropriate turn number for the next action planned for this unit
+	/**
+	 * Find the first valid action beloging to this unit.
+	 *
+	 * @return The position, or end() if not found.
+	 */
+	const_iterator find_last_valid_of(unit const& u) const;
+
+	/**
+	 * Determines the appropriate turn number for the next action planned for this unit
+	 *
+	 * @warning A return value of 0 can mean that the unit has one action planned on turn 0 or that the unit doesn't have any action planned on any turn.
+	 *
+	 * @retval 0 if the unit has not planned action
+	 */
 	size_t get_turn_num_of(unit const&) const;
 
 	///Validates all planned actions in the queue
@@ -251,6 +479,38 @@ public:
 
 	void raw_turn_shift();
 	void synced_turn_shift();
+
+	/**
+	 * Queues a move to be executed last
+	 * @return The queued move's position
+	 */
+	iterator queue_move(size_t turn_num, unit& mover, const pathfind::marked_route& route,
+			arrow_ptr arrow, fake_unit_ptr fake_unit);
+
+	/**
+	 * Queues an attack or attack-move to be executed last
+	 * @return The queued attack's position
+	 */
+	iterator queue_attack(size_t turn_num, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+			arrow_ptr arrow, fake_unit_ptr fake_unit);
+
+	/**
+	 * Queues a recruit to be executed last
+	 * @return The queued recruit's position
+	 */
+	iterator queue_recruit(size_t turn_num, const std::string& unit_name, const map_location& recruit_hex);
+
+	/**
+	 * Queues a recall to be executed last
+	 * @return The queued recall's position
+	 */
+	iterator queue_recall(size_t turn_num, const unit& unit, const map_location& recall_hex);
+
+	/**
+	 * Queues a suppose_dead to be executed last
+	 * @return The queued suppose_dead's position (an iterator to it)
+	 */
+	iterator queue_suppose_dead(size_t turn_num, unit& curr_unit, map_location const& loc);
 
 	/**
 	 * Network code. A net_cmd object (a config in disguise) represents a modification
@@ -269,21 +529,14 @@ public:
 	net_cmd make_net_cmd_refresh() const;
 
 private:
-	bool validate_iterator(iterator position);
-	void update_size();
-	iterator raw_erase(iterator itor);
-	iterator raw_insert(iterator itor, action_ptr to_insert);
-	iterator raw_enqueue(size_t turn_num, action_ptr to_insert);
 	iterator safe_insert(size_t turn_num, size_t pos, action_ptr to_insert);
 	iterator synced_erase(iterator itor);
 	iterator synced_insert(iterator itor, action_ptr to_insert);
 	iterator synced_enqueue(size_t turn_num, action_ptr to_insert);
 	iterator safe_erase(iterator const& itor);
-	void safe_clear() { contents_t temp = actions_; return actions_.clear(); }
 
-	static iterator null;
+	container actions_;
 
-	contents_t actions_;
 	size_t team_index_;
 	bool team_index_defined_;
 
@@ -294,147 +547,7 @@ private:
 };
 
 /** Dumps side_actions on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, wb::side_actions const& side_actions);
-
-class side_actions::iterator
-	: public std::iterator<std::bidirectional_iterator_tag, action_ptr>
-{
-	friend class side_actions;
-	typedef action_queue::iterator base_t;
-	typedef iterator this_t;
-
-public:
-	iterator()
-			: base_()
-			, turn_num_()
-			, contents_()
-		{}
-	explicit iterator(side_actions::reverse_iterator const& that)
-			: base_(that.base().base_)
-			, turn_num_(that.base().turn_num_)
-			, contents_(that.base().contents_)
-		{}
-
-	/**
-	 * Copy constructor.
-	 *
-	 * If the contents_ is NULL the iterator is singular. Copying singular
-	 * iterators is UB, so avoid it.
-	 */
-	iterator(const iterator& that)
-			: base_(that.contents_ ? that.base_ : base_t())
-			, turn_num_(that.contents_ ? that.turn_num_ : 0)
-			, contents_(that.contents_)
-	{
-	}
-
-	action_ptr& operator*() const {return *base_;}
-	action_ptr* operator->() const {return base_.operator->();}
-	this_t& operator++()
-	{
-		++base_;
-		init();
-		return *this;
-	}
-	this_t& operator--()
-	{
-		assert(contents_);
-		while(base_ == (*contents_)[turn_num_].begin())
-			base_ = (*contents_)[--turn_num_].end();
-		--base_;
-		return *this;
-	}
-	this_t operator+(int x) const
-	{
-		this_t result = *this;
-		if(x >= 0)
-			for(int i=0; i<x; ++i)
-				++result;
-		else
-			for(int i=0; i>x; --i)
-				--result;
-		return result;
-	}
-	this_t operator-(int x) const {return operator+(-x);}
-	size_t operator-(this_t x) const
-	{
-		int result = 0;
-		for(; x!=*this; ++x)
-			++result;
-		return result;
-	}
-	bool operator<(this_t const& that) const
-	{
-		assert(contents_ == that.contents_);
-		if(contents_==NULL)
-			return false;
-		return turn_num_<that.turn_num_ || (turn_num_==that.turn_num_ && base_<that.base_);
-	}
-	bool operator==(this_t const& that) const
-	{
-		assert(contents_ == that.contents_);
-		if(contents_==NULL)
-			return true;
-		return turn_num_==that.turn_num_ && base_==that.base_;
-	}
-	bool operator!=(this_t const& that) const {return !(*this==that);}
-
-private:
-	iterator(base_t const& base, size_t turn_num, side_actions& sa)
-			: base_(base), turn_num_(turn_num), contents_(&sa.actions_)
-		{init();}
-
-	iterator(base_t const& base, size_t turn_num, side_actions::contents_t* contents)
-			// If contents == NULL base is a singualar iterator
-			: base_(contents ? base : base_t())
-			, turn_num_(turn_num)
-			, contents_(contents)
-		{}
-
-	void init()
-	{
-		assert(contents_);
-		while(base_ == (*contents_)[turn_num_].end() //terminates thanks to invariant
-				&& turn_num_+1 < contents_->size())
-			base_ = (*contents_)[++turn_num_].begin();
-	}
-
-	base_t base_;
-	size_t turn_num_;
-	contents_t* contents_;
-};
-class side_actions::const_iterator
-	: public std::iterator<std::bidirectional_iterator_tag, action_ptr const>
-{
-	friend class side_actions;
-	typedef side_actions::iterator base_t;
-	typedef side_actions::const_iterator this_t;
-
-public:
-	const_iterator()
-			: std::iterator<std::bidirectional_iterator_tag, action_ptr const>()
-			, base_()
-		{}
-	//conversion from non-const to const
-	/*implicit*/ const_iterator(base_t const& base)
-			: std::iterator<std::bidirectional_iterator_tag, action_ptr const>()
-			, base_(base)
-		{}
-
-	action_ptr const& operator*() const {return *base_;}
-	action_ptr const* operator->() const {return base_.operator->();}
-	this_t& operator++() {++base_;   return *this;}
-	this_t& operator--() {--base_;   return *this;}
-	this_t operator+(int x) const {return base_ + x;}
-	this_t operator-(int x) const {return base_ - x;}
-	size_t operator-(this_t const& that) const {return base_-that.base_;}
-	bool operator==(this_t const& that) const {return base_ == that.base_;}
-	bool operator!=(this_t const& that) const {return base_ != that.base_;}
-	bool operator<(this_t const& that) const {return base_ < that.base_;}
-
-private:
-	base_t base_;
-};
+std::ostream& operator<<(std::ostream &out, wb::side_actions const &side_actions);
 
 struct side_actions::numbers_t
 {
@@ -450,6 +563,32 @@ struct side_actions::numbers_t
 			, secondary_numbers()
 		{}
 };
+
+template <typename T, typename Compare>
+side_actions::iterator side_actions::find_first_action_of(std::pair<T,T> between, iterator limit, Compare comp)
+{
+	iterator first = actions_.end();
+	for(T it = between.first; it != between.second; ++it) {
+		iterator chrono_it = actions_.project<container::chronological>(it);
+		if((comp(chrono_it, first) || first==actions_.end()) && !comp(chrono_it, limit)) {
+			first = chrono_it;
+		}
+	}
+	return first;
+}
+
+template <typename T, typename Compare>
+side_actions::const_iterator side_actions::find_first_action_of(std::pair<T,T> between, const_iterator limit, Compare comp) const
+{
+	const_iterator first = actions_.end();
+	for(T it = between.first; it != between.second; ++it) {
+		const_iterator chrono_it = actions_.project<container::chronological>(it);
+		if((comp(chrono_it, first) || first==actions_.end()) && !comp(chrono_it, limit)) {
+			first = chrono_it;
+		}
+	}
+	return first;
+}
 
 } //end namespace wb
 

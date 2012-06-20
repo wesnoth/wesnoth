@@ -73,7 +73,7 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	{
 		selection_candidate_ = &(*it);
 
-		if(resources::teams->at(it->side()-1).get_side_actions()->unit_has_actions(&*it))
+		if(resources::teams->at(it->side()-1).get_side_actions()->unit_has_actions(*it))
 		{
 			owner_unit_ = &(*it);
 		}
@@ -90,7 +90,7 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	//Set the execution/deletion/bump targets.
 	if(owner_unit_)
 	{
-		side_actions::iterator itor = side_actions_->find_first_action_of(owner_unit_);
+		side_actions::iterator itor = side_actions_->find_first_action_of(*owner_unit_);
 		if(itor != side_actions_->end())
 			selected_action_ = *itor;
 	}
@@ -188,14 +188,14 @@ void highlight_visitor::unhighlight()
 action_ptr highlight_visitor::get_execute_target()
 {
 	if(action_ptr locked = selected_action_.lock())
-		return *side_actions_->find_first_action_of(locked->get_unit());
+		return *side_actions_->find_first_action_of(*(locked->get_unit()));
 	else
 		return action_ptr();
 }
 action_ptr highlight_visitor::get_delete_target()
 {
 	if(action_ptr locked = selected_action_.lock())
-		return *side_actions_->find_last_action_of(locked->get_unit());
+		return *side_actions_->find_last_action_of(*(locked->get_unit()));
 	else
 		return action_ptr();
 }
@@ -278,7 +278,7 @@ void highlight_visitor::visit(move_ptr move)
 	if (move->fake_unit_)
 	{
 		side_actions& sa = *resources::teams->at(move->team_index()).get_side_actions();
-		side_actions::iterator last_action = sa.find_last_action_of(move->get_unit());
+		side_actions::iterator last_action = sa.find_last_action_of(*(move->get_unit()));
 		side_actions::iterator second_to_last_action =
 				last_action != sa.end() && last_action != sa.begin() ? last_action - 1 : sa.end();
 		bool this_is_last_action = last_action != sa.end() && move == *last_action;

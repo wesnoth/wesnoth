@@ -150,7 +150,7 @@ void move::init()
 		fake_unit_->set_ghosted(true);
 	}
 	side_actions_ptr side_actions = resources::teams->at(team_index()).get_side_actions();
-	side_actions::iterator action = side_actions->find_last_action_of(get_unit());
+	side_actions::iterator action = side_actions->find_last_action_of(*(get_unit()));
 	if (action != side_actions->end())
 	{
 		if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action))
