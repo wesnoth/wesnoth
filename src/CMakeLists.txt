@@ -1047,6 +1047,7 @@ if(ENABLE_TESTS)
 		tests/test_sdl_utils.cpp
 		tests/test_serialization.cpp
 		tests/test_version.cpp
+		tests/test_whiteboard_side_actions.cpp
 		tests/gui/iterator.cpp
 		tests/gui/fire_event.cpp
 		tests/gui/test_drop_target.cpp
