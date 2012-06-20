@@ -75,7 +75,7 @@ carryover::carryover(const config& side)
 {
 	std::string recruits = side["previous_recruits"];
 	std::size_t begin = 0;
-	std::size_t pos;
+	std::size_t pos = 0;
 	while(pos != recruits.npos){
 		pos = recruits.find(',', begin);
 		previous_recruits_.insert(recruits.substr(begin, pos-begin));
