@@ -33,6 +33,8 @@ public:
 	engine_lua( readonly_context &context, const config &cfg );
 
 	virtual ~engine_lua();
+	
+	bool is_ok() const;
 
 	/**
 	 * Taka a config (with engine=lua in it)

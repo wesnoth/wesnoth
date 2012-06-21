@@ -45,6 +45,10 @@ engine::~engine()
 {
 }
 
+bool engine::is_ok() const
+{
+	return true;
+}
 
 void engine::parse_aspect_from_config( readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator< std::vector< aspect_ptr > > b )
 {

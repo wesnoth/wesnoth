@@ -75,8 +75,10 @@ public:
 		} else {
 			return BAD_SCORE;
 		}
-
-		return *(l_obj->get());
+		
+		boost::shared_ptr<int> result = l_obj->get();
+		
+		return result ? *result : 0.0;
 	}
 
 
@@ -239,7 +241,10 @@ engine_lua::engine_lua( readonly_context &context, const config &cfg )
 {
 	name_ = "lua";
 	config data(cfg.child_or_empty("data"));
-	lua_ai_context_->set_persistent_data(data);
+	
+	if (lua_ai_context_) { // The context might be NULL if the config contains errors
+		lua_ai_context_->set_persistent_data(data);
+	}
 }
 
 std::string engine_lua::get_engine_code(const config &cfg) const
@@ -255,6 +260,12 @@ std::string engine_lua::get_engine_code(const config &cfg) const
 engine_lua::~engine_lua()
 {
 }
+
+bool engine_lua::is_ok() const
+{
+    return lua_ai_context_ ? true : false;
+}
+
 
 void engine_lua::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
 	if (!cfg) {
@@ -352,10 +363,12 @@ config engine_lua::to_config() const
 
 	cfg["id"] = get_id();
 	cfg["code"] = this->code_;
-
-	config data = config();
-	lua_ai_context_->get_persistent_data(data);
-	cfg.add_child("data") = data;
+	
+	if (lua_ai_context_) { 
+		config data = config();
+		lua_ai_context_->get_persistent_data(data);
+		cfg.add_child("data") = data;
+	}
 
 	return cfg;
 }

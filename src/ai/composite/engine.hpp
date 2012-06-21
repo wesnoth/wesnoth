@@ -43,7 +43,8 @@ public:
 
 	virtual ~engine();
 
-
+	virtual bool is_ok() const;
+	
 	static void parse_aspect_from_config( readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr > > b );
 
 
@@ -151,7 +152,11 @@ public:
 	}
 
 	virtual engine_ptr get_new_instance( readonly_context &ai, const config &cfg ){
-		return engine_ptr(new ENGINE(ai,cfg));
+		engine_ptr e = engine_ptr(new ENGINE(ai,cfg));
+		if (!e->is_ok()) {
+			return engine_ptr();
+		}
+		return e;
 	}
 
 	virtual engine_ptr get_new_instance( readonly_context &ai, const std::string& name ){
