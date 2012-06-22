@@ -170,7 +170,7 @@ protected:
 	const std::string& title() const { return title_; }
 	game_state& gamestate() const { return gamestate_; }
 	config& snapshot() { return snapshot_; }
-	config& carryover_bank() { return carryover_bank_; }
+	config& carryover_sides() { return carryover_sides_; }
 
 	/** If there needs to be some data fiddling before saving the game, this is the place to go. */
 	virtual void before_save();
@@ -205,7 +205,7 @@ private:
 		even if it is empty the code relies on it to be there. */
 	config snapshot_;
 
-	config carryover_bank_;
+	config carryover_sides_;
 
 	std::string filename_; /** Filename of the savegame file on disk */
 

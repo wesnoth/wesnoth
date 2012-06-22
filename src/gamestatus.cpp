@@ -65,7 +65,7 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 carryover::carryover(const config& side)
 		: save_id_(side["save_id"])
-		, gold_(lexical_cast_default<int>(side["gold"]))
+		, gold_(side["gold"].to_int())
 		, add_(side["gold_add"].to_bool())
 		, color_(side["color"])
 		, current_player_(side["current_player"])
@@ -110,18 +110,26 @@ carryover::carryover(const team& t, const int gold, const bool add)
 //		, recall_list_()
 //		{}
 
-void carryover::transfer_all_gold_to(config& side_cfg, int gold){
-	if(gold_ == 0){
-		return;
+static const int default_gold_qty = 100;
+
+void carryover::transfer_all_gold_to(config& side_cfg){
+	LOG_RG <<"config gold before default " <<side_cfg["gold"]<<"\n";
+	int cfg_gold = side_cfg["gold"].to_int();
+	if(cfg_gold == 0) {
+		cfg_gold = default_gold_qty;
+		side_cfg["gold"] = cfg_gold;
 	}
+	LOG_RG <<"config gold after default " <<side_cfg["gold"]<<"\n";
 
 	if(add_){
-		side_cfg["gold"] = gold + gold_;
+		side_cfg["gold"] = cfg_gold + gold_;
+		gold_ = 0;
 	}
-	else{
+	else if(gold_ > cfg_gold){
 		side_cfg["gold"] = gold_;
+		gold_ = 0;
 	}
-	gold_ = 0;
+
 }
 
 std::string carryover::get_recruits(bool erase){
@@ -151,6 +159,10 @@ void carryover::update_carryover(const team& t, const int gold, const bool add){
 	LOG_RG << "gold after carryover store" << str_cast<int>(gold_) << "\n";
 }
 
+void carryover::initialize_team(config& side_cfg){
+	transfer_all_gold_to(side_cfg);
+}
+
 //TODO: remove
 //void carryover::add_recruits(const std::set<std::string>& recruits){
 //	previous_recruits_.insert(recruits.begin(), recruits.end());
@@ -172,7 +184,7 @@ const std::string carryover::to_string(){
 void carryover::to_config(config& cfg){
 	config& side = cfg.add_child("side");
 	side["save_id"] = save_id_;
-	side["gold"] = str_cast<int>(gold_);
+	side["gold"] = gold_;
 	side["add"] = add_;
 	side["color"] = color_;
 	side["current_player"] = current_player_;
@@ -188,6 +200,7 @@ carryover_info::carryover_info(const config& cfg)
 	: carryover_sides_()
 	, end_level_()
 {
+	if(cfg.empty()) { return; }
 	end_level_.read(cfg.child("end_level_data"));
 	foreach(const config& side, cfg.child_range("side")){
 		this->carryover_sides_.push_back(carryover(side));
@@ -437,7 +450,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		starting_pos(),
 		snapshot(),
 		last_selected(map_location::null_location),
-		carryover_sides(),
+		carryover_sides(cfg.child_or_empty("carryover_sides")),
 		rng_(cfg),
 		variables_(),
 		temporaries_(),
@@ -509,9 +522,6 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		statistics::fresh_stats();
 		statistics::read_stats(stats);
 	}
-
-	const config& carryover_bank = cfg.child("carryover_bank");
-	this->carryover_sides = carryover_info(carryover_bank);
 
 }
 
@@ -879,34 +889,34 @@ protected:
 			throw game::load_game_failed("Map not found");
 		}
 
-		/*if(side_cfg_["controller"] == "human" ||
-		   side_cfg_["controller"] == "network" ||
-		   side_cfg_["controller"] == "network_ai" ||
-		   side_cfg_["controller"] == "human_ai" ||
-			side_cfg_["persistent"].to_bool())
-		{
-			player_exists_ = true;
-
-			//if we have a snapshot, level contains team information
-			//else, we look for [side] or [player] (deprecated) tags in starting_pos
-			///@deprecated r37519 [player] instead of [side] in starting_pos
-			if (snapshot_) {
-				if (const config &c = level_.find_child("player","save_id",save_id_))  {
-					player_cfg_ = &c;
-				}
-			} else {
-				//at the start of scenario, get the persistence information from starting_pos
-				if (const config &c =  starting_pos_.find_child("player","save_id",save_id_))  {
-					player_cfg_ = &c;
-				} else if (const config &c =  starting_pos_.find_child("side","save_id",save_id_))  {
-					player_cfg_ = &c;
-					player_exists_ = false; //there is only a [side] tag for this save_id in starting_pos
-				} else {
-					player_cfg_ = NULL;
-					player_exists_ = false;
-				}
-			}
-		}*/
+//		if(side_cfg_["controller"] == "human" ||
+//		   side_cfg_["controller"] == "network" ||
+//		   side_cfg_["controller"] == "network_ai" ||
+//		   side_cfg_["controller"] == "human_ai" ||
+//			side_cfg_["persistent"].to_bool())
+//		{
+//			player_exists_ = true;
+//
+//			//if we have a snapshot, level contains team information
+//			//else, we look for [side] or [player] (deprecated) tags in starting_pos
+//			///@deprecated r37519 [player] instead of [side] in starting_pos
+//			if (snapshot_) {
+//				if (const config &c = level_.find_child("player","save_id",save_id_))  {
+//					player_cfg_ = &c;
+//				}
+//			} else {
+//				//at the start of scenario, get the persistence information from starting_pos
+//				if (const config &c =  starting_pos_.find_child("player","save_id",save_id_))  {
+//					player_cfg_ = &c;
+//				} else if (const config &c =  starting_pos_.find_child("side","save_id",save_id_))  {
+//					player_cfg_ = &c;
+//					player_exists_ = false; //there is only a [side] tag for this save_id in starting_pos
+//				} else {
+//					player_cfg_ = NULL;
+//					player_exists_ = false;
+//				}
+//			}
+//		}
 
 		DBG_NG_TC << "save id: "<< save_id_ <<std::endl;
 		DBG_NG_TC << "snapshot: "<< (player_exists_ ? "true" : "false") <<std::endl;

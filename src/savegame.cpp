@@ -786,7 +786,7 @@ void loadgame::copy_era(config &cfg)
 savegame::savegame(game_state& gamestate, const bool compress_saves, const std::string& title)
 	: gamestate_(gamestate)
 	, snapshot_()
-	, carryover_bank_(gamestate.carryover_sides.to_config())
+	, carryover_sides_(gamestate.carryover_sides.to_config())
 	, filename_()
 	, title_(title)
 	, error_message_(_("The game could not be saved: "))
@@ -997,7 +997,7 @@ void savegame::write_game(config_writer &out) const
 	out.write_key_val("next_underlying_unit_id", lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id()));
 	gamestate_.write_config(out, false);
 	out.write_child("snapshot",snapshot_);
-	out.write_child("carryover_bank",carryover_bank_);
+	out.write_child("carryover_sides",carryover_sides_);
 	out.open_child("statistics");
 	statistics::write_stats(out);
 	out.close_child("statistics");

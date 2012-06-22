@@ -59,11 +59,11 @@ public:
 	~carryover(){};
 
 	const std::string& get_save_id() const{ return save_id_; };
-	void transfer_all_gold_to(config& side_cfg, int gold);
-	bool get_add() const { return add_; };
+	void transfer_all_gold_to(config& side_cfg);
 	std::string get_recruits(bool erase=false);
 	std::vector<unit>& get_recall_list() { return recall_list_; };
 	void update_carryover(const team& t, const int gold, const bool add);
+	void initialize_team(config& side_cfg);
 	//TODO: remove
 //	void add_recruits(const std::set<std::string>& recruits);
 //	void add_recall(const unit& u);
