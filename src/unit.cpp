@@ -1106,6 +1106,7 @@ void unit::new_turn()
 	}
 	if(rebuild_from_type) {
 		int old_hp = hit_points_;
+		clear_haloes();
 		advance_to(type());
 		if(hit_points_ > old_hp)
 			hit_points_ = old_hp;
@@ -2683,7 +2684,10 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 
 				} else if (apply_to == "ellipse") {
 					cfg_["ellipse"] = effect["ellipse"];
-				}
+
+				} else if (apply_to == "halo") {
+					clear_haloes();
+					cfg_["halo"] = effect["halo"];
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
 			if(apply_to == "attack") {
