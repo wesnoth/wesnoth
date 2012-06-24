@@ -227,7 +227,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     else:
         if addon == "mainline":
             if cid != "mainline":
-                wesnoth.parser.parse_text("{campaigns}", "NORMAL," + define)
+                wesnoth.parser.parse_text("{core}{campaigns}", "SKIP_CORE,NORMAL," + define)
                 wesnoth.add_units(cid)
         else:
             wesnoth.parser.parse_text("{core}{~add-ons}", "SKIP_CORE," + define)
