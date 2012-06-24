@@ -49,7 +49,7 @@ public:
 	//! Tag for action_set's hashed_non_unique index.
 	struct by_unit{};
 
-	///! Underlying container
+	//! Underlying container
 	typedef boost::multi_index::multi_index_container <
 		action_ptr,
 		boost::multi_index::indexed_by<
@@ -101,15 +101,15 @@ public:
 	iterator push_front(size_t turn, action_ptr action);
 
 	/**
-	 * Moves an action earlier in the execution order (i.e. at the front of the queue),
-	 * by one position.
+	 * Moves an action earlier in the execution order.
+	 * i.e. at the front of the queue by one position.
 	 * @return The action's new position.
 	 */
 	iterator bump_earlier(iterator position);
 
 	/**
-	 * Moves an action later in the execution order (i.e. at the back of the queue),
-	 * by one position.
+	 * Moves an action later in the execution order.
+	 * i.e. at the back of the queue by one position.
 	 * @return The action's new position.
 	 */
 	iterator bump_later(iterator position);
@@ -134,8 +134,8 @@ public:
 	/**
 	 * Shift turn.
 	 *
-	 * @pre turn_size(0)==0
 	 * The turn 0 is deleted, the actions of turn n are moved to turn n-1.
+	 * @pre turn_size(0)==0
 	 */
 	void turn_shift() { assert(turn_size(0)==0); turn_beginnings_.pop_front(); }
 
@@ -165,22 +165,22 @@ public:
 	 * Returns the iterator for the first (executed earlier) action within the actions queue.
 	 */
 	iterator begin(){ return actions_.get<chronological>().begin(); }
-	/// reverse version of the above
+	/** reverse version of the above */
 	reverse_iterator rbegin(){ return actions_.get<chronological>().rbegin(); }
-	/// const versions of the above
+	/** const versions of the above */
 	const_iterator begin() const { return actions_.get<chronological>().cbegin(); }
-	/// const reverse versions of the above
+	/** const reverse versions of the above */
 	const_reverse_iterator rbegin() const { return actions_.get<chronological>().crbegin(); }
 
 	/**
 	 * Returns the iterator for the position *after* the last executed action within the actions queue.
 	 */
 	iterator end(){ return actions_.get<chronological>().end(); }
-	/// reverse version of the above
+	/** reverse version of the above */
 	reverse_iterator rend(){ return actions_.get<chronological>().rend(); }
-	/// const versions of the above
+	/** const versions of the above */
 	const_iterator end() const { return actions_.get<chronological>().cend(); }
-	/// const reverse versions of the above
+	/** const reverse versions of the above */
 	const_reverse_iterator rend() const { return actions_.get<chronological>().crend(); }
 
 	/**
@@ -195,13 +195,15 @@ public:
 
 	/**
 	 * Returns the number of turns that have plans.
+	 * If the container holds only one action on turn 1 (that is turn 0 is empty),
+	 * this function will still returns 2. Indeed, turn 0 has an "empty" plan.
 	 *
 	 * @note The current turn is counted. That is if num_turns()==0 then empty()==true.
 	 */
 	size_t num_turns() const { return turn_beginnings_.size(); }
 
 	/**
-	 * Returns the turn of it's planned execution.
+	 * Returns the turn of a given iterator planned execution.
 	 *
 	 * The value returned is the difference between the planned turn and the current turn.
 	 *
@@ -238,10 +240,10 @@ public:
 	crange_t iter_turn(size_t turn_num) const { return crange_t(turn_begin(turn_num),turn_end(turn_num)); }
 	crrange_t riter_turn(size_t turn_num) const { return crrange_t(turn_rbegin(turn_num),turn_rend(turn_num)); }
 
-	/** @return the number of actions planned for turn turn_num */
+	/** Returns the number of actions planned for turn turn_num */
 	size_t turn_size(size_t turn_num) const { return turn_end(turn_num) - turn_begin(turn_num); }
 
-	/// Get the underlying action container
+	/** Get the underlying action container */
 	action_set const& actions() const { return actions_; }
 
 
@@ -285,10 +287,10 @@ public:
 
 	side_actions();
 
-	///Must be called only once, right after the team that owns this side_actions is added to the teams vector
+	/** Must be called only once, right after the team that owns this side_actions is added to the teams vector */
 	void set_team_index(size_t team_index);
 
-	///Returns the team index this action queue belongs to
+	/** Returns the team index this action queue belongs to */
 	size_t team_index() { assert(team_index_defined_); return team_index_; }
 
 	struct numbers_t;
@@ -297,14 +299,14 @@ public:
 
 	/**
 	 * Executes the first action in the queue, and then deletes it.
-	 * @return true - if the action was completed successfully
+	 * @return true if the action was completed successfully
 	 */
 	bool execute_next();
 
 	/**
 	 * Executes the specified action, if it exists in the queue.
 	 * If the action is not finished, it's moved at the end of the queue.
-	 * @return true - if the action was completed successfully
+	 * @return true if the action was completed successfully
 	 */
 	bool execute(iterator position);
 
@@ -319,11 +321,19 @@ public:
 	 */
 	size_t size() const { return actions_.size(); }
 
-	///Returns the number of turns that have plans.
+	/** Returns the number of turns that have plans. */
 	size_t num_turns() const { return actions_.num_turns(); }
 
-	/** @return the number of actions planned for turn turn_num */
+	/** Returns the number of actions planned for turn turn_num */
 	size_t turn_size(size_t turn_num) const { return actions_.turn_size(turn_num); }
+
+	/**
+	 * Returns the turn of a given iterator planned execution.
+	 *
+	 * The value returned is the difference between the planned turn and the current turn.
+	 *
+	 * @retval 0 If the action is planned for the current turn.
+	 */
 	size_t get_turn(const_iterator it) const { return actions_.get_turn(it); }
 
 	/**
@@ -349,15 +359,15 @@ public:
 	iterator queue_action(size_t turn_num, action_ptr action);
 
 	/**
-	 * Moves an action earlier in the execution order (i.e. at the front of the queue),
-	 * by one position.
+	 * Moves an action earlier in the execution order.
+	 * i.e. at the front of the queue by one position.
 	 * @return The action's new position.
 	 */
 	iterator bump_earlier(iterator position);
 
 	/**
-	 * Moves an action later in the execution order (i.e. at the back of the queue),
-	 * by one position.
+	 * Moves an action later in the execution order.
+	 * i.e. at the back of the queue by one position.
 	 * @return The action's new position.
 	 */
 	iterator bump_later(iterator position);
@@ -378,9 +388,9 @@ public:
 	 * Returns the iterator for the first (executed earlier) action within the actions queue.
 	 */
 	iterator begin(){ return actions_.begin(); }
-	/// reverse version of the above
+	/** reverse version of the above */
 	reverse_iterator rbegin(){ return actions_.rbegin(); }
-	/// const versions of the above
+	/** const versions of the above */
 	const_iterator begin() const { return actions_.begin(); }
 	const_reverse_iterator rbegin() const { return actions_.rbegin(); }
 
@@ -388,9 +398,9 @@ public:
 	 * Returns the iterator for the position *after* the last executed action within the actions queue.
 	 */
 	iterator end(){ return actions_.end(); }
-	/// reverse version of the above
+	/** reverse version of the above */
 	reverse_iterator rend(){ return actions_.rend(); }
-	/// const versions of the above
+	/** const versions of the above */
 	const_iterator end() const { return actions_.end(); }
 	const_reverse_iterator rend() const { return actions_.rend(); }
 
@@ -403,7 +413,7 @@ public:
 	const_reverse_iterator turn_rbegin(size_t turn_num) const { return actions_.turn_rbegin(turn_num); }
 	const_reverse_iterator turn_rend(size_t turn_num) const { return actions_.turn_rend(turn_num); }
 
-	///Returns an iterator range corresponding to the requested turn.
+	/** Returns an iterator range corresponding to the requested turn. */
 	range_t iter_turn(size_t turn_num){ return actions_.iter_turn(turn_num); }
 	rrange_t riter_turn(size_t turn_num){ return actions_.riter_turn(turn_num); }
 	crange_t iter_turn(size_t turn_num) const { return actions_.iter_turn(turn_num); }
@@ -414,7 +424,9 @@ public:
 	 * Find the (chronologically) first action between the iterators between.first and between.second but after or equals to limit with respect to the predicate comp.
 	 *
 	 * This function makes sense when T is a non-chronological iterator.
-	 * If T is iterator, and Compare std::less<iterator>, this function returns limit if limit is in [between.first, between.second) and between.first otherwise.
+	 * If T is iterator and Compare is std::less<iterator>,
+	 * this function returns limit if limit is in [between.first, between.second)
+	 * or between.first if between.first>limit or end() otherwise.
 	 *
 	 * @param between the two iterators between which the action will be searched.
 	 * @param limit the lower bound to search from, that is the return value `it' will verify !comp(limit, it).
@@ -432,7 +444,7 @@ public:
 	 * @return The position, or end() if not found.
 	 */
 	iterator find_first_action_of(unit const& unit, iterator start_position);
-	///Variant of this method that always start searching at the beginning of the queue
+	/** Variant of this method that always start searching at the beginning of the queue */
 	iterator find_first_action_of(unit const& unit){ return find_first_action_of(unit, begin()); }
 
 	/**
@@ -440,19 +452,19 @@ public:
 	 * @return The position, or end() if not found.
 	 */
 	iterator find_last_action_of(unit const& unit, iterator start_position);
-	///Variant of the previous method that always start searching at the end of the queue
+	/** Variant of the previous method that always start searching at the end of the queue */
 	iterator find_last_action_of(unit const& unit);
-	///const variant of the previous function
+	/** const variant of the previous function */
 	const_iterator find_last_action_of(unit const& unit, const_iterator start_position) const;
 
 	bool unit_has_actions(unit const& unit);
 	size_t count_actions_of(unit const& unit);
 
-	///Removes all invalid actions "attached" to the unit
+	/** Removes all invalid actions "attached" to the unit */
 	void remove_invalid_of(unit const*);
 
 	/**
-	 * Find the first valid action beloging to this unit.
+	 * Find the first valid action belonging to this unit.
 	 *
 	 * @return The position, or end() if not found.
 	 */
@@ -463,18 +475,18 @@ public:
 	 *
 	 * @warning A return value of 0 can mean that the unit has one action planned on turn 0 or that the unit doesn't have any action planned on any turn.
 	 *
-	 * @retval 0 if the unit has not planned action
+	 * @retval 0 if the unit doesn't have any planned action
 	 */
 	size_t get_turn_num_of(unit const&) const;
 
-	///Validates all planned actions in the queue
+	/** Validates all planned actions in the queue */
 	void validate_actions();
 
-	///Used to track gold spending by recruits/recalls when building the future unit map
+	/** Used to track gold spending by recruits/recalls when building the future unit map */
 	int get_gold_spent() const { return gold_spent_; }
-	///Used to track gold spending by recruits/recalls when building the future unit map
+	/** Used to track gold spending by recruits/recalls when building the future unit map */
 	void change_gold_spent_by(int difference);
-	///Set gold spent back to zero
+	/** Set gold spent back to zero */
 	void reset_gold_spent();
 
 	void raw_turn_shift();
@@ -522,7 +534,7 @@ public:
 	void execute_net_cmd(net_cmd const&);
 	net_cmd make_net_cmd_insert(size_t turn_num, size_t pos, action_const_ptr) const;
 	net_cmd make_net_cmd_insert(const_iterator const& pos, action_const_ptr) const;
-	net_cmd make_net_cmd_replace(const_iterator const& pos, action_const_ptr) const; //< an optimized remove+insert
+	net_cmd make_net_cmd_replace(const_iterator const& pos, action_const_ptr) const;
 	net_cmd make_net_cmd_remove(const_iterator const& pos) const;
 	net_cmd make_net_cmd_bump_later(const_iterator const& pos) const;
 	net_cmd make_net_cmd_clear() const;
@@ -540,7 +552,7 @@ private:
 	size_t team_index_;
 	bool team_index_defined_;
 
-	/// Used to store gold "spent" in planned recruits/recalls when the future unit map is applied
+	/** Used to store gold "spent" in planned recruits/recalls when the future unit map is applied */
 	int gold_spent_;
 
 	bool hidden_;
