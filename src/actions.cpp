@@ -2546,6 +2546,7 @@ bool clear_shroud(int side, bool reset_fog)
 	return result;
 }
 
+
 namespace { // Private helpers for move_unit()
 
 /// Handles animating unit movement in controllable stages
@@ -2667,6 +2668,14 @@ public:
 	{}
 
 	/**
+	 * @returns true if this is currently tracking a displaced unit.
+	 */
+	bool has_displaced_something()
+	{
+		return displaced_ != map_location::null_location;
+	}
+
+	/**
 	 * Displays the unit's starting animation, if necessary.
 	 * This will be called by continue_movement() as needed.
 	 */
@@ -2712,11 +2721,21 @@ public:
 		assert(loc_ < dest);
 		assert(dest < route_.end());
 
-		unit *ui = m_.extract(*loc_);
+		unit_map::iterator ui = m_.find(*loc_);
+
+		if ( has_displaced_something()  &&  ui != m_.end() ) {
+			// Get the moving unit out of the way of undisplacement.
+			map_location empty_hex =
+				pathfind::find_vacant_tile(*resources::game_map, m_, route_.front());
+			std::pair<unit_map::iterator, bool> move_result =
+				m_.move(*loc_, empty_hex);
+			if ( move_result.second )
+				ui = move_result.first;
+		}
 
 		undisplace();
 
-		if(ui && show_move_)
+		if ( show_move_  &&  ui != m_.end() )
 		{
 			// show the movement animation
 			team &tm = teams[ui->side() - 1];
@@ -2727,13 +2746,16 @@ public:
 				unit_display::move_unit_step(route_, step - route_.begin(), placer.temp_unit, tm);
 			}
 		}
-		if(ui)
+		if ( ui.valid() )
 		{
 			displace(*dest);
 
 			// move the real unit
-			ui->set_location(*dest);
-			m_.insert(ui);
+			std::pair<unit_map::iterator, bool> move_result =
+				m_.move(ui->get_location(), *dest);
+			if ( move_result.second )
+				ui = move_result.first;
+
 			ui->set_facing((dest-1)->get_relative_dir(*dest));
 			ui->set_standing();
 			disp.invalidate_unit_after_move(*loc_, *dest);
@@ -2743,9 +2765,6 @@ public:
 
 		loc_ = dest;
 	}
-
-	bool has_displaced_something()
-	{ return displaced_ != map_location::null_location; }
 
 	/**
 	 * Ends the unit's animation, displaying the unit's movement
