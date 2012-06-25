@@ -110,6 +110,9 @@ Version 1.11.0-svn:
    * Fixed provided saved game filenames being ignored when requesting to
      save a MP game due to a network or OOS error (bug #19562).
    * Clicking a unit does not reveal adjacent hidden units (bug #19381).
+   * Trying to initiate movement (or an attack) before previous movement is
+     finished no longer unselects the current unit (bug #19734). (The new
+     movement command is still deliberately ignored.)
 
  * Whiteboard:
    * Fixed bug #19369: Using planning mode can cause losing ability to move my
