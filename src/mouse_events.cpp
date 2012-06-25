@@ -477,7 +477,11 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	} // end planned unit map scope
 
 	//see if we're trying to do a attack or move-and-attack
-	if((!browse || resources::whiteboard->is_active()) && !commands_disabled && attack_from.valid()) {
+	if((!browse || resources::whiteboard->is_active()) && attack_from.valid()) {
+
+		// Ignore this command if commands are disabled.
+		if ( commands_disabled )
+			return false;
 
 		if (((u.valid() && u->side() == side_num_) || resources::whiteboard->is_active()) && clicked_u.valid() ) {
 			if (attack_from == selected_hex_) { //no move needed
@@ -558,13 +562,17 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		}
 	}
 	//otherwise we're trying to move to a hex
-	else if((!browse || resources::whiteboard->is_active()) && !commands_disabled &&
-			selected_hex_.valid() && selected_hex_ != hex &&
+	else if((!browse || resources::whiteboard->is_active())  &&
+	         selected_hex_.valid() && selected_hex_ != hex &&
 	         u != units_.end() && u.valid() &&
 	         (u->side() == side_num_ || resources::whiteboard->is_active()) &&
 		     clicked_u == units_.end() &&
 		     !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
+
+		// Ignore this command if commands are disabled.
+		if ( commands_disabled )
+			return false;
 
 		// If the whiteboard is active, it intercepts any unit movement
 		if (resources::whiteboard->is_active()) {

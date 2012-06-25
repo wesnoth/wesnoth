@@ -8,6 +8,10 @@ Version 1.10.3+svn:
      Ukrainian
  * Terrain:
    * Improve appearance of sand near dirt with transitions
+ * User interface:
+   * Trying to initiate movement (or an attack) before previous movement is
+     finished no longer unselects the current unit (bug #19734). (The new
+     movement command is still deliberately ignored.)
  * WML engine:
    * Fixed CALL_FUNCTION macro (bug #19805)
  * Miscellaneous and bug fixes:
