@@ -1036,7 +1036,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			unit_map::iterator u = resources::units->find(dst);
+			unit_map::iterator u = find_visible_unit(dst, current_team);
 			if (u.valid()) {
 				std::stringstream errbuf;
 				errbuf << "destination already occupied: "
