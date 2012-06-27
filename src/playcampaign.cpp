@@ -74,20 +74,7 @@ typedef std::map<std::string, player_controller> controller_map;
 
 static void team_init(config& level, game_state& gamestate){
 	foreach(config& side_cfg, level.child_range("side")){
-		carryover* side = gamestate.carryover_sides.get_side(side_cfg["save_id"]);
-
-		if(side == NULL ){ continue; }
-			side->transfer_all_gold_to(side_cfg);
-			std::string can_recruit_str = side->get_recruits(true);
-			side_cfg["previous_recruits"] = can_recruit_str;
-
-			std::vector<unit>::iterator i = side->get_recall_list().begin();
-			while( i != side->get_recall_list().end()){
-				LOG_RG<<"adding unit " << i->name() << " \n";
-				config& new_unit = side_cfg.add_child("unit");
-				i->write(new_unit);
-				i = side->get_recall_list().erase(i);
-			}
+		gamestate.carryover_sides.transfer_all_to(side_cfg);
 	}
 }
 
@@ -212,12 +199,8 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	const int ticks = SDL_GetTicks();
 	int num_turns = (*level)["turns"].to_int(-1);
 
-	LOG_RG << "before level init "<< str_cast<int>((*level)["carryover_percentage"]) << "\n";
-
 	config init_level = *level;
 	team_init(init_level, state_of_game);
-
-	LOG_RG << "after level init "<< str_cast<int>((*level)["carryover_percentage"]) << "\n";
 
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 	playsingle_controller playcontroller(init_level, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
@@ -225,9 +208,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 	end_level = playcontroller.get_end_level_data_const();
-	LOG_RG<< "carryover percentage before " << str_cast<int>(end_level.carryover_percentage) << "\n";
 	state_of_game.carryover_sides.set_end_level(end_level);
-	LOG_RG<< "carryover percentage after " << str_cast<int>(state_of_game.carryover_sides.get_end_level().carryover_percentage) << "\n";
 
 	if (res == DEFEAT) {
 		if (resources::persist != NULL)
@@ -264,20 +245,14 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	const int ticks = SDL_GetTicks();
 	int num_turns = (*level)["turns"].to_int(-1);
 
-	LOG_RG << "before level init "<< str_cast<int>((*level)["carryover_percentage"]) << "\n";
-
 	config init_level = *level;
 	team_init(init_level, state_of_game);
-
-	LOG_RG << "after level init "<< str_cast<int>((*level)["carryover_percentage"]) << "\n";
 
 	playmp_controller playcontroller(init_level, state_of_game, ticks, num_turns,
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 	end_level = playcontroller.get_end_level_data_const();
-	LOG_RG<< "carryover percentage before " << str_cast<int>(end_level.carryover_percentage) << "\n";
 	state_of_game.carryover_sides.set_end_level(end_level);
-	LOG_RG<< "carryover percentage" << str_cast<int>(state_of_game.carryover_sides.get_end_level().carryover_percentage) << "\n";
 
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())

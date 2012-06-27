@@ -42,42 +42,40 @@ typedef boost::shared_ptr<team_builder> team_builder_ptr;
 class carryover{
 public:
 	carryover()
-		: save_id_()
-		, gold_()
-		, add_ ()
+		: add_ ()
 		, color_()
 		, current_player_()
+		, gold_()
 		, name_()
 		, previous_recruits_()
 		, recall_list_()
+		, save_id_()
 	{};
 	// Turns config from a loaded savegame into carryover_info
 	explicit carryover(const config& side);
 	carryover(const team& t, const int gold, const bool add);
-	//TODO: remove
-	//carryover(const std::string& save_id, const std::set<std::string> & recruits);
 	~carryover(){};
 
 	const std::string& get_save_id() const{ return save_id_; };
 	void transfer_all_gold_to(config& side_cfg);
-	std::string get_recruits(bool erase=false);
-	std::vector<unit>& get_recall_list() { return recall_list_; };
+	void transfer_all_recruits_to(config& side_cfg);
+	void transfer_all_recalls_to(config& side_cfg);
+	//std::vector<unit>& get_recall_list() { return recall_list_; };
 	void update_carryover(const team& t, const int gold, const bool add);
 	void initialize_team(config& side_cfg);
-	//TODO: remove
-//	void add_recruits(const std::set<std::string>& recruits);
-//	void add_recall(const unit& u);
 	const std::string to_string();
 	void to_config(config& cfg);
 private:
-	std::string save_id_;
-	int gold_;
 	bool add_;
 	std::string color_;
 	std::string current_player_;
+	int gold_;
 	std::string name_;
 	std::set<std::string> previous_recruits_;
 	std::vector<unit> recall_list_;
+	std::string save_id_;
+
+	std::string get_recruits(bool erase=false);
 };
 
 class carryover_info{
@@ -94,9 +92,9 @@ public:
 	void add_side(const config& cfg);
 	void add_side(const team& t, const int gold, const bool add);
 	//TODO: remove
-	//void add_side(const std::string& save_id, const std::set<std::string>& recruits);
 	void set_end_level(const end_level_data& end_level) { end_level_ = end_level; };
 	void transfer_from(const team& t, int carryover_gold);
+	void transfer_all_to(config& side_cfg);
 	const end_level_data& get_end_level() const;
 	const config to_config();
 private:

@@ -64,23 +64,27 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 carryover::carryover(const config& side)
-		: save_id_(side["save_id"])
-		, gold_(side["gold"].to_int())
-		, add_(side["gold_add"].to_bool())
+		: add_(side["gold_add"].to_bool())
 		, color_(side["color"])
 		, current_player_(side["current_player"])
+		, gold_(side["gold"].to_int())
 		, name_(side["name"])
 		, previous_recruits_()
 		, recall_list_()
+		, save_id_(side["save_id"])
 {
-	std::string recruits = side["previous_recruits"];
-	std::size_t begin = 0;
-	std::size_t pos = 0;
-	while(pos != recruits.npos){
-		pos = recruits.find(',', begin);
-		previous_recruits_.insert(recruits.substr(begin, pos-begin));
-		begin = pos + 1;
-	}
+	//TODO: remove once confirmed
+//	std::string recruits = side["previous_recruits"];
+//	std::size_t begin = 0;
+//	std::size_t pos = 0;
+//	while(pos != recruits.npos){
+//		pos = recruits.find(',', begin);
+//		previous_recruits_.insert(recruits.substr(begin, pos-begin));
+//		begin = pos + 1;
+//	}
+
+	std::vector<std::string> temp_recruits = utils::split(side["previous_recruits"], ',');
+	previous_recruits_.insert(temp_recruits.begin(), temp_recruits.end());
 
 	foreach(const config& u, side.child_range("unit")){
 		recall_list_.push_back(unit(u));
@@ -88,48 +92,62 @@ carryover::carryover(const config& side)
 }
 
 carryover::carryover(const team& t, const int gold, const bool add)
-		: save_id_(t.save_id())
-		, gold_(gold)
-		, add_ (add)
+		: add_ (add)
 		, color_(t.color())
 		, current_player_(t.current_player())
+		, gold_(gold)
 		, name_(t.name())
 		, previous_recruits_(t.recruits())
 		, recall_list_(t.recall_list())
+		, save_id_(t.save_id())
 		{}
-
-//TODO: remove
-//carryover::carryover(const std::string& save_id, const std::set<std::string>& recruits)
-//		: save_id_(save_id)
-//		, gold_()
-//		, add_()
-//		, color_()
-//		, current_player_()
-//		, name_()
-//		, previous_recruits_(recruits)
-//		, recall_list_()
-//		{}
 
 static const int default_gold_qty = 100;
 
 void carryover::transfer_all_gold_to(config& side_cfg){
-	LOG_RG <<"config gold before default " <<side_cfg["gold"]<<"\n";
+
 	int cfg_gold = side_cfg["gold"].to_int();
-	if(cfg_gold == 0) {
+
+	if(side_cfg["gold"].empty()) {
 		cfg_gold = default_gold_qty;
 		side_cfg["gold"] = cfg_gold;
 	}
-	LOG_RG <<"config gold after default " <<side_cfg["gold"]<<"\n";
 
 	if(add_){
 		side_cfg["gold"] = cfg_gold + gold_;
-		gold_ = 0;
 	}
 	else if(gold_ > cfg_gold){
 		side_cfg["gold"] = gold_;
-		gold_ = 0;
 	}
 
+	gold_ = 0;
+}
+
+void carryover::transfer_all_recruits_to(config& side_cfg){
+	//TODO:remove
+//	std::stringstream can_recruit;
+//	for(std::set<std::string>::iterator i = previous_recruits_.begin(); i != previous_recruits_.end(); i++){
+//		can_recruit << *i << ",";
+//		previous_recruits_.erase(i);
+//	}
+//
+//	std::string can_recruit_str = can_recruit.str();
+//	// Remove the trailing comma
+//	if(can_recruit_str.empty() == false) {
+//		can_recruit_str.resize(can_recruit_str.size()-1);
+//	}
+
+	std::string can_recruit_str = utils::join(previous_recruits_, ",");
+	previous_recruits_.clear();
+	side_cfg["previous_recruits"] = can_recruit_str;
+}
+
+void carryover::transfer_all_recalls_to(config& side_cfg){
+	foreach(unit& u, recall_list_){
+		config& new_unit = side_cfg.add_child("unit");
+		u.write(new_unit);
+	}
+	recall_list_.clear();
 }
 
 std::string carryover::get_recruits(bool erase){
@@ -156,21 +174,11 @@ void carryover::update_carryover(const team& t, const int gold, const bool add){
 	name_ = t.name();
 	previous_recruits_.insert(t.recruits().begin(), t.recruits().end());
 	recall_list_.insert(recall_list_.end(), t.recall_list().begin(), t.recall_list().end());
-	LOG_RG << "gold after carryover store" << str_cast<int>(gold_) << "\n";
 }
 
 void carryover::initialize_team(config& side_cfg){
 	transfer_all_gold_to(side_cfg);
 }
-
-//TODO: remove
-//void carryover::add_recruits(const std::set<std::string>& recruits){
-//	previous_recruits_.insert(recruits.begin(), recruits.end());
-//}
-//
-//void carryover::add_recall(const unit& u){
-//	recall_list_.push_back(u);
-//}
 
 const std::string carryover::to_string(){
 	std::string side = "";
@@ -215,14 +223,6 @@ void carryover_info::add_side(const config& cfg) {
 	carryover_sides_.push_back(carryover(cfg));
 }
 
-//TODO: remove
-//void carryover_info::add_side(const team& t, const int gold, const bool add){
-//	carryover_sides_.push_back(carryover(t, gold, add));
-//}
-//
-//void carryover_info::add_side(const std::string& save_id, const std::set<std::string>& recruits) {
-//	carryover_sides_.push_back(carryover(save_id, recruits));
-//}
 
 const end_level_data& carryover_info::get_end_level() const{
 	return end_level_;
@@ -237,6 +237,17 @@ void carryover_info::transfer_from(const team& t, int carryover_gold){
 	}
 
 	carryover_sides_.push_back(carryover(t, carryover_gold, end_level_.carryover_add));
+}
+
+void carryover_info::transfer_all_to(config& side_cfg){
+	foreach(carryover& side, carryover_sides_){
+		if(side.get_save_id() == side_cfg["save_id"]){
+			side.transfer_all_gold_to(side_cfg);
+			side.transfer_all_recalls_to(side_cfg);
+			side.transfer_all_recruits_to(side_cfg);
+			return;
+		}
+	}
 }
 
 const config carryover_info::to_config() {
