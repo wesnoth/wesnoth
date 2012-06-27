@@ -981,6 +981,7 @@ function wml_actions.add_ai_behavior(cfg)
 	local loop_id = cfg.loop_id or "main_loop"
 	local eval = cfg.evaluation
 	local exec = cfg.execution
+	local id = cfg.bca_id or ("bca-" .. unit.__cfg.underlying_id)
 
 	local ux = unit.x -- @note: did I get it right that coordinates in C++ differ by 1 from thos in-game(and in Lua)?
 	local uy = unit.y
@@ -993,23 +994,18 @@ function wml_actions.add_ai_behavior(cfg)
 		helper.wml_error("[add_ai_behavior]: invalid execution/evaluation handler(s)")
 	end
 
-	local id = "bca-" .. ca_counter
+	
 	local path = "stage[" .. loop_id .. "].candidate_action[" .. id .. "]" -- bca: behavior candidate action
-
-	ca_counter = ca_counter + 1
 
 	local conf = {
 		["action"] = "add",
 		["engine"] = "lua",
-		["id"] = id,
-		["name"] = id,
 		["path"] = path,
 
 		{"candidate_action", {
 			["id"] = id,
 			["name"] = id,
 			["engine"] = "lua",
-			["side"] = side,
 			["sticky"] = sticky,
 			["unit_x"] = ux,
 			["unit_y"] = uy,
