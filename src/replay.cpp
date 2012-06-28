@@ -1053,7 +1053,9 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			bool show_move = preferences::show_ai_moves() || !(current_team.is_ai() || current_team.is_network_ai());
+			bool show_move = !get_replay_source().is_skipping();
+			if ( current_team.is_ai() || current_team.is_network_ai() )
+				show_move = show_move && preferences::show_ai_moves();
 			::move_unit(NULL, steps, NULL, NULL, show_move, NULL, true, true, true);
 		}
 

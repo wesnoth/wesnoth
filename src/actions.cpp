@@ -3745,7 +3745,8 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	// (This is broken into pieces so that the individual functions are more manageble.)
 	mover.try_actual_movement(show_move);
 	mover.post_move(undo_stack);
-	mover.feedback();
+	if ( show_move )
+		mover.feedback();
 
 	// Set return values.
 	if ( units_sighted_result )
