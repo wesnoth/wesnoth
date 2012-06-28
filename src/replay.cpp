@@ -1055,17 +1055,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 			bool show_move = preferences::show_ai_moves() || !(current_team.is_ai() || current_team.is_network_ai());
 			::move_unit(NULL, steps, NULL, NULL, show_move, NULL, true, true, true);
-
-			//NOTE: The AI fire sighted event when moving in the FoV of team 1
-			// (supposed to be the human player in SP)
-			// That's ugly but let's try to make the replay works like that too
-			if (side_num != 1 && resources::teams->front().fog_or_shroud() && !resources::teams->front().fogged(dst)
-					 && (current_team.is_ai() || current_team.is_network_ai()))
-			{
-				// the second parameter is impossible to know
-				// and the AI doesn't use it too in the local version
-				game_events::fire("sighted",dst);
-			}
 		}
 
 		else if (const config &child = cfg->child("attack"))
