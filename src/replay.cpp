@@ -669,7 +669,7 @@ void replay::clear()
 	pos_ = 0;
 	current_ = NULL;
 	set_random(NULL);
-	skip_ = 0;
+	skip_ = false;
 }
 
 bool replay::empty()

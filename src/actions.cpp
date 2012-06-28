@@ -477,7 +477,7 @@ std::string find_recall_location(const int side, map_location& recall_loc, map_l
 		map_location tmp_location = find_vacant_tile(*resources::game_map, *resources::units, leader_keep->get_location(),
 				pathfind::VACANT_CASTLE);
 
-		//quit if their is no place to recruit on
+		//quit if there is no place to recruit on
 		if (tmp_location == map_location::null_location)
 			continue;
 		leader_fit = leader_keep;
