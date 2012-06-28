@@ -2822,7 +2822,10 @@ public:
 		void feedback() const;
 
 		/// After checking expected movement, this is the expected path.
-		std::vector<map_location> expected_path() const { return std::vector<map_location>(begin_, expected_end_); }
+		std::vector<map_location> expected_path() const
+		{ return std::vector<map_location>(begin_, expected_end_); }
+		std::vector<map_location> path_of_record() const
+		{ return std::vector<map_location>(begin_, real_end_ + (report_extra_hex_ ? 1 : 0)); }
 		/// After moving, this is the final hex reached.
 		const map_location & final_hex() const { return (real_end_ == begin_) ? *begin_ : *(real_end_-1); }
 		/// After moving, this indicates if any units were seen.
@@ -2913,6 +2916,7 @@ public:
 		bool fog_changed_;
 		bool sighted_;
 		bool teleport_failed_;
+		bool report_extra_hex_;
 		std::string ambush_string_;
 		std::map<map_location, int> jamming_;
 		std::deque<int> moves_left_;	// The front value is what the moving unit's remaining moves should be set to after the next step through the route.
@@ -2959,6 +2963,7 @@ public:
 		fog_changed_(false),
 		sighted_(false),
 		teleport_failed_(false),
+		report_extra_hex_(false),
 		ambush_string_(),
 		jamming_(),
 		moves_left_(),
@@ -3465,9 +3470,12 @@ public:
 				}
 				// Already accounted for: ZoC
 				// Already accounted for: movement cost
-				if ( fire_hex_event(exit_hex_str, step_from, real_end_) )
+				if ( fire_hex_event(exit_hex_str, step_from, real_end_) ) {
+					report_extra_hex_ = true;
 					break;
+				}
 				if ( real_end_ == obstructed_ ) {
+					report_extra_hex_ = true;
 					obstructed_stop = true;
 					break;
 				}
@@ -3739,11 +3747,17 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		return 0;
 	if ( move_recorder )
 		// Record the expected movement, so that replays trigger the same events.
+		// (Recorded here in case an exception occurs during movement.)
 		move_recorder->add_movement(mover.expected_path());
 
 	// Attempt moving.
 	// (This is broken into pieces so that the individual functions are more manageble.)
 	mover.try_actual_movement(show_move);
+	if ( move_recorder ) {
+		// Replace expected movement with actual movement in the record.
+		move_recorder->undo();
+		move_recorder->add_movement(mover.path_of_record());
+	}
 	mover.post_move(undo_stack);
 	if ( show_move )
 		mover.feedback();

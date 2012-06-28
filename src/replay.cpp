@@ -1036,15 +1036,19 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			unit_map::iterator u = find_visible_unit(dst, current_team);
-			if (u.valid()) {
-				std::stringstream errbuf;
-				errbuf << "destination already occupied: "
-				       << dst << '\n';
-				replay::process_error(errbuf.str());
-				continue;
-			}
-			u = resources::units->find(src);
+			// The current implementation of enter/exit hex events means that
+			// movement can end in an occupied hex.
+			// Just commenting this out for now, since this implementation
+			// might change.
+			//unit_map::iterator u = find_visible_unit(dst, current_team);
+			//if (u.valid()) {
+			//	std::stringstream errbuf;
+			//	errbuf << "destination already occupied: "
+			//	       << dst << '\n';
+			//	replay::process_error(errbuf.str());
+			//	continue;
+			//}
+			unit_map::iterator u = resources::units->find(src);
 			if (!u.valid()) {
 				std::stringstream errbuf;
 				errbuf << "unfound location for source of movement: "
