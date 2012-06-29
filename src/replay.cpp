@@ -590,19 +590,19 @@ void replay::undo()
 
 		if (steps.empty()) {
 			ERR_REPLAY << "trying to undo a move using an empty path";
-			return; // nothing to do, I suppose.
 		}
+		else {
+			const map_location early_stop(child["stop_x"].to_int(-1000),
+			                              child["stop_y"].to_int(-1000));
+			const map_location &src = steps.front();
+			const map_location &dst = early_stop.valid() ? early_stop : steps.back();
 
-		const map_location early_stop(child["stop_x"].to_int(-1000),
-		                              child["stop_y"].to_int(-1000));
-		const map_location &src = steps.front();
-		const map_location &dst = early_stop.valid() ? early_stop : steps.back();
-
-		foreach (const async_cmd &ac, async_cmds)
-		{
-			if (config &async_child = ac.cfg->child("rename")) {
-				map_location aloc(async_child, resources::state_of_game);
-				if (dst == aloc) src.write(async_child);
+			foreach (const async_cmd &ac, async_cmds)
+			{
+				if (config &async_child = ac.cfg->child("rename")) {
+					map_location aloc(async_child, resources::state_of_game);
+					if (dst == aloc) src.write(async_child);
+				}
 			}
 		}
 	}
