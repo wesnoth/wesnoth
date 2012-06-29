@@ -17,6 +17,8 @@ Version 1.10.3+svn:
  * Miscellaneous and bug fixes:
    * Fix bug #19753, missing hex transition
    * Fixed: Allow strict compilation with CMake using the upcoming gcc-4.8.
+   * Fixed bug #19795: OOS when [message][option] is used in a (single-player)
+     start event when side 1's controller is null.
 
 Version 1.10.3:
  * Campaigns:

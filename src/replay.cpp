@@ -1251,8 +1251,20 @@ config mp_sync::get_user_choice(const std::string &name, const user_choice &uch,
 		   one host and shared amongst all of them. */
 
 		/* process the side parameter and ensure it is within boundaries */
-		if (unsigned(side - 1) >= resources::teams->size())
+		const int max_side = static_cast<int>(resources::teams->size());
+		if ( side < 1  ||  max_side < side )
 			side = resources::controller->current_side();
+		assert(1 <= side && side <= max_side);
+		// There is a chance of having a null-controlled team at this point
+		// (in the start event, with side 1 being null-controlled).
+		if ( (*resources::teams)[side-1].is_empty() )
+		{
+			// Shift the side to the first controlled side.
+			side = 1;
+			while ( side <= max_side  &&  (*resources::teams)[side-1].is_empty() )
+				side++;
+			assert(side <= max_side);
+		}
 
 		int active_side = side;
 		if ((*resources::teams)[active_side - 1].is_local() &&
