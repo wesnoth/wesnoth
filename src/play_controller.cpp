@@ -738,6 +738,9 @@ void play_controller::finish_side_turn(){
 	game_events::fire("side turn " + turn_num + " end");
 	game_events::fire("side " + side_num + " turn " + turn_num + " end");
 
+	// This is where we refog, after all of a side's events are done.
+	recalculate_fog(player_number_);
+
 	// This implements "delayed map sharing."
 	// It is meant as an alternative to shared vision.
 	if(current_team().copy_ally_shroud()) {

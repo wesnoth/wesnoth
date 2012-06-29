@@ -817,11 +817,6 @@ void playsingle_controller::after_human_turn(){
 	end_turn_record_unlock();
 	menu_handler_.clear_undo_stack(player_number_);
 
-	if(teams_[player_number_-1].uses_fog()) {
-		// needed because currently fog is only recalculated when a hex is /un/covered
-		recalculate_fog(player_number_);
-	}
-
 	gui_->set_route(NULL);
 	gui_->unhighlight_reach();
 }
@@ -844,7 +839,6 @@ void playsingle_controller::play_ai_turn(){
 	turn_data.sync_network();
 
 	gui_->recalculate_minimap();
-	recalculate_fog(player_number_);
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
