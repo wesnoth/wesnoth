@@ -327,6 +327,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				config temp(starting_pos);
 				write_players(gamestate, temp, false, true);
 				gamestate.starting_pos = temp;
+				starting_pos = temp;
 				scenario = &starting_pos;
 			} else
 				scenario = NULL;
