@@ -396,21 +396,14 @@ struct undo_action {
 
 typedef std::vector<undo_action> undo_list;
 
-/**
- * function which moves a unit along the sequence of locations given by steps.
- * If the unit cannot make it completely along the path this turn,
- * a goto order will be set.
- * If move_recorder is not NULL, the move will be recorded in it.
- * If undos is not NULL, undo information will be added.
- * If units_sighted_result is not NULL, it will indicate whether a sighting occurred.
- */
+/// Moves a unit across the board.
 size_t move_unit(move_unit_spectator* move_spectator,
-	const std::vector<map_location> &steps,
-				replay* move_recorder, undo_list* undos,
-				bool show_move,
-				map_location *next_unit = NULL,
-				bool continue_move = false, bool should_clear_shroud=true, bool is_replay=false,
-				bool* units_sighted_result = NULL);
+                 const std::vector<map_location> &steps,
+                 replay* move_recorder, undo_list* undos,
+                 bool show_move, map_location *next_unit = NULL,
+                 bool continue_move = false, bool should_clear_shroud = true,
+                 const map_location *replay_dest = NULL,
+                 bool* units_sighted_result = NULL);
 
 /// Function that recalculates the fog of war.
 void recalculate_fog(int side);

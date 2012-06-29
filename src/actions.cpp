@@ -2809,7 +2809,7 @@ public:
 		unit_mover(const std::vector<map_location> & route,
 		           move_unit_spectator *move_spectator,
 		           bool should_clear_shroud, bool skip_sightings,
-		           bool is_replay);
+		           const map_location *replay_dest);
 		~unit_mover();
 
 		/// Determines how far along the route the unit can expect to move this turn.
@@ -2824,14 +2824,15 @@ public:
 		/// After checking expected movement, this is the expected path.
 		std::vector<map_location> expected_path() const
 		{ return std::vector<map_location>(begin_, expected_end_); }
-		std::vector<map_location> path_of_record() const
-		{ return std::vector<map_location>(begin_, real_end_ + (report_extra_hex_ ? 1 : 0)); }
 		/// After moving, this is the final hex reached.
-		const map_location & final_hex() const { return (real_end_ == begin_) ? *begin_ : *(real_end_-1); }
+		const map_location & final_hex() const
+		{ return (real_end_ == begin_) ? *begin_ : *(real_end_-1); }
 		/// After moving, this indicates if any units were seen.
-		bool saw_units() const { return !seen_units_.empty(); }
+		bool saw_units() const  { return !seen_units_.empty(); }
 		/// The hexes actually moved.
-		size_t steps_travelled() const { return real_end_ - begin_; }
+		size_t steps_travelled() const  { return real_end_ - begin_; }
+		/// After moving, use this to detect if movement was less than expected.
+		bool stopped_early() const  { return expected_end_ != real_end_; }
 
 	private: // functions
 		/// Checks the expected route for hidden units.
@@ -2880,8 +2881,9 @@ public:
 		// for individual functions).
 		move_unit_spectator * const spectator_;
 		const bool fog_shroud_;
-		const bool skip_sighting_;
 		const bool is_replay_;
+		const map_location & replay_dest_;
+		const bool skip_sighting_;
 		// Currently needed to interface with the animation class.
 		const std::vector<map_location> & route_;
 
@@ -2931,11 +2933,12 @@ public:
 	unit_mover::unit_mover(const std::vector<map_location> & route,
 	                       move_unit_spectator *move_spectator,
 	                       bool should_clear_shroud, bool skip_sightings,
-	                       bool is_replay) :
+	                       const map_location *replay_dest) :
 		spectator_(move_spectator),
 		fog_shroud_(should_clear_shroud),
-		skip_sighting_(is_replay || skip_sightings),
-		is_replay_(is_replay),
+		is_replay_(replay_dest != NULL),
+		replay_dest_(is_replay_ ? *replay_dest : route.back()),
+		skip_sighting_(is_replay_ || skip_sightings),
 		route_(route),
 		begin_(route.begin()),
 		full_end_(route.end()),
@@ -3226,11 +3229,13 @@ public:
 		// where the unit would be forced to stop by a hidden unit.
 		for ( ambush_limit_ = start+1; ambush_limit_ != stop; ++ambush_limit_ ) {
 			// Check if we need to stop in the previous hex.
-			if ( ambushed_  &&  !is_replay_ )
+			if ( ambushed_ )
+				if ( !is_replay_  ||  *(ambush_limit_-1) == replay_dest_ )
 					break;
 
 			// Check for being unable to enter this hex.
 			if ( check_for_obstructing_unit(*ambush_limit_, *(ambush_limit_-1)) ) {
+				// No replay check here? Makes some sense, I guess.
 				obstructed_ = ambush_limit_++; // The limit needs to be after obstructed_ in order for the latter to do anything.
 				break;
 			}
@@ -3303,7 +3308,7 @@ public:
 		for ( ; end != stop; ++end )
 		{
 			// Break out of the loop if we cannot leave the previous hex.
-			if ( zoc_stop_ != map_location::null_location )
+			if ( zoc_stop_ != map_location::null_location  &&  !is_replay_ )
 				break;
 			remaining_moves -= move_it_->movement_cost(map[*end]);
 			if ( remaining_moves < 0 ) {
@@ -3322,11 +3327,13 @@ public:
 				zoc_stop_ = *end;
 		}
 
-		// Avoiding stopping on a (known) unit.
-		route_iterator min_end =  start == begin_ ? start : start + 1;
-		while ( end != min_end  &&  get_visible_unit(*(end-1), *current_team_) )
-			// Backtrack.
-			--end;
+		if ( !is_replay_ ) {
+			// Avoiding stopping on a (known) unit.
+			route_iterator min_end =  start == begin_ ? start : start + 1;
+			while ( end != min_end  &&  get_visible_unit(*(end-1), *current_team_) )
+				// Backtrack.
+				--end;
+		}
 
 		return end;
 	}
@@ -3457,12 +3464,13 @@ public:
 			// Each iteration performs the move from real_end_-1 to real_end_.
 			for ( real_end_ = begin_+1; real_end_ != ambush_limit_; ++real_end_ ) {
 				const route_iterator step_from = real_end_ - 1;
+				const bool can_break = !is_replay_  ||  replay_dest_ == *step_from;
 
 				// See if we can leave *step_from.
 				// Already accounted for: ambusher
-				if ( event_mutated_ )
+				if ( event_mutated_  &&  can_break )
 					break;
-				if ( sighted_ && !is_replay_ && !animator.has_displaced_something() &&
+				if ( sighted_ && can_break && !animator.has_displaced_something() &&
 				     is_reasonable_stop(*step_from) )
 				{
 					sighted_stop = true;
@@ -3471,14 +3479,21 @@ public:
 				// Already accounted for: ZoC
 				// Already accounted for: movement cost
 				if ( fire_hex_event(exit_hex_str, step_from, real_end_) ) {
-					report_extra_hex_ = true;
-					break;
+					if ( can_break ) {
+						report_extra_hex_ = true;
+						break;
+					}
 				}
 				if ( real_end_ == obstructed_ ) {
+					// We did not check for being a replay when checking for an
+					// obstructed hex, so we do not check can_break here.
 					report_extra_hex_ = true;
 					obstructed_stop = true;
 					break;
 				}
+				if ( is_replay_  &&  replay_dest_ == *step_from )
+					// Preserve the replay.
+					break;
 
 				// We can leave *step_from. Make the move to *real_end_.
 				animator.continue_movement(real_end_);
@@ -3693,7 +3708,8 @@ public:
 
 }//end anonymous namespace
 
-/** Moves a unit on the board.
+/** 
+ * Moves a unit across the board.
  *
  * This function handles actual movement, checking terrain costs as well as
  * things that might interrupt movement (e.g. ambushes). If the full path
@@ -3709,7 +3725,7 @@ public:
  * @param next_unit[out]            If supplied, this is set to where the actual movement ended. (Set to the null location if @a route is empty.)
  * @param continue_move[in]         If set to true, movement is not interrupted (will continue) should units be spotted.
  * @param should_clear_shroud[in]   If set to false, no fog/shroud clearing will occur. If left as true, then clearing depends upon the team's setting (delayed shroud updates).
- * @param is_replay[in]             If set to true, certain considerations (ambushes, spotted units, and running out of movement) are ignored (in order to preserve the replay).
+ * @param replay_dest[in]           If not NULL, then this move is assumed to be a replay that expects the unit to be moved to here. Several normal considerations are ignored in a replay.
  * @param units_sighted_result[out] Returns whether or not any (non-petrified) units were seen as a result of this move clearing fog/shroud.
  *
  * @returns The length of the path actually travelled
@@ -3717,12 +3733,12 @@ public:
  * @retval 0 if the movement degenerated to staying put.
  */
 size_t move_unit(move_unit_spectator *move_spectator,
-		 const std::vector<map_location> &route,
-		 replay* move_recorder, undo_list* undo_stack,
-		 bool show_move,
-		 map_location *next_unit, bool continue_move,
-		 bool should_clear_shroud, bool is_replay,
-		 bool* units_sighted_result)
+                 const std::vector<map_location> &route,
+                 replay* move_recorder, undo_list* undo_stack,
+                 bool show_move, map_location *next_unit,
+                 bool continue_move, bool should_clear_shroud,
+                 const map_location* replay_dest,
+                 bool* units_sighted_result)
 {
 	const events::command_disabler disable_commands;
 	const map_location &initial_loc = route.empty() ?
@@ -3742,7 +3758,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	}
 
 	// Evaluate this move.
-	unit_mover mover(route, move_spectator, should_clear_shroud, continue_move, is_replay);
+	unit_mover mover(route, move_spectator, should_clear_shroud, continue_move, replay_dest);
 	if ( !mover.check_expected_movement() )
 		return 0;
 	if ( move_recorder )
@@ -3751,13 +3767,12 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		move_recorder->add_movement(mover.expected_path());
 
 	// Attempt moving.
-	// (This is broken into pieces so that the individual functions are more manageble.)
 	mover.try_actual_movement(show_move);
-	if ( move_recorder ) {
-		// Replace expected movement with actual movement in the record.
-		move_recorder->undo();
-		move_recorder->add_movement(mover.path_of_record());
-	}
+	if ( move_recorder  &&  mover.stopped_early() )
+		// Record the early stop.
+		move_recorder->limit_movement(mover.final_hex());
+
+	// Bookkeeping, etc.
 	mover.post_move(undo_stack);
 	if ( show_move )
 		mover.feedback();

@@ -717,7 +717,7 @@ bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, m
 
 	size_t moves = 0;
 	try {
-		moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, next_unit, false, check_shroud, false, sighted_result);
+		moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, next_unit, false, check_shroud, NULL, sighted_result);
 	} catch(end_turn_exception&) {
 		cursor::set(cursor::NORMAL);
 		gui().invalidate_game_status();

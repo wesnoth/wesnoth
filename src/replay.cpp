@@ -266,6 +266,11 @@ void replay::add_countdown_update(int value, int team)
 }
 
 
+/**
+ * Records a move that follows the provided @a steps.
+ * This should be the steps to be taken this turn, ending in an
+ * apparently-unoccupied (from the moving team's perspective) hex.
+ */
 void replay::add_movement(const std::vector<map_location>& steps)
 {
 	if(steps.empty()) { // no move, nothing to record
@@ -279,6 +284,38 @@ void replay::add_movement(const std::vector<map_location>& steps)
 
 	cmd->add_child("move",move);
 }
+
+/**
+ * Modifies the most recently recorded move to indicate that it
+ * stopped early (due to unforseen circumstances, such as an ambush).
+ * This will be ineffective if @a early_stop is not in the recorded path.
+ */
+void replay::limit_movement(const map_location& early_stop)
+{
+	// Find the most recently recorded move.
+	for (int cmd = ncommands() - 1; cmd >= 0; --cmd)
+	{
+		config &cfg = command(cmd);
+		if ( config &child = cfg.child("move") )
+		{
+			if ( early_stop.valid() )
+			{
+				// Record this limitation.
+				child["stop_x"] = early_stop.x;
+				child["stop_y"] = early_stop.y;
+			}
+			// else, we could erase the current stop_x and stop_y, but
+			// doing so currently does not have a use.
+
+			// Done.
+			return;
+		}
+	}
+
+	// If we made it out of the loop, there is no move to modify.
+	ERR_REPLAY << "Trying to limit movement, but no movement recorded.";
+}
+
 
 void replay::add_attack(const map_location& a, const map_location& b,
 	int att_weapon, int def_weapon, const std::string& attacker_type_id,
@@ -556,8 +593,10 @@ void replay::undo()
 			return; // nothing to do, I suppose.
 		}
 
+		const map_location early_stop(child["stop_x"].to_int(-1000),
+		                              child["stop_y"].to_int(-1000));
 		const map_location &src = steps.front();
-		const map_location &dst = steps.back();
+		const map_location &dst = early_stop.valid() ? early_stop : steps.back();
 
 		foreach (const async_cmd &ac, async_cmds)
 		{
@@ -1021,34 +1060,35 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		{
 			const std::string& x = child["x"];
 			const std::string& y = child["y"];
-			std::vector<map_location> steps = parse_location_range(x,y);
+			const std::vector<map_location> steps = parse_location_range(x,y);
 
 			if(steps.empty()) {
 				WRN_REPLAY << "Warning: Missing path data found in [move]\n";
 				continue;
 			}
 
-			map_location src = steps.front();
-			map_location dst = steps.back();
+			const map_location& src = steps.front();
+			const map_location& dst = steps.back();
 
 			if (src == dst) {
-				WRN_REPLAY << "Warning: Move with identical source and destination. Skipping...";
+				WRN_REPLAY << "Warning: Move with identical source and destination. Skipping...\n";
 				continue;
 			}
 
-			// The current implementation of enter/exit hex events means that
-			// movement can end in an occupied hex.
-			// Just commenting this out for now, since this implementation
-			// might change.
-			//unit_map::iterator u = find_visible_unit(dst, current_team);
-			//if (u.valid()) {
-			//	std::stringstream errbuf;
-			//	errbuf << "destination already occupied: "
-			//	       << dst << '\n';
-			//	replay::process_error(errbuf.str());
-			//	continue;
-			//}
-			unit_map::iterator u = resources::units->find(src);
+			map_location early_stop(child["stop_x"].to_int(-1000),
+			                        child["stop_y"].to_int(-1000));
+			if ( !early_stop.valid() )
+				early_stop = dst; // Not really "early", but we need a valid stopping point.
+
+			// The nominal destination should appear to be unoccupied.
+			unit_map::iterator u = find_visible_unit(dst, current_team);
+			if ( u.valid() ) {
+				WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied.\n";
+				// We'll still proceed with this movement, though, since
+				// an event might intervene.
+			}
+	
+			u = resources::units->find(src);
 			if (!u.valid()) {
 				std::stringstream errbuf;
 				errbuf << "unfound location for source of movement: "
@@ -1060,7 +1100,19 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			bool show_move = !get_replay_source().is_skipping();
 			if ( current_team.is_ai() || current_team.is_network_ai() )
 				show_move = show_move && preferences::show_ai_moves();
-			::move_unit(NULL, steps, NULL, NULL, show_move, NULL, true, true, true);
+			const int num_steps =
+				::move_unit(NULL, steps, NULL, NULL, show_move, NULL, true, true, &early_stop);
+
+			// Verify our destination.
+			const map_location& actual_stop = num_steps == 0 ? steps[0] :
+			                                                   steps[num_steps-1];
+			if ( actual_stop != early_stop ) {
+				std::stringstream errbuf;
+				errbuf << "Failed to complete movement to "
+				       << early_stop << ".\n";
+				replay::process_error(errbuf.str());
+				continue;
+			}
 		}
 
 		else if (const config &child = cfg->child("attack"))

@@ -471,9 +471,7 @@ void move_result::do_execute()
 			/*undo_list* undo_stack*/ NULL,
 			/*bool show_move*/ preferences::show_ai_moves(),
 			/*map_location *next_unit*/ NULL,
-			/*bool continue_move*/ true, ///@todo 1.9 set to false after implemeting interrupt awareness
-			/*bool should_clear_shroud*/ true,
-			/*bool is_replay*/ false);
+			/*bool continue_move*/ true); ///@todo 1.9 set to false after implemeting interrupt awareness
 
 		if ( move_spectator_.get_ambusher().valid() || !move_spectator_.get_seen_enemies().empty() || !move_spectator_.get_seen_friends().empty() ) {
 			set_gamestate_changed();
