@@ -339,6 +339,8 @@ Version 1.11.0-svn:
    * Added: TELEPORT animation macros usable by any units
    * Added: CMake option ENABLE_SHARED_LIBRARIES.
    * Fixed: Allow strict compilation with CMake using the upcoming gcc-4.8.
+   * Fixed bug #19795: OOS when [message][option] is used in a (single-player)
+     start event when side 1's controller is null.
 
 Version 1.10.0:
  * Campaigns:
