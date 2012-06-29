@@ -301,8 +301,8 @@ void replay::limit_movement(const map_location& early_stop)
 			if ( early_stop.valid() )
 			{
 				// Record this limitation.
-				child["stop_x"] = early_stop.x;
-				child["stop_y"] = early_stop.y;
+				child["stop_x"] = early_stop.x + 1;
+				child["stop_y"] = early_stop.y + 1;
 			}
 			// else, we could erase the current stop_x and stop_y, but
 			// doing so currently does not have a use.
@@ -592,8 +592,8 @@ void replay::undo()
 			ERR_REPLAY << "trying to undo a move using an empty path";
 		}
 		else {
-			const map_location early_stop(child["stop_x"].to_int(-1000),
-			                              child["stop_y"].to_int(-1000));
+			const map_location early_stop(child["stop_x"].to_int(-999) - 1,
+			                              child["stop_y"].to_int(-999) - 1);
 			const map_location &src = steps.front();
 			const map_location &dst = early_stop.valid() ? early_stop : steps.back();
 
@@ -1075,8 +1075,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				continue;
 			}
 
-			map_location early_stop(child["stop_x"].to_int(-1000),
-			                        child["stop_y"].to_int(-1000));
+			map_location early_stop(child["stop_x"].to_int(-999) - 1,
+			                        child["stop_y"].to_int(-999) - 1);
 			if ( !early_stop.valid() )
 				early_stop = dst; // Not really "early", but we need a valid stopping point.
 
@@ -1299,8 +1299,7 @@ config mp_sync::get_user_choice(const std::string &name, const user_choice &uch,
 			side = resources::controller->current_side();
 		assert(1 <= side && side <= static_cast<int>(resources::teams->size()));
 
-		int active_side = side;
-		if ((*resources::teams)[active_side - 1].is_local() &&
+		if ((*resources::teams)[side-1].is_local() &&
 		    get_replay_source().at_end())
 		{
 			/* The decision is ours, and it will be inserted
@@ -1314,7 +1313,7 @@ config mp_sync::get_user_choice(const std::string &name, const user_choice &uch,
 			/* The decision has already been made, and must
 			   be extracted from the replay. */
 			DBG_REPLAY << "MP synchronization: remote choice\n";
-			do_replay_handle(active_side, name);
+			do_replay_handle(side, name);
 			const config *action = get_replay_source().get_next_action();
 			if (!action || !*(action = &action->child(name))) {
 				replay::process_error("[" + name + "] expected but none found\n");
