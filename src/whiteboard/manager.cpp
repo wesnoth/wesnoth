@@ -940,7 +940,7 @@ void manager::contextual_execute()
 		variable_finalizer<bool> finally(executing_actions_, false);
 
 		action_ptr action;
-		side_actions::iterator it;
+		side_actions::iterator it = viewer_actions()->end();
 		unit const* selected_unit = future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
 		if (selected_unit &&
 				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
@@ -1043,7 +1043,7 @@ void manager::contextual_delete()
 		erase_temp_move();
 
 		action_ptr action;
-		side_actions::iterator it;
+		side_actions::iterator it = viewer_actions()->end();
 		unit const* selected_unit = future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
 		if (selected_unit &&
 				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
