@@ -135,6 +135,8 @@ Version 1.11.0-svn:
      actions still can, i.e. for cutscenes), or unlock it
    * Added wesnoth.view_locked(), returning a boolean true value if gamemap
      view scrolling has been locked, and false otherwise
+   * Added == operator for (private, on-map, recall) lua proxy units,
+     checking for unit identity
  * Multiplayer:
    * A New Land:
      * Made it so that the "Elvish Shaman" option in the elvish unit selection
