@@ -942,6 +942,18 @@ static int impl_unit_collect(lua_State *L)
 }
 
 /**
+ * Checks two lua proxy units for equality. (__eq metamethod)
+ */
+static int impl_unit_equality(lua_State* L)
+{
+	unit* left = luaW_checkunit(L, 1);
+	unit* right = luaW_checkunit(L, 2);
+	const bool equal = left->underlying_id() == right->underlying_id();
+	lua_pushboolean(L, equal);
+	return 1;
+}
+
+/**
  * Gets some data on a unit (__index metamethod).
  * - Arg 1: full userdata containing the unit id.
  * - Arg 2: string containing the name of the property.
@@ -3595,9 +3607,11 @@ LuaKernel::LuaKernel(const config &cfg)
 	// Create the getunit metatable.
 	lua_pushlightuserdata(L
 			, static_cast<void *>(const_cast<char *>(&getunitKey)));
-	lua_createtable(L, 0, 4);
+	lua_createtable(L, 0, 5);
 	lua_pushcfunction(L, impl_unit_collect);
 	lua_setfield(L, -2, "__gc");
+	lua_pushcfunction(L, impl_unit_equality);
+	lua_setfield(L, -2, "__eq");
 	lua_pushcfunction(L, impl_unit_get);
 	lua_setfield(L, -2, "__index");
 	lua_pushcfunction(L, impl_unit_set);
