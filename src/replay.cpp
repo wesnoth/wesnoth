@@ -818,8 +818,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		const config *cfg = get_replay_source().get_next_action();
 
 		//do we need to recalculate shroud after this action is processed?
-
 		bool fix_shroud = false;
+
 		if (cfg)
 		{
 			DBG_REPLAY << "Replay data:\n" << *cfg << "\n";
