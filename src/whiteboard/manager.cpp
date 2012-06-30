@@ -515,7 +515,7 @@ void manager::post_draw()
 	foreach(size_t unit_id, units_owning_moves_)
 	{
 		unit_map::iterator unit_iter = resources::units->find(unit_id);
-		if (unit_iter.valid()) { 
+		if (unit_iter.valid()) {
 			unghost_owner_unit(&*unit_iter);
 		}
 	}

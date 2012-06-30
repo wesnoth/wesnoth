@@ -2441,7 +2441,7 @@ namespace {
 				current = jamming_map[st.curr];
 				if (current < st.move_left) jamming_map[st.curr] = st.move_left;
 			}
-	
+
 		}
 	}
 
@@ -3708,7 +3708,7 @@ public:
 
 }//end anonymous namespace
 
-/** 
+/**
  * Moves a unit across the board.
  *
  * This function handles actual movement, checking terrain costs as well as

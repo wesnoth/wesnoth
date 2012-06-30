@@ -196,7 +196,7 @@ struct config_attribute_str_visitor : boost::static_visitor<std::string>
 	std::string operator()(double d) const
 	{
 		long i = static_cast<long>(d);
-		
+
 		if (static_cast<double>(i) == d)
 			return str_cast(i);
 		else

@@ -168,7 +168,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		leader_aggression_(),
 		leader_goal_(),
 		leader_value_(),
-		move_maps_enemy_valid_(false),		
+		move_maps_enemy_valid_(false),
 		move_maps_valid_(false),
 		dst_src_valid_lua_(false),
 		dst_src_enemy_valid_lua_(false),
@@ -862,10 +862,10 @@ void readonly_context_impl::invalidate_move_maps() const
 {
 	move_maps_valid_ = false;
 	move_maps_enemy_valid_ = false;
-	
+
 	dst_src_valid_lua_ = false;
 	dst_src_enemy_valid_lua_ = false;
-	
+
 	src_dst_valid_lua_ = false;
 	src_dst_enemy_valid_lua_ = false;
 }
@@ -1116,7 +1116,7 @@ void readonly_context_impl::recalculate_move_maps() const
 		}
 	}
 	move_maps_valid_ = true;
-	
+
 	// invalidate lua cache
 	dst_src_valid_lua_ = false;
 	src_dst_valid_lua_ = false;
@@ -1130,7 +1130,7 @@ void readonly_context_impl::recalculate_move_maps_enemy() const
 	enemy_possible_moves_ = moves_map();
 	calculate_possible_moves(enemy_possible_moves_,enemy_srcdst_,enemy_dstsrc_,true);
 	move_maps_enemy_valid_ = true;
-	
+
 	// invalidate lua cache
 	dst_src_enemy_valid_lua_ = false;
 	src_dst_enemy_valid_lua_ = false;

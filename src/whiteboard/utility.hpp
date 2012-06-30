@@ -70,7 +70,7 @@ struct temporary_unit_hider {
 	unit* const unit_;
 };
 
-/** 
+/**
   * Finalizer class to help with exception safety
   * sets variable to value on destruction
   */

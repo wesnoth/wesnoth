@@ -33,7 +33,7 @@ public:
 	engine_lua( readonly_context &context, const config &cfg );
 
 	virtual ~engine_lua();
-	
+
 	bool is_ok() const;
 
 	/**
@@ -79,7 +79,7 @@ private:
 
 	//There is one lua engine per AI. So, it can hold state
 	boost::shared_ptr<lua_ai_context> lua_ai_context_;
-	
+
 	std::string get_engine_code(const config&) const;
 
 };

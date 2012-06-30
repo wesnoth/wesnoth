@@ -1087,7 +1087,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				// We'll still proceed with this movement, though, since
 				// an event might intervene.
 			}
-	
+
 			u = resources::units->find(src);
 			if (!u.valid()) {
 				std::stringstream errbuf;

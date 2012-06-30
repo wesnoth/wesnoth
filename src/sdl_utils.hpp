@@ -317,7 +317,7 @@ surface blend_surface(
  * @param optimize                Should the return surface be RLE optimized.
  *
  * @return                        The rotated surface.
- */ 
+ */
 surface rotate_180_surface(const surface &surf, bool optimize=true);
 /**
  * Rotates a surface 90 degrees.
@@ -328,7 +328,7 @@ surface rotate_180_surface(const surface &surf, bool optimize=true);
  * @param optimize                Should the return surface be RLE optimized.
  *
  * @return                        The rotated surface.
- */ 
+ */
 surface rotate_90_surface(const surface &surf, bool clockwise, bool optimize=true);
 
 surface flip_surface(const surface &surf, bool optimize=true);

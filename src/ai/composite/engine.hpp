@@ -44,7 +44,7 @@ public:
 	virtual ~engine();
 
 	virtual bool is_ok() const;
-	
+
 	static void parse_aspect_from_config( readonly_context &context, const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr > > b );
 
 

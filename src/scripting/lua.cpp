@@ -1471,7 +1471,7 @@ static int intf_require(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 
 	// Check if there is already an entry.
-	
+
 	luaW_getglobal(L, "wesnoth", NULL); 	// [1:fn 2:wesnoth]
 	lua_pushstring(L, "package"); 		// [1:fn 2:wesnoth 3:"package"]
 	lua_rawget(L, -2); 			// [1:fn 2:wesnoth 3:package]
@@ -1479,7 +1479,7 @@ static int intf_require(lua_State *L)
 	lua_rawget(L, -2);			// [1:fn 2:wesnoth 3:package 4:nil/file]
 	if (!lua_isnil(L, -1) && !game_config::debug_lua) return 1; // Am I wrong, or this return leaves 4 values on the stack? (neph)
 	lua_pop(L, 1);
-	
+
 
 	std::string p = get_wml_location(m);
 	if (p.empty())

@@ -221,12 +221,12 @@ static int ai_attack(lua_State *L, bool exec)
 	double aggression = context.get_aggression();//use the aggression from the context
 
 	if (!lua_isnoneornil(L, index)) {
-		attacker_weapon = lua_tointeger(L, index); 
+		attacker_weapon = lua_tointeger(L, index);
 		if (attacker_weapon != -1) {
 			attacker_weapon--;	// Done for consistency of the Lua style
 		}
 	}
-	
+
 	//TODO: Right now, aggression is used by the attack execution functions to determine the weapon to be used.
 	// If a decision is made to expand the function that determines the weapon, this block must be refactored
 	// to parse aggression if a single int is on the stack, or create a table of parameters, if a table is on the
@@ -310,7 +310,7 @@ static int cfun_ai_check_recruit(lua_State *L)
 	return ai_recruit(L, false);
 }
 
-static int ai_recall(lua_State *L, bool exec) 
+static int ai_recall(lua_State *L, bool exec)
 {
 	const char *unit_id = luaL_checkstring(L, 1);
 	int side = get_readonly_context(L).get_side();
@@ -391,12 +391,12 @@ static int cfun_ai_get_attacks(lua_State *L)
 	ai::attacks_vector attacks = get_readonly_context(L).get_attacks();
 	lua_createtable(L, attacks.size(), 0);
 	int table_index = lua_gettop(L);
-	
-	ai::attacks_vector::iterator it = attacks.begin();	
-	for (int i = 1; it != attacks.end(); it++, i++) 
+
+	ai::attacks_vector::iterator it = attacks.begin();
+	for (int i = 1; it != attacks.end(); it++, i++)
 	{
 		push_attack_analysis(L, *it);
-		
+
 		lua_rawseti(L, table_index, i);
 	}
 	return 1;
@@ -555,22 +555,22 @@ static int cfun_ai_get_villages_per_scout(lua_State *L)
 }
 // End of aspect section
 
-static int cfun_attack_rating(lua_State *L) 
+static int cfun_attack_rating(lua_State *L)
 {
 	int top = lua_gettop(L);
 	// the attack_analysis table should be on top of the stack
 	lua_getfield(L, -1, "att_ptr"); // [-2: attack_analysis; -1: pointer to attack_analysis object in c++]
 	// now the pointer to our attack_analysis C++ object is on top
-	attack_analysis* aa_ptr = static_cast< attack_analysis * >(lua_touserdata(L, -1)); 
-	
+	attack_analysis* aa_ptr = static_cast< attack_analysis * >(lua_touserdata(L, -1));
+
 	//[-2: attack_analysis; -1: pointer to attack_analysis object in c++]
-	
-	double aggression = get_readonly_context(L).get_aggression(); 
-	
+
+	double aggression = get_readonly_context(L).get_aggression();
+
 	double rating = aa_ptr->rating(aggression, get_readonly_context(L));
-	
+
 	lua_settop(L, top);
-	
+
 	lua_pushnumber(L, rating);
 	return 1;
 }
@@ -578,104 +578,104 @@ static int cfun_attack_rating(lua_State *L)
 static void push_movements(lua_State *L, const std::vector< std::pair < map_location, map_location > > & moves)
 {
 	lua_createtable(L, moves.size(), 0);
-	
+
 	int table_index = lua_gettop(L);
-	
+
 	std::vector< std::pair < map_location, map_location > >::const_iterator move = moves.begin();
-	
+
 	for (int i = 1; move != moves.end(); move++, i++)
 	{
 		lua_createtable(L, 2, 0); // Creating a table for a pair of map_location's
-		
+
 		lua_pushstring(L, "src");
 		push_map_location(L, move->first);
 		lua_rawset(L, -3);
-		
+
 		lua_pushstring(L, "dst");
 		push_map_location(L, move->second);
 		lua_rawset(L, -3);
-	
+
 		lua_rawseti(L, table_index, i); // setting  the pair as an element of the movements table
-	}	
-	
-	
+	}
+
+
 }
 
 static void push_attack_analysis(lua_State *L, attack_analysis& aa)
 {
 	lua_newtable(L);
-	
-	// Pushing a pointer to the current object 
+
+	// Pushing a pointer to the current object
 	lua_pushstring(L, "att_ptr");
 	lua_pushlightuserdata(L, &aa);
 	lua_rawset(L, -3);
-	
+
 	// Registering callback function for the rating method
 	lua_pushstring(L, "rating");
 	lua_pushlightuserdata(L, &get_engine(L));
 	lua_pushcclosure(L, &cfun_attack_rating, 1);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "movements");
 	push_movements(L, aa.movements);
 	lua_rawset(L, -3);
-	
-	lua_pushstring(L, "target");	
-	push_map_location(L, aa.target);	
+
+	lua_pushstring(L, "target");
+	push_map_location(L, aa.target);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "target_value");
 	lua_pushnumber(L, aa.target_value);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "avg_losses");
 	lua_pushnumber(L, aa.avg_losses);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "chance_to_kill");
 	lua_pushnumber(L, aa.chance_to_kill);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "avg_damage_inflicted");
 	lua_pushnumber(L, aa.avg_damage_inflicted);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "target_starting_damage");
 	lua_pushinteger(L, aa.target_starting_damage);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "avg_damage_taken");
 	lua_pushnumber(L, aa.avg_damage_taken);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "resources_used");
 	lua_pushnumber(L, aa.resources_used);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "terrain_quality");
 	lua_pushnumber(L, aa.alternative_terrain_quality);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "alternative_terrain_quality");
 	lua_pushnumber(L, aa.alternative_terrain_quality);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "vulnerability");
 	lua_pushnumber(L, aa.vulnerability);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "support");
 	lua_pushnumber(L, aa.support);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "leader_threat");
 	lua_pushboolean(L, aa.leader_threat);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "uses_leader");
 	lua_pushboolean(L, aa.uses_leader);
 	lua_rawset(L, -3);
-	
+
 	lua_pushstring(L, "is_surrounded");
 	lua_pushboolean(L, aa.is_surrounded);
 	lua_rawset(L, -3);
@@ -714,14 +714,14 @@ static void push_move_map(lua_State *L, const move_map& m)
 		map_location key = it->first;
 
 		//push_map_location(L, key); // deprecated
-		
+
 		// This should be factored out. The same function is defined in data/lua/location_set.lua
 		// At this point, it is not clear, where this(hashing) function can be placed
 		// Implemented it this way, to test the new version of the data structure
 		// as requested from the users of LuaAI <Nephro>
-		int hashed_index = (key.x + 1) * 16384 + (key.y + 1) + 2000;		
+		int hashed_index = (key.x + 1) * 16384 + (key.y + 1) + 2000;
 		lua_pushinteger(L, hashed_index);
-		
+
 		lua_createtable(L, 0, 0);
 
 		while (key == it->first) {
@@ -773,29 +773,29 @@ static int cfun_ai_get_enemy_srcdst(lua_State *L)
 	return 1;
 }
 
-static int cfun_ai_is_dst_src_valid(lua_State *L) 
-{	
+static int cfun_ai_is_dst_src_valid(lua_State *L)
+{
 	bool valid = get_readonly_context(L).is_dst_src_valid_lua();
 	lua_pushboolean(L, valid);
 	return 1;
 }
 
-static int cfun_ai_is_dst_src_enemy_valid(lua_State *L) 
-{	
+static int cfun_ai_is_dst_src_enemy_valid(lua_State *L)
+{
 	bool valid = get_readonly_context(L).is_dst_src_enemy_valid_lua();
 	lua_pushboolean(L, valid);
 	return 1;
 }
 
-static int cfun_ai_is_src_dst_valid(lua_State *L) 
-{	
+static int cfun_ai_is_src_dst_valid(lua_State *L)
+{
 	bool valid = get_readonly_context(L).is_src_dst_valid_lua();
 	lua_pushboolean(L, valid);
 	return 1;
 }
 
-static int cfun_ai_is_src_dst_enemy_valid(lua_State *L) 
-{	
+static int cfun_ai_is_src_dst_enemy_valid(lua_State *L)
+{
 	bool valid = get_readonly_context(L).is_src_dst_enemy_valid_lua();
 	lua_pushboolean(L, valid);
 	return 1;

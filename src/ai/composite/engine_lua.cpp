@@ -54,15 +54,15 @@ static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 typedef boost::shared_ptr< lua_object<int> > lua_int_obj;
 
 class lua_candidate_action_wrapper_base : public candidate_action {
-	
-public:		
+
+public:
 	lua_candidate_action_wrapper_base( rca_context &context, const config &cfg)
 		: candidate_action(context, cfg),evaluation_action_handler_(),execution_action_handler_(),serialized_evaluation_state_()
 	{
 		// do nothing
 	}
 
-	virtual ~lua_candidate_action_wrapper_base() {}	
+	virtual ~lua_candidate_action_wrapper_base() {}
 
 	virtual double evaluate()
 	{
@@ -75,9 +75,9 @@ public:
 		} else {
 			return BAD_SCORE;
 		}
-		
+
 		boost::shared_ptr<int> result = l_obj->get();
-		
+
 		return result ? *result : 0.0;
 	}
 
@@ -88,21 +88,21 @@ public:
 			execution_action_handler_->handle(serialized_evaluation_state_, false, l_obj);
 		}
 	}
-	
+
 	virtual config to_config() const {
 		config cfg = candidate_action::to_config();
 		cfg.add_child("state",serialized_evaluation_state_);
 		return cfg;
 	}
-	
-protected:	
-	boost::shared_ptr<lua_ai_action_handler> evaluation_action_handler_;	
+
+protected:
+	boost::shared_ptr<lua_ai_action_handler> evaluation_action_handler_;
 	boost::shared_ptr<lua_ai_action_handler> execution_action_handler_;
-	config serialized_evaluation_state_;	
+	config serialized_evaluation_state_;
 };
 
 class lua_candidate_action_wrapper : public lua_candidate_action_wrapper_base {
-	
+
 public:
 	lua_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx)
 		: lua_candidate_action_wrapper_base(context,cfg),evaluation_(cfg["evaluation"]),execution_(cfg["execution"])
@@ -117,41 +117,41 @@ public:
 	{
 		config cfg = lua_candidate_action_wrapper_base::to_config();
 		cfg["evaluation"] = evaluation_;
-		cfg["execution"] = execution_;		
+		cfg["execution"] = execution_;
 		return cfg;
 	}
 
 private:
-	std::string evaluation_;	
+	std::string evaluation_;
 	std::string execution_;
 };
 
 class lua_candidate_action_wrapper_external : public lua_candidate_action_wrapper_base {
 public:
 	lua_candidate_action_wrapper_external(rca_context& context, const config& cfg, lua_ai_context &lua_ai_ctx)
-		: lua_candidate_action_wrapper_base(context,cfg), location_(cfg["location"]) 
-	{			
+		: lua_candidate_action_wrapper_base(context,cfg), location_(cfg["location"])
+	{
 		std::string eval_code;
 		std::string exec_code;
 		generate_code(eval_code, exec_code);
-		
+
 		evaluation_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(eval_code.c_str(),lua_ai_ctx));
 		execution_action_handler_ = boost::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(exec_code.c_str(),lua_ai_ctx));
 	}
-	
+
 	virtual ~lua_candidate_action_wrapper_external() {}
-	
+
 	virtual config to_config() const
 	{
 		config cfg = lua_candidate_action_wrapper_base::to_config();
-		cfg["location"] = location_;	
+		cfg["location"] = location_;
 		return cfg;
 	}
-	
+
 private:
 	std::string location_;
-	
-	void generate_code(std::string& eval, std::string& exec) {		
+
+	void generate_code(std::string& eval, std::string& exec) {
 		std::string code = "wesnoth.require(\"" + location_ + "\")";
 		eval = "return " + code + ":eval((...):get_ai())";
 		exec = code + ":exec((...):get_ai())";
@@ -241,7 +241,7 @@ engine_lua::engine_lua( readonly_context &context, const config &cfg )
 {
 	name_ = "lua";
 	config data(cfg.child_or_empty("data"));
-	
+
 	if (lua_ai_context_) { // The context might be NULL if the config contains errors
 		lua_ai_context_->set_persistent_data(data);
 	}
@@ -282,7 +282,7 @@ void engine_lua::do_parse_candidate_action_from_config( rca_context &context, co
 		if (cfg.has_attribute("location")) {
 			ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper_external(context,cfg,*lua_ai_context_));
 		} else {
-			ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper(context,cfg,*lua_ai_context_));			
+			ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper(context,cfg,*lua_ai_context_));
 		}
 	}
 	else
@@ -363,8 +363,8 @@ config engine_lua::to_config() const
 
 	cfg["id"] = get_id();
 	cfg["code"] = this->code_;
-	
-	if (lua_ai_context_) { 
+
+	if (lua_ai_context_) {
 		config data = config();
 		lua_ai_context_->get_persistent_data(data);
 		cfg.add_child("data") = data;
