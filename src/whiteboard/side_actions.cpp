@@ -67,6 +67,11 @@ std::ostream &operator<<(std::ostream &out, wb::side_actions const& side_actions
 	return out;
 }
 
+side_actions_container::side_actions_container()
+	: actions_()
+	, turn_beginnings_()
+{
+}
 
 size_t side_actions_container::get_turn_impl(size_t begin, size_t end, const_iterator it) const
 {

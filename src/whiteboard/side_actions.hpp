@@ -43,6 +43,9 @@ class move;
 class side_actions_container
 {
 public:
+
+	side_actions_container();
+
 	//! Tag for action_set's random_access index.
 	struct chronological{};
 
