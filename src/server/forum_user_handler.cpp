@@ -34,7 +34,7 @@ namespace {
 	const int USER_IGNORE = 2;
 }
 
-fuh::fuh(const config& c) {
+fuh::fuh(const config& c)
 	: db_name_(c["db_name"].str())
 	, db_host_(c["db_host"].str())
 	, db_user_(c["db_user"].str())
