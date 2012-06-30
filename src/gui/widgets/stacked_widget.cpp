@@ -31,10 +31,9 @@ REGISTER_WIDGET(stacked_widget)
 
 tstacked_widget::tstacked_widget()
 	: tcontainer_(1)
-	, generator_(NULL)
+	, generator_(
+			tgenerator_::build(false, false, tgenerator_::independent, false))
 {
-	generator_ = tgenerator_::build(
-			false, false, tgenerator_::independent, false);
 }
 
 void tstacked_widget::layout_children()
