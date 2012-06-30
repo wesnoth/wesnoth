@@ -29,11 +29,10 @@ namespace gui2 {
 REGISTER_WIDGET(multi_page)
 tmulti_page::tmulti_page()
 	: tcontainer_(0)
-	, generator_(NULL)
+	, generator_(
+			tgenerator_::build(true, true, tgenerator_::independent, false))
 	, page_builder_(NULL)
 {
-	generator_ = tgenerator_::build(
-			true, true, tgenerator_::independent, false);
 }
 
 void tmulti_page::add_page(const string_map& item)
