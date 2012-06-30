@@ -35,15 +35,14 @@ namespace {
 }
 
 fuh::fuh(const config& c) {
-	db_name_ = c["db_name"].str();
-	db_host_ = c["db_host"].str();
-	db_user_ = c["db_user"].str();
-	db_password_ = c["db_password"].str();
-	db_users_table_ = c["db_users_table"].str();
-	db_extra_table_ = c["db_extra_table"].str();
-
-	conn = mysql_init(NULL);
-
+	: db_name_(c["db_name"].str())
+	, db_host_(c["db_host"].str())
+	, db_user_(c["db_user"].str())
+	, db_password_(c["db_password"].str())
+	, db_users_table_(c["db_users_table"].str())
+	, db_extra_table_(c["db_extra_table"].str())
+	, conn(mysql_init(NULL))
+{
 	if(!conn || !mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, NULL, 0)) {
 		ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
 	}
