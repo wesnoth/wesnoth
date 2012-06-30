@@ -29,6 +29,10 @@ Some of the changes in interpreter are not compatible but don't have a compatibi
 Default man installation directory now confirms to FHS.
 [/section]
 
+[section="Clang defaults to strict compilation"]
+The Clang compiler now also defaults to strict compilation when building with CMake. Also the default flags have changed to the ones used for GCC. This has only be tested with Clang 3.1, please file bug reports if it breaks older versions of Clang.
+[/section]
+
 [section="Another Change"]
 [/section]
 

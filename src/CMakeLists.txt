@@ -288,7 +288,13 @@ if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	# Assume the compiler is the clang compiler.
 	# It needs the files to be forced as c++ manually, it might be a newer
 	# version of cmake will be able to this for us.
-	set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES COMPILE_FLAGS "-x c++")
+	#
+	# Also silence some Clang specific warnings due to extra parenthesis in if statements when comparing instead 
+	set_source_files_properties(
+		${libwesnoth-lua_STAT_SRC}
+		PROPERTIES COMPILE_FLAGS
+			"-x c++ -Wno-parentheses-equality"
+	)
 endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)

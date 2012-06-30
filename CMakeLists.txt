@@ -144,7 +144,8 @@ macro(check_compiler_has_flag target flag variable)
 	endif(${variable})
 endmacro(check_compiler_has_flag)
 
-if(CMAKE_COMPILER_IS_GNUCXX)
+# If UNIX Assume Clang.
+if(CMAKE_COMPILER_IS_GNUCXX OR UNIX)
 	# Set our own default flags at first run.
 	if(NOT CONFIGURED)
 
@@ -158,6 +159,31 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 					"-Wunused-local-typedefs"
 					HAS_COMPILER_FLAG_WUNUSED_LOCAL_TYPEDEFS
 					"-Wno-unused-local-typedefs")
+
+			# This flag is needed for Clang to silence its complains about
+			# unused command line arguments.
+			check_compiler_has_flag(
+					STRICT_FLAGS
+					"-Qunused-arguments"
+					HAS_COMPILER_FLAG_QUNUSED_ARGUMENTS)
+
+			# Silences Clang warnings about declaring a class a class first and
+			# a struct later.
+			check_compiler_has_flag(
+					STRICT_FLAGS
+					"-Wmismatched-tags"
+					HAS_COMPILER_FLAG_WMISMATCHED_TAGS
+					"-Wno-mismatched-tags")
+
+			if(NOT CMAKE_COMPILER_IS_GNUCXX)
+				# Silences warnings about overloaded virtuals.
+			   	# (GCC doesn't complaing Clang does.)
+				check_compiler_has_flag(
+						STRICT_FLAGS
+						"-Woverloaded-virtual"
+						HAS_COMPILER_FLAG_WOVERLOADED_VIRTUAL
+						"-Wno-overloaded-virtual")
+			endif(NOT CMAKE_COMPILER_IS_GNUCXX)
 
 		else(ENABLE_STRICT_COMPILATION)
 			set(STRICT_FLAGS "")
@@ -180,7 +206,7 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 
 	endif(NOT CONFIGURED)
 
-endif(CMAKE_COMPILER_IS_GNUCXX)
+endif(CMAKE_COMPILER_IS_GNUCXX OR UNIX)
 
 if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	# Assume the compiler is the clang compiler.
