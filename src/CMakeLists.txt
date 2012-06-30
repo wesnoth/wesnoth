@@ -387,6 +387,21 @@ add_library(wesnoth-gui_placer
 )
 
 
+##### GUI tooltip
+
+# This library contains the tooltip handling code.
+set(wesnoth-gui_tooltip_SRC
+	gui/auxiliary/tips.cpp
+	gui/dialogs/tip.cpp
+)
+
+add_library(wesnoth-gui_tooltip
+   	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-gui_tooltip_SRC}
+)
+
+
 ##### Gui widget definition
 
 # This library contains the widget definitions for the gui library.
@@ -566,7 +581,6 @@ set(wesnoth-main_SRC
 	gui/auxiliary/log.cpp
 	gui/auxiliary/old_markup.cpp
 	gui/auxiliary/timer.cpp
-	gui/auxiliary/tips.cpp
 	gui/auxiliary/window_builder.cpp
 	gui/auxiliary/window_builder/button.cpp
 	gui/auxiliary/window_builder/control.cpp
@@ -637,7 +651,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/network_transmission.cpp
 	gui/dialogs/popup.cpp
 	gui/dialogs/simple_item_selector.cpp
-	gui/dialogs/tip.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp
 	gui/dialogs/unit_attack.cpp
@@ -848,6 +861,7 @@ if(ENABLE_GAME)
 			wesnoth-gui_event
 			wesnoth-gui_iterator
 			wesnoth-gui_placer
+			wesnoth-gui_tooltip
 			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
 			wesnoth-schema_validator
@@ -859,6 +873,7 @@ if(ENABLE_GAME)
 			${wesnoth-gui_event_SRC}
 			${wesnoth-gui_iterator_SRC}
 			${wesnoth-gui_placer_SRC}
+			${wesnoth-gui_tooltip_SRC}
 			${wesnoth-gui_widget_definition_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-schema_validator_SRC}
@@ -1078,6 +1093,7 @@ if(ENABLE_TESTS)
 			wesnoth-gui_event
 			wesnoth-gui_iterator
 			wesnoth-gui_placer
+			wesnoth-gui_tooltip
 			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
 			wesnoth-schema_validator
@@ -1091,6 +1107,7 @@ if(ENABLE_TESTS)
 			${wesnoth-gui_iterator_SRC}
 			${wesnoth-gui_placer_SRC}
 			${wesnoth-gui_widget_definition_SRC}
+			${wesnoth-gui_tooltip_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-schema_validator_SRC}
 			${wesnoth-main_SRC}
