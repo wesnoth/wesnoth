@@ -443,6 +443,21 @@ add_library(wesnoth-gui1_widgets
 )
 
 
+##### GUI1 widgets
+
+# This library contains the schema validator.
+set(wesnoth-schema_validator_SRC
+	serialization/schema_validator.cpp
+	tools/schema/tag.cpp
+)
+
+add_library(wesnoth-schema_validator
+   	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-schema_validator_SRC}
+)
+
+
 ########### Wesnoth main source files ###############
 
 # Depending on whether the game or the game and the tests are build the main
@@ -702,7 +717,6 @@ set(wesnoth-main_SRC
 	savegame.cpp
 	savegame_config.cpp
 	scripting/lua.cpp
-	serialization/schema_validator.cpp
 	settings.cpp
 	sha1.cpp
 	side_filter.cpp
@@ -716,7 +730,6 @@ set(wesnoth-main_SRC
 	terrain_filter.cpp
 	tod_manager.cpp
 	tooltips.cpp
-	tools/schema/tag.cpp
 	unit.cpp
 	unit_abilities.cpp
 	unit_animation.cpp
@@ -837,6 +850,7 @@ if(ENABLE_GAME)
 			wesnoth-gui_placer
 			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
+			wesnoth-schema_validator
 		)
 	else(ENABLE_TESTS)
 		set(wesnoth_SRC
@@ -847,6 +861,7 @@ if(ENABLE_GAME)
 			${wesnoth-gui_placer_SRC}
 			${wesnoth-gui_widget_definition_SRC}
 			${wesnoth-gui1_widgets_SRC}
+			${wesnoth-schema_validator_SRC}
 			${wesnoth-main_SRC}
 		)
 		set(wesnoth_LIB
@@ -1065,6 +1080,7 @@ if(ENABLE_TESTS)
 			wesnoth-gui_placer
 			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
+			wesnoth-schema_validator
 			wesnoth-lua
 		)
 	else(ENABLE_GAME)
@@ -1076,6 +1092,7 @@ if(ENABLE_TESTS)
 			${wesnoth-gui_placer_SRC}
 			${wesnoth-gui_widget_definition_SRC}
 			${wesnoth-gui1_widgets_SRC}
+			${wesnoth-schema_validator_SRC}
 			${wesnoth-main_SRC}
 		)
 		set(test_LIB
