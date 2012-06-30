@@ -61,9 +61,9 @@ replay_controller::replay_controller(const config& level,
 		game_state& state_of_game, const int ticks, const int num_turns,
 		const config& game_config, CVideo& video) :
 	play_controller(level, state_of_game, ticks, num_turns, game_config, video, false),
-	teams_start_(),
+	teams_start_(teams_),
 	gamestate_start_(gamestate_),
-	units_start_(),
+	units_start_(units_),
 	tod_manager_start_(level, num_turns),
 	current_turn_(1),
 	delay_(0),
@@ -71,8 +71,6 @@ replay_controller::replay_controller(const config& level,
 	show_everything_(false),
 	show_team_(state_of_game.classification().campaign_type == "multiplayer" ? 0 : 1)
 {
-	units_start_ = units_;
-	teams_start_ = teams_;
 	tod_manager_start_ = tod_manager_;
 
 	init();
