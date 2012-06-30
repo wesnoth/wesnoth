@@ -591,10 +591,8 @@ private:
 REGISTER_DIALOG(gamestate_inspector)
 
 tgamestate_inspector::tgamestate_inspector(const vconfig &cfg)
-	: view_()
+	: view_(new view(cfg))
 {
-
-	view_ = boost::shared_ptr<view>(new view(cfg));
 }
 
 boost::shared_ptr<tgamestate_inspector::view> tgamestate_inspector::get_view()
