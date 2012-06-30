@@ -50,13 +50,12 @@ void callback_list_item_clicked(twidget* caller)
 tlistbox::tlistbox(const bool has_minimum, const bool has_maximum,
 		const tgenerator_::tplacement placement, const bool select)
 	: tscrollbar_container(2) // FIXME magic number
-	, generator_(NULL)
+	, generator_(
+			tgenerator_::build(has_minimum, has_maximum, placement, select))
 	, list_builder_(NULL)
 	, callback_value_changed_(NULL)
 	, need_layout_(false)
 {
-	generator_ = tgenerator_::build(
-			has_minimum, has_maximum, placement, select);
 }
 
 void tlistbox::add_row(const string_map& item, const int index)
