@@ -402,6 +402,99 @@ add_library(wesnoth-gui_tooltip
 )
 
 
+##### GUI widget
+
+# This library contains the widget code.
+# It contains the core code of the wigets which determines the
+# behaviour of the widgets. It also contains the builder code
+# for the widgets since the code has inter dependencies.
+set(wesnoth-gui_widget_SRC
+	gui/widgets/button.cpp
+	gui/widgets/container.cpp
+	gui/widgets/control.cpp
+	gui/widgets/debug.cpp
+	gui/widgets/drawing.cpp
+	gui/widgets/generator.cpp
+	gui/widgets/grid.cpp
+	gui/widgets/helper.cpp
+	gui/widgets/horizontal_scrollbar.cpp
+	gui/widgets/image.cpp
+	gui/widgets/label.cpp
+	gui/widgets/list.cpp
+	gui/widgets/listbox.cpp
+	gui/widgets/matrix.cpp
+	gui/widgets/minimap.cpp
+	gui/widgets/multi_page.cpp
+	gui/widgets/pane.cpp
+	gui/widgets/panel.cpp
+	gui/widgets/password_box.cpp
+	gui/widgets/progress_bar.cpp
+	gui/widgets/repeating_button.cpp
+	gui/widgets/scroll_label.cpp
+	gui/widgets/scrollbar.cpp
+	gui/widgets/scrollbar_container.cpp
+	gui/widgets/scrollbar_panel.cpp
+	gui/widgets/settings.cpp
+	gui/widgets/slider.cpp 
+	gui/widgets/spacer.cpp
+	gui/widgets/stacked_widget.cpp
+	gui/widgets/text.cpp
+	gui/widgets/text_box.cpp
+	gui/widgets/toggle_button.cpp 
+	gui/widgets/toggle_panel.cpp 
+	gui/widgets/tree_view.cpp
+	gui/widgets/tree_view_node.cpp
+	gui/widgets/vertical_scrollbar.cpp
+	gui/widgets/viewport.cpp
+	gui/widgets/widget.cpp
+	gui/widgets/window.cpp
+	gui/auxiliary/window_builder.cpp
+	gui/auxiliary/window_builder/button.cpp
+	gui/auxiliary/window_builder/control.cpp
+	gui/auxiliary/window_builder/drawing.cpp
+	gui/auxiliary/window_builder/helper.cpp
+	gui/auxiliary/window_builder/horizontal_listbox.cpp
+	gui/auxiliary/window_builder/horizontal_scrollbar.cpp
+	gui/auxiliary/window_builder/instance.cpp
+	gui/auxiliary/window_builder/image.cpp
+	gui/auxiliary/window_builder/label.cpp
+	gui/auxiliary/window_builder/listbox.cpp
+	gui/auxiliary/window_builder/matrix.cpp
+	gui/auxiliary/window_builder/minimap.cpp
+	gui/auxiliary/window_builder/multi_page.cpp
+	gui/auxiliary/window_builder/pane.cpp
+	gui/auxiliary/window_builder/panel.cpp
+	gui/auxiliary/window_builder/password_box.cpp
+	gui/auxiliary/window_builder/progress_bar.cpp
+	gui/auxiliary/window_builder/repeating_button.cpp
+	gui/auxiliary/window_builder/scroll_label.cpp
+	gui/auxiliary/window_builder/scrollbar_panel.cpp
+	gui/auxiliary/window_builder/slider.cpp
+	gui/auxiliary/window_builder/spacer.cpp
+	gui/auxiliary/window_builder/stacked_widget.cpp
+	gui/auxiliary/window_builder/text_box.cpp
+	gui/auxiliary/window_builder/toggle_button.cpp
+	gui/auxiliary/window_builder/toggle_panel.cpp
+	gui/auxiliary/window_builder/tree_view.cpp
+	gui/auxiliary/window_builder/vertical_scrollbar.cpp
+	gui/auxiliary/window_builder/viewport.cpp
+)
+
+add_library(wesnoth-gui_widget
+   	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-gui_widget_SRC}
+)
+
+target_link_libraries(wesnoth-gui_widget
+	wesnoth-gui_event
+	wesnoth-gui_iterator
+	wesnoth-gui_placer
+	wesnoth-gui_tooltip
+	wesnoth-gui_types
+)
+
+
 ##### Gui widget definition
 
 # This library contains the widget definitions for the gui library.
@@ -581,36 +674,6 @@ set(wesnoth-main_SRC
 	gui/auxiliary/log.cpp
 	gui/auxiliary/old_markup.cpp
 	gui/auxiliary/timer.cpp
-	gui/auxiliary/window_builder.cpp
-	gui/auxiliary/window_builder/button.cpp
-	gui/auxiliary/window_builder/control.cpp
-	gui/auxiliary/window_builder/drawing.cpp
-	gui/auxiliary/window_builder/helper.cpp
-	gui/auxiliary/window_builder/horizontal_listbox.cpp
-	gui/auxiliary/window_builder/horizontal_scrollbar.cpp
-	gui/auxiliary/window_builder/instance.cpp
-	gui/auxiliary/window_builder/image.cpp
-	gui/auxiliary/window_builder/label.cpp
-	gui/auxiliary/window_builder/listbox.cpp
-	gui/auxiliary/window_builder/matrix.cpp
-	gui/auxiliary/window_builder/minimap.cpp
-	gui/auxiliary/window_builder/multi_page.cpp
-	gui/auxiliary/window_builder/pane.cpp
-	gui/auxiliary/window_builder/panel.cpp
-	gui/auxiliary/window_builder/password_box.cpp
-	gui/auxiliary/window_builder/progress_bar.cpp
-	gui/auxiliary/window_builder/repeating_button.cpp
-	gui/auxiliary/window_builder/scroll_label.cpp
-	gui/auxiliary/window_builder/scrollbar_panel.cpp
-	gui/auxiliary/window_builder/slider.cpp
-	gui/auxiliary/window_builder/spacer.cpp
-	gui/auxiliary/window_builder/stacked_widget.cpp
-	gui/auxiliary/window_builder/text_box.cpp
-	gui/auxiliary/window_builder/toggle_button.cpp
-	gui/auxiliary/window_builder/toggle_panel.cpp
-	gui/auxiliary/window_builder/tree_view.cpp
-	gui/auxiliary/window_builder/vertical_scrollbar.cpp
-	gui/auxiliary/window_builder/viewport.cpp
 	gui/dialogs/addon/description.cpp
 	gui/dialogs/addon/filter_options.cpp
 	gui/dialogs/addon/uninstall_list.cpp
@@ -656,45 +719,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/unit_attack.cpp
 	gui/dialogs/unit_create.cpp
 	gui/dialogs/wml_message.cpp
-	gui/widgets/button.cpp
-	gui/widgets/container.cpp
-	gui/widgets/control.cpp
-	gui/widgets/debug.cpp
-	gui/widgets/drawing.cpp
-	gui/widgets/generator.cpp
-	gui/widgets/grid.cpp
-	gui/widgets/helper.cpp
-	gui/widgets/horizontal_scrollbar.cpp
-	gui/widgets/image.cpp
-	gui/widgets/label.cpp
-	gui/widgets/list.cpp
-	gui/widgets/listbox.cpp
-	gui/widgets/matrix.cpp
-	gui/widgets/minimap.cpp
-	gui/widgets/multi_page.cpp
-	gui/widgets/pane.cpp
-	gui/widgets/panel.cpp
-	gui/widgets/password_box.cpp
-	gui/widgets/progress_bar.cpp
-	gui/widgets/repeating_button.cpp
-	gui/widgets/scroll_label.cpp
-	gui/widgets/scrollbar.cpp
-	gui/widgets/scrollbar_container.cpp
-	gui/widgets/scrollbar_panel.cpp
-	gui/widgets/settings.cpp
-	gui/widgets/slider.cpp 
-	gui/widgets/spacer.cpp
-	gui/widgets/stacked_widget.cpp
-	gui/widgets/text.cpp
-	gui/widgets/text_box.cpp
-	gui/widgets/toggle_button.cpp 
-	gui/widgets/toggle_panel.cpp 
-	gui/widgets/tree_view.cpp
-	gui/widgets/tree_view_node.cpp
-	gui/widgets/vertical_scrollbar.cpp
-	gui/widgets/viewport.cpp
-	gui/widgets/widget.cpp
-	gui/widgets/window.cpp
 	halo.cpp
 	help.cpp
 	intro.cpp
@@ -862,6 +886,7 @@ if(ENABLE_GAME)
 			wesnoth-gui_iterator
 			wesnoth-gui_placer
 			wesnoth-gui_tooltip
+			wesnoth-gui_widget
 			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
 			wesnoth-schema_validator
@@ -874,6 +899,7 @@ if(ENABLE_GAME)
 			${wesnoth-gui_iterator_SRC}
 			${wesnoth-gui_placer_SRC}
 			${wesnoth-gui_tooltip_SRC}
+			${wesnoth-gui_widget_SRC}
 			${wesnoth-gui_widget_definition_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-schema_validator_SRC}
@@ -1094,6 +1120,7 @@ if(ENABLE_TESTS)
 			wesnoth-gui_iterator
 			wesnoth-gui_placer
 			wesnoth-gui_tooltip
+			wesnoth-gui_widget
 			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
 			wesnoth-schema_validator
@@ -1108,6 +1135,7 @@ if(ENABLE_TESTS)
 			${wesnoth-gui_placer_SRC}
 			${wesnoth-gui_widget_definition_SRC}
 			${wesnoth-gui_tooltip_SRC}
+			${wesnoth-gui_widget_SRC}
 			${wesnoth-gui1_widgets_SRC}
 			${wesnoth-schema_validator_SRC}
 			${wesnoth-main_SRC}
