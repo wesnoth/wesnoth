@@ -101,6 +101,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 	button_pool_(),
 	standard_buttons_(),
 	extra_buttons_(),
+	top_buttons_(),
 	frame_buttons_(),
 	topic_(),
 	help_button_(NULL),
