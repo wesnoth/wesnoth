@@ -372,9 +372,9 @@ private:
 REGISTER_DIALOG(mp_change_control)
 
 tmp_change_control::tmp_change_control(events::menu_handler *mh)
-	: menu_handler_(mh), view_()
+	: menu_handler_(mh)
+	, view_(new view)
 {
-	view_ = boost::shared_ptr<view>(new view());
 }
 
 boost::shared_ptr<tmp_change_control::view> tmp_change_control::get_view()
