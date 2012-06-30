@@ -160,7 +160,9 @@ threading::condition* cond[NUM_SHARDS];
 
 std::map<Uint32,threading::thread*> threads[NUM_SHARDS];
 std::vector<Uint32> to_clear[NUM_SHARDS];
+#if 0
 int system_send_buffer_size = 0;
+#endif
 bool network_use_system_sendfile = false;
 
 int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
@@ -179,7 +181,7 @@ int receive_bytes(TCPsocket s, char* buf, size_t nbytes)
 #endif
 }
 
-
+#if 0
 void check_send_buffer_size(TCPsocket& s)
 {
 	if (system_send_buffer_size)
@@ -194,7 +196,7 @@ void check_send_buffer_size(TCPsocket& s)
 	--system_send_buffer_size;
 	DBG_NW << "send buffer size: " << system_send_buffer_size << "\n";
 }
-
+#endif
 bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 		bool update_stats=false, int idle_timeout_ms=30000,
 		int total_timeout_ms=300000)
