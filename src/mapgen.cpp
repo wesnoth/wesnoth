@@ -704,16 +704,14 @@ private:
 	t_translation::t_terrain to;
 };
 
-terrain_converter::terrain_converter(const config& cfg) : min_temp(-1),
-	  max_temp(-1), min_height(-1), max_height(-1),
-	  from(t_translation::read_list(cfg["from"])),
-	  to(t_translation::NONE_TERRAIN)
+terrain_converter::terrain_converter(const config& cfg)
+	: min_temp(cfg["min_temperature"].to_int(-100000))
+	, max_temp(cfg["max_temperature"].to_int(100000))
+	, min_height(cfg["min_height"].to_int(-100000))
+	, max_height(cfg["max_height"].to_int(100000))
+	, from(t_translation::read_list(cfg["from"]))
+	, to(t_translation::NONE_TERRAIN)
 {
-	min_temp = cfg["min_temperature"].to_int(-100000);
-	max_temp = cfg["max_temperature"].to_int(100000);
-	min_height = cfg["min_height"].to_int(-100000);
-	max_height = cfg["max_height"].to_int(100000);
-
 	const std::string& to_str = cfg["to"];
 	if(to_str != "") {
 		to = t_translation::read_terrain_code(to_str);
