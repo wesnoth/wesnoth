@@ -110,7 +110,7 @@ static void wrong_value_error(const std::string & file, int line,
 schema_validator::~schema_validator(){}
 
 schema_validator::schema_validator(const std::string & config_file_name)
-	: config_read_(read_config_file(config_file_name))
+	: config_read_(false)
 	, create_exceptions_(strict_validation_enabled)
 	, root_()
 	, stack_()
@@ -118,6 +118,7 @@ schema_validator::schema_validator(const std::string & config_file_name)
 	, cache_()
 	, types_()
 {
+	config_read_ = read_config_file(config_file_name);
 	if (! config_read_) {
 		ERR_VL << "Schema file "<< config_file_name << " was not read.\n";
 		throw abstract_validator::error("Schema file "+ config_file_name
