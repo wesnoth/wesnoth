@@ -118,8 +118,7 @@ schema_validator::schema_validator(const std::string & config_file_name)
 	, cache_()
 	, types_()
 {
-	config_read_ = read_config_file(config_file_name);
-	if (! config_read_) {
+	if ( !read_config_file(config_file_name) ) {
 		ERR_VL << "Schema file "<< config_file_name << " was not read.\n";
 		throw abstract_validator::error("Schema file "+ config_file_name
 										+ " was not read.\n");
@@ -160,6 +159,7 @@ bool schema_validator::read_config_file(const std::string &filename){
 		}
 	}
 
+	config_read_ = true;
 	return true;
 }
 /*
