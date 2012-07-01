@@ -24,6 +24,11 @@
 
 #include "map.hpp"
 
+
+/**
+ * Function which, given a location, will place all locations in a ring of
+ * distance r in res. res must be a std::vector of locations.
+ */
 void get_tile_ring(const map_location& a, const int r, std::vector<map_location>& res)
 {
 	if(r <= 0) {
@@ -41,12 +46,18 @@ void get_tile_ring(const map_location& a, const int r, std::vector<map_location>
 	}
 }
 
+
+/**
+ * Function which, given a location, will place all locations within radius 'r'
+ * of that location in res. res must be a std::vector of locations.
+ */
 void get_tiles_in_radius(const map_location& a, const int r, std::vector<map_location>& res)
 {
 	for(int n = 0; n <= r; ++n) {
 		get_tile_ring(a, n, res);
 	}
 }
+
 
 static void get_tiles_radius_internal(const map_location& a, size_t radius,
 	std::set<map_location>& res, std::map<map_location,int>& visited)
@@ -67,6 +78,10 @@ static void get_tiles_radius_internal(const map_location& a, size_t radius,
 	}
 }
 
+/**
+ * Function which, given a location, will place all locations within radius 'radius'
+ * of that location in res. res must be a std::set of locations.
+ */
 void get_tiles_radius(const map_location& a, size_t radius,
 					  std::set<map_location>& res)
 {
@@ -74,6 +89,12 @@ void get_tiles_radius(const map_location& a, size_t radius,
 	get_tiles_radius_internal(a,radius,res,visited);
 }
 
+/**
+ * Function which, given a set of locations, will scan outward from those
+ * locations, looking for hexes (on the map, possibly @a with_border) that
+ * match 'pred'. Tiles in chains of up to 'radius' tiles will be included in
+ * the result (res). res must be a std::set of locations.
+ */
 void get_tiles_radius(gamemap const &map, std::vector<map_location> const &locs,
                       size_t radius, std::set<map_location> &res, bool with_border,
                       xy_pred *pred)
