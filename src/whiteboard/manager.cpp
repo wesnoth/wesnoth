@@ -47,6 +47,7 @@
 #include "unit_display.hpp"
 
 #include <boost/lexical_cast.hpp>
+#include <boost/bind.hpp>
 #include <sstream>
 
 namespace wb {
@@ -461,49 +462,49 @@ static void draw_numbers(map_location const& hex, side_actions::numbers_t number
 namespace
 {
 	//Helper struct that finds all units teams whose planned actions are currently visible
-	//Only used by manager::pre_draw() and post_draw()
-	struct move_owners_finder
-		: private enable_visit_all<move_owners_finder>, public visitor
+	//Only used by manager::pre_draw().
+	//Note that this structure is used as a functor.
+	struct move_owners_finder: public visitor
 	{
-		friend class enable_visit_all<move_owners_finder>;
 
 	public:
-		move_owners_finder()
-			: move_owners_()
-		{
-			//Thanks to the default pre_visit_team, will only visit visible side_actions
-			visit_all_actions();
+		move_owners_finder(): move_owners_() { }
+
+		void operator()(action_ptr action) {
+			action->accept(*this);
 		}
 
 		std::set<size_t> const& get_units_owning_moves() {
 			return move_owners_;
 		}
 
-	private:
 		virtual void visit(move_ptr move) {
-			move_owners_.insert(move->get_unit()->underlying_id());
+			move_owners_.insert(move->get_unit_id());
 		}
+
 		virtual void visit(attack_ptr attack) {
 			//also add attacks if they have an associated move
 			if (boost::static_pointer_cast<move>(attack)->get_route().steps.size() >= 2) {
-				move_owners_.insert(attack->get_unit()->underlying_id());
+				move_owners_.insert(attack->get_unit_id());
 			}
 		}
 		virtual void visit(recruit_ptr){}
 		virtual void visit(recall_ptr){}
 		virtual void visit(suppose_dead_ptr){}
 
+	private:
 		std::set<size_t> move_owners_;
 	};
 }
 
 void manager::pre_draw()
 {
-	if (can_modify_game_state() && has_actions())
-	{
-		units_owning_moves_ = move_owners_finder().get_units_owning_moves();
-		foreach(size_t unit_id, units_owning_moves_)
-		{
+	if (can_modify_game_state() && has_actions()) {
+		move_owners_finder move_finder;
+		for_each_action(boost::ref(move_finder));
+		units_owning_moves_ = move_finder.get_units_owning_moves();
+
+		foreach(size_t unit_id, units_owning_moves_) {
 			unit_map::iterator unit_iter = resources::units->find(unit_id);
 			assert(unit_iter.valid());
 			ghost_owner_unit(&*unit_iter);
@@ -523,30 +524,6 @@ void manager::post_draw()
 	units_owning_moves_.clear();
 }
 
-namespace
-{
-	//Only used by manager::draw_hex()
-	struct draw_visitor
-		: private enable_visit_all<draw_visitor>
-	{
-		friend class enable_visit_all<draw_visitor>;
-
-	public:
-		draw_visitor(map_location const& hex): hex_(hex) {}
-
-		using enable_visit_all<draw_visitor>::visit_all;
-
-	private:
-		//"Inherited" from enable_visit_all
-		bool process(size_t /*team_index*/, team&, side_actions&, side_actions::iterator itor)
-			{ (*itor)->draw_hex(hex_);   return true; }
-		//using default pre_visit_team()
-		//using default post_visit_team()
-
-		map_location const& hex_;
-	};
-}
-
 void manager::draw_hex(const map_location& hex)
 {
 	/**
@@ -558,7 +535,7 @@ void manager::draw_hex(const map_location& hex)
 	if (!wait_for_side_init_ && has_actions())
 	{
 		//call draw() for all actions
-		draw_visitor(hex).visit_all();
+		for_each_action(boost::bind(&action::draw_hex, _1, hex));
 
 		//Info about the action numbers to be displayed on screen.
 		side_actions::numbers_t numbers;

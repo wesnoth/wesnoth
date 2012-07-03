@@ -22,9 +22,12 @@
 
 #include <vector>
 
+#include <boost/function.hpp>
+
 #include "typedefs.hpp"
 
 class unit;
+class team;
 
 namespace wb {
 
@@ -84,8 +87,7 @@ public:
 	{}
 	~variable_finalizer()
 	{
-		if (variable_ != NULL)
-		{
+		if(variable_ != NULL) {
 			*variable_ = value_;
 		}
 	}
@@ -104,6 +106,35 @@ void unghost_owner_unit(unit* unit);
 
 /** Return whether the whiteboard has actions. */
 bool has_actions();
+
+/** Returns whether a given team's plan is visible. */
+bool team_has_visible_plan(size_t,team&);
+
+/** Always returns true. */
+inline bool default_team_filter(size_t,team&){ return true; }
+
+/**
+ * Callable object class to filter teams.
+ *
+ * The first argument is the relative turn number.
+ * The second argument is the team to consider.
+ */
+typedef boost::function<bool(size_t,team&)> team_filter;
+
+/**
+ * Apply a function to all the actions of the whiteboard.
+ *
+ * The actions are processed chronologically.
+ * The second parameter is a @ref team_filter, it is called for each team, if it returns false, the actions of this team won't be processed.
+ * The third parameter is also a @ref team_filter, it is called for each team after visiting its action, if it returns false, for_each_action returns.
+ *
+ * @param function the function to execute.
+ * @param pre_team_filter select whether a team is visited (default to @ref team_has_visible_plan).
+ * @param post_team_filter stop condition, called after visiting each team (default to @ref default_team_filter).
+ */
+void for_each_action(boost::function<void(action_ptr)> function,
+                     team_filter pre_team_filter = team_has_visible_plan,
+                     team_filter post_team_filter = default_team_filter);
 
 } //end namespace wb
 

@@ -35,29 +35,26 @@ namespace wb
  * and reverts all changes on destruction.
  */
 class mapbuilder
-	: private enable_visit_all<mapbuilder>
 {
-	friend class enable_visit_all<mapbuilder>;
 
 public:
 	mapbuilder(unit_map& unit_map);
 	virtual ~mapbuilder();
 
-	///builds every team's actions as far into the future as possible, in the correct order
+	/** Builds every team's actions as far into the future as possible, in the correct order. */
 	void build_map();
 
 private:
-	//"Inherited" from enable_visit_all
-	bool process(size_t team_index, team&, side_actions&, side_actions::iterator);
-	bool pre_visit_team(size_t turn, size_t team_index, team&, side_actions&);
-	bool post_visit_team(size_t turn, size_t team_index, team&, side_actions&);
 
-	bool process_helper(side_actions::iterator const&, action_ptr const&);
+	bool process(action_ptr action);
+	bool process_helper(action_ptr const&);
+
+	bool post_visit_team(size_t turn, team&);
 
 	//For validate_visitor to override
 	virtual void validate(side_actions::iterator const&) {}
 
-	//Does various preliminary actions on the unit map such as resetting moves for some units
+	/** Does various preliminary actions on the unit map such as resetting moves for some units. */
 	void pre_build();
 
 	void restore_normal_map();

@@ -17,9 +17,12 @@
  * @file
  */
 
+#include <algorithm>
+
 #include "utility.hpp"
 
 #include "manager.hpp"
+#include "side_actions.hpp"
 
 #include "actions.hpp"
 #include "foreach.hpp"
@@ -155,6 +158,31 @@ bool has_actions()
 			return true;
 
 	return false;
+}
+
+bool team_has_visible_plan(size_t, team &t)
+{
+	return !t.get_side_actions()->hidden();
+}
+
+void for_each_action(boost::function<void(action_ptr)> function, team_filter pre_team_filter, team_filter post_team_filter)
+{
+	size_t max_turns = 0;
+	foreach(team &t, *resources::teams) {
+		max_turns = std::max(max_turns, t.get_side_actions()->num_turns());
+	}
+
+	for(size_t turn=0; turn < max_turns; ++turn) {
+		foreach(team &side, *resources::teams) {
+			side_actions &actions = *side.get_side_actions();
+			if(actions.turn_size(turn) > 0 && pre_team_filter(turn, side)) {
+				std::for_each(actions.turn_begin(turn), actions.turn_end(turn), function);
+				if(!post_team_filter(turn, side)) {
+					return;
+				}
+			}
+		}
+	}
 }
 
 } //end namespace wb

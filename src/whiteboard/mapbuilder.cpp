@@ -65,8 +65,7 @@ void mapbuilder::pre_build()
 		//Remove any unit the current side cannot see to avoid their detection by planning
 		//Units will be restored to the unit map by destruction of removers_
 
-		if (!on_current_side && !u.is_visible_to_team((*resources::teams)[viewer_team()], false))
-		{
+		if (!on_current_side && !u.is_visible_to_team((*resources::teams)[viewer_team()], false)) {
 			removers_.push_back(new temporary_unit_remover(*resources::units, u.get_location()));
 
 			//Don't do anything else to the removed unit!
@@ -78,8 +77,9 @@ void mapbuilder::pre_build()
 		//restore movement points only to units not on the current side
 		resetters_.push_back(new unit_movement_resetter(u,!on_current_side));
 		//make sure current side's units are not reset to full moves on first turn
-		if(on_current_side)
+		if(on_current_side) {
 			acted_this_turn_.insert(&u);
+		}
 	}
 }
 
@@ -87,45 +87,41 @@ void mapbuilder::build_map()
 {
 	pre_build();
 	if (wb::has_actions()) {
-		visit_all();
+		boost::function<void(action_ptr)> processor(boost::bind(&mapbuilder::process, this, _1));
+		team_filter post_filter(boost::bind(&mapbuilder::post_visit_team, this, _1, _2));
+		for_each_action(processor, team_has_visible_plan, post_filter);
 	}
 }
 
 ///@return whether act is valid
-bool mapbuilder::process_helper(side_actions::iterator const& itor, action_ptr const& act)
+bool mapbuilder::process_helper(action_ptr const& act)
 {
-	validate(itor);
-	if(act->is_valid())
-	{
+	if(act->is_valid()) {
 		act->apply_temp_modifier(unit_map_);
 		applied_actions_.push_back(act);
 		applied_actions_this_turn_.push_back(act);
 		return true;
-	}
-	else //invalid
+	} else { //invalid
 		return false;
+	}
 }
 
-bool mapbuilder::process(size_t, team&, side_actions&, side_actions::iterator action_it)
+bool mapbuilder::process(action_ptr action)
 {
-	action_ptr action = *action_it;
-
 	unit* unit = action->get_unit();
 
-	if(!unit || !action->is_valid() || acted_this_turn_.find(unit) != acted_this_turn_.end())
-		process_helper(action_it,action);
-	else //gotta restore MP first
-	{
+	if(!unit || !action->is_valid() || acted_this_turn_.find(unit) != acted_this_turn_.end()) {
+		process_helper(action);
+	} else { //gotta restore MP first
 		int original_moves = unit->movement_left();
 
 		//reset MP
 		unit->set_movement(unit->total_movement());
 		acted_this_turn_.insert(unit);
 
-		bool revert = !process_helper(action_it,action);
+		bool revert = !process_helper(action);
 
-		if(revert) //< the action was invalid
-		{
+		if(revert) { //< the action was invalid
 			//didn't need to restore MP after all ... so let's change it back
 			acted_this_turn_.erase(unit);
 			unit->set_movement(original_moves);
@@ -134,24 +130,17 @@ bool mapbuilder::process(size_t, team&, side_actions&, side_actions::iterator ac
 	return true;
 }
 
-bool mapbuilder::pre_visit_team(size_t /*turn*/, size_t /*team_index*/, team&, side_actions& sa)
-{
-	return !sa.hidden();
-}
-
-bool mapbuilder::post_visit_team(size_t turn, size_t /*team_index*/, team&, side_actions&)
+bool mapbuilder::post_visit_team(size_t turn, team&)
 {
 	std::set<unit const*> seen;
 
 	// Go backwards through the actions of this turn to identify
 	// which ones are moves that end a turn.
-	BOOST_REVERSE_FOREACH(action_ptr action, applied_actions_this_turn_)
-	{
+	BOOST_REVERSE_FOREACH(action_ptr action, applied_actions_this_turn_) {
 		move_ptr move = boost::dynamic_pointer_cast<class move>(action);
-		if (move) {
+		if(move) {
 			move->set_turn_number(0);
-			if(move->get_route().steps.size() > 1 && seen.count(move->get_unit()) == 0)
-			{
+			if(move->get_route().steps.size() > 1 && seen.count(move->get_unit()) == 0) {
 				seen.insert(move->get_unit());
 				move->set_turn_number(turn + 1);
 			}
@@ -168,8 +157,7 @@ bool mapbuilder::post_visit_team(size_t turn, size_t /*team_index*/, team&, side
 void mapbuilder::restore_normal_map()
 {
 	//applied_actions_ contain only the actions that we applied to the unit map
-	BOOST_REVERSE_FOREACH(action_ptr act, applied_actions_)
-	{
+	BOOST_REVERSE_FOREACH(action_ptr act, applied_actions_) {
 		assert(act->is_valid());
 		act->remove_temp_modifier(unit_map_);
 	}
