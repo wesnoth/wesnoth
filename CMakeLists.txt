@@ -110,6 +110,33 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 # Handle options (set paths/definitions/etc...)
 #
 
+# This macro checks whether a compiler supports a compiler flag.
+#
+# If the flag is supported the flag will be added to the target compiler flags.
+# GCC seems to be quite happy to accept flags it does not support when there is
+# a `no' in it e.g. -Wno-not_supported_flag but will fail to compile with
+# -Wnot_supported_flag. For that case all not-named parameters will be added to
+# the target instead.
+#
+# param target                    The variable to add the compiler flag to.
+# param flag                      The compiler flag to test.
+# param variable                  The test macro needs a variable to store the
+#                                 result of the test, this paramter holds that
+#                                 variable.
+# param ...                       If this variable is set it will be added to
+#                                 target instead of flag when the compiler
+#                                 supports flag.
+macro(check_compiler_has_flag target flag variable)
+	check_cxx_compiler_flag(${flag} ${variable})
+	if(${variable})
+		if(${ARGC} GREATER 3)
+			set(${target} "${${target}} ${ARGN}")
+		else(${ARGC} GREATER 3)
+			set(${target} "${${target}} ${flag}")
+		endif(${ARGC} GREATER 3)
+	endif(${variable})
+endmacro(check_compiler_has_flag)
+
 if(CMAKE_COMPILER_IS_GNUCXX)
 	# Set our own default flags at first run.
 	if(NOT CONFIGURED)
@@ -123,6 +150,13 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 			if(HAS_COMPILER_FLAG_WUNUSED_LOCAL_TYPEDEFS)
 				set(STRICT_FLAGS "${STRICT_FLAGS} -Wno-unused-local-typedefs")
 			endif(HAS_COMPILER_FLAG_WUNUSED_LOCAL_TYPEDEFS)
+
+			# This flag is/will be added in gcc-4.8 and fails with png in C++11 mode
+			check_compiler_has_flag(
+					STRICT_FLAGS
+					"-Wliteral-suffix"
+					HAS_COMPILER_FLAG_WLITERAL_SUFFIX
+					"-Wno-literal-suffix")
 
 		else(ENABLE_STRICT_COMPILATION)
 			set(STRICT_FLAGS "")
