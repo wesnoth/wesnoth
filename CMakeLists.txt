@@ -160,6 +160,13 @@ if(CMAKE_COMPILER_IS_GNUCXX OR UNIX)
 					HAS_COMPILER_FLAG_WUNUSED_LOCAL_TYPEDEFS
 					"-Wno-unused-local-typedefs")
 
+			# This flag is/will be added in gcc-4.8 and fails with png in C++11 mode
+			check_compiler_has_flag(
+					STRICT_FLAGS
+					"-Wliteral-suffix"
+					HAS_COMPILER_FLAG_WLITERAL_SUFFIX
+					"-Wno-literal-suffix")
+
 			# This flag is needed for Clang to silence its complains about
 			# unused command line arguments.
 			check_compiler_has_flag(
