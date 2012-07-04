@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2011-10-07 22:09+0200\n"
-"PO-Revision-Date: 2012-02-26 18:01+0100\n"
+"PO-Revision-Date: 2012-07-02 03:49+0200\n"
 "Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
 "Language: es\n"
@@ -43,7 +43,7 @@ msgstr "(Normal)"
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:17
 msgid "Neophyte"
-msgstr "Novato"
+msgstr "Neófito"
 
 #. [campaign]: id=Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:18
@@ -177,8 +177,8 @@ msgid ""
 msgstr ""
 "Pronto, un hombre vestido con los atuendos de un nigromante, salió de entre "
 "los árboles. <i>«Permítanme presentarme. Soy Darken Volk. Pese a que sé que "
-"a vuestro reino no le agrada los de mi clase, creo que es vital olvidar "
-"momentáneamente nuestras diferencias. La amenaza de los orcos crece en el "
+"a vuestro reino no le agradan los de mi clase, creo que es vital olvidar "
+"momentaneamente nuestras diferencias. La amenaza de los orcos crece en el "
 "norte, y dudo que cualquiera de los pueblos fronterizos pueda resistir sin "
 "algo de ayuda. Por ahora, sólo os pido que me permitáis descansar en vuestro "
 "pueblo por unos pocos días.»</i>"
@@ -198,7 +198,7 @@ msgstr ""
 "otorgaremos descanso y seguridad. Sin embargo, quedáis desterrado de estas "
 "tierras tan pronto como partáis, para no regresar, so pena de muerte. Os "
 "agradecemos vuestra ayuda, pero no necesitamos ninguna alianza con aquellos "
-"que se manejan en artes oscuras.»</i>"
+"que tratan con las artes oscuras.»</i>"
 
 #. [side]: type=General, id=Taylor
 #. [side]: type=Apprentice Mage, id=Malin Keshar
@@ -334,7 +334,7 @@ msgstr ""
 "¡Malditos sean! Debéis asegurar el fuerte del río, Malin, o de seguro "
 "invadirán el pueblo. Traeré a los soldados que quedan para ayudaros. El "
 "grupo de invasión debiera regresar en dos días, y los orcos no se atreverían "
-"a luchar contra tal fuerza atacando por detrás."
+"a luchar contra tal fuerza atacando por su retaguardia."
 
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:218
@@ -350,7 +350,7 @@ msgid ""
 "that!"
 msgstr ""
 "No, Drogan. Levanté a este cadáver con las habilidades que Darken Volk me "
-"enseñó antes de irse. Pese a que no me agrada en absoluto, ¡sin la ayuda de "
+"enseñó antes de irse. ¡Pese a que no me agrada en absoluto, sin la ayuda de "
 "los muertos nos condenaríamos a nosotros y nuestras familias a las ollas de "
 "los orcos! ¡Seguro que puedes comprender eso!"
 
@@ -363,7 +363,7 @@ msgid ""
 msgstr ""
 "¡Ningún beneficio compensa el profanar los cadáveres de nuestros muertos! "
 "Habéis permanecido muy en silencio con respecto a la razón por la que los "
-"magos os enviaron de vuelta a casa desde Alduin; ¡si fue por interesaros en "
+"magos os enviaron de vuelta a casa desde Alduin; ¡Si fue por interesaros en "
 "dichas artes, no es sorprendente que os hayan expulsado!"
 
 #. [message]: speaker=Malin Keshar
@@ -394,8 +394,10 @@ msgstr ""
 msgid "Who will be left to defend Parthyn?"
 msgstr "¿Quién quedará para defender Parthyn?"
 
+# Darkmage: ¿Capitalizar reino de Wesnoth?(Ver RAE)
 #. [message]: speaker=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:316
+#, fuzzy
 msgid ""
 "By all rights, I should have you executed on the spot, Malin. I certainly "
 "should have not given the necromancer the chance to corrupt you. Since I "
@@ -403,9 +405,9 @@ msgid ""
 "banished from Parthyn and all the Kingdom of Wesnoth."
 msgstr ""
 "Por ley, habría de ejecutaros en el acto, Malin. Ciertamente no debí darle "
-"al nigromante la oportunidad de volveros corrupto. Sin embargo, como le "
-"mostré piedad a él, lo haré con vos. Estáis, por lo tanto, desterrado de "
-"Parthyn y de todo el reino de Wesnoth."
+"al nigromante la oportunidad de corromperos. Sin embargo, como le mostré "
+"piedad a él, lo haré con vos. Estáis, por lo tanto, desterrado de Parthyn y "
+"de todo el reino de Wesnoth."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:320
@@ -455,8 +457,10 @@ msgstr ""
 "Dela fue herida en el ataque. Los sanadores están cuidándola, pero es "
 "posible que no viva más de una hora."
 
+# Darkmage: ¿Capitalizar vasto mundo verde? (De acuerdo con la RAE)
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:342
+#, fuzzy
 msgid ""
 "Orcs. Foul, pestilent creatures. The wide green world would be a better "
 "place with them all dead. Dead!"
@@ -534,6 +538,7 @@ msgstr "Los orcos están destrozados, muertos o han huido."
 msgid "Peaceful Valley"
 msgstr "Valle tranquilo"
 
+# Darkmage: ¿Capitalizar isla de Alduin, o sustituír por isla Alduin?(Ver RAE)
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:23
 msgid ""
@@ -678,14 +683,14 @@ msgid ""
 "believe it would be beneficial for your training if you and I were to "
 "investigate the swamp."
 msgstr ""
-"Ahhh... no me había percatado de que hubiera un pantano cerca de esta aldea. "
+"Ahhh... no me había percatado de que hay un pantano cerca de esta aldea. "
 "Malin, creo que sería beneficioso para vuestro entrenamiento si tú y yo "
 "fuéramos a investigar el pantano."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:276
 msgid "Rise, rise from the realms of death and decay!"
-msgstr "¡Levantad, levantaos de los reinos de muerte y descomposición!"
+msgstr "¡Levantad!, ¡levantaos desde los reinos de muerte y descomposición!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:297
@@ -732,8 +737,8 @@ msgid ""
 "Sacking goblin villages is all well and good, but walking corpses and bats "
 "won’t stand up to full orcish warriors."
 msgstr ""
-"Aquello de saquear aldeas goblin salió bien, pero los muertos andantes y los "
-"murciélagos no resistirán a los preparados soldados orcos."
+"Saquear aldeas goblin está bien, pero los muertos andantes y los murciélagos "
+"no resistirán a los preparados soldados orcos."
 
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:371
@@ -748,7 +753,7 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:375
 msgid "Excellent. I’m eager to move on to the real foes."
-msgstr "Excelente. Estoy impaciente por seguir con los enemigos reales."
+msgstr "Excelente. Estoy impaciente por seguir contra enemigos reales."
 
 #. [scenario]: id=03_A_Haunting_in_Winter, race=dwarf (
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:6
@@ -765,8 +770,8 @@ msgid ""
 msgstr ""
 "Malin y Darken Volk pasan el verano y el otoño merodeando por las tierras "
 "bajas del norte. Atacan pequeñas aldeas goblin y campamentos orcos cuando "
-"los encuentran. El poder de Malin crece considerablemente bajo la tutelael "
-"constante cuidado del nigromante."
+"los encuentran. El poder de Malin crece considerablemente bajo la tutela y "
+"el constante cuidado del nigromante."
 
 #. [side]: type=Dwarvish Steelclad, id=Dap Horner
 #. [side]: type=Bandit, id=Gorak Cole
@@ -818,8 +823,8 @@ msgid ""
 "Be careful when imprisoning a soul and use all your might to retain control "
 "over it or it might attempt to break free and destroy you!"
 msgstr ""
-"¡Sé cuidadoso cuando encarceles una alma y uses todo tu poder para mantener "
-"el control sobre ella o podría tratar de liberarse y destruirte!"
+"¡Sé cuidadoso cuando encarceles un alma y usa todo tu poder para mantener el "
+"control sobre ella o podría tratar de liberarse y destruirte!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:192
@@ -841,8 +846,8 @@ msgid ""
 "Two necromancers are at the cave entrance! Up yer axes, boys, if ye dinna’ "
 "want tae be a walking pile o’ bones."
 msgstr ""
-"¡Hay do’ nigromante’ en la ’ntrada de la cueva! Prepará’ vuestras hachas, "
-"chicos, si no deseáis ser un montón de huesos andante."
+"¡Hay do’ nigromante’ ’n la ’ntrada de la cueva! Prepará’ vuestras hachas, "
+"chicos, si no deseáis ser un montón de hueso’ andante."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:212
@@ -887,7 +892,7 @@ msgid ""
 "relentlessly."
 msgstr ""
 "¡Chico estúpido! Tu voluntad debe ser más fuerte o jamás mantendrás a tus "
-"soldados bajo control para enfrentar a los orcos. Son muchos los jóvenes "
+"soldados bajo control para enfrentarte a los orcos. Son muchos los jóvenes "
 "nigromantes que han muerto cuando sus sirvientes se vuelven en su contra. Te "
 "atacará sin descanso."
 
@@ -914,7 +919,7 @@ msgstr "Creo tener al resto de ellos bajo control ahora. Eso estuvo cerca."
 #. [scenario]: id=04_Beginning_of_the_Revenge
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:6
 msgid "Beginning of the Revenge"
-msgstr "Inicio de la venganza"
+msgstr "El inicio de la venganza"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:24
@@ -1058,8 +1063,9 @@ msgid ""
 msgstr ""
 "El daño causado por Malin y Darken Volk durante el año anterior obliga a los "
 "jefes orcos, usualmente enemigos, a unirse en oposición. Eventualmente, en "
-"un estrecho paraje conocido por los hombres como Longlier, y por los elfos "
-"como Arkan-thoria, consiguen rodear a los humanos e iniciar una lucha."
+"un estrecho paraje a la linde del río conocido por los hombres como "
+"Longlier, y por los elfos como Arkan-thoria, consiguen rodear a los humanos "
+"e iniciar una lucha."
 
 #. [scenario]: id=05_Orc_War
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:43
@@ -1111,7 +1117,7 @@ msgid ""
 "Stop your silly talk, foul necromancer. You have caused enough trouble. It "
 "is time for you to die."
 msgstr ""
-"Dejad vuestro tonto discurso, asqueroso nigromante. Has ocasionado muchos "
+"Dejad vuestra estúpida charla, asqueroso nigromante. Has ocasionado muchos "
 "problemas. Es hora de que mueras."
 
 # Darkmage: No veo el sentido que tiene una interrogación en esta frase.
@@ -1138,8 +1144,8 @@ msgid ""
 "battle, should pose no problem for you, even on your own."
 msgstr ""
 "Cobarde, sí. Debes seguirlo y terminar con el antes de que pueda reunirse "
-"con el consejo orco. Un sólo jefe, incluso si reúne a los supervivientes de "
-"esta batalla, no será problema para ti, incluso solo."
+"con el consejo de orcos. Un sólo jefe, incluso si reúne a los supervivientes "
+"de esta batalla, no será problema para ti, incluso solo."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:321
@@ -1167,8 +1173,10 @@ msgstr ""
 msgid "Return to Parthyn"
 msgstr "Regreso a Parthyn"
 
+# Darkmage: ¿Capitalizar Gran Río?(Ver RAE)
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:18
+#, fuzzy
 msgid ""
 "Two days travel south of the previous battle, Malin loses the trail of the "
 "regrouped orcish warriors, but soon picks it up again. The trail moves "
@@ -1351,9 +1359,10 @@ msgstr ""
 "Como nuestras fuerzas deben quedarse aquí para luchar contra tus mascotas "
 "orcas, en cuanto acabemos con ellos iré tras de ti. Ya no eres mi hermano."
 
-# Darkmage: Sapo gordo no es un insulto común en español (es insultante, pero no es común), "vaca gorda" es mas usual.
+# Darkmage: Sapo gordo no es un insulto común en español (es insultante, pero no es común), "vaca gorda" es mas usual. ¿O quizá culo gordo/bola de sebo...? ¿?
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:347
+#, fuzzy
 msgid ""
 "Gods of Darkness, how did it come to this? My own sister determined on my "
 "death. Nothing has gone right since... since that day the fat toad Zephrin "
@@ -1419,8 +1428,10 @@ msgstr ""
 "Malin responde, <i>«Ya no son mi gente, puesto que me han rechazado ya dos "
 "veces.»</i>"
 
+# Darkmage: "Burgomaestre" es "alcalde" o aquél con poderes como para diriguir una villa/pueblo/ciudad (sean conseguidos como sean), no es la perfecta traducción de lord como título nobiliario, aunque el contexto no ayuda...
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:121
+#, fuzzy
 msgid ""
 "Darken Volk continues, <i>“Excellent. We travel, then, to the city of Tath. "
 "There is a lord of that city by the name of Karres. He was trained as a mage "
@@ -1428,7 +1439,7 @@ msgid ""
 "their studies. Among his library is the book we seek. We will need to break "
 "into his manor and seek the book inside.”</i>"
 msgstr ""
-"Darken Volk continúa, <i>«Excelente. Viajaremos, entonces, a la ciudad de "
+"Darken Volk continúa, <i>«Excelente. Viajemos, entonces, a la ciudad de "
 "Tath. Hay un burgomaestre bajo el nombre de Karres. Fue entrenado como un "
 "mago en su infancia, y ahora usa su poder para apoyar a muchos magos en sus "
 "estudios. En su biblioteca se encuentra el libro que buscamos. Necesitaremos "
@@ -1448,8 +1459,10 @@ msgstr "Intrusos"
 msgid "Taylor"
 msgstr "Taylor"
 
+# Darkmage: Hum... primero es un Burgomaestre y luego es un Señor... no me ha quedado claro.
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:204
+#, fuzzy
 msgid "Malin and Darken Volk enter the Mage Lord’s manor"
 msgstr "Malin y Darken Volk deben entrar a la mansión del Señor mago"
 
@@ -1493,8 +1506,10 @@ msgstr "Maestro entrenador"
 msgid "Townperson"
 msgstr "Habitante"
 
+# Darkmage: De nuevo "Señor"
 #. [message]: speaker=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:310
+#, fuzzy
 msgid ""
 "The stolen book lies within Lord Karres’s manor on the north end of the "
 "city. We cannot defeat the entire city guard, so we must stay hidden as long "
@@ -1550,7 +1565,7 @@ msgid ""
 msgstr ""
 "Este fue el impacto de lo que se conoce como agua bendita entre la gente "
 "común. Está fabricada con un procedimiento complicado y misterioso conocido "
-"sólo a unos pocos sacerdotes y, a menudo, utilizada para luchar contra "
+"sólo por unos pocos sacerdotes y, a menudo, utilizada para luchar contra "
 "criaturas resucitadas."
 
 #. [message]: speaker=unit
@@ -1563,13 +1578,17 @@ msgstr "¡Aquí está la entrada! ¡Rápido!"
 msgid "A Small Favor — Part 2"
 msgstr "Un pequeño favor — Parte 2"
 
+# Darkmage: "Señor de nuevo"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:65
+#, fuzzy
 msgid "Find the mage Lord Karres"
 msgstr "Encontrar al mago Señor Karres"
 
+# Darkmage: "Señor"... otra vez, necesitamos llegar a un consenso con esto.
 #. [unit]: type=Arch Mage, type=Great Mage, id=Lord Karres
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:121
+#, fuzzy
 msgid "Lord Karres"
 msgstr "Señor Karres"
 
@@ -1680,7 +1699,7 @@ msgstr "Escapar por el túnel en el sótano noreste"
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:310
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:401
 msgid "Phew! Let’s get out of here."
-msgstr "¡Fiu! Salgamos de aquí."
+msgstr "¡Fiú! Salgamos de aquí."
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:343
@@ -1876,8 +1895,10 @@ msgstr ""
 "¿Yo? No he hecho nada más que darte una oportunidad. Has escogido tu camino. "
 "¡Ahora déjame solo!"
 
+# Darkmage: "Ahora Sir vs Lord"
 #. [unit]: type=Paladin, id=Sir Cadaeus
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:404
+#, fuzzy
 msgid "Sir Cadaeus"
 msgstr "Señor Cadaeus"
 
@@ -1968,7 +1989,7 @@ msgstr "Tengo el libro."
 #. [message]: speaker=unit
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:657
 msgid "I am sorry master, that is too heavy for me."
-msgstr "Lo siento, amo. Es muy pesado para mí."
+msgstr "Lo siento, amo, es muy pesado para mí."
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:691
@@ -2000,7 +2021,7 @@ msgstr ""
 "con su último aliento. De ese modo ata a su propio espíritu del mismo modo "
 "que los nigromantes atan el de otros. Sin embargo, al conservar su propia "
 "voluntad, el liche puede aún invocar a los asombrosos poderes del mundo de "
-"los espíritus.»<i>"
+"los espíritus.»</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:28
@@ -2030,7 +2051,7 @@ msgstr ""
 "hasta alcanzar su campamento. Al ver el número de orcos, la enormidad de su "
 "misión comienza a hacerlo dudar. Ataca el campamento de todas formas, pero "
 "rápidamente lo hacen retroceder, y es gravemente herido por una daga orca "
-"arrojada cuando él se retiraba. Encuentra refugio en una pequeña cueva."
+"arrojadiza cuando él se retiraba. Encuentra refugio en una pequeña cueva."
 
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:66
@@ -2287,7 +2308,7 @@ msgstr ""
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:300
 msgid "Not even real soldiers. I will sweep you aside."
-msgstr "Ni siquiera soldados de verdad. Os barreré a un lado."
+msgstr "Ni siquiera soldados de verdad. Os barreré de aquí."
 
 #. [message]: speaker=Foolish Hero
 #: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:312
@@ -2354,7 +2375,7 @@ msgstr ""
 "¿Orcos? Sois vosotros los que me habéis obligado a elegir este camino "
 "oscuro, y eres tú quien acabó con mi vida mortal y me hizo convertirme en un "
 "liche. Te estoy realmente agradecido de que hayas venido aquí, héroe "
-"insensta. ¡Mi odio hacia tu raza me hace más fuerte y de nuevo tengo la "
+"insensato. ¡Mi odio hacia tu raza me hace más fuerte y de nuevo tengo la "
 "oportunidad de matar orcos!."
 
 #. [message]: speaker=Foolish Hero

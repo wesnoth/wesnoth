@@ -24,7 +24,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-01-22 15:00+0100\n"
-"PO-Revision-Date: 2012-03-08 00:04+0100\n"
+"PO-Revision-Date: 2012-06-27 03:00+0200\n"
 "Last-Translator: Aelonin <quianaaelonin@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
 "Language: es\n"
@@ -173,7 +173,7 @@ msgid ""
 "list of encountered units"
 msgstr ""
 "Muestra todos los tipos de unidades en la ayuda del juego (requiere "
-"reinicio). Esto no altera la lista de unidades encontradas"
+"reinicio). Esto no altera la lista de unidades conocidas"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:165
@@ -2585,8 +2585,8 @@ msgid ""
 msgstr ""
 "Hay seis tipos de ataques: «<i>de corte</i>», «<i>de impacto</i>», «<i>de "
 "penetración</i>», «<i>de fuego</i>», «<i>de frío</i>» y «<i>arcano</i>». "
-"Diferentes unidades tienen debilidades en contra de diferentes tipos de "
-"ataques. Presione el botón derecho del ratón sobre una unidad y seleccione "
+"Diferentes unidades tienen debilidades contra diferentes tipos de ataques. "
+"Presione el botón derecho del ratón sobre una unidad y seleccione "
 "«<b>descripción de unidad</b>» para ver a cuáles ataques es resistente y a "
 "cuáles no lo es."
 
@@ -5524,7 +5524,7 @@ msgstr "Derrotar a los líderes enemigos"
 
 #: src/multiplayer_connect.cpp:1809
 msgid "Waiting for players to join..."
-msgstr "Esperando a que se conecten jugadores..."
+msgstr "Espere a que se unan jugadores..."
 
 #: src/multiplayer_connect.cpp:1810
 msgid "Waiting for players to choose factions..."
@@ -5552,11 +5552,11 @@ msgstr "Mapa para jugar:"
 
 #: src/multiplayer_create.cpp:87 src/multiplayer_lobby.cpp:288
 msgid "Use map settings"
-msgstr "Usar ajustes del mapa"
+msgstr "Ajustes estándar"
 
 #: src/multiplayer_create.cpp:88
 msgid "Random start time"
-msgstr "Tiempo de comienzo aleatorio"
+msgstr "Tiempo inicial al azar"
 
 #: src/multiplayer_create.cpp:89
 msgid "Fog of war"
@@ -5580,7 +5580,7 @@ msgstr "Ajustes..."
 
 #: src/multiplayer_create.cpp:97
 msgid "Set Password..."
-msgstr "Establecer contraseña..."
+msgstr "Contraseña..."
 
 #: src/multiplayer_create.cpp:116
 msgid "Load Game..."
@@ -5694,7 +5694,7 @@ msgstr "Límite al inicio: "
 
 #: src/multiplayer_create.cpp:407
 msgid "Turn bonus: "
-msgstr "Bonificación por turno: "
+msgstr "Añadido por turno: "
 
 #: src/multiplayer_create.cpp:411
 msgid "Reservoir: "
@@ -5702,7 +5702,7 @@ msgstr "Reserva: "
 
 #: src/multiplayer_create.cpp:416
 msgid "Action bonus: "
-msgstr "Bonificación para acciones: "
+msgstr "Añadido a acciones: "
 
 #: src/multiplayer_create.cpp:423
 msgid "Village gold: "
@@ -5734,7 +5734,7 @@ msgstr "Contraseña requerida"
 
 #: src/multiplayer_lobby.cpp:735 src/multiplayer_wait.cpp:178
 msgid "Game Lobby"
-msgstr "Sala de entrada de partida"
+msgstr "Sala de entrada"
 
 #: src/multiplayer_lobby.cpp:740
 msgid "Observe Game"
@@ -5758,7 +5758,7 @@ msgstr "Salir"
 
 #: src/multiplayer_lobby.cpp:746
 msgid "Apply filter"
-msgstr "Aplicar filtro"
+msgstr "Usar filtro"
 
 #: src/multiplayer_lobby.cpp:747
 msgid "Invert"
@@ -5770,11 +5770,11 @@ msgstr "Posiciones vacantes"
 
 #: src/multiplayer_lobby.cpp:749
 msgid "Friends in game"
-msgstr "Amigos en la partida"
+msgstr "Partida con amigos"
 
 #: src/multiplayer_lobby.cpp:750
 msgid "Search:"
-msgstr "Búsqueda:"
+msgstr "Buscar:"
 
 #: src/multiplayer_lobby.cpp:758
 msgid "Skip quickly to the active turn when observing"
@@ -5909,7 +5909,7 @@ msgstr "hora local"
 #: src/play_controller.cpp:1106 src/savegame.cpp:320 src/savegame.cpp:332
 #: src/savegame.cpp:1006 src/savegame.cpp:1008
 msgid "Auto-Save"
-msgstr "Autoguardado"
+msgstr "Guardado automático"
 
 #: src/play_controller.cpp:1113
 msgid "Back to turn "
