@@ -36,7 +36,7 @@ class map_formula_callable;
 
 namespace gui2 {
 
-class tpoint;
+struct tpoint;
 
 /**
  * Initializes the gui subsystems.
