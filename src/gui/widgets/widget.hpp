@@ -30,7 +30,7 @@
 
 namespace gui2 {
 
-class tbuilder_widget;
+struct tbuilder_widget;
 class tdialog;
 class twindow;
 
