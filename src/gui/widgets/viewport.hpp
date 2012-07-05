@@ -22,7 +22,7 @@
 namespace gui2 {
 
 namespace implementation {
-class tbuilder_viewport;
+struct tbuilder_viewport;
 } // namespace implementation
 
 class tgrid;
