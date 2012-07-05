@@ -27,7 +27,7 @@
 namespace gui2 {
 
 namespace implementation {
-class tbuilder_pane;
+struct tbuilder_pane;
 } // namespace implementation
 
 class tgrid;
