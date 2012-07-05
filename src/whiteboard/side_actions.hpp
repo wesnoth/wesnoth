@@ -86,8 +86,8 @@ public:
 	/**
 	 * Inserts an action at the specified position.
 	 *
-	 * The planned turn of the inserted action is the same as the planned turn of itor-1 before the insertion.
-	 * If itor==begin(), the new action will became the first action of the current turn.
+	 * The planned turn of the inserted action is the same as the planned turn of position-1 before the insertion.
+	 * If position == begin(), the new action will became the first action of the current turn.
 	 *
 	 * @param itor the iterator before which action will be inserted
 	 * @param action the action to insert
@@ -330,7 +330,13 @@ public:
 	 */
 	size_t size() const { return actions_.size(); }
 
-	/** Returns the number of turns that have plans. */
+	/**
+	 * Returns the number of turns that have plans.
+	 * If the container holds only one action on turn 1 (that is turn 0 is empty),
+	 * this function will still returns 2. Indeed, turn 0 has an "empty" plan.
+	 *
+	 * @note The current turn is counted. That is if num_turns()==0 then empty()==true.
+	 */
 	size_t num_turns() const { return actions_.num_turns(); }
 
 	/** Returns the number of actions planned for turn turn_num */
@@ -433,7 +439,7 @@ public:
 	 * Find the (chronologically) first action between the iterators between.first and between.second but after or equals to limit with respect to the predicate comp.
 	 *
 	 * This function makes sense when T is a non-chronological iterator.
-	 * If T is iterator and Compare is std::less<iterator>,
+	 * If T is @ref iterator and Compare is std::less<iterator>,
 	 * this function returns limit if limit is in [between.first, between.second)
 	 * or between.first if between.first>limit or end() otherwise.
 	 *
