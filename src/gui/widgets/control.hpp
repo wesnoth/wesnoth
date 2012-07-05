@@ -23,7 +23,7 @@
 namespace gui2 {
 
 namespace implementation {
-	class tbuilder_control;
+	struct tbuilder_control;
 } // namespace implementation
 
 /** Base class for all visible items. */
