@@ -37,7 +37,6 @@ public:
 	virtual ~recruit();
 
 	friend class validate_visitor;
-	friend class highlight_visitor;
 
 	virtual std::ostream& print(std::ostream& s) const;
 

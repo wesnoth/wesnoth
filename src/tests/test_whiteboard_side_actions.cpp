@@ -15,8 +15,10 @@
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
+#include "foreach.hpp"
 #include "whiteboard/action.hpp"
 #include "whiteboard/side_actions.hpp"
+#include "whiteboard/typedefs.hpp"
 #include "whiteboard/visitor.hpp"
 
 #include <boost/test/unit_test.hpp>

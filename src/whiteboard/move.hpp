@@ -34,7 +34,6 @@ class move : public action
 {
 public:
 	friend class validate_visitor;
-	friend class highlight_visitor;
 
 	move(size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);

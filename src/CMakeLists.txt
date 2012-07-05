@@ -786,7 +786,7 @@ set(wesnoth-main_SRC
 	variant.cpp
 	whiteboard/action.cpp
 	whiteboard/attack.cpp
-	whiteboard/highlight_visitor.cpp
+	whiteboard/highlighter.cpp
 	whiteboard/manager.cpp
 	whiteboard/mapbuilder.cpp
 	whiteboard/move.cpp

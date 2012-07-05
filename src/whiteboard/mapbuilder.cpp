@@ -88,7 +88,7 @@ void mapbuilder::build_map()
 	pre_build();
 	if (wb::has_actions()) {
 		boost::function<void(action_ptr)> processor(boost::bind(&mapbuilder::process, this, _1));
-		team_filter post_filter(boost::bind(&mapbuilder::post_visit_team, this, _1, _2));
+		turn_team_filter post_filter(boost::bind(&mapbuilder::post_visit_team, this, _1, _2));
 		for_each_action(processor, team_has_visible_plan, post_filter);
 	}
 }
@@ -130,7 +130,7 @@ bool mapbuilder::process(action_ptr action)
 	return true;
 }
 
-bool mapbuilder::post_visit_team(size_t turn, team&)
+bool mapbuilder::post_visit_team(team&, size_t turn)
 {
 	std::set<unit const*> seen;
 

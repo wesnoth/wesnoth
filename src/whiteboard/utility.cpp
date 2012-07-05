@@ -18,6 +18,8 @@
  */
 
 #include <algorithm>
+#include <iterator>
+#include <limits>
 
 #include "utility.hpp"
 
@@ -160,12 +162,12 @@ bool has_actions()
 	return false;
 }
 
-bool team_has_visible_plan(size_t, team &t)
+bool team_has_visible_plan(team &t...)
 {
 	return !t.get_side_actions()->hidden();
 }
 
-void for_each_action(boost::function<void(action_ptr)> function, team_filter pre_team_filter, team_filter post_team_filter)
+void for_each_action(boost::function<void(action_ptr)> function, turn_team_filter pre_team_filter, turn_team_filter post_team_filter)
 {
 	size_t max_turns = 0;
 	foreach(team &t, *resources::teams) {
@@ -175,14 +177,43 @@ void for_each_action(boost::function<void(action_ptr)> function, team_filter pre
 	for(size_t turn=0; turn < max_turns; ++turn) {
 		foreach(team &side, *resources::teams) {
 			side_actions &actions = *side.get_side_actions();
-			if(actions.turn_size(turn) > 0 && pre_team_filter(turn, side)) {
+			if(actions.turn_size(turn) > 0 && pre_team_filter(side, turn)) {
 				std::for_each(actions.turn_begin(turn), actions.turn_end(turn), function);
-				if(!post_team_filter(turn, side)) {
+				if(!post_team_filter(side, turn)) {
 					return;
 				}
 			}
 		}
 	}
+}
+
+action_ptr find_action_at(map_location hex, team_filter pre_team_filter)
+{
+	action_ptr result;
+	size_t result_turn = std::numeric_limits<size_t>::max();
+
+	foreach(team &side, *resources::teams) {
+		side_actions &actions = *side.get_side_actions();
+		if(pre_team_filter(side)) {
+			side_actions::iterator chall = actions.find_first_action_at(hex);
+			if(chall == actions.end()) {
+				continue;
+			}
+
+			size_t chall_turn = actions.get_turn(chall);
+			if(chall_turn < result_turn) {
+				result = *chall;
+				result_turn = chall_turn;
+			}
+		}
+	}
+
+	return result;
+}
+
+std::deque<action_ptr> find_actions_of(unit const &target)
+{
+	return (*resources::teams)[target.side()-1].get_side_actions()->actions_of(target);
 }
 
 } //end namespace wb

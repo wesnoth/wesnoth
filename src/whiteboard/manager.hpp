@@ -34,7 +34,7 @@ namespace pathfind {
 namespace wb {
 
 class mapbuilder;
-class highlight_visitor;
+class highlighter;
 
 /**
  * This class is the frontend of the whiteboard framework for the rest of the Wesnoth code.
@@ -169,7 +169,7 @@ public:
 	void contextual_bump_down_action();
 
 	/** Get the highlight visitor instance in use by the manager */
-	boost::weak_ptr<highlight_visitor> get_highlighter() { return highlighter_; }
+	boost::weak_ptr<highlighter> get_highlighter() { return highlighter_; }
 
 	/** Checks whether the whiteboard has any planned action on any team */
 	bool has_actions() const;
@@ -225,7 +225,7 @@ private:
 
 
 	boost::scoped_ptr<mapbuilder> mapbuilder_;
-	boost::shared_ptr<highlight_visitor> highlighter_;
+	boost::shared_ptr<highlighter> highlighter_;
 
 	boost::scoped_ptr<pathfind::marked_route> route_;
 

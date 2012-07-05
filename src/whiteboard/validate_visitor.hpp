@@ -22,6 +22,7 @@
 
 #include "mapbuilder.hpp"
 #include "side_actions.hpp"
+#include "visitor.hpp"
 
 #include <set>
 

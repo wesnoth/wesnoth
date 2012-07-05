@@ -22,8 +22,8 @@
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
+#include "side_actions.hpp"
 #include "utility.hpp"
-#include "visitor.hpp"
 
 struct unit_movement_resetter;
 
@@ -31,7 +31,7 @@ namespace wb
 {
 
 /**
- * Visitor that collects and applies unit_map modifications from the actions it visits
+ * Class that collects and applies unit_map modifications from the actions it visits
  * and reverts all changes on destruction.
  */
 class mapbuilder
@@ -45,13 +45,14 @@ public:
 	void build_map();
 
 private:
-
+	/** Function called on each action. */
 	bool process(action_ptr action);
 	bool process_helper(action_ptr const&);
 
-	bool post_visit_team(size_t turn, team&);
+	/** Function called after visiting a team. */
+	bool post_visit_team(team&, size_t turn);
 
-	//For validate_visitor to override
+	/** For validate_visitor to override. */
 	virtual void validate(side_actions::iterator const&) {}
 
 	/** Does various preliminary actions on the unit map such as resetting moves for some units. */

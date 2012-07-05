@@ -20,7 +20,7 @@
 #include "manager.hpp"
 
 #include "action.hpp"
-#include "highlight_visitor.hpp"
+#include "highlighter.hpp"
 #include "mapbuilder.hpp"
 #include "move.hpp"
 #include "attack.hpp"
@@ -563,7 +563,7 @@ void manager::on_mouseover_change(const map_location& hex)
 	{
 		if (!highlighter_)
 		{
-			highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
+			highlighter_.reset(new highlighter(*resources::units, viewer_actions()));
 		}
 		highlighter_->set_mouseover_hex(hex);
 		highlighter_->highlight();

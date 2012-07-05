@@ -52,6 +52,9 @@ public:
 	//! Tag for action_set's hashed_non_unique index.
 	struct by_unit{};
 
+	//! Tag for action_set's hashed_non_unique index.
+	struct by_hex{};
+
 	//! Underlying container
 	typedef boost::multi_index::multi_index_container <
 		action_ptr,
@@ -60,7 +63,10 @@ public:
 				boost::multi_index::tag< chronological > >,
 			boost::multi_index::hashed_non_unique<
 				boost::multi_index::tag< by_unit >,
-				boost::multi_index::const_mem_fun< action, size_t, &action::get_unit_id > >
+				boost::multi_index::const_mem_fun< action, size_t, &action::get_unit_id > >,
+			boost::multi_index::hashed_non_unique<
+				boost::multi_index::tag< by_hex >,
+				boost::multi_index::const_mem_fun< action, map_location, &action::get_numbering_hex > >
 			>
 		> action_set;
 
@@ -443,6 +449,13 @@ public:
 	const_iterator find_first_action_of(std::pair<T,T> between, const_iterator limit, Compare comp) const;
 
 	/**
+	 * Find the first action occurring at a given hex.
+	 *
+	 * @retval end() if no action occurs at the given location.
+	 */
+	iterator find_first_action_at(map_location hex);
+
+	/**
 	 * Finds the first action that belongs to this unit, starting the search at the specified position.
 	 * @return The position, or end() if not found.
 	 */
@@ -462,6 +475,7 @@ public:
 
 	bool unit_has_actions(unit const& unit);
 	size_t count_actions_of(unit const& unit);
+	std::deque<action_ptr> actions_of(unit const& unit);
 
 	/** Removes all invalid actions "attached" to the unit */
 	void remove_invalid_of(unit const*);

@@ -32,7 +32,6 @@ namespace wb {
 	: public action
 	{
 		friend class validate_visitor;
-		friend class highlight_visitor;
 
 	public:
 		suppose_dead(size_t team_index, bool hidden, unit& curr_unit, map_location const& loc);

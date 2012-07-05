@@ -32,18 +32,15 @@ namespace wb
 {
 
 /**
- * Visitor that handles highlighting planned actions as you hover over them,
+ * Class that handles highlighting planned actions as you hover over them
  * and determine the right target for contextual execution.
  */
-class highlight_visitor
-	: private visitor
-	, private enable_visit_all<highlight_visitor>
+class highlighter
 {
-	friend class enable_visit_all<highlight_visitor>;
 
 public:
-	highlight_visitor(unit_map& unit_map, side_actions_ptr side_actions);
-	virtual ~highlight_visitor();
+	highlighter(unit_map& unit_map, side_actions_ptr side_actions);
+	virtual ~highlighter();
 
 	void set_mouseover_hex(const map_location& hex);
 	const map_location& get_mouseover_hex() const {return mouseover_hex_; }
@@ -56,38 +53,28 @@ public:
 	action_ptr get_bump_target();
 	unit* get_selection_target();
 
-	/// @return the action the currently receives the highlight focus
+	/// @return the action that currently receives the highlight focus
 	weak_action_ptr get_main_highlight() { return main_highlight_; }
 	typedef std::deque<weak_action_ptr> secondary_highlights_t;
 	/// @return the collection of actions that are highlighted but don't have the focus
 	secondary_highlights_t get_secondary_highlights() { return secondary_highlights_; }
 
 private:
-	virtual void visit(move_ptr move);
-	virtual void visit(attack_ptr attack);
-	virtual void visit(recruit_ptr recruit);
-	virtual void visit(recall_ptr recall);
-	virtual void visit(suppose_dead_ptr sup_d);
+	/** Unhighlight a given action (main or secondary). */
+	class unhighlight_visitor;
 
-	//"Inherited" from enable_visit_all
-	bool process(size_t team_index, team&, side_actions&, side_actions::iterator);
+	/** Highlight the given main action. */
+	class highlight_main_visitor;
+
+	/** Highlight the given secondary action. */
+	class highlight_secondary_visitor;
 
 	void unhighlight();
-
 	void find_main_highlight();
 	void find_secondary_highlights();
 
-	enum mode {
-		FIND_MAIN_HIGHLIGHT,
-		FIND_SECONDARY_HIGHLIGHTS,
-		HIGHLIGHT_MAIN,
-		HIGHLIGHT_SECONDARY,
-		UNHIGHLIGHT_MAIN,
-		UNHIGHLIGHT_SECONDARY,
-		NONE
-	};
-
-	mode mode_;
+	/** Redraw the given move action when needed. */
+	void last_action_redraw(move_ptr);
 
 	unit_map& unit_map_;
 
@@ -101,6 +88,43 @@ private:
 	secondary_highlights_t secondary_highlights_;
 
 	side_actions_ptr side_actions_;
+};
+
+class highlighter::highlight_main_visitor: public visitor {
+public:
+	highlight_main_visitor(highlighter &h): highlighter_(h) {}
+	void visit(move_ptr);
+	void visit(attack_ptr);
+	void visit(recruit_ptr);
+	/// @todo: find some suitable effect for mouseover on planned recall.
+	void visit(recall_ptr){}
+	void visit(suppose_dead_ptr){}
+private:
+	highlighter &highlighter_;
+};
+
+struct highlighter::highlight_secondary_visitor: public visitor {
+public:
+	highlight_secondary_visitor(highlighter &h): highlighter_(h) {}
+	void visit(move_ptr);
+	void visit(attack_ptr);
+	void visit(recruit_ptr){}
+	void visit(recall_ptr){}
+	void visit(suppose_dead_ptr){}
+private:
+	highlighter &highlighter_;
+};
+
+struct highlighter::unhighlight_visitor: public visitor {
+public:
+	unhighlight_visitor(highlighter &h): highlighter_(h) {}
+	void visit(move_ptr);
+	void visit(attack_ptr);
+	void visit(recruit_ptr){}
+	void visit(recall_ptr);
+	void visit(suppose_dead_ptr){}
+private:
+	highlighter &highlighter_;
 };
 
 } // end namespace wb

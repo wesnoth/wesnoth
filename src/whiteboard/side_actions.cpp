@@ -19,6 +19,7 @@
 
 #include <set>
 #include <sstream>
+#include <iterator>
 
 #include "side_actions.hpp"
 
@@ -29,7 +30,7 @@
 #include "recall.hpp"
 #include "recruit.hpp"
 #include "suppose_dead.hpp"
-#include "highlight_visitor.hpp"
+#include "highlighter.hpp"
 #include "utility.hpp"
 #include "validate_visitor.hpp"
 
@@ -271,7 +272,7 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 	std::vector<size_t>& team_numbers = result.team_numbers;
 	int& main_number = result.main_number;
 	std::set<size_t>& secondary_numbers = result.secondary_numbers;
-	boost::shared_ptr<highlight_visitor> highlighter = resources::whiteboard->get_highlighter().lock();
+	boost::shared_ptr<highlighter> hlighter = resources::whiteboard->get_highlighter().lock();
 
 	for(const_iterator it = begin(); it != end(); ++it) {
 		if((*it)->is_numbering_hex(hex)) {
@@ -281,12 +282,12 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 			numbers_to_draw.push_back(number);
 			team_numbers.push_back(team_index());
 
-			if(highlighter) {
-				if(highlighter->get_main_highlight().lock() == *it) {
+			if(hlighter) {
+				if(hlighter->get_main_highlight().lock() == *it) {
 					main_number = index;
 				}
 
-				foreach(weak_action_ptr action, highlighter->get_secondary_highlights()) {
+				foreach(weak_action_ptr action, hlighter->get_secondary_highlights()) {
 					if(action.lock() == *it) {
 						secondary_numbers.insert(index);
 					}
@@ -525,6 +526,11 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 	return position;
 }
 
+side_actions::iterator side_actions::find_first_action_at(map_location hex)
+{
+	return find_first_action_of(actions_.get<container::by_hex>().equal_range(hex), begin(), std::less<iterator>());
+}
+
 side_actions::iterator side_actions::find_first_action_of(unit const& unit, side_actions::iterator start_position)
 {
 	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit.underlying_id()), start_position, std::less<iterator>());
@@ -552,6 +558,16 @@ bool side_actions::unit_has_actions(unit const& unit)
 size_t side_actions::count_actions_of(unit const& unit)
 {
 	return actions_.get<container::by_unit>().count(unit.underlying_id());
+}
+
+std::deque<action_ptr> side_actions::actions_of(unit const &target)
+{
+	typedef container::action_set::index<container::by_unit>::type::iterator unit_iterator;
+	std::pair<unit_iterator, unit_iterator> action_its = actions_.get<container::by_unit>().equal_range(target.underlying_id());
+
+	std::deque<action_ptr> actions;
+	std::copy(action_its.first, action_its.second, std::back_inserter(actions));
+	return actions;
 }
 
 void side_actions::remove_invalid_of(unit const* u)
