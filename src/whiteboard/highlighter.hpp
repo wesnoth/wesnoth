@@ -17,8 +17,8 @@
  * @file
  */
 
-#ifndef WB_HIGHLIGHT_VISITOR_HPP_
-#define WB_HIGHLIGHT_VISITOR_HPP_
+#ifndef WB_HIGHLIGHTER_HPP_
+#define WB_HIGHLIGHTER_HPP_
 
 #include "visitor.hpp"
 
@@ -129,4 +129,4 @@ private:
 
 } // end namespace wb
 
-#endif /* WB_HIGHLIGHT_VISITOR_HPP_ */
+#endif /* WB_HIGHLIGHTER_HPP_ */
