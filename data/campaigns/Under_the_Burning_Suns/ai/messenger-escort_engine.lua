@@ -242,6 +242,10 @@ return {
         -----------------------
 
         function messenger_escort:other_move_eval()
+            local messenger = wesnoth.get_units{ side = wesnoth.current.side, id = id }[1]
+            if not messenger then
+                return 0
+            end
             -- Move other units close to messenger, and in between messenger and enemies
             -- The messenger has moved at this time, so we don't need to exclude him
             local my_units = wesnoth.get_units{ side = wesnoth.current.side, formula = '$this_unit.moves > 0' }
