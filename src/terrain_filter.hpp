@@ -48,7 +48,7 @@ public:
 
 	//match: returns true if and only if the given location matches this filter
 	bool match(const map_location& loc) const;
-	virtual bool operator()(const map_location& loc) { return this->match(loc); }
+	virtual bool operator()(const map_location& loc) const { return this->match(loc); }
 
 	//get_locations: gets all locations on the map that match this filter
 	// @param locs - out parameter containing the results
