@@ -29,7 +29,7 @@
 
 namespace gui2 {
 
-class tpoint;
+struct tpoint;
 
 /**
  * Base class for the placement helper.
