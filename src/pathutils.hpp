@@ -31,32 +31,37 @@ protected:
 };
 
 /**
- * Function which, given a location, will place all locations in a ring of
- * distance r in res. res must be a std::vector of locations.
+ * Function which will add to @a result all locations in a ring of distance
+ * @a radius from @a center. @a result must be a std::vector of locations.
  */
-void get_tile_ring(const map_location& a, const int r, std::vector<map_location>& res);
+void get_tile_ring(const map_location& center, const int radius,
+                   std::vector<map_location>& result);
 
 /**
- * Function which, given a location, will place all locations within radius 'r'
- * of that location in res. res must be a std::vector of locations.
+ * Function which will add to @a result all locations within a distance of
+ * @a radius from @a center (excluding @a center itself). @a result must be
+ * a std::vector of locations.
  */
-void get_tiles_in_radius(const map_location& a, const int r, std::vector<map_location>& res);
+void get_tiles_in_radius(const map_location& center, const int radius,
+                         std::vector<map_location>& result);
 
 /**
- * Function which, given a location, will place all locations within radius 'radius'
- * of that location in res. res must be a std::set of locations.
+ * Function which will add to @a result all locations within a distance of
+ * @a radius from @a center (including @a center itself). @a result must be
+ * a std::set of locations.
  */
-void get_tiles_radius(const map_location& a, size_t radius,
-					  std::set<map_location>& res);
+void get_tiles_radius(const map_location& center, size_t radius,
+                      std::set<map_location>& result);
 
 /**
- * Function which, given a set of locations, will scan outward from those
- * locations, looking for hexes (on the map, possibly @a with_border) that
- * match 'pred'. Tiles in chains of up to 'radius' tiles will be included in
- * the result (res). res must be a std::set of locations.
+ * Function which will add to @a result all elements of @a locs, plus all
+ * on-board locations matching @a pred that are connected to elements of
+ * locs by a chain of at most @a radius tiles, each of which matches @a pred.
+ * @a result must be a std::set of locations.
  */
-void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs, size_t radius,
-					  std::set<map_location>& res, bool with_border=false, xy_pred *pred=NULL);
+void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
+                      size_t radius, std::set<map_location>& result,
+                      bool with_border=false, const xy_pred *pred=NULL);
 
 #endif
 
