@@ -41,7 +41,7 @@
 #include "wesconfig.h"
 
 class config;
-class tconfig_implementation;
+struct tconfig_implementation;
 class vconfig;
 struct lua_State;
 
@@ -53,7 +53,7 @@ std::ostream &operator << (std::ostream &, const config &);
 class config
 {
 	friend bool operator==(const config& a, const config& b);
-	friend class tconfig_implementation;
+	friend struct tconfig_implementation;
 
 	static config invalid;
 
