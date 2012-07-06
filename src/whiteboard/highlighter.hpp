@@ -103,7 +103,7 @@ private:
 	highlighter &highlighter_;
 };
 
-struct highlighter::highlight_secondary_visitor: public visitor {
+class highlighter::highlight_secondary_visitor: public visitor {
 public:
 	highlight_secondary_visitor(highlighter &h): highlighter_(h) {}
 	void visit(move_ptr);
@@ -115,7 +115,7 @@ private:
 	highlighter &highlighter_;
 };
 
-struct highlighter::unhighlight_visitor: public visitor {
+class highlighter::unhighlight_visitor: public visitor {
 public:
 	unhighlight_visitor(highlighter &h): highlighter_(h) {}
 	void visit(move_ptr);
