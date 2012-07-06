@@ -577,7 +577,7 @@ tidiv<T, 8>::idiv(tfloat<T, 8>& lhs, tfloat<T, 8> rhs)
 template<class T, unsigned S>
 class tfloat
 {
-	template<class TT, unsigned SS> friend class detail::tidiv;
+	template<class TT, unsigned SS> friend struct detail::tidiv;
 public:
 
 	/***** ***** Types. ***** *****/
