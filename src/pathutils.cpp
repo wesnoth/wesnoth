@@ -62,25 +62,6 @@ void get_tiles_in_radius(const map_location& center, const int radius,
 }
 
 
-static void get_tiles_radius_internal(const map_location& a, size_t radius,
-	std::set<map_location>& res, std::map<map_location,int>& visited)
-{
-	visited[a] = radius;
-	res.insert(a);
-
-	if(radius == 0) {
-		return;
-	}
-
-	map_location adj[6];
-	get_adjacent_tiles(a,adj);
-	for(size_t i = 0; i != 6; ++i) {
-		if(visited.count(adj[i]) == 0 || visited[adj[i]] < int(radius)-1) {
-			get_tiles_radius_internal(adj[i],radius-1,res,visited);
-		}
-	}
-}
-
 /**
  * Function which will add to @a result all locations within a distance of
  * @a radius from @a center (including @a center itself). @a result must be
@@ -89,9 +70,14 @@ static void get_tiles_radius_internal(const map_location& a, size_t radius,
 void get_tiles_radius(const map_location& center, size_t radius,
                       std::set<map_location>& result)
 {
-	std::map<map_location,int> visited;
-	get_tiles_radius_internal(center, radius, result, visited);
+	// Re-use some logic.
+	std::vector<map_location> internal_result(1, center);
+	get_tiles_in_radius(center, static_cast<int>(radius), internal_result);
+
+	// Convert to a set.
+	result.insert(internal_result.begin(), internal_result.end());
 }
+
 
 /**
  * Function which will add to @a result all elements of @a locs, plus all
