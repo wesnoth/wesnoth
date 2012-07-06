@@ -29,13 +29,11 @@
 
 //disable some MSVC warnings which are useless according to mordante
 #pragma warning(disable: 4244)
-#pragma warning(disable: 4099)
 #pragma warning(disable: 4345)
 #pragma warning(disable: 4250)
 #pragma warning(disable: 4355)
 #pragma warning(disable: 4800)
 #pragma warning(disable: 4351)
-#pragma warning(disable: 4099)
 
 #endif //_MSC_VER
 
