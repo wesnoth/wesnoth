@@ -25,7 +25,6 @@
 #include "../formula/candidates.hpp"
 #include "../formula/stage_side_formulas.hpp"
 #include "../formula/stage_unit_formulas.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
 
 namespace ai {

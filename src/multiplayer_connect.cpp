@@ -23,7 +23,6 @@
 
 #include "ai/configuration.hpp"
 #include "dialogs.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -39,6 +38,7 @@
 #include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
@@ -189,7 +189,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		// Hack: if there is a unit which can recruit, use it as a leader.
 		// Necessary to display leader information when loading saves.
 		std::string leader_type;
-		foreach (const config &side_unit, cfg.child_range("unit"))
+		BOOST_FOREACH(const config &side_unit, cfg.child_range("unit"))
 		{
 			if (side_unit["canrecruit"].to_bool()) {
 				leader_type = side_unit["type"].str();
@@ -539,7 +539,7 @@ void connect::side::init_ai_algorithm_combo()
 	std::vector<ai::description*> &ais_list = parent_->ai_algorithms_;
 	std::vector<std::string> ais;
 	int i = 0;
-	foreach (const ai::description *desc,  ais_list){
+	BOOST_FOREACH(const ai::description *desc,  ais_list){
 		ais.push_back(desc->text);
 		if (desc->id==ai_algorithm_){
 			sel = i;
@@ -557,7 +557,7 @@ void connect::side::init_ai_algorithm_combo()
 void connect::side::update_faction_combo()
 {
 	std::vector<std::string> factions;
-	foreach (const config *faction, parent_->era_sides_)
+	BOOST_FOREACH(const config *faction, parent_->era_sides_)
 	{
 		const std::string& name = (*faction)["name"];
 		const std::string& icon = (*faction)["image"];
@@ -725,7 +725,7 @@ config connect::side::get_config() const
 		static char const *attrs[] = { "side", "controller", "id",
 			"team_name", "user_team_name", "color", "gold",
 			"income", "allow_changes" };
-		foreach (const char *attr, attrs) {
+		BOOST_FOREACH(const char *attr, attrs) {
 			trimmed.remove_attribute(attr);
 		}
 
@@ -828,8 +828,8 @@ std::map<std::string, config> connect::side::get_side_children()
 {
 	std::map<std::string, config> children;
 
-	foreach(const std::string& children_to_swap, get_children_to_swap())
-		foreach(const config& child, cfg_.child_range(children_to_swap))
+	BOOST_FOREACH(const std::string& children_to_swap, get_children_to_swap())
+		BOOST_FOREACH(const config& child, cfg_.child_range(children_to_swap))
 			children.insert(std::pair<std::string, config>(children_to_swap, child));
 
 	return children;
@@ -837,12 +837,12 @@ std::map<std::string, config> connect::side::get_side_children()
 
 void connect::side::set_side_children(std::map<std::string, config> children)
 {
-	foreach(const std::string& children_to_remove, get_children_to_swap())
+	BOOST_FOREACH(const std::string& children_to_remove, get_children_to_swap())
 		cfg_.clear_children(children_to_remove);
 
 	std::pair<std::string, config> child_map;
 
-	foreach(child_map, children)
+	BOOST_FOREACH(child_map, children)
 		cfg_.add_child(child_map.first, child_map.second);
 }
 
@@ -921,7 +921,7 @@ void connect::side::resolve_random()
 		// Builds the list of sides eligible for choice (nonrandom factions)
 		std::vector<int> nonrandom_sides;
 		int num = -1;
-		foreach (const config *i, parent_->era_sides_)
+		BOOST_FOREACH(const config *i, parent_->era_sides_)
 		{
 			++num;
 			if (!(*i)["random_faction"].to_bool()) {
@@ -1525,7 +1525,7 @@ void connect::lists_init()
 	player_types_.push_back(_("Computer Player"));
 	player_types_.push_back(_("Empty"));
 
-	foreach (const config *faction, era_sides_) {
+	BOOST_FOREACH(const config *faction, era_sides_) {
 		player_factions_.push_back((*faction)["name"]);
 	}
 
@@ -1540,7 +1540,7 @@ void connect::lists_init()
 	// Teams
 	if(params_.use_map_settings) {
 		int side_num = 1;
-		foreach (config &side, sides)
+		BOOST_FOREACH(config &side, sides)
 		{
 			config::attribute_value &team_name = side["team_name"];
 			config::attribute_value &user_team_name = side["user_team_name"];
@@ -1567,7 +1567,7 @@ void connect::lists_init()
 	} else {
 		std::vector<std::string> map_team_names;
 		int _side_num = 1;
-		foreach (config &side, sides)
+		BOOST_FOREACH(config &side, sides)
 		{
 			const std::string side_num = lexical_cast<std::string>(_side_num);
 			config::attribute_value &team_name = side["team_name"];
@@ -1600,7 +1600,7 @@ void connect::lists_init()
 
 	// Populates "sides_" from the level configuration
 	int index = 0;
-	foreach (const config &s, sides) {
+	BOOST_FOREACH(const config &s, sides) {
 		sides_.push_back(side(*this, s, index++));
 	}
 	int offset=0;
@@ -1684,7 +1684,7 @@ void connect::load_game()
 	else
 	{
 		era_sides_.clear();
-		foreach (const config &e, era_cfg.child_range("multiplayer_side")) {
+		BOOST_FOREACH(const config &e, era_cfg.child_range("multiplayer_side")) {
 			era_sides_.push_back(&e);
 		}
 		level_.add_child("era", era_cfg);
@@ -1790,7 +1790,7 @@ bool connect::can_start_game() const
 	 * creative in what is used in multiplayer [1] so use a simpler test now.
 	 * [1] http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=568029
 	 */
-	foreach(const side& s, sides_) {
+	BOOST_FOREACH(const side& s, sides_) {
 		if(s.get_controller() != CNTR_EMPTY) {
 			if(s.allow_player()) {
 				return true;

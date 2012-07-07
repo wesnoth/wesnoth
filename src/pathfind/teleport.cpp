@@ -19,7 +19,7 @@
 #include "log.hpp"
 #include "resources.hpp"
 
-#include "foreach.hpp"
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_PF LOG_STREAM(err, log_engine)
@@ -108,16 +108,16 @@ pathfind::teleport_map::teleport_map(
 	, targets_()
 {
 
-	foreach(const teleport_group& group, groups) {
+	BOOST_FOREACH(const teleport_group& group, groups) {
 
 		teleport_pair locations;
 		group.get_teleport_pair(locations, u, ignore_units);
 		if (!see_all && !group.always_visible() && viewing_team.is_enemy(u.side())) {
 			teleport_pair filter_locs;
-			foreach(const map_location &loc, locations.first)
+			BOOST_FOREACH(const map_location &loc, locations.first)
 				if(!viewing_team.fogged(loc))
 					filter_locs.first.insert(loc);
-			foreach(const map_location &loc, locations.second)
+			BOOST_FOREACH(const map_location &loc, locations.second)
 				if(!viewing_team.fogged(loc))
 					filter_locs.second.insert(loc);
 			locations.first.swap(filter_locs.first);

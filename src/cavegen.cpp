@@ -21,12 +21,13 @@
 #include "global.hpp"
 
 #include "cavegen.hpp"
-#include "foreach.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -149,7 +150,7 @@ void cave_map_generator::build_chamber(map_location loc, std::set<map_location>&
 
 void cave_map_generator::generate_chambers()
 {
-	foreach (const config &ch, cfg_.child_range("chamber"))
+	BOOST_FOREACH(const config &ch, cfg_.child_range("chamber"))
 	{
 		// If there is only a chance of the chamber appearing, deal with that here.
 		if (ch.has_attribute("chance") && (rand() % 100) < ch["chance"].to_int()) {
@@ -197,7 +198,7 @@ void cave_map_generator::generate_chambers()
 
 		chambers_.push_back(new_chamber);
 
-		foreach (const config &p, ch.child_range("passage"))
+		BOOST_FOREACH(const config &p, ch.child_range("passage"))
 		{
 			const std::string &dst = p["destination"];
 
@@ -222,7 +223,7 @@ void cave_map_generator::place_chamber(const chamber& c)
 	if (c.items == NULL || c.locs.empty()) return;
 
 	size_t index = 0;
-	foreach (const config::any_child &it, c.items->all_children_range())
+	BOOST_FOREACH(const config::any_child &it, c.items->all_children_range())
 	{
 		config cfg = it.cfg;
 		config &filter = cfg.child("filter");

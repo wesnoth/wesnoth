@@ -25,7 +25,6 @@
 
 #include "construct_dialog.hpp"
 #include "display.hpp"
-#include "foreach.hpp"
 #include "formatter.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -37,6 +36,8 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace preferences {
 
@@ -85,7 +86,7 @@ bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& b
 	bpp = video.modePossible(resolution.first, resolution.second,
 		DefaultBPP, video_flags, true);
 
-	foreach (const res_t &res, res_list)
+	BOOST_FOREACH(const res_t &res, res_list)
 	{
 		if (bpp != 0) break;
 		std::cerr << "Video mode " << resolution.first << 'x'
@@ -260,7 +261,7 @@ void repopulate_hotkeys_menu(std::vector<std::string>& menu_items)
 
 	std::vector<hotkey::hotkey_item>& hotkeys = hotkey::get_hotkeys();
 
-	foreach(const hotkey::hotkey_item& hi, hotkeys) {
+	BOOST_FOREACH(const hotkey::hotkey_item& hi, hotkeys) {
 		if(hi.hidden() || !hi.is_in_active_scope())
 			continue;
 

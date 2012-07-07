@@ -35,7 +35,6 @@
 #include "../../actions.hpp"
 #include "../../attack_prediction.hpp"
 #include "../../filesystem.hpp"
-#include "../../foreach.hpp"
 #include "../../game_display.hpp"
 #include "../../gamestatus.hpp"
 #include "../../log.hpp"

@@ -15,7 +15,6 @@
 
 #include "context_manager.hpp"
 #include "display.hpp"
-#include "foreach.hpp"
 #include "filesystem.hpp"
 #include "filechooser.hpp"
 #include "formula_string_utils.hpp"
@@ -34,6 +33,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 
+#include <boost/foreach.hpp>
 
 namespace {
 static std::vector<std::string> saved_windows_;
@@ -91,7 +91,7 @@ void context_manager::set_update_transitions_hotkey(hotkey::HOTKEY_COMMAND i) {
 
 size_t context_manager::modified_maps(std::string& message) {
 	std::vector<std::string> modified;
-	foreach (map_context* mc, map_contexts_) {
+	BOOST_FOREACH(map_context* mc, map_contexts_) {
 		if (mc->modified()) {
 			if (!mc->get_filename().empty()) {
 				modified.push_back(mc->get_filename());
@@ -100,7 +100,7 @@ size_t context_manager::modified_maps(std::string& message) {
 			}
 		}
 	}
-	foreach (std::string& str, modified) {
+	BOOST_FOREACH(std::string& str, modified) {
 		message += "\n" + str;
 	}
 	return modified.size();
@@ -125,10 +125,10 @@ context_manager::context_manager(editor_display& gui, const config& game_config)
 
 context_manager::~context_manager()
 {
-	foreach (map_generator* m, map_generators_) {
+	BOOST_FOREACH(map_generator* m, map_generators_) {
 		delete m;
 	}
-	foreach (map_context* mc, map_contexts_) {
+	BOOST_FOREACH(map_context* mc, map_contexts_) {
 		delete mc;
 	}
 }
@@ -270,7 +270,7 @@ void context_manager::refresh_after_action(bool drag_part)
 				get_map_context().set_needs_terrain_rebuild(false);
 				gui_.invalidate_all();
 			} else {
-				foreach (const map_location& loc, changed_locs) {
+				BOOST_FOREACH(const map_location& loc, changed_locs) {
 					gui_.rebuild_terrain(loc);
 				}
 				gui_.invalidate(changed_locs);
@@ -380,7 +380,7 @@ void context_manager::save_map_as_dialog()
 
 void context_manager::init_map_generators(const config& game_config)
 {
-	foreach (const config &i, game_config.child_range("multiplayer"))
+	BOOST_FOREACH(const config &i, game_config.child_range("multiplayer"))
 	{
 		if (i["map_generation"] == "default") {
 			const config &generator_cfg = i.child("generator");
@@ -448,7 +448,7 @@ void context_manager::create_default_context()
 		map_context* mc = new map_context(editor_map(game_config_, 44, 33, t_translation::GRASS_LAND, gui_));
 		add_map_context(mc);
 	} else {
-		foreach(const std::string& filename, saved_windows_) {
+		BOOST_FOREACH(const std::string& filename, saved_windows_) {
 			map_context* mc = new map_context(game_config_, filename, gui_);
 			add_map_context(mc);
 		}

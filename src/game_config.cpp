@@ -18,7 +18,6 @@
 
 #include "color_range.hpp"
 #include "config.hpp"
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "util.hpp"
@@ -28,6 +27,8 @@
 #ifdef HAVE_REVISION
 #include "revision.hpp"
 #endif /* HAVE_REVISION */
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -267,7 +268,7 @@ namespace game_config
 		}
 
 		server_list.clear();
-		foreach (const config &server, v.child_range("server"))
+		BOOST_FOREACH(const config &server, v.child_range("server"))
 		{
 			server_info sinf;
 			sinf.name = server["name"].str();
@@ -278,7 +279,7 @@ namespace game_config
 
 	void add_color_info(const config &v)
 	{
-		foreach (const config &teamC, v.child_range("color_range"))
+		BOOST_FOREACH(const config &teamC, v.child_range("color_range"))
 		{
 			const config::attribute_value *a1 = teamC.get("id"),
 				*a2 = teamC.get("rgb");
@@ -312,9 +313,9 @@ namespace game_config
 			DBG_NG << str.str() << '\n';
 		}
 
-		foreach (const config &cp, v.child_range("color_palette"))
+		BOOST_FOREACH(const config &cp, v.child_range("color_palette"))
 		{
-			foreach (const config::attribute &rgb, cp.attribute_range())
+			BOOST_FOREACH(const config::attribute &rgb, cp.attribute_range())
 			{
 				std::vector<Uint32> temp;
 				if(!string2rgb(rgb.second, temp)) {

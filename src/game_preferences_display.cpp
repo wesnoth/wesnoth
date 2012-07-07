@@ -19,7 +19,6 @@
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "filechooser.hpp"
-#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
@@ -30,6 +29,7 @@
 #include "widgets/slider.hpp"
 #include "formula_string_utils.hpp"
 
+#include <boost/foreach.hpp>
 
 namespace preferences {
 
@@ -1071,7 +1071,7 @@ const config* preferences_dialog::get_advanced_pref() const
 void preferences_dialog::set_advanced_menu()
 {
 	std::vector<std::string> advanced_items;
-	foreach (const config &adv, adv_preferences_cfg_)
+	BOOST_FOREACH(const config &adv, adv_preferences_cfg_)
 	{
 		std::ostringstream str;
 		std::string field = preferences::get(adv["field"]);
@@ -1096,7 +1096,7 @@ void preferences_dialog::sort_advanced_preferences()
 {
 	adv_preferences_cfg_.clear();
 
-	foreach(const config& adv, game_cfg_.child_range("advanced_preference")) {
+	BOOST_FOREACH(const config& adv, game_cfg_.child_range("advanced_preference")) {
 		adv_preferences_cfg_.push_back(adv);
 	}
 

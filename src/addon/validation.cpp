@@ -17,7 +17,8 @@
 #include "global.hpp"
 #include "addon/validation.hpp"
 #include "config.hpp"
-#include "foreach.hpp"
+
+#include <boost/foreach.hpp>
 
 const unsigned short default_campaignd_port = 15002;
 
@@ -42,10 +43,10 @@ bool addon_name_legal(const std::string& name)
 
 bool check_names_legal(const config& dir)
 {
-	foreach (const config &path, dir.child_range("file")) {
+	BOOST_FOREACH(const config &path, dir.child_range("file")) {
 		if (!addon_name_legal(path["name"])) return false;
 	}
-	foreach (const config &path, dir.child_range("dir")) {
+	BOOST_FOREACH(const config &path, dir.child_range("dir")) {
 		if (!addon_name_legal(path["name"])) return false;
 		if (!check_names_legal(path)) return false;
 	}

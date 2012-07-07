@@ -18,12 +18,13 @@
 #include "gui/auxiliary/window_builder/stacked_widget.hpp"
 
 #include "config.hpp"
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/stacked_widget.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "wml_exception.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -35,7 +36,7 @@ tbuilder_stacked_widget::tbuilder_stacked_widget(const config& cfg)
 {
 	const config &s = cfg.child("stack");
 	VALIDATE(s, _("No stack defined."));
-	foreach(const config &layer, s.child_range("layer")) {
+	BOOST_FOREACH(const config &layer, s.child_range("layer")) {
 		stack.push_back(new tbuilder_grid(layer));
 	}
 }

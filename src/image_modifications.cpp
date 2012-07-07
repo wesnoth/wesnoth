@@ -16,12 +16,13 @@
 #include "color_range.hpp"
 #include "config.hpp"
 #include "display.hpp"
-#include "foreach.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <map>
 
@@ -100,7 +101,7 @@ modification_queue modification::decode(const std::string& encoded_mods)
 {
 	modification_queue mods;
 
-	foreach(const std::string& encoded_mod,
+	BOOST_FOREACH(const std::string& encoded_mod,
 		utils::parenthetical_split(encoded_mods, '~')) {
 		modification* mod = decode_modification(encoded_mod);
 

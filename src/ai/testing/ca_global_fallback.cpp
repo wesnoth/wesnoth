@@ -25,7 +25,6 @@
 #include "../actions.hpp"
 
 #include "../../game_display.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../map_label.hpp"
@@ -36,6 +35,7 @@
 #include "../../terrain_filter.hpp"
 #include "../../tod_manager.hpp"
 
+#include <boost/foreach.hpp>
 
 namespace ai {
 
@@ -89,7 +89,7 @@ void global_fallback_phase::execute()
 	LOG_AI << "start" << std::endl;
 	const int ticks = SDL_GetTicks();
 	double res_sum = 0;
-	foreach( unit &u, *resources::units)
+	BOOST_FOREACH( unit &u, *resources::units)
 	{
 		if (u.side()!=get_side())
 		{

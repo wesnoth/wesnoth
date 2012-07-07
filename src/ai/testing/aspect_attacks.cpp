@@ -22,7 +22,6 @@
 
 #include "../manager.hpp"
 #include "../../actions.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../team.hpp"

@@ -16,13 +16,13 @@
 #include "global.hpp"
 
 
-//#include "foreach.hpp"
 #include "callable_objects.hpp"
-#include "foreach.hpp"
 #include "formula_debugger.hpp"
 #include "formula_function.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
+
+#include <boost/foreach.hpp>
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
 #include "vld.h"
@@ -46,7 +46,7 @@ std::string function_expression::str() const
 	s << get_name();
 	s << '(';
 	bool first_arg = true;
-	foreach(expression_ptr a , args()) {
+	BOOST_FOREACH(expression_ptr a , args()) {
 		if (!first_arg) {
 			s << ',';
 		} else {
@@ -451,7 +451,7 @@ private:
 
 				std::string result;
 
-				foreach(expression_ptr arg, args()) {
+				BOOST_FOREACH(expression_ptr arg, args()) {
 						result += arg->evaluate(variables, fdb).string_cast();
 				}
 

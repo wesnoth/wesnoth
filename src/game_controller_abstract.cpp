@@ -15,7 +15,6 @@
 
 #include "game_controller_abstract.hpp"
 
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "gettext.hpp"
 #include "hotkeys.hpp"
@@ -23,6 +22,8 @@
 #include "preferences_display.hpp"
 
 #include "preferences.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <iostream>
 
@@ -80,7 +81,7 @@ bool game_controller_abstract::init_language()
 	language_def locale;
 	if(cmdline_opts_.language) {
 		std::vector<language_def> langs = get_languages();
-		foreach(const language_def & def, langs) {
+		BOOST_FOREACH(const language_def & def, langs) {
 			if(def.localename == *cmdline_opts_.language) {
 				locale = def;
 				break;

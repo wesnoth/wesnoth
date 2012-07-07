@@ -25,7 +25,6 @@
 #include "../composite/rca.hpp"
 #include "../composite/stage.hpp"
 #include "../../gamestatus.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../resources.hpp"
@@ -33,6 +32,7 @@
 #include "../../wml_exception.hpp"
 #include "../../pathfind/pathfind.hpp"
 
+#include <boost/foreach.hpp>
 
 #include <numeric>
 
@@ -306,7 +306,7 @@ bool recruitment_phase::recruit_usage(const std::string& usage)
 	bool found = false;
 	// Find an available unit that can be recruited,
 	// matches the desired usage type, and comes in under budget.
-	foreach (const std::string &name, current_team().recruits())
+	BOOST_FOREACH(const std::string &name, current_team().recruits())
 	{
 		const unit_type *ut = unit_types.find(name);
 		if (!ut) continue;
@@ -686,7 +686,7 @@ double move_leader_to_goals_phase::evaluate()
 	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->get_location(), leader_paths));
 
 	map_location loc;
-	foreach (const map_location &l, route.steps)
+	BOOST_FOREACH(const map_location &l, route.steps)
 	{
 		if (leader_paths.destinations.contains(l) &&
 		    power_projection(l, get_enemy_dstsrc()) < leader->hitpoints() * max_risk)
@@ -779,7 +779,7 @@ double move_leader_to_keep_phase::evaluate()
 		// The leader can't move to his keep, try to move to the closest location
 		// to the keep where there are no enemies in range.
 		int current_distance = distance_between(leader->get_location(), keep);
-		foreach (const pathfind::paths::step &dest, leader_paths.destinations)
+		BOOST_FOREACH(const pathfind::paths::step &dest, leader_paths.destinations)
 		{
 			if (!units_.find(dest.curr).valid()){
 				const int new_distance = distance_between(dest.curr,keep);
@@ -1728,12 +1728,12 @@ double retreat_phase::evaluate()
 	}*/
 	//int leader_adj_count = 0;
 	std::vector<map_location> leaders_adj_v;
-	foreach(unit_map::const_iterator leader, leaders){
+	BOOST_FOREACH(unit_map::const_iterator leader, leaders){
 		map_location tmp_leader_adj[6];
 		get_adjacent_tiles(leader->get_location(), tmp_leader_adj);
-		foreach(map_location &loc, tmp_leader_adj){
+		BOOST_FOREACH(map_location &loc, tmp_leader_adj){
 			bool found = false;
-			foreach(map_location &new_loc, leaders_adj_v){
+			BOOST_FOREACH(map_location &new_loc, leaders_adj_v){
 				if(new_loc == loc){
 					found = true;
 					break;
@@ -1974,7 +1974,7 @@ double passive_leader_shares_keep_phase::evaluate()
 	}
 	std::vector<unit_map::unit_iterator> ai_leaders = resources::units->find_leaders(get_side());
 	bool allied_leaders_available = false;
-	foreach(team &tmp_team, *resources::teams){
+	BOOST_FOREACH(team &tmp_team, *resources::teams){
 		if(!current_team().is_enemy(tmp_team.side())){
 			std::vector<unit_map::unit_iterator> allied_leaders = resources::units->find_leaders(get_side());
 			if (!allied_leaders.empty()){
@@ -2001,7 +2001,7 @@ void passive_leader_shares_keep_phase::execute()
 	calculate_moves(*resources::units, possible_moves, friends_srcdst, friends_dstsrc, false, true);
 
 	//check for each ai leader if he should move away from his keep
-	foreach(unit_map::unit_iterator &ai_leader, ai_leaders){
+	BOOST_FOREACH(unit_map::unit_iterator &ai_leader, ai_leaders){
 		//only if leader is on a keep
 		if (!resources::game_map->is_keep(ai_leader->get_location())) {
 			continue;
@@ -2059,7 +2059,7 @@ void passive_leader_shares_keep_phase::execute()
 		}
 		ai_leader->remove_movement_ai();
 	}
-	foreach(unit_map::unit_iterator &leader, ai_leaders){
+	BOOST_FOREACH(unit_map::unit_iterator &leader, ai_leaders){
 		leader->remove_movement_ai();
 	}
 	//ERR_AI_TESTING_AI_DEFAULT << get_name() << ": evaluate - not yet implemented" << std::endl;

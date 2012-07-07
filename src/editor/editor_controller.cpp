@@ -32,7 +32,6 @@
 #include "gui/widgets/window.hpp"
 
 #include "../clipboard.hpp"
-#include "../foreach.hpp"
 #include "../game_preferences.hpp"
 #include "../gettext.hpp"
 #include "../preferences_display.hpp"
@@ -42,6 +41,7 @@
 #include "halo.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 namespace {
 static std::vector<std::string> saved_windows_;
@@ -82,7 +82,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 //  TODO enable if you can say what the purpose of the code is. I think it is old stuff and deserves to be removed.
 /*	theme& theme = gui().get_theme();
 	const theme::menu* default_tool_menu = NULL;
-	foreach (const theme::menu& m, theme.menus()) {
+	BOOST_FOREACH(const theme::menu& m, theme.menus()) {
 		if (m.get_id() == "draw_button_editor") {
 			default_tool_menu = &m;
 			break;
@@ -121,7 +121,7 @@ void editor_controller::init_tods(const config& game_config)
 		ERR_ED << "No editor time-of-day defined\n";
 		return;
 	}
-	foreach (const config &i, cfg.child_range("time")) {
+	BOOST_FOREACH(const config &i, cfg.child_range("time")) {
 		tods_.push_back(time_of_day(i));
 	}
 }
@@ -133,7 +133,7 @@ void editor_controller::init_music(const config& game_config)
 		ERR_ED << "No editor music defined\n";
 		return;
 	}
-	foreach (const config &i, cfg.child_range("music")) {
+	BOOST_FOREACH(const config &i, cfg.child_range("music")) {
 		sound::play_music_config(i);
 	}
 	sound::commit_music_changes();

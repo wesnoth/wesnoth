@@ -17,11 +17,12 @@
 
 
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/preprocessor.hpp"
 #include "wml_exception.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace schema_validation{
 
@@ -142,14 +143,14 @@ bool schema_validator::read_config_file(const std::string &filename){
 	} catch(config::error&) {
 		return false;
 	}
-	foreach (const config &g, cfg.child_range("wml_schema")) {
-		foreach (const config &schema, g.child_range("tag")) {
+	BOOST_FOREACH(const config &g, cfg.child_range("wml_schema")) {
+		BOOST_FOREACH(const config &schema, g.child_range("tag")) {
 			if (schema["name"].str() == "root"){
 				//@NOTE Don't know, maybe merging of roots needed.
 				root_ = class_tag (schema);
 			}
 		}
-		foreach (const config &type, g.child_range("type")) {
+		BOOST_FOREACH(const config &type, g.child_range("type")) {
 			try{
 				types_[type["name"].str()] = boost::regex( type["value"].str());
 			}

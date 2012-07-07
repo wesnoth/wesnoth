@@ -18,7 +18,6 @@
 #include "global.hpp"
 #include "unit_display.hpp"
 
-#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "game_events.hpp"
 #include "log.hpp"
@@ -26,6 +25,7 @@
 #include "resources.hpp"
 #include "terrain_filter.hpp"
 
+#include <boost/foreach.hpp>
 
 #define LOG_DP LOG_STREAM(info, display)
 
@@ -519,7 +519,7 @@ void unit_healing(unit &healed, const map_location &healed_loc,
 	disp->display_unit_hex(healed_loc);
 	unit_animator animator;
 
-	foreach (unit *h, healers) {
+	BOOST_FOREACH(unit *h, healers) {
 		h->set_facing(h->get_location().get_relative_dir(healed_loc));
 		animator.add_animation(h, "healing", h->get_location(),
 			healed_loc, healing);

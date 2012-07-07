@@ -21,8 +21,9 @@
 
 #include "terrain_palettes.hpp"
 
-#include "../../foreach.hpp"
 #include "../../gettext.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace {
 	static std::string selected_terrain;
@@ -71,7 +72,7 @@ void terrain_palette::setup(const config& cfg)
 
 	// Get the available groups and add them to the structure
 	std::set<std::string> group_names;
-	foreach (const config &g, cfg.child_range("editor_group"))
+	BOOST_FOREACH(const config &g, cfg.child_range("editor_group"))
 	{
 		if (group_names.find(g["id"]) == group_names.end()) {
 			config item;
@@ -89,12 +90,12 @@ void terrain_palette::setup(const config& cfg)
 	}
 
 	std::map<std::string, item_group*> id_to_group;
-	foreach (item_group& group, groups_) {
+	BOOST_FOREACH(item_group& group, groups_) {
 		id_to_group.insert(std::make_pair(group.id, &group));
 	}
 
 	// add the groups for all terrains to the map
-	foreach (const t_translation::t_terrain& t, items) {
+	BOOST_FOREACH(const t_translation::t_terrain& t, items) {
 
 		const terrain_type& t_info = map().get_terrain_info(t);
 		DBG_ED << "Palette: processing terrain " << t_info.name()
@@ -113,7 +114,7 @@ void terrain_palette::setup(const config& cfg)
 
 		item_map_[get_id(t)] = t;
 
-		foreach (const std::string& k, keys) {
+		BOOST_FOREACH(const std::string& k, keys) {
 			group_map_[k].push_back(get_id(t));
 			nmax_items_ = std::max(nmax_items_, group_map_[k].size());
 			std::map<std::string, item_group*>::iterator i = id_to_group.find(k);

@@ -26,7 +26,6 @@
 
 #include "arrow.hpp"
 #include "config.hpp"
-#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
@@ -36,6 +35,8 @@
 #include "unit.hpp"
 #include "unit_display.hpp"
 #include "unit_map.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace wb {
 
@@ -108,10 +109,10 @@ move::move(config const& cfg, bool hidden)
 	if(!route_cfg)
 		throw action::ctor_err("move: Invalid route_");
 	route_->move_cost = route_cfg["move_cost"];
-	foreach(config const& loc_cfg, route_cfg.child_range("step")) {
+	BOOST_FOREACH(config const& loc_cfg, route_cfg.child_range("step")) {
 		route_->steps.push_back(map_location(loc_cfg["x"],loc_cfg["y"]));
 	}
-	foreach(config const& mark_cfg, route_cfg.child_range("mark")) {
+	BOOST_FOREACH(config const& mark_cfg, route_cfg.child_range("mark")) {
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"])]
 				= pathfind::marked_route::mark(mark_cfg["turns"],mark_cfg["zoc"],mark_cfg["capture"],mark_cfg["invisible"]);
 	}
@@ -470,7 +471,7 @@ config move::to_config() const
 	//Serialize route_
 	config route_cfg;
 	route_cfg["move_cost"]=route_->move_cost;
-	foreach(map_location const& loc, route_->steps)
+	BOOST_FOREACH(map_location const& loc, route_->steps)
 	{
 		config loc_cfg;
 		loc_cfg["x"]=loc.x;
@@ -478,7 +479,7 @@ config move::to_config() const
 		route_cfg.add_child("step",loc_cfg);
 	}
 	typedef std::pair<map_location,pathfind::marked_route::mark> pair_loc_mark;
-	foreach(pair_loc_mark const& item, route_->marks)
+	BOOST_FOREACH(pair_loc_mark const& item, route_->marks)
 	{
 		config mark_cfg;
 		mark_cfg["x"]=item.first.x;

@@ -17,12 +17,13 @@
 /** @file */
 
 #include "unit_id.hpp"
-#include "foreach.hpp"
 #include "log.hpp"
 #include "unit.hpp"
 
 #include <functional>
 #include "unit_map.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -444,7 +445,7 @@ bool unit_map::has_unit(const unit * const u)
 {
 	assert(u);
 
-	foreach(const unit_pod& item, ilist_) {
+	BOOST_FOREACH(const unit_pod& item, ilist_) {
 		if(item.unit == u) {
 			return true;
 		}

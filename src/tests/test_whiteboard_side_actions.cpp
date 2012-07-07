@@ -15,13 +15,13 @@
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
-#include "foreach.hpp"
 #include "whiteboard/action.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/typedefs.hpp"
 #include "whiteboard/visitor.hpp"
 
 #include <boost/test/unit_test.hpp>
+#include <boost/foreach.hpp>
 
 using namespace wb;
 
@@ -63,7 +63,7 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	BOOST_REQUIRE(sac.num_turns() == 1);
 
 	int tmp=0;
-	foreach(action_ptr act, sac){
+	BOOST_FOREACH(action_ptr act, sac){
 		++tmp;
 		BOOST_REQUIRE(dact = boost::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);
@@ -84,7 +84,7 @@ BOOST_AUTO_TEST_CASE( test_insertion )
 	BOOST_REQUIRE(sac.num_turns() == 3);
 
 	tmp=0;
-	foreach(action_ptr act, sac){
+	BOOST_FOREACH(action_ptr act, sac){
 		++tmp;
 		BOOST_REQUIRE(dact = boost::dynamic_pointer_cast<dummy_action>(act));
 		BOOST_REQUIRE(dact->id_ == tmp);

@@ -21,7 +21,6 @@
 
 #include "global.hpp"
 
-#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -40,6 +39,8 @@
 #include "sound.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
+
+#include <boost/foreach.hpp>
 
 #define LOG_G LOG_STREAM(info, lg::general)
 
@@ -73,7 +74,7 @@ typedef std::map<std::string, player_controller> controller_map;
 
 
 static void team_init(config& level, game_state& gamestate){
-	foreach(config& side_cfg, level.child_range("side")){
+	BOOST_FOREACH(config& side_cfg, level.child_range("side")){
 		gamestate.carryover_sides.transfer_all_to(side_cfg);
 	}
 }
@@ -96,7 +97,7 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 
 	std::vector<team> teams = playcontroller.get_teams_const();
 	int persistent_teams = 0;
-	foreach (const team &t, teams) {
+	BOOST_FOREACH(const team &t, teams) {
 		if (t.persistent()){
 			++persistent_teams;
 		}
@@ -117,7 +118,7 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 				finishing_bonus_per_turn * turns_left : 0;
 
 
-		foreach (const team &t, teams)
+		BOOST_FOREACH(const team &t, teams)
 		{
 			if (!t.persistent()){
 				continue;
@@ -353,7 +354,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 	controller_map controllers;
 
 	if(io_type == IO_SERVER) {
-		foreach (config &side, const_cast<config *>(scenario)->child_range("side"))
+		BOOST_FOREACH(config &side, const_cast<config *>(scenario)->child_range("side"))
 		{
 			if (side["current_player"] == preferences::login()) {
 				side["controller"] = preferences::client_type();
@@ -373,7 +374,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				scenario = &starting_pos;
 			}
 
-			foreach (config &side, starting_pos.child_range("side"))
+			BOOST_FOREACH(config &side, starting_pos.child_range("side"))
 			{
 				if (side["current_player"] == preferences::login()) {
 					side["controller"] = preferences::client_type();
@@ -569,7 +570,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 
 			if(io_type == IO_SERVER && scenario != NULL) {
 				// Tweaks sides to adapt controllers and descriptions.
-				foreach (config &side, starting_pos.child_range("side"))
+				BOOST_FOREACH(config &side, starting_pos.child_range("side"))
 				{
 					std::string id = side["save_id"];
 					if(id.empty()) {
@@ -643,7 +644,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				next_cfg.add_child("replay_start", gamestate.starting_pos);
 				//move side information from gamestate into the config that is sent to the other clients
 				next_cfg.clear_children("side");
-				foreach (config& side, gamestate.starting_pos.child_range("side"))
+				BOOST_FOREACH(config& side, gamestate.starting_pos.child_range("side"))
 					next_cfg.add_child("side", side);
 
 				network::send_data(cfg, 0);

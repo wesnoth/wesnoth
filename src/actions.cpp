@@ -21,7 +21,6 @@
 #include "actions.hpp"
 
 #include "attack_prediction.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
@@ -38,6 +37,8 @@
 #include "formula_string_utils.hpp"
 #include "tod_manager.hpp"
 #include "whiteboard/manager.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -204,7 +205,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 	placements.push_back("map");
 	placements.push_back("recall");
 
-	foreach(std::string place, placements) {
+	BOOST_FOREACH(std::string place, placements) {
 		map_location loc;
 		bool pass((place == "leader_passable") || (place == "map_passable"));
 
@@ -415,7 +416,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 				leader_in_place= true;
 			else continue;
 
-			foreach (const unit& recall_unit, recall_list)
+			BOOST_FOREACH(const unit& recall_unit, recall_list)
 			{
 				//Only units which match the leaders recall filter are valid.
 				scoped_recall_unit this_unit("this_unit", t.save_id(), &recall_unit - &recall_list[0]);
@@ -433,7 +434,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 	}
 
 	if (!(recall_loc_is_castle && leader_in_place)) {
-		foreach (const unit &recall, recall_list)
+		BOOST_FOREACH(const unit &recall, recall_list)
 		{
 			result.push_back(&recall);
 		}
@@ -544,7 +545,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 
 		bool can_recruit_unit = is_on_team_list;
 		if (!can_recruit_unit) {
-			foreach (const std::string &recruitable, leader->recruits()) {
+			BOOST_FOREACH(const std::string &recruitable, leader->recruits()) {
 				if (recruitable == unit_type) {
 					can_recruit_unit = true;
 					break;
@@ -1955,7 +1956,7 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 // Simple algorithm: no maximum number of patients per healer.
 void reset_resting(unit_map& units, int side)
 {
-	foreach (unit &u, units) {
+	BOOST_FOREACH(unit &u, units) {
 		if (u.side() == side)
 			u.set_resting(true);
 	}
@@ -1976,7 +1977,7 @@ void calculate_healing(int side, bool update_display)
 	std::list<unit_healing_struct> l;
 
 	// We look for all allied units, then we see if our healer is near them.
-	foreach (unit &u, units) {
+	BOOST_FOREACH(unit &u, units) {
 
 		if (u.get_state("unhealable") || u.incapacitated())
 			continue;
@@ -2393,13 +2394,13 @@ namespace {
 
 		// Clear the fog.
 		pathfind::vision_path sight(*resources::game_map, viewer, view_loc, jamming_map);
-		foreach (const pathfind::paths::step &dest, sight.destinations) {
+		BOOST_FOREACH(const pathfind::paths::step &dest, sight.destinations) {
 			if ( clear_shroud_loc(view_team, dest.curr, viewer, seen_units,
 			                      petrified_units, known_units) )
 				cleared_something = true;
 		}
 		//TODO guard with game_config option
-		foreach (const map_location &dest, sight.edges) {
+		BOOST_FOREACH(const map_location &dest, sight.edges) {
 			if ( clear_shroud_loc(view_team, dest, viewer, seen_units,
 			                      petrified_units, known_units) )
 				cleared_something = true;
@@ -2428,7 +2429,7 @@ namespace {
 	{
 		team& viewer_tm = (*resources::teams)[side - 1];
 
-		foreach (const unit &u, *resources::units)
+		BOOST_FOREACH(const unit &u, *resources::units)
 		{
 			if (!viewer_tm.is_enemy(u.side())) continue;
 			if (u.jamming() < 1) continue;
@@ -2437,7 +2438,7 @@ namespace {
 			if (current < u.jamming()) jamming_map[u.get_location()] = u.jamming();
 
 			pathfind::jamming_path jamming(*resources::game_map, u, u.get_location());
-			foreach (const pathfind::paths::step& st, jamming.destinations) {
+			BOOST_FOREACH(const pathfind::paths::step& st, jamming.destinations) {
 				current = jamming_map[st.curr];
 				if (current < st.move_left) jamming_map[st.curr] = st.move_left;
 			}
@@ -2469,7 +2470,7 @@ void recalculate_fog(int side)
 	// So they are commented out for now.
 	//std::set<map_location> visible_locs;
 	//// Loop through all units, looking for those that are visible.
-	//foreach (const unit &u, *resources::units) {
+	//BOOST_FOREACH(const unit &u, *resources::units) {
 	//	const map_location & u_location = u.get_location();
 	//
 	//	if ( !tm.fogged(u_location) )
@@ -2483,7 +2484,7 @@ void recalculate_fog(int side)
 
 	std::map<map_location, int> jamming_map;
 	calculate_jamming(side, jamming_map);
-	foreach (const unit &u, *resources::units)
+	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if (u.side() == side) {
 			clear_shroud_unit(u.get_location(), u, tm, jamming_map);
@@ -2521,7 +2522,7 @@ bool clear_shroud(int side, bool reset_fog)
 
 	std::map<map_location, int> jamming_map;
 	calculate_jamming(side, jamming_map);
-	foreach (const unit &u, *resources::units)
+	BOOST_FOREACH(const unit &u, *resources::units)
 	{
 		if (u.side() == side) {
 			result |= clear_shroud_unit(u.get_location(), u, tm, jamming_map);
@@ -3083,10 +3084,10 @@ public:
 		                                  NULL, &newly_seen_units, &petrified_units);
 
 		// Raise sighted events.
-		foreach (const map_location &here, newly_seen_units) {
+		BOOST_FOREACH(const map_location &here, newly_seen_units) {
 			game_events::raise(sighted_str, here, hex);
 		}
-		foreach (const map_location &here, petrified_units) {
+		BOOST_FOREACH(const map_location &here, petrified_units) {
 			game_events::raise(sighted_str, here, hex);
 		}
 
@@ -3097,7 +3098,7 @@ public:
 				sighted_ = !newly_seen_units.empty();
 			else {
 				// Check whether any sighted unit is an enemy.
-				foreach(const map_location &here, newly_seen_units) {
+				BOOST_FOREACH(const map_location &here, newly_seen_units) {
 					if ( current_team_->is_enemy(units.find(here)->side()) ) {
 						sighted_ = true;
 						break;
@@ -3141,7 +3142,7 @@ public:
 		game_display &disp = *resources::screen;
 		unit_map &units = *resources::units;
 
-		foreach (const map_location & reveal, to_reveal_) {
+		BOOST_FOREACH(const map_location & reveal, to_reveal_) {
 			unit_map::iterator ambusher = units.find(reveal);
 			if ( ambusher != units.end() ) {
 				ambusher->set_state(unit::STATE_UNCOVERED, true);  // (Needed in case we backtracked.)
@@ -3614,7 +3615,7 @@ public:
 		if ( ambushed_ ) {
 			// Suppress the message for observers if the ambusher(s) cannot be seen.
 			bool show_message = playing_team_is_viewing;
-			foreach (const map_location &ambush, to_reveal_) {
+			BOOST_FOREACH(const map_location &ambush, to_reveal_) {
 				if ( !disp.fogged(ambush) )
 					show_message = true;
 			}
@@ -3637,7 +3638,7 @@ public:
 		if ( playing_team_is_viewing  &&  saw_units() ) {
 			// Count the number of allies and enemies sighted.
 			int friends = 0, enemies = 0;
-			foreach (const map_location &loc, seen_units_) {
+			BOOST_FOREACH(const map_location &loc, seen_units_) {
 				DBG_NG << "Processing unit at " << loc << "...\n";
 				const unit_map::const_iterator seen_it = units.find(loc);
 

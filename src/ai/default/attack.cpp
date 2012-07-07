@@ -25,7 +25,6 @@
 #include "../manager.hpp"
 
 #include "../../attack_prediction.hpp"
-#include "foreach.hpp"
 #include "../../game_config.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"

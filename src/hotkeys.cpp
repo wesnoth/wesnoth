@@ -19,7 +19,6 @@
 
 #include "construct_dialog.hpp"
 #include "display.hpp"
-#include "foreach.hpp"
 #include "hotkeys.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
@@ -32,6 +31,8 @@
 #include "preferences_display.hpp"
 #include "wesconfig.h"
 #include "wml_separators.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_G LOG_STREAM(err, lg::general)
@@ -616,7 +617,7 @@ void set_hotkey_tag_name(const std::string& name)
 
 void load_hotkeys(const config& cfg, bool set_as_default)
 {
-	foreach (const config &hk, cfg.child_range(hotkey_tag_name))
+	BOOST_FOREACH(const config &hk, cfg.child_range(hotkey_tag_name))
 	{
 		hotkey_item& h = get_hotkey(hk["command"]);
 		if(h.get_id() != HOTKEY_NULL) {
@@ -631,7 +632,7 @@ void load_hotkeys(const config& cfg, bool set_as_default)
 
 void reset_default_hotkeys()
 {
-	foreach(hotkey_item& hi, hotkeys_) {
+	BOOST_FOREACH(hotkey_item& hi, hotkeys_) {
 		hi.clear_hotkey();
 	}
 

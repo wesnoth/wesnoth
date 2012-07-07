@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/message.hpp"
 
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
@@ -25,6 +24,8 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -97,7 +98,7 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 
 void tmessage::post_show(twindow& /*window*/)
 {
-	foreach(tbutton_status& button_status, buttons_) {
+	BOOST_FOREACH(tbutton_status& button_status, buttons_) {
 		button_status.button = NULL;
 	}
 }

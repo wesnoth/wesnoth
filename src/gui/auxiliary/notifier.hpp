@@ -16,9 +16,9 @@
 #ifndef GUI_WIDGETS_AUXILIARY_NOTIFIER_HPP_INCLUDED
 #define GUI_WIDGETS_AUXILIARY_NOTIFIER_HPP_INCLUDED
 
-#include "foreach.hpp"
-
 #include "gui/auxiliary/notifiee.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <cassert>
 #include <map>
@@ -47,7 +47,7 @@ public:
 	~tnotifier()
 	{
 		typedef std::pair<tnotifiee<tfunctor>* const, tfunctor> thack;
-		foreach(thack& item, notifiees_) {
+		BOOST_FOREACH(thack& item, notifiees_) {
 			assert(item.first);
 			assert((*item.first).notifier_ == this);
 

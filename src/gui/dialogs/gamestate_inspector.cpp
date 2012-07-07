@@ -27,7 +27,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
-#include "../../foreach.hpp"
 #include "../../gamestatus.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
@@ -36,6 +35,7 @@
 #include <vector>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -189,11 +189,11 @@ public:
 				? resources::state_of_game->get_variables()
 				: config();
 
-		foreach( const config::attribute &a, vars.attribute_range()) {
+		BOOST_FOREACH( const config::attribute &a, vars.attribute_range()) {
 			model_.add_row_to_stuff_list(a.first,a.first);
 		}
 
-		foreach( const config::any_child &c, vars.all_children_range()) {
+		BOOST_FOREACH( const config::any_child &c, vars.all_children_range()) {
 			model_.add_row_to_stuff_list("["+c.key+"]","["+c.key+"]");
 		}
 
@@ -214,7 +214,7 @@ public:
 				? resources::state_of_game->get_variables()
 				: config();
 
-		foreach( const config::attribute &a, vars.attribute_range()) {
+		BOOST_FOREACH( const config::attribute &a, vars.attribute_range()) {
 			if (selected==i) {
 				model_.set_inspect_window_text(a.second);
 				return;
@@ -222,7 +222,7 @@ public:
 			i++;
 		}
 
-		foreach( const config::any_child &c, vars.all_children_range()) {
+		BOOST_FOREACH( const config::any_child &c, vars.all_children_range()) {
 			if (selected==i) {
 				model_.set_inspect_window_text(c.cfg.debug());
 				return;
@@ -268,7 +268,7 @@ public:
 					<< '/' << i->max_experience() << " xp; "
 					<< i->hitpoints() << '/' << i->max_hitpoints()
 					<< " hp; ";
-				foreach (const std::string &str, i->get_traits_list()) {
+				BOOST_FOREACH(const std::string &str, i->get_traits_list()) {
 					s << str <<" ";
 				}
 
@@ -371,9 +371,9 @@ public:
 					: std::vector<unit>();
 
 			std::stringstream s;
-			foreach (const unit &u, recall_list) {
+			BOOST_FOREACH(const unit &u, recall_list) {
 				s << "id=["<<u.id() << "] "<<u.type_id() << "; L"<<u.level()<<"; " << u.experience() <<"/" << u.max_experience()<< " xp "<< std::endl;
-				foreach (const std::string &str, u.get_traits_list() ) {
+				BOOST_FOREACH(const std::string &str, u.get_traits_list() ) {
 					s << "\t" << str<< std::endl;
 				}
 				s << std::endl << std::endl;
@@ -388,7 +388,7 @@ public:
 					: std::vector<unit>();
 
 			config c;
-			foreach (const unit &u, recall_list) {
+			BOOST_FOREACH(const unit &u, recall_list) {
 				config c_unit;
 				u.write(c_unit);
 				c.add_child("unit",c_unit);
@@ -423,7 +423,7 @@ public:
 						<< i->max_experience() << " xp; "
 						<< i->hitpoints() << '/'
 						<< i->max_hitpoints()<<" hp.\n";
-					foreach (const std::string &str, i->get_traits_list() ) {
+					BOOST_FOREACH(const std::string &str, i->get_traits_list() ) {
 						s << "\t" << str<< std::endl;
 					}
 					s << std::endl << std::endl;
@@ -457,7 +457,7 @@ public:
 				boost::shared_ptr<single_mode_controller>(new variable_mode_controller("variables",model_)));
 		sm_controllers_.push_back(
 				boost::shared_ptr<single_mode_controller>(new unit_mode_controller("units",model_)));
-		//foreach team
+		//BOOST_FOREACHteam
 		int sides = resources::teams
 				? static_cast<int>((*resources::teams).size())
 				: 0;
@@ -481,7 +481,7 @@ public:
 	void show_stuff_types_list()
 	{
 		model_.clear_stuff_types_list();
-		foreach (boost::shared_ptr<single_mode_controller> sm_controller, sm_controllers_ ) {
+		BOOST_FOREACH(boost::shared_ptr<single_mode_controller> sm_controller, sm_controllers_ ) {
 			model_.add_row_to_stuff_types_list(sm_controller->name(),sm_controller->name());
 		}
 	}

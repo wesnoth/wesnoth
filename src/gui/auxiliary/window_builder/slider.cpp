@@ -18,11 +18,12 @@
 #include "gui/auxiliary/window_builder/slider.hpp"
 
 #include "config.hpp"
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/slider.hpp"
 #include "wml_exception.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -44,7 +45,7 @@ tbuilder_slider::tbuilder_slider(const config& cfg)
 		return;
 	}
 
-	foreach(const config& label, labels.child_range("value")) {
+	BOOST_FOREACH(const config& label, labels.child_range("value")) {
 		value_labels_.push_back(label["label"]);
 	}
 }

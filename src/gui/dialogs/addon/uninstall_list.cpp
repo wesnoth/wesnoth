@@ -16,7 +16,6 @@
 #include "gui/dialogs/addon/uninstall_list.hpp"
 
 #include "addon/info.hpp"
-#include "foreach.hpp"
 #include "gui/widgets/grid.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	#include "gui/widgets/list.hpp"
@@ -26,6 +25,8 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <algorithm>
 
@@ -63,7 +64,7 @@ void taddon_uninstall_list::pre_show(CVideo& /*video*/, twindow& window)
 	this->names_.clear();
 	this->selections_.clear();
 
-	foreach(const std::string& id, this->ids_) {
+	BOOST_FOREACH(const std::string& id, this->ids_) {
 		this->names_.push_back(make_addon_title(id));
 		this->selections_[id] = false;
 
@@ -100,7 +101,7 @@ std::vector<std::string> taddon_uninstall_list::selected_addons() const
 	std::vector<std::string> retv;
 
 	typedef std::map<std::string, bool> selections_map_type;
-	foreach(const selections_map_type::value_type& entry, this->selections_) {
+	BOOST_FOREACH(const selections_map_type::value_type& entry, this->selections_) {
 		if(entry.second) {
 			retv.push_back(entry.first);
 		}

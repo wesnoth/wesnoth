@@ -12,7 +12,6 @@
    See the COPYING file for more details.
  */
 
-#include "foreach.hpp"
 #include "tod_manager.hpp"
 #include "wml_exception.hpp"
 #include "gettext.hpp"
@@ -24,6 +23,8 @@
 #include "resources.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -279,7 +280,7 @@ void tod_manager::set_turn(const int num, const bool increase_limit_if_needed)
 void tod_manager::set_new_current_times(const int new_current_turn_number)
 {
 	currentTime_ = calculate_current_time(times_.size(), new_current_turn_number, currentTime_);
-	foreach(area_time_of_day& area, areas_) {
+	BOOST_FOREACH(area_time_of_day& area, areas_) {
 		area.currentTime = calculate_current_time(
 			area.times.size(),
 			new_current_turn_number,

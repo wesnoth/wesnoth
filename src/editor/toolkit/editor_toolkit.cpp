@@ -14,13 +14,13 @@
 */
 
 #include "editor_toolkit.hpp"
-#include "foreach.hpp"
 #include "config.hpp"
 
 #include "editor/action/mouse/mouse_action.hpp"
 #include "editor/action/mouse/mouse_action_map_label.hpp"
 #include "editor/action/mouse/mouse_action_unit.hpp"
 
+#include <boost/foreach.hpp>
 
 namespace editor {
 
@@ -45,7 +45,7 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key, const confi
 editor_toolkit::~editor_toolkit()
 {
 	//TODO ask someone about that
-//	foreach (const mouse_action_map::value_type a, mouse_actions_) {
+//	BOOST_FOREACH(const mouse_action_map::value_type a, mouse_actions_) {
 //		delete a.second;
 //	}
 	//delete palette_manager_.get();
@@ -55,7 +55,7 @@ editor_toolkit::~editor_toolkit()
 
 void editor_toolkit::init_brushes(const config& game_config)
 {
-	foreach (const config &i, game_config.child_range("brush")) {
+	BOOST_FOREACH(const config &i, game_config.child_range("brush")) {
 		brushes_.push_back(brush(i));
 	}
 	if (brushes_.empty()) {
@@ -93,7 +93,7 @@ void editor_toolkit::init_mouse_actions(const config& game_config)
 //	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_PASTE,
 //		new mouse_action_paste(clipboard_, key_, *palette_manager_->empty_palette_.get())));
 
-	foreach (const theme::menu& menu, gui_.get_theme().menus()) {
+	BOOST_FOREACH(const theme::menu& menu, gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {
 			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey(menu.items().front()).get_id();
 			mouse_action_map::iterator i = mouse_actions_.find(hk);
@@ -102,7 +102,7 @@ void editor_toolkit::init_mouse_actions(const config& game_config)
 			}
 		}
 	}
-	foreach (const config &c, game_config.child_range("editor_tool_hint")) {
+	BOOST_FOREACH(const config &c, game_config.child_range("editor_tool_hint")) {
 		mouse_action_map::iterator i =
 			mouse_actions_.find(hotkey::get_hotkey(c["id"]).get_id());
 		if (i != mouse_actions_.end()) {
@@ -187,7 +187,7 @@ void editor_toolkit::adjust_size()
 
 void editor_toolkit::redraw_toolbar()
 {
-	foreach (mouse_action_map::value_type a, mouse_actions_) {
+	BOOST_FOREACH(mouse_action_map::value_type a, mouse_actions_) {
 		if (a.second->toolbar_button() != NULL) {
 			SDL_Rect r = a.second->toolbar_button()->location(gui_.screen_area());
 			SDL_Rect outline = create_rect(r.x - 2, r.y - 2, r.h + 4, r.w + 4);

@@ -15,11 +15,12 @@
 
 #include "exploder_cutter.hpp"
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "SDL_image.h"
+
+#include <boost/foreach.hpp>
 
 #include <iostream>
 
@@ -48,7 +49,7 @@ const config cutter::load_config(const std::string &filename)
 
 void cutter::load_masks(const config& conf)
 {
-	foreach (const config &m, conf.child_range("mask"))
+	BOOST_FOREACH(const config &m, conf.child_range("mask"))
 	{
 		const std::string name = m["name"];
 		const std::string image = get_mask_dir() + "/" + std::string(m["image"]);
@@ -94,7 +95,7 @@ cutter::surface_map cutter::cut_surface(surface surf, const config& conf)
 {
 	surface_map res;
 
-	foreach (const config &part, conf.child_range("part")) {
+	BOOST_FOREACH(const config &part, conf.child_range("part")) {
 		add_sub_image(surf, res, &part);
 	}
 

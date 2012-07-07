@@ -42,6 +42,7 @@
 #include "wml_separators.hpp"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/foreach.hpp>
 
 #include "addon/client.hpp"
 
@@ -128,7 +129,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 	std::vector<std::string> missing_deps;
 	std::vector<std::string> broken_deps;
 
-	foreach(const std::string& dep, deps) {
+	BOOST_FOREACH(const std::string& dep, deps) {
 		if(!is_addon_installed(dep)) {
 			if(addons.find(dep) != addons.end()) {
 				missing_deps.push_back(dep);
@@ -149,7 +150,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 			broken_deps.size());
 		broken_deps_report += "\n";
 
-		foreach(const std::string& broken_dep_id, broken_deps) {
+		BOOST_FOREACH(const std::string& broken_dep_id, broken_deps) {
 			broken_deps_report += "\n    " + utils::unicode_bullet + " " + make_addon_title(broken_dep_id);
 		}
 
@@ -177,7 +178,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 
 	cursor_setter.reset(new cursor::setter(cursor::WAIT));
 
-	foreach(const std::string& dep, missing_deps) {
+	BOOST_FOREACH(const std::string& dep, missing_deps) {
 		const addon_info& addon = addon_at(dep, addons);
 
 		const std::string& display_size = size_display_string(addon.size);
@@ -225,7 +226,7 @@ bool do_resolve_addon_dependencies(display& disp, addons_client& client, const a
 
 	std::vector<std::string> failed_titles;
 
-	foreach(const std::string& dep, missing_deps) {
+	BOOST_FOREACH(const std::string& dep, missing_deps) {
 		const addon_info& addon = addon_at(dep, addons);
 
 		config archive;
@@ -460,7 +461,7 @@ sorted_addon_pointer_list sort_addons_list(addons_list& addons)
 {
 	sorted_addon_pointer_list res;
 
-	foreach(const addons_list::value_type& entry, addons) {
+	BOOST_FOREACH(const addons_list::value_type& entry, addons) {
 		res.insert(&entry);
 	}
 
@@ -538,7 +539,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 
 	const sorted_addon_pointer_list& sorted_addons = sort_addons_list(addons);
 
-	foreach(const sorted_addon_pointer_list::value_type& sorted_entry, sorted_addons) {
+	BOOST_FOREACH(const sorted_addon_pointer_list::value_type& sorted_entry, sorted_addons) {
 		const addons_list::value_type& entry = *sorted_entry;
 		const addon_info& addon = entry.second;
 		tracking[addon.id] = get_addon_tracking_info(addon);
@@ -634,7 +635,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		utils::string_map i18n_syms;
 
 		// Enter publish and remote deletion options
-		foreach(const std::string& pub_id, can_publish_ids) {
+		BOOST_FOREACH(const std::string& pub_id, can_publish_ids) {
 			i18n_syms["addon_title"] = make_addon_title(pub_id);
 
 			static const std::string publish_icon = "icons/icon-addon-publish.png";
@@ -643,7 +644,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 			options.push_back(IMAGE_PREFIX + publish_icon + COLUMN_SEPARATOR + font::GOOD_TEXT + text);
 			filter_options.push_back(text);
 		}
-		foreach(const std::string& del_id, can_delete_ids) {
+		BOOST_FOREACH(const std::string& del_id, can_delete_ids) {
 			i18n_syms["addon_title"] = make_addon_title(del_id);
 
 			static const std::string delete_icon = "icons/icon-addon-delete.png";
@@ -793,7 +794,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		ids_to_install.push_back(option_ids[result]);
 	}
 
-	foreach(const std::string& id, ids_to_install) {
+	BOOST_FOREACH(const std::string& id, ids_to_install) {
 		const addon_info& addon = addon_at(id, addons);
 
 		if(!(do_check_before_overwriting_addon(disp.video(), addon) && do_resolve_addon_dependencies(disp, client, addons, addon, wml_changed))) {
@@ -956,7 +957,7 @@ bool uninstall_local_addons(display& disp)
 
 		remove_names.clear();
 
-		foreach(const std::string& id, remove_ids) {
+		BOOST_FOREACH(const std::string& id, remove_ids) {
 			remove_names.push_back(make_addon_title(id));
 		}
 
@@ -973,7 +974,7 @@ bool uninstall_local_addons(display& disp)
 
 	std::vector<std::string> failed_names, skipped_names, succeeded_names;
 
-	foreach(const std::string& id, remove_ids) {
+	BOOST_FOREACH(const std::string& id, remove_ids) {
 		const std::string& name = make_addon_title(id);
 
 		if(have_addon_pbl_info(id) || have_addon_in_vcs_tree(id)) {

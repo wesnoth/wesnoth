@@ -16,11 +16,12 @@
 #include "global.hpp"
 
 #include "display.hpp"
-#include "foreach.hpp"
 #include "gamestatus.hpp"
 #include "map_label.hpp"
 #include "resources.hpp"
 #include "formula_string_utils.hpp"
+
+#include <boost/foreach.hpp>
 
 //our definition of map labels being obscured is if the tile is obscured,
 //or the tile below is obscured. This is because in the case where the tile
@@ -79,7 +80,7 @@ void map_labels::read(const config &cfg)
 {
 	clear_all();
 
-	foreach (const config &i, cfg.child_range("label"))
+	BOOST_FOREACH(const config &i, cfg.child_range("label"))
 	{
 		const map_location loc(i, resources::state_of_game);
 		terrain_label *label = new terrain_label(*this, i);
@@ -242,7 +243,7 @@ void map_labels::clear_map(label_map &m, bool force)
 
 void map_labels::clear_all()
 {
-	foreach (team_label_map::value_type &m, labels_)
+	BOOST_FOREACH(team_label_map::value_type &m, labels_)
 	{
 		clear_map(m.second, true);
 	}
@@ -251,9 +252,9 @@ void map_labels::clear_all()
 
 void map_labels::recalculate_labels()
 {
-	foreach (team_label_map::value_type &m, labels_)
+	BOOST_FOREACH(team_label_map::value_type &m, labels_)
 	{
-		foreach (label_map::value_type &l, m.second)
+		BOOST_FOREACH(label_map::value_type &l, m.second)
 		{
 			l.second->recalculate();
 		}
@@ -269,9 +270,9 @@ bool map_labels::visible_global_label(const map_location& loc) const
 
 void map_labels::recalculate_shroud()
 {
-	foreach (team_label_map::value_type &m, labels_)
+	BOOST_FOREACH(team_label_map::value_type &m, labels_)
 	{
-		foreach (label_map::value_type &l, m.second)
+		BOOST_FOREACH(label_map::value_type &l, m.second)
 		{
 			l.second->calculate_shroud();
 		}

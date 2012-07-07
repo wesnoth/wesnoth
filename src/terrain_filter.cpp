@@ -19,7 +19,6 @@
 
 #include "actions.hpp"
 #include "config.hpp"
-#include "foreach.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "resources.hpp"
@@ -28,6 +27,8 @@
 #include "terrain_filter.hpp"
 #include "tod_manager.hpp"
 #include "variable.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -132,7 +133,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 				}
 			} else {
 				bool found = false;
-				foreach (const config &cfg, vi.as_array()) {
+				BOOST_FOREACH(const config &cfg, vi.as_array()) {
 					if (map_location(cfg, NULL) == loc) {
 						found = true;
 						break;
@@ -162,7 +163,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			side_filter ssf(*i);
 			std::vector<int> sides = ssf.get_teams();
 
-			foreach(const int side, sides) {
+			BOOST_FOREACH(const int side, sides) {
 				const team &viewing_team = resources::teams->at(side - 1);
 				bool viewer_sees = respect_fog ? !viewing_team.fogged(loc) : !viewing_team.shrouded(loc);
 				if (visible != viewer_sees) {
@@ -285,7 +286,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		bool found = false;
 		if(sides.empty() && village_owner(loc, *resources::teams) == -1)
 			found = true;
-		foreach(const int side, sides) {
+		BOOST_FOREACH(const int side, sides) {
 			if(resources::teams->at(side - 1).owns_village(loc)) {
 				found = true;
 				break;
@@ -402,7 +403,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			}
 		} else {
 			std::set<map_location> findin_locs;
-			foreach (const config &cfg, vi.as_array()) {
+			BOOST_FOREACH(const config &cfg, vi.as_array()) {
 				map_location test_loc(cfg, NULL);
 				if (xy_set.count(test_loc)) {
 					findin_locs.insert(test_loc);

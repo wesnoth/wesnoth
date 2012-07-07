@@ -21,7 +21,6 @@
 #include "actions.hpp"
 #include "attack_prediction_display.hpp"
 #include "dialogs.hpp"
-#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
@@ -45,6 +44,7 @@
 #include "whiteboard/manager.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -1048,7 +1048,7 @@ std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, i
 
 	map_location adj[6];
 	get_adjacent_tiles(loc, adj);
-	foreach (const map_location &aloc, adj) {
+	BOOST_FOREACH(const map_location &aloc, adj) {
 		unit_map::const_iterator i = find_unit(aloc);
 		if (i != units_.end() && uteam.is_enemy(i->side()))
 			res.insert(aloc);
@@ -1075,7 +1075,7 @@ void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 	// Check each adjacent hex.
 	map_location adj[6];
 	get_adjacent_tiles(u->get_location(), adj);
-	foreach (const map_location &loc, adj)
+	BOOST_FOREACH(const map_location &loc, adj)
 	{
 		// No attack option shown if no visible unit present.
 		// (Visible to current team, not necessarily the unit's team.)

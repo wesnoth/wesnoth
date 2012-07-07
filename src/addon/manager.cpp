@@ -20,7 +20,6 @@
 #include "addon/manager_ui.hpp"
 #include "dialogs.hpp"
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "formatter.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
@@ -42,6 +41,8 @@
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 #include "addon/client.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
@@ -335,11 +336,11 @@ static void unarchive_dir(const std::string& path, const config& cfg)
 
 	make_directory(dir);
 
-	foreach (const config &d, cfg.child_range("dir")) {
+	BOOST_FOREACH(const config &d, cfg.child_range("dir")) {
 		unarchive_dir(dir, d);
 	}
 
-	foreach (const config &f, cfg.child_range("file")) {
+	BOOST_FOREACH(const config &f, cfg.child_range("file")) {
 		unarchive_file(dir, f);
 	}
 }

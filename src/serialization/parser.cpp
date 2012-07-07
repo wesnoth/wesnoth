@@ -32,7 +32,6 @@
 #include "serialization/tokenizer.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/validator.hpp"
-#include "foreach.hpp"
 
 #include <stack>
 
@@ -40,6 +39,7 @@
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/variant.hpp>
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -343,7 +343,7 @@ std::string parser::lineno_string(utils::string_map &i18n_symbols,
 {
 	i18n_symbols["pos"] = ::lineno_string(lineno);
 	std::string result = _(error_string);
-	foreach(utils::string_map::value_type& var, i18n_symbols)
+	BOOST_FOREACH(utils::string_map::value_type& var, i18n_symbols)
 		boost::algorithm::replace_all(result, std::string("$") + var.first, std::string(var.second));
 	return result;
 }
@@ -509,11 +509,11 @@ static void write_internal(config const &cfg, std::ostream &out, std::string& te
 	if (tab > max_recursion_levels)
 		throw config::error("Too many recursion levels in config write");
 
-	foreach (const config::attribute &i, cfg.attribute_range()) {
+	BOOST_FOREACH(const config::attribute &i, cfg.attribute_range()) {
 		write_key_val(out, i.first, i.second, tab, textdomain);
 	}
 
-	foreach (const config::any_child &item, cfg.all_children_range())
+	BOOST_FOREACH(const config::any_child &item, cfg.all_children_range())
 	{
 		write_open_child(out, item.key, tab);
 		write_internal(item.cfg, out, textdomain, tab + 1);

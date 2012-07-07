@@ -21,7 +21,6 @@
 
 #include "play_controller.hpp"
 #include "dialogs.hpp"
-#include "foreach.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
@@ -45,6 +44,8 @@
 #include "ai/testing.hpp"
 #include "whiteboard/manager.hpp"
 #include "scripting/lua.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -173,7 +174,7 @@ void play_controller::init(CVideo& video){
 		place_sides_in_preferred_locations();
 	}
 
-	foreach (const config &t, level_.child_range("time_area")) {
+	BOOST_FOREACH(const config &t, level_.child_range("time_area")) {
 		tod_manager_.add_time_area(t);
 	}
 
@@ -192,7 +193,7 @@ void play_controller::init(CVideo& video){
 	std::vector<team_builder_ptr> team_builders;
 
 	int team_num = 0;
-	foreach (const config &side, level_.child_range("side"))
+	BOOST_FOREACH(const config &side, level_.child_range("side"))
 	{
 		std::string save_id = get_unique_saveid(side, seen_save_ids);
 		seen_save_ids.insert(save_id);
@@ -212,7 +213,7 @@ void play_controller::init(CVideo& video){
 		team_builders.push_back(tb_ptr);
 	}
 
-	foreach (team_builder_ptr tb_ptr, team_builders)
+	BOOST_FOREACH(team_builder_ptr tb_ptr, team_builders)
 	{
 		gamestate_.build_team_stage_two(tb_ptr);
 	}
@@ -337,7 +338,7 @@ void play_controller::place_sides_in_preferred_locations()
 	int num_pos = map_.num_valid_starting_positions();
 
 	int side_num = 1;
-	foreach (const config &side, level_.child_range("side"))
+	BOOST_FOREACH(const config &side, level_.child_range("side"))
 	{
 		for(int p = 1; p <= num_pos; ++p) {
 			const map_location& pos = map_.starting_position(p);
@@ -704,7 +705,7 @@ config play_controller::to_config() const
 	}
 
 	// Write terrain_graphics data in snapshot, too
-	foreach (const config &tg, level_.child_range("terrain_graphics")) {
+	BOOST_FOREACH(const config &tg, level_.child_range("terrain_graphics")) {
 		cfg.add_child("terrain_graphics", tg);
 	}
 
@@ -920,7 +921,7 @@ void play_controller::tab()
 	switch(mode) {
 	case gui::TEXTBOX_SEARCH:
 	{
-		foreach (const unit &u, units_){
+		BOOST_FOREACH(const unit &u, units_){
 			const map_location& loc = u.get_location();
 			if(!gui_->fogged(loc) &&
 					!(teams_[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
@@ -937,13 +938,13 @@ void play_controller::tab()
 	}
 	case gui::TEXTBOX_MESSAGE:
 	{
-		foreach(const team& t, teams_) {
+		BOOST_FOREACH(const team& t, teams_) {
 			if(!t.is_empty())
 				dictionary.insert(t.current_player());
 		}
 
 		// Add observers
-		foreach(const std::string& o, gui_->observers()){
+		BOOST_FOREACH(const std::string& o, gui_->observers()){
 			dictionary.insert(o);
 		}
 		//Exclude own nick from tab-completion.
@@ -1357,7 +1358,7 @@ void play_controller::check_victory()
 
 	if (non_interactive()) {
 		std::cout << "winner: ";
-		foreach (unsigned l, seen_leaders) {
+		BOOST_FOREACH(unsigned l, seen_leaders) {
 			std::string ai = ai::manager::get_active_ai_identifier_for_side(l);
 			if (ai.empty()) ai = "default ai";
 			std::cout << l << " (using " << ai << ") ";

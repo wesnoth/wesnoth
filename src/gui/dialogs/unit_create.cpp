@@ -27,8 +27,9 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "foreach.hpp"
 #include "unit_types.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace {
 	static std::string last_chosen_type_id = "";
@@ -109,7 +110,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 
 	std::vector< std::string > type_labels, race_labels;
 
-	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
 		unit_types.find(i.first, unit_type::HELP_INDEX);
 

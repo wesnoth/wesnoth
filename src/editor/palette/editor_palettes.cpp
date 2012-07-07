@@ -17,7 +17,6 @@
 
 #include "editor_palettes.hpp"
 
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "tooltips.hpp"
@@ -25,6 +24,8 @@
 #include "editor/action/mouse/mouse_action.hpp"
 
 #include "wml_separators.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace editor {
 
@@ -129,7 +130,7 @@ void editor_palette<Item>::set_group(const std::string& id)
 	assert(!id.empty());
 
 	bool found = false;
-	foreach (const item_group& group, groups_) {
+	BOOST_FOREACH(const item_group& group, groups_) {
 		if (group.id == id)
 			found = true;
 	}

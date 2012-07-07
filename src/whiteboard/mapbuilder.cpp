@@ -24,11 +24,12 @@
 #include "side_actions.hpp"
 #include "utility.hpp"
 
-#include "foreach.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace wb
 {
@@ -51,14 +52,14 @@ mapbuilder::~mapbuilder()
 
 void mapbuilder::pre_build()
 {
-	foreach(team& t, *resources::teams)
+	BOOST_FOREACH(team& t, *resources::teams)
 	{
 		//Reset spent gold to zero, it'll be recalculated during the map building
 		t.get_side_actions()->reset_gold_spent();
 	}
 
 	int current_side = resources::controller->current_side();
-	foreach(unit& u, *resources::units)
+	BOOST_FOREACH(unit& u, *resources::units)
 	{
 		bool on_current_side = (u.side() == current_side);
 

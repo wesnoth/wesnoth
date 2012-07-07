@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/network_transmission.hpp"
 
-#include "foreach.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/button.hpp"

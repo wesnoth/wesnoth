@@ -35,10 +35,11 @@
 #include "utility.hpp"
 
 #include "arrow.hpp"
-#include "foreach.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "unit_map.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace wb
 {
@@ -145,7 +146,7 @@ void highlighter::highlight()
 		if(!secondary_highlights_.empty()) {
 			//Highlight secondary highlights
 			highlight_secondary_visitor hs_visitor(*this);
-			foreach(weak_action_ptr weak, secondary_highlights_) {
+			BOOST_FOREACH(weak_action_ptr weak, secondary_highlights_) {
 				if(action_ptr action = weak.lock()) {
 					action->accept(hs_visitor);
 				}
@@ -164,14 +165,14 @@ void highlighter::unhighlight()
 	}
 
 	//unhighlight secondary highlights
-	foreach(weak_action_ptr weak, secondary_highlights_) {
+	BOOST_FOREACH(weak_action_ptr weak, secondary_highlights_) {
 		if(action_ptr action = weak.lock()) {
 			action->accept(uh_visitor);
 		}
 	}
 
 	//unhide other units if needed
-	foreach(map_location hex, exclusive_display_hexes_) {
+	BOOST_FOREACH(map_location hex, exclusive_display_hexes_) {
 		resources::screen->remove_exclusive_draw(hex);
 	}
 	exclusive_display_hexes_.clear();

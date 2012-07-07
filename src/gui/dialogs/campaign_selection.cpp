@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/campaign_selection.hpp"
 
-#include "foreach.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -34,6 +33,7 @@
 #include "serialization/string_utils.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -140,7 +140,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 				&window, "campaign_details", false);
 
 		unsigned id = 0;
-		foreach(const config &campaign, campaigns_) {
+		BOOST_FOREACH(const config &campaign, campaigns_) {
 
 			/*** Add tree item ***/
 			tree_group_field["label"] = campaign["icon"];
@@ -206,7 +206,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 		tmulti_page& multi_page = find_widget<tmulti_page>(
 				&window, "campaign_details", false);
 
-		foreach (const config &c, campaigns_) {
+		BOOST_FOREACH(const config &c, campaigns_) {
 
 			/*** Add list item ***/
 			string_map list_item;

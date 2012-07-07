@@ -18,12 +18,13 @@
 #include "gui/auxiliary/window_builder/multi_page.hpp"
 
 #include "config.hpp"
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/multi_page.hpp"
 #include "gui/widgets/multi_page.hpp"
 #include "wml_exception.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -46,12 +47,12 @@ tbuilder_multi_page::tbuilder_multi_page(const config& cfg)
 		return;
 	}
 
-	foreach(const config &row, d.child_range("row")) {
+	BOOST_FOREACH(const config &row, d.child_range("row")) {
 		unsigned col = 0;
 
-		foreach(const config &column, row.child_range("column")) {
+		BOOST_FOREACH(const config &column, row.child_range("column")) {
 			data.push_back(string_map());
-			foreach(const config::attribute &i, column.attribute_range()) {
+			BOOST_FOREACH(const config::attribute &i, column.attribute_range()) {
 				data.back()[i.first] = i.second;
 			}
 			++col;

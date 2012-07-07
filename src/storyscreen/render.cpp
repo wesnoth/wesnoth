@@ -22,7 +22,6 @@
 
 #include "global.hpp"
 #include "asserts.hpp"
-#include "foreach.hpp"
 #include "log.hpp"
 #include "storyscreen/part.hpp"
 #include "storyscreen/render.hpp"
@@ -33,6 +32,8 @@
 #include "sound.hpp"
 #include "text.hpp"
 #include "video.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG  LOG_STREAM(err,  log_engine)
@@ -167,7 +168,7 @@ void part_ui::prepare_geometry()
 void part_ui::prepare_floating_images()
 {
 	// Build floating image surfaces
-	foreach(const floating_image& fi, p_.get_floating_images()) {
+	BOOST_FOREACH(const floating_image& fi, p_.get_floating_images()) {
 		imgs_.push_back( fi.get_render_input(scale_factor_, base_rect_) );
 	}
 }
@@ -190,7 +191,7 @@ bool part_ui::render_floating_images()
 	last_key_ = true;
 
 	size_t fi_n = 0;
-	foreach(floating_image::render_input& ri, imgs_) {
+	BOOST_FOREACH(floating_image::render_input& ri, imgs_) {
 		const floating_image& fi = p_.get_floating_images()[fi_n];
 
 		if(!ri.image.null()) {

@@ -17,7 +17,6 @@
 
 #include "gui/widgets/slider.hpp"
 
-#include "foreach.hpp"
 #include "formatter.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/slider.hpp"
@@ -27,6 +26,7 @@
 #include "sound.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -232,7 +232,7 @@ void tslider::update_canvas()
 	// Inherited.
 	tscrollbar_::update_canvas();
 
-	foreach(tcanvas& tmp, canvas()) {
+	BOOST_FOREACH(tcanvas& tmp, canvas()) {
 		tmp.set_variable("text", variant(get_value_label()));
 	}
 }

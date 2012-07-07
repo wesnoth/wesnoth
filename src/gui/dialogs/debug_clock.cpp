@@ -25,6 +25,7 @@
 #include "gui/widgets/progress_bar.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #include <ctime>
 
@@ -156,7 +157,7 @@ void tdebug_clock::update_time(const bool force)
 	}
 
 	if(clock_) {
-		foreach(tcanvas& canvas, clock_->canvas()) {
+		BOOST_FOREACH(tcanvas& canvas, clock_->canvas()) {
 			canvas.set_variable("hour", variant(hour_stamp));
 			canvas.set_variable("minute", variant(minute_stamp));
 			canvas.set_variable("second", variant(second_stamp));

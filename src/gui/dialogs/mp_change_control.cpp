@@ -37,6 +37,7 @@
 #include <vector>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_gui("gui/dialogs/mp_change_control");
 #define ERR_GUI LOG_STREAM(err, log_gui)
@@ -184,7 +185,7 @@ public:
 
 		int i = 0; // because we need to know which row contains the controlling player
 
-		foreach (const std::string &nick, nicks)
+		BOOST_FOREACH(const std::string &nick, nicks)
 		{
 			if (side_number_ <= static_cast<int>(resources::teams->size()) &&
 				resources::teams->at(side_number_-1).current_player() == nick)

@@ -17,12 +17,13 @@
 #include "tooltips.hpp"
 
 #include "font.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "help.hpp"
 #include "marked-up_text.hpp"
 #include "resources.hpp"
 #include "video.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace {
 
@@ -172,7 +173,7 @@ void process(int mousex, int mousey)
 
 bool click(int mousex, int mousey)
 {
-	foreach(tooltip tip, tips) {
+	BOOST_FOREACH(tooltip tip, tips) {
 		if(!tip.action.empty() && point_in_rect(mousex, mousey, tip.rect)) {
 			display* disp = resources::screen;
 			help::show_help(*disp, tip.action);

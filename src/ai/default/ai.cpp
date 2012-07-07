@@ -26,7 +26,6 @@
 
 #include "../../array.hpp"
 #include "../../dialogs.hpp"
-#include "../../foreach.hpp"
 #include "../../game_events.hpp"
 #include "../../log.hpp"
 #include "../../mouse_handler_base.hpp"
@@ -36,6 +35,8 @@
 #include "../../wml_exception.hpp"
 
 #include "../../pathfind/pathfind.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <iterator>
 #include <algorithm>
@@ -140,7 +141,7 @@ void ai_default_recruitment_stage::recruit_situation_change_observer::set_valid(
 
 void ai_default_recruitment_stage::on_create() {
 	stage::on_create();
-	foreach (const config &c, cfg_.child_range("limit")) {
+	BOOST_FOREACH(const config &c, cfg_.child_range("limit")) {
 		if (c.has_attribute("type") && c.has_attribute("max") ) {
 			maximum_counts_.insert(std::make_pair(c["type"],lexical_cast_default<int>(c["max"],0)));
 		}
@@ -189,7 +190,7 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 	bool found = false;
 	// Find an available unit that can be recruited,
 	// matches the desired usage type, and comes in under budget.
-	foreach (const std::string &name, current_team().recruits())
+	BOOST_FOREACH(const std::string &name, current_team().recruits())
 	{
 		const unit_type *ut = unit_types.find(name);
 		if (!ut) continue;
@@ -431,7 +432,7 @@ int ai_default_recruitment_stage::get_combat_score(const unit_type& ut) const
 
 			team &enemy_team = (*resources::teams)[j->side() - 1];
 			const std::set<std::string> &recruits = enemy_team.recruits();
-			foreach (const std::string &rec, recruits) {
+			BOOST_FOREACH(const std::string &rec, recruits) {
 				get_combat_score_vs(ut,rec,score,weighting,0,0);
 			}
 			continue;
@@ -673,7 +674,7 @@ public:
 		        double best_combat_score_of_advancement = 0;
 			bool best_combat_score_of_advancement_found = false;
 			int best_cost = recall_cost;
-			foreach (const std::string &i, u.advances_to()) {
+			BOOST_FOREACH(const std::string &i, u.advances_to()) {
 				const unit_type *ut = unit_types.find(i);
 				if (!ut) {
 					continue;

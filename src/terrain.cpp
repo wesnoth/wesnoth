@@ -15,12 +15,13 @@
 
 #include "global.hpp"
 
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "terrain.hpp"
 #include "util.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <set>
 
@@ -283,7 +284,7 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
                          t_translation::t_list& terrain_list,
                          std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain)
 {
-	foreach (const config &t, cfgs)
+	BOOST_FOREACH(const config &t, cfgs)
 	{
 		terrain_type terrain(t);
 		DBG_G << "create_terrain_maps: " << terrain.number() << " "
@@ -300,9 +301,9 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
 				std::vector<std::string> eg2 = utils::split(terrain.editor_group());
 				std::set<std::string> egs;
 				bool clean_merge = true;
-				foreach(std::string& t, eg1)
+				BOOST_FOREACH(std::string& t, eg1)
 					clean_merge &= egs.insert(t).second;
-				foreach(std::string& t, eg2)
+				BOOST_FOREACH(std::string& t, eg2)
 					clean_merge &= egs.insert(t).second;
 
 				std::string joined = utils::join(egs);

@@ -23,7 +23,6 @@
 #include "actions.hpp"
 #include "ai/manager.hpp"
 #include "dialogs.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
@@ -59,6 +58,8 @@
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -341,7 +342,7 @@ namespace game_events {
 			std::vector<std::pair<int,int> > counts = (*u).has_attribute("count")
 				? utils::parse_ranges((*u)["count"]) : default_counts;
 			int match_count = 0;
-			foreach (const unit &i, *resources::units)
+			BOOST_FOREACH(const unit &i, *resources::units)
 			{
 				if(i.hitpoints() > 0 && unit_matches_filter(i, *u)) {
 					++match_count;
@@ -396,7 +397,7 @@ namespace game_events {
 		const vconfig::child_list& variables = cond.get_children("variable");
 		backwards_compat = backwards_compat && variables.empty();
 
-		foreach (const vconfig &values, variables)
+		BOOST_FOREACH(const vconfig &values, variables)
 		{
 			const std::string name = values["name"];
 			config::attribute_value value = resources::state_of_game->get_variable_const(name);
@@ -573,7 +574,7 @@ namespace {
 			const std::vector<game_events::event_handler>& handlers,
 			const std::string& msg) {
 
-			foreach(const game_events::event_handler& h, handlers){
+			BOOST_FOREACH(const game_events::event_handler& h, handlers){
 				const config& cfg = h.get_config();
 				ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; ";
 			}
@@ -587,7 +588,7 @@ namespace {
 			std::stringstream ss;
 			log_handler(ss, active_, "active");
 			log_handler(ss, insert_buffer_, "insert buffered");
-			foreach(const std::string& h, remove_buffer_){
+			BOOST_FOREACH(const std::string& h, remove_buffer_){
 				ss << "id=" << h << "; ";
 			}
 			DBG_EH << "remove buffered handlers are now " << ss.str() << "\n";
@@ -615,7 +616,7 @@ namespace {
 				const config & cfg = new_handler.get_config();
 				std::string id = cfg["id"];
 				if(!id.empty()) {
-					foreach( game_events::event_handler const & eh, active_) {
+					BOOST_FOREACH( game_events::event_handler const & eh, active_) {
 						config const & temp_config( eh.get_config());
 						if(id == temp_config["id"]) {
 							DBG_EH << "ignoring event handler for name=" << cfg["name"] <<
@@ -682,12 +683,12 @@ namespace {
 				return;
 
 			// Commit any event removals
-			foreach(std::string const & i ,  remove_buffer_ ){
+			BOOST_FOREACH(std::string const & i ,  remove_buffer_ ){
 				remove_event_handler( i ); }
 			remove_buffer_.clear();
 
 			// Commit any spawned events-within-events
-			foreach( game_events::event_handler const & i ,  insert_buffer_ ){
+			BOOST_FOREACH( game_events::event_handler const & i ,  insert_buffer_ ){
 				add_event_handler( i ); }
 			insert_buffer_.clear();
 
@@ -725,12 +726,12 @@ static void toggle_shroud(const bool remove, const vconfig& cfg)
 	const terrain_filter filter(cfg, *resources::units);
 	filter.get_locations(locs, true);
 
-	foreach (const int &side_num, sides)
+	BOOST_FOREACH(const int &side_num, sides)
 	{
 		index = side_num - 1;
 		team &t = (*resources::teams)[index];
 
-		foreach (map_location const &loc, locs)
+		BOOST_FOREACH(map_location const &loc, locs)
 		{
 			if (remove) {
 				t.clear_shroud(loc);
@@ -775,7 +776,7 @@ static void toggle_fog(const bool clear, const vconfig& cfg, const bool affect_n
 	t_filter.get_locations(locs, true);
 
 	// Loop through sides.
-	foreach (const int &side_num, sides)
+	BOOST_FOREACH(const int &side_num, sides)
 	{
 		team &t = (*resources::teams)[side_num-1];
 		if ( !clear )
@@ -790,7 +791,7 @@ static void toggle_fog(const bool clear, const vconfig& cfg, const bool affect_n
 			t.add_fog_override(locs);
 		else
 			// Simply clear fog from the locations.
-			foreach (const map_location &hex, locs)
+			BOOST_FOREACH(const map_location &hex, locs)
 				t.clear_fog(hex);
 	}
 
@@ -814,7 +815,7 @@ WML_HANDLER_FUNCTION(tunnel, /*event_info*/, cfg)
 	const bool remove = cfg["remove"].to_bool(false);
 	if (remove) {
 		const std::vector<std::string> ids = utils::split(cfg["id"]);
-		foreach(const std::string &id, ids) {
+		BOOST_FOREACH(const std::string &id, ids) {
 			resources::tunnels->remove(id);
 		}
 	} else if (cfg.get_children("source").empty() ||
@@ -985,7 +986,7 @@ WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 		side_filter ssf(cfg);
 		sides = ssf.get_teams();
 	}
-	foreach (const int &side_num, sides)
+	BOOST_FOREACH(const int &side_num, sides)
 	{
 		ai::manager::modify_active_ai_for_side(side_num,cfg.get_parsed_config());
 	}
@@ -1010,7 +1011,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	std::vector<int> sides = game_events::get_sides_vector(cfg);
 	size_t team_index;
 
-	foreach (const int &side_num, sides)
+	BOOST_FOREACH(const int &side_num, sides)
 	{
 		team_index = side_num - 1;
 		LOG_NG << "modifying side: " << side_num << "\n";
@@ -1282,7 +1283,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 	size_t longest_path = 0;
 
-	foreach(const vconfig& config, unit_cfgs) {
+	BOOST_FOREACH(const vconfig& config, unit_cfgs) {
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
 		int skip_steps = config["skip_steps"];
@@ -1548,7 +1549,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 		variable_info vi(array_name, true, variable_info::TYPE_ARRAY);
 		bool first = true;
-		foreach (const config &cfg, vi.as_array())
+		BOOST_FOREACH(const config &cfg, vi.as_array())
 		{
 			std::string current_string = cfg[key_name];
 			if (remove_empty && current_string.empty()) continue;
@@ -1676,7 +1677,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 				dest.vars->merge_with(data);
 			}
 		} else if(mode == "insert" || dest.explicit_index) {
-			foreach (const config &child, data.child_range(dest.key))
+			BOOST_FOREACH(const config &child, data.child_range(dest.key))
 			{
 				dest.vars->add_child_at(dest.key, child, dest.index++);
 			}
@@ -1706,7 +1707,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 			item["type"] = *ti;
 		}
 		unit_map::iterator itor;
-		foreach (unit &u, *resources::units) {
+		BOOST_FOREACH(unit &u, *resources::units) {
 			if (game_events::unit_matches_filter(u, filter)) {
 				u.set_role(cfg["role"]);
 				found = true;
@@ -1719,7 +1720,7 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 		std::set<std::string> player_ids;
 		std::vector<std::string> sides = utils::split(cfg["side"]);
 		const bool has_any_sides = !sides.empty();
-		foreach(std::string const& side_str, sides) {
+		BOOST_FOREACH(std::string const& side_str, sides) {
 			size_t side_num = lexical_cast_default<size_t>(side_str,0);
 			if(side_num > 0 && side_num <= resources::teams->size()) {
 				player_ids.insert((resources::teams->begin() + (side_num - 1))->save_id());
@@ -1786,7 +1787,7 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	game_map->set_terrain(loc, new_t);
 	screen_needs_rebuild = true;
 
-	foreach (const t_translation::t_terrain &ut, game_map->underlying_union_terrain(loc)) {
+	BOOST_FOREACH(const t_translation::t_terrain &ut, game_map->underlying_union_terrain(loc)) {
 		preferences::encountered_terrains().insert(ut);
 	}
 }
@@ -1918,7 +1919,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				const map_location cfg_loc = cfg_to_loc(cfg);
 
 				//TODO fendrin: comment this monster
-				foreach (unit_map::const_unit_iterator leader, leaders) {
+				BOOST_FOREACH(unit_map::const_unit_iterator leader, leaders) {
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
 					map_location loc = cfg_loc;
 					if ( (leader_filter.null() || leader->matches_filter(leader_filter, leader->get_location())) &&
@@ -1977,7 +1978,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	map_location loc;
 	if(!filter.null()) {
-		foreach (const unit &u, *resources::units) {
+		BOOST_FOREACH(const unit &u, *resources::units) {
 			if (game_events::unit_matches_filter(u, filter)) {
 				loc = u.get_location();
 				break;
@@ -2031,7 +2032,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 		}
 	}
 
-	foreach (const vconfig &cmd, cfg.get_children(command_type)) {
+	BOOST_FOREACH(const vconfig &cmd, cfg.get_children(command_type)) {
 		handle_event_commands(event_info, cmd);
 	}
 }
@@ -2132,13 +2133,13 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 
 	//Find all the dead units first, because firing events ruins unit_map iteration
 	std::vector<unit *> dead_men_walking;
-	foreach(unit & u, *resources::units){
+	BOOST_FOREACH(unit & u, *resources::units){
 		if(game_events::unit_matches_filter(u, cfg)){
 			dead_men_walking.push_back(&u);
 		}
 	}
 
-	foreach(unit * un, dead_men_walking) {
+	BOOST_FOREACH(unit * un, dead_men_walking) {
 		map_location loc(un->get_location());
 		bool fire_event = false;
 		game_events::entity_location death_loc(*un);
@@ -2271,7 +2272,7 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
 {
 	const std::string ids = cfg["id"].str();
-	foreach(const std::string& id, utils::split(ids, ',', utils::STRIP_SPACES)) {
+	BOOST_FOREACH(const std::string& id, utils::split(ids, ',', utils::STRIP_SPACES)) {
 		if(id.empty()) {
 			WRN_NG << "[clear_menu_item] has been given an empty id=, ignoring\n";
 			continue;
@@ -2572,7 +2573,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 
 	if (clear_shroud_bool) {
 		side_filter filter(cfg);
-		foreach(const int side, filter.get_teams()){
+		BOOST_FOREACH(const int side, filter.get_teams()){
 			clear_shroud(side);
 		}
 		screen.recalculate_minimap();
@@ -2609,7 +2610,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 	const vconfig healers_filter = cfg.child("filter_second");
 	std::vector<unit*> healers;
 	if (!healers_filter.null()) {
-		foreach (unit& u, *units) {
+		BOOST_FOREACH(unit& u, *units) {
 			if (game_events::unit_matches_filter(u, healers_filter) && u.has_ability_type("heals")) {
 				healers.push_back(&u);
 			}
@@ -2978,7 +2979,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			return;
 		}
 
-		foreach (const vconfig &cmd, option_events[option_chosen]) {
+		BOOST_FOREACH(const vconfig &cmd, option_events[option_chosen]) {
 			handle_event_commands(event_info, cmd);
 		}
 	}
@@ -3001,7 +3002,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 	if(remove) {
 		const std::vector<std::string> id_list =
 			utils::split(ids, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-		foreach(const std::string& id, id_list) {
+		BOOST_FOREACH(const std::string& id, id_list) {
 			resources::tod_manager->remove_time_area(id);
 			LOG_NG << "event WML removed time_area '" << id << "'\n";
 		}
@@ -3142,7 +3143,7 @@ static void commit_wmi_commands() {
 		mref->command["first_time_only"] = false;
 
 		if(has_current_handler) {
-			foreach(game_events::event_handler& hand, event_handlers) {
+			BOOST_FOREACH(game_events::event_handler& hand, event_handlers) {
 				if(hand.is_menu_item() && hand.matches_name(mref->name)) {
 					LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
 					hand = game_events::event_handler(mref->command, true);
@@ -3174,14 +3175,14 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	vconfig filters(handler.get_config());
 
 
-	foreach (const vconfig &condition, filters.get_children("filter_condition"))
+	BOOST_FOREACH(const vconfig &condition, filters.get_children("filter_condition"))
 	{
 		if (!game_events::conditional_passed(condition)) {
 			return false;
 		}
 	}
 
-	foreach (const vconfig &f, filters.get_children("filter"))
+	BOOST_FOREACH(const vconfig &f, filters.get_children("filter"))
 	{
 		if (unit1 == units->end() || !game_events::unit_matches_filter(*unit1, f)) {
 			return false;
@@ -3191,7 +3192,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		}
 	}
 
-	foreach (const vconfig &f, filters.get_children("filter_side"))
+	BOOST_FOREACH(const vconfig &f, filters.get_children("filter_side"))
 	{
 		side_filter ssf(f);
 		const int current_side = resources::controller->current_side();
@@ -3200,7 +3201,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 
 	vconfig::child_list special_filters = filters.get_children("filter_attack");
 	bool special_matches = special_filters.empty();
-	foreach (const vconfig &f, special_filters)
+	BOOST_FOREACH(const vconfig &f, special_filters)
 	{
 		if (unit1 != units->end() && game_events::matches_special_filter(ev.data.child("first"), f)) {
 			special_matches = true;
@@ -3213,7 +3214,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 		return false;
 	}
 
-	foreach (const vconfig &f, filters.get_children("filter_second"))
+	BOOST_FOREACH(const vconfig &f, filters.get_children("filter_second"))
 	{
 		if (unit2 == units->end() || !game_events::unit_matches_filter(*unit2, f)) {
 			return false;
@@ -3225,7 +3226,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 
 	special_filters = filters.get_children("filter_second_attack");
 	special_matches = special_filters.empty();
-	foreach (const vconfig &f, special_filters)
+	BOOST_FOREACH(const vconfig &f, special_filters)
 	{
 		if (unit2 != units->end() && game_events::matches_special_filter(ev.data.child("second"), f)) {
 			special_matches = true;
@@ -3420,17 +3421,17 @@ namespace game_events {
 		: variable_manager()
 	{
 		assert(!manager_running);
-		foreach (const config &ev, cfg.child_range("event")) {
+		BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
 			event_handlers.add_event_handler(game_events::event_handler(ev));
 		}
-		foreach (const std::string &id, utils::split(cfg["unit_wml_ids"])) {
+		BOOST_FOREACH(const std::string &id, utils::split(cfg["unit_wml_ids"])) {
 			unit_wml_ids.insert(id);
 		}
 
 		resources::lua_kernel = new LuaKernel(cfg);
 		manager_running = true;
 
-		foreach (static_wml_action_map::value_type &action, static_wml_actions) {
+		BOOST_FOREACH(static_wml_action_map::value_type &action, static_wml_actions) {
 			resources::lua_kernel->set_wml_action(action.first, action.second);
 		}
 
@@ -3443,7 +3444,7 @@ namespace game_events {
 		}
 		int wmi_count = 0;
 		typedef std::pair<std::string, wml_menu_item *> item;
-		foreach (const item &itor, resources::state_of_game->wml_menu_items) {
+		BOOST_FOREACH(const item &itor, resources::state_of_game->wml_menu_items) {
 			if (!itor.second->command.empty()) {
 				event_handlers.add_event_handler(game_events::event_handler(itor.second->command, true));
 			}
@@ -3457,7 +3458,7 @@ namespace game_events {
 	void write_events(config& cfg)
 	{
 		assert(manager_running);
-		foreach (const game_events::event_handler &eh, event_handlers) {
+		BOOST_FOREACH(const game_events::event_handler &eh, event_handlers) {
 			if (eh.disabled() || eh.is_menu_item()) continue;
 			cfg.add_child("event", eh.get_config());
 		}
@@ -3530,7 +3531,7 @@ namespace game_events {
 			if(std::find(unit_wml_ids.begin(),unit_wml_ids.end(),type) != unit_wml_ids.end()) return;
 			unit_wml_ids.insert(type);
 		}
-		foreach (const config &new_ev, cfgs) {
+		BOOST_FOREACH(const config &new_ev, cfgs) {
 			if(type.empty() && new_ev["id"].empty())
 			{
 				WRN_NG << "attempt to add an [event] with empty id=, ignoring \n";
@@ -3572,7 +3573,7 @@ namespace game_events {
 
 		if(!lg::debug.dont_log("event_handler")) {
 			std::stringstream ss;
-			foreach(const game_events::queued_event& ev, events_queue) {
+			BOOST_FOREACH(const game_events::queued_event& ev, events_queue) {
 				ss << "name=" << ev.name << "; ";
 			}
 			DBG_EH << "processing queued events: " << ss.str() << "\n";
@@ -3599,7 +3600,7 @@ namespace game_events {
 
 			bool init_event_vars = true;
 
-			foreach(game_events::event_handler& handler, event_handlers) {
+			BOOST_FOREACH(game_events::event_handler& handler, event_handlers) {
 				if(!handler.matches_name(event_name))
 					continue;
 				// Set the variables for the event

@@ -20,12 +20,12 @@
 
 #include "display.hpp"
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "map_exception.hpp"
 #include "map_label.hpp"
 #include "wml_exception.hpp"
 
+#include <boost/foreach.hpp>
 
 namespace editor {
 
@@ -63,7 +63,7 @@ editor_map::editor_map(const config& terrain_cfg, const config& level, const dis
 {
 	labels_.read(level);
 
-	foreach (const config& side, level.child_range("side"))
+	BOOST_FOREACH(const config& side, level.child_range("side"))
 	{
 		team t;
 		t.build(side, *this, 100);
@@ -72,7 +72,7 @@ editor_map::editor_map(const config& terrain_cfg, const config& level, const dis
 		//TODO alternative? : gamestatus::teambuilder
 
 		teams_.push_back(t);
-		foreach (const config &a_unit, side.child_range("unit")) {
+		BOOST_FOREACH(const config &a_unit, side.child_range("unit")) {
 			map_location loc(a_unit, NULL);
 			units_.add(loc, unit(a_unit, true));
 		}
@@ -168,7 +168,7 @@ void editor_map::sanity_check()
 			++errors;
 		}
 	}
-	foreach (const map_location& loc, selection_) {
+	BOOST_FOREACH(const map_location& loc, selection_) {
 		if (!on_board_with_border(loc)) {
 			ERR_ED << "Off-map tile in selection: " << loc << "\n";
 		}

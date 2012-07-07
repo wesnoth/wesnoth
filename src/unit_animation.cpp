@@ -17,7 +17,6 @@
 
 #include "unit_animation.hpp"
 
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "halo.hpp"
 #include "map.hpp"
@@ -25,6 +24,8 @@
 #include "variable.hpp"
 #include "resources.hpp"
 #include "play_controller.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <algorithm>
 
@@ -78,7 +79,7 @@ struct animation_branch
 	config merge() const
 	{
 		config result = attributes;
-		foreach (const config::all_children_iterator &i, children)
+		BOOST_FOREACH(const config::all_children_iterator &i, children)
 			result.add_child(i->key, i->cfg);
 		return result;
 	}
@@ -99,7 +100,7 @@ struct animation_cursor
 	animation_cursor(const config &cfg, animation_cursor *p):
 		itors(cfg.all_children_range()), branches(p->branches), parent(p)
 	{
-		foreach (animation_branch &ab, branches)
+		BOOST_FOREACH(animation_branch &ab, branches)
 			ab.attributes.merge_attributes(cfg);
 	}
 };
@@ -122,7 +123,7 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 		if (ac.itors.first->key != "if")
 		{
 			// Append current config object to all the branches in scope.
-			foreach (animation_branch &ab, ac.branches) {
+			BOOST_FOREACH(animation_branch &ab, ac.branches) {
 				ab.children.push_back(ac.itors.first);
 			}
 			++ac.itors.first;
@@ -154,7 +155,7 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 static animation_branches prepare_animation(const config &cfg, const std::string &animation_tag)
 {
 	animation_branches expanded_animations;
-	foreach (const config &anim, cfg.child_range(animation_tag)) {
+	BOOST_FOREACH(const config &anim, cfg.child_range(animation_tag)) {
 		prepare_single_animation(anim, expanded_animations);
 	}
 	return expanded_animations;
@@ -207,7 +208,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	overlaped_hex_()
 {
 //	if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
-	foreach (const config::any_child &fr, cfg.all_children_range())
+	BOOST_FOREACH(const config::any_child &fr, cfg.all_children_range())
 	{
 		if (fr.key == frame_string) continue;
 		if (fr.key.find("_frame", fr.key.size() - 6) == std::string::npos) continue;
@@ -221,11 +222,11 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 		const map_location::DIRECTION d = map_location::parse_direction(*i);
 		directions_.push_back(d);
 	}
-	foreach (const config &filter, cfg.child_range("filter")) {
+	BOOST_FOREACH(const config &filter, cfg.child_range("filter")) {
 		unit_filter_.push_back(filter);
 	}
 
-	foreach (const config &filter, cfg.child_range("filter_second")) {
+	BOOST_FOREACH(const config &filter, cfg.child_range("filter_second")) {
 		secondary_unit_filter_.push_back(filter);
 	}
 
@@ -253,10 +254,10 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	for(value2=value2_str.begin() ; value2 != value2_str.end() ; ++value2) {
 		value2_.push_back(atoi(value2->c_str()));
 	}
-	foreach (const config &filter, cfg.child_range("filter_attack")) {
+	BOOST_FOREACH(const config &filter, cfg.child_range("filter_attack")) {
 		primary_attack_filter_.push_back(filter);
 	}
-	foreach (const config &filter, cfg.child_range("filter_second_attack")) {
+	BOOST_FOREACH(const config &filter, cfg.child_range("filter_second_attack")) {
 		secondary_attack_filter_.push_back(filter);
 	}
 	play_offscreen_ = cfg["offscreen"].to_bool(true);
@@ -487,7 +488,7 @@ static void add_simple_anim(std::vector<unit_animation> &animations,
 	display::tdrawing_layer layer = display::LAYER_UNIT_DEFAULT,
 	bool offscreen = true)
 {
-	foreach (const animation_branch &ab, prepare_animation(cfg, tag_name))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, tag_name))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = apply_to;
@@ -503,7 +504,7 @@ static void add_simple_anim(std::vector<unit_animation> &animations,
 
 void unit_animation::add_anims( std::vector<unit_animation> & animations, const config & cfg)
 {
-	foreach (const animation_branch &ab, prepare_animation(cfg, "animation")) {
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "animation")) {
 		animations.push_back(unit_animation(ab.merge()));
 	}
 
@@ -519,7 +520,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	add_simple_anim(animations, cfg, "levelin_anim", "levelin");
 	add_simple_anim(animations, cfg, "levelout_anim", "levelout");
 
-	foreach (const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "default";
@@ -528,7 +529,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["offscreen"].empty()) anim["offscreen"] = false;
 		animations.push_back(unit_animation(anim));
 	}
-	foreach (const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "standing";
@@ -537,7 +538,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["offscreen"].empty()) anim["offscreen"] = false;
 		animations.push_back(unit_animation(anim));
 	}
-	foreach (const animation_branch &ab, prepare_animation(cfg, "healing_anim"))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "healing_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "healing";
@@ -546,7 +547,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 	}
 
-	foreach (const animation_branch &ab, prepare_animation(cfg, "healed_anim"))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "healed_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "healed";
@@ -558,7 +559,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 	}
 
-	foreach (const animation_branch &ab, prepare_animation(cfg, "poison_anim"))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "poison_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] ="poisoned";
@@ -572,7 +573,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 	add_simple_anim(animations, cfg, "pre_movement_anim", "pre_movement", display::LAYER_UNIT_MOVE_DEFAULT);
 
-	foreach (const animation_branch &ab, prepare_animation(cfg, "movement_anim"))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "movement_anim"))
 	{
 		config anim = ab.merge();
 		if (anim["offset"].empty()) {
@@ -585,7 +586,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 	add_simple_anim(animations, cfg, "post_movement_anim", "post_movement", display::LAYER_UNIT_MOVE_DEFAULT);
 
-	foreach (const animation_branch &ab, prepare_animation(cfg, "defend"))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "defend"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "defend";
@@ -607,7 +608,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		else
 		{
 			std::vector<std::string> v = utils::split(anim["hits"]);
-			foreach (const std::string &hit_type, v)
+			BOOST_FOREACH(const std::string &hit_type, v)
 			{
 				config tmp = anim;
 				tmp["hits"] = hit_type;
@@ -625,7 +626,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	add_simple_anim(animations, cfg, "draw_weapon_anim", "draw_wepaon", display::LAYER_UNIT_MOVE_DEFAULT);
 	add_simple_anim(animations, cfg, "sheath_weapon_anim", "sheath_wepaon", display::LAYER_UNIT_MOVE_DEFAULT);
 
-	foreach (const animation_branch &ab, prepare_animation(cfg, "attack_anim"))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "attack_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "attack";
@@ -646,7 +647,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 	}
 
-	foreach (const animation_branch &ab, prepare_animation(cfg, "death"))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "death"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = "death";
@@ -663,7 +664,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 	add_simple_anim(animations, cfg, "victory_anim", "victory");
 
-	foreach (const animation_branch &ab, prepare_animation(cfg, "extra_anim"))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "extra_anim"))
 	{
 		config anim = ab.merge();
 		anim["apply_to"] = anim["flag"];
@@ -671,7 +672,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 	}
 
-	foreach (const animation_branch &ab, prepare_animation(cfg, "teleport_anim"))
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "teleport_anim"))
 	{
 		config anim = ab.merge();
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
@@ -742,14 +743,14 @@ unit_animation::particule::particule(
 	config::const_child_itors range = cfg.child_range(frame_string+"frame");
 	starting_frame_time_=INT_MAX;
 	if(cfg[frame_string+"start_time"].empty() &&range.first != range.second) {
-		foreach (const config &frame, range) {
+		BOOST_FOREACH(const config &frame, range) {
 			starting_frame_time_ = std::min(starting_frame_time_, frame["begin"].to_int());
 		}
 	} else {
 		starting_frame_time_ = cfg[frame_string+"start_time"];
 	}
 
-	foreach (const config &frame, range)
+	BOOST_FOREACH(const config &frame, range)
 	{
 		unit_frame tmp_frame(frame);
 		add_frame(tmp_frame.duration(),tmp_frame,!tmp_frame.does_not_change());

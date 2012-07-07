@@ -27,13 +27,14 @@
 #include "side_actions.hpp"
 
 #include "actions.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "unit.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace wb {
 
@@ -65,7 +66,7 @@ unit const* find_backup_leader(unit const& leader)
 {
 	assert(leader.can_recruit());
 	assert(resources::game_map->is_keep(leader.get_location()));
-	foreach(unit const& unit, *resources::units)
+	BOOST_FOREACH(unit const& unit, *resources::units)
 	{
 		if (unit.can_recruit() &&
 				resources::game_map->is_keep(unit.get_location()) &&
@@ -88,7 +89,7 @@ unit* find_recruiter(size_t team_index, map_location const& hex)
 	if(!map.is_castle(hex))
 		return NULL;
 
-	foreach(unit& u, *resources::units)
+	BOOST_FOREACH(unit& u, *resources::units)
 		if(u.can_recruit()
 				&& u.side() == static_cast<int>(team_index+1)
 				&& can_recruit_on(map,u.get_location(),hex))
@@ -130,7 +131,7 @@ int path_cost(std::vector<map_location> const& path, unit const& u)
 
 	int result = 0;
 	gamemap const& map = *resources::game_map;
-	foreach(map_location const& loc, std::make_pair(path.begin()+1,path.end()))
+	BOOST_FOREACH(map_location const& loc, std::make_pair(path.begin()+1,path.end()))
 		result += u.movement_cost(map[loc]);
 	return result;
 }
@@ -155,7 +156,7 @@ void unghost_owner_unit(unit* unit)
 
 bool has_actions()
 {
-	foreach(team& t, *resources::teams)
+	BOOST_FOREACH(team& t, *resources::teams)
 		if (!t.get_side_actions()->empty())
 			return true;
 
@@ -170,12 +171,12 @@ bool team_has_visible_plan(team &t...)
 void for_each_action(boost::function<void(action_ptr)> function, turn_team_filter pre_team_filter, turn_team_filter post_team_filter)
 {
 	size_t max_turns = 0;
-	foreach(team &t, *resources::teams) {
+	BOOST_FOREACH(team &t, *resources::teams) {
 		max_turns = std::max(max_turns, t.get_side_actions()->num_turns());
 	}
 
 	for(size_t turn=0; turn < max_turns; ++turn) {
-		foreach(team &side, *resources::teams) {
+		BOOST_FOREACH(team &side, *resources::teams) {
 			side_actions &actions = *side.get_side_actions();
 			if(actions.turn_size(turn) > 0 && pre_team_filter(side, turn)) {
 				std::for_each(actions.turn_begin(turn), actions.turn_end(turn), function);
@@ -192,7 +193,7 @@ action_ptr find_action_at(map_location hex, team_filter pre_team_filter)
 	action_ptr result;
 	size_t result_turn = std::numeric_limits<size_t>::max();
 
-	foreach(team &side, *resources::teams) {
+	BOOST_FOREACH(team &side, *resources::teams) {
 		side_actions &actions = *side.get_side_actions();
 		if(pre_team_filter(side)) {
 			side_actions::iterator chall = actions.find_first_action_at(hex);
