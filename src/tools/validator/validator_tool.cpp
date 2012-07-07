@@ -20,7 +20,6 @@ std::string version = "0.2.0";
 #include <iostream>
 
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "config.hpp"

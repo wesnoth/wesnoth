@@ -15,11 +15,11 @@
 
 #include "wesmage/filter.hpp"
 
-#include "foreach.hpp"
 #include "serialization/string_utils.hpp"
 #include "wesmage/exit.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 #include <boost/function.hpp>
 
 #include <iostream>

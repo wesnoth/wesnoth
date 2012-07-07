@@ -19,13 +19,13 @@
  */
 
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "tools/exploder_utils.hpp"
 #include "tests/test_sdl_utils.hpp"
 
 #include <SDL_image.h>
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #include <iostream>
 

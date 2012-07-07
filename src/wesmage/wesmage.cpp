@@ -18,11 +18,12 @@
  * Tool to test the image conversion functions.
  */
 
-#include "foreach.hpp"
 #include "tools/exploder_utils.hpp"
 #include "wesmage/exit.hpp"
 #include "wesmage/filter.hpp"
 #include "wesmage/options.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <SDL_image.h>
 
