@@ -94,8 +94,6 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 	 * Function that will collect all locations within @a radius tiles of an
 	 * element of @a locs, subject to the restriction col_begin <= x < col_end.
 	 */
-	// Complexity: O(nr lg(nr)), where n = locs.size() and r = radius, with
-	// an upper bound based on (col_end - col_begin).
 	void get_column_ranges(column_ranges & collected_tiles,
 	                       const std::vector<map_location>& locs,
 	                       const size_t radius,
@@ -146,9 +144,6 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 	 * When passed to this function, @a result must not be empty. (This allows
 	 * a code simplification and is currently always the case anyway.)
 	 */
-	// Complexity: O(number of hexes collected), assuming that the insertion
-	// hint makes insertions O(1), with an upper bound based on
-	// (row_end - row_begin).
 	void ranges_to_tiles(std::set<map_location> & result,
 	                     const column_ranges & collected_tiles,
 	                     int row_begin, int row_end)
@@ -192,8 +187,6 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
  * on-board locations that are within @a radius tiles of an element of locs.
  * @a result must be a std::set of locations.
  */
-// Complexity: O(nr lg(nr) + nr^2), where n = locs.size(), r = radius.
-// This is effectively bounded by the size of the board.
 void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
                       size_t radius, std::set<map_location>& result,
                       bool with_border)
