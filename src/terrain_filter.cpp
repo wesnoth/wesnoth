@@ -320,9 +320,11 @@ bool terrain_filter::match(const map_location& loc) const
 		<< ", restricting\n";
 		radius = max_loop_;
 	}
-	if(cfg_.has_child("filter_radius")) {
+	if ( radius == 0 )
+		hexes.insert(loc_vec.begin(), loc_vec.end());
+	else if ( cfg_.has_child("filter_radius") ) {
 		terrain_filter r_filter(cfg_.child("filter_radius"), *this);
-		get_tiles_radius(*resources::game_map, loc_vec, radius, hexes, false, &r_filter);
+		get_tiles_radius(*resources::game_map, loc_vec, radius, hexes, false, r_filter);
 	} else {
 		get_tiles_radius(*resources::game_map, loc_vec, radius, hexes);
 	}
@@ -505,7 +507,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		std::copy(xy_set.begin(),xy_set.end(),std::inserter(xy_vector,xy_vector.end()));
 		if(cfg_.has_child("filter_radius")) {
 			terrain_filter r_filter(cfg_.child("filter_radius"), *this);
-			get_tiles_radius(*resources::game_map, xy_vector, radius, locs, with_border, &r_filter);
+			get_tiles_radius(*resources::game_map, xy_vector, radius, locs, with_border, r_filter);
 		} else {
 			get_tiles_radius(*resources::game_map, xy_vector, radius, locs, with_border);
 		}
