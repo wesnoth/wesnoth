@@ -56,7 +56,7 @@ void get_tile_ring(const map_location& center, const int radius,
 void get_tiles_in_radius(const map_location& center, const int radius,
                          std::vector<map_location>& result)
 {
-	for(int n = 0; n <= radius; ++n) {
+	for(int n = 1; n <= radius; ++n) {
 		get_tile_ring(center, n, result);
 	}
 }
@@ -90,12 +90,16 @@ void get_tiles_radius(gamemap const &map, std::vector<map_location> const &locs,
                       bool with_border, xy_pred const *pred)
 {
 	typedef std::set<map_location> location_set;
-	location_set not_visited(locs.begin(), locs.end()), must_visit, filtered_out;
-	++radius;
 
-	for(;;) {
-		location_set::const_iterator it = not_visited.begin(), it_end = not_visited.end();
-		std::copy(it,it_end,std::inserter(result,result.end()));
+	location_set must_visit, filtered_out;
+	location_set not_visited(locs.begin(), locs.end());
+
+	for ( ; radius != 0  &&  !not_visited.empty(); --radius )
+	{
+		location_set::const_iterator it = not_visited.begin();
+		location_set::const_iterator it_end = not_visited.end();
+
+		result.insert(it, it_end);
 		for(; it != it_end; ++it) {
 			map_location adj[6];
 			get_adjacent_tiles(*it, adj);
@@ -113,12 +117,10 @@ void get_tiles_radius(gamemap const &map, std::vector<map_location> const &locs,
 			}
 		}
 
-		if(--radius == 0 || must_visit.empty()) {
-			break;
-		}
-
 		not_visited.swap(must_visit);
 		must_visit.clear();
 	}
+
+	result.insert(not_visited.begin(), not_visited.end());
 }
 
