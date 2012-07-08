@@ -42,9 +42,10 @@ static lg::log_domain log_engine("engine");
 config map_generator::create_scenario(const std::vector<std::string>& args)
 {
 	config res;
-	res["data"] = create_map(args);
-	res["usage"] = "map";
-	res["border_size"] = 1;
+	config& map = res.add_child("map");
+	map["data"] = create_map(args);
+	map["usage"] = "map";
+	map["border_size"] = 1;
 	return res;
 }
 
