@@ -24,7 +24,6 @@
 #include "engine_default.hpp"
 #include "rca.hpp"
 #include "stage.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
 
 namespace ai {

@@ -17,7 +17,7 @@
 #include "playmp_controller.hpp"
 
 #include "dialogs.hpp"
-#include "foreach.hpp"
+
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -28,6 +28,8 @@
 #include "sound.hpp"
 #include "formula_string_utils.hpp"
 #include "whiteboard/manager.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -326,7 +328,7 @@ void playmp_controller::linger()
 	// stay stuck in linger state when the *next* scenario is over.
 	gamestate_.classification().completion = "running";
 	// End all unit moves
-	foreach (unit &u, units_) {
+	BOOST_FOREACH(unit &u, units_) {
 		u.set_user_end_turn(true);
 	}
 	//current_team().set_countdown_time(0);

@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/data_manage.hpp"
 
-#include "foreach.hpp"
 #include "formula_string_utils.hpp"
 #include "game_config.hpp"
 #include "game_preferences.hpp"
@@ -43,6 +42,7 @@
 
 #include <cctype>
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -101,7 +101,7 @@ void tdata_manage::fill_game_list(twindow& window
 	tlistbox& list = find_widget<tlistbox>(&window, "persist_list", false);
 	list.clear();
 
-	foreach(const savegame::save_info game, games) {
+	BOOST_FOREACH(const savegame::save_info game, games) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -142,7 +142,7 @@ bool tdata_manage::filter_text_changed(ttext_* textbox, const std::string& text)
 				find_widget<tlabel>(*it, "filename", false);
 
 			bool found = false;
-			foreach (const std::string& word, words){
+			BOOST_FOREACH(const std::string& word, words){
 				found = std::search(filename_label.label().str().begin()
 						, filename_label.label().str().end()
 						, word.begin(), word.end()

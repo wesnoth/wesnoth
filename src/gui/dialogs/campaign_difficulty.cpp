@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/campaign_difficulty.hpp"
 
-#include "foreach.hpp"
 #include "gui/auxiliary/old_markup.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	#include "gui/widgets/list.hpp"
@@ -26,6 +25,8 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -65,7 +66,7 @@ REGISTER_DIALOG(campaign_difficulty)
 tcampaign_difficulty::tcampaign_difficulty(const std::vector<std::string>& items)
 	: index_(-1), items_()
 {
-	foreach(const std::string& it, items) {
+	BOOST_FOREACH(const std::string& it, items) {
 		items_.push_back(tlegacy_menu_item(it));
 	}
 }
@@ -77,7 +78,7 @@ void tcampaign_difficulty::pre_show(CVideo& /*video*/, twindow& window)
 
 	std::map<std::string, string_map> data;
 
-	foreach(const tlegacy_menu_item& item, items_) {
+	BOOST_FOREACH(const tlegacy_menu_item& item, items_) {
 		if(item.is_default()) {
 			index_ = list.get_item_count();
 		}

@@ -19,13 +19,14 @@
 
 #include "actions.hpp"
 #include "config.hpp"
-#include "foreach.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "resources.hpp"
 #include "terrain_filter.hpp"
 #include "tod_manager.hpp"
 #include "variable.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -129,7 +130,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 				}
 			} else {
 				bool found = false;
-				foreach (const config &cfg, vi.as_array()) {
+				BOOST_FOREACH(const config &cfg, vi.as_array()) {
 					if (map_location(cfg, NULL) == loc) {
 						found = true;
 						break;
@@ -358,7 +359,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			}
 		} else {
 			std::set<map_location> findin_locs;
-			foreach (const config &cfg, vi.as_array()) {
+			BOOST_FOREACH(const config &cfg, vi.as_array()) {
 				map_location test_loc(cfg, NULL);
 				if (xy_set.count(test_loc)) {
 					findin_locs.insert(test_loc);

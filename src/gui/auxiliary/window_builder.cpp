@@ -18,7 +18,6 @@
 #include "gui/auxiliary/window_builder_private.hpp"
 
 #include "asserts.hpp"
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
@@ -43,6 +42,7 @@
 #include "formula_string_utils.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -67,7 +67,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 				  std::string
 				, boost::function<tbuilder_widget_ptr(config)> >
 			thack;
-	foreach(const thack& item, builder_widget_lookup()) {
+	BOOST_FOREACH(const thack& item, builder_widget_lookup()) {
 		if(item.first == "window" || item.first == "tooltip") {
 			continue;
 		}
@@ -153,7 +153,7 @@ twindow *build(CVideo &video, const twindow_builder::tresolution *definition)
 			, definition->helptip);
 	assert(window);
 
-	foreach(const twindow_builder::tresolution::tlinked_group& lg,
+	BOOST_FOREACH(const twindow_builder::tresolution::tlinked_group& lg,
 			definition->linked_groups) {
 
 		if(window->has_linked_size_group(lg.id)) {
@@ -238,7 +238,7 @@ const std::string& twindow_builder::read(const config& cfg)
 
 	config::const_child_itors cfgs = cfg.child_range("resolution");
 	VALIDATE(cfgs.first != cfgs.second, _("No resolution defined."));
-	foreach (const config &i, cfgs) {
+	BOOST_FOREACH(const config &i, cfgs) {
 		resolutions.push_back(tresolution(i));
 	}
 
@@ -386,7 +386,7 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 		definition = "default";
 	}
 
-	foreach (const config &lg, cfg.child_range("linked_group")) {
+	BOOST_FOREACH(const config &lg, cfg.child_range("linked_group")) {
 		tlinked_group linked_group;
 		linked_group.id = lg["id"].str();
 		linked_group.fixed_width = lg["fixed_width"].to_bool();
@@ -501,13 +501,13 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  */
 	log_scope2(log_gui_parse, "Window builder: parsing a grid");
 
-	foreach (const config &row, cfg.child_range("row"))
+	BOOST_FOREACH(const config &row, cfg.child_range("row"))
 	{
 		unsigned col = 0;
 
 		row_grow_factor.push_back(row["grow_factor"]);
 
-		foreach (const config &c, row.child_range("column"))
+		BOOST_FOREACH(const config &c, row.child_range("column"))
 		{
 			flags.push_back(implementation::read_flags(c));
 			border_size.push_back(c["border_size"]);

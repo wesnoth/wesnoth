@@ -17,14 +17,15 @@
 
 #include "gui/dialogs/addon/description.hpp"
 
-#include "foreach.hpp"
 #include "gui/widgets/settings.hpp"
 #include "language.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace {
 	std::string langcode_to_string(const std::string& lcode)
 	{
-		foreach(const language_def& ld, get_languages()) {
+		BOOST_FOREACH(const language_def& ld, get_languages()) {
 			if(ld.localename == lcode || ld.localename.substr(0, 2) == lcode) {
 				return ld.language;
 			}
@@ -90,7 +91,7 @@ taddon_description::taddon_description(const addon_info& addon)
 
 	std::string languages;
 
-	foreach(const std::string& lc, addon.translations) {
+	BOOST_FOREACH(const std::string& lc, addon.translations) {
 		const std::string& langlabel = langcode_to_string(lc);
 		if(!langlabel.empty()) {
 			if(!languages.empty()) {

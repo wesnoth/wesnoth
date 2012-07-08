@@ -25,7 +25,6 @@
 #include "color_range.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "game_config.hpp"
 #include "image.hpp"
 #include "image_modifications.hpp"
@@ -36,6 +35,7 @@
 #include "SDL_image.h"
 
 #include <boost/functional/hash.hpp>
+#include <boost/foreach.hpp>
 
 #include <list>
 #include <set>
@@ -376,7 +376,7 @@ static bool localized_file_uptodate (const std::string& loc_file)
 		std::string trackpath = get_binary_file_location("", "l10n-track");
 		std::string contents = read_file(trackpath);
 		std::vector<std::string> lines = utils::split(contents, '\n');
-		foreach (const std::string &line, lines) {
+		BOOST_FOREACH(const std::string &line, lines) {
 			size_t p1 = line.find(fsep);
 			if (p1 == std::string::npos)
 				continue;
@@ -423,7 +423,7 @@ static std::string get_localized_path (const std::string& file, const std::strin
 	// add en_US with lowest priority, since the message above will
 	// not have it when translated.
 	langs.push_back("en_US");
-	foreach (const std::string &lang, langs) {
+	BOOST_FOREACH(const std::string &lang, langs) {
 		std::string loc_file = dir + "l10n" + "/" + lang + "/" + loc_base;
 		if (file_exists(loc_file) && localized_file_uptodate(loc_file)) {
 			return loc_file;

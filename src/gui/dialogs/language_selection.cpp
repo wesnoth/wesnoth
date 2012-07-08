@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/language_selection.hpp"
 
-#include "foreach.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -27,6 +26,8 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -65,7 +66,7 @@ void tlanguage_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 	const std::vector<language_def>& languages = get_languages();
 	const language_def& current_language = get_language();
-	foreach(const language_def& lang, languages) {
+	BOOST_FOREACH(const language_def& lang, languages) {
 		string_map item;
 		item.insert(std::make_pair("label", lang.language));
 

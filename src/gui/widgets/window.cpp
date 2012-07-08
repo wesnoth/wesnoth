@@ -23,7 +23,6 @@
 #include "gui/widgets/window_private.hpp"
 
 #include "font.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -44,6 +43,7 @@
 #include "video.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -716,7 +716,7 @@ void twindow::draw()
 		return;
 	}
 
-	foreach(std::vector<twidget*>& item, dirty_list_) {
+	BOOST_FOREACH(std::vector<twidget*>& item, dirty_list_) {
 
 		assert(!item.empty());
 
@@ -1047,12 +1047,12 @@ void twindow::layout_linked_widgets()
 {
 	// evaluate the group sizes
 	typedef std::pair<const std::string, tlinked_size> hack;
-	foreach(hack& linked_size, linked_size_) {
+	BOOST_FOREACH(hack& linked_size, linked_size_) {
 
 		tpoint max_size(0, 0);
 
 		// Determine the maximum size.
-		foreach(twidget* widget, linked_size.second.widgets) {
+		BOOST_FOREACH(twidget* widget, linked_size.second.widgets) {
 
 			const tpoint size = widget->get_best_size();
 
@@ -1065,7 +1065,7 @@ void twindow::layout_linked_widgets()
 		}
 
 		// Set the maximum size.
-		foreach(twidget* widget, linked_size.second.widgets) {
+		BOOST_FOREACH(twidget* widget, linked_size.second.widgets) {
 
 			tpoint size = widget->get_best_size();
 

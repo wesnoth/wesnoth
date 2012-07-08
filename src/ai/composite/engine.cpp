@@ -21,7 +21,6 @@
 #include "engine.hpp"
 #include "contexts.hpp"
 
-#include "../../foreach.hpp"
 #include "../../log.hpp"
 
 namespace ai {

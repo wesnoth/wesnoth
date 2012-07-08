@@ -19,7 +19,6 @@
 #include "addon/manager.hpp"
 #include "dialogs.hpp"
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "formatter.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
@@ -40,6 +39,8 @@
 #include "version.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)
@@ -321,11 +322,11 @@ static void unarchive_dir(const std::string& path, const config& cfg)
 
 	make_directory(dir);
 
-	foreach (const config &d, cfg.child_range("dir")) {
+	BOOST_FOREACH(const config &d, cfg.child_range("dir")) {
 		unarchive_dir(dir, d);
 	}
 
-	foreach (const config &f, cfg.child_range("file")) {
+	BOOST_FOREACH(const config &f, cfg.child_range("file")) {
 		unarchive_file(dir, f);
 	}
 }
@@ -701,7 +702,7 @@ namespace {
 		std::string missing = "";
 		size_t count_missing = 0;
 
-		foreach(const std::string& i, dependencies) {
+		BOOST_FOREACH(const std::string& i, dependencies) {
 			if (std::find(installed.begin(), installed.end(), i) == installed.end()) {
 				missing += "\n" + i;
 				++count_missing;
@@ -717,7 +718,7 @@ namespace {
 			std::vector< std::string > unsafe_matches;
 			std::ostringstream unsafe_list;
 			std::map<std::string, version_info> remote_version_map;
-			foreach (const config &remote_addon, remote_addons_list)
+			BOOST_FOREACH(const config &remote_addon, remote_addons_list)
 			{
 				const std::string& name = remote_addon["name"];
 				if (std::find(dependencies.begin(), dependencies.end(), name) != dependencies.end()) {
@@ -837,7 +838,7 @@ namespace {
 				if(!result) {
 					assert(failed_titles.empty() == false);
 					std::string failed_titles_list_fmt;
-					foreach(const std::string& entry, failed_titles) {
+					BOOST_FOREACH(const std::string& entry, failed_titles) {
 						failed_titles_list_fmt += '\n';
 						failed_titles_list_fmt += entry;
 					}
@@ -870,7 +871,7 @@ namespace {
 		std::vector<version_info> safe_local_versions;
 		std::vector<version_info> unsafe_local_versions;
 		std::map<std::string, version_info> remote_version_map;
-		foreach (const config &remote_addon, remote_addons_list)
+		BOOST_FOREACH(const config &remote_addon, remote_addons_list)
 		{
 			const std::string& name = remote_addon["name"];
 			const std::string& version = remote_addon["version"];
@@ -1065,7 +1066,7 @@ namespace {
 		if(!result) {
 			assert(failed_titles.empty() == false);
 			std::string failed_titles_list_fmt;
-			foreach(const std::string& entry, failed_titles) {
+			BOOST_FOREACH(const std::string& entry, failed_titles) {
 				failed_titles_list_fmt += '\n';
 				failed_titles_list_fmt += entry;
 			}
@@ -1090,7 +1091,7 @@ namespace {
 		const std::string& addon,
 		const std::vector<std::string>& own_addons)
 	{
-		foreach(const std::string& current_own_addon, own_addons) {
+		BOOST_FOREACH(const std::string& current_own_addon, own_addons) {
 			if(current_own_addon == addon) {
 				utils::string_map symbols;
 				symbols["addon"] = addon;
@@ -1171,7 +1172,7 @@ namespace {
 
 			std::vector< addon_info > infos;
 
-			foreach(const config &c, addon_cfgs)
+			BOOST_FOREACH(const config &c, addon_cfgs)
 			{
 				const std::string& name = c["name"];
 				const std::string& downloads = c["downloads"].str();
@@ -1254,13 +1255,13 @@ namespace {
 				infos.push_back(inf);
 			}
 
-			foreach(const std::string& pub, publish_options) {
+			BOOST_FOREACH(const std::string& pub, publish_options) {
 				static const std::string publish_icon = "icons/icon-addon-publish.png";
 				const std::string text = _("Publish add-on: ") + get_addon_name(pub);
 				options.push_back(IMAGE_PREFIX + publish_icon + COLUMN_SEPARATOR + font::GOOD_TEXT + text);
 				options_to_filter.push_back(text);
 			}
-			foreach(const std::string& del, delete_options) {
+			BOOST_FOREACH(const std::string& del, delete_options) {
 				static const std::string delete_icon = "icons/icon-addon-delete.png";
 				const std::string text = _("Delete add-on: ") + get_addon_name(del);
 				options.push_back(IMAGE_PREFIX + delete_icon + COLUMN_SEPARATOR + font::BAD_TEXT + text);
@@ -1408,7 +1409,7 @@ namespace {
 
 			remove_names.clear();
 
-			foreach(const std::string& id, remove_ids) {
+			BOOST_FOREACH(const std::string& id, remove_ids) {
 				remove_names.push_back(get_addon_name(id));
 			}
 
@@ -1425,7 +1426,7 @@ namespace {
 
 		std::vector<std::string> failed_names, skipped_names, succeeded_names;
 
-		foreach(const std::string& id, remove_ids) {
+		BOOST_FOREACH(const std::string& id, remove_ids) {
 			const std::string& name = get_addon_name(id);
 
 			if(have_addon_pbl_info(id) || have_addon_in_vcs_tree(id)) {
@@ -1531,12 +1532,12 @@ void refresh_addon_version_info_cache()
 	}
 	static const std::string parentd = get_addon_campaigns_dir();
 	std::vector<std::string> addon_info_files;
-	foreach(std::string const& dir, addons)
+	BOOST_FOREACH(std::string const& dir, addons)
 		addon_info_files.push_back(parentd+"/"+dir+"/_info.cfg");
 
 	size_t i = 0;
 
-	foreach(std::string const& info_file, addon_info_files) {
+	BOOST_FOREACH(std::string const& info_file, addon_info_files) {
 		assert(i < addons.size());
 
 		std::string const& addon = addons[i];

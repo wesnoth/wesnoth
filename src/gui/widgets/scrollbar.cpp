@@ -17,11 +17,11 @@
 
 #include "gui/widgets/scrollbar.hpp"
 
-#include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/window.hpp" // Needed for invalidate_layout()
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -132,7 +132,7 @@ void tscrollbar_::set_item_position(const unsigned item_position)
 
 void tscrollbar_::update_canvas() {
 
-	foreach(tcanvas& tmp, canvas()) {
+	BOOST_FOREACH(tcanvas& tmp, canvas()) {
 		tmp.set_variable("positioner_offset", variant(positioner_offset_));
 		tmp.set_variable("positioner_length", variant(positioner_length_));
 	}
@@ -287,7 +287,7 @@ void tscrollbar_::move_positioner(const int distance)
 void tscrollbar_::load_config_extra()
 {
 	// These values won't change so set them here.
-	foreach(tcanvas& tmp, canvas()) {
+	BOOST_FOREACH(tcanvas& tmp, canvas()) {
 		tmp.set_variable("offset_before", variant(offset_before()));
 		tmp.set_variable("offset_after", variant(offset_after()));
 	}

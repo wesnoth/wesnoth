@@ -20,7 +20,6 @@
 
 #include "global.hpp"
 
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -34,6 +33,7 @@
 #include "formula_string_utils.hpp"
 #include "SDL.h"
 
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -777,7 +777,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 
 	std::vector<terrain_height_mapper> height_conversion;
 
-	foreach (const config &h, cfg.child_range("height")) {
+	BOOST_FOREACH(const config &h, cfg.child_range("height")) {
 		height_conversion.push_back(terrain_height_mapper(h));
 	}
 
@@ -912,7 +912,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 	LOG_NG << (SDL_GetTicks() - ticks) << "\n"; ticks = SDL_GetTicks();
 
 	std::vector<terrain_converter> converters;
-	foreach (const config &cv, cfg.child_range("convert")) {
+	BOOST_FOREACH(const config &cv, cfg.child_range("convert")) {
 		converters.push_back(terrain_converter(cv));
 	}
 

@@ -40,6 +40,7 @@
 #include <fstream>
 #include <libintl.h>
 
+#include <boost/foreach.hpp>
 #include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
@@ -218,7 +219,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 			int read = 0;
 
 			// use static preproc_define::read_pair(config) to make a object
-			foreach ( const config::any_child &value, cfg.all_children_range() ) {
+			BOOST_FOREACH( const config::any_child &value, cfg.all_children_range() ) {
 				const preproc_map::value_type def = preproc_define::read_pair( value.cfg );
 				input_macros[def.first] = def.second;
 				++read;
@@ -245,7 +246,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		if ( cmdline_opts.preprocess_defines ) {
 
 			// add the specified defines
-			foreach ( const std::string &define, *cmdline_opts.preprocess_defines ) {
+			BOOST_FOREACH( const std::string &define, *cmdline_opts.preprocess_defines ) {
 				if (define.empty()){
 					std::cerr << "empty define supplied\n";
 					continue;
@@ -452,7 +453,7 @@ static int do_gameloop(int argc, char** argv)
 			const config &cfg = game->game_config().child("titlescreen_music");
 			if (cfg) {
 	            sound::play_music_repeatedly(game_config::title_music);
-				foreach (const config &i, cfg.child_range("music")) {
+				BOOST_FOREACH(const config &i, cfg.child_range("music")) {
 					sound::play_music_config(i);
 				}
 				sound::commit_music_changes();

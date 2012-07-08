@@ -23,12 +23,13 @@
 #include "editor_common.hpp"
 #include "editor_palettes.hpp"
 
-#include "../foreach.hpp"
 #include "../gettext.hpp"
 #include "../serialization/string_utils.hpp"
 #include "../sound.hpp"
 #include "../tooltips.hpp"
 #include "../marked-up_text.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace {
 static std::string selected_terrain;
@@ -84,7 +85,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 
 	// Get the available groups and add them to the structure
 	std::set<std::string> group_names;
-	foreach (const config &g, cfg.child_range("editor_group"))
+	BOOST_FOREACH(const config &g, cfg.child_range("editor_group"))
 	{
 		if (group_names.find(g["id"]) == group_names.end()) {
 			terrain_groups_.push_back(terrain_group(g, gui));
@@ -97,14 +98,14 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		}
 	}
 	std::map<std::string, terrain_group*> id_to_group;
-	foreach (terrain_group& tg, terrain_groups_) {
+	BOOST_FOREACH(terrain_group& tg, terrain_groups_) {
 		id_to_group.insert(std::make_pair(tg.id, &tg));
 	}
 	// The rest of the code assumes this is a valid pointer
 	assert(checked_group_btn_ != 0);
 
 	// add the groups for all terrains to the map
-	foreach (const t_translation::t_terrain& t, terrains_) {
+	BOOST_FOREACH(const t_translation::t_terrain& t, terrains_) {
 		const terrain_type& t_info = map().get_terrain_info(t);
 		DBG_ED << "Palette: processing terrain " << t_info.name()
 			<< "(editor name: '" << t_info.editor_name() << "') "
@@ -119,7 +120,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 		// add the terrain to the requested groups
 		const std::vector<std::string>& keys = utils::split(t_info.editor_group());
 		bool core = false;
-		foreach (const std::string& k, keys) {
+		BOOST_FOREACH(const std::string& k, keys) {
 			terrain_map_[k].push_back(t);
 			nmax_terrains_ = std::max(nmax_terrains_, terrain_map_[k].size());
 			std::map<std::string, terrain_group*>::iterator i = id_to_group.find(k);
@@ -380,7 +381,7 @@ void terrain_palette::draw(bool force) {
 		scroll_down();
 	}
 
-	foreach (terrain_group& g, terrain_groups_) {
+	BOOST_FOREACH(terrain_group& g, terrain_groups_) {
 		if (g.button.pressed()) {
 			checked_group_btn_ = &g.button;
 			set_group(g.id);
@@ -388,7 +389,7 @@ void terrain_palette::draw(bool force) {
 		}
 	}
 
-	foreach (terrain_group& g, terrain_groups_) {
+	BOOST_FOREACH(terrain_group& g, terrain_groups_) {
 		if (&g.button == checked_group_btn_) {
 			g.button.set_check(true);
 		} else {

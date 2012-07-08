@@ -17,13 +17,13 @@
 
 #include "gui/widgets/stacked_widget.hpp"
 
-#include "foreach.hpp"
 #include "gui/auxiliary/widget_definition/stacked_widget.hpp"
 #include "gui/auxiliary/window_builder/stacked_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/generator.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -83,7 +83,7 @@ void tstacked_widget::finalize(
 {
 	assert(generator_);
 	string_map empty_data;
-	foreach(const tbuilder_grid_const_ptr& builder, widget_builder) {
+	BOOST_FOREACH(const tbuilder_grid_const_ptr& builder, widget_builder) {
 		generator_->create_item(-1, builder, empty_data, NULL);
 	}
 	swap_grid(NULL, &grid(), generator_, "_content_grid");

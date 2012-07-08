@@ -17,7 +17,6 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -26,6 +25,8 @@
 #include "util.hpp"
 
 #include "SDL_mixer.h"
+
+#include <boost/foreach.hpp>
 
 #include <list>
 
@@ -596,7 +597,7 @@ void commit_music_changes()
 		return;
 
 	// If current track no longer on playlist, change it.
-	foreach (const music_track &m, current_track_list) {
+	BOOST_FOREACH(const music_track &m, current_track_list) {
 		if (current_track == m)
 			return;
 	}
@@ -614,7 +615,7 @@ void write_music_play_list(config& snapshot)
 {
 	// First entry clears playlist, others append to it.
 	bool append = false;
-	foreach (music_track &m, current_track_list) {
+	BOOST_FOREACH(music_track &m, current_track_list) {
 		m.write(snapshot, append);
 		append = true;
 	}

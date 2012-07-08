@@ -24,7 +24,6 @@
 
 #include "config.hpp"
 #include "../../image.hpp"
-#include "foreach.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/formula.hpp"
@@ -32,6 +31,8 @@
 #include "gui/widgets/helper.hpp"
 #include "../../text.hpp"
 #include "wml_exception.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -1455,7 +1456,7 @@ void tcanvas::parse_cfg(const config& cfg)
 	log_scope2(log_gui_parse, "Canvas: parsing config.");
 	shapes_.clear();
 
-	foreach(const config::any_child& shape, cfg.all_children_range()) {
+	BOOST_FOREACH(const config::any_child& shape, cfg.all_children_range()) {
 		const std::string &type = shape.key;
 		const config &data = shape.cfg;
 
@@ -1474,7 +1475,7 @@ void tcanvas::parse_cfg(const config& cfg)
 		} else if(type == "pre_commit") {
 
 			/* note this should get split if more preprocessing is used. */
-			foreach(const config::any_child& function,
+			BOOST_FOREACH(const config::any_child& function,
 					data.all_children_range()) {
 
 				if(function.key == "blur") {

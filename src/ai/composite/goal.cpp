@@ -24,7 +24,6 @@
 #include "../../log.hpp"
 #include "../lua/lua_object.hpp"
 #include "../../gamestatus.hpp"
-#include "../../foreach.hpp"
 #include "../../resources.hpp"
 #include "../../scripting/lua.hpp"
 #include "../../terrain_filter.hpp"
@@ -34,6 +33,7 @@
 #include "../../variable.hpp"
 
 #include <boost/lexical_cast.hpp>
+#include <boost/foreach.hpp>
 
 namespace ai {
 
@@ -128,7 +128,7 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 	if (!criteria) return;
 
 	//find the enemy leaders and explicit targets
-	foreach (const unit &u, *resources::units) {
+	BOOST_FOREACH(const unit &u, *resources::units) {
 		if (u.matches_filter(vconfig(criteria), u.get_location())) {
 			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
 			*target_list = target(u.get_location(), value(), target::EXPLICIT);
@@ -173,7 +173,7 @@ void target_location_goal::add_targets(std::back_insert_iterator< std::vector< t
 
 	std::set<map_location> items;
 	filter_ptr_->get_locations(items);
-	foreach (const map_location &loc, items)
+	BOOST_FOREACH(const map_location &loc, items)
 	{
 		LOG_AI_GOAL << "found explicit target location ... " << loc << " with value: " << value() << std::endl;
 		*target_list = target(loc, value(), target::EXPLICIT);
@@ -252,7 +252,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 
 	std::set<map_location> items;
 	if (protect_unit_) {
-		foreach (const unit &u, units)
+		BOOST_FOREACH(const unit &u, units)
 		{
 			if (protect_only_own_unit_ && u.side() != get_side()) {
 				continue;
@@ -268,9 +268,9 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 	}
 	DBG_AI_GOAL << "side " << get_side() << ": seaching for threats in "+goal_type+" goal" << std::endl;
 	// Look for directions to protect a specific location or specific unit.
-	foreach (const map_location &loc, items)
+	BOOST_FOREACH(const map_location &loc, items)
 	{
-		foreach (const unit &u, units)
+		BOOST_FOREACH(const unit &u, units)
 		{
 			int distance = distance_between(u.get_location(), loc);
 			if (current_team().is_enemy(u.side()) && distance < radius_ &&
@@ -325,7 +325,7 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target > > ta
 	handler_->handle(c, true, l_obj);
 	std::vector < target > targets = *(l_obj->get());
 
- 	foreach (target tg, targets)
+ 	BOOST_FOREACH(target tg, targets)
  	{
  		*target_list = tg;
  	}

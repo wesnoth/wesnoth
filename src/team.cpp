@@ -21,12 +21,13 @@
 #include "team.hpp"
 
 #include "ai/manager.hpp"
-#include "foreach.hpp"
 #include "game_events.hpp"
 #include "gamestatus.hpp"
 #include "resources.hpp"
 #include "game_preferences.hpp"
 #include "whiteboard/side_actions.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -318,7 +319,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	// Was it correct?
 
 	// Load in the villages the side controls at the start
-	foreach (const config &v, cfg.child_range("village"))
+	BOOST_FOREACH(const config &v, cfg.child_range("village"))
 	{
 		map_location loc(v, resources::state_of_game);
 		if (map.is_village(loc)) {
@@ -397,7 +398,7 @@ int team::minimum_recruit_price() const
 		return info_.minimum_recruit_price;
 	}else{
 		int min = 20;
-		foreach(std::string recruit, info_.can_recruit){
+		BOOST_FOREACH(std::string recruit, info_.can_recruit){
 			const unit_type *ut = unit_types.find(recruit);
 			if(!ut)
 				continue;
@@ -605,7 +606,7 @@ bool is_observer()
 		return true;
 	}
 
-	foreach (const team &t, *teams) {
+	BOOST_FOREACH(const team &t, *teams) {
 		if (t.is_human())
 			return false;
 	}

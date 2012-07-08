@@ -39,7 +39,6 @@
 #include "ai/manager.hpp"
 #include "attack_prediction.hpp"
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
@@ -77,6 +76,8 @@
 #include "scripting/debug_lua.hpp"
 #endif
 
+#include <boost/foreach.hpp>
+
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -87,7 +88,7 @@ static config preload_config;
 void extract_preload_scripts(config const &game_config)
 {
 	preload_scripts.clear();
-	foreach (config const &cfg, game_config.child_range("lua")) {
+	BOOST_FOREACH(config const &cfg, game_config.child_range("lua")) {
 		preload_scripts.push_back(cfg);
 	}
 	preload_config = game_config.child("game_config");
@@ -254,7 +255,7 @@ static void luaW_filltable(lua_State *L, config const &cfg)
 		return;
 
 	int k = 1;
-	foreach (const config::any_child &ch, cfg.all_children_range())
+	BOOST_FOREACH(const config::any_child &ch, cfg.all_children_range())
 	{
 		lua_createtable(L, 2, 0);
 		lua_pushstring(L, ch.key.c_str());
@@ -264,7 +265,7 @@ static void luaW_filltable(lua_State *L, config const &cfg)
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, k++);
 	}
-	foreach (const config::attribute &attr, cfg.attribute_range())
+	BOOST_FOREACH(const config::attribute &attr, cfg.attribute_range())
 	{
 		luaW_pushscalar(L, attr.second);
 		lua_setfield(L, -2, attr.first.c_str());
@@ -534,7 +535,7 @@ unit *lua_unit::get()
 {
 	if (ptr) return ptr;
 	if (side) {
-		foreach (unit &u, (*resources::teams)[side - 1].recall_list()) {
+		BOOST_FOREACH(unit &u, (*resources::teams)[side - 1].recall_list()) {
 			if (u.underlying_id() == uid) return &u;
 		}
 		return NULL;
@@ -710,7 +711,7 @@ static int impl_vconfig_get(lua_State *L)
 	if (shallow_literal || strcmp(m, "__shallow_parsed") == 0)
 	{
 		lua_newtable(L);
-		foreach (const config::attribute &a, v->get_config().attribute_range()) {
+		BOOST_FOREACH(const config::attribute &a, v->get_config().attribute_range()) {
 			if (shallow_literal)
 				luaW_pushscalar(L, a.second);
 			else
@@ -813,7 +814,7 @@ static int impl_vconfig_collect(lua_State *L)
 		const std::vector<std::string>& vector = accessor; \
 		lua_createtable(L, vector.size(), 0); \
 		int i = 1; \
-		foreach (const std::string& s, vector) { \
+		BOOST_FOREACH(const std::string& s, vector) { \
 			lua_pushstring(L, s.c_str()); \
 			lua_rawseti(L, -2, i); \
 			++i; \
@@ -1292,9 +1293,9 @@ static int intf_get_recall_units(lua_State *L)
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1, s = 1;
-	foreach (team &t, *resources::teams)
+	BOOST_FOREACH(team &t, *resources::teams)
 	{
-		foreach (unit &u, t.recall_list())
+		BOOST_FOREACH(unit &u, t.recall_list())
 		{
 			if (!filter.null()) {
 				scoped_recall_unit auto_store("this_unit",
@@ -1560,7 +1561,7 @@ static int impl_side_get(lua_State *L)
 		std::set<std::string> const &recruits = t.recruits();
 		lua_createtable(L, recruits.size(), 0);
 		int i = 1;
-		foreach (std::string const &r, t.recruits()) {
+		BOOST_FOREACH(std::string const &r, t.recruits()) {
 			lua_pushstring(L, r.c_str());
 			lua_rawseti(L, -2, i++);
 		}
@@ -3130,7 +3131,7 @@ static int intf_get_locations(lua_State *L)
 
 	lua_createtable(L, res.size(), 0);
 	int i = 1;
-	foreach (map_location const &loc, res)
+	BOOST_FOREACH(map_location const &loc, res)
 	{
 		lua_createtable(L, 2, 0);
 		lua_pushinteger(L, loc.x + 1);
@@ -3227,7 +3228,7 @@ static int intf_get_sides(lua_State* L)
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_createtable(L, sides.size(), 0);
 	unsigned index = 1;
-	foreach(int side, sides) {
+	BOOST_FOREACH(int side, sides) {
 		// Create a full userdata containing a pointer to the team.
 		team** t = static_cast<team**>(lua_newuserdata(L, sizeof(team*)));
 		*t = &((*resources::teams)[side - 1]);
@@ -3247,7 +3248,7 @@ static int intf_get_sides(lua_State* L)
 static int intf_get_traits(lua_State* L)
 {
 	lua_newtable(L);
-	foreach(const config& trait, unit_types.traits()) {
+	BOOST_FOREACH(const config& trait, unit_types.traits()) {
 		const std::string& id = trait["id"];
 		//It seems the engine does nowhere check the id field for emptyness or duplicates
 		//(also not later on).
@@ -3767,7 +3768,7 @@ void LuaKernel::initialize()
 			, static_cast<void *>(const_cast<char *>(&gettypeKey)));
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
-	foreach (const unit_type_data::unit_type_map::value_type &ut, unit_types.types())
+	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &ut, unit_types.types())
 	{
 		lua_createtable(L, 0, 1);
 		lua_pushstring(L, ut.first.c_str());
@@ -3786,7 +3787,7 @@ void LuaKernel::initialize()
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	const race_map& races = unit_types.races();
 	lua_createtable(L, 0, races.size());
-	foreach(const race_map::value_type &race, races)
+	BOOST_FOREACH(const race_map::value_type &race, races)
 	{
 		lua_createtable(L, 0, 1);
 		char const* id = race.first.c_str();
@@ -3801,10 +3802,10 @@ void LuaKernel::initialize()
 
 	// Execute the preload scripts.
 	game_config::load_config(preload_config);
-	foreach (const config &cfg, preload_scripts) {
+	BOOST_FOREACH(const config &cfg, preload_scripts) {
 		execute(cfg["code"].str().c_str(), 0, 0);
 	}
-	foreach (const config &cfg, level_.child_range("lua")) {
+	BOOST_FOREACH(const config &cfg, level_.child_range("lua")) {
 		execute(cfg["code"].str().c_str(), 0, 0);
 	}
 
@@ -3822,7 +3823,7 @@ static char const *handled_file_tags[] = {
 
 static bool is_handled_file_tag(const std::string &s)
 {
-	foreach (char const *t, handled_file_tags) {
+	BOOST_FOREACH(char const *t, handled_file_tags) {
 		if (s == t) return true;
 	}
 	return false;
@@ -3841,7 +3842,7 @@ void LuaKernel::load_game()
 
 	lua_newtable(L);
 	int k = 1;
-	foreach (const config::any_child &v, level_.all_children_range())
+	BOOST_FOREACH(const config::any_child &v, level_.all_children_range())
 	{
 		if (is_handled_file_tag(v.key)) continue;
 		lua_createtable(L, 2, 0);
@@ -3861,7 +3862,7 @@ void LuaKernel::load_game()
  */
 void LuaKernel::save_game(config &cfg)
 {
-	foreach (const config &v, level_.child_range("lua")) {
+	BOOST_FOREACH(const config &v, level_.child_range("lua")) {
 		cfg.add_child("lua", v);
 	}
 

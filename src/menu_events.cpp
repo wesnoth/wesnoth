@@ -27,7 +27,6 @@
 #include "dialogs.hpp"
 #include "formatter.hpp"
 #include "filechooser.hpp"
-#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
@@ -66,6 +65,7 @@
 #include "widgets/combo.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -863,7 +863,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 
 	DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
-	foreach(const unit* unit, recall_list_team)
+	BOOST_FOREACH(const unit* unit, recall_list_team)
 	{
 		DBG_WB << unit->name() << " [" << unit->id() <<"]\n";
 	}
@@ -896,7 +896,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
 
-	foreach (const unit* u, recall_list_team)
+	BOOST_FOREACH(const unit* u, recall_list_team)
 	{
 		std::stringstream option, option_to_filter;
 		std::string name = u->name();
@@ -933,7 +933,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		option_to_filter << u->type_name() << " " << name << " " << u->level();
 
 		option << COLUMN_SEPARATOR;
-		foreach (const t_string& trait, u->trait_names()) {
+		BOOST_FOREACH(const t_string& trait, u->trait_names()) {
 			option << trait << '\n';
 			option_to_filter << " " << trait;
 		}
@@ -1540,7 +1540,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 								_("Type");
 	options.push_back(heading);
 
-	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
 		std::stringstream row;
 
@@ -2047,7 +2047,7 @@ class map_command_handler
 		std::vector<std::string> get_commands_list() const
 		{
 			std::vector<std::string> res;
-			foreach(typename command_map::value_type i, command_map_) {
+			BOOST_FOREACH(typename command_map::value_type i, command_map_) {
 				res.push_back(i.first);
 			}
 			return res;
@@ -2638,7 +2638,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 
 			if (const config &alias_list = preferences::get_alias())
 			{
-				foreach (const config::attribute &a, alias_list.attribute_range()) {
+				BOOST_FOREACH(const config::attribute &a, alias_list.attribute_range()) {
 					register_alias(a.second, a.first);
 				}
 			}
@@ -3241,7 +3241,7 @@ void console_handler::do_layers() {
 	tile->rebuild_cache(tod_id, &tile_logs);
 
 	int order = 1;
-	foreach(const terrain_builder::tile::log_details det, tile_logs) {
+	BOOST_FOREACH(const terrain_builder::tile::log_details det, tile_logs) {
 		const terrain_builder::tile::rule_image_rand& ri = *det.first;
 		const terrain_builder::rule_image_variant& variant = *det.second;
 
@@ -3356,7 +3356,7 @@ void console_handler::do_next_level()
 void console_handler::do_choose_level() {
 	std::vector<std::string> options;
 	int next = 0, nb = 0;
-	foreach (const config &sc, menu_handler_.game_config_.child_range("scenario"))
+	BOOST_FOREACH(const config &sc, menu_handler_.game_config_.child_range("scenario"))
 	{
 		const std::string &id = sc["id"];
 		options.push_back(id);
@@ -3367,7 +3367,7 @@ void console_handler::do_choose_level() {
 	// find scenarios of multiplayer campaigns
 	// (assumes that scenarios are ordered properly in the game_config)
 	std::string& scenario = menu_handler_.gamestate_.mp_settings().mp_scenario;
-	foreach (const config &mp, menu_handler_.game_config_.child_range("multiplayer"))
+	BOOST_FOREACH(const config &mp, menu_handler_.game_config_.child_range("multiplayer"))
 	{
 		if (mp["id"] == scenario)
 		{
@@ -3596,7 +3596,7 @@ void console_handler::do_unbuff() {
 	}
 }*/
 void console_handler::do_discover() {
-	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types()) {
+	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types()) {
 		preferences::encountered_units().insert(i.second.id());
 	}
 }

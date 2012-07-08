@@ -14,12 +14,12 @@
 */
 
 #include "commandline_options.hpp"
-#include "foreach.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 #include "lua/llimits.h"
 
 #include <boost/version.hpp>
+#include <boost/foreach.hpp>
 
 namespace po = boost::program_options;
 
@@ -374,7 +374,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
 {
 	const std::vector<std::string> domains = utils::split(domains_string, ',');
-	foreach (const std::string& domain, domains)
+	BOOST_FOREACH(const std::string& domain, domains)
 	{
 		if (!log)
 			log = std::vector<boost::tuple<int, std::string> >();
@@ -396,7 +396,7 @@ std::vector<boost::tuple<unsigned int,std::string> > commandline_options::parse_
 {
 	std::vector<boost::tuple<unsigned int,std::string> > vec;
 	boost::tuple<unsigned int,std::string> elem;
-	foreach(const std::string &s, strings)
+	BOOST_FOREACH(const std::string &s, strings)
 	{
 		const std::vector<std::string> tokens = utils::split(s, separator);
 		if (tokens.size()!=2)
@@ -415,7 +415,7 @@ std::vector<boost::tuple<unsigned int,std::string,std::string> > commandline_opt
 {
 	std::vector<boost::tuple<unsigned int,std::string,std::string> > vec;
 	boost::tuple<unsigned int,std::string,std::string> elem;
-	foreach(const std::string &s, strings)
+	BOOST_FOREACH(const std::string &s, strings)
 	{
 		const std::vector<std::string> tokens = utils::split(s, separator);
 		if (tokens.size()!=3)

@@ -25,7 +25,6 @@
 #include "../composite/rca.hpp"
 #include "../composite/stage.hpp"
 #include "../../gamestatus.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../resources.hpp"
@@ -33,6 +32,7 @@
 #include "../../wml_exception.hpp"
 #include "../../pathfind/pathfind.hpp"
 
+#include <boost/foreach.hpp>
 
 #include <numeric>
 #include <string>
@@ -206,7 +206,7 @@ class fake_team
       int get_current_qty(const std::string &name) const
       {
          int counter = 0;
-         foreach(unit &un, *resources::units){
+         BOOST_FOREACH(unit &un, *resources::units){
             if(un.side() == side() && un.type_id() == name) // @todo: is type_id good?
             {
                counter++;
@@ -345,7 +345,7 @@ static int compare_unit_types(const unit_type& a, const unit_type& b)
    const int hitpoints_const = 100;
    double score = 0;
    double total_weight = 0;
-   foreach(const unit &enemy_unit, *resources::units)
+   BOOST_FOREACH(const unit &enemy_unit, *resources::units)
    {
       if(enemy_unit.can_recruit() || !t.is_enemy(enemy_unit.side()))
       {
@@ -358,13 +358,13 @@ static int compare_unit_types(const unit_type& a, const unit_type& b)
 
       score += compare_unit_types(info, *enemy_info) * weight;
    }
-   foreach(fake_team &enemy_team, fake_teams)
+   BOOST_FOREACH(fake_team &enemy_team, fake_teams)
    {
       if(!t.is_enemy(enemy_team.side()))
       {
          continue;
       }
-      foreach(const potential_recruit &enemy_unit,  enemy_team.extra_units())
+      BOOST_FOREACH(const potential_recruit &enemy_unit,  enemy_team.extra_units())
       {
          const unit_type *enemy_info = enemy_unit.type();
          VALIDATE(enemy_info, "Unknown unit type : " + enemy_unit.id() + " while updating recruit quality.");
@@ -386,7 +386,7 @@ static int compare_unit_types(const unit_type& a, const unit_type& b)
 
 /*static void update_recruit_qualities(fake_team &t, std::vector<fake_team> &fake_teams)
 {
-   foreach ( potential_recruit &recruit, t.recruit_list() )
+   BOOST_FOREACH( potential_recruit &recruit, t.recruit_list() )
    {
       double score = get_unit_quality(*recruit.type(),t,fake_teams);
       recruit.set_quality(score);
@@ -425,11 +425,11 @@ static std::vector<potential_recruit> ai_choose_best_recruits(fake_team &t, int 
 	}
 
    std::map<std::string, int> current_units;
-   foreach (const potential_recruit &i, t.extra_units())
+   BOOST_FOREACH(const potential_recruit &i, t.extra_units())
    {
       current_units[(i.id())]++;
    }
-   foreach (const unit &i, *resources::units)
+   BOOST_FOREACH(const unit &i, *resources::units)
    {
 	if (i.side()==t.side())
 	{
@@ -440,7 +440,7 @@ static std::vector<potential_recruit> ai_choose_best_recruits(fake_team &t, int 
    double max_quality = recruit_list[0].quality();
    int max_cost = recruit_list[0].cost();
    std::vector<const potential_recruit*> sorted = std::vector<const potential_recruit*>();
-   foreach(const potential_recruit &i, recruit_list)
+   BOOST_FOREACH(const potential_recruit &i, recruit_list)
    {
       if(i.cost() > max_cost)
       {
@@ -457,7 +457,7 @@ static std::vector<potential_recruit> ai_choose_best_recruits(fake_team &t, int 
    potential_recruit_sorter sorter(max_cost, max_quality, quality_factor);
    std::sort(sorted.begin(), sorted.end(), sorter);
    int recruited = 0;
-   foreach(const potential_recruit *i, sorted)
+   BOOST_FOREACH(const potential_recruit *i, sorted)
    {
       if(recruited < max_units_to_recruit)
       {
@@ -488,7 +488,7 @@ static std::vector<potential_recruit> ai_choose_best_recruits(fake_team &t, int 
 static void ai_choose_recruits(fake_team &t, int max_units_to_recruit, double quality_factor, bool counter_recruit)
 {
 	std::vector<potential_recruit> recruits = ai_choose_best_recruits(t, max_units_to_recruit, quality_factor, counter_recruit);
-   foreach(potential_recruit &i, recruits) {
+   BOOST_FOREACH(potential_recruit &i, recruits) {
       t.fake_recruit(i);
    }
 
@@ -554,7 +554,7 @@ static void get_recruit_qualities(std::vector<potential_recruit> &recruit_list, 
    //DBG_AI << "start of get_recruit_qualities" << std::endl;
    typedef std::map<const unit_type*, std::vector<double> > unit_map;
    unit_map enemies;
-   foreach(unit &un, *resources::units){
+   BOOST_FOREACH(unit &un, *resources::units){
 	   if(t.is_enemy(un.side()) && !un.can_recruit()){
 		   enemies[un.type()].push_back(
 			  static_cast<double>(un.hitpoints())
@@ -562,10 +562,10 @@ static void get_recruit_qualities(std::vector<potential_recruit> &recruit_list, 
 	   }
    }
    DBG_AI << "before extra_units of fake_teams: enemies.size() = " << enemies.size() << std::endl;
-   foreach(fake_team &tmp_t, fake_teams)
+   BOOST_FOREACH(fake_team &tmp_t, fake_teams)
    {
 	   if (t.is_enemy(tmp_t.side())) {
-		   foreach(potential_recruit &rec, tmp_t.extra_units())
+		   BOOST_FOREACH(potential_recruit &rec, tmp_t.extra_units())
 		   {
 			   enemies[rec.type()].push_back(1.0);
 		   }
@@ -573,10 +573,10 @@ static void get_recruit_qualities(std::vector<potential_recruit> &recruit_list, 
    }
    DBG_AI << "after extra_units of fake_teams: enemies.size() = " << enemies.size() << std::endl;
 
-   foreach(potential_recruit &rec, recruit_list) {
+   BOOST_FOREACH(potential_recruit &rec, recruit_list) {
 	   double score = 0;
 	   double weighting = 0;
-	   foreach(unit_map::value_type &enemy, enemies) {
+	   BOOST_FOREACH(unit_map::value_type &enemy, enemies) {
 		   double hitpoints_sum = std::accumulate(enemy.second.begin(),enemy.second.end(),0);
 		   score += compare_unit_types(*rec.type(), *enemy.first) * hitpoints_sum;
 		   weighting += hitpoints_sum;
@@ -621,14 +621,14 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 {
    std::vector<defender_pair_type*> defenders;
    std::vector<enemy_pair_type*> enemies;
-   foreach(unit &un, *resources::units)
+   BOOST_FOREACH(unit &un, *resources::units)
    {
       if(t.is_enemy(un.side()))
       {
 //         const unit_type &enemy_type = *un.type();
          //enemy_pair_type *pair = new enemy_pair_type(new unit_data(un.id(), un.type()));
          enemy_pair_type *pair = new enemy_pair_type(un.type());
-         foreach(unit &defender, *resources::units)
+         BOOST_FOREACH(unit &defender, *resources::units)
          {
             if(!t.is_enemy(defender.side())){
                //int score = compare_unit_types(*defender.type(), enemy_type);
@@ -639,9 +639,9 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
                //}
             }
          }
-         foreach(fake_team &tmp_t, fake_teams){
+         BOOST_FOREACH(fake_team &tmp_t, fake_teams){
             if(!t.is_enemy(tmp_t.side())){
-               foreach(potential_recruit &rec, tmp_t.extra_units()){
+               BOOST_FOREACH(potential_recruit &rec, tmp_t.extra_units()){
          //         int score = compare_unit_types(*rec.type(), enemy_type);
          //         if(score >= 0){
                      //pair->add_defender(new unit_data(rec.id(), rec.type()));
@@ -657,7 +657,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
          //const unit_type &defender_type = *un.type();
          //defender_pair_type *pair = new defender_pair_type(new unit_data(un.id(), un.type()));
          defender_pair_type *pair = new defender_pair_type(un.type());
-         foreach(unit &enemy, *resources::units)
+         BOOST_FOREACH(unit &enemy, *resources::units)
          {
             //int score = compare_unit_types(defender_type, *enemy.type());
             //if(score >= 0)
@@ -666,9 +666,9 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
             pair->add_enemy(enemy.type());
             //}
          }
-         foreach(fake_team &tmp_t, fake_teams){
+         BOOST_FOREACH(fake_team &tmp_t, fake_teams){
             if(t.is_enemy(tmp_t.side())){
-               foreach(potential_recruit &rec, tmp_t.extra_units()){
+               BOOST_FOREACH(potential_recruit &rec, tmp_t.extra_units()){
                   //int score = compare_unit_types(defender_type, *rec.type());
                   //if(score >= 0){
                      //pair->add_enemy(new unit_data(rec.id(), rec.type()));
@@ -680,14 +680,14 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
          defenders.push_back(pair);
       }
    }
-   foreach(fake_team &tmp_t, fake_teams)
+   BOOST_FOREACH(fake_team &tmp_t, fake_teams)
    {
-      foreach(potential_recruit &rec, tmp_t.extra_units()){
+      BOOST_FOREACH(potential_recruit &rec, tmp_t.extra_units()){
          if(t.is_enemy(tmp_t.side())){
             //const unit_type &enemy_type = *rec.type();
             //enemy_pair_type *pair = new enemy_pair_type(new unit_data(rec.id(), rec.type()));
             enemy_pair_type *pair = new enemy_pair_type(rec.type());
-            foreach(unit &defender, *resources::units){
+            BOOST_FOREACH(unit &defender, *resources::units){
                if(t.is_enemy(defender.side())){
                   continue;
                }
@@ -698,11 +698,11 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
                //}
             }
             //HIER
-            foreach(fake_team &sub_t, fake_teams){
+            BOOST_FOREACH(fake_team &sub_t, fake_teams){
                if(t.is_enemy(sub_t.side())){
                   continue;
                }
-               foreach(potential_recruit &sub_rec, sub_t.extra_units()){
+               BOOST_FOREACH(potential_recruit &sub_rec, sub_t.extra_units()){
                   //int score = compare_unit_types(*sub_rec.type(), enemy_type);
                   //if(score >= 0){
                      //pair->add_defender(new unit_data(sub_rec.id(), sub_rec.type()));
@@ -715,7 +715,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
             //const unit_type &defender_type = *rec.type();
             //defender_pair_type *pair = new defender_pair_type(new unit_data(rec.id(), rec.type()));
             defender_pair_type *pair = new defender_pair_type(rec.type());
-            foreach(unit &enemy, *resources::units)
+            BOOST_FOREACH(unit &enemy, *resources::units)
             {
                if(!t.is_enemy(enemy.side())){
                   continue;
@@ -726,11 +726,11 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
                pair->add_enemy(rec.type());
             //   }
             }
-            foreach(fake_team &sub_t, fake_teams){
+            BOOST_FOREACH(fake_team &sub_t, fake_teams){
                if(!t.is_enemy(sub_t.side())){
                   continue;
                }
-               foreach(potential_recruit &sub_rec, sub_t.extra_units()){
+               BOOST_FOREACH(potential_recruit &sub_rec, sub_t.extra_units()){
                //   int score = compare_unit_types(defender_type, *sub_rec.type());
                //   if(score >= 0){
                      //pair->add_enemy(new unit_data(sub_rec.id(), sub_rec.type()));
@@ -744,17 +744,17 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
    }
    double min_score = 0;
    double max_score = 0;
-   foreach(enemy_pair_type *pair, enemies)
+   BOOST_FOREACH(enemy_pair_type *pair, enemies)
    {
 //      if(pair->defenders.size() == 0)
 //      {
 //         pair->score = -10000;
 //      }else{
-         //foreach(unit_data *defender, pair->defenders)
-         foreach(unit_type *defender, pair->defenders)
+         //BOOST_FOREACH(unit_data *defender, pair->defenders)
+         BOOST_FOREACH(unit_type *defender, pair->defenders)
          {
             unsigned int defender_enemies = 0;
-            foreach(defender_pair_type *defender_p, defenders)
+            BOOST_FOREACH(defender_pair_type *defender_p, defenders)
             {
                //if(defender->id == defender_p->defender->id){
                if(defender->type_name()() == defender_p->defender->type_name()){
@@ -778,7 +778,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
    }
    double score = 0;
    score -= max_score - min_score;
-   foreach(enemy_pair_type *pair, enemies)
+   BOOST_FOREACH(enemy_pair_type *pair, enemies)
    {
       score += pair->score;
    }
@@ -798,16 +798,16 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
    typedef std::map<const unit_type*, std::vector<double> > unit_map;
    unit_map enemies;
    unit_map defenders;
-   foreach(unit &un, *resources::units){
+   BOOST_FOREACH(unit &un, *resources::units){
       if(t.is_enemy(un.side())){
          enemies[un.type()].push_back((double)un.hitpoints() / (double)un.max_hitpoints());
       }else{
          defenders[un.type()].push_back(un.hitpoints() / un.max_hitpoints());
       }
    }
-   foreach(fake_team &tmp_t, fake_teams)
+   BOOST_FOREACH(fake_team &tmp_t, fake_teams)
    {
-      foreach(potential_recruit &rec, tmp_t.extra_units())
+      BOOST_FOREACH(potential_recruit &rec, tmp_t.extra_units())
       {
          if(t.is_enemy(tmp_t.side())){
             enemies[rec.type()].push_back(1.0);
@@ -817,13 +817,13 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
       }
    }
    double result = 0;
-   foreach(unit_map::value_type &defender, defenders)
+   BOOST_FOREACH(unit_map::value_type &defender, defenders)
    {
       double defenders_score = 0;
-      foreach(unit_map::value_type &enemy, enemies)
+      BOOST_FOREACH(unit_map::value_type &enemy, enemies)
       {
          double hitpoints_sum = 0;
-         foreach(double i, enemy.second)
+         BOOST_FOREACH(double i, enemy.second)
          {
             hitpoints_sum += i;
          }
@@ -831,7 +831,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 
       }
       double hitpoints_sum = 0;
-      foreach(double i, defender.second)
+      BOOST_FOREACH(double i, defender.second)
       {
          hitpoints_sum += i;
       }
@@ -842,7 +842,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
    return result;
 //   vector<defender_pair> defenders;
 //   vector<enemy_pair> enemies;
-//   //foreach(unit &un, *resources::units)
+//   //BOOST_FOREACH(unit &un, *resources::units)
 //   //{
 //   //   if(t.is_enemy(un.side()))
 //   //   {
@@ -851,14 +851,14 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //   //      defenders.push_back(un.id());
 //   //   }
 //   //}
-//   foreach(unit &un, *resources::units)
+//   BOOST_FOREACH(unit &un, *resources::units)
 //   {
 //      if(t.is_enemy(un.side()))
 //      {
 //         const unit_type &enemy_type = un.type();
 //         enemy_pair pair;
 //         pair.enemy = new unit_data(un.id(), enemy_type);
-//         foreach(unit &defender, *resources::units)
+//         BOOST_FOREACH(unit &defender, *resources::units)
 //         {
 //            int score = compare_unit_types(defender.type(), enemy_type);
 //            if(score >= 0)
@@ -873,7 +873,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //         const unit_type &defender_type = un.type();
 //         defender_pair pair;
 //         pair.defender = new unit_data(defender.id(), defender_type);
-//         foreach(unit &enemy, *resources::units)
+//         BOOST_FOREACH(unit &enemy, *resources::units)
 //         {
 //            int score = compare_unit_types(defender_type, enemy.type());
 //            if(score >= 0)
@@ -885,10 +885,10 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //         enemies.push_back(pair);
 //      }
 //   }
-//   foreach(fake_team &tmp_t, fake_teams)
+//   BOOST_FOREACH(fake_team &tmp_t, fake_teams)
 //   {
 //      if(t.is_enemy(tmp_t.side())){
-//         foreach(potential_recruit &rec, tmp_t.extra_units())
+//         BOOST_FOREACH(potential_recruit &rec, tmp_t.extra_units())
 //         {
 //
 //         }
@@ -898,7 +898,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //
 //   }
 //   //std::vector<unit> no_defense_enemies;
-//   foreach(enemy_pair &pair, enemies)
+//   BOOST_FOREACH(enemy_pair &pair, enemies)
 //   {
 //      if(pair.defenders.size() == 0)
 //      {
@@ -906,11 +906,11 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //
 //         pair.score = 0;
 //      }else{
-//         foreach(unit_data &defender, pair.defenders)
+//         BOOST_FOREACH(unit_data &defender, pair.defenders)
 //         {
 //            //unit_type &defender = defender_data.type;
 //            unsigned int defender_enemies = 0;
-//            foreach(defender_pair &defender_p, defenders)
+//            BOOST_FOREACH(defender_pair &defender_p, defenders)
 //            {
 //               if(defender.id == defender_p.defender.id){
 //                  defender_enemies = defender_p.enemies.size();
@@ -924,7 +924,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //   }
 //   //enemy_pair *worst_pair = &enemies[0];
 //   double total_score = 0;
-//   foreach(enemy_pair &pair, enemies)
+//   BOOST_FOREACH(enemy_pair &pair, enemies)
 //   {
 //      total_score += pair.score;
 //   }
@@ -936,7 +936,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //   //unit &worst_def_unit;
 //   vector<defender_pair> defenders;
 //   vector<enemy_pair> enemies;
-//   /*foreach(unit &un, *resources::units)
+//   /*BOOST_FOREACH(unit &un, *resources::units)
 //   {
 //      if(t.is_enemy(un.side()))
 //      {
@@ -945,14 +945,14 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //         defenders.push_back(un.id());
 //      }
 //   }*/
-//   foreach(unit &un, *resources::units)
+//   BOOST_FOREACH(unit &un, *resources::units)
 //   {
 //      if(t.is_enemy(un.side()))
 //      {
 //         const unit_type &enemy_type = un.type();
 //         enemy_pair pair;
 //         pair.enemy = un;
-//         foreach(unit &defender, *resources::units)
+//         BOOST_FOREACH(unit &defender, *resources::units)
 //         {
 //            int score = compare_unit_types(defender.type(), enemy_type);
 //            if(score >= 0)
@@ -967,7 +967,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //         const unit_type &defender_type = un.type();
 //         defender_pair pair;
 //         pair.defender = un;
-//         foreach(unit &enemy, *resources::units)
+//         BOOST_FOREACH(unit &enemy, *resources::units)
 //         {
 //            int score = compare_unit_types(defender_type, enemy.type());
 //            if(score >= 0)
@@ -980,7 +980,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //      }
 //   }
 //   //std::vector<unit> no_defense_enemies;
-//   foreach(enemy_pair &pair, enemies)
+//   BOOST_FOREACH(enemy_pair &pair, enemies)
 //   {
 //      if(pair.defenders.size() == 0)
 //      {
@@ -988,10 +988,10 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //         return pair.enemy;
 //         //pair.score = 0;
 //      }else{
-//         foreach(unit &defender, pair.defenders)
+//         BOOST_FOREACH(unit &defender, pair.defenders)
 //         {
 //            unsigned int defender_enemies = 0;
-//            foreach(defender_pair &defender_p, defenders)
+//            BOOST_FOREACH(defender_pair &defender_p, defenders)
 //            {
 //               if(defender.id() == defender_p.defender.id()){
 //                  defender_enemies = defender_p.enemies.size();
@@ -1004,7 +1004,7 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 //      }
 //   }
 //   enemy_pair *worst_pair = &enemies[0];
-//   foreach(enemy_pair &pair, enemies)
+//   BOOST_FOREACH(enemy_pair &pair, enemies)
 //   {
 //      if(pair.score < worst_pair.score)
 //      {
@@ -1039,16 +1039,16 @@ void testing_recruitment_phase::do_recruit(int max_units_to_recruit, double qual
    for(int recruited_amount = 0; recruited_amount < max_units_to_recruit; recruited_amount++)
    {
 
-      foreach(fake_team &t, fake_teams)
+      BOOST_FOREACH(fake_team &t, fake_teams)
       {
          t.reset();
       }
 
       std::vector<potential_recruit> ai_recruit_list = ai_t->recruit_list();
 
-      foreach(potential_recruit &recruit_type, ai_recruit_list)
+      BOOST_FOREACH(potential_recruit &recruit_type, ai_recruit_list)
       {
-         foreach(fake_team &t, fake_teams)
+         BOOST_FOREACH(fake_team &t, fake_teams)
          {
             t.reset();
          }
@@ -1063,7 +1063,7 @@ void testing_recruitment_phase::do_recruit(int max_units_to_recruit, double qual
          }
          LOG_AI << "Pretend that we recruited: " << recruit_type.id() << std::endl;
          ai_t->fake_recruit(recruit_type);
-         foreach(fake_team &t, fake_teams)
+         BOOST_FOREACH(fake_team &t, fake_teams)
          {
             if(ai_t->side() == t.side())
             {

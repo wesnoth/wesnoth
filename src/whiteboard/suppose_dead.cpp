@@ -26,7 +26,6 @@
 
 #include "arrow.hpp"
 #include "config.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "mouse_events.hpp"

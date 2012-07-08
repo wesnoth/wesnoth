@@ -24,7 +24,6 @@
 #include "gamestatus.hpp"
 
 #include "actions.hpp"
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "game_preferences.hpp"
@@ -42,6 +41,7 @@
 #include "whiteboard/side_actions.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #ifndef _MSC_VER
 #include <sys/time.h>
@@ -178,9 +178,9 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 		tags.push_back("side");
 		tags.push_back("player"); //merge [player] tags for backwards compatibility of saves
 
-		foreach (const std::string& side_tag, tags)
+		BOOST_FOREACH(const std::string& side_tag, tags)
 		{
-			foreach (config &carryover_side, source->child_range(side_tag))
+			BOOST_FOREACH(config &carryover_side, source->child_range(side_tag))
 			{
 				config *scenario_side = NULL;
 
@@ -226,13 +226,13 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 				(*scenario_side)["color"] = carryover_side["color"];
 
 				//add recallable units
-				foreach (const config &u, carryover_side.child_range("unit")) {
+				BOOST_FOREACH(const config &u, carryover_side.child_range("unit")) {
 					scenario_side->add_child("unit", u);
 				}
 			}
 		}
 	} else {
-		foreach(const config &snapshot_side, source->child_range("side")) {
+		BOOST_FOREACH(const config &snapshot_side, source->child_range("side")) {
 			//take all side tags and add them as players (assuming they only contain carryover information)
 			cfg.add_child("player", snapshot_side);
 		}
@@ -306,7 +306,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		//See also playcampaign::play_game, where after finishing the scenario the replay
 		//will be saved.
 		if(!starting_pos.empty()) {
-			foreach (const config &p, cfg.child_range("player")) {
+			BOOST_FOREACH(const config &p, cfg.child_range("player")) {
 				config& cfg_player = starting_pos.add_child("player");
 				cfg_player.merge_with(p);
 			}
@@ -400,7 +400,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	std::string leader;
 	std::string leader_image;
 
-	//foreach (const config &p, cfg_save.child_range("player"))
+	//BOOST_FOREACH(const config &p, cfg_save.child_range("player"))
 	//{
 	//	if (utils::string_bool(p["canrecruit"], false)) {
 	//		leader = p["save_id"];
@@ -413,7 +413,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	//{
 		if (const config &snapshot = *(has_snapshot ? &cfg_snapshot : &cfg_replay_start))
 		{
-			foreach (const config &side, snapshot.child_range("side"))
+			BOOST_FOREACH(const config &side, snapshot.child_range("side"))
 			{
 				if (side["controller"] != "human") {
 					continue;
@@ -430,7 +430,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 						break;
 				}
 
-				foreach (const config &u, side.child_range("unit"))
+				BOOST_FOREACH(const config &u, side.child_range("unit"))
 				{
 					if (u["canrecruit"].to_bool()) {
 						leader = u["id"].str();
@@ -794,7 +794,7 @@ protected:
 		// can be recruited for the player, add them.
 		if (!player_cfg_) return;
 		if (const config::attribute_value *v = player_cfg_->get("previous_recruits")) {
-			foreach (const std::string &rec, utils::split(*v)) {
+			BOOST_FOREACH(const std::string &rec, utils::split(*v)) {
 				DBG_NG_TC << "adding previous recruit: " << rec << '\n';
 				t_->add_recruit(rec);
 			}
@@ -857,7 +857,7 @@ protected:
 		if (!side_cfg_["no_leader"].to_bool() && side_cfg_["controller"] != "null") {
 			handle_leader(side_cfg_);
 		}
-		foreach (const config &l, side_cfg_.child_range("leader")) {
+		BOOST_FOREACH(const config &l, side_cfg_.child_range("leader")) {
 			handle_leader(l);
 		}
 	}
@@ -871,13 +871,13 @@ protected:
 			//only relevant in start-of-scenario saves, that's why !shapshot
 			//units that are in '[scenario][side]' are 'first'
 			//for create-or-recall semantics to work: for each unit with non-empty id, unconditionally put OTHER, later, units with same id directly to recall list, not including them in unit_configs_
-			foreach(const config &u, (*player_cfg_).child_range("unit")) {
+			BOOST_FOREACH(const config &u, (*player_cfg_).child_range("unit")) {
 				handle_unit(u,"player_cfg");
 			}
 
 		} else {
 			//units in [side]
-			foreach (const config &su, side_cfg_.child_range("unit")) {
+			BOOST_FOREACH(const config &su, side_cfg_.child_range("unit")) {
 				handle_unit(su, "side_cfg");
 			}
 		}
@@ -902,7 +902,7 @@ protected:
 			"allow_changes", "faction_name", "user_description", "faction" };
 
 		log_step("place units");
-		foreach (const config *u, unit_configs_) {
+		BOOST_FOREACH(const config *u, unit_configs_) {
 			unit_creator uc(*t_,map_.starting_position(side_));
 			uc
 				.allow_add_to_recall(true)
@@ -913,7 +913,7 @@ protected:
 				.allow_show(false);
 
 			config cfg = *u;
-			foreach (const char *attr, side_attrs) {
+			BOOST_FOREACH(const char *attr, side_attrs) {
 				cfg.remove_attribute(attr);
 			}
 			uc.add_unit(cfg);
@@ -953,7 +953,7 @@ void game_state::build_team_stage_two(team_builder_ptr tb_ptr)
 void game_state::set_menu_items(const config::const_child_itors &menu_items)
 {
 	clear_wmi(wml_menu_items);
-	foreach (const config &item, menu_items)
+	BOOST_FOREACH(const config &item, menu_items)
 	{
 		std::string id = item["id"];
 		wml_menu_item*& mref = wml_menu_items[id];

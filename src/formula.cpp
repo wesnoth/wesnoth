@@ -17,10 +17,11 @@
 #include <set>
 #include <sstream>
 
-#include "foreach.hpp"
 #include "formula_callable.hpp"
 #include "formula_function.hpp"
 #include "map_utils.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace game_logic
 {
@@ -117,7 +118,7 @@ private:
 		std::stringstream s;
 		s << '[';
 		bool first_item = true;
-		foreach(expression_ptr a , items_) {
+		BOOST_FOREACH(expression_ptr a , items_) {
 			if (!first_item) {
 				s << ',';
 			} else {
@@ -468,7 +469,7 @@ public:
 		std::stringstream s;
 		s << "{where:(";
 		s << body_->str();
-		foreach (const expr_table::value_type &a, *clauses_) {
+		BOOST_FOREACH(const expr_table::value_type &a, *clauses_) {
 			s << ", [" << a.first << "] -> ["<< a.second->str()<<"]";
 		}
 		s << ")}";

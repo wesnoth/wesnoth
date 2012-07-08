@@ -22,7 +22,6 @@
 
 #include "../manager.hpp"
 #include "../../actions.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../team.hpp"
@@ -30,6 +29,8 @@
 #include "../../resources.hpp"
 #include "../../unit.hpp"
 #include "../../pathfind/pathfind.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace ai {
 
@@ -468,7 +469,7 @@ double aspect_attacks::power_projection(const map_location& loc, const move_map&
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
 			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
 			int most_damage = 0;
-			foreach (const attack_type &att, un.attacks())
+			BOOST_FOREACH(const attack_type &att, un.attacks())
 			{
 				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
 				if (damage > most_damage) {
@@ -572,7 +573,7 @@ double aspect_attacks::power_projection2(const map_location& loc, const move_map
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
 			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
 			int most_damage = 0;
-			foreach (const attack_type &att, un.attacks())
+			BOOST_FOREACH(const attack_type &att, un.attacks())
 			{
 				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
 				if (damage > most_damage) {

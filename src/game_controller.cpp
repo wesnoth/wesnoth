@@ -50,6 +50,8 @@
 #include "statistics.hpp"
 #include "wml_exception.hpp"
 
+#include <boost/foreach.hpp>
+
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
@@ -478,7 +480,7 @@ bool game_controller::play_multiplayer_mode()
 	}
 
 	int side_num = 1;
-	foreach (config &s, level.child_range("side"))
+	BOOST_FOREACH(config &s, level.child_range("side"))
 	{
 		std::map<int,std::string>::const_iterator type = side_types.find(side_num),
 		                                          controller = side_controllers.find(side_num),
@@ -507,7 +509,7 @@ bool game_controller::play_multiplayer_mode()
 				faction_excepts.clear();
 			}
 			unsigned j = 0;
-			foreach (const config &faction, era_cfg.child_range("multiplayer_side"))
+			BOOST_FOREACH(const config &faction, era_cfg.child_range("multiplayer_side"))
 			{
 				if (faction["random_faction"].to_bool()) continue;
 				const std::string &faction_id = faction["id"];
@@ -673,7 +675,7 @@ bool game_controller::load_game()
 	}
 
 	if(state_.classification().campaign_type == "multiplayer") {
-		foreach (config &side, state_.snapshot.child_range("side"))
+		BOOST_FOREACH(config &side, state_.snapshot.child_range("side"))
 		{
 			if (side["controller"] == "network")
 				side["controller"] = "human";
@@ -683,10 +685,10 @@ bool game_controller::load_game()
 	}
 
 	if (load.cancel_orders()) {
-		foreach (config &side, state_.snapshot.child_range("side"))
+		BOOST_FOREACH(config &side, state_.snapshot.child_range("side"))
 		{
 			if (side["controller"] != "human") continue;
-			foreach (config &unit, side.child_range("unit"))
+			BOOST_FOREACH(config &unit, side.child_range("unit"))
 			{
 				unit["goto_x"] = -999;
 				unit["goto_y"] = -999;
@@ -710,7 +712,7 @@ void game_controller::set_tutorial()
 
 void game_controller::mark_completed_campaigns(std::vector<config> &campaigns)
 {
-	foreach (config &campaign, campaigns) {
+	BOOST_FOREACH(config &campaign, campaigns) {
 		campaign["completed"] = preferences::is_campaign_completed(campaign["id"]);
 	}
 }
@@ -1218,7 +1220,7 @@ void game_controller::load_game_cfg(const bool force)
 		game_config_.splice_children(core_terrain_rules, "terrain_graphics");
 
 		config& hashes = game_config_.add_child("multiplayer_hashes");
-		foreach (const config &ch, game_config_.child_range("multiplayer")) {
+		BOOST_FOREACH(const config &ch, game_config_.child_range("multiplayer")) {
 			hashes[ch["id"]] = ch.hash();
 		}
 

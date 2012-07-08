@@ -20,7 +20,6 @@
 
 #include "config_cache.hpp"
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "formula_debugger.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
@@ -66,6 +65,7 @@
 #include "wml_exception.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #include <memory>
 
@@ -139,7 +139,7 @@ CVideo & video() {
 	template<class T>
 	void test_resolutions(const tresolution_list& resolutions)
 	{
-		foreach(const tresolution& resolution, resolutions) {
+		BOOST_FOREACH(const tresolution& resolution, resolutions) {
 			video().make_test_fake(resolution.first, resolution.second);
 
 			boost::scoped_ptr<gui2::tdialog> dlg(twrapper<T>::create());
@@ -178,7 +178,7 @@ CVideo & video() {
 	{
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
-			foreach(const tresolution& resolution, resolutions) {
+			BOOST_FOREACH(const tresolution& resolution, resolutions) {
 				video().make_test_fake(resolution.first, resolution.second);
 
 				boost::scoped_ptr<gui2::tpopup> dlg(twrapper<T>::create());
@@ -225,7 +225,7 @@ CVideo & video() {
 	void test_tip_resolutions(const tresolution_list& resolutions
 			, const std::string& id)
 	{
-		foreach(const tresolution& resolution, resolutions) {
+		BOOST_FOREACH(const tresolution& resolution, resolutions) {
 			video().make_test_fake(resolution.first, resolution.second);
 
 			std::vector<std::string>& list =
@@ -416,7 +416,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(list.size(), 0);
-	foreach(const std::string& id, list) {
+	BOOST_FOREACH(const std::string& id, list) {
 		std::cerr << "Window '" << id << "' registered but not tested.\n";
 	}
 }
@@ -638,7 +638,7 @@ struct twrapper<gui2::teditor_generate_map>
 		BOOST_REQUIRE_MESSAGE(result, "Failed to create a dialog.");
 
 		std::vector<map_generator*> map_generators;
-		foreach (const config &i, main_config.child_range("multiplayer")) {
+		BOOST_FOREACH(const config &i, main_config.child_range("multiplayer")) {
 			if(i["map_generation"] == "default") {
 				const config &generator_cfg = i.child("generator");
 				if (generator_cfg) {
@@ -694,7 +694,7 @@ struct twrapper<gui2::teditor_settings>
 		BOOST_REQUIRE_MESSAGE(cfg, "No editor time-of-day defined");
 
 		std::vector<time_of_day> tods;
-		foreach (const config &i, cfg.child_range("time")) {
+		BOOST_FOREACH(const config &i, cfg.child_range("time")) {
 			tods.push_back(time_of_day(i));
 		}
 		return new gui2::teditor_settings(NULL, tods);

@@ -35,6 +35,7 @@
 #include "preferences_display.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #include <algorithm>
 
@@ -306,7 +307,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 		WRN_CF << "There are not tips of day available.\n";
 	}
 
-	foreach(const ttip& tip, tips) {
+	BOOST_FOREACH(const ttip& tip, tips) {
 
 		string_map widget;
 		std::map<std::string, string_map> page;

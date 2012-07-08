@@ -24,13 +24,14 @@
 #include "utility.hpp"
 #include "visitor.hpp"
 
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "menu_events.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "unit.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace wb
 {
@@ -71,7 +72,7 @@ recall::recall(config const& cfg, bool hidden)
 {
 	// Construct and validate temp_unit_
 	size_t underlying_id = cfg["temp_unit_"];
-	foreach(unit const& recall_unit, resources::teams->at(team_index()).recall_list())
+	BOOST_FOREACH(unit const& recall_unit, resources::teams->at(team_index()).recall_list())
 	{
 		if(recall_unit.underlying_id()==underlying_id)
 		{

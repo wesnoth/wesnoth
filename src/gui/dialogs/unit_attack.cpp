@@ -27,6 +27,8 @@
 #include "gui/widgets/window.hpp"
 #include "unit.hpp"
 
+#include <boost/foreach.hpp>
+
 namespace gui2 {
 
 /*WIKI
@@ -106,7 +108,7 @@ static void set_weapon_info(twindow& window
 	const config empty;
 	attack_type no_weapon(empty);
 
-	foreach(const battle_context& weapon, weapons) {
+	BOOST_FOREACH(const battle_context& weapon, weapons) {
 		const battle_context_unit_stats& attacker =
 				weapon.get_attacker_stats();
 

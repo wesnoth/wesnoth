@@ -21,10 +21,10 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "../../foreach.hpp"
 #include "../../formula_debugger.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -73,7 +73,7 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 	std::stringstream stack_text;
 	std::string indent = "  ";
 	int c = 0;
-	foreach (const game_logic::debug_info &i, fdb_.get_call_stack()) {
+	BOOST_FOREACH(const game_logic::debug_info &i, fdb_.get_call_stack()) {
 		for(int d = 0; d < c; ++d) {
 			stack_text << indent;
 		}
@@ -92,7 +92,7 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 			&window, "execution", false, true);
 
 	std::stringstream execution_text;
-	foreach (const game_logic::debug_info &i, fdb_.get_execution_trace()) {
+	BOOST_FOREACH(const game_logic::debug_info &i, fdb_.get_execution_trace()) {
 		for(int d = 0; d < i.level(); ++d) {
 			execution_text << indent;
 		}

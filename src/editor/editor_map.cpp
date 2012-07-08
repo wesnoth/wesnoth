@@ -20,12 +20,12 @@
 
 #include "../display.hpp"
 #include "../filesystem.hpp"
-#include "../foreach.hpp"
 #include "../gettext.hpp"
 #include "../map_exception.hpp"
 #include "../map_label.hpp"
 #include "../wml_exception.hpp"
 
+#include <boost/foreach.hpp>
 
 namespace editor {
 
@@ -111,7 +111,7 @@ void editor_map::sanity_check()
 			++errors;
 		}
 	}
-	foreach (const map_location& loc, selection_) {
+	BOOST_FOREACH(const map_location& loc, selection_) {
 		if (!on_board_with_border(loc)) {
 			ERR_ED << "Off-map tile in selection: " << loc << "\n";
 		}

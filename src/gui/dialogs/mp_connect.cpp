@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/mp_connect.hpp"
 
-#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
@@ -30,6 +29,7 @@
 #include "video.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -90,7 +90,7 @@ void tmp_server_list::pre_show(CVideo& /*video*/, twindow& window)
 	const std::vector<game_config::server_info>&
 		pref_servers = preferences::server_list();
 
-	foreach(const game_config::server_info& server, pref_servers) {
+	BOOST_FOREACH(const game_config::server_info& server, pref_servers) {
 
 		std::map<std::string, string_map> data;
 		string_map item;

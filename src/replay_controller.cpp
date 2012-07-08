@@ -16,7 +16,6 @@
 
 #include "global.hpp"
 
-#include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
 #include "gettext.hpp"
@@ -26,6 +25,8 @@
 #include "replay_controller.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -417,7 +418,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 			finish_side_turn();
 
 			// This is necessary for replays in order to show possible movements.
-			foreach (unit &u, units_) {
+			BOOST_FOREACH(unit &u, units_) {
 				if (u.side() != player_number_) {
 					u.new_turn();
 				}

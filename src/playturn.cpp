@@ -16,7 +16,6 @@
 #include "playturn.hpp"
 
 #include "construct_dialog.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
@@ -30,6 +29,8 @@
 #include "whiteboard/manager.hpp"
 #include "formula_string_utils.hpp"
 #include "play_controller.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <ctime>
 
@@ -124,11 +125,11 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				preferences::message_bell());
 	}
 
-	foreach (const config &ob, cfg.child_range("observer")) {
+	BOOST_FOREACH(const config &ob, cfg.child_range("observer")) {
 		resources::screen->add_observer(ob["name"]);
 	}
 
-	foreach (const config &ob, cfg.child_range("observer_quit")) {
+	BOOST_FOREACH(const config &ob, cfg.child_range("observer_quit")) {
 		resources::screen->remove_observer(ob["name"]);
 	}
 
@@ -147,7 +148,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	const config& change = cfg.child_or_empty("change_controller");
 	const std::string& side_drop = cfg["side_drop"].str();
 
-	foreach (const config &t, turns)
+	BOOST_FOREACH(const config &t, turns)
 	{
 		handle_turn(turn_end, t, skip_replay, backlog);
 	}
@@ -240,7 +241,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			options.push_back(_("Abort game"));
 
 			//get all observers in as options to transfer control
-			foreach (const std::string &ob, resources::screen->observers())
+			BOOST_FOREACH(const std::string &ob, resources::screen->observers())
 			{
 				t_vars["player"] = ob;
 				options.push_back(vgettext("Replace with $player", t_vars));
@@ -248,7 +249,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			}
 
 			//get all allies in as options to transfer control
-			foreach (team &t, *resources::teams)
+			BOOST_FOREACH(team &t, *resources::teams)
 			{
 				if (!t.is_enemy(side) && !t.is_human() && !t.is_ai() && !t.is_empty()
 					&& t.current_player() != tm.current_player())

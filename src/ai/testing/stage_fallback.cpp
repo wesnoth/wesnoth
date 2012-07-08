@@ -23,7 +23,6 @@
 #include "../configuration.hpp"
 #include "../manager.hpp"
 #include "../composite/ai.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
 
 namespace ai {

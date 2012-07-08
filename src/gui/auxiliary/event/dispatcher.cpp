@@ -17,7 +17,6 @@
 
 #include "gui/auxiliary/event/dispatcher_private.hpp"
 
-#include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
 
 namespace gui2 {

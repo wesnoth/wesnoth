@@ -33,11 +33,11 @@
 #include "action.hpp"
 #include "side_actions.hpp"
 
-#include "foreach.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 
 #include <boost/noncopyable.hpp>
+#include <boost/foreach.hpp>
 
 namespace wb
 {
@@ -81,7 +81,7 @@ private:
 
 		//Determine how many turns' worth of plans there are
 		size_t max_turns = 0;
-		foreach(team& t, *resources::teams)
+		BOOST_FOREACH(team& t, *resources::teams)
 			max_turns = std::max(max_turns,t.get_side_actions()->num_turns());
 
 		size_t const current_team = resources::controller->current_side() - 1;

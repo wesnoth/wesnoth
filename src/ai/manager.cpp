@@ -27,12 +27,13 @@
 #include "registry.hpp"
 #include "../game_events.hpp"
 #include "../game_preferences.hpp"
-#include "../foreach.hpp"
 #include "../log.hpp"
 #include "../replay.hpp"
 #include "../serialization/string_utils.hpp"
 #include "../statistics.hpp"
 #include "composite/component.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <map>
 #include <stack>
@@ -89,7 +90,7 @@ void holder::init( side_number side )
 
 	if (this->ai_) {
 		ai_->on_create();
-		foreach (config &mod_ai, cfg_.child_range("modify_ai")) {
+		BOOST_FOREACH(config &mod_ai, cfg_.child_range("modify_ai")) {
 			if (!mod_ai.has_attribute("side")) {
 				mod_ai["side"] = side;
 			}
@@ -149,8 +150,8 @@ void holder::modify_ai_config_old( const config::const_child_itors &ai_parameter
 		cfg_.merge_children_by_attribute("aspect","id");
 	} else {
 		// else run 'add_facet' command on each [aspect][facet]
-		foreach (const config &cfg_a, cfg.child_range("aspect")) {
-			foreach (const config &cfg_f, cfg_a.child_range("facet")) {
+		BOOST_FOREACH(const config &cfg_a, cfg.child_range("aspect")) {
+			BOOST_FOREACH(const config &cfg_f, cfg_a.child_range("facet")) {
 				readonly_context_->add_facet(cfg_a["id"],cfg_f);
 			}
 		}

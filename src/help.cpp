@@ -27,7 +27,6 @@
 #include "about.hpp"
 #include "display.hpp"
 #include "exceptions.hpp"
-#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -39,6 +38,8 @@
 #include "unit.hpp"
 #include "wml_separators.hpp"
 #include "serialization/parser.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <queue>
 
@@ -793,7 +794,7 @@ void generate_contents()
 			// opening the help browser in the default manner.
 			config hidden_toplevel;
 			std::stringstream ss;
-			foreach (const config &section, help_config->child_range("section"))
+			BOOST_FOREACH(const config &section, help_config->child_range("section"))
 			{
 				const std::string id = section["id"];
 				if (find_section(toplevel, id) == NULL) {
@@ -810,7 +811,7 @@ void generate_contents()
 			}
 			hidden_toplevel["sections"] = ss.str();
 			ss.str("");
-			foreach (const config &topic, help_config->child_range("topic"))
+			BOOST_FOREACH(const config &topic, help_config->child_range("topic"))
 			{
 				const std::string id = topic["id"];
 				if (find_topic(toplevel, id) == NULL) {
@@ -861,7 +862,7 @@ bool section_is_referenced(const std::string &section_id, const config &cfg)
 		}
 	}
 
-	foreach (const config &section, cfg.child_range("section"))
+	BOOST_FOREACH(const config &section, cfg.child_range("section"))
 	{
 		const std::vector<std::string> sections_refd
 			= utils::quoted_split(section["sections"]);
@@ -885,7 +886,7 @@ bool topic_is_referenced(const std::string &topic_id, const config &cfg)
 		}
 	}
 
-	foreach (const config &section, cfg.child_range("section"))
+	BOOST_FOREACH(const config &section, cfg.child_range("section"))
 	{
 		const std::vector<std::string> topics_refd
 			= utils::quoted_split(section["topics"]);
@@ -1103,7 +1104,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	std::map<t_string, std::string> special_description;
 	std::map<t_string, std::set<std::string, string_less> > special_units;
 
-	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
 		const unit_type &type = i.second;
 		// Only show the weapon special if we find it on a unit that
@@ -1171,7 +1172,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	// should have a full description, if so, add this units abilities
 	// for display. We do not want to show abilities that the user has
 	// not encountered yet.
-	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
 		const unit_type &type = i.second;
 		if (description_type(type) == FULL_DESCRIPTION) {
@@ -1244,7 +1245,7 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 	const config& era = game_cfg->child("era");
 	if (era) {
 		std::vector<std::string> faction_links;
-		foreach (const config &f, era.child_range("multiplayer_side")) {
+		BOOST_FOREACH(const config &f, era.child_range("multiplayer_side")) {
 			const std::string& id = f["id"];
 			if (id == "Random")
 				continue;
@@ -1260,7 +1261,7 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 			text << "<header>text='" << _("Leaders:") << "'</header>" << "\n";
 			const std::vector<std::string> leaders =
 					make_unit_links_list( utils::split(f["leader"]), true );
-			foreach (const std::string &link, leaders) {
+			BOOST_FOREACH(const std::string &link, leaders) {
 				text << link << "\n";
 			}
 
@@ -1269,7 +1270,7 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 			text << "<header>text='" << _("Recruits:") << "'</header>" << "\n";
 			const std::vector<std::string> recruits =
 					make_unit_links_list( utils::split(f["recruit"]), true );
-			foreach (const std::string &link, recruits) {
+			BOOST_FOREACH(const std::string &link, recruits) {
 				text << link << "\n";
 			}
 
@@ -1291,7 +1292,7 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 		text << "<header>text='" << _("Factions:") << "'</header>" << "\n";
 
 		std::sort(faction_links.begin(), faction_links.end());
-		foreach (const std::string &link, faction_links) {
+		BOOST_FOREACH(const std::string &link, faction_links) {
 			text << link << "\n";
 		}
 
@@ -1366,7 +1367,7 @@ public:
 				reverse ? type_.advances_from() : type_.advances_to();
 			bool first = true;
 
-			foreach (const std::string &adv, adv_units)
+			BOOST_FOREACH(const std::string &adv, adv_units)
 			{
 				const unit_type *type = unit_types.find(adv);
 				if (!type || type->hide_help()) continue;
@@ -1676,7 +1677,7 @@ std::string make_unit_link(const std::string& type_id)
 std::vector<std::string> make_unit_links_list(const std::vector<std::string>& type_id_list, bool ordered)
 {
 	std::vector<std::string> links_list;
-	foreach (const std::string &type_id, type_id_list) {
+	BOOST_FOREACH(const std::string &type_id, type_id_list) {
 		std::string unit_link = make_unit_link(type_id);
 		if (!unit_link.empty())
 			links_list.push_back(unit_link);
@@ -1693,7 +1694,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 	std::set<std::string, string_less> races;
 	std::set<std::string, string_less> visible_races;
 
-	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
 		const unit_type &type = i.second;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
@@ -1736,7 +1737,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::set<std::string, string_less> race_units;
 	std::set<std::string, string_less> race_topics;
 
-	foreach (const unit_type_data::unit_type_map::value_type &i, unit_types.types())
+	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
 		const unit_type &type = i.second;
 
@@ -1768,7 +1769,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		race_name = r->plural_name();
 		race_description = r->description();
 		// if (description.empty()) description =  _("No description Available");
-		foreach (const config &additional_topic, r->additional_topics())
+		BOOST_FOREACH(const config &additional_topic, r->additional_topics())
 		  {
 		    std::string id = additional_topic["id"];
 		    std::string title = additional_topic["title"];

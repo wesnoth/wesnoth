@@ -24,7 +24,6 @@
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -34,6 +33,8 @@
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "wml_exception.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <iostream>
 #include <vector>
@@ -59,7 +60,7 @@ map_location pathfind::find_vacant_tile(const gamemap& map,
 		std::set<map_location> tiles_checking;
 		tiles_checking.swap(pending_tiles_to_check);
 		//Iterate over all the hexes we need to check
-		foreach (const map_location &loc, tiles_checking)
+		BOOST_FOREACH(const map_location &loc, tiles_checking)
 		{
 			//If this area is not a castle but should, skip it.
 			if (vacancy == pathfind::VACANT_CASTLE && !map.is_castle(loc)) continue;
@@ -76,7 +77,7 @@ map_location pathfind::find_vacant_tile(const gamemap& map,
 			if (units.find(loc) == units.end() && !pass_check_and_unreachable) return loc;
 			map_location adjs[6];
 			get_adjacent_tiles(loc,adjs);
-			foreach (const map_location &loc, adjs)
+			BOOST_FOREACH(const map_location &loc, adjs)
 			{
 				if (!map.on_board(loc)) continue;
 				// Add the tile to be checked if it hasn't already been and

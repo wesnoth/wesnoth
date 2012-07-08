@@ -28,11 +28,12 @@
 #include "utility.hpp"
 
 #include "arrow.hpp"
-#include "foreach.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace wb
 {
@@ -60,7 +61,7 @@ bool validate_visitor::validate_actions()
 	{
 		int side_actions_size_before = viewer_actions_.size();
 		LOG_WB << "Erasing " << actions_to_erase_.size() << " invalid actions.\n";
-		foreach(action_ptr action, actions_to_erase_)
+		BOOST_FOREACH(action_ptr action, actions_to_erase_)
 		{
 			viewer_actions_.remove_action(viewer_actions_.get_position_of(action), false);
 		}

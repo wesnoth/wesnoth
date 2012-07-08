@@ -21,7 +21,6 @@
 #include "builder.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
-#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
@@ -40,6 +39,8 @@
 #include "resources.hpp"
 
 #include "SDL_image.h"
+
+#include <boost/foreach.hpp>
 
 #ifdef __SUNPRO_CC
 // GCC doesn't have hypot in cmath so include it for Sun Studio
@@ -629,7 +630,7 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 	// now get the surfaces
 	std::vector<surface> res;
 
-	foreach(std::string& name, names) {
+	BOOST_FOREACH(std::string& name, names) {
 		const surface surf(image::get_image(name, image_type));
 		if (surf)
 			res.push_back(surf);
@@ -828,8 +829,8 @@ void display::drawing_buffer_commit()
 	 * layergroup > location > layer > 'tblit' > surface
 	 */
 
-	foreach(const tblit &blit, drawing_buffer_) {
-		foreach(const surface& surf, blit.surf()) {
+	BOOST_FOREACH(const tblit &blit, drawing_buffer_) {
+		BOOST_FOREACH(const surface& surf, blit.surf()) {
 			// Note that dstrect can be changed by sdl_blit
 			// and so a new instance should be initialized
 			// to pass to each call to sdl_blit.
@@ -1903,7 +1904,7 @@ void display::redraw_everything()
 	int ticks3 = SDL_GetTicks();
 	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
 
-	foreach (boost::function<void(display&)> f, redraw_observers_) {
+	BOOST_FOREACH(boost::function<void(display&)> f, redraw_observers_) {
 		f(*this);
 	}
 
@@ -1992,7 +1993,7 @@ void display::draw_invalidated() {
 	SDL_Rect clip_rect = get_clip_rect();
 	surface screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
-	foreach (const map_location& loc, invalidated_) {
+	BOOST_FOREACH(const map_location& loc, invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 
@@ -2058,7 +2059,7 @@ void display::draw_hex(const map_location& loc) {
 	// Paint arrows
 	arrows_map_t::const_iterator arrows_in_hex = arrows_map_.find(loc);
 	if(arrows_in_hex != arrows_map_.end()) {
-		foreach(arrow* const a, arrows_in_hex->second) {
+		BOOST_FOREACH(arrow* const a, arrows_in_hex->second) {
 			a->draw_hex(loc);
 		}
 	}
@@ -2388,7 +2389,7 @@ bool display::invalidate(const std::set<map_location>& locs)
 	if(invalidateAll_)
 		return false;
 	bool ret = false;
-	foreach (const map_location& loc, locs) {
+	BOOST_FOREACH(const map_location& loc, locs) {
 #ifdef _OPENMP
 #pragma omp critical(invalidated_)
 #endif //_OPENMP
@@ -2438,7 +2439,7 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 		return false;
 
 	bool result = false;
-	foreach (const map_location &loc, hexes_under_rect(rect)) {
+	BOOST_FOREACH(const map_location &loc, hexes_under_rect(rect)) {
 		result |= invalidate(loc);
 	}
 	return result;
@@ -2450,7 +2451,7 @@ void display::invalidate_animations()
 	animate_map_ = preferences::animate_map();
 	if (!animate_map_) return;
 
-	foreach (const map_location &loc, get_visible_hexes())
+	BOOST_FOREACH(const map_location &loc, get_visible_hexes())
 	{
 		if (shrouded(loc)) continue;
 		if (builder_->update_animation(loc)) {
@@ -2464,7 +2465,7 @@ void display::invalidate_animations()
 void display::add_arrow(arrow& arrow)
 {
 	const arrow_path_t & arrow_path = arrow.get_path();
-	foreach (const map_location& loc, arrow_path)
+	BOOST_FOREACH(const map_location& loc, arrow_path)
 	{
 		arrows_map_[loc].push_back(&arrow);
 	}
@@ -2473,7 +2474,7 @@ void display::add_arrow(arrow& arrow)
 void display::remove_arrow(arrow& arrow)
 {
 	const arrow_path_t & arrow_path = arrow.get_path();
-	foreach (const map_location& loc, arrow_path)
+	BOOST_FOREACH(const map_location& loc, arrow_path)
 	{
 		arrows_map_[loc].remove(&arrow);
 	}
@@ -2482,12 +2483,12 @@ void display::remove_arrow(arrow& arrow)
 void display::update_arrow(arrow & arrow)
 {
 	const arrow_path_t & previous_path = arrow.get_previous_path();
-	foreach (const map_location& loc, previous_path)
+	BOOST_FOREACH(const map_location& loc, previous_path)
 	{
 		arrows_map_[loc].remove(&arrow);
 	}
 	const arrow_path_t & arrow_path = arrow.get_path();
-	foreach (const map_location& loc, arrow_path)
+	BOOST_FOREACH(const map_location& loc, arrow_path)
 	{
 		arrows_map_[loc].push_back(&arrow);
 	}

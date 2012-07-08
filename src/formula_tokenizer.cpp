@@ -13,7 +13,6 @@
 
 #include <sstream>
 
-#include "foreach.hpp"
 #include "formula_tokenizer.hpp"
 
 namespace formula_tokenizer

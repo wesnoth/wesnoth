@@ -17,7 +17,6 @@
 #include "savegame.hpp"
 
 #include "dialogs.hpp" //FIXME: get rid of this as soon as the two remaining dialogs are moved to gui2
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_preferences.hpp"
@@ -39,6 +38,8 @@
 //#include "unit.hpp"
 #include "unit_id.hpp"
 #include "version.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define LOG_SAVE LOG_STREAM(info, log_engine)
@@ -913,7 +914,7 @@ void savegame::extract_summary_data_from_save(config& out)
 	bool shrouded = false;
 
 	const config& snapshot = has_snapshot ? gamestate_.snapshot : gamestate_.starting_pos;
-	foreach (const config &side, snapshot.child_range("side"))
+	BOOST_FOREACH(const config &side, snapshot.child_range("side"))
 	{
 		if (side["controller"] != "human") {
 			continue;
@@ -922,7 +923,7 @@ void savegame::extract_summary_data_from_save(config& out)
 			shrouded = true;
 		}
 
-		foreach (const config &u, side.child_range("unit"))
+		BOOST_FOREACH(const config &u, side.child_range("unit"))
 		{
 			if (u["canrecruit"].to_bool()) {
 				leader = u["id"].str();
@@ -960,7 +961,7 @@ void scenariostart_savegame::before_save()
 	// if there is no scenario information in the starting pos, add the (persistent) sides from the snapshot
 	// else do nothing, as persistence information was already added at the end of the previous scenario
 	if (gamestate().starting_pos["id"].empty()) {
-		foreach(const config &snapshot_side, gamestate().snapshot.child_range("side")) {
+		BOOST_FOREACH(const config &snapshot_side, gamestate().snapshot.child_range("side")) {
 			//add all side tags (assuming they only contain carryover information)
 			gamestate().starting_pos.add_child("side", snapshot_side);
 		}

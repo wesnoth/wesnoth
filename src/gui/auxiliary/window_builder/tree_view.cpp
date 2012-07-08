@@ -17,13 +17,14 @@
 
 #include "gui/auxiliary/window_builder/tree_view.hpp"
 
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/tree_view.hpp"
 #include "gui/auxiliary/window_builder/helper.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "wml_exception.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -39,7 +40,7 @@ tbuilder_tree_view::tbuilder_tree_view(const config& cfg)
 	, nodes()
 {
 
-	foreach(const config &node, cfg.child_range("node")) {
+	BOOST_FOREACH(const config &node, cfg.child_range("node")) {
 		nodes.push_back(tnode(node));
 	}
 

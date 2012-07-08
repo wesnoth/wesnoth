@@ -25,10 +25,10 @@
 #include "../composite/engine.hpp"
 #include "../composite/property_handler.hpp"
 #include "../gamestate_observer.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 namespace ai {
 
@@ -49,7 +49,7 @@ candidate_action_evaluation_loop::candidate_action_evaluation_loop( ai_context &
 void candidate_action_evaluation_loop::on_create()
 {
 	//init the candidate actions
-	foreach(const config &cfg_element, cfg_.child_range("candidate_action")){
+	BOOST_FOREACH(const config &cfg_element, cfg_.child_range("candidate_action")){
 		engine::parse_candidate_action_from_config(*this,cfg_element,back_inserter(candidate_actions_));
 	}
 
@@ -69,7 +69,7 @@ void candidate_action_evaluation_loop::create_candidate_action(std::vector<candi
 config candidate_action_evaluation_loop::to_config() const
 {
 	config cfg = stage::to_config();
-	foreach(candidate_action_ptr ca, candidate_actions_){
+	BOOST_FOREACH(candidate_action_ptr ca, candidate_actions_){
 		cfg.add_child("candidate_action",ca->to_config());
 	}
 	return cfg;
@@ -88,7 +88,7 @@ bool candidate_action_evaluation_loop::do_play_stage()
 {
 	LOG_AI_TESTING_RCA_DEFAULT << "Starting candidate action evaluation loop for side "<< get_side() << std::endl;
 
-	foreach(candidate_action_ptr ca, candidate_actions_){
+	BOOST_FOREACH(candidate_action_ptr ca, candidate_actions_){
 		ca->enable();
 	}
 
@@ -103,7 +103,7 @@ bool candidate_action_evaluation_loop::do_play_stage()
 		candidate_action_ptr best_ptr;
 
 		//Evaluation
-		foreach(candidate_action_ptr ca_ptr, candidate_actions_){
+		BOOST_FOREACH(candidate_action_ptr ca_ptr, candidate_actions_){
 			if (!ca_ptr->is_enabled()){
 				DBG_AI_TESTING_RCA_DEFAULT << "Skipping disabled candidate action: "<< *ca_ptr << std::endl;
 				continue;

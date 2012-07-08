@@ -22,7 +22,6 @@
 #include "engine.hpp"
 #include "stage.hpp"
 #include "../contexts.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../resources.hpp"
 #include "../../tod_manager.hpp"

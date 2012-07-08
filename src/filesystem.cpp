@@ -56,7 +56,6 @@ BPath be_path;
 
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
@@ -64,6 +63,8 @@ BPath be_path;
 #include "scoped_resource.hpp"
 #include "serialization/string_utils.hpp"
 #include "version.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_filesystem("filesystem");
 #define DBG_FS LOG_STREAM(debug, log_filesystem)
@@ -1010,7 +1011,7 @@ void binary_paths_manager::set_paths(const config& cfg)
 	cleanup();
 	init_binary_paths();
 
-	foreach (const config &bp, cfg.child_range("binary_path"))
+	BOOST_FOREACH(const config &bp, cfg.child_range("binary_path"))
 	{
 		std::string path = bp["path"].str();
 		if (path.find("..") != std::string::npos) {
@@ -1057,7 +1058,7 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 	init_binary_paths();
 
-	foreach (const std::string &path, binary_paths)
+	BOOST_FOREACH(const std::string &path, binary_paths)
 	{
 		res.push_back(get_user_data_dir() + "/" + path + type + "/");
 
@@ -1098,7 +1099,7 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 		return std::string();
 	}
 
-	foreach (const std::string &path, get_binary_paths(type))
+	BOOST_FOREACH(const std::string &path, get_binary_paths(type))
 	{
 		const std::string file = path + filename;
 		DBG_FS << "  checking '" << path << "'\n";
@@ -1126,7 +1127,7 @@ std::string get_binary_dir_location(const std::string &type, const std::string &
 		return std::string();
 	}
 
-	foreach (const std::string &path, get_binary_paths(type))
+	BOOST_FOREACH(const std::string &path, get_binary_paths(type))
 	{
 		const std::string file = path + filename;
 		DBG_FS << "  checking '" << path << "'\n";
@@ -1291,7 +1292,7 @@ std::string normalize_path(const std::string &p1)
 	p4 << drive;
 #endif
 
-	foreach (const std::string &s, components)
+	BOOST_FOREACH(const std::string &s, components)
 	{
 		p4 << '/' << s;
 	}

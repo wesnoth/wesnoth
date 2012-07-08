@@ -34,7 +34,6 @@
 Growl_Delegate growl_obj;
 #endif
 
-#include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "halo.hpp"
 #include "log.hpp"
@@ -46,6 +45,8 @@ Growl_Delegate growl_obj;
 #include "tod_manager.hpp"
 #include "sound.hpp"
 #include "whiteboard/manager.hpp"
+
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -297,7 +298,7 @@ void game_display::draw_invalidated()
 	halo::unrender(invalidated_);
 	display::draw_invalidated();
 
-	foreach(unit* temp_unit, fake_units_) {
+	BOOST_FOREACH(unit* temp_unit, fake_units_) {
 		const map_location& loc = temp_unit->get_location();
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()
@@ -305,7 +306,7 @@ void game_display::draw_invalidated()
 			temp_unit->redraw_unit();
 	}
 
-	foreach (const map_location& loc, invalidated_) {
+	BOOST_FOREACH(const map_location& loc, invalidated_) {
 		unit_map::iterator u_it = units_.find(loc);
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (u_it != units_.end()
@@ -451,7 +452,7 @@ void game_display::draw_sidebar()
 
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
-		foreach (const std::string &name, reports::report_list()) {
+		BOOST_FOREACH(const std::string &name, reports::report_list()) {
 			draw_report(name);
 		}
 		invalidateGameStatus_ = false;
@@ -744,7 +745,7 @@ void game_display::highlight_reach(const pathfind::paths &paths_list)
 void game_display::highlight_another_reach(const pathfind::paths &paths_list)
 {
 	// Fold endpoints of routes into reachability map.
-	foreach (const pathfind::paths::step &dest, paths_list.destinations) {
+	BOOST_FOREACH(const pathfind::paths::step &dest, paths_list.destinations) {
 		reach_map_[dest.curr]++;
 	}
 	reach_map_changed_ = true;
@@ -897,17 +898,17 @@ void game_display::invalidate_animations_location(const map_location& loc) {
 void game_display::invalidate_animations()
 {
 	display::invalidate_animations();
-	foreach (unit& u, units_) {
+	BOOST_FOREACH(unit& u, units_) {
 		u.refresh();
 	}
-	foreach(unit* temp_unit, fake_units_) {
+	BOOST_FOREACH(unit* temp_unit, fake_units_) {
 		temp_unit->refresh();
 	}
 	std::vector<unit*> unit_list;
-	foreach (unit &u, units_) {
+	BOOST_FOREACH(unit &u, units_) {
 		unit_list.push_back(&u);
 	}
-	foreach (unit *u, fake_units_) {
+	BOOST_FOREACH(unit *u, fake_units_) {
 		unit_list.push_back(u);
 	}
 	bool new_inval;
@@ -1079,7 +1080,7 @@ void game_display::parse_team_overlays()
 {
 	const team& curr_team = teams_[playing_team()];
 	const team& prev_team = teams_[playing_team()-1 < teams_.size() ? playing_team()-1 : teams_.size()-1];
-	foreach (const game_display::overlay_map::value_type i, overlays_) {
+	BOOST_FOREACH(const game_display::overlay_map::value_type i, overlays_) {
 		const overlay& ov = i.second;
 		if (!ov.team_name.empty() &&
 			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
@@ -1485,7 +1486,7 @@ void game_display::prune_chat_messages(bool remove_all)
 		}
 	}
 
-	foreach (const chat_message &cm, chat_messages_) {
+	BOOST_FOREACH(const chat_message &cm, chat_messages_) {
 		font::move_floating_label(cm.speaker_handle, 0, - movement);
 		font::move_floating_label(cm.handle, 0, - movement);
 	}

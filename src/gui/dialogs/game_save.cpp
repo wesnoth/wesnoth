@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/game_save.hpp"
 
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"

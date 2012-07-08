@@ -25,7 +25,8 @@
 #include "SDL.h"
 
 #include "log.hpp"
-#include "foreach.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <map>
 #include <sstream>
@@ -88,11 +89,11 @@ bool set_log_domain_severity(std::string const &name, int severity)
 {
 	std::string::size_type s = name.size();
 	if (name == "all") {
-		foreach (logd &l, *domains) {
+		BOOST_FOREACH(logd &l, *domains) {
 			l.second = severity;
 		}
 	} else if (s > 2 && name.compare(s - 2, 2, "/*") == 0) {
-		foreach (logd &l, *domains) {
+		BOOST_FOREACH(logd &l, *domains) {
 			if (l.first.compare(0, s - 1, name, 0, s - 1) == 0)
 				l.second = severity;
 		}
@@ -108,7 +109,7 @@ bool set_log_domain_severity(std::string const &name, int severity)
 std::string list_logdomains(const std::string& filter)
 {
 	std::ostringstream res;
-	foreach (logd &l, *domains) {
+	BOOST_FOREACH(logd &l, *domains) {
 		if(l.first.find(filter) != std::string::npos)
 			res << l.first << "\n";
 	}

@@ -19,7 +19,6 @@
  */
 
 #include "global.hpp"
-#include "foreach.hpp"
 #include "variable.hpp"
 
 #include "storyscreen/interface.hpp"

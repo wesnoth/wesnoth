@@ -20,7 +20,6 @@
 #include "map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
-#include "foreach.hpp"
 
 #include <queue>
 #include <map>

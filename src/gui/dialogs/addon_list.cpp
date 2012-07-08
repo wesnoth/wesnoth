@@ -17,7 +17,6 @@
 
 #include "gui/dialogs/addon_list.hpp"
 
-#include "foreach.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
@@ -25,6 +24,8 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+
+#include <boost/foreach.hpp>
 
 namespace gui2 {
 
@@ -70,7 +71,7 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 	 * @todo do we really want to keep the length limit for the various
 	 * items?
 	 */
-	foreach(const config &c, cfg_.child_range("campaign")) {
+	BOOST_FOREACH(const config &c, cfg_.child_range("campaign")) {
 		std::map<std::string, string_map> data;
 		string_map item;
 

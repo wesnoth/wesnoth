@@ -16,7 +16,6 @@
 #include "global.hpp"
 
 #include "filesystem.hpp"
-#include "foreach.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
@@ -27,6 +26,7 @@
 #include <stdexcept>
 #include <clocale>
 #include <boost/scoped_array.hpp>
+#include <boost/foreach.hpp>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -101,7 +101,7 @@ bool load_language_list()
 	known_languages.push_back(
 		language_def("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A"));
 
-	foreach (const config &lang, cfg.child_range("locale"))
+	BOOST_FOREACH(const config &lang, cfg.child_range("locale"))
 	{
 		known_languages.push_back(
 			language_def(lang["locale"], lang["name"], lang["dir"],
@@ -226,9 +226,9 @@ bool load_strings(bool complain)
 		std::cerr << "No [language] block found\n";
 		return false;
 	}
-	foreach (const config &lang, languages_) {
+	BOOST_FOREACH(const config &lang, languages_) {
 		DBG_G << "[language]\n";
-		foreach (const config::attribute &j, lang.attribute_range()) {
+		BOOST_FOREACH(const config::attribute &j, lang.attribute_range()) {
 			DBG_G << j.first << "=\"" << j.second << "\"\n";
 			strings_[j.first] = j.second;
 		}
@@ -283,7 +283,7 @@ const language_def& get_locale()
 
 void init_textdomains(const config& cfg)
 {
-	foreach (const config &t, cfg.child_range("textdomain"))
+	BOOST_FOREACH(const config &t, cfg.child_range("textdomain"))
 	{
 		const std::string &name = t["name"];
 		const std::string &path = t["path"];
@@ -307,7 +307,7 @@ void init_textdomains(const config& cfg)
 bool init_strings(const config& cfg)
 {
 	languages_.clear();
-	foreach(const config &l, cfg.child_range("language")) {
+	BOOST_FOREACH(const config &l, cfg.child_range("language")) {
 		languages_.push_back(l);
 	}
 	return load_strings(true);

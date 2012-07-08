@@ -31,11 +31,12 @@
 #include "validate_visitor.hpp"
 
 #include "actions.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "map.hpp"
 #include "resources.hpp"
+
+#include <boost/foreach.hpp>
 
 #include <set>
 #include <sstream>
@@ -48,13 +49,13 @@ std::ostream &operator<<(std::ostream &s, wb::side_actions const& side_actions)
 {
 	s << "Content of side_actions:";
 	int turn = 1;
-	foreach(action_queue const& turn_queue, side_actions.actions())
+	BOOST_FOREACH(action_queue const& turn_queue, side_actions.actions())
 	{
 		s << "\n  Turn " << turn;
 		++turn;
 
 		int count = 1;
-		foreach(action_ptr const& action, turn_queue)
+		BOOST_FOREACH(action_ptr const& action, turn_queue)
 		{
 			s << "\n    (" << count << ") " << action;
 			++count;
@@ -114,7 +115,7 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 					main_number = index;
 				}
 
-				foreach(weak_action_ptr action, highlighter->get_secondary_highlights())
+				BOOST_FOREACH(weak_action_ptr action, highlighter->get_secondary_highlights())
 				{
 					if (action.lock() == *it)
 					{
@@ -199,7 +200,7 @@ bool side_actions::execute(side_actions::iterator position)
 size_t side_actions::size() const
 {
 	size_t result = 0;
-	foreach(action_queue const& queue, actions_)
+	BOOST_FOREACH(action_queue const& queue, actions_)
 		result += queue.size();
 	return result;
 }
@@ -234,7 +235,7 @@ void side_actions::hide()
 		return;
 	}
 
-	foreach(action_ptr act, *this)
+	BOOST_FOREACH(action_ptr act, *this)
 		act->hide();
 }
 void side_actions::show()
@@ -244,7 +245,7 @@ void side_actions::show()
 
 	hidden_ = false;
 
-	foreach(action_ptr act, *this)
+	BOOST_FOREACH(action_ptr act, *this)
 		act->show();
 }
 
@@ -507,7 +508,7 @@ bool side_actions::unit_has_actions(unit const* unit)
 size_t side_actions::count_actions_of(unit const* unit)
 {
 	size_t count = 0;
-	foreach(action_ptr action, *this)
+	BOOST_FOREACH(action_ptr action, *this)
 	{
 		if (action->get_unit() == unit)
 		{
@@ -783,7 +784,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 	else if(type=="refresh")
 	{
 		safe_clear();
-		foreach(net_cmd const& sub_cmd, cmd.child_range("net_cmd"))
+		BOOST_FOREACH(net_cmd const& sub_cmd, cmd.child_range("net_cmd"))
 			execute_net_cmd(sub_cmd);
 	}
 	else
@@ -890,7 +891,7 @@ void side_actions::raw_turn_shift()
 
 	//find units who still have plans for turn 0 (i.e. were too lazy to finish their jobs)
 	std::set<unit const*> lazy_units;
-	foreach(action_ptr const& act, iter_turn(0))
+	BOOST_FOREACH(action_ptr const& act, iter_turn(0))
 	{
 		unit const* u = act->get_unit();
 		if(u)
@@ -913,7 +914,7 @@ void side_actions::raw_turn_shift()
 	}
 
 	//push any remaining first-turn plans into the second turn
-	foreach(action_ptr act, actions_.front())
+	BOOST_FOREACH(action_ptr act, actions_.front())
 		actions_[1].push_front(act);
 	actions_.front().clear();
 

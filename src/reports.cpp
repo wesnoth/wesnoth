@@ -20,7 +20,6 @@
 #include "editor/editor_controller.hpp"
 #include "editor/editor_palettes.hpp"
 #include "font.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -36,6 +35,7 @@
 #include "unit.hpp"
 #include "whiteboard/manager.hpp"
 
+#include <boost/foreach.hpp>
 
 #include <cassert>
 #include <ctime>
@@ -260,7 +260,7 @@ REPORT_GENERATOR(unit_amla)
 	if (!u) return report();
 	config res;
 	typedef std::pair<std::string, std::string> pair_string;
-	foreach(const pair_string &ps, u->amla_icons()) {
+	BOOST_FOREACH(const pair_string &ps, u->amla_icons()) {
 		add_image(res, ps.first, ps.second);
 	}
 	return res;
@@ -395,7 +395,7 @@ static config unit_hp(unit* u)
 
 	bool att_def_diff = false;
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
-	foreach (const utils::string_map::value_type &resist, u->get_base_resistances())
+	BOOST_FOREACH(const utils::string_map::value_type &resist, u->get_base_resistances())
 	{
 		std::ostringstream line;
 		line << gettext(resist.first.c_str()) << ": ";
@@ -415,7 +415,7 @@ static config unit_hp(unit* u)
 	if (att_def_diff)
 		tooltip << _("(Att / Def)");
 	tooltip << '\n';
-	foreach (const std::string &line, resistances_table) {
+	BOOST_FOREACH(const std::string &line, resistances_table) {
 		tooltip << line;
 	}
 	return text_report(str.str(), tooltip.str());
@@ -458,7 +458,7 @@ static config unit_advancement_options(unit* u)
 	if (!u) return report();
 	config res;
 	typedef std::pair<std::string, std::string> pair_string;
-	foreach (const pair_string &ps, u->advancement_icons()) {
+	BOOST_FOREACH(const pair_string &ps, u->advancement_icons()) {
 		add_image(res, ps.first, ps.second);
 	}
 	return res;
@@ -497,7 +497,7 @@ static config unit_defense(unit* u, const map_location& displayed_unit_hex)
 	bool revert = false;
 	if (underlyings.size() != 1 || underlyings.front() != terrain)
 	{
-		foreach (const t_translation::t_terrain &t, underlyings)
+		BOOST_FOREACH(const t_translation::t_terrain &t, underlyings)
 		{
 			if (t == t_translation::MINUS) {
 				revert = true;
@@ -641,7 +641,7 @@ static int attack_info(const attack_type &at, config &res, unit *u, const map_lo
 	std::set<std::string> seen_types;
 	const team &unit_team = (*resources::teams)[u->side() - 1];
 	const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
-	foreach(const unit &enemy, *resources::units)
+	BOOST_FOREACH(const unit &enemy, *resources::units)
 	{
 		if (!unit_team.is_enemy(enemy.side()))
 			continue;
@@ -662,7 +662,7 @@ static int attack_info(const attack_type &at, config &res, unit *u, const map_lo
 	damage_multiplier += tod_bonus;
 
 	typedef std::pair<int, std::set<std::string> > resist_units;
-	foreach (const resist_units &resist, resistances) {
+	BOOST_FOREACH(const resist_units &resist, resistances) {
 		int damage = round_damage(base_damage, damage_multiplier * resist.first, damage_divisor);
 		tooltip << "<b>" << damage << "</b>  "
 			<< "<i>(" << utils::signed_percent(resist.first-100) << ")</i> : "
@@ -755,7 +755,7 @@ static config unit_weapons(unit *attacker, const map_location &attacker_pos, uni
 		}
 	}
 
-	foreach(const battle_context& weapon, weapons) {
+	BOOST_FOREACH(const battle_context& weapon, weapons) {
 
 		// Predict the battle outcome.
 		combatant attacker_combatant(weapon.get_attacker_stats());
@@ -869,7 +869,7 @@ static config unit_weapons(unit *u)
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
 	config res;
 
-	foreach (const attack_type &at, u->attacks())
+	BOOST_FOREACH(const attack_type &at, u->attacks())
 	{
 		attack_info(at, res, u, displayed_unit_hex);
 	}
@@ -1023,7 +1023,7 @@ REPORT_GENERATOR(villages)
 	str << td.villages << '/';
 	if (viewing_team.uses_shroud()) {
 		int unshrouded_villages = 0;
-		foreach (const map_location &loc, resources::game_map->villages()) {
+		BOOST_FOREACH(const map_location &loc, resources::game_map->villages()) {
 			if (!viewing_team.shrouded(loc))
 				++unshrouded_villages;
 		}
@@ -1178,7 +1178,7 @@ REPORT_GENERATOR(observers)
 
 	std::ostringstream str;
 	str << _("Observers:") << '\n';
-	foreach (const std::string &obs, observers) {
+	BOOST_FOREACH(const std::string &obs, observers) {
 		str << obs << '\n';
 	}
 	return image_report(game_config::images::observer, str.str());
@@ -1250,7 +1250,7 @@ static std::set<std::string> all_reports;
 
 void reports::reset_generators()
 {
-	foreach (dynamic_report_generators::value_type &rg, dynamic_generators) {
+	BOOST_FOREACH(dynamic_report_generators::value_type &rg, dynamic_generators) {
 		delete rg.second;
 	}
 	dynamic_generators.clear();
@@ -1283,10 +1283,10 @@ config reports::generate_report(const std::string &name, bool only_static)
 const std::set<std::string> &reports::report_list()
 {
 	if (!all_reports.empty()) return all_reports;
-	foreach (const static_report_generators::value_type &v, static_generators) {
+	BOOST_FOREACH(const static_report_generators::value_type &v, static_generators) {
 		all_reports.insert(v.first);
 	}
-	foreach (const dynamic_report_generators::value_type &v, dynamic_generators) {
+	BOOST_FOREACH(const dynamic_report_generators::value_type &v, dynamic_generators) {
 		all_reports.insert(v.first);
 	}
 	return all_reports;

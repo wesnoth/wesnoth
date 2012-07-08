@@ -16,9 +16,9 @@
 /** @file */
 
 #include "config.hpp"
-#include "foreach.hpp"
 #include "time_of_day.hpp"
 
+#include <boost/foreach.hpp>
 
 std::ostream &operator<<(std::ostream &s, const tod_color& c){
 	s << c.r << "," << c.g << "," << c.b;
@@ -62,7 +62,7 @@ void time_of_day::write(config& cfg) const
 
 void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
 {
-	foreach (const config &t, cfg.child_range("time")) {
+	BOOST_FOREACH(const config &t, cfg.child_range("time")) {
 		normal_times.push_back(time_of_day(t));
 	}
 

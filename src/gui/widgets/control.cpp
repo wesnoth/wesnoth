@@ -18,7 +18,6 @@
 #include "control.hpp"
 
 #include "font.hpp"
-#include "foreach.hpp"
 #include "formula_string_utils.hpp"
 #include "gui/auxiliary/iterator/walker_widget.hpp"
 #include "gui/auxiliary/log.hpp"
@@ -29,6 +28,7 @@
 #include "marked-up_text.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #include <iomanip>
 
@@ -211,7 +211,7 @@ tpoint tcontrol::calculate_best_size() const
 void tcontrol::place(const tpoint& origin, const tpoint& size)
 {
 	// resize canvasses
-	foreach(tcanvas& canvas, canvas_) {
+	BOOST_FOREACH(tcanvas& canvas, canvas_) {
 		canvas.set_width(size.x);
 		canvas.set_height(size.y);
 	}
@@ -297,7 +297,7 @@ void tcontrol::update_canvas()
 	const int max_height = get_text_maximum_height();
 
 	// set label in canvases
-	foreach(tcanvas& canvas, canvas_) {
+	BOOST_FOREACH(tcanvas& canvas, canvas_) {
 		canvas.set_variable("text", variant(label_));
 		canvas.set_variable("text_markup", variant(use_markup_));
 		canvas.set_variable("text_alignment"

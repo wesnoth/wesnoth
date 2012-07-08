@@ -17,7 +17,6 @@
 
 #include "gui/widgets/toggle_panel.hpp"
 
-#include "foreach.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/widget_definition/toggle_panel.hpp"
 #include "gui/auxiliary/window_builder/toggle_panel.hpp"
@@ -26,6 +25,7 @@
 #include "sound.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -72,7 +72,7 @@ void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */
 {
 	// typedef boost problem work around.
 	typedef std::pair<std::string, string_map> hack ;
-	foreach(const hack& item, data) {
+	BOOST_FOREACH(const hack& item, data) {
 		tcontrol* control = dynamic_cast<tcontrol*>(find(item.first, false));
 		if(control) {
 			control->set_members(item.second);

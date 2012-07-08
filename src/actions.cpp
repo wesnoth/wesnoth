@@ -21,7 +21,6 @@
 #include "actions.hpp"
 
 #include "attack_prediction.hpp"
-#include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_events.hpp"
 #include "game_preferences.hpp"
@@ -40,6 +39,7 @@
 #include "whiteboard/manager.hpp"
 
 #include <boost/bind.hpp>
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -206,7 +206,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 	placements.push_back("map");
 	placements.push_back("recall");
 
-	foreach(std::string place, placements) {
+	BOOST_FOREACH(std::string place, placements) {
 		map_location loc;
 		bool pass((place == "leader_passable") || (place == "map_passable"));
 
@@ -417,7 +417,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 				leader_in_place= true;
 			else continue;
 
-			foreach (const unit& recall_unit, recall_list)
+			BOOST_FOREACH(const unit& recall_unit, recall_list)
 			{
 				//Only units which match the leaders recall filter are valid.
 				scoped_recall_unit this_unit("this_unit", t.save_id(), &recall_unit - &recall_list[0]);
@@ -435,7 +435,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 	}
 
 	if (!(recall_loc_is_castle && leader_in_place)) {
-		foreach (const unit &recall, recall_list)
+		BOOST_FOREACH(const unit &recall, recall_list)
 		{
 			result.push_back(&recall);
 		}
@@ -546,7 +546,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 
 		bool can_recruit_unit = is_on_team_list;
 		if (!can_recruit_unit) {
-			foreach (const std::string &recruitable, leader->recruits()) {
+			BOOST_FOREACH(const std::string &recruitable, leader->recruits()) {
 				if (recruitable == unit_type) {
 					can_recruit_unit = true;
 					break;
@@ -1925,7 +1925,7 @@ bool get_village(const map_location& loc, int side, int *action_timebonus)
 // Simple algorithm: no maximum number of patients per healer.
 void reset_resting(unit_map& units, int side)
 {
-	foreach (unit &u, units) {
+	BOOST_FOREACH(unit &u, units) {
 		if (u.side() == side)
 			u.set_resting(true);
 	}
@@ -1946,7 +1946,7 @@ void calculate_healing(int side, bool update_display)
 	std::list<unit_healing_struct> l;
 
 	// We look for all allied units, then we see if our healer is near them.
-	foreach (unit &u, units) {
+	BOOST_FOREACH(unit &u, units) {
 
 		if (u.get_state("unhealable") || u.incapacitated())
 			continue;
@@ -2307,7 +2307,7 @@ namespace {
 		}
 
 		pathfind::paths p(*resources::game_map, *resources::units, loc, *resources::teams, true, false, tm, 0, false, true);
-		foreach (const pathfind::paths::step &dest, p.destinations) {
+		BOOST_FOREACH(const pathfind::paths::step &dest, p.destinations) {
 			clear_shroud_loc(tm, dest.curr, &cleared_locations);
 		}
 
@@ -2350,7 +2350,7 @@ void recalculate_fog(int side)
 
 	tm.refog();
 
-	foreach (unit &u, *resources::units)
+	BOOST_FOREACH(unit &u, *resources::units)
 	{
 		if (u.side() == side) {
 			const unit_movement_resetter move_resetter(u);
@@ -2372,7 +2372,7 @@ bool clear_shroud(int side)
 
 	bool result = false;
 
-	foreach (unit &u, *resources::units)
+	BOOST_FOREACH(unit &u, *resources::units)
 	{
 		if (u.side() == side) {
 			const unit_movement_resetter move_resetter(u);
@@ -2435,7 +2435,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 	std::set<map_location> known_units;
 	if(check_shroud) {
-		foreach (const unit &u, units) {
+		BOOST_FOREACH(const unit &u, units) {
 			if (!tm->fogged(u.get_location())) {
 				known_units.insert(u.get_location());
 				tm->see(u.side() - 1);
@@ -2860,7 +2860,7 @@ void apply_shroud_changes(undo_list &undos, int side)
 	*/
 
 	std::set<map_location> known_units;
-	foreach (const unit &u, units) {
+	BOOST_FOREACH(const unit &u, units) {
 		if (!tm.fogged(u.get_location())) {
 			known_units.insert(u.get_location());
 		}
