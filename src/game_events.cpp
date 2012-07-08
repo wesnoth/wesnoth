@@ -3064,8 +3064,11 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	gamemap *game_map = resources::game_map;
 
 	gamemap map(*game_map);
+
 	try {
-		map.read(cfg["map"], false);
+		if (cfg["map"].empty())
+			map.read(cfg.child("map")["data"], false, cfg.child("map")["border_size"], cfg.child("map")["usage"]);
+		else map.read(cfg["map"], false);
 	} catch(incorrect_map_format_error&) {
 		lg::wml_error << "replace_map: Unable to load map " << cfg["map"] << "\n";
 		return;
