@@ -27,7 +27,7 @@ class abstract_validator;
 // Read data in, clobbering existing data.
 void read(config &cfg, std::istream &in,
 		  abstract_validator * validator = NULL); 	// Throws config::error
-void read(config &cfg, std::string &in,
+void read(config &cfg, const std::string &in,
 		  abstract_validator * validator = NULL); 	// Throws config::error
 void read_gz(config &cfg, std::istream &in,
 			 abstract_validator * validator = NULL);

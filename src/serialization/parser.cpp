@@ -374,7 +374,7 @@ void read(config &cfg, std::istream &in, abstract_validator * validator)
 	parser(cfg, in, validator)();
 }
 
-void read(config &cfg, std::string &in, abstract_validator * validator)
+void read(config &cfg, const std::string &in, abstract_validator * validator)
 {
 	std::istringstream ss(in);
 	parser(cfg, ss, validator)();
