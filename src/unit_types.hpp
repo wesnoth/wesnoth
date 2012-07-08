@@ -139,6 +139,8 @@ public:
 	{ return movement_cost_internal(moveCosts_, cfg_.child("movement_costs"), parent_, map, terrain); }
 	int vision_cost(const gamemap &map, t_translation::t_terrain terrain) const
 	{ return movement_cost_internal(visionCosts_, cfg_.child("vision_costs"), parent_, map, terrain); }
+	int jamming_cost(const gamemap &map, t_translation::t_terrain terrain) const
+	{ return movement_cost_internal(jammingCosts_, cfg_.child("jamming_costs"), parent_, map, terrain); }
 	int defense_modifier(const gamemap &map, t_translation::t_terrain terrain) const
 	{ return defense_modifier_internal(defenseMods_, cfg_, parent_, map, terrain); }
 	const defense_range &defense_range_modifier(const gamemap &map, t_translation::t_terrain terrain) const
