@@ -460,7 +460,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 			if(recruit_recall_loc.valid()) {
 				unit const* leader = bump_earlier->get_unit();
 				if(leader->can_recruit()
-					&& can_recruit_on(*resources::game_map, leader->get_location(), recruit_recall_loc)) {
+					&& can_recruit_on(*resources::game_map, *leader, recruit_recall_loc)) {
 					if(unit const* backup_leader = find_backup_leader(*leader)) {
 						side_actions::iterator it = find_first_action_of(*backup_leader);
 						if(!(it == end() || position < it)) {

@@ -117,6 +117,8 @@ Version 1.11.0-svn:
    * Trying to initiate movement (or an attack) before previous movement is
      finished no longer unselects the current unit (bug #19734). (The new
      movement command is still deliberately ignored.)
+   * The recruit and recall commands no longer appear in the context menu
+     for shrouded or (visibly) occupied hexes.
 
  * Whiteboard:
    * Fixed bug #19369: Using planning mode can cause losing ability to move my

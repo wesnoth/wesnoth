@@ -579,7 +579,7 @@ bool recall_result::test_suitable_recall_location(const unit &my_leader)
 		recall_location_ = pathfind::find_vacant_tile(*resources::game_map, *resources::units, my_leader.get_location(), pathfind::VACANT_CASTLE);
 	}
 
-	if (!can_recruit_on(*resources::game_map, my_leader.get_location(), recall_location_)) {
+	if ( !can_recruit_on(*resources::game_map, my_leader, recall_location_) ) {
 		set_error(E_BAD_RECALL_LOCATION);
 		return false;
 	}
@@ -779,7 +779,7 @@ bool recruit_result::test_suitable_recruit_location(const unit &my_leader)
 		recruit_location_ = pathfind::find_vacant_tile(*resources::game_map, *resources::units, my_leader.get_location(), pathfind::VACANT_CASTLE);
 	}
 
-	if (!can_recruit_on(*resources::game_map, my_leader.get_location(), recruit_location_)) {
+	if ( !can_recruit_on(*resources::game_map, my_leader, recruit_location_) ) {
 		set_error(E_BAD_RECRUIT_LOCATION);
 		return false;
 	}

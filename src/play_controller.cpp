@@ -1240,7 +1240,7 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 				leader != units_.end();++leader) {
 			if (leader->can_recruit() &&
 			    leader->side() == resources::screen->viewing_side() &&
-				can_recruit_on(map_, leader->get_location(), mouse_handler_.get_last_hex()))
+				can_recruit_on(map_, *leader, mouse_handler_.get_last_hex()))
 				return true;
 		}
 		return false;

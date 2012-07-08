@@ -53,7 +53,10 @@ static lg::log_domain log_ai_testing("ai/testing");
 
 struct castle_cost_calculator : pathfind::cost_calculator
 {
-	castle_cost_calculator(const gamemap& map) : map_(map)
+	castle_cost_calculator(const gamemap& map, const team & view_team) :
+		map_(map),
+		viewer_(view_team),
+		use_shroud_(view_team.uses_shroud())
 	{}
 
 	virtual double cost(const map_location& loc, const double) const
@@ -61,11 +64,16 @@ struct castle_cost_calculator : pathfind::cost_calculator
 		if(!map_.is_castle(loc))
 			return 10000;
 
+		if ( use_shroud_ && viewer_.shrouded(loc) )
+			return 10000;
+
 		return 1;
 	}
 
 private:
 	const gamemap& map_;
+	const team& viewer_;
+	const bool use_shroud_; // Allows faster checks when shroud is disabled.
 };
 
 void move_unit_spectator::add_seen_friend(const unit_map::const_iterator &u)
@@ -326,19 +334,43 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 }
 
 
-bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location& loc)
+/**
+ * Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
+ * This takes into account terrain, shroud (for side @a side), and whether or
+ * not there is already a visible unit at recruit_loc.
+ * The behavior for an invalid @a side is subject to change for future needs.
+ */
+bool can_recruit_on(const gamemap& map, const map_location& leader_loc, const map_location& recruit_loc, int side)
 {
-	if(!map.is_castle(loc))
+	if( !map.is_castle(recruit_loc) )
 		return false;
 
-	if(!map.is_keep(leader))
+	if( !map.is_keep(leader_loc) )
 		return false;
 
-	castle_cost_calculator calc(map);
+	if ( side < 1  ||  resources::teams == NULL  ||
+	     resources::teams->size() < static_cast<size_t>(side) ) {
+		// Invalid side specified.
+		// Currently this cannot happen, but it could conceivably be used in
+		// the future to request that shroud and visibility be ignored. Until
+		// that comes to pass, just return.
+ 		return false;
+	}
+	const team & view_team = (*resources::teams)[side-1];
+
+	if ( view_team.shrouded(recruit_loc) )
+		return false;
+
+	if ( get_visible_unit(recruit_loc, view_team) != NULL )
+		return false;
+
+	castle_cost_calculator calc(map, view_team);
 	// The limit computed in the third argument is more than enough for
 	// any convex castle on the map. Strictly speaking it could be
 	// reduced to sqrt(map.w()**2 + map.h()**2).
-	pathfind::plain_route rt = pathfind::a_star_search(leader, loc, map.w()+map.h(), &calc, map.w(), map.h());
+	pathfind::plain_route rt =
+		pathfind::a_star_search(leader_loc, recruit_loc, map.w()+map.h(), &calc,
+		                        map.w(), map.h());
 	return !rt.steps.empty();
 }
 
@@ -362,7 +394,7 @@ const std::set<std::string> get_recruits_for_location(int side, const map_locati
 			continue;
 
 		// Check if the leader is on a connected keep.
-		if ( can_recruit_on(*resources::game_map, u->get_location(), recruit_loc) ) {
+		if ( can_recruit_on(*resources::game_map, *u, recruit_loc) ) {
 			leader_in_place= true;
 			local_result.insert(u->recruits().begin(), u->recruits().end());
 		} else
@@ -407,7 +439,7 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 				continue;
 
 			// Check if the leader is on a connected keep.
-			if ( can_recruit_on(*resources::game_map, u->get_location(), recall_loc) )
+			if ( can_recruit_on(*resources::game_map, *u, recall_loc) )
 				leader_in_place= true;
 			else continue;
 
@@ -478,7 +510,7 @@ std::string find_recall_location(const int side, map_location& recall_loc, map_l
 			continue;
 		leader_fit = leader_keep;
 
-		if (can_recruit_on(*resources::game_map, leader_keep->get_location(), recall_loc)) {
+		if ( can_recruit_on(*resources::game_map, *leader_fit, recall_loc)) {
 			leader_opt = leader_fit;
 			if (resources::units->count(recall_loc) == 1)
 				recall_loc = tmp_location;
@@ -563,7 +595,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 			continue;
 		leader_fit = leader_keep;
 
-		if (can_recruit_on(*resources::game_map, leader_fit->get_location(), recruit_location)) {
+		if ( can_recruit_on(*resources::game_map, *leader_fit, recruit_location)) {
 			leader_opt = leader_fit;
 			if (resources::units->count(recruit_location) == 1)
 				recruit_location = tmp_location;
@@ -644,7 +676,7 @@ void place_recruit(const unit &u, const map_location &recruit_location, const ma
 	for(; leader != resources::units->end(); ++leader)
 		if (leader->can_recruit() &&
 		    leader->side() == new_unit.side() &&
-		    can_recruit_on(*resources::game_map, leader->get_location(), recruit_location))
+		    can_recruit_on(*resources::game_map, *leader, recruit_location))
 			break;
 	if (show) {
 		if (leader.valid()) {
