@@ -618,9 +618,14 @@ void menu_handler::save_map()
 			config file;
 			config& map = file.add_child("map");
 			map_.write(map);
+
 			std::stringstream str;
-			str << file;
+			{
+				config_writer writer(str, false);
+				writer.write(file);
+			}
 			write_file(input_name, str.str());
+
 			gui2::show_transient_message(gui_->video(), "", _("Map saved."));
 		} catch (io_exception& e) {
 			utils::string_map symbols;
