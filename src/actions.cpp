@@ -328,9 +328,6 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 
 bool can_recruit_on(const gamemap& map, const map_location& leader, const map_location& loc)
 {
-	if(!map.on_board(loc))
-		return false;
-
 	if(!map.is_castle(loc))
 		return false;
 
@@ -364,9 +361,8 @@ const std::set<std::string> get_recruits_for_location(int side, const map_locati
 		if (!(u->can_recruit() && u->side() == side))
 			continue;
 
-		//Check if the leader is on the right keep.
-		if (resources::game_map->is_keep(u->get_location())
-				&& (can_recruit_on(*resources::game_map, u->get_location(), recruit_loc))) {
+		// Check if the leader is on a connected keep.
+		if ( can_recruit_on(*resources::game_map, u->get_location(), recruit_loc) ) {
 			leader_in_place= true;
 			local_result.insert(u->recruits().begin(), u->recruits().end());
 		} else
@@ -410,9 +406,8 @@ const std::vector<const unit*> get_recalls_for_location(int side, const map_loca
 			if (!(u->can_recruit() && u->side() == side))
 				continue;
 
-			//Check if the leader is on the right keep.
-			if (resources::game_map->is_keep(u->get_location())
-					&& (can_recruit_on(*resources::game_map, u->get_location(), recall_loc)))
+			// Check if the leader is on a connected keep.
+			if ( can_recruit_on(*resources::game_map, u->get_location(), recall_loc) )
 				leader_in_place= true;
 			else continue;
 
@@ -649,7 +644,6 @@ void place_recruit(const unit &u, const map_location &recruit_location, const ma
 	for(; leader != resources::units->end(); ++leader)
 		if (leader->can_recruit() &&
 		    leader->side() == new_unit.side() &&
-		    resources::game_map->is_keep(leader->get_location()) &&
 		    can_recruit_on(*resources::game_map, leader->get_location(), recruit_location))
 			break;
 	if (show) {
