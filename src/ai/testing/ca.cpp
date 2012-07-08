@@ -139,7 +139,7 @@ double aspect_recruitment_phase::evaluate()
 		return BAD_SCORE;
 	}
 
-	map_location recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, leader->get_location(), pathfind::VACANT_CASTLE);
+	map_location recruit_loc = pathfind::find_vacant_castle(*leader);
 	if (!resources::game_map->on_board(recruit_loc)) {
 		return BAD_SCORE;
 	}
@@ -2003,11 +2003,11 @@ void passive_leader_shares_keep_phase::execute()
 	//check for each ai leader if he should move away from his keep
 	BOOST_FOREACH(unit_map::unit_iterator &ai_leader, ai_leaders){
 		//only if leader is on a keep
-		if (!resources::game_map->is_keep(ai_leader->get_location())) {
+		const map_location &keep = ai_leader->get_location();
+		if ( !resources::game_map->is_keep(keep) ) {
 			continue;
 		}
-		const map_location &keep = ai_leader->get_location();
-		map_location recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, keep, pathfind::VACANT_CASTLE);
+		map_location recruit_loc = pathfind::find_vacant_castle(*ai_leader);
 		if(!resources::game_map->on_board(recruit_loc)){
 			continue;
 		}

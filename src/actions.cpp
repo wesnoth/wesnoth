@@ -502,8 +502,7 @@ std::string find_recall_location(const int side, map_location& recall_loc, map_l
 		leader_keep = leader_able;
 
 		//find a place to recall in the leader's keep
-		map_location tmp_location = find_vacant_tile(*resources::game_map, *resources::units, leader_keep->get_location(),
-				pathfind::VACANT_CASTLE);
+		map_location tmp_location = pathfind::find_vacant_castle(*leader_keep);
 
 		//quit if there is no place to recruit on
 		if (tmp_location == map_location::null_location)
@@ -588,8 +587,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 			continue;
 		leader_keep = leader_able;
 
-		map_location tmp_location = find_vacant_tile(*resources::game_map, *resources::units, leader_keep->get_location(),
-				pathfind::VACANT_CASTLE);
+		map_location tmp_location = pathfind::find_vacant_castle(*leader_keep);
 
 		if (tmp_location == map_location::null_location)
 			continue;

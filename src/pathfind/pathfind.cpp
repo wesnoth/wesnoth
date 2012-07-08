@@ -43,13 +43,25 @@
 static lg::log_domain log_engine("engine");
 #define ERR_PF LOG_STREAM(err, log_engine)
 
+/**
+ * Function that will find a location on the board that is as near
+ * to @a loc as possible, but which is unoccupied by any units.
+ * If no valid location can be found, it will return a null location.
+ * If @a pass_check is provided, the found location must have a terrain
+ * that this unit can enter.
+ * If @a shroud_check is provided, only locations not covered by this
+ * team's shroud will be considered.
+ */
 map_location pathfind::find_vacant_tile(const gamemap& map,
-				const unit_map& units,
-				const map_location& loc,
-				pathfind::VACANT_TILE_TYPE vacancy,
-				const unit* pass_check)
+                                        const unit_map& units,
+                                        const map_location& loc,
+                                        pathfind::VACANT_TILE_TYPE vacancy,
+                                        const unit* pass_check,
+                                        const team* shroud_check)
 {
 	if (!map.on_board(loc)) return map_location();
+
+	const bool do_shroud = shroud_check  &&  shroud_check->uses_shroud();
 	std::set<map_location> pending_tiles_to_check, tiles_checked;
 	pending_tiles_to_check.insert(loc);
 	// Iterate out 50 hexes from loc
@@ -62,6 +74,9 @@ map_location pathfind::find_vacant_tile(const gamemap& map,
 		//Iterate over all the hexes we need to check
 		BOOST_FOREACH(const map_location &loc, tiles_checking)
 		{
+			// Skip shrouded locations.
+			if ( do_shroud  &&  shroud_check->shrouded(loc) )
+				continue;
 			//If this area is not a castle but should, skip it.
 			if (vacancy == pathfind::VACANT_CASTLE && !map.is_castle(loc)) continue;
 			const bool pass_check_and_unreachable = pass_check
@@ -93,6 +108,19 @@ map_location pathfind::find_vacant_tile(const gamemap& map,
 	}
 	return map_location();
 }
+
+/**
+ * Wrapper for find_vacant_tile() when looking for a vacant castle tile
+ * near a leader.
+ * If no valid location can be found, it will return a null location.
+ */
+map_location pathfind::find_vacant_castle(const unit & leader)
+{
+	return find_vacant_tile(*resources::game_map, *resources::units,
+	                        leader.get_location(), VACANT_CASTLE,
+	                        NULL, &(*resources::teams)[leader.side()-1]);
+}
+
 
 /**
  * Determines if a given location is in an enemy zone of control.

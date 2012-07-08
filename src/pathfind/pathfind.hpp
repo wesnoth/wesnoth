@@ -40,16 +40,17 @@ class teleport_map;
 enum VACANT_TILE_TYPE { VACANT_CASTLE, VACANT_ANY };
 enum PATH_TYPE { MOVE, VISION, JAMMING };
 
-/**
- * Function which will find a location on the board that is
- * as near to loc as possible, but which is unoccupied by any units.
- * If no valid location can be found, it will return a null location.
- */
+/// Function that will find a location on the board that is as near
+/// to @a loc as possible, but which is unoccupied by any units.
 map_location find_vacant_tile(const gamemap& map,
-                                   const unit_map& un,
-                                   const map_location& loc,
-			     	   VACANT_TILE_TYPE vacancy=VACANT_ANY,
-                                   const unit* pass_check=NULL);
+                              const unit_map& un,
+                              const map_location& loc,
+                              VACANT_TILE_TYPE vacancy=VACANT_ANY,
+                              const unit* pass_check=NULL,
+                              const team* shroud_check=NULL);
+/// Wrapper for find_vacant_tile() when looking for a vacant castle tile
+/// near a leader.
+map_location find_vacant_castle(const unit & leader);
 
 /** Determines if a given location is in an enemy zone of control. */
 bool enemy_zoc(team const &current_team, map_location const &loc,

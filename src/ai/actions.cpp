@@ -574,9 +574,9 @@ bool recall_result::test_suitable_recall_location(const unit &my_leader)
 {
 	recall_location_ = where_;
 
-	//if we have not-on-board location, such as null_location, then the caller wants us to recall on 'any' possible tile.
+	//If we have an off-board location, such as null_location, then the caller wants us to recall on 'any' possible tile.
 	if (!resources::game_map->on_board(recall_location_)) {
-		recall_location_ = pathfind::find_vacant_tile(*resources::game_map, *resources::units, my_leader.get_location(), pathfind::VACANT_CASTLE);
+		recall_location_ = pathfind::find_vacant_castle(my_leader);
 	}
 
 	if ( !can_recruit_on(*resources::game_map, my_leader, recall_location_) ) {
@@ -774,9 +774,9 @@ bool recruit_result::test_suitable_recruit_location(const unit &my_leader)
 {
 	recruit_location_ = where_;
 
-	//if we have not-on-board location, such as null_location, then the caller wants us to recruit on 'any' possible tile.
+	//If we have an off-board location, such as null_location, then the caller wants us to recruit on 'any' possible tile.
 	if (!resources::game_map->on_board(recruit_location_)) {
-		recruit_location_ = pathfind::find_vacant_tile(*resources::game_map, *resources::units, my_leader.get_location(), pathfind::VACANT_CASTLE);
+		recruit_location_ = pathfind::find_vacant_castle(my_leader);
 	}
 
 	if ( !can_recruit_on(*resources::game_map, my_leader, recruit_location_) ) {
