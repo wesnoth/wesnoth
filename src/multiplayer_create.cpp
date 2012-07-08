@@ -468,7 +468,7 @@ void create::process_event()
 				try {
 					read(level, mapfile);
 					parameters_.scenario_data.merge_with(level);
-				} catch(config::error& e) {
+				} catch(config::error&) {
 					config& map = parameters_.scenario_data.add_child("map");
 					map["data"] = mapfile;
 				}
