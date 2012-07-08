@@ -94,6 +94,9 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 	 * Function that will collect all locations within @a radius tiles of an
 	 * element of @a locs, subject to the restriction col_begin <= x < col_end.
 	 */
+	// Complexity: O(nr lg(nr)), where n = locs.size() and r = radius.
+	// In this formula, r is bound by col_end-col_begin (but that is
+	// probably a rare event).
 	void get_column_ranges(column_ranges & collected_tiles,
 	                       const std::vector<map_location>& locs,
 	                       const size_t radius,
@@ -144,6 +147,10 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 	 * When passed to this function, @a result must not be empty. (This allows
 	 * a code simplification and is currently always the case anyway.)
 	 */
+	// Complexity: O(number of distinct hexes collected), assuming that the
+	// insertion hint makes insertions O(1). Furthermore, hexes outside the
+	// interval [row_begin, row_end) are skipped and do not count towards the
+	// complexity.
 	void ranges_to_tiles(std::set<map_location> & result,
 	                     const column_ranges & collected_tiles,
 	                     int row_begin, int row_end)
@@ -158,6 +165,9 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 		{
 			// For this loop, the order within the set is crucial; we need
 			// rows.first to be non-decreasing with each iteration.
+			// Loop invariant: within this column, all rows before next_row
+			// have been processed and either added to result or skipped.
+			// There is no going back (nor a need to).
 			int next_row = row_begin;
 			BOOST_FOREACH (const row_range &rows, column.second)
 			{
@@ -187,6 +197,8 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
  * on-board locations that are within @a radius tiles of an element of locs.
  * @a result must be a std::set of locations.
  */
+// Complexity: O(nr lg(nr) + nr^2), where n = locs.size(), r = radius.
+// The nr^2 term is bounded by the size of the board.
 void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
                       size_t radius, std::set<map_location>& result,
                       bool with_border)
@@ -202,8 +214,19 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
 		const int border = with_border ? map.border_size() : 0;
 		column_ranges collected_tiles;
 
-		// Collect and process the hexes within the radius.
+		// Collect the hexes within the desired disks into collected_tiles.
+		// This maps each x-value to a set of ranges of y-values that
+		// are covered by the disks around each element of locs.
+		// (So the data size at this point is proportional to the number
+		// of x-values involved, which is O(nr). The lg(nr) factor comes
+		// from the data being sorted.)
 		get_column_ranges(collected_tiles, locs, radius, -border, map.w() + border);
+
+		// Now that all the tiles have been collected, add them to result.
+		// (There are O(nr^2) hexes to add.) By collecting before adding, each
+		// hex will be processed only once, even when disks overlap. This is
+		// how we can get good performance if there is significant overlap, and
+		// how the work required can be bound by the size of the board.
 		ranges_to_tiles(result, collected_tiles, -border, map.h() + border);
 	}
 }
