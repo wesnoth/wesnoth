@@ -7,7 +7,7 @@
 # MATSUMOTO Yuji <matumoto@marron.cias.osakafu-u.ac.jp>, 2005.
 # naoki iimura <amatubu@gmail.com>, 2005-2008.
 # yma <yma9yma@gmail.com>, 2011.
-# IWAI, Masaharu <iwaim.sub@gmail.com>, 2010-2011.
+# IWAI, Masaharu <iwaim.sub@gmail.com>, 2010-2012.
 #
 #   There is check character for internal use below.
 #   確認用SJIS範囲外UNICODE文字「 • 」 かぎかっこの中身が中点的なものとして表示されていれば、
@@ -19,10 +19,10 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2012-05-18 12:28+0200\n"
-"PO-Revision-Date: 2012-01-04 20:15+0900\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2012-07-09 05:21+0900\n"
+"Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
-"Language: Japanese\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2836,7 +2836,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:164
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "秘術による攻撃はアンデッドに対して大変強力である。"
+msgstr "<i>秘術</i>による攻撃はアンデッドに対して大変強力である。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
@@ -3704,7 +3704,7 @@ msgstr "アドオンは一つも導入されていません。"
 #: src/addon/manager.cpp:1416
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] "本当にアドオン「 $addon| 」を削除してもよろしいですか？"
+msgstr[0] "インストールされているアドオンを本当に削除してもよろしいですか？"
 
 #: src/addon/manager.cpp:1442
 msgid ""
@@ -4733,7 +4733,7 @@ msgstr "陣営の AI 操作を切り替えます。"
 
 #: src/menu_events.cpp:2543
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "翻訳を使わない機能のオン・オフ^[<陣営番号> [on/off]]"
+msgstr "翻訳を使わない機能のオン・オフ ^[<陣営番号> [on/off]]"
 
 #: src/menu_events.cpp:2546
 msgid "<side> <nickname>"
@@ -6500,7 +6500,7 @@ msgstr "全ての友軍の計画を隠す"
 
 #: src/whiteboard/manager.cpp:1152
 msgid "Show plans for $player"
-msgstr "リプレイを見る"
+msgstr "$player のプランを見る"
 
 #: src/whiteboard/manager.cpp:1154
 msgid "Hide plans for $player"
