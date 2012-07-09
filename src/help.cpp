@@ -1580,12 +1580,18 @@ public:
 			push_header(first_row, _("Defense"));
 			push_header(first_row, _("Movement Cost"));
 
+			if (type_.get_cfg().child_count("vision_costs") != 0)
+				push_header(first_row, _("Vision Cost"));
+			if (type_.get_cfg().child_count("jamming_costs") != 0)
+				push_header(first_row, _("Jamming Cost"));
+
 			table.push_back(first_row);
 			std::set<t_translation::t_terrain>::const_iterator terrain_it =
 				preferences::encountered_terrains().begin();
 
+
 			for (; terrain_it != preferences::encountered_terrains().end();
-				++terrain_it) {
+					++terrain_it) {
 				const t_translation::t_terrain terrain = *terrain_it;
 				if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 					continue;
@@ -1596,16 +1602,18 @@ public:
 					const std::string& name = info.name();
 					const std::string id = info.id();
 					const int moves = movement_type.movement_cost(*map,terrain);
+					const int views = movement_type.vision_cost(*map,terrain);
+					const int jamms = movement_type.jamming_cost(*map,terrain);
 					std::stringstream str;
 					str << "<ref>text='" << escape(name) << "' dst='"
-						<< escape(std::string("terrain_") + id) << "'</ref>";
+							<< escape(std::string("terrain_") + id) << "'</ref>";
 					row.push_back(std::make_pair(str.str(),
-						font::line_width(name, normal_font_size)));
+							font::line_width(name, normal_font_size)));
 
 					//defense  -  range: +10 % .. +70 %
 					str.str(clear_stringstream);
 					const int defense =
-						100 - movement_type.defense_modifier(*map,terrain);
+							100 - movement_type.defense_modifier(*map,terrain);
 					std::string color;
 					if (defense <= 10)
 						color = "red";
@@ -1617,11 +1625,11 @@ public:
 						color = "green";
 
 					str << "<format>color=" << color << " text='"<< defense << "%'</format>";
-					const std::string markup = str.str();
+					std::string markup = str.str();
 					str.str(clear_stringstream);
 					str << defense << "%";
 					row.push_back(std::make_pair(markup,
-						     font::line_width(str.str(), normal_font_size)));
+							font::line_width(str.str(), normal_font_size)));
 
 					//movement  -  range: 1 .. 5, unit_movement_type::UNREACHABLE=impassable
 					str.str(clear_stringstream);
@@ -1632,7 +1640,6 @@ public:
 						color = "yellow";
 					else
 						color = "white";
-
 					str << "<format>color=" << color << " text='";
 					// A 5 MP margin; if the movement costs go above
 					// the unit's max moves + 5, we replace it with dashes.
@@ -1642,11 +1649,65 @@ public:
 						str << moves;
 					}
 					str << "'</format>";
-					push_tab_pair(row, str.str());
+					markup = str.str();
+					str.str(clear_stringstream);
+					str << moves;
+					row.push_back(std::make_pair(markup,
+							font::line_width(str.str(), normal_font_size)));
+
+					//vision
+					if (type_.get_cfg().child_count("vision_costs") != 0) {
+						str.str(clear_stringstream);
+						const bool cannot_view = views > type_.vision();
+						if (cannot_view)		// cannot view in this terrain
+							color = "red";
+						else if (views > 1)
+							color = "yellow";
+						else
+							color = "white";
+						str << "<format>color=" << color << " text='";
+						// A 5 MP margin; if the vision costs go above
+						// the unit's vision + 5, we replace it with dashes.
+						if(cannot_view && (views > type_.vision() + 5)) {
+							str << utils::unicode_figure_dash;
+						} else {
+							str << views;
+						}
+						str << "'</format>";
+						markup = str.str();
+						str.str(clear_stringstream);
+						str << jamms;
+						row.push_back(std::make_pair(markup,
+								font::line_width(str.str(), normal_font_size)));
+					}
+
+					//jamming
+					if (type_.get_cfg().child_count("jamming_costs") != 0) {
+						str.str(clear_stringstream);
+						const bool cannot_jamm = jamms > type_.jamming();
+						if (cannot_jamm)		// cannot jamm in this terrain
+							color = "red";
+						else if (jamms > 1)
+							color = "yellow";
+						else
+							color = "white";
+						str << "<format>color=" << color << " text='";
+						// A 5 MP margin; if the jamming costs go above
+						// the unit's jamming + 5, we replace it with dashes.
+						if(cannot_jamm && (jamms > type_.jamming() + 5)) {
+							str << utils::unicode_figure_dash;
+						} else {
+							str << jamms;
+						}
+						str << "'</format>";
+
+						push_tab_pair(row, str.str());
+					}
 
 					table.push_back(row);
 				}
 			}
+
 			ss << generate_table(table);
 		}
 		return ss.str();
