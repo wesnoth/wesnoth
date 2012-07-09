@@ -38,6 +38,8 @@ public:
 	void set_toolbar_hint(const std::string& value) { toolbar_hint_ = value; }
 
 	void set_palette_report(const config& palette_report) {palette_report_ = palette_report;};
+    const SDL_Rect& brush_bar_area() const
+               { return theme_.brush_bar_location(screen_area()); }
 
 protected:
 	void pre_draw();

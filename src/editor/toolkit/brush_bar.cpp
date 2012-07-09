@@ -27,17 +27,18 @@
 
 namespace editor {
 
-brush_bar::brush_bar(display &gui, const size_specs &sizes,
-	std::vector<brush>& brushes, brush** the_brush)
-: gui::widget(gui.video()), size_specs_(sizes), gui_(gui),
-selected_(0), brushes_(brushes), the_brush_(the_brush),
-size_(30) {
+brush_bar::brush_bar(editor_display &gui, std::vector<brush>& brushes, brush** the_brush)
+	: gui::widget(gui.video()), gui_(gui),
+	  selected_(0), brushes_(brushes), the_brush_(the_brush),
+	  size_(30) {
 	adjust_size();
 }
 
 void brush_bar::adjust_size() {
-	set_location(size_specs_.brush_x -1, size_specs_.brush_y -1);
-	set_measurements(size_ * brushes_.size() + (brushes_.size() -1) * (size_specs_.brush_padding) + 2, (size_ +2));
+	set_location(gui_.brush_bar_area());
+	//TODO
+	//set_location(size_specs_.brush_x -1, size_specs_.brush_y -1);
+	set_measurements(size_ * brushes_.size() + (brushes_.size() -1) * (brush_padding_) + 2, (size_ +2));
 	set_dirty();
 }
 
@@ -109,7 +110,7 @@ void brush_bar::draw(bool force) {
 		|| static_cast<unsigned>(image->h) != size_) {
 			image.assign(scale_surface(image, size_, size_));
 		}
-		SDL_Rect dstrect = create_rect(x, size_specs_.brush_y, image->w, image->h);
+		SDL_Rect dstrect = create_rect(x, gui_.brush_bar_area().y, image->w, image->h);
 		sdl_blit(image, NULL, screen, &dstrect);
 		const Uint32 color = i == selected_brush_size() ?
 			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
@@ -117,25 +118,25 @@ void brush_bar::draw(bool force) {
 		//TODO fendrin
 		//draw_rectangle(dstrect.x -1, dstrect.y -1, image->w +2, image->h+2, color, screen);
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
-		x += image->w + size_specs_.brush_padding;
+		x += image->w + brush_padding_;
 	}
 	update_rect(loc);
 	set_dirty(false);
 }
 
 int brush_bar::selected_index(int x, int y) const {
-	const int bar_x = size_specs_.brush_x;
-	const int bar_y = size_specs_.brush_y;
+	const int bar_x = gui_.brush_bar_area().x;
+	const int bar_y = gui_.brush_bar_area().y;
 
 	if ((x < bar_x || static_cast<size_t>(x) > bar_x + size_ * brushes_.size() +
-	                  brushes_.size() * size_specs_.brush_padding) ||
+	                  brushes_.size() * brush_padding_) ||
 	    (y < bar_y || static_cast<size_t>(y) > bar_y + size_))
 	{
 		return -1;
 	}
 
 	for(size_t i = 0; i <  brushes_.size(); i++) {
-		int px = bar_x + size_ * i + i * size_specs_.brush_padding;
+		int px = bar_x + size_ * i + i * brush_padding_;
 		if (x >= px && x <= px + static_cast<int>(size_) && y >= bar_y && y <= bar_y + static_cast<int>(size_)) {
 			return i;
 		}

@@ -70,7 +70,7 @@ void editor_toolkit::init_sidebar(const config& game_config)
 {
 	size_specs_.reset(new size_specs());
 	adjust_sizes(gui_, *size_specs_);
-	brush_bar_.reset(new brush_bar(gui_, *size_specs_, brushes_, &brush_));
+	brush_bar_.reset(new brush_bar(gui_, brushes_, &brush_));
 	palette_manager_.reset(new palette_manager(gui_, *size_specs_, game_config, &mouse_action_));
 }
 

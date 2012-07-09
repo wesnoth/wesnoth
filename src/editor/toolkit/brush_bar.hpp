@@ -21,16 +21,15 @@
 #ifndef BRUSH_BAR_H_INCLUDED
 #define BRUSH_BAR_H_INCLUDED
 
-#include "../../display.hpp"
+#include "../editor_display.hpp"
 #include "brush.hpp"
-#include "editor/palette/palette_layout.hpp"
 
 namespace editor {
 
 /** A bar where the brush is drawn */
 class brush_bar : public gui::widget {
 public:
-	brush_bar(display &gui, const size_specs &sizes, std::vector<brush>& brushes, brush** the_brush);
+	brush_bar(editor_display &gui, std::vector<brush>& brushes, brush** the_brush);
 
 	/** Return the size of currently selected brush. */
 	unsigned int selected_brush_size();
@@ -62,12 +61,13 @@ private:
 	/** Return the index of the brush that is at coordinates (x, y) in the panel. */
 	int selected_index(const int x, const int y) const;
 
-	const size_specs &size_specs_;
-	display &gui_;
+	editor_display &gui_;
 	unsigned int selected_;
 	std::vector<brush>& brushes_;
 	brush** the_brush_;
 	const size_t size_;
+
+	static const int brush_padding_ = 1;
 };
 
 } // end namespace editor
