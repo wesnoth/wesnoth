@@ -117,6 +117,8 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 # Handle options (set paths/definitions/etc...)
 #
 
+##### Set the compiler flags.
+
 # This macro checks whether a compiler supports a compiler flag.
 #
 # If the flag is supported the flag will be added to the target compiler flags.
@@ -144,76 +146,123 @@ macro(check_compiler_has_flag target flag variable)
 	endif(${variable})
 endmacro(check_compiler_has_flag)
 
-# If UNIX Assume Clang.
-if(CMAKE_COMPILER_IS_GNUCXX OR UNIX)
-	# Set our own default flags at first run.
-	if(NOT CONFIGURED)
 
-		if(ENABLE_STRICT_COMPILATION)
-			# The current unit test code breaks strict aliasing with g++ 4.4.
-			set(STRICT_FLAGS "-Werror -Wno-strict-aliasing")
+### Set the environment compiler flags.
 
-			# This flag is/will be added in gcc-4.8 and fails with BOOST_STATIC_ASSERT
-			check_compiler_has_flag(
-					STRICT_FLAGS
-					"-Wunused-local-typedefs"
-					HAS_COMPILER_FLAG_WUNUSED_LOCAL_TYPEDEFS
-					"-Wno-unused-local-typedefs")
+if(CONFIGURED)
+	# The CONFIGURED flag was replaced when trunk `was' 1.11, before the release of 1.11.0
+	message("Builed files depending on 'CONFIGURED' found, please regenerate your build files.")
+	set(CXX_FLAGS_USER
+		"${CMAKE_CXX_FLAGS}"
+		CACHE
+		STRING
+		"The CXXFLAGS environment variable used for the initial generation."
+		FORCE
+	)
+	unset(CONFIGURED CACHE)
+endif(CONFIGURED)
 
-			# This flag is/will be added in gcc-4.8 and fails with png in C++11 mode
-			check_compiler_has_flag(
-					STRICT_FLAGS
-					"-Wliteral-suffix"
-					HAS_COMPILER_FLAG_WLITERAL_SUFFIX
-					"-Wno-literal-suffix")
+if(NOT DEFINED CXX_FLAGS_USER)
 
-			# This flag is needed for Clang to silence its complains about
-			# unused command line arguments.
-			check_compiler_has_flag(
-					STRICT_FLAGS
-					"-Qunused-arguments"
-					HAS_COMPILER_FLAG_QUNUSED_ARGUMENTS)
+	message(STATUS "Environment compiler flags set to »${CXX_FLAGS_USER}«")
+	set(CXX_FLAGS_USER
+		"$ENV{CXXFLAGS}"
+		CACHE
+		STRING
+		"The CXXFLAGS environment variable used for the initial generation."
+		FORCE
+	)
 
-			# Silences Clang warnings about declaring a class a class first and
-			# a struct later.
-			check_compiler_has_flag(
-					STRICT_FLAGS
-					"-Wmismatched-tags"
-					HAS_COMPILER_FLAG_WMISMATCHED_TAGS
-					"-Wno-mismatched-tags")
+endif(NOT DEFINED CXX_FLAGS_USER)
 
-			if(NOT CMAKE_COMPILER_IS_GNUCXX)
-				# Silences warnings about overloaded virtuals.
-			   	# (GCC doesn't complaing Clang does.)
-				check_compiler_has_flag(
-						STRICT_FLAGS
-						"-Woverloaded-virtual"
-						HAS_COMPILER_FLAG_WOVERLOADED_VIRTUAL
-						"-Wno-overloaded-virtual")
-			endif(NOT CMAKE_COMPILER_IS_GNUCXX)
 
-		else(ENABLE_STRICT_COMPILATION)
-			set(STRICT_FLAGS "")
-		endif(ENABLE_STRICT_COMPILATION)
+### Set default Wesnoth project compiler flags
 
-		# Strict compilation for C files is disabled until somebody wants to clean them.
-		set(CMAKE_C_FLAGS "-O2 -W -Wall -ansi $ENV{CFLAGS}"
-				CACHE STRING "Flags used by the C compiler during normal builds." FORCE)
-		set(CMAKE_C_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi $ENV{CFLAGS}"
-				CACHE STRING "Flags used by the C compiler during debug builds." FORCE)
-		set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG -W -Wall -ansi $ENV{CFLAGS} -Wno-unused"
-				CACHE STRING "Flags used by the C compiler during release builds." FORCE)
+set(CXX_FLAGS_PROJECT)
+check_compiler_has_flag(CXX_FLAGS_PROJECT "-std=c++98" HAS_COMPILER_FLAG_STD)
+check_compiler_has_flag(CXX_FLAGS_PROJECT "-W" HAS_COMPILER_FLAG_W)
+check_compiler_has_flag(CXX_FLAGS_PROJECT "-Wall" HAS_COMPILER_FLAG_WALL)
 
-		set(CMAKE_CXX_FLAGS "-O2 -W -Wall -std=c++98 ${STRICT_FLAGS} $ENV{CXXFLAGS}"
-				CACHE STRING "Flags used by the CXX compiler during normal builds." FORCE)
-		set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -std=c++98 ${STRICT_FLAGS} $ENV{CXXFLAGS}"
-				CACHE STRING "Flags used by the CXX compiler during debug builds." FORCE)
-		set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -W -Wall -std=c++98 ${STRICT_FLAGS} $ENV{CXXFLAGS} -Wno-unused"
-				CACHE STRING "Flags used by the CXX compiler during release builds." FORCE)
 
-	endif(NOT CONFIGURED)
+### Set strict compiler flags.
 
-endif(CMAKE_COMPILER_IS_GNUCXX OR UNIX)
+set(CXX_FLAGS_STRICT_COMPILATION)
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Werror"
+	HAS_COMPILER_FLAG_WERROR
+)
+
+# The current unit test code breaks strict aliasing with g++ 4.4.
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wstrict-aliasing"
+	HAS_COMPILER_FLAG_WERROR_STRICT_ALIASING
+	"-Wno-strict-aliasing"
+)
+
+# This flag is/will be added in gcc-4.8 and fails with BOOST_STATIC_ASSERT
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wunused-local-typedefs"
+	HAS_COMPILER_FLAG_WUNUSED_LOCAL_TYPEDEFS
+	"-Wno-unused-local-typedefs"
+)
+
+# This flag is/will be added in gcc-4.8 and fails with png in C++11 mode
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wliteral-suffix"
+	HAS_COMPILER_FLAG_WLITERAL_SUFFIX
+	"-Wno-literal-suffix"
+)
+
+# This removes a lot of warnings from Clang regarding unused -I arguments
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Qunused-arguments"
+	HAS_COMPILER_FLAG_QUNUSED_ARGUMENTS
+)
+
+# Silences Clang warnings about declaring a class a class first and
+# a struct later.
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wmismatched-tags"
+	HAS_COMPILER_FLAG_WMISMATCHED_TAGS
+	"-Wno-mismatched-tags"
+)
+
+if(NOT CMAKE_COMPILER_IS_GNUCXX)
+	# Silences warnings about overloaded virtuals.
+	# (GCC doesn't complain Clang does.)
+	check_compiler_has_flag(
+		CXX_FLAGS_STRICT_COMPILATION
+		"-Woverloaded-virtual"
+		HAS_COMPILER_FLAG_WOVERLOADED_VIRTUAL
+		"-Wno-overloaded-virtual"
+	)
+endif(NOT CMAKE_COMPILER_IS_GNUCXX)
+
+
+### Set the final compiler flags.
+
+set(COMPILER_FLAGS "${CXX_FLAGS_PROJECT}")
+if(ENABLE_STRICT_COMPILATION)
+	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_STRICT_COMPILATION}")
+endif(ENABLE_STRICT_COMPILATION)
+set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_USER}")
+
+if(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
+	message(STATUS "CMake compiler flags set to »${COMPILER_FLAGS}«")
+	set(CMAKE_CXX_FLAGS
+		"${COMPILER_FLAGS}"
+		CACHE
+		STRING
+		"Global flags used by the CXX compiler during all builds."
+		FORCE
+	)
+endif(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
 
 if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	# Assume the compiler is the clang compiler.
@@ -406,5 +455,3 @@ add_custom_target(uninstall
 include(CPack)
 set(CPACK_GENERATOR "TGZ")
 set(CPACK_SOURCE_GENERATOR "TGZ")
-
-set(CONFIGURED ON CACHE INTERNAL "")
