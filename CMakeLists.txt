@@ -96,6 +96,7 @@ if(UNIX AND NOT APPLE AND NOT CYGWIN)
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
 
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" ON)
+option(ENABLE_PEDANTIC_COMPILATION "Sets the pedantic compilation mode" OFF)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
 option ( USE_ANA_NETWORK "Compile network module using ana" OFF )
 option(ENABLE_DESIGN_DOCUMENTS "Enables the generation of design documents, and has additional dependencies" OFF)
@@ -245,12 +246,25 @@ if(NOT CMAKE_COMPILER_IS_GNUCXX)
 endif(NOT CMAKE_COMPILER_IS_GNUCXX)
 
 
+### Set pedantic compiler flags.
+
+set(CXX_FLAGS_PEDANTIC_COMPILATION)
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wextra"
+	HAS_COMPILER_FLAG_WEXTRA
+)
+
+
 ### Set the final compiler flags.
 
 set(COMPILER_FLAGS "${CXX_FLAGS_PROJECT}")
 if(ENABLE_STRICT_COMPILATION)
 	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_STRICT_COMPILATION}")
 endif(ENABLE_STRICT_COMPILATION)
+if(ENABLE_PEDANTIC_COMPILATION)
+	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_PEDANTIC_COMPILATION}")
+endif(ENABLE_PEDANTIC_COMPILATION)
 set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_USER}")
 
 if(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
