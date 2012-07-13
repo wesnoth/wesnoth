@@ -590,6 +590,7 @@ set(wesnoth-main_SRC
 	addon/state.cpp
 	addon/validation.cpp
 	ai/actions.cpp
+	ai/akihara/recruitment.cpp
 	ai/composite/ai.cpp
 	ai/composite/aspect.cpp
 	ai/composite/component.cpp

@@ -34,6 +34,7 @@
 #include "testing/ca_global_fallback.hpp"
 #include "testing/stage_rca.hpp"
 #include "testing/stage_fallback.hpp"
+#include "akihara/recruitment.hpp"
 
 namespace ai {
 // =======================================================================
@@ -126,6 +127,9 @@ static register_candidate_action_factory<testing_ai_default::passive_leader_shar
 
 static register_candidate_action_factory<testing_ai_default::global_fallback_phase>
 	global_fallback_phase_factory("testing_ai_default::global_fallback_phase");
+
+static register_candidate_action_factory<akihara_recruitment::recruitment>
+	recruitment_factory("akihara_recruitment::recruitment");
 
 // =======================================================================
 // Goals
