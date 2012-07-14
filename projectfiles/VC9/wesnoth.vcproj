@@ -599,6 +599,94 @@
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
+		<Configuration
+			Name="ReleaseDEBUG|Win32"
+			OutputDirectory="$(SolutionDir)\..\.."
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1"
+			CharacterSet="0"
+			WholeProgramOptimization="1"
+			BuildLogFile="$(IntDir)\BuildLog-wesnoth.htm"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				EnableIntrinsicFunctions="true"
+				WholeProgramOptimization="false"
+				AdditionalIncludeDirectories="..\..\src"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
+				MinimalRebuild="true"
+				RuntimeLibrary="2"
+				BufferSecurityCheck="false"
+				EnableFunctionLevelLinking="true"
+				EnableEnhancedInstructionSet="2"
+				OpenMP="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				IgnoreImportLibrary="false"
+				LinkLibraryDependencies="true"
+				AdditionalDependencies="libintl.lib SDL.lib SDL_image.lib SDL_ttf.lib SDL_mixer.lib SDL_net.lib cairo.lib winmm.lib ws2_32.lib SDLmain.lib pango-1.0.lib pangocairo-1.0.lib gobject-2.0.lib glib-2.0.lib $(IntDir)\liblua.lib"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile=""
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				LinkTimeCodeGeneration="1"
+				ProfileGuidedDatabase=""
+				TargetMachine="1"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
 	</Configurations>
 	<References>
 	</References>
@@ -691,6 +779,14 @@
 						ObjectFile="$(IntDir)\Addon\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\addon\client.hpp"
@@ -749,6 +845,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -819,6 +923,14 @@
 						ObjectFile="$(IntDir)\Addon\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\addon\manager.hpp"
@@ -877,6 +989,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -947,6 +1067,14 @@
 						ObjectFile="$(IntDir)\Addon\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\addon\state.hpp"
@@ -1005,6 +1133,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Addon\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1079,6 +1215,14 @@
 						ObjectFile="$(IntDir)\ai\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\ai\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\ai\actions.hpp"
@@ -1137,6 +1281,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\ai\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1207,6 +1359,14 @@
 						ObjectFile="$(IntDir)\ai\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\ai\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\ai\contexts.hpp"
@@ -1265,6 +1425,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\ai\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1335,6 +1503,14 @@
 						ObjectFile="$(IntDir)\ai\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\ai\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\ai\gamestate_observer.hpp"
@@ -1393,6 +1569,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\ai\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1463,6 +1647,14 @@
 						ObjectFile="$(IntDir)\ai\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\ai\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\ai\manager.hpp"
@@ -1527,6 +1719,14 @@
 						ObjectFile="$(IntDir)\ai\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\ai\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\ai\registry.hpp"
@@ -1585,6 +1785,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\ai\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1658,6 +1866,14 @@
 							ObjectFile="$(IntDir)\ai\composite\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\composite\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\composite\ai.hpp"
@@ -1716,6 +1932,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\composite\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1786,6 +2010,14 @@
 							ObjectFile="$(IntDir)\ai\composite\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\composite\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\composite\component.hpp"
@@ -1844,6 +2076,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\composite\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -1914,6 +2154,14 @@
 							ObjectFile="$(IntDir)\ai\composite\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\composite\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\composite\engine.hpp"
@@ -1972,6 +2220,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\composite\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -2042,6 +2298,14 @@
 							ObjectFile="$(IntDir)\ai\composite\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\composite\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\composite\engine_fai.hpp"
@@ -2106,6 +2370,14 @@
 							ObjectFile="$(IntDir)\ai\composite\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\composite\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\composite\engine_lua.hpp"
@@ -2164,6 +2436,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\composite\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -2238,6 +2518,14 @@
 							ObjectFile="$(IntDir)\ai\composite\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\composite\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\composite\rca.hpp"
@@ -2296,6 +2584,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\composite\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -2374,6 +2670,14 @@
 							ObjectFile="$(IntDir)\ai\default\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\default\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\default\ai.hpp"
@@ -2438,6 +2742,14 @@
 							ObjectFile="$(IntDir)\ai\default\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\default\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\default\contexts.cpp"
@@ -2492,6 +2804,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\default\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -2570,6 +2890,14 @@
 							ObjectFile="$(IntDir)\ai\testing\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\testing\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\testing\aspect_attacks.hpp"
@@ -2628,6 +2956,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\testing\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -2698,6 +3034,14 @@
 							ObjectFile="$(IntDir)\ai\testing\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\testing\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\testing\ca_global_fallback.hpp"
@@ -2756,6 +3100,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\testing\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -2826,6 +3178,14 @@
 							ObjectFile="$(IntDir)\ai\testing\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\testing\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\testing\ca_testing_recruitment.hpp"
@@ -2890,6 +3250,14 @@
 							ObjectFile="$(IntDir)\ai\testing\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\testing\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\testing\stage_fallback.hpp"
@@ -2948,6 +3316,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\testing\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -3022,6 +3398,14 @@
 							ObjectFile="$(IntDir)\ai\formula\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\formula\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\formula\ai.hpp"
@@ -3080,6 +3464,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\formula\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -3150,6 +3542,14 @@
 							ObjectFile="$(IntDir)\ai\formula\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\formula\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\formula\candidates.hpp"
@@ -3208,6 +3608,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\formula\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -3278,6 +3686,14 @@
 							ObjectFile="$(IntDir)\ai\formula\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\formula\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\formula\stage_side_formulas.hpp"
@@ -3336,6 +3752,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\formula\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -3410,6 +3834,14 @@
 							ObjectFile="$(IntDir)\ai\lua\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\lua\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\ai\lua\core.hpp"
@@ -3468,6 +3900,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\ai\lua\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -3607,6 +4047,14 @@
 						ObjectFile="$(IntDir)\Editor\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Editor\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\editor\editor_controller.hpp"
@@ -3665,6 +4113,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Editor\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -3735,6 +4191,14 @@
 						ObjectFile="$(IntDir)\Editor\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Editor\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\editor\editor_main.hpp"
@@ -3793,6 +4257,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Editor\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -3860,6 +4332,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Action\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -3934,6 +4414,14 @@
 							ObjectFile="$(IntDir)\Editor\Action\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Action\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\editor\action\action_label.hpp"
@@ -3992,6 +4480,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Action\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -4065,6 +4561,14 @@
 								ObjectFile="$(IntDir)\Editor\Action\Mouse\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Editor\Action\Mouse\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\editor\action\mouse\mouse_action.hpp"
@@ -4129,6 +4633,14 @@
 								ObjectFile="$(IntDir)\Editor\Action\Mouse\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Editor\Action\Mouse\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\editor\action\mouse\mouse_action_map_label.hpp"
@@ -4187,6 +4699,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Editor\Action\Mouse\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -4273,6 +4793,15 @@
 							DisableSpecificWarnings="4505"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+							DisableSpecificWarnings="4505"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\editor\palette\editor_palettes.hpp"
@@ -4331,6 +4860,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -4401,6 +4938,14 @@
 							ObjectFile="$(IntDir)\Editor\Palette\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\editor\palette\palette_manager.hpp"
@@ -4465,6 +5010,14 @@
 							ObjectFile="$(IntDir)\Editor\Palette\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\editor\palette\terrain_palettes.hpp"
@@ -4523,6 +5076,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Palette\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -4597,6 +5158,14 @@
 							ObjectFile="$(IntDir)\Editor\Map\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Map\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\editor\map\context_manager.hpp"
@@ -4655,6 +5224,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Map\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -4725,6 +5302,14 @@
 							ObjectFile="$(IntDir)\Editor\Map\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Map\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\editor\map\map_context.hpp"
@@ -4783,6 +5368,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Map\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -4857,6 +5450,14 @@
 							ObjectFile="$(IntDir)\Editor\Toolkit\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Toolkit\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\editor\toolkit\brush.hpp"
@@ -4923,6 +5524,22 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Toolkit\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Editor\Toolkit\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -5057,6 +5674,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\button.hpp"
@@ -5119,6 +5744,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -5189,6 +5822,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\control.hpp"
@@ -5253,6 +5894,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\debug.hpp"
@@ -5311,6 +5960,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -5392,6 +6049,15 @@
 							DisableSpecificWarnings="4505"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+							DisableSpecificWarnings="4505"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\generator.hpp"
@@ -5454,6 +6120,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -5528,6 +6202,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\helper.hpp"
@@ -5592,6 +6274,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\horizontal_scrollbar.hpp"
@@ -5650,6 +6340,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -5724,6 +6422,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\label.hpp"
@@ -5782,6 +6488,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -5852,6 +6566,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\listbox.hpp"
@@ -5910,6 +6632,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -5980,6 +6710,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\minimap.hpp"
@@ -6038,6 +6776,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -6108,6 +6854,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\pane.hpp"
@@ -6166,6 +6920,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -6236,6 +6998,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\password_box.hpp"
@@ -6294,6 +7064,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -6364,6 +7142,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\repeating_button.hpp"
@@ -6422,6 +7208,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -6492,6 +7286,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\scrollbar.hpp"
@@ -6550,6 +7352,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -6624,6 +7434,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\scrollbar_panel.hpp"
@@ -6686,6 +7504,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -6756,6 +7582,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\slider.hpp"
@@ -6814,6 +7648,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -6884,6 +7726,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\stacked_widget.hpp"
@@ -6942,6 +7792,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -7012,6 +7870,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\text_box.hpp"
@@ -7070,6 +7936,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -7140,6 +8014,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\toggle_panel.hpp"
@@ -7198,6 +8080,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -7270,6 +8160,22 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -7396,6 +8302,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\viewport.hpp"
@@ -7460,6 +8374,14 @@
 							ObjectFile="$(IntDir)\Gui\Widgets\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\widget.hpp"
@@ -7518,6 +8440,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -7596,6 +8526,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\addon_connect.hpp"
@@ -7654,6 +8592,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -7724,6 +8670,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\campaign_difficulty.hpp"
@@ -7782,6 +8736,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -7852,6 +8814,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\chat_log.hpp"
@@ -7910,6 +8880,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -7980,6 +8958,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\debug_clock.hpp"
@@ -8038,6 +9024,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -8108,6 +9102,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\edit_label.hpp"
@@ -8166,6 +9168,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -8236,6 +9246,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\editor_new_map.hpp"
@@ -8294,6 +9312,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -8364,6 +9390,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\editor_set_starting_position.hpp"
@@ -8422,6 +9456,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -8500,6 +9542,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\folder_create.hpp"
@@ -8558,6 +9608,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -8628,6 +9686,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\game_load.cpp"
@@ -8682,6 +9748,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -8752,6 +9826,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\game_save.hpp"
@@ -8810,6 +9892,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -8884,6 +9974,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\language_selection.hpp"
@@ -8942,6 +10040,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -9012,6 +10118,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\lobby_player_info.hpp"
@@ -9070,6 +10184,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -9140,6 +10262,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\mp_change_control.hpp"
@@ -9198,6 +10328,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -9268,6 +10406,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\mp_connect.hpp"
@@ -9326,6 +10472,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -9396,6 +10550,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\mp_create_game_set_password.hpp"
@@ -9460,6 +10622,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\mp_host_game_prompt.hpp"
@@ -9518,6 +10688,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -9590,6 +10768,22 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -9716,6 +10910,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\popup.hpp"
@@ -9774,6 +10976,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -9844,6 +11054,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\tip.hpp"
@@ -9902,6 +11120,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -9972,6 +11198,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\transient_message.hpp"
@@ -10030,6 +11264,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -10100,6 +11342,14 @@
 							ObjectFile="$(IntDir)\Gui\Dialogs\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\dialogs\wml_message.cpp"
@@ -10154,6 +11404,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -10227,6 +11485,14 @@
 								ObjectFile="$(IntDir)\Gui\Dialogs\Lobby\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\Lobby\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\lobby\lobby_data.hpp"
@@ -10285,6 +11551,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\Lobby\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -10391,6 +11665,14 @@
 								ObjectFile="$(IntDir)\Gui\Dialogs\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\dialogs\addon\filter_options.hpp"
@@ -10449,6 +11731,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -10518,6 +11808,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Auxiliary\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -10604,6 +11902,14 @@
 							ObjectFile="$(IntDir)\Gui\Auxiliary\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Auxiliary\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\auxiliary\log.hpp"
@@ -10676,6 +11982,14 @@
 							ObjectFile="$(IntDir)\Gui\Auxiliary\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Auxiliary\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\auxiliary\placer.hpp"
@@ -10742,6 +12056,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Auxiliary\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -10832,6 +12154,14 @@
 							ObjectFile="$(IntDir)\Gui\Auxiliary\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Auxiliary\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\gui\auxiliary\widget_definition.hpp"
@@ -10890,6 +12220,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Auxiliary\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						>
 						<Tool
 							Name="VCCLCompilerTool"
@@ -10963,6 +12301,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\button.hpp"
@@ -11021,6 +12367,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -11091,6 +12445,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\drawing.hpp"
@@ -11149,6 +12511,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -11219,6 +12589,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\horizontal_listbox.hpp"
@@ -11277,6 +12655,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -11347,6 +12733,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\image.hpp"
@@ -11405,6 +12799,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -11475,6 +12877,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\label.hpp"
@@ -11533,6 +12943,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -11603,6 +13021,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\matrix.hpp"
@@ -11661,6 +13087,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -11731,6 +13165,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\multi_page.hpp"
@@ -11789,6 +13231,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -11859,6 +13309,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\panel.hpp"
@@ -11917,6 +13375,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -11989,6 +13455,22 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -12115,6 +13597,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\scroll_label.hpp"
@@ -12173,6 +13663,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -12243,6 +13741,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\slider.hpp"
@@ -12301,6 +13807,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -12371,6 +13885,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\stacked_widget.hpp"
@@ -12429,6 +13951,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -12499,6 +14029,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\toggle_button.hpp"
@@ -12557,6 +14095,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -12627,6 +14173,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\tree_view.hpp"
@@ -12691,6 +14245,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\vertical_scrollbar.hpp"
@@ -12749,6 +14311,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -12823,6 +14393,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\event\dispatcher.hpp"
@@ -12891,6 +14469,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\event\distributor.hpp"
@@ -12949,6 +14535,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -13027,6 +14621,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition\button.hpp"
@@ -13085,6 +14687,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -13155,6 +14765,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition\horizontal_scrollbar.hpp"
@@ -13213,6 +14831,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -13283,6 +14909,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition\label.hpp"
@@ -13341,6 +14975,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -13411,6 +15053,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition\matrix.hpp"
@@ -13469,6 +15119,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -13539,6 +15197,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition\multi_page.hpp"
@@ -13597,6 +15263,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -13667,6 +15341,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition\progress_bar.hpp"
@@ -13725,6 +15407,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -13795,6 +15485,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition\scroll_label.hpp"
@@ -13853,6 +15551,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -13923,6 +15629,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition\slider.hpp"
@@ -13981,6 +15695,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -14051,6 +15773,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition\stacked_widget.hpp"
@@ -14109,6 +15839,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -14179,6 +15917,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition\toggle_button.hpp"
@@ -14237,6 +15983,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -14309,6 +16063,22 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -14435,6 +16205,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\widget_definition\window.hpp"
@@ -14503,6 +16281,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\iterator\walker_grid.cpp"
@@ -14563,6 +16349,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\iterator\walker_widget.cpp"
@@ -14617,6 +16411,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Iterator\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -14687,6 +16489,14 @@
 								ObjectFile="$(IntDir)\Gui\Auxiliary\Placer\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Placer\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\placer\horizontal_list.hpp"
@@ -14745,6 +16555,14 @@
 						</FileConfiguration>
 						<FileConfiguration
 							Name="Release WITH DBG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Placer\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -14823,6 +16641,14 @@
 								ObjectFile="$(IntDir)\Gui\Lib\Types\"
 							/>
 						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Lib\Types\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\lib\types\point.hpp"
@@ -14893,6 +16719,14 @@
 						ObjectFile="$(IntDir)\Pathfind\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Pathfind\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\pathfind\pathfind.cpp"
@@ -14947,6 +16781,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Pathfind\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -15037,6 +16879,14 @@
 						ObjectFile="$(IntDir)\Scripting\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Scripting\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\scripting\lua.hpp"
@@ -15109,6 +16959,14 @@
 						ObjectFile="$(IntDir)\Storyscreen\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Storyscreen\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\storyscreen\controller.hpp"
@@ -15167,6 +17025,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Storyscreen\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -15237,6 +17103,14 @@
 						ObjectFile="$(IntDir)\Storyscreen\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Storyscreen\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\storyscreen\part.hpp"
@@ -15295,6 +17169,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Storyscreen\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -15369,6 +17251,14 @@
 						ObjectFile="$(IntDir)\Whiteboard\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Whiteboard\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\whiteboard\action.hpp"
@@ -15427,6 +17317,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Whiteboard\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -15513,6 +17411,14 @@
 						ObjectFile="$(IntDir)\Whiteboard\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Whiteboard\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\whiteboard\manager.hpp"
@@ -15577,6 +17483,14 @@
 						ObjectFile="$(IntDir)\Whiteboard\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Whiteboard\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\whiteboard\mapbuilder.hpp"
@@ -15635,6 +17549,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Whiteboard\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -15713,6 +17635,14 @@
 						ObjectFile="$(IntDir)\Whiteboard\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Whiteboard\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\whiteboard\recruit.hpp"
@@ -15777,6 +17707,14 @@
 						ObjectFile="$(IntDir)\Whiteboard\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Whiteboard\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\whiteboard\side_actions.hpp"
@@ -15835,6 +17773,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Whiteboard\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -15917,6 +17863,14 @@
 						ObjectFile="$(IntDir)\Whiteboard\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Whiteboard\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\whiteboard\validate_visitor.hpp"
@@ -15989,6 +17943,14 @@
 						ObjectFile="$(IntDir)\Widgets\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\widgets\combo.cpp"
@@ -16043,6 +18005,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -16113,6 +18083,14 @@
 						ObjectFile="$(IntDir)\Widgets\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\widgets\drop_target.cpp"
@@ -16173,6 +18151,14 @@
 						ObjectFile="$(IntDir)\Widgets\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\widgets\file_menu.cpp"
@@ -16227,6 +18213,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -16297,6 +18291,14 @@
 						ObjectFile="$(IntDir)\Widgets\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\widgets\menu.cpp"
@@ -16351,6 +18353,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -16421,6 +18431,14 @@
 						ObjectFile="$(IntDir)\Widgets\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\widgets\progressbar.cpp"
@@ -16475,6 +18493,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -16545,6 +18571,14 @@
 						ObjectFile="$(IntDir)\Widgets\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\widgets\scrollbar.cpp"
@@ -16599,6 +18633,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -16665,6 +18707,14 @@
 						ObjectFile="$(IntDir)\Widgets\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\widgets\slider.cpp"
@@ -16719,6 +18769,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -16789,6 +18847,14 @@
 						ObjectFile="$(IntDir)\Widgets\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\widgets\widget.cpp"
@@ -16843,6 +18909,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Widgets\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -16942,6 +19016,15 @@
 						ObjectFile="$(IntDir)\Tests\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\tests\main.cpp"
@@ -17000,6 +19083,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -17072,6 +19164,15 @@
 						ObjectFile="$(IntDir)\Tests\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\tests\test_commandline_options.cpp"
@@ -17130,6 +19231,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -17202,6 +19312,15 @@
 						ObjectFile="$(IntDir)\Tests\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\tests\test_formula_ai.cpp"
@@ -17260,6 +19379,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -17332,6 +19460,15 @@
 						ObjectFile="$(IntDir)\Tests\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\tests\test_image_modifications.cpp"
@@ -17390,6 +19527,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -17462,6 +19608,15 @@
 						ObjectFile="$(IntDir)\Tests\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\tests\test_network_worker.cpp"
@@ -17520,6 +19675,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -17592,6 +19756,15 @@
 						ObjectFile="$(IntDir)\Tests\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\tests\test_team.cpp"
@@ -17650,6 +19823,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -17722,6 +19904,15 @@
 						ObjectFile="$(IntDir)\Tests\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\tests\test_util.cpp"
@@ -17787,6 +19978,15 @@
 						ObjectFile="$(IntDir)\Tests\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\tests\test_version.cpp"
@@ -17845,6 +20045,15 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -17920,6 +20129,15 @@
 							ObjectFile="$(IntDir)\Tests\Gui\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Tests\Gui\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\tests\gui\iterator.cpp"
@@ -17978,6 +20196,15 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Tests\Gui\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -18050,6 +20277,15 @@
 							ObjectFile="$(IntDir)\Tests\Gui\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Tests\Gui\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\tests\gui\test_gui2.cpp"
@@ -18108,6 +20344,15 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Tests\Gui\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -18180,6 +20425,15 @@
 							ObjectFile="$(IntDir)\Tests\Gui\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Tests\Gui\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\tests\gui\visitor.cpp"
@@ -18245,6 +20499,15 @@
 							ObjectFile="$(IntDir)\Tests\Gui\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Tests\Gui\"
+						/>
+					</FileConfiguration>
 				</File>
 			</Filter>
 			<Filter
@@ -18301,6 +20564,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -18372,6 +20643,15 @@
 							ObjectFile="$(IntDir)\Tests\Utils\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Tests\Utils\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\tests\utils\fake_display.hpp"
@@ -18424,6 +20704,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -18495,6 +20783,15 @@
 							ObjectFile="$(IntDir)\Tests\Utils\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Tests\Utils\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\tests\utils\fake_event_source.hpp"
@@ -18547,6 +20844,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -18618,6 +20923,15 @@
 							ObjectFile="$(IntDir)\Tests\Utils\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Tests\Utils\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\tests\utils\game_config_manager.hpp"
@@ -18670,6 +20984,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool
@@ -18741,6 +21063,15 @@
 							ObjectFile="$(IntDir)\Tests\Utils\"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Tests\Utils\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\tests\utils\play_scenario.hpp"
@@ -18799,6 +21130,14 @@
 							Name="VCCustomBuildTool"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\tests\utils\predicate.hpp"
@@ -18851,6 +21190,14 @@
 					</FileConfiguration>
 					<FileConfiguration
 						Name="Release WITH DBG|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
 						ExcludedFromBuild="true"
 						>
 						<Tool

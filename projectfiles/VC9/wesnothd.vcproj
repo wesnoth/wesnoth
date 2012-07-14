@@ -328,6 +328,86 @@
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
+		<Configuration
+			Name="ReleaseDEBUG|Win32"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1"
+			CharacterSet="0"
+			WholeProgramOptimization="1"
+			BuildLogFile="$(IntDir)\BuildLog-wesnothd.htm"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="2"
+				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories="../../src"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
+				RuntimeLibrary="2"
+				EnableFunctionLevelLinking="true"
+				OpenMP="true"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="libintl.lib SDL.lib SDL_net.lib winmm.lib ws2_32.lib SDLmain.lib"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
+				GenerateDebugInformation="false"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				LinkTimeCodeGeneration="1"
+				TargetMachine="1"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
 	</Configurations>
 	<References>
 	</References>
@@ -373,6 +453,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Server\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -427,6 +515,14 @@
 						ObjectFile="$(IntDir)\Server\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Server\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\server\game.hpp"
@@ -465,6 +561,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Server\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -511,6 +615,14 @@
 						ObjectFile="$(IntDir)\Server\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Server\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\server\metrics.hpp"
@@ -545,6 +657,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Server\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -593,6 +713,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Server\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -663,6 +791,14 @@
 						ObjectFile="$(IntDir)\Server\"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Server\"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="..\..\src\server\server.hpp"
@@ -697,6 +833,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release WITH DBG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Server\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
